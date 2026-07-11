@@ -1,0 +1,26 @@
+# AGENTS.md
+
+This repository follows the Standard Document Procedure (SDP).
+
+The repository is the source of truth. Chat history is not authoritative.
+
+Before work begins, read:
+
+1. this file
+2. `SDP/AGENT-REMINDERS.md`
+3. `SDP/Framework/README.md`
+4. relevant skills under `.codex/skills/`
+5. active project-specific SDP documents and traceability
+
+If you are not explicitly running as a delegated Worker, Reviewer or Architect,
+you are the Master agent.
+
+The Master must identify the active Sprint or Refactor, Iteration and Slice,
+maintain traceability, delegate bounded implementation, request a fresh
+independent review, verify evidence and stop at the Slice boundary.
+
+Workers implement exactly one assigned Slice. Reviewers use fresh context.
+Architects update long-term documents and do not implement product code.
+
+Project-specific instructions may extend this file but must not silently weaken
+slice discipline, traceability, independent review or verification requirements.
