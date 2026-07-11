@@ -1,0 +1,54 @@
+# Agent Reminders
+
+These reminders capture reusable lessons. Project-specific additions belong in
+this file after installation.
+
+## Domain before UI
+
+Work in this order:
+
+```text
+Domain -> Workflow -> State -> Architecture -> Components -> Visual UI
+```
+
+Do not solve architectural problems with presentation code.
+
+## Architectural integrity
+
+Before introducing an abstraction, ask:
+
+1. Does it solve a real current problem?
+2. Will it have at least two real consumers or enforce a required boundary?
+3. Does it reduce coupling?
+4. Does it reduce cognitive complexity?
+5. Is it documented in SDP?
+
+Otherwise prefer small duplication over premature abstraction.
+
+## State ownership
+
+Each state has one owner: persisted domain state, derived state, shared
+interaction state, or local transient UI state. Duplicate ownership is a design
+smell.
+
+## Refactoring
+
+Refactor by behavior-preserving vertical slices. Do not split files merely to
+reduce line count. Move behavior behind explicit contracts, verify it, then
+remove compatibility adapters.
+
+## Roles
+
+The shell owns composition. Workspaces own workflows. Components own rendering.
+Services own provider interaction. Domain contracts should not depend on UI
+labels or component shapes.
+
+## Evidence
+
+External data is evidence, not automatically truth or prediction. Preserve
+source, version, units, no-data semantics and provenance.
+
+## Stop
+
+When the assigned Slice is complete, stop. Record discoveries as future work;
+do not continue automatically.

@@ -1,40 +1,139 @@
-# SDP Draft Project
+# Standard Document Procedure (SDP)
 
-Status: working draft  
-Created: 2026-06-23
+Status: working draft
 
-This folder is the central draft home for the Standard Document Procedure
-used across local projects under `C:\Users\hanse\GIT`.
+SDP is a repository-local, document-driven method for AI-assisted software
+development. It keeps mandate, research, requirements, architecture, design,
+implementation, verification, review, traceability and handoff connected to the
+repository rather than relying on chat memory.
 
-It was created because no top-level `C:\Users\hanse\GIT\SDP` project existed
-yet, while several repositories already contain repo-local SDP folders.
+Core principle:
 
-## Source Repositories Inspected
+> Design horizontally. Implement vertically.
 
-Existing SDP folders observed:
+## Repository layout
 
-- `C:\Users\hanse\GIT\farmStatistics\SDP`
-- `C:\Users\hanse\GIT\tsm_locations_core\SDP`
-- `C:\Users\hanse\GIT\weight_app_flutter\SDP`
-- `C:\Users\hanse\GIT\SharedUI\SDP`
-- `C:\Users\hanse\GIT\HEOS\SDP`
-- `C:\Users\hanse\GIT\TerrainAnalyzer\SDP`
-- additional older/lightweight SDP folders in other local repositories
+This repository has two purposes:
 
-The newest and richest local operating instructions currently appear in
-`farmStatistics\SDP`, with useful related process notes in
-`tsm_locations_core\SDP`, `SharedUI\SDP`, and `HEOS\SDP`.
+1. show the recommended project-local `SDP/` structure directly at repository root
+2. provide reusable skills and installation tooling under `Toolkit/`
 
-## Documents
+```text
+SDP repository
+├── 01--Mandate/               Template and reference document
+├── 02--Study/
+├── 03--Requirements/
+├── 04--Architecture/
+├── 05--DesignAnalysis/
+├── 06--Design/
+├── 07--Implementation/
+├── Sprints/
+├── Refactors/
+├── CodeReview/
+├── Verification/
+├── Traceability/
+├── Instructions/
+├── SDP-DOCUMENT-GUIDE.md      Detailed use of each document area
+├── Toolkit/
+│   ├── skills/                Reusable Codex skills
+│   ├── scripts/               Safe installer/update scripts
+│   └── payload/               Toolkit-managed project files
+├── docs/                      Extended method documentation
+└── examples/                  Larger examples
+```
 
-- `DraftStandardDocumentProcedure.md`: the current cross-project SDP draft.
-- `TieredDesignAndImplementation.md`: the Tier concept added from the
-  TerrainAnalyzer design-analysis work.
+The root lifecycle folders are templates and reference material. In consuming
+projects, the corresponding folders inside that project's `SDP/` directory are
+project-owned and authoritative.
 
-## Current Principle
+## Recommended installation
 
-Design horizontally. Implement vertically.
+Clone this repository once at the existing shared location:
 
-Horizontal design documents describe architectural layers and contracts.
-Vertical implementation Tiers cut through those layers to deliver coherent,
-verified capabilities sprint by sprint.
+```powershell
+git clone https://github.com/Hans-Einar/SDP.git C:\Users\hanse\GIT\SDP
+```
+
+If `C:\Users\hanse\GIT\SDP` already contains this clone, use `git pull` instead.
+
+Install reusable Toolkit files into a project:
+
+```powershell
+C:\Users\hanse\GIT\SDP\Toolkit\scripts\Install-SDP.ps1 `
+  -ProjectRoot C:\Users\hanse\GIT\GrassPhenology
+```
+
+The target project may already contain a non-empty `SDP/` directory. This is a
+hard requirement and the normal migration case. Existing project documents are
+preserved.
+
+To also add only missing standard template documents and folders:
+
+```powershell
+C:\Users\hanse\GIT\SDP\Toolkit\scripts\Install-SDP.ps1 `
+  -ProjectRoot C:\Users\hanse\GIT\GrassPhenology `
+  -InitializeProjectStructure
+```
+
+The installer is additive by default:
+
+- existing project Mandate, Study, Requirements, Architecture, Design, Sprints,
+  Refactors, Verification, CodeReview, Instructions and Traceability are untouched
+- existing `AGENTS.md` is preserved
+- existing `SDP/AGENT-REMINDERS.md` is preserved
+- Toolkit-managed skills are installed under `.codex/skills/`
+- Toolkit-managed Framework guidance is installed under `SDP/Framework/`
+- standard project templates are copied only when the destination is missing
+
+Use `-ForceManagedFiles` only to refresh Toolkit-managed Framework and skill
+files. It does not replace project-owned SDP documents.
+
+## Clone behavior
+
+Do not clone this repository into a consuming project's existing `SDP/` folder:
+
+```powershell
+# Wrong
+git clone https://github.com/Hans-Einar/SDP.git C:\path\to\Project\SDP
+```
+
+`git clone` requires the destination to be absent or empty and creates its own
+`.git` directory. Cloning there would either fail against an existing non-empty
+folder or create a nested Git repository.
+
+Supported layout:
+
+```text
+C:\Users\hanse\GIT\
+├── SDP\                     independent upstream clone
+├── GrassPhenology\
+│   └── SDP\                 project-owned documents
+├── TerrainAnalyzer\
+│   └── SDP\
+└── agro-crm\
+    └── SDP\
+```
+
+## Skills
+
+Canonical skills live under `Toolkit/skills/` and are installed to
+`.codex/skills/` in each consuming project:
+
+- `sdp-master`
+- `sdp-worker`
+- `sdp-reviewer`
+- `sdp-architect`
+- `sdp-traceability`
+- `sdp-vertical-refactor`
+
+Project facts remain in project-specific SDP documents; skills contain reusable
+procedure.
+
+## Main documentation
+
+- `SDP-DOCUMENT-GUIDE.md`
+- `DraftStandardDocumentProcedure.md`
+- `TieredDesignAndImplementation.md`
+- `docs/How-SDP-Works.md`
+- `docs/Distribution-And-Upgrades.md`
+- `examples/README.md`
