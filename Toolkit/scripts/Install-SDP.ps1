@@ -10,12 +10,29 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $ToolkitRoot = Split-Path -Parent $PSScriptRoot
-$RepositoryRoot = Split-Path -Parent $ToolkitRoot
+$RepositoryRoot = (Resolve-Path (Split-Path -Parent $ToolkitRoot)).Path
 $ProjectRoot = (Resolve-Path $ProjectRoot).Path
 $SdpRoot = Join-Path $ProjectRoot 'SDP'
 $SkillsTarget = Join-Path $ProjectRoot '.codex\skills'
 
-if ($ProjectRoot.StartsWith($RepositoryRoot, [System.StringComparison]::OrdinalIgnoreCase)) {
+# Compare complete path segments, not raw string prefixes. Without the directory
+# separator boundary, a sibling such as `SDP-Analyzer` is incorrectly treated as
+# being inside `SDP` because both paths begin with the same characters.
+$repositoryPrefix = $RepositoryRoot.TrimEnd(
+    [System.IO.Path]::DirectorySeparatorChar,
+    [System.IO.Path]::AltDirectorySeparatorChar
+) + [System.IO.Path]::DirectorySeparatorChar
+
+$projectIsRepository = $ProjectRoot.Equals(
+    $RepositoryRoot,
+    [System.StringComparison]::OrdinalIgnoreCase
+)
+$projectIsInsideRepository = $ProjectRoot.StartsWith(
+    $repositoryPrefix,
+    [System.StringComparison]::OrdinalIgnoreCase
+)
+
+if ($projectIsRepository -or $projectIsInsideRepository) {
     throw "The consuming project must not be inside the SDP repository: $RepositoryRoot"
 }
 
