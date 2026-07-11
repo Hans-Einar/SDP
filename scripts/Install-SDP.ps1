@@ -7,10 +7,14 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
-$RepoRoot = Split-Path -Parent $PSScriptRoot
+$RepoRoot = (Resolve-Path (Split-Path -Parent $PSScriptRoot)).Path
 $ProjectRoot = (Resolve-Path $ProjectRoot).Path
 $SdpRoot = Join-Path $ProjectRoot 'SDP'
 $SkillsTarget = Join-Path $ProjectRoot '.codex\skills'
+
+if ($RepoRoot.StartsWith($ProjectRoot, [System.StringComparison]::OrdinalIgnoreCase)) {
+    throw "The SDP toolkit repository must not be cloned inside the consuming project. Clone it beside the project and run this installer from there."
+}
 
 function Copy-SafeFile {
     param(
@@ -35,7 +39,14 @@ function Copy-SafeFile {
     }
 }
 
+$existingSdp = Test-Path $SdpRoot
 New-Item -ItemType Directory -Force -Path $SdpRoot | Out-Null
+
+if ($existingSdp) {
+    Write-Host "Using existing project SDP directory: $SdpRoot"
+} else {
+    Write-Host "Created project SDP directory: $SdpRoot"
+}
 
 Copy-SafeFile `
     (Join-Path $RepoRoot 'payload\project-root\AGENTS.md.template') `
@@ -63,5 +74,5 @@ Get-ChildItem -Path $skillsSource -Directory | ForEach-Object {
 
 Write-Host ''
 Write-Host 'SDP installation complete.'
-Write-Host 'Project-specific files were preserved.'
+Write-Host 'Existing project-specific SDP files were preserved.'
 Write-Host 'Use -ForceManagedFiles to refresh only Framework and skill files.'
