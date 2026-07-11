@@ -16,7 +16,7 @@ $SdpRoot = Join-Path $ProjectRoot 'SDP'
 $SkillsTarget = Join-Path $ProjectRoot '.codex\skills'
 
 if ($ProjectRoot.StartsWith($RepositoryRoot, [System.StringComparison]::OrdinalIgnoreCase)) {
-    throw "The consuming project must not be inside the SDP toolkit repository: $RepositoryRoot"
+    throw "The consuming project must not be inside the SDP repository: $RepositoryRoot"
 }
 
 function Copy-SafeFile {
@@ -42,12 +42,42 @@ function Copy-SafeFile {
     }
 }
 
+function Install-ManagedAgentsFile {
+    $source = Join-Path $ToolkitRoot 'payload\project-root\AGENTS.md.template'
+    $destination = Join-Path $ProjectRoot 'AGENTS.md'
+    $projectInstructions = Join-Path $ProjectRoot 'AGENTS-project.md'
+
+    if (Test-Path $destination) {
+        $sourceHash = (Get-FileHash -Algorithm SHA256 $source).Hash
+        $destinationHash = (Get-FileHash -Algorithm SHA256 $destination).Hash
+
+        if ($sourceHash -ne $destinationHash) {
+            if (-not (Test-Path $projectInstructions)) {
+                Copy-Item $destination $projectInstructions
+                Write-Host "Migrated previous AGENTS.md to project-owned file: $projectInstructions"
+            } else {
+                $timestamp = Get-Date -Format 'yyyyMMdd-HHmmss'
+                $backup = Join-Path $ProjectRoot "AGENTS-project.migration-$timestamp.md"
+                Copy-Item $destination $backup
+                Write-Host "Preserved previous AGENTS.md as migration backup: $backup"
+            }
+        }
+    }
+
+    Copy-Item -Force $source $destination
+    Write-Host "Installed managed file: $destination"
+}
+
 # Existing non-empty SDP directories are explicitly supported.
 New-Item -ItemType Directory -Force -Path $SdpRoot | Out-Null
 
+# AGENTS.md is the canonical Toolkit-managed entry point. Existing content is
+# migrated before replacement so project-specific instructions are not lost.
+Install-ManagedAgentsFile
+
 Copy-SafeFile `
-    (Join-Path $ToolkitRoot 'payload\project-root\AGENTS.md.template') `
-    (Join-Path $ProjectRoot 'AGENTS.md') `
+    (Join-Path $ToolkitRoot 'payload\project-root\AGENTS-project.md.template') `
+    (Join-Path $ProjectRoot 'AGENTS-project.md') `
     $false
 
 Copy-SafeFile `
@@ -95,6 +125,8 @@ if ($InitializeProjectStructure) {
 
 Write-Host ''
 Write-Host 'SDP installation complete.'
-Write-Host 'Existing project-specific files were preserved.'
+Write-Host 'AGENTS.md is Toolkit-managed and was refreshed.'
+Write-Host 'Project-specific instructions are preserved in AGENTS-project.md.'
+Write-Host 'Existing project-specific SDP files were preserved.'
 Write-Host 'Use -ForceManagedFiles to refresh Toolkit-managed Framework and skill files.'
 Write-Host 'Use -InitializeProjectStructure to add only missing standard template documents.'
