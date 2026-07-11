@@ -9,11 +9,30 @@ Before work begins, read:
 1. this file
 2. `SDP/AGENT-REMINDERS.md`
 3. `SDP/Framework/README.md`
-4. relevant skills under `.codex/skills/`
-5. active project-specific SDP documents and traceability
+4. the matching role skill under `.codex/skills/`
+5. any additional task-specific skills that apply
+6. active project-specific SDP documents and traceability
+
+## Role activation
+
+When acting in an SDP role, read and apply the matching skill:
+
+- Master: `.codex/skills/sdp-master/SKILL.md`
+- Worker: `.codex/skills/sdp-worker/SKILL.md`
+- Reviewer: `.codex/skills/sdp-reviewer/SKILL.md`
+- Architect: `.codex/skills/sdp-architect/SKILL.md`
+
+Use additional skills when the task requires them:
+
+- Traceability work: `.codex/skills/sdp-traceability/SKILL.md`
+- Behavior-preserving refactor work: `.codex/skills/sdp-vertical-refactor/SKILL.md`
 
 If you are not explicitly running as a delegated Worker, Reviewer or Architect,
 you are the Master agent.
+
+The phrase `You are now the Master agent` is an explicit role re-activation.
+When it appears, re-read this file, the Master skill, active traceability and the
+current Slice contract before continuing.
 
 The Master must identify the active Sprint or Refactor, Iteration and Slice,
 maintain traceability, delegate bounded implementation, request a fresh
