@@ -75,18 +75,35 @@ C:\Users\hanse\GIT\SDP\Toolkit\scripts\Install-SDP.ps1 `
   -InitializeProjectStructure
 ```
 
-The installer is additive by default:
+## Managed and project-owned agent instructions
+
+`AGENTS.md` is Toolkit-managed and is refreshed on every install. Consuming
+projects should not edit it.
+
+Repository-specific instructions belong in `AGENTS-project.md`, which is
+project-owned and is never overwritten by the installer. The managed
+`AGENTS.md` requires agents to read `AGENTS-project.md` when it exists.
+
+When migrating an existing project:
+
+- an old, differing `AGENTS.md` is copied to `AGENTS-project.md` when that file
+  does not yet exist
+- when `AGENTS-project.md` already exists, the old `AGENTS.md` is kept as a
+  timestamped migration backup
+- the canonical managed `AGENTS.md` is then installed
+
+The installer otherwise remains additive:
 
 - existing project Mandate, Study, Requirements, Architecture, Design, Sprints,
   Refactors, Verification, CodeReview, Instructions and Traceability are untouched
-- existing `AGENTS.md` is preserved
+- existing `AGENTS-project.md` is preserved
 - existing `SDP/AGENT-REMINDERS.md` is preserved
 - Toolkit-managed skills are installed under `.codex/skills/`
 - Toolkit-managed Framework guidance is installed under `SDP/Framework/`
 - standard project templates are copied only when the destination is missing
 
-Use `-ForceManagedFiles` only to refresh Toolkit-managed Framework and skill
-files. It does not replace project-owned SDP documents.
+Use `-ForceManagedFiles` to refresh Toolkit-managed Framework and skill files.
+It does not replace project-owned SDP documents or `AGENTS-project.md`.
 
 ## Clone behavior
 
