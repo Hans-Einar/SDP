@@ -54,6 +54,7 @@ try {
     Assert-True (Test-Path (Join-Path $empty 'SDP\SDP-project.manifest.yaml')) 'project manifest missing'
     Assert-True (Test-Path (Join-Path $empty 'SDP\RELEASE-NOTES.md')) 'release notes missing'
     Assert-True (Test-Path (Join-Path $empty 'SDP\Framework\installed-toolkit.manifest.yaml')) 'installed manifest missing'
+    Assert-True (Test-Path (Join-Path $empty 'SDP\Traceability\Ledger.ndjson')) 'empty ledger missing'
     Assert-True (Test-Path (Join-Path $empty '.codex\skills\sdp-release\SKILL.md')) 'release skill missing'
     $beforeRepeat = Get-TreeFingerprint $empty
     & $Installer -ProjectRoot $empty | Out-Host
@@ -100,6 +101,15 @@ try {
     Assert-True $failed 'unsupported schema did not fail'
     Assert-Equal 'UNCHANGED' (Get-Content -Raw -LiteralPath (Join-Path $unsupported 'marker.txt')) 'unsupported fixture mutated'
     Assert-True (-not (Test-Path (Join-Path $unsupported 'AGENTS.md'))) 'unsupported install wrote AGENTS.md'
+
+    # An older installer must never downgrade a newer installed Toolkit.
+    $newer = New-FixtureProject 'newer-toolkit'
+    New-Item -ItemType Directory -Force -Path (Join-Path $newer 'SDP\Framework') | Out-Null
+    Set-Content -LiteralPath (Join-Path $newer 'SDP\Framework\installed-toolkit.manifest.yaml') -Value "schemaVersion: `"1.0`"`ntoolkitVersion: `"0.3.0`"`ntoolkitInstalledAt: `"2026-07-12T00:00:00Z`"`n" -NoNewline
+    $downgradeFailed = $false
+    try { & $Installer -ProjectRoot $newer | Out-Host } catch { $downgradeFailed = $true }
+    Assert-True $downgradeFailed 'newer Toolkit installation was downgraded'
+    Assert-True (-not (Test-Path (Join-Path $newer 'AGENTS.md'))) 'downgrade attempt mutated project'
 
     # A sibling named SDP-Analyzer is valid; a child of the Toolkit repo is not.
     $sibling = Join-Path (Split-Path -Parent $RepositoryRoot) ("SDP-Analyzer-fixture-" + [guid]::NewGuid().ToString('N'))

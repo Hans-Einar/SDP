@@ -26,7 +26,8 @@ The installer:
 - detects the installed manifest schema before writing
 - treats installations without a manifest as the supported pre-versioning format
 - stops safely on unsupported schemas
-- creates missing project manifest and release notes additively
+- refuses to downgrade a project installed with a newer Toolkit version
+- creates missing project manifest, release notes and an empty append-only ledger
 - refreshes managed files on a Toolkit-version upgrade
 - backs up changed managed files before replacement
 - reports previewed and applied actions
@@ -34,4 +35,7 @@ The installer:
 - compares complete path segments, so sibling folders such as `SDP-Analyzer` are valid
 
 Backups default to `SDP/.sdp-backups/<UTC timestamp>/` and may be redirected with
-`-BackupRoot`.
+`-BackupRoot`. During the one-time AGENTS migration, a prior project-specific
+`AGENTS.md` is copied to `AGENTS-project.md`; when that file already exists, the
+prior AGENTS content is preserved as `AGENTS-project.migration-<timestamp>.md` at
+project root.

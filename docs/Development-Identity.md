@@ -25,8 +25,8 @@ Example UI text:
 0.8.0-dev · Sprint-026 / SPI-002 / SPS-003 · r1 · abc1234
 ```
 
-`-dev` or prerelease text is mandatory whenever the build is not an official
-release.
+`-dev`, `-prerelease` or `-yanked` text is mandatory whenever the build is not
+a current official release.
 
 ## Revision rule
 

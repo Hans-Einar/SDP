@@ -55,6 +55,9 @@ def generate_identity(
         raise ValueError("release.currentVersion or nextTargetVersion is required")
 
     release_state = release.get("state", "unreleased")
+    allowed_states = {"unreleased", "prerelease", "released", "yanked"}
+    if release_state not in allowed_states:
+        raise ValueError(f"Unsupported release state: {release_state}")
     full_commit = git(project_root, "rev-parse", "HEAD")
     short_commit = git(project_root, "rev-parse", "--short=7", "HEAD")
     status = git(project_root, "status", "--porcelain")
@@ -75,7 +78,14 @@ def generate_identity(
     revision = development.get("revision")
 
     released = release_state == "released"
-    version_label = str(target_version) if released else f"{target_version}-dev"
+    if release_state == "released":
+        version_label = str(target_version)
+    elif release_state == "yanked":
+        version_label = f"{target_version}-yanked"
+    elif release_state == "prerelease":
+        version_label = f"{target_version}-prerelease"
+    else:
+        version_label = f"{target_version}-dev"
     display_parts = [version_label]
     if coordinate_parts:
         display_parts.append(" / ".join(coordinate_parts))
@@ -85,8 +95,10 @@ def generate_identity(
         display_parts.append(short_commit)
 
     machine_parts = [f"v{target_version}"]
-    if not released:
+    if release_state == "unreleased":
         machine_parts.append("dev")
+    elif release_state != "released":
+        machine_parts.append(release_state)
     if sprint_id:
         machine_parts.append("s" + "".join(ch for ch in str(sprint_id) if ch.isdigit()).zfill(3))
     elif refactor_id:
