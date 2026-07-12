@@ -210,16 +210,20 @@ def validate_repository(repo: Path, base_ref: str | None = None) -> list[str]:
     errors += validate_json(fix_template, fix_record_schema, "Fix record template")
 
     event_schema = load_json(repo / "Toolkit/schemas/release-event.schema.json")
-    event_path = repo / "examples/release-events.ndjson.example"
-    for line_number, line in enumerate(event_path.read_text(encoding="utf-8").splitlines(), start=1):
-        if not line.strip():
-            continue
-        try:
-            event = json.loads(line)
-        except json.JSONDecodeError as exc:
-            errors.append(f"{event_path}:{line_number}: invalid JSON: {exc}")
-            continue
-        errors += validate_json(event, event_schema, f"{event_path}:{line_number}")
+    event_paths = [
+        repo / "examples/release-events.ndjson.example",
+        repo / "Traceability/Ledger.ndjson",
+    ]
+    for event_path in event_paths:
+        for line_number, line in enumerate(event_path.read_text(encoding="utf-8").splitlines(), start=1):
+            if not line.strip():
+                continue
+            try:
+                event = json.loads(line)
+            except json.JSONDecodeError as exc:
+                errors.append(f"{event_path}:{line_number}: invalid JSON: {exc}")
+                continue
+            errors += validate_json(event, event_schema, f"{event_path}:{line_number}")
 
     for trace_path in (repo / "Traceability/CurrentIndex.yaml", repo / "Traceability/Relations.yaml"):
         data = load_yaml(trace_path)
