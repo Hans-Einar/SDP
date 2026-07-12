@@ -1,0 +1,39 @@
+schemaVersion: "1.0"
+toolkit:
+  version: "0.2.0"
+  releaseState: unreleased
+  releaseTargetVersion: "0.2.0"
+  releaseDate: unreleased
+  minimumInstallerVersion: "0.2.0"
+  compatibilityRange: ">=0.1.0 <1.0.0"
+  gitTag: null
+  releaseCommit: null
+framework:
+  version: "1.0.0"
+agentsContract:
+  version: "1.0.0"
+skills:
+  sdp-architect: "1.0.0"
+  sdp-auditor: "1.0.0"
+  sdp-master: "1.0.0"
+  sdp-release: "1.0.0"
+  sdp-reviewer: "1.0.0"
+  sdp-traceability: "1.0.0"
+  sdp-verifier: "1.0.0"
+  sdp-versioning: "1.0.0"
+  sdp-vertical-refactor: "1.0.0"
+  sdp-worker: "1.0.0"
+capabilities:
+  - sdp.install.v1
+  - sdp.manifest.v1
+  - sdp.release.v1
+  - sdp.release-notes.v1
+  - sdp.skill-metadata.v1
+  - sdp.traceability.release-events.v1
+  - sdp.versioning.v1
+releaseNotesPath: RELEASE-NOTES.md
+migration:
+  required: true
+  guidePath: docs/Installer-Migration.md
+supportedProjectManifestSchemaVersions:
+  - "1.0"
