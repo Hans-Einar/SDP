@@ -75,6 +75,23 @@ class BuildIdentityTests(unittest.TestCase):
             self.assertIn("0.8.0-dev", identity["displayVersion"])
             self.assertIn("s026.i002.sl003.r001", identity["developmentId"])
 
+    def test_released_build_uses_current_not_next_target(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "SDP").mkdir()
+            manifest = {
+                "release": {
+                    "currentVersion": "1.2.3",
+                    "nextTargetVersion": "1.3.0",
+                    "state": "released",
+                },
+                "development": {},
+            }
+            (root / "SDP/SDP-project.manifest.yaml").write_text(yaml.safe_dump(manifest), encoding="utf-8")
+            identity = BUILD.generate_identity(root, "2026-01-01T00:00:00Z")
+            self.assertEqual(identity["releaseVersion"], "1.2.3")
+            self.assertEqual(identity["displayVersion"], "1.2.3")
+
     def test_yanked_build_is_not_presented_as_development(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
