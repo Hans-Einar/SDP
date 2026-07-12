@@ -1,43 +1,30 @@
-# Example Project SDP Tree
+# SDP Examples
 
-The active SDP document tree belongs inside each project, not at the root of the
-upstream toolkit repository.
-
-A mature project may use:
+A mature consuming project may contain:
 
 ```text
 Project/
-├── AGENTS.md
-├── .codex/
-│   └── skills/
-│       ├── sdp-master/SKILL.md
-│       ├── sdp-worker/SKILL.md
-│       ├── sdp-reviewer/SKILL.md
-│       ├── sdp-architect/SKILL.md
-│       ├── sdp-traceability/SKILL.md
-│       └── sdp-vertical-refactor/SKILL.md
+├── AGENTS.md                         Toolkit-managed
+├── AGENTS-project.md                 project-owned
+├── .codex/skills/sdp-*/SKILL.md      Toolkit-managed, versioned
 └── SDP/
-    ├── AGENT-REMINDERS.md
+    ├── SDP-project.manifest.yaml     project-owned release/work state
+    ├── RELEASE-NOTES.md              project-owned history
     ├── Framework/
-    ├── Instructions/
-    ├── 01--Mandate/
-    ├── 02--Study/
-    ├── 03--Requirements/
-    ├── 04--Architecture/
-    ├── 05--DesignAnalysis/
-    ├── 06--Design/
-    ├── 07--Implementation/
-    ├── Sprints/
-    ├── Refactors/
-    ├── CodeReview/
-    ├── Verification/
+    │   └── installed-toolkit.manifest.yaml
+    ├── 01--Mandate/ ... 07--Implementation/
+    ├── Sprints/ Refactors/ Fixes/ Releases/
+    ├── CodeReview/ Verification/
     └── Traceability/
         ├── CurrentIndex.yaml
         ├── Relations.yaml
         └── Ledger.ndjson
 ```
 
-This is an example, not a payload to copy blindly. Existing project structures
-may use singular `Refactor` or different numbered folders. The installer adds
-shared guidance and skills without creating or replacing these project-owned
-folders.
+Repository examples include:
+
+- `installed-toolkit.manifest.example.yaml`
+- `build-identity.example.json`
+- `release-events.ndjson.example`
+
+They illustrate contracts and are not records of real published releases.

@@ -1,11 +1,12 @@
 # Standard Document Procedure (SDP)
 
-Status: working draft
+Status: working draft  
+Toolkit-Version: 0.2.0 (unreleased)
 
 SDP is a repository-local, document-driven method for AI-assisted software
-development. It keeps mandate, research, requirements, architecture, design,
-implementation, verification, review, traceability and handoff connected to the
-repository rather than relying on chat memory.
+development. It connects mandate, research, requirements, architecture, design,
+implementation, verification, review, traceability, releases and handoff to the
+repository instead of relying on chat memory.
 
 Core principle:
 
@@ -13,144 +14,109 @@ Core principle:
 
 ## Repository layout
 
-This repository has two purposes:
-
-1. show the recommended project-local `SDP/` structure directly at repository root
-2. provide reusable skills and installation tooling under `Toolkit/`
-
 ```text
 SDP repository
-├── 01--Mandate/               Template and reference document
-├── 02--Study/
-├── 03--Requirements/
-├── 04--Architecture/
-├── 05--DesignAnalysis/
-├── 06--Design/
-├── 07--Implementation/
-├── Sprints/
-├── Refactors/
-├── CodeReview/
-├── Verification/
-├── Traceability/
-├── Instructions/
-├── SDP-DOCUMENT-GUIDE.md      Detailed use of each document area
+├── 01--Mandate/ ... 07--Implementation/   lifecycle templates
+├── Sprints/ Refactors/ Fixes/ Releases/   operating records/templates
+├── CodeReview/ Verification/ Traceability/
+├── SDP.manifest.yaml                      Toolkit release manifest
+├── RELEASE-NOTES.md                       canonical Toolkit release notes
 ├── Toolkit/
-│   ├── skills/                Reusable Codex skills
-│   ├── scripts/               Safe installer/update scripts
-│   └── payload/               Toolkit-managed project files
-├── docs/                      Extended method documentation
-└── examples/                  Larger examples
+│   ├── skills/                            versioned reusable skills
+│   ├── schemas/                           machine-readable contracts
+│   ├── scripts/                           installer, build identity, validation
+│   └── payload/                           Toolkit-managed project files
+├── docs/                                  method and release guidance
+└── examples/                              example manifests and events
 ```
 
-The root lifecycle folders are templates and reference material. In consuming
-projects, the corresponding folders inside that project's `SDP/` directory are
-project-owned and authoritative.
+The root lifecycle folders demonstrate the recommended project-local `SDP/`
+structure. In consuming projects, populated lifecycle/release/traceability files
+are project-owned and authoritative.
 
-## Recommended installation
+## Version model
 
-Clone this repository once at the existing shared location:
+Released software and SDP Toolkits use SemVer. The Toolkit that existed before
+formal version metadata is documented as migration baseline `0.1.0`; this
+backward-compatible capability addition targets `0.2.0`. It remains
+**unreleased** and no corresponding tag or GitHub Release exists.
+
+Sprint/Refactor, Iteration, Slice/Fix, revision and Git SHA are separate
+development coordinates. See `docs/Release-And-Versioning.md` and
+`docs/Development-Identity.md`.
+
+## Install or update a project
+
+Keep one independent clone:
 
 ```powershell
 git clone https://github.com/Hans-Einar/SDP.git C:\Users\hanse\GIT\SDP
 ```
 
-If `C:\Users\hanse\GIT\SDP` already contains this clone, use `git pull` instead.
-
-Install reusable Toolkit files into a project:
+Preview an installation or migration:
 
 ```powershell
 C:\Users\hanse\GIT\SDP\Toolkit\scripts\Install-SDP.ps1 `
-  -ProjectRoot C:\Users\hanse\GIT\GrassPhenology
+  -ProjectRoot C:\path\to\Project `
+  -Preview
 ```
 
-The target project may already contain a non-empty `SDP/` directory. This is a
-hard requirement and the normal migration case. Existing project documents are
-preserved.
-
-To also add only missing standard template documents and folders:
+Apply it:
 
 ```powershell
 C:\Users\hanse\GIT\SDP\Toolkit\scripts\Install-SDP.ps1 `
-  -ProjectRoot C:\Users\hanse\GIT\GrassPhenology `
-  -InitializeProjectStructure
+  -ProjectRoot C:\path\to\Project
 ```
 
-## Managed and project-owned agent instructions
+Existing non-empty `SDP/` directories are the normal migration case. The
+installer creates missing project manifests and release notes, updates clearly
+Toolkit-managed Framework/skills, backs up replaced managed files and never
+replaces populated project-owned records. `AGENTS.md` is managed;
+`AGENTS-project.md` is preserved.
 
-`AGENTS.md` is Toolkit-managed and is refreshed on every install. Consuming
-projects should not edit it.
+Use `-ForceManagedFiles` only to restore same-version managed files. Use
+`-InitializeProjectStructure` to add missing template documents. See
+`docs/Installer-Migration.md`.
 
-Repository-specific instructions belong in `AGENTS-project.md`, which is
-project-owned and is never overwritten by the installer. The managed
-`AGENTS.md` requires agents to read `AGENTS-project.md` when it exists.
+## Build identity
 
-When migrating an existing project:
-
-- an old, differing `AGENTS.md` is copied to `AGENTS-project.md` when that file
-  does not yet exist
-- when `AGENTS-project.md` already exists, the old `AGENTS.md` is kept as a
-  timestamped migration backup
-- the canonical managed `AGENTS.md` is then installed
-
-The installer otherwise remains additive:
-
-- existing project Mandate, Study, Requirements, Architecture, Design, Sprints,
-  Refactors, Verification, CodeReview, Instructions and Traceability are untouched
-- existing `AGENTS-project.md` is preserved
-- existing `SDP/AGENT-REMINDERS.md` is preserved
-- Toolkit-managed skills are installed under `.codex/skills/`
-- Toolkit-managed Framework guidance is installed under `SDP/Framework/`
-- standard project templates are copied only when the destination is missing
-
-Use `-ForceManagedFiles` to refresh Toolkit-managed Framework and skill files.
-It does not replace project-owned SDP documents or `AGENTS-project.md`.
-
-## Clone behavior
-
-Do not clone this repository into a consuming project's existing `SDP/` folder:
+Generate framework-neutral build metadata:
 
 ```powershell
-# Wrong
-git clone https://github.com/Hans-Einar/SDP.git C:\path\to\Project\SDP
+python Toolkit\scripts\New-SDPBuildIdentity.py `
+  --project-root C:\path\to\Project `
+  --output C:\path\to\Project\src\generated\sdp-build.json
 ```
 
-`git clone` requires the destination to be absent or empty and creates its own
-`.git` directory. Cloning there would either fail against an existing non-empty
-folder or create a nested Git repository.
+A Vite app may import the JSON, while non-Vite systems may embed or expose the
+same schema by another build step. Unreleased builds are visibly marked `-dev`.
 
-Supported layout:
+## Canonical skills
 
-```text
-C:\Users\hanse\GIT\
-├── SDP\                     independent upstream clone
-├── GrassPhenology\
-│   └── SDP\                 project-owned documents
-├── TerrainAnalyzer\
-│   └── SDP\
-└── agro-crm\
-    └── SDP\
+- `sdp-master`, `sdp-worker`, `sdp-reviewer`, `sdp-architect`
+- `sdp-traceability`, `sdp-vertical-refactor`
+- `sdp-release`, `sdp-versioning`, `sdp-auditor`, `sdp-verifier`
+
+Every skill has machine-readable YAML front matter and its version must agree
+with `SDP.manifest.yaml`.
+
+## Validation
+
+```powershell
+python -m pip install -r Toolkit\tests\requirements.txt
+python Toolkit\scripts\validate_sdp.py
+python -m unittest discover -s Toolkit\tests -p "test_*.py" -v
+.\Toolkit\tests\Install-SDP.Tests.ps1
 ```
 
-## Skills
-
-Canonical skills live under `Toolkit/skills/` and are installed to
-`.codex/skills/` in each consuming project:
-
-- `sdp-master`
-- `sdp-worker`
-- `sdp-reviewer`
-- `sdp-architect`
-- `sdp-traceability`
-- `sdp-vertical-refactor`
-
-Project facts remain in project-specific SDP documents; skills contain reusable
-procedure.
+GitHub Actions runs contract tests on Linux and installer fixture tests on
+Windows.
 
 ## Main documentation
 
 - `SDP-DOCUMENT-GUIDE.md`
-- `DraftStandardDocumentProcedure.md`
-- `TieredDesignAndImplementation.md`
 - `docs/How-SDP-Works.md`
 - `docs/Distribution-And-Upgrades.md`
-- `examples/README.md`
+- `docs/Release-And-Versioning.md`
+- `docs/Release-Lifecycle.md`
+- `docs/SDP-Analyzer-Compatibility.md`

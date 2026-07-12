@@ -1,11 +1,19 @@
 project:
-  name: TBD
-  status: planning
+  name: SDP Toolkit
+  status: active-development
+
+release:
+  previousVersion: "0.1.0"
+  activeReleaseId: REL-0.2.0
+  targetVersion: "0.2.0"
+  state: unreleased
 
 active:
   sprint: null
   refactor: null
   iteration: null
   slice: null
+  fix: null
+  revision: null
 
-# Replace template values with project-specific IDs.
+# Consuming projects replace these values with their actual current state.

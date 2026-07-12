@@ -1,15 +1,12 @@
 # Verification
 
-Store exact verification records here.
+Store exact verification records here. Each record identifies the Slice/Fix and
+release target, commands and environment, build/test/manual results, artifacts,
+failures, limitations and reviewer confirmation.
 
-A record should identify:
+Release verification also covers manifest/schema parsing, SemVer ordering, skill
+agreement, release-note immutability, traceability events, installer migration,
+idempotency, managed/project-owned boundaries and clean release state.
 
-- Slice and requirement IDs
-- commands and environment
-- build, typecheck and test results
-- rendered or manual verification
-- screenshots or artifacts where relevant
-- failures, limitations and residual risk
-- reviewer confirmation
-
-Never claim completion from an unverified summary.
+Never infer evidence or accept a summary as proof. Evidence must apply to the
+exact candidate commit.

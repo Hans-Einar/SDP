@@ -1,88 +1,91 @@
 # How SDP Works
 
-## 1. Source of truth
+## Source of truth
 
-The repository is authoritative. Chat history, agent memory and local reasoning
-are temporary. Decisions that matter must be written into repository documents.
+The repository is authoritative. Chat history and agent memory are temporary.
+Material decisions, evidence and state transitions belong in repository records.
 
-## 2. Document progression
-
-A normal project progresses through:
+## Document progression
 
 ```text
 Mandate -> Study -> Requirements -> Architecture
         -> Design Analysis -> Design -> Implementation
 ```
 
-The progression is not a waterfall. Documents remain living records, but later
-work must not silently contradict earlier decisions.
+Documents remain living records, but later work must not silently contradict
+approved earlier contracts.
 
-## 3. Horizontal design, vertical implementation
+## Horizontal design, vertical delivery
 
 Architecture and design describe horizontal layers and contracts. Delivery is
-organized as vertical Tiers, Sprints, Iterations and Slices that produce a small
-working capability across the required layers.
-
-## 4. Execution hierarchy
+organized as vertical Sprints/Refactors, Iterations and Slices that produce a
+small coherent capability across the required layers.
 
 ```text
 Project
+├── public release identity (SemVer)
 └── Sprint or Refactor
     └── Iteration
-        └── Slice
+        └── Slice or bounded Fix
 ```
 
-A Slice is the smallest committed unit of work. It should define goal, scope,
-invariants, non-goals, expected files, verification and completion signal.
+A revision is only a small correction inside the same planned Slice/Fix. It is
+not a route around planning.
 
-## 5. Agent roles
+## Roles
 
-### Master
+The Master coordinates active work and release target, delegates implementation,
+requests fresh verification/review, records only truthful events and stops at the
+work boundary. Workers implement one contract. Reviewers inspect the actual diff
+and evidence independently. Architects own long-term boundaries and
+compatibility.
 
-Identifies the active work, maintains traceability, writes or refines slice
-contracts, delegates implementation, requests independent review, verifies the
-result and stops at the slice boundary.
+Task skills add concrete release, versioning, auditing, verification,
+traceability and refactor procedures.
 
-### Worker
+## Versions and manifests
 
-Implements one bounded slice. It must not broaden scope or redesign architecture
-without returning the discovery to the Master.
+- Toolkit release facts: root `SDP.manifest.yaml`
+- Installed Toolkit facts: `SDP/Framework/installed-toolkit.manifest.yaml`
+- Project release/work state: `SDP/SDP-project.manifest.yaml`
+- Dynamic Git/build identity: generated JSON
 
-### Reviewer
+Released software and Toolkits use SemVer. Sprint/Iteration/Slice/Fix identities
+remain separately addressable. Unreleased builds must not present themselves as
+released.
 
-Uses a fresh context. It checks correctness, architecture, requirements,
-traceability and evidence rather than trusting the Worker summary.
+## Release notes and history
 
-### Architect
+All notable changes enter the editable `Unreleased` section. At release
+preparation, selected entries move into a dated version section. Released
+sections are immutable; corrections are explicit events, never silent edits.
 
-Studies long-term structure and updates Mandate, Study, Requirements,
-Architecture, Design and refactor planning. It does not implement product code.
+## Traceability
 
-## 6. Traceability
+`CurrentIndex.yaml` records actual current state. `Relations.yaml` connects stable
+IDs. `Ledger.ndjson` records append-only transitions, including release events.
+Publication events require real tag/commit/GitHub Release identities.
 
-Recommended files:
+## Verification and release gate
 
-- `Traceability/CurrentIndex.yaml`
-- `Traceability/Relations.yaml`
-- `Traceability/Ledger.ndjson`
+Completion requires evidence appropriate to the work. A release gate checks
+included work, verification, review findings, schemas, traceability, notes,
+version agreement, migration, clean state, tag uniqueness and immutable history.
+Missing evidence is failure, not an inference.
 
-`CurrentIndex.yaml` tells agents what is active. `Relations.yaml` connects stable
-IDs. `Ledger.ndjson` records append-only events.
+## Truthful two-phase publication
 
-## 7. Verification
+A release-preparation commit cannot claim a future GitHub Release or contain its
+own SHA. SDP therefore prepares and approves first, publishes only after explicit
+human authorization, then adds a small reconciliation commit recording the real
+tag and GitHub Release.
 
-Completion requires evidence appropriate to the project. Typical product-code
-checks include typecheck, tests, build and rendered or manual verification.
-Documentation work should still verify links, IDs, YAML/JSON parsing and file
-consistency.
+## Installation and local adaptation
 
-## 8. Stop discipline
+The installer refreshes clearly managed AGENTS/Framework/skill files while
+preserving project-owned documents. Missing manifests, notes and templates are
+added safely. Supported old installations migrate additively; unsupported schemas
+stop without mutation.
 
-Agents do not automatically continue into the next Slice. The Master integrates
-the result, records evidence, requests review and stops for acceptance.
-
-## 9. Local adaptation
-
-SDP defines a common operating model, not one rigid folder tree. Projects may
-extend it, but repository-local instructions must identify deviations and keep
-stable IDs and traceability intact.
+Projects may extend SDP, but local rules must preserve stable IDs, truthful
+traceability, review independence, evidence requirements and publication safety.

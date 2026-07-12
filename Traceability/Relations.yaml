@@ -2,9 +2,24 @@ requirements: {}
 designs: {}
 sprints: {}
 refactors: {}
+iterations: {}
 slices: {}
+fixes: {}
 reviews: {}
 verification: {}
+migrations: {}
+releases:
+  REL-0.2.0:
+    version: "0.2.0"
+    state: unreleased
+    releaseNotes: RELEASE-NOTES.md
+    manifest: SDP.manifest.yaml
+    releaseRecord: Releases/REL-0.2.0.yaml
+    verification: []
+    reviews: []
+    releaseCommit: null
+    gitTag: null
+    githubRelease: null
 
-# Map stable IDs to related requirement, design, implementation, review and
-# verification IDs. Replace this template with project-specific relations.
+# Map stable IDs only to records that actually exist. Publication identities stay
+# null until the corresponding Git/GitHub objects exist.

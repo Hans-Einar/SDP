@@ -1,15 +1,10 @@
 # Code Review
 
-Store independent review records here.
+Store fresh independent review records here. Reviews state scope, authoritative
+documents, findings by severity, exact locations, inspected verification and a
+disposition of approved, changes required or blocked.
 
-A review should state:
-
-- scope and authoritative documents
-- findings ordered by severity
-- source locations and evidence
-- impact and recommended direction
-- verification inspected or rerun
-- disposition: approved, changes required or blocked
-
-Reviewers should use a fresh context and should not rely only on Worker or
-Master summaries.
+Release reviews additionally verify separation of SemVer and work identity,
+immutable released history, coherent Unreleased flow, truthful two-phase
+publication, tag/commit/GitHub Release relationships, installer preservation,
+idempotency, skill/Toolkit agreement and Analyzer-readable schemas.

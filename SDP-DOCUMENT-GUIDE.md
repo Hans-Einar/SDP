@@ -1,43 +1,41 @@
 # SDP Document Guide
 
-The folders at this repository root show the recommended structure inside a
-consuming project's `SDP/` directory. They are reference templates, not active
-project records for this toolkit repository.
+The folders at this repository root demonstrate the recommended structure inside
+a consuming project's `SDP/` directory. They are reference templates; populated
+records in consuming projects remain project-owned.
 
 ## Lifecycle documents
 
 | Folder | Purpose |
 |---|---|
-| `01--Mandate` | Why the project exists, intended outcomes, scope and non-goals |
-| `02--Study` | Research, evidence, alternatives, assumptions and unresolved questions |
-| `03--Requirements` | Stable numbered functional and quality requirements |
-| `04--Architecture` | Major boundaries, responsibilities, dependencies and contracts |
-| `05--DesignAnalysis` | Horizontal layer analysis, contract mapping and Tier fan-out |
-| `06--Design` | Chosen detailed designs and interaction contracts |
-| `07--Implementation` | Ordered vertical delivery strategy and implementation plans |
+| `01--Mandate` | Purpose, outcomes, scope and non-goals |
+| `02--Study` | Evidence, alternatives, assumptions and unknowns |
+| `03--Requirements` | Stable functional, quality and constraint IDs |
+| `04--Architecture` | Boundaries, ownership, dependencies and contracts |
+| `05--DesignAnalysis` | Horizontal analysis and implementation fan-out |
+| `06--Design` | Chosen detailed designs and rationale |
+| `07--Implementation` | Ordered vertical delivery plan |
 
-## Operating documents
+## Operating and release documents
 
-- `Sprints/`: active delivery containers with iterations and slices
-- `Refactors/`: structured architecture/refactor programmes
-- `CodeReview/`: independent review records and findings
-- `Verification/`: build, test, rendered and manual evidence
-- `Traceability/`: `CurrentIndex.yaml`, `Relations.yaml` and append-only `Ledger.ndjson`
-- `Instructions/`: project-specific operating rules
+| Area | Purpose |
+|---|---|
+| `Sprints/` or `Refactors/` | Planned delivery container |
+| `Fixes/` | Strictly bounded smaller corrections |
+| `Releases/` | First-class `REL-X.Y.Z` records |
+| `CodeReview/` | Fresh independent review evidence |
+| `Verification/` | Exact checks and artifacts |
+| `Traceability/` | Current state, relations and append-only events |
+| `Instructions/` | Project-specific operating rules |
+| `SDP-project.manifest.yaml` | Project release and development coordinates |
+| `RELEASE-NOTES.md` | Unreleased and immutable released history |
+
+SemVer identifies public releases. Sprint/Refactor, Iteration, Slice/Fix and
+revision remain separate development coordinates.
 
 ## Installation ownership
 
-The installer copies templates only when the target file is missing. Existing
-project documents are never replaced. Toolkit-managed files are limited to
-`SDP/Framework/` and `.codex/skills/`; project documents remain project-owned.
-
-Use:
-
-```powershell
-C:\Users\hanse\GIT\SDP\Toolkit\scripts\Install-SDP.ps1 `
-  -ProjectRoot C:\path\to\Project `
-  -InitializeProjectStructure
-```
-
-Edit the installed templates into project-specific documents. Remove template
-instructions once the document becomes authoritative.
+The installer refreshes only clearly Toolkit-managed `AGENTS.md`, Framework and
+skill files. It creates project manifest, release notes and templates only when
+missing. Existing project records are never replaced, including when
+`-ForceManagedFiles` is used.
