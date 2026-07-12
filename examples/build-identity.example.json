@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "1.0",
+  "releaseVersion": "0.8.0",
+  "releaseState": "unreleased",
+  "sprintId": "Sprint-026",
+  "refactorId": null,
+  "iterationId": "SPI-002",
+  "sliceId": "SPS-003",
+  "fixId": null,
+  "revision": 1,
+  "commit": "abc1234abcdef",
+  "shortCommit": "abc1234",
+  "buildTimestamp": "2026-07-12T00:00:00Z",
+  "dirty": false,
+  "developmentId": "v0.8.0.dev.s026.i002.sl003.r001+sha.abc1234",
+  "displayVersion": "0.8.0-dev · Sprint-026 / SPI-002 / SPS-003 · r1 · abc1234"
+}

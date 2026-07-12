@@ -2,60 +2,64 @@
 
 ## Goals
 
-- reuse the SDP method across existing projects
-- avoid nested Git repositories
-- never overwrite project-specific documents accidentally
-- permit controlled updates to shared instructions and skills
+- reuse SDP across existing projects without nested Git repositories
+- preserve project-owned method and release records
+- refresh versioned managed contracts predictably
+- detect and migrate supported older installations additively
+- expose exact installed versions for audit and SDP-Analyzer
 
 ## Ownership classes
 
 ### Toolkit-managed
 
-Files copied from this repository and safe to replace when explicitly requested:
-
+- root `AGENTS.md`
 - `.codex/skills/sdp-*/SKILL.md`
-- `SDP/Framework/*`
+- `SDP/Framework/*`, including installed Toolkit facts and templates
+
+The installer may replace these during a Toolkit upgrade. Changed managed files
+are backed up first. Same-version local differences are preserved unless
+`-ForceManagedFiles` is supplied.
 
 ### Project-owned
 
-Never overwritten by the default installer:
-
-- `AGENTS.md`
+- `AGENTS-project.md`
 - `SDP/AGENT-REMINDERS.md`
-- Mandate, Study, Requirements, Architecture and Design
-- Sprints, Refactors, CodeReview, Verification and Traceability
-- project-specific Instructions
+- `SDP/SDP-project.manifest.yaml`
+- `SDP/RELEASE-NOTES.md`
+- Mandate through Implementation, Sprints, Refactors and Fixes
+- Releases, CodeReview, Verification, Traceability and Instructions
 
-Template versions may be installed only when the destination does not exist.
+These files are created only when missing and are never overwritten by normal or
+forced installation.
 
-## Recommended model
+## Installed identity
 
-Keep one normal clone of the upstream toolkit outside all project repositories.
-Run the installer against each project. The installed project remains a single
-Git repository and records the copied files in its own history.
+`SDP/Framework/installed-toolkit.manifest.yaml` records installed Toolkit,
+Framework, AGENTS contract, installer and skill versions, capabilities,
+installation timestamp and source commit when available. Dynamic Git/build facts
+are generated separately and never maintained by hand.
 
-## Alternatives
+## Migration transaction
 
-### Git submodule
+1. Run with `-Preview`.
+2. Detect the existing installed-manifest schema before mutation.
+3. Treat a missing manifest as the supported pre-versioning baseline.
+4. Stop on malformed or unsupported schemas.
+5. Preserve or migrate old project AGENTS instructions.
+6. Back up and refresh managed files when upgrading.
+7. Create missing project manifest, release notes and traceability contracts.
+8. Report proposed, applied, preserved and unchanged files.
+9. Repeating the same install produces no content changes.
 
-A submodule intentionally embeds another Git repository and pins a commit. This
-is useful when exact independent versioning is desired, but adds operational
-complexity and does not merge naturally with an existing project-owned `SDP/`
-tree.
+Backups default to `SDP/.sdp-backups/<UTC timestamp>/`.
 
-### Git subtree
+## Repository layout
 
-A subtree imports another repository into a subdirectory without a nested
-`.git`. It supports later pulls, but is awkward when shared files and
-project-specific files must coexist and evolve independently.
+Keep one upstream clone outside consuming repositories. Do not clone it into an
+existing project `SDP/` directory. A sibling such as `SDP-Analyzer` is allowed;
+a project physically inside the Toolkit repository is rejected using complete
+path-segment comparison.
 
-### `git archive` or release ZIP
-
-Good for a clean one-time copy without `.git`, but provides no automatic update
-tracking.
-
-## Version marker
-
-The installer may write `SDP/Framework/VERSION` so projects can record which
-upstream toolkit version was installed. Project-specific SDP documents should
-remain authoritative even when the framework is upgraded.
+Submodules, subtrees and release ZIPs remain possible distribution alternatives,
+but the installer is canonical because shared managed files and project-owned
+records must coexist safely.

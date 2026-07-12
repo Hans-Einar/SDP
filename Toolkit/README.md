@@ -1,21 +1,27 @@
 # SDP Toolkit
 
-This directory contains reusable, toolkit-managed assets:
+Toolkit-Version: 0.2.0 (unreleased)
 
-- `skills/` - reusable Codex skills
-- `scripts/` - installation and update tooling
-- `payload/` - files copied into consuming projects
+This directory contains reusable, Toolkit-managed assets:
 
-The numbered folders and lifecycle directories at the repository root are the
-reference project structure. They are templates and documentation, not the
-active SDP records for this toolkit repository.
+- `skills/` — versioned Codex skills
+- `schemas/` — manifest, release-event and build-identity contracts
+- `scripts/` — safe installation, migration, build metadata and validation
+- `tests/` — deterministic Python and PowerShell fixtures
+- `payload/` — managed files and additive project templates
 
-Install into an existing project with:
+`SDP.manifest.yaml` is the authoritative release manifest. Installed projects
+receive generated static facts in `SDP/Framework/installed-toolkit.manifest.yaml`
+and a project-owned `SDP/SDP-project.manifest.yaml` when missing.
+
+Preview installation:
 
 ```powershell
 C:\Users\hanse\GIT\SDP\Toolkit\scripts\Install-SDP.ps1 `
-  -ProjectRoot C:\Users\hanse\GIT\GrassPhenology
+  -ProjectRoot C:\path\to\Project `
+  -Preview
 ```
 
-The target project may already contain a non-empty `SDP/` directory. Existing
-project-owned documents are preserved.
+The target may already contain a non-empty `SDP/` directory. Project-owned
+content is preserved. Managed files are backed up before replacement. Unsupported
+manifest schemas stop safely.

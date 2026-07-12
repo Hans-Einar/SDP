@@ -1,114 +1,113 @@
 # Draft Standard Document Procedure
 
 Status: working draft  
-Audience: agents first, humans second
+Audience: agents first, humans second  
+Method-Target-Version: 0.2.0 (unreleased)
 
 ## Purpose
 
-The Standard Document Procedure, or SDP, is a repository-local documentation
-and execution system. Its purpose is to reduce drift between discussion,
-requirements, design intent, implementation, verification, and handoff.
-
-Every project can adapt the SDP locally, but the common rule is that repository
-documents are the source of truth. Chat memory is not enough.
+The Standard Document Procedure (SDP) is a repository-local documentation,
+execution and release system. It reduces drift between discussion, requirements,
+design intent, implementation, verification, review, release and handoff.
+Repository documents are the source of truth; chat memory is not enough.
 
 ## Baseline Folder Structure
 
-Recommended SDP folder structure:
+Recommended project-local areas:
 
-- `01--Mandate`
-- `02--Study`
-- `03--Requirements`
-- `04--Architecture`
-- `05--DesignAnalysis`
-- `06--Design`
-- `07--Implementation`
-- `Traceability`
-- `Verification`
-- `Sprints`
-- `CodeReview`
-- `Refactor`
-- `Instructions`
+- `01--Mandate` through `07--Implementation`
+- `Sprints`, `Refactors` and bounded `Fixes`
+- `Releases`, `CodeReview`, `Verification`, `Traceability`, `Instructions`
+- `SDP-project.manifest.yaml` and `RELEASE-NOTES.md`
 
-The numbered folders move from intent to implementation readiness:
-
-- mandate explains why the project exists
-- study captures investigation and tradeoffs
-- requirements define numbered, stable requirements
-- architecture defines major system boundaries
-- design-analysis maps horizontal layers, contracts, and Tier fan-out
-- design records chosen detailed designs
-- implementation defines ordered delivery plans and slices
+The numbered documents progress from intent to implementation readiness.
+Architecture/design work is horizontal; implementation is delivered in coherent
+vertical Slices.
 
 ## Traceability Layer
 
-The traceability layer should normally contain:
+Traceability normally contains:
 
-- `CurrentIndex.yaml`
-- `Relations.yaml`
-- `Ledger.ndjson`
+- `CurrentIndex.yaml` — actual current release/work coordinates
+- `Relations.yaml` — stable links among requirements, design, work, review,
+  verification, migration and releases
+- `Ledger.ndjson` — append-only state transitions
 
-The current index names the active sprint, iteration, slice, and stable IDs.
-Relations map requirements, design, slices, review, and verification.
-The ledger is append-only history. It should parse as NDJSON.
+Ledger corrections are new events. A tag or GitHub Release event is prohibited
+until that object really exists.
 
-## Sprints And Slices
+## Release And Development Identity
 
-There should normally be one active sprint and one active iteration.
+Released software and SDP Toolkits use Semantic Versioning:
+`MAJOR.MINOR.PATCH`. Compatibility impact selects the increment.
 
-A slice contract should state:
+The following are separate development coordinates and never overload the SemVer
+core:
 
-- goal
-- why now
-- files or modules expected to change
-- invariants
-- non-goals
-- traceability IDs
-- verification evidence
-- completion signal
+- active Sprint or Refactor
+- Iteration
+- Slice or bounded Fix
+- optional revision
+- Git commit and generated build state
 
-Product-code implementation should be delegated to worker agents. Review
-should be performed by separate reviewer agents. The Master agent coordinates
-documents, traceability, verification, and handoff.
+Unreleased UI/build identities must be visibly marked as development builds.
+Static installed facts, editable project release state and generated Git/build
+facts are separate machine-readable records.
+
+## Sprints, Slices And Fixes
+
+There should normally be one active Sprint or Refactor, one Iteration and one
+Slice. A Slice contract states goal, why now, expected files, invariants,
+non-goals, traceability, verification and completion signal.
+
+A Fix record is allowed only when a normal Iteration/Slice is clearly
+proportionally excessive. It still requires bounded scope, release relationship,
+verification, review and ledger entries. Capability, architecture or public
+contract changes require normal planned work.
+
+## Roles
+
+- Master coordinates contracts, versions, traceability, delegation, evidence and
+  stopping at the work boundary.
+- Worker implements one assigned Slice or Fix.
+- Reviewer uses fresh context and actual diff/evidence.
+- Architect owns long-horizon structure and compatibility.
+- Release/versioning/auditor/verifier task skills handle their concrete workflows.
+
+No role may invent evidence or publication state.
 
 ## Design And Implementation Rule
 
-Design horizontally. Implement vertically.
+> Design horizontally. Implement vertically.
 
-Horizontal design separates concerns by architectural layer:
+Horizontal documents define boundaries, ownership and contracts. Vertical work
+cuts through the necessary layers to produce one coherent verified capability.
 
-- frontend shell
-- backend API
-- identity/auth
-- persistence
-- artifact service
-- workers
-- visualization
-- domain analysis
-- external integrations
-- verification
+## Verification And Review
 
-Vertical implementation delivers Tiers. A Tier cuts through the layers needed
-to produce one coherent capability.
+A Slice/Fix or release candidate is not complete until records identify what
+changed, linked IDs, exact evidence, independent review disposition, append-only
+events and residual limitations.
 
-## Verification
+Documentation work still validates links, schemas, YAML/JSON/NDJSON and
+cross-file agreement. Product work uses real build/test/manual evidence. Release
+work additionally validates version ordering, notes, manifests, immutable
+history, migration, clean state and publication preconditions.
 
-A slice is not done until the repository records:
+## Release Transaction
 
-- what changed
-- which IDs it touched
-- review outcome or why review was not required
-- verification evidence
-- ledger entries
-- handoff state when useful
+Release preparation and publication are two phases:
 
-Documentation-only slices may use file existence checks, cross-reference
-checks, YAML/JSON parsing, and ledger validation.
+1. prepare, verify, review and approve a clean release-preparation commit without
+   claiming a future tag or GitHub Release
+2. after explicit human authorization, create the annotated tag and GitHub
+   Release, then commit a truthful reconciliation record containing their real
+   identities
 
-Product-code slices should use real build/test/manual evidence appropriate to
-the change.
+Agents stop before publication unless explicitly authorized.
 
 ## Living Document Rule
 
-When a repeated failure mode appears, add a concrete rule here or to the
-repository-local SDP instructions.
+When a repeated failure mode appears, add a concrete reusable rule here, in the
+Framework, or in a versioned skill. Project-specific rules belong in project
+records and `AGENTS-project.md`.

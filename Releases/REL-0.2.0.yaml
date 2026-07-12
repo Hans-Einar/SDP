@@ -1,0 +1,18 @@
+schemaVersion: "1.0"
+releaseId: REL-0.2.0
+version: "0.2.0"
+state: unreleased
+releaseNotesPath: RELEASE-NOTES.md
+includedCapabilities:
+  - sdp.manifest.v1
+  - sdp.release.v1
+  - sdp.release-notes.v1
+  - sdp.skill-metadata.v1
+  - sdp.traceability.release-events.v1
+  - sdp.versioning.v1
+verificationRecords: []
+reviewRecords: []
+migrationRecord: docs/Installer-Migration.md
+releasePreparationCommit: null
+gitTag: null
+githubReleaseUrl: null

@@ -1,0 +1,2 @@
+{"schemaVersion":"1.0","eventId":"EVT-REL-0001","eventType":"release-planned","occurredAt":"2026-01-01T00:00:00Z","releaseId":"REL-0.2.0","actor":"example","commit":null,"payload":{"targetVersion":"0.2.0"}}
+{"schemaVersion":"1.0","eventId":"EVT-REL-0002","eventType":"release-version-selected","occurredAt":"2026-01-01T00:01:00Z","releaseId":"REL-0.2.0","actor":"example","commit":"abc1234","payload":{"previousVersion":"0.1.0","targetVersion":"0.2.0","increment":"minor"}}
