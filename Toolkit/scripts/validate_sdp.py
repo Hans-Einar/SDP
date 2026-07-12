@@ -41,6 +41,7 @@ class SemVer:
                 if not identifier or (identifier.isdigit() and len(identifier) > 1 and identifier.startswith("0")):
                     raise ValueError(f"Invalid SemVer prerelease: {value}")
                 identifiers.append((0, int(identifier)) if identifier.isdigit() else (1, identifier))
+        # A final release has higher precedence than the same core prerelease.
         return cls(
             int(match.group(1)),
             int(match.group(2)),
@@ -171,12 +172,35 @@ def validate_repository(repo: Path, base_ref: str | None = None) -> list[str]:
             errors.append(f"{path}: skillId must be {skill_id}")
         if metadata.get("skillVersion") != expected_version:
             errors.append(f"{path}: skillVersion differs from SDP.manifest.yaml")
-        if metadata.get("minimumToolkitVersion") != toolkit.get("version"):
-            errors.append(f"{path}: minimumToolkitVersion differs from Toolkit version")
+        minimum_toolkit = metadata.get("minimumToolkitVersion")
+        try:
+            if SemVer.parse(toolkit.get("version", "")) < SemVer.parse(str(minimum_toolkit)):
+                errors.append(f"{path}: minimumToolkitVersion is newer than this Toolkit")
+        except ValueError as exc:
+            errors.append(f"{path}: {exc}")
         if not isinstance(metadata.get("capabilities"), list) or not metadata["capabilities"]:
             errors.append(f"{path}: capabilities must be a non-empty list")
         if not metadata.get("compatibilityNotes"):
             errors.append(f"{path}: compatibilityNotes is required")
+
+    installer_text = (repo / "Toolkit/scripts/Install-SDP.ps1").read_text(encoding="utf-8")
+    installer_constants = dict(re.findall(r"(?m)^\$(ToolkitVersion|InstallerVersion|FrameworkVersion|AgentsContractVersion) = '([^']+)'$", installer_text))
+    expected_constants = {
+        "ToolkitVersion": toolkit.get("version"),
+        "FrameworkVersion": manifest.get("framework", {}).get("version"),
+        "AgentsContractVersion": manifest.get("agentsContract", {}).get("version"),
+    }
+    for name, expected in expected_constants.items():
+        if installer_constants.get(name) != expected:
+            errors.append(f"Installer {name} differs from SDP.manifest.yaml")
+    try:
+        if SemVer.parse(installer_constants.get("InstallerVersion", "")) < SemVer.parse(toolkit.get("minimumInstallerVersion", "")):
+            errors.append("InstallerVersion is lower than minimumInstallerVersion")
+    except ValueError as exc:
+        errors.append(f"installer version: {exc}")
+    installed_skill_versions = dict(re.findall(r'(?m)^  (sdp-[a-z0-9-]+): "([^"]+)"$', installer_text))
+    if installed_skill_versions != expected_skills:
+        errors.append("Installer generated skill versions differ from SDP.manifest.yaml")
 
     notes_path = repo / manifest.get("releaseNotesPath", "RELEASE-NOTES.md")
     notes = notes_path.read_text(encoding="utf-8")
