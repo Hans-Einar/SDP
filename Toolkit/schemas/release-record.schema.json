@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sdp.local/schemas/release-record.schema.json",
+  "title": "SDP Release Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion", "releaseId", "version", "state", "releaseNotesPath",
+    "includedCapabilities", "verificationRecords", "reviewRecords",
+    "migrationRecord", "releasePreparationCommit", "gitTag", "githubReleaseUrl"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "releaseId": { "type": "string", "pattern": "^REL-[0-9]+\\.[0-9]+\\.[0-9]+(?:-[0-9A-Za-z.-]+)?$" },
+    "version": { "$ref": "#/$defs/semver" },
+    "state": { "enum": ["unreleased", "prerelease", "released", "yanked"] },
+    "releaseNotesPath": { "type": "string", "minLength": 1 },
+    "includedCapabilities": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "verificationRecords": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "reviewRecords": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "migrationRecord": { "type": ["string", "null"] },
+    "releasePreparationCommit": { "type": ["string", "null"] },
+    "gitTag": { "type": ["string", "null"] },
+    "githubReleaseUrl": { "type": ["string", "null"], "format": "uri" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "state": { "const": "released" } }, "required": ["state"] },
+      "then": {
+        "properties": {
+          "releasePreparationCommit": { "type": "string", "minLength": 7 },
+          "gitTag": { "type": "string", "pattern": "^v[0-9]+\\.[0-9]+\\.[0-9]+" },
+          "githubReleaseUrl": { "type": "string", "format": "uri" }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "semver": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"
+    }
+  }
+}

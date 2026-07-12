@@ -1,9 +1,9 @@
 schemaVersion: "1.0"
-releaseId: REL-X.Y.Z
-version: X.Y.Z
+releaseId: REL-0.0.0
+version: "0.0.0"
 state: unreleased
 releaseNotesPath: SDP/RELEASE-NOTES.md
-includedWork: []
+includedCapabilities: []
 verificationRecords: []
 reviewRecords: []
 migrationRecord: null

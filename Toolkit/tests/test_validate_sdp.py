@@ -75,6 +75,20 @@ class BuildIdentityTests(unittest.TestCase):
             self.assertIn("0.8.0-dev", identity["displayVersion"])
             self.assertIn("s026.i002.sl003.r001", identity["developmentId"])
 
+    def test_yanked_build_is_not_presented_as_development(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "SDP").mkdir()
+            manifest = {
+                "release": {"currentVersion": "1.2.3", "state": "yanked"},
+                "development": {},
+            }
+            (root / "SDP/SDP-project.manifest.yaml").write_text(yaml.safe_dump(manifest), encoding="utf-8")
+            identity = BUILD.generate_identity(root, "2026-01-01T00:00:00Z")
+            self.assertIn("1.2.3-yanked", identity["displayVersion"])
+            self.assertIn(".yanked", identity["developmentId"])
+            self.assertNotIn("-dev", identity["displayVersion"])
+
     def test_rejects_simultaneous_sprint_and_refactor(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
