@@ -91,7 +91,7 @@ try {
     Assert-Equal 'OLD LOCAL AGENTS' (Get-Content -Raw -LiteralPath (Join-Path $legacy 'AGENTS-project.md')) 'old AGENTS not migrated'
     Assert-Equal 'LEGACY REQUIREMENTS' (Get-Content -Raw -LiteralPath (Join-Path $legacy 'SDP\03--Requirements\requirements.md')) 'legacy document overwritten'
 
-    # Unsupported schemas stop before mutation.
+    # Unsupported installed manifest schemas stop before mutation.
     $unsupported = New-FixtureProject 'unsupported'
     New-Item -ItemType Directory -Force -Path (Join-Path $unsupported 'SDP\Framework') | Out-Null
     Set-Content -LiteralPath (Join-Path $unsupported 'marker.txt') -Value 'UNCHANGED' -NoNewline
@@ -101,6 +101,15 @@ try {
     Assert-True $failed 'unsupported schema did not fail'
     Assert-Equal 'UNCHANGED' (Get-Content -Raw -LiteralPath (Join-Path $unsupported 'marker.txt')) 'unsupported fixture mutated'
     Assert-True (-not (Test-Path (Join-Path $unsupported 'AGENTS.md'))) 'unsupported install wrote AGENTS.md'
+
+    # Unsupported project manifest schemas also stop before mutation.
+    $unsupportedProject = New-FixtureProject 'unsupported-project-manifest'
+    New-Item -ItemType Directory -Force -Path (Join-Path $unsupportedProject 'SDP') | Out-Null
+    Set-Content -LiteralPath (Join-Path $unsupportedProject 'SDP\SDP-project.manifest.yaml') -Value "schemaVersion: `"9.0`"`n" -NoNewline
+    $projectSchemaFailed = $false
+    try { & $Installer -ProjectRoot $unsupportedProject | Out-Host } catch { $projectSchemaFailed = $true }
+    Assert-True $projectSchemaFailed 'unsupported project manifest schema did not fail'
+    Assert-True (-not (Test-Path (Join-Path $unsupportedProject 'AGENTS.md'))) 'unsupported project manifest installation mutated project'
 
     # An older installer must never downgrade a newer installed Toolkit.
     $newer = New-FixtureProject 'newer-toolkit'
