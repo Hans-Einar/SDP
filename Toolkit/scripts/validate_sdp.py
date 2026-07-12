@@ -41,7 +41,6 @@ class SemVer:
                 if not identifier or (identifier.isdigit() and len(identifier) > 1 and identifier.startswith("0")):
                     raise ValueError(f"Invalid SemVer prerelease: {value}")
                 identifiers.append((0, int(identifier)) if identifier.isdigit() else (1, identifier))
-        # A final release has higher precedence than the same core prerelease.
         return cls(
             int(match.group(1)),
             int(match.group(2)),
@@ -199,6 +198,16 @@ def validate_repository(repo: Path, base_ref: str | None = None) -> list[str]:
     build_schema = load_json(repo / "Toolkit/schemas/build-identity.schema.json")
     build_example = load_json(repo / "examples/build-identity.example.json")
     errors += validate_json(build_example, build_schema, "build identity example")
+
+    release_record_schema = load_json(repo / "Toolkit/schemas/release-record.schema.json")
+    release_template = load_yaml(repo / "Toolkit/payload/sdp-root/Framework/templates/ReleaseRecord.yaml")
+    release_record = load_yaml(repo / "Releases/REL-0.2.0.yaml")
+    errors += validate_json(release_template, release_record_schema, "release record template")
+    errors += validate_json(release_record, release_record_schema, "REL-0.2.0 release record")
+
+    fix_record_schema = load_json(repo / "Toolkit/schemas/fix-record.schema.json")
+    fix_template = load_yaml(repo / "Toolkit/payload/sdp-root/Framework/templates/FixRecord.yaml")
+    errors += validate_json(fix_template, fix_record_schema, "Fix record template")
 
     event_schema = load_json(repo / "Toolkit/schemas/release-event.schema.json")
     event_path = repo / "examples/release-events.ndjson.example"
