@@ -50,11 +50,14 @@ def generate_identity(
         raise ValueError("sprintId and refactorId cannot both be active")
 
     current_version = release.get("currentVersion")
-    target_version = release.get("nextTargetVersion") or current_version
+    release_state = release.get("state", "unreleased")
+    if release_state in {"released", "yanked"}:
+        target_version = current_version
+    else:
+        target_version = release.get("nextTargetVersion") or current_version
     if not target_version:
         raise ValueError("release.currentVersion or nextTargetVersion is required")
 
-    release_state = release.get("state", "unreleased")
     allowed_states = {"unreleased", "prerelease", "released", "yanked"}
     if release_state not in allowed_states:
         raise ValueError(f"Unsupported release state: {release_state}")
@@ -77,7 +80,6 @@ def generate_identity(
     ]
     revision = development.get("revision")
 
-    released = release_state == "released"
     if release_state == "released":
         version_label = str(target_version)
     elif release_state == "yanked":
