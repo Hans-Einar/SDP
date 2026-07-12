@@ -96,6 +96,35 @@ function Get-YamlScalar {
     return $match.Groups[1].Value.Trim()
 }
 
+function ConvertTo-SemVerCore {
+    param([string]$Version)
+
+    $match = [regex]::Match(
+        $Version,
+        '^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$'
+    )
+    if (-not $match.Success) {
+        throw "Invalid installed Toolkit SemVer: $Version"
+    }
+    return [pscustomobject]@{
+        Major = [int64]$match.Groups[1].Value
+        Minor = [int64]$match.Groups[2].Value
+        Patch = [int64]$match.Groups[3].Value
+    }
+}
+
+function Compare-SemVerCore {
+    param([string]$Left, [string]$Right)
+
+    $leftVersion = ConvertTo-SemVerCore $Left
+    $rightVersion = ConvertTo-SemVerCore $Right
+    foreach ($field in @('Major', 'Minor', 'Patch')) {
+        if ($leftVersion.$field -lt $rightVersion.$field) { return -1 }
+        if ($leftVersion.$field -gt $rightVersion.$field) { return 1 }
+    }
+    return 0
+}
+
 function Get-RelativeProjectPath {
     param([string]$Path)
 
@@ -208,6 +237,13 @@ if (Test-Path -LiteralPath $InstalledManifestPath -PathType Leaf) {
     if ($SupportedInstalledManifestSchemas -notcontains $InstalledSchemaVersion) {
         Write-Warning "Unsupported installed manifest schema '$InstalledSchemaVersion'."
         throw 'Refusing to modify an unsupported SDP installation.'
+    }
+    if ([string]::IsNullOrWhiteSpace($InstalledToolkitVersion)) {
+        throw 'Installed manifest does not contain toolkitVersion.'
+    }
+    if ((Compare-SemVerCore $InstalledToolkitVersion $ToolkitVersion) -gt 0) {
+        Write-Warning "Installed Toolkit $InstalledToolkitVersion is newer than installer $ToolkitVersion."
+        throw 'Refusing to downgrade a newer SDP Toolkit installation.'
     }
 } else {
     Write-SdpAction 'PROPOSED' 'Migrate supported pre-versioning installation to manifest schema 1.0'
@@ -341,6 +377,7 @@ foreach ($traceFile in @('README.md', 'CurrentIndex.yaml', 'Relations.yaml')) {
         Install-SourceFile $source (Join-Path $SdpRoot "Traceability\$traceFile") 'ProjectOwned' $false
     }
 }
+Install-TextFile '' (Join-Path $SdpRoot 'Traceability\Ledger.ndjson') 'ProjectOwned' $false
 
 if ($InitializeProjectStructure) {
     $templateFolders = @(
