@@ -65,14 +65,37 @@ try {
     $projectNotes = Join-Path $empty 'SDP\RELEASE-NOTES.md'
     $projectManifest = Join-Path $empty 'SDP\SDP-project.manifest.yaml'
     $projectAgents = Join-Path $empty 'AGENTS-project.md'
+    $customManifest = @"
+schemaVersion: "1.0"
+project:
+  name: Custom preserved fixture
+  capabilities: []
+installed:
+  manifestPath: Framework/installed-toolkit.manifest.yaml
+release:
+  currentVersion: "0.0.0"
+  nextTargetVersion: null
+  state: unreleased
+  latestTag: null
+  latestCommit: null
+development:
+  sprintId: null
+  refactorId: null
+  iterationId: null
+  sliceId: null
+  fixId: null
+  revision: null
+migration:
+  pendingWarnings: []
+"@
     Set-Content -LiteralPath $projectNotes -Value 'CUSTOM NOTES' -NoNewline
-    Set-Content -LiteralPath $projectManifest -Value 'CUSTOM MANIFEST' -NoNewline
+    Set-Content -LiteralPath $projectManifest -Value $customManifest -NoNewline
     Set-Content -LiteralPath $projectAgents -Value 'CUSTOM AGENT RULES' -NoNewline
     $managedSkill = Join-Path $empty '.codex\skills\sdp-release\SKILL.md'
     Set-Content -LiteralPath $managedSkill -Value 'LOCAL MANAGED EDIT' -NoNewline
     & $Installer -ProjectRoot $empty | Out-Host
     Assert-Equal 'CUSTOM NOTES' (Get-Content -Raw -LiteralPath $projectNotes) 'release notes overwritten'
-    Assert-Equal 'CUSTOM MANIFEST' (Get-Content -Raw -LiteralPath $projectManifest) 'project manifest overwritten'
+    Assert-Equal $customManifest (Get-Content -Raw -LiteralPath $projectManifest) 'project manifest overwritten'
     Assert-Equal 'CUSTOM AGENT RULES' (Get-Content -Raw -LiteralPath $projectAgents) 'AGENTS-project overwritten'
     Assert-Equal 'LOCAL MANAGED EDIT' (Get-Content -Raw -LiteralPath $managedSkill) 'managed edit changed without Force'
 
@@ -123,7 +146,7 @@ try {
     # A sibling named SDP-Analyzer is valid; a child of the Toolkit repo is not.
     $sibling = Join-Path (Split-Path -Parent $RepositoryRoot) ("SDP-Analyzer-fixture-" + [guid]::NewGuid().ToString('N'))
     try {
-        New-Item -ItemType Directory -Force -Path $sibling | Out-Null
+        New-Item -ItemType Directory -Force -Path $sibling | Out-Host
         & $Installer -ProjectRoot $sibling -Preview | Out-Host
     } finally {
         Remove-Item -LiteralPath $sibling -Recurse -Force -ErrorAction SilentlyContinue
