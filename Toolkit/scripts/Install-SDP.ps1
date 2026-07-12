@@ -20,6 +20,7 @@ $InstallerVersion = '0.2.0'
 $FrameworkVersion = '1.0.0'
 $AgentsContractVersion = '1.0.0'
 $SupportedInstalledManifestSchemas = @('1.0')
+$SupportedProjectManifestSchemas = @('1.0')
 $RunStamp = (Get-Date).ToUniversalTime().ToString('yyyyMMdd-HHmmssZ')
 
 $ToolkitRoot = Split-Path -Parent $PSScriptRoot
@@ -28,6 +29,7 @@ $ProjectRoot = [System.IO.Path]::GetFullPath((Resolve-Path $ProjectRoot).Path)
 $SdpRoot = Join-Path $ProjectRoot 'SDP'
 $SkillsTarget = Join-Path $ProjectRoot '.codex\skills'
 $InstalledManifestPath = Join-Path $SdpRoot 'Framework\installed-toolkit.manifest.yaml'
+$ProjectManifestPath = Join-Path $SdpRoot 'SDP-project.manifest.yaml'
 
 if ([string]::IsNullOrWhiteSpace($BackupRoot)) {
     $BackupRoot = Join-Path $SdpRoot ".sdp-backups\$RunStamp"
@@ -36,8 +38,6 @@ if ([string]::IsNullOrWhiteSpace($BackupRoot)) {
 }
 $BackupRoot = [System.IO.Path]::GetFullPath($BackupRoot)
 
-# Compare complete path segments. A sibling such as SDP-Analyzer must not be
-# rejected merely because its raw path starts with the same characters as SDP.
 $repositoryTrimmed = $RepositoryRoot.TrimEnd(
     [System.IO.Path]::DirectorySeparatorChar,
     [System.IO.Path]::AltDirectorySeparatorChar
@@ -78,10 +78,7 @@ function Write-SdpAction {
 }
 
 function Get-YamlScalar {
-    param(
-        [string]$Content,
-        [string]$Name
-    )
+    param([string]$Content, [string]$Name)
 
     $escaped = [regex]::Escape($Name)
     $pattern = '(?m)^\s*{0}\s*:\s*[''"]?([^''"#\r\n]+)' -f $escaped
@@ -90,9 +87,7 @@ function Get-YamlScalar {
         $pattern,
         [System.Text.RegularExpressions.RegexOptions]::CultureInvariant
     )
-    if (-not $match.Success) {
-        return $null
-    }
+    if (-not $match.Success) { return $null }
     return $match.Groups[1].Value.Trim()
 }
 
@@ -138,17 +133,13 @@ function Get-RelativeProjectPath {
 function Backup-ExistingFile {
     param([string]$Path)
 
-    if (-not (Test-Path -LiteralPath $Path -PathType Leaf)) {
-        return
-    }
-
+    if (-not (Test-Path -LiteralPath $Path -PathType Leaf)) { return }
     $relative = Get-RelativeProjectPath $Path
     $destination = Join-Path $BackupRoot $relative
     if ($Preview) {
         Write-SdpAction 'PROPOSED' "Back up $relative to $destination"
         return
     }
-
     $parent = Split-Path -Parent $destination
     New-Item -ItemType Directory -Force -Path $parent | Out-Null
     Copy-Item -LiteralPath $Path -Destination $destination -Force
@@ -183,25 +174,19 @@ function Install-TextFile {
         Write-SdpAction 'UNCHANGED' $relative
         return
     }
-
     if ($Ownership -eq 'ProjectOwned') {
         Write-SdpAction 'PRESERVED' "$relative (project-owned)"
         return
     }
-
     if (-not $RefreshManaged) {
         Write-SdpAction 'PRESERVED' "$relative (managed file differs; use -ForceManagedFiles to restore it)"
         return
     }
-
-    if (-not $SkipBackup) {
-        Backup-ExistingFile $Destination
-    }
+    if (-not $SkipBackup) { Backup-ExistingFile $Destination }
     if ($Preview) {
         Write-SdpAction 'PROPOSED' "Replace managed file $relative"
         return
     }
-
     [System.IO.File]::WriteAllText($Destination, $Content, [System.Text.UTF8Encoding]::new($false))
     Write-SdpAction 'APPLIED' "Replaced managed file $relative"
 }
@@ -220,7 +205,20 @@ function Install-SourceFile {
     Install-TextFile $content $Destination $Ownership $RefreshManaged $SkipBackup
 }
 
-# Detect compatibility before any mutation.
+# Detect project and installed Toolkit compatibility before any mutation.
+if (Test-Path -LiteralPath $ProjectManifestPath -PathType Leaf) {
+    $projectManifestContent = [System.IO.File]::ReadAllText($ProjectManifestPath)
+    $projectSchemaVersion = Get-YamlScalar $projectManifestContent 'schemaVersion'
+    if ([string]::IsNullOrWhiteSpace($projectSchemaVersion)) {
+        Write-Warning "Project manifest is malformed: $ProjectManifestPath"
+        throw 'Refusing to modify a project with an unreadable project manifest.'
+    }
+    if ($SupportedProjectManifestSchemas -notcontains $projectSchemaVersion) {
+        Write-Warning "Unsupported project manifest schema '$projectSchemaVersion'."
+        throw 'Refusing to modify a project with an unsupported manifest schema.'
+    }
+}
+
 $InstalledSchemaVersion = $null
 $InstalledToolkitVersion = $null
 $PreviousInstalledAt = $null
@@ -253,8 +251,6 @@ $IsUpgrade = [string]::IsNullOrWhiteSpace($InstalledToolkitVersion) -or
     ($InstalledToolkitVersion -ne $ToolkitVersion)
 $RefreshManaged = $IsUpgrade -or $ForceManagedFiles
 
-# AGENTS.md is always canonical. Preserve pre-existing project instructions before
-# replacing it, without ever overwriting AGENTS-project.md.
 $agentsSource = Join-Path $ToolkitRoot 'payload\project-root\AGENTS.md.template'
 $agentsDestination = Join-Path $ProjectRoot 'AGENTS.md'
 $projectInstructions = Join-Path $ProjectRoot 'AGENTS-project.md'
@@ -288,15 +284,12 @@ Install-SourceFile `
     $projectInstructions `
     'ProjectOwned' `
     $false
-
 Install-SourceFile `
     (Join-Path $ToolkitRoot 'payload\sdp-root\AGENT-REMINDERS.md.template') `
     (Join-Path $SdpRoot 'AGENT-REMINDERS.md') `
     'ProjectOwned' `
     $false
 
-# Framework and skills are clearly Toolkit-managed. They refresh automatically on
-# a version upgrade; same-version local differences require -ForceManagedFiles.
 $frameworkSource = Join-Path $ToolkitRoot 'payload\sdp-root\Framework'
 Get-ChildItem -Path $frameworkSource -Recurse -File | ForEach-Object {
     $relative = $_.FullName.Substring($frameworkSource.Length).TrimStart([char[]]'\/')
@@ -311,8 +304,6 @@ Get-ChildItem -Path $skillsSource -Directory | Sort-Object Name | ForEach-Object
     }
 }
 
-# Generated installed facts are Toolkit-owned. Preserve the timestamp on a
-# same-version reinstall so repeat installation is idempotent.
 if (($InstalledToolkitVersion -eq $ToolkitVersion) -and
     (-not [string]::IsNullOrWhiteSpace($PreviousInstalledAt))) {
     $InstalledAt = $PreviousInstalledAt
@@ -357,10 +348,9 @@ capabilities:
 "@
 Install-TextFile $installedManifest $InstalledManifestPath 'Managed' $true
 
-# Project-owned release state is created only when missing.
 Install-SourceFile `
     (Join-Path $frameworkSource 'templates\SDP-project.manifest.yaml') `
-    (Join-Path $SdpRoot 'SDP-project.manifest.yaml') `
+    $ProjectManifestPath `
     'ProjectOwned' `
     $false
 Install-SourceFile `
@@ -369,8 +359,6 @@ Install-SourceFile `
     'ProjectOwned' `
     $false
 
-# Missing traceability contracts are safe additive migrations. Populated files
-# remain project-owned and are never replaced.
 foreach ($traceFile in @('README.md', 'CurrentIndex.yaml', 'Relations.yaml')) {
     $source = Join-Path $RepositoryRoot "Traceability\$traceFile"
     if (Test-Path -LiteralPath $source -PathType Leaf) {
@@ -386,7 +374,6 @@ if ($InitializeProjectStructure) {
         'Sprints', 'Refactors', 'Fixes', 'Releases', 'CodeReview', 'Verification',
         'Traceability', 'Instructions'
     )
-
     foreach ($folder in $templateFolders) {
         $source = Join-Path $RepositoryRoot $folder
         if (Test-Path -LiteralPath $source -PathType Container) {
@@ -396,7 +383,6 @@ if ($InitializeProjectStructure) {
             }
         }
     }
-
     Install-SourceFile `
         (Join-Path $RepositoryRoot 'SDP-DOCUMENT-GUIDE.md') `
         (Join-Path $SdpRoot 'SDP-DOCUMENT-GUIDE.md') `
