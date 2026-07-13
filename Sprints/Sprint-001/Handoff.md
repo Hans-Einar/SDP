@@ -3,7 +3,7 @@
 Active Sprint: `Sprint-001`
 Active Iteration: `SPI-001`
 Active Slice: `SPS-001`
-Status: bounded second rework required
+Status: bounded remediation verified; fresh approval pending
 
 ## Entry points
 
@@ -23,11 +23,11 @@ fresh independent Reviewer.
 
 ## Next action
 
-Assign a fresh Worker the three residual findings in
-`CodeReview/REV-SPS-001-002.md`: physical local/UNC root identity, complete
-destination-topology preflight with zero partial mutation, and all seven Python
-schema/capability pair checks. Also clarify the low-risk dirty-HEAD provenance
-semantics in public documentation. Rerun the full matrix, record a new exact
-verification and assign another separate fresh Reviewer. Do not open the draft
-PR or close the Slice with unresolved blocking, high or medium findings. Linux
-and Windows GitHub Actions evidence remains required before final closure.
+Assign another separate fresh Reviewer the complete diff, both changes-required
+reviews, bounded Worker commit
+`25fdf5cfe5a119192f512bf5322a15776e26836f` and verification
+`VER-SPS-001-003`. The Reviewer must reproduce physical identity and destination
+topology counterexamples, confirm all seven governing pairs and classify every
+prior finding. Do not open the draft PR or close the Slice with unresolved
+blocking, high or medium findings. Linux and Windows GitHub Actions evidence
+remains required before final closure.

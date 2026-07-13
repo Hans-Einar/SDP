@@ -2,7 +2,7 @@
 
 ## SPS-001
 
-Status: rework — second independent review changes required
+Status: review — bounded remediation verified; fresh approval required
 
 ### Master preparation
 
@@ -90,3 +90,14 @@ closed. Two high findings remain for physical local/UNC root identity and
 destination ancestor/prefix topology; one medium remains for four missing
 Python governing-pair assertions. A new Worker must implement exactly this
 bounded remediation and add the required zero-mutation/parameterized tests.
+
+### Bounded remediation
+
+Worker commit `25fdf5cfe5a119192f512bf5322a15776e26836f`
+implements OS-backed symmetric Windows directory identity, complete destination
+prefix/ancestor preflight and all seven Python governing-pair checks. It also
+clarifies dirty-checkout `sourceCommit` semantics. Master verification
+`VER-SPS-001-003` passed 73 Python tests, the full PowerShell suite, all three
+validator invocations and clean publication-state checks. The local/UNC,
+extended and integrated short-name cases all ran; only file-symlink creation was
+unavailable on this host.

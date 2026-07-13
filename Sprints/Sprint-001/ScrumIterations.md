@@ -16,7 +16,7 @@ Status: active
 
 ### SPS-001 — Canonical installation contract v1
 
-Status: rework
+Status: review
 
 #### Goal
 
@@ -160,6 +160,13 @@ twelve original findings but confirmed two residual highs—physical local/UNC
 root identity and destination-topology partial mutation—and one residual medium
 covering four missing Python schema/capability pairing checks. The Slice returned
 to rework for this bounded three-finding contract.
+
+Bounded Worker commit `25fdf5cfe5a119192f512bf5322a15776e26836f`
+closes the three residual findings. Master verification `VER-SPS-001-003`
+passed parser/schema sanity, 73 Python tests, the full Windows PowerShell suite,
+both Toolkit validators and exact pinned `gh-sdp` project validation. The Slice
+has returned to review and still requires a separate fresh approval before draft
+PR publication.
 
 #### Completion signal
 
