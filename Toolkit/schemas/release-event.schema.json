@@ -1,1 +1,68 @@
-{"$schema":"https://json-schema.org/draft/2020-12/schema","$id":"https://sdp.local/schemas/release-event.schema.json","title":"SDP Release Ledger Event","type":"object","additionalProperties":false,"required":["schemaVersion","eventId","eventType","occurredAt","releaseId","actor","commit","payload"],"properties":{"schemaVersion":{"const":"1.0"},"eventId":{"type":"string","pattern":"^EVT-[A-Z0-9.-]+$"},"eventType":{"enum":["release-planned","release-version-selected","release-candidate-opened","release-verification-completed","release-approved","release-tag-created","release-published","release-yanked","release-migration-applied","release-notes-corrected"]},"occurredAt":{"type":"string","format":"date-time"},"releaseId":{"type":"string","pattern":"^REL-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$"},"actor":{"type":"string","minLength":1},"commit":{"type":["string","null"]},"payload":{"type":"object"}},"allOf":[{"if":{"properties":{"eventType":{"const":"release-tag-created"}}},"then":{"properties":{"commit":{"type":"string","minLength":7},"payload":{"type":"object","required":["tag"],"properties":{"tag":{"type":"string","pattern":"^v[0-9]+\\.[0-9]+\\.[0-9]+"}}}}}},{"if":{"properties":{"eventType":{"const":"release-published"}}},"then":{"properties":{"commit":{"type":"string","minLength":7},"payload":{"type":"object","required":["tag","githubReleaseUrl"],"properties":{"tag":{"type":"string"},"githubReleaseUrl":{"type":"string","format":"uri"}}}}}}]}
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sdp.local/schemas/release-event.schema.json",
+  "title": "SDP Release Ledger Event",
+  "description": "The stricter specialization applied to every canonical release-* ledger event after generic envelope validation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "eventId", "eventType", "occurredAt", "releaseId", "actor", "commit", "payload"],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "eventId": { "type": "string", "pattern": "^EVT-[A-Z0-9]+(?:[.-][A-Z0-9]+)*$" },
+    "eventType": {
+      "enum": [
+        "release-planned",
+        "release-version-selected",
+        "release-candidate-opened",
+        "release-verification-completed",
+        "release-approved",
+        "release-tag-created",
+        "release-published",
+        "release-yanked",
+        "release-migration-applied",
+        "release-notes-corrected"
+      ]
+    },
+    "occurredAt": { "type": "string", "format": "date-time" },
+    "releaseId": {
+      "type": "string",
+      "pattern": "^REL-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$"
+    },
+    "actor": { "type": "string", "minLength": 1 },
+    "commit": { "type": ["string", "null"], "minLength": 1 },
+    "payload": { "type": "object" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "eventType": { "const": "release-tag-created" } }, "required": ["eventType"] },
+      "then": {
+        "properties": {
+          "commit": { "type": "string", "minLength": 7 },
+          "payload": {
+            "type": "object",
+            "required": ["tag"],
+            "properties": {
+              "tag": { "type": "string", "pattern": "^v(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$" }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "eventType": { "const": "release-published" } }, "required": ["eventType"] },
+      "then": {
+        "properties": {
+          "commit": { "type": "string", "minLength": 7 },
+          "payload": {
+            "type": "object",
+            "required": ["tag", "githubReleaseUrl"],
+            "properties": {
+              "tag": { "type": "string", "pattern": "^v(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$" },
+              "githubReleaseUrl": { "type": "string", "format": "uri" }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

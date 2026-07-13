@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sdp.local/schemas/relations.schema.json",
+  "title": "SDP Traceability Relations",
+  "description": "Stable relation categories and known portable path fields. Relation-detail objects intentionally permit additional fields so projects can add links without defining a premature global ontology.",
+  "type": "object",
+  "required": [
+    "requirements",
+    "designs",
+    "sprints",
+    "refactors",
+    "iterations",
+    "slices",
+    "fixes",
+    "reviews",
+    "verification",
+    "migrations",
+    "releases"
+  ],
+  "properties": {
+    "requirements": { "$ref": "#/$defs/category" },
+    "designs": { "$ref": "#/$defs/category" },
+    "sprints": { "$ref": "#/$defs/sprints" },
+    "refactors": { "$ref": "#/$defs/refactors" },
+    "iterations": { "$ref": "#/$defs/iterations" },
+    "slices": { "$ref": "#/$defs/slices" },
+    "fixes": { "$ref": "#/$defs/fixes" },
+    "reviews": { "$ref": "#/$defs/category" },
+    "verification": { "$ref": "#/$defs/category" },
+    "migrations": { "$ref": "#/$defs/category" },
+    "releases": { "$ref": "#/$defs/releases" }
+  },
+  "patternProperties": {
+    "^x-[a-z0-9]+(?:[.-][a-z0-9]+)*$": { "$ref": "#/$defs/category" }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "portablePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*//)(?!\\./)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\/$).+$"
+    },
+    "nullableId": { "type": ["string", "null"], "minLength": 1 },
+    "idList": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "relation": {
+      "type": "object",
+      "properties": {
+        "status": { "type": "string", "minLength": 1 },
+        "state": { "type": "string", "minLength": 1 },
+        "version": { "$ref": "#/$defs/semver" },
+        "path": { "$ref": "#/$defs/portablePath" },
+        "study": { "$ref": "#/$defs/portablePath" },
+        "implementationNotes": { "$ref": "#/$defs/portablePath" },
+        "releaseNotes": { "$ref": "#/$defs/portablePath" },
+        "manifest": { "$ref": "#/$defs/portablePath" },
+        "releaseRecord": { "$ref": "#/$defs/portablePath" },
+        "sprint": { "$ref": "#/$defs/nullableId" },
+        "refactor": { "$ref": "#/$defs/nullableId" },
+        "iteration": { "$ref": "#/$defs/nullableId" },
+        "slice": { "$ref": "#/$defs/nullableId" },
+        "fix": { "$ref": "#/$defs/nullableId" },
+        "release": { "$ref": "#/$defs/nullableId" },
+        "review": { "$ref": "#/$defs/nullableId" },
+        "verification": {
+          "oneOf": [
+            { "$ref": "#/$defs/nullableId" },
+            { "$ref": "#/$defs/idList" }
+          ]
+        },
+        "iterations": { "$ref": "#/$defs/idList" },
+        "slices": { "$ref": "#/$defs/idList" },
+        "fixes": { "$ref": "#/$defs/idList" },
+        "sprints": { "$ref": "#/$defs/idList" },
+        "reviews": { "$ref": "#/$defs/idList" },
+        "migrations": { "$ref": "#/$defs/idList" },
+        "releaseCommit": {
+          "oneOf": [
+            { "type": "string", "minLength": 7 },
+            { "type": "null" }
+          ]
+        },
+        "gitTag": {
+          "oneOf": [
+            { "type": "string", "pattern": "^v(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$" },
+            { "type": "null" }
+          ]
+        },
+        "githubRelease": {
+          "oneOf": [
+            { "type": "string", "format": "uri" },
+            { "type": "null" }
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "category": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/relation" }
+    },
+    "sprints": {
+      "type": "object",
+      "propertyNames": { "pattern": "^Sprint-[0-9]{3,}$" },
+      "additionalProperties": { "$ref": "#/$defs/relation" }
+    },
+    "refactors": {
+      "type": "object",
+      "propertyNames": { "pattern": "^Refactor-[0-9]{3,}$" },
+      "additionalProperties": { "$ref": "#/$defs/relation" }
+    },
+    "iterations": {
+      "type": "object",
+      "propertyNames": { "pattern": "^SPI-[0-9]{3,}$" },
+      "additionalProperties": { "$ref": "#/$defs/relation" }
+    },
+    "slices": {
+      "type": "object",
+      "propertyNames": { "pattern": "^SPS-[0-9]{3,}$" },
+      "additionalProperties": { "$ref": "#/$defs/relation" }
+    },
+    "fixes": {
+      "type": "object",
+      "propertyNames": { "pattern": "^(FIX|HOTFIX)-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)-[0-9]{3}$" },
+      "additionalProperties": { "$ref": "#/$defs/relation" }
+    },
+    "releases": {
+      "type": "object",
+      "propertyNames": { "pattern": "^REL-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$" },
+      "additionalProperties": { "$ref": "#/$defs/relation" }
+    },
+    "semver": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"
+    }
+  }
+}

@@ -1,21 +1,10 @@
-# SDP Framework
+# Legacy SDP Framework Payload
 
-This directory contains toolkit-managed SDP guidance copied from the upstream
-SDP repository. Project-specific documents remain elsewhere in the project's
-`SDP/` tree and take precedence when they intentionally specialize the method.
+This root-level `payload/` tree is a legacy duplicate and is explicitly excluded
+by `Toolkit/SDP-install.manifest.json`. It is not a canonical installation source
+and must not be copied by PowerShell, `gh-sdp` or another conforming client.
 
-Installed skills live under the project root at `.codex/skills/`.
-
-## Operating sequence
-
-1. Read project `AGENTS.md` and `SDP/AGENT-REMINDERS.md`.
-2. Read the relevant skill.
-3. Resolve active work from traceability.
-4. Read authoritative project documents.
-5. Refine the Slice contract before broad work.
-6. Delegate implementation and independent review.
-7. Verify, update traceability and stop.
-
-Do not edit this directory for project-specific decisions. Put local rules in
-`SDP/Instructions/` or `SDP/AGENT-REMINDERS.md` so upstream upgrades remain
-predictable.
+Current Toolkit-managed sources live under `Toolkit/payload/` and
+`Toolkit/skills/`. Neutral project-owned creation sources live under
+`Toolkit/project-templates/`. Project-specific rules belong in the consuming
+project's `SDP/Instructions/` or `SDP/AGENT-REMINDERS.md`.

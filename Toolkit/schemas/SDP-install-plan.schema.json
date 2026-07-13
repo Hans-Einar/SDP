@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sdp.local/schemas/SDP-install-plan.schema.json",
+  "title": "SDP Deterministic Installation Plan",
+  "description": "Portable read-only action plan derived from the canonical installation manifest and target observations. Volatile timestamps, absolute extraction paths, and generated backup directory names are intentionally outside this contract.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "manifestSchemaVersion",
+    "mode",
+    "toolkitVersion",
+    "installedToolkitVersion",
+    "options",
+    "canApply",
+    "actions"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "manifestSchemaVersion": { "const": "1.0" },
+    "mode": { "const": "plan" },
+    "toolkitVersion": { "$ref": "#/$defs/semver" },
+    "installedToolkitVersion": {
+      "oneOf": [
+        { "$ref": "#/$defs/semver" },
+        { "type": "null" }
+      ]
+    },
+    "options": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["initializeProjectStructure", "forceManagedFiles"],
+      "properties": {
+        "initializeProjectStructure": { "type": "boolean" },
+        "forceManagedFiles": { "type": "boolean" }
+      }
+    },
+    "canApply": { "type": "boolean" },
+    "actions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/action" }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "canApply": { "const": true } }, "required": ["canApply"] },
+      "then": {
+        "properties": {
+          "actions": {
+            "not": {
+              "contains": { "properties": { "action": { "const": "block" } }, "required": ["action"] }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "canApply": { "const": false } }, "required": ["canApply"] },
+      "then": {
+        "properties": {
+          "actions": {
+            "contains": { "properties": { "action": { "const": "block" } }, "required": ["action"] }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "semver": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"
+    },
+    "stableId": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "portablePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*//)(?!\\./)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*(?:^|/)\\.(?:/|$))(?!.*\\/$).+$"
+    },
+    "action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sequence",
+        "action",
+        "entryId",
+        "source",
+        "generator",
+        "destination",
+        "ownership",
+        "reason",
+        "mutatesTarget",
+        "oldToolkitVersion",
+        "newToolkitVersion"
+      ],
+      "properties": {
+        "sequence": { "type": "integer", "minimum": 1 },
+        "action": {
+          "enum": [
+            "create",
+            "replace",
+            "preserve",
+            "unchanged",
+            "backup",
+            "generate",
+            "warn",
+            "block"
+          ]
+        },
+        "entryId": { "$ref": "#/$defs/stableId" },
+        "source": {
+          "oneOf": [
+            { "$ref": "#/$defs/portablePath" },
+            { "type": "null" }
+          ]
+        },
+        "generator": {
+          "oneOf": [
+            { "$ref": "#/$defs/stableId" },
+            { "type": "null" }
+          ]
+        },
+        "destination": { "$ref": "#/$defs/portablePath" },
+        "ownership": { "enum": ["toolkit-managed", "project-owned"] },
+        "reason": { "$ref": "#/$defs/stableId" },
+        "mutatesTarget": { "type": "boolean" },
+        "oldToolkitVersion": {
+          "oneOf": [
+            { "$ref": "#/$defs/semver" },
+            { "type": "null" }
+          ]
+        },
+        "newToolkitVersion": { "$ref": "#/$defs/semver" },
+        "detail": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "action": { "enum": ["create", "replace", "backup", "generate"] }
+            },
+            "required": ["action"]
+          },
+          "then": { "properties": { "mutatesTarget": { "const": true } } }
+        },
+        {
+          "if": {
+            "properties": {
+              "action": { "enum": ["preserve", "unchanged", "warn", "block"] }
+            },
+            "required": ["action"]
+          },
+          "then": { "properties": { "mutatesTarget": { "const": false } } }
+        },
+        {
+          "if": {
+            "properties": { "action": { "not": { "enum": ["warn", "block"] } } },
+            "required": ["action"]
+          },
+          "then": {
+            "oneOf": [
+              {
+                "properties": {
+                  "source": { "$ref": "#/$defs/portablePath" },
+                  "generator": { "type": "null" }
+                }
+              },
+              {
+                "properties": {
+                  "source": { "type": "null" },
+                  "generator": { "$ref": "#/$defs/stableId" }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "if": { "properties": { "action": { "const": "generate" } }, "required": ["action"] },
+          "then": {
+            "properties": {
+              "source": { "type": "null" },
+              "generator": { "$ref": "#/$defs/stableId" }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

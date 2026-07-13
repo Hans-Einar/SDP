@@ -2,26 +2,40 @@
 
 Toolkit-Version: 0.2.0 (unreleased)
 
-This directory contains reusable, Toolkit-managed assets:
+This directory contains the reusable Toolkit boundary:
 
-- `skills/` — versioned Codex skills
-- `schemas/` — manifest, release-event and build-identity contracts
-- `scripts/` — safe installation, migration, build metadata and validation
+- `SDP-install.manifest.json` — authoritative installable inventory and policy
+- `schemas/` — installation, plan, manifest, traceability, record and build contracts
+- `scripts/` — supported PowerShell installer, build metadata and validator
 - `tests/` — deterministic Python and PowerShell fixtures
-- `payload/` — managed files and additive project templates
+- `payload/` — copied Toolkit-managed files only
+- `project-templates/` — neutral files that become project-owned when created
+- `skills/` — versioned Toolkit-managed Codex skills
 
-`SDP.manifest.yaml` is the authoritative release manifest. Installed projects
-receive generated static facts in `SDP/Framework/installed-toolkit.manifest.yaml`
-and a project-owned `SDP/SDP-project.manifest.yaml` when missing.
+`SDP.manifest.yaml` at repository root is authoritative for Toolkit release and
+capability facts. It is not the installation inventory. The JSON installation
+manifest explicitly lists every copied or generated target so PowerShell and
+independent clients such as `gh-sdp` do not reconstruct hidden behavior.
 
-Preview installation:
+Produce a portable, mutation-free plan:
 
 ```powershell
-C:\Users\hanse\GIT\SDP\Toolkit\scripts\Install-SDP.ps1 `
+.\Toolkit\scripts\Install-SDP.ps1 `
   -ProjectRoot C:\path\to\Project `
-  -Preview
+  -PlanJson
 ```
 
-The target may already contain a non-empty `SDP/` directory. Project-owned
-content is preserved. Managed files are backed up before replacement. Unsupported
-manifest schemas stop safely.
+The normal human preview remains available with `-Preview`. A project may
+already contain a non-empty `SDP/` directory. Project-owned content is preserved
+under normal, forced and repeated installation; changed managed files are backed
+up before replacement. Unsupported schemas and downgrades block before mutation.
+
+Validate the Toolkit or an installed consuming project explicitly:
+
+```powershell
+python Toolkit\scripts\validate_sdp.py --mode toolkit
+python Toolkit\scripts\validate_sdp.py --mode project --project-root C:\path\to\Project
+```
+
+See `docs/Installation-Contract.md`, `docs/Installer-Migration.md` and
+`docs/Validation.md`.

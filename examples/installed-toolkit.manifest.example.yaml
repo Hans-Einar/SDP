@@ -4,7 +4,7 @@ frameworkVersion: "1.0.0"
 agentsContractVersion: "1.0.0"
 installerVersion: "0.2.0"
 toolkitInstalledAt: "2026-07-12T00:00:00Z"
-sourceCommit: abc1234
+sourceCommit: null
 skills:
   sdp-architect: "1.0.0"
   sdp-auditor: "1.0.0"
@@ -18,7 +18,14 @@ skills:
   sdp-worker: "1.0.0"
 capabilities:
   - sdp.install.v1
+  - sdp.install-plan.v1
   - sdp.manifest.v1
   - sdp.release.v1
+  - sdp.release-notes.v1
+  - sdp.skill-metadata.v1
+  - sdp.traceability.current-index.v1
+  - sdp.traceability.ledger-events.v1
+  - sdp.traceability.relations.v1
   - sdp.traceability.release-events.v1
+  - sdp.validation.project.v1
   - sdp.versioning.v1

@@ -1,0 +1,282 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sdp.local/schemas/SDP-install-manifest.schema.json",
+  "title": "SDP Installation Contract",
+  "description": "Canonical, platform-neutral inventory and policy for installing the SDP Toolkit into a consuming project.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "contractId",
+    "toolkitVersion",
+    "sources",
+    "capabilities",
+    "generators",
+    "entries",
+    "exclusions"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "contractId": { "const": "sdp-install" },
+    "toolkitVersion": { "$ref": "#/$defs/semver" },
+    "sources": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repositoryRoot", "pathStyle"],
+      "properties": {
+        "repositoryRoot": {
+          "const": "..",
+          "description": "The repository root is the parent of the Toolkit directory containing this manifest. This trusted anchor is not an installable entry path."
+        },
+        "pathStyle": { "const": "forward-slash-relative" }
+      }
+    },
+    "capabilities": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "contains": { "const": "sdp.install.v1" },
+      "items": { "$ref": "#/$defs/capability" }
+    },
+    "generators": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "oneOf": [
+          { "$ref": "#/$defs/installedToolkitGenerator" },
+          { "$ref": "#/$defs/emptyLedgerGenerator" }
+        ]
+      }
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/entry" }
+    },
+    "exclusions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/exclusion" }
+    }
+  },
+  "$defs": {
+    "semver": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"
+    },
+    "stableId": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "capability": {
+      "type": "string",
+      "pattern": "^sdp\\.[a-z0-9.-]+\\.v[0-9]+$"
+    },
+    "portablePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*//)(?!\\./)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*(?:^|/)\\.(?:/|$))(?!.*\\/$).+$"
+    },
+    "governing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["capability", "schema"],
+      "properties": {
+        "capability": { "$ref": "#/$defs/capability" },
+        "schema": {
+          "oneOf": [
+            { "$ref": "#/$defs/portablePath" },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "destination",
+        "ownership",
+        "selectionPolicy",
+        "installPolicy",
+        "refreshPolicy",
+        "backupPolicy",
+        "forcePolicy",
+        "migrationPolicy",
+        "governing"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/stableId" },
+        "kind": { "enum": ["copied", "generated"] },
+        "source": { "$ref": "#/$defs/portablePath" },
+        "generator": { "$ref": "#/$defs/stableId" },
+        "destination": { "$ref": "#/$defs/portablePath" },
+        "ownership": { "enum": ["toolkit-managed", "project-owned"] },
+        "selectionPolicy": { "enum": ["default", "initialize-only"] },
+        "installPolicy": { "enum": ["always", "missing-only"] },
+        "refreshPolicy": { "enum": ["always", "upgrade-or-force", "never"] },
+        "backupPolicy": { "enum": ["before-replace", "migration-aware", "none"] },
+        "forcePolicy": { "enum": ["replace-managed", "preserve"] },
+        "migrationPolicy": { "enum": ["none", "preserve-existing-agents"] },
+        "governing": { "$ref": "#/$defs/governing" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "kind": { "const": "copied" } }, "required": ["kind"] },
+          "then": { "required": ["source"], "not": { "required": ["generator"] } }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "generated" } }, "required": ["kind"] },
+          "then": { "required": ["generator"], "not": { "required": ["source"] } }
+        },
+        {
+          "if": { "properties": { "ownership": { "const": "project-owned" } }, "required": ["ownership"] },
+          "then": {
+            "properties": {
+              "installPolicy": { "const": "missing-only" },
+              "refreshPolicy": { "const": "never" },
+              "backupPolicy": { "const": "none" },
+              "forcePolicy": { "const": "preserve" },
+              "migrationPolicy": { "const": "none" }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "ownership": { "const": "toolkit-managed" } }, "required": ["ownership"] },
+          "then": { "properties": { "forcePolicy": { "const": "replace-managed" } } }
+        },
+        {
+          "if": { "properties": { "selectionPolicy": { "const": "initialize-only" } }, "required": ["selectionPolicy"] },
+          "then": { "properties": { "ownership": { "const": "project-owned" } } }
+        },
+        {
+          "if": { "properties": { "migrationPolicy": { "const": "preserve-existing-agents" } }, "required": ["migrationPolicy"] },
+          "then": {
+            "properties": {
+              "destination": { "const": "AGENTS.md" },
+              "ownership": { "const": "toolkit-managed" },
+              "backupPolicy": { "const": "migration-aware" }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "backupPolicy": { "const": "migration-aware" } }, "required": ["backupPolicy"] },
+          "then": {
+            "properties": {
+              "migrationPolicy": { "const": "preserve-existing-agents" }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "backupPolicy": { "const": "before-replace" } }, "required": ["backupPolicy"] },
+          "then": {
+            "properties": {
+              "refreshPolicy": { "enum": ["always", "upgrade-or-force"] }
+            }
+          }
+        }
+      ]
+    },
+    "installedToolkitGenerator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "format", "facts", "dynamicFacts"],
+      "properties": {
+        "id": { "const": "installed-toolkit-manifest" },
+        "type": { "const": "installed-toolkit-manifest" },
+        "format": { "const": "yaml" },
+        "facts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "schemaVersion",
+            "toolkitVersion",
+            "frameworkVersion",
+            "agentsContractVersion",
+            "installerVersion",
+            "skills",
+            "capabilities"
+          ],
+          "properties": {
+            "schemaVersion": { "const": "1.0" },
+            "toolkitVersion": { "$ref": "#/$defs/semver" },
+            "frameworkVersion": { "$ref": "#/$defs/semver" },
+            "agentsContractVersion": { "$ref": "#/$defs/semver" },
+            "installerVersion": { "$ref": "#/$defs/semver" },
+            "skills": {
+              "type": "object",
+              "minProperties": 1,
+              "propertyNames": { "pattern": "^sdp-[a-z0-9]+(?:-[a-z0-9]+)*$" },
+              "additionalProperties": { "$ref": "#/$defs/semver" }
+            },
+            "capabilities": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": { "$ref": "#/$defs/capability" }
+            }
+          }
+        },
+        "dynamicFacts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["toolkitInstalledAt", "sourceCommit"],
+          "properties": {
+            "toolkitInstalledAt": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["source", "sameToolkitVersionPolicy"],
+              "properties": {
+                "source": { "const": "utc-now" },
+                "sameToolkitVersionPolicy": { "const": "preserve-existing" }
+              }
+            },
+            "sourceCommit": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["source", "unavailableValue"],
+              "properties": {
+                "source": { "const": "repository-head" },
+                "unavailableValue": { "type": "null" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "emptyLedgerGenerator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "format", "content"],
+      "properties": {
+        "id": { "const": "empty-ledger" },
+        "type": { "const": "empty-ledger" },
+        "format": { "const": "ndjson" },
+        "content": { "const": "" }
+      }
+    },
+    "exclusion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "kind", "reason"],
+      "properties": {
+        "path": { "$ref": "#/$defs/portablePath" },
+        "kind": { "enum": ["file", "tree"] },
+        "reason": {
+          "enum": [
+            "repository-instance-state",
+            "repository-release-metadata",
+            "legacy-duplicate-root",
+            "legacy-project-template",
+            "development-only"
+          ]
+        }
+      }
+    }
+  }
+}

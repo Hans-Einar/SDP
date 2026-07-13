@@ -16,23 +16,27 @@ Core principle:
 
 ```text
 SDP repository
-├── 01--Mandate/ ... 07--Implementation/   lifecycle templates
-├── Sprints/ Refactors/ Fixes/ Releases/   operating records/templates
-├── CodeReview/ Verification/ Traceability/
-├── SDP.manifest.yaml                      Toolkit release manifest
-├── RELEASE-NOTES.md                       canonical Toolkit release notes
-├── Toolkit/
-│   ├── skills/                            versioned reusable skills
-│   ├── schemas/                           machine-readable contracts
-│   ├── scripts/                           installer, build identity, validation
-│   └── payload/                           Toolkit-managed project files
-├── docs/                                  method and release guidance
-└── examples/                              example manifests and events
+|-- 01--Mandate/ ... 07--Implementation/   this repository's SDP records
+|-- Sprints/ Refactors/ Fixes/ Releases/   live operating and release records
+|-- CodeReview/ Verification/ Traceability/
+|-- SDP.manifest.yaml                      Toolkit release manifest
+|-- RELEASE-NOTES.md                       canonical Toolkit release notes
+|-- Toolkit/
+|   |-- SDP-install.manifest.json          canonical installation contract
+|   |-- project-templates/                 neutral project-owned seeds
+|   |-- payload/                           Toolkit-managed copied files
+|   |-- skills/                            versioned reusable skills
+|   |-- schemas/                           machine-readable contracts
+|   |-- scripts/                           installer, build identity, validation
+|   `-- tests/                             deterministic contract fixtures
+|-- docs/                                  method and compatibility guidance
+`-- examples/                              neutral contract examples
 ```
 
-The root lifecycle folders demonstrate the recommended project-local `SDP/`
-structure. In consuming projects, populated lifecycle/release/traceability files
-are project-owned and authoritative.
+The root lifecycle and traceability folders are this repository's live SDP
+instance. They are not installation templates. A conforming installer copies
+only entries explicitly listed in `Toolkit/SDP-install.manifest.json`; neutral
+project seeds come only from `Toolkit/project-templates/`.
 
 ## Version model
 
@@ -47,36 +51,38 @@ development coordinates. See `docs/Release-And-Versioning.md` and
 
 ## Install or update a project
 
-Keep one independent clone:
+Use an independent clone or an extracted GitHub source archive. Let `$SdpSource`
+name its root, the directory containing `Toolkit/SDP-install.manifest.json`:
 
 ```powershell
-git clone https://github.com/Hans-Einar/SDP.git C:\Users\hanse\GIT\SDP
+$SdpSource = 'C:\path\to\extracted-or-cloned-SDP'
+$Project = 'C:\path\to\Project'
 ```
 
-Preview an installation or migration:
+Produce the deterministic, mutation-free JSON plan:
 
 ```powershell
-C:\Users\hanse\GIT\SDP\Toolkit\scripts\Install-SDP.ps1 `
-  -ProjectRoot C:\path\to\Project `
-  -Preview
+& "$SdpSource\Toolkit\scripts\Install-SDP.ps1" `
+  -ProjectRoot $Project `
+  -PlanJson
 ```
 
-Apply it:
+Use `-Preview` for human-readable mutation-free output, or apply the plan:
 
 ```powershell
-C:\Users\hanse\GIT\SDP\Toolkit\scripts\Install-SDP.ps1 `
-  -ProjectRoot C:\path\to\Project
+& "$SdpSource\Toolkit\scripts\Install-SDP.ps1" `
+  -ProjectRoot $Project
 ```
 
-Existing non-empty `SDP/` directories are the normal migration case. The
-installer creates missing project manifests and release notes, updates clearly
-Toolkit-managed Framework/skills, backs up replaced managed files and never
-replaces populated project-owned records. `AGENTS.md` is managed;
-`AGENTS-project.md` is preserved.
+Existing non-empty `SDP/` directories are the normal migration case. Managed
+files refresh according to the installation contract and are backed up before
+replacement. Project-owned files are created only when missing and are never
+replaced, including under `-ForceManagedFiles`.
 
-Use `-ForceManagedFiles` only to restore same-version managed files. Use
-`-InitializeProjectStructure` to add missing template documents. See
-`docs/Installer-Migration.md`.
+`-InitializeProjectStructure` adds only missing neutral lifecycle and operating
+seeds. It never copies this repository's active Sprint, `REL-0.2.0`, release
+notes, Ledger history, review or verification evidence. See
+`docs/Installation-Contract.md` and `docs/Installer-Migration.md`.
 
 ## Build identity
 
@@ -98,24 +104,29 @@ same schema by another build step. Unreleased builds are visibly marked `-dev`.
 - `sdp-release`, `sdp-versioning`, `sdp-auditor`, `sdp-verifier`
 
 Every skill has machine-readable YAML front matter and its version must agree
-with `SDP.manifest.yaml`.
+with `SDP.manifest.yaml` and the generated installed facts.
 
 ## Validation
 
 ```powershell
 python -m pip install -r Toolkit\tests\requirements.txt
-python Toolkit\scripts\validate_sdp.py
+python Toolkit\scripts\validate_sdp.py --mode toolkit
+python Toolkit\scripts\validate_sdp.py --mode project --project-root C:\path\to\Project
 python -m unittest discover -s Toolkit\tests -p "test_*.py" -v
 .\Toolkit\tests\Install-SDP.Tests.ps1
 ```
 
-GitHub Actions runs contract tests on Linux and installer fixture tests on
-Windows.
+Toolkit mode is the backward-compatible default. Project mode validates an
+installed consuming project without assuming the Toolkit repository layout.
+See `docs/Validation.md` for exact boundaries and limitations.
 
 ## Main documentation
 
 - `SDP-DOCUMENT-GUIDE.md`
 - `docs/How-SDP-Works.md`
+- `docs/Installation-Contract.md`
+- `docs/Installer-Migration.md`
+- `docs/Validation.md`
 - `docs/Distribution-And-Upgrades.md`
 - `docs/Release-And-Versioning.md`
 - `docs/Release-Lifecycle.md`

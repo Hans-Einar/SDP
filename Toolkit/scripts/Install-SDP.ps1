@@ -9,72 +9,22 @@ param(
 
     [switch]$Preview,
 
+    [switch]$PlanJson,
+
     [string]$BackupRoot
 )
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
-$ToolkitVersion = '0.2.0'
-$InstallerVersion = '0.2.0'
-$FrameworkVersion = '1.0.0'
-$AgentsContractVersion = '1.0.0'
+$SupportedInstallManifestSchemas = @('1.0')
 $SupportedInstalledManifestSchemas = @('1.0')
 $SupportedProjectManifestSchemas = @('1.0')
 $RunStamp = (Get-Date).ToUniversalTime().ToString('yyyyMMdd-HHmmssZ')
-
-$ToolkitRoot = Split-Path -Parent $PSScriptRoot
-$RepositoryRoot = [System.IO.Path]::GetFullPath((Split-Path -Parent $ToolkitRoot))
-$ProjectRoot = [System.IO.Path]::GetFullPath((Resolve-Path $ProjectRoot).Path)
-$SdpRoot = Join-Path $ProjectRoot 'SDP'
-$SkillsTarget = Join-Path $ProjectRoot '.codex\skills'
-$InstalledManifestPath = Join-Path $SdpRoot 'Framework\installed-toolkit.manifest.yaml'
-$ProjectManifestPath = Join-Path $SdpRoot 'SDP-project.manifest.yaml'
-
-if ([string]::IsNullOrWhiteSpace($BackupRoot)) {
-    $BackupRoot = Join-Path $SdpRoot ".sdp-backups\$RunStamp"
-} elseif (-not [System.IO.Path]::IsPathRooted($BackupRoot)) {
-    $BackupRoot = Join-Path $ProjectRoot $BackupRoot
-}
-$BackupRoot = [System.IO.Path]::GetFullPath($BackupRoot)
-
-$repositoryTrimmed = $RepositoryRoot.TrimEnd(
-    [System.IO.Path]::DirectorySeparatorChar,
-    [System.IO.Path]::AltDirectorySeparatorChar
-)
-$repositoryPrefix = $repositoryTrimmed + [System.IO.Path]::DirectorySeparatorChar
-$projectIsRepository = $ProjectRoot.Equals(
-    $repositoryTrimmed,
+$PathComparison = if ([System.IO.Path]::DirectorySeparatorChar -eq '\') {
     [System.StringComparison]::OrdinalIgnoreCase
-)
-$projectIsInsideRepository = $ProjectRoot.StartsWith(
-    $repositoryPrefix,
-    [System.StringComparison]::OrdinalIgnoreCase
-)
-
-if ($projectIsRepository -or $projectIsInsideRepository) {
-    throw "The consuming project must not be inside the SDP repository: $RepositoryRoot"
-}
-
-$script:ProposedCount = 0
-$script:AppliedCount = 0
-$script:PreservedCount = 0
-$script:UnchangedCount = 0
-
-function Write-SdpAction {
-    param(
-        [ValidateSet('PROPOSED', 'APPLIED', 'PRESERVED', 'UNCHANGED', 'WARNING')]
-        [string]$Kind,
-        [string]$Message
-    )
-
-    switch ($Kind) {
-        'PROPOSED' { $script:ProposedCount++ }
-        'APPLIED' { $script:AppliedCount++ }
-        'PRESERVED' { $script:PreservedCount++ }
-        'UNCHANGED' { $script:UnchangedCount++ }
-    }
-    Write-Host "[$Kind] $Message"
+} else {
+    [System.StringComparison]::Ordinal
 }
 
 function Get-YamlScalar {
@@ -99,7 +49,7 @@ function ConvertTo-SemVerCore {
         '^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$'
     )
     if (-not $match.Success) {
-        throw "Invalid installed Toolkit SemVer: $Version"
+        throw "Invalid Toolkit SemVer: $Version"
     }
     return [pscustomobject]@{
         Major = [int64]$match.Groups[1].Value
@@ -120,279 +70,871 @@ function Compare-SemVerCore {
     return 0
 }
 
-function Get-RelativeProjectPath {
-    param([string]$Path)
+function Assert-PortableRelativePath {
+    param([string]$Value, [string]$Label)
 
-    $full = [System.IO.Path]::GetFullPath($Path)
-    if ($full.StartsWith($ProjectRoot, [System.StringComparison]::OrdinalIgnoreCase)) {
-        return $full.Substring($ProjectRoot.Length).TrimStart([char[]]'\/')
+    if ([string]::IsNullOrWhiteSpace($Value)) {
+        throw "$Label must be a non-empty relative path."
     }
-    return [System.IO.Path]::GetFileName($full)
+    if ($Value.Contains('\')) {
+        throw "$Label must use portable '/' separators: $Value"
+    }
+    if ($Value.StartsWith('/') -or $Value -match '^[A-Za-z]:') {
+        throw "$Label must be relative: $Value"
+    }
+    $segments = $Value.Split('/')
+    if ($segments.Count -eq 0 -or $segments -contains '' -or
+        $segments -contains '.' -or $segments -contains '..') {
+        throw "$Label is not normalized or contains traversal: $Value"
+    }
+    if (($segments -join '/') -cne $Value) {
+        throw "$Label is not normalized: $Value"
+    }
 }
 
-function Backup-ExistingFile {
-    param([string]$Path)
-
-    if (-not (Test-Path -LiteralPath $Path -PathType Leaf)) { return }
-    $relative = Get-RelativeProjectPath $Path
-    $destination = Join-Path $BackupRoot $relative
-    if ($Preview) {
-        Write-SdpAction 'PROPOSED' "Back up $relative to $destination"
-        return
-    }
-    $parent = Split-Path -Parent $destination
-    New-Item -ItemType Directory -Force -Path $parent | Out-Null
-    Copy-Item -LiteralPath $Path -Destination $destination -Force
-    Write-SdpAction 'APPLIED' "Backed up $relative to $destination"
-}
-
-function Install-TextFile {
+function Assert-AllowedValue {
     param(
-        [string]$Content,
-        [string]$Destination,
-        [ValidateSet('Managed', 'ProjectOwned')]
-        [string]$Ownership,
-        [bool]$RefreshManaged,
-        [bool]$SkipBackup = $false
+        [string]$Value,
+        [string[]]$Allowed,
+        [string]$Label
     )
 
-    $relative = Get-RelativeProjectPath $Destination
-    if (-not (Test-Path -LiteralPath $Destination -PathType Leaf)) {
-        if ($Preview) {
-            Write-SdpAction 'PROPOSED' "Create $relative ($Ownership)"
-            return
+    if ($Allowed -cnotcontains $Value) {
+        throw "$Label has unsupported value '$Value'."
+    }
+}
+
+function Join-PortablePath {
+    param([string]$Base, [string]$Relative, [string]$Label)
+
+    Assert-PortableRelativePath $Relative $Label
+    $path = $Base
+    foreach ($segment in $Relative.Split('/')) {
+        $path = Join-Path $path $segment
+    }
+    $fullBase = [System.IO.Path]::GetFullPath($Base).TrimEnd(
+        [System.IO.Path]::DirectorySeparatorChar,
+        [System.IO.Path]::AltDirectorySeparatorChar
+    )
+    $full = [System.IO.Path]::GetFullPath($path)
+    $prefix = $fullBase + [System.IO.Path]::DirectorySeparatorChar
+    if (($full -cne $fullBase) -and
+        (-not $full.StartsWith($prefix, $PathComparison))) {
+        throw "$Label escapes its root: $Relative"
+    }
+    return $full
+}
+
+function Test-PortablePathWithin {
+    param([string]$Candidate, [string]$Parent, [string]$Kind)
+
+    if ($Candidate -ceq $Parent) { return $true }
+    return ($Kind -eq 'tree') -and $Candidate.StartsWith($Parent + '/')
+}
+
+function ConvertTo-YamlQuotedScalar {
+    param([string]$Value)
+
+    return '"' + $Value.Replace('\', '\\').Replace('"', '\"') + '"'
+}
+
+$ToolkitRoot = Split-Path -Parent $PSScriptRoot
+$InstallManifestPath = Join-Path $ToolkitRoot 'SDP-install.manifest.json'
+if (-not (Test-Path -LiteralPath $InstallManifestPath -PathType Leaf)) {
+    throw "Canonical installation manifest is missing: $InstallManifestPath"
+}
+try {
+    $InstallManifest = Get-Content -Raw -LiteralPath $InstallManifestPath |
+        ConvertFrom-Json
+} catch {
+    throw "Cannot parse canonical installation manifest: $($_.Exception.Message)"
+}
+if ($SupportedInstallManifestSchemas -notcontains [string]$InstallManifest.schemaVersion) {
+    throw "Unsupported installation manifest schema '$($InstallManifest.schemaVersion)'."
+}
+if ([string]$InstallManifest.contractId -cne 'sdp-install') {
+    throw "Unsupported installation contract '$($InstallManifest.contractId)'."
+}
+if ([string]$InstallManifest.sources.repositoryRoot -cne '..' -or
+    [string]$InstallManifest.sources.pathStyle -cne 'forward-slash-relative') {
+    throw 'Unsupported installation source-root or path-style contract.'
+}
+
+$RepositoryRoot = [System.IO.Path]::GetFullPath((Join-Path $ToolkitRoot '..'))
+$ProjectRoot = [System.IO.Path]::GetFullPath((Resolve-Path $ProjectRoot).Path)
+$SdpRoot = Join-Path $ProjectRoot 'SDP'
+$ExpectedInstalledManifestRelative = 'SDP/Framework/installed-toolkit.manifest.yaml'
+$ExpectedProjectManifestRelative = 'SDP/SDP-project.manifest.yaml'
+
+$repositoryTrimmed = $RepositoryRoot.TrimEnd(
+    [System.IO.Path]::DirectorySeparatorChar,
+    [System.IO.Path]::AltDirectorySeparatorChar
+)
+$repositoryPrefix = $repositoryTrimmed + [System.IO.Path]::DirectorySeparatorChar
+$projectIsRepository = $ProjectRoot.Equals($repositoryTrimmed, $PathComparison)
+$projectIsInsideRepository = $ProjectRoot.StartsWith($repositoryPrefix, $PathComparison)
+if ($projectIsRepository -or $projectIsInsideRepository) {
+    throw "The consuming project must not be inside the SDP repository: $RepositoryRoot"
+}
+
+if ([string]::IsNullOrWhiteSpace($BackupRoot)) {
+    $BackupRoot = Join-Path $SdpRoot ".sdp-backups\$RunStamp"
+} elseif (-not [System.IO.Path]::IsPathRooted($BackupRoot)) {
+    $BackupRoot = Join-Path $ProjectRoot $BackupRoot
+}
+$BackupRoot = [System.IO.Path]::GetFullPath($BackupRoot)
+
+$ToolkitVersion = [string]$InstallManifest.toolkitVersion
+[void](ConvertTo-SemVerCore $ToolkitVersion)
+$Capabilities = @($InstallManifest.capabilities)
+$CapabilityById = @{}
+foreach ($capabilityValue in $Capabilities) {
+    $capability = [string]$capabilityValue
+    if (($capability -cnotmatch '^sdp\.[a-z0-9.-]+\.v[0-9]+$') -or
+        $CapabilityById.ContainsKey($capability)) {
+        throw "Installation contract contains an invalid or duplicate capability '$capability'."
+    }
+    $CapabilityById[$capability] = $true
+}
+if (-not $CapabilityById.ContainsKey('sdp.install.v1')) {
+    throw "Installation contract is missing capability 'sdp.install.v1'."
+}
+$Generators = @($InstallManifest.generators)
+$Entries = @($InstallManifest.entries)
+$Exclusions = @($InstallManifest.exclusions)
+$GeneratorById = @{}
+$EntryById = @{}
+$DestinationByKey = @{}
+$ExclusionByKey = @{}
+$ExclusionRows = New-Object System.Collections.ArrayList
+
+foreach ($generator in $Generators) {
+    $generatorId = [string]$generator.id
+    if (($generatorId -cnotmatch '^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$') -or
+        $GeneratorById.ContainsKey($generatorId)) {
+        throw "Installation contract contains a missing or duplicate generator ID '$generatorId'."
+    }
+    $generatorType = [string]$generator.type
+    Assert-AllowedValue $generatorType @('installed-toolkit-manifest', 'empty-ledger') "generator '$generatorId' type"
+    if (($generatorType -eq 'installed-toolkit-manifest') -and
+        (($generatorId -cne 'installed-toolkit-manifest') -or
+        ([string]$generator.format -cne 'yaml'))) {
+        throw "Generator '$generatorId' must use YAML format."
+    }
+    if (($generatorType -eq 'empty-ledger') -and
+        (($generatorId -cne 'empty-ledger') -or
+        ([string]$generator.format -cne 'ndjson'))) {
+        throw "Generator '$generatorId' must use NDJSON format."
+    }
+    $GeneratorById[$generatorId] = $generator
+}
+foreach ($requiredGenerator in @('installed-toolkit-manifest', 'empty-ledger')) {
+    if (-not $GeneratorById.ContainsKey($requiredGenerator)) {
+        throw "Installation contract is missing generator '$requiredGenerator'."
+    }
+}
+$InstalledGenerator = $GeneratorById['installed-toolkit-manifest']
+if ([string]$InstalledGenerator.type -cne 'installed-toolkit-manifest') {
+    throw "Generator 'installed-toolkit-manifest' has the wrong type."
+}
+if ([string]$GeneratorById['empty-ledger'].type -cne 'empty-ledger') {
+    throw "Generator 'empty-ledger' has the wrong type."
+}
+$InstallerVersion = [string]$InstalledGenerator.facts.installerVersion
+[void](ConvertTo-SemVerCore $InstallerVersion)
+if ([string]$InstalledGenerator.facts.toolkitVersion -cne $ToolkitVersion) {
+    throw "Installed-manifest generator Toolkit version does not match the contract Toolkit version."
+}
+if ($SupportedInstalledManifestSchemas -cnotcontains
+    [string]$InstalledGenerator.facts.schemaVersion) {
+    throw "Installed-manifest generator declares an unsupported schema version."
+}
+foreach ($factName in @(
+    'toolkitVersion', 'frameworkVersion', 'agentsContractVersion', 'installerVersion'
+)) {
+    [void](ConvertTo-SemVerCore ([string]$InstalledGenerator.facts.$factName))
+}
+$skillFacts = $InstalledGenerator.facts.skills
+if (($null -eq $skillFacts) -or (@($skillFacts.psobject.Properties).Count -eq 0)) {
+    throw "Installed-manifest generator must declare installed skill versions."
+}
+foreach ($skillProperty in $skillFacts.psobject.Properties) {
+    if ($skillProperty.Name -cnotmatch '^sdp-[a-z0-9]+(?:-[a-z0-9]+)*$') {
+        throw "Installed-manifest generator has invalid skill ID '$($skillProperty.Name)'."
+    }
+    [void](ConvertTo-SemVerCore ([string]$skillProperty.Value))
+}
+if ((@($InstalledGenerator.facts.capabilities) -join "`n") -cne
+    ($Capabilities -join "`n")) {
+    throw "Installed-manifest generator capabilities do not match the contract capabilities."
+}
+$dynamicFacts = $InstalledGenerator.dynamicFacts
+if (([string]$dynamicFacts.toolkitInstalledAt.source -cne 'utc-now') -or
+    ([string]$dynamicFacts.toolkitInstalledAt.sameToolkitVersionPolicy -cne
+        'preserve-existing') -or
+    ([string]$dynamicFacts.sourceCommit.source -cne 'repository-head') -or
+    ($null -ne $dynamicFacts.sourceCommit.unavailableValue)) {
+    throw "Installed-manifest generator declares unsupported dynamic-fact policies."
+}
+if ([string]$GeneratorById['empty-ledger'].content -cne '') {
+    throw "Empty-ledger generator content must be empty."
+}
+
+foreach ($exclusion in $Exclusions) {
+    $excludedPath = [string]$exclusion.path
+    $excludedKind = [string]$exclusion.kind
+    Assert-PortableRelativePath $excludedPath "exclusion '$excludedPath'"
+    if ($excludedKind -notin @('file', 'tree')) {
+        throw "Unsupported exclusion kind '$excludedKind'."
+    }
+    Assert-AllowedValue ([string]$exclusion.reason) @(
+        'repository-instance-state',
+        'repository-release-metadata',
+        'legacy-duplicate-root',
+        'legacy-project-template',
+        'development-only'
+    ) "exclusion '$excludedPath' reason"
+    $excludedKey = $excludedPath.ToLowerInvariant()
+    if ($ExclusionByKey.ContainsKey($excludedKey)) {
+        throw "Installation contract contains duplicate exclusion '$excludedPath'."
+    }
+    $ExclusionByKey[$excludedKey] = $excludedKind
+    $excludedFull = Join-PortablePath $RepositoryRoot $excludedPath "exclusion '$excludedPath'"
+    if (($excludedKind -eq 'file') -and
+        (-not (Test-Path -LiteralPath $excludedFull -PathType Leaf))) {
+        throw "Excluded file does not exist: $excludedPath"
+    }
+    if (($excludedKind -eq 'tree') -and
+        (-not (Test-Path -LiteralPath $excludedFull -PathType Container))) {
+        throw "Excluded tree does not exist: $excludedPath"
+    }
+    [void]$ExclusionRows.Add([pscustomobject]@{ Path = $excludedPath; Kind = $excludedKind })
+}
+
+foreach ($entry in $Entries) {
+    $entryId = [string]$entry.id
+    if (($entryId -cnotmatch '^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$') -or
+        $EntryById.ContainsKey($entryId)) {
+        throw "Installation contract contains a missing or duplicate entry ID '$entryId'."
+    }
+    $EntryById[$entryId] = $entry
+
+    $entryKind = [string]$entry.kind
+    $ownership = [string]$entry.ownership
+    $selectionPolicy = [string]$entry.selectionPolicy
+    $installPolicy = [string]$entry.installPolicy
+    $refreshPolicy = [string]$entry.refreshPolicy
+    $backupPolicy = [string]$entry.backupPolicy
+    $forcePolicy = [string]$entry.forcePolicy
+    $migrationPolicy = [string]$entry.migrationPolicy
+    Assert-AllowedValue $entryKind @('copied', 'generated') "entry '$entryId' kind"
+    Assert-AllowedValue $ownership @('toolkit-managed', 'project-owned') "entry '$entryId' ownership"
+    Assert-AllowedValue $selectionPolicy @('default', 'initialize-only') "entry '$entryId' selectionPolicy"
+    Assert-AllowedValue $installPolicy @('always', 'missing-only') "entry '$entryId' installPolicy"
+    Assert-AllowedValue $refreshPolicy @('always', 'upgrade-or-force', 'never') "entry '$entryId' refreshPolicy"
+    Assert-AllowedValue $backupPolicy @('before-replace', 'migration-aware', 'none') "entry '$entryId' backupPolicy"
+    Assert-AllowedValue $forcePolicy @('replace-managed', 'preserve') "entry '$entryId' forcePolicy"
+    Assert-AllowedValue $migrationPolicy @('none', 'preserve-existing-agents') "entry '$entryId' migrationPolicy"
+
+    if ($ownership -eq 'project-owned') {
+        if (($installPolicy -cne 'missing-only') -or
+            ($refreshPolicy -cne 'never') -or
+            ($backupPolicy -cne 'none') -or
+            ($forcePolicy -cne 'preserve') -or
+            ($migrationPolicy -cne 'none')) {
+            throw "Entry '$entryId' has an unsafe project-owned policy combination."
         }
-        $parent = Split-Path -Parent $Destination
-        New-Item -ItemType Directory -Force -Path $parent | Out-Null
-        [System.IO.File]::WriteAllText($Destination, $Content, [System.Text.UTF8Encoding]::new($false))
-        Write-SdpAction 'APPLIED' "Created $relative ($Ownership)"
-        return
+    } else {
+        if ($forcePolicy -cne 'replace-managed') {
+            throw "Entry '$entryId' has an unsupported toolkit-managed force policy."
+        }
+    }
+    if (($selectionPolicy -eq 'initialize-only') -and ($ownership -ne 'project-owned')) {
+        throw "Entry '$entryId' initialize-only content must be project-owned."
+    }
+    if ($migrationPolicy -eq 'preserve-existing-agents') {
+        if (($ownership -ne 'toolkit-managed') -or
+            ($backupPolicy -ne 'migration-aware') -or
+            ([string]$entry.destination -cne 'AGENTS.md')) {
+            throw "Entry '$entryId' has an unsupported AGENTS migration policy combination."
+        }
+    } elseif ($backupPolicy -eq 'migration-aware') {
+        throw "Entry '$entryId' uses migration-aware backup without a migration policy."
+    }
+    if (($backupPolicy -eq 'before-replace') -and ($refreshPolicy -eq 'never')) {
+        throw "Entry '$entryId' cannot back up before a refresh that is never allowed."
+    }
+    $governingCapability = [string]$entry.governing.capability
+    if (-not $CapabilityById.ContainsKey($governingCapability)) {
+        throw "Entry '$entryId' references undeclared capability '$governingCapability'."
     }
 
-    $existing = [System.IO.File]::ReadAllText($Destination)
-    if ($existing -ceq $Content) {
-        Write-SdpAction 'UNCHANGED' $relative
-        return
+    $destination = [string]$entry.destination
+    Assert-PortableRelativePath $destination "entry '$entryId' destination"
+    $destinationKey = $destination.ToLowerInvariant()
+    if ($DestinationByKey.ContainsKey($destinationKey)) {
+        throw "Installation contract contains duplicate destination '$destination'."
     }
-    if ($Ownership -eq 'ProjectOwned') {
-        Write-SdpAction 'PRESERVED' "$relative (project-owned)"
-        return
+    $DestinationByKey[$destinationKey] = $entryId
+    [void](Join-PortablePath $ProjectRoot $destination "entry '$entryId' destination")
+
+    if ($entryKind -eq 'copied') {
+        if ($entry.psobject.Properties.Name -contains 'generator') {
+            throw "Copied entry '$entryId' must not declare a generator."
+        }
+        $source = [string]$entry.source
+        Assert-PortableRelativePath $source "entry '$entryId' source"
+        foreach ($excluded in $ExclusionRows) {
+            if (Test-PortablePathWithin $source $excluded.Path $excluded.Kind) {
+                throw "Entry '$entryId' uses explicitly excluded source '$source'."
+            }
+        }
+        $sourcePath = Join-PortablePath $RepositoryRoot $source "entry '$entryId' source"
+        if (-not (Test-Path -LiteralPath $sourcePath -PathType Leaf)) {
+            throw "Entry '$entryId' source does not exist: $source"
+        }
+    } elseif ($entryKind -eq 'generated') {
+        if ($entry.psobject.Properties.Name -contains 'source') {
+            throw "Generated entry '$entryId' must not declare a source."
+        }
+        $generatorId = [string]$entry.generator
+        if (-not $GeneratorById.ContainsKey($generatorId)) {
+            throw "Entry '$entryId' references unknown generator '$generatorId'."
+        }
     }
-    if (-not $RefreshManaged) {
-        Write-SdpAction 'PRESERVED' "$relative (managed file differs; use -ForceManagedFiles to restore it)"
-        return
+    $schemaPath = $entry.governing.schema
+    if ($null -ne $schemaPath) {
+        $schemaRelative = [string]$schemaPath
+        $schemaFull = Join-PortablePath $RepositoryRoot $schemaRelative "entry '$entryId' schema"
+        if (-not (Test-Path -LiteralPath $schemaFull -PathType Leaf)) {
+            throw "Entry '$entryId' governing schema does not exist: $schemaRelative"
+        }
     }
-    if (-not $SkipBackup) { Backup-ExistingFile $Destination }
-    if ($Preview) {
-        Write-SdpAction 'PROPOSED' "Replace managed file $relative"
-        return
-    }
-    [System.IO.File]::WriteAllText($Destination, $Content, [System.Text.UTF8Encoding]::new($false))
-    Write-SdpAction 'APPLIED' "Replaced managed file $relative"
 }
 
-function Install-SourceFile {
-    param(
-        [string]$Source,
-        [string]$Destination,
-        [ValidateSet('Managed', 'ProjectOwned')]
-        [string]$Ownership,
-        [bool]$RefreshManaged,
-        [bool]$SkipBackup = $false
-    )
-
-    $content = [System.IO.File]::ReadAllText($Source)
-    Install-TextFile $content $Destination $Ownership $RefreshManaged $SkipBackup
+foreach ($requiredEntry in @(
+    'managed-agents', 'project-agents', 'project-manifest',
+    'generated-installed-toolkit-manifest', 'generated-empty-ledger'
+)) {
+    if (-not $EntryById.ContainsKey($requiredEntry)) {
+        throw "Installation contract is missing required entry '$requiredEntry'."
+    }
 }
 
-# Detect project and installed Toolkit compatibility before any mutation.
+$InstalledManifestRelative = [string]$EntryById['generated-installed-toolkit-manifest'].destination
+$ProjectManifestRelative = [string]$EntryById['project-manifest'].destination
+if ($InstalledManifestRelative -cne $ExpectedInstalledManifestRelative) {
+    throw "Installed-manifest entry destination drifted from '$ExpectedInstalledManifestRelative'."
+}
+if ($ProjectManifestRelative -cne $ExpectedProjectManifestRelative) {
+    throw "Project-manifest entry destination drifted from '$ExpectedProjectManifestRelative'."
+}
+$InstalledManifestPath = Join-PortablePath $ProjectRoot $InstalledManifestRelative 'installed manifest destination'
+$ProjectManifestPath = Join-PortablePath $ProjectRoot $ProjectManifestRelative 'project manifest destination'
+
+$MigrationEntries = @($Entries | Where-Object {
+    [string]$_.migrationPolicy -eq 'preserve-existing-agents'
+})
+if (($MigrationEntries.Count -ne 1) -or
+    ([string]$MigrationEntries[0].id -cne 'managed-agents')) {
+    throw "Installation contract must define managed-agents as its single AGENTS migration entry."
+}
+
+function Get-RepositorySourceCommit {
+    if (-not (Test-Path -LiteralPath (Join-Path $RepositoryRoot '.git'))) { return $null }
+    if (-not (Get-Command git -ErrorAction SilentlyContinue)) { return $null }
+    $previousErrorActionPreference = $ErrorActionPreference
+    try {
+        $ErrorActionPreference = 'SilentlyContinue'
+        $topLevel = & git -C $RepositoryRoot rev-parse --show-toplevel 2>$null
+        $topLevelExitCode = $LASTEXITCODE
+    } finally {
+        $ErrorActionPreference = $previousErrorActionPreference
+    }
+    if (($topLevelExitCode -ne 0) -or (-not $topLevel)) { return $null }
+    try {
+        $resolvedTop = [System.IO.Path]::GetFullPath(($topLevel | Select-Object -First 1).Trim())
+    } catch {
+        return $null
+    }
+    if (-not $resolvedTop.Equals($repositoryTrimmed, $PathComparison)) { return $null }
+    try {
+        $ErrorActionPreference = 'SilentlyContinue'
+        $head = & git -C $RepositoryRoot rev-parse HEAD 2>$null
+        $headExitCode = $LASTEXITCODE
+    } finally {
+        $ErrorActionPreference = $previousErrorActionPreference
+    }
+    if (($headExitCode -ne 0) -or (-not $head)) { return $null }
+    return ($head | Select-Object -First 1).Trim()
+}
+
+$BlockReason = $null
+$BlockEntryId = $null
+$BlockDestination = $null
+$BlockOwnership = $null
+$InstalledSchemaVersion = $null
+$InstalledToolkitVersion = $null
+$PreviousInstalledAt = $null
+
 if (Test-Path -LiteralPath $ProjectManifestPath -PathType Leaf) {
     $projectManifestContent = [System.IO.File]::ReadAllText($ProjectManifestPath)
     $projectSchemaVersion = Get-YamlScalar $projectManifestContent 'schemaVersion'
     if ([string]::IsNullOrWhiteSpace($projectSchemaVersion)) {
-        Write-Warning "Project manifest is malformed: $ProjectManifestPath"
-        throw 'Refusing to modify a project with an unreadable project manifest.'
+        $BlockReason = 'malformed-project-manifest'
+    } elseif ($SupportedProjectManifestSchemas -notcontains $projectSchemaVersion) {
+        $BlockReason = 'unsupported-project-schema'
     }
-    if ($SupportedProjectManifestSchemas -notcontains $projectSchemaVersion) {
-        Write-Warning "Unsupported project manifest schema '$projectSchemaVersion'."
-        throw 'Refusing to modify a project with an unsupported manifest schema.'
+    if ($BlockReason) {
+        $BlockEntryId = 'project-manifest'
+        $BlockDestination = $ProjectManifestRelative
+        $BlockOwnership = 'project-owned'
     }
 }
 
-$InstalledSchemaVersion = $null
-$InstalledToolkitVersion = $null
-$PreviousInstalledAt = $null
-if (Test-Path -LiteralPath $InstalledManifestPath -PathType Leaf) {
+if ((-not $BlockReason) -and
+    (Test-Path -LiteralPath $InstalledManifestPath -PathType Leaf)) {
     $installedContent = [System.IO.File]::ReadAllText($InstalledManifestPath)
     $InstalledSchemaVersion = Get-YamlScalar $installedContent 'schemaVersion'
     $InstalledToolkitVersion = Get-YamlScalar $installedContent 'toolkitVersion'
     $PreviousInstalledAt = Get-YamlScalar $installedContent 'toolkitInstalledAt'
-
-    if ([string]::IsNullOrWhiteSpace($InstalledSchemaVersion)) {
-        Write-Warning "Installed manifest is malformed: $InstalledManifestPath"
-        throw 'Refusing to modify an installation with an unreadable manifest.'
+    if ([string]::IsNullOrWhiteSpace($InstalledSchemaVersion) -or
+        [string]::IsNullOrWhiteSpace($InstalledToolkitVersion)) {
+        $BlockReason = 'malformed-installed-manifest'
+    } elseif ($SupportedInstalledManifestSchemas -notcontains $InstalledSchemaVersion) {
+        $BlockReason = 'unsupported-installed-schema'
+    } else {
+        try {
+            if ((Compare-SemVerCore $InstalledToolkitVersion $ToolkitVersion) -gt 0) {
+                $BlockReason = 'downgrade-blocked'
+            }
+        } catch {
+            $BlockReason = 'malformed-installed-manifest'
+        }
     }
-    if ($SupportedInstalledManifestSchemas -notcontains $InstalledSchemaVersion) {
-        Write-Warning "Unsupported installed manifest schema '$InstalledSchemaVersion'."
-        throw 'Refusing to modify an unsupported SDP installation.'
+    if ($BlockReason) {
+        $BlockEntryId = 'generated-installed-toolkit-manifest'
+        $BlockDestination = $InstalledManifestRelative
+        $BlockOwnership = 'toolkit-managed'
     }
-    if ([string]::IsNullOrWhiteSpace($InstalledToolkitVersion)) {
-        throw 'Installed manifest does not contain toolkitVersion.'
-    }
-    if ((Compare-SemVerCore $InstalledToolkitVersion $ToolkitVersion) -gt 0) {
-        Write-Warning "Installed Toolkit $InstalledToolkitVersion is newer than installer $ToolkitVersion."
-        throw 'Refusing to downgrade a newer SDP Toolkit installation.'
-    }
-} else {
-    Write-SdpAction 'PROPOSED' 'Migrate supported pre-versioning installation to manifest schema 1.0'
 }
 
 $IsUpgrade = [string]::IsNullOrWhiteSpace($InstalledToolkitVersion) -or
     ($InstalledToolkitVersion -ne $ToolkitVersion)
-$RefreshManaged = $IsUpgrade -or $ForceManagedFiles
-
-$agentsSource = Join-Path $ToolkitRoot 'payload\project-root\AGENTS.md.template'
-$agentsDestination = Join-Path $ProjectRoot 'AGENTS.md'
-$projectInstructions = Join-Path $ProjectRoot 'AGENTS-project.md'
-$agentsContent = [System.IO.File]::ReadAllText($agentsSource)
-
-if (Test-Path -LiteralPath $agentsDestination -PathType Leaf) {
-    $existingAgents = [System.IO.File]::ReadAllText($agentsDestination)
-    if ($existingAgents -cne $agentsContent) {
-        if (-not (Test-Path -LiteralPath $projectInstructions -PathType Leaf)) {
-            if ($Preview) {
-                Write-SdpAction 'PROPOSED' 'Migrate existing AGENTS.md to AGENTS-project.md'
-            } else {
-                Copy-Item -LiteralPath $agentsDestination -Destination $projectInstructions
-                Write-SdpAction 'APPLIED' 'Migrated existing AGENTS.md to AGENTS-project.md'
-            }
-        } else {
-            $migrationBackup = Join-Path $ProjectRoot "AGENTS-project.migration-$RunStamp.md"
-            if ($Preview) {
-                Write-SdpAction 'PROPOSED' "Preserve existing AGENTS.md as $migrationBackup"
-            } else {
-                Copy-Item -LiteralPath $agentsDestination -Destination $migrationBackup
-                Write-SdpAction 'APPLIED' "Preserved existing AGENTS.md as $migrationBackup"
-            }
-        }
-    }
-}
-Install-TextFile $agentsContent $agentsDestination 'Managed' $true $true
-
-Install-SourceFile `
-    (Join-Path $ToolkitRoot 'payload\project-root\AGENTS-project.md.template') `
-    $projectInstructions `
-    'ProjectOwned' `
-    $false
-Install-SourceFile `
-    (Join-Path $ToolkitRoot 'payload\sdp-root\AGENT-REMINDERS.md.template') `
-    (Join-Path $SdpRoot 'AGENT-REMINDERS.md') `
-    'ProjectOwned' `
-    $false
-
-$frameworkSource = Join-Path $ToolkitRoot 'payload\sdp-root\Framework'
-Get-ChildItem -Path $frameworkSource -Recurse -File | ForEach-Object {
-    $relative = $_.FullName.Substring($frameworkSource.Length).TrimStart([char[]]'\/')
-    Install-SourceFile $_.FullName (Join-Path $SdpRoot "Framework\$relative") 'Managed' $RefreshManaged
-}
-
-$skillsSource = Join-Path $ToolkitRoot 'skills'
-Get-ChildItem -Path $skillsSource -Directory | Sort-Object Name | ForEach-Object {
-    $skillFile = Join-Path $_.FullName 'SKILL.md'
-    if (Test-Path -LiteralPath $skillFile -PathType Leaf) {
-        Install-SourceFile $skillFile (Join-Path $SkillsTarget "$($_.Name)\SKILL.md") 'Managed' $RefreshManaged
-    }
-}
-
 if (($InstalledToolkitVersion -eq $ToolkitVersion) -and
     (-not [string]::IsNullOrWhiteSpace($PreviousInstalledAt))) {
     $InstalledAt = $PreviousInstalledAt
 } else {
     $InstalledAt = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
 }
+$SourceCommit = Get-RepositorySourceCommit
 
-$SourceCommit = $null
-if (Get-Command git -ErrorAction SilentlyContinue) {
-    $gitOutput = & git -C $RepositoryRoot rev-parse HEAD 2>$null
-    if (($LASTEXITCODE -eq 0) -and $gitOutput) {
-        $SourceCommit = ($gitOutput | Select-Object -First 1).Trim()
+function Get-InstalledManifestContent {
+    $facts = $InstalledGenerator.facts
+    $lines = New-Object System.Collections.ArrayList
+    [void]$lines.Add('schemaVersion: ' + (ConvertTo-YamlQuotedScalar ([string]$facts.schemaVersion)))
+    [void]$lines.Add('toolkitVersion: ' + (ConvertTo-YamlQuotedScalar ([string]$facts.toolkitVersion)))
+    [void]$lines.Add('frameworkVersion: ' + (ConvertTo-YamlQuotedScalar ([string]$facts.frameworkVersion)))
+    [void]$lines.Add('agentsContractVersion: ' + (ConvertTo-YamlQuotedScalar ([string]$facts.agentsContractVersion)))
+    [void]$lines.Add('installerVersion: ' + (ConvertTo-YamlQuotedScalar ([string]$facts.installerVersion)))
+    [void]$lines.Add('toolkitInstalledAt: ' + (ConvertTo-YamlQuotedScalar $InstalledAt))
+    if ($null -eq $SourceCommit) {
+        [void]$lines.Add('sourceCommit: null')
+    } else {
+        [void]$lines.Add('sourceCommit: ' + (ConvertTo-YamlQuotedScalar $SourceCommit))
+    }
+    [void]$lines.Add('skills:')
+    foreach ($property in $facts.skills.psobject.Properties) {
+        [void]$lines.Add('  ' + $property.Name + ': ' +
+            (ConvertTo-YamlQuotedScalar ([string]$property.Value)))
+    }
+    [void]$lines.Add('capabilities:')
+    foreach ($capability in @($facts.capabilities)) {
+        [void]$lines.Add('  - ' + [string]$capability)
+    }
+    return ([string]::Join("`n", [string[]]$lines) + "`n")
+}
+
+function Get-GeneratorContent {
+    param([string]$GeneratorId)
+
+    $generator = $GeneratorById[$GeneratorId]
+    switch ([string]$generator.type) {
+        'installed-toolkit-manifest' { return Get-InstalledManifestContent }
+        'empty-ledger' { return [string]$generator.content }
+        default { throw "Unsupported generator type '$($generator.type)'." }
     }
 }
-$sourceCommitYaml = if ($SourceCommit) { '"' + $SourceCommit + '"' } else { 'null' }
 
-$installedManifest = @"
-schemaVersion: "1.0"
-toolkitVersion: "$ToolkitVersion"
-frameworkVersion: "$FrameworkVersion"
-agentsContractVersion: "$AgentsContractVersion"
-installerVersion: "$InstallerVersion"
-toolkitInstalledAt: "$InstalledAt"
-sourceCommit: $sourceCommitYaml
-skills:
-  sdp-architect: "1.0.0"
-  sdp-auditor: "1.0.0"
-  sdp-master: "1.0.0"
-  sdp-release: "1.0.0"
-  sdp-reviewer: "1.0.0"
-  sdp-traceability: "1.0.0"
-  sdp-verifier: "1.0.0"
-  sdp-versioning: "1.0.0"
-  sdp-vertical-refactor: "1.0.0"
-  sdp-worker: "1.0.0"
-capabilities:
-  - sdp.install.v1
-  - sdp.manifest.v1
-  - sdp.release.v1
-  - sdp.traceability.release-events.v1
-  - sdp.versioning.v1
-"@
-Install-TextFile $installedManifest $InstalledManifestPath 'Managed' $true
+function Get-EntryContent {
+    param($Entry)
 
-Install-SourceFile `
-    (Join-Path $frameworkSource 'templates\SDP-project.manifest.yaml') `
-    $ProjectManifestPath `
-    'ProjectOwned' `
-    $false
-Install-SourceFile `
-    (Join-Path $frameworkSource 'templates\RELEASE-NOTES.md') `
-    (Join-Path $SdpRoot 'RELEASE-NOTES.md') `
-    'ProjectOwned' `
-    $false
-
-foreach ($traceFile in @('README.md', 'CurrentIndex.yaml', 'Relations.yaml')) {
-    $source = Join-Path $RepositoryRoot "Traceability\$traceFile"
-    if (Test-Path -LiteralPath $source -PathType Leaf) {
-        Install-SourceFile $source (Join-Path $SdpRoot "Traceability\$traceFile") 'ProjectOwned' $false
+    if ([string]$Entry.kind -eq 'copied') {
+        $sourcePath = Join-PortablePath $RepositoryRoot ([string]$Entry.source) "entry '$($Entry.id)' source"
+        return [System.IO.File]::ReadAllText($sourcePath)
     }
+    return Get-GeneratorContent ([string]$Entry.generator)
 }
-Install-TextFile '' (Join-Path $SdpRoot 'Traceability\Ledger.ndjson') 'ProjectOwned' $false
 
-if ($InitializeProjectStructure) {
-    $templateFolders = @(
-        '01--Mandate', '02--Study', '03--Requirements', '04--Architecture',
-        '05--DesignAnalysis', '06--Design', '07--Implementation',
-        'Sprints', 'Refactors', 'Fixes', 'Releases', 'CodeReview', 'Verification',
-        'Traceability', 'Instructions'
+$script:PlanActions = New-Object System.Collections.ArrayList
+function Add-PlanAction {
+    param(
+        [string]$Action,
+        [string]$EntryId,
+        [AllowNull()][string]$Source,
+        [AllowNull()][string]$Generator,
+        [string]$Destination,
+        [string]$Ownership,
+        [string]$Reason,
+        [bool]$MutatesTarget
     )
-    foreach ($folder in $templateFolders) {
-        $source = Join-Path $RepositoryRoot $folder
-        if (Test-Path -LiteralPath $source -PathType Container) {
-            Get-ChildItem -Path $source -Recurse -File | ForEach-Object {
-                $relative = $_.FullName.Substring($source.Length).TrimStart([char[]]'\/')
-                Install-SourceFile $_.FullName (Join-Path $SdpRoot "$folder\$relative") 'ProjectOwned' $false
+
+    $row = [pscustomobject][ordered]@{
+        sequence = $script:PlanActions.Count + 1
+        action = $Action
+        entryId = $EntryId
+        source = if ([string]::IsNullOrWhiteSpace($Source)) { $null } else { $Source }
+        generator = if ([string]::IsNullOrWhiteSpace($Generator)) { $null } else { $Generator }
+        destination = $Destination
+        ownership = $Ownership
+        reason = $Reason
+        mutatesTarget = $MutatesTarget
+        oldToolkitVersion = if ([string]::IsNullOrWhiteSpace($InstalledToolkitVersion)) {
+            $null
+        } else {
+            $InstalledToolkitVersion
+        }
+        newToolkitVersion = $ToolkitVersion
+    }
+    [void]$script:PlanActions.Add($row)
+}
+
+if ($BlockReason) {
+    Add-PlanAction `
+        'block' `
+        $BlockEntryId `
+        $null `
+        $null `
+        $BlockDestination `
+        $BlockOwnership `
+        $BlockReason `
+        $false
+} else {
+    $managedAgents = $MigrationEntries[0]
+    $projectAgents = $EntryById['project-agents']
+    $managedAgentsPath = Join-PortablePath $ProjectRoot ([string]$managedAgents.destination) 'managed AGENTS destination'
+    $projectAgentsPath = Join-PortablePath $ProjectRoot ([string]$projectAgents.destination) 'project AGENTS destination'
+    $managedAgentsContent = Get-EntryContent $managedAgents
+    $MigrationCreatesProjectAgents = $false
+    if (([string]$managedAgents.migrationPolicy -eq 'preserve-existing-agents') -and
+        (Test-Path -LiteralPath $managedAgentsPath -PathType Leaf)) {
+        $existingAgents = [System.IO.File]::ReadAllText($managedAgentsPath)
+        if ($existingAgents -cne $managedAgentsContent) {
+            if (-not (Test-Path -LiteralPath $projectAgentsPath -PathType Leaf)) {
+                Add-PlanAction `
+                    'create' `
+                    ([string]$projectAgents.id) `
+                    ([string]$projectAgents.source) `
+                    $null `
+                    ([string]$projectAgents.destination) `
+                    'project-owned' `
+                    'migrate-existing-agents' `
+                    $true
+                $MigrationCreatesProjectAgents = $true
+            } else {
+                Add-PlanAction `
+                    'backup' `
+                    ([string]$projectAgents.id) `
+                    ([string]$projectAgents.source) `
+                    $null `
+                    ([string]$projectAgents.destination) `
+                    'project-owned' `
+                    'preserve-existing-agents' `
+                    $true
             }
         }
     }
-    Install-SourceFile `
-        (Join-Path $RepositoryRoot 'SDP-DOCUMENT-GUIDE.md') `
-        (Join-Path $SdpRoot 'SDP-DOCUMENT-GUIDE.md') `
-        'ProjectOwned' `
-        $false
+
+    :entryLoop foreach ($entry in $Entries) {
+        switch ([string]$entry.selectionPolicy) {
+            'default' { }
+            'initialize-only' {
+                if (-not $InitializeProjectStructure) { continue entryLoop }
+            }
+            default { throw "Unsupported selectionPolicy '$($entry.selectionPolicy)'." }
+        }
+        if ($MigrationCreatesProjectAgents -and
+            ([string]$entry.id -eq [string]$projectAgents.id)) {
+            continue
+        }
+
+        $destination = [string]$entry.destination
+        $destinationPath = Join-PortablePath $ProjectRoot $destination "entry '$($entry.id)' destination"
+        $source = if ([string]$entry.kind -eq 'copied') { [string]$entry.source } else { $null }
+        $generator = if ([string]$entry.kind -eq 'generated') { [string]$entry.generator } else { $null }
+        $desiredContent = Get-EntryContent $entry
+
+        if (-not (Test-Path -LiteralPath $destinationPath -PathType Leaf)) {
+            switch ([string]$entry.installPolicy) {
+                'always' { }
+                'missing-only' { }
+                default { throw "Unsupported installPolicy '$($entry.installPolicy)'." }
+            }
+            $action = if ([string]$entry.kind -eq 'generated') { 'generate' } else { 'create' }
+            $reason = if ([string]$entry.kind -eq 'generated') {
+                'missing-generated-target'
+            } else {
+                'missing-target'
+            }
+            Add-PlanAction `
+                $action `
+                ([string]$entry.id) `
+                $source `
+                $generator `
+                $destination `
+                ([string]$entry.ownership) `
+                $reason `
+                $true
+            continue
+        }
+
+        $existingContent = [System.IO.File]::ReadAllText($destinationPath)
+        if ($existingContent -ceq $desiredContent) {
+            Add-PlanAction `
+                'unchanged' `
+                ([string]$entry.id) `
+                $source `
+                $generator `
+                $destination `
+                ([string]$entry.ownership) `
+                'content-matches' `
+                $false
+            continue
+        }
+        if ([string]$entry.installPolicy -eq 'missing-only') {
+            Add-PlanAction `
+                'preserve' `
+                ([string]$entry.id) `
+                $source `
+                $generator `
+                $destination `
+                ([string]$entry.ownership) `
+                'missing-only-content' `
+                $false
+            continue
+        }
+        if ([string]$entry.installPolicy -cne 'always') {
+            throw "Unsupported installPolicy '$($entry.installPolicy)'."
+        }
+
+        $forceRefresh = switch ([string]$entry.forcePolicy) {
+            'replace-managed' { [bool]$ForceManagedFiles }
+            'preserve' { $false }
+            default { throw "Unsupported forcePolicy '$($entry.forcePolicy)'." }
+        }
+
+        $refreshManaged = switch ([string]$entry.refreshPolicy) {
+            'always' { $true }
+            'upgrade-or-force' { $IsUpgrade -or $forceRefresh }
+            'never' { $false }
+            default { throw "Unsupported refreshPolicy '$($entry.refreshPolicy)'." }
+        }
+        if (-not $refreshManaged) {
+            Add-PlanAction `
+                'preserve' `
+                ([string]$entry.id) `
+                $source `
+                $generator `
+                $destination `
+                'toolkit-managed' `
+                'managed-content-differs' `
+                $false
+            continue
+        }
+        switch ([string]$entry.backupPolicy) {
+            'before-replace' {
+                Add-PlanAction `
+                    'backup' `
+                    ([string]$entry.id) `
+                    $source `
+                    $generator `
+                    $destination `
+                    ([string]$entry.ownership) `
+                    'backup-before-replace' `
+                    $true
+            }
+            'migration-aware' {
+                if ([string]$entry.migrationPolicy -cne 'preserve-existing-agents') {
+                    throw "Entry '$($entry.id)' has unsupported migration-aware backup semantics."
+                }
+            }
+            'none' { }
+            default { throw "Unsupported backupPolicy '$($entry.backupPolicy)'." }
+        }
+        $refreshAction = if ([string]$entry.kind -eq 'generated') { 'generate' } else { 'replace' }
+        $refreshReason = if ([string]$entry.kind -eq 'generated') {
+            'refresh-generated-content'
+        } else {
+            'refresh-managed-content'
+        }
+        Add-PlanAction `
+            $refreshAction `
+            ([string]$entry.id) `
+            $source `
+            $generator `
+            $destination `
+            'toolkit-managed' `
+            $refreshReason `
+            $true
+    }
+}
+
+$Plan = [pscustomobject][ordered]@{
+    schemaVersion = '1.0'
+    manifestSchemaVersion = [string]$InstallManifest.schemaVersion
+    mode = 'plan'
+    toolkitVersion = $ToolkitVersion
+    installedToolkitVersion = if ([string]::IsNullOrWhiteSpace($InstalledToolkitVersion)) {
+        $null
+    } else {
+        $InstalledToolkitVersion
+    }
+    options = [pscustomobject][ordered]@{
+        initializeProjectStructure = [bool]$InitializeProjectStructure
+        forceManagedFiles = [bool]$ForceManagedFiles
+    }
+    canApply = -not [bool]$BlockReason
+    actions = [object[]]$script:PlanActions
+}
+
+if ($PlanJson) {
+    Write-Output ($Plan | ConvertTo-Json -Depth 20)
+    return
+}
+
+if ($BlockReason) {
+    Write-Warning "SDP installation blocked: $BlockReason"
+    throw 'Refusing to modify a project that failed installation preflight.'
+}
+
+$script:ProposedCount = 0
+$script:AppliedCount = 0
+$script:PreservedCount = 0
+$script:UnchangedCount = 0
+
+function Write-SdpAction {
+    param(
+        [ValidateSet('PROPOSED', 'APPLIED', 'PRESERVED', 'UNCHANGED', 'WARNING')]
+        [string]$Kind,
+        [string]$Message
+    )
+
+    switch ($Kind) {
+        'PROPOSED' { $script:ProposedCount++ }
+        'APPLIED' { $script:AppliedCount++ }
+        'PRESERVED' { $script:PreservedCount++ }
+        'UNCHANGED' { $script:UnchangedCount++ }
+    }
+    Write-Host "[$Kind] $Message"
+}
+
+function Write-ProjectContent {
+    param([string]$Relative, [string]$Content)
+
+    $destination = Join-PortablePath $ProjectRoot $Relative "action destination '$Relative'"
+    $parent = Split-Path -Parent $destination
+    New-Item -ItemType Directory -Force -Path $parent | Out-Null
+    [System.IO.File]::WriteAllText(
+        $destination,
+        $Content,
+        [System.Text.UTF8Encoding]::new($false)
+    )
+}
+
+function Backup-ProjectFile {
+    param([string]$Relative)
+
+    $source = Join-PortablePath $ProjectRoot $Relative "backup source '$Relative'"
+    if (-not (Test-Path -LiteralPath $source -PathType Leaf)) { return }
+    $destination = $BackupRoot
+    foreach ($segment in $Relative.Split('/')) {
+        $destination = Join-Path $destination $segment
+    }
+    $parent = Split-Path -Parent $destination
+    New-Item -ItemType Directory -Force -Path $parent | Out-Null
+    Copy-Item -LiteralPath $source -Destination $destination -Force
+    Write-SdpAction 'APPLIED' "Backed up $Relative"
+}
+
+if ($Preview) {
+    foreach ($action in $Plan.actions) {
+        switch ([string]$action.action) {
+            'preserve' { Write-SdpAction 'PRESERVED' "$($action.destination) ($($action.reason))" }
+            'unchanged' { Write-SdpAction 'UNCHANGED' $action.destination }
+            'warn' { Write-SdpAction 'WARNING' "$($action.destination) ($($action.reason))" }
+            default { Write-SdpAction 'PROPOSED' "$($action.action) $($action.destination) ($($action.reason))" }
+        }
+    }
+} else {
+    $managedAgentsDestination = [string]$EntryById['managed-agents'].destination
+    foreach ($action in $Plan.actions) {
+        if ([string]$action.reason -eq 'migrate-existing-agents') {
+            $source = Join-PortablePath $ProjectRoot $managedAgentsDestination 'AGENTS migration source'
+            $destination = Join-PortablePath $ProjectRoot ([string]$action.destination) 'AGENTS migration destination'
+            Copy-Item -LiteralPath $source -Destination $destination
+            Write-SdpAction 'APPLIED' "Migrated existing AGENTS.md to $($action.destination)"
+            continue
+        }
+        if ([string]$action.reason -eq 'preserve-existing-agents') {
+            $source = Join-PortablePath $ProjectRoot $managedAgentsDestination 'AGENTS preservation source'
+            $migrationRelative = "AGENTS-project.migration-$RunStamp.md"
+            $destination = Join-PortablePath $ProjectRoot $migrationRelative 'AGENTS preservation destination'
+            Copy-Item -LiteralPath $source -Destination $destination
+            Write-SdpAction 'APPLIED' "Preserved existing AGENTS.md as $migrationRelative"
+            continue
+        }
+
+        switch ([string]$action.action) {
+            'backup' {
+                Backup-ProjectFile ([string]$action.destination)
+            }
+            'create' {
+                $sourcePath = Join-PortablePath $RepositoryRoot ([string]$action.source) "entry '$($action.entryId)' source"
+                Write-ProjectContent ([string]$action.destination) ([System.IO.File]::ReadAllText($sourcePath))
+                Write-SdpAction 'APPLIED' "Created $($action.destination) ($($action.ownership))"
+            }
+            'replace' {
+                $sourcePath = Join-PortablePath $RepositoryRoot ([string]$action.source) "entry '$($action.entryId)' source"
+                Write-ProjectContent ([string]$action.destination) ([System.IO.File]::ReadAllText($sourcePath))
+                Write-SdpAction 'APPLIED' "Replaced $($action.destination)"
+            }
+            'generate' {
+                Write-ProjectContent ([string]$action.destination) (Get-GeneratorContent ([string]$action.generator))
+                Write-SdpAction 'APPLIED' "Generated $($action.destination)"
+            }
+            'preserve' {
+                Write-SdpAction 'PRESERVED' "$($action.destination) ($($action.reason))"
+            }
+            'unchanged' {
+                Write-SdpAction 'UNCHANGED' $action.destination
+            }
+            'warn' {
+                Write-SdpAction 'WARNING' "$($action.destination) ($($action.reason))"
+            }
+            'block' {
+                throw "Unexpected blocked action during apply: $($action.reason)"
+            }
+            default {
+                throw "Unsupported planned action '$($action.action)'."
+            }
+        }
+    }
 }
 
 Write-Host ''
 Write-Host 'SDP installation summary'
 Write-Host "  Toolkit version: $ToolkitVersion"
+Write-Host "  Manifest schema: $($InstallManifest.schemaVersion)"
 Write-Host "  Mode: $(if ($Preview) { 'preview' } else { 'apply' })"
 Write-Host "  Upgrade: $IsUpgrade"
 Write-Host "  Proposed: $script:ProposedCount"

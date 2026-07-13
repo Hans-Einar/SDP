@@ -23,10 +23,10 @@ small coherent capability across the required layers.
 
 ```text
 Project
-├── public release identity (SemVer)
-└── Sprint or Refactor
-    └── Iteration
-        └── Slice or bounded Fix
+|-- public release identity (SemVer)
+`-- Sprint or Refactor
+    `-- Iteration
+        `-- Slice or bounded Fix
 ```
 
 A revision is only a small correction inside the same planned Slice/Fix. It is
@@ -40,52 +40,47 @@ work boundary. Workers implement one contract. Reviewers inspect the actual diff
 and evidence independently. Architects own long-term boundaries and
 compatibility.
 
-Task skills add concrete release, versioning, auditing, verification,
-traceability and refactor procedures.
-
 ## Versions and manifests
 
-- Toolkit release facts: root `SDP.manifest.yaml`
-- Installed Toolkit facts: `SDP/Framework/installed-toolkit.manifest.yaml`
-- Project release/work state: `SDP/SDP-project.manifest.yaml`
-- Dynamic Git/build identity: generated JSON
+- Toolkit release facts: root `SDP.manifest.yaml`;
+- installable inventory and policies: `Toolkit/SDP-install.manifest.json`;
+- installed Toolkit facts: `SDP/Framework/installed-toolkit.manifest.yaml`;
+- project release/work state: `SDP/SDP-project.manifest.yaml`;
+- dynamic Git/build identity: generated JSON.
 
-Released software and Toolkits use SemVer. Sprint/Iteration/Slice/Fix identities
-remain separately addressable. Unreleased builds must not present themselves as
-released.
+Released software and Toolkits use SemVer. Work identities remain separately
+addressable. Unreleased builds must not present themselves as released.
 
-## Release notes and history
+## Release notes and traceability
 
-All notable changes enter the editable `Unreleased` section. At release
-preparation, selected entries move into a dated version section. Released
-sections are immutable; corrections are explicit events, never silent edits.
+Notable changes enter editable `Unreleased`. At release preparation selected
+entries move into a dated version section. Released sections are immutable;
+corrections are explicit events.
 
-## Traceability
+CurrentIndex records actual current state, Relations connects stable IDs and the
+Ledger records append-only transitions. Publication events require real
+tag/commit/GitHub Release identities.
 
-`CurrentIndex.yaml` records actual current state. `Relations.yaml` connects stable
-IDs. `Ledger.ndjson` records append-only transitions, including release events.
-Publication events require real tag/commit/GitHub Release identities.
-
-## Verification and release gate
+## Verification and publication
 
 Completion requires evidence appropriate to the work. A release gate checks
 included work, verification, review findings, schemas, traceability, notes,
 version agreement, migration, clean state, tag uniqueness and immutable history.
 Missing evidence is failure, not an inference.
 
-## Truthful two-phase publication
-
-A release-preparation commit cannot claim a future GitHub Release or contain its
-own SHA. SDP therefore prepares and approves first, publishes only after explicit
-human authorization, then adds a small reconciliation commit recording the real
-tag and GitHub Release.
+Release preparation cannot claim a future GitHub Release or contain its own SHA.
+SDP therefore prepares and approves first, publishes only after explicit human
+authorization, then reconciles the real tag and Release identity.
 
 ## Installation and local adaptation
 
-The installer refreshes clearly managed AGENTS/Framework/skill files while
-preserving project-owned documents. Missing manifests, notes and templates are
-added safely. Supported old installations migrate additively; unsupported schemas
-stop without mutation.
+The canonical JSON installation manifest drives managed refresh, missing-only
+project seeds and generation. Neutral project templates live physically under
+`Toolkit/project-templates/`. The Toolkit repository's root lifecycle, release,
+review, verification and traceability records are live instance state and are
+never template inputs.
 
+PowerShell and external clients must preserve project-owned files, reject unsafe
+or unsupported contracts before mutation and expose a mutation-free plan.
 Projects may extend SDP, but local rules must preserve stable IDs, truthful
-traceability, review independence, evidence requirements and publication safety.
+traceability, review independence, evidence and publication safety.
