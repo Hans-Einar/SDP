@@ -17,7 +17,7 @@ iterations:
       - SPS-001
 slices:
   SPS-001:
-    status: review
+    status: rework
     sprint: Sprint-001
     iteration: SPI-001
     release: REL-0.2.0
@@ -31,6 +31,7 @@ slices:
     reviews:
       - REV-SPS-001-001
       - REV-SPS-001-002
+      - REV-SPS-001-003
 fixes: {}
 reviews:
   REV-SPS-001-001:
@@ -47,6 +48,13 @@ reviews:
     release: REL-0.2.0
     verification: VER-SPS-001-002
     commit: 8f22614ada03effe0d7f044315ee76414554d098
+  REV-SPS-001-003:
+    status: changes-required
+    path: CodeReview/REV-SPS-001-003.md
+    slice: SPS-001
+    release: REL-0.2.0
+    verification: VER-SPS-001-003
+    commit: d0f0efb49467c09a182ca4fdd4fe8c4a68310326
 verification:
   VER-SPS-001:
     status: passed

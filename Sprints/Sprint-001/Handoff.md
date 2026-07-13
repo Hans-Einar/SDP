@@ -3,7 +3,7 @@
 Active Sprint: `Sprint-001`
 Active Iteration: `SPI-001`
 Active Slice: `SPS-001`
-Status: bounded remediation verified; fresh approval pending
+Status: single high residual requires rework
 
 ## Entry points
 
@@ -23,11 +23,10 @@ fresh independent Reviewer.
 
 ## Next action
 
-Assign another separate fresh Reviewer the complete diff, both changes-required
-reviews, bounded Worker commit
-`25fdf5cfe5a119192f512bf5322a15776e26836f` and verification
-`VER-SPS-001-003`. The Reviewer must reproduce physical identity and destination
-topology counterexamples, confirm all seven governing pairs and classify every
-prior finding. Do not open the draft PR or close the Slice with unresolved
-blocking, high or medium findings. Linux and Windows GitHub Actions evidence
-remains required before final closure.
+Assign a fresh Worker only H1-R3 from `CodeReview/REV-SPS-001-003.md`: reject or
+identity-prove normalization-sensitive extended drive/UNC inputs and add project
+plus backup/source trailing-space/dot zero-mutation regressions while preserving
+canonical extended paths. Rerun the complete matrix, record exact verification
+and obtain another separate fresh approval. Do not open the draft PR or close
+the Slice with unresolved blocking, high or medium findings. Linux and Windows
+GitHub Actions evidence remains required before final closure.

@@ -16,7 +16,7 @@ Status: active
 
 ### SPS-001 — Canonical installation contract v1
 
-Status: review
+Status: rework
 
 #### Goal
 
@@ -167,6 +167,11 @@ passed parser/schema sanity, 73 Python tests, the full Windows PowerShell suite,
 both Toolkit validators and exact pinned `gh-sdp` project validation. The Slice
 has returned to review and still requires a separate fresh approval before draft
 PR publication.
+
+Third independent review `REV-SPS-001-003` closed H3-M8-R2 and M10-R2, but
+reproduced one high H1-R3 wrong-project mutation caused by normalization of a
+distinct extended-only trailing-space/dot path. The Slice returned to rework for
+this single bounded path-normalization finding.
 
 #### Completion signal
 

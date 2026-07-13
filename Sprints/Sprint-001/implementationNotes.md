@@ -2,7 +2,7 @@
 
 ## SPS-001
 
-Status: review — bounded remediation verified; fresh approval required
+Status: rework — third independent review found one high residual
 
 ### Master preparation
 
@@ -101,3 +101,11 @@ clarifies dirty-checkout `sourceCommit` semantics. Master verification
 validator invocations and clean publication-state checks. The local/UNC,
 extended and integrated short-name cases all ran; only file-symlink creation was
 unavailable on this host.
+
+### Third review gate
+
+Fresh review `REV-SPS-001-003` closed the destination-topology and seven-pair
+findings, but reproduced H1-R3: a normalization-sensitive `\\?\` project path
+could be redirected to a different ordinary directory and applied there. The
+next Worker is limited to raw extended-path equivalence/rejection and trailing-
+space/dot zero-mutation regressions.
