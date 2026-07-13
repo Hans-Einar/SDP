@@ -16,7 +16,7 @@ Status: active
 
 ### SPS-001 — Canonical installation contract v1
 
-Status: review
+Status: rework
 
 #### Goal
 
@@ -133,6 +133,18 @@ release publication.
 - Require Linux contract tests and Windows installer tests from GitHub Actions on
   the pushed draft-PR head.
 - Require a fresh independent Reviewer to inspect the actual diff and evidence.
+
+#### Review gate REV-SPS-001-001
+
+The first independent review of candidate
+`877fa7693359e7ff74e8dde9284654a8a61ef341` returned changes required. It found
+five high and ten medium issues covering physical containment, YAML and manifest
+preflight, Windows path aliases, exact `gh-sdp` compatibility, plan/apply
+equivalence, SemVer, traceability, publication semantics and governing metadata.
+The authoritative finding and remediation contract is
+`CodeReview/REV-SPS-001-001.md`. `SPS-001` remains active in rework until a fresh
+Worker remedies the findings and a separate fresh Reviewer approves the new
+exact candidate.
 
 #### Completion signal
 

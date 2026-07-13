@@ -2,7 +2,7 @@
 
 ## SPS-001
 
-Status: review — implementation and verification complete; independent review pending
+Status: rework — independent review changes required
 
 ### Master preparation
 
@@ -58,10 +58,19 @@ Worker implementation is committed at
 Master verification is recorded in `Verification/VER-SPS-001.md` and passed on
 exact clean candidate `ce9278b8b78f9c320a65799aefd13101582d1eb8`: Toolkit
 validation, 49 Python tests, expanded PowerShell fixtures, archive/project
-validation, diff check and publication-state checks passed. Independent review
-is pending.
+validation, diff check and publication-state checks passed.
+
+Fresh independent review `REV-SPS-001-001` inspected integrated candidate
+`877fa7693359e7ff74e8dde9284654a8a61ef341` and returned changes required: five
+high and ten medium findings. The original verification is retained as evidence
+for its exact commit, but is superseded as a completion gate. Remediation must
+cover every finding in `CodeReview/REV-SPS-001-001.md`, rerun the full evidence
+matrix and receive a new independent review.
 
 ### Residual limitations
 
+- Physical-containment, strict preflight, Windows-alias, exact `gh-sdp`
+  compatibility and plan/validator semantic findings remain open in
+  `REV-SPS-001-001`.
 - Linux evidence remains pending from draft-PR CI.
 - This is Slice verification, not the final `0.2.0` release gate.

@@ -3,7 +3,7 @@
 Active Sprint: `Sprint-001`
 Active Iteration: `SPI-001`
 Active Slice: `SPS-001`
-Status: independent review pending
+Status: rework required by independent review
 
 ## Entry points
 
@@ -23,8 +23,10 @@ fresh independent Reviewer.
 
 ## Next action
 
-Assign a fresh independent Reviewer to exact candidate
-`ce9278b8b78f9c320a65799aefd13101582d1eb8`, the full `origin/main...HEAD` diff
-and `Verification/VER-SPS-001.md`. Do not close the Slice with unresolved
-blocking, high or medium findings. Linux GitHub Actions evidence remains required
-before final closure.
+Assign a fresh Worker the complete remediation contract in
+`CodeReview/REV-SPS-001-001.md`. The Worker must address all five high and ten
+medium findings, add the required adversarial and exact `gh-sdp` regressions,
+and rerun the full evidence matrix. Then record a new exact verification
+candidate and assign a separate fresh Reviewer. Do not open the draft PR or close
+the Slice with unresolved blocking, high or medium findings. Linux GitHub Actions
+evidence remains required before final closure.
