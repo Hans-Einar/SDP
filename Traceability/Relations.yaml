@@ -1,9 +1,31 @@
 requirements: {}
 designs: {}
-sprints: {}
+sprints:
+  Sprint-001:
+    status: active
+    path: Sprints/Sprint-001/ScrumIterations.md
+    release: REL-0.2.0
+    iterations:
+      - SPI-001
 refactors: {}
-iterations: {}
-slices: {}
+iterations:
+  SPI-001:
+    status: active
+    sprint: Sprint-001
+    path: Sprints/Sprint-001/ScrumIterations.md
+    slices:
+      - SPS-001
+slices:
+  SPS-001:
+    status: active
+    sprint: Sprint-001
+    iteration: SPI-001
+    release: REL-0.2.0
+    path: Sprints/Sprint-001/ScrumIterations.md
+    study: Sprints/Sprint-001/InstallationContractStudy.md
+    implementationNotes: Sprints/Sprint-001/implementationNotes.md
+    verification: null
+    review: null
 fixes: {}
 reviews: {}
 verification: {}
@@ -15,6 +37,10 @@ releases:
     releaseNotes: RELEASE-NOTES.md
     manifest: SDP.manifest.yaml
     releaseRecord: Releases/REL-0.2.0.yaml
+    sprints:
+      - Sprint-001
+    slices:
+      - SPS-001
     verification: []
     reviews: []
     releaseCommit: null

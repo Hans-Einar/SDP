@@ -9,10 +9,10 @@ release:
   state: unreleased
 
 active:
-  sprint: null
+  sprint: Sprint-001
   refactor: null
-  iteration: null
-  slice: null
+  iteration: SPI-001
+  slice: SPS-001
   fix: null
   revision: null
 
