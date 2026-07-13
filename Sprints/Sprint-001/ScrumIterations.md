@@ -16,7 +16,7 @@ Status: active
 
 ### SPS-001 — Canonical installation contract v1
 
-Status: rework
+Status: review
 
 #### Goal
 
@@ -145,6 +145,14 @@ The authoritative finding and remediation contract is
 `CodeReview/REV-SPS-001-001.md`. `SPS-001` remains active in rework until a fresh
 Worker remedies the findings and a separate fresh Reviewer approves the new
 exact candidate.
+
+Remediation Worker commit
+`f81a75b96fdcc47bff4a11e9381bb62ff459a494` addresses the complete review
+contract. Master verification `VER-SPS-001-002` passed 72 Python tests, the full
+PowerShell suite, both Toolkit validator invocations and exact offline `gh-sdp`
+project validation. The Slice has returned to review; it is not complete until a
+fresh independent Reviewer approves the integrated candidate and draft-PR CI
+provides Linux and Windows evidence.
 
 #### Completion signal
 

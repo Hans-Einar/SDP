@@ -2,7 +2,7 @@
 
 ## SPS-001
 
-Status: rework — independent review changes required
+Status: review — remediation verified; fresh independent review required
 
 ### Master preparation
 
@@ -69,8 +69,15 @@ matrix and receive a new independent review.
 
 ### Residual limitations
 
-- Physical-containment, strict preflight, Windows-alias, exact `gh-sdp`
-  compatibility and plan/validator semantic findings remain open in
-  `REV-SPS-001-001`.
+- Remediation Worker commit
+  `f81a75b96fdcc47bff4a11e9381bb62ff459a494` closes all five high and ten
+  medium findings with expanded installer, validator, schema, exact `gh-sdp`,
+  documentation and adversarial-test coverage.
+- Master verification `VER-SPS-001-002` passed on that exact clean candidate:
+  72 Python tests, the full Windows PowerShell fixture suite, both Toolkit
+  invocations, exact pinned project validation and diff/publication checks.
+- File-symlink creation was unavailable on the Windows host; junction/reparse
+  coverage passed. A fresh Reviewer must decide the remediated gate on the
+  integrated candidate.
 - Linux evidence remains pending from draft-PR CI.
 - This is Slice verification, not the final `0.2.0` release gate.
