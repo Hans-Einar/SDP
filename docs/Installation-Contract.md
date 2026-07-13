@@ -31,21 +31,37 @@ not end in a dot or space, are not Windows device aliases (including `CON`,
 `NUL`, `COM1`-`COM9`, `LPT1`-`LPT9`, superscript-digit `COM`/`LPT` aliases,
 `CLOCK$`, `CONIN$` and `CONOUT$`, with or without an extension), and are never
 `.git` in any case. Collision checks use a case-folded, physical-alias-normalized
-key so Windows-equivalent destinations cannot coexist.
+key so Windows-equivalent destinations cannot coexist. A destination also may
+not be a case-insensitive ancestor or descendant of another destination, and
+every existing destination ancestor must be a directory before a plan can be
+applicable.
 
 Lexical containment is insufficient. Before reading or writing, a client must
 either resolve every existing source/target ancestor and prove that its physical
 path remains under the intended root, or reject the link/reparse-point chain.
 The PowerShell reference rejects reparse points and symlinks in the repository
 root, project root, backup root and every existing source/destination ancestor,
-then repeats the check immediately before mutation. A client also rejects
-duplicate entry IDs or destinations, missing sources, unsupported schema
-versions and paths outside their permitted roots. It never interprets a manifest
-path relative to the process working directory.
+then repeats the check immediately before mutation. On Windows it opens each
+existing root and ancestor and compares the OS-provided volume serial and
+128-bit file ID. Source/project and source/backup tree overlap is rejected in
+both ancestor directions across local, UNC, `\\?\` drive/UNC and available 8.3
+aliases. Failure to acquire a required identity is a preflight failure. Distinct
+same-volume siblings remain valid when both ancestor chains reach the same
+visible namespace root. Different share roots on the same device are rejected
+when neither chain exposes enough ancestry to prove separation. PowerShell 5.1
+normalizes supported `\\?\X:\...` and `\\?\UNC\...` aliases; other device
+namespaces and extended-only paths that the host cannot address fail closed.
+
+A client also rejects duplicate entry IDs or destinations, missing sources,
+unsupported schema versions and paths outside their permitted roots. It never
+interprets a manifest path relative to the process working directory.
 
 The source need not be a Git checkout. When no trustworthy repository HEAD is
 available, generated installed facts record `sourceCommit: null`. A directory or
-archive name is not commit evidence.
+archive name is not commit evidence. In a Git checkout, a non-null
+`sourceCommit` records the available `HEAD` baseline. If the checkout is dirty,
+that value is not an attestation that the installed bytes equal the named
+commit.
 
 ## Entry model
 
@@ -110,8 +126,10 @@ release notes, Ledger history, review or verification evidence.
 The manifest declares both v1 generators. `installed-toolkit-manifest` supplies
 the static Toolkit, Framework, AGENTS contract, installer, skill and capability
 facts. Its installation timestamp is UTC and is preserved on a same-Toolkit-
-version reinstall. Its source commit is repository HEAD when trustworthy and
-otherwise null. Installed-manifest equality is semantic: mapping order and
+version reinstall. Its source commit is the available repository HEAD when Git
+identity is trustworthy and otherwise null; checkout cleanliness is not encoded,
+so the field alone does not attest installed-byte equality. Installed-manifest
+equality is semantic: mapping order and
 equivalent YAML quoting do not cause a refresh or backup, while changed facts,
 ordered capabilities, source commit or Toolkit build identity do. `empty-ledger`
 emits an empty NDJSON file.

@@ -29,11 +29,23 @@ $PathComparison = if ([System.IO.Path]::DirectorySeparatorChar -eq '\') {
 $IsWindowsPlatform = [System.IO.Path]::DirectorySeparatorChar -eq '\'
 if ($IsWindowsPlatform -and (-not ('Sdp.Install.NativePath' -as [type]))) {
     Add-Type -TypeDefinition @'
+using System;
+using System.ComponentModel;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Text;
+using Microsoft.Win32.SafeHandles;
 
 namespace Sdp.Install {
     public static class NativePath {
+        [StructLayout(LayoutKind.Sequential)]
+        private struct FileIdInformation {
+            public ulong VolumeSerialNumber;
+
+            [MarshalAs(UnmanagedType.ByValArray, SizeConst = 16)]
+            public byte[] FileId;
+        }
+
         [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true,
             EntryPoint = "GetLongPathNameW")]
         public static extern uint GetLongPathName(
@@ -41,6 +53,70 @@ namespace Sdp.Install {
             StringBuilder longPath,
             uint bufferLength
         );
+
+        [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true,
+            EntryPoint = "CreateFileW")]
+        private static extern SafeFileHandle CreateFile(
+            string fileName,
+            uint desiredAccess,
+            uint shareMode,
+            IntPtr securityAttributes,
+            uint creationDisposition,
+            uint flagsAndAttributes,
+            IntPtr templateFile
+        );
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool GetFileInformationByHandleEx(
+            SafeFileHandle file,
+            int informationClass,
+            out FileIdInformation information,
+            uint bufferSize
+        );
+
+        public static string GetFileSystemIdentity(string path) {
+            const uint ShareReadWriteDelete = 0x00000001 | 0x00000002 | 0x00000004;
+            const uint OpenExisting = 3;
+            const uint FileFlagBackupSemantics = 0x02000000;
+
+            using (SafeFileHandle handle = CreateFile(
+                path,
+                0,
+                ShareReadWriteDelete,
+                IntPtr.Zero,
+                OpenExisting,
+                FileFlagBackupSemantics,
+                IntPtr.Zero
+            )) {
+                if (handle.IsInvalid) {
+                    throw new Win32Exception(
+                        Marshal.GetLastWin32Error(),
+                        "Cannot open path for physical identity"
+                    );
+                }
+                FileIdInformation information;
+                uint bufferSize = (uint)Marshal.SizeOf(typeof(FileIdInformation));
+                const int FileIdInfo = 18;
+                if (!GetFileInformationByHandleEx(
+                    handle,
+                    FileIdInfo,
+                    out information,
+                    bufferSize
+                )) {
+                    throw new Win32Exception(
+                        Marshal.GetLastWin32Error(),
+                        "Cannot read physical path identity"
+                    );
+                }
+                if (information.FileId == null || information.FileId.Length != 16) {
+                    throw new InvalidOperationException("The operating system returned an invalid file ID");
+                }
+                return information.VolumeSerialNumber.ToString("X16", CultureInfo.InvariantCulture)
+                    + ":"
+                    + BitConverter.ToString(information.FileId).Replace("-", "");
+            }
+        }
     }
 }
 '@
@@ -392,6 +468,29 @@ function Assert-AllowedValue {
     }
 }
 
+function Get-ProviderCompatibleFullPath {
+    param([string]$Path, [string]$Label)
+
+    if ([string]::IsNullOrWhiteSpace($Path)) {
+        throw "$Label must be a non-empty path."
+    }
+    $candidate = $Path
+    if ($IsWindowsPlatform) {
+        if ($candidate.StartsWith('\\?\UNC\', [System.StringComparison]::OrdinalIgnoreCase)) {
+            $candidate = '\\' + $candidate.Substring(8)
+        } elseif ($candidate -cmatch '^\\\\\?\\[A-Za-z]:\\') {
+            $candidate = $candidate.Substring(4)
+        } elseif ($candidate.StartsWith('\\?\', [System.StringComparison]::OrdinalIgnoreCase)) {
+            throw "$Label uses an unsupported extended device namespace."
+        }
+    }
+    try {
+        return [System.IO.Path]::GetFullPath($candidate)
+    } catch {
+        throw "$Label is not a valid filesystem path: $($_.Exception.Message)"
+    }
+}
+
 function Join-PortablePath {
     param([string]$Base, [string]$Relative, [string]$Label)
 
@@ -470,6 +569,152 @@ function Assert-ContainedPhysicalPath {
     }
     Assert-NoLinkOrReparsePointInExistingAncestors $fullRoot "$Label root"
     Assert-NoLinkOrReparsePointInExistingAncestors $fullPath $Label
+}
+
+function Get-PhysicalPathIdentity {
+    param([string]$Path, [string]$Label)
+
+    $full = Get-ProviderCompatibleFullPath $Path $Label
+    if (-not (Test-Path -LiteralPath $full)) {
+        throw "$Label does not exist for physical identity: $full"
+    }
+    Assert-NoLinkOrReparsePointInExistingAncestors $full $Label
+    if (-not $IsWindowsPlatform) {
+        return Get-AliasNormalizedFullPath $full $Label
+    }
+    try {
+        return [Sdp.Install.NativePath]::GetFileSystemIdentity($full)
+    } catch {
+        throw "$Label physical/device identity is unavailable: $($_.Exception.Message)"
+    }
+}
+
+function Get-PhysicalPathState {
+    param(
+        [string]$Path,
+        [string]$Label,
+        [switch]$RequireExistingRoot
+    )
+
+    $full = Get-ProviderCompatibleFullPath $Path $Label
+    $rootExists = Test-Path -LiteralPath $full
+    if ($RequireExistingRoot -and (-not $rootExists)) {
+        throw "$Label must be an existing directory: $full"
+    }
+    if ($rootExists -and (-not (Test-Path -LiteralPath $full -PathType Container))) {
+        throw "$Label must be a directory: $full"
+    }
+
+    $probe = $full
+    while (-not (Test-Path -LiteralPath $probe)) {
+        $parent = Split-Path -Parent $probe
+        if ([string]::IsNullOrWhiteSpace($parent) -or
+            $parent.Equals($probe, $PathComparison)) {
+            throw "$Label has no existing ancestor whose physical identity can be determined."
+        }
+        $probe = $parent
+    }
+
+    $ancestorIdentities = @{}
+    $nearestExistingIdentity = $null
+    $namespaceRootIdentity = $null
+    $current = $probe
+    while (-not [string]::IsNullOrWhiteSpace($current)) {
+        if (-not (Test-Path -LiteralPath $current -PathType Container)) {
+            throw "$Label has an existing non-directory ancestor: $current"
+        }
+        $identity = Get-PhysicalPathIdentity $current "$Label ancestor '$current'"
+        if ($null -eq $nearestExistingIdentity) {
+            $nearestExistingIdentity = $identity
+        }
+        $namespaceRootIdentity = $identity
+        $ancestorIdentities[$identity] = $current
+        $parent = Split-Path -Parent $current
+        if ([string]::IsNullOrWhiteSpace($parent) -or
+            $parent.Equals($current, $PathComparison)) {
+            break
+        }
+        $current = $parent
+    }
+
+    $rootIdentity = if ($rootExists) {
+        Get-PhysicalPathIdentity $full $Label
+    } else {
+        $null
+    }
+    return [pscustomobject]@{
+        FullPath = $full
+        RootExists = [bool]$rootExists
+        RootIdentity = $rootIdentity
+        VolumeIdentity = ([string]$nearestExistingIdentity).Split(':')[0]
+        NamespaceRootIdentity = $namespaceRootIdentity
+        AncestorIdentities = $ancestorIdentities
+    }
+}
+
+function Assert-NoPhysicalTreeOverlap {
+    param(
+        $SourceState,
+        $OtherState,
+        [string]$Message
+    )
+
+    if ([string]::IsNullOrWhiteSpace([string]$SourceState.RootIdentity)) {
+        throw 'The SDP source root has no physical/device identity.'
+    }
+    $otherIsInsideSource = $OtherState.AncestorIdentities.ContainsKey(
+        [string]$SourceState.RootIdentity
+    )
+    $sourceIsInsideOther = (-not [string]::IsNullOrWhiteSpace(
+        [string]$OtherState.RootIdentity
+    )) -and $SourceState.AncestorIdentities.ContainsKey(
+        [string]$OtherState.RootIdentity
+    )
+    if ($otherIsInsideSource -or $sourceIsInsideOther) {
+        throw $Message
+    }
+    if ($IsWindowsPlatform -and
+        ([string]$SourceState.VolumeIdentity -ceq [string]$OtherState.VolumeIdentity) -and
+        ([string]$SourceState.NamespaceRootIdentity -cne
+        [string]$OtherState.NamespaceRootIdentity)) {
+        throw "$Message The same device is exposed through incomparable filesystem roots."
+    }
+}
+
+function Assert-DestinationTopology {
+    param(
+        [string]$Root,
+        [string]$Destination,
+        [string]$Label
+    )
+
+    $fullRoot = Get-ProviderCompatibleFullPath $Root "$Label root"
+    $fullDestination = Get-ProviderCompatibleFullPath $Destination $Label
+    Assert-ContainedPhysicalPath $fullRoot $fullDestination $Label
+
+    if ([System.IO.Directory]::Exists($fullDestination) -or
+        ((Test-Path -LiteralPath $fullDestination) -and
+        (-not [System.IO.File]::Exists($fullDestination)))) {
+        throw "$Label exists but is not a file: $fullDestination"
+    }
+
+    $current = Split-Path -Parent $fullDestination
+    while (-not [string]::IsNullOrWhiteSpace($current)) {
+        if ([System.IO.File]::Exists($current) -or
+            ((Test-Path -LiteralPath $current) -and
+            (-not [System.IO.Directory]::Exists($current)))) {
+            throw "$Label has an existing non-directory ancestor: $current"
+        }
+        if ($current.Equals($fullRoot, $PathComparison)) {
+            break
+        }
+        $parent = Split-Path -Parent $current
+        if ([string]::IsNullOrWhiteSpace($parent) -or
+            $parent.Equals($current, $PathComparison)) {
+            throw "$Label escapes its root."
+        }
+        $current = $parent
+    }
 }
 
 function Get-AliasNormalizedFullPath {
@@ -578,8 +823,8 @@ function ConvertTo-YamlQuotedScalar {
     return '"' + $Value.Replace('\', '\\').Replace('"', '\"') + '"'
 }
 
-$ToolkitRoot = Split-Path -Parent $PSScriptRoot
-$RepositoryRoot = [System.IO.Path]::GetFullPath((Join-Path $ToolkitRoot '..'))
+$ToolkitRoot = Get-ProviderCompatibleFullPath (Split-Path -Parent $PSScriptRoot) 'Toolkit root'
+$RepositoryRoot = Get-ProviderCompatibleFullPath (Join-Path $ToolkitRoot '..') 'SDP repository root'
 Assert-NoLinkOrReparsePointInExistingAncestors $RepositoryRoot 'SDP repository root'
 $InstallManifestPath = Join-Path $ToolkitRoot 'SDP-install.manifest.json'
 Assert-ContainedPhysicalPath $RepositoryRoot $InstallManifestPath 'installation manifest source'
@@ -627,38 +872,39 @@ if ([string]$InstallManifest.sources.repositoryRoot -cne '..' -or
     throw 'Unsupported installation source-root or path-style contract.'
 }
 
-$ProjectRoot = [System.IO.Path]::GetFullPath($ProjectRoot)
+$ProjectRoot = Get-ProviderCompatibleFullPath $ProjectRoot 'consuming project root'
 if (-not (Test-Path -LiteralPath $ProjectRoot -PathType Container)) {
     throw "The consuming project root must be an existing directory: $ProjectRoot"
 }
 Assert-NoLinkOrReparsePointInExistingAncestors $ProjectRoot 'consuming project root'
+$RepositoryPhysicalState = Get-PhysicalPathState `
+    $RepositoryRoot `
+    'SDP repository root' `
+    -RequireExistingRoot
+$ProjectPhysicalState = Get-PhysicalPathState `
+    $ProjectRoot `
+    'consuming project root' `
+    -RequireExistingRoot
+Assert-NoPhysicalTreeOverlap `
+    $RepositoryPhysicalState `
+    $ProjectPhysicalState `
+    'The consuming project and SDP source repository must be physically separate trees.'
 $SdpRoot = Join-Path $ProjectRoot 'SDP'
 $ExpectedInstalledManifestRelative = 'SDP/Framework/installed-toolkit.manifest.yaml'
 $ExpectedProjectManifestRelative = 'SDP/SDP-project.manifest.yaml'
-
-$repositoryTrimmed = $RepositoryRoot.TrimEnd(
-    [System.IO.Path]::DirectorySeparatorChar,
-    [System.IO.Path]::AltDirectorySeparatorChar
-)
-$repositoryPrefix = $repositoryTrimmed + [System.IO.Path]::DirectorySeparatorChar
-$projectIsRepository = $ProjectRoot.Equals($repositoryTrimmed, $PathComparison)
-$projectIsInsideRepository = $ProjectRoot.StartsWith($repositoryPrefix, $PathComparison)
-if ($projectIsRepository -or $projectIsInsideRepository) {
-    throw "The consuming project must not be inside the SDP repository: $RepositoryRoot"
-}
 
 if ([string]::IsNullOrWhiteSpace($BackupRoot)) {
     $BackupRoot = Join-Path $SdpRoot ".sdp-backups\$RunStamp"
 } elseif (-not [System.IO.Path]::IsPathRooted($BackupRoot)) {
     $BackupRoot = Join-Path $ProjectRoot $BackupRoot
 }
-$BackupRoot = [System.IO.Path]::GetFullPath($BackupRoot)
+$BackupRoot = Get-ProviderCompatibleFullPath $BackupRoot 'backup root'
 Assert-NoLinkOrReparsePointInExistingAncestors $BackupRoot 'backup root'
-$backupIsRepository = $BackupRoot.Equals($repositoryTrimmed, $PathComparison)
-$backupIsInsideRepository = $BackupRoot.StartsWith($repositoryPrefix, $PathComparison)
-if ($backupIsRepository -or $backupIsInsideRepository) {
-    throw 'The backup root must not mutate the SDP source repository.'
-}
+$BackupPhysicalState = Get-PhysicalPathState $BackupRoot 'backup root'
+Assert-NoPhysicalTreeOverlap `
+    $RepositoryPhysicalState `
+    $BackupPhysicalState `
+    'The backup root and SDP source repository must be physically separate trees.'
 
 $ToolkitVersion = [string]$InstallManifest.toolkitVersion
 [void](ConvertTo-SemVer $ToolkitVersion)
@@ -981,7 +1227,23 @@ foreach ($entry in $Entries) {
     if ($DestinationByKey.ContainsKey($destinationKey)) {
         throw "Installation contract contains duplicate destination '$destination'."
     }
-    $DestinationByKey[$destinationKey] = $entryId
+    foreach ($existingDestinationKey in @($DestinationByKey.Keys)) {
+        if ($destinationKey.StartsWith(
+            [string]$existingDestinationKey + '/',
+            [System.StringComparison]::Ordinal
+        ) -or ([string]$existingDestinationKey).StartsWith(
+            $destinationKey + '/',
+            [System.StringComparison]::Ordinal
+        )) {
+            $existingDestination = $DestinationByKey[$existingDestinationKey]
+            throw "Installation contract contains ancestor/descendant destination conflict " +
+                "'$destination' and '$($existingDestination.Path)'."
+        }
+    }
+    $DestinationByKey[$destinationKey] = [pscustomobject]@{
+        Id = $entryId
+        Path = $destination
+    }
     [void](Join-PortablePath $ProjectRoot $destination "entry '$entryId' destination")
 
     if ($entryKind -eq 'copied') {
@@ -1097,7 +1359,10 @@ if (($MigrationEntries.Count -ne 1) -or
 $PhysicalDestinationByKey = @{}
 foreach ($entry in $Entries) {
     $destinationPath = Join-PortablePath $ProjectRoot ([string]$entry.destination) "entry '$($entry.id)' destination"
-    Assert-ContainedPhysicalPath $ProjectRoot $destinationPath "entry '$($entry.id)' destination"
+    Assert-DestinationTopology `
+        $ProjectRoot `
+        $destinationPath `
+        "entry '$($entry.id)' destination"
     $physicalDestination = Assert-NoPhysicalGitSegment `
         $ProjectRoot `
         $destinationPath `
@@ -1111,10 +1376,6 @@ foreach ($entry in $Entries) {
         throw "Installation contract contains physical-alias destination collision '$($entry.destination)'."
     }
     $PhysicalDestinationByKey[$physicalDestinationKey] = [string]$entry.id
-    if ((Test-Path -LiteralPath $destinationPath) -and
-        (-not (Test-Path -LiteralPath $destinationPath -PathType Leaf))) {
-        throw "Entry '$($entry.id)' destination exists but is not a file."
-    }
 }
 Assert-ContainedPhysicalPath $ProjectRoot $InstalledManifestPath 'installed manifest destination'
 Assert-ContainedPhysicalPath $ProjectRoot $ProjectManifestPath 'project manifest destination'
@@ -1133,10 +1394,11 @@ function Get-RepositorySourceCommit {
     if (($topLevelExitCode -ne 0) -or (-not $topLevel)) { return $null }
     try {
         $resolvedTop = [System.IO.Path]::GetFullPath(($topLevel | Select-Object -First 1).Trim())
+        $resolvedTopIdentity = Get-PhysicalPathIdentity $resolvedTop 'Git repository root'
     } catch {
         return $null
     }
-    if (-not $resolvedTop.Equals($repositoryTrimmed, $PathComparison)) { return $null }
+    if ($resolvedTopIdentity -cne [string]$RepositoryPhysicalState.RootIdentity) { return $null }
     try {
         $ErrorActionPreference = 'SilentlyContinue'
         $head = & git -C $RepositoryRoot rev-parse HEAD 2>$null
@@ -1718,6 +1980,32 @@ if ($BlockReason) {
     }
 }
 
+function Assert-PlannedDestinationTopology {
+    foreach ($action in $script:PlanActions) {
+        $destinationPath = Join-PortablePath `
+            $ProjectRoot `
+            ([string]$action.destination) `
+            "planned action '$($action.entryId)' destination"
+        Assert-DestinationTopology `
+            $ProjectRoot `
+            $destinationPath `
+            "planned action '$($action.entryId)' destination"
+
+        if ([string]$action.action -ceq 'backup') {
+            $backupDestination = $BackupRoot
+            foreach ($segment in ([string]$action.destination).Split('/')) {
+                $backupDestination = Join-Path $backupDestination $segment
+            }
+            Assert-DestinationTopology `
+                $BackupRoot `
+                $backupDestination `
+                "planned backup '$($action.entryId)' destination"
+        }
+    }
+}
+
+Assert-PlannedDestinationTopology
+
 $Plan = [pscustomobject][ordered]@{
     schemaVersion = '1.0'
     manifestSchemaVersion = [string]$InstallManifest.schemaVersion
@@ -1859,10 +2147,10 @@ function Write-ProjectContent {
 
     Assert-PortableRelativePath $Relative "action destination '$Relative'" -Destination
     $destination = Join-PortablePath $ProjectRoot $Relative "action destination '$Relative'"
-    Assert-ContainedPhysicalPath $ProjectRoot $destination "action destination '$Relative'"
+    Assert-DestinationTopology $ProjectRoot $destination "action destination '$Relative'"
     $parent = Split-Path -Parent $destination
     New-Item -ItemType Directory -Force -Path $parent | Out-Null
-    Assert-ContainedPhysicalPath $ProjectRoot $destination "action destination '$Relative'"
+    Assert-DestinationTopology $ProjectRoot $destination "action destination '$Relative'"
     [System.IO.File]::WriteAllText(
         $destination,
         $Content,
@@ -1880,10 +2168,10 @@ function Backup-ProjectFile {
     foreach ($segment in $Relative.Split('/')) {
         $destination = Join-Path $destination $segment
     }
-    Assert-ContainedPhysicalPath $BackupRoot $destination "backup destination '$Relative'"
+    Assert-DestinationTopology $BackupRoot $destination "backup destination '$Relative'"
     $parent = Split-Path -Parent $destination
     New-Item -ItemType Directory -Force -Path $parent | Out-Null
-    Assert-ContainedPhysicalPath $BackupRoot $destination "backup destination '$Relative'"
+    Assert-DestinationTopology $BackupRoot $destination "backup destination '$Relative'"
     Assert-ContainedPhysicalPath $ProjectRoot $source "backup source '$Relative'"
     Copy-Item -LiteralPath $source -Destination $destination -Force
     Write-SdpAction 'APPLIED' "Backed up $Relative"
@@ -1898,6 +2186,25 @@ if ($Preview) {
         }
     }
 } else {
+    $CurrentRepositoryPhysicalState = Get-PhysicalPathState `
+        $RepositoryRoot `
+        'SDP repository root' `
+        -RequireExistingRoot
+    $CurrentProjectPhysicalState = Get-PhysicalPathState `
+        $ProjectRoot `
+        'consuming project root' `
+        -RequireExistingRoot
+    $CurrentBackupPhysicalState = Get-PhysicalPathState $BackupRoot 'backup root'
+    Assert-NoPhysicalTreeOverlap `
+        $CurrentRepositoryPhysicalState `
+        $CurrentProjectPhysicalState `
+        'The consuming project and SDP source repository must be physically separate trees.'
+    Assert-NoPhysicalTreeOverlap `
+        $CurrentRepositoryPhysicalState `
+        $CurrentBackupPhysicalState `
+        'The backup root and SDP source repository must be physically separate trees.'
+    Assert-PlannedDestinationTopology
+
     foreach ($action in $Plan.actions) {
         switch ([string]$action.action) {
             'backup' {
@@ -1934,7 +2241,7 @@ if ($Preview) {
                 $sourcePath = Join-PortablePath $ProjectRoot ([string]$action.targetSource) 'migration targetSource'
                 $destinationPath = Join-PortablePath $ProjectRoot ([string]$action.destination) 'migration destination'
                 Assert-ContainedPhysicalPath $ProjectRoot $sourcePath 'migration targetSource'
-                Assert-ContainedPhysicalPath $ProjectRoot $destinationPath 'migration destination'
+                Assert-DestinationTopology $ProjectRoot $destinationPath 'migration destination'
                 if (-not (Test-Path -LiteralPath $sourcePath -PathType Leaf)) {
                     throw "Migration targetSource is no longer a file: $($action.targetSource)"
                 }
@@ -1944,7 +2251,7 @@ if ($Preview) {
                 $parent = Split-Path -Parent $destinationPath
                 New-Item -ItemType Directory -Force -Path $parent | Out-Null
                 Assert-ContainedPhysicalPath $ProjectRoot $sourcePath 'migration targetSource'
-                Assert-ContainedPhysicalPath $ProjectRoot $destinationPath 'migration destination'
+                Assert-DestinationTopology $ProjectRoot $destinationPath 'migration destination'
                 Copy-Item -LiteralPath $sourcePath -Destination $destinationPath
                 Write-SdpAction 'APPLIED' "Migrated $($action.targetSource) to $($action.destination)"
             }

@@ -73,6 +73,9 @@ The installation manifest and every schema/source reference must resolve from
 the archive root, the deterministic plan must not depend on Windows separators
 or PowerShell interpretation, installation must succeed, and generated installed
 facts must record `sourceCommit: null` when no trustworthy commit is available.
+Conversely, a non-null value from a dirty checkout would identify only its
+available `HEAD`, not attest that the installed bytes equal that commit; release
+archive verification must rely on the clean, exact candidate evidence.
 
 The normal GitHub source archive is the selected distribution artifact. Do not
 add a custom release asset unless concrete verification shows that the normal

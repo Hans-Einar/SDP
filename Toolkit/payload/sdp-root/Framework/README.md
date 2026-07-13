@@ -16,8 +16,10 @@ repository's live root records.
 Canonical installed facts are generated in
 `Framework/installed-toolkit.manifest.yaml`. Project release and development
 state lives in `SDP-project.manifest.yaml`. In an extracted source archive
-without trustworthy Git metadata, `sourceCommit: null` is correct. Dynamic
-Git/build facts are generated separately, not maintained by hand.
+without trustworthy Git metadata, `sourceCommit: null` is correct. In a dirty
+checkout, a non-null value is only the available `HEAD` baseline, not an
+attestation that installed bytes equal that commit. Dynamic Git/build facts are
+generated separately, not maintained by hand.
 
 Core rules:
 

@@ -93,9 +93,17 @@ BLOCK_REASON_ENTRY_IDS = {
 }
 
 CANONICAL_GOVERNING_CAPABILITIES = {
+    "Toolkit/schemas/fix-record.schema.json": "sdp.release.v1",
+    "Toolkit/schemas/release-record.schema.json": "sdp.release.v1",
+    "Toolkit/schemas/SDP-project-manifest.schema.json": "sdp.manifest.v1",
+    "Toolkit/schemas/installed-toolkit-manifest.schema.json": "sdp.manifest.v1",
     "Toolkit/schemas/current-index.schema.json": "sdp.traceability.current-index.v1",
     "Toolkit/schemas/relations.schema.json": "sdp.traceability.relations.v1",
     "Toolkit/schemas/ledger-event.schema.json": "sdp.traceability.ledger-events.v1",
+}
+CANONICAL_GOVERNING_CAPABILITIES_BY_KEY = {
+    schema.casefold(): capability
+    for schema, capability in CANONICAL_GOVERNING_CAPABILITIES.items()
 }
 
 
@@ -1577,7 +1585,7 @@ def validate_installation_contract(
     if not isinstance(entries, list):
         return errors
     seen_ids: set[str] = set()
-    seen_destinations: dict[str, str] = {}
+    seen_destinations: dict[tuple[str, ...], str] = {}
     listed_sources: set[str] = set()
     used_generators: set[str] = set()
     allowed_source_roots = (
@@ -1600,12 +1608,26 @@ def validate_installation_contract(
             if path_error:
                 errors.append(f"{label}.destination: {path_error}: {destination!r}")
             elif isinstance(destination, str):
-                destination_key = "/".join(portable_path_key(destination))
+                destination_key = portable_path_key(destination)
                 if destination_key in seen_destinations:
                     errors.append(
                         f"{label}: duplicate/case-colliding destination {destination}; "
                         f"already used by {seen_destinations[destination_key]}"
                     )
+                for existing_key, existing_destination in seen_destinations.items():
+                    destination_contains_existing = (
+                        len(destination_key) > len(existing_key)
+                        and destination_key[: len(existing_key)] == existing_key
+                    )
+                    existing_contains_destination = (
+                        len(existing_key) > len(destination_key)
+                        and existing_key[: len(destination_key)] == destination_key
+                    )
+                    if destination_contains_existing or existing_contains_destination:
+                        errors.append(
+                            f"{label}: ancestor/descendant destination conflict {destination}; "
+                            f"already used by {existing_destination}"
+                        )
                 seen_destinations[destination_key] = destination
         source = entry.get("source")
         if source is not None:
@@ -1648,7 +1670,11 @@ def validate_installation_contract(
                 errors.append(
                     f"{label}.governing.capability: {capability!r} is not declared by the contract"
                 )
-            expected_capability = CANONICAL_GOVERNING_CAPABILITIES.get(schema_reference)
+            expected_capability = (
+                CANONICAL_GOVERNING_CAPABILITIES_BY_KEY.get(schema_reference.casefold())
+                if isinstance(schema_reference, str)
+                else None
+            )
             if expected_capability is not None and capability != expected_capability:
                 errors.append(
                     f"{label}.governing: schema {schema_reference} requires capability "

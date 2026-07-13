@@ -568,19 +568,35 @@ class InstallationContractTests(unittest.TestCase):
         )
 
     def test_governing_schemas_require_their_canonical_capabilities(self) -> None:
-        contract = copy.deepcopy(self.contract)
-        relation_entry = next(
-            entry
-            for entry in contract["entries"]
-            if entry["governing"].get("schema")
-            == "Toolkit/schemas/relations.schema.json"
-        )
-        relation_entry["governing"]["capability"] = "sdp.manifest.v1"
-        errors = self.validate_contract(contract)
-        self.assertTrue(
-            any("relations.schema.json requires capability" in error for error in errors),
-            errors,
-        )
+        expected_pairs = {
+            "Toolkit/schemas/fix-record.schema.json": "sdp.release.v1",
+            "Toolkit/schemas/release-record.schema.json": "sdp.release.v1",
+            "Toolkit/schemas/SDP-project-manifest.schema.json": "sdp.manifest.v1",
+            "Toolkit/schemas/installed-toolkit-manifest.schema.json": "sdp.manifest.v1",
+            "Toolkit/schemas/current-index.schema.json": "sdp.traceability.current-index.v1",
+            "Toolkit/schemas/relations.schema.json": "sdp.traceability.relations.v1",
+            "Toolkit/schemas/ledger-event.schema.json": "sdp.traceability.ledger-events.v1",
+        }
+        self.assertEqual(VALIDATE.CANONICAL_GOVERNING_CAPABILITIES, expected_pairs)
+        for schema, capability in expected_pairs.items():
+            with self.subTest(schema=schema, capability=capability):
+                contract = copy.deepcopy(self.contract)
+                governed_entry = next(
+                    entry
+                    for entry in contract["entries"]
+                    if (entry["governing"].get("schema") or "").casefold()
+                    == schema.casefold()
+                )
+                governed_entry["governing"]["capability"] = "sdp.install.v1"
+                errors = self.validate_contract(contract)
+                self.assertTrue(
+                    any(
+                        f"{schema.rsplit('/', 1)[-1]} requires capability {capability}"
+                        in error
+                        for error in errors
+                    ),
+                    errors,
+                )
 
     def test_contract_detects_duplicate_ids_and_destinations(self) -> None:
         contract = copy.deepcopy(self.contract)
@@ -591,6 +607,31 @@ class InstallationContractTests(unittest.TestCase):
         errors = self.validate_contract(contract)
         self.assertTrue(any("duplicate entry ID" in error for error in errors), errors)
         self.assertTrue(any("case-colliding destination" in error for error in errors), errors)
+
+    def test_contract_rejects_case_insensitive_destination_prefix_conflicts(self) -> None:
+        for child_first in (False, True):
+            with self.subTest(child_first=child_first):
+                contract = copy.deepcopy(self.contract)
+                project_agents = next(
+                    entry for entry in contract["entries"] if entry["id"] == "project-agents"
+                )
+                project_agents["destination"] = "agents.md/README.md"
+                if child_first:
+                    managed_agents = next(
+                        entry
+                        for entry in contract["entries"]
+                        if entry["id"] == "managed-agents"
+                    )
+                    contract["entries"] = [
+                        entry
+                        for entry in contract["entries"]
+                        if entry["id"] != "managed-agents"
+                    ] + [managed_agents]
+                errors = self.validate_contract(contract)
+                self.assertTrue(
+                    any("ancestor/descendant destination conflict" in error for error in errors),
+                    errors,
+                )
 
     def test_contract_detects_missing_source_and_inventory_drift(self) -> None:
         contract = copy.deepcopy(self.contract)

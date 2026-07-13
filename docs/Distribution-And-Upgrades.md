@@ -54,7 +54,9 @@ active Sprint and its Ledger history never seed a consuming project.
 manifest's declared facts. It records Toolkit, Framework, AGENTS contract,
 installer and skill versions, capabilities, installation time and source commit
 when trustworthy. In a source archive without Git metadata, `sourceCommit` is
-truthfully null. Dynamic build identity is generated separately.
+truthfully null. In a dirty Git checkout, a non-null value is only the available
+`HEAD` baseline; it does not attest that installed bytes equal that commit.
+Dynamic build identity is generated separately.
 
 ## Migration transaction
 
@@ -85,11 +87,15 @@ source archive into any temporary directory. Locate its root by
 conforming implementation requires no `.git`, fixed absolute path, Windows path
 semantics or PowerShell to interpret the JSON contract.
 
-A sibling such as `SDP-Analyzer` is allowed. A target equal to or physically
-inside the Toolkit source is rejected using complete path comparison. The
-source, project, backup roots and every existing source/destination ancestor
-must also be free of symbolic links and reparse points before planning and again
-before mutation.
+A sibling such as `SDP-Analyzer` is allowed. Source/project and source/backup
+trees may not contain one another in either direction. On Windows the reference
+installer compares OS volume/file identities, so local, UNC, extended-path and
+available short-name aliases cannot disguise overlap. It fails closed when an
+existing root identity or sufficient share ancestry is unavailable. The source,
+project, backup roots and every existing source/destination ancestor must also
+be free of symbolic links and reparse points before planning and again before
+mutation. Manifest destinations may not be case-insensitive prefixes of one
+another, and every existing destination ancestor must be a directory.
 
 The ordinary GitHub source archive is sufficient for this contract. No custom
 release asset is required unless future verification demonstrates a real gap.

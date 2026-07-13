@@ -40,6 +40,8 @@ schema versions are unsupported rather than guessed.
 
 Source archives without `.git` legitimately produce `sourceCommit: null`.
 Analyzer must not treat null as a defect or infer a commit from an archive name.
+For a dirty checkout, a non-null `sourceCommit` is only the available `HEAD`
+baseline and must not be treated as proof that installed bytes equal that commit.
 Markdown analysis is limited to canonical structure and deterministic links; it
 must not infer substantive completion from arbitrary prose.
 

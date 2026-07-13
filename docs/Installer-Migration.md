@@ -56,6 +56,12 @@ Before mutation the installer:
   target files;
 - rejects symlinks/reparse points in the source, project and backup roots and
   every existing source/destination ancestor; this is rechecked at write time;
+- compares OS-backed root identities, rejects source/project or source/backup
+  overlap in either ancestor direction across local, UNC, extended and available
+  short-name aliases, and fails closed when identity or share ancestry is
+  insufficient;
+- rejects case-insensitive destination ancestor/descendant pairs and any
+  existing non-directory destination ancestor before an applicable plan;
 - parses installed/project manifests with a strict YAML subset, accepting only
   a root mapping of scalar mappings/lists and rejecting duplicate required keys,
   nested shadows, malformed scalars and unsupported document features;
@@ -87,4 +93,6 @@ meaning.
 
 An extracted normal GitHub source archive is supported without `.git`. In that
 case installed facts use `sourceCommit: null`; the installer does not infer a
-commit from the archive name.
+commit from the archive name. For a Git checkout, a non-null `sourceCommit` is
+the available `HEAD` baseline. A dirty checkout can therefore install bytes that
+differ from that commit; the field is not a content attestation.

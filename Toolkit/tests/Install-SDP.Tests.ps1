@@ -10,6 +10,26 @@ $InstallManifestPath = Join-Path $RepositoryRoot 'Toolkit\SDP-install.manifest.j
 $PlanSchema = Join-Path $RepositoryRoot 'Toolkit\schemas\SDP-install-plan.schema.json'
 $ProjectValidator = Join-Path $RepositoryRoot 'Toolkit\scripts\validate_sdp.py'
 $TestRoot = Join-Path ([System.IO.Path]::GetTempPath()) ("sdp-installer-tests-" + [guid]::NewGuid().ToString('N'))
+$IsWindowsPlatform = [System.IO.Path]::DirectorySeparatorChar -eq '\'
+
+if ($IsWindowsPlatform -and (-not ('Sdp.Tests.NativePath' -as [type]))) {
+    Add-Type -TypeDefinition @'
+using System.Runtime.InteropServices;
+using System.Text;
+
+namespace Sdp.Tests {
+    public static class NativePath {
+        [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true,
+            EntryPoint = "GetShortPathNameW")]
+        public static extern uint GetShortPathName(
+            string longPath,
+            StringBuilder shortPath,
+            uint bufferLength
+        );
+    }
+}
+'@
+}
 
 function Assert-True {
     param([bool]$Condition, [string]$Message)
@@ -77,7 +97,8 @@ function Invoke-PlanJson {
         [string]$Target,
         [string]$InstallerPath = $Installer,
         [switch]$Initialize,
-        [switch]$Force
+        [switch]$Force,
+        [string]$BackupRoot
     )
     $parameters = @{
         ProjectRoot = $Target
@@ -85,8 +106,35 @@ function Invoke-PlanJson {
     }
     if ($Initialize) { $parameters.InitializeProjectStructure = $true }
     if ($Force) { $parameters.ForceManagedFiles = $true }
+    if (-not [string]::IsNullOrWhiteSpace($BackupRoot)) { $parameters.BackupRoot = $BackupRoot }
     $output = & $InstallerPath @parameters
     return [string]::Join("`n", [string[]]@($output))
+}
+
+function Get-ShortPathAlias {
+    param([string]$Path)
+
+    if (-not $IsWindowsPlatform) { return $null }
+    $buffer = [System.Text.StringBuilder]::new(32768)
+    $length = [Sdp.Tests.NativePath]::GetShortPathName(
+        $Path,
+        $buffer,
+        [uint32]$buffer.Capacity
+    )
+    if (($length -eq 0) -or ($length -ge $buffer.Capacity)) { return $null }
+    $shortPath = $buffer.ToString()
+    if ($shortPath.Equals($Path, [System.StringComparison]::OrdinalIgnoreCase)) { return $null }
+    return $shortPath
+}
+
+function Get-LoopbackAdministrativeUncPath {
+    param([string]$Path)
+
+    if (-not $IsWindowsPlatform) { return $null }
+    $full = [System.IO.Path]::GetFullPath($Path)
+    $root = [System.IO.Path]::GetPathRoot($full)
+    if ($root -cnotmatch '^([A-Za-z]):\\$') { return $null }
+    return '\\localhost\' + $Matches[1] + '$' + $full.Substring(2)
 }
 
 function Assert-PlanConforms {
@@ -208,6 +256,63 @@ function Assert-InvalidArchiveContract {
         Assert-Equal $before (Get-TreeFingerprint $target) "$Name invalid contract mutated target"
     } finally {
         Write-Utf8File $ArchiveManifest $OriginalManifest
+    }
+}
+
+function Assert-InstallerRejectedWithoutMutation {
+    param(
+        [string]$Name,
+        [string]$Target,
+        [string]$InstallerPath,
+        [string]$BackupRoot,
+        [string[]]$WatchRoots,
+        [string]$ExpectedErrorPattern
+    )
+
+    $before = @{}
+    foreach ($root in $WatchRoots) {
+        $before[$root] = Get-TreeFingerprint $root
+    }
+
+    $planFailed = $false
+    $planError = $null
+    try {
+        Invoke-PlanJson `
+            $Target `
+            -InstallerPath $InstallerPath `
+            -BackupRoot $BackupRoot | Out-Null
+    } catch {
+        $planFailed = $true
+        $planError = $_.Exception.Message
+    }
+    Assert-True $planFailed "$Name PlanJson was not blocked"
+    if (-not [string]::IsNullOrWhiteSpace($ExpectedErrorPattern)) {
+        Assert-True `
+            ($planError -match $ExpectedErrorPattern) `
+            "$Name PlanJson failed for an unexpected reason: $planError"
+    }
+    foreach ($root in $WatchRoots) {
+        Assert-Equal $before[$root] (Get-TreeFingerprint $root) "$Name PlanJson mutated $root"
+    }
+
+    $parameters = @{ ProjectRoot = $Target }
+    if (-not [string]::IsNullOrWhiteSpace($BackupRoot)) {
+        $parameters.BackupRoot = $BackupRoot
+    }
+    $applyFailed = $false
+    $applyError = $null
+    try { & $InstallerPath @parameters | Out-Null } catch {
+        $applyFailed = $true
+        $applyError = $_.Exception.Message
+    }
+    Assert-True $applyFailed "$Name apply was not blocked"
+    if (-not [string]::IsNullOrWhiteSpace($ExpectedErrorPattern)) {
+        Assert-True `
+            ($applyError -match $ExpectedErrorPattern) `
+            "$Name apply failed for an unexpected reason: $applyError"
+    }
+    foreach ($root in $WatchRoots) {
+        Assert-Equal $before[$root] (Get-TreeFingerprint $root) "$Name apply mutated $root"
     }
 }
 
@@ -736,9 +841,185 @@ Release-Date: unreleased
     & python $ProjectValidator --mode project --project-root $archiveTarget | Out-Host
     Assert-Equal 0 $LASTEXITCODE 'archive-installed project validation'
 
+    # Root overlap is decided by stable filesystem identities, not path
+    # spelling. Exact, ancestor and descendant forms are symmetric, and both
+    # PlanJson and apply remain mutation-free when rejected.
+    Assert-InstallerRejectedWithoutMutation `
+        'exact local source/project overlap' `
+        $archiveRoot `
+        $archiveInstaller `
+        '' `
+        @($archiveRoot) `
+        -ExpectedErrorPattern 'physically separate trees'
+    Assert-InstallerRejectedWithoutMutation `
+        'project below local source' `
+        (Join-Path $archiveRoot 'Toolkit') `
+        $archiveInstaller `
+        '' `
+        @($archiveRoot) `
+        -ExpectedErrorPattern 'physically separate trees'
+
+    $localBackupOverlapTarget = New-FixtureProject 'local-backup-overlap-target'
+    Write-Utf8File (Join-Path $localBackupOverlapTarget 'marker.txt') 'UNCHANGED'
+    Assert-InstallerRejectedWithoutMutation `
+        'backup below local source' `
+        $localBackupOverlapTarget `
+        $archiveInstaller `
+        (Join-Path $archiveRoot 'missing-backups') `
+        @($archiveRoot, $localBackupOverlapTarget) `
+        -ExpectedErrorPattern 'physically separate trees'
+
+    $reverseOverlapContainer = New-FixtureProject 'reverse-overlap-container'
+    $reverseOverlapSource = Join-Path $reverseOverlapContainer 'source'
+    New-Item -ItemType Directory -Force -Path $reverseOverlapSource | Out-Null
+    Get-ChildItem -LiteralPath $archiveRoot -Force | ForEach-Object {
+        Copy-Item -LiteralPath $_.FullName -Destination $reverseOverlapSource -Recurse -Force
+    }
+    $reverseOverlapInstaller = Join-Path $reverseOverlapSource 'Toolkit\scripts\Install-SDP.ps1'
+    Assert-InstallerRejectedWithoutMutation `
+        'source below local project' `
+        $reverseOverlapContainer `
+        $reverseOverlapInstaller `
+        '' `
+        @($reverseOverlapContainer) `
+        -ExpectedErrorPattern 'physically separate trees'
+
+    $reverseBackupTarget = New-FixtureProject 'reverse-backup-overlap-target'
+    Write-Utf8File (Join-Path $reverseBackupTarget 'marker.txt') 'UNCHANGED'
+    Assert-InstallerRejectedWithoutMutation `
+        'source below local backup' `
+        $reverseBackupTarget `
+        $reverseOverlapInstaller `
+        $reverseOverlapContainer `
+        @($reverseOverlapContainer, $reverseBackupTarget) `
+        -ExpectedErrorPattern 'physically separate trees'
+
+    if ($IsWindowsPlatform) {
+        $extendedArchiveRoot = '\\?\' + $archiveRoot
+        Assert-InstallerRejectedWithoutMutation `
+            'extended local source/project overlap' `
+            $extendedArchiveRoot `
+            $archiveInstaller `
+            '' `
+            @($archiveRoot) `
+            -ExpectedErrorPattern 'physically separate trees'
+
+        $shortArchiveRoot = Get-ShortPathAlias $archiveRoot
+        if (-not [string]::IsNullOrWhiteSpace($shortArchiveRoot)) {
+            Assert-InstallerRejectedWithoutMutation `
+                'short-name source/project overlap' `
+                $shortArchiveRoot `
+                $archiveInstaller `
+                '' `
+                @($archiveRoot) `
+                -ExpectedErrorPattern 'physically separate trees'
+        } else {
+            $knownLongPath = $env:ProgramFiles
+            $knownShortPath = if ([string]::IsNullOrWhiteSpace($knownLongPath)) {
+                $null
+            } else {
+                Get-ShortPathAlias $knownLongPath
+            }
+            if (-not [string]::IsNullOrWhiteSpace($knownShortPath)) {
+                Assert-Equal `
+                    ([Sdp.Install.NativePath]::GetFileSystemIdentity($knownLongPath)) `
+                    ([Sdp.Install.NativePath]::GetFileSystemIdentity($knownShortPath)) `
+                    'short-name native identity'
+                Write-Host '[SKIPPED] Integrated short-name source fixture is unavailable; native short/long identity passed.'
+            } else {
+                Write-Host '[SKIPPED] Short-name aliases are unavailable on this host.'
+            }
+        }
+
+        $archiveUncRoot = Get-LoopbackAdministrativeUncPath $archiveRoot
+        if ((-not [string]::IsNullOrWhiteSpace($archiveUncRoot)) -and
+            (Test-Path -LiteralPath $archiveUncRoot -PathType Container)) {
+            Assert-InstallerRejectedWithoutMutation `
+                'local/UNC source/project overlap' `
+                $archiveUncRoot `
+                $archiveInstaller `
+                '' `
+                @($archiveRoot) `
+                -ExpectedErrorPattern 'physically separate trees'
+
+            $extendedUncArchiveRoot = '\\?\UNC\' + $archiveUncRoot.Substring(2)
+            Assert-InstallerRejectedWithoutMutation `
+                'extended UNC source/project overlap' `
+                $extendedUncArchiveRoot `
+                $archiveInstaller `
+                '' `
+                @($archiveRoot) `
+                -ExpectedErrorPattern 'physically separate trees'
+
+            $uncBackupOverlapTarget = New-FixtureProject 'unc-backup-overlap-target'
+            Write-Utf8File (Join-Path $uncBackupOverlapTarget 'marker.txt') 'UNCHANGED'
+            Assert-InstallerRejectedWithoutMutation `
+                'backup below UNC source alias' `
+                $uncBackupOverlapTarget `
+                $archiveInstaller `
+                (Join-Path $archiveUncRoot 'missing-unc-backups') `
+                @($archiveRoot, $uncBackupOverlapTarget) `
+                -ExpectedErrorPattern 'physically separate trees'
+
+            $uncSiblingTarget = New-FixtureProject 'unc-physical-sibling'
+            $uncSiblingAlias = Get-LoopbackAdministrativeUncPath $uncSiblingTarget
+            $uncSiblingBefore = Get-TreeFingerprint $uncSiblingTarget
+            $uncSiblingPlanJson = Invoke-PlanJson `
+                $uncSiblingAlias `
+                -InstallerPath $archiveInstaller
+            $uncSiblingPlan = $uncSiblingPlanJson | ConvertFrom-Json
+            Assert-True ([bool]$uncSiblingPlan.canApply) 'same-volume local/UNC sibling was rejected'
+            Assert-Equal `
+                $uncSiblingBefore `
+                (Get-TreeFingerprint $uncSiblingTarget) `
+                'same-volume local/UNC sibling plan mutated target'
+
+        } else {
+            Write-Host '[SKIPPED] Loopback administrative UNC fixtures are unavailable on this host.'
+        }
+    }
+
     # Runtime preflight rejects policy combinations and semantic-anchor drift before mutation.
     $archiveManifestPath = Join-Path $archiveRoot 'Toolkit\SDP-install.manifest.json'
     $archiveManifestOriginal = Get-Content -Raw -LiteralPath $archiveManifestPath
+
+    # Manifest destinations are a case-insensitive file topology: no entry may
+    # be another entry's ancestor or descendant.
+    try {
+        $prefixConflictContract = $archiveManifestOriginal | ConvertFrom-Json
+        $prefixConflictEntry = @(
+            $prefixConflictContract.entries | Where-Object { $_.id -eq 'project-agents' }
+        )[0]
+        $prefixConflictEntry.destination = 'agents.md/README.md'
+        Write-Utf8File `
+            $archiveManifestPath `
+            ($prefixConflictContract | ConvertTo-Json -Depth 60)
+        $prefixConflictTarget = New-FixtureProject 'destination-prefix-conflict'
+        Write-Utf8File (Join-Path $prefixConflictTarget 'marker.txt') 'UNCHANGED'
+        Assert-InstallerRejectedWithoutMutation `
+            'destination prefix conflict' `
+            $prefixConflictTarget `
+            $archiveInstaller `
+            '' `
+            @($prefixConflictTarget) `
+            -ExpectedErrorPattern 'ancestor/descendant destination conflict'
+    } finally {
+        Write-Utf8File $archiveManifestPath $archiveManifestOriginal
+    }
+
+    # Every manifest destination is preflighted, including uncreated children
+    # beneath an existing file ancestor such as canonical `.codex`.
+    $fileAncestorTarget = New-FixtureProject 'destination-file-ancestor'
+    Write-Utf8File (Join-Path $fileAncestorTarget '.codex') 'PROJECT FILE'
+    Write-Utf8File (Join-Path $fileAncestorTarget 'marker.txt') 'UNCHANGED'
+    Assert-InstallerRejectedWithoutMutation `
+        'destination file ancestor' `
+        $fileAncestorTarget `
+        $archiveInstaller `
+        '' `
+        @($fileAncestorTarget) `
+        -ExpectedErrorPattern 'existing non-directory ancestor'
+
     $invalidPolicyContract = $archiveManifestOriginal | ConvertFrom-Json
     $invalidPolicyEntry = @($invalidPolicyContract.entries | Where-Object { $_.id -eq 'managed-framework-readme' })[0]
     $invalidPolicyEntry.migrationPolicy = 'preserve-existing-agents'

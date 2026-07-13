@@ -85,6 +85,10 @@ apply executes the exact planned source/target pairs. Equivalent supported YAML
 does not cause churn, and AGENTS migration conflicts use deterministic
 content-hash destinations.
 
+Installed `sourceCommit` provenance is null for archives without trustworthy Git
+metadata. In a dirty clone, a non-null value identifies the available `HEAD`
+baseline; it does not attest that installed bytes equal that commit.
+
 `-InitializeProjectStructure` adds only missing neutral lifecycle and operating
 seeds. It never copies this repository's active Sprint, `REL-0.2.0`, release
 notes, Ledger history, review or verification evidence. See
