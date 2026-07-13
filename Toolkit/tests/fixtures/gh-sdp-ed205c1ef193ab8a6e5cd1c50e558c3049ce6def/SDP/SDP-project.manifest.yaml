@@ -1,0 +1,23 @@
+schemaVersion: "1.0"
+project:
+  name: gh-sdp
+  capabilities: []
+installed:
+  manifestPath: Framework/installed-toolkit.manifest.yaml
+release:
+  currentVersion: "0.0.0"
+  nextTargetVersion: "0.1.0"
+  state: unreleased
+  latestTag: null
+  latestCommit: null
+development:
+  sprintId: null
+  refactorId: null
+  iterationId: null
+  sliceId: null
+  fixId: null
+  revision: null
+migration:
+  pendingWarnings:
+    - "Bootstrapped from unreleased SDP Toolkit 0.2.0 source commit bc110bb5fd60009ba67015cf640ad6ddbfe1b04b; no Toolkit 0.2.0 tag or GitHub Release was evidenced."
+    - "Do not repeat -InitializeProjectStructure without reviewing its preview: at the installed source revision it proposes the Toolkit-specific SDP/Releases/REL-0.2.0.yaml in consuming projects."

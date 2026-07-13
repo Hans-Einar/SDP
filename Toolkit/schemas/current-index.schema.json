@@ -24,7 +24,8 @@
         "previousVersion": { "oneOf": [{ "$ref": "#/$defs/semver" }, { "type": "null" }] },
         "activeReleaseId": { "oneOf": [{ "$ref": "#/$defs/releaseId" }, { "type": "null" }] },
         "targetVersion": { "oneOf": [{ "$ref": "#/$defs/semver" }, { "type": "null" }] },
-        "state": { "enum": ["unreleased", "prerelease", "released", "yanked"] }
+        "state": { "enum": ["unreleased", "prerelease", "released", "yanked"] },
+        "targetStatus": { "type": "string", "minLength": 1 }
       }
     },
     "active": {
@@ -71,11 +72,11 @@
   "$defs": {
     "semver": {
       "type": "string",
-      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\\+([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?$"
     },
     "releaseId": {
       "type": "string",
-      "pattern": "^REL-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$"
+      "pattern": "^REL-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\\+([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?$"
     },
     "sprintId": { "type": "string", "pattern": "^Sprint-[0-9]{3,}$" },
     "refactorId": { "type": "string", "pattern": "^Refactor-[0-9]{3,}$" },
@@ -83,7 +84,7 @@
     "sliceId": { "type": "string", "pattern": "^SPS-[0-9]{3,}$" },
     "fixId": {
       "type": "string",
-      "pattern": "^(FIX|HOTFIX)-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)-[0-9]{3}$"
+      "pattern": "^(FIX|HOTFIX)-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\\+([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?-[0-9]{3}$"
     }
   }
 }

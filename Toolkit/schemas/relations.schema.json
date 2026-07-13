@@ -25,10 +25,16 @@
     "iterations": { "$ref": "#/$defs/iterations" },
     "slices": { "$ref": "#/$defs/slices" },
     "fixes": { "$ref": "#/$defs/fixes" },
-    "reviews": { "$ref": "#/$defs/category" },
-    "verification": { "$ref": "#/$defs/category" },
+    "reviews": { "$ref": "#/$defs/reviews" },
+    "verification": { "$ref": "#/$defs/verification" },
     "migrations": { "$ref": "#/$defs/category" },
-    "releases": { "$ref": "#/$defs/releases" }
+    "releases": { "$ref": "#/$defs/releases" },
+    "mandates": { "$ref": "#/$defs/category" },
+    "outcomes": { "$ref": "#/$defs/category" },
+    "boundaries": { "$ref": "#/$defs/category" },
+    "successCriteria": { "$ref": "#/$defs/category" },
+    "assumptions": { "$ref": "#/$defs/category" },
+    "questions": { "$ref": "#/$defs/category" }
   },
   "patternProperties": {
     "^x-[a-z0-9]+(?:[.-][a-z0-9]+)*$": { "$ref": "#/$defs/category" }
@@ -38,7 +44,7 @@
     "portablePath": {
       "type": "string",
       "minLength": 1,
-      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*//)(?!\\./)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\/$).+$"
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*[\\\\<>:\"|?*~\\u0000-\\u001F\\u007F])(?!.*//)(?!.*\\/$)(?!.*(?:^|/)\\.{1,2}(?:/|$))(?!.*(?:^|/)\\.[Gg][Ii][Tt](?:/|$))(?!.*(?:^|/)(?:[Cc][Oo][Nn]|[Pp][Rr][Nn]|[Aa][Uu][Xx]|[Nn][Uu][Ll]|[Cc][Ll][Oo][Cc][Kk]\\$|[Cc][Oo][Nn][Ii][Nn]\\$|[Cc][Oo][Nn][Oo][Uu][Tt]\\$|[Cc][Oo][Mm](?:[1-9]|\\u00B9|\\u00B2|\\u00B3)|[Ll][Pp][Tt](?:[1-9]|\\u00B9|\\u00B2|\\u00B3))(?:\\.[^/]*)?(?:/|$))(?!.*[. ](?:/|$)).+$"
     },
     "nullableId": { "type": ["string", "null"], "minLength": 1 },
     "idList": {
@@ -55,16 +61,34 @@
         "path": { "$ref": "#/$defs/portablePath" },
         "study": { "$ref": "#/$defs/portablePath" },
         "implementationNotes": { "$ref": "#/$defs/portablePath" },
+        "identifierConvention": { "$ref": "#/$defs/portablePath" },
         "releaseNotes": { "$ref": "#/$defs/portablePath" },
         "manifest": { "$ref": "#/$defs/portablePath" },
         "releaseRecord": { "$ref": "#/$defs/portablePath" },
+        "migrationRecord": { "$ref": "#/$defs/portablePath" },
+        "targetStatus": { "type": "string", "minLength": 1 },
         "sprint": { "$ref": "#/$defs/nullableId" },
         "refactor": { "$ref": "#/$defs/nullableId" },
         "iteration": { "$ref": "#/$defs/nullableId" },
         "slice": { "$ref": "#/$defs/nullableId" },
         "fix": { "$ref": "#/$defs/nullableId" },
-        "release": { "$ref": "#/$defs/nullableId" },
+        "release": {
+          "oneOf": [
+            { "$ref": "#/$defs/nullableId" },
+            { "$ref": "#/$defs/idList" }
+          ]
+        },
         "review": { "$ref": "#/$defs/nullableId" },
+        "releaseContext": { "$ref": "#/$defs/nullableId" },
+        "resolvedBy": { "$ref": "#/$defs/nullableId" },
+        "resolves": { "$ref": "#/$defs/nullableId" },
+        "reviewerConfirmation": { "$ref": "#/$defs/nullableId" },
+        "mandate": {
+          "oneOf": [
+            { "$ref": "#/$defs/nullableId" },
+            { "$ref": "#/$defs/idList" }
+          ]
+        },
         "verification": {
           "oneOf": [
             { "$ref": "#/$defs/nullableId" },
@@ -77,6 +101,11 @@
         "sprints": { "$ref": "#/$defs/idList" },
         "reviews": { "$ref": "#/$defs/idList" },
         "migrations": { "$ref": "#/$defs/idList" },
+        "outcomes": { "$ref": "#/$defs/idList" },
+        "boundaries": { "$ref": "#/$defs/idList" },
+        "successCriteria": { "$ref": "#/$defs/idList" },
+        "assumptions": { "$ref": "#/$defs/idList" },
+        "questions": { "$ref": "#/$defs/idList" },
         "releaseCommit": {
           "oneOf": [
             { "type": "string", "minLength": 7 },
@@ -85,7 +114,7 @@
         },
         "gitTag": {
           "oneOf": [
-            { "type": "string", "pattern": "^v(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$" },
+            { "type": "string", "pattern": "^v(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\\+([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?$" },
             { "type": "null" }
           ]
         },
@@ -124,17 +153,59 @@
     },
     "fixes": {
       "type": "object",
-      "propertyNames": { "pattern": "^(FIX|HOTFIX)-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)-[0-9]{3}$" },
+      "propertyNames": { "pattern": "^(FIX|HOTFIX)-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\\+([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?-[0-9]{3}$" },
       "additionalProperties": { "$ref": "#/$defs/relation" }
+    },
+    "reviews": {
+      "type": "object",
+      "propertyNames": { "pattern": "^REV-[A-Za-z0-9]+(?:[.-][A-Za-z0-9]+)*$" },
+      "additionalProperties": { "$ref": "#/$defs/relation" }
+    },
+    "verification": {
+      "type": "object",
+      "propertyNames": { "pattern": "^VER-[A-Za-z0-9]+(?:[.-][A-Za-z0-9]+)*$" },
+      "additionalProperties": { "$ref": "#/$defs/relation" }
+    },
+    "releaseRelation": {
+      "allOf": [
+        { "$ref": "#/$defs/relation" },
+        {
+          "if": {
+            "properties": { "state": { "const": "unreleased" } },
+            "required": ["state"]
+          },
+          "then": {
+            "properties": {
+              "releaseCommit": { "type": "null" },
+              "gitTag": { "type": "null" },
+              "githubRelease": { "type": "null" }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": { "state": { "enum": ["released", "yanked"] } },
+            "required": ["state"]
+          },
+          "then": {
+            "properties": {
+              "releaseCommit": { "type": "string", "minLength": 7 },
+              "gitTag": { "type": "string" },
+              "githubRelease": { "type": "string", "format": "uri" }
+            },
+            "required": ["releaseCommit", "gitTag", "githubRelease"]
+          }
+        }
+      ]
     },
     "releases": {
       "type": "object",
-      "propertyNames": { "pattern": "^REL-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$" },
-      "additionalProperties": { "$ref": "#/$defs/relation" }
+      "propertyNames": { "pattern": "^REL-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\\+([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?$" },
+      "additionalProperties": { "$ref": "#/$defs/releaseRelation" }
     },
     "semver": {
       "type": "string",
-      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\\+([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?$"
     }
   }
 }

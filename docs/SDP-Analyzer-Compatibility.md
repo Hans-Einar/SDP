@@ -42,3 +42,17 @@ Source archives without `.git` legitimately produce `sourceCommit: null`.
 Analyzer must not treat null as a defect or infer a commit from an archive name.
 Markdown analysis is limited to canonical structure and deterministic links; it
 must not infer substantive completion from arbitrary prose.
+
+All contract paths use normalized `/` separators. Paths beginning with `SDP/`
+resolve from the project root; other record paths resolve from the project
+`SDP/` directory, with a project-root fallback for repository-level records.
+Canonical governed records use `.yaml`; a `.yml` shadow is invalid.
+
+The supported `gh-sdp` extension surface includes additional Sprint/Iteration/
+Slice status values, `acceptanceCriteria`, `requirementRefs`, `verificationRefs`,
+`reviewRefs`, and `targetStatus`/list-shaped link values in Relations. Analyzer
+must still require reciprocal Slice/Fix review and verification links,
+review-resolution links, release/migration links, and
+Ledger subjects that resolve to a governed entity. Publication state, record
+identity, SemVer version and tag must agree rather than being inferred from one
+field alone.

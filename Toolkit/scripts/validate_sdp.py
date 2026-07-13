@@ -17,11 +17,19 @@ from jsonschema import Draft202012Validator, FormatChecker
 from jsonschema.exceptions import SchemaError
 
 
-SEMVER_PATTERN = re.compile(
+SEMVER_PATTERN_TEXT = (
     r"^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)"
-    r"(?:-([0-9A-Za-z.-]+))?(?:\+([0-9A-Za-z.-]+))?$"
+    r"(?:-((?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)"
+    r"(?:\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*))?"
+    r"(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$"
 )
+SEMVER_PATTERN = re.compile(SEMVER_PATTERN_TEXT)
 WINDOWS_DRIVE_PATTERN = re.compile(r"^[A-Za-z]:")
+WINDOWS_RESERVED_SEGMENT_PATTERN = re.compile(
+    r"^(?:CON|PRN|AUX|NUL|CLOCK\$|CONIN\$|CONOUT\$|COM[1-9¹²³]|LPT[1-9¹²³])(?:\..*)?$",
+    re.IGNORECASE,
+)
+WINDOWS_FORBIDDEN_PATH_CHARACTERS = frozenset('<>:"|?*~')
 SKILL_ID_PATTERN = re.compile(r"^sdp-[a-z0-9]+(?:-[a-z0-9]+)*$")
 
 SUPPORTED_PROJECT_MANIFEST_SCHEMAS = frozenset({"1.0"})
@@ -51,10 +59,44 @@ RELATION_PATH_FIELDS = (
     "path",
     "study",
     "implementationNotes",
+    "identifierConvention",
     "releaseNotes",
     "manifest",
     "releaseRecord",
+    "migrationRecord",
 )
+
+PLAN_REASON_CONDITIONS: dict[str, tuple[str, bool]] = {
+    "missing-target": ("create", True),
+    "missing-generated-target": ("generate", True),
+    "content-matches": ("unchanged", False),
+    "missing-only-content": ("preserve", False),
+    "managed-content-differs": ("preserve", False),
+    "backup-before-replace": ("backup", True),
+    "refresh-managed-content": ("replace", True),
+    "refresh-generated-content": ("generate", True),
+    "migrate-existing-agents": ("migrate", True),
+    "preserve-existing-agents-conflict": ("migrate", True),
+    "malformed-project-manifest": ("block", False),
+    "unsupported-project-schema": ("block", False),
+    "malformed-installed-manifest": ("block", False),
+    "unsupported-installed-schema": ("block", False),
+    "downgrade-blocked": ("block", False),
+}
+
+BLOCK_REASON_ENTRY_IDS = {
+    "malformed-project-manifest": "project-manifest",
+    "unsupported-project-schema": "project-manifest",
+    "malformed-installed-manifest": "generated-installed-toolkit-manifest",
+    "unsupported-installed-schema": "generated-installed-toolkit-manifest",
+    "downgrade-blocked": "generated-installed-toolkit-manifest",
+}
+
+CANONICAL_GOVERNING_CAPABILITIES = {
+    "Toolkit/schemas/current-index.schema.json": "sdp.traceability.current-index.v1",
+    "Toolkit/schemas/relations.schema.json": "sdp.traceability.relations.v1",
+    "Toolkit/schemas/ledger-event.schema.json": "sdp.traceability.ledger-events.v1",
+}
 
 
 @dataclass(frozen=True, order=True)
@@ -115,6 +157,182 @@ def validate_json(instance: Any, schema: Any, label: str) -> list[str]:
             f"[{part}]" if isinstance(part, int) else f".{part}" for part in error.absolute_path
         )
         errors.append(f"{label}{location}: {error.message}")
+    return errors
+
+
+def validate_install_plan(
+    plan: Any,
+    schema: Any,
+    label: str,
+    installation_contract: Any | None = None,
+) -> list[str]:
+    """Validate an install plan's JSON shape and cross-action/manifest semantics."""
+
+    errors = validate_json(plan, schema, label)
+    if not isinstance(plan, dict):
+        return errors
+
+    actions = plan.get("actions")
+    if not isinstance(actions, list):
+        return errors
+
+    sequences = [
+        action.get("sequence") if isinstance(action, dict) else None for action in actions
+    ]
+    expected_sequences = list(range(1, len(actions) + 1))
+    if sequences != expected_sequences:
+        errors.append(
+            f"{label}.actions: sequence values must be unique, ordered, and contiguous "
+            f"from 1; actual={sequences!r}"
+        )
+
+    entries_by_id: dict[str, dict[str, Any]] = {}
+    if isinstance(installation_contract, dict):
+        contract_schema_version = installation_contract.get("schemaVersion")
+        if plan.get("manifestSchemaVersion") != contract_schema_version:
+            errors.append(
+                f"{label}.manifestSchemaVersion differs from the installation contract"
+            )
+        contract_toolkit_version = installation_contract.get("toolkitVersion")
+        if plan.get("toolkitVersion") != contract_toolkit_version:
+            errors.append(f"{label}.toolkitVersion differs from the installation contract")
+        contract_entries = installation_contract.get("entries")
+        if isinstance(contract_entries, list):
+            entries_by_id = {
+                entry["id"]: entry
+                for entry in contract_entries
+                if isinstance(entry, dict) and isinstance(entry.get("id"), str)
+            }
+
+    toolkit_version = plan.get("toolkitVersion")
+    installed_version = plan.get("installedToolkitVersion")
+    block_count = 0
+    for index, action in enumerate(actions):
+        action_label = f"{label}.actions[{index}]"
+        if not isinstance(action, dict):
+            continue
+        action_name = action.get("action")
+        reason = action.get("reason")
+        mutates_target = action.get("mutatesTarget")
+        entry_id = action.get("entryId")
+        if reason not in PLAN_REASON_CONDITIONS:
+            errors.append(f"{action_label}.reason: unsupported v1 reason {reason!r}")
+        else:
+            expected_action, expected_mutation = PLAN_REASON_CONDITIONS[reason]
+            if action_name != expected_action or mutates_target is not expected_mutation:
+                errors.append(
+                    f"{action_label}: reason {reason!r} requires action "
+                    f"{expected_action!r} and mutatesTarget={expected_mutation}"
+                )
+        if action_name == "block":
+            block_count += 1
+            expected_entry_id = BLOCK_REASON_ENTRY_IDS.get(reason)
+            if entry_id != expected_entry_id:
+                errors.append(
+                    f"{action_label}.entryId contradicts block reason {reason!r}; "
+                    f"expected {expected_entry_id!r}"
+                )
+        if action.get("newToolkitVersion") != toolkit_version:
+            errors.append(
+                f"{action_label}.newToolkitVersion differs from plan toolkitVersion"
+            )
+        if action.get("oldToolkitVersion") != installed_version:
+            errors.append(
+                f"{action_label}.oldToolkitVersion differs from plan installedToolkitVersion"
+            )
+
+        entry = entries_by_id.get(entry_id) if isinstance(entry_id, str) else None
+        if entries_by_id and entry is None:
+            errors.append(f"{action_label}.entryId: unknown installation entry {entry_id!r}")
+            continue
+        if entry is None:
+            continue
+
+        source = action.get("source")
+        generator = action.get("generator")
+        target_source = action.get("targetSource")
+        destination = action.get("destination")
+        ownership = action.get("ownership")
+        if action_name == "migrate":
+            if source is not None or generator is not None:
+                errors.append(f"{action_label}: migrate actions must not use manifest content")
+            managed_agents_entry = entries_by_id.get("managed-agents", {})
+            project_agents_entry = entries_by_id.get("project-agents", {})
+            managed_agents_destination = managed_agents_entry.get("destination", "AGENTS.md")
+            project_agents_destination = project_agents_entry.get(
+                "destination", "AGENTS-project.md"
+            )
+            migration_contracts = {
+                "migrate-existing-agents": {
+                    "entryId": "project-agents",
+                    "targetSource": managed_agents_destination,
+                    "destination": project_agents_destination,
+                },
+                "preserve-existing-agents-conflict": {
+                    "entryId": "managed-agents",
+                    "targetSource": managed_agents_destination,
+                    "destinationPattern": re.compile(
+                        r"^AGENTS-project\.migration-sha256-[0-9a-f]{64}\.md$"
+                    ),
+                },
+            }
+            expected = migration_contracts.get(reason)
+            if expected is not None:
+                if entry_id != expected["entryId"]:
+                    errors.append(
+                        f"{action_label}.entryId contradicts migration reason {reason!r}"
+                    )
+                if target_source != expected["targetSource"]:
+                    errors.append(
+                        f"{action_label}.targetSource contradicts migration reason {reason!r}"
+                    )
+                exact_destination = expected.get("destination")
+                destination_pattern = expected.get("destinationPattern")
+                if exact_destination is not None and destination != exact_destination:
+                    errors.append(
+                        f"{action_label}.destination contradicts migration reason {reason!r}"
+                    )
+                if isinstance(destination_pattern, re.Pattern) and (
+                    not isinstance(destination, str)
+                    or destination_pattern.fullmatch(destination) is None
+                ):
+                    errors.append(
+                        f"{action_label}.destination must use the deterministic "
+                        "content-hash migration name"
+                    )
+            if ownership != "project-owned":
+                errors.append(f"{action_label}.ownership: migrations are project-owned")
+            continue
+
+        if target_source is not None:
+            errors.append(f"{action_label}.targetSource must be null for non-migrate actions")
+        if action_name == "block":
+            if source is not None or generator is not None:
+                errors.append(f"{action_label}: block actions must not read manifest content")
+        else:
+            for field in ("source", "generator"):
+                if action.get(field) != entry.get(field):
+                    errors.append(
+                        f"{action_label}.{field} differs from installation entry {entry_id}"
+                    )
+        for field in ("destination", "ownership"):
+            if action.get(field) != entry.get(field):
+                errors.append(
+                    f"{action_label}.{field} differs from installation entry {entry_id}"
+                )
+        if action_name == "generate" and entry.get("kind") != "generated":
+            errors.append(f"{action_label}: generate action references a copied entry")
+        if action_name in {"create", "replace"} and entry.get("kind") != "copied":
+            errors.append(f"{action_label}: {action_name} action references a generated entry")
+
+    expected_can_apply = block_count == 0
+    if plan.get("canApply") != expected_can_apply:
+        errors.append(f"{label}.canApply contradicts the presence of block actions")
+    if block_count and (block_count != 1 or len(actions) != 1):
+        errors.append(
+            f"{label}.actions: a v1 blocked plan must contain exactly one block action "
+            "and no other actions"
+        )
     return errors
 
 
@@ -218,15 +436,31 @@ def portable_relative_path_error(value: Any) -> str | None:
         return "must use portable '/' separators"
     if value.startswith("/") or WINDOWS_DRIVE_PATTERN.match(value):
         return "must be relative, not absolute"
-    if "\x00" in value:
-        return "must not contain a NUL character"
     pure = PurePosixPath(value)
     if ".." in pure.parts:
         return "must not contain parent traversal"
     normalized = pure.as_posix()
     if normalized in {"", "."} or normalized != value:
         return "must be normalized"
+    for segment in pure.parts:
+        if any(ord(character) < 32 or ord(character) == 127 for character in segment):
+            return "must not contain control characters"
+        forbidden = sorted(set(segment) & WINDOWS_FORBIDDEN_PATH_CHARACTERS)
+        if forbidden:
+            return f"must not contain Windows-invalid characters: {''.join(forbidden)}"
+        if segment.endswith((".", " ")):
+            return "segments must not end with a dot or space"
+        if WINDOWS_RESERVED_SEGMENT_PATTERN.fullmatch(segment):
+            return f"must not contain a Windows reserved device segment: {segment}"
+        if segment.casefold() == ".git":
+            return "must not address a .git segment"
     return None
+
+
+def portable_path_key(value: str) -> tuple[str, ...]:
+    """Return the collision key shared by supported case-insensitive filesystems."""
+
+    return tuple(part.casefold() for part in PurePosixPath(value).parts)
 
 
 def _within(path: Path, root: Path) -> bool:
@@ -353,11 +587,69 @@ def _known_subject_category(subject_id: str) -> str | None:
         (r"^SPI-", "iterations"),
         (r"^SPS-", "slices"),
         (r"^(FIX|HOTFIX)-", "fixes"),
+        (r"^REV-", "reviews"),
+        (r"^VER-", "verification"),
     )
     for pattern, category in patterns:
         if re.match(pattern, subject_id):
             return category
     return None
+
+
+def _id_references(value: Any) -> list[str]:
+    if isinstance(value, str):
+        return [value]
+    if isinstance(value, list):
+        return [item for item in value if isinstance(item, str)]
+    return []
+
+
+def _release_version_from_id(release_id: Any) -> str | None:
+    if not isinstance(release_id, str) or not release_id.startswith("REL-"):
+        return None
+    version = release_id[4:]
+    try:
+        SemVer.parse(version)
+    except ValueError:
+        return None
+    return version
+
+
+def validate_publication_identity(
+    release_id: Any,
+    version: Any,
+    state: Any,
+    commit: Any,
+    tag: Any,
+    publication: Any,
+    label: str,
+    *,
+    commit_field: str = "releaseCommit",
+    publication_field: str = "githubRelease",
+) -> list[str]:
+    errors: list[str] = []
+    if isinstance(release_id, str) and isinstance(version, str):
+        if release_id != f"REL-{version}":
+            errors.append(f"{label}: release ID does not match version")
+    if isinstance(version, str) and isinstance(tag, str) and tag != f"v{version}":
+        errors.append(f"{label}: publication tag {tag!r} does not match version {version}")
+    if state == "unreleased":
+        for field, value in (
+            (commit_field, commit),
+            ("gitTag", tag),
+            (publication_field, publication),
+        ):
+            if value is not None:
+                errors.append(f"{label}.{field}: must be null while release is unreleased")
+    if state in {"released", "yanked"}:
+        for field, value in (
+            (commit_field, commit),
+            ("gitTag", tag),
+            (publication_field, publication),
+        ):
+            if not isinstance(value, str) or not value:
+                errors.append(f"{label}.{field}: is required for {state} releases")
+    return errors
 
 
 def validate_ledger(
@@ -403,6 +695,19 @@ def validate_ledger(
         event_type = event.get("eventType")
         if event_type in RELEASE_EVENT_TYPES:
             errors += validate_json(event, release_schema, f"{line_label} release event")
+            release_version = _release_version_from_id(event.get("releaseId"))
+            payload = event.get("payload")
+            tag = payload.get("tag") if isinstance(payload, dict) else None
+            if (
+                event_type in {"release-tag-created", "release-published"}
+                and release_version is not None
+                and isinstance(tag, str)
+                and tag != f"v{release_version}"
+            ):
+                errors.append(
+                    f"{line_label} release event: tag {tag!r} does not match "
+                    f"releaseId {event.get('releaseId')}"
+                )
         if relations:
             references: list[tuple[str, str]] = []
             release_id = event.get("releaseId")
@@ -422,9 +727,15 @@ def validate_ledger(
     return errors
 
 
-def validate_relations_semantics(relations: Any, sdp_root: Path, label: str) -> list[str]:
+def validate_relations_semantics(
+    relations: Any,
+    sdp_root: Path,
+    label: str,
+    project_root: Path | None = None,
+) -> list[str]:
     if not isinstance(relations, dict):
         return []
+    root = project_root or sdp_root
     errors: list[str] = []
     for category, records in relations.items():
         if not isinstance(records, dict):
@@ -434,9 +745,17 @@ def validate_relations_semantics(relations: Any, sdp_root: Path, label: str) -> 
                 continue
             for field in RELATION_PATH_FIELDS:
                 if field in relation:
+                    value = relation[field]
+                    if isinstance(value, str) and value.casefold().endswith(".yml"):
+                        errors.append(
+                            f"{label}.{category}.{record_id}.{field}: "
+                            "YAML record paths must use the canonical .yaml extension"
+                        )
                     errors += validate_existing_path(
-                        relation[field],
-                        [sdp_root],
+                        value,
+                        _record_path_bases(root, sdp_root, value)
+                        if isinstance(value, str)
+                        else [sdp_root],
                         f"{label}.{category}.{record_id}.{field}",
                     )
 
@@ -450,9 +769,33 @@ def validate_relations_semantics(relations: Any, sdp_root: Path, label: str) -> 
             "iteration": "iterations",
             "release": "releases",
             "review": "reviews",
+            "reviews": "reviews",
+            "verification": "verification",
+            "mandate": "mandates",
+        },
+        "fixes": {
+            "release": "releases",
+            "review": "reviews",
+            "reviews": "reviews",
             "verification": "verification",
         },
-        "fixes": {"release": "releases", "review": "reviews", "verification": "verification"},
+        "reviews": {
+            "slice": "slices",
+            "fix": "fixes",
+            "release": "releases",
+            "verification": "verification",
+            "resolvedBy": "reviews",
+            "resolves": "reviews",
+        },
+        "verification": {
+            "slice": "slices",
+            "fix": "fixes",
+            "release": "releases",
+            "releaseContext": "releases",
+            "review": "reviews",
+            "reviewerConfirmation": "reviews",
+        },
+        "migrations": {"slice": "slices", "fix": "fixes", "release": "releases"},
         "releases": {
             "sprints": "sprints",
             "fixes": "fixes",
@@ -460,7 +803,21 @@ def validate_relations_semantics(relations: Any, sdp_root: Path, label: str) -> 
             "reviews": "reviews",
             "verification": "verification",
             "migrations": "migrations",
+            "mandate": "mandates",
         },
+        "mandates": {
+            "sprint": "sprints",
+            "outcomes": "outcomes",
+            "boundaries": "boundaries",
+            "successCriteria": "successCriteria",
+            "assumptions": "assumptions",
+            "questions": "questions",
+        },
+        "outcomes": {"mandate": "mandates"},
+        "boundaries": {"mandate": "mandates"},
+        "successCriteria": {"mandate": "mandates"},
+        "assumptions": {"mandate": "mandates"},
+        "questions": {"mandate": "mandates"},
     }
     for category, fields in reference_rules.items():
         records = relations.get(category)
@@ -470,17 +827,71 @@ def validate_relations_semantics(relations: Any, sdp_root: Path, label: str) -> 
             if not isinstance(relation, dict):
                 continue
             for field, target_category in fields.items():
-                value = relation.get(field)
-                references = value if isinstance(value, list) else [value]
+                references = _id_references(relation.get(field))
                 target = relations.get(target_category)
                 if not isinstance(target, dict):
                     continue
                 for reference in references:
-                    if isinstance(reference, str) and reference not in target:
+                    if reference not in target:
                         errors.append(
                             f"{label}.{category}.{record_id}.{field}: dangling ID {reference}; "
                             f"not found in {target_category}"
                         )
+
+    reverse_rules: tuple[
+        tuple[str, tuple[str, ...], str, tuple[str, ...]], ...
+    ] = (
+        ("slices", ("review", "reviews"), "reviews", ("slice",)),
+        ("reviews", ("slice",), "slices", ("review", "reviews")),
+        ("slices", ("verification",), "verification", ("slice",)),
+        ("verification", ("slice",), "slices", ("verification",)),
+        ("fixes", ("review", "reviews"), "reviews", ("fix",)),
+        ("reviews", ("fix",), "fixes", ("review", "reviews")),
+        ("fixes", ("verification",), "verification", ("fix",)),
+        ("verification", ("fix",), "fixes", ("verification",)),
+        ("migrations", ("release",), "releases", ("migrations",)),
+        ("releases", ("migrations",), "migrations", ("release",)),
+        ("reviews", ("resolvedBy",), "reviews", ("resolves",)),
+        ("reviews", ("resolves",), "reviews", ("resolvedBy",)),
+    )
+    for source_category, source_fields, target_category, reverse_fields in reverse_rules:
+        source_records = relations.get(source_category)
+        target_records = relations.get(target_category)
+        if not isinstance(source_records, dict) or not isinstance(target_records, dict):
+            continue
+        for source_id, source_relation in source_records.items():
+            if not isinstance(source_relation, dict):
+                continue
+            for source_field in source_fields:
+                for target_id in _id_references(source_relation.get(source_field)):
+                    target_relation = target_records.get(target_id)
+                    if not isinstance(target_relation, dict):
+                        continue
+                    if not any(
+                        source_id in _id_references(target_relation.get(reverse_field))
+                        for reverse_field in reverse_fields
+                    ):
+                        rendered_fields = " or ".join(reverse_fields)
+                        errors.append(
+                            f"{label}.{source_category}.{source_id}.{source_field}: "
+                            f"missing reverse link from {target_category}.{target_id}."
+                            f"{rendered_fields}"
+                        )
+
+    release_records = relations.get("releases")
+    if isinstance(release_records, dict):
+        for release_id, release_relation in release_records.items():
+            if not isinstance(release_relation, dict):
+                continue
+            errors += validate_publication_identity(
+                release_id,
+                release_relation.get("version"),
+                release_relation.get("state"),
+                release_relation.get("releaseCommit"),
+                release_relation.get("gitTag"),
+                release_relation.get("githubRelease"),
+                f"{label}.releases.{release_id}",
+            )
     return errors
 
 
@@ -583,8 +994,20 @@ def validate_release_and_fix_records(
     relation_fixes = relations.get("fixes", {}) if isinstance(relations, dict) else None
 
     release_root = sdp_root / "Releases"
+    release_record_paths: dict[str, Path] = {}
     if release_root.is_dir():
-        for path in sorted(release_root.rglob("*.yaml")):
+        release_paths: list[Path] = []
+        for path in sorted(release_root.rglob("*")):
+            if not path.is_file() or path.suffix.casefold() not in {".yaml", ".yml"}:
+                continue
+            label = str(path.relative_to(project_root)).replace("\\", "/")
+            if path.suffix != ".yaml":
+                errors.append(
+                    f"{label}: release records must use the canonical .yaml extension"
+                )
+            else:
+                release_paths.append(path)
+        for path in release_paths:
             label = str(path.relative_to(project_root)).replace("\\", "/")
             record, read_errors = _read_yaml(path, label)
             errors += read_errors
@@ -598,6 +1021,9 @@ def validate_release_and_fix_records(
                 continue
             release_id = record.get("releaseId")
             if isinstance(release_id, str):
+                if release_id in release_record_paths:
+                    errors.append(f"{label}: duplicate release record ID {release_id}")
+                release_record_paths[release_id] = path.resolve()
                 if path.stem != release_id:
                     errors.append(f"{label}: filename must match releaseId {release_id}")
                 if isinstance(relation_releases, dict) and release_id not in relation_releases:
@@ -611,14 +1037,74 @@ def validate_release_and_fix_records(
                     else None
                 )
                 if isinstance(relation_release, dict):
-                    for field in ("version", "state"):
+                    relation_agreements = {
+                        "version": "version",
+                        "state": "state",
+                        "releaseNotes": "releaseNotesPath",
+                        "verification": "verificationRecords",
+                        "reviews": "reviewRecords",
+                        "releaseCommit": "releasePreparationCommit",
+                        "gitTag": "gitTag",
+                        "githubRelease": "githubReleaseUrl",
+                    }
+                    for relation_field, record_field in relation_agreements.items():
+                        relation_value = relation_release.get(relation_field)
+                        record_value = record.get(record_field)
                         if (
-                            field in relation_release
-                            and relation_release.get(field) != record.get(field)
+                            relation_field == "releaseNotes"
+                            and isinstance(relation_value, str)
+                            and isinstance(record_value, str)
                         ):
+                            relation_base = _record_path_bases(
+                                project_root, sdp_root, relation_value
+                            )[0]
+                            record_base = _record_path_bases(
+                                project_root, sdp_root, record_value
+                            )[0]
+                            agrees = (
+                                relation_base / Path(*PurePosixPath(relation_value).parts)
+                            ).resolve() == (
+                                record_base / Path(*PurePosixPath(record_value).parts)
+                            ).resolve()
+                        else:
+                            agrees = relation_value == record_value
+                        if not agrees:
                             errors.append(
-                                f"{label}.{field} differs from Relations.releases.{release_id}"
+                                f"{label}.{record_field} differs from "
+                                f"Relations.releases.{release_id}.{relation_field}"
                             )
+                    relation_record_path = relation_release.get("releaseRecord")
+                    if isinstance(relation_record_path, str):
+                        relative_record_path = Path(
+                            *PurePosixPath(relation_record_path).parts
+                        )
+                        relation_candidates = {
+                            (base.resolve() / relative_record_path).resolve()
+                            for base in _record_path_bases(
+                                project_root, sdp_root, relation_record_path
+                            )
+                        }
+                        if path.resolve() not in relation_candidates:
+                            errors.append(
+                                f"{label}: file identity differs from "
+                                f"Relations.releases.{release_id}.releaseRecord"
+                            )
+                    else:
+                        errors.append(
+                            f"{label}: Relations.releases.{release_id}.releaseRecord "
+                            "is required for record identity agreement"
+                        )
+                errors += validate_publication_identity(
+                    release_id,
+                    record.get("version"),
+                    record.get("state"),
+                    record.get("releasePreparationCommit"),
+                    record.get("gitTag"),
+                    record.get("githubReleaseUrl"),
+                    label,
+                    commit_field="releasePreparationCommit",
+                    publication_field="githubReleaseUrl",
+                )
             release_notes_path = record.get("releaseNotesPath")
             if isinstance(release_notes_path, str):
                 errors += validate_existing_path(
@@ -653,9 +1139,38 @@ def validate_release_and_fix_records(
                     elif isinstance(relation_category, dict) and reference not in relation_category:
                         errors.append(f"{label}.{field}: dangling ID {reference}")
 
+    if isinstance(relation_releases, dict):
+        for release_id, relation in relation_releases.items():
+            relation_label = f"Relations.releases.{release_id}.releaseRecord"
+            release_record = relation.get("releaseRecord") if isinstance(relation, dict) else None
+            if not isinstance(release_record, str) or not release_record.endswith(".yaml"):
+                errors.append(f"{relation_label}: must reference a canonical .yaml release record")
+                continue
+            discovered = release_record_paths.get(release_id)
+            if discovered is None:
+                errors.append(f"{relation_label}: no validated release record exists")
+                continue
+            relative = Path(*PurePosixPath(release_record).parts)
+            candidates = {
+                (base.resolve() / relative).resolve()
+                for base in _record_path_bases(project_root, sdp_root, release_record)
+            }
+            if discovered not in candidates:
+                errors.append(f"{relation_label}: does not identify the governed release record")
+
     fixes_root = sdp_root / "Fixes"
+    fix_record_paths: dict[str, Path] = {}
     if fixes_root.is_dir():
-        for path in sorted(fixes_root.rglob("*.yaml")):
+        fix_paths: list[Path] = []
+        for path in sorted(fixes_root.rglob("*")):
+            if not path.is_file() or path.suffix.casefold() not in {".yaml", ".yml"}:
+                continue
+            label = str(path.relative_to(project_root)).replace("\\", "/")
+            if path.suffix != ".yaml":
+                errors.append(f"{label}: Fix records must use the canonical .yaml extension")
+            else:
+                fix_paths.append(path)
+        for path in fix_paths:
             label = str(path.relative_to(project_root)).replace("\\", "/")
             record, read_errors = _read_yaml(path, label)
             errors += read_errors
@@ -667,6 +1182,9 @@ def validate_release_and_fix_records(
                 continue
             fix_id = record.get("fixId")
             if isinstance(fix_id, str):
+                if fix_id in fix_record_paths:
+                    errors.append(f"{label}: duplicate Fix record ID {fix_id}")
+                fix_record_paths[fix_id] = path.resolve()
                 if path.stem != fix_id:
                     errors.append(f"{label}: filename must match fixId {fix_id}")
                 if isinstance(relation_fixes, dict) and fix_id not in relation_fixes:
@@ -686,6 +1204,24 @@ def validate_release_and_fix_records(
                     relation_reviews = relations.get("reviews")
                     if isinstance(relation_reviews, dict) and review not in relation_reviews:
                         errors.append(f"{label}.reviewRecord: dangling ID {review}")
+    if isinstance(relation_fixes, dict):
+        for fix_id, relation in relation_fixes.items():
+            relation_label = f"Relations.fixes.{fix_id}.path"
+            fix_record = relation.get("path") if isinstance(relation, dict) else None
+            if not isinstance(fix_record, str) or not fix_record.endswith(".yaml"):
+                errors.append(f"{relation_label}: must reference a canonical .yaml Fix record")
+                continue
+            discovered = fix_record_paths.get(fix_id)
+            if discovered is None:
+                errors.append(f"{relation_label}: no validated Fix record exists")
+                continue
+            relative = Path(*PurePosixPath(fix_record).parts)
+            candidates = {
+                (base.resolve() / relative).resolve()
+                for base in _record_path_bases(project_root, sdp_root, fix_record)
+            }
+            if discovered not in candidates:
+                errors.append(f"{relation_label}: does not identify the governed Fix record")
     return errors
 
 
@@ -720,6 +1256,26 @@ def validate_project(project_root: Path, schema_root: Path | None = None) -> lis
         errors += validate_json(
             project_manifest, project_schema, "SDP/SDP-project.manifest.yaml"
         )
+        if isinstance(project_manifest, dict):
+            release = project_manifest.get("release")
+            if isinstance(release, dict):
+                current_version = release.get("currentVersion")
+                latest_tag = release.get("latestTag")
+                latest_commit = release.get("latestCommit")
+                if (latest_tag is None) != (latest_commit is None):
+                    errors.append(
+                        "SDP/SDP-project.manifest.yaml.release: latestTag and "
+                        "latestCommit must both be null or both be populated"
+                    )
+                if (
+                    isinstance(current_version, str)
+                    and isinstance(latest_tag, str)
+                    and latest_tag != f"v{current_version}"
+                ):
+                    errors.append(
+                        "SDP/SDP-project.manifest.yaml.release.latestTag does not "
+                        "match release.currentVersion"
+                    )
 
     installed_relative: Any = "Framework/installed-toolkit.manifest.yaml"
     if isinstance(project_manifest, dict):
@@ -794,7 +1350,10 @@ def validate_project(project_root: Path, schema_root: Path | None = None) -> lis
                 relations, relations_schema, "SDP/Traceability/Relations.yaml"
             )
             errors += validate_relations_semantics(
-                relations, sdp_root, "SDP/Traceability/Relations.yaml"
+                relations,
+                sdp_root,
+                "SDP/Traceability/Relations.yaml",
+                project_root,
             )
     if current is not None:
         errors += validate_current_index_semantics(
@@ -938,8 +1497,8 @@ def validate_installation_contract(
                 errors.append(f"installation generator version: {exc}")
 
     exclusions = contract.get("exclusions")
-    excluded: list[tuple[str, str]] = []
-    excluded_paths: set[str] = set()
+    excluded: list[tuple[tuple[str, ...], str]] = []
+    excluded_paths: dict[tuple[str, ...], str] = {}
     if isinstance(exclusions, list):
         for index, exclusion in enumerate(exclusions):
             label = f"Toolkit/SDP-install.manifest.json.exclusions[{index}]"
@@ -952,11 +1511,15 @@ def validate_installation_contract(
                 errors.append(f"{label}.path: {path_error}: {excluded_path!r}")
                 continue
             assert isinstance(excluded_path, str)
-            if excluded_path in excluded_paths:
-                errors.append(f"{label}: duplicate exclusion path {excluded_path}")
-            excluded_paths.add(excluded_path)
+            excluded_key = portable_path_key(excluded_path)
+            if excluded_key in excluded_paths:
+                errors.append(
+                    f"{label}: duplicate/case-colliding exclusion path {excluded_path}; "
+                    f"already used by {excluded_paths[excluded_key]}"
+                )
+            excluded_paths[excluded_key] = excluded_path
             if isinstance(excluded_kind, str):
-                excluded.append((excluded_path, excluded_kind))
+                excluded.append((excluded_key, excluded_kind))
             actual = repo / Path(*PurePosixPath(excluded_path).parts)
             if excluded_kind == "file" and not actual.is_file():
                 errors.append(f"{label}: excluded file does not exist: {excluded_path}")
@@ -964,10 +1527,15 @@ def validate_installation_contract(
                 errors.append(f"{label}: excluded tree does not exist: {excluded_path}")
 
     def is_excluded(path: str) -> bool:
+        path_key = portable_path_key(path)
         return any(
-            path == excluded_path
-            or (kind == "tree" and path.startswith(excluded_path + "/"))
-            for excluded_path, kind in excluded
+            path_key == excluded_key
+            or (
+                kind == "tree"
+                and len(path_key) > len(excluded_key)
+                and path_key[: len(excluded_key)] == excluded_key
+            )
+            for excluded_key, kind in excluded
         )
 
     required_exclusions = {
@@ -994,7 +1562,11 @@ def validate_installation_contract(
         "Toolkit/payload/project-root/AGENTS-project.md.template",
         "Toolkit/payload/sdp-root/AGENT-REMINDERS.md.template",
     }
-    missing_exclusions = sorted(required_exclusions - excluded_paths)
+    missing_exclusions = sorted(
+        path
+        for path in required_exclusions
+        if portable_path_key(path) not in excluded_paths
+    )
     if missing_exclusions:
         errors.append(
             "Installation contract omits required live/legacy exclusions: "
@@ -1028,7 +1600,7 @@ def validate_installation_contract(
             if path_error:
                 errors.append(f"{label}.destination: {path_error}: {destination!r}")
             elif isinstance(destination, str):
-                destination_key = destination.casefold()
+                destination_key = "/".join(portable_path_key(destination))
                 if destination_key in seen_destinations:
                     errors.append(
                         f"{label}: duplicate/case-colliding destination {destination}; "
@@ -1075,6 +1647,12 @@ def validate_installation_contract(
             if isinstance(contract_capabilities, list) and capability not in contract_capabilities:
                 errors.append(
                     f"{label}.governing.capability: {capability!r} is not declared by the contract"
+                )
+            expected_capability = CANONICAL_GOVERNING_CAPABILITIES.get(schema_reference)
+            if expected_capability is not None and capability != expected_capability:
+                errors.append(
+                    f"{label}.governing: schema {schema_reference} requires capability "
+                    f"{expected_capability}, not {capability!r}"
                 )
 
     unused_generators = sorted(generator_ids - used_generators)
@@ -1161,6 +1739,15 @@ def validate_repository(repo: Path, base_ref: str | None = None) -> list[str]:
         ],
         "manifest version",
     )
+    if isinstance(toolkit, dict):
+        toolkit_version = toolkit.get("version")
+        toolkit_tag = toolkit.get("gitTag")
+        if (
+            isinstance(toolkit_version, str)
+            and isinstance(toolkit_tag, str)
+            and toolkit_tag != f"v{toolkit_version}"
+        ):
+            errors.append("SDP.manifest.yaml toolkit.gitTag does not match toolkit.version")
     try:
         if SemVer.parse(toolkit["releaseTargetVersion"]) < SemVer.parse(toolkit["version"]):
             errors.append("Toolkit releaseTargetVersion is lower than toolkit version")
@@ -1247,10 +1834,12 @@ def validate_repository(repo: Path, base_ref: str | None = None) -> list[str]:
 
     install_plan_schema = load_json(schema_root / "SDP-install-plan.schema.json")
     install_plan_example = load_json(repo / "examples/install-plan.example.json")
-    errors += validate_json(
+    install_contract = load_json(repo / "Toolkit/SDP-install.manifest.json")
+    errors += validate_install_plan(
         install_plan_example,
         install_plan_schema,
         "examples/install-plan.example.json",
+        install_contract,
     )
     if (
         isinstance(install_plan_example, dict)

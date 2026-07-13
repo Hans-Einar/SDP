@@ -70,7 +70,7 @@
   "$defs": {
     "semver": {
       "type": "string",
-      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\\+([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?$"
     },
     "stableId": {
       "type": "string",
@@ -79,7 +79,7 @@
     "portablePath": {
       "type": "string",
       "minLength": 1,
-      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*\\\\)(?!.*//)(?!\\./)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*(?:^|/)\\.(?:/|$))(?!.*\\/$).+$"
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*[\\\\<>:\"|?*~\\u0000-\\u001F\\u007F])(?!.*//)(?!.*\\/$)(?!.*(?:^|/)\\.{1,2}(?:/|$))(?!.*(?:^|/)\\.[Gg][Ii][Tt](?:/|$))(?!.*(?:^|/)(?:[Cc][Oo][Nn]|[Pp][Rr][Nn]|[Aa][Uu][Xx]|[Nn][Uu][Ll]|[Cc][Ll][Oo][Cc][Kk]\\$|[Cc][Oo][Nn][Ii][Nn]\\$|[Cc][Oo][Nn][Oo][Uu][Tt]\\$|[Cc][Oo][Mm](?:[1-9]|\\u00B9|\\u00B2|\\u00B3)|[Ll][Pp][Tt](?:[1-9]|\\u00B9|\\u00B2|\\u00B3))(?:\\.[^/]*)?(?:/|$))(?!.*[. ](?:/|$)).+$"
     },
     "action": {
       "type": "object",
@@ -90,6 +90,7 @@
         "entryId",
         "source",
         "generator",
+        "targetSource",
         "destination",
         "ownership",
         "reason",
@@ -106,8 +107,8 @@
             "preserve",
             "unchanged",
             "backup",
+            "migrate",
             "generate",
-            "warn",
             "block"
           ]
         },
@@ -124,9 +125,33 @@
             { "type": "null" }
           ]
         },
+        "targetSource": {
+          "oneOf": [
+            { "$ref": "#/$defs/portablePath" },
+            { "type": "null" }
+          ]
+        },
         "destination": { "$ref": "#/$defs/portablePath" },
         "ownership": { "enum": ["toolkit-managed", "project-owned"] },
-        "reason": { "$ref": "#/$defs/stableId" },
+        "reason": {
+          "enum": [
+            "missing-target",
+            "missing-generated-target",
+            "content-matches",
+            "missing-only-content",
+            "managed-content-differs",
+            "backup-before-replace",
+            "refresh-managed-content",
+            "refresh-generated-content",
+            "migrate-existing-agents",
+            "preserve-existing-agents-conflict",
+            "malformed-project-manifest",
+            "unsupported-project-schema",
+            "malformed-installed-manifest",
+            "unsupported-installed-schema",
+            "downgrade-blocked"
+          ]
+        },
         "mutatesTarget": { "type": "boolean" },
         "oldToolkitVersion": {
           "oneOf": [
@@ -141,7 +166,7 @@
         {
           "if": {
             "properties": {
-              "action": { "enum": ["create", "replace", "backup", "generate"] }
+              "action": { "enum": ["create", "replace", "backup", "migrate", "generate"] }
             },
             "required": ["action"]
           },
@@ -150,7 +175,7 @@
         {
           "if": {
             "properties": {
-              "action": { "enum": ["preserve", "unchanged", "warn", "block"] }
+              "action": { "enum": ["preserve", "unchanged", "block"] }
             },
             "required": ["action"]
           },
@@ -158,7 +183,7 @@
         },
         {
           "if": {
-            "properties": { "action": { "not": { "enum": ["warn", "block"] } } },
+            "properties": { "action": { "not": { "enum": ["migrate", "block"] } } },
             "required": ["action"]
           },
           "then": {
@@ -185,6 +210,20 @@
               "source": { "type": "null" },
               "generator": { "$ref": "#/$defs/stableId" }
             }
+          }
+        },
+        {
+          "if": { "properties": { "action": { "const": "migrate" } }, "required": ["action"] },
+          "then": {
+            "properties": {
+              "source": { "type": "null" },
+              "generator": { "type": "null" },
+              "targetSource": { "$ref": "#/$defs/portablePath" },
+              "ownership": { "const": "project-owned" }
+            }
+          },
+          "else": {
+            "properties": { "targetSource": { "type": "null" } }
           }
         }
       ]

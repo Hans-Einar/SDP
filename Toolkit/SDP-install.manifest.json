@@ -397,7 +397,7 @@
       "backupPolicy": "none",
       "forcePolicy": "preserve",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.manifest.v1", "schema": "Toolkit/schemas/current-index.schema.json" }
+      "governing": { "capability": "sdp.traceability.current-index.v1", "schema": "Toolkit/schemas/current-index.schema.json" }
     },
     {
       "id": "project-relations",
@@ -411,7 +411,7 @@
       "backupPolicy": "none",
       "forcePolicy": "preserve",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.manifest.v1", "schema": "Toolkit/schemas/relations.schema.json" }
+      "governing": { "capability": "sdp.traceability.relations.v1", "schema": "Toolkit/schemas/relations.schema.json" }
     },
     {
       "id": "generated-empty-ledger",
@@ -425,7 +425,7 @@
       "backupPolicy": "none",
       "forcePolicy": "preserve",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.traceability.release-events.v1", "schema": "Toolkit/schemas/ledger-event.schema.json" }
+      "governing": { "capability": "sdp.traceability.ledger-events.v1", "schema": "Toolkit/schemas/ledger-event.schema.json" }
     },
     {
       "id": "project-mandate",

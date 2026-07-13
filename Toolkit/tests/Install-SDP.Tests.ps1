@@ -119,6 +119,127 @@ if errors:
     }
 }
 
+$PlanReasonRules = @{
+    'missing-target' = @('create', $true)
+    'missing-generated-target' = @('generate', $true)
+    'content-matches' = @('unchanged', $false)
+    'missing-only-content' = @('preserve', $false)
+    'managed-content-differs' = @('preserve', $false)
+    'backup-before-replace' = @('backup', $true)
+    'refresh-managed-content' = @('replace', $true)
+    'refresh-generated-content' = @('generate', $true)
+    'migrate-existing-agents' = @('migrate', $true)
+    'preserve-existing-agents-conflict' = @('migrate', $true)
+    'malformed-project-manifest' = @('block', $false)
+    'unsupported-project-schema' = @('block', $false)
+    'malformed-installed-manifest' = @('block', $false)
+    'unsupported-installed-schema' = @('block', $false)
+    'downgrade-blocked' = @('block', $false)
+}
+
+function Assert-PlanReasonSemantics {
+    param($Plan, [string]$Label)
+
+    $actions = @($Plan.actions)
+    for ($index = 0; $index -lt $actions.Count; $index++) {
+        $action = $actions[$index]
+        Assert-Equal ($index + 1) ([int]$action.sequence) "$Label sequence"
+        $reason = [string]$action.reason
+        Assert-True ($PlanReasonRules.ContainsKey($reason)) "$Label unknown reason $reason"
+        Assert-Equal ([string]$PlanReasonRules[$reason][0]) ([string]$action.action) "$Label action for $reason"
+        Assert-Equal ([bool]$PlanReasonRules[$reason][1]) ([bool]$action.mutatesTarget) "$Label mutation for $reason"
+        Assert-Equal ([string]$Plan.toolkitVersion) ([string]$action.newToolkitVersion) "$Label new version"
+        if ($null -eq $Plan.installedToolkitVersion) {
+            Assert-True ($null -eq $action.oldToolkitVersion) "$Label unexpected old version"
+        } else {
+            Assert-Equal ([string]$Plan.installedToolkitVersion) ([string]$action.oldToolkitVersion) "$Label old version"
+        }
+    }
+}
+
+function Assert-ManifestPreflightBlock {
+    param(
+        [string]$Name,
+        [string]$RelativePath,
+        [string]$Content,
+        [string]$ExpectedReason
+    )
+
+    $target = New-FixtureProject $Name
+    Write-Utf8File (Join-Path $target ($RelativePath.Replace('/', '\'))) $Content
+    Write-Utf8File (Join-Path $target 'marker.txt') 'UNCHANGED'
+    $before = Get-TreeFingerprint $target
+    $planJson = Invoke-PlanJson $target
+    Assert-Equal $before (Get-TreeFingerprint $target) "$Name PlanJson mutated target"
+    Assert-PlanConforms $planJson $Name
+    $plan = $planJson | ConvertFrom-Json
+    Assert-True (-not [bool]$plan.canApply) "$Name plan was applicable"
+    Assert-Equal 1 @($plan.actions).Count "$Name block action count"
+    Assert-Equal 'block' ([string]$plan.actions[0].action) "$Name action"
+    Assert-Equal $ExpectedReason ([string]$plan.actions[0].reason) "$Name reason"
+    Assert-PlanReasonSemantics $plan $Name
+    $failed = $false
+    try { & $Installer -ProjectRoot $target | Out-Null } catch { $failed = $true }
+    Assert-True $failed "$Name apply did not fail"
+    Assert-Equal $before (Get-TreeFingerprint $target) "$Name apply mutated target"
+}
+
+function Assert-InvalidArchiveContract {
+    param(
+        [string]$Name,
+        $Contract,
+        [string]$ArchiveManifest,
+        [string]$OriginalManifest,
+        [string]$ArchiveInstaller
+    )
+
+    try {
+        Write-Utf8File $ArchiveManifest ($Contract | ConvertTo-Json -Depth 60)
+        $target = New-FixtureProject $Name
+        Write-Utf8File (Join-Path $target 'marker.txt') 'UNCHANGED'
+        $before = Get-TreeFingerprint $target
+        $failed = $false
+        try {
+            Invoke-PlanJson $target -InstallerPath $ArchiveInstaller | Out-Null
+        } catch {
+            $failed = $true
+        }
+        Assert-True $failed "$Name invalid contract passed PowerShell preflight"
+        Assert-Equal $before (Get-TreeFingerprint $target) "$Name invalid contract mutated target"
+    } finally {
+        Write-Utf8File $ArchiveManifest $OriginalManifest
+    }
+}
+
+function New-DirectoryLink {
+    param([string]$Path, [string]$Target)
+
+    if ([System.IO.Path]::DirectorySeparatorChar -eq '\') {
+        New-Item -ItemType Junction -Path $Path -Target $Target | Out-Null
+    } else {
+        New-Item -ItemType SymbolicLink -Path $Path -Target $Target | Out-Null
+    }
+}
+
+function Remove-DirectoryLink {
+    param([string]$Path)
+
+    if ([System.IO.Directory]::Exists($Path)) {
+        [System.IO.Directory]::Delete($Path, $false)
+    }
+}
+
+function Try-NewFileSymbolicLink {
+    param([string]$Path, [string]$Target)
+
+    try {
+        New-Item -ItemType SymbolicLink -Path $Path -Target $Target -ErrorAction Stop | Out-Null
+        return $true
+    } catch {
+        return $false
+    }
+}
+
 try {
     New-Item -ItemType Directory -Force -Path $TestRoot | Out-Null
 
@@ -173,6 +294,7 @@ try {
     Assert-PlanConforms $defaultPlanJson 'default'
     $defaultPlan = $defaultPlanJson | ConvertFrom-Json
     Assert-True ([bool]$defaultPlan.canApply) 'default plan unexpectedly blocked'
+    Assert-PlanReasonSemantics $defaultPlan 'default plan'
     $defaultActions = @($defaultPlan.actions)
     Assert-True ($defaultActions.Count -gt 0) 'default plan has no actions'
     for ($index = 0; $index -lt $defaultActions.Count; $index++) {
@@ -183,6 +305,7 @@ try {
         $hasSource = -not [string]::IsNullOrWhiteSpace([string]$action.source)
         $hasGenerator = -not [string]::IsNullOrWhiteSpace([string]$action.generator)
         Assert-True ($hasSource -xor $hasGenerator) "plan action $($action.entryId) lacks a single source/generator"
+        Assert-True ($null -eq $action.targetSource) "plan action $($action.entryId) unexpectedly has targetSource"
     }
     Assert-True (
         @($defaultActions | Where-Object { $_.entryId -eq 'project-sprints-readme' }).Count -eq 0
@@ -191,6 +314,7 @@ try {
     $initializePlanJson = Invoke-PlanJson $planOnly -Initialize
     Assert-PlanConforms $initializePlanJson 'initialize'
     $initializePlan = $initializePlanJson | ConvertFrom-Json
+    Assert-PlanReasonSemantics $initializePlan 'initialize plan'
     Assert-True (
         @($initializePlan.actions | Where-Object { $_.entryId -eq 'project-sprints-readme' }).Count -eq 1
     ) 'initialize plan omitted neutral structure content'
@@ -280,6 +404,15 @@ migration:
     New-Item -ItemType Directory -Force -Path (Join-Path $legacy 'SDP\03--Requirements') | Out-Null
     Set-Content -LiteralPath (Join-Path $legacy 'AGENTS.md') -Value 'OLD LOCAL AGENTS' -NoNewline
     Set-Content -LiteralPath (Join-Path $legacy 'SDP\03--Requirements\requirements.md') -Value 'LEGACY REQUIREMENTS' -NoNewline
+    $legacyPlanJson = Invoke-PlanJson $legacy
+    Assert-PlanConforms $legacyPlanJson 'AGENTS migration'
+    $legacyPlan = $legacyPlanJson | ConvertFrom-Json
+    Assert-PlanReasonSemantics $legacyPlan 'AGENTS migration'
+    $legacyMigration = @($legacyPlan.actions | Where-Object { $_.reason -eq 'migrate-existing-agents' })
+    Assert-Equal 1 $legacyMigration.Count 'AGENTS migration action count'
+    Assert-Equal 'migrate' ([string]$legacyMigration[0].action) 'AGENTS migration action'
+    Assert-Equal 'AGENTS.md' ([string]$legacyMigration[0].targetSource) 'AGENTS migration targetSource'
+    Assert-Equal 'AGENTS-project.md' ([string]$legacyMigration[0].destination) 'AGENTS migration destination'
     & $Installer -ProjectRoot $legacy | Out-Host
     Assert-Equal 'OLD LOCAL AGENTS' (Get-Content -Raw -LiteralPath (Join-Path $legacy 'AGENTS-project.md')) 'old AGENTS not migrated'
     Assert-Equal 'LEGACY REQUIREMENTS' (Get-Content -Raw -LiteralPath (Join-Path $legacy 'SDP\03--Requirements\requirements.md')) 'legacy document overwritten'
@@ -290,16 +423,28 @@ migration:
     Write-Utf8File (Join-Path $legacyConflict 'AGENTS-project.md') 'EXISTING PROJECT AGENTS'
     $beforeConflictPlan = Get-TreeFingerprint $legacyConflict
     $conflictPlanJson = Invoke-PlanJson $legacyConflict
+    Assert-Equal $conflictPlanJson (Invoke-PlanJson $legacyConflict) 'AGENTS conflict plan was not deterministic'
     Assert-PlanConforms $conflictPlanJson 'AGENTS migration conflict'
     Assert-Equal $beforeConflictPlan (Get-TreeFingerprint $legacyConflict) 'AGENTS migration plan mutated target'
     $conflictPlan = $conflictPlanJson | ConvertFrom-Json
+    Assert-PlanReasonSemantics $conflictPlan 'AGENTS migration conflict'
+    $conflictMigrations = @(
+        $conflictPlan.actions | Where-Object { $_.reason -eq 'preserve-existing-agents-conflict' }
+    )
     Assert-Equal 1 @(
-        $conflictPlan.actions | Where-Object { $_.reason -eq 'preserve-existing-agents' }
+        $conflictMigrations
     ).Count 'AGENTS conflict plan preservation action count'
+    Assert-Equal 'migrate' ([string]$conflictMigrations[0].action) 'AGENTS conflict action'
+    Assert-Equal 'AGENTS.md' ([string]$conflictMigrations[0].targetSource) 'AGENTS conflict targetSource'
+    Assert-True (
+        [string]$conflictMigrations[0].destination -cmatch '^AGENTS-project\.migration-sha256-[0-9a-f]{64}\.md$'
+    ) 'AGENTS conflict deterministic destination'
+    $plannedMigrationRelative = [string]$conflictMigrations[0].destination
     & $Installer -ProjectRoot $legacyConflict | Out-Host
     Assert-Equal 'EXISTING PROJECT AGENTS' (Get-Content -Raw -LiteralPath (Join-Path $legacyConflict 'AGENTS-project.md')) 'existing AGENTS-project overwritten during migration'
-    $migrationFiles = @(Get-ChildItem -LiteralPath $legacyConflict -File -Filter 'AGENTS-project.migration-*.md')
+    $migrationFiles = @(Get-ChildItem -LiteralPath $legacyConflict -File -Filter 'AGENTS-project.migration-sha256-*.md')
     Assert-Equal 1 $migrationFiles.Count 'AGENTS conflict migration file count'
+    Assert-Equal (Join-Path $legacyConflict $plannedMigrationRelative) $migrationFiles[0].FullName 'AGENTS apply differed from planned migration destination'
     Assert-Equal 'OLD CONFLICTING AGENTS' (Get-Content -Raw -LiteralPath $migrationFiles[0].FullName) 'AGENTS conflict content not preserved'
     Assert-Equal (
         (Get-Content -Raw -LiteralPath (Join-Path $RepositoryRoot 'Toolkit\payload\project-root\AGENTS.md.template'))
@@ -418,6 +563,39 @@ Release-Date: unreleased
     & python $ProjectValidator --mode project --project-root $bootstrap | Out-Host
     Assert-Equal 0 $LASTEXITCODE 'initialized consuming-project validation'
 
+    # Strict YAML root preflight rejects nested shadows, duplicates and malformed
+    # scalar lookalikes for both project and installed manifests.
+    Assert-ManifestPreflightBlock `
+        'project-nested-schema-shadow' `
+        'SDP/SDP-project.manifest.yaml' `
+        "nested:`n  schemaVersion: `"1.0`"`nschemaVersion: `"9.0`"`n" `
+        'malformed-project-manifest'
+    Assert-ManifestPreflightBlock `
+        'project-duplicate-schema' `
+        'SDP/SDP-project.manifest.yaml' `
+        "schemaVersion: `"1.0`"`nschemaVersion: `"1.0`"`n" `
+        'malformed-project-manifest'
+    Assert-ManifestPreflightBlock `
+        'project-malformed-scalar' `
+        'SDP/SDP-project.manifest.yaml' `
+        "schemaVersion: `"1.0`" trailing-text`n" `
+        'malformed-project-manifest'
+    Assert-ManifestPreflightBlock `
+        'installed-nested-version-shadow' `
+        'SDP/Framework/installed-toolkit.manifest.yaml' `
+        "nested:`n  toolkitVersion: `"0.2.0`"`nschemaVersion: `"1.0`"`ntoolkitVersion: `"0.3.0`"`n" `
+        'malformed-installed-manifest'
+    Assert-ManifestPreflightBlock `
+        'installed-duplicate-schema' `
+        'SDP/Framework/installed-toolkit.manifest.yaml' `
+        "schemaVersion: `"1.0`"`nschemaVersion: `"1.0`"`ntoolkitVersion: `"0.2.0`"`n" `
+        'malformed-installed-manifest'
+    Assert-ManifestPreflightBlock `
+        'installed-malformed-scalar' `
+        'SDP/Framework/installed-toolkit.manifest.yaml' `
+        "schemaVersion: `"1.0`"`ntoolkitVersion: [not-valid`n" `
+        'malformed-installed-manifest'
+
     # Unsupported installed manifest schemas stop before mutation.
     $unsupported = New-FixtureProject 'unsupported'
     New-Item -ItemType Directory -Force -Path (Join-Path $unsupported 'SDP\Framework') | Out-Null
@@ -429,6 +607,7 @@ Release-Date: unreleased
     Assert-Equal $beforeBlockedPlan $afterBlockedPlan 'blocked PlanJson mutated target'
     Assert-PlanConforms $blockedPlanJson 'blocked'
     $blockedPlan = $blockedPlanJson | ConvertFrom-Json
+    Assert-PlanReasonSemantics $blockedPlan 'unsupported installed schema plan'
     Assert-True (-not [bool]$blockedPlan.canApply) 'unsupported schema plan was applicable'
     Assert-Equal 'block' ([string]@($blockedPlan.actions)[0].action) 'unsupported schema plan action'
     $failed = $false
@@ -454,6 +633,87 @@ Release-Date: unreleased
     try { & $Installer -ProjectRoot $newer | Out-Host } catch { $downgradeFailed = $true }
     Assert-True $downgradeFailed 'newer Toolkit installation was downgraded'
     Assert-True (-not (Test-Path (Join-Path $newer 'AGENTS.md'))) 'downgrade attempt mutated project'
+
+    # SemVer 2.0 precedence distinguishes prereleases from finals and rejects
+    # numeric prerelease identifiers with leading zeroes.
+    $semverSeed = New-FixtureProject 'semver-seed'
+    & $Installer -ProjectRoot $semverSeed | Out-Null
+    $semverSeedContent = Get-Content -Raw -LiteralPath (Join-Path $semverSeed 'SDP\Framework\installed-toolkit.manifest.yaml')
+
+    $prereleaseInstalled = New-FixtureProject 'installed-prerelease'
+    $prereleaseContent = $semverSeedContent -replace '(?m)^toolkitVersion: "0\.2\.0"$', 'toolkitVersion: "0.2.0-rc.1"'
+    Write-Utf8File (Join-Path $prereleaseInstalled 'SDP\Framework\installed-toolkit.manifest.yaml') $prereleaseContent
+    $prereleasePlan = (Invoke-PlanJson $prereleaseInstalled) | ConvertFrom-Json
+    Assert-True ([bool]$prereleasePlan.canApply) 'final Toolkit did not upgrade its prerelease'
+    Assert-PlanReasonSemantics $prereleasePlan 'prerelease-to-final plan'
+
+    $newerPrerelease = New-FixtureProject 'newer-prerelease'
+    $newerPrereleaseContent = $semverSeedContent -replace '(?m)^toolkitVersion: "0\.2\.0"$', 'toolkitVersion: "0.2.1-alpha.1"'
+    Write-Utf8File (Join-Path $newerPrerelease 'SDP\Framework\installed-toolkit.manifest.yaml') $newerPrereleaseContent
+    $newerPrereleasePlan = (Invoke-PlanJson $newerPrerelease) | ConvertFrom-Json
+    Assert-True (-not [bool]$newerPrereleasePlan.canApply) 'newer prerelease core did not block downgrade'
+    Assert-Equal 'downgrade-blocked' ([string]$newerPrereleasePlan.actions[0].reason) 'newer prerelease block reason'
+
+    $invalidPrerelease = New-FixtureProject 'invalid-prerelease'
+    $invalidPrereleaseContent = $semverSeedContent -replace '(?m)^toolkitVersion: "0\.2\.0"$', 'toolkitVersion: "0.2.0-01"'
+    Write-Utf8File (Join-Path $invalidPrerelease 'SDP\Framework\installed-toolkit.manifest.yaml') $invalidPrereleaseContent
+    $invalidPrereleasePlan = (Invoke-PlanJson $invalidPrerelease) | ConvertFrom-Json
+    Assert-True (-not [bool]$invalidPrereleasePlan.canApply) 'invalid numeric prerelease passed preflight'
+    Assert-Equal 'malformed-installed-manifest' ([string]$invalidPrereleasePlan.actions[0].reason) 'invalid prerelease block reason'
+
+    $invalidTimestamp = New-FixtureProject 'invalid-installed-timestamp'
+    $invalidTimestampContent = $semverSeedContent -replace `
+        '(?m)^toolkitInstalledAt: ".*"$', `
+        'toolkitInstalledAt: "2026-07-14"'
+    Write-Utf8File (Join-Path $invalidTimestamp 'SDP\Framework\installed-toolkit.manifest.yaml') $invalidTimestampContent
+    $invalidTimestampPlan = (Invoke-PlanJson $invalidTimestamp) | ConvertFrom-Json
+    Assert-True (-not [bool]$invalidTimestampPlan.canApply) 'non-RFC3339 installed timestamp passed preflight'
+    Assert-Equal 'malformed-installed-manifest' ([string]$invalidTimestampPlan.actions[0].reason) 'invalid timestamp block reason'
+
+    # Mapping order and quoting are serialization details: a semantically equal
+    # installed manifest must not cause refresh churn or a backup.
+    $semanticManifest = New-FixtureProject 'semantic-installed-manifest'
+    & $Installer -ProjectRoot $semanticManifest | Out-Null
+    $semanticPath = Join-Path $semanticManifest 'SDP\Framework\installed-toolkit.manifest.yaml'
+    $canonicalInstalled = Get-Content -Raw -LiteralPath $semanticPath
+    $canonicalLines = [regex]::Split($canonicalInstalled.TrimEnd("`r", "`n"), "\r?\n")
+    $skillsStart = [Array]::IndexOf($canonicalLines, 'skills:')
+    $capabilitiesStart = [Array]::IndexOf($canonicalLines, 'capabilities:')
+    Assert-True (($skillsStart -gt 0) -and ($capabilitiesStart -gt $skillsStart)) 'canonical installed manifest sections'
+    $rootByName = @{}
+    foreach ($line in $canonicalLines[0..($skillsStart - 1)]) {
+        if ($line -cmatch '^([A-Za-z]+):\s*(.+)$') { $rootByName[$Matches[1]] = $line }
+    }
+    $reorderedSkills = @($canonicalLines[($skillsStart + 1)..($capabilitiesStart - 1)])
+    [array]::Reverse($reorderedSkills)
+    $alternateLines = New-Object System.Collections.ArrayList
+    foreach ($field in @(
+        'toolkitVersion', 'schemaVersion', 'installerVersion', 'frameworkVersion',
+        'agentsContractVersion', 'sourceCommit', 'toolkitInstalledAt'
+    )) {
+        [void]$alternateLines.Add(([string]$rootByName[$field]).Replace('"', "'"))
+    }
+    [void]$alternateLines.Add('capabilities:')
+    foreach ($line in $canonicalLines[($capabilitiesStart + 1)..($canonicalLines.Count - 1)]) {
+        [void]$alternateLines.Add($line)
+    }
+    [void]$alternateLines.Add('skills:')
+    foreach ($line in $reorderedSkills) {
+        [void]$alternateLines.Add($line.Replace('"', "'"))
+    }
+    $alternateInstalled = [string]::Join("`n", [string[]]$alternateLines) + "`n"
+    Assert-True ($alternateInstalled -cne $canonicalInstalled) 'alternate installed serialization did not differ'
+    Write-Utf8File $semanticPath $alternateInstalled
+    $beforeSemanticPlan = Get-TreeFingerprint $semanticManifest
+    $semanticPlanJson = Invoke-PlanJson $semanticManifest
+    Assert-Equal $beforeSemanticPlan (Get-TreeFingerprint $semanticManifest) 'semantic installed plan mutated target'
+    Assert-PlanConforms $semanticPlanJson 'semantic installed manifest'
+    $semanticPlan = $semanticPlanJson | ConvertFrom-Json
+    $installedAction = @($semanticPlan.actions | Where-Object { $_.entryId -eq 'generated-installed-toolkit-manifest' })
+    Assert-Equal 1 $installedAction.Count 'semantic installed action count'
+    Assert-Equal 'unchanged' ([string]$installedAction[0].action) 'semantic installed manifest caused refresh'
+    & $Installer -ProjectRoot $semanticManifest | Out-Null
+    Assert-Equal $beforeSemanticPlan (Get-TreeFingerprint $semanticManifest) 'semantic installed apply caused serialization churn'
 
     # A source-archive extraction with no .git installs successfully and records an unknown commit truthfully.
     $archiveRoot = Join-Path $TestRoot 'archive-source'
@@ -502,6 +762,221 @@ Release-Date: unreleased
     Assert-True $driftFailed 'installed-manifest destination drift passed preflight'
     Assert-Equal $beforeDrift (Get-TreeFingerprint $driftTarget) 'destination drift preflight mutated target'
     Write-Utf8File $archiveManifestPath $archiveManifestOriginal
+
+    # Closed-world PowerShell validation covers the complete v1 object shapes,
+    # array minima, nested policies, ownership source classes and governing pairs.
+    $invalidContract = $archiveManifestOriginal | ConvertFrom-Json
+    $invalidContract | Add-Member -NotePropertyName unexpectedRoot -NotePropertyValue $true
+    Assert-InvalidArchiveContract 'contract-unknown-root' $invalidContract $archiveManifestPath $archiveManifestOriginal $archiveInstaller
+
+    $invalidContract = $archiveManifestOriginal | ConvertFrom-Json
+    $invalidContract.psobject.Properties.Remove('exclusions')
+    Assert-InvalidArchiveContract 'contract-missing-required-root' $invalidContract $archiveManifestPath $archiveManifestOriginal $archiveInstaller
+
+    $invalidContract = $archiveManifestOriginal | ConvertFrom-Json
+    $invalidContract.capabilities = @()
+    Assert-InvalidArchiveContract 'contract-empty-capabilities' $invalidContract $archiveManifestPath $archiveManifestOriginal $archiveInstaller
+
+    $invalidContract = $archiveManifestOriginal | ConvertFrom-Json
+    $invalidContract.generators = @($invalidContract.generators[0])
+    Assert-InvalidArchiveContract 'contract-generator-minimum' $invalidContract $archiveManifestPath $archiveManifestOriginal $archiveInstaller
+
+    $invalidContract = $archiveManifestOriginal | ConvertFrom-Json
+    $invalidContract.entries = @()
+    Assert-InvalidArchiveContract 'contract-entry-minimum' $invalidContract $archiveManifestPath $archiveManifestOriginal $archiveInstaller
+
+    $invalidContract = $archiveManifestOriginal | ConvertFrom-Json
+    $invalidContract.exclusions = @()
+    Assert-InvalidArchiveContract 'contract-exclusion-minimum' $invalidContract $archiveManifestPath $archiveManifestOriginal $archiveInstaller
+
+    $invalidContract = $archiveManifestOriginal | ConvertFrom-Json
+    $invalidContract.exclusions = @(
+        $invalidContract.exclusions | Where-Object { $_.path -cne 'SDP-DOCUMENT-GUIDE.md' }
+    )
+    Assert-InvalidArchiveContract 'contract-required-legacy-exclusion' $invalidContract $archiveManifestPath $archiveManifestOriginal $archiveInstaller
+
+    $invalidContract = $archiveManifestOriginal | ConvertFrom-Json
+    $installedGeneratorContract = @($invalidContract.generators | Where-Object { $_.id -eq 'installed-toolkit-manifest' })[0]
+    $installedGeneratorContract | Add-Member -NotePropertyName ignoredGeneratorPolicy -NotePropertyValue 'unsafe'
+    Assert-InvalidArchiveContract 'contract-unknown-generator-policy' $invalidContract $archiveManifestPath $archiveManifestOriginal $archiveInstaller
+
+    $invalidContract = $archiveManifestOriginal | ConvertFrom-Json
+    $installedGeneratorContract = @($invalidContract.generators | Where-Object { $_.id -eq 'installed-toolkit-manifest' })[0]
+    $installedGeneratorContract.facts.psobject.Properties.Remove('skills')
+    Assert-InvalidArchiveContract 'contract-missing-generator-fact' $invalidContract $archiveManifestPath $archiveManifestOriginal $archiveInstaller
+
+    $invalidContract = $archiveManifestOriginal | ConvertFrom-Json
+    $installedGeneratorContract = @($invalidContract.generators | Where-Object { $_.id -eq 'installed-toolkit-manifest' })[0]
+    $installedGeneratorContract.dynamicFacts.sourceCommit | Add-Member -NotePropertyName ignoredFallback -NotePropertyValue 'HEAD'
+    Assert-InvalidArchiveContract 'contract-unknown-dynamic-policy' $invalidContract $archiveManifestPath $archiveManifestOriginal $archiveInstaller
+
+    $invalidContract = $archiveManifestOriginal | ConvertFrom-Json
+    $entryContract = @($invalidContract.entries | Where-Object { $_.id -eq 'managed-framework-readme' })[0]
+    $entryContract | Add-Member -NotePropertyName ignoredPolicy -NotePropertyValue 'replace-everything'
+    Assert-InvalidArchiveContract 'contract-unknown-entry-policy' $invalidContract $archiveManifestPath $archiveManifestOriginal $archiveInstaller
+
+    $invalidContract = $archiveManifestOriginal | ConvertFrom-Json
+    $entryContract = @($invalidContract.entries | Where-Object { $_.id -eq 'managed-framework-readme' })[0]
+    $entryContract.source = 'Toolkit/project-templates/sdp-root/Traceability/README.md'
+    Assert-InvalidArchiveContract 'contract-wrong-source-class' $invalidContract $archiveManifestPath $archiveManifestOriginal $archiveInstaller
+
+    $invalidContract = $archiveManifestOriginal | ConvertFrom-Json
+    $invalidContract.exclusions[0] | Add-Member -NotePropertyName ignoredScope -NotePropertyValue 'lexical-only'
+    Assert-InvalidArchiveContract 'contract-unknown-exclusion-policy' $invalidContract $archiveManifestPath $archiveManifestOriginal $archiveInstaller
+
+    $invalidContract = $archiveManifestOriginal | ConvertFrom-Json
+    $entryContract = @($invalidContract.entries | Where-Object { $_.id -eq 'project-current-index' })[0]
+    $entryContract.governing.capability = 'sdp.traceability.relations.v1'
+    Assert-InvalidArchiveContract 'contract-governing-pair-drift' $invalidContract $archiveManifestPath $archiveManifestOriginal $archiveInstaller
+
+    # Every portable manifest path class rejects Windows aliases, reserved names,
+    # control/ADS forms and Git administration paths before target mutation.
+    $invalidContract = $archiveManifestOriginal | ConvertFrom-Json
+    $entryContract = @($invalidContract.entries | Where-Object { $_.id -eq 'managed-framework-readme' })[0]
+    $entryContract.source = 'Toolkit/payload/sdp-root/Framework/README.md.'
+    Assert-InvalidArchiveContract 'path-source-trailing-dot' $invalidContract $archiveManifestPath $archiveManifestOriginal $archiveInstaller
+
+    $invalidContract = $archiveManifestOriginal | ConvertFrom-Json
+    $entryContract = @($invalidContract.entries | Where-Object { $_.id -eq 'project-agents' })[0]
+    $entryContract.destination = '.git/config'
+    Assert-InvalidArchiveContract 'path-destination-git' $invalidContract $archiveManifestPath $archiveManifestOriginal $archiveInstaller
+
+    foreach ($pathCase in @(
+        @('reserved-device', 'SDP/CON/file.md'),
+        @('trailing-dot', 'SDP/portable.'),
+        @('trailing-space', 'SDP/portable '),
+        @('ads-colon', 'SDP/portable.md:stream'),
+        @('short-name-alias', 'SDP/RELEAS~1.MD'),
+        @('superscript-device', "SDP/COM$([char]0x00B9).txt"),
+        @('control-character', ('SDP/bad' + [char]1 + '.md'))
+    )) {
+        $invalidContract = $archiveManifestOriginal | ConvertFrom-Json
+        $entryContract = @($invalidContract.entries | Where-Object { $_.id -eq 'project-agents' })[0]
+        $entryContract.destination = [string]$pathCase[1]
+        Assert-InvalidArchiveContract ("path-destination-" + $pathCase[0]) $invalidContract $archiveManifestPath $archiveManifestOriginal $archiveInstaller
+    }
+
+    $invalidContract = $archiveManifestOriginal | ConvertFrom-Json
+    $entryContract = @($invalidContract.entries | Where-Object { $_.id -eq 'project-current-index' })[0]
+    $entryContract.governing.schema = 'Toolkit/schemas/current-index.schema.json:stream'
+    Assert-InvalidArchiveContract 'path-governing-ads' $invalidContract $archiveManifestPath $archiveManifestOriginal $archiveInstaller
+
+    $invalidContract = $archiveManifestOriginal | ConvertFrom-Json
+    $invalidContract.exclusions[0].path = 'Releases.'
+    Assert-InvalidArchiveContract 'path-exclusion-alias' $invalidContract $archiveManifestPath $archiveManifestOriginal $archiveInstaller
+
+    $invalidContract = $archiveManifestOriginal | ConvertFrom-Json
+    $entryContract = @($invalidContract.entries | Where-Object { $_.id -eq 'project-agents' })[0]
+    $entryContract.destination = 'agents.md'
+    Assert-InvalidArchiveContract 'path-destination-case-collision' $invalidContract $archiveManifestPath $archiveManifestOriginal $archiveInstaller
+
+    # Final releases outrank prereleases; build metadata changes identity but not
+    # precedence, so differing builds refresh rather than block as a downgrade.
+    try {
+        $prereleaseSourceContract = $archiveManifestOriginal | ConvertFrom-Json
+        $prereleaseSourceContract.toolkitVersion = '0.2.0-rc.1'
+        $prereleaseGenerator = @($prereleaseSourceContract.generators | Where-Object { $_.id -eq 'installed-toolkit-manifest' })[0]
+        $prereleaseGenerator.facts.toolkitVersion = '0.2.0-rc.1'
+        Write-Utf8File $archiveManifestPath ($prereleaseSourceContract | ConvertTo-Json -Depth 60)
+        $finalTarget = New-FixtureProject 'final-over-prerelease-source'
+        Write-Utf8File (Join-Path $finalTarget 'SDP\Framework\installed-toolkit.manifest.yaml') $semverSeedContent
+        $finalPlan = (Invoke-PlanJson $finalTarget -InstallerPath $archiveInstaller) | ConvertFrom-Json
+        Assert-True (-not [bool]$finalPlan.canApply) 'prerelease source attempted to downgrade final installation'
+        Assert-Equal 'downgrade-blocked' ([string]$finalPlan.actions[0].reason) 'final-over-prerelease block reason'
+    } finally {
+        Write-Utf8File $archiveManifestPath $archiveManifestOriginal
+    }
+
+    try {
+        $buildSourceContract = $archiveManifestOriginal | ConvertFrom-Json
+        $buildSourceContract.toolkitVersion = '0.2.0+source.2'
+        $buildGenerator = @($buildSourceContract.generators | Where-Object { $_.id -eq 'installed-toolkit-manifest' })[0]
+        $buildGenerator.facts.toolkitVersion = '0.2.0+source.2'
+        Write-Utf8File $archiveManifestPath ($buildSourceContract | ConvertTo-Json -Depth 60)
+        $buildTarget = New-FixtureProject 'build-identity-change'
+        $buildInstalled = $semverSeedContent -replace '(?m)^toolkitVersion: "0\.2\.0"$', 'toolkitVersion: "0.2.0+consumer.9"'
+        Write-Utf8File (Join-Path $buildTarget 'SDP\Framework\installed-toolkit.manifest.yaml') $buildInstalled
+        $buildPlan = (Invoke-PlanJson $buildTarget -InstallerPath $archiveInstaller) | ConvertFrom-Json
+        Assert-True ([bool]$buildPlan.canApply) 'SemVer build metadata incorrectly determined precedence'
+        Assert-Equal '0.2.0+consumer.9' ([string]$buildPlan.installedToolkitVersion) 'build identity old version'
+        Assert-Equal '0.2.0+source.2' ([string]$buildPlan.toolkitVersion) 'build identity new version'
+    } finally {
+        Write-Utf8File $archiveManifestPath $archiveManifestOriginal
+    }
+
+    # Existing destination and source ancestors may not redirect I/O through
+    # junctions or symlinks. These regressions run with junctions on Windows and
+    # symbolic links on Unix-like hosts.
+    $redirectOutside = New-FixtureProject 'redirect-outside'
+    Write-Utf8File (Join-Path $redirectOutside 'marker.txt') 'UNCHANGED'
+    $redirectProject = New-FixtureProject 'redirect-project'
+    $redirectLink = Join-Path $redirectProject 'SDP'
+    New-DirectoryLink $redirectLink $redirectOutside
+    try {
+        $outsideBefore = Get-TreeFingerprint $redirectOutside
+        $redirectFailed = $false
+        try { Invoke-PlanJson $redirectProject | Out-Null } catch { $redirectFailed = $true }
+        Assert-True $redirectFailed 'destination ancestor link passed physical containment'
+        Assert-Equal $outsideBefore (Get-TreeFingerprint $redirectOutside) 'destination ancestor link mutated outside target'
+    } finally {
+        Remove-DirectoryLink $redirectLink
+    }
+
+    $linkedProjectTarget = New-FixtureProject 'linked-project-target'
+    Write-Utf8File (Join-Path $linkedProjectTarget 'marker.txt') 'UNCHANGED'
+    $linkedProjectRoot = Join-Path $TestRoot 'linked-project-root'
+    New-DirectoryLink $linkedProjectRoot $linkedProjectTarget
+    try {
+        $linkedBefore = Get-TreeFingerprint $linkedProjectTarget
+        $linkedFailed = $false
+        try { Invoke-PlanJson $linkedProjectRoot | Out-Null } catch { $linkedFailed = $true }
+        Assert-True $linkedFailed 'linked project root passed physical containment'
+        Assert-Equal $linkedBefore (Get-TreeFingerprint $linkedProjectTarget) 'linked project root mutated physical target'
+    } finally {
+        Remove-DirectoryLink $linkedProjectRoot
+    }
+
+    $linkedArchiveRoot = Join-Path $TestRoot 'source-link-archive'
+    New-Item -ItemType Directory -Force -Path $linkedArchiveRoot | Out-Null
+    Get-ChildItem -LiteralPath $archiveRoot -Force | ForEach-Object {
+        Copy-Item -LiteralPath $_.FullName -Destination $linkedArchiveRoot -Recurse -Force
+    }
+    $linkedFramework = Join-Path $linkedArchiveRoot 'Toolkit\payload\sdp-root\Framework'
+    Assert-True ($linkedFramework.StartsWith($TestRoot, [System.StringComparison]::OrdinalIgnoreCase)) 'source-link fixture escaped test root'
+    Remove-Item -LiteralPath $linkedFramework -Recurse -Force
+    New-DirectoryLink $linkedFramework (Join-Path $RepositoryRoot 'Toolkit\payload\sdp-root\Framework')
+    try {
+        $linkedSourceInstaller = Join-Path $linkedArchiveRoot 'Toolkit\scripts\Install-SDP.ps1'
+        $linkedSourceTarget = New-FixtureProject 'source-link-target'
+        $linkedSourceBefore = Get-TreeFingerprint $linkedSourceTarget
+        $linkedSourceFailed = $false
+        try { Invoke-PlanJson $linkedSourceTarget -InstallerPath $linkedSourceInstaller | Out-Null } catch { $linkedSourceFailed = $true }
+        Assert-True $linkedSourceFailed 'linked source ancestor passed physical containment'
+        Assert-Equal $linkedSourceBefore (Get-TreeFingerprint $linkedSourceTarget) 'linked source ancestor mutated target'
+    } finally {
+        Remove-DirectoryLink $linkedFramework
+    }
+
+    $danglingOutside = New-FixtureProject 'dangling-link-outside'
+    $danglingTarget = Join-Path $danglingOutside 'escaped-agents.md'
+    Write-Utf8File $danglingTarget 'OUTSIDE'
+    $danglingProject = New-FixtureProject 'dangling-link-project'
+    $danglingLink = Join-Path $danglingProject 'AGENTS.md'
+    $danglingLinkCreated = Try-NewFileSymbolicLink $danglingLink $danglingTarget
+    if ($danglingLinkCreated) {
+        try {
+            [System.IO.File]::Delete($danglingTarget)
+            $danglingFailed = $false
+            try { Invoke-PlanJson $danglingProject | Out-Null } catch { $danglingFailed = $true }
+            Assert-True $danglingFailed 'dangling destination symlink passed physical containment'
+            Assert-True (-not (Test-Path -LiteralPath $danglingTarget)) 'dangling destination symlink wrote outside target'
+        } finally {
+            [System.IO.File]::Delete($danglingLink)
+        }
+    } else {
+        [System.IO.File]::Delete($danglingTarget)
+        Write-Host '[SKIPPED] File symlink regression is unavailable on this host.'
+    }
 
     # A sibling named SDP-Analyzer is valid; a child of the Toolkit repo is not.
     $sibling = Join-Path (Split-Path -Parent $RepositoryRoot) ("SDP-Analyzer-fixture-" + [guid]::NewGuid().ToString('N'))

@@ -68,6 +68,12 @@ truthfully null. Dynamic build identity is generated separately.
 8. Report planned/applied/preserved/unchanged behavior deterministically.
 9. Repeating the same operation produces no project-owned content change.
 
+Preflight treats supported YAML mapping order and scalar quoting as semantic,
+not textual, differences. It rejects duplicate keys, nested shadows and YAML
+features outside the supported manifest subset. Version comparison follows full
+SemVer 2.0 precedence: prerelease identifiers sort below the matching final
+release, and build metadata does not affect upgrade/downgrade precedence.
+
 Backups default to `SDP/.sdp-backups/<UTC timestamp>/`. Timestamps and concrete
 backup-directory names are intentionally outside the portable JSON plan.
 
@@ -80,7 +86,10 @@ conforming implementation requires no `.git`, fixed absolute path, Windows path
 semantics or PowerShell to interpret the JSON contract.
 
 A sibling such as `SDP-Analyzer` is allowed. A target equal to or physically
-inside the Toolkit source is rejected using complete path comparison.
+inside the Toolkit source is rejected using complete path comparison. The
+source, project, backup roots and every existing source/destination ancestor
+must also be free of symbolic links and reparse points before planning and again
+before mutation.
 
 The ordinary GitHub source archive is sufficient for this contract. No custom
 release asset is required unless future verification demonstrates a real gap.

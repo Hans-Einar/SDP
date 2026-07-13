@@ -25,6 +25,9 @@ Release-Date: unreleased
 ### Fixed
 
 - [SPS-001] Structure initialization no longer proposes or copies Toolkit `REL-0.2.0`, active Sprint/Refactor, populated Ledger, review or verification state into consuming projects.
+- [SPS-001] Installation manifests, plans, portable paths, SemVer ordering, YAML preflight and physical source/target containment now fail closed before mutation.
+- [SPS-001] AGENTS migration now has an explicit deterministic plan/apply contract, including content-hash conflict destinations.
+- [SPS-001] Project validation now enforces governed-path resolution, canonical YAML names, reciprocal traceability, Ledger subjects and coherent publication identities while accepting the pinned supported `gh-sdp` extension surface.
 
 ### Migration
 

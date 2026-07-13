@@ -16,6 +16,10 @@ A normal release candidate fails unless all of the following are true:
 - required migration notes exist
 - the target is greater than the previous release
 - immutable released history has not been changed silently
+- governed record paths use canonical `.yaml` names and resolve to real files
+- Slice/Fix review and verification, review-resolution, and release/migration links are reciprocal
+- release record IDs, versions, state, dates, tags and commits agree
+- each release event subject and tag matches the governed release identity
 
 The gate emits evidence; it does not infer missing evidence.
 

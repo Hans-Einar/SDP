@@ -21,6 +21,13 @@ MAJOR.MINOR.PATCH
 Sprint, Refactor, Iteration, Slice, Fix and revision identifiers never appear in
 the SemVer core.
 
+The full accepted form is `MAJOR.MINOR.PATCH[-PRERELEASE][+BUILD]`. Numeric core
+and numeric prerelease identifiers have no leading zeroes; dot-separated
+prerelease and build identifiers contain only ASCII alphanumerics and hyphens.
+Prereleases have lower precedence than their matching final release. Build
+metadata is part of version identity but is ignored when deciding upgrade or
+downgrade precedence.
+
 ## Separate identities
 
 The public release identity and the work identity are separate records:

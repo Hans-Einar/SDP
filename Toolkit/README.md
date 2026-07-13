@@ -29,6 +29,9 @@ The normal human preview remains available with `-Preview`. A project may
 already contain a non-empty `SDP/` directory. Project-owned content is preserved
 under normal, forced and repeated installation; changed managed files are backed
 up before replacement. Unsupported schemas and downgrades block before mutation.
+Portable-path, case-collision and link/reparse containment checks run before
+planning and mutation. The emitted plan carries exact `source`, `destination` and
+`targetSource` facts and is validated semantically before apply.
 
 Validate the Toolkit or an installed consuming project explicitly:
 
@@ -36,6 +39,10 @@ Validate the Toolkit or an installed consuming project explicitly:
 python Toolkit\scripts\validate_sdp.py --mode toolkit
 python Toolkit\scripts\validate_sdp.py --mode project --project-root C:\path\to\Project
 ```
+
+Python regression fixtures include the supported `gh-sdp` closure offline, so
+cross-project schema and traceability compatibility do not depend on network
+availability.
 
 See `docs/Installation-Contract.md`, `docs/Installer-Migration.md` and
 `docs/Validation.md`.

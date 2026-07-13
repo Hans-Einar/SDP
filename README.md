@@ -79,6 +79,12 @@ files refresh according to the installation contract and are backed up before
 replacement. Project-owned files are created only when missing and are never
 replaced, including under `-ForceManagedFiles`.
 
+Install paths are portable, case-collision checked and physically confined to
+link-free source and target roots. Plans are schema- and semantics-validated;
+apply executes the exact planned source/target pairs. Equivalent supported YAML
+does not cause churn, and AGENTS migration conflicts use deterministic
+content-hash destinations.
+
 `-InitializeProjectStructure` adds only missing neutral lifecycle and operating
 seeds. It never copies this repository's active Sprint, `REL-0.2.0`, release
 notes, Ledger history, review or verification evidence. See
@@ -118,6 +124,8 @@ python -m unittest discover -s Toolkit\tests -p "test_*.py" -v
 
 Toolkit mode is the backward-compatible default. Project mode validates an
 installed consuming project without assuming the Toolkit repository layout.
+The regression suite includes an offline fixture pinned to the supported
+`gh-sdp` commit and normalized tree identity.
 See `docs/Validation.md` for exact boundaries and limitations.
 
 ## Main documentation

@@ -33,6 +33,9 @@ Repository examples include:
 - `build-identity.example.json` — generated development identity.
 
 They illustrate schemas and are not records of real work or published releases.
+Plan actions include `targetSource` for deterministic migration and every
+action/reason pair follows the normative installation decision table; apply
+must execute those exact planned fields.
 Neutral installation seeds live in `Toolkit/project-templates/`; none contains
 the Toolkit repository's `REL-0.2.0` record, active Sprint, Ledger, review or
 verification history. The release-event example uses an illustrative release ID

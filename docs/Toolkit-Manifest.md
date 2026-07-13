@@ -18,7 +18,10 @@ and versioning.
 
 During ordinary development, `releaseState` is `unreleased`, `releaseDate` is
 `unreleased`, and `gitTag`/`releaseCommit` are null. Publication data is written
-only after the corresponding tag and GitHub Release really exist.
+only after the corresponding tag and GitHub Release really exist. Released or
+yanked records require a real date, tag and commit; the tag must be exactly
+`v<toolkitVersion>`. Versions use the full SemVer 2.0 form, including optional
+prerelease and build identifiers.
 
 A consuming project neither edits nor copies this root release manifest as its
 own state. A conforming installer generates the smaller installed-facts manifest

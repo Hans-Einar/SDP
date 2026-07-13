@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import copy
+import hashlib
 import importlib.util
 import json
 import tempfile
@@ -35,6 +36,33 @@ def read_yaml(path: Path) -> dict[str, object]:
     value = yaml.safe_load(path.read_text(encoding="utf-8"))
     assert isinstance(value, dict)
     return value
+
+
+def git_tree_sha(path: Path) -> str:
+    """Hash an exported all-100644 text tree like Git, independent of checkout EOLs."""
+
+    def object_digest(kind: str, content: bytes) -> bytes:
+        header = f"{kind} {len(content)}\0".encode("ascii")
+        return hashlib.sha1(header + content, usedforsecurity=False).digest()
+
+    def tree_digest(directory: Path) -> bytes:
+        entries: list[tuple[str, bytes]] = []
+        for child in directory.iterdir():
+            name = child.name.encode("utf-8")
+            if child.is_dir():
+                mode = b"40000"
+                digest = tree_digest(child)
+                sort_key = child.name + "/"
+            else:
+                mode = b"100644"
+                content = child.read_bytes().replace(b"\r\n", b"\n")
+                digest = object_digest("blob", content)
+                sort_key = child.name
+            entries.append((sort_key, mode + b" " + name + b"\0" + digest))
+        payload = b"".join(entry for _, entry in sorted(entries))
+        return object_digest("tree", payload)
+
+    return tree_digest(path).hex()
 
 
 def create_valid_consuming_project(root: Path) -> Path:
@@ -202,8 +230,16 @@ Release-Date: unreleased
                 "review": "REV-001",
             }
         },
-        "reviews": {"REV-001": {"path": "CodeReview/REV-001.md"}},
-        "verification": {"VER-001": {"path": "Verification/VER-001.md"}},
+        "reviews": {
+            "REV-001": {
+                "path": "CodeReview/REV-001.md",
+                "slice": "SPS-001",
+                "fix": "FIX-1.1.0-001",
+            }
+        },
+        "verification": {
+            "VER-001": {"path": "Verification/VER-001.md", "slice": "SPS-001"}
+        },
         "migrations": {},
         "releases": {
             "REL-1.1.0": {
@@ -234,9 +270,118 @@ class SemVerTests(unittest.TestCase):
         self.assertLess(VALIDATE.SemVer.parse("1.0.0-alpha.1"), VALIDATE.SemVer.parse("1.0.0-alpha.beta"))
 
     def test_invalid_semver(self) -> None:
-        for value in ("1", "v1.2.3", "01.2.3", "1.2.3-01", "1.2"):
+        for value in (
+            "1",
+            "v1.2.3",
+            "01.2.3",
+            "1.2.3-01",
+            "1.2",
+            "1.2.3-alpha..1",
+            "1.2.3-alpha.",
+            "1.2.3-.alpha",
+            "1.2.3+build..1",
+            "1.2.3+build.",
+        ):
             with self.subTest(value=value), self.assertRaises(ValueError):
                 VALIDATE.SemVer.parse(value)
+
+    def test_every_public_semver_definition_uses_the_strict_rule(self) -> None:
+        invalid_values = (
+            "1.2.3-01",
+            "1.2.3-alpha..1",
+            "1.2.3-alpha.",
+            "1.2.3+build..1",
+            "1.2.3+build.",
+        )
+        for path in sorted((ROOT / "Toolkit/schemas").glob("*.json")):
+            schema = json.loads(path.read_text(encoding="utf-8"))
+            semver = schema.get("$defs", {}).get("semver")
+            if semver is None:
+                continue
+            self.assertEqual(semver.get("pattern"), VALIDATE.SEMVER_PATTERN_TEXT, path.name)
+            for value in invalid_values:
+                with self.subTest(schema=path.name, value=value):
+                    self.assertTrue(VALIDATE.validate_json(value, semver, path.name))
+
+    def test_release_id_and_tag_boundaries_reject_invalid_identifiers(self) -> None:
+        schemas = {
+            path.name: json.loads(path.read_text(encoding="utf-8"))
+            for path in (ROOT / "Toolkit/schemas").glob("*.json")
+        }
+        release_id = "REL-1.2.3-01"
+        release_id_cases = (
+            (
+                schemas["current-index.schema.json"]["$defs"]["releaseId"],
+                release_id,
+            ),
+            (
+                schemas["release-record.schema.json"]["properties"]["releaseId"],
+                release_id,
+            ),
+            (
+                schemas["release-event.schema.json"]["properties"]["releaseId"],
+                release_id,
+            ),
+            (
+                schemas["ledger-event.schema.json"]["properties"]["releaseId"],
+                release_id,
+            ),
+            (
+                schemas["relations.schema.json"]["$defs"]["releases"][
+                    "propertyNames"
+                ],
+                release_id,
+            ),
+        )
+        for boundary, value in release_id_cases:
+            with self.subTest(value=value):
+                self.assertTrue(VALIDATE.validate_json(value, boundary, "release ID"))
+
+        invalid_tag = "v1.2.3+build..1"
+        tag_cases = (
+            schemas["SDP-manifest.schema.json"]["$defs"]["versionTag"],
+            schemas["SDP-project-manifest.schema.json"]["$defs"]["versionTag"],
+            schemas["release-record.schema.json"]["properties"]["gitTag"],
+            schemas["relations.schema.json"]["$defs"]["relation"]["properties"][
+                "gitTag"
+            ],
+            schemas["release-event.schema.json"]["allOf"][0]["then"]["properties"][
+                "payload"
+            ]["properties"]["tag"],
+        )
+        for boundary in tag_cases:
+            self.assertTrue(
+                VALIDATE.validate_json(invalid_tag, boundary, "release tag")
+            )
+
+    def test_release_and_fix_ids_preserve_full_semver_identity(self) -> None:
+        schemas = {
+            path.name: json.loads(path.read_text(encoding="utf-8"))
+            for path in (ROOT / "Toolkit/schemas").glob("*.json")
+        }
+        release_id = "REL-1.2.3-alpha.1+build.5"
+        release_id_schemas = (
+            schemas["release-record.schema.json"]["properties"]["releaseId"],
+            schemas["release-event.schema.json"]["properties"]["releaseId"],
+            schemas["ledger-event.schema.json"]["properties"]["releaseId"],
+            schemas["current-index.schema.json"]["$defs"]["releaseId"],
+            schemas["relations.schema.json"]["$defs"]["releases"]["propertyNames"],
+        )
+        for index, schema in enumerate(release_id_schemas):
+            with self.subTest(kind="release", index=index):
+                self.assertEqual(
+                    VALIDATE.validate_json(release_id, schema, "release ID"), []
+                )
+
+        fix_id = "FIX-1.2.3-alpha.1+build.5-001"
+        fix_id_schemas = (
+            schemas["fix-record.schema.json"]["properties"]["fixId"],
+            schemas["current-index.schema.json"]["$defs"]["fixId"],
+            schemas["relations.schema.json"]["$defs"]["fixes"]["propertyNames"],
+        )
+        for index, schema in enumerate(fix_id_schemas):
+            with self.subTest(kind="fix", index=index):
+                self.assertEqual(VALIDATE.validate_json(fix_id, schema, "fix ID"), [])
 
 
 class ReleaseNotesTests(unittest.TestCase):
@@ -268,6 +413,11 @@ class InstallationContractTests(unittest.TestCase):
                 encoding="utf-8"
             )
         )
+        cls.plan_schema = json.loads(
+            (ROOT / "Toolkit/schemas/SDP-install-plan.schema.json").read_text(
+                encoding="utf-8"
+            )
+        )
 
     def validate_contract(self, contract: object) -> list[str]:
         return VALIDATE.validate_installation_contract(
@@ -276,6 +426,39 @@ class InstallationContractTests(unittest.TestCase):
             contract_data=contract,
             check_installer_integration=False,
         )
+
+    def valid_plan(self) -> dict[str, object]:
+        entry = next(
+            item for item in self.contract["entries"] if item["id"] == "project-manifest"
+        )
+        return {
+            "schemaVersion": "1.0",
+            "manifestSchemaVersion": self.contract["schemaVersion"],
+            "mode": "plan",
+            "toolkitVersion": self.contract["toolkitVersion"],
+            "installedToolkitVersion": None,
+            "options": {
+                "initializeProjectStructure": False,
+                "forceManagedFiles": False,
+            },
+            "canApply": True,
+            "actions": [
+                {
+                    "sequence": 1,
+                    "action": "create",
+                    "entryId": entry["id"],
+                    "source": entry["source"],
+                    "generator": None,
+                    "targetSource": None,
+                    "destination": entry["destination"],
+                    "ownership": entry["ownership"],
+                    "reason": "missing-target",
+                    "mutatesTarget": True,
+                    "oldToolkitVersion": None,
+                    "newToolkitVersion": self.contract["toolkitVersion"],
+                }
+            ],
+        }
 
     def test_canonical_manifest_schema_and_semantics(self) -> None:
         self.assertEqual(
@@ -303,6 +486,77 @@ class InstallationContractTests(unittest.TestCase):
                     errors,
                 )
 
+    def test_portable_path_subset_rejects_windows_aliases_and_git_metadata(self) -> None:
+        portable_schema = self.contract_schema["$defs"]["portablePath"]
+        invalid_paths = (
+            "SDP/NUL",
+            "SDP/con.txt",
+            "SDP/COM1.log",
+            "SDP/Lpt9",
+            "SDP/CONIN$",
+            "SDP/trailing.",
+            "SDP/trailing ",
+            "SDP/trailing/",
+            "SDP/alternate:data",
+            "SDP/less<than",
+            "SDP/question?mark",
+            "SDP/RELEAS~1.MD",
+            "SDP/COM¹.txt",
+            "SDP/LPT²",
+            "SDP/control\x1fcharacter",
+            "SDP/.git/config",
+        )
+        for value in invalid_paths:
+            with self.subTest(value=value):
+                self.assertIsNotNone(VALIDATE.portable_relative_path_error(value))
+                self.assertTrue(
+                    VALIDATE.validate_json(value, portable_schema, "portable path")
+                )
+
+    def test_every_install_contract_path_class_uses_the_portable_subset(self) -> None:
+        mutations = {
+            "source": lambda contract: contract["entries"][0].update(
+                source="Toolkit/payload/NUL.txt"
+            ),
+            "destination": lambda contract: contract["entries"][0].update(
+                destination="SDP/.git/config"
+            ),
+            "governing.schema": lambda contract: contract["entries"][0][
+                "governing"
+            ].update(schema="Toolkit/schemas/CON.json"),
+            "exclusion.path": lambda contract: contract["exclusions"][0].update(
+                path="Releases/trailing."
+            ),
+        }
+        for field, mutate in mutations.items():
+            with self.subTest(field=field):
+                contract = copy.deepcopy(self.contract)
+                mutate(contract)
+                errors = self.validate_contract(contract)
+                self.assertTrue(
+                    any(
+                        field.split(".")[-1] in error
+                        and any(
+                            marker in error
+                            for marker in (
+                                "does not match",
+                                "not valid under any",
+                                "reserved device segment",
+                            )
+                        )
+                        for error in errors
+                    ),
+                    errors,
+                )
+
+    def test_exclusion_paths_use_case_insensitive_collision_keys(self) -> None:
+        contract = copy.deepcopy(self.contract)
+        duplicate = copy.deepcopy(contract["exclusions"][0])
+        duplicate["path"] = duplicate["path"].swapcase()
+        contract["exclusions"].append(duplicate)
+        errors = self.validate_contract(contract)
+        self.assertTrue(any("case-colliding exclusion" in error for error in errors), errors)
+
     def test_contract_detects_toolkit_version_disagreement(self) -> None:
         contract = copy.deepcopy(self.contract)
         contract["toolkitVersion"] = "0.3.0"
@@ -311,6 +565,21 @@ class InstallationContractTests(unittest.TestCase):
                 "toolkitVersion differs from SDP.manifest.yaml" in error
                 for error in self.validate_contract(contract)
             )
+        )
+
+    def test_governing_schemas_require_their_canonical_capabilities(self) -> None:
+        contract = copy.deepcopy(self.contract)
+        relation_entry = next(
+            entry
+            for entry in contract["entries"]
+            if entry["governing"].get("schema")
+            == "Toolkit/schemas/relations.schema.json"
+        )
+        relation_entry["governing"]["capability"] = "sdp.manifest.v1"
+        errors = self.validate_contract(contract)
+        self.assertTrue(
+            any("relations.schema.json requires capability" in error for error in errors),
+            errors,
         )
 
     def test_contract_detects_duplicate_ids_and_destinations(self) -> None:
@@ -423,6 +692,7 @@ class InstallationContractTests(unittest.TestCase):
                     "entryId": "project-manifest",
                     "source": "Toolkit/project-templates/sdp-root/SDP-project.manifest.yaml",
                     "generator": None,
+                    "targetSource": None,
                     "destination": "SDP/SDP-project.manifest.yaml",
                     "ownership": "project-owned",
                     "reason": "missing-target",
@@ -435,6 +705,120 @@ class InstallationContractTests(unittest.TestCase):
         self.assertEqual(VALIDATE.validate_json(plan, schema, "install plan"), [])
         plan["actions"][0]["mutatesTarget"] = False
         self.assertTrue(VALIDATE.validate_json(plan, schema, "install plan"))
+
+    def test_install_plan_reason_vocabulary_is_exact_and_normative(self) -> None:
+        reason_schema = self.plan_schema["$defs"]["action"]["properties"]["reason"]
+        self.assertEqual(
+            set(reason_schema["enum"]), set(VALIDATE.PLAN_REASON_CONDITIONS)
+        )
+        plan = self.valid_plan()
+        plan["actions"][0]["reason"] = "content-matches"
+        errors = VALIDATE.validate_install_plan(
+            plan, self.plan_schema, "install plan", self.contract
+        )
+        self.assertTrue(any("reason 'content-matches' requires" in error for error in errors))
+
+    def test_install_plan_semantics_reject_sequence_version_and_manifest_drift(self) -> None:
+        mutations = {
+            "sequence": lambda plan: plan["actions"][0].update(sequence=2),
+            "new version": lambda plan: plan["actions"][0].update(
+                newToolkitVersion="0.3.0"
+            ),
+            "old version": lambda plan: plan["actions"][0].update(
+                oldToolkitVersion="0.1.0"
+            ),
+            "source": lambda plan: plan["actions"][0].update(
+                source="Toolkit/project-templates/sdp-root/RELEASE-NOTES.md"
+            ),
+            "generator": lambda plan: plan["actions"][0].update(
+                source=None, generator="empty-ledger"
+            ),
+            "destination": lambda plan: plan["actions"][0].update(
+                destination="SDP/elsewhere.yaml"
+            ),
+            "entry": lambda plan: plan["actions"][0].update(entryId="missing-entry"),
+        }
+        for name, mutate in mutations.items():
+            with self.subTest(name=name):
+                plan = self.valid_plan()
+                mutate(plan)
+                errors = VALIDATE.validate_install_plan(
+                    plan, self.plan_schema, "install plan", self.contract
+                )
+                self.assertTrue(errors, name)
+
+        plan = self.valid_plan()
+        duplicate = copy.deepcopy(plan["actions"][0])
+        plan["actions"].append(duplicate)
+        errors = VALIDATE.validate_install_plan(
+            plan, self.plan_schema, "install plan", self.contract
+        )
+        self.assertTrue(any("unique, ordered, and contiguous" in error for error in errors))
+
+    def test_target_to_target_migration_plan_is_explicit_and_deterministic(self) -> None:
+        plan = self.valid_plan()
+        action = plan["actions"][0]
+        action.update(
+            action="migrate",
+            entryId="managed-agents",
+            source=None,
+            generator=None,
+            targetSource="AGENTS.md",
+            destination="AGENTS-project.migration-sha256-"
+            + "a" * 64
+            + ".md",
+            ownership="project-owned",
+            reason="preserve-existing-agents-conflict",
+        )
+        self.assertEqual(
+            VALIDATE.validate_install_plan(
+                plan, self.plan_schema, "install plan", self.contract
+            ),
+            [],
+        )
+        action["destination"] = "AGENTS-project.migration-timestamp.md"
+        errors = VALIDATE.validate_install_plan(
+            plan, self.plan_schema, "install plan", self.contract
+        )
+        self.assertTrue(any("content-hash migration name" in error for error in errors))
+
+    def test_blocked_plan_cannot_mix_block_and_non_block_actions(self) -> None:
+        plan = self.valid_plan()
+        normal_action = copy.deepcopy(plan["actions"][0])
+        normal_action["sequence"] = 2
+        block_action = plan["actions"][0]
+        block_action.update(
+            action="block",
+            source=None,
+            generator=None,
+            reason="malformed-project-manifest",
+            mutatesTarget=False,
+        )
+        plan["canApply"] = False
+        plan["actions"].append(normal_action)
+        self.assertEqual(
+            VALIDATE.validate_json(plan, self.plan_schema, "install plan"), []
+        )
+        errors = VALIDATE.validate_install_plan(
+            plan, self.plan_schema, "install plan", self.contract
+        )
+        self.assertTrue(any("and no other actions" in error for error in errors), errors)
+
+    def test_block_reason_must_name_its_canonical_manifest_entry(self) -> None:
+        plan = self.valid_plan()
+        action = plan["actions"][0]
+        action.update(
+            action="block",
+            source=None,
+            generator=None,
+            reason="downgrade-blocked",
+            mutatesTarget=False,
+        )
+        plan["canApply"] = False
+        errors = VALIDATE.validate_install_plan(
+            plan, self.plan_schema, "install plan", self.contract
+        )
+        self.assertTrue(any("contradicts block reason" in error for error in errors), errors)
 
     def test_manifest_materializes_a_valid_neutral_project_without_live_state(self) -> None:
         generators = {
@@ -548,6 +932,23 @@ class BuildIdentityTests(unittest.TestCase):
             (root / "SDP/SDP-project.manifest.yaml").write_text(yaml.safe_dump(manifest), encoding="utf-8")
             with self.assertRaises(ValueError):
                 BUILD.generate_identity(root, "2026-01-01T00:00:00Z")
+
+
+class PinnedGhSdpCompatibilityTests(unittest.TestCase):
+    FIXTURE = (
+        ROOT
+        / "Toolkit/tests/fixtures"
+        / "gh-sdp-ed205c1ef193ab8a6e5cd1c50e558c3049ce6def"
+    )
+
+    def test_exact_exported_closure_validates_offline(self) -> None:
+        self.assertTrue(self.FIXTURE.is_dir())
+        self.assertFalse(any(path.name == ".git" for path in self.FIXTURE.rglob("*")))
+        self.assertEqual(
+            git_tree_sha(self.FIXTURE),
+            "54f0e5854fd34e5d8bcb301f4921b956a2030e61",
+        )
+        self.assertEqual(VALIDATE.validate_project(self.FIXTURE), [])
 
 
 class ProjectValidationTests(unittest.TestCase):
@@ -765,6 +1166,148 @@ class ProjectValidationTests(unittest.TestCase):
         slices["SPS-001"]["iteration"] = "SPI-999"
         write_yaml(path, relations)
         self.assert_error_contains("dangling ID SPI-999")
+
+    def test_review_and_verification_ledger_subjects_must_resolve(self) -> None:
+        cases = (
+            ("review-started", "REV-MISSING", "Relations.reviews"),
+            ("verification-started", "VER-MISSING", "Relations.verification"),
+        )
+        for event_type, subject_id, expected in cases:
+            with self.subTest(subject_id=subject_id):
+                event = {
+                    "schemaVersion": "1.0",
+                    "eventId": f"EVT-{subject_id}",
+                    "eventType": event_type,
+                    "occurredAt": "2026-07-13T20:00:00Z",
+                    "actor": "fixture",
+                    "commit": None,
+                    "subjectId": subject_id,
+                    "payload": {},
+                }
+                (self.root / "SDP/Traceability/Ledger.ndjson").write_text(
+                    json.dumps(event) + "\n", encoding="utf-8"
+                )
+                self.assert_error_contains(expected)
+
+    def test_review_and_verification_links_are_bidirectional(self) -> None:
+        path = self.root / "SDP/Traceability/Relations.yaml"
+        relations = read_yaml(path)
+        slices = relations["slices"]
+        assert isinstance(slices, dict) and isinstance(slices["SPS-001"], dict)
+        del slices["SPS-001"]["review"]
+        write_yaml(path, relations)
+        self.assert_error_contains("missing reverse link")
+
+        relations = read_yaml(path)
+        slices = relations["slices"]
+        verification = relations["verification"]
+        assert isinstance(slices, dict) and isinstance(slices["SPS-001"], dict)
+        assert isinstance(verification, dict) and isinstance(verification["VER-001"], dict)
+        slices["SPS-001"]["review"] = "REV-001"
+        verification["VER-001"]["slice"] = "SPS-999"
+        write_yaml(path, relations)
+        self.assert_error_contains("dangling ID SPS-999")
+
+    def test_migration_release_links_are_bidirectional(self) -> None:
+        path = self.root / "SDP/Traceability/Relations.yaml"
+        relations = read_yaml(path)
+        migrations = relations["migrations"]
+        releases = relations["releases"]
+        assert isinstance(migrations, dict) and isinstance(releases, dict)
+        assert isinstance(releases["REL-1.1.0"], dict)
+        migrations["MIG-001"] = {"release": "REL-1.1.0"}
+        releases["REL-1.1.0"]["migrations"] = ["MIG-001"]
+        write_yaml(path, relations)
+        self.assertEqual(VALIDATE.validate_project(self.root), [])
+        del releases["REL-1.1.0"]["migrations"]
+        write_yaml(path, relations)
+        self.assert_error_contains("missing reverse link")
+
+    def test_release_and_fix_records_require_canonical_yaml_extension(self) -> None:
+        cases = (
+            self.root / "SDP/Releases/REL-1.1.0.yaml",
+            self.root / "SDP/Fixes/FIX-1.1.0-001.yaml",
+        )
+        for path in cases:
+            with self.subTest(path=path.name):
+                renamed = path.with_suffix(".yml")
+                path.rename(renamed)
+                renamed.write_text("schemaVersion: [\n", encoding="utf-8")
+                self.assert_error_contains("canonical .yaml extension")
+                renamed.rename(path)
+
+    def test_release_relation_cannot_substitute_non_record_content(self) -> None:
+        (self.root / "SDP/Releases/REL-1.1.0.yaml").unlink()
+        relation_path = self.root / "SDP/Traceability/Relations.yaml"
+        relations = read_yaml(relation_path)
+        relations["releases"]["REL-1.1.0"]["releaseRecord"] = "SDP/RELEASE-NOTES.md"
+        write_yaml(relation_path, relations)
+        self.assert_error_contains("must reference a canonical .yaml release record")
+
+    def test_fix_relation_cannot_substitute_non_record_content(self) -> None:
+        (self.root / "SDP/Fixes/FIX-1.1.0-001.yaml").unlink()
+        relation_path = self.root / "SDP/Traceability/Relations.yaml"
+        relations = read_yaml(relation_path)
+        relations["fixes"]["FIX-1.1.0-001"]["path"] = "SDP/RELEASE-NOTES.md"
+        write_yaml(relation_path, relations)
+        self.assert_error_contains("must reference a canonical .yaml Fix record")
+
+    def test_unreleased_publication_fields_must_remain_null(self) -> None:
+        release_path = self.root / "SDP/Releases/REL-1.1.0.yaml"
+        release = read_yaml(release_path)
+        release["releasePreparationCommit"] = "abcdef1234567890"
+        release["gitTag"] = "v1.1.0"
+        release["githubReleaseUrl"] = "https://example.invalid/releases/1.1.0"
+        write_yaml(release_path, release)
+        self.assert_error_contains("must be null")
+        release["releasePreparationCommit"] = None
+        release["gitTag"] = None
+        release["githubReleaseUrl"] = None
+        write_yaml(release_path, release)
+
+        relation_path = self.root / "SDP/Traceability/Relations.yaml"
+        relations = read_yaml(relation_path)
+        releases = relations["releases"]
+        assert isinstance(releases, dict) and isinstance(releases["REL-1.1.0"], dict)
+        releases["REL-1.1.0"].update(
+            releaseCommit="abcdef1234567890",
+            gitTag="v1.1.0",
+            githubRelease="https://example.invalid/releases/1.1.0",
+        )
+        write_yaml(relation_path, relations)
+        self.assert_error_contains("while release is unreleased")
+
+    def test_release_record_and_relation_identity_must_agree(self) -> None:
+        path = self.root / "SDP/Traceability/Relations.yaml"
+        relations = read_yaml(path)
+        releases = relations["releases"]
+        assert isinstance(releases, dict) and isinstance(releases["REL-1.1.0"], dict)
+        releases["REL-1.1.0"]["reviews"] = []
+        write_yaml(path, relations)
+        self.assert_error_contains("reviewRecords differs from Relations.releases")
+
+    def test_project_latest_publication_identity_matches_current_version(self) -> None:
+        path = self.root / "SDP/SDP-project.manifest.yaml"
+        manifest = read_yaml(path)
+        manifest["release"]["latestTag"] = "v9.9.9"
+        write_yaml(path, manifest)
+        self.assert_error_contains("latestTag does not match release.currentVersion")
+
+    def test_release_event_tag_must_match_release_id(self) -> None:
+        event = {
+            "schemaVersion": "1.0",
+            "eventId": "EVT-REL-TAG-0001",
+            "eventType": "release-tag-created",
+            "occurredAt": "2026-07-13T20:00:00Z",
+            "releaseId": "REL-1.1.0",
+            "actor": "fixture",
+            "commit": "abcdef1234567890",
+            "payload": {"tag": "v1.2.0"},
+        }
+        (self.root / "SDP/Traceability/Ledger.ndjson").write_text(
+            json.dumps(event) + "\n", encoding="utf-8"
+        )
+        self.assert_error_contains("does not match releaseId REL-1.1.0")
 
     def test_empty_ledger_is_valid(self) -> None:
         ledger = self.root / "SDP/Traceability/Ledger.ndjson"

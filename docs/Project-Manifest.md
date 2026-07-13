@@ -12,6 +12,13 @@ migration warnings and project capabilities. A new template contains neutral
 project values only. It never inherits the SDP Toolkit repository's
 `REL-0.2.0`, active work coordinates or publication claims.
 
+Project versions use the full SemVer 2.0 form. `latestTag` and `latestCommit`
+identify the last confirmed publication of `currentVersion`; they may therefore
+remain populated while a different `targetVersion` is unreleased. The target
+release record and Relations entry must keep publication fields null while that
+target is unreleased, and later use `REL-<targetVersion>` and
+`v<targetVersion>` exactly when it is published or yanked.
+
 Installed Toolkit facts are not duplicated manually. The project manifest
 points, relative to the project `SDP/` directory, to
 `Framework/installed-toolkit.manifest.yaml`. A conforming installer generates
