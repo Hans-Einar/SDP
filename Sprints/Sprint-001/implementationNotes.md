@@ -2,7 +2,7 @@
 
 ## SPS-001
 
-Status: review — remediation verified; fresh independent review required
+Status: rework — second independent review changes required
 
 ### Master preparation
 
@@ -81,3 +81,12 @@ matrix and receive a new independent review.
   integrated candidate.
 - Linux evidence remains pending from draft-PR CI.
 - This is Slice verification, not the final `0.2.0` release gate.
+
+### Second review gate
+
+Fresh review `REV-SPS-001-002` inspected candidate
+`8f22614ada03effe0d7f044315ee76414554d098`. Twelve original findings were
+closed. Two high findings remain for physical local/UNC root identity and
+destination ancestor/prefix topology; one medium remains for four missing
+Python governing-pair assertions. A new Worker must implement exactly this
+bounded remediation and add the required zero-mutation/parameterized tests.

@@ -3,7 +3,7 @@
 Active Sprint: `Sprint-001`
 Active Iteration: `SPI-001`
 Active Slice: `SPS-001`
-Status: remediation verified; independent re-review pending
+Status: bounded second rework required
 
 ## Entry points
 
@@ -23,10 +23,11 @@ fresh independent Reviewer.
 
 ## Next action
 
-Assign a separate fresh Reviewer the full `origin/main...HEAD` diff, failed review
-`REV-SPS-001-001`, remediation commit
-`f81a75b96fdcc47bff4a11e9381bb62ff459a494` and verification
-`VER-SPS-001-002`. The Reviewer must reproduce the safety and exact `gh-sdp`
-evidence and classify every original finding. Do not open the draft PR or close
-the Slice with unresolved blocking, high or medium findings. Linux and Windows
-GitHub Actions evidence remains required before final closure.
+Assign a fresh Worker the three residual findings in
+`CodeReview/REV-SPS-001-002.md`: physical local/UNC root identity, complete
+destination-topology preflight with zero partial mutation, and all seven Python
+schema/capability pair checks. Also clarify the low-risk dirty-HEAD provenance
+semantics in public documentation. Rerun the full matrix, record a new exact
+verification and assign another separate fresh Reviewer. Do not open the draft
+PR or close the Slice with unresolved blocking, high or medium findings. Linux
+and Windows GitHub Actions evidence remains required before final closure.

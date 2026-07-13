@@ -16,7 +16,7 @@ Status: active
 
 ### SPS-001 — Canonical installation contract v1
 
-Status: review
+Status: rework
 
 #### Goal
 
@@ -153,6 +153,13 @@ PowerShell suite, both Toolkit validator invocations and exact offline `gh-sdp`
 project validation. The Slice has returned to review; it is not complete until a
 fresh independent Reviewer approves the integrated candidate and draft-PR CI
 provides Linux and Windows evidence.
+
+Second independent review `REV-SPS-001-002` returned changes required on exact
+integrated candidate `8f22614ada03effe0d7f044315ee76414554d098`. It closed
+twelve original findings but confirmed two residual highs—physical local/UNC
+root identity and destination-topology partial mutation—and one residual medium
+covering four missing Python schema/capability pairing checks. The Slice returned
+to rework for this bounded three-finding contract.
 
 #### Completion signal
 
