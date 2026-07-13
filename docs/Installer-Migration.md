@@ -60,6 +60,9 @@ Before mutation the installer:
   overlap in either ancestor direction across local, UNC, extended and available
   short-name aliases, and fails closed when identity or share ancestry is
   insufficient;
+- validates raw extended drive/UNC source, project and backup roots before
+  removing `\\?\` prefixes, rejecting traversal, empty/doubled or mixed
+  separators and trailing-space/dot segments that Win32 would reinterpret;
 - rejects case-insensitive destination ancestor/descendant pairs and any
   existing non-directory destination ancestor before an applicable plan;
 - parses installed/project manifests with a strict YAML subset, accepting only

@@ -95,7 +95,11 @@ existing root identity or sufficient share ancestry is unavailable. The source,
 project, backup roots and every existing source/destination ancestor must also
 be free of symbolic links and reparse points before planning and again before
 mutation. Manifest destinations may not be case-insensitive prefixes of one
-another, and every existing destination ancestor must be a directory.
+another, and every existing destination ancestor must be a directory. Raw
+extended drive/UNC roots are checked before prefix removal: normalization-
+sensitive traversal, empty/doubled/mixed-separator and trailing-space/dot forms
+are rejected, while canonical extended long-name and available 8.3 paths remain
+supported.
 
 The ordinary GitHub source archive is sufficient for this contract. No custom
 release asset is required unless future verification demonstrates a real gap.

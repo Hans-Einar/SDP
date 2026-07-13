@@ -48,9 +48,13 @@ both ancestor directions across local, UNC, `\\?\` drive/UNC and available 8.3
 aliases. Failure to acquire a required identity is a preflight failure. Distinct
 same-volume siblings remain valid when both ancestor chains reach the same
 visible namespace root. Different share roots on the same device are rejected
-when neither chain exposes enough ancestry to prove separation. PowerShell 5.1
-normalizes supported `\\?\X:\...` and `\\?\UNC\...` aliases; other device
-namespaces and extended-only paths that the host cannot address fail closed.
+when neither chain exposes enough ancestry to prove separation. Before removing
+an extended prefix, PowerShell 5.1 accepts only canonical `\\?\X:\...` and
+`\\?\UNC\server\share\...` spellings. It rejects mixed or forward-slash device
+prefixes, forward-slash separators, empty/doubled/trailing segments (except the
+required drive-root separator), `.` or `..` segments and segments ending in a
+space or dot. Other device namespaces fail closed. Valid long-name and available
+8.3 segments remain supported.
 
 A client also rejects duplicate entry IDs or destinations, missing sources,
 unsupported schema versions and paths outside their permitted roots. It never

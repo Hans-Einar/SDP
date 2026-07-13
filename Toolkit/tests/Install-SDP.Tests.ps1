@@ -11,6 +11,7 @@ $PlanSchema = Join-Path $RepositoryRoot 'Toolkit\schemas\SDP-install-plan.schema
 $ProjectValidator = Join-Path $RepositoryRoot 'Toolkit\scripts\validate_sdp.py'
 $TestRoot = Join-Path ([System.IO.Path]::GetTempPath()) ("sdp-installer-tests-" + [guid]::NewGuid().ToString('N'))
 $IsWindowsPlatform = [System.IO.Path]::DirectorySeparatorChar -eq '\'
+$ExtendedOnlyCleanupPaths = New-Object System.Collections.ArrayList
 
 if ($IsWindowsPlatform -and (-not ('Sdp.Tests.NativePath' -as [type]))) {
     Add-Type -TypeDefinition @'
@@ -135,6 +136,18 @@ function Get-LoopbackAdministrativeUncPath {
     $root = [System.IO.Path]::GetPathRoot($full)
     if ($root -cnotmatch '^([A-Za-z]):\\$') { return $null }
     return '\\localhost\' + $Matches[1] + '$' + $full.Substring(2)
+}
+
+function Get-ExtendedLoopbackAdministrativeUncPath {
+    param([string]$Path)
+
+    if ((-not $IsWindowsPlatform) -or
+        (-not $Path.StartsWith('\\?\', [System.StringComparison]::OrdinalIgnoreCase))) {
+        return $null
+    }
+    $localPath = $Path.Substring(4)
+    if ($localPath -cnotmatch '^([A-Za-z]):\\(.*)$') { return $null }
+    return '\\?\UNC\localhost\' + $Matches[1] + '$\' + $Matches[2]
 }
 
 function Assert-PlanConforms {
@@ -895,6 +908,184 @@ Release-Date: unreleased
         -ExpectedErrorPattern 'physically separate trees'
 
     if ($IsWindowsPlatform) {
+        # Canonical extended drive paths remain valid for both the consuming
+        # project and the installer-derived repository root.
+        $canonicalExtendedTarget = New-FixtureProject 'canonical-extended-drive-project-long-name'
+        $canonicalExtendedTargetAlias = '\\?\' + $canonicalExtendedTarget
+        $canonicalExtendedBefore = Get-TreeFingerprint $canonicalExtendedTarget
+        $canonicalExtendedPlan = Invoke-PlanJson `
+            $canonicalExtendedTargetAlias `
+            -InstallerPath $archiveInstaller
+        Assert-True `
+            ([bool](($canonicalExtendedPlan | ConvertFrom-Json).canApply)) `
+            'canonical extended drive project was rejected'
+        Assert-Equal `
+            $canonicalExtendedBefore `
+            (Get-TreeFingerprint $canonicalExtendedTarget) `
+            'canonical extended drive project plan mutated target'
+        & $archiveInstaller -ProjectRoot $canonicalExtendedTargetAlias | Out-Null
+        Assert-True `
+            (Test-Path -LiteralPath (Join-Path $canonicalExtendedTarget 'AGENTS.md') -PathType Leaf) `
+            'canonical extended drive project apply missed the supplied directory'
+
+        $previousProcessExecutionPolicy = Get-ExecutionPolicy -Scope Process
+        try {
+            Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+            $canonicalExtendedSourceTarget = New-FixtureProject 'canonical-extended-drive-source-target'
+            $canonicalExtendedInstaller = '\\?\' + $archiveInstaller
+            $canonicalExtendedSourcePlan = Invoke-PlanJson `
+                $canonicalExtendedSourceTarget `
+                -InstallerPath $canonicalExtendedInstaller
+            Assert-True `
+                ([bool](($canonicalExtendedSourcePlan | ConvertFrom-Json).canApply)) `
+                'canonical extended drive source was rejected'
+            & $canonicalExtendedInstaller -ProjectRoot $canonicalExtendedSourceTarget | Out-Null
+            Assert-True `
+                (Test-Path -LiteralPath (Join-Path $canonicalExtendedSourceTarget 'AGENTS.md') -PathType Leaf) `
+                'canonical extended drive source apply failed'
+        } finally {
+            Set-ExecutionPolicy `
+                -Scope Process `
+                -ExecutionPolicy $previousProcessExecutionPolicy `
+                -Force `
+                -ErrorAction SilentlyContinue
+        }
+
+        # Extended drive inputs that ordinary Win32 normalization would
+        # reinterpret fail with their dedicated normalization-sensitive error.
+        $shapeTarget = New-FixtureProject 'extended-raw-shape-target'
+        Write-Utf8File (Join-Path $shapeTarget 'marker.txt') 'UNCHANGED'
+        $shapeTargetAlias = '\\?\' + $shapeTarget
+        foreach ($shapeCase in @(
+            @('dot-segment', ($shapeTargetAlias + '\.')),
+            @('dot-dot-segment', ($shapeTargetAlias + '\..\extended-raw-shape-target')),
+            @('doubled-separator', ($shapeTargetAlias + '\\child')),
+            @('trailing-separator', ($shapeTargetAlias + '\')),
+            @('forward-separator', ('\\?\' + $shapeTarget.Replace('\', '/'))),
+            @('forward-device-prefix', ('//?/' + $shapeTarget.Replace('\', '/'))),
+            @('mixed-device-prefix', ('\\?/' + $shapeTarget))
+        )) {
+            Assert-InstallerRejectedWithoutMutation `
+                ("normalization-sensitive drive " + [string]$shapeCase[0]) `
+                ([string]$shapeCase[1]) `
+                $archiveInstaller `
+                '' `
+                @($shapeTarget) `
+                -ExpectedErrorPattern 'normalization-sensitive extended drive path'
+        }
+        foreach ($deviceCase in @(
+            @('question-device', '\\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1'),
+            @('dot-device', ('\\.\' + $shapeTarget))
+        )) {
+            Assert-InstallerRejectedWithoutMutation `
+                ("unsupported device namespace " + [string]$deviceCase[0]) `
+                ([string]$deviceCase[1]) `
+                $archiveInstaller `
+                '' `
+                @($shapeTarget) `
+                -ExpectedErrorPattern 'unsupported Windows device namespace'
+        }
+
+        # NTFS can hold distinct extended-only trailing-space/dot objects next
+        # to the ordinary spelling. Project, backup and source-derived roots all
+        # reject these inputs without changing either filesystem object.
+        $normalizationCases = New-Object System.Collections.ArrayList
+        foreach ($normalizationCase in @(
+            @('trailing-space', ' '),
+            @('trailing-dot', '.')
+        )) {
+            $caseName = [string]$normalizationCase[0]
+            $suffix = [string]$normalizationCase[1]
+
+            $ordinaryProject = New-FixtureProject ("normalization-$caseName-project")
+            $extendedProject = '\\?\' + $ordinaryProject + $suffix
+            [System.IO.Directory]::CreateDirectory($extendedProject) | Out-Null
+            [void]$ExtendedOnlyCleanupPaths.Add($extendedProject)
+            Write-Utf8File (Join-Path $ordinaryProject 'ordinary-marker.txt') 'ORDINARY'
+            [System.IO.File]::WriteAllText(
+                ($extendedProject + '\extended-marker.txt'),
+                'EXTENDED',
+                [System.Text.UTF8Encoding]::new($false)
+            )
+            Assert-InstallerRejectedWithoutMutation `
+                ("$caseName extended drive project") `
+                $extendedProject `
+                $archiveInstaller `
+                '' `
+                @($ordinaryProject, $extendedProject) `
+                -ExpectedErrorPattern 'consuming project root uses a normalization-sensitive extended drive path: segment .* ends in a space or dot\.'
+
+            $backupTarget = New-FixtureProject ("normalization-$caseName-backup-target")
+            Write-Utf8File (Join-Path $backupTarget 'target-marker.txt') 'TARGET'
+            $ordinaryBackup = New-FixtureProject ("normalization-$caseName-backup")
+            $extendedBackup = '\\?\' + $ordinaryBackup + $suffix
+            [System.IO.Directory]::CreateDirectory($extendedBackup) | Out-Null
+            [void]$ExtendedOnlyCleanupPaths.Add($extendedBackup)
+            Write-Utf8File (Join-Path $ordinaryBackup 'ordinary-marker.txt') 'ORDINARY'
+            [System.IO.File]::WriteAllText(
+                ($extendedBackup + '\extended-marker.txt'),
+                'EXTENDED',
+                [System.Text.UTF8Encoding]::new($false)
+            )
+            Assert-InstallerRejectedWithoutMutation `
+                ("$caseName extended drive backup") `
+                $backupTarget `
+                $archiveInstaller `
+                $extendedBackup `
+                @($backupTarget, $ordinaryBackup, $extendedBackup) `
+                -ExpectedErrorPattern 'backup root uses a normalization-sensitive extended drive path: segment .* ends in a space or dot\.'
+
+            $ordinarySource = New-FixtureProject ("normalization-$caseName-source")
+            Write-Utf8File (Join-Path $ordinarySource 'ordinary-marker.txt') 'ORDINARY'
+            $extendedSource = '\\?\' + $ordinarySource + $suffix
+            [System.IO.Directory]::CreateDirectory($extendedSource) | Out-Null
+            [void]$ExtendedOnlyCleanupPaths.Add($extendedSource)
+            Get-ChildItem -LiteralPath $archiveRoot -Force | ForEach-Object {
+                Copy-Item `
+                    -LiteralPath $_.FullName `
+                    -Destination $extendedSource `
+                    -Recurse `
+                    -Force
+            }
+            [System.IO.File]::WriteAllText(
+                ($extendedSource + '\extended-marker.txt'),
+                'EXTENDED',
+                [System.Text.UTF8Encoding]::new($false)
+            )
+            $sourceTarget = New-FixtureProject ("normalization-$caseName-source-target")
+            Write-Utf8File (Join-Path $sourceTarget 'target-marker.txt') 'TARGET'
+            $extendedSourceInstaller = $extendedSource + '\Toolkit\scripts\Install-SDP.ps1'
+            $previousProcessExecutionPolicy = Get-ExecutionPolicy -Scope Process
+            try {
+                Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+                Assert-InstallerRejectedWithoutMutation `
+                    ("$caseName extended drive source") `
+                    $sourceTarget `
+                    $extendedSourceInstaller `
+                    '' `
+                    @($sourceTarget, $ordinarySource, $extendedSource) `
+                    -ExpectedErrorPattern 'installer script root uses a normalization-sensitive extended drive path: segment .* ends in a space or dot\.'
+            } finally {
+                Set-ExecutionPolicy `
+                    -Scope Process `
+                    -ExecutionPolicy $previousProcessExecutionPolicy `
+                    -Force `
+                    -ErrorAction SilentlyContinue
+            }
+
+            [void]$normalizationCases.Add([pscustomobject]@{
+                Name = $caseName
+                OrdinaryProject = $ordinaryProject
+                ExtendedProject = $extendedProject
+                BackupTarget = $backupTarget
+                OrdinaryBackup = $ordinaryBackup
+                ExtendedBackup = $extendedBackup
+                SourceTarget = $sourceTarget
+                OrdinarySource = $ordinarySource
+                ExtendedSource = $extendedSource
+            })
+        }
+
         $extendedArchiveRoot = '\\?\' + $archiveRoot
         Assert-InstallerRejectedWithoutMutation `
             'extended local source/project overlap' `
@@ -909,6 +1100,13 @@ Release-Date: unreleased
             Assert-InstallerRejectedWithoutMutation `
                 'short-name source/project overlap' `
                 $shortArchiveRoot `
+                $archiveInstaller `
+                '' `
+                @($archiveRoot) `
+                -ExpectedErrorPattern 'physically separate trees'
+            Assert-InstallerRejectedWithoutMutation `
+                'extended short-name source/project overlap' `
+                ('\\?\' + $shortArchiveRoot) `
                 $archiveInstaller `
                 '' `
                 @($archiveRoot) `
@@ -950,6 +1148,113 @@ Release-Date: unreleased
                 '' `
                 @($archiveRoot) `
                 -ExpectedErrorPattern 'physically separate trees'
+
+            $canonicalExtendedUncTarget = New-FixtureProject 'canonical-extended-unc-project-long-name'
+            $canonicalUncTarget = Get-LoopbackAdministrativeUncPath $canonicalExtendedUncTarget
+            $canonicalExtendedUncTargetAlias = '\\?\UNC\' + $canonicalUncTarget.Substring(2)
+            $canonicalExtendedUncBefore = Get-TreeFingerprint $canonicalExtendedUncTarget
+            $canonicalExtendedUncPlan = Invoke-PlanJson `
+                $canonicalExtendedUncTargetAlias `
+                -InstallerPath $archiveInstaller
+            Assert-True `
+                ([bool](($canonicalExtendedUncPlan | ConvertFrom-Json).canApply)) `
+                'canonical extended UNC project was rejected'
+            Assert-Equal `
+                $canonicalExtendedUncBefore `
+                (Get-TreeFingerprint $canonicalExtendedUncTarget) `
+                'canonical extended UNC project plan mutated target'
+            & $archiveInstaller -ProjectRoot $canonicalExtendedUncTargetAlias | Out-Null
+            Assert-True `
+                (Test-Path -LiteralPath (Join-Path $canonicalExtendedUncTarget 'AGENTS.md') -PathType Leaf) `
+                'canonical extended UNC project apply missed the supplied directory'
+
+            $previousProcessExecutionPolicy = Get-ExecutionPolicy -Scope Process
+            try {
+                Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+                $canonicalExtendedUncSourceTarget = New-FixtureProject 'canonical-extended-unc-source-target'
+                $canonicalExtendedUncInstaller = `
+                    $extendedUncArchiveRoot + '\Toolkit\scripts\Install-SDP.ps1'
+                $canonicalExtendedUncSourcePlan = Invoke-PlanJson `
+                    $canonicalExtendedUncSourceTarget `
+                    -InstallerPath $canonicalExtendedUncInstaller
+                Assert-True `
+                    ([bool](($canonicalExtendedUncSourcePlan | ConvertFrom-Json).canApply)) `
+                    'canonical extended UNC source was rejected'
+                & $canonicalExtendedUncInstaller `
+                    -ProjectRoot $canonicalExtendedUncSourceTarget | Out-Null
+                Assert-True `
+                    (Test-Path -LiteralPath (Join-Path $canonicalExtendedUncSourceTarget 'AGENTS.md') -PathType Leaf) `
+                    'canonical extended UNC source apply failed'
+            } finally {
+                Set-ExecutionPolicy `
+                    -Scope Process `
+                    -ExecutionPolicy $previousProcessExecutionPolicy `
+                    -Force `
+                    -ErrorAction SilentlyContinue
+            }
+
+            foreach ($normalizationCase in $normalizationCases) {
+                $caseName = [string]$normalizationCase.Name
+                $extendedUncProject = Get-ExtendedLoopbackAdministrativeUncPath `
+                    ([string]$normalizationCase.ExtendedProject)
+                $extendedUncBackup = Get-ExtendedLoopbackAdministrativeUncPath `
+                    ([string]$normalizationCase.ExtendedBackup)
+                $extendedUncSource = Get-ExtendedLoopbackAdministrativeUncPath `
+                    ([string]$normalizationCase.ExtendedSource)
+                Assert-True `
+                    ([System.IO.Directory]::Exists($extendedUncProject)) `
+                    "$caseName extended-only project was not reachable through loopback UNC"
+                Assert-True `
+                    ([System.IO.Directory]::Exists($extendedUncBackup)) `
+                    "$caseName extended-only backup was not reachable through loopback UNC"
+                Assert-True `
+                    ([System.IO.Directory]::Exists($extendedUncSource)) `
+                    "$caseName extended-only source was not reachable through loopback UNC"
+
+                Assert-InstallerRejectedWithoutMutation `
+                    ("$caseName extended UNC project") `
+                    $extendedUncProject `
+                    $archiveInstaller `
+                    '' `
+                    @(
+                        [string]$normalizationCase.OrdinaryProject,
+                        [string]$normalizationCase.ExtendedProject
+                    ) `
+                    -ExpectedErrorPattern 'consuming project root uses a normalization-sensitive extended UNC path: segment .* ends in a space or dot\.'
+                Assert-InstallerRejectedWithoutMutation `
+                    ("$caseName extended UNC backup") `
+                    ([string]$normalizationCase.BackupTarget) `
+                    $archiveInstaller `
+                    $extendedUncBackup `
+                    @(
+                        [string]$normalizationCase.BackupTarget,
+                        [string]$normalizationCase.OrdinaryBackup,
+                        [string]$normalizationCase.ExtendedBackup
+                    ) `
+                    -ExpectedErrorPattern 'backup root uses a normalization-sensitive extended UNC path: segment .* ends in a space or dot\.'
+
+                $previousProcessExecutionPolicy = Get-ExecutionPolicy -Scope Process
+                try {
+                    Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+                    Assert-InstallerRejectedWithoutMutation `
+                        ("$caseName extended UNC source") `
+                        ([string]$normalizationCase.SourceTarget) `
+                        ($extendedUncSource + '\Toolkit\scripts\Install-SDP.ps1') `
+                        '' `
+                        @(
+                            [string]$normalizationCase.SourceTarget,
+                            [string]$normalizationCase.OrdinarySource,
+                            [string]$normalizationCase.ExtendedSource
+                        ) `
+                        -ExpectedErrorPattern 'installer script root uses a normalization-sensitive extended UNC path: segment .* ends in a space or dot\.'
+                } finally {
+                    Set-ExecutionPolicy `
+                        -Scope Process `
+                        -ExecutionPolicy $previousProcessExecutionPolicy `
+                        -Force `
+                        -ErrorAction SilentlyContinue
+                }
+            }
 
             $uncBackupOverlapTarget = New-FixtureProject 'unc-backup-overlap-target'
             Write-Utf8File (Join-Path $uncBackupOverlapTarget 'marker.txt') 'UNCHANGED'
@@ -1280,5 +1585,11 @@ Release-Date: unreleased
 
     Write-Host 'Installer fixture tests passed.'
 } finally {
+    for ($index = $ExtendedOnlyCleanupPaths.Count - 1; $index -ge 0; $index--) {
+        $extendedOnlyPath = [string]$ExtendedOnlyCleanupPaths[$index]
+        if ([System.IO.Directory]::Exists($extendedOnlyPath)) {
+            [System.IO.Directory]::Delete($extendedOnlyPath, $true)
+        }
+    }
     Remove-Item -LiteralPath $TestRoot -Recurse -Force -ErrorAction SilentlyContinue
 }

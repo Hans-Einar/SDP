@@ -468,12 +468,82 @@ function Assert-AllowedValue {
     }
 }
 
+function Assert-CanonicalWindowsExtendedPath {
+    param([string]$Path, [string]$Label)
+
+    if (-not $IsWindowsPlatform) { return }
+
+    $rawDevicePrefix = [regex]::Match($Path, '^[\\/]{2}([?.])[\\/]')
+    if ($rawDevicePrefix.Success -and
+        ($Path.Substring(0, 4) -cne '\\?\')) {
+        if ($rawDevicePrefix.Groups[1].Value -ceq '?') {
+            $normalizedNamespace = $Path.Substring(4).Replace('/', '\')
+            if ($normalizedNamespace -cmatch '^[A-Za-z]:') {
+                throw "$Label uses a normalization-sensitive extended drive path: the device prefix and separators must be '\\?\X:\'."
+            }
+            if ($normalizedNamespace.StartsWith(
+                'UNC\',
+                [System.StringComparison]::OrdinalIgnoreCase
+            )) {
+                throw "$Label uses a normalization-sensitive extended UNC path: the device prefix and separators must be '\\?\UNC\'."
+            }
+        }
+        throw "$Label uses an unsupported Windows device namespace."
+    }
+
+    $extendedKind = $null
+    $remainder = $null
+    if ($Path.StartsWith('\\?\UNC\', [System.StringComparison]::OrdinalIgnoreCase)) {
+        $extendedKind = 'UNC'
+        $remainder = $Path.Substring(8)
+    } elseif ($Path.StartsWith('\\?\UNC/', [System.StringComparison]::OrdinalIgnoreCase)) {
+        throw "$Label uses a normalization-sensitive extended UNC path: '/' cannot replace the namespace separator."
+    } elseif ($Path -cmatch '^\\\\\?\\[A-Za-z]:') {
+        $extendedKind = 'drive'
+        if (($Path.Length -lt 7) -or ($Path[6] -ne '\')) {
+            throw "$Label uses a normalization-sensitive extended drive path: the drive prefix must end in '\'."
+        }
+        $remainder = $Path.Substring(7)
+    } elseif ($Path.StartsWith('\\?\', [System.StringComparison]::OrdinalIgnoreCase) -or
+        $Path.StartsWith('\\.\', [System.StringComparison]::OrdinalIgnoreCase) -or
+        $Path.StartsWith('\??\', [System.StringComparison]::OrdinalIgnoreCase)) {
+        throw "$Label uses an unsupported Windows device namespace."
+    } else {
+        return
+    }
+
+    if ($Path.IndexOf('/') -ge 0) {
+        throw "$Label uses a normalization-sensitive extended $extendedKind path: '/' separators are not supported."
+    }
+
+    if (($extendedKind -ceq 'drive') -and ($remainder.Length -eq 0)) {
+        return
+    }
+
+    $segments = @($remainder.Split([char[]]'\'))
+    if (($extendedKind -ceq 'UNC') -and ($segments.Count -lt 2)) {
+        throw "$Label uses a normalization-sensitive extended UNC path: both server and share segments are required."
+    }
+    foreach ($segment in $segments) {
+        if ($segment.Length -eq 0) {
+            throw "$Label uses a normalization-sensitive extended $extendedKind path: empty, doubled, or trailing separators are not supported."
+        }
+        if (($segment -ceq '.') -or ($segment -ceq '..')) {
+            throw "$Label uses a normalization-sensitive extended $extendedKind path: traversal segment '$segment' is not supported."
+        }
+        if ($segment.EndsWith(' ') -or $segment.EndsWith('.')) {
+            throw "$Label uses a normalization-sensitive extended $extendedKind path: segment '$segment' ends in a space or dot."
+        }
+    }
+}
+
 function Get-ProviderCompatibleFullPath {
     param([string]$Path, [string]$Label)
 
     if ([string]::IsNullOrWhiteSpace($Path)) {
         throw "$Label must be a non-empty path."
     }
+    Assert-CanonicalWindowsExtendedPath $Path $Label
     $candidate = $Path
     if ($IsWindowsPlatform) {
         if ($candidate.StartsWith('\\?\UNC\', [System.StringComparison]::OrdinalIgnoreCase)) {
@@ -823,7 +893,8 @@ function ConvertTo-YamlQuotedScalar {
     return '"' + $Value.Replace('\', '\\').Replace('"', '\"') + '"'
 }
 
-$ToolkitRoot = Get-ProviderCompatibleFullPath (Split-Path -Parent $PSScriptRoot) 'Toolkit root'
+$InstallerScriptRoot = Get-ProviderCompatibleFullPath $PSScriptRoot 'installer script root'
+$ToolkitRoot = Get-ProviderCompatibleFullPath (Split-Path -Parent $InstallerScriptRoot) 'Toolkit root'
 $RepositoryRoot = Get-ProviderCompatibleFullPath (Join-Path $ToolkitRoot '..') 'SDP repository root'
 Assert-NoLinkOrReparsePointInExistingAncestors $RepositoryRoot 'SDP repository root'
 $InstallManifestPath = Join-Path $ToolkitRoot 'SDP-install.manifest.json'
@@ -893,6 +964,9 @@ $SdpRoot = Join-Path $ProjectRoot 'SDP'
 $ExpectedInstalledManifestRelative = 'SDP/Framework/installed-toolkit.manifest.yaml'
 $ExpectedProjectManifestRelative = 'SDP/SDP-project.manifest.yaml'
 
+if (-not [string]::IsNullOrWhiteSpace($BackupRoot)) {
+    Assert-CanonicalWindowsExtendedPath $BackupRoot 'backup root'
+}
 if ([string]::IsNullOrWhiteSpace($BackupRoot)) {
     $BackupRoot = Join-Path $SdpRoot ".sdp-backups\$RunStamp"
 } elseif (-not [System.IO.Path]::IsPathRooted($BackupRoot)) {
