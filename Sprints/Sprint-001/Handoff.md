@@ -3,7 +3,7 @@
 Active Sprint: `Sprint-001`
 Active Iteration: `SPI-001`
 Active Slice: `SPS-001`
-Status: implementation pending
+Status: independent review pending
 
 ## Entry points
 
@@ -23,5 +23,8 @@ fresh independent Reviewer.
 
 ## Next action
 
-Delegate bounded contract/installer and validator/schema implementation from the
-active Slice, then integrate real evidence before changing the Slice state.
+Assign a fresh independent Reviewer to exact candidate
+`ce9278b8b78f9c320a65799aefd13101582d1eb8`, the full `origin/main...HEAD` diff
+and `Verification/VER-SPS-001.md`. Do not close the Slice with unresolved
+blocking, high or medium findings. Linux GitHub Actions evidence remains required
+before final closure.

@@ -16,7 +16,7 @@ Status: active
 
 ### SPS-001 — Canonical installation contract v1
 
-Status: active
+Status: review
 
 #### Goal
 

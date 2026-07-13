@@ -2,7 +2,7 @@
 
 ## SPS-001
 
-Status: active
+Status: review — implementation and verification complete; independent review pending
 
 ### Master preparation
 
@@ -36,8 +36,32 @@ before tests; the successful baseline used the active Windows PowerShell host.
 
 ### Implementation
 
-Pending delegated Worker results.
+- Added one explicit 40-entry installation manifest with two generators and 22
+  exclusions, plus install-manifest and deterministic-plan schemas.
+- Moved neutral, project-owned seeds into a 22-file
+  `Toolkit/project-templates/` boundary; live root records are excluded.
+- Refactored the PowerShell compatibility installer to derive entry selection,
+  policy, content and actions from the manifest and expose read-only `-PlanJson`.
+- Added archive-safe source-commit handling, pre-mutation policy/destination
+  gates and the corrected neutral initialization behavior.
+- Added Toolkit/project validator modes, CurrentIndex, Relations and generic
+  Ledger schemas, specialized release events and namespaced extensions.
+- Added 49 Python tests, expanded Windows installer fixtures, public contract and
+  validation documentation, examples, release notes and synchronized capability
+  metadata.
+
+Worker implementation is committed at
+`ce9278b8b78f9c320a65799aefd13101582d1eb8`.
 
 ### Verification and review
 
-Pending exact candidate evidence and fresh independent review.
+Master verification is recorded in `Verification/VER-SPS-001.md` and passed on
+exact clean candidate `ce9278b8b78f9c320a65799aefd13101582d1eb8`: Toolkit
+validation, 49 Python tests, expanded PowerShell fixtures, archive/project
+validation, diff check and publication-state checks passed. Independent review
+is pending.
+
+### Residual limitations
+
+- Linux evidence remains pending from draft-PR CI.
+- This is Slice verification, not the final `0.2.0` release gate.

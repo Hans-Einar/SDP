@@ -17,18 +17,24 @@ iterations:
       - SPS-001
 slices:
   SPS-001:
-    status: active
+    status: review
     sprint: Sprint-001
     iteration: SPI-001
     release: REL-0.2.0
     path: Sprints/Sprint-001/ScrumIterations.md
     study: Sprints/Sprint-001/InstallationContractStudy.md
     implementationNotes: Sprints/Sprint-001/implementationNotes.md
-    verification: null
+    verification: VER-SPS-001
     review: null
 fixes: {}
 reviews: {}
-verification: {}
+verification:
+  VER-SPS-001:
+    status: passed
+    path: Verification/VER-SPS-001.md
+    slice: SPS-001
+    release: REL-0.2.0
+    commit: ce9278b8b78f9c320a65799aefd13101582d1eb8
 migrations: {}
 releases:
   REL-0.2.0:
