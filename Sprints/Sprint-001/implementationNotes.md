@@ -2,7 +2,7 @@
 
 ## SPS-001
 
-Status: review — locally approved; draft-PR CI required
+Status: complete
 
 ### Master preparation
 
@@ -67,7 +67,7 @@ for its exact commit, but is superseded as a completion gate. Remediation must
 cover every finding in `CodeReview/REV-SPS-001-001.md`, rerun the full evidence
 matrix and receive a new independent review.
 
-### Residual limitations
+### Remediation history
 
 - Remediation Worker commit
   `f81a75b96fdcc47bff4a11e9381bb62ff459a494` closes all five high and ten
@@ -76,10 +76,9 @@ matrix and receive a new independent review.
 - Master verification `VER-SPS-001-002` passed on that exact clean candidate:
   72 Python tests, the full Windows PowerShell fixture suite, both Toolkit
   invocations, exact pinned project validation and diff/publication checks.
-- File-symlink creation was unavailable on the Windows host; junction/reparse
-  coverage passed. A fresh Reviewer must decide the remediated gate on the
-  integrated candidate.
-- Linux evidence remains pending from draft-PR CI.
+- File-symlink creation was unavailable on the local Windows host;
+  junction/reparse coverage passed. The later hosted Windows suite passed.
+- Linux contract evidence passed in draft-PR run `29298949100`.
 - This is Slice verification, not the final `0.2.0` release gate.
 
 ### Second review gate
@@ -124,3 +123,44 @@ Fresh review `REV-SPS-001-004` approved integrated candidate
 `66759afb45813f9c890e67d4938e5b796b9ed05d` with no unresolved blocking, high,
 medium or low findings. Draft-PR Linux contract and Windows installer checks are
 the remaining Slice evidence gate.
+
+### Draft-PR CI remediation
+
+Draft PR `https://github.com/Hans-Einar/SDP/pull/4` was opened from
+`codex/sdp-install-contract-v1` against `main`.
+
+- Run `29295427882` passed Linux contracts and failed Windows because the job
+  had not installed `jsonschema`. Fresh Worker/review commit
+  `64a89b0f4e9378f97c727cf3f1b5a7fdfa39f543` added Python 3.12 setup and the
+  existing declared test requirements.
+- Run `29295843790` passed dependencies and Linux contracts, then reproduced a
+  PowerShell 7 repeat-install failure. `ConvertFrom-Json` had coerced a quoted
+  RFC 3339 scalar to DateTime before strict YAML validation. Fresh Worker/review
+  commit `64d874b6c6a19a61d8e06a1f39d525b53cc50d90` preserved exact quoted
+  strings and added a repeat PlanJson/apply regression.
+- A complete portable PowerShell 7.6.3 run then exposed a UNC share-root parent
+  traversal difference. Fresh Worker commit
+  `70e38d663846c67a984363f80defe4d44e798fa9` added namespace-root-aware parent
+  traversal. Its fresh review found a pre-existing medium trailing-separator
+  ProjectRoot false rejection, which fresh Worker commit
+  `7c78132f31788d7494eb93c6cba5310c5503e416` closed with local and loopback UNC
+  PlanJson/apply regressions.
+
+Final integrated review `REV-SPS-001-005` approved `7c78132` with zero blocking,
+high, medium or low findings. Independent local evidence passed full PowerShell
+7.6.3 and Windows PowerShell 5.1 suites, 73 Python tests, every validator mode,
+all schemas/parsers and the path-safety matrix.
+
+### CI and closure
+
+GitHub Actions run `29298949100` passed on exact head
+`7c78132f31788d7494eb93c6cba5310c5503e416`:
+
+- Linux `contracts`: passed in `9s`, including 73 Python tests.
+- Windows `installer`: passed in `5m12s`, ending with
+  `Installer fixture tests passed.`
+
+The exact evidence is `VER-SPS-001-005`. `SPS-001`, `SPI-001` and `Sprint-001`
+are complete. The draft PR remains open, and Toolkit `0.2.0` remains unreleased
+with no tag or GitHub Release. Release verification/review records remain a
+separate future gate.

@@ -1,8 +1,9 @@
 # Sprint-001 — Portable installation and project-validation contract
 
-Status: active
+Status: complete
 Release target: `REL-0.2.0` (`0.2.0`, unreleased)
 Started: `2026-07-13T20:54:45Z`
+Completed: `2026-07-14T01:42:15Z`
 
 ## Sprint goal
 
@@ -12,11 +13,11 @@ without publishing Toolkit `0.2.0`.
 
 ## SPI-001 — Installation contract hardening
 
-Status: active
+Status: complete
 
 ### SPS-001 — Canonical installation contract v1
 
-Status: review
+Status: complete
 
 #### Goal
 
@@ -185,10 +186,27 @@ Fresh independent review `REV-SPS-001-004` approved exact integrated candidate
 medium or low findings. The Slice remains in review only for draft-PR Linux and
 Windows GitHub Actions evidence and final SDP integration.
 
-#### Completion signal
+Draft PR `Hans-Einar/SDP#4` exposed two hosted-runtime gaps before completion.
+Run `29295427882` showed that the Windows job did not install the declared
+Python schema dependency. After commit
+`64a89b0f4e9378f97c727cf3f1b5a7fdfa39f543`, run `29295843790` reached the
+installer and exposed PowerShell 7 quoted-timestamp coercion. Fresh bounded
+Workers and separate Reviewers closed that defect, a PowerShell 7 UNC
+share-root traversal difference, and a trailing ProjectRoot separator false
+rejection in commits `64d874b6c6a19a61d8e06a1f39d525b53cc50d90`,
+`70e38d663846c67a984363f80defe4d44e798fa9` and
+`7c78132f31788d7494eb93c6cba5310c5503e416`.
 
-The Slice is complete only when the canonical contract is consumed by
-PowerShell, neutral templates and project validation work, all deterministic
-tests and archive checks pass, independent review has no unresolved blocking,
-high or medium findings, SDP records are current, a draft PR against `main` is
-open, and Toolkit `0.2.0` is still unreleased with no tag or GitHub Release.
+Final independent review `REV-SPS-001-005` approved candidate `7c78132` with no
+blocking, high, medium or low findings. GitHub Actions run `29298949100` then
+passed the Linux contracts job and the full Windows installer job on that exact
+head. `VER-SPS-001-005` is the authoritative completion evidence.
+
+#### Completion evidence
+
+The canonical contract is consumed by PowerShell, neutral templates and project
+validation work, deterministic tests and archive checks pass on Windows and
+Linux, independent review has no unresolved finding, SDP records are current,
+and draft PR `#4` is open against `main`. Toolkit `0.2.0` remains unreleased with
+no tag or GitHub Release. `SPS-001`, `SPI-001` and `Sprint-001` are complete;
+this does not complete or publish `REL-0.2.0`.
