@@ -874,6 +874,34 @@ Release-Date: unreleased
     & python $ProjectValidator --mode project --project-root $archiveTarget | Out-Host
     Assert-Equal 0 $LASTEXITCODE 'archive-installed project validation'
 
+    # An ordinary project-root spelling may retain its terminal directory
+    # separator. Planning must remain mutation-free, and apply must resolve
+    # the same root instead of walking past it during destination preflight.
+    $trailingLocalTarget = New-FixtureProject 'trailing-separator-local-project'
+    Write-Utf8File (Join-Path $trailingLocalTarget 'marker.txt') 'UNCHANGED'
+    $trailingLocalRoot = $trailingLocalTarget + [System.IO.Path]::DirectorySeparatorChar
+    $trailingLocalBefore = Get-TreeFingerprint $trailingLocalTarget
+    $trailingLocalPlanJson = Invoke-PlanJson `
+        $trailingLocalRoot `
+        -InstallerPath $archiveInstaller
+    Assert-Equal `
+        $trailingLocalBefore `
+        (Get-TreeFingerprint $trailingLocalTarget) `
+        'trailing-separator local project plan mutated target'
+    Assert-PlanConforms $trailingLocalPlanJson 'trailing-separator local project'
+    $trailingLocalPlan = $trailingLocalPlanJson | ConvertFrom-Json
+    Assert-True `
+        ([bool]$trailingLocalPlan.canApply) `
+        'trailing-separator local project plan was rejected'
+    & $archiveInstaller -ProjectRoot $trailingLocalRoot | Out-Null
+    Assert-Equal `
+        'UNCHANGED' `
+        (Get-Content -Raw -LiteralPath (Join-Path $trailingLocalTarget 'marker.txt')) `
+        'trailing-separator local project apply changed project-owned content'
+    Assert-True `
+        (Test-Path -LiteralPath (Join-Path $trailingLocalTarget 'AGENTS.md') -PathType Leaf) `
+        'trailing-separator local project apply missed the supplied directory'
+
     # Root overlap is decided by stable filesystem identities, not path
     # spelling. Exact, ancestor and descendant forms are symmetric, and both
     # PlanJson and apply remain mutation-free when rejected.
@@ -1152,6 +1180,32 @@ Release-Date: unreleased
         $archiveUncRoot = Get-LoopbackAdministrativeUncPath $archiveRoot
         if ((-not [string]::IsNullOrWhiteSpace($archiveUncRoot)) -and
             (Test-Path -LiteralPath $archiveUncRoot -PathType Container)) {
+            $trailingUncTarget = New-FixtureProject 'trailing-separator-unc-project'
+            Write-Utf8File (Join-Path $trailingUncTarget 'marker.txt') 'UNCHANGED'
+            $trailingUncRoot = `
+                (Get-LoopbackAdministrativeUncPath $trailingUncTarget) + '\'
+            $trailingUncBefore = Get-TreeFingerprint $trailingUncTarget
+            $trailingUncPlanJson = Invoke-PlanJson `
+                $trailingUncRoot `
+                -InstallerPath $archiveInstaller
+            Assert-Equal `
+                $trailingUncBefore `
+                (Get-TreeFingerprint $trailingUncTarget) `
+                'trailing-separator UNC project plan mutated target'
+            Assert-PlanConforms $trailingUncPlanJson 'trailing-separator UNC project'
+            $trailingUncPlan = $trailingUncPlanJson | ConvertFrom-Json
+            Assert-True `
+                ([bool]$trailingUncPlan.canApply) `
+                'trailing-separator UNC project plan was rejected'
+            & $archiveInstaller -ProjectRoot $trailingUncRoot | Out-Null
+            Assert-Equal `
+                'UNCHANGED' `
+                (Get-Content -Raw -LiteralPath (Join-Path $trailingUncTarget 'marker.txt')) `
+                'trailing-separator UNC project apply changed project-owned content'
+            Assert-True `
+                (Test-Path -LiteralPath (Join-Path $trailingUncTarget 'AGENTS.md') -PathType Leaf) `
+                'trailing-separator UNC project apply missed the supplied directory'
+
             Assert-InstallerRejectedWithoutMutation `
                 'local/UNC source/project overlap' `
                 $archiveUncRoot `

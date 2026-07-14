@@ -803,23 +803,32 @@ function Assert-DestinationTopology {
     $fullDestination = Get-ProviderCompatibleFullPath $Destination $Label
     Assert-ContainedPhysicalPath $fullRoot $fullDestination $Label
 
+    $trimCharacters = [char[]]@(
+        [System.IO.Path]::DirectorySeparatorChar,
+        [System.IO.Path]::AltDirectorySeparatorChar
+    )
+    $fullRootKey = $fullRoot.TrimEnd($trimCharacters)
+    if ($fullRootKey.Length -eq 0) { $fullRootKey = $fullRoot }
+
     if ([System.IO.Directory]::Exists($fullDestination) -or
         ((Test-Path -LiteralPath $fullDestination) -and
         (-not [System.IO.File]::Exists($fullDestination)))) {
         throw "$Label exists but is not a file: $fullDestination"
     }
 
-    $current = Split-Path -Parent $fullDestination
+    $current = Get-FileSystemParentPath $fullDestination
     while (-not [string]::IsNullOrWhiteSpace($current)) {
         if ([System.IO.File]::Exists($current) -or
             ((Test-Path -LiteralPath $current) -and
             (-not [System.IO.Directory]::Exists($current)))) {
             throw "$Label has an existing non-directory ancestor: $current"
         }
-        if ($current.Equals($fullRoot, $PathComparison)) {
+        $currentKey = $current.TrimEnd($trimCharacters)
+        if ($currentKey.Length -eq 0) { $currentKey = $current }
+        if ($currentKey.Equals($fullRootKey, $PathComparison)) {
             break
         }
-        $parent = Split-Path -Parent $current
+        $parent = Get-FileSystemParentPath $current
         if ([string]::IsNullOrWhiteSpace($parent) -or
             $parent.Equals($current, $PathComparison)) {
             throw "$Label escapes its root."
