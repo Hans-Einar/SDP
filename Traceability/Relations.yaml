@@ -33,6 +33,7 @@ slices:
       - REV-SPS-001-001
       - REV-SPS-001-002
       - REV-SPS-001-003
+      - REV-SPS-001-004
 fixes: {}
 reviews:
   REV-SPS-001-001:
@@ -56,6 +57,13 @@ reviews:
     release: REL-0.2.0
     verification: VER-SPS-001-003
     commit: d0f0efb49467c09a182ca4fdd4fe8c4a68310326
+  REV-SPS-001-004:
+    status: approved
+    path: CodeReview/REV-SPS-001-004.md
+    slice: SPS-001
+    release: REL-0.2.0
+    verification: VER-SPS-001-004
+    commit: 66759afb45813f9c890e67d4938e5b796b9ed05d
 verification:
   VER-SPS-001:
     status: passed

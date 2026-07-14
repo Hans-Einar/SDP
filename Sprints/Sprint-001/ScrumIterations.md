@@ -180,6 +180,11 @@ verification `VER-SPS-001-004` passed 73 Python tests, the full PowerShell suite
 and all validator modes. The Slice returned to review for a new independent
 approval.
 
+Fresh independent review `REV-SPS-001-004` approved exact integrated candidate
+`66759afb45813f9c890e67d4938e5b796b9ed05d` with no unresolved blocking, high,
+medium or low findings. The Slice remains in review only for draft-PR Linux and
+Windows GitHub Actions evidence and final SDP integration.
+
 #### Completion signal
 
 The Slice is complete only when the canonical contract is consumed by

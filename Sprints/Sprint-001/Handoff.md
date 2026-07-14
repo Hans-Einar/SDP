@@ -3,7 +3,7 @@
 Active Sprint: `Sprint-001`
 Active Iteration: `SPI-001`
 Active Slice: `SPS-001`
-Status: H1-R3 verified; independent approval pending
+Status: locally approved; draft PR and CI pending
 
 ## Entry points
 
@@ -23,9 +23,8 @@ fresh independent Reviewer.
 
 ## Next action
 
-Assign a separate fresh Reviewer the complete diff, all changes-required reviews,
-H1-R3 Worker commit `1c650578109a361cf2f187da665eabdc4ac85e81` and
-`VER-SPS-001-004`. The Reviewer must reproduce the extended-only wrong-project
-case, canonical extended positives and prior closure evidence. Do not open the
-draft PR or close the Slice with unresolved blocking, high or medium findings.
-Linux and Windows GitHub Actions evidence remains required before final closure.
+Push `codex/sdp-install-contract-v1`, open a draft PR against `main`, and require
+the Linux contract and Windows installer GitHub Actions checks on the pushed
+head. Local approval is `REV-SPS-001-004`. Keep `0.2.0` unreleased and do not
+create a tag or GitHub Release. Record real CI evidence before final Slice
+closure.

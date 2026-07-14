@@ -2,7 +2,7 @@
 
 ## SPS-001
 
-Status: review — H1-R3 verified; fresh approval required
+Status: review — locally approved; draft-PR CI required
 
 ### Master preparation
 
@@ -117,3 +117,10 @@ validates raw extended drive/UNC input before any prefix removal. Master
 verification `VER-SPS-001-004` passed the full matrix, including ProjectRoot,
 BackupRoot and source trailing-space/dot zero-mutation cases for drive and UNC,
 plus canonical extended and 8.3 positive cases.
+
+### Local approval
+
+Fresh review `REV-SPS-001-004` approved integrated candidate
+`66759afb45813f9c890e67d4938e5b796b9ed05d` with no unresolved blocking, high,
+medium or low findings. Draft-PR Linux contract and Windows installer checks are
+the remaining Slice evidence gate.
