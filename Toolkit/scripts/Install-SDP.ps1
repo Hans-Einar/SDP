@@ -591,6 +591,38 @@ function Join-PortablePath {
     return $full
 }
 
+function Get-FileSystemParentPath {
+    param([string]$Path)
+
+    $full = [System.IO.Path]::GetFullPath($Path)
+    $root = [System.IO.Path]::GetPathRoot($full)
+    if ([string]::IsNullOrWhiteSpace($root)) { return $null }
+
+    $trimCharacters = [char[]]@(
+        [System.IO.Path]::DirectorySeparatorChar,
+        [System.IO.Path]::AltDirectorySeparatorChar
+    )
+    $fullKey = $full.TrimEnd($trimCharacters)
+    $rootKey = $root.TrimEnd($trimCharacters)
+    if ($fullKey.Length -eq 0) { $fullKey = $full }
+    if ($rootKey.Length -eq 0) { $rootKey = $root }
+    if ($fullKey.Equals($rootKey, $PathComparison)) { return $null }
+
+    $parentInfo = [System.IO.Directory]::GetParent($full)
+    if ($null -eq $parentInfo) { return $null }
+    $parent = [System.IO.Path]::GetFullPath($parentInfo.FullName)
+    $parentRoot = [System.IO.Path]::GetPathRoot($parent)
+    $parentRootKey = $parentRoot.TrimEnd($trimCharacters)
+    if ($parentRootKey.Length -eq 0) { $parentRootKey = $parentRoot }
+    if (-not $parentRootKey.Equals($rootKey, $PathComparison)) {
+        throw 'Filesystem parent resolution crossed its namespace root.'
+    }
+    if ($parent.Equals($full, $PathComparison)) {
+        throw 'Filesystem parent resolution did not advance.'
+    }
+    return $parent
+}
+
 function Test-IsLinkOrReparsePoint {
     param([string]$Path)
 
@@ -620,7 +652,7 @@ function Assert-NoLinkOrReparsePointInExistingAncestors {
         if (Test-IsLinkOrReparsePoint $current) {
             throw "$Label traverses a symlink or reparse point: $current"
         }
-        $parent = Split-Path -Parent $current
+        $parent = Get-FileSystemParentPath $current
         if ([string]::IsNullOrWhiteSpace($parent) -or
             $parent.Equals($current, $PathComparison)) {
             break
@@ -686,7 +718,7 @@ function Get-PhysicalPathState {
 
     $probe = $full
     while (-not (Test-Path -LiteralPath $probe)) {
-        $parent = Split-Path -Parent $probe
+        $parent = Get-FileSystemParentPath $probe
         if ([string]::IsNullOrWhiteSpace($parent) -or
             $parent.Equals($probe, $PathComparison)) {
             throw "$Label has no existing ancestor whose physical identity can be determined."
@@ -708,7 +740,7 @@ function Get-PhysicalPathState {
         }
         $namespaceRootIdentity = $identity
         $ancestorIdentities[$identity] = $current
-        $parent = Split-Path -Parent $current
+        $parent = Get-FileSystemParentPath $current
         if ([string]::IsNullOrWhiteSpace($parent) -or
             $parent.Equals($current, $PathComparison)) {
             break
@@ -812,7 +844,7 @@ function Get-AliasNormalizedFullPath {
         } catch [System.IO.DirectoryNotFoundException] {
         }
         $leaf = Split-Path -Leaf $probe
-        $parent = Split-Path -Parent $probe
+        $parent = Get-FileSystemParentPath $probe
         if ([string]::IsNullOrWhiteSpace($leaf) -or
             [string]::IsNullOrWhiteSpace($parent) -or
             $parent.Equals($probe, $PathComparison)) {
