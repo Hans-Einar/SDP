@@ -17,7 +17,7 @@ iterations:
       - SPS-001
 slices:
   SPS-001:
-    status: rework
+    status: review
     sprint: Sprint-001
     iteration: SPI-001
     release: REL-0.2.0
@@ -28,6 +28,7 @@ slices:
       - VER-SPS-001
       - VER-SPS-001-002
       - VER-SPS-001-003
+      - VER-SPS-001-004
     reviews:
       - REV-SPS-001-001
       - REV-SPS-001-002
@@ -76,6 +77,13 @@ verification:
     release: REL-0.2.0
     commit: 25fdf5cfe5a119192f512bf5322a15776e26836f
     supersedes: VER-SPS-001-002
+  VER-SPS-001-004:
+    status: passed
+    path: Verification/VER-SPS-001-004.md
+    slice: SPS-001
+    release: REL-0.2.0
+    commit: 1c650578109a361cf2f187da665eabdc4ac85e81
+    supersedes: VER-SPS-001-003
 migrations: {}
 releases:
   REL-0.2.0:

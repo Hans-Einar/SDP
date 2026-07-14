@@ -16,7 +16,7 @@ Status: active
 
 ### SPS-001 — Canonical installation contract v1
 
-Status: rework
+Status: review
 
 #### Goal
 
@@ -172,6 +172,13 @@ Third independent review `REV-SPS-001-003` closed H3-M8-R2 and M10-R2, but
 reproduced one high H1-R3 wrong-project mutation caused by normalization of a
 distinct extended-only trailing-space/dot path. The Slice returned to rework for
 this single bounded path-normalization finding.
+
+H1-R3 Worker commit `1c650578109a361cf2f187da665eabdc4ac85e81`
+rejects normalization-sensitive extended paths before prefix removal while
+preserving canonical extended drive, UNC and available 8.3 paths. Master
+verification `VER-SPS-001-004` passed 73 Python tests, the full PowerShell suite
+and all validator modes. The Slice returned to review for a new independent
+approval.
 
 #### Completion signal
 

@@ -2,7 +2,7 @@
 
 ## SPS-001
 
-Status: rework — third independent review found one high residual
+Status: review — H1-R3 verified; fresh approval required
 
 ### Master preparation
 
@@ -109,3 +109,11 @@ findings, but reproduced H1-R3: a normalization-sensitive `\\?\` project path
 could be redirected to a different ordinary directory and applied there. The
 next Worker is limited to raw extended-path equivalence/rejection and trailing-
 space/dot zero-mutation regressions.
+
+### Extended-path remediation
+
+Worker commit `1c650578109a361cf2f187da665eabdc4ac85e81`
+validates raw extended drive/UNC input before any prefix removal. Master
+verification `VER-SPS-001-004` passed the full matrix, including ProjectRoot,
+BackupRoot and source trailing-space/dot zero-mutation cases for drive and UNC,
+plus canonical extended and 8.3 positive cases.

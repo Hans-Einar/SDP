@@ -3,7 +3,7 @@
 Active Sprint: `Sprint-001`
 Active Iteration: `SPI-001`
 Active Slice: `SPS-001`
-Status: single high residual requires rework
+Status: H1-R3 verified; independent approval pending
 
 ## Entry points
 
@@ -23,10 +23,9 @@ fresh independent Reviewer.
 
 ## Next action
 
-Assign a fresh Worker only H1-R3 from `CodeReview/REV-SPS-001-003.md`: reject or
-identity-prove normalization-sensitive extended drive/UNC inputs and add project
-plus backup/source trailing-space/dot zero-mutation regressions while preserving
-canonical extended paths. Rerun the complete matrix, record exact verification
-and obtain another separate fresh approval. Do not open the draft PR or close
-the Slice with unresolved blocking, high or medium findings. Linux and Windows
-GitHub Actions evidence remains required before final closure.
+Assign a separate fresh Reviewer the complete diff, all changes-required reviews,
+H1-R3 Worker commit `1c650578109a361cf2f187da665eabdc4ac85e81` and
+`VER-SPS-001-004`. The Reviewer must reproduce the extended-only wrong-project
+case, canonical extended positives and prior closure evidence. Do not open the
+draft PR or close the Slice with unresolved blocking, high or medium findings.
+Linux and Windows GitHub Actions evidence remains required before final closure.
