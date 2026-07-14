@@ -173,9 +173,18 @@ function ConvertFrom-StrictYamlScalar {
     }
     if ($Text -cmatch '^"(?:[^"\\]|\\["\\/bfnrt]|\\u[0-9A-Fa-f]{4})*"$') {
         try {
+            # PowerShell 6+ coerces standalone RFC 3339 JSON strings to dates.
+            # A non-date prefix preserves JSON unescaping without changing the value.
+            $stringPrefix = 'sdp-yaml-string:'
+            $prefixedText = '"' + $stringPrefix + $Text.Substring(1)
+            $decoded = ConvertFrom-Json -InputObject $prefixedText
+            if (($decoded -isnot [string]) -or
+                (-not $decoded.StartsWith($stringPrefix, [System.StringComparison]::Ordinal))) {
+                throw "$Label must decode to a string."
+            }
             return [pscustomobject]@{
                 Type = 'string'
-                Value = [string](ConvertFrom-Json -InputObject $Text)
+                Value = $decoded.Substring($stringPrefix.Length)
             }
         } catch {
             throw "$Label contains an invalid double-quoted scalar."

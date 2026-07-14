@@ -468,10 +468,30 @@ try {
     ) (
         $actualDefaultFiles -join "`n"
     ) 'installer wrote files outside the canonical default inventory'
+    $emptyInstalledPath = Join-Path $empty 'SDP\Framework\installed-toolkit.manifest.yaml'
+    $quotedRfc3339Line = 'toolkitInstalledAt: "2026-07-14T01:02:03Z"'
+    $emptyInstalledContent = Get-Content -Raw -LiteralPath $emptyInstalledPath
+    $emptyInstalledContent = $emptyInstalledContent -replace `
+        '(?m)^toolkitInstalledAt: ".*"$', `
+        $quotedRfc3339Line
+    Write-Utf8File $emptyInstalledPath $emptyInstalledContent
+    $repeatPlanJson = Invoke-PlanJson $empty
+    Assert-PlanConforms $repeatPlanJson 'repeat installed-manifest round trip'
+    $repeatPlan = $repeatPlanJson | ConvertFrom-Json
+    Assert-True ([bool]$repeatPlan.canApply) 'generated installed manifest failed its strict YAML round trip'
+    Assert-Equal '0.2.0' ([string]$repeatPlan.installedToolkitVersion) 'repeat plan installed Toolkit version'
+    Assert-PlanReasonSemantics $repeatPlan 'repeat installed-manifest round trip'
+    $repeatInstalledAction = @($repeatPlan.actions | Where-Object {
+        $_.entryId -eq 'generated-installed-toolkit-manifest'
+    })
+    Assert-Equal 1 $repeatInstalledAction.Count 'repeat installed manifest action count'
+    Assert-Equal 'unchanged' ([string]$repeatInstalledAction[0].action) 'quoted RFC3339 scalar changed during strict YAML decode'
     $beforeRepeat = Get-TreeFingerprint $empty
     & $Installer -ProjectRoot $empty | Out-Host
     $afterRepeat = Get-TreeFingerprint $empty
     Assert-Equal $beforeRepeat $afterRepeat 'repeat install was not idempotent'
+    $afterRepeatInstalled = Get-Content -Raw -LiteralPath $emptyInstalledPath
+    Assert-True ($afterRepeatInstalled.Contains($quotedRfc3339Line)) 'quoted RFC3339 scalar did not remain exact'
 
     # Project-owned files survive; managed files require Force on same version.
     $projectNotes = Join-Path $empty 'SDP\RELEASE-NOTES.md'
