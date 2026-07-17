@@ -2,6 +2,7 @@
   "schemaVersion": "1.0",
   "contractId": "sdp-install",
   "toolkitVersion": "0.2.0",
+  "orderingPolicy": "migration-first-manifest-order-v1",
   "sources": {
     "repositoryRoot": "..",
     "pathStyle": "forward-slash-relative"

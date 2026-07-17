@@ -28,6 +28,48 @@ contiguous ordered sequences, top-level/action version agreement, the normative
 reason/action/mutation table, `canApply`/block agreement and exact
 entry/source/generator/destination/ownership agreement with the canonical
 installation manifest, including the two target-to-target AGENTS migrations.
+It also enforces `migration-first-manifest-order-v1`: at most one v1 migration
+forms the action prefix, ordinary entries follow exact manifest-array order,
+and each backup is adjacent to and identity-equal with its matching replacement
+or regeneration. Migration source hashes and destination preconditions are
+validated.
+
+Toolkit mode also validates the language-neutral installation package at
+`Toolkit/conformance/install-v1/`: scenario schema, unique portable IDs/paths,
+closed failure classes, promised category coverage, archive/no-`.git` inputs,
+and every committed plan structurally and semantically.
+
+## Installation conformance
+
+Validate the language-neutral package on any platform without invoking
+PowerShell:
+
+```powershell
+python Toolkit\conformance\install-v1\run_conformance.py --validate-only
+```
+
+When Windows PowerShell or PowerShell 7 is available, materialize every scenario,
+compare the reference `PlanJson` or stable fatal class to the committed
+authority, verify planning made zero mutations, apply applicable plans and check
+preservation assertions:
+
+```powershell
+python Toolkit\conformance\install-v1\run_conformance.py --powershell powershell
+python Toolkit\conformance\install-v1\run_conformance.py --powershell pwsh
+```
+
+Normal tests are comparison-only. They never derive expected output from the
+PowerShell implementation. A maintainer may explicitly produce reviewed
+candidate updates with:
+
+```powershell
+python Toolkit\conformance\install-v1\run_conformance.py `
+  --powershell powershell `
+  --write-candidates
+```
+
+This command changes contract authorities and must not run in CI. Review the
+complete expected-outcome diff before committing it.
 
 ## Consuming-project mode
 

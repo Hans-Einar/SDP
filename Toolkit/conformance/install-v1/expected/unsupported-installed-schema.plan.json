@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "1.0",
+  "manifestSchemaVersion": "1.0",
+  "orderingPolicy": "migration-first-manifest-order-v1",
+  "mode": "plan",
+  "toolkitVersion": "0.2.0",
+  "installedToolkitVersion": "9.0.0",
+  "options": {
+    "initializeProjectStructure": false,
+    "forceManagedFiles": false
+  },
+  "canApply": false,
+  "actions": [
+    {
+      "sequence": 1,
+      "action": "block",
+      "entryId": "generated-installed-toolkit-manifest",
+      "source": null,
+      "generator": null,
+      "targetSource": null,
+      "targetSourceSha256": null,
+      "destinationPrecondition": null,
+      "destination": "SDP/Framework/installed-toolkit.manifest.yaml",
+      "ownership": "toolkit-managed",
+      "reason": "unsupported-installed-schema",
+      "mutatesTarget": false,
+      "oldToolkitVersion": "9.0.0",
+      "newToolkitVersion": "0.2.0"
+    }
+  ]
+}

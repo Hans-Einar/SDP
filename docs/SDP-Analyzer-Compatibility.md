@@ -6,6 +6,8 @@ SDP-Analyzer should consume, but is not implemented by, this release.
 
 - root `SDP.manifest.yaml` release/capability facts;
 - `Toolkit/SDP-install.manifest.json` and its install/plan schemas;
+- `Toolkit/conformance/install-v1/scenarios.json` and committed normalized
+  plan/failure outcomes;
 - schema files and skill YAML front matter;
 - root release notes, release records and Toolkit traceability.
 
@@ -44,6 +46,20 @@ For a dirty checkout, a non-null `sourceCommit` is only the available `HEAD`
 baseline and must not be treated as proof that installed bytes equal that commit.
 Markdown analysis is limited to canonical structure and deterministic links; it
 must not infer substantive completion from arbitrary prose.
+
+Installation-plan analysis must honor the declared
+`migration-first-manifest-order-v1` policy rather than re-sorting actions:
+migration prefix first, ordinary entries in installation-manifest order,
+adjacent identity-equal backup/mutation pairs, then contiguous sequences.
+AGENTS migration hashes are over exact bytes. An applicable plan, a one-action
+blocked plan and a fatal pre-plan outcome are distinct. Fatal outcomes use the
+closed classes declared in the conformance index; localized PowerShell message
+text is not an interoperability surface.
+
+The conformance package is intentionally consumable with a standard JSON parser
+and without PowerShell. Analyzer compatibility tests should treat its committed
+expected outcomes as authorities and must never regenerate them implicitly from
+the implementation under test.
 
 All contract paths use normalized `/` separators. Paths beginning with `SDP/`
 resolve from the project root; other record paths resolve from the project

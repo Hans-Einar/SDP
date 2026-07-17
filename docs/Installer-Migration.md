@@ -19,6 +19,10 @@ Generate the portable, deterministic plan first:
 `-PlanJson` writes only JSON conforming to
 `Toolkit/schemas/SDP-install-plan.schema.json`. It makes zero target mutations.
 Use `-Preview` when human-readable mutation-free action output is preferred.
+The plan declares `orderingPolicy: "migration-first-manifest-order-v1"`:
+migration is first, ordinary entries retain installation-manifest array order,
+and every required backup is immediately adjacent to its matching replacement
+or regeneration. Sequence numbers are assigned last and begin at one.
 
 Apply the update:
 
@@ -86,8 +90,35 @@ is copied to `AGENTS-project.md`. If that target already exists, the prior
 content is preserved at project root as
 `AGENTS-project.migration-sha256-<content-hash>.md`. The JSON plan represents
 both operations as `migrate` with `targetSource: "AGENTS.md"` and the exact apply
-destination; apply does not invent a timestamped path. Existing project-owned
-files are never overwritten.
+destination. The hash is lowercase SHA-256 of the exact source bytes, without
+text decoding or line-ending normalization, and the action records it as
+`targetSourceSha256` with `destinationPrecondition: "absent"`. Apply does not
+invent a timestamped path. Existing project-owned files are never overwritten.
+
+For the deterministic conflict destination:
+
+- absent means one migration action;
+- an ordinary file with identical exact bytes means preservation is already
+  complete and no migration action is emitted;
+- an ordinary file with different bytes is fatal
+  `agents-migration-destination-content-mismatch`;
+- a directory, link, symlink, reparse point or unsupported object is fatal
+  `agents-migration-destination-unsupported-object`.
+
+Immediately before migration apply, the installer rechecks the exact source
+hash and absent destination. Source drift is fatal
+`agents-migration-source-changed`; a destination that appeared or changed is
+fatal `agents-migration-destination-changed`. Exclusive creation prevents a
+race from overwriting project-owned content. Migration-first ordering ensures
+these checks and the preservation write happen before ordinary installation
+mutations. If a later ordinary action fails, an already completed preservation
+file can remain; the installer does not promise full transactional rollback.
+
+Supported target-derived conditions such as an unsupported installed/project
+schema or downgrade return a valid blocked plan (`canApply: false`) with exactly
+one block action at sequence 1. Malformed installation contracts and the fatal
+AGENTS filesystem cases above emit no plan and use the stable machine-readable
+failure classes documented in `Installation-Contract.md`.
 
 An independently serialized installed manifest is not refreshed merely because
 its mapping order or YAML quoting differs. The installer compares declared facts
@@ -99,3 +130,15 @@ case installed facts use `sourceCommit: null`; the installer does not infer a
 commit from the archive name. For a Git checkout, a non-null `sourceCommit` is
 the available `HEAD` baseline. A dirty checkout can therefore install bytes that
 differ from that commit; the field is not a content attestation.
+
+The portable contract fixtures are in `Toolkit/conformance/install-v1/`.
+Independent clients consume `scenarios.json` and the checked-in outcomes without
+executing PowerShell. Maintainers can run the reference comparison with:
+
+```powershell
+python Toolkit\conformance\install-v1\run_conformance.py --powershell powershell
+```
+
+Expected outcomes are never regenerated during normal tests. Candidate updates
+require the explicit `--write-candidates` option and review of the resulting
+contract diff.

@@ -53,6 +53,35 @@ before tests; the successful baseline used the active Windows PowerShell host.
 Worker implementation is committed at
 `ce9278b8b78f9c320a65799aefd13101582d1eb8`.
 
+#### Revision 1 downstream-conformance implementation
+
+- Added the required
+  `orderingPolicy: migration-first-manifest-order-v1` authority to the
+  installation manifest and plan. PowerShell and Python now enforce migration
+  prefix, exact manifest-array entry order, adjacent identity-equal
+  backup/mutation pairs, final contiguous sequence assignment and the canonical
+  single-action blocked shape.
+- Completed AGENTS conflict preservation with exact-byte SHA-256,
+  `targetSourceSha256`, `destinationPrecondition: absent`, identical-target
+  idempotency, closed fatal failure classes and immediate pre-apply source and
+  destination race checks. Migration uses exclusive creation before ordinary
+  entry mutations and never overwrites project-owned content.
+- Added `Toolkit/conformance/install-v1/`, a schema-validated language-neutral
+  package with 17 portable scenarios and committed authoritative plan/failure
+  outcomes. Its Python harness validates without PowerShell, compares the
+  PowerShell reference under Windows PowerShell 5.1 or PowerShell 7, checks
+  planning immutability and apply assertions, and writes new candidates only
+  through an explicit maintainer flag that CI never uses.
+- Expanded PowerShell and Python regression coverage, integrated Linux
+  conformance validation and Windows reference comparison in CI, and updated
+  the public installation, migration, validation, Toolkit, example, Analyzer
+  and Unreleased release-note surfaces.
+- Worker validation passed Toolkit mode, 80 Python tests, full Windows
+  PowerShell 5.1 and PowerShell 7.6.3 installer suites, and all 17 conformance
+  scenarios against both PowerShell hosts. The host could not create file
+  symlinks, so the optional symlink cases reported their documented skip while
+  directory/reparse fail-closed coverage passed.
+
 ### Verification and review
 
 Master verification is recorded in `Verification/VER-SPS-001.md` and passed on

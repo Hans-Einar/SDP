@@ -201,6 +201,10 @@ $PlanReasonRules = @{
 function Assert-PlanReasonSemantics {
     param($Plan, [string]$Label)
 
+    Assert-Equal `
+        'migration-first-manifest-order-v1' `
+        ([string]$Plan.orderingPolicy) `
+        "$Label ordering policy"
     $actions = @($Plan.actions)
     for ($index = 0; $index -lt $actions.Count; $index++) {
         $action = $actions[$index]
@@ -216,6 +220,95 @@ function Assert-PlanReasonSemantics {
             Assert-Equal ([string]$Plan.installedToolkitVersion) ([string]$action.oldToolkitVersion) "$Label old version"
         }
     }
+}
+
+function Assert-CanonicalPlanOrdering {
+    param($Plan, $Contract, [string]$Label)
+
+    $manifestIndex = @{}
+    for ($index = 0; $index -lt @($Contract.entries).Count; $index++) {
+        $manifestIndex[[string]$Contract.entries[$index].id] = $index
+    }
+    $ordinaryStarted = $false
+    $migrationCount = 0
+    $lastManifestIndex = -1
+    $actions = @($Plan.actions)
+    for ($index = 0; $index -lt $actions.Count; $index++) {
+        $action = $actions[$index]
+        if ([string]$action.action -ceq 'migrate') {
+            Assert-True (-not $ordinaryStarted) "$Label migration followed ordinary action"
+            $migrationCount++
+            Assert-True ($migrationCount -le 1) "$Label emitted multiple v1 migrations"
+            continue
+        }
+        if ([string]$action.action -ceq 'block') { continue }
+        $ordinaryStarted = $true
+        $currentManifestIndex = [int]$manifestIndex[[string]$action.entryId]
+        Assert-True `
+            ($currentManifestIndex -ge $lastManifestIndex) `
+            "$Label privately sorted ordinary entries"
+        $lastManifestIndex = $currentManifestIndex
+        if ([string]$action.action -ceq 'backup') {
+            Assert-True (($index + 1) -lt $actions.Count) "$Label backup has no mutation"
+            $mutation = $actions[$index + 1]
+            Assert-Equal ([string]$action.entryId) ([string]$mutation.entryId) "$Label backup entry"
+            Assert-Contains @('replace', 'generate') ([string]$mutation.action) "$Label backup mutation"
+            foreach ($field in @(
+                'source', 'generator', 'targetSource', 'targetSourceSha256',
+                'destinationPrecondition', 'destination', 'ownership',
+                'oldToolkitVersion', 'newToolkitVersion'
+            )) {
+                Assert-Equal $action.$field $mutation.$field "$Label backup identity $field"
+            }
+        }
+    }
+}
+
+function Assert-InstallFailureClass {
+    param($ErrorRecord, [string]$Expected, [string]$Label)
+
+    $actual = [string]$ErrorRecord.Exception.Data['sdpFailureClass']
+    Assert-Equal $Expected $actual "$Label failure class"
+}
+
+function Invoke-InstallerWithBeforeApplyMutation {
+    param(
+        [string]$Target,
+        [string]$MutationPath,
+        [byte[]]$MutationBytes
+    )
+
+    $loopMatches = @(
+        Select-String `
+            -LiteralPath $Installer `
+            -SimpleMatch '    foreach ($action in $Plan.actions) {'
+    )
+    Assert-True ($loopMatches.Count -ge 2) 'could not locate installer apply loop'
+    $applyLoopLine = [int]$loopMatches[$loopMatches.Count - 1].LineNumber
+    $global:SdpInstallerRaceMutationPath = $MutationPath
+    $global:SdpInstallerRaceMutationBytes = $MutationBytes
+    $global:SdpInstallerRaceTriggered = $false
+    $breakpoint = Set-PSBreakpoint -Script $Installer -Line $applyLoopLine -Action {
+        if (-not $global:SdpInstallerRaceTriggered) {
+            [System.IO.File]::WriteAllBytes(
+                $global:SdpInstallerRaceMutationPath,
+                $global:SdpInstallerRaceMutationBytes
+            )
+            $global:SdpInstallerRaceTriggered = $true
+        }
+    }
+    $caught = $null
+    try {
+        & $Installer -ProjectRoot $Target | Out-Null
+    } catch {
+        $caught = $_
+    } finally {
+        Remove-PSBreakpoint -Breakpoint $breakpoint -ErrorAction SilentlyContinue
+        Remove-Variable -Name SdpInstallerRaceMutationPath -Scope Global -ErrorAction SilentlyContinue
+        Remove-Variable -Name SdpInstallerRaceMutationBytes -Scope Global -ErrorAction SilentlyContinue
+        Remove-Variable -Name SdpInstallerRaceTriggered -Scope Global -ErrorAction SilentlyContinue
+    }
+    return $caught
 }
 
 function Assert-ManifestPreflightBlock {
@@ -365,6 +458,10 @@ try {
     $contract = Get-Content -Raw -LiteralPath $InstallManifestPath | ConvertFrom-Json
     Assert-Equal '1.0' ([string]$contract.schemaVersion) 'installation contract schema'
     Assert-Equal '0.2.0' ([string]$contract.toolkitVersion) 'installation contract Toolkit version'
+    Assert-Equal `
+        'migration-first-manifest-order-v1' `
+        ([string]$contract.orderingPolicy) `
+        'installation contract ordering policy'
     $entryIds = @{}
     $destinations = @{}
     foreach ($entry in @($contract.entries)) {
@@ -413,6 +510,7 @@ try {
     $defaultPlan = $defaultPlanJson | ConvertFrom-Json
     Assert-True ([bool]$defaultPlan.canApply) 'default plan unexpectedly blocked'
     Assert-PlanReasonSemantics $defaultPlan 'default plan'
+    Assert-CanonicalPlanOrdering $defaultPlan $contract 'default plan'
     $defaultActions = @($defaultPlan.actions)
     Assert-True ($defaultActions.Count -gt 0) 'default plan has no actions'
     for ($index = 0; $index -lt $defaultActions.Count; $index++) {
@@ -424,15 +522,29 @@ try {
         $hasGenerator = -not [string]::IsNullOrWhiteSpace([string]$action.generator)
         Assert-True ($hasSource -xor $hasGenerator) "plan action $($action.entryId) lacks a single source/generator"
         Assert-True ($null -eq $action.targetSource) "plan action $($action.entryId) unexpectedly has targetSource"
+        Assert-True ($null -eq $action.targetSourceSha256) "plan action $($action.entryId) unexpectedly has targetSourceSha256"
+        Assert-True ($null -eq $action.destinationPrecondition) "plan action $($action.entryId) unexpectedly has destinationPrecondition"
     }
     Assert-True (
         @($defaultActions | Where-Object { $_.entryId -eq 'project-sprints-readme' }).Count -eq 0
     ) 'default plan selected initialize-only content'
+    $frameworkActionIndex = [Array]::IndexOf(
+        [string[]]@($defaultActions | ForEach-Object { [string]$_.entryId }),
+        'managed-framework-readme'
+    )
+    $fixTemplateActionIndex = [Array]::IndexOf(
+        [string[]]@($defaultActions | ForEach-Object { [string]$_.entryId }),
+        'managed-fix-record-template'
+    )
+    Assert-True `
+        ($frameworkActionIndex -lt $fixTemplateActionIndex) `
+        'default plan sorted entry IDs instead of following manifest order'
 
     $initializePlanJson = Invoke-PlanJson $planOnly -Initialize
     Assert-PlanConforms $initializePlanJson 'initialize'
     $initializePlan = $initializePlanJson | ConvertFrom-Json
     Assert-PlanReasonSemantics $initializePlan 'initialize plan'
+    Assert-CanonicalPlanOrdering $initializePlan $contract 'initialize plan'
     Assert-True (
         @($initializePlan.actions | Where-Object { $_.entryId -eq 'project-sprints-readme' }).Count -eq 1
     ) 'initialize plan omitted neutral structure content'
@@ -492,6 +604,29 @@ try {
     Assert-Equal $beforeRepeat $afterRepeat 'repeat install was not idempotent'
     $afterRepeatInstalled = Get-Content -Raw -LiteralPath $emptyInstalledPath
     Assert-True ($afterRepeatInstalled.Contains($quotedRfc3339Line)) 'quoted RFC3339 scalar did not remain exact'
+    $generatedRefreshContent = $afterRepeatInstalled -replace `
+        '(?m)^sourceCommit: .+$', `
+        'sourceCommit: null'
+    if ($generatedRefreshContent -ceq $afterRepeatInstalled) {
+        $generatedRefreshContent = $afterRepeatInstalled -replace `
+            '(?m)^sourceCommit: null$', `
+            'sourceCommit: "different-source-identity"'
+    }
+    Write-Utf8File $emptyInstalledPath $generatedRefreshContent
+    $generatedRefreshPlan = (Invoke-PlanJson $empty) | ConvertFrom-Json
+    Assert-CanonicalPlanOrdering `
+        $generatedRefreshPlan `
+        $contract `
+        'generated refresh plan'
+    $generatedRefreshActions = @(
+        $generatedRefreshPlan.actions | Where-Object {
+            [string]$_.entryId -ceq 'generated-installed-toolkit-manifest'
+        }
+    )
+    Assert-Equal 2 $generatedRefreshActions.Count 'generated refresh action count'
+    Assert-Equal 'backup' ([string]$generatedRefreshActions[0].action) 'generated refresh backup adjacency'
+    Assert-Equal 'generate' ([string]$generatedRefreshActions[1].action) 'generated refresh mutation adjacency'
+    Write-Utf8File $emptyInstalledPath $afterRepeatInstalled
 
     # Project-owned files survive; managed files require Force on same version.
     $projectNotes = Join-Path $empty 'SDP\RELEASE-NOTES.md'
@@ -532,6 +667,16 @@ migration:
     Assert-Equal 'LOCAL MANAGED EDIT' (Get-Content -Raw -LiteralPath $managedSkill) 'managed edit changed without Force'
 
     $backup = Join-Path $TestRoot 'explicit-backup'
+    $forcePlan = (Invoke-PlanJson $empty -Force -BackupRoot $backup) | ConvertFrom-Json
+    Assert-CanonicalPlanOrdering $forcePlan $contract 'force plan'
+    $forceSkillActions = @(
+        $forcePlan.actions | Where-Object {
+            [string]$_.entryId -ceq 'managed-skill-sdp-release'
+        }
+    )
+    Assert-Equal 2 $forceSkillActions.Count 'forced managed refresh action count'
+    Assert-Equal 'backup' ([string]$forceSkillActions[0].action) 'forced managed backup adjacency'
+    Assert-Equal 'replace' ([string]$forceSkillActions[1].action) 'forced managed mutation adjacency'
     & $Installer -ProjectRoot $empty -ForceManagedFiles -BackupRoot $backup | Out-Host
     Assert-True ((Get-Content -Raw -LiteralPath $managedSkill) -match 'skillId: sdp-release') 'Force did not restore managed skill'
     Assert-True (Test-Path (Join-Path $backup '.codex\skills\sdp-release\SKILL.md')) 'managed backup missing'
@@ -546,19 +691,34 @@ migration:
     Assert-PlanConforms $legacyPlanJson 'AGENTS migration'
     $legacyPlan = $legacyPlanJson | ConvertFrom-Json
     Assert-PlanReasonSemantics $legacyPlan 'AGENTS migration'
+    Assert-CanonicalPlanOrdering $legacyPlan $contract 'AGENTS migration'
     $legacyMigration = @($legacyPlan.actions | Where-Object { $_.reason -eq 'migrate-existing-agents' })
     Assert-Equal 1 $legacyMigration.Count 'AGENTS migration action count'
     Assert-Equal 'migrate' ([string]$legacyMigration[0].action) 'AGENTS migration action'
     Assert-Equal 'AGENTS.md' ([string]$legacyMigration[0].targetSource) 'AGENTS migration targetSource'
+    Assert-True `
+        ([string]$legacyMigration[0].targetSourceSha256 -cmatch '^[0-9a-f]{64}$') `
+        'AGENTS migration exact-byte source hash'
+    Assert-Equal 'absent' ([string]$legacyMigration[0].destinationPrecondition) 'AGENTS migration destination precondition'
     Assert-Equal 'AGENTS-project.md' ([string]$legacyMigration[0].destination) 'AGENTS migration destination'
+    Assert-Equal 'migrate' ([string]$legacyPlan.actions[0].action) 'AGENTS migration precedence'
     & $Installer -ProjectRoot $legacy | Out-Host
     Assert-Equal 'OLD LOCAL AGENTS' (Get-Content -Raw -LiteralPath (Join-Path $legacy 'AGENTS-project.md')) 'old AGENTS not migrated'
     Assert-Equal 'LEGACY REQUIREMENTS' (Get-Content -Raw -LiteralPath (Join-Path $legacy 'SDP\03--Requirements\requirements.md')) 'legacy document overwritten'
 
     # If AGENTS-project.md already exists, migration preserves both rule sets.
     $legacyConflict = New-FixtureProject 'legacy-agents-conflict'
-    Write-Utf8File (Join-Path $legacyConflict 'AGENTS.md') 'OLD CONFLICTING AGENTS'
+    $legacyConflictBytes = [System.Text.Encoding]::UTF8.GetBytes(
+        "OLD CONFLICTING AGENTS`r`nEXACT BYTES`n"
+    )
+    [System.IO.File]::WriteAllBytes(
+        (Join-Path $legacyConflict 'AGENTS.md'),
+        $legacyConflictBytes
+    )
     Write-Utf8File (Join-Path $legacyConflict 'AGENTS-project.md') 'EXISTING PROJECT AGENTS'
+    $legacyConflictHash = (
+        Get-FileHash -Algorithm SHA256 -LiteralPath (Join-Path $legacyConflict 'AGENTS.md')
+    ).Hash.ToLowerInvariant()
     $beforeConflictPlan = Get-TreeFingerprint $legacyConflict
     $conflictPlanJson = Invoke-PlanJson $legacyConflict
     Assert-Equal $conflictPlanJson (Invoke-PlanJson $legacyConflict) 'AGENTS conflict plan was not deterministic'
@@ -566,6 +726,7 @@ migration:
     Assert-Equal $beforeConflictPlan (Get-TreeFingerprint $legacyConflict) 'AGENTS migration plan mutated target'
     $conflictPlan = $conflictPlanJson | ConvertFrom-Json
     Assert-PlanReasonSemantics $conflictPlan 'AGENTS migration conflict'
+    Assert-CanonicalPlanOrdering $conflictPlan $contract 'AGENTS migration conflict'
     $conflictMigrations = @(
         $conflictPlan.actions | Where-Object { $_.reason -eq 'preserve-existing-agents-conflict' }
     )
@@ -574,21 +735,233 @@ migration:
     ).Count 'AGENTS conflict plan preservation action count'
     Assert-Equal 'migrate' ([string]$conflictMigrations[0].action) 'AGENTS conflict action'
     Assert-Equal 'AGENTS.md' ([string]$conflictMigrations[0].targetSource) 'AGENTS conflict targetSource'
+    Assert-True `
+        ([string]$conflictMigrations[0].targetSourceSha256 -cmatch '^[0-9a-f]{64}$') `
+        'AGENTS conflict exact-byte source hash'
+    Assert-Equal `
+        $legacyConflictHash `
+        ([string]$conflictMigrations[0].targetSourceSha256) `
+        'AGENTS conflict hash normalized different line endings'
+    Assert-Equal 'absent' ([string]$conflictMigrations[0].destinationPrecondition) 'AGENTS conflict destination precondition'
+    Assert-Equal 'migrate' ([string]$conflictPlan.actions[0].action) 'AGENTS conflict migration precedence'
     Assert-True (
         [string]$conflictMigrations[0].destination -cmatch '^AGENTS-project\.migration-sha256-[0-9a-f]{64}\.md$'
     ) 'AGENTS conflict deterministic destination'
+    Assert-Equal `
+        "AGENTS-project.migration-sha256-$legacyConflictHash.md" `
+        ([string]$conflictMigrations[0].destination) `
+        'AGENTS conflict exact-byte deterministic destination'
     $plannedMigrationRelative = [string]$conflictMigrations[0].destination
     & $Installer -ProjectRoot $legacyConflict | Out-Host
     Assert-Equal 'EXISTING PROJECT AGENTS' (Get-Content -Raw -LiteralPath (Join-Path $legacyConflict 'AGENTS-project.md')) 'existing AGENTS-project overwritten during migration'
     $migrationFiles = @(Get-ChildItem -LiteralPath $legacyConflict -File -Filter 'AGENTS-project.migration-sha256-*.md')
     Assert-Equal 1 $migrationFiles.Count 'AGENTS conflict migration file count'
     Assert-Equal (Join-Path $legacyConflict $plannedMigrationRelative) $migrationFiles[0].FullName 'AGENTS apply differed from planned migration destination'
-    Assert-Equal 'OLD CONFLICTING AGENTS' (Get-Content -Raw -LiteralPath $migrationFiles[0].FullName) 'AGENTS conflict content not preserved'
+    Assert-Equal `
+        ([System.Convert]::ToBase64String($legacyConflictBytes)) `
+        ([System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes($migrationFiles[0].FullName))) `
+        'AGENTS conflict bytes not preserved'
     Assert-Equal (
         (Get-Content -Raw -LiteralPath (Join-Path $RepositoryRoot 'Toolkit\payload\project-root\AGENTS.md.template'))
     ) (
         Get-Content -Raw -LiteralPath (Join-Path $legacyConflict 'AGENTS.md')
     ) 'managed AGENTS not installed after conflict migration'
+    $postPreservationPlan = (Invoke-PlanJson $legacyConflict) | ConvertFrom-Json
+    Assert-Equal 0 @(
+        $postPreservationPlan.actions | Where-Object {
+            [string]$_.action -ceq 'migrate'
+        }
+    ).Count 'repeat operation emitted another AGENTS migration'
+    Assert-Equal `
+        ([System.Convert]::ToBase64String($legacyConflictBytes)) `
+        ([System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes($migrationFiles[0].FullName))) `
+        'repeat operation changed project-owned preservation bytes'
+
+    # An existing deterministic destination is idempotent only when it is a
+    # regular file with byte-for-byte identical content. Hash equality alone is
+    # not treated as content equality, and unsupported objects fail closed.
+    $alreadyPreserved = New-FixtureProject 'legacy-agents-already-preserved'
+    [System.IO.File]::WriteAllBytes(
+        (Join-Path $alreadyPreserved 'AGENTS.md'),
+        $legacyConflictBytes
+    )
+    Write-Utf8File (Join-Path $alreadyPreserved 'AGENTS-project.md') 'PROJECT RULES'
+    $alreadyPreservedDestination = Join-Path `
+        $alreadyPreserved `
+        "AGENTS-project.migration-sha256-$legacyConflictHash.md"
+    [System.IO.File]::WriteAllBytes(
+        $alreadyPreservedDestination,
+        $legacyConflictBytes
+    )
+    $alreadyPreservedBefore = Get-TreeFingerprint $alreadyPreserved
+    $alreadyPreservedPlan = (Invoke-PlanJson $alreadyPreserved) | ConvertFrom-Json
+    Assert-Equal `
+        $alreadyPreservedBefore `
+        (Get-TreeFingerprint $alreadyPreserved) `
+        'already-preserved planning mutated target'
+    Assert-Equal 0 @(
+        $alreadyPreservedPlan.actions | Where-Object {
+            [string]$_.action -ceq 'migrate'
+        }
+    ).Count 'identical preservation destination emitted another migration'
+    Assert-CanonicalPlanOrdering `
+        $alreadyPreservedPlan `
+        $contract `
+        'already-preserved plan'
+
+    $differentPreservation = New-FixtureProject 'legacy-agents-different-preservation'
+    [System.IO.File]::WriteAllBytes(
+        (Join-Path $differentPreservation 'AGENTS.md'),
+        $legacyConflictBytes
+    )
+    Write-Utf8File (Join-Path $differentPreservation 'AGENTS-project.md') 'PROJECT RULES'
+    $differentDestination = Join-Path `
+        $differentPreservation `
+        "AGENTS-project.migration-sha256-$legacyConflictHash.md"
+    Write-Utf8File $differentDestination 'PROJECT-OWNED DIFFERENT BYTES'
+    $differentBefore = Get-TreeFingerprint $differentPreservation
+    $differentError = $null
+    try { Invoke-PlanJson $differentPreservation | Out-Null } catch {
+        $differentError = $_
+    }
+    Assert-True ($null -ne $differentError) 'different preservation destination did not fail'
+    Assert-InstallFailureClass `
+        $differentError `
+        'agents-migration-destination-content-mismatch' `
+        'different preservation destination'
+    Assert-Equal `
+        $differentBefore `
+        (Get-TreeFingerprint $differentPreservation) `
+        'different preservation failure mutated target'
+    Assert-Equal `
+        'PROJECT-OWNED DIFFERENT BYTES' `
+        (Get-Content -Raw -LiteralPath $differentDestination) `
+        'different project-owned preservation destination was overwritten'
+
+    $directoryPreservation = New-FixtureProject 'legacy-agents-directory-preservation'
+    [System.IO.File]::WriteAllBytes(
+        (Join-Path $directoryPreservation 'AGENTS.md'),
+        $legacyConflictBytes
+    )
+    Write-Utf8File (Join-Path $directoryPreservation 'AGENTS-project.md') 'PROJECT RULES'
+    $directoryDestination = Join-Path `
+        $directoryPreservation `
+        "AGENTS-project.migration-sha256-$legacyConflictHash.md"
+    New-Item -ItemType Directory -Path $directoryDestination | Out-Null
+    Write-Utf8File (Join-Path $directoryDestination 'project-marker.txt') 'UNCHANGED'
+    $directoryBefore = Get-TreeFingerprint $directoryPreservation
+    $directoryError = $null
+    try { Invoke-PlanJson $directoryPreservation | Out-Null } catch {
+        $directoryError = $_
+    }
+    Assert-True ($null -ne $directoryError) 'directory preservation destination did not fail'
+    Assert-InstallFailureClass `
+        $directoryError `
+        'agents-migration-destination-unsupported-object' `
+        'directory preservation destination'
+    Assert-Equal `
+        $directoryBefore `
+        (Get-TreeFingerprint $directoryPreservation) `
+        'directory preservation failure mutated target'
+
+    $linkPreservation = New-FixtureProject 'legacy-agents-link-preservation'
+    [System.IO.File]::WriteAllBytes(
+        (Join-Path $linkPreservation 'AGENTS.md'),
+        $legacyConflictBytes
+    )
+    Write-Utf8File (Join-Path $linkPreservation 'AGENTS-project.md') 'PROJECT RULES'
+    $linkTarget = Join-Path $linkPreservation 'project-owned-target.md'
+    Write-Utf8File $linkTarget 'UNCHANGED LINK TARGET'
+    $linkDestination = Join-Path `
+        $linkPreservation `
+        "AGENTS-project.migration-sha256-$legacyConflictHash.md"
+    if (Try-NewFileSymbolicLink $linkDestination $linkTarget) {
+        try {
+            $linkError = $null
+            try { Invoke-PlanJson $linkPreservation | Out-Null } catch {
+                $linkError = $_
+            }
+            Assert-True ($null -ne $linkError) 'link preservation destination did not fail'
+            Assert-InstallFailureClass `
+                $linkError `
+                'agents-migration-destination-unsupported-object' `
+                'link preservation destination'
+            Assert-Equal `
+                'UNCHANGED LINK TARGET' `
+                (Get-Content -Raw -LiteralPath $linkTarget) `
+                'link preservation target was overwritten'
+        } finally {
+            [System.IO.File]::Delete($linkDestination)
+        }
+    } else {
+        Write-Host '[SKIPPED] AGENTS preservation file-symlink fixture is unavailable.'
+    }
+
+    # Deterministic debugger breakpoints inject plan/apply races at the apply
+    # loop boundary. Migration-first ordering discovers both races before any
+    # ordinary manifest entry can mutate the project.
+    $destinationRace = New-FixtureProject 'legacy-agents-destination-race'
+    [System.IO.File]::WriteAllBytes(
+        (Join-Path $destinationRace 'AGENTS.md'),
+        $legacyConflictBytes
+    )
+    Write-Utf8File (Join-Path $destinationRace 'AGENTS-project.md') 'PROJECT RULES'
+    $destinationRacePath = Join-Path `
+        $destinationRace `
+        "AGENTS-project.migration-sha256-$legacyConflictHash.md"
+    $destinationRaceBytes = [System.Text.Encoding]::UTF8.GetBytes('RACING PROJECT BYTES')
+    $destinationRaceError = Invoke-InstallerWithBeforeApplyMutation `
+        $destinationRace `
+        $destinationRacePath `
+        $destinationRaceBytes
+    Assert-True ($null -ne $destinationRaceError) 'destination race did not fail'
+    Assert-InstallFailureClass `
+        $destinationRaceError `
+        'agents-migration-destination-changed' `
+        'destination race'
+    Assert-Equal `
+        ([System.Convert]::ToBase64String($destinationRaceBytes)) `
+        ([System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes($destinationRacePath))) `
+        'destination race content was overwritten'
+    Assert-Equal `
+        ([System.Convert]::ToBase64String($legacyConflictBytes)) `
+        ([System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes(
+            (Join-Path $destinationRace 'AGENTS.md')
+        ))) `
+        'destination race reached ordinary managed AGENTS mutation'
+    Assert-True `
+        (-not (Test-Path -LiteralPath (Join-Path $destinationRace 'SDP'))) `
+        'destination race reached unrelated entry mutations'
+
+    $sourceRace = New-FixtureProject 'legacy-agents-source-race'
+    [System.IO.File]::WriteAllBytes(
+        (Join-Path $sourceRace 'AGENTS.md'),
+        $legacyConflictBytes
+    )
+    Write-Utf8File (Join-Path $sourceRace 'AGENTS-project.md') 'PROJECT RULES'
+    $sourceRacePath = Join-Path $sourceRace 'AGENTS.md'
+    $sourceRaceBytes = [System.Text.Encoding]::UTF8.GetBytes('CHANGED AFTER PLAN')
+    $sourceRaceError = Invoke-InstallerWithBeforeApplyMutation `
+        $sourceRace `
+        $sourceRacePath `
+        $sourceRaceBytes
+    Assert-True ($null -ne $sourceRaceError) 'source race did not fail'
+    Assert-InstallFailureClass `
+        $sourceRaceError `
+        'agents-migration-source-changed' `
+        'source race'
+    Assert-Equal `
+        ([System.Convert]::ToBase64String($sourceRaceBytes)) `
+        ([System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes($sourceRacePath))) `
+        'source race bytes changed after rejection'
+    Assert-True `
+        (-not (Test-Path -LiteralPath (
+            Join-Path $sourceRace "AGENTS-project.migration-sha256-$legacyConflictHash.md"
+        ))) `
+        'source race created the planned preservation destination'
+    Assert-True `
+        (-not (Test-Path -LiteralPath (Join-Path $sourceRace 'SDP'))) `
+        'source race reached unrelated entry mutations'
 
     # gh-sdp-like bootstrap: preserve project state and install only neutral structure.
     $bootstrap = New-FixtureProject 'gh-sdp-bootstrap'
@@ -1425,6 +1798,30 @@ Release-Date: unreleased
 
     # Closed-world PowerShell validation covers the complete v1 object shapes,
     # array minima, nested policies, ownership source classes and governing pairs.
+    try {
+        $invalidOrderingContract = $archiveManifestOriginal | ConvertFrom-Json
+        $invalidOrderingContract.orderingPolicy = 'private-path-sort-v1'
+        Write-Utf8File `
+            $archiveManifestPath `
+            ($invalidOrderingContract | ConvertTo-Json -Depth 60)
+        $invalidOrderingTarget = New-FixtureProject 'contract-invalid-ordering-policy'
+        $invalidOrderingError = $null
+        try {
+            Invoke-PlanJson `
+                $invalidOrderingTarget `
+                -InstallerPath $archiveInstaller | Out-Null
+        } catch {
+            $invalidOrderingError = $_
+        }
+        Assert-True ($null -ne $invalidOrderingError) 'invalid ordering policy passed preflight'
+        Assert-InstallFailureClass `
+            $invalidOrderingError `
+            'install-manifest-invalid' `
+            'invalid ordering policy'
+    } finally {
+        Write-Utf8File $archiveManifestPath $archiveManifestOriginal
+    }
+
     $invalidContract = $archiveManifestOriginal | ConvertFrom-Json
     $invalidContract | Add-Member -NotePropertyName unexpectedRoot -NotePropertyValue $true
     Assert-InvalidArchiveContract 'contract-unknown-root' $invalidContract $archiveManifestPath $archiveManifestOriginal $archiveInstaller

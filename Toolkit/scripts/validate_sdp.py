@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import argparse
+import base64
+import binascii
 import json
 import re
 import subprocess
@@ -64,6 +66,29 @@ RELATION_PATH_FIELDS = (
     "manifest",
     "releaseRecord",
     "migrationRecord",
+)
+
+CANONICAL_INSTALL_ORDERING_POLICY = "migration-first-manifest-order-v1"
+INSTALL_FAILURE_CLASSES = frozenset(
+    {
+        "install-manifest-invalid",
+        "agents-migration-destination-content-mismatch",
+        "agents-migration-destination-unsupported-object",
+        "agents-migration-source-changed",
+        "agents-migration-destination-changed",
+    }
+)
+REQUIRED_INSTALL_CONFORMANCE_CATEGORIES = frozenset(
+    {
+        "empty",
+        "legacy",
+        "upgrade",
+        "force",
+        "initialize",
+        "repeat-initialize",
+        "archive",
+        "error",
+    }
 )
 
 PLAN_REASON_CONDITIONS: dict[str, tuple[str, bool]] = {
@@ -195,6 +220,7 @@ def validate_install_plan(
         )
 
     entries_by_id: dict[str, dict[str, Any]] = {}
+    manifest_index_by_id: dict[str, int] = {}
     if isinstance(installation_contract, dict):
         contract_schema_version = installation_contract.get("schemaVersion")
         if plan.get("manifestSchemaVersion") != contract_schema_version:
@@ -204,6 +230,9 @@ def validate_install_plan(
         contract_toolkit_version = installation_contract.get("toolkitVersion")
         if plan.get("toolkitVersion") != contract_toolkit_version:
             errors.append(f"{label}.toolkitVersion differs from the installation contract")
+        contract_ordering_policy = installation_contract.get("orderingPolicy")
+        if plan.get("orderingPolicy") != contract_ordering_policy:
+            errors.append(f"{label}.orderingPolicy differs from the installation contract")
         contract_entries = installation_contract.get("entries")
         if isinstance(contract_entries, list):
             entries_by_id = {
@@ -211,10 +240,24 @@ def validate_install_plan(
                 for entry in contract_entries
                 if isinstance(entry, dict) and isinstance(entry.get("id"), str)
             }
+            manifest_index_by_id = {
+                entry["id"]: index
+                for index, entry in enumerate(contract_entries)
+                if isinstance(entry, dict) and isinstance(entry.get("id"), str)
+            }
+
+    if plan.get("orderingPolicy") != CANONICAL_INSTALL_ORDERING_POLICY:
+        errors.append(
+            f"{label}.orderingPolicy must be {CANONICAL_INSTALL_ORDERING_POLICY!r}"
+        )
 
     toolkit_version = plan.get("toolkitVersion")
     installed_version = plan.get("installedToolkitVersion")
     block_count = 0
+    migration_count = 0
+    ordinary_actions_started = False
+    last_manifest_index = -1
+    ordinary_action_counts: dict[str, int] = {}
     for index, action in enumerate(actions):
         action_label = f"{label}.actions[{index}]"
         if not isinstance(action, dict):
@@ -259,11 +302,33 @@ def validate_install_plan(
         source = action.get("source")
         generator = action.get("generator")
         target_source = action.get("targetSource")
+        target_source_sha256 = action.get("targetSourceSha256")
+        destination_precondition = action.get("destinationPrecondition")
         destination = action.get("destination")
         ownership = action.get("ownership")
         if action_name == "migrate":
+            if ordinary_actions_started:
+                errors.append(
+                    f"{action_label}: migrations must precede every ordinary manifest action"
+                )
+            migration_count += 1
+            if migration_count > 1:
+                errors.append(
+                    f"{action_label}: installation contract v1 permits at most one migration"
+                )
             if source is not None or generator is not None:
                 errors.append(f"{action_label}: migrate actions must not use manifest content")
+            if (
+                not isinstance(target_source_sha256, str)
+                or re.fullmatch(r"[0-9a-f]{64}", target_source_sha256) is None
+            ):
+                errors.append(
+                    f"{action_label}.targetSourceSha256 must identify exact source bytes"
+                )
+            if destination_precondition != "absent":
+                errors.append(
+                    f"{action_label}.destinationPrecondition must be 'absent'"
+                )
             managed_agents_entry = entries_by_id.get("managed-agents", {})
             project_agents_entry = entries_by_id.get("project-agents", {})
             managed_agents_destination = managed_agents_entry.get("destination", "AGENTS.md")
@@ -300,20 +365,64 @@ def validate_install_plan(
                     errors.append(
                         f"{action_label}.destination contradicts migration reason {reason!r}"
                     )
-                if isinstance(destination_pattern, re.Pattern) and (
-                    not isinstance(destination, str)
-                    or destination_pattern.fullmatch(destination) is None
-                ):
-                    errors.append(
-                        f"{action_label}.destination must use the deterministic "
-                        "content-hash migration name"
+                if isinstance(destination_pattern, re.Pattern):
+                    expected_hash_destination = (
+                        "AGENTS-project.migration-sha256-"
+                        f"{target_source_sha256}.md"
                     )
+                    if (
+                        not isinstance(destination, str)
+                        or destination_pattern.fullmatch(destination) is None
+                        or destination != expected_hash_destination
+                    ):
+                        errors.append(
+                            f"{action_label}.destination must use the exact source-hash "
+                            "migration name"
+                        )
             if ownership != "project-owned":
                 errors.append(f"{action_label}.ownership: migrations are project-owned")
             continue
 
+        if action_name != "block":
+            ordinary_actions_started = True
+            manifest_index = manifest_index_by_id.get(entry_id, -1)
+            if manifest_index < last_manifest_index:
+                errors.append(
+                    f"{action_label}: ordinary actions must follow installation-manifest "
+                    "array order"
+                )
+            last_manifest_index = max(last_manifest_index, manifest_index)
+            if isinstance(entry_id, str):
+                ordinary_action_counts[entry_id] = (
+                    ordinary_action_counts.get(entry_id, 0) + 1
+                )
+                if ordinary_action_counts[entry_id] > 2:
+                    errors.append(
+                        f"{action_label}: manifest entry produced more than two actions"
+                    )
+                if ordinary_action_counts[entry_id] == 2:
+                    previous = actions[index - 1] if index else None
+                    if (
+                        not isinstance(previous, dict)
+                        or previous.get("action") != "backup"
+                        or previous.get("entryId") != entry_id
+                        or action_name not in {"replace", "generate"}
+                    ):
+                        errors.append(
+                            f"{action_label}: manifest entry produced a non-canonical "
+                            "second action"
+                        )
+
         if target_source is not None:
             errors.append(f"{action_label}.targetSource must be null for non-migrate actions")
+        if target_source_sha256 is not None:
+            errors.append(
+                f"{action_label}.targetSourceSha256 must be null for non-migrate actions"
+            )
+        if destination_precondition is not None:
+            errors.append(
+                f"{action_label}.destinationPrecondition must be null for non-migrate actions"
+            )
         if action_name == "block":
             if source is not None or generator is not None:
                 errors.append(f"{action_label}: block actions must not read manifest content")
@@ -332,6 +441,49 @@ def validate_install_plan(
             errors.append(f"{action_label}: generate action references a copied entry")
         if action_name in {"create", "replace"} and entry.get("kind") != "copied":
             errors.append(f"{action_label}: {action_name} action references a generated entry")
+
+        if action_name == "backup":
+            mutation = actions[index + 1] if index + 1 < len(actions) else None
+            if (
+                not isinstance(mutation, dict)
+                or mutation.get("entryId") != entry_id
+                or mutation.get("action") not in {"replace", "generate"}
+            ):
+                errors.append(
+                    f"{action_label}: backup must immediately precede its matching mutation"
+                )
+            else:
+                identity_fields = (
+                    "entryId",
+                    "source",
+                    "generator",
+                    "targetSource",
+                    "targetSourceSha256",
+                    "destinationPrecondition",
+                    "destination",
+                    "ownership",
+                    "oldToolkitVersion",
+                    "newToolkitVersion",
+                )
+                for field in identity_fields:
+                    if action.get(field) != mutation.get(field):
+                        errors.append(
+                            f"{action_label}: backup/mutation pair disagrees on {field}"
+                        )
+        if (
+            action_name in {"replace", "generate"}
+            and reason in {"refresh-managed-content", "refresh-generated-content"}
+            and entry.get("backupPolicy") == "before-replace"
+        ):
+            backup = actions[index - 1] if index else None
+            if (
+                not isinstance(backup, dict)
+                or backup.get("action") != "backup"
+                or backup.get("entryId") != entry_id
+            ):
+                errors.append(
+                    f"{action_label}: mutation is missing its immediately preceding backup"
+                )
 
     expected_can_apply = block_count == 0
     if plan.get("canApply") != expected_can_apply:
@@ -1401,6 +1553,259 @@ def _validate_all_schemas(schema_root: Path) -> list[str]:
     return errors
 
 
+def validate_install_conformance_package(
+    repo: Path,
+    installation_contract: Any | None = None,
+    plan_schema: Any | None = None,
+) -> list[str]:
+    """Validate the language-neutral install-v1 scenario package and authorities."""
+
+    root = repo / "Toolkit/conformance/install-v1"
+    index_path = root / "scenarios.json"
+    index_schema_path = root / "scenario-index.schema.json"
+    index, index_errors = _read_json(index_path, "install-v1 scenarios")
+    index_schema, schema_errors = _read_json(
+        index_schema_path, "install-v1 scenario index schema"
+    )
+    errors = index_errors + schema_errors
+    if index is None or index_schema is None:
+        return errors
+    try:
+        Draft202012Validator.check_schema(index_schema)
+    except SchemaError as exc:
+        errors.append(
+            f"Toolkit/conformance/install-v1/scenario-index.schema.json: "
+            f"invalid Draft 2020-12 schema: {exc}"
+        )
+        return errors
+    errors += validate_json(index, index_schema, "install-v1 scenarios")
+    if not isinstance(index, dict):
+        return errors
+
+    contract = installation_contract
+    if contract is None:
+        contract, read_errors = _read_json(
+            repo / "Toolkit/SDP-install.manifest.json",
+            "Toolkit/SDP-install.manifest.json",
+        )
+        errors += read_errors
+    schema = plan_schema
+    if schema is None:
+        schema, read_errors = _read_json(
+            repo / "Toolkit/schemas/SDP-install-plan.schema.json",
+            "Toolkit/schemas/SDP-install-plan.schema.json",
+        )
+        errors += read_errors
+    if index.get("orderingPolicy") != CANONICAL_INSTALL_ORDERING_POLICY:
+        errors.append("install-v1 scenarios orderingPolicy is not canonical")
+    failure_classes = index.get("failureClasses")
+    if isinstance(failure_classes, list) and set(failure_classes) != set(
+        INSTALL_FAILURE_CLASSES
+    ):
+        errors.append(
+            "install-v1 scenarios failureClasses differ from the closed v1 vocabulary"
+        )
+
+    scenarios = index.get("scenarios")
+    if not isinstance(scenarios, list):
+        return errors
+    seen_ids: set[str] = set()
+    seen_expected_paths: set[tuple[str, ...]] = set()
+    referenced_expected_paths: set[str] = set()
+    covered_categories: set[str] = set()
+    volatile_timestamp = re.compile(
+        r"\b[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}"
+    )
+
+    def check_portable(value: Any, label: str) -> None:
+        path_error = portable_relative_path_error(value)
+        if path_error:
+            errors.append(f"{label}: {path_error}: {value!r}")
+
+    def walk_strings(value: Any) -> Iterable[str]:
+        if isinstance(value, str):
+            yield value
+        elif isinstance(value, dict):
+            for child in value.values():
+                yield from walk_strings(child)
+        elif isinstance(value, list):
+            for child in value:
+                yield from walk_strings(child)
+
+    for scenario_index, scenario in enumerate(scenarios):
+        label = f"install-v1 scenarios.scenarios[{scenario_index}]"
+        if not isinstance(scenario, dict):
+            continue
+        scenario_id = scenario.get("id")
+        if isinstance(scenario_id, str):
+            if scenario_id in seen_ids:
+                errors.append(f"{label}.id: duplicate scenario ID {scenario_id}")
+            seen_ids.add(scenario_id)
+        categories = scenario.get("categories")
+        if isinstance(categories, list):
+            covered_categories.update(
+                category for category in categories if isinstance(category, str)
+            )
+        if scenario.get("sourceMode") != "archive-no-git":
+            errors.append(f"{label}.sourceMode: install-v1 fixtures must not require .git")
+
+        before = scenario.get("before")
+        if isinstance(before, dict):
+            for directory_index, directory in enumerate(before.get("directories", [])):
+                check_portable(
+                    directory,
+                    f"{label}.before.directories[{directory_index}]",
+                )
+                if isinstance(directory, str) and (
+                    directory == "Toolkit" or directory.startswith("Toolkit/")
+                ):
+                    errors.append(
+                        f"{label}.before.directories[{directory_index}]: "
+                        "fixture input contains Toolkit live state"
+                    )
+            for file_index, file_declaration in enumerate(before.get("files", [])):
+                file_label = f"{label}.before.files[{file_index}]"
+                if not isinstance(file_declaration, dict):
+                    continue
+                path = file_declaration.get("path")
+                check_portable(path, f"{file_label}.path")
+                if isinstance(path, str) and (
+                    path == "Toolkit"
+                    or path.startswith("Toolkit/")
+                    or any(part.casefold() == ".git" for part in PurePosixPath(path).parts)
+                ):
+                    errors.append(
+                        f"{file_label}.path: fixture input contains Toolkit live/admin state"
+                    )
+                content_base64 = file_declaration.get("contentBase64")
+                if isinstance(content_base64, str):
+                    try:
+                        base64.b64decode(content_base64, validate=True)
+                    except (binascii.Error, ValueError):
+                        errors.append(f"{file_label}.contentBase64: invalid base64")
+
+        expected = scenario.get("expected")
+        if not isinstance(expected, dict):
+            continue
+        expected_path_value = expected.get("path")
+        check_portable(expected_path_value, f"{label}.expected.path")
+        if not isinstance(expected_path_value, str):
+            continue
+        referenced_expected_paths.add(expected_path_value)
+        expected_key = portable_path_key(expected_path_value)
+        if expected_key in seen_expected_paths:
+            errors.append(
+                f"{label}.expected.path: expected outcome paths must be unique"
+            )
+        seen_expected_paths.add(expected_key)
+        expected_path = root / Path(*PurePosixPath(expected_path_value).parts)
+        outcome, outcome_errors = _read_json(
+            expected_path,
+            f"install-v1 {scenario_id} expected outcome",
+        )
+        errors += outcome_errors
+        if outcome is None:
+            continue
+        kind = expected.get("kind")
+        expected_suffix = (
+            ".failure.json" if kind == "fatal" else ".plan.json"
+        )
+        if (
+            not expected_path_value.startswith("expected/")
+            or not expected_path_value.endswith(expected_suffix)
+        ):
+            errors.append(
+                f"{label}.expected.path: {kind!r} outcomes must use an "
+                f"expected/*{expected_suffix} path"
+            )
+        if kind in {"applicable-plan", "blocked-plan"}:
+            if schema is not None:
+                errors += validate_install_plan(
+                    outcome,
+                    schema,
+                    f"install-v1 {scenario_id} expected plan",
+                    contract,
+                )
+            if isinstance(outcome, dict):
+                expected_can_apply = kind == "applicable-plan"
+                if outcome.get("canApply") is not expected_can_apply:
+                    errors.append(
+                        f"install-v1 {scenario_id} expected kind contradicts canApply"
+                    )
+        elif kind == "fatal":
+            if not isinstance(outcome, dict) or set(outcome) != {
+                "kind",
+                "failureClass",
+            }:
+                errors.append(
+                    f"install-v1 {scenario_id} fatal outcome must contain only "
+                    "kind and failureClass"
+                )
+            elif (
+                outcome.get("kind") != "fatal"
+                or outcome.get("failureClass") not in INSTALL_FAILURE_CLASSES
+            ):
+                errors.append(
+                    f"install-v1 {scenario_id} fatal outcome uses an unsupported class"
+                )
+        for text in walk_strings(outcome):
+            if volatile_timestamp.search(text):
+                errors.append(
+                    f"install-v1 {scenario_id} expected outcome contains a volatile timestamp"
+                )
+            if text.startswith(("/", "\\")) or WINDOWS_DRIVE_PATTERN.match(text):
+                errors.append(
+                    f"install-v1 {scenario_id} expected outcome contains an absolute path"
+                )
+
+        assertions = scenario.get("assertions")
+        if isinstance(assertions, dict):
+            after_apply = assertions.get("afterApply")
+            if isinstance(after_apply, dict):
+                for field in ("files", "utf8Contains"):
+                    for assertion_index, assertion in enumerate(
+                        after_apply.get(field, [])
+                    ):
+                        if isinstance(assertion, dict):
+                            check_portable(
+                                assertion.get("path"),
+                                f"{label}.assertions.afterApply.{field}"
+                                f"[{assertion_index}].path",
+                            )
+                for assertion_index, path in enumerate(
+                    after_apply.get("absentPaths", [])
+                ):
+                    check_portable(
+                        path,
+                        f"{label}.assertions.afterApply.absentPaths"
+                        f"[{assertion_index}]",
+                    )
+
+    missing_categories = sorted(
+        REQUIRED_INSTALL_CONFORMANCE_CATEGORIES - covered_categories
+    )
+    if missing_categories:
+        errors.append(
+            "install-v1 scenarios omit promised categories: "
+            + ", ".join(missing_categories)
+        )
+    expected_root = root / "expected"
+    actual_expected_paths = {
+        path.relative_to(root).as_posix()
+        for path in expected_root.rglob("*")
+        if path.is_file()
+    }
+    unreferenced_expected_paths = sorted(
+        actual_expected_paths - referenced_expected_paths
+    )
+    if unreferenced_expected_paths:
+        errors.append(
+            "install-v1 contains unreferenced expected outcomes: "
+            + ", ".join(unreferenced_expected_paths)
+        )
+    return errors
+
+
 def validate_installation_contract(
     repo: Path,
     toolkit_manifest: dict[str, Any],
@@ -1434,6 +1839,11 @@ def validate_installation_contract(
     if contract.get("toolkitVersion") != expected_version:
         errors.append(
             "Toolkit/SDP-install.manifest.json toolkitVersion differs from SDP.manifest.yaml"
+        )
+    if contract.get("orderingPolicy") != CANONICAL_INSTALL_ORDERING_POLICY:
+        errors.append(
+            "Toolkit/SDP-install.manifest.json orderingPolicy differs from the "
+            "canonical install-v1 policy"
         )
 
     sources = contract.get("sources")
@@ -1874,6 +2284,11 @@ def validate_repository(repo: Path, base_ref: str | None = None) -> list[str]:
         errors.append(
             "examples/install-plan.example.json toolkitVersion differs from SDP.manifest.yaml"
         )
+    errors += validate_install_conformance_package(
+        repo,
+        install_contract,
+        install_plan_schema,
+    )
 
     release_record_schema = load_json(schema_root / "release-record.schema.json")
     release_templates = sorted((repo / "Toolkit").rglob("ReleaseRecord.yaml"))

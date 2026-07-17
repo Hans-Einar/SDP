@@ -9,6 +9,7 @@
     "schemaVersion",
     "contractId",
     "toolkitVersion",
+    "orderingPolicy",
     "sources",
     "capabilities",
     "generators",
@@ -19,6 +20,10 @@
     "schemaVersion": { "const": "1.0" },
     "contractId": { "const": "sdp-install" },
     "toolkitVersion": { "$ref": "#/$defs/semver" },
+    "orderingPolicy": {
+      "const": "migration-first-manifest-order-v1",
+      "description": "Canonical v1 ordering: migrations first, then selected entries in manifest array order with adjacent backup/mutation pairs, followed by contiguous sequence assignment."
+    },
     "sources": {
       "type": "object",
       "additionalProperties": false,

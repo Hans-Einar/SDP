@@ -20,6 +20,14 @@ $ErrorActionPreference = 'Stop'
 $SupportedInstallManifestSchemas = @('1.0')
 $SupportedInstalledManifestSchemas = @('1.0')
 $SupportedProjectManifestSchemas = @('1.0')
+$CanonicalOrderingPolicy = 'migration-first-manifest-order-v1'
+$InstallFailureClasses = @(
+    'install-manifest-invalid',
+    'agents-migration-destination-content-mismatch',
+    'agents-migration-destination-unsupported-object',
+    'agents-migration-source-changed',
+    'agents-migration-destination-changed'
+)
 $RunStamp = (Get-Date).ToUniversalTime().ToString('yyyyMMdd-HHmmssZ')
 $PathComparison = if ([System.IO.Path]::DirectorySeparatorChar -eq '\') {
     [System.StringComparison]::OrdinalIgnoreCase
@@ -27,6 +35,59 @@ $PathComparison = if ([System.IO.Path]::DirectorySeparatorChar -eq '\') {
     [System.StringComparison]::Ordinal
 }
 $IsWindowsPlatform = [System.IO.Path]::DirectorySeparatorChar -eq '\'
+
+function Throw-InstallFailure {
+    param([string]$FailureClass, [string]$Message)
+
+    if ($InstallFailureClasses -cnotcontains $FailureClass) {
+        throw "Unknown installation failure class '$FailureClass'."
+    }
+    $exception = [System.InvalidOperationException]::new($Message)
+    $exception.Data['sdpFailureClass'] = $FailureClass
+    throw $exception
+}
+
+function Get-Sha256Hex {
+    param([byte[]]$Bytes)
+
+    $algorithm = [System.Security.Cryptography.SHA256]::Create()
+    try {
+        $digest = $algorithm.ComputeHash($Bytes)
+    } finally {
+        $algorithm.Dispose()
+    }
+    return ([System.BitConverter]::ToString($digest).Replace('-', '').ToLowerInvariant())
+}
+
+function Test-ByteArraysEqual {
+    param([byte[]]$Left, [byte[]]$Right)
+
+    if ($Left.Length -ne $Right.Length) { return $false }
+    for ($index = 0; $index -lt $Left.Length; $index++) {
+        if ($Left[$index] -ne $Right[$index]) { return $false }
+    }
+    return $true
+}
+
+function Get-PathObjectState {
+    param([string]$Path)
+
+    try {
+        $attributes = [System.IO.File]::GetAttributes($Path)
+    } catch [System.IO.FileNotFoundException] {
+        return 'absent'
+    } catch [System.IO.DirectoryNotFoundException] {
+        return 'absent'
+    }
+    if (($attributes -band [System.IO.FileAttributes]::ReparsePoint) -ne 0) {
+        return 'unsupported'
+    }
+    if (($attributes -band [System.IO.FileAttributes]::Directory) -ne 0) {
+        return 'unsupported'
+    }
+    return 'regular-file'
+}
+
 if ($IsWindowsPlatform -and (-not ('Sdp.Install.NativePath' -as [type]))) {
     Add-Type -TypeDefinition @'
 using System;
@@ -961,15 +1022,16 @@ try {
     throw "Cannot parse canonical installation manifest: $($_.Exception.Message)"
 }
 Assert-JsonObjectShape $InstallManifest @(
-    'schemaVersion', 'contractId', 'toolkitVersion', 'sources',
+    'schemaVersion', 'contractId', 'toolkitVersion', 'orderingPolicy', 'sources',
     'capabilities', 'generators', 'entries', 'exclusions'
 ) @(
-    'schemaVersion', 'contractId', 'toolkitVersion', 'sources',
+    'schemaVersion', 'contractId', 'toolkitVersion', 'orderingPolicy', 'sources',
     'capabilities', 'generators', 'entries', 'exclusions'
 ) 'installation manifest'
 Assert-JsonString $InstallManifest.schemaVersion 'installation manifest schemaVersion'
 Assert-JsonString $InstallManifest.contractId 'installation manifest contractId'
 Assert-JsonString $InstallManifest.toolkitVersion 'installation manifest toolkitVersion'
+Assert-JsonString $InstallManifest.orderingPolicy 'installation manifest orderingPolicy'
 Assert-JsonObjectShape $InstallManifest.sources @(
     'repositoryRoot', 'pathStyle'
 ) @(
@@ -987,6 +1049,11 @@ if ($SupportedInstallManifestSchemas -cnotcontains [string]$InstallManifest.sche
 }
 if ([string]$InstallManifest.contractId -cne 'sdp-install') {
     throw "Unsupported installation contract '$($InstallManifest.contractId)'."
+}
+if ([string]$InstallManifest.orderingPolicy -cne $CanonicalOrderingPolicy) {
+    Throw-InstallFailure `
+        'install-manifest-invalid' `
+        "Unsupported installation ordering policy '$($InstallManifest.orderingPolicy)'."
 }
 if ([string]$InstallManifest.sources.repositoryRoot -cne '..' -or
     [string]$InstallManifest.sources.pathStyle -cne 'forward-slash-relative') {
@@ -1051,6 +1118,7 @@ $Entries = $InstallManifest.entries
 $Exclusions = $InstallManifest.exclusions
 $GeneratorById = @{}
 $EntryById = @{}
+$ManifestEntryIndexById = @{}
 $DestinationByKey = @{}
 $ExclusionByKey = @{}
 $PhysicalExclusionByKey = @{}
@@ -1261,7 +1329,8 @@ $CanonicalCapabilityBySchema = @{
     'toolkit/schemas/ledger-event.schema.json' = 'sdp.traceability.ledger-events.v1'
 }
 
-foreach ($entry in $Entries) {
+for ($entryIndex = 0; $entryIndex -lt $Entries.Count; $entryIndex++) {
+    $entry = $Entries[$entryIndex]
     Assert-JsonObjectShape $entry @(
         'id', 'kind', 'destination', 'ownership', 'selectionPolicy',
         'installPolicy', 'refreshPolicy', 'backupPolicy', 'forcePolicy',
@@ -1294,6 +1363,7 @@ foreach ($entry in $Entries) {
         throw "Installation contract contains a missing or duplicate entry ID '$entryId'."
     }
     $EntryById[$entryId] = $entry
+    $ManifestEntryIndexById[$entryId] = $entryIndex
 
     $entryKind = [string]$entry.kind
     $ownership = [string]$entry.ownership
@@ -1846,7 +1916,9 @@ function Add-PlanAction {
         [string]$Ownership,
         [string]$Reason,
         [bool]$MutatesTarget,
-        [AllowNull()][string]$TargetSource = $null
+        [AllowNull()][string]$TargetSource = $null,
+        [AllowNull()][string]$TargetSourceSha256 = $null,
+        [AllowNull()][string]$DestinationPrecondition = $null
     )
 
     if (-not $PlanReasonRules.ContainsKey($Reason)) {
@@ -1865,27 +1937,43 @@ function Add-PlanAction {
     $hasGenerator = -not [string]::IsNullOrWhiteSpace($Generator)
     $hasTargetSource = -not [string]::IsNullOrWhiteSpace($TargetSource)
     if ($Action -eq 'migrate') {
-        if ($hasSource -or $hasGenerator -or (-not $hasTargetSource)) {
-            throw 'A migrate action must identify only a targetSource.'
+        if ($hasSource -or $hasGenerator -or (-not $hasTargetSource) -or
+            ($TargetSourceSha256 -cnotmatch '^[0-9a-f]{64}$') -or
+            ($DestinationPrecondition -cne 'absent')) {
+            throw 'A migrate action must identify exact source bytes and an absent destination precondition.'
         }
     } elseif ($Action -eq 'block') {
-        if ($hasSource -or $hasGenerator -or $hasTargetSource) {
+        if ($hasSource -or $hasGenerator -or $hasTargetSource -or
+            (-not [string]::IsNullOrWhiteSpace($TargetSourceSha256)) -or
+            (-not [string]::IsNullOrWhiteSpace($DestinationPrecondition))) {
             throw 'A block action must not identify content sources.'
         }
         if ([string]$BlockReasonEntryIds[$Reason] -cne $EntryId) {
             throw "Block reason '$Reason' contradicts entry '$EntryId'."
         }
-    } elseif ((-not ($hasSource -xor $hasGenerator)) -or $hasTargetSource) {
+    } elseif ((-not ($hasSource -xor $hasGenerator)) -or $hasTargetSource -or
+        (-not [string]::IsNullOrWhiteSpace($TargetSourceSha256)) -or
+        (-not [string]::IsNullOrWhiteSpace($DestinationPrecondition))) {
         throw "Plan action '$Action' must identify exactly one manifest source or generator."
     }
 
     $row = [pscustomobject][ordered]@{
-        sequence = $script:PlanActions.Count + 1
+        sequence = $null
         action = $Action
         entryId = $EntryId
         source = if ([string]::IsNullOrWhiteSpace($Source)) { $null } else { $Source }
         generator = if ([string]::IsNullOrWhiteSpace($Generator)) { $null } else { $Generator }
         targetSource = if ([string]::IsNullOrWhiteSpace($TargetSource)) { $null } else { $TargetSource }
+        targetSourceSha256 = if ([string]::IsNullOrWhiteSpace($TargetSourceSha256)) {
+            $null
+        } else {
+            $TargetSourceSha256
+        }
+        destinationPrecondition = if ([string]::IsNullOrWhiteSpace($DestinationPrecondition)) {
+            $null
+        } else {
+            $DestinationPrecondition
+        }
         destination = $Destination
         ownership = $Ownership
         reason = $Reason
@@ -1917,13 +2005,19 @@ if ($BlockReason) {
     $projectAgentsPath = Join-PortablePath $ProjectRoot ([string]$projectAgents.destination) 'project AGENTS destination'
     Assert-ContainedPhysicalPath $ProjectRoot $managedAgentsPath 'managed AGENTS destination'
     Assert-ContainedPhysicalPath $ProjectRoot $projectAgentsPath 'project AGENTS destination'
-    $managedAgentsContent = Get-EntryContent $managedAgents
+    $managedAgentsSourcePath = Join-PortablePath `
+        $RepositoryRoot `
+        ([string]$managedAgents.source) `
+        'managed AGENTS source'
+    Assert-ContainedPhysicalPath $RepositoryRoot $managedAgentsSourcePath 'managed AGENTS source'
+    $managedAgentsBytes = [System.IO.File]::ReadAllBytes($managedAgentsSourcePath)
     $MigrationCreatesProjectAgents = $false
     if (([string]$managedAgents.migrationPolicy -eq 'preserve-existing-agents') -and
         (Test-Path -LiteralPath $managedAgentsPath -PathType Leaf)) {
         Assert-ContainedPhysicalPath $ProjectRoot $managedAgentsPath 'managed AGENTS destination'
-        $existingAgents = [System.IO.File]::ReadAllText($managedAgentsPath)
-        if ($existingAgents -cne $managedAgentsContent) {
+        $existingAgentsBytes = [System.IO.File]::ReadAllBytes($managedAgentsPath)
+        if (-not (Test-ByteArraysEqual $existingAgentsBytes $managedAgentsBytes)) {
+            $agentsHash = Get-Sha256Hex $existingAgentsBytes
             if (-not (Test-Path -LiteralPath $projectAgentsPath -PathType Leaf)) {
                 Add-PlanAction `
                     'migrate' `
@@ -1934,30 +2028,43 @@ if ($BlockReason) {
                     'project-owned' `
                     'migrate-existing-agents' `
                     $true `
-                    ([string]$managedAgents.destination)
+                    ([string]$managedAgents.destination) `
+                    $agentsHash `
+                    'absent'
                 $MigrationCreatesProjectAgents = $true
             } else {
-                $agentsHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $managedAgentsPath).Hash.ToLowerInvariant()
                 $migrationRelative = "AGENTS-project.migration-sha256-$agentsHash.md"
                 $migrationPath = Join-PortablePath $ProjectRoot $migrationRelative 'AGENTS conflict migration destination'
                 Assert-ContainedPhysicalPath $ProjectRoot $migrationPath 'AGENTS conflict migration destination'
-                if (Test-Path -LiteralPath $migrationPath) {
-                    if ((-not (Test-Path -LiteralPath $migrationPath -PathType Leaf)) -or
-                        ((Get-FileHash -Algorithm SHA256 -LiteralPath $migrationPath).Hash.ToLowerInvariant() -cne
-                        $agentsHash)) {
-                        throw "Deterministic AGENTS migration destination is occupied: $migrationRelative"
+                $migrationState = Get-PathObjectState $migrationPath
+                switch ($migrationState) {
+                    'absent' {
+                        Add-PlanAction `
+                            'migrate' `
+                            ([string]$managedAgents.id) `
+                            $null `
+                            $null `
+                            $migrationRelative `
+                            'project-owned' `
+                            'preserve-existing-agents-conflict' `
+                            $true `
+                            ([string]$managedAgents.destination) `
+                            $agentsHash `
+                            'absent'
                     }
-                } else {
-                    Add-PlanAction `
-                        'migrate' `
-                        ([string]$managedAgents.id) `
-                        $null `
-                        $null `
-                        $migrationRelative `
-                        'project-owned' `
-                        'preserve-existing-agents-conflict' `
-                        $true `
-                        ([string]$managedAgents.destination)
+                    'regular-file' {
+                        $preservedBytes = [System.IO.File]::ReadAllBytes($migrationPath)
+                        if (-not (Test-ByteArraysEqual $existingAgentsBytes $preservedBytes)) {
+                            Throw-InstallFailure `
+                                'agents-migration-destination-content-mismatch' `
+                                "Deterministic AGENTS migration destination contains different bytes: $migrationRelative"
+                        }
+                    }
+                    default {
+                        Throw-InstallFailure `
+                            'agents-migration-destination-unsupported-object' `
+                            "Deterministic AGENTS migration destination is not a regular file: $migrationRelative"
+                    }
                 }
             }
         }
@@ -2104,6 +2211,13 @@ if ($BlockReason) {
     }
 }
 
+# Actions are appended in canonical policy order: the single v1 migration rule
+# first, then selected entries in manifest array order. Only now are sequence
+# values assigned so they cannot influence ordering.
+for ($planIndex = 0; $planIndex -lt $script:PlanActions.Count; $planIndex++) {
+    $script:PlanActions[$planIndex].sequence = $planIndex + 1
+}
+
 function Assert-PlannedDestinationTopology {
     foreach ($action in $script:PlanActions) {
         $destinationPath = Join-PortablePath `
@@ -2133,6 +2247,7 @@ Assert-PlannedDestinationTopology
 $Plan = [pscustomobject][ordered]@{
     schemaVersion = '1.0'
     manifestSchemaVersion = [string]$InstallManifest.schemaVersion
+    orderingPolicy = [string]$InstallManifest.orderingPolicy
     mode = 'plan'
     toolkitVersion = $ToolkitVersion
     installedToolkitVersion = if ([string]::IsNullOrWhiteSpace($InstalledToolkitVersion)) {
@@ -2151,7 +2266,15 @@ $Plan = [pscustomobject][ordered]@{
 function Assert-InstallationPlanSemantics {
     param($Value)
 
+    if ([string]$Value.orderingPolicy -cne $CanonicalOrderingPolicy -or
+        [string]$Value.orderingPolicy -cne [string]$InstallManifest.orderingPolicy) {
+        throw 'Installation-plan orderingPolicy contradicts the installation contract.'
+    }
     $blockCount = 0
+    $migrationCount = 0
+    $ordinaryActionsStarted = $false
+    $lastManifestIndex = -1
+    $ordinaryActionCounts = @{}
     $actions = @($Value.actions)
     for ($index = 0; $index -lt $actions.Count; $index++) {
         $action = $actions[$index]
@@ -2177,6 +2300,35 @@ function Assert-InstallationPlanSemantics {
             throw "Plan action references unknown entry '$($action.entryId)'."
         }
         $entry = $EntryById[[string]$action.entryId]
+        if ([string]$action.action -ceq 'migrate') {
+            if ($ordinaryActionsStarted) {
+                throw 'Installation-plan migrations must precede every ordinary manifest action.'
+            }
+            $migrationCount++
+            if ($migrationCount -gt 1) {
+                throw 'Installation contract v1 permits at most one migration action.'
+            }
+        } elseif ([string]$action.action -cne 'block') {
+            $ordinaryActionsStarted = $true
+            $manifestIndex = [int]$ManifestEntryIndexById[[string]$action.entryId]
+            if ($manifestIndex -lt $lastManifestIndex) {
+                throw 'Ordinary installation-plan actions must follow installation-manifest array order.'
+            }
+            $lastManifestIndex = $manifestIndex
+            $ordinaryActionCounts[[string]$action.entryId] =
+                1 + [int]$ordinaryActionCounts[[string]$action.entryId]
+            if ([int]$ordinaryActionCounts[[string]$action.entryId] -gt 2) {
+                throw "Manifest entry '$($action.entryId)' produced too many ordinary actions."
+            }
+            if ([int]$ordinaryActionCounts[[string]$action.entryId] -eq 2) {
+                if (($index -eq 0) -or
+                    ([string]$actions[$index - 1].action -cne 'backup') -or
+                    ([string]$actions[$index - 1].entryId -cne [string]$action.entryId) -or
+                    ([string]$action.action -notin @('replace', 'generate'))) {
+                    throw "Manifest entry '$($action.entryId)' produced a non-canonical second action."
+                }
+            }
+        }
         if ([string]$action.action -ceq 'block') {
             $blockCount++
             if (([string]$action.destination -cne [string]$entry.destination) -or
@@ -2186,6 +2338,11 @@ function Assert-InstallationPlanSemantics {
             continue
         }
         if ([string]$action.action -ceq 'migrate') {
+            if (($null -ne $action.source) -or ($null -ne $action.generator) -or
+                ([string]$action.targetSourceSha256 -cnotmatch '^[0-9a-f]{64}$') -or
+                ([string]$action.destinationPrecondition -cne 'absent')) {
+                throw 'A migration must carry exact source bytes and an absent destination precondition.'
+            }
             if ([string]$action.reason -ceq 'migrate-existing-agents') {
                 if (([string]$action.entryId -cne 'project-agents') -or
                     ([string]$action.targetSource -cne [string]$EntryById['managed-agents'].destination) -or
@@ -2194,9 +2351,11 @@ function Assert-InstallationPlanSemantics {
                     throw 'AGENTS migration action contradicts the manifest migration contract.'
                 }
             } elseif ([string]$action.reason -ceq 'preserve-existing-agents-conflict') {
+                $expectedConflictDestination =
+                    "AGENTS-project.migration-sha256-$($action.targetSourceSha256).md"
                 if (([string]$action.entryId -cne 'managed-agents') -or
                     ([string]$action.targetSource -cne [string]$EntryById['managed-agents'].destination) -or
-                    ([string]$action.destination -cnotmatch '^AGENTS-project\.migration-sha256-[0-9a-f]{64}\.md$') -or
+                    ([string]$action.destination -cne $expectedConflictDestination) -or
                     ([string]$action.ownership -cne 'project-owned')) {
                     throw 'AGENTS conflict migration action contradicts the manifest migration contract.'
                 }
@@ -2204,6 +2363,11 @@ function Assert-InstallationPlanSemantics {
                 throw "Unsupported migration reason '$($action.reason)'."
             }
             continue
+        }
+        if (($null -ne $action.targetSource) -or
+            ($null -ne $action.targetSourceSha256) -or
+            ($null -ne $action.destinationPrecondition)) {
+            throw "Non-migration action '$($action.entryId)' carries migration preconditions."
         }
         $expectedSource = if ([string]$entry.kind -ceq 'copied') {
             [string]$entry.source
@@ -2224,6 +2388,36 @@ function Assert-InstallationPlanSemantics {
             ([string]$action.ownership -cne [string]$entry.ownership) -or
             $sourceMismatch -or $generatorMismatch) {
             throw "Plan action '$($action.entryId)' contradicts its manifest entry."
+        }
+
+        if ([string]$action.action -ceq 'backup') {
+            if (($index + 1) -ge $actions.Count) {
+                throw "Backup action '$($action.entryId)' is not followed by its mutation."
+            }
+            $mutation = $actions[$index + 1]
+            if (([string]$mutation.entryId -cne [string]$action.entryId) -or
+                ([string]$mutation.action -notin @('replace', 'generate'))) {
+                throw "Backup action '$($action.entryId)' is split from its matching mutation."
+            }
+            foreach ($identityField in @(
+                'entryId', 'source', 'generator', 'targetSource',
+                'targetSourceSha256', 'destinationPrecondition', 'destination',
+                'ownership', 'oldToolkitVersion', 'newToolkitVersion'
+            )) {
+                if ($mutation.$identityField -cne $action.$identityField) {
+                    throw "Backup/mutation pair '$($action.entryId)' disagrees on $identityField."
+                }
+            }
+        }
+        if (([string]$action.action -in @('replace', 'generate')) -and
+            ([string]$action.reason -in @(
+                'refresh-managed-content', 'refresh-generated-content'
+            )) -and ([string]$entry.backupPolicy -ceq 'before-replace')) {
+            if ($index -eq 0 -or
+                ([string]$actions[$index - 1].action -cne 'backup') -or
+                ([string]$actions[$index - 1].entryId -cne [string]$action.entryId)) {
+                throw "Mutation action '$($action.entryId)' is missing its immediately preceding backup."
+            }
         }
     }
     if (([bool]$Value.canApply -and ($blockCount -ne 0)) -or
@@ -2301,6 +2495,84 @@ function Backup-ProjectFile {
     Write-SdpAction 'APPLIED' "Backed up $Relative"
 }
 
+function Invoke-PlannedMigration {
+    param($Action)
+
+    $sourcePath = Join-PortablePath `
+        $ProjectRoot `
+        ([string]$Action.targetSource) `
+        'migration targetSource'
+    $destinationPath = Join-PortablePath `
+        $ProjectRoot `
+        ([string]$Action.destination) `
+        'migration destination'
+
+    try {
+        Assert-ContainedPhysicalPath $ProjectRoot $sourcePath 'migration targetSource'
+        if ((Get-PathObjectState $sourcePath) -cne 'regular-file') {
+            Throw-InstallFailure `
+                'agents-migration-source-changed' `
+                "Migration targetSource is no longer a regular file: $($Action.targetSource)"
+        }
+        $sourceBytes = [System.IO.File]::ReadAllBytes($sourcePath)
+    } catch {
+        if ($_.Exception.Data['sdpFailureClass']) { throw }
+        Throw-InstallFailure `
+            'agents-migration-source-changed' `
+            "Migration targetSource could not be revalidated: $($Action.targetSource)"
+    }
+    $currentHash = Get-Sha256Hex $sourceBytes
+    if ($currentHash -cne [string]$Action.targetSourceSha256) {
+        Throw-InstallFailure `
+            'agents-migration-source-changed' `
+            "Migration targetSource bytes changed after planning: $($Action.targetSource)"
+    }
+
+    try {
+        Assert-ContainedPhysicalPath $ProjectRoot $destinationPath 'migration destination'
+        $destinationState = Get-PathObjectState $destinationPath
+    } catch {
+        Throw-InstallFailure `
+            'agents-migration-destination-changed' `
+            "Migration destination could not be revalidated: $($Action.destination)"
+    }
+    if (([string]$Action.destinationPrecondition -cne 'absent') -or
+        ($destinationState -cne 'absent')) {
+        Throw-InstallFailure `
+            'agents-migration-destination-changed' `
+            "Migration destination appeared or changed after planning: $($Action.destination)"
+    }
+    Assert-DestinationTopology $ProjectRoot $destinationPath 'migration destination'
+
+    $stream = $null
+    try {
+        $stream = [System.IO.FileStream]::new(
+            $destinationPath,
+            [System.IO.FileMode]::CreateNew,
+            [System.IO.FileAccess]::Write,
+            [System.IO.FileShare]::None
+        )
+    } catch {
+        Throw-InstallFailure `
+            'agents-migration-destination-changed' `
+            "Migration destination appeared during apply: $($Action.destination)"
+    }
+    try {
+        $stream.Write($sourceBytes, 0, $sourceBytes.Length)
+        $stream.Flush()
+    } catch {
+        $stream.Dispose()
+        $stream = $null
+        [System.IO.File]::Delete($destinationPath)
+        throw
+    } finally {
+        if ($null -ne $stream) { $stream.Dispose() }
+    }
+    Write-SdpAction `
+        'APPLIED' `
+        "Migrated $($Action.targetSource) to $($Action.destination)"
+}
+
 if ($Preview) {
     foreach ($action in $Plan.actions) {
         switch ([string]$action.action) {
@@ -2362,22 +2634,7 @@ if ($Preview) {
                 Write-SdpAction 'APPLIED' "Generated $($action.destination)"
             }
             'migrate' {
-                $sourcePath = Join-PortablePath $ProjectRoot ([string]$action.targetSource) 'migration targetSource'
-                $destinationPath = Join-PortablePath $ProjectRoot ([string]$action.destination) 'migration destination'
-                Assert-ContainedPhysicalPath $ProjectRoot $sourcePath 'migration targetSource'
-                Assert-DestinationTopology $ProjectRoot $destinationPath 'migration destination'
-                if (-not (Test-Path -LiteralPath $sourcePath -PathType Leaf)) {
-                    throw "Migration targetSource is no longer a file: $($action.targetSource)"
-                }
-                if (Test-Path -LiteralPath $destinationPath) {
-                    throw "Migration destination appeared after planning: $($action.destination)"
-                }
-                $parent = Split-Path -Parent $destinationPath
-                New-Item -ItemType Directory -Force -Path $parent | Out-Null
-                Assert-ContainedPhysicalPath $ProjectRoot $sourcePath 'migration targetSource'
-                Assert-DestinationTopology $ProjectRoot $destinationPath 'migration destination'
-                Copy-Item -LiteralPath $sourcePath -Destination $destinationPath
-                Write-SdpAction 'APPLIED' "Migrated $($action.targetSource) to $($action.destination)"
+                Invoke-PlannedMigration $action
             }
             'preserve' {
                 Write-SdpAction 'PRESERVED' "$($action.destination) ($($action.reason))"

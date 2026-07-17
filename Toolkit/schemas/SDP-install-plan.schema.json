@@ -8,6 +8,7 @@
   "required": [
     "schemaVersion",
     "manifestSchemaVersion",
+    "orderingPolicy",
     "mode",
     "toolkitVersion",
     "installedToolkitVersion",
@@ -18,6 +19,7 @@
   "properties": {
     "schemaVersion": { "const": "1.0" },
     "manifestSchemaVersion": { "const": "1.0" },
+    "orderingPolicy": { "const": "migration-first-manifest-order-v1" },
     "mode": { "const": "plan" },
     "toolkitVersion": { "$ref": "#/$defs/semver" },
     "installedToolkitVersion": {
@@ -91,6 +93,8 @@
         "source",
         "generator",
         "targetSource",
+        "targetSourceSha256",
+        "destinationPrecondition",
         "destination",
         "ownership",
         "reason",
@@ -128,6 +132,18 @@
         "targetSource": {
           "oneOf": [
             { "$ref": "#/$defs/portablePath" },
+            { "type": "null" }
+          ]
+        },
+        "targetSourceSha256": {
+          "oneOf": [
+            { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+            { "type": "null" }
+          ]
+        },
+        "destinationPrecondition": {
+          "oneOf": [
+            { "const": "absent" },
             { "type": "null" }
           ]
         },
@@ -219,11 +235,20 @@
               "source": { "type": "null" },
               "generator": { "type": "null" },
               "targetSource": { "$ref": "#/$defs/portablePath" },
+              "targetSourceSha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "destinationPrecondition": { "const": "absent" },
               "ownership": { "const": "project-owned" }
             }
           },
           "else": {
-            "properties": { "targetSource": { "type": "null" } }
+            "properties": {
+              "targetSource": { "type": "null" },
+              "targetSourceSha256": { "type": "null" },
+              "destinationPrecondition": { "type": "null" }
+            }
           }
         }
       ]

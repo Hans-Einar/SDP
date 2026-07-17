@@ -146,14 +146,40 @@ installation manifest, target observations and the initialize/force options; it
 is not a second inventory.
 
 The plan has schema and manifest versions, old/new Toolkit versions, options,
-`canApply`, and an ordered action list. Actions are `create`, `replace`,
+the required constant
+`orderingPolicy: "migration-first-manifest-order-v1"`, `canApply`, and an
+ordered action list. Actions are `create`, `replace`,
 `preserve`, `unchanged`, `backup`, `migrate`, `generate` or `block`. Every action
 has a stable sequence, entry ID, nullable `source`, `generator` and
-`targetSource`, project-relative destination, ownership, stable reason, mutation
-flag and relevant versions. Ordinary entry actions identify exactly one
-manifest source or generator. A `migrate` action instead identifies the existing
-project file in `targetSource`; apply copies that exact source to the exact
+`targetSource`, nullable `targetSourceSha256` and `destinationPrecondition`,
+project-relative destination, ownership, stable reason, mutation flag and
+relevant versions. Ordinary entry actions identify exactly one manifest source
+or generator and set the two migration precondition fields to null. A `migrate`
+action instead identifies the existing project file in `targetSource`, records
+the lowercase SHA-256 of its exact bytes in `targetSourceSha256`, and requires
+`destinationPrecondition: "absent"`; apply writes those exact bytes to the exact
 planned destination. A block identifies no content source.
+
+Canonical v1 action order is normative:
+
+1. A blocked plan contains exactly one `block` action at sequence 1.
+2. Target-to-target migrations precede every ordinary manifest-entry action.
+3. Migration rules are processed in their declared migration-policy order.
+   Contract v1 declares one AGENTS migration rule, so it can emit at most one
+   migration action.
+4. Selected ordinary entries are processed in the exact array order of
+   `Toolkit/SDP-install.manifest.json`.
+5. A client must not independently sort by destination, entry ID, ownership,
+   source, action or any private implementation detail.
+6. When an entry requires a backup, `backup` is immediately followed by its
+   matching `replace` or `generate`; both actions have identical entry ID,
+   source/generator, destination, ownership and old/new version identities.
+   No unrelated action may split the pair.
+7. An entry producing one action emits that action at its manifest position.
+8. Sequence values are assigned after this ordering is complete and are
+   contiguous integers beginning at 1.
+9. Repeated planning against the same source, options and target bytes produces
+   semantically identical ordered actions.
 
 The v1 reason vocabulary and decisions are normative:
 
@@ -179,12 +205,85 @@ Semantic plan validation is required in addition to JSON Schema validation.
 Sequences start at one and are contiguous; every action old/new version agrees
 with the top level; ordinary action entry/source/generator/destination/ownership
 facts agree with the installation manifest; the two AGENTS migration shapes are
-exact; and `canApply` is true exactly when there is no block action.
+exact; canonical ordering and backup adjacency are enforced; and `canApply` is
+true exactly when there is no block action.
+
+### AGENTS exact-byte migration
+
+For `preserve-existing-agents-conflict`, the deterministic destination is
+`AGENTS-project.migration-sha256-<sha256>.md`, where `<sha256>` is lowercase
+hexadecimal SHA-256 over the exact legacy `AGENTS.md` bytes. Clients do not
+decode the file or normalize line endings before hashing or comparison.
+
+- If the destination is absent, emit exactly one migration-first `migrate`
+  action with `targetSource: "AGENTS.md"`, the exact-byte hash,
+  `destinationPrecondition: "absent"`, project-owned ownership, the
+  deterministic destination and reason `preserve-existing-agents-conflict`.
+- If it is a regular file with identical bytes, preservation is already
+  complete. Do not overwrite it and do not emit a migration action; continue
+  ordinary planning for the managed `AGENTS.md` entry.
+- If it is a regular file with different bytes, planning fails before mutation
+  with `agents-migration-destination-content-mismatch`.
+- If it is a directory, link, symlink, reparse point or other unsupported
+  object, planning fails closed with
+  `agents-migration-destination-unsupported-object`.
+
+The migration action captures both source hash and absent-destination
+precondition. Immediately before apply, the reference installer rechecks that
+the source is still an ordinary file with the same exact-byte hash and that the
+destination is still absent. A changed source fails with
+`agents-migration-source-changed`; a destination that appeared or changed fails
+with `agents-migration-destination-changed`. Creation uses exclusive
+create-new behavior: no alternate path is selected and project-owned content is
+never replaced. Because migration is first, either it completes or fails before
+ordinary manifest-entry mutations. A later failure elsewhere can still leave
+this already completed preservation file and any earlier planned operations in
+place; installation is not a general transaction.
+
+### Applicable, blocked and fatal outcomes
+
+An applicable plan has `canApply: true` and no block action. A blocked plan is a
+valid plan with `canApply: false` and exactly one canonical block action at
+sequence 1; it represents supported, target-derived decisions such as an
+unsupported installed/project schema or downgrade. A fatal pre-plan failure
+does not emit a plan because the contract or preservation-sensitive filesystem
+facts cannot be represented safely. The closed v1 fatal vocabulary is:
+
+- `install-manifest-invalid`
+- `agents-migration-destination-content-mismatch`
+- `agents-migration-destination-unsupported-object`
+- `agents-migration-source-changed`
+- `agents-migration-destination-changed`
+
+Raw localized PowerShell exception text is not part of the portable contract.
 
 Plan mode performs no target mutation: it creates no directory, file, backup or
 installed timestamp. Volatile timestamps, absolute extraction paths and
 generated backup-directory names are outside the portable plan contract. Human
 `-Preview` output is also mutation-free but is not the conformance format.
+
+## Shared conformance package
+
+`Toolkit/conformance/install-v1/` is the checked-in, language-neutral authority
+for portable scenarios. `scenarios.json`, validated by
+`scenario-index.schema.json`, declares source mode, options, portable before
+state, expected outcome and important preservation assertions. Outcomes under
+`expected/` are either complete plan JSON conforming structurally and
+semantically to the plan schema, or a two-field fatal object containing
+`kind: "fatal"` and one closed `failureClass`.
+
+The package covers empty/default, initialize, repeat, repeat-initialize, legacy
+AGENTS preservation and collision cases, upgrade, force, project-owned
+preservation, source archive without `.git`, unsupported schemas, downgrade and
+malformed-manifest behavior. It contains no absolute or temporary paths and a
+consumer may parse and test it without PowerShell. The Python reference harness
+can additionally materialize every scenario and compare the PowerShell
+reference implementation when PowerShell is available.
+
+Committed outcomes are reviewed contract authorities. Normal validation only
+compares against them and never regenerates them from the implementation.
+Maintainers may explicitly write candidate outcomes with
+`run_conformance.py --write-candidates`, then must review and commit the diff.
 
 ## External installer conformance
 
@@ -197,8 +296,9 @@ An external client such as future `gh-sdp` must:
 3. select only explicit entries and honor every ownership and policy field;
 4. preserve project-owned content under normal, forced and repeated runs;
 5. expose a mutation-free preview and a plan conforming to the plan schema;
-6. produce equivalent normalized actions for shared empty, legacy, upgrade,
-   force, initialize, repeat-initialize, archive and error fixtures;
+6. consume `Toolkit/conformance/install-v1/scenarios.json` directly and produce
+   the checked-in normalized plans or failure classes for every scenario,
+   including exact canonical order and exact-byte preservation;
 7. prove absence of live Toolkit state, especially
    `SDP/Releases/REL-0.2.0.yaml`.
 

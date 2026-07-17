@@ -4,6 +4,7 @@ import copy
 import hashlib
 import importlib.util
 import json
+import shutil
 import tempfile
 import unittest
 import sys
@@ -434,6 +435,7 @@ class InstallationContractTests(unittest.TestCase):
         return {
             "schemaVersion": "1.0",
             "manifestSchemaVersion": self.contract["schemaVersion"],
+            "orderingPolicy": self.contract["orderingPolicy"],
             "mode": "plan",
             "toolkitVersion": self.contract["toolkitVersion"],
             "installedToolkitVersion": None,
@@ -450,6 +452,8 @@ class InstallationContractTests(unittest.TestCase):
                     "source": entry["source"],
                     "generator": None,
                     "targetSource": None,
+                    "targetSourceSha256": None,
+                    "destinationPrecondition": None,
                     "destination": entry["destination"],
                     "ownership": entry["ownership"],
                     "reason": "missing-target",
@@ -458,6 +462,35 @@ class InstallationContractTests(unittest.TestCase):
                     "newToolkitVersion": self.contract["toolkitVersion"],
                 }
             ],
+        }
+
+    def plan_action(
+        self,
+        entry_id: str,
+        *,
+        sequence: int,
+        action: str = "create",
+        reason: str = "missing-target",
+        mutates: bool = True,
+    ) -> dict[str, object]:
+        entry = next(
+            item for item in self.contract["entries"] if item["id"] == entry_id
+        )
+        return {
+            "sequence": sequence,
+            "action": action,
+            "entryId": entry_id,
+            "source": entry.get("source"),
+            "generator": entry.get("generator"),
+            "targetSource": None,
+            "targetSourceSha256": None,
+            "destinationPrecondition": None,
+            "destination": entry["destination"],
+            "ownership": entry["ownership"],
+            "reason": reason,
+            "mutatesTarget": mutates,
+            "oldToolkitVersion": None,
+            "newToolkitVersion": self.contract["toolkitVersion"],
         }
 
     def test_canonical_manifest_schema_and_semantics(self) -> None:
@@ -718,6 +751,7 @@ class InstallationContractTests(unittest.TestCase):
         plan = {
             "schemaVersion": "1.0",
             "manifestSchemaVersion": "1.0",
+            "orderingPolicy": "migration-first-manifest-order-v1",
             "mode": "plan",
             "toolkitVersion": "0.2.0",
             "installedToolkitVersion": None,
@@ -734,6 +768,8 @@ class InstallationContractTests(unittest.TestCase):
                     "source": "Toolkit/project-templates/sdp-root/SDP-project.manifest.yaml",
                     "generator": None,
                     "targetSource": None,
+                    "targetSourceSha256": None,
+                    "destinationPrecondition": None,
                     "destination": "SDP/SDP-project.manifest.yaml",
                     "ownership": "project-owned",
                     "reason": "missing-target",
@@ -796,6 +832,97 @@ class InstallationContractTests(unittest.TestCase):
         )
         self.assertTrue(any("unique, ordered, and contiguous" in error for error in errors))
 
+    def test_install_plan_enforces_canonical_manifest_order(self) -> None:
+        plan = self.valid_plan()
+        plan["actions"] = [
+            self.plan_action("managed-fix-record-template", sequence=1),
+            self.plan_action("managed-framework-readme", sequence=2),
+        ]
+        errors = VALIDATE.validate_install_plan(
+            plan, self.plan_schema, "install plan", self.contract
+        )
+        self.assertTrue(
+            any("installation-manifest array order" in error for error in errors),
+            errors,
+        )
+
+        migration = {
+            **self.plan_action("managed-agents", sequence=2),
+            "action": "migrate",
+            "source": None,
+            "targetSource": "AGENTS.md",
+            "targetSourceSha256": "a" * 64,
+            "destinationPrecondition": "absent",
+            "destination": "AGENTS-project.migration-sha256-" + "a" * 64 + ".md",
+            "ownership": "project-owned",
+            "reason": "preserve-existing-agents-conflict",
+        }
+        plan["actions"] = [
+            self.plan_action("managed-agents", sequence=1),
+            migration,
+        ]
+        errors = VALIDATE.validate_install_plan(
+            plan, self.plan_schema, "install plan", self.contract
+        )
+        self.assertTrue(any("migrations must precede" in error for error in errors), errors)
+
+    def test_install_plan_enforces_adjacent_identity_equal_backup_pair(self) -> None:
+        backup = self.plan_action(
+            "managed-framework-readme",
+            sequence=1,
+            action="backup",
+            reason="backup-before-replace",
+        )
+        replacement = self.plan_action(
+            "managed-framework-readme",
+            sequence=3,
+            action="replace",
+            reason="refresh-managed-content",
+        )
+        plan = self.valid_plan()
+        plan["actions"] = [
+            backup,
+            self.plan_action("managed-fix-record-template", sequence=2),
+            replacement,
+        ]
+        errors = VALIDATE.validate_install_plan(
+            plan, self.plan_schema, "install plan", self.contract
+        )
+        self.assertTrue(
+            any("immediately precede" in error or "immediately preceding" in error for error in errors),
+            errors,
+        )
+
+        plan["actions"] = [backup, {**replacement, "sequence": 2}]
+        plan["actions"][1]["destination"] = "SDP/Framework/other.md"
+        errors = VALIDATE.validate_install_plan(
+            plan, self.plan_schema, "install plan", self.contract
+        )
+        self.assertTrue(any("disagrees on destination" in error for error in errors), errors)
+
+        plan["actions"] = [
+            self.plan_action("managed-framework-readme", sequence=1),
+            self.plan_action("managed-framework-readme", sequence=2),
+        ]
+        errors = VALIDATE.validate_install_plan(
+            plan, self.plan_schema, "install plan", self.contract
+        )
+        self.assertTrue(any("non-canonical second action" in error for error in errors), errors)
+
+    def test_install_plan_requires_machine_readable_ordering_policy(self) -> None:
+        plan = self.valid_plan()
+        plan["orderingPolicy"] = "private-path-sort-v1"
+        errors = VALIDATE.validate_install_plan(
+            plan, self.plan_schema, "install plan", self.contract
+        )
+        self.assertTrue(any("orderingPolicy" in error for error in errors), errors)
+
+        contract = copy.deepcopy(self.contract)
+        contract["orderingPolicy"] = "private-path-sort-v1"
+        self.assertTrue(
+            any("orderingPolicy" in error for error in self.validate_contract(contract))
+        )
+
     def test_target_to_target_migration_plan_is_explicit_and_deterministic(self) -> None:
         plan = self.valid_plan()
         action = plan["actions"][0]
@@ -805,6 +932,8 @@ class InstallationContractTests(unittest.TestCase):
             source=None,
             generator=None,
             targetSource="AGENTS.md",
+            targetSourceSha256="a" * 64,
+            destinationPrecondition="absent",
             destination="AGENTS-project.migration-sha256-"
             + "a" * 64
             + ".md",
@@ -821,7 +950,12 @@ class InstallationContractTests(unittest.TestCase):
         errors = VALIDATE.validate_install_plan(
             plan, self.plan_schema, "install plan", self.contract
         )
-        self.assertTrue(any("content-hash migration name" in error for error in errors))
+        self.assertTrue(any("source-hash migration name" in error for error in errors))
+        action["destination"] = "AGENTS-project.migration-sha256-" + "b" * 64 + ".md"
+        errors = VALIDATE.validate_install_plan(
+            plan, self.plan_schema, "install plan", self.contract
+        )
+        self.assertTrue(any("source-hash migration name" in error for error in errors))
 
     def test_blocked_plan_cannot_mix_block_and_non_block_actions(self) -> None:
         plan = self.valid_plan()
@@ -1463,6 +1597,109 @@ class ProjectValidationTests(unittest.TestCase):
         installed["manifestPath"] = "../outside.yaml"
         write_yaml(path, manifest)
         self.assert_error_contains("must not contain parent traversal")
+
+
+class InstallConformancePackageTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.contract = json.loads(
+            (ROOT / "Toolkit/SDP-install.manifest.json").read_text(encoding="utf-8")
+        )
+        self.plan_schema = json.loads(
+            (ROOT / "Toolkit/schemas/SDP-install-plan.schema.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.package_root = ROOT / "Toolkit/conformance/install-v1"
+        self.index = json.loads(
+            (self.package_root / "scenarios.json").read_text(encoding="utf-8")
+        )
+
+    def test_package_is_valid_and_covers_required_scenarios(self) -> None:
+        self.assertEqual(
+            VALIDATE.validate_install_conformance_package(
+                ROOT, self.contract, self.plan_schema
+            ),
+            [],
+        )
+        scenario_ids = {scenario["id"] for scenario in self.index["scenarios"]}
+        self.assertEqual(
+            scenario_ids,
+            {
+                "empty-default",
+                "empty-initialize",
+                "repeat-default",
+                "repeat-initialize",
+                "legacy-agents-migrate",
+                "legacy-agents-conflict-new-hash-target",
+                "legacy-agents-conflict-already-preserved",
+                "legacy-agents-conflict-different-content",
+                "legacy-agents-conflict-invalid-object",
+                "upgrade-managed-content",
+                "same-version-force-managed-content",
+                "project-owned-content-preserved",
+                "archive-source-no-git",
+                "unsupported-project-schema",
+                "unsupported-installed-schema",
+                "downgrade-blocked",
+                "malformed-manifest",
+            },
+        )
+        covered = {
+            category
+            for scenario in self.index["scenarios"]
+            for category in scenario["categories"]
+        }
+        self.assertTrue(
+            VALIDATE.REQUIRED_INSTALL_CONFORMANCE_CATEGORIES.issubset(covered)
+        )
+
+    def test_all_fixture_json_uses_a_standard_parser(self) -> None:
+        paths = sorted(self.package_root.rglob("*.json"))
+        self.assertGreater(len(paths), 3)
+        for path in paths:
+            with self.subTest(path=path.relative_to(ROOT).as_posix()):
+                parsed = json.loads(path.read_text(encoding="utf-8"))
+                self.assertIsNotNone(parsed)
+
+    def test_every_committed_plan_is_schema_and_semantically_valid(self) -> None:
+        for scenario in self.index["scenarios"]:
+            if scenario["expected"]["kind"] == "fatal":
+                continue
+            path = self.package_root / scenario["expected"]["path"]
+            plan = json.loads(path.read_text(encoding="utf-8"))
+            with self.subTest(scenario=scenario["id"]):
+                self.assertEqual(
+                    VALIDATE.validate_install_plan(
+                        plan,
+                        self.plan_schema,
+                        scenario["id"],
+                        self.contract,
+                    ),
+                    [],
+                )
+
+    def test_changed_committed_authority_is_rejected_without_regeneration(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            temp_root = Path(temp)
+            copied_package = temp_root / "Toolkit/conformance/install-v1"
+            shutil.copytree(self.package_root, copied_package)
+            plan_path = copied_package / "expected/empty-default.plan.json"
+            altered = json.loads(plan_path.read_text(encoding="utf-8"))
+            altered["actions"][0]["destination"] = "SDP/wrong-location.yaml"
+            plan_path.write_text(
+                json.dumps(altered, indent=2) + "\n", encoding="utf-8"
+            )
+
+            errors = VALIDATE.validate_install_conformance_package(
+                temp_root, self.contract, self.plan_schema
+            )
+            self.assertTrue(
+                any(
+                    "destination differs from installation entry" in error
+                    for error in errors
+                ),
+                errors,
+            )
 
 
 class RepositoryValidationTests(unittest.TestCase):
