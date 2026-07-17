@@ -863,6 +863,68 @@ migration:
         $directoryBefore `
         (Get-TreeFingerprint $directoryPreservation) `
         'directory preservation failure mutated target'
+    $directoryApplyError = $null
+    try { & $Installer -ProjectRoot $directoryPreservation | Out-Null } catch {
+        $directoryApplyError = $_
+    }
+    Assert-True ($null -ne $directoryApplyError) 'directory preservation apply did not fail'
+    Assert-InstallFailureClass `
+        $directoryApplyError `
+        'agents-migration-destination-unsupported-object' `
+        'directory preservation apply'
+    Assert-Equal `
+        $directoryBefore `
+        (Get-TreeFingerprint $directoryPreservation) `
+        'directory preservation apply failure mutated target'
+
+    $reparsePreservation = New-FixtureProject 'legacy-agents-reparse-preservation'
+    [System.IO.File]::WriteAllBytes(
+        (Join-Path $reparsePreservation 'AGENTS.md'),
+        $legacyConflictBytes
+    )
+    Write-Utf8File (Join-Path $reparsePreservation 'AGENTS-project.md') 'PROJECT RULES'
+    $reparseTarget = Join-Path $reparsePreservation 'project-owned-directory-target'
+    New-Item -ItemType Directory -Path $reparseTarget | Out-Null
+    Write-Utf8File (Join-Path $reparseTarget 'project-marker.txt') 'UNCHANGED'
+    $reparseDestination = Join-Path `
+        $reparsePreservation `
+        "AGENTS-project.migration-sha256-$legacyConflictHash.md"
+    New-DirectoryLink $reparseDestination $reparseTarget
+    try {
+        $reparseBefore = Get-TreeFingerprint $reparsePreservation
+        $reparseError = $null
+        try { Invoke-PlanJson $reparsePreservation | Out-Null } catch {
+            $reparseError = $_
+        }
+        Assert-True ($null -ne $reparseError) 'reparse preservation destination did not fail'
+        Assert-InstallFailureClass `
+            $reparseError `
+            'agents-migration-destination-unsupported-object' `
+            'reparse preservation destination'
+        Assert-Equal `
+            $reparseBefore `
+            (Get-TreeFingerprint $reparsePreservation) `
+            'reparse preservation failure mutated target'
+        $reparseApplyError = $null
+        try { & $Installer -ProjectRoot $reparsePreservation | Out-Null } catch {
+            $reparseApplyError = $_
+        }
+        Assert-True ($null -ne $reparseApplyError) 'reparse preservation apply did not fail'
+        Assert-InstallFailureClass `
+            $reparseApplyError `
+            'agents-migration-destination-unsupported-object' `
+            'reparse preservation apply'
+        Assert-Equal `
+            $reparseBefore `
+            (Get-TreeFingerprint $reparsePreservation) `
+            'reparse preservation apply failure mutated target'
+        Assert-Equal `
+            'UNCHANGED' `
+            (Get-Content -Raw -LiteralPath (Join-Path $reparseTarget 'project-marker.txt')) `
+            'reparse preservation target was overwritten'
+    } finally {
+        Remove-DirectoryLink $reparseDestination
+    }
 
     $linkPreservation = New-FixtureProject 'legacy-agents-link-preservation'
     [System.IO.File]::WriteAllBytes(
@@ -877,6 +939,7 @@ migration:
         "AGENTS-project.migration-sha256-$legacyConflictHash.md"
     if (Try-NewFileSymbolicLink $linkDestination $linkTarget) {
         try {
+            $linkBefore = Get-TreeFingerprint $linkPreservation
             $linkError = $null
             try { Invoke-PlanJson $linkPreservation | Out-Null } catch {
                 $linkError = $_
@@ -890,6 +953,23 @@ migration:
                 'UNCHANGED LINK TARGET' `
                 (Get-Content -Raw -LiteralPath $linkTarget) `
                 'link preservation target was overwritten'
+            Assert-Equal `
+                $linkBefore `
+                (Get-TreeFingerprint $linkPreservation) `
+                'link preservation failure mutated target'
+            $linkApplyError = $null
+            try { & $Installer -ProjectRoot $linkPreservation | Out-Null } catch {
+                $linkApplyError = $_
+            }
+            Assert-True ($null -ne $linkApplyError) 'link preservation apply did not fail'
+            Assert-InstallFailureClass `
+                $linkApplyError `
+                'agents-migration-destination-unsupported-object' `
+                'link preservation apply'
+            Assert-Equal `
+                $linkBefore `
+                (Get-TreeFingerprint $linkPreservation) `
+                'link preservation apply failure mutated target'
         } finally {
             [System.IO.File]::Delete($linkDestination)
         }

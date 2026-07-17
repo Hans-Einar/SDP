@@ -2035,8 +2035,15 @@ if ($BlockReason) {
             } else {
                 $migrationRelative = "AGENTS-project.migration-sha256-$agentsHash.md"
                 $migrationPath = Join-PortablePath $ProjectRoot $migrationRelative 'AGENTS conflict migration destination'
-                Assert-ContainedPhysicalPath $ProjectRoot $migrationPath 'AGENTS conflict migration destination'
                 $migrationState = Get-PathObjectState $migrationPath
+                try {
+                    Assert-ContainedPhysicalPath $ProjectRoot $migrationPath 'AGENTS conflict migration destination'
+                } catch {
+                    if ($migrationState -cne 'unsupported') { throw }
+                    Throw-InstallFailure `
+                        'agents-migration-destination-unsupported-object' `
+                        "Deterministic AGENTS migration destination is not a regular file: $migrationRelative"
+                }
                 switch ($migrationState) {
                     'absent' {
                         Add-PlanAction `

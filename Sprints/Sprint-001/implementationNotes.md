@@ -233,3 +233,33 @@ rejected the reparse path before the deterministic AGENTS destination state was
 classified. This is a bounded failure-class propagation defect, not evidence of
 target mutation or project-owned overwrite. The remediation contract is
 recorded in `ScrumIterations.md`.
+
+The bounded Worker remediation classifies only the deterministic preservation
+destination before its containment assertion, retains that assertion for every
+state, and translates a containment rejection only when the destination was
+already classified as an unsupported object. Absent and regular-file
+destinations still pass through the existing physical containment checks;
+ancestor-link failures retain their existing fail-closed behavior, and
+apply-time destination races remain
+`agents-migration-destination-changed`.
+
+Regression coverage now proves the stable unsupported-object class and unchanged
+project-owned content for a regular directory, a directory junction/reparse
+destination and, when the host permits creation, a file symlink. Exact final
+Worker evidence passed on Windows `10.0.26200`:
+
+- the complete installer fixture suite under Windows PowerShell
+  `5.1.26100.8875` and portable PowerShell `7.6.3`, both ending with
+  `Installer fixture tests passed.`;
+- Toolkit validation both bare and against `origin/main`, all 80 Python tests,
+  portable conformance-package validation and exact pinned `gh-sdp` project
+  validation;
+- all 17 committed conformance scenarios against both PowerShell reference
+  hosts; and
+- both PowerShell parser checks, all 12 schema JSON parses, repository
+  JSON/YAML/NDJSON parsing and working-tree/full-branch diff checks.
+
+The local host still could not create the optional file symlink, so that fixture
+reported its documented skip while the directory junction/reparse case ran.
+Hosted Windows exact-head evidence and fresh review remain Master gates; no
+verification or review record is created by this Worker pass.
