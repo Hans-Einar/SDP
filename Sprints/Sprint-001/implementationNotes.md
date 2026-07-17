@@ -2,7 +2,7 @@
 
 ## SPS-001
 
-Status: complete
+Status: active (`SPS-001` revision 1)
 
 ### Master preparation
 
@@ -164,3 +164,25 @@ The exact evidence is `VER-SPS-001-005`. `SPS-001`, `SPI-001` and `Sprint-001`
 are complete. The draft PR remains open, and Toolkit `0.2.0` remains unreleased
 with no tag or GitHub Release. Release verification/review records remain a
 separate future gate.
+
+### Downstream reopening — revision 1
+
+The `gh-sdp` Steering Group supplied a downstream contract-consumability
+assessment through the human repository owner for exact upstream head
+`bf20832bed618ab240cf87c17517fc31ea721311`. The disposition is
+`UPSTREAM_REWORK_REQUIRED`; the evidence is recorded as
+`REV-SPS-001-006`. No GitHub review URL is claimed for this external assessment.
+
+Three Medium findings reopen the Slice: normative plan ordering is incomplete,
+AGENTS deterministic migration collision/idempotency/race behavior is
+incompletely public, and no shared language-neutral conformance package exists.
+CurrentIndex and Relations now identify
+`Sprint-001 / SPI-001 / SPS-001 / revision 1` as active. Historical evidence is
+preserved, but cannot close the revised candidate.
+
+The bounded implementation contract is in
+`Sprints/Sprint-001/ScrumIterations.md`. The next Master verification ID is
+`VER-SPS-001-006`; the next fresh implementation-review ID is
+`REV-SPS-001-007`. PR #4 remains the only PR, remains draft, and matched the
+assessed head when reopened. Toolkit `0.2.0` remains unreleased; local tags,
+remote tags and GitHub Releases were absent.

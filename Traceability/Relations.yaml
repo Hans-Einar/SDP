@@ -2,7 +2,7 @@ requirements: {}
 designs: {}
 sprints:
   Sprint-001:
-    status: complete
+    status: active
     path: Sprints/Sprint-001/ScrumIterations.md
     release: REL-0.2.0
     iterations:
@@ -10,14 +10,14 @@ sprints:
 refactors: {}
 iterations:
   SPI-001:
-    status: complete
+    status: active
     sprint: Sprint-001
     path: Sprints/Sprint-001/ScrumIterations.md
     slices:
       - SPS-001
 slices:
   SPS-001:
-    status: complete
+    status: active
     sprint: Sprint-001
     iteration: SPI-001
     release: REL-0.2.0
@@ -36,6 +36,7 @@ slices:
       - REV-SPS-001-003
       - REV-SPS-001-004
       - REV-SPS-001-005
+      - REV-SPS-001-006
 fixes: {}
 reviews:
   REV-SPS-001-001:
@@ -73,6 +74,13 @@ reviews:
     release: REL-0.2.0
     verification: VER-SPS-001-005
     commit: 7c78132f31788d7494eb93c6cba5310c5503e416
+  REV-SPS-001-006:
+    status: changes-required
+    path: CodeReview/REV-SPS-001-006.md
+    slice: SPS-001
+    release: REL-0.2.0
+    verification: VER-SPS-001-005
+    commit: bf20832bed618ab240cf87c17517fc31ea721311
 verification:
   VER-SPS-001:
     status: passed

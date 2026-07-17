@@ -1,9 +1,10 @@
 # Sprint-001 — Portable installation and project-validation contract
 
-Status: complete
+Status: active (reopened for `SPS-001` revision 1)
 Release target: `REL-0.2.0` (`0.2.0`, unreleased)
 Started: `2026-07-13T20:54:45Z`
-Completed: `2026-07-14T01:42:15Z`
+Original completion: `2026-07-14T01:42:15Z`
+Reopened: `2026-07-17T12:42:02Z`
 
 ## Sprint goal
 
@@ -13,11 +14,11 @@ without publishing Toolkit `0.2.0`.
 
 ## SPI-001 — Installation contract hardening
 
-Status: complete
+Status: active (reopened for `SPS-001` revision 1)
 
 ### SPS-001 — Canonical installation contract v1
 
-Status: complete
+Status: active (revision 1 downstream conformance remediation)
 
 #### Goal
 
@@ -210,3 +211,49 @@ Linux, independent review has no unresolved finding, SDP records are current,
 and draft PR `#4` is open against `main`. Toolkit `0.2.0` remains unreleased with
 no tag or GitHub Release. `SPS-001`, `SPI-001` and `Sprint-001` are complete;
 this does not complete or publish `REL-0.2.0`.
+
+#### Revision 1 — downstream contract-consumability remediation
+
+Status: active
+Opened: `2026-07-17T12:42:02Z`
+Trigger review: `CodeReview/REV-SPS-001-006.md`
+Assessed upstream head: `bf20832bed618ab240cf87c17517fc31ea721311`
+Draft pull request: `Hans-Einar/SDP#4` (must remain draft)
+
+The `gh-sdp` Steering Group assessed the completed candidate and returned
+`UPSTREAM_REWORK_REQUIRED` through the human repository owner. The earlier
+verification and approvals remain truthful for their exact candidates, but are
+superseded as completion evidence by three unresolved Medium downstream
+contract findings.
+
+Revision 1 is a bounded correction inside `SPS-001`. It must:
+
+- define and enforce the canonical v1 plan ordering: blocked plans contain one
+  sequence-1 block; deterministic target-to-target migrations precede ordinary
+  entries; ordinary entries follow exact installation-manifest array order;
+  backup/mutation pairs are adjacent and identity-consistent; sequence is
+  assigned last, contiguous from 1; clients must not privately sort actions;
+- define the exact-byte SHA-256 `AGENTS.md` preservation destination and
+  fail-closed absent, identical-file, differing-file, unsupported-object and
+  plan/apply race semantics without overwriting project-owned content;
+- add a versioned, language-neutral installation-v1 conformance package with a
+  machine-readable scenario index, portable before-state declarations,
+  authoritative expected normalized plans or closed-vocabulary fatal failure
+  outcomes, preservation assertions and a Python reference harness;
+- cover at least empty default/initialize, repeat default/initialize, legacy
+  migration, new/already-preserved/different/invalid AGENTS hash targets,
+  managed upgrade, same-version force, project-owned preservation, archive
+  without Git, unsupported project and installed schemas, downgrade blocking
+  and malformed manifest;
+- update schemas, PowerShell, Python validation, tests, public documentation,
+  examples and Unreleased notes only as needed for those three findings; and
+- retain Windows PowerShell 5.1 and current PowerShell 7 compatibility, exact
+  pinned `gh-sdp` project validation, source-archive support and all prior safety
+  invariants.
+
+Revision 1 does not authorize `gh-sdp` implementation, unrelated installer
+redesign, Toolkit `0.2.0` publication, version change, tagging, a GitHub Release,
+merging PR #4 or marking it ready. Completion requires `VER-SPS-001-006`, fresh
+independent review `REV-SPS-001-007` with no unresolved Blocking/High/Medium
+finding, Linux and Windows GitHub Actions on the exact new head, and a request
+for a new bounded downstream acceptance pass.
