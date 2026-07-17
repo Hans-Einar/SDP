@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sdp.local/schemas/current-index.schema.json",
+  "title": "SDP Current Traceability Index",
+  "description": "The current project, release, and development coordinates. This schema validates the machine-readable index shape; it does not infer completion from project documents.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["project", "release", "active"],
+  "properties": {
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "status"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "status": { "type": "string", "minLength": 1 }
+      }
+    },
+    "release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["previousVersion", "activeReleaseId", "targetVersion", "state"],
+      "properties": {
+        "previousVersion": { "oneOf": [{ "$ref": "#/$defs/semver" }, { "type": "null" }] },
+        "activeReleaseId": { "oneOf": [{ "$ref": "#/$defs/releaseId" }, { "type": "null" }] },
+        "targetVersion": { "oneOf": [{ "$ref": "#/$defs/semver" }, { "type": "null" }] },
+        "state": { "enum": ["unreleased", "prerelease", "released", "yanked"] },
+        "targetStatus": { "type": "string", "minLength": 1 }
+      }
+    },
+    "active": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sprint", "refactor", "iteration", "slice", "fix", "revision"],
+      "properties": {
+        "sprint": { "oneOf": [{ "$ref": "#/$defs/sprintId" }, { "type": "null" }] },
+        "refactor": { "oneOf": [{ "$ref": "#/$defs/refactorId" }, { "type": "null" }] },
+        "iteration": { "oneOf": [{ "$ref": "#/$defs/iterationId" }, { "type": "null" }] },
+        "slice": { "oneOf": [{ "$ref": "#/$defs/sliceId" }, { "type": "null" }] },
+        "fix": { "oneOf": [{ "$ref": "#/$defs/fixId" }, { "type": "null" }] },
+        "revision": { "type": ["integer", "null"], "minimum": 1 }
+      },
+      "allOf": [
+        {
+          "not": {
+            "properties": { "sprint": { "type": "string" }, "refactor": { "type": "string" } },
+            "required": ["sprint", "refactor"]
+          }
+        },
+        {
+          "not": {
+            "properties": { "slice": { "type": "string" }, "fix": { "type": "string" } },
+            "required": ["slice", "fix"]
+          }
+        },
+        {
+          "if": { "properties": { "iteration": { "type": "string" } }, "required": ["iteration"] },
+          "then": {
+            "anyOf": [
+              { "properties": { "sprint": { "type": "string" } }, "required": ["sprint"] },
+              { "properties": { "refactor": { "type": "string" } }, "required": ["refactor"] }
+            ]
+          }
+        },
+        {
+          "if": { "properties": { "slice": { "type": "string" } }, "required": ["slice"] },
+          "then": { "properties": { "iteration": { "type": "string" } }, "required": ["iteration"] }
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "semver": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\\+([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?$"
+    },
+    "releaseId": {
+      "type": "string",
+      "pattern": "^REL-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\\+([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?$"
+    },
+    "sprintId": { "type": "string", "pattern": "^Sprint-[0-9]{3,}$" },
+    "refactorId": { "type": "string", "pattern": "^Refactor-[0-9]{3,}$" },
+    "iterationId": { "type": "string", "pattern": "^SPI-[0-9]{3,}$" },
+    "sliceId": { "type": "string", "pattern": "^SPS-[0-9]{3,}$" },
+    "fixId": {
+      "type": "string",
+      "pattern": "^(FIX|HOTFIX)-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\\+([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?-[0-9]{3}$"
+    }
+  }
+}

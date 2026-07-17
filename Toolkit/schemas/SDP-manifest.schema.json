@@ -1,1 +1,136 @@
-{"$schema":"https://json-schema.org/draft/2020-12/schema","$id":"https://sdp.local/schemas/SDP-manifest.schema.json","title":"SDP Toolkit Manifest","type":"object","additionalProperties":false,"required":["schemaVersion","toolkit","framework","agentsContract","skills","capabilities","releaseNotesPath","migration","supportedProjectManifestSchemaVersions"],"properties":{"schemaVersion":{"const":"1.0"},"toolkit":{"type":"object","additionalProperties":false,"required":["version","releaseState","releaseTargetVersion","releaseDate","minimumInstallerVersion","compatibilityRange","gitTag","releaseCommit"],"properties":{"version":{"$ref":"#/$defs/semver"},"releaseState":{"enum":["unreleased","prerelease","released","yanked"]},"releaseTargetVersion":{"$ref":"#/$defs/semver"},"releaseDate":{"anyOf":[{"const":"unreleased"},{"type":"string","format":"date"}]},"minimumInstallerVersion":{"$ref":"#/$defs/semver"},"compatibilityRange":{"type":"string","minLength":1},"gitTag":{"type":["string","null"]},"releaseCommit":{"type":["string","null"]}}},"framework":{"type":"object","required":["version"],"properties":{"version":{"$ref":"#/$defs/semver"}},"additionalProperties":false},"agentsContract":{"type":"object","required":["version"],"properties":{"version":{"$ref":"#/$defs/semver"}},"additionalProperties":false},"skills":{"type":"object","minProperties":1,"additionalProperties":{"$ref":"#/$defs/semver"}},"capabilities":{"type":"array","uniqueItems":true,"items":{"type":"string","pattern":"^sdp\\.[a-z0-9.-]+\\.v[0-9]+$"}},"releaseNotesPath":{"type":"string","minLength":1},"migration":{"type":"object","required":["required","guidePath"],"properties":{"required":{"type":"boolean"},"guidePath":{"type":"string"}},"additionalProperties":false},"supportedProjectManifestSchemaVersions":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}}},"$defs":{"semver":{"type":"string","pattern":"^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"}}}
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sdp.local/schemas/SDP-manifest.schema.json",
+  "title": "SDP Toolkit Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "toolkit",
+    "framework",
+    "agentsContract",
+    "skills",
+    "capabilities",
+    "releaseNotesPath",
+    "migration",
+    "supportedProjectManifestSchemaVersions"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "toolkit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "releaseState",
+        "releaseTargetVersion",
+        "releaseDate",
+        "minimumInstallerVersion",
+        "compatibilityRange",
+        "gitTag",
+        "releaseCommit"
+      ],
+      "properties": {
+        "version": { "$ref": "#/$defs/semver" },
+        "releaseState": { "enum": ["unreleased", "prerelease", "released", "yanked"] },
+        "releaseTargetVersion": { "$ref": "#/$defs/semver" },
+        "releaseDate": {
+          "anyOf": [
+            { "const": "unreleased" },
+            { "type": "string", "format": "date" }
+          ]
+        },
+        "minimumInstallerVersion": { "$ref": "#/$defs/semver" },
+        "compatibilityRange": { "type": "string", "minLength": 1 },
+        "gitTag": {
+          "oneOf": [
+            { "$ref": "#/$defs/versionTag" },
+            { "type": "null" }
+          ]
+        },
+        "releaseCommit": { "type": ["string", "null"], "minLength": 7 }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "releaseState": { "const": "unreleased" } },
+            "required": ["releaseState"]
+          },
+          "then": {
+            "properties": {
+              "releaseDate": { "const": "unreleased" },
+              "gitTag": { "type": "null" },
+              "releaseCommit": { "type": "null" }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": { "releaseState": { "enum": ["released", "yanked"] } },
+            "required": ["releaseState"]
+          },
+          "then": {
+            "properties": {
+              "releaseDate": { "type": "string", "format": "date" },
+              "gitTag": { "$ref": "#/$defs/versionTag" },
+              "releaseCommit": { "type": "string", "minLength": 7 }
+            }
+          }
+        }
+      ]
+    },
+    "framework": {
+      "type": "object",
+      "required": ["version"],
+      "properties": { "version": { "$ref": "#/$defs/semver" } },
+      "additionalProperties": false
+    },
+    "agentsContract": {
+      "type": "object",
+      "required": ["version"],
+      "properties": { "version": { "$ref": "#/$defs/semver" } },
+      "additionalProperties": false
+    },
+    "skills": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "$ref": "#/$defs/semver" }
+    },
+    "capabilities": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^sdp\\.[a-z0-9.-]+\\.v[0-9]+$" }
+    },
+    "releaseNotesPath": { "$ref": "#/$defs/portablePath" },
+    "migration": {
+      "type": "object",
+      "required": ["required", "guidePath"],
+      "properties": {
+        "required": { "type": "boolean" },
+        "guidePath": { "$ref": "#/$defs/portablePath" }
+      },
+      "additionalProperties": false
+    },
+    "supportedProjectManifestSchemaVersions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string" }
+    }
+  },
+  "$defs": {
+    "semver": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\\+([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?$"
+    },
+    "versionTag": {
+      "type": "string",
+      "pattern": "^v(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\\+([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?$"
+    },
+    "portablePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*[\\\\<>:\"|?*~\\u0000-\\u001F\\u007F])(?!.*//)(?!.*\\/$)(?!.*(?:^|/)\\.{1,2}(?:/|$))(?!.*(?:^|/)\\.[Gg][Ii][Tt](?:/|$))(?!.*(?:^|/)(?:[Cc][Oo][Nn]|[Pp][Rr][Nn]|[Aa][Uu][Xx]|[Nn][Uu][Ll]|[Cc][Ll][Oo][Cc][Kk]\\$|[Cc][Oo][Nn][Ii][Nn]\\$|[Cc][Oo][Nn][Oo][Uu][Tt]\\$|[Cc][Oo][Mm](?:[1-9]|\\u00B9|\\u00B2|\\u00B3)|[Ll][Pp][Tt](?:[1-9]|\\u00B9|\\u00B2|\\u00B3))(?:\\.[^/]*)?(?:/|$))(?!.*[. ](?:/|$)).+$"
+    }
+  }
+}

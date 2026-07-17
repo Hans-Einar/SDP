@@ -16,6 +16,10 @@ A normal release candidate fails unless all of the following are true:
 - required migration notes exist
 - the target is greater than the previous release
 - immutable released history has not been changed silently
+- governed record paths use canonical `.yaml` names and resolve to real files
+- Slice/Fix review and verification, review-resolution, and release/migration links are reciprocal
+- release record IDs, versions, state, dates, tags and commits agree
+- each release event subject and tag matches the governed release identity
 
 The gate emits evidence; it does not infer missing evidence.
 
@@ -27,7 +31,7 @@ The gate emits evidence; it does not infer missing evidence.
 | Patch/hotfix | Must be backward-compatible; a Fix record may supply the work contract, but the release remains a normal PATCH release. |
 | Yanked | Never delete history; record reason, affected versions and replacement guidance, then mark state `yanked`. |
 | Documentation-only | May omit product runtime tests only when no executable or public contract changes; documentation and link validation still pass. |
-| SDP Toolkit | Installer migration fixtures, skill/manifest agreement and Framework compatibility are mandatory. |
+| SDP Toolkit | Installation-contract/plan schemas, installer migration fixtures, skill/manifest agreement, Framework compatibility and an extracted-source-archive check are mandatory. |
 | Consuming project | Package/application version agreement and project-specific acceptance evidence are mandatory. |
 
 ## Truthful two-phase publication
@@ -60,3 +64,19 @@ This follow-up commit is intentionally after the tagged commit. A commit cannot
 truthfully contain evidence that a future tag or GitHub Release already exists,
 and it cannot contain its own SHA. The annotated tag and GitHub Release identify
 the released source; the reconciliation commit records the completed transaction.
+
+## Toolkit source-archive gate
+
+Before publishing an SDP Toolkit release, verify the candidate from a normally
+extracted GitHub source archive in a temporary path with no `.git` directory.
+The installation manifest and every schema/source reference must resolve from
+the archive root, the deterministic plan must not depend on Windows separators
+or PowerShell interpretation, installation must succeed, and generated installed
+facts must record `sourceCommit: null` when no trustworthy commit is available.
+Conversely, a non-null value from a dirty checkout would identify only its
+available `HEAD`, not attest that the installed bytes equal that commit; release
+archive verification must rely on the clean, exact candidate evidence.
+
+The normal GitHub source archive is the selected distribution artifact. Do not
+add a custom release asset unless concrete verification shows that the normal
+archive cannot satisfy the contract safely.

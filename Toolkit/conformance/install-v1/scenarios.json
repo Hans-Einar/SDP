@@ -1,0 +1,506 @@
+{
+  "schemaVersion": "1.0",
+  "contractId": "sdp-install-conformance",
+  "orderingPolicy": "migration-first-manifest-order-v1",
+  "failureClasses": [
+    "install-manifest-invalid",
+    "agents-migration-destination-content-mismatch",
+    "agents-migration-destination-unsupported-object",
+    "agents-migration-source-changed",
+    "agents-migration-destination-changed"
+  ],
+  "scenarios": [
+    {
+      "id": "empty-default",
+      "categories": ["empty"],
+      "sourceMode": "archive-no-git",
+      "options": {
+        "initializeProjectStructure": false,
+        "forceManagedFiles": false
+      },
+      "before": {
+        "profile": "empty",
+        "directories": [],
+        "files": []
+      },
+      "expected": {
+        "kind": "applicable-plan",
+        "path": "expected/empty-default.plan.json"
+      },
+      "assertions": {
+        "planningPreservesTree": true,
+        "afterApply": {
+          "absentPaths": ["SDP/Releases/REL-0.2.0.yaml"]
+        }
+      }
+    },
+    {
+      "id": "empty-initialize",
+      "categories": ["empty", "initialize"],
+      "sourceMode": "archive-no-git",
+      "options": {
+        "initializeProjectStructure": true,
+        "forceManagedFiles": false
+      },
+      "before": {
+        "profile": "empty",
+        "directories": [],
+        "files": []
+      },
+      "expected": {
+        "kind": "applicable-plan",
+        "path": "expected/empty-initialize.plan.json"
+      },
+      "assertions": {
+        "planningPreservesTree": true,
+        "afterApply": {
+          "absentPaths": ["SDP/Releases/REL-0.2.0.yaml"]
+        }
+      }
+    },
+    {
+      "id": "repeat-default",
+      "categories": ["repeat"],
+      "sourceMode": "archive-no-git",
+      "options": {
+        "initializeProjectStructure": false,
+        "forceManagedFiles": false
+      },
+      "before": {
+        "profile": "installed-default",
+        "directories": [],
+        "files": []
+      },
+      "expected": {
+        "kind": "applicable-plan",
+        "path": "expected/repeat-default.plan.json"
+      },
+      "assertions": {
+        "planningPreservesTree": true
+      }
+    },
+    {
+      "id": "repeat-initialize",
+      "categories": ["repeat", "repeat-initialize"],
+      "sourceMode": "archive-no-git",
+      "options": {
+        "initializeProjectStructure": true,
+        "forceManagedFiles": false
+      },
+      "before": {
+        "profile": "installed-initialize",
+        "directories": [],
+        "files": []
+      },
+      "expected": {
+        "kind": "applicable-plan",
+        "path": "expected/repeat-initialize.plan.json"
+      },
+      "assertions": {
+        "planningPreservesTree": true
+      }
+    },
+    {
+      "id": "legacy-agents-migrate",
+      "categories": ["legacy"],
+      "sourceMode": "archive-no-git",
+      "options": {
+        "initializeProjectStructure": false,
+        "forceManagedFiles": false
+      },
+      "before": {
+        "profile": "empty",
+        "directories": [],
+        "files": [
+          {
+            "path": "AGENTS.md",
+            "contentBase64": "bGVnYWN5IGFnZW50cw0KZXhhY3QgYnl0ZXMK"
+          }
+        ]
+      },
+      "expected": {
+        "kind": "applicable-plan",
+        "path": "expected/legacy-agents-migrate.plan.json"
+      },
+      "assertions": {
+        "planningPreservesTree": true,
+        "afterApply": {
+          "files": [
+            {
+              "path": "AGENTS-project.md",
+              "sha256": "a49c9aa640ca5ad3e066bd7470dcb1d317b363dda4aabc7c9753bff56a642fe7"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "legacy-agents-conflict-new-hash-target",
+      "categories": ["legacy"],
+      "sourceMode": "archive-no-git",
+      "options": {
+        "initializeProjectStructure": false,
+        "forceManagedFiles": false
+      },
+      "before": {
+        "profile": "empty",
+        "directories": [],
+        "files": [
+          {
+            "path": "AGENTS.md",
+            "contentBase64": "bGVnYWN5IGFnZW50cw0KZXhhY3QgYnl0ZXMK"
+          },
+          {
+            "path": "AGENTS-project.md",
+            "contentUtf8": "existing project agents"
+          }
+        ]
+      },
+      "expected": {
+        "kind": "applicable-plan",
+        "path": "expected/legacy-agents-conflict-new-hash-target.plan.json"
+      },
+      "assertions": {
+        "planningPreservesTree": true,
+        "afterApply": {
+          "files": [
+            {
+              "path": "AGENTS-project.migration-sha256-a49c9aa640ca5ad3e066bd7470dcb1d317b363dda4aabc7c9753bff56a642fe7.md",
+              "sha256": "a49c9aa640ca5ad3e066bd7470dcb1d317b363dda4aabc7c9753bff56a642fe7"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "legacy-agents-conflict-already-preserved",
+      "categories": ["legacy"],
+      "sourceMode": "archive-no-git",
+      "options": {
+        "initializeProjectStructure": false,
+        "forceManagedFiles": false
+      },
+      "before": {
+        "profile": "empty",
+        "directories": [],
+        "files": [
+          {
+            "path": "AGENTS.md",
+            "contentBase64": "bGVnYWN5IGFnZW50cw0KZXhhY3QgYnl0ZXMK"
+          },
+          {
+            "path": "AGENTS-project.md",
+            "contentUtf8": "existing project agents"
+          },
+          {
+            "path": "AGENTS-project.migration-sha256-a49c9aa640ca5ad3e066bd7470dcb1d317b363dda4aabc7c9753bff56a642fe7.md",
+            "contentBase64": "bGVnYWN5IGFnZW50cw0KZXhhY3QgYnl0ZXMK"
+          }
+        ]
+      },
+      "expected": {
+        "kind": "applicable-plan",
+        "path": "expected/legacy-agents-conflict-already-preserved.plan.json"
+      },
+      "assertions": {
+        "planningPreservesTree": true,
+        "afterApply": {
+          "files": [
+            {
+              "path": "AGENTS-project.migration-sha256-a49c9aa640ca5ad3e066bd7470dcb1d317b363dda4aabc7c9753bff56a642fe7.md",
+              "sha256": "a49c9aa640ca5ad3e066bd7470dcb1d317b363dda4aabc7c9753bff56a642fe7"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "legacy-agents-conflict-different-content",
+      "categories": ["legacy", "error"],
+      "sourceMode": "archive-no-git",
+      "options": {
+        "initializeProjectStructure": false,
+        "forceManagedFiles": false
+      },
+      "before": {
+        "profile": "empty",
+        "directories": [],
+        "files": [
+          {
+            "path": "AGENTS.md",
+            "contentBase64": "bGVnYWN5IGFnZW50cw0KZXhhY3QgYnl0ZXMK"
+          },
+          {
+            "path": "AGENTS-project.md",
+            "contentUtf8": "existing project agents"
+          },
+          {
+            "path": "AGENTS-project.migration-sha256-a49c9aa640ca5ad3e066bd7470dcb1d317b363dda4aabc7c9753bff56a642fe7.md",
+            "contentBase64": "RElGRkVSRU5UIFBST0pFQ1QtT1dORUQgQllURVM="
+          }
+        ]
+      },
+      "expected": {
+        "kind": "fatal",
+        "path": "expected/legacy-agents-conflict-different-content.failure.json"
+      },
+      "assertions": {
+        "planningPreservesTree": true
+      }
+    },
+    {
+      "id": "legacy-agents-conflict-invalid-object",
+      "categories": ["legacy", "error"],
+      "sourceMode": "archive-no-git",
+      "options": {
+        "initializeProjectStructure": false,
+        "forceManagedFiles": false
+      },
+      "before": {
+        "profile": "empty",
+        "directories": [
+          "AGENTS-project.migration-sha256-a49c9aa640ca5ad3e066bd7470dcb1d317b363dda4aabc7c9753bff56a642fe7.md"
+        ],
+        "files": [
+          {
+            "path": "AGENTS.md",
+            "contentBase64": "bGVnYWN5IGFnZW50cw0KZXhhY3QgYnl0ZXMK"
+          },
+          {
+            "path": "AGENTS-project.md",
+            "contentUtf8": "existing project agents"
+          }
+        ]
+      },
+      "expected": {
+        "kind": "fatal",
+        "path": "expected/legacy-agents-conflict-invalid-object.failure.json"
+      },
+      "assertions": {
+        "planningPreservesTree": true
+      }
+    },
+    {
+      "id": "upgrade-managed-content",
+      "categories": ["upgrade"],
+      "sourceMode": "archive-no-git",
+      "options": {
+        "initializeProjectStructure": false,
+        "forceManagedFiles": false
+      },
+      "before": {
+        "profile": "installed-default",
+        "installedManifestFacts": {
+          "toolkitVersion": "0.1.0"
+        },
+        "directories": [],
+        "files": [
+          {
+            "path": "SDP/Framework/README.md",
+            "contentBase64": "T0xEIE1BTkFHRUQgRlJBTUVXT1JLIENPTlRFTlQ="
+          }
+        ]
+      },
+      "expected": {
+        "kind": "applicable-plan",
+        "path": "expected/upgrade-managed-content.plan.json"
+      },
+      "assertions": {
+        "planningPreservesTree": true
+      }
+    },
+    {
+      "id": "same-version-force-managed-content",
+      "categories": ["force"],
+      "sourceMode": "archive-no-git",
+      "options": {
+        "initializeProjectStructure": false,
+        "forceManagedFiles": true
+      },
+      "before": {
+        "profile": "installed-default",
+        "directories": [],
+        "files": [
+          {
+            "path": "SDP/Framework/README.md",
+            "contentBase64": "T0xEIE1BTkFHRUQgRlJBTUVXT1JLIENPTlRFTlQ="
+          }
+        ]
+      },
+      "expected": {
+        "kind": "applicable-plan",
+        "path": "expected/same-version-force-managed-content.plan.json"
+      },
+      "assertions": {
+        "planningPreservesTree": true
+      }
+    },
+    {
+      "id": "project-owned-content-preserved",
+      "categories": ["project-owned"],
+      "sourceMode": "archive-no-git",
+      "options": {
+        "initializeProjectStructure": false,
+        "forceManagedFiles": true
+      },
+      "before": {
+        "profile": "installed-default",
+        "directories": [],
+        "files": [
+          {
+            "path": "SDP/RELEASE-NOTES.md",
+            "contentBase64": "Q1VTVE9NIFBST0pFQ1QgUkVMRUFTRSBOT1RFUw=="
+          }
+        ]
+      },
+      "expected": {
+        "kind": "applicable-plan",
+        "path": "expected/project-owned-content-preserved.plan.json"
+      },
+      "assertions": {
+        "planningPreservesTree": true,
+        "afterApply": {
+          "files": [
+            {
+              "path": "SDP/RELEASE-NOTES.md",
+              "sha256": "31091035a6ddae02ec35a5e4b9f5f921def695b6359cd599a4414860a6d20b05"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "archive-source-no-git",
+      "categories": ["archive"],
+      "sourceMode": "archive-no-git",
+      "options": {
+        "initializeProjectStructure": false,
+        "forceManagedFiles": false
+      },
+      "before": {
+        "profile": "empty",
+        "directories": [],
+        "files": []
+      },
+      "expected": {
+        "kind": "applicable-plan",
+        "path": "expected/archive-source-no-git.plan.json"
+      },
+      "assertions": {
+        "planningPreservesTree": true,
+        "afterApply": {
+          "utf8Contains": [
+            {
+              "path": "SDP/Framework/installed-toolkit.manifest.yaml",
+              "value": "sourceCommit: null"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "unsupported-project-schema",
+      "categories": ["error"],
+      "sourceMode": "archive-no-git",
+      "options": {
+        "initializeProjectStructure": false,
+        "forceManagedFiles": false
+      },
+      "before": {
+        "profile": "empty",
+        "directories": [],
+        "files": [
+          {
+            "path": "SDP/SDP-project.manifest.yaml",
+            "contentUtf8": "schemaVersion: \"9.0\"\n"
+          }
+        ]
+      },
+      "expected": {
+        "kind": "blocked-plan",
+        "path": "expected/unsupported-project-schema.plan.json"
+      },
+      "assertions": {
+        "planningPreservesTree": true
+      }
+    },
+    {
+      "id": "unsupported-installed-schema",
+      "categories": ["error"],
+      "sourceMode": "archive-no-git",
+      "options": {
+        "initializeProjectStructure": false,
+        "forceManagedFiles": false
+      },
+      "before": {
+        "profile": "empty",
+        "directories": [],
+        "files": [
+          {
+            "path": "SDP/Framework/installed-toolkit.manifest.yaml",
+            "contentUtf8": "schemaVersion: \"9.0\"\ntoolkitVersion: \"9.0.0\"\n"
+          }
+        ]
+      },
+      "expected": {
+        "kind": "blocked-plan",
+        "path": "expected/unsupported-installed-schema.plan.json"
+      },
+      "assertions": {
+        "planningPreservesTree": true
+      }
+    },
+    {
+      "id": "downgrade-blocked",
+      "categories": ["error"],
+      "sourceMode": "archive-no-git",
+      "options": {
+        "initializeProjectStructure": false,
+        "forceManagedFiles": false
+      },
+      "before": {
+        "profile": "installed-default",
+        "installedManifestFacts": {
+          "toolkitVersion": "0.3.0"
+        },
+        "directories": [],
+        "files": []
+      },
+      "expected": {
+        "kind": "blocked-plan",
+        "path": "expected/downgrade-blocked.plan.json"
+      },
+      "assertions": {
+        "planningPreservesTree": true
+      }
+    },
+    {
+      "id": "malformed-manifest",
+      "categories": ["error"],
+      "sourceMode": "archive-no-git",
+      "options": {
+        "initializeProjectStructure": false,
+        "forceManagedFiles": false
+      },
+      "before": {
+        "profile": "empty",
+        "directories": [],
+        "files": []
+      },
+      "sourceManifestMutations": [
+        {
+          "op": "replace",
+          "path": "/orderingPolicy",
+          "value": "private-path-sort-v1"
+        }
+      ],
+      "expected": {
+        "kind": "fatal",
+        "path": "expected/malformed-manifest.failure.json"
+      },
+      "assertions": {
+        "planningPreservesTree": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,263 @@
+requirements: {}
+designs: {}
+mandates:
+  MAN-001:
+    path: SDP/01--Mandate/mandate.md
+    identifierConvention: SDP/Instructions/StableIdentifiers.md
+    status: proposed
+    sprint: Sprint-001
+    outcomes:
+      - MAN-OUT-001
+      - MAN-OUT-002
+      - MAN-OUT-003
+      - MAN-OUT-004
+      - MAN-OUT-005
+      - MAN-OUT-006
+    boundaries:
+      - MAN-BND-001
+      - MAN-BND-002
+      - MAN-BND-003
+      - MAN-BND-004
+      - MAN-BND-005
+      - MAN-BND-006
+      - MAN-BND-007
+      - MAN-BND-008
+    successCriteria:
+      - MAN-SC-001
+      - MAN-SC-002
+      - MAN-SC-003
+      - MAN-SC-004
+      - MAN-SC-005
+      - MAN-SC-006
+      - MAN-SC-007
+    assumptions:
+      - MAN-ASM-001
+      - MAN-ASM-002
+      - MAN-ASM-003
+      - MAN-ASM-004
+    questions:
+      - MAN-Q-001
+      - MAN-Q-002
+      - MAN-Q-003
+      - MAN-Q-004
+      - MAN-Q-005
+      - MAN-Q-006
+      - MAN-Q-007
+outcomes:
+  MAN-OUT-001:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: proposed
+  MAN-OUT-002:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: proposed
+  MAN-OUT-003:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: proposed
+  MAN-OUT-004:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: proposed
+  MAN-OUT-005:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: proposed
+  MAN-OUT-006:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: proposed
+boundaries:
+  MAN-BND-001:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: active
+  MAN-BND-002:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: active
+  MAN-BND-003:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: active
+  MAN-BND-004:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: active
+  MAN-BND-005:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: active
+  MAN-BND-006:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: active
+  MAN-BND-007:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: active
+  MAN-BND-008:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: active
+successCriteria:
+  MAN-SC-001:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: proposed
+  MAN-SC-002:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: proposed
+  MAN-SC-003:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: proposed
+  MAN-SC-004:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: proposed
+  MAN-SC-005:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: proposed
+  MAN-SC-006:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: proposed
+  MAN-SC-007:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: proposed
+assumptions:
+  MAN-ASM-001:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: proposed
+  MAN-ASM-002:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: proposed
+  MAN-ASM-003:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: proposed
+  MAN-ASM-004:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: proposed
+questions:
+  MAN-Q-001:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: unresolved
+  MAN-Q-002:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: unresolved
+  MAN-Q-003:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: unresolved
+  MAN-Q-004:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: unresolved
+  MAN-Q-005:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: unresolved
+  MAN-Q-006:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: unresolved
+  MAN-Q-007:
+    mandate: MAN-001
+    path: SDP/01--Mandate/mandate.md
+    status: unresolved
+sprints:
+  Sprint-001:
+    path: SDP/Sprints/Sprint-001/ScrumIterations.md
+    status: complete
+    iterations:
+      - SPI-001
+refactors: {}
+iterations:
+  SPI-001:
+    path: SDP/Sprints/Sprint-001/ScrumIterations.md
+    sprint: Sprint-001
+    status: complete
+    slices:
+      - SPS-001
+slices:
+  SPS-001:
+    path: SDP/Sprints/Sprint-001/ScrumIterations.md
+    sprint: Sprint-001
+    iteration: SPI-001
+    mandate:
+      - MAN-001
+    release:
+      - REL-0.1.0
+    status: complete
+    verification:
+      - VER-SPS-001
+    reviews:
+      - REV-SPS-001-001
+      - REV-SPS-001-002
+fixes: {}
+reviews:
+  REV-SPS-001-001:
+    path: SDP/CodeReview/REV-SPS-001-001.md
+    status: changes-required
+    reviewer: /root/phase1_reviewer
+    candidateCommit: 381b38ed6fc59936e7e2cb30b877e156ff57914c
+    slice: SPS-001
+    resolvedBy: REV-SPS-001-002
+    findings:
+      blocking: 0
+      high: 0
+      medium: 4
+      low: 1
+  REV-SPS-001-002:
+    path: SDP/CodeReview/REV-SPS-001-002.md
+    status: approved
+    reviewer: /root/phase1_followup_reviewer
+    candidateCommit: f9d97c5a19d7b7f035f8dbfa2dd1f9e464b4378f
+    slice: SPS-001
+    resolves: REV-SPS-001-001
+    findings:
+      blocking: 0
+      high: 0
+      medium: 0
+      low: 1
+verification:
+  VER-SPS-001:
+    path: SDP/Verification/VER-SPS-001.md
+    status: passed
+    slice: SPS-001
+    releaseContext: REL-0.1.0
+    remediationCommit: bb16bee815d40742f29e15eeac4254bd1310376e
+    candidateCommit: f9d97c5a19d7b7f035f8dbfa2dd1f9e464b4378f
+    reviewerConfirmation: REV-SPS-001-002
+migrations: {}
+releases:
+  REL-0.1.0:
+    version: "0.1.0"
+    state: unreleased
+    targetStatus: proposed
+    mandate:
+      - MAN-001
+    releaseNotes: SDP/RELEASE-NOTES.md
+    manifest: SDP/SDP-project.manifest.yaml
+    releaseRecord: SDP/Releases/REL-0.1.0.yaml
+    verification: []
+    reviews: []
+    releaseCommit: null
+    gitTag: null
+    githubRelease: null
+
+# Publication identities remain null until the corresponding Git/GitHub objects
+# exist. VER-SPS-001 is passed Slice evidence confirmed by REV-SPS-001-002; it
+# is not release-gate verification and is intentionally absent from the release
+# verification/review arrays. The 0.1.0 target remains proposed and unreleased.

@@ -11,16 +11,16 @@
   ],
   "properties": {
     "schemaVersion": { "const": "1.0" },
-    "releaseId": { "type": "string", "pattern": "^REL-[0-9]+\\.[0-9]+\\.[0-9]+(?:-[0-9A-Za-z.-]+)?$" },
+    "releaseId": { "type": "string", "pattern": "^REL-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\\+([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?$" },
     "version": { "$ref": "#/$defs/semver" },
     "state": { "enum": ["unreleased", "prerelease", "released", "yanked"] },
-    "releaseNotesPath": { "type": "string", "minLength": 1 },
+    "releaseNotesPath": { "$ref": "#/$defs/portablePath" },
     "includedCapabilities": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
-    "verificationRecords": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
-    "reviewRecords": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
-    "migrationRecord": { "type": ["string", "null"] },
-    "releasePreparationCommit": { "type": ["string", "null"] },
-    "gitTag": { "type": ["string", "null"] },
+    "verificationRecords": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+    "reviewRecords": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+    "migrationRecord": { "oneOf": [{ "$ref": "#/$defs/portablePath" }, { "type": "null" }] },
+    "releasePreparationCommit": { "type": ["string", "null"], "minLength": 7 },
+    "gitTag": { "oneOf": [{ "type": "string", "pattern": "^v(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\\+([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?$" }, { "type": "null" }] },
     "githubReleaseUrl": { "type": ["string", "null"], "format": "uri" }
   },
   "allOf": [
@@ -29,16 +29,43 @@
       "then": {
         "properties": {
           "releasePreparationCommit": { "type": "string", "minLength": 7 },
-          "gitTag": { "type": "string", "pattern": "^v[0-9]+\\.[0-9]+\\.[0-9]+" },
+          "gitTag": { "type": "string" },
           "githubReleaseUrl": { "type": "string", "format": "uri" }
+        },
+        "required": ["releasePreparationCommit", "gitTag", "githubReleaseUrl"]
+      }
+    },
+    {
+      "if": { "properties": { "state": { "const": "unreleased" } }, "required": ["state"] },
+      "then": {
+        "properties": {
+          "releasePreparationCommit": { "type": "null" },
+          "gitTag": { "type": "null" },
+          "githubReleaseUrl": { "type": "null" }
         }
+      }
+    },
+    {
+      "if": { "properties": { "state": { "const": "yanked" } }, "required": ["state"] },
+      "then": {
+        "properties": {
+          "releasePreparationCommit": { "type": "string", "minLength": 7 },
+          "gitTag": { "type": "string" },
+          "githubReleaseUrl": { "type": "string", "format": "uri" }
+        },
+        "required": ["releasePreparationCommit", "gitTag", "githubReleaseUrl"]
       }
     }
   ],
   "$defs": {
     "semver": {
       "type": "string",
-      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\\+([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?$"
+    },
+    "portablePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*[\\\\<>:\"|?*~\\u0000-\\u001F\\u007F])(?!.*//)(?!.*\\/$)(?!.*(?:^|/)\\.{1,2}(?:/|$))(?!.*(?:^|/)\\.[Gg][Ii][Tt](?:/|$))(?!.*(?:^|/)(?:[Cc][Oo][Nn]|[Pp][Rr][Nn]|[Aa][Uu][Xx]|[Nn][Uu][Ll]|[Cc][Ll][Oo][Cc][Kk]\\$|[Cc][Oo][Nn][Ii][Nn]\\$|[Cc][Oo][Nn][Oo][Uu][Tt]\\$|[Cc][Oo][Mm](?:[1-9]|\\u00B9|\\u00B2|\\u00B3)|[Ll][Pp][Tt](?:[1-9]|\\u00B9|\\u00B2|\\u00B3))(?:\\.[^/]*)?(?:/|$))(?!.*[. ](?:/|$)).+$"
     }
   }
 }

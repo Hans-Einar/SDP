@@ -2,24 +2,75 @@
 
 SDP-Analyzer should consume, but is not implemented by, this release.
 
-Machine-readable inputs:
+## Toolkit repository inputs
 
-- root `SDP.manifest.yaml`
-- project `SDP/SDP-project.manifest.yaml`
-- generated `SDP/Framework/installed-toolkit.manifest.yaml`
-- skill YAML front matter
-- `RELEASE-NOTES.md`
-- `Traceability/CurrentIndex.yaml`
-- `Traceability/Relations.yaml`
-- append-only `Traceability/Ledger.ndjson`
-- release, Fix, verification and review records
-- generated build-identity JSON
+- root `SDP.manifest.yaml` release/capability facts;
+- `Toolkit/SDP-install.manifest.json` and its install/plan schemas;
+- `Toolkit/conformance/install-v1/scenarios.json` and committed normalized
+  plan/failure outcomes;
+- schema files and skill YAML front matter;
+- root release notes, release records and Toolkit traceability.
 
-The Analyzer must navigate Toolkit/project/skill versions, release targets,
-development identities, Sprint or Refactor, Iteration, Slice, Fix/revision,
-verification, tags/commits, release events, Unreleased changes and migrations.
-It must flag unsupported schemas, stale Toolkit versions, contradictory state,
-missing evidence and publication claims without corresponding identities.
+## Installed consuming-project inputs
 
-Unknown optional fields should be preserved or ignored safely. Unknown schema
-major versions must be reported as unsupported rather than guessed.
+- `SDP/SDP-project.manifest.yaml`;
+- generated `SDP/Framework/installed-toolkit.manifest.yaml`;
+- installed skill YAML front matter;
+- `SDP/RELEASE-NOTES.md`;
+- CurrentIndex, Relations and the append-only Ledger;
+- release, Fix, verification and review records;
+- generated build-identity JSON;
+- project-mode validator results when available.
+
+The Analyzer must navigate Toolkit/project/skill versions, capabilities, release
+targets, development identities, Sprint or Refactor, Iteration, Slice,
+Fix/revision, verification, tags/commits, events, Unreleased changes and
+migrations. It must flag unsupported schemas, stale Toolkit versions,
+contradictory state, missing evidence and publication claims without real
+identities.
+
+Every Ledger event obeys the generic envelope. Canonical `release-*` events also
+obey the release specialization; generic canonical families are `work-*`,
+`review-*` and `verification-*`. Project-defined types use exactly
+`x-<namespace>:<event-name>`, for example
+`x-acme.example:deployment-approved`.
+
+Unknown data is handled according to the applicable schema, not a blanket rule.
+Strict objects reject unknown fields; extensible Relations categories/details
+and Ledger payloads accept only the extensions their schema permits. Unknown
+schema versions are unsupported rather than guessed.
+
+Source archives without `.git` legitimately produce `sourceCommit: null`.
+Analyzer must not treat null as a defect or infer a commit from an archive name.
+For a dirty checkout, a non-null `sourceCommit` is only the available `HEAD`
+baseline and must not be treated as proof that installed bytes equal that commit.
+Markdown analysis is limited to canonical structure and deterministic links; it
+must not infer substantive completion from arbitrary prose.
+
+Installation-plan analysis must honor the declared
+`migration-first-manifest-order-v1` policy rather than re-sorting actions:
+migration prefix first, ordinary entries in installation-manifest order,
+adjacent identity-equal backup/mutation pairs, then contiguous sequences.
+AGENTS migration hashes are over exact bytes. An applicable plan, a one-action
+blocked plan and a fatal pre-plan outcome are distinct. Fatal outcomes use the
+closed classes declared in the conformance index; localized PowerShell message
+text is not an interoperability surface.
+
+The conformance package is intentionally consumable with a standard JSON parser
+and without PowerShell. Analyzer compatibility tests should treat its committed
+expected outcomes as authorities and must never regenerate them implicitly from
+the implementation under test.
+
+All contract paths use normalized `/` separators. Paths beginning with `SDP/`
+resolve from the project root; other record paths resolve from the project
+`SDP/` directory, with a project-root fallback for repository-level records.
+Canonical governed records use `.yaml`; a `.yml` shadow is invalid.
+
+The supported `gh-sdp` extension surface includes additional Sprint/Iteration/
+Slice status values, `acceptanceCriteria`, `requirementRefs`, `verificationRefs`,
+`reviewRefs`, and `targetStatus`/list-shaped link values in Relations. Analyzer
+must still require reciprocal Slice/Fix review and verification links,
+review-resolution links, release/migration links, and
+Ledger subjects that resolve to a governed entity. Publication state, record
+identity, SemVer version and tag must agree rather than being inferred from one
+field alone.

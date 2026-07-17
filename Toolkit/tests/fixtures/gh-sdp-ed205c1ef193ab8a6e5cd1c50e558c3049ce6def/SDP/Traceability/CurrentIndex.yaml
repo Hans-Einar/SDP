@@ -1,0 +1,18 @@
+project:
+  name: gh-sdp
+  status: phase-1-ready-for-steering-assessment
+
+release:
+  previousVersion: null
+  activeReleaseId: REL-0.1.0
+  targetVersion: "0.1.0"
+  state: unreleased
+  targetStatus: proposed
+
+active:
+  sprint: null
+  refactor: null
+  iteration: null
+  slice: null
+  fix: null
+  revision: null
