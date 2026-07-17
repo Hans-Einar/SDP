@@ -139,6 +139,7 @@ See `docs/Validation.md` for exact boundaries and limitations.
 - `docs/Installation-Contract.md`
 - `docs/Installer-Migration.md`
 - `docs/Validation.md`
+- `docs/Feature-Governance-And-SDP-2.0.md`
 - `docs/Distribution-And-Upgrades.md`
 - `docs/Release-And-Versioning.md`
 - `docs/Release-Lifecycle.md`
