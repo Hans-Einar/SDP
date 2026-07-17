@@ -257,3 +257,20 @@ merging PR #4 or marking it ready. Completion requires `VER-SPS-001-006`, fresh
 independent review `REV-SPS-001-007` with no unresolved Blocking/High/Medium
 finding, Linux and Windows GitHub Actions on the exact new head, and a request
 for a new bounded downstream acceptance pass.
+
+##### Hosted Windows CI remediation
+
+GitHub Actions run `29585982002` passed Linux contracts/conformance on merge head
+`6b326543b3712562338e26dfe978b04440411e84` but failed the hosted Windows
+installer job. The hosted runner could create the optional preservation-target
+file symlink that the local host could not. Planning rejected that link before
+`Get-PathObjectState` classified it, so the failure did not expose the required
+stable `agents-migration-destination-unsupported-object` class.
+
+The bounded remediation is to preserve every existing link/reparse containment
+guard while mapping the deterministic AGENTS preservation destination's
+unsupported link/reparse state to the public failure class before mutation. It
+must add or refine the hosted-capable regression, preserve zero target mutation
+and project-owned content, rerun both local PowerShell hosts and the full
+conformance matrix, and obtain a new exact-head GitHub Actions pass. No other
+installer behavior or contract vocabulary is in scope.

@@ -215,3 +215,21 @@ The bounded implementation contract is in
 `REV-SPS-001-007`. PR #4 remains the only PR, remains draft, and matched the
 assessed head when reopened. Toolkit `0.2.0` remains unreleased; local tags,
 remote tags and GitHub Releases were absent.
+
+### Revision 1 hosted-CI remediation
+
+`origin/main` advanced with feature-governance documentation while revision 1
+was in progress. It was merged additively at
+`6b326543b3712562338e26dfe978b04440411e84`; the only conflict retained both the
+installation-contract and feature-governance README links. PR #4 returned to
+`MERGEABLE/CLEAN` and remained draft.
+
+GitHub Actions run `29585982002` passed Linux `contracts` including portable
+conformance, then failed Windows job `87902965964`. The hosted runner exercised
+the locally unavailable file-symlink preservation fixture and observed no
+`sdpFailureClass`; the expected class was
+`agents-migration-destination-unsupported-object`. The containment guard
+rejected the reparse path before the deterministic AGENTS destination state was
+classified. This is a bounded failure-class propagation defect, not evidence of
+target mutation or project-owned overwrite. The remediation contract is
+recorded in `ScrumIterations.md`.
