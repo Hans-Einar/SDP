@@ -263,3 +263,29 @@ The local host still could not create the optional file symlink, so that fixture
 reported its documented skip while the directory junction/reparse case ran.
 Hosted Windows exact-head evidence and fresh review remain Master gates; no
 verification or review record is created by this Worker pass.
+
+### Revision 1 completion
+
+Master verification repeated the complete candidate matrix at
+`a37a8fa298fa3ace2ec5826bc3a30f26f90a64ac`: 80 Python tests, Toolkit and
+pinned-project validation, portable 17-scenario validation, full Windows
+PowerShell 5.1 and PowerShell 7.6.3 installer suites, all 17 reference scenarios
+under both hosts, both parser checks and branch diff checks passed.
+
+GitHub Actions run `29590324256` then passed on the exact candidate. Linux
+`contracts` job `87917499632` passed in 14 seconds. Windows `installer` job
+`87917499648` passed in 8 minutes 44 seconds, including the locally unavailable
+file-symlink regression and every reference scenario.
+
+Fresh independent `REV-SPS-001-007` performed the seven required adversarial
+attempts. It proved manifest-order planning, backup adjacency rejection, exact
+AGENTS absent/identical/different/unsupported behavior, committed-authority
+drift detection and language-neutral fixture consumption with an independent
+checker. It approved the exact candidate with no Blocking, High, Medium or Low
+finding.
+
+`VER-SPS-001-006` is the authoritative revision-1 verification. CurrentIndex,
+Relations, Ledger and Handoff now close `SPS-001 / SPI-001 / Sprint-001` and
+request a new bounded `gh-sdp` acceptance pass. Toolkit `0.2.0` remains
+unreleased; PR #4 remains draft and no merge, tag, GitHub Release or publication
+occurred.

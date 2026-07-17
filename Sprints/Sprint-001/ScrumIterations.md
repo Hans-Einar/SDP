@@ -1,10 +1,11 @@
 # Sprint-001 — Portable installation and project-validation contract
 
-Status: active (reopened for `SPS-001` revision 1)
+Status: complete (including `SPS-001` revision 1)
 Release target: `REL-0.2.0` (`0.2.0`, unreleased)
 Started: `2026-07-13T20:54:45Z`
 Original completion: `2026-07-14T01:42:15Z`
 Reopened: `2026-07-17T12:42:02Z`
+Revision 1 completed: `2026-07-17T15:24:56Z`
 
 ## Sprint goal
 
@@ -14,11 +15,11 @@ without publishing Toolkit `0.2.0`.
 
 ## SPI-001 — Installation contract hardening
 
-Status: active (reopened for `SPS-001` revision 1)
+Status: complete
 
 ### SPS-001 — Canonical installation contract v1
 
-Status: active (revision 1 downstream conformance remediation)
+Status: complete
 
 #### Goal
 
@@ -214,8 +215,9 @@ this does not complete or publish `REL-0.2.0`.
 
 #### Revision 1 — downstream contract-consumability remediation
 
-Status: active
+Status: complete
 Opened: `2026-07-17T12:42:02Z`
+Completed: `2026-07-17T15:24:56Z`
 Trigger review: `CodeReview/REV-SPS-001-006.md`
 Assessed upstream head: `bf20832bed618ab240cf87c17517fc31ea721311`
 Draft pull request: `Hans-Einar/SDP#4` (must remain draft)
@@ -274,3 +276,26 @@ must add or refine the hosted-capable regression, preserve zero target mutation
 and project-owned content, rerun both local PowerShell hosts and the full
 conformance matrix, and obtain a new exact-head GitHub Actions pass. No other
 installer behavior or contract vocabulary is in scope.
+
+##### Revision 1 completion evidence
+
+Exact contract candidate
+`a37a8fa298fa3ace2ec5826bc3a30f26f90a64ac` implements the required
+`migration-first-manifest-order-v1` policy, exact-byte AGENTS preservation
+semantics and the 17-scenario language-neutral
+`Toolkit/conformance/install-v1/` package.
+
+Master verification `VER-SPS-001-006` passed the complete local matrix and
+GitHub Actions run `29590324256` on that exact head. Linux `contracts` job
+`87917499632` passed 80 tests and portable conformance. Hosted Windows
+`installer` job `87917499648` passed the full fixture suite, exercised the
+file-symlink regression and passed all 17 reference scenarios.
+
+Fresh independent review `REV-SPS-001-007` completed all seven required
+adversarial attempts and approved the exact candidate with zero Blocking, High,
+Medium or Low findings. All three findings in `REV-SPS-001-006` are closed.
+
+`SPS-001` revision 1, `SPI-001` and `Sprint-001` are complete. This returns the
+repository to the downstream acceptance gate; it does not merge PR #4 or
+complete/publish `REL-0.2.0`. PR #4 remains draft pending a new bounded
+`gh-sdp` Steering Group disposition.

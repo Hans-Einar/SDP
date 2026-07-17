@@ -2,7 +2,7 @@ requirements: {}
 designs: {}
 sprints:
   Sprint-001:
-    status: active
+    status: complete
     path: Sprints/Sprint-001/ScrumIterations.md
     release: REL-0.2.0
     iterations:
@@ -10,14 +10,14 @@ sprints:
 refactors: {}
 iterations:
   SPI-001:
-    status: active
+    status: complete
     sprint: Sprint-001
     path: Sprints/Sprint-001/ScrumIterations.md
     slices:
       - SPS-001
 slices:
   SPS-001:
-    status: active
+    status: complete
     sprint: Sprint-001
     iteration: SPI-001
     release: REL-0.2.0
@@ -30,6 +30,7 @@ slices:
       - VER-SPS-001-003
       - VER-SPS-001-004
       - VER-SPS-001-005
+      - VER-SPS-001-006
     reviews:
       - REV-SPS-001-001
       - REV-SPS-001-002
@@ -37,6 +38,7 @@ slices:
       - REV-SPS-001-004
       - REV-SPS-001-005
       - REV-SPS-001-006
+      - REV-SPS-001-007
 fixes: {}
 reviews:
   REV-SPS-001-001:
@@ -81,6 +83,13 @@ reviews:
     release: REL-0.2.0
     verification: VER-SPS-001-005
     commit: bf20832bed618ab240cf87c17517fc31ea721311
+  REV-SPS-001-007:
+    status: approved
+    path: CodeReview/REV-SPS-001-007.md
+    slice: SPS-001
+    release: REL-0.2.0
+    verification: VER-SPS-001-006
+    commit: a37a8fa298fa3ace2ec5826bc3a30f26f90a64ac
 verification:
   VER-SPS-001:
     status: passed
@@ -117,6 +126,14 @@ verification:
     commit: 7c78132f31788d7494eb93c6cba5310c5503e416
     supersedes: VER-SPS-001-004
     githubActions: https://github.com/Hans-Einar/SDP/actions/runs/29298949100
+  VER-SPS-001-006:
+    status: passed
+    path: Verification/VER-SPS-001-006.md
+    slice: SPS-001
+    release: REL-0.2.0
+    commit: a37a8fa298fa3ace2ec5826bc3a30f26f90a64ac
+    supersedes: VER-SPS-001-005
+    githubActions: https://github.com/Hans-Einar/SDP/actions/runs/29590324256
 migrations: {}
 releases:
   REL-0.2.0:
