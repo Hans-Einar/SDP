@@ -135,3 +135,26 @@ No repository analysis conclusion has been accepted yet.
   fixed-window count and the 35/17/18 classification still matched.
 - The README remediation and committed evidence records create a new candidate;
   final closure verification/review remains required before completion.
+
+## 2026-08-20 — Study closure accepted
+
+- Fresh closure `VER-SDP-005-003` passed exact candidate
+  `834283bb38b5e00e4f24f2b5a7e5b8454d0c4aba`: deterministic corpus digest
+  `e346fc230b26c3045305c1ffee22ff43edfc61aa99597005134a314b210b8114`,
+  Toolkit validation, 9 unit tests plus pytest subtests, installer fixtures,
+  structured formats/links/diff/relations/Ledger, exact Actions run
+  `32430079507` and live 35-repository/default-head continuity all passed.
+- Fresh closure `REV-SDP-005-003` approved the same candidate with Blocking 0,
+  High 0, Medium 0, Low 0 and Note 4. All earlier findings M-001, M-002, L-001,
+  L-002 and L-003 are resolved.
+- Remaining Notes are evidence limitations, not unresolved findings: mutable
+  refs/GitHub state, unrerun private product/physical claims, single-account
+  actor provenance and final Master publication/closure integration.
+- Completed `ITR-SDP-005-004` / `SLC-SDP-005-004`; cleared active development
+  coordinates while keeping Toolkit Release `REL-0.2.0` unreleased.
+- The release-only Ledger remains unchanged because its current schema cannot
+  truthfully represent study/review transitions without a canonical method
+  implementation change.
+- Final disposition: `STUDY_READY_FOR_STEERING_REVIEW`. Issue #5 remains open;
+  no merge, migration, Toolkit implementation, tag or GitHub Release is
+  authorized.

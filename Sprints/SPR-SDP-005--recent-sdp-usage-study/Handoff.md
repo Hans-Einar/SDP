@@ -1,15 +1,17 @@
 # SPR-SDP-005 Handoff
 
-Status: active
+Status: STUDY_READY_FOR_STEERING_REVIEW
 
-## Current assignment
+## Completed assignment
 
 - Issue: `Hans-Einar/SDP#5`
 - Branch: `codex/issue-5-sdp-usage-study`
 - Baseline: `e398ebaf3a4ace6a5d92fd9ce22736a7427a9e15`
 - Sprint: `SPR-SDP-005`
-- Iteration: `ITR-SDP-005-004`
-- Slice: `SLC-SDP-005-004`
+- Completed Iteration: `ITR-SDP-005-004`
+- Completed Slice: `SLC-SDP-005-004`
+- Exact reviewed/verified corpus candidate:
+  `834283bb38b5e00e4f24f2b5a7e5b8454d0c4aba`
 - Completed evidence: exact 35-repository inventory and 17-report manifest
 - Completed evidence: 17 Master-reviewed reports and passing corpus validator
 - Completed evidence: cross-repository patterns, proposed workflow, legacy,
@@ -20,8 +22,12 @@ Status: active
 - Review pass `REV-SDP-005-002`: approved at the reworked candidate with
   Blocking 0 / High 0 / Medium 0 / Low 1 / Note 4; Low L-003 is now remediated
 - Verification `VER-SDP-005-002`: pass at the reworked candidate
-- Next durable result: final exact-head closure verification/review after the
-  README/evidence-record integration, followed by Steering-ready closure
+- Review pass `REV-SDP-005-003`: closure approved with Blocking 0 / High 0 /
+  Medium 0 / Low 0 / Note 4
+- Verification `VER-SDP-005-003`: closure candidate pass
+- Active development coordinates: none
+- Next authorized action: Steering Group inspects Issue #5, draft PR #6, exact
+  CI/review/verification evidence and accepts, rejects or opens follow-up Issues
 
 ## Stop boundary
 

@@ -86,11 +86,11 @@ Synthesize the completed reports; do not concatenate Worker recommendations.
 
 ## ITR-SDP-005-004 — Validation and independent review
 
-Status: active
+Status: complete
 
 ### SLC-SDP-005-004 — Corpus verification, adversarial review and closure
 
-Status: active
+Status: complete
 
 Run deterministic validation, resolve every Blocking/High/Medium review finding,
 update traceability/handoff and stop for Steering Group review.

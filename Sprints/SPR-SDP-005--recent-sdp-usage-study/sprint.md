@@ -1,6 +1,6 @@
 # SPR-SDP-005 — Recent SDP Usage Study
 
-Status: active
+Status: complete — awaiting Steering Group review
 
 GitHub issue: `Hans-Einar/SDP#5`
 
