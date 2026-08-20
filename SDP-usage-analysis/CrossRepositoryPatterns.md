@@ -107,11 +107,12 @@ The exact row-level comparison is in [EvidenceMatrix.md](EvidenceMatrix.md).
 
 ## Pattern 6 — duplicated mutable state is the dominant failure mode
 
-- **OBSERVED:** Eleven reports record drift among GitHub, CurrentAssignment,
-  CurrentIndex, Relations, Ledger, Features/Sprints/Refactors, review,
-  verification, README or Handoff: ActionCam, gh-sdp, GrassPhenology, HSX,
-  LogClassifier, Lyndata, RadarData, SharedUI, TerrainAnalyzer,
-  weight_app_flutter and SDP-Analyzer.
+- **OBSERVED:** Thirteen reports record mutable-state or contract drift among
+  GitHub, CurrentAssignment, CurrentIndex, project manifest, Relations, Ledger,
+  Features/Sprints/Refactors, review, verification, README/Handoff or executable
+  schema: ActionCam, gh-sdp, GrassPhenology, HEOS, HSX, LogClassifier, Lyndata,
+  RadarData, SDP, SharedUI, TerrainAnalyzer, weight_app_flutter and
+  SDP-Analyzer.
 - **OBSERVED:** All three default-tree CurrentAssignment examples—ActionCam,
   Lyndata and TerrainAnalyzer—are stale or contradictory. RadarData's unmerged
   compact assignment already disagrees with copied verification heads.
@@ -162,8 +163,11 @@ The exact row-level comparison is in [EvidenceMatrix.md](EvidenceMatrix.md).
 ## Evidence constraints on the recommendation
 
 - **OWNER DIRECTION:** Feature/Refactor ownership, universal Issue assignments,
-  bounded Issue Masters, ChatGPT Steering Group and separate reusable skills are
-  mandated destinations, not majority-observed successes.
+  bounded Issue Masters and ChatGPT Steering Group are mandated destinations,
+  not majority-observed successes.
+- **RECOMMENDATION:** Separate reusable `steering-group` and `sdp` skills and the
+  exact Issue-to-release graph are study recommendations, not owner-decided
+  implementation details.
 - **OBSERVED:** Only two default repositories exercise Feature ownership, two
   exercise first-class Refactor ownership and none exercise a first-class Fix
   record on default. Only three show accepted Issue-authoritative delivery.

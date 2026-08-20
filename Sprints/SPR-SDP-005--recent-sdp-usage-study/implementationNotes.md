@@ -93,3 +93,27 @@ No repository analysis conclusion has been accepted yet.
 - Completed `ITR-SDP-005-003` / `SLC-SDP-005-003` and activated
   `ITR-SDP-005-004` / `SLC-SDP-005-004` for fresh verification and independent
   adversarial review.
+
+## 2026-08-20 — Exact-candidate verification and review rework
+
+- Fresh `VER-SDP-005-001` passed exact candidate
+  `721ae53a0a845d0a1cf5286ef8f4d873d926fd29`, including complete live inventory
+  reproduction, corpus/toolkit validation, 9 Python tests, PowerShell installer
+  fixtures, exact PR checks and negative mutation attempts.
+- Fresh `REV-SDP-005-001` returned changes required at the same candidate:
+  Blocking 0, High 0, Medium 2, Low 2.
+- Resolved M-001 by replacing singleton `CurrentAssignment.yaml` with per-Issue
+  assignment records, a generated current-assignment set and explicit
+  default/branch/concurrency/ownership/conflict/merge/reconciliation semantics.
+- Resolved M-002 by adding an early non-destructive workflow pilot before schema
+  freeze and downstream write-capable tooling, while retaining a later migration
+  apply pilot.
+- Resolved L-001 by relabelling separate skills and the exact Analyzer graph as
+  recommendations rather than owner direction.
+- Resolved L-002 by correcting the mutable-state/contract drift aggregate from
+  eleven to thirteen reports and including HEOS and canonical SDP.
+- Reworked corpus validation passes with 35 considered, 17 in scope, 18
+  excluded, 17 reports and digest
+  `6b5e4ef00fa598c115ae641ff28ad07f731fb5e16a76e9752998e774e1975abc`.
+- The changed candidate requires fresh verification and independent re-review;
+  the earlier dispositions remain exact-candidate historical evidence.

@@ -14,8 +14,11 @@ Status: active
 - Completed evidence: 17 Master-reviewed reports and passing corpus validator
 - Completed evidence: cross-repository patterns, proposed workflow, legacy,
   migration/tooling/skill and follow-up recommendations
-- Next durable result: exact-head verification, independent review, resolved
-  findings and final Steering-ready closure
+- Review pass `REV-SDP-005-001`: changes required at superseded candidate; all
+  two Medium and two Low findings have been reworked
+- Verification `VER-SDP-005-001`: pass at the superseded candidate
+- Next durable result: fresh exact-head verification and independent re-review
+  of the reworked candidate, followed by final Steering-ready closure
 
 ## Stop boundary
 

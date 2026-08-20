@@ -317,13 +317,23 @@ authority and ChatGPT assistance must not be conflated with a GitHub actor name.
 
 ## CurrentAssignment recommendation
 
-Keep `Steering/CurrentAssignment.yaml`, but make it a compact declared-state
-pointer, not a second Issue and not a live GitHub cache.
+Replace the singleton experiment with one compact record per Issue:
+
+```text
+Steering/
+└── Assignments/
+    ├── ISSUE-123.yaml
+    └── ISSUE-124.yaml
+```
+
+`Steering/CurrentAssignments.yaml`, when useful, is a generated local/read-model
+view of all active assignments at an `observedAt` instant. It is not an authored
+authority file and is not committed by default.
 
 Recommended authored fields:
 
 ```yaml
-schemaVersion: sdp-current-assignment-v1
+schemaVersion: sdp-assignment-v1
 authority:
   issue: https://github.com/OWNER/REPO/issues/123
   comment: null
@@ -337,6 +347,13 @@ delivery:
   branch: codex/issue-123-short-name
   pullRequest: https://github.com/OWNER/REPO/pull/456
   activeSlice: SLC-042
+coordination:
+  integrationBase: <40-char-sha>
+  dependsOnIssues: []
+  conflictsWithIssues: []
+  ownedPaths: []
+  sharedTouchpoints: []
+  mergeOrder: null
 permissions: []
 invariants: []
 requiredEvidence:
@@ -345,16 +362,33 @@ requiredEvidence:
 stopCondition: awaiting-steering-review
 ```
 
+- The file is created on the Issue branch before broad work. Its scope is that
+  Issue/branch/PR; concurrent Issue Masters use different filenames and do not
+  overwrite a singleton pointer.
+- Default branch contains only assignment records that reached it through an
+  accepted merge/reconciliation. An in-flight branch record remains declared
+  assignment evidence, not default-tree current truth.
 - Omit PR state, head, checks, merge status and Issue open/closed state; derive
   them live or capture them in a timestamped generated observation.
-- Store full scope/non-goals in the Issue/Slice, link rather than copy.
-- Clear/advance the pointer only through an authorized transition. Preserve
-  history in the Issue, relations and material Ledger events.
+- Store full scope/non-goals in the Issue/Slice, link rather than copy. Issue
+  comment amendments are appended/referenced, not silently folded into the
+  original contract.
+- On merge, preserve the per-Issue record as historical declared terms; generated
+  current views stop listing it only when observed GitHub state and accepted
+  evidence satisfy the terminal rule. A disagreement is a finding, not an
+  overwrite.
+- Before parallel assignments start, Steering establishes a common integration
+  base, disjoint ownership/reserved IDs, shared touchpoints, dependency/conflict
+  edges and merge/convergence order. Overlapping assignments require a
+  preparation/refreeze gate.
+- Clearing or advancing one assignment never changes another. Tools validate
+  path/ID collisions, stale bases and merge-order violations across the active
+  set.
 
 ## Declared, observed and accepted state
 
-- `declared`: project-owned intent/status from Feature/Refactor/Slice/
-  CurrentAssignment.
+- `declared`: project-owned intent/status from Feature/Refactor/Slice and its
+  per-Issue assignment record.
 - `observed`: Git/GitHub facts such as Issue state, branch head, PR state,
   checks, review objects, merge commit, tag and Release at `observedAt`.
 - `accepted`: evidence-qualified state from exact verification, independent

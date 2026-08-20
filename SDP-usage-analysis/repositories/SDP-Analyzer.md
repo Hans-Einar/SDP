@@ -462,8 +462,10 @@
 
 ### Issue-to-release graph
 
-- **OWNER DIRECTION:** The future SDP graph must support
-  `Issue <-> Feature/Refactor <-> Study/requirements/decisions <-> Slice <-> PR/commit <-> verification/review <-> release`.
+- **RECOMMENDATION:** The future Analyzer graph should support the candidate
+  path `Issue <-> Feature/Refactor <-> Study/requirements/decisions <-> Slice
+  <-> PR/commit <-> verification/review <-> release`; Issue #5 asks the study
+  to evaluate this shape rather than mandating its exact schema.
 - **RECOMMENDATION:** Extend the serializable normalized domain, not a UI graph
   library, with first-class entities for GitHub Issue/Issue comment authority,
   Feature, Refactor, Fix, Study, Requirement, architecture/design decision,

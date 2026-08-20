@@ -65,8 +65,12 @@ implemented by Issue #5.
 
 - Require an owner/Steering Issue when default state, non-default work and
   GitHub disagree.
-- Create one prospective current assignment for authorized new work.
-- Clear or advance pointers only from real Issue/merge/acceptance evidence.
+- Create one per-Issue assignment record for each authorized new work branch;
+  allow several concurrent records with explicit integration base, ownership,
+  dependency/conflict and merge-order semantics.
+- Generate the current-assignment set from per-Issue records plus timestamped
+  GitHub observation. Clear or advance one assignment only from real
+  Issue/merge/acceptance evidence without overwriting another.
 - Add correction/supersession events under the versioned general event contract;
   never backdate fabricated transitions.
 
@@ -182,7 +186,8 @@ Analyzer remains read-only in the analysis path.
 After the canonical contracts are accepted, installation may add:
 
 - neutral Feature/Refactor/Fix records/templates;
-- compact `Steering/CurrentAssignment.yaml` template;
+- compact per-Issue `Steering/Assignments/ISSUE-NNN.yaml` template and an
+  optional generated current-assignment index contract;
 - Issue-oriented Instructions and managed AGENTS/skills;
 - general event schema and semantic Relations vocabulary;
 - profile/capability manifest fields;
@@ -198,7 +203,7 @@ Report separately:
 - client version/release;
 - installed Toolkit release/source, payload/plan digest and schema capabilities;
 - project profile and migration warnings;
-- declared Feature/Refactor/Fix, current assignment and Slice;
+- declared Feature/Refactor/Fix, every current assignment and Slice;
 - observed Issue/branch/PR/head/check/review/merge facts with timestamp;
 - accepted evidence/Steering state;
 - target Release and inclusion/publication identities;
@@ -243,7 +248,7 @@ At minimum, fixtures must cover:
 4. legacy CurrentIndex/Relations/Ledger envelope;
 5. duplicate numbered authority plus empty Toolkit templates;
 6. singular/plural path collision;
-7. project-local Feature/CurrentAssignment extension;
+7. project-local Feature/per-Issue assignment extension;
 8. nested/multiple SDP roots;
 9. stale default with active non-default refs;
 10. open PR synthetic merge ref versus actual unmerged state;

@@ -82,6 +82,8 @@ Add:
 - Issue/comment authority and exact baseline reconciliation;
 - Feature/Refactor/Fix primary owner and current Slice;
 - early draft PR and declared/observed/accepted state checks;
+- discovery of concurrent per-Issue assignments, owned/shared paths, reserved
+  IDs, dependencies/conflicts and integration/merge order;
 - bounded multi-Worker/Architect/Verifier/Reviewer delegation;
 - current-head review invalidation and Issue stop/split policy;
 - compact assignment/Handoff and GitHub contradiction handling.
@@ -154,7 +156,7 @@ GrassPhenology and weight_app_flutter without copying their domain mechanics.
   supervisory ChatGPT skill operates above repository-local Codex assignments;
   Codex Master records and responds to Steering decisions.
 - **RECOMMENDATION:** Consider a narrowly executable `sdp-assignment` helper
-  only after the CurrentAssignment/Issue schema is accepted and multiple tools
+  only after the per-Issue assignment/index schema is accepted and multiple tools
   need the same create/validate operation. Until then, integrate it into Master,
   traceability and gh-sdp rather than inventing another prose skill.
 
