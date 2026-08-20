@@ -68,3 +68,28 @@ No repository analysis conclusion has been accepted yet.
   whitespace.
 - Completed `ITR-SDP-005-002` / `SLC-SDP-005-002` and activated
   `ITR-SDP-005-003` / `SLC-SDP-005-003` for Master-owned synthesis.
+
+## 2026-08-20 — Cross-repository synthesis completed
+
+- Added the 17-row observational `EvidenceMatrix.md` and evidence/counterexample
+  synthesis in `CrossRepositoryPatterns.md`.
+- The Master authored `ProposedSDPWorkflow.md`, making Feature/Refactor/Fix the
+  semantic work owners, GitHub Issue the execution assignment, Slice the
+  vertical outcome and Release the publication owner. Sprint is optional and
+  Iteration is no longer mandatory.
+- Added `LegacyAndDeprecation.md`, `MigrationImpact.md`, `SkillsAndRoles.md` and
+  dependency-ordered `FollowUpIssues.md`.
+- The recommendation distinguishes owner direction from observed success: only
+  two default trees exercise first-class Feature delivery, two exercise
+  first-class Refactor delivery and three show accepted Issue-authoritative
+  execution.
+- Extended `validate_analysis.py` to cover every required synthesis document,
+  matrix identity, required workflow/migration/skill/deprecation topics and
+  follow-up dependency ordering.
+- Repeated validation passed at
+  `ae4b7bc143b569d9ea01b445d47df5a98476ff38`: 35 considered, 17 in scope,
+  18 excluded, 17 reports, digest
+  `2d470c36f861d3f5bbb86d2fe123b960613588c8c5b504c5fff8bea6aff20bd0`.
+- Completed `ITR-SDP-005-003` / `SLC-SDP-005-003` and activated
+  `ITR-SDP-005-004` / `SLC-SDP-005-004` for fresh verification and independent
+  adversarial review.

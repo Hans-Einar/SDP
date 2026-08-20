@@ -11,8 +11,8 @@ release:
 active:
   sprint: SPR-SDP-005
   refactor: null
-  iteration: ITR-SDP-005-003
-  slice: SLC-SDP-005-003
+  iteration: ITR-SDP-005-004
+  slice: SLC-SDP-005-004
   fix: null
   revision: null
 

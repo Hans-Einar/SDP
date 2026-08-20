@@ -76,21 +76,21 @@ in-scope repository, committing progressively.
 
 ## ITR-SDP-005-003 — Cross-repository synthesis
 
-Status: active
+Status: complete
 
 ### SLC-SDP-005-003 — Proposed future SDP workflow
 
-Status: active
+Status: complete
 
 Synthesize the completed reports; do not concatenate Worker recommendations.
 
 ## ITR-SDP-005-004 — Validation and independent review
 
-Status: planned
+Status: active
 
 ### SLC-SDP-005-004 — Corpus verification, adversarial review and closure
 
-Status: planned
+Status: active
 
 Run deterministic validation, resolve every Blocking/High/Medium review finding,
 update traceability/handoff and stop for Steering Group review.
