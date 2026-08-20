@@ -1,8 +1,11 @@
 # SPR-SDP-005 — Recent SDP Usage Study
 
-Status: active  
-GitHub issue: `Hans-Einar/SDP#5`  
-Authoritative baseline: `e398ebaf3a4ace6a5d92fd9ce22736a7427a9e15` (`main`)  
+Status: active
+
+GitHub issue: `Hans-Einar/SDP#5`
+
+Authoritative baseline: `e398ebaf3a4ace6a5d92fd9ce22736a7427a9e15` (`main`)
+
 Study branch: `codex/issue-5-sdp-usage-study`
 
 ## Goal
