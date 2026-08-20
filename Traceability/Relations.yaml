@@ -1,9 +1,46 @@
 requirements: {}
 designs: {}
-sprints: {}
+sprints:
+  SPR-SDP-005:
+    issue: https://github.com/Hans-Einar/SDP/issues/5
+    baseline: e398ebaf3a4ace6a5d92fd9ce22736a7427a9e15
+    record: Sprints/SPR-SDP-005--recent-sdp-usage-study/sprint.md
+    iterations: [ITR-SDP-005-001, ITR-SDP-005-002, ITR-SDP-005-003, ITR-SDP-005-004]
 refactors: {}
-iterations: {}
-slices: {}
+iterations:
+  ITR-SDP-005-001:
+    sprint: SPR-SDP-005
+    record: Sprints/SPR-SDP-005--recent-sdp-usage-study/ScrumIterations.md
+    slices: [SLC-SDP-005-001]
+  ITR-SDP-005-002:
+    sprint: SPR-SDP-005
+    record: Sprints/SPR-SDP-005--recent-sdp-usage-study/ScrumIterations.md
+    slices: [SLC-SDP-005-002]
+  ITR-SDP-005-003:
+    sprint: SPR-SDP-005
+    record: Sprints/SPR-SDP-005--recent-sdp-usage-study/ScrumIterations.md
+    slices: [SLC-SDP-005-003]
+  ITR-SDP-005-004:
+    sprint: SPR-SDP-005
+    record: Sprints/SPR-SDP-005--recent-sdp-usage-study/ScrumIterations.md
+    slices: [SLC-SDP-005-004]
+slices:
+  SLC-SDP-005-001:
+    iteration: ITR-SDP-005-001
+    status: active
+    record: Sprints/SPR-SDP-005--recent-sdp-usage-study/ScrumIterations.md
+  SLC-SDP-005-002:
+    iteration: ITR-SDP-005-002
+    status: planned
+    record: Sprints/SPR-SDP-005--recent-sdp-usage-study/ScrumIterations.md
+  SLC-SDP-005-003:
+    iteration: ITR-SDP-005-003
+    status: planned
+    record: Sprints/SPR-SDP-005--recent-sdp-usage-study/ScrumIterations.md
+  SLC-SDP-005-004:
+    iteration: ITR-SDP-005-004
+    status: planned
+    record: Sprints/SPR-SDP-005--recent-sdp-usage-study/ScrumIterations.md
 fixes: {}
 reviews: {}
 verification: {}
