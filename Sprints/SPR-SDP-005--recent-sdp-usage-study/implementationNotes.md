@@ -117,3 +117,21 @@ No repository analysis conclusion has been accepted yet.
   `6b5e4ef00fa598c115ae641ff28ad07f731fb5e16a76e9752998e774e1975abc`.
 - The changed candidate requires fresh verification and independent re-review;
   the earlier dispositions remain exact-candidate historical evidence.
+
+## 2026-08-20 — Reworked candidate approved
+
+- Fresh `VER-SDP-005-002` passed exact reworked candidate
+  `2b51b924ff538e73986eb8a9480343f7b8f89a04`, including deterministic digest
+  `6b5e4ef00fa598c115ae641ff28ad07f731fb5e16a76e9752998e774e1975abc`, all
+  35 live default heads and fixed-window counts, tests, installer fixtures,
+  exact Actions and negative mutations.
+- Fresh `REV-SDP-005-002` approved the same candidate: Blocking 0, High 0,
+  Medium 0, Low 1, Note 4. It confirmed all prior findings resolved.
+- Resolved remaining Low L-003 by removing changing Iteration/Slice and active
+  phase claims from the analysis README; it now points to Sprint/CurrentIndex
+  and review/verification records for live state.
+- Post-capture advertised ref/total-commit counts grew in HSX, SDP and
+  TerrainAnalyzer during verification, but all 35 default heads, every frozen
+  fixed-window count and the 35/17/18 classification still matched.
+- The README remediation and committed evidence records create a new candidate;
+  final closure verification/review remains required before completion.

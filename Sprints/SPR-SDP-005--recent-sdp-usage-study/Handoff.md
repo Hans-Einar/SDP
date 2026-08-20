@@ -17,8 +17,11 @@ Status: active
 - Review pass `REV-SDP-005-001`: changes required at superseded candidate; all
   two Medium and two Low findings have been reworked
 - Verification `VER-SDP-005-001`: pass at the superseded candidate
-- Next durable result: fresh exact-head verification and independent re-review
-  of the reworked candidate, followed by final Steering-ready closure
+- Review pass `REV-SDP-005-002`: approved at the reworked candidate with
+  Blocking 0 / High 0 / Medium 0 / Low 1 / Note 4; Low L-003 is now remediated
+- Verification `VER-SDP-005-002`: pass at the reworked candidate
+- Next durable result: final exact-head closure verification/review after the
+  README/evidence-record integration, followed by Steering-ready closure
 
 ## Stop boundary
 

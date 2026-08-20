@@ -1,9 +1,11 @@
 # Recent SDP Usage Analysis
 
-This directory is the evidence and analysis surface for
-`SPR-SDP-005` / `ITR-SDP-005-001` / `SLC-SDP-005-001`, implementing the study
-contract in [Issue #5](https://github.com/Hans-Einar/SDP/issues/5). It is study
-material, not a replacement for the canonical SDP Toolkit or its instructions.
+This directory is the evidence and analysis surface for `SPR-SDP-005`,
+implementing the study contract in
+[Issue #5](https://github.com/Hans-Einar/SDP/issues/5). Current execution and
+closure coordinates live in the Sprint records and `Traceability/CurrentIndex.yaml`;
+this README does not mirror them. The contents are study material, not a
+replacement for the canonical SDP Toolkit or its instructions.
 
 ## Evidence labels
 
@@ -42,7 +44,9 @@ must label substantive evidence and conclusions with this vocabulary.
 The study contains one file beneath `repositories/` for each of the 17 in-scope
 repositories. The inventory is the authoritative report-path manifest. All 17
 reports have been Master-reviewed and pass `validate_analysis.py`; synthesis is
-the active work boundary.
+complete. Verification, review and Steering-readiness status must be read from
+the Sprint, Handoff, verification/review records and draft PR rather than
+inferred from this README.
 
 Each repository report must cover:
 
