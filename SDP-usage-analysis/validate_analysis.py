@@ -24,6 +24,15 @@ EXPECTED_CONSIDERED = 35
 EXPECTED_IN_SCOPE = 17
 EXPECTED_EXCLUDED = 18
 OWNER = "Hans-Einar"
+SYNTHESIS_RULES = {
+    "EvidenceMatrix.md": (3_000, 4),
+    "CrossRepositoryPatterns.md": (900, 10),
+    "ProposedSDPWorkflow.md": (1_700, 12),
+    "LegacyAndDeprecation.md": (700, 5),
+    "MigrationImpact.md": (1_000, 6),
+    "SkillsAndRoles.md": (600, 6),
+    "FollowUpIssues.md": (450, 5),
+}
 LABELS = ("OBSERVED", "OWNER DIRECTION", "INFERENCE", "RECOMMENDATION")
 HEX40_RE = re.compile(r"(?<![0-9a-fA-F])[0-9a-fA-F]{40}(?![0-9a-fA-F])")
 REPOSITORY_RE = re.compile(r"`?(Hans-Einar/[A-Za-z0-9_.-]+)`?")
@@ -533,6 +542,389 @@ def validate_inventory(
     return included, excluded, stats
 
 
+def parse_synthesis_table(
+    text: str,
+    section_key: str,
+    expected_columns: Sequence[str],
+    path: Path,
+    root: Path,
+    errors: list[Diagnostic],
+) -> list[dict[str, str]]:
+    section = extract_h2_lines(text, section_key)
+    if section is None:
+        add_error(
+            errors,
+            root,
+            path,
+            "SYNTHESIS_SECTION",
+            f"expected exactly one H2 section {section_key!r}",
+        )
+        return []
+    wanted = [normalized_key(column) for column in expected_columns]
+    for index, line in enumerate(section):
+        if not line.lstrip().startswith("|"):
+            continue
+        header = split_table_row(line)
+        header_keys = [normalized_key(cell) for cell in header]
+        if header_keys != wanted:
+            continue
+        if index + 1 >= len(section):
+            break
+        separator = split_table_row(section[index + 1])
+        if len(separator) != len(header) or not all(
+            re.fullmatch(r":?-{3,}:?", cell) for cell in separator
+        ):
+            add_error(
+                errors,
+                root,
+                path,
+                "SYNTHESIS_TABLE",
+                f"invalid separator row in {section_key!r}",
+            )
+            return []
+        rows: list[dict[str, str]] = []
+        for row_line in section[index + 2 :]:
+            if not row_line.lstrip().startswith("|"):
+                break
+            cells = split_table_row(row_line)
+            if len(cells) != len(header):
+                add_error(
+                    errors,
+                    root,
+                    path,
+                    "SYNTHESIS_TABLE",
+                    f"table row has {len(cells)} cells; expected {len(header)}",
+                )
+                continue
+            rows.append(dict(zip(header_keys, cells)))
+        return rows
+    add_error(
+        errors,
+        root,
+        path,
+        "SYNTHESIS_TABLE",
+        f"required table not found in {section_key!r}",
+    )
+    return []
+
+
+def require_h2(
+    headings: Sequence[Heading],
+    key: str,
+    path: Path,
+    root: Path,
+    errors: list[Diagnostic],
+    concept: str | None = None,
+) -> None:
+    count = sum(heading.level == 2 and heading.key == key for heading in headings)
+    if count != 1:
+        add_error(
+            errors,
+            root,
+            path,
+            "SYNTHESIS_TOPIC",
+            f"expected exactly one H2 covering {concept or key!r}, found {count}",
+        )
+
+
+def validate_synthesis_shape(
+    text: str,
+    path: Path,
+    root: Path,
+    errors: list[Diagnostic],
+    minimum_words: int,
+    minimum_h2s: int,
+) -> list[Heading]:
+    headings = validate_headings(text, path, root, errors)
+    h1s = [heading for heading in headings if heading.level == 1]
+    if len(h1s) != 1:
+        add_error(
+            errors,
+            root,
+            path,
+            "SYNTHESIS_H1",
+            f"expected exactly one H1 heading, found {len(h1s)}",
+        )
+    h2_count = sum(heading.level == 2 for heading in headings)
+    if h2_count < minimum_h2s:
+        add_error(
+            errors,
+            root,
+            path,
+            "SYNTHESIS_SIZE",
+            f"contains {h2_count} H2 sections; expected at least {minimum_h2s}",
+        )
+    words = word_count(text)
+    if words < minimum_words:
+        add_error(
+            errors,
+            root,
+            path,
+            "SYNTHESIS_SIZE",
+            f"contains {words} words; expected at least {minimum_words}",
+        )
+    return headings
+
+
+def validate_evidence_matrix(
+    text: str,
+    path: Path,
+    inventory_rows: Sequence[InventoryRow],
+    root: Path,
+    errors: list[Diagnostic],
+) -> None:
+    columns = (
+        "Repository and exact studied commit",
+        "Default-tree SDP adoption/profile",
+        "Relevant non-default or open evidence",
+        "GitHub Issue authority",
+        "Feature",
+        "Refactor",
+        "Sprint / Iteration shape",
+        "Vertical Slice quality",
+        "Later requirements / design refinement",
+        "Independent Studies / convergence",
+        "Master / Worker / Reviewer / Verifier / Architect evidence",
+        "Branch / early draft PR / CI",
+        "Handoff",
+        "CurrentIndex / Relations / Ledger",
+        "Steering / CurrentAssignment",
+        "State contradictions / staleness",
+        "Automation versus manual convention",
+        "Report",
+    )
+    rows = parse_synthesis_table(text, "matrix", columns, path, root, errors)
+    if len(rows) != EXPECTED_IN_SCOPE:
+        add_error(
+            errors,
+            root,
+            path,
+            "EVIDENCE_MATRIX_COUNT",
+            f"matrix has {len(rows)} repository rows; expected {EXPECTED_IN_SCOPE}",
+        )
+    inventory_by_name = {row.name.casefold(): row for row in inventory_rows}
+    seen: dict[str, str] = {}
+    repository_key = "repository and exact studied commit"
+    for row_number, matrix_row in enumerate(rows, 1):
+        identity_cell = matrix_row.get(repository_key, "")
+        code_values = re.findall(r"`([^`]+)`", identity_cell)
+        if not code_values:
+            add_error(
+                errors,
+                root,
+                path,
+                "EVIDENCE_MATRIX_IDENTITY",
+                f"row {row_number} has no backticked repository identity",
+            )
+            continue
+        name = code_values[0]
+        key = name.casefold()
+        if key in seen:
+            add_error(
+                errors,
+                root,
+                path,
+                "DUPLICATE_IDENTITY",
+                f"matrix repository {name!r} duplicates {seen[key]!r}",
+            )
+            continue
+        seen[key] = name
+        inventory_row = inventory_by_name.get(key)
+        if inventory_row is None:
+            add_error(
+                errors,
+                root,
+                path,
+                "EVIDENCE_MATRIX_IDENTITY",
+                f"row {row_number} repository {name!r} is not in the in-scope inventory",
+            )
+            continue
+        commits = [commit.lower() for commit in HEX40_RE.findall(identity_cell)]
+        if commits != [inventory_row.study_commit]:
+            add_error(
+                errors,
+                root,
+                path,
+                "EVIDENCE_MATRIX_COMMIT",
+                f"{name}: expected only study commit {inventory_row.study_commit}, found "
+                f"{commits!r}",
+            )
+        report_cell = matrix_row.get("report", "")
+        links = [match.group(1) or match.group(2) for match in INLINE_LINK_RE.finditer(report_cell)]
+        expected_report = inventory_row.report_path
+        if links != [expected_report]:
+            add_error(
+                errors,
+                root,
+                path,
+                "EVIDENCE_MATRIX_REPORT",
+                f"{name}: expected report link {expected_report!r}, found {links!r}",
+            )
+    missing = sorted(set(inventory_by_name) - set(seen))
+    if missing:
+        add_error(
+            errors,
+            root,
+            path,
+            "EVIDENCE_MATRIX_COVERAGE",
+            f"matrix is missing inventory repositories: {', '.join(missing)}",
+        )
+
+
+def validate_proposed_workflow(
+    headings: Sequence[Heading], path: Path, root: Path, errors: list[Diagnostic]
+) -> None:
+    required = (
+        ("feature contract", "Feature"),
+        ("refactor contract", "Refactor"),
+        ("fix contract", "Fix"),
+        ("sprint and iteration decision", "Sprint and Iteration"),
+        ("vertical slice definition", "Slice"),
+        ("initial project design and later evolution", "initial horizontal design and later evolution"),
+        ("github issue assignment contract", "GitHub Issue"),
+        ("codex master per issue", "Master-per-Issue"),
+        ("steering group model", "Steering Group"),
+        ("currentassignment recommendation", "CurrentAssignment"),
+        ("declared observed and accepted state", "declared/observed/accepted state"),
+        ("traceability simplification", "traceability"),
+        ("verification review handoff and release", "verification/review/release"),
+    )
+    for key, concept in required:
+        require_h2(headings, key, path, root, errors, concept)
+
+
+def validate_migration(
+    headings: Sequence[Heading], path: Path, root: Path, errors: list[Diagnostic]
+) -> None:
+    for key, concept in (
+        ("compatibility profiles observed in the corpus", "compatibility profiles"),
+        ("proposed migration phases", "migration phases"),
+        ("sdp analyzer implications", "SDP-Analyzer"),
+        ("gh sdp implications", "gh-sdp"),
+        ("migration verification matrix", "migration verification"),
+    ):
+        require_h2(headings, key, path, root, errors, concept)
+    phases = {
+        int(match.group(1))
+        for heading in headings
+        if heading.level == 3
+        and (match := re.fullmatch(r"phase ([0-5]) .+", heading.key)) is not None
+    }
+    if phases != set(range(6)):
+        add_error(
+            errors,
+            root,
+            path,
+            "MIGRATION_PHASES",
+            f"migration phases are {sorted(phases)}; expected [0, 1, 2, 3, 4, 5]",
+        )
+
+
+def validate_skills_and_roles(
+    headings: Sequence[Heading], path: Path, root: Path, errors: list[Diagnostic]
+) -> None:
+    for key, concept in (
+        ("chatgpt steering group skill", "separate ChatGPT steering-group skill"),
+        ("chatgpt sdp skill", "separate ChatGPT sdp skill"),
+        ("why the skills remain separate", "skill separation rationale"),
+        ("codex role skill changes", "Codex roles"),
+    ):
+        require_h2(headings, key, path, root, errors, concept)
+    h3_keys = {heading.key for heading in headings if heading.level == 3}
+    for role in (
+        "sdp master",
+        "sdp worker",
+        "sdp reviewer",
+        "sdp verifier",
+        "sdp architect",
+        "sdp traceability",
+    ):
+        if role not in h3_keys:
+            add_error(
+                errors,
+                root,
+                path,
+                "CODEX_ROLE",
+                f"missing H3 recommendation for Codex role {role!r}",
+            )
+
+
+def validate_legacy(
+    headings: Sequence[Heading], path: Path, root: Path, errors: list[Diagnostic]
+) -> None:
+    for key, concept in (
+        ("deprecated for new work", "prospective deprecation"),
+        ("deprecate after migration support exists", "migration-gated deprecation"),
+        ("removal criteria", "removal gates"),
+    ):
+        require_h2(headings, key, path, root, errors, concept)
+
+
+def validate_follow_up_issues(
+    text: str,
+    headings: Sequence[Heading],
+    path: Path,
+    root: Path,
+    errors: list[Diagnostic],
+) -> None:
+    issue_headings: list[tuple[int, Heading]] = []
+    for heading in headings:
+        if heading.level != 2:
+            continue
+        match = re.match(r"^(\d+)\s+", heading.key)
+        if match:
+            issue_headings.append((int(match.group(1)), heading))
+    numbers = [number for number, _heading in issue_headings]
+    expected = list(range(1, len(issue_headings) + 1))
+    if len(issue_headings) < 2 or numbers != expected:
+        add_error(
+            errors,
+            root,
+            path,
+            "FOLLOW_UP_NUMBERING",
+            f"follow-up Issue numbers are {numbers}; expected consecutive unique numbers {expected}",
+        )
+    lines = text.splitlines()
+    for index, (number, heading) in enumerate(issue_headings):
+        end = (
+            issue_headings[index + 1][1].line - 1
+            if index + 1 < len(issue_headings)
+            else len(lines)
+        )
+        body = section_text(text, heading.line, end)
+        depends_matches = re.findall(r"(?im)^\*\*Depends on:\*\*\s*(.+)$", body)
+        if len(depends_matches) != 1:
+            add_error(
+                errors,
+                root,
+                path,
+                "FOLLOW_UP_DEPENDENCY",
+                f"Issue {number} must have exactly one Depends on field; found "
+                f"{len(depends_matches)}",
+            )
+            continue
+        dependencies: set[int] = set()
+        for match in re.finditer(
+            r"\bIssues?\s+(?!#)(\d+)(?:\s*[\N{EN DASH}-]\s*(\d+))?",
+            depends_matches[0],
+            re.IGNORECASE,
+        ):
+            start = int(match.group(1))
+            stop = int(match.group(2) or start)
+            if stop < start:
+                start, stop = stop, start
+            dependencies.update(range(start, stop + 1))
+        invalid = sorted(dependency for dependency in dependencies if dependency >= number)
+        if invalid:
+            add_error(
+                errors,
+                root,
+                path,
+                "FOLLOW_UP_ORDER",
+                f"Issue {number} depends on non-earlier Issue(s): {invalid}",
+            )
+
+
 def validate_required_section(
     report_text: str,
     report_path: Path,
@@ -841,6 +1233,10 @@ def validate(analysis_root: Path) -> tuple[list[Diagnostic], Stats, str | None]:
     errors: list[Diagnostic] = []
     readme_path = analysis_root / "README.md"
     inventory_path = analysis_root / "RepositoryInventory.md"
+    validator_path = Path(__file__).resolve()
+    synthesis_paths = {
+        name: analysis_root / name for name in SYNTHESIS_RULES
+    }
     corpus_paths: list[Path] = []
 
     texts: dict[Path, str] = {}
@@ -856,11 +1252,80 @@ def validate(analysis_root: Path) -> tuple[list[Diagnostic], Stats, str | None]:
             validate_headings(text, path, repository_root, errors)
             validate_links(text, path, repository_root, errors)
 
+    synthesis_headings: dict[str, list[Heading]] = {}
+    for name, path in synthesis_paths.items():
+        if not path.is_file():
+            add_error(errors, repository_root, path, "MISSING_FILE", "required file is missing")
+            continue
+        text = read_utf8(path, repository_root, errors)
+        if text is None:
+            continue
+        texts[path] = text
+        corpus_paths.append(path)
+        validate_whitespace(text, path, repository_root, errors)
+        validate_links(text, path, repository_root, errors)
+        minimum_words, minimum_h2s = SYNTHESIS_RULES[name]
+        synthesis_headings[name] = validate_synthesis_shape(
+            text,
+            path,
+            repository_root,
+            errors,
+            minimum_words,
+            minimum_h2s,
+        )
+
     stats = Stats()
     included: list[InventoryRow] = []
     if inventory_path in texts:
         included, _excluded, stats = validate_inventory(
             texts[inventory_path], inventory_path, repository_root, errors
+        )
+
+    evidence_path = synthesis_paths["EvidenceMatrix.md"]
+    if evidence_path in texts:
+        validate_evidence_matrix(
+            texts[evidence_path], evidence_path, included, repository_root, errors
+        )
+    proposed_path = synthesis_paths["ProposedSDPWorkflow.md"]
+    if "ProposedSDPWorkflow.md" in synthesis_headings:
+        validate_proposed_workflow(
+            synthesis_headings["ProposedSDPWorkflow.md"],
+            proposed_path,
+            repository_root,
+            errors,
+        )
+    migration_path = synthesis_paths["MigrationImpact.md"]
+    if "MigrationImpact.md" in synthesis_headings:
+        validate_migration(
+            synthesis_headings["MigrationImpact.md"],
+            migration_path,
+            repository_root,
+            errors,
+        )
+    skills_path = synthesis_paths["SkillsAndRoles.md"]
+    if "SkillsAndRoles.md" in synthesis_headings:
+        validate_skills_and_roles(
+            synthesis_headings["SkillsAndRoles.md"],
+            skills_path,
+            repository_root,
+            errors,
+        )
+    legacy_path = synthesis_paths["LegacyAndDeprecation.md"]
+    if "LegacyAndDeprecation.md" in synthesis_headings:
+        validate_legacy(
+            synthesis_headings["LegacyAndDeprecation.md"],
+            legacy_path,
+            repository_root,
+            errors,
+        )
+    follow_up_path = synthesis_paths["FollowUpIssues.md"]
+    if follow_up_path in texts and "FollowUpIssues.md" in synthesis_headings:
+        validate_follow_up_issues(
+            texts[follow_up_path],
+            synthesis_headings["FollowUpIssues.md"],
+            follow_up_path,
+            repository_root,
+            errors,
         )
 
     planned = {
@@ -911,8 +1376,19 @@ def validate(analysis_root: Path) -> tuple[list[Diagnostic], Stats, str | None]:
             else:
                 h1_identities[h1_key] = display_path(path, repository_root)
 
+    if validator_path.is_file():
+        corpus_paths.append(validator_path)
+    else:
+        add_error(
+            errors,
+            repository_root,
+            validator_path,
+            "MISSING_FILE",
+            "validator source is missing",
+        )
     digest = None
-    if not errors and len(corpus_paths) == 2 + EXPECTED_IN_SCOPE:
+    expected_corpus_files = 2 + EXPECTED_IN_SCOPE + len(SYNTHESIS_RULES) + 1
+    if not errors and len(corpus_paths) == expected_corpus_files:
         digest = corpus_digest(corpus_paths, repository_root)
     errors.sort(key=lambda item: (item.path.casefold(), item.code, item.message))
     return errors, stats, digest
