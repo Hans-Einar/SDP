@@ -34,3 +34,17 @@ No repository analysis conclusion has been accepted yet.
   recorded as study methodology rather than owner direction.
 - Completed `ITR-SDP-005-001` / `SLC-SDP-005-001` and activated
   `ITR-SDP-005-002` / `SLC-SDP-005-002` for the 17 reports.
+
+## 2026-08-20 — Ledger contract correction
+
+- GitHub Actions run `32423995193`, contracts job `96601936007`, rejected the
+  study's four initially appended Sprint/Slice events because the current root
+  `Ledger.ndjson` schema permits release events only and requires `releaseId`.
+- Removed the invalid branch-local lines in a corrective commit. Git history
+  retains the failed attempt; the current Ledger remains valid and release-only.
+- Did not relabel study transitions as release events and did not change the
+  Toolkit event schema because both would violate evidence truth or Issue #5's
+  no-implementation boundary.
+- Current study state remains durable in the Sprint records,
+  `CurrentIndex.yaml`, `Relations.yaml`, draft PR and Issue milestone comments.
+  General work-event support remains a migration/design finding for synthesis.
