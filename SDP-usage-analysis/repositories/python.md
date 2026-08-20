@@ -69,6 +69,9 @@
   Steering/`CurrentAssignment`, Issue/PR-to-SDP binding, standalone review or
   verification record. The dynamic Copilot workflow supports agent execution;
   it did not supply CI evidence for the studied commit or PR.
+- **OBSERVED — automation:** GitHub-hosted Copilot execution is the only
+  observed workflow automation. Repository-owned build/test/validation CI,
+  assignment synchronization and exact-head acceptance automation are absent.
 - **OWNER DIRECTION:** Issue #5 makes a GitHub Issue the future operational
   assignment boundary and a bounded Codex session Master for that Issue. A
   detailed agent PR body is useful evidence but is not a substitute for the

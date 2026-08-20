@@ -63,6 +63,10 @@
 ### CurrentIndex, Relations, Ledger and automation
 
 - **OBSERVED:** CurrentIndex provides a complete registry, Relations connects requirement/design/Slice/review/verification, and Ledger preserves chronological role events including rework.
+- **OBSERVED:** There is no `CurrentAssignment` or Steering record. The current
+  work boundary and acceptance state must be inferred from closed Handoffs,
+  registry statuses and Ledger events rather than one assignment/disposition
+  contract.
 - **OBSERVED:** The Ledger is compact enough to be useful, but many facts are manually duplicated in all four Sprint files plus traceability. CurrentIndex has no explicit `active: null` coordinates, so current state must be inferred from item statuses/Handoffs.
 - **OBSERVED:** Compile/self-test/offscreen smoke and YAML/NDJSON parsing were automated locally. Issue intake, agent delegation, independence, branch/PR management, active-state agreement and GitHub reconciliation were conversational/manual conventions.
 - **OBSERVED:** Generated outputs, bytecode caches and large experiment artifacts are committed alongside source and process records. The initial commit contains 1.78 million added lines, making review and evidence isolation difficult.

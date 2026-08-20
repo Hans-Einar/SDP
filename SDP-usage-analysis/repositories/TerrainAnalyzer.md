@@ -59,6 +59,9 @@
 - **OBSERVED:** Slices are vertical and gated, not merely file batches. Recent Slice contracts state goal, why now, expected paths, invariants, non-goals, IDs, verification, review, and completion. They progress from activation/contracts through bounded product capability to integrated exact-head closure.
 - **OBSERVED:** `FEAT-007` is called a Feature even though its outcome is behavior-preserving parallelization preparation rather than an owner-visible product capability. Its `work_type` is `parallelization_preparation` in `CurrentAssignment.yaml`.
 - **OBSERVED:** Refactor has no first-class folder or current traceability type. Historical refactors are Sprint-owned via `ImplementationRefactorPlan.md` and Sprint 022. Planned Issue #10 is clearly called a Refactor but has no repository-local Refactor ID/record yet. `ImplementationRefactorPlan.md` says no active follow-up after Sprint 024, which is stale relative to planned Issue #10.
+- **OBSERVED:** No first-class Fix record exists. Corrective review work is
+  handled as bounded rework/revision inside the active Slice, while material
+  governance reconciliation received a separate Issue/Sprint rather than a Fix.
 - **RECOMMENDATION:** Make Feature and Refactor peers above execution. Treat `FEAT-007`-like preparation as a Refactor/Enabler (or explicit preparation work type), not force it into owner-visible Feature semantics. Retain Sprint only as an optional execution/timebox/group inside Feature/Refactor; retain Slice as the mandatory bounded vertical gate.
 
 ### Later requirements and design refinement

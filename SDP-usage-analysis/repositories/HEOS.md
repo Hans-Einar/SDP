@@ -70,6 +70,9 @@
 
 - **OBSERVED — NON-DEFAULT EVIDENCE:** Legacy `CurrentIndex` registers 14 requirements, nine architecture items, six design-analysis items, ten design items, ten implementation items, Sprint/Iteration, blocked verification and open reviews. `Relations` maps their graph; the Ledger has seven manually written events.
 - **OBSERVED — NON-DEFAULT EVIDENCE:** The records contain no Issue/PR/commit edge and no CurrentAssignment. GitHub-native state is not derived or reconciled.
+- **OBSERVED — NON-DEFAULT EVIDENCE:** No Steering record or actor exists. The
+  branch-local Handoff and Sprint state substitute for Steering assignment and
+  disposition, without a durable owner decision surface.
 - **OBSERVED — NON-DEFAULT EVIDENCE:** Toolkit assets and manifests provide installed-version automation, but there is no repository workflow, validation run or product verification proving the installation/state is valid.
 - **INFERENCE:** The graph is detailed relative to zero implemented product Slices and duplicates state between legacy CurrentIndex and the new manifest.
 - **RECOMMENDATION:** Keep only stable, non-derivable relationships. Generate Git/Issue/PR status and avoid pre-registering every planned implementation item in three files.

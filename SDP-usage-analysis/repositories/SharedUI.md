@@ -169,6 +169,9 @@
 - **OBSERVED:** There is no CurrentIndex, Relations, Ledger, Steering assignment
   or stable machine-readable ID graph. Relationships are Markdown paths and
   narrative dependencies.
+- **OBSERVED:** There is no `CurrentAssignment`; a fresh agent must infer the
+  active authority from root AGENTS, contradictory Refactor prose and later
+  Issue #1 rather than follow one machine-readable assignment pointer.
 - **OBSERVED:** There is no historical branch/PR/Issue binding. Current Issue #1
   links downstream repositories and authority documents in prose only.
 - **OBSERVED:** Product verification is automated through npm scripts and tests,

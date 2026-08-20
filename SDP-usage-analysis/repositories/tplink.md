@@ -54,6 +54,9 @@
 - **OBSERVED:** Verification is conversational/self-reported in the PR body.
   Tests exist, but no GitHub workflow or check publishes their result and no
   immutable verification artifact identifies the tested environment.
+- **OBSERVED — automation:** Product tests are locally runnable, but the
+  repository has no CI, assignment/status synchronization, traceability
+  validation or review gate automation.
 - **OWNER DIRECTION:** Issue #5 requires future implementation to have a
   GitHub Issue assignment boundary, Feature/Refactor (or genuine Fix) owner,
   bounded Issue Master, verification and independent review. Their absence here

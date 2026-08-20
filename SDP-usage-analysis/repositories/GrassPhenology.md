@@ -73,6 +73,10 @@
 ### CurrentIndex, Relations, Ledger and automation
 
 - **OBSERVED:** `CurrentIndex` is both current pointer and very large registry. `Relations` links requirements, Sprints, Refactor/RFI, verification and review. The append-only Ledger preserves starts, findings, corrections, rechecks and closures.
+- **OBSERVED:** There is no `Steering/` surface or `CurrentAssignment`. Work
+  authority and next-step state are distributed across the Refactor records,
+  CurrentIndex, Handoffs and conversational/GitHub context rather than one
+  durable Steering assignment.
 - **OBSERVED:** The 250-event Ledger is unusually useful around Refactor-001 because it records rejected claims and exact rework instead of presenting only a clean final story.
 - **OBSERVED:** The same state is repeated in Refactor README, iteration files, implementation notes, verification, CurrentIndex, Relations and Ledger. `SDP/README.md` demonstrates that not every copy is maintained.
 - **OBSERVED:** Tests, builds, YAML/NDJSON parsing, hash/dimension checks and rendered evidence are executable. Role freshness, branch/PR creation, GitHub binding, active-coordinate agreement and Reviewer identity are conversational/manual conventions; there is no repository CI enforcing them.
