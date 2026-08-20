@@ -68,6 +68,35 @@ distinguish copied Toolkit material from project-local practice, current or
 accepted practice from abandoned experiments, and automated state from
 conversational convention.
 
+## Synthesis and Steering reading order
+
+Read these first:
+
+1. [ProposedSDPWorkflow.md](ProposedSDPWorkflow.md) — the Master-owned future
+   hierarchy, semantics, Issue/Master/Steering model and traceability decision;
+2. [CrossRepositoryPatterns.md](CrossRepositoryPatterns.md) — observed patterns,
+   counterevidence and constraints on the recommendation;
+3. [MigrationImpact.md](MigrationImpact.md) — profile-aware migration plus
+   SDP-Analyzer and gh-sdp implications;
+4. [LegacyAndDeprecation.md](LegacyAndDeprecation.md) — what remains durable,
+   what is deprecated and the removal gates; and
+5. [EvidenceMatrix.md](EvidenceMatrix.md) — exact 17-row comparative evidence.
+
+Supporting decisions:
+
+- [SkillsAndRoles.md](SkillsAndRoles.md) — ChatGPT `steering-group` versus `sdp`
+  and Codex skill updates;
+- [FollowUpIssues.md](FollowUpIssues.md) — dependency-ordered implementation
+  assignments; and
+- [RepositoryInventory.md](RepositoryInventory.md) plus `repositories/` — exact
+  scope and repository evidence.
+
+Run the deterministic corpus check with:
+
+```powershell
+python SDP-usage-analysis/validate_analysis.py
+```
+
 ## Study boundary
 
 - **OWNER DIRECTION:** studied repositories are read-only.
