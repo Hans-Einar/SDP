@@ -14,3 +14,23 @@
 - Activated `ITR-SDP-005-001` / `SLC-SDP-005-001` for the exact inventory.
 
 No repository analysis conclusion has been accepted yet.
+
+## 2026-08-20 — Inventory finalized
+
+- Enumerated all 35 repositories owned by `Hans-Einar` and visible to the
+  authenticated account: 27 private, 8 public, 3 owned forks and no archived
+  repositories.
+- Used fresh filtered mirrors of all advertised refs and the inclusive UTC
+  committer-time window `2026-04-20T21:08:52Z` through
+  `2026-08-20T21:08:52Z`.
+- Classified 17 repositories in scope and 18 excluded. `HSX` is the additional
+  in-scope repository absent from Issue #5's preliminary discovery list.
+- Master validation confirmed 35 inventory rows, 17 unique report paths and all
+  17 recorded default-branch heads against GitHub.
+- A separate fresh-mirror Master reproduction completed with 35 repositories,
+  17 in scope, 18 excluded, zero clone failures and no set differences. Its
+  verified temporary mirror directory was removed after the check.
+- Corrected the method labels so the exact timestamp/committer/all-ref rule is
+  recorded as study methodology rather than owner direction.
+- Completed `ITR-SDP-005-001` / `SLC-SDP-005-001` and activated
+  `ITR-SDP-005-002` / `SLC-SDP-005-002` for the 17 reports.

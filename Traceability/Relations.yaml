@@ -27,11 +27,11 @@ iterations:
 slices:
   SLC-SDP-005-001:
     iteration: ITR-SDP-005-001
-    status: active
+    status: complete
     record: Sprints/SPR-SDP-005--recent-sdp-usage-study/ScrumIterations.md
   SLC-SDP-005-002:
     iteration: ITR-SDP-005-002
-    status: planned
+    status: active
     record: Sprints/SPR-SDP-005--recent-sdp-usage-study/ScrumIterations.md
   SLC-SDP-005-003:
     iteration: ITR-SDP-005-003

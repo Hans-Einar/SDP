@@ -2,11 +2,11 @@
 
 ## ITR-SDP-005-001 — Inventory and repository evidence
 
-Status: active
+Status: complete
 
 ### SLC-SDP-005-001 — Exact inventory and study contract
 
-Status: active
+Status: complete
 
 #### Goal
 
@@ -65,11 +65,11 @@ exact evidence, and a separate verification pass reproduces the classification.
 
 ## ITR-SDP-005-002 — Per-repository reports
 
-Status: planned
+Status: active
 
 ### SLC-SDP-005-002 — Evidence-backed repository corpus
 
-Status: planned
+Status: active
 
 Create and Master-review one contract-complete Markdown report for every
 in-scope repository, committing progressively.

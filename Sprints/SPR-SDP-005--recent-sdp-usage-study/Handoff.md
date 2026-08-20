@@ -8,9 +8,10 @@ Status: active
 - Branch: `codex/issue-5-sdp-usage-study`
 - Baseline: `e398ebaf3a4ace6a5d92fd9ce22736a7427a9e15`
 - Sprint: `SPR-SDP-005`
-- Iteration: `ITR-SDP-005-001`
-- Slice: `SLC-SDP-005-001`
-- Next durable result: exact repository inventory and report manifest
+- Iteration: `ITR-SDP-005-002`
+- Slice: `SLC-SDP-005-002`
+- Completed evidence: exact 35-repository inventory and 17-report manifest
+- Next durable result: 17 Master-reviewed per-repository reports
 
 ## Stop boundary
 
