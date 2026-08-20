@@ -48,3 +48,23 @@ No repository analysis conclusion has been accepted yet.
 - Current study state remains durable in the Sprint records,
   `CurrentIndex.yaml`, `Relations.yaml`, draft PR and Issue milestone comments.
   General work-event support remains a migration/design finding for synthesis.
+
+## 2026-08-20 — Repository corpus completed
+
+- Created and Master-reviewed one report for each of the 17 repositories in the
+  inventory manifest. Reports distinguish default-tree truth from non-default,
+  open-PR and proposal evidence.
+- Used dedicated deep Workers for ActionCam, TerrainAnalyzer, SDP, gh-sdp,
+  SDP-Analyzer, weight_app_flutter, Lyndata and HSX, plus bounded batches for
+  the remaining repositories. The Master read every report, corrected evidence
+  classification/identity/coverage issues and committed progressively.
+- Added the standard-library corpus validator
+  `SDP-usage-analysis/validate_analysis.py`.
+- Full validation passed at `dc270f788a0df9d3269080ba05e9783ee0d55e40`:
+  35 considered, 17 in scope, 18 excluded, 17 reports, digest
+  `a38e7b74ad9c6c58fe93763b3aa82e28f972b903388e22bee90d9f99451b9916`.
+- The validator also proved representative negative cases fail: duplicate
+  headings, wrong study commit, broken local links, tabs and trailing
+  whitespace.
+- Completed `ITR-SDP-005-002` / `SLC-SDP-005-002` and activated
+  `ITR-SDP-005-003` / `SLC-SDP-005-003` for Master-owned synthesis.

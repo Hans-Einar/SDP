@@ -65,22 +65,22 @@ exact evidence, and a separate verification pass reproduces the classification.
 
 ## ITR-SDP-005-002 — Per-repository reports
 
-Status: active
+Status: complete
 
 ### SLC-SDP-005-002 — Evidence-backed repository corpus
 
-Status: active
+Status: complete
 
 Create and Master-review one contract-complete Markdown report for every
 in-scope repository, committing progressively.
 
 ## ITR-SDP-005-003 — Cross-repository synthesis
 
-Status: planned
+Status: active
 
 ### SLC-SDP-005-003 — Proposed future SDP workflow
 
-Status: planned
+Status: active
 
 Synthesize the completed reports; do not concatenate Worker recommendations.
 

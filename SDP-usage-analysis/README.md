@@ -37,12 +37,12 @@ must label substantive evidence and conclusions with this vocabulary.
   commit evidence, commands, limitations, and one-to-one report manifest are in
   [RepositoryInventory.md](RepositoryInventory.md).
 
-## Planned corpus
+## Completed repository corpus
 
-The study will add one file beneath `repositories/` for each in-scope repository.
-The inventory is the authoritative report-path manifest. Cross-repository
-patterns and recommendations may be written only after those individual reports
-exist and have been checked against their evidence.
+The study contains one file beneath `repositories/` for each of the 17 in-scope
+repositories. The inventory is the authoritative report-path manifest. All 17
+reports have been Master-reviewed and pass `validate_analysis.py`; synthesis is
+the active work boundary.
 
 Each repository report must cover:
 
