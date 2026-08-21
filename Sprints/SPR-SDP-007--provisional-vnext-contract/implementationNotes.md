@@ -272,3 +272,29 @@ fresh `REV/VER-SDP-007-006` gate. Earlier evidence remains historical.
 No sixth-pass finding is waived. The next rework must distinguish historical
 reservation episodes from current concurrency and preserve revision semantics
 from actual historical assignment/reservation bytes.
+
+## 2026-08-21 — Seventh candidate after reservation-epoch rework
+
+- A new fresh Worker resolved every `REV/VER-SDP-007-006` finding, including
+  the Low Unicode robustness item, under the experimental pilot area only.
+- Grouped concurrency/base/DAG/order/path checks by reservation epoch while
+  preserving accepted historical assignments; rebuilt revision comparison from
+  exact historical assignment and reservation bytes with immutable Issue,
+  source, workRef and accepted authorized-Slice evidence; closed reverse active
+  projection and active Fix target history; enforced one top-level/embedded
+  relation kind matrix; rejected duplicate JSON keys recursively; and stabilized
+  invalid branch Unicode diagnostics.
+- Dogfood assignment revision 6 retains exact revision-1 through revision-5
+  snapshots, reserves exact REV/VER-007 paths and binds reservation digest
+  `sha256:08cbabb798c0cc95e31052110ff2a910d7ee91e52f370165398c194aea9b552d`.
+- Deterministic coverage now contains eight templates, four positive examples,
+  twenty-one positive mutation controls, two hundred sixty-three exact negative
+  fixtures, two raw duplicate-key parse fixtures and one hundred thirty-eight
+  diagnostic codes.
+- Master validation passed the pilot validator, Issue #5 analysis validator,
+  Toolkit validator and all nine Toolkit Python tests.
+- Committed and pushed technical candidate
+  `8726e577ac4f6ec7ca1fb81688305d60359e3db0`.
+
+The exact remote head containing this recovery update now requires the reserved
+fresh `REV/VER-SDP-007-007` gate. Earlier evidence remains historical.

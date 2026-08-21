@@ -1,6 +1,6 @@
 # SPR-SDP-007 Handoff
 
-Status: CHANGES_REQUIRED_SIXTH_PASS
+Status: SEVENTH_CANDIDATE_AWAITING_REVIEW
 
 ## Current assignment
 
@@ -44,12 +44,15 @@ Status: CHANGES_REQUIRED_SIXTH_PASS
   `dfdea4fe259a9e342d651254656bcfac5363d0b9`
 - Verification: `VER-SDP-007-006` — FAIL, B0 / H1 / M0 / L0 / Note 5
 - Review: `REV-SDP-007-006` — changes required, B0 / H2 / M4 / L1 / Note 6
+- Seventh technical candidate:
+  `8726e577ac4f6ec7ca1fb81688305d60359e3db0`
 - Durable pilot assignment:
   `SDP-vnext-pilot/Steering/Assignments/ISSUE-007.yaml`
 
 ## Next legal action
 
-Delegate fresh bounded rework for every `REV/VER-SDP-007-006` finding,
-including the Low robustness item. Refreeze the dogfood assignment if required,
-freeze a new exact remote head and run new independent evidence. Do not modify
-canonical Toolkit contracts or any downstream repository.
+Resolve and freeze the exact remote branch head containing technical candidate
+`8726e57...` plus this recovery update. Run fresh `VER-SDP-007-007` and a new
+independent `REV-SDP-007-007`; resolve any Blocking/High/Medium result before
+closure. Do not modify canonical Toolkit contracts or any downstream
+repository.
