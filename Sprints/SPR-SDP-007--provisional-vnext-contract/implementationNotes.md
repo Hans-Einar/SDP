@@ -397,3 +397,28 @@ fresh `REV/VER-SDP-007-009` gate. Earlier evidence remains historical.
 
 The passing verifier remains exact historical evidence; it does not override
 the independent review. Neither finding is waived.
+
+## 2026-08-21 — Tenth candidate after durable-reservation rework
+
+- A new fresh Worker resolved both `REV-SDP-007-009` findings under the
+  experimental pilot area only.
+- Added a durable pre-materialization `reserved` inventory state, mandatory
+  inventory/allocator resolution for every bound or preparatory reservation,
+  cross-epoch no-reuse, promotion to materialized `prospective`, and null-only
+  preparatory authorized-Slice candidates until bound acceptance evidence
+  exists.
+- Dogfood assignment revision 9 retains exact revision-1 through revision-8
+  snapshots, reserves exact REV/VER-010 paths and binds reservation digest
+  `sha256:6bdb62d86c07aad489fde8be141eb90a83df3ea56de2b43d59e59b2a1273a30e`;
+  it correctly does not re-add already allocated `STU-007` to reserved IDs.
+- Deterministic coverage now contains eight templates, four examples,
+  twenty-eight positive controls, two hundred ninety-nine negatives, two raw
+  parse fixtures, compatibility and temporary-Git controls spanning one
+  hundred forty-eight diagnostic codes.
+- Master validation passed the pilot validator, Issue #5 analysis validator,
+  Toolkit validator and all nine Toolkit Python tests.
+- Committed and pushed technical candidate
+  `f7eefcb20d1a3f051550e9caeca8672b032c0775`.
+
+The exact remote head containing this recovery update now requires the reserved
+fresh `REV/VER-SDP-007-010` gate. Earlier evidence remains historical.

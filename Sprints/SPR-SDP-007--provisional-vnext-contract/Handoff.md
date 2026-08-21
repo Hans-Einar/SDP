@@ -1,6 +1,6 @@
 # SPR-SDP-007 Handoff
 
-Status: CHANGES_REQUIRED_NINTH_REVIEW
+Status: TENTH_CANDIDATE_AWAITING_REVIEW
 
 ## Current assignment
 
@@ -62,12 +62,15 @@ Status: CHANGES_REQUIRED_NINTH_REVIEW
   `a6a23d50e1bb807c9db350758aad1737c01f7846`
 - Verification: `VER-SDP-007-009` — PASS, B0 / H0 / M0 / L0 / Note 6
 - Review: `REV-SDP-007-009` — changes required, B0 / H1 / M1 / L0 / Note 6
+- Tenth technical candidate:
+  `f7eefcb20d1a3f051550e9caeca8672b032c0775`
 - Durable pilot assignment:
   `SDP-vnext-pilot/Steering/Assignments/ISSUE-007.yaml`
 
 ## Next legal action
 
-Delegate fresh bounded rework for both `REV-SDP-007-009` findings, preserve the
-passing verifier record as exact history, refreeze if reservation paths change,
-then run new exact-head evidence. Do not modify canonical Toolkit contracts or
-any downstream repository.
+Resolve and freeze the exact remote branch head containing technical candidate
+`f7eefcb...` plus this recovery update. Run fresh `VER-SDP-007-010` and a new
+independent `REV-SDP-007-010`; resolve any Blocking/High/Medium result before
+closure. Do not modify canonical Toolkit contracts or any downstream
+repository.
