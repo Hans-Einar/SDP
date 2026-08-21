@@ -52,8 +52,8 @@ slices:
     iteration: ITR-SDP-007-002
     status: active
     record: Sprints/SPR-SDP-007--provisional-vnext-contract/ScrumIterations.md
-    reviews: [REV-SDP-007-001, REV-SDP-007-002]
-    verification: [VER-SDP-007-001, VER-SDP-007-002]
+    reviews: [REV-SDP-007-001, REV-SDP-007-002, REV-SDP-007-003]
+    verification: [VER-SDP-007-001, VER-SDP-007-002, VER-SDP-007-003]
   SLC-SDP-007-003:
     iteration: ITR-SDP-007-003
     status: planned
@@ -78,6 +78,17 @@ slices:
     verification: [VER-SDP-005-001, VER-SDP-005-002, VER-SDP-005-003]
 fixes: {}
 reviews:
+  REV-SDP-007-003:
+    slice: SLC-SDP-007-002
+    candidate: 0de8a8957b3212404007160d90da47445d7b4e7b
+    record: CodeReview/REV-SDP-007-003.md
+    disposition: changes-required
+    findings:
+      blocking: 0
+      high: 2
+      medium: 3
+      low: 2
+      note: 4
   REV-SDP-007-002:
     slice: SLC-SDP-007-002
     candidate: a1c64f4dadb663e3b3b7c03c1f8759b94c7f2be3
@@ -133,6 +144,17 @@ reviews:
       low: 0
       note: 4
 verification:
+  VER-SDP-007-003:
+    slice: SLC-SDP-007-002
+    candidate: 0de8a8957b3212404007160d90da47445d7b4e7b
+    record: Verification/VER-SDP-007-003.md
+    outcome: fail
+    findings:
+      blocking: 0
+      high: 0
+      medium: 1
+      low: 1
+      note: 4
   VER-SDP-007-002:
     slice: SLC-SDP-007-002
     candidate: a1c64f4dadb663e3b3b7c03c1f8759b94c7f2be3

@@ -122,3 +122,24 @@ remain active for the final required rework and new exact-candidate evidence.
 The full branch head containing this recovery update must now receive new fresh
 verification and an independent `REV/VER-SDP-007-003` pass. Earlier failed
 dispositions remain historical only.
+
+## 2026-08-21 — Third adversarial gate
+
+- Froze full candidate `0de8a8957b3212404007160d90da47445d7b4e7b` for
+  fresh `REV/VER-SDP-007-003` evidence; exact-head Actions run `32500882771`
+  passed.
+- Fresh `VER-SDP-007-003` independently confirmed all prior findings resolved,
+  then returned FAIL with Blocking 0, High 0, Medium 1, Low 1 and Note 4 for a
+  reusable revision-2+ history omission/fabrication gap and same-row duplicate
+  ID reservation.
+- Fresh `REV-SDP-007-003` independently confirmed all prior findings resolved,
+  then returned changes required with Blocking 0, High 2, Medium 3, Low 2 and
+  Note 4. The new findings require accepted assignment/Slice/Study/prerequisite/
+  conflict state coherence; qualified embedded Feature/Refactor/Fix/Study
+  semantic edges; complete multi-refreeze history with generic local
+  reconstruction; complete portable path/shared/boundary validation; unique
+  prospective record sources; valid move/key hints; and exact pilot schema
+  markers.
+
+No third-pass finding is waived. `ITR-SDP-007-002` / `SLC-SDP-007-002`
+remain active for bounded rework and a new exact-candidate gate.

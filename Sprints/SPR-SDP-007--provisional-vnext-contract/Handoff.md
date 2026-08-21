@@ -1,6 +1,6 @@
 # SPR-SDP-007 Handoff
 
-Status: FINAL_REWORK_AWAITING_REVIEW
+Status: CHANGES_REQUIRED_THIRD_PASS
 
 ## Current assignment
 
@@ -22,13 +22,17 @@ Status: FINAL_REWORK_AWAITING_REVIEW
 - Review: `REV-SDP-007-002` — changes required, B0 / H2 / M5 / L0 / Note 4
 - Final technical rework candidate:
   `730424f5d6078356353da57c8234ef4237b4eae8`
+- Full third-gate candidate:
+  `0de8a8957b3212404007160d90da47445d7b4e7b`
+- Verification: `VER-SDP-007-003` — FAIL, B0 / H0 / M1 / L1 / Note 4
+- Review: `REV-SDP-007-003` — changes required, B0 / H2 / M3 / L2 / Note 4
 - Durable pilot assignment:
   `SDP-vnext-pilot/Steering/Assignments/ISSUE-007.yaml`
 
 ## Next legal action
 
-Resolve and freeze the exact remote branch head containing technical candidate
-`730424f...` plus this recovery update. Run fresh `VER-SDP-007-003` and a new
-independent `REV-SDP-007-003`; resolve any Blocking/High/Medium result before
-closure. Do not modify canonical Toolkit contracts or any downstream
-repository.
+Delegate fresh bounded rework for every `REV/VER-SDP-007-003` finding,
+including the Low adjacency findings. Increment/refreeze the dogfood assignment
+again if its reservation contract changes, freeze a new exact remote head and
+run new independent evidence. Do not modify canonical Toolkit contracts or any
+downstream repository.
