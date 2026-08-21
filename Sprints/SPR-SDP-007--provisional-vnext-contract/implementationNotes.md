@@ -316,3 +316,27 @@ fresh `REV/VER-SDP-007-007` gate. Earlier evidence remains historical.
 
 The passing verifier record remains exact historical evidence and does not
 override the independent review. No reviewer finding is waived.
+
+## 2026-08-21 — Eighth candidate after epoch-identity rework
+
+- A new fresh Worker resolved every `REV-SDP-007-007` finding under the
+  experimental pilot area only.
+- Historical reconstruction now requires the exact reservation row/base/order/
+  convergence projection to equal its exact historical assignment even under
+  coordinated byte/digest/pointer rewrites; epoch identity is consistently
+  `(reservation ID,digest)` across lookup/grouping/materialization/rebinding;
+  and every typed bound or unbound reservation set receives full semantic
+  validation.
+- Dogfood assignment revision 7 retains exact revision-1 through revision-6
+  snapshots, reserves exact REV/VER-008 paths and binds reservation digest
+  `sha256:ce963d187746fce12ce14e54ad98b39e2ab13463a5ec8c4f15bd6d1a4d335872`.
+- Deterministic coverage now contains eight templates, four positive examples,
+  twenty-five positive controls, two hundred eighty exact negative fixtures,
+  two raw parse fixtures and one hundred forty diagnostic codes.
+- Master validation passed the pilot validator, Issue #5 analysis validator,
+  Toolkit validator and all nine Toolkit Python tests.
+- Committed and pushed technical candidate
+  `36205b14450d59c64a1c071a2d0890eb5fc620b6`.
+
+The exact remote head containing this recovery update now requires the reserved
+fresh `REV/VER-SDP-007-008` gate. Earlier evidence remains historical.
