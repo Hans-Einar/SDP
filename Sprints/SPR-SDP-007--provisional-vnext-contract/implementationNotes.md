@@ -167,3 +167,21 @@ remain active for bounded rework and a new exact-candidate gate.
 
 The exact remote head containing this recovery update now requires the reserved
 fresh `REV/VER-SDP-007-004` gate. No earlier disposition is reused.
+
+## 2026-08-21 — Fourth adversarial gate
+
+- Froze full candidate `60978c306f7ce3c09033603abf3300839b2a251d` for the
+  reserved fourth evidence pass; exact-head Actions run `32505098158` passed.
+- Fresh `VER-SDP-007-004` independently replayed all 157 negative fixtures and
+  prior findings, exercised a complete revision-4 history control and returned
+  PASS with Blocking 0, High 0, Medium 0, Low 0 and Note 6.
+- Separate fresh `REV-SDP-007-004` confirmed all prior findings resolved but
+  returned changes required with Blocking 0, High 2, Medium 1, Low 1 and Note
+  4. New findings require terminal Feature/Refactor/Fix closure over accepted
+  represented Slices/assignments and accepted decision prerequisites; rejection
+  of missing schema/kind/experimental downgrade; globally normalized semantic
+  edges without circular or cross-surface duplicates; and stable diagnostics
+  rather than an encoding exception for surrogate input.
+
+The passing verifier evidence remains exact-candidate evidence; it does not
+override the independent review. No reviewer finding is waived.
