@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-assignment-history-v0",
+  "experimental": true,
+  "kind": "issue-assignment-revision-snapshot",
+  "source": "SDP-vnext-pilot/Steering/Assignments/History/ISSUE-007-revision-008.json",
+  "assignmentSource": "SDP-vnext-pilot/Steering/Assignments/ISSUE-007.yaml",
+  "authorityIssue": "https://github.com/Hans-Einar/SDP/issues/7",
+  "revision": 8,
+  "sourceCandidate": "a6a23d50e1bb807c9db350758aad1737c01f7846",
+  "sourceFieldPresent": true,
+  "previousSnapshot": {
+    "revision": 7,
+    "snapshotPath": "SDP-vnext-pilot/Steering/Assignments/History/ISSUE-007-revision-007.json",
+    "sourceCandidate": "133cfaee9cb194b6181ac1e8fa9e1b474f79c00f",
+    "reservationDigest": "sha256:ce963d187746fce12ce14e54ad98b39e2ab13463a5ec8c4f15bd6d1a4d335872"
+  },
+  "reservationSet": {
+    "id": "RSV-ISSUE-007-001",
+    "digest": "sha256:888daed562aaafb05530e48f5ebb11b344d7005a25ce3890d3e83db301d6ea70"
+  },
+  "recordedContext": {
+    "/source": "SDP-vnext-pilot/Steering/Assignments/ISSUE-007.yaml",
+    "/declaredState": "active",
+    "/workRef": {
+      "type": "study",
+      "domainUid": "urn:uuid:9df0765b-4f22-4c5e-8fda-b5e71c96ca81",
+      "id": "STU-007"
+    },
+    "/authorizedSlices": [],
+    "/activeSlices": [],
+    "/coordination/reservationSet": {
+      "id": "RSV-ISSUE-007-001",
+      "path": "SDP-vnext-pilot/Steering/Reservations/RSV-ISSUE-007-001.json",
+      "digest": "sha256:888daed562aaafb05530e48f5ebb11b344d7005a25ce3890d3e83db301d6ea70"
+    },
+    "/coordination/ownedPaths": [
+      "SDP-vnext-pilot/**",
+      "Sprints/SPR-SDP-007--provisional-vnext-contract/**",
+      "CodeReview/REV-SDP-007-001.md",
+      "CodeReview/REV-SDP-007-002.md",
+      "CodeReview/REV-SDP-007-003.md",
+      "CodeReview/REV-SDP-007-004.md",
+      "CodeReview/REV-SDP-007-005.md",
+      "CodeReview/REV-SDP-007-006.md",
+      "CodeReview/REV-SDP-007-007.md",
+      "CodeReview/REV-SDP-007-008.md",
+      "CodeReview/REV-SDP-007-009.md",
+      "Verification/VER-SDP-007-001.md",
+      "Verification/VER-SDP-007-002.md",
+      "Verification/VER-SDP-007-003.md",
+      "Verification/VER-SDP-007-004.md",
+      "Verification/VER-SDP-007-005.md",
+      "Verification/VER-SDP-007-006.md",
+      "Verification/VER-SDP-007-007.md",
+      "Verification/VER-SDP-007-008.md",
+      "Verification/VER-SDP-007-009.md"
+    ],
+    "/coordination/convergence": {
+      "owner": "Hans-Einar/SDP Steering",
+      "command": "python SDP-vnext-pilot/validate_pilot.py",
+      "terminal": true
+    }
+  },
+  "supersededByRevision": 9,
+  "supersessionReason": "The ninth independent review required durable inventory presence for every reservation claim, permanent cross-epoch ID no-reuse, an explicit reserved-before-materialization state, and null accepted candidates in preparatory rows before the tenth evidence gate."
+}

@@ -3,17 +3,17 @@
   "experimental": true,
   "kind": "issue-assignment",
   "source": "SDP-vnext-pilot/Steering/Assignments/ISSUE-007.yaml",
-  "revision": 8,
+  "revision": 9,
   "declaredState": "active",
   "previousRevision": {
-    "revision": 7,
-    "snapshotPath": "SDP-vnext-pilot/Steering/Assignments/History/ISSUE-007-revision-007.json",
-    "sourceCandidate": "133cfaee9cb194b6181ac1e8fa9e1b474f79c00f",
-    "reservationDigest": "sha256:ce963d187746fce12ce14e54ad98b39e2ab13463a5ec8c4f15bd6d1a4d335872"
+    "revision": 8,
+    "snapshotPath": "SDP-vnext-pilot/Steering/Assignments/History/ISSUE-007-revision-008.json",
+    "sourceCandidate": "a6a23d50e1bb807c9db350758aad1737c01f7846",
+    "reservationDigest": "sha256:888daed562aaafb05530e48f5ebb11b344d7005a25ce3890d3e83db301d6ea70"
   },
   "refreeze": {
-    "sourceCandidate": "133cfaee9cb194b6181ac1e8fa9e1b474f79c00f",
-    "reason": "Revision 8 refreezes after the eighth evidence gate: it retains the exact revision-7 assignment and reservation bytes, reserves REV/VER-009 paths, anchors every source candidate to the validated Git ancestry, validates preparatory epochs against repository-wide identity/path authority, and limits early-shape compatibility to its exact historical revision."
+    "sourceCandidate": "a6a23d50e1bb807c9db350758aad1737c01f7846",
+    "reason": "Revision 9 refreezes after the ninth evidence gate: it retains the exact revision-8 assignment and reservation bytes, reserves REV/VER-010 paths, requires durable inventory membership for every reservation, separates reserved allocation from prospective materialization, forbids cross-epoch ID reuse, and keeps preparatory accepted candidates null."
   },
   "authority": {
     "issue": "https://github.com/Hans-Einar/SDP/issues/7",
@@ -45,7 +45,7 @@
     "reservationSet": {
       "id": "RSV-ISSUE-007-001",
       "path": "SDP-vnext-pilot/Steering/Reservations/RSV-ISSUE-007-001.json",
-      "digest": "sha256:888daed562aaafb05530e48f5ebb11b344d7005a25ce3890d3e83db301d6ea70"
+      "digest": "sha256:6bdb62d86c07aad489fde8be141eb90a83df3ea56de2b43d59e59b2a1273a30e"
     },
     "dependsOnIssues": [],
     "conflictsWithIssues": [],
@@ -61,6 +61,7 @@
       "CodeReview/REV-SDP-007-007.md",
       "CodeReview/REV-SDP-007-008.md",
       "CodeReview/REV-SDP-007-009.md",
+      "CodeReview/REV-SDP-007-010.md",
       "Verification/VER-SDP-007-001.md",
       "Verification/VER-SDP-007-002.md",
       "Verification/VER-SDP-007-003.md",
@@ -69,7 +70,8 @@
       "Verification/VER-SDP-007-006.md",
       "Verification/VER-SDP-007-007.md",
       "Verification/VER-SDP-007-008.md",
-      "Verification/VER-SDP-007-009.md"
+      "Verification/VER-SDP-007-009.md",
+      "Verification/VER-SDP-007-010.md"
     ],
     "sharedTouchpoints": [
       {
@@ -83,12 +85,7 @@
         "allowedMutation": "Issue #7 semantic edges only"
       }
     ],
-    "reservedIds": [
-      {
-        "domainUid": "urn:uuid:9df0765b-4f22-4c5e-8fda-b5e71c96ca81",
-        "id": "STU-007"
-      }
-    ],
+    "reservedIds": [],
     "mergeOrder": ["https://github.com/Hans-Einar/SDP/issues/7"],
     "convergence": {
       "owner": "Hans-Einar/SDP Steering",

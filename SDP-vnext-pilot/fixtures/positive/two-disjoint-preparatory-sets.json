@@ -5,6 +5,7 @@
   "sourcePositive": "unreferenced-reservation-set.json",
   "mutations": [
     {"op":"add","path":"/registries/0/domains/0/issuedIds/-","value":{"id":"FEAT-092","status":"prospective","allocationIssue":"https://github.com/example/tiny-app/issues/92","source":"Features/FEAT-092.json"}},
+    {"op":"add","path":"/registries/0/domains/0/issuedIds/-","value":{"id":"SLC-092","status":"reserved","allocationIssue":"https://github.com/example/tiny-app/issues/92","source":"Slices/SLC-092.json"}},
     {"op":"copy","from":"/records/0","path":"/records/-"},
     {"op":"replace","path":"/records/5/id","value":"FEAT-092"},
     {"op":"replace","path":"/records/5/source","value":"Features/FEAT-092.json"},

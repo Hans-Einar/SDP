@@ -5,7 +5,8 @@ Status: **pilot v0; not canonical**
 Profiles scale durable evidence and safety gates. They do not weaken the core
 rules: one intent owner, bounded Issue authority, stable identity, truthful
 declared/observed/accepted state, proportionate verification, fresh independent
-review, and a stop boundary. They also do not waive allocation/execution
+review, and a stop boundary. They also do not waive durable reserved inventory,
+reserved-to-prospective materialization, permanent ID no-reuse, or allocation/execution
 authority separation, complete authorized-Slice history, terminal aggregate
 closure, strict JSON, semantic DAG, or active-write-surface rules.
 

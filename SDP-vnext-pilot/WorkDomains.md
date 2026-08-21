@@ -114,15 +114,23 @@ An undocumented form such as `FEAT-001-002` is not prospective pilot v0
 identity. Empty IDs are invalid. Historical spellings are preserved exactly,
 including spelling/case that would not satisfy the prospective grammar.
 
-`issuedIds` is a structured inventory, never a list of bare strings. A
-prospective member carries `id`, `status: prospective`, the allocating
-`allocationIssue`, and its repository-relative `source`. It must satisfy the
-current domain key/style/type grammar. `source` is a normalized, portable,
-non-recursive repository-relative record path and equals the represented
-record's own `source`; when local, it resolves to that exact JSON record. No
-two prospective identities hosted by one canonical repository may claim the
-same NFKC/casefold/slash-normalized source, and inventory-to-record binding is
-one-to-one. A
+`issuedIds` is a structured inventory, never a list of bare strings. A new
+allocation first carries `id`, `status: reserved`, the immutable allocating
+`allocationIssue`, and a planned repository-relative `source`. The ID already
+belongs to that allocator and domain at this point, even though no typed record
+exists. It satisfies the same current key/style/type grammar as a prospective
+record. The source is normalized, portable, non-recursive, and participates in
+repository-wide normalized source uniqueness immediately.
+
+Promotion changes only `status: reserved` to `status: prospective` and
+materializes the exact typed JSON record at the planned source. The allocator,
+domain UID, ID, and source do not change. A `reserved` member cannot be a
+current `workRef`, cannot have a materialized record, and cannot supply an
+accepted Slice candidate/evidence. A `prospective` member's source equals the
+represented record's own `source`; when local, it resolves to that exact JSON
+record. No two reserved/prospective identities hosted by one canonical
+repository may claim the same NFKC/casefold/slash-normalized source, and each
+prospective inventory-to-record binding is one-to-one. A
 preserved historical spelling such as `DBG-RF-001` carries `status:
 legacy-preserved`, its original source, and exact provenance `{repository,
 commit, path}`; it is not normalized into a new `REF` identity. Its
@@ -130,9 +138,18 @@ historical `authorityIssue` is canonical when an Issue existed. If none existed,
 `null` and a nonblank `authorityMissingReason` states that fact—history is not
 invented. Provenance repository and Issue values use the canonical GitHub
 forms below, while provenance/source paths remain portable. Inventory IDs are
-unique after NFKC/casefold normalization. A reservation for a newly created ID
-must use the prospective member's immutable `allocationIssue`; another Issue
-cannot reclaim it. That allocation fact is distinct from execution authority:
+unique after NFKC/casefold normalization. Every `reservedIds` claim in a bound
+or preparatory row resolves to exactly one `reserved` or `prospective` member
+in its active owning domain, and that member's `allocationIssue` equals the row
+Issue. Missing and `legacy-preserved` inventory cannot satisfy the claim.
+Another Issue cannot reclaim it. A stable identity is claimed in exactly one
+reservation epoch: terminal history never makes it available to a later
+preparatory/current epoch, and two preparatory epochs cannot reuse it even when
+they name the same Issue. An assignment refreeze preserves the old claim in its
+exact historical snapshot; the new revision does not re-add an already
+allocated ID to `reservedIds`.
+
+That allocation fact is distinct from execution authority:
 a later Issue may use an already-issued Feature/Refactor/Fix as `workRef`
 without reserving it again when the owner lists that canonical Issue exactly
 once in `issueAuthorities`. Each new Slice/Study/Fix reserved by that later
@@ -164,10 +181,13 @@ reservation rows and edges/order, amendments, and Steering evidence.
 An unbound typed reservation set is a preparatory epoch in that same canonical
 repository context. Every row resolves an active domain and current primary
 record, and that record names the row Issue exactly once. Reserved domains and
-ID grammar/style resolve; a prospective inventory member may be reserved only
-by its immutable allocator; a legacy-preserved ID cannot satisfy a current
-gate; and an already issued ID cannot be reclaimed by another Issue. Every
-authorized new Slice remains explicitly reserved. Preparatory owned/shared
+ID grammar/style resolve; each reservation resolves exactly one durable
+reserved/prospective inventory member owned by the row Issue; a
+legacy-preserved or absent member cannot satisfy a current gate; and an already
+allocated identity cannot be reclaimed or reused by another epoch. Every
+authorized future Slice remains explicitly reserved and has
+`acceptedCandidate: null`. A previously accepted Slice is read-only dependency
+evidence, not a newly authorized preparatory Slice. Preparatory owned/shared
 claims collide with nonterminal bound epochs and other preparatory epochs under
 the same portable rules; terminal bound epochs remain historical. Disjoint
 preparatory alternatives may coexist.

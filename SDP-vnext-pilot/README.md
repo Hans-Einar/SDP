@@ -51,9 +51,9 @@ assignment, the single default-domain declaration, and
 `Steering/Reservations/RSV-ISSUE-007-001.json`. The assignment binds the real
 reservation file by canonical JSON SHA-256; the validator resolves the Study,
 domain, paths, IDs, base, dependency, and convergence contract together.
-Assignment revision 8 retains the complete revision-1 through revision-7
+Assignment revision 9 retains the complete revision-1 through revision-8
 snapshot chain under `Steering/Assignments/History/`. The generic repository
-driver reconstructs all seven exact Git candidates plus each candidate's exact
+driver reconstructs all eight exact Git candidates plus each candidate's exact
 historical reservation, rehashes them, and requires the one canonical Issue
 row to equal the exact historical assignment projection. It rejects missing,
 fabricated, tampered, gapped, truncated, identity-replacing,
@@ -76,6 +76,8 @@ accepted evidence, identity inventory/source/provenance/no-reuse, reservation
 digests and tuple-keyed reservation-epoch concurrency graphs, complete
 standalone validation of bound and preparatory typed reservation sets,
 repository/domain/inventory/current-epoch coherence for preparatory rows,
+durable reserved-before-materialization allocation, cross-epoch ID no-reuse,
+and null-only preparatory accepted candidates,
 portable roots/paths and branch names,
 cross-record acceptance/prerequisite/conflict state, qualified embedded
 and top-level semantic edges as one global set with relation-specific DAGs,

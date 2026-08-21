@@ -6,6 +6,8 @@
   "mutations": [
     {"op":"add","path":"/registries/0/domains/0/issuedIds/-","value":{"id":"FEAT-090","status":"prospective","allocationIssue":"https://github.com/example/tiny-app/issues/90","source":"Features/FEAT-090.json"}},
     {"op":"add","path":"/registries/0/domains/0/issuedIds/-","value":{"id":"FEAT-091","status":"prospective","allocationIssue":"https://github.com/example/tiny-app/issues/91","source":"Features/FEAT-091.json"}},
+    {"op":"add","path":"/registries/0/domains/0/issuedIds/-","value":{"id":"SLC-090","status":"reserved","allocationIssue":"https://github.com/example/tiny-app/issues/90","source":"Slices/SLC-090.json"}},
+    {"op":"add","path":"/registries/0/domains/0/issuedIds/-","value":{"id":"SLC-091","status":"reserved","allocationIssue":"https://github.com/example/tiny-app/issues/91","source":"Slices/SLC-091.json"}},
     {"op":"copy","from":"/records/0","path":"/records/-"},
     {"op":"replace","path":"/records/3/id","value":"FEAT-090"},
     {"op":"replace","path":"/records/3/source","value":"Features/FEAT-090.json"},

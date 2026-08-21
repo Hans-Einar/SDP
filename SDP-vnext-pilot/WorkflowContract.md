@@ -167,10 +167,16 @@ For every represented Slice, validation walks both directions: the owner lists
 the Slice exactly once; the Slice names that owner and one Issue; exactly one
 assignment for that Issue preserves the Slice in `authorizedSlices`; the
 assignment's primary `workRef` is that owner; and the owner's
-`issueAuthorities` contains that Issue exactly once. Each authorized entry
-stores `acceptedCandidate: null` until acceptance and thereafter stores the
-immutable qualified Slice candidate. `activeSlices` is a `0..1` subset of that
-set. For an active implementation assignment it is also an exact reverse
+`issueAuthorities` contains that Issue exactly once. Each bound authorized
+entry stores `acceptedCandidate: null` until acceptance and thereafter stores
+the immutable qualified Slice candidate. An unbound preparatory reservation
+row always stores `null`: it allocates future work and has no assignment/Slice
+evidence from which acceptance could be derived. An already accepted Slice
+needed by planned work is a read-only dependency with its qualified evidence,
+not a newly reserved authorized Slice. An accepted authorized entry retained
+across an assignment refreeze also remains outside the new revision's
+`reservedIds`; its original claim survives in exact history. `activeSlices` is a `0..1` subset of
+that set. For an active implementation assignment it is also an exact reverse
 projection: represented authorized Slices for that Issue/owner whose
 `declaredState` is `active` equal `activeSlices`. Accepted earlier Slices remain
 authorized without appearing in the active projection. A missing

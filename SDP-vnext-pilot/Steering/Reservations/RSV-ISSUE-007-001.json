@@ -14,12 +14,7 @@
       },
       "authorizedSlices": [],
       "activeSlices": [],
-      "reservedIds": [
-        {
-          "domainUid": "urn:uuid:9df0765b-4f22-4c5e-8fda-b5e71c96ca81",
-          "id": "STU-007"
-        }
-      ],
+      "reservedIds": [],
       "ownedPaths": [
         "SDP-vnext-pilot/**",
         "Sprints/SPR-SDP-007--provisional-vnext-contract/**",
@@ -32,6 +27,7 @@
         "CodeReview/REV-SDP-007-007.md",
         "CodeReview/REV-SDP-007-008.md",
         "CodeReview/REV-SDP-007-009.md",
+        "CodeReview/REV-SDP-007-010.md",
         "Verification/VER-SDP-007-001.md",
         "Verification/VER-SDP-007-002.md",
         "Verification/VER-SDP-007-003.md",
@@ -40,7 +36,8 @@
         "Verification/VER-SDP-007-006.md",
         "Verification/VER-SDP-007-007.md",
         "Verification/VER-SDP-007-008.md",
-        "Verification/VER-SDP-007-009.md"
+        "Verification/VER-SDP-007-009.md",
+        "Verification/VER-SDP-007-010.md"
       ],
       "sharedTouchpoints": [
         {

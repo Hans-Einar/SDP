@@ -142,6 +142,12 @@ Revision 8 retains the exact revision-7 assignment and reservation at
 `REV/VER-SDP-007-009` paths, anchors the chain to exact Git ancestry/order,
 closes repository-wide preparatory collisions, and makes early compatibility
 strictly revision-scoped.
+Revision 9 retains the exact revision-8 assignment and reservation at
+`a6a23d50e1bb807c9db350758aad1737c01f7846`, reserves exact
+`REV/VER-SDP-007-010` paths, requires every bound/preparatory ID claim to exist
+in durable inventory, introduces the pre-materialization `reserved` state,
+forbids cross-epoch identity reuse, and keeps every preparatory authorized
+Slice candidate null.
 
 The reusable pilot `reservation-set` shape is in
 [`templates/reservation-set.template.json`](templates/reservation-set.template.json).
@@ -169,10 +175,18 @@ not a semantic-validation bypass. A preparatory row's Issue belongs to the
 active repository host; its primary domain and work record exist; that record
 names the Issue exactly once; reserved domains, ID grammar/style, inventory
 allocation authority, and shared owners resolve; and each authorized new Slice
-remains in `reservedIds`. Its ID, private-path, and shared-path claims are
+remains in `reservedIds` with `acceptedCandidate: null`. Every reserved ID
+resolves to exactly one `reserved` or materialized `prospective` inventory
+member in its active owning domain and the row Issue is that member's immutable
+allocator. Missing or legacy-preserved members fail. A reserved member carries
+its prospective grammar/style and planned portable source, but cannot serve as
+current work or acceptance evidence until promoted to a materialized
+prospective record. Its ID, private-path, and shared-path claims are
 compared with every nonterminal bound epoch and every other preparatory set.
-Terminal bound epochs remain non-current history. Several disjoint preparatory
-sets are valid; colliding alternatives must be combined/refrozen or rejected.
+Terminal bound epochs remain non-current writers, but their identities remain
+permanently allocated and cannot be reintroduced by a preparatory/current
+epoch. Several disjoint preparatory sets are valid; colliding or repeated
+alternatives must be combined/refrozen or rejected.
 
 ## Current reservation epoch versus preserved history
 
@@ -189,12 +203,14 @@ terminal immutable epochs with different digests, objects, and bases. Those
 objects remain distinct by the pair; two objects with the same pair are
 ambiguous and invalid. An assignment pair must resolve exactly one object.
 
-Accepted historical groups retain their exact base, reservation, paths, and
-evidence as terminal graph facts. They do not collide with a later epoch and do
-not satisfy its current dependency, conflict, order, sharing, or convergence
-gate. Therefore a later Issue may legitimately reuse a path after the earlier
-epoch is terminal without rewriting the earlier assignment. Two assignments in
-the same current epoch still collide and stale-base/refreeze checks remain
+Accepted historical groups retain their exact base, reservation, paths, IDs,
+and evidence as terminal graph facts. Their paths no longer collide with a
+later epoch and they do not satisfy its current dependency, conflict, order,
+sharing, or convergence gate. Their IDs remain permanently allocated in the
+inventory and cannot be reserved by another epoch. Therefore a later Issue may
+legitimately reuse a path after the earlier epoch is terminal without rewriting
+the earlier assignment, but cannot reuse its identity. Two assignments in the
+same current epoch still collide and stale-base/refreeze checks remain
 mandatory.
 
 Starting two branches first and attempting to reconcile colliding assignments

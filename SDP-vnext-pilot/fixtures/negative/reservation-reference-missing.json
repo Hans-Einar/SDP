@@ -6,5 +6,5 @@
   "mutations": [
     {"op": "replace", "path": "/assignments/0/coordination/reservationSet", "value": {}}
   ],
-  "expectedErrors": ["RESERVATION_SET_REQUIRED"]
+  "expectedErrors": ["PREPARATORY_ACCEPTED_CANDIDATE", "RESERVATION_SET_REQUIRED"]
 }

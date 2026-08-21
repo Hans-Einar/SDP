@@ -25,6 +25,12 @@
           "status": "prospective",
           "allocationIssue": "https://github.com/example/app/issues/101",
           "source": "Slices/APP-SLC-001.json"
+        },
+        {
+          "id": "APP-SLC-002",
+          "status": "reserved",
+          "allocationIssue": "https://github.com/example/app/issues/102",
+          "source": "Slices/APP-SLC-002.json"
         }
       ],
       "predecessorRepositories": []

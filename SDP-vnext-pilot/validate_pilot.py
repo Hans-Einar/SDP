@@ -539,14 +539,14 @@ def inventory_member_id(member: Any) -> str | None:
 
 
 def inventory_allocation_issue(member: Any) -> Any:
-    """Return the immutable allocator for prospective IDs only.
+    """Return the immutable allocator for current pilot allocations.
 
     Legacy inventory retains its historical ``authorityIssue`` semantics;
-    it is provenance, not a prospective allocation or execution grant.
+    it is provenance, not a current allocation or execution grant.
     """
     if not isinstance(member, dict):
         return None
-    if member.get("status") == "prospective":
+    if member.get("status") in {"reserved", "prospective"}:
         return member.get("allocationIssue")
     return member.get("authorityIssue")
 
@@ -571,13 +571,13 @@ def validate_inventory_member(
     authority = inventory_allocation_issue(member)
     source = member.get("source")
     if not nonblank(record_id) or status not in {
-        "prospective", "legacy-preserved"
+        "reserved", "prospective", "legacy-preserved"
     }:
         add(errors, "INVALID_ID_INVENTORY_MEMBER")
         return
     if not valid_record_path(source):
         add(errors, "INVALID_ID_INVENTORY_MEMBER")
-    if status == "prospective":
+    if status in {"reserved", "prospective"}:
         if "authorityIssue" in member or issue_key(authority) is None:
             add(errors, "INVALID_INVENTORY_AUTHORITY")
         scoped = SCOPED_ID_RE.fullmatch(record_id)
@@ -828,6 +828,7 @@ def issued_reference_keys(document: dict[str, Any]) -> set[tuple[str, str]]:
     return {
         (domain.get("domainUid"), portable_text(record_id))
         for _, domain in declarations(document)
+        if domain.get("state") == "active"
         for member in domain.get("issuedIds", [])
         for record_id in [inventory_member_id(member)]
         if isinstance(record_id, str)
@@ -839,6 +840,8 @@ def issued_authorities(
 ) -> dict[tuple[str, str], tuple[str, str, int]]:
     result: dict[tuple[str, str], tuple[str, str, int]] = {}
     for _, domain in declarations(document):
+        if domain.get("state") != "active":
+            continue
         uid = domain.get("domainUid")
         for member in domain.get("issuedIds", []):
             if not isinstance(member, dict):
@@ -854,6 +857,8 @@ def issued_authorities(
 def issued_statuses(document: dict[str, Any]) -> dict[tuple[str, str], Any]:
     result: dict[tuple[str, str], Any] = {}
     for _, domain in declarations(document):
+        if domain.get("state") != "active":
+            continue
         uid = domain.get("domainUid")
         for member in domain.get("issuedIds", []):
             if not isinstance(member, dict):
@@ -1370,18 +1375,25 @@ def validate_records(document: dict[str, Any], errors: list[str]) -> None:
         tuple[tuple[str, str], str], list[tuple[str, str]]
     ] = defaultdict(list)
     active_prospective: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
+    active_reserved: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
     for repository, domain in decls:
         if domain.get("state") != "active":
             continue
         host = repository_key(repository)
         uid = domain.get("domainUid")
         for member in domain.get("issuedIds", []):
-            if not isinstance(member, dict) or member.get("status") != "prospective":
+            if not isinstance(member, dict) or member.get("status") not in {
+                "reserved", "prospective"
+            }:
                 continue
             record_id = inventory_member_id(member)
             source_identity = portable_path_identity(member.get("source"))
             if isinstance(record_id, str):
-                active_prospective[(uid, portable_text(record_id))].append(member)
+                inventory_key = (uid, portable_text(record_id))
+                if member.get("status") == "prospective":
+                    active_prospective[inventory_key].append(member)
+                else:
+                    active_reserved[inventory_key].append(member)
                 if host is not None and source_identity is not None:
                     inventory_source_claims[(host, source_identity)].append(
                         (uid, portable_text(record_id))
@@ -1411,10 +1423,16 @@ def validate_records(document: dict[str, Any], errors: list[str]) -> None:
     if any(len(set(claims)) > 1 for claims in record_source_claims.values()):
         add(errors, "DUPLICATE_RECORD_SOURCE")
     if record_list:
-        if any(len(active_prospective.get(key, [])) != 1 for key in record_keys):
+        if any(
+            key not in active_reserved
+            and len(active_prospective.get(key, [])) != 1
+            for key in record_keys
+        ):
             add(errors, "RECORD_INVENTORY_BINDING_MISMATCH")
         if any(key not in set(record_keys) for key in active_prospective):
             add(errors, "RECORD_INVENTORY_BINDING_MISMATCH")
+        if any(key in set(record_keys) for key in active_reserved):
+            add(errors, "RESERVED_ID_NOT_MATERIALIZED")
     seen: set[tuple[str, str]] = set()
     for record in record_list:
         if not isinstance(record, dict):
@@ -1463,7 +1481,9 @@ def validate_records(document: dict[str, Any], errors: list[str]) -> None:
             add(errors, "RECORD_NOT_IN_ISSUED_INVENTORY")
         if normalized_pair in issued:
             member = inventory_map(domain).get(portable_text(record_id))
-            if (
+            if isinstance(member, dict) and member.get("status") == "reserved":
+                add(errors, "RESERVED_ID_NOT_MATERIALIZED")
+            elif (
                 not isinstance(member, dict)
                 or member.get("status") != "prospective"
                 or record.get("source") != member.get("source")
@@ -2059,6 +2079,8 @@ def validate_reservation_set_semantics(
                 if work_uid not in domain_by_uid:
                     add(errors, "UNKNOWN_WORK_DOMAIN")
                 work_record = records.get(work_key)
+                if issued_status_by_id.get(work_key) == "reserved":
+                    add(errors, "RESERVED_ID_NOT_MATERIALIZED")
                 if work_record is None:
                     add(errors, "UNRESOLVED_WORK_REF")
                 elif effective_kind(work_record) != work_ref.get("type"):
@@ -2144,14 +2166,19 @@ def validate_reservation_set_semantics(
                 if reserved_uid not in domain_by_uid:
                     add(errors, "UNKNOWN_RESERVED_DOMAIN")
                 allocated_by = issued_by.get(key)
-                if allocated_by is not None and allocated_by != issue:
+                if key not in issued_status_by_id:
+                    add(errors, "RESERVED_ID_INVENTORY_REQUIRED")
+                elif allocated_by != issue:
                     add(errors, "ISSUED_ID_RECLAIM")
                 if issued_status_by_id.get(key) == "legacy-preserved":
                     add(errors, "LEGACY_PRESERVED_CURRENT_GATE")
 
         if any(
-            key is not None and key not in seen_reserved
-            for key in authorized_keys
+            key is not None
+            and isinstance(reference, dict)
+            and reference.get("acceptedCandidate") is None
+            and key not in seen_reserved
+            for reference, key in zip(authorized, authorized_keys)
         ):
             add(errors, "AUTHORIZED_SLICE_RESERVATION_MISSING")
 
@@ -2450,6 +2477,14 @@ def validate_reservation_sets(document: dict[str, Any], errors: list[str]) -> No
                 normalized = normalize_path(value)
                 if normalized is not None:
                     claims[epoch]["paths"].append((issue, normalized))
+
+            if epoch in preparatory_epochs:
+                for reference in row.get("authorizedSlices", []):
+                    if (
+                        isinstance(reference, dict)
+                        and reference.get("acceptedCandidate") is not None
+                    ):
+                        add(errors, "PREPARATORY_ACCEPTED_CANDIDATE")
             for item in row.get("sharedTouchpoints", []):
                 normalized = normalize_path(shared_path(item))
                 if normalized is not None:
@@ -2477,6 +2512,45 @@ def validate_reservation_sets(document: dict[str, Any], errors: list[str]) -> No
                 for _, right_path in right_claims["paths"]
             ):
                 add(errors, "PATH_COLLISION")
+
+    # Reservation is a one-time allocation claim, not a renewable lease. A
+    # terminal epoch no longer owns its paths, but its IDs remain allocated in
+    # the durable inventory and cannot be introduced by a later epoch. Exact
+    # assignment revision history is reconstructed separately from snapshots
+    # and therefore does not duplicate reservation objects here.
+    epoch_kinds: dict[tuple[Any, Any], str] = {}
+    for epoch in by_epoch:
+        bound = grouped_assignments.get(epoch, [])
+        if not bound:
+            epoch_kinds[epoch] = "preparatory"
+        elif all(
+            assignment.get("declaredState")
+            in {"accepted", "rejected", "cancelled", "superseded"}
+            for assignment in bound
+        ):
+            epoch_kinds[epoch] = "terminal"
+        else:
+            epoch_kinds[epoch] = "current"
+    all_id_claims: dict[tuple[str, str], set[tuple[Any, Any]]] = defaultdict(set)
+    for reservation in reservation_sets:
+        if not isinstance(reservation, dict):
+            continue
+        epoch = reservation_epoch_key(reservation)
+        for row in reservation.get("assignments", []):
+            if not isinstance(row, dict):
+                continue
+            for reference in row.get("reservedIds", []):
+                key = reference_key(reference)
+                if key is not None:
+                    all_id_claims[key].add(epoch)
+    if any(
+        len(epochs) > 1
+        and "terminal" in {epoch_kinds.get(epoch) for epoch in epochs}
+        for epochs in all_id_claims.values()
+    ):
+        add(errors, "RESERVED_ID_EPOCH_REUSE")
+
+
 def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
     assignments = document.get("assignments", [])
     domain_by_uid = active_domain_map(document)
@@ -2589,6 +2663,8 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
                 or pull_identity[:2] != host_repository
             ):
                 add(errors, "REPOSITORY_AUTHORITY_MISMATCH")
+            if inventory_status_by_id.get(work_key) == "reserved":
+                add(errors, "RESERVED_ID_NOT_MATERIALIZED")
             if work_record is None:
                 add(errors, "UNRESOLVED_WORK_REF")
             elif effective_kind(work_record) != work_ref.get("type"):
@@ -2778,7 +2854,9 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
                 add(errors, "RESERVED_ID_COLLISION")
             reserved[key] = authority_identity or authority
             issued_by = issued_authorities(document).get(key)
-            if issued_by is not None and issued_by != authority_identity:
+            if key not in inventory_status_by_id:
+                add(errors, "RESERVED_ID_INVENTORY_REQUIRED")
+            elif issued_by != authority_identity:
                 add(errors, "ISSUED_ID_RECLAIM")
             if inventory_status_by_id.get(key) == "legacy-preserved":
                 add(errors, "LEGACY_PRESERVED_CURRENT_GATE")
@@ -2953,6 +3031,15 @@ def authorized_slice_map(assignment: dict[str, Any]) -> dict[tuple[str, str], An
             return None
         result[key] = entry.get("acceptedCandidate")
     return result
+
+
+def reserved_id_set(assignment: dict[str, Any]) -> set[tuple[str, str]]:
+    return {
+        key
+        for reference in assignment_coordination(assignment).get("reservedIds", [])
+        for key in [reference_key(reference)]
+        if key is not None
+    }
 
 
 def revision_semantics_preserved(
@@ -3408,6 +3495,11 @@ def validate_assignment_history(
                     later_source=later_source,
                 ):
                     add(errors, "HISTORY_GIT_CONTENT_MISMATCH")
+                if (
+                    later is assignment
+                    and reserved_id_set(earlier) & reserved_id_set(later)
+                ):
+                    add(errors, "HISTORY_GIT_CONTENT_MISMATCH")
     if any(id(history) not in matched_history_ids for history in histories if isinstance(history, dict)):
         add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
 
@@ -3730,6 +3822,8 @@ def check_coverage(
         "DUPLICATE_JSON_MEMBER",
         "UNKNOWN_WORK_DOMAIN", "UNKNOWN_RESERVED_DOMAIN",
         "AUTHORIZED_SLICE_RESERVATION_MISSING",
+        "RESERVED_ID_INVENTORY_REQUIRED", "RESERVED_ID_NOT_MATERIALIZED",
+        "RESERVED_ID_EPOCH_REUSE", "PREPARATORY_ACCEPTED_CANDIDATE",
     }
     missing = sorted(required_negative - negative_codes)
     if missing:
@@ -3759,6 +3853,8 @@ def check_coverage(
         "unreferenced-reservation-set.json",
         "historical-exact-reservation-projection.json",
         "two-disjoint-preparatory-sets.json",
+        "reserved-before-materialization.json",
+        "reserved-promoted-to-prospective.json",
     }
     missing_positive = sorted(required_positive - positive_fixture_names)
     if missing_positive:
@@ -4164,6 +4260,11 @@ def git_control_revision(
     reservation["assignments"][0]["ownedPaths"] = copy.deepcopy(
         coordination["ownedPaths"]
     )
+    if revision > 1:
+        # Refreeze preserves earlier allocation claims in history. It does not
+        # renew them in the current revision.
+        coordination["reservedIds"] = []
+        reservation["assignments"][0]["reservedIds"] = []
     reference = mapping(coordination.get("reservationSet"))
     reference["path"] = "Steering/Reservations/RSV-STU-001.json"
     digest = canonical_digest(reservation)

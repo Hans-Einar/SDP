@@ -123,13 +123,15 @@ uses the prospective v0 forms `SHARED-REF-001` and `SHARED-SLC-001`.
 Store each historical spelling as a structured `legacy-preserved` inventory
 member with its exact repository, commit, path/source, and authority Issue when
 one exists. If no Issue existed, store historical `authorityIssue: null` plus a nonblank
-`authorityMissingReason`; do not invent one. Store each new pilot ID as
-`prospective` with immutable `allocationIssue` and a normalized portable
-repository-relative source, and put the identical `source` in the represented
-record. New IDs end exactly in `-NNN`. Check normalized uniqueness before
-allocation and reject any reservation by an Issue other than the recorded
-authority. The first move exercise must preserve the complete structured
-member data, not only the ID strings.
+`authorityMissingReason`; do not invent one. Before materialization, store each
+new pilot ID as `reserved` with immutable `allocationIssue` and a normalized
+portable planned source. New IDs end exactly in `-NNN`. Check normalized
+identity/source uniqueness before allocation and reject any reservation by an
+Issue other than the recorded allocator. When the record is ready, promote the
+same member to `prospective` and materialize the record at the identical source;
+do not change UID, ID, allocator, or path. A reserved-only member cannot be a
+workRef or accepted evidence. The first move exercise must preserve the
+complete structured member data, not only the ID strings.
 
 Create absolute references by pairing each old ID with the new UID of its
 owning domain. This adds qualification without rewriting the original ID. A
@@ -147,7 +149,9 @@ The pilot assignment must contain:
 - the `SHARED` UID and `SHARED-REF-001`/`SHARED-SLC-001` reservations;
 - complete `authorizedSlices` with each accepted Slice's immutable candidate,
   plus a `0..1` currently executing `activeSlices` subset; accepted assignments
-  have no active Slice;
+  have no active Slice; preparatory authorized Slices always have
+  `acceptedCandidate: null`, and already accepted work is linked as read-only
+  dependency evidence instead of being reserved again;
 - owned pilot metadata paths, with the four existing domain trees otherwise
   read-only;
 - explicit shared touchpoints, if any, and their domain owner;
@@ -161,7 +165,9 @@ The pilot assignment must contain:
   assignment binds its recomputed digest and identical projection;
 - standalone validation of every typed preparatory reservation object before
   assignments bind it, including HSX repository/domain/record/inventory
-  coherence and collisions with live bound or other preparatory epochs, and
+  coherence, exact allocator ownership for every reserved/prospective member,
+  permanent ID no-reuse against terminal history, and collisions with live
+  bound or other preparatory epochs, and
   tuple-keyed `(set ID, digest)` resolution so later
   terminal refreezes may retain the stable set ID without collapsing history;
 - collision validation across NFKC/casefold/slash normalization (important

@@ -168,6 +168,11 @@ detached syntax object: its Issues, domains, primary records, inventory
 authority, IDs, authorized reservations, paths, and shared owners cohere with
 the hosting repository, and its claims are collision-checked against all
 nonterminal bound epochs and other preparatory epochs.
+Every claimed ID exists exactly once in the active owning domain inventory as
+`reserved` or `prospective`, names the row Issue as immutable allocator, and
+cannot have been claimed by another epoch. Preparatory authorized Slices always
+carry `acceptedCandidate: null`; accepted prior work is referenced as read-only
+dependency evidence instead of being reserved again.
 
 `boundaries.prohibitedRepositories` uses canonical GitHub repository URLs;
 every prohibited/owned/shared/local-source path uses the common portable path

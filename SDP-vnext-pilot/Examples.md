@@ -103,7 +103,10 @@ bases; two and three terminal epochs reuse one stable reservation-set ID with
 distinct immutable digests; a current later Issue coexists with accepted
 history and legitimately reuses an earlier path; one complex and two disjoint
 unreferenced preparatory reservation sets validate against repository, domain,
-record, inventory, and current-epoch context before binding; and a self-contained
+record, durable reserved inventory, null accepted candidates, and current-epoch
+context before binding; a promotion control changes one reserved allocation to
+a materialized prospective Slice without changing its allocator, identity, or
+planned source; and a self-contained
 exact-byte revision-2 chain has
 its actual revision-1 assignment already containing accepted `SLC-001` before
 the later revision appends `SLC-002`. The embedded-history driver exists only
@@ -182,6 +185,9 @@ standalone-Fix assignments.
 - preparatory unknown work/reserved domains, cross-repository Issue authority,
   issued-ID reclaim, missing authorized-ID reservation, current ID/private/
   shared-path collision, and preparatory/preparatory collision;
+- absent bound/preparatory inventory claims; invalid reserved allocation Issue,
+  domain, source, or ID style; reserved-as-workRef materialization; terminal-to-
+  preparatory identity reuse; and non-null preparatory accepted candidates;
 - multiple current reservation epochs while allowing preserved accepted sets,
   reverse active-Slice projection, and active Fix targets with no accepted
   represented outcome;
@@ -201,15 +207,16 @@ cannot “pass” merely because the validator failed for an unrelated reason.
 
 ## Issue #7 dogfood refreeze
 
-`Steering/Assignments/ISSUE-007.yaml` is revision 8. Its immediate
+`Steering/Assignments/ISSUE-007.yaml` is revision 9. Its immediate
 `previousRevision` points to
-`Steering/Assignments/History/ISSUE-007-revision-007.json`, sourced from exact
-candidate `133cfaee9cb194b6181ac1e8fa9e1b474f79c00f`. That snapshot links revision
-6 at `0655002cbe5e14543b007525cdc3e3bad82b6816`, revision 5 at
+`Steering/Assignments/History/ISSUE-007-revision-008.json`, sourced from exact
+candidate `a6a23d50e1bb807c9db350758aad1737c01f7846`. That snapshot links revision
+7 at `133cfaee9cb194b6181ac1e8fa9e1b474f79c00f`, revision 6 at
+`0655002cbe5e14543b007525cdc3e3bad82b6816`, revision 5 at
 `dfdea4fe259a9e342d651254656bcfac5363d0b9`, revision 4 at
 `15a476dd76bc80de5573ab2abb65af8c963a9c0e`, revision 3 at
 `60978c306f7ce3c09033603abf3300839b2a251d`, revision 2 at
 `0de8a8957b3212404007160d90da47445d7b4e7b`, and revision 1 at
-`f79e3dfc18c7a1650f1f3ae66167dda9b69692b4`, so the complete 1..7 chain is
-retained. Revision 8 reserves exact `REV/VER-SDP-007-009` evidence paths and
-records why the eighth evidence gate required another refreeze.
+`f79e3dfc18c7a1650f1f3ae66167dda9b69692b4`, so the complete 1..8 chain is
+retained. Revision 9 reserves exact `REV/VER-SDP-007-010` evidence paths and
+records why the ninth review required another refreeze.
