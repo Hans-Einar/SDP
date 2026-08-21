@@ -6,5 +6,5 @@
   "mutations": [
     {"op": "add", "path": "/registries/0/domains/0/issuedIds/-", "value": {"id": "FEAT-001-002", "status": "prospective", "authorityIssue": "https://github.com/example/tiny-app/issues/10", "source": "Features/FEAT-001-002.json"}}
   ],
-  "expectedErrors": ["INVALID_PROSPECTIVE_ID"]
+  "expectedErrors": ["INVALID_PROSPECTIVE_ID", "RECORD_INVENTORY_BINDING_MISMATCH"]
 }

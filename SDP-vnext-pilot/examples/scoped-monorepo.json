@@ -66,6 +66,12 @@
               "status": "prospective",
               "authorityIssue": "https://github.com/example/hsx-like/issues/202",
               "source": "SDP/AVR/Studies/AVR-STU-001.json"
+            },
+            {
+              "id": "AVR-FIX-001",
+              "status": "prospective",
+              "authorityIssue": "https://github.com/example/hsx-like/issues/202",
+              "source": "SDP/AVR/Fixes/AVR-FIX-001.json"
             }
           ],
           "predecessorRepositories": []
@@ -160,7 +166,16 @@
       "nonGoals": ["AVR implementation"],
       "constraints": ["Depend only on accepted core contract"],
       "acceptanceCriteria": ["Integrated inspection check passes"],
-      "relations": [],
+      "relations": [
+        {
+          "type": "depends_on",
+          "targetRef": {
+            "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000001",
+            "id": "HSX-STU-001",
+            "keyHint": "HSX"
+          }
+        }
+      ],
       "issueAuthorities": ["https://github.com/example/hsx-like/issues/201"],
       "slices": [
         {
@@ -232,13 +247,29 @@
         "inScope": ["AVR contract evidence"],
         "outOfScope": ["AVR product implementation"]
       },
-      "ownerRef": null,
+      "ownerRef": {
+        "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+        "id": "DBG-FEAT-001",
+        "keyHint": "DBG"
+      },
       "issueAuthorities": ["https://github.com/example/hsx-like/issues/202"],
-      "independentStudyRefs": [],
+      "independentStudyRefs": [
+        {
+          "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000001",
+          "id": "HSX-STU-001",
+          "keyHint": "HSX"
+        }
+      ],
       "convergenceGate": "Shared interface convergence",
       "findings": [],
       "limitations": [],
-      "informs": [],
+      "informs": [
+        {
+          "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+          "id": "SHARED-REF-001",
+          "keyHint": "SHARED"
+        }
+      ],
       "acceptedEvidence": {
         "candidate": null,
         "verificationRefs": [],
@@ -266,7 +297,16 @@
       },
       "temporaryAdapters": [],
       "exitEvidence": ["Both dependent domains pass convergence"],
-      "relations": [],
+      "relations": [
+        {
+          "type": "refines",
+          "targetRef": {
+            "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+            "id": "DBG-FEAT-001",
+            "keyHint": "DBG"
+          }
+        }
+      ],
       "issueAuthorities": ["https://github.com/example/hsx-like/issues/203"],
       "slices": [
         {
@@ -309,6 +349,40 @@
       "discoveryRule": "Stop on ownership ambiguity.",
       "completionSignal": "SHARED_CONVERGED",
       "hardStop": "Do not start downstream features.",
+      "acceptedEvidence": {
+        "candidate": null,
+        "verificationRefs": [],
+        "currentReviewRef": null,
+        "steeringDisposition": null,
+        "releaseRefs": []
+      }
+    },
+    {
+      "schemaVersion": "sdp-vnext-pilot-fix-v0",
+      "experimental": true,
+      "kind": "fix",
+      "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000003",
+      "id": "AVR-FIX-001",
+      "source": "SDP/AVR/Fixes/AVR-FIX-001.json",
+      "revision": 1,
+      "declaredState": "proposed",
+      "title": "Illustrative AVR correction",
+      "defectEvidence": ["A known AVR adapter behavior differs from its accepted contract"],
+      "correction": "Restore the accepted adapter behavior without adding capability.",
+      "risk": "low",
+      "invariants": ["Debugger capability ownership remains unchanged"],
+      "affectedWork": [
+        {
+          "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+          "id": "DBG-FEAT-001",
+          "keyHint": "DBG"
+        }
+      ],
+      "standaloneReviewedUnit": true,
+      "issueAuthorities": ["https://github.com/example/hsx-like/issues/202"],
+      "slices": [],
+      "verificationCriteria": ["The focused AVR regression passes"],
+      "reviewCriteria": ["The exact correction is independently reviewed"],
       "acceptedEvidence": {
         "candidate": null,
         "verificationRefs": [],
@@ -367,10 +441,10 @@
         "integrationBase": "3333333333333333333333333333333333333333",
         "reservationSet": {
           "id": "RSV-200",
-          "digest": "sha256:9f20cc7a8c41a1bf0aaef58bd9151deb437760f815a0f9e07ffccf8bddf96b58"
+          "digest": "sha256:18c0e62dbe92e97b185ded1f13bf6940f594f84a55aa2176ed58e883fc6338a9"
         },
         "dependsOnIssues": [],
-        "conflictsWithIssues": [],
+        "conflictsWithIssues": ["https://github.com/example/hsx-like/issues/202"],
         "ownedPaths": ["src/debugger/inspection/**"],
         "sharedTouchpoints": [
           {
@@ -422,7 +496,7 @@
       "kind": "issue-assignment",
       "source": "Steering/Assignments/ISSUE-202.json",
       "revision": 1,
-      "declaredState": "active",
+      "declaredState": "blocked",
       "authority": {
         "issue": "https://github.com/example/hsx-like/issues/202",
         "amendments": []
@@ -445,10 +519,10 @@
         "integrationBase": "3333333333333333333333333333333333333333",
         "reservationSet": {
           "id": "RSV-200",
-          "digest": "sha256:9f20cc7a8c41a1bf0aaef58bd9151deb437760f815a0f9e07ffccf8bddf96b58"
+          "digest": "sha256:18c0e62dbe92e97b185ded1f13bf6940f594f84a55aa2176ed58e883fc6338a9"
         },
         "dependsOnIssues": [],
-        "conflictsWithIssues": [],
+        "conflictsWithIssues": ["https://github.com/example/hsx-like/issues/201"],
         "ownedPaths": ["research/avr/**"],
         "sharedTouchpoints": [
           {
@@ -528,7 +602,7 @@
         "integrationBase": "3333333333333333333333333333333333333333",
         "reservationSet": {
           "id": "RSV-200",
-          "digest": "sha256:9f20cc7a8c41a1bf0aaef58bd9151deb437760f815a0f9e07ffccf8bddf96b58"
+          "digest": "sha256:18c0e62dbe92e97b185ded1f13bf6940f594f84a55aa2176ed58e883fc6338a9"
         },
         "dependsOnIssues": [
           "https://github.com/example/hsx-like/issues/201",
@@ -617,7 +691,7 @@
             }
           ],
           "dependsOnIssues": [],
-          "conflictsWithIssues": []
+          "conflictsWithIssues": ["https://github.com/example/hsx-like/issues/202"]
         },
         {
           "issue": "https://github.com/example/hsx-like/issues/202",
@@ -642,7 +716,7 @@
             }
           ],
           "dependsOnIssues": [],
-          "conflictsWithIssues": []
+          "conflictsWithIssues": ["https://github.com/example/hsx-like/issues/201"]
         },
         {
           "issue": "https://github.com/example/hsx-like/issues/203",

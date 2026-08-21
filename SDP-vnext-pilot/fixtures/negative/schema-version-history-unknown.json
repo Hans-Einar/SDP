@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"history-schema-version-unknown","sourceDogfood":true,"mutations":[{"op":"replace","path":"/assignmentHistory/0/schemaVersion","value":"unknown-future-schema"}],"expectedErrors":["MATERIALIZED_SOURCE_MISMATCH","UNSUPPORTED_SCHEMA_VERSION"]}

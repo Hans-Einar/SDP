@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"prohibited-path-must-be-portable","sourceExample":"simple-single-domain.json","mutations":[{"op":"add","path":"/assignments/0/boundaries/prohibitedPaths/-","value":"../escape"}],"expectedErrors":["INVALID_PATH"]}

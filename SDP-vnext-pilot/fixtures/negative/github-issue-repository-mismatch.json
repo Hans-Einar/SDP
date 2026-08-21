@@ -14,5 +14,5 @@
     {"op": "replace", "path": "/reservationSets/0/mergeOrder/0", "value": "https://github.com/example/other/issues/10"}
   ],
   "rebindReservationDigests": true,
-  "expectedErrors": ["REPOSITORY_AUTHORITY_MISMATCH"]
+  "expectedErrors": ["REPOSITORY_AUTHORITY_MISMATCH", "STEERING_AUTHORITY_MISMATCH"]
 }

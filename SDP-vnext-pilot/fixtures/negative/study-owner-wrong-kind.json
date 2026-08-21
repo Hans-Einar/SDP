@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"study-owner-wrong-kind","sourceExample":"scoped-monorepo.json","mutations":[{"op":"replace","path":"/records/3/ownerRef","value":{"domainUid":"urn:uuid:30000000-0000-4000-8000-000000000001","id":"HSX-STU-001"}}],"expectedErrors":["SEMANTIC_TARGET_KIND_MISMATCH"]}

@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"refactor-schema-version-unknown","sourceExample":"scoped-monorepo.json","mutations":[{"op":"replace","path":"/records/4/schemaVersion","value":"unknown-future-schema"}],"expectedErrors":["UNSUPPORTED_SCHEMA_VERSION"]}

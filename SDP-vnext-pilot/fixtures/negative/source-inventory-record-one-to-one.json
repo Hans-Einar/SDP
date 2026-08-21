@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"prospective-inventory-member-requires-exactly-one-record","sourceExample":"simple-single-domain.json","mutations":[{"op":"remove","path":"/records/2"}],"expectedErrors":["RECORD_INVENTORY_BINDING_MISMATCH"]}

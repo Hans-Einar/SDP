@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"revision-three-history-cannot-be-truncated","sourceDogfood":true,"mutations":[{"op":"remove","path":"/assignmentHistory/1"}],"expectedErrors":["INVALID_ASSIGNMENT_REVISION_HISTORY"]}

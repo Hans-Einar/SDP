@@ -25,12 +25,18 @@
               "authorityIssue": "https://github.com/example/tiny-app/issues/10",
               "source": "Features/FEAT-001.json"
             },
-            {
-              "id": "SLC-001",
+        {
+          "id": "SLC-001",
               "status": "prospective",
               "authorityIssue": "https://github.com/example/tiny-app/issues/10",
-              "source": "Slices/SLC-001.json"
-            }
+          "source": "Slices/SLC-001.json"
+        },
+        {
+          "id": "FIX-001",
+          "status": "prospective",
+          "authorityIssue": "https://github.com/example/tiny-app/issues/10",
+          "source": "Fixes/FIX-001.json"
+        }
           ],
           "predecessorRepositories": []
         }
@@ -81,7 +87,7 @@
       "id": "SLC-001",
       "source": "Slices/SLC-001.json",
       "revision": 1,
-      "declaredState": "active",
+      "declaredState": "accepted",
       "title": "Export one report end to end",
       "ownerRef": {
         "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001",
@@ -101,6 +107,52 @@
       "completionSignal": "EXPORT_SLICE_READY",
       "hardStop": "Do not start cloud sharing.",
       "acceptedEvidence": {
+        "candidate": "1010101010101010101010101010101010101010",
+        "verificationRefs": [
+          {
+            "id": "SLC-VER-001",
+            "candidate": "1010101010101010101010101010101010101010"
+          }
+        ],
+        "currentReviewRef": {
+          "id": "SLC-REV-001",
+          "candidate": "1010101010101010101010101010101010101010",
+          "disposition": "approved"
+        },
+        "steeringDisposition": {
+          "authority": "https://github.com/example/tiny-app/issues/10#issuecomment-1001",
+          "candidate": "1010101010101010101010101010101010101010",
+          "decision": "accepted"
+        },
+        "releaseRefs": []
+      }
+    },
+    {
+      "schemaVersion": "sdp-vnext-pilot-fix-v0",
+      "experimental": true,
+      "kind": "fix",
+      "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001",
+      "id": "FIX-001",
+      "source": "Fixes/FIX-001.json",
+      "revision": 1,
+      "declaredState": "proposed",
+      "title": "Correct report export metadata",
+      "defectEvidence": ["Accepted export metadata can be reproduced with a wrong label"],
+      "correction": "Restore the accepted label without adding capability.",
+      "risk": "low",
+      "invariants": ["The accepted export format remains unchanged"],
+      "affectedWork": [
+        {
+          "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001",
+          "id": "FEAT-001"
+        }
+      ],
+      "standaloneReviewedUnit": true,
+      "issueAuthorities": ["https://github.com/example/tiny-app/issues/10"],
+      "slices": [],
+      "verificationCriteria": ["Reproduce before and verify after"],
+      "reviewCriteria": ["Confirm the correction remains proportionate"],
+      "acceptedEvidence": {
         "candidate": null,
         "verificationRefs": [],
         "currentReviewRef": null,
@@ -117,7 +169,7 @@
       "kind": "issue-assignment",
       "source": "Steering/Assignments/ISSUE-010.json",
       "revision": 1,
-      "declaredState": "active",
+      "declaredState": "accepted",
       "authority": {
         "issue": "https://github.com/example/tiny-app/issues/10",
         "amendments": []
@@ -176,10 +228,23 @@
         "maximumUnresolvedSeverity": "low"
       },
       "acceptedEvidence": {
-        "candidate": null,
-        "verificationRefs": [],
-        "currentReviewRef": null,
-        "steeringDisposition": null,
+        "candidate": "1010101010101010101010101010101010101010",
+        "verificationRefs": [
+          {
+            "id": "ASGN-VER-001",
+            "candidate": "1010101010101010101010101010101010101010"
+          }
+        ],
+        "currentReviewRef": {
+          "id": "ASGN-REV-001",
+          "candidate": "1010101010101010101010101010101010101010",
+          "disposition": "approved"
+        },
+        "steeringDisposition": {
+          "authority": "https://github.com/example/tiny-app/issues/10#issuecomment-1002",
+          "candidate": "1010101010101010101010101010101010101010",
+          "decision": "accepted"
+        },
         "releaseRefs": []
       },
       "stopCondition": "AWAITING_STEERING"

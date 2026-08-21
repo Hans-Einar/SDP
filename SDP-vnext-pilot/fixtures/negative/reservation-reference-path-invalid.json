@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"local-reservation-reference-path-must-be-portable","sourceDogfood":true,"mutations":[{"op":"replace","path":"/assignments/0/coordination/reservationSet/path","value":"../escape"}],"expectedErrors":["INVALID_PATH","MATERIALIZED_SOURCE_MISMATCH","UNRESOLVED_MATERIALIZED_SOURCE"]}

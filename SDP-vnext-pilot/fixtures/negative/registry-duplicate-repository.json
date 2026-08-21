@@ -6,5 +6,5 @@
   "mutations": [
     {"op": "copy", "from": "/registries/0", "path": "/registries/-"}
   ],
-  "expectedErrors": ["DUPLICATE_REPOSITORY_REGISTRY"]
+  "expectedErrors": ["DUPLICATE_REPOSITORY_REGISTRY", "RECORD_INVENTORY_BINDING_MISMATCH"]
 }

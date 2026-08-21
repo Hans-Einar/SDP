@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"revision-three-history-cannot-have-a-gap","sourceDogfood":true,"mutations":[{"op":"remove","path":"/assignmentHistory/0"}],"expectedErrors":["INVALID_ASSIGNMENT_REVISION_HISTORY"]}

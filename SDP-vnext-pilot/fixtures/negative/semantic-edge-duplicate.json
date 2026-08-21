@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"embedded-semantic-edge-duplicate","sourceExample":"scoped-monorepo.json","mutations":[{"op":"copy","from":"/records/1/relations/0","path":"/records/1/relations/-"}],"expectedErrors":["DUPLICATE_SEMANTIC_EDGE"]}

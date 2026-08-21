@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"fix-affected-work-unresolved","sourceExample":"scoped-monorepo.json","mutations":[{"op":"replace","path":"/records/6/affectedWork/0/id","value":"DBG-FEAT-999"}],"expectedErrors":["UNRESOLVED_SEMANTIC_REFERENCE"]}

@@ -31,8 +31,9 @@ concepts.
    name, lifecycle/hosting state, owners, ID style, roots, issued-ID inventory,
    and move metadata. See `templates/work-domain-registry.template.json`.
 7. **Cross-scope relations:** a relation to another domain MUST use an absolute
-   object `{domainUid, id}`. A `keyHint` or repository URL may help humans but
-   is not identity. Bare cross-domain IDs are invalid.
+   object `{domainUid, id}`. A `keyHint` is not identity, but when supplied it
+   MUST equal the stable key resolved from `domainUid`; a contradictory hint is
+   invalid. Bare cross-domain IDs are invalid.
 8. **Shared/common work:** shared work is an ordinary explicitly owned domain
    with its own UID, key, owners, roots, records, and reservations. `shared` is
    not a magical bucket or a permission to use ownerless paths.
@@ -118,7 +119,10 @@ prospective member carries `id`, `status: prospective`, the allocating
 `authorityIssue`, and its repository-relative `source`. It must satisfy the
 current domain key/style/type grammar. `source` is a normalized, portable,
 non-recursive repository-relative record path and equals the represented
-record's own `source`; when local, it resolves to that exact record. A
+record's own `source`; when local, it resolves to that exact JSON record. No
+two prospective identities hosted by one canonical repository may claim the
+same NFKC/casefold/slash-normalized source, and inventory-to-record binding is
+one-to-one. A
 preserved historical spelling such as `DBG-RF-001` carries `status:
 legacy-preserved`, its original source, and exact provenance `{repository,
 commit, path}`; it is not normalized into a new `REF` identity. Its
@@ -165,7 +169,8 @@ declaration includes:
 - hosting state `active` or `moved`;
 - active repository-relative `roots`, or an empty root list for a tombstone;
 - `issuedIds` and optional reservation-set reference/digest;
-- for a tombstone, `successorRepository` and `successorRegistry`;
+- for a tombstone, canonical `successorRepository` and a portable local
+  `successorRegistry` path resolved inside that successor repository;
 - for the active successor, `predecessorRepositories`.
 
 `issuedIds` on a tombstone is the frozen structured inventory at the move gate.
@@ -206,14 +211,22 @@ All pre-work reservation checks use the same portable form:
 - reject compatibility characters whose NFKC result introduces `:`, a glob
   token, `/`, `\`, or other invalid path semantics;
 - require a repository-relative path; reject drive prefixes, leading `/`, empty
-  segments, `.`/`..`, control characters, `:` and platform-reserved names;
+  segments, `.`/`..`, the conservative Windows-forbidden component set
+  `< > : " | ? *`, reserved names, and every Unicode control/format/surrogate/
+  private-use category (`Cc`, `Cf`, `Cs`, `Co`);
 - trim trailing spaces/dots for collision comparison and reject a path whose
   normalized segment changes for that reason;
 - reservations are either an exact file/directory path or one recursive
   directory expressed only as a final `/**`; other glob syntax is invalid;
 - assignment-path collision exists when normalized paths are equal or one recursive reservation
-  contains the other. This catches case-only, slash-style, composed/decomposed
-  Unicode, and parent/child overlaps.
+contains the other. This catches case-only, slash-style, composed/decomposed
+Unicode, and parent/child overlaps.
+
+The same path routine governs domain roots, record/inventory/provenance
+sources, Slice paths, assignment owned/shared/prohibited paths, and local
+reservation/history/successor-registry paths. `allowedMutation` on every shared
+touchpoint is a nonblank contract, and `prohibitedRepositories` contains only
+canonical repository URLs.
 
 Every active domain root is a recursive ownership tree even though registry
 roots MUST NOT use assignment glob syntax such as `/**`. Therefore `SDP`,

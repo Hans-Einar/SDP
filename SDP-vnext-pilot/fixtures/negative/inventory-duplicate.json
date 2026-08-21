@@ -6,5 +6,5 @@
   "mutations": [
     {"op": "copy", "from": "/registries/0/domains/0/issuedIds/0", "path": "/registries/0/domains/0/issuedIds/-"}
   ],
-  "expectedErrors": ["ISSUED_ID_COLLISION"]
+  "expectedErrors": ["ISSUED_ID_COLLISION", "RECORD_INVENTORY_BINDING_MISMATCH"]
 }

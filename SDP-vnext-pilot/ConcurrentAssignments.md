@@ -58,19 +58,29 @@ assignment record.
    recompute all normalization/collisions, update the common reservation set,
    increment affected assignment revisions, and obtain Steering refreeze.
 
-A changed reservation digest/content cannot reuse an assignment revision. The
-new assignment links `previousRevision` to a durable history snapshot by
-portable path, prior revision, exact source candidate, and prior reservation
-digest; `refreeze` repeats the exact source candidate and gives a nonblank
-reason. The snapshot binds its assignment source, canonical Issue, prior
-revision/digest, and next revision. Pilot v0 validates the chain and resolves
-the snapshot path when local. This preserves one meaning for “Issue N,
-revision R” while leaving old Git bytes immutable.
+A changed reservation digest/content cannot reuse an assignment revision.
+Revision 1 omits `previousRevision` and `refreeze`; every revision greater than
+1 carries both. The current assignment links its immediate predecessor by
+portable snapshot path, revision, exact source candidate, and prior reservation
+digest, while `refreeze` repeats that candidate and gives a nonblank reason.
+Every retained snapshot has `previousSnapshot: null` at revision 1 or an exact
+immediate-prior link thereafter. Revision N retains exactly revisions
+`1..N-1`, with no gaps, truncation, or unreferenced same-assignment snapshots.
+
+The repository driver resolves every local assignment, reservation, record,
+and history source, verifies each source candidate exists as a Git commit,
+loads the historical assignment from `assignmentSource`, and compares canonical
+Issue/source/revision/reservation identity plus every recorded context pointer.
+If repository resolution is unavailable for a declared revision chain, pilot
+v0 fails closed with `REPOSITORY_DRIVER_REQUIRED`; field-consistent fabricated
+history is never accepted.
 
 Issue #7 demonstrates an important distinction: closed, Steering-accepted
 Issue #5 is evidence/prerequisite context for this pilot, not a current active
 reservation-DAG node. Revision 1 recorded it as a dependency; revision 2
-refreezes the current execution graph without it and records why. A completed
+refroze the current execution graph without it and recorded why. Revision 3
+retains both earlier snapshots while reserving the fourth exact evidence gate
+and adopting the third-pass validation corrections. A completed
 historical prerequisite remains linked as evidence without pretending another
 Issue Master is concurrently active.
 
@@ -113,7 +123,8 @@ Every current assignment has a unique Issue authority in the set.
 `dependsOnIssues` is a directed acyclic prerequisite edge to another Issue in
 that set. A dependent candidate
 cannot receive accepted state until the named prerequisite candidate/gate is
-satisfied. `conflictsWithIssues` is symmetric and blocks concurrent activation
+satisfied, represented in-set by an accepted prerequisite assignment.
+`conflictsWithIssues` is symmetric and blocks concurrent activation
 until Steering changes ownership/order or refreezes a safe activation plan;
 it is a blocked relationship declaration, not permission to write
 concurrently. Every conflict endpoint also resolves inside the set. An Issue
@@ -121,6 +132,8 @@ cannot conflict with itself. Dependency and conflict lists are mathematical
 edge sets: each peer appears once, and the same peer cannot be both a
 dependency and conflict because those semantics give contradictory activation
 instructions.
+Two symmetric conflict endpoints therefore cannot both be `active` or
+`accepted`; one active endpoint plus an explicitly `blocked` peer is valid.
 `mergeOrder` is a non-empty list containing every current Issue
 exactly once and no other member; every prerequisite precedes its dependent.
 The separate `convergence` object has a non-empty owner and executable command

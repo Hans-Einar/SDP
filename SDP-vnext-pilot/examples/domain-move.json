@@ -68,7 +68,7 @@
             }
           ],
           "successorRepository": "https://github.com/example/debugger",
-          "successorRegistry": "https://github.com/example/debugger/blob/main/SDP/WorkDomains.json"
+          "successorRegistry": "SDP/WorkDomains.json"
         }
       ]
     },

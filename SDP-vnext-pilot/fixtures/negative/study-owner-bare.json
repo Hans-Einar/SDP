@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"study-owner-bare","sourceExample":"scoped-monorepo.json","mutations":[{"op":"replace","path":"/records/3/ownerRef","value":"DBG-FEAT-001"}],"expectedErrors":["INVALID_REFERENCE","UNQUALIFIED_SEMANTIC_REFERENCE"]}

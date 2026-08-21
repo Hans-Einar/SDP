@@ -10,7 +10,10 @@ labels observed evidence.
 
 [`examples/simple-single-domain.json`](examples/simple-single-domain.json)
 declares exactly one default domain with `newRecordIdStyle: unscoped`. New work
-therefore uses `FEAT-001` and `SLC-001`. Even though the visible ID is unscoped,
+therefore uses `FEAT-001`, `SLC-001`, and an illustrative `FIX-001`. The
+assignment and Slice are accepted at one candidate while the durable Feature
+remains `active`, demonstrating that one accepted assignment does not force a
+multi-assignment capability to `delivered`. Even though the visible ID is unscoped,
 references still carry its immutable `domainUid`, so adding another domain or
 moving the original domain later does not make the old identity ambiguous.
 
@@ -26,7 +29,8 @@ New records use composite visible IDs such as `DBG-FEAT-001`,
 root like every other domain.
 
 The Debugger Feature has a `depends_on` relation to the HSX Study. The target is
-the absolute pair `{domainUid, id}`; `keyHint` is advisory. A bare
+the absolute pair `{domainUid, id}`; the optional `keyHint` is checked against
+the resolved stable key. A bare
 `HSX-STU-001` would fail in this multi-domain repository.
 
 ## Concurrent Issue Masters
@@ -40,6 +44,8 @@ convergence. They reserve disjoint domain IDs and paths. All participants name t
 the final convergence command. The validator recomputes the reservation digest
 and compares every assignment projection to it. Changing path case/slashes, composing Unicode
 differently, or reserving a parent directory does not evade collision checks.
+Issues 201 and 202 also demonstrate a valid symmetric conflict: 201 is active
+and 202 is explicitly blocked. Making both active fails validation.
 
 ## Cross-scope dependency
 
@@ -66,6 +72,18 @@ demonstrates identity portability without inventing missing delivery evidence.
 
 The external relation remains `{same UID, "DBG-FEAT-001"}`. A negative fixture
 proves that rewriting it to a new key fails validation.
+
+## Accepted Study-only assignment
+
+[`examples/accepted-study-only.json`](examples/accepted-study-only.json)
+contains an accepted assignment with no Slice. Its primary Study is accepted
+at the same candidate with qualified verification, review, and Steering
+evidence. Changing only the assignment or Study state/candidate is invalid.
+
+`fixtures/positive/accepted-standalone-fix.json` derives a second valid
+assignment from the simple example. Its low-risk zero-Slice Fix is delivered at
+the assignment candidate and points to the evidence-qualified delivered
+Feature it corrects; the accepted prerequisite assignment precedes it.
 
 ## Negative collision examples
 
@@ -94,19 +112,28 @@ proves that rewriting it to a new key fails validation.
 - recursive domain-root collisions plus NFKC-introduced colon/glob/separator
   semantics;
 - record/key/inventory rewrite during a repository move; and
-- assignment revision/digest reuse against a durable prior snapshot.
+- assignment/Slice/Study candidate-state mismatch, unsatisfied prerequisites,
+  and simultaneously active conflict endpoints;
+- bare, unresolved, wrong-kind, duplicate, and key-hint-conflicting embedded
+  Feature/Refactor/Study/Fix semantic edges;
+- complete conservative portable-path failures including `|`, `"`, `<`, C1 and
+  bidi controls, prohibited-path escape, and blank shared mutation;
+- exact/case/slash/Unicode prospective-source collisions and missing
+  inventory/record/materialized bindings;
+- unknown v0 schema markers and duplicate same-row qualified reservations; and
+- missing, fabricated, tampered, gapped, truncated, or repository-unresolved
+  multi-refreeze history.
 
 Each fixture declares its exact expected diagnostic codes, so a negative case
 cannot “pass” merely because the validator failed for an unrelated reason.
 
 ## Issue #7 dogfood refreeze
 
-`Steering/Assignments/ISSUE-007.yaml` is revision 2. Its
+`Steering/Assignments/ISSUE-007.yaml` is revision 3. Its immediate
 `previousRevision` points to
-`Steering/Assignments/History/ISSUE-007-revision-001.json`, which binds
-revision 1 at exact source candidate `f79e3dfc18c7a1650f1f3ae66167dda9b69692b4`
-and reservation digest
-`sha256:50d6768eecce05e540c7674b34a78ba6b4432cabae6e079b88fb51e669bebd4d`.
-The current reservation digest differs and cannot reuse revision 1. Closed,
-accepted Issue #5 remains evidence/prerequisite context; it is not a live node
-in the revision-2 reservation DAG.
+`Steering/Assignments/History/ISSUE-007-revision-002.json`, sourced from exact
+candidate `0de8a8957b3212404007160d90da47445d7b4e7b`. That snapshot links revision
+1 at `f79e3dfc18c7a1650f1f3ae66167dda9b69692b4`, so the complete 1..2 chain is
+retained. Revision 2 removed accepted Issue #5 from the live execution DAG;
+revision 3 reserves exact `REV/VER-SDP-007-004` evidence paths and records why
+the third review gate required another refreeze.

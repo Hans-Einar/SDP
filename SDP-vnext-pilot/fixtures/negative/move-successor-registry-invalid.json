@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"move-successor-registry-must-be-portable-local-path","sourceExample":"domain-move.json","mutations":[{"op":"replace","path":"/registries/0/domains/1/successorRegistry","value":"not-a-location|"}],"expectedErrors":["INVALID_MOVE_TOMBSTONE"]}

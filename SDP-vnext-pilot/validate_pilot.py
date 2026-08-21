@@ -43,10 +43,27 @@ ISSUE_COMMENT_RE = re.compile(
     r"#issuecomment-(?P<comment>[1-9][0-9]*)$"
 )
 EVIDENCE_ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*$")
+FORBIDDEN_PATH_CATEGORIES = {"Cc", "Cf", "Cs", "Co"}
+WINDOWS_FORBIDDEN_COMPONENT_CHARS = set('<>:"|?*')
 WINDOWS_RESERVED = {
     "con", "prn", "aux", "nul",
     *(f"com{i}" for i in range(1, 10)),
     *(f"lpt{i}" for i in range(1, 10)),
+}
+SCHEMA_VERSIONS = {
+    "feature": "sdp-vnext-pilot-feature-v0",
+    "refactor": "sdp-vnext-pilot-refactor-v0",
+    "fix": "sdp-vnext-pilot-fix-v0",
+    "study": "sdp-vnext-pilot-study-v0",
+    "slice": "sdp-vnext-pilot-slice-v0",
+    "issue-assignment": "sdp-vnext-pilot-assignment-v0",
+    "reservation-set": "sdp-vnext-pilot-reservation-set-v0",
+    "work-domain-registry": "sdp-vnext-pilot-work-domains-v0",
+}
+ASSIGNMENT_HISTORY_SCHEMA_VERSION = "sdp-vnext-pilot-assignment-history-v0"
+SEMANTIC_RELATION_TYPES = {
+    "depends_on", "informs", "refines", "supersedes", "preserves",
+    "requires_revision",
 }
 REQUIRED_TEMPLATE_KINDS = {
     "feature", "refactor", "fix", "study", "slice",
@@ -160,6 +177,13 @@ def portable_text(value: str) -> str:
     return unicodedata.normalize("NFKC", value).casefold()
 
 
+def contains_nonportable_unicode(value: str) -> bool:
+    return any(
+        unicodedata.category(character) in FORBIDDEN_PATH_CATEGORIES
+        for character in value
+    )
+
+
 def valid_uid(value: Any) -> bool:
     if not isinstance(value, str) or not UUID_URN_RE.fullmatch(value):
         return False
@@ -261,9 +285,9 @@ def valid_branch(value: Any) -> bool:
 
 
 def normalize_path(value: Any) -> tuple[str, bool] | None:
-    if not isinstance(value, str) or not value:
+    if not isinstance(value, str) or not value or contains_nonportable_unicode(value):
         return None
-    semantic_chars = ":/\\?*[]{}"
+    semantic_chars = '<>:"/\\|?*[]{}'
     for character in value:
         normalized_character = unicodedata.normalize("NFKC", character)
         if character not in semantic_chars and any(
@@ -271,7 +295,7 @@ def normalize_path(value: Any) -> tuple[str, bool] | None:
         ):
             return None
     path = unicodedata.normalize("NFKC", value)
-    if any(ord(character) < 32 for character in path):
+    if contains_nonportable_unicode(path):
         return None
     path = path.replace("\\", "/")
     recursive = path.endswith("/**")
@@ -287,9 +311,9 @@ def normalize_path(value: Any) -> tuple[str, bool] | None:
     normalized_parts: list[str] = []
     for part in parts:
         normalized = portable_text(part)
-        if any(ord(char) < 32 for char in normalized) or ":" in normalized:
+        if contains_nonportable_unicode(normalized):
             return None
-        if any(char in normalized for char in "?/\\*[]{}"):
+        if any(char in normalized for char in WINDOWS_FORBIDDEN_COMPONENT_CHARS | set("/\\[]{}")):
             return None
         if normalized in {".", ".."}:
             return None
@@ -301,6 +325,18 @@ def normalize_path(value: Any) -> tuple[str, bool] | None:
     return "/".join(normalized_parts), recursive
 
 
+def portable_path_identity(value: Any) -> str | None:
+    """Return a collision identity even for slash/case aliases.
+
+    This is deliberately separate from validity: a backslash-authored record
+    path is invalid, but it must still collide with its forward-slash alias.
+    """
+    if not isinstance(value, str) or not value:
+        return None
+    normalized = unicodedata.normalize("NFKC", value).replace("\\", "/")
+    return normalized.casefold()
+
+
 def valid_record_path(value: Any) -> bool:
     normalized = normalize_path(value)
     return (
@@ -310,6 +346,17 @@ def valid_record_path(value: Any) -> bool:
         and "\\" not in value
         and unicodedata.normalize("NFKC", value) == value
     )
+
+
+def resolve_local_path(repository_root: Path, value: Any) -> Path | None:
+    if not valid_record_path(value):
+        return None
+    candidate = (repository_root / value).resolve()
+    try:
+        candidate.relative_to(repository_root.resolve())
+    except ValueError:
+        return None
+    return candidate
 
 
 def paths_overlap(left: tuple[str, bool], right: tuple[str, bool]) -> bool:
@@ -522,7 +569,7 @@ def validate_registry_set(document: dict[str, Any], errors: list[str]) -> None:
                 if (
                     roots
                     or repository_key(domain.get("successorRepository")) is None
-                    or not nonblank(domain.get("successorRegistry"))
+                    or not valid_record_path(domain.get("successorRegistry"))
                 ):
                     add(errors, "INVALID_MOVE_TOMBSTONE")
             elif state != "active":
@@ -605,6 +652,25 @@ def reference_key(reference: Any) -> tuple[str, str] | None:
     return uid, portable_text(record_id)
 
 
+def domain_key_for_uid(document: dict[str, Any], uid: Any) -> str | None:
+    keys = {
+        domain.get("key")
+        for _, domain in declarations(document)
+        if domain.get("domainUid") == uid and isinstance(domain.get("key"), str)
+    }
+    return next(iter(keys)) if len(keys) == 1 else None
+
+
+def validate_key_hint(
+    document: dict[str, Any], reference: Any, errors: list[str]
+) -> None:
+    if not isinstance(reference, dict) or "keyHint" not in reference:
+        return
+    expected = domain_key_for_uid(document, reference.get("domainUid"))
+    if not nonblank(reference.get("keyHint")) or expected is None or reference.get("keyHint") != expected:
+        add(errors, "KEY_HINT_MISMATCH")
+
+
 def active_domain_map(document: dict[str, Any]) -> dict[str, dict[str, Any]]:
     return {
         domain.get("domainUid"): domain
@@ -648,6 +714,8 @@ def validate_typed_shape(record: dict[str, Any], errors: list[str], code: str) -
         return
     if any(field not in record for field in fields):
         add(errors, code)
+    if record.get("schemaVersion") != SCHEMA_VERSIONS.get(kind):
+        add(errors, "UNSUPPORTED_SCHEMA_VERSION")
     if record.get("experimental") is not True:
         add(errors, "EXPERIMENTAL_MARKER_REQUIRED")
     if kind == "feature":
@@ -868,6 +936,15 @@ def validate_stateful_values(record: dict[str, Any], errors: list[str]) -> None:
             )
         ):
             add(errors, "INVALID_ASSIGNMENT_BOUNDARIES")
+        elif any(
+            repository_key(value) is None
+            for value in boundaries.get("prohibitedRepositories", [])
+        ):
+            add(errors, "INVALID_GITHUB_REPOSITORY")
+        if isinstance(boundaries, dict):
+            for value in boundaries.get("prohibitedPaths", []):
+                if normalize_path(value) is None:
+                    add(errors, "INVALID_PATH")
         required_evidence = record.get("requiredEvidence")
         if (
             not isinstance(required_evidence, dict)
@@ -886,6 +963,13 @@ def validate_stateful_values(record: dict[str, Any], errors: list[str]) -> None:
                     add(errors, "INVALID_REQUIRED_COLLECTION")
             if not nonblank(coordination.get("staleBasePolicy")):
                 add(errors, "BLANK_REQUIRED_VALUE")
+            reservation_reference = coordination.get("reservationSet")
+            if (
+                isinstance(reservation_reference, dict)
+                and "path" in reservation_reference
+                and not valid_record_path(reservation_reference.get("path"))
+            ):
+                add(errors, "INVALID_PATH")
 
 
 def validate_accepted_evidence(record: dict[str, Any], errors: list[str]) -> None:
@@ -1023,12 +1107,73 @@ def validate_records(document: dict[str, Any], errors: list[str]) -> None:
     decls = declarations(document)
     domain_by_uid = active_domain_map(document)
     issued = issued_reference_keys(document)
+    records_value = document.get("records", [])
+    record_list = records_value if isinstance(records_value, list) else []
+    if not isinstance(records_value, list):
+        add(errors, "INVALID_REQUIRED_COLLECTION")
     active_by_repo = {
         registry.get("repository", ""): [domain for domain in registry.get("domains", []) if domain.get("state") == "active"]
         for registry in document.get("registries", [])
     }
+    active_repository_by_uid = {
+        domain.get("domainUid"): repository_key(repository)
+        for repository, domain in decls
+        if domain.get("state") == "active"
+    }
+    inventory_source_claims: dict[
+        tuple[tuple[str, str], str], list[tuple[str, str]]
+    ] = defaultdict(list)
+    active_prospective: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
+    for repository, domain in decls:
+        if domain.get("state") != "active":
+            continue
+        host = repository_key(repository)
+        uid = domain.get("domainUid")
+        for member in domain.get("issuedIds", []):
+            if not isinstance(member, dict) or member.get("status") != "prospective":
+                continue
+            record_id = inventory_member_id(member)
+            source_identity = portable_path_identity(member.get("source"))
+            if isinstance(record_id, str):
+                active_prospective[(uid, portable_text(record_id))].append(member)
+                if host is not None and source_identity is not None:
+                    inventory_source_claims[(host, source_identity)].append(
+                        (uid, portable_text(record_id))
+                    )
+    if any(
+        len(set(claims)) > 1
+        for claims in inventory_source_claims.values()
+    ):
+        add(errors, "DUPLICATE_INVENTORY_SOURCE")
+
+    record_source_claims: dict[
+        tuple[tuple[str, str], str], list[tuple[str, str]]
+    ] = defaultdict(list)
+    record_keys: list[tuple[str, str]] = []
+    for record in record_list:
+        if not isinstance(record, dict):
+            continue
+        uid = record.get("domainUid")
+        record_id = record.get("id")
+        host = active_repository_by_uid.get(uid)
+        source_identity = portable_path_identity(record.get("source"))
+        if isinstance(record_id, str):
+            key = (uid, portable_text(record_id))
+            record_keys.append(key)
+            if host is not None and source_identity is not None:
+                record_source_claims[(host, source_identity)].append(key)
+    if any(len(set(claims)) > 1 for claims in record_source_claims.values()):
+        add(errors, "DUPLICATE_RECORD_SOURCE")
+    if record_list:
+        if any(len(active_prospective.get(key, [])) != 1 for key in record_keys):
+            add(errors, "RECORD_INVENTORY_BINDING_MISMATCH")
+        if any(key not in set(record_keys) for key in active_prospective):
+            add(errors, "RECORD_INVENTORY_BINDING_MISMATCH")
     seen: set[tuple[str, str]] = set()
-    for record in document.get("records", []):
+    for record in record_list:
+        if not isinstance(record, dict):
+            add(errors, "RECORD_REQUIRED_FIELD_MISSING")
+            continue
         if "schemaVersion" in record:
             validate_typed_shape(record, errors, "RECORD_REQUIRED_FIELD_MISSING")
             if record.get("kind") in STATEFUL_KINDS:
@@ -1080,6 +1225,84 @@ def validate_records(document: dict[str, Any], errors: list[str]) -> None:
                 add(errors, "RECORD_SOURCE_MISMATCH")
 
 
+def validate_semantic_reference(
+    document: dict[str, Any],
+    reference: Any,
+    records: dict[tuple[str, str], dict[str, Any]],
+    errors: list[str],
+    *,
+    allowed_kinds: set[str],
+) -> tuple[str, str] | None:
+    key = reference_key(reference)
+    if key is None:
+        add(errors, "UNQUALIFIED_SEMANTIC_REFERENCE")
+        return None
+    validate_key_hint(document, reference, errors)
+    target = records.get(key)
+    if target is None:
+        add(errors, "UNRESOLVED_SEMANTIC_REFERENCE")
+    elif target.get("kind") not in allowed_kinds:
+        add(errors, "SEMANTIC_TARGET_KIND_MISMATCH")
+    return key
+
+
+def validate_semantic_edges(
+    document: dict[str, Any],
+    record: dict[str, Any],
+    records: dict[tuple[str, str], dict[str, Any]],
+    errors: list[str],
+) -> None:
+    kind = record.get("kind")
+    if kind in {"feature", "refactor"}:
+        seen: set[tuple[str, tuple[str, str]]] = set()
+        for edge in record.get("relations", []):
+            if (
+                not isinstance(edge, dict)
+                or edge.get("type") not in SEMANTIC_RELATION_TYPES
+                or set(edge) != {"type", "targetRef"}
+            ):
+                add(errors, "INVALID_SEMANTIC_EDGE")
+                continue
+            target = validate_semantic_reference(
+                document, edge.get("targetRef"), records, errors,
+                allowed_kinds=WORK_OWNER_KINDS | {"study"},
+            )
+            if target is not None:
+                identity = (edge["type"], target)
+                if identity in seen:
+                    add(errors, "DUPLICATE_SEMANTIC_EDGE")
+                seen.add(identity)
+    elif kind == "study":
+        owner = record.get("ownerRef")
+        if owner is not None:
+            validate_semantic_reference(
+                document, owner, records, errors, allowed_kinds=WORK_OWNER_KINDS
+            )
+        for field, allowed in (
+            ("independentStudyRefs", {"study"}),
+            ("informs", WORK_OWNER_KINDS | {"study"}),
+        ):
+            seen: set[tuple[str, str]] = set()
+            for reference in record.get(field, []):
+                key = validate_semantic_reference(
+                    document, reference, records, errors, allowed_kinds=allowed
+                )
+                if key is not None:
+                    if key in seen:
+                        add(errors, "DUPLICATE_SEMANTIC_EDGE")
+                    seen.add(key)
+    elif kind == "fix":
+        seen: set[tuple[str, str]] = set()
+        for reference in record.get("affectedWork", []):
+            key = validate_semantic_reference(
+                document, reference, records, errors, allowed_kinds=WORK_OWNER_KINDS
+            )
+            if key is not None:
+                if key in seen:
+                    add(errors, "DUPLICATE_SEMANTIC_EDGE")
+                seen.add(key)
+
+
 def validate_record_graph(document: dict[str, Any], errors: list[str]) -> None:
     records = {
         reference_key(record): record
@@ -1104,8 +1327,11 @@ def validate_record_graph(document: dict[str, Any], errors: list[str]) -> None:
 
     for key, record in records.items():
         kind = record.get("kind")
+        if "schemaVersion" in record:
+            validate_semantic_edges(document, record, records, errors)
         if kind == "slice" and "schemaVersion" in record:
             owner_key = reference_key(record.get("ownerRef"))
+            validate_key_hint(document, record.get("ownerRef"), errors)
             owner = records.get(owner_key)
             if owner is None:
                 add(errors, "UNRESOLVED_SLICE_OWNER")
@@ -1159,6 +1385,7 @@ def validate_record_graph(document: dict[str, Any], errors: list[str]) -> None:
                     elif normalized not in reserved_shared:
                         add(errors, "UNDECLARED_SLICE_SHARED_PATH")
             for decision_ref in record.get("decisionRefs", []):
+                validate_key_hint(document, decision_ref, errors)
                 decision_key = reference_key(decision_ref)
                 if decision_key is None:
                     add(errors, "UNQUALIFIED_SLICE_DECISION_REF")
@@ -1167,6 +1394,7 @@ def validate_record_graph(document: dict[str, Any], errors: list[str]) -> None:
         if kind in WORK_OWNER_KINDS and "schemaVersion" in record:
             slice_keys: list[tuple[str, str]] = []
             for slice_ref in record.get("slices", []):
+                validate_key_hint(document, slice_ref, errors)
                 slice_key = reference_key(slice_ref)
                 if slice_key is None:
                     add(errors, "INVALID_REFERENCE")
@@ -1205,6 +1433,22 @@ def validate_record_graph(document: dict[str, Any], errors: list[str]) -> None:
                         or matching[0].get("activeSlices") != []
                     ):
                         add(errors, "ZERO_SLICE_FIX_INVALID")
+                    affected = [
+                        records.get(reference_key(reference))
+                        for reference in record.get("affectedWork", [])
+                        if reference_key(reference) is not None
+                    ]
+                    if (
+                        not affected
+                        or any(
+                            target is None
+                            or target.get("kind") not in WORK_OWNER_KINDS
+                            or target.get("declaredState") not in TERMINAL_ACCEPTED_STATES
+                            or mapping(target.get("acceptedEvidence")).get("candidate") is None
+                            for target in affected
+                        )
+                    ):
+                        add(errors, "ZERO_SLICE_FIX_AFFECTED_WORK_REQUIRED")
 
 
 def validate_relations(document: dict[str, Any], errors: list[str]) -> None:
@@ -1215,9 +1459,15 @@ def validate_relations(document: dict[str, Any], errors: list[str]) -> None:
         for record in document.get("records", [])
         if reference_key(record) is not None
     } | issued_reference_keys(document)
+    seen_relations: set[tuple[str, tuple[str, str], tuple[str, str]]] = set()
     for relation in document.get("relations", []):
+        if not isinstance(relation, dict) or relation.get("type") not in SEMANTIC_RELATION_TYPES:
+            add(errors, "INVALID_SEMANTIC_EDGE")
+            continue
+        relation_keys: dict[str, tuple[str, str]] = {}
         for name in ("sourceRef", "targetRef"):
             reference = relation.get(name)
+            validate_key_hint(document, reference, errors)
             key = reference_key(reference)
             if key is None:
                 if len(active_domains) > 1:
@@ -1230,6 +1480,14 @@ def validate_relations(document: dict[str, Any], errors: list[str]) -> None:
                 continue
             if key[0] in local_domains and key not in known:
                 add(errors, "UNRESOLVED_RELATION_REF")
+            relation_keys[name] = key
+        if {"sourceRef", "targetRef"}.issubset(relation_keys):
+            identity = (
+                relation["type"], relation_keys["sourceRef"], relation_keys["targetRef"]
+            )
+            if identity in seen_relations:
+                add(errors, "DUPLICATE_SEMANTIC_EDGE")
+            seen_relations.add(identity)
 
 
 def shared_path(item: Any) -> Any:
@@ -1262,6 +1520,24 @@ def validate_reservation_sets(document: dict[str, Any], errors: list[str]) -> No
             validate_typed_shape(
                 reservation, errors, "RESERVATION_SET_INCOMPLETE"
             )
+        for row in reservation.get("assignments", []) if isinstance(reservation.get("assignments"), list) else []:
+            if not isinstance(row, dict):
+                continue
+            for value in row.get("ownedPaths", []):
+                if normalize_path(value) is None:
+                    add(errors, "INVALID_PATH")
+            for item in row.get("sharedTouchpoints", []):
+                if normalize_path(shared_path(item)) is None:
+                    add(errors, "INVALID_PATH")
+                if not isinstance(item, dict) or not nonblank(item.get("allowedMutation")):
+                    add(errors, "INVALID_SHARED_TOUCHPOINT")
+            seen_reserved: set[tuple[str, str]] = set()
+            for reference in row.get("reservedIds", []):
+                key = reference_key(reference)
+                if key is not None:
+                    if key in seen_reserved:
+                        add(errors, "DUPLICATE_RESERVED_ID")
+                    seen_reserved.add(key)
         reservation_id = reservation.get("id")
         if not isinstance(reservation_id, str) or not reservation_id:
             add(errors, "RESERVATION_SET_INCOMPLETE")
@@ -1458,6 +1734,11 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
     issues = [
         issue_key(assignment_issue(assignment)) for assignment in assignments
     ]
+    issue_map = {
+        issue_key(assignment_issue(item)): item
+        for item in assignments
+        if issue_key(assignment_issue(item)) is not None
+    }
     if any(
         issue is not None and count > 1
         for issue, count in Counter(issues).items()
@@ -1483,11 +1764,6 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
         }
         if len(convergence_contracts) != 1:
             add(errors, "CONVERGENCE_CONTRACT_MISMATCH")
-        issue_map = {
-            issue_key(assignment_issue(item)): item
-            for item in assignments
-            if issue_key(assignment_issue(item)) is not None
-        }
         for issue, assignment in issue_map.items():
             for conflict in assignment_coordination(assignment).get("conflictsWithIssues", []):
                 peer = issue_map.get(issue_key(conflict))
@@ -1553,6 +1829,7 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
             if not SHA_RE.fullmatch(str(baseline_commit)) or baseline_commit != base:
                 add(errors, "INVALID_INTEGRATION_BASE")
             work_ref = assignment.get("workRef")
+            validate_key_hint(document, work_ref, errors)
             validate_id_against_domain(
                 work_ref.get("domainUid") if isinstance(work_ref, dict) else None,
                 work_ref.get("id") if isinstance(work_ref, dict) else None,
@@ -1584,6 +1861,7 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
             if primary_issued_by is not None and primary_issued_by != authority_identity:
                 add(errors, "PRIMARY_WORK_AUTHORITY_MISMATCH")
             for active_slice in assignment.get("activeSlices", []):
+                validate_key_hint(document, active_slice, errors)
                 validate_id_against_domain(
                     active_slice.get("domainUid") if isinstance(active_slice, dict) else None,
                     active_slice.get("id") if isinstance(active_slice, dict) else None,
@@ -1609,17 +1887,19 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
                 add(errors, "INVALID_PATH")
             else:
                 owner_uid = item.get("ownerDomainUid") if isinstance(item, dict) else None
-                if not isinstance(item, dict) or not item.get("allowedMutation"):
+                if not isinstance(item, dict) or not nonblank(item.get("allowedMutation")):
                     add(errors, "INVALID_SHARED_TOUCHPOINT")
                 if not valid_uid(owner_uid):
                     add(errors, "INVALID_SHARED_OWNER")
                 elif domain_by_uid and owner_uid not in domain_by_uid:
                     add(errors, "UNKNOWN_SHARED_OWNER_DOMAIN")
                 shared.append((authority_identity or authority, normalized, owner_uid))
+        row_reserved: set[tuple[str, str]] = set()
         for reference in coordination.get("reservedIds", []):
             if not isinstance(reference, dict) or not reference.get("domainUid") or not reference.get("id"):
                 add(errors, "INVALID_REFERENCE")
                 continue
+            validate_key_hint(document, reference, errors)
             validate_id_against_domain(
                 reference.get("domainUid"), reference.get("id"), domain_by_uid,
                 errors, invalid_code="INVALID_RESERVED_ID",
@@ -1628,12 +1908,68 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
             if domain_by_uid and reference.get("domainUid") not in domain_by_uid:
                 add(errors, "UNKNOWN_RESERVED_DOMAIN")
             key = (reference["domainUid"], portable_text(reference["id"]))
+            if key in row_reserved:
+                add(errors, "DUPLICATE_RESERVED_ID")
+            row_reserved.add(key)
             if key in reserved and reserved[key] != (authority_identity or authority):
                 add(errors, "RESERVED_ID_COLLISION")
             reserved[key] = authority_identity or authority
             issued_by = issued_authorities(document).get(key)
             if issued_by is not None and issued_by != authority_identity:
                 add(errors, "ISSUED_ID_RECLAIM")
+
+    accepted_execution_states = {"active", "accepted"}
+    for issue, assignment in issue_map.items():
+        state = assignment.get("declaredState")
+        coordination = assignment_coordination(assignment)
+        if state == "accepted":
+            candidate = mapping(assignment.get("acceptedEvidence")).get("candidate")
+            work_ref = assignment.get("workRef")
+            work_record = records.get(reference_key(work_ref))
+            work_type = work_ref.get("type") if isinstance(work_ref, dict) else None
+            slices = assignment.get("activeSlices", [])
+            if work_type == "study":
+                if (
+                    work_record is None
+                    or work_record.get("kind") != "study"
+                    or work_record.get("declaredState") != "accepted"
+                ):
+                    add(errors, "ASSIGNMENT_STUDY_STATE_MISMATCH")
+                elif mapping(work_record.get("acceptedEvidence")).get("candidate") != candidate:
+                    add(errors, "ASSIGNMENT_CANDIDATE_MISMATCH")
+            elif work_type == "fix" and slices == []:
+                if (
+                    work_record is None
+                    or work_record.get("declaredState") not in {"delivered", "released"}
+                ):
+                    add(errors, "ASSIGNMENT_FIX_STATE_MISMATCH")
+                elif mapping(work_record.get("acceptedEvidence")).get("candidate") != candidate:
+                    add(errors, "ASSIGNMENT_CANDIDATE_MISMATCH")
+            else:
+                if not isinstance(slices, list) or not slices:
+                    add(errors, "ASSIGNMENT_SLICE_STATE_MISMATCH")
+                for slice_ref in slices if isinstance(slices, list) else []:
+                    slice_record = records.get(reference_key(slice_ref))
+                    if slice_record is None or slice_record.get("declaredState") != "accepted":
+                        add(errors, "ASSIGNMENT_SLICE_STATE_MISMATCH")
+                    elif mapping(slice_record.get("acceptedEvidence")).get("candidate") != candidate:
+                        add(errors, "ASSIGNMENT_CANDIDATE_MISMATCH")
+            for dependency in coordination.get("dependsOnIssues", []):
+                dependency_assignment = issue_map.get(issue_key(dependency))
+                if (
+                    dependency_assignment is not None
+                    and dependency_assignment.get("declaredState") != "accepted"
+                ):
+                    add(errors, "UNSATISFIED_ASSIGNMENT_PREREQUISITE")
+        if state in accepted_execution_states:
+            for conflict in coordination.get("conflictsWithIssues", []):
+                peer = issue_map.get(issue_key(conflict))
+                if (
+                    issue_key(conflict) != issue
+                    and peer is not None
+                    and peer.get("declaredState") in accepted_execution_states
+                ):
+                    add(errors, "ACTIVE_ASSIGNMENT_CONFLICT")
 
     for index, (left_issue, left_path) in enumerate(owned):
         for right_issue, right_path in owned[index + 1:]:
@@ -1654,26 +1990,35 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
             add(errors, "SHARED_OWNER_MISMATCH")
 
 
-def validate_assignment_history(document: dict[str, Any], errors: list[str]) -> None:
+def validate_assignment_history(
+    document: dict[str, Any], errors: list[str], *, repository_driver: bool
+) -> None:
     histories = document.get("assignmentHistory", [])
     if not isinstance(histories, list):
         add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
         return
-    history_by_source: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    histories_by_assignment: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    history_sources: set[str] = set()
     for history in histories:
         if not isinstance(history, dict):
             add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
             continue
         source = history.get("source")
+        assignment_source = history.get("assignmentSource")
+        if isinstance(assignment_source, str):
+            histories_by_assignment[assignment_source].append(history)
         if isinstance(source, str):
-            history_by_source[source].append(history)
+            if source in history_sources:
+                add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
+            history_sources.add(source)
         reservation = history.get("reservationSet")
+        if history.get("schemaVersion") != ASSIGNMENT_HISTORY_SCHEMA_VERSION:
+            add(errors, "UNSUPPORTED_SCHEMA_VERSION")
         valid = (
-            history.get("schemaVersion") == "sdp-vnext-pilot-assignment-history-v0"
-            and history.get("experimental") is True
+            history.get("experimental") is True
             and history.get("kind") == "issue-assignment-revision-snapshot"
             and valid_record_path(source)
-            and valid_record_path(history.get("assignmentSource"))
+            and valid_record_path(assignment_source)
             and issue_key(history.get("authorityIssue")) is not None
             and isinstance(history.get("revision"), int)
             and not isinstance(history.get("revision"), bool)
@@ -1684,35 +2029,82 @@ def validate_assignment_history(document: dict[str, Any], errors: list[str]) -> 
             and DIGEST_RE.fullmatch(str(reservation.get("digest", ""))) is not None
             and isinstance(history.get("supersededByRevision"), int)
             and history.get("supersededByRevision") == history.get("revision") + 1
+            and isinstance(history.get("sourceFieldPresent"), bool)
+            and nonblank(history.get("supersessionReason"))
+            and isinstance(history.get("recordedContext"), dict)
+            and bool(history.get("recordedContext"))
+            and "previousSnapshot" in history
         )
         if not valid:
             add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
 
-    referenced_sources: set[str] = set()
+    matched_history_ids: set[int] = set()
     for assignment in document.get("assignments", []):
+        if not isinstance(assignment, dict) or assignment.get("kind") != "issue-assignment":
+            continue
+        revision = assignment.get("revision")
         previous = assignment.get("previousRevision")
         refreeze = assignment.get("refreeze")
-        if previous is None and refreeze is None:
+        source = assignment.get("source")
+        candidate_histories = histories_by_assignment.get(source, []) if isinstance(source, str) else []
+        if revision == 1:
+            if (
+                "previousRevision" in assignment
+                or "refreeze" in assignment
+                or candidate_histories
+            ):
+                add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
+            continue
+        if not isinstance(revision, int) or isinstance(revision, bool) or revision < 1:
             continue
         if not isinstance(previous, dict) or not isinstance(refreeze, dict):
             add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
             continue
-        snapshot_path = previous.get("snapshotPath")
-        referenced_sources.add(snapshot_path) if isinstance(snapshot_path, str) else None
-        candidates = history_by_source.get(snapshot_path, [])
-        if len(candidates) != 1:
+        if not repository_driver:
+            add(errors, "REPOSITORY_DRIVER_REQUIRED")
+        authority = issue_key(assignment_issue(assignment))
+        chain = [
+            history for history in candidate_histories
+            if issue_key(history.get("authorityIssue")) == authority
+        ]
+        if (
+            len(chain) != revision - 1
+            or {history.get("revision") for history in chain} != set(range(1, revision))
+        ):
             add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
             continue
-        history = candidates[0]
+        chain.sort(key=lambda history: history["revision"])
+        matched_history_ids.update(id(history) for history in chain)
+        for index, history in enumerate(chain):
+            prior = chain[index - 1] if index else None
+            link = history.get("previousSnapshot")
+            if prior is None:
+                if link is not None:
+                    add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
+            elif (
+                not isinstance(link, dict)
+                or link.get("revision") != prior.get("revision")
+                or link.get("snapshotPath") != prior.get("source")
+                or link.get("sourceCandidate") != prior.get("sourceCandidate")
+                or link.get("reservationDigest")
+                != mapping(prior.get("reservationSet")).get("digest")
+            ):
+                add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
+            if index and (
+                mapping(prior.get("reservationSet")).get("id")
+                != mapping(history.get("reservationSet")).get("id")
+                or mapping(prior.get("reservationSet")).get("digest")
+                == mapping(history.get("reservationSet")).get("digest")
+            ):
+                add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
+        history = chain[-1]
         current_reservation = mapping(assignment_coordination(assignment).get("reservationSet"))
         history_reservation = history.get("reservationSet", {})
         if (
             previous.get("revision") != history.get("revision")
+            or previous.get("snapshotPath") != history.get("source")
             or previous.get("sourceCandidate") != history.get("sourceCandidate")
             or previous.get("reservationDigest") != history_reservation.get("digest")
-            or assignment.get("source") != history.get("assignmentSource")
-            or issue_key(assignment_issue(assignment))
-            != issue_key(history.get("authorityIssue"))
             or assignment.get("revision") != history.get("revision") + 1
             or history.get("supersededByRevision") != assignment.get("revision")
             or current_reservation.get("id") != history_reservation.get("id")
@@ -1721,12 +2113,135 @@ def validate_assignment_history(document: dict[str, Any], errors: list[str]) -> 
             or not nonblank(refreeze.get("reason"))
         ):
             add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
-    if set(history_by_source) - referenced_sources:
+    if any(id(history) not in matched_history_ids for history in histories if isinstance(history, dict)):
         add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
 
 
+def read_local_json(repository_root: Path, value: Any) -> dict[str, Any] | None:
+    path = resolve_local_path(repository_root, value)
+    if path is None or not path.is_file():
+        return None
+    try:
+        loaded = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+        return None
+    return loaded if isinstance(loaded, dict) else None
+
+
+def validate_repository_materialization(
+    document: dict[str, Any], errors: list[str], repository_root: Path
+) -> None:
+    records = {
+        reference_key(record): record
+        for record in document.get("records", [])
+        if isinstance(record, dict) and reference_key(record) is not None
+    }
+    for record in records.values():
+        materialized = read_local_json(repository_root, record.get("source"))
+        if materialized is None:
+            add(errors, "UNRESOLVED_MATERIALIZED_SOURCE")
+        elif materialized != record:
+            add(errors, "MATERIALIZED_SOURCE_MISMATCH")
+    for _, domain in declarations(document):
+        if domain.get("state") != "active":
+            continue
+        uid = domain.get("domainUid")
+        for member in domain.get("issuedIds", []):
+            if not isinstance(member, dict) or member.get("status") != "prospective":
+                continue
+            record_id = inventory_member_id(member)
+            key = (
+                (uid, portable_text(record_id))
+                if isinstance(record_id, str) else None
+            )
+            record = records.get(key)
+            if record is None or record.get("source") != member.get("source"):
+                add(errors, "RECORD_INVENTORY_BINDING_MISMATCH")
+
+    reservation_sets = {
+        reservation.get("id"): reservation
+        for reservation in document.get("reservationSets", [])
+        if isinstance(reservation, dict) and nonblank(reservation.get("id"))
+    }
+    for assignment in document.get("assignments", []):
+        if not isinstance(assignment, dict) or assignment.get("kind") != "issue-assignment":
+            continue
+        materialized_assignment = read_local_json(repository_root, assignment.get("source"))
+        if materialized_assignment is None:
+            add(errors, "UNRESOLVED_MATERIALIZED_SOURCE")
+        elif materialized_assignment != assignment:
+            add(errors, "MATERIALIZED_SOURCE_MISMATCH")
+        reservation_reference = mapping(assignment_coordination(assignment).get("reservationSet"))
+        if "path" in reservation_reference:
+            materialized_reservation = read_local_json(
+                repository_root, reservation_reference.get("path")
+            )
+            expected_reservation = reservation_sets.get(reservation_reference.get("id"))
+            if materialized_reservation is None:
+                add(errors, "UNRESOLVED_MATERIALIZED_SOURCE")
+            elif expected_reservation is None or materialized_reservation != expected_reservation:
+                add(errors, "MATERIALIZED_SOURCE_MISMATCH")
+
+    for history in document.get("assignmentHistory", []):
+        if not isinstance(history, dict):
+            continue
+        materialized_history = read_local_json(repository_root, history.get("source"))
+        if materialized_history is None:
+            add(errors, "UNRESOLVED_MATERIALIZED_SOURCE")
+        elif materialized_history != history:
+            add(errors, "MATERIALIZED_SOURCE_MISMATCH")
+        candidate = history.get("sourceCandidate")
+        assignment_source = history.get("assignmentSource")
+        try:
+            subprocess.run(
+                ["git", "cat-file", "-e", f"{candidate}^{{commit}}"],
+                cwd=repository_root, check=True, capture_output=True,
+            )
+            historical_blob = subprocess.run(
+                ["git", "show", f"{candidate}:{assignment_source}"],
+                cwd=repository_root, check=True, capture_output=True,
+            ).stdout.decode("utf-8")
+            historical_assignment = json.loads(historical_blob)
+        except (
+            OSError, subprocess.CalledProcessError, UnicodeDecodeError,
+            json.JSONDecodeError,
+        ):
+            add(errors, "UNAVAILABLE_HISTORY_GIT_OBJECT")
+            continue
+        historical_reservation = mapping(
+            assignment_coordination(historical_assignment).get("reservationSet")
+        )
+        source_present = "source" in historical_assignment
+        context = history.get("recordedContext")
+        context_matches = isinstance(context, dict)
+        if context_matches:
+            for pointer, expected in context.items():
+                try:
+                    actual = pointer_value(historical_assignment, pointer)
+                except (KeyError, IndexError, TypeError, ValueError):
+                    context_matches = False
+                    break
+                if actual != expected:
+                    context_matches = False
+                    break
+        if (
+            issue_key(assignment_issue(historical_assignment))
+            != issue_key(history.get("authorityIssue"))
+            or historical_assignment.get("revision") != history.get("revision")
+            or historical_reservation.get("id")
+            != mapping(history.get("reservationSet")).get("id")
+            or historical_reservation.get("digest")
+            != mapping(history.get("reservationSet")).get("digest")
+            or source_present != history.get("sourceFieldPresent")
+            or (source_present and historical_assignment.get("source") != assignment_source)
+            or not context_matches
+        ):
+            add(errors, "HISTORY_GIT_CONTENT_MISMATCH")
+
+
 def validate_document(
-    document: dict[str, Any], *, isolated_fixture: bool = False
+    document: dict[str, Any], *, isolated_fixture: bool = False,
+    repository_root: Path | None = None,
 ) -> list[str]:
     errors: list[str] = []
     if document.get("experimental") is not True:
@@ -1736,9 +2251,13 @@ def validate_document(
     validate_record_graph(document, errors)
     validate_relations(document, errors)
     validate_assignments(document, errors)
-    validate_assignment_history(document, errors)
+    validate_assignment_history(
+        document, errors, repository_driver=repository_root is not None
+    )
     if not isolated_fixture:
         validate_reservation_sets(document, errors)
+    if repository_root is not None:
+        validate_repository_materialization(document, errors, repository_root)
     return sorted(errors)
 
 
@@ -1786,6 +2305,7 @@ def check_coverage(example_documents: dict[str, dict[str, Any]], negative_codes:
     simple = example_documents.get("simple-single-domain.json", {})
     scoped = example_documents.get("scoped-monorepo.json", {})
     moved = example_documents.get("domain-move.json", {})
+    accepted_study = example_documents.get("accepted-study-only.json", {})
     if not any(UNSCOPED_ID_RE.fullmatch(str(record.get("id", ""))) for record in simple.get("records", [])):
         failures.append("coverage: simple unscoped example missing")
     active_scoped_domains = [domain for _, domain in declarations(scoped) if domain.get("state") == "active"]
@@ -1836,6 +2356,34 @@ def check_coverage(example_documents: dict[str, dict[str, Any]], negative_codes:
         for record in document.get("records", [])
     ):
         failures.append("coverage: stateful record source binding missing")
+    simple_assignment = next(iter(simple.get("assignments", [])), {})
+    simple_records = {record.get("kind"): record for record in simple.get("records", [])}
+    if not (
+        simple_assignment.get("declaredState") == "accepted"
+        and simple_records.get("slice", {}).get("declaredState") == "accepted"
+        and simple_records.get("feature", {}).get("declaredState") == "active"
+    ):
+        failures.append("coverage: accepted assignment/Slice with durable active Feature missing")
+    if not any(
+        assignment.get("declaredState") == "accepted"
+        and mapping(assignment.get("workRef")).get("type") == "study"
+        for assignment in accepted_study.get("assignments", [])
+    ):
+        failures.append("coverage: accepted Study-only assignment missing")
+    scoped_issue_states = {
+        issue_key(assignment_issue(assignment)): assignment.get("declaredState")
+        for assignment in scoped.get("assignments", [])
+    }
+    if not any(
+        state == "active"
+        and any(
+            scoped_issue_states.get(issue_key(conflict)) == "blocked"
+            for conflict in assignment_coordination(assignment).get("conflictsWithIssues", [])
+        )
+        for assignment in scoped.get("assignments", [])
+        for state in [assignment.get("declaredState")]
+    ):
+        failures.append("coverage: valid active/blocked symmetric conflict pair missing")
     required_negative = {
         "DOMAIN_KEY_COLLISION", "RECORD_ID_COLLISION", "PATH_COLLISION",
         "UNQUALIFIED_CROSS_DOMAIN_REF", "UNSCOPED_ID_MULTIDOMAIN",
@@ -1876,6 +2424,17 @@ def check_coverage(example_documents: dict[str, dict[str, Any]], negative_codes:
         "SELF_CONFLICT",
         "DUPLICATE_DEPENDENCY_EDGE", "DUPLICATE_CONFLICT_EDGE",
         "DEPENDENCY_CONFLICT_OVERLAP", "INVALID_ASSIGNMENT_REVISION_HISTORY",
+        "ASSIGNMENT_SLICE_STATE_MISMATCH", "ASSIGNMENT_CANDIDATE_MISMATCH",
+        "ASSIGNMENT_STUDY_STATE_MISMATCH", "UNSATISFIED_ASSIGNMENT_PREREQUISITE",
+        "ACTIVE_ASSIGNMENT_CONFLICT", "UNQUALIFIED_SEMANTIC_REFERENCE",
+        "UNRESOLVED_SEMANTIC_REFERENCE", "SEMANTIC_TARGET_KIND_MISMATCH",
+        "DUPLICATE_SEMANTIC_EDGE", "ZERO_SLICE_FIX_AFFECTED_WORK_REQUIRED",
+        "REPOSITORY_DRIVER_REQUIRED", "UNRESOLVED_MATERIALIZED_SOURCE",
+        "MATERIALIZED_SOURCE_MISMATCH", "UNAVAILABLE_HISTORY_GIT_OBJECT",
+        "HISTORY_GIT_CONTENT_MISMATCH", "DUPLICATE_RESERVED_ID",
+        "DUPLICATE_INVENTORY_SOURCE", "DUPLICATE_RECORD_SOURCE",
+        "RECORD_INVENTORY_BINDING_MISMATCH", "KEY_HINT_MISMATCH",
+        "UNSUPPORTED_SCHEMA_VERSION",
     }
     missing = sorted(required_negative - negative_codes)
     if missing:
@@ -1990,8 +2549,30 @@ def validate_text_corpus() -> list[str]:
     return failures
 
 
+def load_dogfood_document() -> dict[str, Any]:
+    assignment_paths = sorted((ROOT / "Steering" / "Assignments").glob("ISSUE-*.*"))
+    history_paths = sorted((ROOT / "Steering" / "Assignments" / "History").glob("*.json"))
+    reservation_paths = sorted((ROOT / "Steering" / "Reservations").glob("*.json"))
+    record_paths = sorted((ROOT / "Studies").glob("*.json"))
+    registry_paths = sorted((ROOT / "Steering").glob("WorkDomains*.json"))
+    return {
+        "experimental": True,
+        "registries": [load_json(path) for path in registry_paths],
+        "records": [load_json(path) for path in record_paths],
+        "relations": [],
+        "assignments": [load_json(path) for path in assignment_paths],
+        "reservationSets": [load_json(path) for path in reservation_paths],
+        "assignmentHistory": [load_json(path) for path in history_paths],
+    }
+
+
 def main() -> int:
     failures: list[str] = []
+    try:
+        dogfood = load_dogfood_document()
+    except (OSError, json.JSONDecodeError) as exc:
+        dogfood = {}
+        failures.append(f"Steering dogfood parse error: {exc}")
 
     templates: dict[str, dict[str, Any]] = {}
     template_kinds: set[str] = set()
@@ -2025,6 +2606,23 @@ def main() -> int:
         if errors:
             failures.append(f"{path.relative_to(ROOT)}: unexpected {', '.join(errors)}")
 
+    positive_fixture_count = 0
+    for path in sorted((ROOT / "fixtures" / "positive").glob("*.json")):
+        positive_fixture_count += 1
+        try:
+            fixture = load_json(path)
+            source_example = fixture.get("sourceExample")
+            subject = copy.deepcopy(example_documents[source_example])
+            apply_mutations(subject, fixture.get("mutations", []))
+            if fixture.get("rebindReservationDigests") is True:
+                rebind_reservation_digests(subject)
+            actual = validate_document(subject)
+        except (OSError, json.JSONDecodeError, KeyError, IndexError, TypeError, ValueError) as exc:
+            failures.append(f"{path.relative_to(ROOT)}: invalid positive fixture: {exc}")
+            continue
+        if actual:
+            failures.append(f"{path.relative_to(ROOT)}: unexpected {actual!r}")
+
     negative_codes: set[str] = set()
     negative_count = 0
     for path in sorted((ROOT / "fixtures" / "negative").glob("*.json")):
@@ -2037,7 +2635,13 @@ def main() -> int:
         expected = sorted(set(document.get("expectedErrors", [])))
         try:
             source_example = document.get("sourceExample")
-            if source_example:
+            if document.get("sourceDogfood") is True:
+                subject = copy.deepcopy(dogfood)
+                apply_mutations(subject, document.get("mutations", []))
+                if document.get("rebindReservationDigests") is True:
+                    rebind_reservation_digests(subject)
+                actual = validate_document(subject, repository_root=ROOT.parent)
+            elif source_example:
                 source_path = ROOT / "examples" / source_example
                 subject = copy.deepcopy(example_documents[source_path.name])
                 apply_mutations(subject, document.get("mutations", []))
@@ -2057,91 +2661,12 @@ def main() -> int:
 
     failures.extend(check_coverage(example_documents, negative_codes))
 
-    assignment_path = ROOT / "Steering" / "Assignments" / "ISSUE-007.yaml"
-    registry_path = ROOT / "Steering" / "WorkDomains.json"
-    reservation_path = ROOT / "Steering" / "Reservations" / "RSV-ISSUE-007-001.json"
-    study_path = ROOT / "Studies" / "STU-007.json"
-    history_path = ROOT / "Steering" / "Assignments" / "History" / "ISSUE-007-revision-001.json"
     try:
-        assignment = load_json(assignment_path)
-        registry = load_json(registry_path)
-        reservation = load_json(reservation_path)
-        study = load_json(study_path)
-        history = load_json(history_path)
-        dogfood = {
-            "experimental": True,
-            "registries": [registry],
-            "records": [study],
-            "relations": [],
-            "assignments": [assignment],
-            "reservationSets": [reservation],
-            "assignmentHistory": [history],
-        }
-        errors = validate_document(dogfood)
+        errors = validate_document(dogfood, repository_root=ROOT.parent)
         if errors:
             failures.append(f"Steering dogfood: {', '.join(errors)}")
-        declared_reservation = assignment.get("coordination", {}).get("reservationSet", {})
-        expected_assignment_source = "SDP-vnext-pilot/Steering/Assignments/ISSUE-007.yaml"
-        if assignment.get("source") != expected_assignment_source:
-            failures.append("Steering assignment: declared source mismatch")
-        resolved_assignment_source = (ROOT.parent / str(assignment.get("source", ""))).resolve()
-        if resolved_assignment_source != assignment_path.resolve() or not resolved_assignment_source.is_file():
-            failures.append("Steering assignment: source does not resolve to the validated file")
-        expected_reservation_path = "SDP-vnext-pilot/Steering/Reservations/RSV-ISSUE-007-001.json"
-        if declared_reservation.get("path") != expected_reservation_path:
-            failures.append("Steering reservation set: declared path mismatch")
-        resolved_reservation_path = (ROOT.parent / str(declared_reservation.get("path", ""))).resolve()
-        if resolved_reservation_path != reservation_path.resolve() or not resolved_reservation_path.is_file():
-            failures.append("Steering reservation set: declared path does not resolve to the validated file")
-        previous_revision = assignment.get("previousRevision", {})
-        expected_history_path = "SDP-vnext-pilot/Steering/Assignments/History/ISSUE-007-revision-001.json"
-        if previous_revision.get("snapshotPath") != expected_history_path:
-            failures.append("Steering assignment history: declared snapshot path mismatch")
-        resolved_history_path = (ROOT.parent / str(previous_revision.get("snapshotPath", ""))).resolve()
-        if resolved_history_path != history_path.resolve() or not resolved_history_path.is_file():
-            failures.append("Steering assignment history: snapshot path does not resolve to the validated file")
-        if previous_revision.get("reservationDigest") != history.get("reservationSet", {}).get("digest"):
-            failures.append("Steering assignment history: revision-1 digest mismatch")
-        try:
-            historical_blob = subprocess.run(
-                [
-                    "git", "show",
-                    f"{history.get('sourceCandidate')}:{history.get('assignmentSource')}",
-                ],
-                cwd=ROOT.parent,
-                check=True,
-                capture_output=True,
-                text=True,
-                encoding="utf-8",
-            ).stdout
-            historical_assignment = json.loads(historical_blob)
-            historical_reservation = historical_assignment.get("coordination", {}).get("reservationSet", {})
-            historical_dependencies = historical_assignment.get("coordination", {}).get("dependsOnIssues", [])
-            historical_terminal = historical_assignment.get("coordination", {}).get("convergence", {}).get("terminal")
-            if (
-                historical_assignment.get("revision") != history.get("revision")
-                or historical_reservation.get("id") != history.get("reservationSet", {}).get("id")
-                or historical_reservation.get("digest") != history.get("reservationSet", {}).get("digest")
-                or historical_dependencies != history.get("priorDependencyContext")
-                or historical_terminal != history.get("priorConvergenceTerminal")
-            ):
-                failures.append("Steering assignment history: source-candidate snapshot mismatch")
-        except (OSError, subprocess.CalledProcessError, json.JSONDecodeError) as exc:
-            failures.append(f"Steering assignment history: source candidate unavailable: {exc}")
-        issued_members = registry.get("domains", [{}])[0].get("issuedIds", [])
-        study_sources = [
-            member.get("source")
-            for member in issued_members
-            if isinstance(member, dict) and member.get("id") == study.get("id")
-        ]
-        if study_sources != ["SDP-vnext-pilot/Studies/STU-007.json"]:
-            failures.append("Steering dogfood: Study inventory source mismatch")
-        else:
-            resolved_study_path = (ROOT.parent / study_sources[0]).resolve()
-            if resolved_study_path != study_path.resolve() or not resolved_study_path.is_file():
-                failures.append("Steering dogfood: Study inventory source does not resolve")
     except (OSError, json.JSONDecodeError) as exc:
-        failures.append(f"Steering dogfood parse error: {exc}")
+        failures.append(f"Steering dogfood repository driver error: {exc}")
 
     failures.extend(validate_text_corpus())
 
@@ -2154,6 +2679,7 @@ def main() -> int:
     print("SDP vNext pilot validation: PASS")
     print(f"- templates: {len(templates)} ({', '.join(sorted(template_kinds))})")
     print(f"- positive examples: {len(example_documents)}")
+    print(f"- positive mutation fixtures: {positive_fixture_count}")
     print(f"- negative fixtures: {negative_count}")
     print(f"- negative diagnostic coverage: {len(negative_codes)} codes")
     print("- Steering Issue #7 Study/assignment/domain/reservation/history binding: valid")

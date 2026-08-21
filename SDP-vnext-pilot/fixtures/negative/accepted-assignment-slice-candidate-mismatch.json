@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "accepted-assignment-and-slice-candidates-must-match",
+  "sourceExample": "simple-single-domain.json",
+  "mutations": [
+    {"op": "replace", "path": "/assignments/0/acceptedEvidence", "value": {"candidate": "2020202020202020202020202020202020202020", "verificationRefs": [{"id": "ASGN-VER-002", "candidate": "2020202020202020202020202020202020202020"}], "currentReviewRef": {"id": "ASGN-REV-002", "candidate": "2020202020202020202020202020202020202020", "disposition": "approved"}, "steeringDisposition": {"authority": "https://github.com/example/tiny-app/issues/10#issuecomment-2002", "candidate": "2020202020202020202020202020202020202020", "decision": "accepted"}, "releaseRefs": []}}
+  ],
+  "expectedErrors": ["ASSIGNMENT_CANDIDATE_MISMATCH"]
+}

@@ -3,17 +3,17 @@
   "experimental": true,
   "kind": "issue-assignment",
   "source": "SDP-vnext-pilot/Steering/Assignments/ISSUE-007.yaml",
-  "revision": 2,
+  "revision": 3,
   "declaredState": "active",
   "previousRevision": {
-    "revision": 1,
-    "snapshotPath": "SDP-vnext-pilot/Steering/Assignments/History/ISSUE-007-revision-001.json",
-    "sourceCandidate": "f79e3dfc18c7a1650f1f3ae66167dda9b69692b4",
-    "reservationDigest": "sha256:50d6768eecce05e540c7674b34a78ba6b4432cabae6e079b88fb51e669bebd4d"
+    "revision": 2,
+    "snapshotPath": "SDP-vnext-pilot/Steering/Assignments/History/ISSUE-007-revision-002.json",
+    "sourceCandidate": "0de8a8957b3212404007160d90da47445d7b4e7b",
+    "reservationDigest": "sha256:f5805cecd8f72394d4502eed8dbb4f1ec899f890faed3dd5f4e368e1a4f448bb"
   },
   "refreeze": {
-    "sourceCandidate": "f79e3dfc18c7a1650f1f3ae66167dda9b69692b4",
-    "reason": "Revision 2 refreezes the reusable reservation projection, removes closed accepted Issue #5 from the current execution DAG, makes convergence terminal, and extends exact review/verification evidence paths."
+    "sourceCandidate": "0de8a8957b3212404007160d90da47445d7b4e7b",
+    "reason": "Revision 3 refreezes after the third adversarial gate: it reserves exact REV/VER-004 evidence paths and adopts complete reusable history, cross-record state, semantic-edge, portable-path, source-identity, key-hint, and schema validation."
   },
   "authority": {
     "issue": "https://github.com/Hans-Einar/SDP/issues/7",
@@ -44,7 +44,7 @@
     "reservationSet": {
       "id": "RSV-ISSUE-007-001",
       "path": "SDP-vnext-pilot/Steering/Reservations/RSV-ISSUE-007-001.json",
-      "digest": "sha256:f5805cecd8f72394d4502eed8dbb4f1ec899f890faed3dd5f4e368e1a4f448bb"
+      "digest": "sha256:c6b9245e236c8843ed4fc76fa8c0e540f4afadb7bb75ee33dfc1f3ff0502623d"
     },
     "dependsOnIssues": [],
     "conflictsWithIssues": [],
@@ -54,9 +54,11 @@
       "CodeReview/REV-SDP-007-001.md",
       "CodeReview/REV-SDP-007-002.md",
       "CodeReview/REV-SDP-007-003.md",
+      "CodeReview/REV-SDP-007-004.md",
       "Verification/VER-SDP-007-001.md",
       "Verification/VER-SDP-007-002.md",
-      "Verification/VER-SDP-007-003.md"
+      "Verification/VER-SDP-007-003.md",
+      "Verification/VER-SDP-007-004.md"
     ],
     "sharedTouchpoints": [
       {
@@ -86,9 +88,9 @@
   },
   "boundaries": {
     "prohibitedRepositories": [
-      "Hans-Einar/HSX",
-      "Hans-Einar/gh-sdp",
-      "Hans-Einar/SDP-Analyzer"
+      "https://github.com/Hans-Einar/HSX",
+      "https://github.com/Hans-Einar/gh-sdp",
+      "https://github.com/Hans-Einar/SDP-Analyzer"
     ],
     "prohibitedPaths": ["Toolkit/**"],
     "prohibitedOperations": [

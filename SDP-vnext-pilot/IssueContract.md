@@ -117,4 +117,13 @@ If it changes scope, baseline, reservation, or merge order, the Master increment
 the assignment revision and performs the refreeze protocol before work resumes.
 The new revision links a durable history snapshot containing the prior exact
 candidate and reservation digest; a changed digest cannot reuse the prior
-revision number.
+revision number. Revision 1 omits predecessor/refreeze fields. Revision N
+retains the complete `1..N-1` snapshot chain, each snapshot links its immediate
+predecessor, and the repository driver reconstructs the exact historical
+assignment bytes from each declared Git candidate. Missing repository
+resolution, paths, Git objects, or matching Issue/source/revision/reservation
+context block validation.
+
+`boundaries.prohibitedRepositories` uses canonical GitHub repository URLs;
+every prohibited/owned/shared/local-source path uses the common portable path
+contract; and each shared touchpoint has a nonblank `allowedMutation`.

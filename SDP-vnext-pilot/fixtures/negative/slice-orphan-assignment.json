@@ -8,5 +8,5 @@
     {"op": "replace", "path": "/reservationSets/0/assignments/0/activeSlices", "value": []}
   ],
   "rebindReservationDigests": true,
-  "expectedErrors": ["SLICE_ASSIGNMENT_CARDINALITY"]
+  "expectedErrors": ["ASSIGNMENT_SLICE_STATE_MISMATCH", "SLICE_ASSIGNMENT_CARDINALITY"]
 }

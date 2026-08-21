@@ -13,7 +13,7 @@
           "newRecordIdStyle": "scoped", "roots": [],
           "issuedIds": [{"id": "DBG-FEAT-001", "status": "prospective", "authorityIssue": "https://github.com/example/old/issues/1", "source": "Features/DBG-FEAT-001.json"}],
           "successorRepository": "https://github.com/example/new",
-          "successorRegistry": "https://github.com/example/new/blob/main/SDP/WorkDomains.json"
+          "successorRegistry": "SDP/WorkDomains.json"
         }
       ]
     },

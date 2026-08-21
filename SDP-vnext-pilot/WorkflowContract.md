@@ -67,7 +67,10 @@ Issue assignment/authority names that Fix, and the Fix itself carries the same
 qualified accepted evidence otherwise required for a Slice. A medium-, high-,
 or safety-critical-risk Fix, or any non-standalone Fix, uses one or more
 Slices. Review rework on an unaccepted candidate is not a Fix; a correction
-after acceptance is.
+after acceptance is. A delivered zero-Slice Fix also has at least one qualified
+`affectedWork` reference to an evidence-qualified delivered/released work
+owner; a proposed or unresolved target does not prove that the Fix corrects
+accepted behavior.
 
 ### Study
 
@@ -166,6 +169,13 @@ The assignment Issue also equals the primary Feature/Refactor/Fix/Study
 record's Issue authority and the prospective issued-inventory authority for
 that primary reference.
 
+Embedded semantic edges use the same absolute identity graph. Feature and
+Refactor `relations` contain one supported relation `type` plus one qualified
+`targetRef`; Study `ownerRef` is null or a resolved Feature/Refactor/Fix,
+`independentStudyRefs` resolve only to Studies, and `informs` resolves to a
+supported Study/work owner. Fix `affectedWork` resolves only to Feature,
+Refactor, or Fix. Bare, unresolved, wrong-kind, and duplicate edges are errors.
+
 ## 4. Identity and revision rules
 
 The record types use `FEAT`, `REF`, `FIX`, `STU`, and `SLC` prospectively.
@@ -182,9 +192,12 @@ IDs remain historical evidence and MUST NOT be rewritten.
 Every stateful record has a normalized, non-recursive, portable repository-
 relative `source` path. For prospective work this value is byte-for-byte equal
 to the source in its issued-ID inventory member. A repository validator also
-resolves that path to the represented record when the record exists as a local
-file. This prevents an inventory entry from naming one artifact while the
-record claims another.
+resolves that path to the represented JSON record when the record exists as a
+local file. Within one canonical repository, NFKC/casefold/slash-normalized
+prospective sources are one-to-one: two identities cannot claim one source and
+each active prospective inventory member binds exactly one represented record.
+This prevents an inventory entry from naming one artifact while the record
+claims another.
 
 ### Pilot v0 value and state floor
 
@@ -208,6 +221,10 @@ in [IssueContract.md](IssueContract.md). `independentReview` is Boolean and
 `maximumUnresolvedSeverity` is one of `none`, `low`, `medium`, `high`, or
 `blocking`. These are a minimum usable pilot contract, not a canonical schema
 freeze.
+
+Every typed pilot v0 record, assignment, reservation set, registry, and history
+snapshot uses its exact documented `schemaVersion`. An unknown marker is
+unsupported; the validator never silently applies v0 semantics to future bytes.
 
 ### Reopen and extension
 
@@ -289,6 +306,17 @@ one or more verification objects, current review, and Steering disposition.
 delivered Feature/Refactor also requires at least one Issue authority and one
 resolvable Slice; the qualified low-risk standalone Fix remains the only
 proportional zero-Slice delivery exception.
+
+Acceptance is also cross-record state, not only a well-shaped evidence object.
+An accepted implementation assignment requires every bounded `activeSlices`
+member to be `accepted` with qualified evidence for the assignment candidate;
+its durable Feature/Refactor may remain `active` for later assignments. An
+accepted Study-only assignment requires its primary Study to be `accepted` at
+that candidate. An accepted standalone Fix assignment requires its primary Fix
+to be delivered/released at that candidate. An in-set dependency must already
+be accepted, and both endpoints of a symmetric conflict cannot simultaneously
+be `active` or `accepted`; an active endpoint with its peer explicitly
+`blocked` is the valid reservation state.
 
 Authored records may contain stable URLs, the declared integration base, target
 branch, policy, and intended PR URL. They MUST NOT claim mutable Issue/PR/check/

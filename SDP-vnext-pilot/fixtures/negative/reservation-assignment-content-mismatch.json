@@ -6,5 +6,5 @@
   "mutations": [
     {"op": "replace", "path": "/assignments/0/coordination/dependsOnIssues", "value": ["https://github.com/example/hsx-like/issues/202"]}
   ],
-  "expectedErrors": ["RESERVATION_ASSIGNMENT_MISMATCH"]
+  "expectedErrors": ["DEPENDENCY_CONFLICT_OVERLAP", "RESERVATION_ASSIGNMENT_MISMATCH"]
 }
