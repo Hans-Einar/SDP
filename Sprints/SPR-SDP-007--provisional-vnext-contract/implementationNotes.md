@@ -250,3 +250,25 @@ execution identities separately and keep earlier Slice evidence immutable.
 
 The exact remote head containing this recovery update now requires the reserved
 fresh `REV/VER-SDP-007-006` gate. Earlier evidence remains historical.
+
+## 2026-08-21 — Sixth adversarial gate
+
+- Froze full candidate `dfdea4fe259a9e342d651254656bcfac5363d0b9`
+  for fresh `REV/VER-SDP-007-006`; exact-head Actions run `32514457819`
+  passed.
+- Fresh `VER-SDP-007-006` confirmed all named sixth-candidate lifecycle,
+  terminal, DAG, strict-JSON and satisfiability controls, then returned FAIL
+  with Blocking 0, High 1, Medium 0, Low 0 and Note 5 because preserved
+  historical assignments from different reservation episodes were still
+  treated as one concurrent set.
+- Separate fresh `REV-SDP-007-006` returned changes required with Blocking 0,
+  High 2, Medium 4, Low 1 and Note 6. It additionally proved revision history
+  can replace the primary work and erase accepted authorized Slices; reverse
+  active-Slice projection is incomplete; an active Fix target can lack any
+  accepted represented outcome; top-level relation kinds bypass endpoint-kind
+  rules; duplicate JSON keys are not rejected; and invalid branch Unicode can
+  raise rather than diagnose.
+
+No sixth-pass finding is waived. The next rework must distinguish historical
+reservation episodes from current concurrency and preserve revision semantics
+from actual historical assignment/reservation bytes.
