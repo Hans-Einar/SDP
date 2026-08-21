@@ -318,6 +318,12 @@ relations may remain inspectable, but they do not become current authority.
   IDs, owned/shared paths, dependencies, and conflicts; base, merge order, and
   convergence also agree. A coordinated digest/pointer rewrite is not proof of
   this semantic equality.
+- Every snapshot candidate is a strict ancestor of the exact validated Git
+  candidate, and revision candidates are strict chronological ancestors of
+  one another. Commit existence without ancestry is not durable history.
+- Early compatibility is selected by revision, never shape alone: only the
+  exact revision-1 and revision-2–4 forms normalize; revision 5+ and every
+  partial/mixed/hybrid form require the current shape and fail closed.
 - A delivered Feature or Refactor is extended by a new Issue and new Slice(s).
   The work owner may move back to declared `active`, but the earlier delivery
   and release evidence remains intact.

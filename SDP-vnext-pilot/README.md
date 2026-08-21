@@ -51,13 +51,15 @@ assignment, the single default-domain declaration, and
 `Steering/Reservations/RSV-ISSUE-007-001.json`. The assignment binds the real
 reservation file by canonical JSON SHA-256; the validator resolves the Study,
 domain, paths, IDs, base, dependency, and convergence contract together.
-Assignment revision 7 retains the complete revision-1 through revision-6
+Assignment revision 8 retains the complete revision-1 through revision-7
 snapshot chain under `Steering/Assignments/History/`. The generic repository
-driver reconstructs all six exact Git candidates plus each candidate's exact
+driver reconstructs all seven exact Git candidates plus each candidate's exact
 historical reservation, rehashes them, and requires the one canonical Issue
 row to equal the exact historical assignment projection. It rejects missing,
 fabricated, tampered, gapped, truncated, identity-replacing,
-evidence-erasing, or coordinated assignment/reservation divergence.
+evidence-erasing, or coordinated assignment/reservation divergence. Every
+source candidate is also an exact strict ancestor of the validated Git `HEAD`,
+and revision candidates form one strictly chronological ancestor chain.
 
 ## Validate
 
@@ -72,7 +74,9 @@ positive examples and mutation controls, exact negative fixtures, bidirectional 
 cardinality, canonical GitHub identities/repository coherence, qualified
 accepted evidence, identity inventory/source/provenance/no-reuse, reservation
 digests and tuple-keyed reservation-epoch concurrency graphs, complete
-standalone validation of bound and unbound typed reservation sets, portable roots/paths and branch names,
+standalone validation of bound and preparatory typed reservation sets,
+repository/domain/inventory/current-epoch coherence for preparatory rows,
+portable roots/paths and branch names,
 cross-record acceptance/prerequisite/conflict state, qualified embedded
 and top-level semantic edges as one global set with relation-specific DAGs,
 allocation versus execution authority, complete authorized-Slice history,
@@ -82,7 +86,8 @@ evidence-qualified Slice decisions and gating dependencies, unique materialized
 sources, mandatory exact v0 schema/kind/experimental markers, invalid Unicode
 scalar robustness, active implementation satisfiability,
 authorized/prohibited path disjointness, assignment revision
-history, dogfood external binding, local Markdown links, required status
+history with real-Git ancestry/order controls and exact revision-scoped early
+compatibility, dogfood external binding, local Markdown links, required status
 markers, and trailing whitespace.
 
 ## Boundary

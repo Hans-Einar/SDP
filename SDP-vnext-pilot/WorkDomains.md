@@ -161,6 +161,17 @@ repository that actively hosts its primary work domain. Canonical Issue
 identity is also used for work/Study authorities, structured inventory,
 reservation rows and edges/order, amendments, and Steering evidence.
 
+An unbound typed reservation set is a preparatory epoch in that same canonical
+repository context. Every row resolves an active domain and current primary
+record, and that record names the row Issue exactly once. Reserved domains and
+ID grammar/style resolve; a prospective inventory member may be reserved only
+by its immutable allocator; a legacy-preserved ID cannot satisfy a current
+gate; and an already issued ID cannot be reclaimed by another Issue. Every
+authorized new Slice remains explicitly reserved. Preparatory owned/shared
+claims collide with nonterminal bound epochs and other preparatory epochs under
+the same portable rules; terminal bound epochs remain historical. Disjoint
+preparatory alternatives may coexist.
+
 ## Declaration and discovery
 
 A registry has its exact schema marker, exact `kind`, and `experimental: true`,

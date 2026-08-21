@@ -10,6 +10,7 @@ import math
 import re
 import subprocess
 import sys
+import tempfile
 import unicodedata
 import uuid
 from collections import Counter, defaultdict
@@ -2011,6 +2012,13 @@ def validate_reservation_set_semantics(
         tuple[tuple[str, str, int], tuple[str, bool], Any]
     ] = []
     domain_by_uid = active_domain_map(document) if document is not None else {}
+    records = {
+        reference_key(record): record
+        for record in document.get("records", [])
+        if isinstance(record, dict) and reference_key(record) is not None
+    } if document is not None else {}
+    issued_by = issued_authorities(document) if document is not None else {}
+    issued_status_by_id = issued_statuses(document) if document is not None else {}
 
     for row in rows:
         if not isinstance(row, dict):
@@ -2041,11 +2049,28 @@ def validate_reservation_set_semantics(
             if work_match is None or work_match.group("type") != expected_token:
                 add(errors, "RESERVATION_SET_INCOMPLETE")
             if document is not None:
+                work_uid = work_ref.get("domainUid")
+                work_key = reference_key(work_ref)
                 validate_id_against_domain(
-                    work_ref.get("domainUid"), work_ref.get("id"),
+                    work_uid, work_ref.get("id"),
                     domain_by_uid, errors, invalid_code="INVALID_WORK_REF",
                     style_code="WORK_REF_STYLE_MISMATCH",
                 )
+                if work_uid not in domain_by_uid:
+                    add(errors, "UNKNOWN_WORK_DOMAIN")
+                work_record = records.get(work_key)
+                if work_record is None:
+                    add(errors, "UNRESOLVED_WORK_REF")
+                elif effective_kind(work_record) != work_ref.get("type"):
+                    add(errors, "WORK_REF_TYPE_MISMATCH")
+                elif sum(
+                    issue_key(authority) == issue
+                    for authority in work_record.get("issueAuthorities", [])
+                ) != 1:
+                    add(errors, "OWNER_ISSUE_AUTHORITY_MISMATCH")
+                host_repository = repository_for_domain(document, work_uid)
+                if host_repository is not None and issue[:2] != host_repository:
+                    add(errors, "REPOSITORY_AUTHORITY_MISMATCH")
 
         authorized = row.get("authorizedSlices")
         active = row.get("activeSlices")
@@ -2115,6 +2140,20 @@ def validate_reservation_set_semantics(
                     domain_by_uid, errors, invalid_code="INVALID_RESERVED_ID",
                     style_code="RESERVED_ID_STYLE_MISMATCH",
                 )
+                reserved_uid = reference.get("domainUid")
+                if reserved_uid not in domain_by_uid:
+                    add(errors, "UNKNOWN_RESERVED_DOMAIN")
+                allocated_by = issued_by.get(key)
+                if allocated_by is not None and allocated_by != issue:
+                    add(errors, "ISSUED_ID_RECLAIM")
+                if issued_status_by_id.get(key) == "legacy-preserved":
+                    add(errors, "LEGACY_PRESERVED_CURRENT_GATE")
+
+        if any(
+            key is not None and key not in seen_reserved
+            for key in authorized_keys
+        ):
+            add(errors, "AUTHORIZED_SLICE_RESERVATION_MISSING")
 
         owned_values = row.get("ownedPaths")
         if not isinstance(owned_values, list):
@@ -2371,6 +2410,73 @@ def validate_reservation_sets(document: dict[str, Any], errors: list[str]) -> No
             ):
                 add(errors, "RESERVATION_ASSIGNMENT_MISMATCH")
 
+    # An unbound typed set is a current preparatory epoch. It has no weaker
+    # collision authority than a bound current epoch: preparation is the point
+    # at which repository-wide ID/path conflicts must be prevented. Terminal
+    # bound epochs remain history and are deliberately excluded here.
+    current_bound_epochs = {
+        assignment_epoch_key(assignment)
+        for assignment in assignments
+        if isinstance(assignment, dict)
+        and assignment.get("declaredState") in {"proposed", "active", "blocked"}
+    }
+    bound_epochs = set(grouped_assignments)
+    preparatory_epochs = {
+        reservation_epoch_key(reservation)
+        for reservation in reservation_sets
+        if isinstance(reservation, dict)
+        and reservation_epoch_key(reservation) not in bound_epochs
+    }
+    compared_epochs = current_bound_epochs | preparatory_epochs
+    claims: dict[tuple[Any, Any], dict[str, list[Any]]] = defaultdict(
+        lambda: {"ids": [], "paths": []}
+    )
+    for reservation in reservation_sets:
+        if not isinstance(reservation, dict):
+            continue
+        epoch = reservation_epoch_key(reservation)
+        if epoch not in compared_epochs:
+            continue
+        rows = reservation.get("assignments", [])
+        for row in rows if isinstance(rows, list) else []:
+            if not isinstance(row, dict):
+                continue
+            issue = issue_key(row.get("issue"))
+            for reference in row.get("reservedIds", []):
+                key = reference_key(reference)
+                if key is not None:
+                    claims[epoch]["ids"].append((issue, key))
+            for value in row.get("ownedPaths", []):
+                normalized = normalize_path(value)
+                if normalized is not None:
+                    claims[epoch]["paths"].append((issue, normalized))
+            for item in row.get("sharedTouchpoints", []):
+                normalized = normalize_path(shared_path(item))
+                if normalized is not None:
+                    claims[epoch]["paths"].append((issue, normalized))
+
+    ordered_epochs = list(claims)
+    for index, left_epoch in enumerate(ordered_epochs):
+        for right_epoch in ordered_epochs[index + 1:]:
+            if not (
+                left_epoch in preparatory_epochs
+                or right_epoch in preparatory_epochs
+            ):
+                continue
+            left_claims = claims[left_epoch]
+            right_claims = claims[right_epoch]
+            if any(
+                left_id == right_id
+                for _, left_id in left_claims["ids"]
+                for _, right_id in right_claims["ids"]
+            ):
+                add(errors, "RESERVED_ID_COLLISION")
+            if any(
+                paths_overlap(left_path, right_path)
+                for _, left_path in left_claims["paths"]
+                for _, right_path in right_claims["paths"]
+            ):
+                add(errors, "PATH_COLLISION")
 def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
     assignments = document.get("assignments", [])
     domain_by_uid = active_domain_map(document)
@@ -2807,6 +2913,35 @@ def load_historical_json(
     return (loaded, None) if isinstance(loaded, dict) else (None, "unavailable")
 
 
+def resolve_git_commit(repository_root: Path, candidate: Any) -> str | None:
+    """Resolve one exact 40-hex commit identity without accepting aliases."""
+    if not isinstance(candidate, str) or SHA_RE.fullmatch(candidate) is None:
+        return None
+    try:
+        resolved = subprocess.run(
+            ["git", "rev-parse", "--verify", f"{candidate}^{{commit}}"],
+            cwd=repository_root, check=True, capture_output=True, text=True,
+        ).stdout.strip()
+    except (OSError, subprocess.CalledProcessError):
+        return None
+    return resolved if resolved == candidate else None
+
+
+def git_is_strict_ancestor(
+    repository_root: Path, ancestor: str, descendant: str,
+) -> bool:
+    if ancestor == descendant:
+        return False
+    try:
+        result = subprocess.run(
+            ["git", "merge-base", "--is-ancestor", ancestor, descendant],
+            cwd=repository_root, check=False, capture_output=True,
+        )
+    except OSError:
+        return False
+    return result.returncode == 0
+
+
 def authorized_slice_map(assignment: dict[str, Any]) -> dict[tuple[str, str], Any] | None:
     entries = assignment.get("authorizedSlices", [])
     if not isinstance(entries, list):
@@ -2846,7 +2981,8 @@ def revision_semantics_preserved(
 
 
 def normalize_historical_reservation(
-    reservation: dict[str, Any], historical_assignment: dict[str, Any]
+    reservation: dict[str, Any], historical_assignment: dict[str, Any],
+    *, revision: int,
 ) -> dict[str, Any] | None:
     """Map only the two known pre-projection pilot shapes into current v0.
 
@@ -2859,10 +2995,36 @@ def normalize_historical_reservation(
     rows = normalized.get("assignments")
     if not isinstance(rows, list) or not rows:
         return None
+    current_top_level_fields = TYPE_REQUIRED_FIELDS["reservation-set"]
+    legacy_top_level_fields = current_top_level_fields | {"dependencies", "conflicts"}
+    legacy_row_fields = {
+        "issue", "domainUid", "workRef", "recordPaths", "reservedIds",
+        "ownedPaths", "sharedTouchpoints",
+    }
+    row_field_sets = [set(row) if isinstance(row, dict) else set() for row in rows]
+    if any(not isinstance(row, dict) for row in rows):
+        return None
+    current_shape = all(fields == RESERVATION_ROW_FIELDS for fields in row_field_sets)
+    missing_authorized_shape = all(
+        fields == RESERVATION_ROW_FIELDS - {"authorizedSlices"}
+        for fields in row_field_sets
+    )
+    revision_one_shape = len(rows) == 1 and row_field_sets == [legacy_row_fields]
+    if current_shape:
+        if "dependencies" in reservation or "conflicts" in reservation:
+            return None
+    elif missing_authorized_shape:
+        if revision not in {2, 3, 4} or set(reservation) != current_top_level_fields:
+            return None
+    elif revision_one_shape:
+        if revision != 1 or set(reservation) != legacy_top_level_fields:
+            return None
+    else:
+        # Mixed, partial, and hybrid rows fail closed instead of borrowing
+        # whichever compatibility branch happens to match one member.
+        return None
     modern_rows: list[dict[str, Any]] = []
     for row in rows:
-        if not isinstance(row, dict):
-            return None
         if set(row) == RESERVATION_ROW_FIELDS:
             modern_rows.append(row)
             continue
@@ -2870,12 +3032,6 @@ def normalize_historical_reservation(
             row["authorizedSlices"] = []
             modern_rows.append(row)
             continue
-        legacy_fields = {
-            "issue", "domainUid", "workRef", "recordPaths", "reservedIds",
-            "ownedPaths", "sharedTouchpoints",
-        }
-        if set(row) != legacy_fields or len(rows) != 1:
-            return None
         issue = row.get("issue")
         assignment_work = historical_assignment.get("workRef")
         row_work = row.get("workRef")
@@ -2946,6 +3102,8 @@ def normalize_historical_reservation(
         and set(convergence) == {"owner", "command"}
         and convergence == assignment_convergence
     ):
+        if revision != 1:
+            return None
         normalized["convergence"] = {**convergence, "terminal": True}
     return normalized
 
@@ -3013,6 +3171,15 @@ def validate_assignment_history(
             add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
 
     matched_history_ids: set[int] = set()
+    subject_candidate: str | None = None
+    if repository_root is not None:
+        try:
+            subject_candidate = subprocess.run(
+                ["git", "rev-parse", "--verify", "HEAD^{commit}"],
+                cwd=repository_root, check=True, capture_output=True, text=True,
+            ).stdout.strip()
+        except (OSError, subprocess.CalledProcessError):
+            add(errors, "REPOSITORY_DRIVER_REQUIRED")
     for assignment in document.get("assignments", []):
         if not isinstance(assignment, dict) or assignment.get("kind") != "issue-assignment":
             continue
@@ -3050,6 +3217,30 @@ def validate_assignment_history(
             continue
         chain.sort(key=lambda history: history["revision"])
         matched_history_ids.update(id(history) for history in chain)
+
+        if repository_root is not None and subject_candidate is not None:
+            resolved_candidates = [
+                resolve_git_commit(repository_root, history.get("sourceCandidate"))
+                for history in chain
+            ]
+            existing_candidates = [
+                candidate for candidate in resolved_candidates if candidate is not None
+            ]
+            if len(existing_candidates) != len(set(existing_candidates)):
+                add(errors, "HISTORY_CANDIDATE_DUPLICATE")
+            for candidate in existing_candidates:
+                if not git_is_strict_ancestor(
+                    repository_root, candidate, subject_candidate
+                ):
+                    add(errors, "HISTORY_CANDIDATE_NOT_ANCESTOR")
+            for earlier, later in zip(resolved_candidates, resolved_candidates[1:]):
+                if (
+                    earlier is not None
+                    and later is not None
+                    and earlier != later
+                    and not git_is_strict_ancestor(repository_root, earlier, later)
+                ):
+                    add(errors, "HISTORY_CANDIDATE_ORDER_INVALID")
         for index, history in enumerate(chain):
             prior = chain[index - 1] if index else None
             link = history.get("previousSnapshot")
@@ -3130,7 +3321,8 @@ def validate_assignment_history(
             actual_reservation_digest = canonical_digest(historical_reservation)
             historical_reservation_snapshot = mapping(historical.get("reservationSet"))
             normalized_historical_reservation = normalize_historical_reservation(
-                historical_reservation, historical_assignment
+                historical_reservation, historical_assignment,
+                revision=historical.get("revision"),
             )
             reservation_rows = [
                 row
@@ -3362,15 +3554,7 @@ def validate_template(record: dict[str, Any]) -> list[str]:
     elif kind == "reservation-set":
         if not SHA_RE.fullmatch(str(record.get("integrationBase", ""))):
             add(errors, "INVALID_INTEGRATION_BASE")
-        wrapper = {
-            "experimental": True,
-            "registries": [],
-            "records": [],
-            "relations": [],
-            "assignments": [],
-            "reservationSets": [record],
-        }
-        errors.extend(validate_document(wrapper))
+        validate_reservation_set_semantics(record, errors)
     elif kind == "work-domain-registry":
         wrapper = {"experimental": True, "registries": [record], "records": [], "relations": [], "assignments": []}
         errors.extend(validate_document(wrapper))
@@ -3544,6 +3728,8 @@ def check_coverage(
         "ACTIVE_SLICE_PROJECTION_MISMATCH",
         "SEMANTIC_SOURCE_KIND_MISMATCH",
         "DUPLICATE_JSON_MEMBER",
+        "UNKNOWN_WORK_DOMAIN", "UNKNOWN_RESERVED_DOMAIN",
+        "AUTHORIZED_SLICE_RESERVATION_MISSING",
     }
     missing = sorted(required_negative - negative_codes)
     if missing:
@@ -3572,6 +3758,7 @@ def check_coverage(
         "same-id-three-terminal-epochs.json",
         "unreferenced-reservation-set.json",
         "historical-exact-reservation-projection.json",
+        "two-disjoint-preparatory-sets.json",
     }
     missing_positive = sorted(required_positive - positive_fixture_names)
     if missing_positive:
@@ -3847,6 +4034,355 @@ def rebind_embedded_history_digests(
             ).get("digest")
 
 
+def validate_history_compatibility_controls() -> tuple[list[str], int, int]:
+    """Replay the exact early shapes from Git with revision-bound selection."""
+    failures: list[str] = []
+    positive_count = 0
+    negative_count = 0
+    fixture_root = ROOT / "fixtures" / "compatibility"
+    observed_cases: set[str] = set()
+    for path in sorted(fixture_root.glob("*.json")):
+        try:
+            fixture = load_json(path)
+            observed_cases.add(fixture.get("case"))
+            candidate = fixture.get("sourceCandidate")
+            assignment, assignment_error = load_historical_json(
+                candidate=candidate,
+                path=fixture.get("assignmentPath"),
+                repository_root=ROOT.parent,
+                embedded_history_blobs=None,
+            )
+            reservation, reservation_error = load_historical_json(
+                candidate=candidate,
+                path=fixture.get("reservationPath"),
+                repository_root=ROOT.parent,
+                embedded_history_blobs=None,
+            )
+            if assignment is None or reservation is None:
+                raise ValueError(
+                    f"historical source unavailable: {assignment_error or reservation_error}"
+                )
+            apply_mutations(reservation, fixture.get("mutations", []))
+            normalized = normalize_historical_reservation(
+                reservation, assignment, revision=fixture.get("revision")
+            )
+            accepted = normalized is not None
+            if accepted:
+                rows = [
+                    row for row in normalized.get("assignments", [])
+                    if isinstance(row, dict)
+                    and issue_key(row.get("issue")) == issue_key(assignment_issue(assignment))
+                ]
+                accepted = len(rows) == 1 and rows[0] == assignment_projection(assignment)
+            expected = fixture.get("expectedAccepted") is True
+            positive_count += int(expected)
+            negative_count += int(not expected)
+            if accepted != expected:
+                failures.append(
+                    f"{path.relative_to(ROOT)}: expected accepted={expected}, got {accepted}"
+                )
+        except (KeyError, IndexError, TypeError, ValueError, OSError, json.JSONDecodeError) as exc:
+            failures.append(f"{path.relative_to(ROOT)}: invalid compatibility fixture: {exc}")
+    required_cases = {
+        "exact-revision-one-legacy-shape",
+        "exact-revision-two-authorized-slices-omission",
+        "exact-revision-three-authorized-slices-omission",
+        "exact-revision-four-authorized-slices-omission",
+        "revision-five-cannot-omit-authorized-slices",
+        "revision-six-cannot-claim-the-revision-one-legacy-shape",
+        "revision-three-partial-row-fails-closed",
+        "revision-four-hybrid-top-level-shape-fails-closed",
+    }
+    if observed_cases != required_cases:
+        failures.append(
+            "compatibility coverage mismatch: missing="
+            + repr(sorted(required_cases - observed_cases))
+            + " extra=" + repr(sorted(observed_cases - required_cases))
+        )
+    return failures, positive_count, negative_count
+
+
+def git_control_run(repository_root: Path, *args: str) -> str:
+    return subprocess.run(
+        ["git", *args], cwd=repository_root, check=True,
+        capture_output=True, text=True,
+    ).stdout.strip()
+
+
+def write_git_control_pair(
+    repository_root: Path,
+    assignment: dict[str, Any],
+    reservation: dict[str, Any],
+) -> None:
+    assignment_path = repository_root / "Steering" / "Assignments" / "ISSUE-001.json"
+    reservation_path = repository_root / "Steering" / "Reservations" / "RSV-STU-001.json"
+    assignment_path.parent.mkdir(parents=True, exist_ok=True)
+    reservation_path.parent.mkdir(parents=True, exist_ok=True)
+    assignment_path.write_text(
+        json.dumps(assignment, sort_keys=True, indent=2, ensure_ascii=False, allow_nan=False)
+        + "\n",
+        encoding="utf-8",
+    )
+    reservation_path.write_text(
+        json.dumps(reservation, sort_keys=True, indent=2, ensure_ascii=False, allow_nan=False)
+        + "\n",
+        encoding="utf-8",
+    )
+
+
+def git_control_commit_pair(
+    repository_root: Path,
+    assignment: dict[str, Any],
+    reservation: dict[str, Any],
+    message: str,
+) -> str:
+    write_git_control_pair(repository_root, assignment, reservation)
+    git_control_run(
+        repository_root, "add", "--",
+        "Steering/Assignments/ISSUE-001.json",
+        "Steering/Reservations/RSV-STU-001.json",
+    )
+    git_control_run(repository_root, "commit", "--quiet", "-m", message)
+    return git_control_run(repository_root, "rev-parse", "HEAD")
+
+
+def git_control_revision(
+    base_assignment: dict[str, Any],
+    base_reservation: dict[str, Any],
+    revision: int,
+    *,
+    previous_candidate: str | None = None,
+    previous_digest: str | None = None,
+    previous_snapshot: str | None = None,
+) -> tuple[dict[str, Any], dict[str, Any], str]:
+    assignment = copy.deepcopy(base_assignment)
+    reservation = copy.deepcopy(base_reservation)
+    assignment["revision"] = revision
+    assignment["source"] = "Steering/Assignments/ISSUE-001.json"
+    coordination = assignment_coordination(assignment)
+    coordination["ownedPaths"] = [f"Studies/STU-001-r{revision}.json"]
+    reservation["assignments"][0]["ownedPaths"] = copy.deepcopy(
+        coordination["ownedPaths"]
+    )
+    reference = mapping(coordination.get("reservationSet"))
+    reference["path"] = "Steering/Reservations/RSV-STU-001.json"
+    digest = canonical_digest(reservation)
+    if digest is None:
+        raise ValueError("Git control reservation cannot be hashed")
+    reference["digest"] = digest
+    coordination["reservationSet"] = reference
+    if revision == 1:
+        assignment.pop("previousRevision", None)
+        assignment.pop("refreeze", None)
+    else:
+        assignment["previousRevision"] = {
+            "revision": revision - 1,
+            "snapshotPath": previous_snapshot,
+            "sourceCandidate": previous_candidate,
+            "reservationDigest": previous_digest,
+        }
+        assignment["refreeze"] = {
+            "sourceCandidate": previous_candidate,
+            "reason": f"Synthetic Git ancestry control advances to revision {revision}.",
+        }
+    return assignment, reservation, digest
+
+
+def git_control_snapshot(
+    assignment: dict[str, Any],
+    *,
+    candidate: str,
+    digest: str,
+    previous: dict[str, Any] | None,
+) -> dict[str, Any]:
+    revision = assignment["revision"]
+    return {
+        "schemaVersion": ASSIGNMENT_HISTORY_SCHEMA_VERSION,
+        "experimental": True,
+        "kind": "issue-assignment-revision-snapshot",
+        "source": f"FixtureHistory/ISSUE-001-revision-{revision:03d}.json",
+        "assignmentSource": "Steering/Assignments/ISSUE-001.json",
+        "authorityIssue": assignment_issue(assignment),
+        "revision": revision,
+        "sourceCandidate": candidate,
+        "sourceFieldPresent": True,
+        "previousSnapshot": previous,
+        "reservationSet": {"id": "RSV-STU-001", "digest": digest},
+        "recordedContext": {
+            "/source": "Steering/Assignments/ISSUE-001.json",
+            "/workRef": copy.deepcopy(assignment["workRef"]),
+            "/authorizedSlices": copy.deepcopy(assignment["authorizedSlices"]),
+            "/coordination/reservationSet": copy.deepcopy(
+                assignment_coordination(assignment)["reservationSet"]
+            ),
+        },
+        "supersededByRevision": revision + 1,
+        "supersessionReason": "Synthetic exact-byte Git ancestry control refreeze.",
+    }
+
+
+def compose_git_control_document(
+    base_document: dict[str, Any],
+    assignment: dict[str, Any],
+    reservation: dict[str, Any],
+    snapshots: list[dict[str, Any]],
+) -> dict[str, Any]:
+    document = copy.deepcopy(base_document)
+    document["assignments"] = [assignment]
+    document["reservationSets"] = [reservation]
+    document["assignmentHistory"] = snapshots
+    return document
+
+
+def build_git_history_control(
+    repository_root: Path, scenario: str,
+) -> dict[str, Any]:
+    git_control_run(repository_root, "init", "--quiet")
+    git_control_run(repository_root, "config", "user.name", "SDP Pilot Control")
+    git_control_run(repository_root, "config", "user.email", "pilot-control@example.invalid")
+    base_document = load_json(ROOT / "examples" / "accepted-study-only.json")
+    base_assignment = base_document["assignments"][0]
+    base_reservation = base_document["reservationSets"][0]
+
+    r1, reservation1, digest1 = git_control_revision(
+        base_assignment, base_reservation, 1
+    )
+    candidate1 = git_control_commit_pair(
+        repository_root, r1, reservation1, "revision 1"
+    )
+    snapshot1 = git_control_snapshot(
+        r1, candidate=candidate1, digest=digest1, previous=None
+    )
+    r2, reservation2, digest2 = git_control_revision(
+        base_assignment, base_reservation, 2,
+        previous_candidate=candidate1,
+        previous_digest=digest1,
+        previous_snapshot=snapshot1["source"],
+    )
+    candidate2 = git_control_commit_pair(
+        repository_root, r2, reservation2, "revision 2"
+    )
+    snapshot2 = git_control_snapshot(
+        r2,
+        candidate=candidate2,
+        digest=digest2,
+        previous={
+            "revision": 1,
+            "snapshotPath": snapshot1["source"],
+            "sourceCandidate": candidate1,
+            "reservationDigest": digest1,
+        },
+    )
+    r3, reservation3, _ = git_control_revision(
+        base_assignment, base_reservation, 3,
+        previous_candidate=candidate2,
+        previous_digest=digest2,
+        previous_snapshot=snapshot2["source"],
+    )
+    candidate3 = git_control_commit_pair(
+        repository_root, r3, reservation3, "revision 3 subject"
+    )
+    document = compose_git_control_document(
+        base_document, r3, reservation3, [snapshot1, snapshot2]
+    )
+
+    if scenario == "linear":
+        return document
+    if scenario == "disconnected-root":
+        git_control_run(repository_root, "checkout", "--quiet", "--orphan", "orphan-subject")
+        git_control_run(repository_root, "rm", "-rf", "--quiet", ".")
+        git_control_commit_pair(
+            repository_root, r3, reservation3, "disconnected current subject"
+        )
+        return document
+    if scenario == "sibling-non-ancestor":
+        git_control_run(repository_root, "checkout", "--quiet", "-b", "sibling", candidate1)
+        git_control_run(repository_root, "commit", "--quiet", "--allow-empty", "-m", "sibling history")
+        sibling = git_control_run(repository_root, "rev-parse", "HEAD")
+        git_control_run(repository_root, "checkout", "--quiet", "-b", "sibling-subject", candidate1)
+        subject = git_control_commit_pair(
+            repository_root, r2, reservation2, "sibling current subject"
+        )
+        snapshot = git_control_snapshot(
+            r1, candidate=sibling, digest=digest1, previous=None
+        )
+        current = copy.deepcopy(r2)
+        current["previousRevision"]["sourceCandidate"] = sibling
+        current["refreeze"]["sourceCandidate"] = sibling
+        write_git_control_pair(repository_root, current, reservation2)
+        # The validated subject is the exact committed candidate, not the
+        # uncommitted rewritten control document.
+        git_control_run(repository_root, "reset", "--quiet", "--hard", subject)
+        return compose_git_control_document(
+            base_document, current, reservation2, [snapshot]
+        )
+    if scenario == "reversed-order":
+        document["assignmentHistory"][0]["sourceCandidate"] = candidate2
+        document["assignmentHistory"][1]["sourceCandidate"] = candidate1
+        document["assignmentHistory"][1]["previousSnapshot"]["sourceCandidate"] = candidate2
+        document["assignments"][0]["previousRevision"]["sourceCandidate"] = candidate1
+        document["assignments"][0]["refreeze"]["sourceCandidate"] = candidate1
+        return document
+    if scenario == "duplicate-candidate":
+        document["assignmentHistory"][1]["sourceCandidate"] = candidate1
+        document["assignments"][0]["previousRevision"]["sourceCandidate"] = candidate1
+        document["assignments"][0]["refreeze"]["sourceCandidate"] = candidate1
+        return document
+    if scenario == "future-candidate":
+        future = git_control_commit_pair(
+            repository_root, r1, reservation1, "future exact revision 1"
+        )
+        git_control_run(repository_root, "checkout", "--quiet", "--detach", candidate3)
+        document["assignmentHistory"][0]["sourceCandidate"] = future
+        document["assignmentHistory"][1]["previousSnapshot"]["sourceCandidate"] = future
+        return document
+    raise ValueError(f"unknown Git history control scenario {scenario!r}")
+
+
+def validate_git_history_controls() -> tuple[list[str], int, int]:
+    failures: list[str] = []
+    positive_count = 0
+    negative_count = 0
+    observed_scenarios: set[str] = set()
+    for path in sorted((ROOT / "fixtures" / "git-history").glob("*.json")):
+        try:
+            fixture = load_json(path)
+            observed_scenarios.add(fixture.get("scenario"))
+            with tempfile.TemporaryDirectory(prefix="sdp-pilot-git-history-") as temp:
+                repository_root = Path(temp)
+                document = build_git_history_control(
+                    repository_root, fixture.get("scenario")
+                )
+                actual = validate_document(
+                    document,
+                    repository_root=repository_root,
+                    materialize_repository=False,
+                )
+            expected = sorted(set(fixture.get("expectedErrors", [])))
+            positive_count += int(not expected)
+            negative_count += int(bool(expected))
+            if actual != expected:
+                failures.append(
+                    f"{path.relative_to(ROOT)}: expected {expected!r}, got {actual!r}"
+                )
+        except (
+            KeyError, IndexError, TypeError, ValueError, OSError,
+            json.JSONDecodeError, subprocess.CalledProcessError,
+        ) as exc:
+            failures.append(f"{path.relative_to(ROOT)}: invalid Git fixture: {exc}")
+    required_scenarios = {
+        "linear", "disconnected-root", "sibling-non-ancestor",
+        "reversed-order", "duplicate-candidate", "future-candidate",
+    }
+    if observed_scenarios != required_scenarios:
+        failures.append(
+            "Git history coverage mismatch: missing="
+            + repr(sorted(required_scenarios - observed_scenarios))
+            + " extra=" + repr(sorted(observed_scenarios - required_scenarios))
+        )
+    return failures, positive_count, negative_count
+
+
 def main() -> int:
     failures: list[str] = []
     try:
@@ -4066,6 +4602,14 @@ def main() -> int:
     except (OSError, json.JSONDecodeError) as exc:
         failures.append(f"Steering dogfood repository driver error: {exc}")
 
+    compatibility_failures, compatibility_positive_count, compatibility_negative_count = (
+        validate_history_compatibility_controls()
+    )
+    failures.extend(compatibility_failures)
+    git_failures, git_positive_count, git_negative_count = (
+        validate_git_history_controls()
+    )
+    failures.extend(git_failures)
     failures.extend(validate_text_corpus())
 
     if failures:
@@ -4081,6 +4625,14 @@ def main() -> int:
     print(f"- negative fixtures: {negative_count}")
     print(f"- strict raw parse fixtures: {parse_fixture_count}")
     print(f"- negative diagnostic coverage: {len(negative_codes)} codes")
+    print(
+        "- revision compatibility controls: "
+        f"{compatibility_positive_count} positive, {compatibility_negative_count} negative"
+    )
+    print(
+        "- temporary Git ancestry controls: "
+        f"{git_positive_count} positive, {git_negative_count} negative"
+    )
     print("- Steering Issue #7 Study/assignment/domain/reservation/history binding: valid")
     print("- local Markdown links/status markers/trailing whitespace: valid")
     return 0

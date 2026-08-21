@@ -160,7 +160,9 @@ The pilot assignment must contain:
   dependency-consistent merge order, and explicit terminal convergence; every
   assignment binds its recomputed digest and identical projection;
 - standalone validation of every typed preparatory reservation object before
-  assignments bind it, and tuple-keyed `(set ID, digest)` resolution so later
+  assignments bind it, including HSX repository/domain/record/inventory
+  coherence and collisions with live bound or other preparatory epochs, and
+  tuple-keyed `(set ID, digest)` resolution so later
   terminal refreezes may retain the stable set ID without collapsing history;
 - collision validation across NFKC/casefold/slash normalization (important
   because Issue #36 already exposed the `agents.md`/`AGENTS.md` Windows case
@@ -171,7 +173,8 @@ The pilot assignment must contain:
 - at least one owned/shared write surface on the active Refactor assignment and
   Slice, with the hosting HSX repository absent from prohibited repositories;
 - stale-base/refreeze before any change if the selected operational head moves;
-  and
+- strict historical candidate ancestry/order against the exact validated HSX
+  candidate and revision-scoped compatibility with no late legacy shape; and
 - fresh exact-candidate verification and separate review.
 
 Accepted pilot state uses qualified evidence objects: each verification and

@@ -133,6 +133,11 @@ assignment bytes from each declared Git candidate. Missing repository
 resolution, paths, Git objects, or matching Issue/source/revision/reservation
 context blocks validation.
 
+Each declared candidate is an exact strict ancestor of the validated Git
+`HEAD`, and revision candidates are strictly chronological ancestors of one
+another. Existing-but-disconnected roots, sibling commits, descendants,
+duplicates, reversals, and the current commit are not assignment history.
+
 The driver also loads and strictly parses the exact historical reservation file
 from each historical assignment, recomputes its digest, and compares actual
 revision semantics rather than trusting optional snapshot pointers. Canonical
@@ -144,9 +149,10 @@ active Slices, IDs, paths, and edges; historical base, merge order, and
 convergence must also agree. Coordinating altered bytes, digests, and snapshot
 pointers does not relax this equality. Only the active subset and a duly
 refrozen reservation/base may change. Duplicate JSON member names are rejected
-before any canonical hash. The explicitly recognized revision-1 and revision-
-2–4 pilot compatibility shapes normalize only their already-authored fields;
-unknown historical shapes cannot satisfy the gate.
+before any canonical hash. Compatibility is revision-bound: revision 1 alone
+accepts the exact early set-level/string-ID shape, revisions 2–4 alone accept
+the exact missing-`authorizedSlices` form, and revision 5+ requires current row
+fields. Partial, mixed, hybrid, or late legacy forms cannot satisfy the gate.
 
 Preserved terminal assignments may reference different historical reservation
 sets and bases. Only the set group containing a nonterminal assignment is the
@@ -157,7 +163,11 @@ Epoch identity is always the pair `(reservation-set ID, canonical digest)`, so
 terminal epochs may retain one stable set ID with different immutable digests.
 Every pair resolves exactly one object; an exact duplicate pair is ambiguous.
 Every typed set is structurally and semantically valid even before an
-assignment references it.
+assignment references it. Such an unbound set is a preparatory epoch, not a
+detached syntax object: its Issues, domains, primary records, inventory
+authority, IDs, authorized reservations, paths, and shared owners cohere with
+the hosting repository, and its claims are collision-checked against all
+nonterminal bound epochs and other preparatory epochs.
 
 `boundaries.prohibitedRepositories` uses canonical GitHub repository URLs;
 every prohibited/owned/shared/local-source path uses the common portable path

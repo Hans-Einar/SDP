@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-git-history-fixture-v0","experimental":true,"scenario":"future-candidate","expectedErrors":["HISTORY_CANDIDATE_NOT_ANCESTOR","HISTORY_CANDIDATE_ORDER_INVALID"]}

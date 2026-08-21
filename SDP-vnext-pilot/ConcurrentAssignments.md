@@ -75,8 +75,13 @@ Every retained snapshot has `previousSnapshot: null` at revision 1 or an exact
 immediate-prior link thereafter. Revision N retains exactly revisions
 `1..N-1`, with no gaps, truncation, or unreferenced same-assignment snapshots.
 
-The repository driver resolves every local assignment, reservation, record,
-and history source, verifies each source candidate exists as a Git commit,
+The repository driver resolves the exact validated Git `HEAD`, then resolves
+every local assignment, reservation, record, and history source. Every
+historical `sourceCandidate` MUST resolve as exactly that 40-hex commit, MUST be
+a strict ancestor of the validated `HEAD`, and MUST be a strict ancestor of the
+next revision candidate. Disconnected roots, sibling/non-ancestor commits,
+descendants/future commits, the current commit itself, duplicates, reversals,
+and out-of-order chains fail before cited bytes can claim history. The driver
 strictly parses the historical assignment from `assignmentSource` and the
 historical reservation path declared by those exact bytes, recomputes that
 reservation digest, and compares canonical Issue/source/revision/reservation
@@ -95,11 +100,14 @@ reservation bytes, digest disagreement, or a missing/duplicate/mutated row fail
 closed.
 
 The only compatibility normalization recognizes the exact early Issue #7 pilot
-shapes: revision 1's typed set-level edge/string-ID representation and revisions
-2–4's absent `authorizedSlices` member. It maps only fields present in those
-historical bytes, requires them to equal the exact historical assignment, and
-does not infer authority from current state. Unknown or partially matching
-legacy shapes fail closed.
+shapes and receives the exact historical revision. Revision 1 alone may use
+its exact typed set-level edge/string-ID form; revisions 2–4 alone may omit
+only `authorizedSlices`; revision 5 and later require the current row shape.
+A late legacy form, mixed modern/legacy rows, a partial row, or a hybrid
+top-level shape fails closed even if bytes, digests, context, and pointers were
+coordinated. The normalizer maps only fields present in the allowed historical
+bytes, requires them to equal the exact historical assignment, and never
+infers authority from current state.
 If repository resolution is unavailable for a declared revision chain, pilot
 v0 fails closed with `REPOSITORY_DRIVER_REQUIRED`; field-consistent fabricated
 history is never accepted.
@@ -129,6 +137,11 @@ Revision 7 retains the exact revision-6 assignment and reservation at
 `REV/VER-SDP-007-008` paths, and requires exact historical row projection,
 tuple-keyed epochs, and complete validation of every typed preparatory or bound
 reservation set.
+Revision 8 retains the exact revision-7 assignment and reservation at
+`133cfaee9cb194b6181ac1e8fa9e1b474f79c00f`, reserves exact
+`REV/VER-SDP-007-009` paths, anchors the chain to exact Git ancestry/order,
+closes repository-wide preparatory collisions, and makes early compatibility
+strictly revision-scoped.
 
 The reusable pilot `reservation-set` shape is in
 [`templates/reservation-set.template.json`](templates/reservation-set.template.json).
@@ -152,7 +165,14 @@ preparatory set referenced by no assignment yet. Exact base, nonempty unique
 rows, qualified IDs/references, portable paths/shared values, local edge
 endpoints, self/duplicate/cycle/overlap rules, complete dependency-consistent
 merge order, and nonblank terminal convergence are mandatory. Being unbound is
-not a semantic-validation bypass.
+not a semantic-validation bypass. A preparatory row's Issue belongs to the
+active repository host; its primary domain and work record exist; that record
+names the Issue exactly once; reserved domains, ID grammar/style, inventory
+allocation authority, and shared owners resolve; and each authorized new Slice
+remains in `reservedIds`. Its ID, private-path, and shared-path claims are
+compared with every nonterminal bound epoch and every other preparatory set.
+Terminal bound epochs remain non-current history. Several disjoint preparatory
+sets are valid; colliding alternatives must be combined/refrozen or rejected.
 
 ## Current reservation epoch versus preserved history
 

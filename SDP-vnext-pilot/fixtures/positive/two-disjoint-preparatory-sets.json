@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-positive-mutation-v0",
+  "experimental": true,
+  "case": "two-disjoint-preparatory-epochs-can-coexist",
+  "sourcePositive": "unreferenced-reservation-set.json",
+  "mutations": [
+    {"op":"add","path":"/registries/0/domains/0/issuedIds/-","value":{"id":"FEAT-092","status":"prospective","allocationIssue":"https://github.com/example/tiny-app/issues/92","source":"Features/FEAT-092.json"}},
+    {"op":"copy","from":"/records/0","path":"/records/-"},
+    {"op":"replace","path":"/records/5/id","value":"FEAT-092"},
+    {"op":"replace","path":"/records/5/source","value":"Features/FEAT-092.json"},
+    {"op":"replace","path":"/records/5/declaredState","value":"proposed"},
+    {"op":"replace","path":"/records/5/issueAuthorities","value":["https://github.com/example/tiny-app/issues/92"]},
+    {"op":"replace","path":"/records/5/slices","value":[]},
+    {"op":"add","path":"/reservationSets/-","value":{"schemaVersion":"sdp-vnext-pilot-reservation-set-v0","experimental":true,"kind":"reservation-set","id":"RSV-PREP-092","integrationBase":"9999999999999999999999999999999999999999","assignments":[{"issue":"https://github.com/example/tiny-app/issues/92","workRef":{"type":"feature","domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"FEAT-092"},"authorizedSlices":[{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-092","acceptedCandidate":null}],"activeSlices":[],"reservedIds":[{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-092"}],"ownedPaths":["prep/third/**"],"sharedTouchpoints":[],"dependsOnIssues":[],"conflictsWithIssues":[]}],"mergeOrder":["https://github.com/example/tiny-app/issues/92"],"convergence":{"owner":"preparation-owner","command":"python -m unittest","terminal":true}}}
+  ]
+}
