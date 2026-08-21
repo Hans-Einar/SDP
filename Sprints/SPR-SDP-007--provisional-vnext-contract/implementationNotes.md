@@ -76,3 +76,24 @@ No finding is waived. The candidate is not pilot-ready.
 
 The candidate now requires fresh verification and a new independent review.
 No earlier review or verification disposition is reused.
+
+## 2026-08-21 — Second adversarial gate
+
+- Frozen full reworked/recovery candidate
+  `a1c64f4dadb663e3b3b7c03c1f8759b94c7f2be3` for a new fresh evidence pass.
+- Exact-candidate GitHub Actions run `32496386287` passed its contracts and
+  installer jobs.
+- Fresh `VER-SDP-007-002` independently confirmed every earlier verifier and
+  reviewer regression resolved, then returned FAIL with Blocking 0, High 0,
+  Medium 2, Low 0 and Note 3 for malformed/empty authority/recovery/owner/
+  cardinality values plus self-conflict and duplicate graph edges.
+- Fresh `REV-SDP-007-002` independently confirmed the first-pass resolution and
+  returned changes required with Blocking 0, High 2, Medium 5, Low 0 and Note
+  4. It additionally required canonical GitHub Issue/repository/PR identity,
+  cross-registry collision safety, minimum lifecycle/value/Fix rules, portable
+  identity source/provenance and truthful no-Issue legacy support, qualified
+  exact-candidate accepted evidence, Study authority consistency, and an
+  incremented dogfood assignment revision with a durable refreeze chain.
+
+No second-pass finding is waived. `ITR-SDP-007-002` / `SLC-SDP-007-002`
+remain active for the final required rework and new exact-candidate evidence.
