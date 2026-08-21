@@ -1,6 +1,6 @@
 # SPR-SDP-007 Handoff
 
-Status: CHANGES_REQUIRED
+Status: REWORKED_CANDIDATE_AWAITING_REVIEW
 
 ## Current assignment
 
@@ -14,12 +14,15 @@ Status: CHANGES_REQUIRED
 - Active slice: `SLC-SDP-007-002`
 - Verification: `VER-SDP-007-001` — FAIL, B0 / H1 / M3 / L0
 - Review: `REV-SDP-007-001` — changes required, B0 / H2 / M3 / L0 / Note 4
+- Reworked candidate:
+  `b0dd81cabf88a7e7dec977e9d58db2001d82f937`
 - Durable pilot assignment:
   `SDP-vnext-pilot/Steering/Assignments/ISSUE-007.yaml`
 
 ## Next legal action
 
-Delegate a fresh bounded rework pass for every High and Medium finding in
-`VER-SDP-007-001` and `REV-SDP-007-001`. Then commit one new immutable
-candidate and run fresh verification plus a new independent Reviewer. Do not
-modify canonical Toolkit contracts or any downstream repository.
+Resolve and freeze the exact remote delivery-branch head containing reworked
+contract candidate `b0dd81c...` plus this recovery-state update, then run fresh
+verification and a new independent Reviewer against that immutable head.
+Resolve any new Blocking, High or Medium finding before closure. Do not modify
+canonical Toolkit contracts or any downstream repository.

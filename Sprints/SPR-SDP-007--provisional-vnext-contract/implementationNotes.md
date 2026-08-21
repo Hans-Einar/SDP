@@ -52,3 +52,27 @@ events before a general event contract exists.
   `ITR-SDP-007-002` / `SLC-SDP-007-002` for required rework and new evidence.
 
 No finding is waived. The candidate is not pilot-ready.
+
+## 2026-08-21 — High/Medium rework candidate
+
+- A fresh rework Worker resolved every implementation finding from
+  `VER-SDP-007-001` and `REV-SDP-007-001` under `SDP-vnext-pilot/` only.
+- Added bidirectional Slice/owner/Issue/assignment/path authorization checks;
+  a reusable embedded-or-external canonical reservation-set contract with
+  unique Issues, dependency DAG, complete ordered merge and terminal
+  convergence; common evidence-qualified accepted state; structured
+  prospective/legacy identity inventory with provenance and no-reuse; recursive
+  domain-root collision rules; and NFKC-before-semantics path validation.
+- Repaired the scoped example with three real assignments and one digest-bound
+  convergence set; repaired the move example to avoid invented delivery state
+  while preserving a provenance-backed historical `DBG-RF-001` identity.
+- Expanded deterministic validation to eight templates, three positive
+  scenarios, fifty-three exact negative fixtures and forty-eight diagnostic
+  codes.
+- Master validation passed the pilot validator, Issue #5 analysis validator,
+  Toolkit validator and all nine Toolkit Python tests.
+- Committed and pushed reworked candidate
+  `b0dd81cabf88a7e7dec977e9d58db2001d82f937`.
+
+The candidate now requires fresh verification and a new independent review.
+No earlier review or verification disposition is reused.
