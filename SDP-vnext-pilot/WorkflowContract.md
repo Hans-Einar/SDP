@@ -1,0 +1,201 @@
+# Provisional workflow contract
+
+Status: **pilot v0; not canonical**
+
+## 1. Operating model
+
+The project foundation is a living horizontal skeleton:
+
+```text
+Mandate -> Study or Studies -> Requirements -> Architecture
+        -> Design Analysis -> Initial Design
+```
+
+Ongoing work grows through bounded intent and vertical outcomes:
+
+```text
+Feature | Refactor | genuine Fix
+    -> one or more GitHub Issue assignments over time
+    -> zero or more bounded Studies and one or more vertical Slices
+    -> exact-candidate verification + independent review
+    -> Steering disposition
+    -> optional Release inclusion/publication
+```
+
+An Issue can be Study-only and therefore authorize no implementation Slice.
+Sprint and Iteration are optional coordination metadata; neither owns product
+intent nor becomes a mandatory path segment.
+
+Repository and GitHub evidence are authoritative. Conversation memory and agent
+summaries are not evidence.
+
+## 2. Entities
+
+### Feature
+
+A Feature owns a durable product or externally meaningful operational
+capability. It states the problem, outcome, acceptance criteria, scope,
+non-goals, constraints, foundation links, local requirement/design refinements,
+and residual limitations. It is not a branch, Issue, Sprint, or Release.
+
+Suggested declared lifecycle:
+
+```text
+proposed -> studying -> ready -> active -> delivered -> released
+                 \-> blocked | rejected | superseded
+```
+
+`delivered` requires accepted implementation evidence. `released` additionally
+requires an explicit inclusion in an actual Release; merge alone is neither.
+
+### Refactor
+
+A Refactor owns a bounded structural outcome whose primary purpose is improved
+ownership, dependency direction, maintainability, safety, or architecture. It
+MUST name the behavior baseline, behavior/compatibility to preserve or change,
+target structure, migration range, temporary adapters, and exit evidence. It
+uses the same Issue, Slice, verification, review, and Steering gates as a
+Feature.
+
+### Fix
+
+A Fix owns a proportionate correction to accepted behavior. It MUST NOT conceal
+new capability, a public/architectural contract change, or a broad migration.
+A tiny low-risk Fix MAY itself be the smallest verified/reviewed unit and omit
+a Slice. A risky or cross-layer Fix uses one or more Slices. Review rework on an
+unaccepted candidate is not a Fix; a correction after acceptance is.
+
+### Study
+
+A Study owns a material question and bounded evidence/decision boundary. It may
+be foundation-wide or local to later Feature, Refactor, Fix, architecture, or
+integration work. Parallel Studies MUST declare independent questions and a
+convergence/refreeze gate. Study results inform work; only an accepted decision
+or relation makes them implementation authority.
+
+### Slice
+
+A Slice is the smallest independently implementable, runnable, verifiable, and
+reviewable end-to-end outcome through the horizontal boundaries it needs.
+
+A Slice contract MUST name:
+
+- one primary Feature, Refactor, or Fix owner and one authorizing assignment;
+- observable outcome and why it is the smallest coherent vertical increment;
+- linked requirements/decisions and permitted local refinement;
+- expected areas, ownership, shared touchpoints, invariants, and non-goals;
+- executable verification and independent-review criteria;
+- discovery/escalation rule, completion signal, and hard stop.
+
+Activation, baseline capture, a pure Study, publication, verification-only
+work, and governance closeout are bounded tasks or gates, not automatically
+Slices. A domain-foundation Slice is an exceptional pilot case: it MUST have a
+frozen interface, local runnable evidence, and a named later integration Slice.
+
+### Sprint and Iteration
+
+A Sprint MAY group one or more assignments/Slices into a near-term objective or
+timebox. It owns no capability and is not required to locate records.
+
+An Iteration MAY describe a real learning/replanning cycle containing one or
+more Slices. It has exactly one primary work owner, MAY belong to one Sprint,
+and MUST record the learning or decision that justifies it. A 1:1 wrapper added
+only for hierarchy is invalid pilot practice.
+
+### GitHub Issue assignment and Issue Master
+
+One GitHub Issue is one bounded operational assignment. The complete Issue body
+and owner/Steering comments are the human-readable authority. One Codex session
+acts as Master for that Issue, reads repository evidence first, creates or uses
+the declared branch and early draft PR, delegates implementation and fresh
+review, inspects exact evidence, records results, and stops at the Issue
+boundary. It does not become a permanent project Master.
+
+The assignment record is a compact recovery and coordination binding. It links
+to the Issue rather than copying its full prose or mutable GitHub facts.
+
+### Steering disposition
+
+Steering supervises and makes product/architecture/acceptance decisions. It may
+accept, require changes, block, reject, cancel, split, or supersede an
+assignment. ChatGPT may assist Steering, but repository/GitHub records—not the
+chat—are durable evidence. An acceptance disposition MUST identify the exact
+candidate and qualifying verification/review.
+
+### Release inclusion
+
+A Release explicitly includes accepted Feature, Refactor, or Fix outcomes.
+Work identity never encodes a target release. A delivered work owner may be
+included in zero or more Releases; inclusion/publication does not rewrite its
+identity or earlier evidence.
+
+## 3. Explicit cardinalities
+
+| Relation | Pilot cardinality and rule |
+|---|---|
+| Work owner to Issue | A proposed work owner has `0..N` Issues; delivery requires `1..N` over its lifetime. |
+| Issue to primary work | Exactly `1`. It is Feature, Refactor, Fix, or Study. Related work is `0..N` and cannot silently share primary ownership. |
+| Issue to Slice | `0..N`. Study-only assignments may have zero; implementation assignments normally have `1..N`; a tiny Fix may have zero. |
+| Slice to owner | Exactly `1` Feature, Refactor, or Fix, plus `0..N` related/dependency references. |
+| Slice to Issue assignment | Exactly `1`. Give it a separate Issue when authority, risk, ownership, branch/PR, or independent acceptance is separate. |
+| Study to owner | `0..1` local owner plus `0..N` informed work/decision relations. A foundation Study may have no local owner. |
+| Sprint membership | Work/Issue/Slice has `0..1` active Sprint membership; a Sprint groups `1..N` assignments or Slices. |
+| Iteration membership | Slice has `0..1`; Iteration has exactly one primary owner, `1..N` Slices, and `0..1` Sprint. |
+| Verification/review | Each accepted Slice or standalone Fix has `1..N` qualifying verification results and exactly one current independent review disposition for the exact candidate. Earlier attempts remain history. |
+| Steering disposition | Assignment has `0..N` dispositions; only the latest disposition for the exact current candidate governs. Completion requires one terminal accepted disposition when the Issue contract calls for Steering acceptance. |
+| Release inclusion | Accepted Feature/Refactor/Fix outcome has `0..N` Release relations; a Release has `1..N` accepted inclusions. |
+
+An integration assignment that crosses several domains still identifies one
+primary work owner and makes other participants/dependencies explicit. If no
+honest primary exists, Steering creates a dedicated integration work owner
+rather than weakening the cardinality.
+
+## 4. Identity and revision rules
+
+The record types use `FEAT`, `REF`, `FIX`, `STU`, and `SLC` prospectively.
+Existing forms such as `RF`, `ST`, Sprint-bound Slice IDs, or version-bound Fix
+IDs remain historical evidence and MUST NOT be rewritten.
+
+- A record ID is stable, never reused, and never encodes branch, Issue, Sprint,
+  calendar, or release state.
+- Before acceptance, corrections to the same outcome increment `revision` and
+  invalidate evidence tied to the previous candidate.
+- Material new behavior, risk, or acceptance scope creates a new Slice.
+- Rejected or superseded records remain addressable; their IDs are not recycled.
+
+### Reopen and extension
+
+- An Issue reopened before its assignment is accepted may increment the
+  assignment `revision`, refreeze its baseline/reservations, and continue. Past
+  candidate evidence remains immutable.
+- Reopening an accepted Issue does not reopen accepted Slices in place. Prefer
+  a new Issue; if the same Issue is intentionally reused, create a new
+  assignment revision and new Slice IDs, with `extends`, `corrects`, or
+  `supersedes` relations.
+- A delivered Feature or Refactor is extended by a new Issue and new Slice(s).
+  The work owner may move back to declared `active`, but the earlier delivery
+  and release evidence remains intact.
+- A defect in accepted behavior becomes a Fix. It does not revise the accepted
+  Slice as if the defect never existed.
+
+## 5. Declared, observed, and accepted state
+
+These projections MUST be kept separate:
+
+- **declared** — project-owned intent and lifecycle in work, Slice, domain, and
+  assignment records;
+- **observed** — timestamped Git/GitHub facts such as branch head, Issue/PR
+  state, checks, reviews, merge, tag, or GitHub Release;
+- **accepted** — evidence-qualified state supported by an exact candidate,
+  applicable verification, current independent review, and required Steering
+  disposition.
+
+Authored records may contain stable URLs, the declared integration base, target
+branch, policy, and intended PR URL. They MUST NOT claim mutable Issue/PR/check/
+head/merge state as authored truth. Generated observations are timestamped and
+replaceable. A contradiction is reported, never silently reconciled.
+
+Default branch is merged repository truth. A named Issue branch/PR head is
+bounded in-flight truth. Steering comments authorize a change but do not make
+unmerged files default truth. Only a merge/reconciliation decision promotes
+the branch state.

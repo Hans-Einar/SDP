@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-v0",
+  "experimental": true,
+  "case": "domain-move-rewrites-key-and-record-id",
+  "registries": [
+    {
+      "repository": "https://github.com/example/old",
+      "defaultDomainUid": null,
+      "domains": [
+        {
+          "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000060",
+          "key": "DBG", "state": "moved", "owners": ["debugger-owner"],
+          "newRecordIdStyle": "scoped", "roots": [],
+          "issuedIds": ["DBG-FEAT-001"],
+          "successorRepository": "https://github.com/example/new",
+          "successorRegistry": "https://github.com/example/new/blob/main/SDP/WorkDomains.json"
+        }
+      ]
+    },
+    {
+      "repository": "https://github.com/example/new",
+      "defaultDomainUid": "urn:uuid:50000000-0000-4000-8000-000000000060",
+      "domains": [
+        {
+          "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000060",
+          "key": "NEWDBG", "state": "active", "owners": ["debugger-owner"],
+          "newRecordIdStyle": "scoped", "roots": ["SDP/Debugger"],
+          "issuedIds": ["NEWDBG-FEAT-001"],
+          "predecessorRepositories": ["https://github.com/example/old"]
+        }
+      ]
+    }
+  ],
+  "records": [],
+  "relations": [],
+  "assignments": [],
+  "expectedErrors": ["MOVE_ID_INVENTORY_REWRITE", "MOVE_KEY_REWRITE"]
+}

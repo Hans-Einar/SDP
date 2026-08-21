@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-v0",
+  "experimental": true,
+  "case": "domain-key-casefold-collision",
+  "registries": [
+    {
+      "repository": "https://github.com/example/repo",
+      "defaultDomainUid": null,
+      "domains": [
+        {
+          "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000001",
+          "key": "DBG",
+          "state": "active",
+          "owners": ["one"],
+          "newRecordIdStyle": "scoped",
+          "roots": ["SDP/One"],
+          "issuedIds": []
+        },
+        {
+          "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000002",
+          "key": "dbg",
+          "state": "active",
+          "owners": ["two"],
+          "newRecordIdStyle": "scoped",
+          "roots": ["SDP/Two"],
+          "issuedIds": []
+        }
+      ]
+    }
+  ],
+  "records": [],
+  "relations": [],
+  "assignments": [],
+  "expectedErrors": ["DOMAIN_KEY_COLLISION", "INVALID_DOMAIN_KEY"]
+}

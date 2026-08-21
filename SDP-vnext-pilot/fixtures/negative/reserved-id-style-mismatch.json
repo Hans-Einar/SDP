@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-v0",
+  "experimental": true,
+  "case": "unscoped-reservation-in-scoped-domain",
+  "registries": [
+    {
+      "repository": "https://github.com/example/repo",
+      "defaultDomainUid": "urn:uuid:50000000-0000-4000-8000-000000000090",
+      "domains": [
+        {
+          "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000090",
+          "key": "APP", "state": "active", "owners": ["owner"],
+          "newRecordIdStyle": "scoped", "roots": ["SDP/App"], "issuedIds": []
+        }
+      ]
+    }
+  ],
+  "records": [],
+  "relations": [],
+  "assignments": [
+    {
+      "authority": {"issue": "https://github.com/example/repo/issues/1"},
+      "coordination": {
+        "integrationBase": "5555555555555555555555555555555555555555",
+        "reservationSet": {"id": "RSV-001", "digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"},
+        "ownedPaths": ["src/app/**"], "sharedTouchpoints": [],
+        "reservedIds": [{"domainUid": "urn:uuid:50000000-0000-4000-8000-000000000090", "id": "FEAT-001"}]
+      }
+    }
+  ],
+  "expectedErrors": ["RESERVED_ID_STYLE_MISMATCH"]
+}

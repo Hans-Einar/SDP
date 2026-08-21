@@ -1,0 +1,382 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-fixture-v0",
+  "experimental": true,
+  "scenario": "scoped-monorepo-cross-scope-and-concurrency",
+  "registries": [
+    {
+      "schemaVersion": "sdp-vnext-pilot-work-domains-v0",
+      "experimental": true,
+      "kind": "work-domain-registry",
+      "repository": "https://github.com/example/hsx-like",
+      "defaultDomainUid": null,
+      "domains": [
+        {
+          "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000001",
+          "key": "HSX",
+          "name": "Core",
+          "state": "active",
+          "owners": ["core-owner"],
+          "newRecordIdStyle": "scoped",
+          "roots": ["SDP/HSX"],
+          "issuedIds": ["HSX-STU-001"],
+          "predecessorRepositories": []
+        },
+        {
+          "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+          "key": "DBG",
+          "name": "Debugger",
+          "state": "active",
+          "owners": ["debugger-owner"],
+          "newRecordIdStyle": "scoped",
+          "roots": ["SDP/Debugger"],
+          "issuedIds": ["DBG-FEAT-001", "DBG-SLC-001"],
+          "predecessorRepositories": []
+        },
+        {
+          "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000003",
+          "key": "AVR",
+          "name": "AVR",
+          "state": "active",
+          "owners": ["avr-owner"],
+          "newRecordIdStyle": "scoped",
+          "roots": ["SDP/AVR"],
+          "issuedIds": ["AVR-STU-001"],
+          "predecessorRepositories": []
+        },
+        {
+          "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+          "key": "SHARED",
+          "name": "Shared contracts",
+          "state": "active",
+          "owners": ["shared-contract-owner"],
+          "newRecordIdStyle": "scoped",
+          "roots": ["SDP/Shared"],
+          "issuedIds": ["SHARED-REF-001", "SHARED-SLC-001"],
+          "predecessorRepositories": []
+        }
+      ]
+    }
+  ],
+  "records": [
+    {
+      "schemaVersion": "sdp-vnext-pilot-study-v0",
+      "experimental": true,
+      "kind": "study",
+      "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000001",
+      "id": "HSX-STU-001",
+      "revision": 1,
+      "declaredState": "accepted",
+      "title": "Portable core contract",
+      "question": "Which stable contract may Debugger depend on?",
+      "evidenceBoundary": {
+        "inScope": ["Portable contract"],
+        "outOfScope": ["Debugger implementation"]
+      },
+      "ownerRef": null,
+      "independentStudyRefs": [],
+      "convergenceGate": "Core-owner disposition",
+      "findings": ["Contract v1 is the accepted boundary"],
+      "limitations": [],
+      "informs": []
+    },
+    {
+      "schemaVersion": "sdp-vnext-pilot-feature-v0",
+      "experimental": true,
+      "kind": "feature",
+      "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+      "id": "DBG-FEAT-001",
+      "revision": 1,
+      "declaredState": "active",
+      "title": "Debugger portable inspection",
+      "intent": {
+        "problem": "Inspection cannot use a stable portable boundary.",
+        "outcome": "Debugger inspection runs through the portable contract.",
+        "usersOrValue": "Debugger clients receive stable inspection."
+      },
+      "scope": ["One debugger inspection path"],
+      "nonGoals": ["AVR implementation"],
+      "constraints": ["Depend only on accepted core contract"],
+      "acceptanceCriteria": ["Integrated inspection check passes"],
+      "relations": [],
+      "issueAuthorities": ["https://github.com/example/hsx-like/issues/201"],
+      "slices": [
+        {
+          "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+          "id": "DBG-SLC-001"
+        }
+      ],
+      "acceptedEvidence": {
+        "candidate": null,
+        "verificationRefs": [],
+        "reviewRef": null,
+        "steeringDisposition": null
+      },
+      "releaseInclusions": []
+    },
+    {
+      "schemaVersion": "sdp-vnext-pilot-slice-v0",
+      "experimental": true,
+      "kind": "slice",
+      "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+      "id": "DBG-SLC-001",
+      "revision": 1,
+      "declaredState": "active",
+      "title": "Debugger inspection through portable boundary",
+      "ownerRef": {
+        "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+        "id": "DBG-FEAT-001"
+      },
+      "assignmentIssue": "https://github.com/example/hsx-like/issues/201",
+      "outcome": "One inspection request crosses the accepted boundary end to end.",
+      "whySmallestCoherent": "A partial adapter is not independently observable.",
+      "decisionRefs": [
+        {
+          "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000001",
+          "id": "HSX-STU-001",
+          "keyHint": "HSX"
+        }
+      ],
+      "ownedPaths": ["src/debugger/inspection/**"],
+      "sharedTouchpoints": ["SDP/Shared/contracts/interface.json"],
+      "invariants": ["Core contract remains authoritative"],
+      "nonGoals": ["AVR work"],
+      "verificationCriteria": ["python -m unittest tests.debugger_inspection"],
+      "reviewCriteria": ["Fresh cross-domain contract review"],
+      "discoveryRule": "Stop on portable-contract contradiction.",
+      "completionSignal": "DBG_INSPECTION_READY",
+      "hardStop": "Do not change AVR."
+    },
+    {
+      "schemaVersion": "sdp-vnext-pilot-study-v0",
+      "experimental": true,
+      "kind": "study",
+      "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000003",
+      "id": "AVR-STU-001",
+      "revision": 1,
+      "declaredState": "active",
+      "title": "AVR side of portable boundary",
+      "question": "What evidence constrains the AVR boundary?",
+      "evidenceBoundary": {
+        "inScope": ["AVR contract evidence"],
+        "outOfScope": ["AVR product implementation"]
+      },
+      "ownerRef": null,
+      "independentStudyRefs": [],
+      "convergenceGate": "Shared interface convergence",
+      "findings": [],
+      "limitations": [],
+      "informs": []
+    },
+    {
+      "schemaVersion": "sdp-vnext-pilot-refactor-v0",
+      "experimental": true,
+      "kind": "refactor",
+      "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+      "id": "SHARED-REF-001",
+      "revision": 1,
+      "declaredState": "proposed",
+      "title": "Explicit shared contract ownership",
+      "behaviorBaseline": ["Existing portable interface remains valid"],
+      "targetStructure": ["Shared interface has one explicit owner"],
+      "compatibility": {
+        "preserved": ["Portable interface v1"],
+        "changed": [],
+        "migrationRange": "Metadata only"
+      },
+      "temporaryAdapters": [],
+      "exitEvidence": ["Both dependent domains pass convergence"],
+      "relations": [],
+      "issueAuthorities": [],
+      "slices": [
+        {
+          "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+          "id": "SHARED-SLC-001"
+        }
+      ]
+    },
+    {
+      "schemaVersion": "sdp-vnext-pilot-slice-v0",
+      "experimental": true,
+      "kind": "slice",
+      "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+      "id": "SHARED-SLC-001",
+      "revision": 1,
+      "declaredState": "proposed",
+      "title": "Converge the shared interface",
+      "ownerRef": {
+        "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+        "id": "SHARED-REF-001"
+      },
+      "assignmentIssue": "https://github.com/example/hsx-like/issues/203",
+      "outcome": "The shared contract is owned and both consumers pass.",
+      "whySmallestCoherent": "Ownership without consumer checks is incomplete.",
+      "decisionRefs": [],
+      "ownedPaths": [],
+      "sharedTouchpoints": ["SDP/Shared/contracts/interface.json"],
+      "invariants": ["No consumer-specific semantics enter the shared contract"],
+      "nonGoals": ["Debugger or AVR feature implementation"],
+      "verificationCriteria": ["python tools/check_shared_contract.py"],
+      "reviewCriteria": ["Independent convergence review"],
+      "discoveryRule": "Stop on ownership ambiguity.",
+      "completionSignal": "SHARED_CONVERGED",
+      "hardStop": "Do not start downstream features."
+    }
+  ],
+  "relations": [
+    {
+      "type": "depends_on",
+      "sourceRef": {
+        "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+        "id": "DBG-FEAT-001"
+      },
+      "targetRef": {
+        "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000001",
+        "id": "HSX-STU-001",
+        "keyHint": "HSX"
+      }
+    }
+  ],
+  "assignments": [
+    {
+      "schemaVersion": "sdp-vnext-pilot-assignment-v0",
+      "experimental": true,
+      "kind": "issue-assignment",
+      "revision": 1,
+      "authority": {
+        "issue": "https://github.com/example/hsx-like/issues/201",
+        "amendments": []
+      },
+      "workRef": {
+        "type": "feature",
+        "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+        "id": "DBG-FEAT-001"
+      },
+      "activeSlices": [
+        {
+          "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+          "id": "DBG-SLC-001"
+        }
+      ],
+      "baseline": {
+        "branch": "integration/vnext",
+        "commit": "3333333333333333333333333333333333333333"
+      },
+      "delivery": {
+        "branch": "codex/issue-201-debugger",
+        "pullRequest": "https://github.com/example/hsx-like/pull/211"
+      },
+      "coordination": {
+        "integrationBase": "3333333333333333333333333333333333333333",
+        "reservationSet": {
+          "id": "RSV-200",
+          "digest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        },
+        "dependsOnIssues": [],
+        "conflictsWithIssues": [],
+        "ownedPaths": ["src/debugger/inspection/**"],
+        "sharedTouchpoints": [
+          {
+            "path": "SDP/Shared/contracts/interface.json",
+            "ownerDomainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+            "allowedMutation": "Debugger compatibility clause only"
+          }
+        ],
+        "reservedIds": [
+          {
+            "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+            "id": "DBG-SLC-001"
+          }
+        ],
+        "mergeOrder": [
+          "https://github.com/example/hsx-like/issues/201",
+          "https://github.com/example/hsx-like/issues/202",
+          "convergence:shared-interface"
+        ],
+        "convergence": {
+          "owner": "shared-contract-owner",
+          "command": "python tools/check_shared_contract.py"
+        },
+        "staleBasePolicy": "refreeze-before-write-or-merge"
+      },
+      "boundaries": {
+        "prohibitedRepositories": [],
+        "prohibitedPaths": ["src/avr/**"],
+        "prohibitedOperations": []
+      },
+      "requiredEvidence": {
+        "verification": ["debugger and shared convergence checks"],
+        "independentReview": true,
+        "maximumUnresolvedSeverity": "low"
+      },
+      "stopCondition": "AWAITING_CONVERGENCE"
+    },
+    {
+      "schemaVersion": "sdp-vnext-pilot-assignment-v0",
+      "experimental": true,
+      "kind": "issue-assignment",
+      "revision": 1,
+      "authority": {
+        "issue": "https://github.com/example/hsx-like/issues/202",
+        "amendments": []
+      },
+      "workRef": {
+        "type": "study",
+        "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000003",
+        "id": "AVR-STU-001"
+      },
+      "activeSlices": [],
+      "baseline": {
+        "branch": "integration/vnext",
+        "commit": "3333333333333333333333333333333333333333"
+      },
+      "delivery": {
+        "branch": "codex/issue-202-avr-study",
+        "pullRequest": "https://github.com/example/hsx-like/pull/212"
+      },
+      "coordination": {
+        "integrationBase": "3333333333333333333333333333333333333333",
+        "reservationSet": {
+          "id": "RSV-200",
+          "digest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        },
+        "dependsOnIssues": [],
+        "conflictsWithIssues": [],
+        "ownedPaths": ["research/avr/**"],
+        "sharedTouchpoints": [
+          {
+            "path": "SDP/Shared/contracts/interface.json",
+            "ownerDomainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+            "allowedMutation": "AVR evidence clause only"
+          }
+        ],
+        "reservedIds": [
+          {
+            "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000003",
+            "id": "AVR-STU-001"
+          }
+        ],
+        "mergeOrder": [
+          "https://github.com/example/hsx-like/issues/201",
+          "https://github.com/example/hsx-like/issues/202",
+          "convergence:shared-interface"
+        ],
+        "convergence": {
+          "owner": "shared-contract-owner",
+          "command": "python tools/check_shared_contract.py"
+        },
+        "staleBasePolicy": "refreeze-before-write-or-merge"
+      },
+      "boundaries": {
+        "prohibitedRepositories": [],
+        "prohibitedPaths": ["src/debugger/**"],
+        "prohibitedOperations": []
+      },
+      "requiredEvidence": {
+        "verification": ["study evidence and shared convergence checks"],
+        "independentReview": true,
+        "maximumUnresolvedSeverity": "low"
+      },
+      "stopCondition": "AWAITING_CONVERGENCE"
+    }
+  ]
+}

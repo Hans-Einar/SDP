@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-v0",
+  "experimental": true,
+  "case": "path-case-and-slash-collision",
+  "registries": [],
+  "records": [],
+  "relations": [],
+  "assignments": [
+    {
+      "authority": {"issue": "https://github.com/example/repo/issues/1"},
+      "coordination": {
+        "integrationBase": "5555555555555555555555555555555555555555",
+        "reservationSet": {"id": "RSV-001", "digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"},
+        "ownedPaths": ["Src\\Core/**"],
+        "sharedTouchpoints": [],
+        "reservedIds": []
+      }
+    },
+    {
+      "authority": {"issue": "https://github.com/example/repo/issues/2"},
+      "coordination": {
+        "integrationBase": "5555555555555555555555555555555555555555",
+        "reservationSet": {"id": "RSV-001", "digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"},
+        "ownedPaths": ["src/core/file.py"],
+        "sharedTouchpoints": [],
+        "reservedIds": []
+      }
+    }
+  ],
+  "expectedErrors": ["PATH_COLLISION"]
+}

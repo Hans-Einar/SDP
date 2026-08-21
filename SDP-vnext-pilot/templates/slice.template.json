@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-slice-v0",
+  "experimental": true,
+  "kind": "slice",
+  "domainUid": "urn:uuid:10000000-0000-4000-8000-000000000001",
+  "id": "APP-SLC-001",
+  "revision": 1,
+  "declaredState": "proposed",
+  "title": "Illustrative vertical outcome",
+  "ownerRef": {
+    "domainUid": "urn:uuid:10000000-0000-4000-8000-000000000001",
+    "id": "APP-FEAT-001"
+  },
+  "assignmentIssue": "https://github.com/example/app/issues/101",
+  "outcome": "One runnable end-to-end behavior",
+  "whySmallestCoherent": "Splitting further would remove observable behavior.",
+  "decisionRefs": [],
+  "ownedPaths": ["src/capability/**"],
+  "sharedTouchpoints": [],
+  "invariants": ["Existing behavior remains verified"],
+  "nonGoals": ["Adjacent capability work"],
+  "verificationCriteria": ["Run the deterministic end-to-end check"],
+  "reviewCriteria": ["Review the exact candidate independently"],
+  "discoveryRule": "Stop and refreeze on scope or architecture change.",
+  "completionSignal": "SLICE_READY_FOR_STEERING",
+  "hardStop": "Do not start another Issue."
+}

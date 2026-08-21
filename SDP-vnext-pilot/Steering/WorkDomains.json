@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-work-domains-v0",
+  "experimental": true,
+  "kind": "work-domain-registry",
+  "repository": "https://github.com/Hans-Einar/SDP",
+  "defaultDomainUid": "urn:uuid:9df0765b-4f22-4c5e-8fda-b5e71c96ca81",
+  "domains": [
+    {
+      "domainUid": "urn:uuid:9df0765b-4f22-4c5e-8fda-b5e71c96ca81",
+      "key": "SDP",
+      "name": "SDP provisional vNext pilot",
+      "state": "active",
+      "owners": ["Hans-Einar/SDP Steering"],
+      "newRecordIdStyle": "unscoped",
+      "roots": ["SDP-vnext-pilot"],
+      "issuedIds": ["STU-007"],
+      "predecessorRepositories": []
+    }
+  ]
+}

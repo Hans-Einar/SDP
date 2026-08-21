@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-study-v0",
+  "experimental": true,
+  "kind": "study",
+  "domainUid": "urn:uuid:10000000-0000-4000-8000-000000000001",
+  "id": "APP-STU-001",
+  "revision": 1,
+  "declaredState": "proposed",
+  "title": "Illustrative bounded study",
+  "question": "Which evidence is required to make the named decision?",
+  "evidenceBoundary": {
+    "inScope": ["Repository and reproducible runtime evidence"],
+    "outOfScope": ["Unrelated implementation"]
+  },
+  "ownerRef": null,
+  "independentStudyRefs": [],
+  "convergenceGate": "Fresh review and Steering decision",
+  "findings": [],
+  "limitations": [],
+  "informs": []
+}

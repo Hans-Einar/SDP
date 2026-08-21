@@ -1,0 +1,156 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-fixture-v0",
+  "experimental": true,
+  "scenario": "simple-single-domain-unscoped",
+  "registries": [
+    {
+      "schemaVersion": "sdp-vnext-pilot-work-domains-v0",
+      "experimental": true,
+      "kind": "work-domain-registry",
+      "repository": "https://github.com/example/tiny-app",
+      "defaultDomainUid": "urn:uuid:20000000-0000-4000-8000-000000000001",
+      "domains": [
+        {
+          "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001",
+          "key": "TINY",
+          "name": "Tiny application",
+          "state": "active",
+          "owners": ["tiny-app-owner"],
+          "newRecordIdStyle": "unscoped",
+          "roots": ["SDP"],
+          "issuedIds": ["FEAT-001", "SLC-001"],
+          "predecessorRepositories": []
+        }
+      ]
+    }
+  ],
+  "records": [
+    {
+      "schemaVersion": "sdp-vnext-pilot-feature-v0",
+      "experimental": true,
+      "kind": "feature",
+      "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001",
+      "id": "FEAT-001",
+      "revision": 1,
+      "declaredState": "active",
+      "title": "Export one report",
+      "intent": {
+        "problem": "Users cannot save the computed report.",
+        "outcome": "A user exports the report end to end.",
+        "usersOrValue": "The result can be used outside the app."
+      },
+      "scope": ["One deterministic export format"],
+      "nonGoals": ["Cloud sharing"],
+      "constraints": [],
+      "acceptanceCriteria": ["Export round-trip passes"],
+      "relations": [],
+      "issueAuthorities": ["https://github.com/example/tiny-app/issues/10"],
+      "slices": [
+        {
+          "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001",
+          "id": "SLC-001"
+        }
+      ],
+      "acceptedEvidence": {
+        "candidate": null,
+        "verificationRefs": [],
+        "reviewRef": null,
+        "steeringDisposition": null
+      },
+      "releaseInclusions": []
+    },
+    {
+      "schemaVersion": "sdp-vnext-pilot-slice-v0",
+      "experimental": true,
+      "kind": "slice",
+      "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001",
+      "id": "SLC-001",
+      "revision": 1,
+      "declaredState": "active",
+      "title": "Export one report end to end",
+      "ownerRef": {
+        "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001",
+        "id": "FEAT-001"
+      },
+      "assignmentIssue": "https://github.com/example/tiny-app/issues/10",
+      "outcome": "The report is serialized and recovered by a round-trip test.",
+      "whySmallestCoherent": "Serialization without retrieval is not an observable export.",
+      "decisionRefs": [],
+      "ownedPaths": ["src/export/**", "tests/test_export.py"],
+      "sharedTouchpoints": [],
+      "invariants": ["Existing report computation is unchanged"],
+      "nonGoals": ["Cloud sharing"],
+      "verificationCriteria": ["python -m unittest tests.test_export"],
+      "reviewCriteria": ["Independent exact-candidate review"],
+      "discoveryRule": "Stop on public-format expansion.",
+      "completionSignal": "EXPORT_SLICE_READY",
+      "hardStop": "Do not start cloud sharing."
+    }
+  ],
+  "relations": [],
+  "assignments": [
+    {
+      "schemaVersion": "sdp-vnext-pilot-assignment-v0",
+      "experimental": true,
+      "kind": "issue-assignment",
+      "revision": 1,
+      "authority": {
+        "issue": "https://github.com/example/tiny-app/issues/10",
+        "amendments": []
+      },
+      "workRef": {
+        "type": "feature",
+        "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001",
+        "id": "FEAT-001"
+      },
+      "activeSlices": [
+        {
+          "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001",
+          "id": "SLC-001"
+        }
+      ],
+      "baseline": {
+        "branch": "main",
+        "commit": "2222222222222222222222222222222222222222"
+      },
+      "delivery": {
+        "branch": "codex/issue-10-export",
+        "pullRequest": "https://github.com/example/tiny-app/pull/11"
+      },
+      "coordination": {
+        "integrationBase": "2222222222222222222222222222222222222222",
+        "reservationSet": {
+          "id": "RSV-010",
+          "digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        },
+        "dependsOnIssues": [],
+        "conflictsWithIssues": [],
+        "ownedPaths": ["src/export/**", "tests/test_export.py"],
+        "sharedTouchpoints": [],
+        "reservedIds": [
+          {
+            "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001",
+            "id": "SLC-001"
+          }
+        ],
+        "mergeOrder": ["https://github.com/example/tiny-app/issues/10"],
+        "convergence": {
+          "owner": "tiny-app-owner",
+          "command": "python -m unittest"
+        },
+        "staleBasePolicy": "refreeze-before-write-or-merge"
+      },
+      "boundaries": {
+        "prohibitedRepositories": [],
+        "prohibitedPaths": [],
+        "prohibitedOperations": []
+      },
+      "requiredEvidence": {
+        "verification": ["round-trip test"],
+        "independentReview": true,
+        "maximumUnresolvedSeverity": "low"
+      },
+      "stopCondition": "AWAITING_STEERING"
+    }
+  ]
+}

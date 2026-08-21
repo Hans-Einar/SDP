@@ -1,0 +1,139 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-fixture-v0",
+  "experimental": true,
+  "scenario": "domain-move-without-identity-rewrite",
+  "registries": [
+    {
+      "schemaVersion": "sdp-vnext-pilot-work-domains-v0",
+      "experimental": true,
+      "kind": "work-domain-registry",
+      "repository": "https://github.com/example/old-monorepo",
+      "defaultDomainUid": "urn:uuid:40000000-0000-4000-8000-000000000010",
+      "domains": [
+        {
+          "domainUid": "urn:uuid:40000000-0000-4000-8000-000000000010",
+          "key": "HOST",
+          "name": "Remaining host",
+          "state": "active",
+          "owners": ["host-owner"],
+          "newRecordIdStyle": "scoped",
+          "roots": ["SDP/Host"],
+          "issuedIds": ["HOST-FEAT-001"],
+          "predecessorRepositories": []
+        },
+        {
+          "domainUid": "urn:uuid:40000000-0000-4000-8000-000000000020",
+          "key": "DBG",
+          "name": "Debugger",
+          "state": "moved",
+          "owners": ["debugger-owner"],
+          "newRecordIdStyle": "scoped",
+          "roots": [],
+          "issuedIds": ["DBG-FEAT-001", "DBG-SLC-001"],
+          "successorRepository": "https://github.com/example/debugger",
+          "successorRegistry": "https://github.com/example/debugger/blob/main/SDP/WorkDomains.json"
+        }
+      ]
+    },
+    {
+      "schemaVersion": "sdp-vnext-pilot-work-domains-v0",
+      "experimental": true,
+      "kind": "work-domain-registry",
+      "repository": "https://github.com/example/debugger",
+      "defaultDomainUid": "urn:uuid:40000000-0000-4000-8000-000000000020",
+      "domains": [
+        {
+          "domainUid": "urn:uuid:40000000-0000-4000-8000-000000000020",
+          "key": "DBG",
+          "name": "Debugger",
+          "state": "active",
+          "owners": ["debugger-owner"],
+          "newRecordIdStyle": "scoped",
+          "roots": ["SDP/Debugger"],
+          "issuedIds": ["DBG-FEAT-001", "DBG-SLC-001"],
+          "predecessorRepositories": ["https://github.com/example/old-monorepo"]
+        }
+      ]
+    }
+  ],
+  "records": [
+    {
+      "schemaVersion": "sdp-vnext-pilot-feature-v0",
+      "experimental": true,
+      "kind": "feature",
+      "domainUid": "urn:uuid:40000000-0000-4000-8000-000000000010",
+      "id": "HOST-FEAT-001",
+      "revision": 1,
+      "declaredState": "active",
+      "title": "Consume debugger service",
+      "intent": {
+        "problem": "The host needs debugger capability.",
+        "outcome": "The host consumes one stable debugger service.",
+        "usersOrValue": "The split remains transparent to users."
+      },
+      "scope": ["Cross-repository consumption"],
+      "nonGoals": ["Debugger implementation"],
+      "constraints": ["Preserve the qualified debugger reference"],
+      "acceptanceCriteria": ["Cross-repository contract check passes"],
+      "relations": [],
+      "issueAuthorities": [],
+      "slices": [],
+      "acceptedEvidence": {
+        "candidate": null,
+        "verificationRefs": [],
+        "reviewRef": null,
+        "steeringDisposition": null
+      },
+      "releaseInclusions": []
+    },
+    {
+      "schemaVersion": "sdp-vnext-pilot-feature-v0",
+      "experimental": true,
+      "kind": "feature",
+      "domainUid": "urn:uuid:40000000-0000-4000-8000-000000000020",
+      "id": "DBG-FEAT-001",
+      "revision": 1,
+      "declaredState": "delivered",
+      "title": "Debugger service",
+      "intent": {
+        "problem": "The debugger service needs a stable boundary.",
+        "outcome": "The service is available under its original identity.",
+        "usersOrValue": "Existing clients survive the repository split."
+      },
+      "scope": ["Preserved service"],
+      "nonGoals": ["Identity renaming"],
+      "constraints": ["Keep DBG-FEAT-001"],
+      "acceptanceCriteria": ["Original qualified references resolve"],
+      "relations": [],
+      "issueAuthorities": [],
+      "slices": [
+        {
+          "domainUid": "urn:uuid:40000000-0000-4000-8000-000000000020",
+          "id": "DBG-SLC-001"
+        }
+      ],
+      "acceptedEvidence": {
+        "candidate": "4444444444444444444444444444444444444444",
+        "verificationRefs": ["DBG-VER-001"],
+        "reviewRef": "DBG-RVW-001",
+        "steeringDisposition": "accepted"
+      },
+      "releaseInclusions": []
+    }
+  ],
+  "relations": [
+    {
+      "type": "depends_on",
+      "sourceRef": {
+        "domainUid": "urn:uuid:40000000-0000-4000-8000-000000000010",
+        "id": "HOST-FEAT-001"
+      },
+      "targetRef": {
+        "domainUid": "urn:uuid:40000000-0000-4000-8000-000000000020",
+        "id": "DBG-FEAT-001",
+        "keyHint": "DBG"
+      }
+    }
+  ],
+  "assignments": []
+}

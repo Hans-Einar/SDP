@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-v0",
+  "experimental": true,
+  "case": "unqualified-cross-domain-reference",
+  "registries": [
+    {
+      "repository": "https://github.com/example/repo",
+      "defaultDomainUid": null,
+      "domains": [
+        {"domainUid": "urn:uuid:50000000-0000-4000-8000-000000000021", "key": "ONE", "state": "active", "owners": ["one"], "newRecordIdStyle": "scoped", "roots": ["SDP/One"], "issuedIds": ["ONE-FEAT-001"]},
+        {"domainUid": "urn:uuid:50000000-0000-4000-8000-000000000022", "key": "TWO", "state": "active", "owners": ["two"], "newRecordIdStyle": "scoped", "roots": ["SDP/Two"], "issuedIds": ["TWO-STU-001"]}
+      ]
+    }
+  ],
+  "records": [],
+  "relations": [
+    {
+      "type": "depends_on",
+      "sourceRef": {"domainUid": "urn:uuid:50000000-0000-4000-8000-000000000021", "id": "ONE-FEAT-001"},
+      "targetRef": "TWO-STU-001"
+    }
+  ],
+  "assignments": [],
+  "expectedErrors": ["UNQUALIFIED_CROSS_DOMAIN_REF"]
+}

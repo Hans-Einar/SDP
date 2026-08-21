@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-v0",
+  "experimental": true,
+  "case": "qualified-local-relation-target-is-not-known",
+  "registries": [
+    {
+      "repository": "https://github.com/example/repo",
+      "defaultDomainUid": "urn:uuid:50000000-0000-4000-8000-000000000080",
+      "domains": [
+        {
+          "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000080",
+          "key": "APP", "state": "active", "owners": ["owner"],
+          "newRecordIdStyle": "scoped", "roots": ["SDP/App"],
+          "issuedIds": ["APP-FEAT-001"]
+        }
+      ]
+    }
+  ],
+  "records": [],
+  "relations": [
+    {
+      "type": "depends_on",
+      "sourceRef": {"domainUid": "urn:uuid:50000000-0000-4000-8000-000000000080", "id": "APP-FEAT-001"},
+      "targetRef": {"domainUid": "urn:uuid:50000000-0000-4000-8000-000000000080", "id": "APP-STU-999"}
+    }
+  ],
+  "assignments": [],
+  "expectedErrors": ["UNRESOLVED_RELATION_REF"]
+}

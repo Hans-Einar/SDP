@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-v0",
+  "experimental": true,
+  "case": "assignment-work-reference-has-no-local-record",
+  "registries": [
+    {
+      "repository": "https://github.com/example/repo",
+      "defaultDomainUid": "urn:uuid:50000000-0000-4000-8000-000000000070",
+      "domains": [
+        {
+          "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000070",
+          "key": "APP", "state": "active", "owners": ["owner"],
+          "newRecordIdStyle": "scoped", "roots": ["SDP/App"],
+          "issuedIds": ["APP-FEAT-001"]
+        }
+      ]
+    }
+  ],
+  "records": [],
+  "relations": [],
+  "assignments": [
+    {
+      "schemaVersion": "sdp-vnext-pilot-assignment-v0",
+      "experimental": true,
+      "kind": "issue-assignment",
+      "revision": 1,
+      "authority": {"issue": "https://github.com/example/repo/issues/1", "amendments": []},
+      "workRef": {"type": "feature", "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000070", "id": "APP-FEAT-001"},
+      "activeSlices": [],
+      "baseline": {"branch": "main", "commit": "5555555555555555555555555555555555555555"},
+      "delivery": {"branch": "codex/issue-1", "pullRequest": "https://github.com/example/repo/pull/2"},
+      "coordination": {
+        "integrationBase": "5555555555555555555555555555555555555555",
+        "reservationSet": {"id": "RSV-001", "digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"},
+        "dependsOnIssues": [], "conflictsWithIssues": [],
+        "ownedPaths": ["src/app/**"], "sharedTouchpoints": [], "reservedIds": [],
+        "mergeOrder": ["https://github.com/example/repo/issues/1"],
+        "convergence": {"owner": "owner", "command": "python check.py"},
+        "staleBasePolicy": "refreeze-before-write-or-merge"
+      },
+      "boundaries": {"prohibitedRepositories": [], "prohibitedPaths": [], "prohibitedOperations": []},
+      "requiredEvidence": {"verification": ["check"], "independentReview": true, "maximumUnresolvedSeverity": "low"},
+      "stopCondition": "AWAITING_STEERING"
+    }
+  ],
+  "expectedErrors": ["UNRESOLVED_WORK_REF"]
+}

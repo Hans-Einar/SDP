@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-v0",
+  "experimental": true,
+  "case": "within-domain-id-collision",
+  "registries": [
+    {
+      "repository": "https://github.com/example/repo",
+      "defaultDomainUid": "urn:uuid:50000000-0000-4000-8000-000000000010",
+      "domains": [
+        {
+          "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000010",
+          "key": "APP",
+          "state": "active",
+          "owners": ["owner"],
+          "newRecordIdStyle": "scoped",
+          "roots": ["SDP/App"],
+          "issuedIds": ["APP-FEAT-001"]
+        }
+      ]
+    }
+  ],
+  "records": [
+    {"kind": "feature", "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000010", "id": "APP-FEAT-001"},
+    {"kind": "feature", "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000010", "id": "APP-FEAT-001"}
+  ],
+  "relations": [],
+  "assignments": [],
+  "expectedErrors": ["RECORD_ID_COLLISION"]
+}

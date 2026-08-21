@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-reservation-set-v0",
+  "experimental": true,
+  "kind": "reservation-set",
+  "id": "RSV-ISSUE-007-001",
+  "integrationBase": "2cb49c02145621b099c47d05786716598e414e75",
+  "assignments": [
+    {
+      "issue": "https://github.com/Hans-Einar/SDP/issues/7",
+      "domainUid": "urn:uuid:9df0765b-4f22-4c5e-8fda-b5e71c96ca81",
+      "workRef": {
+        "domainUid": "urn:uuid:9df0765b-4f22-4c5e-8fda-b5e71c96ca81",
+        "id": "STU-007"
+      },
+      "recordPaths": ["SDP-vnext-pilot/Studies/STU-007.json"],
+      "reservedIds": [
+        "STU-007"
+      ],
+      "ownedPaths": [
+        "SDP-vnext-pilot/**",
+        "Sprints/SPR-SDP-007--provisional-vnext-contract/**",
+        "CodeReview/REV-SDP-007-001.md",
+        "CodeReview/REV-SDP-007-002.md",
+        "Verification/VER-SDP-007-001.md",
+        "Verification/VER-SDP-007-002.md"
+      ],
+      "sharedTouchpoints": [
+        {
+          "path": "Traceability/CurrentIndex.yaml",
+          "ownerDomainUid": "urn:uuid:9df0765b-4f22-4c5e-8fda-b5e71c96ca81",
+          "allowedMutation": "Issue #7 current pointers only"
+        },
+        {
+          "path": "Traceability/Relations.yaml",
+          "ownerDomainUid": "urn:uuid:9df0765b-4f22-4c5e-8fda-b5e71c96ca81",
+          "allowedMutation": "Issue #7 semantic edges only"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "issue": "https://github.com/Hans-Einar/SDP/issues/7",
+      "dependsOn": ["https://github.com/Hans-Einar/SDP/issues/5"]
+    }
+  ],
+  "conflicts": [],
+  "mergeOrder": ["https://github.com/Hans-Einar/SDP/issues/7"],
+  "convergence": {
+    "owner": "Hans-Einar/SDP Steering",
+    "command": "python SDP-vnext-pilot/validate_pilot.py"
+  }
+}

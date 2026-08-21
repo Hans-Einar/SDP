@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-work-domains-v0",
+  "experimental": true,
+  "kind": "work-domain-registry",
+  "repository": "https://github.com/example/app",
+  "defaultDomainUid": "urn:uuid:10000000-0000-4000-8000-000000000001",
+  "domains": [
+    {
+      "domainUid": "urn:uuid:10000000-0000-4000-8000-000000000001",
+      "key": "APP",
+      "name": "Application",
+      "state": "active",
+      "owners": ["application-team"],
+      "newRecordIdStyle": "scoped",
+      "roots": ["SDP/Application"],
+      "issuedIds": ["APP-FEAT-001", "APP-SLC-001"],
+      "predecessorRepositories": []
+    }
+  ]
+}

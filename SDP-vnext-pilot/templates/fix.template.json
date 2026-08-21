@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-fix-v0",
+  "experimental": true,
+  "kind": "fix",
+  "domainUid": "urn:uuid:10000000-0000-4000-8000-000000000001",
+  "id": "APP-FIX-001",
+  "revision": 1,
+  "declaredState": "proposed",
+  "title": "Illustrative correction",
+  "defectEvidence": ["Accepted behavior differs from the requirement"],
+  "correction": "Restore the accepted behavior without adding capability.",
+  "risk": "low",
+  "invariants": ["No public-contract change"],
+  "affectedWork": [],
+  "standaloneReviewedUnit": true,
+  "slices": [],
+  "verificationCriteria": ["Regression reproduces before and passes after"],
+  "reviewCriteria": ["Confirm correction is proportionate"]
+}

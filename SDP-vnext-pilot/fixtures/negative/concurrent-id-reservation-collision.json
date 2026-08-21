@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-v0",
+  "experimental": true,
+  "case": "concurrent-id-reservation-collision",
+  "registries": [],
+  "records": [],
+  "relations": [],
+  "assignments": [
+    {
+      "authority": {"issue": "https://github.com/example/repo/issues/1"},
+      "coordination": {
+        "integrationBase": "5555555555555555555555555555555555555555",
+        "reservationSet": {"id": "RSV-001", "digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"},
+        "ownedPaths": ["src/one/**"], "sharedTouchpoints": [],
+        "reservedIds": [{"domainUid": "urn:uuid:50000000-0000-4000-8000-000000000040", "id": "APP-SLC-001"}]
+      }
+    },
+    {
+      "authority": {"issue": "https://github.com/example/repo/issues/2"},
+      "coordination": {
+        "integrationBase": "5555555555555555555555555555555555555555",
+        "reservationSet": {"id": "RSV-001", "digest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"},
+        "ownedPaths": ["src/two/**"], "sharedTouchpoints": [],
+        "reservedIds": [{"domainUid": "urn:uuid:50000000-0000-4000-8000-000000000040", "id": "APP-SLC-001"}]
+      }
+    }
+  ],
+  "expectedErrors": ["RESERVED_ID_COLLISION"]
+}
