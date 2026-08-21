@@ -143,3 +143,27 @@ dispositions remain historical only.
 
 No third-pass finding is waived. `ITR-SDP-007-002` / `SLC-SDP-007-002`
 remain active for bounded rework and a new exact-candidate gate.
+
+## 2026-08-21 — Fourth candidate after state/history/graph rework
+
+- A new fresh Worker resolved every `REV/VER-SDP-007-003` finding under the
+  experimental pilot area, including the two Low adjacency findings.
+- Added cross-record assignment/Slice/Study/Fix/prerequisite/conflict state
+  coherence; qualified embedded Feature/Refactor/Study/Fix semantic edges;
+  complete generic repository-aware multi-refreeze history; conservative
+  portable path/shared/boundary validation; normalized prospective source
+  uniqueness/materialization; move registry/key-hint checks; exact schema
+  markers; and same-row reservation uniqueness.
+- Dogfood assignment revision 3 preserves revision-1 at `f79e3df...`, revision-2
+  at `0de8a895...`, reserves exact REV/VER-004 paths and binds reservation
+  digest `sha256:c6b9245e236c8843ed4fc76fa8c0e540f4afadb7bb75ee33dfc1f3ff0502623d`.
+- Deterministic coverage now contains eight templates, four positive examples,
+  one positive mutation control, one hundred fifty-seven exact negative
+  fixtures and one hundred three diagnostic codes.
+- Master validation passed the pilot validator, Issue #5 analysis validator,
+  Toolkit validator and all nine Toolkit Python tests.
+- Committed and pushed technical candidate
+  `390541cfc480e920d15aa15366f6078e8c020835`.
+
+The exact remote head containing this recovery update now requires the reserved
+fresh `REV/VER-SDP-007-004` gate. No earlier disposition is reused.
