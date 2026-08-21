@@ -1,12 +1,102 @@
 requirements: {}
 designs: {}
-sprints: {}
+sprints:
+  SPR-SDP-005:
+    issue: https://github.com/Hans-Einar/SDP/issues/5
+    baseline: e398ebaf3a4ace6a5d92fd9ce22736a7427a9e15
+    status: ready-for-steering-review
+    record: Sprints/SPR-SDP-005--recent-sdp-usage-study/sprint.md
+    iterations: [ITR-SDP-005-001, ITR-SDP-005-002, ITR-SDP-005-003, ITR-SDP-005-004]
 refactors: {}
-iterations: {}
-slices: {}
+iterations:
+  ITR-SDP-005-001:
+    sprint: SPR-SDP-005
+    record: Sprints/SPR-SDP-005--recent-sdp-usage-study/ScrumIterations.md
+    slices: [SLC-SDP-005-001]
+  ITR-SDP-005-002:
+    sprint: SPR-SDP-005
+    record: Sprints/SPR-SDP-005--recent-sdp-usage-study/ScrumIterations.md
+    slices: [SLC-SDP-005-002]
+  ITR-SDP-005-003:
+    sprint: SPR-SDP-005
+    record: Sprints/SPR-SDP-005--recent-sdp-usage-study/ScrumIterations.md
+    slices: [SLC-SDP-005-003]
+  ITR-SDP-005-004:
+    sprint: SPR-SDP-005
+    record: Sprints/SPR-SDP-005--recent-sdp-usage-study/ScrumIterations.md
+    slices: [SLC-SDP-005-004]
+slices:
+  SLC-SDP-005-001:
+    iteration: ITR-SDP-005-001
+    status: complete
+    record: Sprints/SPR-SDP-005--recent-sdp-usage-study/ScrumIterations.md
+  SLC-SDP-005-002:
+    iteration: ITR-SDP-005-002
+    status: complete
+    record: Sprints/SPR-SDP-005--recent-sdp-usage-study/ScrumIterations.md
+  SLC-SDP-005-003:
+    iteration: ITR-SDP-005-003
+    status: complete
+    record: Sprints/SPR-SDP-005--recent-sdp-usage-study/ScrumIterations.md
+  SLC-SDP-005-004:
+    iteration: ITR-SDP-005-004
+    status: complete
+    record: Sprints/SPR-SDP-005--recent-sdp-usage-study/ScrumIterations.md
+    reviews: [REV-SDP-005-001, REV-SDP-005-002, REV-SDP-005-003]
+    verification: [VER-SDP-005-001, VER-SDP-005-002, VER-SDP-005-003]
 fixes: {}
-reviews: {}
-verification: {}
+reviews:
+  REV-SDP-005-001:
+    slice: SLC-SDP-005-004
+    candidate: 721ae53a0a845d0a1cf5286ef8f4d873d926fd29
+    record: CodeReview/REV-SDP-005-001.md
+    disposition: changes-required
+    findings:
+      blocking: 0
+      high: 0
+      medium: 2
+      low: 2
+  REV-SDP-005-002:
+    slice: SLC-SDP-005-004
+    candidate: 2b51b924ff538e73986eb8a9480343f7b8f89a04
+    record: CodeReview/REV-SDP-005-002.md
+    disposition: approved
+    findings:
+      blocking: 0
+      high: 0
+      medium: 0
+      low: 1
+      note: 4
+  REV-SDP-005-003:
+    slice: SLC-SDP-005-004
+    candidate: 834283bb38b5e00e4f24f2b5a7e5b8454d0c4aba
+    record: CodeReview/REV-SDP-005-003.md
+    disposition: approved
+    findings:
+      blocking: 0
+      high: 0
+      medium: 0
+      low: 0
+      note: 4
+verification:
+  VER-SDP-005-001:
+    slice: SLC-SDP-005-004
+    candidate: 721ae53a0a845d0a1cf5286ef8f4d873d926fd29
+    record: Verification/VER-SDP-005-001.md
+    outcome: pass
+    corpusDigest: 2d470c36f861d3f5bbb86d2fe123b960613588c8c5b504c5fff8bea6aff20bd0
+  VER-SDP-005-002:
+    slice: SLC-SDP-005-004
+    candidate: 2b51b924ff538e73986eb8a9480343f7b8f89a04
+    record: Verification/VER-SDP-005-002.md
+    outcome: pass
+    corpusDigest: 6b5e4ef00fa598c115ae641ff28ad07f731fb5e16a76e9752998e774e1975abc
+  VER-SDP-005-003:
+    slice: SLC-SDP-005-004
+    candidate: 834283bb38b5e00e4f24f2b5a7e5b8454d0c4aba
+    record: Verification/VER-SDP-005-003.md
+    outcome: pass
+    corpusDigest: e346fc230b26c3045305c1ffee22ff43edfc61aa99597005134a314b210b8114
 migrations: {}
 releases:
   REL-0.2.0:
