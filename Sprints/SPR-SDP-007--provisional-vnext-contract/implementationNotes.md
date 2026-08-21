@@ -208,3 +208,21 @@ override the independent review. No reviewer finding is waived.
 
 The exact remote head containing this recovery update now requires the reserved
 fresh `REV/VER-SDP-007-005` gate. Earlier evidence remains historical.
+
+## 2026-08-21 — Fifth adversarial gate
+
+- Froze full candidate `15a476dd76bc80de5573ab2abb65af8c963a9c0e` for
+  fresh `REV/VER-SDP-007-005`; exact-head Actions run `32509812239` passed.
+- Fresh `VER-SDP-007-005` confirmed every earlier finding resolved, then
+  returned FAIL with Blocking 0, High 1, Medium 1, Low 0 and Note 5 because
+  immutable allocation authority incorrectly blocked later Issue assignments
+  and a delivered sliced Fix could omit `affectedWork`.
+- Separate fresh `REV-SDP-007-005` confirmed the full prior regression set,
+  then returned changes required with Blocking 0, High 2, Medium 2, Low 0 and
+  Note 5. It additionally proved sequential accepted Slices at distinct
+  candidates cannot be retained under one Issue, terminal standalone-Fix and
+  aggregate Issue closure are incomplete, multi-hop `depends_on` cycles pass,
+  and non-finite JSON scalars can be hashed.
+
+No fifth-pass finding is waived. The next rework must preserve allocation and
+execution identities separately and keep earlier Slice evidence immutable.
