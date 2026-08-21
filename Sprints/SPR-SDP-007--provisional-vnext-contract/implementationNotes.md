@@ -185,3 +185,26 @@ fresh `REV/VER-SDP-007-004` gate. No earlier disposition is reused.
 
 The passing verifier evidence remains exact-candidate evidence; it does not
 override the independent review. No reviewer finding is waived.
+
+## 2026-08-21 — Fifth candidate after terminal/marker rework
+
+- A new fresh Worker resolved every `REV-SDP-007-004` finding and the verifier
+  satisfiability Note under `SDP-vnext-pilot/` only.
+- Added terminal Feature/Refactor/sliced-Fix closure over accepted represented
+  Slices/assignments, accepted Study decision and gating dependency rules,
+  unconditional exact v0 markers, one globally normalized semantic-edge set,
+  self/cross-surface duplicate rejection, stable invalid-Unicode diagnostics,
+  and owned/shared/prohibited path disjointness.
+- Dogfood assignment revision 4 retains exact revision-1/2/3 snapshots,
+  reserves exact REV/VER-005 paths and binds reservation digest
+  `sha256:715c4f18e244447411e51bd780807cdef9586a56f21a539cc1aa05fae4cb1e48`.
+- Deterministic coverage now contains eight templates, four positive examples,
+  six positive mutation controls, two hundred sixteen exact negative fixtures
+  and one hundred nineteen diagnostic codes.
+- Master validation passed the pilot validator, Issue #5 analysis validator,
+  Toolkit validator and all nine Toolkit Python tests.
+- Committed and pushed technical candidate
+  `48a7ee7f0d0684a96e402caaaf49ed856134dc23`.
+
+The exact remote head containing this recovery update now requires the reserved
+fresh `REV/VER-SDP-007-005` gate. Earlier evidence remains historical.
