@@ -380,3 +380,20 @@ override review. No reviewer finding is waived.
 
 The exact remote head containing this recovery update now requires the reserved
 fresh `REV/VER-SDP-007-009` gate. Earlier evidence remains historical.
+
+## 2026-08-21 — Ninth adversarial gate
+
+- Froze full candidate `a6a23d50e1bb807c9db350758aad1737c01f7846`
+  for fresh `REV/VER-SDP-007-009`; exact-head Actions run `32526591987`
+  passed.
+- Fresh `VER-SDP-007-009` independently replayed the full stack, r1-r8
+  ancestry/history, preparatory controls and neighboring probes, then returned
+  PASS with Blocking 0, High 0, Medium 0, Low 0 and Note 6.
+- Separate fresh `REV-SDP-007-009` confirmed all earlier findings resolved but
+  returned changes required with Blocking 0, High 1, Medium 1, Low 0 and Note
+  6. A reserved ID may still be absent from structured inventory, permitting
+  terminal-to-preparatory reuse, and a preparatory authorized Slice may claim a
+  non-null accepted candidate without represented acceptance evidence.
+
+The passing verifier remains exact historical evidence; it does not override
+the independent review. Neither finding is waived.
