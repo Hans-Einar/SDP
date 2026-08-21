@@ -1,0 +1,19 @@
+{
+  "schemaVersion":"sdp-vnext-pilot-positive-mutation-v0",
+  "experimental":true,
+  "case":"one-current-active-issue-retains-earlier-accepted-assignment-and-slice",
+  "sourcePositive":"sequential-distinct-reservation-epochs.json",
+  "mutations":[
+    {"op":"replace","path":"/records/0/declaredState","value":"active"},
+    {"op":"replace","path":"/records/1/declaredState","value":"accepted"},
+    {"op":"replace","path":"/records/3/declaredState","value":"active"},
+    {"op":"replace","path":"/records/3/acceptedEvidence","value":{"candidate":null,"verificationRefs":[],"currentReviewRef":null,"steeringDisposition":null,"releaseRefs":[]}},
+    {"op":"replace","path":"/assignments/1/declaredState","value":"active"},
+    {"op":"replace","path":"/assignments/1/authorizedSlices/0/acceptedCandidate","value":null},
+    {"op":"replace","path":"/assignments/1/activeSlices","value":[{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-002"}]},
+    {"op":"replace","path":"/assignments/1/acceptedEvidence","value":{"candidate":null,"verificationRefs":[],"currentReviewRef":null,"steeringDisposition":null,"releaseRefs":[]}},
+    {"op":"replace","path":"/reservationSets/1/assignments/0/authorizedSlices/0/acceptedCandidate","value":null},
+    {"op":"replace","path":"/reservationSets/1/assignments/0/activeSlices","value":[{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-002"}]}
+  ],
+  "rebindReservationDigests":true
+}

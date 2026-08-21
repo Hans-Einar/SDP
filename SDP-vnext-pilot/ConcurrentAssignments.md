@@ -49,6 +49,8 @@ assignment record.
    finite JSON numbers. Parsing rejects `NaN` and positive/negative infinity;
    encoding uses the equivalent of `allow_nan=false`. Recursive invalid scalar
    checks include outer extension objects before any hash is returned.
+   Duplicate object member names are rejected recursively before normalization
+   or hashing; no first-wins/last-wins interpretation can become authority.
 5. Commit/publish the coordination record so every work branch can start from
    the exact commit containing the same reservation set. When default cannot
    yet receive it, use an explicitly named integration/coordination branch and
@@ -75,8 +77,15 @@ immediate-prior link thereafter. Revision N retains exactly revisions
 
 The repository driver resolves every local assignment, reservation, record,
 and history source, verifies each source candidate exists as a Git commit,
-loads the historical assignment from `assignmentSource`, and compares canonical
-Issue/source/revision/reservation identity plus every recorded context pointer.
+strictly parses the historical assignment from `assignmentSource` and the
+historical reservation path declared by those exact bytes, recomputes that
+reservation digest, and compares canonical Issue/source/revision/reservation
+identity. It also compares the actual revision sequence: Issue, assignment
+source, and primary `workRef` never change; authorized Slice identities are
+append-only; and every non-null historical `acceptedCandidate` survives
+unchanged. `recordedContext` adds audit pointers but cannot weaken those
+mandatory comparisons. Duplicate JSON members, missing/tampered historical
+reservation bytes, or digest disagreement fail closed.
 If repository resolution is unavailable for a declared revision chain, pilot
 v0 fails closed with `REPOSITORY_DRIVER_REQUIRED`; field-consistent fabricated
 history is never accepted.
@@ -93,7 +102,12 @@ surrogate, and path-boundary rework. Revision 5 retains the exact revision-4 sna
 `15a476dd76bc80de5573ab2abb65af8c963a9c0e`, reserves exact
 `REV/VER-SDP-007-006` paths, and refreezes allocation/execution authority,
 preserved authorized Slices, terminal aggregate closure, semantic DAG, strict
-JSON, and active-work satisfiability rules. A completed
+JSON, and active-work satisfiability rules.
+Revision 6 retains the exact revision-5 assignment and reservation at
+`dfdea4fe259a9e342d651254656bcfac5363d0b9`, reserves exact
+`REV/VER-SDP-007-007` paths, and closes reservation epochs, immutable revision
+semantics, reverse active projection, accepted Fix targets, relation kinds,
+duplicate JSON members, and branch-Unicode robustness. A completed
 historical prerequisite remains linked as evidence without pretending another
 Issue Master is concurrently active.
 
@@ -114,13 +128,32 @@ Issue + primary workRef + authorizedSlices + activeSlices
 A missing reference, unresolved set, incomplete row, digest mismatch, or any
 assignment/reservation content difference blocks activation.
 
+## Current reservation epoch versus preserved history
+
+Assignments remain durable after acceptance; they are not all current writers.
+Pilot v0 groups assignments by their bound `(reservation-set ID, digest)`.
+Within each group it validates one integration base, exact rows, dependency
+DAG, symmetric conflicts, complete merge order, terminal convergence, private/
+shared path collisions, and shared-touchpoint symmetry. A group is current when
+at least one member is `proposed`, `active`, or `blocked`; a group whose members
+are all `accepted`, `rejected`, `cancelled`, or `superseded` is historical.
+There may be at most one current group in one repository validation document.
+
+Accepted historical groups retain their exact base, reservation, paths, and
+evidence as terminal graph facts. They do not collide with a later epoch and do
+not satisfy its current dependency, conflict, order, sharing, or convergence
+gate. Therefore a later Issue may legitimately reuse a path after the earlier
+epoch is terminal without rewriting the earlier assignment. Two assignments in
+the same current epoch still collide and stale-base/refreeze checks remain
+mandatory.
+
 Starting two branches first and attempting to reconcile colliding assignments
 later is invalid. Reservation must precede concurrent implementation.
 
 ## Ownership and sharing
 
-- `ownedPaths` are private write reservations. They may not overlap another
-  assignment's owned or shared paths.
+- `ownedPaths` are private write reservations. Within their reservation epoch
+  they may not overlap another assignment's owned or shared paths.
 - `sharedTouchpoints` are exact or recursive shared write reservations. Every
   participant declares the same normalized path, explicit domain/file owner,
   allowed mutation, convergence verification, and merge order. A shared path
@@ -142,7 +175,7 @@ later is invalid. Reservation must precede concurrent implementation.
 
 ## Dependencies, conflicts, and merge order
 
-Every current assignment has a unique Issue authority in the set.
+Every current assignment has a unique Issue authority in its set.
 `dependsOnIssues` is a directed acyclic prerequisite edge to another Issue in
 that set. A dependent candidate
 cannot receive accepted state until the named prerequisite candidate/gate is

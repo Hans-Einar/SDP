@@ -95,11 +95,16 @@ candidate. Another control proves two distinct supported relation types for the
 same source/target are not a duplicate, and a path-boundary control keeps
 authorized and prohibited surfaces disjoint.
 
-Three positive lifecycle controls exercise the formerly contradictory
+Positive lifecycle controls exercise the formerly contradictory
 cardinalities: one delivered Feature has two Issues/two accepted Slices at
 distinct candidates; one Issue aggregates two sequential accepted Slices at
-distinct candidates; and a repository-driven revision-5 accepted-Issue reopen
-retains the earlier Slice candidate while adding a new Slice. Further controls
+distinct candidates; two accepted Issues retain distinct reservation sets and
+bases; a current later Issue coexists with accepted history and legitimately
+reuses an earlier path; and a self-contained exact-byte revision-2 chain has
+its actual revision-1 assignment already containing accepted `SLC-001` before
+the later revision appends `SLC-002`. The embedded-history driver exists only
+inside the fixture harness and cannot masquerade as repository-local history.
+Further controls
 exercise an acyclic cross-scope diamond/mixed embedded-top-level chain, a
 finite numeric digest extension, and documented pathless Study-only and
 standalone-Fix assignments.
@@ -160,20 +165,30 @@ standalone-Fix assignments.
   and recursively nested `NaN`/positive/negative infinity through bound
   reservation extension objects; and
 - missing, fabricated, tampered, gapped, truncated, or repository-unresolved
-  multi-refreeze history.
+  multi-refreeze history, including Issue/source/work replacement, accepted
+  Slice deletion/candidate rewrite, and historical reservation absence,
+  tampering, or digest rewrite;
+- multiple current reservation epochs while allowing preserved accepted sets,
+  reverse active-Slice projection, and active Fix targets with no accepted
+  represented outcome;
+- wrong source/target kinds for top-level `corrects`, `owned_by`,
+  `independent_of`, and `informs`; and
+- exact raw duplicate-member assignment/reservation JSON plus a JSON-escaped
+  surrogate branch, all rejected with stable diagnostics.
 
 Each fixture declares its exact expected diagnostic codes, so a negative case
 cannot “pass” merely because the validator failed for an unrelated reason.
 
 ## Issue #7 dogfood refreeze
 
-`Steering/Assignments/ISSUE-007.yaml` is revision 5. Its immediate
+`Steering/Assignments/ISSUE-007.yaml` is revision 6. Its immediate
 `previousRevision` points to
-`Steering/Assignments/History/ISSUE-007-revision-004.json`, sourced from exact
-candidate `15a476dd76bc80de5573ab2abb65af8c963a9c0e`. That snapshot links revision
-3 at `60978c306f7ce3c09033603abf3300839b2a251d`, revision 2 at
+`Steering/Assignments/History/ISSUE-007-revision-005.json`, sourced from exact
+candidate `dfdea4fe259a9e342d651254656bcfac5363d0b9`. That snapshot links revision
+4 at `15a476dd76bc80de5573ab2abb65af8c963a9c0e`, revision 3 at
+`60978c306f7ce3c09033603abf3300839b2a251d`, revision 2 at
 `0de8a8957b3212404007160d90da47445d7b4e7b`, and revision 1 at
-`f79e3dfc18c7a1650f1f3ae66167dda9b69692b4`, so the complete 1..4 chain is
-retained. Revision 5 reserves exact
-`REV/VER-SDP-007-006` evidence paths and records why the fifth evidence gate
+`f79e3dfc18c7a1650f1f3ae66167dda9b69692b4`, so the complete 1..5 chain is
+retained. Revision 6 reserves exact
+`REV/VER-SDP-007-007` evidence paths and records why the sixth evidence gate
 required another refreeze.

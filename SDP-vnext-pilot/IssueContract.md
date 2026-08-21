@@ -133,6 +133,21 @@ assignment bytes from each declared Git candidate. Missing repository
 resolution, paths, Git objects, or matching Issue/source/revision/reservation
 context block validation.
 
+The driver also loads and strictly parses the exact historical reservation file
+from each historical assignment, recomputes its digest, and compares actual
+revision semantics rather than trusting optional snapshot pointers. Canonical
+Issue, assignment source, and primary work reference are immutable;
+`authorizedSlices` is append-only and every historical non-null accepted
+candidate remains unchanged. Only the active subset and a duly refrozen
+reservation/base may change. Duplicate JSON member names are rejected before
+any canonical hash.
+
+Preserved terminal assignments may reference different historical reservation
+sets and bases. Only the set group containing a nonterminal assignment is the
+current activation epoch; current collision/DAG/order/convergence checks do not
+misclassify accepted historical paths as live writers. More than one such
+current group is incoherent and blocks validation.
+
 `boundaries.prohibitedRepositories` uses canonical GitHub repository URLs;
 every prohibited/owned/shared/local-source path uses the common portable path
 contract; and each shared touchpoint has a nonblank `allowedMutation`.

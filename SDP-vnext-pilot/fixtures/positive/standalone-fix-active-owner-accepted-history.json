@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-positive-mutation-v0","experimental":true,"case":"standalone-fix-may-correct-active-feature-with-preserved-accepted-history","sourcePositive":"accepted-standalone-fix.json","mutations":[{"op":"replace","path":"/records/0/declaredState","value":"active"}]}

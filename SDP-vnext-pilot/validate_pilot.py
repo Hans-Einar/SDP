@@ -152,6 +152,17 @@ TYPE_REQUIRED_FIELDS = {
 }
 WORK_OWNER_KINDS = {"feature", "refactor", "fix"}
 STATEFUL_KINDS = WORK_OWNER_KINDS | {"study", "slice", "issue-assignment"}
+RELATION_KIND_MATRIX = {
+    "depends_on": (WORK_OWNER_KINDS | {"study"}, WORK_OWNER_KINDS | {"study"}),
+    "informs": ({"study"}, WORK_OWNER_KINDS | {"study"}),
+    "refines": (WORK_OWNER_KINDS | {"study"}, WORK_OWNER_KINDS | {"study"}),
+    "supersedes": (WORK_OWNER_KINDS | {"study"}, WORK_OWNER_KINDS | {"study"}),
+    "preserves": (WORK_OWNER_KINDS | {"study"}, WORK_OWNER_KINDS | {"study"}),
+    "requires_revision": (WORK_OWNER_KINDS | {"study"}, WORK_OWNER_KINDS | {"study"}),
+    "owned_by": ({"study"}, WORK_OWNER_KINDS),
+    "independent_of": ({"study"}, {"study"}),
+    "corrects": ({"fix"}, WORK_OWNER_KINDS),
+}
 TERMINAL_ACCEPTED_STATES = {"accepted", "delivered", "released"}
 EVIDENCE_FIELDS = {
     "candidate", "verificationRefs", "currentReviewRef",
@@ -171,13 +182,38 @@ class InvalidJsonScalarError(ValueError):
     """Raised when a parser encounters a non-standard JSON numeric constant."""
 
 
+class DuplicateJsonMemberError(ValueError):
+    """Raised before normalization when a JSON object repeats a member name."""
+
+
+def reject_duplicate_object_pairs(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in result:
+            raise DuplicateJsonMemberError(f"duplicate JSON member: {key}")
+        result[key] = value
+    return result
+
+
 def reject_json_constant(value: str) -> Any:
     raise InvalidJsonScalarError(f"non-finite JSON scalar: {value}")
 
 
+def strict_json_loads(value: str) -> Any:
+    return json.loads(
+        value,
+        parse_constant=reject_json_constant,
+        object_pairs_hook=reject_duplicate_object_pairs,
+    )
+
+
 def load_json(path: Path) -> Any:
     with path.open("r", encoding="utf-8") as handle:
-        return json.load(handle, parse_constant=reject_json_constant)
+        return json.load(
+            handle,
+            parse_constant=reject_json_constant,
+            object_pairs_hook=reject_duplicate_object_pairs,
+        )
 
 
 def contains_invalid_unicode_scalar(value: Any) -> bool:
@@ -322,7 +358,16 @@ def repository_for_domain(
 
 
 def valid_branch(value: Any) -> bool:
-    if not nonblank(value) or len(value.encode("utf-8")) > 255:
+    if (
+        not nonblank(value)
+        or contains_invalid_unicode_scalar(value)
+    ):
+        return False
+    try:
+        encoded_length = len(value.encode("utf-8"))
+    except UnicodeEncodeError:
+        return False
+    if encoded_length > 255:
         return False
     if re.fullmatch(r"[A-Za-z0-9._/-]+", value) is None:
         return False
@@ -1471,11 +1516,27 @@ def validate_semantic_graph(document: dict[str, Any], errors: list[str]) -> None
     known = set(records) | issued_reference_keys(document)
     seen: set[tuple[str, tuple[str, str], tuple[str, str]]] = set()
 
+    token_to_kind = {token: kind for kind, token in KIND_TO_ID_TOKEN.items()}
+
+    def relation_endpoint_kind(key: tuple[str, str]) -> str | None:
+        record = records.get(key)
+        if isinstance(record, dict):
+            return effective_kind(record)
+        match = SCOPED_ID_RE.fullmatch(key[1].upper()) or UNSCOPED_ID_RE.fullmatch(key[1].upper())
+        return token_to_kind.get(match.group("type")) if match is not None else None
+
     def register(
         relation_type: str, source: tuple[str, str] | None,
         target: tuple[str, str] | None,
     ) -> None:
         if source is None or target is None:
+            return
+        allowed_source_kinds, allowed_target_kinds = RELATION_KIND_MATRIX[relation_type]
+        if relation_endpoint_kind(source) not in allowed_source_kinds:
+            add(errors, "SEMANTIC_SOURCE_KIND_MISMATCH")
+            return
+        if relation_endpoint_kind(target) not in allowed_target_kinds:
+            add(errors, "SEMANTIC_TARGET_KIND_MISMATCH")
             return
         identity = (relation_type, source, target)
         if source == target:
@@ -1636,6 +1697,36 @@ def validate_record_graph(document: dict[str, Any], errors: list[str]) -> None:
             slice_key = reference_key(slice_ref)
             if slice_key is not None:
                 assignments_by_slice[slice_key].append(assignment)
+
+    def active_owner_has_accepted_outcome(
+        owner_key: tuple[str, str], owner: dict[str, Any]
+    ) -> bool:
+        for authority in owner.get("issueAuthorities", []):
+            for assignment in assignments_by_issue.get(issue_key(authority), []):
+                if (
+                    reference_key(assignment.get("workRef")) != owner_key
+                    or assignment.get("declaredState") != "accepted"
+                    or not has_qualified_accepted_evidence(assignment)
+                ):
+                    continue
+                authorized = assignment.get("authorizedSlices", [])
+                if (
+                    effective_kind(owner) == "fix"
+                    and owner.get("standaloneReviewedUnit") is True
+                    and authorized == []
+                ):
+                    return True
+                for slice_ref in authorized if isinstance(authorized, list) else []:
+                    slice_record = records.get(reference_key(slice_ref))
+                    if (
+                        isinstance(slice_record, dict)
+                        and slice_record.get("declaredState") == "accepted"
+                        and has_qualified_accepted_evidence(slice_record)
+                        and slice_ref.get("acceptedCandidate")
+                        == mapping(slice_record.get("acceptedEvidence")).get("candidate")
+                    ):
+                        return True
+        return False
 
     for key, record in records.items():
         kind = effective_kind(record)
@@ -1834,6 +1925,12 @@ def validate_record_graph(document: dict[str, Any], errors: list[str]) -> None:
                             "active", "delivered", "released"
                         }
                         or not has_qualified_accepted_evidence(target)
+                        or (
+                            target.get("declaredState") == "active"
+                            and not active_owner_has_accepted_outcome(
+                                reference_key(target), target
+                            )
+                        )
                         for target in affected
                     ):
                         add(errors, "FIX_AFFECTED_WORK_NOT_ACCEPTED")
@@ -1978,6 +2075,8 @@ def validate_reservation_sets(document: dict[str, Any], errors: list[str]) -> No
             assignment_coordination(assignment).get("integrationBase")
             for assignment in group
         }
+        if len(bases) != 1 or None in bases or bases != {reservation.get("integrationBase")}:
+            add(errors, "STALE_COMMON_BASE")
         if bases != {reservation.get("integrationBase")}:
             add(errors, "RESERVATION_ASSIGNMENT_MISMATCH")
         shared_order = {
@@ -2117,38 +2216,25 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
         for issue, count in Counter(issues).items()
     ):
         add(errors, "DUPLICATE_ISSUE_AUTHORITY")
-    if len(assignments) > 1:
-        bases = {assignment_coordination(item).get("integrationBase") for item in assignments}
-        reservation_sets = {
-            (
-                mapping(assignment_coordination(item).get("reservationSet")).get("id"),
-                mapping(assignment_coordination(item).get("reservationSet")).get("digest"),
-            )
-            for item in assignments
-        }
-        if len(bases) != 1 or None in bases or len(reservation_sets) != 1:
-            add(errors, "STALE_COMMON_BASE")
-        convergence_contracts = {
-            canonical_digest({
-                "mergeOrder": assignment_coordination(item).get("mergeOrder"),
-                "convergence": assignment_coordination(item).get("convergence"),
-            })
-            for item in assignments
-        }
-        if len(convergence_contracts) != 1:
-            add(errors, "CONVERGENCE_CONTRACT_MISMATCH")
-        for issue, assignment in issue_map.items():
-            for conflict in assignment_coordination(assignment).get("conflictsWithIssues", []):
-                peer = issue_map.get(issue_key(conflict))
-                peer_conflicts = {
-                    issue_key(item)
-                    for item in assignment_coordination(peer).get("conflictsWithIssues", [])
-                } if peer is not None else set()
-                if peer is not None and issue not in peer_conflicts:
-                    add(errors, "ASYMMETRIC_CONFLICT")
 
-    owned: list[tuple[Any, tuple[str, bool]]] = []
-    shared: list[tuple[Any, tuple[str, bool], Any]] = []
+    def epoch_key(assignment: dict[str, Any]) -> tuple[Any, Any]:
+        reference = mapping(assignment_coordination(assignment).get("reservationSet"))
+        return reference.get("id"), reference.get("digest")
+
+    assignments_by_epoch: dict[tuple[Any, Any], list[dict[str, Any]]] = defaultdict(list)
+    for assignment in assignments:
+        if isinstance(assignment, dict):
+            assignments_by_epoch[epoch_key(assignment)].append(assignment)
+    current_epochs = {
+        epoch
+        for epoch, members in assignments_by_epoch.items()
+        if any(member.get("declaredState") in {"proposed", "active", "blocked"} for member in members)
+    }
+    if len(current_epochs) > 1:
+        add(errors, "MULTIPLE_CURRENT_RESERVATION_EPOCHS")
+
+    owned: list[tuple[tuple[Any, Any], Any, tuple[str, bool]]] = []
+    shared: list[tuple[tuple[Any, Any], Any, tuple[str, bool], Any]] = []
     reserved: dict[tuple[str, str], Any] = {}
     inventory_status_by_id = issued_statuses(document)
     for assignment in assignments:
@@ -2312,6 +2398,24 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
             ):
                 add(errors, "PATHLESS_ASSIGNMENT_REASON_REQUIRED")
             if is_active_implementation:
+                declared_active_keys = {
+                    key
+                    for key, represented in records.items()
+                    if effective_kind(represented) == "slice"
+                    and represented.get("declaredState") == "active"
+                    and issue_key(represented.get("assignmentIssue")) == authority_identity
+                    and reference_key(represented.get("ownerRef")) == work_key
+                }
+                active_pointer_keys = {
+                    reference_key(reference)
+                    for reference in assignment.get("activeSlices", [])
+                    if reference_key(reference) is not None
+                }
+                if (
+                    declared_active_keys != active_pointer_keys
+                    and len(declared_active_keys) > 1
+                ):
+                    add(errors, "ACTIVE_SLICE_PROJECTION_MISMATCH")
                 if len(assignment.get("activeSlices", [])) != 1:
                     add(errors, "ACTIVE_IMPLEMENTATION_SLICE_REQUIRED")
                 if not has_assignment_write_surface:
@@ -2339,7 +2443,7 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
             if normalized is None:
                 add(errors, "INVALID_PATH")
             else:
-                owned.append((authority_identity or authority, normalized))
+                owned.append((epoch_key(assignment), authority_identity or authority, normalized))
         for item in coordination.get("sharedTouchpoints", []):
             normalized = normalize_path(shared_path(item))
             if normalized is None:
@@ -2352,7 +2456,7 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
                     add(errors, "INVALID_SHARED_OWNER")
                 elif domain_by_uid and owner_uid not in domain_by_uid:
                     add(errors, "UNKNOWN_SHARED_OWNER_DOMAIN")
-                shared.append((authority_identity or authority, normalized, owner_uid))
+                shared.append((epoch_key(assignment), authority_identity or authority, normalized, owner_uid))
         prohibited_paths = [
             normalize_path(value)
             for value in mapping(assignment.get("boundaries")).get(
@@ -2402,76 +2506,89 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
                 add(errors, "LEGACY_PRESERVED_CURRENT_GATE")
 
     accepted_execution_states = {"active", "accepted"}
-    for issue, assignment in issue_map.items():
-        state = assignment.get("declaredState")
-        coordination = assignment_coordination(assignment)
-        if state == "accepted":
-            candidate = mapping(assignment.get("acceptedEvidence")).get("candidate")
-            work_ref = assignment.get("workRef")
-            work_record = records.get(reference_key(work_ref))
-            work_type = work_ref.get("type") if isinstance(work_ref, dict) else None
-            active_slices = assignment.get("activeSlices", [])
-            slices = assignment.get("authorizedSlices", [])
-            if active_slices != []:
-                add(errors, "ACCEPTED_ASSIGNMENT_ACTIVE_SLICE")
-            if work_type == "study":
-                if (
-                    work_record is None
-                    or effective_kind(work_record) != "study"
-                    or work_record.get("declaredState") != "accepted"
-                ):
-                    add(errors, "ASSIGNMENT_STUDY_STATE_MISMATCH")
-                elif mapping(work_record.get("acceptedEvidence")).get("candidate") != candidate:
-                    add(errors, "ASSIGNMENT_CANDIDATE_MISMATCH")
-            elif work_type == "fix" and slices == []:
-                if (
-                    work_record is None
-                    or work_record.get("declaredState") not in {"delivered", "released"}
-                ):
-                    add(errors, "ASSIGNMENT_FIX_STATE_MISMATCH")
-                elif mapping(work_record.get("acceptedEvidence")).get("candidate") != candidate:
-                    add(errors, "ASSIGNMENT_CANDIDATE_MISMATCH")
-            else:
-                if not isinstance(slices, list) or not slices:
-                    add(errors, "ASSIGNMENT_SLICE_STATE_MISMATCH")
-                for slice_ref in slices if isinstance(slices, list) else []:
-                    slice_record = records.get(reference_key(slice_ref))
-                    if slice_record is None or slice_record.get("declaredState") != "accepted":
-                        add(errors, "ASSIGNMENT_SLICE_STATE_MISMATCH")
-                    elif (
-                        slice_ref.get("acceptedCandidate")
-                        != mapping(slice_record.get("acceptedEvidence")).get("candidate")
+    for epoch_members in assignments_by_epoch.values():
+        epoch_issue_map = {
+            issue_key(assignment_issue(item)): item
+            for item in epoch_members
+            if issue_key(assignment_issue(item)) is not None
+        }
+        for issue, assignment in epoch_issue_map.items():
+            state = assignment.get("declaredState")
+            coordination = assignment_coordination(assignment)
+            if state == "accepted":
+                candidate = mapping(assignment.get("acceptedEvidence")).get("candidate")
+                work_ref = assignment.get("workRef")
+                work_record = records.get(reference_key(work_ref))
+                work_type = work_ref.get("type") if isinstance(work_ref, dict) else None
+                active_slices = assignment.get("activeSlices", [])
+                slices = assignment.get("authorizedSlices", [])
+                if active_slices != []:
+                    add(errors, "ACCEPTED_ASSIGNMENT_ACTIVE_SLICE")
+                if work_type == "study":
+                    if (
+                        work_record is None
+                        or effective_kind(work_record) != "study"
+                        or work_record.get("declaredState") != "accepted"
                     ):
-                        add(errors, "AUTHORIZED_SLICE_CANDIDATE_MISMATCH")
-            for dependency in coordination.get("dependsOnIssues", []):
-                dependency_assignment = issue_map.get(issue_key(dependency))
-                if (
-                    dependency_assignment is not None
-                    and dependency_assignment.get("declaredState") != "accepted"
-                ):
-                    add(errors, "UNSATISFIED_ASSIGNMENT_PREREQUISITE")
-        if state in accepted_execution_states:
-            for conflict in coordination.get("conflictsWithIssues", []):
-                peer = issue_map.get(issue_key(conflict))
-                if (
-                    issue_key(conflict) != issue
-                    and peer is not None
-                    and peer.get("declaredState") in accepted_execution_states
-                ):
-                    add(errors, "ACTIVE_ASSIGNMENT_CONFLICT")
+                        add(errors, "ASSIGNMENT_STUDY_STATE_MISMATCH")
+                    elif mapping(work_record.get("acceptedEvidence")).get("candidate") != candidate:
+                        add(errors, "ASSIGNMENT_CANDIDATE_MISMATCH")
+                elif work_type == "fix" and slices == []:
+                    if (
+                        work_record is None
+                        or work_record.get("declaredState") not in {"delivered", "released"}
+                    ):
+                        add(errors, "ASSIGNMENT_FIX_STATE_MISMATCH")
+                    elif mapping(work_record.get("acceptedEvidence")).get("candidate") != candidate:
+                        add(errors, "ASSIGNMENT_CANDIDATE_MISMATCH")
+                else:
+                    if not isinstance(slices, list) or not slices:
+                        add(errors, "ASSIGNMENT_SLICE_STATE_MISMATCH")
+                    for slice_ref in slices if isinstance(slices, list) else []:
+                        slice_record = records.get(reference_key(slice_ref))
+                        if slice_record is None or slice_record.get("declaredState") != "accepted":
+                            add(errors, "ASSIGNMENT_SLICE_STATE_MISMATCH")
+                        elif (
+                            slice_ref.get("acceptedCandidate")
+                            != mapping(slice_record.get("acceptedEvidence")).get("candidate")
+                        ):
+                            add(errors, "AUTHORIZED_SLICE_CANDIDATE_MISMATCH")
+                for dependency in coordination.get("dependsOnIssues", []):
+                    dependency_assignment = epoch_issue_map.get(issue_key(dependency))
+                    if (
+                        dependency_assignment is not None
+                        and dependency_assignment.get("declaredState") != "accepted"
+                    ):
+                        add(errors, "UNSATISFIED_ASSIGNMENT_PREREQUISITE")
+            if state in accepted_execution_states:
+                for conflict in coordination.get("conflictsWithIssues", []):
+                    peer = epoch_issue_map.get(issue_key(conflict))
+                    if (
+                        issue_key(conflict) != issue
+                        and peer is not None
+                        and peer.get("declaredState") in accepted_execution_states
+                    ):
+                        add(errors, "ACTIVE_ASSIGNMENT_CONFLICT")
 
-    for index, (left_issue, left_path) in enumerate(owned):
-        for right_issue, right_path in owned[index + 1:]:
-            if left_issue != right_issue and paths_overlap(left_path, right_path):
+    for index, (left_epoch, left_issue, left_path) in enumerate(owned):
+        for right_epoch, right_issue, right_path in owned[index + 1:]:
+            if (
+                left_epoch == right_epoch
+                and left_issue != right_issue
+                and paths_overlap(left_path, right_path)
+            ):
                 add(errors, "PATH_COLLISION")
-        for _, shared_value, _ in shared:
-            if paths_overlap(left_path, shared_value):
+        for shared_epoch, _, shared_value, _ in shared:
+            if left_epoch == shared_epoch and paths_overlap(left_path, shared_value):
                 add(errors, "PATH_COLLISION")
 
-    if len(assignments) > 1:
+    for epoch, epoch_assignments in assignments_by_epoch.items():
+        if len(epoch_assignments) <= 1:
+            continue
         shared_by_path: dict[tuple[str, bool], list[tuple[str, Any]]] = defaultdict(list)
-        for issue, path, owner_uid in shared:
-            shared_by_path[path].append((issue, owner_uid))
+        for shared_epoch, issue, path, owner_uid in shared:
+            if shared_epoch == epoch:
+                shared_by_path[path].append((issue, owner_uid))
         if any(len({issue for issue, _ in values}) < 2 for values in shared_by_path.values()):
             add(errors, "ASYMMETRIC_SHARED_TOUCHPOINT")
         if any(len({owner for _, owner in values}) != 1 or None in {owner for _, owner in values}
@@ -2479,14 +2596,94 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
             add(errors, "SHARED_OWNER_MISMATCH")
 
 
+def load_historical_json(
+    *,
+    candidate: Any,
+    path: Any,
+    repository_root: Path | None,
+    embedded_history_blobs: dict[str, str] | None,
+) -> tuple[dict[str, Any] | None, str | None]:
+    if not SHA_RE.fullmatch(str(candidate)) or not valid_record_path(path):
+        return None, "unavailable"
+    key = f"{candidate}:{path}"
+    try:
+        if repository_root is not None:
+            subprocess.run(
+                ["git", "cat-file", "-e", f"{candidate}^{{commit}}"],
+                cwd=repository_root, check=True, capture_output=True,
+            )
+            raw = subprocess.run(
+                ["git", "show", key],
+                cwd=repository_root, check=True, capture_output=True,
+            ).stdout.decode("utf-8")
+        elif embedded_history_blobs is not None:
+            if key not in embedded_history_blobs:
+                return None, "unavailable"
+            raw = embedded_history_blobs[key]
+        else:
+            return None, "driver"
+        loaded = strict_json_loads(raw)
+    except DuplicateJsonMemberError:
+        return None, "duplicate"
+    except InvalidJsonScalarError:
+        return None, "scalar"
+    except (
+        OSError, subprocess.CalledProcessError, UnicodeDecodeError,
+        json.JSONDecodeError,
+    ):
+        return None, "unavailable"
+    return (loaded, None) if isinstance(loaded, dict) else (None, "unavailable")
+
+
+def authorized_slice_map(assignment: dict[str, Any]) -> dict[tuple[str, str], Any] | None:
+    entries = assignment.get("authorizedSlices", [])
+    if not isinstance(entries, list):
+        return None
+    result: dict[tuple[str, str], Any] = {}
+    for entry in entries:
+        key = reference_key(entry)
+        if key is None or key in result or not isinstance(entry, dict):
+            return None
+        result[key] = entry.get("acceptedCandidate")
+    return result
+
+
+def revision_semantics_preserved(
+    earlier: dict[str, Any],
+    later: dict[str, Any],
+    *,
+    earlier_source: str,
+    later_source: str,
+) -> bool:
+    if (
+        issue_key(assignment_issue(earlier)) != issue_key(assignment_issue(later))
+        or earlier_source != later_source
+        or earlier.get("workRef") != later.get("workRef")
+    ):
+        return False
+    earlier_slices = authorized_slice_map(earlier)
+    later_slices = authorized_slice_map(later)
+    if earlier_slices is None or later_slices is None:
+        return False
+    for key, accepted_candidate in earlier_slices.items():
+        if key not in later_slices:
+            return False
+        if accepted_candidate is not None and later_slices[key] != accepted_candidate:
+            return False
+    return True
+
+
 def validate_assignment_history(
-    document: dict[str, Any], errors: list[str], *, repository_driver: bool
+    document: dict[str, Any], errors: list[str], *,
+    repository_root: Path | None,
+    embedded_history_blobs: dict[str, str] | None,
 ) -> None:
     histories = document.get("assignmentHistory", [])
     if not isinstance(histories, list):
         add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
         return
     histories_by_assignment: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    histories_by_authority: dict[tuple[str, str, int], list[dict[str, Any]]] = defaultdict(list)
     history_sources: set[str] = set()
     for history in histories:
         if not isinstance(history, dict):
@@ -2496,6 +2693,9 @@ def validate_assignment_history(
         assignment_source = history.get("assignmentSource")
         if isinstance(assignment_source, str):
             histories_by_assignment[assignment_source].append(history)
+        authority_identity = issue_key(history.get("authorityIssue"))
+        if authority_identity is not None:
+            histories_by_authority[authority_identity].append(history)
         if isinstance(source, str):
             if source in history_sources:
                 add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
@@ -2543,7 +2743,12 @@ def validate_assignment_history(
         previous = assignment.get("previousRevision")
         refreeze = assignment.get("refreeze")
         source = assignment.get("source")
-        candidate_histories = histories_by_assignment.get(source, []) if isinstance(source, str) else []
+        authority = issue_key(assignment_issue(assignment))
+        candidate_histories = (
+            histories_by_assignment.get(source, [])
+            if isinstance(source, str) and histories_by_assignment.get(source)
+            else histories_by_authority.get(authority, []) if authority is not None else []
+        )
         if revision == 1:
             if (
                 "previousRevision" in assignment
@@ -2557,13 +2762,9 @@ def validate_assignment_history(
         if not isinstance(previous, dict) or not isinstance(refreeze, dict):
             add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
             continue
-        if not repository_driver:
+        if repository_root is None and embedded_history_blobs is None:
             add(errors, "REPOSITORY_DRIVER_REQUIRED")
-        authority = issue_key(assignment_issue(assignment))
-        chain = [
-            history for history in candidate_histories
-            if issue_key(history.get("authorityIssue")) == authority
-        ]
+        chain = list(candidate_histories)
         if (
             len(chain) != revision - 1
             or {history.get("revision") for history in chain} != set(range(1, revision))
@@ -2588,9 +2789,7 @@ def validate_assignment_history(
             ):
                 add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
             if index and (
-                mapping(prior.get("reservationSet")).get("id")
-                != mapping(history.get("reservationSet")).get("id")
-                or mapping(prior.get("reservationSet")).get("digest")
+                mapping(prior.get("reservationSet")).get("digest")
                 == mapping(history.get("reservationSet")).get("digest")
             ):
                 add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
@@ -2604,12 +2803,113 @@ def validate_assignment_history(
             or previous.get("reservationDigest") != history_reservation.get("digest")
             or assignment.get("revision") != history.get("revision") + 1
             or history.get("supersededByRevision") != assignment.get("revision")
-            or current_reservation.get("id") != history_reservation.get("id")
             or current_reservation.get("digest") == history_reservation.get("digest")
             or refreeze.get("sourceCandidate") != history.get("sourceCandidate")
             or not nonblank(refreeze.get("reason"))
         ):
             add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
+
+        actual_chain: list[tuple[dict[str, Any], str]] = []
+        for historical in chain:
+            historical_assignment, assignment_error = load_historical_json(
+                candidate=historical.get("sourceCandidate"),
+                path=historical.get("assignmentSource"),
+                repository_root=repository_root,
+                embedded_history_blobs=embedded_history_blobs,
+            )
+            if assignment_error == "duplicate":
+                add(errors, "DUPLICATE_JSON_MEMBER")
+                continue
+            if assignment_error == "scalar":
+                add(errors, "INVALID_JSON_SCALAR")
+                continue
+            if historical_assignment is None:
+                if assignment_error == "driver":
+                    add(errors, "REPOSITORY_DRIVER_REQUIRED")
+                else:
+                    add(errors, "UNAVAILABLE_HISTORY_GIT_OBJECT")
+                continue
+            reservation_reference = mapping(
+                assignment_coordination(historical_assignment).get("reservationSet")
+            )
+            historical_reservation, reservation_error = load_historical_json(
+                candidate=historical.get("sourceCandidate"),
+                path=reservation_reference.get("path"),
+                repository_root=repository_root,
+                embedded_history_blobs=embedded_history_blobs,
+            )
+            if reservation_error == "duplicate":
+                add(errors, "DUPLICATE_JSON_MEMBER")
+                continue
+            if reservation_error == "scalar":
+                add(errors, "INVALID_JSON_SCALAR")
+                continue
+            if historical_reservation is None:
+                if reservation_error == "driver":
+                    add(errors, "REPOSITORY_DRIVER_REQUIRED")
+                else:
+                    add(errors, "UNAVAILABLE_HISTORY_GIT_OBJECT")
+                continue
+            actual_reservation_digest = canonical_digest(historical_reservation)
+            historical_reservation_snapshot = mapping(historical.get("reservationSet"))
+            reservation_rows = [
+                row
+                for row in historical_reservation.get("assignments", [])
+                if isinstance(row, dict)
+                and issue_key(row.get("issue"))
+                == issue_key(assignment_issue(historical_assignment))
+            ]
+            source_present = "source" in historical_assignment
+            context = historical.get("recordedContext")
+            context_matches = isinstance(context, dict)
+            if context_matches:
+                for pointer, expected in context.items():
+                    try:
+                        actual = pointer_value(historical_assignment, pointer)
+                    except (KeyError, IndexError, TypeError, ValueError):
+                        context_matches = False
+                        break
+                    if actual != expected:
+                        context_matches = False
+                        break
+            if (
+                issue_key(assignment_issue(historical_assignment))
+                != issue_key(historical.get("authorityIssue"))
+                or historical_assignment.get("revision") != historical.get("revision")
+                or reservation_reference.get("id")
+                != historical_reservation_snapshot.get("id")
+                or reservation_reference.get("digest")
+                != historical_reservation_snapshot.get("digest")
+                or historical_reservation.get("id") != reservation_reference.get("id")
+                or actual_reservation_digest != reservation_reference.get("digest")
+                or historical_reservation.get("integrationBase")
+                != assignment_coordination(historical_assignment).get("integrationBase")
+                or len(reservation_rows) != 1
+                or source_present != historical.get("sourceFieldPresent")
+                or (
+                    source_present
+                    and historical_assignment.get("source")
+                    != historical.get("assignmentSource")
+                )
+                or not context_matches
+            ):
+                add(errors, "HISTORY_GIT_CONTENT_MISMATCH")
+            actual_chain.append(
+                (historical_assignment, historical.get("assignmentSource"))
+            )
+
+        if len(actual_chain) == len(chain):
+            revision_documents = actual_chain + [(assignment, source)]
+            for (earlier, earlier_source), (later, later_source) in zip(
+                revision_documents, revision_documents[1:]
+            ):
+                if not revision_semantics_preserved(
+                    earlier,
+                    later,
+                    earlier_source=earlier_source,
+                    later_source=later_source,
+                ):
+                    add(errors, "HISTORY_GIT_CONTENT_MISMATCH")
     if any(id(history) not in matched_history_ids for history in histories if isinstance(history, dict)):
         add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
 
@@ -2619,13 +2919,10 @@ def read_local_json(repository_root: Path, value: Any) -> dict[str, Any] | None:
     if path is None or not path.is_file():
         return None
     try:
-        loaded = json.loads(
-            path.read_text(encoding="utf-8"),
-            parse_constant=reject_json_constant,
-        )
+        loaded = strict_json_loads(path.read_text(encoding="utf-8"))
     except (
         OSError, UnicodeDecodeError, json.JSONDecodeError,
-        InvalidJsonScalarError,
+        InvalidJsonScalarError, DuplicateJsonMemberError,
     ):
         return None
     return loaded if isinstance(loaded, dict) else None
@@ -2693,62 +2990,13 @@ def validate_repository_materialization(
             add(errors, "UNRESOLVED_MATERIALIZED_SOURCE")
         elif materialized_history != history:
             add(errors, "MATERIALIZED_SOURCE_MISMATCH")
-        candidate = history.get("sourceCandidate")
-        assignment_source = history.get("assignmentSource")
-        try:
-            subprocess.run(
-                ["git", "cat-file", "-e", f"{candidate}^{{commit}}"],
-                cwd=repository_root, check=True, capture_output=True,
-            )
-            historical_blob = subprocess.run(
-                ["git", "show", f"{candidate}:{assignment_source}"],
-                cwd=repository_root, check=True, capture_output=True,
-            ).stdout.decode("utf-8")
-            historical_assignment = json.loads(
-                historical_blob, parse_constant=reject_json_constant
-            )
-        except (
-            OSError, subprocess.CalledProcessError, UnicodeDecodeError,
-            json.JSONDecodeError,
-            InvalidJsonScalarError,
-        ):
-            add(errors, "UNAVAILABLE_HISTORY_GIT_OBJECT")
-            continue
-        historical_reservation = mapping(
-            assignment_coordination(historical_assignment).get("reservationSet")
-        )
-        source_present = "source" in historical_assignment
-        context = history.get("recordedContext")
-        context_matches = isinstance(context, dict)
-        if context_matches:
-            for pointer, expected in context.items():
-                try:
-                    actual = pointer_value(historical_assignment, pointer)
-                except (KeyError, IndexError, TypeError, ValueError):
-                    context_matches = False
-                    break
-                if actual != expected:
-                    context_matches = False
-                    break
-        if (
-            issue_key(assignment_issue(historical_assignment))
-            != issue_key(history.get("authorityIssue"))
-            or historical_assignment.get("revision") != history.get("revision")
-            or historical_reservation.get("id")
-            != mapping(history.get("reservationSet")).get("id")
-            or historical_reservation.get("digest")
-            != mapping(history.get("reservationSet")).get("digest")
-            or source_present != history.get("sourceFieldPresent")
-            or (source_present and historical_assignment.get("source") != assignment_source)
-            or not context_matches
-        ):
-            add(errors, "HISTORY_GIT_CONTENT_MISMATCH")
 
 
 def validate_document(
     document: dict[str, Any], *, isolated_fixture: bool = False,
     repository_root: Path | None = None,
     materialize_repository: bool = True,
+    embedded_history_blobs: dict[str, str] | None = None,
 ) -> list[str]:
     errors: list[str] = []
     if contains_invalid_unicode_scalar(document):
@@ -2763,7 +3011,10 @@ def validate_document(
     validate_semantic_graph(document, errors)
     validate_assignments(document, errors)
     validate_assignment_history(
-        document, errors, repository_driver=repository_root is not None
+        document,
+        errors,
+        repository_root=repository_root,
+        embedded_history_blobs=embedded_history_blobs,
     )
     if not isolated_fixture:
         validate_reservation_sets(document, errors)
@@ -2975,6 +3226,10 @@ def check_coverage(
         "ACTIVE_IMPLEMENTATION_WRITE_SURFACE_REQUIRED",
         "ACTIVE_SLICE_WRITE_SURFACE_REQUIRED",
         "PATHLESS_ASSIGNMENT_REASON_REQUIRED",
+        "MULTIPLE_CURRENT_RESERVATION_EPOCHS",
+        "ACTIVE_SLICE_PROJECTION_MISMATCH",
+        "SEMANTIC_SOURCE_KIND_MISMATCH",
+        "DUPLICATE_JSON_MEMBER",
     }
     missing = sorted(required_negative - negative_codes)
     if missing:
@@ -2992,6 +3247,13 @@ def check_coverage(
         "reservation-finite-numeric-extension.json",
         "pathless-study-only-assignment.json",
         "pathless-standalone-fix-assignment.json",
+        "sequential-distinct-reservation-epochs.json",
+        "one-active-plus-earlier-accepted.json",
+        "sequential-reservation-path-reuse.json",
+        "standalone-fix-active-owner-accepted-history.json",
+        "sliced-fix-active-owner-accepted-history.json",
+        "top-level-study-relation-equivalents.json",
+        "top-level-corrects-equivalent.json",
     }
     missing_positive = sorted(required_positive - positive_fixture_names)
     if missing_positive:
@@ -3145,10 +3407,36 @@ def load_dogfood_document() -> dict[str, Any]:
     }
 
 
+def embedded_blobs_from_fixture(
+    fixture: dict[str, Any], *, validate_contents: bool = True
+) -> dict[str, str]:
+    result: dict[str, str] = {}
+    for blob in fixture.get("embeddedHistoryBlobs", []):
+        if (
+            not isinstance(blob, dict)
+            or not SHA_RE.fullmatch(str(blob.get("candidate", "")))
+            or not valid_record_path(blob.get("path"))
+            or not isinstance(blob.get("json"), str)
+        ):
+            raise ValueError("invalid embedded history blob")
+        key = f"{blob['candidate']}:{blob['path']}"
+        if key in result:
+            raise ValueError("duplicate embedded history blob identity")
+        # Strictly parse now so fixture strings cannot hide duplicate keys or
+        # non-finite values before the history driver consumes them.
+        if validate_contents and not isinstance(strict_json_loads(blob["json"]), dict):
+            raise ValueError("embedded history blob must contain an object")
+        result[key] = blob["json"]
+    return result
+
+
 def main() -> int:
     failures: list[str] = []
     try:
         dogfood = load_dogfood_document()
+    except DuplicateJsonMemberError:
+        dogfood = {}
+        failures.append("Steering dogfood parse error: DUPLICATE_JSON_MEMBER")
     except InvalidJsonScalarError:
         dogfood = {}
         failures.append("Steering dogfood parse error: INVALID_JSON_SCALAR")
@@ -3156,11 +3444,30 @@ def main() -> int:
         dogfood = {}
         failures.append(f"Steering dogfood parse error: {exc}")
 
+    parse_fixture_count = 0
+    for path in sorted((ROOT / "fixtures" / "parse").glob("*.raw.json")):
+        parse_fixture_count += 1
+        try:
+            strict_json_loads(path.read_text(encoding="utf-8"))
+        except DuplicateJsonMemberError:
+            continue
+        except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+            failures.append(f"{path.relative_to(ROOT)}: wrong parse failure: {exc}")
+            continue
+        failures.append(
+            f"{path.relative_to(ROOT)}: expected DUPLICATE_JSON_MEMBER"
+        )
+    if parse_fixture_count < 2:
+        failures.append("strict parse coverage: bound assignment/reservation fixtures required")
+
     templates: dict[str, dict[str, Any]] = {}
     template_kinds: set[str] = set()
     for path in sorted((ROOT / "templates").glob("*.json")):
         try:
             record = load_json(path)
+        except DuplicateJsonMemberError:
+            failures.append(f"{path.relative_to(ROOT)}: DUPLICATE_JSON_MEMBER")
+            continue
         except InvalidJsonScalarError:
             failures.append(f"{path.relative_to(ROOT)}: INVALID_JSON_SCALAR")
             continue
@@ -3183,6 +3490,9 @@ def main() -> int:
     for path in sorted((ROOT / "examples").glob("*.json")):
         try:
             document = load_json(path)
+        except DuplicateJsonMemberError:
+            failures.append(f"{path.relative_to(ROOT)}: DUPLICATE_JSON_MEMBER")
+            continue
         except InvalidJsonScalarError:
             failures.append(f"{path.relative_to(ROOT)}: INVALID_JSON_SCALAR")
             continue
@@ -3194,41 +3504,68 @@ def main() -> int:
         if errors:
             failures.append(f"{path.relative_to(ROOT)}: unexpected {', '.join(errors)}")
 
-    positive_fixture_count = 0
-    positive_documents: dict[str, dict[str, Any]] = {}
-    for path in sorted((ROOT / "fixtures" / "positive").glob("*.json")):
-        positive_fixture_count += 1
+    positive_fixture_paths = sorted((ROOT / "fixtures" / "positive").glob("*.json"))
+    positive_fixture_count = len(positive_fixture_paths)
+    positive_fixtures: dict[str, dict[str, Any]] = {}
+    for path in positive_fixture_paths:
         try:
-            fixture = load_json(path)
-            source_example = fixture.get("sourceExample")
-            if fixture.get("sourceDogfood") is True:
-                subject = copy.deepcopy(dogfood)
-            elif fixture.get("sourcePositive"):
-                subject = copy.deepcopy(
-                    positive_documents[fixture["sourcePositive"]]
-                )
-            else:
-                subject = copy.deepcopy(example_documents[source_example])
-            apply_mutations(subject, fixture.get("mutations", []))
-            if fixture.get("rebindReservationDigests") is True:
-                rebind_reservation_digests(subject)
-            positive_documents[path.name] = copy.deepcopy(subject)
-            actual = validate_document(
-                subject,
-                repository_root=(
-                    ROOT.parent if fixture.get("repositoryDriver") is True
-                    else None
-                ),
-                materialize_repository=False,
-            )
+            positive_fixtures[path.name] = load_json(path)
+        except DuplicateJsonMemberError:
+            failures.append(f"{path.relative_to(ROOT)}: DUPLICATE_JSON_MEMBER")
         except InvalidJsonScalarError:
             failures.append(f"{path.relative_to(ROOT)}: INVALID_JSON_SCALAR")
-            continue
-        except (OSError, json.JSONDecodeError, KeyError, IndexError, TypeError, ValueError) as exc:
-            failures.append(f"{path.relative_to(ROOT)}: invalid positive fixture: {exc}")
-            continue
+        except (OSError, json.JSONDecodeError) as exc:
+            failures.append(f"{path.relative_to(ROOT)}: parse error: {exc}")
+
+    positive_documents: dict[str, dict[str, Any]] = {}
+    positive_embedded_blobs: dict[str, dict[str, str]] = {}
+
+    def resolve_positive(name: str, stack: set[str] | None = None) -> dict[str, Any]:
+        if name in positive_documents:
+            return positive_documents[name]
+        stack = set() if stack is None else set(stack)
+        if name in stack:
+            raise ValueError("cyclic positive fixture dependency")
+        stack.add(name)
+        fixture = positive_fixtures[name]
+        inherited_blobs: dict[str, str] = {}
+        if fixture.get("sourceDogfood") is True:
+            subject = copy.deepcopy(dogfood)
+        elif fixture.get("sourcePositive"):
+            source_name = fixture["sourcePositive"]
+            subject = copy.deepcopy(resolve_positive(source_name, stack))
+            inherited_blobs.update(positive_embedded_blobs.get(source_name, {}))
+        else:
+            subject = copy.deepcopy(example_documents[fixture.get("sourceExample")])
+        inherited_blobs.update(embedded_blobs_from_fixture(fixture))
+        apply_mutations(subject, fixture.get("mutations", []))
+        if fixture.get("rebindReservationDigests") is True:
+            rebind_reservation_digests(subject)
+        positive_documents[name] = copy.deepcopy(subject)
+        positive_embedded_blobs[name] = inherited_blobs
+        actual = validate_document(
+            subject,
+            repository_root=(
+                ROOT.parent if fixture.get("repositoryDriver") is True else None
+            ),
+            materialize_repository=False,
+            embedded_history_blobs=(inherited_blobs or None),
+        )
         if actual:
-            failures.append(f"{path.relative_to(ROOT)}: unexpected {actual!r}")
+            raise ValueError(f"unexpected {actual!r}")
+        return positive_documents[name]
+
+    for path in positive_fixture_paths:
+        if path.name not in positive_fixtures:
+            continue
+        try:
+            resolve_positive(path.name)
+        except DuplicateJsonMemberError:
+            failures.append(f"{path.relative_to(ROOT)}: DUPLICATE_JSON_MEMBER")
+        except InvalidJsonScalarError:
+            failures.append(f"{path.relative_to(ROOT)}: INVALID_JSON_SCALAR")
+        except (KeyError, IndexError, TypeError, ValueError) as exc:
+            failures.append(f"{path.relative_to(ROOT)}: invalid positive fixture: {exc}")
 
     negative_codes: set[str] = set()
     negative_count = 0
@@ -3236,6 +3573,9 @@ def main() -> int:
         negative_count += 1
         try:
             document = load_json(path)
+        except DuplicateJsonMemberError:
+            failures.append(f"{path.relative_to(ROOT)}: DUPLICATE_JSON_MEMBER")
+            continue
         except InvalidJsonScalarError:
             failures.append(f"{path.relative_to(ROOT)}: INVALID_JSON_SCALAR")
             continue
@@ -3257,7 +3597,18 @@ def main() -> int:
                 apply_mutations(subject, document.get("mutations", []))
                 if document.get("rebindReservationDigests") is True:
                     rebind_reservation_digests(subject)
-                actual = validate_document(subject)
+                embedded_blobs = dict(positive_embedded_blobs.get(source_positive, {}))
+                embedded_blobs.update(
+                    embedded_blobs_from_fixture(document, validate_contents=False)
+                )
+                for key in document.get("removeEmbeddedHistoryBlobKeys", []):
+                    if not isinstance(key, str):
+                        raise ValueError("invalid embedded history removal key")
+                    embedded_blobs.pop(key, None)
+                actual = validate_document(
+                    subject,
+                    embedded_history_blobs=(embedded_blobs or None),
+                )
             elif source_example:
                 source_path = ROOT / "examples" / source_example
                 subject = copy.deepcopy(example_documents[source_path.name])
@@ -3269,6 +3620,9 @@ def main() -> int:
                 if document.get("autoBindReservationDigests") is True:
                     rebind_reservation_digests(document)
                 actual = validate_document(document, isolated_fixture=True)
+        except DuplicateJsonMemberError:
+            failures.append(f"{path.relative_to(ROOT)}: DUPLICATE_JSON_MEMBER")
+            continue
         except (KeyError, IndexError, TypeError, ValueError) as exc:
             failures.append(f"{path.relative_to(ROOT)}: invalid mutation fixture: {exc}")
             continue
@@ -3286,6 +3640,8 @@ def main() -> int:
         errors = validate_document(dogfood, repository_root=ROOT.parent)
         if errors:
             failures.append(f"Steering dogfood: {', '.join(errors)}")
+    except DuplicateJsonMemberError:
+        failures.append("Steering dogfood repository driver error: DUPLICATE_JSON_MEMBER")
     except InvalidJsonScalarError:
         failures.append("Steering dogfood repository driver error: INVALID_JSON_SCALAR")
     except (OSError, json.JSONDecodeError) as exc:
@@ -3304,6 +3660,7 @@ def main() -> int:
     print(f"- positive examples: {len(example_documents)}")
     print(f"- positive mutation fixtures: {positive_fixture_count}")
     print(f"- negative fixtures: {negative_count}")
+    print(f"- strict raw parse fixtures: {parse_fixture_count}")
     print(f"- negative diagnostic coverage: {len(negative_codes)} codes")
     print("- Steering Issue #7 Study/assignment/domain/reservation/history binding: valid")
     print("- local Markdown links/status markers/trailing whitespace: valid")

@@ -1,0 +1,16 @@
+{
+  "schemaVersion":"sdp-vnext-pilot-positive-mutation-v0",
+  "experimental":true,
+  "case":"two-accepted-sequential-issues-retain-distinct-reservation-sets-and-bases",
+  "sourcePositive":"feature-two-issues-two-slices.json",
+  "mutations":[
+    {"op":"replace","path":"/assignments/0/coordination/mergeOrder","value":["https://github.com/example/tiny-app/issues/10"]},
+    {"op":"replace","path":"/assignments/1/baseline/commit","value":"4444444444444444444444444444444444444444"},
+    {"op":"replace","path":"/assignments/1/coordination/integrationBase","value":"4444444444444444444444444444444444444444"},
+    {"op":"replace","path":"/assignments/1/coordination/reservationSet/id","value":"RSV-012"},
+    {"op":"replace","path":"/assignments/1/coordination/dependsOnIssues","value":[]},
+    {"op":"replace","path":"/assignments/1/coordination/mergeOrder","value":["https://github.com/example/tiny-app/issues/12"]},
+    {"op":"replace","path":"/reservationSets","value":[{"schemaVersion":"sdp-vnext-pilot-reservation-set-v0","experimental":true,"kind":"reservation-set","id":"RSV-010","integrationBase":"2222222222222222222222222222222222222222","assignments":[{"issue":"https://github.com/example/tiny-app/issues/10","workRef":{"type":"feature","domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"FEAT-001"},"authorizedSlices":[{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-001","acceptedCandidate":"1010101010101010101010101010101010101010"}],"activeSlices":[],"reservedIds":[{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-001"}],"ownedPaths":["src/export/**","tests/test_export.py"],"sharedTouchpoints":[],"dependsOnIssues":[],"conflictsWithIssues":[]}],"mergeOrder":["https://github.com/example/tiny-app/issues/10"],"convergence":{"owner":"tiny-app-owner","command":"python -m unittest","terminal":true}},{"schemaVersion":"sdp-vnext-pilot-reservation-set-v0","experimental":true,"kind":"reservation-set","id":"RSV-012","integrationBase":"4444444444444444444444444444444444444444","assignments":[{"issue":"https://github.com/example/tiny-app/issues/12","workRef":{"type":"feature","domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"FEAT-001"},"authorizedSlices":[{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-002","acceptedCandidate":"1212121212121212121212121212121212121212"}],"activeSlices":[],"reservedIds":[{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-002"}],"ownedPaths":["src/extension/**"],"sharedTouchpoints":[],"dependsOnIssues":[],"conflictsWithIssues":[]}],"mergeOrder":["https://github.com/example/tiny-app/issues/12"],"convergence":{"owner":"tiny-app-owner","command":"python -m unittest","terminal":true}}]}
+  ],
+  "rebindReservationDigests":true
+}

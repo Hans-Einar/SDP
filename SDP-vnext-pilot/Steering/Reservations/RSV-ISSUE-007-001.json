@@ -28,13 +28,15 @@
         "CodeReview/REV-SDP-007-003.md",
         "CodeReview/REV-SDP-007-004.md",
         "CodeReview/REV-SDP-007-005.md",
-        "CodeReview/REV-SDP-007-006.md",
+      "CodeReview/REV-SDP-007-006.md",
+      "CodeReview/REV-SDP-007-007.md",
         "Verification/VER-SDP-007-001.md",
         "Verification/VER-SDP-007-002.md",
         "Verification/VER-SDP-007-003.md",
         "Verification/VER-SDP-007-004.md",
         "Verification/VER-SDP-007-005.md",
-        "Verification/VER-SDP-007-006.md"
+      "Verification/VER-SDP-007-006.md",
+      "Verification/VER-SDP-007-007.md"
       ],
       "sharedTouchpoints": [
         {
