@@ -13,7 +13,7 @@ baseline:
   commit: 2cb49c02145621b099c47d05786716598e414e75
 delivery:
   branch: codex/issue-7-provisional-vnext-pilot
-  pullRequest: null
+  pullRequest: https://github.com/Hans-Einar/SDP/pull/8
 coordination:
   integrationBase: 2cb49c02145621b099c47d05786716598e414e75
   dependsOnIssues:

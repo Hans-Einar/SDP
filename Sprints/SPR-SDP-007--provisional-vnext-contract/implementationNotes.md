@@ -15,6 +15,8 @@
   `SDP-vnext-pilot/Steering/Assignments/ISSUE-007.yaml` with common base,
   owned/shared paths, reserved pilot identities, stale-base checks and explicit
   downstream/PR #4 boundaries.
+- Opened early draft PR #8 from the dedicated delivery branch to `main` and
+  bound the assignment record to its stable URL.
 
 The root `Traceability/Ledger.ndjson` remains release-only and is intentionally
 unchanged; Issue #7 work transitions must not be misrepresented as release
