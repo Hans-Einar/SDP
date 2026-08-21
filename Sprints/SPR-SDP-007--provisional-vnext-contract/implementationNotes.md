@@ -340,3 +340,20 @@ override the independent review. No reviewer finding is waived.
 
 The exact remote head containing this recovery update now requires the reserved
 fresh `REV/VER-SDP-007-008` gate. Earlier evidence remains historical.
+
+## 2026-08-21 — Eighth adversarial gate
+
+- Froze full candidate `133cfaee9cb194b6181ac1e8fa9e1b474f79c00f`
+  for fresh `REV/VER-SDP-007-008`; exact-head Actions run `32522761761`
+  passed.
+- Fresh `VER-SDP-007-008` independently replayed all 280 negatives, 25
+  positives, raw fixtures and r1-r7 history, then returned PASS with Blocking
+  0, High 0, Medium 0, Low 0 and Note 6.
+- Separate fresh `REV-SDP-007-008` confirmed prior findings resolved but
+  returned changes required with Blocking 0, High 2, Medium 1, Low 0 and Note
+  6. New findings require historical source-candidate ancestry/order proof,
+  repository/domain/inventory/current-collision coherence for unbound
+  preparatory sets, and exact revision-scoped early compatibility rules.
+
+The passing verifier record remains exact historical evidence and does not
+override review. No reviewer finding is waived.
