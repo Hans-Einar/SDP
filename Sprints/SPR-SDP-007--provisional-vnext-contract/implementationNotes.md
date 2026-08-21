@@ -357,3 +357,26 @@ fresh `REV/VER-SDP-007-008` gate. Earlier evidence remains historical.
 
 The passing verifier record remains exact historical evidence and does not
 override review. No reviewer finding is waived.
+
+## 2026-08-21 — Ninth candidate after ancestry/preparatory rework
+
+- A new fresh Worker resolved every `REV-SDP-007-008` finding under the
+  experimental pilot area only.
+- History source candidates are now strict chronological ancestors of the
+  validated HEAD; unbound preparatory sets receive repository/domain/record/
+  inventory/current-collision coherence checks; and early compatibility
+  normalization is exact and revision-scoped to r1 and r2-r4 only.
+- Dogfood assignment revision 8 retains exact revision-1 through revision-7
+  snapshots, reserves exact REV/VER-009 paths and binds reservation digest
+  `sha256:888daed562aaafb05530e48f5ebb11b344d7005a25ce3890d3e83db301d6ea70`.
+- Deterministic coverage now includes eight templates, four examples, twenty-six
+  positive mutations, two hundred eighty-eight standard negatives, two raw
+  parse fixtures, eight compatibility controls and six disposable-Git ancestry
+  controls spanning one hundred forty-three diagnostics.
+- Master validation passed the pilot validator, Issue #5 analysis validator,
+  Toolkit validator and all nine Toolkit Python tests.
+- Committed and pushed technical candidate
+  `f7f31a626430749a1527021705834fa3c8c984b0`.
+
+The exact remote head containing this recovery update now requires the reserved
+fresh `REV/VER-SDP-007-009` gate. Earlier evidence remains historical.
