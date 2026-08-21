@@ -226,3 +226,27 @@ fresh `REV/VER-SDP-007-005` gate. Earlier evidence remains historical.
 
 No fifth-pass finding is waived. The next rework must preserve allocation and
 execution identities separately and keep earlier Slice evidence immutable.
+
+## 2026-08-21 — Sixth candidate after multi-Issue lifecycle rework
+
+- A new fresh Worker resolved every `REV/VER-SDP-007-005` finding and the two
+  remaining satisfiability Notes within the experimental pilot area.
+- Separated immutable prospective `allocationIssue` from later execution
+  authorities; added complete `authorizedSlices` history and `0..1`
+  `activeSlices`; preserved independently accepted Slice candidates across
+  sequential/reopened work; closed every terminal owner/Issue/Fix target;
+  enforced relation-type DAGs; rejected non-finite JSON; and required active
+  implementation host/write-surface satisfiability.
+- Dogfood assignment revision 5 retains exact revision-1 through revision-4
+  snapshots, reserves exact REV/VER-006 paths and binds reservation digest
+  `sha256:145665468058a57f0278b5c45471d9fbaee180546e20fd3e9189317fa67f8144`.
+- Deterministic coverage now contains eight templates, four positive examples,
+  fourteen positive mutation controls, two hundred thirty-nine exact negative
+  fixtures and one hundred thirty-two diagnostic codes.
+- Master validation passed the pilot validator, Issue #5 analysis validator,
+  Toolkit validator and all nine Toolkit Python tests.
+- Committed and pushed technical candidate
+  `cbfa241db51e040f3b3ae8c7480298861de82100`.
+
+The exact remote head containing this recovery update now requires the reserved
+fresh `REV/VER-SDP-007-006` gate. Earlier evidence remains historical.
