@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-positive-mutation-v0","experimental":true,"case":"finite-numeric-reservation-extension-has-strict-canonical-digest","sourceExample":"simple-single-domain.json","mutations":[{"op":"add","path":"/reservationSets/0/pilotExtension","value":{"ratio":1.25,"attempts":2}}],"rebindReservationDigests":true}

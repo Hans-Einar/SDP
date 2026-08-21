@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"bound-reservation-extension-rejects-nan-before-hashing","sourceExample":"simple-single-domain.json","mutations":[{"op":"add","path":"/reservationSets/0/pilotExtension","value":{"number":{"$nonFinite":"NaN"}}}],"expectedErrors":["INVALID_JSON_SCALAR"]}

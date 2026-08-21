@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "accepted-study-assignment-retains-the-study-candidate",
+  "sourceExample": "accepted-study-only.json",
+  "mutations": [
+    {
+      "op": "replace",
+      "path": "/assignments/0/acceptedEvidence",
+      "value": {
+        "candidate": "6262626262626262626262626262626262626262",
+        "verificationRefs": [{"id": "VER-ASGN-002", "candidate": "6262626262626262626262626262626262626262"}],
+        "currentReviewRef": {"id": "REV-ASGN-002", "candidate": "6262626262626262626262626262626262626262", "disposition": "approved"},
+        "steeringDisposition": {"authority": "https://github.com/example/study-app/issues/1#issuecomment-103", "candidate": "6262626262626262626262626262626262626262", "decision": "accepted"},
+        "releaseRefs": []
+      }
+    }
+  ],
+  "expectedErrors": ["ASSIGNMENT_CANDIDATE_MISMATCH"]
+}

@@ -21,7 +21,7 @@
             {
               "id": "STU-001",
               "status": "prospective",
-              "authorityIssue": "https://github.com/example/study-app/issues/1",
+              "allocationIssue": "https://github.com/example/study-app/issues/1",
               "source": "Studies/STU-001.json"
             }
           ],
@@ -73,12 +73,13 @@
       "declaredState": "accepted",
       "authority": {"issue": "https://github.com/example/study-app/issues/1", "amendments": []},
       "workRef": {"type": "study", "domainUid": "urn:uuid:60000000-0000-4000-8000-000000000001", "id": "STU-001"},
+      "authorizedSlices": [],
       "activeSlices": [],
       "baseline": {"branch": "main", "commit": "6060606060606060606060606060606060606060"},
       "delivery": {"branch": "codex/issue-1-study", "pullRequest": "https://github.com/example/study-app/pull/2"},
       "coordination": {
         "integrationBase": "6060606060606060606060606060606060606060",
-        "reservationSet": {"id": "RSV-STU-001", "digest": "sha256:f9642e47a58e055e78c3cfec58faf3e04863e3015fcad759d89f6c36a4a11bb0"},
+        "reservationSet": {"id": "RSV-STU-001", "digest": "sha256:bd345f2d8dd03eb54477d1ad31dd879fd418a8f69ecad180bad9a21da769677d"},
         "dependsOnIssues": [],
         "conflictsWithIssues": [],
         "ownedPaths": ["Studies/STU-001.json"],
@@ -111,6 +112,7 @@
         {
           "issue": "https://github.com/example/study-app/issues/1",
           "workRef": {"type": "study", "domainUid": "urn:uuid:60000000-0000-4000-8000-000000000001", "id": "STU-001"},
+          "authorizedSlices": [],
           "activeSlices": [],
           "reservedIds": [{"domainUid": "urn:uuid:60000000-0000-4000-8000-000000000001", "id": "STU-001"}],
           "ownedPaths": ["Studies/STU-001.json"],

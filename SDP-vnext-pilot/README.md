@@ -30,17 +30,19 @@ pilot rules only.
 
 `templates/` contains eight illustrative pilot-only record shapes, including a
 reusable `reservation-set`. `examples/`
-contains positive scenarios. `fixtures/positive/` contains a derived positive
-control for the proportional standalone Fix exception, and `fixtures/negative/`
+contains positive scenarios. `fixtures/positive/` contains lifecycle,
+proportionality, DAG, digest, and terminal-closure controls, and `fixtures/negative/`
 contains deliberately invalid cases and their required diagnostic codes. JSON is used as the machine-readable
-pilot encoding because Python's standard library can parse it deterministically;
+pilot encoding because Python's standard library can parse it deterministically
+in strict mode (`NaN` and infinities are rejected and canonical encoding uses
+`allow_nan=False`);
 this does not decide the eventual canonical serialization. The existing
 `Steering/Assignments/ISSUE-007.yaml` is JSON-compatible YAML for the same
 reason.
 
 Each self-contained assignment example embeds the exact canonical reservation
 object it hashes, so validation recomputes the digest and compares every Issue,
-work/Slice reference, ID, private/shared path, dependency/conflict edge, merge
+work/authorized/active-Slice reference, ID, private/shared path, dependency/conflict edge, merge
 position, and convergence field. Negative mutation fixtures are applied to
 deep copies of positive examples and assert the exact diagnostic set.
 
@@ -49,9 +51,9 @@ assignment, the single default-domain declaration, and
 `Steering/Reservations/RSV-ISSUE-007-001.json`. The assignment binds the real
 reservation file by canonical JSON SHA-256; the validator resolves the Study,
 domain, paths, IDs, base, dependency, and convergence contract together.
-Assignment revision 4 retains the complete revision-1/revision-2/revision-3
+Assignment revision 5 retains the complete revision-1 through revision-4
 snapshot chain under `Steering/Assignments/History/`. The generic repository
-driver reconstructs all three exact Git candidates and rejects a missing,
+driver reconstructs all four exact Git candidates and rejects a missing,
 fabricated, tampered, gapped, or truncated refreeze history.
 
 ## Validate
@@ -63,15 +65,18 @@ python SDP-vnext-pilot/validate_pilot.py
 ```
 
 The validator uses only the Python standard library. It validates templates,
-positive examples, exact negative fixtures, bidirectional owner/Issue/Slice
+positive examples and mutation controls, exact negative fixtures, bidirectional owner/Issue/Slice
 cardinality, canonical GitHub identities/repository coherence, qualified
 accepted evidence, identity inventory/source/provenance/no-reuse, reservation
 digests and concurrency graphs, portable roots/paths and branch names,
 cross-record acceptance/prerequisite/conflict state, qualified embedded
-and top-level semantic edges as one global set, terminal-work closure,
+and top-level semantic edges as one global set with relation-specific DAGs,
+allocation versus execution authority, complete authorized-Slice history,
+terminal aggregate authority/affected-work closure, strict finite JSON,
 evidence-qualified Slice decisions and gating dependencies, unique materialized
 sources, mandatory exact v0 schema/kind/experimental markers, invalid Unicode
-scalar robustness, authorized/prohibited path disjointness, assignment revision
+scalar robustness, active implementation satisfiability,
+authorized/prohibited path disjointness, assignment revision
 history, dogfood external binding, local Markdown links, required status
 markers, and trailing whitespace.
 

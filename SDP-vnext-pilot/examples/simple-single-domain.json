@@ -22,19 +22,19 @@
             {
               "id": "FEAT-001",
               "status": "prospective",
-              "authorityIssue": "https://github.com/example/tiny-app/issues/10",
+              "allocationIssue": "https://github.com/example/tiny-app/issues/10",
               "source": "Features/FEAT-001.json"
             },
         {
           "id": "SLC-001",
               "status": "prospective",
-              "authorityIssue": "https://github.com/example/tiny-app/issues/10",
+              "allocationIssue": "https://github.com/example/tiny-app/issues/10",
           "source": "Slices/SLC-001.json"
         },
         {
           "id": "FIX-001",
           "status": "prospective",
-          "authorityIssue": "https://github.com/example/tiny-app/issues/10",
+          "allocationIssue": "https://github.com/example/tiny-app/issues/10",
           "source": "Fixes/FIX-001.json"
         }
           ],
@@ -179,12 +179,14 @@
         "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001",
         "id": "FEAT-001"
       },
-      "activeSlices": [
+      "authorizedSlices": [
         {
           "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001",
-          "id": "SLC-001"
+          "id": "SLC-001",
+          "acceptedCandidate": "1010101010101010101010101010101010101010"
         }
       ],
+      "activeSlices": [],
       "baseline": {
         "branch": "main",
         "commit": "2222222222222222222222222222222222222222"
@@ -197,7 +199,7 @@
         "integrationBase": "2222222222222222222222222222222222222222",
         "reservationSet": {
           "id": "RSV-010",
-          "digest": "sha256:9f758b110ed8ce292a2c1bcffcba49f68fe8e6222fc8c9628b72b0434ca07fb1"
+          "digest": "sha256:38be677e71aabb52add48efe2560bbf04d7cb6671a4fb8ccd5eebbda6bdbf436"
         },
         "dependsOnIssues": [],
         "conflictsWithIssues": [],
@@ -265,12 +267,14 @@
             "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001",
             "id": "FEAT-001"
           },
-          "activeSlices": [
+          "authorizedSlices": [
             {
               "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001",
-              "id": "SLC-001"
+              "id": "SLC-001",
+              "acceptedCandidate": "1010101010101010101010101010101010101010"
             }
           ],
+          "activeSlices": [],
           "reservedIds": [
             {
               "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001",

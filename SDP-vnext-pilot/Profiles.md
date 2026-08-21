@@ -5,7 +5,9 @@ Status: **pilot v0; not canonical**
 Profiles scale durable evidence and safety gates. They do not weaken the core
 rules: one intent owner, bounded Issue authority, stable identity, truthful
 declared/observed/accepted state, proportionate verification, fresh independent
-review, and a stop boundary.
+review, and a stop boundary. They also do not waive allocation/execution
+authority separation, complete authorized-Slice history, terminal aggregate
+closure, strict JSON, semantic DAG, or active-write-surface rules.
 
 | Profile | Required pilot surface | Add when |
 |---|---|---|
@@ -35,3 +37,10 @@ may need full safety ceremony without scoped IDs.
 Project-local product mechanics—device limits, ABI rules, credentials,
 hardware thresholds, or repository-specific tests—remain local. The profile
 defines their authority/evidence shape, not their content.
+
+Study-only assignments and explicitly standalone zero-Slice Fix units may be
+pathless when the Issue documents that they perform no implementation write
+and the compact assignment mirrors a nonblank `pathlessReason`.
+An active Feature/Refactor/non-standalone-Fix assignment and its one active
+Slice may not use profile proportionality to omit all owned/shared write
+surfaces or prohibit their own hosting repository.

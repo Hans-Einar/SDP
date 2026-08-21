@@ -1,0 +1,18 @@
+{
+  "schemaVersion":"sdp-vnext-pilot-negative-mutation-v0",
+  "experimental":true,
+  "case":"terminal-feature-cannot-retain-an-active-later-issue-authority",
+  "sourcePositive":"feature-two-issues-two-slices.json",
+  "mutations":[
+    {"op":"replace","path":"/records/3/declaredState","value":"active"},
+    {"op":"replace","path":"/records/3/acceptedEvidence","value":{"candidate":null,"verificationRefs":[],"currentReviewRef":null,"steeringDisposition":null,"releaseRefs":[]}},
+    {"op":"replace","path":"/assignments/1/declaredState","value":"active"},
+    {"op":"replace","path":"/assignments/1/authorizedSlices/0/acceptedCandidate","value":null},
+    {"op":"replace","path":"/assignments/1/activeSlices","value":[{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-002"}]},
+    {"op":"replace","path":"/assignments/1/acceptedEvidence","value":{"candidate":null,"verificationRefs":[],"currentReviewRef":null,"steeringDisposition":null,"releaseRefs":[]}},
+    {"op":"replace","path":"/reservationSets/0/assignments/1/authorizedSlices/0/acceptedCandidate","value":null},
+    {"op":"replace","path":"/reservationSets/0/assignments/1/activeSlices","value":[{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-002"}]}
+  ],
+  "rebindReservationDigests":true,
+  "expectedErrors":["TERMINAL_WORK_ASSIGNMENT_NOT_ACCEPTED","TERMINAL_WORK_SLICE_NOT_ACCEPTED"]
+}

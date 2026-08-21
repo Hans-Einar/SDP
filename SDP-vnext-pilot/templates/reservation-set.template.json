@@ -12,6 +12,13 @@
         "domainUid": "urn:uuid:10000000-0000-4000-8000-000000000001",
         "id": "APP-FEAT-001"
       },
+      "authorizedSlices": [
+        {
+          "domainUid": "urn:uuid:10000000-0000-4000-8000-000000000001",
+          "id": "APP-SLC-001",
+          "acceptedCandidate": null
+        }
+      ],
       "activeSlices": [
         {
           "domainUid": "urn:uuid:10000000-0000-4000-8000-000000000001",

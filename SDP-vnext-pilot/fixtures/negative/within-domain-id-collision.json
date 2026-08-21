@@ -18,7 +18,7 @@
           "owners": ["owner"],
           "newRecordIdStyle": "scoped",
           "roots": ["SDP/App"],
-          "issuedIds": [{"id": "APP-FEAT-001", "status": "prospective", "authorityIssue": "https://github.com/example/repo/issues/1", "source": "Features/APP-FEAT-001.json"}]
+          "issuedIds": [{"id": "APP-FEAT-001", "status": "prospective", "allocationIssue": "https://github.com/example/repo/issues/1", "source": "Features/APP-FEAT-001.json"}]
         }
       ]
     }

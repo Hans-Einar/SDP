@@ -17,7 +17,7 @@
         {
           "id": "STU-007",
           "status": "prospective",
-          "authorityIssue": "https://github.com/Hans-Einar/SDP/issues/7",
+          "allocationIssue": "https://github.com/Hans-Einar/SDP/issues/7",
           "source": "SDP-vnext-pilot/Studies/STU-007.json"
         }
       ],

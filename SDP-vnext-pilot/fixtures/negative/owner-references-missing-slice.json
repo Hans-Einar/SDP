@@ -9,5 +9,5 @@
     {"op": "replace", "path": "/reservationSets/0/assignments/0/activeSlices", "value": []}
   ],
   "rebindReservationDigests": true,
-  "expectedErrors": ["ASSIGNMENT_SLICE_STATE_MISMATCH", "MISSING_OWNER_REFERENCED_SLICE", "RECORD_INVENTORY_BINDING_MISMATCH"]
+  "expectedErrors": ["ASSIGNMENT_SLICE_STATE_MISMATCH", "MISSING_OWNER_REFERENCED_SLICE", "RECORD_INVENTORY_BINDING_MISMATCH", "UNRESOLVED_AUTHORIZED_SLICE"]
 }

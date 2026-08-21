@@ -22,7 +22,7 @@
             {
               "id": "HOST-FEAT-001",
               "status": "prospective",
-              "authorityIssue": "https://github.com/example/old-monorepo/issues/300",
+              "allocationIssue": "https://github.com/example/old-monorepo/issues/300",
               "source": "SDP/Host/Features/HOST-FEAT-001.json"
             }
           ],
@@ -40,7 +40,7 @@
             {
               "id": "DBG-FEAT-001",
               "status": "prospective",
-              "authorityIssue": "https://github.com/example/old-monorepo/issues/301",
+              "allocationIssue": "https://github.com/example/old-monorepo/issues/301",
               "source": "SDP/Debugger/Features/DBG-FEAT-001.json"
             },
             {
@@ -91,7 +91,7 @@
             {
               "id": "DBG-FEAT-001",
               "status": "prospective",
-              "authorityIssue": "https://github.com/example/old-monorepo/issues/301",
+              "allocationIssue": "https://github.com/example/old-monorepo/issues/301",
               "source": "SDP/Debugger/Features/DBG-FEAT-001.json"
             },
             {

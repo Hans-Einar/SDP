@@ -14,7 +14,7 @@
           "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000060",
           "key": "DBG", "name": "Debugger", "state": "moved", "owners": ["debugger-owner"],
           "newRecordIdStyle": "scoped", "roots": [],
-          "issuedIds": [{"id": "DBG-FEAT-001", "status": "prospective", "authorityIssue": "https://github.com/example/old/issues/1", "source": "Features/DBG-FEAT-001.json"}],
+          "issuedIds": [{"id": "DBG-FEAT-001", "status": "prospective", "allocationIssue": "https://github.com/example/old/issues/1", "source": "Features/DBG-FEAT-001.json"}],
           "successorRepository": "https://github.com/example/new",
           "successorRegistry": "SDP/WorkDomains.json"
         }
@@ -31,7 +31,7 @@
           "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000060",
           "key": "NEWDBG", "name": "Renamed debugger", "state": "active", "owners": ["debugger-owner"],
           "newRecordIdStyle": "scoped", "roots": ["SDP/Debugger"],
-          "issuedIds": [{"id": "NEWDBG-FEAT-001", "status": "prospective", "authorityIssue": "https://github.com/example/old/issues/1", "source": "Features/DBG-FEAT-001.json"}],
+          "issuedIds": [{"id": "NEWDBG-FEAT-001", "status": "prospective", "allocationIssue": "https://github.com/example/old/issues/1", "source": "Features/DBG-FEAT-001.json"}],
           "predecessorRepositories": ["https://github.com/example/old"]
         }
       ]

@@ -116,7 +116,7 @@ including spelling/case that would not satisfy the prospective grammar.
 
 `issuedIds` is a structured inventory, never a list of bare strings. A
 prospective member carries `id`, `status: prospective`, the allocating
-`authorityIssue`, and its repository-relative `source`. It must satisfy the
+`allocationIssue`, and its repository-relative `source`. It must satisfy the
 current domain key/style/type grammar. `source` is a normalized, portable,
 non-recursive repository-relative record path and equals the represented
 record's own `source`; when local, it resolves to that exact JSON record. No
@@ -126,13 +126,17 @@ one-to-one. A
 preserved historical spelling such as `DBG-RF-001` carries `status:
 legacy-preserved`, its original source, and exact provenance `{repository,
 commit, path}`; it is not normalized into a new `REF` identity. Its
-`authorityIssue` is canonical when an Issue existed. If none existed, it is
+historical `authorityIssue` is canonical when an Issue existed. If none existed, it is
 `null` and a nonblank `authorityMissingReason` states that fact—history is not
 invented. Provenance repository and Issue values use the canonical GitHub
 forms below, while provenance/source paths remain portable. Inventory IDs are
-unique after NFKC/casefold normalization. An assignment may reserve an
-already-issued ID only when its Issue equals that member's recorded authority;
-another Issue cannot reclaim it.
+unique after NFKC/casefold normalization. A reservation for a newly created ID
+must use the prospective member's immutable `allocationIssue`; another Issue
+cannot reclaim it. That allocation fact is distinct from execution authority:
+a later Issue may use an already-issued Feature/Refactor/Fix as `workRef`
+without reserving it again when the owner lists that canonical Issue exactly
+once in `issueAuthorities`. Each new Slice/Study/Fix reserved by that later
+Issue still records that Issue as its own allocator.
 
 ## Canonical GitHub identities
 
@@ -215,9 +219,11 @@ All pre-work reservation checks use the same portable form:
   segments, `.`/`..`, the conservative Windows-forbidden component set
   `< > : " | ? *`, reserved names, and every Unicode control/format/surrogate/
   private-use category (`Cc`, `Cf`, `Cs`, `Co`);
-- reject invalid Unicode scalar content recursively before canonical JSON
-  encoding; a JSON-escaped lone surrogate produces deterministic diagnostics
-  and never an encoding exception or a usable reservation digest;
+- reject invalid Unicode scalar content and non-finite numeric values
+  recursively before canonical JSON encoding, including outer extension
+  objects; a JSON-escaped lone surrogate or `NaN`/positive or negative
+  infinity produces deterministic diagnostics and never an encoding exception
+  or a usable reservation digest;
 - trim trailing spaces/dots for collision comparison and reject a path whose
   normalized segment changes for that reason;
 - reservations are either an exact file/directory path or one recursive

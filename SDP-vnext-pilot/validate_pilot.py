@@ -6,6 +6,7 @@ from __future__ import annotations
 import json
 import hashlib
 import copy
+import math
 import re
 import subprocess
 import sys
@@ -137,7 +138,7 @@ TYPE_REQUIRED_FIELDS = {
     },
     "issue-assignment": {
         "schemaVersion", "experimental", "kind", "source", "revision", "declaredState", "authority",
-        "workRef", "activeSlices", "baseline", "delivery", "coordination",
+        "workRef", "authorizedSlices", "activeSlices", "baseline", "delivery", "coordination",
         "boundaries", "requiredEvidence", "acceptedEvidence", "stopCondition",
     },
     "reservation-set": {
@@ -157,14 +158,26 @@ EVIDENCE_FIELDS = {
     "steeringDisposition", "releaseRefs",
 }
 RESERVATION_ROW_FIELDS = {
-    "issue", "workRef", "activeSlices", "reservedIds", "ownedPaths",
+    "issue", "workRef", "authorizedSlices", "activeSlices", "reservedIds", "ownedPaths",
     "sharedTouchpoints", "dependsOnIssues", "conflictsWithIssues",
 }
+
+ACYCLIC_SEMANTIC_RELATION_TYPES = {
+    "depends_on", "supersedes", "refines", "requires_revision",
+}
+
+
+class InvalidJsonScalarError(ValueError):
+    """Raised when a parser encounters a non-standard JSON numeric constant."""
+
+
+def reject_json_constant(value: str) -> Any:
+    raise InvalidJsonScalarError(f"non-finite JSON scalar: {value}")
 
 
 def load_json(path: Path) -> Any:
     with path.open("r", encoding="utf-8") as handle:
-        return json.load(handle)
+        return json.load(handle, parse_constant=reject_json_constant)
 
 
 def contains_invalid_unicode_scalar(value: Any) -> bool:
@@ -182,12 +195,34 @@ def contains_invalid_unicode_scalar(value: Any) -> bool:
     return False
 
 
+def contains_invalid_json_scalar(value: Any) -> bool:
+    """Reject non-finite floats recursively, including extension keys/values."""
+    if isinstance(value, float):
+        return not math.isfinite(value)
+    if isinstance(value, dict):
+        return any(
+            contains_invalid_json_scalar(key)
+            or contains_invalid_json_scalar(item)
+            for key, item in value.items()
+        )
+    if isinstance(value, (list, tuple)):
+        return any(contains_invalid_json_scalar(item) for item in value)
+    return False
+
+
 def canonical_digest(document: Any) -> str | None:
-    if contains_invalid_unicode_scalar(document):
+    if (
+        contains_invalid_unicode_scalar(document)
+        or contains_invalid_json_scalar(document)
+    ):
         return None
-    encoded = json.dumps(
-        document, sort_keys=True, separators=(",", ":"), ensure_ascii=False
-    ).encode("utf-8")
+    try:
+        encoded = json.dumps(
+            document, sort_keys=True, separators=(",", ":"),
+            ensure_ascii=False, allow_nan=False,
+        ).encode("utf-8")
+    except (TypeError, ValueError, UnicodeEncodeError):
+        return None
     return "sha256:" + hashlib.sha256(encoded).hexdigest()
 
 
@@ -457,6 +492,19 @@ def inventory_member_id(member: Any) -> str | None:
     return None
 
 
+def inventory_allocation_issue(member: Any) -> Any:
+    """Return the immutable allocator for prospective IDs only.
+
+    Legacy inventory retains its historical ``authorityIssue`` semantics;
+    it is provenance, not a prospective allocation or execution grant.
+    """
+    if not isinstance(member, dict):
+        return None
+    if member.get("status") == "prospective":
+        return member.get("allocationIssue")
+    return member.get("authorityIssue")
+
+
 def inventory_map(domain: dict[str, Any]) -> dict[str, Any]:
     result: dict[str, Any] = {}
     for member in domain.get("issuedIds", []):
@@ -474,7 +522,7 @@ def validate_inventory_member(
         return
     record_id = member.get("id")
     status = member.get("status")
-    authority = member.get("authorityIssue")
+    authority = inventory_allocation_issue(member)
     source = member.get("source")
     if not nonblank(record_id) or status not in {
         "prospective", "legacy-preserved"
@@ -484,7 +532,7 @@ def validate_inventory_member(
     if not valid_record_path(source):
         add(errors, "INVALID_ID_INVENTORY_MEMBER")
     if status == "prospective":
-        if issue_key(authority) is None:
+        if "authorityIssue" in member or issue_key(authority) is None:
             add(errors, "INVALID_INVENTORY_AUTHORITY")
         scoped = SCOPED_ID_RE.fullmatch(record_id)
         unscoped = UNSCOPED_ID_RE.fullmatch(record_id)
@@ -497,6 +545,8 @@ def validate_inventory_member(
         if not valid:
             add(errors, "INVALID_PROSPECTIVE_ID")
     else:
+        if "allocationIssue" in member:
+            add(errors, "INVALID_INVENTORY_AUTHORITY")
         provenance = member.get("provenance")
         if not isinstance(provenance, dict):
             add(errors, "LEGACY_PROVENANCE_REQUIRED")
@@ -678,6 +728,29 @@ def reference_key(reference: Any) -> tuple[str, str] | None:
     return uid, portable_text(record_id)
 
 
+def validate_authorized_slice_reference(
+    reference: Any, errors: list[str]
+) -> tuple[str, str] | None:
+    if (
+        not isinstance(reference, dict)
+        or not {"domainUid", "id", "acceptedCandidate"}.issubset(reference)
+        or not set(reference).issubset(
+            {"domainUid", "id", "keyHint", "acceptedCandidate"}
+        )
+    ):
+        add(errors, "INVALID_AUTHORIZED_SLICE")
+        return None
+    candidate = reference.get("acceptedCandidate")
+    if candidate is not None and (
+        not isinstance(candidate, str) or SHA_RE.fullmatch(candidate) is None
+    ):
+        add(errors, "INVALID_AUTHORIZED_SLICE")
+    key = reference_key(reference)
+    if key is None:
+        add(errors, "INVALID_AUTHORIZED_SLICE")
+    return key
+
+
 def domain_key_for_uid(document: dict[str, Any], uid: Any) -> str | None:
     keys = {
         domain.get("key")
@@ -725,7 +798,7 @@ def issued_authorities(
             if not isinstance(member, dict):
                 continue
             record_id = inventory_member_id(member)
-            authority = member.get("authorityIssue")
+            authority = inventory_allocation_issue(member)
             authority_identity = issue_key(authority)
             if isinstance(record_id, str) and authority_identity is not None:
                 result[(uid, portable_text(record_id))] = authority_identity
@@ -980,8 +1053,31 @@ def validate_stateful_values(
             add(errors, "INVALID_BRANCH")
         if not isinstance(delivery, dict) or pull_request_key(delivery.get("pullRequest")) is None:
             add(errors, "INVALID_GITHUB_PULL_REQUEST")
-        if not isinstance(record.get("activeSlices"), list):
+        authorized_slices = record.get("authorizedSlices")
+        active_slices = record.get("activeSlices")
+        if not isinstance(authorized_slices, list) or not isinstance(active_slices, list):
             add(errors, "INVALID_REQUIRED_COLLECTION")
+        else:
+            authorized_keys = [
+                validate_authorized_slice_reference(reference, errors)
+                for reference in authorized_slices
+            ]
+            active_keys = [reference_key(reference) for reference in active_slices]
+            if len([key for key in authorized_keys if key is not None]) != len(
+                set(key for key in authorized_keys if key is not None)
+            ):
+                add(errors, "DUPLICATE_AUTHORIZED_SLICE")
+            if len([key for key in active_keys if key is not None]) != len(
+                set(key for key in active_keys if key is not None)
+            ):
+                add(errors, "ACTIVE_SLICE_CARDINALITY")
+            if len(active_slices) > 1:
+                add(errors, "ACTIVE_SLICE_CARDINALITY")
+            if any(
+                key is None or key not in set(authorized_keys)
+                for key in active_keys
+            ):
+                add(errors, "ACTIVE_SLICE_NOT_AUTHORIZED")
         if not nonblank(record.get("stopCondition")):
             add(errors, "INVALID_STOP_CONDITION")
         boundaries = record.get("boundaries")
@@ -1489,6 +1585,35 @@ def validate_semantic_graph(document: dict[str, Any], errors: list[str]) -> None
                 relation_keys["targetRef"],
             )
 
+    # Direction is always authored source -> target.  Pilot v0 treats four
+    # directional histories/gates as separate global DAGs: a source depends on,
+    # supersedes, refines, or requires revision of its target.  The remaining
+    # relation types retain only their existing self/kind/duplicate rules.
+    for relation_type in ACYCLIC_SEMANTIC_RELATION_TYPES:
+        adjacency: dict[tuple[str, str], set[tuple[str, str]]] = defaultdict(set)
+        nodes: set[tuple[str, str]] = set()
+        for edge_type, source, target in seen:
+            if edge_type == relation_type:
+                adjacency[source].add(target)
+                nodes.update((source, target))
+        visiting: set[tuple[str, str]] = set()
+        visited: set[tuple[str, str]] = set()
+
+        def visit(node: tuple[str, str]) -> bool:
+            if node in visiting:
+                return True
+            if node in visited:
+                return False
+            visiting.add(node)
+            if any(visit(target) for target in adjacency.get(node, set())):
+                return True
+            visiting.remove(node)
+            visited.add(node)
+            return False
+
+        if any(visit(node) for node in nodes if node not in visited):
+            add(errors, "SEMANTIC_RELATION_CYCLE")
+
 
 def validate_record_graph(document: dict[str, Any], errors: list[str]) -> None:
     records = {
@@ -1506,8 +1631,8 @@ def validate_record_graph(document: dict[str, Any], errors: list[str]) -> None:
         issue_identity = issue_key(issue)
         if issue_identity is not None:
             assignments_by_issue[issue_identity].append(assignment)
-        active_slices = assignment.get("activeSlices", [])
-        for slice_ref in active_slices if isinstance(active_slices, list) else []:
+        authorized_slices = assignment.get("authorizedSlices", [])
+        for slice_ref in authorized_slices if isinstance(authorized_slices, list) else []:
             slice_key = reference_key(slice_ref)
             if slice_key is not None:
                 assignments_by_slice[slice_key].append(assignment)
@@ -1543,6 +1668,25 @@ def validate_record_graph(document: dict[str, Any], errors: list[str]) -> None:
                     authorities = owner.get("issueAuthorities", [])
                     if sum(issue_key(authority) == issue_identity for authority in authorities) != 1:
                         add(errors, "OWNER_ISSUE_AUTHORITY_MISMATCH")
+                authorized_entry = next(
+                    (
+                        item for item in assignment.get("authorizedSlices", [])
+                        if reference_key(item) == key
+                    ),
+                    None,
+                )
+                accepted_candidate = mapping(
+                    record.get("acceptedEvidence")
+                ).get("candidate")
+                if isinstance(authorized_entry, dict) and (
+                    authorized_entry.get("acceptedCandidate")
+                    != (
+                        accepted_candidate
+                        if record.get("declaredState") == "accepted"
+                        else None
+                    )
+                ):
+                    add(errors, "AUTHORIZED_SLICE_CANDIDATE_MISMATCH")
                 coordination = assignment_coordination(assignment)
                 reserved_owned = [
                     normalize_path(path)
@@ -1605,6 +1749,34 @@ def validate_record_graph(document: dict[str, Any], errors: list[str]) -> None:
                     add(errors, "DELIVERED_WORK_ISSUE_REQUIRED")
                 if kind != "fix" and not record.get("slices"):
                     add(errors, "DELIVERED_WORK_SLICE_REQUIRED")
+                authority_keys = [
+                    issue_key(authority) for authority in authorities or []
+                ]
+                matching_owner_assignments: list[dict[str, Any]] = []
+                for authority_key in authority_keys:
+                    matches = [
+                        assignment
+                        for assignment in assignments_by_issue.get(authority_key, [])
+                        if reference_key(assignment.get("workRef")) == key
+                    ]
+                    if len(matches) != 1:
+                        add(errors, "TERMINAL_WORK_AUTHORITY_UNRESOLVED")
+                    else:
+                        matching_owner_assignments.extend(matches)
+                for assignment in matching_owner_assignments:
+                    if (
+                        assignment.get("declaredState") != "accepted"
+                        or not has_qualified_accepted_evidence(assignment)
+                    ):
+                        add(errors, "TERMINAL_WORK_ASSIGNMENT_NOT_ACCEPTED")
+                    for authorized_slice in assignment.get("authorizedSlices", []):
+                        authorized_record = records.get(reference_key(authorized_slice))
+                        if not (
+                            isinstance(authorized_record, dict)
+                            and authorized_record.get("declaredState") == "accepted"
+                            and has_qualified_accepted_evidence(authorized_record)
+                        ):
+                            add(errors, "TERMINAL_WORK_SLICE_NOT_ACCEPTED")
                 for slice_key in slice_keys:
                     slice_record = records.get(slice_key)
                     if not (
@@ -1629,40 +1801,42 @@ def validate_record_graph(document: dict[str, Any], errors: list[str]) -> None:
                     ):
                         add(errors, "TERMINAL_WORK_ASSIGNMENT_NOT_ACCEPTED")
                 if kind == "fix" and not record.get("slices"):
-                    authority_keys = {
-                        issue_key(authority) for authority in authorities or []
-                    }
-                    authority_keys.discard(None)
+                    authority_key_set = {key for key in authority_keys if key is not None}
                     matching = [
                         assignment
                         for assignment in assignments
-                        if issue_key(assignment_issue(assignment)) in authority_keys
+                        if issue_key(assignment_issue(assignment)) in authority_key_set
                         and reference_key(assignment.get("workRef")) == key
                     ]
                     if (
                         record.get("risk") != "low"
                         or record.get("standaloneReviewedUnit") is not True
-                        or len(authority_keys) != 1
+                        or len(authority_key_set) != 1
                         or len(matching) != 1
+                        or matching[0].get("declaredState") != "accepted"
+                        or not has_qualified_accepted_evidence(matching[0])
+                        or mapping(matching[0].get("acceptedEvidence")).get("candidate")
+                        != mapping(record.get("acceptedEvidence")).get("candidate")
+                        or matching[0].get("authorizedSlices") != []
                         or matching[0].get("activeSlices") != []
                     ):
                         add(errors, "ZERO_SLICE_FIX_INVALID")
+                if kind == "fix":
                     affected = [
                         records.get(reference_key(reference))
                         for reference in record.get("affectedWork", [])
                         if reference_key(reference) is not None
                     ]
-                    if (
-                        not affected
-                        or any(
-                            target is None
-                            or effective_kind(target) not in WORK_OWNER_KINDS
-                            or target.get("declaredState") not in TERMINAL_ACCEPTED_STATES
-                            or mapping(target.get("acceptedEvidence")).get("candidate") is None
-                            for target in affected
-                        )
+                    if not affected or any(
+                        target is None
+                        or effective_kind(target) not in WORK_OWNER_KINDS
+                        or target.get("declaredState") not in {
+                            "active", "delivered", "released"
+                        }
+                        or not has_qualified_accepted_evidence(target)
+                        for target in affected
                     ):
-                        add(errors, "ZERO_SLICE_FIX_AFFECTED_WORK_REQUIRED")
+                        add(errors, "FIX_AFFECTED_WORK_NOT_ACCEPTED")
 
 
 def shared_path(item: Any) -> Any:
@@ -1674,6 +1848,7 @@ def assignment_projection(assignment: dict[str, Any]) -> dict[str, Any]:
     return {
         "issue": assignment_issue(assignment),
         "workRef": assignment.get("workRef"),
+        "authorizedSlices": assignment.get("authorizedSlices", []),
         "activeSlices": assignment.get("activeSlices", []),
         "reservedIds": coordination.get("reservedIds", []),
         "ownedPaths": coordination.get("ownedPaths", []),
@@ -1698,6 +1873,23 @@ def validate_reservation_sets(document: dict[str, Any], errors: list[str]) -> No
         for row in reservation.get("assignments", []) if isinstance(reservation.get("assignments"), list) else []:
             if not isinstance(row, dict):
                 continue
+            authorized = row.get("authorizedSlices", [])
+            active = row.get("activeSlices", [])
+            if not isinstance(authorized, list) or not isinstance(active, list):
+                add(errors, "RESERVATION_SET_INCOMPLETE")
+            else:
+                authorized_keys = [
+                    validate_authorized_slice_reference(reference, errors)
+                    for reference in authorized
+                ]
+                active_keys = [reference_key(reference) for reference in active]
+                if len(active) > 1:
+                    add(errors, "ACTIVE_SLICE_CARDINALITY")
+                if any(
+                    key is None or key not in set(authorized_keys)
+                    for key in active_keys
+                ):
+                    add(errors, "ACTIVE_SLICE_NOT_AUTHORIZED")
             for value in row.get("ownedPaths", []):
                 if normalize_path(value) is None:
                     add(errors, "INVALID_PATH")
@@ -1744,7 +1936,9 @@ def validate_reservation_sets(document: dict[str, Any], errors: list[str]) -> No
             add(errors, "INVALID_RESERVATION_DIGEST")
         else:
             actual_digest = canonical_digest(candidates[0])
-            if actual_digest is None:
+            if actual_digest is None and contains_invalid_json_scalar(candidates[0]):
+                add(errors, "INVALID_JSON_SCALAR")
+            elif actual_digest is None:
                 add(errors, "INVALID_UNICODE_SCALAR")
             elif digest != actual_digest:
                 add(errors, "RESERVATION_DIGEST_MISMATCH")
@@ -2042,8 +2236,41 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
                 ) != 1:
                     add(errors, "OWNER_ISSUE_AUTHORITY_MISMATCH")
             primary_issued_by = issued_authorities(document).get(work_key)
-            if primary_issued_by is not None and primary_issued_by != authority_identity:
+            if (
+                work_record is not None
+                and effective_kind(work_record) == "study"
+                and primary_issued_by is not None
+                and primary_issued_by != authority_identity
+            ):
                 add(errors, "PRIMARY_WORK_AUTHORITY_MISMATCH")
+            authorized_slices = assignment.get("authorizedSlices", [])
+            authorized_keys: set[tuple[str, str]] = set()
+            for authorized_slice in (
+                authorized_slices if isinstance(authorized_slices, list) else []
+            ):
+                validate_key_hint(document, authorized_slice, errors)
+                authorized_key = validate_authorized_slice_reference(
+                    authorized_slice, errors
+                )
+                if authorized_key is None:
+                    continue
+                authorized_keys.add(authorized_key)
+                validate_id_against_domain(
+                    authorized_slice.get("domainUid"),
+                    authorized_slice.get("id"),
+                    domain_by_uid, errors, invalid_code="INVALID_REFERENCE",
+                    style_code="ACTIVE_SLICE_STYLE_MISMATCH",
+                )
+                slice_record = records.get(authorized_key)
+                if slice_record is None or effective_kind(slice_record) != "slice":
+                    add(errors, "UNRESOLVED_AUTHORIZED_SLICE")
+                elif issue_key(slice_record.get("assignmentIssue")) != authority_identity:
+                    add(errors, "SLICE_ASSIGNMENT_MISMATCH")
+                elif reference_key(slice_record.get("ownerRef")) != work_key:
+                    add(errors, "ACTIVE_SLICE_OWNER_MISMATCH")
+                allocated_by = issued_authorities(document).get(authorized_key)
+                if allocated_by is not None and allocated_by != authority_identity:
+                    add(errors, "AUTHORIZED_SLICE_ALLOCATION_MISMATCH")
             for active_slice in assignment.get("activeSlices", []):
                 validate_key_hint(document, active_slice, errors)
                 validate_id_against_domain(
@@ -2059,6 +2286,54 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
                     add(errors, "SLICE_ASSIGNMENT_MISMATCH")
                 elif reference_key(slice_record.get("ownerRef")) != work_key:
                     add(errors, "ACTIVE_SLICE_OWNER_MISMATCH")
+                if reference_key(active_slice) not in authorized_keys:
+                    add(errors, "ACTIVE_SLICE_NOT_AUTHORIZED")
+
+            work_type = effective_kind(work_record)
+            is_standalone_fix = (
+                work_type == "fix"
+                and isinstance(work_record, dict)
+                and work_record.get("standaloneReviewedUnit") is True
+                and authorized_slices == []
+            )
+            is_active_implementation = (
+                assignment.get("declaredState") == "active"
+                and work_type in WORK_OWNER_KINDS
+                and not is_standalone_fix
+            )
+            has_assignment_write_surface = bool(
+                coordination.get("ownedPaths")
+                or coordination.get("sharedTouchpoints")
+            )
+            if (
+                not has_assignment_write_surface
+                and (work_type == "study" or is_standalone_fix)
+                and not nonblank(assignment.get("pathlessReason"))
+            ):
+                add(errors, "PATHLESS_ASSIGNMENT_REASON_REQUIRED")
+            if is_active_implementation:
+                if len(assignment.get("activeSlices", [])) != 1:
+                    add(errors, "ACTIVE_IMPLEMENTATION_SLICE_REQUIRED")
+                if not has_assignment_write_surface:
+                    add(errors, "ACTIVE_IMPLEMENTATION_WRITE_SURFACE_REQUIRED")
+                prohibited_repositories = {
+                    repository_key(value)
+                    for value in mapping(assignment.get("boundaries")).get(
+                        "prohibitedRepositories", []
+                    )
+                }
+                if host_repository is not None and host_repository in prohibited_repositories:
+                    add(errors, "HOST_REPOSITORY_PROHIBITED")
+                for active_slice in assignment.get("activeSlices", []):
+                    slice_record = records.get(reference_key(active_slice))
+                    if isinstance(slice_record, dict):
+                        if slice_record.get("declaredState") != "active":
+                            add(errors, "ACTIVE_SLICE_STATE_MISMATCH")
+                        if not (
+                            slice_record.get("ownedPaths")
+                            or slice_record.get("sharedTouchpoints")
+                        ):
+                            add(errors, "ACTIVE_SLICE_WRITE_SURFACE_REQUIRED")
         for value in coordination.get("ownedPaths", []):
             normalized = normalize_path(value)
             if normalized is None:
@@ -2135,7 +2410,10 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
             work_ref = assignment.get("workRef")
             work_record = records.get(reference_key(work_ref))
             work_type = work_ref.get("type") if isinstance(work_ref, dict) else None
-            slices = assignment.get("activeSlices", [])
+            active_slices = assignment.get("activeSlices", [])
+            slices = assignment.get("authorizedSlices", [])
+            if active_slices != []:
+                add(errors, "ACCEPTED_ASSIGNMENT_ACTIVE_SLICE")
             if work_type == "study":
                 if (
                     work_record is None
@@ -2160,8 +2438,11 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
                     slice_record = records.get(reference_key(slice_ref))
                     if slice_record is None or slice_record.get("declaredState") != "accepted":
                         add(errors, "ASSIGNMENT_SLICE_STATE_MISMATCH")
-                    elif mapping(slice_record.get("acceptedEvidence")).get("candidate") != candidate:
-                        add(errors, "ASSIGNMENT_CANDIDATE_MISMATCH")
+                    elif (
+                        slice_ref.get("acceptedCandidate")
+                        != mapping(slice_record.get("acceptedEvidence")).get("candidate")
+                    ):
+                        add(errors, "AUTHORIZED_SLICE_CANDIDATE_MISMATCH")
             for dependency in coordination.get("dependsOnIssues", []):
                 dependency_assignment = issue_map.get(issue_key(dependency))
                 if (
@@ -2338,8 +2619,14 @@ def read_local_json(repository_root: Path, value: Any) -> dict[str, Any] | None:
     if path is None or not path.is_file():
         return None
     try:
-        loaded = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, UnicodeDecodeError, json.JSONDecodeError):
+        loaded = json.loads(
+            path.read_text(encoding="utf-8"),
+            parse_constant=reject_json_constant,
+        )
+    except (
+        OSError, UnicodeDecodeError, json.JSONDecodeError,
+        InvalidJsonScalarError,
+    ):
         return None
     return loaded if isinstance(loaded, dict) else None
 
@@ -2417,10 +2704,13 @@ def validate_repository_materialization(
                 ["git", "show", f"{candidate}:{assignment_source}"],
                 cwd=repository_root, check=True, capture_output=True,
             ).stdout.decode("utf-8")
-            historical_assignment = json.loads(historical_blob)
+            historical_assignment = json.loads(
+                historical_blob, parse_constant=reject_json_constant
+            )
         except (
             OSError, subprocess.CalledProcessError, UnicodeDecodeError,
             json.JSONDecodeError,
+            InvalidJsonScalarError,
         ):
             add(errors, "UNAVAILABLE_HISTORY_GIT_OBJECT")
             continue
@@ -2458,10 +2748,13 @@ def validate_repository_materialization(
 def validate_document(
     document: dict[str, Any], *, isolated_fixture: bool = False,
     repository_root: Path | None = None,
+    materialize_repository: bool = True,
 ) -> list[str]:
     errors: list[str] = []
     if contains_invalid_unicode_scalar(document):
         add(errors, "INVALID_UNICODE_SCALAR")
+    if contains_invalid_json_scalar(document):
+        add(errors, "INVALID_JSON_SCALAR")
     if document.get("experimental") is not True:
         add(errors, "EXPERIMENTAL_MARKER_REQUIRED")
     validate_registry_set(document, errors)
@@ -2474,13 +2767,17 @@ def validate_document(
     )
     if not isolated_fixture:
         validate_reservation_sets(document, errors)
-    if repository_root is not None:
+    if repository_root is not None and materialize_repository:
         validate_repository_materialization(document, errors, repository_root)
     return sorted(errors)
 
 
 def validate_template(record: dict[str, Any]) -> list[str]:
     errors: list[str] = []
+    if contains_invalid_unicode_scalar(record):
+        add(errors, "INVALID_UNICODE_SCALAR")
+    if contains_invalid_json_scalar(record):
+        add(errors, "INVALID_JSON_SCALAR")
     kind = record.get("kind")
     validate_typed_shape(record, errors, "TEMPLATE_REQUIRED_FIELD_MISSING")
     if kind in KIND_TO_ID_TOKEN:
@@ -2518,7 +2815,11 @@ def validate_template(record: dict[str, Any]) -> list[str]:
     return sorted(set(errors))
 
 
-def check_coverage(example_documents: dict[str, dict[str, Any]], negative_codes: set[str]) -> list[str]:
+def check_coverage(
+    example_documents: dict[str, dict[str, Any]],
+    negative_codes: set[str],
+    positive_fixture_names: set[str],
+) -> list[str]:
     failures: list[str] = []
     simple = example_documents.get("simple-single-domain.json", {})
     scoped = example_documents.get("scoped-monorepo.json", {})
@@ -2647,7 +2948,7 @@ def check_coverage(example_documents: dict[str, dict[str, Any]], negative_codes:
         "ASSIGNMENT_STUDY_STATE_MISMATCH", "UNSATISFIED_ASSIGNMENT_PREREQUISITE",
         "ACTIVE_ASSIGNMENT_CONFLICT", "UNQUALIFIED_SEMANTIC_REFERENCE",
         "UNRESOLVED_SEMANTIC_REFERENCE", "SEMANTIC_TARGET_KIND_MISMATCH",
-        "DUPLICATE_SEMANTIC_EDGE", "ZERO_SLICE_FIX_AFFECTED_WORK_REQUIRED",
+        "DUPLICATE_SEMANTIC_EDGE", "FIX_AFFECTED_WORK_NOT_ACCEPTED",
         "REPOSITORY_DRIVER_REQUIRED", "UNRESOLVED_MATERIALIZED_SOURCE",
         "MATERIALIZED_SOURCE_MISMATCH", "UNAVAILABLE_HISTORY_GIT_OBJECT",
         "HISTORY_GIT_CONTENT_MISMATCH", "DUPLICATE_RESERVED_ID",
@@ -2663,10 +2964,40 @@ def check_coverage(example_documents: dict[str, dict[str, Any]], negative_codes:
         "TERMINAL_WORK_ASSIGNMENT_NOT_ACCEPTED",
         "PROHIBITED_PATH_OVERLAP", "INVALID_UNICODE_SCALAR",
         "LEGACY_PRESERVED_CURRENT_GATE",
+        "INVALID_JSON_SCALAR", "SEMANTIC_RELATION_CYCLE",
+        "ACTIVE_SLICE_CARDINALITY", "ACTIVE_SLICE_NOT_AUTHORIZED",
+        "AUTHORIZED_SLICE_CANDIDATE_MISMATCH",
+        "AUTHORIZED_SLICE_ALLOCATION_MISMATCH",
+        "TERMINAL_WORK_AUTHORITY_UNRESOLVED",
+        "FIX_AFFECTED_WORK_NOT_ACCEPTED",
+        "HOST_REPOSITORY_PROHIBITED",
+        "ACTIVE_IMPLEMENTATION_SLICE_REQUIRED",
+        "ACTIVE_IMPLEMENTATION_WRITE_SURFACE_REQUIRED",
+        "ACTIVE_SLICE_WRITE_SURFACE_REQUIRED",
+        "PATHLESS_ASSIGNMENT_REASON_REQUIRED",
     }
     missing = sorted(required_negative - negative_codes)
     if missing:
         failures.append("coverage: missing negative diagnostics " + ", ".join(missing))
+    required_positive = {
+        "feature-two-issues-two-slices.json",
+        "one-issue-sequential-slices.json",
+        "accepted-issue-reopen-revision.json",
+        "terminal-feature-closure.json",
+        "terminal-refactor-closure.json",
+        "terminal-sliced-fix-closure.json",
+        "accepted-standalone-fix.json",
+        "semantic-dag-diamond-and-chain.json",
+        "semantic-nondag-reciprocal-preserves.json",
+        "reservation-finite-numeric-extension.json",
+        "pathless-study-only-assignment.json",
+        "pathless-standalone-fix-assignment.json",
+    }
+    missing_positive = sorted(required_positive - positive_fixture_names)
+    if missing_positive:
+        failures.append(
+            "coverage: missing positive controls " + ", ".join(missing_positive)
+        )
     return failures
 
 
@@ -2693,6 +3024,24 @@ def pointer_value(document: Any, pointer: str) -> Any:
     return current
 
 
+def decode_mutation_value(value: Any) -> Any:
+    """Permit strict-JSON fixtures to construct adversarial Python scalars."""
+    if isinstance(value, dict) and set(value) == {"$nonFinite"}:
+        token = value["$nonFinite"]
+        if token == "NaN":
+            return float("nan")
+        if token == "+Infinity":
+            return float("inf")
+        if token == "-Infinity":
+            return float("-inf")
+        raise ValueError(f"unsupported non-finite mutation token {token!r}")
+    if isinstance(value, dict):
+        return {key: decode_mutation_value(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [decode_mutation_value(item) for item in value]
+    return copy.deepcopy(value)
+
+
 def apply_mutations(document: dict[str, Any], mutations: list[dict[str, Any]]) -> None:
     for mutation in mutations:
         operation = mutation.get("op")
@@ -2706,7 +3055,7 @@ def apply_mutations(document: dict[str, Any], mutations: list[dict[str, Any]]) -
             else:
                 del parent[key]
         elif operation in {"add", "replace"}:
-            value = copy.deepcopy(mutation.get("value"))
+            value = decode_mutation_value(mutation.get("value"))
             if isinstance(parent, list):
                 if key == "-":
                     parent.append(value)
@@ -2800,6 +3149,9 @@ def main() -> int:
     failures: list[str] = []
     try:
         dogfood = load_dogfood_document()
+    except InvalidJsonScalarError:
+        dogfood = {}
+        failures.append("Steering dogfood parse error: INVALID_JSON_SCALAR")
     except (OSError, json.JSONDecodeError) as exc:
         dogfood = {}
         failures.append(f"Steering dogfood parse error: {exc}")
@@ -2809,6 +3161,9 @@ def main() -> int:
     for path in sorted((ROOT / "templates").glob("*.json")):
         try:
             record = load_json(path)
+        except InvalidJsonScalarError:
+            failures.append(f"{path.relative_to(ROOT)}: INVALID_JSON_SCALAR")
+            continue
         except (OSError, json.JSONDecodeError) as exc:
             failures.append(f"{path.relative_to(ROOT)}: parse error: {exc}")
             continue
@@ -2828,6 +3183,9 @@ def main() -> int:
     for path in sorted((ROOT / "examples").glob("*.json")):
         try:
             document = load_json(path)
+        except InvalidJsonScalarError:
+            failures.append(f"{path.relative_to(ROOT)}: INVALID_JSON_SCALAR")
+            continue
         except (OSError, json.JSONDecodeError) as exc:
             failures.append(f"{path.relative_to(ROOT)}: parse error: {exc}")
             continue
@@ -2837,16 +3195,35 @@ def main() -> int:
             failures.append(f"{path.relative_to(ROOT)}: unexpected {', '.join(errors)}")
 
     positive_fixture_count = 0
+    positive_documents: dict[str, dict[str, Any]] = {}
     for path in sorted((ROOT / "fixtures" / "positive").glob("*.json")):
         positive_fixture_count += 1
         try:
             fixture = load_json(path)
             source_example = fixture.get("sourceExample")
-            subject = copy.deepcopy(example_documents[source_example])
+            if fixture.get("sourceDogfood") is True:
+                subject = copy.deepcopy(dogfood)
+            elif fixture.get("sourcePositive"):
+                subject = copy.deepcopy(
+                    positive_documents[fixture["sourcePositive"]]
+                )
+            else:
+                subject = copy.deepcopy(example_documents[source_example])
             apply_mutations(subject, fixture.get("mutations", []))
             if fixture.get("rebindReservationDigests") is True:
                 rebind_reservation_digests(subject)
-            actual = validate_document(subject)
+            positive_documents[path.name] = copy.deepcopy(subject)
+            actual = validate_document(
+                subject,
+                repository_root=(
+                    ROOT.parent if fixture.get("repositoryDriver") is True
+                    else None
+                ),
+                materialize_repository=False,
+            )
+        except InvalidJsonScalarError:
+            failures.append(f"{path.relative_to(ROOT)}: INVALID_JSON_SCALAR")
+            continue
         except (OSError, json.JSONDecodeError, KeyError, IndexError, TypeError, ValueError) as exc:
             failures.append(f"{path.relative_to(ROOT)}: invalid positive fixture: {exc}")
             continue
@@ -2859,18 +3236,28 @@ def main() -> int:
         negative_count += 1
         try:
             document = load_json(path)
+        except InvalidJsonScalarError:
+            failures.append(f"{path.relative_to(ROOT)}: INVALID_JSON_SCALAR")
+            continue
         except (OSError, json.JSONDecodeError) as exc:
             failures.append(f"{path.relative_to(ROOT)}: parse error: {exc}")
             continue
         expected = sorted(set(document.get("expectedErrors", [])))
         try:
             source_example = document.get("sourceExample")
+            source_positive = document.get("sourcePositive")
             if document.get("sourceDogfood") is True:
                 subject = copy.deepcopy(dogfood)
                 apply_mutations(subject, document.get("mutations", []))
                 if document.get("rebindReservationDigests") is True:
                     rebind_reservation_digests(subject)
                 actual = validate_document(subject, repository_root=ROOT.parent)
+            elif source_positive:
+                subject = copy.deepcopy(positive_documents[source_positive])
+                apply_mutations(subject, document.get("mutations", []))
+                if document.get("rebindReservationDigests") is True:
+                    rebind_reservation_digests(subject)
+                actual = validate_document(subject)
             elif source_example:
                 source_path = ROOT / "examples" / source_example
                 subject = copy.deepcopy(example_documents[source_path.name])
@@ -2889,12 +3276,18 @@ def main() -> int:
         if actual != expected:
             failures.append(f"{path.relative_to(ROOT)}: expected {expected!r}, got {actual!r}")
 
-    failures.extend(check_coverage(example_documents, negative_codes))
+    failures.extend(
+        check_coverage(
+            example_documents, negative_codes, set(positive_documents)
+        )
+    )
 
     try:
         errors = validate_document(dogfood, repository_root=ROOT.parent)
         if errors:
             failures.append(f"Steering dogfood: {', '.join(errors)}")
+    except InvalidJsonScalarError:
+        failures.append("Steering dogfood repository driver error: INVALID_JSON_SCALAR")
     except (OSError, json.JSONDecodeError) as exc:
         failures.append(f"Steering dogfood repository driver error: {exc}")
 

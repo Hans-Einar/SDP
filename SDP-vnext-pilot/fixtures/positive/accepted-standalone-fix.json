@@ -4,7 +4,7 @@
   "case": "accepted-standalone-zero-slice-fix-affects-delivered-work",
   "sourceExample": "simple-single-domain.json",
   "mutations": [
-    {"op": "replace", "path": "/registries/0/domains/0/issuedIds/2/authorityIssue", "value": "https://github.com/example/tiny-app/issues/12"},
+    {"op": "replace", "path": "/registries/0/domains/0/issuedIds/2/allocationIssue", "value": "https://github.com/example/tiny-app/issues/12"},
     {"op": "replace", "path": "/records/0/declaredState", "value": "delivered"},
     {"op": "replace", "path": "/records/0/acceptedEvidence", "value": {"candidate": "1010101010101010101010101010101010101010", "verificationRefs": [{"id": "FEAT-VER-001", "candidate": "1010101010101010101010101010101010101010"}], "currentReviewRef": {"id": "FEAT-REV-001", "candidate": "1010101010101010101010101010101010101010", "disposition": "approved"}, "steeringDisposition": {"authority": "https://github.com/example/tiny-app/issues/10#issuecomment-1004", "candidate": "1010101010101010101010101010101010101010", "decision": "accepted"}, "releaseRefs": []}},
     {"op": "replace", "path": "/records/2/declaredState", "value": "delivered"},
@@ -20,6 +20,7 @@
       "declaredState": "accepted",
       "authority": {"issue": "https://github.com/example/tiny-app/issues/12", "amendments": []},
       "workRef": {"type": "fix", "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001", "id": "FIX-001"},
+      "authorizedSlices": [],
       "activeSlices": [],
       "baseline": {"branch": "main", "commit": "2222222222222222222222222222222222222222"},
       "delivery": {"branch": "codex/issue-12-fix", "pullRequest": "https://github.com/example/tiny-app/pull/13"},
@@ -44,6 +45,7 @@
     {"op": "add", "path": "/reservationSets/0/assignments/-", "value": {
       "issue": "https://github.com/example/tiny-app/issues/12",
       "workRef": {"type": "fix", "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001", "id": "FIX-001"},
+      "authorizedSlices": [],
       "activeSlices": [],
       "reservedIds": [{"domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001", "id": "FIX-001"}],
       "ownedPaths": ["Fixes/FIX-001.json"],

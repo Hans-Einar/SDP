@@ -67,10 +67,12 @@ Issue assignment/authority names that Fix, and the Fix itself carries the same
 qualified accepted evidence otherwise required for a Slice. A medium-, high-,
 or safety-critical-risk Fix, or any non-standalone Fix, uses one or more
 Slices. Review rework on an unaccepted candidate is not a Fix; a correction
-after acceptance is. A delivered zero-Slice Fix also has at least one qualified
-`affectedWork` reference to an evidence-qualified delivered/released work
-owner; a proposed or unresolved target does not prove that the Fix corrects
-accepted behavior.
+after acceptance is. Every delivered/released Fix, sliced or standalone, has at
+least one qualified, locally resolved `affectedWork` reference to an
+evidence-qualified accepted behavior surface. A durable work owner may remain
+`active` after an accepted assignment, but its target evidence must itself be
+qualified; a proposed, unresolved, or evidence-empty target does not prove
+that the Fix corrects accepted behavior.
 
 ### Study
 
@@ -142,7 +144,8 @@ identity or earlier evidence.
 |---|---|
 | Work owner to Issue | A proposed work owner has `0..N` Issues; delivery requires `1..N` over its lifetime. |
 | Issue to primary work | Exactly `1`. It is Feature, Refactor, Fix, or Study. Related work is `0..N` and cannot silently share primary ownership. |
-| Issue to Slice | `0..N`. Study-only assignments may have zero; implementation assignments normally have `1..N`; a tiny Fix may have zero. |
+| Issue to authorized Slice | `0..N` preserved over the Issue lifetime. Study-only assignments may have zero; implementation assignments normally have `1..N`; a tiny standalone Fix may have zero. |
+| Issue to active Slice | Pilot v0 has `0..1`, always a subset of `authorizedSlices`. It is the currently executing Slice only, never the historical Slice set. An accepted assignment has zero active Slices. |
 | Slice to owner | Exactly `1` Feature, Refactor, or Fix, plus `0..N` related/dependency references. |
 | Slice to Issue assignment | Exactly `1`. Give it a separate Issue when authority, risk, ownership, branch/PR, or independent acceptance is separate. |
 | Study to owner | `0..1` local owner plus `0..N` informed work/decision relations. A foundation Study may have no local owner. |
@@ -159,15 +162,24 @@ rather than weakening the cardinality.
 
 For every represented Slice, validation walks both directions: the owner lists
 the Slice exactly once; the Slice names that owner and one Issue; exactly one
-assignment for that Issue lists the Slice; the assignment's primary `workRef`
-is that owner; and the owner's `issueAuthorities` contains that Issue exactly
-once. A missing owner-referenced Slice is an error rather than an unresolved
-future placeholder. Slice `decisionRefs` are qualified and locally resolvable,
-private paths are portable and contained by the assignment's owned
+assignment for that Issue preserves the Slice in `authorizedSlices`; the
+assignment's primary `workRef` is that owner; and the owner's
+`issueAuthorities` contains that Issue exactly once. Each authorized entry
+stores `acceptedCandidate: null` until acceptance and thereafter stores the
+immutable qualified Slice candidate. `activeSlices` is a `0..1` subset of that
+set. A missing owner-referenced or authorized Slice is an error rather than an
+unresolved future placeholder. Slice `decisionRefs` are qualified and locally
+resolvable, private paths are portable and contained by the assignment's owned
 reservations, and shared paths exactly match its declared touchpoints.
-The assignment Issue also equals the primary Feature/Refactor/Fix/Study
-record's Issue authority and the prospective issued-inventory authority for
-that primary reference.
+
+Prospective inventory records a stable ID's one-time immutable
+`allocationIssue`; it does not claim that every future assignment executes
+under that Issue. The allocating Issue must match each newly created/reserved
+Slice, Study, and Fix identity. A later assignment may reference an already
+issued Feature, Refactor, or Fix only when its canonical Issue occurs exactly
+once in that owner's `issueAuthorities`; this is execution authority, not ID
+reclaim. Legacy-preserved inventory separately retains historical
+`authorityIssue` (or a truthful null plus reason) as provenance.
 
 Embedded and top-level semantic edges are two authored surfaces of one global
 set. Feature and Refactor `relations` contain one supported relation `type`
@@ -192,6 +204,19 @@ delivered/released implementation work, its target is evidence-qualified
 cannot authorize implementation. Pilot v0 Slice `decisionRefs` are deliberately
 narrower: each is a qualified, locally resolved, evidence-qualified accepted
 Study. Other decision-record kinds may be considered after pilot evidence.
+
+Four directional relation types form separate globally normalized DAGs across
+embedded and top-level surfaces. Direction is always authored source to target:
+
+- `depends_on`: the source depends on the target;
+- `supersedes`: the source replaces the target;
+- `refines`: the source elaborates the target; and
+- `requires_revision`: the source requires revision of the target.
+
+Two- or longer-hop cycles are invalid across scopes and repositories.
+`preserves`, `informs`, `owned_by`, `independent_of`, and `corrects` are not
+DAG-gated; they retain the same self-edge, duplicate, reference, and kind rules
+described above.
 
 ## 4. Identity and revision rules
 
@@ -258,8 +283,10 @@ relations may remain inspectable, but they do not become current authority.
   candidate evidence remains immutable.
 - Reopening an accepted Issue does not reopen accepted Slices in place. Prefer
   a new Issue; if the same Issue is intentionally reused, create a new
-  assignment revision and new Slice IDs, with `extends`, `corrects`, or
-  `supersedes` relations.
+  assignment revision and new Slice IDs. Preserve every earlier Slice in
+  `authorizedSlices` with its immutable accepted candidate; set only the new
+  Slice active. Accepted revision snapshots and the bound reservation digest
+  make an attempted earlier-evidence rewrite fail closed.
 - A delivered Feature or Refactor is extended by a new Issue and new Slice(s).
   The work owner may move back to declared `active`, but the earlier delivery
   and release evidence remains intact.
@@ -333,25 +360,38 @@ resolvable Slice; the qualified low-risk standalone Fix remains the only
 proportional zero-Slice delivery exception.
 
 Acceptance is also cross-record state, not only a well-shaped evidence object.
-An accepted implementation assignment requires every bounded `activeSlices`
-member to be `accepted` with qualified evidence for the assignment candidate;
-its durable Feature/Refactor may remain `active` for later assignments. An
+An accepted implementation assignment has `activeSlices: []` and requires
+every `authorizedSlices` member to be `accepted` with qualified evidence. Each
+authorized entry repeats that Slice's own immutable candidate; different
+Slices and the final aggregate assignment may have different candidates. Its
+durable Feature/Refactor may remain `active` for later assignments. An
 accepted Study-only assignment requires its primary Study to be `accepted` at
 that candidate. An accepted standalone Fix assignment requires its primary Fix
-to be delivered/released at that candidate. An in-set dependency must already
-be accepted, and both endpoints of a symmetric conflict cannot simultaneously
-be `active` or `accepted`; an active endpoint with its peer explicitly
-`blocked` is the valid reservation state.
+to be delivered/released at the same candidate and requires exactly one
+accepted, evidence-qualified, zero-authorized-Slice assignment. An in-set
+dependency must already be accepted, and both endpoints of a symmetric
+conflict cannot simultaneously be `active` or `accepted`; an active endpoint
+with its peer explicitly `blocked` is the valid reservation state.
 
 A Feature, Refactor, or non-standalone Fix declared `delivered` or `released`
-is evidence-closed over every Slice currently represented in its `slices`
-list. Each represented Slice is `accepted` with qualified evidence, and its
-exact authorizing assignment is independently `accepted` with qualified,
-candidate-coherent Slice evidence. The aggregate work-owner evidence candidate
-does not have to equal every historical assignment/Slice candidate: delivery
-aggregates accepted outcomes over time. This does not change the valid case
-where one accepted assignment and Slice leave a durable multi-assignment
-Feature `active`.
+resolves every `issueAuthorities` member to exactly one preserved assignment
+for that owner. Every implementation assignment is evidence-qualified
+`accepted`; all of its authorized Slices and every Slice in the owner's
+complete `slices` list are evidence-qualified `accepted` at their own preserved
+candidates. The aggregate work-owner evidence candidate does not have to equal
+every historical assignment/Slice candidate: delivery aggregates accepted
+outcomes over time. A delivered/released standalone Fix instead closes exactly
+one accepted zero-Slice assignment at the Fix candidate. Every terminal Fix
+also closes its qualified affected-work targets. None of these terminal rules
+changes the valid case where one accepted assignment and Slice leave a durable
+multi-assignment Feature `active`.
+
+An active Feature/Refactor/non-standalone-Fix assignment has exactly one active
+Slice in pilot v0. Both assignment and Slice expose at least one owned or
+shared write surface, and the assignment cannot list its own hosting repository
+under `prohibitedRepositories`. Study-only and explicitly standalone
+zero-Slice non-implementation units may be pathless when the Issue documents
+that boundary and the compact assignment mirrors a nonblank `pathlessReason`.
 
 Authored records may contain stable URLs, the declared integration base, target
 branch, policy, and intended PR URL. They MUST NOT claim mutable Issue/PR/check/

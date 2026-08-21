@@ -20,7 +20,9 @@ Each record declares:
 - its exact v0 `schemaVersion`, `kind`, `experimental: true`, its own portable
   repository-relative `source`, canonical Issue/comment amendment URLs, and
   positive integer `revision`;
-- primary `workRef` as `{domainUid, id}` and active Slice references;
+- primary `workRef` as `{domainUid, id}`, the complete preserved
+  `authorizedSlices` set, and its `0..1` currently executing `activeSlices`
+  subset;
 - `baseline.branch`, exact 40-character `baseline.commit`, and the identical
   `coordination.integrationBase` used by the reservation set;
 - intended delivery branch and PR URL, not their mutable live state;
@@ -43,7 +45,10 @@ assignment record.
    conflict, convergence gate, and merge order. Hash its canonical JSON bytes.
    Pilot v0 canonical bytes are UTF-8 without BOM from JSON with object keys
    sorted lexicographically, original array order retained, no insignificant
-   whitespace, separators `,` and `:`, and Unicode characters unescaped.
+   whitespace, separators `,` and `:`, Unicode characters unescaped, and only
+   finite JSON numbers. Parsing rejects `NaN` and positive/negative infinity;
+   encoding uses the equivalent of `allow_nan=false`. Recursive invalid scalar
+   checks include outer extension objects before any hash is returned.
 5. Commit/publish the coordination record so every work branch can start from
    the exact commit containing the same reservation set. When default cannot
    yet receive it, use an explicitly named integration/coordination branch and
@@ -84,7 +89,11 @@ retains both earlier snapshots while reserving the fourth exact evidence gate
 and adopting the third-pass validation corrections. Revision 4 retains the
 exact revision-3 snapshot from the fourth-review candidate, reserves the fifth
 independent evidence gate, and records the terminal-work, marker, global-graph,
-surrogate, and path-boundary rework. A completed
+surrogate, and path-boundary rework. Revision 5 retains the exact revision-4 snapshot from
+`15a476dd76bc80de5573ab2abb65af8c963a9c0e`, reserves exact
+`REV/VER-SDP-007-006` paths, and refreezes allocation/execution authority,
+preserved authorized Slices, terminal aggregate closure, semantic DAG, strict
+JSON, and active-work satisfiability rules. A completed
 historical prerequisite remains linked as evidence without pretending another
 Issue Master is concurrently active.
 
@@ -96,7 +105,7 @@ same generic validator. It resolves the set by ID, recomputes the canonical
 digest, and compares this complete projection for every assignment:
 
 ```text
-Issue + primary workRef + activeSlices
+Issue + primary workRef + authorizedSlices + activeSlices
 + qualified reservedIds + ownedPaths + sharedTouchpoints
 + dependsOnIssues + conflictsWithIssues
 + common integrationBase + mergeOrder + terminal convergence
@@ -120,6 +129,12 @@ later is invalid. Reservation must precede concurrent implementation.
   disjoint from `boundaries.prohibitedPaths`. A prohibition that contains or
   is contained by an authorized write surface makes the assignment internally
   unsatisfiable and blocks activation.
+- An active Feature/Refactor/non-standalone-Fix assignment cannot prohibit its
+  own hosting repository and exposes at least one owned/shared write surface.
+  It has exactly one active Slice in pilot v0, and that Slice also exposes an
+  owned/shared write surface. Study-only and explicitly standalone zero-Slice
+  non-implementation assignments may be pathless only when a nonblank
+  `pathlessReason` mirrors the boundary documented by their Issue.
 - Read-only dependencies need no path reservation but MUST be named with an
   exact candidate or contract reference when drift would matter.
 - Discovery outside reserved areas stops the Worker. The Master either returns

@@ -22,7 +22,7 @@
             {
               "id": "HSX-STU-001",
               "status": "prospective",
-              "authorityIssue": "https://github.com/example/hsx-like/issues/150",
+              "allocationIssue": "https://github.com/example/hsx-like/issues/150",
               "source": "SDP/HSX/Studies/HSX-STU-001.json"
             }
           ],
@@ -40,13 +40,13 @@
             {
               "id": "DBG-FEAT-001",
               "status": "prospective",
-              "authorityIssue": "https://github.com/example/hsx-like/issues/201",
+              "allocationIssue": "https://github.com/example/hsx-like/issues/201",
               "source": "SDP/Debugger/Features/DBG-FEAT-001.json"
             },
             {
               "id": "DBG-SLC-001",
               "status": "prospective",
-              "authorityIssue": "https://github.com/example/hsx-like/issues/201",
+              "allocationIssue": "https://github.com/example/hsx-like/issues/201",
               "source": "SDP/Debugger/Slices/DBG-SLC-001.json"
             }
           ],
@@ -64,13 +64,13 @@
             {
               "id": "AVR-STU-001",
               "status": "prospective",
-              "authorityIssue": "https://github.com/example/hsx-like/issues/202",
+              "allocationIssue": "https://github.com/example/hsx-like/issues/202",
               "source": "SDP/AVR/Studies/AVR-STU-001.json"
             },
             {
               "id": "AVR-FIX-001",
               "status": "prospective",
-              "authorityIssue": "https://github.com/example/hsx-like/issues/202",
+              "allocationIssue": "https://github.com/example/hsx-like/issues/202",
               "source": "SDP/AVR/Fixes/AVR-FIX-001.json"
             }
           ],
@@ -88,13 +88,13 @@
             {
               "id": "SHARED-REF-001",
               "status": "prospective",
-              "authorityIssue": "https://github.com/example/hsx-like/issues/203",
+              "allocationIssue": "https://github.com/example/hsx-like/issues/203",
               "source": "SDP/Shared/Refactors/SHARED-REF-001.json"
             },
             {
               "id": "SHARED-SLC-001",
               "status": "prospective",
-              "authorityIssue": "https://github.com/example/hsx-like/issues/203",
+              "allocationIssue": "https://github.com/example/hsx-like/issues/203",
               "source": "SDP/Shared/Slices/SHARED-SLC-001.json"
             }
           ],
@@ -330,7 +330,7 @@
       "id": "SHARED-SLC-001",
       "source": "SDP/Shared/Slices/SHARED-SLC-001.json",
       "revision": 1,
-      "declaredState": "proposed",
+      "declaredState": "active",
       "title": "Converge the shared interface",
       "ownerRef": {
         "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
@@ -410,6 +410,13 @@
         "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
         "id": "DBG-FEAT-001"
       },
+      "authorizedSlices": [
+        {
+          "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+          "id": "DBG-SLC-001",
+          "acceptedCandidate": null
+        }
+      ],
       "activeSlices": [
         {
           "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
@@ -428,7 +435,7 @@
         "integrationBase": "3333333333333333333333333333333333333333",
         "reservationSet": {
           "id": "RSV-200",
-          "digest": "sha256:18c0e62dbe92e97b185ded1f13bf6940f594f84a55aa2176ed58e883fc6338a9"
+          "digest": "sha256:afce6c41825437f26ebfe0f40b4310ebdd812a306d04e85404f33db57a2282e1"
         },
         "dependsOnIssues": [],
         "conflictsWithIssues": ["https://github.com/example/hsx-like/issues/202"],
@@ -493,6 +500,7 @@
         "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000003",
         "id": "AVR-STU-001"
       },
+      "authorizedSlices": [],
       "activeSlices": [],
       "baseline": {
         "branch": "integration/vnext",
@@ -506,7 +514,7 @@
         "integrationBase": "3333333333333333333333333333333333333333",
         "reservationSet": {
           "id": "RSV-200",
-          "digest": "sha256:18c0e62dbe92e97b185ded1f13bf6940f594f84a55aa2176ed58e883fc6338a9"
+          "digest": "sha256:afce6c41825437f26ebfe0f40b4310ebdd812a306d04e85404f33db57a2282e1"
         },
         "dependsOnIssues": [],
         "conflictsWithIssues": ["https://github.com/example/hsx-like/issues/201"],
@@ -571,6 +579,13 @@
         "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
         "id": "SHARED-REF-001"
       },
+      "authorizedSlices": [
+        {
+          "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+          "id": "SHARED-SLC-001",
+          "acceptedCandidate": null
+        }
+      ],
       "activeSlices": [
         {
           "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
@@ -589,7 +604,7 @@
         "integrationBase": "3333333333333333333333333333333333333333",
         "reservationSet": {
           "id": "RSV-200",
-          "digest": "sha256:18c0e62dbe92e97b185ded1f13bf6940f594f84a55aa2176ed58e883fc6338a9"
+          "digest": "sha256:afce6c41825437f26ebfe0f40b4310ebdd812a306d04e85404f33db57a2282e1"
         },
         "dependsOnIssues": [
           "https://github.com/example/hsx-like/issues/201",
@@ -657,6 +672,13 @@
             "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
             "id": "DBG-FEAT-001"
           },
+          "authorizedSlices": [
+            {
+              "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+              "id": "DBG-SLC-001",
+              "acceptedCandidate": null
+            }
+          ],
           "activeSlices": [
             {
               "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
@@ -687,6 +709,7 @@
             "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000003",
             "id": "AVR-STU-001"
           },
+          "authorizedSlices": [],
           "activeSlices": [],
           "reservedIds": [
             {
@@ -712,6 +735,13 @@
             "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
             "id": "SHARED-REF-001"
           },
+          "authorizedSlices": [
+            {
+              "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+              "id": "SHARED-SLC-001",
+              "acceptedCandidate": null
+            }
+          ],
           "activeSlices": [
             {
               "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",

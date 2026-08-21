@@ -7,5 +7,5 @@
     {"op": "replace", "path": "/records/1/declaredState", "value": "active"},
     {"op": "replace", "path": "/records/1/acceptedEvidence", "value": {"candidate": null, "verificationRefs": [], "currentReviewRef": null, "steeringDisposition": null, "releaseRefs": []}}
   ],
-  "expectedErrors": ["ASSIGNMENT_SLICE_STATE_MISMATCH"]
+  "expectedErrors": ["ASSIGNMENT_SLICE_STATE_MISMATCH", "AUTHORIZED_SLICE_CANDIDATE_MISMATCH"]
 }

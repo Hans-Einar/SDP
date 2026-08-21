@@ -107,7 +107,8 @@ is intentionally narrower than every name Git might technically accept.
 The branch adds one compact
 `Steering/Assignments/ISSUE-<number>.yaml|json` record before broad work. It
 stores its own portable `source`, the stable authority URL, primary qualified
-work reference, declared
+work reference, complete `authorizedSlices` history with immutable accepted
+candidates, `0..1` currently executing `activeSlices`, declared
 baseline/delivery targets, reservations, dependency/convergence contract,
 required evidence, and stop condition. It links back to the Issue for scope,
 non-goals, and prose; it does not duplicate them.
@@ -115,7 +116,10 @@ non-goals, and prose; it does not duplicate them.
 The current mirror and every bound current reservation use their exact pilot
 v0 `schemaVersion`, exact `kind`, and `experimental: true`; marker omission is
 not a compatibility mode. Its normalized owned/shared write surfaces are also
-disjoint from normalized `boundaries.prohibitedPaths`.
+disjoint from normalized `boundaries.prohibitedPaths`. Active implementation
+also cannot prohibit the hosting repository and cannot be pathless; Study-only
+and explicitly standalone zero-Slice units may document a pathless boundary
+with a nonblank assignment `pathlessReason`.
 
 An amendment comment is recorded as a stable URL under `authority.amendments`.
 If it changes scope, baseline, reservation, or merge order, the Master increments

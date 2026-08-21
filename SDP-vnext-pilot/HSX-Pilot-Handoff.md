@@ -122,9 +122,9 @@ uses the prospective v0 forms `SHARED-REF-001` and `SHARED-SLC-001`.
 
 Store each historical spelling as a structured `legacy-preserved` inventory
 member with its exact repository, commit, path/source, and authority Issue when
-one exists. If no Issue existed, store `authorityIssue: null` plus a nonblank
+one exists. If no Issue existed, store historical `authorityIssue: null` plus a nonblank
 `authorityMissingReason`; do not invent one. Store each new pilot ID as
-`prospective` with the allocating Issue and a normalized portable
+`prospective` with immutable `allocationIssue` and a normalized portable
 repository-relative source, and put the identical `source` in the represented
 record. New IDs end exactly in `-NNN`. Check normalized uniqueness before
 allocation and reject any reservation by an Issue other than the recorded
@@ -145,6 +145,9 @@ The pilot assignment must contain:
   `legacy-preserved` inventory that cannot satisfy current gates;
 - selected operational integration branch and exact base commit;
 - the `SHARED` UID and `SHARED-REF-001`/`SHARED-SLC-001` reservations;
+- complete `authorizedSlices` with each accepted Slice's immutable candidate,
+  plus a `0..1` currently executing `activeSlices` subset; accepted assignments
+  have no active Slice;
 - owned pilot metadata paths, with the four existing domain trees otherwise
   read-only;
 - explicit shared touchpoints, if any, and their domain owner;
@@ -160,7 +163,10 @@ The pilot assignment must contain:
   because Issue #36 already exposed the `agents.md`/`AGENTS.md` Windows case
   collision);
 - owned/shared paths disjoint from prohibited paths and stable diagnostics for
-  invalid Unicode scalar content before any reservation digest is computed;
+  invalid Unicode scalar or non-finite JSON content before any reservation
+  digest is computed;
+- at least one owned/shared write surface on the active Refactor assignment and
+  Slice, with the hosting HSX repository absent from prohibited repositories;
 - stale-base/refreeze before any change if the selected operational head moves;
   and
 - fresh exact-candidate verification and separate review.

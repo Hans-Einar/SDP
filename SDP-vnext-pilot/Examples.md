@@ -11,8 +11,9 @@ labels observed evidence.
 [`examples/simple-single-domain.json`](examples/simple-single-domain.json)
 declares exactly one default domain with `newRecordIdStyle: unscoped`. New work
 therefore uses `FEAT-001`, `SLC-001`, and an illustrative `FIX-001`. The
-assignment and Slice are accepted at one candidate while the durable Feature
-remains `active`, demonstrating that one accepted assignment does not force a
+assignment aggregates its authorized accepted Slice while the assignment and
+Slice retain independently qualified candidates. `activeSlices` is empty after
+acceptance, while the durable Feature remains `active`, demonstrating that one accepted assignment does not force a
 multi-assignment capability to `delivered`. Even though the visible ID is unscoped,
 references still carry its immutable `domainUid`, so adding another domain or
 moving the original domain later does not make the old identity ambiguous.
@@ -66,7 +67,8 @@ views for one domain:
 
 The inventory also preserves historical `DBG-RF-001` with its exact source
 repository, commit, path, and authority Issue. `DBG-ST-000` is a positive
-truthful no-Issue case: it retains `authorityIssue: null`, an explicit reason,
+truthful no-Issue case: it retains historical `authorityIssue: null`, an
+explicit reason,
 and exact provenance rather than inventing authority. The move example
 deliberately models no delivered work, Issue assignment, or Slice; it
 demonstrates identity portability without inventing missing delivery evidence.
@@ -92,6 +94,15 @@ aggregate owner evidence candidate to differ from its historical Slice
 candidate. Another control proves two distinct supported relation types for the
 same source/target are not a duplicate, and a path-boundary control keeps
 authorized and prohibited surfaces disjoint.
+
+Three positive lifecycle controls exercise the formerly contradictory
+cardinalities: one delivered Feature has two Issues/two accepted Slices at
+distinct candidates; one Issue aggregates two sequential accepted Slices at
+distinct candidates; and a repository-driven revision-5 accepted-Issue reopen
+retains the earlier Slice candidate while adding a new Slice. Further controls
+exercise an acyclic cross-scope diamond/mixed embedded-top-level chain, a
+finite numeric digest extension, and documented pathless Study-only and
+standalone-Fix assignments.
 
 ## Negative collision examples
 
@@ -138,8 +149,16 @@ authorized and prohibited surfaces disjoint.
   `depends_on` targets;
 - one global semantic-edge set, including cross-surface duplicates, self edges,
   unsupported/candidate/extra fields, and a legitimate distinct-edge control;
-- owned/shared versus prohibited path overlap and a JSON-escaped lone surrogate
-  through a bound reservation path; and
+- two/three-hop cycles in the global `depends_on`, `supersedes`, `refines`, and
+  `requires_revision` DAGs, including cross-scope embedded/top-level mixes;
+- allocation/execution-authority separation, missing/rewritten authorized
+  Slice history, non-subset/multiple active Slices, and wrong Slice allocation;
+- terminal missing/active Issue authority, standalone/sliced Fix closure, and
+  empty/proposed/unaccepted corrected-behavior targets;
+- active host-repository prohibition and missing implementation write surfaces;
+- owned/shared versus prohibited path overlap, a JSON-escaped lone surrogate,
+  and recursively nested `NaN`/positive/negative infinity through bound
+  reservation extension objects; and
 - missing, fabricated, tampered, gapped, truncated, or repository-unresolved
   multi-refreeze history.
 
@@ -148,11 +167,13 @@ cannot “pass” merely because the validator failed for an unrelated reason.
 
 ## Issue #7 dogfood refreeze
 
-`Steering/Assignments/ISSUE-007.yaml` is revision 4. Its immediate
+`Steering/Assignments/ISSUE-007.yaml` is revision 5. Its immediate
 `previousRevision` points to
-`Steering/Assignments/History/ISSUE-007-revision-003.json`, sourced from exact
-candidate `60978c306f7ce3c09033603abf3300839b2a251d`. That snapshot links revision
-2 at `0de8a8957b3212404007160d90da47445d7b4e7b`, which links revision 1 at
-`f79e3dfc18c7a1650f1f3ae66167dda9b69692b4`, so the complete 1..3 chain is
-retained. Revision 4 reserves exact `REV/VER-SDP-007-005` evidence paths and
-records why the fourth independent review required another refreeze.
+`Steering/Assignments/History/ISSUE-007-revision-004.json`, sourced from exact
+candidate `15a476dd76bc80de5573ab2abb65af8c963a9c0e`. That snapshot links revision
+3 at `60978c306f7ce3c09033603abf3300839b2a251d`, revision 2 at
+`0de8a8957b3212404007160d90da47445d7b4e7b`, and revision 1 at
+`f79e3dfc18c7a1650f1f3ae66167dda9b69692b4`, so the complete 1..4 chain is
+retained. Revision 5 reserves exact
+`REV/VER-SDP-007-006` evidence paths and records why the fifth evidence gate
+required another refreeze.

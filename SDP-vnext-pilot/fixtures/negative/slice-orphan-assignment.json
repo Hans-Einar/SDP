@@ -4,8 +4,8 @@
   "case": "slice-has-no-authorizing-assignment",
   "sourceExample": "simple-single-domain.json",
   "mutations": [
-    {"op": "replace", "path": "/assignments/0/activeSlices", "value": []},
-    {"op": "replace", "path": "/reservationSets/0/assignments/0/activeSlices", "value": []}
+    {"op": "replace", "path": "/assignments/0/authorizedSlices", "value": []},
+    {"op": "replace", "path": "/reservationSets/0/assignments/0/authorizedSlices", "value": []}
   ],
   "rebindReservationDigests": true,
   "expectedErrors": ["ASSIGNMENT_SLICE_STATE_MISMATCH", "SLICE_ASSIGNMENT_CARDINALITY"]

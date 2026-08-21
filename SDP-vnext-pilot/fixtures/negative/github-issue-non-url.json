@@ -4,8 +4,8 @@
   "case": "issue-authority-is-not-a-github-url",
   "sourceExample": "simple-single-domain.json",
   "mutations": [
-    {"op": "replace", "path": "/registries/0/domains/0/issuedIds/0/authorityIssue", "value": "not-an-issue"},
-    {"op": "replace", "path": "/registries/0/domains/0/issuedIds/1/authorityIssue", "value": "not-an-issue"},
+    {"op": "replace", "path": "/registries/0/domains/0/issuedIds/0/allocationIssue", "value": "not-an-issue"},
+    {"op": "replace", "path": "/registries/0/domains/0/issuedIds/1/allocationIssue", "value": "not-an-issue"},
     {"op": "replace", "path": "/records/0/issueAuthorities/0", "value": "not-an-issue"},
     {"op": "replace", "path": "/records/1/assignmentIssue", "value": "not-an-issue"},
     {"op": "replace", "path": "/assignments/0/authority/issue", "value": "not-an-issue"},

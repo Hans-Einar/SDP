@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"assignment-issue-is-absent-from-owner-execution-authorities","sourceExample":"simple-single-domain.json","mutations":[{"op":"replace","path":"/records/0/issueAuthorities","value":[]}],"expectedErrors":["OWNER_ISSUE_AUTHORITY_MISMATCH"]}
