@@ -4,6 +4,7 @@
   "kind": "study",
   "domainUid": "urn:uuid:10000000-0000-4000-8000-000000000001",
   "id": "APP-STU-001",
+  "source": "Studies/APP-STU-001.json",
   "revision": 1,
   "declaredState": "proposed",
   "title": "Illustrative bounded study",

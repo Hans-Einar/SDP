@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "accepted-current-review-is-not-a-qualified-object",
+  "sourceExample": "scoped-monorepo.json",
+  "mutations": [
+    {"op": "replace", "path": "/records/0/acceptedEvidence/currentReviewRef", "value": "HSX-RVW-150"}
+  ],
+  "expectedErrors": ["ACCEPTED_EVIDENCE_REQUIRED", "ACCEPTED_EVIDENCE_SHAPE_INVALID"]
+}

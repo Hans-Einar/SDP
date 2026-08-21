@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "registry-repository-is-not-a-canonical-github-url",
+  "sourceExample": "domain-move.json",
+  "mutations": [
+    {"op": "replace", "path": "/registries/0/repository", "value": "http://github.com/example/old-monorepo"},
+    {"op": "replace", "path": "/registries/1/domains/0/predecessorRepositories/0", "value": "http://github.com/example/old-monorepo"}
+  ],
+  "expectedErrors": ["INVALID_GITHUB_REPOSITORY", "MOVE_PREDECESSOR_MISSING"]
+}

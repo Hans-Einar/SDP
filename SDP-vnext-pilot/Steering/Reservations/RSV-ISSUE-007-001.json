@@ -24,8 +24,10 @@
         "Sprints/SPR-SDP-007--provisional-vnext-contract/**",
         "CodeReview/REV-SDP-007-001.md",
         "CodeReview/REV-SDP-007-002.md",
+        "CodeReview/REV-SDP-007-003.md",
         "Verification/VER-SDP-007-001.md",
-        "Verification/VER-SDP-007-002.md"
+        "Verification/VER-SDP-007-002.md",
+        "Verification/VER-SDP-007-003.md"
       ],
       "sharedTouchpoints": [
         {

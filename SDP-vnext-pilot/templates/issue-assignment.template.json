@@ -2,6 +2,7 @@
   "schemaVersion": "sdp-vnext-pilot-assignment-v0",
   "experimental": true,
   "kind": "issue-assignment",
+  "source": "Steering/Assignments/ISSUE-101.json",
   "revision": 1,
   "declaredState": "active",
   "authority": {

@@ -4,6 +4,7 @@
   "kind": "study",
   "domainUid": "urn:uuid:9df0765b-4f22-4c5e-8fda-b5e71c96ca81",
   "id": "STU-007",
+  "source": "SDP-vnext-pilot/Studies/STU-007.json",
   "revision": 1,
   "declaredState": "active",
   "title": "Provisional SDP vNext workflow and scoped-domain contract",

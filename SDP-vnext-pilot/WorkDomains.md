@@ -9,8 +9,11 @@ concepts.
 
 ## Decisions for the twelve Issue #7 questions
 
-1. **Several domains in one repository:** yes. A repository declares one or
-   more active/moved domain entries in a registry.
+1. **Several domains in one repository:** yes. Pilot v0 uses exactly one
+   registry object per canonical GitHub repository; that object declares one
+   or more active/moved domain entries. Partitioned registry objects are
+   rejected provisionally because they create unsafe collision-check
+   boundaries.
 2. **Stable short namespace:** yes. Each domain has an immutable uppercase
    ASCII `key` of 2–12 characters (`[A-Z][A-Z0-9]{1,11}`), selected and
    collision-checked before use.
@@ -105,20 +108,57 @@ once, across all current and historical repositories. A move imports the full
 issued/reserved inventory before new allocation. Numeric gaps are not evidence
 that an ID is available.
 
+Every new form ends with exactly one three-digit allocation suffix (`-NNN`).
+An undocumented form such as `FEAT-001-002` is not prospective pilot v0
+identity. Empty IDs are invalid. Historical spellings are preserved exactly,
+including spelling/case that would not satisfy the prospective grammar.
+
 `issuedIds` is a structured inventory, never a list of bare strings. A
 prospective member carries `id`, `status: prospective`, the allocating
 `authorityIssue`, and its repository-relative `source`. It must satisfy the
-current domain key/style/type grammar. A preserved historical spelling such as
-`DBG-RF-001` carries `status: legacy-preserved`, its original authority/source,
-and exact provenance `{repository, commit, path}`; it is not normalized into a
-new `REF` identity. Inventory IDs are unique after NFKC/casefold normalization.
-An assignment may reserve an already-issued ID only when its Issue equals that
-member's recorded authority; another Issue cannot reclaim it.
+current domain key/style/type grammar. `source` is a normalized, portable,
+non-recursive repository-relative record path and equals the represented
+record's own `source`; when local, it resolves to that exact record. A
+preserved historical spelling such as `DBG-RF-001` carries `status:
+legacy-preserved`, its original source, and exact provenance `{repository,
+commit, path}`; it is not normalized into a new `REF` identity. Its
+`authorityIssue` is canonical when an Issue existed. If none existed, it is
+`null` and a nonblank `authorityMissingReason` states that fact—history is not
+invented. Provenance repository and Issue values use the canonical GitHub
+forms below, while provenance/source paths remain portable. Inventory IDs are
+unique after NFKC/casefold normalization. An assignment may reserve an
+already-issued ID only when its Issue equals that member's recorded authority;
+another Issue cannot reclaim it.
+
+## Canonical GitHub identities
+
+Pilot v0 accepts only these authored forms:
+
+```text
+repository:     https://github.com/<owner>/<repo>
+Issue:          https://github.com/<owner>/<repo>/issues/<positive-decimal>
+pull request:   https://github.com/<owner>/<repo>/pull/<positive-decimal>
+Issue comment:  https://github.com/<owner>/<repo>/issues/<positive-decimal>#issuecomment-<positive-decimal>
+```
+
+Numbers have no leading zero. Values are nonblank; the scheme/host and path
+shape are exact. Arbitrary hosts/schemes, `.git` transport forms, query
+strings, extra fragments, trailing slashes, zero, and path/number aliases are
+rejected. Host, owner, and repository comparisons are case-insensitive, so a
+case spelling cannot create another graph node or another registry partition.
+One registry object owns each canonical repository in pilot v0; duplicate and
+case-alias registry objects are rejected before default-domain, key, or root
+checks. Every assignment Issue and planned PR belongs to the registry
+repository that actively hosts its primary work domain. Canonical Issue
+identity is also used for work/Study authorities, structured inventory,
+reservation rows and edges/order, amendments, and Steering evidence.
 
 ## Declaration and discovery
 
 A registry has a stable schema marker and `experimental: true`, identifies the
-hosting repository, and lists declarations. Each declaration includes:
+hosting repository in canonical GitHub form, and lists declarations. Pilot v0
+allows exactly one registry object for that canonical repository. Each
+declaration includes:
 
 - immutable `domainUid`, stable `key`, name, explicit owners, and
   `newRecordIdStyle`;

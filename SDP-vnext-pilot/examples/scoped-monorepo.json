@@ -104,6 +104,7 @@
       "kind": "study",
       "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000001",
       "id": "HSX-STU-001",
+      "source": "SDP/HSX/Studies/HSX-STU-001.json",
       "revision": 1,
       "declaredState": "accepted",
       "title": "Portable core contract",
@@ -121,9 +122,22 @@
       "informs": [],
       "acceptedEvidence": {
         "candidate": "1501501501501501501501501501501501501501",
-        "verificationRefs": ["HSX-VER-150"],
-        "currentReviewRef": "HSX-RVW-150",
-        "steeringDisposition": "accepted",
+        "verificationRefs": [
+          {
+            "id": "HSX-VER-150",
+            "candidate": "1501501501501501501501501501501501501501"
+          }
+        ],
+        "currentReviewRef": {
+          "id": "HSX-RVW-150",
+          "candidate": "1501501501501501501501501501501501501501",
+          "disposition": "approved"
+        },
+        "steeringDisposition": {
+          "authority": "https://github.com/example/hsx-like/issues/150#issuecomment-15001",
+          "candidate": "1501501501501501501501501501501501501501",
+          "decision": "accepted"
+        },
         "releaseRefs": []
       }
     },
@@ -133,6 +147,7 @@
       "kind": "feature",
       "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
       "id": "DBG-FEAT-001",
+      "source": "SDP/Debugger/Features/DBG-FEAT-001.json",
       "revision": 1,
       "declaredState": "active",
       "title": "Debugger portable inspection",
@@ -167,6 +182,7 @@
       "kind": "slice",
       "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
       "id": "DBG-SLC-001",
+      "source": "SDP/Debugger/Slices/DBG-SLC-001.json",
       "revision": 1,
       "declaredState": "active",
       "title": "Debugger inspection through portable boundary",
@@ -207,6 +223,7 @@
       "kind": "study",
       "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000003",
       "id": "AVR-STU-001",
+      "source": "SDP/AVR/Studies/AVR-STU-001.json",
       "revision": 1,
       "declaredState": "active",
       "title": "AVR side of portable boundary",
@@ -236,6 +253,7 @@
       "kind": "refactor",
       "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
       "id": "SHARED-REF-001",
+      "source": "SDP/Shared/Refactors/SHARED-REF-001.json",
       "revision": 1,
       "declaredState": "proposed",
       "title": "Explicit shared contract ownership",
@@ -270,6 +288,7 @@
       "kind": "slice",
       "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
       "id": "SHARED-SLC-001",
+      "source": "SDP/Shared/Slices/SHARED-SLC-001.json",
       "revision": 1,
       "declaredState": "proposed",
       "title": "Converge the shared interface",
@@ -318,6 +337,7 @@
       "schemaVersion": "sdp-vnext-pilot-assignment-v0",
       "experimental": true,
       "kind": "issue-assignment",
+      "source": "Steering/Assignments/ISSUE-201.json",
       "revision": 1,
       "declaredState": "active",
       "authority": {
@@ -400,6 +420,7 @@
       "schemaVersion": "sdp-vnext-pilot-assignment-v0",
       "experimental": true,
       "kind": "issue-assignment",
+      "source": "Steering/Assignments/ISSUE-202.json",
       "revision": 1,
       "declaredState": "active",
       "authority": {
@@ -477,6 +498,7 @@
       "schemaVersion": "sdp-vnext-pilot-assignment-v0",
       "experimental": true,
       "kind": "issue-assignment",
+      "source": "Steering/Assignments/ISSUE-203.json",
       "revision": 1,
       "declaredState": "active",
       "authority": {

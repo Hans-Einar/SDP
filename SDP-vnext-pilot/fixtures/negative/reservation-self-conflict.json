@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "reservation-issue-conflicts-with-itself",
+  "sourceExample": "simple-single-domain.json",
+  "mutations": [
+    {"op": "add", "path": "/assignments/0/coordination/conflictsWithIssues/-", "value": "https://github.com/example/tiny-app/issues/10"},
+    {"op": "add", "path": "/reservationSets/0/assignments/0/conflictsWithIssues/-", "value": "https://github.com/example/tiny-app/issues/10"}
+  ],
+  "rebindReservationDigests": true,
+  "expectedErrors": ["SELF_CONFLICT"]
+}

@@ -58,9 +58,11 @@ views for one domain:
   and proposed `DBG-FEAT-001`, with new roots and predecessor metadata.
 
 The inventory also preserves historical `DBG-RF-001` with its exact source
-repository, commit, and path. The move example deliberately models no delivered
-work, Issue assignment, or Slice; it demonstrates identity portability without
-inventing missing delivery evidence.
+repository, commit, path, and authority Issue. `DBG-ST-000` is a positive
+truthful no-Issue case: it retains `authorityIssue: null`, an explicit reason,
+and exact provenance rather than inventing authority. The move example
+deliberately models no delivered work, Issue assignment, or Slice; it
+demonstrates identity portability without inventing missing delivery evidence.
 
 The external relation remains `{same UID, "DBG-FEAT-001"}`. A negative fixture
 proves that rewriting it to a new key fails validation.
@@ -78,13 +80,33 @@ proves that rewriting it to a new key fails validation.
 - invalid scoped-domain ID reservation;
 - stale concurrent bases, duplicate Issue/ID reservations, asymmetric
   conflicts, digest/content mismatch, dependency cycles, incomplete
-  merge/convergence contracts, and order violations;
-- unsupported accepted/delivered/released claims;
+  merge/convergence contracts, self/duplicate/overlapping graph edges, and
+  order violations;
+- noncanonical GitHub repository/Issue/comment/PR identities, aliases,
+  repository mismatches, and duplicate registry partitions;
+- unsupported accepted/delivered/released claims, invalid minimum state/value/
+  collection policy, and an unsafe zero-Slice Fix;
+- malformed, whitespace, unresolved-format, or wrong-candidate accepted
+  evidence and contradictory Study authority;
 - structured-inventory duplication, malformed prospective IDs, missing legacy
-  provenance, and cross-Issue reclaim;
+  provenance, unsafe source paths/mismatches, truthful-null-authority rules,
+  exact `-NNN` grammar, and cross-Issue reclaim;
 - recursive domain-root collisions plus NFKC-introduced colon/glob/separator
-  semantics; and
-- record/key/inventory rewrite during a repository move.
+  semantics;
+- record/key/inventory rewrite during a repository move; and
+- assignment revision/digest reuse against a durable prior snapshot.
 
 Each fixture declares its exact expected diagnostic codes, so a negative case
 cannot “pass” merely because the validator failed for an unrelated reason.
+
+## Issue #7 dogfood refreeze
+
+`Steering/Assignments/ISSUE-007.yaml` is revision 2. Its
+`previousRevision` points to
+`Steering/Assignments/History/ISSUE-007-revision-001.json`, which binds
+revision 1 at exact source candidate `f79e3dfc18c7a1650f1f3ae66167dda9b69692b4`
+and reservation digest
+`sha256:50d6768eecce05e540c7674b34a78ba6b4432cabae6e079b88fb51e669bebd4d`.
+The current reservation digest differs and cannot reuse revision 1. Closed,
+accepted Issue #5 remains evidence/prerequisite context; it is not a live node
+in the revision-2 reservation DAG.

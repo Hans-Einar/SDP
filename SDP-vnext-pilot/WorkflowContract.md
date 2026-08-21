@@ -62,8 +62,12 @@ Feature.
 A Fix owns a proportionate correction to accepted behavior. It MUST NOT conceal
 new capability, a public/architectural contract change, or a broad migration.
 A tiny low-risk Fix MAY itself be the smallest verified/reviewed unit and omit
-a Slice. A risky or cross-layer Fix uses one or more Slices. Review rework on an
-unaccepted candidate is not a Fix; a correction after acceptance is.
+a Slice only when `risk: low`, `standaloneReviewedUnit: true`, exactly one
+Issue assignment/authority names that Fix, and the Fix itself carries the same
+qualified accepted evidence otherwise required for a Slice. A medium-, high-,
+or safety-critical-risk Fix, or any non-standalone Fix, uses one or more
+Slices. Review rework on an unaccepted candidate is not a Fix; a correction
+after acceptance is.
 
 ### Study
 
@@ -158,6 +162,9 @@ once. A missing owner-referenced Slice is an error rather than an unresolved
 future placeholder. Slice `decisionRefs` are qualified and locally resolvable,
 private paths are portable and contained by the assignment's owned
 reservations, and shared paths exactly match its declared touchpoints.
+The assignment Issue also equals the primary Feature/Refactor/Fix/Study
+record's Issue authority and the prospective issued-inventory authority for
+that primary reference.
 
 ## 4. Identity and revision rules
 
@@ -171,6 +178,36 @@ IDs remain historical evidence and MUST NOT be rewritten.
   invalidate evidence tied to the previous candidate.
 - Material new behavior, risk, or acceptance scope creates a new Slice.
 - Rejected or superseded records remain addressable; their IDs are not recycled.
+
+Every stateful record has a normalized, non-recursive, portable repository-
+relative `source` path. For prospective work this value is byte-for-byte equal
+to the source in its issued-ID inventory member. A repository validator also
+resolves that path to the represented record when the record exists as a local
+file. This prevents an inventory entry from naming one artifact while the
+record claims another.
+
+### Pilot v0 value and state floor
+
+The eventual canonical vocabulary remains open, but pilot v0 supports only:
+
+| Kind | Supported declared states |
+|---|---|
+| Feature / Refactor | `proposed`, `studying`, `ready`, `active`, `blocked`, `rejected`, `superseded`, `delivered`, `released` |
+| Fix | `proposed`, `ready`, `active`, `blocked`, `rejected`, `superseded`, `delivered`, `released` |
+| Study | `proposed`, `active`, `blocked`, `rejected`, `superseded`, `accepted` |
+| Slice | `proposed`, `active`, `blocked`, `rejected`, `superseded`, `accepted` |
+| Issue assignment | `proposed`, `active`, `blocked`, `accepted`, `rejected`, `cancelled`, `superseded` |
+
+`revision` is an integer of at least 1. Required titles, intent/question/
+outcome/correction strings, convergence/stop strings, and evidence identifiers
+are nonblank. Required collections retain their advertised array/object types;
+acceptance, verification, review, domain ownership, Slice invariants, and
+similar contract-bearing arrays cannot be empty. Domain owners are unique
+nonblank strings. Branches use the conservative portable Git subset documented
+in [IssueContract.md](IssueContract.md). `independentReview` is Boolean and
+`maximumUnresolvedSeverity` is one of `none`, `low`, `medium`, `high`, or
+`blocking`. These are a minimum usable pilot contract, not a canonical schema
+freeze.
 
 ### Reopen and extension
 
@@ -215,12 +252,43 @@ the same explicit projection:
 ```
 
 `proposed` and `active` records may retain this null/empty projection.
-`accepted` or `delivered` requires a 40-character exact candidate, at least one
-verification reference, one current independent-review reference, and
-`steeringDisposition: accepted`. `released` requires all of those plus at
-least one explicit Release relation. A delivered Feature/Refactor also
-requires at least one Issue authority and one resolvable Slice; a standalone
-Fix remains the only proportional zero-Slice delivery exception.
+The non-null pilot v0 form is deliberately qualified rather than a list of
+opaque strings:
+
+```json
+{
+  "acceptedEvidence": {
+    "candidate": "1111111111111111111111111111111111111111",
+    "verificationRefs": [
+      {"id": "VER-101", "candidate": "1111111111111111111111111111111111111111"}
+    ],
+    "currentReviewRef": {
+      "id": "REV-101",
+      "candidate": "1111111111111111111111111111111111111111",
+      "disposition": "approved"
+    },
+    "steeringDisposition": {
+      "authority": "https://github.com/example/app/issues/101#issuecomment-501",
+      "candidate": "1111111111111111111111111111111111111111",
+      "decision": "accepted"
+    },
+    "releaseRefs": [
+      {"id": "REL-001", "candidate": "1111111111111111111111111111111111111111"}
+    ]
+  }
+}
+```
+
+Evidence IDs are stable nonblank portable tokens, never whitespace or an
+`unresolved:` placeholder. Every nested candidate equals the exact top-level
+candidate. The current review disposition is `approved`; the Steering
+authority is the canonical comment URL on an applicable authority Issue and
+its decision is `accepted`. `accepted` or `delivered` requires the candidate,
+one or more verification objects, current review, and Steering disposition.
+`released` additionally requires one or more qualified Release objects. A
+delivered Feature/Refactor also requires at least one Issue authority and one
+resolvable Slice; the qualified low-risk standalone Fix remains the only
+proportional zero-Slice delivery exception.
 
 Authored records may contain stable URLs, the declared integration base, target
 branch, policy, and intended PR URL. They MUST NOT claim mutable Issue/PR/check/

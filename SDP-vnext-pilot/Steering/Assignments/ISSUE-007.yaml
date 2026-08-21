@@ -2,8 +2,19 @@
   "schemaVersion": "sdp-vnext-pilot-assignment-v0",
   "experimental": true,
   "kind": "issue-assignment",
-  "revision": 1,
+  "source": "SDP-vnext-pilot/Steering/Assignments/ISSUE-007.yaml",
+  "revision": 2,
   "declaredState": "active",
+  "previousRevision": {
+    "revision": 1,
+    "snapshotPath": "SDP-vnext-pilot/Steering/Assignments/History/ISSUE-007-revision-001.json",
+    "sourceCandidate": "f79e3dfc18c7a1650f1f3ae66167dda9b69692b4",
+    "reservationDigest": "sha256:50d6768eecce05e540c7674b34a78ba6b4432cabae6e079b88fb51e669bebd4d"
+  },
+  "refreeze": {
+    "sourceCandidate": "f79e3dfc18c7a1650f1f3ae66167dda9b69692b4",
+    "reason": "Revision 2 refreezes the reusable reservation projection, removes closed accepted Issue #5 from the current execution DAG, makes convergence terminal, and extends exact review/verification evidence paths."
+  },
   "authority": {
     "issue": "https://github.com/Hans-Einar/SDP/issues/7",
     "amendments": []
@@ -33,7 +44,7 @@
     "reservationSet": {
       "id": "RSV-ISSUE-007-001",
       "path": "SDP-vnext-pilot/Steering/Reservations/RSV-ISSUE-007-001.json",
-      "digest": "sha256:ebebca496d3c6ad8f2622c647bb979bcd3b5bf44137b2ea6cf34ad0e022cc06a"
+      "digest": "sha256:f5805cecd8f72394d4502eed8dbb4f1ec899f890faed3dd5f4e368e1a4f448bb"
     },
     "dependsOnIssues": [],
     "conflictsWithIssues": [],
@@ -42,8 +53,10 @@
       "Sprints/SPR-SDP-007--provisional-vnext-contract/**",
       "CodeReview/REV-SDP-007-001.md",
       "CodeReview/REV-SDP-007-002.md",
+      "CodeReview/REV-SDP-007-003.md",
       "Verification/VER-SDP-007-001.md",
-      "Verification/VER-SDP-007-002.md"
+      "Verification/VER-SDP-007-002.md",
+      "Verification/VER-SDP-007-003.md"
     ],
     "sharedTouchpoints": [
       {

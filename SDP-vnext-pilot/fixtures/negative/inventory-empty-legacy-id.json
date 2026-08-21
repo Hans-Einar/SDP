@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "legacy-preserved-id-is-blank",
+  "sourceExample": "domain-move.json",
+  "mutations": [
+    {"op": "replace", "path": "/registries/0/domains/1/issuedIds/1/id", "value": ""},
+    {"op": "replace", "path": "/registries/1/domains/0/issuedIds/1/id", "value": ""}
+  ],
+  "expectedErrors": ["INVALID_ID_INVENTORY_MEMBER"]
+}

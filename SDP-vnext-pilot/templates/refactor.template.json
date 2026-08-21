@@ -4,6 +4,7 @@
   "kind": "refactor",
   "domainUid": "urn:uuid:10000000-0000-4000-8000-000000000001",
   "id": "APP-REF-001",
+  "source": "Refactors/APP-REF-001.json",
   "revision": 1,
   "declaredState": "proposed",
   "title": "Illustrative structural change",

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "reservation-dependency-edge-is-duplicated",
+  "sourceExample": "scoped-monorepo.json",
+  "mutations": [
+    {"op": "add", "path": "/assignments/2/coordination/dependsOnIssues/-", "value": "https://github.com/example/hsx-like/issues/201"},
+    {"op": "add", "path": "/reservationSets/0/assignments/2/dependsOnIssues/-", "value": "https://github.com/example/hsx-like/issues/201"}
+  ],
+  "rebindReservationDigests": true,
+  "expectedErrors": ["DUPLICATE_DEPENDENCY_EDGE"]
+}

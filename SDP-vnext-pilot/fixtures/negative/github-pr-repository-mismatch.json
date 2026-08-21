@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "planned-pull-request-belongs-to-another-repository",
+  "sourceExample": "simple-single-domain.json",
+  "mutations": [
+    {"op": "replace", "path": "/assignments/0/delivery/pullRequest", "value": "https://github.com/example/other/pull/11"}
+  ],
+  "expectedErrors": ["REPOSITORY_AUTHORITY_MISMATCH"]
+}

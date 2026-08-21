@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "legacy-authority-issue-is-not-canonical",
+  "sourceExample": "domain-move.json",
+  "mutations": [
+    {"op": "replace", "path": "/registries/0/domains/1/issuedIds/1/authorityIssue", "value": "not-an-issue"},
+    {"op": "replace", "path": "/registries/1/domains/0/issuedIds/1/authorityIssue", "value": "not-an-issue"}
+  ],
+  "expectedErrors": ["INVALID_INVENTORY_AUTHORITY"]
+}

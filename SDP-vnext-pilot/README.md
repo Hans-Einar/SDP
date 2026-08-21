@@ -48,6 +48,9 @@ assignment, the single default-domain declaration, and
 `Steering/Reservations/RSV-ISSUE-007-001.json`. The assignment binds the real
 reservation file by canonical JSON SHA-256; the validator resolves the Study,
 domain, paths, IDs, base, dependency, and convergence contract together.
+Assignment revision 2 links the durable revision-1 snapshot under
+`Steering/Assignments/History/`, so the changed reservation digest and
+refreeze reason are recoverable without treating revision 1 as mutable.
 
 ## Validate
 
@@ -59,10 +62,11 @@ python SDP-vnext-pilot/validate_pilot.py
 
 The validator uses only the Python standard library. It validates templates,
 positive examples, exact negative fixtures, bidirectional owner/Issue/Slice
-cardinality, accepted evidence, identity inventory/no-reuse, reservation
-digests and concurrency graphs, portable roots/paths, dogfood external
-reservation resolution, local Markdown links, required status markers, and
-trailing whitespace.
+cardinality, canonical GitHub identities/repository coherence, qualified
+accepted evidence, identity inventory/source/provenance/no-reuse, reservation
+digests and concurrency graphs, portable roots/paths and branch names,
+assignment revision history, dogfood external binding, local Markdown links,
+required status markers, and trailing whitespace.
 
 ## Boundary
 

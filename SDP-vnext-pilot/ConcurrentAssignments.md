@@ -17,7 +17,8 @@ Steering/Assignments/ISSUE-124.yaml
 
 Each record declares:
 
-- stable Issue/amendment URLs and `revision`;
+- its own portable repository-relative `source`, canonical Issue/comment
+  amendment URLs, and positive integer `revision`;
 - primary `workRef` as `{domainUid, id}` and active Slice references;
 - `baseline.branch`, exact 40-character `baseline.commit`, and the identical
   `coordination.integrationBase` used by the reservation set;
@@ -56,6 +57,22 @@ assignment record.
 8. On stale state, stop writes, rebase/merge only under the Issue policy,
    recompute all normalization/collisions, update the common reservation set,
    increment affected assignment revisions, and obtain Steering refreeze.
+
+A changed reservation digest/content cannot reuse an assignment revision. The
+new assignment links `previousRevision` to a durable history snapshot by
+portable path, prior revision, exact source candidate, and prior reservation
+digest; `refreeze` repeats the exact source candidate and gives a nonblank
+reason. The snapshot binds its assignment source, canonical Issue, prior
+revision/digest, and next revision. Pilot v0 validates the chain and resolves
+the snapshot path when local. This preserves one meaning for “Issue N,
+revision R” while leaving old Git bytes immutable.
+
+Issue #7 demonstrates an important distinction: closed, Steering-accepted
+Issue #5 is evidence/prerequisite context for this pilot, not a current active
+reservation-DAG node. Revision 1 recorded it as a dependency; revision 2
+refreezes the current execution graph without it and records why. A completed
+historical prerequisite remains linked as evidence without pretending another
+Issue Master is concurrently active.
 
 The reusable pilot `reservation-set` shape is in
 [`templates/reservation-set.template.json`](templates/reservation-set.template.json).
@@ -97,7 +114,13 @@ Every current assignment has a unique Issue authority in the set.
 that set. A dependent candidate
 cannot receive accepted state until the named prerequisite candidate/gate is
 satisfied. `conflictsWithIssues` is symmetric and blocks concurrent activation
-until refrozen; every conflict endpoint also resolves inside the set.
+until Steering changes ownership/order or refreezes a safe activation plan;
+it is a blocked relationship declaration, not permission to write
+concurrently. Every conflict endpoint also resolves inside the set. An Issue
+cannot conflict with itself. Dependency and conflict lists are mathematical
+edge sets: each peer appears once, and the same peer cannot be both a
+dependency and conflict because those semantics give contradictory activation
+instructions.
 `mergeOrder` is a non-empty list containing every current Issue
 exactly once and no other member; every prerequisite precedes its dependent.
 The separate `convergence` object has a non-empty owner and executable command

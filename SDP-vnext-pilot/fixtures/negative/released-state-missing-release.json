@@ -5,7 +5,7 @@
   "sourceExample": "simple-single-domain.json",
   "mutations": [
     {"op": "replace", "path": "/records/0/declaredState", "value": "released"},
-    {"op": "replace", "path": "/records/0/acceptedEvidence", "value": {"candidate": "7777777777777777777777777777777777777777", "verificationRefs": ["VER-777"], "currentReviewRef": "REV-777", "steeringDisposition": "accepted", "releaseRefs": []}}
+    {"op": "replace", "path": "/records/0/acceptedEvidence", "value": {"candidate": "7777777777777777777777777777777777777777", "verificationRefs": [{"id": "VER-777", "candidate": "7777777777777777777777777777777777777777"}], "currentReviewRef": {"id": "REV-777", "candidate": "7777777777777777777777777777777777777777", "disposition": "approved"}, "steeringDisposition": {"authority": "https://github.com/example/tiny-app/issues/10#issuecomment-777", "candidate": "7777777777777777777777777777777777777777", "decision": "accepted"}, "releaseRefs": []}}
   ],
   "expectedErrors": ["RELEASE_EVIDENCE_REQUIRED"]
 }

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "domain-owner-list-has-no-usable-owner",
+  "sourceExample": "simple-single-domain.json",
+  "mutations": [
+    {"op": "replace", "path": "/registries/0/domains/0/owners", "value": [" "]}
+  ],
+  "expectedErrors": ["DOMAIN_OWNER_REQUIRED"]
+}

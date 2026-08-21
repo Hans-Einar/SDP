@@ -11,9 +11,11 @@ schema details that need evidence:
 2. Is a UUID URN the best permanent domain UID representation, or should a
    future registry use another opaque identifier while preserving the same
    non-derived semantics?
-3. Should the domain registry become a capability section in the project
-   manifest, a dedicated canonical record, or a manifest pointer to one or
-   several registries?
+3. Should the one-registry-per-repository pilot object become a capability
+   section in the project manifest, a dedicated canonical record, or a
+   manifest pointer to that object? Pilot v0 intentionally rejects several
+   registry objects for one canonical repository; a future partitioned model
+   would first need an equally strong aggregate collision boundary.
 4. Should canonical schemas store the full issued-ID inventory, an append-only
    allocation ledger, a high-water mark plus exceptions, or a digest-backed
    generated projection? Pilot v0 uses structured prospective/legacy-preserved

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "primary-work-issued-authority-disagrees-with-assignment",
+  "sourceExample": "simple-single-domain.json",
+  "mutations": [
+    {"op": "replace", "path": "/registries/0/domains/0/issuedIds/0/authorityIssue", "value": "https://github.com/example/tiny-app/issues/99"}
+  ],
+  "expectedErrors": ["PRIMARY_WORK_AUTHORITY_MISMATCH"]
+}

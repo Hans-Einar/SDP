@@ -14,6 +14,20 @@ assignees, or timestamps. Those are derived from GitHub at an `observedAt`
 instant. Stable URLs, an exact starting baseline, the intended delivery branch,
 and the early draft-PR policy are durable authored terms.
 
+Stable GitHub identities use the exact pilot v0 forms defined in
+[WorkDomains.md](WorkDomains.md): canonical repository, Issue, PR, and
+Issue-comment URLs on `https://github.com` with positive non-zero decimal
+numbers and no query, trailing slash, or transport alias. The assignment Issue
+and planned PR belong to the registry repository hosting the primary work
+domain. Owner/repository comparison is case-insensitive for identity and
+collision safety.
+
+Branch names use a conservative portable Git subset: nonblank ASCII letters,
+digits, `.`, `_`, `-`, and `/`; no whitespace/control characters, leading
+`-`/`.`/slash, trailing slash/dot, empty or dot-prefixed component, `.lock`
+component, `..`, `//`, `@{`, `~`, `^`, `:`, `?`, `*`, `[`, or backslash. This
+is intentionally narrower than every name Git might technically accept.
+
 ## Copyable template
 
 ```markdown
@@ -92,7 +106,8 @@ and the early draft-PR policy are durable authored terms.
 
 The branch adds one compact
 `Steering/Assignments/ISSUE-<number>.yaml|json` record before broad work. It
-stores the stable authority URL, primary qualified work reference, declared
+stores its own portable `source`, the stable authority URL, primary qualified
+work reference, declared
 baseline/delivery targets, reservations, dependency/convergence contract,
 required evidence, and stop condition. It links back to the Issue for scope,
 non-goals, and prose; it does not duplicate them.
@@ -100,3 +115,6 @@ non-goals, and prose; it does not duplicate them.
 An amendment comment is recorded as a stable URL under `authority.amendments`.
 If it changes scope, baseline, reservation, or merge order, the Master increments
 the assignment revision and performs the refreeze protocol before work resumes.
+The new revision links a durable history snapshot containing the prior exact
+candidate and reservation digest; a changed digest cannot reuse the prior
+revision number.

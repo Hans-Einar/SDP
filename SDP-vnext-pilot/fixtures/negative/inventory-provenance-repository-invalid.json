@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "legacy-provenance-repository-is-not-canonical",
+  "sourceExample": "domain-move.json",
+  "mutations": [
+    {"op": "replace", "path": "/registries/0/domains/1/issuedIds/1/provenance/repository", "value": "not-a-repository"},
+    {"op": "replace", "path": "/registries/1/domains/0/issuedIds/1/provenance/repository", "value": "not-a-repository"}
+  ],
+  "expectedErrors": ["LEGACY_PROVENANCE_REQUIRED"]
+}

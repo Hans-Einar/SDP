@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "repository-case-alias-cannot-partition-the-registry",
+  "sourceExample": "simple-single-domain.json",
+  "mutations": [
+    {"op": "copy", "from": "/registries/0", "path": "/registries/-"},
+    {"op": "replace", "path": "/registries/1/repository", "value": "https://github.com/EXAMPLE/TINY-APP"}
+  ],
+  "expectedErrors": ["DUPLICATE_REPOSITORY_REGISTRY"]
+}

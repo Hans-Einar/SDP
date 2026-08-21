@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "assignment-branch-is-not-portable",
+  "sourceExample": "simple-single-domain.json",
+  "mutations": [
+    {"op": "replace", "path": "/assignments/0/delivery/branch", "value": "bad branch"}
+  ],
+  "expectedErrors": ["INVALID_BRANCH"]
+}

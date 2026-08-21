@@ -91,6 +91,13 @@ This preserves the study's evidence precedence: default is merged truth; the
 exact Issue branch/PR is bounded in-flight truth; Issue comments are durable
 authorization; merge/reconciliation alone promotes state.
 
+Use exactly one pilot registry object for canonical repository
+`https://github.com/Hans-Einar/HSX`. The pilot Issue, amendment comments, and
+planned PR use the canonical GitHub URL forms; the Issue and PR must belong to
+that repository. Reject zero-padded/trailing-slash/query/fragment aliases
+before reservation. Host/owner/repository comparison is case-insensitive, so
+a spelling variation cannot create another Issue node or registry partition.
+
 ## Domain declarations and history preservation
 
 Declare four ordinary domains, each with a newly minted immutable UUID UID,
@@ -115,11 +122,14 @@ uses the prospective v0 forms `SHARED-REF-001` and `SHARED-SLC-001`.
 
 Store each historical spelling as a structured `legacy-preserved` inventory
 member with its exact repository, commit, path/source, and authority Issue when
-one exists. Store each new pilot ID as `prospective` with the allocating Issue
-and record source. Check normalized uniqueness before allocation and reject any
-reservation by an Issue other than the recorded authority. The first move
-exercise must preserve the complete structured member data, not only the ID
-strings.
+one exists. If no Issue existed, store `authorityIssue: null` plus a nonblank
+`authorityMissingReason`; do not invent one. Store each new pilot ID as
+`prospective` with the allocating Issue and a normalized portable
+repository-relative source, and put the identical `source` in the represented
+record. New IDs end exactly in `-NNN`. Check normalized uniqueness before
+allocation and reject any reservation by an Issue other than the recorded
+authority. The first move exercise must preserve the complete structured
+member data, not only the ID strings.
 
 Create absolute references by pairing each old ID with the new UID of its
 owning domain. This adds qualification without rewriting the original ID. A
@@ -148,6 +158,12 @@ The pilot assignment must contain:
 - stale-base/refreeze before any change if the selected operational head moves;
   and
 - fresh exact-candidate verification and separate review.
+
+Accepted pilot state uses qualified evidence objects: each verification and
+current-review reference repeats the exact candidate, the current review is
+`approved`, and the Steering acceptance cites a canonical Issue-comment URL
+and the same candidate. Opaque strings, whitespace IDs, unresolved
+placeholders, or evidence for a different candidate do not qualify.
 
 The existing contradictory current-state evidence—open child Issues after
 branch-local completion, differing HSX verified heads, and future-dated Ledger

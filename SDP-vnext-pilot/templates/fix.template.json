@@ -4,6 +4,7 @@
   "kind": "fix",
   "domainUid": "urn:uuid:10000000-0000-4000-8000-000000000001",
   "id": "APP-FIX-001",
+  "source": "Fixes/APP-FIX-001.json",
   "revision": 1,
   "declaredState": "proposed",
   "title": "Illustrative correction",

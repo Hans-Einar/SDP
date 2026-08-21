@@ -53,6 +53,18 @@
                 "commit": "4444444444444444444444444444444444444444",
                 "path": "SDP/Debugger/Refactors/DBG-RF-001/Refactor.md"
               }
+            },
+            {
+              "id": "DBG-ST-000",
+              "status": "legacy-preserved",
+              "authorityIssue": null,
+              "authorityMissingReason": "The historical record predates Issue-authoritative execution.",
+              "source": "SDP/Debugger/Studies/DBG-ST-000/Study.md",
+              "provenance": {
+                "repository": "https://github.com/example/old-monorepo",
+                "commit": "4444444444444444444444444444444444444444",
+                "path": "SDP/Debugger/Studies/DBG-ST-000/Study.md"
+              }
             }
           ],
           "successorRepository": "https://github.com/example/debugger",
@@ -92,6 +104,18 @@
                 "commit": "4444444444444444444444444444444444444444",
                 "path": "SDP/Debugger/Refactors/DBG-RF-001/Refactor.md"
               }
+            },
+            {
+              "id": "DBG-ST-000",
+              "status": "legacy-preserved",
+              "authorityIssue": null,
+              "authorityMissingReason": "The historical record predates Issue-authoritative execution.",
+              "source": "SDP/Debugger/Studies/DBG-ST-000/Study.md",
+              "provenance": {
+                "repository": "https://github.com/example/old-monorepo",
+                "commit": "4444444444444444444444444444444444444444",
+                "path": "SDP/Debugger/Studies/DBG-ST-000/Study.md"
+              }
             }
           ],
           "predecessorRepositories": ["https://github.com/example/old-monorepo"]
@@ -106,6 +130,7 @@
       "kind": "feature",
       "domainUid": "urn:uuid:40000000-0000-4000-8000-000000000010",
       "id": "HOST-FEAT-001",
+      "source": "SDP/Host/Features/HOST-FEAT-001.json",
       "revision": 1,
       "declaredState": "active",
       "title": "Consume debugger service",
@@ -135,6 +160,7 @@
       "kind": "feature",
       "domainUid": "urn:uuid:40000000-0000-4000-8000-000000000020",
       "id": "DBG-FEAT-001",
+      "source": "SDP/Debugger/Features/DBG-FEAT-001.json",
       "revision": 1,
       "declaredState": "proposed",
       "title": "Debugger service",

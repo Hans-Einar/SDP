@@ -44,6 +44,7 @@
       "kind": "feature",
       "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001",
       "id": "FEAT-001",
+      "source": "Features/FEAT-001.json",
       "revision": 1,
       "declaredState": "active",
       "title": "Export one report",
@@ -78,6 +79,7 @@
       "kind": "slice",
       "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001",
       "id": "SLC-001",
+      "source": "Slices/SLC-001.json",
       "revision": 1,
       "declaredState": "active",
       "title": "Export one report end to end",
@@ -113,6 +115,7 @@
       "schemaVersion": "sdp-vnext-pilot-assignment-v0",
       "experimental": true,
       "kind": "issue-assignment",
+      "source": "Steering/Assignments/ISSUE-010.json",
       "revision": 1,
       "declaredState": "active",
       "authority": {
