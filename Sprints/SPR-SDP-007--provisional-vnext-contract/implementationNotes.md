@@ -298,3 +298,21 @@ from actual historical assignment/reservation bytes.
 
 The exact remote head containing this recovery update now requires the reserved
 fresh `REV/VER-SDP-007-007` gate. Earlier evidence remains historical.
+
+## 2026-08-21 — Seventh adversarial gate
+
+- Froze full candidate `0655002cbe5e14543b007525cdc3e3bad82b6816`
+  for fresh `REV/VER-SDP-007-007`; exact-head Actions run `32519142555`
+  passed.
+- Fresh `VER-SDP-007-007` independently replayed all 263 negatives, 21 positive
+  controls, raw parse fixtures and the complete r1-r6 history, then returned
+  PASS with Blocking 0, High 0, Medium 0, Low 0 and Note 6.
+- Separate fresh `REV-SDP-007-007` confirmed all prior findings resolved but
+  returned changes required with Blocking 0, High 1, Medium 2, Low 0 and Note
+  5. New findings require exact historical reservation-row equality with the
+  historical assignment projection, consistent `(reservation ID,digest)` epoch
+  identity throughout resolution/materialization/rebinding, and full structural
+  validation of typed unreferenced reservation sets.
+
+The passing verifier record remains exact historical evidence and does not
+override the independent review. No reviewer finding is waived.
