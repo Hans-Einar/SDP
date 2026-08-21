@@ -99,8 +99,11 @@ Positive lifecycle controls exercise the formerly contradictory
 cardinalities: one delivered Feature has two Issues/two accepted Slices at
 distinct candidates; one Issue aggregates two sequential accepted Slices at
 distinct candidates; two accepted Issues retain distinct reservation sets and
-bases; a current later Issue coexists with accepted history and legitimately
-reuses an earlier path; and a self-contained exact-byte revision-2 chain has
+bases; two and three terminal epochs reuse one stable reservation-set ID with
+distinct immutable digests; a current later Issue coexists with accepted
+history and legitimately reuses an earlier path; a complete unreferenced
+preparatory reservation validates before binding; and a self-contained
+exact-byte revision-2 chain has
 its actual revision-1 assignment already containing accepted `SLC-001` before
 the later revision appends `SLC-002`. The embedded-history driver exists only
 inside the fixture harness and cannot masquerade as repository-local history.
@@ -168,6 +171,13 @@ standalone-Fix assignments.
   multi-refreeze history, including Issue/source/work replacement, accepted
   Slice deletion/candidate rewrite, and historical reservation absence,
   tampering, or digest rewrite;
+- coordinated historical assignment/reservation digest and pointer rewrites
+  that delete or rewrite an authorized Slice, replace work, or remove/change
+  reserved IDs, paths, and edges;
+- duplicate exact reservation epoch objects, wrong digests among same-ID
+  epochs, two same-ID current groups, and unreferenced sets with an invalid
+  base, missing/duplicate row, self/cyclic dependency, incomplete/incorrect
+  order, or blank/nonterminal convergence;
 - multiple current reservation epochs while allowing preserved accepted sets,
   reverse active-Slice projection, and active Fix targets with no accepted
   represented outcome;
@@ -181,14 +191,14 @@ cannot “pass” merely because the validator failed for an unrelated reason.
 
 ## Issue #7 dogfood refreeze
 
-`Steering/Assignments/ISSUE-007.yaml` is revision 6. Its immediate
+`Steering/Assignments/ISSUE-007.yaml` is revision 7. Its immediate
 `previousRevision` points to
-`Steering/Assignments/History/ISSUE-007-revision-005.json`, sourced from exact
-candidate `dfdea4fe259a9e342d651254656bcfac5363d0b9`. That snapshot links revision
-4 at `15a476dd76bc80de5573ab2abb65af8c963a9c0e`, revision 3 at
+`Steering/Assignments/History/ISSUE-007-revision-006.json`, sourced from exact
+candidate `0655002cbe5e14543b007525cdc3e3bad82b6816`. That snapshot links revision
+5 at `dfdea4fe259a9e342d651254656bcfac5363d0b9`, revision 4 at
+`15a476dd76bc80de5573ab2abb65af8c963a9c0e`, revision 3 at
 `60978c306f7ce3c09033603abf3300839b2a251d`, revision 2 at
 `0de8a8957b3212404007160d90da47445d7b4e7b`, and revision 1 at
-`f79e3dfc18c7a1650f1f3ae66167dda9b69692b4`, so the complete 1..5 chain is
-retained. Revision 6 reserves exact
-`REV/VER-SDP-007-007` evidence paths and records why the sixth evidence gate
-required another refreeze.
+`f79e3dfc18c7a1650f1f3ae66167dda9b69692b4`, so the complete 1..6 chain is
+retained. Revision 7 reserves exact `REV/VER-SDP-007-008` evidence paths and
+records why the seventh evidence gate required another refreeze.

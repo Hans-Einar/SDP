@@ -1,0 +1,8 @@
+{
+  "schemaVersion":"sdp-vnext-pilot-negative-mutation-v0",
+  "experimental":true,
+  "case":"same-id-distinct-digest-epochs-do-not-resolve-an-unpublished-digest",
+  "sourcePositive":"same-id-two-terminal-epochs.json",
+  "mutations":[{"op":"replace","path":"/assignments/1/coordination/reservationSet/digest","value":"sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"}],
+  "expectedErrors":["RESERVATION_DIGEST_MISMATCH"]
+}

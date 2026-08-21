@@ -1,0 +1,10 @@
+{
+  "schemaVersion":"sdp-vnext-pilot-negative-mutation-v0",
+  "experimental":true,
+  "case":"coordinated-historical-digest-cannot-delete-an-authorized-slice-from-the-reservation-row",
+  "sourcePositive":"accepted-issue-reopen-revision.json",
+  "embeddedHistoryBlobs":[{"candidate":"abababababababababababababababababababab","path":"Steering/Reservations/RSV-010.json","json":"{\"assignments\":[{\"activeSlices\":[],\"authorizedSlices\":[],\"conflictsWithIssues\":[],\"dependsOnIssues\":[],\"issue\":\"https://github.com/example/tiny-app/issues/10\",\"ownedPaths\":[\"src/export/**\",\"tests/test_export.py\"],\"reservedIds\":[{\"domainUid\":\"urn:uuid:20000000-0000-4000-8000-000000000001\",\"id\":\"SLC-001\"}],\"sharedTouchpoints\":[],\"workRef\":{\"domainUid\":\"urn:uuid:20000000-0000-4000-8000-000000000001\",\"id\":\"FEAT-001\",\"type\":\"feature\"}}],\"convergence\":{\"command\":\"python -m unittest\",\"owner\":\"tiny-app-owner\",\"terminal\":true},\"experimental\":true,\"id\":\"RSV-010\",\"integrationBase\":\"2222222222222222222222222222222222222222\",\"kind\":\"reservation-set\",\"mergeOrder\":[\"https://github.com/example/tiny-app/issues/10\"],\"schemaVersion\":\"sdp-vnext-pilot-reservation-set-v0\"}"}],
+  "rebindEmbeddedHistoryDigests":true,
+  "mutations":[],
+  "expectedErrors":["HISTORY_GIT_CONTENT_MISMATCH"]
+}

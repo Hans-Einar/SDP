@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"unreferenced-reservation-requires-complete-merge-order","sourcePositive":"unreferenced-reservation-set.json","mutations":[{"op":"replace","path":"/reservationSets/1/mergeOrder","value":[]}],"expectedErrors":["MERGE_ORDER_MISSING_MEMBER"]}

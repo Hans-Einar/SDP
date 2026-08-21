@@ -131,22 +131,33 @@ retains the complete `1..N-1` snapshot chain, each snapshot links its immediate
 predecessor, and the repository driver reconstructs the exact historical
 assignment bytes from each declared Git candidate. Missing repository
 resolution, paths, Git objects, or matching Issue/source/revision/reservation
-context block validation.
+context blocks validation.
 
 The driver also loads and strictly parses the exact historical reservation file
 from each historical assignment, recomputes its digest, and compares actual
 revision semantics rather than trusting optional snapshot pointers. Canonical
 Issue, assignment source, and primary work reference are immutable;
 `authorizedSlices` is append-only and every historical non-null accepted
-candidate remains unchanged. Only the active subset and a duly refrozen
-reservation/base may change. Duplicate JSON member names are rejected before
-any canonical hash.
+candidate remains unchanged. Exactly one canonical Issue row in that historical
+reservation must equal the exact assignment projection for work, authorized/
+active Slices, IDs, paths, and edges; historical base, merge order, and
+convergence must also agree. Coordinating altered bytes, digests, and snapshot
+pointers does not relax this equality. Only the active subset and a duly
+refrozen reservation/base may change. Duplicate JSON member names are rejected
+before any canonical hash. The explicitly recognized revision-1 and revision-
+2–4 pilot compatibility shapes normalize only their already-authored fields;
+unknown historical shapes cannot satisfy the gate.
 
 Preserved terminal assignments may reference different historical reservation
 sets and bases. Only the set group containing a nonterminal assignment is the
 current activation epoch; current collision/DAG/order/convergence checks do not
 misclassify accepted historical paths as live writers. More than one such
 current group is incoherent and blocks validation.
+Epoch identity is always the pair `(reservation-set ID, canonical digest)`, so
+terminal epochs may retain one stable set ID with different immutable digests.
+Every pair resolves exactly one object; an exact duplicate pair is ambiguous.
+Every typed set is structurally and semantically valid even before an
+assignment references it.
 
 `boundaries.prohibitedRepositories` uses canonical GitHub repository URLs;
 every prohibited/owned/shared/local-source path uses the common portable path

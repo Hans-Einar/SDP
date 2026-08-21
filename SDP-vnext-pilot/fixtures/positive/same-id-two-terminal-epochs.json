@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-positive-mutation-v0",
+  "experimental": true,
+  "case": "two-terminal-epochs-may-reuse-one-stable-set-id-with-distinct-digests",
+  "sourcePositive": "sequential-distinct-reservation-epochs.json",
+  "mutations": [
+    {"op":"replace","path":"/assignments/1/coordination/reservationSet/id","value":"RSV-010"},
+    {"op":"replace","path":"/reservationSets/1/id","value":"RSV-010"}
+  ],
+  "rebindReservationDigests": true
+}

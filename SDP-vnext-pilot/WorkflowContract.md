@@ -311,6 +311,13 @@ relations may remain inspectable, but they do not become current authority.
   byte-for-byte unchanged, and a later revision may only qualify a formerly
   null candidate or append a new Slice. `activeSlices` and the refrozen
   reservation/base may change under the Issue authority.
+- Every retained exact historical reservation has exactly one row for the
+  assignment's canonical Issue. After the two explicit early-pilot
+  compatibility normalizations, that row is byte-structurally equal to the
+  exact historical assignment projection for work, authorized/active Slices,
+  IDs, owned/shared paths, dependencies, and conflicts; base, merge order, and
+  convergence also agree. A coordinated digest/pointer rewrite is not proof of
+  this semantic equality.
 - A delivered Feature or Refactor is extended by a new Issue and new Slice(s).
   The work owner may move back to declared `active`, but the earlier delivery
   and release evidence remains intact.

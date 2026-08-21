@@ -3,17 +3,17 @@
   "experimental": true,
   "kind": "issue-assignment",
   "source": "SDP-vnext-pilot/Steering/Assignments/ISSUE-007.yaml",
-  "revision": 6,
+  "revision": 7,
   "declaredState": "active",
   "previousRevision": {
-    "revision": 5,
-    "snapshotPath": "SDP-vnext-pilot/Steering/Assignments/History/ISSUE-007-revision-005.json",
-    "sourceCandidate": "dfdea4fe259a9e342d651254656bcfac5363d0b9",
-    "reservationDigest": "sha256:145665468058a57f0278b5c45471d9fbaee180546e20fd3e9189317fa67f8144"
+    "revision": 6,
+    "snapshotPath": "SDP-vnext-pilot/Steering/Assignments/History/ISSUE-007-revision-006.json",
+    "sourceCandidate": "0655002cbe5e14543b007525cdc3e3bad82b6816",
+    "reservationDigest": "sha256:08cbabb798c0cc95e31052110ff2a910d7ee91e52f370165398c194aea9b552d"
   },
   "refreeze": {
-    "sourceCandidate": "dfdea4fe259a9e342d651254656bcfac5363d0b9",
-    "reason": "Revision 6 refreezes after the sixth evidence gate: it retains the exact revision-5 assignment and reservation bytes, reserves REV/VER-007 paths, distinguishes current reservation epochs from accepted history, and makes assignment identity, authorized Slice evidence, active projection, Fix targets, relation kinds, strict JSON, and branch Unicode deterministic."
+    "sourceCandidate": "0655002cbe5e14543b007525cdc3e3bad82b6816",
+    "reason": "Revision 7 refreezes after the seventh evidence gate: it retains the exact revision-6 assignment and reservation bytes, reserves REV/VER-008 paths, binds every historical reservation row to its exact assignment projection, uses reservation ID plus digest as epoch identity everywhere, and fully validates preparatory unreferenced reservation sets."
   },
   "authority": {
     "issue": "https://github.com/Hans-Einar/SDP/issues/7",
@@ -45,7 +45,7 @@
     "reservationSet": {
       "id": "RSV-ISSUE-007-001",
       "path": "SDP-vnext-pilot/Steering/Reservations/RSV-ISSUE-007-001.json",
-      "digest": "sha256:08cbabb798c0cc95e31052110ff2a910d7ee91e52f370165398c194aea9b552d"
+      "digest": "sha256:ce963d187746fce12ce14e54ad98b39e2ab13463a5ec8c4f15bd6d1a4d335872"
     },
     "dependsOnIssues": [],
     "conflictsWithIssues": [],
@@ -59,13 +59,15 @@
       "CodeReview/REV-SDP-007-005.md",
       "CodeReview/REV-SDP-007-006.md",
       "CodeReview/REV-SDP-007-007.md",
+      "CodeReview/REV-SDP-007-008.md",
       "Verification/VER-SDP-007-001.md",
       "Verification/VER-SDP-007-002.md",
       "Verification/VER-SDP-007-003.md",
       "Verification/VER-SDP-007-004.md",
       "Verification/VER-SDP-007-005.md",
       "Verification/VER-SDP-007-006.md",
-      "Verification/VER-SDP-007-007.md"
+      "Verification/VER-SDP-007-007.md",
+      "Verification/VER-SDP-007-008.md"
     ],
     "sharedTouchpoints": [
       {

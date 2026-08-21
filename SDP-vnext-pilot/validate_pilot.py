@@ -927,7 +927,7 @@ def validate_typed_shape(
     elif kind == "reservation-set":
         reservation_assignments = record.get("assignments")
         if not isinstance(reservation_assignments, list) or any(
-            not isinstance(row, dict) or not RESERVATION_ROW_FIELDS.issubset(row)
+            not isinstance(row, dict) or set(row) != RESERVATION_ROW_FIELDS
             for row in reservation_assignments or []
         ):
             add(errors, code)
@@ -1955,62 +1955,339 @@ def assignment_projection(assignment: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def assignment_epoch_key(assignment: dict[str, Any]) -> tuple[Any, Any]:
+    reference = mapping(assignment_coordination(assignment).get("reservationSet"))
+    return reference.get("id"), reference.get("digest")
+
+
+def reservation_epoch_key(reservation: dict[str, Any]) -> tuple[Any, Any]:
+    return reservation.get("id"), canonical_digest(reservation)
+
+
+def valid_qualified_record_reference(
+    reference: Any, *, allowed_types: set[str] | None = None,
+) -> bool:
+    if (
+        not isinstance(reference, dict)
+        or not {"domainUid", "id"}.issubset(reference)
+        or not set(reference).issubset({"domainUid", "id", "keyHint"})
+        or not valid_uid(reference.get("domainUid"))
+        or not nonblank(reference.get("id"))
+    ):
+        return False
+    match = SCOPED_ID_RE.fullmatch(reference["id"]) or UNSCOPED_ID_RE.fullmatch(
+        reference["id"]
+    )
+    return match is not None and (
+        allowed_types is None or match.group("type") in allowed_types
+    )
+
+
+def validate_reservation_set_semantics(
+    reservation: dict[str, Any], errors: list[str],
+    document: dict[str, Any] | None = None,
+) -> None:
+    """Validate one immutable reservation epoch without assignment binding."""
+    validate_typed_shape(
+        reservation, errors, "RESERVATION_SET_INCOMPLETE",
+        expected_kind="reservation-set",
+    )
+    if not nonblank(reservation.get("id")):
+        add(errors, "RESERVATION_SET_INCOMPLETE")
+    if not SHA_RE.fullmatch(str(reservation.get("integrationBase", ""))):
+        add(errors, "INVALID_INTEGRATION_BASE")
+
+    rows = reservation.get("assignments")
+    if not isinstance(rows, list) or not rows:
+        add(errors, "RESERVATION_SET_INCOMPLETE")
+        rows = []
+
+    issue_keys: list[tuple[str, str, int]] = []
+    edge_map: dict[tuple[str, str, int], list[tuple[str, str, int]]] = {}
+    conflict_map: dict[tuple[str, str, int], list[tuple[str, str, int]]] = {}
+    reserved: list[tuple[tuple[str, str, int], tuple[str, str]]] = []
+    owned: list[tuple[tuple[str, str, int], tuple[str, bool]]] = []
+    shared: list[
+        tuple[tuple[str, str, int], tuple[str, bool], Any]
+    ] = []
+    domain_by_uid = active_domain_map(document) if document is not None else {}
+
+    for row in rows:
+        if not isinstance(row, dict):
+            add(errors, "RESERVATION_SET_INCOMPLETE")
+            continue
+        if set(row) != RESERVATION_ROW_FIELDS:
+            add(errors, "RESERVATION_SET_INCOMPLETE")
+        issue = issue_key(row.get("issue"))
+        if issue is None:
+            add(errors, "INVALID_GITHUB_ISSUE")
+            continue
+        issue_keys.append(issue)
+
+        work_ref = row.get("workRef")
+        allowed_work_types = WORK_OWNER_KINDS | {"study"}
+        if (
+            not isinstance(work_ref, dict)
+            or set(work_ref) != {"type", "domainUid", "id"}
+            or work_ref.get("type") not in allowed_work_types
+            or not valid_uid(work_ref.get("domainUid"))
+        ):
+            add(errors, "RESERVATION_SET_INCOMPLETE")
+        else:
+            work_match = SCOPED_ID_RE.fullmatch(str(work_ref.get("id", ""))) or UNSCOPED_ID_RE.fullmatch(
+                str(work_ref.get("id", ""))
+            )
+            expected_token = KIND_TO_ID_TOKEN.get(work_ref.get("type"))
+            if work_match is None or work_match.group("type") != expected_token:
+                add(errors, "RESERVATION_SET_INCOMPLETE")
+            if document is not None:
+                validate_id_against_domain(
+                    work_ref.get("domainUid"), work_ref.get("id"),
+                    domain_by_uid, errors, invalid_code="INVALID_WORK_REF",
+                    style_code="WORK_REF_STYLE_MISMATCH",
+                )
+
+        authorized = row.get("authorizedSlices")
+        active = row.get("activeSlices")
+        if not isinstance(authorized, list) or not isinstance(active, list):
+            add(errors, "RESERVATION_SET_INCOMPLETE")
+            authorized = []
+            active = []
+        authorized_keys = [
+            validate_authorized_slice_reference(reference, errors)
+            for reference in authorized
+        ]
+        valid_authorized_keys = [key for key in authorized_keys if key is not None]
+        if document is not None:
+            for reference in authorized:
+                if isinstance(reference, dict):
+                    validate_key_hint(document, reference, errors)
+                    validate_id_against_domain(
+                        reference.get("domainUid"), reference.get("id"),
+                        domain_by_uid, errors, invalid_code="INVALID_REFERENCE",
+                        style_code="ACTIVE_SLICE_STYLE_MISMATCH",
+                    )
+        if len(valid_authorized_keys) != len(set(valid_authorized_keys)):
+            add(errors, "RESERVATION_SET_INCOMPLETE")
+        active_keys: list[tuple[str, str] | None] = []
+        for reference in active:
+            if not valid_qualified_record_reference(reference, allowed_types={"SLC"}):
+                add(errors, "RESERVATION_SET_INCOMPLETE")
+                active_keys.append(None)
+            else:
+                active_keys.append(reference_key(reference))
+                if document is not None:
+                    validate_key_hint(document, reference, errors)
+                    validate_id_against_domain(
+                        reference.get("domainUid"), reference.get("id"),
+                        domain_by_uid, errors, invalid_code="INVALID_REFERENCE",
+                        style_code="ACTIVE_SLICE_STYLE_MISMATCH",
+                    )
+        if len(active) > 1:
+            add(errors, "ACTIVE_SLICE_CARDINALITY")
+        if any(
+            key is None or key not in set(valid_authorized_keys)
+            for key in active_keys
+        ):
+            add(errors, "ACTIVE_SLICE_NOT_AUTHORIZED")
+
+        reserved_values = row.get("reservedIds")
+        if not isinstance(reserved_values, list):
+            add(errors, "RESERVATION_SET_INCOMPLETE")
+            reserved_values = []
+        seen_reserved: set[tuple[str, str]] = set()
+        for reference in reserved_values:
+            if not valid_qualified_record_reference(reference):
+                add(errors, "RESERVATION_SET_INCOMPLETE")
+                continue
+            key = reference_key(reference)
+            if key is None:
+                add(errors, "RESERVATION_SET_INCOMPLETE")
+                continue
+            if key in seen_reserved:
+                add(errors, "DUPLICATE_RESERVED_ID")
+            seen_reserved.add(key)
+            reserved.append((issue, key))
+            if document is not None:
+                validate_key_hint(document, reference, errors)
+                validate_id_against_domain(
+                    reference.get("domainUid"), reference.get("id"),
+                    domain_by_uid, errors, invalid_code="INVALID_RESERVED_ID",
+                    style_code="RESERVED_ID_STYLE_MISMATCH",
+                )
+
+        owned_values = row.get("ownedPaths")
+        if not isinstance(owned_values, list):
+            add(errors, "RESERVATION_SET_INCOMPLETE")
+            owned_values = []
+        for value in owned_values:
+            normalized = normalize_path(value)
+            if normalized is None:
+                add(errors, "INVALID_PATH")
+            else:
+                owned.append((issue, normalized))
+
+        shared_values = row.get("sharedTouchpoints")
+        if not isinstance(shared_values, list):
+            add(errors, "RESERVATION_SET_INCOMPLETE")
+            shared_values = []
+        for item in shared_values:
+            normalized = normalize_path(shared_path(item))
+            if normalized is None:
+                add(errors, "INVALID_PATH")
+            if (
+                not isinstance(item, dict)
+                or set(item) != {"path", "ownerDomainUid", "allowedMutation"}
+                or not valid_uid(item.get("ownerDomainUid"))
+                or not nonblank(item.get("allowedMutation"))
+            ):
+                add(errors, "INVALID_SHARED_TOUCHPOINT")
+            elif normalized is not None:
+                shared.append((issue, normalized, item.get("ownerDomainUid")))
+                if domain_by_uid and item.get("ownerDomainUid") not in domain_by_uid:
+                    add(errors, "UNKNOWN_SHARED_OWNER_DOMAIN")
+
+        dependencies = row.get("dependsOnIssues")
+        conflicts = row.get("conflictsWithIssues")
+        if not isinstance(dependencies, list) or not isinstance(conflicts, list):
+            add(errors, "RESERVATION_SET_INCOMPLETE")
+            dependencies = []
+            conflicts = []
+        dependency_keys = [issue_key(dependency) for dependency in dependencies]
+        conflict_keys = [issue_key(conflict) for conflict in conflicts]
+        if None in dependency_keys or None in conflict_keys:
+            add(errors, "INVALID_GITHUB_ISSUE")
+        normalized_dependencies = [item for item in dependency_keys if item is not None]
+        normalized_conflicts = [item for item in conflict_keys if item is not None]
+        edge_map[issue] = normalized_dependencies
+        conflict_map[issue] = normalized_conflicts
+        if len(normalized_dependencies) != len(set(normalized_dependencies)):
+            add(errors, "DUPLICATE_DEPENDENCY_EDGE")
+        if len(normalized_conflicts) != len(set(normalized_conflicts)):
+            add(errors, "DUPLICATE_CONFLICT_EDGE")
+        if set(normalized_dependencies) & set(normalized_conflicts):
+            add(errors, "DEPENDENCY_CONFLICT_OVERLAP")
+        if issue in normalized_dependencies:
+            add(errors, "DEPENDENCY_CYCLE")
+        if issue in normalized_conflicts:
+            add(errors, "SELF_CONFLICT")
+
+    if len(issue_keys) != len(set(issue_keys)):
+        add(errors, "DUPLICATE_ISSUE_AUTHORITY")
+    issue_set = set(issue_keys)
+    for dependencies in edge_map.values():
+        if any(dependency not in issue_set for dependency in dependencies):
+            add(errors, "UNRESOLVED_DEPENDENCY_ISSUE")
+    for conflicts in conflict_map.values():
+        if any(conflict not in issue_set for conflict in conflicts):
+            add(errors, "UNRESOLVED_CONFLICT_ISSUE")
+
+    visiting: set[tuple[str, str, int]] = set()
+    visited: set[tuple[str, str, int]] = set()
+
+    def visit(issue: tuple[str, str, int]) -> bool:
+        if issue in visiting:
+            return True
+        if issue in visited:
+            return False
+        visiting.add(issue)
+        if any(
+            dependency in issue_set and visit(dependency)
+            for dependency in edge_map.get(issue, [])
+        ):
+            return True
+        visiting.remove(issue)
+        visited.add(issue)
+        return False
+
+    if any(visit(issue) for issue in issue_set if issue not in visited):
+        add(errors, "DEPENDENCY_CYCLE")
+    for issue, conflicts in conflict_map.items():
+        for conflict in conflicts:
+            if conflict in issue_set and issue not in conflict_map.get(conflict, []):
+                add(errors, "ASYMMETRIC_CONFLICT")
+
+    merge_order = reservation.get("mergeOrder")
+    if not isinstance(merge_order, list) or not merge_order:
+        add(errors, "MERGE_ORDER_MISSING_MEMBER")
+        merge_order = []
+    merge_keys = [issue_key(issue) for issue in merge_order]
+    if None in merge_keys:
+        add(errors, "INVALID_GITHUB_ISSUE")
+    normalized_merge = [item for item in merge_keys if item is not None]
+    if len(normalized_merge) != len(set(normalized_merge)):
+        add(errors, "MERGE_ORDER_DUPLICATE")
+    if issue_set and any(issue not in issue_set for issue in normalized_merge):
+        add(errors, "MERGE_ORDER_UNKNOWN_MEMBER")
+    if issue_set - set(normalized_merge):
+        add(errors, "MERGE_ORDER_MISSING_MEMBER")
+    positions = {issue: index for index, issue in enumerate(normalized_merge)}
+    for issue, dependencies in edge_map.items():
+        for dependency in dependencies:
+            if (
+                issue in positions
+                and dependency in positions
+                and positions[dependency] >= positions[issue]
+            ):
+                add(errors, "MERGE_ORDER_DEPENDENCY_VIOLATION")
+
+    convergence = reservation.get("convergence")
+    if (
+        not isinstance(convergence, dict)
+        or not nonblank(convergence.get("owner"))
+        or not nonblank(convergence.get("command"))
+    ):
+        add(errors, "EMPTY_CONVERGENCE")
+    if not isinstance(convergence, dict) or convergence.get("terminal") is not True:
+        add(errors, "INVALID_CONVERGENCE_TERMINAL")
+
+    for index, (left_issue, left_id) in enumerate(reserved):
+        for right_issue, right_id in reserved[index + 1:]:
+            if left_issue != right_issue and left_id == right_id:
+                add(errors, "RESERVED_ID_COLLISION")
+    for index, (left_issue, left_path) in enumerate(owned):
+        for right_issue, right_path in owned[index + 1:]:
+            if left_issue != right_issue and paths_overlap(left_path, right_path):
+                add(errors, "PATH_COLLISION")
+        for shared_issue, shared_value, _ in shared:
+            if paths_overlap(left_path, shared_value):
+                add(errors, "PATH_COLLISION")
+    if len(issue_set) > 1:
+        shared_by_path: dict[tuple[str, bool], list[tuple[Any, Any]]] = defaultdict(list)
+        for issue, path, owner_uid in shared:
+            shared_by_path[path].append((issue, owner_uid))
+        if any(len({issue for issue, _ in values}) < 2 for values in shared_by_path.values()):
+            add(errors, "ASYMMETRIC_SHARED_TOUCHPOINT")
+        if any(
+            len({owner for _, owner in values}) != 1
+            or None in {owner for _, owner in values}
+            for values in shared_by_path.values()
+        ):
+            add(errors, "SHARED_OWNER_MISMATCH")
+
+
 def validate_reservation_sets(document: dict[str, Any], errors: list[str]) -> None:
     assignments = document.get("assignments", [])
     reservation_sets = document.get("reservationSets", [])
+    if not isinstance(reservation_sets, list):
+        add(errors, "RESERVATION_SET_INCOMPLETE")
+        return
     by_id: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    by_epoch: dict[tuple[Any, Any], list[dict[str, Any]]] = defaultdict(list)
     for reservation in reservation_sets:
         if not isinstance(reservation, dict):
             add(errors, "RESERVATION_SET_INCOMPLETE")
             continue
-        validate_typed_shape(
-            reservation, errors, "RESERVATION_SET_INCOMPLETE",
-            expected_kind="reservation-set",
-        )
-        for row in reservation.get("assignments", []) if isinstance(reservation.get("assignments"), list) else []:
-            if not isinstance(row, dict):
-                continue
-            authorized = row.get("authorizedSlices", [])
-            active = row.get("activeSlices", [])
-            if not isinstance(authorized, list) or not isinstance(active, list):
-                add(errors, "RESERVATION_SET_INCOMPLETE")
-            else:
-                authorized_keys = [
-                    validate_authorized_slice_reference(reference, errors)
-                    for reference in authorized
-                ]
-                active_keys = [reference_key(reference) for reference in active]
-                if len(active) > 1:
-                    add(errors, "ACTIVE_SLICE_CARDINALITY")
-                if any(
-                    key is None or key not in set(authorized_keys)
-                    for key in active_keys
-                ):
-                    add(errors, "ACTIVE_SLICE_NOT_AUTHORIZED")
-            for value in row.get("ownedPaths", []):
-                if normalize_path(value) is None:
-                    add(errors, "INVALID_PATH")
-            for item in row.get("sharedTouchpoints", []):
-                if normalize_path(shared_path(item)) is None:
-                    add(errors, "INVALID_PATH")
-                if not isinstance(item, dict) or not nonblank(item.get("allowedMutation")):
-                    add(errors, "INVALID_SHARED_TOUCHPOINT")
-            seen_reserved: set[tuple[str, str]] = set()
-            for reference in row.get("reservedIds", []):
-                key = reference_key(reference)
-                if key is not None:
-                    if key in seen_reserved:
-                        add(errors, "DUPLICATE_RESERVED_ID")
-                    seen_reserved.add(key)
+        validate_reservation_set_semantics(reservation, errors, document)
         reservation_id = reservation.get("id")
         if not isinstance(reservation_id, str) or not reservation_id:
-            add(errors, "RESERVATION_SET_INCOMPLETE")
             continue
         by_id[reservation_id].append(reservation)
-    if any(len(values) != 1 for values in by_id.values()):
-        add(errors, "RESERVATION_SET_INCOMPLETE")
+        by_epoch[reservation_epoch_key(reservation)].append(reservation)
+    if any(len(values) > 1 for values in by_epoch.values()):
+        add(errors, "AMBIGUOUS_RESERVATION_EPOCH")
 
-    grouped_assignments: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    grouped_assignments: dict[tuple[Any, Any], list[dict[str, Any]]] = defaultdict(list)
     for assignment in assignments:
         if not isinstance(assignment, dict):
             add(errors, "ASSIGNMENT_REQUIRED_FIELD_MISSING")
@@ -2024,32 +2301,30 @@ def validate_reservation_sets(document: dict[str, Any], errors: list[str]) -> No
         if not isinstance(reservation_id, str) or not reservation_id:
             add(errors, "RESERVATION_SET_REQUIRED")
             continue
-        grouped_assignments[reservation_id].append(assignment)
-        candidates = by_id.get(reservation_id, [])
-        if len(candidates) != 1:
-            add(errors, "UNRESOLVED_RESERVATION_SET")
-            continue
         if not isinstance(digest, str) or not DIGEST_RE.fullmatch(digest):
             add(errors, "INVALID_RESERVATION_DIGEST")
-        else:
-            actual_digest = canonical_digest(candidates[0])
-            if actual_digest is None and contains_invalid_json_scalar(candidates[0]):
-                add(errors, "INVALID_JSON_SCALAR")
-            elif actual_digest is None:
-                add(errors, "INVALID_UNICODE_SCALAR")
-            elif digest != actual_digest:
+            continue
+        epoch = (reservation_id, digest)
+        grouped_assignments[epoch].append(assignment)
+        candidates = by_epoch.get(epoch, [])
+        if not candidates:
+            same_id = by_id.get(reservation_id, [])
+            if same_id and all(canonical_digest(candidate) is None for candidate in same_id):
+                continue
+            if same_id:
                 add(errors, "RESERVATION_DIGEST_MISMATCH")
+            else:
+                add(errors, "UNRESOLVED_RESERVATION_SET")
+        elif len(candidates) > 1:
+            add(errors, "AMBIGUOUS_RESERVATION_EPOCH")
 
-    for reservation_id, group in grouped_assignments.items():
-        candidates = by_id.get(reservation_id, [])
+    for epoch, group in grouped_assignments.items():
+        candidates = by_epoch.get(epoch, [])
         if len(candidates) != 1:
             continue
         reservation = candidates[0]
-        if not SHA_RE.fullmatch(str(reservation.get("integrationBase", ""))):
-            add(errors, "INVALID_INTEGRATION_BASE")
         rows = reservation.get("assignments")
         if not isinstance(rows, list) or not rows:
-            add(errors, "RESERVATION_SET_INCOMPLETE")
             continue
         if any(
             not isinstance(row, dict) or not RESERVATION_ROW_FIELDS.issubset(row)
@@ -2096,105 +2371,6 @@ def validate_reservation_sets(document: dict[str, Any], errors: list[str]) -> No
             ):
                 add(errors, "RESERVATION_ASSIGNMENT_MISMATCH")
 
-        issue_set = {issue for issue in group_issues if issue is not None}
-        edge_map: dict[tuple[str, str, int], list[tuple[str, str, int]]] = {}
-        conflict_map: dict[tuple[str, str, int], list[tuple[str, str, int]]] = {}
-        for row in rows:
-            if not isinstance(row, dict) or not isinstance(row.get("issue"), str):
-                continue
-            issue = issue_key(row["issue"])
-            if issue is None:
-                add(errors, "INVALID_GITHUB_ISSUE")
-                continue
-            dependencies = row.get("dependsOnIssues", [])
-            conflicts = row.get("conflictsWithIssues", [])
-            if not isinstance(dependencies, list) or not isinstance(conflicts, list):
-                add(errors, "RESERVATION_SET_INCOMPLETE")
-                continue
-            dependency_keys = [issue_key(dependency) for dependency in dependencies]
-            conflict_keys = [issue_key(conflict) for conflict in conflicts]
-            if None in dependency_keys or None in conflict_keys:
-                add(errors, "INVALID_GITHUB_ISSUE")
-            normalized_dependencies = [item for item in dependency_keys if item is not None]
-            normalized_conflicts = [item for item in conflict_keys if item is not None]
-            edge_map[issue] = normalized_dependencies
-            conflict_map[issue] = normalized_conflicts
-            if len(normalized_dependencies) != len(set(normalized_dependencies)):
-                add(errors, "DUPLICATE_DEPENDENCY_EDGE")
-            if len(normalized_conflicts) != len(set(normalized_conflicts)):
-                add(errors, "DUPLICATE_CONFLICT_EDGE")
-            if set(normalized_dependencies) & set(normalized_conflicts):
-                add(errors, "DEPENDENCY_CONFLICT_OVERLAP")
-            if any(dependency not in issue_set for dependency in normalized_dependencies):
-                add(errors, "UNRESOLVED_DEPENDENCY_ISSUE")
-            if any(conflict not in issue_set for conflict in normalized_conflicts):
-                add(errors, "UNRESOLVED_CONFLICT_ISSUE")
-            if issue in normalized_dependencies:
-                add(errors, "DEPENDENCY_CYCLE")
-            if issue in normalized_conflicts:
-                add(errors, "SELF_CONFLICT")
-
-        visiting: set[tuple[str, str, int]] = set()
-        visited: set[tuple[str, str, int]] = set()
-
-        def visit(issue: tuple[str, str, int]) -> bool:
-            if issue in visiting:
-                return True
-            if issue in visited:
-                return False
-            visiting.add(issue)
-            if any(
-                dependency in issue_set and visit(dependency)
-                for dependency in edge_map.get(issue, [])
-            ):
-                return True
-            visiting.remove(issue)
-            visited.add(issue)
-            return False
-
-        if any(visit(issue) for issue in issue_set if issue not in visited):
-            add(errors, "DEPENDENCY_CYCLE")
-        for issue, conflicts in conflict_map.items():
-            for conflict in conflicts:
-                if conflict in issue_set and issue not in conflict_map.get(conflict, []):
-                    add(errors, "ASYMMETRIC_CONFLICT")
-
-        merge_order = reservation.get("mergeOrder")
-        if not isinstance(merge_order, list) or not merge_order:
-            add(errors, "MERGE_ORDER_MISSING_MEMBER")
-            merge_order = []
-        merge_keys = [issue_key(issue) for issue in merge_order]
-        if None in merge_keys:
-            add(errors, "INVALID_GITHUB_ISSUE")
-        normalized_merge = [item for item in merge_keys if item is not None]
-        if len(normalized_merge) != len(set(normalized_merge)):
-            add(errors, "MERGE_ORDER_DUPLICATE")
-        if any(issue not in issue_set for issue in normalized_merge):
-            add(errors, "MERGE_ORDER_UNKNOWN_MEMBER")
-        if issue_set - set(normalized_merge):
-            add(errors, "MERGE_ORDER_MISSING_MEMBER")
-        positions = {issue: index for index, issue in enumerate(normalized_merge)}
-        for issue, dependencies in edge_map.items():
-            for dependency in dependencies:
-                if (
-                    issue in positions
-                    and dependency in positions
-                    and positions[dependency] >= positions[issue]
-                ):
-                    add(errors, "MERGE_ORDER_DEPENDENCY_VIOLATION")
-        convergence = reservation.get("convergence")
-        if (
-            not isinstance(convergence, dict)
-            or not isinstance(convergence.get("owner"), str)
-            or not convergence.get("owner").strip()
-            or not isinstance(convergence.get("command"), str)
-            or not convergence.get("command").strip()
-        ):
-            add(errors, "EMPTY_CONVERGENCE")
-        if not isinstance(convergence, dict) or convergence.get("terminal") is not True:
-            add(errors, "INVALID_CONVERGENCE_TERMINAL")
-
-
 def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
     assignments = document.get("assignments", [])
     domain_by_uid = active_domain_map(document)
@@ -2217,14 +2393,10 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
     ):
         add(errors, "DUPLICATE_ISSUE_AUTHORITY")
 
-    def epoch_key(assignment: dict[str, Any]) -> tuple[Any, Any]:
-        reference = mapping(assignment_coordination(assignment).get("reservationSet"))
-        return reference.get("id"), reference.get("digest")
-
     assignments_by_epoch: dict[tuple[Any, Any], list[dict[str, Any]]] = defaultdict(list)
     for assignment in assignments:
         if isinstance(assignment, dict):
-            assignments_by_epoch[epoch_key(assignment)].append(assignment)
+            assignments_by_epoch[assignment_epoch_key(assignment)].append(assignment)
     current_epochs = {
         epoch
         for epoch, members in assignments_by_epoch.items()
@@ -2443,7 +2615,7 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
             if normalized is None:
                 add(errors, "INVALID_PATH")
             else:
-                owned.append((epoch_key(assignment), authority_identity or authority, normalized))
+                owned.append((assignment_epoch_key(assignment), authority_identity or authority, normalized))
         for item in coordination.get("sharedTouchpoints", []):
             normalized = normalize_path(shared_path(item))
             if normalized is None:
@@ -2456,7 +2628,7 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
                     add(errors, "INVALID_SHARED_OWNER")
                 elif domain_by_uid and owner_uid not in domain_by_uid:
                     add(errors, "UNKNOWN_SHARED_OWNER_DOMAIN")
-                shared.append((epoch_key(assignment), authority_identity or authority, normalized, owner_uid))
+                shared.append((assignment_epoch_key(assignment), authority_identity or authority, normalized, owner_uid))
         prohibited_paths = [
             normalize_path(value)
             for value in mapping(assignment.get("boundaries")).get(
@@ -2673,6 +2845,111 @@ def revision_semantics_preserved(
     return True
 
 
+def normalize_historical_reservation(
+    reservation: dict[str, Any], historical_assignment: dict[str, Any]
+) -> dict[str, Any] | None:
+    """Map only the two known pre-projection pilot shapes into current v0.
+
+    Revision-1 stored dependencies/conflicts at set level and stored qualified
+    IDs as one row domain plus strings. Revisions 2-4 omitted only the not-yet
+    introduced `authorizedSlices` member. No value absent from those explicit
+    compatibility shapes is inferred from mutable/current state.
+    """
+    normalized = copy.deepcopy(reservation)
+    rows = normalized.get("assignments")
+    if not isinstance(rows, list) or not rows:
+        return None
+    modern_rows: list[dict[str, Any]] = []
+    for row in rows:
+        if not isinstance(row, dict):
+            return None
+        if set(row) == RESERVATION_ROW_FIELDS:
+            modern_rows.append(row)
+            continue
+        if set(row) == RESERVATION_ROW_FIELDS - {"authorizedSlices"}:
+            row["authorizedSlices"] = []
+            modern_rows.append(row)
+            continue
+        legacy_fields = {
+            "issue", "domainUid", "workRef", "recordPaths", "reservedIds",
+            "ownedPaths", "sharedTouchpoints",
+        }
+        if set(row) != legacy_fields or len(rows) != 1:
+            return None
+        issue = row.get("issue")
+        assignment_work = historical_assignment.get("workRef")
+        row_work = row.get("workRef")
+        if (
+            issue_key(issue) is None
+            or not isinstance(assignment_work, dict)
+            or not isinstance(row_work, dict)
+            or set(row_work) != {"domainUid", "id"}
+            or row_work.get("domainUid") != row.get("domainUid")
+            or {
+                "domainUid": assignment_work.get("domainUid"),
+                "id": assignment_work.get("id"),
+            } != row_work
+        ):
+            return None
+        dependency_rows = reservation.get("dependencies")
+        conflict_rows = reservation.get("conflicts")
+        if not isinstance(dependency_rows, list) or not isinstance(conflict_rows, list):
+            return None
+        dependencies: list[Any] = []
+        for edge in dependency_rows:
+            if (
+                not isinstance(edge, dict)
+                or set(edge) != {"issue", "dependsOn"}
+                or issue_key(edge.get("issue")) is None
+                or not isinstance(edge.get("dependsOn"), list)
+            ):
+                return None
+            if issue_key(edge.get("issue")) == issue_key(issue):
+                dependencies.extend(edge["dependsOn"])
+        conflicts: list[Any] = []
+        for edge in conflict_rows:
+            if (
+                not isinstance(edge, dict)
+                or set(edge) != {"issue", "conflictsWith"}
+                or issue_key(edge.get("issue")) is None
+                or not isinstance(edge.get("conflictsWith"), list)
+            ):
+                return None
+            if issue_key(edge.get("issue")) == issue_key(issue):
+                conflicts.extend(edge["conflictsWith"])
+        reserved_ids = row.get("reservedIds")
+        if not isinstance(reserved_ids, list) or any(not nonblank(item) for item in reserved_ids):
+            return None
+        modern_rows.append({
+            "issue": issue,
+            "workRef": assignment_work,
+            "authorizedSlices": [],
+            "activeSlices": [],
+            "reservedIds": [
+                {"domainUid": row.get("domainUid"), "id": item}
+                for item in reserved_ids
+            ],
+            "ownedPaths": row.get("ownedPaths"),
+            "sharedTouchpoints": row.get("sharedTouchpoints"),
+            "dependsOnIssues": dependencies,
+            "conflictsWithIssues": conflicts,
+        })
+    normalized["assignments"] = modern_rows
+    normalized.pop("dependencies", None)
+    normalized.pop("conflicts", None)
+    convergence = normalized.get("convergence")
+    assignment_convergence = assignment_coordination(historical_assignment).get(
+        "convergence"
+    )
+    if (
+        isinstance(convergence, dict)
+        and set(convergence) == {"owner", "command"}
+        and convergence == assignment_convergence
+    ):
+        normalized["convergence"] = {**convergence, "terminal": True}
+    return normalized
+
+
 def validate_assignment_history(
     document: dict[str, Any], errors: list[str], *,
     repository_root: Path | None,
@@ -2852,13 +3129,34 @@ def validate_assignment_history(
                 continue
             actual_reservation_digest = canonical_digest(historical_reservation)
             historical_reservation_snapshot = mapping(historical.get("reservationSet"))
+            normalized_historical_reservation = normalize_historical_reservation(
+                historical_reservation, historical_assignment
+            )
             reservation_rows = [
                 row
-                for row in historical_reservation.get("assignments", [])
+                for row in (
+                    normalized_historical_reservation.get("assignments", [])
+                    if normalized_historical_reservation is not None else []
+                )
                 if isinstance(row, dict)
                 and issue_key(row.get("issue"))
                 == issue_key(assignment_issue(historical_assignment))
             ]
+            historical_reservation_errors: list[str] = []
+            if normalized_historical_reservation is not None:
+                validate_reservation_set_semantics(
+                    normalized_historical_reservation,
+                    historical_reservation_errors,
+                )
+                if "dependencies" in historical_reservation:
+                    # Revision-1 permitted an already accepted external Issue
+                    # prerequisite at set level. Exact edge equality with the
+                    # assignment is still required below; only the later
+                    # local-endpoint rule is compatibility-exempted.
+                    historical_reservation_errors = [
+                        code for code in historical_reservation_errors
+                        if code != "UNRESOLVED_DEPENDENCY_ISSUE"
+                    ]
             source_present = "source" in historical_assignment
             context = historical.get("recordedContext")
             context_matches = isinstance(context, dict)
@@ -2884,7 +3182,15 @@ def validate_assignment_history(
                 or actual_reservation_digest != reservation_reference.get("digest")
                 or historical_reservation.get("integrationBase")
                 != assignment_coordination(historical_assignment).get("integrationBase")
+                or historical_reservation.get("integrationBase")
+                != mapping(historical_assignment.get("baseline")).get("commit")
                 or len(reservation_rows) != 1
+                or reservation_rows[0] != assignment_projection(historical_assignment)
+                or historical_reservation.get("mergeOrder")
+                != assignment_coordination(historical_assignment).get("mergeOrder")
+                or historical_reservation.get("convergence")
+                != assignment_coordination(historical_assignment).get("convergence")
+                or bool(historical_reservation_errors)
                 or source_present != historical.get("sourceFieldPresent")
                 or (
                     source_present
@@ -2958,11 +3264,10 @@ def validate_repository_materialization(
             if record is None or record.get("source") != member.get("source"):
                 add(errors, "RECORD_INVENTORY_BINDING_MISMATCH")
 
-    reservation_sets = {
-        reservation.get("id"): reservation
-        for reservation in document.get("reservationSets", [])
-        if isinstance(reservation, dict) and nonblank(reservation.get("id"))
-    }
+    reservation_sets: dict[tuple[Any, Any], list[dict[str, Any]]] = defaultdict(list)
+    for reservation in document.get("reservationSets", []):
+        if isinstance(reservation, dict) and nonblank(reservation.get("id")):
+            reservation_sets[reservation_epoch_key(reservation)].append(reservation)
     for assignment in document.get("assignments", []):
         if not isinstance(assignment, dict) or assignment.get("kind") != "issue-assignment":
             continue
@@ -2976,10 +3281,18 @@ def validate_repository_materialization(
             materialized_reservation = read_local_json(
                 repository_root, reservation_reference.get("path")
             )
-            expected_reservation = reservation_sets.get(reservation_reference.get("id"))
+            expected_reservations = reservation_sets.get(
+                (reservation_reference.get("id"), reservation_reference.get("digest")),
+                [],
+            )
             if materialized_reservation is None:
                 add(errors, "UNRESOLVED_MATERIALIZED_SOURCE")
-            elif expected_reservation is None or materialized_reservation != expected_reservation:
+            elif (
+                len(expected_reservations) != 1
+                or canonical_digest(materialized_reservation)
+                != reservation_reference.get("digest")
+                or materialized_reservation != expected_reservations[0]
+            ):
                 add(errors, "MATERIALIZED_SOURCE_MISMATCH")
 
     for history in document.get("assignmentHistory", []):
@@ -3016,7 +3329,7 @@ def validate_document(
         repository_root=repository_root,
         embedded_history_blobs=embedded_history_blobs,
     )
-    if not isolated_fixture:
+    if not isolated_fixture or "reservationSets" in document:
         validate_reservation_sets(document, errors)
     if repository_root is not None and materialize_repository:
         validate_repository_materialization(document, errors, repository_root)
@@ -3227,6 +3540,7 @@ def check_coverage(
         "ACTIVE_SLICE_WRITE_SURFACE_REQUIRED",
         "PATHLESS_ASSIGNMENT_REASON_REQUIRED",
         "MULTIPLE_CURRENT_RESERVATION_EPOCHS",
+        "AMBIGUOUS_RESERVATION_EPOCH",
         "ACTIVE_SLICE_PROJECTION_MISMATCH",
         "SEMANTIC_SOURCE_KIND_MISMATCH",
         "DUPLICATE_JSON_MEMBER",
@@ -3254,6 +3568,10 @@ def check_coverage(
         "sliced-fix-active-owner-accepted-history.json",
         "top-level-study-relation-equivalents.json",
         "top-level-corrects-equivalent.json",
+        "same-id-two-terminal-epochs.json",
+        "same-id-three-terminal-epochs.json",
+        "unreferenced-reservation-set.json",
+        "historical-exact-reservation-projection.json",
     }
     missing_positive = sorted(required_positive - positive_fixture_names)
     if missing_positive:
@@ -3344,17 +3662,46 @@ def apply_mutations(document: dict[str, Any], mutations: list[dict[str, Any]]) -
 
 
 def rebind_reservation_digests(document: dict[str, Any]) -> None:
-    digests = {
-        reservation.get("id"): digest
+    reservations = [
+        reservation
         for reservation in document.get("reservationSets", [])
         if isinstance(reservation, dict)
-        and reservation.get("id")
-        and (digest := canonical_digest(reservation)) is not None
-    }
+        and nonblank(reservation.get("id"))
+        and canonical_digest(reservation) is not None
+    ]
     for assignment in document.get("assignments", []):
-        reference = assignment.get("coordination", {}).get("reservationSet")
-        if isinstance(reference, dict) and reference.get("id") in digests:
-            reference["digest"] = digests[reference["id"]]
+        if not isinstance(assignment, dict):
+            continue
+        coordination = assignment_coordination(assignment)
+        reference = coordination.get("reservationSet")
+        if not isinstance(reference, dict) or not nonblank(reference.get("id")):
+            continue
+        same_id = [
+            reservation for reservation in reservations
+            if reservation.get("id") == reference.get("id")
+        ]
+        exact_epoch = [
+            reservation for reservation in same_id
+            if canonical_digest(reservation) == reference.get("digest")
+        ]
+        projected = [
+            reservation for reservation in same_id
+            if reservation.get("integrationBase") == coordination.get("integrationBase")
+            and reservation.get("mergeOrder") == coordination.get("mergeOrder")
+            and reservation.get("convergence") == coordination.get("convergence")
+            and [
+                row for row in reservation.get("assignments", [])
+                if isinstance(row, dict)
+                and issue_key(row.get("issue")) == issue_key(assignment_issue(assignment))
+            ] == [assignment_projection(assignment)]
+        ]
+        candidates = (
+            same_id if len(same_id) == 1
+            else exact_epoch if len(exact_epoch) == 1
+            else projected
+        )
+        if len(candidates) == 1:
+            reference["digest"] = canonical_digest(candidates[0])
 
 
 def validate_text_corpus() -> list[str]:
@@ -3428,6 +3775,76 @@ def embedded_blobs_from_fixture(
             raise ValueError("embedded history blob must contain an object")
         result[key] = blob["json"]
     return result
+
+
+def rebind_embedded_history_digests(
+    document: dict[str, Any], embedded_blobs: dict[str, str]
+) -> None:
+    """Rebind exact synthetic history by candidate/path, never by set ID alone."""
+    histories = [
+        history for history in document.get("assignmentHistory", [])
+        if isinstance(history, dict)
+    ]
+    by_revision = {
+        history.get("revision"): history
+        for history in histories
+        if isinstance(history.get("revision"), int)
+    }
+    for history in histories:
+        candidate = history.get("sourceCandidate")
+        assignment_path = history.get("assignmentSource")
+        assignment_key = f"{candidate}:{assignment_path}"
+        if assignment_key not in embedded_blobs:
+            continue
+        historical_assignment = strict_json_loads(embedded_blobs[assignment_key])
+        reference = mapping(
+            assignment_coordination(historical_assignment).get("reservationSet")
+        )
+        reservation_key = f"{candidate}:{reference.get('path')}"
+        if reservation_key not in embedded_blobs:
+            continue
+        historical_reservation = strict_json_loads(embedded_blobs[reservation_key])
+        digest = canonical_digest(historical_reservation)
+        if digest is None:
+            continue
+        reference["digest"] = digest
+        assignment_coordination(historical_assignment)["reservationSet"] = reference
+        embedded_blobs[assignment_key] = json.dumps(
+            historical_assignment, sort_keys=True, separators=(",", ":"),
+            ensure_ascii=False, allow_nan=False,
+        )
+        mapping(history.get("reservationSet"))["digest"] = digest
+        context = history.get("recordedContext")
+        if isinstance(context, dict) and "/coordination/reservationSet" in context:
+            context["/coordination/reservationSet"] = copy.deepcopy(reference)
+
+    for history in histories:
+        previous = history.get("previousSnapshot")
+        if isinstance(previous, dict):
+            prior = by_revision.get(previous.get("revision"))
+            if isinstance(prior, dict):
+                previous["reservationDigest"] = mapping(
+                    prior.get("reservationSet")
+                ).get("digest")
+    histories_by_source = defaultdict(list)
+    for history in histories:
+        histories_by_source[history.get("assignmentSource")].append(history)
+    for assignment in document.get("assignments", []):
+        if not isinstance(assignment, dict):
+            continue
+        previous = assignment.get("previousRevision")
+        if not isinstance(previous, dict):
+            continue
+        candidates = [
+            history for history in histories_by_source.get(assignment.get("source"), [])
+            if history.get("revision") == previous.get("revision")
+            and history.get("source") == previous.get("snapshotPath")
+            and history.get("sourceCandidate") == previous.get("sourceCandidate")
+        ]
+        if len(candidates) == 1:
+            previous["reservationDigest"] = mapping(
+                candidates[0].get("reservationSet")
+            ).get("digest")
 
 
 def main() -> int:
@@ -3605,6 +4022,8 @@ def main() -> int:
                     if not isinstance(key, str):
                         raise ValueError("invalid embedded history removal key")
                     embedded_blobs.pop(key, None)
+                if document.get("rebindEmbeddedHistoryDigests") is True:
+                    rebind_embedded_history_digests(subject, embedded_blobs)
                 actual = validate_document(
                     subject,
                     embedded_history_blobs=(embedded_blobs or None),

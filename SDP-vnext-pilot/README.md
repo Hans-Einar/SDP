@@ -51,12 +51,13 @@ assignment, the single default-domain declaration, and
 `Steering/Reservations/RSV-ISSUE-007-001.json`. The assignment binds the real
 reservation file by canonical JSON SHA-256; the validator resolves the Study,
 domain, paths, IDs, base, dependency, and convergence contract together.
-Assignment revision 6 retains the complete revision-1 through revision-5
+Assignment revision 7 retains the complete revision-1 through revision-6
 snapshot chain under `Steering/Assignments/History/`. The generic repository
-driver reconstructs all five exact Git candidates plus each candidate's exact
-historical reservation, rehashes them, and rejects a missing, fabricated,
-tampered, gapped, truncated, identity-replacing, or evidence-erasing refreeze
-history.
+driver reconstructs all six exact Git candidates plus each candidate's exact
+historical reservation, rehashes them, and requires the one canonical Issue
+row to equal the exact historical assignment projection. It rejects missing,
+fabricated, tampered, gapped, truncated, identity-replacing,
+evidence-erasing, or coordinated assignment/reservation divergence.
 
 ## Validate
 
@@ -70,7 +71,8 @@ The validator uses only the Python standard library. It validates templates,
 positive examples and mutation controls, exact negative fixtures, bidirectional owner/Issue/Slice
 cardinality, canonical GitHub identities/repository coherence, qualified
 accepted evidence, identity inventory/source/provenance/no-reuse, reservation
-digests and reservation-epoch concurrency graphs, portable roots/paths and branch names,
+digests and tuple-keyed reservation-epoch concurrency graphs, complete
+standalone validation of bound and unbound typed reservation sets, portable roots/paths and branch names,
 cross-record acceptance/prerequisite/conflict state, qualified embedded
 and top-level semantic edges as one global set with relation-specific DAGs,
 allocation versus execution authority, complete authorized-Slice history,

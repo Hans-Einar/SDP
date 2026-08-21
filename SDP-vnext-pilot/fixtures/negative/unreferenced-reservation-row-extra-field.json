@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"unreferenced-reservation-row-shape-is-exact","sourcePositive":"unreferenced-reservation-set.json","mutations":[{"op":"add","path":"/reservationSets/1/assignments/0/extension","value":"not-supported-in-row-v0"}],"expectedErrors":["RESERVATION_SET_INCOMPLETE"]}

@@ -159,6 +159,9 @@ The pilot assignment must contain:
   qualified ID, private/shared path, dependency/conflict edge, complete
   dependency-consistent merge order, and explicit terminal convergence; every
   assignment binds its recomputed digest and identical projection;
+- standalone validation of every typed preparatory reservation object before
+  assignments bind it, and tuple-keyed `(set ID, digest)` resolution so later
+  terminal refreezes may retain the stable set ID without collapsing history;
 - collision validation across NFKC/casefold/slash normalization (important
   because Issue #36 already exposed the `agents.md`/`AGENTS.md` Windows case
   collision);

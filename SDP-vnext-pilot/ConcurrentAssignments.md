@@ -83,9 +83,23 @@ reservation digest, and compares canonical Issue/source/revision/reservation
 identity. It also compares the actual revision sequence: Issue, assignment
 source, and primary `workRef` never change; authorized Slice identities are
 append-only; and every non-null historical `acceptedCandidate` survives
-unchanged. `recordedContext` adds audit pointers but cannot weaken those
+unchanged. For every snapshot it resolves exactly one reservation row for the
+canonical Issue and requires its complete `issue`, `workRef`, authorized/active
+Slices, reserved IDs, owned/shared paths, and dependency/conflict projection to
+equal the canonical projection of the exact historical assignment. It also
+requires exact historical base, merge order, and convergence equality. Updating
+both historical files, their digest, and every snapshot pointer cannot conceal
+a row divergence. `recordedContext` adds audit pointers but cannot weaken those
 mandatory comparisons. Duplicate JSON members, missing/tampered historical
-reservation bytes, or digest disagreement fail closed.
+reservation bytes, digest disagreement, or a missing/duplicate/mutated row fail
+closed.
+
+The only compatibility normalization recognizes the exact early Issue #7 pilot
+shapes: revision 1's typed set-level edge/string-ID representation and revisions
+2–4's absent `authorizedSlices` member. It maps only fields present in those
+historical bytes, requires them to equal the exact historical assignment, and
+does not infer authority from current state. Unknown or partially matching
+legacy shapes fail closed.
 If repository resolution is unavailable for a declared revision chain, pilot
 v0 fails closed with `REPOSITORY_DRIVER_REQUIRED`; field-consistent fabricated
 history is never accepted.
@@ -110,13 +124,19 @@ semantics, reverse active projection, accepted Fix targets, relation kinds,
 duplicate JSON members, and branch-Unicode robustness. A completed
 historical prerequisite remains linked as evidence without pretending another
 Issue Master is concurrently active.
+Revision 7 retains the exact revision-6 assignment and reservation at
+`0655002cbe5e14543b007525cdc3e3bad82b6816`, reserves exact
+`REV/VER-SDP-007-008` paths, and requires exact historical row projection,
+tuple-keyed epochs, and complete validation of every typed preparatory or bound
+reservation set.
 
 The reusable pilot `reservation-set` shape is in
 [`templates/reservation-set.template.json`](templates/reservation-set.template.json).
 Self-contained examples embed it in `reservationSets`; a repository record may
 instead bind an external path, as Issue #7 dogfood does. Both routes use the
-same generic validator. It resolves the set by ID, recomputes the canonical
-digest, and compares this complete projection for every assignment:
+same generic validator. It computes the epoch key as `(reservation-set ID,
+canonical digest)`, rejects duplicate objects for the same pair, resolves each
+assignment by its exact pair, and compares this complete projection:
 
 ```text
 Issue + primary workRef + authorizedSlices + activeSlices
@@ -127,6 +147,12 @@ Issue + primary workRef + authorizedSlices + activeSlices
 
 A missing reference, unresolved set, incomplete row, digest mismatch, or any
 assignment/reservation content difference blocks activation.
+Every typed reservation object is fully validated before binding, including a
+preparatory set referenced by no assignment yet. Exact base, nonempty unique
+rows, qualified IDs/references, portable paths/shared values, local edge
+endpoints, self/duplicate/cycle/overlap rules, complete dependency-consistent
+merge order, and nonblank terminal convergence are mandatory. Being unbound is
+not a semantic-validation bypass.
 
 ## Current reservation epoch versus preserved history
 
@@ -138,6 +164,10 @@ shared path collisions, and shared-touchpoint symmetry. A group is current when
 at least one member is `proposed`, `active`, or `blocked`; a group whose members
 are all `accepted`, `rejected`, `cancelled`, or `superseded` is historical.
 There may be at most one current group in one repository validation document.
+The ID is a stable coordination-record identity and MAY be reused across
+terminal immutable epochs with different digests, objects, and bases. Those
+objects remain distinct by the pair; two objects with the same pair are
+ambiguous and invalid. An assignment pair must resolve exactly one object.
 
 Accepted historical groups retain their exact base, reservation, paths, and
 evidence as terminal graph facts. They do not collide with a later epoch and do
