@@ -31,11 +31,14 @@ the absolute pair `{domainUid, id}`; `keyHint` is advisory. A bare
 
 ## Concurrent Issue Masters
 
-The scoped example contains Issue assignments 201 and 202 frozen against the
-same integration commit and reservation-set digest. They reserve disjoint
-domain IDs and paths. Both name the exact shared touchpoint
+The scoped example contains Issue assignments 201, 202, and 203 frozen against
+the same integration commit and a real embedded canonical reservation object.
+Issue 203 owns `SHARED-SLC-001` and depends on the Debugger and AVR assignments;
+the merge order lists all three Issues once before the explicit terminal
+convergence. They reserve disjoint domain IDs and paths. All participants name the exact shared touchpoint
 `SDP/Shared/contracts/interface.json`, its explicit owner, the merge order, and
-the final convergence command. Changing path case/slashes, composing Unicode
+the final convergence command. The validator recomputes the reservation digest
+and compares every assignment projection to it. Changing path case/slashes, composing Unicode
 differently, or reserving a parent directory does not evade collision checks.
 
 ## Cross-scope dependency
@@ -51,8 +54,13 @@ views for one domain:
 
 - the old monorepo retains a `moved` tombstone with no active roots and a
   successor registry; and
-- the new repository declares the same UID, key, issued IDs, and canonical
-  `DBG-FEAT-001`, with new roots and predecessor metadata.
+- the new repository declares the same UID, key, structured identity inventory,
+  and proposed `DBG-FEAT-001`, with new roots and predecessor metadata.
+
+The inventory also preserves historical `DBG-RF-001` with its exact source
+repository, commit, and path. The move example deliberately models no delivered
+work, Issue assignment, or Slice; it demonstrates identity portability without
+inventing missing delivery evidence.
 
 The external relation remains `{same UID, "DBG-FEAT-001"}`. A negative fixture
 proves that rewriting it to a new key fails validation.
@@ -65,11 +73,18 @@ proves that rewriting it to a new key fails validation.
 - within-domain record-ID collision;
 - case/slash, Unicode-composition, and parent/child path collisions;
 - an unqualified cross-domain relation;
-- unresolved local work/relation references and nonreciprocal Slice ownership;
+- unresolved local work/relation/Slice-decision references, bidirectional
+  owner/Issue/Slice cardinality, and Slice path authorization;
 - invalid scoped-domain ID reservation;
-- stale concurrent bases, duplicate reservations, asymmetric conflicts, and
-  mismatched merge/convergence contracts; and
-- record/key rewrite during a repository move.
+- stale concurrent bases, duplicate Issue/ID reservations, asymmetric
+  conflicts, digest/content mismatch, dependency cycles, incomplete
+  merge/convergence contracts, and order violations;
+- unsupported accepted/delivered/released claims;
+- structured-inventory duplication, malformed prospective IDs, missing legacy
+  provenance, and cross-Issue reclaim;
+- recursive domain-root collisions plus NFKC-introduced colon/glob/separator
+  semantics; and
+- record/key/inventory rewrite during a repository move.
 
 Each fixture declares its exact expected diagnostic codes, so a negative case
 cannot “pass” merely because the validator failed for an unrelated reason.

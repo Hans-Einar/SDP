@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "slice-shared-path-is-not-declared-by-its-assignment",
+  "sourceExample": "scoped-monorepo.json",
+  "mutations": [
+    {"op": "replace", "path": "/records/2/sharedTouchpoints/0", "value": "SDP/Shared/contracts/other.json"}
+  ],
+  "expectedErrors": ["UNDECLARED_SLICE_SHARED_PATH"]
+}

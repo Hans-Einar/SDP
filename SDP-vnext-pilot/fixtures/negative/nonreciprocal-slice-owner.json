@@ -11,7 +11,10 @@
           "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000100",
           "key": "APP", "state": "active", "owners": ["owner"],
           "newRecordIdStyle": "scoped", "roots": ["SDP/App"],
-          "issuedIds": ["APP-FEAT-001", "APP-SLC-001"]
+          "issuedIds": [
+            {"id": "APP-FEAT-001", "status": "prospective", "authorityIssue": "https://github.com/example/repo/issues/1", "source": "Features/APP-FEAT-001.json"},
+            {"id": "APP-SLC-001", "status": "prospective", "authorityIssue": "https://github.com/example/repo/issues/1", "source": "Slices/APP-SLC-001.json"}
+          ]
         }
       ]
     }
@@ -34,8 +37,7 @@
       "relations": [],
       "issueAuthorities": ["https://github.com/example/repo/issues/1"],
       "slices": [],
-      "acceptedEvidence": {"candidate": null, "verificationRefs": [], "reviewRef": null, "steeringDisposition": null},
-      "releaseInclusions": []
+      "acceptedEvidence": {"candidate": null, "verificationRefs": [], "currentReviewRef": null, "steeringDisposition": null, "releaseRefs": []}
     },
     {
       "schemaVersion": "sdp-vnext-pilot-slice-v0",
@@ -59,10 +61,11 @@
       "reviewCriteria": ["Fresh review"],
       "discoveryRule": "Stop on scope change.",
       "completionSignal": "READY",
-      "hardStop": "Do not expand scope."
+      "hardStop": "Do not expand scope.",
+      "acceptedEvidence": {"candidate": null, "verificationRefs": [], "currentReviewRef": null, "steeringDisposition": null, "releaseRefs": []}
     }
   ],
   "relations": [],
   "assignments": [],
-  "expectedErrors": ["NONRECIPROCAL_SLICE_OWNER"]
+  "expectedErrors": ["NONRECIPROCAL_SLICE_OWNER", "SLICE_ASSIGNMENT_CARDINALITY"]
 }

@@ -22,8 +22,8 @@
   "acceptedEvidence": {
     "candidate": null,
     "verificationRefs": [],
-    "reviewRef": null,
-    "steeringDisposition": null
-  },
-  "releaseInclusions": []
+    "currentReviewRef": null,
+    "steeringDisposition": null,
+    "releaseRefs": []
+  }
 }

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "assignment-digest-does-not-bind-reservation-bytes",
+  "sourceExample": "simple-single-domain.json",
+  "mutations": [
+    {"op": "replace", "path": "/assignments/0/coordination/reservationSet/digest", "value": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"}
+  ],
+  "expectedErrors": ["RESERVATION_DIGEST_MISMATCH"]
+}

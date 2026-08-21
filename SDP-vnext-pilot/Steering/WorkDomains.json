@@ -13,7 +13,14 @@
       "owners": ["Hans-Einar/SDP Steering"],
       "newRecordIdStyle": "unscoped",
       "roots": ["SDP-vnext-pilot"],
-      "issuedIds": ["STU-007"],
+      "issuedIds": [
+        {
+          "id": "STU-007",
+          "status": "prospective",
+          "authorityIssue": "https://github.com/Hans-Einar/SDP/issues/7",
+          "source": "SDP-vnext-pilot/Studies/STU-007.json"
+        }
+      ],
       "predecessorRepositories": []
     }
   ]

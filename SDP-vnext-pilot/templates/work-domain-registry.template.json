@@ -13,7 +13,20 @@
       "owners": ["application-team"],
       "newRecordIdStyle": "scoped",
       "roots": ["SDP/Application"],
-      "issuedIds": ["APP-FEAT-001", "APP-SLC-001"],
+      "issuedIds": [
+        {
+          "id": "APP-FEAT-001",
+          "status": "prospective",
+          "authorityIssue": "https://github.com/example/app/issues/101",
+          "source": "Features/APP-FEAT-001.json"
+        },
+        {
+          "id": "APP-SLC-001",
+          "status": "prospective",
+          "authorityIssue": "https://github.com/example/app/issues/101",
+          "source": "Slices/APP-SLC-001.json"
+        }
+      ],
       "predecessorRepositories": []
     }
   ]

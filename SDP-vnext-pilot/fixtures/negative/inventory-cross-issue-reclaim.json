@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "different-issue-reclaims-an-already-issued-id",
+  "sourceExample": "simple-single-domain.json",
+  "mutations": [
+    {"op": "replace", "path": "/registries/0/domains/0/issuedIds/1/authorityIssue", "value": "https://github.com/example/tiny-app/issues/99"}
+  ],
+  "expectedErrors": ["ISSUED_ID_RECLAIM"]
+}

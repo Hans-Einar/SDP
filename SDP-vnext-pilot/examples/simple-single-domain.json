@@ -18,7 +18,20 @@
           "owners": ["tiny-app-owner"],
           "newRecordIdStyle": "unscoped",
           "roots": ["SDP"],
-          "issuedIds": ["FEAT-001", "SLC-001"],
+          "issuedIds": [
+            {
+              "id": "FEAT-001",
+              "status": "prospective",
+              "authorityIssue": "https://github.com/example/tiny-app/issues/10",
+              "source": "Features/FEAT-001.json"
+            },
+            {
+              "id": "SLC-001",
+              "status": "prospective",
+              "authorityIssue": "https://github.com/example/tiny-app/issues/10",
+              "source": "Slices/SLC-001.json"
+            }
+          ],
           "predecessorRepositories": []
         }
       ]
@@ -54,10 +67,10 @@
       "acceptedEvidence": {
         "candidate": null,
         "verificationRefs": [],
-        "reviewRef": null,
-        "steeringDisposition": null
-      },
-      "releaseInclusions": []
+        "currentReviewRef": null,
+        "steeringDisposition": null,
+        "releaseRefs": []
+      }
     },
     {
       "schemaVersion": "sdp-vnext-pilot-slice-v0",
@@ -84,7 +97,14 @@
       "reviewCriteria": ["Independent exact-candidate review"],
       "discoveryRule": "Stop on public-format expansion.",
       "completionSignal": "EXPORT_SLICE_READY",
-      "hardStop": "Do not start cloud sharing."
+      "hardStop": "Do not start cloud sharing.",
+      "acceptedEvidence": {
+        "candidate": null,
+        "verificationRefs": [],
+        "currentReviewRef": null,
+        "steeringDisposition": null,
+        "releaseRefs": []
+      }
     }
   ],
   "relations": [],
@@ -94,6 +114,7 @@
       "experimental": true,
       "kind": "issue-assignment",
       "revision": 1,
+      "declaredState": "active",
       "authority": {
         "issue": "https://github.com/example/tiny-app/issues/10",
         "amendments": []
@@ -121,7 +142,7 @@
         "integrationBase": "2222222222222222222222222222222222222222",
         "reservationSet": {
           "id": "RSV-010",
-          "digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+          "digest": "sha256:9f758b110ed8ce292a2c1bcffcba49f68fe8e6222fc8c9628b72b0434ca07fb1"
         },
         "dependsOnIssues": [],
         "conflictsWithIssues": [],
@@ -136,7 +157,8 @@
         "mergeOrder": ["https://github.com/example/tiny-app/issues/10"],
         "convergence": {
           "owner": "tiny-app-owner",
-          "command": "python -m unittest"
+          "command": "python -m unittest",
+          "terminal": true
         },
         "staleBasePolicy": "refreeze-before-write-or-merge"
       },
@@ -150,7 +172,55 @@
         "independentReview": true,
         "maximumUnresolvedSeverity": "low"
       },
+      "acceptedEvidence": {
+        "candidate": null,
+        "verificationRefs": [],
+        "currentReviewRef": null,
+        "steeringDisposition": null,
+        "releaseRefs": []
+      },
       "stopCondition": "AWAITING_STEERING"
+    }
+  ],
+  "reservationSets": [
+    {
+      "schemaVersion": "sdp-vnext-pilot-reservation-set-v0",
+      "experimental": true,
+      "kind": "reservation-set",
+      "id": "RSV-010",
+      "integrationBase": "2222222222222222222222222222222222222222",
+      "assignments": [
+        {
+          "issue": "https://github.com/example/tiny-app/issues/10",
+          "workRef": {
+            "type": "feature",
+            "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001",
+            "id": "FEAT-001"
+          },
+          "activeSlices": [
+            {
+              "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001",
+              "id": "SLC-001"
+            }
+          ],
+          "reservedIds": [
+            {
+              "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001",
+              "id": "SLC-001"
+            }
+          ],
+          "ownedPaths": ["src/export/**", "tests/test_export.py"],
+          "sharedTouchpoints": [],
+          "dependsOnIssues": [],
+          "conflictsWithIssues": []
+        }
+      ],
+      "mergeOrder": ["https://github.com/example/tiny-app/issues/10"],
+      "convergence": {
+        "owner": "tiny-app-owner",
+        "command": "python -m unittest",
+        "terminal": true
+      }
     }
   ]
 }

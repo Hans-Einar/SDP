@@ -57,6 +57,23 @@ assignment record.
    recompute all normalization/collisions, update the common reservation set,
    increment affected assignment revisions, and obtain Steering refreeze.
 
+The reusable pilot `reservation-set` shape is in
+[`templates/reservation-set.template.json`](templates/reservation-set.template.json).
+Self-contained examples embed it in `reservationSets`; a repository record may
+instead bind an external path, as Issue #7 dogfood does. Both routes use the
+same generic validator. It resolves the set by ID, recomputes the canonical
+digest, and compares this complete projection for every assignment:
+
+```text
+Issue + primary workRef + activeSlices
++ qualified reservedIds + ownedPaths + sharedTouchpoints
++ dependsOnIssues + conflictsWithIssues
++ common integrationBase + mergeOrder + terminal convergence
+```
+
+A missing reference, unresolved set, incomplete row, digest mismatch, or any
+assignment/reservation content difference blocks activation.
+
 Starting two branches first and attempting to reconcile colliding assignments
 later is invalid. Reservation must precede concurrent implementation.
 
@@ -75,11 +92,17 @@ later is invalid. Reservation must precede concurrent implementation.
 
 ## Dependencies, conflicts, and merge order
 
-`dependsOnIssues` is a directed acyclic prerequisite edge. A dependent candidate
+Every current assignment has a unique Issue authority in the set.
+`dependsOnIssues` is a directed acyclic prerequisite edge to another Issue in
+that set. A dependent candidate
 cannot receive accepted state until the named prerequisite candidate/gate is
 satisfied. `conflictsWithIssues` is symmetric and blocks concurrent activation
-until refrozen. `mergeOrder` is an ordered list or explicit parallel group plus
-one convergence branch/gate; it is not narrative “coordinate later.”
+until refrozen; every conflict endpoint also resolves inside the set.
+`mergeOrder` is a non-empty list containing every current Issue
+exactly once and no other member; every prerequisite precedes its dependent.
+The separate `convergence` object has a non-empty owner and executable command
+plus `terminal: true`. This is the explicit final convergence gate, not
+narrative “coordinate later.”
 
 After each predecessor merges, successors compare their recorded base to the
 new integration head. A changed base is expected, but it is still stale until

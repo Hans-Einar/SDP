@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "delivered-work-has-no-issue-slice-or-accepted-evidence",
+  "sourceExample": "domain-move.json",
+  "mutations": [
+    {"op": "replace", "path": "/records/1/declaredState", "value": "delivered"}
+  ],
+  "expectedErrors": [
+    "ACCEPTED_EVIDENCE_REQUIRED",
+    "DELIVERED_WORK_ISSUE_REQUIRED",
+    "DELIVERED_WORK_SLICE_REQUIRED"
+  ]
+}

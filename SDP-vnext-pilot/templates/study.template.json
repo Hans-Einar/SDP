@@ -13,9 +13,17 @@
     "outOfScope": ["Unrelated implementation"]
   },
   "ownerRef": null,
+  "issueAuthorities": [],
   "independentStudyRefs": [],
   "convergenceGate": "Fresh review and Steering decision",
   "findings": [],
   "limitations": [],
-  "informs": []
+  "informs": [],
+  "acceptedEvidence": {
+    "candidate": null,
+    "verificationRefs": [],
+    "currentReviewRef": null,
+    "steeringDisposition": null,
+    "releaseRefs": []
+  }
 }

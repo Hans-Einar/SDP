@@ -18,7 +18,14 @@
           "owners": ["host-owner"],
           "newRecordIdStyle": "scoped",
           "roots": ["SDP/Host"],
-          "issuedIds": ["HOST-FEAT-001"],
+          "issuedIds": [
+            {
+              "id": "HOST-FEAT-001",
+              "status": "prospective",
+              "authorityIssue": "https://github.com/example/old-monorepo/issues/300",
+              "source": "SDP/Host/Features/HOST-FEAT-001.json"
+            }
+          ],
           "predecessorRepositories": []
         },
         {
@@ -29,7 +36,25 @@
           "owners": ["debugger-owner"],
           "newRecordIdStyle": "scoped",
           "roots": [],
-          "issuedIds": ["DBG-FEAT-001", "DBG-SLC-001"],
+          "issuedIds": [
+            {
+              "id": "DBG-FEAT-001",
+              "status": "prospective",
+              "authorityIssue": "https://github.com/example/old-monorepo/issues/301",
+              "source": "SDP/Debugger/Features/DBG-FEAT-001.json"
+            },
+            {
+              "id": "DBG-RF-001",
+              "status": "legacy-preserved",
+              "authorityIssue": "https://github.com/example/old-monorepo/issues/38",
+              "source": "SDP/Debugger/Refactors/DBG-RF-001/Refactor.md",
+              "provenance": {
+                "repository": "https://github.com/example/old-monorepo",
+                "commit": "4444444444444444444444444444444444444444",
+                "path": "SDP/Debugger/Refactors/DBG-RF-001/Refactor.md"
+              }
+            }
+          ],
           "successorRepository": "https://github.com/example/debugger",
           "successorRegistry": "https://github.com/example/debugger/blob/main/SDP/WorkDomains.json"
         }
@@ -50,7 +75,25 @@
           "owners": ["debugger-owner"],
           "newRecordIdStyle": "scoped",
           "roots": ["SDP/Debugger"],
-          "issuedIds": ["DBG-FEAT-001", "DBG-SLC-001"],
+          "issuedIds": [
+            {
+              "id": "DBG-FEAT-001",
+              "status": "prospective",
+              "authorityIssue": "https://github.com/example/old-monorepo/issues/301",
+              "source": "SDP/Debugger/Features/DBG-FEAT-001.json"
+            },
+            {
+              "id": "DBG-RF-001",
+              "status": "legacy-preserved",
+              "authorityIssue": "https://github.com/example/old-monorepo/issues/38",
+              "source": "SDP/Debugger/Refactors/DBG-RF-001/Refactor.md",
+              "provenance": {
+                "repository": "https://github.com/example/old-monorepo",
+                "commit": "4444444444444444444444444444444444444444",
+                "path": "SDP/Debugger/Refactors/DBG-RF-001/Refactor.md"
+              }
+            }
+          ],
           "predecessorRepositories": ["https://github.com/example/old-monorepo"]
         }
       ]
@@ -81,10 +124,10 @@
       "acceptedEvidence": {
         "candidate": null,
         "verificationRefs": [],
-        "reviewRef": null,
-        "steeringDisposition": null
-      },
-      "releaseInclusions": []
+        "currentReviewRef": null,
+        "steeringDisposition": null,
+        "releaseRefs": []
+      }
     },
     {
       "schemaVersion": "sdp-vnext-pilot-feature-v0",
@@ -93,7 +136,7 @@
       "domainUid": "urn:uuid:40000000-0000-4000-8000-000000000020",
       "id": "DBG-FEAT-001",
       "revision": 1,
-      "declaredState": "delivered",
+      "declaredState": "proposed",
       "title": "Debugger service",
       "intent": {
         "problem": "The debugger service needs a stable boundary.",
@@ -106,19 +149,14 @@
       "acceptanceCriteria": ["Original qualified references resolve"],
       "relations": [],
       "issueAuthorities": [],
-      "slices": [
-        {
-          "domainUid": "urn:uuid:40000000-0000-4000-8000-000000000020",
-          "id": "DBG-SLC-001"
-        }
-      ],
+      "slices": [],
       "acceptedEvidence": {
-        "candidate": "4444444444444444444444444444444444444444",
-        "verificationRefs": ["DBG-VER-001"],
-        "reviewRef": "DBG-RVW-001",
-        "steeringDisposition": "accepted"
-      },
-      "releaseInclusions": []
+        "candidate": null,
+        "verificationRefs": [],
+        "currentReviewRef": null,
+        "steeringDisposition": null,
+        "releaseRefs": []
+      }
     }
   ],
   "relations": [
@@ -135,5 +173,6 @@
       }
     }
   ],
-  "assignments": []
+  "assignments": [],
+  "reservationSets": []
 }

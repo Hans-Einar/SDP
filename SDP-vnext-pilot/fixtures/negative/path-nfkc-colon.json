@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "nfkc-introduces-a-forbidden-colon",
+  "sourceExample": "simple-single-domain.json",
+  "mutations": [
+    {"op": "add", "path": "/assignments/0/coordination/ownedPaths/-", "value": "research/ＡＶＲ：evidence/**"},
+    {"op": "add", "path": "/reservationSets/0/assignments/0/ownedPaths/-", "value": "research/ＡＶＲ：evidence/**"}
+  ],
+  "rebindReservationDigests": true,
+  "expectedErrors": ["INVALID_PATH"]
+}

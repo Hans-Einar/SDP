@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "reservation-convergence-is-not-explicitly-terminal",
+  "sourceExample": "simple-single-domain.json",
+  "mutations": [
+    {"op": "replace", "path": "/reservationSets/0/convergence/terminal", "value": false},
+    {"op": "replace", "path": "/assignments/0/coordination/convergence/terminal", "value": false}
+  ],
+  "rebindReservationDigests": true,
+  "expectedErrors": ["INVALID_CONVERGENCE_TERMINAL"]
+}

@@ -18,5 +18,12 @@
   "exitEvidence": ["Dependency direction and regression checks pass"],
   "relations": [],
   "issueAuthorities": [],
-  "slices": []
+  "slices": [],
+  "acceptedEvidence": {
+    "candidate": null,
+    "verificationRefs": [],
+    "currentReviewRef": null,
+    "steeringDisposition": null,
+    "releaseRefs": []
+  }
 }

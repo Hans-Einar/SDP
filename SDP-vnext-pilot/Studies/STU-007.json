@@ -33,5 +33,12 @@
     "The contract remains provisional until real pilots provide migration, ergonomics, collision, and repository-move evidence.",
     "Declared active state does not claim accepted review or Steering completion."
   ],
-  "informs": []
+  "informs": [],
+  "acceptedEvidence": {
+    "candidate": null,
+    "verificationRefs": [],
+    "currentReviewRef": null,
+    "steeringDisposition": null,
+    "releaseRefs": []
+  }
 }

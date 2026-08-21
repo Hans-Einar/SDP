@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "assignment-references-an-unresolved-reservation-set",
+  "sourceExample": "simple-single-domain.json",
+  "mutations": [
+    {"op": "replace", "path": "/reservationSets", "value": []}
+  ],
+  "expectedErrors": ["UNRESOLVED_RESERVATION_SET"]
+}

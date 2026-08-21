@@ -105,6 +105,16 @@ once, across all current and historical repositories. A move imports the full
 issued/reserved inventory before new allocation. Numeric gaps are not evidence
 that an ID is available.
 
+`issuedIds` is a structured inventory, never a list of bare strings. A
+prospective member carries `id`, `status: prospective`, the allocating
+`authorityIssue`, and its repository-relative `source`. It must satisfy the
+current domain key/style/type grammar. A preserved historical spelling such as
+`DBG-RF-001` carries `status: legacy-preserved`, its original authority/source,
+and exact provenance `{repository, commit, path}`; it is not normalized into a
+new `REF` identity. Inventory IDs are unique after NFKC/casefold normalization.
+An assignment may reserve an already-issued ID only when its Issue equals that
+member's recorded authority; another Issue cannot reclaim it.
+
 ## Declaration and discovery
 
 A registry has a stable schema marker and `experimental: true`, identifies the
@@ -118,9 +128,11 @@ hosting repository, and lists declarations. Each declaration includes:
 - for a tombstone, `successorRepository` and `successorRegistry`;
 - for the active successor, `predecessorRepositories`.
 
-`issuedIds` on a tombstone is the frozen inventory at the move gate. The active
-successor begins with that complete set and MAY append new IDs after the move;
-it may never omit, rename, or reuse an ID from the tombstone.
+`issuedIds` on a tombstone is the frozen structured inventory at the move gate.
+The active successor begins with byte-equivalent member content for that full
+set, including status, authority, source, and provenance, and MAY append new
+IDs after the move; it may never omit, rename, weaken provenance, or reuse an
+ID from the tombstone.
 
 At most one active declaration exists for a UID across a validated registry
 set. Repeated declarations for the UID MUST preserve the key. A moved entry
@@ -148,16 +160,26 @@ All pre-work reservation checks use the same portable form:
 
 ### Paths
 
-- convert `\` to `/`, apply NFKC and casefold to each segment;
+- apply Unicode NFKC before checking separators, glob syntax, colon, dot
+  segments, reserved names, or any other path semantics, then casefold and
+  compare `/` and `\` as equivalent separators;
+- reject compatibility characters whose NFKC result introduces `:`, a glob
+  token, `/`, `\`, or other invalid path semantics;
 - require a repository-relative path; reject drive prefixes, leading `/`, empty
   segments, `.`/`..`, control characters, `:` and platform-reserved names;
 - trim trailing spaces/dots for collision comparison and reject a path whose
   normalized segment changes for that reason;
 - reservations are either an exact file/directory path or one recursive
   directory expressed only as a final `/**`; other glob syntax is invalid;
-- collision exists when normalized paths are equal or one recursive reservation
+- assignment-path collision exists when normalized paths are equal or one recursive reservation
   contains the other. This catches case-only, slash-style, composed/decomposed
   Unicode, and parent/child overlaps.
+
+Every active domain root is a recursive ownership tree even though registry
+roots MUST NOT use assignment glob syntax such as `/**`. Therefore `SDP`,
+`sdp/hsx`, `SDP\HSX`, and an
+NFKC-equivalent spelling all overlap `SDP/HSX` when owned by another active
+domain.
 
 Two assignments may name the same shared touchpoint only when both declare the
 same normalized path and the reservation set supplies an owner, dependency or

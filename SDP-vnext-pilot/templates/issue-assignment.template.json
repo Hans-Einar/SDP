@@ -3,6 +3,7 @@
   "experimental": true,
   "kind": "issue-assignment",
   "revision": 1,
+  "declaredState": "active",
   "authority": {
     "issue": "https://github.com/example/app/issues/101",
     "amendments": []
@@ -45,7 +46,8 @@
     "mergeOrder": ["https://github.com/example/app/issues/101"],
     "convergence": {
       "owner": "application-domain",
-      "command": "python -m unittest"
+      "command": "python -m unittest",
+      "terminal": true
     },
     "staleBasePolicy": "refreeze-before-write-or-merge"
   },
@@ -58,6 +60,13 @@
     "verification": ["deterministic checks at exact candidate"],
     "independentReview": true,
     "maximumUnresolvedSeverity": "low"
+  },
+  "acceptedEvidence": {
+    "candidate": null,
+    "verificationRefs": [],
+    "currentReviewRef": null,
+    "steeringDisposition": null,
+    "releaseRefs": []
   },
   "stopCondition": "AWAITING_STEERING"
 }

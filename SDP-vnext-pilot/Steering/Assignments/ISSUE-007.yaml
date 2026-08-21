@@ -3,6 +3,7 @@
   "experimental": true,
   "kind": "issue-assignment",
   "revision": 1,
+  "declaredState": "active",
   "authority": {
     "issue": "https://github.com/Hans-Einar/SDP/issues/7",
     "amendments": []
@@ -32,9 +33,9 @@
     "reservationSet": {
       "id": "RSV-ISSUE-007-001",
       "path": "SDP-vnext-pilot/Steering/Reservations/RSV-ISSUE-007-001.json",
-      "digest": "sha256:50d6768eecce05e540c7674b34a78ba6b4432cabae6e079b88fb51e669bebd4d"
+      "digest": "sha256:ebebca496d3c6ad8f2622c647bb979bcd3b5bf44137b2ea6cf34ad0e022cc06a"
     },
-    "dependsOnIssues": ["https://github.com/Hans-Einar/SDP/issues/5"],
+    "dependsOnIssues": [],
     "conflictsWithIssues": [],
     "ownedPaths": [
       "SDP-vnext-pilot/**",
@@ -65,7 +66,8 @@
     "mergeOrder": ["https://github.com/Hans-Einar/SDP/issues/7"],
     "convergence": {
       "owner": "Hans-Einar/SDP Steering",
-      "command": "python SDP-vnext-pilot/validate_pilot.py"
+      "command": "python SDP-vnext-pilot/validate_pilot.py",
+      "terminal": true
     },
     "staleBasePolicy": "refreeze-before-write-or-merge"
   },
@@ -87,6 +89,13 @@
     "verification": ["deterministic pilot validation", "fresh exact-candidate verification"],
     "independentReview": true,
     "maximumUnresolvedSeverity": "low"
+  },
+  "acceptedEvidence": {
+    "candidate": null,
+    "verificationRefs": [],
+    "currentReviewRef": null,
+    "steeringDisposition": null,
+    "releaseRefs": []
   },
   "stopCondition": "PROVISIONAL_CONTRACT_READY_FOR_PILOT"
 }

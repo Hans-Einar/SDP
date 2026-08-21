@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "issued-inventory-duplicates-a-normalized-identity",
+  "sourceExample": "simple-single-domain.json",
+  "mutations": [
+    {"op": "copy", "from": "/registries/0/domains/0/issuedIds/0", "path": "/registries/0/domains/0/issuedIds/-"}
+  ],
+  "expectedErrors": ["ISSUED_ID_COLLISION"]
+}

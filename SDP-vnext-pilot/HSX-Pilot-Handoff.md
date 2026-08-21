@@ -113,6 +113,14 @@ selected exact head. Existing `RF` and `ST` spellings remain historical. Do not
 convert them to `REF`/`STU`, renumber them, or change path case. New pilot work
 uses the prospective v0 forms `SHARED-REF-001` and `SHARED-SLC-001`.
 
+Store each historical spelling as a structured `legacy-preserved` inventory
+member with its exact repository, commit, path/source, and authority Issue when
+one exists. Store each new pilot ID as `prospective` with the allocating Issue
+and record source. Check normalized uniqueness before allocation and reject any
+reservation by an Issue other than the recorded authority. The first move
+exercise must preserve the complete structured member data, not only the ID
+strings.
+
 Create absolute references by pairing each old ID with the new UID of its
 owning domain. This adds qualification without rewriting the original ID. A
 later repository split keeps both values.
@@ -130,6 +138,10 @@ The pilot assignment must contain:
   status;
 - dependency/conflict/merge order with any live HSX Issue Masters discovered
   at pilot start;
+- one canonical reservation-set object containing every active Issue row,
+  qualified ID, private/shared path, dependency/conflict edge, complete
+  dependency-consistent merge order, and explicit terminal convergence; every
+  assignment binds its recomputed digest and identical projection;
 - collision validation across NFKC/casefold/slash normalization (important
   because Issue #36 already exposed the `agents.md`/`AGENTS.md` Windows case
   collision);

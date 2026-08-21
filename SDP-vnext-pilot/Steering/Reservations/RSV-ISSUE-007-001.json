@@ -7,14 +7,17 @@
   "assignments": [
     {
       "issue": "https://github.com/Hans-Einar/SDP/issues/7",
-      "domainUid": "urn:uuid:9df0765b-4f22-4c5e-8fda-b5e71c96ca81",
       "workRef": {
+        "type": "study",
         "domainUid": "urn:uuid:9df0765b-4f22-4c5e-8fda-b5e71c96ca81",
         "id": "STU-007"
       },
-      "recordPaths": ["SDP-vnext-pilot/Studies/STU-007.json"],
+      "activeSlices": [],
       "reservedIds": [
-        "STU-007"
+        {
+          "domainUid": "urn:uuid:9df0765b-4f22-4c5e-8fda-b5e71c96ca81",
+          "id": "STU-007"
+        }
       ],
       "ownedPaths": [
         "SDP-vnext-pilot/**",
@@ -35,19 +38,15 @@
           "ownerDomainUid": "urn:uuid:9df0765b-4f22-4c5e-8fda-b5e71c96ca81",
           "allowedMutation": "Issue #7 semantic edges only"
         }
-      ]
+      ],
+      "dependsOnIssues": [],
+      "conflictsWithIssues": []
     }
   ],
-  "dependencies": [
-    {
-      "issue": "https://github.com/Hans-Einar/SDP/issues/7",
-      "dependsOn": ["https://github.com/Hans-Einar/SDP/issues/5"]
-    }
-  ],
-  "conflicts": [],
   "mergeOrder": ["https://github.com/Hans-Einar/SDP/issues/7"],
   "convergence": {
     "owner": "Hans-Einar/SDP Steering",
-    "command": "python SDP-vnext-pilot/validate_pilot.py"
+    "command": "python SDP-vnext-pilot/validate_pilot.py",
+    "terminal": true
   }
 }

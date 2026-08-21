@@ -13,7 +13,15 @@
   "invariants": ["No public-contract change"],
   "affectedWork": [],
   "standaloneReviewedUnit": true,
+  "issueAuthorities": [],
   "slices": [],
   "verificationCriteria": ["Regression reproduces before and passes after"],
-  "reviewCriteria": ["Confirm correction is proportionate"]
+  "reviewCriteria": ["Confirm correction is proportionate"],
+  "acceptedEvidence": {
+    "candidate": null,
+    "verificationRefs": [],
+    "currentReviewRef": null,
+    "steeringDisposition": null,
+    "releaseRefs": []
+  }
 }

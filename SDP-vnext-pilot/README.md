@@ -28,13 +28,20 @@ pilot rules only.
 8. [OpenQuestions.md](OpenQuestions.md) records choices intentionally left for
    real pilots and later schema work.
 
-`templates/` contains illustrative pilot-only record shapes. `examples/`
+`templates/` contains eight illustrative pilot-only record shapes, including a
+reusable `reservation-set`. `examples/`
 contains positive scenarios. `fixtures/negative/` contains deliberately invalid
 cases and their required diagnostic codes. JSON is used as the machine-readable
 pilot encoding because Python's standard library can parse it deterministically;
 this does not decide the eventual canonical serialization. The existing
 `Steering/Assignments/ISSUE-007.yaml` is JSON-compatible YAML for the same
 reason.
+
+Each self-contained assignment example embeds the exact canonical reservation
+object it hashes, so validation recomputes the digest and compares every Issue,
+work/Slice reference, ID, private/shared path, dependency/conflict edge, merge
+position, and convergence field. Negative mutation fixtures are applied to
+deep copies of positive examples and assert the exact diagnostic set.
 
 Issue #7 dogfoods the model through `Studies/STU-007.json`, the compact
 assignment, the single default-domain declaration, and
@@ -51,9 +58,11 @@ python SDP-vnext-pilot/validate_pilot.py
 ```
 
 The validator uses only the Python standard library. It validates templates,
-positive examples, representative negative fixtures, dogfood record/reservation
-resolution, local Markdown links, required status markers, and trailing
-whitespace.
+positive examples, exact negative fixtures, bidirectional owner/Issue/Slice
+cardinality, accepted evidence, identity inventory/no-reuse, reservation
+digests and concurrency graphs, portable roots/paths, dogfood external
+reservation resolution, local Markdown links, required status markers, and
+trailing whitespace.
 
 ## Boundary
 

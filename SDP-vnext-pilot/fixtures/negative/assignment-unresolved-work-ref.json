@@ -11,7 +11,7 @@
           "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000070",
           "key": "APP", "state": "active", "owners": ["owner"],
           "newRecordIdStyle": "scoped", "roots": ["SDP/App"],
-          "issuedIds": ["APP-FEAT-001"]
+          "issuedIds": [{"id": "APP-FEAT-001", "status": "prospective", "authorityIssue": "https://github.com/example/repo/issues/1", "source": "Features/APP-FEAT-001.json"}]
         }
       ]
     }
@@ -24,6 +24,7 @@
       "experimental": true,
       "kind": "issue-assignment",
       "revision": 1,
+      "declaredState": "active",
       "authority": {"issue": "https://github.com/example/repo/issues/1", "amendments": []},
       "workRef": {"type": "feature", "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000070", "id": "APP-FEAT-001"},
       "activeSlices": [],
@@ -40,6 +41,7 @@
       },
       "boundaries": {"prohibitedRepositories": [], "prohibitedPaths": [], "prohibitedOperations": []},
       "requiredEvidence": {"verification": ["check"], "independentReview": true, "maximumUnresolvedSeverity": "low"},
+      "acceptedEvidence": {"candidate": null, "verificationRefs": [], "currentReviewRef": null, "steeringDisposition": null, "releaseRefs": []},
       "stopCondition": "AWAITING_STEERING"
     }
   ],

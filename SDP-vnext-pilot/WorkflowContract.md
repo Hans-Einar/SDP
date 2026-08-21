@@ -150,6 +150,15 @@ primary work owner and makes other participants/dependencies explicit. If no
 honest primary exists, Steering creates a dedicated integration work owner
 rather than weakening the cardinality.
 
+For every represented Slice, validation walks both directions: the owner lists
+the Slice exactly once; the Slice names that owner and one Issue; exactly one
+assignment for that Issue lists the Slice; the assignment's primary `workRef`
+is that owner; and the owner's `issueAuthorities` contains that Issue exactly
+once. A missing owner-referenced Slice is an error rather than an unresolved
+future placeholder. Slice `decisionRefs` are qualified and locally resolvable,
+private paths are portable and contained by the assignment's owned
+reservations, and shared paths exactly match its declared touchpoints.
+
 ## 4. Identity and revision rules
 
 The record types use `FEAT`, `REF`, `FIX`, `STU`, and `SLC` prospectively.
@@ -189,6 +198,29 @@ These projections MUST be kept separate:
 - **accepted** — evidence-qualified state supported by an exact candidate,
   applicable verification, current independent review, and required Steering
   disposition.
+
+Every Feature, Refactor, Fix, Study, Slice, and Issue-assignment shape carries
+the same explicit projection:
+
+```json
+{
+  "acceptedEvidence": {
+    "candidate": null,
+    "verificationRefs": [],
+    "currentReviewRef": null,
+    "steeringDisposition": null,
+    "releaseRefs": []
+  }
+}
+```
+
+`proposed` and `active` records may retain this null/empty projection.
+`accepted` or `delivered` requires a 40-character exact candidate, at least one
+verification reference, one current independent-review reference, and
+`steeringDisposition: accepted`. `released` requires all of those plus at
+least one explicit Release relation. A delivered Feature/Refactor also
+requires at least one Issue authority and one resolvable Slice; a standalone
+Fix remains the only proportional zero-Slice delivery exception.
 
 Authored records may contain stable URLs, the declared integration base, target
 branch, policy, and intended PR URL. They MUST NOT claim mutable Issue/PR/check/

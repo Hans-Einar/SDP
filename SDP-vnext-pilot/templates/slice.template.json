@@ -23,5 +23,12 @@
   "reviewCriteria": ["Review the exact candidate independently"],
   "discoveryRule": "Stop and refreeze on scope or architecture change.",
   "completionSignal": "SLICE_READY_FOR_STEERING",
-  "hardStop": "Do not start another Issue."
+  "hardStop": "Do not start another Issue.",
+  "acceptedEvidence": {
+    "candidate": null,
+    "verificationRefs": [],
+    "currentReviewRef": null,
+    "steeringDisposition": null,
+    "releaseRefs": []
+  }
 }

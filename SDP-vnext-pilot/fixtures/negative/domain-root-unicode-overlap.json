@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "active-domain-roots-collide-after-unicode-normalization",
+  "sourceExample": "scoped-monorepo.json",
+  "mutations": [
+    {"op": "replace", "path": "/registries/0/domains/2/roots/0", "value": "SDP/HＳＸ"}
+  ],
+  "expectedErrors": ["DOMAIN_ROOT_COLLISION"]
+}

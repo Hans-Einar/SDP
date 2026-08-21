@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "slice-has-no-authorizing-assignment",
+  "sourceExample": "simple-single-domain.json",
+  "mutations": [
+    {"op": "replace", "path": "/assignments/0/activeSlices", "value": []},
+    {"op": "replace", "path": "/reservationSets/0/assignments/0/activeSlices", "value": []}
+  ],
+  "rebindReservationDigests": true,
+  "expectedErrors": ["SLICE_ASSIGNMENT_CARDINALITY"]
+}

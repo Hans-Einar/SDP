@@ -16,7 +16,8 @@ schema details that need evidence:
    several registries?
 4. Should canonical schemas store the full issued-ID inventory, an append-only
    allocation ledger, a high-water mark plus exceptions, or a digest-backed
-   generated projection? Pilot v0 uses explicit issued/reserved sets.
+   generated projection? Pilot v0 uses structured prospective/legacy-preserved
+   issued members plus per-Issue qualified reservations and enforces no-reuse.
 5. What generated `CurrentAssignments` snapshot/envelope is most useful without
    turning observed GitHub state into committed authored truth?
 6. Which material transitions deserve the future general Ledger vocabulary,
