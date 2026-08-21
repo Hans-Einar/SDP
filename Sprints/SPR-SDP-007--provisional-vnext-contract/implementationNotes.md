@@ -97,3 +97,28 @@ No earlier review or verification disposition is reused.
 
 No second-pass finding is waived. `ITR-SDP-007-002` / `SLC-SDP-007-002`
 remain active for the final required rework and new exact-candidate evidence.
+
+## 2026-08-21 — Final rework candidate
+
+- A new fresh Worker resolved every second-pass implementation finding within
+  `SDP-vnext-pilot/` and left canonical Toolkit/downstream/release surfaces
+  unchanged.
+- Added canonical GitHub repository/Issue/comment/PR parsing and repository
+  coherence; one-registry-per-repository collision safety; supported pilot
+  state/minimum value and zero-Slice Fix rules; portable record-source binding;
+  truthful nullable legacy authority; qualified exact-candidate acceptance
+  evidence; Study/issued authority consistency; self/duplicate/overlapping edge
+  rejection; and dogfood assignment revision/refreeze history.
+- The real dogfood assignment is now revision 2, links the revision-1 snapshot
+  at `f79e3df...`, reserves exact REV/VER-003 paths and binds current reservation
+  digest `sha256:f5805cecd8f72394d4502eed8dbb4f1ec899f890faed3dd5f4e368e1a4f448bb`.
+- Deterministic coverage now contains eight templates, three positive scenarios,
+  ninety-seven exact negative fixtures and seventy-nine diagnostic codes.
+- Master validation passed the pilot validator, Issue #5 analysis validator,
+  Toolkit validator and all nine Toolkit Python tests.
+- Committed and pushed technical rework candidate
+  `730424f5d6078356353da57c8234ef4237b4eae8`.
+
+The full branch head containing this recovery update must now receive new fresh
+verification and an independent `REV/VER-SDP-007-003` pass. Earlier failed
+dispositions remain historical only.

@@ -1,6 +1,6 @@
 # SPR-SDP-007 Handoff
 
-Status: CHANGES_REQUIRED_SECOND_PASS
+Status: FINAL_REWORK_AWAITING_REVIEW
 
 ## Current assignment
 
@@ -20,12 +20,15 @@ Status: CHANGES_REQUIRED_SECOND_PASS
   `a1c64f4dadb663e3b3b7c03c1f8759b94c7f2be3`
 - Verification: `VER-SDP-007-002` — FAIL, B0 / H0 / M2 / L0 / Note 3
 - Review: `REV-SDP-007-002` — changes required, B0 / H2 / M5 / L0 / Note 4
+- Final technical rework candidate:
+  `730424f5d6078356353da57c8234ef4237b4eae8`
 - Durable pilot assignment:
   `SDP-vnext-pilot/Steering/Assignments/ISSUE-007.yaml`
 
 ## Next legal action
 
-Delegate one fresh bounded rework pass for every finding in
-`VER-SDP-007-002` and `REV-SDP-007-002`, including assignment revision/refreeze
-truth. Freeze a new remote candidate and run new fresh verification and review.
-Do not modify canonical Toolkit contracts or any downstream repository.
+Resolve and freeze the exact remote branch head containing technical candidate
+`730424f...` plus this recovery update. Run fresh `VER-SDP-007-003` and a new
+independent `REV-SDP-007-003`; resolve any Blocking/High/Medium result before
+closure. Do not modify canonical Toolkit contracts or any downstream
+repository.
