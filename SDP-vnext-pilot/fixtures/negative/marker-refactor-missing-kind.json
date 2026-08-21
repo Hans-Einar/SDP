@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"refactor-missing-kind-marker","sourceExample":"scoped-monorepo.json","mutations":[{"op":"remove","path":"/records/4/kind"}],"expectedErrors":["KIND_MARKER_REQUIRED"]}

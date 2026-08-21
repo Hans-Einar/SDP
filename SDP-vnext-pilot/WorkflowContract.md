@@ -169,12 +169,29 @@ The assignment Issue also equals the primary Feature/Refactor/Fix/Study
 record's Issue authority and the prospective issued-inventory authority for
 that primary reference.
 
-Embedded semantic edges use the same absolute identity graph. Feature and
-Refactor `relations` contain one supported relation `type` plus one qualified
-`targetRef`; Study `ownerRef` is null or a resolved Feature/Refactor/Fix,
-`independentStudyRefs` resolve only to Studies, and `informs` resolves to a
-supported Study/work owner. Fix `affectedWork` resolves only to Feature,
-Refactor, or Fix. Bare, unresolved, wrong-kind, and duplicate edges are errors.
+Embedded and top-level semantic edges are two authored surfaces of one global
+set. Feature and Refactor `relations` contain one supported relation `type`
+plus one qualified `targetRef`; Study `ownerRef`, `independentStudyRefs`, and
+`informs` normalize respectively to `owned_by`, `independent_of`, and
+`informs`; Fix `affectedWork` normalizes to `corrects`. Top-level edges contain
+exactly `type`, `sourceRef`, and `targetRef`. Edge objects and qualified
+references are strict: candidate or extension fields are not supported in
+pilot v0, even though outer record objects remain extension-tolerant. A
+normalized `(type, sourceRef, targetRef)` may be authored once across all
+surfaces. Bare, unresolved, wrong-kind, unsupported, self-referential, and
+cross-surface duplicate edges are errors.
+
+The complete pilot v0 relation-type vocabulary is `depends_on`, `informs`,
+`refines`, `supersedes`, `preserves`, `requires_revision`, `owned_by`,
+`independent_of`, and `corrects`. Embedded and top-level forms use this same
+set; neither surface accepts a candidate-only relation type.
+
+`depends_on` is a gating edge. When its source is represented active/accepted/
+delivered/released implementation work, its target is evidence-qualified
+`accepted`, `delivered`, or `released`; a proposed/active Study or work owner
+cannot authorize implementation. Pilot v0 Slice `decisionRefs` are deliberately
+narrower: each is a qualified, locally resolved, evidence-qualified accepted
+Study. Other decision-record kinds may be considered after pilot evidence.
 
 ## 4. Identity and revision rules
 
@@ -222,9 +239,17 @@ in [IssueContract.md](IssueContract.md). `independentReview` is Boolean and
 `blocking`. These are a minimum usable pilot contract, not a canonical schema
 freeze.
 
-Every typed pilot v0 record, assignment, reservation set, registry, and history
-snapshot uses its exact documented `schemaVersion`. An unknown marker is
-unsupported; the validator never silently applies v0 semantics to future bytes.
+Every prospective current pilot v0 record, assignment, reservation set,
+active/moved registry, and assignment-history snapshot carries its exact
+documented `schemaVersion`, exact `kind`, and `experimental: true`. Missing as
+well as unknown markers are errors; removing markers never downgrades a current
+object into a loose mode. Compatibility handling is limited to structured
+`issuedIds` members explicitly marked `status: legacy-preserved` with their
+provenance, and prior Git bytes reconstructed through a fully typed current v0
+history snapshot. Loose historical bytes remain evidence only; neither they
+nor legacy inventory can by itself satisfy a current reservation, decision,
+implementation, evidence, dependency, or acceptance gate. Historical
+relations may remain inspectable, but they do not become current authority.
 
 ### Reopen and extension
 
@@ -317,6 +342,16 @@ to be delivered/released at that candidate. An in-set dependency must already
 be accepted, and both endpoints of a symmetric conflict cannot simultaneously
 be `active` or `accepted`; an active endpoint with its peer explicitly
 `blocked` is the valid reservation state.
+
+A Feature, Refactor, or non-standalone Fix declared `delivered` or `released`
+is evidence-closed over every Slice currently represented in its `slices`
+list. Each represented Slice is `accepted` with qualified evidence, and its
+exact authorizing assignment is independently `accepted` with qualified,
+candidate-coherent Slice evidence. The aggregate work-owner evidence candidate
+does not have to equal every historical assignment/Slice candidate: delivery
+aggregates accepted outcomes over time. This does not change the valid case
+where one accepted assignment and Slice leave a durable multi-assignment
+Feature `active`.
 
 Authored records may contain stable URLs, the declared integration base, target
 branch, policy, and intended PR URL. They MUST NOT claim mutable Issue/PR/check/

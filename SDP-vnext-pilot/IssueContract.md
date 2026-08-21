@@ -112,6 +112,11 @@ baseline/delivery targets, reservations, dependency/convergence contract,
 required evidence, and stop condition. It links back to the Issue for scope,
 non-goals, and prose; it does not duplicate them.
 
+The current mirror and every bound current reservation use their exact pilot
+v0 `schemaVersion`, exact `kind`, and `experimental: true`; marker omission is
+not a compatibility mode. Its normalized owned/shared write surfaces are also
+disjoint from normalized `boundaries.prohibitedPaths`.
+
 An amendment comment is recorded as a stable URL under `authority.amendments`.
 If it changes scope, baseline, reservation, or merge order, the Master increments
 the assignment revision and performs the refreeze protocol before work resumes.

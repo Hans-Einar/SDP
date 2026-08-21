@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"fix-cannot-name-itself-as-affected-work","sourceExample":"scoped-monorepo.json","mutations":[{"op":"replace","path":"/records/6/affectedWork/0","value":{"domainUid":"urn:uuid:30000000-0000-4000-8000-000000000003","id":"AVR-FIX-001","keyHint":"AVR"}}],"expectedErrors":["SEMANTIC_SELF_EDGE"]}

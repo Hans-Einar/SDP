@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"study-missing-experimental-marker","sourceExample":"accepted-study-only.json","mutations":[{"op":"remove","path":"/records/0/experimental"}],"expectedErrors":["EXPERIMENTAL_MARKER_REQUIRED"]}

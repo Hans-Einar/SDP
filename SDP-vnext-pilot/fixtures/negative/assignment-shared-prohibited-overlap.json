@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"assignment-shared-path-is-disjoint-from-prohibited-paths","sourceExample":"scoped-monorepo.json","mutations":[{"op":"add","path":"/assignments/0/boundaries/prohibitedPaths/-","value":"sdp\\shared\\contracts\\INTERFACE.json"}],"expectedErrors":["PROHIBITED_PATH_OVERLAP"]}

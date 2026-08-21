@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"slice-missing-schema-marker","sourceExample":"simple-single-domain.json","mutations":[{"op":"remove","path":"/records/1/schemaVersion"}],"expectedErrors":["SCHEMA_VERSION_REQUIRED"]}

@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"registry-missing-kind-marker","sourceExample":"simple-single-domain.json","mutations":[{"op":"remove","path":"/registries/0/kind"}],"expectedErrors":["KIND_MARKER_REQUIRED"]}

@@ -132,7 +132,7 @@
       "id": "HOST-FEAT-001",
       "source": "SDP/Host/Features/HOST-FEAT-001.json",
       "revision": 1,
-      "declaredState": "active",
+      "declaredState": "proposed",
       "title": "Consume debugger service",
       "intent": {
         "problem": "The host needs debugger capability.",

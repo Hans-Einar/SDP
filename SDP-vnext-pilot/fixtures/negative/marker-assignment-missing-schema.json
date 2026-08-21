@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"assignment-missing-schema-marker","sourceExample":"simple-single-domain.json","mutations":[{"op":"remove","path":"/assignments/0/schemaVersion"}],"expectedErrors":["SCHEMA_VERSION_REQUIRED"]}

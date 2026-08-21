@@ -6,5 +6,5 @@
   "mutations": [
     {"op": "replace", "path": "/records/0/acceptedEvidence/currentReviewRef/id", "value": "unresolved:REV-150"}
   ],
-  "expectedErrors": ["ACCEPTED_EVIDENCE_SHAPE_INVALID"]
+  "expectedErrors": ["ACCEPTED_EVIDENCE_SHAPE_INVALID", "UNACCEPTED_SLICE_DECISION_AUTHORITY", "UNSATISFIED_SEMANTIC_DEPENDENCY"]
 }

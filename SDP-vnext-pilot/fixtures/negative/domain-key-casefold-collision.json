@@ -4,12 +4,16 @@
   "case": "domain-key-casefold-collision",
   "registries": [
     {
+      "schemaVersion": "sdp-vnext-pilot-work-domains-v0",
+      "experimental": true,
+      "kind": "work-domain-registry",
       "repository": "https://github.com/example/repo",
       "defaultDomainUid": null,
       "domains": [
         {
           "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000001",
           "key": "DBG",
+          "name": "Debugger one",
           "state": "active",
           "owners": ["one"],
           "newRecordIdStyle": "scoped",
@@ -19,6 +23,7 @@
         {
           "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000002",
           "key": "dbg",
+          "name": "Debugger two",
           "state": "active",
           "owners": ["two"],
           "newRecordIdStyle": "scoped",

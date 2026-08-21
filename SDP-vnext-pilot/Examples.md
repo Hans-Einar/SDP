@@ -28,9 +28,10 @@ New records use composite visible IDs such as `DBG-FEAT-001`,
 `HSX-STU-001`, and `SHARED-REF-001`. The shared domain has named owners and a
 root like every other domain.
 
-The Debugger Feature has a `depends_on` relation to the HSX Study. The target is
-the absolute pair `{domainUid, id}`; the optional `keyHint` is checked against
-the resolved stable key. A bare
+The Debugger Feature authors its `depends_on` relation to the HSX Study once in
+its embedded `relations` list. The global graph does not repeat it in the
+top-level surface. The target is the absolute pair `{domainUid, id}`; the
+optional `keyHint` is checked against the resolved stable key. A bare
 `HSX-STU-001` would fail in this multi-domain repository.
 
 ## Concurrent Issue Masters
@@ -85,6 +86,13 @@ assignment from the simple example. Its low-risk zero-Slice Fix is delivered at
 the assignment candidate and points to the evidence-qualified delivered
 Feature it corrects; the accepted prerequisite assignment precedes it.
 
+Additional positive controls close delivered Feature, Refactor, and sliced-Fix
+owners over accepted Slices and assignments while deliberately allowing the
+aggregate owner evidence candidate to differ from its historical Slice
+candidate. Another control proves two distinct supported relation types for the
+same source/target are not a duplicate, and a path-boundary control keeps
+authorized and prohibited surfaces disjoint.
+
 ## Negative collision examples
 
 `fixtures/negative/` covers:
@@ -121,6 +129,17 @@ Feature it corrects; the accepted prerequisite assignment precedes it.
 - exact/case/slash/Unicode prospective-source collisions and missing
   inventory/record/materialized bindings;
 - unknown v0 schema markers and duplicate same-row qualified reservations; and
+- missing schema/kind/experimental markers, including combined downgrade
+  attempts, for every current v0 object kind and history snapshots;
+- explicit `legacy-preserved` compatibility inventory attempting to satisfy a
+  current reservation gate;
+- terminal delivered/released Feature, Refactor, and sliced-Fix closure over
+  accepted Slices/assignments, evidence-qualified Study decisions, and gating
+  `depends_on` targets;
+- one global semantic-edge set, including cross-surface duplicates, self edges,
+  unsupported/candidate/extra fields, and a legitimate distinct-edge control;
+- owned/shared versus prohibited path overlap and a JSON-escaped lone surrogate
+  through a bound reservation path; and
 - missing, fabricated, tampered, gapped, truncated, or repository-unresolved
   multi-refreeze history.
 
@@ -129,11 +148,11 @@ cannot “pass” merely because the validator failed for an unrelated reason.
 
 ## Issue #7 dogfood refreeze
 
-`Steering/Assignments/ISSUE-007.yaml` is revision 3. Its immediate
+`Steering/Assignments/ISSUE-007.yaml` is revision 4. Its immediate
 `previousRevision` points to
-`Steering/Assignments/History/ISSUE-007-revision-002.json`, sourced from exact
-candidate `0de8a8957b3212404007160d90da47445d7b4e7b`. That snapshot links revision
-1 at `f79e3dfc18c7a1650f1f3ae66167dda9b69692b4`, so the complete 1..2 chain is
-retained. Revision 2 removed accepted Issue #5 from the live execution DAG;
-revision 3 reserves exact `REV/VER-SDP-007-004` evidence paths and records why
-the third review gate required another refreeze.
+`Steering/Assignments/History/ISSUE-007-revision-003.json`, sourced from exact
+candidate `60978c306f7ce3c09033603abf3300839b2a251d`. That snapshot links revision
+2 at `0de8a8957b3212404007160d90da47445d7b4e7b`, which links revision 1 at
+`f79e3dfc18c7a1650f1f3ae66167dda9b69692b4`, so the complete 1..3 chain is
+retained. Revision 4 reserves exact `REV/VER-SDP-007-005` evidence paths and
+records why the fourth independent review required another refreeze.

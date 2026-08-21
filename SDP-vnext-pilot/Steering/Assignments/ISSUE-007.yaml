@@ -3,17 +3,17 @@
   "experimental": true,
   "kind": "issue-assignment",
   "source": "SDP-vnext-pilot/Steering/Assignments/ISSUE-007.yaml",
-  "revision": 3,
+  "revision": 4,
   "declaredState": "active",
   "previousRevision": {
-    "revision": 2,
-    "snapshotPath": "SDP-vnext-pilot/Steering/Assignments/History/ISSUE-007-revision-002.json",
-    "sourceCandidate": "0de8a8957b3212404007160d90da47445d7b4e7b",
-    "reservationDigest": "sha256:f5805cecd8f72394d4502eed8dbb4f1ec899f890faed3dd5f4e368e1a4f448bb"
+    "revision": 3,
+    "snapshotPath": "SDP-vnext-pilot/Steering/Assignments/History/ISSUE-007-revision-003.json",
+    "sourceCandidate": "60978c306f7ce3c09033603abf3300839b2a251d",
+    "reservationDigest": "sha256:c6b9245e236c8843ed4fc76fa8c0e540f4afadb7bb75ee33dfc1f3ff0502623d"
   },
   "refreeze": {
-    "sourceCandidate": "0de8a8957b3212404007160d90da47445d7b4e7b",
-    "reason": "Revision 3 refreezes after the third adversarial gate: it reserves exact REV/VER-004 evidence paths and adopts complete reusable history, cross-record state, semantic-edge, portable-path, source-identity, key-hint, and schema validation."
+    "sourceCandidate": "60978c306f7ce3c09033603abf3300839b2a251d",
+    "reason": "Revision 4 refreezes after the fourth independent review: it retains the exact revision-3 candidate, reserves REV/VER-005 paths, and closes terminal-work/decision gates, marker downgrade, global semantic-edge, surrogate-diagnostic, and prohibited-path overlap findings."
   },
   "authority": {
     "issue": "https://github.com/Hans-Einar/SDP/issues/7",
@@ -44,7 +44,7 @@
     "reservationSet": {
       "id": "RSV-ISSUE-007-001",
       "path": "SDP-vnext-pilot/Steering/Reservations/RSV-ISSUE-007-001.json",
-      "digest": "sha256:c6b9245e236c8843ed4fc76fa8c0e540f4afadb7bb75ee33dfc1f3ff0502623d"
+      "digest": "sha256:715c4f18e244447411e51bd780807cdef9586a56f21a539cc1aa05fae4cb1e48"
     },
     "dependsOnIssues": [],
     "conflictsWithIssues": [],
@@ -55,10 +55,12 @@
       "CodeReview/REV-SDP-007-002.md",
       "CodeReview/REV-SDP-007-003.md",
       "CodeReview/REV-SDP-007-004.md",
+      "CodeReview/REV-SDP-007-005.md",
       "Verification/VER-SDP-007-001.md",
       "Verification/VER-SDP-007-002.md",
       "Verification/VER-SDP-007-003.md",
-      "Verification/VER-SDP-007-004.md"
+      "Verification/VER-SDP-007-004.md",
+      "Verification/VER-SDP-007-005.md"
     ],
     "sharedTouchpoints": [
       {

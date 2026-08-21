@@ -60,10 +60,11 @@ SCHEMA_VERSIONS = {
     "reservation-set": "sdp-vnext-pilot-reservation-set-v0",
     "work-domain-registry": "sdp-vnext-pilot-work-domains-v0",
 }
+SCHEMA_KIND_BY_VERSION = {version: kind for kind, version in SCHEMA_VERSIONS.items()}
 ASSIGNMENT_HISTORY_SCHEMA_VERSION = "sdp-vnext-pilot-assignment-history-v0"
 SEMANTIC_RELATION_TYPES = {
     "depends_on", "informs", "refines", "supersedes", "preserves",
-    "requires_revision",
+    "requires_revision", "owned_by", "independent_of", "corrects",
 }
 REQUIRED_TEMPLATE_KINDS = {
     "feature", "refactor", "fix", "study", "slice",
@@ -166,7 +167,24 @@ def load_json(path: Path) -> Any:
         return json.load(handle)
 
 
-def canonical_digest(document: Any) -> str:
+def contains_invalid_unicode_scalar(value: Any) -> bool:
+    """Reject Python surrogate code points before canonical UTF-8 encoding."""
+    if isinstance(value, str):
+        return any(unicodedata.category(character) == "Cs" for character in value)
+    if isinstance(value, dict):
+        return any(
+            contains_invalid_unicode_scalar(key)
+            or contains_invalid_unicode_scalar(item)
+            for key, item in value.items()
+        )
+    if isinstance(value, (list, tuple)):
+        return any(contains_invalid_unicode_scalar(item) for item in value)
+    return False
+
+
+def canonical_digest(document: Any) -> str | None:
+    if contains_invalid_unicode_scalar(document):
+        return None
     encoded = json.dumps(
         document, sort_keys=True, separators=(",", ":"), ensure_ascii=False
     ).encode("utf-8")
@@ -400,6 +418,15 @@ def mapping(value: Any) -> dict[str, Any]:
     return value if isinstance(value, dict) else {}
 
 
+def effective_kind(record: Any) -> str | None:
+    if not isinstance(record, dict):
+        return None
+    kind = record.get("kind")
+    if kind in SCHEMA_VERSIONS:
+        return kind
+    return SCHEMA_KIND_BY_VERSION.get(record.get("schemaVersion"))
+
+
 def assignment_issue(assignment: Any) -> Any:
     return mapping(mapping(assignment).get("authority")).get("issue")
 
@@ -516,9 +543,10 @@ def validate_registry_set(document: dict[str, Any], errors: list[str]) -> None:
 
     by_uid: dict[str, list[tuple[str, dict[str, Any]]]] = defaultdict(list)
     for registry in registries:
-        strict_registry = "schemaVersion" in registry
-        if strict_registry:
-            validate_typed_shape(registry, errors, "REGISTRY_REQUIRED_FIELD_MISSING")
+        validate_typed_shape(
+            registry, errors, "REGISTRY_REQUIRED_FIELD_MISSING",
+            expected_kind="work-domain-registry",
+        )
         domains = registry.get("domains")
         if not isinstance(domains, list) or not domains or any(
             not isinstance(domain, dict) for domain in domains
@@ -534,13 +562,12 @@ def validate_registry_set(document: dict[str, Any], errors: list[str]) -> None:
             add(errors, "INVALID_DEFAULT_DOMAIN")
         root_entries: list[tuple[str, tuple[str, bool]]] = []
         for domain in domains:
-            if strict_registry:
-                required_domain_fields = {
-                    "domainUid", "key", "name", "state", "owners",
-                    "newRecordIdStyle", "roots", "issuedIds",
-                }
-                if not required_domain_fields.issubset(domain):
-                    add(errors, "DOMAIN_REQUIRED_FIELD_MISSING")
+            required_domain_fields = {
+                "domainUid", "key", "name", "state", "owners",
+                "newRecordIdStyle", "roots", "issuedIds",
+            }
+            if not required_domain_fields.issubset(domain):
+                add(errors, "DOMAIN_REQUIRED_FIELD_MISSING")
             uid = domain.get("domainUid")
             key = domain.get("key")
             if not valid_uid(uid):
@@ -595,8 +622,7 @@ def validate_registry_set(document: dict[str, Any], errors: list[str]) -> None:
                     if normalized_id in normalized_inventory_ids:
                         add(errors, "ISSUED_ID_COLLISION")
                     normalized_inventory_ids.add(normalized_id)
-                if strict_registry:
-                    validate_inventory_member(domain, member, errors)
+                validate_inventory_member(domain, member, errors)
             by_uid[uid].append((registry.get("repository", ""), domain))
         for index, (left_uid, left_path) in enumerate(root_entries):
             for right_uid, right_path in root_entries[index + 1:]:
@@ -706,18 +732,47 @@ def issued_authorities(
     return result
 
 
-def validate_typed_shape(record: dict[str, Any], errors: list[str], code: str) -> None:
-    kind = record.get("kind")
+def issued_statuses(document: dict[str, Any]) -> dict[tuple[str, str], Any]:
+    result: dict[tuple[str, str], Any] = {}
+    for _, domain in declarations(document):
+        uid = domain.get("domainUid")
+        for member in domain.get("issuedIds", []):
+            if not isinstance(member, dict):
+                continue
+            record_id = inventory_member_id(member)
+            if isinstance(record_id, str):
+                result[(uid, portable_text(record_id))] = member.get("status")
+    return result
+
+
+def validate_typed_shape(
+    record: dict[str, Any], errors: list[str], code: str,
+    *, expected_kind: str | None = None,
+) -> None:
+    authored_kind = record.get("kind")
+    kind = expected_kind or effective_kind(record)
+    if "kind" not in record:
+        add(errors, "KIND_MARKER_REQUIRED")
+    elif expected_kind is not None and authored_kind != expected_kind:
+        add(errors, "KIND_MARKER_MISMATCH")
+    if "schemaVersion" not in record:
+        add(errors, "SCHEMA_VERSION_REQUIRED")
+    elif kind is not None and record.get("schemaVersion") != SCHEMA_VERSIONS.get(kind):
+        add(errors, "UNSUPPORTED_SCHEMA_VERSION")
+    if "experimental" not in record:
+        add(errors, "EXPERIMENTAL_MARKER_REQUIRED")
+    elif record.get("experimental") is not True:
+        add(errors, "EXPERIMENTAL_MARKER_REQUIRED")
     fields = TYPE_REQUIRED_FIELDS.get(kind)
     if fields is None:
-        add(errors, "UNKNOWN_RECORD_KIND")
+        if authored_kind is not None:
+            add(errors, "UNKNOWN_RECORD_KIND")
         return
-    if any(field not in record for field in fields):
+    if any(
+        field not in record
+        for field in fields - {"schemaVersion", "experimental", "kind"}
+    ):
         add(errors, code)
-    if record.get("schemaVersion") != SCHEMA_VERSIONS.get(kind):
-        add(errors, "UNSUPPORTED_SCHEMA_VERSION")
-    if record.get("experimental") is not True:
-        add(errors, "EXPERIMENTAL_MARKER_REQUIRED")
     if kind == "feature":
         intent = record.get("intent")
         if not isinstance(intent, dict) or not {"problem", "outcome", "usersOrValue"}.issubset(intent):
@@ -783,8 +838,10 @@ def validate_issue_authorities(value: Any, errors: list[str]) -> None:
         add(errors, "DUPLICATE_ISSUE_AUTHORITY")
 
 
-def validate_stateful_values(record: dict[str, Any], errors: list[str]) -> None:
-    kind = record.get("kind")
+def validate_stateful_values(
+    record: dict[str, Any], errors: list[str], *, kind_override: str | None = None
+) -> None:
+    kind = kind_override or effective_kind(record)
     revision = record.get("revision")
     if isinstance(revision, bool) or not isinstance(revision, int) or revision < 1:
         add(errors, "INVALID_REVISION")
@@ -1033,9 +1090,9 @@ def validate_accepted_evidence(record: dict[str, Any], errors: list[str]) -> Non
             elif disposition.get("candidate") != candidate:
                 add(errors, "ACCEPTED_EVIDENCE_CANDIDATE_MISMATCH")
             else:
-                if record.get("kind") == "issue-assignment":
+                if effective_kind(record) == "issue-assignment":
                     authorities = [assignment_issue(record)]
-                elif record.get("kind") == "slice":
+                elif effective_kind(record) == "slice":
                     authorities = [record.get("assignmentIssue")]
                 else:
                     authorities = record.get("issueAuthorities", [])
@@ -1074,6 +1131,53 @@ def validate_accepted_evidence(record: dict[str, Any], errors: list[str]) -> Non
             add(errors, "ACCEPTED_EVIDENCE_REQUIRED")
         if state == "released" and not release_refs:
             add(errors, "RELEASE_EVIDENCE_REQUIRED")
+
+
+def has_qualified_accepted_evidence(record: Any) -> bool:
+    if not isinstance(record, dict):
+        return False
+    evidence = record.get("acceptedEvidence")
+    if not isinstance(evidence, dict) or not EVIDENCE_FIELDS.issubset(evidence):
+        return False
+    candidate = evidence.get("candidate")
+    verification_refs = evidence.get("verificationRefs")
+    review = evidence.get("currentReviewRef")
+    disposition = evidence.get("steeringDisposition")
+    if not isinstance(candidate, str) or SHA_RE.fullmatch(candidate) is None:
+        return False
+    if not isinstance(verification_refs, list) or not verification_refs:
+        return False
+    if any(
+        not isinstance(reference, dict)
+        or set(reference) != {"id", "candidate"}
+        or EVIDENCE_ID_RE.fullmatch(str(reference.get("id", ""))) is None
+        or reference.get("candidate") != candidate
+        for reference in verification_refs
+    ):
+        return False
+    if (
+        not isinstance(review, dict)
+        or set(review) != {"id", "candidate", "disposition"}
+        or EVIDENCE_ID_RE.fullmatch(str(review.get("id", ""))) is None
+        or review.get("candidate") != candidate
+        or review.get("disposition") != "approved"
+    ):
+        return False
+    return (
+        isinstance(disposition, dict)
+        and set(disposition) == {"authority", "candidate", "decision"}
+        and issue_comment_key(disposition.get("authority")) is not None
+        and disposition.get("candidate") == candidate
+        and disposition.get("decision") == "accepted"
+    )
+
+
+def is_evidence_qualified_terminal(record: Any) -> bool:
+    return (
+        isinstance(record, dict)
+        and record.get("declaredState") in TERMINAL_ACCEPTED_STATES
+        and has_qualified_accepted_evidence(record)
+    )
 
 
 def validate_id_against_domain(
@@ -1174,11 +1278,11 @@ def validate_records(document: dict[str, Any], errors: list[str]) -> None:
         if not isinstance(record, dict):
             add(errors, "RECORD_REQUIRED_FIELD_MISSING")
             continue
-        if "schemaVersion" in record:
-            validate_typed_shape(record, errors, "RECORD_REQUIRED_FIELD_MISSING")
-            if record.get("kind") in STATEFUL_KINDS:
-                validate_stateful_values(record, errors)
-                validate_accepted_evidence(record, errors)
+        kind = effective_kind(record)
+        validate_typed_shape(record, errors, "RECORD_REQUIRED_FIELD_MISSING")
+        if kind in STATEFUL_KINDS:
+            validate_stateful_values(record, errors, kind_override=kind)
+            validate_accepted_evidence(record, errors)
         uid = record.get("domainUid")
         record_id = record.get("id")
         if not isinstance(record_id, str):
@@ -1198,7 +1302,7 @@ def validate_records(document: dict[str, Any], errors: list[str]) -> None:
             if decls:
                 add(errors, "UNKNOWN_RECORD_DOMAIN")
             continue
-        expected_token = KIND_TO_ID_TOKEN.get(record.get("kind"))
+        expected_token = KIND_TO_ID_TOKEN.get(kind)
         actual_token = (scoped_match or unscoped_match).group("type")
         if expected_token and expected_token != actual_token:
             add(errors, "RECORD_KIND_ID_MISMATCH")
@@ -1213,9 +1317,9 @@ def validate_records(document: dict[str, Any], errors: list[str]) -> None:
             if any(len(active) != 1 or registry.get("defaultDomainUid") != uid or domain.get("newRecordIdStyle") != "unscoped"
                    for registry, active in containing_registries):
                 add(errors, "UNSCOPED_ID_MULTIDOMAIN")
-        if "schemaVersion" in record and normalized_pair not in issued:
+        if normalized_pair not in issued:
             add(errors, "RECORD_NOT_IN_ISSUED_INVENTORY")
-        if "schemaVersion" in record and normalized_pair in issued:
+        if normalized_pair in issued:
             member = inventory_map(domain).get(portable_text(record_id))
             if (
                 not isinstance(member, dict)
@@ -1233,6 +1337,14 @@ def validate_semantic_reference(
     *,
     allowed_kinds: set[str],
 ) -> tuple[str, str] | None:
+    if not isinstance(reference, dict) or not {
+        "domainUid", "id"
+    }.issubset(reference):
+        add(errors, "UNQUALIFIED_SEMANTIC_REFERENCE")
+        return None
+    if not set(reference).issubset({"domainUid", "id", "keyHint"}):
+        add(errors, "INVALID_SEMANTIC_EDGE")
+        return None
     key = reference_key(reference)
     if key is None:
         add(errors, "UNQUALIFIED_SEMANTIC_REFERENCE")
@@ -1241,66 +1353,141 @@ def validate_semantic_reference(
     target = records.get(key)
     if target is None:
         add(errors, "UNRESOLVED_SEMANTIC_REFERENCE")
-    elif target.get("kind") not in allowed_kinds:
+        return None
+    elif effective_kind(target) not in allowed_kinds:
         add(errors, "SEMANTIC_TARGET_KIND_MISMATCH")
+        return None
     return key
 
 
-def validate_semantic_edges(
-    document: dict[str, Any],
-    record: dict[str, Any],
-    records: dict[tuple[str, str], dict[str, Any]],
-    errors: list[str],
-) -> None:
-    kind = record.get("kind")
-    if kind in {"feature", "refactor"}:
-        seen: set[tuple[str, tuple[str, str]]] = set()
-        for edge in record.get("relations", []):
-            if (
-                not isinstance(edge, dict)
-                or edge.get("type") not in SEMANTIC_RELATION_TYPES
-                or set(edge) != {"type", "targetRef"}
+def validate_semantic_graph(document: dict[str, Any], errors: list[str]) -> None:
+    records = {
+        reference_key(record): record
+        for record in document.get("records", [])
+        if isinstance(record, dict) and reference_key(record) is not None
+    }
+    local_domains = {domain.get("domainUid") for _, domain in declarations(document)}
+    active_domains = {
+        domain.get("domainUid")
+        for _, domain in declarations(document)
+        if domain.get("state") == "active"
+    }
+    known = set(records) | issued_reference_keys(document)
+    seen: set[tuple[str, tuple[str, str], tuple[str, str]]] = set()
+
+    def register(
+        relation_type: str, source: tuple[str, str] | None,
+        target: tuple[str, str] | None,
+    ) -> None:
+        if source is None or target is None:
+            return
+        identity = (relation_type, source, target)
+        if source == target:
+            add(errors, "SEMANTIC_SELF_EDGE")
+            return
+        if identity in seen:
+            add(errors, "DUPLICATE_SEMANTIC_EDGE")
+        seen.add(identity)
+        source_record = records.get(source)
+        target_record = records.get(target)
+        if (
+            relation_type == "depends_on"
+            and isinstance(source_record, dict)
+            and effective_kind(source_record) in WORK_OWNER_KINDS | {"slice"}
+            and source_record.get("declaredState")
+            in {"active", "accepted", "delivered", "released"}
+            and not is_evidence_qualified_terminal(target_record)
+        ):
+            add(errors, "UNSATISFIED_SEMANTIC_DEPENDENCY")
+
+    for source, record in records.items():
+        kind = effective_kind(record)
+        if kind in {"feature", "refactor"}:
+            for edge in record.get("relations", []):
+                if (
+                    not isinstance(edge, dict)
+                    or edge.get("type") not in SEMANTIC_RELATION_TYPES
+                    or set(edge) != {"type", "targetRef"}
+                ):
+                    add(errors, "INVALID_SEMANTIC_EDGE")
+                    continue
+                target = validate_semantic_reference(
+                    document, edge.get("targetRef"), records, errors,
+                    allowed_kinds=WORK_OWNER_KINDS | {"study"},
+                )
+                register(edge["type"], source, target)
+        elif kind == "study":
+            owner = record.get("ownerRef")
+            if owner is not None:
+                target = validate_semantic_reference(
+                    document, owner, records, errors,
+                    allowed_kinds=WORK_OWNER_KINDS,
+                )
+                register("owned_by", source, target)
+            for field, relation_type, allowed in (
+                ("independentStudyRefs", "independent_of", {"study"}),
+                ("informs", "informs", WORK_OWNER_KINDS | {"study"}),
             ):
+                for reference in record.get(field, []):
+                    target = validate_semantic_reference(
+                        document, reference, records, errors,
+                        allowed_kinds=allowed,
+                    )
+                    register(relation_type, source, target)
+        elif kind == "fix":
+            for reference in record.get("affectedWork", []):
+                target = validate_semantic_reference(
+                    document, reference, records, errors,
+                    allowed_kinds=WORK_OWNER_KINDS,
+                )
+                register("corrects", source, target)
+
+    for relation in document.get("relations", []):
+        if (
+            not isinstance(relation, dict)
+            or relation.get("type") not in SEMANTIC_RELATION_TYPES
+            or set(relation) != {"type", "sourceRef", "targetRef"}
+        ):
+            add(errors, "INVALID_SEMANTIC_EDGE")
+            continue
+        relation_keys: dict[str, tuple[str, str]] = {}
+        for name in ("sourceRef", "targetRef"):
+            reference = relation.get(name)
+            if (
+                not isinstance(reference, dict)
+                or not {"domainUid", "id"}.issubset(reference)
+            ):
+                if len(active_domains) > 1:
+                    add(errors, "UNQUALIFIED_CROSS_DOMAIN_REF")
+                else:
+                    add(errors, "INVALID_REFERENCE")
+                continue
+            if not set(reference).issubset({"domainUid", "id", "keyHint"}):
                 add(errors, "INVALID_SEMANTIC_EDGE")
                 continue
-            target = validate_semantic_reference(
-                document, edge.get("targetRef"), records, errors,
-                allowed_kinds=WORK_OWNER_KINDS | {"study"},
+            validate_key_hint(document, reference, errors)
+            key = reference_key(reference)
+            if key is None:
+                add(errors, "INVALID_REFERENCE")
+                continue
+            if not valid_uid(key[0]):
+                add(errors, "INVALID_REFERENCE")
+                continue
+            if key[0] in local_domains and key not in known:
+                add(errors, "UNRESOLVED_RELATION_REF")
+            target_record = records.get(key)
+            if (
+                target_record is not None
+                and effective_kind(target_record)
+                not in STATEFUL_KINDS - {"issue-assignment"}
+            ):
+                add(errors, "SEMANTIC_TARGET_KIND_MISMATCH")
+            relation_keys[name] = key
+        if {"sourceRef", "targetRef"}.issubset(relation_keys):
+            register(
+                relation["type"], relation_keys["sourceRef"],
+                relation_keys["targetRef"],
             )
-            if target is not None:
-                identity = (edge["type"], target)
-                if identity in seen:
-                    add(errors, "DUPLICATE_SEMANTIC_EDGE")
-                seen.add(identity)
-    elif kind == "study":
-        owner = record.get("ownerRef")
-        if owner is not None:
-            validate_semantic_reference(
-                document, owner, records, errors, allowed_kinds=WORK_OWNER_KINDS
-            )
-        for field, allowed in (
-            ("independentStudyRefs", {"study"}),
-            ("informs", WORK_OWNER_KINDS | {"study"}),
-        ):
-            seen: set[tuple[str, str]] = set()
-            for reference in record.get(field, []):
-                key = validate_semantic_reference(
-                    document, reference, records, errors, allowed_kinds=allowed
-                )
-                if key is not None:
-                    if key in seen:
-                        add(errors, "DUPLICATE_SEMANTIC_EDGE")
-                    seen.add(key)
-    elif kind == "fix":
-        seen: set[tuple[str, str]] = set()
-        for reference in record.get("affectedWork", []):
-            key = validate_semantic_reference(
-                document, reference, records, errors, allowed_kinds=WORK_OWNER_KINDS
-            )
-            if key is not None:
-                if key in seen:
-                    add(errors, "DUPLICATE_SEMANTIC_EDGE")
-                seen.add(key)
 
 
 def validate_record_graph(document: dict[str, Any], errors: list[str]) -> None:
@@ -1326,16 +1513,14 @@ def validate_record_graph(document: dict[str, Any], errors: list[str]) -> None:
                 assignments_by_slice[slice_key].append(assignment)
 
     for key, record in records.items():
-        kind = record.get("kind")
-        if "schemaVersion" in record:
-            validate_semantic_edges(document, record, records, errors)
-        if kind == "slice" and "schemaVersion" in record:
+        kind = effective_kind(record)
+        if kind == "slice":
             owner_key = reference_key(record.get("ownerRef"))
             validate_key_hint(document, record.get("ownerRef"), errors)
             owner = records.get(owner_key)
             if owner is None:
                 add(errors, "UNRESOLVED_SLICE_OWNER")
-            elif owner.get("kind") not in WORK_OWNER_KINDS:
+            elif effective_kind(owner) not in WORK_OWNER_KINDS:
                 add(errors, "INVALID_SLICE_OWNER")
             else:
                 owner_slice_keys = {reference_key(item) for item in owner.get("slices", [])}
@@ -1391,7 +1576,13 @@ def validate_record_graph(document: dict[str, Any], errors: list[str]) -> None:
                     add(errors, "UNQUALIFIED_SLICE_DECISION_REF")
                 elif decision_key not in records:
                     add(errors, "UNRESOLVED_SLICE_DECISION_REF")
-        if kind in WORK_OWNER_KINDS and "schemaVersion" in record:
+                else:
+                    decision = records[decision_key]
+                    if effective_kind(decision) != "study":
+                        add(errors, "SLICE_DECISION_AUTHORITY_KIND_MISMATCH")
+                    elif not is_evidence_qualified_terminal(decision):
+                        add(errors, "UNACCEPTED_SLICE_DECISION_AUTHORITY")
+        if kind in WORK_OWNER_KINDS:
             slice_keys: list[tuple[str, str]] = []
             for slice_ref in record.get("slices", []):
                 validate_key_hint(document, slice_ref, errors)
@@ -1404,7 +1595,7 @@ def validate_record_graph(document: dict[str, Any], errors: list[str]) -> None:
                 if slice_record is None:
                     add(errors, "MISSING_OWNER_REFERENCED_SLICE")
                     continue
-                if slice_record.get("kind") != "slice" or reference_key(slice_record.get("ownerRef")) != key:
+                if effective_kind(slice_record) != "slice" or reference_key(slice_record.get("ownerRef")) != key:
                     add(errors, "NONRECIPROCAL_SLICE_OWNER")
             if len(slice_keys) != len(set(slice_keys)):
                 add(errors, "NONRECIPROCAL_SLICE_OWNER")
@@ -1414,6 +1605,29 @@ def validate_record_graph(document: dict[str, Any], errors: list[str]) -> None:
                     add(errors, "DELIVERED_WORK_ISSUE_REQUIRED")
                 if kind != "fix" and not record.get("slices"):
                     add(errors, "DELIVERED_WORK_SLICE_REQUIRED")
+                for slice_key in slice_keys:
+                    slice_record = records.get(slice_key)
+                    if not (
+                        isinstance(slice_record, dict)
+                        and slice_record.get("declaredState") == "accepted"
+                        and has_qualified_accepted_evidence(slice_record)
+                    ):
+                        add(errors, "TERMINAL_WORK_SLICE_NOT_ACCEPTED")
+                    issue_identity = issue_key(
+                        slice_record.get("assignmentIssue")
+                        if isinstance(slice_record, dict) else None
+                    )
+                    authorizing = [
+                        assignment
+                        for assignment in assignments_by_slice.get(slice_key, [])
+                        if issue_key(assignment_issue(assignment)) == issue_identity
+                    ]
+                    if not (
+                        len(authorizing) == 1
+                        and authorizing[0].get("declaredState") == "accepted"
+                        and has_qualified_accepted_evidence(authorizing[0])
+                    ):
+                        add(errors, "TERMINAL_WORK_ASSIGNMENT_NOT_ACCEPTED")
                 if kind == "fix" and not record.get("slices"):
                     authority_keys = {
                         issue_key(authority) for authority in authorities or []
@@ -1442,52 +1656,13 @@ def validate_record_graph(document: dict[str, Any], errors: list[str]) -> None:
                         not affected
                         or any(
                             target is None
-                            or target.get("kind") not in WORK_OWNER_KINDS
+                            or effective_kind(target) not in WORK_OWNER_KINDS
                             or target.get("declaredState") not in TERMINAL_ACCEPTED_STATES
                             or mapping(target.get("acceptedEvidence")).get("candidate") is None
                             for target in affected
                         )
                     ):
                         add(errors, "ZERO_SLICE_FIX_AFFECTED_WORK_REQUIRED")
-
-
-def validate_relations(document: dict[str, Any], errors: list[str]) -> None:
-    local_domains = {domain.get("domainUid") for _, domain in declarations(document)}
-    active_domains = {domain.get("domainUid") for _, domain in declarations(document) if domain.get("state") == "active"}
-    known = {
-        reference_key(record)
-        for record in document.get("records", [])
-        if reference_key(record) is not None
-    } | issued_reference_keys(document)
-    seen_relations: set[tuple[str, tuple[str, str], tuple[str, str]]] = set()
-    for relation in document.get("relations", []):
-        if not isinstance(relation, dict) or relation.get("type") not in SEMANTIC_RELATION_TYPES:
-            add(errors, "INVALID_SEMANTIC_EDGE")
-            continue
-        relation_keys: dict[str, tuple[str, str]] = {}
-        for name in ("sourceRef", "targetRef"):
-            reference = relation.get(name)
-            validate_key_hint(document, reference, errors)
-            key = reference_key(reference)
-            if key is None:
-                if len(active_domains) > 1:
-                    add(errors, "UNQUALIFIED_CROSS_DOMAIN_REF")
-                else:
-                    add(errors, "INVALID_REFERENCE")
-                continue
-            if not valid_uid(key[0]):
-                add(errors, "INVALID_REFERENCE")
-                continue
-            if key[0] in local_domains and key not in known:
-                add(errors, "UNRESOLVED_RELATION_REF")
-            relation_keys[name] = key
-        if {"sourceRef", "targetRef"}.issubset(relation_keys):
-            identity = (
-                relation["type"], relation_keys["sourceRef"], relation_keys["targetRef"]
-            )
-            if identity in seen_relations:
-                add(errors, "DUPLICATE_SEMANTIC_EDGE")
-            seen_relations.add(identity)
 
 
 def shared_path(item: Any) -> Any:
@@ -1516,10 +1691,10 @@ def validate_reservation_sets(document: dict[str, Any], errors: list[str]) -> No
         if not isinstance(reservation, dict):
             add(errors, "RESERVATION_SET_INCOMPLETE")
             continue
-        if reservation.get("kind") == "reservation-set":
-            validate_typed_shape(
-                reservation, errors, "RESERVATION_SET_INCOMPLETE"
-            )
+        validate_typed_shape(
+            reservation, errors, "RESERVATION_SET_INCOMPLETE",
+            expected_kind="reservation-set",
+        )
         for row in reservation.get("assignments", []) if isinstance(reservation.get("assignments"), list) else []:
             if not isinstance(row, dict):
                 continue
@@ -1567,8 +1742,12 @@ def validate_reservation_sets(document: dict[str, Any], errors: list[str]) -> No
             continue
         if not isinstance(digest, str) or not DIGEST_RE.fullmatch(digest):
             add(errors, "INVALID_RESERVATION_DIGEST")
-        elif digest != canonical_digest(candidates[0]):
-            add(errors, "RESERVATION_DIGEST_MISMATCH")
+        else:
+            actual_digest = canonical_digest(candidates[0])
+            if actual_digest is None:
+                add(errors, "INVALID_UNICODE_SCALAR")
+            elif digest != actual_digest:
+                add(errors, "RESERVATION_DIGEST_MISMATCH")
 
     for reservation_id, group in grouped_assignments.items():
         candidates = by_id.get(reservation_id, [])
@@ -1777,14 +1956,19 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
     owned: list[tuple[Any, tuple[str, bool]]] = []
     shared: list[tuple[Any, tuple[str, bool], Any]] = []
     reserved: dict[tuple[str, str], Any] = {}
+    inventory_status_by_id = issued_statuses(document)
     for assignment in assignments:
         if not isinstance(assignment, dict):
             add(errors, "ASSIGNMENT_REQUIRED_FIELD_MISSING")
             continue
-        if assignment.get("kind") == "issue-assignment":
-            validate_typed_shape(assignment, errors, "ASSIGNMENT_REQUIRED_FIELD_MISSING")
-            validate_stateful_values(assignment, errors)
-            validate_accepted_evidence(assignment, errors)
+        validate_typed_shape(
+            assignment, errors, "ASSIGNMENT_REQUIRED_FIELD_MISSING",
+            expected_kind="issue-assignment",
+        )
+        validate_stateful_values(
+            assignment, errors, kind_override="issue-assignment"
+        )
+        validate_accepted_evidence(assignment, errors)
         authority = assignment_issue(assignment)
         authority_identity = issue_key(authority)
         if authority_identity is None:
@@ -1824,7 +2008,7 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
         )
         if digest is not None and not DIGEST_RE.fullmatch(str(digest)):
             add(errors, "INVALID_RESERVATION_DIGEST")
-        if assignment.get("kind") == "issue-assignment":
+        if effective_kind(assignment) == "issue-assignment":
             baseline_commit = mapping(assignment.get("baseline")).get("commit")
             if not SHA_RE.fullmatch(str(baseline_commit)) or baseline_commit != base:
                 add(errors, "INVALID_INTEGRATION_BASE")
@@ -1849,9 +2033,9 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
                 add(errors, "REPOSITORY_AUTHORITY_MISMATCH")
             if work_record is None:
                 add(errors, "UNRESOLVED_WORK_REF")
-            elif work_record.get("kind") != work_ref.get("type"):
+            elif effective_kind(work_record) != work_ref.get("type"):
                 add(errors, "WORK_REF_TYPE_MISMATCH")
-            elif work_record.get("kind") in WORK_OWNER_KINDS | {"study"}:
+            elif effective_kind(work_record) in WORK_OWNER_KINDS | {"study"}:
                 authorities = work_record.get("issueAuthorities", [])
                 if not isinstance(authorities, list) or sum(
                     issue_key(item) == authority_identity for item in authorities
@@ -1869,7 +2053,7 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
                     style_code="ACTIVE_SLICE_STYLE_MISMATCH",
                 )
                 slice_record = records.get(reference_key(active_slice))
-                if slice_record is None or slice_record.get("kind") != "slice":
+                if slice_record is None or effective_kind(slice_record) != "slice":
                     add(errors, "UNRESOLVED_ACTIVE_SLICE")
                 elif issue_key(slice_record.get("assignmentIssue")) != authority_identity:
                     add(errors, "SLICE_ASSIGNMENT_MISMATCH")
@@ -1894,6 +2078,28 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
                 elif domain_by_uid and owner_uid not in domain_by_uid:
                     add(errors, "UNKNOWN_SHARED_OWNER_DOMAIN")
                 shared.append((authority_identity or authority, normalized, owner_uid))
+        prohibited_paths = [
+            normalize_path(value)
+            for value in mapping(assignment.get("boundaries")).get(
+                "prohibitedPaths", []
+            )
+        ]
+        prohibited_paths = [path for path in prohibited_paths if path is not None]
+        owned_paths = [
+            normalize_path(value) for value in coordination.get("ownedPaths", [])
+        ]
+        owned_paths = [path for path in owned_paths if path is not None]
+        shared_paths = [
+            normalize_path(shared_path(item))
+            for item in coordination.get("sharedTouchpoints", [])
+        ]
+        shared_paths = [path for path in shared_paths if path is not None]
+        if any(
+            paths_overlap(authorized, prohibited)
+            for authorized in owned_paths + shared_paths
+            for prohibited in prohibited_paths
+        ):
+            add(errors, "PROHIBITED_PATH_OVERLAP")
         row_reserved: set[tuple[str, str]] = set()
         for reference in coordination.get("reservedIds", []):
             if not isinstance(reference, dict) or not reference.get("domainUid") or not reference.get("id"):
@@ -1917,6 +2123,8 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
             issued_by = issued_authorities(document).get(key)
             if issued_by is not None and issued_by != authority_identity:
                 add(errors, "ISSUED_ID_RECLAIM")
+            if inventory_status_by_id.get(key) == "legacy-preserved":
+                add(errors, "LEGACY_PRESERVED_CURRENT_GATE")
 
     accepted_execution_states = {"active", "accepted"}
     for issue, assignment in issue_map.items():
@@ -1931,7 +2139,7 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
             if work_type == "study":
                 if (
                     work_record is None
-                    or work_record.get("kind") != "study"
+                    or effective_kind(work_record) != "study"
                     or work_record.get("declaredState") != "accepted"
                 ):
                     add(errors, "ASSIGNMENT_STUDY_STATE_MISMATCH")
@@ -2012,12 +2220,20 @@ def validate_assignment_history(
                 add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
             history_sources.add(source)
         reservation = history.get("reservationSet")
-        if history.get("schemaVersion") != ASSIGNMENT_HISTORY_SCHEMA_VERSION:
+        if "schemaVersion" not in history:
+            add(errors, "SCHEMA_VERSION_REQUIRED")
+        elif history.get("schemaVersion") != ASSIGNMENT_HISTORY_SCHEMA_VERSION:
             add(errors, "UNSUPPORTED_SCHEMA_VERSION")
+        if "kind" not in history:
+            add(errors, "KIND_MARKER_REQUIRED")
+        elif history.get("kind") != "issue-assignment-revision-snapshot":
+            add(errors, "KIND_MARKER_MISMATCH")
+        if "experimental" not in history:
+            add(errors, "EXPERIMENTAL_MARKER_REQUIRED")
+        elif history.get("experimental") is not True:
+            add(errors, "EXPERIMENTAL_MARKER_REQUIRED")
         valid = (
-            history.get("experimental") is True
-            and history.get("kind") == "issue-assignment-revision-snapshot"
-            and valid_record_path(source)
+            valid_record_path(source)
             and valid_record_path(assignment_source)
             and issue_key(history.get("authorityIssue")) is not None
             and isinstance(history.get("revision"), int)
@@ -2244,12 +2460,14 @@ def validate_document(
     repository_root: Path | None = None,
 ) -> list[str]:
     errors: list[str] = []
+    if contains_invalid_unicode_scalar(document):
+        add(errors, "INVALID_UNICODE_SCALAR")
     if document.get("experimental") is not True:
         add(errors, "EXPERIMENTAL_MARKER_REQUIRED")
     validate_registry_set(document, errors)
     validate_records(document, errors)
     validate_record_graph(document, errors)
-    validate_relations(document, errors)
+    validate_semantic_graph(document, errors)
     validate_assignments(document, errors)
     validate_assignment_history(
         document, errors, repository_driver=repository_root is not None
@@ -2322,10 +2540,11 @@ def check_coverage(example_documents: dict[str, dict[str, Any]], negative_codes:
     ):
         failures.append("coverage: shared-domain Issue/Slice assignment missing")
     if not any(
-        isinstance(relation.get("sourceRef"), dict)
-        and isinstance(relation.get("targetRef"), dict)
-        and relation["sourceRef"].get("domainUid") != relation["targetRef"].get("domainUid")
-        for relation in scoped.get("relations", [])
+        isinstance(edge, dict)
+        and isinstance(edge.get("targetRef"), dict)
+        and record.get("domainUid") != edge["targetRef"].get("domainUid")
+        for record in scoped.get("records", [])
+        for edge in record.get("relations", [])
     ):
         failures.append("coverage: qualified cross-domain relation missing")
     moved_uids = Counter(domain.get("domainUid") for _, domain in declarations(moved))
@@ -2434,7 +2653,16 @@ def check_coverage(example_documents: dict[str, dict[str, Any]], negative_codes:
         "HISTORY_GIT_CONTENT_MISMATCH", "DUPLICATE_RESERVED_ID",
         "DUPLICATE_INVENTORY_SOURCE", "DUPLICATE_RECORD_SOURCE",
         "RECORD_INVENTORY_BINDING_MISMATCH", "KEY_HINT_MISMATCH",
-        "UNSUPPORTED_SCHEMA_VERSION",
+        "UNSUPPORTED_SCHEMA_VERSION", "SCHEMA_VERSION_REQUIRED",
+        "KIND_MARKER_REQUIRED", "EXPERIMENTAL_MARKER_REQUIRED",
+        "INVALID_SEMANTIC_EDGE", "SEMANTIC_SELF_EDGE",
+        "UNSATISFIED_SEMANTIC_DEPENDENCY",
+        "SLICE_DECISION_AUTHORITY_KIND_MISMATCH",
+        "UNACCEPTED_SLICE_DECISION_AUTHORITY",
+        "TERMINAL_WORK_SLICE_NOT_ACCEPTED",
+        "TERMINAL_WORK_ASSIGNMENT_NOT_ACCEPTED",
+        "PROHIBITED_PATH_OVERLAP", "INVALID_UNICODE_SCALAR",
+        "LEGACY_PRESERVED_CURRENT_GATE",
     }
     missing = sorted(required_negative - negative_codes)
     if missing:
@@ -2506,9 +2734,11 @@ def apply_mutations(document: dict[str, Any], mutations: list[dict[str, Any]]) -
 
 def rebind_reservation_digests(document: dict[str, Any]) -> None:
     digests = {
-        reservation.get("id"): canonical_digest(reservation)
+        reservation.get("id"): digest
         for reservation in document.get("reservationSets", [])
-        if isinstance(reservation, dict) and reservation.get("id")
+        if isinstance(reservation, dict)
+        and reservation.get("id")
+        and (digest := canonical_digest(reservation)) is not None
     }
     for assignment in document.get("assignments", []):
         reference = assignment.get("coordination", {}).get("reservationSet")

@@ -6,5 +6,5 @@
   "mutations": [
     {"op": "replace", "path": "/records/0/acceptedEvidence/verificationRefs/0/candidate", "value": "9999999999999999999999999999999999999999"}
   ],
-  "expectedErrors": ["ACCEPTED_EVIDENCE_CANDIDATE_MISMATCH"]
+  "expectedErrors": ["ACCEPTED_EVIDENCE_CANDIDATE_MISMATCH", "UNACCEPTED_SLICE_DECISION_AUTHORITY", "UNSATISFIED_SEMANTIC_DEPENDENCY"]
 }

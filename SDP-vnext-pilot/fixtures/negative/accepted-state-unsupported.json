@@ -6,5 +6,5 @@
   "mutations": [
     {"op": "replace", "path": "/records/0/acceptedEvidence", "value": {"candidate": null, "verificationRefs": [], "currentReviewRef": null, "steeringDisposition": null, "releaseRefs": []}}
   ],
-  "expectedErrors": ["ACCEPTED_EVIDENCE_REQUIRED"]
+  "expectedErrors": ["ACCEPTED_EVIDENCE_REQUIRED", "UNACCEPTED_SLICE_DECISION_AUTHORITY", "UNSATISFIED_SEMANTIC_DEPENDENCY"]
 }

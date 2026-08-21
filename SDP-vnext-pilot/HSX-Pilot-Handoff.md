@@ -139,6 +139,10 @@ later repository split keeps both values.
 
 The pilot assignment must contain:
 
+- exact pilot v0 `schemaVersion`, exact `kind`, and `experimental: true` on
+  every prospective record, registry, assignment, reservation, and history
+  snapshot; preserve loose historical material only as structured
+  `legacy-preserved` inventory that cannot satisfy current gates;
 - selected operational integration branch and exact base commit;
 - the `SHARED` UID and `SHARED-REF-001`/`SHARED-SLC-001` reservations;
 - owned pilot metadata paths, with the four existing domain trees otherwise
@@ -155,6 +159,8 @@ The pilot assignment must contain:
 - collision validation across NFKC/casefold/slash normalization (important
   because Issue #36 already exposed the `agents.md`/`AGENTS.md` Windows case
   collision);
+- owned/shared paths disjoint from prohibited paths and stable diagnostics for
+  invalid Unicode scalar content before any reservation digest is computed;
 - stale-base/refreeze before any change if the selected operational head moves;
   and
 - fresh exact-candidate verification and separate review.

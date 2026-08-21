@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-positive-mutation-v0","experimental":true,"case":"owned-shared-and-prohibited-paths-are-distinct","sourceExample":"simple-single-domain.json","mutations":[{"op":"add","path":"/assignments/0/boundaries/prohibitedPaths/-","value":"docs/private/**"}]}

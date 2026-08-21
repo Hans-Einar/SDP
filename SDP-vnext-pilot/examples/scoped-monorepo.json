@@ -392,20 +392,7 @@
       }
     }
   ],
-  "relations": [
-    {
-      "type": "depends_on",
-      "sourceRef": {
-        "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
-        "id": "DBG-FEAT-001"
-      },
-      "targetRef": {
-        "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000001",
-        "id": "HSX-STU-001",
-        "keyHint": "HSX"
-      }
-    }
-  ],
+  "relations": [],
   "assignments": [
     {
       "schemaVersion": "sdp-vnext-pilot-assignment-v0",

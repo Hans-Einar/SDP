@@ -159,8 +159,9 @@ reservation rows and edges/order, amendments, and Steering evidence.
 
 ## Declaration and discovery
 
-A registry has a stable schema marker and `experimental: true`, identifies the
-hosting repository in canonical GitHub form, and lists declarations. Pilot v0
+A registry has its exact schema marker, exact `kind`, and `experimental: true`,
+identifies the hosting repository in canonical GitHub form, and lists
+declarations. Omission is an error, never a legacy/untyped downgrade. Pilot v0
 allows exactly one registry object for that canonical repository. Each
 declaration includes:
 
@@ -214,6 +215,9 @@ All pre-work reservation checks use the same portable form:
   segments, `.`/`..`, the conservative Windows-forbidden component set
   `< > : " | ? *`, reserved names, and every Unicode control/format/surrogate/
   private-use category (`Cc`, `Cf`, `Cs`, `Co`);
+- reject invalid Unicode scalar content recursively before canonical JSON
+  encoding; a JSON-escaped lone surrogate produces deterministic diagnostics
+  and never an encoding exception or a usable reservation digest;
 - trim trailing spaces/dots for collision comparison and reject a path whose
   normalized segment changes for that reason;
 - reservations are either an exact file/directory path or one recursive

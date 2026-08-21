@@ -49,10 +49,10 @@ assignment, the single default-domain declaration, and
 `Steering/Reservations/RSV-ISSUE-007-001.json`. The assignment binds the real
 reservation file by canonical JSON SHA-256; the validator resolves the Study,
 domain, paths, IDs, base, dependency, and convergence contract together.
-Assignment revision 3 retains the complete revision-1/revision-2 snapshot
-chain under `Steering/Assignments/History/`. The generic repository driver
-reconstructs both exact Git candidates and rejects a missing, fabricated,
-tampered, gapped, or truncated refreeze history.
+Assignment revision 4 retains the complete revision-1/revision-2/revision-3
+snapshot chain under `Steering/Assignments/History/`. The generic repository
+driver reconstructs all three exact Git candidates and rejects a missing,
+fabricated, tampered, gapped, or truncated refreeze history.
 
 ## Validate
 
@@ -68,9 +68,12 @@ cardinality, canonical GitHub identities/repository coherence, qualified
 accepted evidence, identity inventory/source/provenance/no-reuse, reservation
 digests and concurrency graphs, portable roots/paths and branch names,
 cross-record acceptance/prerequisite/conflict state, qualified embedded
-semantic edges, unique materialized sources, strict v0 schema/key hints,
-assignment revision history, dogfood external binding, local Markdown links,
-required status markers, and trailing whitespace.
+and top-level semantic edges as one global set, terminal-work closure,
+evidence-qualified Slice decisions and gating dependencies, unique materialized
+sources, mandatory exact v0 schema/kind/experimental markers, invalid Unicode
+scalar robustness, authorized/prohibited path disjointness, assignment revision
+history, dogfood external binding, local Markdown links, required status
+markers, and trailing whitespace.
 
 ## Boundary
 

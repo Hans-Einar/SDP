@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-assignment-history-v0",
+  "experimental": true,
+  "kind": "issue-assignment-revision-snapshot",
+  "source": "SDP-vnext-pilot/Steering/Assignments/History/ISSUE-007-revision-003.json",
+  "assignmentSource": "SDP-vnext-pilot/Steering/Assignments/ISSUE-007.yaml",
+  "authorityIssue": "https://github.com/Hans-Einar/SDP/issues/7",
+  "revision": 3,
+  "sourceCandidate": "60978c306f7ce3c09033603abf3300839b2a251d",
+  "sourceFieldPresent": true,
+  "previousSnapshot": {
+    "revision": 2,
+    "snapshotPath": "SDP-vnext-pilot/Steering/Assignments/History/ISSUE-007-revision-002.json",
+    "sourceCandidate": "0de8a8957b3212404007160d90da47445d7b4e7b",
+    "reservationDigest": "sha256:f5805cecd8f72394d4502eed8dbb4f1ec899f890faed3dd5f4e368e1a4f448bb"
+  },
+  "reservationSet": {
+    "id": "RSV-ISSUE-007-001",
+    "digest": "sha256:c6b9245e236c8843ed4fc76fa8c0e540f4afadb7bb75ee33dfc1f3ff0502623d"
+  },
+  "recordedContext": {
+    "/source": "SDP-vnext-pilot/Steering/Assignments/ISSUE-007.yaml",
+    "/declaredState": "active",
+    "/workRef": {
+      "type": "study",
+      "domainUid": "urn:uuid:9df0765b-4f22-4c5e-8fda-b5e71c96ca81",
+      "id": "STU-007"
+    },
+    "/activeSlices": [],
+    "/coordination/reservationSet": {
+      "id": "RSV-ISSUE-007-001",
+      "path": "SDP-vnext-pilot/Steering/Reservations/RSV-ISSUE-007-001.json",
+      "digest": "sha256:c6b9245e236c8843ed4fc76fa8c0e540f4afadb7bb75ee33dfc1f3ff0502623d"
+    },
+    "/coordination/dependsOnIssues": [],
+    "/coordination/ownedPaths": [
+      "SDP-vnext-pilot/**",
+      "Sprints/SPR-SDP-007--provisional-vnext-contract/**",
+      "CodeReview/REV-SDP-007-001.md",
+      "CodeReview/REV-SDP-007-002.md",
+      "CodeReview/REV-SDP-007-003.md",
+      "CodeReview/REV-SDP-007-004.md",
+      "Verification/VER-SDP-007-001.md",
+      "Verification/VER-SDP-007-002.md",
+      "Verification/VER-SDP-007-003.md",
+      "Verification/VER-SDP-007-004.md"
+    ],
+    "/coordination/convergence": {
+      "owner": "Hans-Einar/SDP Steering",
+      "command": "python SDP-vnext-pilot/validate_pilot.py",
+      "terminal": true
+    }
+  },
+  "supersededByRevision": 4,
+  "supersessionReason": "The fourth independent review required terminal work/decision closure, mandatory marker enforcement, one global semantic-edge authority, stable surrogate diagnostics, and authorized/prohibited path disjointness before the fifth evidence gate."
+}

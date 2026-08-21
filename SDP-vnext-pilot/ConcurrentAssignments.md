@@ -17,8 +17,9 @@ Steering/Assignments/ISSUE-124.yaml
 
 Each record declares:
 
-- its own portable repository-relative `source`, canonical Issue/comment
-  amendment URLs, and positive integer `revision`;
+- its exact v0 `schemaVersion`, `kind`, `experimental: true`, its own portable
+  repository-relative `source`, canonical Issue/comment amendment URLs, and
+  positive integer `revision`;
 - primary `workRef` as `{domainUid, id}` and active Slice references;
 - `baseline.branch`, exact 40-character `baseline.commit`, and the identical
   `coordination.integrationBase` used by the reservation set;
@@ -80,7 +81,10 @@ Issue #5 is evidence/prerequisite context for this pilot, not a current active
 reservation-DAG node. Revision 1 recorded it as a dependency; revision 2
 refroze the current execution graph without it and recorded why. Revision 3
 retains both earlier snapshots while reserving the fourth exact evidence gate
-and adopting the third-pass validation corrections. A completed
+and adopting the third-pass validation corrections. Revision 4 retains the
+exact revision-3 snapshot from the fourth-review candidate, reserves the fifth
+independent evidence gate, and records the terminal-work, marker, global-graph,
+surrogate, and path-boundary rework. A completed
 historical prerequisite remains linked as evidence without pretending another
 Issue Master is concurrently active.
 
@@ -112,6 +116,10 @@ later is invalid. Reservation must precede concurrent implementation.
   participant declares the same normalized path, explicit domain/file owner,
   allowed mutation, convergence verification, and merge order. A shared path
   cannot also appear in any participant's private paths.
+- Within one assignment, normalized `ownedPaths` and `sharedTouchpoints` are
+  disjoint from `boundaries.prohibitedPaths`. A prohibition that contains or
+  is contained by an authorized write surface makes the assignment internally
+  unsatisfiable and blocks activation.
 - Read-only dependencies need no path reservation but MUST be named with an
   exact candidate or contract reference when drift would matter.
 - Discovery outside reserved areas stops the Worker. The Master either returns
