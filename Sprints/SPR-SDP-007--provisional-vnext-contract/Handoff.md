@@ -1,6 +1,6 @@
 # SPR-SDP-007 Handoff
 
-Status: ACTIVE
+Status: CHANGES_REQUIRED
 
 ## Current assignment
 
@@ -8,12 +8,18 @@ Status: ACTIVE
 - Baseline: `main@2cb49c02145621b099c47d05786716598e414e75`
 - Branch: `codex/issue-7-provisional-vnext-pilot`
 - Draft PR: `https://github.com/Hans-Einar/SDP/pull/8`
-- Active iteration: `ITR-SDP-007-001`
-- Active slice: `SLC-SDP-007-001`
+- Completed construction candidate:
+  `f79e3dfc18c7a1650f1f3ae66167dda9b69692b4`
+- Active iteration: `ITR-SDP-007-002`
+- Active slice: `SLC-SDP-007-002`
+- Verification: `VER-SDP-007-001` — FAIL, B0 / H1 / M3 / L0
+- Review: `REV-SDP-007-001` — changes required, B0 / H2 / M3 / L0 / Note 4
 - Durable pilot assignment:
   `SDP-vnext-pilot/Steering/Assignments/ISSUE-007.yaml`
 
 ## Next legal action
 
-Delegate the bounded pilot-contract corpus to a fresh Worker. Do not modify
-canonical Toolkit contracts or any downstream repository.
+Delegate a fresh bounded rework pass for every High and Medium finding in
+`VER-SDP-007-001` and `REV-SDP-007-001`. Then commit one new immutable
+candidate and run fresh verification plus a new independent Reviewer. Do not
+modify canonical Toolkit contracts or any downstream repository.
