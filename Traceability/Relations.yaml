@@ -1,6 +1,12 @@
 requirements: {}
 designs: {}
 sprints:
+  SPR-SDP-007:
+    issue: https://github.com/Hans-Einar/SDP/issues/7
+    baseline: 2cb49c02145621b099c47d05786716598e414e75
+    status: active
+    record: Sprints/SPR-SDP-007--provisional-vnext-contract/sprint.md
+    iterations: [ITR-SDP-007-001, ITR-SDP-007-002, ITR-SDP-007-003]
   SPR-SDP-005:
     issue: https://github.com/Hans-Einar/SDP/issues/5
     baseline: e398ebaf3a4ace6a5d92fd9ce22736a7427a9e15
@@ -9,6 +15,18 @@ sprints:
     iterations: [ITR-SDP-005-001, ITR-SDP-005-002, ITR-SDP-005-003, ITR-SDP-005-004]
 refactors: {}
 iterations:
+  ITR-SDP-007-001:
+    sprint: SPR-SDP-007
+    record: Sprints/SPR-SDP-007--provisional-vnext-contract/ScrumIterations.md
+    slices: [SLC-SDP-007-001]
+  ITR-SDP-007-002:
+    sprint: SPR-SDP-007
+    record: Sprints/SPR-SDP-007--provisional-vnext-contract/ScrumIterations.md
+    slices: [SLC-SDP-007-002]
+  ITR-SDP-007-003:
+    sprint: SPR-SDP-007
+    record: Sprints/SPR-SDP-007--provisional-vnext-contract/ScrumIterations.md
+    slices: [SLC-SDP-007-003]
   ITR-SDP-005-001:
     sprint: SPR-SDP-005
     record: Sprints/SPR-SDP-005--recent-sdp-usage-study/ScrumIterations.md
@@ -26,6 +44,18 @@ iterations:
     record: Sprints/SPR-SDP-005--recent-sdp-usage-study/ScrumIterations.md
     slices: [SLC-SDP-005-004]
 slices:
+  SLC-SDP-007-001:
+    iteration: ITR-SDP-007-001
+    status: active
+    record: Sprints/SPR-SDP-007--provisional-vnext-contract/ScrumIterations.md
+  SLC-SDP-007-002:
+    iteration: ITR-SDP-007-002
+    status: planned
+    record: Sprints/SPR-SDP-007--provisional-vnext-contract/ScrumIterations.md
+  SLC-SDP-007-003:
+    iteration: ITR-SDP-007-003
+    status: planned
+    record: Sprints/SPR-SDP-007--provisional-vnext-contract/ScrumIterations.md
   SLC-SDP-005-001:
     iteration: ITR-SDP-005-001
     status: complete

@@ -1,0 +1,61 @@
+schemaVersion: sdp-vnext-pilot-assignment-v0
+experimental: true
+authority:
+  issue: https://github.com/Hans-Einar/SDP/issues/7
+  amendments: []
+work:
+  type: study
+  id: STU-007
+  workDomain: null
+  activeSlice: SLC-007
+baseline:
+  branch: main
+  commit: 2cb49c02145621b099c47d05786716598e414e75
+delivery:
+  branch: codex/issue-7-provisional-vnext-pilot
+  pullRequest: null
+coordination:
+  integrationBase: 2cb49c02145621b099c47d05786716598e414e75
+  dependsOnIssues:
+    - https://github.com/Hans-Einar/SDP/issues/5
+  conflictsWithIssues: []
+  relatedReadOnlyWork:
+    - https://github.com/Hans-Einar/SDP/pull/4
+  ownedPaths:
+    - SDP-vnext-pilot/**
+    - Sprints/SPR-SDP-007--provisional-vnext-contract/**
+    - CodeReview/REV-SDP-007-*.md
+    - Verification/VER-SDP-007-*.md
+  sharedTouchpoints:
+    - Traceability/CurrentIndex.yaml
+    - Traceability/Relations.yaml
+  reservedIds:
+    - STU-007
+    - SLC-007
+    - SPR-SDP-007
+    - ITR-SDP-007-001
+    - ITR-SDP-007-002
+    - ITR-SDP-007-003
+    - SLC-SDP-007-001
+    - SLC-SDP-007-002
+    - SLC-SDP-007-003
+  mergeOrder: null
+  staleBasePolicy: compare-integration-base-before-each-candidate
+boundaries:
+  prohibitedRepositories:
+    - Hans-Einar/HSX
+    - Hans-Einar/gh-sdp
+    - Hans-Einar/SDP-Analyzer
+  prohibitedPaths:
+    - Toolkit/**
+  prohibitedOperations:
+    - modify-pr-4
+    - change-toolkit-release-state
+    - create-tag
+    - create-github-release
+requiredEvidence:
+  deterministicValidation: true
+  freshVerification: true
+  independentReview: true
+  maximumUnresolvedSeverity: low
+stopCondition: PROVISIONAL_CONTRACT_READY_FOR_PILOT

@@ -9,10 +9,10 @@ release:
   state: unreleased
 
 active:
-  sprint: null
+  sprint: SPR-SDP-007
   refactor: null
-  iteration: null
-  slice: null
+  iteration: ITR-SDP-007-001
+  slice: SLC-SDP-007-001
   fix: null
   revision: null
 
