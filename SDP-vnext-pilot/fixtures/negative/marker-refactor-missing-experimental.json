@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"refactor-missing-experimental-marker","sourceExample":"scoped-monorepo.json","mutations":[{"op":"remove","path":"/records/4/experimental"}],"expectedErrors":["EXPERIMENTAL_MARKER_REQUIRED"]}

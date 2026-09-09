@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"prohibited-repository-must-be-canonical","sourceExample":"simple-single-domain.json","mutations":[{"op":"add","path":"/assignments/0/boundaries/prohibitedRepositories/-","value":"example/other"}],"expectedErrors":["INVALID_GITHUB_REPOSITORY"]}

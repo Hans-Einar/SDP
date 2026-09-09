@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-assignment-history-v0",
+  "experimental": true,
+  "kind": "issue-assignment-revision-snapshot",
+  "source": "SDP-vnext-pilot/Steering/Assignments/History/ISSUE-007-revision-001.json",
+  "assignmentSource": "SDP-vnext-pilot/Steering/Assignments/ISSUE-007.yaml",
+  "authorityIssue": "https://github.com/Hans-Einar/SDP/issues/7",
+  "revision": 1,
+  "sourceCandidate": "f79e3dfc18c7a1650f1f3ae66167dda9b69692b4",
+  "sourceFieldPresent": false,
+  "previousSnapshot": null,
+  "reservationSet": {
+    "id": "RSV-ISSUE-007-001",
+    "digest": "sha256:50d6768eecce05e540c7674b34a78ba6b4432cabae6e079b88fb51e669bebd4d"
+  },
+  "priorDependencyContext": [
+    "https://github.com/Hans-Einar/SDP/issues/5"
+  ],
+  "priorConvergenceTerminal": null,
+  "recordedContext": {
+    "/workRef": {
+      "type": "study",
+      "domainUid": "urn:uuid:9df0765b-4f22-4c5e-8fda-b5e71c96ca81",
+      "id": "STU-007"
+    },
+    "/activeSlices": [],
+    "/coordination/reservationSet": {
+      "id": "RSV-ISSUE-007-001",
+      "path": "SDP-vnext-pilot/Steering/Reservations/RSV-ISSUE-007-001.json",
+      "digest": "sha256:50d6768eecce05e540c7674b34a78ba6b4432cabae6e079b88fb51e669bebd4d"
+    },
+    "/coordination/dependsOnIssues": [
+      "https://github.com/Hans-Einar/SDP/issues/5"
+    ],
+    "/coordination/convergence": {
+      "owner": "Hans-Einar/SDP Steering",
+      "command": "python SDP-vnext-pilot/validate_pilot.py"
+    }
+  },
+  "supersededByRevision": 2,
+  "supersessionReason": "The first adversarial gate required a reusable reservation projection, explicit terminal convergence, and a truthful distinction between accepted study context and live assignment dependencies."
+}

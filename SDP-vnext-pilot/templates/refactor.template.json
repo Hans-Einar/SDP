@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-refactor-v0",
+  "experimental": true,
+  "kind": "refactor",
+  "domainUid": "urn:uuid:10000000-0000-4000-8000-000000000001",
+  "id": "APP-REF-001",
+  "source": "Refactors/APP-REF-001.json",
+  "revision": 1,
+  "declaredState": "proposed",
+  "title": "Illustrative structural change",
+  "behaviorBaseline": ["Existing public behavior remains available"],
+  "targetStructure": ["One named owner replaces ambiguous ownership"],
+  "compatibility": {
+    "preserved": ["Public contract v1"],
+    "changed": [],
+    "migrationRange": "No data migration"
+  },
+  "temporaryAdapters": [],
+  "exitEvidence": ["Dependency direction and regression checks pass"],
+  "relations": [],
+  "issueAuthorities": [],
+  "slices": [],
+  "acceptedEvidence": {
+    "candidate": null,
+    "verificationRefs": [],
+    "currentReviewRef": null,
+    "steeringDisposition": null,
+    "releaseRefs": []
+  }
+}

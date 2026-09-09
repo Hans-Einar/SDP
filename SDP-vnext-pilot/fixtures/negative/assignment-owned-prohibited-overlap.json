@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"assignment-owned-path-is-disjoint-from-prohibited-paths","sourceExample":"simple-single-domain.json","mutations":[{"op":"add","path":"/assignments/0/boundaries/prohibitedPaths/-","value":"SRC\\EXPORT\\private.py"}],"expectedErrors":["PROHIBITED_PATH_OVERLAP"]}

@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-work-domains-v0",
+  "experimental": true,
+  "kind": "work-domain-registry",
+  "repository": "https://github.com/Hans-Einar/SDP",
+  "defaultDomainUid": "urn:uuid:9df0765b-4f22-4c5e-8fda-b5e71c96ca81",
+  "domains": [
+    {
+      "domainUid": "urn:uuid:9df0765b-4f22-4c5e-8fda-b5e71c96ca81",
+      "key": "SDP",
+      "name": "SDP provisional vNext pilot",
+      "state": "active",
+      "owners": [
+        "Hans-Einar/SDP Steering"
+      ],
+      "newRecordIdStyle": "unscoped",
+      "roots": [
+        "SDP-vnext-pilot"
+      ],
+      "issuedIds": [
+        {
+          "id": "STU-007",
+          "status": "prospective",
+          "allocationIssue": "https://github.com/Hans-Einar/SDP/issues/7",
+          "source": "SDP-vnext-pilot/Studies/STU-007.json",
+          "allocationEpoch": {
+            "reservationSetId": "RSV-ORIGIN-7",
+            "reservationDigest": "sha256:c89262b6daa0214aa71ea9f8ed2094ab9216c4b40b003af89a6a5452f0268ade",
+            "domainUid": "urn:uuid:9df0765b-4f22-4c5e-8fda-b5e71c96ca81",
+            "id": "STU-007",
+            "allocationIssue": "https://github.com/Hans-Einar/SDP/issues/7",
+            "source": "SDP-vnext-pilot/Studies/STU-007.json"
+          }
+        }
+      ],
+      "predecessorRepositories": []
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-git-history-fixture-v0","experimental":true,"scenario":"reversed-order","expectedErrors":["HISTORY_CANDIDATE_ORDER_INVALID","HISTORY_GIT_CONTENT_MISMATCH"]}

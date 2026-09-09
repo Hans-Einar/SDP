@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-reservation-set-v0",
+  "experimental": true,
+  "kind": "reservation-set",
+  "id": "RSV-001",
+  "integrationBase": "1111111111111111111111111111111111111111",
+  "assignments": [
+    {
+      "issue": "https://github.com/example/app/issues/101",
+      "workRef": {
+        "type": "feature",
+        "domainUid": "urn:uuid:10000000-0000-4000-8000-000000000001",
+        "id": "APP-FEAT-001"
+      },
+      "authorizedSlices": [
+        {
+          "domainUid": "urn:uuid:10000000-0000-4000-8000-000000000001",
+          "id": "APP-SLC-001",
+          "acceptedCandidate": null
+        }
+      ],
+      "activeSlices": [
+        {
+          "domainUid": "urn:uuid:10000000-0000-4000-8000-000000000001",
+          "id": "APP-SLC-001"
+        }
+      ],
+      "reservedIds": [
+        {
+          "domainUid": "urn:uuid:10000000-0000-4000-8000-000000000001",
+          "id": "APP-SLC-001",
+          "allocationIssue": "https://github.com/example/app/issues/101",
+          "source": "Slices/APP-SLC-001.json"
+        }
+      ],
+      "ownedPaths": ["src/capability/**"],
+      "sharedTouchpoints": [],
+      "dependsOnIssues": [],
+      "conflictsWithIssues": []
+    }
+  ],
+  "mergeOrder": ["https://github.com/example/app/issues/101"],
+  "convergence": {
+    "owner": "application-domain",
+    "command": "python -m unittest",
+    "terminal": true
+  }
+}

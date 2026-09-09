@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "active-domain-root-is-parent-of-peer-trees",
+  "sourceExample": "scoped-monorepo.json",
+  "mutations": [
+    {"op": "replace", "path": "/registries/0/domains/2/roots/0", "value": "SDP"}
+  ],
+  "expectedErrors": ["DOMAIN_ROOT_COLLISION"]
+}

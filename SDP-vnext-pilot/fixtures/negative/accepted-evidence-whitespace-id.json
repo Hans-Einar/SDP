@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "accepted-evidence-id-is-whitespace",
+  "sourceExample": "scoped-monorepo.json",
+  "mutations": [
+    {"op": "replace", "path": "/records/0/acceptedEvidence/verificationRefs/0/id", "value": " "}
+  ],
+  "expectedErrors": ["ACCEPTED_EVIDENCE_SHAPE_INVALID", "UNACCEPTED_SLICE_DECISION_AUTHORITY", "UNSATISFIED_SEMANTIC_DEPENDENCY"]
+}

@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"reservation-missing-experimental-marker","sourceExample":"simple-single-domain.json","mutations":[{"op":"remove","path":"/reservationSets/0/experimental"}],"rebindReservationDigests":true,"expectedErrors":["EXPERIMENTAL_MARKER_REQUIRED"]}

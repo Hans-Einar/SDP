@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-study-v0",
+  "experimental": true,
+  "kind": "study",
+  "domainUid": "urn:uuid:9df0765b-4f22-4c5e-8fda-b5e71c96ca81",
+  "id": "STU-007",
+  "source": "SDP-vnext-pilot/Studies/STU-007.json",
+  "revision": 1,
+  "declaredState": "active",
+  "title": "Provisional SDP vNext workflow and scoped-domain contract",
+  "question": "What explicitly provisional workflow and work-domain contract is sufficiently precise and testable for the first real HSX pilot without freezing canonical Toolkit behavior?",
+  "evidenceBoundary": {
+    "inScope": [
+      "Steering-accepted Issue #5 study and merged repository evidence",
+      "Complete Issue #7 authority and amendments",
+      "HSX work-domain evidence recorded in SDP-usage-analysis/repositories/HSX.md",
+      "Pilot-only contracts, examples, templates, fixtures, validation, review, and handoff"
+    ],
+    "outOfScope": [
+      "Canonical Toolkit implementation or schema freeze",
+      "Changes to HSX, gh-sdp, SDP-Analyzer, PR #4, release state, tags, or GitHub Releases"
+    ]
+  },
+  "ownerRef": null,
+  "issueAuthorities": ["https://github.com/Hans-Einar/SDP/issues/7"],
+  "independentStudyRefs": [],
+  "convergenceGate": "Fresh exact-candidate verification and independent review with no unresolved Blocking, High, or Medium finding, followed by the Issue #7 Steering disposition.",
+  "findings": [
+    "Pilot v0 selects immutable domain UUID identity plus stable domain-key-prefixed visible IDs for new multi-domain work.",
+    "Single-domain repositories may use qualified unscoped visible IDs under one declared default domain.",
+    "Concurrent Issue Masters require a common-base reservation/refreeze gate before implementation."
+  ],
+  "limitations": [
+    "The contract remains provisional until real pilots provide migration, ergonomics, collision, and repository-move evidence.",
+    "Declared active state does not claim accepted review or Steering completion."
+  ],
+  "informs": [],
+  "acceptedEvidence": {
+    "candidate": null,
+    "verificationRefs": [],
+    "currentReviewRef": null,
+    "steeringDisposition": null,
+    "releaseRefs": []
+  }
+}

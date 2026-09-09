@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-positive-mutation-v0",
+  "experimental": true,
+  "case": "complete-unreferenced-preparatory-reservation-set-is-independently-valid",
+  "sourceExample": "simple-single-domain.json",
+  "mutations": [
+    {"op":"add","path":"/registries/0/domains/0/issuedIds/-","value":{"id":"FEAT-090","status":"prospective","allocationIssue":"https://github.com/example/tiny-app/issues/90","source":"Features/FEAT-090.json"}},
+    {"op":"add","path":"/registries/0/domains/0/issuedIds/-","value":{"id":"FEAT-091","status":"prospective","allocationIssue":"https://github.com/example/tiny-app/issues/91","source":"Features/FEAT-091.json"}},
+    {"op":"add","path":"/registries/0/domains/0/issuedIds/-","value":{"id":"SLC-090","status":"reserved","allocationIssue":"https://github.com/example/tiny-app/issues/90","source":"Slices/SLC-090.json"}},
+    {"op":"add","path":"/registries/0/domains/0/issuedIds/-","value":{"id":"SLC-091","status":"reserved","allocationIssue":"https://github.com/example/tiny-app/issues/91","source":"Slices/SLC-091.json"}},
+    {"op":"copy","from":"/records/0","path":"/records/-"},
+    {"op":"replace","path":"/records/3/id","value":"FEAT-090"},
+    {"op":"replace","path":"/records/3/source","value":"Features/FEAT-090.json"},
+    {"op":"replace","path":"/records/3/declaredState","value":"proposed"},
+    {"op":"replace","path":"/records/3/issueAuthorities","value":["https://github.com/example/tiny-app/issues/90"]},
+    {"op":"replace","path":"/records/3/slices","value":[]},
+    {"op":"copy","from":"/records/0","path":"/records/-"},
+    {"op":"replace","path":"/records/4/id","value":"FEAT-091"},
+    {"op":"replace","path":"/records/4/source","value":"Features/FEAT-091.json"},
+    {"op":"replace","path":"/records/4/declaredState","value":"proposed"},
+    {"op":"replace","path":"/records/4/issueAuthorities","value":["https://github.com/example/tiny-app/issues/91"]},
+    {"op":"replace","path":"/records/4/slices","value":[]},
+    {"op":"add","path":"/reservationSets/-","value":{"schemaVersion":"sdp-vnext-pilot-reservation-set-v0","experimental":true,"kind":"reservation-set","id":"RSV-PREP-090","integrationBase":"9999999999999999999999999999999999999999","assignments":[{"issue":"https://github.com/example/tiny-app/issues/90","workRef":{"type":"feature","domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"FEAT-090"},"authorizedSlices":[{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-090","acceptedCandidate":null}],"activeSlices":[],"reservedIds":[{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-090"}],"ownedPaths":["prep/first/**"],"sharedTouchpoints":[],"dependsOnIssues":[],"conflictsWithIssues":[]},{"issue":"https://github.com/example/tiny-app/issues/91","workRef":{"type":"feature","domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"FEAT-091"},"authorizedSlices":[{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-091","acceptedCandidate":null}],"activeSlices":[],"reservedIds":[{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-091"}],"ownedPaths":["prep/second/**"],"sharedTouchpoints":[],"dependsOnIssues":["https://github.com/example/tiny-app/issues/90"],"conflictsWithIssues":[]}],"mergeOrder":["https://github.com/example/tiny-app/issues/90","https://github.com/example/tiny-app/issues/91"],"convergence":{"owner":"preparation-owner","command":"python -m unittest","terminal":true}}}
+  ]
+}

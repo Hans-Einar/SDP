@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "slice-path-is-not-portable",
+  "sourceExample": "simple-single-domain.json",
+  "mutations": [
+    {"op": "replace", "path": "/records/1/ownedPaths/0", "value": "../outside"}
+  ],
+  "expectedErrors": ["INVALID_SLICE_PATH"]
+}

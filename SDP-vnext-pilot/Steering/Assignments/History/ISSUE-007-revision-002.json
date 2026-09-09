@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-assignment-history-v0",
+  "experimental": true,
+  "kind": "issue-assignment-revision-snapshot",
+  "source": "SDP-vnext-pilot/Steering/Assignments/History/ISSUE-007-revision-002.json",
+  "assignmentSource": "SDP-vnext-pilot/Steering/Assignments/ISSUE-007.yaml",
+  "authorityIssue": "https://github.com/Hans-Einar/SDP/issues/7",
+  "revision": 2,
+  "sourceCandidate": "0de8a8957b3212404007160d90da47445d7b4e7b",
+  "sourceFieldPresent": true,
+  "previousSnapshot": {
+    "revision": 1,
+    "snapshotPath": "SDP-vnext-pilot/Steering/Assignments/History/ISSUE-007-revision-001.json",
+    "sourceCandidate": "f79e3dfc18c7a1650f1f3ae66167dda9b69692b4",
+    "reservationDigest": "sha256:50d6768eecce05e540c7674b34a78ba6b4432cabae6e079b88fb51e669bebd4d"
+  },
+  "reservationSet": {
+    "id": "RSV-ISSUE-007-001",
+    "digest": "sha256:f5805cecd8f72394d4502eed8dbb4f1ec899f890faed3dd5f4e368e1a4f448bb"
+  },
+  "recordedContext": {
+    "/source": "SDP-vnext-pilot/Steering/Assignments/ISSUE-007.yaml",
+    "/declaredState": "active",
+    "/workRef": {
+      "type": "study",
+      "domainUid": "urn:uuid:9df0765b-4f22-4c5e-8fda-b5e71c96ca81",
+      "id": "STU-007"
+    },
+    "/activeSlices": [],
+    "/coordination/reservationSet": {
+      "id": "RSV-ISSUE-007-001",
+      "path": "SDP-vnext-pilot/Steering/Reservations/RSV-ISSUE-007-001.json",
+      "digest": "sha256:f5805cecd8f72394d4502eed8dbb4f1ec899f890faed3dd5f4e368e1a4f448bb"
+    },
+    "/coordination/dependsOnIssues": [],
+    "/coordination/convergence": {
+      "owner": "Hans-Einar/SDP Steering",
+      "command": "python SDP-vnext-pilot/validate_pilot.py",
+      "terminal": true
+    }
+  },
+  "supersededByRevision": 3,
+  "supersessionReason": "The third adversarial gate required complete multi-refreeze history, generic repository reconstruction, cross-record state and semantic-edge validation, full portable path boundaries, unique record sources, and strict key-hint/schema handling."
+}

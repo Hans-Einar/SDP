@@ -1,0 +1,8 @@
+{
+  "schemaVersion":"sdp-vnext-pilot-negative-mutation-v0",
+  "experimental":true,
+  "case":"duplicate-objects-with-the-same-reservation-id-and-digest-are-ambiguous",
+  "sourceExample":"simple-single-domain.json",
+  "mutations":[{"op":"copy","from":"/reservationSets/0","path":"/reservationSets/-"}],
+  "expectedErrors":["AMBIGUOUS_RESERVATION_EPOCH"]
+}

@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-assignment-v0",
+  "experimental": true,
+  "kind": "issue-assignment",
+  "source": "Steering/Assignments/ISSUE-101.json",
+  "revision": 1,
+  "declaredState": "active",
+  "authority": {
+    "issue": "https://github.com/example/app/issues/101",
+    "amendments": []
+  },
+  "workRef": {
+    "type": "feature",
+    "domainUid": "urn:uuid:10000000-0000-4000-8000-000000000001",
+    "id": "APP-FEAT-001"
+  },
+  "authorizedSlices": [
+    {
+      "domainUid": "urn:uuid:10000000-0000-4000-8000-000000000001",
+      "id": "APP-SLC-001",
+      "acceptedCandidate": null
+    }
+  ],
+  "activeSlices": [
+    {
+      "domainUid": "urn:uuid:10000000-0000-4000-8000-000000000001",
+      "id": "APP-SLC-001"
+    }
+  ],
+  "baseline": {
+    "branch": "main",
+    "commit": "1111111111111111111111111111111111111111"
+  },
+  "delivery": {
+    "branch": "codex/issue-101-capability",
+    "pullRequest": "https://github.com/example/app/pull/102"
+  },
+  "coordination": {
+    "integrationBase": "1111111111111111111111111111111111111111",
+    "reservationSet": {
+      "id": "RSV-001",
+      "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "dependsOnIssues": [],
+    "conflictsWithIssues": [],
+    "ownedPaths": ["src/capability/**"],
+    "sharedTouchpoints": [],
+    "reservedIds": [
+      {
+        "domainUid": "urn:uuid:10000000-0000-4000-8000-000000000001",
+        "id": "APP-SLC-001"
+      }
+    ],
+    "mergeOrder": ["https://github.com/example/app/issues/101"],
+    "convergence": {
+      "owner": "application-domain",
+      "command": "python -m unittest",
+      "terminal": true
+    },
+    "staleBasePolicy": "refreeze-before-write-or-merge"
+  },
+  "boundaries": {
+    "prohibitedRepositories": [],
+    "prohibitedPaths": [],
+    "prohibitedOperations": []
+  },
+  "requiredEvidence": {
+    "verification": ["deterministic checks at exact candidate"],
+    "independentReview": true,
+    "maximumUnresolvedSeverity": "low"
+  },
+  "pathlessReason": null,
+  "acceptedEvidence": {
+    "candidate": null,
+    "verificationRefs": [],
+    "currentReviewRef": null,
+    "steeringDisposition": null,
+    "releaseRefs": []
+  },
+  "stopCondition": "AWAITING_STEERING"
+}

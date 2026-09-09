@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-positive-mutation-v0",
+  "experimental": true,
+  "case": "accepted-standalone-zero-slice-fix-affects-delivered-work",
+  "sourceExample": "simple-single-domain.json",
+  "mutations": [
+    {"op": "replace", "path": "/registries/0/domains/0/issuedIds/2/allocationIssue", "value": "https://github.com/example/tiny-app/issues/12"},
+    {"op": "replace", "path": "/records/0/declaredState", "value": "delivered"},
+    {"op": "replace", "path": "/records/0/acceptedEvidence", "value": {"candidate": "1010101010101010101010101010101010101010", "verificationRefs": [{"id": "FEAT-VER-001", "candidate": "1010101010101010101010101010101010101010"}], "currentReviewRef": {"id": "FEAT-REV-001", "candidate": "1010101010101010101010101010101010101010", "disposition": "approved"}, "steeringDisposition": {"authority": "https://github.com/example/tiny-app/issues/10#issuecomment-1004", "candidate": "1010101010101010101010101010101010101010", "decision": "accepted"}, "releaseRefs": []}},
+    {"op": "replace", "path": "/records/2/declaredState", "value": "delivered"},
+    {"op": "replace", "path": "/records/2/issueAuthorities", "value": ["https://github.com/example/tiny-app/issues/12"]},
+    {"op": "replace", "path": "/records/2/acceptedEvidence", "value": {"candidate": "1212121212121212121212121212121212121212", "verificationRefs": [{"id": "FIX-VER-001", "candidate": "1212121212121212121212121212121212121212"}], "currentReviewRef": {"id": "FIX-REV-001", "candidate": "1212121212121212121212121212121212121212", "disposition": "approved"}, "steeringDisposition": {"authority": "https://github.com/example/tiny-app/issues/12#issuecomment-1201", "candidate": "1212121212121212121212121212121212121212", "decision": "accepted"}, "releaseRefs": []}},
+    {"op": "replace", "path": "/assignments/0/coordination/mergeOrder", "value": ["https://github.com/example/tiny-app/issues/10", "https://github.com/example/tiny-app/issues/12"]},
+    {"op": "add", "path": "/assignments/-", "value": {
+      "schemaVersion": "sdp-vnext-pilot-assignment-v0",
+      "experimental": true,
+      "kind": "issue-assignment",
+      "source": "Steering/Assignments/ISSUE-012.json",
+      "revision": 1,
+      "declaredState": "accepted",
+      "authority": {"issue": "https://github.com/example/tiny-app/issues/12", "amendments": []},
+      "workRef": {"type": "fix", "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001", "id": "FIX-001"},
+      "authorizedSlices": [],
+      "activeSlices": [],
+      "baseline": {"branch": "main", "commit": "2222222222222222222222222222222222222222"},
+      "delivery": {"branch": "codex/issue-12-fix", "pullRequest": "https://github.com/example/tiny-app/pull/13"},
+      "coordination": {
+        "integrationBase": "2222222222222222222222222222222222222222",
+        "reservationSet": {"id": "RSV-010", "digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"},
+        "dependsOnIssues": ["https://github.com/example/tiny-app/issues/10"],
+        "conflictsWithIssues": [],
+        "ownedPaths": ["Fixes/FIX-001.json"],
+        "sharedTouchpoints": [],
+        "reservedIds": [{"domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001", "id": "FIX-001"}],
+        "mergeOrder": ["https://github.com/example/tiny-app/issues/10", "https://github.com/example/tiny-app/issues/12"],
+        "convergence": {"owner": "tiny-app-owner", "command": "python -m unittest", "terminal": true},
+        "staleBasePolicy": "refreeze-before-write-or-merge"
+      },
+      "boundaries": {"prohibitedRepositories": [], "prohibitedPaths": [], "prohibitedOperations": []},
+      "requiredEvidence": {"verification": ["focused regression"], "independentReview": true, "maximumUnresolvedSeverity": "low"},
+      "acceptedEvidence": {"candidate": "1212121212121212121212121212121212121212", "verificationRefs": [{"id": "ASGN-VER-012", "candidate": "1212121212121212121212121212121212121212"}], "currentReviewRef": {"id": "ASGN-REV-012", "candidate": "1212121212121212121212121212121212121212", "disposition": "approved"}, "steeringDisposition": {"authority": "https://github.com/example/tiny-app/issues/12#issuecomment-1202", "candidate": "1212121212121212121212121212121212121212", "decision": "accepted"}, "releaseRefs": []},
+      "stopCondition": "FIX_ACCEPTED"
+    }},
+    {"op": "replace", "path": "/reservationSets/0/mergeOrder", "value": ["https://github.com/example/tiny-app/issues/10", "https://github.com/example/tiny-app/issues/12"]},
+    {"op": "add", "path": "/reservationSets/0/assignments/-", "value": {
+      "issue": "https://github.com/example/tiny-app/issues/12",
+      "workRef": {"type": "fix", "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001", "id": "FIX-001"},
+      "authorizedSlices": [],
+      "activeSlices": [],
+      "reservedIds": [{"domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001", "id": "FIX-001"}],
+      "ownedPaths": ["Fixes/FIX-001.json"],
+      "sharedTouchpoints": [],
+      "dependsOnIssues": ["https://github.com/example/tiny-app/issues/10"],
+      "conflictsWithIssues": []
+    }}
+  ],
+  "rebindReservationDigests": true
+}

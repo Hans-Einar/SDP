@@ -1,0 +1,126 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-assignment-v0",
+  "experimental": true,
+  "kind": "issue-assignment",
+  "source": "SDP-vnext-pilot/Steering/Assignments/ISSUE-007.yaml",
+  "revision": 10,
+  "declaredState": "active",
+  "previousRevision": {
+    "revision": 9,
+    "snapshotPath": "SDP-vnext-pilot/Steering/Assignments/History/ISSUE-007-revision-009.json",
+    "sourceCandidate": "33551057701f70ff572bc90b1d72bdad8373cd4c",
+    "reservationDigest": "sha256:6bdb62d86c07aad489fde8be141eb90a83df3ea56de2b43d59e59b2a1273a30e"
+  },
+  "refreeze": {
+    "sourceCandidate": "33551057701f70ff572bc90b1d72bdad8373cd4c",
+    "reason": "Revision 10 refreezes after the tenth evidence gate: it preserves exact revision-9 bytes, reserves REV/VER-011 paths, binds every allocation to one immutable epoch and planned source, requires materialize-or-burn before a domain move, and closes terminal non-accepted assignments before releasing paths."
+  },
+  "authority": {
+    "issue": "https://github.com/Hans-Einar/SDP/issues/7",
+    "amendments": []
+  },
+  "workRef": {
+    "type": "study",
+    "domainUid": "urn:uuid:9df0765b-4f22-4c5e-8fda-b5e71c96ca81",
+    "id": "STU-007"
+  },
+  "authorizedSlices": [],
+  "activeSlices": [],
+  "legacyCoordinates": {
+    "sprint": "SPR-SDP-007",
+    "iteration": "ITR-SDP-007-001",
+    "slice": "SLC-SDP-007-001",
+    "note": "Existing execution coordinates are preserved as historical pilot context, not rewritten into vNext IDs."
+  },
+  "baseline": {
+    "branch": "main",
+    "commit": "2cb49c02145621b099c47d05786716598e414e75"
+  },
+  "delivery": {
+    "branch": "codex/issue-7-provisional-vnext-pilot",
+    "pullRequest": "https://github.com/Hans-Einar/SDP/pull/8"
+  },
+  "coordination": {
+    "integrationBase": "2cb49c02145621b099c47d05786716598e414e75",
+    "reservationSet": {
+      "id": "RSV-ISSUE-007-001",
+      "path": "SDP-vnext-pilot/Steering/Reservations/RSV-ISSUE-007-001.json",
+      "digest": "sha256:62bdad33f719060c4f1c738720be16407069adb831b1cf295c503d658a84d8b5"
+    },
+    "dependsOnIssues": [],
+    "conflictsWithIssues": [],
+    "ownedPaths": [
+      "SDP-vnext-pilot/**",
+      "Sprints/SPR-SDP-007--provisional-vnext-contract/**",
+      "CodeReview/REV-SDP-007-001.md",
+      "CodeReview/REV-SDP-007-002.md",
+      "CodeReview/REV-SDP-007-003.md",
+      "CodeReview/REV-SDP-007-004.md",
+      "CodeReview/REV-SDP-007-005.md",
+      "CodeReview/REV-SDP-007-006.md",
+      "CodeReview/REV-SDP-007-007.md",
+      "CodeReview/REV-SDP-007-008.md",
+      "CodeReview/REV-SDP-007-009.md",
+      "CodeReview/REV-SDP-007-010.md",
+      "CodeReview/REV-SDP-007-011.md",
+      "Verification/VER-SDP-007-001.md",
+      "Verification/VER-SDP-007-002.md",
+      "Verification/VER-SDP-007-003.md",
+      "Verification/VER-SDP-007-004.md",
+      "Verification/VER-SDP-007-005.md",
+      "Verification/VER-SDP-007-006.md",
+      "Verification/VER-SDP-007-007.md",
+      "Verification/VER-SDP-007-008.md",
+      "Verification/VER-SDP-007-009.md",
+      "Verification/VER-SDP-007-010.md",
+      "Verification/VER-SDP-007-011.md"
+    ],
+    "sharedTouchpoints": [
+      {
+        "path": "Traceability/CurrentIndex.yaml",
+        "ownerDomainUid": "urn:uuid:9df0765b-4f22-4c5e-8fda-b5e71c96ca81",
+        "allowedMutation": "Issue #7 current pointers only"
+      },
+      {
+        "path": "Traceability/Relations.yaml",
+        "ownerDomainUid": "urn:uuid:9df0765b-4f22-4c5e-8fda-b5e71c96ca81",
+        "allowedMutation": "Issue #7 semantic edges only"
+      }
+    ],
+    "reservedIds": [],
+    "mergeOrder": ["https://github.com/Hans-Einar/SDP/issues/7"],
+    "convergence": {
+      "owner": "Hans-Einar/SDP Steering",
+      "command": "python SDP-vnext-pilot/validate_pilot.py",
+      "terminal": true
+    },
+    "staleBasePolicy": "refreeze-before-write-or-merge"
+  },
+  "boundaries": {
+    "prohibitedRepositories": [
+      "https://github.com/Hans-Einar/HSX",
+      "https://github.com/Hans-Einar/gh-sdp",
+      "https://github.com/Hans-Einar/SDP-Analyzer"
+    ],
+    "prohibitedPaths": ["Toolkit/**"],
+    "prohibitedOperations": [
+      "modify-pr-4",
+      "change-toolkit-release-state",
+      "create-tag",
+      "create-github-release"
+    ]
+  },
+  "requiredEvidence": {
+    "verification": ["deterministic pilot validation", "fresh exact-candidate verification"],
+    "independentReview": true,
+    "maximumUnresolvedSeverity": "low"
+  },
+  "acceptedEvidence": {
+    "candidate": null,
+    "verificationRefs": [],
+    "currentReviewRef": null,
+    "steeringDisposition": null,
+    "releaseRefs": []
+  },
+  "stopCondition": "PROVISIONAL_CONTRACT_READY_FOR_PILOT"
+}

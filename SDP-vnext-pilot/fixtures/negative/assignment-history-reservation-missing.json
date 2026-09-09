@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"exact-historical-reservation-file-is-mandatory","sourcePositive":"accepted-issue-reopen-revision.json","removeEmbeddedHistoryBlobKeys":["abababababababababababababababababababab:Steering/Reservations/RSV-010.json"],"mutations":[],"expectedErrors":["UNAVAILABLE_HISTORY_GIT_OBJECT"]}

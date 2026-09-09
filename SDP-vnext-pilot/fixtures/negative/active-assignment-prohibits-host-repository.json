@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"active-implementation-cannot-prohibit-its-hosting-repository","sourceExample":"scoped-monorepo.json","mutations":[{"op":"add","path":"/assignments/0/boundaries/prohibitedRepositories/-","value":"https://github.com/example/hsx-like"}],"expectedErrors":["HOST_REPOSITORY_PROHIBITED"]}

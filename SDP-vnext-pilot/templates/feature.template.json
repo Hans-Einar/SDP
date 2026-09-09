@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-feature-v0",
+  "experimental": true,
+  "kind": "feature",
+  "domainUid": "urn:uuid:10000000-0000-4000-8000-000000000001",
+  "id": "APP-FEAT-001",
+  "source": "Features/APP-FEAT-001.json",
+  "revision": 1,
+  "declaredState": "proposed",
+  "title": "Illustrative capability",
+  "intent": {
+    "problem": "Describe the durable problem.",
+    "outcome": "Describe the observable capability.",
+    "usersOrValue": "Describe who benefits and why."
+  },
+  "scope": ["Bounded capability behavior"],
+  "nonGoals": ["Unrelated cleanup"],
+  "constraints": ["Preserve the public compatibility contract"],
+  "acceptanceCriteria": ["The capability is runnable and verified end to end"],
+  "relations": [],
+  "issueAuthorities": [],
+  "slices": [],
+  "acceptedEvidence": {
+    "candidate": null,
+    "verificationRefs": [],
+    "currentReviewRef": null,
+    "steeringDisposition": null,
+    "releaseRefs": []
+  }
+}

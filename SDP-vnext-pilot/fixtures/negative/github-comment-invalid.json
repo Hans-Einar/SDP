@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "authority-amendment-is-not-an-exact-issue-comment-url",
+  "sourceExample": "simple-single-domain.json",
+  "mutations": [
+    {"op": "add", "path": "/assignments/0/authority/amendments/-", "value": "https://github.com/example/tiny-app/issues/10#comment-22"}
+  ],
+  "expectedErrors": ["INVALID_GITHUB_COMMENT"]
+}

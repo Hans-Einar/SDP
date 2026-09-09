@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "assignment-independent-review-policy-is-not-boolean",
+  "sourceExample": "simple-single-domain.json",
+  "mutations": [
+    {"op": "replace", "path": "/assignments/0/requiredEvidence/independentReview", "value": "yes"}
+  ],
+  "expectedErrors": ["INVALID_EVIDENCE_POLICY"]
+}

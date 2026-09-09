@@ -1,0 +1,4966 @@
+#!/usr/bin/env python3
+"""Deterministic standard-library validation for the provisional vNext pilot."""
+
+from __future__ import annotations
+
+import json
+import hashlib
+import copy
+import math
+import re
+import subprocess
+import sys
+import tempfile
+import unicodedata
+import uuid
+from collections import Counter, defaultdict
+from pathlib import Path
+from typing import Any
+
+
+ROOT = Path(__file__).resolve().parent
+UUID_URN_RE = re.compile(
+    r"^urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+)
+KEY_RE = re.compile(r"^[A-Z][A-Z0-9]{1,11}$")
+SCOPED_ID_RE = re.compile(r"^(?P<key>[A-Z][A-Z0-9]{1,11})-(?P<type>FEAT|REF|FIX|STU|SLC|SPR|ITR)-[0-9]{3}$")
+UNSCOPED_ID_RE = re.compile(r"^(?P<type>FEAT|REF|FIX|STU|SLC|SPR|ITR)-[0-9]{3}$")
+SHA_RE = re.compile(r"^[0-9a-f]{40}$")
+DIGEST_RE = re.compile(r"^sha256:[0-9a-f]{64}$")
+REPOSITORY_RE = re.compile(
+    r"^https://github\.com/(?P<owner>[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?)/"
+    r"(?P<repo>[A-Za-z0-9_.-]+)$"
+)
+ISSUE_RE = re.compile(
+    r"^https://github\.com/(?P<owner>[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?)/"
+    r"(?P<repo>[A-Za-z0-9_.-]+)/issues/(?P<number>[1-9][0-9]*)$"
+)
+PULL_REQUEST_RE = re.compile(
+    r"^https://github\.com/(?P<owner>[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?)/"
+    r"(?P<repo>[A-Za-z0-9_.-]+)/pull/(?P<number>[1-9][0-9]*)$"
+)
+ISSUE_COMMENT_RE = re.compile(
+    r"^https://github\.com/(?P<owner>[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?)/"
+    r"(?P<repo>[A-Za-z0-9_.-]+)/issues/(?P<number>[1-9][0-9]*)"
+    r"#issuecomment-(?P<comment>[1-9][0-9]*)$"
+)
+EVIDENCE_ID_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*$")
+FORBIDDEN_PATH_CATEGORIES = {"Cc", "Cf", "Cs", "Co"}
+WINDOWS_FORBIDDEN_COMPONENT_CHARS = set('<>:"|?*')
+WINDOWS_RESERVED = {
+    "con", "prn", "aux", "nul",
+    *(f"com{i}" for i in range(1, 10)),
+    *(f"lpt{i}" for i in range(1, 10)),
+}
+SCHEMA_VERSIONS = {
+    "feature": "sdp-vnext-pilot-feature-v0",
+    "refactor": "sdp-vnext-pilot-refactor-v0",
+    "fix": "sdp-vnext-pilot-fix-v0",
+    "study": "sdp-vnext-pilot-study-v0",
+    "slice": "sdp-vnext-pilot-slice-v0",
+    "issue-assignment": "sdp-vnext-pilot-assignment-v0",
+    "reservation-set": "sdp-vnext-pilot-reservation-set-v0",
+    "work-domain-registry": "sdp-vnext-pilot-work-domains-v0",
+}
+SCHEMA_KIND_BY_VERSION = {version: kind for kind, version in SCHEMA_VERSIONS.items()}
+ASSIGNMENT_HISTORY_SCHEMA_VERSION = "sdp-vnext-pilot-assignment-history-v0"
+SEMANTIC_RELATION_TYPES = {
+    "depends_on", "informs", "refines", "supersedes", "preserves",
+    "requires_revision", "owned_by", "independent_of", "corrects",
+}
+REQUIRED_TEMPLATE_KINDS = {
+    "feature", "refactor", "fix", "study", "slice",
+    "issue-assignment", "reservation-set", "work-domain-registry",
+}
+REQUIRED_TOP_LEVEL_DOCS = {
+    "README.md", "WorkflowContract.md", "WorkDomains.md", "IssueContract.md",
+    "ConcurrentAssignments.md", "Profiles.md", "Examples.md",
+    "HSX-Pilot-Handoff.md", "OpenQuestions.md",
+}
+KIND_TO_ID_TOKEN = {
+    "feature": "FEAT", "refactor": "REF", "fix": "FIX",
+    "study": "STU", "slice": "SLC",
+}
+DECLARED_STATES_BY_KIND = {
+    "feature": {
+        "proposed", "studying", "ready", "active", "blocked", "rejected",
+        "superseded", "delivered", "released",
+    },
+    "refactor": {
+        "proposed", "studying", "ready", "active", "blocked", "rejected",
+        "superseded", "delivered", "released",
+    },
+    "fix": {
+        "proposed", "ready", "active", "blocked", "rejected", "superseded",
+        "delivered", "released",
+    },
+    "study": {"proposed", "active", "blocked", "rejected", "superseded", "accepted"},
+    "slice": {"proposed", "active", "blocked", "rejected", "superseded", "accepted"},
+    "issue-assignment": {
+        "proposed", "active", "blocked", "accepted", "rejected", "cancelled",
+        "superseded",
+    },
+}
+MAXIMUM_SEVERITIES = {"none", "low", "medium", "high", "blocking"}
+TYPE_REQUIRED_FIELDS = {
+    "feature": {
+        "schemaVersion", "experimental", "kind", "domainUid", "id",
+        "source", "revision", "declaredState", "title", "intent", "scope", "nonGoals",
+        "constraints", "acceptanceCriteria", "relations", "issueAuthorities",
+        "slices", "acceptedEvidence",
+    },
+    "refactor": {
+        "schemaVersion", "experimental", "kind", "domainUid", "id",
+        "source", "revision", "declaredState", "title", "behaviorBaseline",
+        "targetStructure", "compatibility", "temporaryAdapters", "exitEvidence",
+        "relations", "issueAuthorities", "slices", "acceptedEvidence",
+    },
+    "fix": {
+        "schemaVersion", "experimental", "kind", "domainUid", "id",
+        "source", "revision", "declaredState", "title", "defectEvidence", "correction",
+        "risk", "invariants", "affectedWork", "standaloneReviewedUnit",
+        "issueAuthorities", "slices", "verificationCriteria", "reviewCriteria",
+        "acceptedEvidence",
+    },
+    "study": {
+        "schemaVersion", "experimental", "kind", "domainUid", "id",
+        "source", "revision", "declaredState", "title", "question", "evidenceBoundary",
+        "ownerRef", "issueAuthorities", "independentStudyRefs",
+        "convergenceGate", "findings", "limitations", "informs",
+        "acceptedEvidence",
+    },
+    "slice": {
+        "schemaVersion", "experimental", "kind", "domainUid", "id",
+        "source", "revision", "declaredState", "title", "ownerRef", "assignmentIssue",
+        "outcome", "whySmallestCoherent", "decisionRefs", "ownedPaths",
+        "sharedTouchpoints", "invariants", "nonGoals", "verificationCriteria",
+        "reviewCriteria", "discoveryRule", "completionSignal", "hardStop",
+        "acceptedEvidence",
+    },
+    "issue-assignment": {
+        "schemaVersion", "experimental", "kind", "source", "revision", "declaredState", "authority",
+        "workRef", "authorizedSlices", "activeSlices", "baseline", "delivery", "coordination",
+        "boundaries", "requiredEvidence", "acceptedEvidence", "stopCondition",
+    },
+    "reservation-set": {
+        "schemaVersion", "experimental", "kind", "id", "integrationBase",
+        "assignments", "mergeOrder", "convergence",
+    },
+    "work-domain-registry": {
+        "schemaVersion", "experimental", "kind", "repository",
+        "defaultDomainUid", "domains",
+    },
+}
+WORK_OWNER_KINDS = {"feature", "refactor", "fix"}
+STATEFUL_KINDS = WORK_OWNER_KINDS | {"study", "slice", "issue-assignment"}
+RELATION_KIND_MATRIX = {
+    "depends_on": (WORK_OWNER_KINDS | {"study"}, WORK_OWNER_KINDS | {"study"}),
+    "informs": ({"study"}, WORK_OWNER_KINDS | {"study"}),
+    "refines": (WORK_OWNER_KINDS | {"study"}, WORK_OWNER_KINDS | {"study"}),
+    "supersedes": (WORK_OWNER_KINDS | {"study"}, WORK_OWNER_KINDS | {"study"}),
+    "preserves": (WORK_OWNER_KINDS | {"study"}, WORK_OWNER_KINDS | {"study"}),
+    "requires_revision": (WORK_OWNER_KINDS | {"study"}, WORK_OWNER_KINDS | {"study"}),
+    "owned_by": ({"study"}, WORK_OWNER_KINDS),
+    "independent_of": ({"study"}, {"study"}),
+    "corrects": ({"fix"}, WORK_OWNER_KINDS),
+}
+TERMINAL_ACCEPTED_STATES = {"accepted", "delivered", "released"}
+EVIDENCE_FIELDS = {
+    "candidate", "verificationRefs", "currentReviewRef",
+    "steeringDisposition", "releaseRefs",
+}
+RESERVATION_ROW_FIELDS = {
+    "issue", "workRef", "authorizedSlices", "activeSlices", "reservedIds", "ownedPaths",
+    "sharedTouchpoints", "dependsOnIssues", "conflictsWithIssues",
+}
+
+ACYCLIC_SEMANTIC_RELATION_TYPES = {
+    "depends_on", "supersedes", "refines", "requires_revision",
+}
+
+
+class InvalidJsonScalarError(ValueError):
+    """Raised when a parser encounters a non-standard JSON numeric constant."""
+
+
+class DuplicateJsonMemberError(ValueError):
+    """Raised before normalization when a JSON object repeats a member name."""
+
+
+def reject_duplicate_object_pairs(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    for key, value in pairs:
+        if key in result:
+            raise DuplicateJsonMemberError(f"duplicate JSON member: {key}")
+        result[key] = value
+    return result
+
+
+def reject_json_constant(value: str) -> Any:
+    raise InvalidJsonScalarError(f"non-finite JSON scalar: {value}")
+
+
+def strict_json_loads(value: str) -> Any:
+    return json.loads(
+        value,
+        parse_constant=reject_json_constant,
+        object_pairs_hook=reject_duplicate_object_pairs,
+    )
+
+
+def load_json(path: Path) -> Any:
+    with path.open("r", encoding="utf-8") as handle:
+        return json.load(
+            handle,
+            parse_constant=reject_json_constant,
+            object_pairs_hook=reject_duplicate_object_pairs,
+        )
+
+
+def contains_invalid_unicode_scalar(value: Any) -> bool:
+    """Reject Python surrogate code points before canonical UTF-8 encoding."""
+    if isinstance(value, str):
+        return any(unicodedata.category(character) == "Cs" for character in value)
+    if isinstance(value, dict):
+        return any(
+            contains_invalid_unicode_scalar(key)
+            or contains_invalid_unicode_scalar(item)
+            for key, item in value.items()
+        )
+    if isinstance(value, (list, tuple)):
+        return any(contains_invalid_unicode_scalar(item) for item in value)
+    return False
+
+
+def contains_invalid_json_scalar(value: Any) -> bool:
+    """Reject non-finite floats recursively, including extension keys/values."""
+    if isinstance(value, float):
+        return not math.isfinite(value)
+    if isinstance(value, dict):
+        return any(
+            contains_invalid_json_scalar(key)
+            or contains_invalid_json_scalar(item)
+            for key, item in value.items()
+        )
+    if isinstance(value, (list, tuple)):
+        return any(contains_invalid_json_scalar(item) for item in value)
+    return False
+
+
+def canonical_digest(document: Any) -> str | None:
+    if (
+        contains_invalid_unicode_scalar(document)
+        or contains_invalid_json_scalar(document)
+    ):
+        return None
+    try:
+        encoded = json.dumps(
+            document, sort_keys=True, separators=(",", ":"),
+            ensure_ascii=False, allow_nan=False,
+        ).encode("utf-8")
+    except (TypeError, ValueError, UnicodeEncodeError):
+        return None
+    return "sha256:" + hashlib.sha256(encoded).hexdigest()
+
+
+def portable_text(value: str) -> str:
+    return unicodedata.normalize("NFKC", value).casefold()
+
+
+def contains_nonportable_unicode(value: str) -> bool:
+    return any(
+        unicodedata.category(character) in FORBIDDEN_PATH_CATEGORIES
+        for character in value
+    )
+
+
+def valid_uid(value: Any) -> bool:
+    if not isinstance(value, str) or not UUID_URN_RE.fullmatch(value):
+        return False
+    try:
+        return str(uuid.UUID(value.removeprefix("urn:uuid:"))) == value.removeprefix("urn:uuid:")
+    except ValueError:
+        return False
+
+
+def nonblank(value: Any) -> bool:
+    return isinstance(value, str) and bool(value.strip())
+
+
+def nonblank_string_list(value: Any, *, nonempty: bool = False) -> bool:
+    return (
+        isinstance(value, list)
+        and (not nonempty or bool(value))
+        and all(nonblank(item) for item in value)
+        and len(value) == len({portable_text(item.strip()) for item in value})
+    )
+
+
+def repository_key(value: Any) -> tuple[str, str] | None:
+    if not isinstance(value, str):
+        return None
+    match = REPOSITORY_RE.fullmatch(value)
+    if match is None or match.group("repo").casefold().endswith(".git"):
+        return None
+    return match.group("owner").casefold(), match.group("repo").casefold()
+
+
+def issue_key(value: Any) -> tuple[str, str, int] | None:
+    if not isinstance(value, str):
+        return None
+    match = ISSUE_RE.fullmatch(value)
+    if match is None:
+        return None
+    return (
+        match.group("owner").casefold(),
+        match.group("repo").casefold(),
+        int(match.group("number")),
+    )
+
+
+def pull_request_key(value: Any) -> tuple[str, str, int] | None:
+    if not isinstance(value, str):
+        return None
+    match = PULL_REQUEST_RE.fullmatch(value)
+    if match is None:
+        return None
+    return (
+        match.group("owner").casefold(),
+        match.group("repo").casefold(),
+        int(match.group("number")),
+    )
+
+
+def issue_comment_key(value: Any) -> tuple[str, str, int, int] | None:
+    if not isinstance(value, str):
+        return None
+    match = ISSUE_COMMENT_RE.fullmatch(value)
+    if match is None:
+        return None
+    return (
+        match.group("owner").casefold(),
+        match.group("repo").casefold(),
+        int(match.group("number")),
+        int(match.group("comment")),
+    )
+
+
+def repository_for_domain(
+    document: dict[str, Any], uid: Any
+) -> tuple[str, str] | None:
+    active_hosts = {
+        repository_key(registry.get("repository"))
+        for registry in document.get("registries", [])
+        for domain in registry.get("domains", [])
+        if domain.get("domainUid") == uid and domain.get("state") == "active"
+    }
+    active_hosts.discard(None)
+    return next(iter(active_hosts)) if len(active_hosts) == 1 else None
+
+
+def valid_branch(value: Any) -> bool:
+    if (
+        not nonblank(value)
+        or contains_invalid_unicode_scalar(value)
+    ):
+        return False
+    try:
+        encoded_length = len(value.encode("utf-8"))
+    except UnicodeEncodeError:
+        return False
+    if encoded_length > 255:
+        return False
+    if re.fullmatch(r"[A-Za-z0-9._/-]+", value) is None:
+        return False
+    if value in {"@", "HEAD"} or value.startswith(("-", "/", ".")):
+        return False
+    if value.endswith(("/", ".")) or "//" in value or ".." in value or "@{" in value:
+        return False
+    if any(character.isspace() or ord(character) < 32 for character in value):
+        return False
+    if any(character in value for character in "~^:?*[\\"):
+        return False
+    return all(not part.startswith(".") and not part.endswith(".lock") for part in value.split("/"))
+
+
+def normalize_path(value: Any) -> tuple[str, bool] | None:
+    if not isinstance(value, str) or not value or contains_nonportable_unicode(value):
+        return None
+    semantic_chars = '<>:"/\\|?*[]{}'
+    for character in value:
+        normalized_character = unicodedata.normalize("NFKC", character)
+        if character not in semantic_chars and any(
+            token in normalized_character for token in semantic_chars
+        ):
+            return None
+    path = unicodedata.normalize("NFKC", value)
+    if contains_nonportable_unicode(path):
+        return None
+    path = path.replace("\\", "/")
+    recursive = path.endswith("/**")
+    if recursive:
+        path = path[:-3]
+    if not path or path.startswith("/") or re.match(r"^[A-Za-z]:", path):
+        return None
+    if any(char in path for char in "?*[]{}"):
+        return None
+    parts = path.split("/")
+    if any(not part or part in {".", ".."} for part in parts):
+        return None
+    normalized_parts: list[str] = []
+    for part in parts:
+        normalized = portable_text(part)
+        if contains_nonportable_unicode(normalized):
+            return None
+        if any(char in normalized for char in WINDOWS_FORBIDDEN_COMPONENT_CHARS | set("/\\[]{}")):
+            return None
+        if normalized in {".", ".."}:
+            return None
+        if normalized.rstrip(" .") != normalized:
+            return None
+        if normalized.split(".", 1)[0] in WINDOWS_RESERVED:
+            return None
+        normalized_parts.append(normalized)
+    return "/".join(normalized_parts), recursive
+
+
+def portable_path_identity(value: Any) -> str | None:
+    """Return a collision identity even for slash/case aliases.
+
+    This is deliberately separate from validity: a backslash-authored record
+    path is invalid, but it must still collide with its forward-slash alias.
+    """
+    if not isinstance(value, str) or not value:
+        return None
+    normalized = unicodedata.normalize("NFKC", value).replace("\\", "/")
+    return normalized.casefold()
+
+
+def valid_record_path(value: Any) -> bool:
+    normalized = normalize_path(value)
+    return (
+        isinstance(value, str)
+        and normalized is not None
+        and not normalized[1]
+        and "\\" not in value
+        and unicodedata.normalize("NFKC", value) == value
+    )
+
+
+def resolve_local_path(repository_root: Path, value: Any) -> Path | None:
+    if not valid_record_path(value):
+        return None
+    candidate = (repository_root / value).resolve()
+    try:
+        candidate.relative_to(repository_root.resolve())
+    except ValueError:
+        return None
+    return candidate
+
+
+def paths_overlap(left: tuple[str, bool], right: tuple[str, bool]) -> bool:
+    left_path, left_recursive = left
+    right_path, right_recursive = right
+    if left_path == right_path:
+        return True
+    if left_recursive and right_path.startswith(left_path + "/"):
+        return True
+    if right_recursive and left_path.startswith(right_path + "/"):
+        return True
+    return False
+
+
+def tree_roots_overlap(left: tuple[str, bool], right: tuple[str, bool]) -> bool:
+    left_path = left[0]
+    right_path = right[0]
+    return (
+        left_path == right_path
+        or left_path.startswith(right_path + "/")
+        or right_path.startswith(left_path + "/")
+    )
+
+
+def path_is_contained(
+    reservation: tuple[str, bool], requested: tuple[str, bool]
+) -> bool:
+    reservation_path, reservation_recursive = reservation
+    requested_path, requested_recursive = requested
+    if reservation_path == requested_path:
+        return not requested_recursive or reservation_recursive
+    return reservation_recursive and requested_path.startswith(reservation_path + "/")
+
+
+def add(errors: list[str], code: str) -> None:
+    if code not in errors:
+        errors.append(code)
+
+
+def mapping(value: Any) -> dict[str, Any]:
+    return value if isinstance(value, dict) else {}
+
+
+def effective_kind(record: Any) -> str | None:
+    if not isinstance(record, dict):
+        return None
+    kind = record.get("kind")
+    if kind in SCHEMA_VERSIONS:
+        return kind
+    return SCHEMA_KIND_BY_VERSION.get(record.get("schemaVersion"))
+
+
+def assignment_issue(assignment: Any) -> Any:
+    return mapping(mapping(assignment).get("authority")).get("issue")
+
+
+def assignment_coordination(assignment: Any) -> dict[str, Any]:
+    return mapping(mapping(assignment).get("coordination"))
+
+
+def declarations(document: dict[str, Any]) -> list[tuple[str, dict[str, Any]]]:
+    result: list[tuple[str, dict[str, Any]]] = []
+    registries = document.get("registries", [])
+    for registry in registries if isinstance(registries, list) else []:
+        if not isinstance(registry, dict):
+            continue
+        repository = registry.get("repository", "")
+        domains = registry.get("domains", [])
+        for domain in domains if isinstance(domains, list) else []:
+            if isinstance(domain, dict):
+                result.append((repository, domain))
+    return result
+
+
+def inventory_member_id(member: Any) -> str | None:
+    if isinstance(member, str):
+        return member
+    if isinstance(member, dict) and isinstance(member.get("id"), str):
+        return member["id"]
+    return None
+
+
+def inventory_allocation_issue(member: Any) -> Any:
+    """Return the immutable allocator for current pilot allocations.
+
+    Legacy inventory retains its historical ``authorityIssue`` semantics;
+    it is provenance, not a current allocation or execution grant.
+    """
+    if not isinstance(member, dict):
+        return None
+    if member.get("status") in {"reserved", "prospective", "burned"}:
+        return member.get("allocationIssue")
+    return member.get("authorityIssue")
+
+
+def inventory_map(domain: dict[str, Any]) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    for member in domain.get("issuedIds", []):
+        record_id = inventory_member_id(member)
+        if isinstance(record_id, str):
+            result[portable_text(record_id)] = member
+    return result
+
+
+def validate_inventory_member(
+    domain: dict[str, Any], member: Any, errors: list[str]
+) -> None:
+    if not isinstance(member, dict):
+        add(errors, "INVALID_ID_INVENTORY_MEMBER")
+        return
+    record_id = member.get("id")
+    status = member.get("status")
+    authority = inventory_allocation_issue(member)
+    source = member.get("source")
+    if not nonblank(record_id) or status not in {
+        "reserved", "prospective", "burned", "legacy-preserved"
+    }:
+        add(errors, "INVALID_ID_INVENTORY_MEMBER")
+        return
+    if not valid_record_path(source):
+        add(errors, "INVALID_ID_INVENTORY_MEMBER")
+    if status in {"reserved", "prospective", "burned"}:
+        if "authorityIssue" in member or issue_key(authority) is None:
+            add(errors, "INVALID_INVENTORY_AUTHORITY")
+        epoch = member.get("allocationEpoch")
+        if (
+            not isinstance(epoch, dict)
+            or set(epoch) != {
+                "reservationSetId", "reservationDigest", "domainUid", "id",
+                "allocationIssue", "source",
+            }
+            or not nonblank(epoch.get("reservationSetId"))
+            or DIGEST_RE.fullmatch(str(epoch.get("reservationDigest", ""))) is None
+            or epoch.get("domainUid") != domain.get("domainUid")
+            or epoch.get("id") != record_id
+            or issue_key(epoch.get("allocationIssue")) != issue_key(authority)
+            or epoch.get("source") != source
+        ):
+            add(errors, "INVALID_ALLOCATION_EPOCH")
+        scoped = SCOPED_ID_RE.fullmatch(record_id)
+        unscoped = UNSCOPED_ID_RE.fullmatch(record_id)
+        style = domain.get("newRecordIdStyle")
+        valid = bool(scoped or unscoped)
+        if style == "scoped":
+            valid = bool(scoped and scoped.group("key") == domain.get("key"))
+        elif style == "unscoped":
+            valid = bool(unscoped)
+        if not valid:
+            add(errors, "INVALID_PROSPECTIVE_ID")
+    else:
+        if "allocationIssue" in member:
+            add(errors, "INVALID_INVENTORY_AUTHORITY")
+        provenance = member.get("provenance")
+        if not isinstance(provenance, dict):
+            add(errors, "LEGACY_PROVENANCE_REQUIRED")
+            return
+        repository = provenance.get("repository")
+        commit = provenance.get("commit")
+        path = provenance.get("path")
+        if (
+            repository_key(repository) is None
+            or not isinstance(commit, str)
+            or not SHA_RE.fullmatch(commit)
+            or not valid_record_path(path)
+            or source != path
+        ):
+            add(errors, "LEGACY_PROVENANCE_REQUIRED")
+        if authority is None:
+            if not nonblank(member.get("authorityMissingReason")):
+                add(errors, "LEGACY_AUTHORITY_REASON_REQUIRED")
+        elif issue_key(authority) is None:
+            add(errors, "INVALID_INVENTORY_AUTHORITY")
+
+
+def validate_registry_set(document: dict[str, Any], errors: list[str]) -> None:
+    registries = document.get("registries", [])
+    if not isinstance(registries, list):
+        add(errors, "INVALID_REGISTRY_COLLECTION")
+        return
+    repository_keys: list[tuple[str, str] | None] = []
+    for registry in registries:
+        if not isinstance(registry, dict):
+            add(errors, "REGISTRY_REQUIRED_FIELD_MISSING")
+            repository_keys.append(None)
+            continue
+        key = repository_key(registry.get("repository"))
+        repository_keys.append(key)
+        if key is None:
+            add(errors, "INVALID_GITHUB_REPOSITORY")
+    valid_repository_keys = [key for key in repository_keys if key is not None]
+    if len(valid_repository_keys) != len(set(valid_repository_keys)):
+        # Pilot v0 deliberately chooses one registry object per canonical repo.
+        # Partitioned registries are rejected before domain/default/root checks.
+        add(errors, "DUPLICATE_REPOSITORY_REGISTRY")
+        return
+
+    by_uid: dict[str, list[tuple[str, dict[str, Any]]]] = defaultdict(list)
+    for registry in registries:
+        validate_typed_shape(
+            registry, errors, "REGISTRY_REQUIRED_FIELD_MISSING",
+            expected_kind="work-domain-registry",
+        )
+        domains = registry.get("domains")
+        if not isinstance(domains, list) or not domains or any(
+            not isinstance(domain, dict) for domain in domains
+        ):
+            add(errors, "REGISTRY_REQUIRED_FIELD_MISSING")
+            continue
+        per_repo_keys: dict[str, str] = {}
+        active = [domain for domain in domains if domain.get("state") == "active"]
+        if len(active) > 1 and any(domain.get("newRecordIdStyle") != "scoped" for domain in active):
+            add(errors, "MULTIDOMAIN_REQUIRES_SCOPED_STYLE")
+        default_uid = registry.get("defaultDomainUid")
+        if default_uid is not None and default_uid not in {domain.get("domainUid") for domain in active}:
+            add(errors, "INVALID_DEFAULT_DOMAIN")
+        root_entries: list[tuple[str, tuple[str, bool]]] = []
+        for domain in domains:
+            required_domain_fields = {
+                "domainUid", "key", "name", "state", "owners",
+                "newRecordIdStyle", "roots", "issuedIds",
+            }
+            if not required_domain_fields.issubset(domain):
+                add(errors, "DOMAIN_REQUIRED_FIELD_MISSING")
+            uid = domain.get("domainUid")
+            key = domain.get("key")
+            if not valid_uid(uid):
+                add(errors, "INVALID_DOMAIN_UID")
+            if not isinstance(key, str) or not KEY_RE.fullmatch(key):
+                add(errors, "INVALID_DOMAIN_KEY")
+            if isinstance(key, str):
+                normalized_key = portable_text(key)
+                other_uid = per_repo_keys.get(normalized_key)
+                if other_uid is not None and other_uid != uid:
+                    add(errors, "DOMAIN_KEY_COLLISION")
+                per_repo_keys[normalized_key] = uid
+            owners = domain.get("owners")
+            if not nonblank_string_list(owners, nonempty=True):
+                add(errors, "DOMAIN_OWNER_REQUIRED")
+            if domain.get("newRecordIdStyle") not in {"scoped", "unscoped"}:
+                add(errors, "INVALID_ID_STYLE")
+            state = domain.get("state")
+            roots = domain.get("roots", [])
+            if not isinstance(roots, list):
+                add(errors, "INVALID_PATH")
+                roots = []
+            if state == "active" and not roots:
+                add(errors, "ACTIVE_DOMAIN_ROOT_REQUIRED")
+            if state == "moved":
+                if (
+                    roots
+                    or repository_key(domain.get("successorRepository")) is None
+                    or not valid_record_path(domain.get("successorRegistry"))
+                ):
+                    add(errors, "INVALID_MOVE_TOMBSTONE")
+            elif state != "active":
+                add(errors, "INVALID_DOMAIN_STATE")
+            for root in roots:
+                normalized = normalize_path(root)
+                if normalized is None or normalized[1]:
+                    add(errors, "INVALID_PATH")
+                else:
+                    if state == "active":
+                        root_entries.append((uid, normalized))
+            inventory = domain.get("issuedIds", [])
+            if not isinstance(inventory, list):
+                add(errors, "INVALID_ID_INVENTORY_MEMBER")
+                inventory = []
+            normalized_inventory_ids: set[str] = set()
+            for member in inventory:
+                record_id = inventory_member_id(member)
+                if not isinstance(record_id, str):
+                    add(errors, "INVALID_ID_INVENTORY_MEMBER")
+                else:
+                    normalized_id = portable_text(record_id)
+                    if normalized_id in normalized_inventory_ids:
+                        add(errors, "ISSUED_ID_COLLISION")
+                    normalized_inventory_ids.add(normalized_id)
+                validate_inventory_member(domain, member, errors)
+            by_uid[uid].append((registry.get("repository", ""), domain))
+        for index, (left_uid, left_path) in enumerate(root_entries):
+            for right_uid, right_path in root_entries[index + 1:]:
+                if left_uid != right_uid and tree_roots_overlap(left_path, right_path):
+                    add(errors, "DOMAIN_ROOT_COLLISION")
+
+    for entries in by_uid.values():
+        active_entries = [item for item in entries if item[1].get("state") == "active"]
+        if len(active_entries) > 1:
+            add(errors, "MULTIPLE_ACTIVE_DOMAIN_HOSTS")
+        keys = {item[1].get("key") for item in entries}
+        if len(keys) > 1:
+            add(errors, "MOVE_KEY_REWRITE")
+        active_inventory = inventory_map(active_entries[0][1]) if len(active_entries) == 1 else {}
+        for _, domain in entries:
+            if domain.get("state") != "moved":
+                continue
+            moved_inventory = inventory_map(domain)
+            if any(
+                isinstance(member, dict) and member.get("status") == "reserved"
+                for member in domain.get("issuedIds", [])
+            ):
+                add(errors, "LIVE_RESERVED_ID_AT_MOVE")
+            for normalized_id, moved_member in moved_inventory.items():
+                if active_inventory.get(normalized_id) != moved_member:
+                    add(errors, "MOVE_ID_INVENTORY_REWRITE")
+                    break
+        for _, domain in entries:
+            if domain.get("state") != "moved":
+                continue
+            active_repositories = {repository_key(item[0]) for item in active_entries}
+            if repository_key(domain.get("successorRepository")) not in active_repositories:
+                add(errors, "MOVE_SUCCESSOR_MISMATCH")
+        if len(entries) > 1 and active_entries:
+            _, active_domain = active_entries[0]
+            predecessor_values = active_domain.get("predecessorRepositories", [])
+            if not isinstance(predecessor_values, list) or any(
+                repository_key(item) is None for item in predecessor_values
+            ):
+                add(errors, "INVALID_GITHUB_REPOSITORY")
+                predecessor_values = []
+            predecessors = {repository_key(item) for item in predecessor_values}
+            moved_repositories = {
+                repository_key(item[0])
+                for item in entries if item[1].get("state") == "moved"
+            }
+            if not moved_repositories.issubset(predecessors):
+                add(errors, "MOVE_PREDECESSOR_MISSING")
+
+
+def reference_key(reference: Any) -> tuple[str, str] | None:
+    if not isinstance(reference, dict):
+        return None
+    uid = reference.get("domainUid")
+    record_id = reference.get("id")
+    if not isinstance(uid, str) or not isinstance(record_id, str):
+        return None
+    return uid, portable_text(record_id)
+
+
+def validate_authorized_slice_reference(
+    reference: Any, errors: list[str]
+) -> tuple[str, str] | None:
+    if (
+        not isinstance(reference, dict)
+        or not {"domainUid", "id", "acceptedCandidate"}.issubset(reference)
+        or not set(reference).issubset(
+            {"domainUid", "id", "keyHint", "acceptedCandidate"}
+        )
+    ):
+        add(errors, "INVALID_AUTHORIZED_SLICE")
+        return None
+    candidate = reference.get("acceptedCandidate")
+    if candidate is not None and (
+        not isinstance(candidate, str) or SHA_RE.fullmatch(candidate) is None
+    ):
+        add(errors, "INVALID_AUTHORIZED_SLICE")
+    key = reference_key(reference)
+    if key is None:
+        add(errors, "INVALID_AUTHORIZED_SLICE")
+    return key
+
+
+def domain_key_for_uid(document: dict[str, Any], uid: Any) -> str | None:
+    keys = {
+        domain.get("key")
+        for _, domain in declarations(document)
+        if domain.get("domainUid") == uid and isinstance(domain.get("key"), str)
+    }
+    return next(iter(keys)) if len(keys) == 1 else None
+
+
+def validate_key_hint(
+    document: dict[str, Any], reference: Any, errors: list[str]
+) -> None:
+    if not isinstance(reference, dict) or "keyHint" not in reference:
+        return
+    expected = domain_key_for_uid(document, reference.get("domainUid"))
+    if not nonblank(reference.get("keyHint")) or expected is None or reference.get("keyHint") != expected:
+        add(errors, "KEY_HINT_MISMATCH")
+
+
+def active_domain_map(document: dict[str, Any]) -> dict[str, dict[str, Any]]:
+    return {
+        domain.get("domainUid"): domain
+        for _, domain in declarations(document)
+        if domain.get("state") == "active"
+    }
+
+
+def issued_reference_keys(document: dict[str, Any]) -> set[tuple[str, str]]:
+    return {
+        (domain.get("domainUid"), portable_text(record_id))
+        for _, domain in declarations(document)
+        if domain.get("state") == "active"
+        for member in domain.get("issuedIds", [])
+        for record_id in [inventory_member_id(member)]
+        if isinstance(record_id, str)
+    }
+
+
+def issued_authorities(
+    document: dict[str, Any]
+) -> dict[tuple[str, str], tuple[str, str, int]]:
+    result: dict[tuple[str, str], tuple[str, str, int]] = {}
+    for _, domain in declarations(document):
+        if domain.get("state") != "active":
+            continue
+        uid = domain.get("domainUid")
+        for member in domain.get("issuedIds", []):
+            if not isinstance(member, dict):
+                continue
+            record_id = inventory_member_id(member)
+            authority = inventory_allocation_issue(member)
+            authority_identity = issue_key(authority)
+            if isinstance(record_id, str) and authority_identity is not None:
+                result[(uid, portable_text(record_id))] = authority_identity
+    return result
+
+
+def issued_statuses(document: dict[str, Any]) -> dict[tuple[str, str], Any]:
+    result: dict[tuple[str, str], Any] = {}
+    for _, domain in declarations(document):
+        if domain.get("state") != "active":
+            continue
+        uid = domain.get("domainUid")
+        for member in domain.get("issuedIds", []):
+            if not isinstance(member, dict):
+                continue
+            record_id = inventory_member_id(member)
+            if isinstance(record_id, str):
+                result[(uid, portable_text(record_id))] = member.get("status")
+    return result
+
+
+def validate_typed_shape(
+    record: dict[str, Any], errors: list[str], code: str,
+    *, expected_kind: str | None = None,
+) -> None:
+    authored_kind = record.get("kind")
+    kind = expected_kind or effective_kind(record)
+    if "kind" not in record:
+        add(errors, "KIND_MARKER_REQUIRED")
+    elif expected_kind is not None and authored_kind != expected_kind:
+        add(errors, "KIND_MARKER_MISMATCH")
+    if "schemaVersion" not in record:
+        add(errors, "SCHEMA_VERSION_REQUIRED")
+    elif kind is not None and record.get("schemaVersion") != SCHEMA_VERSIONS.get(kind):
+        add(errors, "UNSUPPORTED_SCHEMA_VERSION")
+    if "experimental" not in record:
+        add(errors, "EXPERIMENTAL_MARKER_REQUIRED")
+    elif record.get("experimental") is not True:
+        add(errors, "EXPERIMENTAL_MARKER_REQUIRED")
+    fields = TYPE_REQUIRED_FIELDS.get(kind)
+    if fields is None:
+        if authored_kind is not None:
+            add(errors, "UNKNOWN_RECORD_KIND")
+        return
+    if any(
+        field not in record
+        for field in fields - {"schemaVersion", "experimental", "kind"}
+    ):
+        add(errors, code)
+    if kind == "feature":
+        intent = record.get("intent")
+        if not isinstance(intent, dict) or not {"problem", "outcome", "usersOrValue"}.issubset(intent):
+            add(errors, code)
+    elif kind == "refactor":
+        compatibility = record.get("compatibility")
+        if not isinstance(compatibility, dict) or not {"preserved", "changed", "migrationRange"}.issubset(compatibility):
+            add(errors, code)
+    elif kind == "study":
+        boundary = record.get("evidenceBoundary")
+        if not isinstance(boundary, dict) or not {"inScope", "outOfScope"}.issubset(boundary):
+            add(errors, code)
+    elif kind == "issue-assignment":
+        authority = record.get("authority")
+        work_ref = record.get("workRef")
+        baseline = record.get("baseline")
+        delivery = record.get("delivery")
+        coordination = record.get("coordination")
+        if not isinstance(authority, dict) or not {"issue", "amendments"}.issubset(authority):
+            add(errors, code)
+        if not isinstance(work_ref, dict) or not {"type", "domainUid", "id"}.issubset(work_ref):
+            add(errors, code)
+        if not isinstance(baseline, dict) or not {"branch", "commit"}.issubset(baseline):
+            add(errors, code)
+        if not isinstance(delivery, dict) or not {"branch", "pullRequest"}.issubset(delivery):
+            add(errors, code)
+        required_coordination = {
+            "integrationBase", "reservationSet", "dependsOnIssues",
+            "conflictsWithIssues", "ownedPaths", "sharedTouchpoints",
+            "reservedIds", "mergeOrder", "convergence", "staleBasePolicy",
+        }
+        if not isinstance(coordination, dict) or not required_coordination.issubset(coordination):
+            add(errors, code)
+    elif kind == "reservation-set":
+        reservation_assignments = record.get("assignments")
+        if not isinstance(reservation_assignments, list) or any(
+            not isinstance(row, dict) or set(row) != RESERVATION_ROW_FIELDS
+            for row in reservation_assignments or []
+        ):
+            add(errors, code)
+        convergence = record.get("convergence")
+        if not isinstance(convergence, dict) or not {
+            "owner", "command", "terminal"
+        }.issubset(convergence):
+            add(errors, code)
+    elif kind == "work-domain-registry":
+        if not isinstance(record.get("domains"), list) or not record.get("domains"):
+            add(errors, code)
+
+
+def validate_issue_authorities(value: Any, errors: list[str]) -> None:
+    if not isinstance(value, list):
+        add(errors, "INVALID_REQUIRED_COLLECTION")
+        return
+    keys: list[tuple[str, str, int]] = []
+    for authority in value:
+        key = issue_key(authority)
+        if key is None:
+            add(errors, "INVALID_GITHUB_ISSUE")
+        else:
+            keys.append(key)
+    if len(keys) != len(set(keys)):
+        add(errors, "DUPLICATE_ISSUE_AUTHORITY")
+
+
+def validate_stateful_values(
+    record: dict[str, Any], errors: list[str], *, kind_override: str | None = None
+) -> None:
+    kind = kind_override or effective_kind(record)
+    revision = record.get("revision")
+    if isinstance(revision, bool) or not isinstance(revision, int) or revision < 1:
+        add(errors, "INVALID_REVISION")
+    if record.get("declaredState") not in DECLARED_STATES_BY_KIND.get(kind, set()):
+        add(errors, "UNSUPPORTED_DECLARED_STATE")
+    if not valid_record_path(record.get("source")):
+        add(errors, "INVALID_RECORD_SOURCE")
+
+    if kind in {"feature", "refactor", "fix", "study", "slice"}:
+        if not nonblank(record.get("title")):
+            add(errors, "BLANK_REQUIRED_VALUE")
+    if kind in {"feature", "refactor", "fix", "study"}:
+        validate_issue_authorities(record.get("issueAuthorities"), errors)
+
+    if kind == "feature":
+        intent = record.get("intent")
+        if not isinstance(intent, dict) or any(
+            not nonblank(intent.get(field))
+            for field in ("problem", "outcome", "usersOrValue")
+        ):
+            add(errors, "BLANK_REQUIRED_VALUE")
+        for field, required in (
+            ("scope", True), ("nonGoals", False), ("constraints", False),
+            ("acceptanceCriteria", True),
+        ):
+            if not nonblank_string_list(record.get(field), nonempty=required):
+                add(errors, "INVALID_REQUIRED_COLLECTION")
+        for field in ("relations", "slices"):
+            if not isinstance(record.get(field), list):
+                add(errors, "INVALID_REQUIRED_COLLECTION")
+    elif kind == "refactor":
+        for field, required in (
+            ("behaviorBaseline", True), ("targetStructure", True),
+            ("temporaryAdapters", False), ("exitEvidence", True),
+        ):
+            if not nonblank_string_list(record.get(field), nonempty=required):
+                add(errors, "INVALID_REQUIRED_COLLECTION")
+        compatibility = record.get("compatibility")
+        if not isinstance(compatibility, dict) or not nonblank(compatibility.get("migrationRange")):
+            add(errors, "BLANK_REQUIRED_VALUE")
+        elif (
+            not nonblank_string_list(compatibility.get("preserved"))
+            or not nonblank_string_list(compatibility.get("changed"))
+            or not (compatibility.get("preserved") or compatibility.get("changed"))
+        ):
+            add(errors, "INVALID_REQUIRED_COLLECTION")
+        for field in ("relations", "slices"):
+            if not isinstance(record.get(field), list):
+                add(errors, "INVALID_REQUIRED_COLLECTION")
+    elif kind == "fix":
+        if not nonblank(record.get("correction")):
+            add(errors, "BLANK_REQUIRED_VALUE")
+        for field, required in (
+            ("defectEvidence", True), ("invariants", True),
+            ("affectedWork", False), ("verificationCriteria", True),
+            ("reviewCriteria", True),
+        ):
+            value = record.get(field)
+            valid = (
+                isinstance(value, list)
+                and (not required or bool(value))
+                and all(nonblank(item) if isinstance(item, str) else isinstance(item, dict) for item in value)
+            )
+            if not valid:
+                add(errors, "INVALID_REQUIRED_COLLECTION")
+        if record.get("risk") not in {"low", "medium", "high", "safety-critical"}:
+            add(errors, "INVALID_FIX_PROFILE")
+        if not isinstance(record.get("standaloneReviewedUnit"), bool):
+            add(errors, "INVALID_FIX_PROFILE")
+        if not isinstance(record.get("slices"), list):
+            add(errors, "INVALID_REQUIRED_COLLECTION")
+    elif kind == "study":
+        if not nonblank(record.get("question")) or not nonblank(record.get("convergenceGate")):
+            add(errors, "BLANK_REQUIRED_VALUE")
+        boundary = record.get("evidenceBoundary")
+        if (
+            not isinstance(boundary, dict)
+            or not nonblank_string_list(boundary.get("inScope"), nonempty=True)
+            or not nonblank_string_list(boundary.get("outOfScope"))
+        ):
+            add(errors, "INVALID_REQUIRED_COLLECTION")
+        for field in ("independentStudyRefs", "informs"):
+            if not isinstance(record.get(field), list):
+                add(errors, "INVALID_REQUIRED_COLLECTION")
+        if record.get("ownerRef") is not None and reference_key(record.get("ownerRef")) is None:
+            add(errors, "INVALID_REFERENCE")
+        for field in ("findings", "limitations"):
+            if not nonblank_string_list(record.get(field)):
+                add(errors, "INVALID_REQUIRED_COLLECTION")
+    elif kind == "slice":
+        for field in (
+            "outcome", "whySmallestCoherent", "discoveryRule",
+            "completionSignal", "hardStop",
+        ):
+            if not nonblank(record.get(field)):
+                add(errors, "BLANK_REQUIRED_VALUE")
+        if issue_key(record.get("assignmentIssue")) is None:
+            add(errors, "INVALID_GITHUB_ISSUE")
+        for field, required in (
+            ("decisionRefs", False), ("ownedPaths", False),
+            ("sharedTouchpoints", False),
+        ):
+            value = record.get(field)
+            if not isinstance(value, list) or (required and not value):
+                add(errors, "INVALID_REQUIRED_COLLECTION")
+        for field, required in (
+            ("invariants", True), ("nonGoals", False),
+            ("verificationCriteria", True), ("reviewCriteria", True),
+        ):
+            if not nonblank_string_list(record.get(field), nonempty=required):
+                add(errors, "INVALID_REQUIRED_COLLECTION")
+    elif kind == "issue-assignment":
+        authority = record.get("authority")
+        issue = authority.get("issue") if isinstance(authority, dict) else None
+        issue_identity = issue_key(issue)
+        if issue_identity is None:
+            add(errors, "INVALID_GITHUB_ISSUE")
+        amendments = authority.get("amendments") if isinstance(authority, dict) else None
+        if not isinstance(amendments, list):
+            add(errors, "INVALID_REQUIRED_COLLECTION")
+        else:
+            for amendment in amendments:
+                amendment_identity = issue_comment_key(amendment)
+                if amendment_identity is None:
+                    add(errors, "INVALID_GITHUB_COMMENT")
+                elif issue_identity is not None and amendment_identity[:3] != issue_identity:
+                    add(errors, "REPOSITORY_AUTHORITY_MISMATCH")
+        baseline = record.get("baseline")
+        delivery = record.get("delivery")
+        if (
+            not isinstance(baseline, dict)
+            or not valid_branch(baseline.get("branch"))
+            or not isinstance(delivery, dict)
+            or not valid_branch(delivery.get("branch"))
+        ):
+            add(errors, "INVALID_BRANCH")
+        if not isinstance(delivery, dict) or pull_request_key(delivery.get("pullRequest")) is None:
+            add(errors, "INVALID_GITHUB_PULL_REQUEST")
+        authorized_slices = record.get("authorizedSlices")
+        active_slices = record.get("activeSlices")
+        if not isinstance(authorized_slices, list) or not isinstance(active_slices, list):
+            add(errors, "INVALID_REQUIRED_COLLECTION")
+        else:
+            authorized_keys = [
+                validate_authorized_slice_reference(reference, errors)
+                for reference in authorized_slices
+            ]
+            active_keys = [reference_key(reference) for reference in active_slices]
+            if len([key for key in authorized_keys if key is not None]) != len(
+                set(key for key in authorized_keys if key is not None)
+            ):
+                add(errors, "DUPLICATE_AUTHORIZED_SLICE")
+            if len([key for key in active_keys if key is not None]) != len(
+                set(key for key in active_keys if key is not None)
+            ):
+                add(errors, "ACTIVE_SLICE_CARDINALITY")
+            if len(active_slices) > 1:
+                add(errors, "ACTIVE_SLICE_CARDINALITY")
+            if any(
+                key is None or key not in set(authorized_keys)
+                for key in active_keys
+            ):
+                add(errors, "ACTIVE_SLICE_NOT_AUTHORIZED")
+        if not nonblank(record.get("stopCondition")):
+            add(errors, "INVALID_STOP_CONDITION")
+        boundaries = record.get("boundaries")
+        if (
+            not isinstance(boundaries, dict)
+            or any(
+                not nonblank_string_list(boundaries.get(field))
+                for field in ("prohibitedRepositories", "prohibitedPaths", "prohibitedOperations")
+            )
+        ):
+            add(errors, "INVALID_ASSIGNMENT_BOUNDARIES")
+        elif any(
+            repository_key(value) is None
+            for value in boundaries.get("prohibitedRepositories", [])
+        ):
+            add(errors, "INVALID_GITHUB_REPOSITORY")
+        if isinstance(boundaries, dict):
+            for value in boundaries.get("prohibitedPaths", []):
+                if normalize_path(value) is None:
+                    add(errors, "INVALID_PATH")
+        required_evidence = record.get("requiredEvidence")
+        if (
+            not isinstance(required_evidence, dict)
+            or not nonblank_string_list(required_evidence.get("verification"), nonempty=True)
+            or not isinstance(required_evidence.get("independentReview"), bool)
+            or required_evidence.get("maximumUnresolvedSeverity") not in MAXIMUM_SEVERITIES
+        ):
+            add(errors, "INVALID_EVIDENCE_POLICY")
+        coordination = record.get("coordination")
+        if isinstance(coordination, dict):
+            for field in (
+                "dependsOnIssues", "conflictsWithIssues", "ownedPaths",
+                "sharedTouchpoints", "reservedIds", "mergeOrder",
+            ):
+                if not isinstance(coordination.get(field), list):
+                    add(errors, "INVALID_REQUIRED_COLLECTION")
+            if not nonblank(coordination.get("staleBasePolicy")):
+                add(errors, "BLANK_REQUIRED_VALUE")
+            reservation_reference = coordination.get("reservationSet")
+            if (
+                isinstance(reservation_reference, dict)
+                and "path" in reservation_reference
+                and not valid_record_path(reservation_reference.get("path"))
+            ):
+                add(errors, "INVALID_PATH")
+
+
+def validate_accepted_evidence(record: dict[str, Any], errors: list[str]) -> None:
+    evidence = record.get("acceptedEvidence")
+    if not isinstance(evidence, dict) or not EVIDENCE_FIELDS.issubset(evidence):
+        add(errors, "ACCEPTED_EVIDENCE_SHAPE_INVALID")
+        return
+    verification_refs = evidence.get("verificationRefs")
+    release_refs = evidence.get("releaseRefs")
+    if not isinstance(verification_refs, list) or not isinstance(release_refs, list):
+        add(errors, "ACCEPTED_EVIDENCE_SHAPE_INVALID")
+        return
+    state = record.get("declaredState")
+    candidate = evidence.get("candidate")
+    review = evidence.get("currentReviewRef")
+    disposition = evidence.get("steeringDisposition")
+    if candidate is None:
+        if verification_refs or review is not None or disposition is not None or release_refs:
+            add(errors, "ACCEPTED_EVIDENCE_SHAPE_INVALID")
+    elif not isinstance(candidate, str) or not SHA_RE.fullmatch(candidate):
+        add(errors, "ACCEPTED_EVIDENCE_SHAPE_INVALID")
+    else:
+        for reference in verification_refs:
+            if (
+                not isinstance(reference, dict)
+                or set(reference) != {"id", "candidate"}
+                or not isinstance(reference.get("id"), str)
+                or EVIDENCE_ID_RE.fullmatch(reference["id"]) is None
+            ):
+                add(errors, "ACCEPTED_EVIDENCE_SHAPE_INVALID")
+            elif reference.get("candidate") != candidate:
+                add(errors, "ACCEPTED_EVIDENCE_CANDIDATE_MISMATCH")
+        verification_ids = [
+            reference.get("id") for reference in verification_refs
+            if isinstance(reference, dict) and isinstance(reference.get("id"), str)
+        ]
+        if len(verification_ids) != len(set(verification_ids)):
+            add(errors, "ACCEPTED_EVIDENCE_SHAPE_INVALID")
+        if review is not None:
+            if (
+                not isinstance(review, dict)
+                or set(review) != {"id", "candidate", "disposition"}
+                or not isinstance(review.get("id"), str)
+                or EVIDENCE_ID_RE.fullmatch(review["id"]) is None
+                or review.get("disposition") != "approved"
+            ):
+                add(errors, "ACCEPTED_EVIDENCE_SHAPE_INVALID")
+            elif review.get("candidate") != candidate:
+                add(errors, "ACCEPTED_EVIDENCE_CANDIDATE_MISMATCH")
+        if disposition is not None:
+            disposition_identity = issue_comment_key(
+                disposition.get("authority") if isinstance(disposition, dict) else None
+            )
+            if (
+                not isinstance(disposition, dict)
+                or set(disposition) != {"authority", "candidate", "decision"}
+                or disposition_identity is None
+                or disposition.get("decision") != "accepted"
+            ):
+                add(errors, "ACCEPTED_EVIDENCE_SHAPE_INVALID")
+            elif disposition.get("candidate") != candidate:
+                add(errors, "ACCEPTED_EVIDENCE_CANDIDATE_MISMATCH")
+            else:
+                if effective_kind(record) == "issue-assignment":
+                    authorities = [assignment_issue(record)]
+                elif effective_kind(record) == "slice":
+                    authorities = [record.get("assignmentIssue")]
+                else:
+                    authorities = record.get("issueAuthorities", [])
+                authority_keys = {
+                    issue_key(authority) for authority in authorities
+                } if isinstance(authorities, list) else set()
+                authority_keys.discard(None)
+                if authority_keys and disposition_identity[:3] not in authority_keys:
+                    add(errors, "STEERING_AUTHORITY_MISMATCH")
+        for reference in release_refs:
+            if (
+                not isinstance(reference, dict)
+                or set(reference) != {"id", "candidate"}
+                or not isinstance(reference.get("id"), str)
+                or EVIDENCE_ID_RE.fullmatch(reference["id"]) is None
+            ):
+                add(errors, "ACCEPTED_EVIDENCE_SHAPE_INVALID")
+            elif reference.get("candidate") != candidate:
+                add(errors, "ACCEPTED_EVIDENCE_CANDIDATE_MISMATCH")
+        release_ids = [
+            reference.get("id") for reference in release_refs
+            if isinstance(reference, dict) and isinstance(reference.get("id"), str)
+        ]
+        if len(release_ids) != len(set(release_ids)):
+            add(errors, "ACCEPTED_EVIDENCE_SHAPE_INVALID")
+    if state in TERMINAL_ACCEPTED_STATES:
+        if (
+            not isinstance(candidate, str)
+            or not SHA_RE.fullmatch(candidate)
+            or not verification_refs
+            or not isinstance(review, dict)
+            or review.get("disposition") != "approved"
+            or not isinstance(disposition, dict)
+            or disposition.get("decision") != "accepted"
+        ):
+            add(errors, "ACCEPTED_EVIDENCE_REQUIRED")
+        if state == "released" and not release_refs:
+            add(errors, "RELEASE_EVIDENCE_REQUIRED")
+
+
+def has_qualified_accepted_evidence(record: Any) -> bool:
+    if not isinstance(record, dict):
+        return False
+    evidence = record.get("acceptedEvidence")
+    if not isinstance(evidence, dict) or not EVIDENCE_FIELDS.issubset(evidence):
+        return False
+    candidate = evidence.get("candidate")
+    verification_refs = evidence.get("verificationRefs")
+    review = evidence.get("currentReviewRef")
+    disposition = evidence.get("steeringDisposition")
+    if not isinstance(candidate, str) or SHA_RE.fullmatch(candidate) is None:
+        return False
+    if not isinstance(verification_refs, list) or not verification_refs:
+        return False
+    if any(
+        not isinstance(reference, dict)
+        or set(reference) != {"id", "candidate"}
+        or EVIDENCE_ID_RE.fullmatch(str(reference.get("id", ""))) is None
+        or reference.get("candidate") != candidate
+        for reference in verification_refs
+    ):
+        return False
+    if (
+        not isinstance(review, dict)
+        or set(review) != {"id", "candidate", "disposition"}
+        or EVIDENCE_ID_RE.fullmatch(str(review.get("id", ""))) is None
+        or review.get("candidate") != candidate
+        or review.get("disposition") != "approved"
+    ):
+        return False
+    return (
+        isinstance(disposition, dict)
+        and set(disposition) == {"authority", "candidate", "decision"}
+        and issue_comment_key(disposition.get("authority")) is not None
+        and disposition.get("candidate") == candidate
+        and disposition.get("decision") == "accepted"
+    )
+
+
+def is_evidence_qualified_terminal(record: Any) -> bool:
+    return (
+        isinstance(record, dict)
+        and record.get("declaredState") in TERMINAL_ACCEPTED_STATES
+        and has_qualified_accepted_evidence(record)
+    )
+
+
+def validate_id_against_domain(
+    uid: Any,
+    record_id: Any,
+    domain_by_uid: dict[str, dict[str, Any]],
+    errors: list[str],
+    *,
+    invalid_code: str,
+    style_code: str,
+) -> None:
+    if not valid_uid(uid) or not isinstance(record_id, str):
+        add(errors, invalid_code)
+        return
+    scoped_match = SCOPED_ID_RE.fullmatch(record_id)
+    unscoped_match = UNSCOPED_ID_RE.fullmatch(record_id)
+    if not scoped_match and not unscoped_match:
+        add(errors, invalid_code)
+        return
+    domain = domain_by_uid.get(uid)
+    if domain is None:
+        return
+    style = domain.get("newRecordIdStyle")
+    if style == "scoped" and (not scoped_match or scoped_match.group("key") != domain.get("key")):
+        add(errors, style_code)
+    if style == "unscoped" and not unscoped_match:
+        add(errors, style_code)
+
+
+def validate_records(document: dict[str, Any], errors: list[str]) -> None:
+    decls = declarations(document)
+    domain_by_uid = active_domain_map(document)
+    issued = issued_reference_keys(document)
+    records_value = document.get("records", [])
+    record_list = records_value if isinstance(records_value, list) else []
+    if not isinstance(records_value, list):
+        add(errors, "INVALID_REQUIRED_COLLECTION")
+    active_by_repo = {
+        registry.get("repository", ""): [domain for domain in registry.get("domains", []) if domain.get("state") == "active"]
+        for registry in document.get("registries", [])
+    }
+    active_repository_by_uid = {
+        domain.get("domainUid"): repository_key(repository)
+        for repository, domain in decls
+        if domain.get("state") == "active"
+    }
+    inventory_source_claims: dict[
+        tuple[tuple[str, str], str], list[tuple[str, str]]
+    ] = defaultdict(list)
+    active_prospective: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
+    active_reserved: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
+    for repository, domain in decls:
+        if domain.get("state") != "active":
+            continue
+        host = repository_key(repository)
+        uid = domain.get("domainUid")
+        for member in domain.get("issuedIds", []):
+            if not isinstance(member, dict) or member.get("status") not in {
+                "reserved", "prospective"
+            }:
+                continue
+            record_id = inventory_member_id(member)
+            source_identity = portable_path_identity(member.get("source"))
+            if isinstance(record_id, str):
+                inventory_key = (uid, portable_text(record_id))
+                if member.get("status") == "prospective":
+                    active_prospective[inventory_key].append(member)
+                else:
+                    active_reserved[inventory_key].append(member)
+                if host is not None and source_identity is not None:
+                    inventory_source_claims[(host, source_identity)].append(
+                        (uid, portable_text(record_id))
+                    )
+    if any(
+        len(set(claims)) > 1
+        for claims in inventory_source_claims.values()
+    ):
+        add(errors, "DUPLICATE_INVENTORY_SOURCE")
+
+    record_source_claims: dict[
+        tuple[tuple[str, str], str], list[tuple[str, str]]
+    ] = defaultdict(list)
+    record_keys: list[tuple[str, str]] = []
+    for record in record_list:
+        if not isinstance(record, dict):
+            continue
+        uid = record.get("domainUid")
+        record_id = record.get("id")
+        host = active_repository_by_uid.get(uid)
+        source_identity = portable_path_identity(record.get("source"))
+        if isinstance(record_id, str):
+            key = (uid, portable_text(record_id))
+            record_keys.append(key)
+            if host is not None and source_identity is not None:
+                record_source_claims[(host, source_identity)].append(key)
+    if any(len(set(claims)) > 1 for claims in record_source_claims.values()):
+        add(errors, "DUPLICATE_RECORD_SOURCE")
+    if record_list:
+        if any(
+            key not in active_reserved
+            and len(active_prospective.get(key, [])) != 1
+            for key in record_keys
+        ):
+            add(errors, "RECORD_INVENTORY_BINDING_MISMATCH")
+        if any(key not in set(record_keys) for key in active_prospective):
+            add(errors, "RECORD_INVENTORY_BINDING_MISMATCH")
+        if any(key in set(record_keys) for key in active_reserved):
+            add(errors, "RESERVED_ID_NOT_MATERIALIZED")
+    seen: set[tuple[str, str]] = set()
+    for record in record_list:
+        if not isinstance(record, dict):
+            add(errors, "RECORD_REQUIRED_FIELD_MISSING")
+            continue
+        kind = effective_kind(record)
+        validate_typed_shape(record, errors, "RECORD_REQUIRED_FIELD_MISSING")
+        if kind in STATEFUL_KINDS:
+            validate_stateful_values(record, errors, kind_override=kind)
+            validate_accepted_evidence(record, errors)
+        uid = record.get("domainUid")
+        record_id = record.get("id")
+        if not isinstance(record_id, str):
+            add(errors, "INVALID_RECORD_ID")
+            continue
+        normalized_pair = (uid, portable_text(record_id))
+        if normalized_pair in seen:
+            add(errors, "RECORD_ID_COLLISION")
+        seen.add(normalized_pair)
+        scoped_match = SCOPED_ID_RE.fullmatch(record_id)
+        unscoped_match = UNSCOPED_ID_RE.fullmatch(record_id)
+        if not scoped_match and not unscoped_match:
+            add(errors, "INVALID_RECORD_ID")
+            continue
+        domain = domain_by_uid.get(uid)
+        if domain is None:
+            if decls:
+                add(errors, "UNKNOWN_RECORD_DOMAIN")
+            continue
+        expected_token = KIND_TO_ID_TOKEN.get(kind)
+        actual_token = (scoped_match or unscoped_match).group("type")
+        if expected_token and expected_token != actual_token:
+            add(errors, "RECORD_KIND_ID_MISMATCH")
+        if scoped_match and scoped_match.group("key") != domain.get("key"):
+            add(errors, "RECORD_DOMAIN_PREFIX_MISMATCH")
+        if unscoped_match and record.get("identityStatus") != "legacy-preserved":
+            containing_registries = [
+                (registry, active_by_repo.get(registry.get("repository", ""), []))
+                for registry in document.get("registries", [])
+                if any(item.get("domainUid") == uid for item in registry.get("domains", []))
+            ]
+            if any(len(active) != 1 or registry.get("defaultDomainUid") != uid or domain.get("newRecordIdStyle") != "unscoped"
+                   for registry, active in containing_registries):
+                add(errors, "UNSCOPED_ID_MULTIDOMAIN")
+        if normalized_pair not in issued:
+            add(errors, "RECORD_NOT_IN_ISSUED_INVENTORY")
+        if normalized_pair in issued:
+            member = inventory_map(domain).get(portable_text(record_id))
+            if isinstance(member, dict) and member.get("status") == "reserved":
+                add(errors, "RESERVED_ID_NOT_MATERIALIZED")
+            elif (
+                not isinstance(member, dict)
+                or member.get("status") != "prospective"
+                or record.get("source") != member.get("source")
+            ):
+                add(errors, "RECORD_SOURCE_MISMATCH")
+
+
+def validate_semantic_reference(
+    document: dict[str, Any],
+    reference: Any,
+    records: dict[tuple[str, str], dict[str, Any]],
+    errors: list[str],
+    *,
+    allowed_kinds: set[str],
+) -> tuple[str, str] | None:
+    if not isinstance(reference, dict) or not {
+        "domainUid", "id"
+    }.issubset(reference):
+        add(errors, "UNQUALIFIED_SEMANTIC_REFERENCE")
+        return None
+    if not set(reference).issubset({"domainUid", "id", "keyHint"}):
+        add(errors, "INVALID_SEMANTIC_EDGE")
+        return None
+    key = reference_key(reference)
+    if key is None:
+        add(errors, "UNQUALIFIED_SEMANTIC_REFERENCE")
+        return None
+    validate_key_hint(document, reference, errors)
+    target = records.get(key)
+    if target is None:
+        add(errors, "UNRESOLVED_SEMANTIC_REFERENCE")
+        return None
+    elif effective_kind(target) not in allowed_kinds:
+        add(errors, "SEMANTIC_TARGET_KIND_MISMATCH")
+        return None
+    return key
+
+
+def validate_semantic_graph(document: dict[str, Any], errors: list[str]) -> None:
+    records = {
+        reference_key(record): record
+        for record in document.get("records", [])
+        if isinstance(record, dict) and reference_key(record) is not None
+    }
+    local_domains = {domain.get("domainUid") for _, domain in declarations(document)}
+    active_domains = {
+        domain.get("domainUid")
+        for _, domain in declarations(document)
+        if domain.get("state") == "active"
+    }
+    known = set(records) | issued_reference_keys(document)
+    seen: set[tuple[str, tuple[str, str], tuple[str, str]]] = set()
+
+    token_to_kind = {token: kind for kind, token in KIND_TO_ID_TOKEN.items()}
+
+    def relation_endpoint_kind(key: tuple[str, str]) -> str | None:
+        record = records.get(key)
+        if isinstance(record, dict):
+            return effective_kind(record)
+        match = SCOPED_ID_RE.fullmatch(key[1].upper()) or UNSCOPED_ID_RE.fullmatch(key[1].upper())
+        return token_to_kind.get(match.group("type")) if match is not None else None
+
+    def register(
+        relation_type: str, source: tuple[str, str] | None,
+        target: tuple[str, str] | None,
+    ) -> None:
+        if source is None or target is None:
+            return
+        allowed_source_kinds, allowed_target_kinds = RELATION_KIND_MATRIX[relation_type]
+        if relation_endpoint_kind(source) not in allowed_source_kinds:
+            add(errors, "SEMANTIC_SOURCE_KIND_MISMATCH")
+            return
+        if relation_endpoint_kind(target) not in allowed_target_kinds:
+            add(errors, "SEMANTIC_TARGET_KIND_MISMATCH")
+            return
+        identity = (relation_type, source, target)
+        if source == target:
+            add(errors, "SEMANTIC_SELF_EDGE")
+            return
+        if identity in seen:
+            add(errors, "DUPLICATE_SEMANTIC_EDGE")
+        seen.add(identity)
+        source_record = records.get(source)
+        target_record = records.get(target)
+        if (
+            relation_type == "depends_on"
+            and isinstance(source_record, dict)
+            and effective_kind(source_record) in WORK_OWNER_KINDS | {"slice"}
+            and source_record.get("declaredState")
+            in {"active", "accepted", "delivered", "released"}
+            and not is_evidence_qualified_terminal(target_record)
+        ):
+            add(errors, "UNSATISFIED_SEMANTIC_DEPENDENCY")
+
+    for source, record in records.items():
+        kind = effective_kind(record)
+        if kind in {"feature", "refactor"}:
+            for edge in record.get("relations", []):
+                if (
+                    not isinstance(edge, dict)
+                    or edge.get("type") not in SEMANTIC_RELATION_TYPES
+                    or set(edge) != {"type", "targetRef"}
+                ):
+                    add(errors, "INVALID_SEMANTIC_EDGE")
+                    continue
+                target = validate_semantic_reference(
+                    document, edge.get("targetRef"), records, errors,
+                    allowed_kinds=WORK_OWNER_KINDS | {"study"},
+                )
+                register(edge["type"], source, target)
+        elif kind == "study":
+            owner = record.get("ownerRef")
+            if owner is not None:
+                target = validate_semantic_reference(
+                    document, owner, records, errors,
+                    allowed_kinds=WORK_OWNER_KINDS,
+                )
+                register("owned_by", source, target)
+            for field, relation_type, allowed in (
+                ("independentStudyRefs", "independent_of", {"study"}),
+                ("informs", "informs", WORK_OWNER_KINDS | {"study"}),
+            ):
+                for reference in record.get(field, []):
+                    target = validate_semantic_reference(
+                        document, reference, records, errors,
+                        allowed_kinds=allowed,
+                    )
+                    register(relation_type, source, target)
+        elif kind == "fix":
+            for reference in record.get("affectedWork", []):
+                target = validate_semantic_reference(
+                    document, reference, records, errors,
+                    allowed_kinds=WORK_OWNER_KINDS,
+                )
+                register("corrects", source, target)
+
+    for relation in document.get("relations", []):
+        if (
+            not isinstance(relation, dict)
+            or relation.get("type") not in SEMANTIC_RELATION_TYPES
+            or set(relation) != {"type", "sourceRef", "targetRef"}
+        ):
+            add(errors, "INVALID_SEMANTIC_EDGE")
+            continue
+        relation_keys: dict[str, tuple[str, str]] = {}
+        for name in ("sourceRef", "targetRef"):
+            reference = relation.get(name)
+            if (
+                not isinstance(reference, dict)
+                or not {"domainUid", "id"}.issubset(reference)
+            ):
+                if len(active_domains) > 1:
+                    add(errors, "UNQUALIFIED_CROSS_DOMAIN_REF")
+                else:
+                    add(errors, "INVALID_REFERENCE")
+                continue
+            if not set(reference).issubset({"domainUid", "id", "keyHint"}):
+                add(errors, "INVALID_SEMANTIC_EDGE")
+                continue
+            validate_key_hint(document, reference, errors)
+            key = reference_key(reference)
+            if key is None:
+                add(errors, "INVALID_REFERENCE")
+                continue
+            if not valid_uid(key[0]):
+                add(errors, "INVALID_REFERENCE")
+                continue
+            if key[0] in local_domains and key not in known:
+                add(errors, "UNRESOLVED_RELATION_REF")
+            target_record = records.get(key)
+            if (
+                target_record is not None
+                and effective_kind(target_record)
+                not in STATEFUL_KINDS - {"issue-assignment"}
+            ):
+                add(errors, "SEMANTIC_TARGET_KIND_MISMATCH")
+            relation_keys[name] = key
+        if {"sourceRef", "targetRef"}.issubset(relation_keys):
+            register(
+                relation["type"], relation_keys["sourceRef"],
+                relation_keys["targetRef"],
+            )
+
+    # Direction is always authored source -> target.  Pilot v0 treats four
+    # directional histories/gates as separate global DAGs: a source depends on,
+    # supersedes, refines, or requires revision of its target.  The remaining
+    # relation types retain only their existing self/kind/duplicate rules.
+    for relation_type in ACYCLIC_SEMANTIC_RELATION_TYPES:
+        adjacency: dict[tuple[str, str], set[tuple[str, str]]] = defaultdict(set)
+        nodes: set[tuple[str, str]] = set()
+        for edge_type, source, target in seen:
+            if edge_type == relation_type:
+                adjacency[source].add(target)
+                nodes.update((source, target))
+        visiting: set[tuple[str, str]] = set()
+        visited: set[tuple[str, str]] = set()
+
+        def visit(node: tuple[str, str]) -> bool:
+            if node in visiting:
+                return True
+            if node in visited:
+                return False
+            visiting.add(node)
+            if any(visit(target) for target in adjacency.get(node, set())):
+                return True
+            visiting.remove(node)
+            visited.add(node)
+            return False
+
+        if any(visit(node) for node in nodes if node not in visited):
+            add(errors, "SEMANTIC_RELATION_CYCLE")
+
+
+def validate_record_graph(document: dict[str, Any], errors: list[str]) -> None:
+    records = {
+        reference_key(record): record
+        for record in document.get("records", [])
+        if reference_key(record) is not None
+    }
+    assignments = document.get("assignments", [])
+    assignments_by_issue: dict[tuple[str, str, int], list[dict[str, Any]]] = defaultdict(list)
+    assignments_by_slice: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
+    for assignment in assignments:
+        if not isinstance(assignment, dict):
+            continue
+        issue = assignment_issue(assignment)
+        issue_identity = issue_key(issue)
+        if issue_identity is not None:
+            assignments_by_issue[issue_identity].append(assignment)
+        authorized_slices = assignment.get("authorizedSlices", [])
+        for slice_ref in authorized_slices if isinstance(authorized_slices, list) else []:
+            slice_key = reference_key(slice_ref)
+            if slice_key is not None:
+                assignments_by_slice[slice_key].append(assignment)
+
+    def active_owner_has_accepted_outcome(
+        owner_key: tuple[str, str], owner: dict[str, Any]
+    ) -> bool:
+        for authority in owner.get("issueAuthorities", []):
+            for assignment in assignments_by_issue.get(issue_key(authority), []):
+                if (
+                    reference_key(assignment.get("workRef")) != owner_key
+                    or assignment.get("declaredState") != "accepted"
+                    or not has_qualified_accepted_evidence(assignment)
+                ):
+                    continue
+                authorized = assignment.get("authorizedSlices", [])
+                if (
+                    effective_kind(owner) == "fix"
+                    and owner.get("standaloneReviewedUnit") is True
+                    and authorized == []
+                ):
+                    return True
+                for slice_ref in authorized if isinstance(authorized, list) else []:
+                    slice_record = records.get(reference_key(slice_ref))
+                    if (
+                        isinstance(slice_record, dict)
+                        and slice_record.get("declaredState") == "accepted"
+                        and has_qualified_accepted_evidence(slice_record)
+                        and slice_ref.get("acceptedCandidate")
+                        == mapping(slice_record.get("acceptedEvidence")).get("candidate")
+                    ):
+                        return True
+        return False
+
+    for key, record in records.items():
+        kind = effective_kind(record)
+        if kind == "slice":
+            owner_key = reference_key(record.get("ownerRef"))
+            validate_key_hint(document, record.get("ownerRef"), errors)
+            owner = records.get(owner_key)
+            if owner is None:
+                add(errors, "UNRESOLVED_SLICE_OWNER")
+            elif effective_kind(owner) not in WORK_OWNER_KINDS:
+                add(errors, "INVALID_SLICE_OWNER")
+            else:
+                owner_slice_keys = {reference_key(item) for item in owner.get("slices", [])}
+                if key not in owner_slice_keys:
+                    add(errors, "NONRECIPROCAL_SLICE_OWNER")
+            issue = record.get("assignmentIssue")
+            issue_identity = issue_key(issue)
+            matching_assignments = [
+                assignment
+                for assignment in assignments_by_slice.get(key, [])
+                if issue_key(assignment_issue(assignment)) == issue_identity
+            ]
+            if len(matching_assignments) != 1:
+                add(errors, "SLICE_ASSIGNMENT_CARDINALITY")
+            else:
+                assignment = matching_assignments[0]
+                if reference_key(assignment.get("workRef")) != owner_key:
+                    add(errors, "SLICE_ASSIGNMENT_OWNER_MISMATCH")
+                if owner is not None:
+                    authorities = owner.get("issueAuthorities", [])
+                    if sum(issue_key(authority) == issue_identity for authority in authorities) != 1:
+                        add(errors, "OWNER_ISSUE_AUTHORITY_MISMATCH")
+                authorized_entry = next(
+                    (
+                        item for item in assignment.get("authorizedSlices", [])
+                        if reference_key(item) == key
+                    ),
+                    None,
+                )
+                accepted_candidate = mapping(
+                    record.get("acceptedEvidence")
+                ).get("candidate")
+                if isinstance(authorized_entry, dict) and (
+                    authorized_entry.get("acceptedCandidate")
+                    != (
+                        accepted_candidate
+                        if record.get("declaredState") == "accepted"
+                        else None
+                    )
+                ):
+                    add(errors, "AUTHORIZED_SLICE_CANDIDATE_MISMATCH")
+                coordination = assignment_coordination(assignment)
+                reserved_owned = [
+                    normalize_path(path)
+                    for path in coordination.get("ownedPaths", [])
+                ]
+                reserved_owned = [path for path in reserved_owned if path is not None]
+                reserved_shared = {
+                    normalize_path(shared_path(item))
+                    for item in coordination.get("sharedTouchpoints", [])
+                }
+                reserved_shared.discard(None)
+                for path in record.get("ownedPaths", []):
+                    normalized = normalize_path(path)
+                    if normalized is None:
+                        add(errors, "INVALID_SLICE_PATH")
+                    elif not any(
+                        path_is_contained(reservation, normalized)
+                        for reservation in reserved_owned
+                    ):
+                        add(errors, "UNRESERVED_SLICE_PATH")
+                for path in record.get("sharedTouchpoints", []):
+                    normalized = normalize_path(shared_path(path))
+                    if normalized is None:
+                        add(errors, "INVALID_SLICE_PATH")
+                    elif normalized not in reserved_shared:
+                        add(errors, "UNDECLARED_SLICE_SHARED_PATH")
+            for decision_ref in record.get("decisionRefs", []):
+                validate_key_hint(document, decision_ref, errors)
+                decision_key = reference_key(decision_ref)
+                if decision_key is None:
+                    add(errors, "UNQUALIFIED_SLICE_DECISION_REF")
+                elif decision_key not in records:
+                    add(errors, "UNRESOLVED_SLICE_DECISION_REF")
+                else:
+                    decision = records[decision_key]
+                    if effective_kind(decision) != "study":
+                        add(errors, "SLICE_DECISION_AUTHORITY_KIND_MISMATCH")
+                    elif not is_evidence_qualified_terminal(decision):
+                        add(errors, "UNACCEPTED_SLICE_DECISION_AUTHORITY")
+        if kind in WORK_OWNER_KINDS:
+            slice_keys: list[tuple[str, str]] = []
+            for slice_ref in record.get("slices", []):
+                validate_key_hint(document, slice_ref, errors)
+                slice_key = reference_key(slice_ref)
+                if slice_key is None:
+                    add(errors, "INVALID_REFERENCE")
+                    continue
+                slice_keys.append(slice_key)
+                slice_record = records.get(slice_key)
+                if slice_record is None:
+                    add(errors, "MISSING_OWNER_REFERENCED_SLICE")
+                    continue
+                if effective_kind(slice_record) != "slice" or reference_key(slice_record.get("ownerRef")) != key:
+                    add(errors, "NONRECIPROCAL_SLICE_OWNER")
+            if len(slice_keys) != len(set(slice_keys)):
+                add(errors, "NONRECIPROCAL_SLICE_OWNER")
+            if record.get("declaredState") in {"delivered", "released"}:
+                authorities = record.get("issueAuthorities")
+                if not isinstance(authorities, list) or not authorities:
+                    add(errors, "DELIVERED_WORK_ISSUE_REQUIRED")
+                if kind != "fix" and not record.get("slices"):
+                    add(errors, "DELIVERED_WORK_SLICE_REQUIRED")
+                authority_keys = [
+                    issue_key(authority) for authority in authorities or []
+                ]
+                matching_owner_assignments: list[dict[str, Any]] = []
+                for authority_key in authority_keys:
+                    matches = [
+                        assignment
+                        for assignment in assignments_by_issue.get(authority_key, [])
+                        if reference_key(assignment.get("workRef")) == key
+                    ]
+                    if len(matches) != 1:
+                        add(errors, "TERMINAL_WORK_AUTHORITY_UNRESOLVED")
+                    else:
+                        matching_owner_assignments.extend(matches)
+                for assignment in matching_owner_assignments:
+                    if (
+                        assignment.get("declaredState") != "accepted"
+                        or not has_qualified_accepted_evidence(assignment)
+                    ):
+                        add(errors, "TERMINAL_WORK_ASSIGNMENT_NOT_ACCEPTED")
+                    for authorized_slice in assignment.get("authorizedSlices", []):
+                        authorized_record = records.get(reference_key(authorized_slice))
+                        if not (
+                            isinstance(authorized_record, dict)
+                            and authorized_record.get("declaredState") == "accepted"
+                            and has_qualified_accepted_evidence(authorized_record)
+                        ):
+                            add(errors, "TERMINAL_WORK_SLICE_NOT_ACCEPTED")
+                for slice_key in slice_keys:
+                    slice_record = records.get(slice_key)
+                    if not (
+                        isinstance(slice_record, dict)
+                        and slice_record.get("declaredState") == "accepted"
+                        and has_qualified_accepted_evidence(slice_record)
+                    ):
+                        add(errors, "TERMINAL_WORK_SLICE_NOT_ACCEPTED")
+                    issue_identity = issue_key(
+                        slice_record.get("assignmentIssue")
+                        if isinstance(slice_record, dict) else None
+                    )
+                    authorizing = [
+                        assignment
+                        for assignment in assignments_by_slice.get(slice_key, [])
+                        if issue_key(assignment_issue(assignment)) == issue_identity
+                    ]
+                    if not (
+                        len(authorizing) == 1
+                        and authorizing[0].get("declaredState") == "accepted"
+                        and has_qualified_accepted_evidence(authorizing[0])
+                    ):
+                        add(errors, "TERMINAL_WORK_ASSIGNMENT_NOT_ACCEPTED")
+                if kind == "fix" and not record.get("slices"):
+                    authority_key_set = {key for key in authority_keys if key is not None}
+                    matching = [
+                        assignment
+                        for assignment in assignments
+                        if issue_key(assignment_issue(assignment)) in authority_key_set
+                        and reference_key(assignment.get("workRef")) == key
+                    ]
+                    if (
+                        record.get("risk") != "low"
+                        or record.get("standaloneReviewedUnit") is not True
+                        or len(authority_key_set) != 1
+                        or len(matching) != 1
+                        or matching[0].get("declaredState") != "accepted"
+                        or not has_qualified_accepted_evidence(matching[0])
+                        or mapping(matching[0].get("acceptedEvidence")).get("candidate")
+                        != mapping(record.get("acceptedEvidence")).get("candidate")
+                        or matching[0].get("authorizedSlices") != []
+                        or matching[0].get("activeSlices") != []
+                    ):
+                        add(errors, "ZERO_SLICE_FIX_INVALID")
+                if kind == "fix":
+                    affected = [
+                        records.get(reference_key(reference))
+                        for reference in record.get("affectedWork", [])
+                        if reference_key(reference) is not None
+                    ]
+                    if not affected or any(
+                        target is None
+                        or effective_kind(target) not in WORK_OWNER_KINDS
+                        or target.get("declaredState") not in {
+                            "active", "delivered", "released"
+                        }
+                        or not has_qualified_accepted_evidence(target)
+                        or (
+                            target.get("declaredState") == "active"
+                            and not active_owner_has_accepted_outcome(
+                                reference_key(target), target
+                            )
+                        )
+                        for target in affected
+                    ):
+                        add(errors, "FIX_AFFECTED_WORK_NOT_ACCEPTED")
+
+
+def shared_path(item: Any) -> Any:
+    return item.get("path") if isinstance(item, dict) else item
+
+
+def assignment_projection(assignment: dict[str, Any]) -> dict[str, Any]:
+    coordination = assignment_coordination(assignment)
+    return {
+        "issue": assignment_issue(assignment),
+        "workRef": assignment.get("workRef"),
+        "authorizedSlices": assignment.get("authorizedSlices", []),
+        "activeSlices": assignment.get("activeSlices", []),
+        "reservedIds": coordination.get("reservedIds", []),
+        "ownedPaths": coordination.get("ownedPaths", []),
+        "sharedTouchpoints": coordination.get("sharedTouchpoints", []),
+        "dependsOnIssues": coordination.get("dependsOnIssues", []),
+        "conflictsWithIssues": coordination.get("conflictsWithIssues", []),
+    }
+
+
+def assignment_epoch_key(assignment: dict[str, Any]) -> tuple[Any, Any]:
+    reference = mapping(assignment_coordination(assignment).get("reservationSet"))
+    return reference.get("id"), reference.get("digest")
+
+
+def reservation_epoch_key(reservation: dict[str, Any]) -> tuple[Any, Any]:
+    return reservation.get("id"), canonical_digest(reservation)
+
+
+def valid_qualified_record_reference(
+    reference: Any, *, allowed_types: set[str] | None = None,
+) -> bool:
+    if (
+        not isinstance(reference, dict)
+        or not {"domainUid", "id"}.issubset(reference)
+        or not set(reference).issubset({"domainUid", "id", "keyHint"})
+        or not valid_uid(reference.get("domainUid"))
+        or not nonblank(reference.get("id"))
+    ):
+        return False
+    match = SCOPED_ID_RE.fullmatch(reference["id"]) or UNSCOPED_ID_RE.fullmatch(
+        reference["id"]
+    )
+    return match is not None and (
+        allowed_types is None or match.group("type") in allowed_types
+    )
+
+
+def valid_reserved_allocation_reference(reference: Any) -> bool:
+    """A reservation row freezes the identity, allocator, and planned source."""
+    return (
+        isinstance(reference, dict)
+        and set(reference) == {"domainUid", "id", "allocationIssue", "source"}
+        and valid_uid(reference.get("domainUid"))
+        and nonblank(reference.get("id"))
+        and issue_key(reference.get("allocationIssue")) is not None
+        and valid_record_path(reference.get("source"))
+        and (
+            SCOPED_ID_RE.fullmatch(reference["id"])
+            or UNSCOPED_ID_RE.fullmatch(reference["id"])
+        ) is not None
+    )
+
+
+def validate_reservation_set_semantics(
+    reservation: dict[str, Any], errors: list[str],
+    document: dict[str, Any] | None = None,
+) -> None:
+    """Validate one immutable reservation epoch without assignment binding."""
+    validate_typed_shape(
+        reservation, errors, "RESERVATION_SET_INCOMPLETE",
+        expected_kind="reservation-set",
+    )
+    if not nonblank(reservation.get("id")):
+        add(errors, "RESERVATION_SET_INCOMPLETE")
+    if not SHA_RE.fullmatch(str(reservation.get("integrationBase", ""))):
+        add(errors, "INVALID_INTEGRATION_BASE")
+
+    rows = reservation.get("assignments")
+    if not isinstance(rows, list) or not rows:
+        add(errors, "RESERVATION_SET_INCOMPLETE")
+        rows = []
+
+    issue_keys: list[tuple[str, str, int]] = []
+    edge_map: dict[tuple[str, str, int], list[tuple[str, str, int]]] = {}
+    conflict_map: dict[tuple[str, str, int], list[tuple[str, str, int]]] = {}
+    reserved: list[tuple[tuple[str, str, int], tuple[str, str]]] = []
+    owned: list[tuple[tuple[str, str, int], tuple[str, bool]]] = []
+    shared: list[
+        tuple[tuple[str, str, int], tuple[str, bool], Any]
+    ] = []
+    domain_by_uid = active_domain_map(document) if document is not None else {}
+    records = {
+        reference_key(record): record
+        for record in document.get("records", [])
+        if isinstance(record, dict) and reference_key(record) is not None
+    } if document is not None else {}
+    issued_by = issued_authorities(document) if document is not None else {}
+    issued_status_by_id = issued_statuses(document) if document is not None else {}
+
+    for row in rows:
+        if not isinstance(row, dict):
+            add(errors, "RESERVATION_SET_INCOMPLETE")
+            continue
+        if set(row) != RESERVATION_ROW_FIELDS:
+            add(errors, "RESERVATION_SET_INCOMPLETE")
+        issue = issue_key(row.get("issue"))
+        if issue is None:
+            add(errors, "INVALID_GITHUB_ISSUE")
+            continue
+        issue_keys.append(issue)
+
+        work_ref = row.get("workRef")
+        allowed_work_types = WORK_OWNER_KINDS | {"study"}
+        if (
+            not isinstance(work_ref, dict)
+            or set(work_ref) != {"type", "domainUid", "id"}
+            or work_ref.get("type") not in allowed_work_types
+            or not valid_uid(work_ref.get("domainUid"))
+        ):
+            add(errors, "RESERVATION_SET_INCOMPLETE")
+        else:
+            work_match = SCOPED_ID_RE.fullmatch(str(work_ref.get("id", ""))) or UNSCOPED_ID_RE.fullmatch(
+                str(work_ref.get("id", ""))
+            )
+            expected_token = KIND_TO_ID_TOKEN.get(work_ref.get("type"))
+            if work_match is None or work_match.group("type") != expected_token:
+                add(errors, "RESERVATION_SET_INCOMPLETE")
+            if document is not None:
+                work_uid = work_ref.get("domainUid")
+                work_key = reference_key(work_ref)
+                validate_id_against_domain(
+                    work_uid, work_ref.get("id"),
+                    domain_by_uid, errors, invalid_code="INVALID_WORK_REF",
+                    style_code="WORK_REF_STYLE_MISMATCH",
+                )
+                if work_uid not in domain_by_uid:
+                    add(errors, "UNKNOWN_WORK_DOMAIN")
+                work_record = records.get(work_key)
+                if issued_status_by_id.get(work_key) == "reserved":
+                    add(errors, "RESERVED_ID_NOT_MATERIALIZED")
+                if work_record is None:
+                    add(errors, "UNRESOLVED_WORK_REF")
+                elif effective_kind(work_record) != work_ref.get("type"):
+                    add(errors, "WORK_REF_TYPE_MISMATCH")
+                elif sum(
+                    issue_key(authority) == issue
+                    for authority in work_record.get("issueAuthorities", [])
+                ) != 1:
+                    add(errors, "OWNER_ISSUE_AUTHORITY_MISMATCH")
+                host_repository = repository_for_domain(document, work_uid)
+                if host_repository is not None and issue[:2] != host_repository:
+                    add(errors, "REPOSITORY_AUTHORITY_MISMATCH")
+
+        authorized = row.get("authorizedSlices")
+        active = row.get("activeSlices")
+        if not isinstance(authorized, list) or not isinstance(active, list):
+            add(errors, "RESERVATION_SET_INCOMPLETE")
+            authorized = []
+            active = []
+        authorized_keys = [
+            validate_authorized_slice_reference(reference, errors)
+            for reference in authorized
+        ]
+        valid_authorized_keys = [key for key in authorized_keys if key is not None]
+        if document is not None:
+            for reference in authorized:
+                if isinstance(reference, dict):
+                    validate_key_hint(document, reference, errors)
+                    validate_id_against_domain(
+                        reference.get("domainUid"), reference.get("id"),
+                        domain_by_uid, errors, invalid_code="INVALID_REFERENCE",
+                        style_code="ACTIVE_SLICE_STYLE_MISMATCH",
+                    )
+        if len(valid_authorized_keys) != len(set(valid_authorized_keys)):
+            add(errors, "RESERVATION_SET_INCOMPLETE")
+        active_keys: list[tuple[str, str] | None] = []
+        for reference in active:
+            if not valid_qualified_record_reference(reference, allowed_types={"SLC"}):
+                add(errors, "RESERVATION_SET_INCOMPLETE")
+                active_keys.append(None)
+            else:
+                active_keys.append(reference_key(reference))
+                if document is not None:
+                    validate_key_hint(document, reference, errors)
+                    validate_id_against_domain(
+                        reference.get("domainUid"), reference.get("id"),
+                        domain_by_uid, errors, invalid_code="INVALID_REFERENCE",
+                        style_code="ACTIVE_SLICE_STYLE_MISMATCH",
+                    )
+        if len(active) > 1:
+            add(errors, "ACTIVE_SLICE_CARDINALITY")
+        if any(
+            key is None or key not in set(valid_authorized_keys)
+            for key in active_keys
+        ):
+            add(errors, "ACTIVE_SLICE_NOT_AUTHORIZED")
+
+        reserved_values = row.get("reservedIds")
+        if not isinstance(reserved_values, list):
+            add(errors, "RESERVATION_SET_INCOMPLETE")
+            reserved_values = []
+        seen_reserved: set[tuple[str, str]] = set()
+        epoch_digest = canonical_digest(reservation)
+        for reference in reserved_values:
+            valid_reserved_reference = (
+                valid_reserved_allocation_reference(reference)
+                if document is not None
+                else (
+                    valid_reserved_allocation_reference(reference)
+                    or valid_qualified_record_reference(reference)
+                )
+            )
+            if not valid_reserved_reference:
+                add(errors, "RESERVATION_SET_INCOMPLETE")
+                continue
+            key = reference_key(reference)
+            if key is None:
+                add(errors, "RESERVATION_SET_INCOMPLETE")
+                continue
+            if key in seen_reserved:
+                add(errors, "DUPLICATE_RESERVED_ID")
+            seen_reserved.add(key)
+            reserved.append((issue, key))
+            if document is not None:
+                validate_key_hint(document, reference, errors)
+                validate_id_against_domain(
+                    reference.get("domainUid"), reference.get("id"),
+                    domain_by_uid, errors, invalid_code="INVALID_RESERVED_ID",
+                    style_code="RESERVED_ID_STYLE_MISMATCH",
+                )
+                reserved_uid = reference.get("domainUid")
+                if reserved_uid not in domain_by_uid:
+                    add(errors, "UNKNOWN_RESERVED_DOMAIN")
+                allocated_by = issued_by.get(key)
+                member = next(
+                    (
+                        item for _, domain in declarations(document)
+                        if domain.get("state") == "active"
+                        and domain.get("domainUid") == reference.get("domainUid")
+                        for item in domain.get("issuedIds", [])
+                        if isinstance(item, dict)
+                        and portable_text(str(item.get("id", ""))) == key[1]
+                    ),
+                    None,
+                )
+                if key not in issued_status_by_id:
+                    add(errors, "RESERVED_ID_INVENTORY_REQUIRED")
+                elif allocated_by != issue:
+                    add(errors, "ISSUED_ID_RECLAIM")
+                if (
+                    reference.get("allocationIssue") != row.get("issue")
+                    or not isinstance(member, dict)
+                    or member.get("source") != reference.get("source")
+                    or mapping(member.get("allocationEpoch")) != {
+                        "reservationSetId": reservation.get("id"),
+                        "reservationDigest": epoch_digest,
+                        "domainUid": reference.get("domainUid"),
+                        "id": reference.get("id"),
+                        "allocationIssue": reference.get("allocationIssue"),
+                        "source": reference.get("source"),
+                    }
+                ):
+                    add(errors, "ALLOCATION_EPOCH_MISMATCH")
+                if issued_status_by_id.get(key) == "legacy-preserved":
+                    add(errors, "LEGACY_PRESERVED_CURRENT_GATE")
+
+        if any(
+            key is not None
+            and isinstance(reference, dict)
+            and reference.get("acceptedCandidate") is None
+            and key not in seen_reserved
+            for reference, key in zip(authorized, authorized_keys)
+        ):
+            add(errors, "AUTHORIZED_SLICE_RESERVATION_MISSING")
+
+        owned_values = row.get("ownedPaths")
+        if not isinstance(owned_values, list):
+            add(errors, "RESERVATION_SET_INCOMPLETE")
+            owned_values = []
+        for value in owned_values:
+            normalized = normalize_path(value)
+            if normalized is None:
+                add(errors, "INVALID_PATH")
+            else:
+                owned.append((issue, normalized))
+
+        shared_values = row.get("sharedTouchpoints")
+        if not isinstance(shared_values, list):
+            add(errors, "RESERVATION_SET_INCOMPLETE")
+            shared_values = []
+        for item in shared_values:
+            normalized = normalize_path(shared_path(item))
+            if normalized is None:
+                add(errors, "INVALID_PATH")
+            if (
+                not isinstance(item, dict)
+                or set(item) != {"path", "ownerDomainUid", "allowedMutation"}
+                or not valid_uid(item.get("ownerDomainUid"))
+                or not nonblank(item.get("allowedMutation"))
+            ):
+                add(errors, "INVALID_SHARED_TOUCHPOINT")
+            elif normalized is not None:
+                shared.append((issue, normalized, item.get("ownerDomainUid")))
+                if domain_by_uid and item.get("ownerDomainUid") not in domain_by_uid:
+                    add(errors, "UNKNOWN_SHARED_OWNER_DOMAIN")
+
+        dependencies = row.get("dependsOnIssues")
+        conflicts = row.get("conflictsWithIssues")
+        if not isinstance(dependencies, list) or not isinstance(conflicts, list):
+            add(errors, "RESERVATION_SET_INCOMPLETE")
+            dependencies = []
+            conflicts = []
+        dependency_keys = [issue_key(dependency) for dependency in dependencies]
+        conflict_keys = [issue_key(conflict) for conflict in conflicts]
+        if None in dependency_keys or None in conflict_keys:
+            add(errors, "INVALID_GITHUB_ISSUE")
+        normalized_dependencies = [item for item in dependency_keys if item is not None]
+        normalized_conflicts = [item for item in conflict_keys if item is not None]
+        edge_map[issue] = normalized_dependencies
+        conflict_map[issue] = normalized_conflicts
+        if len(normalized_dependencies) != len(set(normalized_dependencies)):
+            add(errors, "DUPLICATE_DEPENDENCY_EDGE")
+        if len(normalized_conflicts) != len(set(normalized_conflicts)):
+            add(errors, "DUPLICATE_CONFLICT_EDGE")
+        if set(normalized_dependencies) & set(normalized_conflicts):
+            add(errors, "DEPENDENCY_CONFLICT_OVERLAP")
+        if issue in normalized_dependencies:
+            add(errors, "DEPENDENCY_CYCLE")
+        if issue in normalized_conflicts:
+            add(errors, "SELF_CONFLICT")
+
+    if len(issue_keys) != len(set(issue_keys)):
+        add(errors, "DUPLICATE_ISSUE_AUTHORITY")
+    issue_set = set(issue_keys)
+    for dependencies in edge_map.values():
+        if any(dependency not in issue_set for dependency in dependencies):
+            add(errors, "UNRESOLVED_DEPENDENCY_ISSUE")
+    for conflicts in conflict_map.values():
+        if any(conflict not in issue_set for conflict in conflicts):
+            add(errors, "UNRESOLVED_CONFLICT_ISSUE")
+
+    visiting: set[tuple[str, str, int]] = set()
+    visited: set[tuple[str, str, int]] = set()
+
+    def visit(issue: tuple[str, str, int]) -> bool:
+        if issue in visiting:
+            return True
+        if issue in visited:
+            return False
+        visiting.add(issue)
+        if any(
+            dependency in issue_set and visit(dependency)
+            for dependency in edge_map.get(issue, [])
+        ):
+            return True
+        visiting.remove(issue)
+        visited.add(issue)
+        return False
+
+    if any(visit(issue) for issue in issue_set if issue not in visited):
+        add(errors, "DEPENDENCY_CYCLE")
+    for issue, conflicts in conflict_map.items():
+        for conflict in conflicts:
+            if conflict in issue_set and issue not in conflict_map.get(conflict, []):
+                add(errors, "ASYMMETRIC_CONFLICT")
+
+    merge_order = reservation.get("mergeOrder")
+    if not isinstance(merge_order, list) or not merge_order:
+        add(errors, "MERGE_ORDER_MISSING_MEMBER")
+        merge_order = []
+    merge_keys = [issue_key(issue) for issue in merge_order]
+    if None in merge_keys:
+        add(errors, "INVALID_GITHUB_ISSUE")
+    normalized_merge = [item for item in merge_keys if item is not None]
+    if len(normalized_merge) != len(set(normalized_merge)):
+        add(errors, "MERGE_ORDER_DUPLICATE")
+    if issue_set and any(issue not in issue_set for issue in normalized_merge):
+        add(errors, "MERGE_ORDER_UNKNOWN_MEMBER")
+    if issue_set - set(normalized_merge):
+        add(errors, "MERGE_ORDER_MISSING_MEMBER")
+    positions = {issue: index for index, issue in enumerate(normalized_merge)}
+    for issue, dependencies in edge_map.items():
+        for dependency in dependencies:
+            if (
+                issue in positions
+                and dependency in positions
+                and positions[dependency] >= positions[issue]
+            ):
+                add(errors, "MERGE_ORDER_DEPENDENCY_VIOLATION")
+
+    convergence = reservation.get("convergence")
+    if (
+        not isinstance(convergence, dict)
+        or not nonblank(convergence.get("owner"))
+        or not nonblank(convergence.get("command"))
+    ):
+        add(errors, "EMPTY_CONVERGENCE")
+    if not isinstance(convergence, dict) or convergence.get("terminal") is not True:
+        add(errors, "INVALID_CONVERGENCE_TERMINAL")
+
+    for index, (left_issue, left_id) in enumerate(reserved):
+        for right_issue, right_id in reserved[index + 1:]:
+            if left_issue != right_issue and left_id == right_id:
+                add(errors, "RESERVED_ID_COLLISION")
+    for index, (left_issue, left_path) in enumerate(owned):
+        for right_issue, right_path in owned[index + 1:]:
+            if left_issue != right_issue and paths_overlap(left_path, right_path):
+                add(errors, "PATH_COLLISION")
+        for shared_issue, shared_value, _ in shared:
+            if paths_overlap(left_path, shared_value):
+                add(errors, "PATH_COLLISION")
+    if len(issue_set) > 1:
+        shared_by_path: dict[tuple[str, bool], list[tuple[Any, Any]]] = defaultdict(list)
+        for issue, path, owner_uid in shared:
+            shared_by_path[path].append((issue, owner_uid))
+        if any(len({issue for issue, _ in values}) < 2 for values in shared_by_path.values()):
+            add(errors, "ASYMMETRIC_SHARED_TOUCHPOINT")
+        if any(
+            len({owner for _, owner in values}) != 1
+            or None in {owner for _, owner in values}
+            for values in shared_by_path.values()
+        ):
+            add(errors, "SHARED_OWNER_MISMATCH")
+
+
+def validate_reservation_sets(document: dict[str, Any], errors: list[str]) -> None:
+    assignments = document.get("assignments", [])
+    reservation_sets = document.get("reservationSets", [])
+    if not isinstance(reservation_sets, list):
+        add(errors, "RESERVATION_SET_INCOMPLETE")
+        return
+    by_id: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    by_epoch: dict[tuple[Any, Any], list[dict[str, Any]]] = defaultdict(list)
+    for reservation in reservation_sets:
+        if not isinstance(reservation, dict):
+            add(errors, "RESERVATION_SET_INCOMPLETE")
+            continue
+        validate_reservation_set_semantics(reservation, errors, document)
+        reservation_id = reservation.get("id")
+        if not isinstance(reservation_id, str) or not reservation_id:
+            continue
+        by_id[reservation_id].append(reservation)
+        by_epoch[reservation_epoch_key(reservation)].append(reservation)
+    if any(len(values) > 1 for values in by_epoch.values()):
+        add(errors, "AMBIGUOUS_RESERVATION_EPOCH")
+
+    grouped_assignments: dict[tuple[Any, Any], list[dict[str, Any]]] = defaultdict(list)
+    for assignment in assignments:
+        if not isinstance(assignment, dict):
+            add(errors, "ASSIGNMENT_REQUIRED_FIELD_MISSING")
+            continue
+        reference = assignment_coordination(assignment).get("reservationSet")
+        if not isinstance(reference, dict):
+            add(errors, "RESERVATION_SET_REQUIRED")
+            continue
+        reservation_id = reference.get("id")
+        digest = reference.get("digest")
+        if not isinstance(reservation_id, str) or not reservation_id:
+            add(errors, "RESERVATION_SET_REQUIRED")
+            continue
+        if not isinstance(digest, str) or not DIGEST_RE.fullmatch(digest):
+            add(errors, "INVALID_RESERVATION_DIGEST")
+            continue
+        epoch = (reservation_id, digest)
+        grouped_assignments[epoch].append(assignment)
+        candidates = by_epoch.get(epoch, [])
+        if not candidates:
+            same_id = by_id.get(reservation_id, [])
+            if same_id and all(canonical_digest(candidate) is None for candidate in same_id):
+                continue
+            if same_id:
+                add(errors, "RESERVATION_DIGEST_MISMATCH")
+            else:
+                add(errors, "UNRESOLVED_RESERVATION_SET")
+        elif len(candidates) > 1:
+            add(errors, "AMBIGUOUS_RESERVATION_EPOCH")
+
+    for epoch, group in grouped_assignments.items():
+        candidates = by_epoch.get(epoch, [])
+        if len(candidates) != 1:
+            continue
+        reservation = candidates[0]
+        rows = reservation.get("assignments")
+        if not isinstance(rows, list) or not rows:
+            continue
+        if any(
+            not isinstance(row, dict) or not RESERVATION_ROW_FIELDS.issubset(row)
+            for row in rows
+        ):
+            add(errors, "RESERVATION_SET_INCOMPLETE")
+        group_issues = [
+            issue_key(assignment_issue(assignment)) for assignment in group
+        ]
+        row_issues = [issue_key(row.get("issue")) for row in rows if isinstance(row, dict)]
+        if None in group_issues or None in row_issues:
+            add(errors, "INVALID_GITHUB_ISSUE")
+        if Counter(row_issues) != Counter(group_issues):
+            add(errors, "RESERVATION_SET_INCOMPLETE")
+        rows_by_issue = {
+            issue_key(row.get("issue")): row for row in rows if isinstance(row, dict)
+        }
+        for assignment in group:
+            issue = issue_key(assignment_issue(assignment))
+            if rows_by_issue.get(issue) != assignment_projection(assignment):
+                add(errors, "RESERVATION_ASSIGNMENT_MISMATCH")
+        bases = {
+            assignment_coordination(assignment).get("integrationBase")
+            for assignment in group
+        }
+        if len(bases) != 1 or None in bases or bases != {reservation.get("integrationBase")}:
+            add(errors, "STALE_COMMON_BASE")
+        if bases != {reservation.get("integrationBase")}:
+            add(errors, "RESERVATION_ASSIGNMENT_MISMATCH")
+        shared_order = {
+            canonical_digest({
+                "mergeOrder": assignment_coordination(assignment).get("mergeOrder"),
+                "convergence": assignment_coordination(assignment).get("convergence"),
+            })
+            for assignment in group
+        }
+        if len(shared_order) != 1:
+            add(errors, "CONVERGENCE_CONTRACT_MISMATCH")
+        for assignment in group:
+            coordination = assignment_coordination(assignment)
+            if (
+                coordination.get("mergeOrder") != reservation.get("mergeOrder")
+                or coordination.get("convergence") != reservation.get("convergence")
+            ):
+                add(errors, "RESERVATION_ASSIGNMENT_MISMATCH")
+
+    # An unbound typed set is a current preparatory epoch. It has no weaker
+    # collision authority than a bound current epoch: preparation is the point
+    # at which repository-wide ID/path conflicts must be prevented. Terminal
+    # bound epochs remain history and are deliberately excluded here.
+    current_bound_epochs = {
+        assignment_epoch_key(assignment)
+        for assignment in assignments
+        if isinstance(assignment, dict)
+        and assignment.get("declaredState") in {"proposed", "active", "blocked"}
+    }
+    bound_epochs = set(grouped_assignments)
+    preparatory_epochs = {
+        reservation_epoch_key(reservation)
+        for reservation in reservation_sets
+        if isinstance(reservation, dict)
+        and reservation_epoch_key(reservation) not in bound_epochs
+    }
+    compared_epochs = current_bound_epochs | preparatory_epochs
+    claims: dict[tuple[Any, Any], dict[str, list[Any]]] = defaultdict(
+        lambda: {"ids": [], "paths": []}
+    )
+    for reservation in reservation_sets:
+        if not isinstance(reservation, dict):
+            continue
+        epoch = reservation_epoch_key(reservation)
+        if epoch not in compared_epochs:
+            continue
+        rows = reservation.get("assignments", [])
+        for row in rows if isinstance(rows, list) else []:
+            if not isinstance(row, dict):
+                continue
+            issue = issue_key(row.get("issue"))
+            for reference in row.get("reservedIds", []):
+                key = reference_key(reference)
+                if key is not None:
+                    claims[epoch]["ids"].append((issue, key))
+            for value in row.get("ownedPaths", []):
+                normalized = normalize_path(value)
+                if normalized is not None:
+                    claims[epoch]["paths"].append((issue, normalized))
+
+            if epoch in preparatory_epochs:
+                for reference in row.get("authorizedSlices", []):
+                    if (
+                        isinstance(reference, dict)
+                        and reference.get("acceptedCandidate") is not None
+                    ):
+                        add(errors, "PREPARATORY_ACCEPTED_CANDIDATE")
+            for item in row.get("sharedTouchpoints", []):
+                normalized = normalize_path(shared_path(item))
+                if normalized is not None:
+                    claims[epoch]["paths"].append((issue, normalized))
+
+    ordered_epochs = list(claims)
+    for index, left_epoch in enumerate(ordered_epochs):
+        for right_epoch in ordered_epochs[index + 1:]:
+            if not (
+                left_epoch in preparatory_epochs
+                or right_epoch in preparatory_epochs
+            ):
+                continue
+            left_claims = claims[left_epoch]
+            right_claims = claims[right_epoch]
+            if any(
+                left_id == right_id
+                for _, left_id in left_claims["ids"]
+                for _, right_id in right_claims["ids"]
+            ):
+                add(errors, "RESERVED_ID_COLLISION")
+            if any(
+                paths_overlap(left_path, right_path)
+                for _, left_path in left_claims["paths"]
+                for _, right_path in right_claims["paths"]
+            ):
+                add(errors, "PATH_COLLISION")
+
+    # Reservation is a one-time allocation claim, not a renewable lease. A
+    # terminal epoch no longer owns its paths, but its IDs remain allocated in
+    # the durable inventory and cannot be introduced by a later epoch. Exact
+    # assignment revision history is reconstructed separately from snapshots
+    # and therefore does not duplicate reservation objects here.
+    epoch_kinds: dict[tuple[Any, Any], str] = {}
+    for epoch in by_epoch:
+        bound = grouped_assignments.get(epoch, [])
+        if not bound:
+            epoch_kinds[epoch] = "preparatory"
+        elif all(
+            assignment.get("declaredState")
+            in {"accepted", "rejected", "cancelled", "superseded"}
+            for assignment in bound
+        ):
+            epoch_kinds[epoch] = "terminal"
+        else:
+            epoch_kinds[epoch] = "current"
+    all_id_claims: dict[tuple[str, str], set[tuple[Any, Any]]] = defaultdict(set)
+    for reservation in reservation_sets:
+        if not isinstance(reservation, dict):
+            continue
+        epoch = reservation_epoch_key(reservation)
+        for row in reservation.get("assignments", []):
+            if not isinstance(row, dict):
+                continue
+            for reference in row.get("reservedIds", []):
+                key = reference_key(reference)
+                if key is not None:
+                    all_id_claims[key].add(epoch)
+    if any(
+        len(epochs) > 1
+        and "terminal" in {epoch_kinds.get(epoch) for epoch in epochs}
+        for epochs in all_id_claims.values()
+    ):
+        add(errors, "RESERVED_ID_EPOCH_REUSE")
+
+
+def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
+    assignments = document.get("assignments", [])
+    domain_by_uid = active_domain_map(document)
+    records = {
+        reference_key(record): record
+        for record in document.get("records", [])
+        if reference_key(record) is not None
+    }
+    issues = [
+        issue_key(assignment_issue(assignment)) for assignment in assignments
+    ]
+    issue_map = {
+        issue_key(assignment_issue(item)): item
+        for item in assignments
+        if issue_key(assignment_issue(item)) is not None
+    }
+    if any(
+        issue is not None and count > 1
+        for issue, count in Counter(issues).items()
+    ):
+        add(errors, "DUPLICATE_ISSUE_AUTHORITY")
+
+    assignments_by_epoch: dict[tuple[Any, Any], list[dict[str, Any]]] = defaultdict(list)
+    for assignment in assignments:
+        if isinstance(assignment, dict):
+            assignments_by_epoch[assignment_epoch_key(assignment)].append(assignment)
+    current_epochs = {
+        epoch
+        for epoch, members in assignments_by_epoch.items()
+        if any(member.get("declaredState") in {"proposed", "active", "blocked"} for member in members)
+    }
+    if len(current_epochs) > 1:
+        add(errors, "MULTIPLE_CURRENT_RESERVATION_EPOCHS")
+
+    owned: list[tuple[tuple[Any, Any], Any, tuple[str, bool]]] = []
+    shared: list[tuple[tuple[Any, Any], Any, tuple[str, bool], Any]] = []
+    reserved: dict[tuple[str, str], Any] = {}
+    inventory_status_by_id = issued_statuses(document)
+    for assignment in assignments:
+        if not isinstance(assignment, dict):
+            add(errors, "ASSIGNMENT_REQUIRED_FIELD_MISSING")
+            continue
+        validate_typed_shape(
+            assignment, errors, "ASSIGNMENT_REQUIRED_FIELD_MISSING",
+            expected_kind="issue-assignment",
+        )
+        validate_stateful_values(
+            assignment, errors, kind_override="issue-assignment"
+        )
+        validate_accepted_evidence(assignment, errors)
+        authority = assignment_issue(assignment)
+        authority_identity = issue_key(authority)
+        if authority_identity is None:
+            add(errors, "INVALID_GITHUB_ISSUE")
+        coordination = assignment_coordination(assignment)
+        dependency_keys = [
+            issue_key(item) for item in coordination.get("dependsOnIssues", [])
+        ] if isinstance(coordination.get("dependsOnIssues", []), list) else []
+        conflict_keys = [
+            issue_key(item) for item in coordination.get("conflictsWithIssues", [])
+        ] if isinstance(coordination.get("conflictsWithIssues", []), list) else []
+        merge_keys = [
+            issue_key(item) for item in coordination.get("mergeOrder", [])
+        ] if isinstance(coordination.get("mergeOrder", []), list) else []
+        if None in dependency_keys or None in conflict_keys or None in merge_keys:
+            add(errors, "INVALID_GITHUB_ISSUE")
+        valid_dependencies = [item for item in dependency_keys if item is not None]
+        valid_conflicts = [item for item in conflict_keys if item is not None]
+        if len(valid_dependencies) != len(set(valid_dependencies)):
+            add(errors, "DUPLICATE_DEPENDENCY_EDGE")
+        if len(valid_conflicts) != len(set(valid_conflicts)):
+            add(errors, "DUPLICATE_CONFLICT_EDGE")
+        if set(valid_dependencies) & set(valid_conflicts):
+            add(errors, "DEPENDENCY_CONFLICT_OVERLAP")
+        if authority_identity is not None and authority_identity in valid_dependencies:
+            add(errors, "DEPENDENCY_CYCLE")
+        if authority_identity is not None and authority_identity in valid_conflicts:
+            add(errors, "SELF_CONFLICT")
+        base = coordination.get("integrationBase")
+        if base is not None and not SHA_RE.fullmatch(str(base)):
+            add(errors, "INVALID_INTEGRATION_BASE")
+        reservation_reference = coordination.get("reservationSet")
+        digest = (
+            reservation_reference.get("digest")
+            if isinstance(reservation_reference, dict)
+            else None
+        )
+        if digest is not None and not DIGEST_RE.fullmatch(str(digest)):
+            add(errors, "INVALID_RESERVATION_DIGEST")
+        if effective_kind(assignment) == "issue-assignment":
+            baseline_commit = mapping(assignment.get("baseline")).get("commit")
+            if not SHA_RE.fullmatch(str(baseline_commit)) or baseline_commit != base:
+                add(errors, "INVALID_INTEGRATION_BASE")
+            work_ref = assignment.get("workRef")
+            validate_key_hint(document, work_ref, errors)
+            validate_id_against_domain(
+                work_ref.get("domainUid") if isinstance(work_ref, dict) else None,
+                work_ref.get("id") if isinstance(work_ref, dict) else None,
+                domain_by_uid, errors, invalid_code="INVALID_WORK_REF",
+                style_code="WORK_REF_STYLE_MISMATCH",
+            )
+            work_key = reference_key(work_ref)
+            work_record = records.get(work_key)
+            host_repository = repository_for_domain(document, work_ref.get("domainUid")) if isinstance(work_ref, dict) else None
+            pull_identity = pull_request_key(mapping(assignment.get("delivery")).get("pullRequest"))
+            if host_repository is not None and (
+                authority_identity is None
+                or authority_identity[:2] != host_repository
+                or pull_identity is None
+                or pull_identity[:2] != host_repository
+            ):
+                add(errors, "REPOSITORY_AUTHORITY_MISMATCH")
+            if inventory_status_by_id.get(work_key) == "reserved":
+                add(errors, "RESERVED_ID_NOT_MATERIALIZED")
+            if work_record is None:
+                add(errors, "UNRESOLVED_WORK_REF")
+            elif effective_kind(work_record) != work_ref.get("type"):
+                add(errors, "WORK_REF_TYPE_MISMATCH")
+            elif effective_kind(work_record) in WORK_OWNER_KINDS | {"study"}:
+                authorities = work_record.get("issueAuthorities", [])
+                if not isinstance(authorities, list) or sum(
+                    issue_key(item) == authority_identity for item in authorities
+                ) != 1:
+                    add(errors, "OWNER_ISSUE_AUTHORITY_MISMATCH")
+            primary_issued_by = issued_authorities(document).get(work_key)
+            if (
+                work_record is not None
+                and effective_kind(work_record) == "study"
+                and primary_issued_by is not None
+                and primary_issued_by != authority_identity
+            ):
+                add(errors, "PRIMARY_WORK_AUTHORITY_MISMATCH")
+            authorized_slices = assignment.get("authorizedSlices", [])
+            authorized_keys: set[tuple[str, str]] = set()
+            for authorized_slice in (
+                authorized_slices if isinstance(authorized_slices, list) else []
+            ):
+                validate_key_hint(document, authorized_slice, errors)
+                authorized_key = validate_authorized_slice_reference(
+                    authorized_slice, errors
+                )
+                if authorized_key is None:
+                    continue
+                authorized_keys.add(authorized_key)
+                validate_id_against_domain(
+                    authorized_slice.get("domainUid"),
+                    authorized_slice.get("id"),
+                    domain_by_uid, errors, invalid_code="INVALID_REFERENCE",
+                    style_code="ACTIVE_SLICE_STYLE_MISMATCH",
+                )
+                slice_record = records.get(authorized_key)
+                if slice_record is None or effective_kind(slice_record) != "slice":
+                    add(errors, "UNRESOLVED_AUTHORIZED_SLICE")
+                elif issue_key(slice_record.get("assignmentIssue")) != authority_identity:
+                    add(errors, "SLICE_ASSIGNMENT_MISMATCH")
+                elif reference_key(slice_record.get("ownerRef")) != work_key:
+                    add(errors, "ACTIVE_SLICE_OWNER_MISMATCH")
+                allocated_by = issued_authorities(document).get(authorized_key)
+                if allocated_by is not None and allocated_by != authority_identity:
+                    add(errors, "AUTHORIZED_SLICE_ALLOCATION_MISMATCH")
+            for active_slice in assignment.get("activeSlices", []):
+                validate_key_hint(document, active_slice, errors)
+                validate_id_against_domain(
+                    active_slice.get("domainUid") if isinstance(active_slice, dict) else None,
+                    active_slice.get("id") if isinstance(active_slice, dict) else None,
+                    domain_by_uid, errors, invalid_code="INVALID_REFERENCE",
+                    style_code="ACTIVE_SLICE_STYLE_MISMATCH",
+                )
+                slice_record = records.get(reference_key(active_slice))
+                if slice_record is None or effective_kind(slice_record) != "slice":
+                    add(errors, "UNRESOLVED_ACTIVE_SLICE")
+                elif issue_key(slice_record.get("assignmentIssue")) != authority_identity:
+                    add(errors, "SLICE_ASSIGNMENT_MISMATCH")
+                elif reference_key(slice_record.get("ownerRef")) != work_key:
+                    add(errors, "ACTIVE_SLICE_OWNER_MISMATCH")
+                if reference_key(active_slice) not in authorized_keys:
+                    add(errors, "ACTIVE_SLICE_NOT_AUTHORIZED")
+
+            terminal_nonaccepted = assignment.get("declaredState") in {
+                "cancelled", "rejected", "superseded"
+            }
+            if terminal_nonaccepted:
+                if assignment.get("activeSlices") != []:
+                    add(errors, "TERMINAL_ASSIGNMENT_ACTIVE_SLICE")
+                if any(
+                    isinstance(records.get(key), dict)
+                    and records[key].get("declaredState") == "active"
+                    for key in authorized_keys
+                ):
+                    add(errors, "TERMINAL_SLICE_STILL_ACTIVE")
+                if any(
+                    inventory_status_by_id.get(reference_key(reference)) == "reserved"
+                    for reference in assignment_coordination(assignment).get(
+                        "reservedIds", []
+                    )
+                ):
+                    add(errors, "TERMINAL_UNBURNED_RESERVATION")
+
+            work_type = effective_kind(work_record)
+            is_standalone_fix = (
+                work_type == "fix"
+                and isinstance(work_record, dict)
+                and work_record.get("standaloneReviewedUnit") is True
+                and authorized_slices == []
+            )
+            is_active_implementation = (
+                assignment.get("declaredState") == "active"
+                and work_type in WORK_OWNER_KINDS
+                and not is_standalone_fix
+            )
+            has_assignment_write_surface = bool(
+                coordination.get("ownedPaths")
+                or coordination.get("sharedTouchpoints")
+            )
+            if (
+                not has_assignment_write_surface
+                and (work_type == "study" or is_standalone_fix)
+                and not nonblank(assignment.get("pathlessReason"))
+            ):
+                add(errors, "PATHLESS_ASSIGNMENT_REASON_REQUIRED")
+            if is_active_implementation:
+                declared_active_keys = {
+                    key
+                    for key, represented in records.items()
+                    if effective_kind(represented) == "slice"
+                    and represented.get("declaredState") == "active"
+                    and issue_key(represented.get("assignmentIssue")) == authority_identity
+                    and reference_key(represented.get("ownerRef")) == work_key
+                }
+                active_pointer_keys = {
+                    reference_key(reference)
+                    for reference in assignment.get("activeSlices", [])
+                    if reference_key(reference) is not None
+                }
+                if (
+                    declared_active_keys != active_pointer_keys
+                    and len(declared_active_keys) > 1
+                ):
+                    add(errors, "ACTIVE_SLICE_PROJECTION_MISMATCH")
+                if len(assignment.get("activeSlices", [])) != 1:
+                    add(errors, "ACTIVE_IMPLEMENTATION_SLICE_REQUIRED")
+                if not has_assignment_write_surface:
+                    add(errors, "ACTIVE_IMPLEMENTATION_WRITE_SURFACE_REQUIRED")
+                prohibited_repositories = {
+                    repository_key(value)
+                    for value in mapping(assignment.get("boundaries")).get(
+                        "prohibitedRepositories", []
+                    )
+                }
+                if host_repository is not None and host_repository in prohibited_repositories:
+                    add(errors, "HOST_REPOSITORY_PROHIBITED")
+                for active_slice in assignment.get("activeSlices", []):
+                    slice_record = records.get(reference_key(active_slice))
+                    if isinstance(slice_record, dict):
+                        if slice_record.get("declaredState") != "active":
+                            add(errors, "ACTIVE_SLICE_STATE_MISMATCH")
+                        if not (
+                            slice_record.get("ownedPaths")
+                            or slice_record.get("sharedTouchpoints")
+                        ):
+                            add(errors, "ACTIVE_SLICE_WRITE_SURFACE_REQUIRED")
+        for value in coordination.get("ownedPaths", []):
+            normalized = normalize_path(value)
+            if normalized is None:
+                add(errors, "INVALID_PATH")
+            else:
+                owned.append((assignment_epoch_key(assignment), authority_identity or authority, normalized))
+        for item in coordination.get("sharedTouchpoints", []):
+            normalized = normalize_path(shared_path(item))
+            if normalized is None:
+                add(errors, "INVALID_PATH")
+            else:
+                owner_uid = item.get("ownerDomainUid") if isinstance(item, dict) else None
+                if not isinstance(item, dict) or not nonblank(item.get("allowedMutation")):
+                    add(errors, "INVALID_SHARED_TOUCHPOINT")
+                if not valid_uid(owner_uid):
+                    add(errors, "INVALID_SHARED_OWNER")
+                elif domain_by_uid and owner_uid not in domain_by_uid:
+                    add(errors, "UNKNOWN_SHARED_OWNER_DOMAIN")
+                shared.append((assignment_epoch_key(assignment), authority_identity or authority, normalized, owner_uid))
+        prohibited_paths = [
+            normalize_path(value)
+            for value in mapping(assignment.get("boundaries")).get(
+                "prohibitedPaths", []
+            )
+        ]
+        prohibited_paths = [path for path in prohibited_paths if path is not None]
+        owned_paths = [
+            normalize_path(value) for value in coordination.get("ownedPaths", [])
+        ]
+        owned_paths = [path for path in owned_paths if path is not None]
+        shared_paths = [
+            normalize_path(shared_path(item))
+            for item in coordination.get("sharedTouchpoints", [])
+        ]
+        shared_paths = [path for path in shared_paths if path is not None]
+        if any(
+            paths_overlap(authorized, prohibited)
+            for authorized in owned_paths + shared_paths
+            for prohibited in prohibited_paths
+        ):
+            add(errors, "PROHIBITED_PATH_OVERLAP")
+        row_reserved: set[tuple[str, str]] = set()
+        for reference in coordination.get("reservedIds", []):
+            if not valid_reserved_allocation_reference(reference):
+                add(errors, "INVALID_REFERENCE")
+                continue
+            validate_key_hint(document, reference, errors)
+            validate_id_against_domain(
+                reference.get("domainUid"), reference.get("id"), domain_by_uid,
+                errors, invalid_code="INVALID_RESERVED_ID",
+                style_code="RESERVED_ID_STYLE_MISMATCH",
+            )
+            if domain_by_uid and reference.get("domainUid") not in domain_by_uid:
+                add(errors, "UNKNOWN_RESERVED_DOMAIN")
+            key = (reference["domainUid"], portable_text(reference["id"]))
+            if key in row_reserved:
+                add(errors, "DUPLICATE_RESERVED_ID")
+            row_reserved.add(key)
+            if key in reserved and reserved[key] != (authority_identity or authority):
+                add(errors, "RESERVED_ID_COLLISION")
+            reserved[key] = authority_identity or authority
+            issued_by = issued_authorities(document).get(key)
+            member = next(
+                (
+                    item for _, domain in declarations(document)
+                    if domain.get("state") == "active"
+                    and domain.get("domainUid") == reference.get("domainUid")
+                    for item in domain.get("issuedIds", [])
+                    if isinstance(item, dict)
+                    and portable_text(str(item.get("id", ""))) == key[1]
+                ),
+                None,
+            )
+            if key not in inventory_status_by_id:
+                add(errors, "RESERVED_ID_INVENTORY_REQUIRED")
+            elif issued_by != authority_identity:
+                add(errors, "ISSUED_ID_RECLAIM")
+            epoch_reference = mapping(coordination.get("reservationSet"))
+            if (
+                reference.get("allocationIssue") != assignment_issue(assignment)
+                or not isinstance(member, dict)
+                or member.get("source") != reference.get("source")
+                or mapping(member.get("allocationEpoch")) != {
+                    "reservationSetId": epoch_reference.get("id"),
+                    "reservationDigest": epoch_reference.get("digest"),
+                    "domainUid": reference.get("domainUid"),
+                    "id": reference.get("id"),
+                    "allocationIssue": reference.get("allocationIssue"),
+                    "source": reference.get("source"),
+                }
+            ):
+                add(errors, "ALLOCATION_EPOCH_MISMATCH")
+            if inventory_status_by_id.get(key) == "legacy-preserved":
+                add(errors, "LEGACY_PRESERVED_CURRENT_GATE")
+            if (
+                assignment.get("declaredState") in {"cancelled", "rejected", "superseded"}
+                and isinstance(member, dict)
+                and member.get("status") == "reserved"
+            ):
+                add(errors, "TERMINAL_RESERVATION_NOT_BURNED")
+
+    accepted_execution_states = {"active", "accepted"}
+    for epoch_members in assignments_by_epoch.values():
+        epoch_issue_map = {
+            issue_key(assignment_issue(item)): item
+            for item in epoch_members
+            if issue_key(assignment_issue(item)) is not None
+        }
+        for issue, assignment in epoch_issue_map.items():
+            state = assignment.get("declaredState")
+            coordination = assignment_coordination(assignment)
+            if state == "accepted":
+                candidate = mapping(assignment.get("acceptedEvidence")).get("candidate")
+                work_ref = assignment.get("workRef")
+                work_record = records.get(reference_key(work_ref))
+                work_type = work_ref.get("type") if isinstance(work_ref, dict) else None
+                active_slices = assignment.get("activeSlices", [])
+                slices = assignment.get("authorizedSlices", [])
+                if active_slices != []:
+                    add(errors, "ACCEPTED_ASSIGNMENT_ACTIVE_SLICE")
+                if work_type == "study":
+                    if (
+                        work_record is None
+                        or effective_kind(work_record) != "study"
+                        or work_record.get("declaredState") != "accepted"
+                    ):
+                        add(errors, "ASSIGNMENT_STUDY_STATE_MISMATCH")
+                    elif mapping(work_record.get("acceptedEvidence")).get("candidate") != candidate:
+                        add(errors, "ASSIGNMENT_CANDIDATE_MISMATCH")
+                elif work_type == "fix" and slices == []:
+                    if (
+                        work_record is None
+                        or work_record.get("declaredState") not in {"delivered", "released"}
+                    ):
+                        add(errors, "ASSIGNMENT_FIX_STATE_MISMATCH")
+                    elif mapping(work_record.get("acceptedEvidence")).get("candidate") != candidate:
+                        add(errors, "ASSIGNMENT_CANDIDATE_MISMATCH")
+                else:
+                    if not isinstance(slices, list) or not slices:
+                        add(errors, "ASSIGNMENT_SLICE_STATE_MISMATCH")
+                    for slice_ref in slices if isinstance(slices, list) else []:
+                        slice_record = records.get(reference_key(slice_ref))
+                        if slice_record is None or slice_record.get("declaredState") != "accepted":
+                            add(errors, "ASSIGNMENT_SLICE_STATE_MISMATCH")
+                        elif (
+                            slice_ref.get("acceptedCandidate")
+                            != mapping(slice_record.get("acceptedEvidence")).get("candidate")
+                        ):
+                            add(errors, "AUTHORIZED_SLICE_CANDIDATE_MISMATCH")
+                for dependency in coordination.get("dependsOnIssues", []):
+                    dependency_assignment = epoch_issue_map.get(issue_key(dependency))
+                    if (
+                        dependency_assignment is not None
+                        and dependency_assignment.get("declaredState") != "accepted"
+                    ):
+                        add(errors, "UNSATISFIED_ASSIGNMENT_PREREQUISITE")
+            if state in accepted_execution_states:
+                for conflict in coordination.get("conflictsWithIssues", []):
+                    peer = epoch_issue_map.get(issue_key(conflict))
+                    if (
+                        issue_key(conflict) != issue
+                        and peer is not None
+                        and peer.get("declaredState") in accepted_execution_states
+                    ):
+                        add(errors, "ACTIVE_ASSIGNMENT_CONFLICT")
+
+    for index, (left_epoch, left_issue, left_path) in enumerate(owned):
+        for right_epoch, right_issue, right_path in owned[index + 1:]:
+            if (
+                left_epoch == right_epoch
+                and left_issue != right_issue
+                and paths_overlap(left_path, right_path)
+            ):
+                add(errors, "PATH_COLLISION")
+        for shared_epoch, _, shared_value, _ in shared:
+            if left_epoch == shared_epoch and paths_overlap(left_path, shared_value):
+                add(errors, "PATH_COLLISION")
+
+    for epoch, epoch_assignments in assignments_by_epoch.items():
+        if len(epoch_assignments) <= 1:
+            continue
+        shared_by_path: dict[tuple[str, bool], list[tuple[str, Any]]] = defaultdict(list)
+        for shared_epoch, issue, path, owner_uid in shared:
+            if shared_epoch == epoch:
+                shared_by_path[path].append((issue, owner_uid))
+        if any(len({issue for issue, _ in values}) < 2 for values in shared_by_path.values()):
+            add(errors, "ASYMMETRIC_SHARED_TOUCHPOINT")
+        if any(len({owner for _, owner in values}) != 1 or None in {owner for _, owner in values}
+               for values in shared_by_path.values()):
+            add(errors, "SHARED_OWNER_MISMATCH")
+
+
+def load_historical_json(
+    *,
+    candidate: Any,
+    path: Any,
+    repository_root: Path | None,
+    embedded_history_blobs: dict[str, str] | None,
+) -> tuple[dict[str, Any] | None, str | None]:
+    if not SHA_RE.fullmatch(str(candidate)) or not valid_record_path(path):
+        return None, "unavailable"
+    key = f"{candidate}:{path}"
+    try:
+        if repository_root is not None:
+            subprocess.run(
+                ["git", "cat-file", "-e", f"{candidate}^{{commit}}"],
+                cwd=repository_root, check=True, capture_output=True,
+            )
+            raw = subprocess.run(
+                ["git", "show", key],
+                cwd=repository_root, check=True, capture_output=True,
+            ).stdout.decode("utf-8")
+        elif embedded_history_blobs is not None:
+            if key not in embedded_history_blobs:
+                return None, "unavailable"
+            raw = embedded_history_blobs[key]
+        else:
+            return None, "driver"
+        loaded = strict_json_loads(raw)
+    except DuplicateJsonMemberError:
+        return None, "duplicate"
+    except InvalidJsonScalarError:
+        return None, "scalar"
+    except (
+        OSError, subprocess.CalledProcessError, UnicodeDecodeError,
+        json.JSONDecodeError,
+    ):
+        return None, "unavailable"
+    return (loaded, None) if isinstance(loaded, dict) else (None, "unavailable")
+
+
+def resolve_git_commit(repository_root: Path, candidate: Any) -> str | None:
+    """Resolve one exact 40-hex commit identity without accepting aliases."""
+    if not isinstance(candidate, str) or SHA_RE.fullmatch(candidate) is None:
+        return None
+    try:
+        resolved = subprocess.run(
+            ["git", "rev-parse", "--verify", f"{candidate}^{{commit}}"],
+            cwd=repository_root, check=True, capture_output=True, text=True,
+        ).stdout.strip()
+    except (OSError, subprocess.CalledProcessError):
+        return None
+    return resolved if resolved == candidate else None
+
+
+def git_is_strict_ancestor(
+    repository_root: Path, ancestor: str, descendant: str,
+) -> bool:
+    if ancestor == descendant:
+        return False
+    try:
+        result = subprocess.run(
+            ["git", "merge-base", "--is-ancestor", ancestor, descendant],
+            cwd=repository_root, check=False, capture_output=True,
+        )
+    except OSError:
+        return False
+    return result.returncode == 0
+
+
+def authorized_slice_map(assignment: dict[str, Any]) -> dict[tuple[str, str], Any] | None:
+    entries = assignment.get("authorizedSlices", [])
+    if not isinstance(entries, list):
+        return None
+    result: dict[tuple[str, str], Any] = {}
+    for entry in entries:
+        key = reference_key(entry)
+        if key is None or key in result or not isinstance(entry, dict):
+            return None
+        result[key] = entry.get("acceptedCandidate")
+    return result
+
+
+def reserved_id_set(assignment: dict[str, Any]) -> set[tuple[str, str]]:
+    return {
+        key
+        for reference in assignment_coordination(assignment).get("reservedIds", [])
+        for key in [reference_key(reference)]
+        if key is not None
+    }
+
+
+def revision_semantics_preserved(
+    earlier: dict[str, Any],
+    later: dict[str, Any],
+    *,
+    earlier_source: str,
+    later_source: str,
+) -> bool:
+    if (
+        issue_key(assignment_issue(earlier)) != issue_key(assignment_issue(later))
+        or earlier_source != later_source
+        or earlier.get("workRef") != later.get("workRef")
+    ):
+        return False
+    earlier_slices = authorized_slice_map(earlier)
+    later_slices = authorized_slice_map(later)
+    if earlier_slices is None or later_slices is None:
+        return False
+    for key, accepted_candidate in earlier_slices.items():
+        if key not in later_slices:
+            return False
+        if accepted_candidate is not None and later_slices[key] != accepted_candidate:
+            return False
+    return True
+
+
+def normalize_historical_reservation(
+    reservation: dict[str, Any], historical_assignment: dict[str, Any],
+    *, revision: int,
+) -> dict[str, Any] | None:
+    """Map only the two known pre-projection pilot shapes into current v0.
+
+    Revision-1 stored dependencies/conflicts at set level and stored qualified
+    IDs as one row domain plus strings. Revisions 2-4 omitted only the not-yet
+    introduced `authorizedSlices` member. No value absent from those explicit
+    compatibility shapes is inferred from mutable/current state.
+    """
+    normalized = copy.deepcopy(reservation)
+    rows = normalized.get("assignments")
+    if not isinstance(rows, list) or not rows:
+        return None
+    current_top_level_fields = TYPE_REQUIRED_FIELDS["reservation-set"]
+    legacy_top_level_fields = current_top_level_fields | {"dependencies", "conflicts"}
+    legacy_row_fields = {
+        "issue", "domainUid", "workRef", "recordPaths", "reservedIds",
+        "ownedPaths", "sharedTouchpoints",
+    }
+    row_field_sets = [set(row) if isinstance(row, dict) else set() for row in rows]
+    if any(not isinstance(row, dict) for row in rows):
+        return None
+    current_shape = all(fields == RESERVATION_ROW_FIELDS for fields in row_field_sets)
+    missing_authorized_shape = all(
+        fields == RESERVATION_ROW_FIELDS - {"authorizedSlices"}
+        for fields in row_field_sets
+    )
+    revision_one_shape = len(rows) == 1 and row_field_sets == [legacy_row_fields]
+    if current_shape:
+        if "dependencies" in reservation or "conflicts" in reservation:
+            return None
+    elif missing_authorized_shape:
+        if revision not in {2, 3, 4} or set(reservation) != current_top_level_fields:
+            return None
+    elif revision_one_shape:
+        if revision != 1 or set(reservation) != legacy_top_level_fields:
+            return None
+    else:
+        # Mixed, partial, and hybrid rows fail closed instead of borrowing
+        # whichever compatibility branch happens to match one member.
+        return None
+    modern_rows: list[dict[str, Any]] = []
+    for row in rows:
+        if set(row) == RESERVATION_ROW_FIELDS:
+            modern_rows.append(row)
+            continue
+        if set(row) == RESERVATION_ROW_FIELDS - {"authorizedSlices"}:
+            row["authorizedSlices"] = []
+            modern_rows.append(row)
+            continue
+        issue = row.get("issue")
+        assignment_work = historical_assignment.get("workRef")
+        row_work = row.get("workRef")
+        if (
+            issue_key(issue) is None
+            or not isinstance(assignment_work, dict)
+            or not isinstance(row_work, dict)
+            or set(row_work) != {"domainUid", "id"}
+            or row_work.get("domainUid") != row.get("domainUid")
+            or {
+                "domainUid": assignment_work.get("domainUid"),
+                "id": assignment_work.get("id"),
+            } != row_work
+        ):
+            return None
+        dependency_rows = reservation.get("dependencies")
+        conflict_rows = reservation.get("conflicts")
+        if not isinstance(dependency_rows, list) or not isinstance(conflict_rows, list):
+            return None
+        dependencies: list[Any] = []
+        for edge in dependency_rows:
+            if (
+                not isinstance(edge, dict)
+                or set(edge) != {"issue", "dependsOn"}
+                or issue_key(edge.get("issue")) is None
+                or not isinstance(edge.get("dependsOn"), list)
+            ):
+                return None
+            if issue_key(edge.get("issue")) == issue_key(issue):
+                dependencies.extend(edge["dependsOn"])
+        conflicts: list[Any] = []
+        for edge in conflict_rows:
+            if (
+                not isinstance(edge, dict)
+                or set(edge) != {"issue", "conflictsWith"}
+                or issue_key(edge.get("issue")) is None
+                or not isinstance(edge.get("conflictsWith"), list)
+            ):
+                return None
+            if issue_key(edge.get("issue")) == issue_key(issue):
+                conflicts.extend(edge["conflictsWith"])
+        reserved_ids = row.get("reservedIds")
+        if not isinstance(reserved_ids, list) or any(not nonblank(item) for item in reserved_ids):
+            return None
+        modern_rows.append({
+            "issue": issue,
+            "workRef": assignment_work,
+            "authorizedSlices": [],
+            "activeSlices": [],
+            "reservedIds": [
+                {"domainUid": row.get("domainUid"), "id": item}
+                for item in reserved_ids
+            ],
+            "ownedPaths": row.get("ownedPaths"),
+            "sharedTouchpoints": row.get("sharedTouchpoints"),
+            "dependsOnIssues": dependencies,
+            "conflictsWithIssues": conflicts,
+        })
+    normalized["assignments"] = modern_rows
+    normalized.pop("dependencies", None)
+    normalized.pop("conflicts", None)
+    convergence = normalized.get("convergence")
+    assignment_convergence = assignment_coordination(historical_assignment).get(
+        "convergence"
+    )
+    if (
+        isinstance(convergence, dict)
+        and set(convergence) == {"owner", "command"}
+        and convergence == assignment_convergence
+    ):
+        if revision != 1:
+            return None
+        normalized["convergence"] = {**convergence, "terminal": True}
+    return normalized
+
+
+def validate_assignment_history(
+    document: dict[str, Any], errors: list[str], *,
+    repository_root: Path | None,
+    embedded_history_blobs: dict[str, str] | None,
+) -> None:
+    histories = document.get("assignmentHistory", [])
+    if not isinstance(histories, list):
+        add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
+        return
+    histories_by_assignment: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    histories_by_authority: dict[tuple[str, str, int], list[dict[str, Any]]] = defaultdict(list)
+    history_sources: set[str] = set()
+    for history in histories:
+        if not isinstance(history, dict):
+            add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
+            continue
+        source = history.get("source")
+        assignment_source = history.get("assignmentSource")
+        if isinstance(assignment_source, str):
+            histories_by_assignment[assignment_source].append(history)
+        authority_identity = issue_key(history.get("authorityIssue"))
+        if authority_identity is not None:
+            histories_by_authority[authority_identity].append(history)
+        if isinstance(source, str):
+            if source in history_sources:
+                add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
+            history_sources.add(source)
+        reservation = history.get("reservationSet")
+        if "schemaVersion" not in history:
+            add(errors, "SCHEMA_VERSION_REQUIRED")
+        elif history.get("schemaVersion") != ASSIGNMENT_HISTORY_SCHEMA_VERSION:
+            add(errors, "UNSUPPORTED_SCHEMA_VERSION")
+        if "kind" not in history:
+            add(errors, "KIND_MARKER_REQUIRED")
+        elif history.get("kind") != "issue-assignment-revision-snapshot":
+            add(errors, "KIND_MARKER_MISMATCH")
+        if "experimental" not in history:
+            add(errors, "EXPERIMENTAL_MARKER_REQUIRED")
+        elif history.get("experimental") is not True:
+            add(errors, "EXPERIMENTAL_MARKER_REQUIRED")
+        valid = (
+            valid_record_path(source)
+            and valid_record_path(assignment_source)
+            and issue_key(history.get("authorityIssue")) is not None
+            and isinstance(history.get("revision"), int)
+            and not isinstance(history.get("revision"), bool)
+            and history.get("revision") >= 1
+            and SHA_RE.fullmatch(str(history.get("sourceCandidate", ""))) is not None
+            and isinstance(reservation, dict)
+            and nonblank(reservation.get("id"))
+            and DIGEST_RE.fullmatch(str(reservation.get("digest", ""))) is not None
+            and isinstance(history.get("supersededByRevision"), int)
+            and history.get("supersededByRevision") == history.get("revision") + 1
+            and isinstance(history.get("sourceFieldPresent"), bool)
+            and nonblank(history.get("supersessionReason"))
+            and isinstance(history.get("recordedContext"), dict)
+            and bool(history.get("recordedContext"))
+            and "previousSnapshot" in history
+        )
+        if not valid:
+            add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
+
+    matched_history_ids: set[int] = set()
+    subject_candidate: str | None = None
+    if repository_root is not None:
+        try:
+            subject_candidate = subprocess.run(
+                ["git", "rev-parse", "--verify", "HEAD^{commit}"],
+                cwd=repository_root, check=True, capture_output=True, text=True,
+            ).stdout.strip()
+        except (OSError, subprocess.CalledProcessError):
+            add(errors, "REPOSITORY_DRIVER_REQUIRED")
+    for assignment in document.get("assignments", []):
+        if not isinstance(assignment, dict) or assignment.get("kind") != "issue-assignment":
+            continue
+        revision = assignment.get("revision")
+        previous = assignment.get("previousRevision")
+        refreeze = assignment.get("refreeze")
+        source = assignment.get("source")
+        authority = issue_key(assignment_issue(assignment))
+        candidate_histories = (
+            histories_by_assignment.get(source, [])
+            if isinstance(source, str) and histories_by_assignment.get(source)
+            else histories_by_authority.get(authority, []) if authority is not None else []
+        )
+        if revision == 1:
+            if (
+                "previousRevision" in assignment
+                or "refreeze" in assignment
+                or candidate_histories
+            ):
+                add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
+            continue
+        if not isinstance(revision, int) or isinstance(revision, bool) or revision < 1:
+            continue
+        if not isinstance(previous, dict) or not isinstance(refreeze, dict):
+            add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
+            continue
+        if repository_root is None and embedded_history_blobs is None:
+            add(errors, "REPOSITORY_DRIVER_REQUIRED")
+        chain = list(candidate_histories)
+        if (
+            len(chain) != revision - 1
+            or {history.get("revision") for history in chain} != set(range(1, revision))
+        ):
+            add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
+            continue
+        chain.sort(key=lambda history: history["revision"])
+        matched_history_ids.update(id(history) for history in chain)
+
+        if repository_root is not None and subject_candidate is not None:
+            resolved_candidates = [
+                resolve_git_commit(repository_root, history.get("sourceCandidate"))
+                for history in chain
+            ]
+            existing_candidates = [
+                candidate for candidate in resolved_candidates if candidate is not None
+            ]
+            if len(existing_candidates) != len(set(existing_candidates)):
+                add(errors, "HISTORY_CANDIDATE_DUPLICATE")
+            for candidate in existing_candidates:
+                if not git_is_strict_ancestor(
+                    repository_root, candidate, subject_candidate
+                ):
+                    add(errors, "HISTORY_CANDIDATE_NOT_ANCESTOR")
+            for earlier, later in zip(resolved_candidates, resolved_candidates[1:]):
+                if (
+                    earlier is not None
+                    and later is not None
+                    and earlier != later
+                    and not git_is_strict_ancestor(repository_root, earlier, later)
+                ):
+                    add(errors, "HISTORY_CANDIDATE_ORDER_INVALID")
+        for index, history in enumerate(chain):
+            prior = chain[index - 1] if index else None
+            link = history.get("previousSnapshot")
+            if prior is None:
+                if link is not None:
+                    add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
+            elif (
+                not isinstance(link, dict)
+                or link.get("revision") != prior.get("revision")
+                or link.get("snapshotPath") != prior.get("source")
+                or link.get("sourceCandidate") != prior.get("sourceCandidate")
+                or link.get("reservationDigest")
+                != mapping(prior.get("reservationSet")).get("digest")
+            ):
+                add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
+            if index and (
+                mapping(prior.get("reservationSet")).get("digest")
+                == mapping(history.get("reservationSet")).get("digest")
+            ):
+                add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
+        history = chain[-1]
+        current_reservation = mapping(assignment_coordination(assignment).get("reservationSet"))
+        history_reservation = history.get("reservationSet", {})
+        if (
+            previous.get("revision") != history.get("revision")
+            or previous.get("snapshotPath") != history.get("source")
+            or previous.get("sourceCandidate") != history.get("sourceCandidate")
+            or previous.get("reservationDigest") != history_reservation.get("digest")
+            or assignment.get("revision") != history.get("revision") + 1
+            or history.get("supersededByRevision") != assignment.get("revision")
+            or current_reservation.get("digest") == history_reservation.get("digest")
+            or refreeze.get("sourceCandidate") != history.get("sourceCandidate")
+            or not nonblank(refreeze.get("reason"))
+        ):
+            add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
+
+        actual_chain: list[tuple[dict[str, Any], str]] = []
+        for historical in chain:
+            historical_assignment, assignment_error = load_historical_json(
+                candidate=historical.get("sourceCandidate"),
+                path=historical.get("assignmentSource"),
+                repository_root=repository_root,
+                embedded_history_blobs=embedded_history_blobs,
+            )
+            if assignment_error == "duplicate":
+                add(errors, "DUPLICATE_JSON_MEMBER")
+                continue
+            if assignment_error == "scalar":
+                add(errors, "INVALID_JSON_SCALAR")
+                continue
+            if historical_assignment is None:
+                if assignment_error == "driver":
+                    add(errors, "REPOSITORY_DRIVER_REQUIRED")
+                else:
+                    add(errors, "UNAVAILABLE_HISTORY_GIT_OBJECT")
+                continue
+            reservation_reference = mapping(
+                assignment_coordination(historical_assignment).get("reservationSet")
+            )
+            historical_reservation, reservation_error = load_historical_json(
+                candidate=historical.get("sourceCandidate"),
+                path=reservation_reference.get("path"),
+                repository_root=repository_root,
+                embedded_history_blobs=embedded_history_blobs,
+            )
+            if reservation_error == "duplicate":
+                add(errors, "DUPLICATE_JSON_MEMBER")
+                continue
+            if reservation_error == "scalar":
+                add(errors, "INVALID_JSON_SCALAR")
+                continue
+            if historical_reservation is None:
+                if reservation_error == "driver":
+                    add(errors, "REPOSITORY_DRIVER_REQUIRED")
+                else:
+                    add(errors, "UNAVAILABLE_HISTORY_GIT_OBJECT")
+                continue
+            actual_reservation_digest = canonical_digest(historical_reservation)
+            historical_reservation_snapshot = mapping(historical.get("reservationSet"))
+            normalized_historical_reservation = normalize_historical_reservation(
+                historical_reservation, historical_assignment,
+                revision=historical.get("revision"),
+            )
+            reservation_rows = [
+                row
+                for row in (
+                    normalized_historical_reservation.get("assignments", [])
+                    if normalized_historical_reservation is not None else []
+                )
+                if isinstance(row, dict)
+                and issue_key(row.get("issue"))
+                == issue_key(assignment_issue(historical_assignment))
+            ]
+            historical_reservation_errors: list[str] = []
+            if normalized_historical_reservation is not None:
+                validate_reservation_set_semantics(
+                    normalized_historical_reservation,
+                    historical_reservation_errors,
+                )
+                if "dependencies" in historical_reservation:
+                    # Revision-1 permitted an already accepted external Issue
+                    # prerequisite at set level. Exact edge equality with the
+                    # assignment is still required below; only the later
+                    # local-endpoint rule is compatibility-exempted.
+                    historical_reservation_errors = [
+                        code for code in historical_reservation_errors
+                        if code != "UNRESOLVED_DEPENDENCY_ISSUE"
+                    ]
+            source_present = "source" in historical_assignment
+            context = historical.get("recordedContext")
+            context_matches = isinstance(context, dict)
+            if context_matches:
+                for pointer, expected in context.items():
+                    try:
+                        actual = pointer_value(historical_assignment, pointer)
+                    except (KeyError, IndexError, TypeError, ValueError):
+                        context_matches = False
+                        break
+                    if actual != expected:
+                        context_matches = False
+                        break
+            if (
+                issue_key(assignment_issue(historical_assignment))
+                != issue_key(historical.get("authorityIssue"))
+                or historical_assignment.get("revision") != historical.get("revision")
+                or reservation_reference.get("id")
+                != historical_reservation_snapshot.get("id")
+                or reservation_reference.get("digest")
+                != historical_reservation_snapshot.get("digest")
+                or historical_reservation.get("id") != reservation_reference.get("id")
+                or actual_reservation_digest != reservation_reference.get("digest")
+                or historical_reservation.get("integrationBase")
+                != assignment_coordination(historical_assignment).get("integrationBase")
+                or historical_reservation.get("integrationBase")
+                != mapping(historical_assignment.get("baseline")).get("commit")
+                or len(reservation_rows) != 1
+                or reservation_rows[0] != assignment_projection(historical_assignment)
+                or historical_reservation.get("mergeOrder")
+                != assignment_coordination(historical_assignment).get("mergeOrder")
+                or historical_reservation.get("convergence")
+                != assignment_coordination(historical_assignment).get("convergence")
+                or bool(historical_reservation_errors)
+                or source_present != historical.get("sourceFieldPresent")
+                or (
+                    source_present
+                    and historical_assignment.get("source")
+                    != historical.get("assignmentSource")
+                )
+                or not context_matches
+            ):
+                add(errors, "HISTORY_GIT_CONTENT_MISMATCH")
+            actual_chain.append(
+                (historical_assignment, historical.get("assignmentSource"))
+            )
+
+        if len(actual_chain) == len(chain):
+            revision_documents = actual_chain + [(assignment, source)]
+            for (earlier, earlier_source), (later, later_source) in zip(
+                revision_documents, revision_documents[1:]
+            ):
+                if not revision_semantics_preserved(
+                    earlier,
+                    later,
+                    earlier_source=earlier_source,
+                    later_source=later_source,
+                ):
+                    add(errors, "HISTORY_GIT_CONTENT_MISMATCH")
+                if (
+                    later is assignment
+                    and reserved_id_set(earlier) & reserved_id_set(later)
+                ):
+                    add(errors, "HISTORY_GIT_CONTENT_MISMATCH")
+    if any(id(history) not in matched_history_ids for history in histories if isinstance(history, dict)):
+        add(errors, "INVALID_ASSIGNMENT_REVISION_HISTORY")
+
+
+def read_local_json(repository_root: Path, value: Any) -> dict[str, Any] | None:
+    path = resolve_local_path(repository_root, value)
+    if path is None or not path.is_file():
+        return None
+    try:
+        loaded = strict_json_loads(path.read_text(encoding="utf-8"))
+    except (
+        OSError, UnicodeDecodeError, json.JSONDecodeError,
+        InvalidJsonScalarError, DuplicateJsonMemberError,
+    ):
+        return None
+    return loaded if isinstance(loaded, dict) else None
+
+
+def validate_repository_materialization(
+    document: dict[str, Any], errors: list[str], repository_root: Path
+) -> None:
+    records = {
+        reference_key(record): record
+        for record in document.get("records", [])
+        if isinstance(record, dict) and reference_key(record) is not None
+    }
+    for record in records.values():
+        materialized = read_local_json(repository_root, record.get("source"))
+        if materialized is None:
+            add(errors, "UNRESOLVED_MATERIALIZED_SOURCE")
+        elif materialized != record:
+            add(errors, "MATERIALIZED_SOURCE_MISMATCH")
+    for _, domain in declarations(document):
+        if domain.get("state") != "active":
+            continue
+        uid = domain.get("domainUid")
+        for member in domain.get("issuedIds", []):
+            if not isinstance(member, dict) or member.get("status") != "prospective":
+                continue
+            record_id = inventory_member_id(member)
+            key = (
+                (uid, portable_text(record_id))
+                if isinstance(record_id, str) else None
+            )
+            record = records.get(key)
+            if record is None or record.get("source") != member.get("source"):
+                add(errors, "RECORD_INVENTORY_BINDING_MISMATCH")
+
+    reservation_sets: dict[tuple[Any, Any], list[dict[str, Any]]] = defaultdict(list)
+    for reservation in document.get("reservationSets", []):
+        if isinstance(reservation, dict) and nonblank(reservation.get("id")):
+            reservation_sets[reservation_epoch_key(reservation)].append(reservation)
+    for assignment in document.get("assignments", []):
+        if not isinstance(assignment, dict) or assignment.get("kind") != "issue-assignment":
+            continue
+        materialized_assignment = read_local_json(repository_root, assignment.get("source"))
+        if materialized_assignment is None:
+            add(errors, "UNRESOLVED_MATERIALIZED_SOURCE")
+        elif materialized_assignment != assignment:
+            add(errors, "MATERIALIZED_SOURCE_MISMATCH")
+        reservation_reference = mapping(assignment_coordination(assignment).get("reservationSet"))
+        if "path" in reservation_reference:
+            materialized_reservation = read_local_json(
+                repository_root, reservation_reference.get("path")
+            )
+            expected_reservations = reservation_sets.get(
+                (reservation_reference.get("id"), reservation_reference.get("digest")),
+                [],
+            )
+            if materialized_reservation is None:
+                add(errors, "UNRESOLVED_MATERIALIZED_SOURCE")
+            elif (
+                len(expected_reservations) != 1
+                or canonical_digest(materialized_reservation)
+                != reservation_reference.get("digest")
+                or materialized_reservation != expected_reservations[0]
+            ):
+                add(errors, "MATERIALIZED_SOURCE_MISMATCH")
+
+    for history in document.get("assignmentHistory", []):
+        if not isinstance(history, dict):
+            continue
+        materialized_history = read_local_json(repository_root, history.get("source"))
+        if materialized_history is None:
+            add(errors, "UNRESOLVED_MATERIALIZED_SOURCE")
+        elif materialized_history != history:
+            add(errors, "MATERIALIZED_SOURCE_MISMATCH")
+
+
+def validate_document(
+    document: dict[str, Any], *, isolated_fixture: bool = False,
+    repository_root: Path | None = None,
+    materialize_repository: bool = True,
+    embedded_history_blobs: dict[str, str] | None = None,
+) -> list[str]:
+    errors: list[str] = []
+    if contains_invalid_unicode_scalar(document):
+        add(errors, "INVALID_UNICODE_SCALAR")
+    if contains_invalid_json_scalar(document):
+        add(errors, "INVALID_JSON_SCALAR")
+    if document.get("experimental") is not True:
+        add(errors, "EXPERIMENTAL_MARKER_REQUIRED")
+    validate_registry_set(document, errors)
+    validate_records(document, errors)
+    validate_record_graph(document, errors)
+    validate_semantic_graph(document, errors)
+    validate_assignments(document, errors)
+    validate_assignment_history(
+        document,
+        errors,
+        repository_root=repository_root,
+        embedded_history_blobs=embedded_history_blobs,
+    )
+    if not isolated_fixture or "reservationSets" in document:
+        validate_reservation_sets(document, errors)
+    if repository_root is not None and materialize_repository:
+        validate_repository_materialization(document, errors, repository_root)
+    return sorted(errors)
+
+
+def validate_template(record: dict[str, Any]) -> list[str]:
+    errors: list[str] = []
+    if contains_invalid_unicode_scalar(record):
+        add(errors, "INVALID_UNICODE_SCALAR")
+    if contains_invalid_json_scalar(record):
+        add(errors, "INVALID_JSON_SCALAR")
+    kind = record.get("kind")
+    validate_typed_shape(record, errors, "TEMPLATE_REQUIRED_FIELD_MISSING")
+    if kind in KIND_TO_ID_TOKEN:
+        validate_stateful_values(record, errors)
+        if not valid_uid(record.get("domainUid")):
+            add(errors, "INVALID_DOMAIN_UID")
+        match = SCOPED_ID_RE.fullmatch(str(record.get("id", ""))) or UNSCOPED_ID_RE.fullmatch(str(record.get("id", "")))
+        if not match or match.group("type") != KIND_TO_ID_TOKEN[kind]:
+            add(errors, "RECORD_KIND_ID_MISMATCH")
+        validate_accepted_evidence(record, errors)
+    elif kind == "issue-assignment":
+        validate_stateful_values(record, errors)
+        baseline = record.get("baseline", {}).get("commit", "")
+        integration = record.get("coordination", {}).get("integrationBase", "")
+        if not SHA_RE.fullmatch(str(baseline)) or baseline != integration:
+            add(errors, "INVALID_INTEGRATION_BASE")
+        validate_accepted_evidence(record, errors)
+    elif kind == "reservation-set":
+        if not SHA_RE.fullmatch(str(record.get("integrationBase", ""))):
+            add(errors, "INVALID_INTEGRATION_BASE")
+        validate_reservation_set_semantics(record, errors)
+    elif kind == "work-domain-registry":
+        wrapper = {"experimental": True, "registries": [record], "records": [], "relations": [], "assignments": []}
+        errors.extend(validate_document(wrapper))
+    else:
+        add(errors, "UNKNOWN_TEMPLATE_KIND")
+    return sorted(set(errors))
+
+
+def check_coverage(
+    example_documents: dict[str, dict[str, Any]],
+    negative_codes: set[str],
+    positive_fixture_names: set[str],
+) -> list[str]:
+    failures: list[str] = []
+    simple = example_documents.get("simple-single-domain.json", {})
+    scoped = example_documents.get("scoped-monorepo.json", {})
+    moved = example_documents.get("domain-move.json", {})
+    accepted_study = example_documents.get("accepted-study-only.json", {})
+    if not any(UNSCOPED_ID_RE.fullmatch(str(record.get("id", ""))) for record in simple.get("records", [])):
+        failures.append("coverage: simple unscoped example missing")
+    active_scoped_domains = [domain for _, domain in declarations(scoped) if domain.get("state") == "active"]
+    if len(active_scoped_domains) < 4:
+        failures.append("coverage: four-domain scoped example missing")
+    if len(scoped.get("assignments", [])) < 3:
+        failures.append("coverage: three-Issue concurrent assignment example missing")
+    if len(scoped.get("reservationSets", [])) != 1:
+        failures.append("coverage: canonical embedded reservation set missing")
+    if not any(
+        assignment.get("authority", {}).get("issue", "").endswith("/203")
+        and assignment.get("activeSlices")
+        for assignment in scoped.get("assignments", [])
+    ):
+        failures.append("coverage: shared-domain Issue/Slice assignment missing")
+    if not any(
+        isinstance(edge, dict)
+        and isinstance(edge.get("targetRef"), dict)
+        and record.get("domainUid") != edge["targetRef"].get("domainUid")
+        for record in scoped.get("records", [])
+        for edge in record.get("relations", [])
+    ):
+        failures.append("coverage: qualified cross-domain relation missing")
+    moved_uids = Counter(domain.get("domainUid") for _, domain in declarations(moved))
+    if not any(count > 1 for count in moved_uids.values()):
+        failures.append("coverage: move/tombstone example missing")
+    if not any(
+        isinstance(member, dict)
+        and member.get("id") == "DBG-RF-001"
+        and member.get("status") == "legacy-preserved"
+        and isinstance(member.get("provenance"), dict)
+        for _, domain in declarations(moved)
+        for member in domain.get("issuedIds", [])
+    ):
+        failures.append("coverage: HSX-shaped preserved legacy inventory missing")
+    if not any(
+        isinstance(member, dict)
+        and member.get("status") == "legacy-preserved"
+        and member.get("authorityIssue") is None
+        and nonblank(member.get("authorityMissingReason"))
+        for _, domain in declarations(moved)
+        for member in domain.get("issuedIds", [])
+    ):
+        failures.append("coverage: truthful no-Issue legacy inventory missing")
+    if not all(
+        isinstance(record, dict)
+        and valid_record_path(record.get("source"))
+        for document in example_documents.values()
+        for record in document.get("records", [])
+    ):
+        failures.append("coverage: stateful record source binding missing")
+    simple_assignment = next(iter(simple.get("assignments", [])), {})
+    simple_records = {record.get("kind"): record for record in simple.get("records", [])}
+    if not (
+        simple_assignment.get("declaredState") == "accepted"
+        and simple_records.get("slice", {}).get("declaredState") == "accepted"
+        and simple_records.get("feature", {}).get("declaredState") == "active"
+    ):
+        failures.append("coverage: accepted assignment/Slice with durable active Feature missing")
+    if not any(
+        assignment.get("declaredState") == "accepted"
+        and mapping(assignment.get("workRef")).get("type") == "study"
+        for assignment in accepted_study.get("assignments", [])
+    ):
+        failures.append("coverage: accepted Study-only assignment missing")
+    scoped_issue_states = {
+        issue_key(assignment_issue(assignment)): assignment.get("declaredState")
+        for assignment in scoped.get("assignments", [])
+    }
+    if not any(
+        state == "active"
+        and any(
+            scoped_issue_states.get(issue_key(conflict)) == "blocked"
+            for conflict in assignment_coordination(assignment).get("conflictsWithIssues", [])
+        )
+        for assignment in scoped.get("assignments", [])
+        for state in [assignment.get("declaredState")]
+    ):
+        failures.append("coverage: valid active/blocked symmetric conflict pair missing")
+    required_negative = {
+        "DOMAIN_KEY_COLLISION", "RECORD_ID_COLLISION", "PATH_COLLISION",
+        "UNQUALIFIED_CROSS_DOMAIN_REF", "UNSCOPED_ID_MULTIDOMAIN",
+        "STALE_COMMON_BASE", "RESERVED_ID_COLLISION",
+        "ASYMMETRIC_SHARED_TOUCHPOINT", "MOVE_KEY_REWRITE",
+        "MOVE_ID_INVENTORY_REWRITE",
+        "CONVERGENCE_CONTRACT_MISMATCH", "ASYMMETRIC_CONFLICT",
+        "UNRESOLVED_WORK_REF", "UNRESOLVED_RELATION_REF",
+        "RESERVED_ID_STYLE_MISMATCH",
+        "NONRECIPROCAL_SLICE_OWNER",
+        "SLICE_ASSIGNMENT_CARDINALITY", "MISSING_OWNER_REFERENCED_SLICE",
+        "INVALID_SLICE_PATH", "UNRESERVED_SLICE_PATH",
+        "UNDECLARED_SLICE_SHARED_PATH", "UNQUALIFIED_SLICE_DECISION_REF",
+        "UNRESOLVED_SLICE_DECISION_REF", "DELIVERED_WORK_ISSUE_REQUIRED",
+        "DELIVERED_WORK_SLICE_REQUIRED", "DUPLICATE_ISSUE_AUTHORITY",
+        "RESERVATION_SET_REQUIRED", "UNRESOLVED_RESERVATION_SET",
+        "RESERVATION_SET_INCOMPLETE", "RESERVATION_DIGEST_MISMATCH",
+        "RESERVATION_ASSIGNMENT_MISMATCH", "DEPENDENCY_CYCLE",
+        "UNRESOLVED_DEPENDENCY_ISSUE", "MERGE_ORDER_MISSING_MEMBER",
+        "MERGE_ORDER_DUPLICATE", "MERGE_ORDER_DEPENDENCY_VIOLATION",
+        "EMPTY_CONVERGENCE", "INVALID_CONVERGENCE_TERMINAL",
+        "ACCEPTED_EVIDENCE_REQUIRED",
+        "RELEASE_EVIDENCE_REQUIRED", "ISSUED_ID_COLLISION",
+        "INVALID_PROSPECTIVE_ID", "LEGACY_PROVENANCE_REQUIRED",
+        "ISSUED_ID_RECLAIM", "DOMAIN_ROOT_COLLISION", "INVALID_PATH",
+        "INVALID_GITHUB_REPOSITORY", "INVALID_GITHUB_ISSUE",
+        "INVALID_GITHUB_PULL_REQUEST", "INVALID_GITHUB_COMMENT",
+        "REPOSITORY_AUTHORITY_MISMATCH", "INVALID_INVENTORY_AUTHORITY",
+        "DUPLICATE_REPOSITORY_REGISTRY", "DOMAIN_OWNER_REQUIRED",
+        "INVALID_REVISION", "UNSUPPORTED_DECLARED_STATE",
+        "BLANK_REQUIRED_VALUE", "INVALID_REQUIRED_COLLECTION",
+        "INVALID_BRANCH", "INVALID_STOP_CONDITION", "INVALID_EVIDENCE_POLICY",
+        "ZERO_SLICE_FIX_INVALID", "INVALID_RECORD_SOURCE",
+        "RECORD_SOURCE_MISMATCH", "LEGACY_AUTHORITY_REASON_REQUIRED",
+        "ACCEPTED_EVIDENCE_SHAPE_INVALID",
+        "ACCEPTED_EVIDENCE_CANDIDATE_MISMATCH", "STEERING_AUTHORITY_MISMATCH",
+        "PRIMARY_WORK_AUTHORITY_MISMATCH",
+        "SELF_CONFLICT",
+        "DUPLICATE_DEPENDENCY_EDGE", "DUPLICATE_CONFLICT_EDGE",
+        "DEPENDENCY_CONFLICT_OVERLAP", "INVALID_ASSIGNMENT_REVISION_HISTORY",
+        "ASSIGNMENT_SLICE_STATE_MISMATCH", "ASSIGNMENT_CANDIDATE_MISMATCH",
+        "ASSIGNMENT_STUDY_STATE_MISMATCH", "UNSATISFIED_ASSIGNMENT_PREREQUISITE",
+        "ACTIVE_ASSIGNMENT_CONFLICT", "UNQUALIFIED_SEMANTIC_REFERENCE",
+        "UNRESOLVED_SEMANTIC_REFERENCE", "SEMANTIC_TARGET_KIND_MISMATCH",
+        "DUPLICATE_SEMANTIC_EDGE", "FIX_AFFECTED_WORK_NOT_ACCEPTED",
+        "REPOSITORY_DRIVER_REQUIRED", "UNRESOLVED_MATERIALIZED_SOURCE",
+        "MATERIALIZED_SOURCE_MISMATCH", "UNAVAILABLE_HISTORY_GIT_OBJECT",
+        "HISTORY_GIT_CONTENT_MISMATCH", "DUPLICATE_RESERVED_ID",
+        "DUPLICATE_INVENTORY_SOURCE", "DUPLICATE_RECORD_SOURCE",
+        "RECORD_INVENTORY_BINDING_MISMATCH", "KEY_HINT_MISMATCH",
+        "UNSUPPORTED_SCHEMA_VERSION", "SCHEMA_VERSION_REQUIRED",
+        "KIND_MARKER_REQUIRED", "EXPERIMENTAL_MARKER_REQUIRED",
+        "INVALID_SEMANTIC_EDGE", "SEMANTIC_SELF_EDGE",
+        "UNSATISFIED_SEMANTIC_DEPENDENCY",
+        "SLICE_DECISION_AUTHORITY_KIND_MISMATCH",
+        "UNACCEPTED_SLICE_DECISION_AUTHORITY",
+        "TERMINAL_WORK_SLICE_NOT_ACCEPTED",
+        "TERMINAL_WORK_ASSIGNMENT_NOT_ACCEPTED",
+        "PROHIBITED_PATH_OVERLAP", "INVALID_UNICODE_SCALAR",
+        "LEGACY_PRESERVED_CURRENT_GATE",
+        "INVALID_JSON_SCALAR", "SEMANTIC_RELATION_CYCLE",
+        "ACTIVE_SLICE_CARDINALITY", "ACTIVE_SLICE_NOT_AUTHORIZED",
+        "AUTHORIZED_SLICE_CANDIDATE_MISMATCH",
+        "AUTHORIZED_SLICE_ALLOCATION_MISMATCH",
+        "TERMINAL_WORK_AUTHORITY_UNRESOLVED",
+        "FIX_AFFECTED_WORK_NOT_ACCEPTED",
+        "HOST_REPOSITORY_PROHIBITED",
+        "ACTIVE_IMPLEMENTATION_SLICE_REQUIRED",
+        "ACTIVE_IMPLEMENTATION_WRITE_SURFACE_REQUIRED",
+        "ACTIVE_SLICE_WRITE_SURFACE_REQUIRED",
+        "PATHLESS_ASSIGNMENT_REASON_REQUIRED",
+        "MULTIPLE_CURRENT_RESERVATION_EPOCHS",
+        "AMBIGUOUS_RESERVATION_EPOCH",
+        "ACTIVE_SLICE_PROJECTION_MISMATCH",
+        "SEMANTIC_SOURCE_KIND_MISMATCH",
+        "DUPLICATE_JSON_MEMBER",
+        "UNKNOWN_WORK_DOMAIN", "UNKNOWN_RESERVED_DOMAIN",
+        "AUTHORIZED_SLICE_RESERVATION_MISSING",
+        "RESERVED_ID_INVENTORY_REQUIRED", "RESERVED_ID_NOT_MATERIALIZED",
+        "RESERVED_ID_EPOCH_REUSE", "PREPARATORY_ACCEPTED_CANDIDATE",
+    }
+    missing = sorted(required_negative - negative_codes)
+    if missing:
+        failures.append("coverage: missing negative diagnostics " + ", ".join(missing))
+    required_positive = {
+        "feature-two-issues-two-slices.json",
+        "one-issue-sequential-slices.json",
+        "accepted-issue-reopen-revision.json",
+        "terminal-feature-closure.json",
+        "terminal-refactor-closure.json",
+        "terminal-sliced-fix-closure.json",
+        "accepted-standalone-fix.json",
+        "semantic-dag-diamond-and-chain.json",
+        "semantic-nondag-reciprocal-preserves.json",
+        "reservation-finite-numeric-extension.json",
+        "pathless-study-only-assignment.json",
+        "pathless-standalone-fix-assignment.json",
+        "sequential-distinct-reservation-epochs.json",
+        "one-active-plus-earlier-accepted.json",
+        "sequential-reservation-path-reuse.json",
+        "standalone-fix-active-owner-accepted-history.json",
+        "sliced-fix-active-owner-accepted-history.json",
+        "top-level-study-relation-equivalents.json",
+        "top-level-corrects-equivalent.json",
+        "same-id-two-terminal-epochs.json",
+        "same-id-three-terminal-epochs.json",
+        "unreferenced-reservation-set.json",
+        "historical-exact-reservation-projection.json",
+        "two-disjoint-preparatory-sets.json",
+        "reserved-before-materialization.json",
+        "reserved-promoted-to-prospective.json",
+    }
+    missing_positive = sorted(required_positive - positive_fixture_names)
+    if missing_positive:
+        failures.append(
+            "coverage: missing positive controls " + ", ".join(missing_positive)
+        )
+    return failures
+
+
+def pointer_parts(pointer: str) -> list[str]:
+    if not pointer.startswith("/"):
+        raise ValueError("JSON pointer must start with '/'")
+    return [part.replace("~1", "/").replace("~0", "~") for part in pointer[1:].split("/")]
+
+
+def pointer_parent(document: Any, pointer: str) -> tuple[Any, str]:
+    parts = pointer_parts(pointer)
+    if not parts:
+        raise ValueError("root mutation is not supported")
+    current = document
+    for part in parts[:-1]:
+        current = current[int(part)] if isinstance(current, list) else current[part]
+    return current, parts[-1]
+
+
+def pointer_value(document: Any, pointer: str) -> Any:
+    current = document
+    for part in pointer_parts(pointer):
+        current = current[int(part)] if isinstance(current, list) else current[part]
+    return current
+
+
+def decode_mutation_value(value: Any) -> Any:
+    """Permit strict-JSON fixtures to construct adversarial Python scalars."""
+    if isinstance(value, dict) and set(value) == {"$nonFinite"}:
+        token = value["$nonFinite"]
+        if token == "NaN":
+            return float("nan")
+        if token == "+Infinity":
+            return float("inf")
+        if token == "-Infinity":
+            return float("-inf")
+        raise ValueError(f"unsupported non-finite mutation token {token!r}")
+    if isinstance(value, dict):
+        return {key: decode_mutation_value(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [decode_mutation_value(item) for item in value]
+    return copy.deepcopy(value)
+
+
+def apply_mutations(document: dict[str, Any], mutations: list[dict[str, Any]]) -> None:
+    for mutation in mutations:
+        operation = mutation.get("op")
+        pointer = mutation.get("path")
+        if not isinstance(pointer, str):
+            raise ValueError("mutation path must be a JSON pointer")
+        parent, key = pointer_parent(document, pointer)
+        if operation == "remove":
+            if isinstance(parent, list):
+                parent.pop(int(key))
+            else:
+                del parent[key]
+        elif operation in {"add", "replace"}:
+            value = decode_mutation_value(mutation.get("value"))
+            if isinstance(parent, list):
+                if key == "-":
+                    parent.append(value)
+                elif operation == "add":
+                    parent.insert(int(key), value)
+                else:
+                    parent[int(key)] = value
+            else:
+                parent[key] = value
+        elif operation == "copy":
+            source = mutation.get("from")
+            if not isinstance(source, str):
+                raise ValueError("copy mutation requires 'from'")
+            value = copy.deepcopy(pointer_value(document, source))
+            if isinstance(parent, list):
+                if key == "-":
+                    parent.append(value)
+                else:
+                    parent.insert(int(key), value)
+            else:
+                parent[key] = value
+        else:
+            raise ValueError(f"unsupported mutation operation {operation!r}")
+
+
+def rebind_reservation_digests(document: dict[str, Any]) -> None:
+    reservations = [
+        reservation
+        for reservation in document.get("reservationSets", [])
+        if isinstance(reservation, dict)
+        and nonblank(reservation.get("id"))
+        and canonical_digest(reservation) is not None
+    ]
+    for assignment in document.get("assignments", []):
+        if not isinstance(assignment, dict):
+            continue
+        coordination = assignment_coordination(assignment)
+        reference = coordination.get("reservationSet")
+        if not isinstance(reference, dict) or not nonblank(reference.get("id")):
+            continue
+        same_id = [
+            reservation for reservation in reservations
+            if reservation.get("id") == reference.get("id")
+        ]
+        exact_epoch = [
+            reservation for reservation in same_id
+            if canonical_digest(reservation) == reference.get("digest")
+        ]
+        projected = [
+            reservation for reservation in same_id
+            if reservation.get("integrationBase") == coordination.get("integrationBase")
+            and reservation.get("mergeOrder") == coordination.get("mergeOrder")
+            and reservation.get("convergence") == coordination.get("convergence")
+            and [
+                row for row in reservation.get("assignments", [])
+                if isinstance(row, dict)
+                and issue_key(row.get("issue")) == issue_key(assignment_issue(assignment))
+            ] == [assignment_projection(assignment)]
+        ]
+        candidates = (
+            same_id if len(same_id) == 1
+            else exact_epoch if len(exact_epoch) == 1
+            else projected
+        )
+        if len(candidates) == 1:
+            reference["digest"] = canonical_digest(candidates[0])
+    # Fixture rebinding models a freshly frozen epoch. Keep the durable
+    # inventory pointer in lockstep without altering allocator/source bytes.
+    epochs: dict[tuple[Any, tuple[str, str]], str | None] = {}
+    for reservation in reservations:
+        for row in reservation.get("assignments", []):
+            if isinstance(row, dict):
+                for reference in row.get("reservedIds", []):
+                    key = reference_key(reference)
+                    if key is not None:
+                        epochs[(reservation.get("id"), key)] = canonical_digest(reservation)
+    for _, domain in declarations(document):
+        for member in domain.get("issuedIds", []):
+            if not isinstance(member, dict):
+                continue
+            epoch = member.get("allocationEpoch")
+            member_key = reference_key({"domainUid": domain.get("domainUid"), "id": member.get("id")})
+            lookup = (epoch.get("reservationSetId"), member_key) if isinstance(epoch, dict) else None
+            if isinstance(epoch, dict) and lookup in epochs:
+                epoch["reservationDigest"] = epochs[lookup]
+
+
+def finalize_positive_allocation_epochs(document: dict[str, Any]) -> None:
+    """Complete projections for positive mutation controls after composition."""
+    inventory: dict[tuple[str, str], dict[str, Any]] = {}
+    for _, domain in declarations(document):
+        uid = domain.get("domainUid")
+        for member in domain.get("issuedIds", []):
+            if isinstance(member, dict) and isinstance(member.get("id"), str):
+                inventory[(uid, portable_text(member["id"]))] = member
+    for reservation in document.get("reservationSets", []):
+        if not isinstance(reservation, dict):
+            continue
+        for row in reservation.get("assignments", []):
+            if not isinstance(row, dict):
+                continue
+            for reference in row.get("reservedIds", []):
+                key = reference_key(reference)
+                member = inventory.get(key) if key is not None else None
+                if isinstance(reference, dict) and isinstance(member, dict):
+                    reference["allocationIssue"] = member.get("allocationIssue")
+                    reference["source"] = member.get("source")
+        epoch_digest = canonical_digest(reservation)
+        for row in reservation.get("assignments", []):
+            if not isinstance(row, dict):
+                continue
+            for reference in row.get("reservedIds", []):
+                key = reference_key(reference)
+                member = inventory.get(key) if key is not None else None
+                if isinstance(reference, dict) and isinstance(member, dict):
+                    member["allocationEpoch"] = {
+                        "reservationSetId": reservation.get("id"),
+                        "reservationDigest": epoch_digest,
+                        "domainUid": reference.get("domainUid"),
+                        "id": reference.get("id"),
+                        "allocationIssue": reference.get("allocationIssue"),
+                        "source": reference.get("source"),
+                    }
+    for assignment in document.get("assignments", []):
+        if not isinstance(assignment, dict):
+            continue
+        coordination = assignment_coordination(assignment)
+        for reference in coordination.get("reservedIds", []):
+            key = reference_key(reference)
+            member = inventory.get(key) if key is not None else None
+            if isinstance(reference, dict) and isinstance(member, dict):
+                reference["allocationIssue"] = member.get("allocationIssue")
+                reference["source"] = member.get("source")
+    all_inventory_members = [
+        (domain.get("domainUid"), member)
+        for _, domain in declarations(document)
+        for member in domain.get("issuedIds", [])
+        if isinstance(member, dict)
+    ]
+    for uid, member in all_inventory_members:
+        current_epoch = member.get("allocationEpoch")
+        if (
+            member.get("status") in {"reserved", "prospective", "burned"}
+            and (
+                not isinstance(current_epoch, dict)
+                or str(current_epoch.get("reservationSetId", "")).startswith(
+                    "RSV-ORIGIN-"
+                )
+            )
+        ):
+            issue = member.get("allocationIssue")
+            set_id = "RSV-ORIGIN-" + str(issue).rsplit("/", 1)[-1]
+            projection = {
+                "domainUid": uid,
+                "id": member.get("id"),
+                "allocationIssue": issue,
+                "source": member.get("source"),
+            }
+            member["allocationEpoch"] = {
+                "reservationSetId": set_id,
+                "reservationDigest": canonical_digest(
+                    {"id": set_id, "allocation": projection}
+                ),
+                **projection,
+            }
+    rebind_reservation_digests(document)
+
+
+def validate_text_corpus() -> list[str]:
+    failures: list[str] = []
+    markdown_files = sorted(ROOT.rglob("*.md"))
+    top_level_names = {path.name for path in ROOT.glob("*.md")}
+    missing_docs = sorted(REQUIRED_TOP_LEVEL_DOCS - top_level_names)
+    if missing_docs:
+        failures.append("corpus: missing top-level documents " + ", ".join(missing_docs))
+
+    status_re = re.compile(
+        r"^Status:\s.*(?:pilot|provisional|experimental)",
+        flags=re.IGNORECASE | re.MULTILINE,
+    )
+    link_re = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
+    for path in markdown_files:
+        content = path.read_text(encoding="utf-8")
+        if path.parent == ROOT and not status_re.search("\n".join(content.splitlines()[:8])):
+            failures.append(f"corpus: {path.name} lacks a clear top-level pilot/provisional Status marker")
+        for target in link_re.findall(content):
+            target = target.strip().strip("<>")
+            if not target or "://" in target or target.startswith(("#", "mailto:")):
+                continue
+            local_target = target.split("#", 1)[0]
+            if local_target and not (path.parent / local_target).resolve().exists():
+                failures.append(f"corpus: broken local link {path.relative_to(ROOT)} -> {target}")
+
+    text_suffixes = {".md", ".json", ".py", ".yaml"}
+    for path in sorted(item for item in ROOT.rglob("*") if item.is_file() and item.suffix in text_suffixes):
+        for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+            if line.endswith((" ", "\t")):
+                failures.append(f"corpus: trailing whitespace {path.relative_to(ROOT)}:{line_number}")
+    return failures
+
+
+def load_dogfood_document() -> dict[str, Any]:
+    assignment_paths = sorted((ROOT / "Steering" / "Assignments").glob("ISSUE-*.*"))
+    history_paths = sorted((ROOT / "Steering" / "Assignments" / "History").glob("*.json"))
+    reservation_paths = sorted((ROOT / "Steering" / "Reservations").glob("*.json"))
+    record_paths = sorted((ROOT / "Studies").glob("*.json"))
+    registry_paths = sorted((ROOT / "Steering").glob("WorkDomains*.json"))
+    return {
+        "experimental": True,
+        "registries": [load_json(path) for path in registry_paths],
+        "records": [load_json(path) for path in record_paths],
+        "relations": [],
+        "assignments": [load_json(path) for path in assignment_paths],
+        "reservationSets": [load_json(path) for path in reservation_paths],
+        "assignmentHistory": [load_json(path) for path in history_paths],
+    }
+
+
+def embedded_blobs_from_fixture(
+    fixture: dict[str, Any], *, validate_contents: bool = True
+) -> dict[str, str]:
+    result: dict[str, str] = {}
+    for blob in fixture.get("embeddedHistoryBlobs", []):
+        if (
+            not isinstance(blob, dict)
+            or not SHA_RE.fullmatch(str(blob.get("candidate", "")))
+            or not valid_record_path(blob.get("path"))
+            or not isinstance(blob.get("json"), str)
+        ):
+            raise ValueError("invalid embedded history blob")
+        key = f"{blob['candidate']}:{blob['path']}"
+        if key in result:
+            raise ValueError("duplicate embedded history blob identity")
+        # Strictly parse now so fixture strings cannot hide duplicate keys or
+        # non-finite values before the history driver consumes them.
+        if validate_contents and not isinstance(strict_json_loads(blob["json"]), dict):
+            raise ValueError("embedded history blob must contain an object")
+        result[key] = blob["json"]
+    return result
+
+
+def rebind_embedded_history_digests(
+    document: dict[str, Any], embedded_blobs: dict[str, str]
+) -> None:
+    """Rebind exact synthetic history by candidate/path, never by set ID alone."""
+    histories = [
+        history for history in document.get("assignmentHistory", [])
+        if isinstance(history, dict)
+    ]
+    by_revision = {
+        history.get("revision"): history
+        for history in histories
+        if isinstance(history.get("revision"), int)
+    }
+    for history in histories:
+        candidate = history.get("sourceCandidate")
+        assignment_path = history.get("assignmentSource")
+        assignment_key = f"{candidate}:{assignment_path}"
+        if assignment_key not in embedded_blobs:
+            continue
+        historical_assignment = strict_json_loads(embedded_blobs[assignment_key])
+        reference = mapping(
+            assignment_coordination(historical_assignment).get("reservationSet")
+        )
+        reservation_key = f"{candidate}:{reference.get('path')}"
+        if reservation_key not in embedded_blobs:
+            continue
+        historical_reservation = strict_json_loads(embedded_blobs[reservation_key])
+        digest = canonical_digest(historical_reservation)
+        if digest is None:
+            continue
+        reference["digest"] = digest
+        assignment_coordination(historical_assignment)["reservationSet"] = reference
+        embedded_blobs[assignment_key] = json.dumps(
+            historical_assignment, sort_keys=True, separators=(",", ":"),
+            ensure_ascii=False, allow_nan=False,
+        )
+        mapping(history.get("reservationSet"))["digest"] = digest
+        context = history.get("recordedContext")
+        if isinstance(context, dict) and "/coordination/reservationSet" in context:
+            context["/coordination/reservationSet"] = copy.deepcopy(reference)
+
+    for history in histories:
+        previous = history.get("previousSnapshot")
+        if isinstance(previous, dict):
+            prior = by_revision.get(previous.get("revision"))
+            if isinstance(prior, dict):
+                previous["reservationDigest"] = mapping(
+                    prior.get("reservationSet")
+                ).get("digest")
+    histories_by_source = defaultdict(list)
+    for history in histories:
+        histories_by_source[history.get("assignmentSource")].append(history)
+    for assignment in document.get("assignments", []):
+        if not isinstance(assignment, dict):
+            continue
+        previous = assignment.get("previousRevision")
+        if not isinstance(previous, dict):
+            continue
+        candidates = [
+            history for history in histories_by_source.get(assignment.get("source"), [])
+            if history.get("revision") == previous.get("revision")
+            and history.get("source") == previous.get("snapshotPath")
+            and history.get("sourceCandidate") == previous.get("sourceCandidate")
+        ]
+        if len(candidates) == 1:
+            previous["reservationDigest"] = mapping(
+                candidates[0].get("reservationSet")
+            ).get("digest")
+
+
+def validate_history_compatibility_controls() -> tuple[list[str], int, int]:
+    """Replay the exact early shapes from Git with revision-bound selection."""
+    failures: list[str] = []
+    positive_count = 0
+    negative_count = 0
+    fixture_root = ROOT / "fixtures" / "compatibility"
+    observed_cases: set[str] = set()
+    for path in sorted(fixture_root.glob("*.json")):
+        try:
+            fixture = load_json(path)
+            observed_cases.add(fixture.get("case"))
+            candidate = fixture.get("sourceCandidate")
+            assignment, assignment_error = load_historical_json(
+                candidate=candidate,
+                path=fixture.get("assignmentPath"),
+                repository_root=ROOT.parent,
+                embedded_history_blobs=None,
+            )
+            reservation, reservation_error = load_historical_json(
+                candidate=candidate,
+                path=fixture.get("reservationPath"),
+                repository_root=ROOT.parent,
+                embedded_history_blobs=None,
+            )
+            if assignment is None or reservation is None:
+                raise ValueError(
+                    f"historical source unavailable: {assignment_error or reservation_error}"
+                )
+            apply_mutations(reservation, fixture.get("mutations", []))
+            normalized = normalize_historical_reservation(
+                reservation, assignment, revision=fixture.get("revision")
+            )
+            accepted = normalized is not None
+            if accepted:
+                rows = [
+                    row for row in normalized.get("assignments", [])
+                    if isinstance(row, dict)
+                    and issue_key(row.get("issue")) == issue_key(assignment_issue(assignment))
+                ]
+                accepted = len(rows) == 1 and rows[0] == assignment_projection(assignment)
+            expected = fixture.get("expectedAccepted") is True
+            positive_count += int(expected)
+            negative_count += int(not expected)
+            if accepted != expected:
+                failures.append(
+                    f"{path.relative_to(ROOT)}: expected accepted={expected}, got {accepted}"
+                )
+        except (KeyError, IndexError, TypeError, ValueError, OSError, json.JSONDecodeError) as exc:
+            failures.append(f"{path.relative_to(ROOT)}: invalid compatibility fixture: {exc}")
+    required_cases = {
+        "exact-revision-one-legacy-shape",
+        "exact-revision-two-authorized-slices-omission",
+        "exact-revision-three-authorized-slices-omission",
+        "exact-revision-four-authorized-slices-omission",
+        "revision-five-cannot-omit-authorized-slices",
+        "revision-six-cannot-claim-the-revision-one-legacy-shape",
+        "revision-three-partial-row-fails-closed",
+        "revision-four-hybrid-top-level-shape-fails-closed",
+    }
+    if observed_cases != required_cases:
+        failures.append(
+            "compatibility coverage mismatch: missing="
+            + repr(sorted(required_cases - observed_cases))
+            + " extra=" + repr(sorted(observed_cases - required_cases))
+        )
+    return failures, positive_count, negative_count
+
+
+def git_control_run(repository_root: Path, *args: str) -> str:
+    return subprocess.run(
+        ["git", *args], cwd=repository_root, check=True,
+        capture_output=True, text=True,
+    ).stdout.strip()
+
+
+def write_git_control_pair(
+    repository_root: Path,
+    assignment: dict[str, Any],
+    reservation: dict[str, Any],
+) -> None:
+    assignment_path = repository_root / "Steering" / "Assignments" / "ISSUE-001.json"
+    reservation_path = repository_root / "Steering" / "Reservations" / "RSV-STU-001.json"
+    assignment_path.parent.mkdir(parents=True, exist_ok=True)
+    reservation_path.parent.mkdir(parents=True, exist_ok=True)
+    assignment_path.write_text(
+        json.dumps(assignment, sort_keys=True, indent=2, ensure_ascii=False, allow_nan=False)
+        + "\n",
+        encoding="utf-8",
+    )
+    reservation_path.write_text(
+        json.dumps(reservation, sort_keys=True, indent=2, ensure_ascii=False, allow_nan=False)
+        + "\n",
+        encoding="utf-8",
+    )
+
+
+def git_control_commit_pair(
+    repository_root: Path,
+    assignment: dict[str, Any],
+    reservation: dict[str, Any],
+    message: str,
+) -> str:
+    write_git_control_pair(repository_root, assignment, reservation)
+    git_control_run(
+        repository_root, "add", "--",
+        "Steering/Assignments/ISSUE-001.json",
+        "Steering/Reservations/RSV-STU-001.json",
+    )
+    git_control_run(repository_root, "commit", "--quiet", "-m", message)
+    return git_control_run(repository_root, "rev-parse", "HEAD")
+
+
+def git_control_revision(
+    base_assignment: dict[str, Any],
+    base_reservation: dict[str, Any],
+    revision: int,
+    *,
+    previous_candidate: str | None = None,
+    previous_digest: str | None = None,
+    previous_snapshot: str | None = None,
+) -> tuple[dict[str, Any], dict[str, Any], str]:
+    assignment = copy.deepcopy(base_assignment)
+    reservation = copy.deepcopy(base_reservation)
+    assignment["revision"] = revision
+    assignment["source"] = "Steering/Assignments/ISSUE-001.json"
+    coordination = assignment_coordination(assignment)
+    coordination["ownedPaths"] = [f"Studies/STU-001-r{revision}.json"]
+    reservation["assignments"][0]["ownedPaths"] = copy.deepcopy(
+        coordination["ownedPaths"]
+    )
+    if revision > 1:
+        # Refreeze preserves earlier allocation claims in history. It does not
+        # renew them in the current revision.
+        coordination["reservedIds"] = []
+        reservation["assignments"][0]["reservedIds"] = []
+    reference = mapping(coordination.get("reservationSet"))
+    reference["path"] = "Steering/Reservations/RSV-STU-001.json"
+    digest = canonical_digest(reservation)
+    if digest is None:
+        raise ValueError("Git control reservation cannot be hashed")
+    reference["digest"] = digest
+    coordination["reservationSet"] = reference
+    if revision == 1:
+        assignment.pop("previousRevision", None)
+        assignment.pop("refreeze", None)
+    else:
+        assignment["previousRevision"] = {
+            "revision": revision - 1,
+            "snapshotPath": previous_snapshot,
+            "sourceCandidate": previous_candidate,
+            "reservationDigest": previous_digest,
+        }
+        assignment["refreeze"] = {
+            "sourceCandidate": previous_candidate,
+            "reason": f"Synthetic Git ancestry control advances to revision {revision}.",
+        }
+    return assignment, reservation, digest
+
+
+def git_control_snapshot(
+    assignment: dict[str, Any],
+    *,
+    candidate: str,
+    digest: str,
+    previous: dict[str, Any] | None,
+) -> dict[str, Any]:
+    revision = assignment["revision"]
+    return {
+        "schemaVersion": ASSIGNMENT_HISTORY_SCHEMA_VERSION,
+        "experimental": True,
+        "kind": "issue-assignment-revision-snapshot",
+        "source": f"FixtureHistory/ISSUE-001-revision-{revision:03d}.json",
+        "assignmentSource": "Steering/Assignments/ISSUE-001.json",
+        "authorityIssue": assignment_issue(assignment),
+        "revision": revision,
+        "sourceCandidate": candidate,
+        "sourceFieldPresent": True,
+        "previousSnapshot": previous,
+        "reservationSet": {"id": "RSV-STU-001", "digest": digest},
+        "recordedContext": {
+            "/source": "Steering/Assignments/ISSUE-001.json",
+            "/workRef": copy.deepcopy(assignment["workRef"]),
+            "/authorizedSlices": copy.deepcopy(assignment["authorizedSlices"]),
+            "/coordination/reservationSet": copy.deepcopy(
+                assignment_coordination(assignment)["reservationSet"]
+            ),
+        },
+        "supersededByRevision": revision + 1,
+        "supersessionReason": "Synthetic exact-byte Git ancestry control refreeze.",
+    }
+
+
+def compose_git_control_document(
+    base_document: dict[str, Any],
+    assignment: dict[str, Any],
+    reservation: dict[str, Any],
+    snapshots: list[dict[str, Any]],
+) -> dict[str, Any]:
+    document = copy.deepcopy(base_document)
+    document["assignments"] = [assignment]
+    document["reservationSets"] = [reservation]
+    document["assignmentHistory"] = snapshots
+    return document
+
+
+def build_git_history_control(
+    repository_root: Path, scenario: str,
+) -> dict[str, Any]:
+    git_control_run(repository_root, "init", "--quiet")
+    git_control_run(repository_root, "config", "user.name", "SDP Pilot Control")
+    git_control_run(repository_root, "config", "user.email", "pilot-control@example.invalid")
+    base_document = load_json(ROOT / "examples" / "accepted-study-only.json")
+    base_assignment = base_document["assignments"][0]
+    base_reservation = base_document["reservationSets"][0]
+
+    r1, reservation1, digest1 = git_control_revision(
+        base_assignment, base_reservation, 1
+    )
+    candidate1 = git_control_commit_pair(
+        repository_root, r1, reservation1, "revision 1"
+    )
+    snapshot1 = git_control_snapshot(
+        r1, candidate=candidate1, digest=digest1, previous=None
+    )
+    r2, reservation2, digest2 = git_control_revision(
+        base_assignment, base_reservation, 2,
+        previous_candidate=candidate1,
+        previous_digest=digest1,
+        previous_snapshot=snapshot1["source"],
+    )
+    candidate2 = git_control_commit_pair(
+        repository_root, r2, reservation2, "revision 2"
+    )
+    snapshot2 = git_control_snapshot(
+        r2,
+        candidate=candidate2,
+        digest=digest2,
+        previous={
+            "revision": 1,
+            "snapshotPath": snapshot1["source"],
+            "sourceCandidate": candidate1,
+            "reservationDigest": digest1,
+        },
+    )
+    r3, reservation3, _ = git_control_revision(
+        base_assignment, base_reservation, 3,
+        previous_candidate=candidate2,
+        previous_digest=digest2,
+        previous_snapshot=snapshot2["source"],
+    )
+    candidate3 = git_control_commit_pair(
+        repository_root, r3, reservation3, "revision 3 subject"
+    )
+    document = compose_git_control_document(
+        base_document, r3, reservation3, [snapshot1, snapshot2]
+    )
+
+    if scenario == "linear":
+        return document
+    if scenario == "disconnected-root":
+        git_control_run(repository_root, "checkout", "--quiet", "--orphan", "orphan-subject")
+        git_control_run(repository_root, "rm", "-rf", "--quiet", ".")
+        git_control_commit_pair(
+            repository_root, r3, reservation3, "disconnected current subject"
+        )
+        return document
+    if scenario == "sibling-non-ancestor":
+        git_control_run(repository_root, "checkout", "--quiet", "-b", "sibling", candidate1)
+        git_control_run(repository_root, "commit", "--quiet", "--allow-empty", "-m", "sibling history")
+        sibling = git_control_run(repository_root, "rev-parse", "HEAD")
+        git_control_run(repository_root, "checkout", "--quiet", "-b", "sibling-subject", candidate1)
+        subject = git_control_commit_pair(
+            repository_root, r2, reservation2, "sibling current subject"
+        )
+        snapshot = git_control_snapshot(
+            r1, candidate=sibling, digest=digest1, previous=None
+        )
+        current = copy.deepcopy(r2)
+        current["previousRevision"]["sourceCandidate"] = sibling
+        current["refreeze"]["sourceCandidate"] = sibling
+        write_git_control_pair(repository_root, current, reservation2)
+        # The validated subject is the exact committed candidate, not the
+        # uncommitted rewritten control document.
+        git_control_run(repository_root, "reset", "--quiet", "--hard", subject)
+        return compose_git_control_document(
+            base_document, current, reservation2, [snapshot]
+        )
+    if scenario == "reversed-order":
+        document["assignmentHistory"][0]["sourceCandidate"] = candidate2
+        document["assignmentHistory"][1]["sourceCandidate"] = candidate1
+        document["assignmentHistory"][1]["previousSnapshot"]["sourceCandidate"] = candidate2
+        document["assignments"][0]["previousRevision"]["sourceCandidate"] = candidate1
+        document["assignments"][0]["refreeze"]["sourceCandidate"] = candidate1
+        return document
+    if scenario == "duplicate-candidate":
+        document["assignmentHistory"][1]["sourceCandidate"] = candidate1
+        document["assignments"][0]["previousRevision"]["sourceCandidate"] = candidate1
+        document["assignments"][0]["refreeze"]["sourceCandidate"] = candidate1
+        return document
+    if scenario == "future-candidate":
+        future = git_control_commit_pair(
+            repository_root, r1, reservation1, "future exact revision 1"
+        )
+        git_control_run(repository_root, "checkout", "--quiet", "--detach", candidate3)
+        document["assignmentHistory"][0]["sourceCandidate"] = future
+        document["assignmentHistory"][1]["previousSnapshot"]["sourceCandidate"] = future
+        return document
+    raise ValueError(f"unknown Git history control scenario {scenario!r}")
+
+
+def validate_git_history_controls() -> tuple[list[str], int, int]:
+    failures: list[str] = []
+    positive_count = 0
+    negative_count = 0
+    observed_scenarios: set[str] = set()
+    for path in sorted((ROOT / "fixtures" / "git-history").glob("*.json")):
+        try:
+            fixture = load_json(path)
+            observed_scenarios.add(fixture.get("scenario"))
+            with tempfile.TemporaryDirectory(prefix="sdp-pilot-git-history-") as temp:
+                repository_root = Path(temp)
+                document = build_git_history_control(
+                    repository_root, fixture.get("scenario")
+                )
+                actual = validate_document(
+                    document,
+                    repository_root=repository_root,
+                    materialize_repository=False,
+                )
+            expected = sorted(set(fixture.get("expectedErrors", [])))
+            positive_count += int(not expected)
+            negative_count += int(bool(expected))
+            if actual != expected:
+                failures.append(
+                    f"{path.relative_to(ROOT)}: expected {expected!r}, got {actual!r}"
+                )
+        except (
+            KeyError, IndexError, TypeError, ValueError, OSError,
+            json.JSONDecodeError, subprocess.CalledProcessError,
+        ) as exc:
+            failures.append(f"{path.relative_to(ROOT)}: invalid Git fixture: {exc}")
+    required_scenarios = {
+        "linear", "disconnected-root", "sibling-non-ancestor",
+        "reversed-order", "duplicate-candidate", "future-candidate",
+    }
+    if observed_scenarios != required_scenarios:
+        failures.append(
+            "Git history coverage mismatch: missing="
+            + repr(sorted(required_scenarios - observed_scenarios))
+            + " extra=" + repr(sorted(observed_scenarios - required_scenarios))
+        )
+    return failures, positive_count, negative_count
+
+
+def main() -> int:
+    failures: list[str] = []
+    try:
+        dogfood = load_dogfood_document()
+    except DuplicateJsonMemberError:
+        dogfood = {}
+        failures.append("Steering dogfood parse error: DUPLICATE_JSON_MEMBER")
+    except InvalidJsonScalarError:
+        dogfood = {}
+        failures.append("Steering dogfood parse error: INVALID_JSON_SCALAR")
+    except (OSError, json.JSONDecodeError) as exc:
+        dogfood = {}
+        failures.append(f"Steering dogfood parse error: {exc}")
+
+    parse_fixture_count = 0
+    for path in sorted((ROOT / "fixtures" / "parse").glob("*.raw.json")):
+        parse_fixture_count += 1
+        try:
+            strict_json_loads(path.read_text(encoding="utf-8"))
+        except DuplicateJsonMemberError:
+            continue
+        except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+            failures.append(f"{path.relative_to(ROOT)}: wrong parse failure: {exc}")
+            continue
+        failures.append(
+            f"{path.relative_to(ROOT)}: expected DUPLICATE_JSON_MEMBER"
+        )
+    if parse_fixture_count < 2:
+        failures.append("strict parse coverage: bound assignment/reservation fixtures required")
+
+    templates: dict[str, dict[str, Any]] = {}
+    template_kinds: set[str] = set()
+    for path in sorted((ROOT / "templates").glob("*.json")):
+        try:
+            record = load_json(path)
+        except DuplicateJsonMemberError:
+            failures.append(f"{path.relative_to(ROOT)}: DUPLICATE_JSON_MEMBER")
+            continue
+        except InvalidJsonScalarError:
+            failures.append(f"{path.relative_to(ROOT)}: INVALID_JSON_SCALAR")
+            continue
+        except (OSError, json.JSONDecodeError) as exc:
+            failures.append(f"{path.relative_to(ROOT)}: parse error: {exc}")
+            continue
+        templates[path.name] = record
+        template_kinds.add(record.get("kind"))
+        errors = validate_template(record)
+        if errors:
+            failures.append(f"{path.relative_to(ROOT)}: {', '.join(errors)}")
+    if template_kinds != REQUIRED_TEMPLATE_KINDS:
+        failures.append(
+            "templates: required kinds mismatch; missing="
+            + repr(sorted(REQUIRED_TEMPLATE_KINDS - template_kinds))
+            + " extra=" + repr(sorted(template_kinds - REQUIRED_TEMPLATE_KINDS))
+        )
+
+    example_documents: dict[str, dict[str, Any]] = {}
+    for path in sorted((ROOT / "examples").glob("*.json")):
+        try:
+            document = load_json(path)
+        except DuplicateJsonMemberError:
+            failures.append(f"{path.relative_to(ROOT)}: DUPLICATE_JSON_MEMBER")
+            continue
+        except InvalidJsonScalarError:
+            failures.append(f"{path.relative_to(ROOT)}: INVALID_JSON_SCALAR")
+            continue
+        except (OSError, json.JSONDecodeError) as exc:
+            failures.append(f"{path.relative_to(ROOT)}: parse error: {exc}")
+            continue
+        example_documents[path.name] = document
+        errors = validate_document(document)
+        if errors:
+            failures.append(f"{path.relative_to(ROOT)}: unexpected {', '.join(errors)}")
+
+    positive_fixture_paths = sorted((ROOT / "fixtures" / "positive").glob("*.json"))
+    positive_fixture_count = len(positive_fixture_paths)
+    positive_fixtures: dict[str, dict[str, Any]] = {}
+    for path in positive_fixture_paths:
+        try:
+            positive_fixtures[path.name] = load_json(path)
+        except DuplicateJsonMemberError:
+            failures.append(f"{path.relative_to(ROOT)}: DUPLICATE_JSON_MEMBER")
+        except InvalidJsonScalarError:
+            failures.append(f"{path.relative_to(ROOT)}: INVALID_JSON_SCALAR")
+        except (OSError, json.JSONDecodeError) as exc:
+            failures.append(f"{path.relative_to(ROOT)}: parse error: {exc}")
+
+    positive_documents: dict[str, dict[str, Any]] = {}
+    positive_embedded_blobs: dict[str, dict[str, str]] = {}
+
+    def resolve_positive(name: str, stack: set[str] | None = None) -> dict[str, Any]:
+        if name in positive_documents:
+            return positive_documents[name]
+        stack = set() if stack is None else set(stack)
+        if name in stack:
+            raise ValueError("cyclic positive fixture dependency")
+        stack.add(name)
+        fixture = positive_fixtures[name]
+        inherited_blobs: dict[str, str] = {}
+        if fixture.get("sourceDogfood") is True:
+            subject = copy.deepcopy(dogfood)
+        elif fixture.get("sourcePositive"):
+            source_name = fixture["sourcePositive"]
+            subject = copy.deepcopy(resolve_positive(source_name, stack))
+            inherited_blobs.update(positive_embedded_blobs.get(source_name, {}))
+        else:
+            subject = copy.deepcopy(example_documents[fixture.get("sourceExample")])
+        inherited_blobs.update(embedded_blobs_from_fixture(fixture))
+        apply_mutations(subject, fixture.get("mutations", []))
+        finalize_positive_allocation_epochs(subject)
+        if fixture.get("rebindReservationDigests") is True:
+            rebind_reservation_digests(subject)
+        positive_documents[name] = copy.deepcopy(subject)
+        positive_embedded_blobs[name] = inherited_blobs
+        actual = validate_document(
+            subject,
+            repository_root=(
+                ROOT.parent if fixture.get("repositoryDriver") is True else None
+            ),
+            materialize_repository=False,
+            embedded_history_blobs=(inherited_blobs or None),
+        )
+        if actual:
+            raise ValueError(f"unexpected {actual!r}")
+        return positive_documents[name]
+
+    for path in positive_fixture_paths:
+        if path.name not in positive_fixtures:
+            continue
+        try:
+            resolve_positive(path.name)
+        except DuplicateJsonMemberError:
+            failures.append(f"{path.relative_to(ROOT)}: DUPLICATE_JSON_MEMBER")
+        except InvalidJsonScalarError:
+            failures.append(f"{path.relative_to(ROOT)}: INVALID_JSON_SCALAR")
+        except (KeyError, IndexError, TypeError, ValueError) as exc:
+            failures.append(f"{path.relative_to(ROOT)}: invalid positive fixture: {exc}")
+
+    negative_codes: set[str] = set()
+    negative_count = 0
+    for path in sorted((ROOT / "fixtures" / "negative").glob("*.json")):
+        negative_count += 1
+        try:
+            document = load_json(path)
+        except DuplicateJsonMemberError:
+            failures.append(f"{path.relative_to(ROOT)}: DUPLICATE_JSON_MEMBER")
+            continue
+        except InvalidJsonScalarError:
+            failures.append(f"{path.relative_to(ROOT)}: INVALID_JSON_SCALAR")
+            continue
+        except (OSError, json.JSONDecodeError) as exc:
+            failures.append(f"{path.relative_to(ROOT)}: parse error: {exc}")
+            continue
+        expected = sorted(set(document.get("expectedErrors", [])))
+        try:
+            source_example = document.get("sourceExample")
+            source_positive = document.get("sourcePositive")
+            if document.get("sourceDogfood") is True:
+                subject = copy.deepcopy(dogfood)
+                apply_mutations(subject, document.get("mutations", []))
+                if document.get("rebindReservationDigests") is True:
+                    rebind_reservation_digests(subject)
+                actual = validate_document(subject, repository_root=ROOT.parent)
+            elif source_positive:
+                subject = copy.deepcopy(positive_documents[source_positive])
+                apply_mutations(subject, document.get("mutations", []))
+                if document.get("rebindReservationDigests") is True:
+                    rebind_reservation_digests(subject)
+                embedded_blobs = dict(positive_embedded_blobs.get(source_positive, {}))
+                embedded_blobs.update(
+                    embedded_blobs_from_fixture(document, validate_contents=False)
+                )
+                for key in document.get("removeEmbeddedHistoryBlobKeys", []):
+                    if not isinstance(key, str):
+                        raise ValueError("invalid embedded history removal key")
+                    embedded_blobs.pop(key, None)
+                if document.get("rebindEmbeddedHistoryDigests") is True:
+                    rebind_embedded_history_digests(subject, embedded_blobs)
+                actual = validate_document(
+                    subject,
+                    embedded_history_blobs=(embedded_blobs or None),
+                )
+            elif source_example:
+                source_path = ROOT / "examples" / source_example
+                subject = copy.deepcopy(example_documents[source_path.name])
+                apply_mutations(subject, document.get("mutations", []))
+                if document.get("rebindReservationDigests") is True:
+                    rebind_reservation_digests(subject)
+                actual = validate_document(subject)
+            else:
+                if document.get("autoBindReservationDigests") is True:
+                    rebind_reservation_digests(document)
+                actual = validate_document(document, isolated_fixture=True)
+        except DuplicateJsonMemberError:
+            failures.append(f"{path.relative_to(ROOT)}: DUPLICATE_JSON_MEMBER")
+            continue
+        except (KeyError, IndexError, TypeError, ValueError) as exc:
+            failures.append(f"{path.relative_to(ROOT)}: invalid mutation fixture: {exc}")
+            continue
+        negative_codes.update(expected)
+        if actual != expected:
+            failures.append(f"{path.relative_to(ROOT)}: expected {expected!r}, got {actual!r}")
+
+    failures.extend(
+        check_coverage(
+            example_documents, negative_codes, set(positive_documents)
+        )
+    )
+
+    try:
+        errors = validate_document(dogfood, repository_root=ROOT.parent)
+        if errors:
+            failures.append(f"Steering dogfood: {', '.join(errors)}")
+    except DuplicateJsonMemberError:
+        failures.append("Steering dogfood repository driver error: DUPLICATE_JSON_MEMBER")
+    except InvalidJsonScalarError:
+        failures.append("Steering dogfood repository driver error: INVALID_JSON_SCALAR")
+    except (OSError, json.JSONDecodeError) as exc:
+        failures.append(f"Steering dogfood repository driver error: {exc}")
+
+    compatibility_failures, compatibility_positive_count, compatibility_negative_count = (
+        validate_history_compatibility_controls()
+    )
+    failures.extend(compatibility_failures)
+    git_failures, git_positive_count, git_negative_count = (
+        validate_git_history_controls()
+    )
+    failures.extend(git_failures)
+    failures.extend(validate_text_corpus())
+
+    if failures:
+        print("SDP vNext pilot validation: FAIL")
+        for failure in failures:
+            print(f"- {failure}")
+        return 1
+
+    print("SDP vNext pilot validation: PASS")
+    print(f"- templates: {len(templates)} ({', '.join(sorted(template_kinds))})")
+    print(f"- positive examples: {len(example_documents)}")
+    print(f"- positive mutation fixtures: {positive_fixture_count}")
+    print(f"- negative fixtures: {negative_count}")
+    print(f"- strict raw parse fixtures: {parse_fixture_count}")
+    print(f"- negative diagnostic coverage: {len(negative_codes)} codes")
+    print(
+        "- revision compatibility controls: "
+        f"{compatibility_positive_count} positive, {compatibility_negative_count} negative"
+    )
+    print(
+        "- temporary Git ancestry controls: "
+        f"{git_positive_count} positive, {git_negative_count} negative"
+    )
+    print("- Steering Issue #7 Study/assignment/domain/reservation/history binding: valid")
+    print("- local Markdown links/status markers/trailing whitespace: valid")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

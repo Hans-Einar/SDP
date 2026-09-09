@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-assignment-history-v0",
+  "experimental": true,
+  "kind": "issue-assignment-revision-snapshot",
+  "source": "SDP-vnext-pilot/Steering/Assignments/History/ISSUE-007-revision-009.json",
+  "assignmentSource": "SDP-vnext-pilot/Steering/Assignments/ISSUE-007.yaml",
+  "authorityIssue": "https://github.com/Hans-Einar/SDP/issues/7",
+  "revision": 9,
+  "sourceCandidate": "33551057701f70ff572bc90b1d72bdad8373cd4c",
+  "sourceFieldPresent": true,
+  "previousSnapshot": {
+    "revision": 8,
+    "snapshotPath": "SDP-vnext-pilot/Steering/Assignments/History/ISSUE-007-revision-008.json",
+    "sourceCandidate": "a6a23d50e1bb807c9db350758aad1737c01f7846",
+    "reservationDigest": "sha256:888daed562aaafb05530e48f5ebb11b344d7005a25ce3890d3e83db301d6ea70"
+  },
+  "reservationSet": {
+    "id": "RSV-ISSUE-007-001",
+    "digest": "sha256:6bdb62d86c07aad489fde8be141eb90a83df3ea56de2b43d59e59b2a1273a30e"
+  },
+  "recordedContext": {
+    "/revision": 9,
+    "/declaredState": "active",
+    "/activeSlices": [],
+    "/coordination/reservedIds": []
+  },
+  "supersededByRevision": 10,
+  "supersessionReason": "Revision 10 closes REV-010 H-001, H-002, and M-001 with durable allocation epochs, a pre-move materialize-or-burn gate, and truthful terminal closeout before the eleventh evidence gate."
+}

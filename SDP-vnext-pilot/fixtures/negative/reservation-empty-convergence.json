@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "reservation-has-no-convergence-owner-or-command",
+  "sourceExample": "simple-single-domain.json",
+  "mutations": [
+    {"op": "replace", "path": "/reservationSets/0/convergence", "value": {"owner": "", "command": "", "terminal": true}},
+    {"op": "replace", "path": "/assignments/0/coordination/convergence", "value": {"owner": "", "command": "", "terminal": true}}
+  ],
+  "rebindReservationDigests": true,
+  "expectedErrors": ["EMPTY_CONVERGENCE"]
+}

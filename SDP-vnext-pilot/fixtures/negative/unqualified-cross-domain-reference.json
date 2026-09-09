@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-v0",
+  "experimental": true,
+  "case": "unqualified-cross-domain-reference",
+  "registries": [
+    {
+      "schemaVersion": "sdp-vnext-pilot-work-domains-v0",
+      "experimental": true,
+      "kind": "work-domain-registry",
+      "repository": "https://github.com/example/repo",
+      "defaultDomainUid": null,
+      "domains": [
+        {
+          "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000021",
+          "key": "ONE",
+          "name": "One",
+          "state": "active",
+          "owners": [
+            "one"
+          ],
+          "newRecordIdStyle": "scoped",
+          "roots": [
+            "SDP/One"
+          ],
+          "issuedIds": [
+            {
+              "id": "ONE-FEAT-001",
+              "status": "prospective",
+              "allocationIssue": "https://github.com/example/repo/issues/1",
+              "source": "Features/ONE-FEAT-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-ORIGIN-1",
+                "reservationDigest": "sha256:0bdd5979ea1aa681b7b88a72a54ebeeb410f641d7a52fdc82cbca7bb45af34b1",
+                "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000021",
+                "id": "ONE-FEAT-001",
+                "allocationIssue": "https://github.com/example/repo/issues/1",
+                "source": "Features/ONE-FEAT-001.json"
+              }
+            }
+          ]
+        },
+        {
+          "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000022",
+          "key": "TWO",
+          "name": "Two",
+          "state": "active",
+          "owners": [
+            "two"
+          ],
+          "newRecordIdStyle": "scoped",
+          "roots": [
+            "SDP/Two"
+          ],
+          "issuedIds": [
+            {
+              "id": "TWO-STU-001",
+              "status": "prospective",
+              "allocationIssue": "https://github.com/example/repo/issues/2",
+              "source": "Studies/TWO-STU-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-ORIGIN-2",
+                "reservationDigest": "sha256:0249e237265c4d981a9a5eec994c52da2510d3139f0d9d31ae3647ed8529f8de",
+                "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000022",
+                "id": "TWO-STU-001",
+                "allocationIssue": "https://github.com/example/repo/issues/2",
+                "source": "Studies/TWO-STU-001.json"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "records": [],
+  "relations": [
+    {
+      "type": "depends_on",
+      "sourceRef": {
+        "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000021",
+        "id": "ONE-FEAT-001"
+      },
+      "targetRef": "TWO-STU-001"
+    }
+  ],
+  "assignments": [],
+  "expectedErrors": [
+    "UNQUALIFIED_CROSS_DOMAIN_REF"
+  ]
+}

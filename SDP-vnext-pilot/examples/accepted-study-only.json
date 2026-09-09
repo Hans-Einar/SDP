@@ -1,0 +1,232 @@
+{
+  "experimental": true,
+  "scenario": "accepted-study-only-assignment",
+  "registries": [
+    {
+      "schemaVersion": "sdp-vnext-pilot-work-domains-v0",
+      "experimental": true,
+      "kind": "work-domain-registry",
+      "repository": "https://github.com/example/study-app",
+      "defaultDomainUid": "urn:uuid:60000000-0000-4000-8000-000000000001",
+      "domains": [
+        {
+          "domainUid": "urn:uuid:60000000-0000-4000-8000-000000000001",
+          "key": "STUDY",
+          "name": "Study application",
+          "state": "active",
+          "owners": [
+            "study-owner"
+          ],
+          "newRecordIdStyle": "unscoped",
+          "roots": [
+            "SDP"
+          ],
+          "issuedIds": [
+            {
+              "id": "STU-001",
+              "status": "prospective",
+              "allocationIssue": "https://github.com/example/study-app/issues/1",
+              "source": "Studies/STU-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-STU-001",
+                "reservationDigest": "sha256:fa9b5d4c93e7367e45ce5319d694bdb45b647ed015259426384bb74e845229c5",
+                "domainUid": "urn:uuid:60000000-0000-4000-8000-000000000001",
+                "id": "STU-001",
+                "allocationIssue": "https://github.com/example/study-app/issues/1",
+                "source": "Studies/STU-001.json"
+              }
+            }
+          ],
+          "predecessorRepositories": []
+        }
+      ]
+    }
+  ],
+  "records": [
+    {
+      "schemaVersion": "sdp-vnext-pilot-study-v0",
+      "experimental": true,
+      "kind": "study",
+      "domainUid": "urn:uuid:60000000-0000-4000-8000-000000000001",
+      "id": "STU-001",
+      "source": "Studies/STU-001.json",
+      "revision": 1,
+      "declaredState": "accepted",
+      "title": "Accepted bounded study",
+      "question": "Which accepted evidence selects the bounded design?",
+      "evidenceBoundary": {
+        "inScope": [
+          "Repository evidence"
+        ],
+        "outOfScope": []
+      },
+      "ownerRef": null,
+      "issueAuthorities": [
+        "https://github.com/example/study-app/issues/1"
+      ],
+      "independentStudyRefs": [],
+      "convergenceGate": "Exact evidence and Steering acceptance",
+      "findings": [
+        "One bounded design is supported"
+      ],
+      "limitations": [],
+      "informs": [],
+      "acceptedEvidence": {
+        "candidate": "6161616161616161616161616161616161616161",
+        "verificationRefs": [
+          {
+            "id": "VER-STU-001",
+            "candidate": "6161616161616161616161616161616161616161"
+          }
+        ],
+        "currentReviewRef": {
+          "id": "REV-STU-001",
+          "candidate": "6161616161616161616161616161616161616161",
+          "disposition": "approved"
+        },
+        "steeringDisposition": {
+          "authority": "https://github.com/example/study-app/issues/1#issuecomment-101",
+          "candidate": "6161616161616161616161616161616161616161",
+          "decision": "accepted"
+        },
+        "releaseRefs": []
+      }
+    }
+  ],
+  "relations": [],
+  "assignments": [
+    {
+      "schemaVersion": "sdp-vnext-pilot-assignment-v0",
+      "experimental": true,
+      "kind": "issue-assignment",
+      "source": "Steering/Assignments/ISSUE-001.json",
+      "revision": 1,
+      "declaredState": "accepted",
+      "authority": {
+        "issue": "https://github.com/example/study-app/issues/1",
+        "amendments": []
+      },
+      "workRef": {
+        "type": "study",
+        "domainUid": "urn:uuid:60000000-0000-4000-8000-000000000001",
+        "id": "STU-001"
+      },
+      "authorizedSlices": [],
+      "activeSlices": [],
+      "baseline": {
+        "branch": "main",
+        "commit": "6060606060606060606060606060606060606060"
+      },
+      "delivery": {
+        "branch": "codex/issue-1-study",
+        "pullRequest": "https://github.com/example/study-app/pull/2"
+      },
+      "coordination": {
+        "integrationBase": "6060606060606060606060606060606060606060",
+        "reservationSet": {
+          "id": "RSV-STU-001",
+          "digest": "sha256:fa9b5d4c93e7367e45ce5319d694bdb45b647ed015259426384bb74e845229c5"
+        },
+        "dependsOnIssues": [],
+        "conflictsWithIssues": [],
+        "ownedPaths": [
+          "Studies/STU-001.json"
+        ],
+        "sharedTouchpoints": [],
+        "reservedIds": [
+          {
+            "domainUid": "urn:uuid:60000000-0000-4000-8000-000000000001",
+            "id": "STU-001",
+            "allocationIssue": "https://github.com/example/study-app/issues/1",
+            "source": "Studies/STU-001.json"
+          }
+        ],
+        "mergeOrder": [
+          "https://github.com/example/study-app/issues/1"
+        ],
+        "convergence": {
+          "owner": "study-owner",
+          "command": "python validate.py",
+          "terminal": true
+        },
+        "staleBasePolicy": "refreeze-before-write-or-merge"
+      },
+      "boundaries": {
+        "prohibitedRepositories": [],
+        "prohibitedPaths": [],
+        "prohibitedOperations": []
+      },
+      "requiredEvidence": {
+        "verification": [
+          "study evidence"
+        ],
+        "independentReview": true,
+        "maximumUnresolvedSeverity": "low"
+      },
+      "acceptedEvidence": {
+        "candidate": "6161616161616161616161616161616161616161",
+        "verificationRefs": [
+          {
+            "id": "VER-ASGN-001",
+            "candidate": "6161616161616161616161616161616161616161"
+          }
+        ],
+        "currentReviewRef": {
+          "id": "REV-ASGN-001",
+          "candidate": "6161616161616161616161616161616161616161",
+          "disposition": "approved"
+        },
+        "steeringDisposition": {
+          "authority": "https://github.com/example/study-app/issues/1#issuecomment-102",
+          "candidate": "6161616161616161616161616161616161616161",
+          "decision": "accepted"
+        },
+        "releaseRefs": []
+      },
+      "stopCondition": "STUDY_ACCEPTED"
+    }
+  ],
+  "reservationSets": [
+    {
+      "schemaVersion": "sdp-vnext-pilot-reservation-set-v0",
+      "experimental": true,
+      "kind": "reservation-set",
+      "id": "RSV-STU-001",
+      "integrationBase": "6060606060606060606060606060606060606060",
+      "assignments": [
+        {
+          "issue": "https://github.com/example/study-app/issues/1",
+          "workRef": {
+            "type": "study",
+            "domainUid": "urn:uuid:60000000-0000-4000-8000-000000000001",
+            "id": "STU-001"
+          },
+          "authorizedSlices": [],
+          "activeSlices": [],
+          "reservedIds": [
+            {
+              "domainUid": "urn:uuid:60000000-0000-4000-8000-000000000001",
+              "id": "STU-001",
+              "allocationIssue": "https://github.com/example/study-app/issues/1",
+              "source": "Studies/STU-001.json"
+            }
+          ],
+          "ownedPaths": [
+            "Studies/STU-001.json"
+          ],
+          "sharedTouchpoints": [],
+          "dependsOnIssues": [],
+          "conflictsWithIssues": []
+        }
+      ],
+      "mergeOrder": [
+        "https://github.com/example/study-app/issues/1"
+      ],
+      "convergence": {
+        "owner": "study-owner",
+        "command": "python validate.py",
+        "terminal": true
+      }
+    }
+  ]
+}

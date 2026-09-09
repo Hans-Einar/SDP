@@ -1,0 +1,19 @@
+{
+  "schemaVersion":"sdp-vnext-pilot-positive-mutation-v0",
+  "experimental":true,
+  "case":"delivered-sliced-fix-retains-accepted-affected-feature-outcome",
+  "sourcePositive":"accepted-standalone-fix.json",
+  "mutations":[
+    {"op":"add","path":"/registries/0/domains/0/issuedIds/-","value":{"id":"SLC-002","status":"prospective","allocationIssue":"https://github.com/example/tiny-app/issues/12","source":"Slices/SLC-002.json"}},
+    {"op":"replace","path":"/records/2/standaloneReviewedUnit","value":false},
+    {"op":"replace","path":"/records/2/slices","value":[{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-002"}]},
+    {"op":"add","path":"/records/-","value":{"schemaVersion":"sdp-vnext-pilot-slice-v0","experimental":true,"kind":"slice","domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-002","source":"Slices/SLC-002.json","revision":1,"declaredState":"accepted","title":"Correct export metadata end to end","ownerRef":{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"FIX-001"},"assignmentIssue":"https://github.com/example/tiny-app/issues/12","outcome":"The correction is independently verified.","whySmallestCoherent":"The correction and regression evidence are one coherent unit.","decisionRefs":[],"ownedPaths":["src/fix/**"],"sharedTouchpoints":[],"invariants":["The accepted export remains available"],"nonGoals":[],"verificationCriteria":["focused correction regression"],"reviewCriteria":["independent exact-candidate review"],"discoveryRule":"Stop on capability expansion.","completionSignal":"FIX_SLICE_ACCEPTED","hardStop":"Do not rewrite the affected Feature evidence.","acceptedEvidence":{"candidate":"9797979797979797979797979797979797979797","verificationRefs":[{"id":"FIX-SLC-VER-002","candidate":"9797979797979797979797979797979797979797"}],"currentReviewRef":{"id":"FIX-SLC-REV-002","candidate":"9797979797979797979797979797979797979797","disposition":"approved"},"steeringDisposition":{"authority":"https://github.com/example/tiny-app/issues/12#issuecomment-1297","candidate":"9797979797979797979797979797979797979797","decision":"accepted"},"releaseRefs":[]}}},
+    {"op":"replace","path":"/assignments/1/authorizedSlices","value":[{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-002","acceptedCandidate":"9797979797979797979797979797979797979797"}]},
+    {"op":"add","path":"/assignments/1/coordination/ownedPaths/-","value":"src/fix/**"},
+    {"op":"add","path":"/assignments/1/coordination/reservedIds/-","value":{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-002"}},
+    {"op":"replace","path":"/reservationSets/0/assignments/1/authorizedSlices","value":[{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-002","acceptedCandidate":"9797979797979797979797979797979797979797"}]},
+    {"op":"add","path":"/reservationSets/0/assignments/1/ownedPaths/-","value":"src/fix/**"},
+    {"op":"add","path":"/reservationSets/0/assignments/1/reservedIds/-","value":{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-002"}}
+  ],
+  "rebindReservationDigests":true
+}

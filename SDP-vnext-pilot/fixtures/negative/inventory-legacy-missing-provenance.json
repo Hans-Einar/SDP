@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "legacy-inventory-member-has-no-exact-provenance",
+  "sourceExample": "domain-move.json",
+  "mutations": [
+    {"op": "remove", "path": "/registries/0/domains/1/issuedIds/1/provenance"},
+    {"op": "remove", "path": "/registries/1/domains/0/issuedIds/1/provenance"}
+  ],
+  "expectedErrors": ["LEGACY_PROVENANCE_REQUIRED"]
+}

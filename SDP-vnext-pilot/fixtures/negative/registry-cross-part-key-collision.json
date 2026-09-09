@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "cross-registry-domain-key-collision-is-categorically-rejected",
+  "sourceExample": "simple-single-domain.json",
+  "mutations": [
+    {"op": "copy", "from": "/registries/0", "path": "/registries/-"},
+    {"op": "replace", "path": "/registries/1/domains/0/domainUid", "value": "urn:uuid:20000000-0000-4000-8000-000000000002"},
+    {"op": "replace", "path": "/registries/1/defaultDomainUid", "value": "urn:uuid:20000000-0000-4000-8000-000000000002"},
+    {"op": "replace", "path": "/registries/1/domains/0/roots/0", "value": "Other"},
+    {"op": "replace", "path": "/registries/1/domains/0/issuedIds", "value": []}
+  ],
+  "expectedErrors": ["DUPLICATE_REPOSITORY_REGISTRY"]
+}

@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"delivered-sliced-fix-identifies-evidence-qualified-corrected-behavior","sourcePositive":"terminal-sliced-fix-closure.json","mutations":[{"op":"replace","path":"/records/2/affectedWork","value":[]}],"expectedErrors":["FIX_AFFECTED_WORK_NOT_ACCEPTED"]}

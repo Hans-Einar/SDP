@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"allocation-epoch-cannot-be-omitted","sourcePositive":"reserved-before-materialization.json","mutations":[{"op":"remove","path":"/registries/0/domains/0/issuedIds/5/allocationEpoch"}],"expectedErrors":["ALLOCATION_EPOCH_MISMATCH","INVALID_ALLOCATION_EPOCH"]}

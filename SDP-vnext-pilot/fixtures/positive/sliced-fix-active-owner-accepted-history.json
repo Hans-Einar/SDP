@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-positive-mutation-v0","experimental":true,"case":"sliced-fix-may-correct-active-feature-with-preserved-accepted-history","sourcePositive":"terminal-sliced-fix-closure.json","mutations":[{"op":"replace","path":"/records/0/declaredState","value":"active"}]}

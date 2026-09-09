@@ -1,0 +1,7 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-positive-mutation-v0",
+  "experimental": true,
+  "case": "exact-historical-assignment-and-reservation-row-projection-remain-equal",
+  "sourcePositive": "accepted-issue-reopen-revision.json",
+  "mutations": []
+}

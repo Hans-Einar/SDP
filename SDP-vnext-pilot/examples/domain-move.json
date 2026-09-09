@@ -1,0 +1,256 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-fixture-v0",
+  "experimental": true,
+  "scenario": "domain-move-without-identity-rewrite",
+  "registries": [
+    {
+      "schemaVersion": "sdp-vnext-pilot-work-domains-v0",
+      "experimental": true,
+      "kind": "work-domain-registry",
+      "repository": "https://github.com/example/old-monorepo",
+      "defaultDomainUid": "urn:uuid:40000000-0000-4000-8000-000000000010",
+      "domains": [
+        {
+          "domainUid": "urn:uuid:40000000-0000-4000-8000-000000000010",
+          "key": "HOST",
+          "name": "Remaining host",
+          "state": "active",
+          "owners": [
+            "host-owner"
+          ],
+          "newRecordIdStyle": "scoped",
+          "roots": [
+            "SDP/Host"
+          ],
+          "issuedIds": [
+            {
+              "id": "HOST-FEAT-001",
+              "status": "prospective",
+              "allocationIssue": "https://github.com/example/old-monorepo/issues/300",
+              "source": "SDP/Host/Features/HOST-FEAT-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-ORIGIN-300",
+                "reservationDigest": "sha256:ab2cb1ee1e6eef0d583a1f88335cfd4f4e2a055dc025edefbaea95b64e77cd01",
+                "domainUid": "urn:uuid:40000000-0000-4000-8000-000000000010",
+                "id": "HOST-FEAT-001",
+                "allocationIssue": "https://github.com/example/old-monorepo/issues/300",
+                "source": "SDP/Host/Features/HOST-FEAT-001.json"
+              }
+            }
+          ],
+          "predecessorRepositories": []
+        },
+        {
+          "domainUid": "urn:uuid:40000000-0000-4000-8000-000000000020",
+          "key": "DBG",
+          "name": "Debugger",
+          "state": "moved",
+          "owners": [
+            "debugger-owner"
+          ],
+          "newRecordIdStyle": "scoped",
+          "roots": [],
+          "issuedIds": [
+            {
+              "id": "DBG-FEAT-001",
+              "status": "prospective",
+              "allocationIssue": "https://github.com/example/old-monorepo/issues/301",
+              "source": "SDP/Debugger/Features/DBG-FEAT-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-ORIGIN-301",
+                "reservationDigest": "sha256:46982f9656ff47358b0bb874264df7ab3baebf2b61cf4cfe49c9832d706fc01d",
+                "domainUid": "urn:uuid:40000000-0000-4000-8000-000000000020",
+                "id": "DBG-FEAT-001",
+                "allocationIssue": "https://github.com/example/old-monorepo/issues/301",
+                "source": "SDP/Debugger/Features/DBG-FEAT-001.json"
+              }
+            },
+            {
+              "id": "DBG-RF-001",
+              "status": "legacy-preserved",
+              "authorityIssue": "https://github.com/example/old-monorepo/issues/38",
+              "source": "SDP/Debugger/Refactors/DBG-RF-001/Refactor.md",
+              "provenance": {
+                "repository": "https://github.com/example/old-monorepo",
+                "commit": "4444444444444444444444444444444444444444",
+                "path": "SDP/Debugger/Refactors/DBG-RF-001/Refactor.md"
+              }
+            },
+            {
+              "id": "DBG-ST-000",
+              "status": "legacy-preserved",
+              "authorityIssue": null,
+              "authorityMissingReason": "The historical record predates Issue-authoritative execution.",
+              "source": "SDP/Debugger/Studies/DBG-ST-000/Study.md",
+              "provenance": {
+                "repository": "https://github.com/example/old-monorepo",
+                "commit": "4444444444444444444444444444444444444444",
+                "path": "SDP/Debugger/Studies/DBG-ST-000/Study.md"
+              }
+            }
+          ],
+          "successorRepository": "https://github.com/example/debugger",
+          "successorRegistry": "SDP/WorkDomains.json"
+        }
+      ]
+    },
+    {
+      "schemaVersion": "sdp-vnext-pilot-work-domains-v0",
+      "experimental": true,
+      "kind": "work-domain-registry",
+      "repository": "https://github.com/example/debugger",
+      "defaultDomainUid": "urn:uuid:40000000-0000-4000-8000-000000000020",
+      "domains": [
+        {
+          "domainUid": "urn:uuid:40000000-0000-4000-8000-000000000020",
+          "key": "DBG",
+          "name": "Debugger",
+          "state": "active",
+          "owners": [
+            "debugger-owner"
+          ],
+          "newRecordIdStyle": "scoped",
+          "roots": [
+            "SDP/Debugger"
+          ],
+          "issuedIds": [
+            {
+              "id": "DBG-FEAT-001",
+              "status": "prospective",
+              "allocationIssue": "https://github.com/example/old-monorepo/issues/301",
+              "source": "SDP/Debugger/Features/DBG-FEAT-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-ORIGIN-301",
+                "reservationDigest": "sha256:46982f9656ff47358b0bb874264df7ab3baebf2b61cf4cfe49c9832d706fc01d",
+                "domainUid": "urn:uuid:40000000-0000-4000-8000-000000000020",
+                "id": "DBG-FEAT-001",
+                "allocationIssue": "https://github.com/example/old-monorepo/issues/301",
+                "source": "SDP/Debugger/Features/DBG-FEAT-001.json"
+              }
+            },
+            {
+              "id": "DBG-RF-001",
+              "status": "legacy-preserved",
+              "authorityIssue": "https://github.com/example/old-monorepo/issues/38",
+              "source": "SDP/Debugger/Refactors/DBG-RF-001/Refactor.md",
+              "provenance": {
+                "repository": "https://github.com/example/old-monorepo",
+                "commit": "4444444444444444444444444444444444444444",
+                "path": "SDP/Debugger/Refactors/DBG-RF-001/Refactor.md"
+              }
+            },
+            {
+              "id": "DBG-ST-000",
+              "status": "legacy-preserved",
+              "authorityIssue": null,
+              "authorityMissingReason": "The historical record predates Issue-authoritative execution.",
+              "source": "SDP/Debugger/Studies/DBG-ST-000/Study.md",
+              "provenance": {
+                "repository": "https://github.com/example/old-monorepo",
+                "commit": "4444444444444444444444444444444444444444",
+                "path": "SDP/Debugger/Studies/DBG-ST-000/Study.md"
+              }
+            }
+          ],
+          "predecessorRepositories": [
+            "https://github.com/example/old-monorepo"
+          ]
+        }
+      ]
+    }
+  ],
+  "records": [
+    {
+      "schemaVersion": "sdp-vnext-pilot-feature-v0",
+      "experimental": true,
+      "kind": "feature",
+      "domainUid": "urn:uuid:40000000-0000-4000-8000-000000000010",
+      "id": "HOST-FEAT-001",
+      "source": "SDP/Host/Features/HOST-FEAT-001.json",
+      "revision": 1,
+      "declaredState": "proposed",
+      "title": "Consume debugger service",
+      "intent": {
+        "problem": "The host needs debugger capability.",
+        "outcome": "The host consumes one stable debugger service.",
+        "usersOrValue": "The split remains transparent to users."
+      },
+      "scope": [
+        "Cross-repository consumption"
+      ],
+      "nonGoals": [
+        "Debugger implementation"
+      ],
+      "constraints": [
+        "Preserve the qualified debugger reference"
+      ],
+      "acceptanceCriteria": [
+        "Cross-repository contract check passes"
+      ],
+      "relations": [],
+      "issueAuthorities": [],
+      "slices": [],
+      "acceptedEvidence": {
+        "candidate": null,
+        "verificationRefs": [],
+        "currentReviewRef": null,
+        "steeringDisposition": null,
+        "releaseRefs": []
+      }
+    },
+    {
+      "schemaVersion": "sdp-vnext-pilot-feature-v0",
+      "experimental": true,
+      "kind": "feature",
+      "domainUid": "urn:uuid:40000000-0000-4000-8000-000000000020",
+      "id": "DBG-FEAT-001",
+      "source": "SDP/Debugger/Features/DBG-FEAT-001.json",
+      "revision": 1,
+      "declaredState": "proposed",
+      "title": "Debugger service",
+      "intent": {
+        "problem": "The debugger service needs a stable boundary.",
+        "outcome": "The service is available under its original identity.",
+        "usersOrValue": "Existing clients survive the repository split."
+      },
+      "scope": [
+        "Preserved service"
+      ],
+      "nonGoals": [
+        "Identity renaming"
+      ],
+      "constraints": [
+        "Keep DBG-FEAT-001"
+      ],
+      "acceptanceCriteria": [
+        "Original qualified references resolve"
+      ],
+      "relations": [],
+      "issueAuthorities": [],
+      "slices": [],
+      "acceptedEvidence": {
+        "candidate": null,
+        "verificationRefs": [],
+        "currentReviewRef": null,
+        "steeringDisposition": null,
+        "releaseRefs": []
+      }
+    }
+  ],
+  "relations": [
+    {
+      "type": "depends_on",
+      "sourceRef": {
+        "domainUid": "urn:uuid:40000000-0000-4000-8000-000000000010",
+        "id": "HOST-FEAT-001"
+      },
+      "targetRef": {
+        "domainUid": "urn:uuid:40000000-0000-4000-8000-000000000020",
+        "id": "DBG-FEAT-001",
+        "keyHint": "DBG"
+      }
+    }
+  ],
+  "assignments": [],
+  "reservationSets": []
+}

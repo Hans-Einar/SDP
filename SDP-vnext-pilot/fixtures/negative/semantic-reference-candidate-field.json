@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"semantic-reference-rejects-candidate-field","sourceExample":"scoped-monorepo.json","mutations":[{"op":"add","path":"/records/1/relations/0/targetRef/candidate","value":"1111111111111111111111111111111111111111"}],"expectedErrors":["INVALID_SEMANTIC_EDGE"]}

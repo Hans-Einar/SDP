@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
+  "experimental": true,
+  "case": "steering-acceptance-comment-belongs-to-another-issue",
+  "sourceExample": "scoped-monorepo.json",
+  "mutations": [
+    {"op": "replace", "path": "/records/0/acceptedEvidence/steeringDisposition/authority", "value": "https://github.com/example/hsx-like/issues/999#issuecomment-1"}
+  ],
+  "expectedErrors": ["STEERING_AUTHORITY_MISMATCH"]
+}

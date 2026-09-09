@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-assignment-history-v0",
+  "experimental": true,
+  "kind": "issue-assignment-revision-snapshot",
+  "source": "SDP-vnext-pilot/Steering/Assignments/History/ISSUE-007-revision-006.json",
+  "assignmentSource": "SDP-vnext-pilot/Steering/Assignments/ISSUE-007.yaml",
+  "authorityIssue": "https://github.com/Hans-Einar/SDP/issues/7",
+  "revision": 6,
+  "sourceCandidate": "0655002cbe5e14543b007525cdc3e3bad82b6816",
+  "sourceFieldPresent": true,
+  "previousSnapshot": {
+    "revision": 5,
+    "snapshotPath": "SDP-vnext-pilot/Steering/Assignments/History/ISSUE-007-revision-005.json",
+    "sourceCandidate": "dfdea4fe259a9e342d651254656bcfac5363d0b9",
+    "reservationDigest": "sha256:145665468058a57f0278b5c45471d9fbaee180546e20fd3e9189317fa67f8144"
+  },
+  "reservationSet": {
+    "id": "RSV-ISSUE-007-001",
+    "digest": "sha256:08cbabb798c0cc95e31052110ff2a910d7ee91e52f370165398c194aea9b552d"
+  },
+  "recordedContext": {
+    "/source": "SDP-vnext-pilot/Steering/Assignments/ISSUE-007.yaml",
+    "/declaredState": "active",
+    "/workRef": {
+      "type": "study",
+      "domainUid": "urn:uuid:9df0765b-4f22-4c5e-8fda-b5e71c96ca81",
+      "id": "STU-007"
+    },
+    "/authorizedSlices": [],
+    "/activeSlices": [],
+    "/coordination/reservationSet": {
+      "id": "RSV-ISSUE-007-001",
+      "path": "SDP-vnext-pilot/Steering/Reservations/RSV-ISSUE-007-001.json",
+      "digest": "sha256:08cbabb798c0cc95e31052110ff2a910d7ee91e52f370165398c194aea9b552d"
+    },
+    "/coordination/ownedPaths": [
+      "SDP-vnext-pilot/**",
+      "Sprints/SPR-SDP-007--provisional-vnext-contract/**",
+      "CodeReview/REV-SDP-007-001.md",
+      "CodeReview/REV-SDP-007-002.md",
+      "CodeReview/REV-SDP-007-003.md",
+      "CodeReview/REV-SDP-007-004.md",
+      "CodeReview/REV-SDP-007-005.md",
+      "CodeReview/REV-SDP-007-006.md",
+      "CodeReview/REV-SDP-007-007.md",
+      "Verification/VER-SDP-007-001.md",
+      "Verification/VER-SDP-007-002.md",
+      "Verification/VER-SDP-007-003.md",
+      "Verification/VER-SDP-007-004.md",
+      "Verification/VER-SDP-007-005.md",
+      "Verification/VER-SDP-007-006.md",
+      "Verification/VER-SDP-007-007.md"
+    ],
+    "/coordination/convergence": {
+      "owner": "Hans-Einar/SDP Steering",
+      "command": "python SDP-vnext-pilot/validate_pilot.py",
+      "terminal": true
+    }
+  },
+  "supersededByRevision": 7,
+  "supersessionReason": "The eighth evidence gate requires exact historical assignment-to-reservation projection equality, tuple-keyed stable-ID reservation epochs, and full semantic validation of every typed reservation set before binding."
+}

@@ -1,0 +1,967 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-fixture-v0",
+  "experimental": true,
+  "scenario": "scoped-monorepo-cross-scope-and-concurrency",
+  "registries": [
+    {
+      "schemaVersion": "sdp-vnext-pilot-work-domains-v0",
+      "experimental": true,
+      "kind": "work-domain-registry",
+      "repository": "https://github.com/example/hsx-like",
+      "defaultDomainUid": null,
+      "domains": [
+        {
+          "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000001",
+          "key": "HSX",
+          "name": "Core",
+          "state": "active",
+          "owners": [
+            "core-owner"
+          ],
+          "newRecordIdStyle": "scoped",
+          "roots": [
+            "SDP/HSX"
+          ],
+          "issuedIds": [
+            {
+              "id": "HSX-STU-001",
+              "status": "prospective",
+              "allocationIssue": "https://github.com/example/hsx-like/issues/150",
+              "source": "SDP/HSX/Studies/HSX-STU-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-ORIGIN-150",
+                "reservationDigest": "sha256:19f2e39609638acdadb0e4e9f18975a3a213d9daaa10cab11d40e3fc70b6d5b8",
+                "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000001",
+                "id": "HSX-STU-001",
+                "allocationIssue": "https://github.com/example/hsx-like/issues/150",
+                "source": "SDP/HSX/Studies/HSX-STU-001.json"
+              }
+            }
+          ],
+          "predecessorRepositories": []
+        },
+        {
+          "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+          "key": "DBG",
+          "name": "Debugger",
+          "state": "active",
+          "owners": [
+            "debugger-owner"
+          ],
+          "newRecordIdStyle": "scoped",
+          "roots": [
+            "SDP/Debugger"
+          ],
+          "issuedIds": [
+            {
+              "id": "DBG-FEAT-001",
+              "status": "prospective",
+              "allocationIssue": "https://github.com/example/hsx-like/issues/201",
+              "source": "SDP/Debugger/Features/DBG-FEAT-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-ORIGIN-201",
+                "reservationDigest": "sha256:c40dad7f8897d00fab8ae129fb7aac92e771eb55b3a6c3162b3788aa70f1b30f",
+                "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+                "id": "DBG-FEAT-001",
+                "allocationIssue": "https://github.com/example/hsx-like/issues/201",
+                "source": "SDP/Debugger/Features/DBG-FEAT-001.json"
+              }
+            },
+            {
+              "id": "DBG-SLC-001",
+              "status": "prospective",
+              "allocationIssue": "https://github.com/example/hsx-like/issues/201",
+              "source": "SDP/Debugger/Slices/DBG-SLC-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-200",
+                "reservationDigest": "sha256:79f13e3a0486326f4ef588d47bebdbef81adcca87ffc6e36a8cd302df532a9cb",
+                "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+                "id": "DBG-SLC-001",
+                "allocationIssue": "https://github.com/example/hsx-like/issues/201",
+                "source": "SDP/Debugger/Slices/DBG-SLC-001.json"
+              }
+            }
+          ],
+          "predecessorRepositories": []
+        },
+        {
+          "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000003",
+          "key": "AVR",
+          "name": "AVR",
+          "state": "active",
+          "owners": [
+            "avr-owner"
+          ],
+          "newRecordIdStyle": "scoped",
+          "roots": [
+            "SDP/AVR"
+          ],
+          "issuedIds": [
+            {
+              "id": "AVR-STU-001",
+              "status": "prospective",
+              "allocationIssue": "https://github.com/example/hsx-like/issues/202",
+              "source": "SDP/AVR/Studies/AVR-STU-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-200",
+                "reservationDigest": "sha256:79f13e3a0486326f4ef588d47bebdbef81adcca87ffc6e36a8cd302df532a9cb",
+                "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000003",
+                "id": "AVR-STU-001",
+                "allocationIssue": "https://github.com/example/hsx-like/issues/202",
+                "source": "SDP/AVR/Studies/AVR-STU-001.json"
+              }
+            },
+            {
+              "id": "AVR-FIX-001",
+              "status": "prospective",
+              "allocationIssue": "https://github.com/example/hsx-like/issues/202",
+              "source": "SDP/AVR/Fixes/AVR-FIX-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-ORIGIN-202",
+                "reservationDigest": "sha256:3b64021da52b5fe4d3ddbdf53a1cc05b294167ce235f7273ff3b33e9fc89bc8e",
+                "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000003",
+                "id": "AVR-FIX-001",
+                "allocationIssue": "https://github.com/example/hsx-like/issues/202",
+                "source": "SDP/AVR/Fixes/AVR-FIX-001.json"
+              }
+            }
+          ],
+          "predecessorRepositories": []
+        },
+        {
+          "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+          "key": "SHARED",
+          "name": "Shared contracts",
+          "state": "active",
+          "owners": [
+            "shared-contract-owner"
+          ],
+          "newRecordIdStyle": "scoped",
+          "roots": [
+            "SDP/Shared"
+          ],
+          "issuedIds": [
+            {
+              "id": "SHARED-REF-001",
+              "status": "prospective",
+              "allocationIssue": "https://github.com/example/hsx-like/issues/203",
+              "source": "SDP/Shared/Refactors/SHARED-REF-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-ORIGIN-203",
+                "reservationDigest": "sha256:98cfa28368fa0b671010af510eaa4470e112bf6ae37fe07b1825805328f350e3",
+                "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+                "id": "SHARED-REF-001",
+                "allocationIssue": "https://github.com/example/hsx-like/issues/203",
+                "source": "SDP/Shared/Refactors/SHARED-REF-001.json"
+              }
+            },
+            {
+              "id": "SHARED-SLC-001",
+              "status": "prospective",
+              "allocationIssue": "https://github.com/example/hsx-like/issues/203",
+              "source": "SDP/Shared/Slices/SHARED-SLC-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-200",
+                "reservationDigest": "sha256:79f13e3a0486326f4ef588d47bebdbef81adcca87ffc6e36a8cd302df532a9cb",
+                "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+                "id": "SHARED-SLC-001",
+                "allocationIssue": "https://github.com/example/hsx-like/issues/203",
+                "source": "SDP/Shared/Slices/SHARED-SLC-001.json"
+              }
+            }
+          ],
+          "predecessorRepositories": []
+        }
+      ]
+    }
+  ],
+  "records": [
+    {
+      "schemaVersion": "sdp-vnext-pilot-study-v0",
+      "experimental": true,
+      "kind": "study",
+      "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000001",
+      "id": "HSX-STU-001",
+      "source": "SDP/HSX/Studies/HSX-STU-001.json",
+      "revision": 1,
+      "declaredState": "accepted",
+      "title": "Portable core contract",
+      "question": "Which stable contract may Debugger depend on?",
+      "evidenceBoundary": {
+        "inScope": [
+          "Portable contract"
+        ],
+        "outOfScope": [
+          "Debugger implementation"
+        ]
+      },
+      "ownerRef": null,
+      "issueAuthorities": [
+        "https://github.com/example/hsx-like/issues/150"
+      ],
+      "independentStudyRefs": [],
+      "convergenceGate": "Core-owner disposition",
+      "findings": [
+        "Contract v1 is the accepted boundary"
+      ],
+      "limitations": [],
+      "informs": [],
+      "acceptedEvidence": {
+        "candidate": "1501501501501501501501501501501501501501",
+        "verificationRefs": [
+          {
+            "id": "HSX-VER-150",
+            "candidate": "1501501501501501501501501501501501501501"
+          }
+        ],
+        "currentReviewRef": {
+          "id": "HSX-RVW-150",
+          "candidate": "1501501501501501501501501501501501501501",
+          "disposition": "approved"
+        },
+        "steeringDisposition": {
+          "authority": "https://github.com/example/hsx-like/issues/150#issuecomment-15001",
+          "candidate": "1501501501501501501501501501501501501501",
+          "decision": "accepted"
+        },
+        "releaseRefs": []
+      }
+    },
+    {
+      "schemaVersion": "sdp-vnext-pilot-feature-v0",
+      "experimental": true,
+      "kind": "feature",
+      "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+      "id": "DBG-FEAT-001",
+      "source": "SDP/Debugger/Features/DBG-FEAT-001.json",
+      "revision": 1,
+      "declaredState": "active",
+      "title": "Debugger portable inspection",
+      "intent": {
+        "problem": "Inspection cannot use a stable portable boundary.",
+        "outcome": "Debugger inspection runs through the portable contract.",
+        "usersOrValue": "Debugger clients receive stable inspection."
+      },
+      "scope": [
+        "One debugger inspection path"
+      ],
+      "nonGoals": [
+        "AVR implementation"
+      ],
+      "constraints": [
+        "Depend only on accepted core contract"
+      ],
+      "acceptanceCriteria": [
+        "Integrated inspection check passes"
+      ],
+      "relations": [
+        {
+          "type": "depends_on",
+          "targetRef": {
+            "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000001",
+            "id": "HSX-STU-001",
+            "keyHint": "HSX"
+          }
+        }
+      ],
+      "issueAuthorities": [
+        "https://github.com/example/hsx-like/issues/201"
+      ],
+      "slices": [
+        {
+          "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+          "id": "DBG-SLC-001"
+        }
+      ],
+      "acceptedEvidence": {
+        "candidate": null,
+        "verificationRefs": [],
+        "currentReviewRef": null,
+        "steeringDisposition": null,
+        "releaseRefs": []
+      }
+    },
+    {
+      "schemaVersion": "sdp-vnext-pilot-slice-v0",
+      "experimental": true,
+      "kind": "slice",
+      "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+      "id": "DBG-SLC-001",
+      "source": "SDP/Debugger/Slices/DBG-SLC-001.json",
+      "revision": 1,
+      "declaredState": "active",
+      "title": "Debugger inspection through portable boundary",
+      "ownerRef": {
+        "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+        "id": "DBG-FEAT-001"
+      },
+      "assignmentIssue": "https://github.com/example/hsx-like/issues/201",
+      "outcome": "One inspection request crosses the accepted boundary end to end.",
+      "whySmallestCoherent": "A partial adapter is not independently observable.",
+      "decisionRefs": [
+        {
+          "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000001",
+          "id": "HSX-STU-001",
+          "keyHint": "HSX"
+        }
+      ],
+      "ownedPaths": [
+        "src/debugger/inspection/**"
+      ],
+      "sharedTouchpoints": [
+        "SDP/Shared/contracts/interface.json"
+      ],
+      "invariants": [
+        "Core contract remains authoritative"
+      ],
+      "nonGoals": [
+        "AVR work"
+      ],
+      "verificationCriteria": [
+        "python -m unittest tests.debugger_inspection"
+      ],
+      "reviewCriteria": [
+        "Fresh cross-domain contract review"
+      ],
+      "discoveryRule": "Stop on portable-contract contradiction.",
+      "completionSignal": "DBG_INSPECTION_READY",
+      "hardStop": "Do not change AVR.",
+      "acceptedEvidence": {
+        "candidate": null,
+        "verificationRefs": [],
+        "currentReviewRef": null,
+        "steeringDisposition": null,
+        "releaseRefs": []
+      }
+    },
+    {
+      "schemaVersion": "sdp-vnext-pilot-study-v0",
+      "experimental": true,
+      "kind": "study",
+      "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000003",
+      "id": "AVR-STU-001",
+      "source": "SDP/AVR/Studies/AVR-STU-001.json",
+      "revision": 1,
+      "declaredState": "active",
+      "title": "AVR side of portable boundary",
+      "question": "What evidence constrains the AVR boundary?",
+      "evidenceBoundary": {
+        "inScope": [
+          "AVR contract evidence"
+        ],
+        "outOfScope": [
+          "AVR product implementation"
+        ]
+      },
+      "ownerRef": {
+        "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+        "id": "DBG-FEAT-001",
+        "keyHint": "DBG"
+      },
+      "issueAuthorities": [
+        "https://github.com/example/hsx-like/issues/202"
+      ],
+      "independentStudyRefs": [
+        {
+          "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000001",
+          "id": "HSX-STU-001",
+          "keyHint": "HSX"
+        }
+      ],
+      "convergenceGate": "Shared interface convergence",
+      "findings": [],
+      "limitations": [],
+      "informs": [
+        {
+          "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+          "id": "SHARED-REF-001",
+          "keyHint": "SHARED"
+        }
+      ],
+      "acceptedEvidence": {
+        "candidate": null,
+        "verificationRefs": [],
+        "currentReviewRef": null,
+        "steeringDisposition": null,
+        "releaseRefs": []
+      }
+    },
+    {
+      "schemaVersion": "sdp-vnext-pilot-refactor-v0",
+      "experimental": true,
+      "kind": "refactor",
+      "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+      "id": "SHARED-REF-001",
+      "source": "SDP/Shared/Refactors/SHARED-REF-001.json",
+      "revision": 1,
+      "declaredState": "proposed",
+      "title": "Explicit shared contract ownership",
+      "behaviorBaseline": [
+        "Existing portable interface remains valid"
+      ],
+      "targetStructure": [
+        "Shared interface has one explicit owner"
+      ],
+      "compatibility": {
+        "preserved": [
+          "Portable interface v1"
+        ],
+        "changed": [],
+        "migrationRange": "Metadata only"
+      },
+      "temporaryAdapters": [],
+      "exitEvidence": [
+        "Both dependent domains pass convergence"
+      ],
+      "relations": [
+        {
+          "type": "refines",
+          "targetRef": {
+            "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+            "id": "DBG-FEAT-001",
+            "keyHint": "DBG"
+          }
+        }
+      ],
+      "issueAuthorities": [
+        "https://github.com/example/hsx-like/issues/203"
+      ],
+      "slices": [
+        {
+          "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+          "id": "SHARED-SLC-001"
+        }
+      ],
+      "acceptedEvidence": {
+        "candidate": null,
+        "verificationRefs": [],
+        "currentReviewRef": null,
+        "steeringDisposition": null,
+        "releaseRefs": []
+      }
+    },
+    {
+      "schemaVersion": "sdp-vnext-pilot-slice-v0",
+      "experimental": true,
+      "kind": "slice",
+      "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+      "id": "SHARED-SLC-001",
+      "source": "SDP/Shared/Slices/SHARED-SLC-001.json",
+      "revision": 1,
+      "declaredState": "active",
+      "title": "Converge the shared interface",
+      "ownerRef": {
+        "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+        "id": "SHARED-REF-001"
+      },
+      "assignmentIssue": "https://github.com/example/hsx-like/issues/203",
+      "outcome": "The shared contract is owned and both consumers pass.",
+      "whySmallestCoherent": "Ownership without consumer checks is incomplete.",
+      "decisionRefs": [],
+      "ownedPaths": [],
+      "sharedTouchpoints": [
+        "SDP/Shared/contracts/interface.json"
+      ],
+      "invariants": [
+        "No consumer-specific semantics enter the shared contract"
+      ],
+      "nonGoals": [
+        "Debugger or AVR feature implementation"
+      ],
+      "verificationCriteria": [
+        "python tools/check_shared_contract.py"
+      ],
+      "reviewCriteria": [
+        "Independent convergence review"
+      ],
+      "discoveryRule": "Stop on ownership ambiguity.",
+      "completionSignal": "SHARED_CONVERGED",
+      "hardStop": "Do not start downstream features.",
+      "acceptedEvidence": {
+        "candidate": null,
+        "verificationRefs": [],
+        "currentReviewRef": null,
+        "steeringDisposition": null,
+        "releaseRefs": []
+      }
+    },
+    {
+      "schemaVersion": "sdp-vnext-pilot-fix-v0",
+      "experimental": true,
+      "kind": "fix",
+      "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000003",
+      "id": "AVR-FIX-001",
+      "source": "SDP/AVR/Fixes/AVR-FIX-001.json",
+      "revision": 1,
+      "declaredState": "proposed",
+      "title": "Illustrative AVR correction",
+      "defectEvidence": [
+        "A known AVR adapter behavior differs from its accepted contract"
+      ],
+      "correction": "Restore the accepted adapter behavior without adding capability.",
+      "risk": "low",
+      "invariants": [
+        "Debugger capability ownership remains unchanged"
+      ],
+      "affectedWork": [
+        {
+          "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+          "id": "DBG-FEAT-001",
+          "keyHint": "DBG"
+        }
+      ],
+      "standaloneReviewedUnit": true,
+      "issueAuthorities": [
+        "https://github.com/example/hsx-like/issues/202"
+      ],
+      "slices": [],
+      "verificationCriteria": [
+        "The focused AVR regression passes"
+      ],
+      "reviewCriteria": [
+        "The exact correction is independently reviewed"
+      ],
+      "acceptedEvidence": {
+        "candidate": null,
+        "verificationRefs": [],
+        "currentReviewRef": null,
+        "steeringDisposition": null,
+        "releaseRefs": []
+      }
+    }
+  ],
+  "relations": [],
+  "assignments": [
+    {
+      "schemaVersion": "sdp-vnext-pilot-assignment-v0",
+      "experimental": true,
+      "kind": "issue-assignment",
+      "source": "Steering/Assignments/ISSUE-201.json",
+      "revision": 1,
+      "declaredState": "active",
+      "authority": {
+        "issue": "https://github.com/example/hsx-like/issues/201",
+        "amendments": []
+      },
+      "workRef": {
+        "type": "feature",
+        "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+        "id": "DBG-FEAT-001"
+      },
+      "authorizedSlices": [
+        {
+          "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+          "id": "DBG-SLC-001",
+          "acceptedCandidate": null
+        }
+      ],
+      "activeSlices": [
+        {
+          "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+          "id": "DBG-SLC-001"
+        }
+      ],
+      "baseline": {
+        "branch": "integration/vnext",
+        "commit": "3333333333333333333333333333333333333333"
+      },
+      "delivery": {
+        "branch": "codex/issue-201-debugger",
+        "pullRequest": "https://github.com/example/hsx-like/pull/211"
+      },
+      "coordination": {
+        "integrationBase": "3333333333333333333333333333333333333333",
+        "reservationSet": {
+          "id": "RSV-200",
+          "digest": "sha256:79f13e3a0486326f4ef588d47bebdbef81adcca87ffc6e36a8cd302df532a9cb"
+        },
+        "dependsOnIssues": [],
+        "conflictsWithIssues": [
+          "https://github.com/example/hsx-like/issues/202"
+        ],
+        "ownedPaths": [
+          "src/debugger/inspection/**"
+        ],
+        "sharedTouchpoints": [
+          {
+            "path": "SDP/Shared/contracts/interface.json",
+            "ownerDomainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+            "allowedMutation": "Debugger compatibility clause only"
+          }
+        ],
+        "reservedIds": [
+          {
+            "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+            "id": "DBG-SLC-001",
+            "allocationIssue": "https://github.com/example/hsx-like/issues/201",
+            "source": "SDP/Debugger/Slices/DBG-SLC-001.json"
+          }
+        ],
+        "mergeOrder": [
+          "https://github.com/example/hsx-like/issues/201",
+          "https://github.com/example/hsx-like/issues/202",
+          "https://github.com/example/hsx-like/issues/203"
+        ],
+        "convergence": {
+          "owner": "shared-contract-owner",
+          "command": "python tools/check_shared_contract.py",
+          "terminal": true
+        },
+        "staleBasePolicy": "refreeze-before-write-or-merge"
+      },
+      "boundaries": {
+        "prohibitedRepositories": [],
+        "prohibitedPaths": [
+          "src/avr/**"
+        ],
+        "prohibitedOperations": []
+      },
+      "requiredEvidence": {
+        "verification": [
+          "debugger and shared convergence checks"
+        ],
+        "independentReview": true,
+        "maximumUnresolvedSeverity": "low"
+      },
+      "acceptedEvidence": {
+        "candidate": null,
+        "verificationRefs": [],
+        "currentReviewRef": null,
+        "steeringDisposition": null,
+        "releaseRefs": []
+      },
+      "stopCondition": "AWAITING_CONVERGENCE"
+    },
+    {
+      "schemaVersion": "sdp-vnext-pilot-assignment-v0",
+      "experimental": true,
+      "kind": "issue-assignment",
+      "source": "Steering/Assignments/ISSUE-202.json",
+      "revision": 1,
+      "declaredState": "blocked",
+      "authority": {
+        "issue": "https://github.com/example/hsx-like/issues/202",
+        "amendments": []
+      },
+      "workRef": {
+        "type": "study",
+        "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000003",
+        "id": "AVR-STU-001"
+      },
+      "authorizedSlices": [],
+      "activeSlices": [],
+      "baseline": {
+        "branch": "integration/vnext",
+        "commit": "3333333333333333333333333333333333333333"
+      },
+      "delivery": {
+        "branch": "codex/issue-202-avr-study",
+        "pullRequest": "https://github.com/example/hsx-like/pull/212"
+      },
+      "coordination": {
+        "integrationBase": "3333333333333333333333333333333333333333",
+        "reservationSet": {
+          "id": "RSV-200",
+          "digest": "sha256:79f13e3a0486326f4ef588d47bebdbef81adcca87ffc6e36a8cd302df532a9cb"
+        },
+        "dependsOnIssues": [],
+        "conflictsWithIssues": [
+          "https://github.com/example/hsx-like/issues/201"
+        ],
+        "ownedPaths": [
+          "research/avr/**"
+        ],
+        "sharedTouchpoints": [
+          {
+            "path": "SDP/Shared/contracts/interface.json",
+            "ownerDomainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+            "allowedMutation": "AVR evidence clause only"
+          }
+        ],
+        "reservedIds": [
+          {
+            "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000003",
+            "id": "AVR-STU-001",
+            "allocationIssue": "https://github.com/example/hsx-like/issues/202",
+            "source": "SDP/AVR/Studies/AVR-STU-001.json"
+          }
+        ],
+        "mergeOrder": [
+          "https://github.com/example/hsx-like/issues/201",
+          "https://github.com/example/hsx-like/issues/202",
+          "https://github.com/example/hsx-like/issues/203"
+        ],
+        "convergence": {
+          "owner": "shared-contract-owner",
+          "command": "python tools/check_shared_contract.py",
+          "terminal": true
+        },
+        "staleBasePolicy": "refreeze-before-write-or-merge"
+      },
+      "boundaries": {
+        "prohibitedRepositories": [],
+        "prohibitedPaths": [
+          "src/debugger/**"
+        ],
+        "prohibitedOperations": []
+      },
+      "requiredEvidence": {
+        "verification": [
+          "study evidence and shared convergence checks"
+        ],
+        "independentReview": true,
+        "maximumUnresolvedSeverity": "low"
+      },
+      "acceptedEvidence": {
+        "candidate": null,
+        "verificationRefs": [],
+        "currentReviewRef": null,
+        "steeringDisposition": null,
+        "releaseRefs": []
+      },
+      "stopCondition": "AWAITING_CONVERGENCE"
+    },
+    {
+      "schemaVersion": "sdp-vnext-pilot-assignment-v0",
+      "experimental": true,
+      "kind": "issue-assignment",
+      "source": "Steering/Assignments/ISSUE-203.json",
+      "revision": 1,
+      "declaredState": "active",
+      "authority": {
+        "issue": "https://github.com/example/hsx-like/issues/203",
+        "amendments": []
+      },
+      "workRef": {
+        "type": "refactor",
+        "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+        "id": "SHARED-REF-001"
+      },
+      "authorizedSlices": [
+        {
+          "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+          "id": "SHARED-SLC-001",
+          "acceptedCandidate": null
+        }
+      ],
+      "activeSlices": [
+        {
+          "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+          "id": "SHARED-SLC-001"
+        }
+      ],
+      "baseline": {
+        "branch": "integration/vnext",
+        "commit": "3333333333333333333333333333333333333333"
+      },
+      "delivery": {
+        "branch": "codex/issue-203-shared-convergence",
+        "pullRequest": "https://github.com/example/hsx-like/pull/213"
+      },
+      "coordination": {
+        "integrationBase": "3333333333333333333333333333333333333333",
+        "reservationSet": {
+          "id": "RSV-200",
+          "digest": "sha256:79f13e3a0486326f4ef588d47bebdbef81adcca87ffc6e36a8cd302df532a9cb"
+        },
+        "dependsOnIssues": [
+          "https://github.com/example/hsx-like/issues/201",
+          "https://github.com/example/hsx-like/issues/202"
+        ],
+        "conflictsWithIssues": [],
+        "ownedPaths": [
+          "SDP/Shared/ownership/**"
+        ],
+        "sharedTouchpoints": [
+          {
+            "path": "SDP/Shared/contracts/interface.json",
+            "ownerDomainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+            "allowedMutation": "Convergence ownership and final contract only"
+          }
+        ],
+        "reservedIds": [
+          {
+            "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+            "id": "SHARED-SLC-001",
+            "allocationIssue": "https://github.com/example/hsx-like/issues/203",
+            "source": "SDP/Shared/Slices/SHARED-SLC-001.json"
+          }
+        ],
+        "mergeOrder": [
+          "https://github.com/example/hsx-like/issues/201",
+          "https://github.com/example/hsx-like/issues/202",
+          "https://github.com/example/hsx-like/issues/203"
+        ],
+        "convergence": {
+          "owner": "shared-contract-owner",
+          "command": "python tools/check_shared_contract.py",
+          "terminal": true
+        },
+        "staleBasePolicy": "refreeze-before-write-or-merge"
+      },
+      "boundaries": {
+        "prohibitedRepositories": [],
+        "prohibitedPaths": [
+          "src/debugger/**",
+          "src/avr/**"
+        ],
+        "prohibitedOperations": []
+      },
+      "requiredEvidence": {
+        "verification": [
+          "integrated shared convergence checks"
+        ],
+        "independentReview": true,
+        "maximumUnresolvedSeverity": "low"
+      },
+      "acceptedEvidence": {
+        "candidate": null,
+        "verificationRefs": [],
+        "currentReviewRef": null,
+        "steeringDisposition": null,
+        "releaseRefs": []
+      },
+      "stopCondition": "AWAITING_CONVERGENCE"
+    }
+  ],
+  "reservationSets": [
+    {
+      "schemaVersion": "sdp-vnext-pilot-reservation-set-v0",
+      "experimental": true,
+      "kind": "reservation-set",
+      "id": "RSV-200",
+      "integrationBase": "3333333333333333333333333333333333333333",
+      "assignments": [
+        {
+          "issue": "https://github.com/example/hsx-like/issues/201",
+          "workRef": {
+            "type": "feature",
+            "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+            "id": "DBG-FEAT-001"
+          },
+          "authorizedSlices": [
+            {
+              "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+              "id": "DBG-SLC-001",
+              "acceptedCandidate": null
+            }
+          ],
+          "activeSlices": [
+            {
+              "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+              "id": "DBG-SLC-001"
+            }
+          ],
+          "reservedIds": [
+            {
+              "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+              "id": "DBG-SLC-001",
+              "allocationIssue": "https://github.com/example/hsx-like/issues/201",
+              "source": "SDP/Debugger/Slices/DBG-SLC-001.json"
+            }
+          ],
+          "ownedPaths": [
+            "src/debugger/inspection/**"
+          ],
+          "sharedTouchpoints": [
+            {
+              "path": "SDP/Shared/contracts/interface.json",
+              "ownerDomainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+              "allowedMutation": "Debugger compatibility clause only"
+            }
+          ],
+          "dependsOnIssues": [],
+          "conflictsWithIssues": [
+            "https://github.com/example/hsx-like/issues/202"
+          ]
+        },
+        {
+          "issue": "https://github.com/example/hsx-like/issues/202",
+          "workRef": {
+            "type": "study",
+            "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000003",
+            "id": "AVR-STU-001"
+          },
+          "authorizedSlices": [],
+          "activeSlices": [],
+          "reservedIds": [
+            {
+              "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000003",
+              "id": "AVR-STU-001",
+              "allocationIssue": "https://github.com/example/hsx-like/issues/202",
+              "source": "SDP/AVR/Studies/AVR-STU-001.json"
+            }
+          ],
+          "ownedPaths": [
+            "research/avr/**"
+          ],
+          "sharedTouchpoints": [
+            {
+              "path": "SDP/Shared/contracts/interface.json",
+              "ownerDomainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+              "allowedMutation": "AVR evidence clause only"
+            }
+          ],
+          "dependsOnIssues": [],
+          "conflictsWithIssues": [
+            "https://github.com/example/hsx-like/issues/201"
+          ]
+        },
+        {
+          "issue": "https://github.com/example/hsx-like/issues/203",
+          "workRef": {
+            "type": "refactor",
+            "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+            "id": "SHARED-REF-001"
+          },
+          "authorizedSlices": [
+            {
+              "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+              "id": "SHARED-SLC-001",
+              "acceptedCandidate": null
+            }
+          ],
+          "activeSlices": [
+            {
+              "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+              "id": "SHARED-SLC-001"
+            }
+          ],
+          "reservedIds": [
+            {
+              "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+              "id": "SHARED-SLC-001",
+              "allocationIssue": "https://github.com/example/hsx-like/issues/203",
+              "source": "SDP/Shared/Slices/SHARED-SLC-001.json"
+            }
+          ],
+          "ownedPaths": [
+            "SDP/Shared/ownership/**"
+          ],
+          "sharedTouchpoints": [
+            {
+              "path": "SDP/Shared/contracts/interface.json",
+              "ownerDomainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+              "allowedMutation": "Convergence ownership and final contract only"
+            }
+          ],
+          "dependsOnIssues": [
+            "https://github.com/example/hsx-like/issues/201",
+            "https://github.com/example/hsx-like/issues/202"
+          ],
+          "conflictsWithIssues": []
+        }
+      ],
+      "mergeOrder": [
+        "https://github.com/example/hsx-like/issues/201",
+        "https://github.com/example/hsx-like/issues/202",
+        "https://github.com/example/hsx-like/issues/203"
+      ],
+      "convergence": {
+        "owner": "shared-contract-owner",
+        "command": "python tools/check_shared_contract.py",
+        "terminal": true
+      }
+    }
+  ]
+}

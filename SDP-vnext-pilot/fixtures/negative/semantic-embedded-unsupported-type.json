@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"embedded-edge-type-is-supported-vocabulary","sourceExample":"scoped-monorepo.json","mutations":[{"op":"replace","path":"/records/1/relations/0/type","value":"candidate_only"}],"expectedErrors":["INVALID_SEMANTIC_EDGE"]}

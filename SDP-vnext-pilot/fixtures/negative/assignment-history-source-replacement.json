@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"later-revision-cannot-replace-canonical-assignment-source","sourcePositive":"accepted-issue-reopen-revision.json","mutations":[{"op":"replace","path":"/assignments/0/source","value":"Steering/Assignments/ISSUE-010-renamed.json"}],"expectedErrors":["HISTORY_GIT_CONTENT_MISMATCH"]}

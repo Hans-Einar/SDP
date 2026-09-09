@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"reservation-schema-version-unknown","sourceExample":"simple-single-domain.json","mutations":[{"op":"replace","path":"/reservationSets/0/schemaVersion","value":"unknown-future-schema"}],"rebindReservationDigests":true,"expectedErrors":["UNSUPPORTED_SCHEMA_VERSION"]}

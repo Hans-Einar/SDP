@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"revision-two-omits-history-chain","sourceExample":"simple-single-domain.json","mutations":[{"op":"replace","path":"/assignments/0/revision","value":2}],"expectedErrors":["INVALID_ASSIGNMENT_REVISION_HISTORY"]}

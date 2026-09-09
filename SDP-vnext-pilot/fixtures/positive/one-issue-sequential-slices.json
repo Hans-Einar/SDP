@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "sdp-vnext-pilot-positive-mutation-v0",
+  "experimental": true,
+  "case": "one-issue-two-sequential-accepted-slices-distinct-candidates",
+  "sourceExample": "simple-single-domain.json",
+  "mutations": [
+    {"op":"add","path":"/registries/0/domains/0/issuedIds/-","value":{"id":"SLC-002","status":"prospective","allocationIssue":"https://github.com/example/tiny-app/issues/10","source":"Slices/SLC-002.json"}},
+    {"op":"add","path":"/records/0/slices/-","value":{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-002"}},
+    {"op":"add","path":"/records/-","value":{"schemaVersion":"sdp-vnext-pilot-slice-v0","experimental":true,"kind":"slice","domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-002","source":"Slices/SLC-002.json","revision":1,"declaredState":"accepted","title":"Second sequential export outcome","ownerRef":{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"FEAT-001"},"assignmentIssue":"https://github.com/example/tiny-app/issues/10","outcome":"The second bounded outcome is accepted without rewriting the first.","whySmallestCoherent":"It is independently observable.","decisionRefs":[],"ownedPaths":["src/sequential/**"],"sharedTouchpoints":[],"invariants":["SLC-001 evidence remains immutable"],"nonGoals":[],"verificationCriteria":["python -m unittest tests.test_sequential"],"reviewCriteria":["Independent exact-candidate review"],"discoveryRule":"Stop on first-Slice rewrite.","completionSignal":"SECOND_SLICE_READY","hardStop":"Do not replace SLC-001 evidence.","acceptedEvidence":{"candidate":"2020202020202020202020202020202020202020","verificationRefs":[{"id":"SLC-VER-002","candidate":"2020202020202020202020202020202020202020"}],"currentReviewRef":{"id":"SLC-REV-002","candidate":"2020202020202020202020202020202020202020","disposition":"approved"},"steeringDisposition":{"authority":"https://github.com/example/tiny-app/issues/10#issuecomment-2001","candidate":"2020202020202020202020202020202020202020","decision":"accepted"},"releaseRefs":[]}}},
+    {"op":"add","path":"/assignments/0/authorizedSlices/-","value":{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-002","acceptedCandidate":"2020202020202020202020202020202020202020"}},
+    {"op":"add","path":"/assignments/0/coordination/ownedPaths/-","value":"src/sequential/**"},
+    {"op":"add","path":"/assignments/0/coordination/reservedIds/-","value":{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-002"}},
+    {"op":"replace","path":"/assignments/0/acceptedEvidence","value":{"candidate":"3030303030303030303030303030303030303030","verificationRefs":[{"id":"ASGN-VER-003","candidate":"3030303030303030303030303030303030303030"}],"currentReviewRef":{"id":"ASGN-REV-003","candidate":"3030303030303030303030303030303030303030","disposition":"approved"},"steeringDisposition":{"authority":"https://github.com/example/tiny-app/issues/10#issuecomment-3001","candidate":"3030303030303030303030303030303030303030","decision":"accepted"},"releaseRefs":[]}},
+    {"op":"add","path":"/reservationSets/0/assignments/0/authorizedSlices/-","value":{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-002","acceptedCandidate":"2020202020202020202020202020202020202020"}},
+    {"op":"add","path":"/reservationSets/0/assignments/0/ownedPaths/-","value":"src/sequential/**"},
+    {"op":"add","path":"/reservationSets/0/assignments/0/reservedIds/-","value":{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-002"}}
+  ],
+  "rebindReservationDigests": true
+}

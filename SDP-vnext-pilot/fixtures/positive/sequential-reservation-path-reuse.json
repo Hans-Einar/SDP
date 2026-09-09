@@ -1,0 +1,12 @@
+{
+  "schemaVersion":"sdp-vnext-pilot-positive-mutation-v0",
+  "experimental":true,
+  "case":"current-issue-may-reuse-path-from-terminal-historical-reservation-epoch",
+  "sourcePositive":"one-active-plus-earlier-accepted.json",
+  "mutations":[
+    {"op":"replace","path":"/records/3/ownedPaths","value":["src/export/**"]},
+    {"op":"replace","path":"/assignments/1/coordination/ownedPaths","value":["src/export/**"]},
+    {"op":"replace","path":"/reservationSets/1/assignments/0/ownedPaths","value":["src/export/**"]}
+  ],
+  "rebindReservationDigests":true
+}
