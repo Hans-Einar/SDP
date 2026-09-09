@@ -15,28 +15,56 @@
           "key": "TINY",
           "name": "Tiny application",
           "state": "active",
-          "owners": ["tiny-app-owner"],
+          "owners": [
+            "tiny-app-owner"
+          ],
           "newRecordIdStyle": "unscoped",
-          "roots": ["SDP"],
+          "roots": [
+            "SDP"
+          ],
           "issuedIds": [
             {
               "id": "FEAT-001",
               "status": "prospective",
               "allocationIssue": "https://github.com/example/tiny-app/issues/10",
-              "source": "Features/FEAT-001.json"
+              "source": "Features/FEAT-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-ORIGIN-10",
+                "reservationDigest": "sha256:335232255f5b15104834da29a8ea207b30aa8dd9609b372f86daa94d933fcf0d",
+                "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001",
+                "id": "FEAT-001",
+                "allocationIssue": "https://github.com/example/tiny-app/issues/10",
+                "source": "Features/FEAT-001.json"
+              }
             },
-        {
-          "id": "SLC-001",
+            {
+              "id": "SLC-001",
               "status": "prospective",
               "allocationIssue": "https://github.com/example/tiny-app/issues/10",
-          "source": "Slices/SLC-001.json"
-        },
-        {
-          "id": "FIX-001",
-          "status": "prospective",
-          "allocationIssue": "https://github.com/example/tiny-app/issues/10",
-          "source": "Fixes/FIX-001.json"
-        }
+              "source": "Slices/SLC-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-010",
+                "reservationDigest": "sha256:38a74f088d1514e20a46ccc9f7779508ac5be99aefd6518221f54a16c7e703cc",
+                "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001",
+                "id": "SLC-001",
+                "allocationIssue": "https://github.com/example/tiny-app/issues/10",
+                "source": "Slices/SLC-001.json"
+              }
+            },
+            {
+              "id": "FIX-001",
+              "status": "prospective",
+              "allocationIssue": "https://github.com/example/tiny-app/issues/10",
+              "source": "Fixes/FIX-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-ORIGIN-10",
+                "reservationDigest": "sha256:f53fd3bef4643f89370fe45cf73bccf9004652f8627d50931402ea7020ca7f72",
+                "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001",
+                "id": "FIX-001",
+                "allocationIssue": "https://github.com/example/tiny-app/issues/10",
+                "source": "Fixes/FIX-001.json"
+              }
+            }
           ],
           "predecessorRepositories": []
         }
@@ -59,12 +87,20 @@
         "outcome": "A user exports the report end to end.",
         "usersOrValue": "The result can be used outside the app."
       },
-      "scope": ["One deterministic export format"],
-      "nonGoals": ["Cloud sharing"],
+      "scope": [
+        "One deterministic export format"
+      ],
+      "nonGoals": [
+        "Cloud sharing"
+      ],
       "constraints": [],
-      "acceptanceCriteria": ["Export round-trip passes"],
+      "acceptanceCriteria": [
+        "Export round-trip passes"
+      ],
       "relations": [],
-      "issueAuthorities": ["https://github.com/example/tiny-app/issues/10"],
+      "issueAuthorities": [
+        "https://github.com/example/tiny-app/issues/10"
+      ],
       "slices": [
         {
           "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001",
@@ -97,12 +133,23 @@
       "outcome": "The report is serialized and recovered by a round-trip test.",
       "whySmallestCoherent": "Serialization without retrieval is not an observable export.",
       "decisionRefs": [],
-      "ownedPaths": ["src/export/**", "tests/test_export.py"],
+      "ownedPaths": [
+        "src/export/**",
+        "tests/test_export.py"
+      ],
       "sharedTouchpoints": [],
-      "invariants": ["Existing report computation is unchanged"],
-      "nonGoals": ["Cloud sharing"],
-      "verificationCriteria": ["python -m unittest tests.test_export"],
-      "reviewCriteria": ["Independent exact-candidate review"],
+      "invariants": [
+        "Existing report computation is unchanged"
+      ],
+      "nonGoals": [
+        "Cloud sharing"
+      ],
+      "verificationCriteria": [
+        "python -m unittest tests.test_export"
+      ],
+      "reviewCriteria": [
+        "Independent exact-candidate review"
+      ],
       "discoveryRule": "Stop on public-format expansion.",
       "completionSignal": "EXPORT_SLICE_READY",
       "hardStop": "Do not start cloud sharing.",
@@ -137,10 +184,14 @@
       "revision": 1,
       "declaredState": "proposed",
       "title": "Correct report export metadata",
-      "defectEvidence": ["Accepted export metadata can be reproduced with a wrong label"],
+      "defectEvidence": [
+        "Accepted export metadata can be reproduced with a wrong label"
+      ],
       "correction": "Restore the accepted label without adding capability.",
       "risk": "low",
-      "invariants": ["The accepted export format remains unchanged"],
+      "invariants": [
+        "The accepted export format remains unchanged"
+      ],
       "affectedWork": [
         {
           "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001",
@@ -148,10 +199,16 @@
         }
       ],
       "standaloneReviewedUnit": true,
-      "issueAuthorities": ["https://github.com/example/tiny-app/issues/10"],
+      "issueAuthorities": [
+        "https://github.com/example/tiny-app/issues/10"
+      ],
       "slices": [],
-      "verificationCriteria": ["Reproduce before and verify after"],
-      "reviewCriteria": ["Confirm the correction remains proportionate"],
+      "verificationCriteria": [
+        "Reproduce before and verify after"
+      ],
+      "reviewCriteria": [
+        "Confirm the correction remains proportionate"
+      ],
       "acceptedEvidence": {
         "candidate": null,
         "verificationRefs": [],
@@ -199,19 +256,26 @@
         "integrationBase": "2222222222222222222222222222222222222222",
         "reservationSet": {
           "id": "RSV-010",
-          "digest": "sha256:38be677e71aabb52add48efe2560bbf04d7cb6671a4fb8ccd5eebbda6bdbf436"
+          "digest": "sha256:38a74f088d1514e20a46ccc9f7779508ac5be99aefd6518221f54a16c7e703cc"
         },
         "dependsOnIssues": [],
         "conflictsWithIssues": [],
-        "ownedPaths": ["src/export/**", "tests/test_export.py"],
+        "ownedPaths": [
+          "src/export/**",
+          "tests/test_export.py"
+        ],
         "sharedTouchpoints": [],
         "reservedIds": [
           {
             "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001",
-            "id": "SLC-001"
+            "id": "SLC-001",
+            "allocationIssue": "https://github.com/example/tiny-app/issues/10",
+            "source": "Slices/SLC-001.json"
           }
         ],
-        "mergeOrder": ["https://github.com/example/tiny-app/issues/10"],
+        "mergeOrder": [
+          "https://github.com/example/tiny-app/issues/10"
+        ],
         "convergence": {
           "owner": "tiny-app-owner",
           "command": "python -m unittest",
@@ -225,7 +289,9 @@
         "prohibitedOperations": []
       },
       "requiredEvidence": {
-        "verification": ["round-trip test"],
+        "verification": [
+          "round-trip test"
+        ],
         "independentReview": true,
         "maximumUnresolvedSeverity": "low"
       },
@@ -278,16 +344,23 @@
           "reservedIds": [
             {
               "domainUid": "urn:uuid:20000000-0000-4000-8000-000000000001",
-              "id": "SLC-001"
+              "id": "SLC-001",
+              "allocationIssue": "https://github.com/example/tiny-app/issues/10",
+              "source": "Slices/SLC-001.json"
             }
           ],
-          "ownedPaths": ["src/export/**", "tests/test_export.py"],
+          "ownedPaths": [
+            "src/export/**",
+            "tests/test_export.py"
+          ],
           "sharedTouchpoints": [],
           "dependsOnIssues": [],
           "conflictsWithIssues": []
         }
       ],
-      "mergeOrder": ["https://github.com/example/tiny-app/issues/10"],
+      "mergeOrder": [
+        "https://github.com/example/tiny-app/issues/10"
+      ],
       "convergence": {
         "owner": "tiny-app-owner",
         "command": "python -m unittest",

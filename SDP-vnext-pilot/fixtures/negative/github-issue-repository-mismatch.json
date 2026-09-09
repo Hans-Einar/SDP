@@ -1,18 +1,1 @@
-{
-  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
-  "experimental": true,
-  "case": "assignment-issue-belongs-to-another-repository",
-  "sourceExample": "simple-single-domain.json",
-  "mutations": [
-    {"op": "replace", "path": "/registries/0/domains/0/issuedIds/0/allocationIssue", "value": "https://github.com/example/other/issues/10"},
-    {"op": "replace", "path": "/registries/0/domains/0/issuedIds/1/allocationIssue", "value": "https://github.com/example/other/issues/10"},
-    {"op": "replace", "path": "/records/0/issueAuthorities/0", "value": "https://github.com/example/other/issues/10"},
-    {"op": "replace", "path": "/records/1/assignmentIssue", "value": "https://github.com/example/other/issues/10"},
-    {"op": "replace", "path": "/assignments/0/authority/issue", "value": "https://github.com/example/other/issues/10"},
-    {"op": "replace", "path": "/assignments/0/coordination/mergeOrder/0", "value": "https://github.com/example/other/issues/10"},
-    {"op": "replace", "path": "/reservationSets/0/assignments/0/issue", "value": "https://github.com/example/other/issues/10"},
-    {"op": "replace", "path": "/reservationSets/0/mergeOrder/0", "value": "https://github.com/example/other/issues/10"}
-  ],
-  "rebindReservationDigests": true,
-  "expectedErrors": ["REPOSITORY_AUTHORITY_MISMATCH", "STEERING_AUTHORITY_MISMATCH"]
-}
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"assignment-issue-belongs-to-another-repository","sourceExample":"simple-single-domain.json","mutations":[{"op":"replace","path":"/registries/0/domains/0/issuedIds/0/allocationIssue","value":"https://github.com/example/other/issues/10"},{"op":"replace","path":"/registries/0/domains/0/issuedIds/1/allocationIssue","value":"https://github.com/example/other/issues/10"},{"op":"replace","path":"/records/0/issueAuthorities/0","value":"https://github.com/example/other/issues/10"},{"op":"replace","path":"/records/1/assignmentIssue","value":"https://github.com/example/other/issues/10"},{"op":"replace","path":"/assignments/0/authority/issue","value":"https://github.com/example/other/issues/10"},{"op":"replace","path":"/assignments/0/coordination/mergeOrder/0","value":"https://github.com/example/other/issues/10"},{"op":"replace","path":"/reservationSets/0/assignments/0/issue","value":"https://github.com/example/other/issues/10"},{"op":"replace","path":"/reservationSets/0/mergeOrder/0","value":"https://github.com/example/other/issues/10"}],"rebindReservationDigests":true,"expectedErrors":["ALLOCATION_EPOCH_MISMATCH","INVALID_ALLOCATION_EPOCH","REPOSITORY_AUTHORITY_MISMATCH","STEERING_AUTHORITY_MISMATCH"]}

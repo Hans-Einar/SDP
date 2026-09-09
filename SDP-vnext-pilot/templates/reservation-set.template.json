@@ -28,7 +28,9 @@
       "reservedIds": [
         {
           "domainUid": "urn:uuid:10000000-0000-4000-8000-000000000001",
-          "id": "APP-SLC-001"
+          "id": "APP-SLC-001",
+          "allocationIssue": "https://github.com/example/app/issues/101",
+          "source": "Slices/APP-SLC-001.json"
         }
       ],
       "ownedPaths": ["src/capability/**"],

@@ -1,12 +1,1 @@
-{
-  "schemaVersion":"sdp-vnext-pilot-negative-mutation-v0",
-  "experimental":true,
-  "case":"assignment-refreeze-preserves-old-id-in-history-without-readding-it-to-current-reserved-ids",
-  "sourcePositive":"accepted-issue-reopen-revision.json",
-  "mutations":[
-    {"op":"add","path":"/assignments/0/coordination/reservedIds/-","value":{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-001"}},
-    {"op":"add","path":"/reservationSets/0/assignments/0/reservedIds/-","value":{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-001"}}
-  ],
-  "rebindReservationDigests":true,
-  "expectedErrors":["HISTORY_GIT_CONTENT_MISMATCH"]
-}
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"assignment-refreeze-preserves-old-id-in-history-without-readding-it-to-current-reserved-ids","sourcePositive":"accepted-issue-reopen-revision.json","mutations":[{"op":"add","path":"/assignments/0/coordination/reservedIds/-","value":{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-001"}},{"op":"add","path":"/reservationSets/0/assignments/0/reservedIds/-","value":{"domainUid":"urn:uuid:20000000-0000-4000-8000-000000000001","id":"SLC-001"}}],"rebindReservationDigests":true,"expectedErrors":["HISTORY_GIT_CONTENT_MISMATCH","INVALID_REFERENCE","RESERVATION_SET_INCOMPLETE"]}

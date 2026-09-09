@@ -15,35 +15,110 @@
           "key": "APP",
           "name": "Application",
           "state": "active",
-          "owners": ["owner"],
+          "owners": [
+            "owner"
+          ],
           "newRecordIdStyle": "scoped",
-          "roots": ["SDP/App"],
-          "issuedIds": [{"id": "APP-FEAT-001", "status": "prospective", "allocationIssue": "https://github.com/example/repo/issues/1", "source": "Features/APP-FEAT-001.json"}]
+          "roots": [
+            "SDP/App"
+          ],
+          "issuedIds": [
+            {
+              "id": "APP-FEAT-001",
+              "status": "prospective",
+              "allocationIssue": "https://github.com/example/repo/issues/1",
+              "source": "Features/APP-FEAT-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-ORIGIN-1",
+                "reservationDigest": "sha256:c4f005bb1ed3d2930fabb1d1a4b793a63dcb97f754ef0f69e72697a1f2528357",
+                "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000010",
+                "id": "APP-FEAT-001",
+                "allocationIssue": "https://github.com/example/repo/issues/1",
+                "source": "Features/APP-FEAT-001.json"
+              }
+            }
+          ]
         }
       ]
     }
   ],
   "records": [
     {
-      "schemaVersion": "sdp-vnext-pilot-feature-v0", "experimental": true,
-      "kind": "feature", "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000010", "id": "APP-FEAT-001",
-      "source": "Features/APP-FEAT-001.json", "revision": 1, "declaredState": "proposed", "title": "First duplicate",
-      "intent": {"problem": "A problem", "outcome": "An outcome", "usersOrValue": "A value"},
-      "scope": ["One capability"], "nonGoals": [], "constraints": [], "acceptanceCriteria": ["One result"],
-      "relations": [], "issueAuthorities": ["https://github.com/example/repo/issues/1"], "slices": [],
-      "acceptedEvidence": {"candidate": null, "verificationRefs": [], "currentReviewRef": null, "steeringDisposition": null, "releaseRefs": []}
+      "schemaVersion": "sdp-vnext-pilot-feature-v0",
+      "experimental": true,
+      "kind": "feature",
+      "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000010",
+      "id": "APP-FEAT-001",
+      "source": "Features/APP-FEAT-001.json",
+      "revision": 1,
+      "declaredState": "proposed",
+      "title": "First duplicate",
+      "intent": {
+        "problem": "A problem",
+        "outcome": "An outcome",
+        "usersOrValue": "A value"
+      },
+      "scope": [
+        "One capability"
+      ],
+      "nonGoals": [],
+      "constraints": [],
+      "acceptanceCriteria": [
+        "One result"
+      ],
+      "relations": [],
+      "issueAuthorities": [
+        "https://github.com/example/repo/issues/1"
+      ],
+      "slices": [],
+      "acceptedEvidence": {
+        "candidate": null,
+        "verificationRefs": [],
+        "currentReviewRef": null,
+        "steeringDisposition": null,
+        "releaseRefs": []
+      }
     },
     {
-      "schemaVersion": "sdp-vnext-pilot-feature-v0", "experimental": true,
-      "kind": "feature", "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000010", "id": "APP-FEAT-001",
-      "source": "Features/APP-FEAT-001.json", "revision": 1, "declaredState": "proposed", "title": "Second duplicate",
-      "intent": {"problem": "A problem", "outcome": "An outcome", "usersOrValue": "A value"},
-      "scope": ["One capability"], "nonGoals": [], "constraints": [], "acceptanceCriteria": ["One result"],
-      "relations": [], "issueAuthorities": ["https://github.com/example/repo/issues/1"], "slices": [],
-      "acceptedEvidence": {"candidate": null, "verificationRefs": [], "currentReviewRef": null, "steeringDisposition": null, "releaseRefs": []}
+      "schemaVersion": "sdp-vnext-pilot-feature-v0",
+      "experimental": true,
+      "kind": "feature",
+      "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000010",
+      "id": "APP-FEAT-001",
+      "source": "Features/APP-FEAT-001.json",
+      "revision": 1,
+      "declaredState": "proposed",
+      "title": "Second duplicate",
+      "intent": {
+        "problem": "A problem",
+        "outcome": "An outcome",
+        "usersOrValue": "A value"
+      },
+      "scope": [
+        "One capability"
+      ],
+      "nonGoals": [],
+      "constraints": [],
+      "acceptanceCriteria": [
+        "One result"
+      ],
+      "relations": [],
+      "issueAuthorities": [
+        "https://github.com/example/repo/issues/1"
+      ],
+      "slices": [],
+      "acceptedEvidence": {
+        "candidate": null,
+        "verificationRefs": [],
+        "currentReviewRef": null,
+        "steeringDisposition": null,
+        "releaseRefs": []
+      }
     }
   ],
   "relations": [],
   "assignments": [],
-  "expectedErrors": ["RECORD_ID_COLLISION"]
+  "expectedErrors": [
+    "RECORD_ID_COLLISION"
+  ]
 }

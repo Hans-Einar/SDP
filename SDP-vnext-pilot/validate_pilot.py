@@ -546,7 +546,7 @@ def inventory_allocation_issue(member: Any) -> Any:
     """
     if not isinstance(member, dict):
         return None
-    if member.get("status") in {"reserved", "prospective"}:
+    if member.get("status") in {"reserved", "prospective", "burned"}:
         return member.get("allocationIssue")
     return member.get("authorityIssue")
 
@@ -571,15 +571,30 @@ def validate_inventory_member(
     authority = inventory_allocation_issue(member)
     source = member.get("source")
     if not nonblank(record_id) or status not in {
-        "reserved", "prospective", "legacy-preserved"
+        "reserved", "prospective", "burned", "legacy-preserved"
     }:
         add(errors, "INVALID_ID_INVENTORY_MEMBER")
         return
     if not valid_record_path(source):
         add(errors, "INVALID_ID_INVENTORY_MEMBER")
-    if status in {"reserved", "prospective"}:
+    if status in {"reserved", "prospective", "burned"}:
         if "authorityIssue" in member or issue_key(authority) is None:
             add(errors, "INVALID_INVENTORY_AUTHORITY")
+        epoch = member.get("allocationEpoch")
+        if (
+            not isinstance(epoch, dict)
+            or set(epoch) != {
+                "reservationSetId", "reservationDigest", "domainUid", "id",
+                "allocationIssue", "source",
+            }
+            or not nonblank(epoch.get("reservationSetId"))
+            or DIGEST_RE.fullmatch(str(epoch.get("reservationDigest", ""))) is None
+            or epoch.get("domainUid") != domain.get("domainUid")
+            or epoch.get("id") != record_id
+            or issue_key(epoch.get("allocationIssue")) != issue_key(authority)
+            or epoch.get("source") != source
+        ):
+            add(errors, "INVALID_ALLOCATION_EPOCH")
         scoped = SCOPED_ID_RE.fullmatch(record_id)
         unscoped = UNSCOPED_ID_RE.fullmatch(record_id)
         style = domain.get("newRecordIdStyle")
@@ -737,6 +752,11 @@ def validate_registry_set(document: dict[str, Any], errors: list[str]) -> None:
             if domain.get("state") != "moved":
                 continue
             moved_inventory = inventory_map(domain)
+            if any(
+                isinstance(member, dict) and member.get("status") == "reserved"
+                for member in domain.get("issuedIds", [])
+            ):
+                add(errors, "LIVE_RESERVED_ID_AT_MOVE")
             for normalized_id, moved_member in moved_inventory.items():
                 if active_inventory.get(normalized_id) != moved_member:
                     add(errors, "MOVE_ID_INVENTORY_REWRITE")
@@ -2004,6 +2024,22 @@ def valid_qualified_record_reference(
     )
 
 
+def valid_reserved_allocation_reference(reference: Any) -> bool:
+    """A reservation row freezes the identity, allocator, and planned source."""
+    return (
+        isinstance(reference, dict)
+        and set(reference) == {"domainUid", "id", "allocationIssue", "source"}
+        and valid_uid(reference.get("domainUid"))
+        and nonblank(reference.get("id"))
+        and issue_key(reference.get("allocationIssue")) is not None
+        and valid_record_path(reference.get("source"))
+        and (
+            SCOPED_ID_RE.fullmatch(reference["id"])
+            or UNSCOPED_ID_RE.fullmatch(reference["id"])
+        ) is not None
+    )
+
+
 def validate_reservation_set_semantics(
     reservation: dict[str, Any], errors: list[str],
     document: dict[str, Any] | None = None,
@@ -2143,8 +2179,17 @@ def validate_reservation_set_semantics(
             add(errors, "RESERVATION_SET_INCOMPLETE")
             reserved_values = []
         seen_reserved: set[tuple[str, str]] = set()
+        epoch_digest = canonical_digest(reservation)
         for reference in reserved_values:
-            if not valid_qualified_record_reference(reference):
+            valid_reserved_reference = (
+                valid_reserved_allocation_reference(reference)
+                if document is not None
+                else (
+                    valid_reserved_allocation_reference(reference)
+                    or valid_qualified_record_reference(reference)
+                )
+            )
+            if not valid_reserved_reference:
                 add(errors, "RESERVATION_SET_INCOMPLETE")
                 continue
             key = reference_key(reference)
@@ -2166,10 +2211,35 @@ def validate_reservation_set_semantics(
                 if reserved_uid not in domain_by_uid:
                     add(errors, "UNKNOWN_RESERVED_DOMAIN")
                 allocated_by = issued_by.get(key)
+                member = next(
+                    (
+                        item for _, domain in declarations(document)
+                        if domain.get("state") == "active"
+                        and domain.get("domainUid") == reference.get("domainUid")
+                        for item in domain.get("issuedIds", [])
+                        if isinstance(item, dict)
+                        and portable_text(str(item.get("id", ""))) == key[1]
+                    ),
+                    None,
+                )
                 if key not in issued_status_by_id:
                     add(errors, "RESERVED_ID_INVENTORY_REQUIRED")
                 elif allocated_by != issue:
                     add(errors, "ISSUED_ID_RECLAIM")
+                if (
+                    reference.get("allocationIssue") != row.get("issue")
+                    or not isinstance(member, dict)
+                    or member.get("source") != reference.get("source")
+                    or mapping(member.get("allocationEpoch")) != {
+                        "reservationSetId": reservation.get("id"),
+                        "reservationDigest": epoch_digest,
+                        "domainUid": reference.get("domainUid"),
+                        "id": reference.get("id"),
+                        "allocationIssue": reference.get("allocationIssue"),
+                        "source": reference.get("source"),
+                    }
+                ):
+                    add(errors, "ALLOCATION_EPOCH_MISMATCH")
                 if issued_status_by_id.get(key) == "legacy-preserved":
                     add(errors, "LEGACY_PRESERVED_CURRENT_GATE")
 
@@ -2729,6 +2799,26 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
                 if reference_key(active_slice) not in authorized_keys:
                     add(errors, "ACTIVE_SLICE_NOT_AUTHORIZED")
 
+            terminal_nonaccepted = assignment.get("declaredState") in {
+                "cancelled", "rejected", "superseded"
+            }
+            if terminal_nonaccepted:
+                if assignment.get("activeSlices") != []:
+                    add(errors, "TERMINAL_ASSIGNMENT_ACTIVE_SLICE")
+                if any(
+                    isinstance(records.get(key), dict)
+                    and records[key].get("declaredState") == "active"
+                    for key in authorized_keys
+                ):
+                    add(errors, "TERMINAL_SLICE_STILL_ACTIVE")
+                if any(
+                    inventory_status_by_id.get(reference_key(reference)) == "reserved"
+                    for reference in assignment_coordination(assignment).get(
+                        "reservedIds", []
+                    )
+                ):
+                    add(errors, "TERMINAL_UNBURNED_RESERVATION")
+
             work_type = effective_kind(work_record)
             is_standalone_fix = (
                 work_type == "fix"
@@ -2835,7 +2925,7 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
             add(errors, "PROHIBITED_PATH_OVERLAP")
         row_reserved: set[tuple[str, str]] = set()
         for reference in coordination.get("reservedIds", []):
-            if not isinstance(reference, dict) or not reference.get("domainUid") or not reference.get("id"):
+            if not valid_reserved_allocation_reference(reference):
                 add(errors, "INVALID_REFERENCE")
                 continue
             validate_key_hint(document, reference, errors)
@@ -2854,12 +2944,44 @@ def validate_assignments(document: dict[str, Any], errors: list[str]) -> None:
                 add(errors, "RESERVED_ID_COLLISION")
             reserved[key] = authority_identity or authority
             issued_by = issued_authorities(document).get(key)
+            member = next(
+                (
+                    item for _, domain in declarations(document)
+                    if domain.get("state") == "active"
+                    and domain.get("domainUid") == reference.get("domainUid")
+                    for item in domain.get("issuedIds", [])
+                    if isinstance(item, dict)
+                    and portable_text(str(item.get("id", ""))) == key[1]
+                ),
+                None,
+            )
             if key not in inventory_status_by_id:
                 add(errors, "RESERVED_ID_INVENTORY_REQUIRED")
             elif issued_by != authority_identity:
                 add(errors, "ISSUED_ID_RECLAIM")
+            epoch_reference = mapping(coordination.get("reservationSet"))
+            if (
+                reference.get("allocationIssue") != assignment_issue(assignment)
+                or not isinstance(member, dict)
+                or member.get("source") != reference.get("source")
+                or mapping(member.get("allocationEpoch")) != {
+                    "reservationSetId": epoch_reference.get("id"),
+                    "reservationDigest": epoch_reference.get("digest"),
+                    "domainUid": reference.get("domainUid"),
+                    "id": reference.get("id"),
+                    "allocationIssue": reference.get("allocationIssue"),
+                    "source": reference.get("source"),
+                }
+            ):
+                add(errors, "ALLOCATION_EPOCH_MISMATCH")
             if inventory_status_by_id.get(key) == "legacy-preserved":
                 add(errors, "LEGACY_PRESERVED_CURRENT_GATE")
+            if (
+                assignment.get("declaredState") in {"cancelled", "rejected", "superseded"}
+                and isinstance(member, dict)
+                and member.get("status") == "reserved"
+            ):
+                add(errors, "TERMINAL_RESERVATION_NOT_BURNED")
 
     accepted_execution_states = {"active", "accepted"}
     for epoch_members in assignments_by_epoch.values():
@@ -3985,6 +4107,106 @@ def rebind_reservation_digests(document: dict[str, Any]) -> None:
         )
         if len(candidates) == 1:
             reference["digest"] = canonical_digest(candidates[0])
+    # Fixture rebinding models a freshly frozen epoch. Keep the durable
+    # inventory pointer in lockstep without altering allocator/source bytes.
+    epochs: dict[tuple[Any, tuple[str, str]], str | None] = {}
+    for reservation in reservations:
+        for row in reservation.get("assignments", []):
+            if isinstance(row, dict):
+                for reference in row.get("reservedIds", []):
+                    key = reference_key(reference)
+                    if key is not None:
+                        epochs[(reservation.get("id"), key)] = canonical_digest(reservation)
+    for _, domain in declarations(document):
+        for member in domain.get("issuedIds", []):
+            if not isinstance(member, dict):
+                continue
+            epoch = member.get("allocationEpoch")
+            member_key = reference_key({"domainUid": domain.get("domainUid"), "id": member.get("id")})
+            lookup = (epoch.get("reservationSetId"), member_key) if isinstance(epoch, dict) else None
+            if isinstance(epoch, dict) and lookup in epochs:
+                epoch["reservationDigest"] = epochs[lookup]
+
+
+def finalize_positive_allocation_epochs(document: dict[str, Any]) -> None:
+    """Complete projections for positive mutation controls after composition."""
+    inventory: dict[tuple[str, str], dict[str, Any]] = {}
+    for _, domain in declarations(document):
+        uid = domain.get("domainUid")
+        for member in domain.get("issuedIds", []):
+            if isinstance(member, dict) and isinstance(member.get("id"), str):
+                inventory[(uid, portable_text(member["id"]))] = member
+    for reservation in document.get("reservationSets", []):
+        if not isinstance(reservation, dict):
+            continue
+        for row in reservation.get("assignments", []):
+            if not isinstance(row, dict):
+                continue
+            for reference in row.get("reservedIds", []):
+                key = reference_key(reference)
+                member = inventory.get(key) if key is not None else None
+                if isinstance(reference, dict) and isinstance(member, dict):
+                    reference["allocationIssue"] = member.get("allocationIssue")
+                    reference["source"] = member.get("source")
+        epoch_digest = canonical_digest(reservation)
+        for row in reservation.get("assignments", []):
+            if not isinstance(row, dict):
+                continue
+            for reference in row.get("reservedIds", []):
+                key = reference_key(reference)
+                member = inventory.get(key) if key is not None else None
+                if isinstance(reference, dict) and isinstance(member, dict):
+                    member["allocationEpoch"] = {
+                        "reservationSetId": reservation.get("id"),
+                        "reservationDigest": epoch_digest,
+                        "domainUid": reference.get("domainUid"),
+                        "id": reference.get("id"),
+                        "allocationIssue": reference.get("allocationIssue"),
+                        "source": reference.get("source"),
+                    }
+    for assignment in document.get("assignments", []):
+        if not isinstance(assignment, dict):
+            continue
+        coordination = assignment_coordination(assignment)
+        for reference in coordination.get("reservedIds", []):
+            key = reference_key(reference)
+            member = inventory.get(key) if key is not None else None
+            if isinstance(reference, dict) and isinstance(member, dict):
+                reference["allocationIssue"] = member.get("allocationIssue")
+                reference["source"] = member.get("source")
+    all_inventory_members = [
+        (domain.get("domainUid"), member)
+        for _, domain in declarations(document)
+        for member in domain.get("issuedIds", [])
+        if isinstance(member, dict)
+    ]
+    for uid, member in all_inventory_members:
+        current_epoch = member.get("allocationEpoch")
+        if (
+            member.get("status") in {"reserved", "prospective", "burned"}
+            and (
+                not isinstance(current_epoch, dict)
+                or str(current_epoch.get("reservationSetId", "")).startswith(
+                    "RSV-ORIGIN-"
+                )
+            )
+        ):
+            issue = member.get("allocationIssue")
+            set_id = "RSV-ORIGIN-" + str(issue).rsplit("/", 1)[-1]
+            projection = {
+                "domainUid": uid,
+                "id": member.get("id"),
+                "allocationIssue": issue,
+                "source": member.get("source"),
+            }
+            member["allocationEpoch"] = {
+                "reservationSetId": set_id,
+                "reservationDigest": canonical_digest(
+                    {"id": set_id, "allocation": projection}
+                ),
+                **projection,
+            }
+    rebind_reservation_digests(document)
 
 
 def validate_text_corpus() -> list[str]:
@@ -4593,6 +4815,7 @@ def main() -> int:
             subject = copy.deepcopy(example_documents[fixture.get("sourceExample")])
         inherited_blobs.update(embedded_blobs_from_fixture(fixture))
         apply_mutations(subject, fixture.get("mutations", []))
+        finalize_positive_allocation_epochs(subject)
         if fixture.get("rebindReservationDigests") is True:
             rebind_reservation_digests(subject)
         positive_documents[name] = copy.deepcopy(subject)

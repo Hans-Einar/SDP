@@ -1,18 +1,1 @@
-{
-  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
-  "experimental": true,
-  "case": "issue-authority-is-not-a-github-url",
-  "sourceExample": "simple-single-domain.json",
-  "mutations": [
-    {"op": "replace", "path": "/registries/0/domains/0/issuedIds/0/allocationIssue", "value": "not-an-issue"},
-    {"op": "replace", "path": "/registries/0/domains/0/issuedIds/1/allocationIssue", "value": "not-an-issue"},
-    {"op": "replace", "path": "/records/0/issueAuthorities/0", "value": "not-an-issue"},
-    {"op": "replace", "path": "/records/1/assignmentIssue", "value": "not-an-issue"},
-    {"op": "replace", "path": "/assignments/0/authority/issue", "value": "not-an-issue"},
-    {"op": "replace", "path": "/assignments/0/coordination/mergeOrder/0", "value": "not-an-issue"},
-    {"op": "replace", "path": "/reservationSets/0/assignments/0/issue", "value": "not-an-issue"},
-    {"op": "replace", "path": "/reservationSets/0/mergeOrder/0", "value": "not-an-issue"}
-  ],
-  "rebindReservationDigests": true,
-  "expectedErrors": ["INVALID_GITHUB_ISSUE", "INVALID_INVENTORY_AUTHORITY", "REPOSITORY_AUTHORITY_MISMATCH"]
-}
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"issue-authority-is-not-a-github-url","sourceExample":"simple-single-domain.json","mutations":[{"op":"replace","path":"/registries/0/domains/0/issuedIds/0/allocationIssue","value":"not-an-issue"},{"op":"replace","path":"/registries/0/domains/0/issuedIds/1/allocationIssue","value":"not-an-issue"},{"op":"replace","path":"/records/0/issueAuthorities/0","value":"not-an-issue"},{"op":"replace","path":"/records/1/assignmentIssue","value":"not-an-issue"},{"op":"replace","path":"/assignments/0/authority/issue","value":"not-an-issue"},{"op":"replace","path":"/assignments/0/coordination/mergeOrder/0","value":"not-an-issue"},{"op":"replace","path":"/reservationSets/0/assignments/0/issue","value":"not-an-issue"},{"op":"replace","path":"/reservationSets/0/mergeOrder/0","value":"not-an-issue"}],"rebindReservationDigests":true,"expectedErrors":["ALLOCATION_EPOCH_MISMATCH","INVALID_ALLOCATION_EPOCH","INVALID_GITHUB_ISSUE","INVALID_INVENTORY_AUTHORITY","REPOSITORY_AUTHORITY_MISMATCH"]}

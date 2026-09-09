@@ -1,10 +1,1 @@
-{
-  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
-  "experimental": true,
-  "case": "prospective-id-has-an-undocumented-second-numeric-suffix",
-  "sourceExample": "simple-single-domain.json",
-  "mutations": [
-    {"op": "add", "path": "/registries/0/domains/0/issuedIds/-", "value": {"id": "FEAT-001-002", "status": "prospective", "allocationIssue": "https://github.com/example/tiny-app/issues/10", "source": "Features/FEAT-001-002.json"}}
-  ],
-  "expectedErrors": ["INVALID_PROSPECTIVE_ID", "RECORD_INVENTORY_BINDING_MISMATCH"]
-}
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"prospective-id-has-an-undocumented-second-numeric-suffix","sourceExample":"simple-single-domain.json","mutations":[{"op":"add","path":"/registries/0/domains/0/issuedIds/-","value":{"id":"FEAT-001-002","status":"prospective","allocationIssue":"https://github.com/example/tiny-app/issues/10","source":"Features/FEAT-001-002.json"}}],"expectedErrors":["INVALID_ALLOCATION_EPOCH","INVALID_PROSPECTIVE_ID","RECORD_INVENTORY_BINDING_MISMATCH"]}

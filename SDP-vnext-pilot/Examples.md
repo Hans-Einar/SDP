@@ -207,16 +207,17 @@ cannot “pass” merely because the validator failed for an unrelated reason.
 
 ## Issue #7 dogfood refreeze
 
-`Steering/Assignments/ISSUE-007.yaml` is revision 9. Its immediate
+`Steering/Assignments/ISSUE-007.yaml` is revision 10. Its immediate
 `previousRevision` points to
-`Steering/Assignments/History/ISSUE-007-revision-008.json`, sourced from exact
-candidate `a6a23d50e1bb807c9db350758aad1737c01f7846`. That snapshot links revision
-7 at `133cfaee9cb194b6181ac1e8fa9e1b474f79c00f`, revision 6 at
+`Steering/Assignments/History/ISSUE-007-revision-009.json`, sourced from exact
+candidate `33551057701f70ff572bc90b1d72bdad8373cd4c`. That snapshot links revision
+8 at `a6a23d50e1bb807c9db350758aad1737c01f7846`, revision 7 at
+`133cfaee9cb194b6181ac1e8fa9e1b474f79c00f`, revision 6 at
 `0655002cbe5e14543b007525cdc3e3bad82b6816`, revision 5 at
 `dfdea4fe259a9e342d651254656bcfac5363d0b9`, revision 4 at
 `15a476dd76bc80de5573ab2abb65af8c963a9c0e`, revision 3 at
 `60978c306f7ce3c09033603abf3300839b2a251d`, revision 2 at
 `0de8a8957b3212404007160d90da47445d7b4e7b`, and revision 1 at
-`f79e3dfc18c7a1650f1f3ae66167dda9b69692b4`, so the complete 1..8 chain is
-retained. Revision 9 reserves exact `REV/VER-SDP-007-010` evidence paths and
-records why the ninth review required another refreeze.
+`f79e3dfc18c7a1650f1f3ae66167dda9b69692b4`, so the complete 1..9 chain is
+retained. Revision 10 reserves exact `REV/VER-SDP-007-011` evidence paths and
+records why the tenth review required another refreeze.

@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"destination-cannot-reuse-burned-id","sourcePositive":"domain-move-materialized-and-burned.json","mutations":[{"op":"replace","path":"/registries/1/domains/0/issuedIds/3/status","value":"prospective"}],"expectedErrors":["MOVE_ID_INVENTORY_REWRITE","RECORD_INVENTORY_BINDING_MISMATCH"]}

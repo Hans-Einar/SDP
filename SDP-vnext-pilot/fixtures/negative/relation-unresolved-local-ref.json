@@ -12,9 +12,32 @@
       "domains": [
         {
           "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000080",
-          "key": "APP", "name": "Application", "state": "active", "owners": ["owner"],
-          "newRecordIdStyle": "scoped", "roots": ["SDP/App"],
-          "issuedIds": [{"id": "APP-FEAT-001", "status": "prospective", "allocationIssue": "https://github.com/example/repo/issues/1", "source": "Features/APP-FEAT-001.json"}]
+          "key": "APP",
+          "name": "Application",
+          "state": "active",
+          "owners": [
+            "owner"
+          ],
+          "newRecordIdStyle": "scoped",
+          "roots": [
+            "SDP/App"
+          ],
+          "issuedIds": [
+            {
+              "id": "APP-FEAT-001",
+              "status": "prospective",
+              "allocationIssue": "https://github.com/example/repo/issues/1",
+              "source": "Features/APP-FEAT-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-ORIGIN-1",
+                "reservationDigest": "sha256:d0279a03ab9f70f8c03500362aec568267dabe86db4485ed9552665ca7866108",
+                "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000080",
+                "id": "APP-FEAT-001",
+                "allocationIssue": "https://github.com/example/repo/issues/1",
+                "source": "Features/APP-FEAT-001.json"
+              }
+            }
+          ]
         }
       ]
     }
@@ -23,10 +46,18 @@
   "relations": [
     {
       "type": "depends_on",
-      "sourceRef": {"domainUid": "urn:uuid:50000000-0000-4000-8000-000000000080", "id": "APP-FEAT-001"},
-      "targetRef": {"domainUid": "urn:uuid:50000000-0000-4000-8000-000000000080", "id": "APP-STU-999"}
+      "sourceRef": {
+        "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000080",
+        "id": "APP-FEAT-001"
+      },
+      "targetRef": {
+        "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000080",
+        "id": "APP-STU-999"
+      }
     }
   ],
   "assignments": [],
-  "expectedErrors": ["UNRESOLVED_RELATION_REF"]
+  "expectedErrors": [
+    "UNRESOLVED_RELATION_REF"
+  ]
 }

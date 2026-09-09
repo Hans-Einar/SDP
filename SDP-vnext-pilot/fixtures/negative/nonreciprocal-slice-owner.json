@@ -12,11 +12,45 @@
       "domains": [
         {
           "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000100",
-          "key": "APP", "name": "Application", "state": "active", "owners": ["owner"],
-          "newRecordIdStyle": "scoped", "roots": ["SDP/App"],
+          "key": "APP",
+          "name": "Application",
+          "state": "active",
+          "owners": [
+            "owner"
+          ],
+          "newRecordIdStyle": "scoped",
+          "roots": [
+            "SDP/App"
+          ],
           "issuedIds": [
-            {"id": "APP-FEAT-001", "status": "prospective", "allocationIssue": "https://github.com/example/repo/issues/1", "source": "Features/APP-FEAT-001.json"},
-            {"id": "APP-SLC-001", "status": "prospective", "allocationIssue": "https://github.com/example/repo/issues/1", "source": "Slices/APP-SLC-001.json"}
+            {
+              "id": "APP-FEAT-001",
+              "status": "prospective",
+              "allocationIssue": "https://github.com/example/repo/issues/1",
+              "source": "Features/APP-FEAT-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-ORIGIN-1",
+                "reservationDigest": "sha256:daf5070d7fc94e8f48c0427b90efdd675011e24b99b529a11ce3ddb848c1caa4",
+                "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000100",
+                "id": "APP-FEAT-001",
+                "allocationIssue": "https://github.com/example/repo/issues/1",
+                "source": "Features/APP-FEAT-001.json"
+              }
+            },
+            {
+              "id": "APP-SLC-001",
+              "status": "prospective",
+              "allocationIssue": "https://github.com/example/repo/issues/1",
+              "source": "Slices/APP-SLC-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-ORIGIN-1",
+                "reservationDigest": "sha256:674e6b9dc339e0e144ae9ea62cd259f5e1283c64a3b0cc5cb783f42139c6e87a",
+                "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000100",
+                "id": "APP-SLC-001",
+                "allocationIssue": "https://github.com/example/repo/issues/1",
+                "source": "Slices/APP-SLC-001.json"
+              }
+            }
           ]
         }
       ]
@@ -33,15 +67,31 @@
       "revision": 1,
       "declaredState": "active",
       "title": "Feature omitting its local Slice relation",
-      "intent": {"problem": "A problem", "outcome": "An outcome", "usersOrValue": "A value"},
-      "scope": ["One capability"],
+      "intent": {
+        "problem": "A problem",
+        "outcome": "An outcome",
+        "usersOrValue": "A value"
+      },
+      "scope": [
+        "One capability"
+      ],
       "nonGoals": [],
       "constraints": [],
-      "acceptanceCriteria": ["End-to-end outcome"],
+      "acceptanceCriteria": [
+        "End-to-end outcome"
+      ],
       "relations": [],
-      "issueAuthorities": ["https://github.com/example/repo/issues/1"],
+      "issueAuthorities": [
+        "https://github.com/example/repo/issues/1"
+      ],
       "slices": [],
-      "acceptedEvidence": {"candidate": null, "verificationRefs": [], "currentReviewRef": null, "steeringDisposition": null, "releaseRefs": []}
+      "acceptedEvidence": {
+        "candidate": null,
+        "verificationRefs": [],
+        "currentReviewRef": null,
+        "steeringDisposition": null,
+        "releaseRefs": []
+      }
     },
     {
       "schemaVersion": "sdp-vnext-pilot-slice-v0",
@@ -53,24 +103,44 @@
       "revision": 1,
       "declaredState": "active",
       "title": "Unlisted Slice",
-      "ownerRef": {"domainUid": "urn:uuid:50000000-0000-4000-8000-000000000100", "id": "APP-FEAT-001"},
+      "ownerRef": {
+        "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000100",
+        "id": "APP-FEAT-001"
+      },
       "assignmentIssue": "https://github.com/example/repo/issues/1",
       "outcome": "One end-to-end behavior",
       "whySmallestCoherent": "It cannot be split further.",
       "decisionRefs": [],
-      "ownedPaths": ["src/app/**"],
+      "ownedPaths": [
+        "src/app/**"
+      ],
       "sharedTouchpoints": [],
-      "invariants": ["Existing behavior remains valid"],
+      "invariants": [
+        "Existing behavior remains valid"
+      ],
       "nonGoals": [],
-      "verificationCriteria": ["python check.py"],
-      "reviewCriteria": ["Fresh review"],
+      "verificationCriteria": [
+        "python check.py"
+      ],
+      "reviewCriteria": [
+        "Fresh review"
+      ],
       "discoveryRule": "Stop on scope change.",
       "completionSignal": "READY",
       "hardStop": "Do not expand scope.",
-      "acceptedEvidence": {"candidate": null, "verificationRefs": [], "currentReviewRef": null, "steeringDisposition": null, "releaseRefs": []}
+      "acceptedEvidence": {
+        "candidate": null,
+        "verificationRefs": [],
+        "currentReviewRef": null,
+        "steeringDisposition": null,
+        "releaseRefs": []
+      }
     }
   ],
   "relations": [],
   "assignments": [],
-  "expectedErrors": ["NONRECIPROCAL_SLICE_OWNER", "SLICE_ASSIGNMENT_CARDINALITY"]
+  "expectedErrors": [
+    "NONRECIPROCAL_SLICE_OWNER",
+    "SLICE_ASSIGNMENT_CARDINALITY"
+  ]
 }

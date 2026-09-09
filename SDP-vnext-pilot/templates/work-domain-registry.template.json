@@ -10,27 +10,55 @@
       "key": "APP",
       "name": "Application",
       "state": "active",
-      "owners": ["application-team"],
+      "owners": [
+        "application-team"
+      ],
       "newRecordIdStyle": "scoped",
-      "roots": ["SDP/Application"],
+      "roots": [
+        "SDP/Application"
+      ],
       "issuedIds": [
         {
           "id": "APP-FEAT-001",
           "status": "prospective",
           "allocationIssue": "https://github.com/example/app/issues/101",
-          "source": "Features/APP-FEAT-001.json"
+          "source": "Features/APP-FEAT-001.json",
+          "allocationEpoch": {
+            "reservationSetId": "RSV-ORIGIN-101",
+            "reservationDigest": "sha256:a8ac68a3fe871d6fef619874ad11de964dff6560b170691c62fe73baa51703a3",
+            "domainUid": "urn:uuid:10000000-0000-4000-8000-000000000001",
+            "id": "APP-FEAT-001",
+            "allocationIssue": "https://github.com/example/app/issues/101",
+            "source": "Features/APP-FEAT-001.json"
+          }
         },
         {
           "id": "APP-SLC-001",
           "status": "prospective",
           "allocationIssue": "https://github.com/example/app/issues/101",
-          "source": "Slices/APP-SLC-001.json"
+          "source": "Slices/APP-SLC-001.json",
+          "allocationEpoch": {
+            "reservationSetId": "RSV-ORIGIN-101",
+            "reservationDigest": "sha256:e57ed1a3286aabbd0be193a3a4defb4fe8f221093cdfe0b05b580d1711579036",
+            "domainUid": "urn:uuid:10000000-0000-4000-8000-000000000001",
+            "id": "APP-SLC-001",
+            "allocationIssue": "https://github.com/example/app/issues/101",
+            "source": "Slices/APP-SLC-001.json"
+          }
         },
         {
           "id": "APP-SLC-002",
           "status": "reserved",
           "allocationIssue": "https://github.com/example/app/issues/102",
-          "source": "Slices/APP-SLC-002.json"
+          "source": "Slices/APP-SLC-002.json",
+          "allocationEpoch": {
+            "reservationSetId": "RSV-ORIGIN-102",
+            "reservationDigest": "sha256:58abc8ebef856bbfb36605a5c3e93e433a6b8ad9cea2261b3ed9e4d3573f65c1",
+            "domainUid": "urn:uuid:10000000-0000-4000-8000-000000000001",
+            "id": "APP-SLC-002",
+            "allocationIssue": "https://github.com/example/app/issues/102",
+            "source": "Slices/APP-SLC-002.json"
+          }
         }
       ],
       "predecessorRepositories": []

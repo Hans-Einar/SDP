@@ -148,6 +148,11 @@ Revision 9 retains the exact revision-8 assignment and reservation at
 in durable inventory, introduces the pre-materialization `reserved` state,
 forbids cross-epoch identity reuse, and keeps every preparatory authorized
 Slice candidate null.
+Revision 10 retains the exact revision-9 assignment and reservation at
+`33551057701f70ff572bc90b1d72bdad8373cd4c`, reserves exact
+`REV/VER-SDP-007-011` paths, binds allocation epoch and planned-source bytes,
+requires materialize-or-burn before moves, and closes non-accepted terminal
+assignments before paths are released.
 
 The reusable pilot `reservation-set` shape is in
 [`templates/reservation-set.template.json`](templates/reservation-set.template.json).
@@ -175,7 +180,10 @@ not a semantic-validation bypass. A preparatory row's Issue belongs to the
 active repository host; its primary domain and work record exist; that record
 names the Issue exactly once; reserved domains, ID grammar/style, inventory
 allocation authority, and shared owners resolve; and each authorized new Slice
-remains in `reservedIds` with `acceptedCandidate: null`. Every reserved ID
+remains in `reservedIds` with `acceptedCandidate: null`. Each reservation-row
+ID also freezes its `allocationIssue` and planned `source`; the matching
+inventory member binds that projection to exactly one reservation-set ID and
+digest in `allocationEpoch`. Every reserved ID
 resolves to exactly one `reserved` or materialized `prospective` inventory
 member in its active owning domain and the row Issue is that member's immutable
 allocator. Missing or legacy-preserved members fail. A reserved member carries
@@ -197,6 +205,10 @@ DAG, symmetric conflicts, complete merge order, terminal convergence, private/
 shared path collisions, and shared-touchpoint symmetry. A group is current when
 at least one member is `proposed`, `active`, or `blocked`; a group whose members
 are all `accepted`, `rejected`, `cancelled`, or `superseded` is historical.
+For each non-accepted terminal state, `activeSlices` is empty, no represented
+Slice remains `active`, and each unused reservation is `burned` before paths
+leave the current collision boundary. Omission of an original epoch never
+authorizes a fresh same-allocator claim.
 There may be at most one current group in one repository validation document.
 The ID is a stable coordination-record identity and MAY be reused across
 terminal immutable epochs with different digests, objects, and bases. Those

@@ -116,7 +116,10 @@ including spelling/case that would not satisfy the prospective grammar.
 
 `issuedIds` is a structured inventory, never a list of bare strings. A new
 allocation first carries `id`, `status: reserved`, the immutable allocating
-`allocationIssue`, and a planned repository-relative `source`. The ID already
+`allocationIssue`, a planned repository-relative `source`, and an immutable
+`allocationEpoch`. The epoch stores the reservation-set ID and canonical
+digest plus the exact `domainUid`, ID, allocator, and source projection also
+frozen in the reservation row. The ID already
 belongs to that allocator and domain at this point, even though no typed record
 exists. It satisfies the same current key/style/type grammar as a prospective
 record. The source is normalized, portable, non-recursive, and participates in
@@ -124,7 +127,9 @@ repository-wide normalized source uniqueness immediately.
 
 Promotion changes only `status: reserved` to `status: prospective` and
 materializes the exact typed JSON record at the planned source. The allocator,
-domain UID, ID, and source do not change. A `reserved` member cannot be a
+domain UID, ID, allocation epoch, and source do not change. Cancelling an
+unused allocation changes only its status to `burned`; it remains permanently
+non-reusable and is never materialized. A `reserved` member cannot be a
 current `workRef`, cannot have a materialized record, and cannot supply an
 accepted Slice candidate/evidence. A `prospective` member's source equals the
 represented record's own `source`; when local, it resolves to that exact JSON
@@ -210,8 +215,12 @@ declaration includes:
 - for the active successor, `predecessorRepositories`.
 
 `issuedIds` on a tombstone is the frozen structured inventory at the move gate.
+That gate rejects live `reserved` members: each MUST first materialize as
+`prospective` or be permanently cancelled as `burned`. Pilot v0 does not
+invent cross-repository transfer authority.
 The active successor begins with byte-equivalent member content for that full
-set, including status, authority, source, and provenance, and MAY append new
+set, including status, authority, allocation epoch, source, and provenance,
+and MAY append new
 IDs after the move; it may never omit, rename, weaken provenance, or reuse an
 ID from the tombstone.
 
@@ -283,17 +292,19 @@ owned path. Any other overlap blocks activation.
 ## Move/split protocol
 
 1. Freeze new reservations for the domain at an exact integration base.
-2. Export the domain declaration, issued/reserved IDs, semantic relations, and
+2. Materialize every live reservation to `prospective` or cancel it to
+   permanently `burned`; a move with any `reserved` member is invalid.
+3. Export the domain declaration, issued IDs, semantic relations, and
    exact source candidate; validate their digest.
-3. Create the destination declaration with the same UID and key, unchanged
+4. Create the destination declaration with the same UID and key, unchanged
    record IDs, predecessor repository, and new roots.
-4. Replace the source's active entry with a tombstone naming the destination;
+5. Replace the source's active entry with a tombstone naming the destination;
    do not delete its history or reuse its key.
-5. Verify one active host, inventory equality, preserved absolute references,
+6. Verify one active host, inventory equality, preserved absolute references,
    and no destination key/path collision.
-6. Refreeze dependent assignments. External/moved relations retain UID plus
+7. Refreeze dependent assignments. External/moved relations retain UID plus
    original ID; only optional location hints may change.
-7. Merge destination and tombstone changes in the declared convergence order.
+8. Merge destination and tombstone changes in the declared convergence order.
 
 Changing `CORE-SLC-007` to `NEWCORE-SLC-007` during a move is identity rewrite
 and fails the pilot. Repository aliases, redirects, and folder changes are

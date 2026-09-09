@@ -12,9 +12,30 @@
       "domains": [
         {
           "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000060",
-          "key": "DBG", "name": "Debugger", "state": "moved", "owners": ["debugger-owner"],
-          "newRecordIdStyle": "scoped", "roots": [],
-          "issuedIds": [{"id": "DBG-FEAT-001", "status": "prospective", "allocationIssue": "https://github.com/example/old/issues/1", "source": "Features/DBG-FEAT-001.json"}],
+          "key": "DBG",
+          "name": "Debugger",
+          "state": "moved",
+          "owners": [
+            "debugger-owner"
+          ],
+          "newRecordIdStyle": "scoped",
+          "roots": [],
+          "issuedIds": [
+            {
+              "id": "DBG-FEAT-001",
+              "status": "prospective",
+              "allocationIssue": "https://github.com/example/old/issues/1",
+              "source": "Features/DBG-FEAT-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-ORIGIN-1",
+                "reservationDigest": "sha256:1e4c1e299adb7545204f47a6b8b2767d82f4c6540501f211a2f0078d4a2f3fc9",
+                "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000060",
+                "id": "DBG-FEAT-001",
+                "allocationIssue": "https://github.com/example/old/issues/1",
+                "source": "Features/DBG-FEAT-001.json"
+              }
+            }
+          ],
           "successorRepository": "https://github.com/example/new",
           "successorRegistry": "SDP/WorkDomains.json"
         }
@@ -29,10 +50,35 @@
       "domains": [
         {
           "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000060",
-          "key": "NEWDBG", "name": "Renamed debugger", "state": "active", "owners": ["debugger-owner"],
-          "newRecordIdStyle": "scoped", "roots": ["SDP/Debugger"],
-          "issuedIds": [{"id": "NEWDBG-FEAT-001", "status": "prospective", "allocationIssue": "https://github.com/example/old/issues/1", "source": "Features/DBG-FEAT-001.json"}],
-          "predecessorRepositories": ["https://github.com/example/old"]
+          "key": "NEWDBG",
+          "name": "Renamed debugger",
+          "state": "active",
+          "owners": [
+            "debugger-owner"
+          ],
+          "newRecordIdStyle": "scoped",
+          "roots": [
+            "SDP/Debugger"
+          ],
+          "issuedIds": [
+            {
+              "id": "NEWDBG-FEAT-001",
+              "status": "prospective",
+              "allocationIssue": "https://github.com/example/old/issues/1",
+              "source": "Features/DBG-FEAT-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-ORIGIN-1",
+                "reservationDigest": "sha256:07bc231da92d59868c10b273b94a49d921007c91bfd5a11aadb03138ace23506",
+                "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000060",
+                "id": "NEWDBG-FEAT-001",
+                "allocationIssue": "https://github.com/example/old/issues/1",
+                "source": "Features/DBG-FEAT-001.json"
+              }
+            }
+          ],
+          "predecessorRepositories": [
+            "https://github.com/example/old"
+          ]
         }
       ]
     }
@@ -40,5 +86,8 @@
   "records": [],
   "relations": [],
   "assignments": [],
-  "expectedErrors": ["MOVE_ID_INVENTORY_REWRITE", "MOVE_KEY_REWRITE"]
+  "expectedErrors": [
+    "MOVE_ID_INVENTORY_REWRITE",
+    "MOVE_KEY_REWRITE"
+  ]
 }

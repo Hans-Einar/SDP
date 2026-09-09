@@ -277,6 +277,12 @@ The eventual canonical vocabulary remains open, but pilot v0 supports only:
 | Slice | `proposed`, `active`, `blocked`, `rejected`, `superseded`, `accepted` |
 | Issue assignment | `proposed`, `active`, `blocked`, `accepted`, `rejected`, `cancelled`, `superseded` |
 
+`rejected`, `cancelled`, and `superseded` become terminal only after truthful
+closeout: `activeSlices: []`, no represented authorized Slice remains
+`active`, and every unmaterialized reserved identity is permanently `burned`.
+Only then are write paths released; exact assignment, reservation, allocation
+epoch, and source evidence remain durable.
+
 `revision` is an integer of at least 1. Required titles, intent/question/
 outcome/correction strings, convergence/stop strings, and evidence identifiers
 are nonblank. Required collections retain their advertised array/object types;

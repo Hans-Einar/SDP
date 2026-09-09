@@ -1,0 +1,1 @@
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"rejected-assignment-cannot-retain-active-slice","sourceExample":"scoped-monorepo.json","mutations":[{"op":"replace","path":"/assignments/0/declaredState","value":"rejected"}],"expectedErrors":["TERMINAL_ASSIGNMENT_ACTIVE_SLICE","TERMINAL_SLICE_STILL_ACTIVE"]}

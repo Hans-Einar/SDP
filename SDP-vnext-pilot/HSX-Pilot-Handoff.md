@@ -133,6 +133,13 @@ do not change UID, ID, allocator, or path. A reserved-only member cannot be a
 workRef or accepted evidence. The first move exercise must preserve the
 complete structured member data, not only the ID strings.
 
+Before moving HSX, Debugger, AVR, or Shared, enumerate the domain inventory and
+stop on every live `reserved` member. Each MUST first materialize at its exact
+planned source as `prospective` or be cancelled as permanently `burned`. Copy
+prospective, burned, and legacy-preserved members byte-equivalently, including
+UID, ID, allocator, allocation epoch, source, and provenance. Never transfer a
+live reservation to a destination Issue or materialize a burned identity.
+
 Create absolute references by pairing each old ID with the new UID of its
 owning domain. This adds qualification without rewriting the original ID. A
 later repository split keeps both values.

@@ -1,11 +1,1 @@
-{
-  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
-  "experimental": true,
-  "case": "reservation-set-omits-assignment-content",
-  "sourceExample": "simple-single-domain.json",
-  "mutations": [
-    {"op": "remove", "path": "/reservationSets/0/assignments"}
-  ],
-  "rebindReservationDigests": true,
-  "expectedErrors": ["RESERVATION_SET_INCOMPLETE"]
-}
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"reservation-set-omits-assignment-content","sourceExample":"simple-single-domain.json","mutations":[{"op":"remove","path":"/reservationSets/0/assignments"}],"rebindReservationDigests":true,"expectedErrors":["ALLOCATION_EPOCH_MISMATCH","RESERVATION_SET_INCOMPLETE"]}

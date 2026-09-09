@@ -1,11 +1,1 @@
-{
-  "schemaVersion": "sdp-vnext-pilot-negative-mutation-v0",
-  "experimental": true,
-  "case": "prospective-source-escapes-the-repository",
-  "sourceExample": "simple-single-domain.json",
-  "mutations": [
-    {"op": "replace", "path": "/registries/0/domains/0/issuedIds/0/source", "value": "../outside/FEAT-001.json"},
-    {"op": "replace", "path": "/records/0/source", "value": "../outside/FEAT-001.json"}
-  ],
-  "expectedErrors": ["INVALID_ID_INVENTORY_MEMBER", "INVALID_RECORD_SOURCE"]
-}
+{"schemaVersion":"sdp-vnext-pilot-negative-mutation-v0","experimental":true,"case":"prospective-source-escapes-the-repository","sourceExample":"simple-single-domain.json","mutations":[{"op":"replace","path":"/registries/0/domains/0/issuedIds/0/source","value":"../outside/FEAT-001.json"},{"op":"replace","path":"/records/0/source","value":"../outside/FEAT-001.json"}],"expectedErrors":["INVALID_ALLOCATION_EPOCH","INVALID_ID_INVENTORY_MEMBER","INVALID_RECORD_SOURCE"]}

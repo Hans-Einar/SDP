@@ -51,9 +51,9 @@ assignment, the single default-domain declaration, and
 `Steering/Reservations/RSV-ISSUE-007-001.json`. The assignment binds the real
 reservation file by canonical JSON SHA-256; the validator resolves the Study,
 domain, paths, IDs, base, dependency, and convergence contract together.
-Assignment revision 9 retains the complete revision-1 through revision-8
+Assignment revision 10 retains the complete revision-1 through revision-9
 snapshot chain under `Steering/Assignments/History/`. The generic repository
-driver reconstructs all eight exact Git candidates plus each candidate's exact
+driver reconstructs all nine exact Git candidates plus each candidate's exact
 historical reservation, rehashes them, and requires the one canonical Issue
 row to equal the exact historical assignment projection. It rejects missing,
 fabricated, tampered, gapped, truncated, identity-replacing,

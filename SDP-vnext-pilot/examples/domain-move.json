@@ -15,15 +15,27 @@
           "key": "HOST",
           "name": "Remaining host",
           "state": "active",
-          "owners": ["host-owner"],
+          "owners": [
+            "host-owner"
+          ],
           "newRecordIdStyle": "scoped",
-          "roots": ["SDP/Host"],
+          "roots": [
+            "SDP/Host"
+          ],
           "issuedIds": [
             {
               "id": "HOST-FEAT-001",
               "status": "prospective",
               "allocationIssue": "https://github.com/example/old-monorepo/issues/300",
-              "source": "SDP/Host/Features/HOST-FEAT-001.json"
+              "source": "SDP/Host/Features/HOST-FEAT-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-ORIGIN-300",
+                "reservationDigest": "sha256:ab2cb1ee1e6eef0d583a1f88335cfd4f4e2a055dc025edefbaea95b64e77cd01",
+                "domainUid": "urn:uuid:40000000-0000-4000-8000-000000000010",
+                "id": "HOST-FEAT-001",
+                "allocationIssue": "https://github.com/example/old-monorepo/issues/300",
+                "source": "SDP/Host/Features/HOST-FEAT-001.json"
+              }
             }
           ],
           "predecessorRepositories": []
@@ -33,7 +45,9 @@
           "key": "DBG",
           "name": "Debugger",
           "state": "moved",
-          "owners": ["debugger-owner"],
+          "owners": [
+            "debugger-owner"
+          ],
           "newRecordIdStyle": "scoped",
           "roots": [],
           "issuedIds": [
@@ -41,7 +55,15 @@
               "id": "DBG-FEAT-001",
               "status": "prospective",
               "allocationIssue": "https://github.com/example/old-monorepo/issues/301",
-              "source": "SDP/Debugger/Features/DBG-FEAT-001.json"
+              "source": "SDP/Debugger/Features/DBG-FEAT-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-ORIGIN-301",
+                "reservationDigest": "sha256:46982f9656ff47358b0bb874264df7ab3baebf2b61cf4cfe49c9832d706fc01d",
+                "domainUid": "urn:uuid:40000000-0000-4000-8000-000000000020",
+                "id": "DBG-FEAT-001",
+                "allocationIssue": "https://github.com/example/old-monorepo/issues/301",
+                "source": "SDP/Debugger/Features/DBG-FEAT-001.json"
+              }
             },
             {
               "id": "DBG-RF-001",
@@ -84,15 +106,27 @@
           "key": "DBG",
           "name": "Debugger",
           "state": "active",
-          "owners": ["debugger-owner"],
+          "owners": [
+            "debugger-owner"
+          ],
           "newRecordIdStyle": "scoped",
-          "roots": ["SDP/Debugger"],
+          "roots": [
+            "SDP/Debugger"
+          ],
           "issuedIds": [
             {
               "id": "DBG-FEAT-001",
               "status": "prospective",
               "allocationIssue": "https://github.com/example/old-monorepo/issues/301",
-              "source": "SDP/Debugger/Features/DBG-FEAT-001.json"
+              "source": "SDP/Debugger/Features/DBG-FEAT-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-ORIGIN-301",
+                "reservationDigest": "sha256:46982f9656ff47358b0bb874264df7ab3baebf2b61cf4cfe49c9832d706fc01d",
+                "domainUid": "urn:uuid:40000000-0000-4000-8000-000000000020",
+                "id": "DBG-FEAT-001",
+                "allocationIssue": "https://github.com/example/old-monorepo/issues/301",
+                "source": "SDP/Debugger/Features/DBG-FEAT-001.json"
+              }
             },
             {
               "id": "DBG-RF-001",
@@ -118,7 +152,9 @@
               }
             }
           ],
-          "predecessorRepositories": ["https://github.com/example/old-monorepo"]
+          "predecessorRepositories": [
+            "https://github.com/example/old-monorepo"
+          ]
         }
       ]
     }
@@ -139,10 +175,18 @@
         "outcome": "The host consumes one stable debugger service.",
         "usersOrValue": "The split remains transparent to users."
       },
-      "scope": ["Cross-repository consumption"],
-      "nonGoals": ["Debugger implementation"],
-      "constraints": ["Preserve the qualified debugger reference"],
-      "acceptanceCriteria": ["Cross-repository contract check passes"],
+      "scope": [
+        "Cross-repository consumption"
+      ],
+      "nonGoals": [
+        "Debugger implementation"
+      ],
+      "constraints": [
+        "Preserve the qualified debugger reference"
+      ],
+      "acceptanceCriteria": [
+        "Cross-repository contract check passes"
+      ],
       "relations": [],
       "issueAuthorities": [],
       "slices": [],
@@ -169,10 +213,18 @@
         "outcome": "The service is available under its original identity.",
         "usersOrValue": "Existing clients survive the repository split."
       },
-      "scope": ["Preserved service"],
-      "nonGoals": ["Identity renaming"],
-      "constraints": ["Keep DBG-FEAT-001"],
-      "acceptanceCriteria": ["Original qualified references resolve"],
+      "scope": [
+        "Preserved service"
+      ],
+      "nonGoals": [
+        "Identity renaming"
+      ],
+      "constraints": [
+        "Keep DBG-FEAT-001"
+      ],
+      "acceptanceCriteria": [
+        "Original qualified references resolve"
+      ],
       "relations": [],
       "issueAuthorities": [],
       "slices": [],

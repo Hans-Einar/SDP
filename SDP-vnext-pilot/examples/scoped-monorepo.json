@@ -15,15 +15,27 @@
           "key": "HSX",
           "name": "Core",
           "state": "active",
-          "owners": ["core-owner"],
+          "owners": [
+            "core-owner"
+          ],
           "newRecordIdStyle": "scoped",
-          "roots": ["SDP/HSX"],
+          "roots": [
+            "SDP/HSX"
+          ],
           "issuedIds": [
             {
               "id": "HSX-STU-001",
               "status": "prospective",
               "allocationIssue": "https://github.com/example/hsx-like/issues/150",
-              "source": "SDP/HSX/Studies/HSX-STU-001.json"
+              "source": "SDP/HSX/Studies/HSX-STU-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-ORIGIN-150",
+                "reservationDigest": "sha256:19f2e39609638acdadb0e4e9f18975a3a213d9daaa10cab11d40e3fc70b6d5b8",
+                "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000001",
+                "id": "HSX-STU-001",
+                "allocationIssue": "https://github.com/example/hsx-like/issues/150",
+                "source": "SDP/HSX/Studies/HSX-STU-001.json"
+              }
             }
           ],
           "predecessorRepositories": []
@@ -33,21 +45,41 @@
           "key": "DBG",
           "name": "Debugger",
           "state": "active",
-          "owners": ["debugger-owner"],
+          "owners": [
+            "debugger-owner"
+          ],
           "newRecordIdStyle": "scoped",
-          "roots": ["SDP/Debugger"],
+          "roots": [
+            "SDP/Debugger"
+          ],
           "issuedIds": [
             {
               "id": "DBG-FEAT-001",
               "status": "prospective",
               "allocationIssue": "https://github.com/example/hsx-like/issues/201",
-              "source": "SDP/Debugger/Features/DBG-FEAT-001.json"
+              "source": "SDP/Debugger/Features/DBG-FEAT-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-ORIGIN-201",
+                "reservationDigest": "sha256:c40dad7f8897d00fab8ae129fb7aac92e771eb55b3a6c3162b3788aa70f1b30f",
+                "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+                "id": "DBG-FEAT-001",
+                "allocationIssue": "https://github.com/example/hsx-like/issues/201",
+                "source": "SDP/Debugger/Features/DBG-FEAT-001.json"
+              }
             },
             {
               "id": "DBG-SLC-001",
               "status": "prospective",
               "allocationIssue": "https://github.com/example/hsx-like/issues/201",
-              "source": "SDP/Debugger/Slices/DBG-SLC-001.json"
+              "source": "SDP/Debugger/Slices/DBG-SLC-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-200",
+                "reservationDigest": "sha256:79f13e3a0486326f4ef588d47bebdbef81adcca87ffc6e36a8cd302df532a9cb",
+                "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
+                "id": "DBG-SLC-001",
+                "allocationIssue": "https://github.com/example/hsx-like/issues/201",
+                "source": "SDP/Debugger/Slices/DBG-SLC-001.json"
+              }
             }
           ],
           "predecessorRepositories": []
@@ -57,21 +89,41 @@
           "key": "AVR",
           "name": "AVR",
           "state": "active",
-          "owners": ["avr-owner"],
+          "owners": [
+            "avr-owner"
+          ],
           "newRecordIdStyle": "scoped",
-          "roots": ["SDP/AVR"],
+          "roots": [
+            "SDP/AVR"
+          ],
           "issuedIds": [
             {
               "id": "AVR-STU-001",
               "status": "prospective",
               "allocationIssue": "https://github.com/example/hsx-like/issues/202",
-              "source": "SDP/AVR/Studies/AVR-STU-001.json"
+              "source": "SDP/AVR/Studies/AVR-STU-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-200",
+                "reservationDigest": "sha256:79f13e3a0486326f4ef588d47bebdbef81adcca87ffc6e36a8cd302df532a9cb",
+                "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000003",
+                "id": "AVR-STU-001",
+                "allocationIssue": "https://github.com/example/hsx-like/issues/202",
+                "source": "SDP/AVR/Studies/AVR-STU-001.json"
+              }
             },
             {
               "id": "AVR-FIX-001",
               "status": "prospective",
               "allocationIssue": "https://github.com/example/hsx-like/issues/202",
-              "source": "SDP/AVR/Fixes/AVR-FIX-001.json"
+              "source": "SDP/AVR/Fixes/AVR-FIX-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-ORIGIN-202",
+                "reservationDigest": "sha256:3b64021da52b5fe4d3ddbdf53a1cc05b294167ce235f7273ff3b33e9fc89bc8e",
+                "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000003",
+                "id": "AVR-FIX-001",
+                "allocationIssue": "https://github.com/example/hsx-like/issues/202",
+                "source": "SDP/AVR/Fixes/AVR-FIX-001.json"
+              }
             }
           ],
           "predecessorRepositories": []
@@ -81,21 +133,41 @@
           "key": "SHARED",
           "name": "Shared contracts",
           "state": "active",
-          "owners": ["shared-contract-owner"],
+          "owners": [
+            "shared-contract-owner"
+          ],
           "newRecordIdStyle": "scoped",
-          "roots": ["SDP/Shared"],
+          "roots": [
+            "SDP/Shared"
+          ],
           "issuedIds": [
             {
               "id": "SHARED-REF-001",
               "status": "prospective",
               "allocationIssue": "https://github.com/example/hsx-like/issues/203",
-              "source": "SDP/Shared/Refactors/SHARED-REF-001.json"
+              "source": "SDP/Shared/Refactors/SHARED-REF-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-ORIGIN-203",
+                "reservationDigest": "sha256:98cfa28368fa0b671010af510eaa4470e112bf6ae37fe07b1825805328f350e3",
+                "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+                "id": "SHARED-REF-001",
+                "allocationIssue": "https://github.com/example/hsx-like/issues/203",
+                "source": "SDP/Shared/Refactors/SHARED-REF-001.json"
+              }
             },
             {
               "id": "SHARED-SLC-001",
               "status": "prospective",
               "allocationIssue": "https://github.com/example/hsx-like/issues/203",
-              "source": "SDP/Shared/Slices/SHARED-SLC-001.json"
+              "source": "SDP/Shared/Slices/SHARED-SLC-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-200",
+                "reservationDigest": "sha256:79f13e3a0486326f4ef588d47bebdbef81adcca87ffc6e36a8cd302df532a9cb",
+                "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
+                "id": "SHARED-SLC-001",
+                "allocationIssue": "https://github.com/example/hsx-like/issues/203",
+                "source": "SDP/Shared/Slices/SHARED-SLC-001.json"
+              }
             }
           ],
           "predecessorRepositories": []
@@ -116,14 +188,22 @@
       "title": "Portable core contract",
       "question": "Which stable contract may Debugger depend on?",
       "evidenceBoundary": {
-        "inScope": ["Portable contract"],
-        "outOfScope": ["Debugger implementation"]
+        "inScope": [
+          "Portable contract"
+        ],
+        "outOfScope": [
+          "Debugger implementation"
+        ]
       },
       "ownerRef": null,
-      "issueAuthorities": ["https://github.com/example/hsx-like/issues/150"],
+      "issueAuthorities": [
+        "https://github.com/example/hsx-like/issues/150"
+      ],
       "independentStudyRefs": [],
       "convergenceGate": "Core-owner disposition",
-      "findings": ["Contract v1 is the accepted boundary"],
+      "findings": [
+        "Contract v1 is the accepted boundary"
+      ],
       "limitations": [],
       "informs": [],
       "acceptedEvidence": {
@@ -162,10 +242,18 @@
         "outcome": "Debugger inspection runs through the portable contract.",
         "usersOrValue": "Debugger clients receive stable inspection."
       },
-      "scope": ["One debugger inspection path"],
-      "nonGoals": ["AVR implementation"],
-      "constraints": ["Depend only on accepted core contract"],
-      "acceptanceCriteria": ["Integrated inspection check passes"],
+      "scope": [
+        "One debugger inspection path"
+      ],
+      "nonGoals": [
+        "AVR implementation"
+      ],
+      "constraints": [
+        "Depend only on accepted core contract"
+      ],
+      "acceptanceCriteria": [
+        "Integrated inspection check passes"
+      ],
       "relations": [
         {
           "type": "depends_on",
@@ -176,7 +264,9 @@
           }
         }
       ],
-      "issueAuthorities": ["https://github.com/example/hsx-like/issues/201"],
+      "issueAuthorities": [
+        "https://github.com/example/hsx-like/issues/201"
+      ],
       "slices": [
         {
           "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
@@ -215,12 +305,24 @@
           "keyHint": "HSX"
         }
       ],
-      "ownedPaths": ["src/debugger/inspection/**"],
-      "sharedTouchpoints": ["SDP/Shared/contracts/interface.json"],
-      "invariants": ["Core contract remains authoritative"],
-      "nonGoals": ["AVR work"],
-      "verificationCriteria": ["python -m unittest tests.debugger_inspection"],
-      "reviewCriteria": ["Fresh cross-domain contract review"],
+      "ownedPaths": [
+        "src/debugger/inspection/**"
+      ],
+      "sharedTouchpoints": [
+        "SDP/Shared/contracts/interface.json"
+      ],
+      "invariants": [
+        "Core contract remains authoritative"
+      ],
+      "nonGoals": [
+        "AVR work"
+      ],
+      "verificationCriteria": [
+        "python -m unittest tests.debugger_inspection"
+      ],
+      "reviewCriteria": [
+        "Fresh cross-domain contract review"
+      ],
       "discoveryRule": "Stop on portable-contract contradiction.",
       "completionSignal": "DBG_INSPECTION_READY",
       "hardStop": "Do not change AVR.",
@@ -244,15 +346,21 @@
       "title": "AVR side of portable boundary",
       "question": "What evidence constrains the AVR boundary?",
       "evidenceBoundary": {
-        "inScope": ["AVR contract evidence"],
-        "outOfScope": ["AVR product implementation"]
+        "inScope": [
+          "AVR contract evidence"
+        ],
+        "outOfScope": [
+          "AVR product implementation"
+        ]
       },
       "ownerRef": {
         "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
         "id": "DBG-FEAT-001",
         "keyHint": "DBG"
       },
-      "issueAuthorities": ["https://github.com/example/hsx-like/issues/202"],
+      "issueAuthorities": [
+        "https://github.com/example/hsx-like/issues/202"
+      ],
       "independentStudyRefs": [
         {
           "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000001",
@@ -288,15 +396,23 @@
       "revision": 1,
       "declaredState": "proposed",
       "title": "Explicit shared contract ownership",
-      "behaviorBaseline": ["Existing portable interface remains valid"],
-      "targetStructure": ["Shared interface has one explicit owner"],
+      "behaviorBaseline": [
+        "Existing portable interface remains valid"
+      ],
+      "targetStructure": [
+        "Shared interface has one explicit owner"
+      ],
       "compatibility": {
-        "preserved": ["Portable interface v1"],
+        "preserved": [
+          "Portable interface v1"
+        ],
         "changed": [],
         "migrationRange": "Metadata only"
       },
       "temporaryAdapters": [],
-      "exitEvidence": ["Both dependent domains pass convergence"],
+      "exitEvidence": [
+        "Both dependent domains pass convergence"
+      ],
       "relations": [
         {
           "type": "refines",
@@ -307,7 +423,9 @@
           }
         }
       ],
-      "issueAuthorities": ["https://github.com/example/hsx-like/issues/203"],
+      "issueAuthorities": [
+        "https://github.com/example/hsx-like/issues/203"
+      ],
       "slices": [
         {
           "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
@@ -341,11 +459,21 @@
       "whySmallestCoherent": "Ownership without consumer checks is incomplete.",
       "decisionRefs": [],
       "ownedPaths": [],
-      "sharedTouchpoints": ["SDP/Shared/contracts/interface.json"],
-      "invariants": ["No consumer-specific semantics enter the shared contract"],
-      "nonGoals": ["Debugger or AVR feature implementation"],
-      "verificationCriteria": ["python tools/check_shared_contract.py"],
-      "reviewCriteria": ["Independent convergence review"],
+      "sharedTouchpoints": [
+        "SDP/Shared/contracts/interface.json"
+      ],
+      "invariants": [
+        "No consumer-specific semantics enter the shared contract"
+      ],
+      "nonGoals": [
+        "Debugger or AVR feature implementation"
+      ],
+      "verificationCriteria": [
+        "python tools/check_shared_contract.py"
+      ],
+      "reviewCriteria": [
+        "Independent convergence review"
+      ],
       "discoveryRule": "Stop on ownership ambiguity.",
       "completionSignal": "SHARED_CONVERGED",
       "hardStop": "Do not start downstream features.",
@@ -367,10 +495,14 @@
       "revision": 1,
       "declaredState": "proposed",
       "title": "Illustrative AVR correction",
-      "defectEvidence": ["A known AVR adapter behavior differs from its accepted contract"],
+      "defectEvidence": [
+        "A known AVR adapter behavior differs from its accepted contract"
+      ],
       "correction": "Restore the accepted adapter behavior without adding capability.",
       "risk": "low",
-      "invariants": ["Debugger capability ownership remains unchanged"],
+      "invariants": [
+        "Debugger capability ownership remains unchanged"
+      ],
       "affectedWork": [
         {
           "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
@@ -379,10 +511,16 @@
         }
       ],
       "standaloneReviewedUnit": true,
-      "issueAuthorities": ["https://github.com/example/hsx-like/issues/202"],
+      "issueAuthorities": [
+        "https://github.com/example/hsx-like/issues/202"
+      ],
       "slices": [],
-      "verificationCriteria": ["The focused AVR regression passes"],
-      "reviewCriteria": ["The exact correction is independently reviewed"],
+      "verificationCriteria": [
+        "The focused AVR regression passes"
+      ],
+      "reviewCriteria": [
+        "The exact correction is independently reviewed"
+      ],
       "acceptedEvidence": {
         "candidate": null,
         "verificationRefs": [],
@@ -435,11 +573,15 @@
         "integrationBase": "3333333333333333333333333333333333333333",
         "reservationSet": {
           "id": "RSV-200",
-          "digest": "sha256:afce6c41825437f26ebfe0f40b4310ebdd812a306d04e85404f33db57a2282e1"
+          "digest": "sha256:79f13e3a0486326f4ef588d47bebdbef81adcca87ffc6e36a8cd302df532a9cb"
         },
         "dependsOnIssues": [],
-        "conflictsWithIssues": ["https://github.com/example/hsx-like/issues/202"],
-        "ownedPaths": ["src/debugger/inspection/**"],
+        "conflictsWithIssues": [
+          "https://github.com/example/hsx-like/issues/202"
+        ],
+        "ownedPaths": [
+          "src/debugger/inspection/**"
+        ],
         "sharedTouchpoints": [
           {
             "path": "SDP/Shared/contracts/interface.json",
@@ -450,7 +592,9 @@
         "reservedIds": [
           {
             "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
-            "id": "DBG-SLC-001"
+            "id": "DBG-SLC-001",
+            "allocationIssue": "https://github.com/example/hsx-like/issues/201",
+            "source": "SDP/Debugger/Slices/DBG-SLC-001.json"
           }
         ],
         "mergeOrder": [
@@ -467,11 +611,15 @@
       },
       "boundaries": {
         "prohibitedRepositories": [],
-        "prohibitedPaths": ["src/avr/**"],
+        "prohibitedPaths": [
+          "src/avr/**"
+        ],
         "prohibitedOperations": []
       },
       "requiredEvidence": {
-        "verification": ["debugger and shared convergence checks"],
+        "verification": [
+          "debugger and shared convergence checks"
+        ],
         "independentReview": true,
         "maximumUnresolvedSeverity": "low"
       },
@@ -514,11 +662,15 @@
         "integrationBase": "3333333333333333333333333333333333333333",
         "reservationSet": {
           "id": "RSV-200",
-          "digest": "sha256:afce6c41825437f26ebfe0f40b4310ebdd812a306d04e85404f33db57a2282e1"
+          "digest": "sha256:79f13e3a0486326f4ef588d47bebdbef81adcca87ffc6e36a8cd302df532a9cb"
         },
         "dependsOnIssues": [],
-        "conflictsWithIssues": ["https://github.com/example/hsx-like/issues/201"],
-        "ownedPaths": ["research/avr/**"],
+        "conflictsWithIssues": [
+          "https://github.com/example/hsx-like/issues/201"
+        ],
+        "ownedPaths": [
+          "research/avr/**"
+        ],
         "sharedTouchpoints": [
           {
             "path": "SDP/Shared/contracts/interface.json",
@@ -529,7 +681,9 @@
         "reservedIds": [
           {
             "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000003",
-            "id": "AVR-STU-001"
+            "id": "AVR-STU-001",
+            "allocationIssue": "https://github.com/example/hsx-like/issues/202",
+            "source": "SDP/AVR/Studies/AVR-STU-001.json"
           }
         ],
         "mergeOrder": [
@@ -546,11 +700,15 @@
       },
       "boundaries": {
         "prohibitedRepositories": [],
-        "prohibitedPaths": ["src/debugger/**"],
+        "prohibitedPaths": [
+          "src/debugger/**"
+        ],
         "prohibitedOperations": []
       },
       "requiredEvidence": {
-        "verification": ["study evidence and shared convergence checks"],
+        "verification": [
+          "study evidence and shared convergence checks"
+        ],
         "independentReview": true,
         "maximumUnresolvedSeverity": "low"
       },
@@ -604,14 +762,16 @@
         "integrationBase": "3333333333333333333333333333333333333333",
         "reservationSet": {
           "id": "RSV-200",
-          "digest": "sha256:afce6c41825437f26ebfe0f40b4310ebdd812a306d04e85404f33db57a2282e1"
+          "digest": "sha256:79f13e3a0486326f4ef588d47bebdbef81adcca87ffc6e36a8cd302df532a9cb"
         },
         "dependsOnIssues": [
           "https://github.com/example/hsx-like/issues/201",
           "https://github.com/example/hsx-like/issues/202"
         ],
         "conflictsWithIssues": [],
-        "ownedPaths": ["SDP/Shared/ownership/**"],
+        "ownedPaths": [
+          "SDP/Shared/ownership/**"
+        ],
         "sharedTouchpoints": [
           {
             "path": "SDP/Shared/contracts/interface.json",
@@ -622,7 +782,9 @@
         "reservedIds": [
           {
             "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
-            "id": "SHARED-SLC-001"
+            "id": "SHARED-SLC-001",
+            "allocationIssue": "https://github.com/example/hsx-like/issues/203",
+            "source": "SDP/Shared/Slices/SHARED-SLC-001.json"
           }
         ],
         "mergeOrder": [
@@ -639,11 +801,16 @@
       },
       "boundaries": {
         "prohibitedRepositories": [],
-        "prohibitedPaths": ["src/debugger/**", "src/avr/**"],
+        "prohibitedPaths": [
+          "src/debugger/**",
+          "src/avr/**"
+        ],
         "prohibitedOperations": []
       },
       "requiredEvidence": {
-        "verification": ["integrated shared convergence checks"],
+        "verification": [
+          "integrated shared convergence checks"
+        ],
         "independentReview": true,
         "maximumUnresolvedSeverity": "low"
       },
@@ -688,10 +855,14 @@
           "reservedIds": [
             {
               "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000002",
-              "id": "DBG-SLC-001"
+              "id": "DBG-SLC-001",
+              "allocationIssue": "https://github.com/example/hsx-like/issues/201",
+              "source": "SDP/Debugger/Slices/DBG-SLC-001.json"
             }
           ],
-          "ownedPaths": ["src/debugger/inspection/**"],
+          "ownedPaths": [
+            "src/debugger/inspection/**"
+          ],
           "sharedTouchpoints": [
             {
               "path": "SDP/Shared/contracts/interface.json",
@@ -700,7 +871,9 @@
             }
           ],
           "dependsOnIssues": [],
-          "conflictsWithIssues": ["https://github.com/example/hsx-like/issues/202"]
+          "conflictsWithIssues": [
+            "https://github.com/example/hsx-like/issues/202"
+          ]
         },
         {
           "issue": "https://github.com/example/hsx-like/issues/202",
@@ -714,10 +887,14 @@
           "reservedIds": [
             {
               "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000003",
-              "id": "AVR-STU-001"
+              "id": "AVR-STU-001",
+              "allocationIssue": "https://github.com/example/hsx-like/issues/202",
+              "source": "SDP/AVR/Studies/AVR-STU-001.json"
             }
           ],
-          "ownedPaths": ["research/avr/**"],
+          "ownedPaths": [
+            "research/avr/**"
+          ],
           "sharedTouchpoints": [
             {
               "path": "SDP/Shared/contracts/interface.json",
@@ -726,7 +903,9 @@
             }
           ],
           "dependsOnIssues": [],
-          "conflictsWithIssues": ["https://github.com/example/hsx-like/issues/201"]
+          "conflictsWithIssues": [
+            "https://github.com/example/hsx-like/issues/201"
+          ]
         },
         {
           "issue": "https://github.com/example/hsx-like/issues/203",
@@ -751,10 +930,14 @@
           "reservedIds": [
             {
               "domainUid": "urn:uuid:30000000-0000-4000-8000-000000000004",
-              "id": "SHARED-SLC-001"
+              "id": "SHARED-SLC-001",
+              "allocationIssue": "https://github.com/example/hsx-like/issues/203",
+              "source": "SDP/Shared/Slices/SHARED-SLC-001.json"
             }
           ],
-          "ownedPaths": ["SDP/Shared/ownership/**"],
+          "ownedPaths": [
+            "SDP/Shared/ownership/**"
+          ],
           "sharedTouchpoints": [
             {
               "path": "SDP/Shared/contracts/interface.json",

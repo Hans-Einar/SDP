@@ -10,8 +10,49 @@
       "repository": "https://github.com/example/repo",
       "defaultDomainUid": null,
       "domains": [
-        {"domainUid": "urn:uuid:50000000-0000-4000-8000-000000000031", "key": "ONE", "name": "One", "state": "active", "owners": ["one"], "newRecordIdStyle": "scoped", "roots": ["SDP/One"], "issuedIds": [{"id": "FEAT-001", "status": "prospective", "allocationIssue": "https://github.com/example/repo/issues/1", "source": "Features/FEAT-001.json"}]},
-        {"domainUid": "urn:uuid:50000000-0000-4000-8000-000000000032", "key": "TWO", "name": "Two", "state": "active", "owners": ["two"], "newRecordIdStyle": "scoped", "roots": ["SDP/Two"], "issuedIds": []}
+        {
+          "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000031",
+          "key": "ONE",
+          "name": "One",
+          "state": "active",
+          "owners": [
+            "one"
+          ],
+          "newRecordIdStyle": "scoped",
+          "roots": [
+            "SDP/One"
+          ],
+          "issuedIds": [
+            {
+              "id": "FEAT-001",
+              "status": "prospective",
+              "allocationIssue": "https://github.com/example/repo/issues/1",
+              "source": "Features/FEAT-001.json",
+              "allocationEpoch": {
+                "reservationSetId": "RSV-ORIGIN-1",
+                "reservationDigest": "sha256:edc18586e17f2491906310aa637a5ee2b4dae4f453732b8beffbefe580a35e77",
+                "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000031",
+                "id": "FEAT-001",
+                "allocationIssue": "https://github.com/example/repo/issues/1",
+                "source": "Features/FEAT-001.json"
+              }
+            }
+          ]
+        },
+        {
+          "domainUid": "urn:uuid:50000000-0000-4000-8000-000000000032",
+          "key": "TWO",
+          "name": "Two",
+          "state": "active",
+          "owners": [
+            "two"
+          ],
+          "newRecordIdStyle": "scoped",
+          "roots": [
+            "SDP/Two"
+          ],
+          "issuedIds": []
+        }
       ]
     }
   ],
@@ -26,18 +67,37 @@
       "revision": 1,
       "declaredState": "proposed",
       "title": "Unscoped work in a multi-domain repository",
-      "intent": {"problem": "Identity is ambiguous.", "outcome": "Identity is scoped.", "usersOrValue": "References remain stable."},
-      "scope": ["Identity allocation"],
+      "intent": {
+        "problem": "Identity is ambiguous.",
+        "outcome": "Identity is scoped.",
+        "usersOrValue": "References remain stable."
+      },
+      "scope": [
+        "Identity allocation"
+      ],
       "nonGoals": [],
       "constraints": [],
-      "acceptanceCriteria": ["The ID is scoped"],
+      "acceptanceCriteria": [
+        "The ID is scoped"
+      ],
       "relations": [],
-      "issueAuthorities": ["https://github.com/example/repo/issues/1"],
+      "issueAuthorities": [
+        "https://github.com/example/repo/issues/1"
+      ],
       "slices": [],
-      "acceptedEvidence": {"candidate": null, "verificationRefs": [], "currentReviewRef": null, "steeringDisposition": null, "releaseRefs": []}
+      "acceptedEvidence": {
+        "candidate": null,
+        "verificationRefs": [],
+        "currentReviewRef": null,
+        "steeringDisposition": null,
+        "releaseRefs": []
+      }
     }
   ],
   "relations": [],
   "assignments": [],
-  "expectedErrors": ["INVALID_PROSPECTIVE_ID", "UNSCOPED_ID_MULTIDOMAIN"]
+  "expectedErrors": [
+    "INVALID_PROSPECTIVE_ID",
+    "UNSCOPED_ID_MULTIDOMAIN"
+  ]
 }
