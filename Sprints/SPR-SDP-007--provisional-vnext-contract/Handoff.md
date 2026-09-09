@@ -1,6 +1,6 @@
 # SPR-SDP-007 Handoff
 
-Status: TENTH_CANDIDATE_AWAITING_REVIEW
+Status: WIP_CHECKPOINT_CHANGES_REQUIRED
 
 ## Current assignment
 
@@ -64,13 +64,17 @@ Status: TENTH_CANDIDATE_AWAITING_REVIEW
 - Review: `REV-SDP-007-009` — changes required, B0 / H1 / M1 / L0 / Note 6
 - Tenth technical candidate:
   `f7eefcb20d1a3f051550e9caeca8672b032c0775`
+- Full tenth-gate candidate:
+  `33551057701f70ff572bc90b1d72bdad8373cd4c`
+- Review: `REV-SDP-007-010` — changes required, B0 / H2 / M1 / L0 / Note 6
+- Verification: no durable `VER-SDP-007-010` record; no outcome claimed
 - Durable pilot assignment:
   `SDP-vnext-pilot/Steering/Assignments/ISSUE-007.yaml`
 
 ## Next legal action
 
-Resolve and freeze the exact remote branch head containing technical candidate
-`f7eefcb...` plus this recovery update. Run fresh `VER-SDP-007-010` and a new
-independent `REV-SDP-007-010`; resolve any Blocking/High/Medium result before
-closure. Do not modify canonical Toolkit contracts or any downstream
-repository.
+Resume from `REV-SDP-007-010`, resolve its two High and one Medium findings in
+a fresh bounded Worker pass, then freeze a new exact remote candidate and run
+fresh independent verification and review. Do not declare pilot readiness,
+modify canonical Toolkit contracts or touch any downstream repository from
+this WIP checkpoint.

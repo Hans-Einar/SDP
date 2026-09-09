@@ -422,3 +422,17 @@ the independent review. Neither finding is waived.
 
 The exact remote head containing this recovery update now requires the reserved
 fresh `REV/VER-SDP-007-010` gate. Earlier evidence remains historical.
+
+## 2026-09-09 — WIP checkpoint after tenth review
+
+- Fresh `REV-SDP-007-010` reviewed exact candidate
+  `33551057701f70ff572bc90b1d72bdad8373cd4c` and returned changes required:
+  Blocking 0, High 2, Medium 1, Low 0, Note 6.
+- The open findings require immutable allocation-epoch/source provenance across
+  cancellation and promotion, a valid reserved-ID disposition across repository
+  moves, and terminal cancellation/rejection/supersession with no active Slice
+  state.
+- The paired tenth Verifier did not produce a durable verification record; no
+  `VER-SDP-007-010` outcome is claimed by this checkpoint.
+- This commit is an explicitly incomplete WIP checkpoint. It does not declare
+  `PROVISIONAL_CONTRACT_READY_FOR_PILOT` and does not waive any finding.
