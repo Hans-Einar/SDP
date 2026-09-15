@@ -144,3 +144,12 @@ See `docs/Validation.md` for exact boundaries and limitations.
 - `docs/Release-And-Versioning.md`
 - `docs/Release-Lifecycle.md`
 - `docs/SDP-Analyzer-Compatibility.md`
+
+## Exploratory studies
+
+- [Features, Functionality, Containers and Channels](docs/Feature-Functionality-and-Channel-Study.md)
+  — owner-model clarification and comparison with established architecture and
+  contract languages; research recommendations, not an adopted Toolkit contract.
+- [MVP1 design evolution and the proposed SDP skills](docs/MVP1-Design-Evolution-and-SDP-Skills.md)
+  — chronological design evidence, accepted versus proposed architecture, and
+  practical application of the candidate skills to MVP1.
