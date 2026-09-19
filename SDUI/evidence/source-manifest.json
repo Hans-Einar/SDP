@@ -1,0 +1,18 @@
+{
+  "profile": "sdui/0.1",
+  "python": "3.12.14 (main, Aug 13 2026, 00:00:00) [GCC 14.3.1 20251022 (Red Hat 14.3.1-4)]",
+  "platform": "Linux-6.12.0-211.7.3.el10_2.x86_64-x86_64-with-glibc2.39",
+  "sha256": {
+    "examples/main-page.ast.json": "684be6c85fd675bf2eb4bd43ff8a20536d875c4996ab226667ad829d56dd65b8",
+    "examples/main-page.sdui": "5e65c3e94ac1bad52b04dedb177c079e0f199ab6a7133ab717d9cf21d7a67181",
+    "examples/static.sdui": "1ae57bee43894f26c8ed61ee0f020af026c1e720fd27b00f8cb2d1ac657926cc",
+    "grammar/sdui-0.1.ebnf": "ddf146dcbe6f363aef022788cb4db253a9da78ec6e7a8229166989927171bd93",
+    "src/sdui/__init__.py": "329baf4c736db4b5695f78a51022f684fb8da5c1f36850a1632d7be612f8ec82",
+    "src/sdui/__main__.py": "d95c195f47ce38871b818b51dcfa8a2ccc4a6ff3b7ab1a332298f2d50253e16f",
+    "src/sdui/ast.py": "b2260a2314f3fb9bce6eb75012caf1778c132cf3d0128f4950631e4213a84db0",
+    "src/sdui/lexer.py": "2053846a7b3420b980da322e79755c545352f50656312ec907e4120fdfba5709",
+    "src/sdui/parser.py": "4405a3569e5030d501fb348d3228be27d76607de13f636605099b94aadcf5b5b",
+    "src/sdui/validate.py": "a260c1a8ad935a89284c73486dbc24c2c0c9ad7fc041fe53a4515f4781f86e62",
+    "tests/test_language.py": "aa96a77a53865071e0e11c17da28361ec41fbe4c4cf1ab2a57476f130e9ee303"
+  }
+}
