@@ -1,0 +1,10 @@
+language design-core version 0.1.
+capability LayoutReplacement.
+unit PresentationManager.
+unit UIHost.
+functionality ValidateBindings.
+PresentationManager owns ValidateBindings.
+UIHost contains PresentationManager.
+UIHost provides LayoutReplacement.
+ValidateBindings has repeatability = deterministic.
+ValidateBindings realizes LayoutReplacement.

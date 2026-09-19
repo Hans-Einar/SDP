@@ -1,0 +1,248 @@
+language sdl-mvp1-exercise version 0.1.
+
+scenario ShutdownSystem.
+condition ShutdownSystemReady.
+condition ShutdownAllAccounted.
+condition ShutdownHasUnresolvedResources.
+outcome ShutdownSystemCompleted.
+outcome ShutdownSystemIncomplete.
+step ShutdownAssess.
+step ShutdownSuccess.
+step ShutdownIncomplete.
+step ShutdownCheckBucking.
+step ShutdownRunBucking.
+condition ShutdownBuckingNeeded.
+condition ShutdownBuckingAbsent.
+condition ShutdownBuckingAccounted.
+condition ShutdownBuckingFailed.
+step ShutdownCheckBuckingWeb.
+step ShutdownRunBuckingWeb.
+condition ShutdownBuckingWebNeeded.
+condition ShutdownBuckingWebAbsent.
+condition ShutdownBuckingWebAccounted.
+condition ShutdownBuckingWebFailed.
+step ShutdownCheckMachine.
+step ShutdownRunMachine.
+condition ShutdownMachineNeeded.
+condition ShutdownMachineAbsent.
+condition ShutdownMachineAccounted.
+condition ShutdownMachineFailed.
+step ShutdownCheckMachineLedger.
+step ShutdownRunMachineLedger.
+condition ShutdownMachineLedgerNeeded.
+condition ShutdownMachineLedgerAbsent.
+condition ShutdownMachineLedgerAccounted.
+condition ShutdownMachineLedgerFailed.
+step ShutdownCheckBuckingLedger.
+step ShutdownRunBuckingLedger.
+condition ShutdownBuckingLedgerNeeded.
+condition ShutdownBuckingLedgerAbsent.
+condition ShutdownBuckingLedgerAccounted.
+condition ShutdownBuckingLedgerFailed.
+step ShutdownCheckMachineLab.
+step ShutdownRunMachineLab.
+condition ShutdownMachineLabNeeded.
+condition ShutdownMachineLabAbsent.
+condition ShutdownMachineLabAccounted.
+condition ShutdownMachineLabFailed.
+step ShutdownCheckBuckingLab.
+step ShutdownRunBuckingLab.
+condition ShutdownBuckingLabNeeded.
+condition ShutdownBuckingLabAbsent.
+condition ShutdownBuckingLabAccounted.
+condition ShutdownBuckingLabFailed.
+step ShutdownCheckSimulator.
+step ShutdownRunSimulator.
+condition ShutdownSimulatorNeeded.
+condition ShutdownSimulatorAbsent.
+condition ShutdownSimulatorAccounted.
+condition ShutdownSimulatorFailed.
+step ShutdownCheckGateway.
+step ShutdownRunGateway.
+condition ShutdownGatewayNeeded.
+condition ShutdownGatewayAbsent.
+condition ShutdownGatewayAccounted.
+condition ShutdownGatewayFailed.
+step ShutdownCheckOperatorSession.
+step ShutdownRunOperatorSession.
+condition ShutdownOperatorSessionNeeded.
+condition ShutdownOperatorSessionAbsent.
+condition ShutdownOperatorSessionAccounted.
+condition ShutdownOperatorSessionFailed.
+step ShutdownCheckOperatorScope.
+step ShutdownRunOperatorScope.
+condition ShutdownOperatorScopeNeeded.
+condition ShutdownOperatorScopeAbsent.
+condition ShutdownOperatorScopeAccounted.
+condition ShutdownOperatorScopeFailed.
+step ShutdownCheckSimulatorSession.
+step ShutdownRunSimulatorSession.
+condition ShutdownSimulatorSessionNeeded.
+condition ShutdownSimulatorSessionAbsent.
+condition ShutdownSimulatorSessionAccounted.
+condition ShutdownSimulatorSessionFailed.
+step ShutdownCheckSimulatorScope.
+step ShutdownRunSimulatorScope.
+condition ShutdownSimulatorScopeNeeded.
+condition ShutdownSimulatorScopeAbsent.
+condition ShutdownSimulatorScopeAccounted.
+condition ShutdownSimulatorScopeFailed.
+
+ShutdownSystem illustrates StopRuntimeCleanly.
+ShutdownSystem exercises ReliableServiceExchange.
+ShutdownSystem starts-when ShutdownSystemReady.
+ShutdownSystem starts-at ShutdownCheckBucking.
+ShutdownSystemReady describes "Controlled offline shutdown requested; the allocated instance set and no-new-work phase must be established by the still-open lifecycle contract.".
+ShutdownSystem preserves DurableFactsRetained.
+ShutdownSystem specifies "Candidate walkthrough accounts for all nine registered Container lifecycles. It is not an adopted dependency order or parallel shutdown scheduler. Failure records remain pending while other cleanup is attempted. Software GlobalStop is a separate scenario that keeps diagnostics alive.".
+ShutdownCheckBucking describes "Control-only selection of allocated BuckingService resources for this lifecycle phase; absence is not failure.".
+ShutdownCheckBucking proceeds-to ShutdownRunBucking when ShutdownBuckingNeeded.
+ShutdownCheckBucking proceeds-to ShutdownCheckBuckingWeb when ShutdownBuckingAbsent.
+ShutdownRunBucking calls ShutdownServiceRuntime within BuckingService.
+ShutdownRunBucking describes "Quiesce planning/commands and drain authoritative production/config outputs before releasing dependencies.".
+ShutdownRunBucking proceeds-to ShutdownCheckBuckingWeb when ShutdownBuckingAccounted.
+ShutdownRunBucking proceeds-to ShutdownCheckBuckingWeb when ShutdownBuckingFailed.
+ShutdownBuckingNeeded describes "The allocation includes live resources for this phase.".
+ShutdownBuckingAbsent describes "No allocated resources exist for this phase, or the same resources were already closed and accounted for.".
+ShutdownBuckingAccounted describes "This phase completed with explicit resource/durable-output accounting.".
+ShutdownBuckingFailed describes "This phase failed or exceeded its unresolved deadline; retain that result while attempting remaining cleanup. Error accumulation and retry are lifecycle-contract gaps.".
+ShutdownCheckBuckingWeb describes "Control-only selection of allocated BuckingWeb resources for this lifecycle phase; absence is not failure.".
+ShutdownCheckBuckingWeb proceeds-to ShutdownRunBuckingWeb when ShutdownBuckingWebNeeded.
+ShutdownCheckBuckingWeb proceeds-to ShutdownCheckMachine when ShutdownBuckingWebAbsent.
+ShutdownRunBuckingWeb calls ShutdownServiceRuntime within BuckingWeb.
+ShutdownRunBuckingWeb describes "Stop browser admission; account for independent upstream sessions and pending results.".
+ShutdownRunBuckingWeb proceeds-to ShutdownCheckMachine when ShutdownBuckingWebAccounted.
+ShutdownRunBuckingWeb proceeds-to ShutdownCheckMachine when ShutdownBuckingWebFailed.
+ShutdownBuckingWebNeeded describes "The allocation includes live resources for this phase.".
+ShutdownBuckingWebAbsent describes "No allocated resources exist for this phase, or the same resources were already closed and accounted for.".
+ShutdownBuckingWebAccounted describes "This phase completed with explicit resource/durable-output accounting.".
+ShutdownBuckingWebFailed describes "This phase failed or exceeded its unresolved deadline; retain that result while attempting remaining cleanup. Error accumulation and retry are lifecycle-contract gaps.".
+ShutdownCheckMachine describes "Control-only selection of allocated MachineService resources for this lifecycle phase; absence is not failure.".
+ShutdownCheckMachine proceeds-to ShutdownRunMachine when ShutdownMachineNeeded.
+ShutdownCheckMachine proceeds-to ShutdownCheckMachineLedger when ShutdownMachineAbsent.
+ShutdownRunMachine calls ShutdownServiceRuntime within MachineService.
+ShutdownRunMachine describes "Cancel owned normal work and drain required outcomes before detaching the selected target.".
+ShutdownRunMachine proceeds-to ShutdownCheckMachineLedger when ShutdownMachineAccounted.
+ShutdownRunMachine proceeds-to ShutdownCheckMachineLedger when ShutdownMachineFailed.
+ShutdownMachineNeeded describes "The allocation includes live resources for this phase.".
+ShutdownMachineAbsent describes "No allocated resources exist for this phase, or the same resources were already closed and accounted for.".
+ShutdownMachineAccounted describes "This phase completed with explicit resource/durable-output accounting.".
+ShutdownMachineFailed describes "This phase failed or exceeded its unresolved deadline; retain that result while attempting remaining cleanup. Error accumulation and retry are lifecycle-contract gaps.".
+ShutdownCheckMachineLedger describes "Control-only selection of allocated MachineLab resources for this lifecycle phase; absence is not failure.".
+ShutdownCheckMachineLedger proceeds-to ShutdownRunMachineLedger when ShutdownMachineLedgerNeeded.
+ShutdownCheckMachineLedger proceeds-to ShutdownCheckBuckingLedger when ShutdownMachineLedgerAbsent.
+ShutdownRunMachineLedger calls PersistLabLedger within MachineLab.
+ShutdownRunMachineLedger describes "Flush configured diagnostic ledger; a failure is retained while cleanup proceeds.".
+ShutdownRunMachineLedger proceeds-to ShutdownCheckBuckingLedger when ShutdownMachineLedgerAccounted.
+ShutdownRunMachineLedger proceeds-to ShutdownCheckBuckingLedger when ShutdownMachineLedgerFailed.
+ShutdownMachineLedgerNeeded describes "The allocation includes live resources for this phase.".
+ShutdownMachineLedgerAbsent describes "No allocated resources exist for this phase, or the same resources were already closed and accounted for.".
+ShutdownMachineLedgerAccounted describes "This phase completed with explicit resource/durable-output accounting.".
+ShutdownMachineLedgerFailed describes "This phase failed or exceeded its unresolved deadline; retain that result while attempting remaining cleanup. Error accumulation and retry are lifecycle-contract gaps.".
+ShutdownCheckBuckingLedger describes "Control-only selection of allocated BuckingLab resources for this lifecycle phase; absence is not failure.".
+ShutdownCheckBuckingLedger proceeds-to ShutdownRunBuckingLedger when ShutdownBuckingLedgerNeeded.
+ShutdownCheckBuckingLedger proceeds-to ShutdownCheckMachineLab when ShutdownBuckingLedgerAbsent.
+ShutdownRunBuckingLedger calls PersistLabLedger within BuckingLab.
+ShutdownRunBuckingLedger describes "Flush configured Bucking evidence, independent of production-domain persistence.".
+ShutdownRunBuckingLedger proceeds-to ShutdownCheckMachineLab when ShutdownBuckingLedgerAccounted.
+ShutdownRunBuckingLedger proceeds-to ShutdownCheckMachineLab when ShutdownBuckingLedgerFailed.
+ShutdownBuckingLedgerNeeded describes "The allocation includes live resources for this phase.".
+ShutdownBuckingLedgerAbsent describes "No allocated resources exist for this phase, or the same resources were already closed and accounted for.".
+ShutdownBuckingLedgerAccounted describes "This phase completed with explicit resource/durable-output accounting.".
+ShutdownBuckingLedgerFailed describes "This phase failed or exceeded its unresolved deadline; retain that result while attempting remaining cleanup. Error accumulation and retry are lifecycle-contract gaps.".
+ShutdownCheckMachineLab describes "Control-only selection of allocated MachineLab resources for this lifecycle phase; absence is not failure.".
+ShutdownCheckMachineLab proceeds-to ShutdownRunMachineLab when ShutdownMachineLabNeeded.
+ShutdownCheckMachineLab proceeds-to ShutdownCheckBuckingLab when ShutdownMachineLabAbsent.
+ShutdownRunMachineLab calls ShutdownServiceRuntime within MachineLab.
+ShutdownRunMachineLab describes "End configured automations, artifact transfers and sessions for actual process shutdown.".
+ShutdownRunMachineLab proceeds-to ShutdownCheckBuckingLab when ShutdownMachineLabAccounted.
+ShutdownRunMachineLab proceeds-to ShutdownCheckBuckingLab when ShutdownMachineLabFailed.
+ShutdownMachineLabNeeded describes "The allocation includes live resources for this phase.".
+ShutdownMachineLabAbsent describes "No allocated resources exist for this phase, or the same resources were already closed and accounted for.".
+ShutdownMachineLabAccounted describes "This phase completed with explicit resource/durable-output accounting.".
+ShutdownMachineLabFailed describes "This phase failed or exceeded its unresolved deadline; retain that result while attempting remaining cleanup. Error accumulation and retry are lifecycle-contract gaps.".
+ShutdownCheckBuckingLab describes "Control-only selection of allocated BuckingLab resources for this lifecycle phase; absence is not failure.".
+ShutdownCheckBuckingLab proceeds-to ShutdownRunBuckingLab when ShutdownBuckingLabNeeded.
+ShutdownCheckBuckingLab proceeds-to ShutdownCheckSimulator when ShutdownBuckingLabAbsent.
+ShutdownRunBuckingLab calls ShutdownServiceRuntime within BuckingLab.
+ShutdownRunBuckingLab describes "Release BuckingLab automations and sessions after ledger accounting.".
+ShutdownRunBuckingLab proceeds-to ShutdownCheckSimulator when ShutdownBuckingLabAccounted.
+ShutdownRunBuckingLab proceeds-to ShutdownCheckSimulator when ShutdownBuckingLabFailed.
+ShutdownBuckingLabNeeded describes "The allocation includes live resources for this phase.".
+ShutdownBuckingLabAbsent describes "No allocated resources exist for this phase, or the same resources were already closed and accounted for.".
+ShutdownBuckingLabAccounted describes "This phase completed with explicit resource/durable-output accounting.".
+ShutdownBuckingLabFailed describes "This phase failed or exceeded its unresolved deadline; retain that result while attempting remaining cleanup. Error accumulation and retry are lifecycle-contract gaps.".
+ShutdownCheckSimulator describes "Control-only selection of allocated P1000Simulator resources for this lifecycle phase; absence is not failure.".
+ShutdownCheckSimulator proceeds-to ShutdownRunSimulator when ShutdownSimulatorNeeded.
+ShutdownCheckSimulator proceeds-to ShutdownCheckGateway when ShutdownSimulatorAbsent.
+ShutdownRunSimulator calls ShutdownServiceRuntime within P1000Simulator.
+ShutdownRunSimulator describes "Release allocated simulator sessions and simulated work; skip if absent in the selected deployment.".
+ShutdownRunSimulator proceeds-to ShutdownCheckGateway when ShutdownSimulatorAccounted.
+ShutdownRunSimulator proceeds-to ShutdownCheckGateway when ShutdownSimulatorFailed.
+ShutdownSimulatorNeeded describes "The allocation includes live resources for this phase.".
+ShutdownSimulatorAbsent describes "No allocated resources exist for this phase, or the same resources were already closed and accounted for.".
+ShutdownSimulatorAccounted describes "This phase completed with explicit resource/durable-output accounting.".
+ShutdownSimulatorFailed describes "This phase failed or exceeded its unresolved deadline; retain that result while attempting remaining cleanup. Error accumulation and retry are lifecycle-contract gaps.".
+ShutdownCheckGateway describes "Control-only selection of allocated P1000Gateway resources for this lifecycle phase; absence is not failure.".
+ShutdownCheckGateway proceeds-to ShutdownRunGateway when ShutdownGatewayNeeded.
+ShutdownCheckGateway proceeds-to ShutdownCheckOperatorSession when ShutdownGatewayAbsent.
+ShutdownRunGateway calls ShutdownServiceRuntime within P1000Gateway.
+ShutdownRunGateway describes "Close passive observation/buffer resources; no physical write path is enabled.".
+ShutdownRunGateway proceeds-to ShutdownCheckOperatorSession when ShutdownGatewayAccounted.
+ShutdownRunGateway proceeds-to ShutdownCheckOperatorSession when ShutdownGatewayFailed.
+ShutdownGatewayNeeded describes "The allocation includes live resources for this phase.".
+ShutdownGatewayAbsent describes "No allocated resources exist for this phase, or the same resources were already closed and accounted for.".
+ShutdownGatewayAccounted describes "This phase completed with explicit resource/durable-output accounting.".
+ShutdownGatewayFailed describes "This phase failed or exceeded its unresolved deadline; retain that result while attempting remaining cleanup. Error accumulation and retry are lifecycle-contract gaps.".
+ShutdownCheckOperatorSession describes "Control-only selection of allocated BuckingUI resources for this lifecycle phase; absence is not failure.".
+ShutdownCheckOperatorSession proceeds-to ShutdownRunOperatorSession when ShutdownOperatorSessionNeeded.
+ShutdownCheckOperatorSession proceeds-to ShutdownCheckOperatorScope when ShutdownOperatorSessionAbsent.
+ShutdownRunOperatorSession calls CloseUiSession within BuckingUI.
+ShutdownRunOperatorSession describes "Stop operator app transport; record unresolved results without claiming cancellation.".
+ShutdownRunOperatorSession proceeds-to ShutdownCheckOperatorScope when ShutdownOperatorSessionAccounted.
+ShutdownRunOperatorSession proceeds-to ShutdownCheckOperatorScope when ShutdownOperatorSessionFailed.
+ShutdownOperatorSessionNeeded describes "The allocation includes live resources for this phase.".
+ShutdownOperatorSessionAbsent describes "No allocated resources exist for this phase, or the same resources were already closed and accounted for.".
+ShutdownOperatorSessionAccounted describes "This phase completed with explicit resource/durable-output accounting.".
+ShutdownOperatorSessionFailed describes "This phase failed or exceeded its unresolved deadline; retain that result while attempting remaining cleanup. Error accumulation and retry are lifecycle-contract gaps.".
+ShutdownCheckOperatorScope describes "Control-only selection of allocated BuckingUI resources for this lifecycle phase; absence is not failure.".
+ShutdownCheckOperatorScope proceeds-to ShutdownRunOperatorScope when ShutdownOperatorScopeNeeded.
+ShutdownCheckOperatorScope proceeds-to ShutdownCheckSimulatorSession when ShutdownOperatorScopeAbsent.
+ShutdownRunOperatorScope calls DisposeCompositionScope within BuckingUI.
+ShutdownRunOperatorScope describes "Release operator contexts and owned subscriptions; renderer cleanup is part of the unbound allocation contract.".
+ShutdownRunOperatorScope proceeds-to ShutdownCheckSimulatorSession when ShutdownOperatorScopeAccounted.
+ShutdownRunOperatorScope proceeds-to ShutdownCheckSimulatorSession when ShutdownOperatorScopeFailed.
+ShutdownOperatorScopeNeeded describes "The allocation includes live resources for this phase.".
+ShutdownOperatorScopeAbsent describes "No allocated resources exist for this phase, or the same resources were already closed and accounted for.".
+ShutdownOperatorScopeAccounted describes "This phase completed with explicit resource/durable-output accounting.".
+ShutdownOperatorScopeFailed describes "This phase failed or exceeded its unresolved deadline; retain that result while attempting remaining cleanup. Error accumulation and retry are lifecycle-contract gaps.".
+ShutdownCheckSimulatorSession describes "Control-only selection of allocated SimulatorUI resources for this lifecycle phase; absence is not failure.".
+ShutdownCheckSimulatorSession proceeds-to ShutdownRunSimulatorSession when ShutdownSimulatorSessionNeeded.
+ShutdownCheckSimulatorSession proceeds-to ShutdownCheckSimulatorScope when ShutdownSimulatorSessionAbsent.
+ShutdownRunSimulatorSession calls CloseUiSession within SimulatorUI.
+ShutdownRunSimulatorSession describes "Close simulator-control app transport if instantiated.".
+ShutdownRunSimulatorSession proceeds-to ShutdownCheckSimulatorScope when ShutdownSimulatorSessionAccounted.
+ShutdownRunSimulatorSession proceeds-to ShutdownCheckSimulatorScope when ShutdownSimulatorSessionFailed.
+ShutdownSimulatorSessionNeeded describes "The allocation includes live resources for this phase.".
+ShutdownSimulatorSessionAbsent describes "No allocated resources exist for this phase, or the same resources were already closed and accounted for.".
+ShutdownSimulatorSessionAccounted describes "This phase completed with explicit resource/durable-output accounting.".
+ShutdownSimulatorSessionFailed describes "This phase failed or exceeded its unresolved deadline; retain that result while attempting remaining cleanup. Error accumulation and retry are lifecycle-contract gaps.".
+ShutdownCheckSimulatorScope describes "Control-only selection of allocated SimulatorUI resources for this lifecycle phase; absence is not failure.".
+ShutdownCheckSimulatorScope proceeds-to ShutdownRunSimulatorScope when ShutdownSimulatorScopeNeeded.
+ShutdownCheckSimulatorScope proceeds-to ShutdownAssess when ShutdownSimulatorScopeAbsent.
+ShutdownRunSimulatorScope calls DisposeCompositionScope within SimulatorUI.
+ShutdownRunSimulatorScope describes "Release simulator contexts and renderer references independently of operator scopes.".
+ShutdownRunSimulatorScope proceeds-to ShutdownAssess when ShutdownSimulatorScopeAccounted.
+ShutdownRunSimulatorScope proceeds-to ShutdownAssess when ShutdownSimulatorScopeFailed.
+ShutdownSimulatorScopeNeeded describes "The allocation includes live resources for this phase.".
+ShutdownSimulatorScopeAbsent describes "No allocated resources exist for this phase, or the same resources were already closed and accounted for.".
+ShutdownSimulatorScopeAccounted describes "This phase completed with explicit resource/durable-output accounting.".
+ShutdownSimulatorScopeFailed describes "This phase failed or exceeded its unresolved deadline; retain that result while attempting remaining cleanup. Error accumulation and retry are lifecycle-contract gaps.".
+ShutdownAssess proceeds-to ShutdownSuccess when ShutdownAllAccounted.
+ShutdownAssess proceeds-to ShutdownIncomplete when ShutdownHasUnresolvedResources.
+ShutdownAllAccounted describes "All allocated resources, including renderer/tool instances, have an accepted shutdown disposition and required durability is accounted for. Missing lifecycle rules cannot be treated as success.".
+ShutdownHasUnresolvedResources describes "Any allocation, drain, timeout, close or durability result remains failed/unknown; preserve evidence for explicit recovery.".
+ShutdownSuccess finishes ShutdownSystem with ShutdownSystemCompleted.
+ShutdownIncomplete finishes ShutdownSystem with ShutdownSystemIncomplete.
+ShutdownSystemCompleted describes "All lifecycle obligations were accounted for under a future completed allocation contract; this outcome is not executable or demonstrated by this exercise.".
+ShutdownSystemIncomplete describes "Report partial cleanup and unresolved resources; do not restore already closed sessions or erase committed records.".

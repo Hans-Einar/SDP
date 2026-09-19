@@ -1,0 +1,18 @@
+language sdl-mvp1-exercise version 0.1.
+
+capability TaperPrediction.
+functionality FitTaperNor.
+functionality FitMixedKozak.
+functionality ProjectWorkingProfile.
+
+TaperModels cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/taper-models/SDP/03--Requirements/requirements.md".
+TaperModels provides TaperPrediction.
+TaperModels owns FitTaperNor.
+FitTaperNor realizes TaperPrediction.
+FitTaperNor specifies "Pure deterministic taperNOR for supported species; preserve minimum height/sample/span gates and version identity.".
+TaperModels owns FitMixedKozak.
+FitMixedKozak realizes TaperPrediction.
+FitMixedKozak specifies "Pure Mixed Kozak97 spruce model preserving evidence limitations; no invented unsupported prediction.".
+TaperModels owns ProjectWorkingProfile.
+ProjectWorkingProfile realizes TaperPrediction.
+ProjectWorkingProfile specifies "Use absolute measurement history and an explicit working root; preserve model/provenance and unavailable/fallback results.".

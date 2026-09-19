@@ -3,6 +3,12 @@
 Status: working draft  
 Toolkit-Version: 0.2.0 (unreleased)
 
+For the new **System Development Process** and SDL concept, start with
+[Checkpoint #1](docs/checkpoint%231/README.md). It consolidates the current
+discussion across abstraction levels and marks unsettled choices explicitly.
+The Toolkit described below remains Standard Document Procedure; the checkpoint
+does not rename or migrate its installed contracts.
+
 SDP is a repository-local, document-driven method for AI-assisted software
 development. It connects mandate, research, requirements, architecture, design,
 implementation, verification, review, traceability, releases and handoff to the
@@ -147,9 +153,44 @@ See `docs/Validation.md` for exact boundaries and limitations.
 
 ## Exploratory studies
 
+Start with the [Design language definition](docs/Design-Language-Definition.md)
+for the current draft vocabulary, grammar, type signatures and canonical forms.
+The studies below supply rationale and scenarios; they are not competing
+language definitions.
+
 - [Features, Functionality, Containers and Channels](docs/Feature-Functionality-and-Channel-Study.md)
   — owner-model clarification and comparison with established architecture and
   contract languages; research recommendations, not an adopted Toolkit contract.
 - [MVP1 design evolution and the proposed SDP skills](docs/MVP1-Design-Evolution-and-SDP-Skills.md)
-  — chronological design evidence, accepted versus proposed architecture, and
-  practical application of the candidate skills to MVP1.
+  — chronological design evidence, the owner's selected September 10 direction,
+  inherited obligations, and practical application of the candidate skills.
+- [Scenarios, state and implementation traceability](docs/Scenarios-State-and-Implementation-Traceability.md)
+  — capability realization, behavior/state terminology, and navigation from
+  scenario flows to units, contracts and source-level change impact.
+- [Vocabulary and grammar exploration](docs/Vocabulary-and-Grammar-Exploration.md)
+  — typed nouns and verbs, qualifiers, conditions, modality, temporal expressions
+  and an initial structural grammar fragment.
+- [MVP1 design-language example](docs/MVP1-Design-Language-Example.md)
+  — system overview, detailed UI responsibilities, scenario/state descriptions
+  and inspected implementation bindings expressed through the proposed vocabulary.
+- [Design-language conformance scenarios](docs/Design-Language-Conformance-Scenarios.md)
+  — scenario-driven vocabulary development, canonical sentence candidates,
+  rejected ambiguities and the validation needed to prevent dialects.
+- [SDL source tree and compilation](docs/SDL-Source-Tree-and-Compilation-Study.md)
+  — proposed multi-file authoring structure, name resolution, container boundary
+  exports, traceable blueprints and staged language/compiler development.
+- [Executable SDL IR and runtime](docs/SDL-Executable-IR-and-Runtime-Study.md)
+  — proposed execution profile, concurrency semantics, ports/adapters, external
+  renderer contract and bounded experiments for running a design.
+- [Whole-system MVP1 SDL exercise](experiments/mvp1_sdl/README.md)
+  — multi-file system model, selected UI layers, 20 scenario graphs and a pinned
+  inventory of 332 system/local obligations; executable gaps remain explicit.
+- [MVP1 exercise findings and local language extensions](docs/MVP1-SDL-Exercise-Findings-and-Extensions.md)
+  — candidate constructs recorded before use, with modeling findings and limits;
+  isolated from the general language definition and the current parser.
+- [Datasets, Datagrams and data contracts](docs/SDL-Datasets-Datagrams-and-Data-Contracts.md)
+  — proposed datasets, optional databases and Dataset-linked Datagram families;
+  contract-defined variants, source identity and the SDL-to-IR completion boundary.
+- [ControlSets, layer boundaries and data access](docs/SDL-ControlSets-Layer-Boundaries-and-Data-Access.md)
+  — HEOS/HSX and external-model evidence; Commands/Values, generated MessageSets,
+  internal Channels, queryable data versus live arrivals and explicit durability.

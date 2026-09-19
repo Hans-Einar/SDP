@@ -1,0 +1,15 @@
+language sdl-mvp1-exercise version 0.1.
+
+contract BuckingContract.
+interface BuckingInterface.
+message-set BuckingRequests.
+message-set BuckingResponses.
+
+BuckingInterface follows BuckingContract.
+BuckingContract allows BuckingRequests.
+BuckingContract specifies "Independent subscriber streams; correlated results, durable production/activation and supersedable profile/planning distinguished. Existing ProductionEvent alone does not carry complete cut provenance.".
+BuckingContract status inherited.
+BuckingContract allows BuckingResponses.
+BuckingContract schema "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/contracts/proto/mvp1/bucking/v1/bucking.proto".
+BuckingRequests member "mvp1.bucking.v1.BuckingClientMessage".
+BuckingResponses member "mvp1.bucking.v1.BuckingServerMessage".

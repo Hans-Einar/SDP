@@ -1,0 +1,22 @@
+language sdl-mvp1-exercise version 0.1.
+
+capability MachineDiagnostics.
+functionality ObserveMachineHistory.
+functionality ServeMachineLabRequests.
+functionality RouteMachineToolCommand.
+functionality StopLabAutomation.
+
+MachineLab cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-lab/SDP/03--Requirements/requirements.md".
+MachineLab provides MachineDiagnostics.
+MachineLab owns ObserveMachineHistory.
+ObserveMachineHistory realizes MachineDiagnostics.
+ObserveMachineHistory specifies "Normal Machine v1 client; bounded history and optional ledger, independent of simulator/Bucking and non-authoritative.".
+MachineLab owns ServeMachineLabRequests.
+ServeMachineLabRequests realizes MachineDiagnostics.
+ServeMachineLabRequests specifies "Correlated read/readbuf/status/checkpoint/artifact/replay requests and source-session-qualified cursors; exact Lab capability/scope checks.".
+MachineLab owns RouteMachineToolCommand.
+RouteMachineToolCommand realizes MachineDiagnostics.
+RouteMachineToolCommand specifies "msctl semantic operator input uses public Machine ingress, not simulator wire injection; explicit grants permit control.".
+MachineLab owns StopLabAutomation.
+StopLabAutomation realizes MachineDiagnostics.
+StopLabAutomation specifies "GlobalStop cancels configured automation but preserves observation/ledger; default observer-only is not a universal prohibition.".

@@ -1,0 +1,42 @@
+language sdl-mvp1-exercise version 0.1.
+
+capability AuthoritativeMachineState.
+functionality ConsumeTargetRecord.
+functionality DecodeP1000Frames.
+functionality AdvanceP1000Protocol.
+functionality CalibrateMeasurement.
+functionality ReduceMachineState.
+functionality ValidateMachineCommand.
+functionality InjectSemanticOperatorInput.
+functionality HandleMachineStop.
+functionality PublishMachineBaseline.
+
+MachineService cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-service/SDP/03--Requirements/requirements.md".
+MachineService provides AuthoritativeMachineState.
+MachineService owns ConsumeTargetRecord.
+ConsumeTargetRecord realizes AuthoritativeMachineState.
+ConsumeTargetRecord specifies "Choose configured Target endpoint; preserve session/delivery/P1000 sequence and exact byte provenance.".
+MachineService owns DecodeP1000Frames.
+DecodeP1000Frames realizes AuthoritativeMachineState.
+DecodeP1000Frames specifies "Length-driven, capture-backed framing/checksum; payload FF is not an unconditional separator.".
+MachineService owns AdvanceP1000Protocol.
+AdvanceP1000Protocol realizes AuthoritativeMachineState.
+AdvanceP1000Protocol specifies "Evidence-backed boot/runtime/control state machines; selective ACK decisions are distinct from delivery commits.".
+MachineService owns CalibrateMeasurement.
+CalibrateMeasurement realizes AuthoritativeMachineState.
+CalibrateMeasurement specifies "Apply active calibration revision; publish calibrated/raw-only/unknown and absolute/working coordinates with evidence references.".
+MachineService owns ReduceMachineState.
+ReduceMachineState realizes AuthoritativeMachineState.
+ReduceMachineState specifies "Single-owner authoritative machine/stem/head/saw/operator state and ordered source events; no forestry economics.".
+MachineService owns ValidateMachineCommand.
+ValidateMachineCommand realizes AuthoritativeMachineState.
+ValidateMachineCommand specifies "Bind peer identity to connection; revalidate scoped overlapping grants, runtime capabilities, generations and request applicability.".
+MachineService owns InjectSemanticOperatorInput.
+InjectSemanticOperatorInput realizes AuthoritativeMachineState.
+InjectSemanticOperatorInput specifies "Normalize explicit operator input with semantic-injection provenance; fabricate no P1000 wire bytes.".
+MachineService owns HandleMachineStop.
+HandleMachineStop realizes AuthoritativeMachineState.
+HandleMachineStop specifies "Handle GlobalStop without ordinary control grant for valid clients; prioritize stop, invalidate queued normal epochs and preserve diagnostic collection.".
+MachineService owns PublishMachineBaseline.
+PublishMachineBaseline realizes AuthoritativeMachineState.
+PublishMachineBaseline specifies "Serve independent subscribers and coherent snapshots/resume, catalogs, health, results and source/evidence lineage.".

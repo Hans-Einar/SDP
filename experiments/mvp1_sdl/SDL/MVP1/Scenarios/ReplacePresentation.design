@@ -1,0 +1,68 @@
+language sdl-mvp1-exercise version 0.1.
+
+scenario ReplacePresentation.
+condition ReplacePresentationReady.
+condition ReplacePresentationContinue.
+condition ReplacePresentationReject.
+outcome ReplacePresentationCompleted.
+outcome ReplacePresentationRejected.
+step ReplacePresentationPrepare.
+step ReplacePresentationValidate.
+step ReplacePresentationPublish.
+step ReplacePresentationReconcile.
+step ReplacePresentationObserve.
+step ReplacePresentationFailure.
+step ReplacePresentationSuccess.
+
+condition ReplacementRevisionCurrent.
+condition ReplacementRevisionStale.
+condition RendererFailedAfterPublication.
+outcome PriorPresentationRetained.
+outcome PublishedButNotDisplayed.
+step RejectStalePresentation.
+step ReportRendererFailure.
+
+ReplacePresentation illustrates ChangeUiPresentation.
+ReplacePresentation exercises ReplaceablePresentation.
+ReplacePresentation starts-when ReplacePresentationReady.
+ReplacePresentation starts-at ReplacePresentationPrepare.
+ReplacePresentationReady describes "A valid schema A and live Composition exist; candidate B is requested.".
+ReplacePresentationContinue describes "The previous operation succeeded and the next step's declared contract preconditions remain true; exact predicates are an executable-language gap.".
+ReplacePresentationReject describes "Candidate preparation/binding validation or final observation fails outside the separately modeled stale-revision and post-publication renderer-failure paths.".
+ReplacePresentationCompleted describes "The stated design path completed under its explicit obligations; this is not an observed test result.".
+ReplacePresentationRejected describes "The path terminated without claiming the requested change succeeded; failures remain observable.".
+ReplacePresentation preserves PreserveRepresentationIdentity.
+ReplacePresentation preserves UiResponsiveness.
+ReplacePresentation preserves StableCommandIdentity.
+ReplacePresentationPrepare calls BuildPresentationSchema within BuckingUI.
+ReplacePresentationPrepare describes "Build B against identified Composition structural revision.".
+ReplacePresentationPrepare proceeds-to ReplacePresentationFailure when ReplacePresentationReject.
+ReplacePresentationPrepare proceeds-to ReplacePresentationValidate when ReplacePresentationContinue.
+ReplacePresentationValidate calls ValidatePresentationBindings within BuckingUI.
+ReplacePresentationValidate describes "Validate target types/kinds/capabilities and bindings.".
+ReplacePresentationValidate proceeds-to ReplacePresentationFailure when ReplacePresentationReject.
+ReplacePresentationValidate proceeds-to ReplacePresentationPublish when ReplacePresentationContinue.
+ReplacePresentationPublish calls PublishPresentationRevision within BuckingUI.
+ReplacePresentationPublish describes "Recheck relevant revision at commit, reject stale candidate under proposed policy.".
+ReplacePresentationPublish proceeds-to ReplacePresentationFailure when ReplacePresentationReject.
+ReplacePresentationPublish proceeds-to ReplacePresentationReconcile when ReplacementRevisionCurrent.
+ReplacePresentationReconcile calls ReconcileViewNodes within BuckingUI.
+ReplacePresentationReconcile describes "Renderer adapter reconciles against published B; logical app context, not Go-host placement.".
+ReplacePresentationReconcile proceeds-to ReplacePresentationObserve when ReplacePresentationContinue.
+ReplacePresentationObserve calls ObserveRenderedRevision within BuckingUI.
+ReplacePresentationObserve describes "Only actual render observation establishes displayed B.".
+ReplacePresentationObserve proceeds-to ReplacePresentationFailure when ReplacePresentationReject.
+ReplacePresentationObserve proceeds-to ReplacePresentationSuccess when ReplacePresentationContinue.
+ReplacePresentationFailure finishes ReplacePresentation with ReplacePresentationRejected.
+ReplacePresentationSuccess finishes ReplacePresentation with ReplacePresentationCompleted.
+ReplacePresentationPublish emits PresentationUpdates through OperatorPresentationChannel.
+ReplacePresentation runs-alongside InspectMachine.
+ReplacementRevisionCurrent describes "The Composition structural revision still matches the validated candidate at the atomic publication point.".
+ReplacementRevisionStale describes "That relevant structural revision changed before publication; this exercise proposes reject-and-retain, not automatic retry.".
+RendererFailedAfterPublication describes "Schema B was published but the renderer failed to materialize it; no automatic rollback is claimed.".
+ReplacePresentationPublish proceeds-to RejectStalePresentation when ReplacementRevisionStale.
+RejectStalePresentation finishes ReplacePresentation with PriorPresentationRetained.
+ReplacePresentationReconcile proceeds-to ReportRendererFailure when RendererFailedAfterPublication.
+ReportRendererFailure finishes ReplacePresentation with PublishedButNotDisplayed.
+PriorPresentationRetained describes "Candidate was not published; prior valid schema A and semantic identities remain active.".
+PublishedButNotDisplayed describes "Published revision and displayed revision differ; recovery policy remains RendererFailureGap.".

@@ -1,5 +1,10 @@
 # Study: Features, Functionality, Containers and Channels
 
+Current discussion entry: [Checkpoint #1](checkpoint%231/README.md), 2026-09-18.
+Its Functionality-before-allocation proposal reconsiders this study's unit-local
+definition; no grammar change has been adopted. Preserve this document as the
+reasoning baseline, not an alternative meaning silently selected by the reader.
+
 Date: 2026-09-15  
 Status: research and recommendations for discussion; no adopted schema or language  
 Scope: clarify the owner's model and assess existing modeling approaches  
@@ -14,9 +19,18 @@ The owner's model is coherent if it keeps three concerns distinct:
 - **Interaction:** how those units collaborate under explicit contracts.
 
 Recommended working vocabulary: Use Case, Requirement, Feature, Unit/Container,
-Functionality, Interface, Channel, Contract and Scenario. Capability can express
-an ability at an explicitly named scope, but should remain optional until it
-answers a question that Feature or Functionality does not already answer.
+Functionality, Capability, Interface, Channel, Contract and Scenario. Following
+the owner's further clarification, Capability has a distinct purpose: describe
+an ability realized by coordinated Functionalities, at a named internal or
+external boundary. It need not be a duplicate label on every Functionality.
+
+The owner also asks for progressive navigation from scenario flow and state
+changes to units, contracts and actual source functions, with change-impact
+analysis in both directions. The companion
+[Scenarios, state and implementation traceability](Scenarios-State-and-Implementation-Traceability.md)
+develops that proposal, distinguishes events from activities, and defines a
+small evaluation case. These relationships are now part of the tool-selection
+question, beyond drawing a structural diagram.
 
 The most useful existing foundations are C4 for runtime structure,
 ports-and-adapters for boundary design, Enterprise Integration Patterns for
@@ -51,6 +65,19 @@ The owner clarified the following in the conversation on 2026-09-15:
 
 These are inputs to this study. Definitions and constraints added below are
 recommendations, not claims that the owner has already approved their details.
+
+Subsequent clarification in the same conversation: internal Functionalities
+can combine to realize a unit/container Capability; the boundary should show
+what it provides, consumes and requires. Scenarios should connect user-oriented
+flow, conditions and state changes to progressively more detailed implementation
+views. Sections 3.2–3.5 and the companion study incorporate this input. Exact
+relation types and execution semantics remain proposals for evaluation.
+
+The owner subsequently agreed with these conceptual refinements and asked to
+explore nouns, verbs, adjectives and temporal grammar. See
+[Vocabulary and grammar exploration](Vocabulary-and-Grammar-Exploration.md).
+This records conceptual agreement without implying adoption of a parser or
+canonical schema.
 
 ### 2.1 Relationship to previous SDP work
 
@@ -96,12 +123,14 @@ standards use these words identically.
 | Feature | What durable product behavior supports that goal? | A coherent product offering with outcome, scope and acceptance scenarios; may span one or several units. |
 | Unit | Where is responsibility bounded? | A named design responsibility boundary; its runtime and source bindings are stated separately. |
 | Container | What application or data-store boundary exists at runtime? | Use C4's meaning when the unit actually has that character. |
-| Functionality | What does this unit contribute? | A cohesive behavioral responsibility owned by one unit in a specified model revision; may use several of that unit's internal layers. |
-| Capability | What ability does this subject possess? | Optional statement of ability with explicit subject and conditions; realized by behavior and supporting resources. |
+| Functionality | What behavior contributes to an ability? | A cohesive behavioral responsibility within one Container, owned by one identified internal unit where decomposed; may use several internal layers and depend on external contracts. |
+| Capability | What can this unit reliably accomplish under stated conditions? | A scoped ability realized by coordinated Functionalities and required resources/contracts; internal or externally offered relative to a named boundary. |
 | Interface / port | What can a collaborator use or provide here? | The exposed boundary through which a unit offers or requires behavior. It need not be a separate runtime service. |
 | Channel | Through what logical communication arrangement do units interact? | A reusable connection among identified participant roles, governed by a contract and bound to concrete communication mechanisms. |
 | Contract | What makes an interaction valid? | Operations/messages, meaning, obligations, errors and compatibility, with referenced machine-readable schemas where suitable. |
-| Scenario / Feature realization | How does a particular outcome happen? | Ordered or branching collaboration among local responsibilities, including relevant failures. A runtime trace is evidence about an execution, not the design scenario itself. |
+| Scenario / Feature realization | How does a particular outcome happen? | A user-oriented path/example through a behavior flow, with entry conditions, actions and outcomes. The flow defines alternatives; a trace records an actual execution. |
+| Activity / Subflow | What reusable behavior gets us from these conditions to these outcomes? | A bounded behavior containing steps, branching and possibly concurrent work, refinable into local contributions; not assumed atomic. |
+| State / Transition / Event | What holds, what changes, and what happened? | State describes relevant values/modes; a transition relates before/after state under a trigger/guard; an event is an occurrence, not an entire multi-step workflow. |
 
 ### 3.1 Feature and Use Case are related, not identical
 
@@ -132,8 +161,10 @@ separately. For example, a UI's presentation Functionality requires the
 measurement provider's interface; it does not acquire ownership of the
 provider's validation logic.
 
-**Proposed modeling rule:** each Functionality has one accountable unit per
-model revision. Where an apparent Functionality crosses units, distinguish
+**Proposed modeling rule:** Functionality stays within a Container and has one
+accountable unit per model revision. An internal unit may own it; the Container
+contains that ownership without duplicating the object. Where an apparent
+Functionality crosses Containers, distinguish
 the local contributions and their collaboration. Reusable library definitions
 can have multiple bindings; record which unit owns state and obligations in
 each use rather than pretending shared code is another running service.
@@ -160,28 +191,63 @@ technologies at those boundaries. A transport replacement should not require
 moving domain rules into a UI adapter.
 [Cockburn's original description](https://alistair.cockburn.us/hexagonal-architecture)
 
-### 3.4 Capability is an ability; Channel is communication
+### 3.4 Capability is the ability; Functionality realizes it
 
-The owner is right that an ability can be realized through several functional
-responsibilities. But Capability should not become a mandatory intermediate
-node between every Feature and Functionality.
+The owner's clarification gives Capability a useful independent role. A unit
+may validate input, correlate samples, maintain state and publish observations.
+Their coordinated realization can provide the capability “supply coherent
+measurements.” The ability is not the sequence itself: sequencing, parallelism,
+recovery and state changes describe **how** it is realized.
 
-For this study, distinguish:
+Capabilities may be identified bottom-up from existing design or specified
+top-down from a needed outcome. A list of available functions alone does not
+establish an ability: their contracts must compose, and necessary resources,
+state, permissions and quality conditions must hold. Existing abilities may
+support several Features without owning those Features' complete user journeys.
 
-- **Product capability:** the system can make current measurements available
-  to an operator. This may overlap a Feature; use one object if no independent
-  grouping or lifecycle is needed.
-- **Unit capability:** the measurement unit can validate and expose readings.
-  Its Functionalities and interfaces realize that ability.
-- **Protocol capability:** an endpoint supports subscription, replay or a
-  certain contract version. This is a specific conformance/support declaration,
-  not necessarily another product Feature.
+Use one Capability concept with an explicit owner, scope and exposure:
 
-A Channel can expose access to an offered ability, but it is not the ability.
+- **Internal capability:** relied on inside a named boundary, such as a
+  module's ability to correlate samples within a Container.
+- **Provided capability:** offered to collaborators across that boundary under
+  a contract, such as the Container's coherent measurement observation service.
+- **Required capability:** an ability expected from a collaborator, expressed
+  as a requirement on that boundary rather than a copy of the provider's model.
+
+Exposure is relative: a module's provided interface may be internal to its
+Container. Multiple local capabilities can support a Container capability; an
+internal helper is not automatically an externally supported contract.
+Protocol support declarations and UI Representation capabilities such as `edit`
+retain their specific meanings; neither should imply product control authority.
+
+A Channel supplies communication access to an offered ability; it is not the ability.
 “Can supply a current reading” differs from “uses a WebSocket connection.”
 Transport connection success also does not establish semantic compatibility.
 Capability negotiation should be designed only if participants genuinely vary
 at runtime; otherwise a declared, tested contract is simpler.
+
+### 3.5 Provides, consumes, requires and depends on
+
+Use these relations to answer different questions, rather than as synonyms:
+
+| Relation | Proposed use | Example |
+|---|---|---|
+| Provides | A supported offer at a boundary, linked to its Capability and contract. | Measurement unit provides coherent observations. |
+| Consumes | Actual use of an interface, data stream or service; says nothing by itself about necessity. | UI consumes observations; diagnostics also consumes them. |
+| Requires | A necessary condition for a named ability/mode, including quality and availability expectations. | Live display requires fresh observations; viewing cached history may not. |
+| Depends on | A typed dependency relationship, with scope and failure consequence. | Display freshness depends on source identity/time semantics, not merely on a socket being open. |
+| Uses / utilizes | Readable prose when precision is unnecessary. | Avoid a separate canonical relation for `utilizes`; it does not add a clear distinction. |
+
+“Requires” need not mean the whole application cannot start. Record the affected
+capability/mode, optional or conditional use, and degraded behaviour. Distinguish
+runtime service, build/library, data and deployment dependencies. Also keep
+invocation direction separate from data-flow direction: a client requests an
+operation from a provider while returned data flows the other way.
+
+An initial unit description can contain purpose, owned state, provided/internal
+Capabilities, consumed/required contracts, internal Functionalities, dependency
+rules and source bindings. This is a proposed view over existing records, not
+an instruction to create another registry.
 
 ## 4. Units, containers, layers and deployment
 
@@ -297,9 +363,13 @@ flowchart TD
     F[Feature] -->|addresses| UC
     F -->|must satisfy| R
     F -->|has acceptance examples| S[Scenario]
-    S -->|invokes local contributions| FN[Functionality]
+    S -->|follows| A[Activity / Subflow]
+    A -->|uses| CAP[Capability]
+    FN[Functionality] -->|realizes| CAP
+    A -->|refines to local contributions| FN
     U[Unit / Container] -->|owns| FN
-    FN -->|offers or requires| I[Interface]
+    U -->|provides or requires at its boundary| I[Interface]
+    I -->|exposes access to| CAP
     CH[Channel] -->|connects participant interfaces| I
     CH -->|is governed by| CT[Contract]
     S -->|uses boundary interactions| CH
@@ -333,6 +403,13 @@ A Feature does not require a dedicated process, and a Channel or broker does
 not automatically own business coordination. Keep this responsibility visible
 when decomposing an end-to-end workflow into local Functionalities.
 
+For behavior semantics, refinement links and source-level impact analysis,
+continue with the companion
+[Scenarios, state and implementation traceability](Scenarios-State-and-Implementation-Traceability.md).
+It distinguishes a flow edge from a source call, and a planned binding from
+observed implementation. This graph is a conceptual navigation model, not an
+executable state machine or a complete call graph.
+
 ## 7. Worked example: shared measurement observation
 
 **Hypothetical, software-only fixture.** This borrows the measurement theme
@@ -358,9 +435,10 @@ layouts. The UI's presentation responsibility can be reused across live and
 historical views where the behavioral contract fits. Recording and displaying
 remain different local responsibilities.
 
-An optional Capability label, “Provide validated measurements,” summarizes the
-measurement unit's offer. It adds no new transport and requires no separate
-Capability object unless another consumer or planning view needs that identity.
+The Capability “Provide validated measurements” describes the measurement
+unit's offer; local Functionalities realize it and its interface exposes it.
+This supplies the explicit boundary view requested by the owner without adding
+a new transport or duplicating the Functionalities.
 
 ### 7.2 Logical Channel and binding
 
@@ -423,7 +501,7 @@ documented capabilities. They are not measured tooling results.
 | ArchiMate | Ability, structure and internal/external behavior perspectives | Useful vocabulary and owner-facing architectural views | Does not supply a full executable wire contract; avoid assuming old element names apply unchanged |
 | AsyncAPI / OpenAPI | Message-driven / HTTP API descriptions | Reuse for concrete Channel bindings and interface contracts | Neither replaces product intent, local ownership or end-to-end evidence |
 | EIP + ports-and-adapters | Integration pattern vocabulary and boundary design | Reuse concepts without writing a new protocol framework | Patterns are design guidance, not a machine-readable full system model |
-| arc42 + decision records | Shared concepts and architecture rationale | Preserve cross-unit rules and why a design was chosen | Documentation structure needs links and actual review to remain effective |
+| arc42 + decision records | Structural decomposition, runtime scenarios, source mapping and rationale | Closely matches progressive navigation between behavior, building blocks and code | Documentation structure needs maintained links; it does not execute flows or establish complete impact automatically |
 
 Primary references for these mappings:
 
@@ -541,6 +619,10 @@ Apply the same challenges to both tracks:
    independent observations reveal it; do not claim automatic completeness.
 6. Provide a well-specified local fix. It should reuse current authority without
    demanding a new Feature, Channel or full-system redesign.
+7. Change one scenario branch. Navigate its activities, guards, provided/required
+   Capabilities and contracts to concrete source symbols and affected witnesses.
+   Identify unimplemented bindings, asynchronous dependencies and unmodeled
+   consumers instead of presenting a complete-looking but unsupported call chain.
 
 For each challenge, distinguish native language validation, profile convention,
 custom validation, external runtime evidence and human/agent judgment. Record
@@ -559,7 +641,7 @@ a full language/runtime.
 | Unit versus Container label | Unit for discussion, explicit C4 mapping for runtime views | Repeated confusion or a project consisting only of runtime units |
 | Functionality name | Preserve meaning; evaluate “Functional responsibility” for individual elements | Owner readability and modeling effort in the small case |
 | One local owner | One accountable unit per Functionality per revision | A demonstrated responsibility that cannot be decomposed without losing necessary meaning |
-| Separate Capability objects | Optional; avoid duplicating Feature/Functionality | A real grouping, substitution or protocol-support query needs distinct identity |
+| Capability representation | Explicit scoped ability and realization/exposure links; owner clarification establishes the need for this view | Pilot determines whether lightweight sections suffice or stable standalone identities are needed |
 | Channel breadth | Logical connector with explicit contract and binding mapping | Broad usage obscures the narrower messaging meaning in practice |
 | Modeling language | Compare existing lightweight composition with SysML v2 | Measured information loss, maintenance cost and validation coverage |
 | Canonical SDP integration | First apply vocabulary through current documents; adopt schemas separately | An accepted pilot and compatibility plan justify tooling changes |
@@ -572,11 +654,13 @@ integrated system.
 ## 12. Study validation and limits
 
 Local document links and Markdown fence pairing were checked; the README index
-links to this study. The tracked Markdown diff passes `git diff --check`.
+links to this study. Whitespace checking preserves intentional Markdown hard
+line breaks.
 The source comparison is documentary: neither the diagram nor the proposed
 model rules were executed in a modeling tool. The hypothetical scenario was
 not tested against a product. No independent study review has been performed.
 
 The research worktree, its untracked mandate and the existing skill candidates
-were left unchanged. This delivery adds the study and its repository index
-entry; it does not register a canonical Feature/Functionality/Channel schema.
+were left unchanged. The subsequent capability/scenario clarification updates
+this study and adds the linked behavior/source-traceability companion; it does
+not register a canonical Feature/Functionality/Channel schema.

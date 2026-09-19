@@ -1,0 +1,303 @@
+language sdl-mvp1-exercise version 0.1.
+
+includes "BuckingLab/Diagnostics.design".
+includes "BuckingService/AptDomain.design".
+includes "BuckingService/EconomicsProduction.design".
+includes "BuckingService/Planning.design".
+includes "BuckingService/StemProfile.design".
+includes "BuckingWeb/Adaptation.design".
+includes "Contracts/Bucking.design".
+includes "Contracts/Common.design".
+includes "Contracts/DomainValues.design".
+includes "Contracts/Lab.design".
+includes "Contracts/Machine.design".
+includes "Contracts/OperatorBrowser.design".
+includes "Contracts/Permissive.design".
+includes "Contracts/PhysicalSerial.design".
+includes "Contracts/Presentation.design".
+includes "Contracts/SimulatorControl.design".
+includes "Contracts/Target.design".
+includes "Features.design".
+includes "Governance/Bindings.design".
+includes "Governance/Decisions.design".
+includes "Governance/Gaps.design".
+includes "Governance/Requirements.design".
+includes "Libraries/BuckingCore.design".
+includes "Libraries/Contracts.design".
+includes "Libraries/LabKit.design".
+includes "Libraries/ServiceKit.design".
+includes "Libraries/StanfordClassic.design".
+includes "Libraries/TaperModels.design".
+includes "MachineLab/Diagnostics.design".
+includes "MachineService/Domain.design".
+includes "P1000Gateway/Domain.design".
+includes "P1000Simulator/Domain.design".
+includes "Ports.design".
+includes "Scenarios/ActivateApt.design".
+includes "Scenarios/CommitProduction.design".
+includes "Scenarios/ComputeArchive.design".
+includes "Scenarios/DegradedOperation.design".
+includes "Scenarios/EditAptCell.design".
+includes "Scenarios/GlobalStopFlow.design".
+includes "Scenarios/ImportApt.design".
+includes "Scenarios/InspectMachine.design".
+includes "Scenarios/PlanCurrentStem.design".
+includes "Scenarios/RecoverCommand.design".
+includes "Scenarios/RecoverTarget.design".
+includes "Scenarios/RecoverUiBaseline.design".
+includes "Scenarios/ReplacePresentation.design".
+includes "Scenarios/ReplayDiagnostics.design".
+includes "Scenarios/SemanticOperatorAction.design".
+includes "Scenarios/ShareUiValue.design".
+includes "Scenarios/ShutdownSystem.design".
+includes "Scenarios/SimulatorWireAction.design".
+includes "Scenarios/StoreApt.design".
+includes "Scenarios/UiDiagnosticRouting.design".
+includes "State.design".
+includes "UI/Boundary.design".
+includes "UI/CommandsDiagnostics.design".
+includes "UI/Composition.design".
+includes "UI/Delivery.design".
+includes "UI/PonsseDomain.design".
+includes "UI/Presentation.design".
+includes "UI/Renderer.design".
+includes "UI/Representation.design".
+includes "UI/SimulatorDomain.design".
+includes "UI/Transport.design".
+includes "UI/Views.design".
+
+system MVP1.
+channel BuckingLabChannel.
+channel BuckingServiceUpstream.
+channel MachineLabChannel.
+channel MachineServiceUpstream.
+channel OperatorBrowserChannel.
+channel OperatorPresentationChannel.
+channel PermissiveInputChannel.
+channel PhysicalBytesChannel.
+channel SimulatorControlChannel.
+channel SimulatorPresentationChannel.
+channel TargetChannel.
+client-tool BuckCtl.
+client-tool FyneRenderer.
+client-tool HeadlessRenderer.
+client-tool MsCtl.
+client-tool ReactRenderer.
+client-tool SimCtl.
+container BuckingLab.
+container BuckingService.
+container BuckingUI.
+container BuckingWeb.
+container MachineLab.
+container MachineService.
+container P1000Gateway.
+container P1000Simulator.
+container SimulatorUI.
+external-device P1000Device.
+external-device PermissiveDevice.
+library BoxUI.
+library BuckingCore.
+library ContractRegistry.
+library LabKit.
+library ServiceKit.
+library StanfordClassic.
+library TaperModels.
+library UIRuntime.
+mode FyneView.
+mode HeadlessView.
+mode LiveInspection.
+mode OfflineReplay.
+mode PhysicalPassive.
+mode ReactView.
+mode Simulated.
+subsystem UI.
+
+MVP1 describes "Complete known MVP1 design exercise: target topology and selected UI direction with retained obligations, local language extensions and explicit unresolved realization.".
+MVP1 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/CONSTITUENTS.md".
+MVP1 contains UI.
+MVP1 contains ContractRegistry.
+MVP1 contains ServiceKit.
+MVP1 contains LabKit.
+UI contains UIRuntime.
+UIRuntime cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/ui-runtime/SDP/03--Requirements/requirements.md".
+UI contains BoxUI.
+BoxUI cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/box-ui/SDP/03--Requirements/requirements.md".
+MVP1 contains TaperModels.
+MVP1 contains BuckingCore.
+MVP1 contains StanfordClassic.
+MVP1 contains P1000Simulator.
+UI contains SimulatorUI.
+SimulatorUI cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/simulator-ui/SDP/03--Requirements/requirements.md".
+MVP1 contains MachineService.
+MVP1 contains MachineLab.
+MVP1 contains BuckingService.
+BuckingService cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-service/SDP/03--Requirements/requirements.md".
+MVP1 contains BuckingLab.
+MVP1 contains BuckingWeb.
+UI contains BuckingUI.
+BuckingUI cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/bucking-ui/SDP/03--Requirements/requirements.md".
+MVP1 contains P1000Gateway.
+MVP1 contains SimCtl.
+MVP1 contains MsCtl.
+MVP1 contains BuckCtl.
+UI contains ReactRenderer.
+ReactRenderer status proposed.
+UI contains FyneRenderer.
+FyneRenderer status proposed.
+UI contains HeadlessRenderer.
+HeadlessRenderer status proposed.
+Simulated describes "Machine target is P1000Simulator; no physical adapter activation.".
+PhysicalPassive describes "Machine target is P1000Gateway for passive observation; physical write capability disabled.".
+OfflineReplay describes "Isolated recorded inputs; server-configured replay target, never live historical control.".
+ReactView describes "Select React adapter for an identified operator/simulator context; host placement remains open.".
+FyneView describes "Select native Fyne adapter under the same logical Presentation contract; no mandatory IPC implied.".
+HeadlessView describes "Select semantic test adapter; does not prove pixels, layout or accessibility.".
+LiveInspection describes "Current input required for fresh displays; disconnected retained values are explicitly stale.".
+MVP1 specifies "Target selections Simulated and PhysicalPassive are mutually exclusive for one MachineService target session. Renderer selection is scoped per UI context. No implicit all-to-all delivery.".
+TargetChannel follows TargetContract.
+MachineServiceUpstream follows MachineContract.
+BuckingServiceUpstream follows BuckingContract.
+OperatorBrowserChannel follows OperatorBrowserContract.
+SimulatorControlChannel follows SimulatorControlContract.
+MachineLabChannel follows LabContract.
+BuckingLabChannel follows LabContract.
+OperatorPresentationChannel follows PresentationContract.
+SimulatorPresentationChannel follows PresentationContract.
+PermissiveInputChannel follows PermissiveContract.
+PhysicalBytesChannel follows PhysicalSerialContract.
+P1000Simulator uses channel TargetChannel as sender of message-set TargetResponses in mode Simulated.
+P1000Simulator uses channel TargetChannel as receiver of message-set TargetRequests in mode Simulated.
+MachineService uses channel TargetChannel as receiver of message-set TargetResponses in mode Simulated.
+MachineService uses channel TargetChannel as sender of message-set TargetRequests in mode Simulated.
+P1000Gateway uses channel TargetChannel as sender of message-set TargetResponses in mode PhysicalPassive.
+P1000Gateway uses channel TargetChannel as receiver of message-set TargetRequests in mode PhysicalPassive.
+MachineService uses channel TargetChannel as receiver of message-set TargetResponses in mode PhysicalPassive.
+MachineService uses channel TargetChannel as sender of message-set TargetRequests in mode PhysicalPassive.
+container MachineService uses channel MachineServiceUpstream as receiver of message-set MachineRequests.
+MachineService uses channel MachineServiceUpstream as sender of MachineResponses.
+BuckingService uses MachineServiceUpstream as sender of MachineRequests.
+BuckingService uses channel MachineServiceUpstream as receiver of message-set MachineResponses.
+MachineLab uses channel MachineServiceUpstream as sender of message-set MachineRequests.
+MachineLab uses channel MachineServiceUpstream as receiver of message-set MachineResponses.
+BuckingWeb uses channel MachineServiceUpstream as sender of message-set MachineRequests.
+BuckingWeb uses channel MachineServiceUpstream as receiver of message-set MachineResponses.
+MsCtl uses channel MachineServiceUpstream as sender of message-set MachineRequests.
+MsCtl uses channel MachineServiceUpstream as receiver of message-set MachineResponses.
+BuckingService uses channel BuckingServiceUpstream as receiver of message-set BuckingRequests.
+BuckingService uses channel BuckingServiceUpstream as sender of message-set BuckingResponses.
+BuckingLab uses channel BuckingServiceUpstream as sender of message-set BuckingRequests.
+BuckingLab uses channel BuckingServiceUpstream as receiver of message-set BuckingResponses.
+BuckingWeb uses channel BuckingServiceUpstream as sender of message-set BuckingRequests.
+BuckingWeb uses channel BuckingServiceUpstream as receiver of message-set BuckingResponses.
+BuckCtl uses channel BuckingServiceUpstream as sender of message-set BuckingRequests.
+BuckCtl uses channel BuckingServiceUpstream as receiver of message-set BuckingResponses.
+BuckingWeb uses channel OperatorBrowserChannel as receiver of message-set OperatorBrowserRequests.
+BuckingWeb uses channel OperatorBrowserChannel as sender of message-set OperatorBrowserResponses.
+BuckingUI uses channel OperatorBrowserChannel as sender of message-set OperatorBrowserRequests.
+BuckingUI uses channel OperatorBrowserChannel as receiver of message-set OperatorBrowserResponses.
+P1000Simulator uses channel SimulatorControlChannel as receiver of message-set SimulatorControlRequests.
+P1000Simulator uses channel SimulatorControlChannel as sender of message-set SimulatorControlResponses.
+SimulatorUI uses channel SimulatorControlChannel as sender of message-set SimulatorControlRequests.
+SimulatorUI uses channel SimulatorControlChannel as receiver of message-set SimulatorControlResponses.
+SimCtl uses channel SimulatorControlChannel as sender of message-set SimulatorControlRequests.
+SimCtl uses channel SimulatorControlChannel as receiver of message-set SimulatorControlResponses.
+MachineLab uses channel MachineLabChannel as receiver of message-set LabRequests.
+MachineLab uses channel MachineLabChannel as sender of message-set LabResponses.
+MsCtl uses channel MachineLabChannel as sender of message-set LabRequests.
+MsCtl uses channel MachineLabChannel as receiver of message-set LabResponses.
+BuckingLab uses channel BuckingLabChannel as receiver of message-set LabRequests.
+BuckingLab uses channel BuckingLabChannel as sender of message-set LabResponses.
+BuckCtl uses channel BuckingLabChannel as sender of message-set LabRequests.
+BuckCtl uses channel BuckingLabChannel as receiver of message-set LabResponses.
+BuckingUI uses channel OperatorPresentationChannel as sender of message-set PresentationUpdates.
+BuckingUI uses channel OperatorPresentationChannel as receiver of message-set PresentationIntents.
+ReactRenderer uses channel OperatorPresentationChannel as receiver of message-set PresentationUpdates in mode ReactView.
+ReactRenderer uses channel OperatorPresentationChannel as sender of message-set PresentationIntents in mode ReactView.
+FyneRenderer uses channel OperatorPresentationChannel as receiver of message-set PresentationUpdates in mode FyneView.
+FyneRenderer uses channel OperatorPresentationChannel as sender of message-set PresentationIntents in mode FyneView.
+HeadlessRenderer uses channel OperatorPresentationChannel as receiver of message-set PresentationUpdates in mode HeadlessView.
+HeadlessRenderer uses channel OperatorPresentationChannel as sender of message-set PresentationIntents in mode HeadlessView.
+SimulatorUI uses channel SimulatorPresentationChannel as sender of message-set PresentationUpdates.
+SimulatorUI uses channel SimulatorPresentationChannel as receiver of message-set PresentationIntents.
+ReactRenderer uses channel SimulatorPresentationChannel as receiver of message-set PresentationUpdates in mode ReactView.
+ReactRenderer uses channel SimulatorPresentationChannel as sender of message-set PresentationIntents in mode ReactView.
+FyneRenderer uses channel SimulatorPresentationChannel as receiver of message-set PresentationUpdates in mode FyneView.
+FyneRenderer uses channel SimulatorPresentationChannel as sender of message-set PresentationIntents in mode FyneView.
+HeadlessRenderer uses channel SimulatorPresentationChannel as receiver of message-set PresentationUpdates in mode HeadlessView.
+HeadlessRenderer uses channel SimulatorPresentationChannel as sender of message-set PresentationIntents in mode HeadlessView.
+PermissiveDevice uses channel PermissiveInputChannel as sender of message-set PermissiveObservations.
+MachineService uses channel PermissiveInputChannel as receiver of message-set PermissiveObservations.
+P1000Device uses channel PhysicalBytesChannel as sender of message-set CapturedSerialBytes in mode PhysicalPassive.
+P1000Gateway uses channel PhysicalBytesChannel as receiver of message-set CapturedSerialBytes in mode PhysicalPassive.
+P1000Simulator exposes TargetInterface.
+P1000Simulator exposes SimulatorControlInterface.
+P1000Gateway exposes TargetInterface.
+MachineService exposes MachineInterface.
+BuckingService exposes BuckingInterface.
+BuckingWeb exposes OperatorBrowserInterface.
+MachineLab exposes LabInterface.
+BuckingLab exposes LabInterface.
+BuckingUI exposes PresentationInterface.
+SimulatorUI exposes PresentationInterface.
+MachineService consumes TargetInterface.
+MachineService consumes PermissiveInterface.
+P1000Gateway consumes PhysicalSerialInterface.
+BuckingService consumes MachineInterface.
+BuckingWeb consumes MachineInterface.
+BuckingWeb consumes BuckingInterface.
+MachineLab consumes MachineInterface.
+BuckingLab consumes BuckingInterface.
+BuckingUI consumes OperatorBrowserInterface.
+SimulatorUI consumes SimulatorControlInterface.
+MachineService depends-on ContractRegistry.
+MachineService depends-on ServiceKit.
+BuckingService depends-on ContractRegistry.
+BuckingService depends-on ServiceKit.
+BuckingService depends-on TaperModels.
+BuckingService depends-on BuckingCore.
+BuckingService depends-on StanfordClassic.
+P1000Simulator depends-on ContractRegistry.
+P1000Simulator depends-on ServiceKit.
+P1000Gateway depends-on ContractRegistry.
+P1000Gateway depends-on ServiceKit.
+BuckingWeb depends-on ContractRegistry.
+BuckingWeb depends-on ServiceKit.
+MachineLab depends-on ContractRegistry.
+MachineLab depends-on ServiceKit.
+MachineLab depends-on LabKit.
+BuckingLab depends-on ContractRegistry.
+BuckingLab depends-on ServiceKit.
+BuckingLab depends-on LabKit.
+BuckingUI depends-on ContractRegistry.
+BuckingUI depends-on UIRuntime.
+BuckingUI depends-on BoxUI.
+SimulatorUI depends-on ContractRegistry.
+SimulatorUI depends-on UIRuntime.
+SimulatorUI depends-on BoxUI.
+SimCtl depends-on ContractRegistry.
+MsCtl depends-on ContractRegistry.
+MsCtl depends-on LabKit.
+BuckCtl depends-on ContractRegistry.
+BuckCtl depends-on LabKit.
+BoxUI depends-on UIRuntime.
+BuckingService provides CurrentBuckingAdvice.
+BuckingService provides CoherentStemProfile.
+BuckingService provides ValidatedAptDefinitions.
+BuckingService provides EconomicDecisionContext.
+BuckingUI provides OperatorInteraction.
+SimulatorUI provides SimulatorInteraction.
+CurrentBuckingAdvice requires MachineInterface in mode LiveInspection.
+OperatorInteraction requires OperatorBrowserInterface in mode LiveInspection.
+HiddenTruthIsolated constrains P1000Simulator.
+HiddenTruthIsolated constrains TargetChannel.
+BoundedSubscribers constrains ServiceKit.
+DistinctSequenceDomains constrains CommonServiceContract.
+ServerBoundAuthority constrains MachineService.
+StableCommandIdentity constrains UiCommandCoordinator.
+DurableFactsRetained constrains DeliveryScheduler.
+NoPhysicalExecution constrains P1000Gateway.
+PureLibraries constrains BuckingCore.
+PureLibraries constrains TaperModels.
+PureLibraries constrains StanfordClassic.
+BuckingService provides DurableProduction.
+BuckingService provides BuckingStopCoordination.

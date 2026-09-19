@@ -1,0 +1,29 @@
+language sdl-mvp1-exercise version 0.1.
+
+unit PlanningCoordinator.
+capability CurrentBuckingAdvice.
+functionality FreezePlanningInput.
+functionality ScheduleOneBest.
+functionality ScheduleQuietArchive.
+functionality AcceptPlanningResult.
+functionality PublishBuckingState.
+
+BuckingService contains PlanningCoordinator.
+PlanningCoordinator provides CurrentBuckingAdvice.
+PlanningCoordinator status proposed.
+PlanningCoordinator cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/Domains/DetailedArchitectureDiscussion.md".
+PlanningCoordinator owns FreezePlanningInput.
+FreezePlanningInput realizes CurrentBuckingAdvice.
+FreezePlanningInput specifies "Capture Machine session/measurement, profile/model, APT, economic/policy and generation identity before work.".
+PlanningCoordinator owns ScheduleOneBest.
+ScheduleOneBest realizes CurrentBuckingAdvice.
+ScheduleOneBest specifies "Run K1 independently of quiet K-best; worker results return to owner reducer rather than mutating shared authority.".
+PlanningCoordinator owns ScheduleQuietArchive.
+ScheduleQuietArchive realizes CurrentBuckingAdvice.
+ScheduleQuietArchive specifies "Run/cancel background alternatives without starving current K1; preserve deterministic frozen-input semantics.".
+PlanningCoordinator owns AcceptPlanningResult.
+AcceptPlanningResult realizes CurrentBuckingAdvice.
+AcceptPlanningResult specifies "Revalidate session/revision/generation; reject stale result; retain prior valid plan with pending/stale metadata.".
+PlanningCoordinator owns PublishBuckingState.
+PublishBuckingState realizes CurrentBuckingAdvice.
+PublishBuckingState specifies "Multi-client Bucking state/events/snapshots/capabilities; retain cut-target identity independent of display cadence.".

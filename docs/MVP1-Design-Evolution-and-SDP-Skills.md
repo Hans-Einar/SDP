@@ -1,6 +1,6 @@
 # MVP1 design evolution and the proposed SDP skills
 
-Status: **evidence-based study and recommendations; not MVP1 design authority**  
+Status: **study updated with the owner's selected design direction; detailed contracts and migration remain to be reconciled**  
 Prepared: 2026-09-15  
 Purpose: explain the evolving MVP1 design, locate its latest reasoning, and show
 how the candidate SDP skills can support its continued design and implementation.
@@ -21,16 +21,62 @@ The latest summaries are:
   Presentation, delivery and Renderer responsibilities, including corrections
   made during the discussion.
 
-Both were committed on September 10 and explicitly remain working discussions.
-They capture developments beyond the original Issue #72 body. They are the best
-available starting point for continuing that discussion, read alongside the
-accepted constituent designs. They do not authorize replacing those designs.
+Both were committed on September 10 as working discussions. They capture
+developments beyond the original Issue #72 body. After reading this study,
+the owner selected that design as the direction to use, explicitly choosing
+**Representation -> Composition -> Presentation -> Renderer**, and asked that
+relevant earlier design be carried forward. Section 1.1 records this later
+decision. The historical source files still describe their September 10 status;
+their older status does not override the owner's subsequent instruction.
 
 The candidate skills fit this situation well in principle: recover context,
 analyse a change, make responsibility and compatibility decisions explicit,
 maintain current SDP documents, and verify the resulting user workflow. Their
 effectiveness in MVP1 has **not** been demonstrated by this study. Reading skill
 files is not installing or activating them.
+
+### 1.1 Owner decision: September 10 design is the target direction
+
+Source: the owner's clarification in this conversation on 2026-09-15, after
+publication of the original study on `sdp-vNow`. This is a direct owner
+instruction, not an inferred disposition from the GitHub archive. No GitHub
+comment URL exists for this clarification in the inspected sources.
+
+The owner selects the September 10 design as the basis for further MVP1 design,
+with Representation -> Composition -> Presentation -> Renderer as the explicit
+architectural direction. Earlier design that the newer summaries do not cover
+must be brought forward where it remains applicable.
+
+Consequences:
+
+- **Selected:** the separation of semantic Representation, instance/group
+  Composition, declarative Presentation and replaceable Renderer. Future design
+  work should make this structure concrete, not repeatedly ask whether to use it.
+- **Superseded for the target design:** the earlier rule that an explicit common
+  Renderer boundary is unnecessary for ordinary views. React can still implement
+  a Renderer; the new boundary need not mean four processes or a wrapper class
+  around every widget. This changes the architectural direction, not the status
+  of already integrated code.
+- **Carried forward:** existing system responsibilities, observable behaviour,
+  contracts, visual intent and operational constraints wherever compatible.
+  Omission from the newer discussion is not deletion. Section 5.1 identifies
+  concrete inherited obligations and where they fit.
+- **Still to resolve:** questions explicitly left open in the September 10
+  design, including exact process/package boundaries, Go UI Host realization,
+  APT/profile ownership splits, schemas and migration sequencing. These are
+  design elaboration within the selected direction, not reasons to reopen the
+  four-part separation.
+
+The arrow expresses responsibility relationships, not a mandatory global FIFO
+or a one-way-only runtime pipeline. Renderers send typed intents back through
+the normal command path; subscriptions, snapshots and delivery scheduling have
+their own explicit contracts.
+
+This decision is recorded here now. The pinned MVP1 documents have not been
+rewritten by this update. Their target Architecture/Design and current entry
+points need a corresponding reconciliation so an agent entering only through
+MVP1 can discover the decision. Choosing the design direction does not by itself
+claim migration completion or resume the held Garden assignments.
 
 ## 2. Sources, chronology and limits
 
@@ -83,6 +129,7 @@ as reports; this study did not rerun product tests or inspect a running MVP1 UI.
 | Sep 2–9 | Concept1 [#59](https://github.com/Hans-Einar/ponsse/issues/59), [#69](https://github.com/Hans-Einar/ponsse/issues/69) and [#71](https://github.com/Hans-Einar/ponsse/issues/71) develop UI composition and expose acceptance/maintainability problems. | These are relevant lessons and references. Their Concept1-specific dispositions do not silently replace MVP1 authority. |
 | Sep 9–10 | [Issue #72](https://github.com/Hans-Einar/ponsse/issues/72) proposes stronger Representation/Composition/Presentation/Renderer separation. The [owner clarification](https://github.com/Hans-Einar/ponsse/issues/72#issuecomment-5617593056) adds semantic inputs/outputs, capabilities, headless interaction and unhandled-event diagnostics. | This is a substantive candidate design change, not merely new names for UIR/BOX. |
 | Sep 10, 18:20–18:23 | The two [repository discussion summaries](https://github.com/Hans-Einar/ponsse/issues/72#issuecomment-5623436090) become the primary place for further reasoning. They include Go UI Host, APT/profile ownership, scheduling and corrected StanForD assumptions. | Continue from these summaries and their open questions. Do not restart from the older issue body or treat strong discussion agreement as adopted architecture. |
+| Sep 15, owner clarification after this study | The owner selects the September 10 design, explicitly Representation -> Composition -> Presentation -> Renderer, and requests preservation of relevant earlier design. See Section 1.1. | The direction is now selected. Elaborate its contracts and reconcile inherited obligations; do not treat the superseded optional-renderer rule as a veto. |
 
 ### Current lifecycle cannot be read from one status file
 
@@ -108,7 +155,11 @@ at inspection. Garden records distinguish favourable reviews from the remaining
 current-base synchronization and separate verification gates. September's design
 discussion does not itself resume this implementation work.
 
-## 4. The accepted system the skills must preserve
+## 4. The prior accepted baseline and inherited obligations
+
+This section describes the inspected baseline before the Section 1.1 decision.
+Preserve its applicable behaviour and responsibility rules in the target design;
+implementation structure is subject to the owner's selected direction.
 
 The [constituent registry][constituents] defines **17 governable constituents**.
 These are not 17 C4 containers: contracts and shared/pure libraries are also
@@ -151,10 +202,12 @@ later changes.
 Physical transmission and machine operation remain outside this study. A
 simulator-only UI or contract test cannot establish machine suitability.
 
-## 5. What the latest design discussion adds
+## 5. What the selected September 10 design adds
 
-The following are **working proposals**, except where they restate existing
-boundaries. They must be compared with accepted designs before implementation.
+The September 10 documents supply the target design basis following Section 1.1.
+The table separates that reasoning from details still needing design and
+evidence. Compare with the prior baseline to preserve obligations and identify
+concrete changes, rather than to reconsider the already selected direction.
 
 | Concern | Latest reasoning | Decision or evidence still needed |
 |---|---|---|
@@ -180,6 +233,35 @@ The latest UI discussion also distinguishes unhandled event types, failed
 consumers, intentional ignoring and representations with no visible view. Those
 are different observations. A generic callback bus alone does not provide the
 proposed diagnostic contract.
+
+### 5.1 Earlier decisions to carry into the selected design
+
+This is an initial reconciliation of the reviewed system and UI boundaries,
+not a claim that every system requirement has already been mapped or verified.
+The [normative system requirements][system-requirements] remain the checklist
+for the complete mapping. Each material obligation must eventually have a
+retained location, an explicit replacement, or a justified non-applicability
+disposition; silence in a newer summary is insufficient.
+
+| Earlier decision / reason | Placement in the selected design | Evidence to retain or establish |
+|---|---|---|
+| MCH owns machine/calibration semantics; BKS owns the current forestry/APT/economics/production domain; UI never owns those truths. [Registry][constituents] | Domain contracts feed the UI domain and Representations. Composition and Renderer do not acquire domain authority. Any intended APT/StemProfile split gets an explicit new owner rather than leaving responsibility between modules. | Ownership/import checks and domain-command tests; no calculation or validation authority moved into a view. |
+| SIM hidden truth is distinct from measured machine state; direct semantic injection and wire-faithful simulation serve different tests. [Registry][constituents], [Refinement 02][ref02] | Preserve provenance in domain inputs and Representation quality/identity. Presentation can display different evidence sources without merging their meaning. | Test fixtures cannot accidentally use hidden truth as measured input; displayed source remains distinguishable. |
+| BWEB has Machine and Bucking upstreams; Labs observe without taking production authority. [Refinements 02][ref02] and [03][ref03] | Reconcile these responsibilities explicitly when defining Go UI Host and domain boundaries. A new host does not silently turn every flow into a BKS dependency or a Lab ledger into production truth. | Consumer/owner map and integration cases for both upstreams and diagnostic sidecars. |
+| Shared contracts are centrally governed and reusable across clients. [Registry][constituents] | Transport adapters preserve existing Target/Machine/Bucking/browser semantics. A Renderer protocol, if needed, has its own bounded responsibility; it does not replace all service contracts. | Generated-binding/conformance evidence plus explicit compatibility analysis for changed interfaces. |
+| Concurrent authority is server-granted and scoped, with authoritative mutations serialized by the owning reducer. [Refinement 04][ref04] | Representation action availability is descriptive. Renderer intent follows normal UI command and server validation paths; Composition identity is not security identity. | Multiple clients, observer-only access and permission changes; UI `edit` capability cannot grant control authority. |
+| An uncertain command retains its ID; timeout is not proof of cancellation. [UIR design][uir-design], [SUI design][sui-design] | Command lifecycle and correlation live outside view lifetime. Schema replacement or reconnect does not submit a new action or lose the initiating intent's result. | Same-ID retry/lookup, duplicate results, rejection and unknown outcome during presentation changes. |
+| Sparse source sequence differs from contiguous delivery sequence; snapshot watermarks and session changes determine recovery. [UIR design][uir-design] | Transport/session processing establishes a coherent baseline before Representations consume changes. Preserve those semantics if the runtime moves to Go or crosses a new Renderer connection. | Filtering does not trigger false resync; real delivery gaps and changed sessions do; late consumers receive coherent state. |
+| Durable events are not coalesced; high-rate replaceable presentation is bounded; diagnostic loss has explicit accounting. [UIR design][uir-design], [Issue #44](https://github.com/Hans-Einar/ponsse/issues/44) | Delivery mechanisms implement declared policies around Representation updates and Renderer delivery. Presentation pacing does not discard commands, production events or required history. | Independent bulk/realtime progress, bounded queues, preserved durable ordering, diagnostic notices and no false delivery gap. |
+| Narrow subscriptions prevent unrelated updates from redrawing the application; plot entities keep stable identity. [UIR design][uir-design], [SUI design][sui-design] | Shared Representation identity and scoped Composition subscriptions feed incremental Renderer updates. Stable domain/representation/view identities remain distinct. | Two views share one value/subscription source; unrelated controls stay stable; value changes do not rebuild the whole schema or plot. |
+| Concept1 provides the accepted operator visual reference, not its monolithic state architecture. [Refinement 01][ref01], [BOX architecture][box-architecture] | Presentation schemas and Renderer tokens retain density, hierarchy, layout intent and recognizable controls while the internal model changes. | Real viewport/workflow checks. Import any more detailed Concept1 geometry decision only with an explicit MVP1 applicability assessment. |
+| Software Global Stop has distinct propagation, priority and identity; it is not a certified hardware E-stop. [Refinement 04][ref04] | Preserve the domain stop path and its command-specific authority rules. Presentation exposes the selected operator control; an ordinary action-disable rule must not accidentally remove stop availability. | Stop identity/deduplication, software automation cancellation and retained diagnostic recording; simulator evidence does not establish hardware suitability. |
+| Generic mechanisms contain no Ponsse domain hierarchy; reuse must be demonstrated. [Registry][constituents], [UI discussion][ui-discussion] | Representation primitives, schema machinery and Renderer interfaces remain generic; domain-specific Composition/adapters stay with their owners. | Negative dependency checks and concrete consumers before extracting shared libraries. |
+
+The explicit Renderer boundary is the identified structural supersession; the
+old behavioural guarantees above are inputs to the new design. Additional
+conflicts should be resolved individually, preserving their reasons and owner
+intent instead of either copying the old structure wholesale or discarding it.
 
 ### Features, functionality and the several meanings of capability
 
@@ -213,9 +295,9 @@ would create another stale copy of the system.
 
 | Skill | MVP1-specific use and expected result |
 |---|---|
-| [sdp](../Toolkit/skills_v2/sdp/SKILL.md) | Resolve the actual MVP1 branch, system and constituent SDP roots; read current accepted design and later dispositions; distinguish design discussion from held implementation; route only relevant roles. |
+| [sdp](../Toolkit/skills_v2/sdp/SKILL.md) | Resolve the actual MVP1 branch, system and constituent SDP roots; include the Section 1.1 owner decision alongside repository dispositions; distinguish selected direction, unresolved contracts and held implementation; route only relevant roles. |
 | [sdp-change-analysis](../Toolkit/skills_v2/sdp-change-analysis/SKILL.md) | Translate a short observation into an affected workflow and inherited constraints. For a UI symptom, follow state ownership through transport, UI domain, presentation and rendering before choosing a layer to edit. |
-| [sdp-architect](../Toolkit/skills_v2/sdp-architect/SKILL.md) | Compare the new semantic UI model with UIR/BOX contracts. Record what is retained, changed and why; distinguish a new service from an internal module; make Go Host and schema decisions concrete. |
+| [sdp-architect](../Toolkit/skills_v2/sdp-architect/SKILL.md) | Elaborate the selected four-part UI model and reconcile UIR/BOX obligations using Section 5.1. Record what is retained, changed and why; distinguish services from modules; resolve Go Host and schema details without reopening the selected direction. |
 | [sdp-master](../Toolkit/skills_v2/sdp-master/SKILL.md) | Turn an adopted design into bounded constituent work and coordinated integration. Preserve MVP1's granular assignments, shared ownership rules and current hold. A cross-system outcome does not make a worker's scope unbounded. |
 | [sdp-worker](../Toolkit/skills_v2/sdp-worker/SKILL.md) | Implement the assigned contribution, preserve inherited invariants, and return out-of-scope discoveries with evidence and proposed document targets. Do not bury an architectural choice in a new helper or dependency. |
 | [sdp-reviewer](../Toolkit/skills_v2/sdp-reviewer/SKILL.md) | Challenge whether the assignment solves the intended workflow before evaluating its implementation. For UI, inspect ownership, schema/value separation, command recovery and actual interaction consequences. Review a design proposal without treating it as approved implementation. |
@@ -283,11 +365,13 @@ every structural change, or asks the operator to finish/cancel, is a behaviour
 choice if existing authority does not settle it. The agent asks only about such
 material ambiguity, using a concrete example and recommendation.
 
-**Compare bounded alternatives.** Existing shared BoxModel/React composition
-may solve the immediate scenario; a Presentation schema adapter may additionally
-support layout replacement; a Go Host and multi-renderer protocol address a
-larger portability objective. The agent compares those outcomes and costs rather
-than selecting the largest design because it appears in the latest discussion.
+**Compare realizations within the selected direction.** Decide how existing
+BoxModel state maps into Representation and Presentation, how Composition owns
+shared instances, and how a React Renderer consumes their contracts. Compare
+in-process versus network adapters and migration increments where those remain
+open. Keeping the old structure unchanged is no longer a competing target
+architecture merely because it could solve this one example. Existing code may
+still be reused or temporarily adapted where it satisfies the new boundaries.
 
 **Make the design reviewable.** Define identity, lifetime, schema and value
 revisions, invalid-schema recovery, command correlation and ownership of local
@@ -309,9 +393,9 @@ also affects CTR and consumers. Record actual review and verification against
 the candidate. The report and ledger point to these current explanations rather
 than replacing them.
 
-Current authorization covers this study. The historical Garden hold does not
-prevent analysing these choices, but this example does not release new workers,
-resume pending PRs or adopt the proposed runtime.
+Current authorization covers the study and the owner's selection of the design
+direction. The historical Garden hold does not prevent elaborating that design;
+the example does not itself release implementation workers or resume pending PRs.
 
 ## 9. What should be improved before adopting the skills in MVP1
 
@@ -334,8 +418,8 @@ These are recommendations from this study; the skills have not been revised or
 installed as part of it.
 
 Useful evaluation scenarios are: the stale pre-Garden entry point; the #44
-missing carrier; the older optional-renderer decision versus the newer explicit
-renderer proposal; a held PR with favourable earlier reviews; and the owner's
+missing carrier; the older optional-renderer decision followed by the owner's
+explicit selection of the new Renderer boundary; a held PR with favourable earlier reviews; and the owner's
 short UI prompt above. Supply raw source evidence to a fresh context without
 the expected answer. Observe authority recovery, scope, questions, document
 maintenance and the specificity of verification claims. No observed trial in
@@ -343,16 +427,18 @@ this study establishes that these skills already work in MVP1.
 
 ## 10. Recommended next design step
 
-Continue in the two existing discussion documents. First work one concrete
-interaction through current and proposed ownership: shared live measurement plus
+Reconcile the owner decision into MVP1's target Architecture/Design and the two
+existing discussion documents. Use Section 5.1 to carry forward earlier
+obligations. First work one concrete interaction through the selected ownership:
+shared live measurement plus
 layout replacement is small enough to expose Representation identity, scheduling,
 Renderer commands and draft continuity. A separate APT example can then test
 format-specific meaning and domain ownership using explicitly selected standards
 and representative files.
 
-Produce a small accepted-versus-proposed delta and evidence plan before choosing
-a Go Host, creating new services, extracting libraries or rewriting the Wave-1
-plan. This allows the owner to describe the desired experience briefly while
+Produce a small baseline-to-target delta and evidence plan that resolves the
+remaining Go Host, service-boundary and migration questions. The four-part UI
+direction is already chosen. This allows the owner to describe the desired experience briefly while
 the agent performs the architectural translation and exposes the few choices
 that actually change the product.
 
@@ -372,6 +458,7 @@ on every assignment.
 | Later Concept1 UI/process: #21, #59, #62, #65–71 | Related presentation, geometry, lifecycle and acceptance lessons. #59, #69 and #71 are especially relevant to the later UI discussion. Project-specific implementation decisions are not promoted to MVP1 authority. |
 | Protocol, firmware and emulator threads, remaining records | Screened for system-design links; retained as domain evidence or separate work where relevant. No hardware finding or independent emulator disposition is adopted as an MVP1 UI decision. |
 | Repository documents | Accepted constituent/workflow/contract authority, UIR/BOX/SUI design, refinements, precedence/status, Garden records and the two latest discussion summaries compared at the pinned integration revision. |
+| Subsequent owner instruction, 2026-09-15 | Direct conversation decision recorded in Section 1.1; this updates the study's recommendation and target direction without pretending that the pinned September 10 files already contained that decision. |
 
 Only this study and its SDP README index link are added for the current request.
 Ponsse source, project authority, pending PRs and skill files are unchanged.
@@ -397,3 +484,4 @@ remain outside the evidence established here.
 [box-architecture]: https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/box-ui/SDP/04--Architecture/architecture.md
 [box-design]: https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/box-ui/SDP/05--Design/design.md
 [sui-design]: https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/simulator-ui/SDP/05--Design/design.md
+[system-requirements]: https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md

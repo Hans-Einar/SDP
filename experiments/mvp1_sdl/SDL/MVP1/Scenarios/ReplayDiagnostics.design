@@ -1,0 +1,45 @@
+language sdl-mvp1-exercise version 0.1.
+
+scenario ReplayDiagnostics.
+condition ReplayDiagnosticsReady.
+condition ReplayDiagnosticsContinue.
+condition ReplayDiagnosticsReject.
+outcome ReplayDiagnosticsCompleted.
+outcome ReplayDiagnosticsRejected.
+step ReplayDiagnosticsRead.
+step ReplayDiagnosticsSelect.
+step ReplayDiagnosticsReplay.
+step ReplayDiagnosticsRecord.
+step ReplayDiagnosticsFailure.
+step ReplayDiagnosticsSuccess.
+
+ReplayDiagnostics illustrates InspectRecordedEvidence.
+ReplayDiagnostics exercises RecordedDiagnosticReplay.
+ReplayDiagnostics starts-when ReplayDiagnosticsReady.
+ReplayDiagnostics starts-at ReplayDiagnosticsRead.
+ReplayDiagnosticsReady describes "An explicit recorded range and server-configured isolated replay target are selected.".
+ReplayDiagnosticsContinue describes "The previous operation succeeded and the next step's declared contract preconditions remain true; exact predicates are an executable-language gap.".
+ReplayDiagnosticsReject describes "Validation, authority, applicability or operation failure prevents continuation; preserve prior valid state and report the specific reason.".
+ReplayDiagnosticsCompleted describes "The stated design path completed under its explicit obligations; this is not an observed test result.".
+ReplayDiagnosticsRejected describes "The path terminated without claiming the requested change succeeded; failures remain observable.".
+ReplayDiagnostics preserves NoPhysicalExecution.
+ReplayDiagnostics preserves DomainTruthOwned.
+ReplayDiagnosticsRead calls ServeMachineLabRequests within MachineLab.
+ReplayDiagnosticsRead describes "Correlated, source-session-qualified cursor and scoped admin checks.".
+ReplayDiagnosticsRead proceeds-to ReplayDiagnosticsFailure when ReplayDiagnosticsReject.
+ReplayDiagnosticsRead proceeds-to ReplayDiagnosticsSelect when ReplayDiagnosticsContinue.
+ReplayDiagnosticsSelect calls ManageLabCheckpoint within MachineLab.
+ReplayDiagnosticsSelect describes "Resolve range by checkpoint/time/sequence.".
+ReplayDiagnosticsSelect proceeds-to ReplayDiagnosticsFailure when ReplayDiagnosticsReject.
+ReplayDiagnosticsSelect proceeds-to ReplayDiagnosticsReplay when ReplayDiagnosticsContinue.
+ReplayDiagnosticsReplay calls ReplayConfiguredRange within MachineLab.
+ReplayDiagnosticsReplay describes "Target layer and fixture/provenance remain explicit.".
+ReplayDiagnosticsReplay proceeds-to ReplayDiagnosticsFailure when ReplayDiagnosticsReject.
+ReplayDiagnosticsReplay proceeds-to ReplayDiagnosticsRecord when ReplayDiagnosticsContinue.
+ReplayDiagnosticsRecord calls AppendLabRecord within MachineLab.
+ReplayDiagnosticsRecord describes "Record replay evidence without changing production authority.".
+ReplayDiagnosticsRecord proceeds-to ReplayDiagnosticsFailure when ReplayDiagnosticsReject.
+ReplayDiagnosticsRecord proceeds-to ReplayDiagnosticsSuccess when ReplayDiagnosticsContinue.
+ReplayDiagnosticsFailure finishes ReplayDiagnostics with ReplayDiagnosticsRejected.
+ReplayDiagnosticsSuccess finishes ReplayDiagnostics with ReplayDiagnosticsCompleted.
+ReplayDiagnosticsRead receives LabRequests through MachineLabChannel.

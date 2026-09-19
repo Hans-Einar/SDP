@@ -1,0 +1,14 @@
+language sdl-mvp1-exercise version 0.1.
+
+contract PresentationContract.
+interface PresentationInterface.
+message-set PresentationIntents.
+message-set PresentationUpdates.
+
+PresentationInterface follows PresentationContract.
+PresentationContract allows PresentationIntents.
+PresentationContract specifies "Candidate schema/value/intent/outcome protocol; schema revision differs from data revision and rendered confirmation. Reconnect must recover coherent baseline; no widget code supplied by schema.".
+PresentationContract status proposed.
+PresentationContract allows PresentationUpdates.
+PresentationIntents describes "Presentation incoming message family; exact allowed variants follow the cited schema or the associated contract gap.".
+PresentationUpdates describes "Presentation outgoing message family; payload schema and variant routing need the declared contract.".

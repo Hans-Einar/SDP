@@ -1,0 +1,63 @@
+language sdl-mvp1-exercise version 0.1.
+
+scenario CommitProduction.
+condition CommitProductionReady.
+condition CommitProductionContinue.
+condition CommitProductionReject.
+outcome CommitProductionCompleted.
+outcome CommitProductionRejected.
+step CommitProductionCapture.
+step CommitProductionCommit.
+step CommitProductionPublish.
+step CommitProductionObserve.
+step CommitProductionFailure.
+step CommitProductionSuccess.
+condition ProductionDeliveryPending.
+condition ProductionLabAvailable.
+condition ProductionLabAbsent.
+condition ProductionLabFailed.
+outcome ProductionStoredDeliveryPending.
+outcome ProductionStoredWithoutLab.
+step ReportProductionDeliveryPending.
+step CompleteProductionWithoutLab.
+
+CommitProduction illustrates RecordProduction.
+CommitProduction exercises DurableProduction.
+CommitProduction starts-when CommitProductionReady.
+CommitProduction starts-at CommitProductionCapture.
+CommitProductionReady describes "A cut fact is accepted with current domain context.".
+CommitProductionContinue describes "The previous operation succeeded and the next step's declared contract preconditions remain true; exact predicates are an executable-language gap.".
+CommitProductionReject describes "Validation, authority, applicability or operation failure prevents continuation; preserve prior valid state and report the specific reason.".
+CommitProductionCompleted describes "The stated design path completed under its explicit obligations; this is not an observed test result.".
+CommitProductionRejected describes "The path terminated without claiming the requested change succeeded; failures remain observable.".
+CommitProduction preserves DurableFactsRetained.
+CommitProduction preserves DomainTruthOwned.
+CommitProductionCapture calls ValidateCutContext within BuckingService.
+CommitProductionCapture describes "Bind calibration/policy/economic/APT/model/plan/input revisions; fail if missing.".
+CommitProductionCapture proceeds-to CommitProductionFailure when CommitProductionReject.
+CommitProductionCapture proceeds-to CommitProductionCommit when CommitProductionContinue.
+CommitProductionCommit calls RecordProductionFact within BuckingService.
+CommitProductionCommit describes "Persist authoritative production record with explicit failure/recovery contract.".
+CommitProductionCommit proceeds-to CommitProductionFailure when CommitProductionReject.
+CommitProductionCommit proceeds-to CommitProductionPublish when CommitProductionContinue.
+CommitProductionPublish calls PublishBuckingState within BuckingService.
+CommitProductionPublish describes "Non-supersedable event; observers do not become the store.".
+CommitProductionPublish proceeds-to ReportProductionDeliveryPending when ProductionDeliveryPending.
+CommitProductionPublish proceeds-to CommitProductionObserve when ProductionLabAvailable.
+CommitProductionPublish proceeds-to CompleteProductionWithoutLab when ProductionLabAbsent.
+CommitProductionObserve calls ObserveBuckingHistory within BuckingLab.
+CommitProductionObserve describes "Optional diagnostic record may be absent without changing production authority.".
+CommitProductionObserve proceeds-to CompleteProductionWithoutLab when ProductionLabFailed.
+CommitProductionObserve proceeds-to CommitProductionSuccess when CommitProductionContinue.
+CommitProductionFailure finishes CommitProduction with CommitProductionRejected.
+CommitProductionSuccess finishes CommitProduction with CommitProductionCompleted.
+CommitProductionPublish emits BuckingResponses through BuckingServiceUpstream.
+CommitProductionObserve receives BuckingResponses through BuckingServiceUpstream.
+ProductionDeliveryPending describes "The authoritative fact is stored but event publication/delivery has not succeeded; retry/recovery must retain the fact and identity.".
+ProductionLabAvailable describes "Event publication succeeded and the optional Lab observer is available.".
+ProductionLabAbsent describes "Event publication succeeded and no Lab observer is configured or available.".
+ProductionLabFailed describes "The optional Lab failed to record the event; authoritative production success is unchanged.".
+ReportProductionDeliveryPending finishes CommitProduction with ProductionStoredDeliveryPending.
+CompleteProductionWithoutLab finishes CommitProduction with ProductionStoredWithoutLab.
+ProductionStoredDeliveryPending describes "Durable production commit succeeded; delivery recovery remains pending, never implicit rollback.".
+ProductionStoredWithoutLab describes "Durable production commit and publication succeeded; optional diagnostic evidence is absent.".

@@ -1,0 +1,21 @@
+language sdl-mvp1-exercise version 0.1.
+
+decision SelectedUiSeparation.
+decision RetainedDomainOwnership.
+decision IsolatedDesignExercise.
+decision PreserveVisualIntent.
+
+SelectedUiSeparation status selected.
+SelectedUiSeparation describes "Owner selected the September 10 Representation -> Composition -> Presentation -> Renderer direction in this conversation; earlier optional-global-renderer wording is superseded for the target.".
+SelectedUiSeparation cites "Owner conversation, 2026-09-15; recorded in docs/MVP1-Design-Evolution-and-SDP-Skills.md section 1.1.".
+SelectedUiSeparation constrains UI.
+RetainedDomainOwnership status inherited.
+RetainedDomainOwnership describes "Preserve current Machine/Bucking accountable owners while giving StemProfile and AptDomain explicit internal boundaries; extraction remains a named decision gap.".
+RetainedDomainOwnership constrains MachineService.
+RetainedDomainOwnership constrains BuckingService.
+IsolatedDesignExercise status selected.
+IsolatedDesignExercise describes "Owner authorizes full SDL design exercise and locally documented language extensions; no parser changes, product implementation, Garden dispatch or hardware execution.".
+IsolatedDesignExercise constrains MVP1.
+PreserveVisualIntent status inherited.
+PreserveVisualIntent describes "Preserve Concept1 density, hierarchy and recognizable operator/simulator layout while adopting the chosen internal model; headless tests cannot establish real viewport behavior.".
+PreserveVisualIntent constrains UI.

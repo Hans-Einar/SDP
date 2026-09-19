@@ -1,0 +1,618 @@
+{
+  "repository": "https://github.com/Hans-Einar/ponsse",
+  "revision": "7589a5811a21ec6bb13979612060ceff0f690df8",
+  "branch_at_check": "steering/mvp1-wave1-integration",
+  "checked_on": "2026-09-17",
+  "claim": "Pinned documentary and partial implementation evidence; requirement inventory is not design sufficiency or implementation verification.",
+  "constituents": [
+    {
+      "code": "CTR",
+      "name": "ContractRegistry",
+      "kind": "library",
+      "path": "MVP1/contracts"
+    },
+    {
+      "code": "SVK",
+      "name": "ServiceKit",
+      "kind": "library",
+      "path": "MVP1/shared/servicekit"
+    },
+    {
+      "code": "LBK",
+      "name": "LabKit",
+      "kind": "library",
+      "path": "MVP1/shared/labkit"
+    },
+    {
+      "code": "UIR",
+      "name": "UIRuntime",
+      "kind": "library",
+      "path": "MVP1/shared/ui-runtime"
+    },
+    {
+      "code": "BOX",
+      "name": "BoxUI",
+      "kind": "library",
+      "path": "MVP1/shared/box-ui"
+    },
+    {
+      "code": "TPR",
+      "name": "TaperModels",
+      "kind": "library",
+      "path": "MVP1/packages/taper-models"
+    },
+    {
+      "code": "BCK",
+      "name": "BuckingCore",
+      "kind": "library",
+      "path": "MVP1/packages/bucking-core"
+    },
+    {
+      "code": "SFC",
+      "name": "StanfordClassic",
+      "kind": "library",
+      "path": "MVP1/packages/stanford-classic"
+    },
+    {
+      "code": "SIM",
+      "name": "P1000Simulator",
+      "kind": "container",
+      "path": "MVP1/services/p1000-simulator"
+    },
+    {
+      "code": "SUI",
+      "name": "SimulatorUI",
+      "kind": "container",
+      "path": "MVP1/web/simulator-ui"
+    },
+    {
+      "code": "MCH",
+      "name": "MachineService",
+      "kind": "container",
+      "path": "MVP1/services/machine-service"
+    },
+    {
+      "code": "MLB",
+      "name": "MachineLab",
+      "kind": "container",
+      "path": "MVP1/services/machine-lab"
+    },
+    {
+      "code": "BKS",
+      "name": "BuckingService",
+      "kind": "container",
+      "path": "MVP1/services/bucking-service"
+    },
+    {
+      "code": "BLB",
+      "name": "BuckingLab",
+      "kind": "container",
+      "path": "MVP1/services/bucking-lab"
+    },
+    {
+      "code": "BWEB",
+      "name": "BuckingWeb",
+      "kind": "container",
+      "path": "MVP1/services/bucking-web"
+    },
+    {
+      "code": "BUI",
+      "name": "BuckingUI",
+      "kind": "container",
+      "path": "MVP1/web/bucking-ui"
+    },
+    {
+      "code": "PGW",
+      "name": "P1000Gateway",
+      "kind": "container",
+      "path": "MVP1/services/p1000-gateway"
+    }
+  ],
+  "sources": [
+    {
+      "path": "MVP1/CONSTITUENTS.md",
+      "sha256": "1f410da82004c9de75a33da76621a16ce491a739270c5ab1cfcdb49eb5287c5b",
+      "requirement_ids": []
+    },
+    {
+      "path": "MVP1/Domains/DetailedArchitectureDiscussion.md",
+      "sha256": "d7e9fdf9e6da31e875de4518f1313d38c1e2137cad8b4ba7a263a893952d97c3",
+      "requirement_ids": []
+    },
+    {
+      "path": "MVP1/Domains/UIDomain/DetailedDesignDiscussion.md",
+      "sha256": "9fe16101735cfe518df47b59836cfd839227e873d522ed92ddee5c61dd3fa408",
+      "requirement_ids": []
+    },
+    {
+      "path": "MVP1/SDP/03--Requirements/requirements.md",
+      "sha256": "f13d7b5010c734a3e695dcc7d1a3eb904f5eade277196956910383c05a55b5b7",
+      "requirement_ids": [
+        "MVP1-SYS-REQ-001",
+        "MVP1-SYS-REQ-002",
+        "MVP1-SYS-REQ-003",
+        "MVP1-SYS-REQ-004",
+        "MVP1-SYS-REQ-005",
+        "MVP1-SYS-REQ-006",
+        "MVP1-SYS-REQ-007",
+        "MVP1-SYS-REQ-008",
+        "MVP1-SYS-REQ-009",
+        "MVP1-SYS-REQ-010",
+        "MVP1-SYS-REQ-011",
+        "MVP1-SYS-REQ-012",
+        "MVP1-SYS-REQ-013",
+        "MVP1-SYS-REQ-014",
+        "MVP1-SYS-REQ-015",
+        "MVP1-SYS-REQ-016",
+        "MVP1-SYS-REQ-017",
+        "MVP1-SYS-REQ-018",
+        "MVP1-SYS-REQ-019",
+        "MVP1-SYS-REQ-020",
+        "MVP1-SYS-REQ-021",
+        "MVP1-SYS-REQ-022",
+        "MVP1-SYS-REQ-023",
+        "MVP1-SYS-REQ-024",
+        "MVP1-SYS-REQ-025",
+        "MVP1-SYS-REQ-026",
+        "MVP1-SYS-REQ-027",
+        "MVP1-SYS-REQ-028",
+        "MVP1-SYS-REQ-029",
+        "MVP1-SYS-REQ-030",
+        "MVP1-SYS-REQ-031",
+        "MVP1-SYS-REQ-032",
+        "MVP1-SYS-REQ-033",
+        "MVP1-SYS-REQ-034",
+        "MVP1-SYS-REQ-035",
+        "MVP1-SYS-REQ-036",
+        "MVP1-SYS-REQ-037",
+        "MVP1-SYS-REQ-038",
+        "MVP1-SYS-REQ-039",
+        "MVP1-SYS-REQ-040",
+        "MVP1-SYS-REQ-041",
+        "MVP1-SYS-REQ-042",
+        "MVP1-SYS-REQ-043",
+        "MVP1-SYS-REQ-044",
+        "MVP1-SYS-REQ-045",
+        "MVP1-SYS-REQ-046",
+        "MVP1-SYS-REQ-047",
+        "MVP1-SYS-REQ-048",
+        "MVP1-SYS-REQ-049",
+        "MVP1-SYS-REQ-050",
+        "MVP1-SYS-REQ-051",
+        "MVP1-SYS-REQ-052",
+        "MVP1-SYS-REQ-053",
+        "MVP1-SYS-REQ-054",
+        "MVP1-SYS-REQ-055",
+        "MVP1-SYS-REQ-056",
+        "MVP1-SYS-REQ-057",
+        "MVP1-SYS-REQ-058",
+        "MVP1-SYS-REQ-059",
+        "MVP1-SYS-REQ-060",
+        "MVP1-SYS-REQ-061",
+        "MVP1-SYS-REQ-062",
+        "MVP1-SYS-REQ-063",
+        "MVP1-SYS-REQ-064",
+        "MVP1-SYS-REQ-065",
+        "MVP1-SYS-REQ-066",
+        "MVP1-SYS-REQ-067",
+        "MVP1-SYS-REQ-068",
+        "MVP1-SYS-REQ-069",
+        "MVP1-SYS-REQ-070",
+        "MVP1-SYS-REQ-071",
+        "MVP1-SYS-REQ-072",
+        "MVP1-SYS-REQ-073",
+        "MVP1-SYS-REQ-074",
+        "MVP1-SYS-REQ-075",
+        "MVP1-SYS-REQ-076",
+        "MVP1-SYS-REQ-077",
+        "MVP1-SYS-REQ-078",
+        "MVP1-SYS-REQ-079",
+        "MVP1-SYS-REQ-080",
+        "MVP1-SYS-REQ-081",
+        "MVP1-SYS-REQ-082",
+        "MVP1-SYS-REQ-083",
+        "MVP1-SYS-REQ-084",
+        "MVP1-SYS-REQ-085",
+        "MVP1-SYS-REQ-086",
+        "MVP1-SYS-REQ-087",
+        "MVP1-SYS-REQ-088",
+        "MVP1-SYS-REQ-089",
+        "MVP1-SYS-REQ-090",
+        "MVP1-SYS-REQ-091",
+        "MVP1-SYS-REQ-092",
+        "MVP1-SYS-REQ-093",
+        "MVP1-SYS-REQ-094",
+        "MVP1-SYS-REQ-095",
+        "MVP1-SYS-REQ-096",
+        "MVP1-SYS-REQ-097",
+        "MVP1-SYS-REQ-098",
+        "MVP1-SYS-REQ-099"
+      ]
+    },
+    {
+      "path": "MVP1/contracts/SDP/03--Requirements/requirements.md",
+      "sha256": "4044e57738b72e04abae86b5e77758f3464a7a64bc8cbe7828d4190afdb8adf7",
+      "requirement_ids": [
+        "CTR-REQ-001",
+        "CTR-REQ-002",
+        "CTR-REQ-003",
+        "CTR-REQ-004",
+        "CTR-REQ-005",
+        "CTR-REQ-006",
+        "CTR-REQ-007",
+        "CTR-REQ-008",
+        "CTR-REQ-009",
+        "CTR-REQ-010",
+        "CTR-REQ-011",
+        "CTR-REQ-012",
+        "CTR-REQ-013",
+        "CTR-REQ-014",
+        "CTR-REQ-015",
+        "CTR-REQ-016",
+        "CTR-REQ-017",
+        "CTR-REQ-018"
+      ]
+    },
+    {
+      "path": "MVP1/contracts/browser/simulator/v1/simulator-control.schema.json",
+      "sha256": "76b7328d974b7c4049b0b476e53fc254c660b070ac5dec5653d082bece29bd08",
+      "requirement_ids": []
+    },
+    {
+      "path": "MVP1/contracts/proto/mvp1/bucking/v1/bucking.proto",
+      "sha256": "53ae54e16b2186e2130b6d973c6c63b172fb8e1067674aef00a9783cf32df1b8",
+      "requirement_ids": []
+    },
+    {
+      "path": "MVP1/contracts/proto/mvp1/common/v1/common.proto",
+      "sha256": "2a576b6024e10f1fb62eb4ed17807ccd310cb6b3ea288752e122581c21d99d7e",
+      "requirement_ids": []
+    },
+    {
+      "path": "MVP1/contracts/proto/mvp1/lab/v1/lab.proto",
+      "sha256": "623eba9ed272fb425d2ce0bf7164e740a7d921f85e4d6383c97453a8e86f0513",
+      "requirement_ids": []
+    },
+    {
+      "path": "MVP1/contracts/proto/mvp1/machine/v1/machine.proto",
+      "sha256": "35dd341831a56e361567c097adacdd7f057b07838a8fb01af53ae1fbeafa36c0",
+      "requirement_ids": []
+    },
+    {
+      "path": "MVP1/contracts/proto/mvp1/target/v1/target.proto",
+      "sha256": "f44f80e7af4d26c813eef25a7112de12274fcdd1bf91ff7b638f69ca9bd36354",
+      "requirement_ids": []
+    },
+    {
+      "path": "MVP1/packages/bucking-core/SDP/03--Requirements/requirements.md",
+      "sha256": "35c9785cac180cb66f4ba6d3708fc6820ab8d3036628989cb2b0b131a8c0ea80",
+      "requirement_ids": [
+        "BCK-REQ-001",
+        "BCK-REQ-002",
+        "BCK-REQ-003",
+        "BCK-REQ-004",
+        "BCK-REQ-005",
+        "BCK-REQ-006",
+        "BCK-REQ-007",
+        "BCK-REQ-008",
+        "BCK-REQ-009",
+        "BCK-REQ-010"
+      ]
+    },
+    {
+      "path": "MVP1/packages/stanford-classic/SDP/03--Requirements/requirements.md",
+      "sha256": "c7663d0e3291df3e04b67193225069b4428e1af76cf669f1c9067d88f168c5cc",
+      "requirement_ids": [
+        "SFC-REQ-001",
+        "SFC-REQ-002",
+        "SFC-REQ-003",
+        "SFC-REQ-004",
+        "SFC-REQ-005",
+        "SFC-REQ-006",
+        "SFC-REQ-007",
+        "SFC-REQ-008",
+        "SFC-REQ-009",
+        "SFC-REQ-010"
+      ]
+    },
+    {
+      "path": "MVP1/packages/taper-models/SDP/03--Requirements/requirements.md",
+      "sha256": "704c5daa50a58a58603a3e0086658a6e8b79a9e7a4d45086f3c9d22e2ff84b13",
+      "requirement_ids": [
+        "TPR-REQ-001",
+        "TPR-REQ-002",
+        "TPR-REQ-003",
+        "TPR-REQ-004",
+        "TPR-REQ-005",
+        "TPR-REQ-006",
+        "TPR-REQ-007",
+        "TPR-REQ-008",
+        "TPR-REQ-009",
+        "TPR-REQ-010"
+      ]
+    },
+    {
+      "path": "MVP1/services/bucking-lab/SDP/03--Requirements/requirements.md",
+      "sha256": "6e7a4afbbbe26cfc9d93a7b05c780dbf34b5bcb925b4b036d5b7303bbfdc9cc5",
+      "requirement_ids": [
+        "BLB-REQ-001",
+        "BLB-REQ-002",
+        "BLB-REQ-003",
+        "BLB-REQ-004",
+        "BLB-REQ-005",
+        "BLB-REQ-006",
+        "BLB-REQ-007",
+        "BLB-REQ-008",
+        "BLB-REQ-009",
+        "BLB-REQ-010",
+        "BLB-REQ-011"
+      ]
+    },
+    {
+      "path": "MVP1/services/bucking-service/SDP/03--Requirements/requirements.md",
+      "sha256": "66c186d925cab694c1badbc90445cf4a5e4141da396b76c148226e39f1a2c557",
+      "requirement_ids": [
+        "BKS-REQ-001",
+        "BKS-REQ-002",
+        "BKS-REQ-003",
+        "BKS-REQ-004",
+        "BKS-REQ-005",
+        "BKS-REQ-006",
+        "BKS-REQ-007",
+        "BKS-REQ-008",
+        "BKS-REQ-009",
+        "BKS-REQ-010",
+        "BKS-REQ-011",
+        "BKS-REQ-012",
+        "BKS-REQ-013",
+        "BKS-REQ-014",
+        "BKS-REQ-015",
+        "BKS-REQ-016",
+        "BKS-REQ-017",
+        "BKS-REQ-018"
+      ]
+    },
+    {
+      "path": "MVP1/services/bucking-web/SDP/03--Requirements/requirements.md",
+      "sha256": "cdfdc327cdf90050b045fb125ebd45f94b666e16cb9d44ef599f67aa9db0c832",
+      "requirement_ids": [
+        "BWEB-REQ-001",
+        "BWEB-REQ-002",
+        "BWEB-REQ-003",
+        "BWEB-REQ-004",
+        "BWEB-REQ-005",
+        "BWEB-REQ-006",
+        "BWEB-REQ-007",
+        "BWEB-REQ-008",
+        "BWEB-REQ-009",
+        "BWEB-REQ-010",
+        "BWEB-REQ-011",
+        "BWEB-REQ-012"
+      ]
+    },
+    {
+      "path": "MVP1/services/machine-lab/SDP/03--Requirements/requirements.md",
+      "sha256": "cf3d04e27489ea83766c761f32437b134a1471668c6f844bf364b42ea137fade",
+      "requirement_ids": [
+        "MLB-REQ-001",
+        "MLB-REQ-002",
+        "MLB-REQ-003",
+        "MLB-REQ-004",
+        "MLB-REQ-005",
+        "MLB-REQ-006",
+        "MLB-REQ-007",
+        "MLB-REQ-008",
+        "MLB-REQ-009",
+        "MLB-REQ-010",
+        "MLB-REQ-011",
+        "MLB-REQ-012",
+        "MLB-REQ-013",
+        "MLB-REQ-014",
+        "MLB-REQ-015",
+        "MLB-REQ-016"
+      ]
+    },
+    {
+      "path": "MVP1/services/machine-service/SDP/03--Requirements/requirements.md",
+      "sha256": "ea7bee23b81aa166e6fcccbde522f990dcac710d181a48abca2f615591256add",
+      "requirement_ids": [
+        "MCH-REQ-001",
+        "MCH-REQ-002",
+        "MCH-REQ-003",
+        "MCH-REQ-004",
+        "MCH-REQ-005",
+        "MCH-REQ-006",
+        "MCH-REQ-007",
+        "MCH-REQ-008",
+        "MCH-REQ-009",
+        "MCH-REQ-010",
+        "MCH-REQ-011",
+        "MCH-REQ-012",
+        "MCH-REQ-013",
+        "MCH-REQ-014",
+        "MCH-REQ-015",
+        "MCH-REQ-016",
+        "MCH-REQ-017",
+        "MCH-REQ-018",
+        "MCH-REQ-019",
+        "MCH-REQ-020",
+        "MCH-REQ-021",
+        "MCH-REQ-022",
+        "MCH-REQ-023"
+      ]
+    },
+    {
+      "path": "MVP1/services/p1000-gateway/SDP/03--Requirements/requirements.md",
+      "sha256": "5fa14176c88b7d03fdb486bb79c565c2a561192d33633aac2f5f0e958cfc2c0d",
+      "requirement_ids": [
+        "PGW-REQ-001",
+        "PGW-REQ-002",
+        "PGW-REQ-003",
+        "PGW-REQ-004",
+        "PGW-REQ-005",
+        "PGW-REQ-006",
+        "PGW-REQ-007",
+        "PGW-REQ-008",
+        "PGW-REQ-009",
+        "PGW-REQ-010",
+        "PGW-REQ-011",
+        "PGW-REQ-012",
+        "PGW-REQ-013",
+        "PGW-REQ-014",
+        "PGW-REQ-015"
+      ]
+    },
+    {
+      "path": "MVP1/services/p1000-simulator/SDP/03--Requirements/requirements.md",
+      "sha256": "12279d77799ce0a7c11674bb0a52c2baa7bee1cecdd3a0d4905d24e8de30e5fa",
+      "requirement_ids": [
+        "SIM-REQ-001",
+        "SIM-REQ-002",
+        "SIM-REQ-003",
+        "SIM-REQ-004",
+        "SIM-REQ-005",
+        "SIM-REQ-006",
+        "SIM-REQ-007",
+        "SIM-REQ-008",
+        "SIM-REQ-009",
+        "SIM-REQ-010",
+        "SIM-REQ-011",
+        "SIM-REQ-012",
+        "SIM-REQ-013",
+        "SIM-REQ-014"
+      ]
+    },
+    {
+      "path": "MVP1/shared/box-ui/SDP/03--Requirements/requirements.md",
+      "sha256": "0654e5a4087cddf79b815d18f5ca7d161aa39dc2a2d0ac959aaeb7e413aed451",
+      "requirement_ids": [
+        "BOX-REQ-001",
+        "BOX-REQ-002",
+        "BOX-REQ-003",
+        "BOX-REQ-004",
+        "BOX-REQ-005",
+        "BOX-REQ-006",
+        "BOX-REQ-007",
+        "BOX-REQ-008",
+        "BOX-REQ-009",
+        "BOX-REQ-010"
+      ]
+    },
+    {
+      "path": "MVP1/shared/labkit/SDP/03--Requirements/requirements.md",
+      "sha256": "2dc1c3e12c70ee44d56b9935e152bd71332b29f58bfb4268ed277a9536e95792",
+      "requirement_ids": [
+        "LBK-REQ-001",
+        "LBK-REQ-002",
+        "LBK-REQ-003",
+        "LBK-REQ-004",
+        "LBK-REQ-005",
+        "LBK-REQ-006",
+        "LBK-REQ-007",
+        "LBK-REQ-008",
+        "LBK-REQ-009",
+        "LBK-REQ-010",
+        "LBK-REQ-011",
+        "LBK-REQ-012",
+        "LBK-REQ-013"
+      ]
+    },
+    {
+      "path": "MVP1/shared/servicekit/SDP/03--Requirements/requirements.md",
+      "sha256": "68a657ef9f82f08c1b4a635ad2a5a93ee0f913378d651371dcde797b6733b240",
+      "requirement_ids": [
+        "SVK-REQ-001",
+        "SVK-REQ-002",
+        "SVK-REQ-003",
+        "SVK-REQ-004",
+        "SVK-REQ-005",
+        "SVK-REQ-006",
+        "SVK-REQ-007",
+        "SVK-REQ-008",
+        "SVK-REQ-009",
+        "SVK-REQ-010",
+        "SVK-REQ-011",
+        "SVK-REQ-012",
+        "SVK-REQ-013",
+        "SVK-REQ-014",
+        "SVK-REQ-015"
+      ]
+    },
+    {
+      "path": "MVP1/shared/ui-runtime/SDP/03--Requirements/requirements.md",
+      "sha256": "8b3bb95eb5d8e59fcac752bffa65df71110a8e01901f9a4facb9a39470260128",
+      "requirement_ids": [
+        "UIR-REQ-001",
+        "UIR-REQ-002",
+        "UIR-REQ-003",
+        "UIR-REQ-004",
+        "UIR-REQ-005",
+        "UIR-REQ-006",
+        "UIR-REQ-007",
+        "UIR-REQ-008",
+        "UIR-REQ-009",
+        "UIR-REQ-010",
+        "UIR-REQ-011",
+        "UIR-REQ-012"
+      ]
+    },
+    {
+      "path": "MVP1/shared/ui-runtime/command/index.ts",
+      "sha256": "932f00d2bb7c4d88b8a892d4c62feac922542ce11d747ee4077768624d6ef8ef",
+      "requirement_ids": []
+    },
+    {
+      "path": "MVP1/shared/ui-runtime/event-hub/index.ts",
+      "sha256": "fdee4b24081cdf720a159dbaa25cc45816a8407f67883ea0be3d8d35544cf03d",
+      "requirement_ids": []
+    },
+    {
+      "path": "MVP1/shared/ui-runtime/session/index.ts",
+      "sha256": "083a01890f3e366f9ce209ae628aaca971c76519fec282c17cf61cf259c7eee5",
+      "requirement_ids": []
+    },
+    {
+      "path": "MVP1/shared/ui-runtime/store/index.ts",
+      "sha256": "f5cf4eb19ed248a602ceb9208073233230f6516ed1824d037fc063e21b474b3f",
+      "requirement_ids": []
+    },
+    {
+      "path": "MVP1/web/bucking-ui/SDP/03--Requirements/requirements.md",
+      "sha256": "d88569311b99aff4028614487dae1807a7304744b152cf738fb1ede2084311fd",
+      "requirement_ids": [
+        "BUI-REQ-001",
+        "BUI-REQ-002",
+        "BUI-REQ-003",
+        "BUI-REQ-004",
+        "BUI-REQ-005",
+        "BUI-REQ-006",
+        "BUI-REQ-007",
+        "BUI-REQ-008",
+        "BUI-REQ-009",
+        "BUI-REQ-010",
+        "BUI-REQ-011",
+        "BUI-REQ-012",
+        "BUI-REQ-013",
+        "BUI-REQ-014"
+      ]
+    },
+    {
+      "path": "MVP1/web/simulator-ui/SDP/03--Requirements/requirements.md",
+      "sha256": "229a4df7dfe01b57bdc9d11239e5c68c07300541427a8e32ae7f89a87dd4a28d",
+      "requirement_ids": [
+        "SUI-REQ-001",
+        "SUI-REQ-002",
+        "SUI-REQ-003",
+        "SUI-REQ-004",
+        "SUI-REQ-005",
+        "SUI-REQ-006",
+        "SUI-REQ-007",
+        "SUI-REQ-008",
+        "SUI-REQ-009",
+        "SUI-REQ-010",
+        "SUI-REQ-011",
+        "SUI-REQ-012"
+      ]
+    }
+  ]
+}

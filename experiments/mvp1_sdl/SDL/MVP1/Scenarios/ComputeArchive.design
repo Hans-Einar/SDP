@@ -1,0 +1,44 @@
+language sdl-mvp1-exercise version 0.1.
+
+scenario ComputeArchive.
+condition ComputeArchiveReady.
+condition ComputeArchiveContinue.
+condition ComputeArchiveReject.
+outcome ComputeArchiveCompleted.
+outcome ComputeArchiveRejected.
+step ComputeArchiveSchedule.
+step ComputeArchiveCompute.
+step ComputeArchiveAccept.
+step ComputeArchivePublish.
+step ComputeArchiveFailure.
+step ComputeArchiveSuccess.
+
+ComputeArchive illustrates InspectBuckingAlternatives.
+ComputeArchive exercises RankedLegalBucking.
+ComputeArchive starts-when ComputeArchiveReady.
+ComputeArchive starts-at ComputeArchiveSchedule.
+ComputeArchiveReady describes "A frozen planning input exists and background policy permits archive work.".
+ComputeArchiveContinue describes "The previous operation succeeded and the next step's declared contract preconditions remain true; exact predicates are an executable-language gap.".
+ComputeArchiveReject describes "Validation, authority, applicability or operation failure prevents continuation; preserve prior valid state and report the specific reason.".
+ComputeArchiveCompleted describes "The stated design path completed under its explicit obligations; this is not an observed test result.".
+ComputeArchiveRejected describes "The path terminated without claiming the requested change succeeded; failures remain observable.".
+ComputeArchive preserves DomainTruthOwned.
+ComputeArchiveSchedule calls ScheduleQuietArchive within BuckingService.
+ComputeArchiveSchedule describes "Background/cancellable work must not block current K1.".
+ComputeArchiveSchedule proceeds-to ComputeArchiveFailure when ComputeArchiveReject.
+ComputeArchiveSchedule proceeds-to ComputeArchiveCompute when ComputeArchiveContinue.
+ComputeArchiveCompute calls ComputeBestArchive within BuckingService.
+ComputeArchiveCompute describes "Preserve deterministic ties and one-best parity.".
+ComputeArchiveCompute proceeds-to ComputeArchiveFailure when ComputeArchiveReject.
+ComputeArchiveCompute proceeds-to ComputeArchiveAccept when ComputeArchiveContinue.
+ComputeArchiveAccept calls AcceptPlanningResult within BuckingService.
+ComputeArchiveAccept describes "Reject stale results from older input/session.".
+ComputeArchiveAccept proceeds-to ComputeArchiveFailure when ComputeArchiveReject.
+ComputeArchiveAccept proceeds-to ComputeArchivePublish when ComputeArchiveContinue.
+ComputeArchivePublish calls PublishBuckingState within BuckingService.
+ComputeArchivePublish describes "Publish only accepted ranked alternatives.".
+ComputeArchivePublish proceeds-to ComputeArchiveFailure when ComputeArchiveReject.
+ComputeArchivePublish proceeds-to ComputeArchiveSuccess when ComputeArchiveContinue.
+ComputeArchiveFailure finishes ComputeArchive with ComputeArchiveRejected.
+ComputeArchiveSuccess finishes ComputeArchive with ComputeArchiveCompleted.
+ComputeArchive runs-alongside PlanCurrentStem.

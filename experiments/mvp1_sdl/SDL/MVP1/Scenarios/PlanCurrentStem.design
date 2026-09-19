@@ -1,0 +1,65 @@
+language sdl-mvp1-exercise version 0.1.
+
+scenario PlanCurrentStem.
+condition PlanCurrentStemReady.
+condition PlanCurrentStemContinue.
+condition PlanCurrentStemReject.
+outcome PlanCurrentStemCompleted.
+outcome PlanCurrentStemRejected.
+step PlanCurrentStemCorrelate.
+step PlanCurrentStemFit.
+step PlanCurrentStemFreeze.
+step PlanCurrentStemCompute.
+step PlanCurrentStemAccept.
+step PlanCurrentStemPublish.
+step PlanCurrentStemFailure.
+step PlanCurrentStemSuccess.
+
+condition PlanInputCurrent.
+condition PlanInputStale.
+step RetainPriorPlan.
+outcome PriorPlanRetained.
+
+PlanCurrentStem illustrates InspectBuckingAlternatives.
+PlanCurrentStem exercises CurrentBuckingAdvice.
+PlanCurrentStem starts-when PlanCurrentStemReady.
+PlanCurrentStem starts-at PlanCurrentStemCorrelate.
+PlanCurrentStemReady describes "Valid machine baseline and explicitly selected domain configuration are available.".
+PlanCurrentStemContinue describes "The previous operation succeeded and the next step's declared contract preconditions remain true; exact predicates are an executable-language gap.".
+PlanCurrentStemReject describes "Validation, authority, applicability or operation failure prevents continuation; preserve prior valid state and report the specific reason.".
+PlanCurrentStemCompleted describes "The stated design path completed under its explicit obligations; this is not an observed test result.".
+PlanCurrentStemRejected describes "The path terminated without claiming the requested change succeeded; failures remain observable.".
+PlanCurrentStem preserves DomainTruthOwned.
+PlanCurrentStem preserves DurableFactsRetained.
+PlanCurrentStemCorrelate calls CorrelateStemSamples within BuckingService.
+PlanCurrentStemCorrelate describes "Create coherent physical samples; no UI correlation.".
+PlanCurrentStemCorrelate proceeds-to PlanCurrentStemFailure when PlanCurrentStemReject.
+PlanCurrentStemCorrelate proceeds-to PlanCurrentStemFit when PlanCurrentStemContinue.
+PlanCurrentStemFit calls FitProfileModel within BuckingService.
+PlanCurrentStemFit describes "Apply supported taper model with sample/span gates.".
+PlanCurrentStemFit proceeds-to PlanCurrentStemFailure when PlanCurrentStemReject.
+PlanCurrentStemFit proceeds-to PlanCurrentStemFreeze when PlanCurrentStemContinue.
+PlanCurrentStemFreeze calls FreezePlanningInput within BuckingService.
+PlanCurrentStemFreeze describes "Capture complete input revision tuple.".
+PlanCurrentStemFreeze proceeds-to PlanCurrentStemFailure when PlanCurrentStemReject.
+PlanCurrentStemFreeze proceeds-to PlanCurrentStemCompute when PlanCurrentStemContinue.
+PlanCurrentStemCompute calls ComputeOneBest within BuckingService.
+PlanCurrentStemCompute describes "Pure K1, separate from archive.".
+PlanCurrentStemCompute proceeds-to PlanCurrentStemFailure when PlanCurrentStemReject.
+PlanCurrentStemCompute proceeds-to PlanCurrentStemAccept when PlanCurrentStemContinue.
+PlanCurrentStemAccept calls AcceptPlanningResult within BuckingService.
+PlanCurrentStemAccept describes "Compare current input/generation before authoritative publication.".
+PlanCurrentStemAccept proceeds-to PlanCurrentStemPublish when PlanInputCurrent.
+PlanCurrentStemPublish calls PublishBuckingState within BuckingService.
+PlanCurrentStemPublish describes "Retain prior valid plan while new work is pending.".
+PlanCurrentStemPublish proceeds-to PlanCurrentStemFailure when PlanCurrentStemReject.
+PlanCurrentStemPublish proceeds-to PlanCurrentStemSuccess when PlanCurrentStemContinue.
+PlanCurrentStemFailure finishes PlanCurrentStem with PlanCurrentStemRejected.
+PlanCurrentStemSuccess finishes PlanCurrentStem with PlanCurrentStemCompleted.
+PlanCurrentStemCorrelate receives MachineResponses through MachineServiceUpstream.
+PlanCurrentStemPublish emits BuckingResponses through BuckingServiceUpstream.
+PlanInputCurrent describes "Machine session, measurement/model/config input tuple and generation still match the frozen result.".
+PlanInputStale describes "At least one relevant input revision/session/generation changed while work was running.".
+PlanCurrentStemAccept proceeds-to RetainPriorPlan when PlanInputStale.
+RetainPriorPlan finishes PlanCurrentStem with PriorPlanRetained.
+PriorPlanRetained describes "Stale result discarded; prior valid plan retained with explicit pending/currentness metadata.".

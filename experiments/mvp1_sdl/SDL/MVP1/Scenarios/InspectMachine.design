@@ -1,0 +1,65 @@
+language sdl-mvp1-exercise version 0.1.
+
+scenario InspectMachine.
+condition InspectMachineReady.
+condition InspectMachineContinue.
+condition InspectMachineReject.
+outcome InspectMachineCompleted.
+outcome InspectMachineRejected.
+step InspectMachineReceive.
+step InspectMachineDecode.
+step InspectMachineCalibrate.
+step InspectMachineReduce.
+step InspectMachinePublish.
+step InspectMachineAdapt.
+step InspectMachineProject.
+step InspectMachineFailure.
+step InspectMachineSuccess.
+
+InspectMachine illustrates LiveMachineInspection.
+InspectMachine exercises AuthoritativeMachineState.
+InspectMachine starts-when InspectMachineReady.
+InspectMachine starts-at InspectMachineReceive.
+InspectMachineReady describes "A configured target session has a record to inspect.".
+InspectMachineContinue describes "The previous operation succeeded and the next step's declared contract preconditions remain true; exact predicates are an executable-language gap.".
+InspectMachineReject describes "Validation, authority, applicability or operation failure prevents continuation; preserve prior valid state and report the specific reason.".
+InspectMachineCompleted describes "The stated design path completed under its explicit obligations; this is not an observed test result.".
+InspectMachineRejected describes "The path terminated without claiming the requested change succeeded; failures remain observable.".
+InspectMachine preserves DomainTruthOwned.
+InspectMachine preserves ConservativeQuality.
+InspectMachine preserves HiddenTruthIsolated.
+InspectMachineReceive calls ConsumeTargetRecord within MachineService.
+InspectMachineReceive describes "Receive exact Target record and lineage.".
+InspectMachineReceive proceeds-to InspectMachineFailure when InspectMachineReject.
+InspectMachineReceive proceeds-to InspectMachineDecode when InspectMachineContinue.
+InspectMachineDecode calls DecodeP1000Frames within MachineService.
+InspectMachineDecode describes "Reject invalid/capture-unsupported frame; never split on payload FF.".
+InspectMachineDecode proceeds-to InspectMachineFailure when InspectMachineReject.
+InspectMachineDecode proceeds-to InspectMachineCalibrate when InspectMachineContinue.
+InspectMachineCalibrate calls CalibrateMeasurement within MachineService.
+InspectMachineCalibrate describes "Keep raw-only/unknown explicit if calibration is absent.".
+InspectMachineCalibrate proceeds-to InspectMachineFailure when InspectMachineReject.
+InspectMachineCalibrate proceeds-to InspectMachineReduce when InspectMachineContinue.
+InspectMachineReduce calls ReduceMachineState within MachineService.
+InspectMachineReduce describes "Apply accepted semantic evidence in authoritative order.".
+InspectMachineReduce proceeds-to InspectMachineFailure when InspectMachineReject.
+InspectMachineReduce proceeds-to InspectMachinePublish when InspectMachineContinue.
+InspectMachinePublish calls PublishMachineBaseline within MachineService.
+InspectMachinePublish describes "Publish domain state/events with recovery baseline.".
+InspectMachinePublish proceeds-to InspectMachineFailure when InspectMachineReject.
+InspectMachinePublish proceeds-to InspectMachineAdapt when InspectMachineContinue.
+InspectMachineAdapt calls AdaptBrowserState within BuckingWeb.
+InspectMachineAdapt describes "Preserve independent upstream sessions and browser state.".
+InspectMachineAdapt proceeds-to InspectMachineFailure when InspectMachineReject.
+InspectMachineAdapt proceeds-to InspectMachineProject when InspectMachineContinue.
+InspectMachineProject calls ProjectOperatorDomain within BuckingUI.
+InspectMachineProject describes "Project accepted values without taking domain ownership.".
+InspectMachineProject proceeds-to InspectMachineFailure when InspectMachineReject.
+InspectMachineProject proceeds-to InspectMachineSuccess when InspectMachineContinue.
+InspectMachineFailure finishes InspectMachine with InspectMachineRejected.
+InspectMachineSuccess finishes InspectMachine with InspectMachineCompleted.
+InspectMachineReceive receives TargetResponses through TargetChannel.
+InspectMachinePublish emits MachineResponses through MachineServiceUpstream.
+InspectMachineAdapt receives MachineResponses through MachineServiceUpstream.
+InspectMachineAdapt emits OperatorBrowserResponses through OperatorBrowserChannel.
+InspectMachineProject receives OperatorBrowserResponses through OperatorBrowserChannel.

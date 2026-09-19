@@ -1,0 +1,55 @@
+language sdl-mvp1-exercise version 0.1.
+
+scenario RecoverCommand.
+condition RecoverCommandReady.
+condition RecoverCommandContinue.
+condition RecoverCommandReject.
+outcome RecoverCommandCompleted.
+outcome RecoverCommandRejected.
+step RecoverCommandLookup.
+step RecoverCommandServer.
+step RecoverCommandObserve.
+step RecoverCommandFailure.
+step RecoverCommandSuccess.
+
+condition CommandKnown.
+condition CommandStillUnknown.
+condition CommandConflictOrExpired.
+step RetainUnknownCommand.
+step RejectInvalidRetry.
+outcome CommandOutcomeUnknown.
+outcome InvalidRetryRejected.
+
+RecoverCommand illustrates RecoverUncertainAction.
+RecoverCommand exercises CorrelatedUiCommands.
+RecoverCommand starts-when RecoverCommandReady.
+RecoverCommand starts-at RecoverCommandLookup.
+RecoverCommandReady describes "A submitted command's transport outcome is ambiguous.".
+RecoverCommandContinue describes "The previous operation succeeded and the next step's declared contract preconditions remain true; exact predicates are an executable-language gap.".
+RecoverCommandReject describes "Validation, authority, applicability or operation failure prevents continuation; preserve prior valid state and report the specific reason.".
+RecoverCommandCompleted describes "The stated design path completed under its explicit obligations; this is not an observed test result.".
+RecoverCommandRejected describes "The path terminated without claiming the requested change succeeded; failures remain observable.".
+RecoverCommand preserves StableCommandIdentity.
+RecoverCommand preserves ServerBoundAuthority.
+RecoverCommandLookup calls RecoverUiCommand within BuckingUI.
+RecoverCommandLookup describes "Retain ID; lookup/same-payload retry only within advertised lifecycle.".
+RecoverCommandLookup proceeds-to RecoverCommandFailure when RecoverCommandReject.
+RecoverCommandLookup proceeds-to RecoverCommandServer when RecoverCommandContinue.
+RecoverCommandServer calls RecoverCommandLifecycle within MachineService.
+RecoverCommandServer describes "Known result is replayed, conflict rejected, expired/unknown not silently executed.".
+RecoverCommandServer proceeds-to RecoverCommandObserve when CommandKnown.
+RecoverCommandObserve calls ReconcileUiCommandResult within BuckingUI.
+RecoverCommandObserve describes "Update observed lifecycle; timeout is not cancellation.".
+RecoverCommandObserve proceeds-to RecoverCommandFailure when RecoverCommandReject.
+RecoverCommandObserve proceeds-to RecoverCommandSuccess when RecoverCommandContinue.
+RecoverCommandFailure finishes RecoverCommand with RecoverCommandRejected.
+RecoverCommandSuccess finishes RecoverCommand with RecoverCommandCompleted.
+CommandKnown describes "Lookup or same-ID replay supplies a retained authoritative lifecycle result.".
+CommandStillUnknown describes "No authoritative outcome yet; keep the original ID and explicit unknown state. Recovery wait/deadline policy remains required.".
+CommandConflictOrExpired describes "Owner reports same-ID/different-payload conflict or expired ID; do not execute it as a fresh retry.".
+RecoverCommandServer proceeds-to RetainUnknownCommand when CommandStillUnknown.
+RecoverCommandServer proceeds-to RejectInvalidRetry when CommandConflictOrExpired.
+RetainUnknownCommand finishes RecoverCommand with CommandOutcomeUnknown.
+RejectInvalidRetry finishes RecoverCommand with InvalidRetryRejected.
+CommandOutcomeUnknown describes "No success, cancellation or safe re-execution is inferred.".
+InvalidRetryRejected describes "Conflict/expiry surfaced to initiating context; a deliberate new action is a separate request.".

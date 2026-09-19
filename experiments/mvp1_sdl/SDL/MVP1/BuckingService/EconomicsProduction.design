@@ -1,0 +1,33 @@
+language sdl-mvp1-exercise version 0.1.
+
+unit EconomicPolicy.
+unit ProductionAuthority.
+unit BuckingCommandCoordinator.
+capability DurableProduction.
+capability BuckingStopCoordination.
+capability EconomicDecisionContext.
+functionality SelectEconomicPolicy.
+functionality ValidateCutContext.
+functionality RecordProductionFact.
+functionality HandleBuckingStop.
+
+BuckingService contains EconomicPolicy.
+EconomicPolicy provides EconomicDecisionContext.
+EconomicPolicy status proposed.
+EconomicPolicy cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/Domains/DetailedArchitectureDiscussion.md".
+EconomicPolicy owns SelectEconomicPolicy.
+SelectEconomicPolicy realizes EconomicDecisionContext.
+SelectEconomicPolicy specifies "Maintain separate BuckingPolicy, owner-value/settlement contract and source-bound interpretation revisions.".
+ProductionAuthority owns ValidateCutContext.
+ValidateCutContext realizes DurableProduction.
+ValidateCutContext specifies "Require current calibration/policy/economics/APT/model/plan input lineage before a durable production decision.".
+ProductionAuthority owns RecordProductionFact.
+RecordProductionFact realizes DurableProduction.
+RecordProductionFact specifies "Domain-owned durable cut/production fact and persistence; Lab ledger is optional diagnostic evidence, not its authority.".
+BuckingCommandCoordinator owns HandleBuckingStop.
+HandleBuckingStop realizes BuckingStopCoordination.
+HandleBuckingStop specifies "Preserve stop occurrence identity when forwarding to Machine; cancel configured planning/control automation, invalidate queued old intents and avoid loops.".
+BuckingService contains ProductionAuthority.
+BuckingService contains BuckingCommandCoordinator.
+ProductionAuthority provides DurableProduction.
+BuckingCommandCoordinator provides BuckingStopCoordination.

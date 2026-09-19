@@ -1,0 +1,31 @@
+language sdl-mvp1-exercise version 0.1.
+
+binding ExistingExternalStore.
+binding ExistingCommandBus.
+binding ExistingSessionTracker.
+binding ExistingEventHub.
+binding UnboundPresentationValidation.
+binding UnboundRendererReconciliation.
+
+ExistingExternalStore status source-observed.
+ExistingExternalStore anchors ProjectRepresentationValue.
+ExistingExternalStore at "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/ui-runtime/store/index.ts".
+ExistingExternalStore describes "Previously inspected setSnapshot/subscribeSelector primitives; partial mechanism evidence, not proof of target Representation contract.".
+ExistingCommandBus status source-observed.
+ExistingCommandBus anchors RecoverUiCommand.
+ExistingCommandBus at "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/ui-runtime/command/index.ts".
+ExistingCommandBus describes "Previously inspected submit/retry/lookup/acceptResult primitives; actual app/renderer integration remains to be bound.".
+ExistingSessionTracker status source-observed.
+ExistingSessionTracker anchors RecoverUiSession.
+ExistingSessionTracker at "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/ui-runtime/session/index.ts".
+ExistingSessionTracker describes "Previously inspected acceptDelivery/prepareSnapshot/commitSnapshot; does not establish a new host/renderer protocol.".
+ExistingEventHub status source-observed.
+ExistingEventHub anchors ClassifyUiRouting.
+ExistingEventHub at "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/ui-runtime/event-hub/index.ts".
+ExistingEventHub describes "publish provides local dispatch but no-listener return does not implement target unhandled-event collection; evidence of an incomplete realization.".
+UnboundPresentationValidation status open.
+UnboundPresentationValidation anchors ValidatePresentationBindings.
+UnboundPresentationValidation describes "No inspected symbol establishes the complete selected schema/revision validation contract.".
+UnboundRendererReconciliation status open.
+UnboundRendererReconciliation anchors ReconcileViewNodes.
+UnboundRendererReconciliation describes "BOX is reuse material; full target renderer contract and real visual witness remain unbound.".

@@ -1,0 +1,25 @@
+language sdl-mvp1-exercise version 0.1.
+
+unit RendererAdapter.
+capability MaterializedPresentation.
+functionality ReconcileViewNodes.
+functionality EmitBoundUserIntent.
+functionality ObserveRenderedRevision.
+functionality RenderSharedShell.
+
+BoxUI contains RendererAdapter.
+RendererAdapter provides MaterializedPresentation.
+RendererAdapter status proposed.
+RendererAdapter cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/Domains/UIDomain/DetailedDesignDiscussion.md".
+RendererAdapter owns ReconcileViewNodes.
+ReconcileViewNodes realizes MaterializedPresentation.
+ReconcileViewNodes specifies "Trusted allow-listed kind/action registry; stable view/plot IDs, incremental updates and local DOM/native handles only.".
+RendererAdapter owns EmitBoundUserIntent.
+EmitBoundUserIntent realizes MaterializedPresentation.
+EmitBoundUserIntent specifies "Translate interaction through typed Presentation binding; no APT parsing, business authority or direct service bypass.".
+RendererAdapter owns ObserveRenderedRevision.
+ObserveRenderedRevision realizes MaterializedPresentation.
+ObserveRenderedRevision specifies "Report actual display/failure separately from schema publication; headless observation is not pixels/accessibility evidence.".
+RendererAdapter owns RenderSharedShell.
+RenderSharedShell realizes MaterializedPresentation.
+RenderSharedShell specifies "Reuse shell/status/error/action chrome, metric/list/console/plot views and Concept1 design tokens across apps.".

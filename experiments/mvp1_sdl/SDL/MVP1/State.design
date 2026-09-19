@@ -1,0 +1,55 @@
+language sdl-mvp1-exercise version 0.1.
+
+state MachineState.
+state TargetHistoryState.
+state SimulatorTruthState.
+state StemProfileState.
+state PlannerState.
+state AptDraftState.
+state EconomicContextState.
+state ProductionState.
+state OperatorContextState.
+state SimulatorContextState.
+state PresentationState.
+state CommandObservationState.
+state StopState.
+
+MachineService tracks MachineState.
+MachineState typed-as StateRecord.
+MachineState initially "Unavailable until target handshake, recovery choice and evidence-backed calibration/semantic baseline.".
+P1000Gateway tracks TargetHistoryState.
+TargetHistoryState typed-as StateRecord.
+TargetHistoryState initially "Explicit configured empty/buffered history at session start; source range/gap state must be advertised.".
+P1000Simulator tracks SimulatorTruthState.
+SimulatorTruthState typed-as StateRecord.
+SimulatorTruthState initially "Configured seed/scenario initialization; fixture details are not guessed.".
+StemProfile tracks StemProfileState.
+StemProfileState typed-as SeriesValue.
+StemProfileState initially "No valid profile until sufficient coherent samples/model gates; preserve absolute and working coordinates.".
+PlanningCoordinator tracks PlannerState.
+PlannerState typed-as StateRecord.
+PlannerState initially "No plan until valid inputs; later pending work retains prior valid plan and its own currentness metadata.".
+AptDomain tracks AptDraftState.
+AptDraftState typed-as StateRecord.
+AptDraftState initially "No draft selected; import/load/edit/save/activation are distinct lifecycle transitions.".
+EconomicPolicy tracks EconomicContextState.
+EconomicContextState typed-as StateRecord.
+EconomicContextState initially "Explicit unconfigured economics is distinct from a fabricated zero-valued settlement contract.".
+ProductionAuthority tracks ProductionState.
+ProductionState typed-as ProductionRecordValue.
+ProductionState initially "Authoritative persisted baseline/recovery policy required; see production persistence gap.".
+OperatorUiDomain tracks OperatorContextState.
+OperatorContextState typed-as StateRecord.
+OperatorContextState initially "Machine and Bucking availability tracked independently; unknown is not zero.".
+SimulatorUiDomain tracks SimulatorContextState.
+SimulatorContextState typed-as StateRecord.
+SimulatorContextState initially "Disconnected simulator-only projection; no hidden truth in operator context.".
+PresentationManager tracks PresentationState.
+PresentationState typed-as SchemaValue.
+PresentationState initially "No schema until validated bootstrap; candidate, published and rendered revisions remain distinct.".
+UiCommandCoordinator tracks CommandObservationState.
+CommandObservationState typed-as StateRecord.
+CommandObservationState initially "No pending commands; later unknown outcome remains distinct from cancelled/expired/conflict.".
+MachineService tracks StopState.
+StopState typed-as StopOccurrenceValue.
+StopState initially "Session-scoped dedupe horizon and generation initialized by authoritative service contract.".

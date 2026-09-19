@@ -1,0 +1,145 @@
+{
+  "checkpoint": "checkpoint#1",
+  "date": "2026-09-18",
+  "repository_head_at_capture": "40add14b55d8378aab89b0473d1f45c6ff3480c0",
+  "branch_at_capture": "sdp-vNow",
+  "scope": "Consolidation references from this conversation and repository; no claim of new external research, product execution or full-document reread for every source. Forward pointers added during consolidation are included in hashes.",
+  "sources": [
+    {
+      "path": "README.md",
+      "sha256": "ee85bdc9b55f702d1a23167b9e1dd5d9dac8db859c83a29027fb7911e3eb09e4",
+      "git_tracked": true,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "docs/How-SDP-Works.md",
+      "sha256": "816f7f2f678ef3bf64f9e442886a682111c4a848f290806ffbb3461fab88065d",
+      "git_tracked": true,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "docs/Feature-Governance-And-SDP-2.0.md",
+      "sha256": "3ab00b08cce34ed992b242b8a01c2850429e1ac83810655d051ecf171fa91788",
+      "git_tracked": true,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "docs/Feature-Functionality-and-Channel-Study.md",
+      "sha256": "5cbff06128d73564d6947a590df578cd3ef1580d7c898e313d7ae3205eef966c",
+      "git_tracked": true,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "docs/Scenarios-State-and-Implementation-Traceability.md",
+      "sha256": "5c7c3a07b84e0fb63ed59259fe191eb0a5d35445bf458862d05f52847d57694f",
+      "git_tracked": false,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "docs/Vocabulary-and-Grammar-Exploration.md",
+      "sha256": "bad94c32c21d2f9ee960819109ac0267cae014d4cd7a2cb0ef00a35efbe7cb25",
+      "git_tracked": false,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "docs/Design-Language-Definition.md",
+      "sha256": "5f72f2cf767aecc413beb65554210257f310e22cf65c38dcff0b7e07d8747f2e",
+      "git_tracked": false,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "docs/Design-Language-Conformance-Scenarios.md",
+      "sha256": "e1fcf3347ab4b21c07b1a4e2dca57823bcc094de71fb27ac20fb2fdc17ff46f5",
+      "git_tracked": false,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "docs/MVP1-Design-Evolution-and-SDP-Skills.md",
+      "sha256": "3906a1bff5c7db98d4e710abdf32835ed4824b3167dfb0e7ce0e0035424c0a34",
+      "git_tracked": true,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "docs/MVP1-Design-Language-Example.md",
+      "sha256": "1f3189eb03a8d5f712d088dbc89cf992c68a3727a84a2611212d9914b1cf7a38",
+      "git_tracked": false,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "docs/SDL-Source-Tree-and-Compilation-Study.md",
+      "sha256": "e24ebe7bc81601acdc51fd51100be2891a350a8b4c183e2a16ffd1ca3d49a21d",
+      "git_tracked": false,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "docs/SDL-Executable-IR-and-Runtime-Study.md",
+      "sha256": "b5bb60ff65afc016b37c9f693777d11317ebf77774cfc39472a12c0ba3fbbfab",
+      "git_tracked": false,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "docs/MVP1-SDL-Exercise-Findings-and-Extensions.md",
+      "sha256": "d7589f7382210c971d6cafaedcfe2b75587ae84d83e807e218bc601769bbf29e",
+      "git_tracked": false,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "docs/SDL-Datasets-Datagrams-and-Data-Contracts.md",
+      "sha256": "5e94e01d7b9588a194c472965b5e2205749f4b9ef708221a11121e7ee7642e8b",
+      "git_tracked": false,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "docs/SDL-ControlSets-Layer-Boundaries-and-Data-Access.md",
+      "sha256": "55152541c929b6d311c835579d5a1ed9fb9bdf999f25e96b0a5130371709b868",
+      "git_tracked": false,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "experiments/design_core/README.md",
+      "sha256": "a816c9941c231743d9ef387b1b3e10cae67108356f16bdcc9f144907bf6b8470",
+      "git_tracked": false,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "experiments/mvp1_sdl/README.md",
+      "sha256": "043e9f2ace6791cdb460831a32d76c593a800ba5b50e4409b25a30306fed5dda",
+      "git_tracked": false,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "experiments/mvp1_sdl/inventory-audit.json",
+      "sha256": "ffbea60e88f0a1a61d4351aa903e3eadf2d9767d6bdfe99bf0309fc99b545ac7",
+      "git_tracked": false,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "Toolkit/skills_v2/README.md",
+      "sha256": "79752bb6d37ff0a8cc2c4a40744a0808db11c15314be18f68bfe3a9beca31d9b",
+      "git_tracked": true,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    }
+  ],
+  "renderer_sources_added_2026_09_18": [
+    {
+      "path": "../xfmd/mermaid_coverage.md",
+      "sha256": "fec93913484ed13898a93214125741b8803fb129b02111646dcdd27c7379280b",
+      "repository_head": "4e21e99"
+    },
+    {
+      "path": "../xfmd/mermaid_evicence.md",
+      "sha256": "1846e619390130744d0882c621b414ce624af643bfc65718ae4b1a893dce03e0",
+      "repository_head": "4e21e99"
+    },
+    {
+      "path": "../xfmd/docs/design/mermaid-sequence-authoring.md",
+      "sha256": "28b8285a5ddaa25aec290302ccd9682e5c869b88289f5a61ff758a52e3967c82",
+      "repository_head": "4e21e99"
+    },
+    {
+      "path": "../xfmd/docs/design/mermaid-semantic-authoring.md",
+      "sha256": "789bb77360506930bd74d8883eb4f1b57986b954d81ae710a0e74665dd964bdf",
+      "repository_head": "4e21e99"
+    }
+  ]
+}

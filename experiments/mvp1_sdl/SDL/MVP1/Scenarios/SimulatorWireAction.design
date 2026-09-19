@@ -1,0 +1,53 @@
+language sdl-mvp1-exercise version 0.1.
+
+scenario SimulatorWireAction.
+condition SimulatorWireActionReady.
+condition SimulatorWireActionContinue.
+condition SimulatorWireActionReject.
+outcome SimulatorWireActionCompleted.
+outcome SimulatorWireActionRejected.
+step SimulatorWireActionIntent.
+step SimulatorWireActionAccept.
+step SimulatorWireActionEmit.
+step SimulatorWireActionDecode.
+step SimulatorWireActionReduce.
+step SimulatorWireActionFailure.
+step SimulatorWireActionSuccess.
+
+SimulatorWireAction illustrates OperateSimulation.
+SimulatorWireAction exercises DeterministicTargetSimulation.
+SimulatorWireAction starts-when SimulatorWireActionReady.
+SimulatorWireAction starts-at SimulatorWireActionIntent.
+SimulatorWireActionReady describes "Simulator-only control action is requested in Simulated mode.".
+SimulatorWireActionContinue describes "The previous operation succeeded and the next step's declared contract preconditions remain true; exact predicates are an executable-language gap.".
+SimulatorWireActionReject describes "Validation, authority, applicability or operation failure prevents continuation; preserve prior valid state and report the specific reason.".
+SimulatorWireActionCompleted describes "The stated design path completed under its explicit obligations; this is not an observed test result.".
+SimulatorWireActionRejected describes "The path terminated without claiming the requested change succeeded; failures remain observable.".
+SimulatorWireAction preserves HiddenTruthIsolated.
+SimulatorWireAction preserves StableCommandIdentity.
+SimulatorWireActionIntent calls RouteSimulatorIntent within SimulatorUI.
+SimulatorWireActionIntent describes "Same identity through POST/retry/lookup.".
+SimulatorWireActionIntent proceeds-to SimulatorWireActionFailure when SimulatorWireActionReject.
+SimulatorWireActionIntent proceeds-to SimulatorWireActionAccept when SimulatorWireActionContinue.
+SimulatorWireActionAccept calls HandleSimulatorControl within P1000Simulator.
+SimulatorWireActionAccept describes "Validate and deduplicate simulator command.".
+SimulatorWireActionAccept proceeds-to SimulatorWireActionFailure when SimulatorWireActionReject.
+SimulatorWireActionAccept proceeds-to SimulatorWireActionEmit when SimulatorWireActionContinue.
+SimulatorWireActionEmit calls EmitSimulatedWire within P1000Simulator.
+SimulatorWireActionEmit describes "Emit literal mapped wire form with simulated provenance.".
+SimulatorWireActionEmit proceeds-to SimulatorWireActionFailure when SimulatorWireActionReject.
+SimulatorWireActionEmit proceeds-to SimulatorWireActionDecode when SimulatorWireActionContinue.
+SimulatorWireActionDecode calls DecodeP1000Frames within MachineService.
+SimulatorWireActionDecode describes "Exercise the real target/parser path.".
+SimulatorWireActionDecode proceeds-to SimulatorWireActionFailure when SimulatorWireActionReject.
+SimulatorWireActionDecode proceeds-to SimulatorWireActionReduce when SimulatorWireActionContinue.
+SimulatorWireActionReduce calls ReduceMachineState within MachineService.
+SimulatorWireActionReduce describes "Publish normalized machine fact separately from hidden truth.".
+SimulatorWireActionReduce proceeds-to SimulatorWireActionFailure when SimulatorWireActionReject.
+SimulatorWireActionReduce proceeds-to SimulatorWireActionSuccess when SimulatorWireActionContinue.
+SimulatorWireActionFailure finishes SimulatorWireAction with SimulatorWireActionRejected.
+SimulatorWireActionSuccess finishes SimulatorWireAction with SimulatorWireActionCompleted.
+SimulatorWireActionIntent emits SimulatorControlRequests through SimulatorControlChannel.
+SimulatorWireActionAccept receives SimulatorControlRequests through SimulatorControlChannel.
+SimulatorWireActionEmit emits TargetResponses through TargetChannel.
+SimulatorWireActionDecode receives TargetResponses through TargetChannel.

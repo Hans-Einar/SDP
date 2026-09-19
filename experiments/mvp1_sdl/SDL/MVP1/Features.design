@@ -1,0 +1,31 @@
+language sdl-mvp1-exercise version 0.1.
+
+feature LiveMachineInspection.
+feature InspectBuckingAlternatives.
+feature ManageAptDefinitions.
+feature ChangeUiPresentation.
+feature InspectConnectionHealth.
+feature RecoverUncertainAction.
+feature OperateSimulation.
+feature OperateMachineInputs.
+feature InspectRecordedEvidence.
+feature RequestSoftwareStop.
+feature InspectMachineWithoutBucking.
+feature RecordProduction.
+feature InspectUiDiagnostics.
+feature StopRuntimeCleanly.
+
+LiveMachineInspection describes "Inspect fresh machine/sensor/state evidence without taking domain authority.".
+InspectBuckingAlternatives describes "Inspect current valid one-best and background alternatives with explicit pending/stale state.".
+ManageAptDefinitions describes "Import, inspect, edit, store/export and explicitly activate supported APT definitions.".
+ChangeUiPresentation describes "Change presentation and share values while retaining live semantic context.".
+InspectConnectionHealth describes "Recover coherent state and explain source/session/delivery currentness.".
+RecoverUncertainAction describes "Recover a submitted action's result without accidental duplicate execution.".
+OperateSimulation describes "Control/inspect deterministic simulated target through its separate control plane.".
+OperateMachineInputs describes "Use permitted normalized operator input through public command contracts.".
+InspectRecordedEvidence describes "Inspect/export/replay bounded diagnostic evidence into explicit isolated targets.".
+RequestSoftwareStop describes "Request an identified software stop while retaining diagnostics and explicit safety scope.".
+InspectMachineWithoutBucking describes "Continue Machine observation and permitted input when Bucking is unavailable.".
+RecordProduction describes "Retain authoritative cut facts with economic/measurement/calibration lineage.".
+InspectUiDiagnostics describes "Explain unhandled routing, handler failures and bounded diagnostic loss.".
+StopRuntimeCleanly describes "Stop owned work/connections and account for pending durable state.".

@@ -1,0 +1,95 @@
+language sdl-mvp1-exercise version 0.1.
+
+gap UiHostingGap.
+gap StemServiceSplitGap.
+gap AptServiceSplitGap.
+gap PresentationWireGap.
+gap OperatorBrowserSchemaGap.
+gap AptEditSchemaGap.
+gap AptActivationGap.
+gap NewStanfordCodecGap.
+gap PresentationRaceGap.
+gap TransientEditGap.
+gap CollectionTaxonomyGap.
+gap DeliveryBudgetGap.
+gap JournalScopeGap.
+gap ProductionProvenanceGap.
+gap P1000EvidenceGap.
+gap ExecutablePredicateGap.
+gap SourceBindingGap.
+gap PermissiveContractGap.
+gap PhysicalTxGate.
+gap LibraryAllocationGap.
+gap RendererFailureGap.
+gap DomainAlgorithmBindingGap.
+gap ShutdownCoordinationGap.
+
+UiHostingGap status open.
+UiHostingGap affects UI.
+UiHostingGap describes "Go host process versus embedded library/native/browser allocation; preserve BWEB duties and app-context separation.".
+StemServiceSplitGap status open.
+StemServiceSplitGap affects StemProfile.
+StemServiceSplitGap describes "Separate service extraction is unresolved; current accountability remains inside BuckingService.".
+AptServiceSplitGap status open.
+AptServiceSplitGap affects AptDomain.
+AptServiceSplitGap describes "Persistent library, active definition and draft ownership split is unresolved; no new APT service assumed.".
+PresentationWireGap status open.
+PresentationWireGap affects PresentationContract.
+PresentationWireGap describes "Exact versioned schema/patch/intent/result payloads, compatibility negotiation and resync must be defined.".
+OperatorBrowserSchemaGap status open.
+OperatorBrowserSchemaGap affects OperatorBrowserContract.
+OperatorBrowserSchemaGap describes "Complete browser schema/recovery contracts beyond baseline intent are not available as a frozen full-system schema.".
+AptEditSchemaGap status open.
+AptEditSchemaGap affects EditAptDraft.
+AptEditSchemaGap describes "Existing Bucking command schema has import/export but not the complete selected draft edit/store lifecycle.".
+AptActivationGap status open.
+AptActivationGap affects ActivateAptDefinition.
+AptActivationGap describes "Reconcile existing AptImportCommand.activate with distinct explicit activation, economic policy and revision preconditions.".
+NewStanfordCodecGap status open.
+NewStanfordCodecGap affects ImportAptDefinition.
+NewStanfordCodecGap describes "Select actual supported newer standard/version/corpus; preserve differing semantics rather than inventing a generic new-standard codec.".
+PresentationRaceGap status open.
+PresentationRaceGap affects PublishPresentationRevision.
+PresentationRaceGap describes "Compare-and-publish check point, atomicity scope and reject/retry policy when Composition changes must be selected.".
+TransientEditGap status open.
+TransientEditGap affects PreservePresentationContinuity.
+TransientEditGap describes "Focus, scroll and unsubmitted local text retention/disposition across incompatible schema swaps needs product policy.".
+CollectionTaxonomyGap status open.
+CollectionTaxonomyGap affects PatchRepresentationCollection.
+CollectionTaxonomyGap describes "Table versus List<Record>, sparse Matrix and action-capable cells remain unresolved; no imaginary universal collection API.".
+DeliveryBudgetGap status open.
+DeliveryBudgetGap affects DeliveryScheduler.
+DeliveryBudgetGap describes "Concrete queue/memory/work limits, cadence and overflow behavior require measured acceptance targets.".
+JournalScopeGap status open.
+JournalScopeGap affects CommonServiceContract.
+JournalScopeGap describes "Production durability and event ordering scopes are not equivalent to mandatory global event sourcing; exact per-owner journal policy is open.".
+ProductionProvenanceGap status open.
+ProductionProvenanceGap affects ProductionRecordValue.
+ProductionProvenanceGap describes "Complete cut lineage/persistence contract is not supplied by the small existing ProductionEvent wire record.".
+P1000EvidenceGap status open.
+P1000EvidenceGap affects AdvanceP1000Protocol.
+P1000EvidenceGap describes "Full physical protocol/control behaviors require address/capture-backed evidence beyond MachineService-Lite; unsupported behavior stays unavailable.".
+ExecutablePredicateGap status open.
+ExecutablePredicateGap affects MVP1.
+ExecutablePredicateGap describes "Condition prose, function specifications and state initializers are not executable expressions. Cannot lower this complete design draft to executable IR yet.".
+SourceBindingGap status open.
+SourceBindingGap affects MVP1.
+SourceBindingGap describes "Target responsibilities exceed observed source implementations; exact revision/symbol/test bindings remain partial.".
+PermissiveContractGap status open.
+PermissiveContractGap affects PermissiveContract.
+PermissiveContractGap describes "External presence/permissive payload, identity, freshness and failure response need their own contract.".
+PhysicalTxGate status open.
+PhysicalTxGate affects GatePhysicalWrite.
+PhysicalTxGate describes "End-to-end sender/socket/target expiry and separate physical authorization are unmet; no hardware output is enabled.".
+LibraryAllocationGap status open.
+LibraryAllocationGap affects UIRuntime.
+LibraryAllocationGap describes "Reusable stateful definitions need explicit per-application instantiation and lifecycle in the eventual allocation grammar.".
+RendererFailureGap status open.
+RendererFailureGap affects ObserveRenderedRevision.
+RendererFailureGap describes "Post-publication renderer failure/recovery and display acknowledgment semantics are not settled by schema validity.".
+DomainAlgorithmBindingGap status open.
+DomainAlgorithmBindingGap affects TaperModels.
+DomainAlgorithmBindingGap describes "Exact versioned numerical/codec call signatures, precision and parity fixtures must be bound before executable lowering.".
+ShutdownCoordinationGap status open.
+ShutdownCoordinationGap affects ShutdownSystem.
+ShutdownCoordinationGap describes "Allocated instance selection, quiescence order, durable drain deadlines and cleanup after a component failure need a system lifecycle contract; an ordered design walkthrough is not proof of all-resource shutdown.".

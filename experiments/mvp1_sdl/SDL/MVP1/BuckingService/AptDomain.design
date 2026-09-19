@@ -1,0 +1,29 @@
+language sdl-mvp1-exercise version 0.1.
+
+unit AptDomain.
+capability ValidatedAptDefinitions.
+functionality ImportAptDefinition.
+functionality EditAptDraft.
+functionality StoreAptDraft.
+functionality ExportAptDefinition.
+functionality ActivateAptDefinition.
+
+BuckingService contains AptDomain.
+AptDomain provides ValidatedAptDefinitions.
+AptDomain status proposed.
+AptDomain cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/Domains/DetailedArchitectureDiscussion.md".
+AptDomain owns ImportAptDefinition.
+ImportAptDefinition realizes ValidatedAptDefinitions.
+ImportAptDefinition specifies "Decode supported source with codec; preserve common and standard-specific fields, digest, source/version and companion semantics.".
+AptDomain owns EditAptDraft.
+EditAptDraft realizes ValidatedAptDefinitions.
+EditAptDraft specifies "Validate target/cell identity, expected draft revision, authority and domain rules before publishing a new accepted revision.".
+AptDomain owns StoreAptDraft.
+StoreAptDraft realizes ValidatedAptDefinitions.
+StoreAptDraft specifies "Validate complete draft; explicit create-new/update-existing identity; persistence and codec export are domain operations.".
+AptDomain owns ExportAptDefinition.
+ExportAptDefinition realizes ValidatedAptDefinitions.
+ExportAptDefinition specifies "Use the matching codec to produce authoritative bytes/name/digest without renderer-side serialization.".
+AptDomain owns ActivateAptDefinition.
+ActivateAptDefinition realizes ValidatedAptDefinitions.
+ActivateAptDefinition specifies "Separate import/load/save from explicit active-definition policy; existing import activate flag must be reconciled, never ignored or treated as implicit authority.".

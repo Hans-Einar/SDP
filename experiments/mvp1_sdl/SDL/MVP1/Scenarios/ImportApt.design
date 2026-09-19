@@ -1,0 +1,58 @@
+language sdl-mvp1-exercise version 0.1.
+
+scenario ImportApt.
+condition ImportAptReady.
+condition ImportAptContinue.
+condition ImportAptReject.
+outcome ImportAptCompleted.
+outcome ImportAptRejected.
+step ImportAptIntent.
+step ImportAptRoute.
+step ImportAptDecode.
+step ImportAptAccept.
+step ImportAptProject.
+step ImportAptSchema.
+step ImportAptFailure.
+step ImportAptSuccess.
+
+ImportApt illustrates ManageAptDefinitions.
+ImportApt exercises ValidatedAptDefinitions.
+ImportApt starts-when ImportAptReady.
+ImportApt starts-at ImportAptIntent.
+ImportAptReady describes "An identified user or tool requests import of a supported file.".
+ImportAptContinue describes "The previous operation succeeded and the next step's declared contract preconditions remain true; exact predicates are an executable-language gap.".
+ImportAptReject describes "Validation, authority, applicability or operation failure prevents continuation; preserve prior valid state and report the specific reason.".
+ImportAptCompleted describes "The stated design path completed under its explicit obligations; this is not an observed test result.".
+ImportAptRejected describes "The path terminated without claiming the requested change succeeded; failures remain observable.".
+ImportApt preserves DomainTruthOwned.
+ImportApt preserves ConservativeQuality.
+ImportAptIntent calls SubmitUiCommand within BuckingUI.
+ImportAptIntent describes "Explicit new action identity and target owner.".
+ImportAptIntent proceeds-to ImportAptFailure when ImportAptReject.
+ImportAptIntent proceeds-to ImportAptRoute when ImportAptContinue.
+ImportAptRoute calls RouteBrowserCommand within BuckingWeb.
+ImportAptRoute describes "Route APT import to Bucking, preserving identity.".
+ImportAptRoute proceeds-to ImportAptFailure when ImportAptReject.
+ImportAptRoute proceeds-to ImportAptDecode when ImportAptContinue.
+ImportAptDecode calls DecodeClassicApt within BuckingService.
+ImportAptDecode describes "Supported Classic fixture semantics only; other codecs require explicit support.".
+ImportAptDecode proceeds-to ImportAptFailure when ImportAptReject.
+ImportAptDecode proceeds-to ImportAptAccept when ImportAptContinue.
+ImportAptAccept calls ImportAptDefinition within BuckingService.
+ImportAptAccept describes "Preserve source digest/common/extensions; activation remains separate policy.".
+ImportAptAccept proceeds-to ImportAptFailure when ImportAptReject.
+ImportAptAccept proceeds-to ImportAptProject when ImportAptContinue.
+ImportAptProject calls ProjectAptAvailability within BuckingUI.
+ImportAptProject describes "Absent standard-specific data stays unavailable.".
+ImportAptProject proceeds-to ImportAptFailure when ImportAptReject.
+ImportAptProject proceeds-to ImportAptSchema when ImportAptContinue.
+ImportAptSchema calls BuildPresentationSchema within BuckingUI.
+ImportAptSchema describes "Rebuild only for structural discriminator change.".
+ImportAptSchema proceeds-to ImportAptFailure when ImportAptReject.
+ImportAptSchema proceeds-to ImportAptSuccess when ImportAptContinue.
+ImportAptFailure finishes ImportApt with ImportAptRejected.
+ImportAptSuccess finishes ImportApt with ImportAptCompleted.
+ImportAptIntent emits OperatorBrowserRequests through OperatorBrowserChannel.
+ImportAptRoute receives OperatorBrowserRequests through OperatorBrowserChannel.
+ImportAptRoute emits BuckingRequests through BuckingServiceUpstream.
+ImportAptAccept receives BuckingRequests through BuckingServiceUpstream.

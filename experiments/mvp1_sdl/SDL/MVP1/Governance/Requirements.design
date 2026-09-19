@@ -1,0 +1,2009 @@
+language sdl-mvp1-exercise version 0.1.
+
+requirement SystemRequirement001.
+requirement SystemRequirement002.
+requirement SystemRequirement003.
+requirement SystemRequirement004.
+requirement SystemRequirement005.
+requirement SystemRequirement006.
+requirement SystemRequirement007.
+requirement SystemRequirement008.
+requirement SystemRequirement009.
+requirement SystemRequirement010.
+requirement SystemRequirement011.
+requirement SystemRequirement012.
+requirement SystemRequirement013.
+requirement SystemRequirement014.
+requirement SystemRequirement015.
+requirement SystemRequirement016.
+requirement SystemRequirement017.
+requirement SystemRequirement018.
+requirement SystemRequirement019.
+requirement SystemRequirement020.
+requirement SystemRequirement021.
+requirement SystemRequirement022.
+requirement SystemRequirement023.
+requirement SystemRequirement024.
+requirement SystemRequirement025.
+requirement SystemRequirement026.
+requirement SystemRequirement027.
+requirement SystemRequirement028.
+requirement SystemRequirement029.
+requirement SystemRequirement030.
+requirement SystemRequirement031.
+requirement SystemRequirement032.
+requirement SystemRequirement033.
+requirement SystemRequirement034.
+requirement SystemRequirement035.
+requirement SystemRequirement036.
+requirement SystemRequirement037.
+requirement SystemRequirement038.
+requirement SystemRequirement039.
+requirement SystemRequirement040.
+requirement SystemRequirement041.
+requirement SystemRequirement042.
+requirement SystemRequirement043.
+requirement SystemRequirement044.
+requirement SystemRequirement045.
+requirement SystemRequirement046.
+requirement SystemRequirement047.
+requirement SystemRequirement048.
+requirement SystemRequirement049.
+requirement SystemRequirement050.
+requirement SystemRequirement051.
+requirement SystemRequirement052.
+requirement SystemRequirement053.
+requirement SystemRequirement054.
+requirement SystemRequirement055.
+requirement SystemRequirement056.
+requirement SystemRequirement057.
+requirement SystemRequirement058.
+requirement SystemRequirement059.
+requirement SystemRequirement060.
+requirement SystemRequirement061.
+requirement SystemRequirement062.
+requirement SystemRequirement063.
+requirement SystemRequirement064.
+requirement SystemRequirement065.
+requirement SystemRequirement066.
+requirement SystemRequirement067.
+requirement SystemRequirement068.
+requirement SystemRequirement069.
+requirement SystemRequirement070.
+requirement SystemRequirement071.
+requirement SystemRequirement072.
+requirement SystemRequirement073.
+requirement SystemRequirement074.
+requirement SystemRequirement075.
+requirement SystemRequirement076.
+requirement SystemRequirement077.
+requirement SystemRequirement078.
+requirement SystemRequirement079.
+requirement SystemRequirement080.
+requirement SystemRequirement081.
+requirement SystemRequirement082.
+requirement SystemRequirement083.
+requirement SystemRequirement084.
+requirement SystemRequirement085.
+requirement SystemRequirement086.
+requirement SystemRequirement087.
+requirement SystemRequirement088.
+requirement SystemRequirement089.
+requirement SystemRequirement090.
+requirement SystemRequirement091.
+requirement SystemRequirement092.
+requirement SystemRequirement093.
+requirement SystemRequirement094.
+requirement SystemRequirement095.
+requirement SystemRequirement096.
+requirement SystemRequirement097.
+requirement SystemRequirement098.
+requirement SystemRequirement099.
+requirement CTRRequirement001.
+requirement CTRRequirement002.
+requirement CTRRequirement003.
+requirement CTRRequirement004.
+requirement CTRRequirement005.
+requirement CTRRequirement006.
+requirement CTRRequirement007.
+requirement CTRRequirement008.
+requirement CTRRequirement009.
+requirement CTRRequirement010.
+requirement CTRRequirement011.
+requirement CTRRequirement012.
+requirement CTRRequirement013.
+requirement CTRRequirement014.
+requirement CTRRequirement015.
+requirement CTRRequirement016.
+requirement CTRRequirement017.
+requirement CTRRequirement018.
+requirement BCKRequirement001.
+requirement BCKRequirement002.
+requirement BCKRequirement003.
+requirement BCKRequirement004.
+requirement BCKRequirement005.
+requirement BCKRequirement006.
+requirement BCKRequirement007.
+requirement BCKRequirement008.
+requirement BCKRequirement009.
+requirement BCKRequirement010.
+requirement SFCRequirement001.
+requirement SFCRequirement002.
+requirement SFCRequirement003.
+requirement SFCRequirement004.
+requirement SFCRequirement005.
+requirement SFCRequirement006.
+requirement SFCRequirement007.
+requirement SFCRequirement008.
+requirement SFCRequirement009.
+requirement SFCRequirement010.
+requirement TPRRequirement001.
+requirement TPRRequirement002.
+requirement TPRRequirement003.
+requirement TPRRequirement004.
+requirement TPRRequirement005.
+requirement TPRRequirement006.
+requirement TPRRequirement007.
+requirement TPRRequirement008.
+requirement TPRRequirement009.
+requirement TPRRequirement010.
+requirement BLBRequirement001.
+requirement BLBRequirement002.
+requirement BLBRequirement003.
+requirement BLBRequirement004.
+requirement BLBRequirement005.
+requirement BLBRequirement006.
+requirement BLBRequirement007.
+requirement BLBRequirement008.
+requirement BLBRequirement009.
+requirement BLBRequirement010.
+requirement BLBRequirement011.
+requirement BKSRequirement001.
+requirement BKSRequirement002.
+requirement BKSRequirement003.
+requirement BKSRequirement004.
+requirement BKSRequirement005.
+requirement BKSRequirement006.
+requirement BKSRequirement007.
+requirement BKSRequirement008.
+requirement BKSRequirement009.
+requirement BKSRequirement010.
+requirement BKSRequirement011.
+requirement BKSRequirement012.
+requirement BKSRequirement013.
+requirement BKSRequirement014.
+requirement BKSRequirement015.
+requirement BKSRequirement016.
+requirement BKSRequirement017.
+requirement BKSRequirement018.
+requirement BWEBRequirement001.
+requirement BWEBRequirement002.
+requirement BWEBRequirement003.
+requirement BWEBRequirement004.
+requirement BWEBRequirement005.
+requirement BWEBRequirement006.
+requirement BWEBRequirement007.
+requirement BWEBRequirement008.
+requirement BWEBRequirement009.
+requirement BWEBRequirement010.
+requirement BWEBRequirement011.
+requirement BWEBRequirement012.
+requirement MLBRequirement001.
+requirement MLBRequirement002.
+requirement MLBRequirement003.
+requirement MLBRequirement004.
+requirement MLBRequirement005.
+requirement MLBRequirement006.
+requirement MLBRequirement007.
+requirement MLBRequirement008.
+requirement MLBRequirement009.
+requirement MLBRequirement010.
+requirement MLBRequirement011.
+requirement MLBRequirement012.
+requirement MLBRequirement013.
+requirement MLBRequirement014.
+requirement MLBRequirement015.
+requirement MLBRequirement016.
+requirement MCHRequirement001.
+requirement MCHRequirement002.
+requirement MCHRequirement003.
+requirement MCHRequirement004.
+requirement MCHRequirement005.
+requirement MCHRequirement006.
+requirement MCHRequirement007.
+requirement MCHRequirement008.
+requirement MCHRequirement009.
+requirement MCHRequirement010.
+requirement MCHRequirement011.
+requirement MCHRequirement012.
+requirement MCHRequirement013.
+requirement MCHRequirement014.
+requirement MCHRequirement015.
+requirement MCHRequirement016.
+requirement MCHRequirement017.
+requirement MCHRequirement018.
+requirement MCHRequirement019.
+requirement MCHRequirement020.
+requirement MCHRequirement021.
+requirement MCHRequirement022.
+requirement MCHRequirement023.
+requirement PGWRequirement001.
+requirement PGWRequirement002.
+requirement PGWRequirement003.
+requirement PGWRequirement004.
+requirement PGWRequirement005.
+requirement PGWRequirement006.
+requirement PGWRequirement007.
+requirement PGWRequirement008.
+requirement PGWRequirement009.
+requirement PGWRequirement010.
+requirement PGWRequirement011.
+requirement PGWRequirement012.
+requirement PGWRequirement013.
+requirement PGWRequirement014.
+requirement PGWRequirement015.
+requirement SIMRequirement001.
+requirement SIMRequirement002.
+requirement SIMRequirement003.
+requirement SIMRequirement004.
+requirement SIMRequirement005.
+requirement SIMRequirement006.
+requirement SIMRequirement007.
+requirement SIMRequirement008.
+requirement SIMRequirement009.
+requirement SIMRequirement010.
+requirement SIMRequirement011.
+requirement SIMRequirement012.
+requirement SIMRequirement013.
+requirement SIMRequirement014.
+requirement BOXRequirement001.
+requirement BOXRequirement002.
+requirement BOXRequirement003.
+requirement BOXRequirement004.
+requirement BOXRequirement005.
+requirement BOXRequirement006.
+requirement BOXRequirement007.
+requirement BOXRequirement008.
+requirement BOXRequirement009.
+requirement BOXRequirement010.
+requirement LBKRequirement001.
+requirement LBKRequirement002.
+requirement LBKRequirement003.
+requirement LBKRequirement004.
+requirement LBKRequirement005.
+requirement LBKRequirement006.
+requirement LBKRequirement007.
+requirement LBKRequirement008.
+requirement LBKRequirement009.
+requirement LBKRequirement010.
+requirement LBKRequirement011.
+requirement LBKRequirement012.
+requirement LBKRequirement013.
+requirement SVKRequirement001.
+requirement SVKRequirement002.
+requirement SVKRequirement003.
+requirement SVKRequirement004.
+requirement SVKRequirement005.
+requirement SVKRequirement006.
+requirement SVKRequirement007.
+requirement SVKRequirement008.
+requirement SVKRequirement009.
+requirement SVKRequirement010.
+requirement SVKRequirement011.
+requirement SVKRequirement012.
+requirement SVKRequirement013.
+requirement SVKRequirement014.
+requirement SVKRequirement015.
+requirement UIRRequirement001.
+requirement UIRRequirement002.
+requirement UIRRequirement003.
+requirement UIRRequirement004.
+requirement UIRRequirement005.
+requirement UIRRequirement006.
+requirement UIRRequirement007.
+requirement UIRRequirement008.
+requirement UIRRequirement009.
+requirement UIRRequirement010.
+requirement UIRRequirement011.
+requirement UIRRequirement012.
+requirement BUIRequirement001.
+requirement BUIRequirement002.
+requirement BUIRequirement003.
+requirement BUIRequirement004.
+requirement BUIRequirement005.
+requirement BUIRequirement006.
+requirement BUIRequirement007.
+requirement BUIRequirement008.
+requirement BUIRequirement009.
+requirement BUIRequirement010.
+requirement BUIRequirement011.
+requirement BUIRequirement012.
+requirement BUIRequirement013.
+requirement BUIRequirement014.
+requirement SUIRequirement001.
+requirement SUIRequirement002.
+requirement SUIRequirement003.
+requirement SUIRequirement004.
+requirement SUIRequirement005.
+requirement SUIRequirement006.
+requirement SUIRequirement007.
+requirement SUIRequirement008.
+requirement SUIRequirement009.
+requirement SUIRequirement010.
+requirement SUIRequirement011.
+requirement SUIRequirement012.
+
+SystemRequirement001 status inherited.
+SystemRequirement001 describes "MVP1-SYS-REQ-001: Separate runtime authorities".
+SystemRequirement001 specifies "The system SHALL preserve distinct runtime authorities for physical/simulated P1000 target transport, machine/P1000 semantics and calibration, bucking/forestry computation, browser adaptation, browser presentation and optional Lab diagnostics.".
+SystemRequirement001 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement001 constrains MVP1.
+SystemRequirement002 status inherited.
+SystemRequirement002 describes "MVP1-SYS-REQ-002: No hidden authority migration".
+SystemRequirement002 specifies "A frontend, Lab, web adapter or transport gateway SHALL NOT become machine or bucking authority merely because it can send a command or display state.".
+SystemRequirement002 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement002 constrains DomainTruthOwned.
+SystemRequirement003 status inherited.
+SystemRequirement003 describes "MVP1-SYS-REQ-003: Simulator/gateway interchangeability".
+SystemRequirement003 specifies "MachineService SHALL consume one versioned target contract that can be implemented by P1000Simulator or p1000-gateway without simulator-specific MachineService application branches.".
+SystemRequirement003 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement003 constrains TargetContract.
+SystemRequirement004 status inherited.
+SystemRequirement004 describes "MVP1-SYS-REQ-004: BuckingWeb dual upstream".
+SystemRequirement004 specifies "BuckingWeb SHALL maintain independently observable connections to MachineService and BuckingService and SHALL support machine telemetry/commands when BuckingService is unavailable.".
+SystemRequirement004 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement004 constrains MaintainDualUpstreams.
+SystemRequirement005 status inherited.
+SystemRequirement005 describes "MVP1-SYS-REQ-005: Labs are optional sidecars".
+SystemRequirement005 specifies "MachineLab and BuckingLab SHALL be removable without changing authoritative service behavior.".
+SystemRequirement005 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement005 constrains MachineLab.
+SystemRequirement005 constrains BuckingLab.
+SystemRequirement006 status inherited.
+SystemRequirement006 describes "MVP1-SYS-REQ-006: Internal IPC".
+SystemRequirement006 specifies "Separately deployable internal constituents SHALL use ordinary IP/TCP contracts at runtime, including when colocated on one host.".
+SystemRequirement006 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement006 constrains CommonServiceContract.
+SystemRequirement007 status inherited.
+SystemRequirement007 describes "MVP1-SYS-REQ-007: Protobuf authority".
+SystemRequirement007 specifies "Internal service wire schemas SHALL be defined in versioned Protobuf authority and generated for supported implementation languages.".
+SystemRequirement007 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement007 constrains ContractRegistry.
+SystemRequirement008 status inherited.
+SystemRequirement008 describes "MVP1-SYS-REQ-008: TCP message framing".
+SystemRequirement008 specifies "Internal TCP protocols SHALL provide explicit message-length framing and SHALL NOT assume one read/write call equals one logical message.".
+SystemRequirement008 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement008 constrains FrameServiceMessages.
+SystemRequirement009 status inherited.
+SystemRequirement009 describes "MVP1-SYS-REQ-009: Browser transport".
+SystemRequirement009 specifies "BuckingWeb/BuckingUI runtime SHALL use versioned JSON messages over WebSocket; REST/JSON SHALL remain available for snapshot/config/export/recovery where specified.".
+SystemRequirement009 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement009 constrains OperatorBrowserContract.
+SystemRequirement010 status inherited.
+SystemRequirement010 describes "MVP1-SYS-REQ-010: Diagnostic representation".
+SystemRequirement010 specifies "Binary internal messages SHALL have a stable human-readable JSON/NDJSON representation usable by Lab/export/debug tooling.".
+SystemRequirement010 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement010 constrains FormatLabConsole.
+SystemRequirement011 status inherited.
+SystemRequirement011 describes "MVP1-SYS-REQ-011: Contract compatibility".
+SystemRequirement011 specifies "Shared contracts SHALL use stable field identities and explicit compatibility/versioning rules. Removed Protobuf field numbers SHALL NOT be repurposed.".
+SystemRequirement011 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement011 constrains GovernContractEvolution.
+SystemRequirement012 status inherited.
+SystemRequirement012 describes "MVP1-SYS-REQ-012: Distinct identity domains".
+SystemRequirement012 specifies "The implementation SHALL keep service session, source event sequence, delivery-stream sequence, command ID, domain revision, gateway delivery sequence and P1000 sequence as distinct concepts.".
+SystemRequirement012 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement012 constrains DistinctSequenceDomains.
+SystemRequirement013 status inherited.
+SystemRequirement013 describes "MVP1-SYS-REQ-013: Service event ordering".
+SystemRequirement013 specifies "Every event-publishing service SHALL expose a monotonically increasing **source event sequence** within one service session. Filtered subscriptions and supersedable delivery MAY legitimately observe sparse source-event sequences and SHALL NOT infer transport loss from source-event gaps alone.".
+SystemRequirement013 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement013 constrains ScheduleSubscriberDelivery.
+SystemRequirement014 status inherited.
+SystemRequirement014 describes "MVP1-SYS-REQ-014: Command correlation".
+SystemRequirement014 specifies "Every command SHALL carry a correlation identity preserved through its command-result lifecycle.".
+SystemRequirement014 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement014 constrains StableCommandIdentity.
+SystemRequirement015 status inherited.
+SystemRequirement015 describes "MVP1-SYS-REQ-015: Source provenance".
+SystemRequirement015 specifies "Normalized machine/operator events SHALL preserve source provenance sufficient to distinguish physical P1000 wire, simulated P1000 wire, semantic command injection and replay.".
+SystemRequirement015 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement015 constrains ConsumeTargetRecord.
+SystemRequirement016 status inherited.
+SystemRequirement016 describes "MVP1-SYS-REQ-016: Raw traceability".
+SystemRequirement016 specifies "Where P1000 semantics are derived from raw traffic, diagnostics SHALL be able to trace the semantic value/event back to raw/source provenance without forcing raw bytes into every high-rate presentation event.".
+SystemRequirement016 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement016 constrains DecodeP1000Frames.
+SystemRequirement017 status inherited.
+SystemRequirement017 describes "MVP1-SYS-REQ-017: Command/event separation".
+SystemRequirement017 specifies "Commands SHALL request actions; events SHALL report accepted facts/state changes; snapshots/queries SHALL read state without implying mutation.".
+SystemRequirement017 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement017 constrains MachineContract.
+SystemRequirement017 constrains BuckingContract.
+SystemRequirement018 status inherited.
+SystemRequirement018 describes "MVP1-SYS-REQ-018: Runtime capability catalog".
+SystemRequirement018 specifies "MachineService and BuckingService SHALL publish runtime command/capability availability. A schema-defined command SHALL NOT be assumed usable solely because its message type exists.".
+SystemRequirement018 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement018 constrains PublishAccessCatalog.
+SystemRequirement019 status inherited.
+SystemRequirement019 describes "MVP1-SYS-REQ-019: Authoritative revalidation".
+SystemRequirement019 specifies "Frontend/BuckingWeb may pre-check capabilities for UX, but the owning service SHALL validate every command authoritatively on receipt.".
+SystemRequirement019 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement019 constrains ValidateMachineCommand.
+SystemRequirement020 status inherited.
+SystemRequirement020 describes "MVP1-SYS-REQ-020: Semantic operator injection".
+SystemRequirement020 specifies "MachineService SHALL support an explicit semantic operator-input command path so trusted clients can trigger normalized operator events without fabricating P1000 wire frames.".
+SystemRequirement020 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement020 constrains InjectSemanticOperatorInput.
+SystemRequirement021 status inherited.
+SystemRequirement021 describes "MVP1-SYS-REQ-021: Simulator wire injection remains separate".
+SystemRequirement021 specifies "P1000Simulator SHALL provide a separate control path (`simctl`/SimulatorUI) that produces wire-faithful P1000 behavior for end-to-end parser testing.".
+SystemRequirement021 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement021 constrains HandleSimulatorControl.
+SystemRequirement022 status inherited.
+SystemRequirement022 describes "MVP1-SYS-REQ-022: Bounded subscriber behavior".
+SystemRequirement022 specifies "No subscriber SHALL be able to cause unbounded memory growth or indefinitely block an authoritative service due to slow consumption.".
+SystemRequirement022 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement022 constrains BoundedSubscribers.
+SystemRequirement023 status inherited.
+SystemRequirement023 describes "MVP1-SYS-REQ-023: Delivery class".
+SystemRequirement023 specifies "Every published event family SHALL have an explicit delivery/backpressure class: non-supersedable, supersedable/latest-wins, or diagnostic/bounded-with-gap-reporting.".
+SystemRequirement023 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement023 constrains ScheduleSubscriberDelivery.
+SystemRequirement024 status inherited.
+SystemRequirement024 describes "MVP1-SYS-REQ-024: Durable facts not dropped".
+SystemRequirement024 specifies "Cut/production facts, command results and accepted configuration activation events SHALL NOT use latest-wins replacement semantics.".
+SystemRequirement024 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement024 constrains DurableFactsRetained.
+SystemRequirement025 status inherited.
+SystemRequirement025 describes "MVP1-SYS-REQ-025: Reconnect detection".
+SystemRequirement025 specifies "Clients SHALL detect service-session changes and **delivery-stream** gaps and SHALL resynchronize according to typed subscription/resume outcomes rather than treating sparse source-event sequence as loss.".
+SystemRequirement025 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement025 constrains RecoverUiSession.
+SystemRequirement026 status inherited.
+SystemRequirement026 describes "MVP1-SYS-REQ-026: Graceful shutdown".
+SystemRequirement026 specifies "Runtime constituents SHALL define deterministic shutdown behavior for sockets, workers, event queues and persisted Lab/production state.".
+SystemRequirement026 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement026 constrains ShutdownServiceRuntime.
+SystemRequirement027 status inherited.
+SystemRequirement027 describes "MVP1-SYS-REQ-027: MachineService authority".
+SystemRequirement027 specifies "MachineService SHALL own P1000 semantic decoding, protocol state machines, calibrated machine state and evidence-backed P1000 ACK decisions.".
+SystemRequirement027 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement027 constrains AdvanceP1000Protocol.
+SystemRequirement028 status inherited.
+SystemRequirement028 describes "MVP1-SYS-REQ-028: Gateway semantic neutrality".
+SystemRequirement028 specifies "p1000-gateway SHALL NOT invent P1000 semantic responses or autonomous P1000 ACK policy.".
+SystemRequirement028 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement028 constrains P1000Gateway.
+SystemRequirement029 status inherited.
+SystemRequirement029 describes "MVP1-SYS-REQ-029: P1000 framing evidence".
+SystemRequirement029 specifies "P1000 frame parsing SHALL remain length-driven and capture-backed; payload occurrences of `FF` SHALL NOT be treated as unconditional frame boundaries.".
+SystemRequirement029 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement029 constrains DecodeP1000Frames.
+SystemRequirement030 status inherited.
+SystemRequirement030 describes "MVP1-SYS-REQ-030: Explicit protocol state machines".
+SystemRequirement030 specifies "P1000 boot/runtime/control behavior SHALL be implemented as explicit testable state machines rather than distributed implicit callback flags.".
+SystemRequirement030 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement030 constrains AdvanceP1000Protocol.
+SystemRequirement031 status inherited.
+SystemRequirement031 describes "MVP1-SYS-REQ-031: Calibration ownership".
+SystemRequirement031 specifies "MachineService SHALL own active calibration revision/state and SHALL expose calibrated engineering values when available while preserving explicit unavailable/unknown state, raw provenance and evidence traceability.".
+SystemRequirement031 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement031 constrains CalibrateMeasurement.
+SystemRequirement032 status inherited.
+SystemRequirement032 describes "MVP1-SYS-REQ-032: Absolute and working coordinates".
+SystemRequirement032 specifies "The machine/bucking contracts SHALL distinguish absolute stem coordinates from working-root-relative coordinates where both are required.".
+SystemRequirement032 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement032 constrains MaintainAbsoluteProfile.
+SystemRequirement033 status inherited.
+SystemRequirement033 describes "MVP1-SYS-REQ-033: Bounded inbound target buffer".
+SystemRequirement033 specifies "The physical gateway SHALL support explicit bounded RX buffering across MachineService disconnects/restarts and SHALL report overflow/gaps.".
+SystemRequirement033 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement033 constrains BufferTargetHistory.
+SystemRequirement034 status inherited.
+SystemRequirement034 describes "MVP1-SYS-REQ-034: Explicit resume policy".
+SystemRequirement034 specifies "After reconnect, MachineService SHALL explicitly choose resume/live-only/discard behavior according to the target contract; buffered history SHALL NOT replay silently.".
+SystemRequirement034 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement034 constrains RecoverTargetHistory.
+SystemRequirement035 status inherited.
+SystemRequirement035 describes "MVP1-SYS-REQ-035: Delivery commit separation".
+SystemRequirement035 specifies "Internal target delivery commit SHALL remain distinct from P1000 protocol ACK in names, messages and state machines.".
+SystemRequirement035 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement035 constrains TargetContract.
+SystemRequirement036 status inherited.
+SystemRequirement036 describes "MVP1-SYS-REQ-036: No stale physical TX replay".
+SystemRequirement036 specifies "Outbound physical commands SHALL have bounded end-to-end request/write lifecycles and SHALL NOT be replayed later merely because connectivity returns. End-to-end sender-queue/socket/target expiry is a hard gate before physical TX capability is released.".
+SystemRequirement036 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement036 constrains GatePhysicalWrite.
+SystemRequirement037 status inherited.
+SystemRequirement037 describes "MVP1-SYS-REQ-037: Hidden truth isolation".
+SystemRequirement037 specifies "Simulator physical truth SHALL remain inaccessible through the normal MachineService target contract and normal BuckingService machine input path.".
+SystemRequirement037 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement037 constrains HiddenTruthIsolated.
+SystemRequirement038 status inherited.
+SystemRequirement038 describes "MVP1-SYS-REQ-038: Deterministic simulation".
+SystemRequirement038 specifies "Simulator scenarios SHALL support deterministic identity/seed/input where needed for reproducible integration tests.".
+SystemRequirement038 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement038 constrains ResetSimulatedTruth.
+SystemRequirement039 status inherited.
+SystemRequirement039 describes "MVP1-SYS-REQ-039: Visual continuity".
+SystemRequirement039 specifies "SimulatorUI and BuckingUI SHALL preserve the accepted Concept1 visual language/layout intent while using the new internal architecture.".
+SystemRequirement039 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement039 constrains PreserveVisualIntent.
+SystemRequirement040 status inherited.
+SystemRequirement040 describes "MVP1-SYS-REQ-040: Pure numerical package boundaries".
+SystemRequirement040 specifies "Taper, bucking-core and StanForD compatibility logic SHALL remain callable/testable without HTTP/WebSocket/browser dependencies.".
+SystemRequirement040 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement040 constrains PureLibraries.
+SystemRequirement041 status inherited.
+SystemRequirement041 describes "MVP1-SYS-REQ-041: K1 critical path".
+SystemRequirement041 specifies "The current K1/one-best decision SHALL be separable from quiet/background K-best archive generation.".
+SystemRequirement041 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement041 constrains ComputeOneBest.
+SystemRequirement042 status inherited.
+SystemRequirement042 describes "MVP1-SYS-REQ-042: Stale result rejection".
+SystemRequirement042 specifies "Asynchronous/profile/planning results SHALL carry input/revision identity and SHALL NOT overwrite newer authoritative material state when stale.".
+SystemRequirement042 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement042 constrains AcceptPlanningResult.
+SystemRequirement043 status inherited.
+SystemRequirement043 describes "MVP1-SYS-REQ-043: Plan continuity".
+SystemRequirement043 specifies "A new measurement while a newer plan is computing SHALL NOT be represented to presentation consumers as a plan disappearing merely because the planner is pending.".
+SystemRequirement043 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement043 constrains PlannerState.
+SystemRequirement044 status inherited.
+SystemRequirement044 describes "MVP1-SYS-REQ-044: Cut-time provenance".
+SystemRequirement044 specifies "Durable production records SHALL bind the relevant calibration, bucking policy, economic/APT source, model and plan/input revisions authoritative for the cut. This contract is a hard gate before BuckingService production implementation is released.".
+SystemRequirement044 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement044 constrains ValidateCutContext.
+SystemRequirement045 status inherited.
+SystemRequirement045 describes "MVP1-SYS-REQ-045: StanForD boundary".
+SystemRequirement045 specifies "StanForD Classic SHALL be treated as legacy compatibility input/export, not as the internal language of BuckingService domain state.".
+SystemRequirement045 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement045 constrains DecodeClassicApt.
+SystemRequirement046 status inherited.
+SystemRequirement046 describes "MVP1-SYS-REQ-046: App-specific UI domains".
+SystemRequirement046 specifies "BuckingUI and SimulatorUI SHALL have app-specific UI-domain layers over generic shared runtime infrastructure.".
+SystemRequirement046 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement046 constrains OperatorUiDomain.
+SystemRequirement046 constrains SimulatorUiDomain.
+SystemRequirement047 status inherited.
+SystemRequirement047 describes "MVP1-SYS-REQ-047: Shared runtime semantic neutrality".
+SystemRequirement047 specifies "`ui-runtime` SHALL NOT contain forestry, P1000 or simulator hidden-truth semantics.".
+SystemRequirement047 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement047 constrains GenericUiMechanisms.
+SystemRequirement048 status inherited.
+SystemRequirement048 describes "MVP1-SYS-REQ-048: Headless BoxModels".
+SystemRequirement048 specifies "Presentation BoxModels SHALL contain no DOM/React/SVG/Canvas handles.".
+SystemRequirement048 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement048 constrains RepresentationRuntime.
+SystemRequirement049 status inherited.
+SystemRequirement049 describes "MVP1-SYS-REQ-049: Shared BoxShell/views".
+SystemRequirement049 specifies "BuckingUI and SimulatorUI SHALL reuse shared box shell/views/tokens where practical rather than reimplementing common visual chrome independently.".
+SystemRequirement049 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement049 constrains RenderSharedShell.
+SystemRequirement050 status superseded.
+SystemRequirement050 describes "MVP1-SYS-REQ-050: Specialized renderer optionality".
+SystemRequirement050 specifies "A separate renderer abstraction SHALL be introduced only for presentation surfaces where alternate retained rendering strategies are materially useful; ordinary React box views need no redundant renderer layer.".
+SystemRequirement050 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement050 constrains SelectedUiSeparation.
+SystemRequirement050 replaced-by SelectedUiSeparation.
+SystemRequirement051 status inherited.
+SystemRequirement051 describes "MVP1-SYS-REQ-051: Per-consumer cadence".
+SystemRequirement051 specifies "High-rate domain input SHALL NOT imply whole-page rerender. UI consumers SHALL be able to select appropriate cadence/latest-wins behavior independently.".
+SystemRequirement051 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement051 constrains ScheduleUiDelivery.
+SystemRequirement052 status inherited.
+SystemRequirement052 describes "MVP1-SYS-REQ-052: Plot retained identity".
+SystemRequirement052 specifies "Stem/log presentation SHALL expose stable entity identities/logical coordinates so an implementation may update/add/remove retained graphical entities without clearing/rebuilding the entire plot for every measurement.".
+SystemRequirement052 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement052 constrains ReconcileViewNodes.
+SystemRequirement053 status inherited.
+SystemRequirement053 describes "MVP1-SYS-REQ-053: Presentation-only interpolation".
+SystemRequirement053 specifies "Browser profile interpolation/downsampling visualization SHALL NOT become planning/machine authority.".
+SystemRequirement053 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement053 constrains FormatPresentationValue.
+SystemRequirement054 status inherited.
+SystemRequirement054 describes "MVP1-SYS-REQ-054: Independent Lab observation".
+SystemRequirement054 specifies "MachineLab SHALL consume the real MachineService public contract; BuckingLab SHALL consume the real BuckingService public contract.".
+SystemRequirement054 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement054 constrains ObserveMachineHistory.
+SystemRequirement054 constrains ObserveBuckingHistory.
+SystemRequirement055 status inherited.
+SystemRequirement055 describes "MVP1-SYS-REQ-055: Lab ledger ownership".
+SystemRequirement055 specifies "Labs MAY record ring buffers/ledgers/checkpoints/replay evidence but SHALL NOT become the authoritative store for active machine, APT, policy or economic state.".
+SystemRequirement055 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement055 constrains DomainTruthOwned.
+SystemRequirement056 status inherited.
+SystemRequirement056 describes "MVP1-SYS-REQ-056: Layer-explicit replay".
+SystemRequirement056 specifies "Replay SHALL explicitly identify its target layer and SHALL default to isolated/test consumers.".
+SystemRequirement056 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement056 constrains ReplayConfiguredRange.
+SystemRequirement057 status inherited.
+SystemRequirement057 describes "MVP1-SYS-REQ-057: No live physical replay default".
+SystemRequirement057 specifies "No generic Lab replay command SHALL transmit historical physical control traffic to a live machine.".
+SystemRequirement057 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement057 constrains NoPhysicalExecution.
+SystemRequirement058 status inherited.
+SystemRequirement058 describes "MVP1-SYS-REQ-058: Human-readable export".
+SystemRequirement058 specifies "Lab event history SHALL be exportable in a stable human-readable/machine-readable form such as NDJSON.".
+SystemRequirement058 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement058 constrains TransferLabArtifact.
+SystemRequirement059 status inherited.
+SystemRequirement059 describes "MVP1-SYS-REQ-059: Local SDP ownership".
+SystemRequirement059 specifies "Every constituent in `MVP1/CONSTITUENTS.md` SHALL maintain local Mandate/Study/Requirements before independent product implementation is accepted.".
+SystemRequirement059 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement059 constrains MVP1.
+SystemRequirement060 status inherited.
+SystemRequirement060 describes "MVP1-SYS-REQ-060: Shared contract changes are controlled".
+SystemRequirement060 specifies "After the Garden Gate, a worker SHALL NOT change shared `.proto`/browser contract authority as an incidental local implementation change.".
+SystemRequirement060 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement060 constrains GovernContractEvolution.
+SystemRequirement061 status inherited.
+SystemRequirement061 describes "MVP1-SYS-REQ-061: Go consistency".
+SystemRequirement061 specifies "Go constituents SHALL use `doc/MVP1_GO_BEST_PRACTICES.md` unless a local Design explicitly documents a justified deviation.".
+SystemRequirement061 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement061 constrains MachineService.
+SystemRequirement061 constrains LabKit.
+SystemRequirement061 constrains ServiceKit.
+SystemRequirement061 constrains P1000Gateway.
+SystemRequirement062 status inherited.
+SystemRequirement062 describes "MVP1-SYS-REQ-062: Unit/integration/E2E separation".
+SystemRequirement062 specifies "Constituents SHALL have focused core tests without network where appropriate, real TCP/protobuf integration tests for public service adapters, and selected multi-process end-to-end tests.".
+SystemRequirement062 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement062 constrains ContractRegistry.
+SystemRequirement063 status inherited.
+SystemRequirement063 describes "MVP1-SYS-REQ-063: Shared fixtures".
+SystemRequirement063 specifies "Cross-language service contract tests SHALL consume common checked-in fixtures rather than only testing encoder/decoder implementations against themselves.".
+SystemRequirement063 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement063 constrains CheckCrossLanguageFixtures.
+SystemRequirement064 status inherited.
+SystemRequirement064 describes "MVP1-SYS-REQ-064: No monolithic cross-authority implementation".
+SystemRequirement064 specifies "No implementation constituent SHALL combine independently deployable MachineService, BuckingService and BuckingWeb authorities into one internal monolith merely for convenience.".
+SystemRequirement064 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement064 constrains MVP1.
+SystemRequirement065 status inherited.
+SystemRequirement065 describes "MVP1-SYS-REQ-065: Garden Gate".
+SystemRequirement065 specifies "Broad parallel Codex implementation SHALL begin only after the current wave's public contracts, local requirements, behavioral provider/consumer fixtures, traceability and cross-platform verification gates are sufficiently frozen to make independent implementation deterministic.".
+SystemRequirement065 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement065 constrains MVP1.
+SystemRequirement066 status inherited.
+SystemRequirement066 describes "MVP1-SYS-REQ-066: Scoped server-granted authority".
+SystemRequirement066 specifies "Control authority SHALL be granted by the owning service in explicit scopes/capabilities rather than by client self-declaration.".
+SystemRequirement066 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement066 constrains ServerBoundAuthority.
+SystemRequirement067 status inherited.
+SystemRequirement067 describes "MVP1-SYS-REQ-067: Concurrent overlapping grants".
+SystemRequirement067 specifies "An owning service SHALL be able to grant the same/overlapping control scopes to multiple clients simultaneously when configured policy permits it.".
+SystemRequirement067 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement067 constrains ValidateMachineCommand.
+SystemRequirement068 status inherited.
+SystemRequirement068 describes "MVP1-SYS-REQ-068: Observer-only remains optional".
+SystemRequirement068 specifies "Clients including Labs MAY be configured observer-only, but observer-only SHALL NOT be a universal architectural restriction on Lab/tooling clients.".
+SystemRequirement068 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement068 constrains MachineLab.
+SystemRequirement068 constrains BuckingLab.
+SystemRequirement069 status inherited.
+SystemRequirement069 describes "MVP1-SYS-REQ-069: Deterministic mutation ordering".
+SystemRequirement069 specifies "Concurrent authorized command producers SHALL still enter the owning service's single authoritative ordering/reducer path; overlapping grants SHALL NOT create multiple state owners.".
+SystemRequirement069 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement069 constrains ReduceMachineState.
+SystemRequirement070 status inherited.
+SystemRequirement070 describes "MVP1-SYS-REQ-070: Scripted control uses public contracts".
+SystemRequirement070 specifies "Scripted/test workflows that act on an active simulator/machine SHALL use the same public command/capability paths as other clients and SHALL NOT require a hidden in-process control bypass.".
+SystemRequirement070 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement070 constrains RouteMachineToolCommand.
+SystemRequirement071 status inherited.
+SystemRequirement071 describes "MVP1-SYS-REQ-071: Labs may receive explicit control grants".
+SystemRequirement071 specifies "MachineLab and BuckingLab SHALL be eligible to receive explicit control/administration grants for scripted diagnostics/test workflows while remaining non-authoritative stores of domain state.".
+SystemRequirement071 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement071 constrains ServeMachineLabRequests.
+SystemRequirement071 constrains ServeBuckingLabRequests.
+SystemRequirement072 status inherited.
+SystemRequirement072 describes "MVP1-SYS-REQ-072: Namespaced coordination signals".
+SystemRequirement072 specifies "The system SHALL support lightweight namespaced coordination messages for orchestration/diagnostic workflows, with stable signal type, occurrence identity, optional human text and bounded attributes.".
+SystemRequirement072 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement072 constrains CommonServiceContract.
+SystemRequirement073 status inherited.
+SystemRequirement073 describes "MVP1-SYS-REQ-073: Coordination does not replace typed domain facts".
+SystemRequirement073 specifies "Coordination messages SHALL NOT be used as a generic substitute for typed Machine/Bucking domain events where stable domain semantics are known.".
+SystemRequirement073 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement073 constrains CommonServiceContract.
+SystemRequirement074 status inherited.
+SystemRequirement074 describes "MVP1-SYS-REQ-074: GlobalStop universally requestable".
+SystemRequirement074 specifies "Any valid connected client SHALL be able to request GlobalStop without holding ordinary start/move/control authority, subject to the connection/access policy of the owning service.".
+SystemRequirement074 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement074 constrains HandleMachineStop.
+SystemRequirement075 status inherited.
+SystemRequirement075 describes "MVP1-SYS-REQ-075: GlobalStop priority".
+SystemRequirement075 specifies "Owning services SHALL process GlobalStop ahead of queued normal control work where practical and SHALL prevent stale pre-stop normal intents from executing afterward.".
+SystemRequirement075 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement075 constrains HandleMachineStop.
+SystemRequirement076 status inherited.
+SystemRequirement076 describes "MVP1-SYS-REQ-076: GlobalStop identity/deduplication".
+SystemRequirement076 specifies "GlobalStop SHALL carry a unique occurrence `stop_id` preserved through propagation so repeated forwarding/observation can be deduplicated according to a defined service-session/retention policy.".
+SystemRequirement076 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement076 constrains StopState.
+SystemRequirement077 status inherited.
+SystemRequirement077 describes "MVP1-SYS-REQ-077: GlobalStop preserves diagnostics".
+SystemRequirement077 specifies "GlobalStop SHALL NOT imply terminating Lab daemons or disabling evidence recording; diagnostic collection should continue around/after the stop.".
+SystemRequirement077 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement077 constrains DiagnosticsSurviveStop.
+SystemRequirement078 status inherited.
+SystemRequirement078 describes "MVP1-SYS-REQ-078: Derived stop rules".
+SystemRequirement078 specifies "MachineService MAY derive GlobalStop from configured/evidence-backed input rules such as repeated ESC or explicit external permissive/presence changes without baking those rules into the generic transport contract.".
+SystemRequirement078 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement078 constrains HandleMachineStop.
+SystemRequirement079 status inherited.
+SystemRequirement079 describes "MVP1-SYS-REQ-079: External permissive adapter separation".
+SystemRequirement079 specifies "Additional presence/permissive inputs such as NFC/RFID SHALL enter through an explicit adapter/port and SHALL NOT be hidden inside generic P1000 serial framing/gateway semantics.".
+SystemRequirement079 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement079 constrains PermissiveInputAdapter.
+SystemRequirement080 status inherited.
+SystemRequirement080 describes "MVP1-SYS-REQ-080: Software stop labeling".
+SystemRequirement080 specifies "MVP1 software GlobalStop SHALL NOT be represented as a certified/safety-rated physical emergency-stop circuit unless a separately verified physical realization exists.".
+SystemRequirement080 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement080 constrains GlobalStopFlow.
+SystemRequirement081 status inherited.
+SystemRequirement081 describes "MVP1-SYS-REQ-081: Causality metadata".
+SystemRequirement081 specifies "Commands/events used in scripted workflows SHALL preserve command/correlation/causality metadata sufficient to trace generated events/results to the initiating workflow where practical.".
+SystemRequirement081 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement081 constrains StableCommandIdentity.
+SystemRequirement082 status inherited.
+SystemRequirement082 describes "MVP1-SYS-REQ-082: Cross-service stop propagation".
+SystemRequirement082 specifies "Where GlobalStop is forwarded between BuckingService and MachineService, the same stop occurrence identity SHALL be retained and each service SHALL perform its own local handling without creating propagation loops.".
+SystemRequirement082 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement082 constrains HandleBuckingStop.
+SystemRequirement083 status inherited.
+SystemRequirement083 describes "MVP1-SYS-REQ-083: Pre-stop intent invalidation".
+SystemRequirement083 specifies "Normal software control intents queued before an accepted GlobalStop SHALL be cancellable/rejectable by generation/epoch/state rules rather than executing later as stale work.".
+SystemRequirement083 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement083 constrains HandleMachineStop.
+SystemRequirement084 status inherited.
+SystemRequirement084 describes "MVP1-SYS-REQ-084: Tooling uses declared public interfaces".
+SystemRequirement084 specifies "`simctl`, `msctl`, `buckctl` and automation tooling SHALL use declared simulator/service/Lab contracts for runtime control/observation and SHALL NOT gain a second hidden IPC path merely for convenience.".
+SystemRequirement084 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement084 constrains SimCtl.
+SystemRequirement084 constrains MsCtl.
+SystemRequirement084 constrains BuckCtl.
+SystemRequirement085 status inherited.
+SystemRequirement085 describes "MVP1-SYS-REQ-085: Unknown coordination tolerance".
+SystemRequirement085 specifies "Consumers SHALL be able to ignore unknown coordination signal types while preserving normal operation and diagnostic recording.".
+SystemRequirement085 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement085 constrains CommonServiceContract.
+SystemRequirement086 status inherited.
+SystemRequirement086 describes "MVP1-SYS-REQ-086: Deterministic automation cancellation".
+SystemRequirement086 specifies "Services that own active automation/control workflows SHALL define deterministic GlobalStop cancellation/halt behavior while keeping diagnostic observers alive.".
+SystemRequirement086 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement086 constrains HandleBuckingStop.
+SystemRequirement086 constrains StopLabAutomation.
+SystemRequirement087 status inherited.
+SystemRequirement087 describes "MVP1-SYS-REQ-087: Coordination identity and namespace discipline".
+SystemRequirement087 specifies "Coordination messages SHALL distinguish stable namespaced `signal_type` from unique `occurrence_id`; namespace ownership, key/value count and size limits SHALL be documented by the owning service/contract.".
+SystemRequirement087 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement087 constrains CommonServiceContract.
+SystemRequirement088 status inherited.
+SystemRequirement088 describes "MVP1-SYS-REQ-088: GlobalStop occurrence lifecycle".
+SystemRequirement088 specifies "`stop_id` SHALL identify one stop occurrence. MachineService dedupe/conflict state SHALL be scoped to its current service session and advertised retention horizon: same-ID/same-payload is idempotent while retained, same-ID/different-payload conflicts while retained, a new MachineService service session may safely process the ID again, and post-retention reuse in the same session is processed as a new occurrence so an expired record cannot suppress a later genuine stop.".
+SystemRequirement088 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement088 constrains StopState.
+SystemRequirement089 status inherited.
+SystemRequirement089 describes "MVP1-SYS-REQ-089: Connection-bound peer identity".
+SystemRequirement089 specifies "Authoritative provenance and authority decisions SHALL be bound to server connection/peer context rather than trusted from caller-supplied command metadata. Wave-1 internal control services SHALL bind loopback/trusted-host by default; externally reachable control requires an explicit authenticated access design.".
+SystemRequirement089 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement089 constrains ServerBoundAuthority.
+SystemRequirement090 status inherited.
+SystemRequirement090 describes "MVP1-SYS-REQ-090: Command retry and result recovery".
+SystemRequirement090 specifies "For the lifetime advertised by the owning service, repeating the same `command_id` with the same semantic payload SHALL NOT execute the action again and SHALL return/recover the known lifecycle result. Reusing the same `command_id` with a different payload SHALL be rejected as a conflict. Expired/unknown command IDs SHALL never be silently executed as retries.".
+SystemRequirement090 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement090 constrains RecoverCommandLifecycle.
+SystemRequirement091 status inherited.
+SystemRequirement091 describes "MVP1-SYS-REQ-091: Source sequence versus delivery sequence".
+SystemRequirement091 specifies "Source `event_seq` SHALL remain global/immutable within a service session. Each active subscription delivery stream SHALL expose a separate contiguous delivery sequence used for gap detection; filtering and supersession SHALL NOT be interpreted as source-event loss.".
+SystemRequirement091 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement091 constrains DistinctSequenceDomains.
+SystemRequirement092 status inherited.
+SystemRequirement092 describes "MVP1-SYS-REQ-092: Typed resume and complete baseline".
+SystemRequirement092 specifies "Subscription establishment/resume SHALL return a typed outcome such as live-started, resumed, snapshot-required or outside-retention. A snapshot or explicit per-family recovery query SHALL provide enough authoritative baseline state to continue safely after snapshot-required/outside-retention outcomes.".
+SystemRequirement092 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement092 constrains CommitUiBaseline.
+SystemRequirement093 status inherited.
+SystemRequirement093 describes "MVP1-SYS-REQ-093: Hello and subscription lifecycle".
+SystemRequirement093 specifies "Service contracts SHALL define Hello ordering/negotiation failure, handshake timeout, selected contract version, exactly one active subscription per connection, second-Subscribe replacement semantics and explicit Unsubscribe behavior.".
+SystemRequirement093 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement093 constrains NegotiateServiceSession.
+SystemRequirement094 status inherited.
+SystemRequirement094 describes "MVP1-SYS-REQ-094: Evidence and unavailable measurement state".
+SystemRequirement094 specifies "Evidence-derived semantic values SHALL represent confidence/evidence reference where required, and unavailable/uncalibrated engineering values SHALL remain distinguishable from legitimate numeric zero.".
+SystemRequirement094 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement094 constrains ConservativeQuality.
+SystemRequirement095 status inherited.
+SystemRequirement095 describes "MVP1-SYS-REQ-095: Lab request/session/replay safety".
+SystemRequirement095 specifies "Lab v1 SHALL provide request correlation, source-session-qualified cursors, observable Lab record sequence, explicit admin capabilities, bounded/streamable export/import behavior and server-configured replay targets rather than arbitrary caller-provided live endpoints.".
+SystemRequirement095 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement095 constrains ServeMachineLabRequests.
+SystemRequirement096 status inherited.
+SystemRequirement096 describes "MVP1-SYS-REQ-096: Monorepo workspace authority".
+SystemRequirement096 specifies "MVP1 SHALL freeze one Go workspace/module topology and one npm workspace/lockfile topology, including generated-binding consumption paths and ownership, before parallel workers modify constituent build metadata.".
+SystemRequirement096 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement096 constrains MVP1.
+SystemRequirement097 status inherited.
+SystemRequirement097 describes "MVP1-SYS-REQ-097: Cross-platform authoritative gates".
+SystemRequirement097 specifies "All documented local contract/traceability gates required of workers SHALL execute from normal Linux and Windows checkouts. Canonical text fixtures SHALL have repository-enforced line-ending policy, and CI SHALL prove both platforms.".
+SystemRequirement097 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement097 constrains ContractRegistry.
+SystemRequirement098 status inherited.
+SystemRequirement098 describes "MVP1-SYS-REQ-098: Behavioral conformance".
+SystemRequirement098 specifies "Garden-critical contracts SHALL have provider/consumer behavioral fixtures for handshake, filtered delivery, latest-wins/coalescing, resume/snapshot/outside-retention, slow-consumer behavior, duplicate commands/result recovery, authority binding and GlobalStop deduplication in addition to byte codec fixtures.".
+SystemRequirement098 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement098 constrains CheckCrossLanguageFixtures.
+SystemRequirement099 status inherited.
+SystemRequirement099 describes "MVP1-SYS-REQ-099: Canonical traceability surface".
+SystemRequirement099 specifies "MVP1 SHALL maintain machine-readable CurrentIndex, Relations and Ledger records plus concrete first-release slice contracts mapping system/local Requirements to Architecture/Design and verification/acceptance evidence before Point 5 is opened.".
+SystemRequirement099 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/SDP/03--Requirements/requirements.md".
+SystemRequirement099 constrains MVP1.
+CTRRequirement001 status proposed.
+CTRRequirement001 describes "CTR-REQ-001: CTR-REQ-001".
+CTRRequirement001 specifies "`.proto` files SHALL be the authority for internal service wire types.".
+CTRRequirement001 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/contracts/SDP/03--Requirements/requirements.md".
+CTRRequirement001 constrains ContractRegistry.
+CTRRequirement002 status proposed.
+CTRRequirement002 describes "CTR-REQ-002: CTR-REQ-002".
+CTRRequirement002 specifies "schemas SHALL generate compiling Go and TypeScript bindings.".
+CTRRequirement002 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/contracts/SDP/03--Requirements/requirements.md".
+CTRRequirement002 constrains ContractRegistry.
+CTRRequirement003 status proposed.
+CTRRequirement003 describes "CTR-REQ-003: CTR-REQ-003".
+CTRRequirement003 specifies "initial packages SHALL separate common, target, machine and bucking responsibilities.".
+CTRRequirement003 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/contracts/SDP/03--Requirements/requirements.md".
+CTRRequirement003 constrains ContractRegistry.
+CTRRequirement004 status proposed.
+CTRRequirement004 describes "CTR-REQ-004: CTR-REQ-004".
+CTRRequirement004 specifies "TCP framing SHALL use explicit bounded length-delimited messages.".
+CTRRequirement004 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/contracts/SDP/03--Requirements/requirements.md".
+CTRRequirement004 constrains ContractRegistry.
+CTRRequirement005 status proposed.
+CTRRequirement005 describes "CTR-REQ-005: CTR-REQ-005".
+CTRRequirement005 specifies "field numbers/names SHALL follow the compatibility rules in the contract standard.".
+CTRRequirement005 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/contracts/SDP/03--Requirements/requirements.md".
+CTRRequirement005 constrains ContractRegistry.
+CTRRequirement006 status proposed.
+CTRRequirement006 describes "CTR-REQ-006: CTR-REQ-006".
+CTRRequirement006 specifies "service session/event/command/domain revision identities SHALL remain distinct.".
+CTRRequirement006 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/contracts/SDP/03--Requirements/requirements.md".
+CTRRequirement006 constrains ContractRegistry.
+CTRRequirement007 status proposed.
+CTRRequirement007 describes "CTR-REQ-007: CTR-REQ-007".
+CTRRequirement007 specifies "target messages SHALL preserve exact raw P1000 bytes and delivery/session provenance.".
+CTRRequirement007 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/contracts/SDP/03--Requirements/requirements.md".
+CTRRequirement007 constrains ContractRegistry.
+CTRRequirement008 status proposed.
+CTRRequirement008 describes "CTR-REQ-008: CTR-REQ-008".
+CTRRequirement008 specifies "P1000 ACK and target delivery commit SHALL be distinct schema concepts.".
+CTRRequirement008 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/contracts/SDP/03--Requirements/requirements.md".
+CTRRequirement008 constrains ContractRegistry.
+CTRRequirement009 status proposed.
+CTRRequirement009 describes "CTR-REQ-009: CTR-REQ-009".
+CTRRequirement009 specifies "MachineService schemas SHALL support events, commands, command results, snapshots and capabilities.".
+CTRRequirement009 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/contracts/SDP/03--Requirements/requirements.md".
+CTRRequirement009 constrains ContractRegistry.
+CTRRequirement010 status proposed.
+CTRRequirement010 describes "CTR-REQ-010: CTR-REQ-010".
+CTRRequirement010 specifies "BuckingService schemas SHALL support events, commands, command results, snapshots and capabilities.".
+CTRRequirement010 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/contracts/SDP/03--Requirements/requirements.md".
+CTRRequirement010 constrains ContractRegistry.
+CTRRequirement011 status proposed.
+CTRRequirement011 describes "CTR-REQ-011: CTR-REQ-011".
+CTRRequirement011 specifies "browser JSON/WebSocket/REST schemas SHALL be checked-in authority rather than inferred only from implementation.".
+CTRRequirement011 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/contracts/SDP/03--Requirements/requirements.md".
+CTRRequirement011 constrains ContractRegistry.
+CTRRequirement012 status proposed.
+CTRRequirement012 describes "CTR-REQ-012: CTR-REQ-012".
+CTRRequirement012 specifies "canonical JSON/NDJSON debug representation SHALL be defined for internal messages.".
+CTRRequirement012 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/contracts/SDP/03--Requirements/requirements.md".
+CTRRequirement012 constrains ContractRegistry.
+CTRRequirement013 status proposed.
+CTRRequirement013 describes "CTR-REQ-013: CTR-REQ-013".
+CTRRequirement013 specifies "shared cross-language fixtures SHALL prove Go/TypeScript encode/decode parity.".
+CTRRequirement013 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/contracts/SDP/03--Requirements/requirements.md".
+CTRRequirement013 constrains ContractRegistry.
+CTRRequirement014 status proposed.
+CTRRequirement014 describes "CTR-REQ-014: CTR-REQ-014".
+CTRRequirement014 specifies "fixtures SHALL cover partial/multiple TCP frames and malformed lengths.".
+CTRRequirement014 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/contracts/SDP/03--Requirements/requirements.md".
+CTRRequirement014 constrains ContractRegistry.
+CTRRequirement015 status proposed.
+CTRRequirement015 describes "CTR-REQ-015: CTR-REQ-015".
+CTRRequirement015 specifies "protocol/P1000 fixtures SHALL include literal capture-backed byte records.".
+CTRRequirement015 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/contracts/SDP/03--Requirements/requirements.md".
+CTRRequirement015 constrains ContractRegistry.
+CTRRequirement016 status proposed.
+CTRRequirement016 describes "CTR-REQ-016: CTR-REQ-016".
+CTRRequirement016 specifies "generated source SHALL NOT be manually edited as contract authority.".
+CTRRequirement016 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/contracts/SDP/03--Requirements/requirements.md".
+CTRRequirement016 constrains ContractRegistry.
+CTRRequirement017 status proposed.
+CTRRequirement017 describes "CTR-REQ-017: CTR-REQ-017".
+CTRRequirement017 specifies "contract generation/lint/fixture verification SHALL be callable from CI.".
+CTRRequirement017 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/contracts/SDP/03--Requirements/requirements.md".
+CTRRequirement017 constrains ContractRegistry.
+CTRRequirement018 status proposed.
+CTRRequirement018 describes "CTR-REQ-018: CTR-REQ-018".
+CTRRequirement018 specifies "breaking contract changes SHALL require explicit major/version migration and Steering disposition after Garden Gate.".
+CTRRequirement018 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/contracts/SDP/03--Requirements/requirements.md".
+CTRRequirement018 constrains ContractRegistry.
+BCKRequirement001 status proposed.
+BCKRequirement001 describes "BCK-REQ-001: BCK-REQ-001".
+BCKRequirement001 specifies "SHALL generate only policy/legal log candidates before preferences/objective ranking.".
+BCKRequirement001 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/bucking-core/SDP/03--Requirements/requirements.md".
+BCKRequirement001 constrains BuckingCore.
+BCKRequirement002 status proposed.
+BCKRequirement002 describes "BCK-REQ-002: BCK-REQ-002".
+BCKRequirement002 specifies "SHALL preserve owner-value-first objective semantics unless an explicit contract says otherwise.".
+BCKRequirement002 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/bucking-core/SDP/03--Requirements/requirements.md".
+BCKRequirement002 constrains BuckingCore.
+BCKRequirement003 status proposed.
+BCKRequirement003 describes "BCK-REQ-003: BCK-REQ-003".
+BCKRequirement003 specifies "SHALL provide exact one-best execution without materializing full K/Pareto archive.".
+BCKRequirement003 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/bucking-core/SDP/03--Requirements/requirements.md".
+BCKRequirement003 constrains BuckingCore.
+BCKRequirement004 status proposed.
+BCKRequirement004 describes "BCK-REQ-004: BCK-REQ-004".
+BCKRequirement004 specifies "one-best physical winner/objective SHALL match full-archive rank 1 for identical frozen input.".
+BCKRequirement004 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/bucking-core/SDP/03--Requirements/requirements.md".
+BCKRequirement004 constrains BuckingCore.
+BCKRequirement005 status proposed.
+BCKRequirement005 describes "BCK-REQ-005: BCK-REQ-005".
+BCKRequirement005 specifies "SHALL preserve deterministic tie/canonical ranking behavior.".
+BCKRequirement005 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/bucking-core/SDP/03--Requirements/requirements.md".
+BCKRequirement005 constrains BuckingCore.
+BCKRequirement006 status proposed.
+BCKRequirement006 describes "BCK-REQ-006: BCK-REQ-006".
+BCKRequirement006 specifies "SHALL support explicit D18/D13 hard/target crossing policy and legal APT lengths.".
+BCKRequirement006 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/bucking-core/SDP/03--Requirements/requirements.md".
+BCKRequirement006 constrains BuckingCore.
+BCKRequirement007 status proposed.
+BCKRequirement007 describes "BCK-REQ-007: BCK-REQ-007".
+BCKRequirement007 specifies "distribution/steering preferences SHALL remain distinct from legality/economic value.".
+BCKRequirement007 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/bucking-core/SDP/03--Requirements/requirements.md".
+BCKRequirement007 constrains BuckingCore.
+BCKRequirement008 status proposed.
+BCKRequirement008 describes "BCK-REQ-008: BCK-REQ-008".
+BCKRequirement008 specifies "algorithm inputs/outputs SHALL carry enough identity for BuckingService stale-result rejection.".
+BCKRequirement008 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/bucking-core/SDP/03--Requirements/requirements.md".
+BCKRequirement008 constrains BuckingCore.
+BCKRequirement009 status proposed.
+BCKRequirement009 describes "BCK-REQ-009: BCK-REQ-009".
+BCKRequirement009 specifies "SHALL be deterministic and side-effect free for identical inputs.".
+BCKRequirement009 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/bucking-core/SDP/03--Requirements/requirements.md".
+BCKRequirement009 constrains BuckingCore.
+BCKRequirement010 status proposed.
+BCKRequirement010 describes "BCK-REQ-010: BCK-REQ-010".
+BCKRequirement010 specifies "SHALL NOT own worker scheduling, sockets, stores or browser state.".
+BCKRequirement010 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/bucking-core/SDP/03--Requirements/requirements.md".
+BCKRequirement010 constrains BuckingCore.
+SFCRequirement001 status proposed.
+SFCRequirement001 describes "SFC-REQ-001: SFC-REQ-001".
+SFCRequirement001 specifies "SHALL parse the accepted Classic APT corpus deterministically with source identity/provenance.".
+SFCRequirement001 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/stanford-classic/SDP/03--Requirements/requirements.md".
+SFCRequirement001 constrains StanfordClassic.
+SFCRequirement002 status proposed.
+SFCRequirement002 describes "SFC-REQ-002: SFC-REQ-002".
+SFCRequirement002 specifies "SHALL preserve documented matrix dimension/index ordering rules.".
+SFCRequirement002 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/stanford-classic/SDP/03--Requirements/requirements.md".
+SFCRequirement002 constrains StanfordClassic.
+SFCRequirement003 status proposed.
+SFCRequirement003 describes "SFC-REQ-003: SFC-REQ-003".
+SFCRequirement003 specifies "SHALL preserve audited var161/190/191/197 semantics without inventing missing meaning.".
+SFCRequirement003 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/stanford-classic/SDP/03--Requirements/requirements.md".
+SFCRequirement003 constrains StanfordClassic.
+SFCRequirement004 status proposed.
+SFCRequirement004 describes "SFC-REQ-004: SFC-REQ-004".
+SFCRequirement004 specifies "SHALL support controlled transforms/editor operations needed by BuckingService APT commands.".
+SFCRequirement004 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/stanford-classic/SDP/03--Requirements/requirements.md".
+SFCRequirement004 constrains StanfordClassic.
+SFCRequirement005 status proposed.
+SFCRequirement005 describes "SFC-REQ-005: SFC-REQ-005".
+SFCRequirement005 specifies "export SHALL preserve required encoding/checksum/trailer/file constraints proven by Concept1 audit.".
+SFCRequirement005 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/stanford-classic/SDP/03--Requirements/requirements.md".
+SFCRequirement005 constrains StanfordClassic.
+SFCRequirement006 status proposed.
+SFCRequirement006 describes "SFC-REQ-006: SFC-REQ-006".
+SFCRequirement006 specifies "ambiguous settlement/bark semantics SHALL remain explicit companion/profile data bound to source identity where required.".
+SFCRequirement006 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/stanford-classic/SDP/03--Requirements/requirements.md".
+SFCRequirement006 constrains StanfordClassic.
+SFCRequirement007 status proposed.
+SFCRequirement007 describes "SFC-REQ-007: SFC-REQ-007".
+SFCRequirement007 specifies "SHALL provide structural validation/error reporting rather than silent repair of unsupported input.".
+SFCRequirement007 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/stanford-classic/SDP/03--Requirements/requirements.md".
+SFCRequirement007 constrains StanfordClassic.
+SFCRequirement008 status proposed.
+SFCRequirement008 describes "SFC-REQ-008: SFC-REQ-008".
+SFCRequirement008 specifies "SHALL NOT become the internal BuckingPolicy/EconomicContract representation.".
+SFCRequirement008 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/stanford-classic/SDP/03--Requirements/requirements.md".
+SFCRequirement008 constrains StanfordClassic.
+SFCRequirement009 status proposed.
+SFCRequirement009 describes "SFC-REQ-009: SFC-REQ-009".
+SFCRequirement009 specifies "SHALL have parity fixtures against real/audited Concept1 APT files.".
+SFCRequirement009 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/stanford-classic/SDP/03--Requirements/requirements.md".
+SFCRequirement009 constrains StanfordClassic.
+SFCRequirement010 status proposed.
+SFCRequirement010 describes "SFC-REQ-010: SFC-REQ-010".
+SFCRequirement010 specifies "SHALL NOT depend on web/UI/service transports.".
+SFCRequirement010 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/stanford-classic/SDP/03--Requirements/requirements.md".
+SFCRequirement010 constrains StanfordClassic.
+TPRRequirement001 status proposed.
+TPRRequirement001 describes "TPR-REQ-001: TPR-REQ-001".
+TPRRequirement001 specifies "SHALL expose a small typed model interface independent of service/web concerns.".
+TPRRequirement001 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/taper-models/SDP/03--Requirements/requirements.md".
+TPRRequirement001 constrains TaperModels.
+TPRRequirement002 status proposed.
+TPRRequirement002 describes "TPR-REQ-002: TPR-REQ-002".
+TPRRequirement002 specifies "SHALL preserve accepted minimum fit height/sample/span gates.".
+TPRRequirement002 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/taper-models/SDP/03--Requirements/requirements.md".
+TPRRequirement002 constrains TaperModels.
+TPRRequirement003 status proposed.
+TPRRequirement003 describes "TPR-REQ-003: TPR-REQ-003".
+TPRRequirement003 specifies "SHALL preserve deterministic taperNOR behavior for supported species.".
+TPRRequirement003 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/taper-models/SDP/03--Requirements/requirements.md".
+TPRRequirement003 constrains TaperModels.
+TPRRequirement004 status proposed.
+TPRRequirement004 describes "TPR-REQ-004: TPR-REQ-004".
+TPRRequirement004 specifies "SHALL preserve Mixed Kozak97 spruce behavior and explicit evidence limitations.".
+TPRRequirement004 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/taper-models/SDP/03--Requirements/requirements.md".
+TPRRequirement004 constrains TaperModels.
+TPRRequirement005 status proposed.
+TPRRequirement005 describes "TPR-REQ-005: TPR-REQ-005".
+TPRRequirement005 specifies "SHALL support absolute-coordinate measurement history and working-root projection inputs as required by system contracts.".
+TPRRequirement005 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/taper-models/SDP/03--Requirements/requirements.md".
+TPRRequirement005 constrains TaperModels.
+TPRRequirement006 status proposed.
+TPRRequirement006 describes "TPR-REQ-006: TPR-REQ-006".
+TPRRequirement006 specifies "SHALL return unavailable/fallback status rather than fabricate unsupported prediction.".
+TPRRequirement006 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/taper-models/SDP/03--Requirements/requirements.md".
+TPRRequirement006 constrains TaperModels.
+TPRRequirement007 status proposed.
+TPRRequirement007 describes "TPR-REQ-007: TPR-REQ-007".
+TPRRequirement007 specifies "SHALL expose model identity/version/provenance metadata.".
+TPRRequirement007 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/taper-models/SDP/03--Requirements/requirements.md".
+TPRRequirement007 constrains TaperModels.
+TPRRequirement008 status proposed.
+TPRRequirement008 describes "TPR-REQ-008: TPR-REQ-008".
+TPRRequirement008 specifies "shared deterministic latent fits MAY be reused/memoized without changing numerical semantics.".
+TPRRequirement008 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/taper-models/SDP/03--Requirements/requirements.md".
+TPRRequirement008 constrains TaperModels.
+TPRRequirement009 status proposed.
+TPRRequirement009 describes "TPR-REQ-009: TPR-REQ-009".
+TPRRequirement009 specifies "SHALL have parity fixtures against accepted Concept1 outputs before reuse is accepted.".
+TPRRequirement009 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/taper-models/SDP/03--Requirements/requirements.md".
+TPRRequirement009 constrains TaperModels.
+TPRRequirement010 status proposed.
+TPRRequirement010 describes "TPR-REQ-010: TPR-REQ-010".
+TPRRequirement010 specifies "SHALL NOT contain K1/K-best scheduling, HTTP, sockets or React.".
+TPRRequirement010 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/taper-models/SDP/03--Requirements/requirements.md".
+TPRRequirement010 constrains TaperModels.
+BLBRequirement001 status proposed.
+BLBRequirement001 describes "BLB-REQ-001: BLB-REQ-001".
+BLBRequirement001 specifies "SHALL connect as a normal BKS client using CTR bucking contract.".
+BLBRequirement001 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-lab/SDP/03--Requirements/requirements.md".
+BLBRequirement001 constrains BuckingLab.
+BLBRequirement002 status proposed.
+BLBRequirement002 describes "BLB-REQ-002: BLB-REQ-002".
+BLBRequirement002 specifies "SHALL maintain bounded recent event/result history using LabKit.".
+BLBRequirement002 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-lab/SDP/03--Requirements/requirements.md".
+BLBRequirement002 constrains BuckingLab.
+BLBRequirement003 status proposed.
+BLBRequirement003 describes "BLB-REQ-003: BLB-REQ-003".
+BLBRequirement003 specifies "SHALL optionally persist canonical NDJSON ledgers with BKS session/event/revision provenance.".
+BLBRequirement003 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-lab/SDP/03--Requirements/requirements.md".
+BLBRequirement003 constrains BuckingLab.
+BLBRequirement004 status proposed.
+BLBRequirement004 describes "BLB-REQ-004: BLB-REQ-004".
+BLBRequirement004 specifies "SHALL support checkpoint/export/import/replay into explicit isolated targets.".
+BLBRequirement004 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-lab/SDP/03--Requirements/requirements.md".
+BLBRequirement004 constrains BuckingLab.
+BLBRequirement005 status proposed.
+BLBRequirement005 describes "BLB-REQ-005: BLB-REQ-005".
+BLBRequirement005 specifies "`buckctl apt load <file>` SHALL submit BKS APT import command; BLB SHALL NOT edit BKS storage directly.".
+BLBRequirement005 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-lab/SDP/03--Requirements/requirements.md".
+BLBRequirement005 constrains BuckingLab.
+BLBRequirement006 status proposed.
+BLBRequirement006 describes "BLB-REQ-006: BLB-REQ-006".
+BLBRequirement006 specifies "`buckctl apt save <file>` SHALL obtain authoritative export from BKS then write locally.".
+BLBRequirement006 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-lab/SDP/03--Requirements/requirements.md".
+BLBRequirement006 constrains BuckingLab.
+BLBRequirement007 status proposed.
+BLBRequirement007 describes "BLB-REQ-007: BLB-REQ-007".
+BLBRequirement007 specifies "SHALL expose BKS capability catalog/health/session state.".
+BLBRequirement007 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-lab/SDP/03--Requirements/requirements.md".
+BLBRequirement007 constrains BuckingLab.
+BLBRequirement008 status proposed.
+BLBRequirement008 describes "BLB-REQ-008: BLB-REQ-008".
+BLBRequirement008 specifies "ledger recording on/off SHALL affect BLB recording only, never BKS event publication.".
+BLBRequirement008 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-lab/SDP/03--Requirements/requirements.md".
+BLBRequirement008 constrains BuckingLab.
+BLBRequirement009 status proposed.
+BLBRequirement009 describes "BLB-REQ-009: BLB-REQ-009".
+BLBRequirement009 specifies "replay SHALL NOT become live machine control and SHALL identify target layer explicitly.".
+BLBRequirement009 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-lab/SDP/03--Requirements/requirements.md".
+BLBRequirement009 constrains BuckingLab.
+BLBRequirement010 status proposed.
+BLBRequirement010 describes "BLB-REQ-010: BLB-REQ-010".
+BLBRequirement010 specifies "SHALL NOT own active APT/policy/economic/taper/plan state.".
+BLBRequirement010 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-lab/SDP/03--Requirements/requirements.md".
+BLBRequirement010 constrains BuckingLab.
+BLBRequirement011 status proposed.
+BLBRequirement011 describes "BLB-REQ-011: BLB-REQ-011".
+BLBRequirement011 specifies "Go implementation SHALL follow MVP1 Go Best Practices.".
+BLBRequirement011 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-lab/SDP/03--Requirements/requirements.md".
+BLBRequirement011 constrains BuckingLab.
+BKSRequirement001 status proposed.
+BKSRequirement001 describes "BKS-REQ-001: BKS-REQ-001".
+BKSRequirement001 specifies "SHALL consume MCH events/snapshots via CTR machine contract and handle service-session/resync explicitly.".
+BKSRequirement001 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-service/SDP/03--Requirements/requirements.md".
+BKSRequirement001 constrains BuckingService.
+BKSRequirement002 status proposed.
+BKSRequirement002 describes "BKS-REQ-002: BKS-REQ-002".
+BKSRequirement002 specifies "SHALL own selected taper-model policy and execute TPR models without browser dependence.".
+BKSRequirement002 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-service/SDP/03--Requirements/requirements.md".
+BKSRequirement002 constrains BuckingService.
+BKSRequirement003 status proposed.
+BKSRequirement003 describes "BKS-REQ-003: BKS-REQ-003".
+BKSRequirement003 specifies "SHALL compute/publish profile results with input/model/revision provenance.".
+BKSRequirement003 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-service/SDP/03--Requirements/requirements.md".
+BKSRequirement003 constrains BuckingService.
+BKSRequirement004 status proposed.
+BKSRequirement004 describes "BKS-REQ-004: BKS-REQ-004".
+BKSRequirement004 specifies "SHALL compute current one-best K1 independently of full K-best archive generation.".
+BKSRequirement004 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-service/SDP/03--Requirements/requirements.md".
+BKSRequirement004 constrains BuckingService.
+BKSRequirement005 status proposed.
+BKSRequirement005 describes "BKS-REQ-005: BKS-REQ-005".
+BKSRequirement005 specifies "SHALL run quiet/background K-best with stale-result rejection.".
+BKSRequirement005 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-service/SDP/03--Requirements/requirements.md".
+BKSRequirement005 constrains BuckingService.
+BKSRequirement006 status proposed.
+BKSRequirement006 describes "BKS-REQ-006: BKS-REQ-006".
+BKSRequirement006 specifies "SHALL preserve plan continuity by representing planner-pending separately from no-plan.".
+BKSRequirement006 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-service/SDP/03--Requirements/requirements.md".
+BKSRequirement006 constrains BuckingService.
+BKSRequirement007 status proposed.
+BKSRequirement007 describes "BKS-REQ-007: BKS-REQ-007".
+BKSRequirement007 specifies "SHALL own active APT source/identity, BuckingPolicy and Economic/SettlementContract state/revisions.".
+BKSRequirement007 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-service/SDP/03--Requirements/requirements.md".
+BKSRequirement007 constrains BuckingService.
+BKSRequirement008 status proposed.
+BKSRequirement008 describes "BKS-REQ-008: BKS-REQ-008".
+BKSRequirement008 specifies "APT import/export SHALL use SFC compatibility adapter and SHALL NOT expose raw Classic records as the internal domain model.".
+BKSRequirement008 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-service/SDP/03--Requirements/requirements.md".
+BKSRequirement008 constrains BuckingService.
+BKSRequirement009 status proposed.
+BKSRequirement009 describes "BKS-REQ-009: BKS-REQ-009".
+BKSRequirement009 specifies "SHALL publish current plan/cut-target identity and provenance independently of frontend repaint cadence.".
+BKSRequirement009 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-service/SDP/03--Requirements/requirements.md".
+BKSRequirement009 constrains BuckingService.
+BKSRequirement010 status proposed.
+BKSRequirement010 describes "BKS-REQ-010: BKS-REQ-010".
+BKSRequirement010 specifies "SHALL expose versioned multi-client events/snapshots/commands/capabilities to BLB and BWEB.".
+BKSRequirement010 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-service/SDP/03--Requirements/requirements.md".
+BKSRequirement010 constrains BuckingService.
+BKSRequirement011 status proposed.
+BKSRequirement011 describes "BKS-REQ-011: BKS-REQ-011".
+BKSRequirement011 specifies "SHALL reject stale MachineService/planner worker results by session/revision/generation identity.".
+BKSRequirement011 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-service/SDP/03--Requirements/requirements.md".
+BKSRequirement011 constrains BuckingService.
+BKSRequirement012 status proposed.
+BKSRequirement012 describes "BKS-REQ-012: BKS-REQ-012".
+BKSRequirement012 specifies "SHALL bind cut/production decisions to relevant calibration/policy/economic/APT/model/plan revisions.".
+BKSRequirement012 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-service/SDP/03--Requirements/requirements.md".
+BKSRequirement012 constrains BuckingService.
+BKSRequirement013 status proposed.
+BKSRequirement013 describes "BKS-REQ-013: BKS-REQ-013".
+BKSRequirement013 specifies "SHALL remain usable/testable without BuckingWeb/BuckingUI.".
+BKSRequirement013 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-service/SDP/03--Requirements/requirements.md".
+BKSRequirement013 constrains BuckingService.
+BKSRequirement014 status proposed.
+BKSRequirement014 describes "BKS-REQ-014: BKS-REQ-014".
+BKSRequirement014 specifies "SHALL NOT parse P1000 wire traffic or own raw sensor calibration.".
+BKSRequirement014 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-service/SDP/03--Requirements/requirements.md".
+BKSRequirement014 constrains BuckingService.
+BKSRequirement015 status proposed.
+BKSRequirement015 describes "BKS-REQ-015: BKS-REQ-015".
+BKSRequirement015 specifies "SHALL NOT contain browser WebSocket/React presentation logic.".
+BKSRequirement015 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-service/SDP/03--Requirements/requirements.md".
+BKSRequirement015 constrains BuckingService.
+BKSRequirement016 status proposed.
+BKSRequirement016 describes "BKS-REQ-016: BKS-REQ-016".
+BKSRequirement016 specifies "async heavy work SHALL not mutate authoritative service state outside the owning reducer/coordinator.".
+BKSRequirement016 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-service/SDP/03--Requirements/requirements.md".
+BKSRequirement016 constrains BuckingService.
+BKSRequirement017 status proposed.
+BKSRequirement017 describes "BKS-REQ-017: BKS-REQ-017".
+BKSRequirement017 specifies "public event families SHALL declare backpressure/delivery semantics.".
+BKSRequirement017 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-service/SDP/03--Requirements/requirements.md".
+BKSRequirement017 constrains BuckingService.
+BKSRequirement018 status proposed.
+BKSRequirement018 describes "BKS-REQ-018: BKS-REQ-018".
+BKSRequirement018 specifies "reused Concept1 numerical code SHALL pass parity fixtures before acceptance.".
+BKSRequirement018 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-service/SDP/03--Requirements/requirements.md".
+BKSRequirement018 constrains BuckingService.
+BWEBRequirement001 status proposed.
+BWEBRequirement001 describes "BWEB-REQ-001: BWEB-REQ-001".
+BWEBRequirement001 specifies "SHALL maintain independent CTR service sessions to MCH and BKS.".
+BWEBRequirement001 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-web/SDP/03--Requirements/requirements.md".
+BWEBRequirement001 constrains BuckingWeb.
+BWEBRequirement002 status proposed.
+BWEBRequirement002 describes "BWEB-REQ-002: BWEB-REQ-002".
+BWEBRequirement002 specifies "SHALL expose machine telemetry/health/virtual-palette capabilities while BKS is unavailable.".
+BWEBRequirement002 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-web/SDP/03--Requirements/requirements.md".
+BWEBRequirement002 constrains BuckingWeb.
+BWEBRequirement003 status proposed.
+BWEBRequirement003 describes "BWEB-REQ-003: BWEB-REQ-003".
+BWEBRequirement003 specifies "SHALL mark BuckingService-derived presentation data unavailable/stale explicitly when BKS disconnects.".
+BWEBRequirement003 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-web/SDP/03--Requirements/requirements.md".
+BWEBRequirement003 constrains BuckingWeb.
+BWEBRequirement004 status proposed.
+BWEBRequirement004 describes "BWEB-REQ-004: BWEB-REQ-004".
+BWEBRequirement004 specifies "SHALL expose versioned JSON WebSocket runtime messages and REST snapshot/config/export endpoints defined by CTR browser schemas.".
+BWEBRequirement004 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-web/SDP/03--Requirements/requirements.md".
+BWEBRequirement004 constrains BuckingWeb.
+BWEBRequirement005 status proposed.
+BWEBRequirement005 describes "BWEB-REQ-005: BWEB-REQ-005".
+BWEBRequirement005 specifies "SHALL split high-rate telemetry, machine-context, profile, planning, production, health, diagnostic and command-result families rather than publish one giant state per sample.".
+BWEBRequirement005 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-web/SDP/03--Requirements/requirements.md".
+BWEBRequirement005 constrains BuckingWeb.
+BWEBRequirement006 status proposed.
+BWEBRequirement006 describes "BWEB-REQ-006: BWEB-REQ-006".
+BWEBRequirement006 specifies "SHALL federate MCH+BKS capabilities without inventing unsupported upstream commands.".
+BWEBRequirement006 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-web/SDP/03--Requirements/requirements.md".
+BWEBRequirement006 constrains BuckingWeb.
+BWEBRequirement007 status proposed.
+BWEBRequirement007 describes "BWEB-REQ-007: BWEB-REQ-007".
+BWEBRequirement007 specifies "SHALL route machine/operator commands to MCH and bucking/APT/policy commands to BKS with commandId correlation.".
+BWEBRequirement007 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-web/SDP/03--Requirements/requirements.md".
+BWEBRequirement007 constrains BuckingWeb.
+BWEBRequirement008 status proposed.
+BWEBRequirement008 describes "BWEB-REQ-008: BWEB-REQ-008".
+BWEBRequirement008 specifies "SHALL detect/resync each upstream service session independently.".
+BWEBRequirement008 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-web/SDP/03--Requirements/requirements.md".
+BWEBRequirement008 constrains BuckingWeb.
+BWEBRequirement009 status proposed.
+BWEBRequirement009 describes "BWEB-REQ-009: BWEB-REQ-009".
+BWEBRequirement009 specifies "SHALL maintain browser session/reconnect snapshot semantics independent of upstream session IDs.".
+BWEBRequirement009 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-web/SDP/03--Requirements/requirements.md".
+BWEBRequirement009 constrains BuckingWeb.
+BWEBRequirement010 status proposed.
+BWEBRequirement010 describes "BWEB-REQ-010: BWEB-REQ-010".
+BWEBRequirement010 specifies "SHALL support compact/sparse presentation profile projection supplied/authorized by BKS without changing planning authority.".
+BWEBRequirement010 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-web/SDP/03--Requirements/requirements.md".
+BWEBRequirement010 constrains BuckingWeb.
+BWEBRequirement011 status proposed.
+BWEBRequirement011 describes "BWEB-REQ-011: BWEB-REQ-011".
+BWEBRequirement011 specifies "SHALL NOT calculate taper/K1/K-best or parse P1000 frames.".
+BWEBRequirement011 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-web/SDP/03--Requirements/requirements.md".
+BWEBRequirement011 constrains BuckingWeb.
+BWEBRequirement012 status proposed.
+BWEBRequirement012 describes "BWEB-REQ-012: BWEB-REQ-012".
+BWEBRequirement012 specifies "SHALL be testable against independent MCH/BKS stubs including one-upstream-down scenarios.".
+BWEBRequirement012 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-web/SDP/03--Requirements/requirements.md".
+BWEBRequirement012 constrains BuckingWeb.
+MLBRequirement001 status inherited.
+MLBRequirement001 describes "MLB-REQ-001: MLB-REQ-001".
+MLBRequirement001 specifies "SHALL connect as a normal MCH client using the CTR machine contract.".
+MLBRequirement001 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-lab/SDP/03--Requirements/requirements.md".
+MLBRequirement001 constrains MachineLab.
+MLBRequirement002 status inherited.
+MLBRequirement002 describes "MLB-REQ-002: MLB-REQ-002".
+MLBRequirement002 specifies "SHALL remain independent of P1000Simulator and BuckingService.".
+MLBRequirement002 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-lab/SDP/03--Requirements/requirements.md".
+MLBRequirement002 constrains MachineLab.
+MLBRequirement003 status inherited.
+MLBRequirement003 describes "MLB-REQ-003: MLB-REQ-003".
+MLBRequirement003 specifies "SHALL maintain bounded per-family recent history using LabKit.".
+MLBRequirement003 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-lab/SDP/03--Requirements/requirements.md".
+MLBRequirement003 constrains MachineLab.
+MLBRequirement004 status inherited.
+MLBRequirement004 describes "MLB-REQ-004: MLB-REQ-004".
+MLBRequirement004 specifies "SHALL optionally persist canonical NDJSON ledger records with service/session/event/revision/provenance and observable `lab_record_seq`.".
+MLBRequirement004 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-lab/SDP/03--Requirements/requirements.md".
+MLBRequirement004 constrains MachineLab.
+MLBRequirement005 status inherited.
+MLBRequirement005 describes "MLB-REQ-005: MLB-REQ-005".
+MLBRequirement005 specifies "SHALL support checkpoints, chunked/bounded export/import and explicit range replay.".
+MLBRequirement005 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-lab/SDP/03--Requirements/requirements.md".
+MLBRequirement005 constrains MachineLab.
+MLBRequirement006 status inherited.
+MLBRequirement006 describes "MLB-REQ-006: MLB-REQ-006".
+MLBRequirement006 specifies "replay SHALL select only server-configured isolated/test target profiles and SHALL NOT accept arbitrary caller endpoints or default to live physical TX.".
+MLBRequirement006 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-lab/SDP/03--Requirements/requirements.md".
+MLBRequirement006 constrains MachineLab.
+MLBRequirement007 status inherited.
+MLBRequirement007 describes "MLB-REQ-007: MLB-REQ-007".
+MLBRequirement007 specifies "`msctl read/readbuf` SHALL query retained/authoritative observed data with source-session-qualified cursors and without requiring a prior ad-hoc capture command.".
+MLBRequirement007 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-lab/SDP/03--Requirements/requirements.md".
+MLBRequirement007 constrains MachineLab.
+MLBRequirement008 status inherited.
+MLBRequirement008 describes "MLB-REQ-008: MLB-REQ-008".
+MLBRequirement008 specifies "`msctl button q1` SHALL submit semantic MCH operator-input injection, not simulator wire traffic.".
+MLBRequirement008 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-lab/SDP/03--Requirements/requirements.md".
+MLBRequirement008 constrains MachineLab.
+MLBRequirement009 status inherited.
+MLBRequirement009 describes "MLB-REQ-009: MLB-REQ-009".
+MLBRequirement009 specifies "SHALL expose MCH capabilities/health/session state and typed reconnect/resume boundaries.".
+MLBRequirement009 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-lab/SDP/03--Requirements/requirements.md".
+MLBRequirement009 constrains MachineLab.
+MLBRequirement010 status inherited.
+MLBRequirement010 describes "MLB-REQ-010: MLB-REQ-010".
+MLBRequirement010 specifies "SHALL be observer-only by default and SHALL NOT gain physical control authority implicitly; explicit overlapping grants SHALL remain supported.".
+MLBRequirement010 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-lab/SDP/03--Requirements/requirements.md".
+MLBRequirement010 constrains MachineLab.
+MLBRequirement011 status inherited.
+MLBRequirement011 describes "MLB-REQ-011: MLB-REQ-011".
+MLBRequirement011 specifies "SHALL use LabKit rather than reimplement generic ledger/replay mechanics.".
+MLBRequirement011 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-lab/SDP/03--Requirements/requirements.md".
+MLBRequirement011 constrains MachineLab.
+MLBRequirement012 status inherited.
+MLBRequirement012 describes "MLB-REQ-012: MLB-REQ-012".
+MLBRequirement012 specifies "Go implementation SHALL follow MVP1 Go Best Practices.".
+MLBRequirement012 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-lab/SDP/03--Requirements/requirements.md".
+MLBRequirement012 constrains MachineLab.
+MLBRequirement013 status inherited.
+MLBRequirement013 describes "MLB-REQ-013: MLB-REQ-013".
+MLBRequirement013 specifies "every Lab request/result SHALL carry request correlation sufficient for concurrent same-type operations on one connection.".
+MLBRequirement013 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-lab/SDP/03--Requirements/requirements.md".
+MLBRequirement013 constrains MachineLab.
+MLBRequirement014 status inherited.
+MLBRequirement014 describes "MLB-REQ-014: MLB-REQ-014".
+MLBRequirement014 specifies "Lab mutation SHALL use the exact CTR capability/scope mapping: `lab.ledger.set-enabled -> lab.ledger.admin`, `lab.checkpoint.set -> lab.checkpoint.admin`, `lab.import.begin|lab.import.chunk -> lab.import.admin`, and `lab.replay.range -> lab.replay.execute`.".
+MLBRequirement014 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-lab/SDP/03--Requirements/requirements.md".
+MLBRequirement014 constrains MachineLab.
+MLBRequirement015 status inherited.
+MLBRequirement015 describes "MLB-REQ-015: MLB-REQ-015".
+MLBRequirement015 specifies "unauthorized Lab mutation SHALL perform no state change and SHALL return non-fatal `ProtocolError(code=\"authority_denied\", request_id=<request>)`.".
+MLBRequirement015 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-lab/SDP/03--Requirements/requirements.md".
+MLBRequirement015 constrains MachineLab.
+MLBRequirement016 status inherited.
+MLBRequirement016 describes "MLB-REQ-016: MLB-REQ-016".
+MLBRequirement016 specifies "GlobalStop SHALL cancel configured daemon automation without terminating observation/ledger collection.".
+MLBRequirement016 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-lab/SDP/03--Requirements/requirements.md".
+MLBRequirement016 constrains MachineLab.
+MCHRequirement001 status inherited.
+MCHRequirement001 describes "MCH-REQ-001: MCH-REQ-001".
+MCHRequirement001 specifies "SHALL connect to SIM or PGW solely through the CTR target contract.".
+MCHRequirement001 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-service/SDP/03--Requirements/requirements.md".
+MCHRequirement001 constrains MachineService.
+MCHRequirement002 status inherited.
+MCHRequirement002 describes "MCH-REQ-002: MCH-REQ-002".
+MCHRequirement002 specifies "SHALL parse P1000 framing/checksum length-driven using capture-backed fixtures.".
+MCHRequirement002 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-service/SDP/03--Requirements/requirements.md".
+MCHRequirement002 constrains MachineService.
+MCHRequirement003 status inherited.
+MCHRequirement003 describes "MCH-REQ-003: MCH-REQ-003".
+MCHRequirement003 specifies "SHALL implement explicit evidence-backed boot/runtime protocol state machines.".
+MCHRequirement003 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-service/SDP/03--Requirements/requirements.md".
+MCHRequirement003 constrains MachineService.
+MCHRequirement004 status inherited.
+MCHRequirement004 describes "MCH-REQ-004: MCH-REQ-004".
+MCHRequirement004 specifies "SHALL own selective P1000 ACK policy; no generic valid-frame=>ACK rule.".
+MCHRequirement004 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-service/SDP/03--Requirements/requirements.md".
+MCHRequirement004 constrains MachineService.
+MCHRequirement005 status inherited.
+MCHRequirement005 describes "MCH-REQ-005: MCH-REQ-005".
+MCHRequirement005 specifies "SHALL own authoritative machine/stem/head/saw/operator lifecycle state.".
+MCHRequirement005 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-service/SDP/03--Requirements/requirements.md".
+MCHRequirement005 constrains MachineService.
+MCHRequirement006 status inherited.
+MCHRequirement006 describes "MCH-REQ-006: MCH-REQ-006".
+MCHRequirement006 specifies "SHALL distinguish absolute stem position, working-root position and measurement revision.".
+MCHRequirement006 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-service/SDP/03--Requirements/requirements.md".
+MCHRequirement006 constrains MachineService.
+MCHRequirement007 status inherited.
+MCHRequirement007 describes "MCH-REQ-007: MCH-REQ-007".
+MCHRequirement007 specifies "SHALL own calibration profiles/revisions and expose explicit CALIBRATED/RAW_ONLY/UNKNOWN value state plus raw/evidence provenance.".
+MCHRequirement007 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-service/SDP/03--Requirements/requirements.md".
+MCHRequirement007 constrains MachineService.
+MCHRequirement008 status inherited.
+MCHRequirement008 describes "MCH-REQ-008: MCH-REQ-008".
+MCHRequirement008 specifies "SHALL publish versioned multi-client source events and separate contiguous per-subscription delivery-stream metadata.".
+MCHRequirement008 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-service/SDP/03--Requirements/requirements.md".
+MCHRequirement008 constrains MachineService.
+MCHRequirement009 status inherited.
+MCHRequirement009 describes "MCH-REQ-009: MCH-REQ-009".
+MCHRequirement009 specifies "SHALL expose complete recovery snapshots/health/capabilities/authority/commands via CTR machine contract.".
+MCHRequirement009 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-service/SDP/03--Requirements/requirements.md".
+MCHRequirement009 constrains MachineService.
+MCHRequirement010 status inherited.
+MCHRequirement010 describes "MCH-REQ-010: MCH-REQ-010".
+MCHRequirement010 specifies "SHALL support semantic `operator-input.inject` producing normalized events with injection provenance and no fake P1000 frame.".
+MCHRequirement010 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-service/SDP/03--Requirements/requirements.md".
+MCHRequirement010 constrains MachineService.
+MCHRequirement011 status inherited.
+MCHRequirement011 describes "MCH-REQ-011: MCH-REQ-011".
+MCHRequirement011 specifies "SHALL independently serve MLB, BKS and BWEB subscribers.".
+MCHRequirement011 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-service/SDP/03--Requirements/requirements.md".
+MCHRequirement011 constrains MachineService.
+MCHRequirement012 status inherited.
+MCHRequirement012 describes "MCH-REQ-012: MCH-REQ-012".
+MCHRequirement012 specifies "SHALL classify event backpressure/drop policies and never let slow observers block authoritative state indefinitely.".
+MCHRequirement012 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-service/SDP/03--Requirements/requirements.md".
+MCHRequirement012 constrains MachineService.
+MCHRequirement013 status inherited.
+MCHRequirement013 describes "MCH-REQ-013: MCH-REQ-013".
+MCHRequirement013 specifies "SHALL expose source provenance distinguishing physical/simulated/injected/replay events and evidence references where semantics are evidence-derived.".
+MCHRequirement013 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-service/SDP/03--Requirements/requirements.md".
+MCHRequirement013 constrains MachineService.
+MCHRequirement014 status inherited.
+MCHRequirement014 describes "MCH-REQ-014: MCH-REQ-014".
+MCHRequirement014 specifies "SHALL reject stale/inapplicable physical control intents according to capability/state-machine rules.".
+MCHRequirement014 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-service/SDP/03--Requirements/requirements.md".
+MCHRequirement014 constrains MachineService.
+MCHRequirement015 status inherited.
+MCHRequirement015 describes "MCH-REQ-015: MCH-REQ-015".
+MCHRequirement015 specifies "SHALL NOT own taper models, bucking value optimization, APT economics or browser layout.".
+MCHRequirement015 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-service/SDP/03--Requirements/requirements.md".
+MCHRequirement015 constrains MachineService.
+MCHRequirement016 status inherited.
+MCHRequirement016 describes "MCH-REQ-016: MCH-REQ-016".
+MCHRequirement016 specifies "Go implementation SHALL follow MVP1 Go Best Practices and use a single-owner authoritative reducer.".
+MCHRequirement016 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-service/SDP/03--Requirements/requirements.md".
+MCHRequirement016 constrains MachineService.
+MCHRequirement017 status inherited.
+MCHRequirement017 describes "MCH-REQ-017: MCH-REQ-017".
+MCHRequirement017 specifies "MachineService-Lite SHALL use the same public contract and be incrementally replaceable by full internals.".
+MCHRequirement017 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-service/SDP/03--Requirements/requirements.md".
+MCHRequirement017 constrains MachineService.
+MCHRequirement018 status inherited.
+MCHRequirement018 describes "MCH-REQ-018: MCH-REQ-018".
+MCHRequirement018 specifies "unit tests SHALL exercise reducer/state machines without TCP; integration tests SHALL exercise real TCP/Protobuf adapters.".
+MCHRequirement018 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-service/SDP/03--Requirements/requirements.md".
+MCHRequirement018 constrains MachineService.
+MCHRequirement019 status inherited.
+MCHRequirement019 describes "MCH-REQ-019: MCH-REQ-019".
+MCHRequirement019 specifies "SHALL bind authority/provenance to server-created connection identity; caller-declared identity is not authoritative.".
+MCHRequirement019 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-service/SDP/03--Requirements/requirements.md".
+MCHRequirement019 constrains MachineService.
+MCHRequirement020 status inherited.
+MCHRequirement020 describes "MCH-REQ-020: MCH-REQ-020".
+MCHRequirement020 specifies "SHALL implement one active subscription/connection with typed resume/snapshot/outside-retention outcomes and explicit Unsubscribe.".
+MCHRequirement020 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-service/SDP/03--Requirements/requirements.md".
+MCHRequirement020 constrains MachineService.
+MCHRequirement021 status inherited.
+MCHRequirement021 describes "MCH-REQ-021: MCH-REQ-021".
+MCHRequirement021 specifies "SHALL deduplicate same `command_id` + same semantic payload within advertised retention, reject same-ID/different-payload conflict and support result lookup.".
+MCHRequirement021 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-service/SDP/03--Requirements/requirements.md".
+MCHRequirement021 constrains MachineService.
+MCHRequirement022 status inherited.
+MCHRequirement022 describes "MCH-REQ-022: MCH-REQ-022".
+MCHRequirement022 specifies "Wave-1 Machine v1 SHALL bind loopback/trusted-host by default until an explicit authenticated external-control design is accepted.".
+MCHRequirement022 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-service/SDP/03--Requirements/requirements.md".
+MCHRequirement022 constrains MachineService.
+MCHRequirement023 status inherited.
+MCHRequirement023 describes "MCH-REQ-023: MCH-REQ-023".
+MCHRequirement023 specifies "CoordinationSignal SHALL distinguish namespaced signal type from occurrence ID; GlobalStop SHALL define stop occurrence dedupe lifecycle.".
+MCHRequirement023 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-service/SDP/03--Requirements/requirements.md".
+MCHRequirement023 constrains MachineService.
+PGWRequirement001 status proposed.
+PGWRequirement001 describes "PGW-REQ-001: PGW-REQ-001".
+PGWRequirement001 specifies "SHALL own/open/reopen configured serial device and expose CTR target TCP service.".
+PGWRequirement001 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-gateway/SDP/03--Requirements/requirements.md".
+PGWRequirement001 constrains P1000Gateway.
+PGWRequirement002 status proposed.
+PGWRequirement002 describes "PGW-REQ-002: PGW-REQ-002".
+PGWRequirement002 specifies "SHALL preserve exact P1000 byte order/record bytes/timestamps/provenance.".
+PGWRequirement002 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-gateway/SDP/03--Requirements/requirements.md".
+PGWRequirement002 constrains P1000Gateway.
+PGWRequirement003 status proposed.
+PGWRequirement003 describes "PGW-REQ-003: PGW-REQ-003".
+PGWRequirement003 specifies "framing SHALL be length-driven and validated against shared capture fixtures.".
+PGWRequirement003 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-gateway/SDP/03--Requirements/requirements.md".
+PGWRequirement003 constrains P1000Gateway.
+PGWRequirement004 status proposed.
+PGWRequirement004 describes "PGW-REQ-004: PGW-REQ-004".
+PGWRequirement004 specifies "SHALL maintain a bounded ordered RX buffer while MCH is disconnected.".
+PGWRequirement004 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-gateway/SDP/03--Requirements/requirements.md".
+PGWRequirement004 constrains P1000Gateway.
+PGWRequirement005 status proposed.
+PGWRequirement005 describes "PGW-REQ-005: PGW-REQ-005".
+PGWRequirement005 specifies "HELLO/reconnect SHALL advertise session, available sequence range, buffered count/bytes/age and overflow/gap state.".
+PGWRequirement005 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-gateway/SDP/03--Requirements/requirements.md".
+PGWRequirement005 constrains P1000Gateway.
+PGWRequirement006 status proposed.
+PGWRequirement006 describes "PGW-REQ-006: PGW-REQ-006".
+PGWRequirement006 specifies "MCH SHALL explicitly choose resume/live-only/discard; PGW SHALL NOT blindly replay buffered history.".
+PGWRequirement006 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-gateway/SDP/03--Requirements/requirements.md".
+PGWRequirement006 constrains P1000Gateway.
+PGWRequirement007 status proposed.
+PGWRequirement007 describes "PGW-REQ-007: PGW-REQ-007".
+PGWRequirement007 specifies "SHALL support explicit internal delivery commit independent of P1000 ACK.".
+PGWRequirement007 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-gateway/SDP/03--Requirements/requirements.md".
+PGWRequirement007 constrains P1000Gateway.
+PGWRequirement008 status proposed.
+PGWRequirement008 describes "PGW-REQ-008: PGW-REQ-008".
+PGWRequirement008 specifies "SHALL accept bounded TX requests and report written/failed outcome correlated to request identity.".
+PGWRequirement008 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-gateway/SDP/03--Requirements/requirements.md".
+PGWRequirement008 constrains P1000Gateway.
+PGWRequirement009 status proposed.
+PGWRequirement009 describes "PGW-REQ-009: PGW-REQ-009".
+PGWRequirement009 specifies "SHALL NOT queue/replay stale outbound machine-control TX after lost authority/connection.".
+PGWRequirement009 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-gateway/SDP/03--Requirements/requirements.md".
+PGWRequirement009 constrains P1000Gateway.
+PGWRequirement010 status proposed.
+PGWRequirement010 describes "PGW-REQ-010: PGW-REQ-010".
+PGWRequirement010 specifies "SHALL NOT autonomously generate P1000 ACK/semantic responses.".
+PGWRequirement010 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-gateway/SDP/03--Requirements/requirements.md".
+PGWRequirement010 constrains P1000Gateway.
+PGWRequirement011 status proposed.
+PGWRequirement011 describes "PGW-REQ-011: PGW-REQ-011".
+PGWRequirement011 specifies "SHALL expose health/counters/serial reconnect diagnostics.".
+PGWRequirement011 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-gateway/SDP/03--Requirements/requirements.md".
+PGWRequirement011 constrains P1000Gateway.
+PGWRequirement012 status proposed.
+PGWRequirement012 describes "PGW-REQ-012: PGW-REQ-012".
+PGWRequirement012 specifies "one MCH disconnect/restart SHALL NOT require restarting the serial daemon.".
+PGWRequirement012 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-gateway/SDP/03--Requirements/requirements.md".
+PGWRequirement012 constrains P1000Gateway.
+PGWRequirement013 status proposed.
+PGWRequirement013 describes "PGW-REQ-013: PGW-REQ-013".
+PGWRequirement013 specifies "target-contract behavior SHALL pass parity fixtures equivalent to SIM target behavior where applicable.".
+PGWRequirement013 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-gateway/SDP/03--Requirements/requirements.md".
+PGWRequirement013 constrains P1000Gateway.
+PGWRequirement014 status proposed.
+PGWRequirement014 describes "PGW-REQ-014: PGW-REQ-014".
+PGWRequirement014 specifies "Go implementation SHALL follow MVP1 Go Best Practices.".
+PGWRequirement014 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-gateway/SDP/03--Requirements/requirements.md".
+PGWRequirement014 constrains P1000Gateway.
+PGWRequirement015 status proposed.
+PGWRequirement015 describes "PGW-REQ-015: PGW-REQ-015".
+PGWRequirement015 specifies "initial physical validation SHALL be passive/isolated until separately authorized.".
+PGWRequirement015 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-gateway/SDP/03--Requirements/requirements.md".
+PGWRequirement015 constrains P1000Gateway.
+SIMRequirement001 status inherited.
+SIMRequirement001 describes "SIM-REQ-001: SIM-REQ-001".
+SIMRequirement001 specifies "SHALL implement the CTR target contract used by MachineService.".
+SIMRequirement001 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-simulator/SDP/03--Requirements/requirements.md".
+SIMRequirement001 constrains P1000Simulator.
+SIMRequirement002 status inherited.
+SIMRequirement002 describes "SIM-REQ-002: SIM-REQ-002".
+SIMRequirement002 specifies "SHALL keep virtual physical truth inaccessible through the normal target contract.".
+SIMRequirement002 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-simulator/SDP/03--Requirements/requirements.md".
+SIMRequirement002 constrains P1000Simulator.
+SIMRequirement003 status inherited.
+SIMRequirement003 describes "SIM-REQ-003: SIM-REQ-003".
+SIMRequirement003 specifies "SHALL model virtual stem/head/saw lifecycle deterministically for configured seed/scenario.".
+SIMRequirement003 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-simulator/SDP/03--Requirements/requirements.md".
+SIMRequirement003 constrains P1000Simulator.
+SIMRequirement004 status inherited.
+SIMRequirement004 describes "SIM-REQ-004: SIM-REQ-004".
+SIMRequirement004 specifies "mapped P1000 operator actions SHALL emit literal/capture-backed wire forms where evidence exists.".
+SIMRequirement004 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-simulator/SDP/03--Requirements/requirements.md".
+SIMRequirement004 constrains P1000Simulator.
+SIMRequirement005 status inherited.
+SIMRequirement005 describes "SIM-REQ-005: SIM-REQ-005".
+SIMRequirement005 specifies "unknown/unmapped physical semantics SHALL NOT be invented as real P1000 facts.".
+SIMRequirement005 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-simulator/SDP/03--Requirements/requirements.md".
+SIMRequirement005 constrains P1000Simulator.
+SIMRequirement006 status inherited.
+SIMRequirement006 describes "SIM-REQ-006: SIM-REQ-006".
+SIMRequirement006 specifies "SHALL expose separate simulator control/diagnostic APIs for SimulatorUI and `simctl`.".
+SIMRequirement006 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-simulator/SDP/03--Requirements/requirements.md".
+SIMRequirement006 constrains P1000Simulator.
+SIMRequirement007 status inherited.
+SIMRequirement007 describes "SIM-REQ-007: SIM-REQ-007".
+SIMRequirement007 specifies "`simctl button q1` SHALL exercise simulator -> target -> MachineService wire path, not semantic MachineService injection.".
+SIMRequirement007 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-simulator/SDP/03--Requirements/requirements.md".
+SIMRequirement007 constrains P1000Simulator.
+SIMRequirement008 status inherited.
+SIMRequirement008 describes "SIM-REQ-008: SIM-REQ-008".
+SIMRequirement008 specifies "simulator target sessions/provenance SHALL identify simulated-wire source.".
+SIMRequirement008 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-simulator/SDP/03--Requirements/requirements.md".
+SIMRequirement008 constrains P1000Simulator.
+SIMRequirement009 status inherited.
+SIMRequirement009 describes "SIM-REQ-009: SIM-REQ-009".
+SIMRequirement009 specifies "SHALL support fixture/scenario reset sufficient for repeatable integration tests.".
+SIMRequirement009 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-simulator/SDP/03--Requirements/requirements.md".
+SIMRequirement009 constrains P1000Simulator.
+SIMRequirement010 status inherited.
+SIMRequirement010 describes "SIM-REQ-010: SIM-REQ-010".
+SIMRequirement010 specifies "SHALL be usable before BuckingService/BuckingWeb exist.".
+SIMRequirement010 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-simulator/SDP/03--Requirements/requirements.md".
+SIMRequirement010 constrains P1000Simulator.
+SIMRequirement011 status inherited.
+SIMRequirement011 describes "SIM-REQ-011: SIM-REQ-011".
+SIMRequirement011 specifies "SHALL not contain normal MachineService ACK policy; it emulates P1000 endpoint behavior.".
+SIMRequirement011 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-simulator/SDP/03--Requirements/requirements.md".
+SIMRequirement011 constrains P1000Simulator.
+SIMRequirement012 status inherited.
+SIMRequirement012 describes "SIM-REQ-012: SIM-REQ-012".
+SIMRequirement012 specifies "control API SHALL never expose hidden truth through the normal production machine path.".
+SIMRequirement012 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-simulator/SDP/03--Requirements/requirements.md".
+SIMRequirement012 constrains P1000Simulator.
+SIMRequirement013 status inherited.
+SIMRequirement013 describes "SIM-REQ-013: SIM-REQ-013".
+SIMRequirement013 specifies "simulator-control commands SHALL implement the CTR v1 same-command-ID lifecycle for first submit, same-payload replay without re-execution, different-payload conflict, result lookup and expired-ID rejection within the advertised simulator-session policy.".
+SIMRequirement013 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-simulator/SDP/03--Requirements/requirements.md".
+SIMRequirement013 constrains P1000Simulator.
+SIMRequirement014 status inherited.
+SIMRequirement014 describes "SIM-REQ-014: SIM-REQ-014".
+SIMRequirement014 specifies "ambiguous HTTP/WS transport failure SHALL NOT cause SIM or `simctl` to invent a new command ID for the same requested action; recovery SHALL use same-ID retry/lookup until the outcome is known or the ID is explicitly expired.".
+SIMRequirement014 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-simulator/SDP/03--Requirements/requirements.md".
+SIMRequirement014 constrains P1000Simulator.
+BOXRequirement001 status inherited.
+BOXRequirement001 describes "BOX-REQ-001: BOX-REQ-001".
+BOXRequirement001 specifies "SHALL define stable headless BoxModel identities/kinds with no DOM/React/SVG handles.".
+BOXRequirement001 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/box-ui/SDP/03--Requirements/requirements.md".
+BOXRequirement001 constrains BoxUI.
+BOXRequirement002 status inherited.
+BOXRequirement002 describes "BOX-REQ-002: BOX-REQ-002".
+BOXRequirement002 specifies "SHALL provide BoxShell common title/status/error/stale/action chrome.".
+BOXRequirement002 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/box-ui/SDP/03--Requirements/requirements.md".
+BOXRequirement002 constrains BoxUI.
+BOXRequirement003 status inherited.
+BOXRequirement003 describes "BOX-REQ-003: BOX-REQ-003".
+BOXRequirement003 specifies "SHALL provide a trusted registry mapping stable kinds/keys to React views.".
+BOXRequirement003 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/box-ui/SDP/03--Requirements/requirements.md".
+BOXRequirement003 constrains BoxUI.
+BOXRequirement004 status inherited.
+BOXRequirement004 describes "BOX-REQ-004: BOX-REQ-004".
+BOXRequirement004 specifies "SHALL provide shared metric/status/command/list/console/plot view primitives as concrete needs arise.".
+BOXRequirement004 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/box-ui/SDP/03--Requirements/requirements.md".
+BOXRequirement004 constrains BoxUI.
+BOXRequirement005 status inherited.
+BOXRequirement005 describes "BOX-REQ-005: BOX-REQ-005".
+BOXRequirement005 specifies "SHALL provide shared design tokens/layout primitives reproducing the accepted Concept1 visual language.".
+BOXRequirement005 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/box-ui/SDP/03--Requirements/requirements.md".
+BOXRequirement005 constrains BoxUI.
+BOXRequirement006 status inherited.
+BOXRequirement006 describes "BOX-REQ-006: BOX-REQ-006".
+BOXRequirement006 specifies "SHALL NOT contain MachineService/BuckingService transport or domain authority.".
+BOXRequirement006 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/box-ui/SDP/03--Requirements/requirements.md".
+BOXRequirement006 constrains BoxUI.
+BOXRequirement007 status inherited.
+BOXRequirement007 describes "BOX-REQ-007: BOX-REQ-007".
+BOXRequirement007 specifies "specialized plot views SHALL accept logical/normalized coordinates and stable entity IDs.".
+BOXRequirement007 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/box-ui/SDP/03--Requirements/requirements.md".
+BOXRequirement007 constrains BoxUI.
+BOXRequirement008 status inherited.
+BOXRequirement008 describes "BOX-REQ-008: BOX-REQ-008".
+BOXRequirement008 specifies "specialized renderer implementations MAY retain GUI handles internally but BoxModels SHALL NOT.".
+BOXRequirement008 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/box-ui/SDP/03--Requirements/requirements.md".
+BOXRequirement008 constrains BoxUI.
+BOXRequirement009 status superseded.
+BOXRequirement009 describes "BOX-REQ-009: BOX-REQ-009".
+BOXRequirement009 specifies "ordinary React views SHALL NOT require a redundant global renderer abstraction.".
+BOXRequirement009 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/box-ui/SDP/03--Requirements/requirements.md".
+BOXRequirement009 constrains BoxUI.
+BOXRequirement009 replaced-by SelectedUiSeparation.
+BOXRequirement010 status inherited.
+BOXRequirement010 describes "BOX-REQ-010: BOX-REQ-010".
+BOXRequirement010 specifies "SimulatorUI and BuckingUI SHALL be able to reuse the same box primitives without importing each other's domains.".
+BOXRequirement010 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/box-ui/SDP/03--Requirements/requirements.md".
+BOXRequirement010 constrains BoxUI.
+LBKRequirement001 status inherited.
+LBKRequirement001 describes "LBK-REQ-001: LBK-REQ-001".
+LBKRequirement001 specifies "SHALL provide generic bounded typed ring buffers with explicit overflow behavior and observable local record sequence.".
+LBKRequirement001 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/labkit/SDP/03--Requirements/requirements.md".
+LBKRequirement001 constrains LabKit.
+LBKRequirement002 status inherited.
+LBKRequirement002 describes "LBK-REQ-002: LBK-REQ-002".
+LBKRequirement002 specifies "SHALL provide append-only ledger writing with schema/version metadata.".
+LBKRequirement002 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/labkit/SDP/03--Requirements/requirements.md".
+LBKRequirement002 constrains LabKit.
+LBKRequirement003 status inherited.
+LBKRequirement003 describes "LBK-REQ-003: LBK-REQ-003".
+LBKRequirement003 specifies "SHALL support checkpoint create/list/resolve by stable identity/name and local record sequence.".
+LBKRequirement003 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/labkit/SDP/03--Requirements/requirements.md".
+LBKRequirement003 constrains LabKit.
+LBKRequirement004 status inherited.
+LBKRequirement004 describes "LBK-REQ-004: LBK-REQ-004".
+LBKRequirement004 specifies "SHALL support canonical NDJSON export/import through bounded artifact/chunk primitives rather than unbounded single messages.".
+LBKRequirement004 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/labkit/SDP/03--Requirements/requirements.md".
+LBKRequirement004 constrains LabKit.
+LBKRequirement005 status inherited.
+LBKRequirement005 describes "LBK-REQ-005: LBK-REQ-005".
+LBKRequirement005 specifies "SHALL support replay range selection by sequence/time/checkpoint.".
+LBKRequirement005 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/labkit/SDP/03--Requirements/requirements.md".
+LBKRequirement005 constrains LabKit.
+LBKRequirement006 status inherited.
+LBKRequirement006 describes "LBK-REQ-006: LBK-REQ-006".
+LBKRequirement006 specifies "replay SHALL require an explicit server-configured target adapter/profile.".
+LBKRequirement006 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/labkit/SDP/03--Requirements/requirements.md".
+LBKRequirement006 constrains LabKit.
+LBKRequirement007 status inherited.
+LBKRequirement007 describes "LBK-REQ-007: LBK-REQ-007".
+LBKRequirement007 specifies "generic replay SHALL NOT expose arbitrary caller endpoints or target live physical TX by default.".
+LBKRequirement007 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/labkit/SDP/03--Requirements/requirements.md".
+LBKRequirement007 constrains LabKit.
+LBKRequirement008 status inherited.
+LBKRequirement008 describes "LBK-REQ-008: LBK-REQ-008".
+LBKRequirement008 specifies "SHALL record gaps/drop counts when observation cannot be complete.".
+LBKRequirement008 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/labkit/SDP/03--Requirements/requirements.md".
+LBKRequirement008 constrains LabKit.
+LBKRequirement009 status inherited.
+LBKRequirement009 describes "LBK-REQ-009: LBK-REQ-009".
+LBKRequirement009 specifies "SHALL provide CLI formatting/RPC helpers without domain-specific commands.".
+LBKRequirement009 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/labkit/SDP/03--Requirements/requirements.md".
+LBKRequirement009 constrains LabKit.
+LBKRequirement010 status inherited.
+LBKRequirement010 describes "LBK-REQ-010: LBK-REQ-010".
+LBKRequirement010 specifies "SHALL support deterministic tests with in-memory stores/clocks.".
+LBKRequirement010 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/labkit/SDP/03--Requirements/requirements.md".
+LBKRequirement010 constrains LabKit.
+LBKRequirement011 status inherited.
+LBKRequirement011 describes "LBK-REQ-011: LBK-REQ-011".
+LBKRequirement011 specifies "Go implementation SHALL follow MVP1 Go Best Practices.".
+LBKRequirement011 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/labkit/SDP/03--Requirements/requirements.md".
+LBKRequirement011 constrains LabKit.
+LBKRequirement012 status inherited.
+LBKRequirement012 describes "LBK-REQ-012: LBK-REQ-012".
+LBKRequirement012 specifies "generic request helpers SHALL preserve request/result correlation for pipelined operations.".
+LBKRequirement012 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/labkit/SDP/03--Requirements/requirements.md".
+LBKRequirement012 constrains LabKit.
+LBKRequirement013 status inherited.
+LBKRequirement013 describes "LBK-REQ-013: LBK-REQ-013".
+LBKRequirement013 specifies "source-event cursors SHALL be qualified by source session when crossing process restart boundaries.".
+LBKRequirement013 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/labkit/SDP/03--Requirements/requirements.md".
+LBKRequirement013 constrains LabKit.
+SVKRequirement001 status inherited.
+SVKRequirement001 describes "SVK-REQ-001: SVK-REQ-001".
+SVKRequirement001 specifies "SHALL implement bounded length-delimited TCP framing for CTR Protobuf messages.".
+SVKRequirement001 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/servicekit/SDP/03--Requirements/requirements.md".
+SVKRequirement001 constrains ServiceKit.
+SVKRequirement002 status inherited.
+SVKRequirement002 describes "SVK-REQ-002: SVK-REQ-002".
+SVKRequirement002 specifies "SHALL provide Go and TypeScript client/server primitives with equivalent contract behavior.".
+SVKRequirement002 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/servicekit/SDP/03--Requirements/requirements.md".
+SVKRequirement002 constrains ServiceKit.
+SVKRequirement003 status inherited.
+SVKRequirement003 describes "SVK-REQ-003: SVK-REQ-003".
+SVKRequirement003 specifies "SHALL implement the CTR Hello state machine including timeout, selected-contract response, negotiation failure and server-bound connection identity.".
+SVKRequirement003 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/servicekit/SDP/03--Requirements/requirements.md".
+SVKRequirement003 constrains ServiceKit.
+SVKRequirement004 status inherited.
+SVKRequirement004 describes "SVK-REQ-004: SVK-REQ-004".
+SVKRequirement004 specifies "SHALL implement exactly one active subscription per connection; second Subscribe replaces it and Unsubscribe explicitly clears it.".
+SVKRequirement004 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/servicekit/SDP/03--Requirements/requirements.md".
+SVKRequirement004 constrains ServiceKit.
+SVKRequirement005 status inherited.
+SVKRequirement005 describes "SVK-REQ-005: SVK-REQ-005".
+SVKRequirement005 specifies "SHALL support non-supersedable, latest-wins and diagnostic-gap delivery policies without domain semantics.".
+SVKRequirement005 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/servicekit/SDP/03--Requirements/requirements.md".
+SVKRequirement005 constrains ServiceKit.
+SVKRequirement006 status inherited.
+SVKRequirement006 describes "SVK-REQ-006: SVK-REQ-006".
+SVKRequirement006 specifies "SHALL support commandId correlation, duplicate-command dedupe/conflict and command-result recovery mechanics without executing domain actions itself.".
+SVKRequirement006 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/servicekit/SDP/03--Requirements/requirements.md".
+SVKRequirement006 constrains ServiceKit.
+SVKRequirement007 status inherited.
+SVKRequirement007 describes "SVK-REQ-007: SVK-REQ-007".
+SVKRequirement007 specifies "SHALL support capability/authority catalog publication/updates; authority/catalog change delivery is durable in v1.".
+SVKRequirement007 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/servicekit/SDP/03--Requirements/requirements.md".
+SVKRequirement007 constrains ServiceKit.
+SVKRequirement008 status inherited.
+SVKRequirement008 describes "SVK-REQ-008: SVK-REQ-008".
+SVKRequirement008 specifies "SHALL expose deterministic shutdown/cancellation and reconnect hooks.".
+SVKRequirement008 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/servicekit/SDP/03--Requirements/requirements.md".
+SVKRequirement008 constrains ServiceKit.
+SVKRequirement009 status inherited.
+SVKRequirement009 describes "SVK-REQ-009: SVK-REQ-009".
+SVKRequirement009 specifies "one slow client SHALL NOT block another or the service reducer indefinitely.".
+SVKRequirement009 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/servicekit/SDP/03--Requirements/requirements.md".
+SVKRequirement009 constrains ServiceKit.
+SVKRequirement010 status inherited.
+SVKRequirement010 describes "SVK-REQ-010: SVK-REQ-010".
+SVKRequirement010 specifies "SHALL expose human-readable trace formatting hooks through CTR canonical conversion.".
+SVKRequirement010 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/servicekit/SDP/03--Requirements/requirements.md".
+SVKRequirement010 constrains ServiceKit.
+SVKRequirement011 status inherited.
+SVKRequirement011 describes "SVK-REQ-011: SVK-REQ-011".
+SVKRequirement011 specifies "SHALL NOT contain P1000/taper/bucking/APT/UI-specific logic.".
+SVKRequirement011 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/servicekit/SDP/03--Requirements/requirements.md".
+SVKRequirement011 constrains ServiceKit.
+SVKRequirement012 status inherited.
+SVKRequirement012 describes "SVK-REQ-012: SVK-REQ-012".
+SVKRequirement012 specifies "Go implementation SHALL follow MVP1 Go Best Practices.".
+SVKRequirement012 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/servicekit/SDP/03--Requirements/requirements.md".
+SVKRequirement012 constrains ServiceKit.
+SVKRequirement013 status inherited.
+SVKRequirement013 describes "SVK-REQ-013: SVK-REQ-013".
+SVKRequirement013 specifies "SHALL preserve service-global source `event_seq` separately from contiguous per-subscription delivery sequence; filtered/coalesced source gaps are not transport loss.".
+SVKRequirement013 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/servicekit/SDP/03--Requirements/requirements.md".
+SVKRequirement013 constrains ServiceKit.
+SVKRequirement014 status inherited.
+SVKRequirement014 describes "SVK-REQ-014: SVK-REQ-014".
+SVKRequirement014 specifies "SHALL expose typed live/resumed/snapshot-required/outside-retention subscription outcomes and snapshot-race hooks.".
+SVKRequirement014 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/servicekit/SDP/03--Requirements/requirements.md".
+SVKRequirement014 constrains ServiceKit.
+SVKRequirement015 status inherited.
+SVKRequirement015 describes "SVK-REQ-015: SVK-REQ-015".
+SVKRequirement015 specifies "SHALL pass server-created connection context to constituent handlers; caller-declared identity SHALL NOT become authoritative peer identity.".
+SVKRequirement015 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/servicekit/SDP/03--Requirements/requirements.md".
+SVKRequirement015 constrains ServiceKit.
+UIRRequirement001 status inherited.
+UIRRequirement001 describes "UIR-REQ-001: UIR-REQ-001".
+UIRRequirement001 specifies "SHALL provide typed local event/pub-sub primitives independent of React component hierarchy.".
+UIRRequirement001 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/ui-runtime/SDP/03--Requirements/requirements.md".
+UIRRequirement001 constrains UIRuntime.
+UIRRequirement002 status inherited.
+UIRRequirement002 describes "UIR-REQ-002: UIR-REQ-002".
+UIRRequirement002 specifies "SHALL provide selector/subscription stores so consumers update only for selected domain changes.".
+UIRRequirement002 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/ui-runtime/SDP/03--Requirements/requirements.md".
+UIRRequirement002 constrains UIRuntime.
+UIRRequirement003 status inherited.
+UIRRequirement003 describes "UIR-REQ-003: UIR-REQ-003".
+UIRRequirement003 specifies "SHALL support latest-wins/rAF-coalesced channels for declared high-rate presentation state.".
+UIRRequirement003 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/ui-runtime/SDP/03--Requirements/requirements.md".
+UIRRequirement003 constrains UIRuntime.
+UIRRequirement004 status inherited.
+UIRRequirement004 describes "UIR-REQ-004: UIR-REQ-004".
+UIRRequirement004 specifies "SHALL NOT coalesce durable/non-supersedable semantic events.".
+UIRRequirement004 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/ui-runtime/SDP/03--Requirements/requirements.md".
+UIRRequirement004 constrains UIRuntime.
+UIRRequirement005 status inherited.
+UIRRequirement005 describes "UIR-REQ-005: UIR-REQ-005".
+UIRRequirement005 specifies "SHALL track service session plus separate source event sequence and per-subscription delivery stream identity/sequence.".
+UIRRequirement005 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/ui-runtime/SDP/03--Requirements/requirements.md".
+UIRRequirement005 constrains UIRuntime.
+UIRRequirement006 status inherited.
+UIRRequirement006 describes "UIR-REQ-006: UIR-REQ-006".
+UIRRequirement006 specifies "SHALL support commandId generation/correlation, same-ID retry/result lookup and result routing to the initiating presentation source.".
+UIRRequirement006 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/ui-runtime/SDP/03--Requirements/requirements.md".
+UIRRequirement006 constrains UIRuntime.
+UIRRequirement007 status inherited.
+UIRRequirement007 describes "UIR-REQ-007: UIR-REQ-007".
+UIRRequirement007 specifies "SHALL support merged/federated CommandCatalog presentation without becoming authority.".
+UIRRequirement007 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/ui-runtime/SDP/03--Requirements/requirements.md".
+UIRRequirement007 constrains UIRuntime.
+UIRRequirement008 status inherited.
+UIRRequirement008 describes "UIR-REQ-008: UIR-REQ-008".
+UIRRequirement008 specifies "SHALL expose global ServiceEvent channels for banner/console consumers.".
+UIRRequirement008 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/ui-runtime/SDP/03--Requirements/requirements.md".
+UIRRequirement008 constrains UIRuntime.
+UIRRequirement009 status inherited.
+UIRRequirement009 describes "UIR-REQ-009: UIR-REQ-009".
+UIRRequirement009 specifies "SHALL contain no P1000/taper/bucking/virtual-truth semantics.".
+UIRRequirement009 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/ui-runtime/SDP/03--Requirements/requirements.md".
+UIRRequirement009 constrains UIRuntime.
+UIRRequirement010 status inherited.
+UIRRequirement010 describes "UIR-REQ-010: UIR-REQ-010".
+UIRRequirement010 specifies "SHALL be directly unit-testable without DOM rendering.".
+UIRRequirement010 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/ui-runtime/SDP/03--Requirements/requirements.md".
+UIRRequirement010 constrains UIRuntime.
+UIRRequirement011 status inherited.
+UIRRequirement011 describes "UIR-REQ-011: UIR-REQ-011".
+UIRRequirement011 specifies "filtered/latest-wins sparse source `event_seq` SHALL NOT trigger resync; a gap in the same contiguous delivery stream SHALL.".
+UIRRequirement011 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/ui-runtime/SDP/03--Requirements/requirements.md".
+UIRRequirement011 constrains UIRuntime.
+UIRRequirement012 status inherited.
+UIRRequirement012 describes "UIR-REQ-012: UIR-REQ-012".
+UIRRequirement012 specifies "SHALL handle typed LIVE_STARTED/RESUMED/SNAPSHOT_REQUIRED/OUTSIDE_RETENTION outcomes and commit snapshot `through_event_seq` as a baseline.".
+UIRRequirement012 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/ui-runtime/SDP/03--Requirements/requirements.md".
+UIRRequirement012 constrains UIRuntime.
+BUIRequirement001 status proposed.
+BUIRequirement001 describes "BUI-REQ-001: BUI-REQ-001".
+BUIRequirement001 specifies "SHALL use BuckingUiDomain over UIR; transport messages SHALL NOT be consumed independently by arbitrary React components.".
+BUIRequirement001 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/bucking-ui/SDP/03--Requirements/requirements.md".
+BUIRequirement001 constrains BuckingUI.
+BUIRequirement002 status proposed.
+BUIRequirement002 describes "BUI-REQ-002: BUI-REQ-002".
+BUIRequirement002 specifies "SHALL use BOX shared views/tokens and preserve Concept1 BuckingUI visual/layout intent.".
+BUIRequirement002 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/bucking-ui/SDP/03--Requirements/requirements.md".
+BUIRequirement002 constrains BuckingUI.
+BUIRequirement003 status proposed.
+BUIRequirement003 describes "BUI-REQ-003: BUI-REQ-003".
+BUIRequirement003 specifies "SHALL maintain separate machine and bucking domain slices/revisions so one stream does not invalidate unrelated presentation.".
+BUIRequirement003 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/bucking-ui/SDP/03--Requirements/requirements.md".
+BUIRequirement003 constrains BuckingUI.
+BUIRequirement004 status proposed.
+BUIRequirement004 describes "BUI-REQ-004: BUI-REQ-004".
+BUIRequirement004 specifies "length/diameter/head telemetry MAY consume latest sample at display cadence without forcing plan/config boxes to rerender.".
+BUIRequirement004 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/bucking-ui/SDP/03--Requirements/requirements.md".
+BUIRequirement004 constrains BuckingUI.
+BUIRequirement005 status proposed.
+BUIRequirement005 describes "BUI-REQ-005: BUI-REQ-005".
+BUIRequirement005 specifies "planning surfaces SHALL retain the latest valid plan while a newer planner result is pending and show pending/stale metadata explicitly.".
+BUIRequirement005 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/bucking-ui/SDP/03--Requirements/requirements.md".
+BUIRequirement005 constrains BuckingUI.
+BUIRequirement006 status proposed.
+BUIRequirement006 describes "BUI-REQ-006: BUI-REQ-006".
+BUIRequirement006 specifies "stem plot SHALL use stable entity identities/logical coordinates and support minimal update/add/remove rendering.".
+BUIRequirement006 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/bucking-ui/SDP/03--Requirements/requirements.md".
+BUIRequirement006 constrains BuckingUI.
+BUIRequirement007 status proposed.
+BUIRequirement007 describes "BUI-REQ-007: BUI-REQ-007".
+BUIRequirement007 specifies "calculated profile display MAY use presentation-only interpolation/downsampling; it SHALL NOT feed planning authority.".
+BUIRequirement007 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/bucking-ui/SDP/03--Requirements/requirements.md".
+BUIRequirement007 constrains BuckingUI.
+BUIRequirement008 status proposed.
+BUIRequirement008 describes "BUI-REQ-008: BUI-REQ-008".
+BUIRequirement008 specifies "SHALL remain operational for machine telemetry/health/virtual palette when BKS is unavailable.".
+BUIRequirement008 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/bucking-ui/SDP/03--Requirements/requirements.md".
+BUIRequirement008 constrains BuckingUI.
+BUIRequirement009 status proposed.
+BUIRequirement009 describes "BUI-REQ-009: BUI-REQ-009".
+BUIRequirement009 specifies "virtual palette commands SHALL route through BWEB to MCH semantic command ingress and preserve sender/commandId provenance.".
+BUIRequirement009 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/bucking-ui/SDP/03--Requirements/requirements.md".
+BUIRequirement009 constrains BuckingUI.
+BUIRequirement010 status proposed.
+BUIRequirement010 describes "BUI-REQ-010: BUI-REQ-010".
+BUIRequirement010 specifies "taper/APT/policy commands SHALL route to BKS via BWEB and UI state SHALL follow authoritative results/events.".
+BUIRequirement010 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/bucking-ui/SDP/03--Requirements/requirements.md".
+BUIRequirement010 constrains BuckingUI.
+BUIRequirement011 status proposed.
+BUIRequirement011 describes "BUI-REQ-011: BUI-REQ-011".
+BUIRequirement011 specifies "command availability SHALL reflect the federated runtime CommandCatalog; unavailable control SHALL be shown rather than fabricated.".
+BUIRequirement011 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/bucking-ui/SDP/03--Requirements/requirements.md".
+BUIRequirement011 constrains BuckingUI.
+BUIRequirement012 status proposed.
+BUIRequirement012 describes "BUI-REQ-012: BUI-REQ-012".
+BUIRequirement012 specifies "global service errors SHALL feed shared banner/console; individual boxes SHALL normally consume only relevant domain/command results.".
+BUIRequirement012 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/bucking-ui/SDP/03--Requirements/requirements.md".
+BUIRequirement012 constrains BuckingUI.
+BUIRequirement013 status proposed.
+BUIRequirement013 describes "BUI-REQ-013: BUI-REQ-013".
+BUIRequirement013 specifies "SHALL support tablet/older Chromium assumptions and avoid unnecessary state-of-the-art browser dependencies.".
+BUIRequirement013 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/bucking-ui/SDP/03--Requirements/requirements.md".
+BUIRequirement013 constrains BuckingUI.
+BUIRequirement014 status proposed.
+BUIRequirement014 describes "BUI-REQ-014: BUI-REQ-014".
+BUIRequirement014 specifies "SHALL NOT contain bucking/taper/machine-control authority.".
+BUIRequirement014 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/bucking-ui/SDP/03--Requirements/requirements.md".
+BUIRequirement014 constrains BuckingUI.
+SUIRequirement001 status inherited.
+SUIRequirement001 describes "SUI-REQ-001: SUI-REQ-001".
+SUIRequirement001 specifies "SHALL use UIR app-domain/store/command primitives rather than one monolithic root state.".
+SUIRequirement001 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/simulator-ui/SDP/03--Requirements/requirements.md".
+SUIRequirement001 constrains SimulatorUI.
+SUIRequirement002 status inherited.
+SUIRequirement002 describes "SUI-REQ-002: SUI-REQ-002".
+SUIRequirement002 specifies "SHALL use BOX shared shell/views/tokens and preserve Concept1 SimulatorUI visual intent.".
+SUIRequirement002 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/simulator-ui/SDP/03--Requirements/requirements.md".
+SUIRequirement002 constrains SimulatorUI.
+SUIRequirement003 status inherited.
+SUIRequirement003 describes "SUI-REQ-003: SUI-REQ-003".
+SUIRequirement003 specifies "SHALL connect only through declared simulator control/diagnostic browser APIs.".
+SUIRequirement003 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/simulator-ui/SDP/03--Requirements/requirements.md".
+SUIRequirement003 constrains SimulatorUI.
+SUIRequirement004 status inherited.
+SUIRequirement004 describes "SUI-REQ-004: SUI-REQ-004".
+SUIRequirement004 specifies "simulator hidden truth MAY be presented on explicitly simulator-only diagnostic surfaces.".
+SUIRequirement004 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/simulator-ui/SDP/03--Requirements/requirements.md".
+SUIRequirement004 constrains SimulatorUI.
+SUIRequirement005 status inherited.
+SUIRequirement005 describes "SUI-REQ-005: SUI-REQ-005".
+SUIRequirement005 specifies "SHALL clearly distinguish hidden truth from P1000-visible/emitted state.".
+SUIRequirement005 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/simulator-ui/SDP/03--Requirements/requirements.md".
+SUIRequirement005 constrains SimulatorUI.
+SUIRequirement006 status inherited.
+SUIRequirement006 describes "SUI-REQ-006: SUI-REQ-006".
+SUIRequirement006 specifies "high-rate displays SHALL use per-consumer cadence/latest-wins behavior without whole-page rerender.".
+SUIRequirement006 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/simulator-ui/SDP/03--Requirements/requirements.md".
+SUIRequirement006 constrains SimulatorUI.
+SUIRequirement007 status inherited.
+SUIRequirement007 describes "SUI-REQ-007: SUI-REQ-007".
+SUIRequirement007 specifies "plot surfaces SHALL use stable logical entity IDs/coordinates and may use a specialized renderer.".
+SUIRequirement007 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/simulator-ui/SDP/03--Requirements/requirements.md".
+SUIRequirement007 constrains SimulatorUI.
+SUIRequirement008 status inherited.
+SUIRequirement008 describes "SUI-REQ-008: SUI-REQ-008".
+SUIRequirement008 specifies "controls SHALL submit commands and await authoritative result/state rather than mutate authority locally.".
+SUIRequirement008 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/simulator-ui/SDP/03--Requirements/requirements.md".
+SUIRequirement008 constrains SimulatorUI.
+SUIRequirement009 status inherited.
+SUIRequirement009 describes "SUI-REQ-009: SUI-REQ-009".
+SUIRequirement009 specifies "SHALL expose service/session/error feedback through shared banner/console patterns.".
+SUIRequirement009 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/simulator-ui/SDP/03--Requirements/requirements.md".
+SUIRequirement009 constrains SimulatorUI.
+SUIRequirement010 status inherited.
+SUIRequirement010 describes "SUI-REQ-010: SUI-REQ-010".
+SUIRequirement010 specifies "SHALL be testable against simulator API stubs before full simulator runtime integration.".
+SUIRequirement010 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/simulator-ui/SDP/03--Requirements/requirements.md".
+SUIRequirement010 constrains SimulatorUI.
+SUIRequirement011 status inherited.
+SUIRequirement011 describes "SUI-REQ-011: SUI-REQ-011".
+SUIRequirement011 specifies "command transport SHALL preserve the same `commandId` across ambiguous POST retry and GET lookup recovery; it SHALL surface `replayed`, `command_id_conflict`, `command_id_expired` and `not_found` distinctly and SHALL create a new ID only for a deliberate new operator action.".
+SUIRequirement011 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/simulator-ui/SDP/03--Requirements/requirements.md".
+SUIRequirement011 constrains SimulatorUI.
+SUIRequirement012 status inherited.
+SUIRequirement012 describes "SUI-REQ-012: SUI-REQ-012".
+SUIRequirement012 specifies "the UI command store SHALL retain enough lifecycle state to reconcile a terminal `command.result` event or command-status lookup with the initiating surface without optimistic simulator-state mutation.".
+SUIRequirement012 cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/simulator-ui/SDP/03--Requirements/requirements.md".
+SUIRequirement012 constrains SimulatorUI.

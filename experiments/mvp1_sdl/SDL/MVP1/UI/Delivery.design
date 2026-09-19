@@ -1,0 +1,25 @@
+language sdl-mvp1-exercise version 0.1.
+
+unit DeliveryScheduler.
+capability BoundedUiDelivery.
+functionality ScheduleUiDelivery.
+functionality CoalescePresentationPatch.
+functionality DeliverDurableOutcome.
+functionality ReportDiagnosticLoss.
+
+UIRuntime contains DeliveryScheduler.
+DeliveryScheduler provides BoundedUiDelivery.
+DeliveryScheduler status proposed.
+DeliveryScheduler cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/Domains/UIDomain/DetailedDesignDiscussion.md".
+DeliveryScheduler owns ScheduleUiDelivery.
+ScheduleUiDelivery realizes BoundedUiDelivery.
+ScheduleUiDelivery specifies "Independent realtime/bulk/durable lanes with bounded work; per-binding cadence is separate from producer/projection/frame cadence.".
+DeliveryScheduler owns CoalescePresentationPatch.
+CoalescePresentationPatch realizes BoundedUiDelivery.
+CoalescePresentationPatch specifies "Latest/coalesced updates only for declared supersedable presentation; authority/replay state remains intact.".
+DeliveryScheduler owns DeliverDurableOutcome.
+DeliverDurableOutcome realizes BoundedUiDelivery.
+DeliverDurableOutcome specifies "Ordered command/config/session/error outcomes cannot be dropped by latest-wins; report explicit capacity failure.".
+DeliveryScheduler owns ReportDiagnosticLoss.
+ReportDiagnosticLoss realizes BoundedUiDelivery.
+ReportDiagnosticLoss specifies "Bounded diagnostics and drop accounting; no false delivery gap from intentional filtering/coalescing.".
