@@ -1,0 +1,8 @@
+sdui 0.1;
+StaticPage = {
+  main = [title='Dokumentasjon',
+    { heading = text('Hello # this is text, not a comment');
+      description = text('Quoted: \'Hei\' and Unicode: \u00e6');
+      ok = button('Unbound action') }
+  ]
+};

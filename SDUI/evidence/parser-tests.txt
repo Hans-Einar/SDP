@@ -1,0 +1,20 @@
+test_anonymous_group_and_reusable_names_across_definitions (test_language.LanguageTest.test_anonymous_group_and_reusable_names_across_definitions) ... ok
+test_bounded_work (test_language.LanguageTest.test_bounded_work) ... ok
+test_box_properties_and_layout_constraints (test_language.LanguageTest.test_box_properties_and_layout_constraints) ... ok
+test_cli_files_and_source_protection (test_language.LanguageTest.test_cli_files_and_source_protection) ... ok
+test_cli_json_exit_codes_and_no_module_loading (test_language.LanguageTest.test_cli_json_exit_codes_and_no_module_loading) ... ok
+test_deterministic_ast_and_syntax_semantics_separation (test_language.LanguageTest.test_deterministic_ast_and_syntax_semantics_separation) ... ok
+test_lexical_failures (test_language.LanguageTest.test_lexical_failures) ... ok
+test_local_symbol_errors (test_language.LanguageTest.test_local_symbol_errors) ... ok
+test_no_arbitrary_code_or_ambiguous_shorthand (test_language.LanguageTest.test_no_arbitrary_code_or_ambiguous_shorthand) ... ok
+test_owner_example_preserves_boxes_rows_and_bindings (test_language.LanguageTest.test_owner_example_preserves_boxes_rows_and_bindings) ... ok
+test_static_comments_quotes_and_unicode (test_language.LanguageTest.test_static_comments_quotes_and_unicode) ... ok
+test_truncations_and_malformed_inputs_have_structured_errors (test_language.LanguageTest.test_truncations_and_malformed_inputs_have_structured_errors) ... ok
+test_utf8_byte_spans_and_crlf (test_language.LanguageTest.test_utf8_byte_spans_and_crlf) ... ok
+test_version_is_exact_and_trailing_input_rejected (test_language.LanguageTest.test_version_is_exact_and_trailing_input_rejected) ... ok
+test_widget_contracts (test_language.LanguageTest.test_widget_contracts) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 1.657s
+
+OK
