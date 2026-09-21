@@ -1,0 +1,47 @@
+{
+  "repository": "/home/warloc/git/ponsse",
+  "commit": "882ad7c0457a723550ea6cce5bf027230997ec2a",
+  "files": [
+    {
+      "path": "Concept1/apps/operator-ui/src/ui/operator-layout.mjs",
+      "sha256": "4163443b83be40e5b8ad087da8eef4dd362c38a36871ed6a01dd16b7fc4c9db5",
+      "matchesHead": true
+    },
+    {
+      "path": "Concept1/apps/operator-ui/src/ui/OperatorBuckingView.jsx",
+      "sha256": "91745fbf430b788f3ffaf89318873452ed30b165aea79b3487d96b2c0e32f5d1",
+      "matchesHead": true
+    },
+    {
+      "path": "Concept1/apps/operator-ui/src/ui/OperatorStemTrackPanel.jsx",
+      "sha256": "f58a94e81f82d44b82b455df85f566fc26315caad97d7274a21cb6c782ed8876",
+      "matchesHead": true
+    },
+    {
+      "path": "Concept1/apps/operator-ui/src/ui/OperatorApp.jsx",
+      "sha256": "86fe2be7ff15c5449e180ac6125a8c7201c333677c6a1a18781a3038dfbd4e53",
+      "matchesHead": true
+    },
+    {
+      "path": "Concept1/shared/ui-box/UILayout.jsx",
+      "sha256": "add911fe18e995271f0e9c9456ccb5b2a33c8042cb7ba2c3b6175489fd19cd10",
+      "matchesHead": true
+    },
+    {
+      "path": "Concept1/shared/ui-box/model.mjs",
+      "sha256": "cd2ed243c12c80e1408d8883a359b3f011b9524ce27293cebf2d596b5168d111",
+      "matchesHead": true
+    }
+  ],
+  "ghTree": {
+    "commit": "97cc0d8257603766dd741b49b7d8005857b421a9",
+    "go": "1.25.0",
+    "bubbletea": "1.3.10",
+    "lipgloss": "1.1.0",
+    "checkedFiles": [
+      "go.mod",
+      "internal/tui/model.go",
+      "internal/tui/view.go"
+    ]
+  }
+}

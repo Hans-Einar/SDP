@@ -1,116 +1,105 @@
-# SDUI 0.1 — språk og semantisk profil
+# SDUI 0.2 — implementert kildeprofil
 
-**ID:** SDUI-LANG-001. EBNF i [sdui-0.1.ebnf](../grammar/sdui-0.1.ebnf) beskriver
-syntaks. Dette dokumentet definerer leksikalske regler og lokal profilvalidering.
-Språket er et konkret prototypevalg, ikke en del av vedtatt SDL.
+Oppdatert 2026-09-21. Python-frontenden parser den nye profilen og bygger AST.
+Dette er språkprototypen før native libsdui, uten SDL-kjøring eller FOX-rendering.
+[EBNF](../grammar/sdui-0.2.ebnf) og denne profilen erstatter gammel 0.1-syntaks.
+[Layoutforslaget](layout-language-proposal.md) beskriver også framtidig geometri;
+akseptert formatering er ikke det samme som implementert layoututførelse.
 
-## 1. Dokument og kilde
+## Kilde og struktur
 
-Et dokument begynner med eksakt `sdui 0.1;`, så null/flere `ref:`-deklarasjoner,
-en/flere UI-definisjoner og til slutt null/flere `setHandle`-oppkoblinger.
-Rekkefølgen er bevisst; ingen moduldeklarasjoner etter definisjonene.
-Parseren leser hele dokumentet til EOF og avviser resttekst.
-
-Kilden er UTF-8. Identifikatorer er ASCII `[A-Za-z_][A-Za-z0-9_]*` og er
-case-sensitive. `sdui`, `ref`, `true`, `false`, `null`, `setHandle` er reserverte.
-Både enkle og doble anførselstegn støttes. `#` starter kommentar utenfor strenger.
-Strenger tillater `\n`, `\r`, `\t`, `\\`, `\"`, `\'` og `\uXXXX` for en Unicode-
-skalar uten NUL/surrogater. Supplerende tegn kan skrives direkte som UTF-8.
-Rå kontrolltegn U+0000–001F og U+007F er ikke tillatt i strenger.
-
-Tall har JSON-lignende desimalsyntaks, uten innledende pluss eller ledende nuller,
-og tolkes som endelig binary64. Det er ingen heltallseksakthetsgaranti over 2^53.
-Headeren må staves `0.1`, ikke en numerisk ekvivalent som `1e-1`.
-Whitespace er mellomrom, tab, CR og LF. Diagnoselinjer økes ved LF (også i CRLF),
-kolonner teller Unicode-skalarer fra 1; tab teller én kolonne.
-
-## 2. Bokser og identitet
+Dokumentet begynner med eksakt `sdui 0.2;`, fulgt av eventuelle `ref:`-deklarasjoner,
+en eller flere navngitte komponentdefinisjoner og eventuelle `setHandle`-koblinger.
+Ingen gammel profil/fallback. Definisjoner kan referere framover til andre
+komponentdefinisjoner. En konsument velger inngangsframe; definisjoner monteres
+ikke automatisk. CLI krever `--entry` hvis flere frames kan velges.
 
 ```text
-Page = {
-  main = [title="Main", axis="row",
-    left = [weight=1, {ok=button("OK")}],
-    right = [weight=2, {help=text("Explanation"); field=input("Value:")}]
-  ]
-};
+sdui 0.2;
+mainBody = <<"Gruppe 1", "Mer tekst"> {v<}, <button("OK")>>;
+page = [header="## Aptering", body=mainBody, footer="Statisk prototype"]*b {16:9, <->, font=10};
 ```
 
-Hver definisjon har nøyaktig én navngitt rotboks. Alle navngitte bokser og widgets
-har unike navn innenfor definisjonen. To definisjoner kan gjenbruke widgetnavn.
-En anonym gruppe `[...]` er tillatt, men eksponerer ikke noe eksternt handle.
-`handle=` støttes ikke: tilordningsnavnet er identiteten. Properties står før innhold.
+`[]` er en frame. `<>` er en widgetgruppe som kan nestes; eksplisitte grupper
+bevares også med ett barn. Frames kan inneholde frames, grupper, Markdown,
+widgetkall og referanser. Widgetgrupper kan inneholde alle disse unntatt frames.
+Tom frame og tom gruppe er gyldige. Strenger som komponenter er Markdown.
+`button("OK")` har vanlig etiketttekst; `text(...)` fra gammel profil er fjernet.
 
-En boks inneholder enten underbokser eller én widgetblokk, aldri begge. Tomme
-bokser og tomme widgetblokker er ikke gyldige i profilen. Widgetblokken bruker
-komma for samme rad og semikolon for neste rad. Siste semikolon før `}` er valgfritt;
-tomme rader og trailing comma avvises. Semikolon skifter ikke rad mellom bokser:
-bruk en gruppe med eksplisitt akse, slik hovedeksemplet viser.
+Komma fortsetter raden horisontalt; semikolon begynner neste rad under hele
+foregående rad. Separatorer tilhører sin egen liste. Avsluttende semikolon er
+valgfritt inne i en container, obligatorisk etter en toppnivådefinisjon.
+Trailing comma og tomme rader avvises. Formatering `{...}` følger komponenten,
+etter eventuell `*box`/`*b`, før separatoren. En løs formateringsblokk avvises.
 
-| Boksproperty | Lokal kontroll | Foreslått betydning ved senere layout |
+I frames er `header`, `body`, `footer` regionroller, høyst én av hver. Eksplisitt
+body kan ikke blandes med umerket bodyinnhold. Regioner trekkes ut ved
+normalisering; komposisjonen er header, body, footer uavhengig av kilderekkefølge.
+I widgetgrupper er slike tilordningsnavn vanlige navn.
+
+## Formatering og navn
+
+Lokalt validerte egenskaper: scale/scale-x/scale-y, x/y=content/fill/Nfr,
+min-x/min-y/max-x/max-y, gap/gap-x/gap-y, padding eller fireleddet paddingtuple,
+align-x/align-y, justify, items, overflow-x/overflow-y, wrap, font, enabled, visible.
+Tillatte verdier står i [layoutforslaget](layout-language-proposal.md).
+Ukjente egenskaper, duplikater og konkurrerende størrelsesregler avvises.
+Bare relative layoutdimensjoner; `font` er positiv absolutt tekststørrelse.
+Den native fontenheten er ikke fastsatt. Dumpen skalerer ikke terminalens font.
+
+Kanoniske hjørner er ^<, >^, v<, >v; omvendt retningspar er ekvivalent.
+Kortformer senkes til egenskaper i normalisert modell, mens AST bevarer stavingen.
+`<->` og `>-<` er forskjellige hele operatorer. Ratio x:y gjelder bare frames;
+én scaleakse eller én fillakse kan styre. To akser, scale på begge, content/fr
+med ratio eller ikke-positive forhold avvises. Ingen geometriløsning hevdes.
+Wrap gjelder én grupperad uten horisontal fill/fr på gruppen eller dens barn.
+
+Navn er ASCII `[A-Za-z_][A-Za-z0-9_]*`, case-sensitive; reserverte ord er
+sdui/ref/true/false/null/setHandle. Egenskapsnavn kan i tillegg ha bindestrek.
+Lokale navn er unike i hver definisjon. Gjenbruk får separat instansbane:
+`left=mainBody` og `right=mainBody` gir ulike widgetbaner. Ualiasert referanse
+bruker definisjonsnavnet. Sykler og tvetydige instansbaner avvises.
+Anonyme grupper får interne kildeposisjonsbaserte banesegmenter; offentlige
+setHandle-baner utelater disse. Layoutendring gir ingen runtimegaranti ennå.
+
+## Widgets og symbolske koblinger
+
+| Kall | Første argument | Øvrige argumenter |
 | --- | --- | --- |
-| title | string | Synlig tittel på boksen; tom streng utelater titteltekst |
-| axis | "row" / "column", bare for underbokser | Fordeling av underbokser; default column |
-| weight | endelig tall > 0 | Relativ andel av tilgjengelig hovedakse; default 1 |
-| min / max | endelige tall ≥ 0, min ≤ max | Begrensning på boksens hovedaksestørrelse |
-| gap / padding | endelige tall ≥ 0 | Mellomrom / innvendig margin i logiske px; foreslått default 8 |
+| button | label: streng | callback: symbolsk referanse |
+| input | text: streng | value: streng, callback: symbolsk referanse |
+| svg | source: symbolsk referanse | label: streng |
 
-Layoututførelsen er ikke implementert. Planlagt algoritme fordeler tilgjengelig
-plass etter vekt, håndterer grenser eksplisitt og gir diagnose ved uforenlige
-minimumskrav. Dette er ikke dagens BoxUI `grow` (minimum først, deretter restplass).
-Rottittel/padding, tekstmåling og overflyt må inngå i layoutakseptansen senere.
-
-## 3. Widgets
-
-Widgets har navnet `id = kind(...)`. Første argument kan være posisjonelt og
-oversettes semantisk som angitt nedenfor. Deretter bare navngitte argumenter.
-Ingen dupliserte argumenter; det posisjonelle og tilsvarende navngitte kan ikke kombineres.
-
-| Kind | Første argument | Andre tillatte egenskaper | Krav |
-| --- | --- | --- | --- |
-| text | text: string | ingen | text |
-| button | label: string | callback: referanse | label |
-| input | text: string | value: string, callback: referanse | text |
-| svg | source: referanse | label: string | source |
-
-Input `text` er forklarende etikett, ikke feltverdien. `value` er en deklarert
-startverdi; en senere runtime-kontrakt må styre initialisering mot domeneeide verdier.
-En button/input uten callback er syntaktisk gyldig, men skal være unbound/deaktivert
-som handling i en runtime. Bool/null/tall kan representeres i AST; profilens
-widgetegenskaper godtar foreløpig bare typene i tabellen.
-
-`svg` erklærer en ressursprodusent. Parseren kjører den ikke. Normal SVG-validering,
-ressursbudsjett og inert presentasjon hører til en framtidig utførelsesgrense.
-Ukjente widgettyper/egenskaper avvises ved profilvalidering. `--syntax-only` bevarer
-slike navn, men merker ikke resultatet som godkjent profil eller kjørbart UI.
-
-## 4. SDL-referanser og oppkobling
+Første argument er obligatorisk, posisjonelt eller navngitt; deretter bare
+navngitte argumenter. Duplikater og feil typer avvises. Anonyme ubundne widgets
+er gyldige. Callback krever widgetnavn; eksterne handles adresserer navngitte widgets.
+SVG-kilden kjøres aldri av parseren eller dumpen; dumpen viser en plassholder.
 
 ```text
-ref: sdlFile "some_SDL_file.sdl";
-# widgetargument: callback=sdlFile.input1_sdl.@callback
-# etter UI-definisjonene:
-sdlFile.input1_sdl.setHandle(BoxUIDefinition.input1_boxui);
+ref: domain "missing-on-purpose.sdl";
+# inne i en komponent:
+# field=input("Navn", callback=domain.object.@changed)
+# etter definisjonene:
+# domain.object.setHandle(page.form.field);
 ```
 
-En referanse har formen `module.object.@member`. Aliaset må være deklarert.
-Objekt/medlem kontrolleres først av en framtidig SDL-adapter. Filbanen er en
-ikke-tom streng uten kontrolltegn; parseren undersøker verken filsystem, URL,
-filtype eller ekstern symbolsikt. Det er ikke Markdown-import.
+Referansen har formen module.object.@member. Aliaset må finnes; ekstern fil,
+objekt og metode undersøkes ikke. setHandle må treffe en widgetinstans gjennom
+definisjon og navngitte foreldre. Én kobling per SDL-objekt og widget. Ingen
+vilkårlige metodekall, imports, interpolering eller eval.
 
-`setHandle` er en deklarativ Connection-node, ikke et generelt metodekall.
-Målet må være en widget i en eksisterende definisjon, ikke en boks. Profil 0.1
-tillater høyst én kobling per SDL-objekt og per widget i dokumentet. Callbacks
-kan dele mottaker; en callback krever ikke setHandle hvis den ikke trenger å
-oppdatere widgeten. Oppslag bruker eksakt definisjonsnavn, også store/små bokstaver.
+## Strenger, posisjoner og grenser
 
-Uttrykk som `input1_sdl.value(...)`, kontrollflyt og vilkårlig funksjonskjøring
-hører til SDL/runtime, ikke til dette språket. Callback-signaturer, utførelse og
-rettigheter avgjøres ikke av at parseren aksepterer en referanse.
+UTF-8 med Unicode-skalarposisjoner og halvlukkede UTF-8-byteområder. Linje/kolonne
+starter på 1; LF starter ny linje, også i CRLF. `#` starter kommentar utenfor streng.
+Enkle/doble strenger støtter n/r/t, backslash, anførselstegn og fire hexsifre etter
+u. Rå kontrolltegn, NUL og surrogate escapes avvises. Triple doble anførselstegn
+bevarer multiline Markdown uten dedent, escaping eller interpolering.
+Tall følger JSON-lignende syntaks og endelig binary64; ingen garanti over 2^53.
 
-## 5. Markdown og kompatibilitet
-
-En framtidig vertsadapter kan trekke ut et `sdui`-gjerde og sende kroppen til
-parseren med kildekartlegging. Denne CLI-en leser bare selvstendig SDUI, ikke
-hele Markdown-filer. Ingen eksisterende `boxui 0.1`-JSON aksepteres som SDUI uten
-eksplisitt adapter. Concept1s `group/axis/weight/box-id` skal få en separat
-normalisering med dokumentert bevaring; React-komponentinnhold oversettes ikke automatisk.
+Grenser: 256 KiB kilde, 50000 tokens, 64 syntaktiske/ekspanderte nivåer,
+2048 kildekomponenter, 32 widgetargumenter, 32 formateringsregler per komponent,
+8192 ekspanderte komponenter totalt over dokumentets definisjoner.
+Feil er strukturert med code/message/span; ingen recovery eller delvis CLI-output.
+`--syntax-only` bevarer også ukjente widgets/formateringsnavn uten profilgodkjenning.
+EOF kreves. Ressursgrenser er vern mot ubegrenset arbeid, ikke hard sanntid.

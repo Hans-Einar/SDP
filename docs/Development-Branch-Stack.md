@@ -1,0 +1,33 @@
+# SDL/SDUI — fasebrancher og milepælcommits
+
+Eierbeslutning 2026-09-22: én branch per fase, stablet på forrige fase, og
+egne commits ved fullførte milepæler. Samlet PR skal ha `sdp-vNow` som base.
+Utgangspunktet er `9ad432407004080dd7f4f0ab06d107523f4316fd`.
+
+| Fasebranch | Forelder | Milepæler |
+| --- | --- | --- |
+| `sdl-sdui/phase-baseline` | `sdp-vNow` | B0-M1: samle eksisterende SDUI 0.2-prototype, eksempler, bevis og Go-retning; etablere Git-arbeidsmåten |
+| `sdl/phase-v1-viewpoints` | `sdl-sdui/phase-baseline` | V1-M1: språk/AST/validering; V1-M2: verktøyprojeksjoner; V1-M3: felles modell, generert utskrift og checkpoint |
+| `sdl/phase-v2-data-contracts` | `sdl/phase-v1-viewpoints` | Neste fase; ingen implementasjon levert ennå |
+
+De første to fasene samler arbeid som allerede var utført lokalt. Dette er en
+bevisst etterregistrering, ikke en påstand om at gamle økter hadde disse commit-
+grensene. V0-generatoren og V1-utvidelsen var allerede utviklet i de samme filene;
+de registreres samlet på V1-branchen. Ingen hypotetisk tidligere V0-kode bygges
+opp for å skape en mer detaljert historie enn kildegrunnlaget tillater.
+
+Baseline bevarer eksisterende SDUI-kode og dens dokumenterte retning. Enkelte
+plan-/dokumentlenker peker fram til SDL-leveransen som følger på V1-branchen.
+De tre V1-milepælene er henholdsvis språkgrunnlag, konsument og validert eksempel
+med bevis; fasehodet er den samlede leveransen som skal gjennomgås.
+
+Fra V2 følger arbeidet milepælene fortløpende. Før hver commit kontrolleres
+avgrensningen, relevante tester og genererte artefakter. Fasebranch opprettes
+før første endring i fasen; bare fullførte milepæler får leveransecommits.
+V2/V3/V4s faglige omfang står i
+[checkpointets implementasjonsplan](checkpoint%231/08-SDL-Viewpoints-and-Implementation-Status.md).
+Go-arbeidet følger fortsatt G-fasene i [SDUI-planen](../SDUI/docs/implementation-plan.md).
+
+Ved samlet PR brukes siste ferdige fasebranch som head og `sdp-vNow` som base.
+Milepælcommits skal bevares ved integrasjon; ikke squash dem til én commit.
+Branchene slettes eller historikken omskrives ikke som automatisk opprydding.

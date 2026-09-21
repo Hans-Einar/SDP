@@ -6,6 +6,8 @@ Toolkit-Version: 0.2.0 (unreleased)
 For the new **System Development Process** and SDL concept, start with
 [Checkpoint #1](docs/checkpoint%231/README.md). It consolidates the current
 discussion across abstraction levels and marks unsettled choices explicitly.
+The [September 21 update](docs/checkpoint%231/07-SDUI-0.2-and-Go-Direction.md)
+adds SDUI 0.2 and the selected Go/Fyne implementation direction.
 The Toolkit described below remains Standard Document Procedure; the checkpoint
 does not rename or migrate its installed contracts.
 

@@ -1,0 +1,81 @@
+{
+  "date": "2026-09-21",
+  "python": "3.12.14",
+  "platform": "Linux-6.12.0-211.7.3.el10_2.x86_64-x86_64-with-glibc2.39",
+  "testsPassed": 24,
+  "astFormat": "sdui-ast/0.2",
+  "files": [
+    {
+      "path": "examples/concept1-bucking.ast.json",
+      "sha256": "623934ed31a0340c52b9222e5c51faa7fef8d5cfda35e250e09d2ff9d0e2f7fa"
+    },
+    {
+      "path": "examples/concept1-bucking.dump.txt",
+      "sha256": "a85a7164c78215a4a92f69706b8eac6d09d98a116a70e8171ed835b7fa887aca"
+    },
+    {
+      "path": "examples/concept1-bucking.sdui",
+      "sha256": "c9c0abe79aafeebcc048a3079a671be77a8c9ea36191a305debd58188b3844dd"
+    },
+    {
+      "path": "examples/main-page.ast.json",
+      "sha256": "12a77e17515ffe8e47b04c2175e766c12ab77533d179d4df6722e5d9778c632f"
+    },
+    {
+      "path": "examples/main-page.sdui",
+      "sha256": "52f558f7d5ce0e250918179c637f6528651eed7f7c7914af056425e1028dab89"
+    },
+    {
+      "path": "examples/static.sdui",
+      "sha256": "f3b2e74744ae7b08191404665f6969a3db1cb6a0528b87672445dedfd44f4d38"
+    },
+    {
+      "path": "grammar/sdui-0.2.ebnf",
+      "sha256": "54cdde6168cb196118bfc01628075cd2c8df6e7f048c03df3ce80f5ceeedee3c"
+    },
+    {
+      "path": "src/sdui/__init__.py",
+      "sha256": "febee3f8bdccfd526f3e5e871666d32050134e3337d7a335fb6682506848288a"
+    },
+    {
+      "path": "src/sdui/__main__.py",
+      "sha256": "61c7ba1613c030716a22fd9af98fd8da1f18a957fd0f715d81ae3bcd5a3d50ca"
+    },
+    {
+      "path": "src/sdui/ast.py",
+      "sha256": "6fd75bbe60b3a69482f530de85afd579baf57b5f2f007791e0d16c1861084f07"
+    },
+    {
+      "path": "src/sdui/dump.py",
+      "sha256": "c4111df538cc726c9157809f27aee5031703485891654a319ac4d17740b33756"
+    },
+    {
+      "path": "src/sdui/formatting.py",
+      "sha256": "fca4864c5acd949f91803b19996a7e4d17686c0f02011faf777baea851fa4442"
+    },
+    {
+      "path": "src/sdui/lexer.py",
+      "sha256": "ef9b1a3c29b44b6e36f9423a9f3679a818473f370d997167a788fc6624a72b98"
+    },
+    {
+      "path": "src/sdui/normalize.py",
+      "sha256": "1355218d7c8149a5fe22f9b5478deb5993de34291dbb3b6618324e5e0d5d1e9a"
+    },
+    {
+      "path": "src/sdui/parser.py",
+      "sha256": "f0e4e0e17dff4ebef34a7cb565835bf02ed6ea0a3d555dc9e3a55c836a13d6c5"
+    },
+    {
+      "path": "src/sdui/validate.py",
+      "sha256": "51f71d294303e8a109cfa219387f7034ad90c70c51798de03a4fc9c6c625cd01"
+    },
+    {
+      "path": "tests/test_dump.py",
+      "sha256": "41d1ab62ad59cf2f9ce43252d59ea2f18efe5dc9dd8055fa72f8a718a7180ecf"
+    },
+    {
+      "path": "tests/test_language.py",
+      "sha256": "216a7d94869cf4be9a71f6280f5afd40e6b1417c0bb3ad56f3d4938e6cbf3a0b"
+    }
+  ]
+}

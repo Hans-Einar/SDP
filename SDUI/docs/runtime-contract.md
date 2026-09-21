@@ -1,6 +1,14 @@
 # SDUI ↔ SDL-runtime — foreslått kontrakt
 
-**ID:** SDUI-RUNTIME-001 · **Status:** designforslag, ikke implementert ABI.
+Status 2026-09-21: Go er valgt implementasjon; typede Go-grensesnitt er første port.
+Ingen C-ABI eller FOX-avhengighet kreves. Dette erstatter tidligere teknologivalg.
+
+Kontraktgrunnlag: grunnlag for den nye kontraktleveransen i
+[målarkitekturen](target-architecture.md) og G3/G4 i [planen](implementation-plan.md).
+Identitet, livstid og hendelsesregler kan gjenbrukes, men gammel kilde-/wireform
+er ikke et kompatibilitetskrav. Ingen runtime er implementert her.
+
+**ID:** SDUI-RUNTIME-001 · **Status:** designforslag, ikke implementert runtime/API.
 Parseren produserer bare Reference og Connection. Det finnes ingen SDL-loader,
 callbackutfører eller generell widgetoppdatering i denne leveransen.
 
@@ -9,7 +17,7 @@ callbackutfører eller generell widgetoppdatering i denne leveransen.
 ```text
 ref: sdlFile "some_SDL_file.sdl";
 # callback=sdlFile.input1_sdl.@callback
-sdlFile.input1_sdl.setHandle(BoxUIDefinition.input1_boxui);
+sdlFile.input1_sdl.setHandle(BoxUIDefinition.top.rightTop.input1_boxui);
 ```
 
 `input1_sdl` eies av SDL-modulen, `input1_boxui` av UI-instansen. Aliaset er en
@@ -30,13 +38,14 @@ og PDF-eksport. Parseren skal aldri få ansvaret for modulopprettelse eller kjø
 
 ## 2. Logisk widgetreferanse
 
-Foreslått identitet: session, definitionInstance, widgetName, generation. Widget-
-navnet er globalt innenfor definisjonen, uavhengig av boksplasseringen. Navn gir
+Foreslått identitet: session, definitionInstance, widgetInstancePath, generation.
+Statisk 0.2-oppslag bruker definisjon og navngitte komponentforeldre; anonyme
+grupper gir ikke offentlige banesegmenter. Navn gir
 ikke alene en gyldig runtime-referanse: én definisjon kan senere ha flere instanser.
 
 Handle er typet og vertseid. Det overlever kompatibel omplassering; sletting,
 dokumentlukking og inkompatibel ny instans invaliderer det. Det er aldri en
-FXTextField-peker, Rust-lånt referanse eller DOM-node. setHandle må kontrollere
+Fyne-widgetpeker, FOX-peker eller DOM-node. setHandle må kontrollere
 forventet widgetkapabilitet. Profilens lokale validering kan bare kontrollere at
 målet er en deklarert widget, ikke SDL-objektets faktiske type.
 

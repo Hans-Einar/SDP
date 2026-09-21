@@ -1,6 +1,10 @@
 # SDUI 0.1 — verifikasjon 2026-09-19
 
-Status: avgrenset parserbevis. Ingen renderer, SDL-kjøring eller XFMD-integrasjon
+Historisk bevis for utgått SDUI 0.1. Hashene gjelder datidens filer og skal ikke
+forventes å matche dagens porterte kode. Gjeldende bevis er
+[0.2-frontenden og konsolldumpen](frontend-console-2026-09-21.md).
+
+Status ved kjøring: avgrenset parserbevis. Ingen renderer, SDL-kjøring eller XFMD-integrasjon
 hevdes. Filhashene i [source-manifest.json](source-manifest.json) identifiserer
 prototypen uavhengig av lokale endringer i resten av repositoryet.
 

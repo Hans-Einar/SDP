@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<title>Concept1 med statiske SDUI prototype-widgets</title>
+<rect width="1600" height="900" fill="#edf1e8"/>
+<text x="16" y="25" font-family="sans-serif" font-size="19" font-weight="bold" fill="#20302a">Aptering · SDUI-prototype</text>
+<text x="1070" y="24" font-family="sans-serif" font-size="13" font-weight="normal" fill="#20302a">Eksempeldata · tegnede kontroller · uten domenekobling</text>
+<rect x="16.0" y="40.0" width="782.5" height="126.9" rx="5" fill="#faffef" stroke="#9aaa9d"/>
+<path d="M 16.0 88.0 H 798.5" stroke="#c9d2c2"/>
+<text x="30.0" y="71.0" font-family="sans-serif" font-size="17" font-weight="bold" fill="#20302a">Lengde</text>
+<svg x="606.5" y="46.0" width="126" height="40" data-widget="button" data-path="bucking/top/length/header/$r0c1/lengthCursor"><title>Cursor AV</title><rect x="1" y="4" width="124" height="33" rx="5" fill="#9aaa9d"/><rect x="1" y="1" width="124" height="33" rx="5" fill="#f3f6f0" stroke="#9aaa9d"/><text x="63.0" y="23" text-anchor="middle" fill="#20302a" font-family="sans-serif" font-size="14">Cursor AV</text></svg>
+<svg x="740.5" y="46.0" width="44" height="40" data-widget="button" data-path="bucking/top/length/header/$r0c1/lengthDelta"><title>Δ</title><rect x="1" y="4" width="42" height="33" rx="5" fill="#9aaa9d"/><rect x="1" y="1" width="42" height="33" rx="5" fill="#f3f6f0" stroke="#9aaa9d"/><text x="22.0" y="23" text-anchor="middle" fill="#20302a" font-family="sans-serif" font-size="14">Δ</text></svg>
+<text x="30.0" y="118.0" font-family="sans-serif" font-size="28" font-weight="bold" fill="#20302a">412,0 cm</text>
+<text x="30.0" y="145.0" font-family="sans-serif" font-size="14" font-weight="normal" fill="#20302a">Måling · aggregat</text>
+<rect x="801.5" y="40.0" width="782.5" height="126.9" rx="5" fill="#faffef" stroke="#9aaa9d"/>
+<path d="M 801.5 88.0 H 1584.0" stroke="#c9d2c2"/>
+<text x="815.5" y="71.0" font-family="sans-serif" font-size="17" font-weight="bold" fill="#20302a">Diameter</text>
+<svg x="1092.0" y="46.0" width="120" height="40" data-widget="button" data-path="bucking/top/diameter/header/$r0c1/diameterCursor"><title>Cursor AV</title><rect x="1" y="4" width="118" height="33" rx="5" fill="#9aaa9d"/><rect x="1" y="1" width="118" height="33" rx="5" fill="#f3f6f0" stroke="#9aaa9d"/><text x="60.0" y="23" text-anchor="middle" fill="#20302a" font-family="sans-serif" font-size="14">Cursor AV</text></svg>
+<svg x="1220.0" y="46.0" width="44" height="40" data-widget="button" data-path="bucking/top/diameter/header/$r0c1/diameterDelta"><title>Δ</title><rect x="1" y="4" width="42" height="33" rx="5" fill="#9aaa9d"/><rect x="1" y="1" width="42" height="33" rx="5" fill="#f3f6f0" stroke="#9aaa9d"/><text x="22.0" y="23" text-anchor="middle" fill="#20302a" font-family="sans-serif" font-size="14">Δ</text></svg>
+<svg x="1272.0" y="46.0" width="100" height="40" data-widget="button" data-path="bucking/top/diameter/header/$r0c1/barkBasis"><title>O/B · U/B</title><rect x="1" y="4" width="98" height="33" rx="5" fill="#9aaa9d"/><rect x="1" y="1" width="98" height="33" rx="5" fill="#f3f6f0" stroke="#9aaa9d"/><text x="50.0" y="23" text-anchor="middle" fill="#20302a" font-family="sans-serif" font-size="14">O/B · U/B</text></svg>
+<svg x="1380.0" y="46.0" width="190" height="40" data-widget="button" data-path="bucking/top/diameter/header/$r0c1/barkSettings"><title>BarkNOR-kalibrering</title><rect x="1" y="4" width="188" height="33" rx="5" fill="#9aaa9d"/><rect x="1" y="1" width="188" height="33" rx="5" fill="#f3f6f0" stroke="#9aaa9d"/><text x="95.0" y="23" text-anchor="middle" fill="#20302a" font-family="sans-serif" font-size="14">BarkNOR-kalibrering</text></svg>
+<text x="815.5" y="118.0" font-family="sans-serif" font-size="28" font-weight="bold" fill="#20302a">28,4 cm</text>
+<text x="815.5" y="145.0" font-family="sans-serif" font-size="14" font-weight="normal" fill="#20302a">Måling · O/B</text>
+<rect x="16.0" y="169.9" width="390.5" height="380.69998" rx="5" fill="#faffef" stroke="#9aaa9d"/>
+<path d="M 16.0 217.9 H 406.5" stroke="#c9d2c2"/>
+<text x="30.0" y="200.9" font-family="sans-serif" font-size="17" font-weight="bold" fill="#20302a">Treslag / Sortiment</text>
+<text x="30.0" y="243.9" font-family="sans-serif" font-size="21" font-weight="bold" fill="#20302a">Gran · Sagtømmer</text>
+<text x="30.0" y="273.9" font-family="sans-serif" font-size="14" font-weight="normal" fill="#20302a">Siste knapp · GRAN</text>
+<svg x="30.0" y="303.9" width="362.5" height="66" data-widget="input" data-path="controls/$r0c1/operator"><title>Operatør: Ola Nordmann</title><text x="0" y="15" fill="#20302a" font-family="sans-serif" font-size="14">Operatør</text><rect x="1" y="24" width="360.5" height="36" rx="4" fill="#ffffff" stroke="#9aaa9d" stroke-width="1"/><svg x="10" y="25" width="342.5" height="34"><text x="0" y="23" fill="#20302a" font-family="sans-serif" font-size="14">Ola Nordmann</text></svg></svg>
+<svg x="30.0" y="391.9" width="362.5" height="66" data-widget="input" data-path="controls/$r0c1/stemId"><title>Stamme-ID: GRAN-0042</title><text x="0" y="15" fill="#20302a" font-family="sans-serif" font-size="14">Stamme-ID</text><rect x="1" y="24" width="360.5" height="36" rx="4" fill="#ffffff" stroke="#3975b0" stroke-width="2"/><svg x="10" y="25" width="342.5" height="34"><text x="0" y="23" fill="#20302a" font-family="sans-serif" font-size="14">GRAN-0042</text></svg></svg>
+<text x="30.0" y="497.9" font-family="sans-serif" font-size="12" font-weight="normal" fill="#20302a">Inndatafeltene er prototypeinnhold.</text>
+<rect x="409.5" y="169.9" width="781.0" height="380.69998" rx="5" fill="#faffef" stroke="#9aaa9d"/>
+<path d="M 409.5 217.9 H 1190.5" stroke="#c9d2c2"/>
+<text x="423.5" y="200.9" font-family="sans-serif" font-size="17" font-weight="bold" fill="#20302a">Apteringsforslag</text>
+<svg x="423.5" y="223.9" width="168" height="40" data-widget="button" data-path="bucking/middle/suggestions/header/$r1c0/optimize"><title>Optimalisering</title><rect x="1" y="4" width="166" height="33" rx="5" fill="#9aaa9d"/><rect x="1" y="1" width="166" height="33" rx="5" fill="#f3f6f0" stroke="#9aaa9d"/><text x="84.0" y="23" text-anchor="middle" fill="#20302a" font-family="sans-serif" font-size="14">Optimalisering</text></svg>
+<svg x="603.5" y="223.9" width="126" height="40" data-widget="button" data-path="bucking/middle/suggestions/header/$r1c0/columns"><title>Kolonner</title><rect x="1" y="4" width="124" height="33" rx="5" fill="#9aaa9d"/><rect x="1" y="1" width="124" height="33" rx="5" fill="#f3f6f0" stroke="#9aaa9d"/><text x="63.0" y="23" text-anchor="middle" fill="#20302a" font-family="sans-serif" font-size="14">Kolonner</text></svg>
+<text x="423.5" y="291.9" font-family="sans-serif" font-size="14" font-weight="normal" fill="#20302a">Neste kapp · eksempeldata</text>
+<rect x="423.5" y="307.9" width="753.0" height="36" rx="0" fill="#f0f4e9" stroke="#c9d2c2"/>
+<text x="433.5" y="330.9" font-family="sans-serif" font-size="14" font-weight="bold" fill="#20302a">Nr</text>
+<text x="479.5" y="330.9" font-family="sans-serif" font-size="14" font-weight="bold" fill="#20302a">Sortiment</text>
+<text x="725.5" y="330.9" font-family="sans-serif" font-size="14" font-weight="bold" fill="#20302a">Lengde</text>
+<text x="880.5" y="330.9" font-family="sans-serif" font-size="14" font-weight="bold" fill="#20302a">Topp-Ø</text>
+<rect x="423.5" y="343.9" width="753.0" height="36" rx="0" fill="#fff" stroke="#c9d2c2"/>
+<text x="433.5" y="366.9" font-family="sans-serif" font-size="14" font-weight="normal" fill="#20302a">1</text>
+<text x="479.5" y="366.9" font-family="sans-serif" font-size="14" font-weight="normal" fill="#20302a">Sagtømmer</text>
+<text x="725.5" y="366.9" font-family="sans-serif" font-size="14" font-weight="normal" fill="#20302a">430 cm</text>
+<text x="880.5" y="366.9" font-family="sans-serif" font-size="14" font-weight="normal" fill="#20302a">26 cm</text>
+<rect x="423.5" y="379.9" width="753.0" height="36" rx="0" fill="#fff" stroke="#c9d2c2"/>
+<text x="433.5" y="402.9" font-family="sans-serif" font-size="14" font-weight="normal" fill="#20302a">2</text>
+<text x="479.5" y="402.9" font-family="sans-serif" font-size="14" font-weight="normal" fill="#20302a">Massevirke</text>
+<text x="725.5" y="402.9" font-family="sans-serif" font-size="14" font-weight="normal" fill="#20302a">310 cm</text>
+<text x="880.5" y="402.9" font-family="sans-serif" font-size="14" font-weight="normal" fill="#20302a">18 cm</text>
+<svg x="423.5" y="447.9" width="146" height="40" data-widget="button" data-path="bucking/middle/suggestions/$r1c0/canonical"><title>Canonical</title><rect x="1" y="4" width="144" height="33" rx="5" fill="#9aaa9d"/><rect x="1" y="3" width="144" height="33" rx="5" fill="#d6e4d5" stroke="#9aaa9d"/><text x="73.0" y="25" text-anchor="middle" fill="#20302a" font-family="sans-serif" font-size="14">Canonical</text></svg>
+<svg x="583.5" y="447.9" width="158" height="40" data-widget="button" data-path="bucking/middle/suggestions/$r1c0/alternative"><title>Alternativ 1</title><rect x="1" y="4" width="156" height="33" rx="5" fill="#9aaa9d"/><rect x="1" y="1" width="156" height="33" rx="5" fill="#f3f6f0" stroke="#9aaa9d"/><text x="79.0" y="23" text-anchor="middle" fill="#20302a" font-family="sans-serif" font-size="14">Alternativ 1</text></svg>
+<text x="423.5" y="513.9" font-family="sans-serif" font-size="13" font-weight="normal" fill="#20302a">Canonical er tegnet i trykktilstand · ingen plan er valgt.</text>
+<rect x="1193.5" y="169.9" width="390.5" height="380.69998" rx="5" fill="#faffef" stroke="#9aaa9d"/>
+<path d="M 1193.5 217.9 H 1584.0" stroke="#c9d2c2"/>
+<text x="1207.5" y="200.9" font-family="sans-serif" font-size="17" font-weight="bold" fill="#20302a">Stammen i aggregatet</text>
+<text x="1207.5" y="243.9" font-family="sans-serif" font-size="14" font-weight="normal" fill="#20302a">Aktuell stamme</text>
+<text x="1207.5" y="272.9" font-family="sans-serif" font-size="14" font-weight="bold" fill="#20302a">Låste feil · 0</text>
+<text x="1207.5" y="301.9" font-family="sans-serif" font-size="14" font-weight="normal" fill="#20302a">Nåposisjon · 412,0 cm</text>
+<text x="1207.5" y="330.9" font-family="sans-serif" font-size="14" font-weight="normal" fill="#20302a">Maks kvistet · 412,0 cm</text>
+<text x="1207.5" y="359.9" font-family="sans-serif" font-size="14" font-weight="normal" fill="#20302a">Produsert / kappet · 0 cm</text>
+<svg x="1207.5" y="410.9" width="362.5" height="66" data-widget="input" data-path="controls/$r0c1/note"><title>Merknad: Kontroller barkmåling før neste kapp</title><text x="0" y="15" fill="#20302a" font-family="sans-serif" font-size="14">Merknad</text><rect x="1" y="24" width="360.5" height="36" rx="4" fill="#ffffff" stroke="#9aaa9d" stroke-width="1"/><svg x="10" y="25" width="342.5" height="34"><text x="0" y="23" fill="#20302a" font-family="sans-serif" font-size="14">Kontroller barkmåling før neste kapp</text></svg></svg>
+<text x="1207.5" y="509.9" font-family="sans-serif" font-size="12" font-weight="normal" fill="#20302a">Merknad er et prototypefelt.</text>
+<rect x="16.0" y="553.6" width="1568.0" height="338.4" rx="5" fill="#faffef" stroke="#9aaa9d"/>
+<path d="M 16.0 601.6 H 1584.0" stroke="#c9d2c2"/>
+<text x="30.0" y="584.6" font-family="sans-serif" font-size="17" font-weight="bold" fill="#20302a">Stammeforløp</text>
+<svg x="1310.0" y="559.6" width="136" height="40" data-widget="button" data-path="bucking/stemTrack/header/$r0c1/taperNor"><title>taperNOR</title><rect x="1" y="4" width="134" height="33" rx="5" fill="#9aaa9d"/><rect x="1" y="1" width="134" height="33" rx="5" fill="#f3f6f0" stroke="#9aaa9d"/><text x="68.0" y="23" text-anchor="middle" fill="#20302a" font-family="sans-serif" font-size="14">taperNOR</text></svg>
+<svg x="1454.0" y="559.6" width="116" height="40" data-widget="button" data-path="bucking/stemTrack/header/$r0c1/mixed"><title>Mixed</title><rect x="1" y="4" width="114" height="33" rx="5" fill="#9aaa9d"/><rect x="1" y="1" width="114" height="33" rx="5" fill="#f3f6f0" stroke="#9aaa9d"/><text x="58.0" y="23" text-anchor="middle" fill="#20302a" font-family="sans-serif" font-size="14">Mixed</text></svg>
+<text x="30.0" y="631.6" font-family="sans-serif" font-size="14" font-weight="normal" fill="#20302a">Predikert · Målt · Plan · Rest · Kvalitet 1/2 · Underkjent · Utkast</text>
+<rect x="30.0" y="672.6" width="1540.0" height="112" rx="5" fill="#f1f5e9" stroke="#bac6b1"/>
+<text x="50.0" y="720.6" font-family="sans-serif" font-size="19" font-weight="bold" fill="#20302a">Stammeprofil — plassholder for egen visuell provider</text>
+<text x="50.0" y="750.6" font-family="sans-serif" font-size="14" font-weight="normal" fill="#20302a">Denne prøven tegner widgetutseende; ingen maskin- eller SDL-funksjon kjøres.</text>
+<text x="30.0" y="845.0" font-family="sans-serif" font-size="15" font-weight="normal" fill="#20302a">FØLGER AGGREGAT     Lengde 412,0 cm     Relativ lengde 0,0 cm</text>
+<text x="30.0" y="871.0" font-family="sans-serif" font-size="14" font-weight="normal" fill="#20302a">Predikert Ø O/B 28,4 cm     Profilvolum 0,312 m³     Toppsylinder 0,260 m³</text>
+</svg>

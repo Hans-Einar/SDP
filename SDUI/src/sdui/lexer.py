@@ -6,7 +6,7 @@ from .ast import SduiError, Span
 
 MAX_BYTES = 262144
 MAX_TOKENS = 50000
-_IDENTIFIER = re.compile(r'[A-Za-z_][A-Za-z0-9_]*')
+_IDENTIFIER = re.compile(r'[A-Za-z_][A-Za-z0-9_]*(?:-[A-Za-z_][A-Za-z0-9_]*)*')
 _NUMBER = re.compile(r'-?(?:0|[1-9][0-9]*)(?:\.[0-9]+)?(?:[eE][+-]?[0-9]+)?')
 
 
@@ -54,7 +54,16 @@ def lex(source: str) -> tuple[Token, ...]:
                 i += 1
             continue
         start = i
-        if c in "\"'":
+        if source.startswith('"""', i):
+            end = source.find('"""', i + 3)
+            if end < 0:
+                error('Unterminated multiline Markdown string', start, len(source))
+            value = source[i + 3:end]
+            if any((ord(ch) < 32 and ch not in '\n\r\t') or ord(ch) == 127 for ch in value):
+                error('Control character in multiline string', start, end)
+            i = end + 3
+            tokens.append(Token('STRING', value, span(start, i)))
+        elif c in "\"'":
             quote, chars = c, []
             i += 1
             while i < len(source) and source[i] != quote:
@@ -96,7 +105,7 @@ def lex(source: str) -> tuple[Token, ...]:
             if not math.isfinite(value):
                 error('Number must be finite', start, i)
             tokens.append(Token('NUMBER', value, span(start, i)))
-        elif c in '[]{}(),;=.:@':
+        elif c in '[]{}(),;=.:@<>*^|-':
             i += 1
             tokens.append(Token(c, c, span(start, i)))
         else:

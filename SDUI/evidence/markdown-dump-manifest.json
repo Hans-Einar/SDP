@@ -1,0 +1,64 @@
+{
+  "date": "2026-09-21",
+  "python": "3.12.14",
+  "testsPassed": 30,
+  "markdownVerification": "markdown-it-py 4.2.0, CommonMark + table extension, temporary venv only",
+  "files": [
+    {
+      "path": "examples/concept1-bucking.dump.md",
+      "sha256": "31bc077988a6451655934889146dcb0bd7cdc313f1a9baed570f874b90409ae6"
+    },
+    {
+      "path": "src/sdui/__init__.py",
+      "sha256": "febee3f8bdccfd526f3e5e871666d32050134e3337d7a335fb6682506848288a"
+    },
+    {
+      "path": "src/sdui/__main__.py",
+      "sha256": "1033bc42e815bd64040be57765ab827dc41b31e88851596e6fb43de2c173bfd3"
+    },
+    {
+      "path": "src/sdui/ast.py",
+      "sha256": "6fd75bbe60b3a69482f530de85afd579baf57b5f2f007791e0d16c1861084f07"
+    },
+    {
+      "path": "src/sdui/dump.py",
+      "sha256": "c4111df538cc726c9157809f27aee5031703485891654a319ac4d17740b33756"
+    },
+    {
+      "path": "src/sdui/formatting.py",
+      "sha256": "fca4864c5acd949f91803b19996a7e4d17686c0f02011faf777baea851fa4442"
+    },
+    {
+      "path": "src/sdui/lexer.py",
+      "sha256": "ef9b1a3c29b44b6e36f9423a9f3679a818473f370d997167a788fc6624a72b98"
+    },
+    {
+      "path": "src/sdui/markdown_dump.py",
+      "sha256": "bf89c74c14140c82086fd7e2bdafe1896c5fbbab875edcdf74a8d19a3f120ec5"
+    },
+    {
+      "path": "src/sdui/normalize.py",
+      "sha256": "1355218d7c8149a5fe22f9b5478deb5993de34291dbb3b6618324e5e0d5d1e9a"
+    },
+    {
+      "path": "src/sdui/parser.py",
+      "sha256": "f0e4e0e17dff4ebef34a7cb565835bf02ed6ea0a3d555dc9e3a55c836a13d6c5"
+    },
+    {
+      "path": "src/sdui/validate.py",
+      "sha256": "51f71d294303e8a109cfa219387f7034ad90c70c51798de03a4fc9c6c625cd01"
+    },
+    {
+      "path": "tests/test_dump.py",
+      "sha256": "41d1ab62ad59cf2f9ce43252d59ea2f18efe5dc9dd8055fa72f8a718a7180ecf"
+    },
+    {
+      "path": "tests/test_language.py",
+      "sha256": "216a7d94869cf4be9a71f6280f5afd40e6b1417c0bb3ad56f3d4938e6cbf3a0b"
+    },
+    {
+      "path": "tests/test_markdown_dump.py",
+      "sha256": "a042d776bc20638b00ad9e3a3e900f9b9b4ab623a0496352a0cee1b9c6b04ed4"
+    }
+  ]
+}

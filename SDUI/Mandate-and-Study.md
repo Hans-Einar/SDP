@@ -1,5 +1,41 @@
 # SDUI — mandat og innledende studie
 
+**Gjeldende retning 2026-09-21:** SDL/SDUI-parser og runtime utvikles videre i Go,
+med Fyne som første interaktive vert og SVG-eksport fra felles modell/layout.
+Dette erstatter eldre språk-/vertsteknologivalg nedenfor; avsnittene er mandatets
+historie. [Checkpoint tillegg 07](../docs/checkpoint%231/07-SDUI-0.2-and-Go-Direction.md)
+og [PLAN-003](docs/implementation-plan.md) eier dagens leveranser.
+
+**Implementasjon 2026-09-21:** Eierens Concept1-bestilling er konkretisert som
+[SDUI-kilde, AST og konsolldump](docs/concept1-console.md). Python-frontenden
+er portert samlet til 0.2; native bibliotek/runtime gjenstår. Eldre avsnitt
+nedenfor bevarer mandatets historie, ikke en ekstra aktiv parserprofil.
+
+**Presisering 2026-09-21:** Kanoniske hjørner er ^< og >^ øverst, v< og >v
+nederst. Ytterframe `{16:9,<->}` bruker hele layoutbredden og avleder høyden;
+den fyller rollen til FixedAspectViewport uten høydebegrenset contain-fallback.
+Header/footer kan være frames eller widgetinnhold; `body=` kan være eksplisitt.
+Eierens mainBody/page-eksempel innfører navngitte gjenbrukbare widgetgrupper.
+`font=10/12` er absolutte tekststørrelser; vindusresize skalerer ikke innholdet.
+Hver UI-komponent kan ha formatering `{...}` før separatoren. Komma fortsetter
+horisontalt, semikolon starter en ny rad under den foregående. Detaljer står i
+[komposisjonsforslaget](docs/frame-composition-proposal.md).
+
+**Ytterligere eierpresisering 2026-09-20:** Frame-sideforhold uttrykkes som x:y.
+Scale er relativ til nærmeste ancestor, for root til vertens layoutområde.
+Med ratio styres bare én akse; ellers kan x, y eller begge skaleres. Ingen
+pikselbredde/-høyde i ny kilde. Mini arrows har kanonisk shape uten at rekkefølgen
+på hjørneparets retninger endrer betydningen; ned/venstre skrives v<.
+Tegnet ¤ er en idé uten fastlagt betydning. Se det oppdaterte layoutforslaget.
+
+**Tillegg 2026-09-20:** Eieren autoriserer videreutvikling av libsdui,
+SDUI-runtime og layout/presentasjon og ber om phases/milestones. Generelle frames,
+widgetlister, Markdown-innhold og layoututtrykk videreutvikles i
+[layoutforslaget](docs/layout-language-proposal.md). Ingen støtte for gammel
+SDUI 0.1/BoxUI-kontrakt kreves: port eksempler og fjern erstattede kjøreveier.
+[Implementasjonsplanen](docs/implementation-plan.md) er gjeldende videreplan.
+Resten av dokumentet bevarer den opprinnelige parserleveransens grunnlag.
+
 **ID:** SDUI-MANDATE-001 · **Revisjon:** 0.1 · **Dato:** 2026-09-19.
 Eierens bestilling autoriserer dokumentasjon, språkdefinisjon i EBNF og en parser
 som genererer AST. SDUI er et arbeidsnavn; ingen navnekollisjonsundersøkelse eller

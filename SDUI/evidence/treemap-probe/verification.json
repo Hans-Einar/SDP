@@ -1,0 +1,12 @@
+{
+  "renderer": "/home/warloc/git/mermaid-rs-renderer/target/debug/mmdr",
+  "version": "mmdr 0.3.1",
+  "binarySha256": "18b2574fcf6f5bbfa60ea96a97d45e0fc29211b150a7fc40842ad4e497cca8e3",
+  "checks": [
+    "rows 15/45/40 within available row area",
+    "middle columns 25/50/25",
+    "top columns 50/50",
+    "all six leaf labels visible"
+  ],
+  "scope": "Manual reduced fixture; not a general SDUI export, not full Markdown content, not XFMD GUI verification"
+}

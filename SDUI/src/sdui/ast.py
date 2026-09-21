@@ -1,4 +1,4 @@
-"""Immutable, source-preserving SDUI 0.1 syntax tree; no GUI/runtime imports."""
+"""Immutable, source-preserving SDUI 0.2 syntax tree; no GUI/runtime imports."""
 from dataclasses import asdict, dataclass
 from typing import TypeAlias
 
@@ -23,7 +23,7 @@ class SduiError(Exception):
 @dataclass(frozen=True)
 class Literal:
     kind: str  # string, number, boolean, null
-    value: str | float | bool | None
+    value: str | float | bool | tuple[float, ...] | None
     span: Span
 
 
@@ -46,38 +46,31 @@ class Argument:
 
 
 @dataclass(frozen=True)
-class Widget:
-    name: str
-    kind: str
-    arguments: tuple[Argument, ...]
+class LayoutRule:
+    name: str  # property name, arrow or ratio
+    value: Literal
+    spelling: str
     span: Span
 
 
 @dataclass(frozen=True)
 class Row:
-    widgets: tuple[Widget, ...]
+    items: tuple['Node', ...]
     span: Span
 
 
 @dataclass(frozen=True)
-class Content:
-    rows: tuple[Row, ...]
-    span: Span
-
-
-@dataclass(frozen=True)
-class Property:
-    name: str
-    value: Literal
-    span: Span
-
-
-@dataclass(frozen=True)
-class Box:
+class Node:
+    kind: str  # frame, group, markdown, widget, use
     name: str | None
-    properties: tuple[Property, ...]
-    children: tuple['Box', ...]
-    content: Content | None
+    role: str | None
+    rows: tuple[Row, ...]
+    widget: str | None
+    arguments: tuple[Argument, ...]
+    text: Literal | None
+    target: str | None
+    variant: str | None
+    layout: tuple[LayoutRule, ...]
     span: Span
 
 
@@ -91,7 +84,7 @@ class ModuleRef:
 @dataclass(frozen=True)
 class Definition:
     name: str
-    root: Box
+    root: Node
     span: Span
 
 
@@ -100,7 +93,7 @@ class Connection:
     module: str
     object: str
     definition: str
-    widget: str
+    path: tuple[str, ...]
     span: Span
 
 

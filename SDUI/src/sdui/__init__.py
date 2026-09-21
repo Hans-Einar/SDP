@@ -1,4 +1,4 @@
-"""SDUI 0.1 prototype: parser and local validator, not a runtime or renderer."""
+"""SDUI 0.2 frontend and structural console preview; no SDL/GUI runtime."""
 from .ast import SduiError, to_data
 from .parser import parse
 from .validate import validate
