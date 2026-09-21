@@ -1,4 +1,4 @@
-language design-core version 0.1.
+language design-core version 0.2.
 capability LayoutReplacement.
 unit PresentationManager.
 unit UIHost.

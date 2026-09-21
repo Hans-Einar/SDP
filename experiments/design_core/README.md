@@ -1,6 +1,6 @@
 # design-core parser experiment
 
-Status: isolated prototype for **design-core 0.1**, not an installed SDP gate.
+Status: isolated prototype for **design-core 0.2**, not an installed SDP gate.
 The [language definition](../../docs/Design-Language-Definition.md) is authoritative.
 The implementation uses the Python standard library; tested with Python 3.12.
 
@@ -9,7 +9,7 @@ The implementation uses the Python standard library; tested with Python 3.12.
 Make the existing structural grammar executable before adding behavioral syntax.
 The recursive-descent parser is handwritten from the EBNF; it is not generated
 from the Markdown document. Definition, implementation and tests must be changed
-together when the language changes. The two complete models in the definition
+together when the language changes. The three complete models in the definition
 are loaded directly by the tests to detect drift in those examples.
 
 The pipeline is:
@@ -49,7 +49,7 @@ duplicates, invent missing declarations or otherwise repair design meaning.
 ## AST and Python API
 
 Immutable named tuples distinguish `Model`, `Header`, `Declaration`, `Identifier`,
-`Relation`, `Dependency` and `PropertyAssignment`. Every node carries a `Span`.
+`Relation`, `Dependency`, `Allocation` and `PropertyAssignment`. Every node carries a `Span`.
 Offsets count decoded Unicode characters, starting at zero; line and column
 numbers start at one. Span ends are exclusive. Tabs count as one character.
 AST collections retain source order; formatting sorts only the unordered facts.
@@ -99,3 +99,14 @@ The next language increment should come from one concrete design scenario and
 its positive/negative cases. Define its missing semantics in the language
 definition first, then extend these AST nodes and checks. Do not add permissive
 fallbacks for unsupported sentences merely to make an example parse.
+
+## V1 — mål, bidrag og allokering
+
+0.2 erstatter aktiv 0.1; lokale strukturelle eksempler er portert. Nye Actor,
+UseCase og Feature bruker pursues/supports/contributes-to. Functionality kan
+bidra direkte til et bruksmål, og bidragene er mange-til-mange. allocated-to
+krever Container og Mode; to ulike Containers i samme modus er en feil.
+Det logiske eierskapet beholdes. Manglende allokering er ikke automatisk feil,
+og ingen deployment utledes fra contains. Se språkdefinisjonens 5.1 og 10.3.
+[SDL-verktøyet](../../SystemDesignLanguage/tools/README.md) genererer VP01/VP07
+fra de validerte faktaene. Go-port og runtime er fortsatt framtidig arbeid.

@@ -1,4 +1,4 @@
-"""Experimental parser and structural validator for design-core 0.1.
+"""Experimental parser and structural validator for design-core 0.2.
 
 The language definition in docs/Design-Language-Definition.md is authoritative.
 No input is executed. Formatting writes to stdout, never to the input file.
@@ -20,12 +20,13 @@ Header = namedtuple("Header", "language version span")
 Declaration = namedtuple("Declaration", "kind name span")
 Relation = namedtuple("Relation", "subject verb object span")
 Dependency = namedtuple("Dependency", "subject interface mode span")
+Allocation = namedtuple("Allocation", "subject container mode span")
 PropertyAssignment = namedtuple("PropertyAssignment", "subject property value span")
 Model = namedtuple("Model", "header declarations statements span")
 Diagnostic = namedtuple("Diagnostic", "code message span")
 
 KINDS = frozenset(("unit", "container", "functionality", "capability",
-                   "interface", "activity", "mode"))
+                   "interface", "activity", "mode", "actor", "usecase", "feature"))
 SIGNATURES = {
     "contains": ("unit", "unit"),
     "owns": ("unit", "functionality"),
@@ -33,6 +34,9 @@ SIGNATURES = {
     "provides": ("unit", "capability"),
     "consumes": ("unit", "interface"),
     "refines": ("activity", "activity"),
+    "pursues": ("actor", "usecase"),
+    "supports": ("feature", "usecase"),
+    "contributes-to": ("functionality", ("feature", "usecase")),
 }
 PROPERTIES = {
     "state-retention": frozenset(("stateful", "stateless")),
@@ -128,10 +132,10 @@ class Parser:
         start = self.expect("language").span.start
         self.expect("design-core")
         self.expect("version")
-        if self.current.text != "0.1":
-            self.fail("Only design-core version 0.1 is supported", "UNSUPPORTED_VERSION")
+        if self.current.text != "0.2":
+            self.fail("Only design-core version 0.2 is supported", "UNSUPPORTED_VERSION")
         self.take()
-        header = Header("design-core", "0.1", self.finish(start))
+        header = Header("design-core", "0.2", self.finish(start))
         declarations = []
         while self.current.text in KINDS:
             token = self.take()
@@ -141,13 +145,14 @@ class Parser:
         while self.current.text:
             subject = self.identifier()
             start = subject.span.start
-            verb = self.choice(set(SIGNATURES) | {"requires", "has"})
-            if verb == "requires":
-                interface = self.identifier()
+            verb = self.choice(set(SIGNATURES) | {"requires", "allocated-to", "has"})
+            if verb in ("requires", "allocated-to"):
+                target = self.identifier()
                 self.expect("in")
                 self.expect("mode")
                 mode = self.identifier()
-                statement = Dependency(subject, interface, mode, self.finish(start))
+                node = Dependency if verb == "requires" else Allocation
+                statement = node(subject, target, mode, self.finish(start))
             elif verb == "has":
                 prop = self.choice(PROPERTIES)
                 self.expect("=")
@@ -180,6 +185,9 @@ def sentence(statement):
     if isinstance(statement, Dependency):
         return "{} requires {} in mode {}.".format(
             statement.subject.name, statement.interface.name, statement.mode.name)
+    if isinstance(statement, Allocation):
+        return "{} allocated-to {} in mode {}.".format(
+            statement.subject.name, statement.container.name, statement.mode.name)
     return "{} has {} = {}.".format(statement.subject.name, statement.property, statement.value)
 
 
@@ -231,10 +239,11 @@ def validate(model):
                 "{} is not declared".format(identifier.name), identifier.span))
             return False
         actual = declaration.kind
-        if actual != expected and not (actual == "container" and expected == "unit"):
+        allowed = (expected,) if isinstance(expected, str) else expected
+        if actual not in allowed and not (actual == "container" and "unit" in allowed):
             diagnostics.append(Diagnostic(role + "_TYPE_MISMATCH",
                 "{} {} expects {}, received {}".format(
-                    role.lower(), identifier.name, expected, actual), identifier.span))
+                    role.lower(), identifier.name, " or ".join(allowed), actual), identifier.span))
             return False
         return True
 
@@ -242,6 +251,7 @@ def validate(model):
     properties = {}
     owners = {}
     parents = {}
+    allocations = {}
     edges = {"contains": [], "refines": []}
     for statement in model.statements:
         fact = sentence(statement)
@@ -263,6 +273,17 @@ def validate(model):
             check(statement.subject, "capability", "SUBJECT")
             check(statement.interface, "interface", "OBJECT")
             check(statement.mode, "mode", "QUALIFIER")
+        elif isinstance(statement, Allocation):
+            subject_ok = check(statement.subject, "functionality", "SUBJECT")
+            target_ok = check(statement.container, "container", "OBJECT")
+            mode_ok = check(statement.mode, "mode", "QUALIFIER")
+            if subject_ok and target_ok and mode_ok:
+                key = (statement.subject.name, statement.mode.name)
+                target = statement.container.name
+                if key in allocations and allocations[key] != target:
+                    diagnostics.append(Diagnostic("ALLOCATION_CARDINALITY",
+                        "{} has multiple Containers in mode {}".format(*key), statement.span))
+                allocations.setdefault(key, target)
         else:
             subject_type, object_type = SIGNATURES[statement.verb]
             subject_ok = check(statement.subject, subject_type, "SUBJECT")
@@ -295,7 +316,7 @@ def canonicalize(model):
     diagnostics = validate(model)
     if diagnostics:
         raise ValidationError(diagnostics)
-    lines = ["language design-core version 0.1."]
+    lines = ["language design-core version 0.2."]
     lines.extend("{} {}.".format(d.kind, d.name.name)
                  for d in sorted(model.declarations, key=lambda d: d.name.name))
     lines.extend(sorted(sentence(s) for s in model.statements))

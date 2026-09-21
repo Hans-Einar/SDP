@@ -1,11 +1,11 @@
 # Design language definition
 
-Version: **design-core 0.1 — draft**
+Version: **design-core 0.2 — draft**
 
-Date: 2026-09-16
+Date: 2026-09-22
 
-Extension decisions updated: 2026-09-17. Sections 13 onward describe future
-language work; the implemented grammar remains `design-core 0.1`.
+V1 mål/bidrag/allokering implementert 2026-09-22. Seksjon 13 og videre beskriver
+framtidig språkarbeid; gjeldende implementert grammatikk er `design-core 0.2`.
 
 Status: primary working definition of the proposed language. It consolidates the
 structural vocabulary and adds a precise grammar, type rules and canonical form.
@@ -26,9 +26,10 @@ The owner requires one unambiguous meaning and one canonical representation per
 modeled fact, without synonyms for relations. The 2026-09-17 clarification permits
 optional explicit type annotations in future source syntax (Section 15); these
 do not create different semantic facts or depend on neighboring sentences.
-Version 0.1 defines a bounded structural core: names/types,
+Version 0.2 defines a bounded structural core: names/types,
 containment, ownership, capability contribution/offers, interface use, mode-scoped
-dependency, activity refinement and two Functionality properties. Section 12
+dependency, activity refinement, Actor/UseCase/Feature traceability, mode-scoped
+Functionality allocation and two Functionality properties. Section 12
 lists unsupported constructs. Unsupported syntax is rejected, not guessed.
 
 This draft is the single working definition; it does not imply owner acceptance
@@ -68,7 +69,7 @@ their type**. A concrete statement's role is determined by its position.
 Each model starts with the exact header:
 
 ```text
-language design-core version 0.1.
+language design-core version 0.2.
 ```
 
 Then declare every identifier before the statements that use it:
@@ -85,7 +86,7 @@ Rules:
   defined here. No alternative capitalization, passive forms or synonyms exist.
 - One identifier has exactly one declaration and one declared type in a model.
 - A declaration identifies a design object, not a runtime instance or a run.
-- Version 0.1 has one namespace per model. Imports and cross-model name resolution
+- Version 0.2 has one namespace per model. Imports and cross-model name resolution
   are unsupported; references cannot silently resolve to another file's names.
 - A Container is declared with `container`, not once as `unit` and again as
   `container`. Its Unit compatibility follows from the type system.
@@ -118,7 +119,10 @@ in a different sentence position.
 | `capability Name.` | Capability | An ability whose conditions and realization may be detailed by the wider design. |
 | `interface Name.` | Interface | A named collaboration boundary; the declaration alone is not a complete contract. |
 | `activity Name.` | Activity | A named behavior that may have a more detailed realization. This core does not define its execution. |
-| `mode Name.` | Mode | A named operating context used to scope a dependency. Its runtime activation predicate is outside this core. |
+| `actor Name.` | Actor | External stakeholder role pursuing a UseCase; not an owning Unit. |
+| `usecase Name.` | UseCase | Named observable goal, not a scenario or ordered execution. |
+| `feature Name.` | Feature | Named offered behavior supporting UseCases; distinct from Capability. |
+| `mode Name.` | Mode | A named operating context used to scope a dependency or allocation. Its runtime activation predicate is outside this core. |
 
 The only subtype rule is `Container <: Unit`. No other implicit type conversions
 are allowed. For example, a Capability cannot act as an owning Unit. An Activity
@@ -127,7 +131,8 @@ does not become a Functionality merely because both concern behavior.
 Functionality's architectural boundary remains local to one Container where
 runtime allocation is known. This core can describe units before allocation is
 complete; passing its checks does not prove complete runtime allocation. Shared
-library definitions and their deployed uses require the later allocation model.
+library definitions retain one logical owner. Explicit Functionality allocation
+identifies one Container per Mode; instance multiplicity remains future work.
 
 ## 5. Relation vocabulary and argument signatures
 
@@ -142,6 +147,10 @@ where required. The semantic signature supplies the allowed participant types.
 | `A provides B.` | Unit | Capability | A declares an offered ability at its boundary. Contract details and verification are not established by this fact alone. |
 | `A consumes B.` | Unit | Interface | A is designed to use B. This is not an observation that a request has occurred, nor a statement that B is mandatory. |
 | `A requires B in mode M.` | Capability | Interface | B is necessary for A under the identified Mode M. M must be declared as Mode. It does not assert that A is possible whenever B is present. |
+| `A pursues B.` | Actor | UseCase | A pursues goal B. Many-to-many; no implicit actor or system boundary. |
+| `A supports B.` | Feature | UseCase | A supports B. Many-to-many, without a completeness claim. |
+| `A contributes-to B.` | Functionality | Feature or UseCase | Direct contribution, including a direct goal contribution without a Feature. |
+| `A allocated-to B in mode M.` | Functionality | Container | Explicit runtime location in declared Mode M. At most one Container per Functionality/Mode. Does not change logical ownership. |
 | `A refines B.` | Activity | Activity | A is a more detailed realization of B. Direction is detailed to abstract. No self-refinement or cycles. Behavioral preservation needs later evidence. |
 
 Verb signatures can be written compactly as:
@@ -154,11 +163,15 @@ provides : Unit × Capability
 consumes : Unit × Interface
 requires : Capability × Interface × Mode
 refines  : Activity × Activity
+pursues  : Actor × UseCase
+supports : Feature × UseCase
+contributes-to : Functionality × (Feature | UseCase)
+allocated-to   : Functionality × Container × Mode
 ```
 
 These signatures are definitions in this document, not alternate model syntax.
 For `requires`, Mode fills a third argument expressed by the fixed `in mode`
-qualifier. Mode names are model-global identities in 0.1; use distinct identities
+qualifier. Mode names are model-global identities in 0.2; use distinct identities
 for distinct contexts. There is no implicit universal Mode, no missing-mode
 default, and no supported unconditional dependency shorthand in this core.
 
@@ -167,6 +180,37 @@ a second direct `owns` fact for every Functionality of its child. An ancestor
 view can derive indirect containment without storing those derived edges as
 new immediate relations. Provided capabilities do not automatically propagate
 up the containment hierarchy.
+
+### 5.1 V1 — mål, bidrag og allokering
+
+`pursues`, `supports` og `contributes-to` bevarer mange-til-mange-forhold.
+Et direkte Functionality-bidrag til UseCase krever ingen Feature. En Feature
+kan mangle bidrag, og en UseCase kan mangle Actor; modellen er da ufullstendig,
+men strukturelt gyldig. Viewpoints viser hull uten å opprette mellomledd.
+Feature er ikke subtype eller synonym for Capability.
+
+`allocated-to` lagres som `Allocation(subject, container, mode, span)` i AST,
+med posisjonerte Identifier-argumenter. Alle tre argumenter typekontrolleres.
+Flere forskjellige Containers for samme Functionality/Mode avvises med
+`ALLOCATION_CARDINALITY`. Samme Functionality kan plasseres forskjellig i ulike
+modi; slike plasseringer er alternative kontekster, ikke samtidige instanser.
+Kopier eller flere samtidige realiseringer trenger egne Functionality-identiteter.
+Duplikatfakta avvises som ellers. Manglende allokering er uspesifisert.
+Ingen allokering arves fra `contains`, eier, navn eller en annen Mode. Eierskap
+er logisk ansvar; allokering er kjørekontekst. Denne profilen implementerer ikke
+System, deployer, prosesser, startrekkefølge, modusaktivering eller instansbinding.
+
+VP01 viser deklarerte mål og direkte/Feature-formidlede bidrag som en merket
+flowchart, delt i bruksmålskart og Feature-bidragskart for lesbarhet.
+Modellen er visningens omfang; ingen formell System-grense oppdiktes.
+VP07 lager ett Feature-utsnitt per eksplisitt allokeringsmodus, med bidrag,
+logiske eiere og Container-plasseringer. Uallokerte bidrag vises også og listes
+som hull i den viste modusen. Alle piler tilsvarer nøyaktig ett kildefaktum;
+modus fremgår av tegningstittel og faktaregister, uten implisitt arv.
+
+0.2 erstatter den aktive 0.1-profilen. Lokale parserprøver og SDL/SDUI-modellen
+er portert; ingen gammel parser eller fallback beholdes. Historiske checkpoint-
+og MVP1-kilder er ikke automatisk portert eller erklært kompatible.
 
 ## 6. Adjectives as typed properties
 
@@ -202,19 +246,21 @@ tokens; Section 9 fixes canonical serialization. Identifiers follow Section 3.
 ```text
 model = header, { declaration }, { statement } ;
 
-header = "language", "design-core", "version", "0.1", "." ;
+header = "language", "design-core", "version", "0.2", "." ;
 
 declaration = kind, identifier, "." ;
 kind = "unit" | "container" | "functionality" | "capability"
-     | "interface" | "activity" | "mode" ;
+     | "interface" | "activity" | "mode" | "actor" | "usecase" | "feature" ;
 
-statement = binaryRelation | dependency | propertyAssignment ;
+statement = binaryRelation | dependency | allocation | propertyAssignment ;
 
 binaryRelation = identifier, binaryVerb, identifier, "." ;
 binaryVerb = "contains" | "owns" | "realizes" | "provides"
-           | "consumes" | "refines" ;
+           | "consumes" | "refines" | "pursues" | "supports" | "contributes-to" ;
 
 dependency = identifier, "requires", identifier, "in", "mode", identifier, "." ;
+
+allocation = identifier, "allocated-to", identifier, "in", "mode", identifier, "." ;
 
 propertyAssignment = identifier, "has", property, "=", propertyValue, "." ;
 property = "state-retention" | "repeatability" ;
@@ -254,7 +300,7 @@ source spans; syntax, type and structural errors remain distinct.
 | Diagnostic | Example / reason |
 |---|---|
 | `UNSUPPORTED_SYNTAX` | `ValidateBindings is owned by PresentationManager.` uses an unregistered form. |
-| `UNSUPPORTED_VERSION` | The header requests a version other than `0.1`. |
+| `UNSUPPORTED_VERSION` | The header requests a version other than `0.2`. |
 | `UNDECLARED_NAME` | A statement references `Validator` without a declaration. |
 | `DUPLICATE_DECLARATION` | One identifier is declared twice, even with the same type. |
 | `SUBJECT_TYPE_MISMATCH` | `ValidateBindings owns PresentationManager.` expects Unit, receives Functionality. |
@@ -262,6 +308,7 @@ source spans; syntax, type and structural errors remain distinct.
 | `QUALIFIER_TYPE_MISMATCH` | The `in mode` reference names a Unit rather than a Mode. |
 | `PROPERTY_TYPE_MISMATCH` | A Unit receives a Functionality-only property, or a property receives the wrong value kind. |
 | `OWNERSHIP_CARDINALITY` | A Functionality has no owner or two different direct owners. |
+| `ALLOCATION_CARDINALITY` | A Functionality is allocated to two Containers in the same Mode. |
 | `CONTAINMENT_CARDINALITY` | A Unit has two different immediate parents. |
 | `STRUCTURE_CYCLE` | Containment or refinement points to itself or forms a cycle. |
 | `DUPLICATE_FACT` | The exact relation, or the same property assignment, is repeated. |
@@ -272,7 +319,7 @@ Given the declarations in Section 3, reversed ownership has two argument errors.
 The message should identify the positions, expected types and declared types.
 Do not silently reverse the sentence: that would change the submitted design.
 
-Passing these checks means **structurally valid design-core 0.1**, not correct
+Passing these checks means **structurally valid design-core 0.2**, not correct
 architecture, complete contracts, implemented behavior or verified product safety.
 
 ## 9. Canonical representation
@@ -302,7 +349,7 @@ This example is a logical decomposition. Declaring UIHost as Unit does not
 settle whether it will be a separate Go runtime Container.
 
 ```design-core
-language design-core version 0.1.
+language design-core version 0.2.
 capability LayoutReplacement.
 unit PresentationManager.
 unit UIHost.
@@ -326,7 +373,7 @@ external interface exposure remain to be described.
 ### 10.2 Scoped consumption and dependency
 
 ```design-core
-language design-core version 0.1.
+language design-core version 0.2.
 capability LiveInspection.
 interface ObservationInterface.
 mode OperatorLive.
@@ -360,6 +407,35 @@ as an unknown property; missing mandatory Mode; incorrect qualifier type;
 incorrect property subject type; incorrect property value type. The lines are
 independent negative examples, not one complete model.
 
+### 10.3 Bruksmål, bidrag og alternative kjørekontekster
+
+Direkte og Feature-formidlet bidrag er begge eksplisitte fakta. Eierskapet er
+uendret når samme ansvar plasseres i forskjellige Containers i ulike modi.
+
+```design-core
+language design-core version 0.2.
+actor Author.
+container CommandLineHost.
+usecase InspectModel.
+mode Inspection.
+container InteractiveHost.
+mode LiveEditing.
+feature StructuralChecking.
+functionality ValidateModel.
+unit Validator.
+Author pursues InspectModel.
+StructuralChecking supports InspectModel.
+ValidateModel allocated-to CommandLineHost in mode Inspection.
+ValidateModel allocated-to InteractiveHost in mode LiveEditing.
+ValidateModel contributes-to InspectModel.
+ValidateModel contributes-to StructuralChecking.
+Validator owns ValidateModel.
+```
+
+To forskjellige Containers i samme Mode ville feilet med
+`ALLOCATION_CARDINALITY`. Å bytte Feature med Capability i `contributes-to`
+ville feilet med `OBJECT_TYPE_MISMATCH`.
+
 ## 11. Updating the other documents
 
 This definition supersedes the exploration's unrestricted generic relation and
@@ -374,7 +450,7 @@ property forms for canonical core sentences:
   canonical core sentences.
 
 Research prose can discuss all these concepts. Only blocks explicitly claiming
-`design-core 0.1` compliance are required to satisfy this definition. Earlier
+`design-core 0.2` compliance are required to satisfy this definition. Earlier
 blocks are exploratory fragments, not backward-compatible alternative syntax.
 
 ## 12. Open extensions and conformance work
@@ -387,7 +463,7 @@ blocks are exploratory fragments, not backward-compatible alternative syntax.
 | L04 concurrent updates | Sequence/fork/join, ordering, frame conditions and delivery-policy contracts. |
 | L05 uncertain command outcome | Run, Event and Observation types; correlation, lifecycle/result distinctions and time semantics. |
 | L06 quantities and shared views | Typed values/units and separate semantic, Representation and view identities. |
-| L07 placement changes | Deployment/allocation and reusable-definition versus runtime-instance bindings. |
+| L07 placement changes | Complete deployment and reusable-definition versus runtime-instance bindings; bounded mode-scoped responsibility allocation is implemented. |
 | L08 implementation evidence | Revision-specific SourceSymbol and evidence types with role-specific bindings. |
 
 Add each extension by specifying its concept, grammatical class, argument types,
@@ -396,11 +472,11 @@ appearing in a scenario does not automatically become a language keyword.
 
 The [SDL source-tree and compilation study](SDL-Source-Tree-and-Compilation-Study.md)
 proposes future workspace scopes, multi-file linking, public exports and blueprint
-generation. These require an explicit language extension; version 0.1 retains
+generation. These require an explicit language extension; version 0.2 retains
 its standalone-model semantics and does not resolve names from neighboring files.
 
-Version 0.1 supports executable checks for ownership reversal, other core type
-errors, and the structural subset of L01/L02. The prototype tests parse both
+Version 0.2 supports executable checks for ownership reversal, other core type
+errors, and the structural subset of L01/L02. The prototype tests parse all three
 complete examples above and check their semantics and canonical layout. Additional
 tests cover invalid forms, structural constraints and structural text/AST round
 trips. This is not a proof that the EBNF and implementation accept identical
@@ -415,7 +491,7 @@ file. `System.design` is a useful filename convention, not a required name. The
 source declares the modeled System, and the first workspace language version
 permits exactly one declared System per complete compilation.
 
-This section records the next extension; it does not alter the `design-core 0.1`
+This section records the next extension; it does not alter the `design-core 0.2`
 grammar or claim parser support. The owner's root/cardinality decision is selected.
 The type integration and canonical details below are proposed for that extension.
 
@@ -482,7 +558,7 @@ own explicit signature decisions; this increment does not infer those permission
 
 For future canonical entry layout, recommend the version header followed by the
 System declaration, then other declarations and facts in their defined order.
-This is a versioned change from 0.1's declaration ordering. Comma-separated
+This is a versioned change from 0.2's declaration ordering. Comma-separated
 declaration/containment lists are not an additional canonical form; the short
 owner sketch can be translated into the individual facts above.
 
@@ -502,7 +578,7 @@ owner sketch can be translated into the individual facts above.
 | Entry contains a Container but omits the file defining it from the source set | Unresolved-name error; no implicit file discovery. |
 
 Implement these cases with the explicit workspace/version extension. Existing
-0.1 fixtures retain their current behavior, including standalone models without
+0.2 fixtures retain their current behavior, including standalone models without
 a System declaration.
 
 ## 14. Proposed Channels, participants and message direction
@@ -661,7 +737,7 @@ does not define a complete request/reply interaction.
 Before adopting this grammar, complete one observation contract and one
 request/result contract using it. Specify MessageSet definitions, Channel-contract
 association, role compatibility and distribution rules in this language definition
-together. The current parser remains a `design-core 0.1` structural parser.
+together. The current parser remains a `design-core 0.2` structural parser.
 
 ## 15. Explicit type annotations and checking without annotations
 
@@ -691,7 +767,7 @@ its actual type. An authoritative declaration is still required. By contrast,
 A future parser must distinguish these productions by the following tokens; it
 cannot assume that every sentence starting with a type keyword is a declaration.
 The existing requirement to place declarations before statements is unaffected.
-Do not replace the 0.1 parser's behavior without an explicit version extension.
+Do not replace the 0.2 parser's behavior without an explicit version extension.
 
 There are three distinct inputs to checking a reference:
 
@@ -743,12 +819,12 @@ density is a reading aid, never implicit grammatical context.
   presence. Repeating a fact in another annotation style is still a duplicate.
 - In the future extension, permitted annotations are valid source, not a
   `NONCANONICAL_FORM` error. Checking authored source and requesting/checking the
-  canonical export are distinct operations. Version 0.1's existing canonical
+  canonical export are distinct operations. Version 0.2's existing canonical
   checks remain unchanged.
 
 The annotation mechanism is intended to be reusable for typed references in later
 productions. Section 14 specifies its first concrete use. It does not silently
-add annotated references to every existing 0.1 production. The principle is one
+add annotated references to every existing 0.2 production. The principle is one
 meaning and one canonical semantic representation, with optional source-level
 type assertions, rather than an unrestricted collection of sentence variants.
 
