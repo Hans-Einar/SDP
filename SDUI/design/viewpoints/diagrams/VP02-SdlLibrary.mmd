@@ -1,0 +1,8 @@
+flowchart LR
+    n_SdlFrontend["SdlFrontend (unit)"]
+    n_SdlLibrary["SdlLibrary (unit)"]
+    n_SdlRuntime["SdlRuntime (unit)"]
+    n_SdlViewpointGenerator["SdlViewpointGenerator (unit)"]
+    n_SdlLibrary -->|contains| n_SdlFrontend
+    n_SdlLibrary -->|contains| n_SdlRuntime
+    n_SdlLibrary -->|contains| n_SdlViewpointGenerator

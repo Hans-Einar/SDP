@@ -1,0 +1,25 @@
+flowchart LR
+    n_AllocateGeometry["AllocateGeometry (functionality)"]
+    n_BuildPreparedFrame["BuildPreparedFrame (functionality)"]
+    n_ComposeInteractiveSession["ComposeInteractiveSession (functionality)"]
+    n_FyneBackend["FyneBackend (unit)"]
+    n_FyneHost["FyneHost (container)"]
+    n_HandleFocusAndTextInput["HandleFocusAndTextInput (functionality)"]
+    n_InteractiveUiPreview["InteractiveUiPreview (feature)"]
+    n_ReconcileWidgets["ReconcileWidgets (functionality)"]
+    n_SduiLayout["SduiLayout (unit)"]
+    n_AllocateGeometry -->|allocated-to| n_FyneHost
+    n_AllocateGeometry -->|contributes-to| n_InteractiveUiPreview
+    n_BuildPreparedFrame -->|allocated-to| n_FyneHost
+    n_BuildPreparedFrame -->|contributes-to| n_InteractiveUiPreview
+    n_ComposeInteractiveSession -->|allocated-to| n_FyneHost
+    n_ComposeInteractiveSession -->|contributes-to| n_InteractiveUiPreview
+    n_FyneBackend -->|owns| n_HandleFocusAndTextInput
+    n_FyneBackend -->|owns| n_ReconcileWidgets
+    n_FyneHost -->|owns| n_ComposeInteractiveSession
+    n_HandleFocusAndTextInput -->|allocated-to| n_FyneHost
+    n_HandleFocusAndTextInput -->|contributes-to| n_InteractiveUiPreview
+    n_ReconcileWidgets -->|allocated-to| n_FyneHost
+    n_ReconcileWidgets -->|contributes-to| n_InteractiveUiPreview
+    n_SduiLayout -->|owns| n_AllocateGeometry
+    n_SduiLayout -->|owns| n_BuildPreparedFrame

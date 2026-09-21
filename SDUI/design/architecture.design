@@ -1,0 +1,683 @@
+language design-core version 0.2.
+functionality AllocateGeometry.
+functionality ApplyPropertyBatch.
+interface BindingReloadPort.
+mode BoundExecution.
+capability BoundInteraction.
+mode BoundLiveEditing.
+functionality BuildGeneratedApplication.
+usecase BuildNativeProduct.
+activity BuildNativeRealization.
+functionality BuildPreparedFrame.
+functionality BuildSdlAst.
+functionality BuildSduiAst.
+interface BuildToolPort.
+functionality CancelPendingActions.
+functionality CheckDomainStateCompatibility.
+functionality CheckExecutionCompleteness.
+functionality CheckFunctionSignatures.
+functionality CloseSdlInstance.
+functionality CloseUiInstance.
+functionality CoalesceSourceChanges.
+container CommandLineHost.
+functionality ComposeHeadlessExport.
+functionality ComposeInteractiveSession.
+functionality ComposeMarkdownDocument.
+functionality ComputeClipping.
+functionality ConnectTypedWidgetHandles.
+interface ContentProviderPort.
+unit ContentServices.
+functionality CoordinateSdlCompilation.
+functionality CoordinateSduiCompilation.
+functionality CorrelateActionResult.
+functionality CorrelateUiResult.
+functionality CreateSdlInstance.
+functionality CreateUiInstance.
+actor DesignAuthor.
+feature DesignDocumentation.
+actor DesignReviewer.
+capability DevelopmentReload.
+unit DevelopmentTools.
+interface DiagnosticPort.
+unit DiagnosticReporter.
+interface DiagramEnginePort.
+interface DiagramPort.
+unit DiagramProvider.
+functionality DisconnectBindings.
+functionality DispatchUiEvent.
+interface DomainBindingPort.
+interface DomainFunctionPort.
+capability DomainOperations.
+unit DomainStateMigrator.
+interface DomainStatePort.
+usecase EditRunningPrototype.
+capability ExecutableDesign.
+interface ExecutionProfilePort.
+functionality ExpandUiDefinitions.
+functionality ExportConsoleSnapshot.
+interface ExportSinkPort.
+functionality ExportSvgSnapshot.
+activity ExportUiDocumentation.
+functionality ExportViewpointMarkdown.
+interface FileChangePort.
+unit FyneBackend.
+container FyneHost.
+functionality GenerateBindingRegistration.
+functionality GenerateModelConstructors.
+interface GeneratedArtifactPort.
+unit GoBuildRunner.
+unit GoCodeGenerator.
+unit GoDomainImplementation.
+functionality HandleFocusAndTextInput.
+functionality IdentifySourceRevision.
+activity InspectDesignSource.
+usecase InspectModels.
+activity InspectSdlSource.
+activity InspectSduiSource.
+capability InteractiveSession.
+feature InteractiveUiPreview.
+functionality InvokeRegisteredFunction.
+functionality KeepLastValidModels.
+mode LiveEditing.
+feature LiveModelReload.
+functionality ManageDomainState.
+functionality ManageWidgetIdentities.
+unit MarkdownProvider.
+functionality MatchCompatibleWidgets.
+functionality MeasureMarkdownContent.
+functionality MeasureUiContent.
+capability MeasuredPresentation.
+interface MeasurementPort.
+functionality MigrateOrResetDomainState.
+mode NativeBuild.
+feature NativeGoAssembly.
+capability NativeInteraction.
+capability NativeRealization.
+functionality NormalizeSdlModel.
+functionality ObserveSourceChanges.
+functionality PerformDomainOperation.
+functionality PrepareCandidateModels.
+functionality PrepareDiagramResource.
+functionality PrepareMarkdown.
+interface PreparedFramePort.
+functionality PreserveCompatibleUiState.
+functionality PreserveHandwrittenSources.
+functionality PreserveSdlSourceMap.
+functionality PreserveUiRegions.
+functionality PreserveUiSourceMap.
+functionality ProjectSdlViewpoints.
+usecase PrototypeUserInterface.
+usecase PublishDesignDocumentation.
+functionality PublishDomainUpdates.
+functionality PublishModelGeneration.
+functionality PublishPresentation.
+functionality ReadBoundedSources.
+activity RealizeDesign.
+functionality ReconcileWidgets.
+functionality RegisterDomainFunctions.
+functionality RejectStaleUiEvent.
+functionality ReleaseNativeWidgets.
+functionality ReleaseVisualResources.
+activity ReloadBoundModels.
+unit ReloadCoordinator.
+activity ReloadDesignSession.
+interface ReloadPort.
+activity ReloadUiModel.
+functionality ReportBindingDiagnostics.
+functionality ReportSourceDiagnostics.
+functionality ResetIncompatibleUiState.
+functionality ResolveAncestorDimensions.
+functionality ResolveCallbackSymbols.
+functionality ResolveSdlSymbols.
+functionality ResolveUiNames.
+interface ResourcePort.
+unit ResourceStore.
+functionality RestartChangedGoProgram.
+functionality RetirePreviousGeneration.
+functionality RevokeWidgetGenerations.
+capability RichContent.
+mode RichDocument.
+functionality RouteDomainBindings.
+activity RunBoundUiAction.
+activity RunDesignSession.
+activity RunUnboundUiPreview.
+functionality ScheduleUiPublication.
+unit SdlDispatcher.
+unit SdlExecutionGate.
+interface SdlExecutionPort.
+unit SdlFrontend.
+interface SdlFrontendPort.
+unit SdlFunctionRegistry.
+unit SdlLexer.
+unit SdlLibrary.
+interface SdlModelPort.
+unit SdlNormalizer.
+unit SdlParser.
+interface SdlReloadPort.
+unit SdlRuntime.
+capability SdlSourceModel.
+unit SdlStateStore.
+unit SdlUiBindingAdapter.
+unit SdlValidator.
+unit SdlViewpointGenerator.
+unit SduiDispatcher.
+unit SduiFrontend.
+interface SduiFrontendPort.
+unit SduiInstanceStore.
+unit SduiLayout.
+unit SduiLexer.
+unit SduiLibrary.
+interface SduiModelPort.
+unit SduiNormalizer.
+unit SduiParser.
+unit SduiPresentation.
+unit SduiPropertyStore.
+unit SduiRuntime.
+capability SduiSourceModel.
+unit SduiValidator.
+functionality SnapshotDomainState.
+functionality SnapshotUiState.
+capability SourceDiagnostics.
+interface SourceInputPort.
+mode SourceInspection.
+unit SourceLoader.
+capability SourceLoading.
+interface SourceSnapshotPort.
+unit SourceWatcher.
+capability StaticDocumentation.
+mode StaticExport.
+feature StructuralModelInspection.
+functionality TokenizeSdlSource.
+functionality TokenizeSduiSource.
+functionality TraceViewpointFacts.
+functionality TrackInputDraft.
+usecase TryDomainInteraction.
+feature TypedDomainBinding.
+mode UiPreview.
+interface UiReloadPort.
+interface UiSessionPort.
+interface UiSnapshotPort.
+interface UiStatePort.
+unit UiStateReconciler.
+functionality ValidateActionInput.
+functionality ValidatePropertyBatch.
+functionality ValidateRelativeFormatting.
+functionality ValidateSdlProfile.
+functionality ValidateSdlStructure.
+functionality ValidateSymbolicBindings.
+functionality ValidateUiEvent.
+functionality ValidateVisualResources.
+functionality ValidateWidgetArguments.
+interface WidgetBackendPort.
+functionality WriteGeneratedArtifacts.
+AllocateGeometry allocated-to FyneHost in mode UiPreview.
+AllocateGeometry contributes-to InteractiveUiPreview.
+AllocateGeometry realizes MeasuredPresentation.
+ApplyPropertyBatch has state-retention = stateful.
+ApplyPropertyBatch realizes InteractiveSession.
+BoundInteraction requires SdlExecutionPort in mode BoundExecution.
+BoundInteraction requires UiSessionPort in mode BoundExecution.
+BuildGeneratedApplication allocated-to CommandLineHost in mode NativeBuild.
+BuildGeneratedApplication contributes-to NativeGoAssembly.
+BuildGeneratedApplication realizes NativeRealization.
+BuildNativeRealization refines RealizeDesign.
+BuildPreparedFrame allocated-to FyneHost in mode UiPreview.
+BuildPreparedFrame contributes-to InteractiveUiPreview.
+BuildPreparedFrame realizes MeasuredPresentation.
+BuildSdlAst allocated-to CommandLineHost in mode SourceInspection.
+BuildSdlAst contributes-to StructuralModelInspection.
+BuildSdlAst has repeatability = deterministic.
+BuildSdlAst has state-retention = stateless.
+BuildSdlAst realizes SdlSourceModel.
+BuildSduiAst allocated-to CommandLineHost in mode SourceInspection.
+BuildSduiAst contributes-to StructuralModelInspection.
+BuildSduiAst has repeatability = deterministic.
+BuildSduiAst has state-retention = stateless.
+BuildSduiAst realizes SduiSourceModel.
+CancelPendingActions realizes ExecutableDesign.
+CheckDomainStateCompatibility realizes ExecutableDesign.
+CheckExecutionCompleteness realizes ExecutableDesign.
+CheckFunctionSignatures realizes ExecutableDesign.
+CloseSdlInstance realizes ExecutableDesign.
+CloseUiInstance realizes InteractiveSession.
+CoalesceSourceChanges realizes DevelopmentReload.
+CommandLineHost consumes ExportSinkPort.
+CommandLineHost consumes PreparedFramePort.
+CommandLineHost consumes SduiFrontendPort.
+CommandLineHost consumes SourceSnapshotPort.
+CommandLineHost owns ComposeHeadlessExport.
+CommandLineHost owns WriteGeneratedArtifacts.
+CommandLineHost provides StaticDocumentation.
+ComposeHeadlessExport realizes StaticDocumentation.
+ComposeInteractiveSession allocated-to FyneHost in mode UiPreview.
+ComposeInteractiveSession contributes-to InteractiveUiPreview.
+ComposeInteractiveSession realizes NativeInteraction.
+ComposeMarkdownDocument allocated-to CommandLineHost in mode StaticExport.
+ComposeMarkdownDocument contributes-to DesignDocumentation.
+ComposeMarkdownDocument realizes StaticDocumentation.
+ComputeClipping realizes MeasuredPresentation.
+ConnectTypedWidgetHandles allocated-to FyneHost in mode BoundExecution.
+ConnectTypedWidgetHandles contributes-to TypedDomainBinding.
+ConnectTypedWidgetHandles realizes BoundInteraction.
+ContentServices contains DiagramProvider.
+ContentServices contains MarkdownProvider.
+ContentServices contains ResourceStore.
+ContentServices provides RichContent.
+CoordinateSdlCompilation realizes SdlSourceModel.
+CoordinateSduiCompilation realizes SduiSourceModel.
+CorrelateActionResult realizes ExecutableDesign.
+CorrelateUiResult realizes InteractiveSession.
+CreateSdlInstance realizes ExecutableDesign.
+CreateUiInstance realizes InteractiveSession.
+DesignAuthor pursues BuildNativeProduct.
+DesignAuthor pursues EditRunningPrototype.
+DesignAuthor pursues InspectModels.
+DesignAuthor pursues PrototypeUserInterface.
+DesignAuthor pursues PublishDesignDocumentation.
+DesignAuthor pursues TryDomainInteraction.
+DesignDocumentation supports PublishDesignDocumentation.
+DesignReviewer pursues InspectModels.
+DesignReviewer pursues PrototypeUserInterface.
+DesignReviewer pursues PublishDesignDocumentation.
+DevelopmentReload requires BindingReloadPort in mode BoundLiveEditing.
+DevelopmentReload requires FileChangePort in mode BoundLiveEditing.
+DevelopmentReload requires FileChangePort in mode LiveEditing.
+DevelopmentReload requires SdlReloadPort in mode BoundLiveEditing.
+DevelopmentReload requires SourceSnapshotPort in mode BoundLiveEditing.
+DevelopmentReload requires SourceSnapshotPort in mode LiveEditing.
+DevelopmentReload requires UiReloadPort in mode BoundLiveEditing.
+DevelopmentReload requires UiReloadPort in mode LiveEditing.
+DevelopmentTools contains DiagnosticReporter.
+DevelopmentTools contains GoBuildRunner.
+DevelopmentTools contains GoCodeGenerator.
+DevelopmentTools contains ReloadCoordinator.
+DevelopmentTools contains SourceLoader.
+DevelopmentTools contains SourceWatcher.
+DevelopmentTools provides DevelopmentReload.
+DiagnosticReporter owns ReportBindingDiagnostics.
+DiagnosticReporter owns ReportSourceDiagnostics.
+DiagnosticReporter provides SourceDiagnostics.
+DiagramProvider consumes DiagramEnginePort.
+DiagramProvider consumes ResourcePort.
+DiagramProvider owns PrepareDiagramResource.
+DiagramProvider provides RichContent.
+DisconnectBindings realizes BoundInteraction.
+DispatchUiEvent allocated-to FyneHost in mode BoundExecution.
+DispatchUiEvent contributes-to TypedDomainBinding.
+DispatchUiEvent realizes InteractiveSession.
+DomainStateMigrator consumes DomainStatePort.
+DomainStateMigrator consumes SdlModelPort.
+DomainStateMigrator owns CheckDomainStateCompatibility.
+DomainStateMigrator owns MigrateOrResetDomainState.
+DomainStateMigrator provides ExecutableDesign.
+ExecutableDesign requires DomainFunctionPort in mode BoundExecution.
+ExpandUiDefinitions has repeatability = deterministic.
+ExpandUiDefinitions has state-retention = stateless.
+ExpandUiDefinitions realizes SduiSourceModel.
+ExportConsoleSnapshot realizes StaticDocumentation.
+ExportSvgSnapshot allocated-to CommandLineHost in mode StaticExport.
+ExportSvgSnapshot contributes-to DesignDocumentation.
+ExportSvgSnapshot realizes StaticDocumentation.
+ExportUiDocumentation refines InspectDesignSource.
+ExportViewpointMarkdown allocated-to CommandLineHost in mode StaticExport.
+ExportViewpointMarkdown contributes-to DesignDocumentation.
+ExportViewpointMarkdown has repeatability = deterministic.
+ExportViewpointMarkdown has state-retention = stateless.
+FyneBackend consumes PreparedFramePort.
+FyneBackend consumes UiSessionPort.
+FyneBackend owns HandleFocusAndTextInput.
+FyneBackend owns PublishPresentation.
+FyneBackend owns ReconcileWidgets.
+FyneBackend owns ReleaseNativeWidgets.
+FyneBackend provides NativeInteraction.
+FyneHost consumes DomainBindingPort.
+FyneHost consumes ReloadPort.
+FyneHost consumes SdlFrontendPort.
+FyneHost consumes SduiFrontendPort.
+FyneHost consumes SourceSnapshotPort.
+FyneHost consumes UiSessionPort.
+FyneHost consumes WidgetBackendPort.
+FyneHost owns ComposeInteractiveSession.
+FyneHost owns ScheduleUiPublication.
+FyneHost provides NativeInteraction.
+GenerateBindingRegistration allocated-to CommandLineHost in mode NativeBuild.
+GenerateBindingRegistration contributes-to NativeGoAssembly.
+GenerateBindingRegistration realizes NativeRealization.
+GenerateModelConstructors allocated-to CommandLineHost in mode NativeBuild.
+GenerateModelConstructors contributes-to NativeGoAssembly.
+GenerateModelConstructors realizes NativeRealization.
+GoBuildRunner consumes BuildToolPort.
+GoBuildRunner consumes GeneratedArtifactPort.
+GoBuildRunner owns BuildGeneratedApplication.
+GoBuildRunner owns RestartChangedGoProgram.
+GoBuildRunner provides NativeRealization.
+GoCodeGenerator consumes ExecutionProfilePort.
+GoCodeGenerator consumes SdlModelPort.
+GoCodeGenerator consumes SduiModelPort.
+GoCodeGenerator owns GenerateBindingRegistration.
+GoCodeGenerator owns GenerateModelConstructors.
+GoCodeGenerator owns PreserveHandwrittenSources.
+GoCodeGenerator provides NativeRealization.
+GoDomainImplementation owns PerformDomainOperation.
+GoDomainImplementation provides DomainOperations.
+HandleFocusAndTextInput allocated-to FyneHost in mode UiPreview.
+HandleFocusAndTextInput contributes-to InteractiveUiPreview.
+HandleFocusAndTextInput realizes NativeInteraction.
+IdentifySourceRevision realizes SourceLoading.
+InspectSdlSource refines InspectDesignSource.
+InspectSduiSource refines InspectDesignSource.
+InteractiveUiPreview supports PrototypeUserInterface.
+InvokeRegisteredFunction allocated-to FyneHost in mode BoundExecution.
+InvokeRegisteredFunction contributes-to TypedDomainBinding.
+InvokeRegisteredFunction realizes ExecutableDesign.
+KeepLastValidModels allocated-to FyneHost in mode LiveEditing.
+KeepLastValidModels contributes-to LiveModelReload.
+KeepLastValidModels realizes DevelopmentReload.
+LiveModelReload supports EditRunningPrototype.
+ManageDomainState has state-retention = stateful.
+ManageDomainState realizes ExecutableDesign.
+ManageWidgetIdentities has state-retention = stateful.
+ManageWidgetIdentities realizes InteractiveSession.
+MarkdownProvider consumes DiagramPort.
+MarkdownProvider consumes MeasurementPort.
+MarkdownProvider consumes ResourcePort.
+MarkdownProvider owns MeasureMarkdownContent.
+MarkdownProvider owns PrepareMarkdown.
+MarkdownProvider provides RichContent.
+MatchCompatibleWidgets realizes InteractiveSession.
+MeasureMarkdownContent realizes RichContent.
+MeasureUiContent realizes MeasuredPresentation.
+MeasuredPresentation requires MeasurementPort in mode StaticExport.
+MeasuredPresentation requires MeasurementPort in mode UiPreview.
+MigrateOrResetDomainState realizes ExecutableDesign.
+NativeGoAssembly supports BuildNativeProduct.
+NativeInteraction requires WidgetBackendPort in mode UiPreview.
+NativeRealization requires BuildToolPort in mode NativeBuild.
+NativeRealization requires GeneratedArtifactPort in mode NativeBuild.
+NormalizeSdlModel has repeatability = deterministic.
+NormalizeSdlModel has state-retention = stateless.
+NormalizeSdlModel realizes SdlSourceModel.
+ObserveSourceChanges allocated-to FyneHost in mode LiveEditing.
+ObserveSourceChanges contributes-to LiveModelReload.
+ObserveSourceChanges realizes DevelopmentReload.
+PerformDomainOperation realizes DomainOperations.
+PrepareCandidateModels allocated-to FyneHost in mode LiveEditing.
+PrepareCandidateModels contributes-to LiveModelReload.
+PrepareCandidateModels realizes DevelopmentReload.
+PrepareDiagramResource realizes RichContent.
+PrepareMarkdown realizes RichContent.
+PreserveCompatibleUiState allocated-to FyneHost in mode LiveEditing.
+PreserveCompatibleUiState contributes-to LiveModelReload.
+PreserveCompatibleUiState realizes InteractiveSession.
+PreserveHandwrittenSources allocated-to CommandLineHost in mode NativeBuild.
+PreserveHandwrittenSources contributes-to NativeGoAssembly.
+PreserveHandwrittenSources realizes NativeRealization.
+PreserveSdlSourceMap has repeatability = deterministic.
+PreserveSdlSourceMap has state-retention = stateless.
+PreserveSdlSourceMap realizes SdlSourceModel.
+PreserveUiRegions has repeatability = deterministic.
+PreserveUiRegions has state-retention = stateless.
+PreserveUiRegions realizes SduiSourceModel.
+PreserveUiSourceMap has repeatability = deterministic.
+PreserveUiSourceMap has state-retention = stateless.
+PreserveUiSourceMap realizes SduiSourceModel.
+ProjectSdlViewpoints allocated-to CommandLineHost in mode StaticExport.
+ProjectSdlViewpoints contributes-to DesignDocumentation.
+ProjectSdlViewpoints has repeatability = deterministic.
+ProjectSdlViewpoints has state-retention = stateless.
+PublishDomainUpdates allocated-to FyneHost in mode BoundExecution.
+PublishDomainUpdates contributes-to TypedDomainBinding.
+PublishDomainUpdates realizes BoundInteraction.
+PublishModelGeneration allocated-to FyneHost in mode LiveEditing.
+PublishModelGeneration contributes-to LiveModelReload.
+PublishModelGeneration has state-retention = stateful.
+PublishModelGeneration realizes DevelopmentReload.
+PublishPresentation realizes NativeInteraction.
+ReadBoundedSources realizes SourceLoading.
+ReconcileWidgets allocated-to FyneHost in mode UiPreview.
+ReconcileWidgets contributes-to InteractiveUiPreview.
+ReconcileWidgets has state-retention = stateful.
+ReconcileWidgets realizes NativeInteraction.
+RegisterDomainFunctions has state-retention = stateful.
+RegisterDomainFunctions realizes ExecutableDesign.
+RejectStaleUiEvent realizes InteractiveSession.
+ReleaseNativeWidgets realizes NativeInteraction.
+ReleaseVisualResources realizes RichContent.
+ReloadBoundModels refines ReloadDesignSession.
+ReloadCoordinator consumes BindingReloadPort.
+ReloadCoordinator consumes DiagnosticPort.
+ReloadCoordinator consumes SdlFrontendPort.
+ReloadCoordinator consumes SdlReloadPort.
+ReloadCoordinator consumes SduiFrontendPort.
+ReloadCoordinator consumes SourceSnapshotPort.
+ReloadCoordinator consumes UiReloadPort.
+ReloadCoordinator owns KeepLastValidModels.
+ReloadCoordinator owns PrepareCandidateModels.
+ReloadCoordinator owns PublishModelGeneration.
+ReloadCoordinator owns RetirePreviousGeneration.
+ReloadCoordinator provides DevelopmentReload.
+ReloadUiModel refines ReloadDesignSession.
+ReportBindingDiagnostics realizes SourceDiagnostics.
+ReportSourceDiagnostics allocated-to CommandLineHost in mode SourceInspection.
+ReportSourceDiagnostics allocated-to FyneHost in mode LiveEditing.
+ReportSourceDiagnostics contributes-to LiveModelReload.
+ReportSourceDiagnostics contributes-to StructuralModelInspection.
+ReportSourceDiagnostics realizes SourceDiagnostics.
+ResetIncompatibleUiState realizes InteractiveSession.
+ResolveAncestorDimensions realizes MeasuredPresentation.
+ResolveCallbackSymbols allocated-to FyneHost in mode BoundExecution.
+ResolveCallbackSymbols contributes-to TypedDomainBinding.
+ResolveCallbackSymbols realizes BoundInteraction.
+ResolveSdlSymbols has repeatability = deterministic.
+ResolveSdlSymbols has state-retention = stateless.
+ResolveSdlSymbols realizes SdlSourceModel.
+ResolveUiNames has repeatability = deterministic.
+ResolveUiNames has state-retention = stateless.
+ResolveUiNames realizes SduiSourceModel.
+ResourceStore owns ReleaseVisualResources.
+ResourceStore owns ValidateVisualResources.
+ResourceStore provides RichContent.
+RestartChangedGoProgram realizes NativeRealization.
+RetirePreviousGeneration realizes DevelopmentReload.
+RevokeWidgetGenerations realizes InteractiveSession.
+RichContent requires ContentProviderPort in mode RichDocument.
+RichContent requires DiagramEnginePort in mode RichDocument.
+RouteDomainBindings realizes BoundInteraction.
+RunBoundUiAction refines RunDesignSession.
+RunUnboundUiPreview refines RunDesignSession.
+ScheduleUiPublication realizes NativeInteraction.
+SdlDispatcher consumes DomainFunctionPort.
+SdlDispatcher consumes DomainStatePort.
+SdlDispatcher owns CancelPendingActions.
+SdlDispatcher owns CorrelateActionResult.
+SdlDispatcher owns InvokeRegisteredFunction.
+SdlDispatcher owns ValidateActionInput.
+SdlDispatcher provides ExecutableDesign.
+SdlExecutionGate consumes DiagnosticPort.
+SdlExecutionGate consumes SdlModelPort.
+SdlExecutionGate owns CheckExecutionCompleteness.
+SdlExecutionGate provides ExecutableDesign.
+SdlFrontend consumes DiagnosticPort.
+SdlFrontend consumes SourceSnapshotPort.
+SdlFrontend contains SdlLexer.
+SdlFrontend contains SdlNormalizer.
+SdlFrontend contains SdlParser.
+SdlFrontend contains SdlValidator.
+SdlFrontend owns CoordinateSdlCompilation.
+SdlFrontend provides SdlSourceModel.
+SdlFunctionRegistry consumes DomainFunctionPort.
+SdlFunctionRegistry owns CheckFunctionSignatures.
+SdlFunctionRegistry owns RegisterDomainFunctions.
+SdlFunctionRegistry provides ExecutableDesign.
+SdlLexer owns TokenizeSdlSource.
+SdlLexer provides SdlSourceModel.
+SdlLibrary contains SdlFrontend.
+SdlLibrary contains SdlRuntime.
+SdlLibrary contains SdlViewpointGenerator.
+SdlLibrary provides ExecutableDesign.
+SdlLibrary provides SdlSourceModel.
+SdlNormalizer owns NormalizeSdlModel.
+SdlNormalizer owns PreserveSdlSourceMap.
+SdlNormalizer provides SdlSourceModel.
+SdlParser owns BuildSdlAst.
+SdlParser provides SdlSourceModel.
+SdlRuntime consumes DomainFunctionPort.
+SdlRuntime consumes SdlModelPort.
+SdlRuntime contains DomainStateMigrator.
+SdlRuntime contains SdlDispatcher.
+SdlRuntime contains SdlExecutionGate.
+SdlRuntime contains SdlFunctionRegistry.
+SdlRuntime contains SdlStateStore.
+SdlRuntime owns CloseSdlInstance.
+SdlRuntime owns CreateSdlInstance.
+SdlRuntime provides ExecutableDesign.
+SdlSourceModel requires SourceSnapshotPort in mode SourceInspection.
+SdlStateStore owns ManageDomainState.
+SdlStateStore owns SnapshotDomainState.
+SdlStateStore provides ExecutableDesign.
+SdlUiBindingAdapter consumes DiagnosticPort.
+SdlUiBindingAdapter consumes SdlExecutionPort.
+SdlUiBindingAdapter consumes UiSessionPort.
+SdlUiBindingAdapter owns ConnectTypedWidgetHandles.
+SdlUiBindingAdapter owns DisconnectBindings.
+SdlUiBindingAdapter owns PublishDomainUpdates.
+SdlUiBindingAdapter owns ResolveCallbackSymbols.
+SdlUiBindingAdapter owns RouteDomainBindings.
+SdlUiBindingAdapter provides BoundInteraction.
+SdlValidator owns ResolveSdlSymbols.
+SdlValidator owns ValidateSdlProfile.
+SdlValidator owns ValidateSdlStructure.
+SdlValidator provides SdlSourceModel.
+SdlViewpointGenerator owns ExportViewpointMarkdown.
+SdlViewpointGenerator owns ProjectSdlViewpoints.
+SdlViewpointGenerator owns TraceViewpointFacts.
+SduiDispatcher consumes DomainBindingPort.
+SduiDispatcher consumes UiStatePort.
+SduiDispatcher owns CorrelateUiResult.
+SduiDispatcher owns DispatchUiEvent.
+SduiDispatcher owns RejectStaleUiEvent.
+SduiDispatcher owns ValidateUiEvent.
+SduiDispatcher provides InteractiveSession.
+SduiFrontend consumes DiagnosticPort.
+SduiFrontend consumes SourceSnapshotPort.
+SduiFrontend contains SduiLexer.
+SduiFrontend contains SduiNormalizer.
+SduiFrontend contains SduiParser.
+SduiFrontend contains SduiValidator.
+SduiFrontend owns CoordinateSduiCompilation.
+SduiFrontend provides SduiSourceModel.
+SduiInstanceStore owns ManageWidgetIdentities.
+SduiInstanceStore owns RevokeWidgetGenerations.
+SduiInstanceStore owns SnapshotUiState.
+SduiInstanceStore provides InteractiveSession.
+SduiLayout consumes ContentProviderPort.
+SduiLayout consumes MeasurementPort.
+SduiLayout consumes UiSnapshotPort.
+SduiLayout owns AllocateGeometry.
+SduiLayout owns BuildPreparedFrame.
+SduiLayout owns ComputeClipping.
+SduiLayout owns MeasureUiContent.
+SduiLayout owns ResolveAncestorDimensions.
+SduiLayout provides MeasuredPresentation.
+SduiLexer owns TokenizeSduiSource.
+SduiLexer provides SduiSourceModel.
+SduiLibrary contains SduiFrontend.
+SduiLibrary contains SduiLayout.
+SduiLibrary contains SduiPresentation.
+SduiLibrary contains SduiRuntime.
+SduiLibrary provides InteractiveSession.
+SduiLibrary provides MeasuredPresentation.
+SduiLibrary provides SduiSourceModel.
+SduiLibrary provides StaticDocumentation.
+SduiNormalizer owns ExpandUiDefinitions.
+SduiNormalizer owns PreserveUiRegions.
+SduiNormalizer owns PreserveUiSourceMap.
+SduiNormalizer provides SduiSourceModel.
+SduiParser owns BuildSduiAst.
+SduiParser provides SduiSourceModel.
+SduiPresentation consumes PreparedFramePort.
+SduiPresentation owns ComposeMarkdownDocument.
+SduiPresentation owns ExportConsoleSnapshot.
+SduiPresentation owns ExportSvgSnapshot.
+SduiPresentation provides StaticDocumentation.
+SduiPropertyStore consumes UiStatePort.
+SduiPropertyStore owns ApplyPropertyBatch.
+SduiPropertyStore owns TrackInputDraft.
+SduiPropertyStore owns ValidatePropertyBatch.
+SduiPropertyStore provides InteractiveSession.
+SduiRuntime consumes DomainBindingPort.
+SduiRuntime consumes SduiModelPort.
+SduiRuntime contains SduiDispatcher.
+SduiRuntime contains SduiInstanceStore.
+SduiRuntime contains SduiPropertyStore.
+SduiRuntime contains UiStateReconciler.
+SduiRuntime owns CloseUiInstance.
+SduiRuntime owns CreateUiInstance.
+SduiRuntime provides InteractiveSession.
+SduiSourceModel requires SourceSnapshotPort in mode SourceInspection.
+SduiValidator owns ResolveUiNames.
+SduiValidator owns ValidateRelativeFormatting.
+SduiValidator owns ValidateSymbolicBindings.
+SduiValidator owns ValidateWidgetArguments.
+SduiValidator provides SduiSourceModel.
+SnapshotDomainState realizes ExecutableDesign.
+SnapshotUiState realizes InteractiveSession.
+SourceLoader consumes SourceInputPort.
+SourceLoader owns IdentifySourceRevision.
+SourceLoader owns ReadBoundedSources.
+SourceLoader provides SourceLoading.
+SourceWatcher consumes FileChangePort.
+SourceWatcher owns CoalesceSourceChanges.
+SourceWatcher owns ObserveSourceChanges.
+SourceWatcher provides DevelopmentReload.
+StaticDocumentation requires ExportSinkPort in mode StaticExport.
+StaticDocumentation requires PreparedFramePort in mode StaticExport.
+StructuralModelInspection supports EditRunningPrototype.
+StructuralModelInspection supports InspectModels.
+TokenizeSdlSource has repeatability = deterministic.
+TokenizeSdlSource has state-retention = stateless.
+TokenizeSdlSource realizes SdlSourceModel.
+TokenizeSduiSource has repeatability = deterministic.
+TokenizeSduiSource has state-retention = stateless.
+TokenizeSduiSource realizes SduiSourceModel.
+TraceViewpointFacts allocated-to CommandLineHost in mode SourceInspection.
+TraceViewpointFacts allocated-to CommandLineHost in mode StaticExport.
+TraceViewpointFacts contributes-to DesignDocumentation.
+TraceViewpointFacts contributes-to InspectModels.
+TraceViewpointFacts has repeatability = deterministic.
+TraceViewpointFacts has state-retention = stateless.
+TrackInputDraft has state-retention = stateful.
+TrackInputDraft realizes InteractiveSession.
+TypedDomainBinding supports TryDomainInteraction.
+UiStateReconciler consumes SduiModelPort.
+UiStateReconciler consumes UiStatePort.
+UiStateReconciler owns MatchCompatibleWidgets.
+UiStateReconciler owns PreserveCompatibleUiState.
+UiStateReconciler owns ResetIncompatibleUiState.
+UiStateReconciler provides InteractiveSession.
+ValidateActionInput realizes ExecutableDesign.
+ValidatePropertyBatch realizes InteractiveSession.
+ValidateRelativeFormatting has repeatability = deterministic.
+ValidateRelativeFormatting has state-retention = stateless.
+ValidateRelativeFormatting realizes SduiSourceModel.
+ValidateSdlProfile has repeatability = deterministic.
+ValidateSdlProfile has state-retention = stateless.
+ValidateSdlProfile realizes SdlSourceModel.
+ValidateSdlStructure allocated-to CommandLineHost in mode SourceInspection.
+ValidateSdlStructure contributes-to StructuralModelInspection.
+ValidateSdlStructure has repeatability = deterministic.
+ValidateSdlStructure has state-retention = stateless.
+ValidateSdlStructure realizes SdlSourceModel.
+ValidateSymbolicBindings has repeatability = deterministic.
+ValidateSymbolicBindings has state-retention = stateless.
+ValidateSymbolicBindings realizes SduiSourceModel.
+ValidateUiEvent realizes InteractiveSession.
+ValidateVisualResources realizes RichContent.
+ValidateWidgetArguments allocated-to CommandLineHost in mode SourceInspection.
+ValidateWidgetArguments contributes-to StructuralModelInspection.
+ValidateWidgetArguments has repeatability = deterministic.
+ValidateWidgetArguments has state-retention = stateless.
+ValidateWidgetArguments realizes SduiSourceModel.
+WriteGeneratedArtifacts allocated-to CommandLineHost in mode StaticExport.
+WriteGeneratedArtifacts contributes-to DesignDocumentation.
+WriteGeneratedArtifacts realizes StaticDocumentation.

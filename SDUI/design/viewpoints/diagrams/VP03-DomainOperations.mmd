@@ -1,0 +1,6 @@
+flowchart LR
+    n_DomainOperations["DomainOperations (capability)"]
+    n_GoDomainImplementation["GoDomainImplementation (unit)"]
+    n_PerformDomainOperation["PerformDomainOperation (functionality)"]
+    n_GoDomainImplementation -->|owns| n_PerformDomainOperation
+    n_PerformDomainOperation -->|realizes| n_DomainOperations

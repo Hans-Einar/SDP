@@ -1,0 +1,6 @@
+flowchart LR
+    n_BuildNativeProduct["BuildNativeProduct (usecase)"]
+    n_DesignAuthor["DesignAuthor (actor)"]
+    n_NativeGoAssembly["NativeGoAssembly (feature)"]
+    n_DesignAuthor -->|pursues| n_BuildNativeProduct
+    n_NativeGoAssembly -->|supports| n_BuildNativeProduct

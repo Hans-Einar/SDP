@@ -1,0 +1,31 @@
+flowchart LR
+    n_BuildSdlAst["BuildSdlAst (functionality)"]
+    n_CoordinateSdlCompilation["CoordinateSdlCompilation (functionality)"]
+    n_NormalizeSdlModel["NormalizeSdlModel (functionality)"]
+    n_PreserveSdlSourceMap["PreserveSdlSourceMap (functionality)"]
+    n_ResolveSdlSymbols["ResolveSdlSymbols (functionality)"]
+    n_SdlFrontend["SdlFrontend (unit)"]
+    n_SdlLexer["SdlLexer (unit)"]
+    n_SdlNormalizer["SdlNormalizer (unit)"]
+    n_SdlParser["SdlParser (unit)"]
+    n_SdlSourceModel["SdlSourceModel (capability)"]
+    n_SdlValidator["SdlValidator (unit)"]
+    n_TokenizeSdlSource["TokenizeSdlSource (functionality)"]
+    n_ValidateSdlProfile["ValidateSdlProfile (functionality)"]
+    n_ValidateSdlStructure["ValidateSdlStructure (functionality)"]
+    n_BuildSdlAst -->|realizes| n_SdlSourceModel
+    n_CoordinateSdlCompilation -->|realizes| n_SdlSourceModel
+    n_NormalizeSdlModel -->|realizes| n_SdlSourceModel
+    n_PreserveSdlSourceMap -->|realizes| n_SdlSourceModel
+    n_ResolveSdlSymbols -->|realizes| n_SdlSourceModel
+    n_SdlFrontend -->|owns| n_CoordinateSdlCompilation
+    n_SdlLexer -->|owns| n_TokenizeSdlSource
+    n_SdlNormalizer -->|owns| n_NormalizeSdlModel
+    n_SdlNormalizer -->|owns| n_PreserveSdlSourceMap
+    n_SdlParser -->|owns| n_BuildSdlAst
+    n_SdlValidator -->|owns| n_ResolveSdlSymbols
+    n_SdlValidator -->|owns| n_ValidateSdlProfile
+    n_SdlValidator -->|owns| n_ValidateSdlStructure
+    n_TokenizeSdlSource -->|realizes| n_SdlSourceModel
+    n_ValidateSdlProfile -->|realizes| n_SdlSourceModel
+    n_ValidateSdlStructure -->|realizes| n_SdlSourceModel

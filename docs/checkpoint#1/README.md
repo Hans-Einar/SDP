@@ -1,12 +1,25 @@
-# Checkpoint #1 — System Development Process and System Description Language
+# Checkpoint #1 — SDP, SystemDesignLanguage og SDUI
 
-Date: 2026-09-18  
+**Start med [08 — SDL-status og viewpoints](08-SDL-Viewpoints-and-Implementation-Status.md)**
+for implementasjonsstatus og neste leveranse, og
+[07 — SDUI 0.2 og Go-retning](07-SDUI-0.2-and-Go-Direction.md) for språk-/runtimegrunnlaget.
+Tillegget samler dagens språkstatus, eksempler og Go/Fyne-plan. Dokument 01–06
+bevarer SDL-diskusjonen fra 18. september; rendererforslag der er historiske
+der de avviker fra tillegg 07. SDLs kandidatsemantikk er fortsatt ikke vedtatt.
+[SDUI-kodeområde](../../SDUI/go/README.md) · [SDL-kodeområde](../../SystemDesignLanguage/go/README.md).
+
+V0/V1 er nå levert i Python-verktøyet: design-core 0.2 og genererte bruksmål,
+Feature-bidrag og modusallokering. Aktiv 0.1-strukturprofil er portert og erstattet.
+V2-data og V3-Channel/scenario gjenstår; dette innebærer ingen Go-runtime.
+
+Opprinnelig checkpoint: 2026-09-18; oppdatert 2026-09-22.
 Status: consolidated discussion checkpoint, not an approved language release.
 
 This checkpoint brings the system-wide view back into focus after the detailed
 Container, Channel and data-contract exercises. **SDP** is the working name
-**System Development Process** for the new concept; **SDL** is **System Description
-Language**, used to describe the system across abstraction levels.
+**System Development Process** for the new concept; **SDL** is now named
+**SystemDesignLanguage**, used to describe the system across abstraction levels.
+“System Description Language” below records the earlier working name.
 
 The existing Toolkit still implements Standard Document Procedure. This checkpoint
 does not rename or migrate its manifests, skills, lifecycle rules or consuming
@@ -22,6 +35,8 @@ projects. It also does not promote every idea in the conversation into a decisio
 | [04 — Worked realization and change impact](04-Worked-Realization-and-Change-Impact.md) | Measurement flow, APT import and a sustained timber-harvesting Activity, linked to state, obligations and realization. |
 | [05 — Decisions, sources and next work](05-Decisions-Sources-and-Next-Work.md) | Authority/status register, reconciliation with older studies, tool limits and bounded next experiments. |
 | [06 — Interactive prototype and renderer study](06-Interactive-Prototype-and-Renderer-Study.md) | Treemap versus UI layout, widget contracts, scenario sequencing and a proposed staged renderer connection. |
+| [07 — SDUI 0.2 and Go direction](07-SDUI-0.2-and-Go-Direction.md) | Current implementation status, selected Go/Fyne direction, reload boundaries and next deliverables. |
+| [08 — SDL viewpoints and implementation status](08-SDL-Viewpoints-and-Implementation-Status.md) | Viewpoint catalogue, generated views, gaps against checkpoint #1 and persistent Database meaning. |
 | [Source fingerprint index](source-index.json) | Content hashes of the local source documents used for consolidation; provenance, not implementation proof. |
 
 ## The whole picture

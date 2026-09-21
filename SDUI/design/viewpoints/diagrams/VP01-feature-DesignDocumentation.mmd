@@ -1,0 +1,14 @@
+flowchart LR
+    n_ComposeMarkdownDocument["ComposeMarkdownDocument (functionality)"]
+    n_DesignDocumentation["DesignDocumentation (feature)"]
+    n_ExportSvgSnapshot["ExportSvgSnapshot (functionality)"]
+    n_ExportViewpointMarkdown["ExportViewpointMarkdown (functionality)"]
+    n_ProjectSdlViewpoints["ProjectSdlViewpoints (functionality)"]
+    n_TraceViewpointFacts["TraceViewpointFacts (functionality)"]
+    n_WriteGeneratedArtifacts["WriteGeneratedArtifacts (functionality)"]
+    n_ComposeMarkdownDocument -->|contributes-to| n_DesignDocumentation
+    n_ExportSvgSnapshot -->|contributes-to| n_DesignDocumentation
+    n_ExportViewpointMarkdown -->|contributes-to| n_DesignDocumentation
+    n_ProjectSdlViewpoints -->|contributes-to| n_DesignDocumentation
+    n_TraceViewpointFacts -->|contributes-to| n_DesignDocumentation
+    n_WriteGeneratedArtifacts -->|contributes-to| n_DesignDocumentation

@@ -1,0 +1,18 @@
+flowchart LR
+    n_AllocateGeometry["AllocateGeometry (functionality)"]
+    n_BuildPreparedFrame["BuildPreparedFrame (functionality)"]
+    n_ComputeClipping["ComputeClipping (functionality)"]
+    n_MeasureUiContent["MeasureUiContent (functionality)"]
+    n_MeasuredPresentation["MeasuredPresentation (capability)"]
+    n_ResolveAncestorDimensions["ResolveAncestorDimensions (functionality)"]
+    n_SduiLayout["SduiLayout (unit)"]
+    n_AllocateGeometry -->|realizes| n_MeasuredPresentation
+    n_BuildPreparedFrame -->|realizes| n_MeasuredPresentation
+    n_ComputeClipping -->|realizes| n_MeasuredPresentation
+    n_MeasureUiContent -->|realizes| n_MeasuredPresentation
+    n_ResolveAncestorDimensions -->|realizes| n_MeasuredPresentation
+    n_SduiLayout -->|owns| n_AllocateGeometry
+    n_SduiLayout -->|owns| n_BuildPreparedFrame
+    n_SduiLayout -->|owns| n_ComputeClipping
+    n_SduiLayout -->|owns| n_MeasureUiContent
+    n_SduiLayout -->|owns| n_ResolveAncestorDimensions

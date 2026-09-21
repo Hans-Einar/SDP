@@ -1,0 +1,9 @@
+flowchart LR
+    n_DiagnosticReporter["DiagnosticReporter (unit)"]
+    n_ReportBindingDiagnostics["ReportBindingDiagnostics (functionality)"]
+    n_ReportSourceDiagnostics["ReportSourceDiagnostics (functionality)"]
+    n_SourceDiagnostics["SourceDiagnostics (capability)"]
+    n_DiagnosticReporter -->|owns| n_ReportBindingDiagnostics
+    n_DiagnosticReporter -->|owns| n_ReportSourceDiagnostics
+    n_ReportBindingDiagnostics -->|realizes| n_SourceDiagnostics
+    n_ReportSourceDiagnostics -->|realizes| n_SourceDiagnostics

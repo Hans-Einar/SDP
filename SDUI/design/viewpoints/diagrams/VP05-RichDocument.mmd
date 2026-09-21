@@ -1,0 +1,6 @@
+flowchart LR
+    n_ContentProviderPort["ContentProviderPort (interface)"]
+    n_DiagramEnginePort["DiagramEnginePort (interface)"]
+    n_RichContent["RichContent (capability)"]
+    n_RichContent -->|requires| n_ContentProviderPort
+    n_RichContent -->|requires| n_DiagramEnginePort

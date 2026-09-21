@@ -1,0 +1,21 @@
+flowchart LR
+    n_BuildNativeRealization["BuildNativeRealization (activity)"]
+    n_ExportUiDocumentation["ExportUiDocumentation (activity)"]
+    n_InspectDesignSource["InspectDesignSource (activity)"]
+    n_InspectSdlSource["InspectSdlSource (activity)"]
+    n_InspectSduiSource["InspectSduiSource (activity)"]
+    n_RealizeDesign["RealizeDesign (activity)"]
+    n_ReloadBoundModels["ReloadBoundModels (activity)"]
+    n_ReloadDesignSession["ReloadDesignSession (activity)"]
+    n_ReloadUiModel["ReloadUiModel (activity)"]
+    n_RunBoundUiAction["RunBoundUiAction (activity)"]
+    n_RunDesignSession["RunDesignSession (activity)"]
+    n_RunUnboundUiPreview["RunUnboundUiPreview (activity)"]
+    n_BuildNativeRealization -->|refines| n_RealizeDesign
+    n_ExportUiDocumentation -->|refines| n_InspectDesignSource
+    n_InspectSdlSource -->|refines| n_InspectDesignSource
+    n_InspectSduiSource -->|refines| n_InspectDesignSource
+    n_ReloadBoundModels -->|refines| n_ReloadDesignSession
+    n_ReloadUiModel -->|refines| n_ReloadDesignSession
+    n_RunBoundUiAction -->|refines| n_RunDesignSession
+    n_RunUnboundUiPreview -->|refines| n_RunDesignSession

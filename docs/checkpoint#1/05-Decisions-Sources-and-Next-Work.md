@@ -1,5 +1,9 @@
 # Decisions, sources and next work
 
+**Tillegg 2026-09-21:** CP1-D18–D23 og dagens neste leveranse står i
+[07 — SDUI 0.2 og Go-retning](07-SDUI-0.2-and-Go-Direction.md). Tabell og
+arbeidsforslag nedenfor er 18. september-baseline; kandidatstatus for SDL beholdes.
+
 Date: 2026-09-18  
 Status: checkpoint disposition index. A recommendation here is not a new
 language implementation or a retrospective claim of owner approval.
@@ -18,7 +22,7 @@ language implementation or a retrospective claim of owner approval.
 | CP1-D08 | Value is owned state, can be internal or bound to data, and need not belong to UI Representation. | Owner-proposed direction elaborated in this checkpoint; routing, discovery and grammar remain candidates. |
 | CP1-D09 | Functionality can be identified before allocation, then realized within one Container under one accountable Unit. | Revised candidate after the owner's APT example; retain local responsibility and allow pending allocation only in an explicit future intent profile. The initial broader/cross-Container recommendation is reconsidered. Core's mandatory owner rule remains unchanged. |
 | CP1-D10 | Command contracts are separate from implementing functions and may be internal-only. | Candidate supporting CP1-D07/08; not every function is a Command. |
-| CP1-D11 | Database abstracts on-demand retained data; queryability, restart durability and current availability differ. | Owner intent plus clarifying recommendation; strict persistence boundary and exact CRUD profiles remain open. |
+| CP1-D11 | Database abstracts where persistent data can be retrieved on demand; SQL is not required. | Owner clarification 2026-09-22 supersedes the open persistence boundary. Retention guarantees, availability, operations and grammar still need contracts; transient Dataset/cache alone is not Database. |
 | CP1-D12 | One shared language/type system with level-specific authoring/completion profiles. | Recommendation; no new keywords/headers are implemented. |
 | CP1-D13 | Missing execution semantics must be reported rather than guessed. | Established execution direction; interpreter and completeness checker remain future work. |
 | CP1-D14 | Function names a selected design operation contributing to Functionality. | New owner-proposed concept; may read, compute or change state. No requirement to model every C++ function; exact grammar and source bindings remain open. |

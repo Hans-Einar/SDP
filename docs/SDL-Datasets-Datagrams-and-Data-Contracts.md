@@ -1,5 +1,11 @@
 # Dataset, Database and Datagram: data origins and contract-defined message families
 
+**Owner clarification 2026-09-22:** Database means where persistent data can be
+retrieved on demand, without requiring SQL. This narrows the earlier open
+retention boundary; exact durability/availability and operations still belong to
+the contract. See [checkpoint update 08](checkpoint%231/08-SDL-Viewpoints-and-Implementation-Status.md).
+The candidate syntax below is still not implemented by the SDL parser.
+
 Current consolidation: [Checkpoint #1](checkpoint%231/README.md), 2026-09-18.
 It adds the candidate Value ownership/binding model and reconsiders ControlSet
 membership within the full abstraction hierarchy. This proposal remains a

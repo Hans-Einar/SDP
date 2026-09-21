@@ -1,5 +1,10 @@
 # SDL source tree and compilation study
 
+**Implementation update 2026-09-22:** The [SDL viewpoint command](../SystemDesignLanguage/tools/README.md)
+now generates bounded structural views, source maps and optional SVG from
+design-core 0.1. The broader workspace, public exports, Feature/Channel/data and
+execution proposals below remain unimplemented; their original status table is historical.
+
 Date: 2026-09-17
 
 Status: architecture proposal prompted by the owner's source-tree sketch. This

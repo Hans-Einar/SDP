@@ -1,0 +1,6 @@
+flowchart LR
+    n_MeasuredPresentation["MeasuredPresentation (capability)"]
+    n_SduiLayout["SduiLayout (unit)"]
+    n_SduiLibrary["SduiLibrary (unit)"]
+    n_SduiLayout -->|provides| n_MeasuredPresentation
+    n_SduiLibrary -->|provides| n_MeasuredPresentation

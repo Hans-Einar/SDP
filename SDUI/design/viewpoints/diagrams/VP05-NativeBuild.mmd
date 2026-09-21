@@ -1,0 +1,6 @@
+flowchart LR
+    n_BuildToolPort["BuildToolPort (interface)"]
+    n_GeneratedArtifactPort["GeneratedArtifactPort (interface)"]
+    n_NativeRealization["NativeRealization (capability)"]
+    n_NativeRealization -->|requires| n_BuildToolPort
+    n_NativeRealization -->|requires| n_GeneratedArtifactPort

@@ -1,0 +1,10 @@
+flowchart LR
+    n_SdlFrontend["SdlFrontend (unit)"]
+    n_SdlLexer["SdlLexer (unit)"]
+    n_SdlNormalizer["SdlNormalizer (unit)"]
+    n_SdlParser["SdlParser (unit)"]
+    n_SdlValidator["SdlValidator (unit)"]
+    n_SdlFrontend -->|contains| n_SdlLexer
+    n_SdlFrontend -->|contains| n_SdlNormalizer
+    n_SdlFrontend -->|contains| n_SdlParser
+    n_SdlFrontend -->|contains| n_SdlValidator

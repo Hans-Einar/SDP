@@ -1,0 +1,37 @@
+flowchart LR
+    n_BuildSduiAst["BuildSduiAst (functionality)"]
+    n_CoordinateSduiCompilation["CoordinateSduiCompilation (functionality)"]
+    n_ExpandUiDefinitions["ExpandUiDefinitions (functionality)"]
+    n_PreserveUiRegions["PreserveUiRegions (functionality)"]
+    n_PreserveUiSourceMap["PreserveUiSourceMap (functionality)"]
+    n_ResolveUiNames["ResolveUiNames (functionality)"]
+    n_SduiFrontend["SduiFrontend (unit)"]
+    n_SduiLexer["SduiLexer (unit)"]
+    n_SduiNormalizer["SduiNormalizer (unit)"]
+    n_SduiParser["SduiParser (unit)"]
+    n_SduiSourceModel["SduiSourceModel (capability)"]
+    n_SduiValidator["SduiValidator (unit)"]
+    n_TokenizeSduiSource["TokenizeSduiSource (functionality)"]
+    n_ValidateRelativeFormatting["ValidateRelativeFormatting (functionality)"]
+    n_ValidateSymbolicBindings["ValidateSymbolicBindings (functionality)"]
+    n_ValidateWidgetArguments["ValidateWidgetArguments (functionality)"]
+    n_BuildSduiAst -->|realizes| n_SduiSourceModel
+    n_CoordinateSduiCompilation -->|realizes| n_SduiSourceModel
+    n_ExpandUiDefinitions -->|realizes| n_SduiSourceModel
+    n_PreserveUiRegions -->|realizes| n_SduiSourceModel
+    n_PreserveUiSourceMap -->|realizes| n_SduiSourceModel
+    n_ResolveUiNames -->|realizes| n_SduiSourceModel
+    n_SduiFrontend -->|owns| n_CoordinateSduiCompilation
+    n_SduiLexer -->|owns| n_TokenizeSduiSource
+    n_SduiNormalizer -->|owns| n_ExpandUiDefinitions
+    n_SduiNormalizer -->|owns| n_PreserveUiRegions
+    n_SduiNormalizer -->|owns| n_PreserveUiSourceMap
+    n_SduiParser -->|owns| n_BuildSduiAst
+    n_SduiValidator -->|owns| n_ResolveUiNames
+    n_SduiValidator -->|owns| n_ValidateRelativeFormatting
+    n_SduiValidator -->|owns| n_ValidateSymbolicBindings
+    n_SduiValidator -->|owns| n_ValidateWidgetArguments
+    n_TokenizeSduiSource -->|realizes| n_SduiSourceModel
+    n_ValidateRelativeFormatting -->|realizes| n_SduiSourceModel
+    n_ValidateSymbolicBindings -->|realizes| n_SduiSourceModel
+    n_ValidateWidgetArguments -->|realizes| n_SduiSourceModel

@@ -1,0 +1,26 @@
+flowchart LR
+    n_CommandLineHost["CommandLineHost (container)"]
+    n_DiagnosticReporter["DiagnosticReporter (unit)"]
+    n_KeepLastValidModels["KeepLastValidModels (functionality)"]
+    n_LiveModelReload["LiveModelReload (feature)"]
+    n_ObserveSourceChanges["ObserveSourceChanges (functionality)"]
+    n_PrepareCandidateModels["PrepareCandidateModels (functionality)"]
+    n_PreserveCompatibleUiState["PreserveCompatibleUiState (functionality)"]
+    n_PublishModelGeneration["PublishModelGeneration (functionality)"]
+    n_ReloadCoordinator["ReloadCoordinator (unit)"]
+    n_ReportSourceDiagnostics["ReportSourceDiagnostics (functionality)"]
+    n_SourceWatcher["SourceWatcher (unit)"]
+    n_UiStateReconciler["UiStateReconciler (unit)"]
+    n_DiagnosticReporter -->|owns| n_ReportSourceDiagnostics
+    n_KeepLastValidModels -->|contributes-to| n_LiveModelReload
+    n_ObserveSourceChanges -->|contributes-to| n_LiveModelReload
+    n_PrepareCandidateModels -->|contributes-to| n_LiveModelReload
+    n_PreserveCompatibleUiState -->|contributes-to| n_LiveModelReload
+    n_PublishModelGeneration -->|contributes-to| n_LiveModelReload
+    n_ReloadCoordinator -->|owns| n_KeepLastValidModels
+    n_ReloadCoordinator -->|owns| n_PrepareCandidateModels
+    n_ReloadCoordinator -->|owns| n_PublishModelGeneration
+    n_ReportSourceDiagnostics -->|allocated-to| n_CommandLineHost
+    n_ReportSourceDiagnostics -->|contributes-to| n_LiveModelReload
+    n_SourceWatcher -->|owns| n_ObserveSourceChanges
+    n_UiStateReconciler -->|owns| n_PreserveCompatibleUiState

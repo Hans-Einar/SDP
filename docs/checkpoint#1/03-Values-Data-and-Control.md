@@ -1,5 +1,11 @@
 # Values, data and control
 
+**Owner clarification, 2026-09-22:** Database is the general abstraction for where
+persistent data can be retrieved on demand; it does not require SQL. A transient
+cache alone is not a Database. Exact retention, availability, access and ownership
+remain contract details. See [current viewpoint/status update](08-SDL-Viewpoints-and-Implementation-Status.md).
+This clarifies the earlier retained-data wording below without claiming parser support.
+
 Date: 2026-09-18  
 Status: revised candidate model. Value placement and ControlSet membership are
 being discussed, not retroactively adopted into the language.

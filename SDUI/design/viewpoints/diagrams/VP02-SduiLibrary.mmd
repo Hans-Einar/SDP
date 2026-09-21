@@ -1,0 +1,10 @@
+flowchart LR
+    n_SduiFrontend["SduiFrontend (unit)"]
+    n_SduiLayout["SduiLayout (unit)"]
+    n_SduiLibrary["SduiLibrary (unit)"]
+    n_SduiPresentation["SduiPresentation (unit)"]
+    n_SduiRuntime["SduiRuntime (unit)"]
+    n_SduiLibrary -->|contains| n_SduiFrontend
+    n_SduiLibrary -->|contains| n_SduiLayout
+    n_SduiLibrary -->|contains| n_SduiPresentation
+    n_SduiLibrary -->|contains| n_SduiRuntime
