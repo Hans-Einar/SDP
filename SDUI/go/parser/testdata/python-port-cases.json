@@ -1,0 +1,4104 @@
+[
+  {
+    "source": "sdui 0.2; P=[<\"# Markdown\"; button(\"OK\"), button(\"Cancel\")>]*b;",
+    "code": "",
+    "instances": {
+      "P": {
+        "kind": "frame",
+        "path": "P",
+        "widget": "",
+        "variant": "box",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "P/$r0c0"
+          ]
+        ],
+        "regions": {}
+      },
+      "P/$r0c0": {
+        "kind": "group",
+        "path": "P/$r0c0",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "P/$r0c0/$r0c0"
+          ],
+          [
+            "P/$r0c0/$r1c0",
+            "P/$r0c0/$r1c1"
+          ]
+        ],
+        "regions": {}
+      },
+      "P/$r0c0/$r0c0": {
+        "kind": "markdown",
+        "path": "P/$r0c0/$r0c0",
+        "widget": "",
+        "variant": "",
+        "text": "# Markdown",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "P/$r0c0/$r1c0": {
+        "kind": "widget",
+        "path": "P/$r0c0/$r1c0",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "OK",
+            "span": {
+              "type": "Span",
+              "start": 35,
+              "end": 39,
+              "line": 1,
+              "column": 36
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "P/$r0c0/$r1c1": {
+        "kind": "widget",
+        "path": "P/$r0c0/$r1c1",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Cancel",
+            "span": {
+              "type": "Span",
+              "start": 49,
+              "end": 57,
+              "line": 1,
+              "column": 50
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      }
+    }
+  },
+  {
+    "source": "sdui 0.2; ref: m \"missing.sdl\"; P=[button(\"OK\", callback=m.o.@run)];",
+    "code": "widget-name"
+  },
+  {
+    "source": "sdui 0.2; P=[<\"A\" {x=1fr}, \"B\"> {wrap=wrap}];",
+    "code": "wrap-layout"
+  },
+  {
+    "source": "sdui 0.2; G=<\"A\" {x=1fr}>; P=[G {wrap=wrap}];",
+    "code": "wrap-layout"
+  },
+  {
+    "source": "sdui 0.2; P=[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]];",
+    "code": "depth-limit"
+  },
+  {
+    "source": "sdui 0.2; P=[w=button(\"x\",\"x\",\"x\",\"x\",\"x\",\"x\",\"x\",\"x\",\"x\",\"x\",\"x\",\"x\",\"x\",\"x\",\"x\",\"x\",\"x\",\"x\",\"x\",\"x\",\"x\",\"x\",\"x\",\"x\",\"x\",\"x\",\"x\",\"x\",\"x\",\"x\",\"x\",\"x\",\"x\")];",
+    "code": "argument-limit"
+  },
+  {
+    "source": "sdui 0.2;A0=<\"x\">;A1=<left=A0,right=A0>;A2=<left=A1,right=A1>;A3=<left=A2,right=A2>;A4=<left=A3,right=A3>;A5=<left=A4,right=A4>;A6=<left=A5,right=A5>;A7=<left=A6,right=A6>;A8=<left=A7,right=A7>;A9=<left=A8,right=A8>;A10=<left=A9,right=A9>;A11=<left=A10,right=A10>;A12=<left=A11,right=A11>;A13=<left=A12,right=A12>;A14=<left=A13,right=A13>;",
+    "code": "expansion-limit"
+  },
+  {
+    "source": "sdui 0.2; G=<\"a\">; P=[G {font=12}, <ok=button(\"OK\") {font=10}> {>-<}]*b {<->};",
+    "code": "",
+    "instances": {
+      "G": {
+        "kind": "group",
+        "path": "G",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "G/$r0c0"
+          ]
+        ],
+        "regions": {}
+      },
+      "G/$r0c0": {
+        "kind": "markdown",
+        "path": "G/$r0c0",
+        "widget": "",
+        "variant": "",
+        "text": "a",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "P": {
+        "kind": "frame",
+        "path": "P",
+        "widget": "",
+        "variant": "box",
+        "text": "",
+        "layout": {
+          "x": "fill"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "P/G",
+            "P/$r0c1"
+          ]
+        ],
+        "regions": {}
+      },
+      "P/G": {
+        "kind": "group",
+        "path": "P/G",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "font": 12.0
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "P/G/$r0c0"
+          ]
+        ],
+        "regions": {}
+      },
+      "P/G/$r0c0": {
+        "kind": "markdown",
+        "path": "P/G/$r0c0",
+        "widget": "",
+        "variant": "",
+        "text": "a",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "P/$r0c1": {
+        "kind": "group",
+        "path": "P/$r0c1",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "x": "content"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "P/$r0c1/ok"
+          ]
+        ],
+        "regions": {}
+      },
+      "P/$r0c1/ok": {
+        "kind": "widget",
+        "path": "P/$r0c1/ok",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "font": 10.0
+        },
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "OK",
+            "span": {
+              "type": "Span",
+              "start": 46,
+              "end": 50,
+              "line": 1,
+              "column": 47
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      }
+    }
+  },
+  {
+    "source": "sdui 0.2; P=[\"A\", {font=12} \"B\"];",
+    "code": "syntax"
+  },
+  {
+    "source": "sdui 0.2; P=[\"A\"; {font=12}];",
+    "code": "syntax"
+  },
+  {
+    "source": "sdui 0.2; P=[] {,};",
+    "code": "syntax"
+  },
+  {
+    "source": "sdui 0.2; P=[] {font=10,};",
+    "code": "syntax"
+  },
+  {
+    "source": "sdui 0.2; P=[] {<->}*b;",
+    "code": "syntax"
+  },
+  {
+    "source": "sdui 0.2; Page = [<greeting=\"unfinished>];",
+    "code": "lexical"
+  },
+  {
+    "source": "sdui 0.2; Page = [<greeting=\"bad\\q\">];",
+    "code": "lexical"
+  },
+  {
+    "source": "sdui 0.2; Page = [<greeting=\"\\uD800\">];",
+    "code": "lexical"
+  },
+  {
+    "source": "sdui 0.2; Page = [<greeting=\"\\u0000\">];",
+    "code": "lexical"
+  },
+  {
+    "source": "sdui 0.2; Page = [<greeting=\"a\nb\">];",
+    "code": "lexical"
+  },
+  {
+    "source": "sdui 0.2; Page = [<greeting=1e999>];",
+    "code": "lexical"
+  },
+  {
+    "source": "sdui 0.2; Page = [<greeting=\"\\uZZZZ\">];",
+    "code": "lexical"
+  },
+  {
+    "source": "sdui 0.2;\n# Symbolsk kilde: parseren åpner/kjører ikke SDL-filen.\nref: sdlFile \"some_SDL_file.sdl\";\n\nBoxUIDefinition = [\n  header=\"## Main page box\",\n  top = [\n    leftTop = [\n      header=\"### Left box\",\n      <button1=button(\"OK\", callback=missing.button1_sdl.@callback),\n       button2=button(\"Cancel\", callback=sdlFile.button2_sdl.@callback)>\n    ]*b {x=1fr},\n    rightTop = [\n      header=\"### Right box\",\n      <\"Forklaring over feltet — Æøå\";\n       input1_boxui=input(\"Input text here:\", value=\"C1\", callback=sdlFile.input1_sdl.@callback)>\n    ]*b {x=2fr}\n  ] {y=2fr};\n  svgBox = [\n    header=\"### SVG view\",\n    <svg1=svg(source=sdlFile.svg1_sdl.@callback, label=\"Generated illustration\")>\n  ]*b {y=1fr}\n]*b {16:9, <->, font=10};\n\nsdlFile.input1_sdl.setHandle(BoxUIDefinition.top.rightTop.input1_boxui);\n",
+    "code": "unknown-module"
+  },
+  {
+    "source": "sdui 0.2;\n# Symbolsk kilde: parseren åpner/kjører ikke SDL-filen.\nref: sdlFile \"some_SDL_file.sdl\";\n\nBoxUIDefinition = [\n  header=\"## Main page box\",\n  top = [\n    leftTop = [\n      header=\"### Left box\",\n      <button1=button(\"OK\", callback=sdlFile.button1_sdl.@callback),\n       button2=button(\"Cancel\", callback=sdlFile.button2_sdl.@callback)>\n    ]*b {x=1fr},\n    rightTop = [\n      header=\"### Right box\",\n      <\"Forklaring over feltet — Æøå\";\n       input1_boxui=input(\"Input text here:\", value=\"C1\", callback=sdlFile.input1_sdl.@callback)>\n    ]*b {x=2fr}\n  ] {y=2fr};\n  svgBox = [\n    header=\"### SVG view\",\n    <svg1=svg(source=sdlFile.svg1_sdl.@callback, label=\"Generated illustration\")>\n  ]*b {y=1fr}\n]*b {16:9, <->, font=10};\n\nsdlFile.input1_sdl.setHandle(Unknown.input1_boxui);\n",
+    "code": "unknown-definition"
+  },
+  {
+    "source": "sdui 0.2;\n# Symbolsk kilde: parseren åpner/kjører ikke SDL-filen.\nref: sdlFile \"some_SDL_file.sdl\";\n\nBoxUIDefinition = [\n  header=\"## Main page box\",\n  top = [\n    leftTop = [\n      header=\"### Left box\",\n      <button1=button(\"OK\", callback=sdlFile.button1_sdl.@callback),\n       button2=button(\"Cancel\", callback=sdlFile.button2_sdl.@callback)>\n    ]*b {x=1fr},\n    rightTop = [\n      header=\"### Right box\",\n      <\"Forklaring over feltet — Æøå\";\n       input1_boxui=input(\"Input text here:\", value=\"C1\", callback=sdlFile.input1_sdl.@callback)>\n    ]*b {x=2fr}\n  ] {y=2fr};\n  svgBox = [\n    header=\"### SVG view\",\n    <svg1=svg(source=sdlFile.svg1_sdl.@callback, label=\"Generated illustration\")>\n  ]*b {y=1fr}\n]*b {16:9, <->, font=10};\n\nsdlFile.input1_sdl.setHandle(BoxUIDefinition.top);\n",
+    "code": "unknown-widget"
+  },
+  {
+    "source": "sdui 0.2;\n# Symbolsk kilde: parseren åpner/kjører ikke SDL-filen.\nref: sdlFile \"some_SDL_file.sdl\";\n\nBoxUIDefinition = [\n  header=\"## Main page box\",\n  top = [\n    leftTop = [\n      header=\"### Left box\",\n      <button1=button(\"OK\", callback=sdlFile.button1_sdl.@callback),\n       button1=button(\"Cancel\", callback=sdlFile.button2_sdl.@callback)>\n    ]*b {x=1fr},\n    rightTop = [\n      header=\"### Right box\",\n      <\"Forklaring over feltet — Æøå\";\n       input1_boxui=input(\"Input text here:\", value=\"C1\", callback=sdlFile.input1_sdl.@callback)>\n    ]*b {x=2fr}\n  ] {y=2fr};\n  svgBox = [\n    header=\"### SVG view\",\n    <svg1=svg(source=sdlFile.svg1_sdl.@callback, label=\"Generated illustration\")>\n  ]*b {y=1fr}\n]*b {16:9, <->, font=10};\n\nsdlFile.input1_sdl.setHandle(BoxUIDefinition.top.rightTop.input1_boxui);\n",
+    "code": "duplicate-node"
+  },
+  {
+    "source": "sdui 0.2;\n# Symbolsk kilde: parseren åpner/kjører ikke SDL-filen.\nref: sdlFile \"some_SDL_file.sdl\";\n\nBoxUIDefinition = [\n  header=\"## Main page box\",\n  top = [\n    leftTop = [\n      header=\"### Left box\",\n      <button1=button(\"OK\", callback=sdlFile.button1_sdl.@callback),\n       button2=button(\"Cancel\", callback=sdlFile.button2_sdl.@callback)>\n    ]*b {x=1fr},\n    rightTop = [\n      header=\"### Right box\",\n      <\"Forklaring over feltet — Æøå\";\n       input1_boxui=input(\"Input text here:\", value=\"C1\", callback=sdlFile.input1_sdl.@callback)>\n    ]*b {x=2fr}\n  ] {y=2fr};\n  svgBox = [\n    header=\"### SVG view\",\n    <svg1=svg(source=sdlFile.svg1_sdl.@callback, label=\"Generated illustration\")>\n  ]*b {y=1fr}\n]*b {16:9, <->, font=10};\n\nsdlFile.input1_sdl.setHandle(BoxUIDefinition.top.rightTop.input1_boxui);\nsdlFile.input1_sdl.setHandle(BoxUIDefinition.top.rightTop.input1_boxui);",
+    "code": "duplicate-connection"
+  },
+  {
+    "source": "sdui 0.2;\n# Symbolsk kilde: parseren åpner/kjører ikke SDL-filen.\nref: sdlFile \"x\"; ref: sdlFile \"some_SDL_file.sdl\";\n\nBoxUIDefinition = [\n  header=\"## Main page box\",\n  top = [\n    leftTop = [\n      header=\"### Left box\",\n      <button1=button(\"OK\", callback=sdlFile.button1_sdl.@callback),\n       button2=button(\"Cancel\", callback=sdlFile.button2_sdl.@callback)>\n    ]*b {x=1fr},\n    rightTop = [\n      header=\"### Right box\",\n      <\"Forklaring over feltet — Æøå\";\n       input1_boxui=input(\"Input text here:\", value=\"C1\", callback=sdlFile.input1_sdl.@callback)>\n    ]*b {x=2fr}\n  ] {y=2fr};\n  svgBox = [\n    header=\"### SVG view\",\n    <svg1=svg(source=sdlFile.svg1_sdl.@callback, label=\"Generated illustration\")>\n  ]*b {y=1fr}\n]*b {16:9, <->, font=10};\n\nsdlFile.input1_sdl.setHandle(BoxUIDefinition.top.rightTop.input1_boxui);\n",
+    "code": "duplicate-module"
+  },
+  {
+    "source": "sdui 0.2; Page = [<greeting=\"Hello\">]; Page = [<greeting=\"Hello\">];",
+    "code": "duplicate-definition"
+  },
+  {
+    "source": "sdui 0.2; P=[<<\"A\", \"B\"> {v<}; <\"C\", <\"D\"> {font=12}>> {<->}];",
+    "code": "",
+    "instances": {
+      "P": {
+        "kind": "frame",
+        "path": "P",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "P/$r0c0"
+          ]
+        ],
+        "regions": {}
+      },
+      "P/$r0c0": {
+        "kind": "group",
+        "path": "P/$r0c0",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "x": "fill"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "P/$r0c0/$r0c0"
+          ],
+          [
+            "P/$r0c0/$r1c0"
+          ]
+        ],
+        "regions": {}
+      },
+      "P/$r0c0/$r0c0": {
+        "kind": "group",
+        "path": "P/$r0c0/$r0c0",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "align-x": "start",
+          "align-y": "end"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "P/$r0c0/$r0c0/$r0c0",
+            "P/$r0c0/$r0c0/$r0c1"
+          ]
+        ],
+        "regions": {}
+      },
+      "P/$r0c0/$r0c0/$r0c0": {
+        "kind": "markdown",
+        "path": "P/$r0c0/$r0c0/$r0c0",
+        "widget": "",
+        "variant": "",
+        "text": "A",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "P/$r0c0/$r0c0/$r0c1": {
+        "kind": "markdown",
+        "path": "P/$r0c0/$r0c0/$r0c1",
+        "widget": "",
+        "variant": "",
+        "text": "B",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "P/$r0c0/$r1c0": {
+        "kind": "group",
+        "path": "P/$r0c0/$r1c0",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "P/$r0c0/$r1c0/$r0c0",
+            "P/$r0c0/$r1c0/$r0c1"
+          ]
+        ],
+        "regions": {}
+      },
+      "P/$r0c0/$r1c0/$r0c0": {
+        "kind": "markdown",
+        "path": "P/$r0c0/$r1c0/$r0c0",
+        "widget": "",
+        "variant": "",
+        "text": "C",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "P/$r0c0/$r1c0/$r0c1": {
+        "kind": "group",
+        "path": "P/$r0c0/$r1c0/$r0c1",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "font": 12.0
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "P/$r0c0/$r1c0/$r0c1/$r0c0"
+          ]
+        ],
+        "regions": {}
+      },
+      "P/$r0c0/$r1c0/$r0c1/$r0c0": {
+        "kind": "markdown",
+        "path": "P/$r0c0/$r1c0/$r0c1/$r0c0",
+        "widget": "",
+        "variant": "",
+        "text": "D",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      }
+    }
+  },
+  {
+    "source": "sdui 0.2; Page = [<greeting=\"Hello\">];sdlFile.run();",
+    "code": "syntax"
+  },
+  {
+    "source": "sdui 0.2; Page = [<greeting=\"Hello\">];sdlFile.input.value(\"x\");",
+    "code": "syntax"
+  },
+  {
+    "source": "sdui 0.2; Page = [<greeting=\"Hello\">];__import__(\"os\");",
+    "code": "syntax"
+  },
+  {
+    "source": "sdui 0.2; P=[<\"x\" + \"y\">];",
+    "code": "lexical"
+  },
+  {
+    "source": "sdui 0.2; P=[<ok=button(\"x\",)>];",
+    "code": "syntax"
+  },
+  {
+    "source": "sdui 0.2; P=[<\"x\";;>];",
+    "code": "syntax"
+  },
+  {
+    "source": "sdui 0.2; P=[<\"x\",>];",
+    "code": "syntax"
+  },
+  {
+    "source": "sdui 0.2;\n# Symbolsk kilde: parseren åpner/kjører ikke SDL-filen.\nref: sdlFile \"some_SDL_file.sdl\";\n\nBoxUIDefinition = [\n  header=\"## Main page box\",\n  top = [\n    leftTop = [\n      header=\"### Left box\",\n      <button1=button(\"OK\", callback=sdlFile.button1_sdl.@callback),\n       button2=button(\"Cancel\", callback=sdlFile.button2_sdl.@callback)>\n    ]*b {x=1fr},\n    rightTop = [\n      header=\"### Right box\",\n      <\"Forklaring over feltet — Æøå\";\n       input1_boxui=input(\"Input text here:\", value=\"C1\", callback=sdlFile.input1_sdl.@callback)>\n    ]*b {x=2fr}\n  ] {y=2fr};\n  svgBox = [\n    header=\"### SVG view\",\n    <svg1=svg(source=sdlFile.svg1_sdl.@callback, label=\"Generated illustration\")>\n  ]*b {y=1fr}\n]*b {16:9, <->, font=10};\n\nsdlFile.input1_sdl.setHandle(BoxUIDefinition.top.rightTop.input1_boxui);\n",
+    "code": "",
+    "instances": {
+      "BoxUIDefinition": {
+        "kind": "frame",
+        "path": "BoxUIDefinition",
+        "widget": "",
+        "variant": "box",
+        "text": "",
+        "layout": {
+          "ratio": [
+            16.0,
+            9.0
+          ],
+          "x": "fill",
+          "font": 10.0
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "BoxUIDefinition/top"
+          ],
+          [
+            "BoxUIDefinition/svgBox"
+          ]
+        ],
+        "regions": {
+          "header": "BoxUIDefinition/header"
+        }
+      },
+      "BoxUIDefinition/top": {
+        "kind": "frame",
+        "path": "BoxUIDefinition/top",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "y": "2fr"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "BoxUIDefinition/top/leftTop",
+            "BoxUIDefinition/top/rightTop"
+          ]
+        ],
+        "regions": {}
+      },
+      "BoxUIDefinition/top/leftTop": {
+        "kind": "frame",
+        "path": "BoxUIDefinition/top/leftTop",
+        "widget": "",
+        "variant": "box",
+        "text": "",
+        "layout": {
+          "x": "1fr"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "BoxUIDefinition/top/leftTop/$r0c1"
+          ]
+        ],
+        "regions": {
+          "header": "BoxUIDefinition/top/leftTop/header"
+        }
+      },
+      "BoxUIDefinition/top/leftTop/$r0c1": {
+        "kind": "group",
+        "path": "BoxUIDefinition/top/leftTop/$r0c1",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "BoxUIDefinition/top/leftTop/$r0c1/button1",
+            "BoxUIDefinition/top/leftTop/$r0c1/button2"
+          ]
+        ],
+        "regions": {}
+      },
+      "BoxUIDefinition/top/leftTop/$r0c1/button1": {
+        "kind": "widget",
+        "path": "BoxUIDefinition/top/leftTop/$r0c1/button1",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "OK",
+            "span": {
+              "type": "Span",
+              "start": 229,
+              "end": 233,
+              "line": 10,
+              "column": 23
+            }
+          },
+          "callback": {
+            "type": "Reference",
+            "module": "sdlFile",
+            "object": "button1_sdl",
+            "member": "callback",
+            "span": {
+              "type": "Span",
+              "start": 244,
+              "end": 273,
+              "line": 10,
+              "column": 38
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "BoxUIDefinition/top/leftTop/$r0c1/button2": {
+        "kind": "widget",
+        "path": "BoxUIDefinition/top/leftTop/$r0c1/button2",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Cancel",
+            "span": {
+              "type": "Span",
+              "start": 298,
+              "end": 306,
+              "line": 11,
+              "column": 23
+            }
+          },
+          "callback": {
+            "type": "Reference",
+            "module": "sdlFile",
+            "object": "button2_sdl",
+            "member": "callback",
+            "span": {
+              "type": "Span",
+              "start": 317,
+              "end": 346,
+              "line": 11,
+              "column": 42
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "BoxUIDefinition/top/leftTop/header": {
+        "kind": "markdown",
+        "path": "BoxUIDefinition/top/leftTop/header",
+        "widget": "",
+        "variant": "",
+        "text": "### Left box",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "BoxUIDefinition/top/rightTop": {
+        "kind": "frame",
+        "path": "BoxUIDefinition/top/rightTop",
+        "widget": "",
+        "variant": "box",
+        "text": "",
+        "layout": {
+          "x": "2fr"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "BoxUIDefinition/top/rightTop/$r0c1"
+          ]
+        ],
+        "regions": {
+          "header": "BoxUIDefinition/top/rightTop/header"
+        }
+      },
+      "BoxUIDefinition/top/rightTop/$r0c1": {
+        "kind": "group",
+        "path": "BoxUIDefinition/top/rightTop/$r0c1",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "BoxUIDefinition/top/rightTop/$r0c1/$r0c0"
+          ],
+          [
+            "BoxUIDefinition/top/rightTop/$r0c1/input1_boxui"
+          ]
+        ],
+        "regions": {}
+      },
+      "BoxUIDefinition/top/rightTop/$r0c1/$r0c0": {
+        "kind": "markdown",
+        "path": "BoxUIDefinition/top/rightTop/$r0c1/$r0c0",
+        "widget": "",
+        "variant": "",
+        "text": "Forklaring over feltet — Æøå",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "BoxUIDefinition/top/rightTop/$r0c1/input1_boxui": {
+        "kind": "widget",
+        "path": "BoxUIDefinition/top/rightTop/$r0c1/input1_boxui",
+        "widget": "input",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "text": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Input text here:",
+            "span": {
+              "type": "Span",
+              "start": 483,
+              "end": 501,
+              "line": 16,
+              "column": 27
+            }
+          },
+          "value": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "C1",
+            "span": {
+              "type": "Span",
+              "start": 509,
+              "end": 513,
+              "line": 16,
+              "column": 53
+            }
+          },
+          "callback": {
+            "type": "Reference",
+            "module": "sdlFile",
+            "object": "input1_sdl",
+            "member": "callback",
+            "span": {
+              "type": "Span",
+              "start": 524,
+              "end": 552,
+              "line": 16,
+              "column": 68
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "BoxUIDefinition/top/rightTop/header": {
+        "kind": "markdown",
+        "path": "BoxUIDefinition/top/rightTop/header",
+        "widget": "",
+        "variant": "",
+        "text": "### Right box",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "BoxUIDefinition/svgBox": {
+        "kind": "frame",
+        "path": "BoxUIDefinition/svgBox",
+        "widget": "",
+        "variant": "box",
+        "text": "",
+        "layout": {
+          "y": "1fr"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "BoxUIDefinition/svgBox/$r0c1"
+          ]
+        ],
+        "regions": {
+          "header": "BoxUIDefinition/svgBox/header"
+        }
+      },
+      "BoxUIDefinition/svgBox/$r0c1": {
+        "kind": "group",
+        "path": "BoxUIDefinition/svgBox/$r0c1",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "BoxUIDefinition/svgBox/$r0c1/svg1"
+          ]
+        ],
+        "regions": {}
+      },
+      "BoxUIDefinition/svgBox/$r0c1/svg1": {
+        "kind": "widget",
+        "path": "BoxUIDefinition/svgBox/$r0c1/svg1",
+        "widget": "svg",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "source": {
+            "type": "Reference",
+            "module": "sdlFile",
+            "object": "svg1_sdl",
+            "member": "callback",
+            "span": {
+              "type": "Span",
+              "start": 645,
+              "end": 671,
+              "line": 21,
+              "column": 22
+            }
+          },
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Generated illustration",
+            "span": {
+              "type": "Span",
+              "start": 679,
+              "end": 703,
+              "line": 21,
+              "column": 56
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "BoxUIDefinition/svgBox/header": {
+        "kind": "markdown",
+        "path": "BoxUIDefinition/svgBox/header",
+        "widget": "",
+        "variant": "",
+        "text": "### SVG view",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "BoxUIDefinition/header": {
+        "kind": "markdown",
+        "path": "BoxUIDefinition/header",
+        "widget": "",
+        "variant": "",
+        "text": "## Main page box",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      }
+    }
+  },
+  {
+    "source": "sdui 0.2;\r\nP=[\"\"\"# Æøå\n  ```mermaid\ngraph LR; A-->B\n  ```\n\"\"\"];",
+    "code": "",
+    "instances": {
+      "P": {
+        "kind": "frame",
+        "path": "P",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "P/$r0c0"
+          ]
+        ],
+        "regions": {}
+      },
+      "P/$r0c0": {
+        "kind": "markdown",
+        "path": "P/$r0c0",
+        "widget": "",
+        "variant": "",
+        "text": "# Æøå\n  ```mermaid\ngraph LR; A-->B\n  ```\n",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      }
+    }
+  },
+  {
+    "source": "sdui 0.2;\r\nP=[\"\"\"# Æøå\n  ```mermaid\ngraph LR; A-->B\n  ```\n\"\"\"];?",
+    "code": "lexical"
+  },
+  {
+    "source": "sdui 0.2; P=[left=G {font=12}, right=G]; G=<ok=button(\"OK\")>;",
+    "code": "",
+    "instances": {
+      "P": {
+        "kind": "frame",
+        "path": "P",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "P/left",
+            "P/right"
+          ]
+        ],
+        "regions": {}
+      },
+      "P/left": {
+        "kind": "group",
+        "path": "P/left",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "font": 12.0
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "P/left/ok"
+          ]
+        ],
+        "regions": {}
+      },
+      "P/left/ok": {
+        "kind": "widget",
+        "path": "P/left/ok",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "OK",
+            "span": {
+              "type": "Span",
+              "start": 54,
+              "end": 58,
+              "line": 1,
+              "column": 55
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "P/right": {
+        "kind": "group",
+        "path": "P/right",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "P/right/ok"
+          ]
+        ],
+        "regions": {}
+      },
+      "P/right/ok": {
+        "kind": "widget",
+        "path": "P/right/ok",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "OK",
+            "span": {
+              "type": "Span",
+              "start": 54,
+              "end": 58,
+              "line": 1,
+              "column": 55
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "G": {
+        "kind": "group",
+        "path": "G",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "G/ok"
+          ]
+        ],
+        "regions": {}
+      },
+      "G/ok": {
+        "kind": "widget",
+        "path": "G/ok",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "OK",
+            "span": {
+              "type": "Span",
+              "start": 54,
+              "end": 58,
+              "line": 1,
+              "column": 55
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      }
+    }
+  },
+  {
+    "source": "sdui 0.2; P=[missing];",
+    "code": "unknown-definition"
+  },
+  {
+    "source": "sdui 0.2; A=<B>; B=<A>;",
+    "code": "reference-cycle"
+  },
+  {
+    "source": "sdui 0.2; G=<>; P=[G,G];",
+    "code": "duplicate-node"
+  },
+  {
+    "source": "sdui 0.2; P=[header=\"## Header\", body=<>, footer=[]]*box;",
+    "code": "",
+    "instances": {
+      "P": {
+        "kind": "frame",
+        "path": "P",
+        "widget": "",
+        "variant": "box",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {
+          "header": "P/header",
+          "body": "P/body",
+          "footer": "P/footer"
+        }
+      },
+      "P/header": {
+        "kind": "markdown",
+        "path": "P/header",
+        "widget": "",
+        "variant": "",
+        "text": "## Header",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "P/body": {
+        "kind": "group",
+        "path": "P/body",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "P/footer": {
+        "kind": "frame",
+        "path": "P/footer",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      }
+    }
+  },
+  {
+    "source": "sdui 0.2; P=[header=\"a\", header=\"b\"];",
+    "code": "duplicate-region"
+  },
+  {
+    "source": "sdui 0.2; P=[body=<>, \"extra\"];",
+    "code": "body-conflict"
+  },
+  {
+    "source": "sdui 0.2; P=[<[]>];",
+    "code": "group-content"
+  },
+  {
+    "source": "sdui 0.2; F=[]; P=[<F>];",
+    "code": "group-content"
+  },
+  {
+    "source": "sdui 0.2; P=[] {^<};",
+    "code": "",
+    "instances": {
+      "P": {
+        "kind": "frame",
+        "path": "P",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "align-x": "start",
+          "align-y": "start"
+        },
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      }
+    }
+  },
+  {
+    "source": "sdui 0.2; P=[] {<^};",
+    "code": "",
+    "instances": {
+      "P": {
+        "kind": "frame",
+        "path": "P",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "align-x": "start",
+          "align-y": "start"
+        },
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      }
+    }
+  },
+  {
+    "source": "sdui 0.2; P=[] {>^};",
+    "code": "",
+    "instances": {
+      "P": {
+        "kind": "frame",
+        "path": "P",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "align-x": "end",
+          "align-y": "start"
+        },
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      }
+    }
+  },
+  {
+    "source": "sdui 0.2; P=[] {^>};",
+    "code": "",
+    "instances": {
+      "P": {
+        "kind": "frame",
+        "path": "P",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "align-x": "end",
+          "align-y": "start"
+        },
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      }
+    }
+  },
+  {
+    "source": "sdui 0.2; P=[] {v<};",
+    "code": "",
+    "instances": {
+      "P": {
+        "kind": "frame",
+        "path": "P",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "align-x": "start",
+          "align-y": "end"
+        },
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      }
+    }
+  },
+  {
+    "source": "sdui 0.2; P=[] {<v};",
+    "code": "",
+    "instances": {
+      "P": {
+        "kind": "frame",
+        "path": "P",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "align-x": "start",
+          "align-y": "end"
+        },
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      }
+    }
+  },
+  {
+    "source": "sdui 0.2; P=[] {>v};",
+    "code": "",
+    "instances": {
+      "P": {
+        "kind": "frame",
+        "path": "P",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "align-x": "end",
+          "align-y": "end"
+        },
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      }
+    }
+  },
+  {
+    "source": "sdui 0.2; P=[] {v>};",
+    "code": "",
+    "instances": {
+      "P": {
+        "kind": "frame",
+        "path": "P",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "align-x": "end",
+          "align-y": "end"
+        },
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      }
+    }
+  },
+  {
+    "source": "sdui 0.2; P=[] {->};",
+    "code": "",
+    "instances": {
+      "P": {
+        "kind": "frame",
+        "path": "P",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "align-x": "end",
+          "align-y": "center"
+        },
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      }
+    }
+  },
+  {
+    "source": "sdui 0.2; P=[] {>-};",
+    "code": "",
+    "instances": {
+      "P": {
+        "kind": "frame",
+        "path": "P",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "align-x": "end",
+          "align-y": "center"
+        },
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      }
+    }
+  },
+  {
+    "source": "sdui 0.2; P=[] {16:9, <->, font=10};",
+    "code": "",
+    "instances": {
+      "P": {
+        "kind": "frame",
+        "path": "P",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "ratio": [
+            16.0,
+            9.0
+          ],
+          "x": "fill",
+          "font": 10.0
+        },
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      }
+    }
+  },
+  {
+    "source": "sdui 0.2; P=[] {4:3, scale-y=0.5};",
+    "code": "",
+    "instances": {
+      "P": {
+        "kind": "frame",
+        "path": "P",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "ratio": [
+            4.0,
+            3.0
+          ],
+          "scale-y": 0.5
+        },
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      }
+    }
+  },
+  {
+    "source": "sdui 0.2; P=[] {scale=0.5, padding=(0.01,0.02,0.01,0.02)};",
+    "code": "",
+    "instances": {
+      "P": {
+        "kind": "frame",
+        "path": "P",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "scale": 0.5,
+          "padding": [
+            0.01,
+            0.02,
+            0.01,
+            0.02
+          ]
+        },
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      }
+    }
+  },
+  {
+    "source": "sdui 0.2; P=[] {16:9,scale=1};",
+    "code": "ratio-axis"
+  },
+  {
+    "source": "sdui 0.2; P=[] {16:9,<->,^|v};",
+    "code": "ratio-axis"
+  },
+  {
+    "source": "sdui 0.2; P=[] {16:9,x=1fr};",
+    "code": "ratio-axis"
+  },
+  {
+    "source": "sdui 0.2; P=[] {0:9};",
+    "code": "layout-type"
+  },
+  {
+    "source": "sdui 0.2; P=[] {font=0};",
+    "code": "layout-type"
+  },
+  {
+    "source": "sdui 0.2; P=[] {font=1fr};",
+    "code": "layout-type"
+  },
+  {
+    "source": "sdui 0.2; P=[] {width=100};",
+    "code": "layout-property"
+  },
+  {
+    "source": "sdui 0.2; P=[] {x=100};",
+    "code": "layout-type"
+  },
+  {
+    "source": "sdui 0.2; P=[] {min-x=0.8,max-x=0.2};",
+    "code": "size-range"
+  },
+  {
+    "source": "sdui 0.2; P=[] {<->,>-<};",
+    "code": "layout-conflict"
+  },
+  {
+    "source": "sdui 0.2; P=[] {gap=-1};",
+    "code": "layout-type"
+  },
+  {
+    "source": "sdui 0.2; P=[] {<v,v<};",
+    "code": "layout-conflict"
+  },
+  {
+    "source": "sdui 0.2; P=[] {heading=\"old\"};",
+    "code": "layout-property"
+  },
+  {
+    "source": "sdui 0.2; P=<\"A\"> {16:9};",
+    "code": "ratio-scope"
+  },
+  {
+    "source": "sdui 0.2; G=<\"A\">; P=[G {16:9}];",
+    "code": "ratio-scope"
+  },
+  {
+    "source": "sdui 0.2;\nStaticPage = [\n  header=\"## Dokumentasjon\",\n  <\"Hello # this is text, not a comment\";\n   \"Quoted: 'Hei' and Unicode: \\u00e6\";\n   ok=button(\"Unbound action\")>\n]*b {<->, font=10};\n",
+    "code": "",
+    "instances": {
+      "StaticPage": {
+        "kind": "frame",
+        "path": "StaticPage",
+        "widget": "",
+        "variant": "box",
+        "text": "",
+        "layout": {
+          "x": "fill",
+          "font": 10.0
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "StaticPage/$r0c1"
+          ]
+        ],
+        "regions": {
+          "header": "StaticPage/header"
+        }
+      },
+      "StaticPage/$r0c1": {
+        "kind": "group",
+        "path": "StaticPage/$r0c1",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "StaticPage/$r0c1/$r0c0"
+          ],
+          [
+            "StaticPage/$r0c1/$r1c0"
+          ],
+          [
+            "StaticPage/$r0c1/ok"
+          ]
+        ],
+        "regions": {}
+      },
+      "StaticPage/$r0c1/$r0c0": {
+        "kind": "markdown",
+        "path": "StaticPage/$r0c1/$r0c0",
+        "widget": "",
+        "variant": "",
+        "text": "Hello # this is text, not a comment",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "StaticPage/$r0c1/$r1c0": {
+        "kind": "markdown",
+        "path": "StaticPage/$r0c1/$r1c0",
+        "widget": "",
+        "variant": "",
+        "text": "Quoted: 'Hei' and Unicode: æ",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "StaticPage/$r0c1/ok": {
+        "kind": "widget",
+        "path": "StaticPage/$r0c1/ok",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Unbound action",
+            "span": {
+              "type": "Span",
+              "start": 149,
+              "end": 165,
+              "line": 6,
+              "column": 14
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "StaticPage/header": {
+        "kind": "markdown",
+        "path": "StaticPage/header",
+        "widget": "",
+        "variant": "",
+        "text": "## Dokumentasjon",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      }
+    }
+  },
+  {
+    "source": "sdui 0.1; Page = [<greeting=\"Hello\">];",
+    "code": "version"
+  },
+  {
+    "source": "sdui 0.20; Page = [<greeting=\"Hello\">];",
+    "code": "version"
+  },
+  {
+    "source": "sdui 2e-1; Page = [<greeting=\"Hello\">];",
+    "code": "version"
+  },
+  {
+    "source": "sdui -0.2; Page = [<greeting=\"Hello\">];",
+    "code": "version"
+  },
+  {
+    "source": "sdui 0.2; P={main=[{w=text(\"old\")} ]};",
+    "code": "syntax"
+  },
+  {
+    "source": "sdui 0.2; Page = [<greeting=\"Hello\">];garbage",
+    "code": "syntax"
+  },
+  {
+    "source": "sdui 0.2; P=[<w=unknown(\"x\")>];",
+    "code": "widget-kind"
+  },
+  {
+    "source": "sdui 0.2; P=[<w=text(\"old\")>];",
+    "code": "widget-kind"
+  },
+  {
+    "source": "sdui 0.2; P=[<w=button(\"x\", typo=\"y\")>];",
+    "code": "widget-property"
+  },
+  {
+    "source": "sdui 0.2; P=[<w=button(\"x\", label=\"y\")>];",
+    "code": "duplicate-argument"
+  },
+  {
+    "source": "sdui 0.2; P=[<w=button(label=\"x\", \"y\")>];",
+    "code": "argument-order"
+  },
+  {
+    "source": "sdui 0.2; P=[<w=input(text=12)>];",
+    "code": "argument-type"
+  },
+  {
+    "source": "sdui 0.2; P=[<w=button(\"OK\", callback=\"execute\")>];",
+    "code": "argument-type"
+  },
+  {
+    "source": "sdui 0.2; P=[<w=button()>];",
+    "code": "missing-argument"
+  },
+  {
+    "source": "sdui 0.2; P=[<w=svg(label=\"x\")>];",
+    "code": "missing-argument"
+  },
+  {
+    "source": "sdui 0.2;\n# Statisk port av Concept1 OPERATOR_BUCKING_LAYOUT og OperatorBuckingView.\n# Alle verdier er eksempeldata. Ingen Ponsse-/SDL-runtime kjøres.\n\nnavigation = <\n  \"# Apteringssystem — Concept1\";\n  <showBucking=button(\"Aptering\"), showStemData=button(\"Stammedata\"),\n   showProduction=button(\"Produksjon / måletabell\"), showRules=button(\"Apteringsregler\"),\n   showApt=button(\"APT / Apteringsfil\")> {<->}\n>;\n\nbucking = [\n  top = [\n    length = [\n      header=<\"## Lengde\", <lengthCursor=button(\"Cursor AV\"), lengthDelta=button(\"Δ\")> {>-<}>,\n      \"**412,0 cm**\" {font=24};\n      \"Måling · aggregat\"\n    ]*b {x=1fr},\n    diameter = [\n      header=<\"## Diameter\", <diameterCursor=button(\"Cursor AV\"), diameterDelta=button(\"Δ\"),\n              barkBasis=button(\"O/B · U/B\"), barkSettings=button(\"BarkNOR-kalibrering\")> {>-<}>,\n      \"**28,4 cm**\" {font=24};\n      \"Måling · O/B · eksempelprofil\"\n    ]*b {x=1fr}\n  ] {y=15fr, items=stretch};\n  middle = [\n    selection = [\n      header=\"## Treslag / Sortiment\",\n      \"**Treslag**\\nGran\\n\\n**Sortiment**\\nSagtømmer\\n\\nSiste knapp: GRAN\"\n    ]*b {x=25fr},\n    suggestions = [\n      header=<\"## Apteringsforslag\"; <optimize=button(\"Optimalisering\"), columns=button(\"Kolonner\")>>,\n      \"\"\"Neste kapp · eksempeldata\n| Nr | Sortiment | Lengde | Topp-Ø |\n| -- | --------- | ------ | ------ |\n| 1  | Sagtømmer | 430 cm | 26 cm  |\n| 2  | Massevirke| 310 cm | 18 cm  |\"\"\";\n      <canonical=button(\"Canonical\"), alternative=button(\"Alternativ 1\")>;\n      \"Planvalg er ubundet i denne prototypen.\"\n    ]*b {x=50fr},\n    currentStem = [\n      header=\"## Stammen i aggregatet\",\n      \"Aktuell stamme\\n\\n**Låste feil: 0**\\nIngen låste feil registrert\\n\\nNåposisjon: 412,0 cm\\nMaks kvistet: 412,0 cm\\nProdusert / kappet: 0 cm\\nSegmentrot: 0 cm\";\n      \"Produksjon og feilflyt er plassholdere.\"\n    ]*b {x=25fr}\n  ] {y=45fr, items=stretch};\n  stemTrack = [\n    header=<\n      \"## Stammeforløp\", <taperNor=button(\"taperNOR\"), mixed=button(\"Mixed\")> {>-<};\n      \"Hele estimatet · Predikert · Målt · Plan · Rest · Kvalitet 1/2 · Underkjent · Utkast\"\n    >,\n    \"\"\"**Plassholder for OperatorUnifiedStemSvg**\nStammeprofil, målepunkter, kapp og manuell cursor trenger en egen visuell provider.\nEksempel på Mermaid-innhold nedenfor utelates av konsolldumpen:\n```mermaid\nflowchart LR\n    Rot --> Kapp1 --> Kapp2 --> Topp\n```\"\"\",\n    footer=<\"FØLGER AGGREGAT\", \"Lengde: 412,0 cm\", \"Rel. lengde: 0,0 cm\";\n            \"Pred. Ø O/B: 28,4 cm\", \"Profilvolum O/B: 0,312 m³\", \"Toppsylinder: 0,260 m³\">\n  ]*b {y=40fr}\n] {16:9, <->, font=10, items=stretch, gap=0.01};\n\npage = [header=navigation, body=bucking, footer=\"STATISK PROTOTYPE · eksempeldata · ingen runtime\"] {<->};\n",
+    "code": "",
+    "instances": {
+      "navigation": {
+        "kind": "group",
+        "path": "navigation",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "navigation/$r0c0"
+          ],
+          [
+            "navigation/$r1c0"
+          ]
+        ],
+        "regions": {}
+      },
+      "navigation/$r0c0": {
+        "kind": "markdown",
+        "path": "navigation/$r0c0",
+        "widget": "",
+        "variant": "",
+        "text": "# Apteringssystem — Concept1",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "navigation/$r1c0": {
+        "kind": "group",
+        "path": "navigation/$r1c0",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "x": "fill"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "navigation/$r1c0/showBucking",
+            "navigation/$r1c0/showStemData",
+            "navigation/$r1c0/showProduction",
+            "navigation/$r1c0/showRules",
+            "navigation/$r1c0/showApt"
+          ]
+        ],
+        "regions": {}
+      },
+      "navigation/$r1c0/showBucking": {
+        "kind": "widget",
+        "path": "navigation/$r1c0/showBucking",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Aptering",
+            "span": {
+              "type": "Span",
+              "start": 226,
+              "end": 236,
+              "line": 7,
+              "column": 23
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "navigation/$r1c0/showStemData": {
+        "kind": "widget",
+        "path": "navigation/$r1c0/showStemData",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Stammedata",
+            "span": {
+              "type": "Span",
+              "start": 259,
+              "end": 271,
+              "line": 7,
+              "column": 56
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "navigation/$r1c0/showProduction": {
+        "kind": "widget",
+        "path": "navigation/$r1c0/showProduction",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Produksjon / måletabell",
+            "span": {
+              "type": "Span",
+              "start": 299,
+              "end": 325,
+              "line": 8,
+              "column": 26
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "navigation/$r1c0/showRules": {
+        "kind": "widget",
+        "path": "navigation/$r1c0/showRules",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Apteringsregler",
+            "span": {
+              "type": "Span",
+              "start": 345,
+              "end": 362,
+              "line": 8,
+              "column": 71
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "navigation/$r1c0/showApt": {
+        "kind": "widget",
+        "path": "navigation/$r1c0/showApt",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "APT / Apteringsfil",
+            "span": {
+              "type": "Span",
+              "start": 383,
+              "end": 403,
+              "line": 9,
+              "column": 19
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "bucking": {
+        "kind": "frame",
+        "path": "bucking",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "ratio": [
+            16.0,
+            9.0
+          ],
+          "x": "fill",
+          "font": 10.0,
+          "items": "stretch",
+          "gap": 0.01
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "bucking/top"
+          ],
+          [
+            "bucking/middle"
+          ],
+          [
+            "bucking/stemTrack"
+          ]
+        ],
+        "regions": {}
+      },
+      "bucking/top": {
+        "kind": "frame",
+        "path": "bucking/top",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "y": "15fr",
+          "items": "stretch"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "bucking/top/length",
+            "bucking/top/diameter"
+          ]
+        ],
+        "regions": {}
+      },
+      "bucking/top/length": {
+        "kind": "frame",
+        "path": "bucking/top/length",
+        "widget": "",
+        "variant": "box",
+        "text": "",
+        "layout": {
+          "x": "1fr"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "bucking/top/length/$r0c1"
+          ],
+          [
+            "bucking/top/length/$r1c0"
+          ]
+        ],
+        "regions": {
+          "header": "bucking/top/length/header"
+        }
+      },
+      "bucking/top/length/$r0c1": {
+        "kind": "markdown",
+        "path": "bucking/top/length/$r0c1",
+        "widget": "",
+        "variant": "",
+        "text": "**412,0 cm**",
+        "layout": {
+          "font": 24.0
+        },
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/top/length/$r1c0": {
+        "kind": "markdown",
+        "path": "bucking/top/length/$r1c0",
+        "widget": "",
+        "variant": "",
+        "text": "Måling · aggregat",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/top/length/header": {
+        "kind": "group",
+        "path": "bucking/top/length/header",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "bucking/top/length/header/$r0c0",
+            "bucking/top/length/header/$r0c1"
+          ]
+        ],
+        "regions": {}
+      },
+      "bucking/top/length/header/$r0c0": {
+        "kind": "markdown",
+        "path": "bucking/top/length/header/$r0c0",
+        "widget": "",
+        "variant": "",
+        "text": "## Lengde",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/top/length/header/$r0c1": {
+        "kind": "group",
+        "path": "bucking/top/length/header/$r0c1",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "x": "content"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "bucking/top/length/header/$r0c1/lengthCursor",
+            "bucking/top/length/header/$r0c1/lengthDelta"
+          ]
+        ],
+        "regions": {}
+      },
+      "bucking/top/length/header/$r0c1/lengthCursor": {
+        "kind": "widget",
+        "path": "bucking/top/length/header/$r0c1/lengthCursor",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Cursor AV",
+            "span": {
+              "type": "Span",
+              "start": 501,
+              "end": 512,
+              "line": 15,
+              "column": 49
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/top/length/header/$r0c1/lengthDelta": {
+        "kind": "widget",
+        "path": "bucking/top/length/header/$r0c1/lengthDelta",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Δ",
+            "span": {
+              "type": "Span",
+              "start": 534,
+              "end": 538,
+              "line": 15,
+              "column": 82
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/top/diameter": {
+        "kind": "frame",
+        "path": "bucking/top/diameter",
+        "widget": "",
+        "variant": "box",
+        "text": "",
+        "layout": {
+          "x": "1fr"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "bucking/top/diameter/$r0c1"
+          ],
+          [
+            "bucking/top/diameter/$r1c0"
+          ]
+        ],
+        "regions": {
+          "header": "bucking/top/diameter/header"
+        }
+      },
+      "bucking/top/diameter/$r0c1": {
+        "kind": "markdown",
+        "path": "bucking/top/diameter/$r0c1",
+        "widget": "",
+        "variant": "",
+        "text": "**28,4 cm**",
+        "layout": {
+          "font": 24.0
+        },
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/top/diameter/$r1c0": {
+        "kind": "markdown",
+        "path": "bucking/top/diameter/$r1c0",
+        "widget": "",
+        "variant": "",
+        "text": "Måling · O/B · eksempelprofil",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/top/diameter/header": {
+        "kind": "group",
+        "path": "bucking/top/diameter/header",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "bucking/top/diameter/header/$r0c0",
+            "bucking/top/diameter/header/$r0c1"
+          ]
+        ],
+        "regions": {}
+      },
+      "bucking/top/diameter/header/$r0c0": {
+        "kind": "markdown",
+        "path": "bucking/top/diameter/header/$r0c0",
+        "widget": "",
+        "variant": "",
+        "text": "## Diameter",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/top/diameter/header/$r0c1": {
+        "kind": "group",
+        "path": "bucking/top/diameter/header/$r0c1",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "x": "content"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "bucking/top/diameter/header/$r0c1/diameterCursor",
+            "bucking/top/diameter/header/$r0c1/diameterDelta",
+            "bucking/top/diameter/header/$r0c1/barkBasis",
+            "bucking/top/diameter/header/$r0c1/barkSettings"
+          ]
+        ],
+        "regions": {}
+      },
+      "bucking/top/diameter/header/$r0c1/diameterCursor": {
+        "kind": "widget",
+        "path": "bucking/top/diameter/header/$r0c1/diameterCursor",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Cursor AV",
+            "span": {
+              "type": "Span",
+              "start": 695,
+              "end": 706,
+              "line": 20,
+              "column": 53
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/top/diameter/header/$r0c1/diameterDelta": {
+        "kind": "widget",
+        "path": "bucking/top/diameter/header/$r0c1/diameterDelta",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Δ",
+            "span": {
+              "type": "Span",
+              "start": 730,
+              "end": 734,
+              "line": 20,
+              "column": 88
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/top/diameter/header/$r0c1/barkBasis": {
+        "kind": "widget",
+        "path": "bucking/top/diameter/header/$r0c1/barkBasis",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "O/B · U/B",
+            "span": {
+              "type": "Span",
+              "start": 768,
+              "end": 780,
+              "line": 21,
+              "column": 32
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/top/diameter/header/$r0c1/barkSettings": {
+        "kind": "widget",
+        "path": "bucking/top/diameter/header/$r0c1/barkSettings",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "BarkNOR-kalibrering",
+            "span": {
+              "type": "Span",
+              "start": 803,
+              "end": 824,
+              "line": 21,
+              "column": 66
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/middle": {
+        "kind": "frame",
+        "path": "bucking/middle",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "y": "45fr",
+          "items": "stretch"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "bucking/middle/selection",
+            "bucking/middle/suggestions",
+            "bucking/middle/currentStem"
+          ]
+        ],
+        "regions": {}
+      },
+      "bucking/middle/selection": {
+        "kind": "frame",
+        "path": "bucking/middle/selection",
+        "widget": "",
+        "variant": "box",
+        "text": "",
+        "layout": {
+          "x": "25fr"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "bucking/middle/selection/$r0c1"
+          ]
+        ],
+        "regions": {
+          "header": "bucking/middle/selection/header"
+        }
+      },
+      "bucking/middle/selection/$r0c1": {
+        "kind": "markdown",
+        "path": "bucking/middle/selection/$r0c1",
+        "widget": "",
+        "variant": "",
+        "text": "**Treslag**\nGran\n\n**Sortiment**\nSagtømmer\n\nSiste knapp: GRAN",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/middle/selection/header": {
+        "kind": "markdown",
+        "path": "bucking/middle/selection/header",
+        "widget": "",
+        "variant": "",
+        "text": "## Treslag / Sortiment",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/middle/suggestions": {
+        "kind": "frame",
+        "path": "bucking/middle/suggestions",
+        "widget": "",
+        "variant": "box",
+        "text": "",
+        "layout": {
+          "x": "50fr"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "bucking/middle/suggestions/$r0c1"
+          ],
+          [
+            "bucking/middle/suggestions/$r1c0"
+          ],
+          [
+            "bucking/middle/suggestions/$r2c0"
+          ]
+        ],
+        "regions": {
+          "header": "bucking/middle/suggestions/header"
+        }
+      },
+      "bucking/middle/suggestions/$r0c1": {
+        "kind": "markdown",
+        "path": "bucking/middle/suggestions/$r0c1",
+        "widget": "",
+        "variant": "",
+        "text": "Neste kapp · eksempeldata\n| Nr | Sortiment | Lengde | Topp-Ø |\n| -- | --------- | ------ | ------ |\n| 1  | Sagtømmer | 430 cm | 26 cm  |\n| 2  | Massevirke| 310 cm | 18 cm  |",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/middle/suggestions/$r1c0": {
+        "kind": "group",
+        "path": "bucking/middle/suggestions/$r1c0",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "bucking/middle/suggestions/$r1c0/canonical",
+            "bucking/middle/suggestions/$r1c0/alternative"
+          ]
+        ],
+        "regions": {}
+      },
+      "bucking/middle/suggestions/$r1c0/canonical": {
+        "kind": "widget",
+        "path": "bucking/middle/suggestions/$r1c0/canonical",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Canonical",
+            "span": {
+              "type": "Span",
+              "start": 1453,
+              "end": 1464,
+              "line": 38,
+              "column": 25
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/middle/suggestions/$r1c0/alternative": {
+        "kind": "widget",
+        "path": "bucking/middle/suggestions/$r1c0/alternative",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Alternativ 1",
+            "span": {
+              "type": "Span",
+              "start": 1486,
+              "end": 1500,
+              "line": 38,
+              "column": 58
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/middle/suggestions/$r2c0": {
+        "kind": "markdown",
+        "path": "bucking/middle/suggestions/$r2c0",
+        "widget": "",
+        "variant": "",
+        "text": "Planvalg er ubundet i denne prototypen.",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/middle/suggestions/header": {
+        "kind": "group",
+        "path": "bucking/middle/suggestions/header",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "bucking/middle/suggestions/header/$r0c0"
+          ],
+          [
+            "bucking/middle/suggestions/header/$r1c0"
+          ]
+        ],
+        "regions": {}
+      },
+      "bucking/middle/suggestions/header/$r0c0": {
+        "kind": "markdown",
+        "path": "bucking/middle/suggestions/header/$r0c0",
+        "widget": "",
+        "variant": "",
+        "text": "## Apteringsforslag",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/middle/suggestions/header/$r1c0": {
+        "kind": "group",
+        "path": "bucking/middle/suggestions/header/$r1c0",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "bucking/middle/suggestions/header/$r1c0/optimize",
+            "bucking/middle/suggestions/header/$r1c0/columns"
+          ]
+        ],
+        "regions": {}
+      },
+      "bucking/middle/suggestions/header/$r1c0/optimize": {
+        "kind": "widget",
+        "path": "bucking/middle/suggestions/header/$r1c0/optimize",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Optimalisering",
+            "span": {
+              "type": "Span",
+              "start": 1190,
+              "end": 1206,
+              "line": 32,
+              "column": 55
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/middle/suggestions/header/$r1c0/columns": {
+        "kind": "widget",
+        "path": "bucking/middle/suggestions/header/$r1c0/columns",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Kolonner",
+            "span": {
+              "type": "Span",
+              "start": 1224,
+              "end": 1234,
+              "line": 32,
+              "column": 89
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/middle/currentStem": {
+        "kind": "frame",
+        "path": "bucking/middle/currentStem",
+        "widget": "",
+        "variant": "box",
+        "text": "",
+        "layout": {
+          "x": "25fr"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "bucking/middle/currentStem/$r0c1"
+          ],
+          [
+            "bucking/middle/currentStem/$r1c0"
+          ]
+        ],
+        "regions": {
+          "header": "bucking/middle/currentStem/header"
+        }
+      },
+      "bucking/middle/currentStem/$r0c1": {
+        "kind": "markdown",
+        "path": "bucking/middle/currentStem/$r0c1",
+        "widget": "",
+        "variant": "",
+        "text": "Aktuell stamme\n\n**Låste feil: 0**\nIngen låste feil registrert\n\nNåposisjon: 412,0 cm\nMaks kvistet: 412,0 cm\nProdusert / kappet: 0 cm\nSegmentrot: 0 cm",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/middle/currentStem/$r1c0": {
+        "kind": "markdown",
+        "path": "bucking/middle/currentStem/$r1c0",
+        "widget": "",
+        "variant": "",
+        "text": "Produksjon og feilflyt er plassholdere.",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/middle/currentStem/header": {
+        "kind": "markdown",
+        "path": "bucking/middle/currentStem/header",
+        "widget": "",
+        "variant": "",
+        "text": "## Stammen i aggregatet",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/stemTrack": {
+        "kind": "frame",
+        "path": "bucking/stemTrack",
+        "widget": "",
+        "variant": "box",
+        "text": "",
+        "layout": {
+          "y": "40fr"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "bucking/stemTrack/$r0c1"
+          ]
+        ],
+        "regions": {
+          "header": "bucking/stemTrack/header",
+          "footer": "bucking/stemTrack/footer"
+        }
+      },
+      "bucking/stemTrack/$r0c1": {
+        "kind": "markdown",
+        "path": "bucking/stemTrack/$r0c1",
+        "widget": "",
+        "variant": "",
+        "text": "**Plassholder for OperatorUnifiedStemSvg**\nStammeprofil, målepunkter, kapp og manuell cursor trenger en egen visuell provider.\nEksempel på Mermaid-innhold nedenfor utelates av konsolldumpen:\n```mermaid\nflowchart LR\n    Rot --> Kapp1 --> Kapp2 --> Topp\n```",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/stemTrack/header": {
+        "kind": "group",
+        "path": "bucking/stemTrack/header",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "bucking/stemTrack/header/$r0c0",
+            "bucking/stemTrack/header/$r0c1"
+          ],
+          [
+            "bucking/stemTrack/header/$r1c0"
+          ]
+        ],
+        "regions": {}
+      },
+      "bucking/stemTrack/header/$r0c0": {
+        "kind": "markdown",
+        "path": "bucking/stemTrack/header/$r0c0",
+        "widget": "",
+        "variant": "",
+        "text": "## Stammeforløp",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/stemTrack/header/$r0c1": {
+        "kind": "group",
+        "path": "bucking/stemTrack/header/$r0c1",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "x": "content"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "bucking/stemTrack/header/$r0c1/taperNor",
+            "bucking/stemTrack/header/$r0c1/mixed"
+          ]
+        ],
+        "regions": {}
+      },
+      "bucking/stemTrack/header/$r0c1/taperNor": {
+        "kind": "widget",
+        "path": "bucking/stemTrack/header/$r0c1/taperNor",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "taperNOR",
+            "span": {
+              "type": "Span",
+              "start": 1965,
+              "end": 1975,
+              "line": 49,
+              "column": 43
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/stemTrack/header/$r0c1/mixed": {
+        "kind": "widget",
+        "path": "bucking/stemTrack/header/$r0c1/mixed",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Mixed",
+            "span": {
+              "type": "Span",
+              "start": 1991,
+              "end": 1998,
+              "line": 49,
+              "column": 69
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/stemTrack/header/$r1c0": {
+        "kind": "markdown",
+        "path": "bucking/stemTrack/header/$r1c0",
+        "widget": "",
+        "variant": "",
+        "text": "Hele estimatet · Predikert · Målt · Plan · Rest · Kvalitet 1/2 · Underkjent · Utkast",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/stemTrack/footer": {
+        "kind": "group",
+        "path": "bucking/stemTrack/footer",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "bucking/stemTrack/footer/$r0c0",
+            "bucking/stemTrack/footer/$r0c1",
+            "bucking/stemTrack/footer/$r0c2"
+          ],
+          [
+            "bucking/stemTrack/footer/$r1c0",
+            "bucking/stemTrack/footer/$r1c1",
+            "bucking/stemTrack/footer/$r1c2"
+          ]
+        ],
+        "regions": {}
+      },
+      "bucking/stemTrack/footer/$r0c0": {
+        "kind": "markdown",
+        "path": "bucking/stemTrack/footer/$r0c0",
+        "widget": "",
+        "variant": "",
+        "text": "FØLGER AGGREGAT",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/stemTrack/footer/$r0c1": {
+        "kind": "markdown",
+        "path": "bucking/stemTrack/footer/$r0c1",
+        "widget": "",
+        "variant": "",
+        "text": "Lengde: 412,0 cm",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/stemTrack/footer/$r0c2": {
+        "kind": "markdown",
+        "path": "bucking/stemTrack/footer/$r0c2",
+        "widget": "",
+        "variant": "",
+        "text": "Rel. lengde: 0,0 cm",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/stemTrack/footer/$r1c0": {
+        "kind": "markdown",
+        "path": "bucking/stemTrack/footer/$r1c0",
+        "widget": "",
+        "variant": "",
+        "text": "Pred. Ø O/B: 28,4 cm",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/stemTrack/footer/$r1c1": {
+        "kind": "markdown",
+        "path": "bucking/stemTrack/footer/$r1c1",
+        "widget": "",
+        "variant": "",
+        "text": "Profilvolum O/B: 0,312 m³",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "bucking/stemTrack/footer/$r1c2": {
+        "kind": "markdown",
+        "path": "bucking/stemTrack/footer/$r1c2",
+        "widget": "",
+        "variant": "",
+        "text": "Toppsylinder: 0,260 m³",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "page": {
+        "kind": "frame",
+        "path": "page",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "x": "fill"
+        },
+        "arguments": {},
+        "rows": [],
+        "regions": {
+          "header": "page/header",
+          "body": "page/body",
+          "footer": "page/footer"
+        }
+      },
+      "page/header": {
+        "kind": "group",
+        "path": "page/header",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "page/header/$r0c0"
+          ],
+          [
+            "page/header/$r1c0"
+          ]
+        ],
+        "regions": {}
+      },
+      "page/header/$r0c0": {
+        "kind": "markdown",
+        "path": "page/header/$r0c0",
+        "widget": "",
+        "variant": "",
+        "text": "# Apteringssystem — Concept1",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "page/header/$r1c0": {
+        "kind": "group",
+        "path": "page/header/$r1c0",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "x": "fill"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "page/header/$r1c0/showBucking",
+            "page/header/$r1c0/showStemData",
+            "page/header/$r1c0/showProduction",
+            "page/header/$r1c0/showRules",
+            "page/header/$r1c0/showApt"
+          ]
+        ],
+        "regions": {}
+      },
+      "page/header/$r1c0/showBucking": {
+        "kind": "widget",
+        "path": "page/header/$r1c0/showBucking",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Aptering",
+            "span": {
+              "type": "Span",
+              "start": 226,
+              "end": 236,
+              "line": 7,
+              "column": 23
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "page/header/$r1c0/showStemData": {
+        "kind": "widget",
+        "path": "page/header/$r1c0/showStemData",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Stammedata",
+            "span": {
+              "type": "Span",
+              "start": 259,
+              "end": 271,
+              "line": 7,
+              "column": 56
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "page/header/$r1c0/showProduction": {
+        "kind": "widget",
+        "path": "page/header/$r1c0/showProduction",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Produksjon / måletabell",
+            "span": {
+              "type": "Span",
+              "start": 299,
+              "end": 325,
+              "line": 8,
+              "column": 26
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "page/header/$r1c0/showRules": {
+        "kind": "widget",
+        "path": "page/header/$r1c0/showRules",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Apteringsregler",
+            "span": {
+              "type": "Span",
+              "start": 345,
+              "end": 362,
+              "line": 8,
+              "column": 71
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "page/header/$r1c0/showApt": {
+        "kind": "widget",
+        "path": "page/header/$r1c0/showApt",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "APT / Apteringsfil",
+            "span": {
+              "type": "Span",
+              "start": 383,
+              "end": 403,
+              "line": 9,
+              "column": 19
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "page/body": {
+        "kind": "frame",
+        "path": "page/body",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "ratio": [
+            16.0,
+            9.0
+          ],
+          "x": "fill",
+          "font": 10.0,
+          "items": "stretch",
+          "gap": 0.01
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "page/body/top"
+          ],
+          [
+            "page/body/middle"
+          ],
+          [
+            "page/body/stemTrack"
+          ]
+        ],
+        "regions": {}
+      },
+      "page/body/top": {
+        "kind": "frame",
+        "path": "page/body/top",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "y": "15fr",
+          "items": "stretch"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "page/body/top/length",
+            "page/body/top/diameter"
+          ]
+        ],
+        "regions": {}
+      },
+      "page/body/top/length": {
+        "kind": "frame",
+        "path": "page/body/top/length",
+        "widget": "",
+        "variant": "box",
+        "text": "",
+        "layout": {
+          "x": "1fr"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "page/body/top/length/$r0c1"
+          ],
+          [
+            "page/body/top/length/$r1c0"
+          ]
+        ],
+        "regions": {
+          "header": "page/body/top/length/header"
+        }
+      },
+      "page/body/top/length/$r0c1": {
+        "kind": "markdown",
+        "path": "page/body/top/length/$r0c1",
+        "widget": "",
+        "variant": "",
+        "text": "**412,0 cm**",
+        "layout": {
+          "font": 24.0
+        },
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/top/length/$r1c0": {
+        "kind": "markdown",
+        "path": "page/body/top/length/$r1c0",
+        "widget": "",
+        "variant": "",
+        "text": "Måling · aggregat",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/top/length/header": {
+        "kind": "group",
+        "path": "page/body/top/length/header",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "page/body/top/length/header/$r0c0",
+            "page/body/top/length/header/$r0c1"
+          ]
+        ],
+        "regions": {}
+      },
+      "page/body/top/length/header/$r0c0": {
+        "kind": "markdown",
+        "path": "page/body/top/length/header/$r0c0",
+        "widget": "",
+        "variant": "",
+        "text": "## Lengde",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/top/length/header/$r0c1": {
+        "kind": "group",
+        "path": "page/body/top/length/header/$r0c1",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "x": "content"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "page/body/top/length/header/$r0c1/lengthCursor",
+            "page/body/top/length/header/$r0c1/lengthDelta"
+          ]
+        ],
+        "regions": {}
+      },
+      "page/body/top/length/header/$r0c1/lengthCursor": {
+        "kind": "widget",
+        "path": "page/body/top/length/header/$r0c1/lengthCursor",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Cursor AV",
+            "span": {
+              "type": "Span",
+              "start": 501,
+              "end": 512,
+              "line": 15,
+              "column": 49
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/top/length/header/$r0c1/lengthDelta": {
+        "kind": "widget",
+        "path": "page/body/top/length/header/$r0c1/lengthDelta",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Δ",
+            "span": {
+              "type": "Span",
+              "start": 534,
+              "end": 538,
+              "line": 15,
+              "column": 82
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/top/diameter": {
+        "kind": "frame",
+        "path": "page/body/top/diameter",
+        "widget": "",
+        "variant": "box",
+        "text": "",
+        "layout": {
+          "x": "1fr"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "page/body/top/diameter/$r0c1"
+          ],
+          [
+            "page/body/top/diameter/$r1c0"
+          ]
+        ],
+        "regions": {
+          "header": "page/body/top/diameter/header"
+        }
+      },
+      "page/body/top/diameter/$r0c1": {
+        "kind": "markdown",
+        "path": "page/body/top/diameter/$r0c1",
+        "widget": "",
+        "variant": "",
+        "text": "**28,4 cm**",
+        "layout": {
+          "font": 24.0
+        },
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/top/diameter/$r1c0": {
+        "kind": "markdown",
+        "path": "page/body/top/diameter/$r1c0",
+        "widget": "",
+        "variant": "",
+        "text": "Måling · O/B · eksempelprofil",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/top/diameter/header": {
+        "kind": "group",
+        "path": "page/body/top/diameter/header",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "page/body/top/diameter/header/$r0c0",
+            "page/body/top/diameter/header/$r0c1"
+          ]
+        ],
+        "regions": {}
+      },
+      "page/body/top/diameter/header/$r0c0": {
+        "kind": "markdown",
+        "path": "page/body/top/diameter/header/$r0c0",
+        "widget": "",
+        "variant": "",
+        "text": "## Diameter",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/top/diameter/header/$r0c1": {
+        "kind": "group",
+        "path": "page/body/top/diameter/header/$r0c1",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "x": "content"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "page/body/top/diameter/header/$r0c1/diameterCursor",
+            "page/body/top/diameter/header/$r0c1/diameterDelta",
+            "page/body/top/diameter/header/$r0c1/barkBasis",
+            "page/body/top/diameter/header/$r0c1/barkSettings"
+          ]
+        ],
+        "regions": {}
+      },
+      "page/body/top/diameter/header/$r0c1/diameterCursor": {
+        "kind": "widget",
+        "path": "page/body/top/diameter/header/$r0c1/diameterCursor",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Cursor AV",
+            "span": {
+              "type": "Span",
+              "start": 695,
+              "end": 706,
+              "line": 20,
+              "column": 53
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/top/diameter/header/$r0c1/diameterDelta": {
+        "kind": "widget",
+        "path": "page/body/top/diameter/header/$r0c1/diameterDelta",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Δ",
+            "span": {
+              "type": "Span",
+              "start": 730,
+              "end": 734,
+              "line": 20,
+              "column": 88
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/top/diameter/header/$r0c1/barkBasis": {
+        "kind": "widget",
+        "path": "page/body/top/diameter/header/$r0c1/barkBasis",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "O/B · U/B",
+            "span": {
+              "type": "Span",
+              "start": 768,
+              "end": 780,
+              "line": 21,
+              "column": 32
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/top/diameter/header/$r0c1/barkSettings": {
+        "kind": "widget",
+        "path": "page/body/top/diameter/header/$r0c1/barkSettings",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "BarkNOR-kalibrering",
+            "span": {
+              "type": "Span",
+              "start": 803,
+              "end": 824,
+              "line": 21,
+              "column": 66
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/middle": {
+        "kind": "frame",
+        "path": "page/body/middle",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "y": "45fr",
+          "items": "stretch"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "page/body/middle/selection",
+            "page/body/middle/suggestions",
+            "page/body/middle/currentStem"
+          ]
+        ],
+        "regions": {}
+      },
+      "page/body/middle/selection": {
+        "kind": "frame",
+        "path": "page/body/middle/selection",
+        "widget": "",
+        "variant": "box",
+        "text": "",
+        "layout": {
+          "x": "25fr"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "page/body/middle/selection/$r0c1"
+          ]
+        ],
+        "regions": {
+          "header": "page/body/middle/selection/header"
+        }
+      },
+      "page/body/middle/selection/$r0c1": {
+        "kind": "markdown",
+        "path": "page/body/middle/selection/$r0c1",
+        "widget": "",
+        "variant": "",
+        "text": "**Treslag**\nGran\n\n**Sortiment**\nSagtømmer\n\nSiste knapp: GRAN",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/middle/selection/header": {
+        "kind": "markdown",
+        "path": "page/body/middle/selection/header",
+        "widget": "",
+        "variant": "",
+        "text": "## Treslag / Sortiment",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/middle/suggestions": {
+        "kind": "frame",
+        "path": "page/body/middle/suggestions",
+        "widget": "",
+        "variant": "box",
+        "text": "",
+        "layout": {
+          "x": "50fr"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "page/body/middle/suggestions/$r0c1"
+          ],
+          [
+            "page/body/middle/suggestions/$r1c0"
+          ],
+          [
+            "page/body/middle/suggestions/$r2c0"
+          ]
+        ],
+        "regions": {
+          "header": "page/body/middle/suggestions/header"
+        }
+      },
+      "page/body/middle/suggestions/$r0c1": {
+        "kind": "markdown",
+        "path": "page/body/middle/suggestions/$r0c1",
+        "widget": "",
+        "variant": "",
+        "text": "Neste kapp · eksempeldata\n| Nr | Sortiment | Lengde | Topp-Ø |\n| -- | --------- | ------ | ------ |\n| 1  | Sagtømmer | 430 cm | 26 cm  |\n| 2  | Massevirke| 310 cm | 18 cm  |",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/middle/suggestions/$r1c0": {
+        "kind": "group",
+        "path": "page/body/middle/suggestions/$r1c0",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "page/body/middle/suggestions/$r1c0/canonical",
+            "page/body/middle/suggestions/$r1c0/alternative"
+          ]
+        ],
+        "regions": {}
+      },
+      "page/body/middle/suggestions/$r1c0/canonical": {
+        "kind": "widget",
+        "path": "page/body/middle/suggestions/$r1c0/canonical",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Canonical",
+            "span": {
+              "type": "Span",
+              "start": 1453,
+              "end": 1464,
+              "line": 38,
+              "column": 25
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/middle/suggestions/$r1c0/alternative": {
+        "kind": "widget",
+        "path": "page/body/middle/suggestions/$r1c0/alternative",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Alternativ 1",
+            "span": {
+              "type": "Span",
+              "start": 1486,
+              "end": 1500,
+              "line": 38,
+              "column": 58
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/middle/suggestions/$r2c0": {
+        "kind": "markdown",
+        "path": "page/body/middle/suggestions/$r2c0",
+        "widget": "",
+        "variant": "",
+        "text": "Planvalg er ubundet i denne prototypen.",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/middle/suggestions/header": {
+        "kind": "group",
+        "path": "page/body/middle/suggestions/header",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "page/body/middle/suggestions/header/$r0c0"
+          ],
+          [
+            "page/body/middle/suggestions/header/$r1c0"
+          ]
+        ],
+        "regions": {}
+      },
+      "page/body/middle/suggestions/header/$r0c0": {
+        "kind": "markdown",
+        "path": "page/body/middle/suggestions/header/$r0c0",
+        "widget": "",
+        "variant": "",
+        "text": "## Apteringsforslag",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/middle/suggestions/header/$r1c0": {
+        "kind": "group",
+        "path": "page/body/middle/suggestions/header/$r1c0",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "page/body/middle/suggestions/header/$r1c0/optimize",
+            "page/body/middle/suggestions/header/$r1c0/columns"
+          ]
+        ],
+        "regions": {}
+      },
+      "page/body/middle/suggestions/header/$r1c0/optimize": {
+        "kind": "widget",
+        "path": "page/body/middle/suggestions/header/$r1c0/optimize",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Optimalisering",
+            "span": {
+              "type": "Span",
+              "start": 1190,
+              "end": 1206,
+              "line": 32,
+              "column": 55
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/middle/suggestions/header/$r1c0/columns": {
+        "kind": "widget",
+        "path": "page/body/middle/suggestions/header/$r1c0/columns",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Kolonner",
+            "span": {
+              "type": "Span",
+              "start": 1224,
+              "end": 1234,
+              "line": 32,
+              "column": 89
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/middle/currentStem": {
+        "kind": "frame",
+        "path": "page/body/middle/currentStem",
+        "widget": "",
+        "variant": "box",
+        "text": "",
+        "layout": {
+          "x": "25fr"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "page/body/middle/currentStem/$r0c1"
+          ],
+          [
+            "page/body/middle/currentStem/$r1c0"
+          ]
+        ],
+        "regions": {
+          "header": "page/body/middle/currentStem/header"
+        }
+      },
+      "page/body/middle/currentStem/$r0c1": {
+        "kind": "markdown",
+        "path": "page/body/middle/currentStem/$r0c1",
+        "widget": "",
+        "variant": "",
+        "text": "Aktuell stamme\n\n**Låste feil: 0**\nIngen låste feil registrert\n\nNåposisjon: 412,0 cm\nMaks kvistet: 412,0 cm\nProdusert / kappet: 0 cm\nSegmentrot: 0 cm",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/middle/currentStem/$r1c0": {
+        "kind": "markdown",
+        "path": "page/body/middle/currentStem/$r1c0",
+        "widget": "",
+        "variant": "",
+        "text": "Produksjon og feilflyt er plassholdere.",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/middle/currentStem/header": {
+        "kind": "markdown",
+        "path": "page/body/middle/currentStem/header",
+        "widget": "",
+        "variant": "",
+        "text": "## Stammen i aggregatet",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/stemTrack": {
+        "kind": "frame",
+        "path": "page/body/stemTrack",
+        "widget": "",
+        "variant": "box",
+        "text": "",
+        "layout": {
+          "y": "40fr"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "page/body/stemTrack/$r0c1"
+          ]
+        ],
+        "regions": {
+          "header": "page/body/stemTrack/header",
+          "footer": "page/body/stemTrack/footer"
+        }
+      },
+      "page/body/stemTrack/$r0c1": {
+        "kind": "markdown",
+        "path": "page/body/stemTrack/$r0c1",
+        "widget": "",
+        "variant": "",
+        "text": "**Plassholder for OperatorUnifiedStemSvg**\nStammeprofil, målepunkter, kapp og manuell cursor trenger en egen visuell provider.\nEksempel på Mermaid-innhold nedenfor utelates av konsolldumpen:\n```mermaid\nflowchart LR\n    Rot --> Kapp1 --> Kapp2 --> Topp\n```",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/stemTrack/header": {
+        "kind": "group",
+        "path": "page/body/stemTrack/header",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "page/body/stemTrack/header/$r0c0",
+            "page/body/stemTrack/header/$r0c1"
+          ],
+          [
+            "page/body/stemTrack/header/$r1c0"
+          ]
+        ],
+        "regions": {}
+      },
+      "page/body/stemTrack/header/$r0c0": {
+        "kind": "markdown",
+        "path": "page/body/stemTrack/header/$r0c0",
+        "widget": "",
+        "variant": "",
+        "text": "## Stammeforløp",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/stemTrack/header/$r0c1": {
+        "kind": "group",
+        "path": "page/body/stemTrack/header/$r0c1",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "x": "content"
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "page/body/stemTrack/header/$r0c1/taperNor",
+            "page/body/stemTrack/header/$r0c1/mixed"
+          ]
+        ],
+        "regions": {}
+      },
+      "page/body/stemTrack/header/$r0c1/taperNor": {
+        "kind": "widget",
+        "path": "page/body/stemTrack/header/$r0c1/taperNor",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "taperNOR",
+            "span": {
+              "type": "Span",
+              "start": 1965,
+              "end": 1975,
+              "line": 49,
+              "column": 43
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/stemTrack/header/$r0c1/mixed": {
+        "kind": "widget",
+        "path": "page/body/stemTrack/header/$r0c1/mixed",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Mixed",
+            "span": {
+              "type": "Span",
+              "start": 1991,
+              "end": 1998,
+              "line": 49,
+              "column": 69
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/stemTrack/header/$r1c0": {
+        "kind": "markdown",
+        "path": "page/body/stemTrack/header/$r1c0",
+        "widget": "",
+        "variant": "",
+        "text": "Hele estimatet · Predikert · Målt · Plan · Rest · Kvalitet 1/2 · Underkjent · Utkast",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/stemTrack/footer": {
+        "kind": "group",
+        "path": "page/body/stemTrack/footer",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "page/body/stemTrack/footer/$r0c0",
+            "page/body/stemTrack/footer/$r0c1",
+            "page/body/stemTrack/footer/$r0c2"
+          ],
+          [
+            "page/body/stemTrack/footer/$r1c0",
+            "page/body/stemTrack/footer/$r1c1",
+            "page/body/stemTrack/footer/$r1c2"
+          ]
+        ],
+        "regions": {}
+      },
+      "page/body/stemTrack/footer/$r0c0": {
+        "kind": "markdown",
+        "path": "page/body/stemTrack/footer/$r0c0",
+        "widget": "",
+        "variant": "",
+        "text": "FØLGER AGGREGAT",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/stemTrack/footer/$r0c1": {
+        "kind": "markdown",
+        "path": "page/body/stemTrack/footer/$r0c1",
+        "widget": "",
+        "variant": "",
+        "text": "Lengde: 412,0 cm",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/stemTrack/footer/$r0c2": {
+        "kind": "markdown",
+        "path": "page/body/stemTrack/footer/$r0c2",
+        "widget": "",
+        "variant": "",
+        "text": "Rel. lengde: 0,0 cm",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/stemTrack/footer/$r1c0": {
+        "kind": "markdown",
+        "path": "page/body/stemTrack/footer/$r1c0",
+        "widget": "",
+        "variant": "",
+        "text": "Pred. Ø O/B: 28,4 cm",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/stemTrack/footer/$r1c1": {
+        "kind": "markdown",
+        "path": "page/body/stemTrack/footer/$r1c1",
+        "widget": "",
+        "variant": "",
+        "text": "Profilvolum O/B: 0,312 m³",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "page/body/stemTrack/footer/$r1c2": {
+        "kind": "markdown",
+        "path": "page/body/stemTrack/footer/$r1c2",
+        "widget": "",
+        "variant": "",
+        "text": "Toppsylinder: 0,260 m³",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      },
+      "page/footer": {
+        "kind": "markdown",
+        "path": "page/footer",
+        "widget": "",
+        "variant": "",
+        "text": "STATISK PROTOTYPE · eksempeldata · ingen runtime",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      }
+    }
+  },
+  {
+    "source": "sdui 0.2;\n\ncontrols = [\n  header=\"## SDUI prototype-widgets\",\n  <\n    ok=button(\"OK\"), cancel=button(\"Avbryt\"),\n    pressed=button(\"Trykket\"), disabled=button(\"Utilgjengelig\") {enabled=false};\n    operator=input(\"Operatør\", value=\"Ola Nordmann\");\n    stemId=input(\"Stamme-ID\", value=\"GRAN-0042\");\n    note=input(\"Merknad\", value=\"Kontroller barkmåling før neste kapp\")\n  >\n]*b {<->, font=12};\n",
+    "code": "",
+    "instances": {
+      "controls": {
+        "kind": "frame",
+        "path": "controls",
+        "widget": "",
+        "variant": "box",
+        "text": "",
+        "layout": {
+          "x": "fill",
+          "font": 12.0
+        },
+        "arguments": {},
+        "rows": [
+          [
+            "controls/$r0c1"
+          ]
+        ],
+        "regions": {
+          "header": "controls/header"
+        }
+      },
+      "controls/$r0c1": {
+        "kind": "group",
+        "path": "controls/$r0c1",
+        "widget": "",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {},
+        "rows": [
+          [
+            "controls/$r0c1/ok",
+            "controls/$r0c1/cancel",
+            "controls/$r0c1/pressed",
+            "controls/$r0c1/disabled"
+          ],
+          [
+            "controls/$r0c1/operator"
+          ],
+          [
+            "controls/$r0c1/stemId"
+          ],
+          [
+            "controls/$r0c1/note"
+          ]
+        ],
+        "regions": {}
+      },
+      "controls/$r0c1/ok": {
+        "kind": "widget",
+        "path": "controls/$r0c1/ok",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "OK",
+            "span": {
+              "type": "Span",
+              "start": 80,
+              "end": 84,
+              "line": 6,
+              "column": 15
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "controls/$r0c1/cancel": {
+        "kind": "widget",
+        "path": "controls/$r0c1/cancel",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Avbryt",
+            "span": {
+              "type": "Span",
+              "start": 101,
+              "end": 109,
+              "line": 6,
+              "column": 36
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "controls/$r0c1/pressed": {
+        "kind": "widget",
+        "path": "controls/$r0c1/pressed",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Trykket",
+            "span": {
+              "type": "Span",
+              "start": 131,
+              "end": 140,
+              "line": 7,
+              "column": 20
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "controls/$r0c1/disabled": {
+        "kind": "widget",
+        "path": "controls/$r0c1/disabled",
+        "widget": "button",
+        "variant": "",
+        "text": "",
+        "layout": {
+          "enabled": false
+        },
+        "arguments": {
+          "label": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Utilgjengelig",
+            "span": {
+              "type": "Span",
+              "start": 159,
+              "end": 174,
+              "line": 7,
+              "column": 48
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "controls/$r0c1/operator": {
+        "kind": "widget",
+        "path": "controls/$r0c1/operator",
+        "widget": "input",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "text": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Operatør",
+            "span": {
+              "type": "Span",
+              "start": 212,
+              "end": 223,
+              "line": 8,
+              "column": 20
+            }
+          },
+          "value": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Ola Nordmann",
+            "span": {
+              "type": "Span",
+              "start": 231,
+              "end": 245,
+              "line": 8,
+              "column": 38
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "controls/$r0c1/stemId": {
+        "kind": "widget",
+        "path": "controls/$r0c1/stemId",
+        "widget": "input",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "text": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Stamme-ID",
+            "span": {
+              "type": "Span",
+              "start": 265,
+              "end": 276,
+              "line": 9,
+              "column": 18
+            }
+          },
+          "value": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "GRAN-0042",
+            "span": {
+              "type": "Span",
+              "start": 284,
+              "end": 295,
+              "line": 9,
+              "column": 37
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "controls/$r0c1/note": {
+        "kind": "widget",
+        "path": "controls/$r0c1/note",
+        "widget": "input",
+        "variant": "",
+        "text": "",
+        "layout": {},
+        "arguments": {
+          "text": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Merknad",
+            "span": {
+              "type": "Span",
+              "start": 313,
+              "end": 322,
+              "line": 10,
+              "column": 16
+            }
+          },
+          "value": {
+            "type": "Literal",
+            "kind": "string",
+            "value": "Kontroller barkmåling før neste kapp",
+            "span": {
+              "type": "Span",
+              "start": 330,
+              "end": 370,
+              "line": 10,
+              "column": 33
+            }
+          }
+        },
+        "rows": [],
+        "regions": {}
+      },
+      "controls/header": {
+        "kind": "markdown",
+        "path": "controls/header",
+        "widget": "",
+        "variant": "",
+        "text": "## SDUI prototype-widgets",
+        "layout": {},
+        "arguments": {},
+        "rows": [],
+        "regions": {}
+      }
+    }
+  }
+]

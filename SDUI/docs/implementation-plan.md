@@ -2,7 +2,7 @@
 
 **Status 2026-09-22:** SDL-løpet V0–V4 er levert og pushet som fasebrancher.
 Eieren har autorisert implementasjon av alle G-faser i én sammenhengende økt,
-med fasebrancher, milepælcommits og push ved faseslutt. G1-M1 er levert;
+med fasebrancher, milepælcommits og push ved faseslutt. G1-M1/M2 er levert;
 øvrige milepæler står som planlagt inntil deres akseptanse er verifisert.
 [Faktiske implementasjonsbevis](../go/evidence/G1.md) holdes atskilt fra
 [den genererte designplanen](../design/viewpoints/implementation.md).
@@ -35,7 +35,7 @@ designdekning, ikke fullførte implementasjonsmilepæler.
 | Milepæl | Leveranse og akseptanse |
 | --- | --- |
 | G1-M1 | **Levert:** Go-modul, syntax-only CLI og parser/AST med kildeposisjoner; alle eksempel-AST-er samsvarer med Python-fixturene |
-| G1-M2 | Validator/normalisering, relative regler, frame-regioner, instansbaner og kildegrenser; porterte positive/negative Python-tilfeller |
+| G1-M2 | **Levert:** Validator/normalisering, relative regler, frame-regioner, instansbaner og kildegrenser; porterte positive/negative Python-tilfeller |
 | G1-M3 | Concept1 og bindingseksempel gir kontrollert AST/diagnoser; konsoll-/Markdown-dump og prototypeeksport har en portert erstatning før Python-veien fjernes |
 
 Krav R01–R09, R13–R15, R19, R21–R24. Ingen SDL-kilde åpnes av parseren.

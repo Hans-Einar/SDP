@@ -1,8 +1,9 @@
 # SDUI i Go
 
-G1-M1: SDUI 0.2 lexer/parser og kildeposisjonert AST er implementert uten GUI eller
+G1-M1/M2: SDUI 0.2 lexer/parser og kildeposisjonert AST er implementert uten GUI eller
 I/O i parserpakken. Den taggede JSON-AST-en samsvarer med de eksisterende
-Python-fixturene. CLI-en er foreløpig syntax-only; semantikk følger i G1-M2.
+Python-fixturene. CLI-en validerer lokal profil som standard. Normalisering bevarer regioner,
+gjenbruk og instansbaner; 93 porttilfeller sammenlignes med Python-grunnlaget.
 
 Modul: `github.com/Hans-Einar/SDP/SDUI/go`, språkbaseline Go 1.25.
 Verifisert med lokal Go 1.27.1 fra go.dev, kontrollert mot publisert SHA-256.

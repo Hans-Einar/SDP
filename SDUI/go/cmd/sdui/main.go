@@ -13,7 +13,7 @@ import (
 func run() int {
 	flags := flag.NewFlagSet("sdui", flag.ContinueOnError)
 	output := flags.String("o", "", "Output JSON file (default stdout)")
-	flags.Bool("syntax-only", true, "Parse without semantic validation (G1-M1)")
+	syntaxOnly := flags.Bool("syntax-only", false, "Parse without semantic validation")
 	if err := flags.Parse(os.Args[1:]); err != nil {
 		return 2
 	}
@@ -52,7 +52,15 @@ func run() int {
 		json.NewEncoder(os.Stderr).Encode(map[string]any{"error": e})
 		return 2
 	}
-	out, e := json.MarshalIndent(map[string]any{"astFormat": "sdui-ast/0.2", "validation": "syntax-only", "document": parser.Data(doc)}, "", "  ")
+	validation := "syntax-only"
+	if !*syntaxOnly {
+		if e = parser.Validate(doc); e != nil {
+			json.NewEncoder(os.Stderr).Encode(map[string]any{"error": e})
+			return 2
+		}
+		validation = "local-profile"
+	}
+	out, e := json.MarshalIndent(map[string]any{"astFormat": "sdui-ast/0.2", "validation": validation, "document": parser.Data(doc)}, "", "  ")
 	if e != nil {
 		fmt.Fprintln(os.Stderr, e)
 		return 3
