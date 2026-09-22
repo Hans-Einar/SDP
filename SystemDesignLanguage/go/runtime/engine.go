@@ -124,7 +124,15 @@ func (e *Engine) Execute(ctx context.Context, request Request) (result Result, e
 	}
 	return Result{Action: a.Name, Revision: e.revision, Sequence: request.Sequence, Output: cloneRecord(output)}, nil
 }
-func (e *Engine) Close() { e.mu.Lock(); defer e.mu.Unlock(); e.closed = true; e.revision++ }
+func (e *Engine) Close() {
+	e.mu.Lock()
+	defer e.mu.Unlock()
+	if e.closed {
+		return
+	}
+	e.closed = true
+	e.revision++
+}
 
 func (e *Engine) Action(name string) (parser.Action, bool) {
 	e.mu.Lock()

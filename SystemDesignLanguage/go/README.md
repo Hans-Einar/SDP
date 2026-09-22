@@ -34,3 +34,14 @@ G4-M3 har en typet SDUI-port i `bridge/`. Enkel Echo og en eksplisitt simulert
 EditAptCell går gjennom begge runtimene. `go run ./cmd/sdl-simulate` skriver
 korrelert hendelsesspor; `go run -tags desktop ./cmd/sdl-demo` viser den native
 Fyne-prototypen. `examples/simulation` er separat håndskrevet Go-domenelogikk.
+
+G4-M4: demoen følger begge kildefiler; ugyldig kilde beholder siste gyldige
+modell og feilstatus. SDL-modelreload beholder Go-eid domenestate og avviser
+eldre hendelser. Endret Go-kode krever bygg/restart:
+
+```sh
+go run ./cmd/sdl-dev -root . -package ./cmd/sdl-demo -tags desktop
+```
+
+Utviklingsverten beholder kjørende prosess ved byggfeil. Vellykket bygg starter
+ny prosess; vedvarende domenetilstand over prosessrestart krever egen lagring.

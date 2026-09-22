@@ -178,3 +178,12 @@ func (r *RuntimeView) Adopt(candidate reload.Candidate) error {
 	return err
 }
 func (r *RuntimeView) Close() { r.closed = true; r.View.Close(); r.Session.Close() }
+
+// RefreshModel recreates revision-bound native event closures after the owner
+// publishes a changed external binding model (for example SDL hot reload).
+func (r *RuntimeView) RefreshModel() error {
+	if r.closed {
+		return fmt.Errorf("closed: runtime view")
+	}
+	return r.mount()
+}

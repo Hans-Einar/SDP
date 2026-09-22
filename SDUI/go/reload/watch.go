@@ -4,14 +4,12 @@ package reload
 
 import (
 	"context"
-	"crypto/sha256"
 	"fmt"
-	"io"
-	"os"
 	"time"
 
 	"github.com/Hans-Einar/SDP/SDUI/go/parser"
 	uiruntime "github.com/Hans-Einar/SDP/SDUI/go/runtime"
+	"github.com/Hans-Einar/SDP/SDUI/go/sourcewatch"
 )
 
 type Candidate struct {
@@ -31,21 +29,8 @@ func Read(path, entry string, sequence uint64, prepare Prepare) Candidate {
 	return compile(c, source, entry, prepare)
 }
 func readSource(path string, sequence uint64) (Candidate, []byte) {
-	c := Candidate{Sequence: sequence}
-	f, err := os.Open(path)
-	if err != nil {
-		c.Err = err
-		return c, nil
-	}
-	defer f.Close()
-	source, err := io.ReadAll(io.LimitReader(f, parser.MaxBytes+1))
-	if err != nil {
-		c.Err = err
-		return c, nil
-	}
-	hash := sha256.Sum256(source)
-	c.Hash = fmt.Sprintf("%x", hash)
-	return c, source
+	c := sourcewatch.Read(path, parser.MaxBytes)
+	return Candidate{Sequence: sequence, Hash: c.Hash, Err: c.Err}, c.Bytes
 }
 func compile(c Candidate, source []byte, entry string, prepare Prepare) Candidate {
 	if c.Err != nil {
@@ -76,48 +61,22 @@ func compile(c Candidate, source []byte, entry string, prepare Prepare) Candidat
 // are handled. The bounded latest-candidate channel coalesces intermediate saves.
 func Watch(ctx context.Context, path, entry string, interval time.Duration, prepare Prepare) <-chan Candidate {
 	out := make(chan Candidate, 1)
-	if interval < 10*time.Millisecond {
-		interval = 10 * time.Millisecond
-	}
 	go func() {
 		defer close(out)
-		ticker := time.NewTicker(interval)
-		defer ticker.Stop()
-		last := ""
-		var sequence uint64
-		for {
-			sequence++
-			c, source := readSource(path, sequence)
-			key := c.Hash
-			if c.Err != nil {
-				key += "|" + c.Err.Error()
-			}
-			if key != last {
-				last = key
-				c = compile(c, source, entry, prepare)
+		for c := range sourcewatch.Watch(ctx, path, parser.MaxBytes, interval) {
+			candidate := compile(Candidate{Sequence: c.Sequence, Hash: c.Hash, Err: c.Err}, c.Bytes, entry, prepare)
+			select {
+			case out <- candidate:
+			default:
 				select {
+				case <-out:
+				default:
+				}
+				select {
+				case out <- candidate:
 				case <-ctx.Done():
 					return
-				default:
 				}
-				select {
-				case out <- c:
-				default:
-					select {
-					case <-out:
-					default:
-					}
-					select {
-					case out <- c:
-					case <-ctx.Done():
-						return
-					}
-				}
-			}
-			select {
-			case <-ctx.Done():
-				return
-			case <-ticker.C:
 			}
 		}
 	}()

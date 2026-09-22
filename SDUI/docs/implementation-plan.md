@@ -2,7 +2,7 @@
 
 **Status 2026-09-22:** SDL-løpet V0–V4 er levert og pushet som fasebrancher.
 Eieren har autorisert implementasjon av alle G-faser i én sammenhengende økt,
-med fasebrancher, milepælcommits og push ved faseslutt. G1–G3 er levert;
+med fasebrancher, milepælcommits og push ved faseslutt. G1–G4 er levert;
 øvrige milepæler står som planlagt inntil deres akseptanse er verifisert.
 [Faktiske implementasjonsbevis](../go/evidence/G1.md) holdes atskilt fra
 [den genererte designplanen](../design/viewpoints/implementation.md).
@@ -15,7 +15,7 @@ henvisninger til P-faser i eldre bevis gjelder historien, ikke aktive leveranser
 [checkpoint](../../docs/checkpoint%231/07-SDUI-0.2-and-Go-Direction.md).
 
 Omfang: SDL/SDUI-parser og runtime i Go, felles SDUI-layout, SVG-eksport, første
-Fyne-vert, modellreload og senere Go-generering. G0/G1–G3 er levert; G2 er under implementasjon.
+Fyne-vert, modellreload og senere Go-generering. G0/G1–G4 er levert; G2 er under implementasjon.
 Python SDUI 0.2, strukturparseren design-core og eksemplene er eksisterende portgrunnlag.
 
 Designgrunnlag 2026-09-22: [felles SDL-strukturmodell](../design/README.md) beskriver
@@ -81,7 +81,7 @@ Eier: SDL-implementasjonen for semantikk/runtime; SDUI eier UI-siden av porten.
 | G4-M1 | **Levert:** Port design-core-struktur til Go med dokumentert grammatikk og tester; checkpoint/MVP1-kandidater blir ikke automatisk støttet |
 | G4-M2 | **Levert:** Definer én kjørbar profil for navngitt handling, typed input/resultat og binding til registrert Go-funksjon; negative og manglende bindinger avvises |
 | G4-M3 | **Levert:** SDUI-knapp/input → SDL-handling → Go-funksjon → UI-oppdatering; kildekart og samme kontrakt med eksplisitt simulert domene |
-| G4-M4 | Reload av SDL-modell med siste gyldige versjon, tilstandsregel og håndtering av pågående hendelser; Go-endring bygges/restartes |
+| G4-M4 | **Levert:** Reload av SDL-modell med siste gyldige versjon, tilstandsregel og håndtering av pågående hendelser; Go-endring bygges/restartes |
 
 R12/R18/R25. Bruk et avgrenset EditAptCell-scenario fra MVP1 som referanse etter
 at enkel binding virker. Hele 66-fils korpuset er ikke et parserakseptansemål ennå.

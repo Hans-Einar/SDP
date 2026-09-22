@@ -173,6 +173,9 @@ func (s *Session) Dispatch(event Event) error {
 	return s.Apply(revision, s.BatchRevision+1, updates)
 }
 func (s *Session) Close() {
+	if s.closed {
+		return
+	}
 	s.closed = true
 	s.handlers = map[string]Handler{}
 	s.focused = ""
@@ -190,3 +193,15 @@ func (s *Session) CheckWith(check func(*parser.Instance) error) error {
 	s.check = check
 	return nil
 }
+
+// InvalidateEvents advances the published binding/model epoch without changing
+// widget state. Hosts rebuild native event closures after an SDL model change.
+func (s *Session) InvalidateEvents() error {
+	if s.closed {
+		return fault("closed", "Session is closed")
+	}
+	s.Revision++
+	return nil
+}
+
+func (s *Session) Closed() bool { return s.closed }
