@@ -1,0 +1,12 @@
+{
+  "version": "sdl-go-model/1/sdui-go-model/1",
+  "revision": "225af11837301fb896a3a41185bd174ebded9a957629b4c84f5663dad4b33bf1",
+  "renderer": "",
+  "diagrams": null,
+  "facts": null,
+  "model_gaps": null,
+  "outputs": {
+    "actions_gen.go": "93ab69fe94443c2e03a2cb16caad110c90ec9b7535d6b7cb22f54e9fe77ad018",
+    "ui_gen.go": "a4a44f89666f240e6f6ee96b26dbe80afda970f466cc4e092e291d69084ccc56"
+  }
+}
