@@ -104,7 +104,7 @@ eller separate workerprosesser er ikke nødvendig akseptanse for hot reload.
 
 ## G6 — navigerbare dokumenter og generering ved behov
 
-**Status: under implementasjon**, med [designkontrakt og XFMD-handoff](../../docs/SDL-Navigable-Viewpoints-Design.md).
+**Status: G6-M1–M6 levert**, med [designkontrakt og XFMD-handoff](../../docs/SDL-Navigable-Viewpoints-Design.md).
 Eier: SDL for projeksjon/publisering; XFMD for dokumentpaneler og lenkeruting.
 Dette er dokumentvisning, adskilt fra G2s Fyne-vert for interaktive SDUI-widgets.
 
@@ -115,7 +115,7 @@ Dette er dokumentvisning, adskilt fra G2s Fyne-vert for interaktive SDUI-widgets
 | G6-M3 | **Levert:** XFMD med navigasjons-/hovedpanel, registrert leseradapter og eksplisitt vindu/panel; klikk, fokusbytte, flere vinduer og lukket mål testet |
 | G6-M4 | **Levert:** Valgfri Go-bakgrunnstjeneste med lokal IPC, cache/invalidering, leser-lease, request-rekkefølge, kvoter og opprydding; ingen døde bilder ved dokumentbytte/reload |
 | G6-M5 | **Levert:** Fast symbol-/pilprofil med UML der semantikken stemmer; aktørfigurer og use-case-ellipser; rendererprøver kontrollerer faktiske figurer/markører, ikke bare exitkode |
-| G6-M6 | Senere eksplisitt klasse-/relasjonsprofil med multiplisitet og aggregation/composition; språk/validator før kildekoblede klassediagrammer, ingen automatisk oversettelse fra contains |
+| G6-M6 | **Levert:** Eksplisitt klasse-/relasjonsprofil med multiplisitet og aggregation/composition; språk/validator før kildekoblede klassediagrammer, ingen automatisk oversettelse fra contains |
 
 G6-M1 avhenger av G4-M1s strukturelle frontendport, ikke SDL-runtime eller G5s
 Go-generering. Viewpoint-port og kildekart flyttes fra G5-M3 til G6-M1;

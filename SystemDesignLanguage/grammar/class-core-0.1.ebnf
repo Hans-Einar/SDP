@@ -1,0 +1,14 @@
+model = "language", "class-core", "version", "0.1", ".",
+        { declaration }, { statement } ;
+declaration = ("class" | "association"), identifier, "." ;
+statement = identifier, "attribute", identifier, "as", type, "."
+          | identifier, "operation", identifier, "returns", type, "."
+          | identifier, "links", endpoint, "with", endpoint, "."
+          | identifier, "has", "ownership", "=", ownership, "." ;
+endpoint = identifier, "role", identifier, "multiplicity", integer,
+           "to", (integer | "many") ;
+ownership = "none" | "aggregation" | "composition" ;
+type = "text" | "integer" | "boolean" | identifier ;
+identifier = uppercaseLetter, { letter | digit } ;
+(* Shared SDL lexical rules. Semantic bounds and canonical ordering:
+   docs/SDL-Class-Profile.md. No runtime execution is defined. *)

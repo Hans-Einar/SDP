@@ -1,0 +1,14 @@
+language class-core version 0.1.
+class DomainModule.
+class Runtime.
+association RuntimeModules.
+association RuntimeWidgets.
+class Widget.
+Runtime attribute Revision as integer.
+Runtime operation Reload returns boolean.
+RuntimeModules has ownership = aggregation.
+RuntimeModules links Runtime role Client multiplicity 0 to many with DomainModule role Modules multiplicity 1 to many.
+RuntimeWidgets has ownership = composition.
+RuntimeWidgets links Runtime role Owner multiplicity 1 to 1 with Widget role Widgets multiplicity 0 to many.
+Widget attribute Value as text.
+Widget operation Commit returns boolean.
