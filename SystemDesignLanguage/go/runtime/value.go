@@ -76,3 +76,6 @@ func sameType(a, b parser.RecordType) bool {
 	}
 	return true
 }
+
+// ValidateRecord exposes the same closed scalar contract to explicit adapters.
+func ValidateRecord(record Record, typ parser.RecordType) error { return checkRecord(record, typ) }

@@ -46,3 +46,30 @@ merkes som simulering og utfører ingen Ponsse-/maskinhandlinger.
 
 Hot reload av modell og håndtering av pågående kall presiseres og prøves i G4-M4.
 Go-funksjonsendringer krever vanlig Go-bygg og prosessrestart.
+
+## SDUI-port — G4-M3
+
+SDUI-refene er symbolske. Verten leverer en eksplisitt alias→SDL-runtime-tabell;
+bridge eller parser åpner ikke ref-stien. Kjørbar callback er
+`module.Action.@invoke`. `module.Action.setHandle(page.input)` navngir resultat-
+mottakeren. Første resultatport skriver et `text`-felt til et input-handle.
+
+En typet Go-bindingsplan sier hvor hvert inputfelt kommer fra: widgetens draft,
+eventverdi, typed literal eller navngitt kontekstverdi. Det finnes nøyaktig én
+kilde per felt. Tekstinput konverteres eksplisitt i adapteren hvis SDL-feltet er
+integer/boolean; runtime gjør ingen implisitt konvertering. Hele bindingssettet
+valideres før noen handler installeres. Ukjent modul/member/action, manglende
+feltkilde og feil resultatwidget avvises. Linkoversikten har kildeposisjoner til
+både SDUI-widgeten og SDL-handlingen.
+
+Domenerevisjon er egen bindingskontekst, aldri UI-verdirevisjonen. Et godkjent
+SDL-resultat kan oppdatere denne konteksten og UI-verdien. UI-propertybatchen
+valideres fortsatt samlet; en presentasjonsfeil ruller ikke tilbake en allerede
+utført Go-domenehandling og må ikke føre til automatisk gjentakelse.
+`CurrentInvocation(ctx)` gir Go-funksjonen action, modellrevisjon og sekvens-ID.
+Profilen har én ordnet kommandokilde per Engine; flere samtidige avsendere må
+koordineres av samme sekvenseier. Ingen distribuert exactly-once-garanti utledes.
+
+[EditAptCell-kildene og håndskrevet simulering](../SystemDesignLanguage/go/examples/)
+viser stabil celleidentitet, separat domenerevisjon og eksplisitt avvist edit.
+Den eldre MVP1-scenariofilen er en kravreferanse, ikke innlest kjørbar kode.

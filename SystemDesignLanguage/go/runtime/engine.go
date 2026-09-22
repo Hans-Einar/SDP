@@ -115,7 +115,7 @@ func (e *Engine) Execute(ctx context.Context, request Request) (result Result, e
 			err = fmt.Errorf("handler-panic: %s: %v", a.Name, v)
 		}
 	}()
-	output, err := e.registry[a.GoSymbol].Call(ctx, cloneRecord(request.Input))
+	output, err := e.registry[a.GoSymbol].Call(context.WithValue(ctx, invocationKey{}, Invocation{a.Name, e.revision, request.Sequence}), cloneRecord(request.Input))
 	if err != nil {
 		return Result{}, err
 	}
@@ -125,3 +125,21 @@ func (e *Engine) Execute(ctx context.Context, request Request) (result Result, e
 	return Result{Action: a.Name, Revision: e.revision, Sequence: request.Sequence, Output: cloneRecord(output)}, nil
 }
 func (e *Engine) Close() { e.mu.Lock(); defer e.mu.Unlock(); e.closed = true; e.revision++ }
+
+func (e *Engine) Action(name string) (parser.Action, bool) {
+	e.mu.Lock()
+	defer e.mu.Unlock()
+	a, ok := e.program.Actions[name]
+	return a, ok
+}
+
+type invocationKey struct{}
+type Invocation struct {
+	Action             string
+	Revision, Sequence uint64
+}
+
+func CurrentInvocation(ctx context.Context) (Invocation, bool) {
+	v, ok := ctx.Value(invocationKey{}).(Invocation)
+	return v, ok
+}

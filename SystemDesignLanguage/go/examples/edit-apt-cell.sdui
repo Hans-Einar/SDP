@@ -1,0 +1,10 @@
+sdui 0.2;
+ref: apt "edit-apt-cell.sdl";
+page = [
+  header="## EditAptCell · simulert domene",
+  "Celle LengthA1 · eksempelverdi 400. Prøven godtar heltall 100–1000.\nDette er ikke Ponsse-domenevalidering eller maskinkontroll.";
+  value=input("Lengdeverdi", value="400", callback=apt.EditAptCell.@invoke),
+  apply=button("Godta celle", callback=apt.EditAptCell.@invoke);
+  "Enter eller knappen sender draft og forventet domenerevisjon. Escape forkaster lokal redigering."
+]*b {scale=1,padding=0.02};
+apt.EditAptCell.setHandle(page.value);

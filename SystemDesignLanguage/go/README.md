@@ -29,3 +29,8 @@ viewpoint-generatoren er erstattet. Det finnes ingen Python-fallback i Go.
 
 Kjøreprofilkontroll: `go run ./cmd/sdl action-check examples/echo.sdl`.
 `runtime.New` krever eksplisitt signaturregistrering; ingen kilde kjøres som Go.
+
+G4-M3 har en typet SDUI-port i `bridge/`. Enkel Echo og en eksplisitt simulert
+EditAptCell går gjennom begge runtimene. `go run ./cmd/sdl-simulate` skriver
+korrelert hendelsesspor; `go run -tags desktop ./cmd/sdl-demo` viser den native
+Fyne-prototypen. `examples/simulation` er separat håndskrevet Go-domenelogikk.
