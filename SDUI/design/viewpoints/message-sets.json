@@ -1,0 +1,363 @@
+[
+  {
+    "channel": "GoDomainCalls",
+    "mode": "BoundExecution",
+    "message": "DomainActionRequest",
+    "contract": "GoDomainCallsProtocol",
+    "payload_contract": "ActionArguments",
+    "variants": [],
+    "senders": [
+      "SdlDispatcher"
+    ],
+    "receivers": [
+      "GoDomainImplementation"
+    ],
+    "source_facts": [
+      "f0148",
+      "f0210",
+      "f0212",
+      "f0216",
+      "f0406"
+    ]
+  },
+  {
+    "channel": "GoDomainCalls",
+    "mode": "BoundExecution",
+    "message": "DomainActionResult",
+    "contract": "GoDomainCallsProtocol",
+    "payload_contract": "ActionOutcome",
+    "variants": [],
+    "senders": [
+      "GoDomainImplementation"
+    ],
+    "receivers": [
+      "SdlDispatcher"
+    ],
+    "source_facts": [
+      "f0151",
+      "f0210",
+      "f0213",
+      "f0217",
+      "f0405"
+    ]
+  },
+  {
+    "channel": "ModelReloadCalls",
+    "mode": "LiveEditing",
+    "message": "ReloadPublished",
+    "contract": "ModelReloadCallsProtocol",
+    "payload_contract": "ReloadOutcome",
+    "variants": [],
+    "senders": [
+      "ReloadCoordinator"
+    ],
+    "receivers": [
+      "SourceWatcher"
+    ],
+    "source_facts": [
+      "f0248",
+      "f0250",
+      "f0335",
+      "f0347",
+      "f0571"
+    ]
+  },
+  {
+    "channel": "ModelReloadCalls",
+    "mode": "LiveEditing",
+    "message": "ReloadRejected",
+    "contract": "ModelReloadCallsProtocol",
+    "payload_contract": "ReloadOutcome",
+    "variants": [],
+    "senders": [
+      "ReloadCoordinator"
+    ],
+    "receivers": [
+      "SourceWatcher"
+    ],
+    "source_facts": [
+      "f0248",
+      "f0251",
+      "f0336",
+      "f0352",
+      "f0572"
+    ]
+  },
+  {
+    "channel": "ModelReloadCalls",
+    "mode": "LiveEditing",
+    "message": "ReloadRequest",
+    "contract": "ModelReloadCallsProtocol",
+    "payload_contract": "ReloadArguments",
+    "variants": [],
+    "senders": [
+      "SourceWatcher"
+    ],
+    "receivers": [
+      "ReloadCoordinator"
+    ],
+    "source_facts": [
+      "f0248",
+      "f0252",
+      "f0334",
+      "f0354",
+      "f0573"
+    ]
+  },
+  {
+    "channel": "NativeUiActions",
+    "mode": "BoundExecution",
+    "message": "UiActionRejected",
+    "contract": "NativeUiActionsProtocol",
+    "payload_contract": "ActionOutcome",
+    "variants": [],
+    "senders": [
+      "SduiDispatcher"
+    ],
+    "receivers": [
+      "FyneBackend"
+    ],
+    "source_facts": [
+      "f0177",
+      "f0257",
+      "f0259",
+      "f0479",
+      "f0595"
+    ]
+  },
+  {
+    "channel": "NativeUiActions",
+    "mode": "BoundExecution",
+    "message": "UiActionRequest",
+    "contract": "NativeUiActionsProtocol",
+    "payload_contract": "ActionArguments",
+    "variants": [],
+    "senders": [
+      "FyneBackend"
+    ],
+    "receivers": [
+      "SduiDispatcher"
+    ],
+    "source_facts": [
+      "f0179",
+      "f0257",
+      "f0260",
+      "f0478",
+      "f0597"
+    ]
+  },
+  {
+    "channel": "NativeUiActions",
+    "mode": "BoundExecution",
+    "message": "UiActionResult",
+    "contract": "NativeUiActionsProtocol",
+    "payload_contract": "ActionOutcome",
+    "variants": [],
+    "senders": [
+      "SduiDispatcher"
+    ],
+    "receivers": [
+      "FyneBackend"
+    ],
+    "source_facts": [
+      "f0178",
+      "f0257",
+      "f0261",
+      "f0480",
+      "f0600"
+    ]
+  },
+  {
+    "channel": "SdlActionCalls",
+    "mode": "BoundExecution",
+    "message": "SdlActionRequest",
+    "contract": "SdlActionCallsProtocol",
+    "payload_contract": "ActionArguments",
+    "variants": [],
+    "senders": [
+      "SdlUiBindingAdapter"
+    ],
+    "receivers": [
+      "SdlDispatcher"
+    ],
+    "source_facts": [
+      "f0389",
+      "f0391",
+      "f0394",
+      "f0407",
+      "f0461"
+    ]
+  },
+  {
+    "channel": "SdlActionCalls",
+    "mode": "BoundExecution",
+    "message": "SdlActionResult",
+    "contract": "SdlActionCallsProtocol",
+    "payload_contract": "ActionOutcome",
+    "variants": [],
+    "senders": [
+      "SdlDispatcher"
+    ],
+    "receivers": [
+      "SdlUiBindingAdapter"
+    ],
+    "source_facts": [
+      "f0389",
+      "f0392",
+      "f0397",
+      "f0408",
+      "f0460"
+    ]
+  },
+  {
+    "channel": "UiCompilationCalls",
+    "mode": "LiveEditing",
+    "message": "CompileUiRejected",
+    "contract": "UiCompilationCallsProtocol",
+    "payload_contract": "ReloadOutcome",
+    "variants": [],
+    "senders": [
+      "SduiFrontend"
+    ],
+    "receivers": [
+      "ReloadCoordinator"
+    ],
+    "source_facts": [
+      "f0079",
+      "f0337",
+      "f0492",
+      "f0601",
+      "f0603"
+    ]
+  },
+  {
+    "channel": "UiCompilationCalls",
+    "mode": "LiveEditing",
+    "message": "CompileUiRequest",
+    "contract": "UiCompilationCallsProtocol",
+    "payload_contract": "ReloadArguments",
+    "variants": [],
+    "senders": [
+      "ReloadCoordinator"
+    ],
+    "receivers": [
+      "SduiFrontend"
+    ],
+    "source_facts": [
+      "f0081",
+      "f0339",
+      "f0491",
+      "f0601",
+      "f0604"
+    ]
+  },
+  {
+    "channel": "UiCompilationCalls",
+    "mode": "LiveEditing",
+    "message": "CompileUiResult",
+    "contract": "UiCompilationCallsProtocol",
+    "payload_contract": "ReloadOutcome",
+    "variants": [],
+    "senders": [
+      "SduiFrontend"
+    ],
+    "receivers": [
+      "ReloadCoordinator"
+    ],
+    "source_facts": [
+      "f0084",
+      "f0338",
+      "f0493",
+      "f0601",
+      "f0605"
+    ]
+  },
+  {
+    "channel": "UiDomainActions",
+    "mode": "BoundExecution",
+    "message": "BoundActionRequest",
+    "contract": "UiDomainActionsProtocol",
+    "payload_contract": "ActionArguments",
+    "variants": [],
+    "senders": [
+      "SduiDispatcher"
+    ],
+    "receivers": [
+      "SdlUiBindingAdapter"
+    ],
+    "source_facts": [
+      "f0040",
+      "f0462",
+      "f0482",
+      "f0606",
+      "f0608"
+    ]
+  },
+  {
+    "channel": "UiDomainActions",
+    "mode": "BoundExecution",
+    "message": "BoundActionResult",
+    "contract": "UiDomainActionsProtocol",
+    "payload_contract": "ActionOutcome",
+    "variants": [],
+    "senders": [
+      "SdlUiBindingAdapter"
+    ],
+    "receivers": [
+      "SduiDispatcher"
+    ],
+    "source_facts": [
+      "f0043",
+      "f0463",
+      "f0481",
+      "f0606",
+      "f0609"
+    ]
+  },
+  {
+    "channel": "UiGenerationEvents",
+    "mode": "BoundExecution",
+    "message": "UiGenerationNotices",
+    "contract": "UiGenerationEventsProtocol",
+    "payload_contract": "UiGenerationContract",
+    "variants": [
+      "UiGenerationChanged"
+    ],
+    "senders": [
+      "SduiInstanceStore"
+    ],
+    "receivers": [
+      "FyneBackend"
+    ],
+    "source_facts": [
+      "f0180",
+      "f0500",
+      "f0614",
+      "f0616",
+      "f0618"
+    ]
+  },
+  {
+    "channel": "UiGenerationEvents",
+    "mode": "LiveEditing",
+    "message": "UiGenerationNotices",
+    "contract": "UiGenerationEventsProtocol",
+    "payload_contract": "UiGenerationContract",
+    "variants": [
+      "UiGenerationChanged"
+    ],
+    "senders": [
+      "SduiInstanceStore"
+    ],
+    "receivers": [
+      "FyneBackend"
+    ],
+    "source_facts": [
+      "f0181",
+      "f0501",
+      "f0614",
+      "f0616",
+      "f0618"
+    ]
+  }
+]

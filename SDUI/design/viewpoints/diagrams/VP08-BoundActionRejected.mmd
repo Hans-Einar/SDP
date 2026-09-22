@@ -1,0 +1,5 @@
+sequenceDiagram
+    participant n_FyneBackend as FyneBackend
+    participant n_SduiDispatcher as SduiDispatcher
+    n_FyneBackend->>n_SduiDispatcher: 1: UiActionRequest (NativeUiActions)
+    n_SduiDispatcher-->>n_FyneBackend: 2: UiActionRejected (NativeUiActions) reply-to 1

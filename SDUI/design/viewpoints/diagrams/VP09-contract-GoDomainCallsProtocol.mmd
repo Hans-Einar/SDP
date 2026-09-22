@@ -1,0 +1,6 @@
+flowchart LR
+    n_DomainActionRequest["DomainActionRequest (message)"]
+    n_DomainActionResult["DomainActionResult (message)"]
+    n_GoDomainCallsProtocol["GoDomainCallsProtocol (contract)"]
+    n_GoDomainCallsProtocol -->|permits| n_DomainActionRequest
+    n_GoDomainCallsProtocol -->|permits| n_DomainActionResult

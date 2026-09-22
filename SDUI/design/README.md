@@ -3,14 +3,14 @@
 [SDL-verktøyets genererte viewpoints](viewpoints/viewpoints.md) og
 [samlet rendret utskrift](viewpoints/printout.md) er avledet fra denne kilden.
 Regenerering og utvalg står i [verktøydokumentasjonen](../../SystemDesignLanguage/tools/README.md).
-Use Case/Feature og allokering genereres fra SDL. Datakart og packet genereres også; manglende Channel-konstruksjoner rapporteres eksplisitt;
-de tegnes ikke inn manuelt i utskriften.
+Use Case/Feature og allokering genereres fra SDL. Datakart, packet og kontraktkontrollerte Channel-sekvenser genereres også;
+ingen diagramfakta tegnes inn manuelt.
 
 Oppdatert 2026-09-22. [architecture.design](architecture.design) er den felles
 målstrukturen for **begge språkene**. Den erstatter den tidligere korte
 SDUI/vertsmodellen på samme sted. Ingen kopi opprettes under SDL-katalogen.
 
-Modellen er skrevet i implementert `design-core 0.3` og passerer den eksisterende
+Modellen er skrevet i implementert `design-core 0.4` og passerer den eksisterende
 SDL-parseren. Dette profilnummeret gjelder SDL-struktur, ikke utgått SDUI 0.1.
 Den beskriver planlagt Go-kode; kjørbar Go-parser/runtime finnes ennå ikke.
 
@@ -31,10 +31,10 @@ python3 SDUI/tools/export_design.py
 
 De to første kommandoene er den eksisterende SDL-CLI-en. Den siste bruker samme
 `check`, `canonicalize`, `symbol_table` og `to_json` for å regenerere AST,
-ansvarsoversikt og rapport. Én frontend brukes; V1-utvidelsen er definert i design-core 0.3, uten gammel fallback.
+ansvarsoversikt og rapport. Én frontend brukes; V1-utvidelsen er definert i design-core 0.4, uten gammel fallback.
 Ugyldig modell stopper eksport før eksisterende artefakter erstattes.
 
-Verifisert 2026-09-22: 227 deklarasjoner og 509 fakta; 40 Units, 2 Containers,
+Verifisert 2026-09-22: 273 deklarasjoner og 675 fakta; 40 Units, 2 Containers,
 92 Functionality-er, 14 Capabilities, 30 Interfaces, 8 Modes, 12 Activities,
 2 Actors, 6 UseCases, 6 Features samt 15 data-/kontraktdefinisjoner.
 Syntaks, typer, navn, eierskap, sykluser og kanonisk representasjon passerer.
@@ -222,3 +222,16 @@ optional draft er ikke automatisk en tom streng.
 og 64-bit generation, big-endian/MSB-first. Dette beskriver en dokumenterbar
 wireprøve, ikke en vedtatt transport mellom Go-bibliotekene, SDL-runtime-ABI,
 P1000- eller StanForD-format. Native Go-kall trenger ikke serialiseres slik.
+
+## V3 — meldinger og scenarioer
+
+Sju logiske Channels og fire eksplisitte scenarioer dekker akseptert/avvist
+UI-handling og modellreload. BoundActionAccepted går FyneBackend → UI-dispatch →
+bindingsadapter → SDL-dispatch → registrert Go-domeneansvar, med korrelert retur
+for hvert kall. BoundActionRejected avsluttes ved UI-valideringen uten domene-kall.
+Dette er planlagt samarbeid, ikke observerte kjøreresultater.
+
+Reload-scenarioene skiller publisert modell fra avvist kandidat. Bare den
+aksepterte banen inneholder UiGenerationNotices. Kontraktene har optional draft,
+generation og diagnose der fravær er meningsfullt; ingen kjørende tilstandsmigrering
+hevdes. [MessageSet](viewpoints/message-sets.json) er avledet av SDL-verktøyet.

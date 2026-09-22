@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant n_FyneBackend as FyneBackend
+    participant n_GoDomainImplementation as GoDomainImplementation
+    participant n_SdlDispatcher as SdlDispatcher
+    participant n_SdlUiBindingAdapter as SdlUiBindingAdapter
+    participant n_SduiDispatcher as SduiDispatcher
+    participant n_SduiInstanceStore as SduiInstanceStore
+    n_FyneBackend->>n_SduiDispatcher: 1: UiActionRequest (NativeUiActions)
+    n_SduiDispatcher->>n_SdlUiBindingAdapter: 2: BoundActionRequest (UiDomainActions)
+    n_SdlUiBindingAdapter->>n_SdlDispatcher: 3: SdlActionRequest (SdlActionCalls)
+    n_SdlDispatcher->>n_GoDomainImplementation: 4: DomainActionRequest (GoDomainCalls)
+    n_GoDomainImplementation-->>n_SdlDispatcher: 5: DomainActionResult (GoDomainCalls) reply-to 4
+    n_SdlDispatcher-->>n_SdlUiBindingAdapter: 6: SdlActionResult (SdlActionCalls) reply-to 3
+    n_SdlUiBindingAdapter-->>n_SduiDispatcher: 7: BoundActionResult (UiDomainActions) reply-to 2
+    n_SduiDispatcher-->>n_FyneBackend: 8: UiActionResult (NativeUiActions) reply-to 1
+    n_SduiInstanceStore->>n_FyneBackend: 9: UiGenerationNotices / UiGenerationChanged (UiGenerationEvents)

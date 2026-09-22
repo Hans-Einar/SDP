@@ -19,14 +19,14 @@ Visningsvalg får filtrere og ordne fakta, men ikke opprette nye arkitekturfakta
 
 | Område | Checkpoint/studier | Faktisk implementasjon |
 | --- | --- | --- |
-| Unit, Container, Functionality, Capability, Interface, Activity, Mode | Strukturelt grunnlag | Python design-core 0.3 parser/AST/validator/formatter |
+| Unit, Container, Functionality, Capability, Interface, Activity, Mode | Strukturelt grunnlag | Python design-core 0.4 parser/AST/validator/formatter |
 | contains, owns, realizes, provides, consumes, requires in mode, refines | Typede strukturrelasjoner | Implementert med navn, eierskap, sykluser og kildeposisjoner |
 | Actor, Use Case, Feature og bidrag | 02/04 og V1s avgrensede språkregler | Implementert i 0.2: pursues, supports, contributes-to; direkte og mange-til-mange-bidrag |
 | Functionality-allokering | V1, eksplisitt kjørekontekst | allocated-to Container in mode Mode; høyst én Container per ansvar/modus, uendret logisk eier |
 | System og flerfilskilder | Studier og MVP1-korpus | Ingen komplett resolver/import-/deployment-/instansmodell i design-core |
-| Channel, deltakere, Contract og MessageSet | Kandidater; MessageSet skal avledes | Ikke implementert som generell validerbar profil |
+| Channel, deltakere, Contract og MessageSet | [V3-profil](../SDL-Channel-Scenario-Profile.md) | Typede roller, permits og modus; MessageSet avledes |
 | Dataset, Datagram, Database og feltkontrakter | [V2-profil](../SDL-Data-Contract-Profile.md) | Implementert: kilde/holder, closed/open, varianter, typed presence og fast wirelayout |
-| Scenario-steg, protokollrekkefølge og tilstand | Kandidater og MVP1-eksempler | Ingen generell parser/runtime for disse |
+| Scenario-steg og request/resultat | V3s eksplisitte stegprofil | Ordning og korrelasjon valideres; ingen runtime eller tilstandsmaskin |
 | Viewpoint-katalog | Studie nevner containerkart, avhengigheter, realisering, scenario og endringspåvirkning | Ingen tidligere ferdig katalog; konkretisert nedenfor |
 | Markdown/Mermaid-generering | Foreslått modell/diagram/kildekart-pakke | Avgrenset SDL-verktøykommando opprettet i denne leveransen |
 | Go-parser/runtime, binding til Go | Valgt videre retning | Kataloger, ikke implementert kode |
@@ -53,7 +53,7 @@ SDL-generatoren; nye viewpoints må angi hvilke modellfakta de trenger.
 | VP05 | Hva kreves i valgt modus? Avhengighetsgraf | requires Interface in mode Mode | Genereres |
 | VP06 | Hvordan detaljeres en aktivitet? Refinement-graf | Activity refines Activity | Genereres; ingen tidsrekkefølge |
 | VP07 | Hvordan ligger en Feature over arkitekturen? Markert bidragslag | Feature-bidrag, Functionality-eier og eksplisitt Container-allokering per modus | Genereres; manglende allokering rapporteres, ingen modus arves |
-| VP08 | Hvordan kommuniserer deltakerne over Channel? Sekvens | Deltakere/roller, kontrakter, meldinger, scenario/protokollsteg, korrelasjon, alternativer | Mangelrapport |
+| VP08 | Hvordan kommuniserer deltakerne over Channel? Sekvens | Deltakere/roller, kontrakter, meldinger, scenario/protokollsteg, korrelasjon, separate navngitte alternative baner | Genereres |
 | VP09 | Hvor kommer data fra og hvor hentes de? Datakart/ER | Dataset, Datagram-kilde/projeksjon, kontrakt, valgfri Database-lagring, eier | Genereres |
 | VP10 | Hvordan er én Datagram-variant kodet? Packet | Eksplisitt kodingsprofil med feltrekkefølge, bredde/offset og variant | Genereres for eksplisitt Encoding |
 | VP11 | Hva støtter visningen, og hva mangler? Faktaregister/egenskaper | Alle deklarasjoner/fakta med kildeposisjoner og profilgrenser | Genereres |
@@ -101,7 +101,7 @@ Dette er en SDL-verktøyfunksjon, ikke håndtegnede diagrammer for SDUI-eksemple
 Prøveinput er [SDL-modellen av SDL/SDUI](../../SDUI/design/architecture.design).
 [Generert Markdown](../../SDUI/design/viewpoints/viewpoints.md) og
 [rendret utskrift](../../SDUI/design/viewpoints/printout.md) viser alle tilgjengelige
-viewpoints og mangelstatus for resten. 227 deklarasjoner og 509 fakta kommer
+viewpoints og mangelstatus for resten. 273 deklarasjoner og 675 fakta kommer
 fra kilden. Actor/UseCase/Feature og utvalgt Functionality-allokering er skrevet
 som SDL-fakta i modellen, ikke rekonstruert av generatoren fra prosa eller navn.
 De 6 bruksmålene, 6 Features og 2 Actors dekker inspeksjon, UI-prøving, domene-
@@ -114,7 +114,7 @@ allokert. Det er en synlig grense for modellen, ikke bevis på at hele Feature-e
 kan kjøres i den modusen. Funksjonelt bidrag er ennå ikke modusbetinget.
 Disse utsnittene er ikke en komplett deploymentplan for alle 92 ansvar.
 
-Verifikasjon: 73 SVG-diagrammer rendret, 17 verktøytester, 49 SDL-parsertester og
+Verifikasjon: 88 SVG-diagrammer rendret, 22 verktøytester, 59 SDL-parsertester og
 36 SDUI-tester består. Alle diagramnoder har modell-/kildekobling, alle nodenavn
 finnes i SVG-en, og gjentatt eksport gir samme artefakter. Visuell kontroll er
 stikkprøver, ikke fysisk print/PDF. [Rapport](../../SystemDesignLanguage/tools/verification.json).
@@ -126,11 +126,11 @@ stikkprøver, ikke fysisk print/PDF. [Rapport](../../SystemDesignLanguage/tools/
 | V0 — strukturell generator, levert | Dagens profil → valgbare viewpoints, deterministisk Markdown/Mermaid, kildekart, renderbevis og eksplisitte hull |
 | V1 — mål og bidrag, levert | design-core 0.2, Actor/UseCase/Feature, direkte/indirekte bidrag og modusallokering; positive/negative tester; VP01/VP07 generert fra portert SDL/SDUI-modell |
 | V2 — data og kontrakter, levert | Definer Dataset/Datagram/Database og kontraktinnhold, opprinnelse/projeksjon og ved-behov-persistens; VP09, og VP10 kun for valgt encoding |
-| V3 — Channel og scenario | Typede deltakere/roller, kontraktreferanser og deklarert meldingsrekkefølge; VP08 med request/resultat og negativ kontraktkontroll |
+| V3 — Channel og scenario, levert | Typede deltakere/roller, kontraktreferanser og deklarert meldingsrekkefølge; VP08 med request/resultat og negativ kontraktkontroll |
 | V4 — samlet SDUI-design | Berik SDL-kilden med de nye fakta og få alle bestilte viewpoints generert; ingen faktatillegg i generatoren |
 
 V1 er levert som språk-/modellarbeid før en stor runtime. Neste avgrensede
-leveranse er V3. Avklar grammatikk og semantikk på én SDUI-witness, oppdater definisjon/tester samlet, og port til Go i ett løp.
+leveranse er V4. Avklar grammatikk og semantikk på én SDUI-witness, oppdater definisjon/tester samlet, og port til Go i ett løp.
 Ikke bygg en stor ny Python-runtime for å få diagrammer. Go-parserporten og disse
 viewpoint-behovene må planlegges sammen; MVP1-korpusets kandidatsyntaks er ikke en
 ferdig grammatikk som kan aktiveres med en permissiv fallback.

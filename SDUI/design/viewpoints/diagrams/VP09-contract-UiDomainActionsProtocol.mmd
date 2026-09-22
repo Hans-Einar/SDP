@@ -1,0 +1,6 @@
+flowchart LR
+    n_BoundActionRequest["BoundActionRequest (message)"]
+    n_BoundActionResult["BoundActionResult (message)"]
+    n_UiDomainActionsProtocol["UiDomainActionsProtocol (contract)"]
+    n_UiDomainActionsProtocol -->|permits| n_BoundActionRequest
+    n_UiDomainActionsProtocol -->|permits| n_BoundActionResult

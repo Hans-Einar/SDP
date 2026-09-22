@@ -78,3 +78,8 @@ V3-M2: VP08 og avledet MessageSet er implementert. 22 verktøytester består;
 numerisk stegorden, korrelasjon og pilens kontraktgrunnlag kontrolleres.
 Sekvenssyntaks følger [Mermaid sequence](https://mermaid.js.org/syntax/sequenceDiagram.html);
 rendererens grafplassering påvirker ikke meldingsretning eller rekkefølge.
+
+V3-M3 levert: 273 deklarasjoner, 675 fakta, fire scenarioer og 88 SVG-diagrammer.
+59 SDL-, 22 viewpoint- og 36 SDUI-tester består. Alle kildefakta, pilreferanser,
+bitområder og eksportfingeravtrykk kontrolleres; gjentatt eksport er identisk.
+Akseptert handling og avvist reload er visuelt stikkprøvekontrollert.

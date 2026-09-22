@@ -1,7 +1,18 @@
 language design-core version 0.4.
+contract ActionArguments.
+field ActionGeneration.
+field ActionInputText.
+contract ActionOutcome.
+field ActionOutputText.
+field ActionStatusCode.
+field ActionSymbol.
 functionality AllocateGeometry.
 functionality ApplyPropertyBatch.
 interface BindingReloadPort.
+scenario BoundActionAccepted.
+scenario BoundActionRejected.
+message BoundActionRequest.
+message BoundActionResult.
 mode BoundExecution.
 capability BoundInteraction.
 mode BoundLiveEditing.
@@ -20,6 +31,9 @@ functionality CloseSdlInstance.
 functionality CloseUiInstance.
 functionality CoalesceSourceChanges.
 container CommandLineHost.
+message CompileUiRejected.
+message CompileUiRequest.
+message CompileUiResult.
 functionality ComposeHeadlessExport.
 functionality ComposeInteractiveSession.
 functionality ComposeMarkdownDocument.
@@ -48,6 +62,8 @@ interface DiagramPort.
 unit DiagramProvider.
 functionality DisconnectBindings.
 functionality DispatchUiEvent.
+message DomainActionRequest.
+message DomainActionResult.
 interface DomainBindingPort.
 interface DomainFunctionPort.
 capability DomainOperations.
@@ -70,6 +86,8 @@ functionality GenerateModelConstructors.
 interface GeneratedArtifactPort.
 unit GoBuildRunner.
 unit GoCodeGenerator.
+channel GoDomainCalls.
+contract GoDomainCallsProtocol.
 unit GoDomainImplementation.
 functionality HandleFocusAndTextInput.
 functionality IdentifySourceRevision.
@@ -92,10 +110,14 @@ functionality MeasureUiContent.
 capability MeasuredPresentation.
 interface MeasurementPort.
 functionality MigrateOrResetDomainState.
+channel ModelReloadCalls.
+contract ModelReloadCallsProtocol.
 mode NativeBuild.
 feature NativeGoAssembly.
 capability NativeInteraction.
 capability NativeRealization.
+channel NativeUiActions.
+contract NativeUiActionsProtocol.
 functionality NormalizeSdlModel.
 field NoticeGeneration.
 field NoticeVersion.
@@ -124,10 +146,19 @@ functionality RegisterDomainFunctions.
 functionality RejectStaleUiEvent.
 functionality ReleaseNativeWidgets.
 functionality ReleaseVisualResources.
+contract ReloadArguments.
 activity ReloadBoundModels.
 unit ReloadCoordinator.
 activity ReloadDesignSession.
+field ReloadDiagnostic.
+contract ReloadOutcome.
 interface ReloadPort.
+message ReloadPublished.
+field ReloadPublishedGeneration.
+message ReloadRejected.
+message ReloadRequest.
+field ReloadSourceRevision.
+field ReloadSourceText.
 activity ReloadUiModel.
 functionality ReportBindingDiagnostics.
 functionality ReportSourceDiagnostics.
@@ -148,6 +179,10 @@ activity RunBoundUiAction.
 activity RunDesignSession.
 activity RunUnboundUiPreview.
 functionality ScheduleUiPublication.
+channel SdlActionCalls.
+contract SdlActionCallsProtocol.
+message SdlActionRequest.
+message SdlActionResult.
 unit SdlDispatcher.
 unit SdlExecutionGate.
 interface SdlExecutionPort.
@@ -203,10 +238,21 @@ functionality TraceViewpointFacts.
 functionality TrackInputDraft.
 usecase TryDomainInteraction.
 feature TypedDomainBinding.
+message UiActionRejected.
+message UiActionRequest.
+message UiActionResult.
+channel UiCompilationCalls.
+contract UiCompilationCallsProtocol.
+channel UiDomainActions.
+contract UiDomainActionsProtocol.
 variant UiGenerationChanged.
 contract UiGenerationContract.
+channel UiGenerationEvents.
+contract UiGenerationEventsProtocol.
 datagram UiGenerationNotices.
 encoding UiGenerationWire.
+scenario UiModelReloadAccepted.
+scenario UiModelReloadRejected.
 mode UiPreview.
 interface UiReloadPort.
 interface UiSessionPort.
@@ -226,11 +272,50 @@ functionality ValidateVisualResources.
 functionality ValidateWidgetArguments.
 interface WidgetBackendPort.
 functionality WriteGeneratedArtifacts.
+ActionArguments has completeness = closed.
+ActionArguments has-field ActionGeneration.
+ActionArguments has-field ActionInputText.
+ActionArguments has-field ActionSymbol.
+ActionGeneration has presence = required.
+ActionGeneration has value-type = unsigned.
+ActionInputText has presence = required.
+ActionInputText has value-type = text.
+ActionOutcome has completeness = closed.
+ActionOutcome has-field ActionOutputText.
+ActionOutcome has-field ActionStatusCode.
+ActionOutputText has presence = required.
+ActionOutputText has value-type = text.
+ActionStatusCode has presence = required.
+ActionStatusCode has value-type = unsigned.
+ActionSymbol has presence = required.
+ActionSymbol has value-type = text.
 AllocateGeometry allocated-to FyneHost in mode UiPreview.
 AllocateGeometry contributes-to InteractiveUiPreview.
 AllocateGeometry realizes MeasuredPresentation.
 ApplyPropertyBatch has state-retention = stateful.
 ApplyPropertyBatch realizes InteractiveSession.
+BoundActionAccepted exercises TryDomainInteraction.
+BoundActionAccepted has completeness = closed.
+BoundActionAccepted runs-in BoundExecution.
+BoundActionAccepted step 1 sends UiActionRequest from FyneBackend to SduiDispatcher via NativeUiActions.
+BoundActionAccepted step 2 sends BoundActionRequest from SduiDispatcher to SdlUiBindingAdapter via UiDomainActions.
+BoundActionAccepted step 3 sends SdlActionRequest from SdlUiBindingAdapter to SdlDispatcher via SdlActionCalls.
+BoundActionAccepted step 4 sends DomainActionRequest from SdlDispatcher to GoDomainImplementation via GoDomainCalls.
+BoundActionAccepted step 5 sends DomainActionResult from GoDomainImplementation to SdlDispatcher via GoDomainCalls reply-to 4.
+BoundActionAccepted step 6 sends SdlActionResult from SdlDispatcher to SdlUiBindingAdapter via SdlActionCalls reply-to 3.
+BoundActionAccepted step 7 sends BoundActionResult from SdlUiBindingAdapter to SduiDispatcher via UiDomainActions reply-to 2.
+BoundActionAccepted step 8 sends UiActionResult from SduiDispatcher to FyneBackend via NativeUiActions reply-to 1.
+BoundActionAccepted step 9 sends UiGenerationNotices variant UiGenerationChanged from SduiInstanceStore to FyneBackend via UiGenerationEvents.
+BoundActionRejected exercises TryDomainInteraction.
+BoundActionRejected has completeness = closed.
+BoundActionRejected runs-in BoundExecution.
+BoundActionRejected step 1 sends UiActionRequest from FyneBackend to SduiDispatcher via NativeUiActions.
+BoundActionRejected step 2 sends UiActionRejected from SduiDispatcher to FyneBackend via NativeUiActions reply-to 1.
+BoundActionRequest has message-kind = request.
+BoundActionRequest upholds ActionArguments.
+BoundActionResult has message-kind = result.
+BoundActionResult replies-to BoundActionRequest.
+BoundActionResult upholds ActionOutcome.
 BoundInteraction requires SdlExecutionPort in mode BoundExecution.
 BoundInteraction requires UiSessionPort in mode BoundExecution.
 BuildGeneratedApplication allocated-to CommandLineHost in mode NativeBuild.
@@ -264,6 +349,14 @@ CommandLineHost consumes SourceSnapshotPort.
 CommandLineHost owns ComposeHeadlessExport.
 CommandLineHost owns WriteGeneratedArtifacts.
 CommandLineHost provides StaticDocumentation.
+CompileUiRejected has message-kind = result.
+CompileUiRejected replies-to CompileUiRequest.
+CompileUiRejected upholds ReloadOutcome.
+CompileUiRequest has message-kind = request.
+CompileUiRequest upholds ReloadArguments.
+CompileUiResult has message-kind = result.
+CompileUiResult replies-to CompileUiRequest.
+CompileUiResult upholds ReloadOutcome.
 ComposeHeadlessExport realizes StaticDocumentation.
 ComposeInteractiveSession allocated-to FyneHost in mode UiPreview.
 ComposeInteractiveSession contributes-to InteractiveUiPreview.
@@ -326,6 +419,11 @@ DisconnectBindings realizes BoundInteraction.
 DispatchUiEvent allocated-to FyneHost in mode BoundExecution.
 DispatchUiEvent contributes-to TypedDomainBinding.
 DispatchUiEvent realizes InteractiveSession.
+DomainActionRequest has message-kind = request.
+DomainActionRequest upholds ActionArguments.
+DomainActionResult has message-kind = result.
+DomainActionResult replies-to DomainActionRequest.
+DomainActionResult upholds ActionOutcome.
 DomainStateMigrator consumes DomainStatePort.
 DomainStateMigrator consumes SdlModelPort.
 DomainStateMigrator owns CheckDomainStateCompatibility.
@@ -351,6 +449,11 @@ FyneBackend owns PublishPresentation.
 FyneBackend owns ReconcileWidgets.
 FyneBackend owns ReleaseNativeWidgets.
 FyneBackend provides NativeInteraction.
+FyneBackend uses NativeUiActions as receiver of UiActionRejected in mode BoundExecution.
+FyneBackend uses NativeUiActions as receiver of UiActionResult in mode BoundExecution.
+FyneBackend uses NativeUiActions as sender of UiActionRequest in mode BoundExecution.
+FyneBackend uses UiGenerationEvents as receiver of UiGenerationNotices in mode BoundExecution.
+FyneBackend uses UiGenerationEvents as receiver of UiGenerationNotices in mode LiveEditing.
 FyneHost consumes DomainBindingPort.
 FyneHost consumes ReloadPort.
 FyneHost consumes SdlFrontendPort.
@@ -379,8 +482,14 @@ GoCodeGenerator owns GenerateBindingRegistration.
 GoCodeGenerator owns GenerateModelConstructors.
 GoCodeGenerator owns PreserveHandwrittenSources.
 GoCodeGenerator provides NativeRealization.
+GoDomainCalls upholds GoDomainCallsProtocol.
+GoDomainCallsProtocol has completeness = closed.
+GoDomainCallsProtocol permits DomainActionRequest.
+GoDomainCallsProtocol permits DomainActionResult.
 GoDomainImplementation owns PerformDomainOperation.
 GoDomainImplementation provides DomainOperations.
+GoDomainImplementation uses GoDomainCalls as receiver of DomainActionRequest in mode BoundExecution.
+GoDomainImplementation uses GoDomainCalls as sender of DomainActionResult in mode BoundExecution.
 HandleFocusAndTextInput allocated-to FyneHost in mode UiPreview.
 HandleFocusAndTextInput contributes-to InteractiveUiPreview.
 HandleFocusAndTextInput realizes NativeInteraction.
@@ -411,10 +520,20 @@ MeasureUiContent realizes MeasuredPresentation.
 MeasuredPresentation requires MeasurementPort in mode StaticExport.
 MeasuredPresentation requires MeasurementPort in mode UiPreview.
 MigrateOrResetDomainState realizes ExecutableDesign.
+ModelReloadCalls upholds ModelReloadCallsProtocol.
+ModelReloadCallsProtocol has completeness = closed.
+ModelReloadCallsProtocol permits ReloadPublished.
+ModelReloadCallsProtocol permits ReloadRejected.
+ModelReloadCallsProtocol permits ReloadRequest.
 NativeGoAssembly supports BuildNativeProduct.
 NativeInteraction requires WidgetBackendPort in mode UiPreview.
 NativeRealization requires BuildToolPort in mode NativeBuild.
 NativeRealization requires GeneratedArtifactPort in mode NativeBuild.
+NativeUiActions upholds NativeUiActionsProtocol.
+NativeUiActionsProtocol has completeness = closed.
+NativeUiActionsProtocol permits UiActionRejected.
+NativeUiActionsProtocol permits UiActionRequest.
+NativeUiActionsProtocol permits UiActionResult.
 NormalizeSdlModel has repeatability = deterministic.
 NormalizeSdlModel has state-retention = stateless.
 NormalizeSdlModel realizes SdlSourceModel.
@@ -471,6 +590,9 @@ RegisterDomainFunctions realizes ExecutableDesign.
 RejectStaleUiEvent realizes InteractiveSession.
 ReleaseNativeWidgets realizes NativeInteraction.
 ReleaseVisualResources realizes RichContent.
+ReloadArguments has completeness = closed.
+ReloadArguments has-field ReloadSourceRevision.
+ReloadArguments has-field ReloadSourceText.
 ReloadBoundModels refines ReloadDesignSession.
 ReloadCoordinator consumes BindingReloadPort.
 ReloadCoordinator consumes DiagnosticPort.
@@ -484,6 +606,31 @@ ReloadCoordinator owns PrepareCandidateModels.
 ReloadCoordinator owns PublishModelGeneration.
 ReloadCoordinator owns RetirePreviousGeneration.
 ReloadCoordinator provides DevelopmentReload.
+ReloadCoordinator uses ModelReloadCalls as receiver of ReloadRequest in mode LiveEditing.
+ReloadCoordinator uses ModelReloadCalls as sender of ReloadPublished in mode LiveEditing.
+ReloadCoordinator uses ModelReloadCalls as sender of ReloadRejected in mode LiveEditing.
+ReloadCoordinator uses UiCompilationCalls as receiver of CompileUiRejected in mode LiveEditing.
+ReloadCoordinator uses UiCompilationCalls as receiver of CompileUiResult in mode LiveEditing.
+ReloadCoordinator uses UiCompilationCalls as sender of CompileUiRequest in mode LiveEditing.
+ReloadDiagnostic has presence = optional.
+ReloadDiagnostic has value-type = text.
+ReloadOutcome has completeness = closed.
+ReloadOutcome has-field ReloadDiagnostic.
+ReloadOutcome has-field ReloadPublishedGeneration.
+ReloadPublished has message-kind = result.
+ReloadPublished replies-to ReloadRequest.
+ReloadPublished upholds ReloadOutcome.
+ReloadPublishedGeneration has presence = optional.
+ReloadPublishedGeneration has value-type = unsigned.
+ReloadRejected has message-kind = result.
+ReloadRejected replies-to ReloadRequest.
+ReloadRejected upholds ReloadOutcome.
+ReloadRequest has message-kind = request.
+ReloadRequest upholds ReloadArguments.
+ReloadSourceRevision has presence = required.
+ReloadSourceRevision has value-type = unsigned.
+ReloadSourceText has presence = required.
+ReloadSourceText has value-type = text.
 ReloadUiModel refines ReloadDesignSession.
 ReportBindingDiagnostics realizes SourceDiagnostics.
 ReportSourceDiagnostics allocated-to CommandLineHost in mode SourceInspection.
@@ -514,6 +661,15 @@ RouteDomainBindings realizes BoundInteraction.
 RunBoundUiAction refines RunDesignSession.
 RunUnboundUiPreview refines RunDesignSession.
 ScheduleUiPublication realizes NativeInteraction.
+SdlActionCalls upholds SdlActionCallsProtocol.
+SdlActionCallsProtocol has completeness = closed.
+SdlActionCallsProtocol permits SdlActionRequest.
+SdlActionCallsProtocol permits SdlActionResult.
+SdlActionRequest has message-kind = request.
+SdlActionRequest upholds ActionArguments.
+SdlActionResult has message-kind = result.
+SdlActionResult replies-to SdlActionRequest.
+SdlActionResult upholds ActionOutcome.
 SdlDispatcher consumes DomainFunctionPort.
 SdlDispatcher consumes DomainStatePort.
 SdlDispatcher owns CancelPendingActions.
@@ -521,6 +677,10 @@ SdlDispatcher owns CorrelateActionResult.
 SdlDispatcher owns InvokeRegisteredFunction.
 SdlDispatcher owns ValidateActionInput.
 SdlDispatcher provides ExecutableDesign.
+SdlDispatcher uses GoDomainCalls as receiver of DomainActionResult in mode BoundExecution.
+SdlDispatcher uses GoDomainCalls as sender of DomainActionRequest in mode BoundExecution.
+SdlDispatcher uses SdlActionCalls as receiver of SdlActionRequest in mode BoundExecution.
+SdlDispatcher uses SdlActionCalls as sender of SdlActionResult in mode BoundExecution.
 SdlExecutionGate consumes DiagnosticPort.
 SdlExecutionGate consumes SdlModelPort.
 SdlExecutionGate owns CheckExecutionCompleteness.
@@ -572,6 +732,10 @@ SdlUiBindingAdapter owns PublishDomainUpdates.
 SdlUiBindingAdapter owns ResolveCallbackSymbols.
 SdlUiBindingAdapter owns RouteDomainBindings.
 SdlUiBindingAdapter provides BoundInteraction.
+SdlUiBindingAdapter uses SdlActionCalls as receiver of SdlActionResult in mode BoundExecution.
+SdlUiBindingAdapter uses SdlActionCalls as sender of SdlActionRequest in mode BoundExecution.
+SdlUiBindingAdapter uses UiDomainActions as receiver of BoundActionRequest in mode BoundExecution.
+SdlUiBindingAdapter uses UiDomainActions as sender of BoundActionResult in mode BoundExecution.
 SdlValidator owns ResolveSdlSymbols.
 SdlValidator owns ValidateSdlProfile.
 SdlValidator owns ValidateSdlStructure.
@@ -586,6 +750,11 @@ SduiDispatcher owns DispatchUiEvent.
 SduiDispatcher owns RejectStaleUiEvent.
 SduiDispatcher owns ValidateUiEvent.
 SduiDispatcher provides InteractiveSession.
+SduiDispatcher uses NativeUiActions as receiver of UiActionRequest in mode BoundExecution.
+SduiDispatcher uses NativeUiActions as sender of UiActionRejected in mode BoundExecution.
+SduiDispatcher uses NativeUiActions as sender of UiActionResult in mode BoundExecution.
+SduiDispatcher uses UiDomainActions as receiver of BoundActionResult in mode BoundExecution.
+SduiDispatcher uses UiDomainActions as sender of BoundActionRequest in mode BoundExecution.
 SduiFrontend consumes DiagnosticPort.
 SduiFrontend consumes SourceSnapshotPort.
 SduiFrontend contains SduiLexer.
@@ -594,12 +763,17 @@ SduiFrontend contains SduiParser.
 SduiFrontend contains SduiValidator.
 SduiFrontend owns CoordinateSduiCompilation.
 SduiFrontend provides SduiSourceModel.
+SduiFrontend uses UiCompilationCalls as receiver of CompileUiRequest in mode LiveEditing.
+SduiFrontend uses UiCompilationCalls as sender of CompileUiRejected in mode LiveEditing.
+SduiFrontend uses UiCompilationCalls as sender of CompileUiResult in mode LiveEditing.
 SduiInstanceStore holds UiSessionState.
 SduiInstanceStore owns ManageWidgetIdentities.
 SduiInstanceStore owns ProjectUiGeneration.
 SduiInstanceStore owns RevokeWidgetGenerations.
 SduiInstanceStore owns SnapshotUiState.
 SduiInstanceStore provides InteractiveSession.
+SduiInstanceStore uses UiGenerationEvents as sender of UiGenerationNotices in mode BoundExecution.
+SduiInstanceStore uses UiGenerationEvents as sender of UiGenerationNotices in mode LiveEditing.
 SduiLayout consumes ContentProviderPort.
 SduiLayout consumes MeasurementPort.
 SduiLayout consumes UiSnapshotPort.
@@ -669,6 +843,9 @@ SourceWatcher consumes FileChangePort.
 SourceWatcher owns CoalesceSourceChanges.
 SourceWatcher owns ObserveSourceChanges.
 SourceWatcher provides DevelopmentReload.
+SourceWatcher uses ModelReloadCalls as receiver of ReloadPublished in mode LiveEditing.
+SourceWatcher uses ModelReloadCalls as receiver of ReloadRejected in mode LiveEditing.
+SourceWatcher uses ModelReloadCalls as sender of ReloadRequest in mode LiveEditing.
 StaticDocumentation requires ExportSinkPort in mode StaticExport.
 StaticDocumentation requires PreparedFramePort in mode StaticExport.
 StructuralModelInspection supports EditRunningPrototype.
@@ -688,10 +865,30 @@ TraceViewpointFacts has state-retention = stateless.
 TrackInputDraft has state-retention = stateful.
 TrackInputDraft realizes InteractiveSession.
 TypedDomainBinding supports TryDomainInteraction.
+UiActionRejected has message-kind = result.
+UiActionRejected replies-to UiActionRequest.
+UiActionRejected upholds ActionOutcome.
+UiActionRequest has message-kind = request.
+UiActionRequest upholds ActionArguments.
+UiActionResult has message-kind = result.
+UiActionResult replies-to UiActionRequest.
+UiActionResult upholds ActionOutcome.
+UiCompilationCalls upholds UiCompilationCallsProtocol.
+UiCompilationCallsProtocol has completeness = closed.
+UiCompilationCallsProtocol permits CompileUiRejected.
+UiCompilationCallsProtocol permits CompileUiRequest.
+UiCompilationCallsProtocol permits CompileUiResult.
+UiDomainActions upholds UiDomainActionsProtocol.
+UiDomainActionsProtocol has completeness = closed.
+UiDomainActionsProtocol permits BoundActionRequest.
+UiDomainActionsProtocol permits BoundActionResult.
 UiGenerationChanged has-field NoticeGeneration.
 UiGenerationContract defines UiGenerationChanged.
 UiGenerationContract has completeness = closed.
 UiGenerationContract has-field NoticeVersion.
+UiGenerationEvents upholds UiGenerationEventsProtocol.
+UiGenerationEventsProtocol has completeness = closed.
+UiGenerationEventsProtocol permits UiGenerationNotices.
 UiGenerationNotices from UiSessionState.
 UiGenerationNotices upholds UiGenerationContract.
 UiGenerationWire encodes UiGenerationChanged.
@@ -699,6 +896,21 @@ UiGenerationWire has bit-order = most-significant-first.
 UiGenerationWire has byte-order = big-endian.
 UiGenerationWire places NoticeGeneration at 16 bits 64.
 UiGenerationWire places NoticeVersion at 0 bits 16.
+UiModelReloadAccepted exercises EditRunningPrototype.
+UiModelReloadAccepted has completeness = closed.
+UiModelReloadAccepted runs-in LiveEditing.
+UiModelReloadAccepted step 1 sends ReloadRequest from SourceWatcher to ReloadCoordinator via ModelReloadCalls.
+UiModelReloadAccepted step 2 sends CompileUiRequest from ReloadCoordinator to SduiFrontend via UiCompilationCalls.
+UiModelReloadAccepted step 3 sends CompileUiResult from SduiFrontend to ReloadCoordinator via UiCompilationCalls reply-to 2.
+UiModelReloadAccepted step 4 sends ReloadPublished from ReloadCoordinator to SourceWatcher via ModelReloadCalls reply-to 1.
+UiModelReloadAccepted step 5 sends UiGenerationNotices variant UiGenerationChanged from SduiInstanceStore to FyneBackend via UiGenerationEvents.
+UiModelReloadRejected exercises EditRunningPrototype.
+UiModelReloadRejected has completeness = closed.
+UiModelReloadRejected runs-in LiveEditing.
+UiModelReloadRejected step 1 sends ReloadRequest from SourceWatcher to ReloadCoordinator via ModelReloadCalls.
+UiModelReloadRejected step 2 sends CompileUiRequest from ReloadCoordinator to SduiFrontend via UiCompilationCalls.
+UiModelReloadRejected step 3 sends CompileUiRejected from SduiFrontend to ReloadCoordinator via UiCompilationCalls reply-to 2.
+UiModelReloadRejected step 4 sends ReloadRejected from ReloadCoordinator to SourceWatcher via ModelReloadCalls reply-to 1.
 UiSessionRecord has completeness = closed.
 UiSessionRecord has-field SessionDraft.
 UiSessionRecord has-field SessionGeneration.
