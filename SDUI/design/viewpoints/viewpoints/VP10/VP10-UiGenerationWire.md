@@ -1,0 +1,12 @@
+# Packet: UiGenerationWire / UiGenerationChanged — big-endian, most-significant-first
+
+[Viewpoint](index.md) · [Navigator](../../navigator.md)
+
+Revisjon: `be0dfcfdca6e04f7b8c4594dc5e72d920724ef96e1f604e749432121aa83e862`.
+
+## Packet: UiGenerationWire / UiGenerationChanged — big-endian, most-significant-first
+
+![Packet: UiGenerationWire / UiGenerationChanged — big-endian, most-significant-first](../../diagrams/VP10-UiGenerationWire.svg)
+
+Kildegrunnlag: f0650, f0651, f0652, f0653, f1182, f1183, f1184, f1185, f1191, f1192, f1193, f1194, f1195.
+

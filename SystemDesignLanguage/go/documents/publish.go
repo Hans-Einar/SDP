@@ -58,7 +58,10 @@ func (b *Bundle) Publish(output string) error {
 		return e
 	}
 	defer os.RemoveAll(stage)
-	old := Manifest{}
+	// Publication depends only on file ownership, not renderer metadata schemas.
+	old := struct {
+		Outputs map[string]string `json:"outputs"`
+	}{}
 	if j, err := os.ReadFile(filepath.Join(abs, "manifest.json")); err == nil {
 		if e = json.Unmarshal(j, &old); e != nil {
 			return fmt.Errorf("invalid previous manifest: %w", e)

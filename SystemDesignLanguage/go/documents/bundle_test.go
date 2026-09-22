@@ -2,6 +2,7 @@ package documents
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"github.com/Hans-Einar/SDP/SystemDesignLanguage/go/viewpoint"
 	"os"
@@ -96,5 +97,29 @@ func TestUnsafePathsAndSVG(t *testing.T) {
 		if ValidateSVG([]byte(s)) == nil {
 			t.Fatal(s)
 		}
+	}
+}
+
+func TestPublisherUsesOwnershipAcrossMetadataFormats(t *testing.T) {
+	dir := t.TempDir() + "/bundle"
+	if e := os.Mkdir(dir, 0700); e != nil {
+		t.Fatal(e)
+	}
+	old := []byte("old generated document")
+	if e := os.WriteFile(dir+"/old.md", old, 0600); e != nil {
+		t.Fatal(e)
+	}
+	metadata := map[string]any{"renderer": map[string]any{"program": "historical renderer"}, "outputs": map[string]string{"old.md": Hash(old)}}
+	manifest, _ := json.Marshal(metadata)
+	if e := os.WriteFile(dir+"/manifest.json", manifest, 0600); e != nil {
+		t.Fatal(e)
+	}
+	b := &Bundle{Files: map[string][]byte{"entry.md": []byte("new")}}
+	b.Seal()
+	if e := b.Publish(dir); e != nil {
+		t.Fatal(e)
+	}
+	if _, e := os.Stat(dir + "/old.md"); !os.IsNotExist(e) {
+		t.Fatal("stale generated output retained")
 	}
 }

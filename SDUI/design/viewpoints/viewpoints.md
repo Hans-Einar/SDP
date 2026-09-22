@@ -1,3507 +1,1239 @@
-# SDL-viewpoints — generert modellrapport
+# SDL — genererte viewpoints
 
-Generert fra validert SDL. Struktur og designpåstander, ikke observert kjøring.
-Ingen håndskrevet arkitekturfakta er lagt til av generatoren.
-
-| Viewpoint | Status | Grunnlag / mangel |
-| --- | --- | --- |
-| VP01 — Bruksmål og sporbarhet | Tilgjengelig | pursues, supports og contributes-to; modellens omfang, uten oppdiktet System-grense. |
-| VP02 — Arkitektur og logisk inndeling | Tilgjengelig | Container/Unit og contains; bibliotekstruktur er ikke en deployment-allokering. |
-| VP03 — Ansvar og kapabiliteter over arkitekturen | Tilgjengelig | owns, realizes og provides. Capability er ikke Feature. |
-| VP04 — Grensesnitt og samarbeid | Tilgjengelig | consumes viser bruk; ingen tilbyder, Channel eller kjørbar meldingsflyt utledes. |
-| VP05 — Avhengigheter per modus | Tilgjengelig | requires in mode; modi har ingen implisitt arv. |
-| VP06 — Aktiviteter og leveranseplan | Tilgjengelig | refines, addresses, delivers og depends-on; planstatus er en eksplisitt kildepåstand. |
-| VP07 — Features over arkitekturen | Tilgjengelig | contributes-to, owns og eksplisitt allocated-to per modus. Uspesifisert allokering vises som hull. |
-| VP08 — Channel-kontrakter og sekvenser | Tilgjengelig | Eksplisitte scenario-steg validert mot permits, deltakelse, modus og request/resultat-korrelasjon. |
-| VP09 — Dataset, Datagram og persistent Database | Tilgjengelig | Eksplisitte holdere, kilde, kontrakter, varianter, felt og projeksjoner. |
-| VP10 — Datagram-koding og packet | Tilgjengelig | Kun closed kontrakt med validert Encoding og eksplisitte bitplasseringer. |
-| VP11 — Egenskaper, sporbarhet og modellhull | Tilgjengelig | Deklarasjoner og alle fakta med kildeposisjoner; støttegrenser beholdes. |
+Struktur og kildepåstander; ikke observert kjøring.
 
 ## VP01 — Bruksmål og sporbarhet
 
-Bruksmålskartene viser Actors, støttende Features og direkte Functionality-bidrag.
-De etterfølgende Feature-kartene detaljerer bidragene med samme modellidentiteter.
-Oppdelingen endrer ingen relasjoner og innfører ingen System-grense.
+pursues, supports og contributes-to; modellens omfang, uten oppdiktet System-grense.
 
-### Bruksmål: BrowseDesignViews
+## Bruksmål: BrowseDesignViews
 
-```mermaid
-flowchart LR
-    n_BrowseDesignViews["BrowseDesignViews (usecase)"]
-    n_DesignAuthor["DesignAuthor (actor)"]
-    n_DesignReviewer["DesignReviewer (actor)"]
-    n_NavigableDesignDocumentation["NavigableDesignDocumentation (feature)"]
-    n_TypedDesignInspection["TypedDesignInspection (feature)"]
-    n_DesignAuthor -->|pursues| n_BrowseDesignViews
-    n_DesignReviewer -->|pursues| n_BrowseDesignViews
-    n_NavigableDesignDocumentation -->|supports| n_BrowseDesignViews
-    n_TypedDesignInspection -->|supports| n_BrowseDesignViews
-```
+![Bruksmål: BrowseDesignViews](diagrams/VP01-BrowseDesignViews.svg)
 
 Kildegrunnlag: f0144, f0152, f0637, f1143.
 
-### Bruksmål: BuildNativeProduct
+## Bruksmål: BuildNativeProduct
 
-```mermaid
-flowchart LR
-    n_BuildNativeProduct["BuildNativeProduct (usecase)"]
-    n_DesignAuthor["DesignAuthor (actor)"]
-    n_NativeGoAssembly["NativeGoAssembly (feature)"]
-    n_DesignAuthor -->|pursues| n_BuildNativeProduct
-    n_NativeGoAssembly -->|supports| n_BuildNativeProduct
-```
+![Bruksmål: BuildNativeProduct](diagrams/VP01-BuildNativeProduct.svg)
 
 Kildegrunnlag: f0145, f0620.
 
-### Bruksmål: EditRunningPrototype
+## Bruksmål: EditRunningPrototype
 
-```mermaid
-flowchart LR
-    n_DesignAuthor["DesignAuthor (actor)"]
-    n_EditRunningPrototype["EditRunningPrototype (usecase)"]
-    n_LiveModelReload["LiveModelReload (feature)"]
-    n_StructuralModelInspection["StructuralModelInspection (feature)"]
-    n_DesignAuthor -->|pursues| n_EditRunningPrototype
-    n_LiveModelReload -->|supports| n_EditRunningPrototype
-    n_StructuralModelInspection -->|supports| n_EditRunningPrototype
-```
+![Bruksmål: EditRunningPrototype](diagrams/VP01-EditRunningPrototype.svg)
 
 Kildegrunnlag: f0146, f0587, f1109.
 
-### Bruksmål: InspectModels
+## Bruksmål: InspectModels
 
-```mermaid
-flowchart LR
-    n_DesignAuthor["DesignAuthor (actor)"]
-    n_DesignReviewer["DesignReviewer (actor)"]
-    n_InspectModels["InspectModels (usecase)"]
-    n_StructuralModelInspection["StructuralModelInspection (feature)"]
-    n_TraceViewpointFacts["TraceViewpointFacts (functionality)"]
-    n_TypedDesignInspection["TypedDesignInspection (feature)"]
-    n_DesignAuthor -->|pursues| n_InspectModels
-    n_DesignReviewer -->|pursues| n_InspectModels
-    n_StructuralModelInspection -->|supports| n_InspectModels
-    n_TraceViewpointFacts -->|contributes-to| n_InspectModels
-    n_TypedDesignInspection -->|supports| n_InspectModels
-```
+![Bruksmål: InspectModels](diagrams/VP01-InspectModels.svg)
 
 Kildegrunnlag: f0147, f0153, f1110, f1138, f1144.
 
-### Bruksmål: PrototypeUserInterface
+## Bruksmål: PrototypeUserInterface
 
-```mermaid
-flowchart LR
-    n_DesignAuthor["DesignAuthor (actor)"]
-    n_DesignReviewer["DesignReviewer (actor)"]
-    n_InteractiveUiPreview["InteractiveUiPreview (feature)"]
-    n_PrototypeUserInterface["PrototypeUserInterface (usecase)"]
-    n_DesignAuthor -->|pursues| n_PrototypeUserInterface
-    n_DesignReviewer -->|pursues| n_PrototypeUserInterface
-    n_InteractiveUiPreview -->|supports| n_PrototypeUserInterface
-```
+![Bruksmål: PrototypeUserInterface](diagrams/VP01-PrototypeUserInterface.svg)
 
 Kildegrunnlag: f0148, f0154, f0550.
 
-### Bruksmål: PublishDesignDocumentation
+## Bruksmål: PublishDesignDocumentation
 
-```mermaid
-flowchart LR
-    n_DesignAuthor["DesignAuthor (actor)"]
-    n_DesignDocumentation["DesignDocumentation (feature)"]
-    n_DesignReviewer["DesignReviewer (actor)"]
-    n_PublishDesignDocumentation["PublishDesignDocumentation (usecase)"]
-    n_DesignAuthor -->|pursues| n_PublishDesignDocumentation
-    n_DesignDocumentation -->|supports| n_PublishDesignDocumentation
-    n_DesignReviewer -->|pursues| n_PublishDesignDocumentation
-```
+![Bruksmål: PublishDesignDocumentation](diagrams/VP01-PublishDesignDocumentation.svg)
 
 Kildegrunnlag: f0149, f0151, f0155.
 
-### Bruksmål: TryDomainInteraction
+## Bruksmål: TryDomainInteraction
 
-```mermaid
-flowchart LR
-    n_DesignAuthor["DesignAuthor (actor)"]
-    n_TryDomainInteraction["TryDomainInteraction (usecase)"]
-    n_TypedDomainBinding["TypedDomainBinding (feature)"]
-    n_DesignAuthor -->|pursues| n_TryDomainInteraction
-    n_TypedDomainBinding -->|supports| n_TryDomainInteraction
-```
+![Bruksmål: TryDomainInteraction](diagrams/VP01-TryDomainInteraction.svg)
 
 Kildegrunnlag: f0150, f1145.
 
-### Functionality-bidrag til Feature: DesignDocumentation
+## Functionality-bidrag til Feature: DesignDocumentation
 
-```mermaid
-flowchart LR
-    n_ComposeMarkdownDocument["ComposeMarkdownDocument (functionality)"]
-    n_DesignDocumentation["DesignDocumentation (feature)"]
-    n_ExportSvgSnapshot["ExportSvgSnapshot (functionality)"]
-    n_ExportViewpointMarkdown["ExportViewpointMarkdown (functionality)"]
-    n_ProjectSdlViewpoints["ProjectSdlViewpoints (functionality)"]
-    n_TraceViewpointFacts["TraceViewpointFacts (functionality)"]
-    n_WriteGeneratedArtifacts["WriteGeneratedArtifacts (functionality)"]
-    n_ComposeMarkdownDocument -->|contributes-to| n_DesignDocumentation
-    n_ExportSvgSnapshot -->|contributes-to| n_DesignDocumentation
-    n_ExportViewpointMarkdown -->|contributes-to| n_DesignDocumentation
-    n_ProjectSdlViewpoints -->|contributes-to| n_DesignDocumentation
-    n_TraceViewpointFacts -->|contributes-to| n_DesignDocumentation
-    n_WriteGeneratedArtifacts -->|contributes-to| n_DesignDocumentation
-```
+![Functionality-bidrag til Feature: DesignDocumentation](diagrams/VP01-feature-DesignDocumentation.svg)
 
 Kildegrunnlag: f0126, f0232, f0237, f0715, f1137, f1414.
 
-### Functionality-bidrag til Feature: InteractiveUiPreview
+## Functionality-bidrag til Feature: InteractiveUiPreview
 
-```mermaid
-flowchart LR
-    n_AllocateGeometry["AllocateGeometry (functionality)"]
-    n_BuildPreparedFrame["BuildPreparedFrame (functionality)"]
-    n_ComposeInteractiveSession["ComposeInteractiveSession (functionality)"]
-    n_HandleFocusAndTextInput["HandleFocusAndTextInput (functionality)"]
-    n_InteractiveUiPreview["InteractiveUiPreview (feature)"]
-    n_ReconcileWidgets["ReconcileWidgets (functionality)"]
-    n_AllocateGeometry -->|contributes-to| n_InteractiveUiPreview
-    n_BuildPreparedFrame -->|contributes-to| n_InteractiveUiPreview
-    n_ComposeInteractiveSession -->|contributes-to| n_InteractiveUiPreview
-    n_HandleFocusAndTextInput -->|contributes-to| n_InteractiveUiPreview
-    n_ReconcileWidgets -->|contributes-to| n_InteractiveUiPreview
-```
+![Functionality-bidrag til Feature: InteractiveUiPreview](diagrams/VP01-feature-InteractiveUiPreview.svg)
 
 Kildegrunnlag: f0018, f0064, f0123, f0534, f0739.
 
-### Functionality-bidrag til Feature: LiveModelReload
+## Functionality-bidrag til Feature: LiveModelReload
 
-```mermaid
-flowchart LR
-    n_KeepLastValidModels["KeepLastValidModels (functionality)"]
-    n_LiveModelReload["LiveModelReload (feature)"]
-    n_ObserveSourceChanges["ObserveSourceChanges (functionality)"]
-    n_PrepareCandidateModels["PrepareCandidateModels (functionality)"]
-    n_PreserveCompatibleUiState["PreserveCompatibleUiState (functionality)"]
-    n_ProjectUiGeneration["ProjectUiGeneration (functionality)"]
-    n_PublishModelGeneration["PublishModelGeneration (functionality)"]
-    n_ReportSourceDiagnostics["ReportSourceDiagnostics (functionality)"]
-    n_KeepLastValidModels -->|contributes-to| n_LiveModelReload
-    n_ObserveSourceChanges -->|contributes-to| n_LiveModelReload
-    n_PrepareCandidateModels -->|contributes-to| n_LiveModelReload
-    n_PreserveCompatibleUiState -->|contributes-to| n_LiveModelReload
-    n_ProjectUiGeneration -->|contributes-to| n_LiveModelReload
-    n_PublishModelGeneration -->|contributes-to| n_LiveModelReload
-    n_ReportSourceDiagnostics -->|contributes-to| n_LiveModelReload
-```
+![Functionality-bidrag til Feature: LiveModelReload](diagrams/VP01-feature-LiveModelReload.svg)
 
 Kildegrunnlag: f0562, f0655, f0677, f0695, f0721, f0729, f0799.
 
-### Functionality-bidrag til Feature: NativeGoAssembly
+## Functionality-bidrag til Feature: NativeGoAssembly
 
-```mermaid
-flowchart LR
-    n_BuildGeneratedApplication["BuildGeneratedApplication (functionality)"]
-    n_GenerateBindingRegistration["GenerateBindingRegistration (functionality)"]
-    n_GenerateModelConstructors["GenerateModelConstructors (functionality)"]
-    n_NativeGoAssembly["NativeGoAssembly (feature)"]
-    n_PreserveHandwrittenSources["PreserveHandwrittenSources (functionality)"]
-    n_RetireReplacedPythonEntryPoints["RetireReplacedPythonEntryPoints (functionality)"]
-    n_VerifyNativeBehaviorParity["VerifyNativeBehaviorParity (functionality)"]
-    n_BuildGeneratedApplication -->|contributes-to| n_NativeGoAssembly
-    n_GenerateBindingRegistration -->|contributes-to| n_NativeGoAssembly
-    n_GenerateModelConstructors -->|contributes-to| n_NativeGoAssembly
-    n_PreserveHandwrittenSources -->|contributes-to| n_NativeGoAssembly
-    n_RetireReplacedPythonEntryPoints -->|contributes-to| n_NativeGoAssembly
-    n_VerifyNativeBehaviorParity -->|contributes-to| n_NativeGoAssembly
-```
+![Functionality-bidrag til Feature: NativeGoAssembly](diagrams/VP01-feature-NativeGoAssembly.svg)
 
 Kildegrunnlag: f0055, f0483, f0491, f0698, f0823, f1280.
 
-### Functionality-bidrag til Feature: NavigableDesignDocumentation
+## Functionality-bidrag til Feature: NavigableDesignDocumentation
 
-```mermaid
-flowchart LR
-    n_CaptureNavigationTarget["CaptureNavigationTarget (functionality)"]
-    n_ComposeViewPackage["ComposeViewPackage (functionality)"]
-    n_DispatchViewOpen["DispatchViewOpen (functionality)"]
-    n_EvictUnusedViewBundles["EvictUnusedViewBundles (functionality)"]
-    n_GenerateViewNavigation["GenerateViewNavigation (functionality)"]
-    n_KeyViewRevision["KeyViewRevision (functionality)"]
-    n_NavigableDesignDocumentation["NavigableDesignDocumentation (feature)"]
-    n_PreserveViewAnchors["PreserveViewAnchors (functionality)"]
-    n_ProjectSelectedView["ProjectSelectedView (functionality)"]
-    n_PublishViewBundle["PublishViewBundle (functionality)"]
-    n_RejectStaleViewResults["RejectStaleViewResults (functionality)"]
-    n_ResolveConfiguredViewer["ResolveConfiguredViewer (functionality)"]
-    n_RetainVisibleViewBundle["RetainVisibleViewBundle (functionality)"]
-    n_RouteDocumentToPane["RouteDocumentToPane (functionality)"]
-    n_ServeViewRequests["ServeViewRequests (functionality)"]
-    n_ValidateViewRequest["ValidateViewRequest (functionality)"]
-    n_CaptureNavigationTarget -->|contributes-to| n_NavigableDesignDocumentation
-    n_ComposeViewPackage -->|contributes-to| n_NavigableDesignDocumentation
-    n_DispatchViewOpen -->|contributes-to| n_NavigableDesignDocumentation
-    n_EvictUnusedViewBundles -->|contributes-to| n_NavigableDesignDocumentation
-    n_GenerateViewNavigation -->|contributes-to| n_NavigableDesignDocumentation
-    n_KeyViewRevision -->|contributes-to| n_NavigableDesignDocumentation
-    n_PreserveViewAnchors -->|contributes-to| n_NavigableDesignDocumentation
-    n_ProjectSelectedView -->|contributes-to| n_NavigableDesignDocumentation
-    n_PublishViewBundle -->|contributes-to| n_NavigableDesignDocumentation
-    n_RejectStaleViewResults -->|contributes-to| n_NavigableDesignDocumentation
-    n_ResolveConfiguredViewer -->|contributes-to| n_NavigableDesignDocumentation
-    n_RetainVisibleViewBundle -->|contributes-to| n_NavigableDesignDocumentation
-    n_RouteDocumentToPane -->|contributes-to| n_NavigableDesignDocumentation
-    n_ServeViewRequests -->|contributes-to| n_NavigableDesignDocumentation
-    n_ValidateViewRequest -->|contributes-to| n_NavigableDesignDocumentation
-```
+![Functionality-bidrag til Feature: NavigableDesignDocumentation](diagrams/VP01-feature-NavigableDesignDocumentation.svg)
 
 Kildegrunnlag: f0083, f0129, f0190, f0218, f0494, f0565, f0710, f0719, f0734, f0746, f0808, f0820, f0828, f1072, f1267.
 
-### Functionality-bidrag til Feature: StructuralModelInspection
+## Functionality-bidrag til Feature: StructuralModelInspection
 
-```mermaid
-flowchart LR
-    n_BuildSdlAst["BuildSdlAst (functionality)"]
-    n_BuildSduiAst["BuildSduiAst (functionality)"]
-    n_ReportSourceDiagnostics["ReportSourceDiagnostics (functionality)"]
-    n_StructuralModelInspection["StructuralModelInspection (feature)"]
-    n_ValidateSdlStructure["ValidateSdlStructure (functionality)"]
-    n_ValidateWidgetArguments["ValidateWidgetArguments (functionality)"]
-    n_BuildSdlAst -->|contributes-to| n_StructuralModelInspection
-    n_BuildSduiAst -->|contributes-to| n_StructuralModelInspection
-    n_ReportSourceDiagnostics -->|contributes-to| n_StructuralModelInspection
-    n_ValidateSdlStructure -->|contributes-to| n_StructuralModelInspection
-    n_ValidateWidgetArguments -->|contributes-to| n_StructuralModelInspection
-```
+![Functionality-bidrag til Feature: StructuralModelInspection](diagrams/VP01-feature-StructuralModelInspection.svg)
 
 Kildegrunnlag: f0067, f0072, f0800, f1253, f1270.
 
-### Functionality-bidrag til Feature: TypedDesignInspection
+## Functionality-bidrag til Feature: TypedDesignInspection
 
-```mermaid
-flowchart LR
-    n_ApplySemanticNotation["ApplySemanticNotation (functionality)"]
-    n_ExportModelInventories["ExportModelInventories (functionality)"]
-    n_IndexViewpointLevels["IndexViewpointLevels (functionality)"]
-    n_ProjectClassViews["ProjectClassViews (functionality)"]
-    n_SelectRelationshipViews["SelectRelationshipViews (functionality)"]
-    n_TypedDesignInspection["TypedDesignInspection (feature)"]
-    n_ValidateClassRelations["ValidateClassRelations (functionality)"]
-    n_VerifyDiagramCapabilities["VerifyDiagramCapabilities (functionality)"]
-    n_ApplySemanticNotation -->|contributes-to| n_TypedDesignInspection
-    n_ExportModelInventories -->|contributes-to| n_TypedDesignInspection
-    n_IndexViewpointLevels -->|contributes-to| n_TypedDesignInspection
-    n_ProjectClassViews -->|contributes-to| n_TypedDesignInspection
-    n_SelectRelationshipViews -->|contributes-to| n_TypedDesignInspection
-    n_ValidateClassRelations -->|contributes-to| n_TypedDesignInspection
-    n_VerifyDiagramCapabilities -->|contributes-to| n_TypedDesignInspection
-```
+![Functionality-bidrag til Feature: TypedDesignInspection](diagrams/VP01-feature-TypedDesignInspection.svg)
 
 Kildegrunnlag: f0023, f0225, f0538, f0712, f1051, f1244, f1278.
 
-### Functionality-bidrag til Feature: TypedDomainBinding
+## Functionality-bidrag til Feature: TypedDomainBinding
 
-```mermaid
-flowchart LR
-    n_ConnectTypedWidgetHandles["ConnectTypedWidgetHandles (functionality)"]
-    n_DispatchUiEvent["DispatchUiEvent (functionality)"]
-    n_InvokeRegisteredFunction["InvokeRegisteredFunction (functionality)"]
-    n_PublishDomainUpdates["PublishDomainUpdates (functionality)"]
-    n_ResolveCallbackSymbols["ResolveCallbackSymbols (functionality)"]
-    n_TypedDomainBinding["TypedDomainBinding (feature)"]
-    n_ConnectTypedWidgetHandles -->|contributes-to| n_TypedDomainBinding
-    n_DispatchUiEvent -->|contributes-to| n_TypedDomainBinding
-    n_InvokeRegisteredFunction -->|contributes-to| n_TypedDomainBinding
-    n_PublishDomainUpdates -->|contributes-to| n_TypedDomainBinding
-    n_ResolveCallbackSymbols -->|contributes-to| n_TypedDomainBinding
-```
+![Functionality-bidrag til Feature: TypedDomainBinding](diagrams/VP01-feature-TypedDomainBinding.svg)
 
 Kildegrunnlag: f0132, f0187, f0559, f0726, f0805.
 
 
 ## VP02 — Arkitektur og logisk inndeling
 
-Container er en erklært runtimegrense. Unit-røtter viser logisk struktur.
-contains angir ikke deployment. Eksplisitt Functionality-allokering vises per modus i VP07.
+Container/Unit og contains; bibliotekstruktur er ikke en deployment-allokering.
 
-### Arkitekturrøtter — ingen kobling/allokering er utledet
+## Arkitekturrøtter — ingen kobling/allokering er utledet
 
-```mermaid
-flowchart LR
-    n_CommandLineHost["CommandLineHost (container)"]
-    n_ContentServices["ContentServices (unit)"]
-    n_DevelopmentTools["DevelopmentTools (unit)"]
-    n_FyneBackend["FyneBackend (unit)"]
-    n_FyneHost["FyneHost (container)"]
-    n_GoDomainImplementation["GoDomainImplementation (unit)"]
-    n_SdlLibrary["SdlLibrary (unit)"]
-    n_SdlUiBindingAdapter["SdlUiBindingAdapter (unit)"]
-    n_SduiLibrary["SduiLibrary (unit)"]
-    n_ViewServiceHost["ViewServiceHost (container)"]
-    n_XfmdDocumentHost["XfmdDocumentHost (container)"]
-```
+![Arkitekturrøtter — ingen kobling/allokering er utledet](diagrams/VP02-roots.svg)
 
-Kildegrunnlag: Kun deklarasjoner.
+Kildegrunnlag: .
 
-### Logisk inndeling: ContentServices
+Kun deklarasjoner.
 
-```mermaid
-flowchart LR
-    n_ContentServices["ContentServices (unit)"]
-    n_DiagramProvider["DiagramProvider (unit)"]
-    n_MarkdownProvider["MarkdownProvider (unit)"]
-    n_ResourceStore["ResourceStore (unit)"]
-    n_ContentServices -->|contains| n_DiagramProvider
-    n_ContentServices -->|contains| n_MarkdownProvider
-    n_ContentServices -->|contains| n_ResourceStore
-```
+## Logisk inndeling: ContentServices
+
+![Logisk inndeling: ContentServices](diagrams/VP02-ContentServices.svg)
 
 Kildegrunnlag: f0134, f0135, f0136.
 
-### Logisk inndeling: DevelopmentTools
+## Logisk inndeling: DevelopmentTools
 
-```mermaid
-flowchart LR
-    n_DevelopmentTools["DevelopmentTools (unit)"]
-    n_DiagnosticReporter["DiagnosticReporter (unit)"]
-    n_GoBuildRunner["GoBuildRunner (unit)"]
-    n_GoCodeGenerator["GoCodeGenerator (unit)"]
-    n_ReloadCoordinator["ReloadCoordinator (unit)"]
-    n_SourceLoader["SourceLoader (unit)"]
-    n_SourceWatcher["SourceWatcher (unit)"]
-    n_DevelopmentTools -->|contains| n_DiagnosticReporter
-    n_DevelopmentTools -->|contains| n_GoBuildRunner
-    n_DevelopmentTools -->|contains| n_GoCodeGenerator
-    n_DevelopmentTools -->|contains| n_ReloadCoordinator
-    n_DevelopmentTools -->|contains| n_SourceLoader
-    n_DevelopmentTools -->|contains| n_SourceWatcher
-```
+![Logisk inndeling: DevelopmentTools](diagrams/VP02-DevelopmentTools.svg)
 
 Kildegrunnlag: f0169, f0170, f0171, f0172, f0173, f0174.
 
-### Logisk inndeling: SdlFrontend
+## Logisk inndeling: SdlFrontend
 
-```mermaid
-flowchart LR
-    n_SdlFrontend["SdlFrontend (unit)"]
-    n_SdlLexer["SdlLexer (unit)"]
-    n_SdlNormalizer["SdlNormalizer (unit)"]
-    n_SdlParser["SdlParser (unit)"]
-    n_SdlValidator["SdlValidator (unit)"]
-    n_SdlFrontend -->|contains| n_SdlLexer
-    n_SdlFrontend -->|contains| n_SdlNormalizer
-    n_SdlFrontend -->|contains| n_SdlParser
-    n_SdlFrontend -->|contains| n_SdlValidator
-```
+![Logisk inndeling: SdlFrontend](diagrams/VP02-SdlFrontend.svg)
 
 Kildegrunnlag: f0863, f0864, f0865, f0866.
 
-### Logisk inndeling: SdlLibrary
+## Logisk inndeling: SdlLibrary
 
-```mermaid
-flowchart LR
-    n_SdlFrontend["SdlFrontend (unit)"]
-    n_SdlLibrary["SdlLibrary (unit)"]
-    n_SdlRuntime["SdlRuntime (unit)"]
-    n_SdlViewpointGenerator["SdlViewpointGenerator (unit)"]
-    n_SdlLibrary -->|contains| n_SdlFrontend
-    n_SdlLibrary -->|contains| n_SdlRuntime
-    n_SdlLibrary -->|contains| n_SdlViewpointGenerator
-```
+![Logisk inndeling: SdlLibrary](diagrams/VP02-SdlLibrary.svg)
 
 Kildegrunnlag: f0877, f0878, f0879.
 
-### Logisk inndeling: SdlRuntime
+## Logisk inndeling: SdlRuntime
 
-```mermaid
-flowchart LR
-    n_DomainStateMigrator["DomainStateMigrator (unit)"]
-    n_SdlDispatcher["SdlDispatcher (unit)"]
-    n_SdlExecutionGate["SdlExecutionGate (unit)"]
-    n_SdlFunctionRegistry["SdlFunctionRegistry (unit)"]
-    n_SdlRuntime["SdlRuntime (unit)"]
-    n_SdlStateStore["SdlStateStore (unit)"]
-    n_SdlRuntime -->|contains| n_DomainStateMigrator
-    n_SdlRuntime -->|contains| n_SdlDispatcher
-    n_SdlRuntime -->|contains| n_SdlExecutionGate
-    n_SdlRuntime -->|contains| n_SdlFunctionRegistry
-    n_SdlRuntime -->|contains| n_SdlStateStore
-```
+![Logisk inndeling: SdlRuntime](diagrams/VP02-SdlRuntime.svg)
 
 Kildegrunnlag: f0898, f0899, f0900, f0901, f0902.
 
-### Logisk inndeling: SduiFrontend
+## Logisk inndeling: SduiFrontend
 
-```mermaid
-flowchart LR
-    n_SduiFrontend["SduiFrontend (unit)"]
-    n_SduiLexer["SduiLexer (unit)"]
-    n_SduiNormalizer["SduiNormalizer (unit)"]
-    n_SduiParser["SduiParser (unit)"]
-    n_SduiValidator["SduiValidator (unit)"]
-    n_SduiFrontend -->|contains| n_SduiLexer
-    n_SduiFrontend -->|contains| n_SduiNormalizer
-    n_SduiFrontend -->|contains| n_SduiParser
-    n_SduiFrontend -->|contains| n_SduiValidator
-```
+![Logisk inndeling: SduiFrontend](diagrams/VP02-SduiFrontend.svg)
 
 Kildegrunnlag: f0958, f0959, f0960, f0961.
 
-### Logisk inndeling: SduiLibrary
+## Logisk inndeling: SduiLibrary
 
-```mermaid
-flowchart LR
-    n_SduiFrontend["SduiFrontend (unit)"]
-    n_SduiLayout["SduiLayout (unit)"]
-    n_SduiLibrary["SduiLibrary (unit)"]
-    n_SduiPresentation["SduiPresentation (unit)"]
-    n_SduiRuntime["SduiRuntime (unit)"]
-    n_SduiLibrary -->|contains| n_SduiFrontend
-    n_SduiLibrary -->|contains| n_SduiLayout
-    n_SduiLibrary -->|contains| n_SduiPresentation
-    n_SduiLibrary -->|contains| n_SduiRuntime
-```
+![Logisk inndeling: SduiLibrary](diagrams/VP02-SduiLibrary.svg)
 
 Kildegrunnlag: f1003, f1004, f1005, f1006.
 
-### Logisk inndeling: SduiRuntime
+## Logisk inndeling: SduiRuntime
 
-```mermaid
-flowchart LR
-    n_SduiDispatcher["SduiDispatcher (unit)"]
-    n_SduiInstanceStore["SduiInstanceStore (unit)"]
-    n_SduiPropertyStore["SduiPropertyStore (unit)"]
-    n_SduiRuntime["SduiRuntime (unit)"]
-    n_UiStateReconciler["UiStateReconciler (unit)"]
-    n_SduiRuntime -->|contains| n_SduiDispatcher
-    n_SduiRuntime -->|contains| n_SduiInstanceStore
-    n_SduiRuntime -->|contains| n_SduiPropertyStore
-    n_SduiRuntime -->|contains| n_UiStateReconciler
-```
+![Logisk inndeling: SduiRuntime](diagrams/VP02-SduiRuntime.svg)
 
 Kildegrunnlag: f1035, f1036, f1037, f1038.
 
-### Logisk inndeling: ViewServiceHost
+## Logisk inndeling: ViewServiceHost
 
-```mermaid
-flowchart LR
-    n_DocumentBroker["DocumentBroker (unit)"]
-    n_ViewArtifactStore["ViewArtifactStore (unit)"]
-    n_ViewServiceHost["ViewServiceHost (container)"]
-    n_ViewerLaunchAdapter["ViewerLaunchAdapter (unit)"]
-    n_ViewServiceHost -->|contains| n_DocumentBroker
-    n_ViewServiceHost -->|contains| n_ViewArtifactStore
-    n_ViewServiceHost -->|contains| n_ViewerLaunchAdapter
-```
+![Logisk inndeling: ViewServiceHost](diagrams/VP02-ViewServiceHost.svg)
 
 Kildegrunnlag: f1396, f1397, f1398.
 
 
 ## VP03 — Ansvar og kapabiliteter over arkitekturen
 
-### Bidrag til kapabilitet: BoundInteraction
+owns, realizes og provides. Capability er ikke Feature.
 
-```mermaid
-flowchart LR
-    n_BoundInteraction["BoundInteraction (capability)"]
-    n_ConnectTypedWidgetHandles["ConnectTypedWidgetHandles (functionality)"]
-    n_DisconnectBindings["DisconnectBindings (functionality)"]
-    n_PublishDomainUpdates["PublishDomainUpdates (functionality)"]
-    n_ResolveCallbackSymbols["ResolveCallbackSymbols (functionality)"]
-    n_RouteDomainBindings["RouteDomainBindings (functionality)"]
-    n_SdlUiBindingAdapter["SdlUiBindingAdapter (unit)"]
-    n_ConnectTypedWidgetHandles -->|realizes| n_BoundInteraction
-    n_DisconnectBindings -->|realizes| n_BoundInteraction
-    n_PublishDomainUpdates -->|realizes| n_BoundInteraction
-    n_ResolveCallbackSymbols -->|realizes| n_BoundInteraction
-    n_RouteDomainBindings -->|realizes| n_BoundInteraction
-    n_SdlUiBindingAdapter -->|owns| n_ConnectTypedWidgetHandles
-    n_SdlUiBindingAdapter -->|owns| n_DisconnectBindings
-    n_SdlUiBindingAdapter -->|owns| n_PublishDomainUpdates
-    n_SdlUiBindingAdapter -->|owns| n_ResolveCallbackSymbols
-    n_SdlUiBindingAdapter -->|owns| n_RouteDomainBindings
-```
+## Bidrag til kapabilitet: BoundInteraction
+
+![Bidrag til kapabilitet: BoundInteraction](diagrams/VP03-BoundInteraction.svg)
 
 Kildegrunnlag: f0133, f0185, f0727, f0806, f0829, f0913, f0914, f0915, f0916, f0917.
 
-### Tilbydere av kapabilitet: BoundInteraction
+## Tilbydere av kapabilitet: BoundInteraction
 
-```mermaid
-flowchart LR
-    n_BoundInteraction["BoundInteraction (capability)"]
-    n_SdlUiBindingAdapter["SdlUiBindingAdapter (unit)"]
-    n_SdlUiBindingAdapter -->|provides| n_BoundInteraction
-```
+![Tilbydere av kapabilitet: BoundInteraction](diagrams/VP03-BoundInteraction-offers.svg)
 
 Kildegrunnlag: f0918.
 
-### Bidrag til kapabilitet: DevelopmentReload
+## Bidrag til kapabilitet: DevelopmentReload
 
-```mermaid
-flowchart LR
-    n_CoalesceSourceChanges["CoalesceSourceChanges (functionality)"]
-    n_DevelopmentReload["DevelopmentReload (capability)"]
-    n_KeepLastValidModels["KeepLastValidModels (functionality)"]
-    n_ObserveSourceChanges["ObserveSourceChanges (functionality)"]
-    n_PrepareCandidateModels["PrepareCandidateModels (functionality)"]
-    n_PublishModelGeneration["PublishModelGeneration (functionality)"]
-    n_ReloadCoordinator["ReloadCoordinator (unit)"]
-    n_RetirePreviousGeneration["RetirePreviousGeneration (functionality)"]
-    n_SourceWatcher["SourceWatcher (unit)"]
-    n_CoalesceSourceChanges -->|realizes| n_DevelopmentReload
-    n_KeepLastValidModels -->|realizes| n_DevelopmentReload
-    n_ObserveSourceChanges -->|realizes| n_DevelopmentReload
-    n_PrepareCandidateModels -->|realizes| n_DevelopmentReload
-    n_PublishModelGeneration -->|realizes| n_DevelopmentReload
-    n_ReloadCoordinator -->|owns| n_KeepLastValidModels
-    n_ReloadCoordinator -->|owns| n_PrepareCandidateModels
-    n_ReloadCoordinator -->|owns| n_PublishModelGeneration
-    n_ReloadCoordinator -->|owns| n_RetirePreviousGeneration
-    n_RetirePreviousGeneration -->|realizes| n_DevelopmentReload
-    n_SourceWatcher -->|owns| n_CoalesceSourceChanges
-    n_SourceWatcher -->|owns| n_ObserveSourceChanges
-```
+![Bidrag til kapabilitet: DevelopmentReload](diagrams/VP03-DevelopmentReload.svg)
 
 Kildegrunnlag: f0089, f0563, f0656, f0678, f0731, f0760, f0761, f0762, f0763, f0821, f1089, f1090.
 
-### Tilbydere av kapabilitet: DevelopmentReload
+## Tilbydere av kapabilitet: DevelopmentReload
 
-```mermaid
-flowchart LR
-    n_DevelopmentReload["DevelopmentReload (capability)"]
-    n_DevelopmentTools["DevelopmentTools (unit)"]
-    n_ReloadCoordinator["ReloadCoordinator (unit)"]
-    n_SourceWatcher["SourceWatcher (unit)"]
-    n_DevelopmentTools -->|provides| n_DevelopmentReload
-    n_ReloadCoordinator -->|provides| n_DevelopmentReload
-    n_SourceWatcher -->|provides| n_DevelopmentReload
-```
+![Tilbydere av kapabilitet: DevelopmentReload](diagrams/VP03-DevelopmentReload-offers.svg)
 
 Kildegrunnlag: f0177, f0764, f1091.
 
-### Bidrag til kapabilitet: DomainOperations
+## Bidrag til kapabilitet: DomainOperations
 
-```mermaid
-flowchart LR
-    n_DomainOperations["DomainOperations (capability)"]
-    n_GoDomainImplementation["GoDomainImplementation (unit)"]
-    n_PerformDomainOperation["PerformDomainOperation (functionality)"]
-    n_GoDomainImplementation -->|owns| n_PerformDomainOperation
-    n_PerformDomainOperation -->|realizes| n_DomainOperations
-```
+![Bidrag til kapabilitet: DomainOperations](diagrams/VP03-DomainOperations.svg)
 
 Kildegrunnlag: f0523, f0675.
 
-### Tilbydere av kapabilitet: DomainOperations
+## Tilbydere av kapabilitet: DomainOperations
 
-```mermaid
-flowchart LR
-    n_DomainOperations["DomainOperations (capability)"]
-    n_GoDomainImplementation["GoDomainImplementation (unit)"]
-    n_GoDomainImplementation -->|provides| n_DomainOperations
-```
+![Tilbydere av kapabilitet: DomainOperations](diagrams/VP03-DomainOperations-offers.svg)
 
 Kildegrunnlag: f0524.
 
-### Bidrag til kapabilitet: ExecutableDesign
+## Bidrag til kapabilitet: ExecutableDesign
 
-```mermaid
-flowchart LR
-    n_CancelPendingActions["CancelPendingActions (functionality)"]
-    n_CheckDomainStateCompatibility["CheckDomainStateCompatibility (functionality)"]
-    n_CheckExecutionCompleteness["CheckExecutionCompleteness (functionality)"]
-    n_CheckFunctionSignatures["CheckFunctionSignatures (functionality)"]
-    n_CloseSdlInstance["CloseSdlInstance (functionality)"]
-    n_CorrelateActionResult["CorrelateActionResult (functionality)"]
-    n_CreateSdlInstance["CreateSdlInstance (functionality)"]
-    n_DomainStateMigrator["DomainStateMigrator (unit)"]
-    n_ExecutableDesign["ExecutableDesign (capability)"]
-    n_InvokeRegisteredFunction["InvokeRegisteredFunction (functionality)"]
-    n_ManageDomainState["ManageDomainState (functionality)"]
-    n_MigrateOrResetDomainState["MigrateOrResetDomainState (functionality)"]
-    n_RegisterDomainFunctions["RegisterDomainFunctions (functionality)"]
-    n_SdlDispatcher["SdlDispatcher (unit)"]
-    n_SdlExecutionGate["SdlExecutionGate (unit)"]
-    n_SdlFunctionRegistry["SdlFunctionRegistry (unit)"]
-    n_SdlRuntime["SdlRuntime (unit)"]
-    n_SdlStateStore["SdlStateStore (unit)"]
-    n_SnapshotDomainState["SnapshotDomainState (functionality)"]
-    n_ValidateActionInput["ValidateActionInput (functionality)"]
-    n_CancelPendingActions -->|realizes| n_ExecutableDesign
-    n_CheckDomainStateCompatibility -->|realizes| n_ExecutableDesign
-    n_CheckExecutionCompleteness -->|realizes| n_ExecutableDesign
-    n_CheckFunctionSignatures -->|realizes| n_ExecutableDesign
-    n_CloseSdlInstance -->|realizes| n_ExecutableDesign
-    n_CorrelateActionResult -->|realizes| n_ExecutableDesign
-    n_CreateSdlInstance -->|realizes| n_ExecutableDesign
-    n_DomainStateMigrator -->|owns| n_CheckDomainStateCompatibility
-    n_DomainStateMigrator -->|owns| n_MigrateOrResetDomainState
-    n_InvokeRegisteredFunction -->|realizes| n_ExecutableDesign
-    n_ManageDomainState -->|realizes| n_ExecutableDesign
-    n_MigrateOrResetDomainState -->|realizes| n_ExecutableDesign
-    n_RegisterDomainFunctions -->|realizes| n_ExecutableDesign
-    n_SdlDispatcher -->|owns| n_CancelPendingActions
-    n_SdlDispatcher -->|owns| n_CorrelateActionResult
-    n_SdlDispatcher -->|owns| n_InvokeRegisteredFunction
-    n_SdlDispatcher -->|owns| n_ValidateActionInput
-    n_SdlExecutionGate -->|owns| n_CheckExecutionCompleteness
-    n_SdlFunctionRegistry -->|owns| n_CheckFunctionSignatures
-    n_SdlFunctionRegistry -->|owns| n_RegisterDomainFunctions
-    n_SdlRuntime -->|owns| n_CloseSdlInstance
-    n_SdlRuntime -->|owns| n_CreateSdlInstance
-    n_SdlStateStore -->|owns| n_ManageDomainState
-    n_SdlStateStore -->|owns| n_SnapshotDomainState
-    n_SnapshotDomainState -->|realizes| n_ExecutableDesign
-    n_ValidateActionInput -->|realizes| n_ExecutableDesign
-```
+![Bidrag til kapabilitet: ExecutableDesign](diagrams/VP03-ExecutableDesign.svg)
 
 Kildegrunnlag: f0081, f0084, f0085, f0086, f0087, f0140, f0142, f0214, f0215, f0560, f0589, f0603, f0743, f0848, f0849, f0850, f0851, f0859, f0872, f0873, f0903, f0904, f0907, f0908, f1077, f1242.
 
-### Tilbydere av kapabilitet: ExecutableDesign
+## Tilbydere av kapabilitet: ExecutableDesign
 
-```mermaid
-flowchart LR
-    n_DomainStateMigrator["DomainStateMigrator (unit)"]
-    n_ExecutableDesign["ExecutableDesign (capability)"]
-    n_SdlDispatcher["SdlDispatcher (unit)"]
-    n_SdlExecutionGate["SdlExecutionGate (unit)"]
-    n_SdlFunctionRegistry["SdlFunctionRegistry (unit)"]
-    n_SdlLibrary["SdlLibrary (unit)"]
-    n_SdlRuntime["SdlRuntime (unit)"]
-    n_SdlStateStore["SdlStateStore (unit)"]
-    n_DomainStateMigrator -->|provides| n_ExecutableDesign
-    n_SdlDispatcher -->|provides| n_ExecutableDesign
-    n_SdlExecutionGate -->|provides| n_ExecutableDesign
-    n_SdlFunctionRegistry -->|provides| n_ExecutableDesign
-    n_SdlLibrary -->|provides| n_ExecutableDesign
-    n_SdlRuntime -->|provides| n_ExecutableDesign
-    n_SdlStateStore -->|provides| n_ExecutableDesign
-```
+![Tilbydere av kapabilitet: ExecutableDesign](diagrams/VP03-ExecutableDesign-offers.svg)
 
 Kildegrunnlag: f0216, f0852, f0860, f0874, f0880, f0905, f0909.
 
-### Bidrag til kapabilitet: InteractiveSession
+## Bidrag til kapabilitet: InteractiveSession
 
-```mermaid
-flowchart LR
-    n_ApplyPropertyBatch["ApplyPropertyBatch (functionality)"]
-    n_CloseUiInstance["CloseUiInstance (functionality)"]
-    n_CorrelateUiResult["CorrelateUiResult (functionality)"]
-    n_CreateUiInstance["CreateUiInstance (functionality)"]
-    n_DispatchUiEvent["DispatchUiEvent (functionality)"]
-    n_InteractiveSession["InteractiveSession (capability)"]
-    n_ManageWidgetIdentities["ManageWidgetIdentities (functionality)"]
-    n_MatchCompatibleWidgets["MatchCompatibleWidgets (functionality)"]
-    n_PreserveCompatibleUiState["PreserveCompatibleUiState (functionality)"]
-    n_RejectStaleUiEvent["RejectStaleUiEvent (functionality)"]
-    n_ResetIncompatibleUiState["ResetIncompatibleUiState (functionality)"]
-    n_RevokeWidgetGenerations["RevokeWidgetGenerations (functionality)"]
-    n_SduiDispatcher["SduiDispatcher (unit)"]
-    n_SduiInstanceStore["SduiInstanceStore (unit)"]
-    n_SduiPropertyStore["SduiPropertyStore (unit)"]
-    n_SduiRuntime["SduiRuntime (unit)"]
-    n_SnapshotUiState["SnapshotUiState (functionality)"]
-    n_TrackInputDraft["TrackInputDraft (functionality)"]
-    n_UiStateReconciler["UiStateReconciler (unit)"]
-    n_ValidatePropertyBatch["ValidatePropertyBatch (functionality)"]
-    n_ValidateUiEvent["ValidateUiEvent (functionality)"]
-    n_ApplyPropertyBatch -->|realizes| n_InteractiveSession
-    n_CloseUiInstance -->|realizes| n_InteractiveSession
-    n_CorrelateUiResult -->|realizes| n_InteractiveSession
-    n_CreateUiInstance -->|realizes| n_InteractiveSession
-    n_DispatchUiEvent -->|realizes| n_InteractiveSession
-    n_ManageWidgetIdentities -->|realizes| n_InteractiveSession
-    n_MatchCompatibleWidgets -->|realizes| n_InteractiveSession
-    n_PreserveCompatibleUiState -->|realizes| n_InteractiveSession
-    n_RejectStaleUiEvent -->|realizes| n_InteractiveSession
-    n_ResetIncompatibleUiState -->|realizes| n_InteractiveSession
-    n_RevokeWidgetGenerations -->|realizes| n_InteractiveSession
-    n_SduiDispatcher -->|owns| n_CorrelateUiResult
-    n_SduiDispatcher -->|owns| n_DispatchUiEvent
-    n_SduiDispatcher -->|owns| n_RejectStaleUiEvent
-    n_SduiDispatcher -->|owns| n_ValidateUiEvent
-    n_SduiInstanceStore -->|owns| n_ManageWidgetIdentities
-    n_SduiInstanceStore -->|owns| n_RevokeWidgetGenerations
-    n_SduiInstanceStore -->|owns| n_SnapshotUiState
-    n_SduiPropertyStore -->|owns| n_ApplyPropertyBatch
-    n_SduiPropertyStore -->|owns| n_TrackInputDraft
-    n_SduiPropertyStore -->|owns| n_ValidatePropertyBatch
-    n_SduiRuntime -->|owns| n_CloseUiInstance
-    n_SduiRuntime -->|owns| n_CreateUiInstance
-    n_SnapshotUiState -->|realizes| n_InteractiveSession
-    n_TrackInputDraft -->|realizes| n_InteractiveSession
-    n_UiStateReconciler -->|owns| n_MatchCompatibleWidgets
-    n_UiStateReconciler -->|owns| n_PreserveCompatibleUiState
-    n_UiStateReconciler -->|owns| n_ResetIncompatibleUiState
-    n_ValidatePropertyBatch -->|realizes| n_InteractiveSession
-    n_ValidateUiEvent -->|realizes| n_InteractiveSession
-```
+![Bidrag til kapabilitet: InteractiveSession](diagrams/VP03-InteractiveSession.svg)
 
 Kildegrunnlag: f0021, f0088, f0141, f0143, f0188, f0591, f0598, f0696, f0744, f0802, f0824, f0946, f0947, f0948, f0949, f0979, f0981, f0982, f1029, f1030, f1031, f1039, f1040, f1078, f1142, f1224, f1225, f1226, f1245, f1260.
 
-### Tilbydere av kapabilitet: InteractiveSession
+## Tilbydere av kapabilitet: InteractiveSession
 
-```mermaid
-flowchart LR
-    n_InteractiveSession["InteractiveSession (capability)"]
-    n_SduiDispatcher["SduiDispatcher (unit)"]
-    n_SduiInstanceStore["SduiInstanceStore (unit)"]
-    n_SduiLibrary["SduiLibrary (unit)"]
-    n_SduiPropertyStore["SduiPropertyStore (unit)"]
-    n_SduiRuntime["SduiRuntime (unit)"]
-    n_UiStateReconciler["UiStateReconciler (unit)"]
-    n_SduiDispatcher -->|provides| n_InteractiveSession
-    n_SduiInstanceStore -->|provides| n_InteractiveSession
-    n_SduiLibrary -->|provides| n_InteractiveSession
-    n_SduiPropertyStore -->|provides| n_InteractiveSession
-    n_SduiRuntime -->|provides| n_InteractiveSession
-    n_UiStateReconciler -->|provides| n_InteractiveSession
-```
+![Tilbydere av kapabilitet: InteractiveSession](diagrams/VP03-InteractiveSession-offers.svg)
 
 Kildegrunnlag: f0950, f0983, f1007, f1032, f1041, f1227.
 
-### Bidrag til kapabilitet: MeasuredPresentation
+## Bidrag til kapabilitet: MeasuredPresentation
 
-```mermaid
-flowchart LR
-    n_AllocateGeometry["AllocateGeometry (functionality)"]
-    n_BuildPreparedFrame["BuildPreparedFrame (functionality)"]
-    n_ComputeClipping["ComputeClipping (functionality)"]
-    n_MeasureUiContent["MeasureUiContent (functionality)"]
-    n_MeasuredPresentation["MeasuredPresentation (capability)"]
-    n_ResolveAncestorDimensions["ResolveAncestorDimensions (functionality)"]
-    n_SduiLayout["SduiLayout (unit)"]
-    n_AllocateGeometry -->|realizes| n_MeasuredPresentation
-    n_BuildPreparedFrame -->|realizes| n_MeasuredPresentation
-    n_ComputeClipping -->|realizes| n_MeasuredPresentation
-    n_MeasureUiContent -->|realizes| n_MeasuredPresentation
-    n_ResolveAncestorDimensions -->|realizes| n_MeasuredPresentation
-    n_SduiLayout -->|owns| n_AllocateGeometry
-    n_SduiLayout -->|owns| n_BuildPreparedFrame
-    n_SduiLayout -->|owns| n_ComputeClipping
-    n_SduiLayout -->|owns| n_MeasureUiContent
-    n_SduiLayout -->|owns| n_ResolveAncestorDimensions
-```
+![Bidrag til kapabilitet: MeasuredPresentation](diagrams/VP03-MeasuredPresentation.svg)
 
 Kildegrunnlag: f0019, f0065, f0130, f0600, f0803, f0989, f0990, f0991, f0992, f0993.
 
-### Tilbydere av kapabilitet: MeasuredPresentation
+## Tilbydere av kapabilitet: MeasuredPresentation
 
-```mermaid
-flowchart LR
-    n_MeasuredPresentation["MeasuredPresentation (capability)"]
-    n_SduiLayout["SduiLayout (unit)"]
-    n_SduiLibrary["SduiLibrary (unit)"]
-    n_SduiLayout -->|provides| n_MeasuredPresentation
-    n_SduiLibrary -->|provides| n_MeasuredPresentation
-```
+![Tilbydere av kapabilitet: MeasuredPresentation](diagrams/VP03-MeasuredPresentation-offers.svg)
 
 Kildegrunnlag: f0994, f1008.
 
-### Bidrag til kapabilitet: NativeInteraction
+## Bidrag til kapabilitet: NativeInteraction
 
-```mermaid
-flowchart LR
-    n_ComposeInteractiveSession["ComposeInteractiveSession (functionality)"]
-    n_FyneBackend["FyneBackend (unit)"]
-    n_FyneHost["FyneHost (container)"]
-    n_HandleFocusAndTextInput["HandleFocusAndTextInput (functionality)"]
-    n_NativeInteraction["NativeInteraction (capability)"]
-    n_PublishPresentation["PublishPresentation (functionality)"]
-    n_ReconcileWidgets["ReconcileWidgets (functionality)"]
-    n_ReleaseNativeWidgets["ReleaseNativeWidgets (functionality)"]
-    n_ScheduleUiPublication["ScheduleUiPublication (functionality)"]
-    n_ComposeInteractiveSession -->|realizes| n_NativeInteraction
-    n_FyneBackend -->|owns| n_HandleFocusAndTextInput
-    n_FyneBackend -->|owns| n_PublishPresentation
-    n_FyneBackend -->|owns| n_ReconcileWidgets
-    n_FyneBackend -->|owns| n_ReleaseNativeWidgets
-    n_FyneHost -->|owns| n_ComposeInteractiveSession
-    n_FyneHost -->|owns| n_ScheduleUiPublication
-    n_HandleFocusAndTextInput -->|realizes| n_NativeInteraction
-    n_PublishPresentation -->|realizes| n_NativeInteraction
-    n_ReconcileWidgets -->|realizes| n_NativeInteraction
-    n_ReleaseNativeWidgets -->|realizes| n_NativeInteraction
-    n_ScheduleUiPublication -->|realizes| n_NativeInteraction
-```
+![Bidrag til kapabilitet: NativeInteraction](diagrams/VP03-NativeInteraction.svg)
 
 Kildegrunnlag: f0124, f0248, f0249, f0250, f0251, f0267, f0268, f0535, f0732, f0741, f0747, f0832.
 
-### Tilbydere av kapabilitet: NativeInteraction
+## Tilbydere av kapabilitet: NativeInteraction
 
-```mermaid
-flowchart LR
-    n_FyneBackend["FyneBackend (unit)"]
-    n_FyneHost["FyneHost (container)"]
-    n_NativeInteraction["NativeInteraction (capability)"]
-    n_FyneBackend -->|provides| n_NativeInteraction
-    n_FyneHost -->|provides| n_NativeInteraction
-```
+![Tilbydere av kapabilitet: NativeInteraction](diagrams/VP03-NativeInteraction-offers.svg)
 
 Kildegrunnlag: f0252, f0269.
 
-### Bidrag til kapabilitet: NativeRealization
+## Bidrag til kapabilitet: NativeRealization
 
-```mermaid
-flowchart LR
-    n_BuildGeneratedApplication["BuildGeneratedApplication (functionality)"]
-    n_GenerateBindingRegistration["GenerateBindingRegistration (functionality)"]
-    n_GenerateModelConstructors["GenerateModelConstructors (functionality)"]
-    n_GoBuildRunner["GoBuildRunner (unit)"]
-    n_GoCodeGenerator["GoCodeGenerator (unit)"]
-    n_NativeRealization["NativeRealization (capability)"]
-    n_PreserveHandwrittenSources["PreserveHandwrittenSources (functionality)"]
-    n_RestartChangedGoProgram["RestartChangedGoProgram (functionality)"]
-    n_BuildGeneratedApplication -->|realizes| n_NativeRealization
-    n_GenerateBindingRegistration -->|realizes| n_NativeRealization
-    n_GenerateModelConstructors -->|realizes| n_NativeRealization
-    n_GoBuildRunner -->|owns| n_BuildGeneratedApplication
-    n_GoBuildRunner -->|owns| n_RestartChangedGoProgram
-    n_GoCodeGenerator -->|owns| n_GenerateBindingRegistration
-    n_GoCodeGenerator -->|owns| n_GenerateModelConstructors
-    n_GoCodeGenerator -->|owns| n_PreserveHandwrittenSources
-    n_PreserveHandwrittenSources -->|realizes| n_NativeRealization
-    n_RestartChangedGoProgram -->|realizes| n_NativeRealization
-```
+![Bidrag til kapabilitet: NativeRealization](diagrams/VP03-NativeRealization.svg)
 
 Kildegrunnlag: f0056, f0484, f0492, f0505, f0506, f0513, f0514, f0515, f0699, f0818.
 
-### Tilbydere av kapabilitet: NativeRealization
+## Tilbydere av kapabilitet: NativeRealization
 
-```mermaid
-flowchart LR
-    n_GoBuildRunner["GoBuildRunner (unit)"]
-    n_GoCodeGenerator["GoCodeGenerator (unit)"]
-    n_NativeRealization["NativeRealization (capability)"]
-    n_GoBuildRunner -->|provides| n_NativeRealization
-    n_GoCodeGenerator -->|provides| n_NativeRealization
-```
+![Tilbydere av kapabilitet: NativeRealization](diagrams/VP03-NativeRealization-offers.svg)
 
 Kildegrunnlag: f0507, f0516.
 
-### Bidrag til kapabilitet: RichContent
+## Bidrag til kapabilitet: RichContent
 
-```mermaid
-flowchart LR
-    n_DiagramProvider["DiagramProvider (unit)"]
-    n_MarkdownProvider["MarkdownProvider (unit)"]
-    n_MeasureMarkdownContent["MeasureMarkdownContent (functionality)"]
-    n_PrepareDiagramResource["PrepareDiagramResource (functionality)"]
-    n_PrepareMarkdown["PrepareMarkdown (functionality)"]
-    n_ReleaseVisualResources["ReleaseVisualResources (functionality)"]
-    n_ResourceStore["ResourceStore (unit)"]
-    n_RichContent["RichContent (capability)"]
-    n_ValidateVisualResources["ValidateVisualResources (functionality)"]
-    n_DiagramProvider -->|owns| n_PrepareDiagramResource
-    n_MarkdownProvider -->|owns| n_MeasureMarkdownContent
-    n_MarkdownProvider -->|owns| n_PrepareMarkdown
-    n_MeasureMarkdownContent -->|realizes| n_RichContent
-    n_PrepareDiagramResource -->|realizes| n_RichContent
-    n_PrepareMarkdown -->|realizes| n_RichContent
-    n_ReleaseVisualResources -->|realizes| n_RichContent
-    n_ResourceStore -->|owns| n_ReleaseVisualResources
-    n_ResourceStore -->|owns| n_ValidateVisualResources
-    n_ValidateVisualResources -->|realizes| n_RichContent
-```
+![Bidrag til kapabilitet: RichContent](diagrams/VP03-RichContent.svg)
 
 Kildegrunnlag: f0183, f0595, f0596, f0599, f0679, f0680, f0748, f0815, f0816, f1268.
 
-### Tilbydere av kapabilitet: RichContent
+## Tilbydere av kapabilitet: RichContent
 
-```mermaid
-flowchart LR
-    n_ContentServices["ContentServices (unit)"]
-    n_DiagramProvider["DiagramProvider (unit)"]
-    n_MarkdownProvider["MarkdownProvider (unit)"]
-    n_ResourceStore["ResourceStore (unit)"]
-    n_RichContent["RichContent (capability)"]
-    n_ContentServices -->|provides| n_RichContent
-    n_DiagramProvider -->|provides| n_RichContent
-    n_MarkdownProvider -->|provides| n_RichContent
-    n_ResourceStore -->|provides| n_RichContent
-```
+![Tilbydere av kapabilitet: RichContent](diagrams/VP03-RichContent-offers.svg)
 
 Kildegrunnlag: f0137, f0184, f0597, f0817.
 
-### Bidrag til kapabilitet: SdlSourceModel
+## Bidrag til kapabilitet: SdlSourceModel
 
-```mermaid
-flowchart LR
-    n_BuildSdlAst["BuildSdlAst (functionality)"]
-    n_CoordinateSdlCompilation["CoordinateSdlCompilation (functionality)"]
-    n_NormalizeSdlModel["NormalizeSdlModel (functionality)"]
-    n_PreserveSdlSourceMap["PreserveSdlSourceMap (functionality)"]
-    n_ResolveSdlSymbols["ResolveSdlSymbols (functionality)"]
-    n_SdlFrontend["SdlFrontend (unit)"]
-    n_SdlLexer["SdlLexer (unit)"]
-    n_SdlNormalizer["SdlNormalizer (unit)"]
-    n_SdlParser["SdlParser (unit)"]
-    n_SdlSourceModel["SdlSourceModel (capability)"]
-    n_SdlValidator["SdlValidator (unit)"]
-    n_TokenizeSdlSource["TokenizeSdlSource (functionality)"]
-    n_ValidateSdlProfile["ValidateSdlProfile (functionality)"]
-    n_ValidateSdlStructure["ValidateSdlStructure (functionality)"]
-    n_BuildSdlAst -->|realizes| n_SdlSourceModel
-    n_CoordinateSdlCompilation -->|realizes| n_SdlSourceModel
-    n_NormalizeSdlModel -->|realizes| n_SdlSourceModel
-    n_PreserveSdlSourceMap -->|realizes| n_SdlSourceModel
-    n_ResolveSdlSymbols -->|realizes| n_SdlSourceModel
-    n_SdlFrontend -->|owns| n_CoordinateSdlCompilation
-    n_SdlLexer -->|owns| n_TokenizeSdlSource
-    n_SdlNormalizer -->|owns| n_NormalizeSdlModel
-    n_SdlNormalizer -->|owns| n_PreserveSdlSourceMap
-    n_SdlParser -->|owns| n_BuildSdlAst
-    n_SdlValidator -->|owns| n_ResolveSdlSymbols
-    n_SdlValidator -->|owns| n_ValidateSdlProfile
-    n_SdlValidator -->|owns| n_ValidateSdlStructure
-    n_TokenizeSdlSource -->|realizes| n_SdlSourceModel
-    n_ValidateSdlProfile -->|realizes| n_SdlSourceModel
-    n_ValidateSdlStructure -->|realizes| n_SdlSourceModel
-```
+![Bidrag til kapabilitet: SdlSourceModel](diagrams/VP03-SdlSourceModel.svg)
 
 Kildegrunnlag: f0070, f0138, f0640, f0702, f0811, f0867, f0875, f0891, f0892, f0894, f0923, f0925, f0926, f1125, f1251, f1256.
 
-### Tilbydere av kapabilitet: SdlSourceModel
+## Tilbydere av kapabilitet: SdlSourceModel
 
-```mermaid
-flowchart LR
-    n_SdlFrontend["SdlFrontend (unit)"]
-    n_SdlLexer["SdlLexer (unit)"]
-    n_SdlLibrary["SdlLibrary (unit)"]
-    n_SdlNormalizer["SdlNormalizer (unit)"]
-    n_SdlParser["SdlParser (unit)"]
-    n_SdlSourceModel["SdlSourceModel (capability)"]
-    n_SdlValidator["SdlValidator (unit)"]
-    n_SdlFrontend -->|provides| n_SdlSourceModel
-    n_SdlLexer -->|provides| n_SdlSourceModel
-    n_SdlLibrary -->|provides| n_SdlSourceModel
-    n_SdlNormalizer -->|provides| n_SdlSourceModel
-    n_SdlParser -->|provides| n_SdlSourceModel
-    n_SdlValidator -->|provides| n_SdlSourceModel
-```
+![Tilbydere av kapabilitet: SdlSourceModel](diagrams/VP03-SdlSourceModel-offers.svg)
 
 Kildegrunnlag: f0868, f0876, f0881, f0893, f0895, f0927.
 
-### Bidrag til kapabilitet: SduiSourceModel
+## Bidrag til kapabilitet: SduiSourceModel
 
-```mermaid
-flowchart LR
-    n_BuildSduiAst["BuildSduiAst (functionality)"]
-    n_CoordinateSduiCompilation["CoordinateSduiCompilation (functionality)"]
-    n_ExpandUiDefinitions["ExpandUiDefinitions (functionality)"]
-    n_PreserveUiRegions["PreserveUiRegions (functionality)"]
-    n_PreserveUiSourceMap["PreserveUiSourceMap (functionality)"]
-    n_ResolveUiNames["ResolveUiNames (functionality)"]
-    n_SduiFrontend["SduiFrontend (unit)"]
-    n_SduiLexer["SduiLexer (unit)"]
-    n_SduiNormalizer["SduiNormalizer (unit)"]
-    n_SduiParser["SduiParser (unit)"]
-    n_SduiSourceModel["SduiSourceModel (capability)"]
-    n_SduiValidator["SduiValidator (unit)"]
-    n_TokenizeSduiSource["TokenizeSduiSource (functionality)"]
-    n_ValidateRelativeFormatting["ValidateRelativeFormatting (functionality)"]
-    n_ValidateSymbolicBindings["ValidateSymbolicBindings (functionality)"]
-    n_ValidateWidgetArguments["ValidateWidgetArguments (functionality)"]
-    n_BuildSduiAst -->|realizes| n_SduiSourceModel
-    n_CoordinateSduiCompilation -->|realizes| n_SduiSourceModel
-    n_ExpandUiDefinitions -->|realizes| n_SduiSourceModel
-    n_PreserveUiRegions -->|realizes| n_SduiSourceModel
-    n_PreserveUiSourceMap -->|realizes| n_SduiSourceModel
-    n_ResolveUiNames -->|realizes| n_SduiSourceModel
-    n_SduiFrontend -->|owns| n_CoordinateSduiCompilation
-    n_SduiLexer -->|owns| n_TokenizeSduiSource
-    n_SduiNormalizer -->|owns| n_ExpandUiDefinitions
-    n_SduiNormalizer -->|owns| n_PreserveUiRegions
-    n_SduiNormalizer -->|owns| n_PreserveUiSourceMap
-    n_SduiParser -->|owns| n_BuildSduiAst
-    n_SduiValidator -->|owns| n_ResolveUiNames
-    n_SduiValidator -->|owns| n_ValidateRelativeFormatting
-    n_SduiValidator -->|owns| n_ValidateSymbolicBindings
-    n_SduiValidator -->|owns| n_ValidateWidgetArguments
-    n_TokenizeSduiSource -->|realizes| n_SduiSourceModel
-    n_ValidateRelativeFormatting -->|realizes| n_SduiSourceModel
-    n_ValidateSymbolicBindings -->|realizes| n_SduiSourceModel
-    n_ValidateWidgetArguments -->|realizes| n_SduiSourceModel
-```
+![Bidrag til kapabilitet: SduiSourceModel](diagrams/VP03-SduiSourceModel.svg)
 
 Kildegrunnlag: f0075, f0139, f0222, f0705, f0708, f0814, f0962, f0999, f1011, f1012, f1013, f1017, f1043, f1044, f1045, f1046, f1128, f1248, f1259, f1273.
 
-### Tilbydere av kapabilitet: SduiSourceModel
+## Tilbydere av kapabilitet: SduiSourceModel
 
-```mermaid
-flowchart LR
-    n_SduiFrontend["SduiFrontend (unit)"]
-    n_SduiLexer["SduiLexer (unit)"]
-    n_SduiLibrary["SduiLibrary (unit)"]
-    n_SduiNormalizer["SduiNormalizer (unit)"]
-    n_SduiParser["SduiParser (unit)"]
-    n_SduiSourceModel["SduiSourceModel (capability)"]
-    n_SduiValidator["SduiValidator (unit)"]
-    n_SduiFrontend -->|provides| n_SduiSourceModel
-    n_SduiLexer -->|provides| n_SduiSourceModel
-    n_SduiLibrary -->|provides| n_SduiSourceModel
-    n_SduiNormalizer -->|provides| n_SduiSourceModel
-    n_SduiParser -->|provides| n_SduiSourceModel
-    n_SduiValidator -->|provides| n_SduiSourceModel
-```
+![Tilbydere av kapabilitet: SduiSourceModel](diagrams/VP03-SduiSourceModel-offers.svg)
 
 Kildegrunnlag: f0963, f1000, f1009, f1014, f1018, f1047.
 
-### Bidrag til kapabilitet: SourceDiagnostics
+## Bidrag til kapabilitet: SourceDiagnostics
 
-```mermaid
-flowchart LR
-    n_DiagnosticReporter["DiagnosticReporter (unit)"]
-    n_ReportBindingDiagnostics["ReportBindingDiagnostics (functionality)"]
-    n_ReportSourceDiagnostics["ReportSourceDiagnostics (functionality)"]
-    n_SourceDiagnostics["SourceDiagnostics (capability)"]
-    n_DiagnosticReporter -->|owns| n_ReportBindingDiagnostics
-    n_DiagnosticReporter -->|owns| n_ReportSourceDiagnostics
-    n_ReportBindingDiagnostics -->|realizes| n_SourceDiagnostics
-    n_ReportSourceDiagnostics -->|realizes| n_SourceDiagnostics
-```
+![Bidrag til kapabilitet: SourceDiagnostics](diagrams/VP03-SourceDiagnostics.svg)
 
 Kildegrunnlag: f0178, f0179, f0796, f0801.
 
-### Tilbydere av kapabilitet: SourceDiagnostics
+## Tilbydere av kapabilitet: SourceDiagnostics
 
-```mermaid
-flowchart LR
-    n_DiagnosticReporter["DiagnosticReporter (unit)"]
-    n_SourceDiagnostics["SourceDiagnostics (capability)"]
-    n_DiagnosticReporter -->|provides| n_SourceDiagnostics
-```
+![Tilbydere av kapabilitet: SourceDiagnostics](diagrams/VP03-SourceDiagnostics-offers.svg)
 
 Kildegrunnlag: f0180.
 
-### Bidrag til kapabilitet: SourceLoading
+## Bidrag til kapabilitet: SourceLoading
 
-```mermaid
-flowchart LR
-    n_IdentifySourceRevision["IdentifySourceRevision (functionality)"]
-    n_ReadBoundedSources["ReadBoundedSources (functionality)"]
-    n_SourceLoader["SourceLoader (unit)"]
-    n_SourceLoading["SourceLoading (capability)"]
-    n_IdentifySourceRevision -->|realizes| n_SourceLoading
-    n_ReadBoundedSources -->|realizes| n_SourceLoading
-    n_SourceLoader -->|owns| n_IdentifySourceRevision
-    n_SourceLoader -->|owns| n_ReadBoundedSources
-```
+![Bidrag til kapabilitet: SourceLoading](diagrams/VP03-SourceLoading.svg)
 
 Kildegrunnlag: f0536, f0737, f1085, f1086.
 
-### Tilbydere av kapabilitet: SourceLoading
+## Tilbydere av kapabilitet: SourceLoading
 
-```mermaid
-flowchart LR
-    n_SourceLoader["SourceLoader (unit)"]
-    n_SourceLoading["SourceLoading (capability)"]
-    n_SourceLoader -->|provides| n_SourceLoading
-```
+![Tilbydere av kapabilitet: SourceLoading](diagrams/VP03-SourceLoading-offers.svg)
 
 Kildegrunnlag: f1087.
 
-### Bidrag til kapabilitet: StaticDocumentation
+## Bidrag til kapabilitet: StaticDocumentation
 
-```mermaid
-flowchart LR
-    n_CommandLineHost["CommandLineHost (container)"]
-    n_ComposeHeadlessExport["ComposeHeadlessExport (functionality)"]
-    n_ComposeMarkdownDocument["ComposeMarkdownDocument (functionality)"]
-    n_ExportConsoleSnapshot["ExportConsoleSnapshot (functionality)"]
-    n_ExportSvgSnapshot["ExportSvgSnapshot (functionality)"]
-    n_SduiPresentation["SduiPresentation (unit)"]
-    n_StaticDocumentation["StaticDocumentation (capability)"]
-    n_WriteGeneratedArtifacts["WriteGeneratedArtifacts (functionality)"]
-    n_CommandLineHost -->|owns| n_ComposeHeadlessExport
-    n_CommandLineHost -->|owns| n_WriteGeneratedArtifacts
-    n_ComposeHeadlessExport -->|realizes| n_StaticDocumentation
-    n_ComposeMarkdownDocument -->|realizes| n_StaticDocumentation
-    n_ExportConsoleSnapshot -->|realizes| n_StaticDocumentation
-    n_ExportSvgSnapshot -->|realizes| n_StaticDocumentation
-    n_SduiPresentation -->|owns| n_ComposeMarkdownDocument
-    n_SduiPresentation -->|owns| n_ExportConsoleSnapshot
-    n_SduiPresentation -->|owns| n_ExportSvgSnapshot
-    n_WriteGeneratedArtifacts -->|realizes| n_StaticDocumentation
-```
+![Bidrag til kapabilitet: StaticDocumentation](diagrams/VP03-StaticDocumentation.svg)
 
 Kildegrunnlag: f0094, f0095, f0121, f0127, f0223, f0233, f1022, f1023, f1024, f1415.
 
-### Tilbydere av kapabilitet: StaticDocumentation
+## Tilbydere av kapabilitet: StaticDocumentation
 
-```mermaid
-flowchart LR
-    n_CommandLineHost["CommandLineHost (container)"]
-    n_SduiLibrary["SduiLibrary (unit)"]
-    n_SduiPresentation["SduiPresentation (unit)"]
-    n_StaticDocumentation["StaticDocumentation (capability)"]
-    n_CommandLineHost -->|provides| n_StaticDocumentation
-    n_SduiLibrary -->|provides| n_StaticDocumentation
-    n_SduiPresentation -->|provides| n_StaticDocumentation
-```
+![Tilbydere av kapabilitet: StaticDocumentation](diagrams/VP03-StaticDocumentation-offers.svg)
 
 Kildegrunnlag: f0096, f1010, f1025.
 
 
+## VP04 — Grensesnitt og samarbeid
+
+consumes viser bruk; ingen tilbyder, Channel eller kjørbar meldingsflyt utledes.
+
+## Grensesnittbruk
+
+Ingen Channel eller tilbyder utledes.
+
+| Bruker | Interface | Faktum | Linje |
+| --- | --- | --- | --- |
+| CommandLineHost | ExportSinkPort | f0090 | 555 |
+| CommandLineHost | PreparedFramePort | f0091 | 556 |
+| CommandLineHost | SduiFrontendPort | f0092 | 557 |
+| CommandLineHost | SourceSnapshotPort | f0093 | 558 |
+| DiagramProvider | DiagramEnginePort | f0181 | 646 |
+| DiagramProvider | ResourcePort | f0182 | 647 |
+| DomainStateMigrator | DomainStatePort | f0212 | 677 |
+| DomainStateMigrator | SdlModelPort | f0213 | 678 |
+| FyneBackend | PreparedFramePort | f0246 | 711 |
+| FyneBackend | UiSessionPort | f0247 | 712 |
+| FyneHost | DomainBindingPort | f0260 | 725 |
+| FyneHost | ReloadPort | f0261 | 726 |
+| FyneHost | SdlFrontendPort | f0262 | 727 |
+| FyneHost | SduiFrontendPort | f0263 | 728 |
+| FyneHost | SourceSnapshotPort | f0264 | 729 |
+| FyneHost | UiSessionPort | f0265 | 730 |
+| FyneHost | WidgetBackendPort | f0266 | 731 |
+| GoBuildRunner | BuildToolPort | f0503 | 968 |
+| GoBuildRunner | GeneratedArtifactPort | f0504 | 969 |
+| GoCodeGenerator | ExecutionProfilePort | f0510 | 975 |
+| GoCodeGenerator | SdlModelPort | f0511 | 976 |
+| GoCodeGenerator | SduiModelPort | f0512 | 977 |
+| MarkdownProvider | DiagramPort | f0592 | 1057 |
+| MarkdownProvider | MeasurementPort | f0593 | 1058 |
+| MarkdownProvider | ResourcePort | f0594 | 1059 |
+| ReloadCoordinator | BindingReloadPort | f0753 | 1218 |
+| ReloadCoordinator | DiagnosticPort | f0754 | 1219 |
+| ReloadCoordinator | SdlFrontendPort | f0755 | 1220 |
+| ReloadCoordinator | SdlReloadPort | f0756 | 1221 |
+| ReloadCoordinator | SduiFrontendPort | f0757 | 1222 |
+| ReloadCoordinator | SourceSnapshotPort | f0758 | 1223 |
+| ReloadCoordinator | UiReloadPort | f0759 | 1224 |
+| SdlDispatcher | DomainFunctionPort | f0846 | 1311 |
+| SdlDispatcher | DomainStatePort | f0847 | 1312 |
+| SdlExecutionGate | DiagnosticPort | f0857 | 1322 |
+| SdlExecutionGate | SdlModelPort | f0858 | 1323 |
+| SdlFrontend | DiagnosticPort | f0861 | 1326 |
+| SdlFrontend | SourceSnapshotPort | f0862 | 1327 |
+| SdlFunctionRegistry | DomainFunctionPort | f0871 | 1336 |
+| SdlRuntime | DomainFunctionPort | f0896 | 1361 |
+| SdlRuntime | SdlModelPort | f0897 | 1362 |
+| SdlUiBindingAdapter | DiagnosticPort | f0910 | 1375 |
+| SdlUiBindingAdapter | SdlExecutionPort | f0911 | 1376 |
+| SdlUiBindingAdapter | UiSessionPort | f0912 | 1377 |
+| SduiDispatcher | DomainBindingPort | f0944 | 1409 |
+| SduiDispatcher | UiStatePort | f0945 | 1410 |
+| SduiFrontend | DiagnosticPort | f0956 | 1421 |
+| SduiFrontend | SourceSnapshotPort | f0957 | 1422 |
+| SduiLayout | ContentProviderPort | f0986 | 1451 |
+| SduiLayout | MeasurementPort | f0987 | 1452 |
+| SduiLayout | UiSnapshotPort | f0988 | 1453 |
+| SduiPresentation | PreparedFramePort | f1021 | 1486 |
+| SduiPropertyStore | UiStatePort | f1028 | 1493 |
+| SduiRuntime | DomainBindingPort | f1033 | 1498 |
+| SduiRuntime | SduiModelPort | f1034 | 1499 |
+| SourceLoader | SourceInputPort | f1083 | 1548 |
+| SourceWatcher | FileChangePort | f1088 | 1553 |
+| UiStateReconciler | SduiModelPort | f1222 | 1687 |
+| UiStateReconciler | UiStatePort | f1223 | 1688 |
+
 ## VP05 — Avhengigheter per modus
 
-### Nødvendige porter i modus: BoundExecution
+requires in mode; modi har ingen implisitt arv.
 
-```mermaid
-flowchart LR
-    n_BoundInteraction["BoundInteraction (capability)"]
-    n_DomainFunctionPort["DomainFunctionPort (interface)"]
-    n_ExecutableDesign["ExecutableDesign (capability)"]
-    n_SdlExecutionPort["SdlExecutionPort (interface)"]
-    n_UiSessionPort["UiSessionPort (interface)"]
-    n_BoundInteraction -->|requires| n_SdlExecutionPort
-    n_BoundInteraction -->|requires| n_UiSessionPort
-    n_ExecutableDesign -->|requires| n_DomainFunctionPort
-```
+## Nødvendige porter i modus: BoundExecution
+
+![Nødvendige porter i modus: BoundExecution](diagrams/VP05-BoundExecution.svg)
 
 Kildegrunnlag: f0052, f0053, f0219.
 
-### Nødvendige porter i modus: BoundLiveEditing
+## Nødvendige porter i modus: BoundLiveEditing
 
-```mermaid
-flowchart LR
-    n_BindingReloadPort["BindingReloadPort (interface)"]
-    n_DevelopmentReload["DevelopmentReload (capability)"]
-    n_FileChangePort["FileChangePort (interface)"]
-    n_SdlReloadPort["SdlReloadPort (interface)"]
-    n_SourceSnapshotPort["SourceSnapshotPort (interface)"]
-    n_UiReloadPort["UiReloadPort (interface)"]
-    n_DevelopmentReload -->|requires| n_BindingReloadPort
-    n_DevelopmentReload -->|requires| n_FileChangePort
-    n_DevelopmentReload -->|requires| n_SdlReloadPort
-    n_DevelopmentReload -->|requires| n_SourceSnapshotPort
-    n_DevelopmentReload -->|requires| n_UiReloadPort
-```
+![Nødvendige porter i modus: BoundLiveEditing](diagrams/VP05-BoundLiveEditing.svg)
 
 Kildegrunnlag: f0161, f0162, f0164, f0165, f0167.
 
-### Nødvendige porter i modus: LiveEditing
+## Nødvendige porter i modus: LiveEditing
 
-```mermaid
-flowchart LR
-    n_DevelopmentReload["DevelopmentReload (capability)"]
-    n_FileChangePort["FileChangePort (interface)"]
-    n_SourceSnapshotPort["SourceSnapshotPort (interface)"]
-    n_UiReloadPort["UiReloadPort (interface)"]
-    n_DevelopmentReload -->|requires| n_FileChangePort
-    n_DevelopmentReload -->|requires| n_SourceSnapshotPort
-    n_DevelopmentReload -->|requires| n_UiReloadPort
-```
+![Nødvendige porter i modus: LiveEditing](diagrams/VP05-LiveEditing.svg)
 
 Kildegrunnlag: f0163, f0166, f0168.
 
-### Nødvendige porter i modus: NativeBuild
+## Nødvendige porter i modus: NativeBuild
 
-```mermaid
-flowchart LR
-    n_BuildToolPort["BuildToolPort (interface)"]
-    n_GeneratedArtifactPort["GeneratedArtifactPort (interface)"]
-    n_NativeRealization["NativeRealization (capability)"]
-    n_NativeRealization -->|requires| n_BuildToolPort
-    n_NativeRealization -->|requires| n_GeneratedArtifactPort
-```
+![Nødvendige porter i modus: NativeBuild](diagrams/VP05-NativeBuild.svg)
 
 Kildegrunnlag: f0630, f0631.
 
-### Nødvendige porter i modus: RichDocument
+## Nødvendige porter i modus: RichDocument
 
-```mermaid
-flowchart LR
-    n_ContentProviderPort["ContentProviderPort (interface)"]
-    n_DiagramEnginePort["DiagramEnginePort (interface)"]
-    n_RichContent["RichContent (capability)"]
-    n_RichContent -->|requires| n_ContentProviderPort
-    n_RichContent -->|requires| n_DiagramEnginePort
-```
+![Nødvendige porter i modus: RichDocument](diagrams/VP05-RichDocument.svg)
 
 Kildegrunnlag: f0825, f0826.
 
-### Nødvendige porter i modus: SourceInspection
+## Nødvendige porter i modus: SourceInspection
 
-```mermaid
-flowchart LR
-    n_SdlSourceModel["SdlSourceModel (capability)"]
-    n_SduiSourceModel["SduiSourceModel (capability)"]
-    n_SourceSnapshotPort["SourceSnapshotPort (interface)"]
-    n_SdlSourceModel -->|requires| n_SourceSnapshotPort
-    n_SduiSourceModel -->|requires| n_SourceSnapshotPort
-```
+![Nødvendige porter i modus: SourceInspection](diagrams/VP05-SourceInspection.svg)
 
 Kildegrunnlag: f0906, f1042.
 
-### Nødvendige porter i modus: StaticExport
+## Nødvendige porter i modus: StaticExport
 
-```mermaid
-flowchart LR
-    n_ExportSinkPort["ExportSinkPort (interface)"]
-    n_MeasuredPresentation["MeasuredPresentation (capability)"]
-    n_MeasurementPort["MeasurementPort (interface)"]
-    n_PreparedFramePort["PreparedFramePort (interface)"]
-    n_StaticDocumentation["StaticDocumentation (capability)"]
-    n_MeasuredPresentation -->|requires| n_MeasurementPort
-    n_StaticDocumentation -->|requires| n_ExportSinkPort
-    n_StaticDocumentation -->|requires| n_PreparedFramePort
-```
+![Nødvendige porter i modus: StaticExport](diagrams/VP05-StaticExport.svg)
 
 Kildegrunnlag: f0601, f1098, f1099.
 
-### Nødvendige porter i modus: UiPreview
+## Nødvendige porter i modus: UiPreview
 
-```mermaid
-flowchart LR
-    n_MeasuredPresentation["MeasuredPresentation (capability)"]
-    n_MeasurementPort["MeasurementPort (interface)"]
-    n_NativeInteraction["NativeInteraction (capability)"]
-    n_WidgetBackendPort["WidgetBackendPort (interface)"]
-    n_MeasuredPresentation -->|requires| n_MeasurementPort
-    n_NativeInteraction -->|requires| n_WidgetBackendPort
-```
+![Nødvendige porter i modus: UiPreview](diagrams/VP05-UiPreview.svg)
 
 Kildegrunnlag: f0602, f0621.
 
 
 ## VP06 — Aktiviteter og leveranseplan
 
-### Aktivitetsrøtter
+refines, addresses, delivers og depends-on; planstatus er en eksplisitt kildepåstand.
 
-```mermaid
-flowchart LR
-    n_G1FrontendPort["G1FrontendPort (activity)"]
-    n_G2LayoutAndPresentation["G2LayoutAndPresentation (activity)"]
-    n_G3UiRuntimeAndReload["G3UiRuntimeAndReload (activity)"]
-    n_G4SdlRuntimeAndBinding["G4SdlRuntimeAndBinding (activity)"]
-    n_G5NativeGeneration["G5NativeGeneration (activity)"]
-    n_G6NavigableDocumentation["G6NavigableDocumentation (activity)"]
-    n_InspectDesignSource["InspectDesignSource (activity)"]
-    n_RealizeDesign["RealizeDesign (activity)"]
-    n_ReloadDesignSession["ReloadDesignSession (activity)"]
-    n_RunDesignSession["RunDesignSession (activity)"]
-```
+## Aktivitetsrøtter
 
-Kildegrunnlag: Kun deklarasjoner.
+![Aktivitetsrøtter](diagrams/VP06-roots.svg)
 
-### Aktivitetsinndeling: G1FrontendPort
+Kildegrunnlag: .
 
-```mermaid
-flowchart LR
-    n_G1FrontendPort["G1FrontendPort (activity)"]
-    n_G1M1ParserAndAst["G1M1ParserAndAst (activity)"]
-    n_G1M2ValidationAndNormalization["G1M2ValidationAndNormalization (activity)"]
-    n_G1M3Concept1AndDumps["G1M3Concept1AndDumps (activity)"]
-    n_StructuralModelInspection["StructuralModelInspection (feature)"]
-    n_G1FrontendPort -->|delivers| n_StructuralModelInspection
-    n_G1M1ParserAndAst -->|refines| n_G1FrontendPort
-    n_G1M2ValidationAndNormalization -->|refines| n_G1FrontendPort
-    n_G1M3Concept1AndDumps -->|refines| n_G1FrontendPort
-```
+Kun deklarasjoner.
+
+## Aktivitetsinndeling: G1FrontendPort
+
+![Aktivitetsinndeling: G1FrontendPort](diagrams/VP06-detail-G1FrontendPort.svg)
 
 Kildegrunnlag: f0276, f0283, f0294, f0299.
 
-### Aktivitetsinndeling: G2LayoutAndPresentation
+## Aktivitetsinndeling: G2LayoutAndPresentation
 
-```mermaid
-flowchart LR
-    n_G2LayoutAndPresentation["G2LayoutAndPresentation (activity)"]
-    n_G2M1RelativeMeasurement["G2M1RelativeMeasurement (activity)"]
-    n_G2M2SharedSvgGeometry["G2M2SharedSvgGeometry (activity)"]
-    n_G2M3FyneInteractions["G2M3FyneInteractions (activity)"]
-    n_G2M4RichContent["G2M4RichContent (activity)"]
-    n_InteractiveUiPreview["InteractiveUiPreview (feature)"]
-    n_G2LayoutAndPresentation -->|delivers| n_InteractiveUiPreview
-    n_G2M1RelativeMeasurement -->|refines| n_G2LayoutAndPresentation
-    n_G2M2SharedSvgGeometry -->|refines| n_G2LayoutAndPresentation
-    n_G2M3FyneInteractions -->|refines| n_G2LayoutAndPresentation
-    n_G2M4RichContent -->|refines| n_G2LayoutAndPresentation
-```
+![Aktivitetsinndeling: G2LayoutAndPresentation](diagrams/VP06-detail-G2LayoutAndPresentation.svg)
 
 Kildegrunnlag: f0300, f0308, f0313, f0322, f0330.
 
-### Aktivitetsinndeling: G3UiRuntimeAndReload
+## Aktivitetsinndeling: G3UiRuntimeAndReload
 
-```mermaid
-flowchart LR
-    n_G3M1TypedUiSession["G3M1TypedUiSession (activity)"]
-    n_G3M2CandidatePublication["G3M2CandidatePublication (activity)"]
-    n_G3M3CompatibleState["G3M3CompatibleState (activity)"]
-    n_G3UiRuntimeAndReload["G3UiRuntimeAndReload (activity)"]
-    n_LiveModelReload["LiveModelReload (feature)"]
-    n_G3M1TypedUiSession -->|refines| n_G3UiRuntimeAndReload
-    n_G3M2CandidatePublication -->|refines| n_G3UiRuntimeAndReload
-    n_G3M3CompatibleState -->|refines| n_G3UiRuntimeAndReload
-    n_G3UiRuntimeAndReload -->|delivers| n_LiveModelReload
-```
+![Aktivitetsinndeling: G3UiRuntimeAndReload](diagrams/VP06-detail-G3UiRuntimeAndReload.svg)
 
 Kildegrunnlag: f0347, f0356, f0362, f0363.
 
-### Aktivitetsinndeling: G4SdlRuntimeAndBinding
+## Aktivitetsinndeling: G4SdlRuntimeAndBinding
 
-```mermaid
-flowchart LR
-    n_G4M1SdlFrontend["G4M1SdlFrontend (activity)"]
-    n_G4M2TypedExecution["G4M2TypedExecution (activity)"]
-    n_G4M3UiDomainBinding["G4M3UiDomainBinding (activity)"]
-    n_G4M4DomainReload["G4M4DomainReload (activity)"]
-    n_G4SdlRuntimeAndBinding["G4SdlRuntimeAndBinding (activity)"]
-    n_TypedDomainBinding["TypedDomainBinding (feature)"]
-    n_G4M1SdlFrontend -->|refines| n_G4SdlRuntimeAndBinding
-    n_G4M2TypedExecution -->|refines| n_G4SdlRuntimeAndBinding
-    n_G4M3UiDomainBinding -->|refines| n_G4SdlRuntimeAndBinding
-    n_G4M4DomainReload -->|refines| n_G4SdlRuntimeAndBinding
-    n_G4SdlRuntimeAndBinding -->|delivers| n_TypedDomainBinding
-```
+![Aktivitetsinndeling: G4SdlRuntimeAndBinding](diagrams/VP06-detail-G4SdlRuntimeAndBinding.svg)
 
 Kildegrunnlag: f0374, f0389, f0399, f0406, f0407.
 
-### Aktivitetsinndeling: G5NativeGeneration
+## Aktivitetsinndeling: G5NativeGeneration
 
-```mermaid
-flowchart LR
-    n_DesignDocumentation["DesignDocumentation (feature)"]
-    n_G5M1GeneratedGo["G5M1GeneratedGo (activity)"]
-    n_G5M2BehaviorParity["G5M2BehaviorParity (activity)"]
-    n_G5M3DocumentationExport["G5M3DocumentationExport (activity)"]
-    n_G5M4RetirePython["G5M4RetirePython (activity)"]
-    n_G5NativeGeneration["G5NativeGeneration (activity)"]
-    n_NativeGoAssembly["NativeGoAssembly (feature)"]
-    n_G5M1GeneratedGo -->|refines| n_G5NativeGeneration
-    n_G5M2BehaviorParity -->|refines| n_G5NativeGeneration
-    n_G5M3DocumentationExport -->|refines| n_G5NativeGeneration
-    n_G5M4RetirePython -->|refines| n_G5NativeGeneration
-    n_G5NativeGeneration -->|delivers| n_DesignDocumentation
-    n_G5NativeGeneration -->|delivers| n_NativeGoAssembly
-```
+![Aktivitetsinndeling: G5NativeGeneration](diagrams/VP06-detail-G5NativeGeneration.svg)
 
 Kildegrunnlag: f0415, f0419, f0427, f0432, f0433, f0434.
 
-### Aktivitetsinndeling: G6NavigableDocumentation
+## Aktivitetsinndeling: G6NavigableDocumentation
 
-```mermaid
-flowchart LR
-    n_G6M1StaticNavigation["G6M1StaticNavigation (activity)"]
-    n_G6M2OnDemandViews["G6M2OnDemandViews (activity)"]
-    n_G6M3XfmdNavigation["G6M3XfmdNavigation (activity)"]
-    n_G6M4SessionPublication["G6M4SessionPublication (activity)"]
-    n_G6M5SemanticNotation["G6M5SemanticNotation (activity)"]
-    n_G6M6ClassViews["G6M6ClassViews (activity)"]
-    n_G6NavigableDocumentation["G6NavigableDocumentation (activity)"]
-    n_NavigableDesignDocumentation["NavigableDesignDocumentation (feature)"]
-    n_TypedDesignInspection["TypedDesignInspection (feature)"]
-    n_G6M1StaticNavigation -->|refines| n_G6NavigableDocumentation
-    n_G6M2OnDemandViews -->|refines| n_G6NavigableDocumentation
-    n_G6M3XfmdNavigation -->|refines| n_G6NavigableDocumentation
-    n_G6M4SessionPublication -->|refines| n_G6NavigableDocumentation
-    n_G6M5SemanticNotation -->|refines| n_G6NavigableDocumentation
-    n_G6M6ClassViews -->|refines| n_G6NavigableDocumentation
-    n_G6NavigableDocumentation -->|delivers| n_NavigableDesignDocumentation
-    n_G6NavigableDocumentation -->|delivers| n_TypedDesignInspection
-```
+![Aktivitetsinndeling: G6NavigableDocumentation](diagrams/VP06-detail-G6NavigableDocumentation.svg)
 
 Kildegrunnlag: f0446, f0454, f0461, f0468, f0473, f0478, f0479, f0480.
 
-### Aktivitetsinndeling: InspectDesignSource
+## Aktivitetsinndeling: InspectDesignSource
 
-```mermaid
-flowchart LR
-    n_ExportUiDocumentation["ExportUiDocumentation (activity)"]
-    n_InspectDesignSource["InspectDesignSource (activity)"]
-    n_InspectSdlSource["InspectSdlSource (activity)"]
-    n_InspectSduiSource["InspectSduiSource (activity)"]
-    n_ExportUiDocumentation -->|refines| n_InspectDesignSource
-    n_InspectSdlSource -->|refines| n_InspectDesignSource
-    n_InspectSduiSource -->|refines| n_InspectDesignSource
-```
+![Aktivitetsinndeling: InspectDesignSource](diagrams/VP06-detail-InspectDesignSource.svg)
 
 Kildegrunnlag: f0234, f0539, f0540.
 
-### Aktivitetsinndeling: RealizeDesign
+## Aktivitetsinndeling: RealizeDesign
 
-```mermaid
-flowchart LR
-    n_BuildNativeRealization["BuildNativeRealization (activity)"]
-    n_RealizeDesign["RealizeDesign (activity)"]
-    n_BuildNativeRealization -->|refines| n_RealizeDesign
-```
+![Aktivitetsinndeling: RealizeDesign](diagrams/VP06-detail-RealizeDesign.svg)
 
 Kildegrunnlag: f0062.
 
-### Aktivitetsinndeling: ReloadDesignSession
+## Aktivitetsinndeling: ReloadDesignSession
 
-```mermaid
-flowchart LR
-    n_ReloadBoundModels["ReloadBoundModels (activity)"]
-    n_ReloadDesignSession["ReloadDesignSession (activity)"]
-    n_ReloadUiModel["ReloadUiModel (activity)"]
-    n_ReloadBoundModels -->|refines| n_ReloadDesignSession
-    n_ReloadUiModel -->|refines| n_ReloadDesignSession
-```
+![Aktivitetsinndeling: ReloadDesignSession](diagrams/VP06-detail-ReloadDesignSession.svg)
 
 Kildegrunnlag: f0752, f0795.
 
-### Aktivitetsinndeling: RunDesignSession
+## Aktivitetsinndeling: RunDesignSession
 
-```mermaid
-flowchart LR
-    n_RunBoundUiAction["RunBoundUiAction (activity)"]
-    n_RunDesignSession["RunDesignSession (activity)"]
-    n_RunUnboundUiPreview["RunUnboundUiPreview (activity)"]
-    n_RunBoundUiAction -->|refines| n_RunDesignSession
-    n_RunUnboundUiPreview -->|refines| n_RunDesignSession
-```
+![Aktivitetsinndeling: RunDesignSession](diagrams/VP06-detail-RunDesignSession.svg)
 
 Kildegrunnlag: f0830, f0831.
 
-### Planlagt ansvar: G1M1ParserAndAst
+## Planlagt ansvar: G1M1ParserAndAst
 
-```mermaid
-flowchart LR
-    n_BuildSduiAst["BuildSduiAst (functionality)"]
-    n_G1M1ParserAndAst["G1M1ParserAndAst (activity)"]
-    n_IdentifySourceRevision["IdentifySourceRevision (functionality)"]
-    n_ReadBoundedSources["ReadBoundedSources (functionality)"]
-    n_SduiLexer["SduiLexer (unit)"]
-    n_SduiParser["SduiParser (unit)"]
-    n_SourceLoader["SourceLoader (unit)"]
-    n_TokenizeSduiSource["TokenizeSduiSource (functionality)"]
-    n_G1M1ParserAndAst -->|addresses| n_BuildSduiAst
-    n_G1M1ParserAndAst -->|addresses| n_IdentifySourceRevision
-    n_G1M1ParserAndAst -->|addresses| n_ReadBoundedSources
-    n_G1M1ParserAndAst -->|addresses| n_TokenizeSduiSource
-    n_SduiLexer -->|owns| n_TokenizeSduiSource
-    n_SduiParser -->|owns| n_BuildSduiAst
-    n_SourceLoader -->|owns| n_IdentifySourceRevision
-    n_SourceLoader -->|owns| n_ReadBoundedSources
-```
+![Planlagt ansvar: G1M1ParserAndAst](diagrams/VP06-work-G1M1ParserAndAst.svg)
 
 Kildegrunnlag: f0278, f0279, f0280, f0281, f0999, f1017, f1085, f1086.
 
-### Planlagt ansvar: G1M2ValidationAndNormalization
+## Planlagt ansvar: G1M2ValidationAndNormalization
 
-```mermaid
-flowchart LR
-    n_CoordinateSduiCompilation["CoordinateSduiCompilation (functionality)"]
-    n_ExpandUiDefinitions["ExpandUiDefinitions (functionality)"]
-    n_G1M2ValidationAndNormalization["G1M2ValidationAndNormalization (activity)"]
-    n_PreserveUiRegions["PreserveUiRegions (functionality)"]
-    n_PreserveUiSourceMap["PreserveUiSourceMap (functionality)"]
-    n_ResolveUiNames["ResolveUiNames (functionality)"]
-    n_SduiFrontend["SduiFrontend (unit)"]
-    n_SduiNormalizer["SduiNormalizer (unit)"]
-    n_SduiValidator["SduiValidator (unit)"]
-    n_ValidateRelativeFormatting["ValidateRelativeFormatting (functionality)"]
-    n_ValidateSymbolicBindings["ValidateSymbolicBindings (functionality)"]
-    n_ValidateWidgetArguments["ValidateWidgetArguments (functionality)"]
-    n_G1M2ValidationAndNormalization -->|addresses| n_CoordinateSduiCompilation
-    n_G1M2ValidationAndNormalization -->|addresses| n_ExpandUiDefinitions
-    n_G1M2ValidationAndNormalization -->|addresses| n_PreserveUiRegions
-    n_G1M2ValidationAndNormalization -->|addresses| n_PreserveUiSourceMap
-    n_G1M2ValidationAndNormalization -->|addresses| n_ResolveUiNames
-    n_G1M2ValidationAndNormalization -->|addresses| n_ValidateRelativeFormatting
-    n_G1M2ValidationAndNormalization -->|addresses| n_ValidateSymbolicBindings
-    n_G1M2ValidationAndNormalization -->|addresses| n_ValidateWidgetArguments
-    n_SduiFrontend -->|owns| n_CoordinateSduiCompilation
-    n_SduiNormalizer -->|owns| n_ExpandUiDefinitions
-    n_SduiNormalizer -->|owns| n_PreserveUiRegions
-    n_SduiNormalizer -->|owns| n_PreserveUiSourceMap
-    n_SduiValidator -->|owns| n_ResolveUiNames
-    n_SduiValidator -->|owns| n_ValidateRelativeFormatting
-    n_SduiValidator -->|owns| n_ValidateSymbolicBindings
-    n_SduiValidator -->|owns| n_ValidateWidgetArguments
-```
+![Planlagt ansvar: G1M2ValidationAndNormalization](diagrams/VP06-work-G1M2ValidationAndNormalization.svg)
 
 Kildegrunnlag: f0284, f0285, f0286, f0287, f0288, f0289, f0290, f0291, f0962, f1011, f1012, f1013, f1043, f1044, f1045, f1046.
 
-### Planlagt ansvar: G1M3Concept1AndDumps
+## Planlagt ansvar: G1M3Concept1AndDumps
 
-```mermaid
-flowchart LR
-    n_DiagnosticReporter["DiagnosticReporter (unit)"]
-    n_ExportConsoleSnapshot["ExportConsoleSnapshot (functionality)"]
-    n_G1M3Concept1AndDumps["G1M3Concept1AndDumps (activity)"]
-    n_ReportSourceDiagnostics["ReportSourceDiagnostics (functionality)"]
-    n_SduiPresentation["SduiPresentation (unit)"]
-    n_DiagnosticReporter -->|owns| n_ReportSourceDiagnostics
-    n_G1M3Concept1AndDumps -->|addresses| n_ExportConsoleSnapshot
-    n_G1M3Concept1AndDumps -->|addresses| n_ReportSourceDiagnostics
-    n_SduiPresentation -->|owns| n_ExportConsoleSnapshot
-```
+![Planlagt ansvar: G1M3Concept1AndDumps](diagrams/VP06-work-G1M3Concept1AndDumps.svg)
 
 Kildegrunnlag: f0179, f0295, f0296, f1023.
 
-### Planlagt ansvar: G2M1RelativeMeasurement
+## Planlagt ansvar: G2M1RelativeMeasurement
 
-```mermaid
-flowchart LR
-    n_AllocateGeometry["AllocateGeometry (functionality)"]
-    n_ComputeClipping["ComputeClipping (functionality)"]
-    n_G2M1RelativeMeasurement["G2M1RelativeMeasurement (activity)"]
-    n_MeasureUiContent["MeasureUiContent (functionality)"]
-    n_ResolveAncestorDimensions["ResolveAncestorDimensions (functionality)"]
-    n_SduiLayout["SduiLayout (unit)"]
-    n_G2M1RelativeMeasurement -->|addresses| n_AllocateGeometry
-    n_G2M1RelativeMeasurement -->|addresses| n_ComputeClipping
-    n_G2M1RelativeMeasurement -->|addresses| n_MeasureUiContent
-    n_G2M1RelativeMeasurement -->|addresses| n_ResolveAncestorDimensions
-    n_SduiLayout -->|owns| n_AllocateGeometry
-    n_SduiLayout -->|owns| n_ComputeClipping
-    n_SduiLayout -->|owns| n_MeasureUiContent
-    n_SduiLayout -->|owns| n_ResolveAncestorDimensions
-```
+![Planlagt ansvar: G2M1RelativeMeasurement](diagrams/VP06-work-G2M1RelativeMeasurement.svg)
 
 Kildegrunnlag: f0302, f0303, f0304, f0305, f0989, f0991, f0992, f0993.
 
-### Planlagt ansvar: G2M2SharedSvgGeometry
+## Planlagt ansvar: G2M2SharedSvgGeometry
 
-```mermaid
-flowchart LR
-    n_BuildPreparedFrame["BuildPreparedFrame (functionality)"]
-    n_ExportSvgSnapshot["ExportSvgSnapshot (functionality)"]
-    n_G2M2SharedSvgGeometry["G2M2SharedSvgGeometry (activity)"]
-    n_SduiLayout["SduiLayout (unit)"]
-    n_SduiPresentation["SduiPresentation (unit)"]
-    n_G2M2SharedSvgGeometry -->|addresses| n_BuildPreparedFrame
-    n_G2M2SharedSvgGeometry -->|addresses| n_ExportSvgSnapshot
-    n_SduiLayout -->|owns| n_BuildPreparedFrame
-    n_SduiPresentation -->|owns| n_ExportSvgSnapshot
-```
+![Planlagt ansvar: G2M2SharedSvgGeometry](diagrams/VP06-work-G2M2SharedSvgGeometry.svg)
 
 Kildegrunnlag: f0309, f0310, f0990, f1024.
 
-### Planlagt ansvar: G2M3FyneInteractions
+## Planlagt ansvar: G2M3FyneInteractions
 
-```mermaid
-flowchart LR
-    n_ComposeInteractiveSession["ComposeInteractiveSession (functionality)"]
-    n_FyneBackend["FyneBackend (unit)"]
-    n_FyneHost["FyneHost (container)"]
-    n_G2M3FyneInteractions["G2M3FyneInteractions (activity)"]
-    n_HandleFocusAndTextInput["HandleFocusAndTextInput (functionality)"]
-    n_PublishPresentation["PublishPresentation (functionality)"]
-    n_ReconcileWidgets["ReconcileWidgets (functionality)"]
-    n_ReleaseNativeWidgets["ReleaseNativeWidgets (functionality)"]
-    n_ScheduleUiPublication["ScheduleUiPublication (functionality)"]
-    n_FyneBackend -->|owns| n_HandleFocusAndTextInput
-    n_FyneBackend -->|owns| n_PublishPresentation
-    n_FyneBackend -->|owns| n_ReconcileWidgets
-    n_FyneBackend -->|owns| n_ReleaseNativeWidgets
-    n_FyneHost -->|owns| n_ComposeInteractiveSession
-    n_FyneHost -->|owns| n_ScheduleUiPublication
-    n_G2M3FyneInteractions -->|addresses| n_ComposeInteractiveSession
-    n_G2M3FyneInteractions -->|addresses| n_HandleFocusAndTextInput
-    n_G2M3FyneInteractions -->|addresses| n_PublishPresentation
-    n_G2M3FyneInteractions -->|addresses| n_ReconcileWidgets
-    n_G2M3FyneInteractions -->|addresses| n_ReleaseNativeWidgets
-    n_G2M3FyneInteractions -->|addresses| n_ScheduleUiPublication
-```
+![Planlagt ansvar: G2M3FyneInteractions](diagrams/VP06-work-G2M3FyneInteractions.svg)
 
 Kildegrunnlag: f0248, f0249, f0250, f0251, f0267, f0268, f0314, f0315, f0316, f0317, f0318, f0319.
 
-### Planlagt ansvar: G2M4RichContent
+## Planlagt ansvar: G2M4RichContent
 
-```mermaid
-flowchart LR
-    n_DiagramProvider["DiagramProvider (unit)"]
-    n_G2M4RichContent["G2M4RichContent (activity)"]
-    n_MarkdownProvider["MarkdownProvider (unit)"]
-    n_MeasureMarkdownContent["MeasureMarkdownContent (functionality)"]
-    n_PrepareDiagramResource["PrepareDiagramResource (functionality)"]
-    n_PrepareMarkdown["PrepareMarkdown (functionality)"]
-    n_ReleaseVisualResources["ReleaseVisualResources (functionality)"]
-    n_ResourceStore["ResourceStore (unit)"]
-    n_ValidateVisualResources["ValidateVisualResources (functionality)"]
-    n_DiagramProvider -->|owns| n_PrepareDiagramResource
-    n_G2M4RichContent -->|addresses| n_MeasureMarkdownContent
-    n_G2M4RichContent -->|addresses| n_PrepareDiagramResource
-    n_G2M4RichContent -->|addresses| n_PrepareMarkdown
-    n_G2M4RichContent -->|addresses| n_ReleaseVisualResources
-    n_G2M4RichContent -->|addresses| n_ValidateVisualResources
-    n_MarkdownProvider -->|owns| n_MeasureMarkdownContent
-    n_MarkdownProvider -->|owns| n_PrepareMarkdown
-    n_ResourceStore -->|owns| n_ReleaseVisualResources
-    n_ResourceStore -->|owns| n_ValidateVisualResources
-```
+![Planlagt ansvar: G2M4RichContent](diagrams/VP06-work-G2M4RichContent.svg)
 
 Kildegrunnlag: f0183, f0323, f0324, f0325, f0326, f0327, f0595, f0596, f0815, f0816.
 
-### Planlagt ansvar: G3M1TypedUiSession
+## Planlagt ansvar: G3M1TypedUiSession
 
-```mermaid
-flowchart LR
-    n_ApplyPropertyBatch["ApplyPropertyBatch (functionality)"]
-    n_CloseUiInstance["CloseUiInstance (functionality)"]
-    n_CorrelateUiResult["CorrelateUiResult (functionality)"]
-    n_CreateUiInstance["CreateUiInstance (functionality)"]
-    n_DispatchUiEvent["DispatchUiEvent (functionality)"]
-    n_G3M1TypedUiSession["G3M1TypedUiSession (activity)"]
-    n_ManageWidgetIdentities["ManageWidgetIdentities (functionality)"]
-    n_ProjectUiGeneration["ProjectUiGeneration (functionality)"]
-    n_RejectStaleUiEvent["RejectStaleUiEvent (functionality)"]
-    n_RevokeWidgetGenerations["RevokeWidgetGenerations (functionality)"]
-    n_SduiDispatcher["SduiDispatcher (unit)"]
-    n_SduiInstanceStore["SduiInstanceStore (unit)"]
-    n_SduiPropertyStore["SduiPropertyStore (unit)"]
-    n_SduiRuntime["SduiRuntime (unit)"]
-    n_SnapshotUiState["SnapshotUiState (functionality)"]
-    n_TrackInputDraft["TrackInputDraft (functionality)"]
-    n_ValidatePropertyBatch["ValidatePropertyBatch (functionality)"]
-    n_ValidateUiEvent["ValidateUiEvent (functionality)"]
-    n_G3M1TypedUiSession -->|addresses| n_ApplyPropertyBatch
-    n_G3M1TypedUiSession -->|addresses| n_CloseUiInstance
-    n_G3M1TypedUiSession -->|addresses| n_CorrelateUiResult
-    n_G3M1TypedUiSession -->|addresses| n_CreateUiInstance
-    n_G3M1TypedUiSession -->|addresses| n_DispatchUiEvent
-    n_G3M1TypedUiSession -->|addresses| n_ManageWidgetIdentities
-    n_G3M1TypedUiSession -->|addresses| n_ProjectUiGeneration
-    n_G3M1TypedUiSession -->|addresses| n_RejectStaleUiEvent
-    n_G3M1TypedUiSession -->|addresses| n_RevokeWidgetGenerations
-    n_G3M1TypedUiSession -->|addresses| n_SnapshotUiState
-    n_G3M1TypedUiSession -->|addresses| n_TrackInputDraft
-    n_G3M1TypedUiSession -->|addresses| n_ValidatePropertyBatch
-    n_G3M1TypedUiSession -->|addresses| n_ValidateUiEvent
-    n_SduiDispatcher -->|owns| n_CorrelateUiResult
-    n_SduiDispatcher -->|owns| n_DispatchUiEvent
-    n_SduiDispatcher -->|owns| n_RejectStaleUiEvent
-    n_SduiDispatcher -->|owns| n_ValidateUiEvent
-    n_SduiInstanceStore -->|owns| n_ManageWidgetIdentities
-    n_SduiInstanceStore -->|owns| n_ProjectUiGeneration
-    n_SduiInstanceStore -->|owns| n_RevokeWidgetGenerations
-    n_SduiInstanceStore -->|owns| n_SnapshotUiState
-    n_SduiPropertyStore -->|owns| n_ApplyPropertyBatch
-    n_SduiPropertyStore -->|owns| n_TrackInputDraft
-    n_SduiPropertyStore -->|owns| n_ValidatePropertyBatch
-    n_SduiRuntime -->|owns| n_CloseUiInstance
-    n_SduiRuntime -->|owns| n_CreateUiInstance
-```
+![Planlagt ansvar: G3M1TypedUiSession](diagrams/VP06-work-G3M1TypedUiSession.svg)
 
 Kildegrunnlag: f0331, f0332, f0333, f0334, f0335, f0336, f0337, f0338, f0339, f0340, f0341, f0342, f0343, f0946, f0947, f0948, f0949, f0979, f0980, f0981, f0982, f1029, f1030, f1031, f1039, f1040.
 
-### Planlagt ansvar: G3M2CandidatePublication
+## Planlagt ansvar: G3M2CandidatePublication
 
-```mermaid
-flowchart LR
-    n_CoalesceSourceChanges["CoalesceSourceChanges (functionality)"]
-    n_G3M2CandidatePublication["G3M2CandidatePublication (activity)"]
-    n_KeepLastValidModels["KeepLastValidModels (functionality)"]
-    n_ObserveSourceChanges["ObserveSourceChanges (functionality)"]
-    n_PrepareCandidateModels["PrepareCandidateModels (functionality)"]
-    n_PublishModelGeneration["PublishModelGeneration (functionality)"]
-    n_ReloadCoordinator["ReloadCoordinator (unit)"]
-    n_RetirePreviousGeneration["RetirePreviousGeneration (functionality)"]
-    n_SourceWatcher["SourceWatcher (unit)"]
-    n_G3M2CandidatePublication -->|addresses| n_CoalesceSourceChanges
-    n_G3M2CandidatePublication -->|addresses| n_KeepLastValidModels
-    n_G3M2CandidatePublication -->|addresses| n_ObserveSourceChanges
-    n_G3M2CandidatePublication -->|addresses| n_PrepareCandidateModels
-    n_G3M2CandidatePublication -->|addresses| n_PublishModelGeneration
-    n_G3M2CandidatePublication -->|addresses| n_RetirePreviousGeneration
-    n_ReloadCoordinator -->|owns| n_KeepLastValidModels
-    n_ReloadCoordinator -->|owns| n_PrepareCandidateModels
-    n_ReloadCoordinator -->|owns| n_PublishModelGeneration
-    n_ReloadCoordinator -->|owns| n_RetirePreviousGeneration
-    n_SourceWatcher -->|owns| n_CoalesceSourceChanges
-    n_SourceWatcher -->|owns| n_ObserveSourceChanges
-```
+![Planlagt ansvar: G3M2CandidatePublication](diagrams/VP06-work-G3M2CandidatePublication.svg)
 
 Kildegrunnlag: f0348, f0349, f0350, f0351, f0352, f0353, f0760, f0761, f0762, f0763, f1089, f1090.
 
-### Planlagt ansvar: G3M3CompatibleState
+## Planlagt ansvar: G3M3CompatibleState
 
-```mermaid
-flowchart LR
-    n_G3M3CompatibleState["G3M3CompatibleState (activity)"]
-    n_MatchCompatibleWidgets["MatchCompatibleWidgets (functionality)"]
-    n_PreserveCompatibleUiState["PreserveCompatibleUiState (functionality)"]
-    n_ResetIncompatibleUiState["ResetIncompatibleUiState (functionality)"]
-    n_UiStateReconciler["UiStateReconciler (unit)"]
-    n_G3M3CompatibleState -->|addresses| n_MatchCompatibleWidgets
-    n_G3M3CompatibleState -->|addresses| n_PreserveCompatibleUiState
-    n_G3M3CompatibleState -->|addresses| n_ResetIncompatibleUiState
-    n_UiStateReconciler -->|owns| n_MatchCompatibleWidgets
-    n_UiStateReconciler -->|owns| n_PreserveCompatibleUiState
-    n_UiStateReconciler -->|owns| n_ResetIncompatibleUiState
-```
+![Planlagt ansvar: G3M3CompatibleState](diagrams/VP06-work-G3M3CompatibleState.svg)
 
 Kildegrunnlag: f0357, f0358, f0359, f1224, f1225, f1226.
 
-### Planlagt ansvar: G4M1SdlFrontend
+## Planlagt ansvar: G4M1SdlFrontend
 
-```mermaid
-flowchart LR
-    n_BuildSdlAst["BuildSdlAst (functionality)"]
-    n_CoordinateSdlCompilation["CoordinateSdlCompilation (functionality)"]
-    n_G4M1SdlFrontend["G4M1SdlFrontend (activity)"]
-    n_NormalizeSdlModel["NormalizeSdlModel (functionality)"]
-    n_PreserveSdlSourceMap["PreserveSdlSourceMap (functionality)"]
-    n_ResolveSdlSymbols["ResolveSdlSymbols (functionality)"]
-    n_SdlFrontend["SdlFrontend (unit)"]
-    n_SdlLexer["SdlLexer (unit)"]
-    n_SdlNormalizer["SdlNormalizer (unit)"]
-    n_SdlParser["SdlParser (unit)"]
-    n_SdlValidator["SdlValidator (unit)"]
-    n_TokenizeSdlSource["TokenizeSdlSource (functionality)"]
-    n_ValidateSdlProfile["ValidateSdlProfile (functionality)"]
-    n_ValidateSdlStructure["ValidateSdlStructure (functionality)"]
-    n_G4M1SdlFrontend -->|addresses| n_BuildSdlAst
-    n_G4M1SdlFrontend -->|addresses| n_CoordinateSdlCompilation
-    n_G4M1SdlFrontend -->|addresses| n_NormalizeSdlModel
-    n_G4M1SdlFrontend -->|addresses| n_PreserveSdlSourceMap
-    n_G4M1SdlFrontend -->|addresses| n_ResolveSdlSymbols
-    n_G4M1SdlFrontend -->|addresses| n_TokenizeSdlSource
-    n_G4M1SdlFrontend -->|addresses| n_ValidateSdlProfile
-    n_G4M1SdlFrontend -->|addresses| n_ValidateSdlStructure
-    n_SdlFrontend -->|owns| n_CoordinateSdlCompilation
-    n_SdlLexer -->|owns| n_TokenizeSdlSource
-    n_SdlNormalizer -->|owns| n_NormalizeSdlModel
-    n_SdlNormalizer -->|owns| n_PreserveSdlSourceMap
-    n_SdlParser -->|owns| n_BuildSdlAst
-    n_SdlValidator -->|owns| n_ResolveSdlSymbols
-    n_SdlValidator -->|owns| n_ValidateSdlProfile
-    n_SdlValidator -->|owns| n_ValidateSdlStructure
-```
+![Planlagt ansvar: G4M1SdlFrontend](diagrams/VP06-work-G4M1SdlFrontend.svg)
 
 Kildegrunnlag: f0365, f0366, f0367, f0368, f0369, f0370, f0371, f0372, f0867, f0875, f0891, f0892, f0894, f0923, f0925, f0926.
 
-### Planlagt ansvar: G4M2TypedExecution
+## Planlagt ansvar: G4M2TypedExecution
 
-```mermaid
-flowchart LR
-    n_CancelPendingActions["CancelPendingActions (functionality)"]
-    n_CheckExecutionCompleteness["CheckExecutionCompleteness (functionality)"]
-    n_CheckFunctionSignatures["CheckFunctionSignatures (functionality)"]
-    n_CloseSdlInstance["CloseSdlInstance (functionality)"]
-    n_CorrelateActionResult["CorrelateActionResult (functionality)"]
-    n_CreateSdlInstance["CreateSdlInstance (functionality)"]
-    n_G4M2TypedExecution["G4M2TypedExecution (activity)"]
-    n_GoDomainImplementation["GoDomainImplementation (unit)"]
-    n_InvokeRegisteredFunction["InvokeRegisteredFunction (functionality)"]
-    n_ManageDomainState["ManageDomainState (functionality)"]
-    n_PerformDomainOperation["PerformDomainOperation (functionality)"]
-    n_RegisterDomainFunctions["RegisterDomainFunctions (functionality)"]
-    n_SdlDispatcher["SdlDispatcher (unit)"]
-    n_SdlExecutionGate["SdlExecutionGate (unit)"]
-    n_SdlFunctionRegistry["SdlFunctionRegistry (unit)"]
-    n_SdlRuntime["SdlRuntime (unit)"]
-    n_SdlStateStore["SdlStateStore (unit)"]
-    n_SnapshotDomainState["SnapshotDomainState (functionality)"]
-    n_ValidateActionInput["ValidateActionInput (functionality)"]
-    n_G4M2TypedExecution -->|addresses| n_CancelPendingActions
-    n_G4M2TypedExecution -->|addresses| n_CheckExecutionCompleteness
-    n_G4M2TypedExecution -->|addresses| n_CheckFunctionSignatures
-    n_G4M2TypedExecution -->|addresses| n_CloseSdlInstance
-    n_G4M2TypedExecution -->|addresses| n_CorrelateActionResult
-    n_G4M2TypedExecution -->|addresses| n_CreateSdlInstance
-    n_G4M2TypedExecution -->|addresses| n_InvokeRegisteredFunction
-    n_G4M2TypedExecution -->|addresses| n_ManageDomainState
-    n_G4M2TypedExecution -->|addresses| n_PerformDomainOperation
-    n_G4M2TypedExecution -->|addresses| n_RegisterDomainFunctions
-    n_G4M2TypedExecution -->|addresses| n_SnapshotDomainState
-    n_G4M2TypedExecution -->|addresses| n_ValidateActionInput
-    n_GoDomainImplementation -->|owns| n_PerformDomainOperation
-    n_SdlDispatcher -->|owns| n_CancelPendingActions
-    n_SdlDispatcher -->|owns| n_CorrelateActionResult
-    n_SdlDispatcher -->|owns| n_InvokeRegisteredFunction
-    n_SdlDispatcher -->|owns| n_ValidateActionInput
-    n_SdlExecutionGate -->|owns| n_CheckExecutionCompleteness
-    n_SdlFunctionRegistry -->|owns| n_CheckFunctionSignatures
-    n_SdlFunctionRegistry -->|owns| n_RegisterDomainFunctions
-    n_SdlRuntime -->|owns| n_CloseSdlInstance
-    n_SdlRuntime -->|owns| n_CreateSdlInstance
-    n_SdlStateStore -->|owns| n_ManageDomainState
-    n_SdlStateStore -->|owns| n_SnapshotDomainState
-```
+![Planlagt ansvar: G4M2TypedExecution](diagrams/VP06-work-G4M2TypedExecution.svg)
 
 Kildegrunnlag: f0375, f0376, f0377, f0378, f0379, f0380, f0381, f0382, f0383, f0384, f0385, f0386, f0523, f0848, f0849, f0850, f0851, f0859, f0872, f0873, f0903, f0904, f0907, f0908.
 
-### Planlagt ansvar: G4M3UiDomainBinding
+## Planlagt ansvar: G4M3UiDomainBinding
 
-```mermaid
-flowchart LR
-    n_ConnectTypedWidgetHandles["ConnectTypedWidgetHandles (functionality)"]
-    n_DiagnosticReporter["DiagnosticReporter (unit)"]
-    n_DisconnectBindings["DisconnectBindings (functionality)"]
-    n_G4M3UiDomainBinding["G4M3UiDomainBinding (activity)"]
-    n_PublishDomainUpdates["PublishDomainUpdates (functionality)"]
-    n_ReportBindingDiagnostics["ReportBindingDiagnostics (functionality)"]
-    n_ResolveCallbackSymbols["ResolveCallbackSymbols (functionality)"]
-    n_RouteDomainBindings["RouteDomainBindings (functionality)"]
-    n_SdlUiBindingAdapter["SdlUiBindingAdapter (unit)"]
-    n_DiagnosticReporter -->|owns| n_ReportBindingDiagnostics
-    n_G4M3UiDomainBinding -->|addresses| n_ConnectTypedWidgetHandles
-    n_G4M3UiDomainBinding -->|addresses| n_DisconnectBindings
-    n_G4M3UiDomainBinding -->|addresses| n_PublishDomainUpdates
-    n_G4M3UiDomainBinding -->|addresses| n_ReportBindingDiagnostics
-    n_G4M3UiDomainBinding -->|addresses| n_ResolveCallbackSymbols
-    n_G4M3UiDomainBinding -->|addresses| n_RouteDomainBindings
-    n_SdlUiBindingAdapter -->|owns| n_ConnectTypedWidgetHandles
-    n_SdlUiBindingAdapter -->|owns| n_DisconnectBindings
-    n_SdlUiBindingAdapter -->|owns| n_PublishDomainUpdates
-    n_SdlUiBindingAdapter -->|owns| n_ResolveCallbackSymbols
-    n_SdlUiBindingAdapter -->|owns| n_RouteDomainBindings
-```
+![Planlagt ansvar: G4M3UiDomainBinding](diagrams/VP06-work-G4M3UiDomainBinding.svg)
 
 Kildegrunnlag: f0178, f0390, f0391, f0392, f0393, f0394, f0395, f0913, f0914, f0915, f0916, f0917.
 
-### Planlagt ansvar: G4M4DomainReload
+## Planlagt ansvar: G4M4DomainReload
 
-```mermaid
-flowchart LR
-    n_CheckDomainStateCompatibility["CheckDomainStateCompatibility (functionality)"]
-    n_DomainStateMigrator["DomainStateMigrator (unit)"]
-    n_G4M4DomainReload["G4M4DomainReload (activity)"]
-    n_GoBuildRunner["GoBuildRunner (unit)"]
-    n_MigrateOrResetDomainState["MigrateOrResetDomainState (functionality)"]
-    n_RestartChangedGoProgram["RestartChangedGoProgram (functionality)"]
-    n_DomainStateMigrator -->|owns| n_CheckDomainStateCompatibility
-    n_DomainStateMigrator -->|owns| n_MigrateOrResetDomainState
-    n_G4M4DomainReload -->|addresses| n_CheckDomainStateCompatibility
-    n_G4M4DomainReload -->|addresses| n_MigrateOrResetDomainState
-    n_G4M4DomainReload -->|addresses| n_RestartChangedGoProgram
-    n_GoBuildRunner -->|owns| n_RestartChangedGoProgram
-```
+![Planlagt ansvar: G4M4DomainReload](diagrams/VP06-work-G4M4DomainReload.svg)
 
 Kildegrunnlag: f0214, f0215, f0400, f0401, f0402, f0506.
 
-### Planlagt ansvar: G5M1GeneratedGo
+## Planlagt ansvar: G5M1GeneratedGo
 
-```mermaid
-flowchart LR
-    n_BuildGeneratedApplication["BuildGeneratedApplication (functionality)"]
-    n_G5M1GeneratedGo["G5M1GeneratedGo (activity)"]
-    n_GenerateBindingRegistration["GenerateBindingRegistration (functionality)"]
-    n_GenerateModelConstructors["GenerateModelConstructors (functionality)"]
-    n_GoBuildRunner["GoBuildRunner (unit)"]
-    n_GoCodeGenerator["GoCodeGenerator (unit)"]
-    n_PreserveHandwrittenSources["PreserveHandwrittenSources (functionality)"]
-    n_G5M1GeneratedGo -->|addresses| n_BuildGeneratedApplication
-    n_G5M1GeneratedGo -->|addresses| n_GenerateBindingRegistration
-    n_G5M1GeneratedGo -->|addresses| n_GenerateModelConstructors
-    n_G5M1GeneratedGo -->|addresses| n_PreserveHandwrittenSources
-    n_GoBuildRunner -->|owns| n_BuildGeneratedApplication
-    n_GoCodeGenerator -->|owns| n_GenerateBindingRegistration
-    n_GoCodeGenerator -->|owns| n_GenerateModelConstructors
-    n_GoCodeGenerator -->|owns| n_PreserveHandwrittenSources
-```
+![Planlagt ansvar: G5M1GeneratedGo](diagrams/VP06-work-G5M1GeneratedGo.svg)
 
 Kildegrunnlag: f0409, f0410, f0411, f0412, f0505, f0513, f0514, f0515.
 
-### Planlagt ansvar: G5M2BehaviorParity
+## Planlagt ansvar: G5M2BehaviorParity
 
-```mermaid
-flowchart LR
-    n_DevelopmentTools["DevelopmentTools (unit)"]
-    n_G5M2BehaviorParity["G5M2BehaviorParity (activity)"]
-    n_VerifyNativeBehaviorParity["VerifyNativeBehaviorParity (functionality)"]
-    n_DevelopmentTools -->|owns| n_VerifyNativeBehaviorParity
-    n_G5M2BehaviorParity -->|addresses| n_VerifyNativeBehaviorParity
-```
+![Planlagt ansvar: G5M2BehaviorParity](diagrams/VP06-work-G5M2BehaviorParity.svg)
 
 Kildegrunnlag: f0176, f0416.
 
-### Planlagt ansvar: G5M3DocumentationExport
+## Planlagt ansvar: G5M3DocumentationExport
 
-```mermaid
-flowchart LR
-    n_CommandLineHost["CommandLineHost (container)"]
-    n_ComposeHeadlessExport["ComposeHeadlessExport (functionality)"]
-    n_ComposeMarkdownDocument["ComposeMarkdownDocument (functionality)"]
-    n_G5M3DocumentationExport["G5M3DocumentationExport (activity)"]
-    n_SduiPresentation["SduiPresentation (unit)"]
-    n_WriteGeneratedArtifacts["WriteGeneratedArtifacts (functionality)"]
-    n_CommandLineHost -->|owns| n_ComposeHeadlessExport
-    n_CommandLineHost -->|owns| n_WriteGeneratedArtifacts
-    n_G5M3DocumentationExport -->|addresses| n_ComposeHeadlessExport
-    n_G5M3DocumentationExport -->|addresses| n_ComposeMarkdownDocument
-    n_G5M3DocumentationExport -->|addresses| n_WriteGeneratedArtifacts
-    n_SduiPresentation -->|owns| n_ComposeMarkdownDocument
-```
+![Planlagt ansvar: G5M3DocumentationExport](diagrams/VP06-work-G5M3DocumentationExport.svg)
 
 Kildegrunnlag: f0094, f0095, f0420, f0421, f0422, f1022.
 
-### Planlagt ansvar: G5M4RetirePython
+## Planlagt ansvar: G5M4RetirePython
 
-```mermaid
-flowchart LR
-    n_DevelopmentTools["DevelopmentTools (unit)"]
-    n_G5M4RetirePython["G5M4RetirePython (activity)"]
-    n_RetireReplacedPythonEntryPoints["RetireReplacedPythonEntryPoints (functionality)"]
-    n_DevelopmentTools -->|owns| n_RetireReplacedPythonEntryPoints
-    n_G5M4RetirePython -->|addresses| n_RetireReplacedPythonEntryPoints
-```
+![Planlagt ansvar: G5M4RetirePython](diagrams/VP06-work-G5M4RetirePython.svg)
 
 Kildegrunnlag: f0175, f0428.
 
-### Planlagt ansvar: G6M1StaticNavigation
+## Planlagt ansvar: G6M1StaticNavigation
 
-```mermaid
-flowchart LR
-    n_ComposeViewPackage["ComposeViewPackage (functionality)"]
-    n_ExportModelInventories["ExportModelInventories (functionality)"]
-    n_ExportViewpointMarkdown["ExportViewpointMarkdown (functionality)"]
-    n_G6M1StaticNavigation["G6M1StaticNavigation (activity)"]
-    n_GenerateViewNavigation["GenerateViewNavigation (functionality)"]
-    n_IndexViewpointLevels["IndexViewpointLevels (functionality)"]
-    n_PreserveViewAnchors["PreserveViewAnchors (functionality)"]
-    n_ProjectSdlViewpoints["ProjectSdlViewpoints (functionality)"]
-    n_SdlViewpointGenerator["SdlViewpointGenerator (unit)"]
-    n_TraceViewpointFacts["TraceViewpointFacts (functionality)"]
-    n_G6M1StaticNavigation -->|addresses| n_ComposeViewPackage
-    n_G6M1StaticNavigation -->|addresses| n_ExportModelInventories
-    n_G6M1StaticNavigation -->|addresses| n_ExportViewpointMarkdown
-    n_G6M1StaticNavigation -->|addresses| n_GenerateViewNavigation
-    n_G6M1StaticNavigation -->|addresses| n_IndexViewpointLevels
-    n_G6M1StaticNavigation -->|addresses| n_PreserveViewAnchors
-    n_G6M1StaticNavigation -->|addresses| n_ProjectSdlViewpoints
-    n_G6M1StaticNavigation -->|addresses| n_TraceViewpointFacts
-    n_SdlViewpointGenerator -->|owns| n_ComposeViewPackage
-    n_SdlViewpointGenerator -->|owns| n_ExportModelInventories
-    n_SdlViewpointGenerator -->|owns| n_ExportViewpointMarkdown
-    n_SdlViewpointGenerator -->|owns| n_GenerateViewNavigation
-    n_SdlViewpointGenerator -->|owns| n_IndexViewpointLevels
-    n_SdlViewpointGenerator -->|owns| n_PreserveViewAnchors
-    n_SdlViewpointGenerator -->|owns| n_ProjectSdlViewpoints
-    n_SdlViewpointGenerator -->|owns| n_TraceViewpointFacts
-```
+![Planlagt ansvar: G6M1StaticNavigation](diagrams/VP06-work-G6M1StaticNavigation.svg)
 
 Kildegrunnlag: f0436, f0437, f0438, f0439, f0440, f0441, f0442, f0443, f0929, f0930, f0931, f0932, f0933, f0934, f0936, f0939.
 
-### Planlagt ansvar: G6M2OnDemandViews
+## Planlagt ansvar: G6M2OnDemandViews
 
-```mermaid
-flowchart LR
-    n_DocumentBroker["DocumentBroker (unit)"]
-    n_G6M2OnDemandViews["G6M2OnDemandViews (activity)"]
-    n_KeyViewRevision["KeyViewRevision (functionality)"]
-    n_ProjectSelectedView["ProjectSelectedView (functionality)"]
-    n_PublishViewBundle["PublishViewBundle (functionality)"]
-    n_SdlViewpointGenerator["SdlViewpointGenerator (unit)"]
-    n_SelectRelationshipViews["SelectRelationshipViews (functionality)"]
-    n_ValidateViewRequest["ValidateViewRequest (functionality)"]
-    n_ViewArtifactStore["ViewArtifactStore (unit)"]
-    n_DocumentBroker -->|owns| n_KeyViewRevision
-    n_DocumentBroker -->|owns| n_ValidateViewRequest
-    n_G6M2OnDemandViews -->|addresses| n_KeyViewRevision
-    n_G6M2OnDemandViews -->|addresses| n_ProjectSelectedView
-    n_G6M2OnDemandViews -->|addresses| n_PublishViewBundle
-    n_G6M2OnDemandViews -->|addresses| n_SelectRelationshipViews
-    n_G6M2OnDemandViews -->|addresses| n_ValidateViewRequest
-    n_SdlViewpointGenerator -->|owns| n_ProjectSelectedView
-    n_SdlViewpointGenerator -->|owns| n_SelectRelationshipViews
-    n_ViewArtifactStore -->|owns| n_PublishViewBundle
-```
+![Planlagt ansvar: G6M2OnDemandViews](diagrams/VP06-work-G6M2OnDemandViews.svg)
 
 Kildegrunnlag: f0193, f0196, f0447, f0448, f0449, f0450, f0451, f0937, f0938, f1282.
 
-### Planlagt ansvar: G6M3XfmdNavigation
+## Planlagt ansvar: G6M3XfmdNavigation
 
-```mermaid
-flowchart LR
-    n_CaptureNavigationTarget["CaptureNavigationTarget (functionality)"]
-    n_DispatchViewOpen["DispatchViewOpen (functionality)"]
-    n_G6M3XfmdNavigation["G6M3XfmdNavigation (activity)"]
-    n_ResolveConfiguredViewer["ResolveConfiguredViewer (functionality)"]
-    n_RouteDocumentToPane["RouteDocumentToPane (functionality)"]
-    n_ViewerLaunchAdapter["ViewerLaunchAdapter (unit)"]
-    n_XfmdDocumentHost["XfmdDocumentHost (container)"]
-    n_G6M3XfmdNavigation -->|addresses| n_CaptureNavigationTarget
-    n_G6M3XfmdNavigation -->|addresses| n_DispatchViewOpen
-    n_G6M3XfmdNavigation -->|addresses| n_ResolveConfiguredViewer
-    n_G6M3XfmdNavigation -->|addresses| n_RouteDocumentToPane
-    n_ViewerLaunchAdapter -->|owns| n_DispatchViewOpen
-    n_ViewerLaunchAdapter -->|owns| n_ResolveConfiguredViewer
-    n_XfmdDocumentHost -->|owns| n_CaptureNavigationTarget
-    n_XfmdDocumentHost -->|owns| n_RouteDocumentToPane
-```
+![Planlagt ansvar: G6M3XfmdNavigation](diagrams/VP06-work-G6M3XfmdNavigation.svg)
 
 Kildegrunnlag: f0455, f0456, f0457, f0458, f1406, f1407, f1416, f1417.
 
-### Planlagt ansvar: G6M4SessionPublication
+## Planlagt ansvar: G6M4SessionPublication
 
-```mermaid
-flowchart LR
-    n_DocumentBroker["DocumentBroker (unit)"]
-    n_EvictUnusedViewBundles["EvictUnusedViewBundles (functionality)"]
-    n_G6M4SessionPublication["G6M4SessionPublication (activity)"]
-    n_RejectStaleViewResults["RejectStaleViewResults (functionality)"]
-    n_RetainVisibleViewBundle["RetainVisibleViewBundle (functionality)"]
-    n_ServeViewRequests["ServeViewRequests (functionality)"]
-    n_ViewArtifactStore["ViewArtifactStore (unit)"]
-    n_DocumentBroker -->|owns| n_RejectStaleViewResults
-    n_DocumentBroker -->|owns| n_ServeViewRequests
-    n_G6M4SessionPublication -->|addresses| n_EvictUnusedViewBundles
-    n_G6M4SessionPublication -->|addresses| n_RejectStaleViewResults
-    n_G6M4SessionPublication -->|addresses| n_RetainVisibleViewBundle
-    n_G6M4SessionPublication -->|addresses| n_ServeViewRequests
-    n_ViewArtifactStore -->|owns| n_EvictUnusedViewBundles
-    n_ViewArtifactStore -->|owns| n_RetainVisibleViewBundle
-```
+![Planlagt ansvar: G6M4SessionPublication](diagrams/VP06-work-G6M4SessionPublication.svg)
 
 Kildegrunnlag: f0194, f0195, f0462, f0463, f0464, f0465, f1281, f1283.
 
-### Planlagt ansvar: G6M5SemanticNotation
+## Planlagt ansvar: G6M5SemanticNotation
 
-```mermaid
-flowchart LR
-    n_ApplySemanticNotation["ApplySemanticNotation (functionality)"]
-    n_G6M5SemanticNotation["G6M5SemanticNotation (activity)"]
-    n_SdlViewpointGenerator["SdlViewpointGenerator (unit)"]
-    n_VerifyDiagramCapabilities["VerifyDiagramCapabilities (functionality)"]
-    n_G6M5SemanticNotation -->|addresses| n_ApplySemanticNotation
-    n_G6M5SemanticNotation -->|addresses| n_VerifyDiagramCapabilities
-    n_SdlViewpointGenerator -->|owns| n_ApplySemanticNotation
-    n_SdlViewpointGenerator -->|owns| n_VerifyDiagramCapabilities
-```
+![Planlagt ansvar: G6M5SemanticNotation](diagrams/VP06-work-G6M5SemanticNotation.svg)
 
 Kildegrunnlag: f0469, f0470, f0928, f0940.
 
-### Planlagt ansvar: G6M6ClassViews
+## Planlagt ansvar: G6M6ClassViews
 
-```mermaid
-flowchart LR
-    n_G6M6ClassViews["G6M6ClassViews (activity)"]
-    n_ProjectClassViews["ProjectClassViews (functionality)"]
-    n_SdlValidator["SdlValidator (unit)"]
-    n_SdlViewpointGenerator["SdlViewpointGenerator (unit)"]
-    n_ValidateClassRelations["ValidateClassRelations (functionality)"]
-    n_G6M6ClassViews -->|addresses| n_ProjectClassViews
-    n_G6M6ClassViews -->|addresses| n_ValidateClassRelations
-    n_SdlValidator -->|owns| n_ValidateClassRelations
-    n_SdlViewpointGenerator -->|owns| n_ProjectClassViews
-```
+![Planlagt ansvar: G6M6ClassViews](diagrams/VP06-work-G6M6ClassViews.svg)
 
 Kildegrunnlag: f0474, f0475, f0924, f0935.
 
-### Eksplisitte aktivitetsavhengigheter
+## Eksplisitte aktivitetsavhengigheter
 
-```mermaid
-flowchart LR
-    n_G1M1ParserAndAst["G1M1ParserAndAst (activity)"]
-    n_G1M2ValidationAndNormalization["G1M2ValidationAndNormalization (activity)"]
-    n_G1M3Concept1AndDumps["G1M3Concept1AndDumps (activity)"]
-    n_G2M1RelativeMeasurement["G2M1RelativeMeasurement (activity)"]
-    n_G2M2SharedSvgGeometry["G2M2SharedSvgGeometry (activity)"]
-    n_G2M3FyneInteractions["G2M3FyneInteractions (activity)"]
-    n_G2M4RichContent["G2M4RichContent (activity)"]
-    n_G3M1TypedUiSession["G3M1TypedUiSession (activity)"]
-    n_G3M2CandidatePublication["G3M2CandidatePublication (activity)"]
-    n_G3M3CompatibleState["G3M3CompatibleState (activity)"]
-    n_G4M1SdlFrontend["G4M1SdlFrontend (activity)"]
-    n_G4M2TypedExecution["G4M2TypedExecution (activity)"]
-    n_G4M3UiDomainBinding["G4M3UiDomainBinding (activity)"]
-    n_G4M4DomainReload["G4M4DomainReload (activity)"]
-    n_G5M1GeneratedGo["G5M1GeneratedGo (activity)"]
-    n_G5M2BehaviorParity["G5M2BehaviorParity (activity)"]
-    n_G5M3DocumentationExport["G5M3DocumentationExport (activity)"]
-    n_G5M4RetirePython["G5M4RetirePython (activity)"]
-    n_G6M1StaticNavigation["G6M1StaticNavigation (activity)"]
-    n_G6M2OnDemandViews["G6M2OnDemandViews (activity)"]
-    n_G6M3XfmdNavigation["G6M3XfmdNavigation (activity)"]
-    n_G6M4SessionPublication["G6M4SessionPublication (activity)"]
-    n_G6M5SemanticNotation["G6M5SemanticNotation (activity)"]
-    n_G6M6ClassViews["G6M6ClassViews (activity)"]
-    n_G1M2ValidationAndNormalization -->|depends-on| n_G1M1ParserAndAst
-    n_G1M3Concept1AndDumps -->|depends-on| n_G1M2ValidationAndNormalization
-    n_G2M1RelativeMeasurement -->|depends-on| n_G1M2ValidationAndNormalization
-    n_G2M2SharedSvgGeometry -->|depends-on| n_G2M1RelativeMeasurement
-    n_G2M3FyneInteractions -->|depends-on| n_G2M2SharedSvgGeometry
-    n_G2M4RichContent -->|depends-on| n_G2M3FyneInteractions
-    n_G3M1TypedUiSession -->|depends-on| n_G1M2ValidationAndNormalization
-    n_G3M1TypedUiSession -->|depends-on| n_G2M3FyneInteractions
-    n_G3M2CandidatePublication -->|depends-on| n_G3M1TypedUiSession
-    n_G3M3CompatibleState -->|depends-on| n_G3M2CandidatePublication
-    n_G4M2TypedExecution -->|depends-on| n_G4M1SdlFrontend
-    n_G4M3UiDomainBinding -->|depends-on| n_G3M1TypedUiSession
-    n_G4M3UiDomainBinding -->|depends-on| n_G4M2TypedExecution
-    n_G4M4DomainReload -->|depends-on| n_G3M3CompatibleState
-    n_G4M4DomainReload -->|depends-on| n_G4M3UiDomainBinding
-    n_G5M1GeneratedGo -->|depends-on| n_G4M4DomainReload
-    n_G5M2BehaviorParity -->|depends-on| n_G5M1GeneratedGo
-    n_G5M3DocumentationExport -->|depends-on| n_G2M4RichContent
-    n_G5M3DocumentationExport -->|depends-on| n_G5M2BehaviorParity
-    n_G5M3DocumentationExport -->|depends-on| n_G6M1StaticNavigation
-    n_G5M4RetirePython -->|depends-on| n_G1M3Concept1AndDumps
-    n_G5M4RetirePython -->|depends-on| n_G5M3DocumentationExport
-    n_G6M1StaticNavigation -->|depends-on| n_G4M1SdlFrontend
-    n_G6M2OnDemandViews -->|depends-on| n_G6M1StaticNavigation
-    n_G6M3XfmdNavigation -->|depends-on| n_G6M2OnDemandViews
-    n_G6M4SessionPublication -->|depends-on| n_G6M3XfmdNavigation
-    n_G6M5SemanticNotation -->|depends-on| n_G6M1StaticNavigation
-    n_G6M6ClassViews -->|depends-on| n_G6M5SemanticNotation
-```
+![Eksplisitte aktivitetsavhengigheter](diagrams/VP06-dependencies.svg)
 
 Kildegrunnlag: f0292, f0297, f0306, f0311, f0320, f0328, f0344, f0345, f0354, f0360, f0387, f0396, f0397, f0403, f0404, f0413, f0417, f0423, f0424, f0425, f0429, f0430, f0444, f0452, f0459, f0466, f0471, f0476.
 
 
 ## VP07 — Features over arkitekturen
 
-### Feature: DesignDocumentation — modus DocumentBrowsing
+contributes-to, owns og eksplisitt allocated-to per modus. Uspesifisert allokering vises som hull.
 
-```mermaid
-flowchart LR
-    n_CommandLineHost["CommandLineHost (container)"]
-    n_ComposeMarkdownDocument["ComposeMarkdownDocument (functionality)"]
-    n_DesignDocumentation["DesignDocumentation (feature)"]
-    n_ExportSvgSnapshot["ExportSvgSnapshot (functionality)"]
-    n_ExportViewpointMarkdown["ExportViewpointMarkdown (functionality)"]
-    n_ProjectSdlViewpoints["ProjectSdlViewpoints (functionality)"]
-    n_SdlViewpointGenerator["SdlViewpointGenerator (unit)"]
-    n_SduiPresentation["SduiPresentation (unit)"]
-    n_TraceViewpointFacts["TraceViewpointFacts (functionality)"]
-    n_ViewServiceHost["ViewServiceHost (container)"]
-    n_WriteGeneratedArtifacts["WriteGeneratedArtifacts (functionality)"]
-    n_CommandLineHost -->|owns| n_WriteGeneratedArtifacts
-    n_ComposeMarkdownDocument -->|contributes-to| n_DesignDocumentation
-    n_ExportSvgSnapshot -->|contributes-to| n_DesignDocumentation
-    n_ExportViewpointMarkdown -->|allocated-to| n_ViewServiceHost
-    n_ExportViewpointMarkdown -->|contributes-to| n_DesignDocumentation
-    n_ProjectSdlViewpoints -->|allocated-to| n_ViewServiceHost
-    n_ProjectSdlViewpoints -->|contributes-to| n_DesignDocumentation
-    n_SdlViewpointGenerator -->|owns| n_ExportViewpointMarkdown
-    n_SdlViewpointGenerator -->|owns| n_ProjectSdlViewpoints
-    n_SdlViewpointGenerator -->|owns| n_TraceViewpointFacts
-    n_SduiPresentation -->|owns| n_ComposeMarkdownDocument
-    n_SduiPresentation -->|owns| n_ExportSvgSnapshot
-    n_TraceViewpointFacts -->|allocated-to| n_ViewServiceHost
-    n_TraceViewpointFacts -->|contributes-to| n_DesignDocumentation
-    n_WriteGeneratedArtifacts -->|contributes-to| n_DesignDocumentation
-```
+## Feature: DesignDocumentation — modus DocumentBrowsing
+
+![Feature: DesignDocumentation — modus DocumentBrowsing](diagrams/VP07-DesignDocumentation-DocumentBrowsing.svg)
 
 Kildegrunnlag: f0095, f0126, f0232, f0236, f0237, f0714, f0715, f0931, f0936, f0939, f1022, f1024, f1136, f1137, f1414.
 
-### Feature: DesignDocumentation — modus SourceInspection
+## Feature: DesignDocumentation — modus SourceInspection
 
-```mermaid
-flowchart LR
-    n_CommandLineHost["CommandLineHost (container)"]
-    n_ComposeMarkdownDocument["ComposeMarkdownDocument (functionality)"]
-    n_DesignDocumentation["DesignDocumentation (feature)"]
-    n_ExportSvgSnapshot["ExportSvgSnapshot (functionality)"]
-    n_ExportViewpointMarkdown["ExportViewpointMarkdown (functionality)"]
-    n_ProjectSdlViewpoints["ProjectSdlViewpoints (functionality)"]
-    n_SdlViewpointGenerator["SdlViewpointGenerator (unit)"]
-    n_SduiPresentation["SduiPresentation (unit)"]
-    n_TraceViewpointFacts["TraceViewpointFacts (functionality)"]
-    n_WriteGeneratedArtifacts["WriteGeneratedArtifacts (functionality)"]
-    n_CommandLineHost -->|owns| n_WriteGeneratedArtifacts
-    n_ComposeMarkdownDocument -->|contributes-to| n_DesignDocumentation
-    n_ExportSvgSnapshot -->|contributes-to| n_DesignDocumentation
-    n_ExportViewpointMarkdown -->|contributes-to| n_DesignDocumentation
-    n_ProjectSdlViewpoints -->|contributes-to| n_DesignDocumentation
-    n_SdlViewpointGenerator -->|owns| n_ExportViewpointMarkdown
-    n_SdlViewpointGenerator -->|owns| n_ProjectSdlViewpoints
-    n_SdlViewpointGenerator -->|owns| n_TraceViewpointFacts
-    n_SduiPresentation -->|owns| n_ComposeMarkdownDocument
-    n_SduiPresentation -->|owns| n_ExportSvgSnapshot
-    n_TraceViewpointFacts -->|allocated-to| n_CommandLineHost
-    n_TraceViewpointFacts -->|contributes-to| n_DesignDocumentation
-    n_WriteGeneratedArtifacts -->|contributes-to| n_DesignDocumentation
-```
+![Feature: DesignDocumentation — modus SourceInspection](diagrams/VP07-DesignDocumentation-SourceInspection.svg)
 
 Kildegrunnlag: f0095, f0126, f0232, f0237, f0715, f0931, f0936, f0939, f1022, f1024, f1134, f1137, f1414.
 
-### Feature: DesignDocumentation — modus StaticExport
+## Feature: DesignDocumentation — modus StaticExport
 
-```mermaid
-flowchart LR
-    n_CommandLineHost["CommandLineHost (container)"]
-    n_ComposeMarkdownDocument["ComposeMarkdownDocument (functionality)"]
-    n_DesignDocumentation["DesignDocumentation (feature)"]
-    n_ExportSvgSnapshot["ExportSvgSnapshot (functionality)"]
-    n_ExportViewpointMarkdown["ExportViewpointMarkdown (functionality)"]
-    n_ProjectSdlViewpoints["ProjectSdlViewpoints (functionality)"]
-    n_SdlViewpointGenerator["SdlViewpointGenerator (unit)"]
-    n_SduiPresentation["SduiPresentation (unit)"]
-    n_TraceViewpointFacts["TraceViewpointFacts (functionality)"]
-    n_WriteGeneratedArtifacts["WriteGeneratedArtifacts (functionality)"]
-    n_CommandLineHost -->|owns| n_WriteGeneratedArtifacts
-    n_ComposeMarkdownDocument -->|allocated-to| n_CommandLineHost
-    n_ComposeMarkdownDocument -->|contributes-to| n_DesignDocumentation
-    n_ExportSvgSnapshot -->|allocated-to| n_CommandLineHost
-    n_ExportSvgSnapshot -->|contributes-to| n_DesignDocumentation
-    n_ExportViewpointMarkdown -->|allocated-to| n_CommandLineHost
-    n_ExportViewpointMarkdown -->|contributes-to| n_DesignDocumentation
-    n_ProjectSdlViewpoints -->|allocated-to| n_CommandLineHost
-    n_ProjectSdlViewpoints -->|contributes-to| n_DesignDocumentation
-    n_SdlViewpointGenerator -->|owns| n_ExportViewpointMarkdown
-    n_SdlViewpointGenerator -->|owns| n_ProjectSdlViewpoints
-    n_SdlViewpointGenerator -->|owns| n_TraceViewpointFacts
-    n_SduiPresentation -->|owns| n_ComposeMarkdownDocument
-    n_SduiPresentation -->|owns| n_ExportSvgSnapshot
-    n_TraceViewpointFacts -->|allocated-to| n_CommandLineHost
-    n_TraceViewpointFacts -->|contributes-to| n_DesignDocumentation
-    n_WriteGeneratedArtifacts -->|allocated-to| n_CommandLineHost
-    n_WriteGeneratedArtifacts -->|contributes-to| n_DesignDocumentation
-```
+![Feature: DesignDocumentation — modus StaticExport](diagrams/VP07-DesignDocumentation-StaticExport.svg)
 
 Kildegrunnlag: f0095, f0125, f0126, f0231, f0232, f0235, f0237, f0713, f0715, f0931, f0936, f0939, f1022, f1024, f1135, f1137, f1413, f1414.
 
-### Feature: InteractiveUiPreview — modus UiPreview
+## Feature: InteractiveUiPreview — modus UiPreview
 
-```mermaid
-flowchart LR
-    n_AllocateGeometry["AllocateGeometry (functionality)"]
-    n_BuildPreparedFrame["BuildPreparedFrame (functionality)"]
-    n_ComposeInteractiveSession["ComposeInteractiveSession (functionality)"]
-    n_FyneBackend["FyneBackend (unit)"]
-    n_FyneHost["FyneHost (container)"]
-    n_HandleFocusAndTextInput["HandleFocusAndTextInput (functionality)"]
-    n_InteractiveUiPreview["InteractiveUiPreview (feature)"]
-    n_ReconcileWidgets["ReconcileWidgets (functionality)"]
-    n_SduiLayout["SduiLayout (unit)"]
-    n_AllocateGeometry -->|allocated-to| n_FyneHost
-    n_AllocateGeometry -->|contributes-to| n_InteractiveUiPreview
-    n_BuildPreparedFrame -->|allocated-to| n_FyneHost
-    n_BuildPreparedFrame -->|contributes-to| n_InteractiveUiPreview
-    n_ComposeInteractiveSession -->|allocated-to| n_FyneHost
-    n_ComposeInteractiveSession -->|contributes-to| n_InteractiveUiPreview
-    n_FyneBackend -->|owns| n_HandleFocusAndTextInput
-    n_FyneBackend -->|owns| n_ReconcileWidgets
-    n_FyneHost -->|owns| n_ComposeInteractiveSession
-    n_HandleFocusAndTextInput -->|allocated-to| n_FyneHost
-    n_HandleFocusAndTextInput -->|contributes-to| n_InteractiveUiPreview
-    n_ReconcileWidgets -->|allocated-to| n_FyneHost
-    n_ReconcileWidgets -->|contributes-to| n_InteractiveUiPreview
-    n_SduiLayout -->|owns| n_AllocateGeometry
-    n_SduiLayout -->|owns| n_BuildPreparedFrame
-```
+![Feature: InteractiveUiPreview — modus UiPreview](diagrams/VP07-InteractiveUiPreview-UiPreview.svg)
 
 Kildegrunnlag: f0017, f0018, f0063, f0064, f0122, f0123, f0248, f0250, f0267, f0533, f0534, f0738, f0739, f0989, f0990.
 
-### Feature: LiveModelReload — modus LiveEditing
+## Feature: LiveModelReload — modus LiveEditing
 
-```mermaid
-flowchart LR
-    n_DiagnosticReporter["DiagnosticReporter (unit)"]
-    n_FyneHost["FyneHost (container)"]
-    n_KeepLastValidModels["KeepLastValidModels (functionality)"]
-    n_LiveModelReload["LiveModelReload (feature)"]
-    n_ObserveSourceChanges["ObserveSourceChanges (functionality)"]
-    n_PrepareCandidateModels["PrepareCandidateModels (functionality)"]
-    n_PreserveCompatibleUiState["PreserveCompatibleUiState (functionality)"]
-    n_ProjectUiGeneration["ProjectUiGeneration (functionality)"]
-    n_PublishModelGeneration["PublishModelGeneration (functionality)"]
-    n_ReloadCoordinator["ReloadCoordinator (unit)"]
-    n_ReportSourceDiagnostics["ReportSourceDiagnostics (functionality)"]
-    n_SduiInstanceStore["SduiInstanceStore (unit)"]
-    n_SourceWatcher["SourceWatcher (unit)"]
-    n_UiStateReconciler["UiStateReconciler (unit)"]
-    n_DiagnosticReporter -->|owns| n_ReportSourceDiagnostics
-    n_KeepLastValidModels -->|allocated-to| n_FyneHost
-    n_KeepLastValidModels -->|contributes-to| n_LiveModelReload
-    n_ObserveSourceChanges -->|allocated-to| n_FyneHost
-    n_ObserveSourceChanges -->|contributes-to| n_LiveModelReload
-    n_PrepareCandidateModels -->|allocated-to| n_FyneHost
-    n_PrepareCandidateModels -->|contributes-to| n_LiveModelReload
-    n_PreserveCompatibleUiState -->|allocated-to| n_FyneHost
-    n_PreserveCompatibleUiState -->|contributes-to| n_LiveModelReload
-    n_ProjectUiGeneration -->|allocated-to| n_FyneHost
-    n_ProjectUiGeneration -->|contributes-to| n_LiveModelReload
-    n_PublishModelGeneration -->|allocated-to| n_FyneHost
-    n_PublishModelGeneration -->|contributes-to| n_LiveModelReload
-    n_ReloadCoordinator -->|owns| n_KeepLastValidModels
-    n_ReloadCoordinator -->|owns| n_PrepareCandidateModels
-    n_ReloadCoordinator -->|owns| n_PublishModelGeneration
-    n_ReportSourceDiagnostics -->|allocated-to| n_FyneHost
-    n_ReportSourceDiagnostics -->|contributes-to| n_LiveModelReload
-    n_SduiInstanceStore -->|owns| n_ProjectUiGeneration
-    n_SourceWatcher -->|owns| n_ObserveSourceChanges
-    n_UiStateReconciler -->|owns| n_PreserveCompatibleUiState
-```
+![Feature: LiveModelReload — modus LiveEditing](diagrams/VP07-LiveModelReload-LiveEditing.svg)
 
 Kildegrunnlag: f0179, f0561, f0562, f0654, f0655, f0676, f0677, f0694, f0695, f0720, f0721, f0728, f0729, f0760, f0761, f0762, f0798, f0799, f0980, f1090, f1225.
 
-### Feature: LiveModelReload — modus SourceInspection
+## Feature: LiveModelReload — modus SourceInspection
 
-```mermaid
-flowchart LR
-    n_CommandLineHost["CommandLineHost (container)"]
-    n_DiagnosticReporter["DiagnosticReporter (unit)"]
-    n_KeepLastValidModels["KeepLastValidModels (functionality)"]
-    n_LiveModelReload["LiveModelReload (feature)"]
-    n_ObserveSourceChanges["ObserveSourceChanges (functionality)"]
-    n_PrepareCandidateModels["PrepareCandidateModels (functionality)"]
-    n_PreserveCompatibleUiState["PreserveCompatibleUiState (functionality)"]
-    n_ProjectUiGeneration["ProjectUiGeneration (functionality)"]
-    n_PublishModelGeneration["PublishModelGeneration (functionality)"]
-    n_ReloadCoordinator["ReloadCoordinator (unit)"]
-    n_ReportSourceDiagnostics["ReportSourceDiagnostics (functionality)"]
-    n_SduiInstanceStore["SduiInstanceStore (unit)"]
-    n_SourceWatcher["SourceWatcher (unit)"]
-    n_UiStateReconciler["UiStateReconciler (unit)"]
-    n_DiagnosticReporter -->|owns| n_ReportSourceDiagnostics
-    n_KeepLastValidModels -->|contributes-to| n_LiveModelReload
-    n_ObserveSourceChanges -->|contributes-to| n_LiveModelReload
-    n_PrepareCandidateModels -->|contributes-to| n_LiveModelReload
-    n_PreserveCompatibleUiState -->|contributes-to| n_LiveModelReload
-    n_ProjectUiGeneration -->|contributes-to| n_LiveModelReload
-    n_PublishModelGeneration -->|contributes-to| n_LiveModelReload
-    n_ReloadCoordinator -->|owns| n_KeepLastValidModels
-    n_ReloadCoordinator -->|owns| n_PrepareCandidateModels
-    n_ReloadCoordinator -->|owns| n_PublishModelGeneration
-    n_ReportSourceDiagnostics -->|allocated-to| n_CommandLineHost
-    n_ReportSourceDiagnostics -->|contributes-to| n_LiveModelReload
-    n_SduiInstanceStore -->|owns| n_ProjectUiGeneration
-    n_SourceWatcher -->|owns| n_ObserveSourceChanges
-    n_UiStateReconciler -->|owns| n_PreserveCompatibleUiState
-```
+![Feature: LiveModelReload — modus SourceInspection](diagrams/VP07-LiveModelReload-SourceInspection.svg)
 
 Kildegrunnlag: f0179, f0562, f0655, f0677, f0695, f0721, f0729, f0760, f0761, f0762, f0797, f0799, f0980, f1090, f1225.
 
-### Feature: NativeGoAssembly — modus NativeBuild
+## Feature: NativeGoAssembly — modus NativeBuild
 
-```mermaid
-flowchart LR
-    n_BuildGeneratedApplication["BuildGeneratedApplication (functionality)"]
-    n_CommandLineHost["CommandLineHost (container)"]
-    n_DevelopmentTools["DevelopmentTools (unit)"]
-    n_GenerateBindingRegistration["GenerateBindingRegistration (functionality)"]
-    n_GenerateModelConstructors["GenerateModelConstructors (functionality)"]
-    n_GoBuildRunner["GoBuildRunner (unit)"]
-    n_GoCodeGenerator["GoCodeGenerator (unit)"]
-    n_NativeGoAssembly["NativeGoAssembly (feature)"]
-    n_PreserveHandwrittenSources["PreserveHandwrittenSources (functionality)"]
-    n_RetireReplacedPythonEntryPoints["RetireReplacedPythonEntryPoints (functionality)"]
-    n_VerifyNativeBehaviorParity["VerifyNativeBehaviorParity (functionality)"]
-    n_BuildGeneratedApplication -->|allocated-to| n_CommandLineHost
-    n_BuildGeneratedApplication -->|contributes-to| n_NativeGoAssembly
-    n_DevelopmentTools -->|owns| n_RetireReplacedPythonEntryPoints
-    n_DevelopmentTools -->|owns| n_VerifyNativeBehaviorParity
-    n_GenerateBindingRegistration -->|allocated-to| n_CommandLineHost
-    n_GenerateBindingRegistration -->|contributes-to| n_NativeGoAssembly
-    n_GenerateModelConstructors -->|allocated-to| n_CommandLineHost
-    n_GenerateModelConstructors -->|contributes-to| n_NativeGoAssembly
-    n_GoBuildRunner -->|owns| n_BuildGeneratedApplication
-    n_GoCodeGenerator -->|owns| n_GenerateBindingRegistration
-    n_GoCodeGenerator -->|owns| n_GenerateModelConstructors
-    n_GoCodeGenerator -->|owns| n_PreserveHandwrittenSources
-    n_PreserveHandwrittenSources -->|allocated-to| n_CommandLineHost
-    n_PreserveHandwrittenSources -->|contributes-to| n_NativeGoAssembly
-    n_RetireReplacedPythonEntryPoints -->|allocated-to| n_CommandLineHost
-    n_RetireReplacedPythonEntryPoints -->|contributes-to| n_NativeGoAssembly
-    n_VerifyNativeBehaviorParity -->|allocated-to| n_CommandLineHost
-    n_VerifyNativeBehaviorParity -->|contributes-to| n_NativeGoAssembly
-```
+![Feature: NativeGoAssembly — modus NativeBuild](diagrams/VP07-NativeGoAssembly-NativeBuild.svg)
 
 Kildegrunnlag: f0054, f0055, f0175, f0176, f0482, f0483, f0490, f0491, f0505, f0513, f0514, f0515, f0697, f0698, f0822, f0823, f1279, f1280.
 
-### Feature: NavigableDesignDocumentation — modus DocumentBrowsing
+## Feature: NavigableDesignDocumentation — modus DocumentBrowsing
 
-```mermaid
-flowchart LR
-    n_CaptureNavigationTarget["CaptureNavigationTarget (functionality)"]
-    n_ComposeViewPackage["ComposeViewPackage (functionality)"]
-    n_DispatchViewOpen["DispatchViewOpen (functionality)"]
-    n_DocumentBroker["DocumentBroker (unit)"]
-    n_EvictUnusedViewBundles["EvictUnusedViewBundles (functionality)"]
-    n_GenerateViewNavigation["GenerateViewNavigation (functionality)"]
-    n_KeyViewRevision["KeyViewRevision (functionality)"]
-    n_NavigableDesignDocumentation["NavigableDesignDocumentation (feature)"]
-    n_PreserveViewAnchors["PreserveViewAnchors (functionality)"]
-    n_ProjectSelectedView["ProjectSelectedView (functionality)"]
-    n_PublishViewBundle["PublishViewBundle (functionality)"]
-    n_RejectStaleViewResults["RejectStaleViewResults (functionality)"]
-    n_ResolveConfiguredViewer["ResolveConfiguredViewer (functionality)"]
-    n_RetainVisibleViewBundle["RetainVisibleViewBundle (functionality)"]
-    n_RouteDocumentToPane["RouteDocumentToPane (functionality)"]
-    n_SdlViewpointGenerator["SdlViewpointGenerator (unit)"]
-    n_ServeViewRequests["ServeViewRequests (functionality)"]
-    n_ValidateViewRequest["ValidateViewRequest (functionality)"]
-    n_ViewArtifactStore["ViewArtifactStore (unit)"]
-    n_ViewServiceHost["ViewServiceHost (container)"]
-    n_ViewerLaunchAdapter["ViewerLaunchAdapter (unit)"]
-    n_XfmdDocumentHost["XfmdDocumentHost (container)"]
-    n_CaptureNavigationTarget -->|allocated-to| n_XfmdDocumentHost
-    n_CaptureNavigationTarget -->|contributes-to| n_NavigableDesignDocumentation
-    n_ComposeViewPackage -->|allocated-to| n_ViewServiceHost
-    n_ComposeViewPackage -->|contributes-to| n_NavigableDesignDocumentation
-    n_DispatchViewOpen -->|allocated-to| n_ViewServiceHost
-    n_DispatchViewOpen -->|contributes-to| n_NavigableDesignDocumentation
-    n_DocumentBroker -->|owns| n_KeyViewRevision
-    n_DocumentBroker -->|owns| n_RejectStaleViewResults
-    n_DocumentBroker -->|owns| n_ServeViewRequests
-    n_DocumentBroker -->|owns| n_ValidateViewRequest
-    n_EvictUnusedViewBundles -->|allocated-to| n_ViewServiceHost
-    n_EvictUnusedViewBundles -->|contributes-to| n_NavigableDesignDocumentation
-    n_GenerateViewNavigation -->|allocated-to| n_ViewServiceHost
-    n_GenerateViewNavigation -->|contributes-to| n_NavigableDesignDocumentation
-    n_KeyViewRevision -->|allocated-to| n_ViewServiceHost
-    n_KeyViewRevision -->|contributes-to| n_NavigableDesignDocumentation
-    n_PreserveViewAnchors -->|allocated-to| n_ViewServiceHost
-    n_PreserveViewAnchors -->|contributes-to| n_NavigableDesignDocumentation
-    n_ProjectSelectedView -->|allocated-to| n_ViewServiceHost
-    n_ProjectSelectedView -->|contributes-to| n_NavigableDesignDocumentation
-    n_PublishViewBundle -->|allocated-to| n_ViewServiceHost
-    n_PublishViewBundle -->|contributes-to| n_NavigableDesignDocumentation
-    n_RejectStaleViewResults -->|allocated-to| n_ViewServiceHost
-    n_RejectStaleViewResults -->|contributes-to| n_NavigableDesignDocumentation
-    n_ResolveConfiguredViewer -->|allocated-to| n_ViewServiceHost
-    n_ResolveConfiguredViewer -->|contributes-to| n_NavigableDesignDocumentation
-    n_RetainVisibleViewBundle -->|allocated-to| n_ViewServiceHost
-    n_RetainVisibleViewBundle -->|contributes-to| n_NavigableDesignDocumentation
-    n_RouteDocumentToPane -->|allocated-to| n_XfmdDocumentHost
-    n_RouteDocumentToPane -->|contributes-to| n_NavigableDesignDocumentation
-    n_SdlViewpointGenerator -->|owns| n_ComposeViewPackage
-    n_SdlViewpointGenerator -->|owns| n_GenerateViewNavigation
-    n_SdlViewpointGenerator -->|owns| n_PreserveViewAnchors
-    n_SdlViewpointGenerator -->|owns| n_ProjectSelectedView
-    n_ServeViewRequests -->|allocated-to| n_ViewServiceHost
-    n_ServeViewRequests -->|contributes-to| n_NavigableDesignDocumentation
-    n_ValidateViewRequest -->|allocated-to| n_ViewServiceHost
-    n_ValidateViewRequest -->|contributes-to| n_NavigableDesignDocumentation
-    n_ViewArtifactStore -->|owns| n_EvictUnusedViewBundles
-    n_ViewArtifactStore -->|owns| n_PublishViewBundle
-    n_ViewArtifactStore -->|owns| n_RetainVisibleViewBundle
-    n_ViewerLaunchAdapter -->|owns| n_DispatchViewOpen
-    n_ViewerLaunchAdapter -->|owns| n_ResolveConfiguredViewer
-    n_XfmdDocumentHost -->|owns| n_CaptureNavigationTarget
-    n_XfmdDocumentHost -->|owns| n_RouteDocumentToPane
-```
+![Feature: NavigableDesignDocumentation — modus DocumentBrowsing](diagrams/VP07-NavigableDesignDocumentation-DocumentBrowsing.svg)
 
 Kildegrunnlag: f0082, f0083, f0128, f0129, f0189, f0190, f0193, f0194, f0195, f0196, f0217, f0218, f0493, f0494, f0564, f0565, f0709, f0710, f0718, f0719, f0733, f0734, f0745, f0746, f0807, f0808, f0819, f0820, f0827, f0828, f0929, f0932, f0934, f0937, f1071, f1072, f1266, f1267, f1281, f1282, f1283, f1406, f1407, f1416, f1417.
 
-### Feature: StructuralModelInspection — modus LiveEditing
+## Feature: StructuralModelInspection — modus LiveEditing
 
-```mermaid
-flowchart LR
-    n_BuildSdlAst["BuildSdlAst (functionality)"]
-    n_BuildSduiAst["BuildSduiAst (functionality)"]
-    n_DiagnosticReporter["DiagnosticReporter (unit)"]
-    n_FyneHost["FyneHost (container)"]
-    n_ReportSourceDiagnostics["ReportSourceDiagnostics (functionality)"]
-    n_SdlParser["SdlParser (unit)"]
-    n_SdlValidator["SdlValidator (unit)"]
-    n_SduiParser["SduiParser (unit)"]
-    n_SduiValidator["SduiValidator (unit)"]
-    n_StructuralModelInspection["StructuralModelInspection (feature)"]
-    n_ValidateSdlStructure["ValidateSdlStructure (functionality)"]
-    n_ValidateWidgetArguments["ValidateWidgetArguments (functionality)"]
-    n_BuildSdlAst -->|contributes-to| n_StructuralModelInspection
-    n_BuildSduiAst -->|contributes-to| n_StructuralModelInspection
-    n_DiagnosticReporter -->|owns| n_ReportSourceDiagnostics
-    n_ReportSourceDiagnostics -->|allocated-to| n_FyneHost
-    n_ReportSourceDiagnostics -->|contributes-to| n_StructuralModelInspection
-    n_SdlParser -->|owns| n_BuildSdlAst
-    n_SdlValidator -->|owns| n_ValidateSdlStructure
-    n_SduiParser -->|owns| n_BuildSduiAst
-    n_SduiValidator -->|owns| n_ValidateWidgetArguments
-    n_ValidateSdlStructure -->|contributes-to| n_StructuralModelInspection
-    n_ValidateWidgetArguments -->|contributes-to| n_StructuralModelInspection
-```
+![Feature: StructuralModelInspection — modus LiveEditing](diagrams/VP07-StructuralModelInspection-LiveEditing.svg)
 
 Kildegrunnlag: f0067, f0072, f0179, f0798, f0800, f0894, f0926, f1017, f1046, f1253, f1270.
 
-### Feature: StructuralModelInspection — modus SourceInspection
+## Feature: StructuralModelInspection — modus SourceInspection
 
-```mermaid
-flowchart LR
-    n_BuildSdlAst["BuildSdlAst (functionality)"]
-    n_BuildSduiAst["BuildSduiAst (functionality)"]
-    n_CommandLineHost["CommandLineHost (container)"]
-    n_DiagnosticReporter["DiagnosticReporter (unit)"]
-    n_ReportSourceDiagnostics["ReportSourceDiagnostics (functionality)"]
-    n_SdlParser["SdlParser (unit)"]
-    n_SdlValidator["SdlValidator (unit)"]
-    n_SduiParser["SduiParser (unit)"]
-    n_SduiValidator["SduiValidator (unit)"]
-    n_StructuralModelInspection["StructuralModelInspection (feature)"]
-    n_ValidateSdlStructure["ValidateSdlStructure (functionality)"]
-    n_ValidateWidgetArguments["ValidateWidgetArguments (functionality)"]
-    n_BuildSdlAst -->|allocated-to| n_CommandLineHost
-    n_BuildSdlAst -->|contributes-to| n_StructuralModelInspection
-    n_BuildSduiAst -->|allocated-to| n_CommandLineHost
-    n_BuildSduiAst -->|contributes-to| n_StructuralModelInspection
-    n_DiagnosticReporter -->|owns| n_ReportSourceDiagnostics
-    n_ReportSourceDiagnostics -->|allocated-to| n_CommandLineHost
-    n_ReportSourceDiagnostics -->|contributes-to| n_StructuralModelInspection
-    n_SdlParser -->|owns| n_BuildSdlAst
-    n_SdlValidator -->|owns| n_ValidateSdlStructure
-    n_SduiParser -->|owns| n_BuildSduiAst
-    n_SduiValidator -->|owns| n_ValidateWidgetArguments
-    n_ValidateSdlStructure -->|allocated-to| n_CommandLineHost
-    n_ValidateSdlStructure -->|contributes-to| n_StructuralModelInspection
-    n_ValidateWidgetArguments -->|allocated-to| n_CommandLineHost
-    n_ValidateWidgetArguments -->|contributes-to| n_StructuralModelInspection
-```
+![Feature: StructuralModelInspection — modus SourceInspection](diagrams/VP07-StructuralModelInspection-SourceInspection.svg)
 
 Kildegrunnlag: f0066, f0067, f0071, f0072, f0179, f0797, f0800, f0894, f0926, f1017, f1046, f1252, f1253, f1269, f1270.
 
-### Feature: TypedDesignInspection — modus DocumentBrowsing
+## Feature: TypedDesignInspection — modus DocumentBrowsing
 
-```mermaid
-flowchart LR
-    n_ApplySemanticNotation["ApplySemanticNotation (functionality)"]
-    n_ExportModelInventories["ExportModelInventories (functionality)"]
-    n_IndexViewpointLevels["IndexViewpointLevels (functionality)"]
-    n_ProjectClassViews["ProjectClassViews (functionality)"]
-    n_SdlValidator["SdlValidator (unit)"]
-    n_SdlViewpointGenerator["SdlViewpointGenerator (unit)"]
-    n_SelectRelationshipViews["SelectRelationshipViews (functionality)"]
-    n_TypedDesignInspection["TypedDesignInspection (feature)"]
-    n_ValidateClassRelations["ValidateClassRelations (functionality)"]
-    n_VerifyDiagramCapabilities["VerifyDiagramCapabilities (functionality)"]
-    n_ViewServiceHost["ViewServiceHost (container)"]
-    n_ApplySemanticNotation -->|allocated-to| n_ViewServiceHost
-    n_ApplySemanticNotation -->|contributes-to| n_TypedDesignInspection
-    n_ExportModelInventories -->|allocated-to| n_ViewServiceHost
-    n_ExportModelInventories -->|contributes-to| n_TypedDesignInspection
-    n_IndexViewpointLevels -->|allocated-to| n_ViewServiceHost
-    n_IndexViewpointLevels -->|contributes-to| n_TypedDesignInspection
-    n_ProjectClassViews -->|allocated-to| n_ViewServiceHost
-    n_ProjectClassViews -->|contributes-to| n_TypedDesignInspection
-    n_SdlValidator -->|owns| n_ValidateClassRelations
-    n_SdlViewpointGenerator -->|owns| n_ApplySemanticNotation
-    n_SdlViewpointGenerator -->|owns| n_ExportModelInventories
-    n_SdlViewpointGenerator -->|owns| n_IndexViewpointLevels
-    n_SdlViewpointGenerator -->|owns| n_ProjectClassViews
-    n_SdlViewpointGenerator -->|owns| n_SelectRelationshipViews
-    n_SdlViewpointGenerator -->|owns| n_VerifyDiagramCapabilities
-    n_SelectRelationshipViews -->|allocated-to| n_ViewServiceHost
-    n_SelectRelationshipViews -->|contributes-to| n_TypedDesignInspection
-    n_ValidateClassRelations -->|allocated-to| n_ViewServiceHost
-    n_ValidateClassRelations -->|contributes-to| n_TypedDesignInspection
-    n_VerifyDiagramCapabilities -->|allocated-to| n_ViewServiceHost
-    n_VerifyDiagramCapabilities -->|contributes-to| n_TypedDesignInspection
-```
+![Feature: TypedDesignInspection — modus DocumentBrowsing](diagrams/VP07-TypedDesignInspection-DocumentBrowsing.svg)
 
 Kildegrunnlag: f0022, f0023, f0224, f0225, f0537, f0538, f0711, f0712, f0924, f0928, f0930, f0933, f0935, f0938, f0940, f1050, f1051, f1243, f1244, f1277, f1278.
 
-### Feature: TypedDomainBinding — modus BoundExecution
+## Feature: TypedDomainBinding — modus BoundExecution
 
-```mermaid
-flowchart LR
-    n_ConnectTypedWidgetHandles["ConnectTypedWidgetHandles (functionality)"]
-    n_DispatchUiEvent["DispatchUiEvent (functionality)"]
-    n_FyneHost["FyneHost (container)"]
-    n_InvokeRegisteredFunction["InvokeRegisteredFunction (functionality)"]
-    n_PublishDomainUpdates["PublishDomainUpdates (functionality)"]
-    n_ResolveCallbackSymbols["ResolveCallbackSymbols (functionality)"]
-    n_SdlDispatcher["SdlDispatcher (unit)"]
-    n_SdlUiBindingAdapter["SdlUiBindingAdapter (unit)"]
-    n_SduiDispatcher["SduiDispatcher (unit)"]
-    n_TypedDomainBinding["TypedDomainBinding (feature)"]
-    n_ConnectTypedWidgetHandles -->|allocated-to| n_FyneHost
-    n_ConnectTypedWidgetHandles -->|contributes-to| n_TypedDomainBinding
-    n_DispatchUiEvent -->|allocated-to| n_FyneHost
-    n_DispatchUiEvent -->|contributes-to| n_TypedDomainBinding
-    n_InvokeRegisteredFunction -->|allocated-to| n_FyneHost
-    n_InvokeRegisteredFunction -->|contributes-to| n_TypedDomainBinding
-    n_PublishDomainUpdates -->|allocated-to| n_FyneHost
-    n_PublishDomainUpdates -->|contributes-to| n_TypedDomainBinding
-    n_ResolveCallbackSymbols -->|allocated-to| n_FyneHost
-    n_ResolveCallbackSymbols -->|contributes-to| n_TypedDomainBinding
-    n_SdlDispatcher -->|owns| n_InvokeRegisteredFunction
-    n_SdlUiBindingAdapter -->|owns| n_ConnectTypedWidgetHandles
-    n_SdlUiBindingAdapter -->|owns| n_PublishDomainUpdates
-    n_SdlUiBindingAdapter -->|owns| n_ResolveCallbackSymbols
-    n_SduiDispatcher -->|owns| n_DispatchUiEvent
-```
+![Feature: TypedDomainBinding — modus BoundExecution](diagrams/VP07-TypedDomainBinding-BoundExecution.svg)
 
 Kildegrunnlag: f0131, f0132, f0186, f0187, f0558, f0559, f0725, f0726, f0804, f0805, f0850, f0913, f0915, f0916, f0947.
 
-### Modellhull i dette utsnittet
 
-| Identitet | Modus | Mangel |
-| --- | --- | --- |
-| ComposeMarkdownDocument | DocumentBrowsing | Container-allokering er uspesifisert for bidrag til DesignDocumentation. |
-| ExportSvgSnapshot | DocumentBrowsing | Container-allokering er uspesifisert for bidrag til DesignDocumentation. |
-| WriteGeneratedArtifacts | DocumentBrowsing | Container-allokering er uspesifisert for bidrag til DesignDocumentation. |
-| ComposeMarkdownDocument | SourceInspection | Container-allokering er uspesifisert for bidrag til DesignDocumentation. |
-| ExportSvgSnapshot | SourceInspection | Container-allokering er uspesifisert for bidrag til DesignDocumentation. |
-| ExportViewpointMarkdown | SourceInspection | Container-allokering er uspesifisert for bidrag til DesignDocumentation. |
-| ProjectSdlViewpoints | SourceInspection | Container-allokering er uspesifisert for bidrag til DesignDocumentation. |
-| WriteGeneratedArtifacts | SourceInspection | Container-allokering er uspesifisert for bidrag til DesignDocumentation. |
-| KeepLastValidModels | SourceInspection | Container-allokering er uspesifisert for bidrag til LiveModelReload. |
-| ObserveSourceChanges | SourceInspection | Container-allokering er uspesifisert for bidrag til LiveModelReload. |
-| PrepareCandidateModels | SourceInspection | Container-allokering er uspesifisert for bidrag til LiveModelReload. |
-| PreserveCompatibleUiState | SourceInspection | Container-allokering er uspesifisert for bidrag til LiveModelReload. |
-| ProjectUiGeneration | SourceInspection | Container-allokering er uspesifisert for bidrag til LiveModelReload. |
-| PublishModelGeneration | SourceInspection | Container-allokering er uspesifisert for bidrag til LiveModelReload. |
-| BuildSdlAst | LiveEditing | Container-allokering er uspesifisert for bidrag til StructuralModelInspection. |
-| BuildSduiAst | LiveEditing | Container-allokering er uspesifisert for bidrag til StructuralModelInspection. |
-| ValidateSdlStructure | LiveEditing | Container-allokering er uspesifisert for bidrag til StructuralModelInspection. |
-| ValidateWidgetArguments | LiveEditing | Container-allokering er uspesifisert for bidrag til StructuralModelInspection. |
+Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til DesignDocumentation. (ComposeMarkdownDocument; mode=DocumentBrowsing).
 
+Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til DesignDocumentation. (ExportSvgSnapshot; mode=DocumentBrowsing).
+
+Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til DesignDocumentation. (WriteGeneratedArtifacts; mode=DocumentBrowsing).
+
+Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til DesignDocumentation. (ComposeMarkdownDocument; mode=SourceInspection).
+
+Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til DesignDocumentation. (ExportSvgSnapshot; mode=SourceInspection).
+
+Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til DesignDocumentation. (ExportViewpointMarkdown; mode=SourceInspection).
+
+Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til DesignDocumentation. (ProjectSdlViewpoints; mode=SourceInspection).
+
+Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til DesignDocumentation. (WriteGeneratedArtifacts; mode=SourceInspection).
+
+Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til LiveModelReload. (KeepLastValidModels; mode=SourceInspection).
+
+Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til LiveModelReload. (ObserveSourceChanges; mode=SourceInspection).
+
+Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til LiveModelReload. (PrepareCandidateModels; mode=SourceInspection).
+
+Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til LiveModelReload. (PreserveCompatibleUiState; mode=SourceInspection).
+
+Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til LiveModelReload. (ProjectUiGeneration; mode=SourceInspection).
+
+Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til LiveModelReload. (PublishModelGeneration; mode=SourceInspection).
+
+Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til StructuralModelInspection. (BuildSdlAst; mode=LiveEditing).
+
+Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til StructuralModelInspection. (BuildSduiAst; mode=LiveEditing).
+
+Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til StructuralModelInspection. (ValidateSdlStructure; mode=LiveEditing).
+
+Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til StructuralModelInspection. (ValidateWidgetArguments; mode=LiveEditing).
 
 ## VP08 — Channel-kontrakter og sekvenser
 
-### Scenario: BoundActionAccepted — modus BoundExecution
+Eksplisitte scenario-steg validert mot permits, deltakelse, modus og request/resultat-korrelasjon.
 
-```mermaid
-sequenceDiagram
-    participant n_FyneBackend as Fyne Backend
-    participant n_SduiDispatcher as Sdui Dispatcher
-    participant n_SdlUiBindingAdapter as Sdl Ui Binding Adapter
-    participant n_SdlDispatcher as Sdl Dispatcher
-    participant n_GoDomainImplementation as Go Domain Implementation
-    participant n_SduiInstanceStore as Sdui Instance Store
-    n_FyneBackend->>n_SduiDispatcher: 1: Ui Action Request (Native Ui Actions)
-    n_SduiDispatcher->>n_SdlUiBindingAdapter: 2: Bound Action Request (Ui Domain Actions)
-    n_SdlUiBindingAdapter->>n_SdlDispatcher: 3: Sdl Action Request (Sdl Action Calls)
-    n_SdlDispatcher->>n_GoDomainImplementation: 4: Domain Action Request (Go Domain Calls)
-    n_GoDomainImplementation-->>n_SdlDispatcher: 5: Domain Action Result (Go Domain Calls) reply-to 4
-    n_SdlDispatcher-->>n_SdlUiBindingAdapter: 6: Sdl Action Result (Sdl Action Calls) reply-to 3
-    n_SdlUiBindingAdapter-->>n_SduiDispatcher: 7: Bound Action Result (Ui Domain Actions) reply-to 2
-    n_SduiDispatcher-->>n_FyneBackend: 8: Ui Action Result (Native Ui Actions) reply-to 1
-    n_SduiInstanceStore->>n_FyneBackend: 9: Ui Generation Notices / Ui Generation Changed (Ui Generation Events)
-```
+## Scenario: BoundActionAccepted — modus BoundExecution
+
+![Scenario: BoundActionAccepted — modus BoundExecution](diagrams/VP08-BoundActionAccepted.svg)
 
 Kildegrunnlag: f0028, f0029, f0030, f0031, f0032, f0033, f0034, f0035, f0036, f0037, f0038, f0039, f0040, f0047, f0048, f0049, f0050, f0051, f0207, f0208, f0209, f0210, f0211, f0256, f0257, f0258, f0519, f0521, f0522, f0525, f0527, f0632, f0635, f0636, f0833, f0835, f0836, f0837, f0838, f0839, f0840, f0841, f0853, f0854, f0855, f0856, f0919, f0920, f0921, f0922, f0951, f0953, f0954, f0955, f0984, f1149, f1150, f1151, f1152, f1153, f1178, f1180, f1181, f1186, f1188, f1190.
 
-### Scenario: BoundActionRejected — modus BoundExecution
+## Scenario: BoundActionRejected — modus BoundExecution
 
-```mermaid
-sequenceDiagram
-    participant n_FyneBackend as Fyne Backend
-    participant n_SduiDispatcher as Sdui Dispatcher
-    n_FyneBackend->>n_SduiDispatcher: 1: Ui Action Request (Native Ui Actions)
-    n_SduiDispatcher-->>n_FyneBackend: 2: Ui Action Rejected (Native Ui Actions) reply-to 1
-```
+![Scenario: BoundActionRejected — modus BoundExecution](diagrams/VP08-BoundActionRejected.svg)
 
 Kildegrunnlag: f0041, f0042, f0043, f0044, f0045, f0046, f0255, f0257, f0632, f0634, f0635, f0951, f0952, f1146, f1147, f1148, f1149, f1150.
 
-### Scenario: InteractiveFramePrepared — modus UiPreview
+## Scenario: InteractiveFramePrepared — modus UiPreview
 
-```mermaid
-sequenceDiagram
-    participant n_FyneHost as Fyne Host
-    participant n_SduiLayout as Sdui Layout
-    participant n_FyneBackend as Fyne Backend
-    n_FyneHost->>n_SduiLayout: 1: Layout Request (Layout Calls)
-    n_SduiLayout-->>n_FyneHost: 2: Layout Result (Layout Calls) reply-to 1
-    n_FyneHost->>n_FyneBackend: 3: Present Frame Request (Frame Presentation Calls)
-    n_FyneBackend-->>n_FyneHost: 4: Present Frame Result (Frame Presentation Calls) reply-to 3
-```
+![Scenario: InteractiveFramePrepared — modus UiPreview](diagrams/VP08-InteractiveFramePrepared.svg)
 
 Kildegrunnlag: f0242, f0244, f0245, f0253, f0254, f0270, f0271, f0274, f0275, f0541, f0542, f0543, f0544, f0545, f0546, f0547, f0548, f0549, f0572, f0574, f0575, f0578, f0579, f0580, f0581, f0582, f0685, f0686, f0687, f0688, f0689, f0996, f0998.
 
-### Scenario: InvalidViewSelectionRejected — modus DocumentBrowsing
+## Scenario: InvalidViewSelectionRejected — modus DocumentBrowsing
 
-```mermaid
-sequenceDiagram
-    participant n_XfmdDocumentHost as Xfmd Document Host
-    participant n_DocumentBroker as Document Broker
-    n_XfmdDocumentHost->>n_DocumentBroker: 1: Select View Request (View Navigation Calls)
-    n_DocumentBroker-->>n_XfmdDocumentHost: 2: View Request Rejected (View Navigation Calls) reply-to 1
-```
+![Scenario: InvalidViewSelectionRejected — modus DocumentBrowsing](diagrams/VP08-InvalidViewSelectionRejected.svg)
 
 Kildegrunnlag: f0199, f0201, f0551, f0552, f0553, f0554, f0555, f0556, f0557, f1052, f1053, f1327, f1329, f1331, f1383, f1384, f1385, f1422, f1423.
 
-### Scenario: NativeProgramBuilt — modus NativeBuild
+## Scenario: NativeProgramBuilt — modus NativeBuild
 
-```mermaid
-sequenceDiagram
-    participant n_CommandLineHost as Command Line Host
-    participant n_GoCodeGenerator as Go Code Generator
-    participant n_GoBuildRunner as Go Build Runner
-    n_CommandLineHost->>n_GoCodeGenerator: 1: Generate Go Request (Go Generation Calls)
-    n_GoCodeGenerator-->>n_CommandLineHost: 2: Generate Go Result (Go Generation Calls) reply-to 1
-    n_CommandLineHost->>n_GoBuildRunner: 3: Build Go Request (Go Build Calls)
-    n_GoBuildRunner-->>n_CommandLineHost: 4: Build Go Result (Go Build Calls) reply-to 3
-```
+![Scenario: NativeProgramBuilt — modus NativeBuild](diagrams/VP08-NativeProgramBuilt.svg)
 
 Kildegrunnlag: f0057, f0058, f0059, f0060, f0061, f0097, f0098, f0099, f0100, f0485, f0486, f0487, f0488, f0489, f0499, f0501, f0502, f0508, f0509, f0517, f0518, f0529, f0531, f0532, f0622, f0623, f0624, f0625, f0626, f0627, f0628, f0629.
 
-### Scenario: SdlModelReloadAccepted — modus BoundLiveEditing
+## Scenario: SdlModelReloadAccepted — modus BoundLiveEditing
 
-```mermaid
-sequenceDiagram
-    participant n_SourceWatcher as Source Watcher
-    participant n_ReloadCoordinator as Reload Coordinator
-    participant n_SdlFrontend as Sdl Frontend
-    n_SourceWatcher->>n_ReloadCoordinator: 1: Reload Request (Model Reload Calls)
-    n_ReloadCoordinator->>n_SdlFrontend: 2: Compile Sdl Request (Sdl Compilation Calls)
-    n_SdlFrontend-->>n_ReloadCoordinator: 3: Compile Sdl Result (Sdl Compilation Calls) reply-to 2
-    n_ReloadCoordinator-->>n_SourceWatcher: 4: Reload Published (Model Reload Calls) reply-to 1
-```
+![Scenario: SdlModelReloadAccepted — modus BoundLiveEditing](diagrams/VP08-SdlModelReloadAccepted.svg)
 
 Kildegrunnlag: f0108, f0109, f0110, f0111, f0112, f0608, f0610, f0612, f0765, f0767, f0771, f0772, f0781, f0782, f0783, f0789, f0790, f0842, f0844, f0845, f0869, f0870, f0882, f0883, f0884, f0885, f0886, f0887, f0888, f0889, f0890, f1092, f1096.
 
-### Scenario: SelectedViewOpened — modus DocumentBrowsing
+## Scenario: SelectedViewOpened — modus DocumentBrowsing
 
-```mermaid
-sequenceDiagram
-    participant n_XfmdDocumentHost as Xfmd Document Host
-    participant n_DocumentBroker as Document Broker
-    participant n_SdlViewpointGenerator as Sdl Viewpoint Generator
-    participant n_ViewArtifactStore as View Artifact Store
-    participant n_ViewerLaunchAdapter as Viewer Launch Adapter
-    n_XfmdDocumentHost->>n_DocumentBroker: 1: Select View Request (View Navigation Calls)
-    n_DocumentBroker->>n_SdlViewpointGenerator: 2: Project View Request (View Projection Calls)
-    n_SdlViewpointGenerator-->>n_DocumentBroker: 3: View Bundle Result (View Projection Calls) reply-to 2
-    n_DocumentBroker->>n_ViewArtifactStore: 4: Publish View Request (View Publication Calls)
-    n_ViewArtifactStore-->>n_DocumentBroker: 5: View Reference Result (View Publication Calls) reply-to 4
-    n_DocumentBroker->>n_ViewerLaunchAdapter: 6: Launch View Request (View Launch Calls)
-    n_ViewerLaunchAdapter->>n_XfmdDocumentHost: 7: Display View Request (View Display Calls)
-    n_XfmdDocumentHost-->>n_ViewerLaunchAdapter: 8: View Display Result (View Display Calls) reply-to 7
-    n_ViewerLaunchAdapter-->>n_DocumentBroker: 9: View Launch Result (View Launch Calls) reply-to 6
-    n_DocumentBroker-->>n_XfmdDocumentHost: 10: View Opened Result (View Navigation Calls) reply-to 1
-```
+![Scenario: SelectedViewOpened — modus DocumentBrowsing](diagrams/VP08-SelectedViewOpened.svg)
 
 Kildegrunnlag: f0191, f0192, f0197, f0198, f0199, f0200, f0202, f0204, f0205, f0206, f0566, f0567, f0723, f0724, f0735, f0736, f0941, f0942, f1052, f1053, f1054, f1055, f1056, f1057, f1058, f1059, f1060, f1061, f1062, f1063, f1064, f1065, f1066, f1067, f1068, f1069, f1070, f1284, f1285, f1291, f1292, f1293, f1298, f1300, f1301, f1303, f1304, f1305, f1316, f1318, f1319, f1320, f1321, f1322, f1327, f1329, f1330, f1343, f1344, f1345, f1350, f1352, f1353, f1367, f1369, f1370, f1378, f1379, f1380, f1408, f1410, f1411, f1412, f1418, f1419, f1421, f1423.
 
-### Scenario: StaticFrameExported — modus StaticExport
+## Scenario: StaticFrameExported — modus StaticExport
 
-```mermaid
-sequenceDiagram
-    participant n_CommandLineHost as Command Line Host
-    participant n_SduiLayout as Sdui Layout
-    participant n_SduiPresentation as Sdui Presentation
-    n_CommandLineHost->>n_SduiLayout: 1: Layout Request (Layout Calls)
-    n_SduiLayout-->>n_CommandLineHost: 2: Layout Result (Layout Calls) reply-to 1
-    n_CommandLineHost->>n_SduiPresentation: 3: Export Svg Request (Svg Export Calls)
-    n_SduiPresentation-->>n_CommandLineHost: 4: Export Svg Result (Svg Export Calls) reply-to 3
-```
+![Scenario: StaticFrameExported — modus StaticExport](diagrams/VP08-StaticFrameExported.svg)
 
 Kildegrunnlag: f0101, f0102, f0103, f0104, f0226, f0227, f0228, f0229, f0230, f0572, f0574, f0575, f0578, f0579, f0580, f0581, f0582, f0995, f0997, f1026, f1027, f1100, f1101, f1102, f1103, f1104, f1105, f1106, f1107, f1108, f1115, f1117, f1118.
 
-### Scenario: UiCompilationAccepted — modus SourceInspection
+## Scenario: UiCompilationAccepted — modus SourceInspection
 
-```mermaid
-sequenceDiagram
-    participant n_CommandLineHost as Command Line Host
-    participant n_SduiFrontend as Sdui Frontend
-    participant n_SduiLexer as Sdui Lexer
-    participant n_SduiParser as Sdui Parser
-    participant n_SduiValidator as Sdui Validator
-    participant n_SduiNormalizer as Sdui Normalizer
-    n_CommandLineHost->>n_SduiFrontend: 1: Compile Ui Request (Ui Compilation Calls)
-    n_SduiFrontend->>n_SduiLexer: 2: Tokenize Ui Request (Ui Tokenization Calls)
-    n_SduiLexer-->>n_SduiFrontend: 3: Tokenize Ui Result (Ui Tokenization Calls) reply-to 2
-    n_SduiFrontend->>n_SduiParser: 4: Build Ui Ast Request (Ui Ast Calls)
-    n_SduiParser-->>n_SduiFrontend: 5: Build Ui Ast Result (Ui Ast Calls) reply-to 4
-    n_SduiFrontend->>n_SduiValidator: 6: Validate Ui Request (Ui Validation Calls)
-    n_SduiValidator-->>n_SduiFrontend: 7: Validate Ui Result (Ui Validation Calls) reply-to 6
-    n_SduiFrontend->>n_SduiNormalizer: 8: Normalize Ui Request (Ui Normalization Calls)
-    n_SduiNormalizer-->>n_SduiFrontend: 9: Normalize Ui Result (Ui Normalization Calls) reply-to 8
-    n_SduiFrontend-->>n_CommandLineHost: 10: Compile Ui Result (Ui Compilation Calls) reply-to 1
-```
+![Scenario: UiCompilationAccepted — modus SourceInspection](diagrams/VP08-UiCompilationAccepted.svg)
 
 Kildegrunnlag: f0076, f0077, f0078, f0079, f0080, f0106, f0107, f0116, f0117, f0118, f0119, f0120, f0641, f0642, f0643, f0644, f0645, f0964, f0965, f0967, f0971, f0972, f0973, f0974, f0975, f0976, f0977, f1001, f1002, f1015, f1016, f1019, f1020, f1048, f1049, f1129, f1130, f1131, f1132, f1133, f1154, f1156, f1157, f1158, f1159, f1160, f1161, f1162, f1163, f1164, f1165, f1166, f1167, f1168, f1169, f1170, f1171, f1172, f1173, f1176, f1177, f1214, f1216, f1217, f1228, f1230, f1231, f1232, f1234, f1235, f1261, f1262, f1263, f1264, f1265.
 
-### Scenario: UiModelReloadAccepted — modus LiveEditing
+## Scenario: UiModelReloadAccepted — modus LiveEditing
 
-```mermaid
-sequenceDiagram
-    participant n_SourceWatcher as Source Watcher
-    participant n_ReloadCoordinator as Reload Coordinator
-    participant n_SduiFrontend as Sdui Frontend
-    participant n_SduiInstanceStore as Sdui Instance Store
-    participant n_FyneBackend as Fyne Backend
-    n_SourceWatcher->>n_ReloadCoordinator: 1: Reload Request (Model Reload Calls)
-    n_ReloadCoordinator->>n_SduiFrontend: 2: Compile Ui Request (Ui Compilation Calls)
-    n_SduiFrontend-->>n_ReloadCoordinator: 3: Compile Ui Result (Ui Compilation Calls) reply-to 2
-    n_ReloadCoordinator-->>n_SourceWatcher: 4: Reload Published (Model Reload Calls) reply-to 1
-    n_SduiInstanceStore->>n_FyneBackend: 5: Ui Generation Notices / Ui Generation Changed (Ui Generation Events)
-```
+![Scenario: UiModelReloadAccepted — modus LiveEditing](diagrams/VP08-UiModelReloadAccepted.svg)
 
 Kildegrunnlag: f0116, f0117, f0118, f0119, f0120, f0259, f0608, f0610, f0612, f0766, f0768, f0774, f0775, f0781, f0782, f0783, f0789, f0790, f0966, f0970, f0985, f1093, f1097, f1173, f1176, f1177, f1186, f1188, f1190, f1196, f1197, f1198, f1199, f1200, f1201, f1202, f1203, f1204, f1205.
 
-### Scenario: UiModelReloadRejected — modus LiveEditing
+## Scenario: UiModelReloadRejected — modus LiveEditing
 
-```mermaid
-sequenceDiagram
-    participant n_SourceWatcher as Source Watcher
-    participant n_ReloadCoordinator as Reload Coordinator
-    participant n_SduiFrontend as Sdui Frontend
-    n_SourceWatcher->>n_ReloadCoordinator: 1: Reload Request (Model Reload Calls)
-    n_ReloadCoordinator->>n_SduiFrontend: 2: Compile Ui Request (Ui Compilation Calls)
-    n_SduiFrontend-->>n_ReloadCoordinator: 3: Compile Ui Rejected (Ui Compilation Calls) reply-to 2
-    n_ReloadCoordinator-->>n_SourceWatcher: 4: Reload Rejected (Model Reload Calls) reply-to 1
-```
+![Scenario: UiModelReloadRejected — modus LiveEditing](diagrams/VP08-UiModelReloadRejected.svg)
 
 Kildegrunnlag: f0113, f0114, f0115, f0116, f0117, f0608, f0611, f0612, f0766, f0770, f0773, f0775, f0786, f0787, f0788, f0789, f0790, f0966, f0968, f1095, f1097, f1173, f1175, f1176, f1206, f1207, f1208, f1209, f1210, f1211, f1212, f1213.
 
-### Scenario: UnboundLocalAction — modus UiPreview
+## Scenario: UnboundLocalAction — modus UiPreview
 
-```mermaid
-sequenceDiagram
-    participant n_FyneHost as Fyne Host
-    participant n_GoDomainImplementation as Go Domain Implementation
-    n_FyneHost->>n_GoDomainImplementation: 1: Domain Action Request (Go Domain Calls)
-    n_GoDomainImplementation-->>n_FyneHost: 2: Domain Action Result (Go Domain Calls) reply-to 1
-```
+![Scenario: UnboundLocalAction — modus UiPreview](diagrams/VP08-UnboundLocalAction.svg)
 
 Kildegrunnlag: f0207, f0208, f0209, f0210, f0211, f0272, f0273, f0519, f0521, f0522, f0526, f0528, f1236, f1237, f1238, f1239, f1240, f1241.
 
-### Scenario: ViewProjectionFailed — modus DocumentBrowsing
+## Scenario: ViewProjectionFailed — modus DocumentBrowsing
 
-```mermaid
-sequenceDiagram
-    participant n_XfmdDocumentHost as Xfmd Document Host
-    participant n_DocumentBroker as Document Broker
-    participant n_SdlViewpointGenerator as Sdl Viewpoint Generator
-    n_XfmdDocumentHost->>n_DocumentBroker: 1: Select View Request (View Navigation Calls)
-    n_DocumentBroker->>n_SdlViewpointGenerator: 2: Project View Request (View Projection Calls)
-    n_SdlViewpointGenerator-->>n_DocumentBroker: 3: View Projection Rejected (View Projection Calls) reply-to 2
-    n_DocumentBroker-->>n_XfmdDocumentHost: 4: View Request Rejected (View Navigation Calls) reply-to 1
-```
+![Scenario: ViewProjectionFailed — modus DocumentBrowsing](diagrams/VP08-ViewProjectionFailed.svg)
 
 Kildegrunnlag: f0199, f0201, f0203, f0204, f0723, f0724, f0941, f0943, f1052, f1053, f1327, f1329, f1331, f1350, f1352, f1354, f1355, f1356, f1357, f1358, f1359, f1360, f1361, f1362, f1363, f1364, f1365, f1366, f1383, f1384, f1385, f1422, f1423.
 
+## Avledet MessageSet
+
+| Channel | Mode | Datagram | Sender | Receiver | Kilde-ID-er |
+| --- | --- | --- | --- | --- | --- |
+| FramePresentationCalls | UiPreview | PresentFrameRequest | FyneHost | FyneBackend | f0242, f0244, f0253, f0271, f0686 |
+| FramePresentationCalls | UiPreview | PresentFrameResult | FyneBackend | FyneHost | f0242, f0245, f0254, f0270, f0689 |
+| GoBuildCalls | NativeBuild | BuildGoRequest | CommandLineHost | GoBuildRunner | f0058, f0098, f0499, f0501, f0508 |
+| GoBuildCalls | NativeBuild | BuildGoResult | GoBuildRunner | CommandLineHost | f0061, f0097, f0499, f0502, f0509 |
+| GoDomainCalls | BoundExecution | DomainActionRequest | SdlDispatcher | GoDomainImplementation | f0208, f0519, f0521, f0525, f0854 |
+| GoDomainCalls | BoundExecution | DomainActionResult | GoDomainImplementation | SdlDispatcher | f0211, f0519, f0522, f0527, f0853 |
+| GoDomainCalls | UiPreview | DomainActionRequest | FyneHost | GoDomainImplementation | f0208, f0273, f0519, f0521, f0526 |
+| GoDomainCalls | UiPreview | DomainActionResult | GoDomainImplementation | FyneHost | f0211, f0272, f0519, f0522, f0528 |
+| GoGenerationCalls | NativeBuild | GenerateGoRequest | CommandLineHost | GoCodeGenerator | f0100, f0486, f0517, f0529, f0531 |
+| GoGenerationCalls | NativeBuild | GenerateGoResult | GoCodeGenerator | CommandLineHost | f0099, f0489, f0518, f0529, f0532 |
+| LayoutCalls | StaticExport | LayoutRequest | CommandLineHost | SduiLayout | f0102, f0572, f0574, f0579, f0995 |
+| LayoutCalls | StaticExport | LayoutResult | SduiLayout | CommandLineHost | f0101, f0572, f0575, f0582, f0997 |
+| LayoutCalls | UiPreview | LayoutRequest | FyneHost | SduiLayout | f0275, f0572, f0574, f0579, f0996 |
+| LayoutCalls | UiPreview | LayoutResult | SduiLayout | FyneHost | f0274, f0572, f0575, f0582, f0998 |
+| ModelReloadCalls | BoundLiveEditing | ReloadPublished | ReloadCoordinator | SourceWatcher | f0608, f0610, f0767, f0783, f1092 |
+| ModelReloadCalls | BoundLiveEditing | ReloadRejected | ReloadCoordinator | SourceWatcher | f0608, f0611, f0769, f0788, f1094 |
+| ModelReloadCalls | BoundLiveEditing | ReloadRequest | SourceWatcher | ReloadCoordinator | f0608, f0612, f0765, f0790, f1096 |
+| ModelReloadCalls | LiveEditing | ReloadPublished | ReloadCoordinator | SourceWatcher | f0608, f0610, f0768, f0783, f1093 |
+| ModelReloadCalls | LiveEditing | ReloadRejected | ReloadCoordinator | SourceWatcher | f0608, f0611, f0770, f0788, f1095 |
+| ModelReloadCalls | LiveEditing | ReloadRequest | SourceWatcher | ReloadCoordinator | f0608, f0612, f0766, f0790, f1097 |
+| NativeUiActions | BoundExecution | UiActionRejected | SduiDispatcher | FyneBackend | f0255, f0632, f0634, f0952, f1148 |
+| NativeUiActions | BoundExecution | UiActionRequest | FyneBackend | SduiDispatcher | f0257, f0632, f0635, f0951, f1150 |
+| NativeUiActions | BoundExecution | UiActionResult | SduiDispatcher | FyneBackend | f0256, f0632, f0636, f0953, f1153 |
+| SdlActionCalls | BoundExecution | SdlActionRequest | SdlUiBindingAdapter | SdlDispatcher | f0833, f0835, f0838, f0855, f0920 |
+| SdlActionCalls | BoundExecution | SdlActionResult | SdlDispatcher | SdlUiBindingAdapter | f0833, f0836, f0841, f0856, f0919 |
+| SdlCompilationCalls | BoundLiveEditing | CompileSdlRequest | ReloadCoordinator | SdlFrontend | f0109, f0772, f0842, f0844, f0869 |
+| SdlCompilationCalls | BoundLiveEditing | CompileSdlResult | SdlFrontend | ReloadCoordinator | f0112, f0771, f0842, f0845, f0870 |
+| SvgExportCalls | StaticExport | ExportSvgRequest | CommandLineHost | SduiPresentation | f0104, f0227, f1026, f1115, f1117 |
+| SvgExportCalls | StaticExport | ExportSvgResult | SduiPresentation | CommandLineHost | f0103, f0230, f1027, f1115, f1118 |
+| UiAstCalls | SourceInspection | BuildUiAstRequest | SduiFrontend | SduiParser | f0077, f0965, f1019, f1154, f1156 |
+| UiAstCalls | SourceInspection | BuildUiAstResult | SduiParser | SduiFrontend | f0080, f0964, f1020, f1154, f1157 |
+| UiCompilationCalls | LiveEditing | CompileUiRejected | SduiFrontend | ReloadCoordinator | f0115, f0773, f0968, f1173, f1175 |
+| UiCompilationCalls | LiveEditing | CompileUiRequest | ReloadCoordinator | SduiFrontend | f0117, f0775, f0966, f1173, f1176 |
+| UiCompilationCalls | LiveEditing | CompileUiResult | SduiFrontend | ReloadCoordinator | f0120, f0774, f0970, f1173, f1177 |
+| UiCompilationCalls | SourceInspection | CompileUiRejected | SduiFrontend | CommandLineHost | f0105, f0115, f0969, f1173, f1175 |
+| UiCompilationCalls | SourceInspection | CompileUiRequest | CommandLineHost | SduiFrontend | f0107, f0117, f0967, f1173, f1176 |
+| UiCompilationCalls | SourceInspection | CompileUiResult | SduiFrontend | CommandLineHost | f0106, f0120, f0971, f1173, f1177 |
+| UiDomainActions | BoundExecution | BoundActionRequest | SduiDispatcher | SdlUiBindingAdapter | f0048, f0921, f0955, f1178, f1180 |
+| UiDomainActions | BoundExecution | BoundActionResult | SdlUiBindingAdapter | SduiDispatcher | f0051, f0922, f0954, f1178, f1181 |
+| UiGenerationEvents | BoundExecution | UiGenerationNotices | SduiInstanceStore | FyneBackend | f0258, f0984, f1186, f1188, f1190 |
+| UiGenerationEvents | LiveEditing | UiGenerationNotices | SduiInstanceStore | FyneBackend | f0259, f0985, f1186, f1188, f1190 |
+| UiNormalizationCalls | SourceInspection | NormalizeUiRequest | SduiFrontend | SduiNormalizer | f0642, f0973, f1015, f1214, f1216 |
+| UiNormalizationCalls | SourceInspection | NormalizeUiResult | SduiNormalizer | SduiFrontend | f0645, f0972, f1016, f1214, f1217 |
+| UiTokenizationCalls | SourceInspection | TokenizeUiRequest | SduiFrontend | SduiLexer | f0975, f1001, f1130, f1228, f1230 |
+| UiTokenizationCalls | SourceInspection | TokenizeUiResult | SduiLexer | SduiFrontend | f0974, f1002, f1133, f1228, f1231 |
+| UiValidationCalls | SourceInspection | ValidateUiRequest | SduiFrontend | SduiValidator | f0977, f1048, f1232, f1234, f1262 |
+| UiValidationCalls | SourceInspection | ValidateUiResult | SduiValidator | SduiFrontend | f0976, f1049, f1232, f1235, f1265 |
+| ViewDisplayCalls | DocumentBrowsing | DisplayViewRequest | ViewerLaunchAdapter | XfmdDocumentHost | f0192, f1298, f1300, f1410, f1418 |
+| ViewDisplayCalls | DocumentBrowsing | ViewDisplayResult | XfmdDocumentHost | ViewerLaunchAdapter | f1298, f1301, f1305, f1408, f1419 |
+| ViewDisplayCalls | DocumentBrowsing | ViewTargetUnavailable | XfmdDocumentHost | ViewerLaunchAdapter | f1298, f1302, f1403, f1409, f1420 |
+| ViewLaunchCalls | DocumentBrowsing | LaunchViewRequest | DocumentBroker | ViewerLaunchAdapter | f0198, f0567, f1316, f1318, f1411 |
+| ViewLaunchCalls | DocumentBrowsing | ViewLaunchResult | ViewerLaunchAdapter | DocumentBroker | f0197, f1316, f1319, f1322, f1412 |
+| ViewNavigationCalls | DocumentBrowsing | SelectViewRequest | XfmdDocumentHost | DocumentBroker | f0199, f1053, f1327, f1329, f1423 |
+| ViewNavigationCalls | DocumentBrowsing | ViewOpenedResult | DocumentBroker | XfmdDocumentHost | f0200, f1327, f1330, f1345, f1421 |
+| ViewNavigationCalls | DocumentBrowsing | ViewRequestRejected | DocumentBroker | XfmdDocumentHost | f0201, f1327, f1331, f1385, f1422 |
+| ViewProjectionCalls | DocumentBrowsing | ProjectViewRequest | DocumentBroker | SdlViewpointGenerator | f0204, f0724, f0941, f1350, f1352 |
+| ViewProjectionCalls | DocumentBrowsing | ViewBundleResult | SdlViewpointGenerator | DocumentBroker | f0202, f0942, f1293, f1350, f1353 |
+| ViewProjectionCalls | DocumentBrowsing | ViewProjectionRejected | SdlViewpointGenerator | DocumentBroker | f0203, f0943, f1350, f1354, f1366 |
+| ViewPublicationCalls | DocumentBrowsing | PublishViewRequest | DocumentBroker | ViewArtifactStore | f0206, f0736, f1284, f1367, f1369 |
+| ViewPublicationCalls | DocumentBrowsing | ViewReferenceResult | ViewArtifactStore | DocumentBroker | f0205, f1285, f1367, f1370, f1380 |
 
 ## VP09 — Dataset, Datagram og persistent Database
 
-### Dataopprinnelse og holder: DesignSourceDocuments
+Eksplisitte holdere, kilde, kontrakter, varianter, felt og projeksjoner.
 
-```mermaid
-flowchart LR
-    n_DesignSourceArchive["DesignSourceArchive (database)"]
-    n_DesignSourceDocuments["DesignSourceDocuments (dataset)"]
-    n_DesignSourceRecord["DesignSourceRecord (contract)"]
-    n_SourceLoader["SourceLoader (unit)"]
-    n_DesignSourceArchive -->|holds| n_DesignSourceDocuments
-    n_DesignSourceDocuments -->|upholds| n_DesignSourceRecord
-    n_SourceLoader -->|owns| n_DesignSourceArchive
-```
+## Dataopprinnelse og holder: DesignSourceDocuments
+
+![Dataopprinnelse og holder: DesignSourceDocuments](diagrams/VP09-data-DesignSourceDocuments.svg)
 
 Kildegrunnlag: f0156, f0157, f1084.
 
-### Dataopprinnelse og holder: UiSessionState
+## Dataopprinnelse og holder: UiSessionState
 
-```mermaid
-flowchart LR
-    n_SduiInstanceStore["SduiInstanceStore (unit)"]
-    n_UiGenerationContract["UiGenerationContract (contract)"]
-    n_UiGenerationNotices["UiGenerationNotices (datagram)"]
-    n_UiSessionRecord["UiSessionRecord (contract)"]
-    n_UiSessionState["UiSessionState (dataset)"]
-    n_SduiInstanceStore -->|holds| n_UiSessionState
-    n_UiGenerationNotices -->|from| n_UiSessionState
-    n_UiGenerationNotices -->|upholds| n_UiGenerationContract
-    n_UiSessionState -->|upholds| n_UiSessionRecord
-```
+![Dataopprinnelse og holder: UiSessionState](diagrams/VP09-data-UiSessionState.svg)
 
 Kildegrunnlag: f0978, f1189, f1190, f1221.
 
-### Kontraktstruktur: ActionArguments
+## Kontraktstruktur: ActionArguments
 
-```mermaid
-flowchart LR
-    n_ActionArguments["ActionArguments (contract)"]
-    n_ActionGeneration["ActionGeneration (field)"]
-    n_ActionInputText["ActionInputText (field)"]
-    n_ActionSymbol["ActionSymbol (field)"]
-    n_ActionArguments -->|has-field| n_ActionGeneration
-    n_ActionArguments -->|has-field| n_ActionInputText
-    n_ActionArguments -->|has-field| n_ActionSymbol
-```
+![Kontraktstruktur: ActionArguments](diagrams/VP09-contract-ActionArguments.svg)
 
 Kildegrunnlag: f0001, f0002, f0003.
 
-### Kontraktstruktur: ActionOutcome
+## Kontraktstruktur: ActionOutcome
 
-```mermaid
-flowchart LR
-    n_ActionOutcome["ActionOutcome (contract)"]
-    n_ActionOutputText["ActionOutputText (field)"]
-    n_ActionStatusCode["ActionStatusCode (field)"]
-    n_ActionOutcome -->|has-field| n_ActionOutputText
-    n_ActionOutcome -->|has-field| n_ActionStatusCode
-```
+![Kontraktstruktur: ActionOutcome](diagrams/VP09-contract-ActionOutcome.svg)
 
 Kildegrunnlag: f0009, f0010.
 
-### Kontraktstruktur: AstArtifactContract
+## Kontraktstruktur: AstArtifactContract
 
-```mermaid
-flowchart LR
-    n_AstArtifact["AstArtifact (field)"]
-    n_AstArtifactContract["AstArtifactContract (contract)"]
-    n_AstArtifactContract -->|has-field| n_AstArtifact
-```
+![Kontraktstruktur: AstArtifactContract](diagrams/VP09-contract-AstArtifactContract.svg)
 
 Kildegrunnlag: f0027.
 
-### Kontraktstruktur: DesignSourceRecord
+## Kontraktstruktur: DesignSourceRecord
 
-```mermaid
-flowchart LR
-    n_DesignSourceRecord["DesignSourceRecord (contract)"]
-    n_SourceDocumentRevision["SourceDocumentRevision (field)"]
-    n_SourceDocumentText["SourceDocumentText (field)"]
-    n_DesignSourceRecord -->|has-field| n_SourceDocumentRevision
-    n_DesignSourceRecord -->|has-field| n_SourceDocumentText
-```
+![Kontraktstruktur: DesignSourceRecord](diagrams/VP09-contract-DesignSourceRecord.svg)
 
 Kildegrunnlag: f0159, f0160.
 
-### Kontraktstruktur: FramePresentationCallsProtocol
+## Kontraktstruktur: FramePresentationCallsProtocol
 
-```mermaid
-flowchart LR
-    n_FramePresentationCallsProtocol["FramePresentationCallsProtocol (contract)"]
-    n_PresentFrameRequest["PresentFrameRequest (message)"]
-    n_PresentFrameResult["PresentFrameResult (message)"]
-    n_FramePresentationCallsProtocol -->|permits| n_PresentFrameRequest
-    n_FramePresentationCallsProtocol -->|permits| n_PresentFrameResult
-```
+![Kontraktstruktur: FramePresentationCallsProtocol](diagrams/VP09-contract-FramePresentationCallsProtocol.svg)
 
 Kildegrunnlag: f0244, f0245.
 
-### Kontraktstruktur: GeneratedGoContract
+## Kontraktstruktur: GeneratedGoContract
 
-```mermaid
-flowchart LR
-    n_GeneratedGoContract["GeneratedGoContract (contract)"]
-    n_GeneratedGoSources["GeneratedGoSources (field)"]
-    n_GeneratedGoContract -->|has-field| n_GeneratedGoSources
-```
+![Kontraktstruktur: GeneratedGoContract](diagrams/VP09-contract-GeneratedGoContract.svg)
 
 Kildegrunnlag: f0496.
 
-### Kontraktstruktur: GoBuildCallsProtocol
+## Kontraktstruktur: GoBuildCallsProtocol
 
-```mermaid
-flowchart LR
-    n_BuildGoRequest["BuildGoRequest (message)"]
-    n_BuildGoResult["BuildGoResult (message)"]
-    n_GoBuildCallsProtocol["GoBuildCallsProtocol (contract)"]
-    n_GoBuildCallsProtocol -->|permits| n_BuildGoRequest
-    n_GoBuildCallsProtocol -->|permits| n_BuildGoResult
-```
+![Kontraktstruktur: GoBuildCallsProtocol](diagrams/VP09-contract-GoBuildCallsProtocol.svg)
 
 Kildegrunnlag: f0501, f0502.
 
-### Kontraktstruktur: GoDomainCallsProtocol
+## Kontraktstruktur: GoDomainCallsProtocol
 
-```mermaid
-flowchart LR
-    n_DomainActionRequest["DomainActionRequest (message)"]
-    n_DomainActionResult["DomainActionResult (message)"]
-    n_GoDomainCallsProtocol["GoDomainCallsProtocol (contract)"]
-    n_GoDomainCallsProtocol -->|permits| n_DomainActionRequest
-    n_GoDomainCallsProtocol -->|permits| n_DomainActionResult
-```
+![Kontraktstruktur: GoDomainCallsProtocol](diagrams/VP09-contract-GoDomainCallsProtocol.svg)
 
 Kildegrunnlag: f0521, f0522.
 
-### Kontraktstruktur: GoGenerationCallsProtocol
+## Kontraktstruktur: GoGenerationCallsProtocol
 
-```mermaid
-flowchart LR
-    n_GenerateGoRequest["GenerateGoRequest (message)"]
-    n_GenerateGoResult["GenerateGoResult (message)"]
-    n_GoGenerationCallsProtocol["GoGenerationCallsProtocol (contract)"]
-    n_GoGenerationCallsProtocol -->|permits| n_GenerateGoRequest
-    n_GoGenerationCallsProtocol -->|permits| n_GenerateGoResult
-```
+![Kontraktstruktur: GoGenerationCallsProtocol](diagrams/VP09-contract-GoGenerationCallsProtocol.svg)
 
 Kildegrunnlag: f0531, f0532.
 
-### Kontraktstruktur: LayoutArguments
+## Kontraktstruktur: LayoutArguments
 
-```mermaid
-flowchart LR
-    n_LayoutArguments["LayoutArguments (contract)"]
-    n_LayoutModelArtifact["LayoutModelArtifact (field)"]
-    n_LayoutViewportHeight["LayoutViewportHeight (field)"]
-    n_LayoutViewportWidth["LayoutViewportWidth (field)"]
-    n_LayoutArguments -->|has-field| n_LayoutModelArtifact
-    n_LayoutArguments -->|has-field| n_LayoutViewportHeight
-    n_LayoutArguments -->|has-field| n_LayoutViewportWidth
-```
+![Kontraktstruktur: LayoutArguments](diagrams/VP09-contract-LayoutArguments.svg)
 
 Kildegrunnlag: f0569, f0570, f0571.
 
-### Kontraktstruktur: LayoutCallsProtocol
+## Kontraktstruktur: LayoutCallsProtocol
 
-```mermaid
-flowchart LR
-    n_LayoutCallsProtocol["LayoutCallsProtocol (contract)"]
-    n_LayoutRequest["LayoutRequest (message)"]
-    n_LayoutResult["LayoutResult (message)"]
-    n_LayoutCallsProtocol -->|permits| n_LayoutRequest
-    n_LayoutCallsProtocol -->|permits| n_LayoutResult
-```
+![Kontraktstruktur: LayoutCallsProtocol](diagrams/VP09-contract-LayoutCallsProtocol.svg)
 
 Kildegrunnlag: f0574, f0575.
 
-### Kontraktstruktur: ModelReloadCallsProtocol
+## Kontraktstruktur: ModelReloadCallsProtocol
 
-```mermaid
-flowchart LR
-    n_ModelReloadCallsProtocol["ModelReloadCallsProtocol (contract)"]
-    n_ReloadPublished["ReloadPublished (message)"]
-    n_ReloadRejected["ReloadRejected (message)"]
-    n_ReloadRequest["ReloadRequest (message)"]
-    n_ModelReloadCallsProtocol -->|permits| n_ReloadPublished
-    n_ModelReloadCallsProtocol -->|permits| n_ReloadRejected
-    n_ModelReloadCallsProtocol -->|permits| n_ReloadRequest
-```
+![Kontraktstruktur: ModelReloadCallsProtocol](diagrams/VP09-contract-ModelReloadCallsProtocol.svg)
 
 Kildegrunnlag: f0610, f0611, f0612.
 
-### Kontraktstruktur: NativeBuildContract
+## Kontraktstruktur: NativeBuildContract
 
-```mermaid
-flowchart LR
-    n_NativeBuildContract["NativeBuildContract (contract)"]
-    n_NativeBuildDiagnostics["NativeBuildDiagnostics (field)"]
-    n_NativeBuildSucceeded["NativeBuildSucceeded (field)"]
-    n_NativeBuildContract -->|has-field| n_NativeBuildDiagnostics
-    n_NativeBuildContract -->|has-field| n_NativeBuildSucceeded
-```
+![Kontraktstruktur: NativeBuildContract](diagrams/VP09-contract-NativeBuildContract.svg)
 
 Kildegrunnlag: f0614, f0615.
 
-### Kontraktstruktur: NativeUiActionsProtocol
+## Kontraktstruktur: NativeUiActionsProtocol
 
-```mermaid
-flowchart LR
-    n_NativeUiActionsProtocol["NativeUiActionsProtocol (contract)"]
-    n_UiActionRejected["UiActionRejected (message)"]
-    n_UiActionRequest["UiActionRequest (message)"]
-    n_UiActionResult["UiActionResult (message)"]
-    n_NativeUiActionsProtocol -->|permits| n_UiActionRejected
-    n_NativeUiActionsProtocol -->|permits| n_UiActionRequest
-    n_NativeUiActionsProtocol -->|permits| n_UiActionResult
-```
+![Kontraktstruktur: NativeUiActionsProtocol](diagrams/VP09-contract-NativeUiActionsProtocol.svg)
 
 Kildegrunnlag: f0634, f0635, f0636.
 
-### Kontraktstruktur: NormalizedModelContract
+## Kontraktstruktur: NormalizedModelContract
 
-```mermaid
-flowchart LR
-    n_NormalizedModelArtifact["NormalizedModelArtifact (field)"]
-    n_NormalizedModelContract["NormalizedModelContract (contract)"]
-    n_NormalizedModelContract -->|has-field| n_NormalizedModelArtifact
-```
+![Kontraktstruktur: NormalizedModelContract](diagrams/VP09-contract-NormalizedModelContract.svg)
 
 Kildegrunnlag: f0649.
 
-### Kontraktstruktur: PreparedFrameContract
+## Kontraktstruktur: PreparedFrameContract
 
-```mermaid
-flowchart LR
-    n_PreparedFrameArtifact["PreparedFrameArtifact (field)"]
-    n_PreparedFrameContract["PreparedFrameContract (contract)"]
-    n_PreparedFrameContract -->|has-field| n_PreparedFrameArtifact
-```
+![Kontraktstruktur: PreparedFrameContract](diagrams/VP09-contract-PreparedFrameContract.svg)
 
 Kildegrunnlag: f0684.
 
-### Kontraktstruktur: PresentationOutcome
+## Kontraktstruktur: PresentationOutcome
 
-```mermaid
-flowchart LR
-    n_PresentationOutcome["PresentationOutcome (contract)"]
-    n_PresentationReady["PresentationReady (field)"]
-    n_PresentationOutcome -->|has-field| n_PresentationReady
-```
+![Kontraktstruktur: PresentationOutcome](diagrams/VP09-contract-PresentationOutcome.svg)
 
 Kildegrunnlag: f0691.
 
-### Kontraktstruktur: ReloadArguments
+## Kontraktstruktur: ReloadArguments
 
-```mermaid
-flowchart LR
-    n_ReloadArguments["ReloadArguments (contract)"]
-    n_ReloadSourceRevision["ReloadSourceRevision (field)"]
-    n_ReloadSourceText["ReloadSourceText (field)"]
-    n_ReloadArguments -->|has-field| n_ReloadSourceRevision
-    n_ReloadArguments -->|has-field| n_ReloadSourceText
-```
+![Kontraktstruktur: ReloadArguments](diagrams/VP09-contract-ReloadArguments.svg)
 
 Kildegrunnlag: f0750, f0751.
 
-### Kontraktstruktur: ReloadOutcome
+## Kontraktstruktur: ReloadOutcome
 
-```mermaid
-flowchart LR
-    n_ReloadDiagnostic["ReloadDiagnostic (field)"]
-    n_ReloadOutcome["ReloadOutcome (contract)"]
-    n_ReloadPublishedGeneration["ReloadPublishedGeneration (field)"]
-    n_ReloadOutcome -->|has-field| n_ReloadDiagnostic
-    n_ReloadOutcome -->|has-field| n_ReloadPublishedGeneration
-```
+![Kontraktstruktur: ReloadOutcome](diagrams/VP09-contract-ReloadOutcome.svg)
 
 Kildegrunnlag: f0779, f0780.
 
-### Kontraktstruktur: SdlActionCallsProtocol
+## Kontraktstruktur: SdlActionCallsProtocol
 
-```mermaid
-flowchart LR
-    n_SdlActionCallsProtocol["SdlActionCallsProtocol (contract)"]
-    n_SdlActionRequest["SdlActionRequest (message)"]
-    n_SdlActionResult["SdlActionResult (message)"]
-    n_SdlActionCallsProtocol -->|permits| n_SdlActionRequest
-    n_SdlActionCallsProtocol -->|permits| n_SdlActionResult
-```
+![Kontraktstruktur: SdlActionCallsProtocol](diagrams/VP09-contract-SdlActionCallsProtocol.svg)
 
 Kildegrunnlag: f0835, f0836.
 
-### Kontraktstruktur: SdlCompilationCallsProtocol
+## Kontraktstruktur: SdlCompilationCallsProtocol
 
-```mermaid
-flowchart LR
-    n_CompileSdlRequest["CompileSdlRequest (message)"]
-    n_CompileSdlResult["CompileSdlResult (message)"]
-    n_SdlCompilationCallsProtocol["SdlCompilationCallsProtocol (contract)"]
-    n_SdlCompilationCallsProtocol -->|permits| n_CompileSdlRequest
-    n_SdlCompilationCallsProtocol -->|permits| n_CompileSdlResult
-```
+![Kontraktstruktur: SdlCompilationCallsProtocol](diagrams/VP09-contract-SdlCompilationCallsProtocol.svg)
 
 Kildegrunnlag: f0844, f0845.
 
-### Kontraktstruktur: SvgDocumentContract
+## Kontraktstruktur: SvgDocumentContract
 
-```mermaid
-flowchart LR
-    n_SvgDocumentContract["SvgDocumentContract (contract)"]
-    n_SvgDocumentText["SvgDocumentText (field)"]
-    n_SvgDocumentContract -->|has-field| n_SvgDocumentText
-```
+![Kontraktstruktur: SvgDocumentContract](diagrams/VP09-contract-SvgDocumentContract.svg)
 
 Kildegrunnlag: f1112.
 
-### Kontraktstruktur: SvgExportCallsProtocol
+## Kontraktstruktur: SvgExportCallsProtocol
 
-```mermaid
-flowchart LR
-    n_ExportSvgRequest["ExportSvgRequest (message)"]
-    n_ExportSvgResult["ExportSvgResult (message)"]
-    n_SvgExportCallsProtocol["SvgExportCallsProtocol (contract)"]
-    n_SvgExportCallsProtocol -->|permits| n_ExportSvgRequest
-    n_SvgExportCallsProtocol -->|permits| n_ExportSvgResult
-```
+![Kontraktstruktur: SvgExportCallsProtocol](diagrams/VP09-contract-SvgExportCallsProtocol.svg)
 
 Kildegrunnlag: f1117, f1118.
 
-### Kontraktstruktur: TokenArtifactContract
+## Kontraktstruktur: TokenArtifactContract
 
-```mermaid
-flowchart LR
-    n_TokenArtifact["TokenArtifact (field)"]
-    n_TokenArtifactContract["TokenArtifactContract (contract)"]
-    n_TokenArtifactContract -->|has-field| n_TokenArtifact
-```
+![Kontraktstruktur: TokenArtifactContract](diagrams/VP09-contract-TokenArtifactContract.svg)
 
 Kildegrunnlag: f1122.
 
-### Kontraktstruktur: UiAstCallsProtocol
+## Kontraktstruktur: UiAstCallsProtocol
 
-```mermaid
-flowchart LR
-    n_BuildUiAstRequest["BuildUiAstRequest (message)"]
-    n_BuildUiAstResult["BuildUiAstResult (message)"]
-    n_UiAstCallsProtocol["UiAstCallsProtocol (contract)"]
-    n_UiAstCallsProtocol -->|permits| n_BuildUiAstRequest
-    n_UiAstCallsProtocol -->|permits| n_BuildUiAstResult
-```
+![Kontraktstruktur: UiAstCallsProtocol](diagrams/VP09-contract-UiAstCallsProtocol.svg)
 
 Kildegrunnlag: f1156, f1157.
 
-### Kontraktstruktur: UiCompilationCallsProtocol
+## Kontraktstruktur: UiCompilationCallsProtocol
 
-```mermaid
-flowchart LR
-    n_CompileUiRejected["CompileUiRejected (message)"]
-    n_CompileUiRequest["CompileUiRequest (message)"]
-    n_CompileUiResult["CompileUiResult (message)"]
-    n_UiCompilationCallsProtocol["UiCompilationCallsProtocol (contract)"]
-    n_UiCompilationCallsProtocol -->|permits| n_CompileUiRejected
-    n_UiCompilationCallsProtocol -->|permits| n_CompileUiRequest
-    n_UiCompilationCallsProtocol -->|permits| n_CompileUiResult
-```
+![Kontraktstruktur: UiCompilationCallsProtocol](diagrams/VP09-contract-UiCompilationCallsProtocol.svg)
 
 Kildegrunnlag: f1175, f1176, f1177.
 
-### Kontraktstruktur: UiDomainActionsProtocol
+## Kontraktstruktur: UiDomainActionsProtocol
 
-```mermaid
-flowchart LR
-    n_BoundActionRequest["BoundActionRequest (message)"]
-    n_BoundActionResult["BoundActionResult (message)"]
-    n_UiDomainActionsProtocol["UiDomainActionsProtocol (contract)"]
-    n_UiDomainActionsProtocol -->|permits| n_BoundActionRequest
-    n_UiDomainActionsProtocol -->|permits| n_BoundActionResult
-```
+![Kontraktstruktur: UiDomainActionsProtocol](diagrams/VP09-contract-UiDomainActionsProtocol.svg)
 
 Kildegrunnlag: f1180, f1181.
 
-### Kontraktstruktur: UiGenerationContract
+## Kontraktstruktur: UiGenerationContract
 
-```mermaid
-flowchart LR
-    n_NoticeGeneration["NoticeGeneration (field)"]
-    n_NoticeVersion["NoticeVersion (field)"]
-    n_UiGenerationChanged["UiGenerationChanged (variant)"]
-    n_UiGenerationContract["UiGenerationContract (contract)"]
-    n_UiGenerationChanged -->|has-field| n_NoticeGeneration
-    n_UiGenerationContract -->|defines| n_UiGenerationChanged
-    n_UiGenerationContract -->|has-field| n_NoticeVersion
-```
+![Kontraktstruktur: UiGenerationContract](diagrams/VP09-contract-UiGenerationContract.svg)
 
 Kildegrunnlag: f1182, f1183, f1185.
 
-### Kontraktstruktur: UiGenerationEventsProtocol
+## Kontraktstruktur: UiGenerationEventsProtocol
 
-```mermaid
-flowchart LR
-    n_UiGenerationEventsProtocol["UiGenerationEventsProtocol (contract)"]
-    n_UiGenerationNotices["UiGenerationNotices (datagram)"]
-    n_UiGenerationEventsProtocol -->|permits| n_UiGenerationNotices
-```
+![Kontraktstruktur: UiGenerationEventsProtocol](diagrams/VP09-contract-UiGenerationEventsProtocol.svg)
 
 Kildegrunnlag: f1188.
 
-### Kontraktstruktur: UiNormalizationCallsProtocol
+## Kontraktstruktur: UiNormalizationCallsProtocol
 
-```mermaid
-flowchart LR
-    n_NormalizeUiRequest["NormalizeUiRequest (message)"]
-    n_NormalizeUiResult["NormalizeUiResult (message)"]
-    n_UiNormalizationCallsProtocol["UiNormalizationCallsProtocol (contract)"]
-    n_UiNormalizationCallsProtocol -->|permits| n_NormalizeUiRequest
-    n_UiNormalizationCallsProtocol -->|permits| n_NormalizeUiResult
-```
+![Kontraktstruktur: UiNormalizationCallsProtocol](diagrams/VP09-contract-UiNormalizationCallsProtocol.svg)
 
 Kildegrunnlag: f1216, f1217.
 
-### Kontraktstruktur: UiSessionRecord
+## Kontraktstruktur: UiSessionRecord
 
-```mermaid
-flowchart LR
-    n_SessionDraft["SessionDraft (field)"]
-    n_SessionGeneration["SessionGeneration (field)"]
-    n_UiSessionRecord["UiSessionRecord (contract)"]
-    n_UiSessionRecord -->|has-field| n_SessionDraft
-    n_UiSessionRecord -->|has-field| n_SessionGeneration
-```
+![Kontraktstruktur: UiSessionRecord](diagrams/VP09-contract-UiSessionRecord.svg)
 
 Kildegrunnlag: f1219, f1220.
 
-### Kontraktstruktur: UiTokenizationCallsProtocol
+## Kontraktstruktur: UiTokenizationCallsProtocol
 
-```mermaid
-flowchart LR
-    n_TokenizeUiRequest["TokenizeUiRequest (message)"]
-    n_TokenizeUiResult["TokenizeUiResult (message)"]
-    n_UiTokenizationCallsProtocol["UiTokenizationCallsProtocol (contract)"]
-    n_UiTokenizationCallsProtocol -->|permits| n_TokenizeUiRequest
-    n_UiTokenizationCallsProtocol -->|permits| n_TokenizeUiResult
-```
+![Kontraktstruktur: UiTokenizationCallsProtocol](diagrams/VP09-contract-UiTokenizationCallsProtocol.svg)
 
 Kildegrunnlag: f1230, f1231.
 
-### Kontraktstruktur: UiValidationCallsProtocol
+## Kontraktstruktur: UiValidationCallsProtocol
 
-```mermaid
-flowchart LR
-    n_UiValidationCallsProtocol["UiValidationCallsProtocol (contract)"]
-    n_ValidateUiRequest["ValidateUiRequest (message)"]
-    n_ValidateUiResult["ValidateUiResult (message)"]
-    n_UiValidationCallsProtocol -->|permits| n_ValidateUiRequest
-    n_UiValidationCallsProtocol -->|permits| n_ValidateUiResult
-```
+![Kontraktstruktur: UiValidationCallsProtocol](diagrams/VP09-contract-UiValidationCallsProtocol.svg)
 
 Kildegrunnlag: f1234, f1235.
 
-### Kontraktstruktur: ValidationOutcomeContract
+## Kontraktstruktur: ValidationOutcomeContract
 
-```mermaid
-flowchart LR
-    n_ModelDiagnostics["ModelDiagnostics (field)"]
-    n_ModelIsValid["ModelIsValid (field)"]
-    n_ValidationOutcomeContract["ValidationOutcomeContract (contract)"]
-    n_ValidationOutcomeContract -->|has-field| n_ModelDiagnostics
-    n_ValidationOutcomeContract -->|has-field| n_ModelIsValid
-```
+![Kontraktstruktur: ValidationOutcomeContract](diagrams/VP09-contract-ValidationOutcomeContract.svg)
 
 Kildegrunnlag: f1275, f1276.
 
-### Kontraktstruktur: ViewBundleContract
+## Kontraktstruktur: ViewBundleContract
 
-```mermaid
-flowchart LR
-    n_ViewBundleBytes["ViewBundleBytes (field)"]
-    n_ViewBundleContract["ViewBundleContract (contract)"]
-    n_ViewBundleRevision["ViewBundleRevision (field)"]
-    n_ViewBundleContract -->|has-field| n_ViewBundleBytes
-    n_ViewBundleContract -->|has-field| n_ViewBundleRevision
-```
+![Kontraktstruktur: ViewBundleContract](diagrams/VP09-contract-ViewBundleContract.svg)
 
 Kildegrunnlag: f1289, f1290.
 
-### Kontraktstruktur: ViewDisplayCallsProtocol
+## Kontraktstruktur: ViewDisplayCallsProtocol
 
-```mermaid
-flowchart LR
-    n_DisplayViewRequest["DisplayViewRequest (message)"]
-    n_ViewDisplayCallsProtocol["ViewDisplayCallsProtocol (contract)"]
-    n_ViewDisplayResult["ViewDisplayResult (message)"]
-    n_ViewTargetUnavailable["ViewTargetUnavailable (message)"]
-    n_ViewDisplayCallsProtocol -->|permits| n_DisplayViewRequest
-    n_ViewDisplayCallsProtocol -->|permits| n_ViewDisplayResult
-    n_ViewDisplayCallsProtocol -->|permits| n_ViewTargetUnavailable
-```
+![Kontraktstruktur: ViewDisplayCallsProtocol](diagrams/VP09-contract-ViewDisplayCallsProtocol.svg)
 
 Kildegrunnlag: f1300, f1301, f1302.
 
-### Kontraktstruktur: ViewFailureContract
+## Kontraktstruktur: ViewFailureContract
 
-```mermaid
-flowchart LR
-    n_FailedViewRequestId["FailedViewRequestId (field)"]
-    n_ViewFailureCode["ViewFailureCode (field)"]
-    n_ViewFailureContract["ViewFailureContract (contract)"]
-    n_ViewFailureDiagnostic["ViewFailureDiagnostic (field)"]
-    n_ViewFailureContract -->|has-field| n_FailedViewRequestId
-    n_ViewFailureContract -->|has-field| n_ViewFailureCode
-    n_ViewFailureContract -->|has-field| n_ViewFailureDiagnostic
-```
+![Kontraktstruktur: ViewFailureContract](diagrams/VP09-contract-ViewFailureContract.svg)
 
 Kildegrunnlag: f1311, f1312, f1313.
 
-### Kontraktstruktur: ViewLaunchCallsProtocol
+## Kontraktstruktur: ViewLaunchCallsProtocol
 
-```mermaid
-flowchart LR
-    n_LaunchViewRequest["LaunchViewRequest (message)"]
-    n_ViewLaunchCallsProtocol["ViewLaunchCallsProtocol (contract)"]
-    n_ViewLaunchResult["ViewLaunchResult (message)"]
-    n_ViewLaunchCallsProtocol -->|permits| n_LaunchViewRequest
-    n_ViewLaunchCallsProtocol -->|permits| n_ViewLaunchResult
-```
+![Kontraktstruktur: ViewLaunchCallsProtocol](diagrams/VP09-contract-ViewLaunchCallsProtocol.svg)
 
 Kildegrunnlag: f1318, f1319.
 
-### Kontraktstruktur: ViewNavigationCallsProtocol
+## Kontraktstruktur: ViewNavigationCallsProtocol
 
-```mermaid
-flowchart LR
-    n_SelectViewRequest["SelectViewRequest (message)"]
-    n_ViewNavigationCallsProtocol["ViewNavigationCallsProtocol (contract)"]
-    n_ViewOpenedResult["ViewOpenedResult (message)"]
-    n_ViewRequestRejected["ViewRequestRejected (message)"]
-    n_ViewNavigationCallsProtocol -->|permits| n_SelectViewRequest
-    n_ViewNavigationCallsProtocol -->|permits| n_ViewOpenedResult
-    n_ViewNavigationCallsProtocol -->|permits| n_ViewRequestRejected
-```
+![Kontraktstruktur: ViewNavigationCallsProtocol](diagrams/VP09-contract-ViewNavigationCallsProtocol.svg)
 
 Kildegrunnlag: f1329, f1330, f1331.
 
-### Kontraktstruktur: ViewOpenContract
+## Kontraktstruktur: ViewOpenContract
 
-```mermaid
-flowchart LR
-    n_OpenViewConsumerId["OpenViewConsumerId (field)"]
-    n_OpenViewEntryPath["OpenViewEntryPath (field)"]
-    n_OpenViewLeaseId["OpenViewLeaseId (field)"]
-    n_OpenViewPaneId["OpenViewPaneId (field)"]
-    n_OpenViewRequestId["OpenViewRequestId (field)"]
-    n_OpenViewRevision["OpenViewRevision (field)"]
-    n_OpenViewWindowId["OpenViewWindowId (field)"]
-    n_ViewOpenContract["ViewOpenContract (contract)"]
-    n_ViewOpenContract -->|has-field| n_OpenViewConsumerId
-    n_ViewOpenContract -->|has-field| n_OpenViewEntryPath
-    n_ViewOpenContract -->|has-field| n_OpenViewLeaseId
-    n_ViewOpenContract -->|has-field| n_OpenViewPaneId
-    n_ViewOpenContract -->|has-field| n_OpenViewRequestId
-    n_ViewOpenContract -->|has-field| n_OpenViewRevision
-    n_ViewOpenContract -->|has-field| n_OpenViewWindowId
-```
+![Kontraktstruktur: ViewOpenContract](diagrams/VP09-contract-ViewOpenContract.svg)
 
 Kildegrunnlag: f1333, f1334, f1335, f1336, f1337, f1338, f1339.
 
-### Kontraktstruktur: ViewOpenedContract
+## Kontraktstruktur: ViewOpenedContract
 
-```mermaid
-flowchart LR
-    n_OpenedViewRequestId["OpenedViewRequestId (field)"]
-    n_OpenedViewRevision["OpenedViewRevision (field)"]
-    n_ViewOpenedContract["ViewOpenedContract (contract)"]
-    n_ViewOpenedContract -->|has-field| n_OpenedViewRequestId
-    n_ViewOpenedContract -->|has-field| n_OpenedViewRevision
-```
+![Kontraktstruktur: ViewOpenedContract](diagrams/VP09-contract-ViewOpenedContract.svg)
 
 Kildegrunnlag: f1341, f1342.
 
-### Kontraktstruktur: ViewProjectionCallsProtocol
+## Kontraktstruktur: ViewProjectionCallsProtocol
 
-```mermaid
-flowchart LR
-    n_ProjectViewRequest["ProjectViewRequest (message)"]
-    n_ViewBundleResult["ViewBundleResult (message)"]
-    n_ViewProjectionCallsProtocol["ViewProjectionCallsProtocol (contract)"]
-    n_ViewProjectionRejected["ViewProjectionRejected (message)"]
-    n_ViewProjectionCallsProtocol -->|permits| n_ProjectViewRequest
-    n_ViewProjectionCallsProtocol -->|permits| n_ViewBundleResult
-    n_ViewProjectionCallsProtocol -->|permits| n_ViewProjectionRejected
-```
+![Kontraktstruktur: ViewProjectionCallsProtocol](diagrams/VP09-contract-ViewProjectionCallsProtocol.svg)
 
 Kildegrunnlag: f1352, f1353, f1354.
 
-### Kontraktstruktur: ViewPublicationCallsProtocol
+## Kontraktstruktur: ViewPublicationCallsProtocol
 
-```mermaid
-flowchart LR
-    n_PublishViewRequest["PublishViewRequest (message)"]
-    n_ViewPublicationCallsProtocol["ViewPublicationCallsProtocol (contract)"]
-    n_ViewReferenceResult["ViewReferenceResult (message)"]
-    n_ViewPublicationCallsProtocol -->|permits| n_PublishViewRequest
-    n_ViewPublicationCallsProtocol -->|permits| n_ViewReferenceResult
-```
+![Kontraktstruktur: ViewPublicationCallsProtocol](diagrams/VP09-contract-ViewPublicationCallsProtocol.svg)
 
 Kildegrunnlag: f1369, f1370.
 
-### Kontraktstruktur: ViewReferenceContract
+## Kontraktstruktur: ViewReferenceContract
 
-```mermaid
-flowchart LR
-    n_ViewEntryPath["ViewEntryPath (field)"]
-    n_ViewLeaseId["ViewLeaseId (field)"]
-    n_ViewManifestPath["ViewManifestPath (field)"]
-    n_ViewPublishedRevision["ViewPublishedRevision (field)"]
-    n_ViewReferenceContract["ViewReferenceContract (contract)"]
-    n_ViewReferenceContract -->|has-field| n_ViewEntryPath
-    n_ViewReferenceContract -->|has-field| n_ViewLeaseId
-    n_ViewReferenceContract -->|has-field| n_ViewManifestPath
-    n_ViewReferenceContract -->|has-field| n_ViewPublishedRevision
-```
+![Kontraktstruktur: ViewReferenceContract](diagrams/VP09-contract-ViewReferenceContract.svg)
 
 Kildegrunnlag: f1374, f1375, f1376, f1377.
 
-### Kontraktstruktur: ViewSelectionContract
+## Kontraktstruktur: ViewSelectionContract
 
-```mermaid
-flowchart LR
-    n_ViewConsumerId["ViewConsumerId (field)"]
-    n_ViewPaneId["ViewPaneId (field)"]
-    n_ViewProjectId["ViewProjectId (field)"]
-    n_ViewRequestId["ViewRequestId (field)"]
-    n_ViewSelectionContract["ViewSelectionContract (contract)"]
-    n_ViewSelector["ViewSelector (field)"]
-    n_ViewSourceRevision["ViewSourceRevision (field)"]
-    n_ViewWindowId["ViewWindowId (field)"]
-    n_ViewSelectionContract -->|has-field| n_ViewConsumerId
-    n_ViewSelectionContract -->|has-field| n_ViewPaneId
-    n_ViewSelectionContract -->|has-field| n_ViewProjectId
-    n_ViewSelectionContract -->|has-field| n_ViewRequestId
-    n_ViewSelectionContract -->|has-field| n_ViewSelector
-    n_ViewSelectionContract -->|has-field| n_ViewSourceRevision
-    n_ViewSelectionContract -->|has-field| n_ViewWindowId
-```
+![Kontraktstruktur: ViewSelectionContract](diagrams/VP09-contract-ViewSelectionContract.svg)
 
 Kildegrunnlag: f1387, f1388, f1389, f1390, f1391, f1392, f1393.
 
+## Felt og kontraktegenskaper
 
-## VP10 — Datagram-koding og packet
+Database betyr persistent datakilde, ikke nødvendigvis SQL.
 
-### Packet: UiGenerationWire / UiGenerationChanged — big-endian, most-significant-first
-
-```mermaid
-packet
-    0-15: "NoticeVersion"
-    16-79: "NoticeGeneration"
-```
-
-Kildegrunnlag: f0650, f0651, f0652, f0653, f1182, f1183, f1184, f1185, f1191, f1192, f1193, f1194, f1195.
-
-
-### VP09 — felt og kontraktegenskaper
-
-| Modellfaktum | Kilde-ID |
+| Faktum | ID |
 | --- | --- |
 | ActionArguments has completeness = closed. | f0000 |
 | ActionGeneration has presence = required. | f0004 |
@@ -3659,151 +1391,30 @@ Kildegrunnlag: f0650, f0651, f0652, f0653, f1182, f1183, f1184, f1185, f1191, f1
 | ViewWindowId has presence = required. | f1404 |
 | ViewWindowId has value-type = text. | f1405 |
 
-### VP09 — projeksjonsansvar
+## Projeksjonsansvar
 
-| Functionality | Dataset | Datagram-familie | Faktum |
+| Functionality | Dataset | Datagram | Faktum |
 | --- | --- | --- | --- |
 | ProjectUiGeneration | UiSessionState | UiGenerationNotices | f0722 |
 
+## VP10 — Datagram-koding og packet
 
-### VP08 — avledet MessageSet per Channel og modus
+Kun closed kontrakt med validert Encoding og eksplisitte bitplasseringer.
 
-Generert fra permits og deltakelse, ikke en separat authored modell. Tom deltakelse er et hull.
+## Packet: UiGenerationWire / UiGenerationChanged — big-endian, most-significant-first
 
-| Channel | Mode | Message / Datagram | Sender | Receiver | Kilde-ID-er |
-| --- | --- | --- | --- | --- | --- |
-| FramePresentationCalls | UiPreview | PresentFrameRequest | FyneHost | FyneBackend | f0242, f0244, f0253, f0271, f0686 |
-| FramePresentationCalls | UiPreview | PresentFrameResult | FyneBackend | FyneHost | f0242, f0245, f0254, f0270, f0689 |
-| GoBuildCalls | NativeBuild | BuildGoRequest | CommandLineHost | GoBuildRunner | f0058, f0098, f0499, f0501, f0508 |
-| GoBuildCalls | NativeBuild | BuildGoResult | GoBuildRunner | CommandLineHost | f0061, f0097, f0499, f0502, f0509 |
-| GoDomainCalls | BoundExecution | DomainActionRequest | SdlDispatcher | GoDomainImplementation | f0208, f0519, f0521, f0525, f0854 |
-| GoDomainCalls | BoundExecution | DomainActionResult | GoDomainImplementation | SdlDispatcher | f0211, f0519, f0522, f0527, f0853 |
-| GoDomainCalls | UiPreview | DomainActionRequest | FyneHost | GoDomainImplementation | f0208, f0273, f0519, f0521, f0526 |
-| GoDomainCalls | UiPreview | DomainActionResult | GoDomainImplementation | FyneHost | f0211, f0272, f0519, f0522, f0528 |
-| GoGenerationCalls | NativeBuild | GenerateGoRequest | CommandLineHost | GoCodeGenerator | f0100, f0486, f0517, f0529, f0531 |
-| GoGenerationCalls | NativeBuild | GenerateGoResult | GoCodeGenerator | CommandLineHost | f0099, f0489, f0518, f0529, f0532 |
-| LayoutCalls | StaticExport | LayoutRequest | CommandLineHost | SduiLayout | f0102, f0572, f0574, f0579, f0995 |
-| LayoutCalls | StaticExport | LayoutResult | SduiLayout | CommandLineHost | f0101, f0572, f0575, f0582, f0997 |
-| LayoutCalls | UiPreview | LayoutRequest | FyneHost | SduiLayout | f0275, f0572, f0574, f0579, f0996 |
-| LayoutCalls | UiPreview | LayoutResult | SduiLayout | FyneHost | f0274, f0572, f0575, f0582, f0998 |
-| ModelReloadCalls | BoundLiveEditing | ReloadPublished | ReloadCoordinator | SourceWatcher | f0608, f0610, f0767, f0783, f1092 |
-| ModelReloadCalls | BoundLiveEditing | ReloadRejected | ReloadCoordinator | SourceWatcher | f0608, f0611, f0769, f0788, f1094 |
-| ModelReloadCalls | BoundLiveEditing | ReloadRequest | SourceWatcher | ReloadCoordinator | f0608, f0612, f0765, f0790, f1096 |
-| ModelReloadCalls | LiveEditing | ReloadPublished | ReloadCoordinator | SourceWatcher | f0608, f0610, f0768, f0783, f1093 |
-| ModelReloadCalls | LiveEditing | ReloadRejected | ReloadCoordinator | SourceWatcher | f0608, f0611, f0770, f0788, f1095 |
-| ModelReloadCalls | LiveEditing | ReloadRequest | SourceWatcher | ReloadCoordinator | f0608, f0612, f0766, f0790, f1097 |
-| NativeUiActions | BoundExecution | UiActionRejected | SduiDispatcher | FyneBackend | f0255, f0632, f0634, f0952, f1148 |
-| NativeUiActions | BoundExecution | UiActionRequest | FyneBackend | SduiDispatcher | f0257, f0632, f0635, f0951, f1150 |
-| NativeUiActions | BoundExecution | UiActionResult | SduiDispatcher | FyneBackend | f0256, f0632, f0636, f0953, f1153 |
-| SdlActionCalls | BoundExecution | SdlActionRequest | SdlUiBindingAdapter | SdlDispatcher | f0833, f0835, f0838, f0855, f0920 |
-| SdlActionCalls | BoundExecution | SdlActionResult | SdlDispatcher | SdlUiBindingAdapter | f0833, f0836, f0841, f0856, f0919 |
-| SdlCompilationCalls | BoundLiveEditing | CompileSdlRequest | ReloadCoordinator | SdlFrontend | f0109, f0772, f0842, f0844, f0869 |
-| SdlCompilationCalls | BoundLiveEditing | CompileSdlResult | SdlFrontend | ReloadCoordinator | f0112, f0771, f0842, f0845, f0870 |
-| SvgExportCalls | StaticExport | ExportSvgRequest | CommandLineHost | SduiPresentation | f0104, f0227, f1026, f1115, f1117 |
-| SvgExportCalls | StaticExport | ExportSvgResult | SduiPresentation | CommandLineHost | f0103, f0230, f1027, f1115, f1118 |
-| UiAstCalls | SourceInspection | BuildUiAstRequest | SduiFrontend | SduiParser | f0077, f0965, f1019, f1154, f1156 |
-| UiAstCalls | SourceInspection | BuildUiAstResult | SduiParser | SduiFrontend | f0080, f0964, f1020, f1154, f1157 |
-| UiCompilationCalls | LiveEditing | CompileUiRejected | SduiFrontend | ReloadCoordinator | f0115, f0773, f0968, f1173, f1175 |
-| UiCompilationCalls | LiveEditing | CompileUiRequest | ReloadCoordinator | SduiFrontend | f0117, f0775, f0966, f1173, f1176 |
-| UiCompilationCalls | LiveEditing | CompileUiResult | SduiFrontend | ReloadCoordinator | f0120, f0774, f0970, f1173, f1177 |
-| UiCompilationCalls | SourceInspection | CompileUiRejected | SduiFrontend | CommandLineHost | f0105, f0115, f0969, f1173, f1175 |
-| UiCompilationCalls | SourceInspection | CompileUiRequest | CommandLineHost | SduiFrontend | f0107, f0117, f0967, f1173, f1176 |
-| UiCompilationCalls | SourceInspection | CompileUiResult | SduiFrontend | CommandLineHost | f0106, f0120, f0971, f1173, f1177 |
-| UiDomainActions | BoundExecution | BoundActionRequest | SduiDispatcher | SdlUiBindingAdapter | f0048, f0921, f0955, f1178, f1180 |
-| UiDomainActions | BoundExecution | BoundActionResult | SdlUiBindingAdapter | SduiDispatcher | f0051, f0922, f0954, f1178, f1181 |
-| UiGenerationEvents | BoundExecution | UiGenerationNotices | SduiInstanceStore | FyneBackend | f0258, f0984, f1186, f1188, f1190 |
-| UiGenerationEvents | LiveEditing | UiGenerationNotices | SduiInstanceStore | FyneBackend | f0259, f0985, f1186, f1188, f1190 |
-| UiNormalizationCalls | SourceInspection | NormalizeUiRequest | SduiFrontend | SduiNormalizer | f0642, f0973, f1015, f1214, f1216 |
-| UiNormalizationCalls | SourceInspection | NormalizeUiResult | SduiNormalizer | SduiFrontend | f0645, f0972, f1016, f1214, f1217 |
-| UiTokenizationCalls | SourceInspection | TokenizeUiRequest | SduiFrontend | SduiLexer | f0975, f1001, f1130, f1228, f1230 |
-| UiTokenizationCalls | SourceInspection | TokenizeUiResult | SduiLexer | SduiFrontend | f0974, f1002, f1133, f1228, f1231 |
-| UiValidationCalls | SourceInspection | ValidateUiRequest | SduiFrontend | SduiValidator | f0977, f1048, f1232, f1234, f1262 |
-| UiValidationCalls | SourceInspection | ValidateUiResult | SduiValidator | SduiFrontend | f0976, f1049, f1232, f1235, f1265 |
-| ViewDisplayCalls | DocumentBrowsing | DisplayViewRequest | ViewerLaunchAdapter | XfmdDocumentHost | f0192, f1298, f1300, f1410, f1418 |
-| ViewDisplayCalls | DocumentBrowsing | ViewDisplayResult | XfmdDocumentHost | ViewerLaunchAdapter | f1298, f1301, f1305, f1408, f1419 |
-| ViewDisplayCalls | DocumentBrowsing | ViewTargetUnavailable | XfmdDocumentHost | ViewerLaunchAdapter | f1298, f1302, f1403, f1409, f1420 |
-| ViewLaunchCalls | DocumentBrowsing | LaunchViewRequest | DocumentBroker | ViewerLaunchAdapter | f0198, f0567, f1316, f1318, f1411 |
-| ViewLaunchCalls | DocumentBrowsing | ViewLaunchResult | ViewerLaunchAdapter | DocumentBroker | f0197, f1316, f1319, f1322, f1412 |
-| ViewNavigationCalls | DocumentBrowsing | SelectViewRequest | XfmdDocumentHost | DocumentBroker | f0199, f1053, f1327, f1329, f1423 |
-| ViewNavigationCalls | DocumentBrowsing | ViewOpenedResult | DocumentBroker | XfmdDocumentHost | f0200, f1327, f1330, f1345, f1421 |
-| ViewNavigationCalls | DocumentBrowsing | ViewRequestRejected | DocumentBroker | XfmdDocumentHost | f0201, f1327, f1331, f1385, f1422 |
-| ViewProjectionCalls | DocumentBrowsing | ProjectViewRequest | DocumentBroker | SdlViewpointGenerator | f0204, f0724, f0941, f1350, f1352 |
-| ViewProjectionCalls | DocumentBrowsing | ViewBundleResult | SdlViewpointGenerator | DocumentBroker | f0202, f0942, f1293, f1350, f1353 |
-| ViewProjectionCalls | DocumentBrowsing | ViewProjectionRejected | SdlViewpointGenerator | DocumentBroker | f0203, f0943, f1350, f1354, f1366 |
-| ViewPublicationCalls | DocumentBrowsing | PublishViewRequest | DocumentBroker | ViewArtifactStore | f0206, f0736, f1284, f1367, f1369 |
-| ViewPublicationCalls | DocumentBrowsing | ViewReferenceResult | ViewArtifactStore | DocumentBroker | f0205, f1285, f1367, f1370, f1380 |
+![Packet: UiGenerationWire / UiGenerationChanged — big-endian, most-significant-first](diagrams/VP10-UiGenerationWire.svg)
 
-## VP04 — Grensesnittbruk
+Kildegrunnlag: f0650, f0651, f0652, f0653, f1182, f1183, f1184, f1185, f1191, f1192, f1193, f1194, f1195.
 
-Tabellen dekker alle consumes-fakta. Portnavn er ikke Channel-kontrakter eller tilbyderkoblinger.
 
-| Unit / Container | Interface | Faktum | Kildelinje |
-| --- | --- | --- | --- |
-| CommandLineHost | ExportSinkPort | f0090 | 555 |
-| CommandLineHost | PreparedFramePort | f0091 | 556 |
-| CommandLineHost | SduiFrontendPort | f0092 | 557 |
-| CommandLineHost | SourceSnapshotPort | f0093 | 558 |
-| DiagramProvider | DiagramEnginePort | f0181 | 646 |
-| DiagramProvider | ResourcePort | f0182 | 647 |
-| DomainStateMigrator | DomainStatePort | f0212 | 677 |
-| DomainStateMigrator | SdlModelPort | f0213 | 678 |
-| FyneBackend | PreparedFramePort | f0246 | 711 |
-| FyneBackend | UiSessionPort | f0247 | 712 |
-| FyneHost | DomainBindingPort | f0260 | 725 |
-| FyneHost | ReloadPort | f0261 | 726 |
-| FyneHost | SdlFrontendPort | f0262 | 727 |
-| FyneHost | SduiFrontendPort | f0263 | 728 |
-| FyneHost | SourceSnapshotPort | f0264 | 729 |
-| FyneHost | UiSessionPort | f0265 | 730 |
-| FyneHost | WidgetBackendPort | f0266 | 731 |
-| GoBuildRunner | BuildToolPort | f0503 | 968 |
-| GoBuildRunner | GeneratedArtifactPort | f0504 | 969 |
-| GoCodeGenerator | ExecutionProfilePort | f0510 | 975 |
-| GoCodeGenerator | SdlModelPort | f0511 | 976 |
-| GoCodeGenerator | SduiModelPort | f0512 | 977 |
-| MarkdownProvider | DiagramPort | f0592 | 1057 |
-| MarkdownProvider | MeasurementPort | f0593 | 1058 |
-| MarkdownProvider | ResourcePort | f0594 | 1059 |
-| ReloadCoordinator | BindingReloadPort | f0753 | 1218 |
-| ReloadCoordinator | DiagnosticPort | f0754 | 1219 |
-| ReloadCoordinator | SdlFrontendPort | f0755 | 1220 |
-| ReloadCoordinator | SdlReloadPort | f0756 | 1221 |
-| ReloadCoordinator | SduiFrontendPort | f0757 | 1222 |
-| ReloadCoordinator | SourceSnapshotPort | f0758 | 1223 |
-| ReloadCoordinator | UiReloadPort | f0759 | 1224 |
-| SdlDispatcher | DomainFunctionPort | f0846 | 1311 |
-| SdlDispatcher | DomainStatePort | f0847 | 1312 |
-| SdlExecutionGate | DiagnosticPort | f0857 | 1322 |
-| SdlExecutionGate | SdlModelPort | f0858 | 1323 |
-| SdlFrontend | DiagnosticPort | f0861 | 1326 |
-| SdlFrontend | SourceSnapshotPort | f0862 | 1327 |
-| SdlFunctionRegistry | DomainFunctionPort | f0871 | 1336 |
-| SdlRuntime | DomainFunctionPort | f0896 | 1361 |
-| SdlRuntime | SdlModelPort | f0897 | 1362 |
-| SdlUiBindingAdapter | DiagnosticPort | f0910 | 1375 |
-| SdlUiBindingAdapter | SdlExecutionPort | f0911 | 1376 |
-| SdlUiBindingAdapter | UiSessionPort | f0912 | 1377 |
-| SduiDispatcher | DomainBindingPort | f0944 | 1409 |
-| SduiDispatcher | UiStatePort | f0945 | 1410 |
-| SduiFrontend | DiagnosticPort | f0956 | 1421 |
-| SduiFrontend | SourceSnapshotPort | f0957 | 1422 |
-| SduiLayout | ContentProviderPort | f0986 | 1451 |
-| SduiLayout | MeasurementPort | f0987 | 1452 |
-| SduiLayout | UiSnapshotPort | f0988 | 1453 |
-| SduiPresentation | PreparedFramePort | f1021 | 1486 |
-| SduiPropertyStore | UiStatePort | f1028 | 1493 |
-| SduiRuntime | DomainBindingPort | f1033 | 1498 |
-| SduiRuntime | SduiModelPort | f1034 | 1499 |
-| SourceLoader | SourceInputPort | f1083 | 1548 |
-| SourceWatcher | FileChangePort | f1088 | 1553 |
-| UiStateReconciler | SduiModelPort | f1222 | 1687 |
-| UiStateReconciler | UiStatePort | f1223 | 1688 |
+## VP11 — Egenskaper, sporbarhet og modellhull
 
-## VP11 — Egenskaper og fullstendig faktaregister
+Deklarasjoner og alle fakta med kildeposisjoner; støttegrenser beholdes.
 
-Registeret inkluderer alle fakta, også de som ikke har en egen tegning.
+## Fullstendig faktaregister
 
-| ID | Utsagn | Kildelinje |
+| ID | Utsagn | Linje |
 | --- | --- | --- |
 | f0000 | ActionArguments has completeness = closed. | 465 |
 | f0001 | ActionArguments has-field ActionGeneration. | 466 |
@@ -5230,9 +2841,9 @@ Registeret inkluderer alle fakta, også de som ikke har en egen tegning.
 | f1422 | XfmdDocumentHost uses ViewNavigationCalls as receiver of ViewRequestRejected in mode DocumentBrowsing. | 1887 |
 | f1423 | XfmdDocumentHost uses ViewNavigationCalls as sender of SelectViewRequest in mode DocumentBrowsing. | 1888 |
 
-### Deklarasjonsregister
+## Deklarasjoner
 
-| Identitet | Type | Kildelinje |
+| ID | Type | Linje |
 | --- | --- | --- |
 | ActionArguments | contract | 2 |
 | ActionGeneration | field | 3 |
@@ -5697,3 +3308,4 @@ Registeret inkluderer alle fakta, også de som ikke har en egen tegning.
 | WidgetBackendPort | interface | 462 |
 | WriteGeneratedArtifacts | functionality | 463 |
 | XfmdDocumentHost | container | 464 |
+

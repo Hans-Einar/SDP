@@ -96,7 +96,7 @@ Avhenger av avklart G4-profil og felles runtime. Eier: SDL/SDUI sammen.
 | --- | --- |
 | G5-M1 | **Levert:** Generert Go oppretter samme modeller/bindinger; bygger sammen med separate håndskrevne domenefunksjoner |
 | G5-M2 | **Levert:** Filbasert utviklingsmodus og generert program gir samme hendelsesspor/tilstand for avtalt profil; ufullstendig semantikk gir diagnose |
-| G5-M3 | Reproduserbar SVG/Markdown-dokumentasjon fra valgt UI/state; kilde-/verktøyversjon og renderbevis |
+| G5-M3 | **Levert:** Reproduserbar SVG/Markdown-dokumentasjon fra valgt UI/state; kilde-/verktøyversjon og renderbevis |
 | G5-M4 | Port fullført: gamle aktive Python-innganger/fixtureplassering fjernet eller erstattet, lenker/kommandoer oppdatert; én språkimplementasjon per profil |
 
 Krav R19/R26. Go-byggcache gjenbrukes ved restart; dynamisk maskinkodeutskifting

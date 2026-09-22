@@ -1,0 +1,12 @@
+# Bidrag til kapabilitet: SduiSourceModel
+
+[Viewpoint](index.md) · [Navigator](../../navigator.md)
+
+Revisjon: `be0dfcfdca6e04f7b8c4594dc5e72d920724ef96e1f604e749432121aa83e862`.
+
+## Bidrag til kapabilitet: SduiSourceModel
+
+![Bidrag til kapabilitet: SduiSourceModel](../../diagrams/VP03-SduiSourceModel.svg)
+
+Kildegrunnlag: f0075, f0139, f0222, f0705, f0708, f0814, f0962, f0999, f1011, f1012, f1013, f1017, f1043, f1044, f1045, f1046, f1128, f1248, f1259, f1273.
+

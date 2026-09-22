@@ -1,486 +1,715 @@
-# SDL — generert implementasjonsplan
+# Generert implementasjonsplan
 
-Denne rapporten er generert av SDL-verktøyet fra den validerte designkilden.
-Status er modellens påstand. Planlagt Go-/UI-arbeid er ikke implementert av denne rapporten.
+Status er modellens påstand, ikke bevis for kjøring.
 
-[SDL-kilde](../architecture.design) · [Alle viewpoints](printout.md)
+[Navigator](navigator.md)
 
-116 Functionality-er har eksplisitt milepæl-/ansvarskobling; 0 mangler.
+## BuildNativeRealization
+
+Status: unspecified.
+
+| Faktum | Kilde-ID |
+| --- | --- |
+| BuildNativeRealization refines RealizeDesign. | f0062 |
+
+## ExportUiDocumentation
+
+Status: unspecified.
+
+| Faktum | Kilde-ID |
+| --- | --- |
+| ExportUiDocumentation refines InspectDesignSource. | f0234 |
 
 ## G1FrontendPort
 
-Status: **planned**. Kilde: f0277.
+Status: planned.
 
-Leveransebidrag: StructuralModelInspection (f0276).
+| Faktum | Kilde-ID |
+| --- | --- |
+| G1FrontendPort delivers StructuralModelInspection. | f0276 |
+| G1FrontendPort has implementation-status = planned. | f0277 |
+| G1M1ParserAndAst refines G1FrontendPort. | f0283 |
+| G1M2ValidationAndNormalization refines G1FrontendPort. | f0294 |
+| G1M3Concept1AndDumps refines G1FrontendPort. | f0299 |
 
-![Aktivitetsinndeling: G1FrontendPort](diagrams/VP06-detail-G1FrontendPort.svg)
+## G1M1ParserAndAst
 
-### G1M1ParserAndAst
+Status: planned.
 
-Status: **planned**. Kilde: f0282.
+| Faktum | Kilde-ID |
+| --- | --- |
+| G1M1ParserAndAst addresses BuildSduiAst. | f0278 |
+| G1M1ParserAndAst addresses IdentifySourceRevision. | f0279 |
+| G1M1ParserAndAst addresses ReadBoundedSources. | f0280 |
+| G1M1ParserAndAst addresses TokenizeSduiSource. | f0281 |
+| G1M1ParserAndAst has implementation-status = planned. | f0282 |
+| G1M1ParserAndAst refines G1FrontendPort. | f0283 |
+| G1M2ValidationAndNormalization depends-on G1M1ParserAndAst. | f0292 |
+| UiCompilationAccepted illustrates G1M1ParserAndAst. | f1160 |
+| SduiParser owns BuildSduiAst. | f1017 |
+| SourceLoader owns IdentifySourceRevision. | f1085 |
+| SourceLoader owns ReadBoundedSources. | f1086 |
+| SduiLexer owns TokenizeSduiSource. | f0999 |
 
-Forutsetninger: Ingen eksplisitt deklarert.
+## G1M2ValidationAndNormalization
 
-| Ansvar | Logisk eier | Kilde-ID-er |
-| --- | --- | --- |
-| BuildSduiAst | SduiParser | f0278, f1017 |
-| IdentifySourceRevision | SourceLoader | f0279, f1085 |
-| ReadBoundedSources | SourceLoader | f0280, f1086 |
-| TokenizeSduiSource | SduiLexer | f0281, f0999 |
+Status: planned.
 
-Eksempelbane: UiCompilationAccepted. Kobling: f1160.
+| Faktum | Kilde-ID |
+| --- | --- |
+| G1M2ValidationAndNormalization addresses CoordinateSduiCompilation. | f0284 |
+| G1M2ValidationAndNormalization addresses ExpandUiDefinitions. | f0285 |
+| G1M2ValidationAndNormalization addresses PreserveUiRegions. | f0286 |
+| G1M2ValidationAndNormalization addresses PreserveUiSourceMap. | f0287 |
+| G1M2ValidationAndNormalization addresses ResolveUiNames. | f0288 |
+| G1M2ValidationAndNormalization addresses ValidateRelativeFormatting. | f0289 |
+| G1M2ValidationAndNormalization addresses ValidateSymbolicBindings. | f0290 |
+| G1M2ValidationAndNormalization addresses ValidateWidgetArguments. | f0291 |
+| G1M2ValidationAndNormalization depends-on G1M1ParserAndAst. | f0292 |
+| G1M2ValidationAndNormalization has implementation-status = planned. | f0293 |
+| G1M2ValidationAndNormalization refines G1FrontendPort. | f0294 |
+| G1M3Concept1AndDumps depends-on G1M2ValidationAndNormalization. | f0297 |
+| G2M1RelativeMeasurement depends-on G1M2ValidationAndNormalization. | f0306 |
+| G3M1TypedUiSession depends-on G1M2ValidationAndNormalization. | f0344 |
+| UiCompilationAccepted illustrates G1M2ValidationAndNormalization. | f1161 |
+| SduiFrontend owns CoordinateSduiCompilation. | f0962 |
+| SduiNormalizer owns ExpandUiDefinitions. | f1011 |
+| SduiNormalizer owns PreserveUiRegions. | f1012 |
+| SduiNormalizer owns PreserveUiSourceMap. | f1013 |
+| SduiValidator owns ResolveUiNames. | f1043 |
+| SduiValidator owns ValidateRelativeFormatting. | f1044 |
+| SduiValidator owns ValidateSymbolicBindings. | f1045 |
+| SduiValidator owns ValidateWidgetArguments. | f1046 |
 
-![Scenario: UiCompilationAccepted — modus SourceInspection](diagrams/VP08-UiCompilationAccepted.svg)
+## G1M3Concept1AndDumps
 
-### G1M2ValidationAndNormalization
+Status: planned.
 
-Status: **planned**. Kilde: f0293.
-
-Forutsetninger: G1M1ParserAndAst (f0292).
-
-| Ansvar | Logisk eier | Kilde-ID-er |
-| --- | --- | --- |
-| CoordinateSduiCompilation | SduiFrontend | f0284, f0962 |
-| ExpandUiDefinitions | SduiNormalizer | f0285, f1011 |
-| PreserveUiRegions | SduiNormalizer | f0286, f1012 |
-| PreserveUiSourceMap | SduiNormalizer | f0287, f1013 |
-| ResolveUiNames | SduiValidator | f0288, f1043 |
-| ValidateRelativeFormatting | SduiValidator | f0289, f1044 |
-| ValidateSymbolicBindings | SduiValidator | f0290, f1045 |
-| ValidateWidgetArguments | SduiValidator | f0291, f1046 |
-
-Eksempelbane: UiCompilationAccepted. Kobling: f1161.
-
-[Scenariofigur](diagrams/VP08-UiCompilationAccepted.svg)
-
-### G1M3Concept1AndDumps
-
-Status: **planned**. Kilde: f0298.
-
-Forutsetninger: G1M2ValidationAndNormalization (f0297).
-
-| Ansvar | Logisk eier | Kilde-ID-er |
-| --- | --- | --- |
-| ExportConsoleSnapshot | SduiPresentation | f0295, f1023 |
-| ReportSourceDiagnostics | DiagnosticReporter | f0296, f0179 |
+| Faktum | Kilde-ID |
+| --- | --- |
+| G1M3Concept1AndDumps addresses ExportConsoleSnapshot. | f0295 |
+| G1M3Concept1AndDumps addresses ReportSourceDiagnostics. | f0296 |
+| G1M3Concept1AndDumps depends-on G1M2ValidationAndNormalization. | f0297 |
+| G1M3Concept1AndDumps has implementation-status = planned. | f0298 |
+| G1M3Concept1AndDumps refines G1FrontendPort. | f0299 |
+| G5M4RetirePython depends-on G1M3Concept1AndDumps. | f0429 |
+| SduiPresentation owns ExportConsoleSnapshot. | f1023 |
+| DiagnosticReporter owns ReportSourceDiagnostics. | f0179 |
 
 ## G2LayoutAndPresentation
 
-Status: **planned**. Kilde: f0301.
+Status: planned.
 
-Leveransebidrag: InteractiveUiPreview (f0300).
+| Faktum | Kilde-ID |
+| --- | --- |
+| G2LayoutAndPresentation delivers InteractiveUiPreview. | f0300 |
+| G2LayoutAndPresentation has implementation-status = planned. | f0301 |
+| G2M1RelativeMeasurement refines G2LayoutAndPresentation. | f0308 |
+| G2M2SharedSvgGeometry refines G2LayoutAndPresentation. | f0313 |
+| G2M3FyneInteractions refines G2LayoutAndPresentation. | f0322 |
+| G2M4RichContent refines G2LayoutAndPresentation. | f0330 |
 
-![Aktivitetsinndeling: G2LayoutAndPresentation](diagrams/VP06-detail-G2LayoutAndPresentation.svg)
+## G2M1RelativeMeasurement
 
-### G2M1RelativeMeasurement
+Status: planned.
 
-Status: **planned**. Kilde: f0307.
+| Faktum | Kilde-ID |
+| --- | --- |
+| G2M1RelativeMeasurement addresses AllocateGeometry. | f0302 |
+| G2M1RelativeMeasurement addresses ComputeClipping. | f0303 |
+| G2M1RelativeMeasurement addresses MeasureUiContent. | f0304 |
+| G2M1RelativeMeasurement addresses ResolveAncestorDimensions. | f0305 |
+| G2M1RelativeMeasurement depends-on G1M2ValidationAndNormalization. | f0306 |
+| G2M1RelativeMeasurement has implementation-status = planned. | f0307 |
+| G2M1RelativeMeasurement refines G2LayoutAndPresentation. | f0308 |
+| G2M2SharedSvgGeometry depends-on G2M1RelativeMeasurement. | f0311 |
+| InteractiveFramePrepared illustrates G2M1RelativeMeasurement. | f0543 |
+| SduiLayout owns AllocateGeometry. | f0989 |
+| SduiLayout owns ComputeClipping. | f0991 |
+| SduiLayout owns MeasureUiContent. | f0992 |
+| SduiLayout owns ResolveAncestorDimensions. | f0993 |
 
-Forutsetninger: G1M2ValidationAndNormalization (f0306).
+## G2M2SharedSvgGeometry
 
-| Ansvar | Logisk eier | Kilde-ID-er |
-| --- | --- | --- |
-| AllocateGeometry | SduiLayout | f0302, f0989 |
-| ComputeClipping | SduiLayout | f0303, f0991 |
-| MeasureUiContent | SduiLayout | f0304, f0992 |
-| ResolveAncestorDimensions | SduiLayout | f0305, f0993 |
+Status: planned.
 
-Eksempelbane: InteractiveFramePrepared. Kobling: f0543.
+| Faktum | Kilde-ID |
+| --- | --- |
+| G2M2SharedSvgGeometry addresses BuildPreparedFrame. | f0309 |
+| G2M2SharedSvgGeometry addresses ExportSvgSnapshot. | f0310 |
+| G2M2SharedSvgGeometry depends-on G2M1RelativeMeasurement. | f0311 |
+| G2M2SharedSvgGeometry has implementation-status = planned. | f0312 |
+| G2M2SharedSvgGeometry refines G2LayoutAndPresentation. | f0313 |
+| G2M3FyneInteractions depends-on G2M2SharedSvgGeometry. | f0320 |
+| StaticFrameExported illustrates G2M2SharedSvgGeometry. | f1102 |
+| SduiLayout owns BuildPreparedFrame. | f0990 |
+| SduiPresentation owns ExportSvgSnapshot. | f1024 |
 
-![Scenario: InteractiveFramePrepared — modus UiPreview](diagrams/VP08-InteractiveFramePrepared.svg)
+## G2M3FyneInteractions
 
-### G2M2SharedSvgGeometry
+Status: planned.
 
-Status: **planned**. Kilde: f0312.
+| Faktum | Kilde-ID |
+| --- | --- |
+| G2M3FyneInteractions addresses ComposeInteractiveSession. | f0314 |
+| G2M3FyneInteractions addresses HandleFocusAndTextInput. | f0315 |
+| G2M3FyneInteractions addresses PublishPresentation. | f0316 |
+| G2M3FyneInteractions addresses ReconcileWidgets. | f0317 |
+| G2M3FyneInteractions addresses ReleaseNativeWidgets. | f0318 |
+| G2M3FyneInteractions addresses ScheduleUiPublication. | f0319 |
+| G2M3FyneInteractions depends-on G2M2SharedSvgGeometry. | f0320 |
+| G2M3FyneInteractions has implementation-status = planned. | f0321 |
+| G2M3FyneInteractions refines G2LayoutAndPresentation. | f0322 |
+| G2M4RichContent depends-on G2M3FyneInteractions. | f0328 |
+| G3M1TypedUiSession depends-on G2M3FyneInteractions. | f0345 |
+| InteractiveFramePrepared illustrates G2M3FyneInteractions. | f0544 |
+| UnboundLocalAction illustrates G2M3FyneInteractions. | f1238 |
+| FyneHost owns ComposeInteractiveSession. | f0267 |
+| FyneBackend owns HandleFocusAndTextInput. | f0248 |
+| FyneBackend owns PublishPresentation. | f0249 |
+| FyneBackend owns ReconcileWidgets. | f0250 |
+| FyneBackend owns ReleaseNativeWidgets. | f0251 |
+| FyneHost owns ScheduleUiPublication. | f0268 |
 
-Forutsetninger: G2M1RelativeMeasurement (f0311).
+## G2M4RichContent
 
-| Ansvar | Logisk eier | Kilde-ID-er |
-| --- | --- | --- |
-| BuildPreparedFrame | SduiLayout | f0309, f0990 |
-| ExportSvgSnapshot | SduiPresentation | f0310, f1024 |
+Status: planned.
 
-Eksempelbane: StaticFrameExported. Kobling: f1102.
+| Faktum | Kilde-ID |
+| --- | --- |
+| G2M4RichContent addresses MeasureMarkdownContent. | f0323 |
+| G2M4RichContent addresses PrepareDiagramResource. | f0324 |
+| G2M4RichContent addresses PrepareMarkdown. | f0325 |
+| G2M4RichContent addresses ReleaseVisualResources. | f0326 |
+| G2M4RichContent addresses ValidateVisualResources. | f0327 |
+| G2M4RichContent depends-on G2M3FyneInteractions. | f0328 |
+| G2M4RichContent has implementation-status = planned. | f0329 |
+| G2M4RichContent refines G2LayoutAndPresentation. | f0330 |
+| G5M3DocumentationExport depends-on G2M4RichContent. | f0423 |
+| MarkdownProvider owns MeasureMarkdownContent. | f0595 |
+| DiagramProvider owns PrepareDiagramResource. | f0183 |
+| MarkdownProvider owns PrepareMarkdown. | f0596 |
+| ResourceStore owns ReleaseVisualResources. | f0815 |
+| ResourceStore owns ValidateVisualResources. | f0816 |
 
-![Scenario: StaticFrameExported — modus StaticExport](diagrams/VP08-StaticFrameExported.svg)
+## G3M1TypedUiSession
 
-### G2M3FyneInteractions
+Status: planned.
 
-Status: **planned**. Kilde: f0321.
+| Faktum | Kilde-ID |
+| --- | --- |
+| G3M1TypedUiSession addresses ApplyPropertyBatch. | f0331 |
+| G3M1TypedUiSession addresses CloseUiInstance. | f0332 |
+| G3M1TypedUiSession addresses CorrelateUiResult. | f0333 |
+| G3M1TypedUiSession addresses CreateUiInstance. | f0334 |
+| G3M1TypedUiSession addresses DispatchUiEvent. | f0335 |
+| G3M1TypedUiSession addresses ManageWidgetIdentities. | f0336 |
+| G3M1TypedUiSession addresses ProjectUiGeneration. | f0337 |
+| G3M1TypedUiSession addresses RejectStaleUiEvent. | f0338 |
+| G3M1TypedUiSession addresses RevokeWidgetGenerations. | f0339 |
+| G3M1TypedUiSession addresses SnapshotUiState. | f0340 |
+| G3M1TypedUiSession addresses TrackInputDraft. | f0341 |
+| G3M1TypedUiSession addresses ValidatePropertyBatch. | f0342 |
+| G3M1TypedUiSession addresses ValidateUiEvent. | f0343 |
+| G3M1TypedUiSession depends-on G1M2ValidationAndNormalization. | f0344 |
+| G3M1TypedUiSession depends-on G2M3FyneInteractions. | f0345 |
+| G3M1TypedUiSession has implementation-status = planned. | f0346 |
+| G3M1TypedUiSession refines G3UiRuntimeAndReload. | f0347 |
+| G3M2CandidatePublication depends-on G3M1TypedUiSession. | f0354 |
+| G4M3UiDomainBinding depends-on G3M1TypedUiSession. | f0396 |
+| SduiPropertyStore owns ApplyPropertyBatch. | f1029 |
+| SduiRuntime owns CloseUiInstance. | f1039 |
+| SduiDispatcher owns CorrelateUiResult. | f0946 |
+| SduiRuntime owns CreateUiInstance. | f1040 |
+| SduiDispatcher owns DispatchUiEvent. | f0947 |
+| SduiInstanceStore owns ManageWidgetIdentities. | f0979 |
+| SduiInstanceStore owns ProjectUiGeneration. | f0980 |
+| SduiDispatcher owns RejectStaleUiEvent. | f0948 |
+| SduiInstanceStore owns RevokeWidgetGenerations. | f0981 |
+| SduiInstanceStore owns SnapshotUiState. | f0982 |
+| SduiPropertyStore owns TrackInputDraft. | f1030 |
+| SduiPropertyStore owns ValidatePropertyBatch. | f1031 |
+| SduiDispatcher owns ValidateUiEvent. | f0949 |
 
-Forutsetninger: G2M2SharedSvgGeometry (f0320).
+## G3M2CandidatePublication
 
-| Ansvar | Logisk eier | Kilde-ID-er |
-| --- | --- | --- |
-| ComposeInteractiveSession | FyneHost | f0314, f0267 |
-| HandleFocusAndTextInput | FyneBackend | f0315, f0248 |
-| PublishPresentation | FyneBackend | f0316, f0249 |
-| ReconcileWidgets | FyneBackend | f0317, f0250 |
-| ReleaseNativeWidgets | FyneBackend | f0318, f0251 |
-| ScheduleUiPublication | FyneHost | f0319, f0268 |
+Status: planned.
 
-Eksempelbane: InteractiveFramePrepared. Kobling: f0544.
+| Faktum | Kilde-ID |
+| --- | --- |
+| G3M2CandidatePublication addresses CoalesceSourceChanges. | f0348 |
+| G3M2CandidatePublication addresses KeepLastValidModels. | f0349 |
+| G3M2CandidatePublication addresses ObserveSourceChanges. | f0350 |
+| G3M2CandidatePublication addresses PrepareCandidateModels. | f0351 |
+| G3M2CandidatePublication addresses PublishModelGeneration. | f0352 |
+| G3M2CandidatePublication addresses RetirePreviousGeneration. | f0353 |
+| G3M2CandidatePublication depends-on G3M1TypedUiSession. | f0354 |
+| G3M2CandidatePublication has implementation-status = planned. | f0355 |
+| G3M2CandidatePublication refines G3UiRuntimeAndReload. | f0356 |
+| G3M3CompatibleState depends-on G3M2CandidatePublication. | f0360 |
+| UiModelReloadAccepted illustrates G3M2CandidatePublication. | f1198 |
+| UiModelReloadRejected illustrates G3M2CandidatePublication. | f1208 |
+| SourceWatcher owns CoalesceSourceChanges. | f1089 |
+| ReloadCoordinator owns KeepLastValidModels. | f0760 |
+| SourceWatcher owns ObserveSourceChanges. | f1090 |
+| ReloadCoordinator owns PrepareCandidateModels. | f0761 |
+| ReloadCoordinator owns PublishModelGeneration. | f0762 |
+| ReloadCoordinator owns RetirePreviousGeneration. | f0763 |
 
-[Scenariofigur](diagrams/VP08-InteractiveFramePrepared.svg)
+## G3M3CompatibleState
 
-Eksempelbane: UnboundLocalAction. Kobling: f1238.
+Status: planned.
 
-![Scenario: UnboundLocalAction — modus UiPreview](diagrams/VP08-UnboundLocalAction.svg)
-
-### G2M4RichContent
-
-Status: **planned**. Kilde: f0329.
-
-Forutsetninger: G2M3FyneInteractions (f0328).
-
-| Ansvar | Logisk eier | Kilde-ID-er |
-| --- | --- | --- |
-| MeasureMarkdownContent | MarkdownProvider | f0323, f0595 |
-| PrepareDiagramResource | DiagramProvider | f0324, f0183 |
-| PrepareMarkdown | MarkdownProvider | f0325, f0596 |
-| ReleaseVisualResources | ResourceStore | f0326, f0815 |
-| ValidateVisualResources | ResourceStore | f0327, f0816 |
+| Faktum | Kilde-ID |
+| --- | --- |
+| G3M3CompatibleState addresses MatchCompatibleWidgets. | f0357 |
+| G3M3CompatibleState addresses PreserveCompatibleUiState. | f0358 |
+| G3M3CompatibleState addresses ResetIncompatibleUiState. | f0359 |
+| G3M3CompatibleState depends-on G3M2CandidatePublication. | f0360 |
+| G3M3CompatibleState has implementation-status = planned. | f0361 |
+| G3M3CompatibleState refines G3UiRuntimeAndReload. | f0362 |
+| G4M4DomainReload depends-on G3M3CompatibleState. | f0403 |
+| UiModelReloadAccepted illustrates G3M3CompatibleState. | f1199 |
+| UiStateReconciler owns MatchCompatibleWidgets. | f1224 |
+| UiStateReconciler owns PreserveCompatibleUiState. | f1225 |
+| UiStateReconciler owns ResetIncompatibleUiState. | f1226 |
 
 ## G3UiRuntimeAndReload
 
-Status: **planned**. Kilde: f0364.
+Status: planned.
 
-Leveransebidrag: LiveModelReload (f0363).
+| Faktum | Kilde-ID |
+| --- | --- |
+| G3M1TypedUiSession refines G3UiRuntimeAndReload. | f0347 |
+| G3M2CandidatePublication refines G3UiRuntimeAndReload. | f0356 |
+| G3M3CompatibleState refines G3UiRuntimeAndReload. | f0362 |
+| G3UiRuntimeAndReload delivers LiveModelReload. | f0363 |
+| G3UiRuntimeAndReload has implementation-status = planned. | f0364 |
 
-![Aktivitetsinndeling: G3UiRuntimeAndReload](diagrams/VP06-detail-G3UiRuntimeAndReload.svg)
+## G4M1SdlFrontend
 
-### G3M1TypedUiSession
+Status: planned.
 
-Status: **planned**. Kilde: f0346.
+| Faktum | Kilde-ID |
+| --- | --- |
+| G4M1SdlFrontend addresses BuildSdlAst. | f0365 |
+| G4M1SdlFrontend addresses CoordinateSdlCompilation. | f0366 |
+| G4M1SdlFrontend addresses NormalizeSdlModel. | f0367 |
+| G4M1SdlFrontend addresses PreserveSdlSourceMap. | f0368 |
+| G4M1SdlFrontend addresses ResolveSdlSymbols. | f0369 |
+| G4M1SdlFrontend addresses TokenizeSdlSource. | f0370 |
+| G4M1SdlFrontend addresses ValidateSdlProfile. | f0371 |
+| G4M1SdlFrontend addresses ValidateSdlStructure. | f0372 |
+| G4M1SdlFrontend has implementation-status = planned. | f0373 |
+| G4M1SdlFrontend refines G4SdlRuntimeAndBinding. | f0374 |
+| G4M2TypedExecution depends-on G4M1SdlFrontend. | f0387 |
+| G6M1StaticNavigation depends-on G4M1SdlFrontend. | f0444 |
+| SdlModelReloadAccepted illustrates G4M1SdlFrontend. | f0884 |
+| SdlParser owns BuildSdlAst. | f0894 |
+| SdlFrontend owns CoordinateSdlCompilation. | f0867 |
+| SdlNormalizer owns NormalizeSdlModel. | f0891 |
+| SdlNormalizer owns PreserveSdlSourceMap. | f0892 |
+| SdlValidator owns ResolveSdlSymbols. | f0923 |
+| SdlLexer owns TokenizeSdlSource. | f0875 |
+| SdlValidator owns ValidateSdlProfile. | f0925 |
+| SdlValidator owns ValidateSdlStructure. | f0926 |
 
-Forutsetninger: G1M2ValidationAndNormalization (f0344), G2M3FyneInteractions (f0345).
+## G4M2TypedExecution
 
-| Ansvar | Logisk eier | Kilde-ID-er |
-| --- | --- | --- |
-| ApplyPropertyBatch | SduiPropertyStore | f0331, f1029 |
-| CloseUiInstance | SduiRuntime | f0332, f1039 |
-| CorrelateUiResult | SduiDispatcher | f0333, f0946 |
-| CreateUiInstance | SduiRuntime | f0334, f1040 |
-| DispatchUiEvent | SduiDispatcher | f0335, f0947 |
-| ManageWidgetIdentities | SduiInstanceStore | f0336, f0979 |
-| ProjectUiGeneration | SduiInstanceStore | f0337, f0980 |
-| RejectStaleUiEvent | SduiDispatcher | f0338, f0948 |
-| RevokeWidgetGenerations | SduiInstanceStore | f0339, f0981 |
-| SnapshotUiState | SduiInstanceStore | f0340, f0982 |
-| TrackInputDraft | SduiPropertyStore | f0341, f1030 |
-| ValidatePropertyBatch | SduiPropertyStore | f0342, f1031 |
-| ValidateUiEvent | SduiDispatcher | f0343, f0949 |
+Status: planned.
 
-### G3M2CandidatePublication
+| Faktum | Kilde-ID |
+| --- | --- |
+| G4M2TypedExecution addresses CancelPendingActions. | f0375 |
+| G4M2TypedExecution addresses CheckExecutionCompleteness. | f0376 |
+| G4M2TypedExecution addresses CheckFunctionSignatures. | f0377 |
+| G4M2TypedExecution addresses CloseSdlInstance. | f0378 |
+| G4M2TypedExecution addresses CorrelateActionResult. | f0379 |
+| G4M2TypedExecution addresses CreateSdlInstance. | f0380 |
+| G4M2TypedExecution addresses InvokeRegisteredFunction. | f0381 |
+| G4M2TypedExecution addresses ManageDomainState. | f0382 |
+| G4M2TypedExecution addresses PerformDomainOperation. | f0383 |
+| G4M2TypedExecution addresses RegisterDomainFunctions. | f0384 |
+| G4M2TypedExecution addresses SnapshotDomainState. | f0385 |
+| G4M2TypedExecution addresses ValidateActionInput. | f0386 |
+| G4M2TypedExecution depends-on G4M1SdlFrontend. | f0387 |
+| G4M2TypedExecution has implementation-status = planned. | f0388 |
+| G4M2TypedExecution refines G4SdlRuntimeAndBinding. | f0389 |
+| G4M3UiDomainBinding depends-on G4M2TypedExecution. | f0397 |
+| SdlDispatcher owns CancelPendingActions. | f0848 |
+| SdlExecutionGate owns CheckExecutionCompleteness. | f0859 |
+| SdlFunctionRegistry owns CheckFunctionSignatures. | f0872 |
+| SdlRuntime owns CloseSdlInstance. | f0903 |
+| SdlDispatcher owns CorrelateActionResult. | f0849 |
+| SdlRuntime owns CreateSdlInstance. | f0904 |
+| SdlDispatcher owns InvokeRegisteredFunction. | f0850 |
+| SdlStateStore owns ManageDomainState. | f0907 |
+| GoDomainImplementation owns PerformDomainOperation. | f0523 |
+| SdlFunctionRegistry owns RegisterDomainFunctions. | f0873 |
+| SdlStateStore owns SnapshotDomainState. | f0908 |
+| SdlDispatcher owns ValidateActionInput. | f0851 |
 
-Status: **planned**. Kilde: f0355.
+## G4M3UiDomainBinding
 
-Forutsetninger: G3M1TypedUiSession (f0354).
+Status: planned.
 
-| Ansvar | Logisk eier | Kilde-ID-er |
-| --- | --- | --- |
-| CoalesceSourceChanges | SourceWatcher | f0348, f1089 |
-| KeepLastValidModels | ReloadCoordinator | f0349, f0760 |
-| ObserveSourceChanges | SourceWatcher | f0350, f1090 |
-| PrepareCandidateModels | ReloadCoordinator | f0351, f0761 |
-| PublishModelGeneration | ReloadCoordinator | f0352, f0762 |
-| RetirePreviousGeneration | ReloadCoordinator | f0353, f0763 |
+| Faktum | Kilde-ID |
+| --- | --- |
+| BoundActionAccepted illustrates G4M3UiDomainBinding. | f0030 |
+| BoundActionRejected illustrates G4M3UiDomainBinding. | f0043 |
+| G4M3UiDomainBinding addresses ConnectTypedWidgetHandles. | f0390 |
+| G4M3UiDomainBinding addresses DisconnectBindings. | f0391 |
+| G4M3UiDomainBinding addresses PublishDomainUpdates. | f0392 |
+| G4M3UiDomainBinding addresses ReportBindingDiagnostics. | f0393 |
+| G4M3UiDomainBinding addresses ResolveCallbackSymbols. | f0394 |
+| G4M3UiDomainBinding addresses RouteDomainBindings. | f0395 |
+| G4M3UiDomainBinding depends-on G3M1TypedUiSession. | f0396 |
+| G4M3UiDomainBinding depends-on G4M2TypedExecution. | f0397 |
+| G4M3UiDomainBinding has implementation-status = planned. | f0398 |
+| G4M3UiDomainBinding refines G4SdlRuntimeAndBinding. | f0399 |
+| G4M4DomainReload depends-on G4M3UiDomainBinding. | f0404 |
+| SdlUiBindingAdapter owns ConnectTypedWidgetHandles. | f0913 |
+| SdlUiBindingAdapter owns DisconnectBindings. | f0914 |
+| SdlUiBindingAdapter owns PublishDomainUpdates. | f0915 |
+| DiagnosticReporter owns ReportBindingDiagnostics. | f0178 |
+| SdlUiBindingAdapter owns ResolveCallbackSymbols. | f0916 |
+| SdlUiBindingAdapter owns RouteDomainBindings. | f0917 |
 
-Eksempelbane: UiModelReloadAccepted. Kobling: f1198.
+## G4M4DomainReload
 
-![Scenario: UiModelReloadAccepted — modus LiveEditing](diagrams/VP08-UiModelReloadAccepted.svg)
+Status: planned.
 
-Eksempelbane: UiModelReloadRejected. Kobling: f1208.
-
-![Scenario: UiModelReloadRejected — modus LiveEditing](diagrams/VP08-UiModelReloadRejected.svg)
-
-### G3M3CompatibleState
-
-Status: **planned**. Kilde: f0361.
-
-Forutsetninger: G3M2CandidatePublication (f0360).
-
-| Ansvar | Logisk eier | Kilde-ID-er |
-| --- | --- | --- |
-| MatchCompatibleWidgets | UiStateReconciler | f0357, f1224 |
-| PreserveCompatibleUiState | UiStateReconciler | f0358, f1225 |
-| ResetIncompatibleUiState | UiStateReconciler | f0359, f1226 |
-
-Eksempelbane: UiModelReloadAccepted. Kobling: f1199.
-
-[Scenariofigur](diagrams/VP08-UiModelReloadAccepted.svg)
+| Faktum | Kilde-ID |
+| --- | --- |
+| G4M4DomainReload addresses CheckDomainStateCompatibility. | f0400 |
+| G4M4DomainReload addresses MigrateOrResetDomainState. | f0401 |
+| G4M4DomainReload addresses RestartChangedGoProgram. | f0402 |
+| G4M4DomainReload depends-on G3M3CompatibleState. | f0403 |
+| G4M4DomainReload depends-on G4M3UiDomainBinding. | f0404 |
+| G4M4DomainReload has implementation-status = planned. | f0405 |
+| G4M4DomainReload refines G4SdlRuntimeAndBinding. | f0406 |
+| G5M1GeneratedGo depends-on G4M4DomainReload. | f0413 |
+| SdlModelReloadAccepted illustrates G4M4DomainReload. | f0885 |
+| DomainStateMigrator owns CheckDomainStateCompatibility. | f0214 |
+| DomainStateMigrator owns MigrateOrResetDomainState. | f0215 |
+| GoBuildRunner owns RestartChangedGoProgram. | f0506 |
 
 ## G4SdlRuntimeAndBinding
 
-Status: **planned**. Kilde: f0408.
+Status: planned.
 
-Leveransebidrag: TypedDomainBinding (f0407).
+| Faktum | Kilde-ID |
+| --- | --- |
+| G4M1SdlFrontend refines G4SdlRuntimeAndBinding. | f0374 |
+| G4M2TypedExecution refines G4SdlRuntimeAndBinding. | f0389 |
+| G4M3UiDomainBinding refines G4SdlRuntimeAndBinding. | f0399 |
+| G4M4DomainReload refines G4SdlRuntimeAndBinding. | f0406 |
+| G4SdlRuntimeAndBinding delivers TypedDomainBinding. | f0407 |
+| G4SdlRuntimeAndBinding has implementation-status = planned. | f0408 |
 
-![Aktivitetsinndeling: G4SdlRuntimeAndBinding](diagrams/VP06-detail-G4SdlRuntimeAndBinding.svg)
+## G5M1GeneratedGo
 
-### G4M1SdlFrontend
+Status: planned.
 
-Status: **planned**. Kilde: f0373.
+| Faktum | Kilde-ID |
+| --- | --- |
+| G5M1GeneratedGo addresses BuildGeneratedApplication. | f0409 |
+| G5M1GeneratedGo addresses GenerateBindingRegistration. | f0410 |
+| G5M1GeneratedGo addresses GenerateModelConstructors. | f0411 |
+| G5M1GeneratedGo addresses PreserveHandwrittenSources. | f0412 |
+| G5M1GeneratedGo depends-on G4M4DomainReload. | f0413 |
+| G5M1GeneratedGo has implementation-status = planned. | f0414 |
+| G5M1GeneratedGo refines G5NativeGeneration. | f0415 |
+| G5M2BehaviorParity depends-on G5M1GeneratedGo. | f0417 |
+| NativeProgramBuilt illustrates G5M1GeneratedGo. | f0624 |
+| GoBuildRunner owns BuildGeneratedApplication. | f0505 |
+| GoCodeGenerator owns GenerateBindingRegistration. | f0513 |
+| GoCodeGenerator owns GenerateModelConstructors. | f0514 |
+| GoCodeGenerator owns PreserveHandwrittenSources. | f0515 |
 
-Forutsetninger: Ingen eksplisitt deklarert.
+## G5M2BehaviorParity
 
-| Ansvar | Logisk eier | Kilde-ID-er |
-| --- | --- | --- |
-| BuildSdlAst | SdlParser | f0365, f0894 |
-| CoordinateSdlCompilation | SdlFrontend | f0366, f0867 |
-| NormalizeSdlModel | SdlNormalizer | f0367, f0891 |
-| PreserveSdlSourceMap | SdlNormalizer | f0368, f0892 |
-| ResolveSdlSymbols | SdlValidator | f0369, f0923 |
-| TokenizeSdlSource | SdlLexer | f0370, f0875 |
-| ValidateSdlProfile | SdlValidator | f0371, f0925 |
-| ValidateSdlStructure | SdlValidator | f0372, f0926 |
+Status: planned.
 
-Eksempelbane: SdlModelReloadAccepted. Kobling: f0884.
+| Faktum | Kilde-ID |
+| --- | --- |
+| G5M2BehaviorParity addresses VerifyNativeBehaviorParity. | f0416 |
+| G5M2BehaviorParity depends-on G5M1GeneratedGo. | f0417 |
+| G5M2BehaviorParity has implementation-status = planned. | f0418 |
+| G5M2BehaviorParity refines G5NativeGeneration. | f0419 |
+| G5M3DocumentationExport depends-on G5M2BehaviorParity. | f0424 |
+| DevelopmentTools owns VerifyNativeBehaviorParity. | f0176 |
 
-![Scenario: SdlModelReloadAccepted — modus BoundLiveEditing](diagrams/VP08-SdlModelReloadAccepted.svg)
+## G5M3DocumentationExport
 
-### G4M2TypedExecution
+Status: planned.
 
-Status: **planned**. Kilde: f0388.
+| Faktum | Kilde-ID |
+| --- | --- |
+| G5M3DocumentationExport addresses ComposeHeadlessExport. | f0420 |
+| G5M3DocumentationExport addresses ComposeMarkdownDocument. | f0421 |
+| G5M3DocumentationExport addresses WriteGeneratedArtifacts. | f0422 |
+| G5M3DocumentationExport depends-on G2M4RichContent. | f0423 |
+| G5M3DocumentationExport depends-on G5M2BehaviorParity. | f0424 |
+| G5M3DocumentationExport depends-on G6M1StaticNavigation. | f0425 |
+| G5M3DocumentationExport has implementation-status = planned. | f0426 |
+| G5M3DocumentationExport refines G5NativeGeneration. | f0427 |
+| G5M4RetirePython depends-on G5M3DocumentationExport. | f0430 |
+| StaticFrameExported illustrates G5M3DocumentationExport. | f1103 |
+| CommandLineHost owns ComposeHeadlessExport. | f0094 |
+| SduiPresentation owns ComposeMarkdownDocument. | f1022 |
+| CommandLineHost owns WriteGeneratedArtifacts. | f0095 |
 
-Forutsetninger: G4M1SdlFrontend (f0387).
+## G5M4RetirePython
 
-| Ansvar | Logisk eier | Kilde-ID-er |
-| --- | --- | --- |
-| CancelPendingActions | SdlDispatcher | f0375, f0848 |
-| CheckExecutionCompleteness | SdlExecutionGate | f0376, f0859 |
-| CheckFunctionSignatures | SdlFunctionRegistry | f0377, f0872 |
-| CloseSdlInstance | SdlRuntime | f0378, f0903 |
-| CorrelateActionResult | SdlDispatcher | f0379, f0849 |
-| CreateSdlInstance | SdlRuntime | f0380, f0904 |
-| InvokeRegisteredFunction | SdlDispatcher | f0381, f0850 |
-| ManageDomainState | SdlStateStore | f0382, f0907 |
-| PerformDomainOperation | GoDomainImplementation | f0383, f0523 |
-| RegisterDomainFunctions | SdlFunctionRegistry | f0384, f0873 |
-| SnapshotDomainState | SdlStateStore | f0385, f0908 |
-| ValidateActionInput | SdlDispatcher | f0386, f0851 |
+Status: planned.
 
-### G4M3UiDomainBinding
-
-Status: **planned**. Kilde: f0398.
-
-Forutsetninger: G3M1TypedUiSession (f0396), G4M2TypedExecution (f0397).
-
-| Ansvar | Logisk eier | Kilde-ID-er |
-| --- | --- | --- |
-| ConnectTypedWidgetHandles | SdlUiBindingAdapter | f0390, f0913 |
-| DisconnectBindings | SdlUiBindingAdapter | f0391, f0914 |
-| PublishDomainUpdates | SdlUiBindingAdapter | f0392, f0915 |
-| ReportBindingDiagnostics | DiagnosticReporter | f0393, f0178 |
-| ResolveCallbackSymbols | SdlUiBindingAdapter | f0394, f0916 |
-| RouteDomainBindings | SdlUiBindingAdapter | f0395, f0917 |
-
-Eksempelbane: BoundActionAccepted. Kobling: f0030.
-
-![Scenario: BoundActionAccepted — modus BoundExecution](diagrams/VP08-BoundActionAccepted.svg)
-
-Eksempelbane: BoundActionRejected. Kobling: f0043.
-
-![Scenario: BoundActionRejected — modus BoundExecution](diagrams/VP08-BoundActionRejected.svg)
-
-### G4M4DomainReload
-
-Status: **planned**. Kilde: f0405.
-
-Forutsetninger: G3M3CompatibleState (f0403), G4M3UiDomainBinding (f0404).
-
-| Ansvar | Logisk eier | Kilde-ID-er |
-| --- | --- | --- |
-| CheckDomainStateCompatibility | DomainStateMigrator | f0400, f0214 |
-| MigrateOrResetDomainState | DomainStateMigrator | f0401, f0215 |
-| RestartChangedGoProgram | GoBuildRunner | f0402, f0506 |
-
-Eksempelbane: SdlModelReloadAccepted. Kobling: f0885.
-
-[Scenariofigur](diagrams/VP08-SdlModelReloadAccepted.svg)
+| Faktum | Kilde-ID |
+| --- | --- |
+| G5M4RetirePython addresses RetireReplacedPythonEntryPoints. | f0428 |
+| G5M4RetirePython depends-on G1M3Concept1AndDumps. | f0429 |
+| G5M4RetirePython depends-on G5M3DocumentationExport. | f0430 |
+| G5M4RetirePython has implementation-status = planned. | f0431 |
+| G5M4RetirePython refines G5NativeGeneration. | f0432 |
+| DevelopmentTools owns RetireReplacedPythonEntryPoints. | f0175 |
 
 ## G5NativeGeneration
 
-Status: **planned**. Kilde: f0435.
+Status: planned.
 
-Leveransebidrag: DesignDocumentation (f0433), NativeGoAssembly (f0434).
+| Faktum | Kilde-ID |
+| --- | --- |
+| G5M1GeneratedGo refines G5NativeGeneration. | f0415 |
+| G5M2BehaviorParity refines G5NativeGeneration. | f0419 |
+| G5M3DocumentationExport refines G5NativeGeneration. | f0427 |
+| G5M4RetirePython refines G5NativeGeneration. | f0432 |
+| G5NativeGeneration delivers DesignDocumentation. | f0433 |
+| G5NativeGeneration delivers NativeGoAssembly. | f0434 |
+| G5NativeGeneration has implementation-status = planned. | f0435 |
 
-![Aktivitetsinndeling: G5NativeGeneration](diagrams/VP06-detail-G5NativeGeneration.svg)
+## G6M1StaticNavigation
 
-### G5M1GeneratedGo
+Status: planned.
 
-Status: **planned**. Kilde: f0414.
+| Faktum | Kilde-ID |
+| --- | --- |
+| G5M3DocumentationExport depends-on G6M1StaticNavigation. | f0425 |
+| G6M1StaticNavigation addresses ComposeViewPackage. | f0436 |
+| G6M1StaticNavigation addresses ExportModelInventories. | f0437 |
+| G6M1StaticNavigation addresses ExportViewpointMarkdown. | f0438 |
+| G6M1StaticNavigation addresses GenerateViewNavigation. | f0439 |
+| G6M1StaticNavigation addresses IndexViewpointLevels. | f0440 |
+| G6M1StaticNavigation addresses PreserveViewAnchors. | f0441 |
+| G6M1StaticNavigation addresses ProjectSdlViewpoints. | f0442 |
+| G6M1StaticNavigation addresses TraceViewpointFacts. | f0443 |
+| G6M1StaticNavigation depends-on G4M1SdlFrontend. | f0444 |
+| G6M1StaticNavigation has implementation-status = planned. | f0445 |
+| G6M1StaticNavigation refines G6NavigableDocumentation. | f0446 |
+| G6M2OnDemandViews depends-on G6M1StaticNavigation. | f0452 |
+| G6M5SemanticNotation depends-on G6M1StaticNavigation. | f0471 |
+| SelectedViewOpened illustrates G6M1StaticNavigation. | f1056 |
+| SdlViewpointGenerator owns ComposeViewPackage. | f0929 |
+| SdlViewpointGenerator owns ExportModelInventories. | f0930 |
+| SdlViewpointGenerator owns ExportViewpointMarkdown. | f0931 |
+| SdlViewpointGenerator owns GenerateViewNavigation. | f0932 |
+| SdlViewpointGenerator owns IndexViewpointLevels. | f0933 |
+| SdlViewpointGenerator owns PreserveViewAnchors. | f0934 |
+| SdlViewpointGenerator owns ProjectSdlViewpoints. | f0936 |
+| SdlViewpointGenerator owns TraceViewpointFacts. | f0939 |
 
-Forutsetninger: G4M4DomainReload (f0413).
+## G6M2OnDemandViews
 
-| Ansvar | Logisk eier | Kilde-ID-er |
-| --- | --- | --- |
-| BuildGeneratedApplication | GoBuildRunner | f0409, f0505 |
-| GenerateBindingRegistration | GoCodeGenerator | f0410, f0513 |
-| GenerateModelConstructors | GoCodeGenerator | f0411, f0514 |
-| PreserveHandwrittenSources | GoCodeGenerator | f0412, f0515 |
+Status: planned.
 
-Eksempelbane: NativeProgramBuilt. Kobling: f0624.
+| Faktum | Kilde-ID |
+| --- | --- |
+| G6M2OnDemandViews addresses KeyViewRevision. | f0447 |
+| G6M2OnDemandViews addresses ProjectSelectedView. | f0448 |
+| G6M2OnDemandViews addresses PublishViewBundle. | f0449 |
+| G6M2OnDemandViews addresses SelectRelationshipViews. | f0450 |
+| G6M2OnDemandViews addresses ValidateViewRequest. | f0451 |
+| G6M2OnDemandViews depends-on G6M1StaticNavigation. | f0452 |
+| G6M2OnDemandViews has implementation-status = planned. | f0453 |
+| G6M2OnDemandViews refines G6NavigableDocumentation. | f0454 |
+| G6M3XfmdNavigation depends-on G6M2OnDemandViews. | f0459 |
+| InvalidViewSelectionRejected illustrates G6M2OnDemandViews. | f0553 |
+| SelectedViewOpened illustrates G6M2OnDemandViews. | f1057 |
+| ViewProjectionFailed illustrates G6M2OnDemandViews. | f1357 |
+| DocumentBroker owns KeyViewRevision. | f0193 |
+| SdlViewpointGenerator owns ProjectSelectedView. | f0937 |
+| ViewArtifactStore owns PublishViewBundle. | f1282 |
+| SdlViewpointGenerator owns SelectRelationshipViews. | f0938 |
+| DocumentBroker owns ValidateViewRequest. | f0196 |
 
-![Scenario: NativeProgramBuilt — modus NativeBuild](diagrams/VP08-NativeProgramBuilt.svg)
+## G6M3XfmdNavigation
 
-### G5M2BehaviorParity
+Status: planned.
 
-Status: **planned**. Kilde: f0418.
+| Faktum | Kilde-ID |
+| --- | --- |
+| G6M3XfmdNavigation addresses CaptureNavigationTarget. | f0455 |
+| G6M3XfmdNavigation addresses DispatchViewOpen. | f0456 |
+| G6M3XfmdNavigation addresses ResolveConfiguredViewer. | f0457 |
+| G6M3XfmdNavigation addresses RouteDocumentToPane. | f0458 |
+| G6M3XfmdNavigation depends-on G6M2OnDemandViews. | f0459 |
+| G6M3XfmdNavigation has implementation-status = planned. | f0460 |
+| G6M3XfmdNavigation refines G6NavigableDocumentation. | f0461 |
+| G6M4SessionPublication depends-on G6M3XfmdNavigation. | f0466 |
+| SelectedViewOpened illustrates G6M3XfmdNavigation. | f1058 |
+| XfmdDocumentHost owns CaptureNavigationTarget. | f1416 |
+| ViewerLaunchAdapter owns DispatchViewOpen. | f1406 |
+| ViewerLaunchAdapter owns ResolveConfiguredViewer. | f1407 |
+| XfmdDocumentHost owns RouteDocumentToPane. | f1417 |
 
-Forutsetninger: G5M1GeneratedGo (f0417).
+## G6M4SessionPublication
 
-| Ansvar | Logisk eier | Kilde-ID-er |
-| --- | --- | --- |
-| VerifyNativeBehaviorParity | DevelopmentTools | f0416, f0176 |
+Status: planned.
 
-### G5M3DocumentationExport
+| Faktum | Kilde-ID |
+| --- | --- |
+| G6M4SessionPublication addresses EvictUnusedViewBundles. | f0462 |
+| G6M4SessionPublication addresses RejectStaleViewResults. | f0463 |
+| G6M4SessionPublication addresses RetainVisibleViewBundle. | f0464 |
+| G6M4SessionPublication addresses ServeViewRequests. | f0465 |
+| G6M4SessionPublication depends-on G6M3XfmdNavigation. | f0466 |
+| G6M4SessionPublication has implementation-status = planned. | f0467 |
+| G6M4SessionPublication refines G6NavigableDocumentation. | f0468 |
+| InvalidViewSelectionRejected illustrates G6M4SessionPublication. | f0554 |
+| SelectedViewOpened illustrates G6M4SessionPublication. | f1059 |
+| ViewProjectionFailed illustrates G6M4SessionPublication. | f1358 |
+| ViewArtifactStore owns EvictUnusedViewBundles. | f1281 |
+| DocumentBroker owns RejectStaleViewResults. | f0194 |
+| ViewArtifactStore owns RetainVisibleViewBundle. | f1283 |
+| DocumentBroker owns ServeViewRequests. | f0195 |
 
-Status: **planned**. Kilde: f0426.
+## G6M5SemanticNotation
 
-Forutsetninger: G2M4RichContent (f0423), G5M2BehaviorParity (f0424), G6M1StaticNavigation (f0425).
+Status: planned.
 
-| Ansvar | Logisk eier | Kilde-ID-er |
-| --- | --- | --- |
-| ComposeHeadlessExport | CommandLineHost | f0420, f0094 |
-| ComposeMarkdownDocument | SduiPresentation | f0421, f1022 |
-| WriteGeneratedArtifacts | CommandLineHost | f0422, f0095 |
+| Faktum | Kilde-ID |
+| --- | --- |
+| G6M5SemanticNotation addresses ApplySemanticNotation. | f0469 |
+| G6M5SemanticNotation addresses VerifyDiagramCapabilities. | f0470 |
+| G6M5SemanticNotation depends-on G6M1StaticNavigation. | f0471 |
+| G6M5SemanticNotation has implementation-status = planned. | f0472 |
+| G6M5SemanticNotation refines G6NavigableDocumentation. | f0473 |
+| G6M6ClassViews depends-on G6M5SemanticNotation. | f0476 |
+| SdlViewpointGenerator owns ApplySemanticNotation. | f0928 |
+| SdlViewpointGenerator owns VerifyDiagramCapabilities. | f0940 |
 
-Eksempelbane: StaticFrameExported. Kobling: f1103.
+## G6M6ClassViews
 
-[Scenariofigur](diagrams/VP08-StaticFrameExported.svg)
+Status: planned.
 
-### G5M4RetirePython
-
-Status: **planned**. Kilde: f0431.
-
-Forutsetninger: G1M3Concept1AndDumps (f0429), G5M3DocumentationExport (f0430).
-
-| Ansvar | Logisk eier | Kilde-ID-er |
-| --- | --- | --- |
-| RetireReplacedPythonEntryPoints | DevelopmentTools | f0428, f0175 |
+| Faktum | Kilde-ID |
+| --- | --- |
+| G6M6ClassViews addresses ProjectClassViews. | f0474 |
+| G6M6ClassViews addresses ValidateClassRelations. | f0475 |
+| G6M6ClassViews depends-on G6M5SemanticNotation. | f0476 |
+| G6M6ClassViews has implementation-status = planned. | f0477 |
+| G6M6ClassViews refines G6NavigableDocumentation. | f0478 |
+| SdlViewpointGenerator owns ProjectClassViews. | f0935 |
+| SdlValidator owns ValidateClassRelations. | f0924 |
 
 ## G6NavigableDocumentation
 
-Status: **planned**. Kilde: f0481.
+Status: planned.
 
-Leveransebidrag: NavigableDesignDocumentation (f0479), TypedDesignInspection (f0480).
+| Faktum | Kilde-ID |
+| --- | --- |
+| G6M1StaticNavigation refines G6NavigableDocumentation. | f0446 |
+| G6M2OnDemandViews refines G6NavigableDocumentation. | f0454 |
+| G6M3XfmdNavigation refines G6NavigableDocumentation. | f0461 |
+| G6M4SessionPublication refines G6NavigableDocumentation. | f0468 |
+| G6M5SemanticNotation refines G6NavigableDocumentation. | f0473 |
+| G6M6ClassViews refines G6NavigableDocumentation. | f0478 |
+| G6NavigableDocumentation delivers NavigableDesignDocumentation. | f0479 |
+| G6NavigableDocumentation delivers TypedDesignInspection. | f0480 |
+| G6NavigableDocumentation has implementation-status = planned. | f0481 |
 
-![Aktivitetsinndeling: G6NavigableDocumentation](diagrams/VP06-detail-G6NavigableDocumentation.svg)
+## InspectDesignSource
 
-### G6M1StaticNavigation
+Status: unspecified.
 
-Status: **planned**. Kilde: f0445.
+| Faktum | Kilde-ID |
+| --- | --- |
+| ExportUiDocumentation refines InspectDesignSource. | f0234 |
+| InspectSdlSource refines InspectDesignSource. | f0539 |
+| InspectSduiSource refines InspectDesignSource. | f0540 |
 
-Forutsetninger: G4M1SdlFrontend (f0444).
+## InspectSdlSource
 
-| Ansvar | Logisk eier | Kilde-ID-er |
-| --- | --- | --- |
-| ComposeViewPackage | SdlViewpointGenerator | f0436, f0929 |
-| ExportModelInventories | SdlViewpointGenerator | f0437, f0930 |
-| ExportViewpointMarkdown | SdlViewpointGenerator | f0438, f0931 |
-| GenerateViewNavigation | SdlViewpointGenerator | f0439, f0932 |
-| IndexViewpointLevels | SdlViewpointGenerator | f0440, f0933 |
-| PreserveViewAnchors | SdlViewpointGenerator | f0441, f0934 |
-| ProjectSdlViewpoints | SdlViewpointGenerator | f0442, f0936 |
-| TraceViewpointFacts | SdlViewpointGenerator | f0443, f0939 |
+Status: unspecified.
 
-Eksempelbane: SelectedViewOpened. Kobling: f1056.
+| Faktum | Kilde-ID |
+| --- | --- |
+| InspectSdlSource refines InspectDesignSource. | f0539 |
 
-![Scenario: SelectedViewOpened — modus DocumentBrowsing](diagrams/VP08-SelectedViewOpened.svg)
+## InspectSduiSource
 
-### G6M2OnDemandViews
+Status: unspecified.
 
-Status: **planned**. Kilde: f0453.
+| Faktum | Kilde-ID |
+| --- | --- |
+| InspectSduiSource refines InspectDesignSource. | f0540 |
 
-Forutsetninger: G6M1StaticNavigation (f0452).
+## RealizeDesign
 
-| Ansvar | Logisk eier | Kilde-ID-er |
-| --- | --- | --- |
-| KeyViewRevision | DocumentBroker | f0447, f0193 |
-| ProjectSelectedView | SdlViewpointGenerator | f0448, f0937 |
-| PublishViewBundle | ViewArtifactStore | f0449, f1282 |
-| SelectRelationshipViews | SdlViewpointGenerator | f0450, f0938 |
-| ValidateViewRequest | DocumentBroker | f0451, f0196 |
+Status: unspecified.
 
-Eksempelbane: InvalidViewSelectionRejected. Kobling: f0553.
+| Faktum | Kilde-ID |
+| --- | --- |
+| BuildNativeRealization refines RealizeDesign. | f0062 |
 
-![Scenario: InvalidViewSelectionRejected — modus DocumentBrowsing](diagrams/VP08-InvalidViewSelectionRejected.svg)
+## ReloadBoundModels
 
-Eksempelbane: SelectedViewOpened. Kobling: f1057.
+Status: unspecified.
 
-[Scenariofigur](diagrams/VP08-SelectedViewOpened.svg)
+| Faktum | Kilde-ID |
+| --- | --- |
+| ReloadBoundModels refines ReloadDesignSession. | f0752 |
 
-Eksempelbane: ViewProjectionFailed. Kobling: f1357.
+## ReloadDesignSession
 
-![Scenario: ViewProjectionFailed — modus DocumentBrowsing](diagrams/VP08-ViewProjectionFailed.svg)
+Status: unspecified.
 
-### G6M3XfmdNavigation
+| Faktum | Kilde-ID |
+| --- | --- |
+| ReloadBoundModels refines ReloadDesignSession. | f0752 |
+| ReloadUiModel refines ReloadDesignSession. | f0795 |
 
-Status: **planned**. Kilde: f0460.
+## ReloadUiModel
 
-Forutsetninger: G6M2OnDemandViews (f0459).
+Status: unspecified.
 
-| Ansvar | Logisk eier | Kilde-ID-er |
-| --- | --- | --- |
-| CaptureNavigationTarget | XfmdDocumentHost | f0455, f1416 |
-| DispatchViewOpen | ViewerLaunchAdapter | f0456, f1406 |
-| ResolveConfiguredViewer | ViewerLaunchAdapter | f0457, f1407 |
-| RouteDocumentToPane | XfmdDocumentHost | f0458, f1417 |
+| Faktum | Kilde-ID |
+| --- | --- |
+| ReloadUiModel refines ReloadDesignSession. | f0795 |
 
-Eksempelbane: SelectedViewOpened. Kobling: f1058.
+## RunBoundUiAction
 
-[Scenariofigur](diagrams/VP08-SelectedViewOpened.svg)
+Status: unspecified.
 
-### G6M4SessionPublication
+| Faktum | Kilde-ID |
+| --- | --- |
+| RunBoundUiAction refines RunDesignSession. | f0830 |
 
-Status: **planned**. Kilde: f0467.
+## RunDesignSession
 
-Forutsetninger: G6M3XfmdNavigation (f0466).
+Status: unspecified.
 
-| Ansvar | Logisk eier | Kilde-ID-er |
-| --- | --- | --- |
-| EvictUnusedViewBundles | ViewArtifactStore | f0462, f1281 |
-| RejectStaleViewResults | DocumentBroker | f0463, f0194 |
-| RetainVisibleViewBundle | ViewArtifactStore | f0464, f1283 |
-| ServeViewRequests | DocumentBroker | f0465, f0195 |
+| Faktum | Kilde-ID |
+| --- | --- |
+| RunBoundUiAction refines RunDesignSession. | f0830 |
+| RunUnboundUiPreview refines RunDesignSession. | f0831 |
 
-Eksempelbane: InvalidViewSelectionRejected. Kobling: f0554.
+## RunUnboundUiPreview
 
-[Scenariofigur](diagrams/VP08-InvalidViewSelectionRejected.svg)
+Status: unspecified.
 
-Eksempelbane: SelectedViewOpened. Kobling: f1059.
-
-[Scenariofigur](diagrams/VP08-SelectedViewOpened.svg)
-
-Eksempelbane: ViewProjectionFailed. Kobling: f1358.
-
-[Scenariofigur](diagrams/VP08-ViewProjectionFailed.svg)
-
-### G6M5SemanticNotation
-
-Status: **planned**. Kilde: f0472.
-
-Forutsetninger: G6M1StaticNavigation (f0471).
-
-| Ansvar | Logisk eier | Kilde-ID-er |
-| --- | --- | --- |
-| ApplySemanticNotation | SdlViewpointGenerator | f0469, f0928 |
-| VerifyDiagramCapabilities | SdlViewpointGenerator | f0470, f0940 |
-
-### G6M6ClassViews
-
-Status: **planned**. Kilde: f0477.
-
-Forutsetninger: G6M5SemanticNotation (f0476).
-
-| Ansvar | Logisk eier | Kilde-ID-er |
-| --- | --- | --- |
-| ProjectClassViews | SdlViewpointGenerator | f0474, f0935 |
-| ValidateClassRelations | SdlValidator | f0475, f0924 |
+| Faktum | Kilde-ID |
+| --- | --- |
+| RunUnboundUiPreview refines RunDesignSession. | f0831 |
 
 ## Udekket modellansvar
 
-Ingen deklarerte Functionality-er mangler addresses-kobling. Dette beviser ikke full kravdekning.
-
-Runtime-semantikk, full AST-/ABI-schema og fysisk layoutmåling må fortsatt realiseres og testes i implementasjonsfasene.
