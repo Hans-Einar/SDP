@@ -178,11 +178,11 @@ func inventory(v *viewpoint.Views, level string) string {
 		sort.Strings(kinds[k])
 		s += fmt.Sprintf("## %s (%d)\n\n", k, len(kinds[k]))
 		for _, n := range kinds[k] {
-			s += "- <a id=\"" + n + "\"></a>" + n + "\n"
+			s += "### " + n + "\n\n"
 		}
 		s += "\n"
 	}
-	return s
+	return strings.TrimRight(s, "\n") + "\n"
 }
 
 // LocalPath accepts a bundle-relative URL, never an absolute or escaping path.

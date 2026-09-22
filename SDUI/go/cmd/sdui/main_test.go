@@ -9,14 +9,14 @@ import (
 )
 
 func TestCLI(t *testing.T) {
-	for _, args := range [][]string{{"-"}, {"-", "--format", "dump"}, {"--format", "markdown", "-"}, {"-", "--format", "prototype-svg"}, {"-", "--format", "svg"}} {
+	for _, args := range [][]string{{"-"}, {"-", "--format", "dump"}, {"--format", "markdown", "-"}, {"-", "--format", "svg"}} {
 		var out, err bytes.Buffer
 		code := execute(args, strings.NewReader(`sdui 0.2; P=[button("OK")];`), &out, &err)
 		if code != 0 || out.Len() == 0 {
 			t.Fatal(args, code, err.String())
 		}
 	}
-	for _, args := range [][]string{{"-", "--format", "unknown"}, {"-", "--format", "dump", "--syntax-only"}, {"-", "--entry", "missing", "--format", "dump"}} {
+	for _, args := range [][]string{{"-", "--format", "prototype-svg"}, {"-", "--format", "prototype-html"}, {"-", "--format", "unknown"}, {"-", "--format", "dump", "--syntax-only"}, {"-", "--entry", "missing", "--format", "dump"}} {
 		var out, err bytes.Buffer
 		if execute(args, strings.NewReader(`sdui 0.2; P=[];`), &out, &err) != 2 || out.Len() != 0 {
 			t.Fatal(args, out.String(), err.String())

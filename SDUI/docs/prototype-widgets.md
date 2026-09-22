@@ -1,5 +1,9 @@
 # SDUI — begrensede prototype-widgets
 
+**Historisk kontrollgalleri.** Fixturebygger og midlertidige CLI-formater er
+fjernet i G5-M4. Bruk [felles Go-layout/SVG](../go/README.md) og
+[state-dokumenteksport](../../SystemDesignLanguage/go/README.md) for ny UI.
+
 Levert 2026-09-21 for R24: `button` og `input` kan tegnes som SVG i
 [Markdown-prøven](../examples/concept1-bucking.widgets.md). En separat
 [HTML-demo](../examples/prototype-controls.html) viser redigering, mus-/tastaturtrykk,

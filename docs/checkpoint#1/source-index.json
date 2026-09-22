@@ -1186,5 +1186,28 @@
         }
       ]
     }
-  ]
+  ],
+  "implementation_update": {
+    "date": "2026-09-22",
+    "phase": "G5-M4",
+    "note": "Original capture above remains historical; Go implementation status and evidence are listed here.",
+    "sources": [
+      {
+        "path": "docs/checkpoint#1/11-Go-Implementation-and-Navigation.md",
+        "sha256": "ac8d7d97d0718cc0378917b8cbce10975f705742395980d3555995abdf207020"
+      },
+      {
+        "path": "docs/checkpoint#1/README.md",
+        "sha256": "766a99be26986e50bc14caab5ced189226265851518c01459657043770d3b4c7"
+      },
+      {
+        "path": "SDUI/docs/implementation-plan.md",
+        "sha256": "78a8705e302b2e1a8cac5e2e90dec3401868440e7bb33296be3a31364e98d11b"
+      },
+      {
+        "path": "SystemDesignLanguage/go/evidence/release.json",
+        "sha256": "52f755b8967106a8b0ff2d91dac8c753b9af8229f072c45a318433cbee9f0690"
+      }
+    ]
+  }
 }

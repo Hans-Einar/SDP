@@ -1693,12 +1693,12 @@ Deklarasjoner og alle fakta med kildeposisjoner; støttegrenser beholdes.
 | f0274 | FyneHost uses LayoutCalls as receiver of LayoutResult in mode UiPreview. | 739 |
 | f0275 | FyneHost uses LayoutCalls as sender of LayoutRequest in mode UiPreview. | 740 |
 | f0276 | G1FrontendPort delivers StructuralModelInspection. | 741 |
-| f0277 | G1FrontendPort has implementation-status = planned. | 742 |
+| f0277 | G1FrontendPort has implementation-status = verified. | 742 |
 | f0278 | G1M1ParserAndAst addresses BuildSduiAst. | 743 |
 | f0279 | G1M1ParserAndAst addresses IdentifySourceRevision. | 744 |
 | f0280 | G1M1ParserAndAst addresses ReadBoundedSources. | 745 |
 | f0281 | G1M1ParserAndAst addresses TokenizeSduiSource. | 746 |
-| f0282 | G1M1ParserAndAst has implementation-status = planned. | 747 |
+| f0282 | G1M1ParserAndAst has implementation-status = verified. | 747 |
 | f0283 | G1M1ParserAndAst refines G1FrontendPort. | 748 |
 | f0284 | G1M2ValidationAndNormalization addresses CoordinateSduiCompilation. | 749 |
 | f0285 | G1M2ValidationAndNormalization addresses ExpandUiDefinitions. | 750 |
@@ -1709,26 +1709,26 @@ Deklarasjoner og alle fakta med kildeposisjoner; støttegrenser beholdes.
 | f0290 | G1M2ValidationAndNormalization addresses ValidateSymbolicBindings. | 755 |
 | f0291 | G1M2ValidationAndNormalization addresses ValidateWidgetArguments. | 756 |
 | f0292 | G1M2ValidationAndNormalization depends-on G1M1ParserAndAst. | 757 |
-| f0293 | G1M2ValidationAndNormalization has implementation-status = planned. | 758 |
+| f0293 | G1M2ValidationAndNormalization has implementation-status = verified. | 758 |
 | f0294 | G1M2ValidationAndNormalization refines G1FrontendPort. | 759 |
 | f0295 | G1M3Concept1AndDumps addresses ExportConsoleSnapshot. | 760 |
 | f0296 | G1M3Concept1AndDumps addresses ReportSourceDiagnostics. | 761 |
 | f0297 | G1M3Concept1AndDumps depends-on G1M2ValidationAndNormalization. | 762 |
-| f0298 | G1M3Concept1AndDumps has implementation-status = planned. | 763 |
+| f0298 | G1M3Concept1AndDumps has implementation-status = verified. | 763 |
 | f0299 | G1M3Concept1AndDumps refines G1FrontendPort. | 764 |
 | f0300 | G2LayoutAndPresentation delivers InteractiveUiPreview. | 765 |
-| f0301 | G2LayoutAndPresentation has implementation-status = planned. | 766 |
+| f0301 | G2LayoutAndPresentation has implementation-status = verified. | 766 |
 | f0302 | G2M1RelativeMeasurement addresses AllocateGeometry. | 767 |
 | f0303 | G2M1RelativeMeasurement addresses ComputeClipping. | 768 |
 | f0304 | G2M1RelativeMeasurement addresses MeasureUiContent. | 769 |
 | f0305 | G2M1RelativeMeasurement addresses ResolveAncestorDimensions. | 770 |
 | f0306 | G2M1RelativeMeasurement depends-on G1M2ValidationAndNormalization. | 771 |
-| f0307 | G2M1RelativeMeasurement has implementation-status = planned. | 772 |
+| f0307 | G2M1RelativeMeasurement has implementation-status = verified. | 772 |
 | f0308 | G2M1RelativeMeasurement refines G2LayoutAndPresentation. | 773 |
 | f0309 | G2M2SharedSvgGeometry addresses BuildPreparedFrame. | 774 |
 | f0310 | G2M2SharedSvgGeometry addresses ExportSvgSnapshot. | 775 |
 | f0311 | G2M2SharedSvgGeometry depends-on G2M1RelativeMeasurement. | 776 |
-| f0312 | G2M2SharedSvgGeometry has implementation-status = planned. | 777 |
+| f0312 | G2M2SharedSvgGeometry has implementation-status = verified. | 777 |
 | f0313 | G2M2SharedSvgGeometry refines G2LayoutAndPresentation. | 778 |
 | f0314 | G2M3FyneInteractions addresses ComposeInteractiveSession. | 779 |
 | f0315 | G2M3FyneInteractions addresses HandleFocusAndTextInput. | 780 |
@@ -1737,7 +1737,7 @@ Deklarasjoner og alle fakta med kildeposisjoner; støttegrenser beholdes.
 | f0318 | G2M3FyneInteractions addresses ReleaseNativeWidgets. | 783 |
 | f0319 | G2M3FyneInteractions addresses ScheduleUiPublication. | 784 |
 | f0320 | G2M3FyneInteractions depends-on G2M2SharedSvgGeometry. | 785 |
-| f0321 | G2M3FyneInteractions has implementation-status = planned. | 786 |
+| f0321 | G2M3FyneInteractions has implementation-status = verified. | 786 |
 | f0322 | G2M3FyneInteractions refines G2LayoutAndPresentation. | 787 |
 | f0323 | G2M4RichContent addresses MeasureMarkdownContent. | 788 |
 | f0324 | G2M4RichContent addresses PrepareDiagramResource. | 789 |
@@ -1745,7 +1745,7 @@ Deklarasjoner og alle fakta med kildeposisjoner; støttegrenser beholdes.
 | f0326 | G2M4RichContent addresses ReleaseVisualResources. | 791 |
 | f0327 | G2M4RichContent addresses ValidateVisualResources. | 792 |
 | f0328 | G2M4RichContent depends-on G2M3FyneInteractions. | 793 |
-| f0329 | G2M4RichContent has implementation-status = planned. | 794 |
+| f0329 | G2M4RichContent has implementation-status = verified. | 794 |
 | f0330 | G2M4RichContent refines G2LayoutAndPresentation. | 795 |
 | f0331 | G3M1TypedUiSession addresses ApplyPropertyBatch. | 796 |
 | f0332 | G3M1TypedUiSession addresses CloseUiInstance. | 797 |
@@ -1762,7 +1762,7 @@ Deklarasjoner og alle fakta med kildeposisjoner; støttegrenser beholdes.
 | f0343 | G3M1TypedUiSession addresses ValidateUiEvent. | 808 |
 | f0344 | G3M1TypedUiSession depends-on G1M2ValidationAndNormalization. | 809 |
 | f0345 | G3M1TypedUiSession depends-on G2M3FyneInteractions. | 810 |
-| f0346 | G3M1TypedUiSession has implementation-status = planned. | 811 |
+| f0346 | G3M1TypedUiSession has implementation-status = verified. | 811 |
 | f0347 | G3M1TypedUiSession refines G3UiRuntimeAndReload. | 812 |
 | f0348 | G3M2CandidatePublication addresses CoalesceSourceChanges. | 813 |
 | f0349 | G3M2CandidatePublication addresses KeepLastValidModels. | 814 |
@@ -1771,16 +1771,16 @@ Deklarasjoner og alle fakta med kildeposisjoner; støttegrenser beholdes.
 | f0352 | G3M2CandidatePublication addresses PublishModelGeneration. | 817 |
 | f0353 | G3M2CandidatePublication addresses RetirePreviousGeneration. | 818 |
 | f0354 | G3M2CandidatePublication depends-on G3M1TypedUiSession. | 819 |
-| f0355 | G3M2CandidatePublication has implementation-status = planned. | 820 |
+| f0355 | G3M2CandidatePublication has implementation-status = verified. | 820 |
 | f0356 | G3M2CandidatePublication refines G3UiRuntimeAndReload. | 821 |
 | f0357 | G3M3CompatibleState addresses MatchCompatibleWidgets. | 822 |
 | f0358 | G3M3CompatibleState addresses PreserveCompatibleUiState. | 823 |
 | f0359 | G3M3CompatibleState addresses ResetIncompatibleUiState. | 824 |
 | f0360 | G3M3CompatibleState depends-on G3M2CandidatePublication. | 825 |
-| f0361 | G3M3CompatibleState has implementation-status = planned. | 826 |
+| f0361 | G3M3CompatibleState has implementation-status = verified. | 826 |
 | f0362 | G3M3CompatibleState refines G3UiRuntimeAndReload. | 827 |
 | f0363 | G3UiRuntimeAndReload delivers LiveModelReload. | 828 |
-| f0364 | G3UiRuntimeAndReload has implementation-status = planned. | 829 |
+| f0364 | G3UiRuntimeAndReload has implementation-status = verified. | 829 |
 | f0365 | G4M1SdlFrontend addresses BuildSdlAst. | 830 |
 | f0366 | G4M1SdlFrontend addresses CoordinateSdlCompilation. | 831 |
 | f0367 | G4M1SdlFrontend addresses NormalizeSdlModel. | 832 |
@@ -1789,7 +1789,7 @@ Deklarasjoner og alle fakta med kildeposisjoner; støttegrenser beholdes.
 | f0370 | G4M1SdlFrontend addresses TokenizeSdlSource. | 835 |
 | f0371 | G4M1SdlFrontend addresses ValidateSdlProfile. | 836 |
 | f0372 | G4M1SdlFrontend addresses ValidateSdlStructure. | 837 |
-| f0373 | G4M1SdlFrontend has implementation-status = planned. | 838 |
+| f0373 | G4M1SdlFrontend has implementation-status = verified. | 838 |
 | f0374 | G4M1SdlFrontend refines G4SdlRuntimeAndBinding. | 839 |
 | f0375 | G4M2TypedExecution addresses CancelPendingActions. | 840 |
 | f0376 | G4M2TypedExecution addresses CheckExecutionCompleteness. | 841 |
@@ -1804,7 +1804,7 @@ Deklarasjoner og alle fakta med kildeposisjoner; støttegrenser beholdes.
 | f0385 | G4M2TypedExecution addresses SnapshotDomainState. | 850 |
 | f0386 | G4M2TypedExecution addresses ValidateActionInput. | 851 |
 | f0387 | G4M2TypedExecution depends-on G4M1SdlFrontend. | 852 |
-| f0388 | G4M2TypedExecution has implementation-status = planned. | 853 |
+| f0388 | G4M2TypedExecution has implementation-status = verified. | 853 |
 | f0389 | G4M2TypedExecution refines G4SdlRuntimeAndBinding. | 854 |
 | f0390 | G4M3UiDomainBinding addresses ConnectTypedWidgetHandles. | 855 |
 | f0391 | G4M3UiDomainBinding addresses DisconnectBindings. | 856 |
@@ -1814,27 +1814,27 @@ Deklarasjoner og alle fakta med kildeposisjoner; støttegrenser beholdes.
 | f0395 | G4M3UiDomainBinding addresses RouteDomainBindings. | 860 |
 | f0396 | G4M3UiDomainBinding depends-on G3M1TypedUiSession. | 861 |
 | f0397 | G4M3UiDomainBinding depends-on G4M2TypedExecution. | 862 |
-| f0398 | G4M3UiDomainBinding has implementation-status = planned. | 863 |
+| f0398 | G4M3UiDomainBinding has implementation-status = verified. | 863 |
 | f0399 | G4M3UiDomainBinding refines G4SdlRuntimeAndBinding. | 864 |
 | f0400 | G4M4DomainReload addresses CheckDomainStateCompatibility. | 865 |
 | f0401 | G4M4DomainReload addresses MigrateOrResetDomainState. | 866 |
 | f0402 | G4M4DomainReload addresses RestartChangedGoProgram. | 867 |
 | f0403 | G4M4DomainReload depends-on G3M3CompatibleState. | 868 |
 | f0404 | G4M4DomainReload depends-on G4M3UiDomainBinding. | 869 |
-| f0405 | G4M4DomainReload has implementation-status = planned. | 870 |
+| f0405 | G4M4DomainReload has implementation-status = verified. | 870 |
 | f0406 | G4M4DomainReload refines G4SdlRuntimeAndBinding. | 871 |
 | f0407 | G4SdlRuntimeAndBinding delivers TypedDomainBinding. | 872 |
-| f0408 | G4SdlRuntimeAndBinding has implementation-status = planned. | 873 |
+| f0408 | G4SdlRuntimeAndBinding has implementation-status = verified. | 873 |
 | f0409 | G5M1GeneratedGo addresses BuildGeneratedApplication. | 874 |
 | f0410 | G5M1GeneratedGo addresses GenerateBindingRegistration. | 875 |
 | f0411 | G5M1GeneratedGo addresses GenerateModelConstructors. | 876 |
 | f0412 | G5M1GeneratedGo addresses PreserveHandwrittenSources. | 877 |
 | f0413 | G5M1GeneratedGo depends-on G4M4DomainReload. | 878 |
-| f0414 | G5M1GeneratedGo has implementation-status = planned. | 879 |
+| f0414 | G5M1GeneratedGo has implementation-status = verified. | 879 |
 | f0415 | G5M1GeneratedGo refines G5NativeGeneration. | 880 |
 | f0416 | G5M2BehaviorParity addresses VerifyNativeBehaviorParity. | 881 |
 | f0417 | G5M2BehaviorParity depends-on G5M1GeneratedGo. | 882 |
-| f0418 | G5M2BehaviorParity has implementation-status = planned. | 883 |
+| f0418 | G5M2BehaviorParity has implementation-status = verified. | 883 |
 | f0419 | G5M2BehaviorParity refines G5NativeGeneration. | 884 |
 | f0420 | G5M3DocumentationExport addresses ComposeHeadlessExport. | 885 |
 | f0421 | G5M3DocumentationExport addresses ComposeMarkdownDocument. | 886 |
@@ -1842,16 +1842,16 @@ Deklarasjoner og alle fakta med kildeposisjoner; støttegrenser beholdes.
 | f0423 | G5M3DocumentationExport depends-on G2M4RichContent. | 888 |
 | f0424 | G5M3DocumentationExport depends-on G5M2BehaviorParity. | 889 |
 | f0425 | G5M3DocumentationExport depends-on G6M1StaticNavigation. | 890 |
-| f0426 | G5M3DocumentationExport has implementation-status = planned. | 891 |
+| f0426 | G5M3DocumentationExport has implementation-status = verified. | 891 |
 | f0427 | G5M3DocumentationExport refines G5NativeGeneration. | 892 |
 | f0428 | G5M4RetirePython addresses RetireReplacedPythonEntryPoints. | 893 |
 | f0429 | G5M4RetirePython depends-on G1M3Concept1AndDumps. | 894 |
 | f0430 | G5M4RetirePython depends-on G5M3DocumentationExport. | 895 |
-| f0431 | G5M4RetirePython has implementation-status = planned. | 896 |
+| f0431 | G5M4RetirePython has implementation-status = verified. | 896 |
 | f0432 | G5M4RetirePython refines G5NativeGeneration. | 897 |
 | f0433 | G5NativeGeneration delivers DesignDocumentation. | 898 |
 | f0434 | G5NativeGeneration delivers NativeGoAssembly. | 899 |
-| f0435 | G5NativeGeneration has implementation-status = planned. | 900 |
+| f0435 | G5NativeGeneration has implementation-status = verified. | 900 |
 | f0436 | G6M1StaticNavigation addresses ComposeViewPackage. | 901 |
 | f0437 | G6M1StaticNavigation addresses ExportModelInventories. | 902 |
 | f0438 | G6M1StaticNavigation addresses ExportViewpointMarkdown. | 903 |
@@ -1861,7 +1861,7 @@ Deklarasjoner og alle fakta med kildeposisjoner; støttegrenser beholdes.
 | f0442 | G6M1StaticNavigation addresses ProjectSdlViewpoints. | 907 |
 | f0443 | G6M1StaticNavigation addresses TraceViewpointFacts. | 908 |
 | f0444 | G6M1StaticNavigation depends-on G4M1SdlFrontend. | 909 |
-| f0445 | G6M1StaticNavigation has implementation-status = planned. | 910 |
+| f0445 | G6M1StaticNavigation has implementation-status = verified. | 910 |
 | f0446 | G6M1StaticNavigation refines G6NavigableDocumentation. | 911 |
 | f0447 | G6M2OnDemandViews addresses KeyViewRevision. | 912 |
 | f0448 | G6M2OnDemandViews addresses ProjectSelectedView. | 913 |
@@ -1869,35 +1869,35 @@ Deklarasjoner og alle fakta med kildeposisjoner; støttegrenser beholdes.
 | f0450 | G6M2OnDemandViews addresses SelectRelationshipViews. | 915 |
 | f0451 | G6M2OnDemandViews addresses ValidateViewRequest. | 916 |
 | f0452 | G6M2OnDemandViews depends-on G6M1StaticNavigation. | 917 |
-| f0453 | G6M2OnDemandViews has implementation-status = planned. | 918 |
+| f0453 | G6M2OnDemandViews has implementation-status = verified. | 918 |
 | f0454 | G6M2OnDemandViews refines G6NavigableDocumentation. | 919 |
 | f0455 | G6M3XfmdNavigation addresses CaptureNavigationTarget. | 920 |
 | f0456 | G6M3XfmdNavigation addresses DispatchViewOpen. | 921 |
 | f0457 | G6M3XfmdNavigation addresses ResolveConfiguredViewer. | 922 |
 | f0458 | G6M3XfmdNavigation addresses RouteDocumentToPane. | 923 |
 | f0459 | G6M3XfmdNavigation depends-on G6M2OnDemandViews. | 924 |
-| f0460 | G6M3XfmdNavigation has implementation-status = planned. | 925 |
+| f0460 | G6M3XfmdNavigation has implementation-status = verified. | 925 |
 | f0461 | G6M3XfmdNavigation refines G6NavigableDocumentation. | 926 |
 | f0462 | G6M4SessionPublication addresses EvictUnusedViewBundles. | 927 |
 | f0463 | G6M4SessionPublication addresses RejectStaleViewResults. | 928 |
 | f0464 | G6M4SessionPublication addresses RetainVisibleViewBundle. | 929 |
 | f0465 | G6M4SessionPublication addresses ServeViewRequests. | 930 |
 | f0466 | G6M4SessionPublication depends-on G6M3XfmdNavigation. | 931 |
-| f0467 | G6M4SessionPublication has implementation-status = planned. | 932 |
+| f0467 | G6M4SessionPublication has implementation-status = verified. | 932 |
 | f0468 | G6M4SessionPublication refines G6NavigableDocumentation. | 933 |
 | f0469 | G6M5SemanticNotation addresses ApplySemanticNotation. | 934 |
 | f0470 | G6M5SemanticNotation addresses VerifyDiagramCapabilities. | 935 |
 | f0471 | G6M5SemanticNotation depends-on G6M1StaticNavigation. | 936 |
-| f0472 | G6M5SemanticNotation has implementation-status = planned. | 937 |
+| f0472 | G6M5SemanticNotation has implementation-status = verified. | 937 |
 | f0473 | G6M5SemanticNotation refines G6NavigableDocumentation. | 938 |
 | f0474 | G6M6ClassViews addresses ProjectClassViews. | 939 |
 | f0475 | G6M6ClassViews addresses ValidateClassRelations. | 940 |
 | f0476 | G6M6ClassViews depends-on G6M5SemanticNotation. | 941 |
-| f0477 | G6M6ClassViews has implementation-status = planned. | 942 |
+| f0477 | G6M6ClassViews has implementation-status = verified. | 942 |
 | f0478 | G6M6ClassViews refines G6NavigableDocumentation. | 943 |
 | f0479 | G6NavigableDocumentation delivers NavigableDesignDocumentation. | 944 |
 | f0480 | G6NavigableDocumentation delivers TypedDesignInspection. | 945 |
-| f0481 | G6NavigableDocumentation has implementation-status = planned. | 946 |
+| f0481 | G6NavigableDocumentation has implementation-status = verified. | 946 |
 | f0482 | GenerateBindingRegistration allocated-to CommandLineHost in mode NativeBuild. | 947 |
 | f0483 | GenerateBindingRegistration contributes-to NativeGoAssembly. | 948 |
 | f0484 | GenerateBindingRegistration realizes NativeRealization. | 949 |

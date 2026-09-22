@@ -6,524 +6,985 @@ Samme modell-ID på alle nivåer; eget objektnivå er uspesifisert.
 
 ## activity (42)
 
-- <a id="BuildNativeRealization"></a>BuildNativeRealization
-- <a id="ExportUiDocumentation"></a>ExportUiDocumentation
-- <a id="G1FrontendPort"></a>G1FrontendPort
-- <a id="G1M1ParserAndAst"></a>G1M1ParserAndAst
-- <a id="G1M2ValidationAndNormalization"></a>G1M2ValidationAndNormalization
-- <a id="G1M3Concept1AndDumps"></a>G1M3Concept1AndDumps
-- <a id="G2LayoutAndPresentation"></a>G2LayoutAndPresentation
-- <a id="G2M1RelativeMeasurement"></a>G2M1RelativeMeasurement
-- <a id="G2M2SharedSvgGeometry"></a>G2M2SharedSvgGeometry
-- <a id="G2M3FyneInteractions"></a>G2M3FyneInteractions
-- <a id="G2M4RichContent"></a>G2M4RichContent
-- <a id="G3M1TypedUiSession"></a>G3M1TypedUiSession
-- <a id="G3M2CandidatePublication"></a>G3M2CandidatePublication
-- <a id="G3M3CompatibleState"></a>G3M3CompatibleState
-- <a id="G3UiRuntimeAndReload"></a>G3UiRuntimeAndReload
-- <a id="G4M1SdlFrontend"></a>G4M1SdlFrontend
-- <a id="G4M2TypedExecution"></a>G4M2TypedExecution
-- <a id="G4M3UiDomainBinding"></a>G4M3UiDomainBinding
-- <a id="G4M4DomainReload"></a>G4M4DomainReload
-- <a id="G4SdlRuntimeAndBinding"></a>G4SdlRuntimeAndBinding
-- <a id="G5M1GeneratedGo"></a>G5M1GeneratedGo
-- <a id="G5M2BehaviorParity"></a>G5M2BehaviorParity
-- <a id="G5M3DocumentationExport"></a>G5M3DocumentationExport
-- <a id="G5M4RetirePython"></a>G5M4RetirePython
-- <a id="G5NativeGeneration"></a>G5NativeGeneration
-- <a id="G6M1StaticNavigation"></a>G6M1StaticNavigation
-- <a id="G6M2OnDemandViews"></a>G6M2OnDemandViews
-- <a id="G6M3XfmdNavigation"></a>G6M3XfmdNavigation
-- <a id="G6M4SessionPublication"></a>G6M4SessionPublication
-- <a id="G6M5SemanticNotation"></a>G6M5SemanticNotation
-- <a id="G6M6ClassViews"></a>G6M6ClassViews
-- <a id="G6NavigableDocumentation"></a>G6NavigableDocumentation
-- <a id="InspectDesignSource"></a>InspectDesignSource
-- <a id="InspectSdlSource"></a>InspectSdlSource
-- <a id="InspectSduiSource"></a>InspectSduiSource
-- <a id="RealizeDesign"></a>RealizeDesign
-- <a id="ReloadBoundModels"></a>ReloadBoundModels
-- <a id="ReloadDesignSession"></a>ReloadDesignSession
-- <a id="ReloadUiModel"></a>ReloadUiModel
-- <a id="RunBoundUiAction"></a>RunBoundUiAction
-- <a id="RunDesignSession"></a>RunDesignSession
-- <a id="RunUnboundUiPreview"></a>RunUnboundUiPreview
+### BuildNativeRealization
+
+### ExportUiDocumentation
+
+### G1FrontendPort
+
+### G1M1ParserAndAst
+
+### G1M2ValidationAndNormalization
+
+### G1M3Concept1AndDumps
+
+### G2LayoutAndPresentation
+
+### G2M1RelativeMeasurement
+
+### G2M2SharedSvgGeometry
+
+### G2M3FyneInteractions
+
+### G2M4RichContent
+
+### G3M1TypedUiSession
+
+### G3M2CandidatePublication
+
+### G3M3CompatibleState
+
+### G3UiRuntimeAndReload
+
+### G4M1SdlFrontend
+
+### G4M2TypedExecution
+
+### G4M3UiDomainBinding
+
+### G4M4DomainReload
+
+### G4SdlRuntimeAndBinding
+
+### G5M1GeneratedGo
+
+### G5M2BehaviorParity
+
+### G5M3DocumentationExport
+
+### G5M4RetirePython
+
+### G5NativeGeneration
+
+### G6M1StaticNavigation
+
+### G6M2OnDemandViews
+
+### G6M3XfmdNavigation
+
+### G6M4SessionPublication
+
+### G6M5SemanticNotation
+
+### G6M6ClassViews
+
+### G6NavigableDocumentation
+
+### InspectDesignSource
+
+### InspectSdlSource
+
+### InspectSduiSource
+
+### RealizeDesign
+
+### ReloadBoundModels
+
+### ReloadDesignSession
+
+### ReloadUiModel
+
+### RunBoundUiAction
+
+### RunDesignSession
+
+### RunUnboundUiPreview
+
 
 ## actor (2)
 
-- <a id="DesignAuthor"></a>DesignAuthor
-- <a id="DesignReviewer"></a>DesignReviewer
+### DesignAuthor
+
+### DesignReviewer
+
 
 ## capability (14)
 
-- <a id="BoundInteraction"></a>BoundInteraction
-- <a id="DevelopmentReload"></a>DevelopmentReload
-- <a id="DomainOperations"></a>DomainOperations
-- <a id="ExecutableDesign"></a>ExecutableDesign
-- <a id="InteractiveSession"></a>InteractiveSession
-- <a id="MeasuredPresentation"></a>MeasuredPresentation
-- <a id="NativeInteraction"></a>NativeInteraction
-- <a id="NativeRealization"></a>NativeRealization
-- <a id="RichContent"></a>RichContent
-- <a id="SdlSourceModel"></a>SdlSourceModel
-- <a id="SduiSourceModel"></a>SduiSourceModel
-- <a id="SourceDiagnostics"></a>SourceDiagnostics
-- <a id="SourceLoading"></a>SourceLoading
-- <a id="StaticDocumentation"></a>StaticDocumentation
+### BoundInteraction
+
+### DevelopmentReload
+
+### DomainOperations
+
+### ExecutableDesign
+
+### InteractiveSession
+
+### MeasuredPresentation
+
+### NativeInteraction
+
+### NativeRealization
+
+### RichContent
+
+### SdlSourceModel
+
+### SduiSourceModel
+
+### SourceDiagnostics
+
+### SourceLoading
+
+### StaticDocumentation
+
 
 ## channel (22)
 
-- <a id="FramePresentationCalls"></a>FramePresentationCalls
-- <a id="GoBuildCalls"></a>GoBuildCalls
-- <a id="GoDomainCalls"></a>GoDomainCalls
-- <a id="GoGenerationCalls"></a>GoGenerationCalls
-- <a id="LayoutCalls"></a>LayoutCalls
-- <a id="ModelReloadCalls"></a>ModelReloadCalls
-- <a id="NativeUiActions"></a>NativeUiActions
-- <a id="SdlActionCalls"></a>SdlActionCalls
-- <a id="SdlCompilationCalls"></a>SdlCompilationCalls
-- <a id="SvgExportCalls"></a>SvgExportCalls
-- <a id="UiAstCalls"></a>UiAstCalls
-- <a id="UiCompilationCalls"></a>UiCompilationCalls
-- <a id="UiDomainActions"></a>UiDomainActions
-- <a id="UiGenerationEvents"></a>UiGenerationEvents
-- <a id="UiNormalizationCalls"></a>UiNormalizationCalls
-- <a id="UiTokenizationCalls"></a>UiTokenizationCalls
-- <a id="UiValidationCalls"></a>UiValidationCalls
-- <a id="ViewDisplayCalls"></a>ViewDisplayCalls
-- <a id="ViewLaunchCalls"></a>ViewLaunchCalls
-- <a id="ViewNavigationCalls"></a>ViewNavigationCalls
-- <a id="ViewProjectionCalls"></a>ViewProjectionCalls
-- <a id="ViewPublicationCalls"></a>ViewPublicationCalls
+### FramePresentationCalls
+
+### GoBuildCalls
+
+### GoDomainCalls
+
+### GoGenerationCalls
+
+### LayoutCalls
+
+### ModelReloadCalls
+
+### NativeUiActions
+
+### SdlActionCalls
+
+### SdlCompilationCalls
+
+### SvgExportCalls
+
+### UiAstCalls
+
+### UiCompilationCalls
+
+### UiDomainActions
+
+### UiGenerationEvents
+
+### UiNormalizationCalls
+
+### UiTokenizationCalls
+
+### UiValidationCalls
+
+### ViewDisplayCalls
+
+### ViewLaunchCalls
+
+### ViewNavigationCalls
+
+### ViewProjectionCalls
+
+### ViewPublicationCalls
+
 
 ## container (4)
 
-- <a id="CommandLineHost"></a>CommandLineHost
-- <a id="FyneHost"></a>FyneHost
-- <a id="ViewServiceHost"></a>ViewServiceHost
-- <a id="XfmdDocumentHost"></a>XfmdDocumentHost
+### CommandLineHost
+
+### FyneHost
+
+### ViewServiceHost
+
+### XfmdDocumentHost
+
 
 ## contract (45)
 
-- <a id="ActionArguments"></a>ActionArguments
-- <a id="ActionOutcome"></a>ActionOutcome
-- <a id="AstArtifactContract"></a>AstArtifactContract
-- <a id="DesignSourceRecord"></a>DesignSourceRecord
-- <a id="FramePresentationCallsProtocol"></a>FramePresentationCallsProtocol
-- <a id="GeneratedGoContract"></a>GeneratedGoContract
-- <a id="GoBuildCallsProtocol"></a>GoBuildCallsProtocol
-- <a id="GoDomainCallsProtocol"></a>GoDomainCallsProtocol
-- <a id="GoGenerationCallsProtocol"></a>GoGenerationCallsProtocol
-- <a id="LayoutArguments"></a>LayoutArguments
-- <a id="LayoutCallsProtocol"></a>LayoutCallsProtocol
-- <a id="ModelReloadCallsProtocol"></a>ModelReloadCallsProtocol
-- <a id="NativeBuildContract"></a>NativeBuildContract
-- <a id="NativeUiActionsProtocol"></a>NativeUiActionsProtocol
-- <a id="NormalizedModelContract"></a>NormalizedModelContract
-- <a id="PreparedFrameContract"></a>PreparedFrameContract
-- <a id="PresentationOutcome"></a>PresentationOutcome
-- <a id="ReloadArguments"></a>ReloadArguments
-- <a id="ReloadOutcome"></a>ReloadOutcome
-- <a id="SdlActionCallsProtocol"></a>SdlActionCallsProtocol
-- <a id="SdlCompilationCallsProtocol"></a>SdlCompilationCallsProtocol
-- <a id="SvgDocumentContract"></a>SvgDocumentContract
-- <a id="SvgExportCallsProtocol"></a>SvgExportCallsProtocol
-- <a id="TokenArtifactContract"></a>TokenArtifactContract
-- <a id="UiAstCallsProtocol"></a>UiAstCallsProtocol
-- <a id="UiCompilationCallsProtocol"></a>UiCompilationCallsProtocol
-- <a id="UiDomainActionsProtocol"></a>UiDomainActionsProtocol
-- <a id="UiGenerationContract"></a>UiGenerationContract
-- <a id="UiGenerationEventsProtocol"></a>UiGenerationEventsProtocol
-- <a id="UiNormalizationCallsProtocol"></a>UiNormalizationCallsProtocol
-- <a id="UiSessionRecord"></a>UiSessionRecord
-- <a id="UiTokenizationCallsProtocol"></a>UiTokenizationCallsProtocol
-- <a id="UiValidationCallsProtocol"></a>UiValidationCallsProtocol
-- <a id="ValidationOutcomeContract"></a>ValidationOutcomeContract
-- <a id="ViewBundleContract"></a>ViewBundleContract
-- <a id="ViewDisplayCallsProtocol"></a>ViewDisplayCallsProtocol
-- <a id="ViewFailureContract"></a>ViewFailureContract
-- <a id="ViewLaunchCallsProtocol"></a>ViewLaunchCallsProtocol
-- <a id="ViewNavigationCallsProtocol"></a>ViewNavigationCallsProtocol
-- <a id="ViewOpenContract"></a>ViewOpenContract
-- <a id="ViewOpenedContract"></a>ViewOpenedContract
-- <a id="ViewProjectionCallsProtocol"></a>ViewProjectionCallsProtocol
-- <a id="ViewPublicationCallsProtocol"></a>ViewPublicationCallsProtocol
-- <a id="ViewReferenceContract"></a>ViewReferenceContract
-- <a id="ViewSelectionContract"></a>ViewSelectionContract
+### ActionArguments
+
+### ActionOutcome
+
+### AstArtifactContract
+
+### DesignSourceRecord
+
+### FramePresentationCallsProtocol
+
+### GeneratedGoContract
+
+### GoBuildCallsProtocol
+
+### GoDomainCallsProtocol
+
+### GoGenerationCallsProtocol
+
+### LayoutArguments
+
+### LayoutCallsProtocol
+
+### ModelReloadCallsProtocol
+
+### NativeBuildContract
+
+### NativeUiActionsProtocol
+
+### NormalizedModelContract
+
+### PreparedFrameContract
+
+### PresentationOutcome
+
+### ReloadArguments
+
+### ReloadOutcome
+
+### SdlActionCallsProtocol
+
+### SdlCompilationCallsProtocol
+
+### SvgDocumentContract
+
+### SvgExportCallsProtocol
+
+### TokenArtifactContract
+
+### UiAstCallsProtocol
+
+### UiCompilationCallsProtocol
+
+### UiDomainActionsProtocol
+
+### UiGenerationContract
+
+### UiGenerationEventsProtocol
+
+### UiNormalizationCallsProtocol
+
+### UiSessionRecord
+
+### UiTokenizationCallsProtocol
+
+### UiValidationCallsProtocol
+
+### ValidationOutcomeContract
+
+### ViewBundleContract
+
+### ViewDisplayCallsProtocol
+
+### ViewFailureContract
+
+### ViewLaunchCallsProtocol
+
+### ViewNavigationCallsProtocol
+
+### ViewOpenContract
+
+### ViewOpenedContract
+
+### ViewProjectionCallsProtocol
+
+### ViewPublicationCallsProtocol
+
+### ViewReferenceContract
+
+### ViewSelectionContract
+
 
 ## database (1)
 
-- <a id="DesignSourceArchive"></a>DesignSourceArchive
+### DesignSourceArchive
+
 
 ## datagram (1)
 
-- <a id="UiGenerationNotices"></a>UiGenerationNotices
+### UiGenerationNotices
+
 
 ## dataset (2)
 
-- <a id="DesignSourceDocuments"></a>DesignSourceDocuments
-- <a id="UiSessionState"></a>UiSessionState
+### DesignSourceDocuments
+
+### UiSessionState
+
 
 ## encoding (1)
 
-- <a id="UiGenerationWire"></a>UiGenerationWire
+### UiGenerationWire
+
 
 ## feature (8)
 
-- <a id="DesignDocumentation"></a>DesignDocumentation
-- <a id="InteractiveUiPreview"></a>InteractiveUiPreview
-- <a id="LiveModelReload"></a>LiveModelReload
-- <a id="NativeGoAssembly"></a>NativeGoAssembly
-- <a id="NavigableDesignDocumentation"></a>NavigableDesignDocumentation
-- <a id="StructuralModelInspection"></a>StructuralModelInspection
-- <a id="TypedDesignInspection"></a>TypedDesignInspection
-- <a id="TypedDomainBinding"></a>TypedDomainBinding
+### DesignDocumentation
+
+### InteractiveUiPreview
+
+### LiveModelReload
+
+### NativeGoAssembly
+
+### NavigableDesignDocumentation
+
+### StructuralModelInspection
+
+### TypedDesignInspection
+
+### TypedDomainBinding
+
 
 ## field (54)
 
-- <a id="ActionGeneration"></a>ActionGeneration
-- <a id="ActionInputText"></a>ActionInputText
-- <a id="ActionOutputText"></a>ActionOutputText
-- <a id="ActionStatusCode"></a>ActionStatusCode
-- <a id="ActionSymbol"></a>ActionSymbol
-- <a id="AstArtifact"></a>AstArtifact
-- <a id="FailedViewRequestId"></a>FailedViewRequestId
-- <a id="GeneratedGoSources"></a>GeneratedGoSources
-- <a id="LayoutModelArtifact"></a>LayoutModelArtifact
-- <a id="LayoutViewportHeight"></a>LayoutViewportHeight
-- <a id="LayoutViewportWidth"></a>LayoutViewportWidth
-- <a id="ModelDiagnostics"></a>ModelDiagnostics
-- <a id="ModelIsValid"></a>ModelIsValid
-- <a id="NativeBuildDiagnostics"></a>NativeBuildDiagnostics
-- <a id="NativeBuildSucceeded"></a>NativeBuildSucceeded
-- <a id="NormalizedModelArtifact"></a>NormalizedModelArtifact
-- <a id="NoticeGeneration"></a>NoticeGeneration
-- <a id="NoticeVersion"></a>NoticeVersion
-- <a id="OpenViewConsumerId"></a>OpenViewConsumerId
-- <a id="OpenViewEntryPath"></a>OpenViewEntryPath
-- <a id="OpenViewLeaseId"></a>OpenViewLeaseId
-- <a id="OpenViewPaneId"></a>OpenViewPaneId
-- <a id="OpenViewRequestId"></a>OpenViewRequestId
-- <a id="OpenViewRevision"></a>OpenViewRevision
-- <a id="OpenViewWindowId"></a>OpenViewWindowId
-- <a id="OpenedViewRequestId"></a>OpenedViewRequestId
-- <a id="OpenedViewRevision"></a>OpenedViewRevision
-- <a id="PreparedFrameArtifact"></a>PreparedFrameArtifact
-- <a id="PresentationReady"></a>PresentationReady
-- <a id="ReloadDiagnostic"></a>ReloadDiagnostic
-- <a id="ReloadPublishedGeneration"></a>ReloadPublishedGeneration
-- <a id="ReloadSourceRevision"></a>ReloadSourceRevision
-- <a id="ReloadSourceText"></a>ReloadSourceText
-- <a id="SessionDraft"></a>SessionDraft
-- <a id="SessionGeneration"></a>SessionGeneration
-- <a id="SourceDocumentRevision"></a>SourceDocumentRevision
-- <a id="SourceDocumentText"></a>SourceDocumentText
-- <a id="SvgDocumentText"></a>SvgDocumentText
-- <a id="TokenArtifact"></a>TokenArtifact
-- <a id="ViewBundleBytes"></a>ViewBundleBytes
-- <a id="ViewBundleRevision"></a>ViewBundleRevision
-- <a id="ViewConsumerId"></a>ViewConsumerId
-- <a id="ViewEntryPath"></a>ViewEntryPath
-- <a id="ViewFailureCode"></a>ViewFailureCode
-- <a id="ViewFailureDiagnostic"></a>ViewFailureDiagnostic
-- <a id="ViewLeaseId"></a>ViewLeaseId
-- <a id="ViewManifestPath"></a>ViewManifestPath
-- <a id="ViewPaneId"></a>ViewPaneId
-- <a id="ViewProjectId"></a>ViewProjectId
-- <a id="ViewPublishedRevision"></a>ViewPublishedRevision
-- <a id="ViewRequestId"></a>ViewRequestId
-- <a id="ViewSelector"></a>ViewSelector
-- <a id="ViewSourceRevision"></a>ViewSourceRevision
-- <a id="ViewWindowId"></a>ViewWindowId
+### ActionGeneration
+
+### ActionInputText
+
+### ActionOutputText
+
+### ActionStatusCode
+
+### ActionSymbol
+
+### AstArtifact
+
+### FailedViewRequestId
+
+### GeneratedGoSources
+
+### LayoutModelArtifact
+
+### LayoutViewportHeight
+
+### LayoutViewportWidth
+
+### ModelDiagnostics
+
+### ModelIsValid
+
+### NativeBuildDiagnostics
+
+### NativeBuildSucceeded
+
+### NormalizedModelArtifact
+
+### NoticeGeneration
+
+### NoticeVersion
+
+### OpenViewConsumerId
+
+### OpenViewEntryPath
+
+### OpenViewLeaseId
+
+### OpenViewPaneId
+
+### OpenViewRequestId
+
+### OpenViewRevision
+
+### OpenViewWindowId
+
+### OpenedViewRequestId
+
+### OpenedViewRevision
+
+### PreparedFrameArtifact
+
+### PresentationReady
+
+### ReloadDiagnostic
+
+### ReloadPublishedGeneration
+
+### ReloadSourceRevision
+
+### ReloadSourceText
+
+### SessionDraft
+
+### SessionGeneration
+
+### SourceDocumentRevision
+
+### SourceDocumentText
+
+### SvgDocumentText
+
+### TokenArtifact
+
+### ViewBundleBytes
+
+### ViewBundleRevision
+
+### ViewConsumerId
+
+### ViewEntryPath
+
+### ViewFailureCode
+
+### ViewFailureDiagnostic
+
+### ViewLeaseId
+
+### ViewManifestPath
+
+### ViewPaneId
+
+### ViewProjectId
+
+### ViewPublishedRevision
+
+### ViewRequestId
+
+### ViewSelector
+
+### ViewSourceRevision
+
+### ViewWindowId
+
 
 ## functionality (116)
 
-- <a id="AllocateGeometry"></a>AllocateGeometry
-- <a id="ApplyPropertyBatch"></a>ApplyPropertyBatch
-- <a id="ApplySemanticNotation"></a>ApplySemanticNotation
-- <a id="BuildGeneratedApplication"></a>BuildGeneratedApplication
-- <a id="BuildPreparedFrame"></a>BuildPreparedFrame
-- <a id="BuildSdlAst"></a>BuildSdlAst
-- <a id="BuildSduiAst"></a>BuildSduiAst
-- <a id="CancelPendingActions"></a>CancelPendingActions
-- <a id="CaptureNavigationTarget"></a>CaptureNavigationTarget
-- <a id="CheckDomainStateCompatibility"></a>CheckDomainStateCompatibility
-- <a id="CheckExecutionCompleteness"></a>CheckExecutionCompleteness
-- <a id="CheckFunctionSignatures"></a>CheckFunctionSignatures
-- <a id="CloseSdlInstance"></a>CloseSdlInstance
-- <a id="CloseUiInstance"></a>CloseUiInstance
-- <a id="CoalesceSourceChanges"></a>CoalesceSourceChanges
-- <a id="ComposeHeadlessExport"></a>ComposeHeadlessExport
-- <a id="ComposeInteractiveSession"></a>ComposeInteractiveSession
-- <a id="ComposeMarkdownDocument"></a>ComposeMarkdownDocument
-- <a id="ComposeViewPackage"></a>ComposeViewPackage
-- <a id="ComputeClipping"></a>ComputeClipping
-- <a id="ConnectTypedWidgetHandles"></a>ConnectTypedWidgetHandles
-- <a id="CoordinateSdlCompilation"></a>CoordinateSdlCompilation
-- <a id="CoordinateSduiCompilation"></a>CoordinateSduiCompilation
-- <a id="CorrelateActionResult"></a>CorrelateActionResult
-- <a id="CorrelateUiResult"></a>CorrelateUiResult
-- <a id="CreateSdlInstance"></a>CreateSdlInstance
-- <a id="CreateUiInstance"></a>CreateUiInstance
-- <a id="DisconnectBindings"></a>DisconnectBindings
-- <a id="DispatchUiEvent"></a>DispatchUiEvent
-- <a id="DispatchViewOpen"></a>DispatchViewOpen
-- <a id="EvictUnusedViewBundles"></a>EvictUnusedViewBundles
-- <a id="ExpandUiDefinitions"></a>ExpandUiDefinitions
-- <a id="ExportConsoleSnapshot"></a>ExportConsoleSnapshot
-- <a id="ExportModelInventories"></a>ExportModelInventories
-- <a id="ExportSvgSnapshot"></a>ExportSvgSnapshot
-- <a id="ExportViewpointMarkdown"></a>ExportViewpointMarkdown
-- <a id="GenerateBindingRegistration"></a>GenerateBindingRegistration
-- <a id="GenerateModelConstructors"></a>GenerateModelConstructors
-- <a id="GenerateViewNavigation"></a>GenerateViewNavigation
-- <a id="HandleFocusAndTextInput"></a>HandleFocusAndTextInput
-- <a id="IdentifySourceRevision"></a>IdentifySourceRevision
-- <a id="IndexViewpointLevels"></a>IndexViewpointLevels
-- <a id="InvokeRegisteredFunction"></a>InvokeRegisteredFunction
-- <a id="KeepLastValidModels"></a>KeepLastValidModels
-- <a id="KeyViewRevision"></a>KeyViewRevision
-- <a id="ManageDomainState"></a>ManageDomainState
-- <a id="ManageWidgetIdentities"></a>ManageWidgetIdentities
-- <a id="MatchCompatibleWidgets"></a>MatchCompatibleWidgets
-- <a id="MeasureMarkdownContent"></a>MeasureMarkdownContent
-- <a id="MeasureUiContent"></a>MeasureUiContent
-- <a id="MigrateOrResetDomainState"></a>MigrateOrResetDomainState
-- <a id="NormalizeSdlModel"></a>NormalizeSdlModel
-- <a id="ObserveSourceChanges"></a>ObserveSourceChanges
-- <a id="PerformDomainOperation"></a>PerformDomainOperation
-- <a id="PrepareCandidateModels"></a>PrepareCandidateModels
-- <a id="PrepareDiagramResource"></a>PrepareDiagramResource
-- <a id="PrepareMarkdown"></a>PrepareMarkdown
-- <a id="PreserveCompatibleUiState"></a>PreserveCompatibleUiState
-- <a id="PreserveHandwrittenSources"></a>PreserveHandwrittenSources
-- <a id="PreserveSdlSourceMap"></a>PreserveSdlSourceMap
-- <a id="PreserveUiRegions"></a>PreserveUiRegions
-- <a id="PreserveUiSourceMap"></a>PreserveUiSourceMap
-- <a id="PreserveViewAnchors"></a>PreserveViewAnchors
-- <a id="ProjectClassViews"></a>ProjectClassViews
-- <a id="ProjectSdlViewpoints"></a>ProjectSdlViewpoints
-- <a id="ProjectSelectedView"></a>ProjectSelectedView
-- <a id="ProjectUiGeneration"></a>ProjectUiGeneration
-- <a id="PublishDomainUpdates"></a>PublishDomainUpdates
-- <a id="PublishModelGeneration"></a>PublishModelGeneration
-- <a id="PublishPresentation"></a>PublishPresentation
-- <a id="PublishViewBundle"></a>PublishViewBundle
-- <a id="ReadBoundedSources"></a>ReadBoundedSources
-- <a id="ReconcileWidgets"></a>ReconcileWidgets
-- <a id="RegisterDomainFunctions"></a>RegisterDomainFunctions
-- <a id="RejectStaleUiEvent"></a>RejectStaleUiEvent
-- <a id="RejectStaleViewResults"></a>RejectStaleViewResults
-- <a id="ReleaseNativeWidgets"></a>ReleaseNativeWidgets
-- <a id="ReleaseVisualResources"></a>ReleaseVisualResources
-- <a id="ReportBindingDiagnostics"></a>ReportBindingDiagnostics
-- <a id="ReportSourceDiagnostics"></a>ReportSourceDiagnostics
-- <a id="ResetIncompatibleUiState"></a>ResetIncompatibleUiState
-- <a id="ResolveAncestorDimensions"></a>ResolveAncestorDimensions
-- <a id="ResolveCallbackSymbols"></a>ResolveCallbackSymbols
-- <a id="ResolveConfiguredViewer"></a>ResolveConfiguredViewer
-- <a id="ResolveSdlSymbols"></a>ResolveSdlSymbols
-- <a id="ResolveUiNames"></a>ResolveUiNames
-- <a id="RestartChangedGoProgram"></a>RestartChangedGoProgram
-- <a id="RetainVisibleViewBundle"></a>RetainVisibleViewBundle
-- <a id="RetirePreviousGeneration"></a>RetirePreviousGeneration
-- <a id="RetireReplacedPythonEntryPoints"></a>RetireReplacedPythonEntryPoints
-- <a id="RevokeWidgetGenerations"></a>RevokeWidgetGenerations
-- <a id="RouteDocumentToPane"></a>RouteDocumentToPane
-- <a id="RouteDomainBindings"></a>RouteDomainBindings
-- <a id="ScheduleUiPublication"></a>ScheduleUiPublication
-- <a id="SelectRelationshipViews"></a>SelectRelationshipViews
-- <a id="ServeViewRequests"></a>ServeViewRequests
-- <a id="SnapshotDomainState"></a>SnapshotDomainState
-- <a id="SnapshotUiState"></a>SnapshotUiState
-- <a id="TokenizeSdlSource"></a>TokenizeSdlSource
-- <a id="TokenizeSduiSource"></a>TokenizeSduiSource
-- <a id="TraceViewpointFacts"></a>TraceViewpointFacts
-- <a id="TrackInputDraft"></a>TrackInputDraft
-- <a id="ValidateActionInput"></a>ValidateActionInput
-- <a id="ValidateClassRelations"></a>ValidateClassRelations
-- <a id="ValidatePropertyBatch"></a>ValidatePropertyBatch
-- <a id="ValidateRelativeFormatting"></a>ValidateRelativeFormatting
-- <a id="ValidateSdlProfile"></a>ValidateSdlProfile
-- <a id="ValidateSdlStructure"></a>ValidateSdlStructure
-- <a id="ValidateSymbolicBindings"></a>ValidateSymbolicBindings
-- <a id="ValidateUiEvent"></a>ValidateUiEvent
-- <a id="ValidateViewRequest"></a>ValidateViewRequest
-- <a id="ValidateVisualResources"></a>ValidateVisualResources
-- <a id="ValidateWidgetArguments"></a>ValidateWidgetArguments
-- <a id="VerifyDiagramCapabilities"></a>VerifyDiagramCapabilities
-- <a id="VerifyNativeBehaviorParity"></a>VerifyNativeBehaviorParity
-- <a id="WriteGeneratedArtifacts"></a>WriteGeneratedArtifacts
+### AllocateGeometry
+
+### ApplyPropertyBatch
+
+### ApplySemanticNotation
+
+### BuildGeneratedApplication
+
+### BuildPreparedFrame
+
+### BuildSdlAst
+
+### BuildSduiAst
+
+### CancelPendingActions
+
+### CaptureNavigationTarget
+
+### CheckDomainStateCompatibility
+
+### CheckExecutionCompleteness
+
+### CheckFunctionSignatures
+
+### CloseSdlInstance
+
+### CloseUiInstance
+
+### CoalesceSourceChanges
+
+### ComposeHeadlessExport
+
+### ComposeInteractiveSession
+
+### ComposeMarkdownDocument
+
+### ComposeViewPackage
+
+### ComputeClipping
+
+### ConnectTypedWidgetHandles
+
+### CoordinateSdlCompilation
+
+### CoordinateSduiCompilation
+
+### CorrelateActionResult
+
+### CorrelateUiResult
+
+### CreateSdlInstance
+
+### CreateUiInstance
+
+### DisconnectBindings
+
+### DispatchUiEvent
+
+### DispatchViewOpen
+
+### EvictUnusedViewBundles
+
+### ExpandUiDefinitions
+
+### ExportConsoleSnapshot
+
+### ExportModelInventories
+
+### ExportSvgSnapshot
+
+### ExportViewpointMarkdown
+
+### GenerateBindingRegistration
+
+### GenerateModelConstructors
+
+### GenerateViewNavigation
+
+### HandleFocusAndTextInput
+
+### IdentifySourceRevision
+
+### IndexViewpointLevels
+
+### InvokeRegisteredFunction
+
+### KeepLastValidModels
+
+### KeyViewRevision
+
+### ManageDomainState
+
+### ManageWidgetIdentities
+
+### MatchCompatibleWidgets
+
+### MeasureMarkdownContent
+
+### MeasureUiContent
+
+### MigrateOrResetDomainState
+
+### NormalizeSdlModel
+
+### ObserveSourceChanges
+
+### PerformDomainOperation
+
+### PrepareCandidateModels
+
+### PrepareDiagramResource
+
+### PrepareMarkdown
+
+### PreserveCompatibleUiState
+
+### PreserveHandwrittenSources
+
+### PreserveSdlSourceMap
+
+### PreserveUiRegions
+
+### PreserveUiSourceMap
+
+### PreserveViewAnchors
+
+### ProjectClassViews
+
+### ProjectSdlViewpoints
+
+### ProjectSelectedView
+
+### ProjectUiGeneration
+
+### PublishDomainUpdates
+
+### PublishModelGeneration
+
+### PublishPresentation
+
+### PublishViewBundle
+
+### ReadBoundedSources
+
+### ReconcileWidgets
+
+### RegisterDomainFunctions
+
+### RejectStaleUiEvent
+
+### RejectStaleViewResults
+
+### ReleaseNativeWidgets
+
+### ReleaseVisualResources
+
+### ReportBindingDiagnostics
+
+### ReportSourceDiagnostics
+
+### ResetIncompatibleUiState
+
+### ResolveAncestorDimensions
+
+### ResolveCallbackSymbols
+
+### ResolveConfiguredViewer
+
+### ResolveSdlSymbols
+
+### ResolveUiNames
+
+### RestartChangedGoProgram
+
+### RetainVisibleViewBundle
+
+### RetirePreviousGeneration
+
+### RetireReplacedPythonEntryPoints
+
+### RevokeWidgetGenerations
+
+### RouteDocumentToPane
+
+### RouteDomainBindings
+
+### ScheduleUiPublication
+
+### SelectRelationshipViews
+
+### ServeViewRequests
+
+### SnapshotDomainState
+
+### SnapshotUiState
+
+### TokenizeSdlSource
+
+### TokenizeSduiSource
+
+### TraceViewpointFacts
+
+### TrackInputDraft
+
+### ValidateActionInput
+
+### ValidateClassRelations
+
+### ValidatePropertyBatch
+
+### ValidateRelativeFormatting
+
+### ValidateSdlProfile
+
+### ValidateSdlStructure
+
+### ValidateSymbolicBindings
+
+### ValidateUiEvent
+
+### ValidateViewRequest
+
+### ValidateVisualResources
+
+### ValidateWidgetArguments
+
+### VerifyDiagramCapabilities
+
+### VerifyNativeBehaviorParity
+
+### WriteGeneratedArtifacts
+
 
 ## interface (30)
 
-- <a id="BindingReloadPort"></a>BindingReloadPort
-- <a id="BuildToolPort"></a>BuildToolPort
-- <a id="ContentProviderPort"></a>ContentProviderPort
-- <a id="DiagnosticPort"></a>DiagnosticPort
-- <a id="DiagramEnginePort"></a>DiagramEnginePort
-- <a id="DiagramPort"></a>DiagramPort
-- <a id="DomainBindingPort"></a>DomainBindingPort
-- <a id="DomainFunctionPort"></a>DomainFunctionPort
-- <a id="DomainStatePort"></a>DomainStatePort
-- <a id="ExecutionProfilePort"></a>ExecutionProfilePort
-- <a id="ExportSinkPort"></a>ExportSinkPort
-- <a id="FileChangePort"></a>FileChangePort
-- <a id="GeneratedArtifactPort"></a>GeneratedArtifactPort
-- <a id="MeasurementPort"></a>MeasurementPort
-- <a id="PreparedFramePort"></a>PreparedFramePort
-- <a id="ReloadPort"></a>ReloadPort
-- <a id="ResourcePort"></a>ResourcePort
-- <a id="SdlExecutionPort"></a>SdlExecutionPort
-- <a id="SdlFrontendPort"></a>SdlFrontendPort
-- <a id="SdlModelPort"></a>SdlModelPort
-- <a id="SdlReloadPort"></a>SdlReloadPort
-- <a id="SduiFrontendPort"></a>SduiFrontendPort
-- <a id="SduiModelPort"></a>SduiModelPort
-- <a id="SourceInputPort"></a>SourceInputPort
-- <a id="SourceSnapshotPort"></a>SourceSnapshotPort
-- <a id="UiReloadPort"></a>UiReloadPort
-- <a id="UiSessionPort"></a>UiSessionPort
-- <a id="UiSnapshotPort"></a>UiSnapshotPort
-- <a id="UiStatePort"></a>UiStatePort
-- <a id="WidgetBackendPort"></a>WidgetBackendPort
+### BindingReloadPort
+
+### BuildToolPort
+
+### ContentProviderPort
+
+### DiagnosticPort
+
+### DiagramEnginePort
+
+### DiagramPort
+
+### DomainBindingPort
+
+### DomainFunctionPort
+
+### DomainStatePort
+
+### ExecutionProfilePort
+
+### ExportSinkPort
+
+### FileChangePort
+
+### GeneratedArtifactPort
+
+### MeasurementPort
+
+### PreparedFramePort
+
+### ReloadPort
+
+### ResourcePort
+
+### SdlExecutionPort
+
+### SdlFrontendPort
+
+### SdlModelPort
+
+### SdlReloadPort
+
+### SduiFrontendPort
+
+### SduiModelPort
+
+### SourceInputPort
+
+### SourceSnapshotPort
+
+### UiReloadPort
+
+### UiSessionPort
+
+### UiSnapshotPort
+
+### UiStatePort
+
+### WidgetBackendPort
+
 
 ## message (48)
 
-- <a id="BoundActionRequest"></a>BoundActionRequest
-- <a id="BoundActionResult"></a>BoundActionResult
-- <a id="BuildGoRequest"></a>BuildGoRequest
-- <a id="BuildGoResult"></a>BuildGoResult
-- <a id="BuildUiAstRequest"></a>BuildUiAstRequest
-- <a id="BuildUiAstResult"></a>BuildUiAstResult
-- <a id="CompileSdlRequest"></a>CompileSdlRequest
-- <a id="CompileSdlResult"></a>CompileSdlResult
-- <a id="CompileUiRejected"></a>CompileUiRejected
-- <a id="CompileUiRequest"></a>CompileUiRequest
-- <a id="CompileUiResult"></a>CompileUiResult
-- <a id="DisplayViewRequest"></a>DisplayViewRequest
-- <a id="DomainActionRequest"></a>DomainActionRequest
-- <a id="DomainActionResult"></a>DomainActionResult
-- <a id="ExportSvgRequest"></a>ExportSvgRequest
-- <a id="ExportSvgResult"></a>ExportSvgResult
-- <a id="GenerateGoRequest"></a>GenerateGoRequest
-- <a id="GenerateGoResult"></a>GenerateGoResult
-- <a id="LaunchViewRequest"></a>LaunchViewRequest
-- <a id="LayoutRequest"></a>LayoutRequest
-- <a id="LayoutResult"></a>LayoutResult
-- <a id="NormalizeUiRequest"></a>NormalizeUiRequest
-- <a id="NormalizeUiResult"></a>NormalizeUiResult
-- <a id="PresentFrameRequest"></a>PresentFrameRequest
-- <a id="PresentFrameResult"></a>PresentFrameResult
-- <a id="ProjectViewRequest"></a>ProjectViewRequest
-- <a id="PublishViewRequest"></a>PublishViewRequest
-- <a id="ReloadPublished"></a>ReloadPublished
-- <a id="ReloadRejected"></a>ReloadRejected
-- <a id="ReloadRequest"></a>ReloadRequest
-- <a id="SdlActionRequest"></a>SdlActionRequest
-- <a id="SdlActionResult"></a>SdlActionResult
-- <a id="SelectViewRequest"></a>SelectViewRequest
-- <a id="TokenizeUiRequest"></a>TokenizeUiRequest
-- <a id="TokenizeUiResult"></a>TokenizeUiResult
-- <a id="UiActionRejected"></a>UiActionRejected
-- <a id="UiActionRequest"></a>UiActionRequest
-- <a id="UiActionResult"></a>UiActionResult
-- <a id="ValidateUiRequest"></a>ValidateUiRequest
-- <a id="ValidateUiResult"></a>ValidateUiResult
-- <a id="ViewBundleResult"></a>ViewBundleResult
-- <a id="ViewDisplayResult"></a>ViewDisplayResult
-- <a id="ViewLaunchResult"></a>ViewLaunchResult
-- <a id="ViewOpenedResult"></a>ViewOpenedResult
-- <a id="ViewProjectionRejected"></a>ViewProjectionRejected
-- <a id="ViewReferenceResult"></a>ViewReferenceResult
-- <a id="ViewRequestRejected"></a>ViewRequestRejected
-- <a id="ViewTargetUnavailable"></a>ViewTargetUnavailable
+### BoundActionRequest
+
+### BoundActionResult
+
+### BuildGoRequest
+
+### BuildGoResult
+
+### BuildUiAstRequest
+
+### BuildUiAstResult
+
+### CompileSdlRequest
+
+### CompileSdlResult
+
+### CompileUiRejected
+
+### CompileUiRequest
+
+### CompileUiResult
+
+### DisplayViewRequest
+
+### DomainActionRequest
+
+### DomainActionResult
+
+### ExportSvgRequest
+
+### ExportSvgResult
+
+### GenerateGoRequest
+
+### GenerateGoResult
+
+### LaunchViewRequest
+
+### LayoutRequest
+
+### LayoutResult
+
+### NormalizeUiRequest
+
+### NormalizeUiResult
+
+### PresentFrameRequest
+
+### PresentFrameResult
+
+### ProjectViewRequest
+
+### PublishViewRequest
+
+### ReloadPublished
+
+### ReloadRejected
+
+### ReloadRequest
+
+### SdlActionRequest
+
+### SdlActionResult
+
+### SelectViewRequest
+
+### TokenizeUiRequest
+
+### TokenizeUiResult
+
+### UiActionRejected
+
+### UiActionRequest
+
+### UiActionResult
+
+### ValidateUiRequest
+
+### ValidateUiResult
+
+### ViewBundleResult
+
+### ViewDisplayResult
+
+### ViewLaunchResult
+
+### ViewOpenedResult
+
+### ViewProjectionRejected
+
+### ViewReferenceResult
+
+### ViewRequestRejected
+
+### ViewTargetUnavailable
+
 
 ## mode (9)
 
-- <a id="BoundExecution"></a>BoundExecution
-- <a id="BoundLiveEditing"></a>BoundLiveEditing
-- <a id="DocumentBrowsing"></a>DocumentBrowsing
-- <a id="LiveEditing"></a>LiveEditing
-- <a id="NativeBuild"></a>NativeBuild
-- <a id="RichDocument"></a>RichDocument
-- <a id="SourceInspection"></a>SourceInspection
-- <a id="StaticExport"></a>StaticExport
-- <a id="UiPreview"></a>UiPreview
+### BoundExecution
+
+### BoundLiveEditing
+
+### DocumentBrowsing
+
+### LiveEditing
+
+### NativeBuild
+
+### RichDocument
+
+### SourceInspection
+
+### StaticExport
+
+### UiPreview
+
 
 ## scenario (13)
 
-- <a id="BoundActionAccepted"></a>BoundActionAccepted
-- <a id="BoundActionRejected"></a>BoundActionRejected
-- <a id="InteractiveFramePrepared"></a>InteractiveFramePrepared
-- <a id="InvalidViewSelectionRejected"></a>InvalidViewSelectionRejected
-- <a id="NativeProgramBuilt"></a>NativeProgramBuilt
-- <a id="SdlModelReloadAccepted"></a>SdlModelReloadAccepted
-- <a id="SelectedViewOpened"></a>SelectedViewOpened
-- <a id="StaticFrameExported"></a>StaticFrameExported
-- <a id="UiCompilationAccepted"></a>UiCompilationAccepted
-- <a id="UiModelReloadAccepted"></a>UiModelReloadAccepted
-- <a id="UiModelReloadRejected"></a>UiModelReloadRejected
-- <a id="UnboundLocalAction"></a>UnboundLocalAction
-- <a id="ViewProjectionFailed"></a>ViewProjectionFailed
+### BoundActionAccepted
+
+### BoundActionRejected
+
+### InteractiveFramePrepared
+
+### InvalidViewSelectionRejected
+
+### NativeProgramBuilt
+
+### SdlModelReloadAccepted
+
+### SelectedViewOpened
+
+### StaticFrameExported
+
+### UiCompilationAccepted
+
+### UiModelReloadAccepted
+
+### UiModelReloadRejected
+
+### UnboundLocalAction
+
+### ViewProjectionFailed
+
 
 ## unit (43)
 
-- <a id="ContentServices"></a>ContentServices
-- <a id="DevelopmentTools"></a>DevelopmentTools
-- <a id="DiagnosticReporter"></a>DiagnosticReporter
-- <a id="DiagramProvider"></a>DiagramProvider
-- <a id="DocumentBroker"></a>DocumentBroker
-- <a id="DomainStateMigrator"></a>DomainStateMigrator
-- <a id="FyneBackend"></a>FyneBackend
-- <a id="GoBuildRunner"></a>GoBuildRunner
-- <a id="GoCodeGenerator"></a>GoCodeGenerator
-- <a id="GoDomainImplementation"></a>GoDomainImplementation
-- <a id="MarkdownProvider"></a>MarkdownProvider
-- <a id="ReloadCoordinator"></a>ReloadCoordinator
-- <a id="ResourceStore"></a>ResourceStore
-- <a id="SdlDispatcher"></a>SdlDispatcher
-- <a id="SdlExecutionGate"></a>SdlExecutionGate
-- <a id="SdlFrontend"></a>SdlFrontend
-- <a id="SdlFunctionRegistry"></a>SdlFunctionRegistry
-- <a id="SdlLexer"></a>SdlLexer
-- <a id="SdlLibrary"></a>SdlLibrary
-- <a id="SdlNormalizer"></a>SdlNormalizer
-- <a id="SdlParser"></a>SdlParser
-- <a id="SdlRuntime"></a>SdlRuntime
-- <a id="SdlStateStore"></a>SdlStateStore
-- <a id="SdlUiBindingAdapter"></a>SdlUiBindingAdapter
-- <a id="SdlValidator"></a>SdlValidator
-- <a id="SdlViewpointGenerator"></a>SdlViewpointGenerator
-- <a id="SduiDispatcher"></a>SduiDispatcher
-- <a id="SduiFrontend"></a>SduiFrontend
-- <a id="SduiInstanceStore"></a>SduiInstanceStore
-- <a id="SduiLayout"></a>SduiLayout
-- <a id="SduiLexer"></a>SduiLexer
-- <a id="SduiLibrary"></a>SduiLibrary
-- <a id="SduiNormalizer"></a>SduiNormalizer
-- <a id="SduiParser"></a>SduiParser
-- <a id="SduiPresentation"></a>SduiPresentation
-- <a id="SduiPropertyStore"></a>SduiPropertyStore
-- <a id="SduiRuntime"></a>SduiRuntime
-- <a id="SduiValidator"></a>SduiValidator
-- <a id="SourceLoader"></a>SourceLoader
-- <a id="SourceWatcher"></a>SourceWatcher
-- <a id="UiStateReconciler"></a>UiStateReconciler
-- <a id="ViewArtifactStore"></a>ViewArtifactStore
-- <a id="ViewerLaunchAdapter"></a>ViewerLaunchAdapter
+### ContentServices
+
+### DevelopmentTools
+
+### DiagnosticReporter
+
+### DiagramProvider
+
+### DocumentBroker
+
+### DomainStateMigrator
+
+### FyneBackend
+
+### GoBuildRunner
+
+### GoCodeGenerator
+
+### GoDomainImplementation
+
+### MarkdownProvider
+
+### ReloadCoordinator
+
+### ResourceStore
+
+### SdlDispatcher
+
+### SdlExecutionGate
+
+### SdlFrontend
+
+### SdlFunctionRegistry
+
+### SdlLexer
+
+### SdlLibrary
+
+### SdlNormalizer
+
+### SdlParser
+
+### SdlRuntime
+
+### SdlStateStore
+
+### SdlUiBindingAdapter
+
+### SdlValidator
+
+### SdlViewpointGenerator
+
+### SduiDispatcher
+
+### SduiFrontend
+
+### SduiInstanceStore
+
+### SduiLayout
+
+### SduiLexer
+
+### SduiLibrary
+
+### SduiNormalizer
+
+### SduiParser
+
+### SduiPresentation
+
+### SduiPropertyStore
+
+### SduiRuntime
+
+### SduiValidator
+
+### SourceLoader
+
+### SourceWatcher
+
+### UiStateReconciler
+
+### ViewArtifactStore
+
+### ViewerLaunchAdapter
+
 
 ## usecase (7)
 
-- <a id="BrowseDesignViews"></a>BrowseDesignViews
-- <a id="BuildNativeProduct"></a>BuildNativeProduct
-- <a id="EditRunningPrototype"></a>EditRunningPrototype
-- <a id="InspectModels"></a>InspectModels
-- <a id="PrototypeUserInterface"></a>PrototypeUserInterface
-- <a id="PublishDesignDocumentation"></a>PublishDesignDocumentation
-- <a id="TryDomainInteraction"></a>TryDomainInteraction
+### BrowseDesignViews
+
+### BuildNativeProduct
+
+### EditRunningPrototype
+
+### InspectModels
+
+### PrototypeUserInterface
+
+### PublishDesignDocumentation
+
+### TryDomainInteraction
+
 
 ## variant (1)
 
-- <a id="UiGenerationChanged"></a>UiGenerationChanged
-
+### UiGenerationChanged

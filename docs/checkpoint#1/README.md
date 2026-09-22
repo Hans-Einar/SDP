@@ -1,18 +1,19 @@
 # Checkpoint #1 — SDP, SystemDesignLanguage og SDUI
 
-**Start med [10 — G6 dokumentnavigasjon](10-SDL-Viewpoint-Navigation.md)**
-for siste designutvidelse, og [09 — generert G1–G5-design](09-SDL-Generated-Go-Design-Review.md)
-for gjennomgang av leverte V2–V4. Se også
-[08 — SDL-status og viewpoints](08-SDL-Viewpoints-and-Implementation-Status.md) og
-[07 — SDUI 0.2 og Go-retning](07-SDUI-0.2-and-Go-Direction.md) for språk-/runtimegrunnlaget.
-Tillegget samler dagens språkstatus, eksempler og Go/Fyne-plan. Dokument 01–06
-bevarer SDL-diskusjonen fra 18. september; rendererforslag der er historiske
-der de avviker fra tillegg 07. SDLs kandidatsemantikk er fortsatt ikke vedtatt.
-[SDUI-kodeområde](../../SDUI/go/README.md) · [SDL-kodeområde](../../SystemDesignLanguage/go/README.md).
+**Gjeldende implementasjonsstatus:** [tillegg 11 — Go, runtime og navigasjon](11-Go-Implementation-and-Navigation.md).
 
-V0–V4 er levert i Python-verktøyet. Aktiv SDL-profil er design-core 0.5; eldre
-aktive profiler er portert og erstattet. Data, kontrakter, Channel-scenarioer og
-G1–G5-planen genereres fra SDL-kilden. Go-parser/runtime er fortsatt planlagt.
+Tillegg 11 samler de leverte G-fasene, portopprydding og faktisk verifikasjon.
+[10 — dokumentnavigasjon](10-SDL-Viewpoint-Navigation.md),
+[09 — generert Go-design](09-SDL-Generated-Go-Design-Review.md),
+[08 — viewpoints](08-SDL-Viewpoints-and-Implementation-Status.md) og
+[07 — Go-retning](07-SDUI-0.2-and-Go-Direction.md) bevarer design-/V-fasegrunnlaget.
+Dokument 01–06 bevarer SDL-diskusjonen fra 18. september. Kandidater blir ikke
+vedtatte språkregler ved at en implementasjon av avgrensede profiler finnes.
+
+Aktive Go-profiler er SDL design-core 0.5, action-core 0.1, class-core 0.1 og
+SDUI 0.2. [SDUI-kodeområde](../../SDUI/go/README.md) · [SDL-kodeområde](../../SystemDesignLanguage/go/README.md).
+G1–G6 er levert; språkmodeller, viewpoints og valgt UI/state eksporteres av
+Go-verktøyene. Eldre Python-innganger er fjernet.
 
 Opprinnelig checkpoint: 2026-09-18; oppdatert 2026-09-22.
 Status: consolidated discussion checkpoint, not an approved language release.
@@ -41,6 +42,7 @@ projects. It also does not promote every idea in the conversation into a decisio
 | [08 — SDL viewpoints and implementation status](08-SDL-Viewpoints-and-Implementation-Status.md) | Viewpoint catalogue, generated views, gaps against checkpoint #1 and persistent Database meaning. |
 | [09 — Generated Go design review](09-SDL-Generated-Go-Design-Review.md) | V2–V4 delivery, generated G1–G5 plan, verification and remaining design boundaries. |
 | [10 — Viewpoint navigation](10-SDL-Viewpoint-Navigation.md) | Planned G6 navigator/overview, A0–A5, notation, on-demand projection and XFMD panel/IPC handoff. |
+| [11 — Go implementation](11-Go-Implementation-and-Navigation.md) | Implemented profiles, G1–G6 evidence, native navigation and explicit limits. |
 | [Source fingerprint index](source-index.json) | Content hashes of the local source documents used for consolidation; provenance, not implementation proof. |
 
 ## The whole picture

@@ -1,10 +1,10 @@
 # SDL/SDUI-parser og runtime beskrevet med SDL
 
 **Start med [generert G1–G6-implementasjonsplan](viewpoints/implementation.md).**
-Den viser planlagte milepæler, eiere, avhengigheter og eksempelforløp fra SDL.
+Den viser milepælstatus, eiere, avhengigheter og eksempelforløp fra SDL.
 
 [SDL-verktøyets genererte viewpoints](viewpoints/viewpoints.md) og
-[samlet rendret utskrift](viewpoints/printout.md) er avledet fra denne kilden.
+[viewpoint-indeks](viewpoints/index.md) er avledet fra denne kilden.
 Regenerering og utvalg står i [verktøydokumentasjonen](../../SystemDesignLanguage/tools/README.md).
 Use Case/Feature og allokering genereres fra SDL. Datakart, packet og kontraktkontrollerte Channel-sekvenser genereres også;
 ingen diagramfakta tegnes inn manuelt.
@@ -15,33 +15,32 @@ SDUI/vertsmodellen på samme sted. Ingen kopi opprettes under SDL-katalogen.
 
 Modellen er skrevet i implementert `design-core 0.5` og passerer den eksisterende
 SDL-parseren. Dette profilnummeret gjelder SDL-struktur, ikke utgått SDUI 0.1.
-Den beskriver planlagt Go-kode; kjørbar Go-parser/runtime finnes ennå ikke.
+Den beskriver Go-koden og dens ansvar. [Gjeldende implementasjonsstatus](../../docs/checkpoint%231/11-Go-Implementation-and-Navigation.md) avgrenser profilene.
 
 ## Åpne modellen
 
 - [SDL-kilde](architecture.design): autoritativt eierskap, struktur og grensebruk.
-- [Generert ansvarsoversikt](architecture.catalog.md): Units, underenheter, ansvar og porter fra AST.
+- [Generert ansvarsoversikt](viewpoints/viewpoints/VP02/index.md): Units, underenheter, ansvar og porter fra AST.
 - [Generert AST med symboltabell](architecture.ast.json): kildeposisjoner og typede noder.
-- [Valideringsrapport](architecture.validation.json): resultat, tellinger og SHA-256 for kilder/verktøy/artefakter.
+- [Valideringsrapport](architecture.validation.json): parserresultat; kilde-/verktøyhash finnes i genererte manifest.
 
 Fra SDP-roten:
 
 ```sh
-python3 experiments/design_core/design_core.py check SDUI/design/architecture.design
-python3 experiments/design_core/design_core.py ast SDUI/design/architecture.design
-python3 SDUI/tools/export_design.py
+go -C SystemDesignLanguage/go run ./cmd/sdl check ../../SDUI/design/architecture.design
+go -C SystemDesignLanguage/go run ./cmd/sdl ast ../../SDUI/design/architecture.design
+go -C SystemDesignLanguage/go run ./cmd/sdl viewpoints ../../SDUI/design/architecture.design --format static --monolithic --output ../../SDUI/design/viewpoints --renderer /absolute/mmdr
 ```
 
-De to første kommandoene er den eksisterende SDL-CLI-en. Den siste bruker samme
-`check`, `canonicalize`, `symbol_table` og `to_json` for å regenerere AST,
-ansvarsoversikt og rapport. Én frontend brukes; V1–V4 er definert i design-core 0.5, uten gammel fallback.
-Ugyldig modell stopper eksport før eksisterende artefakter erstattes.
+CLI gir kildeposisjonert AST og separate viewpointkataloger med indeks.
+[Navigatoren](navigation/navigator.md) kan brukes med registrert XFMD-verktøy
+for å generere bare ønsket detalj. [UI/state-eksemplet](runtime-preview/entry.md)
+er generert fra samme Go-verktøykjede, med eksplisitt valgt UI-tilstand.
 
-Verifisert kilde 2026-09-22: 463 deklarasjoner og 1424 fakta. 116 Functionality-er
-har eksplisitt milepælkobling. De 42 Activities inkluderer seks G-faser og 24
-milepæler; 22 Channels, 48 Messages og 13 scenarioer beskriver samarbeid.
-Syntaks, typer, eierskap, kontrakter, korrelasjon og kanonisk form kontrolleres.
-Tallene viser modellomfang. G1–G6 har eksplisitt status planned.
+Modellen har 463 deklarasjoner og 1424 fakta; 116 Functionality-er har
+milepælkobling. G1–G6s status oppdateres fra faktisk milepælverifikasjon.
+42 Activities inkluderer seks G-faser og 24 milepæler; 22 Channels, 48 Messages
+og 13 scenarioer beskriver samarbeid. Modellfakta er ikke alene kjørebevis.
 
 ## Bruksmål og arkitekturbidrag
 
@@ -59,8 +58,7 @@ runtimeallokering. En delt Functionality gjør ikke alle dens Features kjørbare
 i alle modi hvor dette ene ansvaret har en plassering.
 
 `SdlViewpointGenerator` under `SdlLibrary` eier `ProjectSdlViewpoints`,
-`ExportViewpointMarkdown` og `TraceViewpointFacts`. Python-verktøyet er dagens
-implementasjon av disse avgrensede ansvarene; Go-porten gjenstår.
+`ExportViewpointMarkdown` og `TraceViewpointFacts`. Go-pakken viewpoint implementerer disse avgrensede ansvarene; Python-porten er fullført.
 
 ## Parserdesign
 
@@ -107,8 +105,8 @@ kobler typed widgethandles, ruter kall og publiserer domeneoppdateringer til UI.
 Den kan kobles fra uten å gjøre en statisk SDUI-modell ugyldig. `DomainBindingPort`
 er grensen UI ser; `SdlExecutionPort` er grensen til SDL-kjøringen.
 
-Planlagt hendelsesforløp; de eksplisitte eksempelbanene i VP08 validerer
-meldingsrekkefølge og kontrakter, mens tilstandsvirkningene nedenfor gjenstår:
+Hendelsesforløp implementert i G3/G4s avgrensede profiler. VP08 validerer
+designets meldingsrekkefølge; de separate runtime-prøvene verifiserer virkninger:
 
 1. Fyne sender aktivering/commit med widgetidentitet, generation og revisjon.
 2. SDUI sjekker aktuell widget, enabled, binding og verdi før dispatch.
@@ -120,7 +118,7 @@ meldingsrekkefølge og kontrakter, mens tilstandsvirkningene nedenfor gjenstår:
 Et programmatisk value-sett utløser ikke automatisk samme input-callback.
 Utestående eller sene resultater må kontrolleres mot instansens generation.
 Dette konkretiserer [runtime-kontrakten](../docs/runtime-contract.md); eksakte
-signaturer, feiltyper, leveringsregler og skjemaer må fortsatt defineres i G3/G4.
+signaturer, feiltyper og leveringsregler er konkretisert i Go-runtime og action-core.
 
 ## Hot reload og Go-generering
 
@@ -132,7 +130,8 @@ samme avtalte generationsgrense. Gammel modell beholdes ved feil.
 
 Kun SDUI trenger å parses på nytt ved en isolert UI-endring. Endret SDL-binding
 kan kreve ny bindingsvalidering av UI selv om SDUI-kilden er uendret. Dette er en
-avhengighetsregel som må implementeres; vi har ikke en inkrementell kompilator nå.
+implementert avhengighetsregel. Hele endrede språkmodeller bygges; dette er
+ikke inkrementell maskinkodekompilering.
 Ingen reload skal gjenta en allerede utført domenehandling. Publisering må
 samordnes med pågående hendelser, kansellering, fokus/draft og ressurser.
 
@@ -198,19 +197,19 @@ Parseren kontrollerer typede recordfelt, eksplisitte scenario-steg og korrelasjo
 innen den avgrensede design-core 0.5-profilen. Den kontrollerer ikke Go-signaturer,
 kall i implementert kode, atomisitet, state-maskiner, ressursbudsjetter, trådregler
 eller samsvar mellom Go-kode og modellen. V2–V4 utvidet grammatikk og tester
-samlet; kjørbar semantikk må få presise profiler og kontrakter i G-fasene.
+samlet; kjørbar action-core og klasseprofil er definert separat i G4/G6.
 
-| Modellområde | Plan / fremtidig kodeområde |
+| Modellområde | Implementert kodeområde |
 | --- | --- |
 | SduiFrontend og barn | G1; SDUI/go/parser |
 | SduiRuntime og barn | G3; SDUI/go/runtime |
 | SdlFrontend og barn | G4-M1; SystemDesignLanguage/go/parser |
 | SdlRuntime og barn, SdlUiBindingAdapter | G4-M2–M4; SDL-runtime og vertens kobling |
-| SduiLayout, innhold, Fyne, SduiPresentation | G2; kataloger opprettes ved implementasjon |
+| SduiLayout, innhold, Fyne, SduiPresentation | G2; SDUI/go/layout, markdown, svg og host/fynehost |
 | ReloadCoordinator, SourceWatcher | G3/G4; delt utviklingsvert, ikke duplisert i parserne |
-| GoCodeGenerator, GoBuildRunner | G5; kataloger opprettes ved implementasjon |
+| GoCodeGenerator, GoBuildRunner | G5; codegen i begge moduler, SDL/go/devhost |
 
-Disse kodeplasseringene er manuell sporbarhet. SDL-fakta gir ikke eksisterende
+Disse kodeplasseringene er manuell sporbarhet. SDL-fakta utfører ikke automatisk kontroll av
 Go-pakker eller filbindinger. [Målarkitekturen](../docs/target-architecture.md)
 eier prinsippene; denne modellen eier den detaljerte ansvarsfordelingen.
 
@@ -237,8 +236,9 @@ Dette er planlagt samarbeid, ikke observerte kjøreresultater.
 
 Reload-scenarioene skiller publisert modell fra avvist kandidat. Bare den
 aksepterte banen inneholder UiGenerationNotices. Kontraktene har optional draft,
-generation og diagnose der fravær er meningsfullt; ingen kjørende tilstandsmigrering
-hevdes. [MessageSet](viewpoints/message-sets.json) er avledet av SDL-verktøyet.
+generation og diagnose der fravær er meningsfullt. UI-state bevares ved
+kompatibilitet; action-core bevarer Go-eid state innen samme prosess. Generell
+automatisk migrering av vilkårlige domeneobjekter er ikke implementert. [MessageSet](viewpoints/message-sets.json) er avledet av SDL-verktøyet.
 
 ## V4 — samlet gjennomgangsgrunnlag
 
@@ -251,21 +251,21 @@ De ti scenarioene viser frontendens lexer/parser/validering/normalisering,
 felles layout for Fyne og SVG, lokal Go-handling uten SDL, akseptert/avvist
 SDL-binding, UI-reload, SDL-reload og native bygg. Meldingskontraktenes bytesfelt
 for tokens/AST/modell/scene er bevisst opake artefaktgrenser; komplette Go-structs,
-instanslivstid, atomisk reload/state-migrering og dimensjons-/fontenhet skal
-realiseres og testes i G-fasene. Ingen datatransformasjon eller tilstandsendring
+instanslivstid, atomisk UI-reload og dimensjons-/fontenhet er konkretisert i
+G-faseprofilene. Generell domenemigrering er ikke utledet. Ingen datatransformasjon eller tilstandsendring
 utledes bare fordi to meldinger følger hverandre i et scenario.
 
 ## G6 — navigerbare dokumenter
 
 [Eierens navigasjonsdesign](../../docs/SDL-Navigable-Viewpoints-Design.md) er
-lagt inn som G6NavigableDocumentation med seks planlagte milepæler. DocumentBroker,
+lagt inn som G6NavigableDocumentation med seks verifiserte milepæler. DocumentBroker,
 ViewArtifactStore og ViewerLaunchAdapter holder generering/publisering atskilt
 fra XfmdDocumentHost, som eier paneler og dokumentvisning. SelectedViewOpened,
 InvalidViewSelectionRejected og ViewProjectionFailed gir genererte sekvenser.
-De nye kontraktene er typed recordgrenser; URI-feltverdier, IPC, filpublisering,
-lease og XFMD-flagg er planlagt adferd. Ingen av disse adapterne kjører ennå.
+Kontraktene er typed recordgrenser. URI-validering, Linux IPC, filpublisering,
+leases og eksplisitte XFMD-vinduer/paneler er implementert og prøvd i G6.
 
 G6-D2 presiserer [eksportformer, A0–A5 og notasjon](../../docs/SDL-Viewpoint-Levels-and-Notation.md).
-Navigator-only bygger oversikter uten detaljdiagrammer; M5 planlegger faste
-symboler og semantisk riktige piler, M6 senere eksplisitt klassestruktur.
-Disse funksjonene er fortsatt planned i SDL, ikke støttet av dagens generator.
+Navigator-only bygger oversikter uten detaljdiagrammer; M5 gir faste
+symboler og semantiske piler. M6s eksplisitte klassestruktur har egen class-core
+profil og kildekoblede diagrammer, uten å omtolke contains/owns.

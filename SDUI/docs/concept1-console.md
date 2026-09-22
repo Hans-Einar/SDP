@@ -35,7 +35,7 @@ konsolldumpen beregner ikke denne geometrien. Derfor er den ikke en skjermgeomet
 ## Dumpkontrakt
 
 Dump bruker validert AST → samme normaliserte instanstre → terminalrader.
-Ingen separat parser og ingen Go-/GUI-avhengighet for statisk dump.
+Ingen separat parser eller GUI-avhengighet for statisk dump; aktiv implementasjon er Go.
 `--entry bucking` viser selve apteringsflaten; `--entry page` tar med appskallet.
 `--columns` angir terminalceller, ikke kildepiksler eller fontstørrelse.
 

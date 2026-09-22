@@ -50,3 +50,17 @@ før G5 fordi dokumentgenereringen i G5-M3 konsumerer G6-M1.
 G6 er fullført på `1d52677`. G5 følger på `sdl-sdui/phase-g5-codegen`.
 XFMDs nødvendige konsumentendringer er isolert i PR #38 i XFMD-repoet;
 SDP- og XFMD-branchene er pushet, ikke merget.
+
+
+| Implementasjonsfase | Pushet fasehode / branch |
+| --- | --- |
+| G1 | ca5aa91 — sdui/phase-g1-frontend |
+| G2 | 6a4d968 — sdui/phase-g2-presentation |
+| G3 | d29a48f — sdui/phase-g3-runtime |
+| G4 | d5430f0 — sdl/phase-g4-runtime |
+| G6 | 1d52677 — sdl/phase-g6-navigation |
+| G5 | sdl-sdui/phase-g5-codegen; siste commit er G5-M4 |
+
+G5 har M1 konstruktører, M2 kjøreparitet, M3 reproduserbar dokumentasjon og M4
+portopprydding/checkpoint. Samlet PR bruker G5-hodet mot sdp-vNow. Opprinnelige
+fasebrancher og milepælcommits beholdes. Ingen merge er en del av leveransen.

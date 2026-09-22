@@ -1,5 +1,9 @@
 # Checkpoint #1 — generert G1–G5-design
 
+**Implementasjonsstatus er oppdatert i [tillegg 11](11-Go-Implementation-and-Navigation.md).**
+Nedenfor beholdes det daterte design-/V-fasegrunnlaget; gamle Python-kommandoer
+er historiske og erstattet av Go-inngangene.
+
 Dato: 2026-09-22. V2–V4 er levert for gjennomgang før Go-implementasjon.
 Tallene nedenfor dokumenterer V4-leveransen. Den levende SDL-modellen er senere
 utvidet med [G6 dokumentnavigasjon](10-SDL-Viewpoint-Navigation.md).
@@ -15,7 +19,7 @@ Functionality-er beskriver frontendport, layout/presentasjon, UI-runtime/reload,
 SDL-runtime/binding og native Go-generering. Alle har status **planned**.
 Rapporten viser logiske eiere og kilde-ID-er for ansvar og avhengigheter.
 
-[Den samlede utskriften](../../SDUI/design/viewpoints/printout.md) inneholder
+[Den samlede utskriften](../../SDUI/design/viewpoints/viewpoints.md) inneholder
 alle elleve viewpoints: bruksmål/bidrag, arkitektur, ansvar, porter, modi,
 arbeidsplan, Feature-allokering, Channel-sekvenser, data/kontrakter, packet og
 faktaregister. [Mermaid-utgaven](../../SDUI/design/viewpoints/viewpoints.md)

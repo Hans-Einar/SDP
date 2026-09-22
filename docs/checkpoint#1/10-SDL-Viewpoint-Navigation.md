@@ -2,13 +2,15 @@
 
 Dato: 2026-09-22. Eierbestilling: del viewpoints i navigerbare dokumenter og
 planlegg generering ved klikk, med navigator og hoveddokument i XFMD.
-**Design er lagt inn; G6-M1–M6 er ikke implementert.**
+**Daterte designgrunnlag:** G6-M1–M6 er nå levert;
+[tillegg 11](11-Go-Implementation-and-Navigation.md) gir implementasjonsstatus.
+Beskrivelsen nedenfor bevarer G6-D1/D2-planen.
 
 Les [designkontrakten](../SDL-Navigable-Viewpoints-Design.md) for katalogforslag,
 URI-/adaptergrense, vindusvalg, publisering og levetid. Se
 [den genererte planen](../../SDUI/design/viewpoints/implementation.md) for G6s
 ansvar, eiere, avhengigheter og scenarioer fra [SDL-kilden](../../SDUI/design/architecture.design).
-[Samlet utskrift](../../SDUI/design/viewpoints/printout.md) er regenerert av SDL-verktøyet.
+[Samlet utskrift](../../SDUI/design/viewpoints/viewpoints.md) er regenerert av SDL-verktøyet.
 
 De første fire milepælene følger statisk navigasjon → behovsgenerering → XFMD-paneler →
 valgfri bakgrunnstjeneste. G6 kan starte etter G4-M1s strukturelle SDL-port og

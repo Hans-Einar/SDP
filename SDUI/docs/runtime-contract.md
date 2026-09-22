@@ -11,8 +11,8 @@ Identitet, livstid og hendelsesregler kan gjenbrukes, men gammel kilde-/wireform
 er ikke et kompatibilitetskrav. Kjørbar UI-kontrakt og bevaringsregler er
 beskrevet i [Go-runtime](../go/runtime/README.md); [prøvebevis](../go/evidence/G3.md).
 
-**ID:** SDUI-RUNTIME-001 · **Status:** SDL-grensen er designforslag; UI-delen er implementert i G3.
-Parseren produserer bare Reference og Connection. Det finnes ingen SDL-loader,
+**ID:** SDUI-RUNTIME-001 · **Status:** UI-delen er implementert i G3; eksplisitt action-core/Go-bridge i G4.
+Parseren produserer bare Reference og Connection. Det finnes ingen automatisk SDL-loader eller
 automatisk SDL-callbackoppløsning. Eksplisitt registrerte Go-handlere og
 UI-propertyoppdateringer er implementert i G3.
 
@@ -28,7 +28,7 @@ sdlFile.input1_sdl.setHandle(BoxUIDefinition.top.rightTop.input1_boxui);
 modulreferanse, ikke import av en Markdown-fil. Callback er en symbolsk
 medlemsreferanse, ikke en minneadresse i AST.
 
-Framtidig rekkefølge:
+Registrert oppkobling (ingen automatisk filimport):
 
 1. Parse/valider SDUI og opprett en UI-instans med widgetregister.
 2. Vertsadapter løser modulkilder relativt til dokumentets avtalte base og policy.

@@ -10,7 +10,7 @@ import (
 )
 
 func TestFrozenProjectionPort(t *testing.T) {
-	b, e := os.ReadFile("../../../SDUI/design/architecture.design")
+	b, e := os.ReadFile("testdata/python-projection-source.design")
 	if e != nil {
 		t.Fatal(e)
 	}

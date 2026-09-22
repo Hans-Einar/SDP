@@ -739,12 +739,12 @@ FyneHost uses GoDomainCalls as sender of DomainActionRequest in mode UiPreview.
 FyneHost uses LayoutCalls as receiver of LayoutResult in mode UiPreview.
 FyneHost uses LayoutCalls as sender of LayoutRequest in mode UiPreview.
 G1FrontendPort delivers StructuralModelInspection.
-G1FrontendPort has implementation-status = planned.
+G1FrontendPort has implementation-status = verified.
 G1M1ParserAndAst addresses BuildSduiAst.
 G1M1ParserAndAst addresses IdentifySourceRevision.
 G1M1ParserAndAst addresses ReadBoundedSources.
 G1M1ParserAndAst addresses TokenizeSduiSource.
-G1M1ParserAndAst has implementation-status = planned.
+G1M1ParserAndAst has implementation-status = verified.
 G1M1ParserAndAst refines G1FrontendPort.
 G1M2ValidationAndNormalization addresses CoordinateSduiCompilation.
 G1M2ValidationAndNormalization addresses ExpandUiDefinitions.
@@ -755,26 +755,26 @@ G1M2ValidationAndNormalization addresses ValidateRelativeFormatting.
 G1M2ValidationAndNormalization addresses ValidateSymbolicBindings.
 G1M2ValidationAndNormalization addresses ValidateWidgetArguments.
 G1M2ValidationAndNormalization depends-on G1M1ParserAndAst.
-G1M2ValidationAndNormalization has implementation-status = planned.
+G1M2ValidationAndNormalization has implementation-status = verified.
 G1M2ValidationAndNormalization refines G1FrontendPort.
 G1M3Concept1AndDumps addresses ExportConsoleSnapshot.
 G1M3Concept1AndDumps addresses ReportSourceDiagnostics.
 G1M3Concept1AndDumps depends-on G1M2ValidationAndNormalization.
-G1M3Concept1AndDumps has implementation-status = planned.
+G1M3Concept1AndDumps has implementation-status = verified.
 G1M3Concept1AndDumps refines G1FrontendPort.
 G2LayoutAndPresentation delivers InteractiveUiPreview.
-G2LayoutAndPresentation has implementation-status = planned.
+G2LayoutAndPresentation has implementation-status = verified.
 G2M1RelativeMeasurement addresses AllocateGeometry.
 G2M1RelativeMeasurement addresses ComputeClipping.
 G2M1RelativeMeasurement addresses MeasureUiContent.
 G2M1RelativeMeasurement addresses ResolveAncestorDimensions.
 G2M1RelativeMeasurement depends-on G1M2ValidationAndNormalization.
-G2M1RelativeMeasurement has implementation-status = planned.
+G2M1RelativeMeasurement has implementation-status = verified.
 G2M1RelativeMeasurement refines G2LayoutAndPresentation.
 G2M2SharedSvgGeometry addresses BuildPreparedFrame.
 G2M2SharedSvgGeometry addresses ExportSvgSnapshot.
 G2M2SharedSvgGeometry depends-on G2M1RelativeMeasurement.
-G2M2SharedSvgGeometry has implementation-status = planned.
+G2M2SharedSvgGeometry has implementation-status = verified.
 G2M2SharedSvgGeometry refines G2LayoutAndPresentation.
 G2M3FyneInteractions addresses ComposeInteractiveSession.
 G2M3FyneInteractions addresses HandleFocusAndTextInput.
@@ -783,7 +783,7 @@ G2M3FyneInteractions addresses ReconcileWidgets.
 G2M3FyneInteractions addresses ReleaseNativeWidgets.
 G2M3FyneInteractions addresses ScheduleUiPublication.
 G2M3FyneInteractions depends-on G2M2SharedSvgGeometry.
-G2M3FyneInteractions has implementation-status = planned.
+G2M3FyneInteractions has implementation-status = verified.
 G2M3FyneInteractions refines G2LayoutAndPresentation.
 G2M4RichContent addresses MeasureMarkdownContent.
 G2M4RichContent addresses PrepareDiagramResource.
@@ -791,7 +791,7 @@ G2M4RichContent addresses PrepareMarkdown.
 G2M4RichContent addresses ReleaseVisualResources.
 G2M4RichContent addresses ValidateVisualResources.
 G2M4RichContent depends-on G2M3FyneInteractions.
-G2M4RichContent has implementation-status = planned.
+G2M4RichContent has implementation-status = verified.
 G2M4RichContent refines G2LayoutAndPresentation.
 G3M1TypedUiSession addresses ApplyPropertyBatch.
 G3M1TypedUiSession addresses CloseUiInstance.
@@ -808,7 +808,7 @@ G3M1TypedUiSession addresses ValidatePropertyBatch.
 G3M1TypedUiSession addresses ValidateUiEvent.
 G3M1TypedUiSession depends-on G1M2ValidationAndNormalization.
 G3M1TypedUiSession depends-on G2M3FyneInteractions.
-G3M1TypedUiSession has implementation-status = planned.
+G3M1TypedUiSession has implementation-status = verified.
 G3M1TypedUiSession refines G3UiRuntimeAndReload.
 G3M2CandidatePublication addresses CoalesceSourceChanges.
 G3M2CandidatePublication addresses KeepLastValidModels.
@@ -817,16 +817,16 @@ G3M2CandidatePublication addresses PrepareCandidateModels.
 G3M2CandidatePublication addresses PublishModelGeneration.
 G3M2CandidatePublication addresses RetirePreviousGeneration.
 G3M2CandidatePublication depends-on G3M1TypedUiSession.
-G3M2CandidatePublication has implementation-status = planned.
+G3M2CandidatePublication has implementation-status = verified.
 G3M2CandidatePublication refines G3UiRuntimeAndReload.
 G3M3CompatibleState addresses MatchCompatibleWidgets.
 G3M3CompatibleState addresses PreserveCompatibleUiState.
 G3M3CompatibleState addresses ResetIncompatibleUiState.
 G3M3CompatibleState depends-on G3M2CandidatePublication.
-G3M3CompatibleState has implementation-status = planned.
+G3M3CompatibleState has implementation-status = verified.
 G3M3CompatibleState refines G3UiRuntimeAndReload.
 G3UiRuntimeAndReload delivers LiveModelReload.
-G3UiRuntimeAndReload has implementation-status = planned.
+G3UiRuntimeAndReload has implementation-status = verified.
 G4M1SdlFrontend addresses BuildSdlAst.
 G4M1SdlFrontend addresses CoordinateSdlCompilation.
 G4M1SdlFrontend addresses NormalizeSdlModel.
@@ -835,7 +835,7 @@ G4M1SdlFrontend addresses ResolveSdlSymbols.
 G4M1SdlFrontend addresses TokenizeSdlSource.
 G4M1SdlFrontend addresses ValidateSdlProfile.
 G4M1SdlFrontend addresses ValidateSdlStructure.
-G4M1SdlFrontend has implementation-status = planned.
+G4M1SdlFrontend has implementation-status = verified.
 G4M1SdlFrontend refines G4SdlRuntimeAndBinding.
 G4M2TypedExecution addresses CancelPendingActions.
 G4M2TypedExecution addresses CheckExecutionCompleteness.
@@ -850,7 +850,7 @@ G4M2TypedExecution addresses RegisterDomainFunctions.
 G4M2TypedExecution addresses SnapshotDomainState.
 G4M2TypedExecution addresses ValidateActionInput.
 G4M2TypedExecution depends-on G4M1SdlFrontend.
-G4M2TypedExecution has implementation-status = planned.
+G4M2TypedExecution has implementation-status = verified.
 G4M2TypedExecution refines G4SdlRuntimeAndBinding.
 G4M3UiDomainBinding addresses ConnectTypedWidgetHandles.
 G4M3UiDomainBinding addresses DisconnectBindings.
@@ -860,27 +860,27 @@ G4M3UiDomainBinding addresses ResolveCallbackSymbols.
 G4M3UiDomainBinding addresses RouteDomainBindings.
 G4M3UiDomainBinding depends-on G3M1TypedUiSession.
 G4M3UiDomainBinding depends-on G4M2TypedExecution.
-G4M3UiDomainBinding has implementation-status = planned.
+G4M3UiDomainBinding has implementation-status = verified.
 G4M3UiDomainBinding refines G4SdlRuntimeAndBinding.
 G4M4DomainReload addresses CheckDomainStateCompatibility.
 G4M4DomainReload addresses MigrateOrResetDomainState.
 G4M4DomainReload addresses RestartChangedGoProgram.
 G4M4DomainReload depends-on G3M3CompatibleState.
 G4M4DomainReload depends-on G4M3UiDomainBinding.
-G4M4DomainReload has implementation-status = planned.
+G4M4DomainReload has implementation-status = verified.
 G4M4DomainReload refines G4SdlRuntimeAndBinding.
 G4SdlRuntimeAndBinding delivers TypedDomainBinding.
-G4SdlRuntimeAndBinding has implementation-status = planned.
+G4SdlRuntimeAndBinding has implementation-status = verified.
 G5M1GeneratedGo addresses BuildGeneratedApplication.
 G5M1GeneratedGo addresses GenerateBindingRegistration.
 G5M1GeneratedGo addresses GenerateModelConstructors.
 G5M1GeneratedGo addresses PreserveHandwrittenSources.
 G5M1GeneratedGo depends-on G4M4DomainReload.
-G5M1GeneratedGo has implementation-status = planned.
+G5M1GeneratedGo has implementation-status = verified.
 G5M1GeneratedGo refines G5NativeGeneration.
 G5M2BehaviorParity addresses VerifyNativeBehaviorParity.
 G5M2BehaviorParity depends-on G5M1GeneratedGo.
-G5M2BehaviorParity has implementation-status = planned.
+G5M2BehaviorParity has implementation-status = verified.
 G5M2BehaviorParity refines G5NativeGeneration.
 G5M3DocumentationExport addresses ComposeHeadlessExport.
 G5M3DocumentationExport addresses ComposeMarkdownDocument.
@@ -888,16 +888,16 @@ G5M3DocumentationExport addresses WriteGeneratedArtifacts.
 G5M3DocumentationExport depends-on G2M4RichContent.
 G5M3DocumentationExport depends-on G5M2BehaviorParity.
 G5M3DocumentationExport depends-on G6M1StaticNavigation.
-G5M3DocumentationExport has implementation-status = planned.
+G5M3DocumentationExport has implementation-status = verified.
 G5M3DocumentationExport refines G5NativeGeneration.
 G5M4RetirePython addresses RetireReplacedPythonEntryPoints.
 G5M4RetirePython depends-on G1M3Concept1AndDumps.
 G5M4RetirePython depends-on G5M3DocumentationExport.
-G5M4RetirePython has implementation-status = planned.
+G5M4RetirePython has implementation-status = verified.
 G5M4RetirePython refines G5NativeGeneration.
 G5NativeGeneration delivers DesignDocumentation.
 G5NativeGeneration delivers NativeGoAssembly.
-G5NativeGeneration has implementation-status = planned.
+G5NativeGeneration has implementation-status = verified.
 G6M1StaticNavigation addresses ComposeViewPackage.
 G6M1StaticNavigation addresses ExportModelInventories.
 G6M1StaticNavigation addresses ExportViewpointMarkdown.
@@ -907,7 +907,7 @@ G6M1StaticNavigation addresses PreserveViewAnchors.
 G6M1StaticNavigation addresses ProjectSdlViewpoints.
 G6M1StaticNavigation addresses TraceViewpointFacts.
 G6M1StaticNavigation depends-on G4M1SdlFrontend.
-G6M1StaticNavigation has implementation-status = planned.
+G6M1StaticNavigation has implementation-status = verified.
 G6M1StaticNavigation refines G6NavigableDocumentation.
 G6M2OnDemandViews addresses KeyViewRevision.
 G6M2OnDemandViews addresses ProjectSelectedView.
@@ -915,35 +915,35 @@ G6M2OnDemandViews addresses PublishViewBundle.
 G6M2OnDemandViews addresses SelectRelationshipViews.
 G6M2OnDemandViews addresses ValidateViewRequest.
 G6M2OnDemandViews depends-on G6M1StaticNavigation.
-G6M2OnDemandViews has implementation-status = planned.
+G6M2OnDemandViews has implementation-status = verified.
 G6M2OnDemandViews refines G6NavigableDocumentation.
 G6M3XfmdNavigation addresses CaptureNavigationTarget.
 G6M3XfmdNavigation addresses DispatchViewOpen.
 G6M3XfmdNavigation addresses ResolveConfiguredViewer.
 G6M3XfmdNavigation addresses RouteDocumentToPane.
 G6M3XfmdNavigation depends-on G6M2OnDemandViews.
-G6M3XfmdNavigation has implementation-status = planned.
+G6M3XfmdNavigation has implementation-status = verified.
 G6M3XfmdNavigation refines G6NavigableDocumentation.
 G6M4SessionPublication addresses EvictUnusedViewBundles.
 G6M4SessionPublication addresses RejectStaleViewResults.
 G6M4SessionPublication addresses RetainVisibleViewBundle.
 G6M4SessionPublication addresses ServeViewRequests.
 G6M4SessionPublication depends-on G6M3XfmdNavigation.
-G6M4SessionPublication has implementation-status = planned.
+G6M4SessionPublication has implementation-status = verified.
 G6M4SessionPublication refines G6NavigableDocumentation.
 G6M5SemanticNotation addresses ApplySemanticNotation.
 G6M5SemanticNotation addresses VerifyDiagramCapabilities.
 G6M5SemanticNotation depends-on G6M1StaticNavigation.
-G6M5SemanticNotation has implementation-status = planned.
+G6M5SemanticNotation has implementation-status = verified.
 G6M5SemanticNotation refines G6NavigableDocumentation.
 G6M6ClassViews addresses ProjectClassViews.
 G6M6ClassViews addresses ValidateClassRelations.
 G6M6ClassViews depends-on G6M5SemanticNotation.
-G6M6ClassViews has implementation-status = planned.
+G6M6ClassViews has implementation-status = verified.
 G6M6ClassViews refines G6NavigableDocumentation.
 G6NavigableDocumentation delivers NavigableDesignDocumentation.
 G6NavigableDocumentation delivers TypedDesignInspection.
-G6NavigableDocumentation has implementation-status = planned.
+G6NavigableDocumentation has implementation-status = verified.
 GenerateBindingRegistration allocated-to CommandLineHost in mode NativeBuild.
 GenerateBindingRegistration contributes-to NativeGoAssembly.
 GenerateBindingRegistration realizes NativeRealization.

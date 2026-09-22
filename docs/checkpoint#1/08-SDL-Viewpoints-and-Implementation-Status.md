@@ -1,8 +1,12 @@
 # Checkpoint #1 — SDL-status og genererte viewpoints
 
+**Implementasjonsstatus er oppdatert i [tillegg 11](11-Go-Implementation-and-Navigation.md).**
+Nedenfor beholdes det daterte design-/V-fasegrunnlaget; gamle Python-kommandoer
+er historiske og erstattet av Go-inngangene.
+
 Dato: 2026-09-22. Gjennomgang av dokumentasjon, eksisterende parser, MVP1-korpus
 og SDL-modellen av SDL/SDUI. Tall og verifikasjon nedenfor er V4-snapshotet.
-Se [tillegg 10](10-SDL-Viewpoint-Navigation.md) for senere G6-design og dagens modell.
+Se [tillegg 11](10-SDL-Viewpoint-Navigation.md) for senere G6-design og dagens modell.
 SDUI 0.2 og Go/Fyne-retningen i [tillegg 07](07-SDUI-0.2-and-Go-Direction.md) beholdes.
 
 ## Konklusjon
@@ -34,7 +38,7 @@ Visningsvalg får filtrere og ordne fakta, men ikke opprette nye arkitekturfakta
 | Go-parser/runtime, binding til Go | Valgt videre retning | Kataloger, ikke implementert kode |
 
 Kildene er [språkdefinisjonen](../Design-Language-Definition.md),
-[parseren](../../experiments/design_core/design_core.py),
+[parseren](../../SystemDesignLanguage/go/README.md),
 [blueprint-studien](../SDL-Source-Tree-and-Compilation-Study.md),
 [MVP1-korpusets grenser](../../experiments/mvp1_sdl/README.md) og
 [datastudien](../SDL-Datasets-Datagrams-and-Data-Contracts.md).
@@ -102,7 +106,7 @@ Dette er en SDL-verktøyfunksjon, ikke håndtegnede diagrammer for SDUI-eksemple
 
 Prøveinput er [SDL-modellen av SDL/SDUI](../../SDUI/design/architecture.design).
 [Generert Markdown](../../SDUI/design/viewpoints/viewpoints.md) og
-[rendret utskrift](../../SDUI/design/viewpoints/printout.md) viser alle tilgjengelige
+[rendret utskrift](../../SDUI/design/viewpoints/viewpoints.md) viser alle tilgjengelige
 viewpoints og eksplisitte modellhull. 368 deklarasjoner og 1106 fakta kommer
 fra kilden. Actor/UseCase/Feature og utvalgt Functionality-allokering er skrevet
 som SDL-fakta i modellen, ikke rekonstruert av generatoren fra prosa eller navn.

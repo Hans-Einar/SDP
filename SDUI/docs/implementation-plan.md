@@ -2,11 +2,11 @@
 
 **Status 2026-09-22:** SDL-løpet V0–V4 er levert og pushet som fasebrancher.
 Eieren har autorisert implementasjon av alle G-faser i én sammenhengende økt,
-med fasebrancher, milepælcommits og push ved faseslutt. G1–G4 er levert;
-øvrige milepæler står som planlagt inntil deres akseptanse er verifisert.
+med fasebrancher, milepælcommits og push ved faseslutt. G1–G6 er levert innen de avgrensede profilene.
 [Faktiske implementasjonsbevis](../go/evidence/G1.md) holdes atskilt fra
 [den genererte designplanen](../design/viewpoints/implementation.md).
-Designmodellens planned-status beskriver målstrukturen inntil samlet modelloppdatering.
+Designmodellens verified-status viser fullførte fase-/milepælprøver;
+semantiske profilgrenser og gjenstående produktarbeid står i checkpoint tillegg 11.
 
 **ID:** SDUI-PLAN-003 · **Revisjon:** 2026-09-22.
 Erstatter PLAN-002s P0–P6-løp for Rust/C-ABI/FOX. Nye milepæler bruker G-prefiks;
@@ -15,8 +15,8 @@ henvisninger til P-faser i eldre bevis gjelder historien, ikke aktive leveranser
 [checkpoint](../../docs/checkpoint%231/07-SDUI-0.2-and-Go-Direction.md).
 
 Omfang: SDL/SDUI-parser og runtime i Go, felles SDUI-layout, SVG-eksport, første
-Fyne-vert, modellreload og senere Go-generering. G0/G1–G4 er levert; G2 er under implementasjon.
-Python SDUI 0.2, strukturparseren design-core og eksemplene er eksisterende portgrunnlag.
+Fyne-vert, modellreload og Go-generering. Python-portgrunnlaget er fjernet
+etter verifiserte konsumentporter; fryste fixturer og historiske bevis bevares.
 
 Designgrunnlag 2026-09-22: [felles SDL-strukturmodell](../design/README.md) beskriver
 ansvar og avhengigheter for G1–G6 og passerer eksisterende parser. Dette er
@@ -28,7 +28,7 @@ designdekning, ikke fullførte implementasjonsmilepæler.
 | --- | --- | --- |
 | G0-M1 | Checkpoint beskriver SDUI 0.2, faktisk implementasjon, Go-retning og historiske avvik | Levert |
 | G0-M2 | Aktive arkitektur-/plan-/handoff-instrukser peker samme vei | Levert |
-| G0-M3 | SDL og SDUI har egne Go-områder med parser/runtime og dokumentert ansvar | Levert; ingen Go-kode eller avhengigheter |
+| G0-M3 | SDL og SDUI har egne Go-områder med parser/runtime og dokumentert ansvar | Levert som kataloggrunnlag; senere implementert i G1–G6 |
 
 ## G1 — kjørbar SDUI-frontend i Go
 
@@ -36,11 +36,10 @@ designdekning, ikke fullførte implementasjonsmilepæler.
 | --- | --- |
 | G1-M1 | **Levert:** Go-modul, syntax-only CLI og parser/AST med kildeposisjoner; alle eksempel-AST-er samsvarer med Python-fixturene |
 | G1-M2 | **Levert:** Validator/normalisering, relative regler, frame-regioner, instansbaner og kildegrenser; porterte positive/negative Python-tilfeller |
-| G1-M3 | **Levert:** Concept1 AST/diagnoser og identiske konsoll-/Markdown-dumper; SVG/HTML-kontrollgalleri uten callbacks. Generell geometri følger G2 før Python-fixtureplassering fjernes |
+| G1-M3 | **Levert:** Concept1 AST/diagnoser og identiske konsoll-/Markdown-dumper; SVG/HTML-kontrollgalleri uten callbacks. Generell geometri levert i G2; midlertidige galleriformater fjernet i G5-M4 |
 
 Krav R01–R09, R13–R15, R19, R21–R24. Ingen SDL-kilde åpnes av parseren.
-Ingen Go- eller Python-fallback for SDUI 0.1. Parallell Python brukes bare som
-midlertidig portorakel; overgangens fullføring avhenger også av G2s eksport.
+Ingen Go- eller Python-fallback for SDUI 0.1. Portorakelet er fryst som testdata; aktive Python-konsumenter er fjernet.
 
 ## G2 — én layoutmodell, SVG og første Fyne-vindu
 
@@ -97,7 +96,7 @@ Avhenger av avklart G4-profil og felles runtime. Eier: SDL/SDUI sammen.
 | G5-M1 | **Levert:** Generert Go oppretter samme modeller/bindinger; bygger sammen med separate håndskrevne domenefunksjoner |
 | G5-M2 | **Levert:** Filbasert utviklingsmodus og generert program gir samme hendelsesspor/tilstand for avtalt profil; ufullstendig semantikk gir diagnose |
 | G5-M3 | **Levert:** Reproduserbar SVG/Markdown-dokumentasjon fra valgt UI/state; kilde-/verktøyversjon og renderbevis |
-| G5-M4 | Port fullført: gamle aktive Python-innganger/fixtureplassering fjernet eller erstattet, lenker/kommandoer oppdatert; én språkimplementasjon per profil |
+| G5-M4 | **Levert:** Port fullført: gamle aktive Python-innganger/fixtureplassering fjernet eller erstattet, lenker/kommandoer oppdatert; én språkimplementasjon per profil |
 
 Krav R19/R26. Go-byggcache gjenbrukes ved restart; dynamisk maskinkodeutskifting
 eller separate workerprosesser er ikke nødvendig akseptanse for hot reload.
@@ -121,22 +120,21 @@ G6-M1 avhenger av G4-M1s strukturelle frontendport, ikke SDL-runtime eller G5s
 Go-generering. Viewpoint-port og kildekart flyttes fra G5-M3 til G6-M1;
 G5-M3 blir konsument av denne eksporten. G6-M2 → M3 → M4 følger hverandre. M5 avhenger av M1 og kan utvikles
 ved siden av vertsarbeidet; M6 følger M5 og krever avklart klassekontrakt.
-Den nåværende Python-generatoren er portgrunnlaget. URI-notasjon og XFMD-flagg i
-designet er forslag og skal verifiseres med XFMD-implementasjonen.
+Den tidligere Python-generatoren er fryst portgrunnlag. URI/IPC og XFMD-flagg
+er verifisert mot den separate XFMD-implementasjonen; se G6-bevis.
 G6-D1/D2 leverer design og parsede planer/scenarioer, ikke implementerte
 G6-M1–M6. [Nivåer og notasjon](../../docs/SDL-Viewpoint-Levels-and-Notation.md)
 presiserer eksportformene, A0–A5, Mode/State og semantisk diagramprofil.
 
 ## Avgrensning og gjenbruk
 
-Fyne er første interaktive SDUI-vert. XFMD-dokumentnavigasjon er planlagt i G6;
+Fyne er første interaktive SDUI-vert. XFMD-dokumentnavigasjon er levert i G6;
 FOX-baserte SDUI-widgets, C-ABI og Bubble Tea er fortsatt utsatt. Eksisterende renderer-/worktree-kode
 kan gi ideer, tester og egnede algoritmer med dokumentert proveniens; det kreves
 ingen uttrekkscrate eller merge til Mermaid. Fullt Markdown/Mermaid-innhold må
 prøves mot en avtalt profil. Ingen flere renderere bygges bare for å holde valg åpne.
 
 SDL- og SDUI-katalogene har hver sin README for kodeansvar. Denne planen er felles;
-ikke opprett konkurrerende faseplaner under begge. Første kodeleveranse er G1-M1/M2
-og en liten G2-M1–M3-prøve etter designgjennomgangen. Git følger
+ikke opprett konkurrerende faseplaner under begge. Detaljert portinventar står i [Go-portoversikten](../../docs/SDL-Go-Port-Inventory.md). Git følger
 [én branch per fase og commit per milepæl](../../docs/Development-Branch-Stack.md);
 push er autorisert etter hver fullført fase.

@@ -1,13 +1,13 @@
 # SDL/SDUI — målarkitektur i Go
 
-**ID:** SDUI-ARCH-003 · 2026-09-21 · Valgt retning, implementasjon gjenstår.
+**ID:** SDUI-ARCH-003 · 2026-09-21 · Valgt og implementert retning; se fasebevis og profilgrenser.
 Erstatter ARCH-002s Rust/C-ABI og obligatoriske FOX/XFMD-løp.
 [Checkpoint #1, tillegg 07](../../docs/checkpoint%231/07-SDUI-0.2-and-Go-Direction.md)
-eier beslutningsoversikten; [architecture.md](architecture.md) beskriver kjørbar Python-kode.
+eier beslutningsoversikten; [architecture.md](architecture.md) beskriver gjeldende Go-kode.
 
 **Detaljert SDL-modell 2026-09-22:** [parser-/runtimedesignet](../design/README.md)
 dekker begge språkene og deres porter, reload, layout, vert og kodegenerering.
-Modellen er validert med eksisterende design-core-parser; ingen Go-runtime kjøres.
+Modellen valideres med Go design-core-parser; action-core-runtime er en separat profil.
 
 ## Eiendom og avhengigheter
 
@@ -17,14 +17,14 @@ Modellen er validert med eksisterende design-core-parser; ingen Go-runtime kjør
 | SystemDesignLanguage/go/runtime | Avgrenset SDL-kjøring og registrerte Go-funksjoner; ingen GUI-avhengighet |
 | SDUI/go/parser | SDUI 0.2, AST, diagnoser og normalisering; én språkimplementasjon etter port |
 | SDUI/go/runtime | UI-instans, identitet, egenskaper, events, bindinger og modellreload |
-| Senere SDUI layout | Én målt layoutmodell for interaktiv visning og eksport |
-| Senere SVG-presentasjon | Statisk dokumentasjonsbilde fra samme geometri og eksplisitt tilstand |
-| Senere Fyne-vert | Vindu, widgetlivstid, fokus, inndata og publisering på UI-tråden |
-| Senere Go-generator | Modell-/koblingskode; håndskrevne domenefunksjoner ligger separat |
+| SDUI/go/layout | Én målt layoutmodell for interaktiv visning og eksport |
+| SDUI/go/svg | Statisk dokumentasjonsbilde fra samme geometri og eksplisitt tilstand |
+| SDUI/go/host/fynehost | Vindu, widgetlivstid, fokus, inndata og publisering på UI-tråden |
+| SDUI/go/codegen og SDL/go/codegen | Modell-/koblingskode; håndskrevne domenefunksjoner ligger separat |
 
-Bare de fire parser/runtime-katalogene er opprettet. Pakke-/modulnavn og
-Go/Fyne-versjon fastsettes i første kodeleveranse. Ingen go.mod, go.work eller
-påstått fungerende Go-API er lagt til som tom fasade.
+Begge katalogene er selvstendige Go-moduler med Go 1.26-baseline, verifisert
+med Go 1.27.1 og Fyne 2.8.1. Implementasjon og grenser dokumenteres i
+[gjeldende checkpoint](../../docs/checkpoint%231/11-Go-Implementation-and-Navigation.md).
 
 Parser/runtime importerer ikke Fyne, FOX, XFMD eller Mermaid. En vert setter
 sammen bibliotekene; SDUI-kjernen krever ikke en konkret SDL-implementasjon for
@@ -37,8 +37,7 @@ om en .so-fil eller C-header.
 
 Kildens relative størrelser, ratio og ancestorreferanse beholdes fram til layout.
 Root får vertens tilgjengelige område. `{16:9,<->}` avleder høyden fra bredden;
-resize endrer geometri og tekstombryting uten å skalere fonten. Absolutt fontenhet
-og målekontrakt fastsettes før layout bygges. Header/body/footer ligger innen ratio.
+resize endrer geometri og tekstombryting uten å skalere fonten. Fontenhet er logiske DIP; Go Regular brukes til felles måling/SVG. Header/body/footer ligger innen ratio.
 
 Layoutresultatet inneholder widgetidentiteter, rektangler, klipping, tekstmål og
 ressurser. Fyne bruker dette til interaktiv visning; SVG-eksport bruker samme
@@ -81,19 +80,21 @@ begge bruker samme runtime. En senere direkte kodeoversetting av atferd krever
 samsvarstester mot definert kjøresemantikk. Ikke implementer to SDL-semantikker.
 Genererte filer overskriver aldri håndskrevet domene-Go.
 
-Python-frontender og relevante tester er portgrunnlag. De fjernes som aktive
-implementasjoner først når Go-porten dekker deres avtalte profil og brukere er
-portert. Dette gir ingen bakoverkompatibilitet for SDUI 0.1. SDL design-core er en separat profil, nå 0.5; eldre aktive SDL-profiler er
+Python-frontender og relevante tester var portgrunnlag. Aktive implementasjoner
+er fjernet i G5-M4 etter verifisert port; fryste testdata beholdes. Dette gir ingen bakoverkompatibilitet for SDUI 0.1. SDL design-core er en separat profil, nå 0.5; eldre aktive SDL-profiler er
 erstattet gjennom V1–V4, uavhengig av SDUI-versjonen.
 
 Tidligere FOX/XFMD-/Mermaid-arbeid er gjenbruksgrunnlag, ikke en forutsetning.
-Ingen eksterne worktrees eller eksisterende produkter endres av denne retningen.
+G6 endrer XFMDs dokumentvert i et eget worktree/PR; det gamle BoxUI-arbeidet
+og Mermaid-repoene er bevart.
 
-## Dokumentnavigasjon — planlagt G6
+## Dokumentnavigasjon — levert G6
 
 [SDLs navigasjonsdesign](../../docs/SDL-Navigable-Viewpoints-Design.md) utvider
 verktøylaget med katalogbaserte viewpoints, generering av valgt utsnitt,
-midlertidige dokumentpakker og en valgfri bakgrunnstjeneste. XFMD kan senere ha
-navigator og hoveddokument i separate Markdown-paneler. Dette er en dokumentvert,
+midlertidige dokumentpakker og en valgfri bakgrunnstjeneste. XFMD har navigator
+og hoveddokument i separate Markdown-paneler i PR #38. Dette er en dokumentvert,
 ikke en erstatning for Fyne i SDUI-runtime. SDL-projektor gjenbrukes, og leser-
-launch/IPC ligger i adapteren. Ingen daemon eller nye XFMD-flagg er implementert.
+launch/IPC ligger i adapteren. Begge sider er implementert og native verifisert;
+[checkpoint tillegg 11](../../docs/checkpoint%231/11-Go-Implementation-and-Navigation.md)
+beskriver profilgrenser og branchstatus.

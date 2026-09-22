@@ -1,7 +1,7 @@
 # SDUI 0.2 — implementert kildeprofil
 
-Oppdatert 2026-09-21. Python-frontenden parser den nye profilen og bygger AST.
-Dette er språkprototypen før native libsdui, uten SDL-kjøring eller FOX-rendering.
+Oppdatert 2026-09-22. Go-frontenden parser SDUI 0.2 og bygger AST.
+Runtime/Fyne/SVG er implementert separat; parseren utfører aldri domenekall.
 [EBNF](../grammar/sdui-0.2.ebnf) og denne profilen erstatter gammel 0.1-syntaks.
 [Layoutforslaget](layout-language-proposal.md) beskriver også framtidig geometri;
 akseptert formatering er ikke det samme som implementert layoututførelse.
@@ -60,7 +60,7 @@ Lokale navn er unike i hver definisjon. Gjenbruk får separat instansbane:
 `left=mainBody` og `right=mainBody` gir ulike widgetbaner. Ualiasert referanse
 bruker definisjonsnavnet. Sykler og tvetydige instansbaner avvises.
 Anonyme grupper får interne kildeposisjonsbaserte banesegmenter; offentlige
-setHandle-baner utelater disse. Layoutendring gir ingen runtimegaranti ennå.
+setHandle-baner utelater disse. Runtime-reglene for kompatibel identitet og reload står i Go-runtimekontrakten.
 
 ## Widgets og symbolske koblinger
 

@@ -1,7 +1,6 @@
 package presentation
 
 import (
-	"encoding/xml"
 	"github.com/Hans-Einar/SDP/SDUI/go/parser"
 	"os"
 	"strings"
@@ -61,31 +60,5 @@ func TestBoundedRawMarkdown(t *testing.T) {
 	}
 	if strings.Join(contentLines("```python\nx=1"), "\n") != "```python\nx=1\n```" {
 		t.Fatal("Unclosed fence")
-	}
-}
-func TestPrototypeDoesNotExecuteBindings(t *testing.T) {
-	_, roots, e := parser.Compile(`sdui 0.2; ref: m "missing"; P=[<b=button("<Click>",callback=m.o.@go), input("Name",value="<&>")> {enabled=false}, button("HIDE") {visible=false}];`)
-	if e != nil {
-		t.Fatal(e)
-	}
-	svg, e := PrototypeSVG(roots["P"])
-	if e != nil {
-		t.Fatal(e)
-	}
-	var doc any
-	if e = xml.Unmarshal([]byte(svg), &doc); e != nil {
-		t.Fatal(e)
-	}
-	h, e := PrototypeHTML(roots["P"])
-	if e != nil {
-		t.Fatal(e)
-	}
-	for _, s := range []string{svg, h} {
-		if strings.Contains(s, "HIDE") || strings.Contains(s, "missing") || strings.Contains(s, "m.o") || strings.Contains(s, "<Click>") {
-			t.Fatal(s)
-		}
-	}
-	if !strings.Contains(h, " disabled") || !strings.Contains(h, "&lt;&amp;&gt;") {
-		t.Fatal(h)
 	}
 }

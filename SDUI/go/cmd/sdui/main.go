@@ -74,7 +74,7 @@ func arguments(args []string) (options, error) {
 		}
 	}
 	if o.source == "" {
-		return o, fmt.Errorf("Usage: sdui source|- [--format ast|dump|markdown|svg|prototype-svg|prototype-html] [--entry name] [-o file]")
+		return o, fmt.Errorf("Usage: sdui source|- [--format ast|dump|markdown|svg] [--entry name] [-o file]")
 	}
 	return o, nil
 }
@@ -170,10 +170,6 @@ func execute(args []string, stdin io.Reader, stdout, stderr io.Writer) int {
 			text, e = presentation.Dump(root, o.columns)
 		case "markdown":
 			text, e = presentation.Markdown(root, o.columns)
-		case "prototype-svg":
-			text, e = presentation.PrototypeSVG(root)
-		case "prototype-html":
-			text, e = presentation.PrototypeHTML(root)
 		default:
 			e = fmt.Errorf("Unknown format %s", o.format)
 		}

@@ -34,7 +34,6 @@ type Broker struct {
 	Readers  reader.Registry
 	Store    *Store
 	Endpoint string
-	latest   map[string]uint64
 	jobs     chan struct{}
 }
 
@@ -43,7 +42,7 @@ func New(projects map[string]Project, readers reader.Registry, store *Store) *Br
 	for k, v := range projects {
 		p[k] = v
 	}
-	return &Broker{Projects: p, Readers: readers, Store: store, latest: map[string]uint64{}, jobs: make(chan struct{}, 4)}
+	return &Broker{Projects: p, Readers: readers, Store: store, jobs: make(chan struct{}, 4)}
 }
 func read(path string) ([]byte, error) {
 	f, e := os.Open(path)

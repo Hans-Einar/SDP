@@ -6,9 +6,10 @@ Dette erstatter eldre språk-/vertsteknologivalg nedenfor; avsnittene er mandate
 historie. [Checkpoint tillegg 07](../docs/checkpoint%231/07-SDUI-0.2-and-Go-Direction.md)
 og [PLAN-003](docs/implementation-plan.md) eier dagens leveranser.
 
-**Implementasjon 2026-09-21:** Eierens Concept1-bestilling er konkretisert som
-[SDUI-kilde, AST og konsolldump](docs/concept1-console.md). Python-frontenden
-er portert samlet til 0.2; native bibliotek/runtime gjenstår. Eldre avsnitt
+**Implementasjon 2026-09-22:** Eierens Concept1-bestilling er konkretisert som
+[SDUI-kilde, AST og konsolldump](docs/concept1-console.md). Go-frontenden, layout/SVG, Fyne, runtime og modellreload er levert.
+[Checkpoint tillegg 11](../docs/checkpoint%231/11-Go-Implementation-and-Navigation.md)
+avgrenser SDL-kjøring, generering og dokumentnavigasjon. Eldre avsnitt
 nedenfor bevarer mandatets historie, ikke en ekstra aktiv parserprofil.
 
 **Presisering 2026-09-21:** Kanoniske hjørner er ^< og >^ øverst, v< og >v

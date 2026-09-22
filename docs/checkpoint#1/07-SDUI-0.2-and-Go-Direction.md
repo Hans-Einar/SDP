@@ -1,5 +1,9 @@
 # Checkpoint #1 — SDUI 0.2 og felles Go-retning
 
+**Implementasjonsstatus er oppdatert i [tillegg 11](11-Go-Implementation-and-Navigation.md).**
+Nedenfor beholdes det daterte design-/V-fasegrunnlaget; gamle Python-kommandoer
+er historiske og erstattet av Go-inngangene.
+
 Oppdatert 2026-09-21 etter eierens valg i samtalen. Dette tillegget korrigerer
 implementasjonsretningen fra 18.–20. september; checkpointnummeret er uendret.
 SDL omtales nå som **SystemDesignLanguage**. Eldre «System Description Language»

@@ -1,10 +1,10 @@
 {
-  "design_sha256": "be0dfcfdca6e04f7b8c4594dc5e72d920724ef96e1f604e749432121aa83e862",
+  "design_sha256": "e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1",
   "entry": "page",
   "font": "Go Regular logical DIP",
   "height": 650,
   "layout_profile": "relative-layout/1",
-  "projector": "sdl-viewpoints-go-1",
+  "projector": "sdl-viewpoints-go-1.1",
   "renderer": "",
   "sdui_profile": "0.2",
   "state_sha256": "4c65c1545648cd6867cd6380180d63f2aa7113ee09dc1e8b95615e8f4c73c2a2",
