@@ -10,8 +10,8 @@ import (
 )
 
 func execute(args []string, stdin io.Reader, stdout, stderr io.Writer) int {
-	if len(args) != 2 || (args[0] != "check" && args[0] != "ast" && args[0] != "format") {
-		fmt.Fprintln(stderr, "Usage: sdl check|ast|format file|-")
+	if len(args) != 2 || (args[0] != "check" && args[0] != "ast" && args[0] != "format" && args[0] != "action-check") {
+		fmt.Fprintln(stderr, "Usage: sdl check|ast|format|action-check file|-")
 		return 2
 	}
 	input := stdin
@@ -28,6 +28,20 @@ func execute(args []string, stdin io.Reader, stdout, stderr io.Writer) int {
 	if e != nil {
 		fmt.Fprintln(stderr, e)
 		return 2
+	}
+	if args[0] == "action-check" {
+		_, err := parser.CompileActions(string(source))
+		report := map[string]any{"valid": err == nil, "profile": "action-core/0.1"}
+		if err != nil {
+			report["diagnostic"] = parser.Data(err.(parser.Diagnostic))
+		}
+		if json.NewEncoder(stdout).Encode(report) != nil {
+			return 2
+		}
+		if err != nil {
+			return 1
+		}
+		return 0
 	}
 	if args[0] == "format" {
 		m, e := parser.Parse(string(source))

@@ -3,7 +3,9 @@
 G4-M1 leverer parser, kildeposisjonert AST, symbol-/typekontroll, data-/wire- og
 Channel-/scenariovalidering og kanonisk form for **design-core 0.5**.
 Ingen struktursetning utføres. Checkpoint-kandidater og hele MVP1-korpuset er
-ikke del av profilen. Den eksplisitte kjøreprofilen følger G4-M2.
+ikke del av profilen. G4-M2 leverer også den eksplisitte kjøreprofilen
+[action-core 0.1](../../docs/SDL-Executable-Action-Profile.md), parser og runtime
+med typede records og registrerte Go-funksjoner.
 
 Modul: `github.com/Hans-Einar/SDP/SystemDesignLanguage/go`, Go 1.26 som felles
 baseline. Verifisert med Go 1.27.1. Strukturkjernen bruker bare standardbiblioteket.
@@ -24,3 +26,6 @@ og sluttposisjoner. 151 porttilfeller og full SDUI-modell har sammenligningsbevi
 
 Python beholdes bare som midlertidig portgrunnlag frem til alle konsumenter og
 viewpoint-generatoren er erstattet. Det finnes ingen Python-fallback i Go.
+
+Kjøreprofilkontroll: `go run ./cmd/sdl action-check examples/echo.sdl`.
+`runtime.New` krever eksplisitt signaturregistrering; ingen kilde kjøres som Go.

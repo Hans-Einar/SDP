@@ -91,30 +91,11 @@ func Parse(text string) (model *Model, err error) {
 			}
 		}
 	}()
-	s := newSource(text)
-	if len(text) > MaxBytes {
-		return nil, Diagnostic{"SOURCE_LIMIT", "Source exceeds 2 MiB", s.span(0, 0)}
+	p, lexErr := newReader(text)
+	if lexErr != nil {
+		return nil, lexErr
 	}
-	if !utf8.ValidString(text) {
-		return nil, Diagnostic{"INPUT_ERROR", "Invalid UTF-8", s.span(0, 0)}
-	}
-	p := &reader{source: s}
-	for offset := 0; offset < len(text); {
-		if strings.ContainsRune(" \t\r\n", rune(text[offset])) {
-			offset++
-			continue
-		}
-		match := tokenPattern.FindString(text[offset:])
-		if match == "" {
-			return nil, Diagnostic{"UNSUPPORTED_SYNTAX", "Unsupported character", s.span(offset, offset+1)}
-		}
-		p.tokens = append(p.tokens, token{match, s.span(offset, offset+len(match))})
-		offset += len(match)
-		if len(p.tokens) > 250000 {
-			return nil, Diagnostic{"TOKEN_LIMIT", "More than 250000 tokens", s.span(offset, offset)}
-		}
-	}
-	p.tokens = append(p.tokens, token{"", s.span(len(text), len(text))})
+	s := p.source
 	start := p.expect("language").span.Start
 	p.expect("design-core")
 	p.expect("version")
@@ -250,4 +231,33 @@ func Check(text string) (*Model, []Diagnostic) {
 		}
 	}
 	return m, diagnostics
+}
+
+func newReader(text string) (*reader, error) {
+	s := newSource(text)
+	if len(text) > MaxBytes {
+		return nil, Diagnostic{"SOURCE_LIMIT", "Source exceeds 2 MiB", s.span(0, 0)}
+	}
+	if !utf8.ValidString(text) {
+		return nil, Diagnostic{"INPUT_ERROR", "Invalid UTF-8", s.span(0, 0)}
+	}
+	p := &reader{source: s}
+	for offset := 0; offset < len(text); {
+		if strings.ContainsRune(" \t\r\n", rune(text[offset])) {
+			offset++
+			continue
+		}
+		match := tokenPattern.FindString(text[offset:])
+		if match == "" {
+			return nil, Diagnostic{"UNSUPPORTED_SYNTAX", "Unsupported character", s.span(offset, offset+1)}
+		}
+		p.tokens = append(p.tokens, token{match, s.span(offset, offset+len(match))})
+		offset += len(match)
+		if len(p.tokens) > 250000 {
+			return nil, Diagnostic{"TOKEN_LIMIT", "More than 250000 tokens", s.span(offset, offset)}
+		}
+	}
+	p.tokens = append(p.tokens, token{"", s.span(len(text), len(text))})
+
+	return p, nil
 }

@@ -79,7 +79,7 @@ Eier: SDL-implementasjonen for semantikk/runtime; SDUI eier UI-siden av porten.
 | Milepæl | Leveranse og akseptanse |
 | --- | --- |
 | G4-M1 | **Levert:** Port design-core-struktur til Go med dokumentert grammatikk og tester; checkpoint/MVP1-kandidater blir ikke automatisk støttet |
-| G4-M2 | Definer én kjørbar profil for navngitt handling, typed input/resultat og binding til registrert Go-funksjon; negative og manglende bindinger avvises |
+| G4-M2 | **Levert:** Definer én kjørbar profil for navngitt handling, typed input/resultat og binding til registrert Go-funksjon; negative og manglende bindinger avvises |
 | G4-M3 | SDUI-knapp/input → SDL-handling → Go-funksjon → UI-oppdatering; kildekart og samme kontrakt med eksplisitt simulert domene |
 | G4-M4 | Reload av SDL-modell med siste gyldige versjon, tilstandsregel og håndtering av pågående hendelser; Go-endring bygges/restartes |
 
