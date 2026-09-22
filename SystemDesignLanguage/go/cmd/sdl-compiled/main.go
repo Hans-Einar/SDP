@@ -5,20 +5,15 @@ import (
 	"flag"
 	"fmt"
 	"github.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/application"
+	model "github.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/generatedmodel"
 	"os"
 	"strings"
 )
 
 func main() {
-	actions := flag.String("actions", "examples/edit-apt-cell.sdl", "Explicit SDL source")
-	source := flag.String("ui", "examples/edit-apt-cell.sdui", "SDUI source")
 	values := flag.String("values", "430,invalid,440", "Ordered simulated drafts")
 	flag.Parse()
-	a, e := os.ReadFile(*actions)
-	must(e)
-	s, e := os.ReadFile(*source)
-	must(e)
-	app, e := application.Load(string(a), string(s))
+	app, e := application.New(model.Program(), model.Document(), model.Root())
 	must(e)
 	defer app.Close()
 	report, e := application.Exercise(app, strings.Split(*values, ","))
