@@ -10,6 +10,9 @@ import (
 )
 
 func execute(args []string, stdin io.Reader, stdout, stderr io.Writer) int {
+	if len(args) > 0 && args[0] == "viewpoints" {
+		return exportViews(args[1:], stdout, stderr)
+	}
 	if len(args) != 2 || (args[0] != "check" && args[0] != "ast" && args[0] != "format" && args[0] != "action-check") {
 		fmt.Fprintln(stderr, "Usage: sdl check|ast|format|action-check file|-")
 		return 2

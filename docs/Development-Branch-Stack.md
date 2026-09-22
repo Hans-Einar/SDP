@@ -43,3 +43,6 @@ Milepælbevis: `SDUI/go/evidence/G2.md`.
 G3 fortsetter fra ferdig G2 (`6a4d968`) på `sdui/phase-g3-runtime`.
 
 G4 fortsetter fra ferdig G3 (`d29a48f`) på `sdl/phase-g4-runtime`.
+
+G6 implementeres fra ferdig G4 (`d5430f0`) på `sdl/phase-g6-navigation`,
+før G5 fordi dokumentgenereringen i G5-M3 konsumerer G6-M1.

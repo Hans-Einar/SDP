@@ -104,13 +104,13 @@ eller separate workerprosesser er ikke nødvendig akseptanse for hot reload.
 
 ## G6 — navigerbare dokumenter og generering ved behov
 
-**Status: planlagt**, med [designkontrakt og XFMD-handoff](../../docs/SDL-Navigable-Viewpoints-Design.md).
+**Status: under implementasjon**, med [designkontrakt og XFMD-handoff](../../docs/SDL-Navigable-Viewpoints-Design.md).
 Eier: SDL for projeksjon/publisering; XFMD for dokumentpaneler og lenkeruting.
 Dette er dokumentvisning, adskilt fra G2s Fyne-vert for interaktive SDUI-widgets.
 
 | Milepæl | Leveranse og akseptanse |
 | --- | --- |
-| G6-M1 | Alternative eksportformer: navigator/overview uten detaljdiagrammer, eller statisk pakke; A0–A5-kataloger, typeinventar og stabile lenker/ankre fra samme modell; port eksisterende SDL-projektor; samleeksport valgfri; lenker/bilder og determinisme kontrollert |
+| G6-M1 | **Levert:** Alternative eksportformer: navigator/overview uten detaljdiagrammer, eller statisk pakke; A0–A5-kataloger, typeinventar og stabile lenker/ankre fra samme modell; port eksisterende SDL-projektor; samleeksport valgfri; lenker/bilder og determinisme kontrollert |
 | G6-M2 | Typet utvalg av relasjoner, retning, dybde, nivå og mode ved klikk/CLI, revisjon og publisering av bare valgt dokument med ressurser; samme innhold som tilsvarende full eksport; feil beholder siste visning |
 | G6-M3 | XFMD med navigasjons-/hovedpanel, registrert leseradapter og eksplisitt vindu/panel; klikk, fokusbytte, flere vinduer og lukket mål testet |
 | G6-M4 | Valgfri Go-bakgrunnstjeneste med lokal IPC, cache/invalidering, leser-lease, request-rekkefølge, kvoter og opprydding; ingen døde bilder ved dokumentbytte/reload |

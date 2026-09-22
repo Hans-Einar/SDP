@@ -45,3 +45,14 @@ go run ./cmd/sdl-dev -root . -package ./cmd/sdl-demo -tags desktop
 
 Utviklingsverten beholder kjørende prosess ved byggfeil. Vellykket bygg starter
 ny prosess; vedvarende domenetilstand over prosessrestart krever egen lagring.
+
+G6-M1 porter alle 11 strukturelle viewpoints med uendret kildegrunnlag:
+
+```sh
+go run ./cmd/sdl viewpoints ../../SDUI/design/architecture.design --output /tmp/sdl-navigation --project sdui-design
+go run ./cmd/sdl viewpoints ../../SDUI/design/architecture.design --output /tmp/sdl-static --format static --monolithic
+```
+
+Valgfritt `--renderer /absolutt/sti/til/mmdr` lager SVG i statisk eksport.
+`--viewpoint VP02,VP08` avgrenser eksporten. Navigator er standard og renderer
+ingen detaljer. Dens handlingslenker krever den kommende registrerte leseradapteren.
