@@ -36,3 +36,6 @@ Go-arbeidet følger fortsatt G-fasene i [SDUI-planen](../SDUI/docs/implementatio
 Ved samlet PR brukes siste ferdige fasebranch som head og `sdp-vNow` som base.
 Milepælcommits skal bevares ved integrasjon; ikke squash dem til én commit.
 Branchene slettes eller historikken omskrives ikke som automatisk opprydding.
+
+G2-implementasjonen fortsetter fra G1 på `sdui/phase-g2-presentation`.
+Milepælbevis: `SDUI/go/evidence/G2.md`.

@@ -15,7 +15,7 @@ henvisninger til P-faser i eldre bevis gjelder historien, ikke aktive leveranser
 [checkpoint](../../docs/checkpoint%231/07-SDUI-0.2-and-Go-Direction.md).
 
 Omfang: SDL/SDUI-parser og runtime i Go, felles SDUI-layout, SVG-eksport, første
-Fyne-vert, modellreload og senere Go-generering. Bare G0 er levert i denne runden.
+Fyne-vert, modellreload og senere Go-generering. G0/G1 er levert; G2 er under implementasjon.
 Python SDUI 0.2, strukturparseren design-core og eksemplene er eksisterende portgrunnlag.
 
 Designgrunnlag 2026-09-22: [felles SDL-strukturmodell](../design/README.md) beskriver
@@ -48,7 +48,7 @@ Avhenger av G1-M2. Eier: SDUI-implementasjonen.
 
 | Milepæl | Leveranse og akseptanse |
 | --- | --- |
-| G2-M1 | Målekontrakt og fontenhet; relative akser, ratio, rader/grupper, header/body/footer, gap/padding og eksplisitte overflowgrenser |
+| G2-M1 | **Levert:** Målekontrakt og fontenhet; relative akser, ratio, rader/grupper, header/body/footer, gap/padding og eksplisitte overflowgrenser |
 | G2-M2 | Generell SVG-eksport fra målt modell; liten frame + knapp/input og deretter Concept1 uten håndplassert fixture; geometri- og visuell kontroll |
 | G2-M3 | Fyne-vindu med samme geometri, knapper/input, Tab/fokus og registrert lokal Go-funksjon; ingen SDL-avhengighet |
 | G2-M4 | Avgrenset Markdown-provider og separate Mermaid-ressurser; dokumentert støtteprofil og negative tilfeller, ikke påstått full diagramdekning |
