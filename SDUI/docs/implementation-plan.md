@@ -138,3 +138,12 @@ SDL- og SDUI-katalogene har hver sin README for kodeansvar. Denne planen er fell
 ikke opprett konkurrerende faseplaner under begge. Detaljert portinventar står i [Go-portoversikten](../../docs/SDL-Go-Port-Inventory.md). Git følger
 [én branch per fase og commit per milepæl](../../docs/Development-Branch-Stack.md);
 push er autorisert etter hver fullført fase.
+
+## G7 — enkel oppstart av dokumentnavigator
+
+Eierpresisering etter G6: daglig bruk skal starte fra SDL-kilden og generere
+utvalgte detaljer ved klikk. Full statisk eksport er et eksplisitt arkiv-/eksportvalg.
+
+| Milepæl | Leveranse og akseptanse |
+| --- | --- |
+| G7-M1 | **Levert:** Launch-script uten obligatoriske argumenter: bruk ferdigbygd SDL-verktøy uten kompilering; regenerer bare navigator/oversikter, registrer source/project/renderer i riktig XFMD; direkte modus uten daemon; feil og opprydding kontrollert |

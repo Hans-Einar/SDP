@@ -64,3 +64,7 @@ SDP- og XFMD-branchene er pushet, ikke merget.
 G5 har M1 konstruktører, M2 kjøreparitet, M3 reproduserbar dokumentasjon og M4
 portopprydding/checkpoint. Samlet PR bruker G5-hodet mot sdp-vNow. Opprinnelige
 fasebrancher og milepælcommits beholdes. Ingen merge er en del av leveransen.
+
+G7 følger fra G5-M4 (`32fadca`) på `sdl/phase-g7-launch`. G7-M1 gjør
+kildebasert dokumentbrowsing tilgjengelig med ett launch-script som bruker
+ferdigbygde programmer. Det er en separat oppfølging av brukerens oppstartsbehov.

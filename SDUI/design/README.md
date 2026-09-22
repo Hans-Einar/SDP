@@ -1,5 +1,10 @@
 # SDL/SDUI-parser og runtime beskrevet med SDL
 
+**Daglig browsing fra SDL-kilden:** kjør `sdl-design`.
+[Launch-scriptet](../../SystemDesignLanguage/scripts/README.md) åpner hovedside
+og navigator; detaljvisninger genereres ved klikk. De lagrede full-eksportene
+nedenfor er verifikasjons-/eksportartefakter, ikke den levende inngangen.
+
 **Start med [generert G1–G6-implementasjonsplan](viewpoints/implementation.md).**
 Den viser milepælstatus, eiere, avhengigheter og eksempelforløp fra SDL.
 

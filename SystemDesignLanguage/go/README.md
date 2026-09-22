@@ -1,5 +1,9 @@
 # SDL i Go
 
+For å browse dokumentasjonen: kjør `sdl-design`. Det åpner hovedside og
+navigator i XFMD med ferdigbygde verktøy, og genererer detaljer ved klikk.
+[Launch-script og oppsett](../scripts/README.md).
+
 G4-M1 leverer parser, kildeposisjonert AST, symbol-/typekontroll, data-/wire- og
 Channel-/scenariovalidering og kanonisk form for **design-core 0.5**.
 Ingen struktursetning utføres. Checkpoint-kandidater og hele MVP1-korpuset er
