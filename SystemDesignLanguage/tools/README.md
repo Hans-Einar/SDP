@@ -41,8 +41,8 @@ SVG-generering beviser ikke interaktivitet eller fysisk utskrift/PDF-paginering.
 | manifest.json | Kildehash, verktøyhash, rendereridentitet, fakta, node-/kantkoblinger og kildeposisjoner |
 
 Se [viewpoint-katalog og språkstatus](../../docs/checkpoint%231/08-SDL-Viewpoints-and-Implementation-Status.md).
-VP01/02/03/05/06/07 gir diagrammer, VP04 tabell, VP11 hele faktaregisteret.
-VP08/09/10 gir eksplisitt mangelrapport. VP01/07 viser også hull i modellen. Capability omdøpes ikke til Feature;
+VP01/02/03/05/06/07/09/10 gir diagrammer, VP04 tabell, VP11 hele faktaregisteret.
+VP08 gir foreløpig mangelrapport. VP10 krever en eksplisitt Encoding. VP01/07 viser også hull i modellen. Capability omdøpes ikke til Feature;
 Interface-bruk omgjøres ikke til Channel-sekvens; bitbredder gjettes ikke.
 Alle f-ID-er er lokale til rapportens kildehash; modellnavn og kildeposisjoner
 følger med slik at endringer ikke forveksles med vedvarende faktumidentitet.
@@ -62,8 +62,8 @@ andre notatfiler bevares. Ikke legg SDL-kilden i utdataområdet. Uten `--rendere
 fjernes tidligere generert printout/SVG så gammel rendering ikke vises som ny.
 Rendererresultater kan gjenbrukes når både Mermaid-kilde, renderer og SVG-hash stemmer.
 
-Verifisert 2026-09-22: 13/13 verktøytester, 40/40 SDL-parsertester og 36/36
-SDUI-tester. Prøvemodellen gir 67 SVG-diagrammer; alle kartlagte nodenavn finnes
+Verifisert 2026-09-22: 17/17 verktøytester, 49/49 SDL-parsertester og 36/36
+SDUI-tester. Prøvemodellen gir 73 SVG-diagrammer; alle kartlagte nodenavn finnes
 i SVG-teksten. Parser-, runtime-, arkitektur- og modusvisninger er visuelt
 stikkprøvekontrollert. Ingen fysisk utskrift eller paginert PDF er testet.
 [Maskinrapport](verification.json) og [generert printout](../../SDUI/design/viewpoints/printout.md).
@@ -79,4 +79,12 @@ en ellers gyldig delmodell. Et utsnitt beviser ikke fullstendig Feature-kjørbar
 
 ```sh
 python3 SystemDesignLanguage/tools/sdl.py viewpoints SDUI/design/architecture.design --output /tmp/sdl-goals --viewpoint VP01 --viewpoint VP07
+```
+
+V2 legger til data-/kontraktkart og packet fra design-core 0.3. Den generelle
+verifikasjonskommandoen kjører testene, regenererer via CLI og kontrollerer
+kildekobling, SVG-etiketter, eksakte bitområder og repeterbar eksport:
+
+```sh
+python3 SystemDesignLanguage/tools/verify_design.py --phase V2 --renderer /home/warloc/git/mermaid-rs-renderer/target/debug/mmdr
 ```

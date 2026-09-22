@@ -67,3 +67,7 @@ leverer viewpoints og regenererte fellesartefakter. 0.3 erstatter aktiv 0.2.
 V2-M2: VP09/VP10 og kildekart er implementert; 17 verktøytester består.
 Packet bruker eksplisitte bitområder etter [Mermaid packet](https://mermaid.js.org/syntax/packet.html),
 verifiseres også mot lokal mmdr, og er ikke en binær serialiseringsimplementasjon.
+
+V2-M3 levert: 227 deklarasjoner, 509 fakta og 73 SVG-diagrammer. 49 SDL-,
+17 viewpoint- og 36 SDUI-tester består; 15 delvise allokeringshull bevares.
+Packet- og dataeksemplet er generert av verktøyet fra den felles SDL-kilden.

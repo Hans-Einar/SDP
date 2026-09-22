@@ -34,7 +34,7 @@ Dette er en visning av målstruktur, ikke implementasjonsbevis. Ikke rediger den
 | SdlViewpointGenerator | — | ExportViewpointMarkdown, ProjectSdlViewpoints, TraceViewpointFacts | — |
 | SduiDispatcher | — | CorrelateUiResult, DispatchUiEvent, RejectStaleUiEvent, ValidateUiEvent | DomainBindingPort, UiStatePort |
 | SduiFrontend | SduiLexer, SduiNormalizer, SduiParser, SduiValidator | CoordinateSduiCompilation | DiagnosticPort, SourceSnapshotPort |
-| SduiInstanceStore | — | ManageWidgetIdentities, RevokeWidgetGenerations, SnapshotUiState | — |
+| SduiInstanceStore | — | ManageWidgetIdentities, ProjectUiGeneration, RevokeWidgetGenerations, SnapshotUiState | — |
 | SduiLayout | — | AllocateGeometry, BuildPreparedFrame, ComputeClipping, MeasureUiContent, ResolveAncestorDimensions | ContentProviderPort, MeasurementPort, UiSnapshotPort |
 | SduiLexer | — | TokenizeSduiSource | — |
 | SduiLibrary | SduiFrontend, SduiLayout, SduiPresentation, SduiRuntime | — | — |
@@ -44,6 +44,6 @@ Dette er en visning av målstruktur, ikke implementasjonsbevis. Ikke rediger den
 | SduiPropertyStore | — | ApplyPropertyBatch, TrackInputDraft, ValidatePropertyBatch | UiStatePort |
 | SduiRuntime | SduiDispatcher, SduiInstanceStore, SduiPropertyStore, UiStateReconciler | CloseUiInstance, CreateUiInstance | DomainBindingPort, SduiModelPort |
 | SduiValidator | — | ResolveUiNames, ValidateRelativeFormatting, ValidateSymbolicBindings, ValidateWidgetArguments | — |
-| SourceLoader | — | IdentifySourceRevision, ReadBoundedSources | SourceInputPort |
+| SourceLoader | — | DesignSourceArchive, IdentifySourceRevision, ReadBoundedSources | SourceInputPort |
 | SourceWatcher | — | CoalesceSourceChanges, ObserveSourceChanges | FileChangePort |
 | UiStateReconciler | — | MatchCompatibleWidgets, PreserveCompatibleUiState, ResetIncompatibleUiState | SduiModelPort, UiStatePort |

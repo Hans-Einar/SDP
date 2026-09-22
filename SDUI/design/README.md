@@ -3,14 +3,14 @@
 [SDL-verktøyets genererte viewpoints](viewpoints/viewpoints.md) og
 [samlet rendret utskrift](viewpoints/printout.md) er avledet fra denne kilden.
 Regenerering og utvalg står i [verktøydokumentasjonen](../../SystemDesignLanguage/tools/README.md).
-Use Case/Feature og allokering genereres fra SDL. Manglende Channel- og datakonstruksjoner rapporteres eksplisitt;
+Use Case/Feature og allokering genereres fra SDL. Datakart og packet genereres også; manglende Channel-konstruksjoner rapporteres eksplisitt;
 de tegnes ikke inn manuelt i utskriften.
 
 Oppdatert 2026-09-22. [architecture.design](architecture.design) er den felles
 målstrukturen for **begge språkene**. Den erstatter den tidligere korte
 SDUI/vertsmodellen på samme sted. Ingen kopi opprettes under SDL-katalogen.
 
-Modellen er skrevet i implementert `design-core 0.2` og passerer den eksisterende
+Modellen er skrevet i implementert `design-core 0.3` og passerer den eksisterende
 SDL-parseren. Dette profilnummeret gjelder SDL-struktur, ikke utgått SDUI 0.1.
 Den beskriver planlagt Go-kode; kjørbar Go-parser/runtime finnes ennå ikke.
 
@@ -31,12 +31,12 @@ python3 SDUI/tools/export_design.py
 
 De to første kommandoene er den eksisterende SDL-CLI-en. Den siste bruker samme
 `check`, `canonicalize`, `symbol_table` og `to_json` for å regenerere AST,
-ansvarsoversikt og rapport. Én frontend brukes; V1-utvidelsen er definert i design-core 0.2, uten gammel fallback.
+ansvarsoversikt og rapport. Én frontend brukes; V1-utvidelsen er definert i design-core 0.3, uten gammel fallback.
 Ugyldig modell stopper eksport før eksisterende artefakter erstattes.
 
-Verifisert 2026-09-22: 211 deklarasjoner og 471 fakta; 40 Units, 2 Containers,
-91 Functionality-er, 14 Capabilities, 30 Interfaces, 8 Modes, 12 Activities,
-2 Actors, 6 UseCases og 6 Features.
+Verifisert 2026-09-22: 227 deklarasjoner og 509 fakta; 40 Units, 2 Containers,
+92 Functionality-er, 14 Capabilities, 30 Interfaces, 8 Modes, 12 Activities,
+2 Actors, 6 UseCases, 6 Features samt 15 data-/kontraktdefinisjoner.
 Syntaks, typer, navn, eierskap, sykluser og kanonisk representasjon passerer.
 Tallene viser modellomfang, ikke implementasjonsgrad.
 
@@ -51,7 +51,7 @@ beholder samme identitet og eier i alle utsnitt.
 Allokeringen plasserer konkrete ansvar i `CommandLineHost` eller `FyneHost` i
 eksplisitte modi. Dette flytter ikke bibliotekene eller deres eierskap. De nye
 allokeringene er designpåstander, ikke bevis på at Fyne-/Go-koden kjører.
-VP07s 14 hull viser ufullstendige modusutsnitt, og modellen har ikke en komplett
+VP07s 15 hull viser ufullstendige modusutsnitt, og modellen har ikke en komplett
 runtimeallokering. En delt Functionality gjør ikke alle dens Features kjørbare
 i alle modi hvor dette ene ansvaret har en plassering.
 
@@ -209,3 +209,16 @@ Ingen grammatikk er utvidet for å få denne filen gjennom parseren.
 Disse kodeplasseringene er manuell sporbarhet. SDL-fakta gir ikke eksisterende
 Go-pakker eller filbindinger. [Målarkitekturen](../docs/target-architecture.md)
 eier prinsippene; denne modellen eier den detaljerte ansvarsfordelingen.
+
+## V2 — data og valgt packet-prøve
+
+`DesignSourceDocuments` ligger hos `DesignSourceArchive`, en planlagt persistent
+kildebase eid av SourceLoader. `UiSessionState` er transient hos SduiInstanceStore.
+Kontraktene beskriver påkrevd kilde/revisjon og UI-generation med optional draft;
+optional draft er ikke automatisk en tom streng.
+
+`ProjectUiGeneration` projiserer UI-tilstanden til familien `UiGenerationNotices`.
+`UiGenerationWire` er et eksplisitt valgt **prototypeformat** med 16-bit versjon
+og 64-bit generation, big-endian/MSB-first. Dette beskriver en dokumenterbar
+wireprøve, ikke en vedtatt transport mellom Go-bibliotekene, SDL-runtime-ABI,
+P1000- eller StanForD-format. Native Go-kall trenger ikke serialiseres slik.

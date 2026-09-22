@@ -4,7 +4,9 @@
 retrieved on demand, without requiring SQL. This narrows the earlier open
 retention boundary; exact durability/availability and operations still belong to
 the contract. See [checkpoint update 08](checkpoint%231/08-SDL-Viewpoints-and-Implementation-Status.md).
-The candidate syntax below is still not implemented by the SDL parser.
+V2 now implements a bounded data/contract/wire profile described in
+[the current profile](SDL-Data-Contract-Profile.md). The older inline declaration
+clauses and wider candidates below are not automatically accepted syntax.
 
 Current consolidation: [Checkpoint #1](checkpoint%231/README.md), 2026-09-18.
 It adds the candidate Value ownership/binding model and reconsiders ControlSet

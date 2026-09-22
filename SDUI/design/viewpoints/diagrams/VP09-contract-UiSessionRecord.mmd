@@ -1,0 +1,6 @@
+flowchart LR
+    n_SessionDraft["SessionDraft (field)"]
+    n_SessionGeneration["SessionGeneration (field)"]
+    n_UiSessionRecord["UiSessionRecord (contract)"]
+    n_UiSessionRecord -->|has-field| n_SessionDraft
+    n_UiSessionRecord -->|has-field| n_SessionGeneration

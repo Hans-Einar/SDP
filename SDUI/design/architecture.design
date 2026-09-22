@@ -36,6 +36,9 @@ functionality CreateUiInstance.
 actor DesignAuthor.
 feature DesignDocumentation.
 actor DesignReviewer.
+database DesignSourceArchive.
+dataset DesignSourceDocuments.
+contract DesignSourceRecord.
 capability DevelopmentReload.
 unit DevelopmentTools.
 interface DiagnosticPort.
@@ -94,6 +97,8 @@ feature NativeGoAssembly.
 capability NativeInteraction.
 capability NativeRealization.
 functionality NormalizeSdlModel.
+field NoticeGeneration.
+field NoticeVersion.
 functionality ObserveSourceChanges.
 functionality PerformDomainOperation.
 functionality PrepareCandidateModels.
@@ -106,6 +111,7 @@ functionality PreserveSdlSourceMap.
 functionality PreserveUiRegions.
 functionality PreserveUiSourceMap.
 functionality ProjectSdlViewpoints.
+functionality ProjectUiGeneration.
 usecase PrototypeUserInterface.
 usecase PublishDesignDocumentation.
 functionality PublishDomainUpdates.
@@ -175,9 +181,13 @@ unit SduiPropertyStore.
 unit SduiRuntime.
 capability SduiSourceModel.
 unit SduiValidator.
+field SessionDraft.
+field SessionGeneration.
 functionality SnapshotDomainState.
 functionality SnapshotUiState.
 capability SourceDiagnostics.
+field SourceDocumentRevision.
+field SourceDocumentText.
 interface SourceInputPort.
 mode SourceInspection.
 unit SourceLoader.
@@ -193,9 +203,15 @@ functionality TraceViewpointFacts.
 functionality TrackInputDraft.
 usecase TryDomainInteraction.
 feature TypedDomainBinding.
+variant UiGenerationChanged.
+contract UiGenerationContract.
+datagram UiGenerationNotices.
+encoding UiGenerationWire.
 mode UiPreview.
 interface UiReloadPort.
 interface UiSessionPort.
+contract UiSessionRecord.
+dataset UiSessionState.
 interface UiSnapshotPort.
 interface UiStatePort.
 unit UiStateReconciler.
@@ -279,6 +295,11 @@ DesignDocumentation supports PublishDesignDocumentation.
 DesignReviewer pursues InspectModels.
 DesignReviewer pursues PrototypeUserInterface.
 DesignReviewer pursues PublishDesignDocumentation.
+DesignSourceArchive holds DesignSourceDocuments.
+DesignSourceDocuments upholds DesignSourceRecord.
+DesignSourceRecord has completeness = closed.
+DesignSourceRecord has-field SourceDocumentRevision.
+DesignSourceRecord has-field SourceDocumentText.
 DevelopmentReload requires BindingReloadPort in mode BoundLiveEditing.
 DevelopmentReload requires FileChangePort in mode BoundLiveEditing.
 DevelopmentReload requires FileChangePort in mode LiveEditing.
@@ -397,6 +418,10 @@ NativeRealization requires GeneratedArtifactPort in mode NativeBuild.
 NormalizeSdlModel has repeatability = deterministic.
 NormalizeSdlModel has state-retention = stateless.
 NormalizeSdlModel realizes SdlSourceModel.
+NoticeGeneration has presence = required.
+NoticeGeneration has value-type = unsigned.
+NoticeVersion has presence = required.
+NoticeVersion has value-type = unsigned.
 ObserveSourceChanges allocated-to FyneHost in mode LiveEditing.
 ObserveSourceChanges contributes-to LiveModelReload.
 ObserveSourceChanges realizes DevelopmentReload.
@@ -425,6 +450,9 @@ ProjectSdlViewpoints allocated-to CommandLineHost in mode StaticExport.
 ProjectSdlViewpoints contributes-to DesignDocumentation.
 ProjectSdlViewpoints has repeatability = deterministic.
 ProjectSdlViewpoints has state-retention = stateless.
+ProjectUiGeneration allocated-to FyneHost in mode LiveEditing.
+ProjectUiGeneration contributes-to LiveModelReload.
+ProjectUiGeneration projects UiSessionState into UiGenerationNotices.
 PublishDomainUpdates allocated-to FyneHost in mode BoundExecution.
 PublishDomainUpdates contributes-to TypedDomainBinding.
 PublishDomainUpdates realizes BoundInteraction.
@@ -566,7 +594,9 @@ SduiFrontend contains SduiParser.
 SduiFrontend contains SduiValidator.
 SduiFrontend owns CoordinateSduiCompilation.
 SduiFrontend provides SduiSourceModel.
+SduiInstanceStore holds UiSessionState.
 SduiInstanceStore owns ManageWidgetIdentities.
+SduiInstanceStore owns ProjectUiGeneration.
 SduiInstanceStore owns RevokeWidgetGenerations.
 SduiInstanceStore owns SnapshotUiState.
 SduiInstanceStore provides InteractiveSession.
@@ -620,9 +650,18 @@ SduiValidator owns ValidateRelativeFormatting.
 SduiValidator owns ValidateSymbolicBindings.
 SduiValidator owns ValidateWidgetArguments.
 SduiValidator provides SduiSourceModel.
+SessionDraft has presence = optional.
+SessionDraft has value-type = text.
+SessionGeneration has presence = required.
+SessionGeneration has value-type = unsigned.
 SnapshotDomainState realizes ExecutableDesign.
 SnapshotUiState realizes InteractiveSession.
+SourceDocumentRevision has presence = required.
+SourceDocumentRevision has value-type = unsigned.
+SourceDocumentText has presence = required.
+SourceDocumentText has value-type = text.
 SourceLoader consumes SourceInputPort.
+SourceLoader owns DesignSourceArchive.
 SourceLoader owns IdentifySourceRevision.
 SourceLoader owns ReadBoundedSources.
 SourceLoader provides SourceLoading.
@@ -649,6 +688,21 @@ TraceViewpointFacts has state-retention = stateless.
 TrackInputDraft has state-retention = stateful.
 TrackInputDraft realizes InteractiveSession.
 TypedDomainBinding supports TryDomainInteraction.
+UiGenerationChanged has-field NoticeGeneration.
+UiGenerationContract defines UiGenerationChanged.
+UiGenerationContract has completeness = closed.
+UiGenerationContract has-field NoticeVersion.
+UiGenerationNotices from UiSessionState.
+UiGenerationNotices upholds UiGenerationContract.
+UiGenerationWire encodes UiGenerationChanged.
+UiGenerationWire has bit-order = most-significant-first.
+UiGenerationWire has byte-order = big-endian.
+UiGenerationWire places NoticeGeneration at 16 bits 64.
+UiGenerationWire places NoticeVersion at 0 bits 16.
+UiSessionRecord has completeness = closed.
+UiSessionRecord has-field SessionDraft.
+UiSessionRecord has-field SessionGeneration.
+UiSessionState upholds UiSessionRecord.
 UiStateReconciler consumes SduiModelPort.
 UiStateReconciler consumes UiStatePort.
 UiStateReconciler owns MatchCompatibleWidgets.

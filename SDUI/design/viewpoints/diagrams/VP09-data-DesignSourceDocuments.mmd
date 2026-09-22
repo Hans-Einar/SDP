@@ -1,0 +1,8 @@
+flowchart LR
+    n_DesignSourceArchive["DesignSourceArchive (database)"]
+    n_DesignSourceDocuments["DesignSourceDocuments (dataset)"]
+    n_DesignSourceRecord["DesignSourceRecord (contract)"]
+    n_SourceLoader["SourceLoader (unit)"]
+    n_DesignSourceArchive -->|holds| n_DesignSourceDocuments
+    n_DesignSourceDocuments -->|upholds| n_DesignSourceRecord
+    n_SourceLoader -->|owns| n_DesignSourceArchive
