@@ -2,7 +2,7 @@
 
 **Status 2026-09-22:** SDL-løpet V0–V4 er levert og pushet som fasebrancher.
 Eieren har autorisert implementasjon av alle G-faser i én sammenhengende økt,
-med fasebrancher, milepælcommits og push ved faseslutt. G1 og G2 er levert;
+med fasebrancher, milepælcommits og push ved faseslutt. G1–G3 er levert;
 øvrige milepæler står som planlagt inntil deres akseptanse er verifisert.
 [Faktiske implementasjonsbevis](../go/evidence/G1.md) holdes atskilt fra
 [den genererte designplanen](../design/viewpoints/implementation.md).
@@ -15,7 +15,7 @@ henvisninger til P-faser i eldre bevis gjelder historien, ikke aktive leveranser
 [checkpoint](../../docs/checkpoint%231/07-SDUI-0.2-and-Go-Direction.md).
 
 Omfang: SDL/SDUI-parser og runtime i Go, felles SDUI-layout, SVG-eksport, første
-Fyne-vert, modellreload og senere Go-generering. G0/G1 og G2 er levert; G2 er under implementasjon.
+Fyne-vert, modellreload og senere Go-generering. G0/G1–G3 er levert; G2 er under implementasjon.
 Python SDUI 0.2, strukturparseren design-core og eksemplene er eksisterende portgrunnlag.
 
 Designgrunnlag 2026-09-22: [felles SDL-strukturmodell](../design/README.md) beskriver
@@ -66,7 +66,7 @@ Avhenger av G1-M2/G2-M3. Eier: SDUI-implementasjonen.
 | --- | --- |
 | G3-M1 | **Levert:** Typede hendelser/oppdateringer, stabile widgetinstanser og revisjoner; ubundet knapp gir eksplisitt status |
 | G3-M2 | **Levert:** Filendring → parse/valider → publisering; ugyldig kilde beholder siste gyldige UI og viser kildediagnose |
-| G3-M3 | Bevar kompatibel verdi/draft/fokus; typebytte/sletting håndteres, stale events og callback etter teardown avvises; ingen gjentatte domenehandlinger ved reload |
+| G3-M3 | **Levert:** Bevar kompatibel verdi/draft/fokus; typebytte/sletting håndteres, stale events og callback etter teardown avvises; ingen gjentatte domenehandlinger ved reload |
 
 Krav R12/R16/R18/R25. UI-state og domene-state holdes adskilt. Avtal eventgrense
 og UI-tråd før asynkronisering; ingen kompleks plugin-/prosessmekanisme i denne fasen.

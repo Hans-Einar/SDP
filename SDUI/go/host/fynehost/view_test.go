@@ -35,7 +35,7 @@ func TestSharedGeometryNativeInteraction(t *testing.T) {
 	v.Actions["page/ok"] = func(_, value string) error { calls++; return nil }
 	v.Actions["page/edit"] = func(_, value string) error { draft = value; return nil }
 	ok := v.Controls["page/ok"].(*widget.Button)
-	edit := v.Controls["page/edit"].(*widget.Entry)
+	edit := v.Controls["page/edit"].(*Input)
 	off := v.Controls["page/off"].(*widget.Button)
 	test.Tap(ok)
 	if calls != 1 || status != nil {

@@ -51,7 +51,7 @@ func New(root *parser.Instance) *View {
 		case "button":
 			obj = widget.NewButton(n.Argument("label"), func() { v.invoke(n.Path, "") })
 		case "input":
-			entry := widget.NewEntry()
+			entry := NewInput()
 			entry.SetPlaceHolder(n.Argument("text"))
 			entry.SetText(n.Argument("value"))
 			entry.OnChanged = func(text string) { v.invoke(n.Path, text) }

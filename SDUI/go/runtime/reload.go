@@ -43,11 +43,18 @@ func (s *Session) Reload(root *parser.Instance) error {
 	if w := next.widgets[focused]; w == nil || !w.Enabled || !w.Visible || s.widgets[focused].Handle != w.Handle {
 		focused = ""
 	}
-	s.root = next.root
-	s.widgets = next.widgets
-	s.handlers = next.handlers
-	s.generation = generation
-	s.focused = focused
-	s.Revision++
+	candidate := *s
+	candidate.root = next.root
+	candidate.widgets = next.widgets
+	candidate.handlers = next.handlers
+	candidate.generation = generation
+	candidate.focused = focused
+	candidate.Revision++
+	if s.check != nil {
+		if err := s.check(candidate.SnapshotRoot()); err != nil {
+			return err
+		}
+	}
+	*s = candidate
 	return nil
 }

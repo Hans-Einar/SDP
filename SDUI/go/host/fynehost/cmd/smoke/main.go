@@ -40,7 +40,7 @@ func main() {
 		fyne.Do(func() {
 			must(lastError)
 			button := v.Controls["page/ok"].(*widget.Button)
-			entry := v.Controls["page/edit"].(*widget.Entry)
+			entry := v.Controls["page/edit"].(*fynehost.Input)
 			test.Tap(button)
 			w.Canvas().Focus(button)
 			w.Canvas().FocusNext()

@@ -1,16 +1,20 @@
 # SDUI ↔ SDL-runtime — foreslått kontrakt
 
-Status 2026-09-21: Go er valgt implementasjon; typede Go-grensesnitt er første port.
+Status 2026-09-22: G3 implementerer SDUI-session, typede Go-handles/events,
+atomiske oppdateringer og hot reload med native Fyne-adapter.
+SDL-bindingen under er fortsatt planlagt i G4.
 Ingen C-ABI eller FOX-avhengighet kreves. Dette erstatter tidligere teknologivalg.
 
 Kontraktgrunnlag: grunnlag for den nye kontraktleveransen i
 [målarkitekturen](target-architecture.md) og G3/G4 i [planen](implementation-plan.md).
 Identitet, livstid og hendelsesregler kan gjenbrukes, men gammel kilde-/wireform
-er ikke et kompatibilitetskrav. Ingen runtime er implementert her.
+er ikke et kompatibilitetskrav. Kjørbar UI-kontrakt og bevaringsregler er
+beskrevet i [Go-runtime](../go/runtime/README.md); [prøvebevis](../go/evidence/G3.md).
 
-**ID:** SDUI-RUNTIME-001 · **Status:** designforslag, ikke implementert runtime/API.
+**ID:** SDUI-RUNTIME-001 · **Status:** SDL-grensen er designforslag; UI-delen er implementert i G3.
 Parseren produserer bare Reference og Connection. Det finnes ingen SDL-loader,
-callbackutfører eller generell widgetoppdatering i denne leveransen.
+automatisk SDL-callbackoppløsning. Eksplisitt registrerte Go-handlere og
+UI-propertyoppdateringer er implementert i G3.
 
 ## 1. Oppkobling og to retninger
 
