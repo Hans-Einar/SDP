@@ -31,8 +31,8 @@ Dette er en visning av målstruktur, ikke implementasjonsbevis. Ikke rediger den
 | SdlRuntime | DomainStateMigrator, SdlDispatcher, SdlExecutionGate, SdlFunctionRegistry, SdlStateStore | CloseSdlInstance, CreateSdlInstance | DomainFunctionPort, SdlModelPort |
 | SdlStateStore | — | ManageDomainState, SnapshotDomainState | — |
 | SdlUiBindingAdapter | — | ConnectTypedWidgetHandles, DisconnectBindings, PublishDomainUpdates, ResolveCallbackSymbols, RouteDomainBindings | DiagnosticPort, SdlExecutionPort, UiSessionPort |
-| SdlValidator | — | ResolveSdlSymbols, ValidateSdlProfile, ValidateSdlStructure | — |
-| SdlViewpointGenerator | — | ComposeViewPackage, ExportViewpointMarkdown, GenerateViewNavigation, PreserveViewAnchors, ProjectSdlViewpoints, ProjectSelectedView, TraceViewpointFacts | — |
+| SdlValidator | — | ResolveSdlSymbols, ValidateClassRelations, ValidateSdlProfile, ValidateSdlStructure | — |
+| SdlViewpointGenerator | — | ApplySemanticNotation, ComposeViewPackage, ExportModelInventories, ExportViewpointMarkdown, GenerateViewNavigation, IndexViewpointLevels, PreserveViewAnchors, ProjectClassViews, ProjectSdlViewpoints, ProjectSelectedView, SelectRelationshipViews, TraceViewpointFacts, VerifyDiagramCapabilities | — |
 | SduiDispatcher | — | CorrelateUiResult, DispatchUiEvent, RejectStaleUiEvent, ValidateUiEvent | DomainBindingPort, UiStatePort |
 | SduiFrontend | SduiLexer, SduiNormalizer, SduiParser, SduiValidator | CoordinateSduiCompilation | DiagnosticPort, SourceSnapshotPort |
 | SduiInstanceStore | — | ManageWidgetIdentities, ProjectUiGeneration, RevokeWidgetGenerations, SnapshotUiState | — |

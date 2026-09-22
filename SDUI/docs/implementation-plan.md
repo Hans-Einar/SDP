@@ -3,7 +3,7 @@
 **Status 2026-09-22:** SDL-løpet V0–V4 er levert og pushet som fasebrancher.
 G1–G6 er fortsatt planlagt. Eierens siste avgrensning er å gjennomgå
 [den verktøygenererte implementasjonsrapporten](../design/viewpoints/implementation.md)
-før Go-koden påbegynnes. Rapporten kommer fra den felles SDL-kilden, med 22
+før Go-koden påbegynnes. Rapporten kommer fra den felles SDL-kilden, med 24
 milepæler, ansvar, avhengigheter og deklarerte eksempelbaner. G6 legger til
 navigerbare viewpoints og dokumentgenerering ved behov.
 
@@ -109,17 +109,22 @@ Dette er dokumentvisning, adskilt fra G2s Fyne-vert for interaktive SDUI-widgets
 
 | Milepæl | Leveranse og akseptanse |
 | --- | --- |
-| G6-M1 | Viewpoint-kataloger, index/navigator og stabile lenker/ankre fra samme modell; port eksisterende SDL-projektor; samleeksport valgfri; lenker/bilder og determinisme kontrollert |
-| G6-M2 | Typet utvalg ved klikk/CLI, revisjon og publisering av bare valgt dokument med ressurser; samme innhold som tilsvarende full eksport; feil beholder siste visning |
+| G6-M1 | Alternative eksportformer: navigator/overview uten detaljdiagrammer, eller statisk pakke; A0–A5-kataloger, typeinventar og stabile lenker/ankre fra samme modell; port eksisterende SDL-projektor; samleeksport valgfri; lenker/bilder og determinisme kontrollert |
+| G6-M2 | Typet utvalg av relasjoner, retning, dybde, nivå og mode ved klikk/CLI, revisjon og publisering av bare valgt dokument med ressurser; samme innhold som tilsvarende full eksport; feil beholder siste visning |
 | G6-M3 | XFMD med navigasjons-/hovedpanel, registrert leseradapter og eksplisitt vindu/panel; klikk, fokusbytte, flere vinduer og lukket mål testet |
 | G6-M4 | Valgfri Go-bakgrunnstjeneste med lokal IPC, cache/invalidering, leser-lease, request-rekkefølge, kvoter og opprydding; ingen døde bilder ved dokumentbytte/reload |
+| G6-M5 | Fast symbol-/pilprofil med UML der semantikken stemmer; aktørfigurer og use-case-ellipser; rendererprøver kontrollerer faktiske figurer/markører, ikke bare exitkode |
+| G6-M6 | Senere eksplisitt klasse-/relasjonsprofil med multiplisitet og aggregation/composition; språk/validator før kildekoblede klassediagrammer, ingen automatisk oversettelse fra contains |
 
 G6-M1 avhenger av G4-M1s strukturelle frontendport, ikke SDL-runtime eller G5s
 Go-generering. Viewpoint-port og kildekart flyttes fra G5-M3 til G6-M1;
-G5-M3 blir konsument av denne eksporten. G6-M2 → M3 → M4 følger hverandre.
+G5-M3 blir konsument av denne eksporten. G6-M2 → M3 → M4 følger hverandre. M5 avhenger av M1 og kan utvikles
+ved siden av vertsarbeidet; M6 følger M5 og krever avklart klassekontrakt.
 Den nåværende Python-generatoren er portgrunnlaget. URI-notasjon og XFMD-flagg i
 designet er forslag og skal verifiseres med XFMD-implementasjonen.
-Dette oppdraget leverer **G6-D1 design og parsede scenarioer**, ikke G6-M1–M4.
+G6-D1/D2 leverer design og parsede planer/scenarioer, ikke implementerte
+G6-M1–M6. [Nivåer og notasjon](../../docs/SDL-Viewpoint-Levels-and-Notation.md)
+presiserer eksportformene, A0–A5, Mode/State og semantisk diagramprofil.
 
 ## Avgrensning og gjenbruk
 

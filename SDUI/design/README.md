@@ -37,8 +37,8 @@ De to første kommandoene er den eksisterende SDL-CLI-en. Den siste bruker samme
 ansvarsoversikt og rapport. Én frontend brukes; V1–V4 er definert i design-core 0.5, uten gammel fallback.
 Ugyldig modell stopper eksport før eksisterende artefakter erstattes.
 
-Verifisert kilde 2026-09-22: 453 deklarasjoner og 1387 fakta. 109 Functionality-er
-har eksplisitt milepælkobling. De 40 Activities inkluderer seks G-faser og 22
+Verifisert kilde 2026-09-22: 463 deklarasjoner og 1424 fakta. 116 Functionality-er
+har eksplisitt milepælkobling. De 42 Activities inkluderer seks G-faser og 24
 milepæler; 22 Channels, 48 Messages og 13 scenarioer beskriver samarbeid.
 Syntaks, typer, eierskap, kontrakter, korrelasjon og kanonisk form kontrolleres.
 Tallene viser modellomfang. G1–G6 har eksplisitt status planned.
@@ -258,9 +258,14 @@ utledes bare fordi to meldinger følger hverandre i et scenario.
 ## G6 — navigerbare dokumenter
 
 [Eierens navigasjonsdesign](../../docs/SDL-Navigable-Viewpoints-Design.md) er
-lagt inn som G6NavigableDocumentation med fire planlagte milepæler. DocumentBroker,
+lagt inn som G6NavigableDocumentation med seks planlagte milepæler. DocumentBroker,
 ViewArtifactStore og ViewerLaunchAdapter holder generering/publisering atskilt
 fra XfmdDocumentHost, som eier paneler og dokumentvisning. SelectedViewOpened,
 InvalidViewSelectionRejected og ViewProjectionFailed gir genererte sekvenser.
 De nye kontraktene er typed recordgrenser; URI-feltverdier, IPC, filpublisering,
 lease og XFMD-flagg er planlagt adferd. Ingen av disse adapterne kjører ennå.
+
+G6-D2 presiserer [eksportformer, A0–A5 og notasjon](../../docs/SDL-Viewpoint-Levels-and-Notation.md).
+Navigator-only bygger oversikter uten detaljdiagrammer; M5 planlegger faste
+symboler og semantisk riktige piler, M6 senere eksplisitt klassestruktur.
+Disse funksjonene er fortsatt planned i SDL, ikke støttet av dagens generator.

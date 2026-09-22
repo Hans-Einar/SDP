@@ -5,6 +5,7 @@ flowchart LR
     n_ProjectSelectedView["ProjectSelectedView (functionality)"]
     n_PublishViewBundle["PublishViewBundle (functionality)"]
     n_SdlViewpointGenerator["SdlViewpointGenerator (unit)"]
+    n_SelectRelationshipViews["SelectRelationshipViews (functionality)"]
     n_ValidateViewRequest["ValidateViewRequest (functionality)"]
     n_ViewArtifactStore["ViewArtifactStore (unit)"]
     n_DocumentBroker -->|owns| n_KeyViewRevision
@@ -12,6 +13,8 @@ flowchart LR
     n_G6M2OnDemandViews -->|addresses| n_KeyViewRevision
     n_G6M2OnDemandViews -->|addresses| n_ProjectSelectedView
     n_G6M2OnDemandViews -->|addresses| n_PublishViewBundle
+    n_G6M2OnDemandViews -->|addresses| n_SelectRelationshipViews
     n_G6M2OnDemandViews -->|addresses| n_ValidateViewRequest
     n_SdlViewpointGenerator -->|owns| n_ProjectSelectedView
+    n_SdlViewpointGenerator -->|owns| n_SelectRelationshipViews
     n_ViewArtifactStore -->|owns| n_PublishViewBundle

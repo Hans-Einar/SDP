@@ -21,6 +21,8 @@ flowchart LR
     n_G6M2OnDemandViews["G6M2OnDemandViews (activity)"]
     n_G6M3XfmdNavigation["G6M3XfmdNavigation (activity)"]
     n_G6M4SessionPublication["G6M4SessionPublication (activity)"]
+    n_G6M5SemanticNotation["G6M5SemanticNotation (activity)"]
+    n_G6M6ClassViews["G6M6ClassViews (activity)"]
     n_G1M2ValidationAndNormalization -->|depends-on| n_G1M1ParserAndAst
     n_G1M3Concept1AndDumps -->|depends-on| n_G1M2ValidationAndNormalization
     n_G2M1RelativeMeasurement -->|depends-on| n_G1M2ValidationAndNormalization
@@ -47,3 +49,5 @@ flowchart LR
     n_G6M2OnDemandViews -->|depends-on| n_G6M1StaticNavigation
     n_G6M3XfmdNavigation -->|depends-on| n_G6M2OnDemandViews
     n_G6M4SessionPublication -->|depends-on| n_G6M3XfmdNavigation
+    n_G6M5SemanticNotation -->|depends-on| n_G6M1StaticNavigation
+    n_G6M6ClassViews -->|depends-on| n_G6M5SemanticNotation

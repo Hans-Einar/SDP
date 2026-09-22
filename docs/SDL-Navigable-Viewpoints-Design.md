@@ -8,6 +8,11 @@ små viewpoint-sider og senere to Markdown-paneler i XFMD.
 
 ## Ett grunnlag, flere dokumenter
 
+**Presisering G6-D2:** [nivå- og notasjonsdesignet](SDL-Viewpoint-Levels-and-Notation.md)
+gjør navigator/overview uten forhåndsrendrede detaljer til anbefalt utviklingsvisning.
+Statisk pakke er et likeverdig eksportvalg. A0–A5 og typeinventar organiserer
+menyen; G6-M5/M6 planlegger faste symboler og senere klassediagrammer.
+
 SDL-kilde → validert modell → valgt viewpoint/projeksjon → dokumentseksjoner →
 Markdown med Mermaid eller SVG. Full rapport, enkeltside og navigator bruker
 samme prosjektor og kildekart. Navigatoren beskriver et utvalg; den skal ikke
@@ -46,7 +51,7 @@ genererte filer; brukerens notater skal bevares ved reeksport.
 
 Samlet viewpoints.md/printout.md kan velges som ekstra eksport. De trenger
 ikke produseres ved hvert klikk. Vanlige relative lenker fungerer uten SDL-
-tjeneste; det er første milepæls nyttige leveranse.
+tjeneste; det er første milepæls statiske eksportvalg. Navigator-only lager ikke disse detaljfilene.
 
 ## Navigatorlenke og vertsadapter
 
@@ -157,7 +162,7 @@ G6-M2: utvalg ved behov, likt innhold som samme utvalg i full eksport, ugyldig
 utvalg og renderfeil beholder siste visning. G6-M3: ekte XFMD-panelklikk,
 flere vinduer, fokusendring og lukket mål. G6-M4: cache-hit/invalidering,
 raske klikk, crash/restart, lease, ressursgrenser og opprydding.
-Alle fire milepæler er planlagt.
+Alle seks milepæler er planlagt; M5/M6 er beskrevet i nivå- og notasjonsdesignet.
 
 Go-porten av den strukturelle SDL-frontenden (G4-M1) er forutsetning for G6-M1;
 dagens Python-verktøy er portgrunnlag. G6 trenger ikke SDL-domenekjøring,

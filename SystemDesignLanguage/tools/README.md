@@ -103,3 +103,7 @@ G6 er senere lagt til som **planlagt design** i den felles SDL-kilden.
 [Checkpoint 10](../../docs/checkpoint%231/10-SDL-Viewpoint-Navigation.md)
 viser nye modelltall. Katalogbaserte sider, navigasjonslenkehandler og daemon
 er ennå ikke implementert av dette verktøyet; eksportformatet er uendret.
+
+G6-D2s [nivå- og notasjonsprofil](../../docs/SDL-Viewpoint-Levels-and-Notation.md)
+planlegger navigator-only, A0–A5 og typede symboler. Dagens flowchart-utdata er
+fortsatt gjeldende verktøyimplementasjon; nye use-case-/klasseregler er ikke aktivert.

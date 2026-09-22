@@ -8,6 +8,7 @@ field ActionStatusCode.
 field ActionSymbol.
 functionality AllocateGeometry.
 functionality ApplyPropertyBatch.
+functionality ApplySemanticNotation.
 field AstArtifact.
 contract AstArtifactContract.
 interface BindingReloadPort.
@@ -90,6 +91,7 @@ capability ExecutableDesign.
 interface ExecutionProfilePort.
 functionality ExpandUiDefinitions.
 functionality ExportConsoleSnapshot.
+functionality ExportModelInventories.
 interface ExportSinkPort.
 message ExportSvgRequest.
 message ExportSvgResult.
@@ -129,6 +131,8 @@ activity G6M1StaticNavigation.
 activity G6M2OnDemandViews.
 activity G6M3XfmdNavigation.
 activity G6M4SessionPublication.
+activity G6M5SemanticNotation.
+activity G6M6ClassViews.
 activity G6NavigableDocumentation.
 functionality GenerateBindingRegistration.
 message GenerateGoRequest.
@@ -149,6 +153,7 @@ channel GoGenerationCalls.
 contract GoGenerationCallsProtocol.
 functionality HandleFocusAndTextInput.
 functionality IdentifySourceRevision.
+functionality IndexViewpointLevels.
 activity InspectDesignSource.
 usecase InspectModels.
 activity InspectSdlSource.
@@ -229,6 +234,7 @@ functionality PreserveSdlSourceMap.
 functionality PreserveUiRegions.
 functionality PreserveUiSourceMap.
 functionality PreserveViewAnchors.
+functionality ProjectClassViews.
 functionality ProjectSdlViewpoints.
 functionality ProjectSelectedView.
 functionality ProjectUiGeneration.
@@ -325,6 +331,7 @@ unit SduiPropertyStore.
 unit SduiRuntime.
 capability SduiSourceModel.
 unit SduiValidator.
+functionality SelectRelationshipViews.
 message SelectViewRequest.
 scenario SelectedViewOpened.
 functionality ServeViewRequests.
@@ -358,6 +365,7 @@ message TokenizeUiResult.
 functionality TraceViewpointFacts.
 functionality TrackInputDraft.
 usecase TryDomainInteraction.
+feature TypedDesignInspection.
 feature TypedDomainBinding.
 message UiActionRejected.
 message UiActionRequest.
@@ -393,6 +401,7 @@ channel UiValidationCalls.
 contract UiValidationCallsProtocol.
 scenario UnboundLocalAction.
 functionality ValidateActionInput.
+functionality ValidateClassRelations.
 functionality ValidatePropertyBatch.
 functionality ValidateRelativeFormatting.
 functionality ValidateSdlProfile.
@@ -405,6 +414,7 @@ functionality ValidateViewRequest.
 functionality ValidateVisualResources.
 functionality ValidateWidgetArguments.
 contract ValidationOutcomeContract.
+functionality VerifyDiagramCapabilities.
 functionality VerifyNativeBehaviorParity.
 unit ViewArtifactStore.
 field ViewBundleBytes.
@@ -474,6 +484,8 @@ AllocateGeometry contributes-to InteractiveUiPreview.
 AllocateGeometry realizes MeasuredPresentation.
 ApplyPropertyBatch has state-retention = stateful.
 ApplyPropertyBatch realizes InteractiveSession.
+ApplySemanticNotation allocated-to ViewServiceHost in mode DocumentBrowsing.
+ApplySemanticNotation contributes-to TypedDesignInspection.
 AstArtifact has presence = required.
 AstArtifact has value-type = bytes.
 AstArtifactContract has completeness = closed.
@@ -674,6 +686,8 @@ ExpandUiDefinitions has repeatability = deterministic.
 ExpandUiDefinitions has state-retention = stateless.
 ExpandUiDefinitions realizes SduiSourceModel.
 ExportConsoleSnapshot realizes StaticDocumentation.
+ExportModelInventories allocated-to ViewServiceHost in mode DocumentBrowsing.
+ExportModelInventories contributes-to TypedDesignInspection.
 ExportSvgRequest has message-kind = request.
 ExportSvgRequest upholds PreparedFrameContract.
 ExportSvgResult has message-kind = result.
@@ -885,8 +899,10 @@ G5NativeGeneration delivers DesignDocumentation.
 G5NativeGeneration delivers NativeGoAssembly.
 G5NativeGeneration has implementation-status = planned.
 G6M1StaticNavigation addresses ComposeViewPackage.
+G6M1StaticNavigation addresses ExportModelInventories.
 G6M1StaticNavigation addresses ExportViewpointMarkdown.
 G6M1StaticNavigation addresses GenerateViewNavigation.
+G6M1StaticNavigation addresses IndexViewpointLevels.
 G6M1StaticNavigation addresses PreserveViewAnchors.
 G6M1StaticNavigation addresses ProjectSdlViewpoints.
 G6M1StaticNavigation addresses TraceViewpointFacts.
@@ -896,6 +912,7 @@ G6M1StaticNavigation refines G6NavigableDocumentation.
 G6M2OnDemandViews addresses KeyViewRevision.
 G6M2OnDemandViews addresses ProjectSelectedView.
 G6M2OnDemandViews addresses PublishViewBundle.
+G6M2OnDemandViews addresses SelectRelationshipViews.
 G6M2OnDemandViews addresses ValidateViewRequest.
 G6M2OnDemandViews depends-on G6M1StaticNavigation.
 G6M2OnDemandViews has implementation-status = planned.
@@ -914,7 +931,18 @@ G6M4SessionPublication addresses ServeViewRequests.
 G6M4SessionPublication depends-on G6M3XfmdNavigation.
 G6M4SessionPublication has implementation-status = planned.
 G6M4SessionPublication refines G6NavigableDocumentation.
+G6M5SemanticNotation addresses ApplySemanticNotation.
+G6M5SemanticNotation addresses VerifyDiagramCapabilities.
+G6M5SemanticNotation depends-on G6M1StaticNavigation.
+G6M5SemanticNotation has implementation-status = planned.
+G6M5SemanticNotation refines G6NavigableDocumentation.
+G6M6ClassViews addresses ProjectClassViews.
+G6M6ClassViews addresses ValidateClassRelations.
+G6M6ClassViews depends-on G6M5SemanticNotation.
+G6M6ClassViews has implementation-status = planned.
+G6M6ClassViews refines G6NavigableDocumentation.
 G6NavigableDocumentation delivers NavigableDesignDocumentation.
+G6NavigableDocumentation delivers TypedDesignInspection.
 G6NavigableDocumentation has implementation-status = planned.
 GenerateBindingRegistration allocated-to CommandLineHost in mode NativeBuild.
 GenerateBindingRegistration contributes-to NativeGoAssembly.
@@ -971,6 +999,8 @@ HandleFocusAndTextInput allocated-to FyneHost in mode UiPreview.
 HandleFocusAndTextInput contributes-to InteractiveUiPreview.
 HandleFocusAndTextInput realizes NativeInteraction.
 IdentifySourceRevision realizes SourceLoading.
+IndexViewpointLevels allocated-to ViewServiceHost in mode DocumentBrowsing.
+IndexViewpointLevels contributes-to TypedDesignInspection.
 InspectSdlSource refines InspectDesignSource.
 InspectSduiSource refines InspectDesignSource.
 InteractiveFramePrepared exercises PrototypeUserInterface.
@@ -1143,6 +1173,8 @@ PreserveUiSourceMap has state-retention = stateless.
 PreserveUiSourceMap realizes SduiSourceModel.
 PreserveViewAnchors allocated-to ViewServiceHost in mode DocumentBrowsing.
 PreserveViewAnchors contributes-to NavigableDesignDocumentation.
+ProjectClassViews allocated-to ViewServiceHost in mode DocumentBrowsing.
+ProjectClassViews contributes-to TypedDesignInspection.
 ProjectSdlViewpoints allocated-to CommandLineHost in mode StaticExport.
 ProjectSdlViewpoints allocated-to ViewServiceHost in mode DocumentBrowsing.
 ProjectSdlViewpoints contributes-to DesignDocumentation.
@@ -1354,16 +1386,23 @@ SdlUiBindingAdapter uses SdlActionCalls as sender of SdlActionRequest in mode Bo
 SdlUiBindingAdapter uses UiDomainActions as receiver of BoundActionRequest in mode BoundExecution.
 SdlUiBindingAdapter uses UiDomainActions as sender of BoundActionResult in mode BoundExecution.
 SdlValidator owns ResolveSdlSymbols.
+SdlValidator owns ValidateClassRelations.
 SdlValidator owns ValidateSdlProfile.
 SdlValidator owns ValidateSdlStructure.
 SdlValidator provides SdlSourceModel.
+SdlViewpointGenerator owns ApplySemanticNotation.
 SdlViewpointGenerator owns ComposeViewPackage.
+SdlViewpointGenerator owns ExportModelInventories.
 SdlViewpointGenerator owns ExportViewpointMarkdown.
 SdlViewpointGenerator owns GenerateViewNavigation.
+SdlViewpointGenerator owns IndexViewpointLevels.
 SdlViewpointGenerator owns PreserveViewAnchors.
+SdlViewpointGenerator owns ProjectClassViews.
 SdlViewpointGenerator owns ProjectSdlViewpoints.
 SdlViewpointGenerator owns ProjectSelectedView.
+SdlViewpointGenerator owns SelectRelationshipViews.
 SdlViewpointGenerator owns TraceViewpointFacts.
+SdlViewpointGenerator owns VerifyDiagramCapabilities.
 SdlViewpointGenerator uses ViewProjectionCalls as receiver of ProjectViewRequest in mode DocumentBrowsing.
 SdlViewpointGenerator uses ViewProjectionCalls as sender of ViewBundleResult in mode DocumentBrowsing.
 SdlViewpointGenerator uses ViewProjectionCalls as sender of ViewProjectionRejected in mode DocumentBrowsing.
@@ -1473,6 +1512,8 @@ SduiValidator owns ValidateWidgetArguments.
 SduiValidator provides SduiSourceModel.
 SduiValidator uses UiValidationCalls as receiver of ValidateUiRequest in mode SourceInspection.
 SduiValidator uses UiValidationCalls as sender of ValidateUiResult in mode SourceInspection.
+SelectRelationshipViews allocated-to ViewServiceHost in mode DocumentBrowsing.
+SelectRelationshipViews contributes-to TypedDesignInspection.
 SelectViewRequest has message-kind = request.
 SelectViewRequest upholds ViewSelectionContract.
 SelectedViewOpened exercises BrowseDesignViews.
@@ -1564,6 +1605,8 @@ TraceViewpointFacts has repeatability = deterministic.
 TraceViewpointFacts has state-retention = stateless.
 TrackInputDraft has state-retention = stateful.
 TrackInputDraft realizes InteractiveSession.
+TypedDesignInspection supports BrowseDesignViews.
+TypedDesignInspection supports InspectModels.
 TypedDomainBinding supports TryDomainInteraction.
 UiActionRejected has message-kind = result.
 UiActionRejected replies-to UiActionRequest.
@@ -1662,6 +1705,8 @@ UnboundLocalAction runs-in UiPreview.
 UnboundLocalAction step 1 sends DomainActionRequest from FyneHost to GoDomainImplementation via GoDomainCalls.
 UnboundLocalAction step 2 sends DomainActionResult from GoDomainImplementation to FyneHost via GoDomainCalls reply-to 1.
 ValidateActionInput realizes ExecutableDesign.
+ValidateClassRelations allocated-to ViewServiceHost in mode DocumentBrowsing.
+ValidateClassRelations contributes-to TypedDesignInspection.
 ValidatePropertyBatch realizes InteractiveSession.
 ValidateRelativeFormatting has repeatability = deterministic.
 ValidateRelativeFormatting has state-retention = stateless.
@@ -1694,6 +1739,8 @@ ValidateWidgetArguments realizes SduiSourceModel.
 ValidationOutcomeContract has completeness = closed.
 ValidationOutcomeContract has-field ModelDiagnostics.
 ValidationOutcomeContract has-field ModelIsValid.
+VerifyDiagramCapabilities allocated-to ViewServiceHost in mode DocumentBrowsing.
+VerifyDiagramCapabilities contributes-to TypedDesignInspection.
 VerifyNativeBehaviorParity allocated-to CommandLineHost in mode NativeBuild.
 VerifyNativeBehaviorParity contributes-to NativeGoAssembly.
 ViewArtifactStore owns EvictUnusedViewBundles.

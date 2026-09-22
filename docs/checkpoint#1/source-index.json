@@ -1082,6 +1082,109 @@
           "sha256": "242ca11e2d08128a541ce03bbbf557b3fb7bc6060c74b2dd89f06922a91f843e"
         }
       ]
+    },
+    {
+      "date": "2026-09-22",
+      "reason": "G6-D2: navigator-only/overview versus static export, A0–A5 organization, Mode/State distinction, semantic notation and planned class views. No generator or language rule changes.",
+      "repository_head_at_capture": "24206f7afa9f011f517137154b7271e817e39cef",
+      "content_origin": "G6-D2 working tree before design milestone commit; previous fingerprints remain historical",
+      "verification": {
+        "sdl_parser": 61,
+        "viewpoint_tool": 24,
+        "sdui": 36,
+        "rendered_diagrams": 170,
+        "model_gaps": 18
+      },
+      "sources": [
+        {
+          "path": "SDUI/design/README.md",
+          "sha256": "fecea514fbb83a7467930a1c4d8236be5e3ac33b3f168c67a2640e8d01f0d826"
+        },
+        {
+          "path": "SDUI/design/architecture.design",
+          "sha256": "be0dfcfdca6e04f7b8c4594dc5e72d920724ef96e1f604e749432121aa83e862"
+        },
+        {
+          "path": "SDUI/design/architecture.validation.json",
+          "sha256": "51018b2087e07f0748181d65ab5bc6d601deaa195b416800a9ed6403183585c6"
+        },
+        {
+          "path": "SDUI/design/viewpoints/implementation.md",
+          "sha256": "58bbbbcfc6427239ebd3a056ebdc7f5403557388151b7e833aa2d7d8929bae2a"
+        },
+        {
+          "path": "SDUI/design/viewpoints/manifest.json",
+          "sha256": "01693dc53b1c1e0f5d37e3d79d949f97a1ce121838c62a92d594d08bf9707ab2"
+        },
+        {
+          "path": "SDUI/design/viewpoints/printout.md",
+          "sha256": "ce8eac9cc4b3084209d3be692a3dcece50ec8961cae58475c1ea3723b34115e9"
+        },
+        {
+          "path": "SDUI/docs/implementation-plan.md",
+          "sha256": "b0bb9c1522c92c2a7e222606d4b5ec36ce3fced614d8e2cfd46098d1aab5cdde"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/channel_views.py",
+          "sha256": "ce28341184bf1ddb7aad65e611ff5cc6af5bcbf03cc8a92883e4db7b64577dfc"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/data_views.py",
+          "sha256": "015440a1dd66ed45d9178a57ae523fa7e61e73ee5424c4de636304fe15526128"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/goal_views.py",
+          "sha256": "e312f68c4e204e6f119ccb9a7978e4876d8348e23d3c1a0bdf80f3dd317e440b"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/plan_views.py",
+          "sha256": "dc840dca34650d0fe57eceda039e4cf147954421c912617c4a3954697267e31e"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/sdl.py",
+          "sha256": "6fc15da4834b381d29c1e6157b4ec4dcf1e1446346f0a05b43090c3f01a65211"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/verification.json",
+          "sha256": "89a19dfb7510704b721da68a75a907d235f93335a21ff20d4100d4328813f3f2"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/verify_design.py",
+          "sha256": "4071b898f5fa4f6af34c58045383a9fc0c6c4ea3f74015a4927e926627c4140b"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/viewpoints.py",
+          "sha256": "531ce26c789dcfd9230bb9c1020c895cc339e1dbebaa41db1896e726a99d8c17"
+        },
+        {
+          "path": "docs/Development-Branch-Stack.md",
+          "sha256": "28cfc465ffc85692c37123426c79c8e04e6e5d58dff30cd603e28d7dd0b9ca34"
+        },
+        {
+          "path": "docs/SDL-Navigable-Viewpoints-Design.md",
+          "sha256": "9f0d62abe1c7eb27d5c01d68228611c9e641f87535b8c6b6499f03268e5c3e35"
+        },
+        {
+          "path": "docs/SDL-Viewpoint-Levels-and-Notation.md",
+          "sha256": "0f66d9fe467e2c5e6f8f058cc0158b4917f18a47ac7bd4ee2749b7623bf94105"
+        },
+        {
+          "path": "docs/checkpoint#1/10-SDL-Viewpoint-Navigation.md",
+          "sha256": "717369c899b3eb67b354a11b6bce8e768705a8cb64b6eec2701bf6c086570e44"
+        },
+        {
+          "path": "experiments/design_core/channel_core.py",
+          "sha256": "bfb289aa11045528f2146189975a7e66e0f00acb51ae2acf147a6f88306e675c"
+        },
+        {
+          "path": "experiments/design_core/data_core.py",
+          "sha256": "c967bd05a927fc6efee2bd22483e340b4e9dec304973e4bc5536272a6bb1d308"
+        },
+        {
+          "path": "experiments/design_core/design_core.py",
+          "sha256": "242ca11e2d08128a541ce03bbbf557b3fb7bc6060c74b2dd89f06922a91f843e"
+        }
+      ]
     }
   ]
 }

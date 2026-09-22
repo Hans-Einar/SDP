@@ -13,11 +13,11 @@
       "FyneBackend"
     ],
     "source_facts": [
-      "f0238",
-      "f0240",
-      "f0249",
-      "f0267",
-      "f0666"
+      "f0242",
+      "f0244",
+      "f0253",
+      "f0271",
+      "f0686"
     ]
   },
   {
@@ -34,11 +34,11 @@
       "FyneHost"
     ],
     "source_facts": [
-      "f0238",
-      "f0241",
-      "f0250",
-      "f0266",
-      "f0669"
+      "f0242",
+      "f0245",
+      "f0254",
+      "f0270",
+      "f0689"
     ]
   },
   {
@@ -55,11 +55,11 @@
       "GoBuildRunner"
     ],
     "source_facts": [
-      "f0056",
-      "f0096",
-      "f0481",
-      "f0483",
-      "f0490"
+      "f0058",
+      "f0098",
+      "f0499",
+      "f0501",
+      "f0508"
     ]
   },
   {
@@ -76,11 +76,11 @@
       "CommandLineHost"
     ],
     "source_facts": [
-      "f0059",
-      "f0095",
-      "f0481",
-      "f0484",
-      "f0491"
+      "f0061",
+      "f0097",
+      "f0499",
+      "f0502",
+      "f0509"
     ]
   },
   {
@@ -97,11 +97,11 @@
       "GoDomainImplementation"
     ],
     "source_facts": [
-      "f0206",
-      "f0501",
-      "f0503",
-      "f0507",
-      "f0832"
+      "f0208",
+      "f0519",
+      "f0521",
+      "f0525",
+      "f0854"
     ]
   },
   {
@@ -118,11 +118,11 @@
       "SdlDispatcher"
     ],
     "source_facts": [
-      "f0209",
-      "f0501",
-      "f0504",
-      "f0509",
-      "f0831"
+      "f0211",
+      "f0519",
+      "f0522",
+      "f0527",
+      "f0853"
     ]
   },
   {
@@ -139,11 +139,11 @@
       "GoDomainImplementation"
     ],
     "source_facts": [
-      "f0206",
-      "f0269",
-      "f0501",
-      "f0503",
-      "f0508"
+      "f0208",
+      "f0273",
+      "f0519",
+      "f0521",
+      "f0526"
     ]
   },
   {
@@ -160,11 +160,11 @@
       "FyneHost"
     ],
     "source_facts": [
-      "f0209",
-      "f0268",
-      "f0501",
-      "f0504",
-      "f0510"
+      "f0211",
+      "f0272",
+      "f0519",
+      "f0522",
+      "f0528"
     ]
   },
   {
@@ -181,11 +181,11 @@
       "GoCodeGenerator"
     ],
     "source_facts": [
-      "f0098",
-      "f0468",
-      "f0499",
-      "f0511",
-      "f0513"
+      "f0100",
+      "f0486",
+      "f0517",
+      "f0529",
+      "f0531"
     ]
   },
   {
@@ -202,53 +202,53 @@
       "CommandLineHost"
     ],
     "source_facts": [
-      "f0097",
-      "f0471",
-      "f0500",
-      "f0511",
-      "f0514"
-    ]
-  },
-  {
-    "channel": "LayoutCalls",
-    "mode": "StaticExport",
-    "message": "LayoutRequest",
-    "contract": "LayoutCallsProtocol",
-    "payload_contract": "LayoutArguments",
-    "variants": [],
-    "senders": [
-      "CommandLineHost"
-    ],
-    "receivers": [
-      "SduiLayout"
-    ],
-    "source_facts": [
-      "f0100",
-      "f0552",
-      "f0554",
-      "f0559",
-      "f0966"
-    ]
-  },
-  {
-    "channel": "LayoutCalls",
-    "mode": "StaticExport",
-    "message": "LayoutResult",
-    "contract": "LayoutCallsProtocol",
-    "payload_contract": "PreparedFrameContract",
-    "variants": [],
-    "senders": [
-      "SduiLayout"
-    ],
-    "receivers": [
-      "CommandLineHost"
-    ],
-    "source_facts": [
       "f0099",
-      "f0552",
-      "f0555",
-      "f0562",
-      "f0968"
+      "f0489",
+      "f0518",
+      "f0529",
+      "f0532"
+    ]
+  },
+  {
+    "channel": "LayoutCalls",
+    "mode": "StaticExport",
+    "message": "LayoutRequest",
+    "contract": "LayoutCallsProtocol",
+    "payload_contract": "LayoutArguments",
+    "variants": [],
+    "senders": [
+      "CommandLineHost"
+    ],
+    "receivers": [
+      "SduiLayout"
+    ],
+    "source_facts": [
+      "f0102",
+      "f0572",
+      "f0574",
+      "f0579",
+      "f0995"
+    ]
+  },
+  {
+    "channel": "LayoutCalls",
+    "mode": "StaticExport",
+    "message": "LayoutResult",
+    "contract": "LayoutCallsProtocol",
+    "payload_contract": "PreparedFrameContract",
+    "variants": [],
+    "senders": [
+      "SduiLayout"
+    ],
+    "receivers": [
+      "CommandLineHost"
+    ],
+    "source_facts": [
+      "f0101",
+      "f0572",
+      "f0575",
+      "f0582",
+      "f0997"
     ]
   },
   {
@@ -265,11 +265,11 @@
       "SduiLayout"
     ],
     "source_facts": [
-      "f0271",
-      "f0552",
-      "f0554",
-      "f0559",
-      "f0967"
+      "f0275",
+      "f0572",
+      "f0574",
+      "f0579",
+      "f0996"
     ]
   },
   {
@@ -286,11 +286,11 @@
       "FyneHost"
     ],
     "source_facts": [
-      "f0270",
-      "f0552",
-      "f0555",
-      "f0562",
-      "f0969"
+      "f0274",
+      "f0572",
+      "f0575",
+      "f0582",
+      "f0998"
     ]
   },
   {
@@ -307,11 +307,11 @@
       "SourceWatcher"
     ],
     "source_facts": [
-      "f0588",
-      "f0590",
-      "f0745",
-      "f0761",
-      "f1061"
+      "f0608",
+      "f0610",
+      "f0767",
+      "f0783",
+      "f1092"
     ]
   },
   {
@@ -328,11 +328,11 @@
       "SourceWatcher"
     ],
     "source_facts": [
-      "f0588",
-      "f0591",
-      "f0747",
-      "f0766",
-      "f1063"
+      "f0608",
+      "f0611",
+      "f0769",
+      "f0788",
+      "f1094"
     ]
   },
   {
@@ -349,11 +349,11 @@
       "ReloadCoordinator"
     ],
     "source_facts": [
-      "f0588",
-      "f0592",
-      "f0743",
-      "f0768",
-      "f1065"
+      "f0608",
+      "f0612",
+      "f0765",
+      "f0790",
+      "f1096"
     ]
   },
   {
@@ -370,11 +370,11 @@
       "SourceWatcher"
     ],
     "source_facts": [
-      "f0588",
-      "f0590",
-      "f0746",
-      "f0761",
-      "f1062"
+      "f0608",
+      "f0610",
+      "f0768",
+      "f0783",
+      "f1093"
     ]
   },
   {
@@ -391,11 +391,11 @@
       "SourceWatcher"
     ],
     "source_facts": [
-      "f0588",
-      "f0591",
-      "f0748",
-      "f0766",
-      "f1064"
+      "f0608",
+      "f0611",
+      "f0770",
+      "f0788",
+      "f1095"
     ]
   },
   {
@@ -412,11 +412,11 @@
       "ReloadCoordinator"
     ],
     "source_facts": [
-      "f0588",
-      "f0592",
-      "f0744",
-      "f0768",
-      "f1066"
+      "f0608",
+      "f0612",
+      "f0766",
+      "f0790",
+      "f1097"
     ]
   },
   {
@@ -433,11 +433,11 @@
       "FyneBackend"
     ],
     "source_facts": [
-      "f0251",
-      "f0612",
-      "f0614",
-      "f0923",
-      "f1115"
+      "f0255",
+      "f0632",
+      "f0634",
+      "f0952",
+      "f1148"
     ]
   },
   {
@@ -454,11 +454,11 @@
       "SduiDispatcher"
     ],
     "source_facts": [
-      "f0253",
-      "f0612",
-      "f0615",
-      "f0922",
-      "f1117"
+      "f0257",
+      "f0632",
+      "f0635",
+      "f0951",
+      "f1150"
     ]
   },
   {
@@ -475,11 +475,11 @@
       "FyneBackend"
     ],
     "source_facts": [
-      "f0252",
-      "f0612",
-      "f0616",
-      "f0924",
-      "f1120"
+      "f0256",
+      "f0632",
+      "f0636",
+      "f0953",
+      "f1153"
     ]
   },
   {
@@ -496,11 +496,11 @@
       "SdlDispatcher"
     ],
     "source_facts": [
-      "f0811",
-      "f0813",
-      "f0816",
       "f0833",
-      "f0898"
+      "f0835",
+      "f0838",
+      "f0855",
+      "f0920"
     ]
   },
   {
@@ -517,11 +517,11 @@
       "SdlUiBindingAdapter"
     ],
     "source_facts": [
-      "f0811",
-      "f0814",
-      "f0819",
-      "f0834",
-      "f0897"
+      "f0833",
+      "f0836",
+      "f0841",
+      "f0856",
+      "f0919"
     ]
   },
   {
@@ -538,11 +538,11 @@
       "SdlFrontend"
     ],
     "source_facts": [
-      "f0107",
-      "f0750",
-      "f0820",
-      "f0822",
-      "f0847"
+      "f0109",
+      "f0772",
+      "f0842",
+      "f0844",
+      "f0869"
     ]
   },
   {
@@ -559,11 +559,11 @@
       "ReloadCoordinator"
     ],
     "source_facts": [
-      "f0110",
-      "f0749",
-      "f0820",
-      "f0823",
-      "f0848"
+      "f0112",
+      "f0771",
+      "f0842",
+      "f0845",
+      "f0870"
     ]
   },
   {
@@ -580,11 +580,11 @@
       "SduiPresentation"
     ],
     "source_facts": [
-      "f0102",
-      "f0223",
-      "f0997",
-      "f1084",
-      "f1086"
+      "f0104",
+      "f0227",
+      "f1026",
+      "f1115",
+      "f1117"
     ]
   },
   {
@@ -601,11 +601,11 @@
       "CommandLineHost"
     ],
     "source_facts": [
-      "f0101",
-      "f0226",
-      "f0998",
-      "f1084",
-      "f1087"
+      "f0103",
+      "f0230",
+      "f1027",
+      "f1115",
+      "f1118"
     ]
   },
   {
@@ -622,11 +622,11 @@
       "SduiParser"
     ],
     "source_facts": [
-      "f0075",
-      "f0936",
-      "f0990",
-      "f1121",
-      "f1123"
+      "f0077",
+      "f0965",
+      "f1019",
+      "f1154",
+      "f1156"
     ]
   },
   {
@@ -643,11 +643,11 @@
       "SduiFrontend"
     ],
     "source_facts": [
-      "f0078",
-      "f0935",
-      "f0991",
-      "f1121",
-      "f1124"
+      "f0080",
+      "f0964",
+      "f1020",
+      "f1154",
+      "f1157"
     ]
   },
   {
@@ -664,11 +664,11 @@
       "ReloadCoordinator"
     ],
     "source_facts": [
-      "f0113",
-      "f0751",
-      "f0939",
-      "f1140",
-      "f1142"
+      "f0115",
+      "f0773",
+      "f0968",
+      "f1173",
+      "f1175"
     ]
   },
   {
@@ -685,11 +685,11 @@
       "SduiFrontend"
     ],
     "source_facts": [
-      "f0115",
-      "f0753",
-      "f0937",
-      "f1140",
-      "f1143"
+      "f0117",
+      "f0775",
+      "f0966",
+      "f1173",
+      "f1176"
     ]
   },
   {
@@ -706,11 +706,11 @@
       "ReloadCoordinator"
     ],
     "source_facts": [
-      "f0118",
-      "f0752",
-      "f0941",
-      "f1140",
-      "f1144"
+      "f0120",
+      "f0774",
+      "f0970",
+      "f1173",
+      "f1177"
     ]
   },
   {
@@ -725,34 +725,34 @@
     ],
     "receivers": [
       "CommandLineHost"
-    ],
-    "source_facts": [
-      "f0103",
-      "f0113",
-      "f0940",
-      "f1140",
-      "f1142"
-    ]
-  },
-  {
-    "channel": "UiCompilationCalls",
-    "mode": "SourceInspection",
-    "message": "CompileUiRequest",
-    "contract": "UiCompilationCallsProtocol",
-    "payload_contract": "ReloadArguments",
-    "variants": [],
-    "senders": [
-      "CommandLineHost"
-    ],
-    "receivers": [
-      "SduiFrontend"
     ],
     "source_facts": [
       "f0105",
       "f0115",
-      "f0938",
-      "f1140",
-      "f1143"
+      "f0969",
+      "f1173",
+      "f1175"
+    ]
+  },
+  {
+    "channel": "UiCompilationCalls",
+    "mode": "SourceInspection",
+    "message": "CompileUiRequest",
+    "contract": "UiCompilationCallsProtocol",
+    "payload_contract": "ReloadArguments",
+    "variants": [],
+    "senders": [
+      "CommandLineHost"
+    ],
+    "receivers": [
+      "SduiFrontend"
+    ],
+    "source_facts": [
+      "f0107",
+      "f0117",
+      "f0967",
+      "f1173",
+      "f1176"
     ]
   },
   {
@@ -769,11 +769,11 @@
       "CommandLineHost"
     ],
     "source_facts": [
-      "f0104",
-      "f0118",
-      "f0942",
-      "f1140",
-      "f1144"
+      "f0106",
+      "f0120",
+      "f0971",
+      "f1173",
+      "f1177"
     ]
   },
   {
@@ -790,11 +790,11 @@
       "SdlUiBindingAdapter"
     ],
     "source_facts": [
-      "f0046",
-      "f0899",
-      "f0926",
-      "f1145",
-      "f1147"
+      "f0048",
+      "f0921",
+      "f0955",
+      "f1178",
+      "f1180"
     ]
   },
   {
@@ -811,11 +811,11 @@
       "SduiDispatcher"
     ],
     "source_facts": [
-      "f0049",
-      "f0900",
-      "f0925",
-      "f1145",
-      "f1148"
+      "f0051",
+      "f0922",
+      "f0954",
+      "f1178",
+      "f1181"
     ]
   },
   {
@@ -834,11 +834,11 @@
       "FyneBackend"
     ],
     "source_facts": [
-      "f0254",
-      "f0955",
-      "f1153",
-      "f1155",
-      "f1157"
+      "f0258",
+      "f0984",
+      "f1186",
+      "f1188",
+      "f1190"
     ]
   },
   {
@@ -857,11 +857,11 @@
       "FyneBackend"
     ],
     "source_facts": [
-      "f0255",
-      "f0956",
-      "f1153",
-      "f1155",
-      "f1157"
+      "f0259",
+      "f0985",
+      "f1186",
+      "f1188",
+      "f1190"
     ]
   },
   {
@@ -878,11 +878,11 @@
       "SduiNormalizer"
     ],
     "source_facts": [
-      "f0622",
-      "f0944",
-      "f0986",
-      "f1181",
-      "f1183"
+      "f0642",
+      "f0973",
+      "f1015",
+      "f1214",
+      "f1216"
     ]
   },
   {
@@ -899,11 +899,11 @@
       "SduiFrontend"
     ],
     "source_facts": [
-      "f0625",
-      "f0943",
-      "f0987",
-      "f1181",
-      "f1184"
+      "f0645",
+      "f0972",
+      "f1016",
+      "f1214",
+      "f1217"
     ]
   },
   {
@@ -920,11 +920,11 @@
       "SduiLexer"
     ],
     "source_facts": [
-      "f0946",
-      "f0972",
-      "f1099",
-      "f1195",
-      "f1197"
+      "f0975",
+      "f1001",
+      "f1130",
+      "f1228",
+      "f1230"
     ]
   },
   {
@@ -941,11 +941,11 @@
       "SduiFrontend"
     ],
     "source_facts": [
-      "f0945",
-      "f0973",
-      "f1102",
-      "f1195",
-      "f1198"
+      "f0974",
+      "f1002",
+      "f1133",
+      "f1228",
+      "f1231"
     ]
   },
   {
@@ -962,11 +962,11 @@
       "SduiValidator"
     ],
     "source_facts": [
-      "f0948",
-      "f1019",
-      "f1199",
-      "f1201",
-      "f1227"
+      "f0977",
+      "f1048",
+      "f1232",
+      "f1234",
+      "f1262"
     ]
   },
   {
@@ -983,11 +983,11 @@
       "SduiFrontend"
     ],
     "source_facts": [
-      "f0947",
-      "f1020",
-      "f1199",
-      "f1202",
-      "f1230"
+      "f0976",
+      "f1049",
+      "f1232",
+      "f1235",
+      "f1265"
     ]
   },
   {
@@ -1004,11 +1004,11 @@
       "XfmdDocumentHost"
     ],
     "source_facts": [
-      "f0190",
-      "f1261",
-      "f1263",
-      "f1373",
-      "f1381"
+      "f0192",
+      "f1298",
+      "f1300",
+      "f1410",
+      "f1418"
     ]
   },
   {
@@ -1025,11 +1025,11 @@
       "ViewerLaunchAdapter"
     ],
     "source_facts": [
-      "f1261",
-      "f1264",
-      "f1268",
-      "f1371",
-      "f1382"
+      "f1298",
+      "f1301",
+      "f1305",
+      "f1408",
+      "f1419"
     ]
   },
   {
@@ -1046,11 +1046,11 @@
       "ViewerLaunchAdapter"
     ],
     "source_facts": [
-      "f1261",
-      "f1265",
-      "f1366",
-      "f1372",
-      "f1383"
+      "f1298",
+      "f1302",
+      "f1403",
+      "f1409",
+      "f1420"
     ]
   },
   {
@@ -1067,11 +1067,11 @@
       "ViewerLaunchAdapter"
     ],
     "source_facts": [
-      "f0196",
-      "f0547",
-      "f1279",
-      "f1281",
-      "f1374"
+      "f0198",
+      "f0567",
+      "f1316",
+      "f1318",
+      "f1411"
     ]
   },
   {
@@ -1088,11 +1088,11 @@
       "DocumentBroker"
     ],
     "source_facts": [
-      "f0195",
-      "f1279",
-      "f1282",
-      "f1285",
-      "f1375"
+      "f0197",
+      "f1316",
+      "f1319",
+      "f1322",
+      "f1412"
     ]
   },
   {
@@ -1109,11 +1109,11 @@
       "DocumentBroker"
     ],
     "source_facts": [
-      "f0197",
-      "f1022",
-      "f1290",
-      "f1292",
-      "f1386"
+      "f0199",
+      "f1053",
+      "f1327",
+      "f1329",
+      "f1423"
     ]
   },
   {
@@ -1130,11 +1130,11 @@
       "XfmdDocumentHost"
     ],
     "source_facts": [
-      "f0198",
-      "f1290",
-      "f1293",
-      "f1308",
-      "f1384"
+      "f0200",
+      "f1327",
+      "f1330",
+      "f1345",
+      "f1421"
     ]
   },
   {
@@ -1151,11 +1151,11 @@
       "XfmdDocumentHost"
     ],
     "source_facts": [
-      "f0199",
-      "f1290",
-      "f1294",
-      "f1348",
-      "f1385"
+      "f0201",
+      "f1327",
+      "f1331",
+      "f1385",
+      "f1422"
     ]
   },
   {
@@ -1172,11 +1172,11 @@
       "SdlViewpointGenerator"
     ],
     "source_facts": [
-      "f0202",
-      "f0702",
-      "f0912",
-      "f1313",
-      "f1315"
+      "f0204",
+      "f0724",
+      "f0941",
+      "f1350",
+      "f1352"
     ]
   },
   {
@@ -1193,11 +1193,11 @@
       "DocumentBroker"
     ],
     "source_facts": [
-      "f0200",
-      "f0913",
-      "f1256",
-      "f1313",
-      "f1316"
+      "f0202",
+      "f0942",
+      "f1293",
+      "f1350",
+      "f1353"
     ]
   },
   {
@@ -1214,11 +1214,11 @@
       "DocumentBroker"
     ],
     "source_facts": [
-      "f0201",
-      "f0914",
-      "f1313",
-      "f1317",
-      "f1329"
+      "f0203",
+      "f0943",
+      "f1350",
+      "f1354",
+      "f1366"
     ]
   },
   {
@@ -1235,11 +1235,11 @@
       "ViewArtifactStore"
     ],
     "source_facts": [
-      "f0204",
-      "f0714",
-      "f1247",
-      "f1330",
-      "f1332"
+      "f0206",
+      "f0736",
+      "f1284",
+      "f1367",
+      "f1369"
     ]
   },
   {
@@ -1256,11 +1256,11 @@
       "DocumentBroker"
     ],
     "source_facts": [
-      "f0203",
-      "f1248",
-      "f1330",
-      "f1333",
-      "f1343"
+      "f0205",
+      "f1285",
+      "f1367",
+      "f1370",
+      "f1380"
     ]
   }
 ]

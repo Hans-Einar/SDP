@@ -1,14 +1,14 @@
 {
-  "phase": "G6-D1",
+  "phase": "G6-D2",
   "scope": "Generated SDL model/views; no Go/runtime execution",
   "tests": {
     "sdl_parser": 61,
     "viewpoint_tool": 24,
     "sdui": 36
   },
-  "rendered_diagrams": 166,
-  "source_declarations": 453,
-  "source_facts": 1387,
+  "rendered_diagrams": 170,
+  "source_declarations": 463,
+  "source_facts": 1424,
   "unsupported_viewpoints": [],
   "model_gap_count": 18,
   "checks": [
@@ -30,8 +30,8 @@
     "experiments/design_core/channel_core.py": "bfb289aa11045528f2146189975a7e66e0f00acb51ae2acf147a6f88306e675c",
     "experiments/design_core/data_core.py": "c967bd05a927fc6efee2bd22483e340b4e9dec304973e4bc5536272a6bb1d308",
     "experiments/design_core/design_core.py": "242ca11e2d08128a541ce03bbbf557b3fb7bc6060c74b2dd89f06922a91f843e",
-    "SDUI/design/architecture.design": "54e5788cd19b48e20b40aabfa32a17d7beb4efd7a4e70f65dda754edd65acc24",
-    "SDUI/design/architecture.validation.json": "bcfc9ca24fcb3c631d35a100b88571573e092647cee5e335dcf3bd126c9ecdba",
-    "SDUI/design/viewpoints/manifest.json": "114f2c8adf899fc04d24285bd879aca1e0d15b4e5cb59b9b61c0466c55a30a50"
+    "SDUI/design/architecture.design": "be0dfcfdca6e04f7b8c4594dc5e72d920724ef96e1f604e749432121aa83e862",
+    "SDUI/design/architecture.validation.json": "51018b2087e07f0748181d65ab5bc6d601deaa195b416800a9ed6403183585c6",
+    "SDUI/design/viewpoints/manifest.json": "01693dc53b1c1e0f5d37e3d79d949f97a1ce121838c62a92d594d08bf9707ab2"
   }
 }
