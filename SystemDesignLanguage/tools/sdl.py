@@ -3,13 +3,16 @@
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
 import shutil
 import subprocess
 import tempfile
 import xml.etree.ElementTree as ET
+from urllib.parse import quote
 from viewpoints import CATALOG, Views
+from plan_views import implementation_markdown
 
 
 def digest(path):
@@ -30,6 +33,9 @@ def build(args, views, output, previous):
     (output / 'viewpoints.md').write_text(views.markdown(), encoding='utf-8')
     if 'VP08' in views.selected:
         (output / 'message-sets.json').write_text(json.dumps(views.message_sets, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    if 'VP06' in views.selected:
+        link = quote(os.path.relpath(args.source.resolve(), args.output.resolve()))
+        (output / 'implementation.md').write_text(implementation_markdown(views, rendered=bool(renderer), source_link=link), encoding='utf-8')
     manifest = {'source': str(args.source), 'source_sha256': digest(args.source),
                 'scope': f'design-core {views.model.header.version} structural projections; missing concepts are not inferred',
                 'viewpoints': [{'id': i, 'title': t, 'status': s, 'note': n} for i, t, s, n in CATALOG if i in views.selected],
@@ -81,7 +87,7 @@ def publish(stage, output, previous, manifest):
         for d in previous.get('diagrams', []):
             old_names.update('diagrams/' + d['id'] + ext for ext in ('.mmd', '.svg'))
     for name in sorted(old_names - set(manifest['outputs'])):
-        if name not in ('printout.md', 'viewpoints.md', 'message-sets.json') and not re.fullmatch(r'diagrams/VP\d+-[A-Za-z0-9-]+\.(mmd|svg)', name):
+        if name not in ('printout.md', 'viewpoints.md', 'message-sets.json', 'implementation.md') and not re.fullmatch(r'diagrams/VP\d+-[A-Za-z0-9-]+\.(mmd|svg)', name):
             continue
         p = output / name
         if p.is_file() and p.resolve().is_relative_to(output.resolve()):

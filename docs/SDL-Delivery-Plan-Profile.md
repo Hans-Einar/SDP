@@ -1,6 +1,6 @@
 # SDL — sporbar leveranseplan
 
-V4, 2026-09-22. design-core 0.5 erstatter aktiv 0.4 med tre avgrensede
+V4, 2026-09-22. design-core 0.5 erstatter aktiv 0.4 med fire avgrensede
 planrelasjoner og en Activity-egenskap. SDL-modellen kan nå beskrive hvilke
 ansvar en planlagt utviklingsaktivitet skal levere, uten å påstå at de er utført.
 
@@ -9,6 +9,7 @@ ansvar en planlagt utviklingsaktivitet skal levere, uten å påstå at de er utf
 | `A addresses F.` | Activity → Functionality; aktiviteten dekker dette implementasjonsansvaret |
 | `A delivers F.` | Activity → Feature; planlagt leveransebidrag, ikke bevis på ferdig Feature |
 | `A depends-on B.` | Activity → Activity; eksplisitt forutsetning, ingen selvreferanse/syklus |
+| `S illustrates A.` | Scenario → Activity; eksplisitt eksempelbane knyttet til milepælen |
 | `A has implementation-status = planned/implemented/verified.` | Activity-egenskap; en kildepåstand, ikke en status verktøyet utleder fra tester |
 
 G-fasene og deres milepæler er Activity-identiteter. Milepælen `refines` sin fase.
@@ -30,3 +31,8 @@ fasepush og PR for gjennomgang mot sdp-vNow.
 V4-M1 verifisert: 61 parsertester består. Modellen angir 5 planlagte G-faser,
 18 milepæler og ansvarskoblinger for alle 94 Functionality-er. Ingen status er
 oppgradert til implemented/verified for den kommende Go-koden.
+
+V4-M2 levert: generisk implementation.md fra fase-/milepælrelasjoner, med
+ansvarseiere og scenariofigurer. 24 verktøytester består. Modellens ti scenarioer
+dekker kompilering, interaktiv/statisk presentasjon, lokal Go-handling, SDL-binding,
+UI-/SDL-reload og native bygg. Dette er designbaner, ikke kjørte Go-programmer.

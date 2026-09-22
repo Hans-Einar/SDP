@@ -248,7 +248,11 @@ V4s [leveranseplanprofil](SDL-Delivery-Plan-Profile.md) inngår i 0.5. Den utvid
 relasjonstabellen og Activity-egenskapene med addresses/delivers/depends-on og
 implementation-status. Dette er planfakta, ikke runtime-utføring.
 
-## 7. Complete grammar of the supported core
+## 7. Core productions and registered profile extensions
+
+Data-, Channel- og leveranseplanprofilene lenket ovenfor er normative tillegg
+til disse kjerneproduksjonene; deres type-/verb-/egenskapsregistre utvider de
+avgrensede tabellene nedenfor. Bare den samlede 0.5-profilen er aktiv.
 
 EBNF notation: quoted strings are literal tokens, comma is concatenation,
 `|` is choice, and braces mean zero or more repetitions. Whitespace separates

@@ -1,4 +1,9 @@
 """Sequences and derived MessageSets from validated Channel/scenario facts."""
+import re
+
+
+def label(name):
+    return re.sub(r'(?<=[a-z0-9])(?=[A-Z])', ' ', name)
 
 
 def build_channel_views(views, diagram_type):
@@ -33,7 +38,8 @@ def build_channel_views(views, diagram_type):
         mode = modes[scenario]
         steps = sorted([r for r in facts if r['verb'] == 'step' and r['subject'] == scenario], key=lambda r: r['ordinal'])
         nodes = {r[role] for r in steps for role in ('sender', 'receiver')}
-        lines = ['sequenceDiagram'] + [f'    participant n_{n} as {n}' for n in sorted(nodes)]
+        order = list(dict.fromkeys(r[role] for r in steps for role in ('sender', 'receiver')))
+        lines = ['sequenceDiagram'] + [f'    participant n_{n} as {label(n)}' for n in order]
         source_facts = {r['id'] for r in facts if r['subject'] == scenario}
         elements = []
         for s in steps:
@@ -46,9 +52,9 @@ def build_channel_views(views, diagram_type):
             proof = sorted({r['id'] for r in bindings + permits + governing + type_facts} | {s['id']})
             source_facts.update(proof)
             arrow = '-->>' if props.get((message, 'message-kind')) == 'result' else '->>'
-            label = f'{s["ordinal"]}: {message}' + (f' / {s["variant"]}' if s['variant'] else '')
-            label += f' ({channel})' + (f' reply-to {s["reply_to"]}' if s['reply_to'] else '')
-            lines.append(f'    n_{s["sender"]}{arrow}n_{s["receiver"]}: {label}')
+            caption = f'{s["ordinal"]}: {label(message)}' + (f' / {label(s["variant"])}' if s['variant'] else '')
+            caption += f' ({label(channel)})' + (f' reply-to {s["reply_to"]}' if s['reply_to'] else '')
+            lines.append(f'    n_{s["sender"]}{arrow}n_{s["receiver"]}: {caption}')
             elements.append(dict(ordinal=s['ordinal'], sender=s['sender'], receiver=s['receiver'],
                 message=message, variant=s['variant'], channel=channel, reply_to=s['reply_to'], fact=s['id'], proof=proof))
         views.diagrams.append(diagram_type('VP08-' + scenario, f'Scenario: {scenario} — modus {mode}', nodes,

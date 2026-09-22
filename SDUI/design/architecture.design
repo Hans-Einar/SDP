@@ -8,6 +8,8 @@ field ActionStatusCode.
 field ActionSymbol.
 functionality AllocateGeometry.
 functionality ApplyPropertyBatch.
+field AstArtifact.
+contract AstArtifactContract.
 interface BindingReloadPort.
 scenario BoundActionAccepted.
 scenario BoundActionRejected.
@@ -17,12 +19,16 @@ mode BoundExecution.
 capability BoundInteraction.
 mode BoundLiveEditing.
 functionality BuildGeneratedApplication.
+message BuildGoRequest.
+message BuildGoResult.
 usecase BuildNativeProduct.
 activity BuildNativeRealization.
 functionality BuildPreparedFrame.
 functionality BuildSdlAst.
 functionality BuildSduiAst.
 interface BuildToolPort.
+message BuildUiAstRequest.
+message BuildUiAstResult.
 functionality CancelPendingActions.
 functionality CheckDomainStateCompatibility.
 functionality CheckExecutionCompleteness.
@@ -31,6 +37,8 @@ functionality CloseSdlInstance.
 functionality CloseUiInstance.
 functionality CoalesceSourceChanges.
 container CommandLineHost.
+message CompileSdlRequest.
+message CompileSdlResult.
 message CompileUiRejected.
 message CompileUiRequest.
 message CompileUiResult.
@@ -75,10 +83,14 @@ interface ExecutionProfilePort.
 functionality ExpandUiDefinitions.
 functionality ExportConsoleSnapshot.
 interface ExportSinkPort.
+message ExportSvgRequest.
+message ExportSvgResult.
 functionality ExportSvgSnapshot.
 activity ExportUiDocumentation.
 functionality ExportViewpointMarkdown.
 interface FileChangePort.
+channel FramePresentationCalls.
+contract FramePresentationCallsProtocol.
 unit FyneBackend.
 container FyneHost.
 activity G1FrontendPort.
@@ -105,23 +117,40 @@ activity G5M3DocumentationExport.
 activity G5M4RetirePython.
 activity G5NativeGeneration.
 functionality GenerateBindingRegistration.
+message GenerateGoRequest.
+message GenerateGoResult.
 functionality GenerateModelConstructors.
 interface GeneratedArtifactPort.
+contract GeneratedGoContract.
+field GeneratedGoSources.
+channel GoBuildCalls.
+contract GoBuildCallsProtocol.
 unit GoBuildRunner.
 unit GoCodeGenerator.
 channel GoDomainCalls.
 contract GoDomainCallsProtocol.
 unit GoDomainImplementation.
+channel GoGenerationCalls.
+contract GoGenerationCallsProtocol.
 functionality HandleFocusAndTextInput.
 functionality IdentifySourceRevision.
 activity InspectDesignSource.
 usecase InspectModels.
 activity InspectSdlSource.
 activity InspectSduiSource.
+scenario InteractiveFramePrepared.
 capability InteractiveSession.
 feature InteractiveUiPreview.
 functionality InvokeRegisteredFunction.
 functionality KeepLastValidModels.
+contract LayoutArguments.
+channel LayoutCalls.
+contract LayoutCallsProtocol.
+field LayoutModelArtifact.
+message LayoutRequest.
+message LayoutResult.
+field LayoutViewportHeight.
+field LayoutViewportWidth.
 mode LiveEditing.
 feature LiveModelReload.
 functionality ManageDomainState.
@@ -133,15 +162,25 @@ functionality MeasureUiContent.
 capability MeasuredPresentation.
 interface MeasurementPort.
 functionality MigrateOrResetDomainState.
+field ModelDiagnostics.
+field ModelIsValid.
 channel ModelReloadCalls.
 contract ModelReloadCallsProtocol.
 mode NativeBuild.
+contract NativeBuildContract.
+field NativeBuildDiagnostics.
+field NativeBuildSucceeded.
 feature NativeGoAssembly.
 capability NativeInteraction.
+scenario NativeProgramBuilt.
 capability NativeRealization.
 channel NativeUiActions.
 contract NativeUiActionsProtocol.
 functionality NormalizeSdlModel.
+message NormalizeUiRequest.
+message NormalizeUiResult.
+field NormalizedModelArtifact.
+contract NormalizedModelContract.
 field NoticeGeneration.
 field NoticeVersion.
 functionality ObserveSourceChanges.
@@ -149,7 +188,13 @@ functionality PerformDomainOperation.
 functionality PrepareCandidateModels.
 functionality PrepareDiagramResource.
 functionality PrepareMarkdown.
+field PreparedFrameArtifact.
+contract PreparedFrameContract.
 interface PreparedFramePort.
+message PresentFrameRequest.
+message PresentFrameResult.
+contract PresentationOutcome.
+field PresentationReady.
 functionality PreserveCompatibleUiState.
 functionality PreserveHandwrittenSources.
 functionality PreserveSdlSourceMap.
@@ -207,6 +252,8 @@ channel SdlActionCalls.
 contract SdlActionCallsProtocol.
 message SdlActionRequest.
 message SdlActionResult.
+channel SdlCompilationCalls.
+contract SdlCompilationCallsProtocol.
 unit SdlDispatcher.
 unit SdlExecutionGate.
 interface SdlExecutionPort.
@@ -216,6 +263,7 @@ unit SdlFunctionRegistry.
 unit SdlLexer.
 unit SdlLibrary.
 interface SdlModelPort.
+scenario SdlModelReloadAccepted.
 unit SdlNormalizer.
 unit SdlParser.
 interface SdlReloadPort.
@@ -255,9 +303,18 @@ interface SourceSnapshotPort.
 unit SourceWatcher.
 capability StaticDocumentation.
 mode StaticExport.
+scenario StaticFrameExported.
 feature StructuralModelInspection.
+contract SvgDocumentContract.
+field SvgDocumentText.
+channel SvgExportCalls.
+contract SvgExportCallsProtocol.
+field TokenArtifact.
+contract TokenArtifactContract.
 functionality TokenizeSdlSource.
 functionality TokenizeSduiSource.
+message TokenizeUiRequest.
+message TokenizeUiResult.
 functionality TraceViewpointFacts.
 functionality TrackInputDraft.
 usecase TryDomainInteraction.
@@ -265,6 +322,9 @@ feature TypedDomainBinding.
 message UiActionRejected.
 message UiActionRequest.
 message UiActionResult.
+channel UiAstCalls.
+contract UiAstCallsProtocol.
+scenario UiCompilationAccepted.
 channel UiCompilationCalls.
 contract UiCompilationCallsProtocol.
 channel UiDomainActions.
@@ -277,6 +337,8 @@ datagram UiGenerationNotices.
 encoding UiGenerationWire.
 scenario UiModelReloadAccepted.
 scenario UiModelReloadRejected.
+channel UiNormalizationCalls.
+contract UiNormalizationCallsProtocol.
 mode UiPreview.
 interface UiReloadPort.
 interface UiSessionPort.
@@ -285,6 +347,11 @@ dataset UiSessionState.
 interface UiSnapshotPort.
 interface UiStatePort.
 unit UiStateReconciler.
+channel UiTokenizationCalls.
+contract UiTokenizationCallsProtocol.
+channel UiValidationCalls.
+contract UiValidationCallsProtocol.
+scenario UnboundLocalAction.
 functionality ValidateActionInput.
 functionality ValidatePropertyBatch.
 functionality ValidateRelativeFormatting.
@@ -292,8 +359,11 @@ functionality ValidateSdlProfile.
 functionality ValidateSdlStructure.
 functionality ValidateSymbolicBindings.
 functionality ValidateUiEvent.
+message ValidateUiRequest.
+message ValidateUiResult.
 functionality ValidateVisualResources.
 functionality ValidateWidgetArguments.
+contract ValidationOutcomeContract.
 functionality VerifyNativeBehaviorParity.
 interface WidgetBackendPort.
 functionality WriteGeneratedArtifacts.
@@ -319,8 +389,13 @@ AllocateGeometry contributes-to InteractiveUiPreview.
 AllocateGeometry realizes MeasuredPresentation.
 ApplyPropertyBatch has state-retention = stateful.
 ApplyPropertyBatch realizes InteractiveSession.
+AstArtifact has presence = required.
+AstArtifact has value-type = bytes.
+AstArtifactContract has completeness = closed.
+AstArtifactContract has-field AstArtifact.
 BoundActionAccepted exercises TryDomainInteraction.
 BoundActionAccepted has completeness = closed.
+BoundActionAccepted illustrates G4M3UiDomainBinding.
 BoundActionAccepted runs-in BoundExecution.
 BoundActionAccepted step 1 sends UiActionRequest from FyneBackend to SduiDispatcher via NativeUiActions.
 BoundActionAccepted step 2 sends BoundActionRequest from SduiDispatcher to SdlUiBindingAdapter via UiDomainActions.
@@ -333,6 +408,7 @@ BoundActionAccepted step 8 sends UiActionResult from SduiDispatcher to FyneBacke
 BoundActionAccepted step 9 sends UiGenerationNotices variant UiGenerationChanged from SduiInstanceStore to FyneBackend via UiGenerationEvents.
 BoundActionRejected exercises TryDomainInteraction.
 BoundActionRejected has completeness = closed.
+BoundActionRejected illustrates G4M3UiDomainBinding.
 BoundActionRejected runs-in BoundExecution.
 BoundActionRejected step 1 sends UiActionRequest from FyneBackend to SduiDispatcher via NativeUiActions.
 BoundActionRejected step 2 sends UiActionRejected from SduiDispatcher to FyneBackend via NativeUiActions reply-to 1.
@@ -346,6 +422,11 @@ BoundInteraction requires UiSessionPort in mode BoundExecution.
 BuildGeneratedApplication allocated-to CommandLineHost in mode NativeBuild.
 BuildGeneratedApplication contributes-to NativeGoAssembly.
 BuildGeneratedApplication realizes NativeRealization.
+BuildGoRequest has message-kind = request.
+BuildGoRequest upholds GeneratedGoContract.
+BuildGoResult has message-kind = result.
+BuildGoResult replies-to BuildGoRequest.
+BuildGoResult upholds NativeBuildContract.
 BuildNativeRealization refines RealizeDesign.
 BuildPreparedFrame allocated-to FyneHost in mode UiPreview.
 BuildPreparedFrame contributes-to InteractiveUiPreview.
@@ -360,6 +441,11 @@ BuildSduiAst contributes-to StructuralModelInspection.
 BuildSduiAst has repeatability = deterministic.
 BuildSduiAst has state-retention = stateless.
 BuildSduiAst realizes SduiSourceModel.
+BuildUiAstRequest has message-kind = request.
+BuildUiAstRequest upholds TokenArtifactContract.
+BuildUiAstResult has message-kind = result.
+BuildUiAstResult replies-to BuildUiAstRequest.
+BuildUiAstResult upholds AstArtifactContract.
 CancelPendingActions realizes ExecutableDesign.
 CheckDomainStateCompatibility realizes ExecutableDesign.
 CheckExecutionCompleteness realizes ExecutableDesign.
@@ -374,6 +460,22 @@ CommandLineHost consumes SourceSnapshotPort.
 CommandLineHost owns ComposeHeadlessExport.
 CommandLineHost owns WriteGeneratedArtifacts.
 CommandLineHost provides StaticDocumentation.
+CommandLineHost uses GoBuildCalls as receiver of BuildGoResult in mode NativeBuild.
+CommandLineHost uses GoBuildCalls as sender of BuildGoRequest in mode NativeBuild.
+CommandLineHost uses GoGenerationCalls as receiver of GenerateGoResult in mode NativeBuild.
+CommandLineHost uses GoGenerationCalls as sender of GenerateGoRequest in mode NativeBuild.
+CommandLineHost uses LayoutCalls as receiver of LayoutResult in mode StaticExport.
+CommandLineHost uses LayoutCalls as sender of LayoutRequest in mode StaticExport.
+CommandLineHost uses SvgExportCalls as receiver of ExportSvgResult in mode StaticExport.
+CommandLineHost uses SvgExportCalls as sender of ExportSvgRequest in mode StaticExport.
+CommandLineHost uses UiCompilationCalls as receiver of CompileUiRejected in mode SourceInspection.
+CommandLineHost uses UiCompilationCalls as receiver of CompileUiResult in mode SourceInspection.
+CommandLineHost uses UiCompilationCalls as sender of CompileUiRequest in mode SourceInspection.
+CompileSdlRequest has message-kind = request.
+CompileSdlRequest upholds ReloadArguments.
+CompileSdlResult has message-kind = result.
+CompileSdlResult replies-to CompileSdlRequest.
+CompileSdlResult upholds ReloadOutcome.
 CompileUiRejected has message-kind = result.
 CompileUiRejected replies-to CompileUiRequest.
 CompileUiRejected upholds ReloadOutcome.
@@ -461,6 +563,11 @@ ExpandUiDefinitions has repeatability = deterministic.
 ExpandUiDefinitions has state-retention = stateless.
 ExpandUiDefinitions realizes SduiSourceModel.
 ExportConsoleSnapshot realizes StaticDocumentation.
+ExportSvgRequest has message-kind = request.
+ExportSvgRequest upholds PreparedFrameContract.
+ExportSvgResult has message-kind = result.
+ExportSvgResult replies-to ExportSvgRequest.
+ExportSvgResult upholds SvgDocumentContract.
 ExportSvgSnapshot allocated-to CommandLineHost in mode StaticExport.
 ExportSvgSnapshot contributes-to DesignDocumentation.
 ExportSvgSnapshot realizes StaticDocumentation.
@@ -469,6 +576,10 @@ ExportViewpointMarkdown allocated-to CommandLineHost in mode StaticExport.
 ExportViewpointMarkdown contributes-to DesignDocumentation.
 ExportViewpointMarkdown has repeatability = deterministic.
 ExportViewpointMarkdown has state-retention = stateless.
+FramePresentationCalls upholds FramePresentationCallsProtocol.
+FramePresentationCallsProtocol has completeness = closed.
+FramePresentationCallsProtocol permits PresentFrameRequest.
+FramePresentationCallsProtocol permits PresentFrameResult.
 FyneBackend consumes PreparedFramePort.
 FyneBackend consumes UiSessionPort.
 FyneBackend owns HandleFocusAndTextInput.
@@ -476,6 +587,8 @@ FyneBackend owns PublishPresentation.
 FyneBackend owns ReconcileWidgets.
 FyneBackend owns ReleaseNativeWidgets.
 FyneBackend provides NativeInteraction.
+FyneBackend uses FramePresentationCalls as receiver of PresentFrameRequest in mode UiPreview.
+FyneBackend uses FramePresentationCalls as sender of PresentFrameResult in mode UiPreview.
 FyneBackend uses NativeUiActions as receiver of UiActionRejected in mode BoundExecution.
 FyneBackend uses NativeUiActions as receiver of UiActionResult in mode BoundExecution.
 FyneBackend uses NativeUiActions as sender of UiActionRequest in mode BoundExecution.
@@ -491,6 +604,12 @@ FyneHost consumes WidgetBackendPort.
 FyneHost owns ComposeInteractiveSession.
 FyneHost owns ScheduleUiPublication.
 FyneHost provides NativeInteraction.
+FyneHost uses FramePresentationCalls as receiver of PresentFrameResult in mode UiPreview.
+FyneHost uses FramePresentationCalls as sender of PresentFrameRequest in mode UiPreview.
+FyneHost uses GoDomainCalls as receiver of DomainActionResult in mode UiPreview.
+FyneHost uses GoDomainCalls as sender of DomainActionRequest in mode UiPreview.
+FyneHost uses LayoutCalls as receiver of LayoutResult in mode UiPreview.
+FyneHost uses LayoutCalls as sender of LayoutRequest in mode UiPreview.
 G1FrontendPort delivers StructuralModelInspection.
 G1FrontendPort has implementation-status = planned.
 G1M1ParserAndAst addresses BuildSduiAst.
@@ -656,14 +775,29 @@ G5NativeGeneration has implementation-status = planned.
 GenerateBindingRegistration allocated-to CommandLineHost in mode NativeBuild.
 GenerateBindingRegistration contributes-to NativeGoAssembly.
 GenerateBindingRegistration realizes NativeRealization.
+GenerateGoRequest has message-kind = request.
+GenerateGoRequest upholds NormalizedModelContract.
+GenerateGoResult has message-kind = result.
+GenerateGoResult replies-to GenerateGoRequest.
+GenerateGoResult upholds GeneratedGoContract.
 GenerateModelConstructors allocated-to CommandLineHost in mode NativeBuild.
 GenerateModelConstructors contributes-to NativeGoAssembly.
 GenerateModelConstructors realizes NativeRealization.
+GeneratedGoContract has completeness = closed.
+GeneratedGoContract has-field GeneratedGoSources.
+GeneratedGoSources has presence = required.
+GeneratedGoSources has value-type = bytes.
+GoBuildCalls upholds GoBuildCallsProtocol.
+GoBuildCallsProtocol has completeness = closed.
+GoBuildCallsProtocol permits BuildGoRequest.
+GoBuildCallsProtocol permits BuildGoResult.
 GoBuildRunner consumes BuildToolPort.
 GoBuildRunner consumes GeneratedArtifactPort.
 GoBuildRunner owns BuildGeneratedApplication.
 GoBuildRunner owns RestartChangedGoProgram.
 GoBuildRunner provides NativeRealization.
+GoBuildRunner uses GoBuildCalls as receiver of BuildGoRequest in mode NativeBuild.
+GoBuildRunner uses GoBuildCalls as sender of BuildGoResult in mode NativeBuild.
 GoCodeGenerator consumes ExecutionProfilePort.
 GoCodeGenerator consumes SdlModelPort.
 GoCodeGenerator consumes SduiModelPort.
@@ -671,6 +805,8 @@ GoCodeGenerator owns GenerateBindingRegistration.
 GoCodeGenerator owns GenerateModelConstructors.
 GoCodeGenerator owns PreserveHandwrittenSources.
 GoCodeGenerator provides NativeRealization.
+GoCodeGenerator uses GoGenerationCalls as receiver of GenerateGoRequest in mode NativeBuild.
+GoCodeGenerator uses GoGenerationCalls as sender of GenerateGoResult in mode NativeBuild.
 GoDomainCalls upholds GoDomainCallsProtocol.
 GoDomainCallsProtocol has completeness = closed.
 GoDomainCallsProtocol permits DomainActionRequest.
@@ -678,13 +814,28 @@ GoDomainCallsProtocol permits DomainActionResult.
 GoDomainImplementation owns PerformDomainOperation.
 GoDomainImplementation provides DomainOperations.
 GoDomainImplementation uses GoDomainCalls as receiver of DomainActionRequest in mode BoundExecution.
+GoDomainImplementation uses GoDomainCalls as receiver of DomainActionRequest in mode UiPreview.
 GoDomainImplementation uses GoDomainCalls as sender of DomainActionResult in mode BoundExecution.
+GoDomainImplementation uses GoDomainCalls as sender of DomainActionResult in mode UiPreview.
+GoGenerationCalls upholds GoGenerationCallsProtocol.
+GoGenerationCallsProtocol has completeness = closed.
+GoGenerationCallsProtocol permits GenerateGoRequest.
+GoGenerationCallsProtocol permits GenerateGoResult.
 HandleFocusAndTextInput allocated-to FyneHost in mode UiPreview.
 HandleFocusAndTextInput contributes-to InteractiveUiPreview.
 HandleFocusAndTextInput realizes NativeInteraction.
 IdentifySourceRevision realizes SourceLoading.
 InspectSdlSource refines InspectDesignSource.
 InspectSduiSource refines InspectDesignSource.
+InteractiveFramePrepared exercises PrototypeUserInterface.
+InteractiveFramePrepared has completeness = closed.
+InteractiveFramePrepared illustrates G2M1RelativeMeasurement.
+InteractiveFramePrepared illustrates G2M3FyneInteractions.
+InteractiveFramePrepared runs-in UiPreview.
+InteractiveFramePrepared step 1 sends LayoutRequest from FyneHost to SduiLayout via LayoutCalls.
+InteractiveFramePrepared step 2 sends LayoutResult from SduiLayout to FyneHost via LayoutCalls reply-to 1.
+InteractiveFramePrepared step 3 sends PresentFrameRequest from FyneHost to FyneBackend via FramePresentationCalls.
+InteractiveFramePrepared step 4 sends PresentFrameResult from FyneBackend to FyneHost via FramePresentationCalls reply-to 3.
 InteractiveUiPreview supports PrototypeUserInterface.
 InvokeRegisteredFunction allocated-to FyneHost in mode BoundExecution.
 InvokeRegisteredFunction contributes-to TypedDomainBinding.
@@ -692,6 +843,25 @@ InvokeRegisteredFunction realizes ExecutableDesign.
 KeepLastValidModels allocated-to FyneHost in mode LiveEditing.
 KeepLastValidModels contributes-to LiveModelReload.
 KeepLastValidModels realizes DevelopmentReload.
+LayoutArguments has completeness = closed.
+LayoutArguments has-field LayoutModelArtifact.
+LayoutArguments has-field LayoutViewportHeight.
+LayoutArguments has-field LayoutViewportWidth.
+LayoutCalls upholds LayoutCallsProtocol.
+LayoutCallsProtocol has completeness = closed.
+LayoutCallsProtocol permits LayoutRequest.
+LayoutCallsProtocol permits LayoutResult.
+LayoutModelArtifact has presence = required.
+LayoutModelArtifact has value-type = bytes.
+LayoutRequest has message-kind = request.
+LayoutRequest upholds LayoutArguments.
+LayoutResult has message-kind = result.
+LayoutResult replies-to LayoutRequest.
+LayoutResult upholds PreparedFrameContract.
+LayoutViewportHeight has presence = required.
+LayoutViewportHeight has value-type = decimal.
+LayoutViewportWidth has presence = required.
+LayoutViewportWidth has value-type = decimal.
 LiveModelReload supports EditRunningPrototype.
 ManageDomainState has state-retention = stateful.
 ManageDomainState realizes ExecutableDesign.
@@ -709,13 +879,32 @@ MeasureUiContent realizes MeasuredPresentation.
 MeasuredPresentation requires MeasurementPort in mode StaticExport.
 MeasuredPresentation requires MeasurementPort in mode UiPreview.
 MigrateOrResetDomainState realizes ExecutableDesign.
+ModelDiagnostics has presence = optional.
+ModelDiagnostics has value-type = text.
+ModelIsValid has presence = required.
+ModelIsValid has value-type = boolean.
 ModelReloadCalls upholds ModelReloadCallsProtocol.
 ModelReloadCallsProtocol has completeness = closed.
 ModelReloadCallsProtocol permits ReloadPublished.
 ModelReloadCallsProtocol permits ReloadRejected.
 ModelReloadCallsProtocol permits ReloadRequest.
+NativeBuildContract has completeness = closed.
+NativeBuildContract has-field NativeBuildDiagnostics.
+NativeBuildContract has-field NativeBuildSucceeded.
+NativeBuildDiagnostics has presence = optional.
+NativeBuildDiagnostics has value-type = text.
+NativeBuildSucceeded has presence = required.
+NativeBuildSucceeded has value-type = boolean.
 NativeGoAssembly supports BuildNativeProduct.
 NativeInteraction requires WidgetBackendPort in mode UiPreview.
+NativeProgramBuilt exercises BuildNativeProduct.
+NativeProgramBuilt has completeness = closed.
+NativeProgramBuilt illustrates G5M1GeneratedGo.
+NativeProgramBuilt runs-in NativeBuild.
+NativeProgramBuilt step 1 sends GenerateGoRequest from CommandLineHost to GoCodeGenerator via GoGenerationCalls.
+NativeProgramBuilt step 2 sends GenerateGoResult from GoCodeGenerator to CommandLineHost via GoGenerationCalls reply-to 1.
+NativeProgramBuilt step 3 sends BuildGoRequest from CommandLineHost to GoBuildRunner via GoBuildCalls.
+NativeProgramBuilt step 4 sends BuildGoResult from GoBuildRunner to CommandLineHost via GoBuildCalls reply-to 3.
 NativeRealization requires BuildToolPort in mode NativeBuild.
 NativeRealization requires GeneratedArtifactPort in mode NativeBuild.
 NativeUiActions upholds NativeUiActionsProtocol.
@@ -726,6 +915,15 @@ NativeUiActionsProtocol permits UiActionResult.
 NormalizeSdlModel has repeatability = deterministic.
 NormalizeSdlModel has state-retention = stateless.
 NormalizeSdlModel realizes SdlSourceModel.
+NormalizeUiRequest has message-kind = request.
+NormalizeUiRequest upholds AstArtifactContract.
+NormalizeUiResult has message-kind = result.
+NormalizeUiResult replies-to NormalizeUiRequest.
+NormalizeUiResult upholds NormalizedModelContract.
+NormalizedModelArtifact has presence = required.
+NormalizedModelArtifact has value-type = bytes.
+NormalizedModelContract has completeness = closed.
+NormalizedModelContract has-field NormalizedModelArtifact.
 NoticeGeneration has presence = required.
 NoticeGeneration has value-type = unsigned.
 NoticeVersion has presence = required.
@@ -739,6 +937,19 @@ PrepareCandidateModels contributes-to LiveModelReload.
 PrepareCandidateModels realizes DevelopmentReload.
 PrepareDiagramResource realizes RichContent.
 PrepareMarkdown realizes RichContent.
+PreparedFrameArtifact has presence = required.
+PreparedFrameArtifact has value-type = bytes.
+PreparedFrameContract has completeness = closed.
+PreparedFrameContract has-field PreparedFrameArtifact.
+PresentFrameRequest has message-kind = request.
+PresentFrameRequest upholds PreparedFrameContract.
+PresentFrameResult has message-kind = result.
+PresentFrameResult replies-to PresentFrameRequest.
+PresentFrameResult upholds PresentationOutcome.
+PresentationOutcome has completeness = closed.
+PresentationOutcome has-field PresentationReady.
+PresentationReady has presence = required.
+PresentationReady has value-type = boolean.
 PreserveCompatibleUiState allocated-to FyneHost in mode LiveEditing.
 PreserveCompatibleUiState contributes-to LiveModelReload.
 PreserveCompatibleUiState realizes InteractiveSession.
@@ -795,9 +1006,14 @@ ReloadCoordinator owns PrepareCandidateModels.
 ReloadCoordinator owns PublishModelGeneration.
 ReloadCoordinator owns RetirePreviousGeneration.
 ReloadCoordinator provides DevelopmentReload.
+ReloadCoordinator uses ModelReloadCalls as receiver of ReloadRequest in mode BoundLiveEditing.
 ReloadCoordinator uses ModelReloadCalls as receiver of ReloadRequest in mode LiveEditing.
+ReloadCoordinator uses ModelReloadCalls as sender of ReloadPublished in mode BoundLiveEditing.
 ReloadCoordinator uses ModelReloadCalls as sender of ReloadPublished in mode LiveEditing.
+ReloadCoordinator uses ModelReloadCalls as sender of ReloadRejected in mode BoundLiveEditing.
 ReloadCoordinator uses ModelReloadCalls as sender of ReloadRejected in mode LiveEditing.
+ReloadCoordinator uses SdlCompilationCalls as receiver of CompileSdlResult in mode BoundLiveEditing.
+ReloadCoordinator uses SdlCompilationCalls as sender of CompileSdlRequest in mode BoundLiveEditing.
 ReloadCoordinator uses UiCompilationCalls as receiver of CompileUiRejected in mode LiveEditing.
 ReloadCoordinator uses UiCompilationCalls as receiver of CompileUiResult in mode LiveEditing.
 ReloadCoordinator uses UiCompilationCalls as sender of CompileUiRequest in mode LiveEditing.
@@ -861,6 +1077,10 @@ SdlActionRequest upholds ActionArguments.
 SdlActionResult has message-kind = result.
 SdlActionResult replies-to SdlActionRequest.
 SdlActionResult upholds ActionOutcome.
+SdlCompilationCalls upholds SdlCompilationCallsProtocol.
+SdlCompilationCallsProtocol has completeness = closed.
+SdlCompilationCallsProtocol permits CompileSdlRequest.
+SdlCompilationCallsProtocol permits CompileSdlResult.
 SdlDispatcher consumes DomainFunctionPort.
 SdlDispatcher consumes DomainStatePort.
 SdlDispatcher owns CancelPendingActions.
@@ -884,6 +1104,8 @@ SdlFrontend contains SdlParser.
 SdlFrontend contains SdlValidator.
 SdlFrontend owns CoordinateSdlCompilation.
 SdlFrontend provides SdlSourceModel.
+SdlFrontend uses SdlCompilationCalls as receiver of CompileSdlRequest in mode BoundLiveEditing.
+SdlFrontend uses SdlCompilationCalls as sender of CompileSdlResult in mode BoundLiveEditing.
 SdlFunctionRegistry consumes DomainFunctionPort.
 SdlFunctionRegistry owns CheckFunctionSignatures.
 SdlFunctionRegistry owns RegisterDomainFunctions.
@@ -895,6 +1117,15 @@ SdlLibrary contains SdlRuntime.
 SdlLibrary contains SdlViewpointGenerator.
 SdlLibrary provides ExecutableDesign.
 SdlLibrary provides SdlSourceModel.
+SdlModelReloadAccepted exercises EditRunningPrototype.
+SdlModelReloadAccepted has completeness = closed.
+SdlModelReloadAccepted illustrates G4M1SdlFrontend.
+SdlModelReloadAccepted illustrates G4M4DomainReload.
+SdlModelReloadAccepted runs-in BoundLiveEditing.
+SdlModelReloadAccepted step 1 sends ReloadRequest from SourceWatcher to ReloadCoordinator via ModelReloadCalls.
+SdlModelReloadAccepted step 2 sends CompileSdlRequest from ReloadCoordinator to SdlFrontend via SdlCompilationCalls.
+SdlModelReloadAccepted step 3 sends CompileSdlResult from SdlFrontend to ReloadCoordinator via SdlCompilationCalls reply-to 2.
+SdlModelReloadAccepted step 4 sends ReloadPublished from ReloadCoordinator to SourceWatcher via ModelReloadCalls reply-to 1.
 SdlNormalizer owns NormalizeSdlModel.
 SdlNormalizer owns PreserveSdlSourceMap.
 SdlNormalizer provides SdlSourceModel.
@@ -954,9 +1185,20 @@ SduiFrontend contains SduiParser.
 SduiFrontend contains SduiValidator.
 SduiFrontend owns CoordinateSduiCompilation.
 SduiFrontend provides SduiSourceModel.
+SduiFrontend uses UiAstCalls as receiver of BuildUiAstResult in mode SourceInspection.
+SduiFrontend uses UiAstCalls as sender of BuildUiAstRequest in mode SourceInspection.
 SduiFrontend uses UiCompilationCalls as receiver of CompileUiRequest in mode LiveEditing.
+SduiFrontend uses UiCompilationCalls as receiver of CompileUiRequest in mode SourceInspection.
 SduiFrontend uses UiCompilationCalls as sender of CompileUiRejected in mode LiveEditing.
+SduiFrontend uses UiCompilationCalls as sender of CompileUiRejected in mode SourceInspection.
 SduiFrontend uses UiCompilationCalls as sender of CompileUiResult in mode LiveEditing.
+SduiFrontend uses UiCompilationCalls as sender of CompileUiResult in mode SourceInspection.
+SduiFrontend uses UiNormalizationCalls as receiver of NormalizeUiResult in mode SourceInspection.
+SduiFrontend uses UiNormalizationCalls as sender of NormalizeUiRequest in mode SourceInspection.
+SduiFrontend uses UiTokenizationCalls as receiver of TokenizeUiResult in mode SourceInspection.
+SduiFrontend uses UiTokenizationCalls as sender of TokenizeUiRequest in mode SourceInspection.
+SduiFrontend uses UiValidationCalls as receiver of ValidateUiResult in mode SourceInspection.
+SduiFrontend uses UiValidationCalls as sender of ValidateUiRequest in mode SourceInspection.
 SduiInstanceStore holds UiSessionState.
 SduiInstanceStore owns ManageWidgetIdentities.
 SduiInstanceStore owns ProjectUiGeneration.
@@ -974,8 +1216,14 @@ SduiLayout owns ComputeClipping.
 SduiLayout owns MeasureUiContent.
 SduiLayout owns ResolveAncestorDimensions.
 SduiLayout provides MeasuredPresentation.
+SduiLayout uses LayoutCalls as receiver of LayoutRequest in mode StaticExport.
+SduiLayout uses LayoutCalls as receiver of LayoutRequest in mode UiPreview.
+SduiLayout uses LayoutCalls as sender of LayoutResult in mode StaticExport.
+SduiLayout uses LayoutCalls as sender of LayoutResult in mode UiPreview.
 SduiLexer owns TokenizeSduiSource.
 SduiLexer provides SduiSourceModel.
+SduiLexer uses UiTokenizationCalls as receiver of TokenizeUiRequest in mode SourceInspection.
+SduiLexer uses UiTokenizationCalls as sender of TokenizeUiResult in mode SourceInspection.
 SduiLibrary contains SduiFrontend.
 SduiLibrary contains SduiLayout.
 SduiLibrary contains SduiPresentation.
@@ -988,13 +1236,19 @@ SduiNormalizer owns ExpandUiDefinitions.
 SduiNormalizer owns PreserveUiRegions.
 SduiNormalizer owns PreserveUiSourceMap.
 SduiNormalizer provides SduiSourceModel.
+SduiNormalizer uses UiNormalizationCalls as receiver of NormalizeUiRequest in mode SourceInspection.
+SduiNormalizer uses UiNormalizationCalls as sender of NormalizeUiResult in mode SourceInspection.
 SduiParser owns BuildSduiAst.
 SduiParser provides SduiSourceModel.
+SduiParser uses UiAstCalls as receiver of BuildUiAstRequest in mode SourceInspection.
+SduiParser uses UiAstCalls as sender of BuildUiAstResult in mode SourceInspection.
 SduiPresentation consumes PreparedFramePort.
 SduiPresentation owns ComposeMarkdownDocument.
 SduiPresentation owns ExportConsoleSnapshot.
 SduiPresentation owns ExportSvgSnapshot.
 SduiPresentation provides StaticDocumentation.
+SduiPresentation uses SvgExportCalls as receiver of ExportSvgRequest in mode StaticExport.
+SduiPresentation uses SvgExportCalls as sender of ExportSvgResult in mode StaticExport.
 SduiPropertyStore consumes UiStatePort.
 SduiPropertyStore owns ApplyPropertyBatch.
 SduiPropertyStore owns TrackInputDraft.
@@ -1015,6 +1269,8 @@ SduiValidator owns ValidateRelativeFormatting.
 SduiValidator owns ValidateSymbolicBindings.
 SduiValidator owns ValidateWidgetArguments.
 SduiValidator provides SduiSourceModel.
+SduiValidator uses UiValidationCalls as receiver of ValidateUiRequest in mode SourceInspection.
+SduiValidator uses UiValidationCalls as sender of ValidateUiResult in mode SourceInspection.
 SessionDraft has presence = optional.
 SessionDraft has value-type = text.
 SessionGeneration has presence = required.
@@ -1034,19 +1290,48 @@ SourceWatcher consumes FileChangePort.
 SourceWatcher owns CoalesceSourceChanges.
 SourceWatcher owns ObserveSourceChanges.
 SourceWatcher provides DevelopmentReload.
+SourceWatcher uses ModelReloadCalls as receiver of ReloadPublished in mode BoundLiveEditing.
 SourceWatcher uses ModelReloadCalls as receiver of ReloadPublished in mode LiveEditing.
+SourceWatcher uses ModelReloadCalls as receiver of ReloadRejected in mode BoundLiveEditing.
 SourceWatcher uses ModelReloadCalls as receiver of ReloadRejected in mode LiveEditing.
+SourceWatcher uses ModelReloadCalls as sender of ReloadRequest in mode BoundLiveEditing.
 SourceWatcher uses ModelReloadCalls as sender of ReloadRequest in mode LiveEditing.
 StaticDocumentation requires ExportSinkPort in mode StaticExport.
 StaticDocumentation requires PreparedFramePort in mode StaticExport.
+StaticFrameExported exercises PublishDesignDocumentation.
+StaticFrameExported has completeness = closed.
+StaticFrameExported illustrates G2M2SharedSvgGeometry.
+StaticFrameExported illustrates G5M3DocumentationExport.
+StaticFrameExported runs-in StaticExport.
+StaticFrameExported step 1 sends LayoutRequest from CommandLineHost to SduiLayout via LayoutCalls.
+StaticFrameExported step 2 sends LayoutResult from SduiLayout to CommandLineHost via LayoutCalls reply-to 1.
+StaticFrameExported step 3 sends ExportSvgRequest from CommandLineHost to SduiPresentation via SvgExportCalls.
+StaticFrameExported step 4 sends ExportSvgResult from SduiPresentation to CommandLineHost via SvgExportCalls reply-to 3.
 StructuralModelInspection supports EditRunningPrototype.
 StructuralModelInspection supports InspectModels.
+SvgDocumentContract has completeness = closed.
+SvgDocumentContract has-field SvgDocumentText.
+SvgDocumentText has presence = required.
+SvgDocumentText has value-type = text.
+SvgExportCalls upholds SvgExportCallsProtocol.
+SvgExportCallsProtocol has completeness = closed.
+SvgExportCallsProtocol permits ExportSvgRequest.
+SvgExportCallsProtocol permits ExportSvgResult.
+TokenArtifact has presence = required.
+TokenArtifact has value-type = bytes.
+TokenArtifactContract has completeness = closed.
+TokenArtifactContract has-field TokenArtifact.
 TokenizeSdlSource has repeatability = deterministic.
 TokenizeSdlSource has state-retention = stateless.
 TokenizeSdlSource realizes SdlSourceModel.
 TokenizeSduiSource has repeatability = deterministic.
 TokenizeSduiSource has state-retention = stateless.
 TokenizeSduiSource realizes SduiSourceModel.
+TokenizeUiRequest has message-kind = request.
+TokenizeUiRequest upholds ReloadArguments.
+TokenizeUiResult has message-kind = result.
+TokenizeUiResult replies-to TokenizeUiRequest.
+TokenizeUiResult upholds TokenArtifactContract.
 TraceViewpointFacts allocated-to CommandLineHost in mode SourceInspection.
 TraceViewpointFacts allocated-to CommandLineHost in mode StaticExport.
 TraceViewpointFacts contributes-to DesignDocumentation.
@@ -1064,6 +1349,25 @@ UiActionRequest upholds ActionArguments.
 UiActionResult has message-kind = result.
 UiActionResult replies-to UiActionRequest.
 UiActionResult upholds ActionOutcome.
+UiAstCalls upholds UiAstCallsProtocol.
+UiAstCallsProtocol has completeness = closed.
+UiAstCallsProtocol permits BuildUiAstRequest.
+UiAstCallsProtocol permits BuildUiAstResult.
+UiCompilationAccepted exercises InspectModels.
+UiCompilationAccepted has completeness = closed.
+UiCompilationAccepted illustrates G1M1ParserAndAst.
+UiCompilationAccepted illustrates G1M2ValidationAndNormalization.
+UiCompilationAccepted runs-in SourceInspection.
+UiCompilationAccepted step 1 sends CompileUiRequest from CommandLineHost to SduiFrontend via UiCompilationCalls.
+UiCompilationAccepted step 10 sends CompileUiResult from SduiFrontend to CommandLineHost via UiCompilationCalls reply-to 1.
+UiCompilationAccepted step 2 sends TokenizeUiRequest from SduiFrontend to SduiLexer via UiTokenizationCalls.
+UiCompilationAccepted step 3 sends TokenizeUiResult from SduiLexer to SduiFrontend via UiTokenizationCalls reply-to 2.
+UiCompilationAccepted step 4 sends BuildUiAstRequest from SduiFrontend to SduiParser via UiAstCalls.
+UiCompilationAccepted step 5 sends BuildUiAstResult from SduiParser to SduiFrontend via UiAstCalls reply-to 4.
+UiCompilationAccepted step 6 sends ValidateUiRequest from SduiFrontend to SduiValidator via UiValidationCalls.
+UiCompilationAccepted step 7 sends ValidateUiResult from SduiValidator to SduiFrontend via UiValidationCalls reply-to 6.
+UiCompilationAccepted step 8 sends NormalizeUiRequest from SduiFrontend to SduiNormalizer via UiNormalizationCalls.
+UiCompilationAccepted step 9 sends NormalizeUiResult from SduiNormalizer to SduiFrontend via UiNormalizationCalls reply-to 8.
 UiCompilationCalls upholds UiCompilationCallsProtocol.
 UiCompilationCallsProtocol has completeness = closed.
 UiCompilationCallsProtocol permits CompileUiRejected.
@@ -1089,6 +1393,8 @@ UiGenerationWire places NoticeGeneration at 16 bits 64.
 UiGenerationWire places NoticeVersion at 0 bits 16.
 UiModelReloadAccepted exercises EditRunningPrototype.
 UiModelReloadAccepted has completeness = closed.
+UiModelReloadAccepted illustrates G3M2CandidatePublication.
+UiModelReloadAccepted illustrates G3M3CompatibleState.
 UiModelReloadAccepted runs-in LiveEditing.
 UiModelReloadAccepted step 1 sends ReloadRequest from SourceWatcher to ReloadCoordinator via ModelReloadCalls.
 UiModelReloadAccepted step 2 sends CompileUiRequest from ReloadCoordinator to SduiFrontend via UiCompilationCalls.
@@ -1097,11 +1403,16 @@ UiModelReloadAccepted step 4 sends ReloadPublished from ReloadCoordinator to Sou
 UiModelReloadAccepted step 5 sends UiGenerationNotices variant UiGenerationChanged from SduiInstanceStore to FyneBackend via UiGenerationEvents.
 UiModelReloadRejected exercises EditRunningPrototype.
 UiModelReloadRejected has completeness = closed.
+UiModelReloadRejected illustrates G3M2CandidatePublication.
 UiModelReloadRejected runs-in LiveEditing.
 UiModelReloadRejected step 1 sends ReloadRequest from SourceWatcher to ReloadCoordinator via ModelReloadCalls.
 UiModelReloadRejected step 2 sends CompileUiRequest from ReloadCoordinator to SduiFrontend via UiCompilationCalls.
 UiModelReloadRejected step 3 sends CompileUiRejected from SduiFrontend to ReloadCoordinator via UiCompilationCalls reply-to 2.
 UiModelReloadRejected step 4 sends ReloadRejected from ReloadCoordinator to SourceWatcher via ModelReloadCalls reply-to 1.
+UiNormalizationCalls upholds UiNormalizationCallsProtocol.
+UiNormalizationCallsProtocol has completeness = closed.
+UiNormalizationCallsProtocol permits NormalizeUiRequest.
+UiNormalizationCallsProtocol permits NormalizeUiResult.
 UiSessionRecord has completeness = closed.
 UiSessionRecord has-field SessionDraft.
 UiSessionRecord has-field SessionGeneration.
@@ -1112,6 +1423,20 @@ UiStateReconciler owns MatchCompatibleWidgets.
 UiStateReconciler owns PreserveCompatibleUiState.
 UiStateReconciler owns ResetIncompatibleUiState.
 UiStateReconciler provides InteractiveSession.
+UiTokenizationCalls upholds UiTokenizationCallsProtocol.
+UiTokenizationCallsProtocol has completeness = closed.
+UiTokenizationCallsProtocol permits TokenizeUiRequest.
+UiTokenizationCallsProtocol permits TokenizeUiResult.
+UiValidationCalls upholds UiValidationCallsProtocol.
+UiValidationCallsProtocol has completeness = closed.
+UiValidationCallsProtocol permits ValidateUiRequest.
+UiValidationCallsProtocol permits ValidateUiResult.
+UnboundLocalAction exercises PrototypeUserInterface.
+UnboundLocalAction has completeness = closed.
+UnboundLocalAction illustrates G2M3FyneInteractions.
+UnboundLocalAction runs-in UiPreview.
+UnboundLocalAction step 1 sends DomainActionRequest from FyneHost to GoDomainImplementation via GoDomainCalls.
+UnboundLocalAction step 2 sends DomainActionResult from GoDomainImplementation to FyneHost via GoDomainCalls reply-to 1.
 ValidateActionInput realizes ExecutableDesign.
 ValidatePropertyBatch realizes InteractiveSession.
 ValidateRelativeFormatting has repeatability = deterministic.
@@ -1129,12 +1454,20 @@ ValidateSymbolicBindings has repeatability = deterministic.
 ValidateSymbolicBindings has state-retention = stateless.
 ValidateSymbolicBindings realizes SduiSourceModel.
 ValidateUiEvent realizes InteractiveSession.
+ValidateUiRequest has message-kind = request.
+ValidateUiRequest upholds AstArtifactContract.
+ValidateUiResult has message-kind = result.
+ValidateUiResult replies-to ValidateUiRequest.
+ValidateUiResult upholds ValidationOutcomeContract.
 ValidateVisualResources realizes RichContent.
 ValidateWidgetArguments allocated-to CommandLineHost in mode SourceInspection.
 ValidateWidgetArguments contributes-to StructuralModelInspection.
 ValidateWidgetArguments has repeatability = deterministic.
 ValidateWidgetArguments has state-retention = stateless.
 ValidateWidgetArguments realizes SduiSourceModel.
+ValidationOutcomeContract has completeness = closed.
+ValidationOutcomeContract has-field ModelDiagnostics.
+ValidationOutcomeContract has-field ModelIsValid.
 VerifyNativeBehaviorParity allocated-to CommandLineHost in mode NativeBuild.
 VerifyNativeBehaviorParity contributes-to NativeGoAssembly.
 WriteGeneratedArtifacts allocated-to CommandLineHost in mode StaticExport.

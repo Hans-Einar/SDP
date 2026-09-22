@@ -44,6 +44,7 @@ SIGNATURES = {
     "addresses": ("activity", "functionality"),
     "delivers": ("activity", "feature"),
     "depends-on": ("activity", "activity"),
+    "illustrates": ("scenario", "activity"),
 }
 SIGNATURES.update(data_core.SIGNATURES)
 SIGNATURES.update(channel_core.SIGNATURES)

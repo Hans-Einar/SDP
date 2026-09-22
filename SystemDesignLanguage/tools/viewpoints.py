@@ -10,6 +10,7 @@ import design_core as core
 from goal_views import build_goal_views
 from data_views import build_data_views, data_tables
 from channel_views import build_channel_views, message_tables
+from plan_views import build_plan_views
 
 CATALOG = [
  ('VP01', 'Bruksmål og sporbarhet', 'supported', 'pursues, supports og contributes-to; modellens omfang, uten oppdiktet System-grense.'),
@@ -17,7 +18,7 @@ CATALOG = [
  ('VP03', 'Ansvar og kapabiliteter over arkitekturen', 'supported', 'owns, realizes og provides. Capability er ikke Feature.'),
  ('VP04', 'Grensesnitt og samarbeid', 'supported', 'consumes viser bruk; ingen tilbyder, Channel eller kjørbar meldingsflyt utledes.'),
  ('VP05', 'Avhengigheter per modus', 'supported', 'requires in mode; modi har ingen implisitt arv.'),
- ('VP06', 'Aktivitetsdetaljering', 'supported', 'refines er detaljering, ikke rekkefølge eller tilstandsoverganger.'),
+ ('VP06', 'Aktiviteter og leveranseplan', 'supported', 'refines, addresses, delivers og depends-on; planstatus er en eksplisitt kildepåstand.'),
  ('VP07', 'Features over arkitekturen', 'supported', 'contributes-to, owns og eksplisitt allocated-to per modus. Uspesifisert allokering vises som hull.'),
  ('VP08', 'Channel-kontrakter og sekvenser', 'supported', 'Eksplisitte scenario-steg validert mot permits, deltakelse, modus og request/resultat-korrelasjon.'),
  ('VP09', 'Dataset, Datagram og persistent Database', 'supported', 'Eksplisitte holdere, kilde, kontrakter, varianter, felt og projeksjoner.'),
@@ -105,6 +106,7 @@ class Views:
         build_goal_views(self)
         build_data_views(self, Diagram)
         build_channel_views(self, Diagram)
+        build_plan_views(self)
         children = {r['object'] for r in self.relations['contains']}
         roots = [name for name, kind in self.kinds.items() if kind in ('unit', 'container') and name not in children]
         self.diagram('VP02-roots', 'Arkitekturrøtter — ingen kobling/allokering er utledet', [], roots)
@@ -122,8 +124,6 @@ class Views:
         for mode in sorted(n for n, k in self.kinds.items() if k == 'mode'):
             records = [r for r in self.facts if r['verb'] == 'requires' and r['mode'] == mode]
             self.diagram('VP05-' + mode, 'Nødvendige porter i modus: ' + mode, records)
-        activities = [n for n, k in self.kinds.items() if k == 'activity']
-        self.diagram('VP06-refinement', 'Detaljert aktivitet → overordnet aktivitet', self.relations['refines'], activities)
 
     def node_map(self, diagram):
         return {f'n_{d.name.name}': {'model_id': d.name.name, 'kind': d.kind,
