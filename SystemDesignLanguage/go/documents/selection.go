@@ -27,13 +27,16 @@ func Selected(ctx context.Context, v *viewpoint.Views, q viewpoint.Query, r Rend
 	for _, d := range s.Diagrams {
 		b.Put("diagrams/"+d.ID+".mmd", d.Mermaid())
 		if r != nil {
-			svg, e := r.Render(ctx, d.Mermaid())
+			svg, e := renderDiagram(ctx, r, d)
 			if e != nil {
 				return nil, fmt.Errorf("%s: %w", d.ID, e)
 			}
 			b.Files["diagrams/"+d.ID+".svg"] = svg
 		}
 		text += s.DiagramMarkdown(d, "diagrams/", r != nil)
+	}
+	if r != nil {
+		text += "\nSymbolprofil: SDL 1. Aktør/ellipse følger UML-figurer; merkede SDL-relasjoner beholder sin språkbetydning. consumes er stiplet dependency; realizes er et bidrag.\n\n"
 	}
 	text += s.Tables(q.Viewpoint)
 	b.Put("entry.md", text)

@@ -119,7 +119,7 @@ func Build(ctx context.Context, v *viewpoint.Views, o Options) (*Bundle, error) 
 			b.Manifest.Diagrams = append(b.Manifest.Diagrams, d)
 			b.Put("diagrams/"+d.ID+".mmd", d.Mermaid())
 			if o.Renderer != nil {
-				svg, e := o.Renderer.Render(ctx, d.Mermaid())
+				svg, e := renderDiagram(ctx, o.Renderer, d)
 				if e != nil {
 					return nil, fmt.Errorf("%s: %w", d.ID, e)
 				}

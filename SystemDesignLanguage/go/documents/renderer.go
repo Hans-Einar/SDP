@@ -21,7 +21,7 @@ func NewMmdr(executable string) (*Mmdr, error) {
 	}
 	return &Mmdr{executable, Hash(b)}, nil
 }
-func (m *Mmdr) Identity() string { return "mmdr:" + m.Fingerprint }
+func (m *Mmdr) Identity() string { return "mmdr:" + m.Fingerprint + ":" + SymbolProfile }
 
 type capped struct{ bytes.Buffer }
 

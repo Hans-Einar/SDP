@@ -114,7 +114,7 @@ Dette er dokumentvisning, adskilt fra G2s Fyne-vert for interaktive SDUI-widgets
 | G6-M2 | **Levert:** Typet utvalg av relasjoner, retning, dybde, nivå og mode ved klikk/CLI, revisjon og publisering av bare valgt dokument med ressurser; samme innhold som tilsvarende full eksport; feil beholder siste visning |
 | G6-M3 | **Levert:** XFMD med navigasjons-/hovedpanel, registrert leseradapter og eksplisitt vindu/panel; klikk, fokusbytte, flere vinduer og lukket mål testet |
 | G6-M4 | **Levert:** Valgfri Go-bakgrunnstjeneste med lokal IPC, cache/invalidering, leser-lease, request-rekkefølge, kvoter og opprydding; ingen døde bilder ved dokumentbytte/reload |
-| G6-M5 | Fast symbol-/pilprofil med UML der semantikken stemmer; aktørfigurer og use-case-ellipser; rendererprøver kontrollerer faktiske figurer/markører, ikke bare exitkode |
+| G6-M5 | **Levert:** Fast symbol-/pilprofil med UML der semantikken stemmer; aktørfigurer og use-case-ellipser; rendererprøver kontrollerer faktiske figurer/markører, ikke bare exitkode |
 | G6-M6 | Senere eksplisitt klasse-/relasjonsprofil med multiplisitet og aggregation/composition; språk/validator før kildekoblede klassediagrammer, ingen automatisk oversettelse fra contains |
 
 G6-M1 avhenger av G4-M1s strukturelle frontendport, ikke SDL-runtime eller G5s
