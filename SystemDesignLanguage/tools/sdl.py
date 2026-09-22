@@ -39,7 +39,8 @@ def build(args, views, output, previous):
     for d in views.diagrams:
         mmd = diagrams / (d.ident + '.mmd')
         mmd.write_text(d.mermaid(views.kinds), encoding='utf-8')
-        item = {'id': d.ident, 'mmd_sha256': digest(mmd), 'nodes': views.node_map(d),
+        item = {'id': d.ident, 'kind': d.kind, 'mmd_sha256': digest(mmd), 'nodes': views.node_map(d),
+                'source_facts': sorted(set(d.source_facts + [e[3] for e in d.edges])), 'elements': d.elements,
                 'edges': [{'source': f'n_{a}', 'relation': b, 'target': f'n_{c}', 'fact': f}
                           for a, b, c, f in sorted(d.edges)]}
         if renderer:
@@ -61,7 +62,9 @@ def build(args, views, output, previous):
     if renderer:
         (output / 'printout.md').write_text(views.markdown(rendered=True), encoding='utf-8')
     root = Path(__file__).resolve().parents[2]
-    manifest['generator_sha256'] = {str(p.resolve().relative_to(root)): digest(p) for p in [Path(__file__), Path(__file__).with_name('viewpoints.py'), Path(__file__).with_name('goal_views.py'), root / 'experiments/design_core/design_core.py']}
+    sources = [p for directory in (Path(__file__).parent, root / 'experiments/design_core')
+               for p in sorted(directory.glob('*.py')) if not p.name.startswith('test_')]
+    manifest['generator_sha256'] = {str(p.resolve().relative_to(root)): digest(p) for p in sources}
     manifest['outputs'] = {str(p.relative_to(output)): digest(p) for p in sorted(output.rglob('*')) if p.is_file()}
     (output / 'manifest.json').write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
     return manifest

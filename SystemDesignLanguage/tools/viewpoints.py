@@ -8,6 +8,7 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'experiments/design_core'))
 import design_core as core
 from goal_views import build_goal_views
+from data_views import build_data_views, data_tables
 
 CATALOG = [
  ('VP01', 'Bruksmål og sporbarhet', 'supported', 'pursues, supports og contributes-to; modellens omfang, uten oppdiktet System-grense.'),
@@ -18,8 +19,8 @@ CATALOG = [
  ('VP06', 'Aktivitetsdetaljering', 'supported', 'refines er detaljering, ikke rekkefølge eller tilstandsoverganger.'),
  ('VP07', 'Features over arkitekturen', 'supported', 'contributes-to, owns og eksplisitt allocated-to per modus. Uspesifisert allokering vises som hull.'),
  ('VP08', 'Channel-kontrakter og sekvenser', 'blocked', 'Channel, deltakere, meldingskontrakt og ordnede scenario-/protokollsteg mangler.'),
- ('VP09', 'Dataset, Datagram og persistent Database', 'blocked', 'Datatyper, kontrakter, kilde-/lagrings-/projeksjonsrelasjoner mangler.'),
- ('VP10', 'Datagram-koding og packet', 'blocked', 'Kodingskontrakt med felt, bitbredder/offset og variant mangler; ingen layout gjettes.'),
+ ('VP09', 'Dataset, Datagram og persistent Database', 'supported', 'Eksplisitte holdere, kilde, kontrakter, varianter, felt og projeksjoner.'),
+ ('VP10', 'Datagram-koding og packet', 'supported', 'Kun closed kontrakt med validert Encoding og eksplisitte bitplasseringer.'),
  ('VP11', 'Egenskaper, sporbarhet og modellhull', 'supported', 'Deklarasjoner og alle fakta med kildeposisjoner; støttegrenser beholdes.'),
 ]
 
@@ -30,8 +31,14 @@ class Diagram:
     title: str
     nodes: set = field(default_factory=set)
     edges: list = field(default_factory=list)
+    kind: str = 'flowchart'
+    source_facts: list = field(default_factory=list)
+    elements: list = field(default_factory=list)
+    syntax: str = ''
 
     def mermaid(self, kinds):
+        if self.syntax:
+            return self.syntax
         lines = ['flowchart LR']
         for name in sorted(self.nodes):
             lines.append(f'    n_{name}["{name} ({kinds[name]})"]')
@@ -53,7 +60,7 @@ class Views:
         self.facts = []
         for index, s in enumerate(self.model.statements):
             record = {'id': f'f{index:04d}', 'node': type(s).__name__, 'line': s.span.line,
-                      'span': core.to_json(s.span)}
+                      'span': core.to_json(s.span), 'text': core.sentence(s)}
             if isinstance(s, core.Relation):
                 record.update(subject=s.subject.name, verb=s.verb, object=s.object.name)
                 self.relations[s.verb].append(record)
@@ -62,6 +69,10 @@ class Views:
             elif isinstance(s, core.Allocation):
                 record.update(subject=s.subject.name, verb='allocated-to', object=s.container.name, mode=s.mode.name)
                 self.relations['allocated-to'].append(record)
+            elif isinstance(s, core.Projection):
+                record.update(subject=s.subject.name, verb='projects', dataset=s.dataset.name, datagram=s.datagram.name)
+            elif isinstance(s, core.Placement):
+                record.update(subject=s.subject.name, verb='places', field=s.field.name, offset=s.offset.value, width=s.width.value)
             else:
                 record.update(subject=s.subject.name, verb='has', property=s.property, value=s.value)
             self.facts.append(record)
@@ -81,6 +92,7 @@ class Views:
 
     def build_diagrams(self):
         build_goal_views(self)
+        build_data_views(self, Diagram)
         children = {r['object'] for r in self.relations['contains']}
         roots = [name for name, kind in self.kinds.items() if kind in ('unit', 'container') and name not in children]
         self.diagram('VP02-roots', 'Arkitekturrøtter — ingen kobling/allokering er utledet', [], roots)
@@ -115,7 +127,7 @@ class Views:
             if ident not in self.selected:
                 continue
             lines.append(f'| {ident} — {title} | {"Tilgjengelig" if status == "supported" else "Kan ikke genereres"} | {note} |')
-        for prefix in ('VP01', 'VP02', 'VP03', 'VP05', 'VP06', 'VP07'):
+        for prefix in ('VP01', 'VP02', 'VP03', 'VP05', 'VP06', 'VP07', 'VP09', 'VP10'):
             if prefix not in self.selected:
                 continue
             title = next(title for ident, title, _, _ in CATALOG if ident == prefix)
@@ -135,7 +147,7 @@ class Views:
                     lines += [f'![{d.title}](diagrams/{d.ident}.svg)', '']
                 else:
                     lines += ['```mermaid', d.mermaid(self.kinds).rstrip(), '```', '']
-                facts = ', '.join(edge[3] for edge in d.edges) or 'Kun deklarasjoner'
+                facts = ', '.join(sorted(set(d.source_facts + [edge[3] for edge in d.edges]))) or 'Kun deklarasjoner'
                 lines += [f'Kildegrunnlag: {facts}.', '']
             gaps = [g for g in self.gaps if g['viewpoint'] == prefix]
             if gaps:
@@ -144,6 +156,7 @@ class Views:
                 for gap in gaps:
                     lines.append(f'| {gap["model_id"]} | {gap.get("mode") or "—"} | {gap["message"]} |')
                 lines += ['']
+        lines += data_tables(self)
         if 'VP04' in self.selected:
             lines += ['## VP04 — Grensesnittbruk', '',
                   'Tabellen dekker alle consumes-fakta. Portnavn er ikke Channel-kontrakter eller tilbyderkoblinger.', '',
@@ -156,10 +169,7 @@ class Views:
                   'Registeret inkluderer alle fakta, også de som ikke har en egen tegning.', '',
                   '| ID | Utsagn | Kildelinje |', '| --- | --- | --- |']
         for r in self.facts:
-            statement = (f'{r["subject"]} has {r["property"]} = {r["value"]}' if r['verb'] == 'has'
-                         else f'{r["subject"]} {r["verb"]} {r["object"]}')
-            if 'mode' in r:
-                statement += ' in mode ' + r['mode']
+            statement = r['text']
             lines.append(f'| {r["id"]} | {statement} | {r["line"]} |')
         lines += ['', '### Deklarasjonsregister', '', '| Identitet | Type | Kildelinje |', '| --- | --- | --- |']
         for d in self.model.declarations:

@@ -44,11 +44,9 @@ def export():
             lines.append('| ' + ' | '.join(cells) + ' |')
     (design_dir / 'architecture.catalog.md').write_text('\n'.join(lines) + '\n', encoding='utf-8')
     counts = Counter(d.kind for d in model.declarations)
-    statements = Counter(s.verb if isinstance(s, core.Relation) else
-                         'requires' if isinstance(s, core.Dependency) else
-                         'allocated-to' if isinstance(s, core.Allocation) else 'has'
-                         for s in model.statements)
+    statements = Counter(core.sentence(s).split()[1] for s in model.statements)
     files = [source_path, ROOT / 'experiments/design_core/design_core.py',
+             ROOT / 'experiments/design_core/data_core.py',
              ROOT / 'docs/Design-Language-Definition.md', Path(__file__).resolve(),
              design_dir / 'architecture.ast.json', design_dir / 'architecture.catalog.md']
     report = {

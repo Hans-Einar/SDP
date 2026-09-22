@@ -63,3 +63,7 @@ V2-M3 portert eksempel, regenerering og verifikasjon før fasepush.
 
 V2-M1 verifisert: 49 parser-/validator-/CLI-tester består. Senere milepæler
 leverer viewpoints og regenererte fellesartefakter. 0.3 erstatter aktiv 0.2.
+
+V2-M2: VP09/VP10 og kildekart er implementert; 17 verktøytester består.
+Packet bruker eksplisitte bitområder etter [Mermaid packet](https://mermaid.js.org/syntax/packet.html),
+verifiseres også mot lokal mmdr, og er ikke en binær serialiseringsimplementasjon.
