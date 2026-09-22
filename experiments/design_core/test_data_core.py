@@ -3,7 +3,7 @@ import sys
 import unittest
 import design_core as dc
 
-SOURCE = '''language design-core version 0.3.
+SOURCE = '''language design-core version 0.4.
 unit Store.
 database Archive.
 dataset State.

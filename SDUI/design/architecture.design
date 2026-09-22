@@ -1,4 +1,4 @@
-language design-core version 0.3.
+language design-core version 0.4.
 functionality AllocateGeometry.
 functionality ApplyPropertyBatch.
 interface BindingReloadPort.

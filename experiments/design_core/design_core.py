@@ -1,4 +1,4 @@
-"""Experimental parser and structural validator for design-core 0.3.
+"""Experimental parser and structural validator for design-core 0.4.
 
 The language definition in docs/Design-Language-Definition.md is authoritative.
 No input is executed. Formatting writes to stdout, never to the input file.
@@ -13,6 +13,8 @@ import re
 import sys
 import data_core
 from data_core import Integer, Projection, Placement
+import channel_core
+from channel_core import Participation, Step
 
 
 Span = namedtuple("Span", "start end line column end_line end_column")
@@ -28,7 +30,7 @@ Model = namedtuple("Model", "header declarations statements span")
 Diagnostic = namedtuple("Diagnostic", "code message span")
 
 KINDS = frozenset(("unit", "container", "functionality", "capability",
-                   "interface", "activity", "mode", "actor", "usecase", "feature")) | data_core.KINDS
+                   "interface", "activity", "mode", "actor", "usecase", "feature")) | data_core.KINDS | channel_core.KINDS
 SIGNATURES = {
     "contains": ("unit", "unit"),
     "owns": ("unit", ("functionality", "database")),
@@ -41,11 +43,14 @@ SIGNATURES = {
     "contributes-to": ("functionality", ("feature", "usecase")),
 }
 SIGNATURES.update(data_core.SIGNATURES)
+SIGNATURES.update(channel_core.SIGNATURES)
+SIGNATURES['upholds'] = (('dataset', 'datagram', 'message', 'channel'), 'contract')
 PROPERTIES = {
     "state-retention": frozenset(("stateful", "stateless")),
     "repeatability": frozenset(("deterministic", "nondeterministic")),
 }
 PROPERTIES.update(data_core.PROPERTIES)
+PROPERTIES.update(channel_core.PROPERTIES)
 VALUES = frozenset().union(*PROPERTIES.values())
 TOKEN = re.compile(r"[A-Za-z][A-Za-z0-9-]*|[0-9]+(?:\.[0-9]+)*|[.=]")
 NAME = re.compile(r"[A-Z][A-Za-z0-9]*\Z")
@@ -136,10 +141,10 @@ class Parser:
         start = self.expect("language").span.start
         self.expect("design-core")
         self.expect("version")
-        if self.current.text != "0.3":
-            self.fail("Only design-core version 0.3 is supported", "UNSUPPORTED_VERSION")
+        if self.current.text != "0.4":
+            self.fail("Only design-core version 0.4 is supported", "UNSUPPORTED_VERSION")
         self.take()
-        header = Header("design-core", "0.3", self.finish(start))
+        header = Header("design-core", "0.4", self.finish(start))
         declarations = []
         while self.current.text in KINDS:
             token = self.take()
@@ -149,8 +154,10 @@ class Parser:
         while self.current.text:
             subject = self.identifier()
             start = subject.span.start
-            verb = self.choice(set(SIGNATURES) | {"requires", "allocated-to", "has", "projects", "places"})
-            if verb in ("projects", "places"):
+            verb = self.choice(set(SIGNATURES) | {"requires", "allocated-to", "has", "projects", "places", "uses", "step"})
+            if verb in ("uses", "step"):
+                statement = channel_core.parse_statement(self, subject, verb, start)
+            elif verb in ("projects", "places"):
                 statement = data_core.parse_statement(self, subject, verb, start)
             elif verb in ("requires", "allocated-to"):
                 target = self.identifier()
@@ -186,6 +193,8 @@ def symbol_table(model):
 
 
 def sentence(statement):
+    if isinstance(statement, (Participation, Step)):
+        return channel_core.sentence(statement)
     if isinstance(statement, (Projection, Placement)):
         return data_core.sentence(statement)
     if isinstance(statement, Relation):
@@ -267,7 +276,12 @@ def validate(model):
             diagnostics.append(Diagnostic("DUPLICATE_FACT", "Repeated fact: " + fact, statement.span))
         facts.add(fact)
         if isinstance(statement, PropertyAssignment):
-            check(statement.subject, data_core.PROPERTY_KINDS.get(statement.property, "functionality"), "PROPERTY")
+            expected = data_core.PROPERTY_KINDS.get(statement.property, "functionality")
+            if statement.property == 'completeness':
+                expected = ('contract', 'scenario')
+            elif statement.property == 'message-kind':
+                expected = 'message'
+            check(statement.subject, expected, "PROPERTY")
             if statement.value not in PROPERTIES[statement.property]:
                 diagnostics.append(Diagnostic("PROPERTY_TYPE_MISMATCH",
                     "{} accepts {}".format(statement.property,
@@ -277,6 +291,18 @@ def validate(model):
                 diagnostics.append(Diagnostic("PROPERTY_CONFLICT",
                     "{} has conflicting {} values".format(*key), statement.span))
             properties.setdefault(key, statement.value)
+        elif isinstance(statement, Participation):
+            for identifier, expected, role in [(statement.subject, 'unit', 'SUBJECT'),
+                    (statement.channel, 'channel', 'OBJECT'), (statement.message, ('message', 'datagram'), 'OBJECT'),
+                    (statement.mode, 'mode', 'QUALIFIER')]:
+                check(identifier, expected, role)
+        elif isinstance(statement, Step):
+            for identifier, expected, role in [(statement.subject, 'scenario', 'SUBJECT'),
+                    (statement.message, ('message', 'datagram'), 'OBJECT'), (statement.sender, 'unit', 'OBJECT'),
+                    (statement.receiver, 'unit', 'OBJECT'), (statement.channel, 'channel', 'OBJECT')]:
+                check(identifier, expected, role)
+            if statement.variant:
+                check(statement.variant, 'variant', 'QUALIFIER')
         elif isinstance(statement, Projection):
             check(statement.subject, "functionality", "SUBJECT")
             check(statement.dataset, "dataset", "OBJECT")
@@ -325,6 +351,8 @@ def validate(model):
         diagnostics.extend(cycle_diagnostics(graph_edges, relation))
     if not diagnostics:
         diagnostics.extend(data_core.validate_data(model, symbols, sys.modules[__name__]))
+    if not diagnostics:
+        diagnostics.extend(channel_core.validate_channels(model, symbols, sys.modules[__name__]))
     return diagnostics
 
 
@@ -333,7 +361,7 @@ def canonicalize(model):
     diagnostics = validate(model)
     if diagnostics:
         raise ValidationError(diagnostics)
-    lines = ["language design-core version 0.3."]
+    lines = ["language design-core version 0.4."]
     lines.extend("{} {}.".format(d.kind, d.name.name)
                  for d in sorted(model.declarations, key=lambda d: d.name.name))
     lines.extend(sorted(sentence(s) for s in model.statements))

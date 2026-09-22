@@ -4,7 +4,7 @@ from viewpoints import Views, core
 
 
 def model(extra=''):
-    return core.canonicalize(core.parse('''language design-core version 0.3.
+    return core.canonicalize(core.parse('''language design-core version 0.4.
 actor User.
 usecase Goal.
 usecase OtherGoal.
@@ -66,7 +66,7 @@ class GoalViewTests(unittest.TestCase):
         self.assertTrue(any(g['model_id'] == 'Work' and g['mode'] is None for g in views.gaps))
 
     def test_declared_but_unconnected_goals_and_features_are_visible(self):
-        text = 'language design-core version 0.3.\nactor Alone.\nfeature Empty.\nusecase Missing.\n'
+        text = 'language design-core version 0.4.\nactor Alone.\nfeature Empty.\nusecase Missing.\n'
         views = Views(text, ['VP01', 'VP07'])
         self.assertEqual({d.ident for d in views.diagrams},
                          {'VP01-Missing', 'VP01-feature-Empty', 'VP07-Empty-unallocated'})
@@ -84,7 +84,7 @@ class GoalViewTests(unittest.TestCase):
 
     def test_old_profile_and_conflicting_allocation_cannot_be_projected(self):
         with self.assertRaises(ValueError):
-            Views(model().replace('version 0.3', 'version 0.1'))
+            Views(model().replace('version 0.4', 'version 0.1'))
         with self.assertRaises(ValueError):
             Views(model() + 'Work allocated-to OtherHost in mode Cli.\n')
 
