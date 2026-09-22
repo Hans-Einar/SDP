@@ -65,3 +65,15 @@ go run ./cmd/sdl view ../../SDUI/design/architecture.design --uri 'sdl-view://sd
 
 `--renderer` er valgfri også her. Hele pakken publiseres før `entry.md` tilbys.
 CLI-en løser kildefilen eksplisitt; en vertsadapter må registrere prosjekt-ID.
+
+Valgfri dokumenttjeneste (Linux):
+
+```sh
+go run ./cmd/sdl-viewsd -source ../../SDUI/design/architecture.design -project sdui-design -xfmd /absolute/xfmd -renderer /absolute/mmdr
+go run ./cmd/sdl-view-request -socket /private/sdl/views.sock -uri 'sdl-view://sdui-design/VP02?diagram=VP02-roots' -window design-one -client terminal -sequence 1 -open
+```
+
+Tjenesten skriver valgt socket ved start. Bruk ny sekvens per klient/vindu/panel.
+Uten `-open` returneres en lesbar pakke og lease. `-release TOKEN` frigjør den;
+`-sweep` fjerner bare frigjorte pakker. Leases overlever daemonkrasj; ved krasjet
+leser kreves eksplisitt release. XFMD fase 050 frigjør automatisk ved bytte/lukking.

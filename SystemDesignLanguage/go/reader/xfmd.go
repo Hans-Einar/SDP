@@ -50,7 +50,15 @@ func (x XFMD) Open(ctx context.Context, d Delivery) error {
 	if !filepath.IsAbs(x.Program) {
 		return fmt.Errorf("register absolute XFMD executable")
 	}
-	c := exec.CommandContext(ctx, x.Program, "--window", d.Window, "--pane", d.Pane, "--client", d.Client, "--request", strconv.FormatUint(d.Sequence, 10), d.Entry)
+	args := []string{"--window", d.Window, "--pane", d.Pane, "--client", d.Client, "--request", strconv.FormatUint(d.Sequence, 10)}
+	if d.Lease != "" {
+		if !id.MatchString(d.Lease) || !filepath.IsAbs(d.Broker) || strings.ContainsAny(d.Broker, "\x00\t\r\n") {
+			return fmt.Errorf("invalid lease registration")
+		}
+		args = append(args, "--lease", d.Lease, "--broker", d.Broker)
+	}
+	args = append(args, d.Entry)
+	c := exec.CommandContext(ctx, x.Program, args...)
 	out, e := c.CombinedOutput()
 	if e != nil {
 		return fmt.Errorf("xfmd-open: %w: %.1000s", e, out)
