@@ -3,7 +3,7 @@ import sys
 import unittest
 import design_core as dc
 
-SOURCE = '''language design-core version 0.4.
+SOURCE = '''language design-core version 0.5.
 unit Client.
 unit Server.
 channel Service.
@@ -105,7 +105,7 @@ class ChannelTests(unittest.TestCase):
         from test_data_core import SOURCE as DATA
         model = dc.parse(DATA)
         declarations = '\n'.join(f'{d.kind} {d.name.name}.' for d in model.declarations)
-        text = 'language design-core version 0.4.\n' + declarations + '''
+        text = 'language design-core version 0.5.\n' + declarations + '''
 unit Observer.
 channel Events.
 contract EventProtocol.

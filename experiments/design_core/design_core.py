@@ -1,4 +1,4 @@
-"""Experimental parser and structural validator for design-core 0.4.
+"""Experimental parser and structural validator for design-core 0.5.
 
 The language definition in docs/Design-Language-Definition.md is authoritative.
 No input is executed. Formatting writes to stdout, never to the input file.
@@ -41,6 +41,9 @@ SIGNATURES = {
     "pursues": ("actor", "usecase"),
     "supports": ("feature", "usecase"),
     "contributes-to": ("functionality", ("feature", "usecase")),
+    "addresses": ("activity", "functionality"),
+    "delivers": ("activity", "feature"),
+    "depends-on": ("activity", "activity"),
 }
 SIGNATURES.update(data_core.SIGNATURES)
 SIGNATURES.update(channel_core.SIGNATURES)
@@ -48,6 +51,7 @@ SIGNATURES['upholds'] = (('dataset', 'datagram', 'message', 'channel'), 'contrac
 PROPERTIES = {
     "state-retention": frozenset(("stateful", "stateless")),
     "repeatability": frozenset(("deterministic", "nondeterministic")),
+    "implementation-status": frozenset(("planned", "implemented", "verified")),
 }
 PROPERTIES.update(data_core.PROPERTIES)
 PROPERTIES.update(channel_core.PROPERTIES)
@@ -141,10 +145,10 @@ class Parser:
         start = self.expect("language").span.start
         self.expect("design-core")
         self.expect("version")
-        if self.current.text != "0.4":
-            self.fail("Only design-core version 0.4 is supported", "UNSUPPORTED_VERSION")
+        if self.current.text != "0.5":
+            self.fail("Only design-core version 0.5 is supported", "UNSUPPORTED_VERSION")
         self.take()
-        header = Header("design-core", "0.4", self.finish(start))
+        header = Header("design-core", "0.5", self.finish(start))
         declarations = []
         while self.current.text in KINDS:
             token = self.take()
@@ -269,7 +273,7 @@ def validate(model):
     owners = {}
     parents = {}
     allocations = {}
-    edges = {"contains": [], "refines": []}
+    edges = {"contains": [], "refines": [], "depends-on": []}
     for statement in model.statements:
         fact = sentence(statement)
         if fact in facts:
@@ -281,6 +285,8 @@ def validate(model):
                 expected = ('contract', 'scenario')
             elif statement.property == 'message-kind':
                 expected = 'message'
+            elif statement.property == 'implementation-status':
+                expected = 'activity'
             check(statement.subject, expected, "PROPERTY")
             if statement.value not in PROPERTIES[statement.property]:
                 diagnostics.append(Diagnostic("PROPERTY_TYPE_MISMATCH",
@@ -361,7 +367,7 @@ def canonicalize(model):
     diagnostics = validate(model)
     if diagnostics:
         raise ValidationError(diagnostics)
-    lines = ["language design-core version 0.4."]
+    lines = ["language design-core version 0.5."]
     lines.extend("{} {}.".format(d.kind, d.name.name)
                  for d in sorted(model.declarations, key=lambda d: d.name.name))
     lines.extend(sorted(sentence(s) for s in model.statements))

@@ -1,4 +1,4 @@
-language design-core version 0.4.
+language design-core version 0.5.
 contract ActionArguments.
 field ActionGeneration.
 field ActionInputText.
@@ -81,6 +81,29 @@ functionality ExportViewpointMarkdown.
 interface FileChangePort.
 unit FyneBackend.
 container FyneHost.
+activity G1FrontendPort.
+activity G1M1ParserAndAst.
+activity G1M2ValidationAndNormalization.
+activity G1M3Concept1AndDumps.
+activity G2LayoutAndPresentation.
+activity G2M1RelativeMeasurement.
+activity G2M2SharedSvgGeometry.
+activity G2M3FyneInteractions.
+activity G2M4RichContent.
+activity G3M1TypedUiSession.
+activity G3M2CandidatePublication.
+activity G3M3CompatibleState.
+activity G3UiRuntimeAndReload.
+activity G4M1SdlFrontend.
+activity G4M2TypedExecution.
+activity G4M3UiDomainBinding.
+activity G4M4DomainReload.
+activity G4SdlRuntimeAndBinding.
+activity G5M1GeneratedGo.
+activity G5M2BehaviorParity.
+activity G5M3DocumentationExport.
+activity G5M4RetirePython.
+activity G5NativeGeneration.
 functionality GenerateBindingRegistration.
 functionality GenerateModelConstructors.
 interface GeneratedArtifactPort.
@@ -171,6 +194,7 @@ interface ResourcePort.
 unit ResourceStore.
 functionality RestartChangedGoProgram.
 functionality RetirePreviousGeneration.
+functionality RetireReplacedPythonEntryPoints.
 functionality RevokeWidgetGenerations.
 capability RichContent.
 mode RichDocument.
@@ -270,6 +294,7 @@ functionality ValidateSymbolicBindings.
 functionality ValidateUiEvent.
 functionality ValidateVisualResources.
 functionality ValidateWidgetArguments.
+functionality VerifyNativeBehaviorParity.
 interface WidgetBackendPort.
 functionality WriteGeneratedArtifacts.
 ActionArguments has completeness = closed.
@@ -407,6 +432,8 @@ DevelopmentTools contains GoCodeGenerator.
 DevelopmentTools contains ReloadCoordinator.
 DevelopmentTools contains SourceLoader.
 DevelopmentTools contains SourceWatcher.
+DevelopmentTools owns RetireReplacedPythonEntryPoints.
+DevelopmentTools owns VerifyNativeBehaviorParity.
 DevelopmentTools provides DevelopmentReload.
 DiagnosticReporter owns ReportBindingDiagnostics.
 DiagnosticReporter owns ReportSourceDiagnostics.
@@ -464,6 +491,168 @@ FyneHost consumes WidgetBackendPort.
 FyneHost owns ComposeInteractiveSession.
 FyneHost owns ScheduleUiPublication.
 FyneHost provides NativeInteraction.
+G1FrontendPort delivers StructuralModelInspection.
+G1FrontendPort has implementation-status = planned.
+G1M1ParserAndAst addresses BuildSduiAst.
+G1M1ParserAndAst addresses IdentifySourceRevision.
+G1M1ParserAndAst addresses ReadBoundedSources.
+G1M1ParserAndAst addresses TokenizeSduiSource.
+G1M1ParserAndAst has implementation-status = planned.
+G1M1ParserAndAst refines G1FrontendPort.
+G1M2ValidationAndNormalization addresses CoordinateSduiCompilation.
+G1M2ValidationAndNormalization addresses ExpandUiDefinitions.
+G1M2ValidationAndNormalization addresses PreserveUiRegions.
+G1M2ValidationAndNormalization addresses PreserveUiSourceMap.
+G1M2ValidationAndNormalization addresses ResolveUiNames.
+G1M2ValidationAndNormalization addresses ValidateRelativeFormatting.
+G1M2ValidationAndNormalization addresses ValidateSymbolicBindings.
+G1M2ValidationAndNormalization addresses ValidateWidgetArguments.
+G1M2ValidationAndNormalization depends-on G1M1ParserAndAst.
+G1M2ValidationAndNormalization has implementation-status = planned.
+G1M2ValidationAndNormalization refines G1FrontendPort.
+G1M3Concept1AndDumps addresses ExportConsoleSnapshot.
+G1M3Concept1AndDumps addresses ReportSourceDiagnostics.
+G1M3Concept1AndDumps depends-on G1M2ValidationAndNormalization.
+G1M3Concept1AndDumps has implementation-status = planned.
+G1M3Concept1AndDumps refines G1FrontendPort.
+G2LayoutAndPresentation delivers InteractiveUiPreview.
+G2LayoutAndPresentation has implementation-status = planned.
+G2M1RelativeMeasurement addresses AllocateGeometry.
+G2M1RelativeMeasurement addresses ComputeClipping.
+G2M1RelativeMeasurement addresses MeasureUiContent.
+G2M1RelativeMeasurement addresses ResolveAncestorDimensions.
+G2M1RelativeMeasurement depends-on G1M2ValidationAndNormalization.
+G2M1RelativeMeasurement has implementation-status = planned.
+G2M1RelativeMeasurement refines G2LayoutAndPresentation.
+G2M2SharedSvgGeometry addresses BuildPreparedFrame.
+G2M2SharedSvgGeometry addresses ExportSvgSnapshot.
+G2M2SharedSvgGeometry depends-on G2M1RelativeMeasurement.
+G2M2SharedSvgGeometry has implementation-status = planned.
+G2M2SharedSvgGeometry refines G2LayoutAndPresentation.
+G2M3FyneInteractions addresses ComposeInteractiveSession.
+G2M3FyneInteractions addresses HandleFocusAndTextInput.
+G2M3FyneInteractions addresses PublishPresentation.
+G2M3FyneInteractions addresses ReconcileWidgets.
+G2M3FyneInteractions addresses ReleaseNativeWidgets.
+G2M3FyneInteractions addresses ScheduleUiPublication.
+G2M3FyneInteractions depends-on G2M2SharedSvgGeometry.
+G2M3FyneInteractions has implementation-status = planned.
+G2M3FyneInteractions refines G2LayoutAndPresentation.
+G2M4RichContent addresses MeasureMarkdownContent.
+G2M4RichContent addresses PrepareDiagramResource.
+G2M4RichContent addresses PrepareMarkdown.
+G2M4RichContent addresses ReleaseVisualResources.
+G2M4RichContent addresses ValidateVisualResources.
+G2M4RichContent depends-on G2M3FyneInteractions.
+G2M4RichContent has implementation-status = planned.
+G2M4RichContent refines G2LayoutAndPresentation.
+G3M1TypedUiSession addresses ApplyPropertyBatch.
+G3M1TypedUiSession addresses CloseUiInstance.
+G3M1TypedUiSession addresses CorrelateUiResult.
+G3M1TypedUiSession addresses CreateUiInstance.
+G3M1TypedUiSession addresses DispatchUiEvent.
+G3M1TypedUiSession addresses ManageWidgetIdentities.
+G3M1TypedUiSession addresses ProjectUiGeneration.
+G3M1TypedUiSession addresses RejectStaleUiEvent.
+G3M1TypedUiSession addresses RevokeWidgetGenerations.
+G3M1TypedUiSession addresses SnapshotUiState.
+G3M1TypedUiSession addresses TrackInputDraft.
+G3M1TypedUiSession addresses ValidatePropertyBatch.
+G3M1TypedUiSession addresses ValidateUiEvent.
+G3M1TypedUiSession depends-on G1M2ValidationAndNormalization.
+G3M1TypedUiSession depends-on G2M3FyneInteractions.
+G3M1TypedUiSession has implementation-status = planned.
+G3M1TypedUiSession refines G3UiRuntimeAndReload.
+G3M2CandidatePublication addresses CoalesceSourceChanges.
+G3M2CandidatePublication addresses KeepLastValidModels.
+G3M2CandidatePublication addresses ObserveSourceChanges.
+G3M2CandidatePublication addresses PrepareCandidateModels.
+G3M2CandidatePublication addresses PublishModelGeneration.
+G3M2CandidatePublication addresses RetirePreviousGeneration.
+G3M2CandidatePublication depends-on G3M1TypedUiSession.
+G3M2CandidatePublication has implementation-status = planned.
+G3M2CandidatePublication refines G3UiRuntimeAndReload.
+G3M3CompatibleState addresses MatchCompatibleWidgets.
+G3M3CompatibleState addresses PreserveCompatibleUiState.
+G3M3CompatibleState addresses ResetIncompatibleUiState.
+G3M3CompatibleState depends-on G3M2CandidatePublication.
+G3M3CompatibleState has implementation-status = planned.
+G3M3CompatibleState refines G3UiRuntimeAndReload.
+G3UiRuntimeAndReload delivers LiveModelReload.
+G3UiRuntimeAndReload has implementation-status = planned.
+G4M1SdlFrontend addresses BuildSdlAst.
+G4M1SdlFrontend addresses CoordinateSdlCompilation.
+G4M1SdlFrontend addresses NormalizeSdlModel.
+G4M1SdlFrontend addresses PreserveSdlSourceMap.
+G4M1SdlFrontend addresses ResolveSdlSymbols.
+G4M1SdlFrontend addresses TokenizeSdlSource.
+G4M1SdlFrontend addresses ValidateSdlProfile.
+G4M1SdlFrontend addresses ValidateSdlStructure.
+G4M1SdlFrontend has implementation-status = planned.
+G4M1SdlFrontend refines G4SdlRuntimeAndBinding.
+G4M2TypedExecution addresses CancelPendingActions.
+G4M2TypedExecution addresses CheckExecutionCompleteness.
+G4M2TypedExecution addresses CheckFunctionSignatures.
+G4M2TypedExecution addresses CloseSdlInstance.
+G4M2TypedExecution addresses CorrelateActionResult.
+G4M2TypedExecution addresses CreateSdlInstance.
+G4M2TypedExecution addresses InvokeRegisteredFunction.
+G4M2TypedExecution addresses ManageDomainState.
+G4M2TypedExecution addresses PerformDomainOperation.
+G4M2TypedExecution addresses RegisterDomainFunctions.
+G4M2TypedExecution addresses SnapshotDomainState.
+G4M2TypedExecution addresses ValidateActionInput.
+G4M2TypedExecution depends-on G4M1SdlFrontend.
+G4M2TypedExecution has implementation-status = planned.
+G4M2TypedExecution refines G4SdlRuntimeAndBinding.
+G4M3UiDomainBinding addresses ConnectTypedWidgetHandles.
+G4M3UiDomainBinding addresses DisconnectBindings.
+G4M3UiDomainBinding addresses PublishDomainUpdates.
+G4M3UiDomainBinding addresses ReportBindingDiagnostics.
+G4M3UiDomainBinding addresses ResolveCallbackSymbols.
+G4M3UiDomainBinding addresses RouteDomainBindings.
+G4M3UiDomainBinding depends-on G3M1TypedUiSession.
+G4M3UiDomainBinding depends-on G4M2TypedExecution.
+G4M3UiDomainBinding has implementation-status = planned.
+G4M3UiDomainBinding refines G4SdlRuntimeAndBinding.
+G4M4DomainReload addresses CheckDomainStateCompatibility.
+G4M4DomainReload addresses MigrateOrResetDomainState.
+G4M4DomainReload addresses RestartChangedGoProgram.
+G4M4DomainReload depends-on G3M3CompatibleState.
+G4M4DomainReload depends-on G4M3UiDomainBinding.
+G4M4DomainReload has implementation-status = planned.
+G4M4DomainReload refines G4SdlRuntimeAndBinding.
+G4SdlRuntimeAndBinding delivers TypedDomainBinding.
+G4SdlRuntimeAndBinding has implementation-status = planned.
+G5M1GeneratedGo addresses BuildGeneratedApplication.
+G5M1GeneratedGo addresses GenerateBindingRegistration.
+G5M1GeneratedGo addresses GenerateModelConstructors.
+G5M1GeneratedGo addresses PreserveHandwrittenSources.
+G5M1GeneratedGo depends-on G4M4DomainReload.
+G5M1GeneratedGo has implementation-status = planned.
+G5M1GeneratedGo refines G5NativeGeneration.
+G5M2BehaviorParity addresses VerifyNativeBehaviorParity.
+G5M2BehaviorParity depends-on G5M1GeneratedGo.
+G5M2BehaviorParity has implementation-status = planned.
+G5M2BehaviorParity refines G5NativeGeneration.
+G5M3DocumentationExport addresses ComposeHeadlessExport.
+G5M3DocumentationExport addresses ComposeMarkdownDocument.
+G5M3DocumentationExport addresses ExportViewpointMarkdown.
+G5M3DocumentationExport addresses ProjectSdlViewpoints.
+G5M3DocumentationExport addresses TraceViewpointFacts.
+G5M3DocumentationExport addresses WriteGeneratedArtifacts.
+G5M3DocumentationExport depends-on G2M4RichContent.
+G5M3DocumentationExport depends-on G5M2BehaviorParity.
+G5M3DocumentationExport has implementation-status = planned.
+G5M3DocumentationExport refines G5NativeGeneration.
+G5M4RetirePython addresses RetireReplacedPythonEntryPoints.
+G5M4RetirePython depends-on G1M3Concept1AndDumps.
+G5M4RetirePython depends-on G5M3DocumentationExport.
+G5M4RetirePython has implementation-status = planned.
+G5M4RetirePython refines G5NativeGeneration.
+G5NativeGeneration delivers DesignDocumentation.
+G5NativeGeneration delivers NativeGoAssembly.
+G5NativeGeneration has implementation-status = planned.
 GenerateBindingRegistration allocated-to CommandLineHost in mode NativeBuild.
 GenerateBindingRegistration contributes-to NativeGoAssembly.
 GenerateBindingRegistration realizes NativeRealization.
@@ -654,6 +843,8 @@ ResourceStore owns ValidateVisualResources.
 ResourceStore provides RichContent.
 RestartChangedGoProgram realizes NativeRealization.
 RetirePreviousGeneration realizes DevelopmentReload.
+RetireReplacedPythonEntryPoints allocated-to CommandLineHost in mode NativeBuild.
+RetireReplacedPythonEntryPoints contributes-to NativeGoAssembly.
 RevokeWidgetGenerations realizes InteractiveSession.
 RichContent requires ContentProviderPort in mode RichDocument.
 RichContent requires DiagramEnginePort in mode RichDocument.
@@ -944,6 +1135,8 @@ ValidateWidgetArguments contributes-to StructuralModelInspection.
 ValidateWidgetArguments has repeatability = deterministic.
 ValidateWidgetArguments has state-retention = stateless.
 ValidateWidgetArguments realizes SduiSourceModel.
+VerifyNativeBehaviorParity allocated-to CommandLineHost in mode NativeBuild.
+VerifyNativeBehaviorParity contributes-to NativeGoAssembly.
 WriteGeneratedArtifacts allocated-to CommandLineHost in mode StaticExport.
 WriteGeneratedArtifacts contributes-to DesignDocumentation.
 WriteGeneratedArtifacts realizes StaticDocumentation.
