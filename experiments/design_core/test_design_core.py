@@ -1,4 +1,4 @@
-"""Executable checks for the bounded design-core 0.2 definition."""
+"""Executable checks for the bounded design-core 0.3 definition."""
 
 import json
 from pathlib import Path
@@ -11,7 +11,7 @@ import design_core as dc
 
 
 ROOT = Path(__file__).resolve().parents[2]
-HEADER = "language design-core version 0.2.\n"
+HEADER = "language design-core version 0.3.\n"
 DECLARATIONS = "unit PresentationManager.\nfunctionality ValidateBindings.\n"
 OWNS = "PresentationManager owns ValidateBindings.\n"
 VALID = HEADER + DECLARATIONS + OWNS
@@ -36,7 +36,7 @@ class ParserTests(unittest.TestCase):
 
     def test_ast_preserves_structure_order_and_source_locations(self):
         model = dc.parse(VALID)
-        self.assertEqual(model.header.version, "0.2")
+        self.assertEqual(model.header.version, "0.3")
         self.assertEqual([d.kind for d in model.declarations], ["unit", "functionality"])
         relation = model.statements[0]
         self.assertIsInstance(relation, dc.Relation)
@@ -107,7 +107,7 @@ class ParserTests(unittest.TestCase):
                 self.assertEqual(codes(text), ["UNSUPPORTED_SYNTAX"])
 
     def test_version_is_explicit(self):
-        self.assertEqual(codes(VALID.replace("0.2", "0.1")), ["UNSUPPORTED_VERSION"])
+        self.assertEqual(codes(VALID.replace("0.3", "0.1")), ["UNSUPPORTED_VERSION"])
 
     def test_unexpected_eof_has_an_exact_zero_length_span(self):
         text = HEADER + "unit Thing"
@@ -171,6 +171,8 @@ class ParserTests(unittest.TestCase):
 
     def test_all_registered_property_values(self):
         for prop, values in dc.PROPERTIES.items():
+            if prop in dc.data_core.PROPERTY_KINDS:
+                continue
             for value in values:
                 text = VALID + "ValidateBindings has {} = {}.\n".format(prop, value)
                 self.assertEqual(codes(text), [])

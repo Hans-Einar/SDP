@@ -15,7 +15,8 @@ Eierbeslutning 2026-09-22 for SDL/SDUI-utviklingen:
   skal komme fra SDL-verktøyet og validerte modellfakta.
 - Opprett samlet PR mot `sdp-vNow` når det avtalte arbeidet er klart. Opprettelse
   av lokale fasebrancher og milepælcommits er autorisert; dette er ikke en
-  instruks om å merge eller publisere hver mellomleveranse.
+  instruks om å merge. Eierens tillegg 2026-09-22 autoriserer push til origin
+  etter hver fullført fase i samme sesjon.
 
 Branchstakken og håndteringen av tidligere ucommittet arbeid er beskrevet i
 [utviklingshistorikken](docs/Development-Branch-Stack.md). Les også relevante

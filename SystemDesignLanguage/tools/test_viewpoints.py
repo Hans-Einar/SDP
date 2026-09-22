@@ -12,7 +12,7 @@ CLI = Path(__file__).with_name('sdl.py')
 
 
 def source(extra=''):
-    return core.canonicalize(core.parse('''language design-core version 0.2.
+    return core.canonicalize(core.parse('''language design-core version 0.3.
 container Host.
 unit Parser.
 functionality ParseSource.
@@ -65,7 +65,7 @@ class ViewpointTests(unittest.TestCase):
     def test_cli_rejects_unsupported_profile_without_writing_output(self):
         with tempfile.TemporaryDirectory() as tmp:
             p = Path(tmp) / 'source.design'; out = Path(tmp) / 'views'
-            p.write_text('language sdl-mvp1-exercise version 0.2.\n')
+            p.write_text('language sdl-mvp1-exercise version 0.3.\n')
             result = subprocess.run([sys.executable, str(CLI), 'viewpoints', str(p), '--output', str(out)], capture_output=True)
             self.assertEqual(result.returncode, 2)
             self.assertFalse(out.exists())

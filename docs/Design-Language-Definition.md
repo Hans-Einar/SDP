@@ -1,11 +1,11 @@
 # Design language definition
 
-Version: **design-core 0.2 — draft**
+Version: **design-core 0.3 — draft**
 
 Date: 2026-09-22
 
 V1 mål/bidrag/allokering implementert 2026-09-22. Seksjon 13 og videre beskriver
-framtidig språkarbeid; gjeldende implementert grammatikk er `design-core 0.2`.
+framtidig språkarbeid; gjeldende implementert grammatikk er `design-core 0.3`.
 
 Status: primary working definition of the proposed language. It consolidates the
 structural vocabulary and adds a precise grammar, type rules and canonical form.
@@ -26,7 +26,7 @@ The owner requires one unambiguous meaning and one canonical representation per
 modeled fact, without synonyms for relations. The 2026-09-17 clarification permits
 optional explicit type annotations in future source syntax (Section 15); these
 do not create different semantic facts or depend on neighboring sentences.
-Version 0.2 defines a bounded structural core: names/types,
+Version 0.3 defines a bounded structural core: names/types,
 containment, ownership, capability contribution/offers, interface use, mode-scoped
 dependency, activity refinement, Actor/UseCase/Feature traceability, mode-scoped
 Functionality allocation and two Functionality properties. Section 12
@@ -69,7 +69,7 @@ their type**. A concrete statement's role is determined by its position.
 Each model starts with the exact header:
 
 ```text
-language design-core version 0.2.
+language design-core version 0.3.
 ```
 
 Then declare every identifier before the statements that use it:
@@ -86,7 +86,7 @@ Rules:
   defined here. No alternative capitalization, passive forms or synonyms exist.
 - One identifier has exactly one declaration and one declared type in a model.
 - A declaration identifies a design object, not a runtime instance or a run.
-- Version 0.2 has one namespace per model. Imports and cross-model name resolution
+- Version 0.3 has one namespace per model. Imports and cross-model name resolution
   are unsupported; references cannot silently resolve to another file's names.
 - A Container is declared with `container`, not once as `unit` and again as
   `container`. Its Unit compatibility follows from the type system.
@@ -237,6 +237,10 @@ pending until their scope/conditions and validation rules are defined.
 Reject adjective-prefix alternatives such as `deterministic functionality
 ValidateBindings.` They would create a second way to encode the same property.
 
+V2 utvider de lukkede type-, relasjons- og egenskapstabellene med den
+[normative data-/wireprofilen](SDL-Data-Contract-Profile.md). Denne inngår i 0.3;
+Dataset/Datagram/Database er nå implementerte begreper i denne avgrensningen.
+
 ## 7. Complete grammar of the supported core
 
 EBNF notation: quoted strings are literal tokens, comma is concatenation,
@@ -246,13 +250,15 @@ tokens; Section 9 fixes canonical serialization. Identifiers follow Section 3.
 ```text
 model = header, { declaration }, { statement } ;
 
-header = "language", "design-core", "version", "0.2", "." ;
+header = "language", "design-core", "version", "0.3", "." ;
 
 declaration = kind, identifier, "." ;
 kind = "unit" | "container" | "functionality" | "capability"
      | "interface" | "activity" | "mode" | "actor" | "usecase" | "feature" ;
 
-statement = binaryRelation | dependency | allocation | propertyAssignment ;
+statement = binaryRelation | dependency | allocation | propertyAssignment
+          | projection | placement ;
+(* V2 kinds, binary verbs, properties and productions: SDL-Data-Contract-Profile.md *)
 
 binaryRelation = identifier, binaryVerb, identifier, "." ;
 binaryVerb = "contains" | "owns" | "realizes" | "provides"
@@ -300,7 +306,7 @@ source spans; syntax, type and structural errors remain distinct.
 | Diagnostic | Example / reason |
 |---|---|
 | `UNSUPPORTED_SYNTAX` | `ValidateBindings is owned by PresentationManager.` uses an unregistered form. |
-| `UNSUPPORTED_VERSION` | The header requests a version other than `0.2`. |
+| `UNSUPPORTED_VERSION` | The header requests a version other than `0.3`. |
 | `UNDECLARED_NAME` | A statement references `Validator` without a declaration. |
 | `DUPLICATE_DECLARATION` | One identifier is declared twice, even with the same type. |
 | `SUBJECT_TYPE_MISMATCH` | `ValidateBindings owns PresentationManager.` expects Unit, receives Functionality. |
@@ -319,7 +325,7 @@ Given the declarations in Section 3, reversed ownership has two argument errors.
 The message should identify the positions, expected types and declared types.
 Do not silently reverse the sentence: that would change the submitted design.
 
-Passing these checks means **structurally valid design-core 0.2**, not correct
+Passing these checks means **structurally valid design-core 0.3**, not correct
 architecture, complete contracts, implemented behavior or verified product safety.
 
 ## 9. Canonical representation
@@ -349,7 +355,7 @@ This example is a logical decomposition. Declaring UIHost as Unit does not
 settle whether it will be a separate Go runtime Container.
 
 ```design-core
-language design-core version 0.2.
+language design-core version 0.3.
 capability LayoutReplacement.
 unit PresentationManager.
 unit UIHost.
@@ -373,7 +379,7 @@ external interface exposure remain to be described.
 ### 10.2 Scoped consumption and dependency
 
 ```design-core
-language design-core version 0.2.
+language design-core version 0.3.
 capability LiveInspection.
 interface ObservationInterface.
 mode OperatorLive.
@@ -413,7 +419,7 @@ Direkte og Feature-formidlet bidrag er begge eksplisitte fakta. Eierskapet er
 uendret når samme ansvar plasseres i forskjellige Containers i ulike modi.
 
 ```design-core
-language design-core version 0.2.
+language design-core version 0.3.
 actor Author.
 container CommandLineHost.
 usecase InspectModel.
@@ -450,7 +456,7 @@ property forms for canonical core sentences:
   canonical core sentences.
 
 Research prose can discuss all these concepts. Only blocks explicitly claiming
-`design-core 0.2` compliance are required to satisfy this definition. Earlier
+`design-core 0.3` compliance are required to satisfy this definition. Earlier
 blocks are exploratory fragments, not backward-compatible alternative syntax.
 
 ## 12. Open extensions and conformance work
@@ -472,10 +478,10 @@ appearing in a scenario does not automatically become a language keyword.
 
 The [SDL source-tree and compilation study](SDL-Source-Tree-and-Compilation-Study.md)
 proposes future workspace scopes, multi-file linking, public exports and blueprint
-generation. These require an explicit language extension; version 0.2 retains
+generation. These require an explicit language extension; version 0.3 retains
 its standalone-model semantics and does not resolve names from neighboring files.
 
-Version 0.2 supports executable checks for ownership reversal, other core type
+Version 0.3 supports executable checks for ownership reversal, other core type
 errors, and the structural subset of L01/L02. The prototype tests parse all three
 complete examples above and check their semantics and canonical layout. Additional
 tests cover invalid forms, structural constraints and structural text/AST round
@@ -491,7 +497,7 @@ file. `System.design` is a useful filename convention, not a required name. The
 source declares the modeled System, and the first workspace language version
 permits exactly one declared System per complete compilation.
 
-This section records the next extension; it does not alter the `design-core 0.2`
+This section records the next extension; it does not alter the `design-core 0.3`
 grammar or claim parser support. The owner's root/cardinality decision is selected.
 The type integration and canonical details below are proposed for that extension.
 
@@ -737,7 +743,7 @@ does not define a complete request/reply interaction.
 Before adopting this grammar, complete one observation contract and one
 request/result contract using it. Specify MessageSet definitions, Channel-contract
 association, role compatibility and distribution rules in this language definition
-together. The current parser remains a `design-core 0.2` structural parser.
+together. The current parser remains a `design-core 0.3` structural parser.
 
 ## 15. Explicit type annotations and checking without annotations
 
@@ -819,7 +825,7 @@ density is a reading aid, never implicit grammatical context.
   presence. Repeating a fact in another annotation style is still a duplicate.
 - In the future extension, permitted annotations are valid source, not a
   `NONCANONICAL_FORM` error. Checking authored source and requesting/checking the
-  canonical export are distinct operations. Version 0.2's existing canonical
+  canonical export are distinct operations. Version 0.3's existing canonical
   checks remain unchanged.
 
 The annotation mechanism is intended to be reusable for typed references in later

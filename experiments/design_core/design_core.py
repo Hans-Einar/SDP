@@ -1,4 +1,4 @@
-"""Experimental parser and structural validator for design-core 0.2.
+"""Experimental parser and structural validator for design-core 0.3.
 
 The language definition in docs/Design-Language-Definition.md is authoritative.
 No input is executed. Formatting writes to stdout, never to the input file.
@@ -11,6 +11,8 @@ import json
 from pathlib import Path
 import re
 import sys
+import data_core
+from data_core import Integer, Projection, Placement
 
 
 Span = namedtuple("Span", "start end line column end_line end_column")
@@ -26,10 +28,10 @@ Model = namedtuple("Model", "header declarations statements span")
 Diagnostic = namedtuple("Diagnostic", "code message span")
 
 KINDS = frozenset(("unit", "container", "functionality", "capability",
-                   "interface", "activity", "mode", "actor", "usecase", "feature"))
+                   "interface", "activity", "mode", "actor", "usecase", "feature")) | data_core.KINDS
 SIGNATURES = {
     "contains": ("unit", "unit"),
-    "owns": ("unit", "functionality"),
+    "owns": ("unit", ("functionality", "database")),
     "realizes": ("functionality", "capability"),
     "provides": ("unit", "capability"),
     "consumes": ("unit", "interface"),
@@ -38,10 +40,12 @@ SIGNATURES = {
     "supports": ("feature", "usecase"),
     "contributes-to": ("functionality", ("feature", "usecase")),
 }
+SIGNATURES.update(data_core.SIGNATURES)
 PROPERTIES = {
     "state-retention": frozenset(("stateful", "stateless")),
     "repeatability": frozenset(("deterministic", "nondeterministic")),
 }
+PROPERTIES.update(data_core.PROPERTIES)
 VALUES = frozenset().union(*PROPERTIES.values())
 TOKEN = re.compile(r"[A-Za-z][A-Za-z0-9-]*|[0-9]+(?:\.[0-9]+)*|[.=]")
 NAME = re.compile(r"[A-Z][A-Za-z0-9]*\Z")
@@ -132,10 +136,10 @@ class Parser:
         start = self.expect("language").span.start
         self.expect("design-core")
         self.expect("version")
-        if self.current.text != "0.2":
-            self.fail("Only design-core version 0.2 is supported", "UNSUPPORTED_VERSION")
+        if self.current.text != "0.3":
+            self.fail("Only design-core version 0.3 is supported", "UNSUPPORTED_VERSION")
         self.take()
-        header = Header("design-core", "0.2", self.finish(start))
+        header = Header("design-core", "0.3", self.finish(start))
         declarations = []
         while self.current.text in KINDS:
             token = self.take()
@@ -145,8 +149,10 @@ class Parser:
         while self.current.text:
             subject = self.identifier()
             start = subject.span.start
-            verb = self.choice(set(SIGNATURES) | {"requires", "allocated-to", "has"})
-            if verb in ("requires", "allocated-to"):
+            verb = self.choice(set(SIGNATURES) | {"requires", "allocated-to", "has", "projects", "places"})
+            if verb in ("projects", "places"):
+                statement = data_core.parse_statement(self, subject, verb, start)
+            elif verb in ("requires", "allocated-to"):
                 target = self.identifier()
                 self.expect("in")
                 self.expect("mode")
@@ -180,6 +186,8 @@ def symbol_table(model):
 
 
 def sentence(statement):
+    if isinstance(statement, (Projection, Placement)):
+        return data_core.sentence(statement)
     if isinstance(statement, Relation):
         return "{} {} {}.".format(statement.subject.name, statement.verb, statement.object.name)
     if isinstance(statement, Dependency):
@@ -259,7 +267,7 @@ def validate(model):
             diagnostics.append(Diagnostic("DUPLICATE_FACT", "Repeated fact: " + fact, statement.span))
         facts.add(fact)
         if isinstance(statement, PropertyAssignment):
-            check(statement.subject, "functionality", "PROPERTY")
+            check(statement.subject, data_core.PROPERTY_KINDS.get(statement.property, "functionality"), "PROPERTY")
             if statement.value not in PROPERTIES[statement.property]:
                 diagnostics.append(Diagnostic("PROPERTY_TYPE_MISMATCH",
                     "{} accepts {}".format(statement.property,
@@ -269,6 +277,13 @@ def validate(model):
                 diagnostics.append(Diagnostic("PROPERTY_CONFLICT",
                     "{} has conflicting {} values".format(*key), statement.span))
             properties.setdefault(key, statement.value)
+        elif isinstance(statement, Projection):
+            check(statement.subject, "functionality", "SUBJECT")
+            check(statement.dataset, "dataset", "OBJECT")
+            check(statement.datagram, "datagram", "QUALIFIER")
+        elif isinstance(statement, Placement):
+            check(statement.subject, "encoding", "SUBJECT")
+            check(statement.field, "field", "OBJECT")
         elif isinstance(statement, Dependency):
             check(statement.subject, "capability", "SUBJECT")
             check(statement.interface, "interface", "OBJECT")
@@ -303,11 +318,13 @@ def validate(model):
                             "owners" if statement.verb == "owns" else "parents"), statement.span))
                 sources.add(subject)
     for name, declaration in symbols.items():
-        if declaration.kind == "functionality" and not owners.get(name):
+        if declaration.kind in ("functionality", "database") and not owners.get(name):
             diagnostics.append(Diagnostic("OWNERSHIP_CARDINALITY",
                 "{} has no valid immediate owner".format(name), declaration.name.span))
     for relation, graph_edges in edges.items():
         diagnostics.extend(cycle_diagnostics(graph_edges, relation))
+    if not diagnostics:
+        diagnostics.extend(data_core.validate_data(model, symbols, sys.modules[__name__]))
     return diagnostics
 
 
@@ -316,7 +333,7 @@ def canonicalize(model):
     diagnostics = validate(model)
     if diagnostics:
         raise ValidationError(diagnostics)
-    lines = ["language design-core version 0.2."]
+    lines = ["language design-core version 0.3."]
     lines.extend("{} {}.".format(d.kind, d.name.name)
                  for d in sorted(model.declarations, key=lambda d: d.name.name))
     lines.extend(sorted(sentence(s) for s in model.statements))

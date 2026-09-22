@@ -1,14 +1,15 @@
 # SDL/SDUI — fasebrancher og milepælcommits
 
 Eierbeslutning 2026-09-22: én branch per fase, stablet på forrige fase, og
-egne commits ved fullførte milepæler. Samlet PR skal ha `sdp-vNow` som base.
+egne commits ved fullførte milepæler. Push til origin etter hver fullført fase
+er autorisert i samme sesjon. Samlet PR skal ha `sdp-vNow` som base.
 Utgangspunktet er `9ad432407004080dd7f4f0ab06d107523f4316fd`.
 
 | Fasebranch | Forelder | Milepæler |
 | --- | --- | --- |
 | `sdl-sdui/phase-baseline` | `sdp-vNow` | B0-M1: samle eksisterende SDUI 0.2-prototype, eksempler, bevis og Go-retning; etablere Git-arbeidsmåten |
 | `sdl/phase-v1-viewpoints` | `sdl-sdui/phase-baseline` | V1-M1: språk/AST/validering; V1-M2: verktøyprojeksjoner; V1-M3: felles modell, generert utskrift og checkpoint |
-| `sdl/phase-v2-data-contracts` | `sdl/phase-v1-viewpoints` | Neste fase; ingen implementasjon levert ennå |
+| `sdl/phase-v2-data-contracts` | `sdl/phase-v1-viewpoints` | V2-M1: data-/wireprofil; V2-M2: VP09/VP10; V2-M3: verifisert prøve og fasepush |
 
 De første to fasene samler arbeid som allerede var utført lokalt. Dette er en
 bevisst etterregistrering, ikke en påstand om at gamle økter hadde disse commit-
