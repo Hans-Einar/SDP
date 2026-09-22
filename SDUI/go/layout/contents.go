@@ -80,7 +80,11 @@ func (e *Engine) contents(n *parser.Instance, inner, ancestor Size, font float64
 	rowPlaces := make([][]placement, len(rows))
 	tracks := make([]track, len(rows))
 	for i, row := range rows {
-		places, height, width, err := e.row(n, row, body, gx, font, 0, false)
+		crossHeight := 0.0
+		if definiteH && len(rows) == 1 {
+			crossHeight = body.H
+		}
+		places, height, width, err := e.row(n, row, body, gx, font, crossHeight, false)
 		if err != nil {
 			return nil, Size{}, err
 		}

@@ -49,7 +49,7 @@ Avhenger av G1-M2. Eier: SDUI-implementasjonen.
 | Milepæl | Leveranse og akseptanse |
 | --- | --- |
 | G2-M1 | **Levert:** Målekontrakt og fontenhet; relative akser, ratio, rader/grupper, header/body/footer, gap/padding og eksplisitte overflowgrenser |
-| G2-M2 | Generell SVG-eksport fra målt modell; liten frame + knapp/input og deretter Concept1 uten håndplassert fixture; geometri- og visuell kontroll |
+| G2-M2 | **Levert:** Generell SVG-eksport fra målt modell; liten frame + knapp/input og deretter Concept1 uten håndplassert fixture; geometri- og visuell kontroll |
 | G2-M3 | Fyne-vindu med samme geometri, knapper/input, Tab/fokus og registrert lokal Go-funksjon; ingen SDL-avhengighet |
 | G2-M4 | Avgrenset Markdown-provider og separate Mermaid-ressurser; dokumentert støtteprofil og negative tilfeller, ikke påstått full diagramdekning |
 

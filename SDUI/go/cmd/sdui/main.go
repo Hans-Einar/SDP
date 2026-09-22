@@ -3,8 +3,10 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Hans-Einar/SDP/SDUI/go/layout"
 	"github.com/Hans-Einar/SDP/SDUI/go/parser"
 	"github.com/Hans-Einar/SDP/SDUI/go/presentation"
+	"github.com/Hans-Einar/SDP/SDUI/go/svg"
 	"io"
 	"os"
 	"path/filepath"
@@ -15,17 +17,18 @@ import (
 type options struct {
 	source, output, format, entry string
 	columns                       int
+	width, height                 float64
 	syntax                        bool
 }
 
 func arguments(args []string) (options, error) {
-	o := options{format: "ast", columns: 160}
+	o := options{format: "ast", columns: 160, width: 1920, height: 1200}
 	for i := 0; i < len(args); i++ {
 		a := args[i]
 		switch a {
 		case "--syntax-only":
 			o.syntax = true
-		case "-o", "--format", "--entry", "--columns":
+		case "-o", "--format", "--entry", "--columns", "--width", "--height":
 			i++
 			if i >= len(args) {
 				return o, fmt.Errorf("Missing value for %s", a)
@@ -37,6 +40,16 @@ func arguments(args []string) (options, error) {
 				o.format = args[i]
 			case "--entry":
 				o.entry = args[i]
+			case "--width", "--height":
+				v, e := strconv.ParseFloat(args[i], 64)
+				if e != nil {
+					return o, e
+				}
+				if a == "--width" {
+					o.width = v
+				} else {
+					o.height = v
+				}
 			case "--columns":
 				n, e := strconv.Atoi(args[i])
 				if e != nil {
@@ -55,7 +68,7 @@ func arguments(args []string) (options, error) {
 		}
 	}
 	if o.source == "" {
-		return o, fmt.Errorf("Usage: sdui source|- [--format ast|dump|markdown|prototype-svg|prototype-html] [--entry name] [-o file]")
+		return o, fmt.Errorf("Usage: sdui source|- [--format ast|dump|markdown|svg|prototype-svg|prototype-html] [--entry name] [-o file]")
 	}
 	return o, nil
 }
@@ -130,6 +143,12 @@ func execute(args []string, stdin io.Reader, stdout, stderr io.Writer) int {
 		}
 		var text string
 		switch o.format {
+		case "svg":
+			var box *layout.Box
+			box, e = (&layout.Engine{}).Layout(root, layout.Size{W: o.width, H: o.height})
+			if e == nil {
+				text, e = svg.Render(box, svg.Options{Width: o.width, Height: o.height})
+			}
 		case "dump":
 			text, e = presentation.Dump(root, o.columns)
 		case "markdown":

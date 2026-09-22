@@ -106,6 +106,8 @@ func TestConcept1Geometry(t *testing.T) {
 	}
 	m := boxes(b)
 	near(t, b.Rect.H, 1080)
+	near(t, m["bucking/top/length"].Rect.H, m["bucking/top"].Rect.H)
+	near(t, m["bucking/middle/selection"].Rect.H, m["bucking/middle"].Rect.H)
 	near(t, m["bucking/top/length"].Rect.W, m["bucking/top/diameter"].Rect.W)
 	near(t, m["bucking/middle/suggestions"].Rect.W, 2*m["bucking/middle/selection"].Rect.W)
 }
