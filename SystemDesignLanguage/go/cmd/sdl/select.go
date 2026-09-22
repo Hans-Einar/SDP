@@ -65,6 +65,8 @@ func selectView(args []string, out, errs io.Writer) int {
 	if e != nil {
 		return fail(e)
 	}
+	b.Put("delivery.txt", s.Target+"\n")
+	b.Seal()
 	if e = b.Publish(*output); e != nil {
 		return fail(e)
 	}
