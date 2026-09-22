@@ -4,6 +4,9 @@ Version: **design-core 0.5 — draft**
 
 Date: 2026-09-22
 
+Go-port G4-M1 implementert 2026-09-22: [frontend og bevis](../SystemDesignLanguage/go/README.md).
+Ingen nye språkregler innføres av porten.
+
 V1 mål/bidrag/allokering implementert 2026-09-22. Seksjon 13 og videre beskriver
 framtidig språkarbeid; gjeldende implementert grammatikk er `design-core 0.5`.
 

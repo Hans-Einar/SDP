@@ -1,23 +1,26 @@
-# SDL — implementasjonsområde i Go
+# SDL i Go
 
-Opprettet 2026-09-21. **Kun katalogstruktur; ingen Go-parser eller runtime er implementert.**
-Omfanget er SDLs avtalte strukturprofil og senere eksplisitt kjøreprofil.
+G4-M1 leverer parser, kildeposisjonert AST, symbol-/typekontroll, data-/wire- og
+Channel-/scenariovalidering og kanonisk form for **design-core 0.5**.
+Ingen struktursetning utføres. Checkpoint-kandidater og hele MVP1-korpuset er
+ikke del av profilen. Den eksplisitte kjøreprofilen følger G4-M2.
 
-[Felles SDL-design for parser/runtime](../../SDUI/design/README.md) beskriver også
-SDL-frontend, kjørbarhetskontroll, state, dispatch og Go-funksjonsregistrering.
+Modul: `github.com/Hans-Einar/SDP/SystemDesignLanguage/go`, Go 1.26 som felles
+baseline. Verifisert med Go 1.27.1. Strukturkjernen bruker bare standardbiblioteket.
 
-| Katalog | Ansvar |
-| --- | --- |
-| parser/ | Kilde, AST, kildeposisjoner, diagnoser og lokal validering; ingen utførelse eller GUI-import |
-| runtime/ | Instanser, typed tilstand/hendelser og eksplisitte porter; ingen parserkopi eller GUI-import |
+Fra denne katalogen:
 
-Den felles [implementasjonsplanen](../../SDUI/docs/implementation-plan.md) og
-[målarkitekturen](../../SDUI/docs/target-architecture.md) eier fasevalg og avhengigheter.
-[Checkpoint #1](../../docs/checkpoint%231/07-SDUI-0.2-and-Go-Direction.md) beskriver
-status og språkgrenser. Eksisterende [Python-grunnlag](../../experiments/design_core/README.md) beholdes til
-porten er verifisert. Gjeldende SDL-portgrunnlag er design-core 0.5, inkludert V1–V4-viewpoints og plan-/Channel-/datakontrakter; versjonen er uavhengig av SDUI.
+```sh
+go test -race ./...
+go run ./cmd/sdl check ../../SDUI/design/architecture.design
+go run ./cmd/sdl ast ../../SDUI/design/architecture.design
+go run ./cmd/sdl format ../../SDUI/design/architecture.design
+```
 
-Modulnavn, Go-versjon, eventuell go.work og felles portpakker fastsettes ved første
-kodeleveranse. Ingen tomme API-er eller falske go test-resultater opprettes nå.
-De tomme parser/runtime-katalogene spores med .gitkeep og erstattes av kode.
-Fyne skal bare ligge i en senere vert; kjernen må kunne testes uten vindussystem.
+`parser.Data` beholder Python-profilens navngitte JSON-AST-form, inkludert start-
+og sluttposisjoner. 151 porttilfeller og full SDUI-modell har sammenligningsbevis.
+[Faktiske bevis](evidence/G4.md), [felles plan](../../SDUI/docs/implementation-plan.md),
+[språkdefinisjon](../../docs/Design-Language-Definition.md).
+
+Python beholdes bare som midlertidig portgrunnlag frem til alle konsumenter og
+viewpoint-generatoren er erstattet. Det finnes ingen Python-fallback i Go.
