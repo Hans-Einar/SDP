@@ -39,3 +39,5 @@ Branchene slettes eller historikken omskrives ikke som automatisk opprydding.
 
 G2-implementasjonen fortsetter fra G1 på `sdui/phase-g2-presentation`.
 Milepælbevis: `SDUI/go/evidence/G2.md`.
+
+G3 fortsetter fra ferdig G2 (`6a4d968`) på `sdui/phase-g3-runtime`.

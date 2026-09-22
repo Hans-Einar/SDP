@@ -64,7 +64,7 @@ Avhenger av G1-M2/G2-M3. Eier: SDUI-implementasjonen.
 
 | Milepæl | Leveranse og akseptanse |
 | --- | --- |
-| G3-M1 | Typede hendelser/oppdateringer, stabile widgetinstanser og revisjoner; ubundet knapp gir eksplisitt status |
+| G3-M1 | **Levert:** Typede hendelser/oppdateringer, stabile widgetinstanser og revisjoner; ubundet knapp gir eksplisitt status |
 | G3-M2 | Filendring → parse/valider → publisering; ugyldig kilde beholder siste gyldige UI og viser kildediagnose |
 | G3-M3 | Bevar kompatibel verdi/draft/fokus; typebytte/sletting håndteres, stale events og callback etter teardown avvises; ingen gjentatte domenehandlinger ved reload |
 
