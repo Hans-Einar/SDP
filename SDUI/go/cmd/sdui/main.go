@@ -2,79 +2,176 @@ package main
 
 import (
 	"encoding/json"
-	"flag"
 	"fmt"
 	"github.com/Hans-Einar/SDP/SDUI/go/parser"
+	"github.com/Hans-Einar/SDP/SDUI/go/presentation"
 	"io"
 	"os"
 	"path/filepath"
+	"strconv"
+	"strings"
 )
 
-func run() int {
-	flags := flag.NewFlagSet("sdui", flag.ContinueOnError)
-	output := flags.String("o", "", "Output JSON file (default stdout)")
-	syntaxOnly := flags.Bool("syntax-only", false, "Parse without semantic validation")
-	if err := flags.Parse(os.Args[1:]); err != nil {
-		return 2
+type options struct {
+	source, output, format, entry string
+	columns                       int
+	syntax                        bool
+}
+
+func arguments(args []string) (options, error) {
+	o := options{format: "ast", columns: 160}
+	for i := 0; i < len(args); i++ {
+		a := args[i]
+		switch a {
+		case "--syntax-only":
+			o.syntax = true
+		case "-o", "--format", "--entry", "--columns":
+			i++
+			if i >= len(args) {
+				return o, fmt.Errorf("Missing value for %s", a)
+			}
+			switch a {
+			case "-o":
+				o.output = args[i]
+			case "--format":
+				o.format = args[i]
+			case "--entry":
+				o.entry = args[i]
+			case "--columns":
+				n, e := strconv.Atoi(args[i])
+				if e != nil {
+					return o, e
+				}
+				o.columns = n
+			}
+		default:
+			if strings.HasPrefix(a, "-") && a != "-" {
+				return o, fmt.Errorf("Unknown option %s", a)
+			}
+			if o.source != "" {
+				return o, fmt.Errorf("Only one source allowed")
+			}
+			o.source = a
+		}
 	}
-	if flags.NArg() != 1 {
-		fmt.Fprintln(os.Stderr, "Usage: sdui [-o file] [--syntax-only] source.sdui|-")
-		return 2
+	if o.source == "" {
+		return o, fmt.Errorf("Usage: sdui source|- [--format ast|dump|markdown|prototype-svg|prototype-html] [--entry name] [-o file]")
 	}
-	src := flags.Arg(0)
-	var r io.Reader = os.Stdin
-	if src != "-" {
-		if *output != "" {
-			a, _ := filepath.Abs(src)
-			b, _ := filepath.Abs(*output)
+	return o, nil
+}
+func report(w io.Writer, e error, code int) int {
+	if _, ok := e.(*parser.Diagnostic); !ok {
+		e = &parser.Diagnostic{Code: "io", Message: e.Error()}
+	}
+	_ = json.NewEncoder(w).Encode(map[string]any{"error": e})
+	return code
+}
+func execute(args []string, stdin io.Reader, stdout, stderr io.Writer) int {
+	o, e := arguments(args)
+	if e != nil {
+		return report(stderr, e, 2)
+	}
+	r := stdin
+	if o.source != "-" {
+		if o.output != "" {
+			a, _ := filepath.Abs(o.source)
+			b, _ := filepath.Abs(o.output)
 			sa, ea := os.Stat(a)
 			sb, eb := os.Stat(b)
 			if a == b || ea == nil && eb == nil && os.SameFile(sa, sb) {
-				fmt.Fprintln(os.Stderr, "Output cannot overwrite source")
-				return 3
+				return report(stderr, fmt.Errorf("Output cannot overwrite source"), 3)
 			}
 		}
-		f, e := os.Open(src)
+		f, e := os.Open(o.source)
 		if e != nil {
-			fmt.Fprintln(os.Stderr, e)
-			return 3
+			return report(stderr, e, 3)
 		}
 		defer f.Close()
 		r = f
 	}
-	data, e := io.ReadAll(io.LimitReader(r, parser.MaxBytes+1))
+	source, e := io.ReadAll(io.LimitReader(r, parser.MaxBytes+1))
 	if e != nil {
-		fmt.Fprintln(os.Stderr, e)
-		return 3
+		return report(stderr, e, 3)
 	}
-	doc, e := parser.Parse(string(data))
+	d, e := parser.Parse(string(source))
 	if e != nil {
-		json.NewEncoder(os.Stderr).Encode(map[string]any{"error": e})
-		return 2
+		return report(stderr, e, 2)
 	}
 	validation := "syntax-only"
-	if !*syntaxOnly {
-		if e = parser.Validate(doc); e != nil {
-			json.NewEncoder(os.Stderr).Encode(map[string]any{"error": e})
-			return 2
+	var roots map[string]*parser.Instance
+	if !o.syntax {
+		roots, e = parser.Normalize(d)
+		if e != nil {
+			return report(stderr, e, 2)
 		}
 		validation = "local-profile"
 	}
-	out, e := json.MarshalIndent(map[string]any{"astFormat": "sdui-ast/0.2", "validation": validation, "document": parser.Data(doc)}, "", "  ")
-	if e != nil {
-		fmt.Fprintln(os.Stderr, e)
-		return 3
-	}
-	out = append(out, '\n')
-	if *output != "" {
-		e = os.WriteFile(*output, out, 0644)
+	var out []byte
+	if o.format == "ast" {
+		out, e = json.MarshalIndent(map[string]any{"astFormat": "sdui-ast/0.2", "validation": validation, "document": parser.Data(d)}, "", "  ")
+		out = append(out, '\n')
 	} else {
-		_, e = os.Stdout.Write(out)
+		if o.syntax {
+			return report(stderr, fmt.Errorf("Export requires validation"), 2)
+		}
+		if o.entry == "" {
+			for name, n := range roots {
+				if n.Kind == "frame" {
+					if o.entry != "" {
+						return report(stderr, fmt.Errorf("Select --entry"), 2)
+					}
+					o.entry = name
+				}
+			}
+		}
+		root := roots[o.entry]
+		if root == nil || root.Kind != "frame" {
+			return report(stderr, fmt.Errorf("Entry must be a defined frame"), 2)
+		}
+		var text string
+		switch o.format {
+		case "dump":
+			text, e = presentation.Dump(root, o.columns)
+		case "markdown":
+			text, e = presentation.Markdown(root, o.columns)
+		case "prototype-svg":
+			text, e = presentation.PrototypeSVG(root)
+		case "prototype-html":
+			text, e = presentation.PrototypeHTML(root)
+		default:
+			e = fmt.Errorf("Unknown format %s", o.format)
+		}
+		if e != nil {
+			return report(stderr, e, 2)
+		}
+		out = []byte(text)
 	}
 	if e != nil {
-		fmt.Fprintln(os.Stderr, e)
-		return 3
+		return report(stderr, e, 3)
+	}
+	if o.output == "" {
+		_, e = stdout.Write(out)
+	} else {
+		e = writeAtomic(o.output, out)
+	}
+	if e != nil {
+		return report(stderr, e, 3)
 	}
 	return 0
 }
-func main() { os.Exit(run()) }
+func writeAtomic(path string, data []byte) error {
+	f, e := os.CreateTemp(filepath.Dir(path), ".sdui-*")
+	if e != nil {
+		return e
+	}
+	defer os.Remove(f.Name())
+	if _, e = f.Write(data); e != nil {
+		f.Close()
+		return e
+	}
+	if e = f.Close(); e != nil {
+		return e
+	}
+	return os.Rename(f.Name(), path)
+}
+func main() { os.Exit(execute(os.Args[1:], os.Stdin, os.Stdout, os.Stderr)) }
