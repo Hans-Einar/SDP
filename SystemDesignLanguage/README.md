@@ -3,8 +3,11 @@
 **2026-09-22:** [SDL-verktøyet](tools/README.md) genererer nå valgte strukturelle
 viewpoints fra validert SDL til Markdown/Mermaid og valgfri SVG-utskrift.
 [Checkpoint-status og viewpoint-katalog](../docs/checkpoint%231/08-SDL-Viewpoints-and-Implementation-Status.md)
-skiller implementert design-core 0.2 med UseCase/Feature/allokering fra Channel-
-og datakontrakter som fortsatt mangler. Diagrammene genereres av verktøyet, ikke manuelt per eksempel.
+beskriver design-core 0.5 med bruksmål, allokering, datakontrakter, Channels,
+scenarioer og implementasjonsplan. V2–V4 er levert som verktøyfunksjoner. Diagrammene genereres av verktøyet, ikke manuelt per eksempel.
+
+[Generert G1–G5-design](../SDUI/design/viewpoints/implementation.md) er inngangen
+for gjennomgang før Go-implementasjonen.
 
 Utforskende modellutvikling for SDP. Første leveranse er [researchkatalogen](research/existingDesignLanguages/README.md), med [syntese og neste avgrensede oppgave](research/README.md).
 

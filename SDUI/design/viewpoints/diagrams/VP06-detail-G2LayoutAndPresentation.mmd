@@ -1,0 +1,12 @@
+flowchart LR
+    n_G2LayoutAndPresentation["G2LayoutAndPresentation (activity)"]
+    n_G2M1RelativeMeasurement["G2M1RelativeMeasurement (activity)"]
+    n_G2M2SharedSvgGeometry["G2M2SharedSvgGeometry (activity)"]
+    n_G2M3FyneInteractions["G2M3FyneInteractions (activity)"]
+    n_G2M4RichContent["G2M4RichContent (activity)"]
+    n_InteractiveUiPreview["InteractiveUiPreview (feature)"]
+    n_G2LayoutAndPresentation -->|delivers| n_InteractiveUiPreview
+    n_G2M1RelativeMeasurement -->|refines| n_G2LayoutAndPresentation
+    n_G2M2SharedSvgGeometry -->|refines| n_G2LayoutAndPresentation
+    n_G2M3FyneInteractions -->|refines| n_G2LayoutAndPresentation
+    n_G2M4RichContent -->|refines| n_G2LayoutAndPresentation

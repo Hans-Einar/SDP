@@ -1,14 +1,14 @@
 {
-  "phase": "V3",
+  "phase": "V4",
   "scope": "Generated SDL model/views; no Go/runtime execution",
   "tests": {
-    "sdl_parser": 59,
-    "viewpoint_tool": 22,
+    "sdl_parser": 61,
+    "viewpoint_tool": 24,
     "sdui": 36
   },
-  "rendered_diagrams": 88,
-  "source_declarations": 273,
-  "source_facts": 675,
+  "rendered_diagrams": 142,
+  "source_declarations": 368,
+  "source_facts": 1106,
   "unsupported_viewpoints": [],
   "model_gap_count": 15,
   "checks": [
@@ -20,17 +20,18 @@
     "byte-identical repeat export"
   ],
   "files": {
-    "SystemDesignLanguage/tools/channel_views.py": "4c56feb9807e0cad9e6f0025abf3837e556e1a8e2c44e81e73b3453ee89d13bb",
+    "SystemDesignLanguage/tools/channel_views.py": "ce28341184bf1ddb7aad65e611ff5cc6af5bcbf03cc8a92883e4db7b64577dfc",
     "SystemDesignLanguage/tools/data_views.py": "015440a1dd66ed45d9178a57ae523fa7e61e73ee5424c4de636304fe15526128",
     "SystemDesignLanguage/tools/goal_views.py": "e312f68c4e204e6f119ccb9a7978e4876d8348e23d3c1a0bdf80f3dd317e440b",
-    "SystemDesignLanguage/tools/sdl.py": "e217eab43f5d6812e50a1651802cd4ee7a260c9ba6803b96bc7bccdf7aefc590",
+    "SystemDesignLanguage/tools/plan_views.py": "dc840dca34650d0fe57eceda039e4cf147954421c912617c4a3954697267e31e",
+    "SystemDesignLanguage/tools/sdl.py": "6fc15da4834b381d29c1e6157b4ec4dcf1e1446346f0a05b43090c3f01a65211",
     "SystemDesignLanguage/tools/verify_design.py": "4071b898f5fa4f6af34c58045383a9fc0c6c4ea3f74015a4927e926627c4140b",
-    "SystemDesignLanguage/tools/viewpoints.py": "34f86ec60641bace56371ff73b33a5299d19bac4d20b03d64c2da8f9e00fdd0b",
+    "SystemDesignLanguage/tools/viewpoints.py": "531ce26c789dcfd9230bb9c1020c895cc339e1dbebaa41db1896e726a99d8c17",
     "experiments/design_core/channel_core.py": "bfb289aa11045528f2146189975a7e66e0f00acb51ae2acf147a6f88306e675c",
     "experiments/design_core/data_core.py": "c967bd05a927fc6efee2bd22483e340b4e9dec304973e4bc5536272a6bb1d308",
-    "experiments/design_core/design_core.py": "9748010da51bf55afc874ace35a452e4a9f612466984bf101b9952d977084fae",
-    "SDUI/design/architecture.design": "dca05a1b0c13c0d18430fe7c951ba4e4545e32f3a18e76cb67230a3ba2067a4c",
-    "SDUI/design/architecture.validation.json": "c6f2ec4e88738688dff872056e84fccc315c69cf934256734a8ffc6ad03ae397",
-    "SDUI/design/viewpoints/manifest.json": "73be932ba95c3c6233c2d0187edd7af843ff8ff6804757ef4a2fe29b6d3c4ea0"
+    "experiments/design_core/design_core.py": "242ca11e2d08128a541ce03bbbf557b3fb7bc6060c74b2dd89f06922a91f843e",
+    "SDUI/design/architecture.design": "c4d147021b6adca7213aa0235d9459c23d2e7c411afd85b1a56f766c08ba68eb",
+    "SDUI/design/architecture.validation.json": "32adf1b0fab9e94a87c51ae8a439031c677407cc984e7ae1e9b31f55f7f23533",
+    "SDUI/design/viewpoints/manifest.json": "3201aa4136bb3def16e6849dd5066639359bb30711e8dad0c5ef204c36a0c0f0"
   }
 }

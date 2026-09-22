@@ -1,9 +1,10 @@
 # SDL/SDUI — implementasjonsplan i Go
 
-**Anbefalt prioritering 2026-09-22:** [SDL-viewpoint-løpet V0–V4](../../docs/checkpoint%231/08-SDL-Viewpoints-and-Implementation-Status.md)
-konkretiserer modell-/språkhull før mer UI-runtime. V0 og V1 er levert som SDL-verktøy med strukturelle visninger, UseCase/Feature og
-modusallokering. V2-data og V3-Channel-scenarioer må avklares
-før full viewpoint-dekning. G1–G5 beholdes som Go-plan, ikke markert ferdig av diagrammer.
+**Status 2026-09-22:** SDL-løpet V0–V4 er levert og pushet som fasebrancher.
+G1–G5 er fortsatt planlagt. Eierens siste avgrensning er å gjennomgå
+[den verktøygenererte implementasjonsrapporten](../design/viewpoints/implementation.md)
+før Go-koden påbegynnes. Rapporten kommer fra den felles SDL-kilden, med 18
+milepæler, ansvar, avhengigheter og ti deklarerte eksempelbaner.
 
 **ID:** SDUI-PLAN-003 · **Revisjon:** 2026-09-21.
 Erstatter PLAN-002s P0–P6-løp for Rust/C-ABI/FOX. Nye milepæler bruker G-prefiks;
@@ -109,5 +110,6 @@ prøves mot en avtalt profil. Ingen flere renderere bygges bare for å holde val
 
 SDL- og SDUI-katalogene har hver sin README for kodeansvar. Denne planen er felles;
 ikke opprett konkurrerende faseplaner under begge. Første kodeleveranse er G1-M1/M2
-og en liten G2-M1–M3-prøve. Ingen commits, push, installasjon eller worktree-sletting
-inngår i katalog-/checkpointoppdateringen.
+og en liten G2-M1–M3-prøve etter designgjennomgangen. Git følger
+[én branch per fase og commit per milepæl](../../docs/Development-Branch-Stack.md);
+push er autorisert etter hver fullført fase.

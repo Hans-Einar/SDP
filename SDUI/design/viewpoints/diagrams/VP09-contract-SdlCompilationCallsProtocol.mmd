@@ -1,0 +1,6 @@
+flowchart LR
+    n_CompileSdlRequest["CompileSdlRequest (message)"]
+    n_CompileSdlResult["CompileSdlResult (message)"]
+    n_SdlCompilationCallsProtocol["SdlCompilationCallsProtocol (contract)"]
+    n_SdlCompilationCallsProtocol -->|permits| n_CompileSdlRequest
+    n_SdlCompilationCallsProtocol -->|permits| n_CompileSdlResult

@@ -10,6 +10,8 @@ Utgangspunktet er `9ad432407004080dd7f4f0ab06d107523f4316fd`.
 | `sdl-sdui/phase-baseline` | `sdp-vNow` | B0-M1: samle eksisterende SDUI 0.2-prototype, eksempler, bevis og Go-retning; etablere Git-arbeidsmåten |
 | `sdl/phase-v1-viewpoints` | `sdl-sdui/phase-baseline` | V1-M1: språk/AST/validering; V1-M2: verktøyprojeksjoner; V1-M3: felles modell, generert utskrift og checkpoint |
 | `sdl/phase-v2-data-contracts` | `sdl/phase-v1-viewpoints` | V2-M1: data-/wireprofil; V2-M2: VP09/VP10; V2-M3: verifisert prøve og fasepush |
+| `sdl/phase-v3-channels` | `sdl/phase-v2-data-contracts` | V3-M1: kontraktkontrollerte scenarioer; V3-M2: sekvens og MessageSet; V3-M3: renderbevis og fasepush |
+| `sdl/phase-v4-integrated-design` | `sdl/phase-v3-channels` | V4-M1: G1–G5 som SDL; V4-M2: generert implementasjonsrapport; V4-M3: samlet eksport, checkpoint, fasepush og PR |
 
 De første to fasene samler arbeid som allerede var utført lokalt. Dette er en
 bevisst etterregistrering, ikke en påstand om at gamle økter hadde disse commit-

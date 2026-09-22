@@ -1,16 +1,16 @@
 sequenceDiagram
-    participant n_FyneBackend as FyneBackend
-    participant n_GoDomainImplementation as GoDomainImplementation
-    participant n_SdlDispatcher as SdlDispatcher
-    participant n_SdlUiBindingAdapter as SdlUiBindingAdapter
-    participant n_SduiDispatcher as SduiDispatcher
-    participant n_SduiInstanceStore as SduiInstanceStore
-    n_FyneBackend->>n_SduiDispatcher: 1: UiActionRequest (NativeUiActions)
-    n_SduiDispatcher->>n_SdlUiBindingAdapter: 2: BoundActionRequest (UiDomainActions)
-    n_SdlUiBindingAdapter->>n_SdlDispatcher: 3: SdlActionRequest (SdlActionCalls)
-    n_SdlDispatcher->>n_GoDomainImplementation: 4: DomainActionRequest (GoDomainCalls)
-    n_GoDomainImplementation-->>n_SdlDispatcher: 5: DomainActionResult (GoDomainCalls) reply-to 4
-    n_SdlDispatcher-->>n_SdlUiBindingAdapter: 6: SdlActionResult (SdlActionCalls) reply-to 3
-    n_SdlUiBindingAdapter-->>n_SduiDispatcher: 7: BoundActionResult (UiDomainActions) reply-to 2
-    n_SduiDispatcher-->>n_FyneBackend: 8: UiActionResult (NativeUiActions) reply-to 1
-    n_SduiInstanceStore->>n_FyneBackend: 9: UiGenerationNotices / UiGenerationChanged (UiGenerationEvents)
+    participant n_FyneBackend as Fyne Backend
+    participant n_SduiDispatcher as Sdui Dispatcher
+    participant n_SdlUiBindingAdapter as Sdl Ui Binding Adapter
+    participant n_SdlDispatcher as Sdl Dispatcher
+    participant n_GoDomainImplementation as Go Domain Implementation
+    participant n_SduiInstanceStore as Sdui Instance Store
+    n_FyneBackend->>n_SduiDispatcher: 1: Ui Action Request (Native Ui Actions)
+    n_SduiDispatcher->>n_SdlUiBindingAdapter: 2: Bound Action Request (Ui Domain Actions)
+    n_SdlUiBindingAdapter->>n_SdlDispatcher: 3: Sdl Action Request (Sdl Action Calls)
+    n_SdlDispatcher->>n_GoDomainImplementation: 4: Domain Action Request (Go Domain Calls)
+    n_GoDomainImplementation-->>n_SdlDispatcher: 5: Domain Action Result (Go Domain Calls) reply-to 4
+    n_SdlDispatcher-->>n_SdlUiBindingAdapter: 6: Sdl Action Result (Sdl Action Calls) reply-to 3
+    n_SdlUiBindingAdapter-->>n_SduiDispatcher: 7: Bound Action Result (Ui Domain Actions) reply-to 2
+    n_SduiDispatcher-->>n_FyneBackend: 8: Ui Action Result (Native Ui Actions) reply-to 1
+    n_SduiInstanceStore->>n_FyneBackend: 9: Ui Generation Notices / Ui Generation Changed (Ui Generation Events)

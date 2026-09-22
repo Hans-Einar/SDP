@@ -1,0 +1,31 @@
+flowchart LR
+    n_BuildSdlAst["BuildSdlAst (functionality)"]
+    n_CoordinateSdlCompilation["CoordinateSdlCompilation (functionality)"]
+    n_G4M1SdlFrontend["G4M1SdlFrontend (activity)"]
+    n_NormalizeSdlModel["NormalizeSdlModel (functionality)"]
+    n_PreserveSdlSourceMap["PreserveSdlSourceMap (functionality)"]
+    n_ResolveSdlSymbols["ResolveSdlSymbols (functionality)"]
+    n_SdlFrontend["SdlFrontend (unit)"]
+    n_SdlLexer["SdlLexer (unit)"]
+    n_SdlNormalizer["SdlNormalizer (unit)"]
+    n_SdlParser["SdlParser (unit)"]
+    n_SdlValidator["SdlValidator (unit)"]
+    n_TokenizeSdlSource["TokenizeSdlSource (functionality)"]
+    n_ValidateSdlProfile["ValidateSdlProfile (functionality)"]
+    n_ValidateSdlStructure["ValidateSdlStructure (functionality)"]
+    n_G4M1SdlFrontend -->|addresses| n_BuildSdlAst
+    n_G4M1SdlFrontend -->|addresses| n_CoordinateSdlCompilation
+    n_G4M1SdlFrontend -->|addresses| n_NormalizeSdlModel
+    n_G4M1SdlFrontend -->|addresses| n_PreserveSdlSourceMap
+    n_G4M1SdlFrontend -->|addresses| n_ResolveSdlSymbols
+    n_G4M1SdlFrontend -->|addresses| n_TokenizeSdlSource
+    n_G4M1SdlFrontend -->|addresses| n_ValidateSdlProfile
+    n_G4M1SdlFrontend -->|addresses| n_ValidateSdlStructure
+    n_SdlFrontend -->|owns| n_CoordinateSdlCompilation
+    n_SdlLexer -->|owns| n_TokenizeSdlSource
+    n_SdlNormalizer -->|owns| n_NormalizeSdlModel
+    n_SdlNormalizer -->|owns| n_PreserveSdlSourceMap
+    n_SdlParser -->|owns| n_BuildSdlAst
+    n_SdlValidator -->|owns| n_ResolveSdlSymbols
+    n_SdlValidator -->|owns| n_ValidateSdlProfile
+    n_SdlValidator -->|owns| n_ValidateSdlStructure

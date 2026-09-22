@@ -1,0 +1,40 @@
+flowchart LR
+    n_G1M1ParserAndAst["G1M1ParserAndAst (activity)"]
+    n_G1M2ValidationAndNormalization["G1M2ValidationAndNormalization (activity)"]
+    n_G1M3Concept1AndDumps["G1M3Concept1AndDumps (activity)"]
+    n_G2M1RelativeMeasurement["G2M1RelativeMeasurement (activity)"]
+    n_G2M2SharedSvgGeometry["G2M2SharedSvgGeometry (activity)"]
+    n_G2M3FyneInteractions["G2M3FyneInteractions (activity)"]
+    n_G2M4RichContent["G2M4RichContent (activity)"]
+    n_G3M1TypedUiSession["G3M1TypedUiSession (activity)"]
+    n_G3M2CandidatePublication["G3M2CandidatePublication (activity)"]
+    n_G3M3CompatibleState["G3M3CompatibleState (activity)"]
+    n_G4M1SdlFrontend["G4M1SdlFrontend (activity)"]
+    n_G4M2TypedExecution["G4M2TypedExecution (activity)"]
+    n_G4M3UiDomainBinding["G4M3UiDomainBinding (activity)"]
+    n_G4M4DomainReload["G4M4DomainReload (activity)"]
+    n_G5M1GeneratedGo["G5M1GeneratedGo (activity)"]
+    n_G5M2BehaviorParity["G5M2BehaviorParity (activity)"]
+    n_G5M3DocumentationExport["G5M3DocumentationExport (activity)"]
+    n_G5M4RetirePython["G5M4RetirePython (activity)"]
+    n_G1M2ValidationAndNormalization -->|depends-on| n_G1M1ParserAndAst
+    n_G1M3Concept1AndDumps -->|depends-on| n_G1M2ValidationAndNormalization
+    n_G2M1RelativeMeasurement -->|depends-on| n_G1M2ValidationAndNormalization
+    n_G2M2SharedSvgGeometry -->|depends-on| n_G2M1RelativeMeasurement
+    n_G2M3FyneInteractions -->|depends-on| n_G2M2SharedSvgGeometry
+    n_G2M4RichContent -->|depends-on| n_G2M3FyneInteractions
+    n_G3M1TypedUiSession -->|depends-on| n_G1M2ValidationAndNormalization
+    n_G3M1TypedUiSession -->|depends-on| n_G2M3FyneInteractions
+    n_G3M2CandidatePublication -->|depends-on| n_G3M1TypedUiSession
+    n_G3M3CompatibleState -->|depends-on| n_G3M2CandidatePublication
+    n_G4M2TypedExecution -->|depends-on| n_G4M1SdlFrontend
+    n_G4M3UiDomainBinding -->|depends-on| n_G3M1TypedUiSession
+    n_G4M3UiDomainBinding -->|depends-on| n_G4M2TypedExecution
+    n_G4M4DomainReload -->|depends-on| n_G3M3CompatibleState
+    n_G4M4DomainReload -->|depends-on| n_G4M3UiDomainBinding
+    n_G5M1GeneratedGo -->|depends-on| n_G4M4DomainReload
+    n_G5M2BehaviorParity -->|depends-on| n_G5M1GeneratedGo
+    n_G5M3DocumentationExport -->|depends-on| n_G2M4RichContent
+    n_G5M3DocumentationExport -->|depends-on| n_G5M2BehaviorParity
+    n_G5M4RetirePython -->|depends-on| n_G1M3Concept1AndDumps
+    n_G5M4RetirePython -->|depends-on| n_G5M3DocumentationExport

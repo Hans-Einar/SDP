@@ -30,7 +30,7 @@ vedtatte språkregler som følge av teknologivalget.
 
 | Område | Nåstatus |
 | --- | --- |
-| SDL | Python `design-core 0.2`: strukturell parser, AST, validering, formattering og mål/bidrag/allokering; se tillegg 08 |
+| SDL | Python `design-core 0.5`: struktur, data, Channels, scenarioer og planfakta; generert G1–G5-design i tillegg 09 |
 | MVP1 | 66-fils forfatterøvelse i kandidatprofil; ikke kjørbar med design-core |
 | SDUI | Python-parser for 0.2, AST med kildeposisjoner, validering og statisk normalisering |
 | Konsoll/Markdown | Genererte strukturdumper, rå Markdown i konsoll og separat renderbart innhold i Markdown |

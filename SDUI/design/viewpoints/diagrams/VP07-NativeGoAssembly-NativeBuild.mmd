@@ -1,14 +1,19 @@
 flowchart LR
     n_BuildGeneratedApplication["BuildGeneratedApplication (functionality)"]
     n_CommandLineHost["CommandLineHost (container)"]
+    n_DevelopmentTools["DevelopmentTools (unit)"]
     n_GenerateBindingRegistration["GenerateBindingRegistration (functionality)"]
     n_GenerateModelConstructors["GenerateModelConstructors (functionality)"]
     n_GoBuildRunner["GoBuildRunner (unit)"]
     n_GoCodeGenerator["GoCodeGenerator (unit)"]
     n_NativeGoAssembly["NativeGoAssembly (feature)"]
     n_PreserveHandwrittenSources["PreserveHandwrittenSources (functionality)"]
+    n_RetireReplacedPythonEntryPoints["RetireReplacedPythonEntryPoints (functionality)"]
+    n_VerifyNativeBehaviorParity["VerifyNativeBehaviorParity (functionality)"]
     n_BuildGeneratedApplication -->|allocated-to| n_CommandLineHost
     n_BuildGeneratedApplication -->|contributes-to| n_NativeGoAssembly
+    n_DevelopmentTools -->|owns| n_RetireReplacedPythonEntryPoints
+    n_DevelopmentTools -->|owns| n_VerifyNativeBehaviorParity
     n_GenerateBindingRegistration -->|allocated-to| n_CommandLineHost
     n_GenerateBindingRegistration -->|contributes-to| n_NativeGoAssembly
     n_GenerateModelConstructors -->|allocated-to| n_CommandLineHost
@@ -19,3 +24,7 @@ flowchart LR
     n_GoCodeGenerator -->|owns| n_PreserveHandwrittenSources
     n_PreserveHandwrittenSources -->|allocated-to| n_CommandLineHost
     n_PreserveHandwrittenSources -->|contributes-to| n_NativeGoAssembly
+    n_RetireReplacedPythonEntryPoints -->|allocated-to| n_CommandLineHost
+    n_RetireReplacedPythonEntryPoints -->|contributes-to| n_NativeGoAssembly
+    n_VerifyNativeBehaviorParity -->|allocated-to| n_CommandLineHost
+    n_VerifyNativeBehaviorParity -->|contributes-to| n_NativeGoAssembly

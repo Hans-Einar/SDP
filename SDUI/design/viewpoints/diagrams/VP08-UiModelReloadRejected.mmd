@@ -1,8 +1,8 @@
 sequenceDiagram
-    participant n_ReloadCoordinator as ReloadCoordinator
-    participant n_SduiFrontend as SduiFrontend
-    participant n_SourceWatcher as SourceWatcher
-    n_SourceWatcher->>n_ReloadCoordinator: 1: ReloadRequest (ModelReloadCalls)
-    n_ReloadCoordinator->>n_SduiFrontend: 2: CompileUiRequest (UiCompilationCalls)
-    n_SduiFrontend-->>n_ReloadCoordinator: 3: CompileUiRejected (UiCompilationCalls) reply-to 2
-    n_ReloadCoordinator-->>n_SourceWatcher: 4: ReloadRejected (ModelReloadCalls) reply-to 1
+    participant n_SourceWatcher as Source Watcher
+    participant n_ReloadCoordinator as Reload Coordinator
+    participant n_SduiFrontend as Sdui Frontend
+    n_SourceWatcher->>n_ReloadCoordinator: 1: Reload Request (Model Reload Calls)
+    n_ReloadCoordinator->>n_SduiFrontend: 2: Compile Ui Request (Ui Compilation Calls)
+    n_SduiFrontend-->>n_ReloadCoordinator: 3: Compile Ui Rejected (Ui Compilation Calls) reply-to 2
+    n_ReloadCoordinator-->>n_SourceWatcher: 4: Reload Rejected (Model Reload Calls) reply-to 1

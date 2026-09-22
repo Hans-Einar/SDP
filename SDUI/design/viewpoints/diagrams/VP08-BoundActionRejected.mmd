@@ -1,5 +1,5 @@
 sequenceDiagram
-    participant n_FyneBackend as FyneBackend
-    participant n_SduiDispatcher as SduiDispatcher
-    n_FyneBackend->>n_SduiDispatcher: 1: UiActionRequest (NativeUiActions)
-    n_SduiDispatcher-->>n_FyneBackend: 2: UiActionRejected (NativeUiActions) reply-to 1
+    participant n_FyneBackend as Fyne Backend
+    participant n_SduiDispatcher as Sdui Dispatcher
+    n_FyneBackend->>n_SduiDispatcher: 1: Ui Action Request (Native Ui Actions)
+    n_SduiDispatcher-->>n_FyneBackend: 2: Ui Action Rejected (Native Ui Actions) reply-to 1

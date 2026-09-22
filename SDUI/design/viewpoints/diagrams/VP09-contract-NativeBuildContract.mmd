@@ -1,0 +1,6 @@
+flowchart LR
+    n_NativeBuildContract["NativeBuildContract (contract)"]
+    n_NativeBuildDiagnostics["NativeBuildDiagnostics (field)"]
+    n_NativeBuildSucceeded["NativeBuildSucceeded (field)"]
+    n_NativeBuildContract -->|has-field| n_NativeBuildDiagnostics
+    n_NativeBuildContract -->|has-field| n_NativeBuildSucceeded

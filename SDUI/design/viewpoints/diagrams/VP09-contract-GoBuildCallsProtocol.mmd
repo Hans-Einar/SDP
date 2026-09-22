@@ -1,0 +1,6 @@
+flowchart LR
+    n_BuildGoRequest["BuildGoRequest (message)"]
+    n_BuildGoResult["BuildGoResult (message)"]
+    n_GoBuildCallsProtocol["GoBuildCallsProtocol (contract)"]
+    n_GoBuildCallsProtocol -->|permits| n_BuildGoRequest
+    n_GoBuildCallsProtocol -->|permits| n_BuildGoResult

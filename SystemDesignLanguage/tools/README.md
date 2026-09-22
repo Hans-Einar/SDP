@@ -38,6 +38,8 @@ SVG-generering beviser ikke interaktivitet eller fysisk utskrift/PDF-paginering.
 | diagrams/*.mmd | De samme diagramkildene som separate filer |
 | diagrams/*.svg | Resultat fra valgt renderer, når `--renderer` er oppgitt |
 | printout.md | Valgte viewpoints med SVG-bilder, når renderer er brukt |
+| implementation.md | Faser, milepæler, ansvar, eiere og scenarioer fra VP06; ingen innebygd G-plan |
+| message-sets.json | Avledede meldingssett per Channel og modus fra VP08 |
 | manifest.json | Kildehash, verktøyhash, rendereridentitet, fakta, node-/kantkoblinger og kildeposisjoner |
 
 Se [viewpoint-katalog og språkstatus](../../docs/checkpoint%231/08-SDL-Viewpoints-and-Implementation-Status.md).
@@ -62,13 +64,13 @@ andre notatfiler bevares. Ikke legg SDL-kilden i utdataområdet. Uten `--rendere
 fjernes tidligere generert printout/SVG så gammel rendering ikke vises som ny.
 Rendererresultater kan gjenbrukes når både Mermaid-kilde, renderer og SVG-hash stemmer.
 
-Verifisert 2026-09-22: 22/22 verktøytester, 59/59 SDL-parsertester og 36/36
-SDUI-tester. Prøvemodellen gir 88 SVG-diagrammer; alle kartlagte nodenavn finnes
+Verifisert 2026-09-22: 24/24 verktøytester, 61/61 SDL-parsertester og 36/36
+SDUI-tester. Prøvemodellen gir 142 SVG-diagrammer; alle kartlagte nodenavn finnes
 i SVG-teksten. Parser-, runtime-, arkitektur- og modusvisninger er visuelt
 stikkprøvekontrollert. Ingen fysisk utskrift eller paginert PDF er testet.
 [Maskinrapport](verification.json) og [generert printout](../../SDUI/design/viewpoints/printout.md).
 
-V1 bruker **design-core 0.2**, som erstatter aktiv 0.1. `goal_views.py` projiserer
+Leveransehistorikk: V1 innførte **design-core 0.2**, som erstatter aktiv 0.1. `goal_views.py` projiserer
 UseCase-sporbarhet og Feature-utsnitt; den inneholder ingen navn/fakta fra SDUI-
 eksemplet. VP01 er en merket flowchart, ikke en påstand om formell UML-støtte.
 VP07 viser én tegning per Feature og eksplisitt allokeringsmodus. Alle bidrag
@@ -86,8 +88,13 @@ verifikasjonskommandoen kjører testene, regenererer via CLI og kontrollerer
 kildekobling, SVG-etiketter, eksakte bitområder og repeterbar eksport:
 
 ```sh
-python3 SystemDesignLanguage/tools/verify_design.py --phase V2 --renderer /home/warloc/git/mermaid-rs-renderer/target/debug/mmdr
+python3 SystemDesignLanguage/tools/verify_design.py --phase V4 --renderer /home/warloc/git/mermaid-rs-renderer/target/debug/mmdr
 ```
 
-V3 bruker design-core 0.4. message-sets.json er et generert katalogprodukt;
+V3 innførte design-core 0.4. message-sets.json er et generert katalogprodukt;
 scenario-piler har kilde-ID-er for steg, deltakelse og governing kontrakt.
+
+Aktiv profil er **design-core 0.5** (V4); eldre profiler er erstattet.
+`plan_views.py` lager både VP06 og implementasjonsrapporten fra validerte fakta.
+[Start med G1–G5-rapporten](../../SDUI/design/viewpoints/implementation.md).
+V4s fasegraf, parsersekvens og bindingssekvens er visuelt stikkprøvekontrollert.

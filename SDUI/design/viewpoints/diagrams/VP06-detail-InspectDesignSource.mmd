@@ -1,0 +1,8 @@
+flowchart LR
+    n_ExportUiDocumentation["ExportUiDocumentation (activity)"]
+    n_InspectDesignSource["InspectDesignSource (activity)"]
+    n_InspectSdlSource["InspectSdlSource (activity)"]
+    n_InspectSduiSource["InspectSduiSource (activity)"]
+    n_ExportUiDocumentation -->|refines| n_InspectDesignSource
+    n_InspectSdlSource -->|refines| n_InspectDesignSource
+    n_InspectSduiSource -->|refines| n_InspectDesignSource

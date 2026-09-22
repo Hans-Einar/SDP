@@ -1,0 +1,44 @@
+flowchart LR
+    n_CancelPendingActions["CancelPendingActions (functionality)"]
+    n_CheckExecutionCompleteness["CheckExecutionCompleteness (functionality)"]
+    n_CheckFunctionSignatures["CheckFunctionSignatures (functionality)"]
+    n_CloseSdlInstance["CloseSdlInstance (functionality)"]
+    n_CorrelateActionResult["CorrelateActionResult (functionality)"]
+    n_CreateSdlInstance["CreateSdlInstance (functionality)"]
+    n_G4M2TypedExecution["G4M2TypedExecution (activity)"]
+    n_GoDomainImplementation["GoDomainImplementation (unit)"]
+    n_InvokeRegisteredFunction["InvokeRegisteredFunction (functionality)"]
+    n_ManageDomainState["ManageDomainState (functionality)"]
+    n_PerformDomainOperation["PerformDomainOperation (functionality)"]
+    n_RegisterDomainFunctions["RegisterDomainFunctions (functionality)"]
+    n_SdlDispatcher["SdlDispatcher (unit)"]
+    n_SdlExecutionGate["SdlExecutionGate (unit)"]
+    n_SdlFunctionRegistry["SdlFunctionRegistry (unit)"]
+    n_SdlRuntime["SdlRuntime (unit)"]
+    n_SdlStateStore["SdlStateStore (unit)"]
+    n_SnapshotDomainState["SnapshotDomainState (functionality)"]
+    n_ValidateActionInput["ValidateActionInput (functionality)"]
+    n_G4M2TypedExecution -->|addresses| n_CancelPendingActions
+    n_G4M2TypedExecution -->|addresses| n_CheckExecutionCompleteness
+    n_G4M2TypedExecution -->|addresses| n_CheckFunctionSignatures
+    n_G4M2TypedExecution -->|addresses| n_CloseSdlInstance
+    n_G4M2TypedExecution -->|addresses| n_CorrelateActionResult
+    n_G4M2TypedExecution -->|addresses| n_CreateSdlInstance
+    n_G4M2TypedExecution -->|addresses| n_InvokeRegisteredFunction
+    n_G4M2TypedExecution -->|addresses| n_ManageDomainState
+    n_G4M2TypedExecution -->|addresses| n_PerformDomainOperation
+    n_G4M2TypedExecution -->|addresses| n_RegisterDomainFunctions
+    n_G4M2TypedExecution -->|addresses| n_SnapshotDomainState
+    n_G4M2TypedExecution -->|addresses| n_ValidateActionInput
+    n_GoDomainImplementation -->|owns| n_PerformDomainOperation
+    n_SdlDispatcher -->|owns| n_CancelPendingActions
+    n_SdlDispatcher -->|owns| n_CorrelateActionResult
+    n_SdlDispatcher -->|owns| n_InvokeRegisteredFunction
+    n_SdlDispatcher -->|owns| n_ValidateActionInput
+    n_SdlExecutionGate -->|owns| n_CheckExecutionCompleteness
+    n_SdlFunctionRegistry -->|owns| n_CheckFunctionSignatures
+    n_SdlFunctionRegistry -->|owns| n_RegisterDomainFunctions
+    n_SdlRuntime -->|owns| n_CloseSdlInstance
+    n_SdlRuntime -->|owns| n_CreateSdlInstance
+    n_SdlStateStore -->|owns| n_ManageDomainState
+    n_SdlStateStore -->|owns| n_SnapshotDomainState

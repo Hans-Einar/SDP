@@ -7,7 +7,7 @@ Dette er en visning av målstruktur, ikke implementasjonsbevis. Ikke rediger den
 | --- | --- | --- | --- |
 | CommandLineHost | — | ComposeHeadlessExport, WriteGeneratedArtifacts | ExportSinkPort, PreparedFramePort, SduiFrontendPort, SourceSnapshotPort |
 | ContentServices | DiagramProvider, MarkdownProvider, ResourceStore | — | — |
-| DevelopmentTools | DiagnosticReporter, GoBuildRunner, GoCodeGenerator, ReloadCoordinator, SourceLoader, SourceWatcher | — | — |
+| DevelopmentTools | DiagnosticReporter, GoBuildRunner, GoCodeGenerator, ReloadCoordinator, SourceLoader, SourceWatcher | RetireReplacedPythonEntryPoints, VerifyNativeBehaviorParity | — |
 | DiagnosticReporter | — | ReportBindingDiagnostics, ReportSourceDiagnostics | — |
 | DiagramProvider | — | PrepareDiagramResource | DiagramEnginePort, ResourcePort |
 | DomainStateMigrator | — | CheckDomainStateCompatibility, MigrateOrResetDomainState | DomainStatePort, SdlModelPort |

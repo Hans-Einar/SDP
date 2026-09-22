@@ -1,0 +1,22 @@
+flowchart LR
+    n_CoalesceSourceChanges["CoalesceSourceChanges (functionality)"]
+    n_G3M2CandidatePublication["G3M2CandidatePublication (activity)"]
+    n_KeepLastValidModels["KeepLastValidModels (functionality)"]
+    n_ObserveSourceChanges["ObserveSourceChanges (functionality)"]
+    n_PrepareCandidateModels["PrepareCandidateModels (functionality)"]
+    n_PublishModelGeneration["PublishModelGeneration (functionality)"]
+    n_ReloadCoordinator["ReloadCoordinator (unit)"]
+    n_RetirePreviousGeneration["RetirePreviousGeneration (functionality)"]
+    n_SourceWatcher["SourceWatcher (unit)"]
+    n_G3M2CandidatePublication -->|addresses| n_CoalesceSourceChanges
+    n_G3M2CandidatePublication -->|addresses| n_KeepLastValidModels
+    n_G3M2CandidatePublication -->|addresses| n_ObserveSourceChanges
+    n_G3M2CandidatePublication -->|addresses| n_PrepareCandidateModels
+    n_G3M2CandidatePublication -->|addresses| n_PublishModelGeneration
+    n_G3M2CandidatePublication -->|addresses| n_RetirePreviousGeneration
+    n_ReloadCoordinator -->|owns| n_KeepLastValidModels
+    n_ReloadCoordinator -->|owns| n_PrepareCandidateModels
+    n_ReloadCoordinator -->|owns| n_PublishModelGeneration
+    n_ReloadCoordinator -->|owns| n_RetirePreviousGeneration
+    n_SourceWatcher -->|owns| n_CoalesceSourceChanges
+    n_SourceWatcher -->|owns| n_ObserveSourceChanges

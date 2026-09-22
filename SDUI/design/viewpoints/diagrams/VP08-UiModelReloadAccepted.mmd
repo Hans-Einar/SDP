@@ -1,11 +1,11 @@
 sequenceDiagram
-    participant n_FyneBackend as FyneBackend
-    participant n_ReloadCoordinator as ReloadCoordinator
-    participant n_SduiFrontend as SduiFrontend
-    participant n_SduiInstanceStore as SduiInstanceStore
-    participant n_SourceWatcher as SourceWatcher
-    n_SourceWatcher->>n_ReloadCoordinator: 1: ReloadRequest (ModelReloadCalls)
-    n_ReloadCoordinator->>n_SduiFrontend: 2: CompileUiRequest (UiCompilationCalls)
-    n_SduiFrontend-->>n_ReloadCoordinator: 3: CompileUiResult (UiCompilationCalls) reply-to 2
-    n_ReloadCoordinator-->>n_SourceWatcher: 4: ReloadPublished (ModelReloadCalls) reply-to 1
-    n_SduiInstanceStore->>n_FyneBackend: 5: UiGenerationNotices / UiGenerationChanged (UiGenerationEvents)
+    participant n_SourceWatcher as Source Watcher
+    participant n_ReloadCoordinator as Reload Coordinator
+    participant n_SduiFrontend as Sdui Frontend
+    participant n_SduiInstanceStore as Sdui Instance Store
+    participant n_FyneBackend as Fyne Backend
+    n_SourceWatcher->>n_ReloadCoordinator: 1: Reload Request (Model Reload Calls)
+    n_ReloadCoordinator->>n_SduiFrontend: 2: Compile Ui Request (Ui Compilation Calls)
+    n_SduiFrontend-->>n_ReloadCoordinator: 3: Compile Ui Result (Ui Compilation Calls) reply-to 2
+    n_ReloadCoordinator-->>n_SourceWatcher: 4: Reload Published (Model Reload Calls) reply-to 1
+    n_SduiInstanceStore->>n_FyneBackend: 5: Ui Generation Notices / Ui Generation Changed (Ui Generation Events)

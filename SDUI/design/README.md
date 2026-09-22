@@ -1,5 +1,8 @@
 # SDL/SDUI-parser og runtime beskrevet med SDL
 
+**Start med [generert G1–G5-implementasjonsplan](viewpoints/implementation.md).**
+Den viser planlagte milepæler, eiere, avhengigheter og eksempelforløp fra SDL.
+
 [SDL-verktøyets genererte viewpoints](viewpoints/viewpoints.md) og
 [samlet rendret utskrift](viewpoints/printout.md) er avledet fra denne kilden.
 Regenerering og utvalg står i [verktøydokumentasjonen](../../SystemDesignLanguage/tools/README.md).
@@ -10,7 +13,7 @@ Oppdatert 2026-09-22. [architecture.design](architecture.design) er den felles
 målstrukturen for **begge språkene**. Den erstatter den tidligere korte
 SDUI/vertsmodellen på samme sted. Ingen kopi opprettes under SDL-katalogen.
 
-Modellen er skrevet i implementert `design-core 0.4` og passerer den eksisterende
+Modellen er skrevet i implementert `design-core 0.5` og passerer den eksisterende
 SDL-parseren. Dette profilnummeret gjelder SDL-struktur, ikke utgått SDUI 0.1.
 Den beskriver planlagt Go-kode; kjørbar Go-parser/runtime finnes ennå ikke.
 
@@ -31,14 +34,14 @@ python3 SDUI/tools/export_design.py
 
 De to første kommandoene er den eksisterende SDL-CLI-en. Den siste bruker samme
 `check`, `canonicalize`, `symbol_table` og `to_json` for å regenerere AST,
-ansvarsoversikt og rapport. Én frontend brukes; V1-utvidelsen er definert i design-core 0.4, uten gammel fallback.
+ansvarsoversikt og rapport. Én frontend brukes; V1–V4 er definert i design-core 0.5, uten gammel fallback.
 Ugyldig modell stopper eksport før eksisterende artefakter erstattes.
 
-Verifisert 2026-09-22: 273 deklarasjoner og 675 fakta; 40 Units, 2 Containers,
-92 Functionality-er, 14 Capabilities, 30 Interfaces, 8 Modes, 12 Activities,
-2 Actors, 6 UseCases, 6 Features samt 15 data-/kontraktdefinisjoner.
-Syntaks, typer, navn, eierskap, sykluser og kanonisk representasjon passerer.
-Tallene viser modellomfang, ikke implementasjonsgrad.
+Verifisert kilde 2026-09-22: 368 deklarasjoner og 1106 fakta. 94 Functionality-er
+har eksplisitt milepælkobling. De 35 Activities inkluderer fem G-faser og 18
+milepæler; 17 Channels, 35 Messages og ti scenarioer beskriver samarbeid.
+Syntaks, typer, eierskap, kontrakter, korrelasjon og kanonisk form kontrolleres.
+Tallene viser modellomfang. G1–G5 har eksplisitt status planned.
 
 ## Bruksmål og arkitekturbidrag
 
@@ -104,7 +107,8 @@ kobler typed widgethandles, ruter kall og publiserer domeneoppdateringer til UI.
 Den kan kobles fra uten å gjøre en statisk SDUI-modell ugyldig. `DomainBindingPort`
 er grensen UI ser; `SdlExecutionPort` er grensen til SDL-kjøringen.
 
-Foreslått hendelsesforløp, forklart i prosa fordi design-core ikke har kjørbare steg:
+Planlagt hendelsesforløp; de eksplisitte eksempelbanene i VP08 validerer
+meldingsrekkefølge og kontrakter, mens tilstandsvirkningene nedenfor gjenstår:
 
 1. Fyne sender aktivering/commit med widgetidentitet, generation og revisjon.
 2. SDUI sjekker aktuell widget, enabled, binding og verdi før dispatch.
@@ -190,11 +194,11 @@ Aktivitetenes `refines` er detaljering, ikke sekvens, tilstandsmaskin eller sche
 ## Språkgrense og sporbarhet
 
 Modellen dekker ansvar for alle delene i [G1–G5-planen](../docs/implementation-plan.md).
-Det er fortsatt et strukturelt design. Parseren kan ikke kontrollere recordfelt,
-funksjonssignaturer, call-graf, eksakt hendelsesrekkefølge, atomisitet, state-maskiner,
-ressursbudsjetter, trådregler eller samsvar mellom Go-kode og modellen.
-Disse hullene må få presise profiler/kontrakter når det konkrete scenarioet krever det.
-Ingen grammatikk er utvidet for å få denne filen gjennom parseren.
+Parseren kontrollerer typede recordfelt, eksplisitte scenario-steg og korrelasjon
+innen den avgrensede design-core 0.5-profilen. Den kontrollerer ikke Go-signaturer,
+kall i implementert kode, atomisitet, state-maskiner, ressursbudsjetter, trådregler
+eller samsvar mellom Go-kode og modellen. V2–V4 utvidet grammatikk og tester
+samlet; kjørbar semantikk må få presise profiler og kontrakter i G-fasene.
 
 | Modellområde | Plan / fremtidig kodeområde |
 | --- | --- |
@@ -225,7 +229,7 @@ P1000- eller StanForD-format. Native Go-kall trenger ikke serialiseres slik.
 
 ## V3 — meldinger og scenarioer
 
-Sju logiske Channels og fire eksplisitte scenarioer dekker akseptert/avvist
+V3 innførte sju logiske Channels og fire eksplisitte scenarioer som dekker akseptert/avvist
 UI-handling og modellreload. BoundActionAccepted går FyneBackend → UI-dispatch →
 bindingsadapter → SDL-dispatch → registrert Go-domeneansvar, med korrelert retur
 for hvert kall. BoundActionRejected avsluttes ved UI-valideringen uten domene-kall.
@@ -235,3 +239,18 @@ Reload-scenarioene skiller publisert modell fra avvist kandidat. Bare den
 aksepterte banen inneholder UiGenerationNotices. Kontraktene har optional draft,
 generation og diagnose der fravær er meningsfullt; ingen kjørende tilstandsmigrering
 hevdes. [MessageSet](viewpoints/message-sets.json) er avledet av SDL-verktøyet.
+
+## V4 — samlet gjennomgangsgrunnlag
+
+Fase-/milepælplanen er nå også SDL. `addresses` kobler milepæler til Functionality,
+`delivers` kobler faser til Features, `depends-on` angir eksplisitte forutsetninger,
+og `illustrates` kobler scenarioer til arbeidsaktiviteten. implementation.md lages
+av SDL-verktøyet fra disse faktaene, uten en innebygd G1–G5-plan.
+
+De ti scenarioene viser frontendens lexer/parser/validering/normalisering,
+felles layout for Fyne og SVG, lokal Go-handling uten SDL, akseptert/avvist
+SDL-binding, UI-reload, SDL-reload og native bygg. Meldingskontraktenes bytesfelt
+for tokens/AST/modell/scene er bevisst opake artefaktgrenser; komplette Go-structs,
+instanslivstid, atomisk reload/state-migrering og dimensjons-/fontenhet skal
+realiseres og testes i G-fasene. Ingen datatransformasjon eller tilstandsendring
+utledes bare fordi to meldinger følger hverandre i et scenario.

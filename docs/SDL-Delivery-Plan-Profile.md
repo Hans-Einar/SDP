@@ -36,3 +36,9 @@ V4-M2 levert: generisk implementation.md fra fase-/milepælrelasjoner, med
 ansvarseiere og scenariofigurer. 24 verktøytester består. Modellens ti scenarioer
 dekker kompilering, interaktiv/statisk presentasjon, lokal Go-handling, SDL-binding,
 UI-/SDL-reload og native bygg. Dette er designbaner, ikke kjørte Go-programmer.
+
+V4-M3 verifisert: 61 SDL-parsertester, 24 verktøytester og 36 SDUI-tester
+består. 142 SVG-diagrammer fra 368 deklarasjoner og 1106 fakta er kontrollert
+for kildekobling og byte-identisk reeksport. Femten ufullstendige modusallokeringer
+rapporteres fortsatt eksplisitt. Fasegraf, parser- og bindingssekvens er visuelt
+stikkprøvekontrollert; ingen Go-runtime eller fysisk print er verifisert.

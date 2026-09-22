@@ -8,8 +8,9 @@ SDUI 0.2 og Go/Fyne-retningen i [tillegg 07](07-SDUI-0.2-and-Go-Direction.md) be
 
 Checkpoint #1 er langt mer omfattende enn den implementerte SDL-profilen.
 Den inneholder begreper, eksempler og kandidater, ikke en ferdig kompilator for
-hele beskrivelsen. Vi bør fullføre en avgrenset **SDL-viewpoint-leveranse før mer
-SDUI-runtimearbeid**. Det krever ikke at all kjørbar SDL-semantikk implementeres først.
+hele beskrivelsen. V0–V4 er nå levert som en avgrenset **SDL-viewpoint-leveranse**.
+[Tillegg 09](09-SDL-Generated-Go-Design-Review.md) er inngangen til gjennomgang av
+det genererte G1–G5-designet før Go-implementasjon.
 
 Viewpoints skal genereres av SDL-verktøyet fra validerte modellfakta. En agent skal
 ikke tegne et plausibelt diagram og presentere det som verktøyets resultat.
@@ -19,7 +20,7 @@ Visningsvalg får filtrere og ordne fakta, men ikke opprette nye arkitekturfakta
 
 | Område | Checkpoint/studier | Faktisk implementasjon |
 | --- | --- | --- |
-| Unit, Container, Functionality, Capability, Interface, Activity, Mode | Strukturelt grunnlag | Python design-core 0.4 parser/AST/validator/formatter |
+| Unit, Container, Functionality, Capability, Interface, Activity, Mode | Strukturelt grunnlag | Python design-core 0.5 parser/AST/validator/formatter |
 | contains, owns, realizes, provides, consumes, requires in mode, refines | Typede strukturrelasjoner | Implementert med navn, eierskap, sykluser og kildeposisjoner |
 | Actor, Use Case, Feature og bidrag | 02/04 og V1s avgrensede språkregler | Implementert i 0.2: pursues, supports, contributes-to; direkte og mange-til-mange-bidrag |
 | Functionality-allokering | V1, eksplisitt kjørekontekst | allocated-to Container in mode Mode; høyst én Container per ansvar/modus, uendret logisk eier |
@@ -51,7 +52,7 @@ SDL-generatoren; nye viewpoints må angi hvilke modellfakta de trenger.
 | VP03 | Hvilke ansvar realiserer en kapabilitet, og hvem eier dem? | Unit owns Functionality, Functionality realizes Capability, Unit provides Capability | Genereres |
 | VP04 | Hvilke grensesnitt brukes? Samarbeidstabell, senere kontraktgraf | consumes; senere tilbyder/binding/kontrakt | Tabell genereres; kobling mellom konsument og tilbyder utledes ikke |
 | VP05 | Hva kreves i valgt modus? Avhengighetsgraf | requires Interface in mode Mode | Genereres |
-| VP06 | Hvordan detaljeres en aktivitet? Refinement-graf | Activity refines Activity | Genereres; ingen tidsrekkefølge |
+| VP06 | Hvordan deles arbeidet i faser og milepæler? | refines, addresses, delivers, depends-on, illustrates og implementation-status | Genereres med ansvarsdekning og eksplisitte avhengigheter; ingen scheduler |
 | VP07 | Hvordan ligger en Feature over arkitekturen? Markert bidragslag | Feature-bidrag, Functionality-eier og eksplisitt Container-allokering per modus | Genereres; manglende allokering rapporteres, ingen modus arves |
 | VP08 | Hvordan kommuniserer deltakerne over Channel? Sekvens | Deltakere/roller, kontrakter, meldinger, scenario/protokollsteg, korrelasjon, separate navngitte alternative baner | Genereres |
 | VP09 | Hvor kommer data fra og hvor hentes de? Datakart/ER | Dataset, Datagram-kilde/projeksjon, kontrakt, valgfri Database-lagring, eier | Genereres |
@@ -101,7 +102,7 @@ Dette er en SDL-verktøyfunksjon, ikke håndtegnede diagrammer for SDUI-eksemple
 Prøveinput er [SDL-modellen av SDL/SDUI](../../SDUI/design/architecture.design).
 [Generert Markdown](../../SDUI/design/viewpoints/viewpoints.md) og
 [rendret utskrift](../../SDUI/design/viewpoints/printout.md) viser alle tilgjengelige
-viewpoints og mangelstatus for resten. 273 deklarasjoner og 675 fakta kommer
+viewpoints og eksplisitte modellhull. 368 deklarasjoner og 1106 fakta kommer
 fra kilden. Actor/UseCase/Feature og utvalgt Functionality-allokering er skrevet
 som SDL-fakta i modellen, ikke rekonstruert av generatoren fra prosa eller navn.
 De 6 bruksmålene, 6 Features og 2 Actors dekker inspeksjon, UI-prøving, domene-
@@ -112,9 +113,9 @@ VP07 viser 15 uspesifiserte allokeringer i modusutsnittene. Et delt ansvar kan
 ha plassering i en modus der andre bidrag til samme Feature ennå ikke er
 allokert. Det er en synlig grense for modellen, ikke bevis på at hele Feature-en
 kan kjøres i den modusen. Funksjonelt bidrag er ennå ikke modusbetinget.
-Disse utsnittene er ikke en komplett deploymentplan for alle 92 ansvar.
+Disse utsnittene er ikke en komplett deploymentplan for alle 94 ansvar.
 
-Verifikasjon: 88 SVG-diagrammer rendret, 22 verktøytester, 59 SDL-parsertester og
+Verifikasjon: 142 SVG-diagrammer rendret, 24 verktøytester, 61 SDL-parsertester og
 36 SDUI-tester består. Alle diagramnoder har modell-/kildekobling, alle nodenavn
 finnes i SVG-en, og gjentatt eksport gir samme artefakter. Visuell kontroll er
 stikkprøver, ikke fysisk print/PDF. [Rapport](../../SystemDesignLanguage/tools/verification.json).
@@ -127,10 +128,12 @@ stikkprøver, ikke fysisk print/PDF. [Rapport](../../SystemDesignLanguage/tools/
 | V1 — mål og bidrag, levert | design-core 0.2, Actor/UseCase/Feature, direkte/indirekte bidrag og modusallokering; positive/negative tester; VP01/VP07 generert fra portert SDL/SDUI-modell |
 | V2 — data og kontrakter, levert | Definer Dataset/Datagram/Database og kontraktinnhold, opprinnelse/projeksjon og ved-behov-persistens; VP09, og VP10 kun for valgt encoding |
 | V3 — Channel og scenario, levert | Typede deltakere/roller, kontraktreferanser og deklarert meldingsrekkefølge; VP08 med request/resultat og negativ kontraktkontroll |
-| V4 — samlet SDUI-design | Berik SDL-kilden med de nye fakta og få alle bestilte viewpoints generert; ingen faktatillegg i generatoren |
+| V4 — samlet SDUI-design, levert | Berik SDL-kilden med de nye fakta og få alle bestilte viewpoints generert; ingen faktatillegg i generatoren |
 
-V1 er levert som språk-/modellarbeid før en stor runtime. Neste avgrensede
-leveranse er V4. Avklar grammatikk og semantikk på én SDUI-witness, oppdater definisjon/tester samlet, og port til Go i ett løp.
+V0–V4 er levert. Eierens avgrensning er nå å gjennomgå den
+[genererte G1–G5-planen](../../SDUI/design/viewpoints/implementation.md) før
+Go-fasene startes. Fem faser og 18 milepæler dekker alle 94 Functionality-er.
+Alle G-faser og milepæler har status planned i SDL-kilden.
 Ikke bygg en stor ny Python-runtime for å få diagrammer. Go-parserporten og disse
 viewpoint-behovene må planlegges sammen; MVP1-korpusets kandidatsyntaks er ikke en
 ferdig grammatikk som kan aktiveres med en permissiv fallback.

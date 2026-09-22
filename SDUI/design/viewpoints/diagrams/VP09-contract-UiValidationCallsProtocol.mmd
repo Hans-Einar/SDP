@@ -1,0 +1,6 @@
+flowchart LR
+    n_UiValidationCallsProtocol["UiValidationCallsProtocol (contract)"]
+    n_ValidateUiRequest["ValidateUiRequest (message)"]
+    n_ValidateUiResult["ValidateUiResult (message)"]
+    n_UiValidationCallsProtocol -->|permits| n_ValidateUiRequest
+    n_UiValidationCallsProtocol -->|permits| n_ValidateUiResult

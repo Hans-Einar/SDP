@@ -15,7 +15,7 @@ Den felles [implementasjonsplanen](../../SDUI/docs/implementation-plan.md) og
 [målarkitekturen](../../SDUI/docs/target-architecture.md) eier fasevalg og avhengigheter.
 [Checkpoint #1](../../docs/checkpoint%231/07-SDUI-0.2-and-Go-Direction.md) beskriver
 status og språkgrenser. Eksisterende [Python-grunnlag](../../experiments/design_core/README.md) beholdes til
-porten er verifisert. Gjeldende SDL-portgrunnlag er design-core 0.2, inkludert V1-viewpoints; versjonen er uavhengig av SDUI.
+porten er verifisert. Gjeldende SDL-portgrunnlag er design-core 0.5, inkludert V1–V4-viewpoints og plan-/Channel-/datakontrakter; versjonen er uavhengig av SDUI.
 
 Modulnavn, Go-versjon, eventuell go.work og felles portpakker fastsettes ved første
 kodeleveranse. Ingen tomme API-er eller falske go test-resultater opprettes nå.

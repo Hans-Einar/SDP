@@ -1,0 +1,17 @@
+flowchart LR
+    n_BuildSduiAst["BuildSduiAst (functionality)"]
+    n_G1M1ParserAndAst["G1M1ParserAndAst (activity)"]
+    n_IdentifySourceRevision["IdentifySourceRevision (functionality)"]
+    n_ReadBoundedSources["ReadBoundedSources (functionality)"]
+    n_SduiLexer["SduiLexer (unit)"]
+    n_SduiParser["SduiParser (unit)"]
+    n_SourceLoader["SourceLoader (unit)"]
+    n_TokenizeSduiSource["TokenizeSduiSource (functionality)"]
+    n_G1M1ParserAndAst -->|addresses| n_BuildSduiAst
+    n_G1M1ParserAndAst -->|addresses| n_IdentifySourceRevision
+    n_G1M1ParserAndAst -->|addresses| n_ReadBoundedSources
+    n_G1M1ParserAndAst -->|addresses| n_TokenizeSduiSource
+    n_SduiLexer -->|owns| n_TokenizeSduiSource
+    n_SduiParser -->|owns| n_BuildSduiAst
+    n_SourceLoader -->|owns| n_IdentifySourceRevision
+    n_SourceLoader -->|owns| n_ReadBoundedSources

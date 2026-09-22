@@ -1,0 +1,8 @@
+sequenceDiagram
+    participant n_CommandLineHost as Command Line Host
+    participant n_SduiLayout as Sdui Layout
+    participant n_SduiPresentation as Sdui Presentation
+    n_CommandLineHost->>n_SduiLayout: 1: Layout Request (Layout Calls)
+    n_SduiLayout-->>n_CommandLineHost: 2: Layout Result (Layout Calls) reply-to 1
+    n_CommandLineHost->>n_SduiPresentation: 3: Export Svg Request (Svg Export Calls)
+    n_SduiPresentation-->>n_CommandLineHost: 4: Export Svg Result (Svg Export Calls) reply-to 3

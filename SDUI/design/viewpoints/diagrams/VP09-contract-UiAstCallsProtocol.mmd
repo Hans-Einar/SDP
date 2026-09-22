@@ -1,0 +1,6 @@
+flowchart LR
+    n_BuildUiAstRequest["BuildUiAstRequest (message)"]
+    n_BuildUiAstResult["BuildUiAstResult (message)"]
+    n_UiAstCallsProtocol["UiAstCallsProtocol (contract)"]
+    n_UiAstCallsProtocol -->|permits| n_BuildUiAstRequest
+    n_UiAstCallsProtocol -->|permits| n_BuildUiAstResult

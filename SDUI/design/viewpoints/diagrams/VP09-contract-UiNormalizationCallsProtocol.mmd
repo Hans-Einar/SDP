@@ -1,0 +1,6 @@
+flowchart LR
+    n_NormalizeUiRequest["NormalizeUiRequest (message)"]
+    n_NormalizeUiResult["NormalizeUiResult (message)"]
+    n_UiNormalizationCallsProtocol["UiNormalizationCallsProtocol (contract)"]
+    n_UiNormalizationCallsProtocol -->|permits| n_NormalizeUiRequest
+    n_UiNormalizationCallsProtocol -->|permits| n_NormalizeUiResult

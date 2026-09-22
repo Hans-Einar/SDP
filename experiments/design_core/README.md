@@ -1,6 +1,6 @@
 # design-core parser experiment
 
-Status: isolated prototype for **design-core 0.2**, not an installed SDP gate.
+Status: isolated prototype for **design-core 0.5**, not an installed SDP gate.
 The [language definition](../../docs/Design-Language-Definition.md) is authoritative.
 The implementation uses the Python standard library; tested with Python 3.12.
 
@@ -110,3 +110,11 @@ Det logiske eierskapet beholdes. Manglende allokering er ikke automatisk feil,
 og ingen deployment utledes fra contains. Se språkdefinisjonens 5.1 og 10.3.
 [SDL-verktøyet](../../SystemDesignLanguage/tools/README.md) genererer VP01/VP07
 fra de validerte faktaene. Go-port og runtime er fortsatt framtidig arbeid.
+
+## Gjeldende samlet profil
+
+V2–V4 er nå implementert: data-/wirekontrakter i data_core.py, Channel/scenarioer
+i channel_core.py og typede leveranseplanrelasjoner i design_core.py. Aktive
+0.1–0.4-innganger er erstattet og lokale prøver portert. V1-avsnittet over viser
+leveransehistorikken. Registrerte tillegg står i språkdefinisjonens profillenker.
+Ingen Go-kode eller modell-runtime er implementert av disse strukturelle kontrollene.
