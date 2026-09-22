@@ -1,6 +1,8 @@
 # Checkpoint #1 — generert G1–G5-design
 
 Dato: 2026-09-22. V2–V4 er levert for gjennomgang før Go-implementasjon.
+Tallene nedenfor dokumenterer V4-leveransen. Den levende SDL-modellen er senere
+utvidet med [G6 dokumentnavigasjon](10-SDL-Viewpoint-Navigation.md).
 **Start med [den genererte implementasjonsrapporten](../../SDUI/design/viewpoints/implementation.md).**
 Den kommer fra [SDL-kilden](../../SDUI/design/architecture.design), via SDLs
 parser, validator og viewpoint-verktøy. Faser, ansvar, avhengigheter og

@@ -1,0 +1,68 @@
+flowchart LR
+    n_CaptureNavigationTarget["CaptureNavigationTarget (functionality)"]
+    n_ComposeViewPackage["ComposeViewPackage (functionality)"]
+    n_DispatchViewOpen["DispatchViewOpen (functionality)"]
+    n_DocumentBroker["DocumentBroker (unit)"]
+    n_EvictUnusedViewBundles["EvictUnusedViewBundles (functionality)"]
+    n_GenerateViewNavigation["GenerateViewNavigation (functionality)"]
+    n_KeyViewRevision["KeyViewRevision (functionality)"]
+    n_NavigableDesignDocumentation["NavigableDesignDocumentation (feature)"]
+    n_PreserveViewAnchors["PreserveViewAnchors (functionality)"]
+    n_ProjectSelectedView["ProjectSelectedView (functionality)"]
+    n_PublishViewBundle["PublishViewBundle (functionality)"]
+    n_RejectStaleViewResults["RejectStaleViewResults (functionality)"]
+    n_ResolveConfiguredViewer["ResolveConfiguredViewer (functionality)"]
+    n_RetainVisibleViewBundle["RetainVisibleViewBundle (functionality)"]
+    n_RouteDocumentToPane["RouteDocumentToPane (functionality)"]
+    n_SdlViewpointGenerator["SdlViewpointGenerator (unit)"]
+    n_ServeViewRequests["ServeViewRequests (functionality)"]
+    n_ValidateViewRequest["ValidateViewRequest (functionality)"]
+    n_ViewArtifactStore["ViewArtifactStore (unit)"]
+    n_ViewServiceHost["ViewServiceHost (container)"]
+    n_ViewerLaunchAdapter["ViewerLaunchAdapter (unit)"]
+    n_XfmdDocumentHost["XfmdDocumentHost (container)"]
+    n_CaptureNavigationTarget -->|allocated-to| n_XfmdDocumentHost
+    n_CaptureNavigationTarget -->|contributes-to| n_NavigableDesignDocumentation
+    n_ComposeViewPackage -->|allocated-to| n_ViewServiceHost
+    n_ComposeViewPackage -->|contributes-to| n_NavigableDesignDocumentation
+    n_DispatchViewOpen -->|allocated-to| n_ViewServiceHost
+    n_DispatchViewOpen -->|contributes-to| n_NavigableDesignDocumentation
+    n_DocumentBroker -->|owns| n_KeyViewRevision
+    n_DocumentBroker -->|owns| n_RejectStaleViewResults
+    n_DocumentBroker -->|owns| n_ServeViewRequests
+    n_DocumentBroker -->|owns| n_ValidateViewRequest
+    n_EvictUnusedViewBundles -->|allocated-to| n_ViewServiceHost
+    n_EvictUnusedViewBundles -->|contributes-to| n_NavigableDesignDocumentation
+    n_GenerateViewNavigation -->|allocated-to| n_ViewServiceHost
+    n_GenerateViewNavigation -->|contributes-to| n_NavigableDesignDocumentation
+    n_KeyViewRevision -->|allocated-to| n_ViewServiceHost
+    n_KeyViewRevision -->|contributes-to| n_NavigableDesignDocumentation
+    n_PreserveViewAnchors -->|allocated-to| n_ViewServiceHost
+    n_PreserveViewAnchors -->|contributes-to| n_NavigableDesignDocumentation
+    n_ProjectSelectedView -->|allocated-to| n_ViewServiceHost
+    n_ProjectSelectedView -->|contributes-to| n_NavigableDesignDocumentation
+    n_PublishViewBundle -->|allocated-to| n_ViewServiceHost
+    n_PublishViewBundle -->|contributes-to| n_NavigableDesignDocumentation
+    n_RejectStaleViewResults -->|allocated-to| n_ViewServiceHost
+    n_RejectStaleViewResults -->|contributes-to| n_NavigableDesignDocumentation
+    n_ResolveConfiguredViewer -->|allocated-to| n_ViewServiceHost
+    n_ResolveConfiguredViewer -->|contributes-to| n_NavigableDesignDocumentation
+    n_RetainVisibleViewBundle -->|allocated-to| n_ViewServiceHost
+    n_RetainVisibleViewBundle -->|contributes-to| n_NavigableDesignDocumentation
+    n_RouteDocumentToPane -->|allocated-to| n_XfmdDocumentHost
+    n_RouteDocumentToPane -->|contributes-to| n_NavigableDesignDocumentation
+    n_SdlViewpointGenerator -->|owns| n_ComposeViewPackage
+    n_SdlViewpointGenerator -->|owns| n_GenerateViewNavigation
+    n_SdlViewpointGenerator -->|owns| n_PreserveViewAnchors
+    n_SdlViewpointGenerator -->|owns| n_ProjectSelectedView
+    n_ServeViewRequests -->|allocated-to| n_ViewServiceHost
+    n_ServeViewRequests -->|contributes-to| n_NavigableDesignDocumentation
+    n_ValidateViewRequest -->|allocated-to| n_ViewServiceHost
+    n_ValidateViewRequest -->|contributes-to| n_NavigableDesignDocumentation
+    n_ViewArtifactStore -->|owns| n_EvictUnusedViewBundles
+    n_ViewArtifactStore -->|owns| n_PublishViewBundle
+    n_ViewArtifactStore -->|owns| n_RetainVisibleViewBundle
+    n_ViewerLaunchAdapter -->|owns| n_DispatchViewOpen
+    n_ViewerLaunchAdapter -->|owns| n_ResolveConfiguredViewer
+    n_XfmdDocumentHost -->|owns| n_CaptureNavigationTarget
+    n_XfmdDocumentHost -->|owns| n_RouteDocumentToPane

@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant n_XfmdDocumentHost as Xfmd Document Host
+    participant n_DocumentBroker as Document Broker
+    participant n_SdlViewpointGenerator as Sdl Viewpoint Generator
+    participant n_ViewArtifactStore as View Artifact Store
+    participant n_ViewerLaunchAdapter as Viewer Launch Adapter
+    n_XfmdDocumentHost->>n_DocumentBroker: 1: Select View Request (View Navigation Calls)
+    n_DocumentBroker->>n_SdlViewpointGenerator: 2: Project View Request (View Projection Calls)
+    n_SdlViewpointGenerator-->>n_DocumentBroker: 3: View Bundle Result (View Projection Calls) reply-to 2
+    n_DocumentBroker->>n_ViewArtifactStore: 4: Publish View Request (View Publication Calls)
+    n_ViewArtifactStore-->>n_DocumentBroker: 5: View Reference Result (View Publication Calls) reply-to 4
+    n_DocumentBroker->>n_ViewerLaunchAdapter: 6: Launch View Request (View Launch Calls)
+    n_ViewerLaunchAdapter->>n_XfmdDocumentHost: 7: Display View Request (View Display Calls)
+    n_XfmdDocumentHost-->>n_ViewerLaunchAdapter: 8: View Display Result (View Display Calls) reply-to 7
+    n_ViewerLaunchAdapter-->>n_DocumentBroker: 9: View Launch Result (View Launch Calls) reply-to 6
+    n_DocumentBroker-->>n_XfmdDocumentHost: 10: View Opened Result (View Navigation Calls) reply-to 1

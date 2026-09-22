@@ -1,0 +1,17 @@
+flowchart LR
+    n_DocumentBroker["DocumentBroker (unit)"]
+    n_G6M2OnDemandViews["G6M2OnDemandViews (activity)"]
+    n_KeyViewRevision["KeyViewRevision (functionality)"]
+    n_ProjectSelectedView["ProjectSelectedView (functionality)"]
+    n_PublishViewBundle["PublishViewBundle (functionality)"]
+    n_SdlViewpointGenerator["SdlViewpointGenerator (unit)"]
+    n_ValidateViewRequest["ValidateViewRequest (functionality)"]
+    n_ViewArtifactStore["ViewArtifactStore (unit)"]
+    n_DocumentBroker -->|owns| n_KeyViewRevision
+    n_DocumentBroker -->|owns| n_ValidateViewRequest
+    n_G6M2OnDemandViews -->|addresses| n_KeyViewRevision
+    n_G6M2OnDemandViews -->|addresses| n_ProjectSelectedView
+    n_G6M2OnDemandViews -->|addresses| n_PublishViewBundle
+    n_G6M2OnDemandViews -->|addresses| n_ValidateViewRequest
+    n_SdlViewpointGenerator -->|owns| n_ProjectSelectedView
+    n_ViewArtifactStore -->|owns| n_PublishViewBundle

@@ -1,7 +1,8 @@
 # Checkpoint #1 — SDL-status og genererte viewpoints
 
 Dato: 2026-09-22. Gjennomgang av dokumentasjon, eksisterende parser, MVP1-korpus
-og SDL-modellen av SDL/SDUI. Dette er dagens inngang for prioritering av SDL-arbeid.
+og SDL-modellen av SDL/SDUI. Tall og verifikasjon nedenfor er V4-snapshotet.
+Se [tillegg 10](10-SDL-Viewpoint-Navigation.md) for senere G6-design og dagens modell.
 SDUI 0.2 og Go/Fyne-retningen i [tillegg 07](07-SDUI-0.2-and-Go-Direction.md) beholdes.
 
 ## Konklusjon

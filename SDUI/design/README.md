@@ -1,6 +1,6 @@
 # SDL/SDUI-parser og runtime beskrevet med SDL
 
-**Start med [generert G1–G5-implementasjonsplan](viewpoints/implementation.md).**
+**Start med [generert G1–G6-implementasjonsplan](viewpoints/implementation.md).**
 Den viser planlagte milepæler, eiere, avhengigheter og eksempelforløp fra SDL.
 
 [SDL-verktøyets genererte viewpoints](viewpoints/viewpoints.md) og
@@ -37,11 +37,11 @@ De to første kommandoene er den eksisterende SDL-CLI-en. Den siste bruker samme
 ansvarsoversikt og rapport. Én frontend brukes; V1–V4 er definert i design-core 0.5, uten gammel fallback.
 Ugyldig modell stopper eksport før eksisterende artefakter erstattes.
 
-Verifisert kilde 2026-09-22: 368 deklarasjoner og 1106 fakta. 94 Functionality-er
-har eksplisitt milepælkobling. De 35 Activities inkluderer fem G-faser og 18
-milepæler; 17 Channels, 35 Messages og ti scenarioer beskriver samarbeid.
+Verifisert kilde 2026-09-22: 453 deklarasjoner og 1387 fakta. 109 Functionality-er
+har eksplisitt milepælkobling. De 40 Activities inkluderer seks G-faser og 22
+milepæler; 22 Channels, 48 Messages og 13 scenarioer beskriver samarbeid.
 Syntaks, typer, eierskap, kontrakter, korrelasjon og kanonisk form kontrolleres.
-Tallene viser modellomfang. G1–G5 har eksplisitt status planned.
+Tallene viser modellomfang. G1–G6 har eksplisitt status planned.
 
 ## Bruksmål og arkitekturbidrag
 
@@ -54,7 +54,7 @@ beholder samme identitet og eier i alle utsnitt.
 Allokeringen plasserer konkrete ansvar i `CommandLineHost` eller `FyneHost` i
 eksplisitte modi. Dette flytter ikke bibliotekene eller deres eierskap. De nye
 allokeringene er designpåstander, ikke bevis på at Fyne-/Go-koden kjører.
-VP07s 15 hull viser ufullstendige modusutsnitt, og modellen har ikke en komplett
+VP07s 18 hull viser ufullstendige modusutsnitt, og modellen har ikke en komplett
 runtimeallokering. En delt Functionality gjør ikke alle dens Features kjørbare
 i alle modi hvor dette ene ansvaret har en plassering.
 
@@ -193,7 +193,7 @@ Aktivitetenes `refines` er detaljering, ikke sekvens, tilstandsmaskin eller sche
 
 ## Språkgrense og sporbarhet
 
-Modellen dekker ansvar for alle delene i [G1–G5-planen](../docs/implementation-plan.md).
+Modellen dekker ansvar for alle delene i [G1–G6-planen](../docs/implementation-plan.md).
 Parseren kontrollerer typede recordfelt, eksplisitte scenario-steg og korrelasjon
 innen den avgrensede design-core 0.5-profilen. Den kontrollerer ikke Go-signaturer,
 kall i implementert kode, atomisitet, state-maskiner, ressursbudsjetter, trådregler
@@ -245,7 +245,7 @@ hevdes. [MessageSet](viewpoints/message-sets.json) er avledet av SDL-verktøyet.
 Fase-/milepælplanen er nå også SDL. `addresses` kobler milepæler til Functionality,
 `delivers` kobler faser til Features, `depends-on` angir eksplisitte forutsetninger,
 og `illustrates` kobler scenarioer til arbeidsaktiviteten. implementation.md lages
-av SDL-verktøyet fra disse faktaene, uten en innebygd G1–G5-plan.
+av SDL-verktøyet fra disse faktaene, uten en innebygd G1–G6-plan.
 
 De ti scenarioene viser frontendens lexer/parser/validering/normalisering,
 felles layout for Fyne og SVG, lokal Go-handling uten SDL, akseptert/avvist
@@ -254,3 +254,13 @@ for tokens/AST/modell/scene er bevisst opake artefaktgrenser; komplette Go-struc
 instanslivstid, atomisk reload/state-migrering og dimensjons-/fontenhet skal
 realiseres og testes i G-fasene. Ingen datatransformasjon eller tilstandsendring
 utledes bare fordi to meldinger følger hverandre i et scenario.
+
+## G6 — navigerbare dokumenter
+
+[Eierens navigasjonsdesign](../../docs/SDL-Navigable-Viewpoints-Design.md) er
+lagt inn som G6NavigableDocumentation med fire planlagte milepæler. DocumentBroker,
+ViewArtifactStore og ViewerLaunchAdapter holder generering/publisering atskilt
+fra XfmdDocumentHost, som eier paneler og dokumentvisning. SelectedViewOpened,
+InvalidViewSelectionRejected og ViewProjectionFailed gir genererte sekvenser.
+De nye kontraktene er typed recordgrenser; URI-feltverdier, IPC, filpublisering,
+lease og XFMD-flagg er planlagt adferd. Ingen av disse adapterne kjører ennå.

@@ -963,6 +963,125 @@
           "sha256": "31a4a974563cbe829639a21b1a28de7f038ac602eff4e49b3a8864ab11bf8c6b"
         }
       ]
+    },
+    {
+      "date": "2026-09-22",
+      "reason": "G6-D1: planned navigation, selected view generation, XFMD document panels and optional session service. SDL model and generated review updated; no generator/runtime implementation change.",
+      "repository_head_at_capture": "5bcc495b7f3f6e6e8d169edcdc6c1c19c8dc2831",
+      "content_origin": "G6-D1 working tree before design milestone commit; previous fingerprints remain historical",
+      "verification": {
+        "sdl_parser": 61,
+        "viewpoint_tool": 24,
+        "sdui": 36,
+        "rendered_diagrams": 166,
+        "model_gaps": 18
+      },
+      "sources": [
+        {
+          "path": "SDUI/design/README.md",
+          "sha256": "672479ecd7de5c57f96f8f894208536837d4dc7dc9fbcbf06eb7f5518fc539e4"
+        },
+        {
+          "path": "SDUI/design/architecture.ast.json",
+          "sha256": "87e8995077e2c09419f7f5ac9da3776ed34b21fc1d22e7fa62bbd69c33f706f6"
+        },
+        {
+          "path": "SDUI/design/architecture.catalog.md",
+          "sha256": "d395c0bcfe27608b036ef05265b528e21f7f709a43ee7817cb64d2c6322013eb"
+        },
+        {
+          "path": "SDUI/design/architecture.design",
+          "sha256": "54e5788cd19b48e20b40aabfa32a17d7beb4efd7a4e70f65dda754edd65acc24"
+        },
+        {
+          "path": "SDUI/design/architecture.validation.json",
+          "sha256": "bcfc9ca24fcb3c631d35a100b88571573e092647cee5e335dcf3bd126c9ecdba"
+        },
+        {
+          "path": "SDUI/design/viewpoints/implementation.md",
+          "sha256": "a47a5823994b74a7d2b39db8bc27029611fbcbe31289f6347f5c85a5918122e1"
+        },
+        {
+          "path": "SDUI/design/viewpoints/manifest.json",
+          "sha256": "114f2c8adf899fc04d24285bd879aca1e0d15b4e5cb59b9b61c0466c55a30a50"
+        },
+        {
+          "path": "SDUI/design/viewpoints/printout.md",
+          "sha256": "c8094c236439e0f6f9617a37de842e13b49855a892ce8da6a565ce55c3be0396"
+        },
+        {
+          "path": "SDUI/docs/implementation-plan.md",
+          "sha256": "1279d47f43473e4fe72b7e225cb2cde2a16b9cfc0d43cfb7af594367844259a4"
+        },
+        {
+          "path": "SDUI/docs/target-architecture.md",
+          "sha256": "c3140ca0282db6a4d8f7bfe9cdfca2e99a14a0bdab773ac413fe143e621d16ff"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/README.md",
+          "sha256": "7dc89e6dbfa11b875a3cb99f9e9793d7f0da934fd0953b74ef5d4a43399116ee"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/channel_views.py",
+          "sha256": "ce28341184bf1ddb7aad65e611ff5cc6af5bcbf03cc8a92883e4db7b64577dfc"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/data_views.py",
+          "sha256": "015440a1dd66ed45d9178a57ae523fa7e61e73ee5424c4de636304fe15526128"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/goal_views.py",
+          "sha256": "e312f68c4e204e6f119ccb9a7978e4876d8348e23d3c1a0bdf80f3dd317e440b"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/plan_views.py",
+          "sha256": "dc840dca34650d0fe57eceda039e4cf147954421c912617c4a3954697267e31e"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/sdl.py",
+          "sha256": "6fc15da4834b381d29c1e6157b4ec4dcf1e1446346f0a05b43090c3f01a65211"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/verification.json",
+          "sha256": "1d5958f72bf42c554ac24d19da32246a3fa43a2bc4a4b83a1d804729f9781b79"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/verify_design.py",
+          "sha256": "4071b898f5fa4f6af34c58045383a9fc0c6c4ea3f74015a4927e926627c4140b"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/viewpoints.py",
+          "sha256": "531ce26c789dcfd9230bb9c1020c895cc339e1dbebaa41db1896e726a99d8c17"
+        },
+        {
+          "path": "docs/Development-Branch-Stack.md",
+          "sha256": "92390922fb18aad9d6f867db61550cda50b6cabccd3395dcf58d4b28fbdecf22"
+        },
+        {
+          "path": "docs/SDL-Navigable-Viewpoints-Design.md",
+          "sha256": "1fb784366bad2d2924e441b405411a2419c5d568bee747ba1aae50ca23eed26e"
+        },
+        {
+          "path": "docs/checkpoint#1/10-SDL-Viewpoint-Navigation.md",
+          "sha256": "e1578d875d39086d78dfaa9b88ef9d9374730da690260f1012cab117e107a18e"
+        },
+        {
+          "path": "docs/checkpoint#1/README.md",
+          "sha256": "dd67d150213a7013a642f8408c49fdda71a6a5af31095689cb4eec667ccfd24d"
+        },
+        {
+          "path": "experiments/design_core/channel_core.py",
+          "sha256": "bfb289aa11045528f2146189975a7e66e0f00acb51ae2acf147a6f88306e675c"
+        },
+        {
+          "path": "experiments/design_core/data_core.py",
+          "sha256": "c967bd05a927fc6efee2bd22483e340b4e9dec304973e4bc5536272a6bb1d308"
+        },
+        {
+          "path": "experiments/design_core/design_core.py",
+          "sha256": "242ca11e2d08128a541ce03bbbf557b3fb7bc6060c74b2dd89f06922a91f843e"
+        }
+      ]
     }
   ]
 }

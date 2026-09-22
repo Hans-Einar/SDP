@@ -83,8 +83,17 @@ Genererte filer overskriver aldri håndskrevet domene-Go.
 
 Python-frontender og relevante tester er portgrunnlag. De fjernes som aktive
 implementasjoner først når Go-porten dekker deres avtalte profil og brukere er
-portert. Dette gir ingen bakoverkompatibilitet for SDUI 0.1. SDL design-core 0.1
-er en annen profil og må ikke slettes bare fordi den har samme versjonstall.
+portert. Dette gir ingen bakoverkompatibilitet for SDUI 0.1. SDL design-core er en separat profil, nå 0.5; eldre aktive SDL-profiler er
+erstattet gjennom V1–V4, uavhengig av SDUI-versjonen.
 
 Tidligere FOX/XFMD-/Mermaid-arbeid er gjenbruksgrunnlag, ikke en forutsetning.
 Ingen eksterne worktrees eller eksisterende produkter endres av denne retningen.
+
+## Dokumentnavigasjon — planlagt G6
+
+[SDLs navigasjonsdesign](../../docs/SDL-Navigable-Viewpoints-Design.md) utvider
+verktøylaget med katalogbaserte viewpoints, generering av valgt utsnitt,
+midlertidige dokumentpakker og en valgfri bakgrunnstjeneste. XFMD kan senere ha
+navigator og hoveddokument i separate Markdown-paneler. Dette er en dokumentvert,
+ikke en erstatning for Fyne i SDUI-runtime. SDL-projektor gjenbrukes, og leser-
+launch/IPC ligger i adapteren. Ingen daemon eller nye XFMD-flagg er implementert.

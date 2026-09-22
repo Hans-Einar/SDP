@@ -1,12 +1,13 @@
 # SDL/SDUI — implementasjonsplan i Go
 
 **Status 2026-09-22:** SDL-løpet V0–V4 er levert og pushet som fasebrancher.
-G1–G5 er fortsatt planlagt. Eierens siste avgrensning er å gjennomgå
+G1–G6 er fortsatt planlagt. Eierens siste avgrensning er å gjennomgå
 [den verktøygenererte implementasjonsrapporten](../design/viewpoints/implementation.md)
-før Go-koden påbegynnes. Rapporten kommer fra den felles SDL-kilden, med 18
-milepæler, ansvar, avhengigheter og ti deklarerte eksempelbaner.
+før Go-koden påbegynnes. Rapporten kommer fra den felles SDL-kilden, med 22
+milepæler, ansvar, avhengigheter og deklarerte eksempelbaner. G6 legger til
+navigerbare viewpoints og dokumentgenerering ved behov.
 
-**ID:** SDUI-PLAN-003 · **Revisjon:** 2026-09-21.
+**ID:** SDUI-PLAN-003 · **Revisjon:** 2026-09-22.
 Erstatter PLAN-002s P0–P6-løp for Rust/C-ABI/FOX. Nye milepæler bruker G-prefiks;
 henvisninger til P-faser i eldre bevis gjelder historien, ikke aktive leveranser.
 [Målarkitektur](target-architecture.md) og
@@ -17,7 +18,7 @@ Fyne-vert, modellreload og senere Go-generering. Bare G0 er levert i denne runde
 Python SDUI 0.2, strukturparseren design-core og eksemplene er eksisterende portgrunnlag.
 
 Designgrunnlag 2026-09-22: [felles SDL-strukturmodell](../design/README.md) beskriver
-ansvar og avhengigheter for G1–G5 og passerer eksisterende parser. Dette er
+ansvar og avhengigheter for G1–G6 og passerer eksisterende parser. Dette er
 designdekning, ikke fullførte implementasjonsmilepæler.
 
 ## G0 — oppdatert grunnlag og kataloger
@@ -100,10 +101,30 @@ Avhenger av avklart G4-profil og felles runtime. Eier: SDL/SDUI sammen.
 Krav R19/R26. Go-byggcache gjenbrukes ved restart; dynamisk maskinkodeutskifting
 eller separate workerprosesser er ikke nødvendig akseptanse for hot reload.
 
+## G6 — navigerbare dokumenter og generering ved behov
+
+**Status: planlagt**, med [designkontrakt og XFMD-handoff](../../docs/SDL-Navigable-Viewpoints-Design.md).
+Eier: SDL for projeksjon/publisering; XFMD for dokumentpaneler og lenkeruting.
+Dette er dokumentvisning, adskilt fra G2s Fyne-vert for interaktive SDUI-widgets.
+
+| Milepæl | Leveranse og akseptanse |
+| --- | --- |
+| G6-M1 | Viewpoint-kataloger, index/navigator og stabile lenker/ankre fra samme modell; port eksisterende SDL-projektor; samleeksport valgfri; lenker/bilder og determinisme kontrollert |
+| G6-M2 | Typet utvalg ved klikk/CLI, revisjon og publisering av bare valgt dokument med ressurser; samme innhold som tilsvarende full eksport; feil beholder siste visning |
+| G6-M3 | XFMD med navigasjons-/hovedpanel, registrert leseradapter og eksplisitt vindu/panel; klikk, fokusbytte, flere vinduer og lukket mål testet |
+| G6-M4 | Valgfri Go-bakgrunnstjeneste med lokal IPC, cache/invalidering, leser-lease, request-rekkefølge, kvoter og opprydding; ingen døde bilder ved dokumentbytte/reload |
+
+G6-M1 avhenger av G4-M1s strukturelle frontendport, ikke SDL-runtime eller G5s
+Go-generering. Viewpoint-port og kildekart flyttes fra G5-M3 til G6-M1;
+G5-M3 blir konsument av denne eksporten. G6-M2 → M3 → M4 følger hverandre.
+Den nåværende Python-generatoren er portgrunnlaget. URI-notasjon og XFMD-flagg i
+designet er forslag og skal verifiseres med XFMD-implementasjonen.
+Dette oppdraget leverer **G6-D1 design og parsede scenarioer**, ikke G6-M1–M4.
+
 ## Avgrensning og gjenbruk
 
-Fyne er første interaktive vert. FOX/XFMD-integrasjon, C-ABI og Bubble Tea er
-utsatt uten aktiv implementasjonsleveranse. Eksisterende renderer-/worktree-kode
+Fyne er første interaktive SDUI-vert. XFMD-dokumentnavigasjon er planlagt i G6;
+FOX-baserte SDUI-widgets, C-ABI og Bubble Tea er fortsatt utsatt. Eksisterende renderer-/worktree-kode
 kan gi ideer, tester og egnede algoritmer med dokumentert proveniens; det kreves
 ingen uttrekkscrate eller merge til Mermaid. Fullt Markdown/Mermaid-innhold må
 prøves mot en avtalt profil. Ingen flere renderere bygges bare for å holde valg åpne.

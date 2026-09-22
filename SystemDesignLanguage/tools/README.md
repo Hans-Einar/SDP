@@ -64,7 +64,7 @@ andre notatfiler bevares. Ikke legg SDL-kilden i utdataområdet. Uten `--rendere
 fjernes tidligere generert printout/SVG så gammel rendering ikke vises som ny.
 Rendererresultater kan gjenbrukes når både Mermaid-kilde, renderer og SVG-hash stemmer.
 
-Verifisert 2026-09-22: 24/24 verktøytester, 61/61 SDL-parsertester og 36/36
+V4-snapshot, verifisert 2026-09-22: 24/24 verktøytester, 61/61 SDL-parsertester og 36/36
 SDUI-tester. Prøvemodellen gir 142 SVG-diagrammer; alle kartlagte nodenavn finnes
 i SVG-teksten. Parser-, runtime-, arkitektur- og modusvisninger er visuelt
 stikkprøvekontrollert. Ingen fysisk utskrift eller paginert PDF er testet.
@@ -98,3 +98,8 @@ Aktiv profil er **design-core 0.5** (V4); eldre profiler er erstattet.
 `plan_views.py` lager både VP06 og implementasjonsrapporten fra validerte fakta.
 [Start med G1–G5-rapporten](../../SDUI/design/viewpoints/implementation.md).
 V4s fasegraf, parsersekvens og bindingssekvens er visuelt stikkprøvekontrollert.
+
+G6 er senere lagt til som **planlagt design** i den felles SDL-kilden.
+[Checkpoint 10](../../docs/checkpoint%231/10-SDL-Viewpoint-Navigation.md)
+viser nye modelltall. Katalogbaserte sider, navigasjonslenkehandler og daemon
+er ennå ikke implementert av dette verktøyet; eksportformatet er uendret.

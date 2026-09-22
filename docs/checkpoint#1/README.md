@@ -1,6 +1,7 @@
 # Checkpoint #1 — SDP, SystemDesignLanguage og SDUI
 
-**Start med [09 — generert G1–G5-design](09-SDL-Generated-Go-Design-Review.md)**
+**Start med [10 — G6 dokumentnavigasjon](10-SDL-Viewpoint-Navigation.md)**
+for siste designutvidelse, og [09 — generert G1–G5-design](09-SDL-Generated-Go-Design-Review.md)
 for gjennomgang av leverte V2–V4. Se også
 [08 — SDL-status og viewpoints](08-SDL-Viewpoints-and-Implementation-Status.md) og
 [07 — SDUI 0.2 og Go-retning](07-SDUI-0.2-and-Go-Direction.md) for språk-/runtimegrunnlaget.
@@ -39,6 +40,7 @@ projects. It also does not promote every idea in the conversation into a decisio
 | [07 — SDUI 0.2 and Go direction](07-SDUI-0.2-and-Go-Direction.md) | Current implementation status, selected Go/Fyne direction, reload boundaries and next deliverables. |
 | [08 — SDL viewpoints and implementation status](08-SDL-Viewpoints-and-Implementation-Status.md) | Viewpoint catalogue, generated views, gaps against checkpoint #1 and persistent Database meaning. |
 | [09 — Generated Go design review](09-SDL-Generated-Go-Design-Review.md) | V2–V4 delivery, generated G1–G5 plan, verification and remaining design boundaries. |
+| [10 — Viewpoint navigation](10-SDL-Viewpoint-Navigation.md) | Planned G6 document packages, on-demand projection and XFMD panel/IPC handoff. |
 | [Source fingerprint index](source-index.json) | Content hashes of the local source documents used for consolidation; provenance, not implementation proof. |
 
 ## The whole picture

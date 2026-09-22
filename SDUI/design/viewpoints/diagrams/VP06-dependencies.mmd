@@ -17,6 +17,10 @@ flowchart LR
     n_G5M2BehaviorParity["G5M2BehaviorParity (activity)"]
     n_G5M3DocumentationExport["G5M3DocumentationExport (activity)"]
     n_G5M4RetirePython["G5M4RetirePython (activity)"]
+    n_G6M1StaticNavigation["G6M1StaticNavigation (activity)"]
+    n_G6M2OnDemandViews["G6M2OnDemandViews (activity)"]
+    n_G6M3XfmdNavigation["G6M3XfmdNavigation (activity)"]
+    n_G6M4SessionPublication["G6M4SessionPublication (activity)"]
     n_G1M2ValidationAndNormalization -->|depends-on| n_G1M1ParserAndAst
     n_G1M3Concept1AndDumps -->|depends-on| n_G1M2ValidationAndNormalization
     n_G2M1RelativeMeasurement -->|depends-on| n_G1M2ValidationAndNormalization
@@ -36,5 +40,10 @@ flowchart LR
     n_G5M2BehaviorParity -->|depends-on| n_G5M1GeneratedGo
     n_G5M3DocumentationExport -->|depends-on| n_G2M4RichContent
     n_G5M3DocumentationExport -->|depends-on| n_G5M2BehaviorParity
+    n_G5M3DocumentationExport -->|depends-on| n_G6M1StaticNavigation
     n_G5M4RetirePython -->|depends-on| n_G1M3Concept1AndDumps
     n_G5M4RetirePython -->|depends-on| n_G5M3DocumentationExport
+    n_G6M1StaticNavigation -->|depends-on| n_G4M1SdlFrontend
+    n_G6M2OnDemandViews -->|depends-on| n_G6M1StaticNavigation
+    n_G6M3XfmdNavigation -->|depends-on| n_G6M2OnDemandViews
+    n_G6M4SessionPublication -->|depends-on| n_G6M3XfmdNavigation

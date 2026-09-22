@@ -10,6 +10,7 @@ Dette er en visning av målstruktur, ikke implementasjonsbevis. Ikke rediger den
 | DevelopmentTools | DiagnosticReporter, GoBuildRunner, GoCodeGenerator, ReloadCoordinator, SourceLoader, SourceWatcher | RetireReplacedPythonEntryPoints, VerifyNativeBehaviorParity | — |
 | DiagnosticReporter | — | ReportBindingDiagnostics, ReportSourceDiagnostics | — |
 | DiagramProvider | — | PrepareDiagramResource | DiagramEnginePort, ResourcePort |
+| DocumentBroker | — | KeyViewRevision, RejectStaleViewResults, ServeViewRequests, ValidateViewRequest | — |
 | DomainStateMigrator | — | CheckDomainStateCompatibility, MigrateOrResetDomainState | DomainStatePort, SdlModelPort |
 | FyneBackend | — | HandleFocusAndTextInput, PublishPresentation, ReconcileWidgets, ReleaseNativeWidgets | PreparedFramePort, UiSessionPort |
 | FyneHost | — | ComposeInteractiveSession, ScheduleUiPublication | DomainBindingPort, ReloadPort, SdlFrontendPort, SduiFrontendPort, SourceSnapshotPort, UiSessionPort, WidgetBackendPort |
@@ -31,7 +32,7 @@ Dette er en visning av målstruktur, ikke implementasjonsbevis. Ikke rediger den
 | SdlStateStore | — | ManageDomainState, SnapshotDomainState | — |
 | SdlUiBindingAdapter | — | ConnectTypedWidgetHandles, DisconnectBindings, PublishDomainUpdates, ResolveCallbackSymbols, RouteDomainBindings | DiagnosticPort, SdlExecutionPort, UiSessionPort |
 | SdlValidator | — | ResolveSdlSymbols, ValidateSdlProfile, ValidateSdlStructure | — |
-| SdlViewpointGenerator | — | ExportViewpointMarkdown, ProjectSdlViewpoints, TraceViewpointFacts | — |
+| SdlViewpointGenerator | — | ComposeViewPackage, ExportViewpointMarkdown, GenerateViewNavigation, PreserveViewAnchors, ProjectSdlViewpoints, ProjectSelectedView, TraceViewpointFacts | — |
 | SduiDispatcher | — | CorrelateUiResult, DispatchUiEvent, RejectStaleUiEvent, ValidateUiEvent | DomainBindingPort, UiStatePort |
 | SduiFrontend | SduiLexer, SduiNormalizer, SduiParser, SduiValidator | CoordinateSduiCompilation | DiagnosticPort, SourceSnapshotPort |
 | SduiInstanceStore | — | ManageWidgetIdentities, ProjectUiGeneration, RevokeWidgetGenerations, SnapshotUiState | — |
@@ -47,3 +48,7 @@ Dette er en visning av målstruktur, ikke implementasjonsbevis. Ikke rediger den
 | SourceLoader | — | DesignSourceArchive, IdentifySourceRevision, ReadBoundedSources | SourceInputPort |
 | SourceWatcher | — | CoalesceSourceChanges, ObserveSourceChanges | FileChangePort |
 | UiStateReconciler | — | MatchCompatibleWidgets, PreserveCompatibleUiState, ResetIncompatibleUiState | SduiModelPort, UiStatePort |
+| ViewArtifactStore | — | EvictUnusedViewBundles, PublishViewBundle, RetainVisibleViewBundle | — |
+| ViewServiceHost | DocumentBroker, ViewArtifactStore, ViewerLaunchAdapter | — | — |
+| ViewerLaunchAdapter | — | DispatchViewOpen, ResolveConfiguredViewer | — |
+| XfmdDocumentHost | — | CaptureNavigationTarget, RouteDocumentToPane | — |

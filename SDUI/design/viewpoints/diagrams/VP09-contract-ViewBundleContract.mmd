@@ -1,0 +1,6 @@
+flowchart LR
+    n_ViewBundleBytes["ViewBundleBytes (field)"]
+    n_ViewBundleContract["ViewBundleContract (contract)"]
+    n_ViewBundleRevision["ViewBundleRevision (field)"]
+    n_ViewBundleContract -->|has-field| n_ViewBundleBytes
+    n_ViewBundleContract -->|has-field| n_ViewBundleRevision

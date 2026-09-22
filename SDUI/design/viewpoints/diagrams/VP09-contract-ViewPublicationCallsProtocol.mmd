@@ -1,0 +1,6 @@
+flowchart LR
+    n_PublishViewRequest["PublishViewRequest (message)"]
+    n_ViewPublicationCallsProtocol["ViewPublicationCallsProtocol (contract)"]
+    n_ViewReferenceResult["ViewReferenceResult (message)"]
+    n_ViewPublicationCallsProtocol -->|permits| n_PublishViewRequest
+    n_ViewPublicationCallsProtocol -->|permits| n_ViewReferenceResult

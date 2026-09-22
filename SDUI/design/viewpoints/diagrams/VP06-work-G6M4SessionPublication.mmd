@@ -1,0 +1,16 @@
+flowchart LR
+    n_DocumentBroker["DocumentBroker (unit)"]
+    n_EvictUnusedViewBundles["EvictUnusedViewBundles (functionality)"]
+    n_G6M4SessionPublication["G6M4SessionPublication (activity)"]
+    n_RejectStaleViewResults["RejectStaleViewResults (functionality)"]
+    n_RetainVisibleViewBundle["RetainVisibleViewBundle (functionality)"]
+    n_ServeViewRequests["ServeViewRequests (functionality)"]
+    n_ViewArtifactStore["ViewArtifactStore (unit)"]
+    n_DocumentBroker -->|owns| n_RejectStaleViewResults
+    n_DocumentBroker -->|owns| n_ServeViewRequests
+    n_G6M4SessionPublication -->|addresses| n_EvictUnusedViewBundles
+    n_G6M4SessionPublication -->|addresses| n_RejectStaleViewResults
+    n_G6M4SessionPublication -->|addresses| n_RetainVisibleViewBundle
+    n_G6M4SessionPublication -->|addresses| n_ServeViewRequests
+    n_ViewArtifactStore -->|owns| n_EvictUnusedViewBundles
+    n_ViewArtifactStore -->|owns| n_RetainVisibleViewBundle

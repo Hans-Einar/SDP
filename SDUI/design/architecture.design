@@ -18,6 +18,7 @@ message BoundActionResult.
 mode BoundExecution.
 capability BoundInteraction.
 mode BoundLiveEditing.
+usecase BrowseDesignViews.
 functionality BuildGeneratedApplication.
 message BuildGoRequest.
 message BuildGoResult.
@@ -30,6 +31,7 @@ interface BuildToolPort.
 message BuildUiAstRequest.
 message BuildUiAstResult.
 functionality CancelPendingActions.
+functionality CaptureNavigationTarget.
 functionality CheckDomainStateCompatibility.
 functionality CheckExecutionCompleteness.
 functionality CheckFunctionSignatures.
@@ -45,6 +47,7 @@ message CompileUiResult.
 functionality ComposeHeadlessExport.
 functionality ComposeInteractiveSession.
 functionality ComposeMarkdownDocument.
+functionality ComposeViewPackage.
 functionality ComputeClipping.
 functionality ConnectTypedWidgetHandles.
 interface ContentProviderPort.
@@ -70,6 +73,10 @@ interface DiagramPort.
 unit DiagramProvider.
 functionality DisconnectBindings.
 functionality DispatchUiEvent.
+functionality DispatchViewOpen.
+message DisplayViewRequest.
+unit DocumentBroker.
+mode DocumentBrowsing.
 message DomainActionRequest.
 message DomainActionResult.
 interface DomainBindingPort.
@@ -78,6 +85,7 @@ capability DomainOperations.
 unit DomainStateMigrator.
 interface DomainStatePort.
 usecase EditRunningPrototype.
+functionality EvictUnusedViewBundles.
 capability ExecutableDesign.
 interface ExecutionProfilePort.
 functionality ExpandUiDefinitions.
@@ -88,6 +96,7 @@ message ExportSvgResult.
 functionality ExportSvgSnapshot.
 activity ExportUiDocumentation.
 functionality ExportViewpointMarkdown.
+field FailedViewRequestId.
 interface FileChangePort.
 channel FramePresentationCalls.
 contract FramePresentationCallsProtocol.
@@ -116,10 +125,16 @@ activity G5M2BehaviorParity.
 activity G5M3DocumentationExport.
 activity G5M4RetirePython.
 activity G5NativeGeneration.
+activity G6M1StaticNavigation.
+activity G6M2OnDemandViews.
+activity G6M3XfmdNavigation.
+activity G6M4SessionPublication.
+activity G6NavigableDocumentation.
 functionality GenerateBindingRegistration.
 message GenerateGoRequest.
 message GenerateGoResult.
 functionality GenerateModelConstructors.
+functionality GenerateViewNavigation.
 interface GeneratedArtifactPort.
 contract GeneratedGoContract.
 field GeneratedGoSources.
@@ -141,8 +156,11 @@ activity InspectSduiSource.
 scenario InteractiveFramePrepared.
 capability InteractiveSession.
 feature InteractiveUiPreview.
+scenario InvalidViewSelectionRejected.
 functionality InvokeRegisteredFunction.
 functionality KeepLastValidModels.
+functionality KeyViewRevision.
+message LaunchViewRequest.
 contract LayoutArguments.
 channel LayoutCalls.
 contract LayoutCallsProtocol.
@@ -176,6 +194,7 @@ scenario NativeProgramBuilt.
 capability NativeRealization.
 channel NativeUiActions.
 contract NativeUiActionsProtocol.
+feature NavigableDesignDocumentation.
 functionality NormalizeSdlModel.
 message NormalizeUiRequest.
 message NormalizeUiResult.
@@ -184,6 +203,15 @@ contract NormalizedModelContract.
 field NoticeGeneration.
 field NoticeVersion.
 functionality ObserveSourceChanges.
+field OpenViewConsumerId.
+field OpenViewEntryPath.
+field OpenViewLeaseId.
+field OpenViewPaneId.
+field OpenViewRequestId.
+field OpenViewRevision.
+field OpenViewWindowId.
+field OpenedViewRequestId.
+field OpenedViewRevision.
 functionality PerformDomainOperation.
 functionality PrepareCandidateModels.
 functionality PrepareDiagramResource.
@@ -200,18 +228,24 @@ functionality PreserveHandwrittenSources.
 functionality PreserveSdlSourceMap.
 functionality PreserveUiRegions.
 functionality PreserveUiSourceMap.
+functionality PreserveViewAnchors.
 functionality ProjectSdlViewpoints.
+functionality ProjectSelectedView.
 functionality ProjectUiGeneration.
+message ProjectViewRequest.
 usecase PrototypeUserInterface.
 usecase PublishDesignDocumentation.
 functionality PublishDomainUpdates.
 functionality PublishModelGeneration.
 functionality PublishPresentation.
+functionality PublishViewBundle.
+message PublishViewRequest.
 functionality ReadBoundedSources.
 activity RealizeDesign.
 functionality ReconcileWidgets.
 functionality RegisterDomainFunctions.
 functionality RejectStaleUiEvent.
+functionality RejectStaleViewResults.
 functionality ReleaseNativeWidgets.
 functionality ReleaseVisualResources.
 contract ReloadArguments.
@@ -233,16 +267,19 @@ functionality ReportSourceDiagnostics.
 functionality ResetIncompatibleUiState.
 functionality ResolveAncestorDimensions.
 functionality ResolveCallbackSymbols.
+functionality ResolveConfiguredViewer.
 functionality ResolveSdlSymbols.
 functionality ResolveUiNames.
 interface ResourcePort.
 unit ResourceStore.
 functionality RestartChangedGoProgram.
+functionality RetainVisibleViewBundle.
 functionality RetirePreviousGeneration.
 functionality RetireReplacedPythonEntryPoints.
 functionality RevokeWidgetGenerations.
 capability RichContent.
 mode RichDocument.
+functionality RouteDocumentToPane.
 functionality RouteDomainBindings.
 activity RunBoundUiAction.
 activity RunDesignSession.
@@ -288,6 +325,9 @@ unit SduiPropertyStore.
 unit SduiRuntime.
 capability SduiSourceModel.
 unit SduiValidator.
+message SelectViewRequest.
+scenario SelectedViewOpened.
+functionality ServeViewRequests.
 field SessionDraft.
 field SessionGeneration.
 functionality SnapshotDomainState.
@@ -361,12 +401,57 @@ functionality ValidateSymbolicBindings.
 functionality ValidateUiEvent.
 message ValidateUiRequest.
 message ValidateUiResult.
+functionality ValidateViewRequest.
 functionality ValidateVisualResources.
 functionality ValidateWidgetArguments.
 contract ValidationOutcomeContract.
 functionality VerifyNativeBehaviorParity.
+unit ViewArtifactStore.
+field ViewBundleBytes.
+contract ViewBundleContract.
+message ViewBundleResult.
+field ViewBundleRevision.
+field ViewConsumerId.
+channel ViewDisplayCalls.
+contract ViewDisplayCallsProtocol.
+message ViewDisplayResult.
+field ViewEntryPath.
+field ViewFailureCode.
+contract ViewFailureContract.
+field ViewFailureDiagnostic.
+channel ViewLaunchCalls.
+contract ViewLaunchCallsProtocol.
+message ViewLaunchResult.
+field ViewLeaseId.
+field ViewManifestPath.
+channel ViewNavigationCalls.
+contract ViewNavigationCallsProtocol.
+contract ViewOpenContract.
+contract ViewOpenedContract.
+message ViewOpenedResult.
+field ViewPaneId.
+field ViewProjectId.
+channel ViewProjectionCalls.
+contract ViewProjectionCallsProtocol.
+scenario ViewProjectionFailed.
+message ViewProjectionRejected.
+channel ViewPublicationCalls.
+contract ViewPublicationCallsProtocol.
+field ViewPublishedRevision.
+contract ViewReferenceContract.
+message ViewReferenceResult.
+field ViewRequestId.
+message ViewRequestRejected.
+contract ViewSelectionContract.
+field ViewSelector.
+container ViewServiceHost.
+field ViewSourceRevision.
+message ViewTargetUnavailable.
+field ViewWindowId.
+unit ViewerLaunchAdapter.
 interface WidgetBackendPort.
 functionality WriteGeneratedArtifacts.
+container XfmdDocumentHost.
 ActionArguments has completeness = closed.
 ActionArguments has-field ActionGeneration.
 ActionArguments has-field ActionInputText.
@@ -447,6 +532,8 @@ BuildUiAstResult has message-kind = result.
 BuildUiAstResult replies-to BuildUiAstRequest.
 BuildUiAstResult upholds AstArtifactContract.
 CancelPendingActions realizes ExecutableDesign.
+CaptureNavigationTarget allocated-to XfmdDocumentHost in mode DocumentBrowsing.
+CaptureNavigationTarget contributes-to NavigableDesignDocumentation.
 CheckDomainStateCompatibility realizes ExecutableDesign.
 CheckExecutionCompleteness realizes ExecutableDesign.
 CheckFunctionSignatures realizes ExecutableDesign.
@@ -491,6 +578,8 @@ ComposeInteractiveSession realizes NativeInteraction.
 ComposeMarkdownDocument allocated-to CommandLineHost in mode StaticExport.
 ComposeMarkdownDocument contributes-to DesignDocumentation.
 ComposeMarkdownDocument realizes StaticDocumentation.
+ComposeViewPackage allocated-to ViewServiceHost in mode DocumentBrowsing.
+ComposeViewPackage contributes-to NavigableDesignDocumentation.
 ComputeClipping realizes MeasuredPresentation.
 ConnectTypedWidgetHandles allocated-to FyneHost in mode BoundExecution.
 ConnectTypedWidgetHandles contributes-to TypedDomainBinding.
@@ -505,6 +594,7 @@ CorrelateActionResult realizes ExecutableDesign.
 CorrelateUiResult realizes InteractiveSession.
 CreateSdlInstance realizes ExecutableDesign.
 CreateUiInstance realizes InteractiveSession.
+DesignAuthor pursues BrowseDesignViews.
 DesignAuthor pursues BuildNativeProduct.
 DesignAuthor pursues EditRunningPrototype.
 DesignAuthor pursues InspectModels.
@@ -512,6 +602,7 @@ DesignAuthor pursues PrototypeUserInterface.
 DesignAuthor pursues PublishDesignDocumentation.
 DesignAuthor pursues TryDomainInteraction.
 DesignDocumentation supports PublishDesignDocumentation.
+DesignReviewer pursues BrowseDesignViews.
 DesignReviewer pursues InspectModels.
 DesignReviewer pursues PrototypeUserInterface.
 DesignReviewer pursues PublishDesignDocumentation.
@@ -548,6 +639,24 @@ DisconnectBindings realizes BoundInteraction.
 DispatchUiEvent allocated-to FyneHost in mode BoundExecution.
 DispatchUiEvent contributes-to TypedDomainBinding.
 DispatchUiEvent realizes InteractiveSession.
+DispatchViewOpen allocated-to ViewServiceHost in mode DocumentBrowsing.
+DispatchViewOpen contributes-to NavigableDesignDocumentation.
+DisplayViewRequest has message-kind = request.
+DisplayViewRequest upholds ViewOpenContract.
+DocumentBroker owns KeyViewRevision.
+DocumentBroker owns RejectStaleViewResults.
+DocumentBroker owns ServeViewRequests.
+DocumentBroker owns ValidateViewRequest.
+DocumentBroker uses ViewLaunchCalls as receiver of ViewLaunchResult in mode DocumentBrowsing.
+DocumentBroker uses ViewLaunchCalls as sender of LaunchViewRequest in mode DocumentBrowsing.
+DocumentBroker uses ViewNavigationCalls as receiver of SelectViewRequest in mode DocumentBrowsing.
+DocumentBroker uses ViewNavigationCalls as sender of ViewOpenedResult in mode DocumentBrowsing.
+DocumentBroker uses ViewNavigationCalls as sender of ViewRequestRejected in mode DocumentBrowsing.
+DocumentBroker uses ViewProjectionCalls as receiver of ViewBundleResult in mode DocumentBrowsing.
+DocumentBroker uses ViewProjectionCalls as receiver of ViewProjectionRejected in mode DocumentBrowsing.
+DocumentBroker uses ViewProjectionCalls as sender of ProjectViewRequest in mode DocumentBrowsing.
+DocumentBroker uses ViewPublicationCalls as receiver of ViewReferenceResult in mode DocumentBrowsing.
+DocumentBroker uses ViewPublicationCalls as sender of PublishViewRequest in mode DocumentBrowsing.
 DomainActionRequest has message-kind = request.
 DomainActionRequest upholds ActionArguments.
 DomainActionResult has message-kind = result.
@@ -558,6 +667,8 @@ DomainStateMigrator consumes SdlModelPort.
 DomainStateMigrator owns CheckDomainStateCompatibility.
 DomainStateMigrator owns MigrateOrResetDomainState.
 DomainStateMigrator provides ExecutableDesign.
+EvictUnusedViewBundles allocated-to ViewServiceHost in mode DocumentBrowsing.
+EvictUnusedViewBundles contributes-to NavigableDesignDocumentation.
 ExecutableDesign requires DomainFunctionPort in mode BoundExecution.
 ExpandUiDefinitions has repeatability = deterministic.
 ExpandUiDefinitions has state-retention = stateless.
@@ -573,9 +684,12 @@ ExportSvgSnapshot contributes-to DesignDocumentation.
 ExportSvgSnapshot realizes StaticDocumentation.
 ExportUiDocumentation refines InspectDesignSource.
 ExportViewpointMarkdown allocated-to CommandLineHost in mode StaticExport.
+ExportViewpointMarkdown allocated-to ViewServiceHost in mode DocumentBrowsing.
 ExportViewpointMarkdown contributes-to DesignDocumentation.
 ExportViewpointMarkdown has repeatability = deterministic.
 ExportViewpointMarkdown has state-retention = stateless.
+FailedViewRequestId has presence = required.
+FailedViewRequestId has value-type = text.
 FramePresentationCalls upholds FramePresentationCallsProtocol.
 FramePresentationCallsProtocol has completeness = closed.
 FramePresentationCallsProtocol permits PresentFrameRequest.
@@ -756,12 +870,10 @@ G5M2BehaviorParity has implementation-status = planned.
 G5M2BehaviorParity refines G5NativeGeneration.
 G5M3DocumentationExport addresses ComposeHeadlessExport.
 G5M3DocumentationExport addresses ComposeMarkdownDocument.
-G5M3DocumentationExport addresses ExportViewpointMarkdown.
-G5M3DocumentationExport addresses ProjectSdlViewpoints.
-G5M3DocumentationExport addresses TraceViewpointFacts.
 G5M3DocumentationExport addresses WriteGeneratedArtifacts.
 G5M3DocumentationExport depends-on G2M4RichContent.
 G5M3DocumentationExport depends-on G5M2BehaviorParity.
+G5M3DocumentationExport depends-on G6M1StaticNavigation.
 G5M3DocumentationExport has implementation-status = planned.
 G5M3DocumentationExport refines G5NativeGeneration.
 G5M4RetirePython addresses RetireReplacedPythonEntryPoints.
@@ -772,6 +884,38 @@ G5M4RetirePython refines G5NativeGeneration.
 G5NativeGeneration delivers DesignDocumentation.
 G5NativeGeneration delivers NativeGoAssembly.
 G5NativeGeneration has implementation-status = planned.
+G6M1StaticNavigation addresses ComposeViewPackage.
+G6M1StaticNavigation addresses ExportViewpointMarkdown.
+G6M1StaticNavigation addresses GenerateViewNavigation.
+G6M1StaticNavigation addresses PreserveViewAnchors.
+G6M1StaticNavigation addresses ProjectSdlViewpoints.
+G6M1StaticNavigation addresses TraceViewpointFacts.
+G6M1StaticNavigation depends-on G4M1SdlFrontend.
+G6M1StaticNavigation has implementation-status = planned.
+G6M1StaticNavigation refines G6NavigableDocumentation.
+G6M2OnDemandViews addresses KeyViewRevision.
+G6M2OnDemandViews addresses ProjectSelectedView.
+G6M2OnDemandViews addresses PublishViewBundle.
+G6M2OnDemandViews addresses ValidateViewRequest.
+G6M2OnDemandViews depends-on G6M1StaticNavigation.
+G6M2OnDemandViews has implementation-status = planned.
+G6M2OnDemandViews refines G6NavigableDocumentation.
+G6M3XfmdNavigation addresses CaptureNavigationTarget.
+G6M3XfmdNavigation addresses DispatchViewOpen.
+G6M3XfmdNavigation addresses ResolveConfiguredViewer.
+G6M3XfmdNavigation addresses RouteDocumentToPane.
+G6M3XfmdNavigation depends-on G6M2OnDemandViews.
+G6M3XfmdNavigation has implementation-status = planned.
+G6M3XfmdNavigation refines G6NavigableDocumentation.
+G6M4SessionPublication addresses EvictUnusedViewBundles.
+G6M4SessionPublication addresses RejectStaleViewResults.
+G6M4SessionPublication addresses RetainVisibleViewBundle.
+G6M4SessionPublication addresses ServeViewRequests.
+G6M4SessionPublication depends-on G6M3XfmdNavigation.
+G6M4SessionPublication has implementation-status = planned.
+G6M4SessionPublication refines G6NavigableDocumentation.
+G6NavigableDocumentation delivers NavigableDesignDocumentation.
+G6NavigableDocumentation has implementation-status = planned.
 GenerateBindingRegistration allocated-to CommandLineHost in mode NativeBuild.
 GenerateBindingRegistration contributes-to NativeGoAssembly.
 GenerateBindingRegistration realizes NativeRealization.
@@ -783,6 +927,8 @@ GenerateGoResult upholds GeneratedGoContract.
 GenerateModelConstructors allocated-to CommandLineHost in mode NativeBuild.
 GenerateModelConstructors contributes-to NativeGoAssembly.
 GenerateModelConstructors realizes NativeRealization.
+GenerateViewNavigation allocated-to ViewServiceHost in mode DocumentBrowsing.
+GenerateViewNavigation contributes-to NavigableDesignDocumentation.
 GeneratedGoContract has completeness = closed.
 GeneratedGoContract has-field GeneratedGoSources.
 GeneratedGoSources has presence = required.
@@ -837,12 +983,23 @@ InteractiveFramePrepared step 2 sends LayoutResult from SduiLayout to FyneHost v
 InteractiveFramePrepared step 3 sends PresentFrameRequest from FyneHost to FyneBackend via FramePresentationCalls.
 InteractiveFramePrepared step 4 sends PresentFrameResult from FyneBackend to FyneHost via FramePresentationCalls reply-to 3.
 InteractiveUiPreview supports PrototypeUserInterface.
+InvalidViewSelectionRejected exercises BrowseDesignViews.
+InvalidViewSelectionRejected has completeness = closed.
+InvalidViewSelectionRejected illustrates G6M2OnDemandViews.
+InvalidViewSelectionRejected illustrates G6M4SessionPublication.
+InvalidViewSelectionRejected runs-in DocumentBrowsing.
+InvalidViewSelectionRejected step 1 sends SelectViewRequest from XfmdDocumentHost to DocumentBroker via ViewNavigationCalls.
+InvalidViewSelectionRejected step 2 sends ViewRequestRejected from DocumentBroker to XfmdDocumentHost via ViewNavigationCalls reply-to 1.
 InvokeRegisteredFunction allocated-to FyneHost in mode BoundExecution.
 InvokeRegisteredFunction contributes-to TypedDomainBinding.
 InvokeRegisteredFunction realizes ExecutableDesign.
 KeepLastValidModels allocated-to FyneHost in mode LiveEditing.
 KeepLastValidModels contributes-to LiveModelReload.
 KeepLastValidModels realizes DevelopmentReload.
+KeyViewRevision allocated-to ViewServiceHost in mode DocumentBrowsing.
+KeyViewRevision contributes-to NavigableDesignDocumentation.
+LaunchViewRequest has message-kind = request.
+LaunchViewRequest upholds ViewOpenContract.
 LayoutArguments has completeness = closed.
 LayoutArguments has-field LayoutModelArtifact.
 LayoutArguments has-field LayoutViewportHeight.
@@ -912,6 +1069,7 @@ NativeUiActionsProtocol has completeness = closed.
 NativeUiActionsProtocol permits UiActionRejected.
 NativeUiActionsProtocol permits UiActionRequest.
 NativeUiActionsProtocol permits UiActionResult.
+NavigableDesignDocumentation supports BrowseDesignViews.
 NormalizeSdlModel has repeatability = deterministic.
 NormalizeSdlModel has state-retention = stateless.
 NormalizeSdlModel realizes SdlSourceModel.
@@ -931,6 +1089,24 @@ NoticeVersion has value-type = unsigned.
 ObserveSourceChanges allocated-to FyneHost in mode LiveEditing.
 ObserveSourceChanges contributes-to LiveModelReload.
 ObserveSourceChanges realizes DevelopmentReload.
+OpenViewConsumerId has presence = required.
+OpenViewConsumerId has value-type = text.
+OpenViewEntryPath has presence = required.
+OpenViewEntryPath has value-type = text.
+OpenViewLeaseId has presence = required.
+OpenViewLeaseId has value-type = text.
+OpenViewPaneId has presence = required.
+OpenViewPaneId has value-type = text.
+OpenViewRequestId has presence = required.
+OpenViewRequestId has value-type = text.
+OpenViewRevision has presence = required.
+OpenViewRevision has value-type = text.
+OpenViewWindowId has presence = required.
+OpenViewWindowId has value-type = text.
+OpenedViewRequestId has presence = required.
+OpenedViewRequestId has value-type = text.
+OpenedViewRevision has presence = required.
+OpenedViewRevision has value-type = text.
 PerformDomainOperation realizes DomainOperations.
 PrepareCandidateModels allocated-to FyneHost in mode LiveEditing.
 PrepareCandidateModels contributes-to LiveModelReload.
@@ -965,13 +1141,20 @@ PreserveUiRegions realizes SduiSourceModel.
 PreserveUiSourceMap has repeatability = deterministic.
 PreserveUiSourceMap has state-retention = stateless.
 PreserveUiSourceMap realizes SduiSourceModel.
+PreserveViewAnchors allocated-to ViewServiceHost in mode DocumentBrowsing.
+PreserveViewAnchors contributes-to NavigableDesignDocumentation.
 ProjectSdlViewpoints allocated-to CommandLineHost in mode StaticExport.
+ProjectSdlViewpoints allocated-to ViewServiceHost in mode DocumentBrowsing.
 ProjectSdlViewpoints contributes-to DesignDocumentation.
 ProjectSdlViewpoints has repeatability = deterministic.
 ProjectSdlViewpoints has state-retention = stateless.
+ProjectSelectedView allocated-to ViewServiceHost in mode DocumentBrowsing.
+ProjectSelectedView contributes-to NavigableDesignDocumentation.
 ProjectUiGeneration allocated-to FyneHost in mode LiveEditing.
 ProjectUiGeneration contributes-to LiveModelReload.
 ProjectUiGeneration projects UiSessionState into UiGenerationNotices.
+ProjectViewRequest has message-kind = request.
+ProjectViewRequest upholds ViewSelectionContract.
 PublishDomainUpdates allocated-to FyneHost in mode BoundExecution.
 PublishDomainUpdates contributes-to TypedDomainBinding.
 PublishDomainUpdates realizes BoundInteraction.
@@ -980,6 +1163,10 @@ PublishModelGeneration contributes-to LiveModelReload.
 PublishModelGeneration has state-retention = stateful.
 PublishModelGeneration realizes DevelopmentReload.
 PublishPresentation realizes NativeInteraction.
+PublishViewBundle allocated-to ViewServiceHost in mode DocumentBrowsing.
+PublishViewBundle contributes-to NavigableDesignDocumentation.
+PublishViewRequest has message-kind = request.
+PublishViewRequest upholds ViewBundleContract.
 ReadBoundedSources realizes SourceLoading.
 ReconcileWidgets allocated-to FyneHost in mode UiPreview.
 ReconcileWidgets contributes-to InteractiveUiPreview.
@@ -988,6 +1175,8 @@ ReconcileWidgets realizes NativeInteraction.
 RegisterDomainFunctions has state-retention = stateful.
 RegisterDomainFunctions realizes ExecutableDesign.
 RejectStaleUiEvent realizes InteractiveSession.
+RejectStaleViewResults allocated-to ViewServiceHost in mode DocumentBrowsing.
+RejectStaleViewResults contributes-to NavigableDesignDocumentation.
 ReleaseNativeWidgets realizes NativeInteraction.
 ReleaseVisualResources realizes RichContent.
 ReloadArguments has completeness = closed.
@@ -1048,6 +1237,8 @@ ResolveAncestorDimensions realizes MeasuredPresentation.
 ResolveCallbackSymbols allocated-to FyneHost in mode BoundExecution.
 ResolveCallbackSymbols contributes-to TypedDomainBinding.
 ResolveCallbackSymbols realizes BoundInteraction.
+ResolveConfiguredViewer allocated-to ViewServiceHost in mode DocumentBrowsing.
+ResolveConfiguredViewer contributes-to NavigableDesignDocumentation.
 ResolveSdlSymbols has repeatability = deterministic.
 ResolveSdlSymbols has state-retention = stateless.
 ResolveSdlSymbols realizes SdlSourceModel.
@@ -1058,12 +1249,16 @@ ResourceStore owns ReleaseVisualResources.
 ResourceStore owns ValidateVisualResources.
 ResourceStore provides RichContent.
 RestartChangedGoProgram realizes NativeRealization.
+RetainVisibleViewBundle allocated-to ViewServiceHost in mode DocumentBrowsing.
+RetainVisibleViewBundle contributes-to NavigableDesignDocumentation.
 RetirePreviousGeneration realizes DevelopmentReload.
 RetireReplacedPythonEntryPoints allocated-to CommandLineHost in mode NativeBuild.
 RetireReplacedPythonEntryPoints contributes-to NativeGoAssembly.
 RevokeWidgetGenerations realizes InteractiveSession.
 RichContent requires ContentProviderPort in mode RichDocument.
 RichContent requires DiagramEnginePort in mode RichDocument.
+RouteDocumentToPane allocated-to XfmdDocumentHost in mode DocumentBrowsing.
+RouteDocumentToPane contributes-to NavigableDesignDocumentation.
 RouteDomainBindings realizes BoundInteraction.
 RunBoundUiAction refines RunDesignSession.
 RunUnboundUiPreview refines RunDesignSession.
@@ -1162,9 +1357,16 @@ SdlValidator owns ResolveSdlSymbols.
 SdlValidator owns ValidateSdlProfile.
 SdlValidator owns ValidateSdlStructure.
 SdlValidator provides SdlSourceModel.
+SdlViewpointGenerator owns ComposeViewPackage.
 SdlViewpointGenerator owns ExportViewpointMarkdown.
+SdlViewpointGenerator owns GenerateViewNavigation.
+SdlViewpointGenerator owns PreserveViewAnchors.
 SdlViewpointGenerator owns ProjectSdlViewpoints.
+SdlViewpointGenerator owns ProjectSelectedView.
 SdlViewpointGenerator owns TraceViewpointFacts.
+SdlViewpointGenerator uses ViewProjectionCalls as receiver of ProjectViewRequest in mode DocumentBrowsing.
+SdlViewpointGenerator uses ViewProjectionCalls as sender of ViewBundleResult in mode DocumentBrowsing.
+SdlViewpointGenerator uses ViewProjectionCalls as sender of ViewProjectionRejected in mode DocumentBrowsing.
 SduiDispatcher consumes DomainBindingPort.
 SduiDispatcher consumes UiStatePort.
 SduiDispatcher owns CorrelateUiResult.
@@ -1271,6 +1473,27 @@ SduiValidator owns ValidateWidgetArguments.
 SduiValidator provides SduiSourceModel.
 SduiValidator uses UiValidationCalls as receiver of ValidateUiRequest in mode SourceInspection.
 SduiValidator uses UiValidationCalls as sender of ValidateUiResult in mode SourceInspection.
+SelectViewRequest has message-kind = request.
+SelectViewRequest upholds ViewSelectionContract.
+SelectedViewOpened exercises BrowseDesignViews.
+SelectedViewOpened has completeness = closed.
+SelectedViewOpened illustrates G6M1StaticNavigation.
+SelectedViewOpened illustrates G6M2OnDemandViews.
+SelectedViewOpened illustrates G6M3XfmdNavigation.
+SelectedViewOpened illustrates G6M4SessionPublication.
+SelectedViewOpened runs-in DocumentBrowsing.
+SelectedViewOpened step 1 sends SelectViewRequest from XfmdDocumentHost to DocumentBroker via ViewNavigationCalls.
+SelectedViewOpened step 10 sends ViewOpenedResult from DocumentBroker to XfmdDocumentHost via ViewNavigationCalls reply-to 1.
+SelectedViewOpened step 2 sends ProjectViewRequest from DocumentBroker to SdlViewpointGenerator via ViewProjectionCalls.
+SelectedViewOpened step 3 sends ViewBundleResult from SdlViewpointGenerator to DocumentBroker via ViewProjectionCalls reply-to 2.
+SelectedViewOpened step 4 sends PublishViewRequest from DocumentBroker to ViewArtifactStore via ViewPublicationCalls.
+SelectedViewOpened step 5 sends ViewReferenceResult from ViewArtifactStore to DocumentBroker via ViewPublicationCalls reply-to 4.
+SelectedViewOpened step 6 sends LaunchViewRequest from DocumentBroker to ViewerLaunchAdapter via ViewLaunchCalls.
+SelectedViewOpened step 7 sends DisplayViewRequest from ViewerLaunchAdapter to XfmdDocumentHost via ViewDisplayCalls.
+SelectedViewOpened step 8 sends ViewDisplayResult from XfmdDocumentHost to ViewerLaunchAdapter via ViewDisplayCalls reply-to 7.
+SelectedViewOpened step 9 sends ViewLaunchResult from ViewerLaunchAdapter to DocumentBroker via ViewLaunchCalls reply-to 6.
+ServeViewRequests allocated-to ViewServiceHost in mode DocumentBrowsing.
+ServeViewRequests contributes-to NavigableDesignDocumentation.
 SessionDraft has presence = optional.
 SessionDraft has value-type = text.
 SessionGeneration has presence = required.
@@ -1334,6 +1557,7 @@ TokenizeUiResult replies-to TokenizeUiRequest.
 TokenizeUiResult upholds TokenArtifactContract.
 TraceViewpointFacts allocated-to CommandLineHost in mode SourceInspection.
 TraceViewpointFacts allocated-to CommandLineHost in mode StaticExport.
+TraceViewpointFacts allocated-to ViewServiceHost in mode DocumentBrowsing.
 TraceViewpointFacts contributes-to DesignDocumentation.
 TraceViewpointFacts contributes-to InspectModels.
 TraceViewpointFacts has repeatability = deterministic.
@@ -1459,6 +1683,8 @@ ValidateUiRequest upholds AstArtifactContract.
 ValidateUiResult has message-kind = result.
 ValidateUiResult replies-to ValidateUiRequest.
 ValidateUiResult upholds ValidationOutcomeContract.
+ValidateViewRequest allocated-to ViewServiceHost in mode DocumentBrowsing.
+ValidateViewRequest contributes-to NavigableDesignDocumentation.
 ValidateVisualResources realizes RichContent.
 ValidateWidgetArguments allocated-to CommandLineHost in mode SourceInspection.
 ValidateWidgetArguments contributes-to StructuralModelInspection.
@@ -1470,6 +1696,146 @@ ValidationOutcomeContract has-field ModelDiagnostics.
 ValidationOutcomeContract has-field ModelIsValid.
 VerifyNativeBehaviorParity allocated-to CommandLineHost in mode NativeBuild.
 VerifyNativeBehaviorParity contributes-to NativeGoAssembly.
+ViewArtifactStore owns EvictUnusedViewBundles.
+ViewArtifactStore owns PublishViewBundle.
+ViewArtifactStore owns RetainVisibleViewBundle.
+ViewArtifactStore uses ViewPublicationCalls as receiver of PublishViewRequest in mode DocumentBrowsing.
+ViewArtifactStore uses ViewPublicationCalls as sender of ViewReferenceResult in mode DocumentBrowsing.
+ViewBundleBytes has presence = required.
+ViewBundleBytes has value-type = bytes.
+ViewBundleContract has completeness = closed.
+ViewBundleContract has-field ViewBundleBytes.
+ViewBundleContract has-field ViewBundleRevision.
+ViewBundleResult has message-kind = result.
+ViewBundleResult replies-to ProjectViewRequest.
+ViewBundleResult upholds ViewBundleContract.
+ViewBundleRevision has presence = required.
+ViewBundleRevision has value-type = text.
+ViewConsumerId has presence = required.
+ViewConsumerId has value-type = text.
+ViewDisplayCalls upholds ViewDisplayCallsProtocol.
+ViewDisplayCallsProtocol has completeness = closed.
+ViewDisplayCallsProtocol permits DisplayViewRequest.
+ViewDisplayCallsProtocol permits ViewDisplayResult.
+ViewDisplayCallsProtocol permits ViewTargetUnavailable.
+ViewDisplayResult has message-kind = result.
+ViewDisplayResult replies-to DisplayViewRequest.
+ViewDisplayResult upholds ViewOpenedContract.
+ViewEntryPath has presence = required.
+ViewEntryPath has value-type = text.
+ViewFailureCode has presence = required.
+ViewFailureCode has value-type = text.
+ViewFailureContract has completeness = closed.
+ViewFailureContract has-field FailedViewRequestId.
+ViewFailureContract has-field ViewFailureCode.
+ViewFailureContract has-field ViewFailureDiagnostic.
+ViewFailureDiagnostic has presence = required.
+ViewFailureDiagnostic has value-type = text.
+ViewLaunchCalls upholds ViewLaunchCallsProtocol.
+ViewLaunchCallsProtocol has completeness = closed.
+ViewLaunchCallsProtocol permits LaunchViewRequest.
+ViewLaunchCallsProtocol permits ViewLaunchResult.
+ViewLaunchResult has message-kind = result.
+ViewLaunchResult replies-to LaunchViewRequest.
+ViewLaunchResult upholds ViewOpenedContract.
+ViewLeaseId has presence = required.
+ViewLeaseId has value-type = text.
+ViewManifestPath has presence = required.
+ViewManifestPath has value-type = text.
+ViewNavigationCalls upholds ViewNavigationCallsProtocol.
+ViewNavigationCallsProtocol has completeness = closed.
+ViewNavigationCallsProtocol permits SelectViewRequest.
+ViewNavigationCallsProtocol permits ViewOpenedResult.
+ViewNavigationCallsProtocol permits ViewRequestRejected.
+ViewOpenContract has completeness = closed.
+ViewOpenContract has-field OpenViewConsumerId.
+ViewOpenContract has-field OpenViewEntryPath.
+ViewOpenContract has-field OpenViewLeaseId.
+ViewOpenContract has-field OpenViewPaneId.
+ViewOpenContract has-field OpenViewRequestId.
+ViewOpenContract has-field OpenViewRevision.
+ViewOpenContract has-field OpenViewWindowId.
+ViewOpenedContract has completeness = closed.
+ViewOpenedContract has-field OpenedViewRequestId.
+ViewOpenedContract has-field OpenedViewRevision.
+ViewOpenedResult has message-kind = result.
+ViewOpenedResult replies-to SelectViewRequest.
+ViewOpenedResult upholds ViewOpenedContract.
+ViewPaneId has presence = required.
+ViewPaneId has value-type = text.
+ViewProjectId has presence = required.
+ViewProjectId has value-type = text.
+ViewProjectionCalls upholds ViewProjectionCallsProtocol.
+ViewProjectionCallsProtocol has completeness = closed.
+ViewProjectionCallsProtocol permits ProjectViewRequest.
+ViewProjectionCallsProtocol permits ViewBundleResult.
+ViewProjectionCallsProtocol permits ViewProjectionRejected.
+ViewProjectionFailed exercises BrowseDesignViews.
+ViewProjectionFailed has completeness = closed.
+ViewProjectionFailed illustrates G6M2OnDemandViews.
+ViewProjectionFailed illustrates G6M4SessionPublication.
+ViewProjectionFailed runs-in DocumentBrowsing.
+ViewProjectionFailed step 1 sends SelectViewRequest from XfmdDocumentHost to DocumentBroker via ViewNavigationCalls.
+ViewProjectionFailed step 2 sends ProjectViewRequest from DocumentBroker to SdlViewpointGenerator via ViewProjectionCalls.
+ViewProjectionFailed step 3 sends ViewProjectionRejected from SdlViewpointGenerator to DocumentBroker via ViewProjectionCalls reply-to 2.
+ViewProjectionFailed step 4 sends ViewRequestRejected from DocumentBroker to XfmdDocumentHost via ViewNavigationCalls reply-to 1.
+ViewProjectionRejected has message-kind = result.
+ViewProjectionRejected replies-to ProjectViewRequest.
+ViewProjectionRejected upholds ViewFailureContract.
+ViewPublicationCalls upholds ViewPublicationCallsProtocol.
+ViewPublicationCallsProtocol has completeness = closed.
+ViewPublicationCallsProtocol permits PublishViewRequest.
+ViewPublicationCallsProtocol permits ViewReferenceResult.
+ViewPublishedRevision has presence = required.
+ViewPublishedRevision has value-type = text.
+ViewReferenceContract has completeness = closed.
+ViewReferenceContract has-field ViewEntryPath.
+ViewReferenceContract has-field ViewLeaseId.
+ViewReferenceContract has-field ViewManifestPath.
+ViewReferenceContract has-field ViewPublishedRevision.
+ViewReferenceResult has message-kind = result.
+ViewReferenceResult replies-to PublishViewRequest.
+ViewReferenceResult upholds ViewReferenceContract.
+ViewRequestId has presence = required.
+ViewRequestId has value-type = text.
+ViewRequestRejected has message-kind = result.
+ViewRequestRejected replies-to SelectViewRequest.
+ViewRequestRejected upholds ViewFailureContract.
+ViewSelectionContract has completeness = closed.
+ViewSelectionContract has-field ViewConsumerId.
+ViewSelectionContract has-field ViewPaneId.
+ViewSelectionContract has-field ViewProjectId.
+ViewSelectionContract has-field ViewRequestId.
+ViewSelectionContract has-field ViewSelector.
+ViewSelectionContract has-field ViewSourceRevision.
+ViewSelectionContract has-field ViewWindowId.
+ViewSelector has presence = required.
+ViewSelector has value-type = text.
+ViewServiceHost contains DocumentBroker.
+ViewServiceHost contains ViewArtifactStore.
+ViewServiceHost contains ViewerLaunchAdapter.
+ViewSourceRevision has presence = required.
+ViewSourceRevision has value-type = text.
+ViewTargetUnavailable has message-kind = result.
+ViewTargetUnavailable replies-to DisplayViewRequest.
+ViewTargetUnavailable upholds ViewFailureContract.
+ViewWindowId has presence = required.
+ViewWindowId has value-type = text.
+ViewerLaunchAdapter owns DispatchViewOpen.
+ViewerLaunchAdapter owns ResolveConfiguredViewer.
+ViewerLaunchAdapter uses ViewDisplayCalls as receiver of ViewDisplayResult in mode DocumentBrowsing.
+ViewerLaunchAdapter uses ViewDisplayCalls as receiver of ViewTargetUnavailable in mode DocumentBrowsing.
+ViewerLaunchAdapter uses ViewDisplayCalls as sender of DisplayViewRequest in mode DocumentBrowsing.
+ViewerLaunchAdapter uses ViewLaunchCalls as receiver of LaunchViewRequest in mode DocumentBrowsing.
+ViewerLaunchAdapter uses ViewLaunchCalls as sender of ViewLaunchResult in mode DocumentBrowsing.
 WriteGeneratedArtifacts allocated-to CommandLineHost in mode StaticExport.
 WriteGeneratedArtifacts contributes-to DesignDocumentation.
 WriteGeneratedArtifacts realizes StaticDocumentation.
+XfmdDocumentHost owns CaptureNavigationTarget.
+XfmdDocumentHost owns RouteDocumentToPane.
+XfmdDocumentHost uses ViewDisplayCalls as receiver of DisplayViewRequest in mode DocumentBrowsing.
+XfmdDocumentHost uses ViewDisplayCalls as sender of ViewDisplayResult in mode DocumentBrowsing.
+XfmdDocumentHost uses ViewDisplayCalls as sender of ViewTargetUnavailable in mode DocumentBrowsing.
+XfmdDocumentHost uses ViewNavigationCalls as receiver of ViewOpenedResult in mode DocumentBrowsing.
+XfmdDocumentHost uses ViewNavigationCalls as receiver of ViewRequestRejected in mode DocumentBrowsing.
+XfmdDocumentHost uses ViewNavigationCalls as sender of SelectViewRequest in mode DocumentBrowsing.

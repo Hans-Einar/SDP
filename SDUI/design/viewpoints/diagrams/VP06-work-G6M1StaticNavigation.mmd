@@ -1,0 +1,21 @@
+flowchart LR
+    n_ComposeViewPackage["ComposeViewPackage (functionality)"]
+    n_ExportViewpointMarkdown["ExportViewpointMarkdown (functionality)"]
+    n_G6M1StaticNavigation["G6M1StaticNavigation (activity)"]
+    n_GenerateViewNavigation["GenerateViewNavigation (functionality)"]
+    n_PreserveViewAnchors["PreserveViewAnchors (functionality)"]
+    n_ProjectSdlViewpoints["ProjectSdlViewpoints (functionality)"]
+    n_SdlViewpointGenerator["SdlViewpointGenerator (unit)"]
+    n_TraceViewpointFacts["TraceViewpointFacts (functionality)"]
+    n_G6M1StaticNavigation -->|addresses| n_ComposeViewPackage
+    n_G6M1StaticNavigation -->|addresses| n_ExportViewpointMarkdown
+    n_G6M1StaticNavigation -->|addresses| n_GenerateViewNavigation
+    n_G6M1StaticNavigation -->|addresses| n_PreserveViewAnchors
+    n_G6M1StaticNavigation -->|addresses| n_ProjectSdlViewpoints
+    n_G6M1StaticNavigation -->|addresses| n_TraceViewpointFacts
+    n_SdlViewpointGenerator -->|owns| n_ComposeViewPackage
+    n_SdlViewpointGenerator -->|owns| n_ExportViewpointMarkdown
+    n_SdlViewpointGenerator -->|owns| n_GenerateViewNavigation
+    n_SdlViewpointGenerator -->|owns| n_PreserveViewAnchors
+    n_SdlViewpointGenerator -->|owns| n_ProjectSdlViewpoints
+    n_SdlViewpointGenerator -->|owns| n_TraceViewpointFacts

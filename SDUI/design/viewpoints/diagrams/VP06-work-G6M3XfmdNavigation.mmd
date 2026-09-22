@@ -1,0 +1,16 @@
+flowchart LR
+    n_CaptureNavigationTarget["CaptureNavigationTarget (functionality)"]
+    n_DispatchViewOpen["DispatchViewOpen (functionality)"]
+    n_G6M3XfmdNavigation["G6M3XfmdNavigation (activity)"]
+    n_ResolveConfiguredViewer["ResolveConfiguredViewer (functionality)"]
+    n_RouteDocumentToPane["RouteDocumentToPane (functionality)"]
+    n_ViewerLaunchAdapter["ViewerLaunchAdapter (unit)"]
+    n_XfmdDocumentHost["XfmdDocumentHost (container)"]
+    n_G6M3XfmdNavigation -->|addresses| n_CaptureNavigationTarget
+    n_G6M3XfmdNavigation -->|addresses| n_DispatchViewOpen
+    n_G6M3XfmdNavigation -->|addresses| n_ResolveConfiguredViewer
+    n_G6M3XfmdNavigation -->|addresses| n_RouteDocumentToPane
+    n_ViewerLaunchAdapter -->|owns| n_DispatchViewOpen
+    n_ViewerLaunchAdapter -->|owns| n_ResolveConfiguredViewer
+    n_XfmdDocumentHost -->|owns| n_CaptureNavigationTarget
+    n_XfmdDocumentHost -->|owns| n_RouteDocumentToPane
