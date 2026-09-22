@@ -16,6 +16,7 @@ type ContentRenderer interface {
 type Options struct {
 	Width, Height float64
 	Content       ContentRenderer
+	SkipControls  bool
 }
 
 func Render(root *layout.Box, options Options) (string, error) {
@@ -37,6 +38,9 @@ func Render(root *layout.Box, options Options) (string, error) {
 		case n.Variant == "box":
 			rect(&out, r, "#ffffff", "#94a3b8", 4)
 		case n.Kind == "widget":
+			if options.SkipControls && n.Widget != "svg" {
+				break
+			}
 			fill, stroke, color := "#e2e8f0", "#94a3b8", "#0f172a"
 			if !b.Enabled {
 				color = "#64748b"

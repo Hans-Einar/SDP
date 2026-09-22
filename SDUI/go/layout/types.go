@@ -127,7 +127,11 @@ func gaps(n *parser.Instance, ref Size) (float64, float64) {
 	return number(n, "gap-x", g) * ref.W, number(n, "gap-y", g) * ref.H
 }
 func bounds(n *parser.Instance, axis string, ref float64) (float64, float64) {
-	return number(n, "min-"+axis, 0) * ref, number(n, "max-"+axis, math.Inf(1)) * ref
+	maximum := math.Inf(1)
+	if v, ok := n.Layout["max-"+axis].(float64); ok {
+		maximum = v * ref
+	}
+	return number(n, "min-"+axis, 0) * ref, maximum
 }
 func clamp(v, lo, hi float64) float64 { return math.Max(lo, math.Min(hi, v)) }
 func alignment(available, used float64, kind string) float64 {

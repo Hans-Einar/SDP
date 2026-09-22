@@ -90,6 +90,9 @@ func (e *Engine) desired(n *parser.Instance, ref, slot Size, force assigned, inh
 		if err != nil {
 			return Size{}, err
 		}
+		if n.Kind == "widget" && (knownW && w < s.W-.01 || knownH && h < s.H-.01) {
+			return Size{}, diag(n, "native-minimum", "Assigned size is below widget minimum")
+		}
 		if !knownW {
 			w = s.W
 		}

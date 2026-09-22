@@ -119,3 +119,26 @@ func TestSaturatedTracks(t *testing.T) {
 	near(t, v[0], 80)
 	near(t, v[1], 80)
 }
+
+func TestStretchNeverDeformsRatio(t *testing.T) {
+	b, e := build(t, `[a=[] {16:9,scale-x=0.5}] {scale=1,items=stretch}`, 1000, 600)
+	if e != nil {
+		t.Fatal(e)
+	}
+	r := boxes(b)["page/a"].Rect
+	near(t, r.W/r.H, 16.0/9)
+	_, e = build(t, `[button("OK") {scale-x=0.01}] {scale=1}`, 1000, 600)
+	if e == nil {
+		t.Fatal("native minimum silently shrunk")
+	}
+}
+
+func TestCollapsedBodyNoNaN(t *testing.T) {
+	_, e := build(t, `[header="Header",button("OK")] {scale=1}`, 1, 1)
+	if e == nil {
+		t.Fatal("expected overflow")
+	}
+	if d, ok := e.(*parser.Diagnostic); ok && d.Code == "layout-range" {
+		t.Fatal("zero inner size created NaN")
+	}
+}

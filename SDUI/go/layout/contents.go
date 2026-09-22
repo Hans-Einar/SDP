@@ -143,7 +143,8 @@ func (e *Engine) row(owner *parser.Instance, row []*parser.Instance, ref Size, g
 	for i, c := range row {
 		lo, hi := bounds(c, "x", ref.W)
 		w := weight(c, "x")
-		if len(row) == 1 && choice(owner, "items", "start") == "stretch" && !explicit(c, "x") {
+		_, hasRatio := c.Layout["ratio"]
+		if len(row) == 1 && !hasRatio && choice(owner, "items", "start") == "stretch" && !explicit(c, "x") {
 			w = 1
 		}
 		if w > 0 {
@@ -181,7 +182,8 @@ func (e *Engine) row(owner *parser.Instance, row []*parser.Instance, ref Size, g
 	for i, c := range row {
 		s := sizes[i]
 		align := choice(c, "align-y", choice(owner, "items", "start"))
-		if align == "stretch" && !explicit(c, "y") {
+		_, hasRatio := c.Layout["ratio"]
+		if align == "stretch" && !hasRatio && !explicit(c, "y") {
 			s.H = rowH
 		}
 		y := alignment(rowH, s.H, align)
