@@ -56,3 +56,12 @@ go run ./cmd/sdl viewpoints ../../SDUI/design/architecture.design --output /tmp/
 Valgfritt `--renderer /absolutt/sti/til/mmdr` lager SVG i statisk eksport.
 `--viewpoint VP02,VP08` avgrenser eksporten. Navigator er standard og renderer
 ingen detaljer. Dens handlingslenker krever den kommende registrerte leseradapteren.
+
+Et utvalg ved behov:
+
+```sh
+go run ./cmd/sdl view ../../SDUI/design/architecture.design --uri 'sdl-view://sdui-design/VP02?focus=SduiFrontend&relations=contains&direction=out&depth=1&level=A2' --output /tmp/sdl-selected
+```
+
+`--renderer` er valgfri også her. Hele pakken publiseres før `entry.md` tilbys.
+CLI-en løser kildefilen eksplisitt; en vertsadapter må registrere prosjekt-ID.

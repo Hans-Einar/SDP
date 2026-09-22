@@ -10,6 +10,9 @@ import (
 )
 
 func execute(args []string, stdin io.Reader, stdout, stderr io.Writer) int {
+	if len(args) > 0 && args[0] == "view" {
+		return selectView(args[1:], stdout, stderr)
+	}
 	if len(args) > 0 && args[0] == "viewpoints" {
 		return exportViews(args[1:], stdout, stderr)
 	}

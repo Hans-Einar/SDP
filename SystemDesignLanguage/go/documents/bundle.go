@@ -100,6 +100,12 @@ func Build(ctx context.Context, v *viewpoint.Views, o Options) (*Bundle, error) 
 		full += "## " + s.ID + " — " + s.Title + "\n\n" + s.Note + "\n\n"
 		if o.Navigator {
 			nav += "[Åpne ved behov](sdl-view://" + o.Project + "/" + s.ID + "?target=main&consumer=xfmd)\n\n"
+			for _, d := range v.Diagrams {
+				if strings.HasPrefix(d.ID, s.ID+"-") {
+					nav += "- [" + d.Title + "](sdl-view://" + o.Project + "/" + s.ID + "?diagram=" + url.QueryEscape(d.ID) + "&target=main&consumer=xfmd)\n"
+				}
+			}
+			nav += "\n"
 			continue
 		}
 		nav += "[Åpne viewpoint](" + vpdir + "/index.md)\n\n"
