@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/Hans-Einar/SDP/SDUI/go/layout"
+	"github.com/Hans-Einar/SDP/SDUI/go/markdown"
 	"github.com/Hans-Einar/SDP/SDUI/go/parser"
 	"github.com/Hans-Einar/SDP/SDUI/go/presentation"
 	"github.com/Hans-Einar/SDP/SDUI/go/svg"
@@ -16,6 +17,7 @@ import (
 
 type options struct {
 	source, output, format, entry string
+	renderer, resources           string
 	columns                       int
 	width, height                 float64
 	syntax                        bool
@@ -28,7 +30,7 @@ func arguments(args []string) (options, error) {
 		switch a {
 		case "--syntax-only":
 			o.syntax = true
-		case "-o", "--format", "--entry", "--columns", "--width", "--height":
+		case "-o", "--format", "--entry", "--columns", "--width", "--height", "--mermaid-renderer", "--resources":
 			i++
 			if i >= len(args) {
 				return o, fmt.Errorf("Missing value for %s", a)
@@ -40,6 +42,10 @@ func arguments(args []string) (options, error) {
 				o.format = args[i]
 			case "--entry":
 				o.entry = args[i]
+			case "--mermaid-renderer":
+				o.renderer = args[i]
+			case "--resources":
+				o.resources = args[i]
 			case "--width", "--height":
 				v, e := strconv.ParseFloat(args[i], 64)
 				if e != nil {
@@ -145,9 +151,20 @@ func execute(args []string, stdin io.Reader, stdout, stderr io.Writer) int {
 		switch o.format {
 		case "svg":
 			var box *layout.Box
-			box, e = (&layout.Engine{}).Layout(root, layout.Size{W: o.width, H: o.height})
+			var renderer markdown.Renderer
+			if o.renderer != "" {
+				renderer = markdown.Mmdr{Executable: o.renderer}
+			}
+			var provider *markdown.Provider
+			provider, e = markdown.Prepare(root, renderer)
 			if e == nil {
-				text, e = svg.Render(box, svg.Options{Width: o.width, Height: o.height})
+				box, e = (&layout.Engine{Measure: provider}).Layout(root, layout.Size{W: o.width, H: o.height})
+			}
+			if e == nil {
+				text, e = svg.Render(box, svg.Options{Width: o.width, Height: o.height, Content: provider})
+			}
+			if e == nil && o.resources != "" {
+				e = provider.WriteResources(o.resources)
 			}
 		case "dump":
 			text, e = presentation.Dump(root, o.columns)

@@ -25,3 +25,13 @@ CLI tilbyr `--format ast|dump|markdown|prototype-svg|prototype-html`,
 kilden. Eksport til fil publiseres atomisk etter validering og overskriver
 ikke kildefilen. Konsoll/Markdown samsvarer byte-for-byte med Concept1-fixturene.
 Prototype-SVG/HTML er kontrollgallerier, ikke generell SDUI-layout; G2 gir den.
+
+G2 leverer felles geometri (`layout`), SVG (`svg`), native Fyne-adapter
+(`host/fynehost`) og avgrenset Markdown (`markdown`). [Bevis](evidence/G2.md).
+Generell eksport bruker `--format svg --width 1920 --height 1200` og valgfritt
+`--mermaid-renderer /sti/til/mmdr --resources DIR`. [Profil](../docs/markdown-provider.md).
+
+Native prøve: `go run -tags desktop ./cmd/sdui-fyne -entry bucking
+../examples/concept1-bucking.sdui`. CLI-flaggene må stå før filnavnet i den
+native Go-flag-inngangen. Native bygg trenger OpenGL/X11/C-kompilator på Linux.
+Vanlige pakkeprøver bruker Fynes minnedriver uten skjermserver.

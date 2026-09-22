@@ -12,6 +12,7 @@ import (
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
 	"github.com/Hans-Einar/SDP/SDUI/go/host/fynehost"
+	"github.com/Hans-Einar/SDP/SDUI/go/markdown"
 	"github.com/Hans-Einar/SDP/SDUI/go/parser"
 )
 
@@ -37,7 +38,13 @@ func main() {
 	a := app.NewWithID("no.sdp.sdui.prototype")
 	w := a.NewWindow("SDUI · native prototype")
 	status := widget.NewLabel("Lokal prototype · ingen SDL-runtime")
+	provider, err := markdown.Prepare(root, nil)
+	if err != nil {
+		panic(err)
+	}
 	v := fynehost.New(root)
+	v.Measure = provider
+	v.Content = provider
 	v.OnStatus = func(err error) {
 		if err != nil {
 			status.SetText(err.Error())

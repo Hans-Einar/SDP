@@ -2,7 +2,7 @@
 
 **Status 2026-09-22:** SDL-løpet V0–V4 er levert og pushet som fasebrancher.
 Eieren har autorisert implementasjon av alle G-faser i én sammenhengende økt,
-med fasebrancher, milepælcommits og push ved faseslutt. G1 er levert;
+med fasebrancher, milepælcommits og push ved faseslutt. G1 og G2 er levert;
 øvrige milepæler står som planlagt inntil deres akseptanse er verifisert.
 [Faktiske implementasjonsbevis](../go/evidence/G1.md) holdes atskilt fra
 [den genererte designplanen](../design/viewpoints/implementation.md).
@@ -15,7 +15,7 @@ henvisninger til P-faser i eldre bevis gjelder historien, ikke aktive leveranser
 [checkpoint](../../docs/checkpoint%231/07-SDUI-0.2-and-Go-Direction.md).
 
 Omfang: SDL/SDUI-parser og runtime i Go, felles SDUI-layout, SVG-eksport, første
-Fyne-vert, modellreload og senere Go-generering. G0/G1 er levert; G2 er under implementasjon.
+Fyne-vert, modellreload og senere Go-generering. G0/G1 og G2 er levert; G2 er under implementasjon.
 Python SDUI 0.2, strukturparseren design-core og eksemplene er eksisterende portgrunnlag.
 
 Designgrunnlag 2026-09-22: [felles SDL-strukturmodell](../design/README.md) beskriver
@@ -51,7 +51,7 @@ Avhenger av G1-M2. Eier: SDUI-implementasjonen.
 | G2-M1 | **Levert:** Målekontrakt og fontenhet; relative akser, ratio, rader/grupper, header/body/footer, gap/padding og eksplisitte overflowgrenser |
 | G2-M2 | **Levert:** Generell SVG-eksport fra målt modell; liten frame + knapp/input og deretter Concept1 uten håndplassert fixture; geometri- og visuell kontroll |
 | G2-M3 | **Levert:** Fyne-vindu med samme geometri, knapper/input, Tab/fokus og registrert lokal Go-funksjon; ingen SDL-avhengighet |
-| G2-M4 | Avgrenset Markdown-provider og separate Mermaid-ressurser; dokumentert støtteprofil og negative tilfeller, ikke påstått full diagramdekning |
+| G2-M4 | **Levert:** Avgrenset Markdown-provider og separate Mermaid-ressurser; dokumentert støtteprofil og negative tilfeller, ikke påstått full diagramdekning |
 
 Krav R10/R11/R14/R15/R17/R20/R21/R24. Begynn med liten vertikal prøve i M1–M3;
 full Concept1/Markdown følger. Mål oppstart, resize og hukommelse før påstander

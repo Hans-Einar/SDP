@@ -9,7 +9,7 @@ import (
 )
 
 func TestCLI(t *testing.T) {
-	for _, args := range [][]string{{"-"}, {"-", "--format", "dump"}, {"--format", "markdown", "-"}, {"-", "--format", "prototype-svg"}} {
+	for _, args := range [][]string{{"-"}, {"-", "--format", "dump"}, {"--format", "markdown", "-"}, {"-", "--format", "prototype-svg"}, {"-", "--format", "svg"}} {
 		var out, err bytes.Buffer
 		code := execute(args, strings.NewReader(`sdui 0.2; P=[button("OK")];`), &out, &err)
 		if code != 0 || out.Len() == 0 {
