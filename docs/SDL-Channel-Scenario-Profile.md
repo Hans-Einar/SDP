@@ -73,3 +73,8 @@ V3-M3 request/resultat- og reload-eksempler med generert renderbevis.
 
 V3-M1 verifisert: 59 parser-/kontrakttester består, inkludert request/resultat,
 modus, tillatelser, korrelasjon, stegorden og obligatorisk Datagram-variant.
+
+V3-M2: VP08 og avledet MessageSet er implementert. 22 verktøytester består;
+numerisk stegorden, korrelasjon og pilens kontraktgrunnlag kontrolleres.
+Sekvenssyntaks følger [Mermaid sequence](https://mermaid.js.org/syntax/sequenceDiagram.html);
+rendererens grafplassering påvirker ikke meldingsretning eller rekkefølge.

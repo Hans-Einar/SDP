@@ -16,8 +16,9 @@ def build_data_views(views, diagram_type):
         variants = [r for r in relations['defines'] if r['subject'] == contract]
         variant_names = {r['object'] for r in variants}
         fields = [r for r in relations['has-field'] if r['subject'] in variant_names | {contract}]
+        permits = [r for r in relations['permits'] if r['subject'] == contract]
         views.diagram('VP09-contract-' + contract, 'Kontraktstruktur: ' + contract,
-                      variants + fields, [contract])
+                      variants + fields + permits, [contract])
     for encoding in sorted(n for n, k in views.kinds.items() if k == 'encoding'):
         variant = next(r['object'] for r in relations['encodes'] if r['subject'] == encoding)
         contract = next(r['subject'] for r in relations['defines'] if r['object'] == variant)

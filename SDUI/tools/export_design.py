@@ -47,6 +47,7 @@ def export():
     statements = Counter(core.sentence(s).split()[1] for s in model.statements)
     files = [source_path, ROOT / 'experiments/design_core/design_core.py',
              ROOT / 'experiments/design_core/data_core.py',
+             ROOT / 'experiments/design_core/channel_core.py',
              ROOT / 'docs/Design-Language-Definition.md', Path(__file__).resolve(),
              design_dir / 'architecture.ast.json', design_dir / 'architecture.catalog.md']
     report = {

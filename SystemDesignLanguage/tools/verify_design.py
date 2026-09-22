@@ -65,6 +65,13 @@ def verify(renderer, phase):
             for e in diagram['elements']:
                 f = facts[e['fact']]
                 assert (e['field'], e['first_bit'], e['last_bit']) == (f['field'], f['offset'], f['offset'] + f['width'] - 1)
+        if diagram['kind'] == 'sequence':
+            assert [e['ordinal'] for e in diagram['elements']] == list(range(1, len(diagram['elements']) + 1))
+            for e in diagram['elements']:
+                f = facts[e['fact']]
+                for key in ('ordinal', 'sender', 'receiver', 'message', 'variant', 'channel', 'reply_to'):
+                    assert e[key] == f[key]
+                assert {'uses', 'permits', 'upholds', 'step'} <= {facts[p]['verb'] for p in e['proof']}
     validation = ROOT / 'SDUI/design/architecture.validation.json'
     for name, sha in json.loads(validation.read_text())['files'].items():
         assert digest(ROOT / name) == sha, name
@@ -75,7 +82,7 @@ def verify(renderer, phase):
                   source_facts=summary['facts'], unsupported_viewpoints=summary['unsupported_viewpoints'],
                   model_gap_count=len(manifest['model_gaps']),
                   checks=['all SVG node labels', 'exact source facts/spans', 'output/generator hashes',
-                          'packet bit ranges', 'byte-identical repeat export'],
+                          'packet bit ranges', 'sequence order/correlation/provenance', 'byte-identical repeat export'],
                   files={p: digest(ROOT / p) for p in paths})
     (Path(__file__).with_name('verification.json')).write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
     return report

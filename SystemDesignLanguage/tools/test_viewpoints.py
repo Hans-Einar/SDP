@@ -39,7 +39,7 @@ class ViewpointTests(unittest.TestCase):
             self.assertTrue(set(views.node_map(d)) == {f'n_{n}' for n in d.nodes})
         self.assertNotIn('sequenceDiagram', views.markdown())
         self.assertNotIn('```mermaid\npacket\n', views.markdown())
-        self.assertIn('Kan ikke genereres', views.markdown())
+        self.assertIn('NO_SCENARIOS', {g['code'] for g in views.gaps})
         self.assertIn('Capability er ikke Feature', views.markdown())
 
     def test_selection_and_changed_source_control_output(self):

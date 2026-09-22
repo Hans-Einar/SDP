@@ -9,6 +9,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'experiments/design
 import design_core as core
 from goal_views import build_goal_views
 from data_views import build_data_views, data_tables
+from channel_views import build_channel_views, message_tables
 
 CATALOG = [
  ('VP01', 'Bruksmål og sporbarhet', 'supported', 'pursues, supports og contributes-to; modellens omfang, uten oppdiktet System-grense.'),
@@ -18,7 +19,7 @@ CATALOG = [
  ('VP05', 'Avhengigheter per modus', 'supported', 'requires in mode; modi har ingen implisitt arv.'),
  ('VP06', 'Aktivitetsdetaljering', 'supported', 'refines er detaljering, ikke rekkefølge eller tilstandsoverganger.'),
  ('VP07', 'Features over arkitekturen', 'supported', 'contributes-to, owns og eksplisitt allocated-to per modus. Uspesifisert allokering vises som hull.'),
- ('VP08', 'Channel-kontrakter og sekvenser', 'blocked', 'Channel, deltakere, meldingskontrakt og ordnede scenario-/protokollsteg mangler.'),
+ ('VP08', 'Channel-kontrakter og sekvenser', 'supported', 'Eksplisitte scenario-steg validert mot permits, deltakelse, modus og request/resultat-korrelasjon.'),
  ('VP09', 'Dataset, Datagram og persistent Database', 'supported', 'Eksplisitte holdere, kilde, kontrakter, varianter, felt og projeksjoner.'),
  ('VP10', 'Datagram-koding og packet', 'supported', 'Kun closed kontrakt med validert Encoding og eksplisitte bitplasseringer.'),
  ('VP11', 'Egenskaper, sporbarhet og modellhull', 'supported', 'Deklarasjoner og alle fakta med kildeposisjoner; støttegrenser beholdes.'),
@@ -73,6 +74,14 @@ class Views:
                 record.update(subject=s.subject.name, verb='projects', dataset=s.dataset.name, datagram=s.datagram.name)
             elif isinstance(s, core.Placement):
                 record.update(subject=s.subject.name, verb='places', field=s.field.name, offset=s.offset.value, width=s.width.value)
+            elif isinstance(s, core.Participation):
+                record.update(subject=s.subject.name, verb='uses', channel=s.channel.name, role=s.role,
+                              message=s.message.name, mode=s.mode.name)
+            elif isinstance(s, core.Step):
+                record.update(subject=s.subject.name, verb='step', ordinal=s.ordinal.value,
+                              message=s.message.name, variant=s.variant.name if s.variant else None,
+                              sender=s.sender.name, receiver=s.receiver.name, channel=s.channel.name,
+                              reply_to=s.reply_to.value if s.reply_to else None)
             else:
                 record.update(subject=s.subject.name, verb='has', property=s.property, value=s.value)
             self.facts.append(record)
@@ -81,6 +90,8 @@ class Views:
         self.build_diagrams()
         self.diagrams = [d for d in self.diagrams if d.ident.split('-')[0] in self.selected]
         self.gaps = [g for g in self.gaps if g['viewpoint'] in self.selected]
+        if 'VP08' not in self.selected:
+            self.message_sets = []
 
     def diagram(self, ident, title, records, nodes=()):
         d = Diagram(ident, title, set(nodes))
@@ -93,6 +104,7 @@ class Views:
     def build_diagrams(self):
         build_goal_views(self)
         build_data_views(self, Diagram)
+        build_channel_views(self, Diagram)
         children = {r['object'] for r in self.relations['contains']}
         roots = [name for name, kind in self.kinds.items() if kind in ('unit', 'container') and name not in children]
         self.diagram('VP02-roots', 'Arkitekturrøtter — ingen kobling/allokering er utledet', [], roots)
@@ -127,7 +139,7 @@ class Views:
             if ident not in self.selected:
                 continue
             lines.append(f'| {ident} — {title} | {"Tilgjengelig" if status == "supported" else "Kan ikke genereres"} | {note} |')
-        for prefix in ('VP01', 'VP02', 'VP03', 'VP05', 'VP06', 'VP07', 'VP09', 'VP10'):
+        for prefix in ('VP01', 'VP02', 'VP03', 'VP05', 'VP06', 'VP07', 'VP08', 'VP09', 'VP10'):
             if prefix not in self.selected:
                 continue
             title = next(title for ident, title, _, _ in CATALOG if ident == prefix)
@@ -157,6 +169,7 @@ class Views:
                     lines.append(f'| {gap["model_id"]} | {gap.get("mode") or "—"} | {gap["message"]} |')
                 lines += ['']
         lines += data_tables(self)
+        lines += message_tables(self)
         if 'VP04' in self.selected:
             lines += ['## VP04 — Grensesnittbruk', '',
                   'Tabellen dekker alle consumes-fakta. Portnavn er ikke Channel-kontrakter eller tilbyderkoblinger.', '',
