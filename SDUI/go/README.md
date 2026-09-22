@@ -1,23 +1,20 @@
-# SDUI — implementasjonsområde i Go
+# SDUI i Go
 
-Opprettet 2026-09-21. **Kun katalogstruktur; ingen Go-parser eller runtime er implementert.**
-Omfanget er SDUI 0.2 med frames, grupper, Markdown, formatering og symbolske bindinger.
+G1-M1: SDUI 0.2 lexer/parser og kildeposisjonert AST er implementert uten GUI eller
+I/O i parserpakken. Den taggede JSON-AST-en samsvarer med de eksisterende
+Python-fixturene. CLI-en er foreløpig syntax-only; semantikk følger i G1-M2.
 
-[Felles SDL-design for parser/runtime](../design/README.md) beskriver detaljert
-ansvarsfordeling og valideres av eksisterende SDL-parser.
+Modul: `github.com/Hans-Einar/SDP/SDUI/go`, språkbaseline Go 1.25.
+Verifisert med lokal Go 1.27.1 fra go.dev, kontrollert mot publisert SHA-256.
+Installerte byggeverktøy ligger utenfor repoet.
 
-| Katalog | Ansvar |
-| --- | --- |
-| parser/ | Kilde, AST, kildeposisjoner, diagnoser og lokal validering; ingen utførelse eller GUI-import |
-| runtime/ | Instanser, typed tilstand/hendelser og eksplisitte porter; ingen parserkopi eller GUI-import |
+Fra denne katalogen:
 
-Den felles [implementasjonsplanen](../../SDUI/docs/implementation-plan.md) og
-[målarkitekturen](../../SDUI/docs/target-architecture.md) eier fasevalg og avhengigheter.
-[Checkpoint #1](../../docs/checkpoint%231/07-SDUI-0.2-and-Go-Direction.md) beskriver
-status og språkgrenser. Eksisterende [Python-grunnlag](../src/sdui) beholdes til
-porten er verifisert. SDL design-core 0.1 er ikke SDUI 0.1.
+```sh
+go test ./...
+go run ./cmd/sdui ../examples/concept1-bucking.sdui
+```
 
-Modulnavn, Go-versjon, eventuell go.work og felles portpakker fastsettes ved første
-kodeleveranse. Ingen tomme API-er eller falske go test-resultater opprettes nå.
-De tomme parser/runtime-katalogene spores med .gitkeep og erstattes av kode.
-Fyne skal bare ligge i en senere vert; kjernen må kunne testes uten vindussystem.
+Parseren åpner ikke symbolske SDL-referanser eller kjører callbacks.
+Python-frontenden beholdes som portorakel til alle konsumenter er erstattet.
+[Faseplan](../docs/implementation-plan.md), [bevis](evidence/G1.md).

@@ -1,11 +1,12 @@
 # SDL/SDUI — implementasjonsplan i Go
 
 **Status 2026-09-22:** SDL-løpet V0–V4 er levert og pushet som fasebrancher.
-G1–G6 er fortsatt planlagt. Eierens siste avgrensning er å gjennomgå
-[den verktøygenererte implementasjonsrapporten](../design/viewpoints/implementation.md)
-før Go-koden påbegynnes. Rapporten kommer fra den felles SDL-kilden, med 24
-milepæler, ansvar, avhengigheter og deklarerte eksempelbaner. G6 legger til
-navigerbare viewpoints og dokumentgenerering ved behov.
+Eieren har autorisert implementasjon av alle G-faser i én sammenhengende økt,
+med fasebrancher, milepælcommits og push ved faseslutt. G1-M1 er levert;
+øvrige milepæler står som planlagt inntil deres akseptanse er verifisert.
+[Faktiske implementasjonsbevis](../go/evidence/G1.md) holdes atskilt fra
+[den genererte designplanen](../design/viewpoints/implementation.md).
+Designmodellens planned-status beskriver målstrukturen inntil samlet modelloppdatering.
 
 **ID:** SDUI-PLAN-003 · **Revisjon:** 2026-09-22.
 Erstatter PLAN-002s P0–P6-løp for Rust/C-ABI/FOX. Nye milepæler bruker G-prefiks;
@@ -33,7 +34,7 @@ designdekning, ikke fullførte implementasjonsmilepæler.
 
 | Milepæl | Leveranse og akseptanse |
 | --- | --- |
-| G1-M1 | Modulstruktur, Go-baseline og CLI; parser/AST med kildeposisjoner for SDUI 0.2, uten GUI |
+| G1-M1 | **Levert:** Go-modul, syntax-only CLI og parser/AST med kildeposisjoner; alle eksempel-AST-er samsvarer med Python-fixturene |
 | G1-M2 | Validator/normalisering, relative regler, frame-regioner, instansbaner og kildegrenser; porterte positive/negative Python-tilfeller |
 | G1-M3 | Concept1 og bindingseksempel gir kontrollert AST/diagnoser; konsoll-/Markdown-dump og prototypeeksport har en portert erstatning før Python-veien fjernes |
 
