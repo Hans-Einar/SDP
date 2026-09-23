@@ -27,3 +27,15 @@ underkatalogers AGENTS.md før endringer.
 Bruk rene absolutte `file:///`-URL-er, én per linje, uten Markdown-innpakking,
 linjenummersuffiks eller terminalkontrollkoder. Utvid hjemmekatalogen og
 prosentkod mellomrom og reserverte URL-tegn.
+
+## KanBan for ideer og omfangsendringer
+
+Les [KanBan-arbeidsmåten](SDP/Agents/KanBan/README.md) og relevant prosjekttavle
+før nytt arbeid. SDP, SDL og SDUI har egne tavler registrert der. Nye ideer og
+funn utenfor avtalt omfang registreres i et hovedkort, med Ref-kort ved behov,
+før arbeidet skifter retning. Registrering er ikke autorisasjon til implementasjon.
+Ved behandling/flytting oppdateres kort, append-only KanBan-ledger og lenker
+samlet. Gjennomgå backlog/onHold ved milepælslutt og før neste fase.
+KanBan dokumenterer behandlingen av forslag; faktisk implementasjon og
+verifikasjon tilhører fortsatt Traceability. Ikke migrer gamle prosessområder
+eller vedta nye språkregler bare fordi de er beskrevet i et backlogkort.

@@ -1,5 +1,8 @@
 # SDUI — prototyping av brukergrensesnitt
 
+[SDUIs KanBan](SDP/Agents/KanBan/README.md) følger ideer og lokale konsekvenser
+av SDP-planleggingen. Kortene endrer ikke den implementerte språkprofilen.
+
 SDUI 0.2 er implementert i Go: parser/AST, validering, normalisering, relativ
 layout, SVG, strukturell konsoll-/Markdown-dump, runtime og Fyne-vert med modellreload.
 SDL-kobling og Go-generering bruker de samme modellene og runtimene.

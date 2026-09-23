@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "0.1",
+  "boards": {
+    "SDP": ".",
+    "SDL": "../../../SDL/SDP/Agents/KanBan",
+    "SDUI": "../../../SDUI/SDP/Agents/KanBan"
+  }
+}

@@ -68,3 +68,9 @@ fasebrancher og milepælcommits beholdes. Ingen merge er en del av leveransen.
 G7 følger fra G5-M4 (`32fadca`) på `sdl/phase-g7-launch`. G7-M1 gjør
 kildebasert dokumentbrowsing tilgjengelig med ett launch-script som bruker
 ferdigbygde programmer. Det er en separat oppfølging av brukerens oppstartsbehov.
+
+K1 følger fra G7-M1 (`d03eb78`) på `sdp/phase-k1-kanban`. K1-M1 etablerer
+prosjekttavler, append-only KanBan-historikk og registrering av eierens nyere
+forslag. [Milepælplan og kontrollbevis](../SDP/Agents/KanBan/completed/%23007--Change--KanBan-foundation.md)
+ligger sammen med leveransekortet. Større repo-/Template-migrering, sdptool,
+Traceability-utvidelser og nye SDL-keywords er fortsatt backlog, ikke levert kode.

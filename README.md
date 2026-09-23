@@ -11,6 +11,12 @@ adds SDUI 0.2 and the selected Go/Fyne implementation direction.
 The Toolkit described below remains Standard Document Procedure; the checkpoint
 does not rename or migrate its installed contracts.
 
+New planning work is tracked in the repository's own
+[SDP project area](SDP/README.md) and [KanBan](SDP/Agents/KanBan/README.md),
+with separate SDL and SDUI boards. The proposed root/Template restructuring
+is recorded there; existing numbered directories and Toolkit contracts have
+not yet been migrated.
+
 SDP is a repository-local, document-driven method for AI-assisted software
 development. It connects mandate, research, requirements, architecture, design,
 implementation, verification, review, traceability, releases and handoff to the

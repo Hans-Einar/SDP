@@ -1,5 +1,9 @@
 # SystemDesignLanguage
 
+[SDLs KanBan](../SDL/SDP/Agents/KanBan/README.md) er ny inngang for språkforslag
+og prosessavklaringer. Koden ligger fortsatt her; repo-/katalogutskilling er
+planlegging, ikke gjennomført migrering.
+
 SDL-verktøyet er implementert i Go og genererer Markdown/Mermaid/SVG-viewpoints
 fra validerte modellfakta. G1–G6 er levert innen de eksplisitte profilgrensene.
 [Checkpoint #1 — gjeldende implementasjon](../docs/checkpoint%231/11-Go-Implementation-and-Navigation.md)
