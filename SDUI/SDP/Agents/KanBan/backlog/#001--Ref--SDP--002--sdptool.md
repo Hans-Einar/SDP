@@ -1,14 +1,14 @@
----
-id: KB-SDUI-001
-project: SDUI
-type: Ref
-created: 2026-09-23T18:25:13Z
-source: owner-conversation-2026-09-23
-next_review: 2026-09-30
-primary: KB-SDP-002
----
-
 # SDUI som underprosjekt og bibliotek for SDP tools
+
+| Felt | Verdi |
+| --- | --- |
+| id | KB-SDUI-001 |
+| project | SDUI |
+| type | Ref |
+| created | 2026-09-23T18:25:13Z |
+| source | owner-conversation-2026-09-23 |
+| next_review | 2026-09-30 |
+| primary | KB-SDP-002 |
 
 Registrert fra eierens samtale 2026-09-23. Tidspunktet er registreringstid,
 ikke rekonstruert tidspunkt for tidligere diskusjoner. Status følger katalog/ledger.

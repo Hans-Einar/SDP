@@ -1,13 +1,13 @@
----
-id: KB-SDL-001
-project: SDL
-type: Proposal
-created: 2026-09-23T18:25:13Z
-source: owner-conversation-2026-09-23
-next_review: 2026-09-30
----
-
 # Stakeholders, actors, user stories og lesbar SDL
+
+| Felt | Verdi |
+| --- | --- |
+| id | KB-SDL-001 |
+| project | SDL |
+| type | Proposal |
+| created | 2026-09-23T18:25:13Z |
+| source | owner-conversation-2026-09-23 |
+| next_review | 2026-09-30 |
 
 Registrert fra eierens samtale 2026-09-23. Tidspunktet er registreringstid,
 ikke rekonstruert tidspunkt for tidligere diskusjoner. Status følger katalog/ledger.

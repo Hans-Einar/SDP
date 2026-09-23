@@ -1,12 +1,12 @@
----
-id: KB-SDP-007
-project: SDP
-type: Change
-created: 2026-09-23T18:25:13Z
-source: owner-conversation-2026-09-23
----
-
 # K1-M1: etablere KanBan og bevare samtalens forslag
+
+| Felt | Verdi |
+| --- | --- |
+| id | KB-SDP-007 |
+| project | SDP |
+| type | Change |
+| created | 2026-09-23T18:25:13Z |
+| source | owner-conversation-2026-09-23 |
 
 Registrert fra eierens samtale 2026-09-23. Tidspunktet er registreringstid,
 ikke rekonstruert tidspunkt for tidligere diskusjoner. Status følger katalog/ledger.

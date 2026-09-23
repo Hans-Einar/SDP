@@ -1,14 +1,14 @@
----
-id: KB-SDP-006
-project: SDP
-type: Ref
-created: 2026-09-23T18:25:13Z
-source: owner-conversation-2026-09-23
-next_review: 2026-09-30
-primary: KB-SDL-001
----
-
 # SDL: kravmodeller i SDP-prosessen
+
+| Felt | Verdi |
+| --- | --- |
+| id | KB-SDP-006 |
+| project | SDP |
+| type | Ref |
+| created | 2026-09-23T18:25:13Z |
+| source | owner-conversation-2026-09-23 |
+| next_review | 2026-09-30 |
+| primary | KB-SDL-001 |
 
 Registrert fra eierens samtale 2026-09-23. Tidspunktet er registreringstid,
 ikke rekonstruert tidspunkt for tidligere diskusjoner. Status følger katalog/ledger.

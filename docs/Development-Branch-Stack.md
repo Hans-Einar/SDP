@@ -74,3 +74,8 @@ prosjekttavler, append-only KanBan-historikk og registrering av eierens nyere
 forslag. [Milepælplan og kontrollbevis](../SDP/Agents/KanBan/completed/%23007--Change--KanBan-foundation.md)
 ligger sammen med leveransekortet. Større repo-/Template-migrering, sdptool,
 Traceability-utvidelser og nye SDL-keywords er fortsatt backlog, ikke levert kode.
+
+K2 følger fra K1-M1 (`bb3728c`) på `sdp/phase-k2-readable-metadata`. K2-M1
+viser kortmetadata som Markdown-tabeller i stedet for YAML-frontmatter.
+[Milepæl og kontrollbevis](../SDP/Agents/KanBan/completed/%23008--Change--Visible-card-metadata.md)
+bevarer skillet mellom dokumentformat og uendrede ledger-/språkkontrakter.

@@ -11,6 +11,7 @@
 | KB-SDP-005 | Ref | backlog | [SDL: links through i SDP-viewpoints](backlog/%23005--Ref--SDL--002--Links-through.md) |
 | KB-SDP-006 | Ref | backlog | [SDL: kravmodeller i SDP-prosessen](backlog/%23006--Ref--SDL--001--Requirements-narrative.md) |
 | KB-SDP-007 | Change | completed | [K1-M1: etablere KanBan og bevare samtalens forslag](completed/%23007--Change--KanBan-foundation.md) |
+| KB-SDP-008 | Change | completed | [K2-M1: synlig metadata i KanBan-kort](completed/%23008--Change--Visible-card-metadata.md) |
 
 Indeksen vedlikeholdes sammen med flytting; ledgeren eier hendelseshistorikken.
 
@@ -32,7 +33,7 @@ ved flytting/utskilling må register, policy og lenker migreres og verifiseres.
 
 ## Typer/tags
 
-Første tag er kortets `type` og del av filnavnet. Valgfrie `tags` i frontmatter
+Første tag er kortets `type` og del av filnavnet. Valgfrie `tags` i metadatatabellen
 kan angi tema som `tooling`, `language`, `process` eller `visualization`.
 Type beskriver innhold, ikke prioritet eller arbeidsstatus.
 
@@ -59,7 +60,13 @@ Stabil ID er `KB-<PROJECT>-<nummer>`, eksempelvis `KB-SDP-003`; navn og plasseri
 kan endres uten at ID gjør det. Sjekk alle mapper og ledger før nummer tildeles.
 Parallelle registreringer må løse ID-/eventkollisjoner før commit, ikke overskrive.
 
-[Mal](Card-template.md) angir minste innhold. Hvert hovedkort eier ett sammenhengende
+[Mal](Card-template.md) angir minste innhold. Metadata skrives som en vanlig
+Markdown-tabell rett under tittelen, med kolonnene `Felt` og `Verdi`. Behold
+feltnavnene `id`, `project`, `type`, `created`, `source` og eventuell `next_review`,
+`primary` og `tags`. Verdiene skal være synlige i Markdown-visere med tabellstøtte.
+Ikke legg en ekstra kopi i YAML-frontmatter; det gir ulik visning og to kilder
+som kan komme ut av takt. Ledgeren beholder JSON-formatet og hendelseshistorikken.
+ Hvert hovedkort eier ett sammenhengende
 behov. Ref har eget nummer/status, `primary` med hovedkortets stabile ID, klikkbar
 Markdown-lenke og lokal påvirkning. Ref peker direkte til hovedkort, ikke en Ref-kjede.
 Et hovedkort kan registreres i hvilken som helst tavle; velg nærmeste faglige eier
