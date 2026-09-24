@@ -38,3 +38,12 @@ Lag en statisk ukevisning fra en liten validert ledger med flyttinger og gjenåp
 Kontroller status, stier, tidspunkt og lenker. Avklar deretter en interaktiv vert,
 tidssone/ukegrenser, håndtering av tette hendelser og skjulte uker uten aktivitet.
 Ingen graf er implementert i KanBan-grunnlaget.
+
+## Presisering 2026-09-24: sammenløp og forgrening
+
+Grafen skal kunne vise merge (flere kilder → ett mål) og split (én kilde → flere
+mål) fra ledgerens typede lineage-felt. Ikke gjett disse forbindelsene fra fritekst
+eller vanlige links. Delvis overføring viser at kilden fortsatt har restarbeid.
+OperationId binder deltakerhendelsene sammen; en ufullstendig operasjon eller
+utilgjengelig prosjekttavle merkes som ukjent/ufullstendig, ikke ferdigbehandlet.
+Kildenes historikk og tidspunkter beholdes. [Kontrakt](../Lineage.md).

@@ -79,3 +79,8 @@ K2 følger fra K1-M1 (`bb3728c`) på `sdp/phase-k2-readable-metadata`. K2-M1
 viser kortmetadata som Markdown-tabeller i stedet for YAML-frontmatter.
 [Milepæl og kontrollbevis](../SDP/Agents/KanBan/completed/%23008--Change--Visible-card-metadata.md)
 bevarer skillet mellom dokumentformat og uendrede ledger-/språkkontrakter.
+
+K3 følger fra K2-M1 (`321e193`) på `sdp/phase-k3-card-lineage`. K3-M1 beskriver
+full/delvis sammenslåing og splitting med typet opphav i ledger-payload 0.2.
+[Plan og kontrollbevis](../SDP/Agents/KanBan/completed/%23009--Change--Card-merge-and-split.md)
+ligger i leveransekortet; XFMDs lokale forslag brukes som lest grunnlag.

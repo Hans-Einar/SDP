@@ -12,6 +12,7 @@
 | KB-SDP-006 | Ref | backlog | [SDL: kravmodeller i SDP-prosessen](backlog/%23006--Ref--SDL--001--Requirements-narrative.md) |
 | KB-SDP-007 | Change | completed | [K1-M1: etablere KanBan og bevare samtalens forslag](completed/%23007--Change--KanBan-foundation.md) |
 | KB-SDP-008 | Change | completed | [K2-M1: synlig metadata i KanBan-kort](completed/%23008--Change--Visible-card-metadata.md) |
+| KB-SDP-009 | Change | completed | [K3-M1: sammenslåing og splitting](completed/%23009--Change--Card-merge-and-split.md) |
 
 Indeksen vedlikeholdes sammen med flytting; ledgeren eier hendelseshistorikken.
 
@@ -66,7 +67,7 @@ feltnavnene `id`, `project`, `type`, `created`, `source` og eventuell `next_revi
 `primary` og `tags`. Verdiene skal være synlige i Markdown-visere med tabellstøtte.
 Ikke legg en ekstra kopi i YAML-frontmatter; det gir ulik visning og to kilder
 som kan komme ut av takt. Ledgeren beholder JSON-formatet og hendelseshistorikken.
- Hvert hovedkort eier ett sammenhengende
+Hvert hovedkort eier ett sammenhengende
 behov. Ref har eget nummer/status, `primary` med hovedkortets stabile ID, klikkbar
 Markdown-lenke og lokal påvirkning. Ref peker direkte til hovedkort, ikke en Ref-kjede.
 Et hovedkort kan registreres i hvilken som helst tavle; velg nærmeste faglige eier
@@ -85,7 +86,7 @@ GitHub-issues/PR-er; GitHub-status er ikke automatisk lokal KanBan-status.
 | onHold | Beholdes, men blokkert/utsatt; oppgi grunn, utløsende betingelse og vurderingsdato |
 | completed | Kortets avtalte utfall er oppnådd, med lenke til beslutning/leveranse/bevis |
 | canceled | Arbeid som var aktuelt eller besluttet, er aktivt avbrutt; begrunn valget |
-| superseded | Erstattet eller slått sammen med annet kort; etterfølgerens ID og lenke kreves |
+| superseded | Fullt erstattet, slått sammen eller splittet; alle etterfølger-ID-er og lenker kreves |
 | irrelevant | Vurdert som utenfor behov/omfang eller ikke lenger relevant; begrunn vurderingen |
 
 Katalognavnene er case-sensitive; bruk `superseded`, ikke `superseeded`.
@@ -97,7 +98,9 @@ og avtalt verifikasjon. Ikke lukk det bare fordi en plan finnes.
 
 Alle statuser kan gjenåpnes med begrunnelse; historikken beholdes. Ikke slett gamle
 kort for å få tom backlog. Duplikater flyttes til superseded og peker på hovedkortet.
-Sammenslåing skal bevare nyttige presiseringer og referanser før kortet avsluttes.
+Sammenslåing og splitting følger [opphavskontrakten](Lineage.md): nye målkort,
+bevarte kilder og eksplisitt restarbeid. Bare fullt erstattede kilder avsluttes;
+delvise kilder beholdes åpne. Vurder beslektede backlogkort før valg til active.
 
 ## Arbeidsrytme og omfang
 
@@ -132,12 +135,13 @@ Flytting innen samme tavle beholder relativ dybde. For flytting mellom prosjekte
 beholdes opprinnelig hovedkort/ID foreløpig og nytt prosjekt får Ref; en generell
 transfer-/ID-migreringskontrakt er ikke implementert.
 
-## Ledgerkontrakt 0.1
+## Ledgerkontrakt — payload 0.1 og 0.2
 
 Hver tavle har [board.json](board.json) og append-only `Ledger.ndjson`, én JSON-
 hendelse per linje. Gjenbruk eksisterende
 [SDP event-envelope](../../../Toolkit/schemas/ledger-event.schema.json) med
-`schemaVersion: "1.0"`, og [KanBan-payload 0.1](ledger-payload.schema.json).
+`schemaVersion: "1.0"`. Nye hendelser bruker [payload 0.2](ledger-payload-0.2.schema.json);
+historiske hendelser beholder [payload 0.1](ledger-payload.schema.json).
 Dette endrer ikke Toolkit-skjemaet eller implementasjonsledgeren i Traceability.
 
 - `eventId`: `EVT-KB-<PROJECT>-<løpenummer>`, unik og fortløpende innen tavlen.
@@ -147,7 +151,9 @@ Dette endrer ikke Toolkit-skjemaet eller implementasjonsledgeren i Traceability.
   Git-commiten som introduserer linjen dokumenterer hendelsen. Ikke skriv om
   historikk bare for å sette hendelsens egen commithash etter commit.
 - Payload: `schemaVersion`, `projectId`, `previousEventId` (for samme kort),
-  `from`, `to`, `fromPath`, `toPath`, `reason`, `links`.
+  `from`, `to`, `fromPath`, `toPath`, `reason`, `links`. Versjon 0.2 tillater også
+  `lineage` med operationId, merge/split, kilder, mål og overført/gjenstående omfang.
+  Se [opphavskontrakten](Lineage.md) for deltakerhendelser og fullstendighetskrav.
 - Stier er bokstavelige UTF-8-stier relativt til tavlen, uten `..` eller absolutt
   prefiks. De er historiske hendelsesdata, ikke URL-er. `links` inneholder stabile
   kort-/slice-ID-er eller bevis-/beslutningsstier relativt til tavlen.
@@ -159,7 +165,7 @@ Dette endrer ikke Toolkit-skjemaet eller implementasjonsledgeren i Traceability.
   i kortet. Ingen skjult flytting. Korrigering av gjeldende tilstand registreres
   som en ny begrunnet hendelse; tidligere feil kan forklares, ikke slettes.
 - completed og superseded krever minst én utfalls-/etterfølgerreferanse i `links`
-  ved overgangen. For superseded må den peke på et eksisterende hovedkort.
+  ved overgangen. For superseded må alle etterfølgere være navngitte, eksisterende hovedkort.
 
 Replay følger linjerekkefølge og forrige-hendelse-kjeden, ikke bare klokkeslett.
 Dette gir entydig forløp også når flere hendelser har samme tidsstempel. Ved

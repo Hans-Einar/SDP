@@ -30,3 +30,15 @@ Ved onHold: grunn, gjenopptakingsbetingelse og neste vurdering.
 
 Oppdater før avslutning. Lenk til beslutning, plan/slice, bevis eller etterfølger.
 Ikke påstå produktimplementasjon bare fordi forslaget er vurdert eller planlagt.
+
+## Opphav ved sammenslåing eller splitting
+
+Bruk denne delen bare ved merge/split. Oppgi operationId og alle kilde-/mål-ID-er
+med klikkbare lenker. Valgfrie metadatarader `sources` og `superseded_by` viser
+ID-ene; ledgerens lineage-felt beskriver hele operasjonen.
+
+| Kilde-ID og lenke | Videreført til mål-ID | Overført omfang | Erstattet utsagn og grunn | Restarbeid og hjem |
+| --- | --- | --- | --- | --- |
+| Fyll ut én rad per relevant kilde/mål | Nytt mål | Hva videreføres | Beslutning, dato og autoritet | I kilden eller navngitt målkort |
+
+Se [opphavskontrakten](Lineage.md). Ikke lukk en kilde mens restarbeid mangler et hjem.
