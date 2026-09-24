@@ -3,6 +3,7 @@
 | Field | Value |
 | --- | --- |
 | id | KB-SDP-007 |
+| CardState | completed |
 | project | SDP |
 | type | Change |
 | created | 2026-09-23T18:25:13Z |

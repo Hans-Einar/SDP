@@ -3,6 +3,7 @@
 | Field | Value |
 | --- | --- |
 | id | KB-SDP-010 |
+| CardState | ready |
 | project | SDP |
 | type | Proposal |
 | created | 2026-09-24T13:54:42Z |

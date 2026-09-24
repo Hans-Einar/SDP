@@ -3,6 +3,7 @@
 | Field | Value |
 | --- | --- |
 | id | KB-SDL-001 |
+| CardState | backlog |
 | project | SDL |
 | type | Proposal |
 | created | 2026-09-23T18:25:13Z |

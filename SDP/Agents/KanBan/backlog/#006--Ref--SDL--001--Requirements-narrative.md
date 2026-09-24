@@ -3,6 +3,7 @@
 | Field | Value |
 | --- | --- |
 | id | KB-SDP-006 |
+| CardState | backlog |
 | project | SDP |
 | type | Ref |
 | created | 2026-09-23T18:25:13Z |

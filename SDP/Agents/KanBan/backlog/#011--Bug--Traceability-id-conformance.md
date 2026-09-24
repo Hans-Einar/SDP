@@ -3,6 +3,7 @@
 | Field | Value |
 | --- | --- |
 | id | KB-SDP-011 |
+| CardState | backlog |
 | project | SDP |
 | type | Bug |
 | created | 2026-09-24T14:06:02Z |

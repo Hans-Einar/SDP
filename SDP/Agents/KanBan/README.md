@@ -18,6 +18,8 @@
 | KB-SDP-012 | Change | completed | [K4-M1: worklogs, revisions and diffs](completed/%23012--Change--Card-history.md) |
 | KB-SDP-013 | Change | completed | [English documentation](completed/%23013--Change--English-documentation.md) |
 
+| KB-SDP-015 | Change | active | [CardState and shell commands](active/%23015--Change--CardState-and-shell-cli.md) |
+
 Maintain the index when moving cards. The ledger owns event history.
 
 ## Purpose and authority
@@ -69,7 +71,7 @@ collisions before committing; never overwrite another registration.
 Use the [card template](Card-template.md). Metadata is a visible Markdown table
 immediately below the title, with `Field` and `Value` columns. Keep field names
 `id`, `project`, `type`, `created`, `source` and optional `next_review`, `primary`
-and `tags`. Do not duplicate metadata in YAML frontmatter. The ledger remains
+and `tags`, plus mandatory `CardState`. Do not duplicate metadata in YAML frontmatter. The ledger remains
 JSON and owns event history.
 
 Each primary card owns one coherent need. A Ref has its own ID/status, `primary`
@@ -168,3 +170,43 @@ must match exactly one physical card at the recorded location. Schema validation
 alone does not prove chain rules, references, status transitions or placement.
 No interactive graph is delivered by this contract. See the
 [K1 evidence](completed/%23007--Change--KanBan-foundation.md) for its original checks.
+
+## CardState — current work state
+
+The card's visible metadata table owns **one** `CardState`. No gate file, queue
+folder, duplicate YAML field or state column in this index. Directory/ledger
+still own lifecycle placement/history; CardState refines work within a stage.
+
+| CardState | Directory | Meaning |
+| --- | --- | --- |
+| backlog | backlog | Registered, not selected next |
+| queued | backlog | Proposed next bounded work; add a Queue section with reason, predecessor, prerequisites and next step |
+| ready | active | Selected, currently awaiting work |
+| in-progress | active | An agent/person is working on the bounded scope |
+| gate-review | active | Concrete result awaits owner review; explain the decision and evidence |
+| onHold | onHold | Deferred/blocked, with restart condition and review date |
+| completed | completed | Agreed outcome delivered |
+| canceled | canceled | Deliberately stopped |
+| superseded | superseded | Fully replaced, with successors |
+| irrelevant | irrelevant | Reviewed as outside scope/no longer relevant |
+
+Set in-progress when starting; return to ready only with a recorded pause/handoff.
+Use gate-review when review is required, not as a synonym for unresolved future
+implementation. Owner acceptance leads to completed; requested changes return to
+in-progress. Do not infer acceptance from elapsed time. Existing explicitly
+accepted or objectively authorized deliveries may close with evidence.
+
+Prefer at most one queued primary card per board. A Queue section explains why
+it is next and its prerequisites; the predecessor's Next selection section records
+why it selected that card. Queued is prioritization, not automatic authorization.
+Do not keep a completed predecessor active merely because it has a successor.
+
+For state-only changes, update metadata/worklog and append a reviewed event whose
+English reason records old → new state. For moves, update folder/state/index/links
+and append moved. No new ledger schema or duplicate authoritative state is needed.
+Git preserves exact document revisions; ledger events explain transitions.
+
+For a quick text search: `rg '^\| CardState \|' backlog active`. K5's
+[CLI](../../../Toolkit/scripts/cli/README.md) lists grouped states without mutation.
+Old cards without CardState are ignored by the lister and should gain metadata
+when maintained; an empty result is an error. New maintained cards require it.

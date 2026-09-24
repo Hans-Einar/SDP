@@ -60,3 +60,12 @@ evidence and explicit remaining work.
 KanBan records how proposals are handled; implementation and verification still
 belong in Traceability. Do not migrate old process areas or adopt language rules
 merely because a backlog card describes them.
+
+## Card work state
+
+Maintain exactly one visible CardState metadata row on each KanBan card. Read
+README.md for allowed states and folder mapping. Select ready, use in-progress
+while working, and gate-review only for a concrete owner review. Queued cards
+remain in backlog with a Queue explanation and predecessor reference. Update
+worklog and ledger at changes; do not leave delivered work active solely to point
+to future work. Use kanban status/state for listing; there is no separate gate file.

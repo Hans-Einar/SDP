@@ -5,6 +5,7 @@
 | id | KB-PROJECT-NNN |
 | project | PROJECT |
 | type | Idea |
+| CardState | backlog |
 | created | REPLACE_WITH_RFC3339_TIMESTAMP |
 | source | REPLACE_WITH_CONVERSATION_OR_ISSUE_REFERENCE |
 | next_review | YYYY-MM-DD |
@@ -56,3 +57,14 @@ IDs; the ledger's lineage field describes the complete operation.
 | One row per relevant source/target | New target | What is carried forward | Decision, date and authority | In the source or a named target |
 
 See [Lineage](Lineage.md). Never close a source while remaining work has no home.
+
+## Queue (when CardState is queued)
+
+Why this is the next bounded item, who selected it, relevant predecessors,
+prerequisites and the first deliverable. Queue selection is not approval to start.
+
+## Gate review (when CardState is gate-review)
+
+Link the concrete reviewable result, checks, remaining choices and the owner's
+requested decision. Acceptance closes the card; requested changes return it to
+in-progress with a new worklog/review event. Do not infer approval from silence.

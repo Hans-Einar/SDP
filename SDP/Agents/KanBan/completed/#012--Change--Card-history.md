@@ -3,6 +3,7 @@
 | Field | Value |
 | --- | --- |
 | id | KB-SDP-012 |
+| CardState | completed |
 | project | SDP |
 | type | Change |
 | created | 2026-09-24T14:52:35Z |
