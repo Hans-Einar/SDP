@@ -19,7 +19,7 @@ Hoveddokument: [KB-SDL-001 — Stakeholders, actors, user stories og lesbar SDL]
 
 Requirements-malen må bruke vedtatt SDL-profil for stakeholders, actors, user stories
 og use cases. Ikke distribuér syntaksskissene som parsergodkjente prosjektmaler.
-Samordne med [KB-SDP-001 — Prosjektstruktur, Template og studier per fase](%23001--Proposal--Project-structure.md) før omnummerering eller malmigrering.
+Samordne med [KB-SDP-001 — Prosjektstruktur, Template og studier per fase](../active/%23001--Proposal--Project-structure.md) før omnummerering eller malmigrering.
 
 ## Behandling
 

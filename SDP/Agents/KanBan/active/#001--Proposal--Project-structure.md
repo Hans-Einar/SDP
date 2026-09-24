@@ -7,7 +7,8 @@
 | type | Proposal |
 | created | 2026-09-23T18:25:13Z |
 | source | owner-conversation-2026-09-23 |
-| next_review | 2026-09-30 |
+| next_review | Ved neste R1-milepæl |
+| owner | Codex |
 
 Registrert fra eierens samtale 2026-09-23. Tidspunktet er registreringstid,
 ikke rekonstruert tidspunkt for tidligere diskusjoner. Status følger katalog/ledger.
@@ -58,4 +59,12 @@ SDL-koden ligger fortsatt i `SystemDesignLanguage/`.
 
 [docs/SDL-Viewpoint-Levels-and-Notation.md](../../../../docs/SDL-Viewpoint-Levels-and-Notation.md)
 [Toolkit/SDP-install.manifest.json](../../../../Toolkit/SDP-install.manifest.json)
-[KB-SDP-002 — sdptool: prosjektoppslag, implementasjonsplan og viewer](%23002--Proposal--sdptool.md)
+[KB-SDP-002 — sdptool: prosjektoppslag, implementasjonsplan og viewer](../backlog/%23002--Proposal--sdptool.md)
+
+## Aktivering 2026-09-24
+
+Eieren ber nå om housekeeping av repo-roten og at dette kortet tas i arbeid.
+R1 kartlegger eierskap, samler malene, flytter prosjektets egne driftsdokumenter
+inn i SDP, samler SDL-området og etablerer dokumentinnganger/migreringskart.
+Plan og avgrensninger føres i [R1-planen](../../../Maintenance/R1/Plan.md).
+Full redaksjonell konsolidering av dokumentinnhold har eget kort KB-SDP-010.

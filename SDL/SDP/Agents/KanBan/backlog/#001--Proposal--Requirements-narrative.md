@@ -17,7 +17,7 @@ ikke rekonstruert tidspunkt for tidligere diskusjoner. Status følger katalog/le
 Start kravarbeidet direkte i SDL, med `01--Actors.design`, deretter
 `02--UserStories.design` og `03--UseCases.design`. Stakeholders listes først;
 actors kan kobles til stakeholders, men kobling er ikke obligatorisk.
-Prosessens plassering/studier eies av [KB-SDP-001 — Prosjektstruktur, Template og studier per fase](../../../../../SDP/Agents/KanBan/backlog/%23001--Proposal--Project-structure.md).
+Prosessens plassering/studier eies av [KB-SDP-001 — Prosjektstruktur, Template og studier per fase](../../../../../SDP/Agents/KanBan/active/%23001--Proposal--Project-structure.md).
 
 Stakeholder har interesser i systemet. Actor er en rolle eller ekstern enhet
 som samhandler med det. Skill menneskelig bruker fra maskin/programvaresystem:

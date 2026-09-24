@@ -19,7 +19,7 @@ Hoveddokument: [KB-SDP-002 — sdptool: prosjektoppslag, implementasjonsplan og 
 
 SDUI skal ha eget SDP-område og KanBan, og kunne brukes som bibliotek/underprosjekt
 med samme struktur i monorepo og senere separat repo. `sdptool` må kunne velge
-SDUI-prosjektet eksplisitt. [KB-SDP-001 — Prosjektstruktur, Template og studier per fase](../../../../../SDP/Agents/KanBan/backlog/%23001--Proposal--Project-structure.md) eier selve strukturmigreringen.
+SDUI-prosjektet eksplisitt. [KB-SDP-001 — Prosjektstruktur, Template og studier per fase](../../../../../SDP/Agents/KanBan/active/%23001--Proposal--Project-structure.md) eier selve strukturmigreringen.
 
 Bevar nåværende Go/Fyne/SVG-retning. Dette er ikke en bestilling av FOX-vert,
 ny parser, ny KanBan-GUI eller full Markdown/Mermaid-støtte. Grafidéen

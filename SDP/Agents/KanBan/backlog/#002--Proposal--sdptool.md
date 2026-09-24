@@ -37,7 +37,7 @@ endringer i modellens struktur må få en eksplisitt oppdateringsmekanisme.
 
 SDL er språket, SDP er prosessen. SDP tools skal bruke SDL-/SDUI-biblioteker,
 ikke duplisere parser eller runtime. Prosess-CLI skal fungere likt for monorepo
-og underprosjekter i separate repoer. Katalog-/Git-migrering eies av [KB-SDP-001 — Prosjektstruktur, Template og studier per fase](%23001--Proposal--Project-structure.md).
+og underprosjekter i separate repoer. Katalog-/Git-migrering eies av [KB-SDP-001 — Prosjektstruktur, Template og studier per fase](../active/%23001--Proposal--Project-structure.md).
 
 Støtt både å foreslå vertikale slices fra SDL-modell og å validere manuelt eller
 agentforeslåtte slices. En slice skal gi en avgrenset, verifiserbar evne gjennom

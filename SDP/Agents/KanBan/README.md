@@ -4,7 +4,7 @@
 
 | ID | Type | Status | Dokument |
 | --- | --- | --- | --- |
-| KB-SDP-001 | Proposal | backlog | [Prosjektstruktur, Template og studier per fase](backlog/%23001--Proposal--Project-structure.md) |
+| KB-SDP-001 | Proposal | active | [Prosjektstruktur, Template og studier per fase](active/%23001--Proposal--Project-structure.md) |
 | KB-SDP-002 | Proposal | backlog | [sdptool: prosjektoppslag, implementasjonsplan og viewer](backlog/%23002--Proposal--sdptool.md) |
 | KB-SDP-003 | Idea | backlog | [KanBan-graf med tidsakse og trinnvis detaljering](backlog/%23003--Idea--KanBan-graph.md) |
 | KB-SDP-004 | Proposal | backlog | [Traceability mellom SDL-design, slices, kode og bevis](backlog/%23004--Proposal--Design-traceability.md) |
@@ -13,6 +13,7 @@
 | KB-SDP-007 | Change | completed | [K1-M1: etablere KanBan og bevare samtalens forslag](completed/%23007--Change--KanBan-foundation.md) |
 | KB-SDP-008 | Change | completed | [K2-M1: synlig metadata i KanBan-kort](completed/%23008--Change--Visible-card-metadata.md) |
 | KB-SDP-009 | Change | completed | [K3-M1: sammenslåing og splitting](completed/%23009--Change--Card-merge-and-split.md) |
+| KB-SDP-010 | Proposal | backlog | [Dokumentkonsolidering](backlog/%23010--Proposal--Document-consolidation.md) |
 
 Indeksen vedlikeholdes sammen med flytting; ledgeren eier hendelseshistorikken.
 

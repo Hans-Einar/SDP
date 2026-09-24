@@ -1,0 +1,302 @@
+[
+  {
+    "source": "docs/Design-Language-Conformance-Scenarios.md",
+    "target": "SDL/docs/studies/Design-Language-Conformance-Scenarios.md",
+    "classification": "study/design/status",
+    "title": "Design-language conformance scenarios"
+  },
+  {
+    "source": "docs/Design-Language-Definition.md",
+    "target": "SDL/docs/studies/Design-Language-Definition.md",
+    "classification": "study/design/status",
+    "title": "Design language definition"
+  },
+  {
+    "source": "docs/Development-Branch-Stack.md",
+    "target": "SDP/Development-Branch-Stack.md",
+    "classification": "study/design/status",
+    "title": "SDL/SDUI — fasebrancher og milepælcommits"
+  },
+  {
+    "source": "docs/Development-Identity.md",
+    "target": "Toolkit/docs/Development-Identity.md",
+    "classification": "Toolkit contract",
+    "title": "Development Identity"
+  },
+  {
+    "source": "docs/Distribution-And-Upgrades.md",
+    "target": "Toolkit/docs/Distribution-And-Upgrades.md",
+    "classification": "Toolkit contract",
+    "title": "Distribution And Upgrades"
+  },
+  {
+    "source": "docs/Feature-Functionality-and-Channel-Study.md",
+    "target": "SDL/docs/studies/Feature-Functionality-and-Channel-Study.md",
+    "classification": "study/design/status",
+    "title": "Study: Features, Functionality, Containers and Channels"
+  },
+  {
+    "source": "docs/Feature-Governance-And-SDP-2.0.md",
+    "target": "docs/process/Feature-Governance-And-SDP-2.0.md",
+    "classification": "SDP process/proposal",
+    "title": "Feature Governance for SDP 1.x and Product-Governance Vision for SDP 2.0"
+  },
+  {
+    "source": "docs/How-SDP-Works.md",
+    "target": "docs/process/How-SDP-Works.md",
+    "classification": "SDP process/proposal",
+    "title": "How SDP Works"
+  },
+  {
+    "source": "docs/Installation-Contract.md",
+    "target": "Toolkit/docs/Installation-Contract.md",
+    "classification": "Toolkit contract",
+    "title": "Installation Contract"
+  },
+  {
+    "source": "docs/Installer-Migration.md",
+    "target": "Toolkit/docs/Installer-Migration.md",
+    "classification": "Toolkit contract",
+    "title": "Installer Migration Guide"
+  },
+  {
+    "source": "docs/MVP1-Design-Evolution-and-SDP-Skills.md",
+    "target": "docs/process/MVP1-Design-Evolution-and-SDP-Skills.md",
+    "classification": "SDP process/proposal",
+    "title": "MVP1 design evolution and the proposed SDP skills"
+  },
+  {
+    "source": "docs/MVP1-Design-Language-Example.md",
+    "target": "SDL/docs/studies/MVP1-Design-Language-Example.md",
+    "classification": "study/design/status",
+    "title": "MVP1 design described through the proposed vocabulary"
+  },
+  {
+    "source": "docs/MVP1-SDL-Exercise-Findings-and-Extensions.md",
+    "target": "SDL/docs/studies/MVP1-SDL-Exercise-Findings-and-Extensions.md",
+    "classification": "study/design/status",
+    "title": "MVP1 SDL exercise: findings and local extensions"
+  },
+  {
+    "source": "docs/Project-Manifest.md",
+    "target": "Toolkit/docs/Project-Manifest.md",
+    "classification": "Toolkit contract",
+    "title": "Project Manifest"
+  },
+  {
+    "source": "docs/Release-And-Versioning.md",
+    "target": "Toolkit/docs/Release-And-Versioning.md",
+    "classification": "Toolkit contract",
+    "title": "Release And Versioning Guide"
+  },
+  {
+    "source": "docs/Release-Lifecycle.md",
+    "target": "Toolkit/docs/Release-Lifecycle.md",
+    "classification": "Toolkit contract",
+    "title": "Release Lifecycle And Gate"
+  },
+  {
+    "source": "docs/Release-Notes-Policy.md",
+    "target": "Toolkit/docs/Release-Notes-Policy.md",
+    "classification": "Toolkit contract",
+    "title": "Release Notes Policy"
+  },
+  {
+    "source": "docs/SDL-Channel-Scenario-Profile.md",
+    "target": "SDL/docs/profiles/SDL-Channel-Scenario-Profile.md",
+    "classification": "active profile + dated evidence",
+    "title": "SDL — Channel-kontrakter og deklarerte scenarioer"
+  },
+  {
+    "source": "docs/SDL-Class-Profile.md",
+    "target": "SDL/docs/profiles/SDL-Class-Profile.md",
+    "classification": "active profile + dated evidence",
+    "title": "SDL class-core 0.1"
+  },
+  {
+    "source": "docs/SDL-ControlSets-Layer-Boundaries-and-Data-Access.md",
+    "target": "SDL/docs/studies/SDL-ControlSets-Layer-Boundaries-and-Data-Access.md",
+    "classification": "study/design/status",
+    "title": "ControlSets, layer boundaries and addressable data"
+  },
+  {
+    "source": "docs/SDL-Data-Contract-Profile.md",
+    "target": "SDL/docs/profiles/SDL-Data-Contract-Profile.md",
+    "classification": "active profile + dated evidence",
+    "title": "SDL — avgrenset data- og wireprofil"
+  },
+  {
+    "source": "docs/SDL-Datasets-Datagrams-and-Data-Contracts.md",
+    "target": "SDL/docs/studies/SDL-Datasets-Datagrams-and-Data-Contracts.md",
+    "classification": "study/design/status",
+    "title": "Dataset, Database and Datagram: data origins and contract-defined message families"
+  },
+  {
+    "source": "docs/SDL-Delivery-Plan-Profile.md",
+    "target": "SDL/docs/profiles/SDL-Delivery-Plan-Profile.md",
+    "classification": "active profile + dated evidence",
+    "title": "SDL — sporbar leveranseplan"
+  },
+  {
+    "source": "docs/SDL-Executable-Action-Profile.md",
+    "target": "SDL/docs/profiles/SDL-Executable-Action-Profile.md",
+    "classification": "active profile + dated evidence",
+    "title": "SDL — kjørbar handlingsprofil"
+  },
+  {
+    "source": "docs/SDL-Executable-IR-and-Runtime-Study.md",
+    "target": "SDL/docs/studies/SDL-Executable-IR-and-Runtime-Study.md",
+    "classification": "study/design/status",
+    "title": "Executable SDL IR and runtime study"
+  },
+  {
+    "source": "docs/SDL-Go-Port-Inventory.md",
+    "target": "SDL/docs/integration/SDL-Go-Port-Inventory.md",
+    "classification": "study/design/status",
+    "title": "Go-port — aktive innganger etter G5-M4"
+  },
+  {
+    "source": "docs/SDL-Navigable-Viewpoints-Design.md",
+    "target": "SDL/docs/integration/SDL-Navigable-Viewpoints-Design.md",
+    "classification": "study/design/status",
+    "title": "SDL — navigerbare viewpoints og generering ved behov"
+  },
+  {
+    "source": "docs/SDL-Source-Tree-and-Compilation-Study.md",
+    "target": "SDL/docs/studies/SDL-Source-Tree-and-Compilation-Study.md",
+    "classification": "study/design/status",
+    "title": "SDL source tree and compilation study"
+  },
+  {
+    "source": "docs/SDL-Symbol-Profile.md",
+    "target": "SDL/docs/profiles/SDL-Symbol-Profile.md",
+    "classification": "active profile + dated evidence",
+    "title": "SDL symbolprofil 1"
+  },
+  {
+    "source": "docs/SDL-Viewpoint-Levels-and-Notation.md",
+    "target": "SDL/docs/integration/SDL-Viewpoint-Levels-and-Notation.md",
+    "classification": "study/design/status",
+    "title": "SDL — viewpoints etter abstraksjonsnivå og fast notasjon"
+  },
+  {
+    "source": "docs/SDP-Analyzer-Compatibility.md",
+    "target": "Toolkit/docs/SDP-Analyzer-Compatibility.md",
+    "classification": "Toolkit contract",
+    "title": "SDP-Analyzer Compatibility Contract"
+  },
+  {
+    "source": "docs/Scenarios-State-and-Implementation-Traceability.md",
+    "target": "SDL/docs/studies/Scenarios-State-and-Implementation-Traceability.md",
+    "classification": "study/design/status",
+    "title": "Study: Scenarios, state and implementation traceability"
+  },
+  {
+    "source": "docs/Skill-Versioning.md",
+    "target": "Toolkit/docs/Skill-Versioning.md",
+    "classification": "Toolkit contract",
+    "title": "Skill Versioning"
+  },
+  {
+    "source": "docs/Small-Fix-Policy.md",
+    "target": "Toolkit/docs/Small-Fix-Policy.md",
+    "classification": "Toolkit contract",
+    "title": "Small Fix Policy"
+  },
+  {
+    "source": "docs/Toolkit-Manifest.md",
+    "target": "Toolkit/docs/Toolkit-Manifest.md",
+    "classification": "Toolkit contract",
+    "title": "Toolkit Manifest"
+  },
+  {
+    "source": "docs/Traceability-Release-Events.md",
+    "target": "Toolkit/docs/Traceability-Release-Events.md",
+    "classification": "Toolkit contract",
+    "title": "Traceability Release Events"
+  },
+  {
+    "source": "docs/Validation.md",
+    "target": "Toolkit/docs/Validation.md",
+    "classification": "Toolkit contract",
+    "title": "Validation"
+  },
+  {
+    "source": "docs/Vocabulary-and-Grammar-Exploration.md",
+    "target": "SDL/docs/studies/Vocabulary-and-Grammar-Exploration.md",
+    "classification": "study/design/status",
+    "title": "Exploration: From vocabulary to a design grammar"
+  },
+  {
+    "source": "docs/checkpoint#1/01-System-Development-Process.md",
+    "target": "SDP/History/checkpoint-1/01-System-Development-Process.md",
+    "classification": "history/mixed",
+    "title": "System Development Process"
+  },
+  {
+    "source": "docs/checkpoint#1/02-SDL-Model-and-Abstraction-Levels.md",
+    "target": "SDP/History/checkpoint-1/02-SDL-Model-and-Abstraction-Levels.md",
+    "classification": "history/mixed",
+    "title": "SDL model and abstraction levels"
+  },
+  {
+    "source": "docs/checkpoint#1/03-Values-Data-and-Control.md",
+    "target": "SDP/History/checkpoint-1/03-Values-Data-and-Control.md",
+    "classification": "history/mixed",
+    "title": "Values, data and control"
+  },
+  {
+    "source": "docs/checkpoint#1/04-Worked-Realization-and-Change-Impact.md",
+    "target": "SDP/History/checkpoint-1/04-Worked-Realization-and-Change-Impact.md",
+    "classification": "history/mixed",
+    "title": "Worked realization and change impact"
+  },
+  {
+    "source": "docs/checkpoint#1/05-Decisions-Sources-and-Next-Work.md",
+    "target": "SDP/History/checkpoint-1/05-Decisions-Sources-and-Next-Work.md",
+    "classification": "history/mixed",
+    "title": "Decisions, sources and next work"
+  },
+  {
+    "source": "docs/checkpoint#1/06-Interactive-Prototype-and-Renderer-Study.md",
+    "target": "SDP/History/checkpoint-1/06-Interactive-Prototype-and-Renderer-Study.md",
+    "classification": "history/mixed",
+    "title": "Interactive SDL prototype and renderer study"
+  },
+  {
+    "source": "docs/checkpoint#1/07-SDUI-0.2-and-Go-Direction.md",
+    "target": "SDP/History/checkpoint-1/07-SDUI-0.2-and-Go-Direction.md",
+    "classification": "history/mixed",
+    "title": "Checkpoint #1 — SDUI 0.2 og felles Go-retning"
+  },
+  {
+    "source": "docs/checkpoint#1/08-SDL-Viewpoints-and-Implementation-Status.md",
+    "target": "SDP/History/checkpoint-1/08-SDL-Viewpoints-and-Implementation-Status.md",
+    "classification": "history/mixed",
+    "title": "Checkpoint #1 — SDL-status og genererte viewpoints"
+  },
+  {
+    "source": "docs/checkpoint#1/09-SDL-Generated-Go-Design-Review.md",
+    "target": "SDP/History/checkpoint-1/09-SDL-Generated-Go-Design-Review.md",
+    "classification": "history/mixed",
+    "title": "Checkpoint #1 — generert G1–G5-design"
+  },
+  {
+    "source": "docs/checkpoint#1/10-SDL-Viewpoint-Navigation.md",
+    "target": "SDP/History/checkpoint-1/10-SDL-Viewpoint-Navigation.md",
+    "classification": "history/mixed",
+    "title": "Checkpoint #1 — G6 dokumentnavigasjon"
+  },
+  {
+    "source": "docs/checkpoint#1/11-Go-Implementation-and-Navigation.md",
+    "target": "SDP/History/checkpoint-1/11-Go-Implementation-and-Navigation.md",
+    "classification": "history/mixed",
+    "title": "Checkpoint #1 — implementert Go, runtime og dokumentnavigasjon"
+  },
+  {
+    "source": "docs/checkpoint#1/README.md",
+    "target": "SDP/History/checkpoint-1/README.md",
+    "classification": "history/mixed",
+    "title": "Checkpoint #1 — SDP, SystemDesignLanguage og SDUI"
+  }
+]
