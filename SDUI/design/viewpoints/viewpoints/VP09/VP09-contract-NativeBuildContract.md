@@ -1,12 +1,12 @@
-# Kontraktstruktur: NativeBuildContract
+# Contract structure: NativeBuildContract
 
 [Viewpoint](index.md) · [Navigator](../../navigator.md)
 
-Revisjon: `e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1`.
+Revision: `e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1`.
 
-## Kontraktstruktur: NativeBuildContract
+## Contract structure: NativeBuildContract
 
-![Kontraktstruktur: NativeBuildContract](../../diagrams/VP09-contract-NativeBuildContract.svg)
+![Contract structure: NativeBuildContract](../../diagrams/VP09-contract-NativeBuildContract.svg)
 
-Kildegrunnlag: f0614, f0615.
+Source facts: f0614, f0615.
 

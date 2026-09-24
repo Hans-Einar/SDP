@@ -1,13 +1,13 @@
-# VP11 — Egenskaper, sporbarhet og modellhull
+# VP11 — Properties, traceability and model gaps
 
 [Navigator](../../navigator.md)
 
-Deklarasjoner og alle fakta med kildeposisjoner; støttegrenser beholdes.
+Declarations and all facts with source positions; support boundaries are retained.
 
 
-## Fullstendig faktaregister
+## Complete fact registry
 
-| ID | Utsagn | Linje |
+| ID | Statement | Line |
 | --- | --- | --- |
 | f0000 | ActionArguments has completeness = closed. | 465 |
 | f0001 | ActionArguments has-field ActionGeneration. | 466 |
@@ -1434,9 +1434,9 @@ Deklarasjoner og alle fakta med kildeposisjoner; støttegrenser beholdes.
 | f1422 | XfmdDocumentHost uses ViewNavigationCalls as receiver of ViewRequestRejected in mode DocumentBrowsing. | 1887 |
 | f1423 | XfmdDocumentHost uses ViewNavigationCalls as sender of SelectViewRequest in mode DocumentBrowsing. | 1888 |
 
-## Deklarasjoner
+## Declarations
 
-| ID | Type | Linje |
+| ID | Type | Line |
 | --- | --- | --- |
 | ActionArguments | contract | 2 |
 | ActionGeneration | field | 3 |

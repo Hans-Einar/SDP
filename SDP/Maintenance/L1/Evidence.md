@@ -37,3 +37,29 @@ inspection found zero unresolved local fragments. Three boards: 17 cards, 47
 events before this milestone review, with historical ledger prefixes intact.
 Active examples now use SDL/go instead of the retired source directory; historical
 commands retain their original revision context. No new runtime behavior is claimed.
+
+## L1-M3 — generator language and regenerated documents
+
+English generator prose now covers structural viewpoints, gaps, classes, selection,
+implementation plans, SDUI Markdown dumps and static UI/state documents. Projector
+version 1.2 and document version 2 invalidate old presentation caches. No model fact
+or language/runtime rule changed. The frozen projector comparison still checks all
+facts, gap codes/context, source positions, MessageSets and all 170 Mermaid sources;
+translated diagnostic prose is excluded from the historical-language comparison.
+
+Both complete Go race suites passed using Go 1.27.1 and the registered real mmdr.
+The CLI regenerated 170 diagrams/539 static files, 15 navigation files and the
+UI/state package, plus the Concept1 Markdown dump. The new verifier checks 574
+manifest-owned outputs, SVG XML, current source revisions, 105 frozen records and
+ledger prefixes, file links and heading fragments. Generated structural Markdown
+contains no Norwegian prose. Localized UI literals remain intentionally unchanged.
+No new native-window or visual-layout claim is made for this text-only change.
+
+The prebuilt local SDL CLI was rebuilt once for sdl-design; daily launch still does
+not compile. Markdown trailing whitespace found at M2 commit time was corrected,
+and the translation inventory updated. Final git diff --check passes. R1's original
+Go-byte equality check is historical after these intentional generator edits; use
+verify_documents.py for current documentation/bundle integrity.
+
+A concurrent, uncommitted KB-SDP-014 registration is preserved separately and is
+not part of L1's commits. Counts in the live board include that unrelated card.

@@ -1,12 +1,12 @@
-# Kontraktstruktur: ActionArguments
+# Contract structure: ActionArguments
 
 [Viewpoint](index.md) · [Navigator](../../navigator.md)
 
-Revisjon: `e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1`.
+Revision: `e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1`.
 
-## Kontraktstruktur: ActionArguments
+## Contract structure: ActionArguments
 
-![Kontraktstruktur: ActionArguments](../../diagrams/VP09-contract-ActionArguments.svg)
+![Contract structure: ActionArguments](../../diagrams/VP09-contract-ActionArguments.svg)
 
-Kildegrunnlag: f0001, f0002, f0003.
+Source facts: f0001, f0002, f0003.
 

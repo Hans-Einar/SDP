@@ -10,7 +10,7 @@ import (
 	"strings"
 )
 
-const Version = "sdl-viewpoints-go-1.1"
+const Version = "sdl-viewpoints-go-1.2"
 
 type Fact map[string]any
 

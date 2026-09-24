@@ -17,7 +17,7 @@ import (
 	"sort"
 )
 
-const Version = "sdl-sdui-document/1"
+const Version = "sdl-sdui-document/2"
 
 type WidgetState struct {
 	Value   *string `json:"value,omitempty"`
@@ -102,7 +102,7 @@ func Build(ctx context.Context, source string, o Options) (*documents.Bundle, er
 	b.Put("structure.md", md)
 	b.Put("inputs/ui.sdui", source)
 	b.Files["inputs/state.json"] = append(state, '\n')
-	entry := "# SDUI — valgt statisk tilstand\n\n![UI fra felles layout](ui.svg)\n\n[Struktur og rå Markdown](structure.md) · [Proveniens](provenance.json)\n\nStatisk eksport: ingen callbacks er kjørt. UI-verdier er eksplisitte dokumentasjonsdata.\n"
+	entry := "# SDUI — selected static state\n\n![UI from shared layout](ui.svg)\n\n[Structure and raw Markdown](structure.md) · [Provenance](provenance.json)\n\nStatic export: no callbacks executed. UI values are explicit documentation data.\n"
 	if o.Design != "" {
 		v, e := viewpoint.New(o.Design)
 		if e != nil {

@@ -1,10 +1,10 @@
 # SDUI — ` page `
 
-Statisk GUI-dump. Knapper og felt er tekstetiketter; ingen callbacks kjøres.
+Static GUI dump. Buttons and fields are text labels; no callbacks execute.
 
-## Layoutoversikt
+## Layout overview
 
-Rad-/kolonnestruktur i terminalceller. Høydene følger innholdet; dette er ikke målt GUI-geometri.
+Row/column structure in terminal cells. Heights follow content; this is not measured GUI geometry.
 
 ```text
 SDUI GUI dump | page | 120 columns | structural preview
@@ -17,9 +17,9 @@ SDUI GUI dump | page | 120 columns | structural preview
 +----------------------------------------------------------------------------------------------------------------------+
 ```
 
-## Innhold
+## Content
 
-Markdown gjengis som innhold. Nestede sitatblokker viser grupper og frames. Horisontale søsken står i leserekkefølge her; plasseringen vises i oversikten. Mermaid-diagrammer er utelatt.
+Markdown is rendered as content. Nested blockquotes represent groups and frames. Horizontal siblings appear in reading order here; the overview shows placement. Mermaid diagrams are omitted.
 
 > **BoxUI-frame:** ` page `
 >
@@ -27,24 +27,24 @@ Markdown gjengis som innhold. Nestede sitatblokker viser grupper og frames. Hori
 >
 > > ## EditAptCell · simulert domene
 >
-> **Rad 1 · 1 komponent fra venstre mot høyre**
+> **Row 1 · 1 component from left to right**
 >
 > > Celle LengthA1 · eksempelverdi 400. Prøven godtar heltall 100–1000.
 > > Dette er ikke Ponsse-domenevalidering eller maskinkontroll.
 >
 > ---
 >
-> **Rad 2 · 2 komponenter fra venstre mot høyre**
+> **Row 2 · 2 components from left to right**
 >
-> **Inndata:** ` Lengdeverdi ` — ` 440 `
->
-> ---
->
-> **Knapp:** ` Bruk verdi `
+> **Input:** ` Lengdeverdi ` — ` 440 `
 >
 > ---
 >
-> **Rad 3 · 1 komponent fra venstre mot høyre**
+> **Button:** ` Bruk verdi `
+>
+> ---
+>
+> **Row 3 · 1 component from left to right**
 >
 > > Enter eller knappen sender draft og forventet domenerevisjon. Escape forkaster lokal redigering.
 >

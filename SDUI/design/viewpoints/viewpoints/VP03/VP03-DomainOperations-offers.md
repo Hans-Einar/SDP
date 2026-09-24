@@ -1,12 +1,12 @@
-# Tilbydere av kapabilitet: DomainOperations
+# Capability providers: DomainOperations
 
 [Viewpoint](index.md) · [Navigator](../../navigator.md)
 
-Revisjon: `e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1`.
+Revision: `e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1`.
 
-## Tilbydere av kapabilitet: DomainOperations
+## Capability providers: DomainOperations
 
-![Tilbydere av kapabilitet: DomainOperations](../../diagrams/VP03-DomainOperations-offers.svg)
+![Capability providers: DomainOperations](../../diagrams/VP03-DomainOperations-offers.svg)
 
-Kildegrunnlag: f0524.
+Source facts: f0524.
 

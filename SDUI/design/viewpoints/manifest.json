@@ -1,11 +1,11 @@
 {
-  "version": "sdl-viewpoints-go-1.1",
+  "version": "sdl-viewpoints-go-1.2",
   "revision": "e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1",
   "renderer": "mmdr:18b2574fcf6f5bbfa60ea96a97d45e0fc29211b150a7fc40842ad4e497cca8e3:sdl-symbols-1",
   "diagrams": [
     {
       "id": "VP01-BrowseDesignViews",
-      "title": "Bruksmål: BrowseDesignViews",
+      "title": "Use case: BrowseDesignViews",
       "kind": "flowchart",
       "nodes": {
         "n_BrowseDesignViews": {
@@ -110,7 +110,7 @@
     },
     {
       "id": "VP01-BuildNativeProduct",
-      "title": "Bruksmål: BuildNativeProduct",
+      "title": "Use case: BuildNativeProduct",
       "kind": "flowchart",
       "nodes": {
         "n_BuildNativeProduct": {
@@ -175,7 +175,7 @@
     },
     {
       "id": "VP01-EditRunningPrototype",
-      "title": "Bruksmål: EditRunningPrototype",
+      "title": "Use case: EditRunningPrototype",
       "kind": "flowchart",
       "nodes": {
         "n_DesignAuthor": {
@@ -260,7 +260,7 @@
     },
     {
       "id": "VP01-InspectModels",
-      "title": "Bruksmål: InspectModels",
+      "title": "Use case: InspectModels",
       "kind": "flowchart",
       "nodes": {
         "n_DesignAuthor": {
@@ -385,7 +385,7 @@
     },
     {
       "id": "VP01-PrototypeUserInterface",
-      "title": "Bruksmål: PrototypeUserInterface",
+      "title": "Use case: PrototypeUserInterface",
       "kind": "flowchart",
       "nodes": {
         "n_DesignAuthor": {
@@ -470,7 +470,7 @@
     },
     {
       "id": "VP01-PublishDesignDocumentation",
-      "title": "Bruksmål: PublishDesignDocumentation",
+      "title": "Use case: PublishDesignDocumentation",
       "kind": "flowchart",
       "nodes": {
         "n_DesignAuthor": {
@@ -555,7 +555,7 @@
     },
     {
       "id": "VP01-TryDomainInteraction",
-      "title": "Bruksmål: TryDomainInteraction",
+      "title": "Use case: TryDomainInteraction",
       "kind": "flowchart",
       "nodes": {
         "n_DesignAuthor": {
@@ -620,7 +620,7 @@
     },
     {
       "id": "VP01-feature-DesignDocumentation",
-      "title": "Functionality-bidrag til Feature: DesignDocumentation",
+      "title": "Functionality contributions to Feature: DesignDocumentation",
       "kind": "flowchart",
       "nodes": {
         "n_ComposeMarkdownDocument": {
@@ -765,7 +765,7 @@
     },
     {
       "id": "VP01-feature-InteractiveUiPreview",
-      "title": "Functionality-bidrag til Feature: InteractiveUiPreview",
+      "title": "Functionality contributions to Feature: InteractiveUiPreview",
       "kind": "flowchart",
       "nodes": {
         "n_AllocateGeometry": {
@@ -890,7 +890,7 @@
     },
     {
       "id": "VP01-feature-LiveModelReload",
-      "title": "Functionality-bidrag til Feature: LiveModelReload",
+      "title": "Functionality contributions to Feature: LiveModelReload",
       "kind": "flowchart",
       "nodes": {
         "n_KeepLastValidModels": {
@@ -1055,7 +1055,7 @@
     },
     {
       "id": "VP01-feature-NativeGoAssembly",
-      "title": "Functionality-bidrag til Feature: NativeGoAssembly",
+      "title": "Functionality contributions to Feature: NativeGoAssembly",
       "kind": "flowchart",
       "nodes": {
         "n_BuildGeneratedApplication": {
@@ -1200,7 +1200,7 @@
     },
     {
       "id": "VP01-feature-NavigableDesignDocumentation",
-      "title": "Functionality-bidrag til Feature: NavigableDesignDocumentation",
+      "title": "Functionality contributions to Feature: NavigableDesignDocumentation",
       "kind": "flowchart",
       "nodes": {
         "n_CaptureNavigationTarget": {
@@ -1525,7 +1525,7 @@
     },
     {
       "id": "VP01-feature-StructuralModelInspection",
-      "title": "Functionality-bidrag til Feature: StructuralModelInspection",
+      "title": "Functionality contributions to Feature: StructuralModelInspection",
       "kind": "flowchart",
       "nodes": {
         "n_BuildSdlAst": {
@@ -1650,7 +1650,7 @@
     },
     {
       "id": "VP01-feature-TypedDesignInspection",
-      "title": "Functionality-bidrag til Feature: TypedDesignInspection",
+      "title": "Functionality contributions to Feature: TypedDesignInspection",
       "kind": "flowchart",
       "nodes": {
         "n_ApplySemanticNotation": {
@@ -1815,7 +1815,7 @@
     },
     {
       "id": "VP01-feature-TypedDomainBinding",
-      "title": "Functionality-bidrag til Feature: TypedDomainBinding",
+      "title": "Functionality contributions to Feature: TypedDomainBinding",
       "kind": "flowchart",
       "nodes": {
         "n_ConnectTypedWidgetHandles": {
@@ -1940,7 +1940,7 @@
     },
     {
       "id": "VP02-roots",
-      "title": "Arkitekturrøtter — ingen kobling/allokering er utledet",
+      "title": "Architecture roots — no connection/allocation is inferred",
       "kind": "flowchart",
       "nodes": {
         "n_CommandLineHost": {
@@ -2093,7 +2093,7 @@
     },
     {
       "id": "VP02-ContentServices",
-      "title": "Logisk inndeling: ContentServices",
+      "title": "Logical decomposition: ContentServices",
       "kind": "flowchart",
       "nodes": {
         "n_ContentServices": {
@@ -2178,7 +2178,7 @@
     },
     {
       "id": "VP02-DevelopmentTools",
-      "title": "Logisk inndeling: DevelopmentTools",
+      "title": "Logical decomposition: DevelopmentTools",
       "kind": "flowchart",
       "nodes": {
         "n_DevelopmentTools": {
@@ -2323,7 +2323,7 @@
     },
     {
       "id": "VP02-SdlFrontend",
-      "title": "Logisk inndeling: SdlFrontend",
+      "title": "Logical decomposition: SdlFrontend",
       "kind": "flowchart",
       "nodes": {
         "n_SdlFrontend": {
@@ -2428,7 +2428,7 @@
     },
     {
       "id": "VP02-SdlLibrary",
-      "title": "Logisk inndeling: SdlLibrary",
+      "title": "Logical decomposition: SdlLibrary",
       "kind": "flowchart",
       "nodes": {
         "n_SdlFrontend": {
@@ -2513,7 +2513,7 @@
     },
     {
       "id": "VP02-SdlRuntime",
-      "title": "Logisk inndeling: SdlRuntime",
+      "title": "Logical decomposition: SdlRuntime",
       "kind": "flowchart",
       "nodes": {
         "n_DomainStateMigrator": {
@@ -2638,7 +2638,7 @@
     },
     {
       "id": "VP02-SduiFrontend",
-      "title": "Logisk inndeling: SduiFrontend",
+      "title": "Logical decomposition: SduiFrontend",
       "kind": "flowchart",
       "nodes": {
         "n_SduiFrontend": {
@@ -2743,7 +2743,7 @@
     },
     {
       "id": "VP02-SduiLibrary",
-      "title": "Logisk inndeling: SduiLibrary",
+      "title": "Logical decomposition: SduiLibrary",
       "kind": "flowchart",
       "nodes": {
         "n_SduiFrontend": {
@@ -2848,7 +2848,7 @@
     },
     {
       "id": "VP02-SduiRuntime",
-      "title": "Logisk inndeling: SduiRuntime",
+      "title": "Logical decomposition: SduiRuntime",
       "kind": "flowchart",
       "nodes": {
         "n_SduiDispatcher": {
@@ -2953,7 +2953,7 @@
     },
     {
       "id": "VP02-ViewServiceHost",
-      "title": "Logisk inndeling: ViewServiceHost",
+      "title": "Logical decomposition: ViewServiceHost",
       "kind": "flowchart",
       "nodes": {
         "n_DocumentBroker": {
@@ -3038,7 +3038,7 @@
     },
     {
       "id": "VP03-BoundInteraction",
-      "title": "Bidrag til kapabilitet: BoundInteraction",
+      "title": "Contributions to capability: BoundInteraction",
       "kind": "flowchart",
       "nodes": {
         "n_BoundInteraction": {
@@ -3211,7 +3211,7 @@
     },
     {
       "id": "VP03-BoundInteraction-offers",
-      "title": "Tilbydere av kapabilitet: BoundInteraction",
+      "title": "Capability providers: BoundInteraction",
       "kind": "flowchart",
       "nodes": {
         "n_BoundInteraction": {
@@ -3256,7 +3256,7 @@
     },
     {
       "id": "VP03-DevelopmentReload",
-      "title": "Bidrag til kapabilitet: DevelopmentReload",
+      "title": "Contributions to capability: DevelopmentReload",
       "kind": "flowchart",
       "nodes": {
         "n_CoalesceSourceChanges": {
@@ -3469,7 +3469,7 @@
     },
     {
       "id": "VP03-DevelopmentReload-offers",
-      "title": "Tilbydere av kapabilitet: DevelopmentReload",
+      "title": "Capability providers: DevelopmentReload",
       "kind": "flowchart",
       "nodes": {
         "n_DevelopmentReload": {
@@ -3554,7 +3554,7 @@
     },
     {
       "id": "VP03-DomainOperations",
-      "title": "Bidrag til kapabilitet: DomainOperations",
+      "title": "Contributions to capability: DomainOperations",
       "kind": "flowchart",
       "nodes": {
         "n_DomainOperations": {
@@ -3619,7 +3619,7 @@
     },
     {
       "id": "VP03-DomainOperations-offers",
-      "title": "Tilbydere av kapabilitet: DomainOperations",
+      "title": "Capability providers: DomainOperations",
       "kind": "flowchart",
       "nodes": {
         "n_DomainOperations": {
@@ -3664,7 +3664,7 @@
     },
     {
       "id": "VP03-ExecutableDesign",
-      "title": "Bidrag til kapabilitet: ExecutableDesign",
+      "title": "Contributions to capability: ExecutableDesign",
       "kind": "flowchart",
       "nodes": {
         "n_CancelPendingActions": {
@@ -4118,7 +4118,7 @@
     },
     {
       "id": "VP03-ExecutableDesign-offers",
-      "title": "Tilbydere av kapabilitet: ExecutableDesign",
+      "title": "Capability providers: ExecutableDesign",
       "kind": "flowchart",
       "nodes": {
         "n_DomainStateMigrator": {
@@ -4283,7 +4283,7 @@
     },
     {
       "id": "VP03-InteractiveSession",
-      "title": "Bidrag til kapabilitet: InteractiveSession",
+      "title": "Contributions to capability: InteractiveSession",
       "kind": "flowchart",
       "nodes": {
         "n_ApplyPropertyBatch": {
@@ -4778,7 +4778,7 @@
     },
     {
       "id": "VP03-InteractiveSession-offers",
-      "title": "Tilbydere av kapabilitet: InteractiveSession",
+      "title": "Capability providers: InteractiveSession",
       "kind": "flowchart",
       "nodes": {
         "n_InteractiveSession": {
@@ -4923,7 +4923,7 @@
     },
     {
       "id": "VP03-MeasuredPresentation",
-      "title": "Bidrag til kapabilitet: MeasuredPresentation",
+      "title": "Contributions to capability: MeasuredPresentation",
       "kind": "flowchart",
       "nodes": {
         "n_AllocateGeometry": {
@@ -5096,7 +5096,7 @@
     },
     {
       "id": "VP03-MeasuredPresentation-offers",
-      "title": "Tilbydere av kapabilitet: MeasuredPresentation",
+      "title": "Capability providers: MeasuredPresentation",
       "kind": "flowchart",
       "nodes": {
         "n_MeasuredPresentation": {
@@ -5161,7 +5161,7 @@
     },
     {
       "id": "VP03-NativeInteraction",
-      "title": "Bidrag til kapabilitet: NativeInteraction",
+      "title": "Contributions to capability: NativeInteraction",
       "kind": "flowchart",
       "nodes": {
         "n_ComposeInteractiveSession": {
@@ -5374,7 +5374,7 @@
     },
     {
       "id": "VP03-NativeInteraction-offers",
-      "title": "Tilbydere av kapabilitet: NativeInteraction",
+      "title": "Capability providers: NativeInteraction",
       "kind": "flowchart",
       "nodes": {
         "n_FyneBackend": {
@@ -5439,7 +5439,7 @@
     },
     {
       "id": "VP03-NativeRealization",
-      "title": "Bidrag til kapabilitet: NativeRealization",
+      "title": "Contributions to capability: NativeRealization",
       "kind": "flowchart",
       "nodes": {
         "n_BuildGeneratedApplication": {
@@ -5625,7 +5625,7 @@
     },
     {
       "id": "VP03-NativeRealization-offers",
-      "title": "Tilbydere av kapabilitet: NativeRealization",
+      "title": "Capability providers: NativeRealization",
       "kind": "flowchart",
       "nodes": {
         "n_GoBuildRunner": {
@@ -5690,7 +5690,7 @@
     },
     {
       "id": "VP03-RichContent",
-      "title": "Bidrag til kapabilitet: RichContent",
+      "title": "Contributions to capability: RichContent",
       "kind": "flowchart",
       "nodes": {
         "n_DiagramProvider": {
@@ -5889,7 +5889,7 @@
     },
     {
       "id": "VP03-RichContent-offers",
-      "title": "Tilbydere av kapabilitet: RichContent",
+      "title": "Capability providers: RichContent",
       "kind": "flowchart",
       "nodes": {
         "n_ContentServices": {
@@ -5994,7 +5994,7 @@
     },
     {
       "id": "VP03-SdlSourceModel",
-      "title": "Bidrag til kapabilitet: SdlSourceModel",
+      "title": "Contributions to capability: SdlSourceModel",
       "kind": "flowchart",
       "nodes": {
         "n_BuildSdlAst": {
@@ -6300,7 +6300,7 @@
     },
     {
       "id": "VP03-SdlSourceModel-offers",
-      "title": "Tilbydere av kapabilitet: SdlSourceModel",
+      "title": "Capability providers: SdlSourceModel",
       "kind": "flowchart",
       "nodes": {
         "n_SdlFrontend": {
@@ -6445,7 +6445,7 @@
     },
     {
       "id": "VP03-SduiSourceModel",
-      "title": "Bidrag til kapabilitet: SduiSourceModel",
+      "title": "Contributions to capability: SduiSourceModel",
       "kind": "flowchart",
       "nodes": {
         "n_BuildSduiAst": {
@@ -6805,7 +6805,7 @@
     },
     {
       "id": "VP03-SduiSourceModel-offers",
-      "title": "Tilbydere av kapabilitet: SduiSourceModel",
+      "title": "Capability providers: SduiSourceModel",
       "kind": "flowchart",
       "nodes": {
         "n_SduiFrontend": {
@@ -6950,7 +6950,7 @@
     },
     {
       "id": "VP03-SourceDiagnostics",
-      "title": "Bidrag til kapabilitet: SourceDiagnostics",
+      "title": "Contributions to capability: SourceDiagnostics",
       "kind": "flowchart",
       "nodes": {
         "n_DiagnosticReporter": {
@@ -7042,7 +7042,7 @@
     },
     {
       "id": "VP03-SourceDiagnostics-offers",
-      "title": "Tilbydere av kapabilitet: SourceDiagnostics",
+      "title": "Capability providers: SourceDiagnostics",
       "kind": "flowchart",
       "nodes": {
         "n_DiagnosticReporter": {
@@ -7087,7 +7087,7 @@
     },
     {
       "id": "VP03-SourceLoading",
-      "title": "Bidrag til kapabilitet: SourceLoading",
+      "title": "Contributions to capability: SourceLoading",
       "kind": "flowchart",
       "nodes": {
         "n_IdentifySourceRevision": {
@@ -7179,7 +7179,7 @@
     },
     {
       "id": "VP03-SourceLoading-offers",
-      "title": "Tilbydere av kapabilitet: SourceLoading",
+      "title": "Capability providers: SourceLoading",
       "kind": "flowchart",
       "nodes": {
         "n_SourceLoader": {
@@ -7224,7 +7224,7 @@
     },
     {
       "id": "VP03-StaticDocumentation",
-      "title": "Bidrag til kapabilitet: StaticDocumentation",
+      "title": "Contributions to capability: StaticDocumentation",
       "kind": "flowchart",
       "nodes": {
         "n_CommandLineHost": {
@@ -7410,7 +7410,7 @@
     },
     {
       "id": "VP03-StaticDocumentation-offers",
-      "title": "Tilbydere av kapabilitet: StaticDocumentation",
+      "title": "Capability providers: StaticDocumentation",
       "kind": "flowchart",
       "nodes": {
         "n_CommandLineHost": {
@@ -7495,7 +7495,7 @@
     },
     {
       "id": "VP05-BoundExecution",
-      "title": "Nødvendige porter i modus: BoundExecution",
+      "title": "Required ports in mode: BoundExecution",
       "kind": "flowchart",
       "nodes": {
         "n_BoundInteraction": {
@@ -7593,7 +7593,7 @@
     },
     {
       "id": "VP05-BoundLiveEditing",
-      "title": "Nødvendige porter i modus: BoundLiveEditing",
+      "title": "Required ports in mode: BoundLiveEditing",
       "kind": "flowchart",
       "nodes": {
         "n_BindingReloadPort": {
@@ -7718,7 +7718,7 @@
     },
     {
       "id": "VP05-LiveEditing",
-      "title": "Nødvendige porter i modus: LiveEditing",
+      "title": "Required ports in mode: LiveEditing",
       "kind": "flowchart",
       "nodes": {
         "n_DevelopmentReload": {
@@ -7803,7 +7803,7 @@
     },
     {
       "id": "VP05-NativeBuild",
-      "title": "Nødvendige porter i modus: NativeBuild",
+      "title": "Required ports in mode: NativeBuild",
       "kind": "flowchart",
       "nodes": {
         "n_BuildToolPort": {
@@ -7868,7 +7868,7 @@
     },
     {
       "id": "VP05-RichDocument",
-      "title": "Nødvendige porter i modus: RichDocument",
+      "title": "Required ports in mode: RichDocument",
       "kind": "flowchart",
       "nodes": {
         "n_ContentProviderPort": {
@@ -7933,7 +7933,7 @@
     },
     {
       "id": "VP05-SourceInspection",
-      "title": "Nødvendige porter i modus: SourceInspection",
+      "title": "Required ports in mode: SourceInspection",
       "kind": "flowchart",
       "nodes": {
         "n_SdlSourceModel": {
@@ -7998,7 +7998,7 @@
     },
     {
       "id": "VP05-StaticExport",
-      "title": "Nødvendige porter i modus: StaticExport",
+      "title": "Required ports in mode: StaticExport",
       "kind": "flowchart",
       "nodes": {
         "n_ExportSinkPort": {
@@ -8096,7 +8096,7 @@
     },
     {
       "id": "VP05-UiPreview",
-      "title": "Nødvendige porter i modus: UiPreview",
+      "title": "Required ports in mode: UiPreview",
       "kind": "flowchart",
       "nodes": {
         "n_MeasuredPresentation": {
@@ -8174,7 +8174,7 @@
     },
     {
       "id": "VP06-roots",
-      "title": "Aktivitetsrøtter",
+      "title": "Activity roots",
       "kind": "flowchart",
       "nodes": {
         "n_G1FrontendPort": {
@@ -8314,7 +8314,7 @@
     },
     {
       "id": "VP06-detail-G1FrontendPort",
-      "title": "Aktivitetsinndeling: G1FrontendPort",
+      "title": "Activity decomposition: G1FrontendPort",
       "kind": "flowchart",
       "nodes": {
         "n_G1FrontendPort": {
@@ -8419,7 +8419,7 @@
     },
     {
       "id": "VP06-detail-G2LayoutAndPresentation",
-      "title": "Aktivitetsinndeling: G2LayoutAndPresentation",
+      "title": "Activity decomposition: G2LayoutAndPresentation",
       "kind": "flowchart",
       "nodes": {
         "n_G2LayoutAndPresentation": {
@@ -8544,7 +8544,7 @@
     },
     {
       "id": "VP06-detail-G3UiRuntimeAndReload",
-      "title": "Aktivitetsinndeling: G3UiRuntimeAndReload",
+      "title": "Activity decomposition: G3UiRuntimeAndReload",
       "kind": "flowchart",
       "nodes": {
         "n_G3M1TypedUiSession": {
@@ -8649,7 +8649,7 @@
     },
     {
       "id": "VP06-detail-G4SdlRuntimeAndBinding",
-      "title": "Aktivitetsinndeling: G4SdlRuntimeAndBinding",
+      "title": "Activity decomposition: G4SdlRuntimeAndBinding",
       "kind": "flowchart",
       "nodes": {
         "n_G4M1SdlFrontend": {
@@ -8774,7 +8774,7 @@
     },
     {
       "id": "VP06-detail-G5NativeGeneration",
-      "title": "Aktivitetsinndeling: G5NativeGeneration",
+      "title": "Activity decomposition: G5NativeGeneration",
       "kind": "flowchart",
       "nodes": {
         "n_DesignDocumentation": {
@@ -8919,7 +8919,7 @@
     },
     {
       "id": "VP06-detail-G6NavigableDocumentation",
-      "title": "Aktivitetsinndeling: G6NavigableDocumentation",
+      "title": "Activity decomposition: G6NavigableDocumentation",
       "kind": "flowchart",
       "nodes": {
         "n_G6M1StaticNavigation": {
@@ -9104,7 +9104,7 @@
     },
     {
       "id": "VP06-detail-InspectDesignSource",
-      "title": "Aktivitetsinndeling: InspectDesignSource",
+      "title": "Activity decomposition: InspectDesignSource",
       "kind": "flowchart",
       "nodes": {
         "n_ExportUiDocumentation": {
@@ -9189,7 +9189,7 @@
     },
     {
       "id": "VP06-detail-RealizeDesign",
-      "title": "Aktivitetsinndeling: RealizeDesign",
+      "title": "Activity decomposition: RealizeDesign",
       "kind": "flowchart",
       "nodes": {
         "n_BuildNativeRealization": {
@@ -9234,7 +9234,7 @@
     },
     {
       "id": "VP06-detail-ReloadDesignSession",
-      "title": "Aktivitetsinndeling: ReloadDesignSession",
+      "title": "Activity decomposition: ReloadDesignSession",
       "kind": "flowchart",
       "nodes": {
         "n_ReloadBoundModels": {
@@ -9299,7 +9299,7 @@
     },
     {
       "id": "VP06-detail-RunDesignSession",
-      "title": "Aktivitetsinndeling: RunDesignSession",
+      "title": "Activity decomposition: RunDesignSession",
       "kind": "flowchart",
       "nodes": {
         "n_RunBoundUiAction": {
@@ -9364,7 +9364,7 @@
     },
     {
       "id": "VP06-work-G1M1ParserAndAst",
-      "title": "Planlagt ansvar: G1M1ParserAndAst",
+      "title": "Planned responsibilities: G1M1ParserAndAst",
       "kind": "flowchart",
       "nodes": {
         "n_BuildSduiAst": {
@@ -9536,7 +9536,7 @@
     },
     {
       "id": "VP06-work-G1M2ValidationAndNormalization",
-      "title": "Planlagt ansvar: G1M2ValidationAndNormalization",
+      "title": "Planned responsibilities: G1M2ValidationAndNormalization",
       "kind": "flowchart",
       "nodes": {
         "n_CoordinateSduiCompilation": {
@@ -9816,7 +9816,7 @@
     },
     {
       "id": "VP06-work-G1M3Concept1AndDumps",
-      "title": "Planlagt ansvar: G1M3Concept1AndDumps",
+      "title": "Planned responsibilities: G1M3Concept1AndDumps",
       "kind": "flowchart",
       "nodes": {
         "n_DiagnosticReporter": {
@@ -9921,7 +9921,7 @@
     },
     {
       "id": "VP06-work-G2M1RelativeMeasurement",
-      "title": "Planlagt ansvar: G2M1RelativeMeasurement",
+      "title": "Planned responsibilities: G2M1RelativeMeasurement",
       "kind": "flowchart",
       "nodes": {
         "n_AllocateGeometry": {
@@ -10067,7 +10067,7 @@
     },
     {
       "id": "VP06-work-G2M2SharedSvgGeometry",
-      "title": "Planlagt ansvar: G2M2SharedSvgGeometry",
+      "title": "Planned responsibilities: G2M2SharedSvgGeometry",
       "kind": "flowchart",
       "nodes": {
         "n_BuildPreparedFrame": {
@@ -10172,7 +10172,7 @@
     },
     {
       "id": "VP06-work-G2M3FyneInteractions",
-      "title": "Planlagt ansvar: G2M3FyneInteractions",
+      "title": "Planned responsibilities: G2M3FyneInteractions",
       "kind": "flowchart",
       "nodes": {
         "n_ComposeInteractiveSession": {
@@ -10385,7 +10385,7 @@
     },
     {
       "id": "VP06-work-G2M4RichContent",
-      "title": "Planlagt ansvar: G2M4RichContent",
+      "title": "Planned responsibilities: G2M4RichContent",
       "kind": "flowchart",
       "nodes": {
         "n_DiagramProvider": {
@@ -10584,7 +10584,7 @@
     },
     {
       "id": "VP06-work-G3M1TypedUiSession",
-      "title": "Planlagt ansvar: G3M1TypedUiSession",
+      "title": "Planned responsibilities: G3M1TypedUiSession",
       "kind": "flowchart",
       "nodes": {
         "n_ApplyPropertyBatch": {
@@ -11012,7 +11012,7 @@
     },
     {
       "id": "VP06-work-G3M2CandidatePublication",
-      "title": "Planlagt ansvar: G3M2CandidatePublication",
+      "title": "Planned responsibilities: G3M2CandidatePublication",
       "kind": "flowchart",
       "nodes": {
         "n_CoalesceSourceChanges": {
@@ -11225,7 +11225,7 @@
     },
     {
       "id": "VP06-work-G3M3CompatibleState",
-      "title": "Planlagt ansvar: G3M3CompatibleState",
+      "title": "Planned responsibilities: G3M3CompatibleState",
       "kind": "flowchart",
       "nodes": {
         "n_G3M3CompatibleState": {
@@ -11344,7 +11344,7 @@
     },
     {
       "id": "VP06-work-G4M1SdlFrontend",
-      "title": "Planlagt ansvar: G4M1SdlFrontend",
+      "title": "Planned responsibilities: G4M1SdlFrontend",
       "kind": "flowchart",
       "nodes": {
         "n_BuildSdlAst": {
@@ -11650,7 +11650,7 @@
     },
     {
       "id": "VP06-work-G4M2TypedExecution",
-      "title": "Planlagt ansvar: G4M2TypedExecution",
+      "title": "Planned responsibilities: G4M2TypedExecution",
       "kind": "flowchart",
       "nodes": {
         "n_CancelPendingActions": {
@@ -12077,7 +12077,7 @@
     },
     {
       "id": "VP06-work-G4M3UiDomainBinding",
-      "title": "Planlagt ansvar: G4M3UiDomainBinding",
+      "title": "Planned responsibilities: G4M3UiDomainBinding",
       "kind": "flowchart",
       "nodes": {
         "n_ConnectTypedWidgetHandles": {
@@ -12290,7 +12290,7 @@
     },
     {
       "id": "VP06-work-G4M4DomainReload",
-      "title": "Planlagt ansvar: G4M4DomainReload",
+      "title": "Planned responsibilities: G4M4DomainReload",
       "kind": "flowchart",
       "nodes": {
         "n_CheckDomainStateCompatibility": {
@@ -12422,7 +12422,7 @@
     },
     {
       "id": "VP06-work-G5M1GeneratedGo",
-      "title": "Planlagt ansvar: G5M1GeneratedGo",
+      "title": "Planned responsibilities: G5M1GeneratedGo",
       "kind": "flowchart",
       "nodes": {
         "n_BuildGeneratedApplication": {
@@ -12581,7 +12581,7 @@
     },
     {
       "id": "VP06-work-G5M2BehaviorParity",
-      "title": "Planlagt ansvar: G5M2BehaviorParity",
+      "title": "Planned responsibilities: G5M2BehaviorParity",
       "kind": "flowchart",
       "nodes": {
         "n_DevelopmentTools": {
@@ -12646,7 +12646,7 @@
     },
     {
       "id": "VP06-work-G5M3DocumentationExport",
-      "title": "Planlagt ansvar: G5M3DocumentationExport",
+      "title": "Planned responsibilities: G5M3DocumentationExport",
       "kind": "flowchart",
       "nodes": {
         "n_CommandLineHost": {
@@ -12778,7 +12778,7 @@
     },
     {
       "id": "VP06-work-G5M4RetirePython",
-      "title": "Planlagt ansvar: G5M4RetirePython",
+      "title": "Planned responsibilities: G5M4RetirePython",
       "kind": "flowchart",
       "nodes": {
         "n_DevelopmentTools": {
@@ -12843,7 +12843,7 @@
     },
     {
       "id": "VP06-work-G6M1StaticNavigation",
-      "title": "Planlagt ansvar: G6M1StaticNavigation",
+      "title": "Planned responsibilities: G6M1StaticNavigation",
       "kind": "flowchart",
       "nodes": {
         "n_ComposeViewPackage": {
@@ -13097,7 +13097,7 @@
     },
     {
       "id": "VP06-work-G6M2OnDemandViews",
-      "title": "Planlagt ansvar: G6M2OnDemandViews",
+      "title": "Planned responsibilities: G6M2OnDemandViews",
       "kind": "flowchart",
       "nodes": {
         "n_DocumentBroker": {
@@ -13296,7 +13296,7 @@
     },
     {
       "id": "VP06-work-G6M3XfmdNavigation",
-      "title": "Planlagt ansvar: G6M3XfmdNavigation",
+      "title": "Planned responsibilities: G6M3XfmdNavigation",
       "kind": "flowchart",
       "nodes": {
         "n_CaptureNavigationTarget": {
@@ -13455,7 +13455,7 @@
     },
     {
       "id": "VP06-work-G6M4SessionPublication",
-      "title": "Planlagt ansvar: G6M4SessionPublication",
+      "title": "Planned responsibilities: G6M4SessionPublication",
       "kind": "flowchart",
       "nodes": {
         "n_DocumentBroker": {
@@ -13614,7 +13614,7 @@
     },
     {
       "id": "VP06-work-G6M5SemanticNotation",
-      "title": "Planlagt ansvar: G6M5SemanticNotation",
+      "title": "Planned responsibilities: G6M5SemanticNotation",
       "kind": "flowchart",
       "nodes": {
         "n_ApplySemanticNotation": {
@@ -13706,7 +13706,7 @@
     },
     {
       "id": "VP06-work-G6M6ClassViews",
-      "title": "Planlagt ansvar: G6M6ClassViews",
+      "title": "Planned responsibilities: G6M6ClassViews",
       "kind": "flowchart",
       "nodes": {
         "n_G6M6ClassViews": {
@@ -13811,7 +13811,7 @@
     },
     {
       "id": "VP06-dependencies",
-      "title": "Eksplisitte aktivitetsavhengigheter",
+      "title": "Explicit activity dependencies",
       "kind": "flowchart",
       "nodes": {
         "n_G1M1ParserAndAst": {
@@ -14331,7 +14331,7 @@
     },
     {
       "id": "VP07-DesignDocumentation-DocumentBrowsing",
-      "title": "Feature: DesignDocumentation — modus DocumentBrowsing",
+      "title": "Feature: DesignDocumentation — mode DocumentBrowsing",
       "kind": "flowchart",
       "nodes": {
         "n_CommandLineHost": {
@@ -14591,7 +14591,7 @@
     },
     {
       "id": "VP07-DesignDocumentation-SourceInspection",
-      "title": "Feature: DesignDocumentation — modus SourceInspection",
+      "title": "Feature: DesignDocumentation — mode SourceInspection",
       "kind": "flowchart",
       "nodes": {
         "n_CommandLineHost": {
@@ -14824,7 +14824,7 @@
     },
     {
       "id": "VP07-DesignDocumentation-StaticExport",
-      "title": "Feature: DesignDocumentation — modus StaticExport",
+      "title": "Feature: DesignDocumentation — mode StaticExport",
       "kind": "flowchart",
       "nodes": {
         "n_CommandLineHost": {
@@ -15092,7 +15092,7 @@
     },
     {
       "id": "VP07-InteractiveUiPreview-UiPreview",
-      "title": "Feature: InteractiveUiPreview — modus UiPreview",
+      "title": "Feature: InteractiveUiPreview — mode UiPreview",
       "kind": "flowchart",
       "nodes": {
         "n_AllocateGeometry": {
@@ -15326,7 +15326,7 @@
     },
     {
       "id": "VP07-LiveModelReload-LiveEditing",
-      "title": "Feature: LiveModelReload — modus LiveEditing",
+      "title": "Feature: LiveModelReload — mode LiveEditing",
       "kind": "flowchart",
       "nodes": {
         "n_DiagnosticReporter": {
@@ -15667,7 +15667,7 @@
     },
     {
       "id": "VP07-LiveModelReload-SourceInspection",
-      "title": "Feature: LiveModelReload — modus SourceInspection",
+      "title": "Feature: LiveModelReload — mode SourceInspection",
       "kind": "flowchart",
       "nodes": {
         "n_CommandLineHost": {
@@ -15966,7 +15966,7 @@
     },
     {
       "id": "VP07-NativeGoAssembly-NativeBuild",
-      "title": "Feature: NativeGoAssembly — modus NativeBuild",
+      "title": "Feature: NativeGoAssembly — mode NativeBuild",
       "kind": "flowchart",
       "nodes": {
         "n_BuildGeneratedApplication": {
@@ -16247,7 +16247,7 @@
     },
     {
       "id": "VP07-NavigableDesignDocumentation-DocumentBrowsing",
-      "title": "Feature: NavigableDesignDocumentation — modus DocumentBrowsing",
+      "title": "Feature: NavigableDesignDocumentation — mode DocumentBrowsing",
       "kind": "flowchart",
       "nodes": {
         "n_CaptureNavigationTarget": {
@@ -16860,7 +16860,7 @@
     },
     {
       "id": "VP07-StructuralModelInspection-LiveEditing",
-      "title": "Feature: StructuralModelInspection — modus LiveEditing",
+      "title": "Feature: StructuralModelInspection — mode LiveEditing",
       "kind": "flowchart",
       "nodes": {
         "n_BuildSdlAst": {
@@ -17105,7 +17105,7 @@
     },
     {
       "id": "VP07-StructuralModelInspection-SourceInspection",
-      "title": "Feature: StructuralModelInspection — modus SourceInspection",
+      "title": "Feature: StructuralModelInspection — mode SourceInspection",
       "kind": "flowchart",
       "nodes": {
         "n_BuildSdlAst": {
@@ -17378,7 +17378,7 @@
     },
     {
       "id": "VP07-TypedDesignInspection-DocumentBrowsing",
-      "title": "Feature: TypedDesignInspection — modus DocumentBrowsing",
+      "title": "Feature: TypedDesignInspection — mode DocumentBrowsing",
       "kind": "flowchart",
       "nodes": {
         "n_ApplySemanticNotation": {
@@ -17680,7 +17680,7 @@
     },
     {
       "id": "VP07-TypedDomainBinding-BoundExecution",
-      "title": "Feature: TypedDomainBinding — modus BoundExecution",
+      "title": "Feature: TypedDomainBinding — mode BoundExecution",
       "kind": "flowchart",
       "nodes": {
         "n_ConnectTypedWidgetHandles": {
@@ -17927,7 +17927,7 @@
     },
     {
       "id": "VP08-BoundActionAccepted",
-      "title": "Scenario: BoundActionAccepted — modus BoundExecution",
+      "title": "Scenario: BoundActionAccepted — mode BoundExecution",
       "kind": "sequence",
       "nodes": {
         "n_FyneBackend": {
@@ -18257,7 +18257,7 @@
     },
     {
       "id": "VP08-BoundActionRejected",
-      "title": "Scenario: BoundActionRejected — modus BoundExecution",
+      "title": "Scenario: BoundActionRejected — mode BoundExecution",
       "kind": "sequence",
       "nodes": {
         "n_FyneBackend": {
@@ -18352,7 +18352,7 @@
     },
     {
       "id": "VP08-InteractiveFramePrepared",
-      "title": "Scenario: InteractiveFramePrepared — modus UiPreview",
+      "title": "Scenario: InteractiveFramePrepared — mode UiPreview",
       "kind": "sequence",
       "nodes": {
         "n_FyneBackend": {
@@ -18514,7 +18514,7 @@
     },
     {
       "id": "VP08-InvalidViewSelectionRejected",
-      "title": "Scenario: InvalidViewSelectionRejected — modus DocumentBrowsing",
+      "title": "Scenario: InvalidViewSelectionRejected — mode DocumentBrowsing",
       "kind": "sequence",
       "nodes": {
         "n_DocumentBroker": {
@@ -18610,7 +18610,7 @@
     },
     {
       "id": "VP08-NativeProgramBuilt",
-      "title": "Scenario: NativeProgramBuilt — modus NativeBuild",
+      "title": "Scenario: NativeProgramBuilt — mode NativeBuild",
       "kind": "sequence",
       "nodes": {
         "n_CommandLineHost": {
@@ -18771,7 +18771,7 @@
     },
     {
       "id": "VP08-SdlModelReloadAccepted",
-      "title": "Scenario: SdlModelReloadAccepted — modus BoundLiveEditing",
+      "title": "Scenario: SdlModelReloadAccepted — mode BoundLiveEditing",
       "kind": "sequence",
       "nodes": {
         "n_ReloadCoordinator": {
@@ -18933,7 +18933,7 @@
     },
     {
       "id": "VP08-SelectedViewOpened",
-      "title": "Scenario: SelectedViewOpened — modus DocumentBrowsing",
+      "title": "Scenario: SelectedViewOpened — mode DocumentBrowsing",
       "kind": "sequence",
       "nodes": {
         "n_DocumentBroker": {
@@ -19282,7 +19282,7 @@
     },
     {
       "id": "VP08-StaticFrameExported",
-      "title": "Scenario: StaticFrameExported — modus StaticExport",
+      "title": "Scenario: StaticFrameExported — mode StaticExport",
       "kind": "sequence",
       "nodes": {
         "n_CommandLineHost": {
@@ -19444,7 +19444,7 @@
     },
     {
       "id": "VP08-UiCompilationAccepted",
-      "title": "Scenario: UiCompilationAccepted — modus SourceInspection",
+      "title": "Scenario: UiCompilationAccepted — mode SourceInspection",
       "kind": "sequence",
       "nodes": {
         "n_CommandLineHost": {
@@ -19804,7 +19804,7 @@
     },
     {
       "id": "VP08-UiModelReloadAccepted",
-      "title": "Scenario: UiModelReloadAccepted — modus LiveEditing",
+      "title": "Scenario: UiModelReloadAccepted — mode LiveEditing",
       "kind": "sequence",
       "nodes": {
         "n_FyneBackend": {
@@ -20016,7 +20016,7 @@
     },
     {
       "id": "VP08-UiModelReloadRejected",
-      "title": "Scenario: UiModelReloadRejected — modus LiveEditing",
+      "title": "Scenario: UiModelReloadRejected — mode LiveEditing",
       "kind": "sequence",
       "nodes": {
         "n_ReloadCoordinator": {
@@ -20177,7 +20177,7 @@
     },
     {
       "id": "VP08-UnboundLocalAction",
-      "title": "Scenario: UnboundLocalAction — modus UiPreview",
+      "title": "Scenario: UnboundLocalAction — mode UiPreview",
       "kind": "sequence",
       "nodes": {
         "n_FyneHost": {
@@ -20272,7 +20272,7 @@
     },
     {
       "id": "VP08-ViewProjectionFailed",
-      "title": "Scenario: ViewProjectionFailed — modus DocumentBrowsing",
+      "title": "Scenario: ViewProjectionFailed — mode DocumentBrowsing",
       "kind": "sequence",
       "nodes": {
         "n_DocumentBroker": {
@@ -20434,7 +20434,7 @@
     },
     {
       "id": "VP09-data-DesignSourceDocuments",
-      "title": "Dataopprinnelse og holder: DesignSourceDocuments",
+      "title": "Data origin and holder: DesignSourceDocuments",
       "kind": "flowchart",
       "nodes": {
         "n_DesignSourceArchive": {
@@ -20519,7 +20519,7 @@
     },
     {
       "id": "VP09-data-UiSessionState",
-      "title": "Dataopprinnelse og holder: UiSessionState",
+      "title": "Data origin and holder: UiSessionState",
       "kind": "flowchart",
       "nodes": {
         "n_SduiInstanceStore": {
@@ -20624,7 +20624,7 @@
     },
     {
       "id": "VP09-contract-ActionArguments",
-      "title": "Kontraktstruktur: ActionArguments",
+      "title": "Contract structure: ActionArguments",
       "kind": "flowchart",
       "nodes": {
         "n_ActionArguments": {
@@ -20709,7 +20709,7 @@
     },
     {
       "id": "VP09-contract-ActionOutcome",
-      "title": "Kontraktstruktur: ActionOutcome",
+      "title": "Contract structure: ActionOutcome",
       "kind": "flowchart",
       "nodes": {
         "n_ActionOutcome": {
@@ -20774,7 +20774,7 @@
     },
     {
       "id": "VP09-contract-AstArtifactContract",
-      "title": "Kontraktstruktur: AstArtifactContract",
+      "title": "Contract structure: AstArtifactContract",
       "kind": "flowchart",
       "nodes": {
         "n_AstArtifact": {
@@ -20819,7 +20819,7 @@
     },
     {
       "id": "VP09-contract-DesignSourceRecord",
-      "title": "Kontraktstruktur: DesignSourceRecord",
+      "title": "Contract structure: DesignSourceRecord",
       "kind": "flowchart",
       "nodes": {
         "n_DesignSourceRecord": {
@@ -20884,7 +20884,7 @@
     },
     {
       "id": "VP09-contract-FramePresentationCallsProtocol",
-      "title": "Kontraktstruktur: FramePresentationCallsProtocol",
+      "title": "Contract structure: FramePresentationCallsProtocol",
       "kind": "flowchart",
       "nodes": {
         "n_FramePresentationCallsProtocol": {
@@ -20949,7 +20949,7 @@
     },
     {
       "id": "VP09-contract-GeneratedGoContract",
-      "title": "Kontraktstruktur: GeneratedGoContract",
+      "title": "Contract structure: GeneratedGoContract",
       "kind": "flowchart",
       "nodes": {
         "n_GeneratedGoContract": {
@@ -20994,7 +20994,7 @@
     },
     {
       "id": "VP09-contract-GoBuildCallsProtocol",
-      "title": "Kontraktstruktur: GoBuildCallsProtocol",
+      "title": "Contract structure: GoBuildCallsProtocol",
       "kind": "flowchart",
       "nodes": {
         "n_BuildGoRequest": {
@@ -21059,7 +21059,7 @@
     },
     {
       "id": "VP09-contract-GoDomainCallsProtocol",
-      "title": "Kontraktstruktur: GoDomainCallsProtocol",
+      "title": "Contract structure: GoDomainCallsProtocol",
       "kind": "flowchart",
       "nodes": {
         "n_DomainActionRequest": {
@@ -21124,7 +21124,7 @@
     },
     {
       "id": "VP09-contract-GoGenerationCallsProtocol",
-      "title": "Kontraktstruktur: GoGenerationCallsProtocol",
+      "title": "Contract structure: GoGenerationCallsProtocol",
       "kind": "flowchart",
       "nodes": {
         "n_GenerateGoRequest": {
@@ -21189,7 +21189,7 @@
     },
     {
       "id": "VP09-contract-LayoutArguments",
-      "title": "Kontraktstruktur: LayoutArguments",
+      "title": "Contract structure: LayoutArguments",
       "kind": "flowchart",
       "nodes": {
         "n_LayoutArguments": {
@@ -21274,7 +21274,7 @@
     },
     {
       "id": "VP09-contract-LayoutCallsProtocol",
-      "title": "Kontraktstruktur: LayoutCallsProtocol",
+      "title": "Contract structure: LayoutCallsProtocol",
       "kind": "flowchart",
       "nodes": {
         "n_LayoutCallsProtocol": {
@@ -21339,7 +21339,7 @@
     },
     {
       "id": "VP09-contract-ModelReloadCallsProtocol",
-      "title": "Kontraktstruktur: ModelReloadCallsProtocol",
+      "title": "Contract structure: ModelReloadCallsProtocol",
       "kind": "flowchart",
       "nodes": {
         "n_ModelReloadCallsProtocol": {
@@ -21424,7 +21424,7 @@
     },
     {
       "id": "VP09-contract-NativeBuildContract",
-      "title": "Kontraktstruktur: NativeBuildContract",
+      "title": "Contract structure: NativeBuildContract",
       "kind": "flowchart",
       "nodes": {
         "n_NativeBuildContract": {
@@ -21489,7 +21489,7 @@
     },
     {
       "id": "VP09-contract-NativeUiActionsProtocol",
-      "title": "Kontraktstruktur: NativeUiActionsProtocol",
+      "title": "Contract structure: NativeUiActionsProtocol",
       "kind": "flowchart",
       "nodes": {
         "n_NativeUiActionsProtocol": {
@@ -21574,7 +21574,7 @@
     },
     {
       "id": "VP09-contract-NormalizedModelContract",
-      "title": "Kontraktstruktur: NormalizedModelContract",
+      "title": "Contract structure: NormalizedModelContract",
       "kind": "flowchart",
       "nodes": {
         "n_NormalizedModelArtifact": {
@@ -21619,7 +21619,7 @@
     },
     {
       "id": "VP09-contract-PreparedFrameContract",
-      "title": "Kontraktstruktur: PreparedFrameContract",
+      "title": "Contract structure: PreparedFrameContract",
       "kind": "flowchart",
       "nodes": {
         "n_PreparedFrameArtifact": {
@@ -21664,7 +21664,7 @@
     },
     {
       "id": "VP09-contract-PresentationOutcome",
-      "title": "Kontraktstruktur: PresentationOutcome",
+      "title": "Contract structure: PresentationOutcome",
       "kind": "flowchart",
       "nodes": {
         "n_PresentationOutcome": {
@@ -21709,7 +21709,7 @@
     },
     {
       "id": "VP09-contract-ReloadArguments",
-      "title": "Kontraktstruktur: ReloadArguments",
+      "title": "Contract structure: ReloadArguments",
       "kind": "flowchart",
       "nodes": {
         "n_ReloadArguments": {
@@ -21774,7 +21774,7 @@
     },
     {
       "id": "VP09-contract-ReloadOutcome",
-      "title": "Kontraktstruktur: ReloadOutcome",
+      "title": "Contract structure: ReloadOutcome",
       "kind": "flowchart",
       "nodes": {
         "n_ReloadDiagnostic": {
@@ -21839,7 +21839,7 @@
     },
     {
       "id": "VP09-contract-SdlActionCallsProtocol",
-      "title": "Kontraktstruktur: SdlActionCallsProtocol",
+      "title": "Contract structure: SdlActionCallsProtocol",
       "kind": "flowchart",
       "nodes": {
         "n_SdlActionCallsProtocol": {
@@ -21904,7 +21904,7 @@
     },
     {
       "id": "VP09-contract-SdlCompilationCallsProtocol",
-      "title": "Kontraktstruktur: SdlCompilationCallsProtocol",
+      "title": "Contract structure: SdlCompilationCallsProtocol",
       "kind": "flowchart",
       "nodes": {
         "n_CompileSdlRequest": {
@@ -21969,7 +21969,7 @@
     },
     {
       "id": "VP09-contract-SvgDocumentContract",
-      "title": "Kontraktstruktur: SvgDocumentContract",
+      "title": "Contract structure: SvgDocumentContract",
       "kind": "flowchart",
       "nodes": {
         "n_SvgDocumentContract": {
@@ -22014,7 +22014,7 @@
     },
     {
       "id": "VP09-contract-SvgExportCallsProtocol",
-      "title": "Kontraktstruktur: SvgExportCallsProtocol",
+      "title": "Contract structure: SvgExportCallsProtocol",
       "kind": "flowchart",
       "nodes": {
         "n_ExportSvgRequest": {
@@ -22079,7 +22079,7 @@
     },
     {
       "id": "VP09-contract-TokenArtifactContract",
-      "title": "Kontraktstruktur: TokenArtifactContract",
+      "title": "Contract structure: TokenArtifactContract",
       "kind": "flowchart",
       "nodes": {
         "n_TokenArtifact": {
@@ -22124,7 +22124,7 @@
     },
     {
       "id": "VP09-contract-UiAstCallsProtocol",
-      "title": "Kontraktstruktur: UiAstCallsProtocol",
+      "title": "Contract structure: UiAstCallsProtocol",
       "kind": "flowchart",
       "nodes": {
         "n_BuildUiAstRequest": {
@@ -22189,7 +22189,7 @@
     },
     {
       "id": "VP09-contract-UiCompilationCallsProtocol",
-      "title": "Kontraktstruktur: UiCompilationCallsProtocol",
+      "title": "Contract structure: UiCompilationCallsProtocol",
       "kind": "flowchart",
       "nodes": {
         "n_CompileUiRejected": {
@@ -22274,7 +22274,7 @@
     },
     {
       "id": "VP09-contract-UiDomainActionsProtocol",
-      "title": "Kontraktstruktur: UiDomainActionsProtocol",
+      "title": "Contract structure: UiDomainActionsProtocol",
       "kind": "flowchart",
       "nodes": {
         "n_BoundActionRequest": {
@@ -22339,7 +22339,7 @@
     },
     {
       "id": "VP09-contract-UiGenerationContract",
-      "title": "Kontraktstruktur: UiGenerationContract",
+      "title": "Contract structure: UiGenerationContract",
       "kind": "flowchart",
       "nodes": {
         "n_NoticeGeneration": {
@@ -22424,7 +22424,7 @@
     },
     {
       "id": "VP09-contract-UiGenerationEventsProtocol",
-      "title": "Kontraktstruktur: UiGenerationEventsProtocol",
+      "title": "Contract structure: UiGenerationEventsProtocol",
       "kind": "flowchart",
       "nodes": {
         "n_UiGenerationEventsProtocol": {
@@ -22469,7 +22469,7 @@
     },
     {
       "id": "VP09-contract-UiNormalizationCallsProtocol",
-      "title": "Kontraktstruktur: UiNormalizationCallsProtocol",
+      "title": "Contract structure: UiNormalizationCallsProtocol",
       "kind": "flowchart",
       "nodes": {
         "n_NormalizeUiRequest": {
@@ -22534,7 +22534,7 @@
     },
     {
       "id": "VP09-contract-UiSessionRecord",
-      "title": "Kontraktstruktur: UiSessionRecord",
+      "title": "Contract structure: UiSessionRecord",
       "kind": "flowchart",
       "nodes": {
         "n_SessionDraft": {
@@ -22599,7 +22599,7 @@
     },
     {
       "id": "VP09-contract-UiTokenizationCallsProtocol",
-      "title": "Kontraktstruktur: UiTokenizationCallsProtocol",
+      "title": "Contract structure: UiTokenizationCallsProtocol",
       "kind": "flowchart",
       "nodes": {
         "n_TokenizeUiRequest": {
@@ -22664,7 +22664,7 @@
     },
     {
       "id": "VP09-contract-UiValidationCallsProtocol",
-      "title": "Kontraktstruktur: UiValidationCallsProtocol",
+      "title": "Contract structure: UiValidationCallsProtocol",
       "kind": "flowchart",
       "nodes": {
         "n_UiValidationCallsProtocol": {
@@ -22729,7 +22729,7 @@
     },
     {
       "id": "VP09-contract-ValidationOutcomeContract",
-      "title": "Kontraktstruktur: ValidationOutcomeContract",
+      "title": "Contract structure: ValidationOutcomeContract",
       "kind": "flowchart",
       "nodes": {
         "n_ModelDiagnostics": {
@@ -22794,7 +22794,7 @@
     },
     {
       "id": "VP09-contract-ViewBundleContract",
-      "title": "Kontraktstruktur: ViewBundleContract",
+      "title": "Contract structure: ViewBundleContract",
       "kind": "flowchart",
       "nodes": {
         "n_ViewBundleBytes": {
@@ -22859,7 +22859,7 @@
     },
     {
       "id": "VP09-contract-ViewDisplayCallsProtocol",
-      "title": "Kontraktstruktur: ViewDisplayCallsProtocol",
+      "title": "Contract structure: ViewDisplayCallsProtocol",
       "kind": "flowchart",
       "nodes": {
         "n_DisplayViewRequest": {
@@ -22944,7 +22944,7 @@
     },
     {
       "id": "VP09-contract-ViewFailureContract",
-      "title": "Kontraktstruktur: ViewFailureContract",
+      "title": "Contract structure: ViewFailureContract",
       "kind": "flowchart",
       "nodes": {
         "n_FailedViewRequestId": {
@@ -23029,7 +23029,7 @@
     },
     {
       "id": "VP09-contract-ViewLaunchCallsProtocol",
-      "title": "Kontraktstruktur: ViewLaunchCallsProtocol",
+      "title": "Contract structure: ViewLaunchCallsProtocol",
       "kind": "flowchart",
       "nodes": {
         "n_LaunchViewRequest": {
@@ -23094,7 +23094,7 @@
     },
     {
       "id": "VP09-contract-ViewNavigationCallsProtocol",
-      "title": "Kontraktstruktur: ViewNavigationCallsProtocol",
+      "title": "Contract structure: ViewNavigationCallsProtocol",
       "kind": "flowchart",
       "nodes": {
         "n_SelectViewRequest": {
@@ -23179,7 +23179,7 @@
     },
     {
       "id": "VP09-contract-ViewOpenContract",
-      "title": "Kontraktstruktur: ViewOpenContract",
+      "title": "Contract structure: ViewOpenContract",
       "kind": "flowchart",
       "nodes": {
         "n_OpenViewConsumerId": {
@@ -23344,7 +23344,7 @@
     },
     {
       "id": "VP09-contract-ViewOpenedContract",
-      "title": "Kontraktstruktur: ViewOpenedContract",
+      "title": "Contract structure: ViewOpenedContract",
       "kind": "flowchart",
       "nodes": {
         "n_OpenedViewRequestId": {
@@ -23409,7 +23409,7 @@
     },
     {
       "id": "VP09-contract-ViewProjectionCallsProtocol",
-      "title": "Kontraktstruktur: ViewProjectionCallsProtocol",
+      "title": "Contract structure: ViewProjectionCallsProtocol",
       "kind": "flowchart",
       "nodes": {
         "n_ProjectViewRequest": {
@@ -23494,7 +23494,7 @@
     },
     {
       "id": "VP09-contract-ViewPublicationCallsProtocol",
-      "title": "Kontraktstruktur: ViewPublicationCallsProtocol",
+      "title": "Contract structure: ViewPublicationCallsProtocol",
       "kind": "flowchart",
       "nodes": {
         "n_PublishViewRequest": {
@@ -23559,7 +23559,7 @@
     },
     {
       "id": "VP09-contract-ViewReferenceContract",
-      "title": "Kontraktstruktur: ViewReferenceContract",
+      "title": "Contract structure: ViewReferenceContract",
       "kind": "flowchart",
       "nodes": {
         "n_ViewEntryPath": {
@@ -23664,7 +23664,7 @@
     },
     {
       "id": "VP09-contract-ViewSelectionContract",
-      "title": "Kontraktstruktur: ViewSelectionContract",
+      "title": "Contract structure: ViewSelectionContract",
       "kind": "flowchart",
       "nodes": {
         "n_ViewConsumerId": {
@@ -50651,7 +50651,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "DesignDocumentation",
-      "message": "Container-allokering er uspesifisert for bidrag til DesignDocumentation.",
+      "message": "Container allocation is unspecified for contributions to DesignDocumentation.",
       "mode": "DocumentBrowsing",
       "model_id": "ComposeMarkdownDocument",
       "viewpoint": "VP07"
@@ -50659,7 +50659,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "DesignDocumentation",
-      "message": "Container-allokering er uspesifisert for bidrag til DesignDocumentation.",
+      "message": "Container allocation is unspecified for contributions to DesignDocumentation.",
       "mode": "DocumentBrowsing",
       "model_id": "ExportSvgSnapshot",
       "viewpoint": "VP07"
@@ -50667,7 +50667,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "DesignDocumentation",
-      "message": "Container-allokering er uspesifisert for bidrag til DesignDocumentation.",
+      "message": "Container allocation is unspecified for contributions to DesignDocumentation.",
       "mode": "DocumentBrowsing",
       "model_id": "WriteGeneratedArtifacts",
       "viewpoint": "VP07"
@@ -50675,7 +50675,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "DesignDocumentation",
-      "message": "Container-allokering er uspesifisert for bidrag til DesignDocumentation.",
+      "message": "Container allocation is unspecified for contributions to DesignDocumentation.",
       "mode": "SourceInspection",
       "model_id": "ComposeMarkdownDocument",
       "viewpoint": "VP07"
@@ -50683,7 +50683,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "DesignDocumentation",
-      "message": "Container-allokering er uspesifisert for bidrag til DesignDocumentation.",
+      "message": "Container allocation is unspecified for contributions to DesignDocumentation.",
       "mode": "SourceInspection",
       "model_id": "ExportSvgSnapshot",
       "viewpoint": "VP07"
@@ -50691,7 +50691,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "DesignDocumentation",
-      "message": "Container-allokering er uspesifisert for bidrag til DesignDocumentation.",
+      "message": "Container allocation is unspecified for contributions to DesignDocumentation.",
       "mode": "SourceInspection",
       "model_id": "ExportViewpointMarkdown",
       "viewpoint": "VP07"
@@ -50699,7 +50699,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "DesignDocumentation",
-      "message": "Container-allokering er uspesifisert for bidrag til DesignDocumentation.",
+      "message": "Container allocation is unspecified for contributions to DesignDocumentation.",
       "mode": "SourceInspection",
       "model_id": "ProjectSdlViewpoints",
       "viewpoint": "VP07"
@@ -50707,7 +50707,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "DesignDocumentation",
-      "message": "Container-allokering er uspesifisert for bidrag til DesignDocumentation.",
+      "message": "Container allocation is unspecified for contributions to DesignDocumentation.",
       "mode": "SourceInspection",
       "model_id": "WriteGeneratedArtifacts",
       "viewpoint": "VP07"
@@ -50715,7 +50715,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "LiveModelReload",
-      "message": "Container-allokering er uspesifisert for bidrag til LiveModelReload.",
+      "message": "Container allocation is unspecified for contributions to LiveModelReload.",
       "mode": "SourceInspection",
       "model_id": "KeepLastValidModels",
       "viewpoint": "VP07"
@@ -50723,7 +50723,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "LiveModelReload",
-      "message": "Container-allokering er uspesifisert for bidrag til LiveModelReload.",
+      "message": "Container allocation is unspecified for contributions to LiveModelReload.",
       "mode": "SourceInspection",
       "model_id": "ObserveSourceChanges",
       "viewpoint": "VP07"
@@ -50731,7 +50731,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "LiveModelReload",
-      "message": "Container-allokering er uspesifisert for bidrag til LiveModelReload.",
+      "message": "Container allocation is unspecified for contributions to LiveModelReload.",
       "mode": "SourceInspection",
       "model_id": "PrepareCandidateModels",
       "viewpoint": "VP07"
@@ -50739,7 +50739,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "LiveModelReload",
-      "message": "Container-allokering er uspesifisert for bidrag til LiveModelReload.",
+      "message": "Container allocation is unspecified for contributions to LiveModelReload.",
       "mode": "SourceInspection",
       "model_id": "PreserveCompatibleUiState",
       "viewpoint": "VP07"
@@ -50747,7 +50747,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "LiveModelReload",
-      "message": "Container-allokering er uspesifisert for bidrag til LiveModelReload.",
+      "message": "Container allocation is unspecified for contributions to LiveModelReload.",
       "mode": "SourceInspection",
       "model_id": "ProjectUiGeneration",
       "viewpoint": "VP07"
@@ -50755,7 +50755,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "LiveModelReload",
-      "message": "Container-allokering er uspesifisert for bidrag til LiveModelReload.",
+      "message": "Container allocation is unspecified for contributions to LiveModelReload.",
       "mode": "SourceInspection",
       "model_id": "PublishModelGeneration",
       "viewpoint": "VP07"
@@ -50763,7 +50763,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "StructuralModelInspection",
-      "message": "Container-allokering er uspesifisert for bidrag til StructuralModelInspection.",
+      "message": "Container allocation is unspecified for contributions to StructuralModelInspection.",
       "mode": "LiveEditing",
       "model_id": "BuildSdlAst",
       "viewpoint": "VP07"
@@ -50771,7 +50771,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "StructuralModelInspection",
-      "message": "Container-allokering er uspesifisert for bidrag til StructuralModelInspection.",
+      "message": "Container allocation is unspecified for contributions to StructuralModelInspection.",
       "mode": "LiveEditing",
       "model_id": "BuildSduiAst",
       "viewpoint": "VP07"
@@ -50779,7 +50779,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "StructuralModelInspection",
-      "message": "Container-allokering er uspesifisert for bidrag til StructuralModelInspection.",
+      "message": "Container allocation is unspecified for contributions to StructuralModelInspection.",
       "mode": "LiveEditing",
       "model_id": "ValidateSdlStructure",
       "viewpoint": "VP07"
@@ -50787,243 +50787,243 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "StructuralModelInspection",
-      "message": "Container-allokering er uspesifisert for bidrag til StructuralModelInspection.",
+      "message": "Container allocation is unspecified for contributions to StructuralModelInspection.",
       "mode": "LiveEditing",
       "model_id": "ValidateWidgetArguments",
       "viewpoint": "VP07"
     }
   ],
   "outputs": {
-    "A0/index.md": "868e4166139ac7f77a52e70c701d4a265e6ada83ee145b257f8da77ec13a24aa",
-    "A0/inventory.md": "e8a556b6c47c4fcbdcd776d96bff80a1353584d8290d11fe047e7ddda940e26d",
-    "A1/index.md": "4260d23dbc4f366c29cc2b035610eb2fe54952c5b430eab10714b8e4d21db6a4",
-    "A1/inventory.md": "5d7a502f5167ad00250fd28a4d26fc77b4381d04f0de3c4fb5f4ce8e98466cd4",
-    "A2/index.md": "269770218bd46b47d9e901b8da325b43c3a66dd3d4eea2e06f0ca72b99f3d53b",
-    "A2/inventory.md": "c75c5199a4e0841e47318331512932dd389961afbbe5fc57cfd9026ae21a10bf",
-    "A3/index.md": "ffc44bcacd6451916e27f38f899952bbc7c1425b4c0e9877b1989183a68ea143",
-    "A3/inventory.md": "ec8a362bbaa7a61b58672cc7254617fb8b22c1fc34043b00f14d79f721ee3925",
-    "A4/index.md": "355c4b3d1d92f8339c54fd0ada7596881918e5e782bd7afda4585fe191775cff",
-    "A4/inventory.md": "7c91268c0397d0a76e7305911fab2d3ff1e5cc033aac587f1d5c9e2e5c67f200",
-    "A5/index.md": "2ae6c020838bfcd1c7dba834c334dc77724c8b3aed9257e1a43330c252c5335f",
-    "A5/inventory.md": "4eb21431f03ffb09a0754f6211f4059fe35be5b2fdea55063707f2eedc6f3ab8",
+    "A0/index.md": "cbab435060e4f3a38dea1ae46c1c510f4a94ba4f90165b6cdc376e03ef348400",
+    "A0/inventory.md": "8f07cc37a67927bce7e09e4eaaa5e7ac90ac335a73f3c97535703bbf65afeebd",
+    "A1/index.md": "4995ce9f61bcb8d8eb25ab3c2d144b2f7a5b40aca5708d9db845f7a6cc9df88c",
+    "A1/inventory.md": "1dd59bde92203d29f130cbddc26c1abf705948ed10af58eb623e1772aaeefbd9",
+    "A2/index.md": "ccffe36dfb73d97b3acc9ce45911c35cf85066ff5a4595300fd0c116d33cc7c1",
+    "A2/inventory.md": "5f742497a93f56391a0d6365e4d7875ad75da29a4a975a79156281793cc8e295",
+    "A3/index.md": "574b4712e9ccd6ef836a86ec1cff788407b686d38d0cfcc6780f76195108b30d",
+    "A3/inventory.md": "75c093a8ae18255e52b31488621ec91d0221ff9debb5507e0f2449300c88b96d",
+    "A4/index.md": "f41987eec3ba93a8a34476e5b078aaddd4aea66f6056f295563816b06396274c",
+    "A4/inventory.md": "f74a4598d74482b6bbebcaa13ec9af59757baadd04633020647d860b5a38771e",
+    "A5/index.md": "e076e34b7e22d86bbaeb7ce02e8dbbf9742b24a94ad36d75f95f5a971410211d",
+    "A5/inventory.md": "c911086dff8664b3c030c544c211a6fb6dfb95aacc421b3e91dd0e8163821edd",
     "diagrams/VP01-BrowseDesignViews.mmd": "7cdf278f0beabef417aae60c42f516fff247840fbc414779d4bb0c38b895cbc6",
-    "diagrams/VP01-BrowseDesignViews.svg": "69e402a25da9c58cfbd7e4ce15f7ca9e2190f9b72817999ab6c2d0c5c7a2ede2",
+    "diagrams/VP01-BrowseDesignViews.svg": "73f34ad4ea9b5bbdc63a6563e5a50d12f2f97d2d3e58385258c32518dc22c08f",
     "diagrams/VP01-BuildNativeProduct.mmd": "e9a1fe7f2c7a5d0bcf99088c70924b3e52950a1be302b64bd39a077de536391f",
-    "diagrams/VP01-BuildNativeProduct.svg": "6afa4458433b3f593e7db19352aa4a5f29e1c9034ce08827214cd1616f01ec78",
+    "diagrams/VP01-BuildNativeProduct.svg": "9567e35751e0b791d494c94759d68c833e7810c7282b8214dab9bfafb6c04a33",
     "diagrams/VP01-EditRunningPrototype.mmd": "d8d766d650a16f2f097c3fe7cd719509ba90294305e28dab7d0e93e4e403bc92",
-    "diagrams/VP01-EditRunningPrototype.svg": "249a5c4bae3269c5535dc4a686677f2c56ed3d963df5b47fec77913e4fa04dab",
+    "diagrams/VP01-EditRunningPrototype.svg": "2bfcd552c4345d0c8adcd16354b9601f4e80aa0754dec99d7b74fbe00eec9381",
     "diagrams/VP01-InspectModels.mmd": "9086812ed626f27b8e78fb7f8b442c6f1044e0fd6cec72fefcbf792e1823b211",
-    "diagrams/VP01-InspectModels.svg": "9f18ea23f40bf301b328862dacb3ce3face3111c5bc9eca3e08904abcbffde61",
+    "diagrams/VP01-InspectModels.svg": "b17c426c8634a01947e2fd73f50d6c2c6005957eb37fed6902019fc672883080",
     "diagrams/VP01-PrototypeUserInterface.mmd": "c56f0a739c4d7d264b862b92b7f47fa1826c98ca712e209a8671f0e9d63349ea",
-    "diagrams/VP01-PrototypeUserInterface.svg": "e735b303bf7bec2a2e2dd99efe43d4295f70ef4061fa5a8f1714b7c00fe2f883",
+    "diagrams/VP01-PrototypeUserInterface.svg": "23b7d1239ccfc0c7d6344f8c5ba8573be9aac268ea24410eb1b1849d8b673581",
     "diagrams/VP01-PublishDesignDocumentation.mmd": "af4c97936e29ce5cdd94287ef5e9294a9a7e98b3071c13919b2ef4b933efe8f5",
-    "diagrams/VP01-PublishDesignDocumentation.svg": "f89d091feeb053c54a97f715b38d3ec4e60265df225828786507184c8233753c",
+    "diagrams/VP01-PublishDesignDocumentation.svg": "f7adbe106ecd9bce5dc432903987c44dcfcddb2a26a234f1e20a5d192c9f21c3",
     "diagrams/VP01-TryDomainInteraction.mmd": "07a0d1a59853affb22ffc394df7e19d130530f03c8f069920deb91fcbc647704",
-    "diagrams/VP01-TryDomainInteraction.svg": "85d147379d4775856c7f026f890d6160243ac2510269f8c171220fa6c385eaf3",
+    "diagrams/VP01-TryDomainInteraction.svg": "20248d0d7b8d42502fc5dfbc92f24cb3eb13a08993c12fa91d0ae9abd33aab5e",
     "diagrams/VP01-feature-DesignDocumentation.mmd": "1d2cbf519447e4ca0be098da3afb42d0c827d9647484022a75574caa5779efd4",
-    "diagrams/VP01-feature-DesignDocumentation.svg": "3cfd52ee4e384bdebdecc2705fa1ce7f1ff70e1e38d105367fd09a61d24c0361",
+    "diagrams/VP01-feature-DesignDocumentation.svg": "a662da618e2045974a5dd1b1bf3edfe6318793fc474a0f5b94aef15476769e03",
     "diagrams/VP01-feature-InteractiveUiPreview.mmd": "552ecb700c8783181ecef9251c1ace441c073ff1b7879b362b2f169d1e6c8e42",
-    "diagrams/VP01-feature-InteractiveUiPreview.svg": "319bc60f27ebcacf9110dbfc87a532f6b231344b6811d06a805220ade0dcb5d2",
+    "diagrams/VP01-feature-InteractiveUiPreview.svg": "a66a73396fcfbd3f13224a1a039fe070e2cbf84514ae6fd276d2ffd75f73a898",
     "diagrams/VP01-feature-LiveModelReload.mmd": "f8f1194b04dc94879423b05f2ebf47d82874a9b4d85f71a6df91a1db9422fcd2",
-    "diagrams/VP01-feature-LiveModelReload.svg": "0354721f0eb66cbfddc35449dd04299fb62208a57438d83f2d129fa334913371",
+    "diagrams/VP01-feature-LiveModelReload.svg": "bbf6d90c2a2663da498f791aea6ce3d23be10758f1f12faaf2c4a13eb2bdd084",
     "diagrams/VP01-feature-NativeGoAssembly.mmd": "605ba0c018bf6d2cd0290c63018c1f8d2c813cf8957979eb3355d9e6c241a33c",
-    "diagrams/VP01-feature-NativeGoAssembly.svg": "9b62ebd0bf86780d2975b540c350b8af32942ccca71850aa627151ddf5bba65d",
+    "diagrams/VP01-feature-NativeGoAssembly.svg": "610155029c29f293c8a0637003aac3374e48d4d4835eaefa4632089e5b28c021",
     "diagrams/VP01-feature-NavigableDesignDocumentation.mmd": "0aa8120d702ba44bcb1477a82e8aec36e37574c3eb4657f92968e559f69a178d",
-    "diagrams/VP01-feature-NavigableDesignDocumentation.svg": "43152b204282d041754dafdc44f85d30c8e09a66198a6a865a00f2265887422d",
+    "diagrams/VP01-feature-NavigableDesignDocumentation.svg": "d5222f4d51cb55f336d6efb222354cfea15fd1a868895ae176ff6e364727985b",
     "diagrams/VP01-feature-StructuralModelInspection.mmd": "3b8e37899f000884480744f53cee1d519794cb880a8840172a8962b7e2347b71",
-    "diagrams/VP01-feature-StructuralModelInspection.svg": "d90b79f3acac2953a2489d993b667afd9f3e50657bfc48e2b9c6d826289a538f",
+    "diagrams/VP01-feature-StructuralModelInspection.svg": "ea22932051add7785d4d01d9151c9c58f9a7e59695570072e4953ea4eeff4846",
     "diagrams/VP01-feature-TypedDesignInspection.mmd": "9c89d37accc1d29b992116be77b81baccc949c860421936908bbfdce7867673d",
-    "diagrams/VP01-feature-TypedDesignInspection.svg": "93b3f7cd8a33135d4f3410bf7161e7f15775524328ad226457b7ba21616aabb0",
+    "diagrams/VP01-feature-TypedDesignInspection.svg": "3600a4e9e18fc7e2dffb0c8253096f18815f784447312dcd854d487f7a164cc3",
     "diagrams/VP01-feature-TypedDomainBinding.mmd": "b9c95f5b8ecdc61e60ee01f200eeba9fea65338d2fbdaecd177c9af6863fe910",
-    "diagrams/VP01-feature-TypedDomainBinding.svg": "c0fdc371c28597f0d2def28ef7bb49d051ef60401c54c3d83f05627cd9b10579",
+    "diagrams/VP01-feature-TypedDomainBinding.svg": "77e8da584e7baf1f1f720397c7b83b7430158367828be4729142f477bf95900e",
     "diagrams/VP02-ContentServices.mmd": "ae0957cc0ec5406033ce487ad8198436fa9003fa63ec07d15c225ecb1f8becb3",
-    "diagrams/VP02-ContentServices.svg": "77dffa63a512c8d5cd1628c9dc53c352f3ca9ef8435faf267fca609da0dbbf21",
+    "diagrams/VP02-ContentServices.svg": "627b178e4bb8ead066b2eacd15ea6e9c84af89d0bcf5b5bd0d6d8eb3df2db29a",
     "diagrams/VP02-DevelopmentTools.mmd": "e7c4eafba4816fb06348c2c22cd51fdca78492ad2ca06235213bdfb1ec69a5cf",
-    "diagrams/VP02-DevelopmentTools.svg": "cedbb1bd2eb7dd99ac527aa090c53606a5eeaa49a00e7426eccea7983cf06f70",
+    "diagrams/VP02-DevelopmentTools.svg": "a0addb051ec966a2408bdc6e1c71d57cd09d2fec79a3e4e841c5562dc7fb011f",
     "diagrams/VP02-SdlFrontend.mmd": "73976108511eca7073626333de1096a05a62a790e8c56a547fe4e77201b688c4",
-    "diagrams/VP02-SdlFrontend.svg": "0a44e9a86262b2aa332b79129faf51c69f70769e72f3e29146e36fc93c7307d4",
+    "diagrams/VP02-SdlFrontend.svg": "80ebd75991a23647508af9cd5c0ddd9742c727f2d0a0863ce7ad5ccb4574e2ff",
     "diagrams/VP02-SdlLibrary.mmd": "222d35f2a4fb843df4a049aa449a0f1760284b10bde11b7cdb9bd680faa44b99",
-    "diagrams/VP02-SdlLibrary.svg": "dad37060295d8bdfb196c5d9cf5b358c72ac8787ff54ffc1fb5ac169ad8a0c63",
+    "diagrams/VP02-SdlLibrary.svg": "a1e573dbd18269be4f5d74c45d7b8b0ce99c76a5e552858cdcebd8e59b75801e",
     "diagrams/VP02-SdlRuntime.mmd": "c7bdc9c6fd1e26edb0110f3da8235e36c9b15f7b46903d189c461a0c12a5e88d",
-    "diagrams/VP02-SdlRuntime.svg": "afe71812d8cf1ef515124cb304a8ec01aa405ca7f3f8947492ebbe12e724647f",
+    "diagrams/VP02-SdlRuntime.svg": "274ef051144fbdcec8b809e87ddab2033aa466c6daaddc20eb2176f40a1c7433",
     "diagrams/VP02-SduiFrontend.mmd": "b3819a1968342313568587009949cde5896f5fe2302b99e9e42d50b690be58d3",
-    "diagrams/VP02-SduiFrontend.svg": "4a41696a767852afef750752a0179699f8c4990743c014309407771c21220498",
+    "diagrams/VP02-SduiFrontend.svg": "1444968a62cd5b7b2f7db59317fdb8c12baeaf8a4cdeba1427a798ab6239c6e3",
     "diagrams/VP02-SduiLibrary.mmd": "ea08f409ee864f7d41ab7e5075401808fde53de6f6d20a6ecfb1422b5887e6c6",
-    "diagrams/VP02-SduiLibrary.svg": "4c4014ff6bc2bd7098d86a20507349781523edd87a5039b57372e1c34d0203b4",
+    "diagrams/VP02-SduiLibrary.svg": "96a4de54cc5f6601997ccab5c16360373e0bdc482c6f125d8388f9fc8259d4ed",
     "diagrams/VP02-SduiRuntime.mmd": "81a63bed2de1a19ff08431b1a8438e5ab6541b1823fd20839c1017dc1e24db59",
-    "diagrams/VP02-SduiRuntime.svg": "d65f41b062712844ec6f5a3f1eca61d332ae3e236f54332e1a12d05253af82d0",
+    "diagrams/VP02-SduiRuntime.svg": "83f42a90460bb63722000cedc0ea499d40cb5384f0c360d08271601ac855ad22",
     "diagrams/VP02-ViewServiceHost.mmd": "b099b6640970778774a2519cb3b451668c2ff37722aeda333f6f9dea4b3be6f5",
-    "diagrams/VP02-ViewServiceHost.svg": "77cd309e6a1ff20ffe689b3e2b2ce2b0b1175c7d104cee0467679961343e0d48",
+    "diagrams/VP02-ViewServiceHost.svg": "80fc2b09abc1a2ee2e63f74e14dfaaaab7e99b08aa4871e190eb0530172256d0",
     "diagrams/VP02-roots.mmd": "d4e9dece5b8df418c2ce7659b877458a95ba467dd8853d22d17862a8956ed590",
-    "diagrams/VP02-roots.svg": "3341d15da3ee79b402a279ff1bf46e93a48b8b908df066ce3776ab3aaf55280c",
+    "diagrams/VP02-roots.svg": "43a31d9abfdad0202670f7c90a6c07c14139517af963196ae32b4d10b9873515",
     "diagrams/VP03-BoundInteraction-offers.mmd": "3dd818d4261f20be4cb144bc684411df7729e6d8a7417da30c70e2b16e877aaa",
-    "diagrams/VP03-BoundInteraction-offers.svg": "01fd318c7baaa64a79e566963bb54b77c9b0d58c9bf95e7fe23cde3e70e10b33",
+    "diagrams/VP03-BoundInteraction-offers.svg": "8343e1dfae28b5567e0149e9fe2084ece6eed82a23fd4bbdf3ed562a35ddaabc",
     "diagrams/VP03-BoundInteraction.mmd": "7750ef5938334c6af509025a12a6642784989ab653892ef8628594dac98358eb",
-    "diagrams/VP03-BoundInteraction.svg": "ca9484c911b675956e570cbe4dff4170080fc24dc155f9ad2eb148b9c45bd134",
+    "diagrams/VP03-BoundInteraction.svg": "dcdb8a55056f8a60d017572aa239d4f091278d4759c5798675e98d2c782560e0",
     "diagrams/VP03-DevelopmentReload-offers.mmd": "3382ded4345d9612468ab5e5e1bc8ff065a601f16575a7e646f34ab84a5abdaa",
-    "diagrams/VP03-DevelopmentReload-offers.svg": "9c9eae72f631de68ccc6b9cd7db34719e67d3d2cc91d07caca0b1fe14d371e87",
+    "diagrams/VP03-DevelopmentReload-offers.svg": "fd2c9a8c5b431ab288fcd239d64ffe239ac54cd91b6ce40e2257f8b34fe1e0c2",
     "diagrams/VP03-DevelopmentReload.mmd": "e4e342e9bed6fe5527cf07e466b3d15babb7eed1b8f0018c897fbede33e3e249",
-    "diagrams/VP03-DevelopmentReload.svg": "cd995a53ce734d84cfef90842d085c1436b3764e078cfb4e4a1d08a736f17516",
+    "diagrams/VP03-DevelopmentReload.svg": "cbe727752b5b816b66b6f169cb192e734a2a53d3ec77fbc7512dbd0f8aa2e1bc",
     "diagrams/VP03-DomainOperations-offers.mmd": "e29f4e87a23132bc55572cf3e561e40f92bc52723324f38fcc4b995454dab865",
-    "diagrams/VP03-DomainOperations-offers.svg": "0cc1da6e80a5b1534e1e416b34670039aa0f4fc47cef9974c49cec4411e9dfac",
+    "diagrams/VP03-DomainOperations-offers.svg": "0ac688d8cb669ce4fb75944c16123fcdbae992e324d5df42ac254a41cb9b634a",
     "diagrams/VP03-DomainOperations.mmd": "8d80e4608148748f5e11ac980a77487b5071b6123356df50a80ac5c5eb18f515",
-    "diagrams/VP03-DomainOperations.svg": "573607e464633285d903c883987173402fc1c7528288e2dcb74795494afb901e",
+    "diagrams/VP03-DomainOperations.svg": "dde172a33386eb9888bd83d66654996f078f3505cb787259870746d909c4dca1",
     "diagrams/VP03-ExecutableDesign-offers.mmd": "770be51e1e1925dc0e1a502db04eaf4620443c411b08c526ef85187e138d54c2",
-    "diagrams/VP03-ExecutableDesign-offers.svg": "4cda21c32d5a2797df81c591ca9d98ac776ce2b796fe84c578189e1c051ac383",
+    "diagrams/VP03-ExecutableDesign-offers.svg": "fa15b53292d5c7938274b8b849c5b93c97239b6399ba27f586ed8235fc0bef56",
     "diagrams/VP03-ExecutableDesign.mmd": "bfa7ecda3800aa8dfed318300ebe23af0d6d743b1e64d8feddf1ae3ac1a85b18",
-    "diagrams/VP03-ExecutableDesign.svg": "7457e628cb0278d62dc6b94c40b8cb6762905b44bf8c19d6b3f11b60f9ee4363",
+    "diagrams/VP03-ExecutableDesign.svg": "86827583e9ae275ac1a6b70932b25eff9f00279e693c6ca8d0a92e119ddeaced",
     "diagrams/VP03-InteractiveSession-offers.mmd": "423350a381f446667dd1447298126da384ee2652a56c782ac5101abd6013df0e",
-    "diagrams/VP03-InteractiveSession-offers.svg": "9b2a3841331913fe9a5ad96162a106e7970476000094af89573ac7dbc0b13fe7",
+    "diagrams/VP03-InteractiveSession-offers.svg": "1ce2d3ae77a35f824f38427a4eb7bf33deab8d769a17113fb5c77caf68526733",
     "diagrams/VP03-InteractiveSession.mmd": "4571f32fece930a0022086f10f643e81d492978a5c7e9d8b307ec7f9df8d2e01",
-    "diagrams/VP03-InteractiveSession.svg": "cea1f7c9175a99c25c52f3d4288a1121ff60e582576674d76f722c2c888a9ffe",
+    "diagrams/VP03-InteractiveSession.svg": "b60dc8135669a5592749eb7c0bac5d38b3f02666953e0f839b59c7993c280d1d",
     "diagrams/VP03-MeasuredPresentation-offers.mmd": "0cdd4f01f35e73a9803dfdeed8f310f5c7034641c33b45a3a5c35ff20f2c378b",
-    "diagrams/VP03-MeasuredPresentation-offers.svg": "2d2e7bfd28409bdafe2d6768fd60aa52edbc87c6bbd446dadb88807b8ebdbef6",
+    "diagrams/VP03-MeasuredPresentation-offers.svg": "79a51c8a113514ea190c58089405c188a4bcc698585eb2af2b49044f98afac3f",
     "diagrams/VP03-MeasuredPresentation.mmd": "ec0c90babc978e0a92032e9bb1e5d3becae6726d139e773fd4e70592eed894d8",
-    "diagrams/VP03-MeasuredPresentation.svg": "5ec382b3d984add636783b393ce0669edec3228da469732f2032805b8fe63dab",
+    "diagrams/VP03-MeasuredPresentation.svg": "4dbfaf2821ef211560ff65ec7d1ee4b0aabd08385387a2822499358ff79aa1e9",
     "diagrams/VP03-NativeInteraction-offers.mmd": "962fb677d689b7223f7bcab02ad9b8aebe6dc961aa688e2cd1688a22d98fe3f9",
-    "diagrams/VP03-NativeInteraction-offers.svg": "92a5f8bb9597f97c247076d93fed0b09fee111ba10782176e8d66cd3c3e2f119",
+    "diagrams/VP03-NativeInteraction-offers.svg": "227d174c1935d9933dab262652293686137d6e250575f52040fe157ebfaf525b",
     "diagrams/VP03-NativeInteraction.mmd": "cb737447420bf6e6318ad6cb7db99ea10df434cc4bb429e5efb8b865c0360c1a",
-    "diagrams/VP03-NativeInteraction.svg": "507ab1f54a6f58365c3ab6804204a2161b38e3624a86500f995e89896a8e2b67",
+    "diagrams/VP03-NativeInteraction.svg": "a19bd2627c6e258149ee07829e9308cf116e618c5c7610911ae897513be32e10",
     "diagrams/VP03-NativeRealization-offers.mmd": "5aa0954e9930bb10208927fcaca30532f3b25cd00cc6c894b9239490e6fcec26",
-    "diagrams/VP03-NativeRealization-offers.svg": "ad94f28582edb9b92da435ad06b127c075e06fe985f87747d68664ec380c3b51",
+    "diagrams/VP03-NativeRealization-offers.svg": "c71dbc0477728151625188de1e46e9657cda13fd64d24e1a662da556959c2ab7",
     "diagrams/VP03-NativeRealization.mmd": "99b261128036fd0067b69544fe3dff501f9e4500c109fb408ccab14a26d64b0c",
-    "diagrams/VP03-NativeRealization.svg": "9b5cc92b86056d2164ccf9188e7b81453fa9646b7bcde3c22bab94d7333fa186",
+    "diagrams/VP03-NativeRealization.svg": "9aaccf32eb0f00d39bc19b90f4eddb53497e104d9496c8b4f5c0f0dd8fee1f3b",
     "diagrams/VP03-RichContent-offers.mmd": "4128809aa8e7f8a553091832b07f47d8f8288f60273314ede77d7cd25d95d3c3",
-    "diagrams/VP03-RichContent-offers.svg": "6d583b66c79b34abf58c767ca478bac5e14f2037ff87eff09d7ce68226f6b72a",
+    "diagrams/VP03-RichContent-offers.svg": "8bb39b521d2a8eb632cda72993242ded7d2a98da00d8510c9c08e29b20046ea9",
     "diagrams/VP03-RichContent.mmd": "686ec69f2ded9b49beb20eb5f78bad828472cb0f70c77753c0e3f37b658300e0",
-    "diagrams/VP03-RichContent.svg": "ea2875f0b9d35ce1962f5469852532e230667095626826251d5c650cdf2395ec",
+    "diagrams/VP03-RichContent.svg": "fb137173d737fe4c3513c671c295497222e9c2cfad12820004466befc4bd6525",
     "diagrams/VP03-SdlSourceModel-offers.mmd": "17e2a19a374d37ddb2d58f296c31b9f1b16159234d2facb79250587c7d069769",
-    "diagrams/VP03-SdlSourceModel-offers.svg": "4eb58d7b518821344dd6c3ed57bc66d4c70b4fc5e833d17eaeb91032199cb6c6",
+    "diagrams/VP03-SdlSourceModel-offers.svg": "cfd7375436a86242e96eceb3a8a4da6e380b8b422c7667fdc581f38d9c6a8e88",
     "diagrams/VP03-SdlSourceModel.mmd": "a854436696f9288af6edfb7cfaa6f613b1f70143cfb75786d766316f377ae918",
-    "diagrams/VP03-SdlSourceModel.svg": "53e020723a8cdbdacae1d1846d28043bdd4044db1e2d35c3091631731a680176",
+    "diagrams/VP03-SdlSourceModel.svg": "56531f4f561e432b3b1e23c4eb75a38031b3648db661bb684e9e679b7aeca759",
     "diagrams/VP03-SduiSourceModel-offers.mmd": "1c40d445a055caa3e786e6adb1f727a65ea7d99989ff3678543c31c0f2ddc3ca",
-    "diagrams/VP03-SduiSourceModel-offers.svg": "0676143e19418afbd54ff422b9e0be884819543d7786d45d3072914d9a9f2c47",
+    "diagrams/VP03-SduiSourceModel-offers.svg": "d67e111b5a42b9045203ea282e51c8d3378f8d3a51c1750d7e6a39abb95a7e41",
     "diagrams/VP03-SduiSourceModel.mmd": "99949d004f95956eb0c890b821439bf352657eb31c2b1fe852e4e421a7f34a64",
-    "diagrams/VP03-SduiSourceModel.svg": "81a4a09860f8e0f517c1625c8c5834bd46bdae8b951e13ff69c905e65483c0f4",
+    "diagrams/VP03-SduiSourceModel.svg": "2ccf430a66a980c5744f11cb89ab35b8d693ccb6a4184380f6efe2c57a8afa42",
     "diagrams/VP03-SourceDiagnostics-offers.mmd": "64f9da6bc29084af697bf0673e701dfaa89f3c7e2a9f26bafb6e79924a5a9137",
-    "diagrams/VP03-SourceDiagnostics-offers.svg": "f16e5f5ad1a95ec44195f4644210a1ce02f815540e91bbd657e70f5563cebe01",
+    "diagrams/VP03-SourceDiagnostics-offers.svg": "e7180a3faeb2cbbee3f28748a0ebba48fe1b5c2d51bc4dfbd628a7896a1bbe7b",
     "diagrams/VP03-SourceDiagnostics.mmd": "e86becb3b629772cb8502835b7b19ee7c5eef6bd31ea32cee2171c83c2b840d0",
-    "diagrams/VP03-SourceDiagnostics.svg": "764224dbd62fa7c2f4bc6add73da8276ee866991acb0aaf38ede95495fe3fb48",
+    "diagrams/VP03-SourceDiagnostics.svg": "1799619d61e56a5f7b6cc8baeaac945fd39fbdefd8d6b8ceea34027659f67d30",
     "diagrams/VP03-SourceLoading-offers.mmd": "c1f47d72b4e22106327e2c761edb97e4e207c3d9b102b6b57f81fe057f9f734c",
-    "diagrams/VP03-SourceLoading-offers.svg": "223b5cb43248069dc2ca9f74730356572a931464d56ebf280b1c1c8ab5362e98",
+    "diagrams/VP03-SourceLoading-offers.svg": "4d98e98fc1d836e0f66eab6c711461dc30fdc72ee5f74e1f255ea459a5786993",
     "diagrams/VP03-SourceLoading.mmd": "eb29481b5d11dfc35fd24eca49c9891cfb9b9b08eef2bbfbcb808307d9c7fa97",
-    "diagrams/VP03-SourceLoading.svg": "deb6f5fb558974d65dc1c1b54a620e9a7d4c5bc2fce19912cacdce92585c4784",
+    "diagrams/VP03-SourceLoading.svg": "c0aecc12e3e26d959fd139b766b68caafde77cc3b01a2cbd9a1993dcae0d2380",
     "diagrams/VP03-StaticDocumentation-offers.mmd": "88a8ce3e48e9dc19febb3fe2194f316b0bb6384dfbe029c8209e232662e9db8b",
-    "diagrams/VP03-StaticDocumentation-offers.svg": "c21c17390e08a4c0ce141411a43e8696ca6324ec244adc1fa5363c877fcf8fc3",
+    "diagrams/VP03-StaticDocumentation-offers.svg": "30d766d90ae27559f6b8dc8b49118de0e743f002994140514a7877bb98440cdb",
     "diagrams/VP03-StaticDocumentation.mmd": "6d7ce9a0ad6d9ebb1e97b5039b2e573cad8907135bfe56a9116527117a0a10b7",
-    "diagrams/VP03-StaticDocumentation.svg": "8f2132d46cb19eb2c5c3ba5cfdf0b260cd8118424a250557a88a1edc523b3950",
+    "diagrams/VP03-StaticDocumentation.svg": "348bb3de43e0247eddb8777c8bbb6a910213ccbdd13a7cb61ba8d1adbdd430d2",
     "diagrams/VP05-BoundExecution.mmd": "ea10c6bca6010afbcb62974f77ab3b4c3633d6360cd8122c53c1aef617f0d5e7",
-    "diagrams/VP05-BoundExecution.svg": "4da8f24a48e5cfca03a21f6de37072d45436b3a06b86e5414b4c16da03f6e3f7",
+    "diagrams/VP05-BoundExecution.svg": "1c363d65be9f01bf5e583d0290e6eb0a677ae2d80c7d65057c51201c48346f27",
     "diagrams/VP05-BoundLiveEditing.mmd": "5196a8a019aae0d87b91b0bbcd854182ab07771ed72e127ae3c96fe371f3ab3b",
-    "diagrams/VP05-BoundLiveEditing.svg": "92099a60a54fe52f5b4e33836461a1e723afa194f9f6cb17e5a4f5e453d58e48",
+    "diagrams/VP05-BoundLiveEditing.svg": "f328b8430507a416a0f2a495196ee0172ccde9b0eb0cd15813aabacb893dffc6",
     "diagrams/VP05-LiveEditing.mmd": "52cbff89ed0772cc83fb58e712167162a2ac2c9843fcab111914729693c04cee",
-    "diagrams/VP05-LiveEditing.svg": "790a6198cc24d06a67d72522cb9ce2a84a306f4a13b1d3f460632621cb6930a9",
+    "diagrams/VP05-LiveEditing.svg": "51e0a387adac66a4d0d88dc6bea99edb8c36cd97008f5d6770a353ef7c5992b0",
     "diagrams/VP05-NativeBuild.mmd": "25159eff438c34eb0d96f42a22a58cd908ba4e9da47be8bdf9ab7b163cc9b9c6",
-    "diagrams/VP05-NativeBuild.svg": "aaed1ac12e50fd2c982d5b4824336ae3f0ad13024889f406216808bbcbb460b3",
+    "diagrams/VP05-NativeBuild.svg": "88fa5b13b4a2315202eef1996d90f635fd77827274d5656b479be1f9d7191c12",
     "diagrams/VP05-RichDocument.mmd": "1616eb156a12ff25327b390d361ed9ae8f4c73d291b100ed0b941fd3c86dcc56",
-    "diagrams/VP05-RichDocument.svg": "c295e2954b72ebce00b97e534b33b95ded224fa7677fbd8f9e36ef191fc388b2",
+    "diagrams/VP05-RichDocument.svg": "856a3d6eec2e85087e93e4c2d05257e22a58e6cd7319bb95875ed135873f259d",
     "diagrams/VP05-SourceInspection.mmd": "bb6bd1f7195727d521c223c6c5601402941ac102eff250776a1db9c14a785e9b",
-    "diagrams/VP05-SourceInspection.svg": "922429429c44950a4c7389345cb76216804f4bfdef9d65bd39691d98db756eff",
+    "diagrams/VP05-SourceInspection.svg": "2f7ae16c4351c1716f1b91c9edb88be4b653feb05df4a20146f67efa11169e01",
     "diagrams/VP05-StaticExport.mmd": "52684fa8de2a04ecf2c5fca2e036f83b8f242480a7a0a4ea2bfbe17cd433d727",
-    "diagrams/VP05-StaticExport.svg": "2e2d19533e929f0dbbc3778e8149fdf5f483afb4073543396a50f4e4f7f5b1ae",
+    "diagrams/VP05-StaticExport.svg": "ca83be8292fef81cd8a54fc1d9d20106fc0930a1cfdfa2127b6f99f166129fbc",
     "diagrams/VP05-UiPreview.mmd": "cd7ccd4f98f7b1f3616abde9d34cc4e65018cea3af92fd63985c8eb34ad99e4d",
-    "diagrams/VP05-UiPreview.svg": "d84503a5c2b63997dc712aaa6b069f2b4a1ee3dc5b8e7f3ac1a383ff4f278355",
+    "diagrams/VP05-UiPreview.svg": "364685fc7fa28b95933fb8911147051debc6747bfae46d4c3bfefcd8634371c7",
     "diagrams/VP06-dependencies.mmd": "913d4488b8ca9241ebdbff4aa78c110439784605553ee0fe9b2f780ba3e1b9a5",
-    "diagrams/VP06-dependencies.svg": "f0dec66438b01bdb0f22f3997aed53e61be4f827f630c34dc8397a4cb0198253",
+    "diagrams/VP06-dependencies.svg": "5bf8c8ea6754398e9787ea987e4431c24a2b86c0171306d7958df64f12b8b6f2",
     "diagrams/VP06-detail-G1FrontendPort.mmd": "c5202493ec519ff5bbc25b18da1fc9d3f9aff9fd84cb024e395620454215998b",
-    "diagrams/VP06-detail-G1FrontendPort.svg": "7747a7d1781c349a2af73b52691fbb13a0971a207a5776095d72c2e5f702c8e9",
+    "diagrams/VP06-detail-G1FrontendPort.svg": "91b8d978c160d921cde0d081cbaca2ffb0438dd2af4e8966648920b9c6eef835",
     "diagrams/VP06-detail-G2LayoutAndPresentation.mmd": "79a9c0aab592b0c0a447798224611a05119bede481b3662f0ca811212ce80772",
-    "diagrams/VP06-detail-G2LayoutAndPresentation.svg": "7a035f18dc1019988f96e43c48d73de493ba156c1e63966fb7c85b8b07359d6f",
+    "diagrams/VP06-detail-G2LayoutAndPresentation.svg": "97b404433e44d4dd06e8c4b6785b004bdf14c18b1e5bffbed5771b8ab34de148",
     "diagrams/VP06-detail-G3UiRuntimeAndReload.mmd": "a9881f0a406adbd949ff1cb0534182fae23a4a61a72920adb6b85fe562ae410f",
-    "diagrams/VP06-detail-G3UiRuntimeAndReload.svg": "192d0397a1e9f52b510990c56a1f9556854e69fb3c3e07a84ac713550d7bde88",
+    "diagrams/VP06-detail-G3UiRuntimeAndReload.svg": "bc310e2251d0acf38ba2e6c30b675d211dd7c3a7c45db24722eb177f267b9133",
     "diagrams/VP06-detail-G4SdlRuntimeAndBinding.mmd": "a1e3df57e66216177ec447a67a24fdeae729c61e7be1ba2315941cf18dcac4ff",
-    "diagrams/VP06-detail-G4SdlRuntimeAndBinding.svg": "00c960e732522a30cf01967696c10c3714f934e710f0754dd85661fb4dfec4cd",
+    "diagrams/VP06-detail-G4SdlRuntimeAndBinding.svg": "bcb9485aaea8771eac9d06e531a94c2402b9c72b7507707c161903b63f1f01b5",
     "diagrams/VP06-detail-G5NativeGeneration.mmd": "43e99db63d2ed67cbf0fcb014cd6b05b8882924091a35000c758974f0b5fe316",
-    "diagrams/VP06-detail-G5NativeGeneration.svg": "c8083b43fcb890f62fab22da2afbf85753f6e42c563b4d2e14cc36121a3d8988",
+    "diagrams/VP06-detail-G5NativeGeneration.svg": "6b07cf2da75866ff46121c917bb06bda9089314cd43a940914b7cdee46a52fa4",
     "diagrams/VP06-detail-G6NavigableDocumentation.mmd": "5cba41062b61529ab57159847d12affcde521b3bde75e8cc2c244c421348053c",
-    "diagrams/VP06-detail-G6NavigableDocumentation.svg": "1918031e2fa255c8fe59a38299abe9f5a611e6b31f79a2a3f77d03670046f2ff",
+    "diagrams/VP06-detail-G6NavigableDocumentation.svg": "fd663719d583ae6153c48c770a6d35b980a75421c3c7f288bff57c0cd17acc91",
     "diagrams/VP06-detail-InspectDesignSource.mmd": "4811772225617145e2b803069dbfe774a5f3745239be9e3bb4946b310e6689ff",
-    "diagrams/VP06-detail-InspectDesignSource.svg": "94be2cbc6fd4ced1a6f5bb6edb244d1685ee66c509c4972c9dc10bc55291f02c",
+    "diagrams/VP06-detail-InspectDesignSource.svg": "e50761fb1eda4a7d59c018e64c619f45036ee2869ca936d4821ee35d880d048f",
     "diagrams/VP06-detail-RealizeDesign.mmd": "7c141102b219afa37df594234196ee32392f83462a6dcd3d9c2554aee3daaa61",
-    "diagrams/VP06-detail-RealizeDesign.svg": "28e0ad4b68a9712082aca1809276f8665c320786b89dd8f9e0e45514d007ac71",
+    "diagrams/VP06-detail-RealizeDesign.svg": "6e7190ab55630e4b32551522dfd75809ef5eca9d61b5c4e2af85774cc0def5e6",
     "diagrams/VP06-detail-ReloadDesignSession.mmd": "be3cbe37e0eb0b09bd665e20be331ef9883dc57e5751299dafe045df822287fb",
-    "diagrams/VP06-detail-ReloadDesignSession.svg": "0d9cb96fdbba498efade32c852ae418c4d43775dc991c3bffcdff1a8470c8754",
+    "diagrams/VP06-detail-ReloadDesignSession.svg": "eecf6c3314eaa24bd4c03c91e573407e60bbbda718d7d75fa6ffd5ef9d95477f",
     "diagrams/VP06-detail-RunDesignSession.mmd": "47ffeca33a3630a7c97c0c90695b16cf9a4115950de03c7ac88987819cc5a4c7",
-    "diagrams/VP06-detail-RunDesignSession.svg": "1dab0d71b04c3131ff177ed3aeaf87458eddf0b577ff03d1783cc5b898355e2a",
+    "diagrams/VP06-detail-RunDesignSession.svg": "246dfde86fe066cb12e3e24a63a0f3a223cd3a3eee6d7bf7287b1434e6b81cef",
     "diagrams/VP06-roots.mmd": "0fe9f9aa41130b0629e250581099814d5a7eff676e77b9c547f315697a0e973f",
-    "diagrams/VP06-roots.svg": "08809677b1c079b8fca074f0cc95fb3d6d5eacce334089e0b1cf9033c2447c3d",
+    "diagrams/VP06-roots.svg": "b771b0de35d0b48138c2c183576f49efa46f44d486367cca3e9b4cb1bc72c8e1",
     "diagrams/VP06-work-G1M1ParserAndAst.mmd": "82ffa98a551f37e1605d7aab281a3f1187fc4f4582448e10569f7701a5d6a6dd",
-    "diagrams/VP06-work-G1M1ParserAndAst.svg": "17453fcd3bd708aae30472dbfbfd8b263be2405b2ee2701183d45859d5b61b84",
+    "diagrams/VP06-work-G1M1ParserAndAst.svg": "386df5c6390796726023c1a92249efdfd3e788046089693c979c0c93fa087dda",
     "diagrams/VP06-work-G1M2ValidationAndNormalization.mmd": "e59ed962ad788dfc06baeca4b78617d0d5f6b92e67b542217ae628cb89582a71",
-    "diagrams/VP06-work-G1M2ValidationAndNormalization.svg": "ed9d11b3501ee88ccb24991443b96bb46242f4a073d8e911479e45fa09476b6a",
+    "diagrams/VP06-work-G1M2ValidationAndNormalization.svg": "0ebd17c983445bc0f2879787d66de39602ec2225ea3de33536a2ba6fd3ee80b1",
     "diagrams/VP06-work-G1M3Concept1AndDumps.mmd": "44e7f4da45c5579aab695fa4023ab61b7d08505e9f7bdd894e0cc6ae6328a674",
-    "diagrams/VP06-work-G1M3Concept1AndDumps.svg": "fc33751183d41ccd98510627da210593cfbf9a14f0df477ab568b56544b40ec3",
+    "diagrams/VP06-work-G1M3Concept1AndDumps.svg": "d6c0e96759d67ab5867924f143b18e0583e5d7b458a7d3fbb0444c47c2f6e1a7",
     "diagrams/VP06-work-G2M1RelativeMeasurement.mmd": "98324ce63b8bac9267ad570cb8275102f0cc06b5c370a676ba8fb08871376cc4",
-    "diagrams/VP06-work-G2M1RelativeMeasurement.svg": "b4ec67b00abe53eef4231c9c9b1d6b99be9886d0f666dc803e153d09e9bd926e",
+    "diagrams/VP06-work-G2M1RelativeMeasurement.svg": "c186b432b65d1d4bd363792c48165edb1f4fb78c38fcdaa59d32048e42e5ef0c",
     "diagrams/VP06-work-G2M2SharedSvgGeometry.mmd": "34545ff28f9836058ef788d3e0a544681f706478250f6832d3fcb520d8686ac3",
-    "diagrams/VP06-work-G2M2SharedSvgGeometry.svg": "1d4afef2c58adbe971b708bdc1804c1009fb0980f30eac59d81b0fcced87740f",
+    "diagrams/VP06-work-G2M2SharedSvgGeometry.svg": "29dbf1a63b025dfac017894951a4a07a944bd2e2e304682a94d4e0fa36ce3fd4",
     "diagrams/VP06-work-G2M3FyneInteractions.mmd": "61a141c2fff406578e6d58ebdea1cc0d3fd71d6c3d7c072ec2bf8cc050b7b1db",
-    "diagrams/VP06-work-G2M3FyneInteractions.svg": "a9d133af5f313c00ce978b6e9f7947930413fd0c76a42d0377fdaa46f6f84df4",
+    "diagrams/VP06-work-G2M3FyneInteractions.svg": "ec445221ea1d529313b28f9bfc9d6bab26ac7f71c559349f4e7de52aa163bdd0",
     "diagrams/VP06-work-G2M4RichContent.mmd": "f9873703ea19b7e3e0c1e2ff33f52f24913de1759ee506e772a779bd07a1537d",
-    "diagrams/VP06-work-G2M4RichContent.svg": "92955e707203c1739bceade3b9fddb2d3d7797ae97d5cd096891e91ab238f1a8",
+    "diagrams/VP06-work-G2M4RichContent.svg": "0f9e9245b3ac4399e66e4868c1fb4bc94c4a24cd884098d4bac602627d19d86d",
     "diagrams/VP06-work-G3M1TypedUiSession.mmd": "c4fcdb886420f8e5bd98bf905d5b6c2b7b6001d0dfe3ba95cfd74ea562aa2ddd",
-    "diagrams/VP06-work-G3M1TypedUiSession.svg": "79fe8b089d6698c0adec2e4ae46ca67547a67fbc49c7bd2a1091c03c82d983a0",
+    "diagrams/VP06-work-G3M1TypedUiSession.svg": "ae0a01e15288b40abb90a6993cc929d7bc22fa62956263ee47ecbfb32f92fac4",
     "diagrams/VP06-work-G3M2CandidatePublication.mmd": "d326c701f30837953475983874a3967b8ab50a88d5123c595d43fd3cc4fa6bc4",
-    "diagrams/VP06-work-G3M2CandidatePublication.svg": "e6c6c4f6d1dc3034c36c78b00b42a721d23d8862af4d21afa2f44f60630f51ab",
+    "diagrams/VP06-work-G3M2CandidatePublication.svg": "691b2da218136c073946cd228a1f4fe8078d7008739ba9731d18d3087ea94e30",
     "diagrams/VP06-work-G3M3CompatibleState.mmd": "ae07b0804728faed10dd7c83c56cf260ff07c483df4c75c499f8a73dd96ea0f3",
-    "diagrams/VP06-work-G3M3CompatibleState.svg": "31a945ecb99152aa9c7377bf2518797946a5cf5c9b481b00464716023475ed99",
+    "diagrams/VP06-work-G3M3CompatibleState.svg": "094ba6d84500152f57ddf69cc49aeca669585c73760b054f883f3dc4ca6e57cf",
     "diagrams/VP06-work-G4M1SdlFrontend.mmd": "4353dbc8aab7a60eaa03087a341724d935a6483342210bddf87e31f75227e354",
-    "diagrams/VP06-work-G4M1SdlFrontend.svg": "f41e5f76d27b54ee83a073998079219aca6a92007e5e5ff6979befa080eef6a9",
+    "diagrams/VP06-work-G4M1SdlFrontend.svg": "0e2e9c4fb1d4331c335db5dd29c66db34f41943df16517c68169b567358c3c2b",
     "diagrams/VP06-work-G4M2TypedExecution.mmd": "d64bda84ac4860ad085263dceff4913409f3f877446022f3f6f2b1ea76f092f3",
-    "diagrams/VP06-work-G4M2TypedExecution.svg": "bb6fbb2697bba23b47489adc10bd4f086f98548130667aeffc18b4cc06c4d739",
+    "diagrams/VP06-work-G4M2TypedExecution.svg": "92eb4b876514ae6896feb4894d4d9310646e2ad597dedc79988fb81d6786f737",
     "diagrams/VP06-work-G4M3UiDomainBinding.mmd": "0a1ca878fb9d9f84e9d5dfc8ae671afc7449d1d078dee7a1b2f767580d962949",
-    "diagrams/VP06-work-G4M3UiDomainBinding.svg": "9bdc157d7736e76d188f2b82fc83b575f74247cd8947c2caea003718865640da",
+    "diagrams/VP06-work-G4M3UiDomainBinding.svg": "7490003fe11700b2771fbf51e83bc89a9085833cb121a27c4009fd3621e5780b",
     "diagrams/VP06-work-G4M4DomainReload.mmd": "eda222add8afe48521b5c5cc996324b015061038ba2fc3c5f224c8cb14b11e57",
-    "diagrams/VP06-work-G4M4DomainReload.svg": "ee27a024d90ec1a4fbd519ce7cc5c8d5be16d63804002259d050f17bc34fad7f",
+    "diagrams/VP06-work-G4M4DomainReload.svg": "1408ce432766de6fd8186e3144ab161d5aa850372161d4464389b0dbf9f07840",
     "diagrams/VP06-work-G5M1GeneratedGo.mmd": "4398149985af56b3901d4293ec4e92690be6f9074a52f75bf029cec6cd632b07",
-    "diagrams/VP06-work-G5M1GeneratedGo.svg": "3dadf1c94315d724b9e9f78f14edd52b1cd97a9b07bdd2330270665f5c940f4b",
+    "diagrams/VP06-work-G5M1GeneratedGo.svg": "68f3812bc0d8bdbc10cd40fbd0ab49b2e714a2272dad8ccc52e2ced6517ea172",
     "diagrams/VP06-work-G5M2BehaviorParity.mmd": "8a0b6cf473ff1fb90b8de46a49fc06a1a3fa7adab58bd08634f026fcf43830ce",
-    "diagrams/VP06-work-G5M2BehaviorParity.svg": "10bb8978f7f608f33bb884fe8d6742b286fb82bf8c496c8796a9ef037120a122",
+    "diagrams/VP06-work-G5M2BehaviorParity.svg": "00952f0657b9b667c5ce51980d4eb4c3ae6b9105f0a6e5ea8fecacba12a10d01",
     "diagrams/VP06-work-G5M3DocumentationExport.mmd": "0bcf8a8caa1e3f74e28147679b4d269354adb42c72a8f1e267d00ad9aceb1a94",
-    "diagrams/VP06-work-G5M3DocumentationExport.svg": "4e957142bced487564b015894d817514cb5b21c318c8fb12ba6219b9d93082a4",
+    "diagrams/VP06-work-G5M3DocumentationExport.svg": "993a3af3a515dbdaed2fb37802fc8a461b0a26d73c71ae2e5a6b9be6eb41efc6",
     "diagrams/VP06-work-G5M4RetirePython.mmd": "1cd4c17df126a57404bffb718b16c7a7b604673e9b5864a1ec626917407659a8",
-    "diagrams/VP06-work-G5M4RetirePython.svg": "daa0847a74167efe356b0de8aef679774f4a0adcf757e90e87e31119f05a2a81",
+    "diagrams/VP06-work-G5M4RetirePython.svg": "194a73f356b25835d024dcc62aab5ea669e3d4c6bed64b539e71e20073ea2352",
     "diagrams/VP06-work-G6M1StaticNavigation.mmd": "67a6444d9f6c1142fd9021b701ebd4546c5effef8c8fe7f2f70a064424700dab",
-    "diagrams/VP06-work-G6M1StaticNavigation.svg": "5605484a9f947376b29c0706799bd962e6425c54906a168acc7a9be19b68cb31",
+    "diagrams/VP06-work-G6M1StaticNavigation.svg": "e6c1810c49ee196c13a9ef1187aaf590b21767f5a3c71535217ac5735515604f",
     "diagrams/VP06-work-G6M2OnDemandViews.mmd": "329d5e9c77e948b247f491a532f9ac02fa6f7f63bbdca00a167870a351308779",
-    "diagrams/VP06-work-G6M2OnDemandViews.svg": "0f9dd6104ef22bcf59120ef94539b6bb1e762fa1cbf89bde4ea910aa5e97e86a",
+    "diagrams/VP06-work-G6M2OnDemandViews.svg": "93a9f9c11c12cf77a6a5ac448a74387d7a39bb7ab88d952332512464aeb94766",
     "diagrams/VP06-work-G6M3XfmdNavigation.mmd": "8f0cd182d105e84d1468d4444d11f3f6e4fa715f261c5c51cbd7294b38a663be",
-    "diagrams/VP06-work-G6M3XfmdNavigation.svg": "d3882c705d2e29d68294a079c3ba2e5c2a402f0742bb011a5f291b002a477a5a",
+    "diagrams/VP06-work-G6M3XfmdNavigation.svg": "834725177e2b618e518a09816882ffae2017d6f837866f90ad26ca8f7350f70f",
     "diagrams/VP06-work-G6M4SessionPublication.mmd": "22743b2894b94a15371510e861e543dccaef9e325b5be3b35e01594d96120924",
-    "diagrams/VP06-work-G6M4SessionPublication.svg": "1ab7793276e8f3b8a671df3cfaee1b0dd22304d7231d53fd7fd24f68b50a6efa",
+    "diagrams/VP06-work-G6M4SessionPublication.svg": "13033d86ccd62b78fbb39b306f09d9d1b817e34b3449ac64a63554be89dbdcde",
     "diagrams/VP06-work-G6M5SemanticNotation.mmd": "4f6b83690977f4e5d623cca4f7e9df3862bd2944d640e75900821a7f06ac4654",
-    "diagrams/VP06-work-G6M5SemanticNotation.svg": "14f16f8d4c871a001c5c0e92e2489739da8b773203a65f5c920038ef693f6cc1",
+    "diagrams/VP06-work-G6M5SemanticNotation.svg": "9afb30b8771cbc7728d1369767af69f9c0532bc0939fdda7bb5c96cb0ec7c9a9",
     "diagrams/VP06-work-G6M6ClassViews.mmd": "ac19b909443f9024616d3f5e29a0335d9af59fb697b189c9416c5288b639e6c9",
-    "diagrams/VP06-work-G6M6ClassViews.svg": "d344b012abde379599d17bcb9aac34ef613cd98ded4a3522b824a62584f18fa8",
+    "diagrams/VP06-work-G6M6ClassViews.svg": "67f95b2c08b63827de827125744c9da822c064b195624b3925945f61ad96aa1c",
     "diagrams/VP07-DesignDocumentation-DocumentBrowsing.mmd": "263709a804b175d6656f597ec08a68aa3eebac1c09eb6d97cc084dfd9de267b5",
-    "diagrams/VP07-DesignDocumentation-DocumentBrowsing.svg": "6404cda1dead30ecdeb3a67fbad8992910615f52a152c4b08bbc034ff7585ae7",
+    "diagrams/VP07-DesignDocumentation-DocumentBrowsing.svg": "31652bd9d80d9ba25038411ec895fbb2c219b64efd26d960cc2cab963f062a8e",
     "diagrams/VP07-DesignDocumentation-SourceInspection.mmd": "e8a07788a58b5859adc55ef8cd5af664e169202bf72776e8c124fde8ab1e11ee",
-    "diagrams/VP07-DesignDocumentation-SourceInspection.svg": "e20c8969f15b5d81a4b55b22fc18f7203ad73efd983f6eac04e4c9df3707ee41",
+    "diagrams/VP07-DesignDocumentation-SourceInspection.svg": "d7cba3eb67507efd75d0c26b441e2ff755bd49bf5f3b22cbb877dc19715634f4",
     "diagrams/VP07-DesignDocumentation-StaticExport.mmd": "9d5ef429380233e51e873edef5ffc94f5cf4ecf6033b94b97b8785c744192376",
-    "diagrams/VP07-DesignDocumentation-StaticExport.svg": "01e272cab68a0f1e5ce4fedcc5d143d3666949806e44f78456b163f539511053",
+    "diagrams/VP07-DesignDocumentation-StaticExport.svg": "f67f9289c8de063b551679cd14ee72d3150f6b5c26a367703b6ef1e29a9f45e6",
     "diagrams/VP07-InteractiveUiPreview-UiPreview.mmd": "c3d268ea3f3464c4902a9d73eccf941c7086eeda269644a1b0de37944ca5b789",
-    "diagrams/VP07-InteractiveUiPreview-UiPreview.svg": "5401a541e5d744648dddd0fabcc946baccc5ecab2a6a1fbe5b9a42c34f5a4108",
+    "diagrams/VP07-InteractiveUiPreview-UiPreview.svg": "accac0e18bda6aac3a20a5772cd9437824cf1e7954e3db4c62f173354fc0427c",
     "diagrams/VP07-LiveModelReload-LiveEditing.mmd": "a2602b6850d02f5fc42ab9d67c07a173ea8a82c6e543c6a6354d0bbed4c1a4c5",
-    "diagrams/VP07-LiveModelReload-LiveEditing.svg": "78782e9a7ccb244fc1d0a4a529cd452fb64c6bc3972b9a9219d0fd06749628f6",
+    "diagrams/VP07-LiveModelReload-LiveEditing.svg": "92501f258a7e4bd2153bfbd72d0fe912f5cbcd178b7284547f5c50947b71b0f2",
     "diagrams/VP07-LiveModelReload-SourceInspection.mmd": "98842d2b726704dcf47f0087e4766187c48ca2c2397f2834bb0670856ee1b700",
-    "diagrams/VP07-LiveModelReload-SourceInspection.svg": "f6d64cc37b92d7770ae10136440c4af52b344d599ec0508108307545b79742f2",
+    "diagrams/VP07-LiveModelReload-SourceInspection.svg": "236ad8069d40840dd63cb9a033a6de39d62f01435ebc0dc8534592b3c7ed5274",
     "diagrams/VP07-NativeGoAssembly-NativeBuild.mmd": "6bcd247e0132ea5ba0755d3648b338a6af8ecab38960b05165c0e2205e9e06b6",
-    "diagrams/VP07-NativeGoAssembly-NativeBuild.svg": "d5052f0434368ccb4f58b38554740393ad9ff676c05770082a5b7b3b47284a0e",
+    "diagrams/VP07-NativeGoAssembly-NativeBuild.svg": "79b2de40763a9e045621b626f2ba576b387a2bd39ab8a80428e8e751a9a6a9bd",
     "diagrams/VP07-NavigableDesignDocumentation-DocumentBrowsing.mmd": "de2043eebd287a4a363516c199667df428da47e5ce2d2eb58ed4f4665bffedc8",
-    "diagrams/VP07-NavigableDesignDocumentation-DocumentBrowsing.svg": "1fa0dd91b56e808caaec2767905260670464eab785f1d9e409ea8f7e2eb68694",
+    "diagrams/VP07-NavigableDesignDocumentation-DocumentBrowsing.svg": "ce7aab2c978345a1893dfb8982ce98e4c6d4d350bfd9fd10f471d634f0314e8a",
     "diagrams/VP07-StructuralModelInspection-LiveEditing.mmd": "69c1542dbb42ad07c62ebdce9d512b9f2dc9d00a40d25345cde2080210ca6177",
-    "diagrams/VP07-StructuralModelInspection-LiveEditing.svg": "aa923ec68b19321a3556709aecf7d1bbc48c5402a46a0af37644b23bf1085831",
+    "diagrams/VP07-StructuralModelInspection-LiveEditing.svg": "0aa5eb83b9b92d22ec1238be4f24bdb3db140f72d7347c8becda4c964def5640",
     "diagrams/VP07-StructuralModelInspection-SourceInspection.mmd": "6164e8fc6209711601fd0f499fc1a16bc8eb0e8b328b68ee9c3e058b3699bf61",
-    "diagrams/VP07-StructuralModelInspection-SourceInspection.svg": "c3c330d35f00e1856b15ad604ff80e50a3cdb61da67fa59b40653a50b13a8f23",
+    "diagrams/VP07-StructuralModelInspection-SourceInspection.svg": "bc4b969731627e51d28c11dde91f18ae3e78ae6347d0f21929a703db82124add",
     "diagrams/VP07-TypedDesignInspection-DocumentBrowsing.mmd": "9b02e0b9513a95fd0fa1e5f2bda84fcd6a29a3bba17f65f8491ee4bdd3756d5b",
-    "diagrams/VP07-TypedDesignInspection-DocumentBrowsing.svg": "70eb5a65f595da8bd466515f95910f833f2239387f2e0ee96a4757c9c60a9d46",
+    "diagrams/VP07-TypedDesignInspection-DocumentBrowsing.svg": "70e3fd3820b69a295e642888fb0486c96b85252cdbba9411680e2711ec5face1",
     "diagrams/VP07-TypedDomainBinding-BoundExecution.mmd": "90695f47ffb34abd45dd7e0e9254aa6da2436804773dfbb6f532bddea5e4be3e",
-    "diagrams/VP07-TypedDomainBinding-BoundExecution.svg": "ec42d0d0e9e8f9bcdc18253dc22bca336028c79a2deba795cadd8f6b9e14bec8",
+    "diagrams/VP07-TypedDomainBinding-BoundExecution.svg": "d3d0f8b251140cadadbca1396939bb6bcf5bd5f4b18c82a1a0d831e7cac8de88",
     "diagrams/VP08-BoundActionAccepted.mmd": "a59f82bb125b9e64117329efd842ad6b918030b0af097b6d8b85d29f1c955db9",
     "diagrams/VP08-BoundActionAccepted.svg": "180275c0fd536fc70e6473c214dc6393168d2a0df08b0f961a74bc3cad316328",
     "diagrams/VP08-BoundActionRejected.mmd": "451538b47768b8948048c1beb54ad28873e19df2424d98a23661cfc7fd41edde",
@@ -51051,286 +51051,286 @@
     "diagrams/VP08-ViewProjectionFailed.mmd": "092dfed7315b7667ec34b3399c5e818de638f855bb6e427c0d4cecf38c964951",
     "diagrams/VP08-ViewProjectionFailed.svg": "fd3786356949c106de763c47ffbe8034c8cfa62fbb2a1b4666df98201e7a93b7",
     "diagrams/VP09-contract-ActionArguments.mmd": "acd0fc4778b47d101f252f129de3c7b2b61009bc97a48be7512cc1b2da05ae8a",
-    "diagrams/VP09-contract-ActionArguments.svg": "6557bd555bd1e857413b8ed6eddd7181b5b6d7a2fac9270bf4b7b82c813b7269",
+    "diagrams/VP09-contract-ActionArguments.svg": "6a18377d2854e82865ad521c9d1fa42af68f7ed5942a8bba5624f637cfe9679d",
     "diagrams/VP09-contract-ActionOutcome.mmd": "47102106a0b506697d3a00bd202753ba7b976719fa686646c86a56bb1dcb4de7",
-    "diagrams/VP09-contract-ActionOutcome.svg": "9edba650c3076e1b44b071ea433a9fddec659899a2e456e51e1ea3160850e555",
+    "diagrams/VP09-contract-ActionOutcome.svg": "a8cbc8054303482e5fbc501de590958a577662fecbff35d72e008afd00d4db47",
     "diagrams/VP09-contract-AstArtifactContract.mmd": "ac24be8dabac3ef84265e55ed9cdeba9429055d2f78976111c0789972da37953",
-    "diagrams/VP09-contract-AstArtifactContract.svg": "7eaa9a534116fcffb619424a9ab5d6d001ad1768c0d3ac5f44a96c4bbd5b98ed",
+    "diagrams/VP09-contract-AstArtifactContract.svg": "6252037f75c995496e98e21153cd5da77e741883ab8226f9fa97d9f7686240fd",
     "diagrams/VP09-contract-DesignSourceRecord.mmd": "6cd1f1f0dd6b464e16de6cd2ca157b185f527f6678c2a332ac75b7b10325e8b1",
-    "diagrams/VP09-contract-DesignSourceRecord.svg": "2c1e2fac48bcdcf08b1439379f08267658ada77194b56b02120251c25fdff723",
+    "diagrams/VP09-contract-DesignSourceRecord.svg": "a7f200ae88af13a12c71675c0e8e632b0b3c33545c66732324909ca135188d1b",
     "diagrams/VP09-contract-FramePresentationCallsProtocol.mmd": "9a47154051224cb5a7aff37fff0afc5d3732868157cc2e3bad506b6ae0d3b107",
-    "diagrams/VP09-contract-FramePresentationCallsProtocol.svg": "cc959f4b2e053098153f65b1b3daee1293764b277531cb4e041041c15e0199d7",
+    "diagrams/VP09-contract-FramePresentationCallsProtocol.svg": "8af7e10f21e60ba6cf44010006ff0bf54f96c9685b59437e59c7c25f59a94548",
     "diagrams/VP09-contract-GeneratedGoContract.mmd": "8558304fff77252add9d05a1023ae4f5ef71e8945e2ec69b8172a667568cc0e7",
-    "diagrams/VP09-contract-GeneratedGoContract.svg": "cfea42042f92d8f8c55a5e054e11b25db6d95e6c57d5f191156671b4b5c552b3",
+    "diagrams/VP09-contract-GeneratedGoContract.svg": "04479adbc3b011887a56b4db0622a11f791043ddfd226baefb3fff8ed5841104",
     "diagrams/VP09-contract-GoBuildCallsProtocol.mmd": "d6f48fc8781bf2cadc491613460d23b5fe1504f91840e2df90b5e44371a14ecd",
-    "diagrams/VP09-contract-GoBuildCallsProtocol.svg": "a107fdc78e5626811691529a1fe9255487febf1c0053abd73856e851e306006e",
+    "diagrams/VP09-contract-GoBuildCallsProtocol.svg": "7b6c39221d82ed67be5a2ea6a3ab03a32fb27d8e4ed4019a98452feae2833d3d",
     "diagrams/VP09-contract-GoDomainCallsProtocol.mmd": "394daf696b60d1a012c2a1b0223d0b10d17273a2a0de195ae779e07496e42baa",
-    "diagrams/VP09-contract-GoDomainCallsProtocol.svg": "4047b9e7f0ad3c056707560f6e688f6cafc49d35b465adb383761286bad2b6c4",
+    "diagrams/VP09-contract-GoDomainCallsProtocol.svg": "35a8a1817cb710e29712e1ac7f18f72eeaf9fb3d80eaa16b6ad09bbf9b5da50a",
     "diagrams/VP09-contract-GoGenerationCallsProtocol.mmd": "27d0bdb40d0ce0276d01743f608bbd7a0a27c0fa5d75a8ffd5450be6eb7092b3",
-    "diagrams/VP09-contract-GoGenerationCallsProtocol.svg": "d929b2df9003bd9e9a1a9a9f51659e6104af61949930d96e3abaf43f1c58fe82",
+    "diagrams/VP09-contract-GoGenerationCallsProtocol.svg": "a3a7136197aeb1da375596779b15a2e2134e38b60492685cee01411efd82c59f",
     "diagrams/VP09-contract-LayoutArguments.mmd": "ddeb0c420f2ce60d210b95e41e6ef7c76244ecc5836334e5652ce884edfd96dc",
-    "diagrams/VP09-contract-LayoutArguments.svg": "cd44138b886fb5c0c1af6c80913b1b7c841aca5db02320e4bbc494aec3586ba5",
+    "diagrams/VP09-contract-LayoutArguments.svg": "54cd7ed3b5813826fd8626f8dff8aef05fa9a9b722da6880c360ebff847c7964",
     "diagrams/VP09-contract-LayoutCallsProtocol.mmd": "09a5a9562909ac4ba5ab3276207c86a15ea461268d6e5663f1285240491ceb2d",
-    "diagrams/VP09-contract-LayoutCallsProtocol.svg": "890f7722ad586d6996547d68f5dad0964eacdaa42a4120ed0ded3ac06fd6624a",
+    "diagrams/VP09-contract-LayoutCallsProtocol.svg": "af1ca6bedc880660c0601034e60661478ce16ead885b92a90bedd416224a55c1",
     "diagrams/VP09-contract-ModelReloadCallsProtocol.mmd": "ab21097244fe936f6c123482d0c74290b746f725568fcaaaf496114a12993d40",
-    "diagrams/VP09-contract-ModelReloadCallsProtocol.svg": "10252a1f952ab0723894f5f05077397101d65fb568fe9dc61c8041d2438dd96c",
+    "diagrams/VP09-contract-ModelReloadCallsProtocol.svg": "7da32fdb43b94ac153aa3e343ed66b1d1583d44d17cd5f7c49fc9992da549639",
     "diagrams/VP09-contract-NativeBuildContract.mmd": "9253fdde5ec7e14337d73a2a9e8ef024456373b2492291872e645c7d8007b1a7",
-    "diagrams/VP09-contract-NativeBuildContract.svg": "1eda42e1b58ba87455082561d29a60cf5cf8b8e76dca141c95193f6e5f40c6ce",
+    "diagrams/VP09-contract-NativeBuildContract.svg": "3c560d08adf2ba2b4b71a262662ca499c529e86dd534468acfe506f60c18f26e",
     "diagrams/VP09-contract-NativeUiActionsProtocol.mmd": "b1ed61e9f827f76a3715ff7ac2abec4951ca6b3b9be9932189e956373f45ff49",
-    "diagrams/VP09-contract-NativeUiActionsProtocol.svg": "522d016271c490e270426426bb4c93cdd66c3fa0821536180d2c75d4d42307ea",
+    "diagrams/VP09-contract-NativeUiActionsProtocol.svg": "0b7b4cefbdc34684af43cf79d12e143d00ee4159e310b226aa2dbfea19baa4bf",
     "diagrams/VP09-contract-NormalizedModelContract.mmd": "c17771b95db28c25853fdcc1957713967da40444676564d8b71357ba90064daf",
-    "diagrams/VP09-contract-NormalizedModelContract.svg": "aaaeb2eb40ed4a6dafe6f28425916ae23374e609bae4df8b117953e5646fb3da",
+    "diagrams/VP09-contract-NormalizedModelContract.svg": "9307d5318fd1a317e2ed3baf123d557a5b6375f6fc7d6e139f626da472cf88d1",
     "diagrams/VP09-contract-PreparedFrameContract.mmd": "ca2f87e90c906da2428dfcb832290c8865b83b1a8697ff4e4dc1a1d8379eb3d9",
-    "diagrams/VP09-contract-PreparedFrameContract.svg": "d92d89898f1503a77eadb68e4f5e2b473823a5de6adba0d990b88df5c164400e",
+    "diagrams/VP09-contract-PreparedFrameContract.svg": "cc56a21b392f1546423c1915ca35d957398cbf03dcef65ec4a65fa1b8d861e7a",
     "diagrams/VP09-contract-PresentationOutcome.mmd": "c9197aef862eac24be5750d794048b70af49f70bf32df5247f8d798347621fbe",
-    "diagrams/VP09-contract-PresentationOutcome.svg": "fa79437030fc46a57a9564f69456c5365e9b2f144cfa84b75dab92e8e592daea",
+    "diagrams/VP09-contract-PresentationOutcome.svg": "639c9d6ef39f4d12f200046201d973bb543e8a0f3e2dd8b3613c91062d7c4ffd",
     "diagrams/VP09-contract-ReloadArguments.mmd": "1d6e01b6455a236945f359a7d654729a80a61cc695af8a1f2d99ab1a62fbbbdb",
-    "diagrams/VP09-contract-ReloadArguments.svg": "9703ade9357800a66f921cccabf32f13159bbbd702d2bbb851af21dcbcfde20a",
+    "diagrams/VP09-contract-ReloadArguments.svg": "c17f4a3c94e8c2c1a7e80ea3d19ca732e21a256da972243a6e1dbec706e3e397",
     "diagrams/VP09-contract-ReloadOutcome.mmd": "f5e2634a4dadd98cac3f729fa31dfd6bec45d5a62e5890a789f5ac0a93456a93",
-    "diagrams/VP09-contract-ReloadOutcome.svg": "962c34e6c5b05755a977240d8619531d692725eab9e1c81e7ca900c2548bbae1",
+    "diagrams/VP09-contract-ReloadOutcome.svg": "4dd6b780398a90dbfc712e59ff8e9971a46b4dbafa0b0b1d0cf3d2706a62821d",
     "diagrams/VP09-contract-SdlActionCallsProtocol.mmd": "c748ae80e29f47cebea65ca948b8a1b5cbdea31b0d766a1271126c415ddee2d4",
-    "diagrams/VP09-contract-SdlActionCallsProtocol.svg": "c975bf125ce5aa1ce2dbe4d48d16eafd0b3bdc091481e9f58e989519900819f0",
+    "diagrams/VP09-contract-SdlActionCallsProtocol.svg": "6f81e68b0e74b578fe498be8cafbe52e3605c6dc622fa5fdac2993976c99fc46",
     "diagrams/VP09-contract-SdlCompilationCallsProtocol.mmd": "3ea676d297f42c6b38b6a59f6edda90dcad0a049ba6862e24a9c3f8ecd452ceb",
-    "diagrams/VP09-contract-SdlCompilationCallsProtocol.svg": "10e62e3723e47bd8e2f4c01d391ec7c1f139dda9f3792a2c2978f298d32da3fe",
+    "diagrams/VP09-contract-SdlCompilationCallsProtocol.svg": "a8d928d6c361e5d91aa66ef1c10bc6930a5f3a540893f939f514066e010de4c9",
     "diagrams/VP09-contract-SvgDocumentContract.mmd": "7b2c6bba2bd660b7cbe8f4cebe38dca5e19796ab97ccc16171a2faa7b0175429",
-    "diagrams/VP09-contract-SvgDocumentContract.svg": "cdbda8cc2ba6486778cd8097931b85ebf5d7fc887df7f999a0a89ccf9cbcc822",
+    "diagrams/VP09-contract-SvgDocumentContract.svg": "f548c82e699b03107fd03a477100df03a57fd1036eacb2965d2f6a20c86fd1e6",
     "diagrams/VP09-contract-SvgExportCallsProtocol.mmd": "5223c4fed77df7bb192e923226d0cbc9ee01b136d0374ea6f71f345dc2229978",
-    "diagrams/VP09-contract-SvgExportCallsProtocol.svg": "ae11e5078b6b0745202a873f6b764900a24c56a1670a4caf72897e01e39d87b4",
+    "diagrams/VP09-contract-SvgExportCallsProtocol.svg": "67a54d22448701433dd9c59de300c67fbc88d7d585b446fbd595e3b2979b1858",
     "diagrams/VP09-contract-TokenArtifactContract.mmd": "a66e84821a32993c39b9076cf5392a8676f60d29981798e3f01c870b7b3852b2",
-    "diagrams/VP09-contract-TokenArtifactContract.svg": "3e29cfa15eb76f31a3196cb418a43dfdfe4b16743445649246ad466ac24e17a5",
+    "diagrams/VP09-contract-TokenArtifactContract.svg": "be647052827970e1e3a811524e21febead462fa94ce4e1717453ab510c5c95da",
     "diagrams/VP09-contract-UiAstCallsProtocol.mmd": "4342c358a0c2a15d82cb83a96279a9f34c983f40c82964bf15ffe967d09af725",
-    "diagrams/VP09-contract-UiAstCallsProtocol.svg": "21592f623255e10e45bc6c79e34091092da7dba324d2316b7f6946cda06c9d5c",
+    "diagrams/VP09-contract-UiAstCallsProtocol.svg": "fec01907c74a5053e6c591266cdacb0d9ad0562936362808ae5463b6e8f0beef",
     "diagrams/VP09-contract-UiCompilationCallsProtocol.mmd": "120d8a858ca74a2147e22de3cc9df7c33b85dcabd84b510872a4ce251b3989c0",
-    "diagrams/VP09-contract-UiCompilationCallsProtocol.svg": "1ba51af3fde7f5e387c1c26fd412f079cee4a9a41631a10712589d1918fc354f",
+    "diagrams/VP09-contract-UiCompilationCallsProtocol.svg": "afddff62e637d67843e217bfe0465e161c92bb6ec5796ffb9126a3b79b027fd0",
     "diagrams/VP09-contract-UiDomainActionsProtocol.mmd": "86e8392fdeee8be1b0521767d5786ea8fd9ada6c18189548da93ed3937ba4479",
-    "diagrams/VP09-contract-UiDomainActionsProtocol.svg": "e6db6c699d362d9f5d1b9aae772152ec43df3ef3378bf029afbbcb1ddb5bd23b",
+    "diagrams/VP09-contract-UiDomainActionsProtocol.svg": "ad79827b5396463468186b8e834a4a5ad84d518b66a00db29e032ad9d73a28ba",
     "diagrams/VP09-contract-UiGenerationContract.mmd": "ce219b91da2eabc1308a1633f4814bf7703f7fc007b0aadd3d1fb8493a2d1c5f",
-    "diagrams/VP09-contract-UiGenerationContract.svg": "7ba38206864bffa3209c9433438edb68efb84016a20fb043b10991c9b6d1e924",
+    "diagrams/VP09-contract-UiGenerationContract.svg": "d350dbac2023ff41d16138487ac3ae12662e5c32b70c6413f86442e6165d408e",
     "diagrams/VP09-contract-UiGenerationEventsProtocol.mmd": "4b6ccc64942f4104e80aaab278a11d4531cf3d5b1ab02467ed10cdc8c88bb9ad",
-    "diagrams/VP09-contract-UiGenerationEventsProtocol.svg": "f8ac1ae3ed934da3f8f37c13908eb17c1a938ec078d21f53c63a1fa8c9225c7e",
+    "diagrams/VP09-contract-UiGenerationEventsProtocol.svg": "ebe4da5edd32823fd4e8668b44132117b906072aa0091d8efaa67a18c6a7770e",
     "diagrams/VP09-contract-UiNormalizationCallsProtocol.mmd": "addc31a3bfea880e2bdbf17be62966ac23c1b3005e5b1d0e6acaa4d9e65957e3",
-    "diagrams/VP09-contract-UiNormalizationCallsProtocol.svg": "2c0f8a38cb10249b8285662ff74745498b9c4ea13bef525c737a5eac8737b865",
+    "diagrams/VP09-contract-UiNormalizationCallsProtocol.svg": "80d2530415ce9bc50c64e59257a9325fade9a08947371fd45384b662efa71b96",
     "diagrams/VP09-contract-UiSessionRecord.mmd": "4f8292a8761c31d17da11b8d390005bcd6d0b1620b117626b45433aef07b176e",
-    "diagrams/VP09-contract-UiSessionRecord.svg": "9082702ef66a5c69f7cd85c93f934b3448c31b42dad5ac48073b8f2764f9be5f",
+    "diagrams/VP09-contract-UiSessionRecord.svg": "4d040b34d31a1daf0e31908be290f1c3d193db6ed4233f8a29f30833ad636f04",
     "diagrams/VP09-contract-UiTokenizationCallsProtocol.mmd": "79340d376afecf836e583a4399a1855006f2d3e5122b4b2e9fe082578d0a4ba3",
-    "diagrams/VP09-contract-UiTokenizationCallsProtocol.svg": "15349ca7cdda0803bcaa64fdd77c34c92324b672cd20d8a4ad9ac1a2d2c5e726",
+    "diagrams/VP09-contract-UiTokenizationCallsProtocol.svg": "f0bed770080343f2ac311f8f408a9f003e79f4adcaf881cb8623bf92b5a488b2",
     "diagrams/VP09-contract-UiValidationCallsProtocol.mmd": "d46ce60d919417978b2225802f08d2c66a407d241cab9fa51b0285faf05b61cd",
-    "diagrams/VP09-contract-UiValidationCallsProtocol.svg": "4732ec660b15e63865daca036600a779638aa592f594c463760633f812d369ae",
+    "diagrams/VP09-contract-UiValidationCallsProtocol.svg": "2a9800f509b13ea948d2efa05a7b44c1d79ff84aa012a2b2747aa0dbf945f150",
     "diagrams/VP09-contract-ValidationOutcomeContract.mmd": "3845aa9893a57846bb9a6af5943b6c69882d0f7c38a3a0c7af31a9d3323fd453",
-    "diagrams/VP09-contract-ValidationOutcomeContract.svg": "96f9dcbc5787f80a04a909470e191d7c91c8d1c65a8c874f18e430c2db91bb91",
+    "diagrams/VP09-contract-ValidationOutcomeContract.svg": "e8b79e8e9a44ad04907b2c34720226c72081de3f2706172dde536cf87bb68b40",
     "diagrams/VP09-contract-ViewBundleContract.mmd": "55383f527a5c7a1cb29436ff90d852838957e1d1735f470240ce5056acf72cba",
-    "diagrams/VP09-contract-ViewBundleContract.svg": "4c5caa6a8d91884a5780d8b66e3a2fde5d9c043d065782c6efefc4aedcd29266",
+    "diagrams/VP09-contract-ViewBundleContract.svg": "127d945f8663f42a1da943c7ffa8092908041d07592c85726b6e1c0ba1f59675",
     "diagrams/VP09-contract-ViewDisplayCallsProtocol.mmd": "d72b03c89ffa44b5243d5a4f6eaf21a37689016d44b2e0b2eec587131583553b",
-    "diagrams/VP09-contract-ViewDisplayCallsProtocol.svg": "b3827a220d0139f40f9db7d8f2a526072c744410716df0707002507604ebce80",
+    "diagrams/VP09-contract-ViewDisplayCallsProtocol.svg": "01ac696a382406671515418f33455fb8403c2e8335d019c7399c213bff360c95",
     "diagrams/VP09-contract-ViewFailureContract.mmd": "2317875f62f65186176d9325493f12650c2c8bd87e42d9037fab12faff55aff6",
-    "diagrams/VP09-contract-ViewFailureContract.svg": "0068a79e28343ec5eed38a33d35a9dbbc6ff8c73745ab810d978cddc299e1b2c",
+    "diagrams/VP09-contract-ViewFailureContract.svg": "2fa70f1d72be91c238bc08691807dcbbdefb27fbf4a7730fbfaa2e4b78cae5dc",
     "diagrams/VP09-contract-ViewLaunchCallsProtocol.mmd": "1adf20d6e6ac292dfecf3b2801b58b3650f3a258c8f9f4f84ae44dbca3c9fae9",
-    "diagrams/VP09-contract-ViewLaunchCallsProtocol.svg": "9134fc8db56daef109dfdd47ca584cd710d118e441c7dc16d10d64a72830e3de",
+    "diagrams/VP09-contract-ViewLaunchCallsProtocol.svg": "36e98780f5c60d9fcf76b201a81c09bafcf65b9c5e3eea86d3de36be4acfd41c",
     "diagrams/VP09-contract-ViewNavigationCallsProtocol.mmd": "1422b678b17d98db0af7f00f9847eb13a10de8ecd9309994a41718f568d65f21",
-    "diagrams/VP09-contract-ViewNavigationCallsProtocol.svg": "53cee8b43866e78ac30e3596026757a34fb77c77d2e19946b98de924a282da29",
+    "diagrams/VP09-contract-ViewNavigationCallsProtocol.svg": "0420deeff207683976da5e93c93f1b398e38ae006885dd9b4c47acb33a6dfeab",
     "diagrams/VP09-contract-ViewOpenContract.mmd": "3ac4dcdbc0ef087ff5bd41d14bd82df7e473d688c3dc6ef96589e78bb79cadc4",
-    "diagrams/VP09-contract-ViewOpenContract.svg": "970343100eacb2b95310cdfedc8e9805caca2590fff904086b638df998f7af3a",
+    "diagrams/VP09-contract-ViewOpenContract.svg": "164689a3d35d6c931ca3f5e6f1b6196bd3727faae28eae67f6357ba97b658e7b",
     "diagrams/VP09-contract-ViewOpenedContract.mmd": "15569c95472ab13f87aef693861a0dbeea05a76ef4a0acd1a64808f6fc844eed",
-    "diagrams/VP09-contract-ViewOpenedContract.svg": "77bd2056df59270409f7ed7f549ace1f7278b10f41e7df59570f8dc34d6184b0",
+    "diagrams/VP09-contract-ViewOpenedContract.svg": "cdab182ce6a5b65fd5fc5a6bde473d0050eadd94d85d4465c2b542e791562767",
     "diagrams/VP09-contract-ViewProjectionCallsProtocol.mmd": "123a8a2b3c07155fe193d30bcbd885ac04620680f9ae8a41d21e115270541bb6",
-    "diagrams/VP09-contract-ViewProjectionCallsProtocol.svg": "e4b90e4abc0a14fc18f2d89cf38e1389f923a02d885bf2ab0b00ba908c85ef4e",
+    "diagrams/VP09-contract-ViewProjectionCallsProtocol.svg": "92adbc1531e33b995a155de129112617f658f70b2a8525a1fa7a309a23b1b35c",
     "diagrams/VP09-contract-ViewPublicationCallsProtocol.mmd": "980ff217d539994fc2882bd0dc434e1e2e12b128bba645cd9ac46ff25120e7b4",
-    "diagrams/VP09-contract-ViewPublicationCallsProtocol.svg": "3acbd6157d69d51c5f3b8ee14b6d2738f78ea7f59d832b52bfeb521f8cadae55",
+    "diagrams/VP09-contract-ViewPublicationCallsProtocol.svg": "2be7b5422ad4655157dd6169c08fab6f1a95cbd4fb47378ebc947f7cd83289ae",
     "diagrams/VP09-contract-ViewReferenceContract.mmd": "973f2ea1fb12ce517418c12ffd065dbc267436e0629bd38752013b2e70e91fcb",
-    "diagrams/VP09-contract-ViewReferenceContract.svg": "dbfc06194f6801ec409901c7eff7ef44e64a5606712b9c8a18a8cf1591311f8a",
+    "diagrams/VP09-contract-ViewReferenceContract.svg": "2cdd81a03d7aef1ecd9e7f080cc691297c37bfe579a54d2daa17226995797929",
     "diagrams/VP09-contract-ViewSelectionContract.mmd": "3576faf007e10611d7aabb8f6ddc214b7c55fc3e69e9e02af47a6d7af02f087f",
-    "diagrams/VP09-contract-ViewSelectionContract.svg": "04619976874355053d28cc8f21096a35db9e00f148ed216195cc093cedc40bc7",
+    "diagrams/VP09-contract-ViewSelectionContract.svg": "19ebd2ad0b5a7a207947f64052553df70c0d73400c357125e81870c5196128c4",
     "diagrams/VP09-data-DesignSourceDocuments.mmd": "5bb01485da2df8cc38ec617a2aa8b6c36ae246493ff308c9db1cb25c0c0ca19d",
-    "diagrams/VP09-data-DesignSourceDocuments.svg": "1f5b69da8d708274b6670fd56cd21d0439047aa92a092267e1da4bb8c2c7102f",
+    "diagrams/VP09-data-DesignSourceDocuments.svg": "c43de341170d513fedeb7e233c1d27342a6d5c30049f1c04e1429fd51d7c9cde",
     "diagrams/VP09-data-UiSessionState.mmd": "3003994e82430efc6cdb22869377426138c4cede6691480e1a954a84253c14da",
-    "diagrams/VP09-data-UiSessionState.svg": "dd35de174ecace7ae3ce84cdcc7f33c93b819c7e9918297ea6bc330e1fe79969",
+    "diagrams/VP09-data-UiSessionState.svg": "2ff0c6c35cbf8468bce12210dfc0ced2dcf2fbf782bc78a73bc39054b5081702",
     "diagrams/VP10-UiGenerationWire.mmd": "9dfbe3ab1e9138ee2d4e3742d5c43c16f0770622e298c8fc0a2b2c2f5cd361d8",
     "diagrams/VP10-UiGenerationWire.svg": "94d8a2c31550f5b2e0ddc0edb41d6bdd1c7fe51e7610bc35ff355ebf7c1aa073",
-    "implementation.md": "dbf2929a0fc08c828cf727fa3e97f47b95984ffae880ea71b6fd2fe659d49ae5",
-    "index.md": "e372cc879c1a0b5d2cfc484d7be97539e8e47825b7839498036ee4e52d54cc4b",
+    "implementation.md": "494eae6703414b0b48efbf77652badb5523cc67ab11dab6eb6c97a3880b2df6a",
+    "index.md": "3c97291d5875a8d2ca31c36bebe786bc402e391d21ddee60215cffea74ce4055",
     "message-sets.json": "545e085519926ee5723246b197c6ba110012e71b2d91e316776cc915121873b1",
-    "navigator.md": "944fc0e4bca3e2f1df262cf01dda0501e5c55f02366690cd357c70a0f3e3c36a",
-    "viewpoints.md": "4402460c18dfdd9d0ee0d349a19c259a3690b427327dc295307062eafcedddc8",
-    "viewpoints/VP01/VP01-BrowseDesignViews.md": "d16ee2d47d7fcbc4f86c13ae9a74fff156a28063dc9621ecaf988b6df78b6126",
-    "viewpoints/VP01/VP01-BuildNativeProduct.md": "67b87522224f65be60fd89897c2e11b21ab4c1b5719b431a745e4d9da6f344e5",
-    "viewpoints/VP01/VP01-EditRunningPrototype.md": "229c81d70b7a83be6cc6d6c2f64fd945d7267eb88832041db7f26317aa56a767",
-    "viewpoints/VP01/VP01-InspectModels.md": "6b498ae986c51230dddb2749f1da99277ca38decc24562c89d49a8d49f078c71",
-    "viewpoints/VP01/VP01-PrototypeUserInterface.md": "65b56b8de632a2711754fafeb098b663017cff774514cac15418c23679bf69ef",
-    "viewpoints/VP01/VP01-PublishDesignDocumentation.md": "449d4f8e8fe1cd66ca50f302ada22a737968022c063fbdb1ac23812ce899c5c1",
-    "viewpoints/VP01/VP01-TryDomainInteraction.md": "f391e7d74036d6895de76f48b878a697389c2177037e558f2ef4f4efc60a06eb",
-    "viewpoints/VP01/VP01-feature-DesignDocumentation.md": "34377bbf05a65d835c5954b7e65c3df7ae60ca9f8d11949d90aeb4088eeb09c5",
-    "viewpoints/VP01/VP01-feature-InteractiveUiPreview.md": "8265c00cdc99c0cdbffcfcc3190e1fb734fe74ff93a54b78d435225a0fbeb63a",
-    "viewpoints/VP01/VP01-feature-LiveModelReload.md": "c299edef35e7a3e665d2f94510ec205a382454276777af65a0485155e2dfef85",
-    "viewpoints/VP01/VP01-feature-NativeGoAssembly.md": "1c5a7bdefdaea2b92a98594e99beb60e4314bdad57b7e69656ddce510b83b5cc",
-    "viewpoints/VP01/VP01-feature-NavigableDesignDocumentation.md": "3e5afb48e59c9d12c176cd1b8ac34c70b417f9fbfaf73f42fd197d1c1877c99c",
-    "viewpoints/VP01/VP01-feature-StructuralModelInspection.md": "0b864b5391b433b06631fbb4d929203aed03183bb462aca5fc8706e390c9a7fa",
-    "viewpoints/VP01/VP01-feature-TypedDesignInspection.md": "21a8694f12be8543af7dfa416f5137e93780a77e52e6ed6910c404aef30235a0",
-    "viewpoints/VP01/VP01-feature-TypedDomainBinding.md": "01d622530969f3b432ce2ffd94c53b54cecd6742c0b08d0a2201a35e912ed97f",
-    "viewpoints/VP01/index.md": "dffc75e3740a2061fefbc19e7dff690b1d13acd5e3d613181d8d979b62ad5c9d",
-    "viewpoints/VP02/VP02-ContentServices.md": "1188fe9e735fe4530f97dfdf59ce88d28766dcc3fe28db0eca8d6b90c2edba6b",
-    "viewpoints/VP02/VP02-DevelopmentTools.md": "7cd965e4557b2f59e6d0248ad1ba3707b29de85cc4dc1c3eb7d036bdd4556d46",
-    "viewpoints/VP02/VP02-SdlFrontend.md": "fbfcb1addfcf2d6bcd9cc7d432cc2c690267bf970ecb5902712e8814ed6272e4",
-    "viewpoints/VP02/VP02-SdlLibrary.md": "eb54fb254d064c380577ae1395ad8932d9bcb00cedb37dab272b986698772ff6",
-    "viewpoints/VP02/VP02-SdlRuntime.md": "e01ff15263ee284fa4776981b48bd693ea0ba02d701b1d25786c2bf553140b60",
-    "viewpoints/VP02/VP02-SduiFrontend.md": "d6932cc0d6c011f4e2d10c48ddc548b666ba2a21f0cce222e1baf46f9a2f42a3",
-    "viewpoints/VP02/VP02-SduiLibrary.md": "bea46170d4b7d2744e1919011a2aa3adbe9a0998cfcf88f422ac8a739fa54c35",
-    "viewpoints/VP02/VP02-SduiRuntime.md": "1d4fd614cc744f793ea450110eb005f0fd3d496755a2df457ef6a5d3ebad66de",
-    "viewpoints/VP02/VP02-ViewServiceHost.md": "cf75421e1f06d6cb7570227513a0e0a6d8abce9bfb3522c5621f93710278afa5",
-    "viewpoints/VP02/VP02-roots.md": "f11f5eaa81aac27bb8e0ad79998ac704c5fce3a87a3b85e46605907c9e9037e5",
-    "viewpoints/VP02/index.md": "ca0715650b080b28a9de84ab1fb69202132bc63f9ad8c575fdb209b15ef7f9e1",
-    "viewpoints/VP03/VP03-BoundInteraction-offers.md": "dfdd462d042b61d96b24ac236b45991127a9cb686bf318d55c26fb9e036356d6",
-    "viewpoints/VP03/VP03-BoundInteraction.md": "a885a95f65156be90fb9d2d85003b27b6f4f12fb55ba9958ad020571b84dd7dc",
-    "viewpoints/VP03/VP03-DevelopmentReload-offers.md": "eb487da55fb2a10240e084b652f62e4de8c6a689507ac84878b71d6b07a3842d",
-    "viewpoints/VP03/VP03-DevelopmentReload.md": "d9bb1a77b4a4db81a0acc9ee47a743553b3503ccdc8586ca469586a6b77910a1",
-    "viewpoints/VP03/VP03-DomainOperations-offers.md": "42adc273559d76d4c837b453c4e6af2109834be2f93e381d016f91349b4496e0",
-    "viewpoints/VP03/VP03-DomainOperations.md": "64c7a5e98f3fd1b2aad3ef66f5aea6f61cebe3a853d89acbde3f649948d738f4",
-    "viewpoints/VP03/VP03-ExecutableDesign-offers.md": "7c2d01d2b632badb7f3ebdbb163596c4ee4a51ac816d547cccff8c564b452377",
-    "viewpoints/VP03/VP03-ExecutableDesign.md": "ebaf3317bab700f678e08fa9a067a4349245cc029005ce3750774d29b0aad819",
-    "viewpoints/VP03/VP03-InteractiveSession-offers.md": "87e579c8b803e58bb34a1f542045686b2ea94b4448a7b1e357b1d86c050ff59d",
-    "viewpoints/VP03/VP03-InteractiveSession.md": "7253f064e005aff6fd85d2ea0a534bbcf85139c5b0cdc73b7e4966f007a34d21",
-    "viewpoints/VP03/VP03-MeasuredPresentation-offers.md": "76377548c024cadb95bf85f9ea286381e969a9a261f40f51e4d1ed9a89d40f28",
-    "viewpoints/VP03/VP03-MeasuredPresentation.md": "29f5052ca2f61cfedbdfde5909015350e1e6e4715252d6304413cb45825fa739",
-    "viewpoints/VP03/VP03-NativeInteraction-offers.md": "bb3e9f15e800cd1b9f4e60045ced59f45492811968d26ea7c84322b4fd6f962b",
-    "viewpoints/VP03/VP03-NativeInteraction.md": "c19272820bda441850ef4b89112c8e468da50dd9c2a0f4fd5257d2db63bd673b",
-    "viewpoints/VP03/VP03-NativeRealization-offers.md": "bf5cb89fafaf2f533983fc73bd53c14a53c691624aa83afe5d88804bad325ce5",
-    "viewpoints/VP03/VP03-NativeRealization.md": "715f6d803ea0a60e375846179739129581ed133e1a81b49d8c50c17208504a90",
-    "viewpoints/VP03/VP03-RichContent-offers.md": "a728967cbc8ffd2d273d7327a1b175801250afed4a228d8a4d86ce3eb73c8981",
-    "viewpoints/VP03/VP03-RichContent.md": "253cf8bf7e18d06cd41ab9e60d972fb2d41da37bbce4841fb3337663aaa8519b",
-    "viewpoints/VP03/VP03-SdlSourceModel-offers.md": "93023aa6389a739bd9968dc6c72fa27dc91432fda6ac6c46a0836a9f946c49a6",
-    "viewpoints/VP03/VP03-SdlSourceModel.md": "af22811bd80c96f18466d0bccc69362f2a6c32c5cafb2f5d10364a23b9fad7bd",
-    "viewpoints/VP03/VP03-SduiSourceModel-offers.md": "c97e8c0c70e90b467d3e62c3082c07b028d99ba63ce905f5e0e9749759416e54",
-    "viewpoints/VP03/VP03-SduiSourceModel.md": "cea237992859f963eac3fb3c8a556f4b4e03e8dc48cee86e14be26a66e584121",
-    "viewpoints/VP03/VP03-SourceDiagnostics-offers.md": "60ef9a64256e0b01a2744e597a7bf275742fde9ed6445b3fe65b39d96b896826",
-    "viewpoints/VP03/VP03-SourceDiagnostics.md": "168c8c32939543d28a57090edaa5265111e19a35607de6aac86250c29156a624",
-    "viewpoints/VP03/VP03-SourceLoading-offers.md": "64f3dfb5b8abeeb6cb75277a8446acdf71da4bfb577ac10296d6c6d4ae2376f2",
-    "viewpoints/VP03/VP03-SourceLoading.md": "80e807b865c8b408a088bb80c3bc01478cfa3c4d34ee368c7936274e4985b783",
-    "viewpoints/VP03/VP03-StaticDocumentation-offers.md": "9c77e77bbcdde49aede7caf07916a36646f98b4143ee43b49488f7317d6d5214",
-    "viewpoints/VP03/VP03-StaticDocumentation.md": "2b2df6081fab3cd999709ae178ccbf166c1ab8fffd189c01759e898a223eb3a4",
-    "viewpoints/VP03/index.md": "3f9b970ab9bd003c6712cb6e61e5a28fc1482719bc1eed4bf67976b3f5315f42",
-    "viewpoints/VP04/index.md": "419fc22249aa33749c586210c65512d6cd49efdf1e946ade98005d9398efb38d",
-    "viewpoints/VP05/VP05-BoundExecution.md": "635836f986d47a10631fba90b26ceb79b6cb1d56de439a66988769074a87f7a6",
-    "viewpoints/VP05/VP05-BoundLiveEditing.md": "12917f3a68aad547dace84d892ec792369bbbf30db597d5f448ad9451bf1beda",
-    "viewpoints/VP05/VP05-LiveEditing.md": "b933ea4f30e0e1b6d3f07a20042b25ce0997ad61d0637cf9f846a49e3057f1ae",
-    "viewpoints/VP05/VP05-NativeBuild.md": "46f548e4894ce9c1d6fc3efa0f34d9a43c9128b2a3f585069dfb2face55e6f1c",
-    "viewpoints/VP05/VP05-RichDocument.md": "92e4ff5e6c201b7405fb9aa27dfb9641a64f697227f64f0dc0d53fbb767002e6",
-    "viewpoints/VP05/VP05-SourceInspection.md": "457978334252fc6c4dedfc6bc9ff448e78661fc3ee03b4703735069a85886b87",
-    "viewpoints/VP05/VP05-StaticExport.md": "26b936188f97bed5304fdf03bcba62712909f740f73cff736566fc55ad15fd11",
-    "viewpoints/VP05/VP05-UiPreview.md": "b71f8e2ffece94edd48db85155e9b4ab5d754f4b023a1e9fdab6f8c6efdfcb84",
-    "viewpoints/VP05/index.md": "a9c418d76e38d472fcd77e50f7bfad2e87dcfc57c94a79893e4a58e89fcc755e",
-    "viewpoints/VP06/VP06-dependencies.md": "6dc070d528979ba2e151d48fe78f7e6f9eed146004f1d677686b0e069578b7e9",
-    "viewpoints/VP06/VP06-detail-G1FrontendPort.md": "65e3b0aa37a8d784950906949252664c181f64da19a388b8b29a01bcb7cccd6a",
-    "viewpoints/VP06/VP06-detail-G2LayoutAndPresentation.md": "568e3d61769ad84a13e0ab57681351f359ac342ebd96c086ecb1e89b7fee3068",
-    "viewpoints/VP06/VP06-detail-G3UiRuntimeAndReload.md": "f6a5b2a62d5f43181cdf2d5e776eb5452820eff0f40d1df5183c279d2be4752b",
-    "viewpoints/VP06/VP06-detail-G4SdlRuntimeAndBinding.md": "383f623e6b3011f60c33cd2046882be4211d377bf38600e221c8b8121d69cfee",
-    "viewpoints/VP06/VP06-detail-G5NativeGeneration.md": "afeaf0c5e85ce3848627d5f09f0a439dbdf5a01048036ae913ce33c7c790f0d6",
-    "viewpoints/VP06/VP06-detail-G6NavigableDocumentation.md": "9d57677039507c432af03ee979ba7e4dc4fc3fe5a7c802c0be5df877b27e956f",
-    "viewpoints/VP06/VP06-detail-InspectDesignSource.md": "f4be53e2582f437a9ab5684e45a72f5bd33de844d1cd4858ebb49cb97fa4e804",
-    "viewpoints/VP06/VP06-detail-RealizeDesign.md": "6a6da5a4c3c15765c25c8a8b68ed64fd7504b3eb56dff135cf129418ffafb3e7",
-    "viewpoints/VP06/VP06-detail-ReloadDesignSession.md": "cc49a481ae06b4fb7bf75b5c9974c935f65e39da257515c2938d21a5603f6600",
-    "viewpoints/VP06/VP06-detail-RunDesignSession.md": "5ce671606a115286a70a4264ea3139bd457aced051a893be921bd3acf0bf54e4",
-    "viewpoints/VP06/VP06-roots.md": "8d74d41ef79b93916479e2d5c6ee69ed03141dc61652ef8fe1c6bf0aedc37a29",
-    "viewpoints/VP06/VP06-work-G1M1ParserAndAst.md": "1be405530061afda947cf94f4f3285bad3ffe16c3482773b020485508f4941ba",
-    "viewpoints/VP06/VP06-work-G1M2ValidationAndNormalization.md": "3c6a645eb74f18f4e0bd18bc0f69e5f301959e99d4dea86211bc79c3a51cf461",
-    "viewpoints/VP06/VP06-work-G1M3Concept1AndDumps.md": "d1ecb88e5b1b92410f38d4fabe5d182c0a353640720196e819e62d636e01417b",
-    "viewpoints/VP06/VP06-work-G2M1RelativeMeasurement.md": "ad46bf6ebba197e1ecd05e8b1fb221f68b75f3b394aeba28c8e859d3045a7d8f",
-    "viewpoints/VP06/VP06-work-G2M2SharedSvgGeometry.md": "3fd3f10ea180f825becfb848e3a5e21c2c63dff2af0c4d7514dfdacc60b9bb63",
-    "viewpoints/VP06/VP06-work-G2M3FyneInteractions.md": "546c20a6c5693507dc9909c99f5f8628119353ce92f25c0fe1c65b6dc65af2f3",
-    "viewpoints/VP06/VP06-work-G2M4RichContent.md": "b95a244ffc217d58e59dcfeda3df7ae960f4a48e9ed271a4ec46268c4c1aeb50",
-    "viewpoints/VP06/VP06-work-G3M1TypedUiSession.md": "31a0e75321116b8ca4c60a396f62c64a547bba80acfccf2f6bca6e50d8f8fc08",
-    "viewpoints/VP06/VP06-work-G3M2CandidatePublication.md": "82f193fb7d756ec103e3935f22f8189d4f8551feef4a6136401462beb1e8af1c",
-    "viewpoints/VP06/VP06-work-G3M3CompatibleState.md": "b5dc87bb9381f640ff1ca932583c506ad0f1931f39368bcda0c2987517faed81",
-    "viewpoints/VP06/VP06-work-G4M1SdlFrontend.md": "2d57b053ccb7b85cce4ab53a46b2684a74af724b728c571defb5de019a5556e3",
-    "viewpoints/VP06/VP06-work-G4M2TypedExecution.md": "25f9996bc6d25c6afd4315f0938cb1ebf0ed75158e94618ce22bb25ad6692865",
-    "viewpoints/VP06/VP06-work-G4M3UiDomainBinding.md": "73632621e0c61b5d25d33c729cec3c59912b6ddde7d18dc4b66e0d587ce4102e",
-    "viewpoints/VP06/VP06-work-G4M4DomainReload.md": "905d1e0feee64c5b54382a415fca6cbf246f86a26892c3a7e3280652df067c55",
-    "viewpoints/VP06/VP06-work-G5M1GeneratedGo.md": "ddfdd93eb22aa33068601e84a9962b57468570ce76d9b6997c46d6d1fedc5a61",
-    "viewpoints/VP06/VP06-work-G5M2BehaviorParity.md": "a7c121e82ea78eac084c139ac3f9fb14427d7e67a335a29f8d788795d039ed6c",
-    "viewpoints/VP06/VP06-work-G5M3DocumentationExport.md": "1d852041ff54449b93d56e6ea29daf5f26ca4f769027524d56e8392589310b68",
-    "viewpoints/VP06/VP06-work-G5M4RetirePython.md": "1d5bcecf49da856b3a101d63a405dfa426399cd6a7c21ff9254b36276608d9d8",
-    "viewpoints/VP06/VP06-work-G6M1StaticNavigation.md": "1492db1683639376eb78560ef127772cb306d7df932b26405cfb80ef29d13ab2",
-    "viewpoints/VP06/VP06-work-G6M2OnDemandViews.md": "c7e590c286618b0d9a945d2dbf8c454831f198397bbd987d370a81c72237b504",
-    "viewpoints/VP06/VP06-work-G6M3XfmdNavigation.md": "f5fb44f5c0ba790c4d676874a9af48ce75fa6d90319708abc8559428f3f04c59",
-    "viewpoints/VP06/VP06-work-G6M4SessionPublication.md": "54b63d29f4f215f8d3cb183df51e2fac351d4bb1239ab546fb83ab426bab07f9",
-    "viewpoints/VP06/VP06-work-G6M5SemanticNotation.md": "02b6f0952b477c2c4bb703c10b8091de77be9f8e214bb449dc7c6d78588d4dc3",
-    "viewpoints/VP06/VP06-work-G6M6ClassViews.md": "67b4e57ab8f073f08c1dde6f52fd1faad932598279b02a6315232d25004af129",
-    "viewpoints/VP06/index.md": "422220b4fe5ee125ecc938f176c528e99c9dc64d48780ba822b15309db7212c6",
-    "viewpoints/VP07/VP07-DesignDocumentation-DocumentBrowsing.md": "b89bf0cbc8ca383b5190fb4df154a0c4721ba6adea1aadf4ab8bf7771add7c06",
-    "viewpoints/VP07/VP07-DesignDocumentation-SourceInspection.md": "23b414449fb29646bc3e094d037250f714560b4ef5415c2a63def3052ead0445",
-    "viewpoints/VP07/VP07-DesignDocumentation-StaticExport.md": "a83c186b40bf9c112cddbd0385743261e20193aa8c900d08b29ef3a1a13829d0",
-    "viewpoints/VP07/VP07-InteractiveUiPreview-UiPreview.md": "ff55c5b9d737e31bce9b08fa80062356fc6aeaa353c0e8e1bef8547c4def4e6d",
-    "viewpoints/VP07/VP07-LiveModelReload-LiveEditing.md": "b7e97c54a27b2b9141edb778d6dee6562bb06650f8e750447d265dc1b1028ce1",
-    "viewpoints/VP07/VP07-LiveModelReload-SourceInspection.md": "d31884f4308d7bd35331d005ec5fb8ce6b734e9bde49ac7bff7783400ee16a2e",
-    "viewpoints/VP07/VP07-NativeGoAssembly-NativeBuild.md": "4d251b8f06dba08a0a940f9cde0ce82a2bb243fb3ff35b529da39415637b7046",
-    "viewpoints/VP07/VP07-NavigableDesignDocumentation-DocumentBrowsing.md": "c42c544a632155382b6c396330a3a595c7bd6758807a44b0c6187c3d127b7e06",
-    "viewpoints/VP07/VP07-StructuralModelInspection-LiveEditing.md": "ca47ee950c9da845291c06003cf785c040f0c5fca54a7c8e7b1e8eab282cd797",
-    "viewpoints/VP07/VP07-StructuralModelInspection-SourceInspection.md": "855564c78d587a30bea483278d63f73a6519c77af776b85fae35940292494e3e",
-    "viewpoints/VP07/VP07-TypedDesignInspection-DocumentBrowsing.md": "09bc58df81fe33330d977ef5b0c866ee55ec49ab8f66c1bf3fa5fbbb65144896",
-    "viewpoints/VP07/VP07-TypedDomainBinding-BoundExecution.md": "1bbd5e395fac6fc3a300e06a63dfdfe989a3b3bfd7e49fa7fbb6dc1fa3abfd3a",
-    "viewpoints/VP07/index.md": "776d5e5b8dff60121d3db2e6a514f9e73a0252abc52fb97c162dc42a0502d7d3",
-    "viewpoints/VP08/VP08-BoundActionAccepted.md": "1fece6cad4c6ce231020a0a865e5eebc18be313e66fd58e83fcf7020e24e29e1",
-    "viewpoints/VP08/VP08-BoundActionRejected.md": "d47eda770001cbeaf64226765b43b672e95333707b4e1428274a9c7cd79b7ea1",
-    "viewpoints/VP08/VP08-InteractiveFramePrepared.md": "ccf2f87c97018d00c75b8358d129c971f0f74c5eeed657ec4476d928832f68e0",
-    "viewpoints/VP08/VP08-InvalidViewSelectionRejected.md": "bb5017d263b9e8752b54f2ee2f650d2a0adef2b34293983f71701de7eb76d811",
-    "viewpoints/VP08/VP08-NativeProgramBuilt.md": "7b6da4f4c2487142993b76e9bf2db4b135df6a25efb551f0fa43d0780a8f365d",
-    "viewpoints/VP08/VP08-SdlModelReloadAccepted.md": "0d9d64c622caba3d879df684ecbf512cbad335475821d3067a9208405980be73",
-    "viewpoints/VP08/VP08-SelectedViewOpened.md": "187f5a1dd3da15625f8fd955e946251fc4de0c0fd22164f5b3a2aab5ef9956c5",
-    "viewpoints/VP08/VP08-StaticFrameExported.md": "eaf166a692ed4142827851cecd1ea9b7fb57f9a0e5ab0ad0c2ccd007dbc105ee",
-    "viewpoints/VP08/VP08-UiCompilationAccepted.md": "e4150a1f2ea363c1a1130e66e66b564a9e8795230c38c05dd32d324171706655",
-    "viewpoints/VP08/VP08-UiModelReloadAccepted.md": "6a8dc96397aed3b7cf08aa61ccdd4d0482aa9914452585d9c378334733ade84e",
-    "viewpoints/VP08/VP08-UiModelReloadRejected.md": "c9f9b27478dceb50d2fedc281c7be5ad0269523400510df0af143c9c79a00b27",
-    "viewpoints/VP08/VP08-UnboundLocalAction.md": "6cd5047e50212ea6ba99fc35ab4b4fc2ae23549a6e0b5ac5bd42bdf8a8cff84e",
-    "viewpoints/VP08/VP08-ViewProjectionFailed.md": "5257768a3fe106f32536f0a7397c0423c3646f8ac8030af90e4aa2939aa831fb",
-    "viewpoints/VP08/index.md": "3da1f99bf2eb462d6554275f44c41c93968b4be3514b6acb1f04270e06542f9d",
-    "viewpoints/VP09/VP09-contract-ActionArguments.md": "f41fd97e88250269681b22a96e0e8071c3f43b6831b3b1b1f58f6d5e265415f5",
-    "viewpoints/VP09/VP09-contract-ActionOutcome.md": "94a435c6042c4d164d758b0ff1624d4710bc9019c5ac2f48b4ee43f670f3d1bb",
-    "viewpoints/VP09/VP09-contract-AstArtifactContract.md": "bc809256a7e1884413a0c11139f81feecc117fc308b5522799b3f482eeae7d63",
-    "viewpoints/VP09/VP09-contract-DesignSourceRecord.md": "0fe35610a55de032bc41f5792c7f6cb49e097699072dbc54b5df2401c377ebe3",
-    "viewpoints/VP09/VP09-contract-FramePresentationCallsProtocol.md": "c69d0b095c0d862e829344c386957006bd034b24dc88cb915a19c03810058e03",
-    "viewpoints/VP09/VP09-contract-GeneratedGoContract.md": "bc6dc41d5e475aac83eb8a55c290a15cb7aeabb2b302b9925751e746bd28c975",
-    "viewpoints/VP09/VP09-contract-GoBuildCallsProtocol.md": "ebce5e6a3cb76e4e6a04dd5b290e0f08e95b95719054650ac6ac8f91a32c035f",
-    "viewpoints/VP09/VP09-contract-GoDomainCallsProtocol.md": "f3fd1c53538bfaaa9f07b1b1e4d5d7661ab38c1d4f41eacb7f7000307b542aee",
-    "viewpoints/VP09/VP09-contract-GoGenerationCallsProtocol.md": "c8cd755060b593c0ef259827d2b470037ba6d576ff0685104a206c29fe6bc034",
-    "viewpoints/VP09/VP09-contract-LayoutArguments.md": "808b70bb360cacac0829549c1aeb4fdf05377c59eadf165d6c71aabfeaa6fc66",
-    "viewpoints/VP09/VP09-contract-LayoutCallsProtocol.md": "07196436067149e84ff355649a8bcf3e37a362c769957258688c7bfd8593612f",
-    "viewpoints/VP09/VP09-contract-ModelReloadCallsProtocol.md": "9196d513004bea0d12293518bbae9d1fb80d093f6209ff0ae07da7bd0c977812",
-    "viewpoints/VP09/VP09-contract-NativeBuildContract.md": "a389e1585885496c60e921cafef2719b88d32565120c426bf3e6fbe89f17d456",
-    "viewpoints/VP09/VP09-contract-NativeUiActionsProtocol.md": "047047e15572c7cb16227b8b5a4fdacf8b9521e1d2e82f375154f67634d8b60e",
-    "viewpoints/VP09/VP09-contract-NormalizedModelContract.md": "997aee88bd6ae61f1f448a4f509e94cdc3279b79cd69a173713ea9e49f60adad",
-    "viewpoints/VP09/VP09-contract-PreparedFrameContract.md": "a6d8db56ebd39b5725703136bf8790835e8ff68590a24287d5ca7f1c230bf917",
-    "viewpoints/VP09/VP09-contract-PresentationOutcome.md": "5620f6dc2bb2c79e70cafabd6186ad2932264209cf6891bdd0069c8db22e4e61",
-    "viewpoints/VP09/VP09-contract-ReloadArguments.md": "5def92b464e381dc017ebc56c51e02ebb25c0c01a22822773792bcbaf91f444d",
-    "viewpoints/VP09/VP09-contract-ReloadOutcome.md": "e265c5a6f95f04bf83f0fbbe8a08c2539e0e3d91a16e706fa0d6af48bcbb5698",
-    "viewpoints/VP09/VP09-contract-SdlActionCallsProtocol.md": "c86b973152accf0f9f825fe0813a9c9401a997f2b3bff47eef617a2034d7d966",
-    "viewpoints/VP09/VP09-contract-SdlCompilationCallsProtocol.md": "6a2637ec10f99f045dd7d302881bdde1b42ff4fdd4108415568e2de53c5db042",
-    "viewpoints/VP09/VP09-contract-SvgDocumentContract.md": "74659b2dc2ffd5f865eed1ef14b8e712e92d64509ead94dcae1bd1a35cb0f31d",
-    "viewpoints/VP09/VP09-contract-SvgExportCallsProtocol.md": "f1d233b6ee255655802dc0a23e0cf99f466a953569f0dcf9f6c4c3cd17eb960e",
-    "viewpoints/VP09/VP09-contract-TokenArtifactContract.md": "fadc00a75feeefaa62bf3d472f7b2b53c8617edab938a443ed9d9d71bb7e01ac",
-    "viewpoints/VP09/VP09-contract-UiAstCallsProtocol.md": "21485544284e928f64475bf4ad192579dfa39c4ca416fe1f0ad40a7cb8692e3e",
-    "viewpoints/VP09/VP09-contract-UiCompilationCallsProtocol.md": "bfcce86368e15dbffff6479ccd5fa8625ef2f308715fdc19389ebacd1329f7ce",
-    "viewpoints/VP09/VP09-contract-UiDomainActionsProtocol.md": "e4a91a78abfe17e7854c0bd4f729f1d59b3d7360143d96bd5dc20652d1986f59",
-    "viewpoints/VP09/VP09-contract-UiGenerationContract.md": "e987261c1f121a85819764167673f49731e3a7bad91356e54839a75777096fb3",
-    "viewpoints/VP09/VP09-contract-UiGenerationEventsProtocol.md": "96fb788c3e9f2aa53bb70ca54b324e239cb110b3bbac6f626f2c92926c2f1b9a",
-    "viewpoints/VP09/VP09-contract-UiNormalizationCallsProtocol.md": "1d38cb060576bd9aaa9fc4c92269689920eb90876b6b428d26ce8ba4362476b1",
-    "viewpoints/VP09/VP09-contract-UiSessionRecord.md": "174e245f84d1d73b308268d6332ce07e6baf1855442c42415d62e20d877591e6",
-    "viewpoints/VP09/VP09-contract-UiTokenizationCallsProtocol.md": "4b5e6558d2640287dbd6eb5957be9a5ad3a869bbb037029ad22533469d8195ff",
-    "viewpoints/VP09/VP09-contract-UiValidationCallsProtocol.md": "b53e02fe557d3ec94a64dbb95731fae2a2362038faca89182613c8fa782eaae6",
-    "viewpoints/VP09/VP09-contract-ValidationOutcomeContract.md": "86249e75778117d53dcb325175c370aa556c193ce9f8b42e44fe7224d5ca49be",
-    "viewpoints/VP09/VP09-contract-ViewBundleContract.md": "55c8db734b62e246a9740958a2b134e10ddaeaf06e754de2a26e5889c5f8e667",
-    "viewpoints/VP09/VP09-contract-ViewDisplayCallsProtocol.md": "3b1b93a4f2c44fc53e1f0de0e32cc457c2e1ee74129139994720091dd3eafec5",
-    "viewpoints/VP09/VP09-contract-ViewFailureContract.md": "9c9fc81bd07d8c0f01dfb6c1e4867f44316440663f9418c924eb8acdf117930c",
-    "viewpoints/VP09/VP09-contract-ViewLaunchCallsProtocol.md": "373c0e07eb001de31101ba4477be5daf1f337c63e1704cc9b97400ba9afb5f32",
-    "viewpoints/VP09/VP09-contract-ViewNavigationCallsProtocol.md": "65ef7f753e9f4c4d5af5cb21090821fcc943cd85a3aa2f293c771e7e565b7e9c",
-    "viewpoints/VP09/VP09-contract-ViewOpenContract.md": "e8d07e11ed906372ae257e4e334fcd5a635b79c747fa11eb249c45fb8936d7ec",
-    "viewpoints/VP09/VP09-contract-ViewOpenedContract.md": "b08f9c9ef8b2134d8cd324bd3c8cc1226e512f62bb759fcad97acedaa39ca821",
-    "viewpoints/VP09/VP09-contract-ViewProjectionCallsProtocol.md": "d79dd5e68009130f5a17c3e37e641b4c0240aec47078eb2a5e7b0ba692597932",
-    "viewpoints/VP09/VP09-contract-ViewPublicationCallsProtocol.md": "da9ac32041ac30392c3084faddb2b4ff544ab494da2c8a3900e49520df040ce4",
-    "viewpoints/VP09/VP09-contract-ViewReferenceContract.md": "f0cc3e813bd2fbcfb8730475131212e538ca3b0c1ffb63ab7799a9dcc98112b3",
-    "viewpoints/VP09/VP09-contract-ViewSelectionContract.md": "b38f133db39a1dfa39513e038b95bbcddfccbb026186ce12d7df84650880c6a3",
-    "viewpoints/VP09/VP09-data-DesignSourceDocuments.md": "47273dcad1a3f6295e92cf0295d70397f9612b6437b8fe0e7a98b4ad77a83379",
-    "viewpoints/VP09/VP09-data-UiSessionState.md": "6550d95899aee8f60108f9bcf0957f26884c92ce10940c1ddcf72bc4bece0f1a",
-    "viewpoints/VP09/index.md": "25c435ad19831b67849c6c92d4668df6cbe4a60c480b1200924a0f6e83797f83",
-    "viewpoints/VP10/VP10-UiGenerationWire.md": "d7a4187b89da7833c134593659dff1c84a1fd0a0e56420c241ce6476a3790e6c",
-    "viewpoints/VP10/index.md": "9a0ef72566622e666b64b288b61169a7a4a78be4b0e66276556337b7a1324d88",
-    "viewpoints/VP11/index.md": "3f5bc8459846b846035b2b09db6e3b92e396206840d0e320fa300cbb46978fd7"
+    "navigator.md": "6d5a98aa5f3b4e5faee68038214a4e4794affc35ab3009068a60f774ad30199a",
+    "viewpoints.md": "226f4131f15434281d2d5f2c60a0daed164774648d76c780fedc181d2950bf87",
+    "viewpoints/VP01/VP01-BrowseDesignViews.md": "e9747be5f0aa1866776e6fa2e16ddf7c875dc0738fe042cb9535209e53189ef6",
+    "viewpoints/VP01/VP01-BuildNativeProduct.md": "055bec36bb2d9a690d68143f1f1f0ec1c9ce2762e936dbd11ca6758b49e8c211",
+    "viewpoints/VP01/VP01-EditRunningPrototype.md": "d0c85a23d6b38251d6307a3f0f56f9e21a80b711e517b33ae832a22cc41e0de0",
+    "viewpoints/VP01/VP01-InspectModels.md": "4e547afba804dfd995076107c518610584a69e4f96b005f73b27338af2337931",
+    "viewpoints/VP01/VP01-PrototypeUserInterface.md": "975d1738a364c0c6227170420dc337cb145311d9669553e926e8cda6f25d8d9c",
+    "viewpoints/VP01/VP01-PublishDesignDocumentation.md": "f6f3ed1a0981138c36cf204f82916f66a08594ae6fd8127349bd510353b24c98",
+    "viewpoints/VP01/VP01-TryDomainInteraction.md": "d273ce3d503b236bdd5716505e2975b4308853d7d423baa598fec16ce3ac80d1",
+    "viewpoints/VP01/VP01-feature-DesignDocumentation.md": "eab0364f21f7181bc3f5787265a718cf56603de1e9b5eba6775bde9c90550dc5",
+    "viewpoints/VP01/VP01-feature-InteractiveUiPreview.md": "6f5cc0068e1a59632015fe7731707afc0eded10474d06746d5c65c6b376ffb5c",
+    "viewpoints/VP01/VP01-feature-LiveModelReload.md": "1464008f2d6ce4b35036875c09aeda64ecfbbb0c3b2be1acc01361de3aa064d2",
+    "viewpoints/VP01/VP01-feature-NativeGoAssembly.md": "4c769ebf1edfb99052a1ed1ec9c412013d52259f620c04e5c6077d1a30444844",
+    "viewpoints/VP01/VP01-feature-NavigableDesignDocumentation.md": "647adcaf7a74c345ba2d775231ebf2435a59ec77b59dc90735cdcec8829074f6",
+    "viewpoints/VP01/VP01-feature-StructuralModelInspection.md": "bfeead35e1e6585aa30417d3856011423fa2117bd14692411f51212a0c97af3e",
+    "viewpoints/VP01/VP01-feature-TypedDesignInspection.md": "bfeaaf68f336fc2799596f261f604ecd3f6293541870cd0f733bc7e034a40da7",
+    "viewpoints/VP01/VP01-feature-TypedDomainBinding.md": "8841e3d4405d5768b3ccc5e29d74ec64118072acbca4389fe1d8cd65d4bea2fe",
+    "viewpoints/VP01/index.md": "94fa11bab8b7f693fe3e566c454f19000786878ed53b1e73001e53f03ed7707b",
+    "viewpoints/VP02/VP02-ContentServices.md": "8e8935f086030c88bfc440ca4f02ea1ddc0b7f86d113c9605a73d8fdba07d912",
+    "viewpoints/VP02/VP02-DevelopmentTools.md": "7a94aeb1d3d9893f3e600c14520790ebc7eb2158a80322a1981ae73a092dcc6c",
+    "viewpoints/VP02/VP02-SdlFrontend.md": "acaeec1f41e371cbbc4cff16744bcb2c20a65e135be4b1a3b555dcf8b6861a88",
+    "viewpoints/VP02/VP02-SdlLibrary.md": "f629ce1c55a01849b52191b92f4daf549f54ed0b450a8f97c6bb4c5106961425",
+    "viewpoints/VP02/VP02-SdlRuntime.md": "83739586864c16f25cd6af46cffcc4183eeef5dfe9578122c384ba6434d643aa",
+    "viewpoints/VP02/VP02-SduiFrontend.md": "84049bb093bbd4be544784f2c89f10343924957f6c396e3581aa06794271edee",
+    "viewpoints/VP02/VP02-SduiLibrary.md": "bee5ffaed40edbf8297726a9b681c8d7a2e81d13b0883dc399bea74ef9ea1bd0",
+    "viewpoints/VP02/VP02-SduiRuntime.md": "f0a9d401f5caefd1d23e21b453492f9082918dd81fcbcd030aa089e62968020e",
+    "viewpoints/VP02/VP02-ViewServiceHost.md": "f031ca8e8b881864b0432165df22fc1ce598cb0ba1ccd28ac346f581060c9c54",
+    "viewpoints/VP02/VP02-roots.md": "17080b5fcb9848e3dff7a6ee71fb162108e6666e38bf867d2cdc86b8eea61bb1",
+    "viewpoints/VP02/index.md": "160e4e4cbe93d03d6fe5c606be8a1978052a80d640b2f2bc9b737dd106a1a9b6",
+    "viewpoints/VP03/VP03-BoundInteraction-offers.md": "12bdaeddc671d29e126c275bc5cbce341da067242c91a4fa6fc0601d9b381754",
+    "viewpoints/VP03/VP03-BoundInteraction.md": "90c005833ca6415258ffa130fdc333a04cbb05e79e9f1c2df5d7d480b325882d",
+    "viewpoints/VP03/VP03-DevelopmentReload-offers.md": "e6f0183d4a512aa4ca11f894ffbf1b77e64cec12f4edaaddd72c74b2a9c93f60",
+    "viewpoints/VP03/VP03-DevelopmentReload.md": "c440efe3c496df05067ab95448a07a5a43a51e102ea0775f77ddb56f9835f530",
+    "viewpoints/VP03/VP03-DomainOperations-offers.md": "052c5aa6e320d7f25332994493649405652f5e9f29eb61959f39dfca94876021",
+    "viewpoints/VP03/VP03-DomainOperations.md": "aea93886f3daebc9504021562acadbb50da0377500fca3d46c7aa49f8e2dfc5f",
+    "viewpoints/VP03/VP03-ExecutableDesign-offers.md": "bca4edbaaf7773b90086f50290d25997986647e499b84c0b9638fc51515b8b5e",
+    "viewpoints/VP03/VP03-ExecutableDesign.md": "a1993e9783a0f4ccd4656a76d17b2f0f45320681c6a6c1d8e40a839306f6c1c3",
+    "viewpoints/VP03/VP03-InteractiveSession-offers.md": "abcdc485f543e51df5b36d82d137e39ab62637d94c81b847412007a1785aea7b",
+    "viewpoints/VP03/VP03-InteractiveSession.md": "6df844827753f2888c458d742fa9fe4313317f9c672d444c17a8fa68762f537a",
+    "viewpoints/VP03/VP03-MeasuredPresentation-offers.md": "ceead15ab5bbd32000e94d96d7ec8170e16e3c6faa689020d6a88f9dfbf9dd80",
+    "viewpoints/VP03/VP03-MeasuredPresentation.md": "77d8d0580b3f57ba6421f33977bbcb2b99492e5374e9267f59f4989d0a0a98d6",
+    "viewpoints/VP03/VP03-NativeInteraction-offers.md": "7785d974fdceb7c8f0fe32785779abecd379d3c30f9c00639ac642f9abfd162b",
+    "viewpoints/VP03/VP03-NativeInteraction.md": "a2ce83b6ce6d17f25d6c5b99b01e2557372f31bf2bd3c066b41e54e766229d3e",
+    "viewpoints/VP03/VP03-NativeRealization-offers.md": "c6b307f1fcf569710db5a59f178757a7b7b86218b4d023b4a68b5fc0be0421d1",
+    "viewpoints/VP03/VP03-NativeRealization.md": "6cdcaffe646b87ae84b0ef3251032ae9004b6677a0e1c53925d01160e78ab2df",
+    "viewpoints/VP03/VP03-RichContent-offers.md": "ea6fd025e2e6f4d78c97a123e3e6fe35afb5033b152ab3a57e685309813a8e4c",
+    "viewpoints/VP03/VP03-RichContent.md": "8694e527b4dbcfeb9d79374a15e7d3bb533d720dec7fba072bec3f679c3c8eaf",
+    "viewpoints/VP03/VP03-SdlSourceModel-offers.md": "b3e560aa67076c57679b8a538db5cb95509f89de9fa6f794e61f3723fff1303d",
+    "viewpoints/VP03/VP03-SdlSourceModel.md": "f529e71d5eadc9755305d1591b97369727cdb1597c366391ab48651b90a33829",
+    "viewpoints/VP03/VP03-SduiSourceModel-offers.md": "1ba27aca87ab35faf3bc85d15a3fc37340ec1e4de376b00e99fd717a7f1e3170",
+    "viewpoints/VP03/VP03-SduiSourceModel.md": "70538faf5d6ab765e3cb54a6f5cf834852c076fe5dcc80815a0eabd2dd6ed96b",
+    "viewpoints/VP03/VP03-SourceDiagnostics-offers.md": "55549731892e1452e0ea99436340ca01ac3a7e11155550e7dc9d3a4358fcb470",
+    "viewpoints/VP03/VP03-SourceDiagnostics.md": "7572c1d12f6b2030c7a9ca6f46586c1c85b45a71bb18abacc2e45ac95913992c",
+    "viewpoints/VP03/VP03-SourceLoading-offers.md": "305463c027986a7ec45f8e610bbd0806fcec4ba7c80074b714436db85595bbd0",
+    "viewpoints/VP03/VP03-SourceLoading.md": "8f3ccef15f3321b065b8f77e7b67698fc8174b12325d0f3a29bcd24d4967113d",
+    "viewpoints/VP03/VP03-StaticDocumentation-offers.md": "b2f02f16e22da59e85e0f6e1b78110657274078f89e72dc55c53facd915cce17",
+    "viewpoints/VP03/VP03-StaticDocumentation.md": "fc5d15c1f2aa2dc6668e15de8929a7b3ef5717e051049bb78c81390731716632",
+    "viewpoints/VP03/index.md": "d96396cd96db4cdd4dbbc20af63687ad2a88d7d2d744d963dd9ef2877271603a",
+    "viewpoints/VP04/index.md": "2602ecd63c4e0ab1779bad2fdb232b57df39628fa6af96fb78977a8dee6d69fb",
+    "viewpoints/VP05/VP05-BoundExecution.md": "6f779b54aaa49bad4d81fd0390b4c57a0b222b4bd96ddc7c88921b0a4dd74624",
+    "viewpoints/VP05/VP05-BoundLiveEditing.md": "b21deeaa721bdb4ba10489513872239fe9945540640fe2e541a57211498155a6",
+    "viewpoints/VP05/VP05-LiveEditing.md": "2609d28e4052cbebff9bc1b4be997982a85a41bf7a9557a9df63398b6b630bf7",
+    "viewpoints/VP05/VP05-NativeBuild.md": "07de73a731e8a8ddd0950d366bf450af58947af3d5d306b25b0212719895046c",
+    "viewpoints/VP05/VP05-RichDocument.md": "352f9a6552fd2e61fbe16620b007b1ba61b707e8bb8dc7510ef92762e3f97dbb",
+    "viewpoints/VP05/VP05-SourceInspection.md": "fb20c497e6bfe002230cb61c15b067c2b70901de462cd065e290ca8e382b0f09",
+    "viewpoints/VP05/VP05-StaticExport.md": "59a78d47d70e04947d3af48c1bfd2a4478f93fbfb67623604e352c3609be9875",
+    "viewpoints/VP05/VP05-UiPreview.md": "fdaaec472f7d29e6e5102ee2af2240885045611a9dce1e3679035725ce5df685",
+    "viewpoints/VP05/index.md": "cd7bf4bd472309cc50c838dfa2173c4d986da19d4a400af62a99ea21aa5a8251",
+    "viewpoints/VP06/VP06-dependencies.md": "71389026feb8b42a33f89bfec27c8502347172ef076cca857c276b637234f61f",
+    "viewpoints/VP06/VP06-detail-G1FrontendPort.md": "afc0ba46441af83909c05af08487bfc101c572e6d212d48c7a6f302fae132c28",
+    "viewpoints/VP06/VP06-detail-G2LayoutAndPresentation.md": "dc2c9ca34fe60325b455b63ab6ae2c715e7afc541721cef4689ecbb303b88fc2",
+    "viewpoints/VP06/VP06-detail-G3UiRuntimeAndReload.md": "ae181c73955e28d2f53e5affc2c2876099ce0dc9b6043461a94867c1ba17cf40",
+    "viewpoints/VP06/VP06-detail-G4SdlRuntimeAndBinding.md": "4acd318c0f1da0e5ece342716238dc291fef52e13af5f048ef594ecf88ddff7f",
+    "viewpoints/VP06/VP06-detail-G5NativeGeneration.md": "67201561423157517b6f6083b5105fd1536e169ab06788250b6ab944d5f8ed4a",
+    "viewpoints/VP06/VP06-detail-G6NavigableDocumentation.md": "9e75cc5b9577afbdebfbdd5dc9aeb9753cdac3bf579bf83204bed9cd18366d12",
+    "viewpoints/VP06/VP06-detail-InspectDesignSource.md": "3c7fc4d4d0a66fe19cb26c39f8911d3cd9acb7ad682dbb1bcdcb2609a32f209e",
+    "viewpoints/VP06/VP06-detail-RealizeDesign.md": "b1119bf8a7da111284a0eb26fc44868f850ca618c562b4c49b951c84f03eaf4f",
+    "viewpoints/VP06/VP06-detail-ReloadDesignSession.md": "3d29ea36ae70bfc7769f2bc5a5b0864809380b8f405979c9ad600e13e0cec8c0",
+    "viewpoints/VP06/VP06-detail-RunDesignSession.md": "4ac37127812644400dae9cc8358f37d716393b6b7a93e4888f0be85d34fc759f",
+    "viewpoints/VP06/VP06-roots.md": "f0215697f56b4b3c1fb828a93a475a3aa5dac6d6eb38e54f17e7aa9f8493f271",
+    "viewpoints/VP06/VP06-work-G1M1ParserAndAst.md": "f18b9a6219085bc2f68d41ff9f1546aa939934bd768fcf0737fe4fd0b5a8ea49",
+    "viewpoints/VP06/VP06-work-G1M2ValidationAndNormalization.md": "402958c7e59a71a1a724c624d1ab43d5a47d786b1c8192a00a69ee0d27ee92d2",
+    "viewpoints/VP06/VP06-work-G1M3Concept1AndDumps.md": "34c4c559143b25d221b183c5843741699b7dc9ed6d8f50d50b49315b430204a3",
+    "viewpoints/VP06/VP06-work-G2M1RelativeMeasurement.md": "50b38fc115d3f8c98ed456ccd2f1215c3091a9dd3bed121174e821e89e85dbea",
+    "viewpoints/VP06/VP06-work-G2M2SharedSvgGeometry.md": "c4bc709989cbbaab0d9c80ee5115aa94fe89a1c985c805ddfd5bc01582cdc8bc",
+    "viewpoints/VP06/VP06-work-G2M3FyneInteractions.md": "69ef69bd7402ba800bd4ad3377a2da7acfbf437b12e173134f8e2222dab339f4",
+    "viewpoints/VP06/VP06-work-G2M4RichContent.md": "d9ea41611b5c2920c86b3fb328a6302d8fb968ba5ca01a82078c69eea196bca6",
+    "viewpoints/VP06/VP06-work-G3M1TypedUiSession.md": "b90789b192dc3c075acc00416f0ff4411b8e77d58fcefc7f394869a8cd0cfed8",
+    "viewpoints/VP06/VP06-work-G3M2CandidatePublication.md": "40823d72f2862383c7913242e870d1fcf6d7cd4e2a72a999a96d3714bfb69e81",
+    "viewpoints/VP06/VP06-work-G3M3CompatibleState.md": "57e8c177f6ec7a0ceb5de01244f5269877c89551b990e3655c80828090ec8638",
+    "viewpoints/VP06/VP06-work-G4M1SdlFrontend.md": "27397142804359488c1166b68c4599dbc174c14445c7c46132d708d59d1a21e1",
+    "viewpoints/VP06/VP06-work-G4M2TypedExecution.md": "89af9d0001effd696c07abcbc2dedb6b910a85a424c6e6df6bdb6a0f3afbfd89",
+    "viewpoints/VP06/VP06-work-G4M3UiDomainBinding.md": "442f29c3195a6c49831de32cc342b5d2647ad82c1c141ffc6a1679a6e148b70f",
+    "viewpoints/VP06/VP06-work-G4M4DomainReload.md": "7365d6c2e5bce978009125690614ce4a4ffba0de1431fe4392ebd3f240667cca",
+    "viewpoints/VP06/VP06-work-G5M1GeneratedGo.md": "5982959a7653954be6fdea31f978120a4f912b9f8fb91f3df3237640df0efd2c",
+    "viewpoints/VP06/VP06-work-G5M2BehaviorParity.md": "61fc0e6a977cf36d6efdd521a8285a482cd48956e8561beff31b3c9fe7f118a5",
+    "viewpoints/VP06/VP06-work-G5M3DocumentationExport.md": "b206d99bb4db5b66af3301e3351765daf5313de21a2d63d4248b7f2533a64a39",
+    "viewpoints/VP06/VP06-work-G5M4RetirePython.md": "2062be2e2a0addd312dd268e1c742f4fbed9512c7c320030261e76c01545e0e0",
+    "viewpoints/VP06/VP06-work-G6M1StaticNavigation.md": "2c5d298cabdabf9c66afc11c374dbabcf3448ad4c16af828482fdf1534cbad75",
+    "viewpoints/VP06/VP06-work-G6M2OnDemandViews.md": "162f7353754927cc5e95315156ab0fa2489792ce85a1e7168115f34a5dec2ce0",
+    "viewpoints/VP06/VP06-work-G6M3XfmdNavigation.md": "4b2f53de960f3afba8310134b2027c62648c52f21cd02c9d2a56f8e36ce3bbee",
+    "viewpoints/VP06/VP06-work-G6M4SessionPublication.md": "1ac65a873d6f6118f310557bfd43705cec37b24c9789f8ad5b6e20f24ed8fc48",
+    "viewpoints/VP06/VP06-work-G6M5SemanticNotation.md": "a8e9a5239be28ea7f0c637782e537ef83b4ee922dcd20997153165e5212b2219",
+    "viewpoints/VP06/VP06-work-G6M6ClassViews.md": "47a9abc29a1b3997ae097f89acd7b5fd0113539db13e6cc50cae967cc8da1494",
+    "viewpoints/VP06/index.md": "d11369a44b7c2d05a3191619f80a1dd598815c7c77c41d7de523b233408bdaec",
+    "viewpoints/VP07/VP07-DesignDocumentation-DocumentBrowsing.md": "a52c7e12c1d026f1eb8fc8ceefa7a92697049ca0dd4c89febefa28bc0f4b3a96",
+    "viewpoints/VP07/VP07-DesignDocumentation-SourceInspection.md": "a5802b8c9e6dd157930b9821013b98a96819de79e35635c5fb014126c8d4026c",
+    "viewpoints/VP07/VP07-DesignDocumentation-StaticExport.md": "86ec43af19b81c3e930762b85b2689a043096beada348644392538f1d0e811eb",
+    "viewpoints/VP07/VP07-InteractiveUiPreview-UiPreview.md": "de519f3cfc152ca6b371298bcb3eb21045525c6c4880444abbee548a1c049af9",
+    "viewpoints/VP07/VP07-LiveModelReload-LiveEditing.md": "5e45645a608409dd53040ff3450d2cd4a26206a923cae7e60ed5b1f0e52d052f",
+    "viewpoints/VP07/VP07-LiveModelReload-SourceInspection.md": "99b60fa9a42f70ebf3d58d2b57a75b6b6cc60cf968eab8759af08b45eb5e9650",
+    "viewpoints/VP07/VP07-NativeGoAssembly-NativeBuild.md": "9a1073e3572ca679ae5be7a622df1feef6eeac756bac6f99e587bf5737bc73d1",
+    "viewpoints/VP07/VP07-NavigableDesignDocumentation-DocumentBrowsing.md": "8fba3e8ee9e9b460aa5ad2c69b35cebac5d67bab977873013fe5cd77a7cddf7c",
+    "viewpoints/VP07/VP07-StructuralModelInspection-LiveEditing.md": "d4e82156cc9f4a89570b6157889ff69645e72ad81dbe55d0a76796912754b1ed",
+    "viewpoints/VP07/VP07-StructuralModelInspection-SourceInspection.md": "153ec12e521d9ea1f6127f721f2b93e4eea04ff0c6cd3f341425d5133a1de3ba",
+    "viewpoints/VP07/VP07-TypedDesignInspection-DocumentBrowsing.md": "f32b96708e2a04593d5e2cced5976b6eb50521406628dddc8ad0695b57f5db32",
+    "viewpoints/VP07/VP07-TypedDomainBinding-BoundExecution.md": "7502de0d96faee7efd10aefcfd9a04512ac1927691419a110cc9293e86999cf5",
+    "viewpoints/VP07/index.md": "9b9a3c251874e1ce2852a7033082943875dc5196a2d57ad0b785e5663f0bff95",
+    "viewpoints/VP08/VP08-BoundActionAccepted.md": "44377aca3d366954bf04b10af897e9dc9f93598620c3e77a64f96cdaf6f3f5ce",
+    "viewpoints/VP08/VP08-BoundActionRejected.md": "e473410926d8da209ad76da0b925814ea79b4e18805986fa8ee5ff9dcd6ecbcc",
+    "viewpoints/VP08/VP08-InteractiveFramePrepared.md": "a221817c3d2954fa9d5c2fe603d4ba8b56f57962c1537f16b6699a6f2b164962",
+    "viewpoints/VP08/VP08-InvalidViewSelectionRejected.md": "f613d4a1f2500eafe78f0f7460b06552e9eaab8500137a3c6406d4c4f5181893",
+    "viewpoints/VP08/VP08-NativeProgramBuilt.md": "cb539cb611fee9977dd83fc49c1d48abe4ad79fe484177e88d10750fa1f2ed76",
+    "viewpoints/VP08/VP08-SdlModelReloadAccepted.md": "85d6490fa2d1747cd5e038e4a35f48a56e753d0569333e4dad7712d3cc610ddf",
+    "viewpoints/VP08/VP08-SelectedViewOpened.md": "09c4826d92ccff1cf91a6565c5e46e8d366017b91ba1f9a4a986017a9b0d5505",
+    "viewpoints/VP08/VP08-StaticFrameExported.md": "26b8d153ce547df9f62a5d7ff06a43b0827406e414d6b3c6152f1becb6189e4c",
+    "viewpoints/VP08/VP08-UiCompilationAccepted.md": "3c3bf34e022619b3056a0f71cfe6651963cf21fe40c6582453a2b3dffc546493",
+    "viewpoints/VP08/VP08-UiModelReloadAccepted.md": "6363ee5aba1a7848ccb5afd319dcf31bb2bb870016839bd3b4ac72c4fe5932f0",
+    "viewpoints/VP08/VP08-UiModelReloadRejected.md": "00bb1e728de9297e58b9d1375afb72974ac6d1e80f95ba2568cbbfdd3b773afe",
+    "viewpoints/VP08/VP08-UnboundLocalAction.md": "e6c835e9310bd8e5e9c9cb5b1582e47b8190e50a9e1abfe8d91950df667831be",
+    "viewpoints/VP08/VP08-ViewProjectionFailed.md": "48679ac6e51b44a9d457a1d8cbf20fe0ebd45d14b5574ce919bb5af05b7f8bff",
+    "viewpoints/VP08/index.md": "723878ae46e771a7f978a4d22e05be206485cabb2061f5ec52fcfe03831c2296",
+    "viewpoints/VP09/VP09-contract-ActionArguments.md": "64e374abb380b383ab70be2dcdfa5e40546c41f07cd6064d4982697627ea0dcc",
+    "viewpoints/VP09/VP09-contract-ActionOutcome.md": "532e2c2be39ba082a051b241617504441eff5e856c75e35520b27ced6d72abe9",
+    "viewpoints/VP09/VP09-contract-AstArtifactContract.md": "34022789019bf06fcf8ac7e2a82cd2d30e2554e39a69ea47c82b6b1957e18657",
+    "viewpoints/VP09/VP09-contract-DesignSourceRecord.md": "e8882c86dbf28df113e105b84848bc6da479da6f76d4a7a94fc6d8e7359d9618",
+    "viewpoints/VP09/VP09-contract-FramePresentationCallsProtocol.md": "360b8d37fc674a294268d3e1c5efe72115f350c30681660d9568452291520718",
+    "viewpoints/VP09/VP09-contract-GeneratedGoContract.md": "04b4e3250b842cead69f7dcfa1beaae0418c335dc7cf48c169673d9d10d2dabd",
+    "viewpoints/VP09/VP09-contract-GoBuildCallsProtocol.md": "82134efce857f120ead6403c03f0bbf770dc741b93e2d4226e4dcf320ad7cbd7",
+    "viewpoints/VP09/VP09-contract-GoDomainCallsProtocol.md": "0c532c2a5165dca897f2f14089c8d316b5ff0f58a59872bc869a4ea44cb479df",
+    "viewpoints/VP09/VP09-contract-GoGenerationCallsProtocol.md": "df86944e37807400a8e238ac94127c7ddfd62be5f001e256f2503fb3f32bb39d",
+    "viewpoints/VP09/VP09-contract-LayoutArguments.md": "bf529f6442ba4e5bccc62b2971e8e87a6b6bf39710c0f7597c15de3824d1edfb",
+    "viewpoints/VP09/VP09-contract-LayoutCallsProtocol.md": "170c7f8edfef450138640b06fb6bbaad48b44f7cbfe9f7a6996c94e7a0077cde",
+    "viewpoints/VP09/VP09-contract-ModelReloadCallsProtocol.md": "1d6680a5ec178dfb5a99aefdf3edce49bf2184c15ee6ac080754b00eab6d184d",
+    "viewpoints/VP09/VP09-contract-NativeBuildContract.md": "4018b0213ecf38482101a2d57ada2bcffc91ad9555cab53236155b217474a4ca",
+    "viewpoints/VP09/VP09-contract-NativeUiActionsProtocol.md": "9164de03c7c3d360f08c0270464a539023809bf52f4c056151d5df57d4b061e3",
+    "viewpoints/VP09/VP09-contract-NormalizedModelContract.md": "6fc806b6804ae6fa8b35a0c355a9910e9b4352351b75c1769bbf3bd57810daa1",
+    "viewpoints/VP09/VP09-contract-PreparedFrameContract.md": "e2b24d8ef79a3fba17c8aa1444f1d57ae153a5087b9dd9ae3a90321853be4ec7",
+    "viewpoints/VP09/VP09-contract-PresentationOutcome.md": "0623f32049156f1c4056bdcfb12bc21eea2e5cff07f980b229e5e22ebedba271",
+    "viewpoints/VP09/VP09-contract-ReloadArguments.md": "6efaa4d839a7271c8164f2fd15352b201807500b6093816085b2ad72e2965a3a",
+    "viewpoints/VP09/VP09-contract-ReloadOutcome.md": "58b7f4151ca2c99de6ab38d924c8e84d96d611620204cfab9fc69b4f6f22d5bf",
+    "viewpoints/VP09/VP09-contract-SdlActionCallsProtocol.md": "a99f6e468da51dcb6e2b8dd1d5c2c50d7e637e2738da0aa61bcc78baea320fc0",
+    "viewpoints/VP09/VP09-contract-SdlCompilationCallsProtocol.md": "cc3c717aa5f65a10d26552d60cc420a61beb9f17d8f1889eba75133d3d69eecd",
+    "viewpoints/VP09/VP09-contract-SvgDocumentContract.md": "6734c89b4644feacab05a573691187266ad0468040b745338bf61322d6cb0847",
+    "viewpoints/VP09/VP09-contract-SvgExportCallsProtocol.md": "f0bba5a4467e673dab8e15b99a3656933f43bed9952275ccc7c73477664cd571",
+    "viewpoints/VP09/VP09-contract-TokenArtifactContract.md": "711fd67ead90f3ee6b2e4c6c9030d4dc52c34a42908017e4ea8fc68d5bb3165a",
+    "viewpoints/VP09/VP09-contract-UiAstCallsProtocol.md": "7c91524766799c8f08590dc9a813dd0f3d4f0abe1100735430bac903e23e6ce9",
+    "viewpoints/VP09/VP09-contract-UiCompilationCallsProtocol.md": "a94e83a4a162e913e372dd6dfd52c4bd8630f1aee659b6794a95db0c139578e4",
+    "viewpoints/VP09/VP09-contract-UiDomainActionsProtocol.md": "b7feb40965014e1f85204d1a09811345a3b011771021f683211c8a182e042d5d",
+    "viewpoints/VP09/VP09-contract-UiGenerationContract.md": "d5b100c93e0ab2f7ff56895736bed8fa9a6509f31089b5009c7b8ff9b2e0e2ca",
+    "viewpoints/VP09/VP09-contract-UiGenerationEventsProtocol.md": "92b5bf1ee39b07f1d18b115eeca498d0c10587804de530142767dbe94a93b8f4",
+    "viewpoints/VP09/VP09-contract-UiNormalizationCallsProtocol.md": "65321c7b2cbdd88cd36aae082d6742e8afd02e7ec74a1d7fb0e9e4b50c27a865",
+    "viewpoints/VP09/VP09-contract-UiSessionRecord.md": "07f3bee50914dec6a1ccbbbc5ed892d3b46af052ebb6b53d1b535d367d41fa0f",
+    "viewpoints/VP09/VP09-contract-UiTokenizationCallsProtocol.md": "94cf7dc37eb889af1da51b18eb48a6fecd04b5413f9f5b2fe36e30e7367d4a7a",
+    "viewpoints/VP09/VP09-contract-UiValidationCallsProtocol.md": "77660ff0ac52129f4c602580bead49fcfb2b096e3f780500fcdc8a23944c1010",
+    "viewpoints/VP09/VP09-contract-ValidationOutcomeContract.md": "6b1f7843ebcd57b0372db2e273f96d3188e97703089b37b71a4f2cbf57f3d15d",
+    "viewpoints/VP09/VP09-contract-ViewBundleContract.md": "5d0572c3f3fb4015612080269757023acfddea8fe613f77380d7d06908a2e90d",
+    "viewpoints/VP09/VP09-contract-ViewDisplayCallsProtocol.md": "09eaf420ba4e979dcd6fe9ff830cdf1a5ed6a15ccd5c7e6ef5e794cc0790c9c2",
+    "viewpoints/VP09/VP09-contract-ViewFailureContract.md": "e7645a6c0ea04ff2a45f627caf9672a1e8976453b01d6ca3be94ef2e659be43a",
+    "viewpoints/VP09/VP09-contract-ViewLaunchCallsProtocol.md": "25cdaa99d382d8d27ace95b2a24bb088d7d57f5936224fc34b9ce0116d14854d",
+    "viewpoints/VP09/VP09-contract-ViewNavigationCallsProtocol.md": "d2a7b856f1103ce0e6c4835cd4ee761a517499628228cd061a0a402e9ae947f7",
+    "viewpoints/VP09/VP09-contract-ViewOpenContract.md": "9c7ca5bc8b88bd7b63fe19e7bc3f1a8199ff5b43050babd86862cb5f416af213",
+    "viewpoints/VP09/VP09-contract-ViewOpenedContract.md": "6d7af2f87890497bf00c7f3866fb774222783194c7bfd9b2609d583e78113a32",
+    "viewpoints/VP09/VP09-contract-ViewProjectionCallsProtocol.md": "f12cdfaf6c0d9d778e014f6cc949b54fa9baf652d79c0f4078901fccc8651bf1",
+    "viewpoints/VP09/VP09-contract-ViewPublicationCallsProtocol.md": "3c32f0c5bed3ea9301773f32e243a94a78046dd1afcbdb512f465710a84be70f",
+    "viewpoints/VP09/VP09-contract-ViewReferenceContract.md": "29952e71aac815e97e925a2f78aa8487acad3c66ce968ed5e643e0077274cbd3",
+    "viewpoints/VP09/VP09-contract-ViewSelectionContract.md": "fd91780ac2981e351423de89b6410e61da69109b3a0148b24d95ed90de9889f5",
+    "viewpoints/VP09/VP09-data-DesignSourceDocuments.md": "d4db446801b4d01d6d0b67115702178e8cf5cb1fdd95965f36eaeb548dea1520",
+    "viewpoints/VP09/VP09-data-UiSessionState.md": "274b4418bbe9d7a9c70c2261fb266cbafb690c5747db1e47c3de1e5d610a7a62",
+    "viewpoints/VP09/index.md": "de94c428b38086ae88d2c19b359d5c64dd0d3d1359d5cec0192db48fa0069519",
+    "viewpoints/VP10/VP10-UiGenerationWire.md": "99ab0be2c54a2a2920797cfe0953d9cdf07e2f9f5f3ebb020ddd357eebf441be",
+    "viewpoints/VP10/index.md": "e286dbaecdfb435078ff17da00f2e80897d93bd7fcaf4848d4bbd94944b511d9",
+    "viewpoints/VP11/index.md": "a5a283a3b0881f951372cac8da3371468cfc45aae656209e4658651475234008"
   }
 }

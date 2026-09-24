@@ -1,12 +1,12 @@
-# Kontraktstruktur: GoBuildCallsProtocol
+# Contract structure: GoBuildCallsProtocol
 
 [Viewpoint](index.md) · [Navigator](../../navigator.md)
 
-Revisjon: `e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1`.
+Revision: `e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1`.
 
-## Kontraktstruktur: GoBuildCallsProtocol
+## Contract structure: GoBuildCallsProtocol
 
-![Kontraktstruktur: GoBuildCallsProtocol](../../diagrams/VP09-contract-GoBuildCallsProtocol.svg)
+![Contract structure: GoBuildCallsProtocol](../../diagrams/VP09-contract-GoBuildCallsProtocol.svg)
 
-Kildegrunnlag: f0501, f0502.
+Source facts: f0501, f0502.
 

@@ -17,12 +17,12 @@ func Selected(ctx context.Context, v *viewpoint.Views, q viewpoint.Query, r Rend
 	if r != nil {
 		b.Manifest.Renderer = r.Identity()
 	}
-	text := "# " + q.Viewpoint + " — " + spec.Title + "\n\nRevisjon: `" + v.Revision + "`.\n\n" + spec.Note + "\n\n"
+	text := "# " + q.Viewpoint + " — " + spec.Title + "\n\nRevision: `" + v.Revision + "`.\n\n" + spec.Note + "\n\n"
 	j, _ := json.Marshal(q.Canonical())
-	text += "Utvalg: `" + string(j) + "`.\n\n"
+	text += "Selection: `" + string(j) + "`.\n\n"
 	b.Files["selection.json"] = append(j, '\n')
 	if len(s.Diagrams) == 0 {
-		text += "Ingen diagramtreff i dette utvalget. Det betyr ikke at begrepet er umulig eller at systemet mangler det.\n\n"
+		text += "No diagrams match this selection. This does not imply the concept is impossible or absent from the system.\n\n"
 	}
 	for _, d := range s.Diagrams {
 		b.Put("diagrams/"+d.ID+".mmd", d.Mermaid())
@@ -36,7 +36,7 @@ func Selected(ctx context.Context, v *viewpoint.Views, q viewpoint.Query, r Rend
 		text += s.DiagramMarkdown(d, "diagrams/", r != nil)
 	}
 	if r != nil {
-		text += "\nSymbolprofil: SDL 1. Aktør/ellipse følger UML-figurer; merkede SDL-relasjoner beholder sin språkbetydning. consumes er stiplet dependency; realizes er et bidrag.\n\n"
+		text += "\nSymbol profile: SDL 1. Actor/ellipse use UML shapes; labeled SDL relations retain their language semantics. consumes is a dashed dependency; realizes is a contribution.\n\n"
 	}
 	text += s.Tables(q.Viewpoint)
 	b.Put("entry.md", text)

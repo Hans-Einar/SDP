@@ -74,14 +74,14 @@ func Build(ctx context.Context, v *viewpoint.Views, o Options) (*Bundle, error) 
 	if strings.ContainsAny(o.Project, "/?#@:") {
 		return nil, fmt.Errorf("invalid project ID")
 	}
-	nav := "# SDL — navigator\n\nRevisjon: `" + v.Revision + "`.\n\n[Oversikt](index.md)\n\n"
-	full := "# SDL — genererte viewpoints\n\nStruktur og kildepåstander; ikke observert kjøring.\n\n"
-	index := "# SDL — designoversikt\n\n[Navigator](navigator.md)\n\n"
+	nav := "# SDL — navigator\n\nRevision: `" + v.Revision + "`.\n\n[Overview](index.md)\n\n"
+	full := "# SDL — generated viewpoints\n\nStructure and source claims; not observed execution.\n\n"
+	index := "# SDL — design overview\n\n[Navigator](navigator.md)\n\n"
 	for i := 0; i < 6; i++ {
 		level := fmt.Sprintf("A%d", i)
-		title := []string{"Behov og forpliktelser", "Funksjonell hensikt", "System og containere", "Interne enheter", "Detaljdesign og kontrakter", "Realisering og bevis"}[i]
+		title := []string{"Needs and obligations", "Functional intent", "System and containers", "Internal units", "Detailed design and contracts", "Realization and evidence"}[i]
 		index += "- [" + level + " — " + title + "](" + level + "/index.md)\n"
-		content := "# " + level + " — " + title + "\n\n[Oversikt](../index.md) · [Typeinventar](inventory.md)\n\nNivåene klassifiserer visninger; objektenes eget nivå er uspesifisert.\n\n"
+		content := "# " + level + " — " + title + "\n\n[Overview](../index.md) · [Type inventory](inventory.md)\n\nLevels classify views; object levels are unspecified.\n\n"
 		for _, s := range viewpoint.Catalog {
 			if selected[s.ID] && contains(s.Levels, level) {
 				content += "- [" + s.ID + " — " + s.Title + "](../navigator.md#" + strings.ToLower(s.ID) + ")\n"
@@ -99,7 +99,7 @@ func Build(ctx context.Context, v *viewpoint.Views, o Options) (*Bundle, error) 
 		page := "# " + s.ID + " — " + s.Title + "\n\n[Navigator](../../navigator.md)\n\n" + s.Note + "\n\n"
 		full += "## " + s.ID + " — " + s.Title + "\n\n" + s.Note + "\n\n"
 		if o.Navigator {
-			nav += "[Åpne ved behov](sdl-view://" + o.Project + "/" + s.ID + "?target=main&consumer=xfmd)\n\n"
+			nav += "[Open on demand](sdl-view://" + o.Project + "/" + s.ID + "?target=main&consumer=xfmd)\n\n"
 			for _, d := range v.Diagrams {
 				if strings.HasPrefix(d.ID, s.ID+"-") {
 					nav += "- [" + d.Title + "](sdl-view://" + o.Project + "/" + s.ID + "?diagram=" + url.QueryEscape(d.ID) + "&target=main&consumer=xfmd)\n"
@@ -108,7 +108,7 @@ func Build(ctx context.Context, v *viewpoint.Views, o Options) (*Bundle, error) 
 			nav += "\n"
 			continue
 		}
-		nav += "[Åpne viewpoint](" + vpdir + "/index.md)\n\n"
+		nav += "[Open viewpoint](" + vpdir + "/index.md)\n\n"
 		for _, d := range v.Diagrams {
 			if !strings.HasPrefix(d.ID, s.ID+"-") {
 				continue
@@ -126,7 +126,7 @@ func Build(ctx context.Context, v *viewpoint.Views, o Options) (*Bundle, error) 
 				b.Files["diagrams/"+d.ID+".svg"] = svg
 			}
 			page += "- [" + d.Title + "](" + d.ID + ".md)\n"
-			b.Put(vpdir+"/"+d.ID+".md", "# "+d.Title+"\n\n[Viewpoint](index.md) · [Navigator](../../navigator.md)\n\nRevisjon: `"+v.Revision+"`.\n\n"+v.DiagramMarkdown(d, "../../diagrams/", o.Renderer != nil))
+			b.Put(vpdir+"/"+d.ID+".md", "# "+d.Title+"\n\n[Viewpoint](index.md) · [Navigator](../../navigator.md)\n\nRevision: `"+v.Revision+"`.\n\n"+v.DiagramMarkdown(d, "../../diagrams/", o.Renderer != nil))
 			full += v.DiagramMarkdown(d, "diagrams/", o.Renderer != nil)
 		}
 		page += "\n" + v.Tables(s.ID)
@@ -136,7 +136,7 @@ func Build(ctx context.Context, v *viewpoint.Views, o Options) (*Bundle, error) 
 	if !o.Navigator {
 		if selected["VP06"] {
 			b.Put("implementation.md", v.Implementation())
-			index += "\n[Utviklingsplan G-faser](implementation.md)\n"
+			index += "\n[G-phase development plan](implementation.md)\n"
 		}
 		if selected["VP08"] {
 			j, _ := json.MarshalIndent(v.MessageSets, "", "  ")
@@ -144,11 +144,11 @@ func Build(ctx context.Context, v *viewpoint.Views, o Options) (*Bundle, error) 
 		}
 		if o.Monolithic {
 			b.Put("viewpoints.md", full)
-			index += "\n[Samlerapport](viewpoints.md)\n"
+			index += "\n[Combined report](viewpoints.md)\n"
 		}
 	}
 	b.Put("navigator.md", nav)
-	b.Put("index.md", index+"\nRequirement, System og State støttes ikke av design-core 0.5. Mode er driftskontekst, ikke State.\n")
+	b.Put("index.md", index+"\nRequirement, System and State are not supported by design-core 0.5. Mode is an operating context, not State.\n")
 	b.Seal()
 	if e := b.CheckLinks(); e != nil {
 		return nil, e
@@ -164,7 +164,7 @@ func contains(xs []string, s string) bool {
 	return false
 }
 func inventory(v *viewpoint.Views, level string) string {
-	s := "# Typeinventar — " + level + "\n\n[Opp](index.md)\n\nSamme modell-ID på alle nivåer; eget objektnivå er uspesifisert.\n\n"
+	s := "# Type inventory — " + level + "\n\n[Up](index.md)\n\nThe same model ID is used at every level; object levels are unspecified.\n\n"
 	kinds := map[string][]string{}
 	for n, k := range v.Kinds {
 		kinds[k] = append(kinds[k], n)

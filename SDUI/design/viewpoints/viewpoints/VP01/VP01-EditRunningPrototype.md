@@ -1,12 +1,12 @@
-# Bruksmål: EditRunningPrototype
+# Use case: EditRunningPrototype
 
 [Viewpoint](index.md) · [Navigator](../../navigator.md)
 
-Revisjon: `e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1`.
+Revision: `e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1`.
 
-## Bruksmål: EditRunningPrototype
+## Use case: EditRunningPrototype
 
-![Bruksmål: EditRunningPrototype](../../diagrams/VP01-EditRunningPrototype.svg)
+![Use case: EditRunningPrototype](../../diagrams/VP01-EditRunningPrototype.svg)
 
-Kildegrunnlag: f0146, f0587, f1109.
+Source facts: f0146, f0587, f1109.
 

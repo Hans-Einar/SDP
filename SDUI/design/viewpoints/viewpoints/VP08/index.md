@@ -1,26 +1,26 @@
-# VP08 — Channel-kontrakter og sekvenser
+# VP08 — Channel contracts and sequences
 
 [Navigator](../../navigator.md)
 
-Eksplisitte scenario-steg validert mot permits, deltakelse, modus og request/resultat-korrelasjon.
+Explicit scenario steps validated against permits, participation, mode and request/result correlation.
 
-- [Scenario: BoundActionAccepted — modus BoundExecution](VP08-BoundActionAccepted.md)
-- [Scenario: BoundActionRejected — modus BoundExecution](VP08-BoundActionRejected.md)
-- [Scenario: InteractiveFramePrepared — modus UiPreview](VP08-InteractiveFramePrepared.md)
-- [Scenario: InvalidViewSelectionRejected — modus DocumentBrowsing](VP08-InvalidViewSelectionRejected.md)
-- [Scenario: NativeProgramBuilt — modus NativeBuild](VP08-NativeProgramBuilt.md)
-- [Scenario: SdlModelReloadAccepted — modus BoundLiveEditing](VP08-SdlModelReloadAccepted.md)
-- [Scenario: SelectedViewOpened — modus DocumentBrowsing](VP08-SelectedViewOpened.md)
-- [Scenario: StaticFrameExported — modus StaticExport](VP08-StaticFrameExported.md)
-- [Scenario: UiCompilationAccepted — modus SourceInspection](VP08-UiCompilationAccepted.md)
-- [Scenario: UiModelReloadAccepted — modus LiveEditing](VP08-UiModelReloadAccepted.md)
-- [Scenario: UiModelReloadRejected — modus LiveEditing](VP08-UiModelReloadRejected.md)
-- [Scenario: UnboundLocalAction — modus UiPreview](VP08-UnboundLocalAction.md)
-- [Scenario: ViewProjectionFailed — modus DocumentBrowsing](VP08-ViewProjectionFailed.md)
+- [Scenario: BoundActionAccepted — mode BoundExecution](VP08-BoundActionAccepted.md)
+- [Scenario: BoundActionRejected — mode BoundExecution](VP08-BoundActionRejected.md)
+- [Scenario: InteractiveFramePrepared — mode UiPreview](VP08-InteractiveFramePrepared.md)
+- [Scenario: InvalidViewSelectionRejected — mode DocumentBrowsing](VP08-InvalidViewSelectionRejected.md)
+- [Scenario: NativeProgramBuilt — mode NativeBuild](VP08-NativeProgramBuilt.md)
+- [Scenario: SdlModelReloadAccepted — mode BoundLiveEditing](VP08-SdlModelReloadAccepted.md)
+- [Scenario: SelectedViewOpened — mode DocumentBrowsing](VP08-SelectedViewOpened.md)
+- [Scenario: StaticFrameExported — mode StaticExport](VP08-StaticFrameExported.md)
+- [Scenario: UiCompilationAccepted — mode SourceInspection](VP08-UiCompilationAccepted.md)
+- [Scenario: UiModelReloadAccepted — mode LiveEditing](VP08-UiModelReloadAccepted.md)
+- [Scenario: UiModelReloadRejected — mode LiveEditing](VP08-UiModelReloadRejected.md)
+- [Scenario: UnboundLocalAction — mode UiPreview](VP08-UnboundLocalAction.md)
+- [Scenario: ViewProjectionFailed — mode DocumentBrowsing](VP08-ViewProjectionFailed.md)
 
-## Avledet MessageSet
+## Derived MessageSet
 
-| Channel | Mode | Datagram | Sender | Receiver | Kilde-ID-er |
+| Channel | Mode | Datagram | Sender | Receiver | Source IDs |
 | --- | --- | --- | --- | --- | --- |
 | FramePresentationCalls | UiPreview | PresentFrameRequest | FyneHost | FyneBackend | f0242, f0244, f0253, f0271, f0686 |
 | FramePresentationCalls | UiPreview | PresentFrameResult | FyneBackend | FyneHost | f0242, f0245, f0254, f0270, f0689 |

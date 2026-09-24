@@ -31,7 +31,7 @@ func TestConcept1Snapshots(t *testing.T) {
 			t.Fatal(e)
 		}
 		if text != string(want) {
-			t.Fatalf("Concept1 %s differs from Python snapshot", format)
+			t.Fatalf("Concept1 %s differs from maintained export snapshot", format)
 		}
 	}
 }

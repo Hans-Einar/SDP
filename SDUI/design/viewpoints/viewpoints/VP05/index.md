@@ -1,16 +1,16 @@
-# VP05 — Avhengigheter per modus
+# VP05 — Dependencies by mode
 
 [Navigator](../../navigator.md)
 
-requires in mode; modi har ingen implisitt arv.
+requires in mode; modes have no implicit inheritance.
 
-- [Nødvendige porter i modus: BoundExecution](VP05-BoundExecution.md)
-- [Nødvendige porter i modus: BoundLiveEditing](VP05-BoundLiveEditing.md)
-- [Nødvendige porter i modus: LiveEditing](VP05-LiveEditing.md)
-- [Nødvendige porter i modus: NativeBuild](VP05-NativeBuild.md)
-- [Nødvendige porter i modus: RichDocument](VP05-RichDocument.md)
-- [Nødvendige porter i modus: SourceInspection](VP05-SourceInspection.md)
-- [Nødvendige porter i modus: StaticExport](VP05-StaticExport.md)
-- [Nødvendige porter i modus: UiPreview](VP05-UiPreview.md)
+- [Required ports in mode: BoundExecution](VP05-BoundExecution.md)
+- [Required ports in mode: BoundLiveEditing](VP05-BoundLiveEditing.md)
+- [Required ports in mode: LiveEditing](VP05-LiveEditing.md)
+- [Required ports in mode: NativeBuild](VP05-NativeBuild.md)
+- [Required ports in mode: RichDocument](VP05-RichDocument.md)
+- [Required ports in mode: SourceInspection](VP05-SourceInspection.md)
+- [Required ports in mode: StaticExport](VP05-StaticExport.md)
+- [Required ports in mode: UiPreview](VP05-UiPreview.md)
 
 

@@ -1,6 +1,6 @@
-# Generert implementasjonsplan
+# Generated implementation plan
 
-Status er modellens påstand, ikke bevis for kjøring.
+Status is a model claim, not execution evidence.
 
 [Navigator](navigator.md)
 
@@ -8,7 +8,7 @@ Status er modellens påstand, ikke bevis for kjøring.
 
 Status: unspecified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | BuildNativeRealization refines RealizeDesign. | f0062 |
 
@@ -16,7 +16,7 @@ Status: unspecified.
 
 Status: unspecified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | ExportUiDocumentation refines InspectDesignSource. | f0234 |
 
@@ -24,7 +24,7 @@ Status: unspecified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | G1FrontendPort delivers StructuralModelInspection. | f0276 |
 | G1FrontendPort has implementation-status = verified. | f0277 |
@@ -36,7 +36,7 @@ Status: verified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | G1M1ParserAndAst addresses BuildSduiAst. | f0278 |
 | G1M1ParserAndAst addresses IdentifySourceRevision. | f0279 |
@@ -55,7 +55,7 @@ Status: verified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | G1M2ValidationAndNormalization addresses CoordinateSduiCompilation. | f0284 |
 | G1M2ValidationAndNormalization addresses ExpandUiDefinitions. | f0285 |
@@ -85,7 +85,7 @@ Status: verified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | G1M3Concept1AndDumps addresses ExportConsoleSnapshot. | f0295 |
 | G1M3Concept1AndDumps addresses ReportSourceDiagnostics. | f0296 |
@@ -100,7 +100,7 @@ Status: verified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | G2LayoutAndPresentation delivers InteractiveUiPreview. | f0300 |
 | G2LayoutAndPresentation has implementation-status = verified. | f0301 |
@@ -113,7 +113,7 @@ Status: verified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | G2M1RelativeMeasurement addresses AllocateGeometry. | f0302 |
 | G2M1RelativeMeasurement addresses ComputeClipping. | f0303 |
@@ -133,7 +133,7 @@ Status: verified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | G2M2SharedSvgGeometry addresses BuildPreparedFrame. | f0309 |
 | G2M2SharedSvgGeometry addresses ExportSvgSnapshot. | f0310 |
@@ -149,7 +149,7 @@ Status: verified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | G2M3FyneInteractions addresses ComposeInteractiveSession. | f0314 |
 | G2M3FyneInteractions addresses HandleFocusAndTextInput. | f0315 |
@@ -175,7 +175,7 @@ Status: verified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | G2M4RichContent addresses MeasureMarkdownContent. | f0323 |
 | G2M4RichContent addresses PrepareDiagramResource. | f0324 |
@@ -196,7 +196,7 @@ Status: verified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | G3M1TypedUiSession addresses ApplyPropertyBatch. | f0331 |
 | G3M1TypedUiSession addresses CloseUiInstance. | f0332 |
@@ -235,7 +235,7 @@ Status: verified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | G3M2CandidatePublication addresses CoalesceSourceChanges. | f0348 |
 | G3M2CandidatePublication addresses KeepLastValidModels. | f0349 |
@@ -260,7 +260,7 @@ Status: verified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | G3M3CompatibleState addresses MatchCompatibleWidgets. | f0357 |
 | G3M3CompatibleState addresses PreserveCompatibleUiState. | f0358 |
@@ -278,7 +278,7 @@ Status: verified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | G3M1TypedUiSession refines G3UiRuntimeAndReload. | f0347 |
 | G3M2CandidatePublication refines G3UiRuntimeAndReload. | f0356 |
@@ -290,7 +290,7 @@ Status: verified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | G4M1SdlFrontend addresses BuildSdlAst. | f0365 |
 | G4M1SdlFrontend addresses CoordinateSdlCompilation. | f0366 |
@@ -318,7 +318,7 @@ Status: verified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | G4M2TypedExecution addresses CancelPendingActions. | f0375 |
 | G4M2TypedExecution addresses CheckExecutionCompleteness. | f0376 |
@@ -353,7 +353,7 @@ Status: verified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | BoundActionAccepted illustrates G4M3UiDomainBinding. | f0030 |
 | BoundActionRejected illustrates G4M3UiDomainBinding. | f0043 |
@@ -379,7 +379,7 @@ Status: verified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | G4M4DomainReload addresses CheckDomainStateCompatibility. | f0400 |
 | G4M4DomainReload addresses MigrateOrResetDomainState. | f0401 |
@@ -398,7 +398,7 @@ Status: verified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | G4M1SdlFrontend refines G4SdlRuntimeAndBinding. | f0374 |
 | G4M2TypedExecution refines G4SdlRuntimeAndBinding. | f0389 |
@@ -411,7 +411,7 @@ Status: verified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | G5M1GeneratedGo addresses BuildGeneratedApplication. | f0409 |
 | G5M1GeneratedGo addresses GenerateBindingRegistration. | f0410 |
@@ -431,7 +431,7 @@ Status: verified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | G5M2BehaviorParity addresses VerifyNativeBehaviorParity. | f0416 |
 | G5M2BehaviorParity depends-on G5M1GeneratedGo. | f0417 |
@@ -444,7 +444,7 @@ Status: verified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | G5M3DocumentationExport addresses ComposeHeadlessExport. | f0420 |
 | G5M3DocumentationExport addresses ComposeMarkdownDocument. | f0421 |
@@ -464,7 +464,7 @@ Status: verified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | G5M4RetirePython addresses RetireReplacedPythonEntryPoints. | f0428 |
 | G5M4RetirePython depends-on G1M3Concept1AndDumps. | f0429 |
@@ -477,7 +477,7 @@ Status: verified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | G5M1GeneratedGo refines G5NativeGeneration. | f0415 |
 | G5M2BehaviorParity refines G5NativeGeneration. | f0419 |
@@ -491,7 +491,7 @@ Status: verified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | G5M3DocumentationExport depends-on G6M1StaticNavigation. | f0425 |
 | G6M1StaticNavigation addresses ComposeViewPackage. | f0436 |
@@ -521,7 +521,7 @@ Status: verified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | G6M2OnDemandViews addresses KeyViewRevision. | f0447 |
 | G6M2OnDemandViews addresses ProjectSelectedView. | f0448 |
@@ -545,7 +545,7 @@ Status: verified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | G6M3XfmdNavigation addresses CaptureNavigationTarget. | f0455 |
 | G6M3XfmdNavigation addresses DispatchViewOpen. | f0456 |
@@ -565,7 +565,7 @@ Status: verified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | G6M4SessionPublication addresses EvictUnusedViewBundles. | f0462 |
 | G6M4SessionPublication addresses RejectStaleViewResults. | f0463 |
@@ -586,7 +586,7 @@ Status: verified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | G6M5SemanticNotation addresses ApplySemanticNotation. | f0469 |
 | G6M5SemanticNotation addresses VerifyDiagramCapabilities. | f0470 |
@@ -601,7 +601,7 @@ Status: verified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | G6M6ClassViews addresses ProjectClassViews. | f0474 |
 | G6M6ClassViews addresses ValidateClassRelations. | f0475 |
@@ -615,7 +615,7 @@ Status: verified.
 
 Status: verified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | G6M1StaticNavigation refines G6NavigableDocumentation. | f0446 |
 | G6M2OnDemandViews refines G6NavigableDocumentation. | f0454 |
@@ -631,7 +631,7 @@ Status: verified.
 
 Status: unspecified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | ExportUiDocumentation refines InspectDesignSource. | f0234 |
 | InspectSdlSource refines InspectDesignSource. | f0539 |
@@ -641,7 +641,7 @@ Status: unspecified.
 
 Status: unspecified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | InspectSdlSource refines InspectDesignSource. | f0539 |
 
@@ -649,7 +649,7 @@ Status: unspecified.
 
 Status: unspecified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | InspectSduiSource refines InspectDesignSource. | f0540 |
 
@@ -657,7 +657,7 @@ Status: unspecified.
 
 Status: unspecified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | BuildNativeRealization refines RealizeDesign. | f0062 |
 
@@ -665,7 +665,7 @@ Status: unspecified.
 
 Status: unspecified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | ReloadBoundModels refines ReloadDesignSession. | f0752 |
 
@@ -673,7 +673,7 @@ Status: unspecified.
 
 Status: unspecified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | ReloadBoundModels refines ReloadDesignSession. | f0752 |
 | ReloadUiModel refines ReloadDesignSession. | f0795 |
@@ -682,7 +682,7 @@ Status: unspecified.
 
 Status: unspecified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | ReloadUiModel refines ReloadDesignSession. | f0795 |
 
@@ -690,7 +690,7 @@ Status: unspecified.
 
 Status: unspecified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | RunBoundUiAction refines RunDesignSession. | f0830 |
 
@@ -698,7 +698,7 @@ Status: unspecified.
 
 Status: unspecified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | RunBoundUiAction refines RunDesignSession. | f0830 |
 | RunUnboundUiPreview refines RunDesignSession. | f0831 |
@@ -707,9 +707,9 @@ Status: unspecified.
 
 Status: unspecified.
 
-| Faktum | Kilde-ID |
+| Fact | Source ID |
 | --- | --- |
 | RunUnboundUiPreview refines RunDesignSession. | f0831 |
 
-## Udekket modellansvar
+## Unaddressed model responsibilities
 

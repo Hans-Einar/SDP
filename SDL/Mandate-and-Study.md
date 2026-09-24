@@ -1,9 +1,9 @@
 # Working document: model-based, controlled software development with agents
 
-**Document ID:** SDL-MANDATE-STUDY-001  
-**Revision:** 0.1, 2026-09-14  
-**Status:** Edited owner intent with an initial study and explicitly labeled proposals. Not an adopted language, schema or implementation plan.  
-**Context:** Hans-Einar/SDP, issues #5, #7 / PR #8, #9 and #10.  
+**Document ID:** SDL-MANDATE-STUDY-001
+**Revision:** 0.1, 2026-09-14
+**Status:** Edited owner intent with an initial study and explicitly labeled proposals. Not an adopted language, schema or implementation plan.
+**Context:** Hans-Einar/SDP, issues #5, #7 / PR #8, #9 and #10.
 **Audience:** Owner, architects, designers and agents investigating, developing or using SDP.
 
 ## 0. Read this first
@@ -337,7 +337,7 @@ Measurement source -> domain -> CH-MEASUREMENT -> client adapter -> presentation
                                      `-> history storage
 ```
 
-**B:** Channel values and history storage use millimeters; presentation shows centimeters.  
+**B:** Channel values and history storage use millimeters; presentation shows centimeters.
 **T:** Channel sends meters; both consumers retain agreed properties, with unchanged external display.
 
 A local serialization-only fix can retain JSON `number`, imports and passing format tests while breaking display/history.

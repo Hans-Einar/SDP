@@ -1,12 +1,12 @@
-# Kontraktstruktur: PresentationOutcome
+# Contract structure: PresentationOutcome
 
 [Viewpoint](index.md) · [Navigator](../../navigator.md)
 
-Revisjon: `e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1`.
+Revision: `e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1`.
 
-## Kontraktstruktur: PresentationOutcome
+## Contract structure: PresentationOutcome
 
-![Kontraktstruktur: PresentationOutcome](../../diagrams/VP09-contract-PresentationOutcome.svg)
+![Contract structure: PresentationOutcome](../../diagrams/VP09-contract-PresentationOutcome.svg)
 
-Kildegrunnlag: f0691.
+Source facts: f0691.
 

@@ -1,12 +1,12 @@
-# Kontraktstruktur: SvgDocumentContract
+# Contract structure: SvgDocumentContract
 
 [Viewpoint](index.md) · [Navigator](../../navigator.md)
 
-Revisjon: `e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1`.
+Revision: `e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1`.
 
-## Kontraktstruktur: SvgDocumentContract
+## Contract structure: SvgDocumentContract
 
-![Kontraktstruktur: SvgDocumentContract](../../diagrams/VP09-contract-SvgDocumentContract.svg)
+![Contract structure: SvgDocumentContract](../../diagrams/VP09-contract-SvgDocumentContract.svg)
 
-Kildegrunnlag: f1112.
+Source facts: f1112.
 

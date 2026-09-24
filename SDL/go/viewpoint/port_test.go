@@ -38,6 +38,12 @@ func TestFrozenProjectionPort(t *testing.T) {
 		hashes[d.ID] = fmt.Sprintf("%x", sha256.Sum256([]byte(d.Mermaid())))
 	}
 	got["mermaid_sha256"] = hashes
+	// L1: diagnostic prose is translated; stable gap codes/context remain the oracle.
+	for _, model := range []map[string]any{got, want} {
+		for _, gap := range model["model_gaps"].([]any) {
+			delete(gap.(map[string]any), "message")
+		}
+	}
 	for k, w := range want {
 		if !reflect.DeepEqual(got[k], w) {
 			os.WriteFile("/tmp/sdl-projection-got.json", out, 0600)

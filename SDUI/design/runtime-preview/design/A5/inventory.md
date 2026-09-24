@@ -1,8 +1,8 @@
-# Typeinventar — A5
+# Type inventory — A5
 
-[Opp](index.md)
+[Up](index.md)
 
-Samme modell-ID på alle nivåer; eget objektnivå er uspesifisert.
+The same model ID is used at every level; object levels are unspecified.
 
 ## activity (42)
 

@@ -40,7 +40,7 @@ func (v *Views) channels() {
 			}
 		}
 		if len(bindings) == 0 {
-			v.Gaps = append(v.Gaps, Fact{"viewpoint": "VP08", "model_id": ch, "code": "NO_PARTICIPANTS", "message": "Ingen eksplisitt deltakelse."})
+			v.Gaps = append(v.Gaps, Fact{"viewpoint": "VP08", "model_id": ch, "code": "NO_PARTICIPANTS", "message": "No explicit participation."})
 		}
 	}
 	for _, scenario := range v.names("scenario") {
@@ -88,9 +88,9 @@ func (v *Views) channels() {
 			lines = append(lines, "    n_"+s.S("sender")+arrow+"n_"+s.S("receiver")+": "+caption)
 			elements = append(elements, Fact{"ordinal": s.N("ordinal"), "sender": s.S("sender"), "receiver": s.S("receiver"), "message": msg, "variant": s["variant"], "channel": ch, "reply_to": s["reply_to"], "fact": s.S("id"), "proof": proof})
 		}
-		v.Diagrams = append(v.Diagrams, Diagram{"VP08-" + scenario, "Scenario: " + scenario + " — modus " + mode, "sequence", v.nodes(order), []Edge{}, unique(source), elements, strings.Join(lines, "\n") + "\n"})
+		v.Diagrams = append(v.Diagrams, Diagram{"VP08-" + scenario, "Scenario: " + scenario + " — mode " + mode, "sequence", v.nodes(order), []Edge{}, unique(source), elements, strings.Join(lines, "\n") + "\n"})
 	}
 	if len(modes) == 0 {
-		v.Gaps = append(v.Gaps, Fact{"viewpoint": "VP08", "model_id": "—", "code": "NO_SCENARIOS", "message": "Ingen deklarerte scenario-steg; rekkefølge utledes ikke."})
+		v.Gaps = append(v.Gaps, Fact{"viewpoint": "VP08", "model_id": "—", "code": "NO_SCENARIOS", "message": "No declared scenario steps; ordering is not inferred."})
 	}
 }

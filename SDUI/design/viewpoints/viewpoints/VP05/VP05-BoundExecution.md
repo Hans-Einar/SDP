@@ -1,12 +1,12 @@
-# Nødvendige porter i modus: BoundExecution
+# Required ports in mode: BoundExecution
 
 [Viewpoint](index.md) · [Navigator](../../navigator.md)
 
-Revisjon: `e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1`.
+Revision: `e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1`.
 
-## Nødvendige porter i modus: BoundExecution
+## Required ports in mode: BoundExecution
 
-![Nødvendige porter i modus: BoundExecution](../../diagrams/VP05-BoundExecution.svg)
+![Required ports in mode: BoundExecution](../../diagrams/VP05-BoundExecution.svg)
 
-Kildegrunnlag: f0052, f0053, f0219.
+Source facts: f0052, f0053, f0219.
 

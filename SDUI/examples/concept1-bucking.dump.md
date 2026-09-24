@@ -1,10 +1,10 @@
 # SDUI — ` bucking `
 
-Statisk GUI-dump. Knapper og felt er tekstetiketter; ingen callbacks kjøres.
+Static GUI dump. Buttons and fields are text labels; no callbacks execute.
 
-## Layoutoversikt
+## Layout overview
 
-Rad-/kolonnestruktur i terminalceller. Høydene følger innholdet; dette er ikke målt GUI-geometri.
+Row/column structure in terminal cells. Heights follow content; this is not measured GUI geometry.
 
 ```text
 SDUI GUI dump | bucking | 160 columns | structural preview
@@ -41,39 +41,39 @@ SDUI GUI dump | bucking | 160 columns | structural preview
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ```
 
-## Innhold
+## Content
 
-Markdown gjengis som innhold. Nestede sitatblokker viser grupper og frames. Horisontale søsken står i leserekkefølge her; plasseringen vises i oversikten. Mermaid-diagrammer er utelatt.
+Markdown is rendered as content. Nested blockquotes represent groups and frames. Horizontal siblings appear in reading order here; the overview shows placement. Mermaid diagrams are omitted.
 
 > **Frame:** ` bucking `
 >
-> **Rad 1 · 1 komponent fra venstre mot høyre**
+> **Row 1 · 1 component from left to right**
 >
 > > **Frame:** ` bucking/top `
 > >
-> > **Rad 1 · 2 komponenter fra venstre mot høyre**
+> > **Row 1 · 2 components from left to right**
 > >
 > > > **BoxUI-frame:** ` bucking/top/length `
 > > >
 > > > **header**
 > > >
-> > > > **Gruppe:** ` bucking/top/length/header `
+> > > > **Group:** ` bucking/top/length/header `
 > > > >
-> > > > **Rad 1 · 2 komponenter fra venstre mot høyre**
+> > > > **Row 1 · 2 components from left to right**
 > > > >
 > > > > > ## Lengde
 > > > >
 > > > > ---
 > > > >
-> > > > > **Gruppe:** ` bucking/top/length/header/$r0c1 `
+> > > > > **Group:** ` bucking/top/length/header/$r0c1 `
 > > > > >
-> > > > > **Rad 1 · 2 komponenter fra venstre mot høyre**
+> > > > > **Row 1 · 2 components from left to right**
 > > > > >
-> > > > > **Knapp:** ` Cursor AV `
+> > > > > **Button:** ` Cursor AV `
 > > > > >
 > > > > > ---
 > > > > >
-> > > > > **Knapp:** ` Δ `
+> > > > > **Button:** ` Δ `
 > > > > >
 > > > > > ---
 > > > > >
@@ -81,13 +81,13 @@ Markdown gjengis som innhold. Nestede sitatblokker viser grupper og frames. Hori
 > > > > ---
 > > > >
 > > >
-> > > **Rad 1 · 1 komponent fra venstre mot høyre**
+> > > **Row 1 · 1 component from left to right**
 > > >
 > > > > **412,0 cm**
 > > >
 > > > ---
 > > >
-> > > **Rad 2 · 1 komponent fra venstre mot høyre**
+> > > **Row 2 · 1 component from left to right**
 > > >
 > > > > Måling · aggregat
 > > >
@@ -100,31 +100,31 @@ Markdown gjengis som innhold. Nestede sitatblokker viser grupper og frames. Hori
 > > >
 > > > **header**
 > > >
-> > > > **Gruppe:** ` bucking/top/diameter/header `
+> > > > **Group:** ` bucking/top/diameter/header `
 > > > >
-> > > > **Rad 1 · 2 komponenter fra venstre mot høyre**
+> > > > **Row 1 · 2 components from left to right**
 > > > >
 > > > > > ## Diameter
 > > > >
 > > > > ---
 > > > >
-> > > > > **Gruppe:** ` bucking/top/diameter/header/$r0c1 `
+> > > > > **Group:** ` bucking/top/diameter/header/$r0c1 `
 > > > > >
-> > > > > **Rad 1 · 4 komponenter fra venstre mot høyre**
+> > > > > **Row 1 · 4 components from left to right**
 > > > > >
-> > > > > **Knapp:** ` Cursor AV `
-> > > > >
-> > > > > ---
-> > > > >
-> > > > > **Knapp:** ` Δ `
+> > > > > **Button:** ` Cursor AV `
 > > > > >
 > > > > > ---
 > > > > >
-> > > > > **Knapp:** ` O/B · U/B `
+> > > > > **Button:** ` Δ `
 > > > > >
 > > > > > ---
 > > > > >
-> > > > > **Knapp:** ` BarkNOR-kalibrering `
+> > > > > **Button:** ` O/B · U/B `
+> > > > >
+> > > > > ---
+> > > > >
+> > > > > **Button:** ` BarkNOR-kalibrering `
 > > > > >
 > > > > > ---
 > > > > >
@@ -132,13 +132,13 @@ Markdown gjengis som innhold. Nestede sitatblokker viser grupper og frames. Hori
 > > > > ---
 > > > >
 > > >
-> > > **Rad 1 · 1 komponent fra venstre mot høyre**
+> > > **Row 1 · 1 component from left to right**
 > > >
 > > > > **28,4 cm**
 > > >
 > > > ---
 > > >
-> > > **Rad 2 · 1 komponent fra venstre mot høyre**
+> > > **Row 2 · 1 component from left to right**
 > > >
 > > > > Måling · O/B · eksempelprofil
 > > >
@@ -150,11 +150,11 @@ Markdown gjengis som innhold. Nestede sitatblokker viser grupper og frames. Hori
 >
 > ---
 >
-> **Rad 2 · 1 komponent fra venstre mot høyre**
+> **Row 2 · 1 component from left to right**
 >
 > > **Frame:** ` bucking/middle `
 > >
-> > **Rad 1 · 3 komponenter fra venstre mot høyre**
+> > **Row 1 · 3 components from left to right**
 > >
 > > > **BoxUI-frame:** ` bucking/middle/selection `
 > > >
@@ -179,25 +179,25 @@ Markdown gjengis som innhold. Nestede sitatblokker viser grupper og frames. Hori
 > > >
 > > > **header**
 > > >
-> > > > **Gruppe:** ` bucking/middle/suggestions/header `
+> > > > **Group:** ` bucking/middle/suggestions/header `
 > > > >
-> > > > **Rad 1 · 1 komponent fra venstre mot høyre**
+> > > > **Row 1 · 1 component from left to right**
 > > > >
 > > > > > ## Apteringsforslag
 > > > >
 > > > > ---
 > > > >
-> > > > **Rad 2 · 1 komponent fra venstre mot høyre**
+> > > > **Row 2 · 1 component from left to right**
 > > > >
-> > > > > **Gruppe:** ` bucking/middle/suggestions/header/$r1c0 `
+> > > > > **Group:** ` bucking/middle/suggestions/header/$r1c0 `
 > > > > >
-> > > > > **Rad 1 · 2 komponenter fra venstre mot høyre**
+> > > > > **Row 1 · 2 components from left to right**
 > > > > >
-> > > > > **Knapp:** ` Optimalisering `
+> > > > > **Button:** ` Optimalisering `
 > > > > >
 > > > > > ---
 > > > > >
-> > > > > **Knapp:** ` Kolonner `
+> > > > > **Button:** ` Kolonner `
 > > > > >
 > > > > > ---
 > > > > >
@@ -205,7 +205,7 @@ Markdown gjengis som innhold. Nestede sitatblokker viser grupper og frames. Hori
 > > > > ---
 > > > >
 > > >
-> > > **Rad 1 · 1 komponent fra venstre mot høyre**
+> > > **Row 1 · 1 component from left to right**
 > > >
 > > > > Neste kapp · eksempeldata
 > > > > | Nr | Sortiment | Lengde | Topp-Ø |
@@ -215,24 +215,24 @@ Markdown gjengis som innhold. Nestede sitatblokker viser grupper og frames. Hori
 > > >
 > > > ---
 > > >
-> > > **Rad 2 · 1 komponent fra venstre mot høyre**
+> > > **Row 2 · 1 component from left to right**
 > > >
-> > > > **Gruppe:** ` bucking/middle/suggestions/$r1c0 `
+> > > > **Group:** ` bucking/middle/suggestions/$r1c0 `
 > > > >
-> > > > **Rad 1 · 2 komponenter fra venstre mot høyre**
+> > > > **Row 1 · 2 components from left to right**
 > > > >
-> > > > **Knapp:** ` Canonical `
+> > > > **Button:** ` Canonical `
 > > > >
 > > > > ---
 > > > >
-> > > > **Knapp:** ` Alternativ 1 `
+> > > > **Button:** ` Alternativ 1 `
 > > > >
 > > > > ---
 > > > >
 > > >
 > > > ---
 > > >
-> > > **Rad 3 · 1 komponent fra venstre mot høyre**
+> > > **Row 3 · 1 component from left to right**
 > > >
 > > > > Planvalg er ubundet i denne prototypen.
 > > >
@@ -247,7 +247,7 @@ Markdown gjengis som innhold. Nestede sitatblokker viser grupper og frames. Hori
 > > >
 > > > > ## Stammen i aggregatet
 > > >
-> > > **Rad 1 · 1 komponent fra venstre mot høyre**
+> > > **Row 1 · 1 component from left to right**
 > > >
 > > > > Aktuell stamme
 > > > >
@@ -261,7 +261,7 @@ Markdown gjengis som innhold. Nestede sitatblokker viser grupper og frames. Hori
 > > >
 > > > ---
 > > >
-> > > **Rad 2 · 1 komponent fra venstre mot høyre**
+> > > **Row 2 · 1 component from left to right**
 > > >
 > > > > Produksjon og feilflyt er plassholdere.
 > > >
@@ -273,36 +273,36 @@ Markdown gjengis som innhold. Nestede sitatblokker viser grupper og frames. Hori
 >
 > ---
 >
-> **Rad 3 · 1 komponent fra venstre mot høyre**
+> **Row 3 · 1 component from left to right**
 >
 > > **BoxUI-frame:** ` bucking/stemTrack `
 > >
 > > **header**
 > >
-> > > **Gruppe:** ` bucking/stemTrack/header `
+> > > **Group:** ` bucking/stemTrack/header `
 > > >
-> > > **Rad 1 · 2 komponenter fra venstre mot høyre**
+> > > **Row 1 · 2 components from left to right**
 > > >
 > > > > ## Stammeforløp
 > > >
 > > > ---
 > > >
-> > > > **Gruppe:** ` bucking/stemTrack/header/$r0c1 `
+> > > > **Group:** ` bucking/stemTrack/header/$r0c1 `
 > > > >
-> > > > **Rad 1 · 2 komponenter fra venstre mot høyre**
+> > > > **Row 1 · 2 components from left to right**
 > > > >
-> > > > **Knapp:** ` taperNOR `
+> > > > **Button:** ` taperNOR `
 > > > >
 > > > > ---
 > > > >
-> > > > **Knapp:** ` Mixed `
+> > > > **Button:** ` Mixed `
 > > > >
 > > > > ---
 > > > >
 > > >
 > > > ---
 > > >
-> > > **Rad 2 · 1 komponent fra venstre mot høyre**
+> > > **Row 2 · 1 component from left to right**
 > > >
 > > > > Hele estimatet · Predikert · Målt · Plan · Rest · Kvalitet 1/2 · Underkjent · Utkast
 > > >
@@ -318,9 +318,9 @@ Markdown gjengis som innhold. Nestede sitatblokker viser grupper og frames. Hori
 > >
 > > **footer**
 > >
-> > > **Gruppe:** ` bucking/stemTrack/footer `
+> > > **Group:** ` bucking/stemTrack/footer `
 > > >
-> > > **Rad 1 · 3 komponenter fra venstre mot høyre**
+> > > **Row 1 · 3 components from left to right**
 > > >
 > > > > FØLGER AGGREGAT
 > > >
@@ -334,7 +334,7 @@ Markdown gjengis som innhold. Nestede sitatblokker viser grupper og frames. Hori
 > > >
 > > > ---
 > > >
-> > > **Rad 2 · 3 komponenter fra venstre mot høyre**
+> > > **Row 2 · 3 components from left to right**
 > > >
 > > > > Pred. Ø O/B: 28,4 cm
 > > >

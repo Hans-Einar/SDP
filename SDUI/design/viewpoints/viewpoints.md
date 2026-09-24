@@ -1,351 +1,351 @@
-# SDL — genererte viewpoints
+# SDL — generated viewpoints
 
-Struktur og kildepåstander; ikke observert kjøring.
+Structure and source claims; not observed execution.
 
-## VP01 — Bruksmål og sporbarhet
+## VP01 — Use cases and traceability
 
-pursues, supports og contributes-to; modellens omfang, uten oppdiktet System-grense.
+pursues, supports and contributes-to; modeled scope without an invented System boundary.
 
-## Bruksmål: BrowseDesignViews
+## Use case: BrowseDesignViews
 
-![Bruksmål: BrowseDesignViews](diagrams/VP01-BrowseDesignViews.svg)
+![Use case: BrowseDesignViews](diagrams/VP01-BrowseDesignViews.svg)
 
-Kildegrunnlag: f0144, f0152, f0637, f1143.
+Source facts: f0144, f0152, f0637, f1143.
 
-## Bruksmål: BuildNativeProduct
+## Use case: BuildNativeProduct
 
-![Bruksmål: BuildNativeProduct](diagrams/VP01-BuildNativeProduct.svg)
+![Use case: BuildNativeProduct](diagrams/VP01-BuildNativeProduct.svg)
 
-Kildegrunnlag: f0145, f0620.
+Source facts: f0145, f0620.
 
-## Bruksmål: EditRunningPrototype
+## Use case: EditRunningPrototype
 
-![Bruksmål: EditRunningPrototype](diagrams/VP01-EditRunningPrototype.svg)
+![Use case: EditRunningPrototype](diagrams/VP01-EditRunningPrototype.svg)
 
-Kildegrunnlag: f0146, f0587, f1109.
+Source facts: f0146, f0587, f1109.
 
-## Bruksmål: InspectModels
+## Use case: InspectModels
 
-![Bruksmål: InspectModels](diagrams/VP01-InspectModels.svg)
+![Use case: InspectModels](diagrams/VP01-InspectModels.svg)
 
-Kildegrunnlag: f0147, f0153, f1110, f1138, f1144.
+Source facts: f0147, f0153, f1110, f1138, f1144.
 
-## Bruksmål: PrototypeUserInterface
+## Use case: PrototypeUserInterface
 
-![Bruksmål: PrototypeUserInterface](diagrams/VP01-PrototypeUserInterface.svg)
+![Use case: PrototypeUserInterface](diagrams/VP01-PrototypeUserInterface.svg)
 
-Kildegrunnlag: f0148, f0154, f0550.
+Source facts: f0148, f0154, f0550.
 
-## Bruksmål: PublishDesignDocumentation
+## Use case: PublishDesignDocumentation
 
-![Bruksmål: PublishDesignDocumentation](diagrams/VP01-PublishDesignDocumentation.svg)
+![Use case: PublishDesignDocumentation](diagrams/VP01-PublishDesignDocumentation.svg)
 
-Kildegrunnlag: f0149, f0151, f0155.
+Source facts: f0149, f0151, f0155.
 
-## Bruksmål: TryDomainInteraction
+## Use case: TryDomainInteraction
 
-![Bruksmål: TryDomainInteraction](diagrams/VP01-TryDomainInteraction.svg)
+![Use case: TryDomainInteraction](diagrams/VP01-TryDomainInteraction.svg)
 
-Kildegrunnlag: f0150, f1145.
+Source facts: f0150, f1145.
 
-## Functionality-bidrag til Feature: DesignDocumentation
+## Functionality contributions to Feature: DesignDocumentation
 
-![Functionality-bidrag til Feature: DesignDocumentation](diagrams/VP01-feature-DesignDocumentation.svg)
+![Functionality contributions to Feature: DesignDocumentation](diagrams/VP01-feature-DesignDocumentation.svg)
 
-Kildegrunnlag: f0126, f0232, f0237, f0715, f1137, f1414.
+Source facts: f0126, f0232, f0237, f0715, f1137, f1414.
 
-## Functionality-bidrag til Feature: InteractiveUiPreview
+## Functionality contributions to Feature: InteractiveUiPreview
 
-![Functionality-bidrag til Feature: InteractiveUiPreview](diagrams/VP01-feature-InteractiveUiPreview.svg)
+![Functionality contributions to Feature: InteractiveUiPreview](diagrams/VP01-feature-InteractiveUiPreview.svg)
 
-Kildegrunnlag: f0018, f0064, f0123, f0534, f0739.
+Source facts: f0018, f0064, f0123, f0534, f0739.
 
-## Functionality-bidrag til Feature: LiveModelReload
+## Functionality contributions to Feature: LiveModelReload
 
-![Functionality-bidrag til Feature: LiveModelReload](diagrams/VP01-feature-LiveModelReload.svg)
+![Functionality contributions to Feature: LiveModelReload](diagrams/VP01-feature-LiveModelReload.svg)
 
-Kildegrunnlag: f0562, f0655, f0677, f0695, f0721, f0729, f0799.
+Source facts: f0562, f0655, f0677, f0695, f0721, f0729, f0799.
 
-## Functionality-bidrag til Feature: NativeGoAssembly
+## Functionality contributions to Feature: NativeGoAssembly
 
-![Functionality-bidrag til Feature: NativeGoAssembly](diagrams/VP01-feature-NativeGoAssembly.svg)
+![Functionality contributions to Feature: NativeGoAssembly](diagrams/VP01-feature-NativeGoAssembly.svg)
 
-Kildegrunnlag: f0055, f0483, f0491, f0698, f0823, f1280.
+Source facts: f0055, f0483, f0491, f0698, f0823, f1280.
 
-## Functionality-bidrag til Feature: NavigableDesignDocumentation
+## Functionality contributions to Feature: NavigableDesignDocumentation
 
-![Functionality-bidrag til Feature: NavigableDesignDocumentation](diagrams/VP01-feature-NavigableDesignDocumentation.svg)
+![Functionality contributions to Feature: NavigableDesignDocumentation](diagrams/VP01-feature-NavigableDesignDocumentation.svg)
 
-Kildegrunnlag: f0083, f0129, f0190, f0218, f0494, f0565, f0710, f0719, f0734, f0746, f0808, f0820, f0828, f1072, f1267.
+Source facts: f0083, f0129, f0190, f0218, f0494, f0565, f0710, f0719, f0734, f0746, f0808, f0820, f0828, f1072, f1267.
 
-## Functionality-bidrag til Feature: StructuralModelInspection
+## Functionality contributions to Feature: StructuralModelInspection
 
-![Functionality-bidrag til Feature: StructuralModelInspection](diagrams/VP01-feature-StructuralModelInspection.svg)
+![Functionality contributions to Feature: StructuralModelInspection](diagrams/VP01-feature-StructuralModelInspection.svg)
 
-Kildegrunnlag: f0067, f0072, f0800, f1253, f1270.
+Source facts: f0067, f0072, f0800, f1253, f1270.
 
-## Functionality-bidrag til Feature: TypedDesignInspection
+## Functionality contributions to Feature: TypedDesignInspection
 
-![Functionality-bidrag til Feature: TypedDesignInspection](diagrams/VP01-feature-TypedDesignInspection.svg)
+![Functionality contributions to Feature: TypedDesignInspection](diagrams/VP01-feature-TypedDesignInspection.svg)
 
-Kildegrunnlag: f0023, f0225, f0538, f0712, f1051, f1244, f1278.
+Source facts: f0023, f0225, f0538, f0712, f1051, f1244, f1278.
 
-## Functionality-bidrag til Feature: TypedDomainBinding
+## Functionality contributions to Feature: TypedDomainBinding
 
-![Functionality-bidrag til Feature: TypedDomainBinding](diagrams/VP01-feature-TypedDomainBinding.svg)
+![Functionality contributions to Feature: TypedDomainBinding](diagrams/VP01-feature-TypedDomainBinding.svg)
 
-Kildegrunnlag: f0132, f0187, f0559, f0726, f0805.
+Source facts: f0132, f0187, f0559, f0726, f0805.
 
 
-## VP02 — Arkitektur og logisk inndeling
+## VP02 — Architecture and logical decomposition
 
-Container/Unit og contains; bibliotekstruktur er ikke en deployment-allokering.
+Container/Unit and contains; library structure is not deployment allocation.
 
-## Arkitekturrøtter — ingen kobling/allokering er utledet
+## Architecture roots — no connection/allocation is inferred
 
-![Arkitekturrøtter — ingen kobling/allokering er utledet](diagrams/VP02-roots.svg)
+![Architecture roots — no connection/allocation is inferred](diagrams/VP02-roots.svg)
 
-Kildegrunnlag: .
+Source facts: .
 
-Kun deklarasjoner.
+Declarations only.
 
-## Logisk inndeling: ContentServices
+## Logical decomposition: ContentServices
 
-![Logisk inndeling: ContentServices](diagrams/VP02-ContentServices.svg)
+![Logical decomposition: ContentServices](diagrams/VP02-ContentServices.svg)
 
-Kildegrunnlag: f0134, f0135, f0136.
+Source facts: f0134, f0135, f0136.
 
-## Logisk inndeling: DevelopmentTools
+## Logical decomposition: DevelopmentTools
 
-![Logisk inndeling: DevelopmentTools](diagrams/VP02-DevelopmentTools.svg)
+![Logical decomposition: DevelopmentTools](diagrams/VP02-DevelopmentTools.svg)
 
-Kildegrunnlag: f0169, f0170, f0171, f0172, f0173, f0174.
+Source facts: f0169, f0170, f0171, f0172, f0173, f0174.
 
-## Logisk inndeling: SdlFrontend
+## Logical decomposition: SdlFrontend
 
-![Logisk inndeling: SdlFrontend](diagrams/VP02-SdlFrontend.svg)
+![Logical decomposition: SdlFrontend](diagrams/VP02-SdlFrontend.svg)
 
-Kildegrunnlag: f0863, f0864, f0865, f0866.
+Source facts: f0863, f0864, f0865, f0866.
 
-## Logisk inndeling: SdlLibrary
+## Logical decomposition: SdlLibrary
 
-![Logisk inndeling: SdlLibrary](diagrams/VP02-SdlLibrary.svg)
+![Logical decomposition: SdlLibrary](diagrams/VP02-SdlLibrary.svg)
 
-Kildegrunnlag: f0877, f0878, f0879.
+Source facts: f0877, f0878, f0879.
 
-## Logisk inndeling: SdlRuntime
+## Logical decomposition: SdlRuntime
 
-![Logisk inndeling: SdlRuntime](diagrams/VP02-SdlRuntime.svg)
+![Logical decomposition: SdlRuntime](diagrams/VP02-SdlRuntime.svg)
 
-Kildegrunnlag: f0898, f0899, f0900, f0901, f0902.
+Source facts: f0898, f0899, f0900, f0901, f0902.
 
-## Logisk inndeling: SduiFrontend
+## Logical decomposition: SduiFrontend
 
-![Logisk inndeling: SduiFrontend](diagrams/VP02-SduiFrontend.svg)
+![Logical decomposition: SduiFrontend](diagrams/VP02-SduiFrontend.svg)
 
-Kildegrunnlag: f0958, f0959, f0960, f0961.
+Source facts: f0958, f0959, f0960, f0961.
 
-## Logisk inndeling: SduiLibrary
+## Logical decomposition: SduiLibrary
 
-![Logisk inndeling: SduiLibrary](diagrams/VP02-SduiLibrary.svg)
+![Logical decomposition: SduiLibrary](diagrams/VP02-SduiLibrary.svg)
 
-Kildegrunnlag: f1003, f1004, f1005, f1006.
+Source facts: f1003, f1004, f1005, f1006.
 
-## Logisk inndeling: SduiRuntime
+## Logical decomposition: SduiRuntime
 
-![Logisk inndeling: SduiRuntime](diagrams/VP02-SduiRuntime.svg)
+![Logical decomposition: SduiRuntime](diagrams/VP02-SduiRuntime.svg)
 
-Kildegrunnlag: f1035, f1036, f1037, f1038.
+Source facts: f1035, f1036, f1037, f1038.
 
-## Logisk inndeling: ViewServiceHost
+## Logical decomposition: ViewServiceHost
 
-![Logisk inndeling: ViewServiceHost](diagrams/VP02-ViewServiceHost.svg)
+![Logical decomposition: ViewServiceHost](diagrams/VP02-ViewServiceHost.svg)
 
-Kildegrunnlag: f1396, f1397, f1398.
+Source facts: f1396, f1397, f1398.
 
 
-## VP03 — Ansvar og kapabiliteter over arkitekturen
+## VP03 — Responsibilities and capabilities across the architecture
 
-owns, realizes og provides. Capability er ikke Feature.
+owns, realizes and provides. Capability is not Feature.
 
-## Bidrag til kapabilitet: BoundInteraction
+## Contributions to capability: BoundInteraction
 
-![Bidrag til kapabilitet: BoundInteraction](diagrams/VP03-BoundInteraction.svg)
+![Contributions to capability: BoundInteraction](diagrams/VP03-BoundInteraction.svg)
 
-Kildegrunnlag: f0133, f0185, f0727, f0806, f0829, f0913, f0914, f0915, f0916, f0917.
+Source facts: f0133, f0185, f0727, f0806, f0829, f0913, f0914, f0915, f0916, f0917.
 
-## Tilbydere av kapabilitet: BoundInteraction
+## Capability providers: BoundInteraction
 
-![Tilbydere av kapabilitet: BoundInteraction](diagrams/VP03-BoundInteraction-offers.svg)
+![Capability providers: BoundInteraction](diagrams/VP03-BoundInteraction-offers.svg)
 
-Kildegrunnlag: f0918.
+Source facts: f0918.
 
-## Bidrag til kapabilitet: DevelopmentReload
+## Contributions to capability: DevelopmentReload
 
-![Bidrag til kapabilitet: DevelopmentReload](diagrams/VP03-DevelopmentReload.svg)
+![Contributions to capability: DevelopmentReload](diagrams/VP03-DevelopmentReload.svg)
 
-Kildegrunnlag: f0089, f0563, f0656, f0678, f0731, f0760, f0761, f0762, f0763, f0821, f1089, f1090.
+Source facts: f0089, f0563, f0656, f0678, f0731, f0760, f0761, f0762, f0763, f0821, f1089, f1090.
 
-## Tilbydere av kapabilitet: DevelopmentReload
+## Capability providers: DevelopmentReload
 
-![Tilbydere av kapabilitet: DevelopmentReload](diagrams/VP03-DevelopmentReload-offers.svg)
+![Capability providers: DevelopmentReload](diagrams/VP03-DevelopmentReload-offers.svg)
 
-Kildegrunnlag: f0177, f0764, f1091.
+Source facts: f0177, f0764, f1091.
 
-## Bidrag til kapabilitet: DomainOperations
+## Contributions to capability: DomainOperations
 
-![Bidrag til kapabilitet: DomainOperations](diagrams/VP03-DomainOperations.svg)
+![Contributions to capability: DomainOperations](diagrams/VP03-DomainOperations.svg)
 
-Kildegrunnlag: f0523, f0675.
+Source facts: f0523, f0675.
 
-## Tilbydere av kapabilitet: DomainOperations
+## Capability providers: DomainOperations
 
-![Tilbydere av kapabilitet: DomainOperations](diagrams/VP03-DomainOperations-offers.svg)
+![Capability providers: DomainOperations](diagrams/VP03-DomainOperations-offers.svg)
 
-Kildegrunnlag: f0524.
+Source facts: f0524.
 
-## Bidrag til kapabilitet: ExecutableDesign
+## Contributions to capability: ExecutableDesign
 
-![Bidrag til kapabilitet: ExecutableDesign](diagrams/VP03-ExecutableDesign.svg)
+![Contributions to capability: ExecutableDesign](diagrams/VP03-ExecutableDesign.svg)
 
-Kildegrunnlag: f0081, f0084, f0085, f0086, f0087, f0140, f0142, f0214, f0215, f0560, f0589, f0603, f0743, f0848, f0849, f0850, f0851, f0859, f0872, f0873, f0903, f0904, f0907, f0908, f1077, f1242.
+Source facts: f0081, f0084, f0085, f0086, f0087, f0140, f0142, f0214, f0215, f0560, f0589, f0603, f0743, f0848, f0849, f0850, f0851, f0859, f0872, f0873, f0903, f0904, f0907, f0908, f1077, f1242.
 
-## Tilbydere av kapabilitet: ExecutableDesign
+## Capability providers: ExecutableDesign
 
-![Tilbydere av kapabilitet: ExecutableDesign](diagrams/VP03-ExecutableDesign-offers.svg)
+![Capability providers: ExecutableDesign](diagrams/VP03-ExecutableDesign-offers.svg)
 
-Kildegrunnlag: f0216, f0852, f0860, f0874, f0880, f0905, f0909.
+Source facts: f0216, f0852, f0860, f0874, f0880, f0905, f0909.
 
-## Bidrag til kapabilitet: InteractiveSession
+## Contributions to capability: InteractiveSession
 
-![Bidrag til kapabilitet: InteractiveSession](diagrams/VP03-InteractiveSession.svg)
+![Contributions to capability: InteractiveSession](diagrams/VP03-InteractiveSession.svg)
 
-Kildegrunnlag: f0021, f0088, f0141, f0143, f0188, f0591, f0598, f0696, f0744, f0802, f0824, f0946, f0947, f0948, f0949, f0979, f0981, f0982, f1029, f1030, f1031, f1039, f1040, f1078, f1142, f1224, f1225, f1226, f1245, f1260.
+Source facts: f0021, f0088, f0141, f0143, f0188, f0591, f0598, f0696, f0744, f0802, f0824, f0946, f0947, f0948, f0949, f0979, f0981, f0982, f1029, f1030, f1031, f1039, f1040, f1078, f1142, f1224, f1225, f1226, f1245, f1260.
 
-## Tilbydere av kapabilitet: InteractiveSession
+## Capability providers: InteractiveSession
 
-![Tilbydere av kapabilitet: InteractiveSession](diagrams/VP03-InteractiveSession-offers.svg)
+![Capability providers: InteractiveSession](diagrams/VP03-InteractiveSession-offers.svg)
 
-Kildegrunnlag: f0950, f0983, f1007, f1032, f1041, f1227.
+Source facts: f0950, f0983, f1007, f1032, f1041, f1227.
 
-## Bidrag til kapabilitet: MeasuredPresentation
+## Contributions to capability: MeasuredPresentation
 
-![Bidrag til kapabilitet: MeasuredPresentation](diagrams/VP03-MeasuredPresentation.svg)
+![Contributions to capability: MeasuredPresentation](diagrams/VP03-MeasuredPresentation.svg)
 
-Kildegrunnlag: f0019, f0065, f0130, f0600, f0803, f0989, f0990, f0991, f0992, f0993.
+Source facts: f0019, f0065, f0130, f0600, f0803, f0989, f0990, f0991, f0992, f0993.
 
-## Tilbydere av kapabilitet: MeasuredPresentation
+## Capability providers: MeasuredPresentation
 
-![Tilbydere av kapabilitet: MeasuredPresentation](diagrams/VP03-MeasuredPresentation-offers.svg)
+![Capability providers: MeasuredPresentation](diagrams/VP03-MeasuredPresentation-offers.svg)
 
-Kildegrunnlag: f0994, f1008.
+Source facts: f0994, f1008.
 
-## Bidrag til kapabilitet: NativeInteraction
+## Contributions to capability: NativeInteraction
 
-![Bidrag til kapabilitet: NativeInteraction](diagrams/VP03-NativeInteraction.svg)
+![Contributions to capability: NativeInteraction](diagrams/VP03-NativeInteraction.svg)
 
-Kildegrunnlag: f0124, f0248, f0249, f0250, f0251, f0267, f0268, f0535, f0732, f0741, f0747, f0832.
+Source facts: f0124, f0248, f0249, f0250, f0251, f0267, f0268, f0535, f0732, f0741, f0747, f0832.
 
-## Tilbydere av kapabilitet: NativeInteraction
+## Capability providers: NativeInteraction
 
-![Tilbydere av kapabilitet: NativeInteraction](diagrams/VP03-NativeInteraction-offers.svg)
+![Capability providers: NativeInteraction](diagrams/VP03-NativeInteraction-offers.svg)
 
-Kildegrunnlag: f0252, f0269.
+Source facts: f0252, f0269.
 
-## Bidrag til kapabilitet: NativeRealization
+## Contributions to capability: NativeRealization
 
-![Bidrag til kapabilitet: NativeRealization](diagrams/VP03-NativeRealization.svg)
+![Contributions to capability: NativeRealization](diagrams/VP03-NativeRealization.svg)
 
-Kildegrunnlag: f0056, f0484, f0492, f0505, f0506, f0513, f0514, f0515, f0699, f0818.
+Source facts: f0056, f0484, f0492, f0505, f0506, f0513, f0514, f0515, f0699, f0818.
 
-## Tilbydere av kapabilitet: NativeRealization
+## Capability providers: NativeRealization
 
-![Tilbydere av kapabilitet: NativeRealization](diagrams/VP03-NativeRealization-offers.svg)
+![Capability providers: NativeRealization](diagrams/VP03-NativeRealization-offers.svg)
 
-Kildegrunnlag: f0507, f0516.
+Source facts: f0507, f0516.
 
-## Bidrag til kapabilitet: RichContent
+## Contributions to capability: RichContent
 
-![Bidrag til kapabilitet: RichContent](diagrams/VP03-RichContent.svg)
+![Contributions to capability: RichContent](diagrams/VP03-RichContent.svg)
 
-Kildegrunnlag: f0183, f0595, f0596, f0599, f0679, f0680, f0748, f0815, f0816, f1268.
+Source facts: f0183, f0595, f0596, f0599, f0679, f0680, f0748, f0815, f0816, f1268.
 
-## Tilbydere av kapabilitet: RichContent
+## Capability providers: RichContent
 
-![Tilbydere av kapabilitet: RichContent](diagrams/VP03-RichContent-offers.svg)
+![Capability providers: RichContent](diagrams/VP03-RichContent-offers.svg)
 
-Kildegrunnlag: f0137, f0184, f0597, f0817.
+Source facts: f0137, f0184, f0597, f0817.
 
-## Bidrag til kapabilitet: SdlSourceModel
+## Contributions to capability: SdlSourceModel
 
-![Bidrag til kapabilitet: SdlSourceModel](diagrams/VP03-SdlSourceModel.svg)
+![Contributions to capability: SdlSourceModel](diagrams/VP03-SdlSourceModel.svg)
 
-Kildegrunnlag: f0070, f0138, f0640, f0702, f0811, f0867, f0875, f0891, f0892, f0894, f0923, f0925, f0926, f1125, f1251, f1256.
+Source facts: f0070, f0138, f0640, f0702, f0811, f0867, f0875, f0891, f0892, f0894, f0923, f0925, f0926, f1125, f1251, f1256.
 
-## Tilbydere av kapabilitet: SdlSourceModel
+## Capability providers: SdlSourceModel
 
-![Tilbydere av kapabilitet: SdlSourceModel](diagrams/VP03-SdlSourceModel-offers.svg)
+![Capability providers: SdlSourceModel](diagrams/VP03-SdlSourceModel-offers.svg)
 
-Kildegrunnlag: f0868, f0876, f0881, f0893, f0895, f0927.
+Source facts: f0868, f0876, f0881, f0893, f0895, f0927.
 
-## Bidrag til kapabilitet: SduiSourceModel
+## Contributions to capability: SduiSourceModel
 
-![Bidrag til kapabilitet: SduiSourceModel](diagrams/VP03-SduiSourceModel.svg)
+![Contributions to capability: SduiSourceModel](diagrams/VP03-SduiSourceModel.svg)
 
-Kildegrunnlag: f0075, f0139, f0222, f0705, f0708, f0814, f0962, f0999, f1011, f1012, f1013, f1017, f1043, f1044, f1045, f1046, f1128, f1248, f1259, f1273.
+Source facts: f0075, f0139, f0222, f0705, f0708, f0814, f0962, f0999, f1011, f1012, f1013, f1017, f1043, f1044, f1045, f1046, f1128, f1248, f1259, f1273.
 
-## Tilbydere av kapabilitet: SduiSourceModel
+## Capability providers: SduiSourceModel
 
-![Tilbydere av kapabilitet: SduiSourceModel](diagrams/VP03-SduiSourceModel-offers.svg)
+![Capability providers: SduiSourceModel](diagrams/VP03-SduiSourceModel-offers.svg)
 
-Kildegrunnlag: f0963, f1000, f1009, f1014, f1018, f1047.
+Source facts: f0963, f1000, f1009, f1014, f1018, f1047.
 
-## Bidrag til kapabilitet: SourceDiagnostics
+## Contributions to capability: SourceDiagnostics
 
-![Bidrag til kapabilitet: SourceDiagnostics](diagrams/VP03-SourceDiagnostics.svg)
+![Contributions to capability: SourceDiagnostics](diagrams/VP03-SourceDiagnostics.svg)
 
-Kildegrunnlag: f0178, f0179, f0796, f0801.
+Source facts: f0178, f0179, f0796, f0801.
 
-## Tilbydere av kapabilitet: SourceDiagnostics
+## Capability providers: SourceDiagnostics
 
-![Tilbydere av kapabilitet: SourceDiagnostics](diagrams/VP03-SourceDiagnostics-offers.svg)
+![Capability providers: SourceDiagnostics](diagrams/VP03-SourceDiagnostics-offers.svg)
 
-Kildegrunnlag: f0180.
+Source facts: f0180.
 
-## Bidrag til kapabilitet: SourceLoading
+## Contributions to capability: SourceLoading
 
-![Bidrag til kapabilitet: SourceLoading](diagrams/VP03-SourceLoading.svg)
+![Contributions to capability: SourceLoading](diagrams/VP03-SourceLoading.svg)
 
-Kildegrunnlag: f0536, f0737, f1085, f1086.
+Source facts: f0536, f0737, f1085, f1086.
 
-## Tilbydere av kapabilitet: SourceLoading
+## Capability providers: SourceLoading
 
-![Tilbydere av kapabilitet: SourceLoading](diagrams/VP03-SourceLoading-offers.svg)
+![Capability providers: SourceLoading](diagrams/VP03-SourceLoading-offers.svg)
 
-Kildegrunnlag: f1087.
+Source facts: f1087.
 
-## Bidrag til kapabilitet: StaticDocumentation
+## Contributions to capability: StaticDocumentation
 
-![Bidrag til kapabilitet: StaticDocumentation](diagrams/VP03-StaticDocumentation.svg)
+![Contributions to capability: StaticDocumentation](diagrams/VP03-StaticDocumentation.svg)
 
-Kildegrunnlag: f0094, f0095, f0121, f0127, f0223, f0233, f1022, f1023, f1024, f1415.
+Source facts: f0094, f0095, f0121, f0127, f0223, f0233, f1022, f1023, f1024, f1415.
 
-## Tilbydere av kapabilitet: StaticDocumentation
+## Capability providers: StaticDocumentation
 
-![Tilbydere av kapabilitet: StaticDocumentation](diagrams/VP03-StaticDocumentation-offers.svg)
+![Capability providers: StaticDocumentation](diagrams/VP03-StaticDocumentation-offers.svg)
 
-Kildegrunnlag: f0096, f1010, f1025.
+Source facts: f0096, f1010, f1025.
 
 
-## VP04 — Grensesnitt og samarbeid
+## VP04 — Interfaces and collaboration
 
-consumes viser bruk; ingen tilbyder, Channel eller kjørbar meldingsflyt utledes.
+consumes records use; no provider, Channel or executable message flow is inferred.
 
-## Grensesnittbruk
+## Interface use
 
-Ingen Channel eller tilbyder utledes.
+No Channel or provider is inferred.
 
-| Bruker | Interface | Faktum | Linje |
+| Consumer | Interface | Fact | Line |
 | --- | --- | --- | --- |
 | CommandLineHost | ExportSinkPort | f0090 | 555 |
 | CommandLineHost | PreparedFramePort | f0091 | 556 |
@@ -407,480 +407,480 @@ Ingen Channel eller tilbyder utledes.
 | UiStateReconciler | SduiModelPort | f1222 | 1687 |
 | UiStateReconciler | UiStatePort | f1223 | 1688 |
 
-## VP05 — Avhengigheter per modus
+## VP05 — Dependencies by mode
 
-requires in mode; modi har ingen implisitt arv.
+requires in mode; modes have no implicit inheritance.
 
-## Nødvendige porter i modus: BoundExecution
+## Required ports in mode: BoundExecution
 
-![Nødvendige porter i modus: BoundExecution](diagrams/VP05-BoundExecution.svg)
+![Required ports in mode: BoundExecution](diagrams/VP05-BoundExecution.svg)
 
-Kildegrunnlag: f0052, f0053, f0219.
+Source facts: f0052, f0053, f0219.
 
-## Nødvendige porter i modus: BoundLiveEditing
+## Required ports in mode: BoundLiveEditing
 
-![Nødvendige porter i modus: BoundLiveEditing](diagrams/VP05-BoundLiveEditing.svg)
+![Required ports in mode: BoundLiveEditing](diagrams/VP05-BoundLiveEditing.svg)
 
-Kildegrunnlag: f0161, f0162, f0164, f0165, f0167.
+Source facts: f0161, f0162, f0164, f0165, f0167.
 
-## Nødvendige porter i modus: LiveEditing
+## Required ports in mode: LiveEditing
 
-![Nødvendige porter i modus: LiveEditing](diagrams/VP05-LiveEditing.svg)
+![Required ports in mode: LiveEditing](diagrams/VP05-LiveEditing.svg)
 
-Kildegrunnlag: f0163, f0166, f0168.
+Source facts: f0163, f0166, f0168.
 
-## Nødvendige porter i modus: NativeBuild
+## Required ports in mode: NativeBuild
 
-![Nødvendige porter i modus: NativeBuild](diagrams/VP05-NativeBuild.svg)
+![Required ports in mode: NativeBuild](diagrams/VP05-NativeBuild.svg)
 
-Kildegrunnlag: f0630, f0631.
+Source facts: f0630, f0631.
 
-## Nødvendige porter i modus: RichDocument
+## Required ports in mode: RichDocument
 
-![Nødvendige porter i modus: RichDocument](diagrams/VP05-RichDocument.svg)
+![Required ports in mode: RichDocument](diagrams/VP05-RichDocument.svg)
 
-Kildegrunnlag: f0825, f0826.
+Source facts: f0825, f0826.
 
-## Nødvendige porter i modus: SourceInspection
+## Required ports in mode: SourceInspection
 
-![Nødvendige porter i modus: SourceInspection](diagrams/VP05-SourceInspection.svg)
+![Required ports in mode: SourceInspection](diagrams/VP05-SourceInspection.svg)
 
-Kildegrunnlag: f0906, f1042.
+Source facts: f0906, f1042.
 
-## Nødvendige porter i modus: StaticExport
+## Required ports in mode: StaticExport
 
-![Nødvendige porter i modus: StaticExport](diagrams/VP05-StaticExport.svg)
+![Required ports in mode: StaticExport](diagrams/VP05-StaticExport.svg)
 
-Kildegrunnlag: f0601, f1098, f1099.
+Source facts: f0601, f1098, f1099.
 
-## Nødvendige porter i modus: UiPreview
+## Required ports in mode: UiPreview
 
-![Nødvendige porter i modus: UiPreview](diagrams/VP05-UiPreview.svg)
+![Required ports in mode: UiPreview](diagrams/VP05-UiPreview.svg)
 
-Kildegrunnlag: f0602, f0621.
+Source facts: f0602, f0621.
 
 
-## VP06 — Aktiviteter og leveranseplan
+## VP06 — Activities and delivery plan
 
-refines, addresses, delivers og depends-on; planstatus er en eksplisitt kildepåstand.
+refines, addresses, delivers and depends-on; status is an explicit source claim.
 
-## Aktivitetsrøtter
+## Activity roots
 
-![Aktivitetsrøtter](diagrams/VP06-roots.svg)
+![Activity roots](diagrams/VP06-roots.svg)
 
-Kildegrunnlag: .
+Source facts: .
 
-Kun deklarasjoner.
+Declarations only.
 
-## Aktivitetsinndeling: G1FrontendPort
+## Activity decomposition: G1FrontendPort
 
-![Aktivitetsinndeling: G1FrontendPort](diagrams/VP06-detail-G1FrontendPort.svg)
+![Activity decomposition: G1FrontendPort](diagrams/VP06-detail-G1FrontendPort.svg)
 
-Kildegrunnlag: f0276, f0283, f0294, f0299.
+Source facts: f0276, f0283, f0294, f0299.
 
-## Aktivitetsinndeling: G2LayoutAndPresentation
+## Activity decomposition: G2LayoutAndPresentation
 
-![Aktivitetsinndeling: G2LayoutAndPresentation](diagrams/VP06-detail-G2LayoutAndPresentation.svg)
+![Activity decomposition: G2LayoutAndPresentation](diagrams/VP06-detail-G2LayoutAndPresentation.svg)
 
-Kildegrunnlag: f0300, f0308, f0313, f0322, f0330.
+Source facts: f0300, f0308, f0313, f0322, f0330.
 
-## Aktivitetsinndeling: G3UiRuntimeAndReload
+## Activity decomposition: G3UiRuntimeAndReload
 
-![Aktivitetsinndeling: G3UiRuntimeAndReload](diagrams/VP06-detail-G3UiRuntimeAndReload.svg)
+![Activity decomposition: G3UiRuntimeAndReload](diagrams/VP06-detail-G3UiRuntimeAndReload.svg)
 
-Kildegrunnlag: f0347, f0356, f0362, f0363.
+Source facts: f0347, f0356, f0362, f0363.
 
-## Aktivitetsinndeling: G4SdlRuntimeAndBinding
+## Activity decomposition: G4SdlRuntimeAndBinding
 
-![Aktivitetsinndeling: G4SdlRuntimeAndBinding](diagrams/VP06-detail-G4SdlRuntimeAndBinding.svg)
+![Activity decomposition: G4SdlRuntimeAndBinding](diagrams/VP06-detail-G4SdlRuntimeAndBinding.svg)
 
-Kildegrunnlag: f0374, f0389, f0399, f0406, f0407.
+Source facts: f0374, f0389, f0399, f0406, f0407.
 
-## Aktivitetsinndeling: G5NativeGeneration
+## Activity decomposition: G5NativeGeneration
 
-![Aktivitetsinndeling: G5NativeGeneration](diagrams/VP06-detail-G5NativeGeneration.svg)
+![Activity decomposition: G5NativeGeneration](diagrams/VP06-detail-G5NativeGeneration.svg)
 
-Kildegrunnlag: f0415, f0419, f0427, f0432, f0433, f0434.
+Source facts: f0415, f0419, f0427, f0432, f0433, f0434.
 
-## Aktivitetsinndeling: G6NavigableDocumentation
+## Activity decomposition: G6NavigableDocumentation
 
-![Aktivitetsinndeling: G6NavigableDocumentation](diagrams/VP06-detail-G6NavigableDocumentation.svg)
+![Activity decomposition: G6NavigableDocumentation](diagrams/VP06-detail-G6NavigableDocumentation.svg)
 
-Kildegrunnlag: f0446, f0454, f0461, f0468, f0473, f0478, f0479, f0480.
+Source facts: f0446, f0454, f0461, f0468, f0473, f0478, f0479, f0480.
 
-## Aktivitetsinndeling: InspectDesignSource
+## Activity decomposition: InspectDesignSource
 
-![Aktivitetsinndeling: InspectDesignSource](diagrams/VP06-detail-InspectDesignSource.svg)
+![Activity decomposition: InspectDesignSource](diagrams/VP06-detail-InspectDesignSource.svg)
 
-Kildegrunnlag: f0234, f0539, f0540.
+Source facts: f0234, f0539, f0540.
 
-## Aktivitetsinndeling: RealizeDesign
+## Activity decomposition: RealizeDesign
 
-![Aktivitetsinndeling: RealizeDesign](diagrams/VP06-detail-RealizeDesign.svg)
+![Activity decomposition: RealizeDesign](diagrams/VP06-detail-RealizeDesign.svg)
 
-Kildegrunnlag: f0062.
+Source facts: f0062.
 
-## Aktivitetsinndeling: ReloadDesignSession
+## Activity decomposition: ReloadDesignSession
 
-![Aktivitetsinndeling: ReloadDesignSession](diagrams/VP06-detail-ReloadDesignSession.svg)
+![Activity decomposition: ReloadDesignSession](diagrams/VP06-detail-ReloadDesignSession.svg)
 
-Kildegrunnlag: f0752, f0795.
+Source facts: f0752, f0795.
 
-## Aktivitetsinndeling: RunDesignSession
+## Activity decomposition: RunDesignSession
 
-![Aktivitetsinndeling: RunDesignSession](diagrams/VP06-detail-RunDesignSession.svg)
+![Activity decomposition: RunDesignSession](diagrams/VP06-detail-RunDesignSession.svg)
 
-Kildegrunnlag: f0830, f0831.
+Source facts: f0830, f0831.
 
-## Planlagt ansvar: G1M1ParserAndAst
+## Planned responsibilities: G1M1ParserAndAst
 
-![Planlagt ansvar: G1M1ParserAndAst](diagrams/VP06-work-G1M1ParserAndAst.svg)
+![Planned responsibilities: G1M1ParserAndAst](diagrams/VP06-work-G1M1ParserAndAst.svg)
 
-Kildegrunnlag: f0278, f0279, f0280, f0281, f0999, f1017, f1085, f1086.
+Source facts: f0278, f0279, f0280, f0281, f0999, f1017, f1085, f1086.
 
-## Planlagt ansvar: G1M2ValidationAndNormalization
+## Planned responsibilities: G1M2ValidationAndNormalization
 
-![Planlagt ansvar: G1M2ValidationAndNormalization](diagrams/VP06-work-G1M2ValidationAndNormalization.svg)
+![Planned responsibilities: G1M2ValidationAndNormalization](diagrams/VP06-work-G1M2ValidationAndNormalization.svg)
 
-Kildegrunnlag: f0284, f0285, f0286, f0287, f0288, f0289, f0290, f0291, f0962, f1011, f1012, f1013, f1043, f1044, f1045, f1046.
+Source facts: f0284, f0285, f0286, f0287, f0288, f0289, f0290, f0291, f0962, f1011, f1012, f1013, f1043, f1044, f1045, f1046.
 
-## Planlagt ansvar: G1M3Concept1AndDumps
+## Planned responsibilities: G1M3Concept1AndDumps
 
-![Planlagt ansvar: G1M3Concept1AndDumps](diagrams/VP06-work-G1M3Concept1AndDumps.svg)
+![Planned responsibilities: G1M3Concept1AndDumps](diagrams/VP06-work-G1M3Concept1AndDumps.svg)
 
-Kildegrunnlag: f0179, f0295, f0296, f1023.
+Source facts: f0179, f0295, f0296, f1023.
 
-## Planlagt ansvar: G2M1RelativeMeasurement
+## Planned responsibilities: G2M1RelativeMeasurement
 
-![Planlagt ansvar: G2M1RelativeMeasurement](diagrams/VP06-work-G2M1RelativeMeasurement.svg)
+![Planned responsibilities: G2M1RelativeMeasurement](diagrams/VP06-work-G2M1RelativeMeasurement.svg)
 
-Kildegrunnlag: f0302, f0303, f0304, f0305, f0989, f0991, f0992, f0993.
+Source facts: f0302, f0303, f0304, f0305, f0989, f0991, f0992, f0993.
 
-## Planlagt ansvar: G2M2SharedSvgGeometry
+## Planned responsibilities: G2M2SharedSvgGeometry
 
-![Planlagt ansvar: G2M2SharedSvgGeometry](diagrams/VP06-work-G2M2SharedSvgGeometry.svg)
+![Planned responsibilities: G2M2SharedSvgGeometry](diagrams/VP06-work-G2M2SharedSvgGeometry.svg)
 
-Kildegrunnlag: f0309, f0310, f0990, f1024.
+Source facts: f0309, f0310, f0990, f1024.
 
-## Planlagt ansvar: G2M3FyneInteractions
+## Planned responsibilities: G2M3FyneInteractions
 
-![Planlagt ansvar: G2M3FyneInteractions](diagrams/VP06-work-G2M3FyneInteractions.svg)
+![Planned responsibilities: G2M3FyneInteractions](diagrams/VP06-work-G2M3FyneInteractions.svg)
 
-Kildegrunnlag: f0248, f0249, f0250, f0251, f0267, f0268, f0314, f0315, f0316, f0317, f0318, f0319.
+Source facts: f0248, f0249, f0250, f0251, f0267, f0268, f0314, f0315, f0316, f0317, f0318, f0319.
 
-## Planlagt ansvar: G2M4RichContent
+## Planned responsibilities: G2M4RichContent
 
-![Planlagt ansvar: G2M4RichContent](diagrams/VP06-work-G2M4RichContent.svg)
+![Planned responsibilities: G2M4RichContent](diagrams/VP06-work-G2M4RichContent.svg)
 
-Kildegrunnlag: f0183, f0323, f0324, f0325, f0326, f0327, f0595, f0596, f0815, f0816.
+Source facts: f0183, f0323, f0324, f0325, f0326, f0327, f0595, f0596, f0815, f0816.
 
-## Planlagt ansvar: G3M1TypedUiSession
+## Planned responsibilities: G3M1TypedUiSession
 
-![Planlagt ansvar: G3M1TypedUiSession](diagrams/VP06-work-G3M1TypedUiSession.svg)
+![Planned responsibilities: G3M1TypedUiSession](diagrams/VP06-work-G3M1TypedUiSession.svg)
 
-Kildegrunnlag: f0331, f0332, f0333, f0334, f0335, f0336, f0337, f0338, f0339, f0340, f0341, f0342, f0343, f0946, f0947, f0948, f0949, f0979, f0980, f0981, f0982, f1029, f1030, f1031, f1039, f1040.
+Source facts: f0331, f0332, f0333, f0334, f0335, f0336, f0337, f0338, f0339, f0340, f0341, f0342, f0343, f0946, f0947, f0948, f0949, f0979, f0980, f0981, f0982, f1029, f1030, f1031, f1039, f1040.
 
-## Planlagt ansvar: G3M2CandidatePublication
+## Planned responsibilities: G3M2CandidatePublication
 
-![Planlagt ansvar: G3M2CandidatePublication](diagrams/VP06-work-G3M2CandidatePublication.svg)
+![Planned responsibilities: G3M2CandidatePublication](diagrams/VP06-work-G3M2CandidatePublication.svg)
 
-Kildegrunnlag: f0348, f0349, f0350, f0351, f0352, f0353, f0760, f0761, f0762, f0763, f1089, f1090.
+Source facts: f0348, f0349, f0350, f0351, f0352, f0353, f0760, f0761, f0762, f0763, f1089, f1090.
 
-## Planlagt ansvar: G3M3CompatibleState
+## Planned responsibilities: G3M3CompatibleState
 
-![Planlagt ansvar: G3M3CompatibleState](diagrams/VP06-work-G3M3CompatibleState.svg)
+![Planned responsibilities: G3M3CompatibleState](diagrams/VP06-work-G3M3CompatibleState.svg)
 
-Kildegrunnlag: f0357, f0358, f0359, f1224, f1225, f1226.
+Source facts: f0357, f0358, f0359, f1224, f1225, f1226.
 
-## Planlagt ansvar: G4M1SdlFrontend
+## Planned responsibilities: G4M1SdlFrontend
 
-![Planlagt ansvar: G4M1SdlFrontend](diagrams/VP06-work-G4M1SdlFrontend.svg)
+![Planned responsibilities: G4M1SdlFrontend](diagrams/VP06-work-G4M1SdlFrontend.svg)
 
-Kildegrunnlag: f0365, f0366, f0367, f0368, f0369, f0370, f0371, f0372, f0867, f0875, f0891, f0892, f0894, f0923, f0925, f0926.
+Source facts: f0365, f0366, f0367, f0368, f0369, f0370, f0371, f0372, f0867, f0875, f0891, f0892, f0894, f0923, f0925, f0926.
 
-## Planlagt ansvar: G4M2TypedExecution
+## Planned responsibilities: G4M2TypedExecution
 
-![Planlagt ansvar: G4M2TypedExecution](diagrams/VP06-work-G4M2TypedExecution.svg)
+![Planned responsibilities: G4M2TypedExecution](diagrams/VP06-work-G4M2TypedExecution.svg)
 
-Kildegrunnlag: f0375, f0376, f0377, f0378, f0379, f0380, f0381, f0382, f0383, f0384, f0385, f0386, f0523, f0848, f0849, f0850, f0851, f0859, f0872, f0873, f0903, f0904, f0907, f0908.
+Source facts: f0375, f0376, f0377, f0378, f0379, f0380, f0381, f0382, f0383, f0384, f0385, f0386, f0523, f0848, f0849, f0850, f0851, f0859, f0872, f0873, f0903, f0904, f0907, f0908.
 
-## Planlagt ansvar: G4M3UiDomainBinding
+## Planned responsibilities: G4M3UiDomainBinding
 
-![Planlagt ansvar: G4M3UiDomainBinding](diagrams/VP06-work-G4M3UiDomainBinding.svg)
+![Planned responsibilities: G4M3UiDomainBinding](diagrams/VP06-work-G4M3UiDomainBinding.svg)
 
-Kildegrunnlag: f0178, f0390, f0391, f0392, f0393, f0394, f0395, f0913, f0914, f0915, f0916, f0917.
+Source facts: f0178, f0390, f0391, f0392, f0393, f0394, f0395, f0913, f0914, f0915, f0916, f0917.
 
-## Planlagt ansvar: G4M4DomainReload
+## Planned responsibilities: G4M4DomainReload
 
-![Planlagt ansvar: G4M4DomainReload](diagrams/VP06-work-G4M4DomainReload.svg)
+![Planned responsibilities: G4M4DomainReload](diagrams/VP06-work-G4M4DomainReload.svg)
 
-Kildegrunnlag: f0214, f0215, f0400, f0401, f0402, f0506.
+Source facts: f0214, f0215, f0400, f0401, f0402, f0506.
 
-## Planlagt ansvar: G5M1GeneratedGo
+## Planned responsibilities: G5M1GeneratedGo
 
-![Planlagt ansvar: G5M1GeneratedGo](diagrams/VP06-work-G5M1GeneratedGo.svg)
+![Planned responsibilities: G5M1GeneratedGo](diagrams/VP06-work-G5M1GeneratedGo.svg)
 
-Kildegrunnlag: f0409, f0410, f0411, f0412, f0505, f0513, f0514, f0515.
+Source facts: f0409, f0410, f0411, f0412, f0505, f0513, f0514, f0515.
 
-## Planlagt ansvar: G5M2BehaviorParity
+## Planned responsibilities: G5M2BehaviorParity
 
-![Planlagt ansvar: G5M2BehaviorParity](diagrams/VP06-work-G5M2BehaviorParity.svg)
+![Planned responsibilities: G5M2BehaviorParity](diagrams/VP06-work-G5M2BehaviorParity.svg)
 
-Kildegrunnlag: f0176, f0416.
+Source facts: f0176, f0416.
 
-## Planlagt ansvar: G5M3DocumentationExport
+## Planned responsibilities: G5M3DocumentationExport
 
-![Planlagt ansvar: G5M3DocumentationExport](diagrams/VP06-work-G5M3DocumentationExport.svg)
+![Planned responsibilities: G5M3DocumentationExport](diagrams/VP06-work-G5M3DocumentationExport.svg)
 
-Kildegrunnlag: f0094, f0095, f0420, f0421, f0422, f1022.
+Source facts: f0094, f0095, f0420, f0421, f0422, f1022.
 
-## Planlagt ansvar: G5M4RetirePython
+## Planned responsibilities: G5M4RetirePython
 
-![Planlagt ansvar: G5M4RetirePython](diagrams/VP06-work-G5M4RetirePython.svg)
+![Planned responsibilities: G5M4RetirePython](diagrams/VP06-work-G5M4RetirePython.svg)
 
-Kildegrunnlag: f0175, f0428.
+Source facts: f0175, f0428.
 
-## Planlagt ansvar: G6M1StaticNavigation
+## Planned responsibilities: G6M1StaticNavigation
 
-![Planlagt ansvar: G6M1StaticNavigation](diagrams/VP06-work-G6M1StaticNavigation.svg)
+![Planned responsibilities: G6M1StaticNavigation](diagrams/VP06-work-G6M1StaticNavigation.svg)
 
-Kildegrunnlag: f0436, f0437, f0438, f0439, f0440, f0441, f0442, f0443, f0929, f0930, f0931, f0932, f0933, f0934, f0936, f0939.
+Source facts: f0436, f0437, f0438, f0439, f0440, f0441, f0442, f0443, f0929, f0930, f0931, f0932, f0933, f0934, f0936, f0939.
 
-## Planlagt ansvar: G6M2OnDemandViews
+## Planned responsibilities: G6M2OnDemandViews
 
-![Planlagt ansvar: G6M2OnDemandViews](diagrams/VP06-work-G6M2OnDemandViews.svg)
+![Planned responsibilities: G6M2OnDemandViews](diagrams/VP06-work-G6M2OnDemandViews.svg)
 
-Kildegrunnlag: f0193, f0196, f0447, f0448, f0449, f0450, f0451, f0937, f0938, f1282.
+Source facts: f0193, f0196, f0447, f0448, f0449, f0450, f0451, f0937, f0938, f1282.
 
-## Planlagt ansvar: G6M3XfmdNavigation
+## Planned responsibilities: G6M3XfmdNavigation
 
-![Planlagt ansvar: G6M3XfmdNavigation](diagrams/VP06-work-G6M3XfmdNavigation.svg)
+![Planned responsibilities: G6M3XfmdNavigation](diagrams/VP06-work-G6M3XfmdNavigation.svg)
 
-Kildegrunnlag: f0455, f0456, f0457, f0458, f1406, f1407, f1416, f1417.
+Source facts: f0455, f0456, f0457, f0458, f1406, f1407, f1416, f1417.
 
-## Planlagt ansvar: G6M4SessionPublication
+## Planned responsibilities: G6M4SessionPublication
 
-![Planlagt ansvar: G6M4SessionPublication](diagrams/VP06-work-G6M4SessionPublication.svg)
+![Planned responsibilities: G6M4SessionPublication](diagrams/VP06-work-G6M4SessionPublication.svg)
 
-Kildegrunnlag: f0194, f0195, f0462, f0463, f0464, f0465, f1281, f1283.
+Source facts: f0194, f0195, f0462, f0463, f0464, f0465, f1281, f1283.
 
-## Planlagt ansvar: G6M5SemanticNotation
+## Planned responsibilities: G6M5SemanticNotation
 
-![Planlagt ansvar: G6M5SemanticNotation](diagrams/VP06-work-G6M5SemanticNotation.svg)
+![Planned responsibilities: G6M5SemanticNotation](diagrams/VP06-work-G6M5SemanticNotation.svg)
 
-Kildegrunnlag: f0469, f0470, f0928, f0940.
+Source facts: f0469, f0470, f0928, f0940.
 
-## Planlagt ansvar: G6M6ClassViews
+## Planned responsibilities: G6M6ClassViews
 
-![Planlagt ansvar: G6M6ClassViews](diagrams/VP06-work-G6M6ClassViews.svg)
+![Planned responsibilities: G6M6ClassViews](diagrams/VP06-work-G6M6ClassViews.svg)
 
-Kildegrunnlag: f0474, f0475, f0924, f0935.
+Source facts: f0474, f0475, f0924, f0935.
 
-## Eksplisitte aktivitetsavhengigheter
+## Explicit activity dependencies
 
-![Eksplisitte aktivitetsavhengigheter](diagrams/VP06-dependencies.svg)
+![Explicit activity dependencies](diagrams/VP06-dependencies.svg)
 
-Kildegrunnlag: f0292, f0297, f0306, f0311, f0320, f0328, f0344, f0345, f0354, f0360, f0387, f0396, f0397, f0403, f0404, f0413, f0417, f0423, f0424, f0425, f0429, f0430, f0444, f0452, f0459, f0466, f0471, f0476.
+Source facts: f0292, f0297, f0306, f0311, f0320, f0328, f0344, f0345, f0354, f0360, f0387, f0396, f0397, f0403, f0404, f0413, f0417, f0423, f0424, f0425, f0429, f0430, f0444, f0452, f0459, f0466, f0471, f0476.
 
 
-## VP07 — Features over arkitekturen
+## VP07 — Features across the architecture
 
-contributes-to, owns og eksplisitt allocated-to per modus. Uspesifisert allokering vises som hull.
+contributes-to, owns and explicit allocated-to per mode. Unspecified allocation is reported as a gap.
 
-## Feature: DesignDocumentation — modus DocumentBrowsing
+## Feature: DesignDocumentation — mode DocumentBrowsing
 
-![Feature: DesignDocumentation — modus DocumentBrowsing](diagrams/VP07-DesignDocumentation-DocumentBrowsing.svg)
+![Feature: DesignDocumentation — mode DocumentBrowsing](diagrams/VP07-DesignDocumentation-DocumentBrowsing.svg)
 
-Kildegrunnlag: f0095, f0126, f0232, f0236, f0237, f0714, f0715, f0931, f0936, f0939, f1022, f1024, f1136, f1137, f1414.
+Source facts: f0095, f0126, f0232, f0236, f0237, f0714, f0715, f0931, f0936, f0939, f1022, f1024, f1136, f1137, f1414.
 
-## Feature: DesignDocumentation — modus SourceInspection
+## Feature: DesignDocumentation — mode SourceInspection
 
-![Feature: DesignDocumentation — modus SourceInspection](diagrams/VP07-DesignDocumentation-SourceInspection.svg)
+![Feature: DesignDocumentation — mode SourceInspection](diagrams/VP07-DesignDocumentation-SourceInspection.svg)
 
-Kildegrunnlag: f0095, f0126, f0232, f0237, f0715, f0931, f0936, f0939, f1022, f1024, f1134, f1137, f1414.
+Source facts: f0095, f0126, f0232, f0237, f0715, f0931, f0936, f0939, f1022, f1024, f1134, f1137, f1414.
 
-## Feature: DesignDocumentation — modus StaticExport
+## Feature: DesignDocumentation — mode StaticExport
 
-![Feature: DesignDocumentation — modus StaticExport](diagrams/VP07-DesignDocumentation-StaticExport.svg)
+![Feature: DesignDocumentation — mode StaticExport](diagrams/VP07-DesignDocumentation-StaticExport.svg)
 
-Kildegrunnlag: f0095, f0125, f0126, f0231, f0232, f0235, f0237, f0713, f0715, f0931, f0936, f0939, f1022, f1024, f1135, f1137, f1413, f1414.
+Source facts: f0095, f0125, f0126, f0231, f0232, f0235, f0237, f0713, f0715, f0931, f0936, f0939, f1022, f1024, f1135, f1137, f1413, f1414.
 
-## Feature: InteractiveUiPreview — modus UiPreview
+## Feature: InteractiveUiPreview — mode UiPreview
 
-![Feature: InteractiveUiPreview — modus UiPreview](diagrams/VP07-InteractiveUiPreview-UiPreview.svg)
+![Feature: InteractiveUiPreview — mode UiPreview](diagrams/VP07-InteractiveUiPreview-UiPreview.svg)
 
-Kildegrunnlag: f0017, f0018, f0063, f0064, f0122, f0123, f0248, f0250, f0267, f0533, f0534, f0738, f0739, f0989, f0990.
+Source facts: f0017, f0018, f0063, f0064, f0122, f0123, f0248, f0250, f0267, f0533, f0534, f0738, f0739, f0989, f0990.
 
-## Feature: LiveModelReload — modus LiveEditing
+## Feature: LiveModelReload — mode LiveEditing
 
-![Feature: LiveModelReload — modus LiveEditing](diagrams/VP07-LiveModelReload-LiveEditing.svg)
+![Feature: LiveModelReload — mode LiveEditing](diagrams/VP07-LiveModelReload-LiveEditing.svg)
 
-Kildegrunnlag: f0179, f0561, f0562, f0654, f0655, f0676, f0677, f0694, f0695, f0720, f0721, f0728, f0729, f0760, f0761, f0762, f0798, f0799, f0980, f1090, f1225.
+Source facts: f0179, f0561, f0562, f0654, f0655, f0676, f0677, f0694, f0695, f0720, f0721, f0728, f0729, f0760, f0761, f0762, f0798, f0799, f0980, f1090, f1225.
 
-## Feature: LiveModelReload — modus SourceInspection
+## Feature: LiveModelReload — mode SourceInspection
 
-![Feature: LiveModelReload — modus SourceInspection](diagrams/VP07-LiveModelReload-SourceInspection.svg)
+![Feature: LiveModelReload — mode SourceInspection](diagrams/VP07-LiveModelReload-SourceInspection.svg)
 
-Kildegrunnlag: f0179, f0562, f0655, f0677, f0695, f0721, f0729, f0760, f0761, f0762, f0797, f0799, f0980, f1090, f1225.
+Source facts: f0179, f0562, f0655, f0677, f0695, f0721, f0729, f0760, f0761, f0762, f0797, f0799, f0980, f1090, f1225.
 
-## Feature: NativeGoAssembly — modus NativeBuild
+## Feature: NativeGoAssembly — mode NativeBuild
 
-![Feature: NativeGoAssembly — modus NativeBuild](diagrams/VP07-NativeGoAssembly-NativeBuild.svg)
+![Feature: NativeGoAssembly — mode NativeBuild](diagrams/VP07-NativeGoAssembly-NativeBuild.svg)
 
-Kildegrunnlag: f0054, f0055, f0175, f0176, f0482, f0483, f0490, f0491, f0505, f0513, f0514, f0515, f0697, f0698, f0822, f0823, f1279, f1280.
+Source facts: f0054, f0055, f0175, f0176, f0482, f0483, f0490, f0491, f0505, f0513, f0514, f0515, f0697, f0698, f0822, f0823, f1279, f1280.
 
-## Feature: NavigableDesignDocumentation — modus DocumentBrowsing
+## Feature: NavigableDesignDocumentation — mode DocumentBrowsing
 
-![Feature: NavigableDesignDocumentation — modus DocumentBrowsing](diagrams/VP07-NavigableDesignDocumentation-DocumentBrowsing.svg)
+![Feature: NavigableDesignDocumentation — mode DocumentBrowsing](diagrams/VP07-NavigableDesignDocumentation-DocumentBrowsing.svg)
 
-Kildegrunnlag: f0082, f0083, f0128, f0129, f0189, f0190, f0193, f0194, f0195, f0196, f0217, f0218, f0493, f0494, f0564, f0565, f0709, f0710, f0718, f0719, f0733, f0734, f0745, f0746, f0807, f0808, f0819, f0820, f0827, f0828, f0929, f0932, f0934, f0937, f1071, f1072, f1266, f1267, f1281, f1282, f1283, f1406, f1407, f1416, f1417.
+Source facts: f0082, f0083, f0128, f0129, f0189, f0190, f0193, f0194, f0195, f0196, f0217, f0218, f0493, f0494, f0564, f0565, f0709, f0710, f0718, f0719, f0733, f0734, f0745, f0746, f0807, f0808, f0819, f0820, f0827, f0828, f0929, f0932, f0934, f0937, f1071, f1072, f1266, f1267, f1281, f1282, f1283, f1406, f1407, f1416, f1417.
 
-## Feature: StructuralModelInspection — modus LiveEditing
+## Feature: StructuralModelInspection — mode LiveEditing
 
-![Feature: StructuralModelInspection — modus LiveEditing](diagrams/VP07-StructuralModelInspection-LiveEditing.svg)
+![Feature: StructuralModelInspection — mode LiveEditing](diagrams/VP07-StructuralModelInspection-LiveEditing.svg)
 
-Kildegrunnlag: f0067, f0072, f0179, f0798, f0800, f0894, f0926, f1017, f1046, f1253, f1270.
+Source facts: f0067, f0072, f0179, f0798, f0800, f0894, f0926, f1017, f1046, f1253, f1270.
 
-## Feature: StructuralModelInspection — modus SourceInspection
+## Feature: StructuralModelInspection — mode SourceInspection
 
-![Feature: StructuralModelInspection — modus SourceInspection](diagrams/VP07-StructuralModelInspection-SourceInspection.svg)
+![Feature: StructuralModelInspection — mode SourceInspection](diagrams/VP07-StructuralModelInspection-SourceInspection.svg)
 
-Kildegrunnlag: f0066, f0067, f0071, f0072, f0179, f0797, f0800, f0894, f0926, f1017, f1046, f1252, f1253, f1269, f1270.
+Source facts: f0066, f0067, f0071, f0072, f0179, f0797, f0800, f0894, f0926, f1017, f1046, f1252, f1253, f1269, f1270.
 
-## Feature: TypedDesignInspection — modus DocumentBrowsing
+## Feature: TypedDesignInspection — mode DocumentBrowsing
 
-![Feature: TypedDesignInspection — modus DocumentBrowsing](diagrams/VP07-TypedDesignInspection-DocumentBrowsing.svg)
+![Feature: TypedDesignInspection — mode DocumentBrowsing](diagrams/VP07-TypedDesignInspection-DocumentBrowsing.svg)
 
-Kildegrunnlag: f0022, f0023, f0224, f0225, f0537, f0538, f0711, f0712, f0924, f0928, f0930, f0933, f0935, f0938, f0940, f1050, f1051, f1243, f1244, f1277, f1278.
+Source facts: f0022, f0023, f0224, f0225, f0537, f0538, f0711, f0712, f0924, f0928, f0930, f0933, f0935, f0938, f0940, f1050, f1051, f1243, f1244, f1277, f1278.
 
-## Feature: TypedDomainBinding — modus BoundExecution
+## Feature: TypedDomainBinding — mode BoundExecution
 
-![Feature: TypedDomainBinding — modus BoundExecution](diagrams/VP07-TypedDomainBinding-BoundExecution.svg)
+![Feature: TypedDomainBinding — mode BoundExecution](diagrams/VP07-TypedDomainBinding-BoundExecution.svg)
 
-Kildegrunnlag: f0131, f0132, f0186, f0187, f0558, f0559, f0725, f0726, f0804, f0805, f0850, f0913, f0915, f0916, f0947.
+Source facts: f0131, f0132, f0186, f0187, f0558, f0559, f0725, f0726, f0804, f0805, f0850, f0913, f0915, f0916, f0947.
 
 
-Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til DesignDocumentation. (ComposeMarkdownDocument; mode=DocumentBrowsing).
+Model gap UNSPECIFIED_ALLOCATION: Container allocation is unspecified for contributions to DesignDocumentation. (ComposeMarkdownDocument; mode=DocumentBrowsing).
 
-Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til DesignDocumentation. (ExportSvgSnapshot; mode=DocumentBrowsing).
+Model gap UNSPECIFIED_ALLOCATION: Container allocation is unspecified for contributions to DesignDocumentation. (ExportSvgSnapshot; mode=DocumentBrowsing).
 
-Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til DesignDocumentation. (WriteGeneratedArtifacts; mode=DocumentBrowsing).
+Model gap UNSPECIFIED_ALLOCATION: Container allocation is unspecified for contributions to DesignDocumentation. (WriteGeneratedArtifacts; mode=DocumentBrowsing).
 
-Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til DesignDocumentation. (ComposeMarkdownDocument; mode=SourceInspection).
+Model gap UNSPECIFIED_ALLOCATION: Container allocation is unspecified for contributions to DesignDocumentation. (ComposeMarkdownDocument; mode=SourceInspection).
 
-Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til DesignDocumentation. (ExportSvgSnapshot; mode=SourceInspection).
+Model gap UNSPECIFIED_ALLOCATION: Container allocation is unspecified for contributions to DesignDocumentation. (ExportSvgSnapshot; mode=SourceInspection).
 
-Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til DesignDocumentation. (ExportViewpointMarkdown; mode=SourceInspection).
+Model gap UNSPECIFIED_ALLOCATION: Container allocation is unspecified for contributions to DesignDocumentation. (ExportViewpointMarkdown; mode=SourceInspection).
 
-Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til DesignDocumentation. (ProjectSdlViewpoints; mode=SourceInspection).
+Model gap UNSPECIFIED_ALLOCATION: Container allocation is unspecified for contributions to DesignDocumentation. (ProjectSdlViewpoints; mode=SourceInspection).
 
-Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til DesignDocumentation. (WriteGeneratedArtifacts; mode=SourceInspection).
+Model gap UNSPECIFIED_ALLOCATION: Container allocation is unspecified for contributions to DesignDocumentation. (WriteGeneratedArtifacts; mode=SourceInspection).
 
-Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til LiveModelReload. (KeepLastValidModels; mode=SourceInspection).
+Model gap UNSPECIFIED_ALLOCATION: Container allocation is unspecified for contributions to LiveModelReload. (KeepLastValidModels; mode=SourceInspection).
 
-Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til LiveModelReload. (ObserveSourceChanges; mode=SourceInspection).
+Model gap UNSPECIFIED_ALLOCATION: Container allocation is unspecified for contributions to LiveModelReload. (ObserveSourceChanges; mode=SourceInspection).
 
-Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til LiveModelReload. (PrepareCandidateModels; mode=SourceInspection).
+Model gap UNSPECIFIED_ALLOCATION: Container allocation is unspecified for contributions to LiveModelReload. (PrepareCandidateModels; mode=SourceInspection).
 
-Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til LiveModelReload. (PreserveCompatibleUiState; mode=SourceInspection).
+Model gap UNSPECIFIED_ALLOCATION: Container allocation is unspecified for contributions to LiveModelReload. (PreserveCompatibleUiState; mode=SourceInspection).
 
-Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til LiveModelReload. (ProjectUiGeneration; mode=SourceInspection).
+Model gap UNSPECIFIED_ALLOCATION: Container allocation is unspecified for contributions to LiveModelReload. (ProjectUiGeneration; mode=SourceInspection).
 
-Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til LiveModelReload. (PublishModelGeneration; mode=SourceInspection).
+Model gap UNSPECIFIED_ALLOCATION: Container allocation is unspecified for contributions to LiveModelReload. (PublishModelGeneration; mode=SourceInspection).
 
-Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til StructuralModelInspection. (BuildSdlAst; mode=LiveEditing).
+Model gap UNSPECIFIED_ALLOCATION: Container allocation is unspecified for contributions to StructuralModelInspection. (BuildSdlAst; mode=LiveEditing).
 
-Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til StructuralModelInspection. (BuildSduiAst; mode=LiveEditing).
+Model gap UNSPECIFIED_ALLOCATION: Container allocation is unspecified for contributions to StructuralModelInspection. (BuildSduiAst; mode=LiveEditing).
 
-Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til StructuralModelInspection. (ValidateSdlStructure; mode=LiveEditing).
+Model gap UNSPECIFIED_ALLOCATION: Container allocation is unspecified for contributions to StructuralModelInspection. (ValidateSdlStructure; mode=LiveEditing).
 
-Modellhull UNSPECIFIED_ALLOCATION: Container-allokering er uspesifisert for bidrag til StructuralModelInspection. (ValidateWidgetArguments; mode=LiveEditing).
+Model gap UNSPECIFIED_ALLOCATION: Container allocation is unspecified for contributions to StructuralModelInspection. (ValidateWidgetArguments; mode=LiveEditing).
 
-## VP08 — Channel-kontrakter og sekvenser
+## VP08 — Channel contracts and sequences
 
-Eksplisitte scenario-steg validert mot permits, deltakelse, modus og request/resultat-korrelasjon.
+Explicit scenario steps validated against permits, participation, mode and request/result correlation.
 
-## Scenario: BoundActionAccepted — modus BoundExecution
+## Scenario: BoundActionAccepted — mode BoundExecution
 
-![Scenario: BoundActionAccepted — modus BoundExecution](diagrams/VP08-BoundActionAccepted.svg)
+![Scenario: BoundActionAccepted — mode BoundExecution](diagrams/VP08-BoundActionAccepted.svg)
 
-Kildegrunnlag: f0028, f0029, f0030, f0031, f0032, f0033, f0034, f0035, f0036, f0037, f0038, f0039, f0040, f0047, f0048, f0049, f0050, f0051, f0207, f0208, f0209, f0210, f0211, f0256, f0257, f0258, f0519, f0521, f0522, f0525, f0527, f0632, f0635, f0636, f0833, f0835, f0836, f0837, f0838, f0839, f0840, f0841, f0853, f0854, f0855, f0856, f0919, f0920, f0921, f0922, f0951, f0953, f0954, f0955, f0984, f1149, f1150, f1151, f1152, f1153, f1178, f1180, f1181, f1186, f1188, f1190.
+Source facts: f0028, f0029, f0030, f0031, f0032, f0033, f0034, f0035, f0036, f0037, f0038, f0039, f0040, f0047, f0048, f0049, f0050, f0051, f0207, f0208, f0209, f0210, f0211, f0256, f0257, f0258, f0519, f0521, f0522, f0525, f0527, f0632, f0635, f0636, f0833, f0835, f0836, f0837, f0838, f0839, f0840, f0841, f0853, f0854, f0855, f0856, f0919, f0920, f0921, f0922, f0951, f0953, f0954, f0955, f0984, f1149, f1150, f1151, f1152, f1153, f1178, f1180, f1181, f1186, f1188, f1190.
 
-## Scenario: BoundActionRejected — modus BoundExecution
+## Scenario: BoundActionRejected — mode BoundExecution
 
-![Scenario: BoundActionRejected — modus BoundExecution](diagrams/VP08-BoundActionRejected.svg)
+![Scenario: BoundActionRejected — mode BoundExecution](diagrams/VP08-BoundActionRejected.svg)
 
-Kildegrunnlag: f0041, f0042, f0043, f0044, f0045, f0046, f0255, f0257, f0632, f0634, f0635, f0951, f0952, f1146, f1147, f1148, f1149, f1150.
+Source facts: f0041, f0042, f0043, f0044, f0045, f0046, f0255, f0257, f0632, f0634, f0635, f0951, f0952, f1146, f1147, f1148, f1149, f1150.
 
-## Scenario: InteractiveFramePrepared — modus UiPreview
+## Scenario: InteractiveFramePrepared — mode UiPreview
 
-![Scenario: InteractiveFramePrepared — modus UiPreview](diagrams/VP08-InteractiveFramePrepared.svg)
+![Scenario: InteractiveFramePrepared — mode UiPreview](diagrams/VP08-InteractiveFramePrepared.svg)
 
-Kildegrunnlag: f0242, f0244, f0245, f0253, f0254, f0270, f0271, f0274, f0275, f0541, f0542, f0543, f0544, f0545, f0546, f0547, f0548, f0549, f0572, f0574, f0575, f0578, f0579, f0580, f0581, f0582, f0685, f0686, f0687, f0688, f0689, f0996, f0998.
+Source facts: f0242, f0244, f0245, f0253, f0254, f0270, f0271, f0274, f0275, f0541, f0542, f0543, f0544, f0545, f0546, f0547, f0548, f0549, f0572, f0574, f0575, f0578, f0579, f0580, f0581, f0582, f0685, f0686, f0687, f0688, f0689, f0996, f0998.
 
-## Scenario: InvalidViewSelectionRejected — modus DocumentBrowsing
+## Scenario: InvalidViewSelectionRejected — mode DocumentBrowsing
 
-![Scenario: InvalidViewSelectionRejected — modus DocumentBrowsing](diagrams/VP08-InvalidViewSelectionRejected.svg)
+![Scenario: InvalidViewSelectionRejected — mode DocumentBrowsing](diagrams/VP08-InvalidViewSelectionRejected.svg)
 
-Kildegrunnlag: f0199, f0201, f0551, f0552, f0553, f0554, f0555, f0556, f0557, f1052, f1053, f1327, f1329, f1331, f1383, f1384, f1385, f1422, f1423.
+Source facts: f0199, f0201, f0551, f0552, f0553, f0554, f0555, f0556, f0557, f1052, f1053, f1327, f1329, f1331, f1383, f1384, f1385, f1422, f1423.
 
-## Scenario: NativeProgramBuilt — modus NativeBuild
+## Scenario: NativeProgramBuilt — mode NativeBuild
 
-![Scenario: NativeProgramBuilt — modus NativeBuild](diagrams/VP08-NativeProgramBuilt.svg)
+![Scenario: NativeProgramBuilt — mode NativeBuild](diagrams/VP08-NativeProgramBuilt.svg)
 
-Kildegrunnlag: f0057, f0058, f0059, f0060, f0061, f0097, f0098, f0099, f0100, f0485, f0486, f0487, f0488, f0489, f0499, f0501, f0502, f0508, f0509, f0517, f0518, f0529, f0531, f0532, f0622, f0623, f0624, f0625, f0626, f0627, f0628, f0629.
+Source facts: f0057, f0058, f0059, f0060, f0061, f0097, f0098, f0099, f0100, f0485, f0486, f0487, f0488, f0489, f0499, f0501, f0502, f0508, f0509, f0517, f0518, f0529, f0531, f0532, f0622, f0623, f0624, f0625, f0626, f0627, f0628, f0629.
 
-## Scenario: SdlModelReloadAccepted — modus BoundLiveEditing
+## Scenario: SdlModelReloadAccepted — mode BoundLiveEditing
 
-![Scenario: SdlModelReloadAccepted — modus BoundLiveEditing](diagrams/VP08-SdlModelReloadAccepted.svg)
+![Scenario: SdlModelReloadAccepted — mode BoundLiveEditing](diagrams/VP08-SdlModelReloadAccepted.svg)
 
-Kildegrunnlag: f0108, f0109, f0110, f0111, f0112, f0608, f0610, f0612, f0765, f0767, f0771, f0772, f0781, f0782, f0783, f0789, f0790, f0842, f0844, f0845, f0869, f0870, f0882, f0883, f0884, f0885, f0886, f0887, f0888, f0889, f0890, f1092, f1096.
+Source facts: f0108, f0109, f0110, f0111, f0112, f0608, f0610, f0612, f0765, f0767, f0771, f0772, f0781, f0782, f0783, f0789, f0790, f0842, f0844, f0845, f0869, f0870, f0882, f0883, f0884, f0885, f0886, f0887, f0888, f0889, f0890, f1092, f1096.
 
-## Scenario: SelectedViewOpened — modus DocumentBrowsing
+## Scenario: SelectedViewOpened — mode DocumentBrowsing
 
-![Scenario: SelectedViewOpened — modus DocumentBrowsing](diagrams/VP08-SelectedViewOpened.svg)
+![Scenario: SelectedViewOpened — mode DocumentBrowsing](diagrams/VP08-SelectedViewOpened.svg)
 
-Kildegrunnlag: f0191, f0192, f0197, f0198, f0199, f0200, f0202, f0204, f0205, f0206, f0566, f0567, f0723, f0724, f0735, f0736, f0941, f0942, f1052, f1053, f1054, f1055, f1056, f1057, f1058, f1059, f1060, f1061, f1062, f1063, f1064, f1065, f1066, f1067, f1068, f1069, f1070, f1284, f1285, f1291, f1292, f1293, f1298, f1300, f1301, f1303, f1304, f1305, f1316, f1318, f1319, f1320, f1321, f1322, f1327, f1329, f1330, f1343, f1344, f1345, f1350, f1352, f1353, f1367, f1369, f1370, f1378, f1379, f1380, f1408, f1410, f1411, f1412, f1418, f1419, f1421, f1423.
+Source facts: f0191, f0192, f0197, f0198, f0199, f0200, f0202, f0204, f0205, f0206, f0566, f0567, f0723, f0724, f0735, f0736, f0941, f0942, f1052, f1053, f1054, f1055, f1056, f1057, f1058, f1059, f1060, f1061, f1062, f1063, f1064, f1065, f1066, f1067, f1068, f1069, f1070, f1284, f1285, f1291, f1292, f1293, f1298, f1300, f1301, f1303, f1304, f1305, f1316, f1318, f1319, f1320, f1321, f1322, f1327, f1329, f1330, f1343, f1344, f1345, f1350, f1352, f1353, f1367, f1369, f1370, f1378, f1379, f1380, f1408, f1410, f1411, f1412, f1418, f1419, f1421, f1423.
 
-## Scenario: StaticFrameExported — modus StaticExport
+## Scenario: StaticFrameExported — mode StaticExport
 
-![Scenario: StaticFrameExported — modus StaticExport](diagrams/VP08-StaticFrameExported.svg)
+![Scenario: StaticFrameExported — mode StaticExport](diagrams/VP08-StaticFrameExported.svg)
 
-Kildegrunnlag: f0101, f0102, f0103, f0104, f0226, f0227, f0228, f0229, f0230, f0572, f0574, f0575, f0578, f0579, f0580, f0581, f0582, f0995, f0997, f1026, f1027, f1100, f1101, f1102, f1103, f1104, f1105, f1106, f1107, f1108, f1115, f1117, f1118.
+Source facts: f0101, f0102, f0103, f0104, f0226, f0227, f0228, f0229, f0230, f0572, f0574, f0575, f0578, f0579, f0580, f0581, f0582, f0995, f0997, f1026, f1027, f1100, f1101, f1102, f1103, f1104, f1105, f1106, f1107, f1108, f1115, f1117, f1118.
 
-## Scenario: UiCompilationAccepted — modus SourceInspection
+## Scenario: UiCompilationAccepted — mode SourceInspection
 
-![Scenario: UiCompilationAccepted — modus SourceInspection](diagrams/VP08-UiCompilationAccepted.svg)
+![Scenario: UiCompilationAccepted — mode SourceInspection](diagrams/VP08-UiCompilationAccepted.svg)
 
-Kildegrunnlag: f0076, f0077, f0078, f0079, f0080, f0106, f0107, f0116, f0117, f0118, f0119, f0120, f0641, f0642, f0643, f0644, f0645, f0964, f0965, f0967, f0971, f0972, f0973, f0974, f0975, f0976, f0977, f1001, f1002, f1015, f1016, f1019, f1020, f1048, f1049, f1129, f1130, f1131, f1132, f1133, f1154, f1156, f1157, f1158, f1159, f1160, f1161, f1162, f1163, f1164, f1165, f1166, f1167, f1168, f1169, f1170, f1171, f1172, f1173, f1176, f1177, f1214, f1216, f1217, f1228, f1230, f1231, f1232, f1234, f1235, f1261, f1262, f1263, f1264, f1265.
+Source facts: f0076, f0077, f0078, f0079, f0080, f0106, f0107, f0116, f0117, f0118, f0119, f0120, f0641, f0642, f0643, f0644, f0645, f0964, f0965, f0967, f0971, f0972, f0973, f0974, f0975, f0976, f0977, f1001, f1002, f1015, f1016, f1019, f1020, f1048, f1049, f1129, f1130, f1131, f1132, f1133, f1154, f1156, f1157, f1158, f1159, f1160, f1161, f1162, f1163, f1164, f1165, f1166, f1167, f1168, f1169, f1170, f1171, f1172, f1173, f1176, f1177, f1214, f1216, f1217, f1228, f1230, f1231, f1232, f1234, f1235, f1261, f1262, f1263, f1264, f1265.
 
-## Scenario: UiModelReloadAccepted — modus LiveEditing
+## Scenario: UiModelReloadAccepted — mode LiveEditing
 
-![Scenario: UiModelReloadAccepted — modus LiveEditing](diagrams/VP08-UiModelReloadAccepted.svg)
+![Scenario: UiModelReloadAccepted — mode LiveEditing](diagrams/VP08-UiModelReloadAccepted.svg)
 
-Kildegrunnlag: f0116, f0117, f0118, f0119, f0120, f0259, f0608, f0610, f0612, f0766, f0768, f0774, f0775, f0781, f0782, f0783, f0789, f0790, f0966, f0970, f0985, f1093, f1097, f1173, f1176, f1177, f1186, f1188, f1190, f1196, f1197, f1198, f1199, f1200, f1201, f1202, f1203, f1204, f1205.
+Source facts: f0116, f0117, f0118, f0119, f0120, f0259, f0608, f0610, f0612, f0766, f0768, f0774, f0775, f0781, f0782, f0783, f0789, f0790, f0966, f0970, f0985, f1093, f1097, f1173, f1176, f1177, f1186, f1188, f1190, f1196, f1197, f1198, f1199, f1200, f1201, f1202, f1203, f1204, f1205.
 
-## Scenario: UiModelReloadRejected — modus LiveEditing
+## Scenario: UiModelReloadRejected — mode LiveEditing
 
-![Scenario: UiModelReloadRejected — modus LiveEditing](diagrams/VP08-UiModelReloadRejected.svg)
+![Scenario: UiModelReloadRejected — mode LiveEditing](diagrams/VP08-UiModelReloadRejected.svg)
 
-Kildegrunnlag: f0113, f0114, f0115, f0116, f0117, f0608, f0611, f0612, f0766, f0770, f0773, f0775, f0786, f0787, f0788, f0789, f0790, f0966, f0968, f1095, f1097, f1173, f1175, f1176, f1206, f1207, f1208, f1209, f1210, f1211, f1212, f1213.
+Source facts: f0113, f0114, f0115, f0116, f0117, f0608, f0611, f0612, f0766, f0770, f0773, f0775, f0786, f0787, f0788, f0789, f0790, f0966, f0968, f1095, f1097, f1173, f1175, f1176, f1206, f1207, f1208, f1209, f1210, f1211, f1212, f1213.
 
-## Scenario: UnboundLocalAction — modus UiPreview
+## Scenario: UnboundLocalAction — mode UiPreview
 
-![Scenario: UnboundLocalAction — modus UiPreview](diagrams/VP08-UnboundLocalAction.svg)
+![Scenario: UnboundLocalAction — mode UiPreview](diagrams/VP08-UnboundLocalAction.svg)
 
-Kildegrunnlag: f0207, f0208, f0209, f0210, f0211, f0272, f0273, f0519, f0521, f0522, f0526, f0528, f1236, f1237, f1238, f1239, f1240, f1241.
+Source facts: f0207, f0208, f0209, f0210, f0211, f0272, f0273, f0519, f0521, f0522, f0526, f0528, f1236, f1237, f1238, f1239, f1240, f1241.
 
-## Scenario: ViewProjectionFailed — modus DocumentBrowsing
+## Scenario: ViewProjectionFailed — mode DocumentBrowsing
 
-![Scenario: ViewProjectionFailed — modus DocumentBrowsing](diagrams/VP08-ViewProjectionFailed.svg)
+![Scenario: ViewProjectionFailed — mode DocumentBrowsing](diagrams/VP08-ViewProjectionFailed.svg)
 
-Kildegrunnlag: f0199, f0201, f0203, f0204, f0723, f0724, f0941, f0943, f1052, f1053, f1327, f1329, f1331, f1350, f1352, f1354, f1355, f1356, f1357, f1358, f1359, f1360, f1361, f1362, f1363, f1364, f1365, f1366, f1383, f1384, f1385, f1422, f1423.
+Source facts: f0199, f0201, f0203, f0204, f0723, f0724, f0941, f0943, f1052, f1053, f1327, f1329, f1331, f1350, f1352, f1354, f1355, f1356, f1357, f1358, f1359, f1360, f1361, f1362, f1363, f1364, f1365, f1366, f1383, f1384, f1385, f1422, f1423.
 
-## Avledet MessageSet
+## Derived MessageSet
 
-| Channel | Mode | Datagram | Sender | Receiver | Kilde-ID-er |
+| Channel | Mode | Datagram | Sender | Receiver | Source IDs |
 | --- | --- | --- | --- | --- | --- |
 | FramePresentationCalls | UiPreview | PresentFrameRequest | FyneHost | FyneBackend | f0242, f0244, f0253, f0271, f0686 |
 | FramePresentationCalls | UiPreview | PresentFrameResult | FyneBackend | FyneHost | f0242, f0245, f0254, f0270, f0689 |
@@ -943,297 +943,297 @@ Kildegrunnlag: f0199, f0201, f0203, f0204, f0723, f0724, f0941, f0943, f1052, f1
 | ViewPublicationCalls | DocumentBrowsing | PublishViewRequest | DocumentBroker | ViewArtifactStore | f0206, f0736, f1284, f1367, f1369 |
 | ViewPublicationCalls | DocumentBrowsing | ViewReferenceResult | ViewArtifactStore | DocumentBroker | f0205, f1285, f1367, f1370, f1380 |
 
-## VP09 — Dataset, Datagram og persistent Database
+## VP09 — Dataset, Datagram and persistent Database
 
-Eksplisitte holdere, kilde, kontrakter, varianter, felt og projeksjoner.
+Explicit holders, sources, contracts, variants, fields and projections.
 
-## Dataopprinnelse og holder: DesignSourceDocuments
+## Data origin and holder: DesignSourceDocuments
 
-![Dataopprinnelse og holder: DesignSourceDocuments](diagrams/VP09-data-DesignSourceDocuments.svg)
+![Data origin and holder: DesignSourceDocuments](diagrams/VP09-data-DesignSourceDocuments.svg)
 
-Kildegrunnlag: f0156, f0157, f1084.
+Source facts: f0156, f0157, f1084.
 
-## Dataopprinnelse og holder: UiSessionState
+## Data origin and holder: UiSessionState
 
-![Dataopprinnelse og holder: UiSessionState](diagrams/VP09-data-UiSessionState.svg)
+![Data origin and holder: UiSessionState](diagrams/VP09-data-UiSessionState.svg)
 
-Kildegrunnlag: f0978, f1189, f1190, f1221.
+Source facts: f0978, f1189, f1190, f1221.
 
-## Kontraktstruktur: ActionArguments
+## Contract structure: ActionArguments
 
-![Kontraktstruktur: ActionArguments](diagrams/VP09-contract-ActionArguments.svg)
+![Contract structure: ActionArguments](diagrams/VP09-contract-ActionArguments.svg)
 
-Kildegrunnlag: f0001, f0002, f0003.
+Source facts: f0001, f0002, f0003.
 
-## Kontraktstruktur: ActionOutcome
+## Contract structure: ActionOutcome
 
-![Kontraktstruktur: ActionOutcome](diagrams/VP09-contract-ActionOutcome.svg)
+![Contract structure: ActionOutcome](diagrams/VP09-contract-ActionOutcome.svg)
 
-Kildegrunnlag: f0009, f0010.
+Source facts: f0009, f0010.
 
-## Kontraktstruktur: AstArtifactContract
+## Contract structure: AstArtifactContract
 
-![Kontraktstruktur: AstArtifactContract](diagrams/VP09-contract-AstArtifactContract.svg)
+![Contract structure: AstArtifactContract](diagrams/VP09-contract-AstArtifactContract.svg)
 
-Kildegrunnlag: f0027.
+Source facts: f0027.
 
-## Kontraktstruktur: DesignSourceRecord
+## Contract structure: DesignSourceRecord
 
-![Kontraktstruktur: DesignSourceRecord](diagrams/VP09-contract-DesignSourceRecord.svg)
+![Contract structure: DesignSourceRecord](diagrams/VP09-contract-DesignSourceRecord.svg)
 
-Kildegrunnlag: f0159, f0160.
+Source facts: f0159, f0160.
 
-## Kontraktstruktur: FramePresentationCallsProtocol
+## Contract structure: FramePresentationCallsProtocol
 
-![Kontraktstruktur: FramePresentationCallsProtocol](diagrams/VP09-contract-FramePresentationCallsProtocol.svg)
+![Contract structure: FramePresentationCallsProtocol](diagrams/VP09-contract-FramePresentationCallsProtocol.svg)
 
-Kildegrunnlag: f0244, f0245.
+Source facts: f0244, f0245.
 
-## Kontraktstruktur: GeneratedGoContract
+## Contract structure: GeneratedGoContract
 
-![Kontraktstruktur: GeneratedGoContract](diagrams/VP09-contract-GeneratedGoContract.svg)
+![Contract structure: GeneratedGoContract](diagrams/VP09-contract-GeneratedGoContract.svg)
 
-Kildegrunnlag: f0496.
+Source facts: f0496.
 
-## Kontraktstruktur: GoBuildCallsProtocol
+## Contract structure: GoBuildCallsProtocol
 
-![Kontraktstruktur: GoBuildCallsProtocol](diagrams/VP09-contract-GoBuildCallsProtocol.svg)
+![Contract structure: GoBuildCallsProtocol](diagrams/VP09-contract-GoBuildCallsProtocol.svg)
 
-Kildegrunnlag: f0501, f0502.
+Source facts: f0501, f0502.
 
-## Kontraktstruktur: GoDomainCallsProtocol
+## Contract structure: GoDomainCallsProtocol
 
-![Kontraktstruktur: GoDomainCallsProtocol](diagrams/VP09-contract-GoDomainCallsProtocol.svg)
+![Contract structure: GoDomainCallsProtocol](diagrams/VP09-contract-GoDomainCallsProtocol.svg)
 
-Kildegrunnlag: f0521, f0522.
+Source facts: f0521, f0522.
 
-## Kontraktstruktur: GoGenerationCallsProtocol
+## Contract structure: GoGenerationCallsProtocol
 
-![Kontraktstruktur: GoGenerationCallsProtocol](diagrams/VP09-contract-GoGenerationCallsProtocol.svg)
+![Contract structure: GoGenerationCallsProtocol](diagrams/VP09-contract-GoGenerationCallsProtocol.svg)
 
-Kildegrunnlag: f0531, f0532.
+Source facts: f0531, f0532.
 
-## Kontraktstruktur: LayoutArguments
+## Contract structure: LayoutArguments
 
-![Kontraktstruktur: LayoutArguments](diagrams/VP09-contract-LayoutArguments.svg)
+![Contract structure: LayoutArguments](diagrams/VP09-contract-LayoutArguments.svg)
 
-Kildegrunnlag: f0569, f0570, f0571.
+Source facts: f0569, f0570, f0571.
 
-## Kontraktstruktur: LayoutCallsProtocol
+## Contract structure: LayoutCallsProtocol
 
-![Kontraktstruktur: LayoutCallsProtocol](diagrams/VP09-contract-LayoutCallsProtocol.svg)
+![Contract structure: LayoutCallsProtocol](diagrams/VP09-contract-LayoutCallsProtocol.svg)
 
-Kildegrunnlag: f0574, f0575.
+Source facts: f0574, f0575.
 
-## Kontraktstruktur: ModelReloadCallsProtocol
+## Contract structure: ModelReloadCallsProtocol
 
-![Kontraktstruktur: ModelReloadCallsProtocol](diagrams/VP09-contract-ModelReloadCallsProtocol.svg)
+![Contract structure: ModelReloadCallsProtocol](diagrams/VP09-contract-ModelReloadCallsProtocol.svg)
 
-Kildegrunnlag: f0610, f0611, f0612.
+Source facts: f0610, f0611, f0612.
 
-## Kontraktstruktur: NativeBuildContract
+## Contract structure: NativeBuildContract
 
-![Kontraktstruktur: NativeBuildContract](diagrams/VP09-contract-NativeBuildContract.svg)
+![Contract structure: NativeBuildContract](diagrams/VP09-contract-NativeBuildContract.svg)
 
-Kildegrunnlag: f0614, f0615.
+Source facts: f0614, f0615.
 
-## Kontraktstruktur: NativeUiActionsProtocol
+## Contract structure: NativeUiActionsProtocol
 
-![Kontraktstruktur: NativeUiActionsProtocol](diagrams/VP09-contract-NativeUiActionsProtocol.svg)
+![Contract structure: NativeUiActionsProtocol](diagrams/VP09-contract-NativeUiActionsProtocol.svg)
 
-Kildegrunnlag: f0634, f0635, f0636.
+Source facts: f0634, f0635, f0636.
 
-## Kontraktstruktur: NormalizedModelContract
+## Contract structure: NormalizedModelContract
 
-![Kontraktstruktur: NormalizedModelContract](diagrams/VP09-contract-NormalizedModelContract.svg)
+![Contract structure: NormalizedModelContract](diagrams/VP09-contract-NormalizedModelContract.svg)
 
-Kildegrunnlag: f0649.
+Source facts: f0649.
 
-## Kontraktstruktur: PreparedFrameContract
+## Contract structure: PreparedFrameContract
 
-![Kontraktstruktur: PreparedFrameContract](diagrams/VP09-contract-PreparedFrameContract.svg)
+![Contract structure: PreparedFrameContract](diagrams/VP09-contract-PreparedFrameContract.svg)
 
-Kildegrunnlag: f0684.
+Source facts: f0684.
 
-## Kontraktstruktur: PresentationOutcome
+## Contract structure: PresentationOutcome
 
-![Kontraktstruktur: PresentationOutcome](diagrams/VP09-contract-PresentationOutcome.svg)
+![Contract structure: PresentationOutcome](diagrams/VP09-contract-PresentationOutcome.svg)
 
-Kildegrunnlag: f0691.
+Source facts: f0691.
 
-## Kontraktstruktur: ReloadArguments
+## Contract structure: ReloadArguments
 
-![Kontraktstruktur: ReloadArguments](diagrams/VP09-contract-ReloadArguments.svg)
+![Contract structure: ReloadArguments](diagrams/VP09-contract-ReloadArguments.svg)
 
-Kildegrunnlag: f0750, f0751.
+Source facts: f0750, f0751.
 
-## Kontraktstruktur: ReloadOutcome
+## Contract structure: ReloadOutcome
 
-![Kontraktstruktur: ReloadOutcome](diagrams/VP09-contract-ReloadOutcome.svg)
+![Contract structure: ReloadOutcome](diagrams/VP09-contract-ReloadOutcome.svg)
 
-Kildegrunnlag: f0779, f0780.
+Source facts: f0779, f0780.
 
-## Kontraktstruktur: SdlActionCallsProtocol
+## Contract structure: SdlActionCallsProtocol
 
-![Kontraktstruktur: SdlActionCallsProtocol](diagrams/VP09-contract-SdlActionCallsProtocol.svg)
+![Contract structure: SdlActionCallsProtocol](diagrams/VP09-contract-SdlActionCallsProtocol.svg)
 
-Kildegrunnlag: f0835, f0836.
+Source facts: f0835, f0836.
 
-## Kontraktstruktur: SdlCompilationCallsProtocol
+## Contract structure: SdlCompilationCallsProtocol
 
-![Kontraktstruktur: SdlCompilationCallsProtocol](diagrams/VP09-contract-SdlCompilationCallsProtocol.svg)
+![Contract structure: SdlCompilationCallsProtocol](diagrams/VP09-contract-SdlCompilationCallsProtocol.svg)
 
-Kildegrunnlag: f0844, f0845.
+Source facts: f0844, f0845.
 
-## Kontraktstruktur: SvgDocumentContract
+## Contract structure: SvgDocumentContract
 
-![Kontraktstruktur: SvgDocumentContract](diagrams/VP09-contract-SvgDocumentContract.svg)
+![Contract structure: SvgDocumentContract](diagrams/VP09-contract-SvgDocumentContract.svg)
 
-Kildegrunnlag: f1112.
+Source facts: f1112.
 
-## Kontraktstruktur: SvgExportCallsProtocol
+## Contract structure: SvgExportCallsProtocol
 
-![Kontraktstruktur: SvgExportCallsProtocol](diagrams/VP09-contract-SvgExportCallsProtocol.svg)
+![Contract structure: SvgExportCallsProtocol](diagrams/VP09-contract-SvgExportCallsProtocol.svg)
 
-Kildegrunnlag: f1117, f1118.
+Source facts: f1117, f1118.
 
-## Kontraktstruktur: TokenArtifactContract
+## Contract structure: TokenArtifactContract
 
-![Kontraktstruktur: TokenArtifactContract](diagrams/VP09-contract-TokenArtifactContract.svg)
+![Contract structure: TokenArtifactContract](diagrams/VP09-contract-TokenArtifactContract.svg)
 
-Kildegrunnlag: f1122.
+Source facts: f1122.
 
-## Kontraktstruktur: UiAstCallsProtocol
+## Contract structure: UiAstCallsProtocol
 
-![Kontraktstruktur: UiAstCallsProtocol](diagrams/VP09-contract-UiAstCallsProtocol.svg)
+![Contract structure: UiAstCallsProtocol](diagrams/VP09-contract-UiAstCallsProtocol.svg)
 
-Kildegrunnlag: f1156, f1157.
+Source facts: f1156, f1157.
 
-## Kontraktstruktur: UiCompilationCallsProtocol
+## Contract structure: UiCompilationCallsProtocol
 
-![Kontraktstruktur: UiCompilationCallsProtocol](diagrams/VP09-contract-UiCompilationCallsProtocol.svg)
+![Contract structure: UiCompilationCallsProtocol](diagrams/VP09-contract-UiCompilationCallsProtocol.svg)
 
-Kildegrunnlag: f1175, f1176, f1177.
+Source facts: f1175, f1176, f1177.
 
-## Kontraktstruktur: UiDomainActionsProtocol
+## Contract structure: UiDomainActionsProtocol
 
-![Kontraktstruktur: UiDomainActionsProtocol](diagrams/VP09-contract-UiDomainActionsProtocol.svg)
+![Contract structure: UiDomainActionsProtocol](diagrams/VP09-contract-UiDomainActionsProtocol.svg)
 
-Kildegrunnlag: f1180, f1181.
+Source facts: f1180, f1181.
 
-## Kontraktstruktur: UiGenerationContract
+## Contract structure: UiGenerationContract
 
-![Kontraktstruktur: UiGenerationContract](diagrams/VP09-contract-UiGenerationContract.svg)
+![Contract structure: UiGenerationContract](diagrams/VP09-contract-UiGenerationContract.svg)
 
-Kildegrunnlag: f1182, f1183, f1185.
+Source facts: f1182, f1183, f1185.
 
-## Kontraktstruktur: UiGenerationEventsProtocol
+## Contract structure: UiGenerationEventsProtocol
 
-![Kontraktstruktur: UiGenerationEventsProtocol](diagrams/VP09-contract-UiGenerationEventsProtocol.svg)
+![Contract structure: UiGenerationEventsProtocol](diagrams/VP09-contract-UiGenerationEventsProtocol.svg)
 
-Kildegrunnlag: f1188.
+Source facts: f1188.
 
-## Kontraktstruktur: UiNormalizationCallsProtocol
+## Contract structure: UiNormalizationCallsProtocol
 
-![Kontraktstruktur: UiNormalizationCallsProtocol](diagrams/VP09-contract-UiNormalizationCallsProtocol.svg)
+![Contract structure: UiNormalizationCallsProtocol](diagrams/VP09-contract-UiNormalizationCallsProtocol.svg)
 
-Kildegrunnlag: f1216, f1217.
+Source facts: f1216, f1217.
 
-## Kontraktstruktur: UiSessionRecord
+## Contract structure: UiSessionRecord
 
-![Kontraktstruktur: UiSessionRecord](diagrams/VP09-contract-UiSessionRecord.svg)
+![Contract structure: UiSessionRecord](diagrams/VP09-contract-UiSessionRecord.svg)
 
-Kildegrunnlag: f1219, f1220.
+Source facts: f1219, f1220.
 
-## Kontraktstruktur: UiTokenizationCallsProtocol
+## Contract structure: UiTokenizationCallsProtocol
 
-![Kontraktstruktur: UiTokenizationCallsProtocol](diagrams/VP09-contract-UiTokenizationCallsProtocol.svg)
+![Contract structure: UiTokenizationCallsProtocol](diagrams/VP09-contract-UiTokenizationCallsProtocol.svg)
 
-Kildegrunnlag: f1230, f1231.
+Source facts: f1230, f1231.
 
-## Kontraktstruktur: UiValidationCallsProtocol
+## Contract structure: UiValidationCallsProtocol
 
-![Kontraktstruktur: UiValidationCallsProtocol](diagrams/VP09-contract-UiValidationCallsProtocol.svg)
+![Contract structure: UiValidationCallsProtocol](diagrams/VP09-contract-UiValidationCallsProtocol.svg)
 
-Kildegrunnlag: f1234, f1235.
+Source facts: f1234, f1235.
 
-## Kontraktstruktur: ValidationOutcomeContract
+## Contract structure: ValidationOutcomeContract
 
-![Kontraktstruktur: ValidationOutcomeContract](diagrams/VP09-contract-ValidationOutcomeContract.svg)
+![Contract structure: ValidationOutcomeContract](diagrams/VP09-contract-ValidationOutcomeContract.svg)
 
-Kildegrunnlag: f1275, f1276.
+Source facts: f1275, f1276.
 
-## Kontraktstruktur: ViewBundleContract
+## Contract structure: ViewBundleContract
 
-![Kontraktstruktur: ViewBundleContract](diagrams/VP09-contract-ViewBundleContract.svg)
+![Contract structure: ViewBundleContract](diagrams/VP09-contract-ViewBundleContract.svg)
 
-Kildegrunnlag: f1289, f1290.
+Source facts: f1289, f1290.
 
-## Kontraktstruktur: ViewDisplayCallsProtocol
+## Contract structure: ViewDisplayCallsProtocol
 
-![Kontraktstruktur: ViewDisplayCallsProtocol](diagrams/VP09-contract-ViewDisplayCallsProtocol.svg)
+![Contract structure: ViewDisplayCallsProtocol](diagrams/VP09-contract-ViewDisplayCallsProtocol.svg)
 
-Kildegrunnlag: f1300, f1301, f1302.
+Source facts: f1300, f1301, f1302.
 
-## Kontraktstruktur: ViewFailureContract
+## Contract structure: ViewFailureContract
 
-![Kontraktstruktur: ViewFailureContract](diagrams/VP09-contract-ViewFailureContract.svg)
+![Contract structure: ViewFailureContract](diagrams/VP09-contract-ViewFailureContract.svg)
 
-Kildegrunnlag: f1311, f1312, f1313.
+Source facts: f1311, f1312, f1313.
 
-## Kontraktstruktur: ViewLaunchCallsProtocol
+## Contract structure: ViewLaunchCallsProtocol
 
-![Kontraktstruktur: ViewLaunchCallsProtocol](diagrams/VP09-contract-ViewLaunchCallsProtocol.svg)
+![Contract structure: ViewLaunchCallsProtocol](diagrams/VP09-contract-ViewLaunchCallsProtocol.svg)
 
-Kildegrunnlag: f1318, f1319.
+Source facts: f1318, f1319.
 
-## Kontraktstruktur: ViewNavigationCallsProtocol
+## Contract structure: ViewNavigationCallsProtocol
 
-![Kontraktstruktur: ViewNavigationCallsProtocol](diagrams/VP09-contract-ViewNavigationCallsProtocol.svg)
+![Contract structure: ViewNavigationCallsProtocol](diagrams/VP09-contract-ViewNavigationCallsProtocol.svg)
 
-Kildegrunnlag: f1329, f1330, f1331.
+Source facts: f1329, f1330, f1331.
 
-## Kontraktstruktur: ViewOpenContract
+## Contract structure: ViewOpenContract
 
-![Kontraktstruktur: ViewOpenContract](diagrams/VP09-contract-ViewOpenContract.svg)
+![Contract structure: ViewOpenContract](diagrams/VP09-contract-ViewOpenContract.svg)
 
-Kildegrunnlag: f1333, f1334, f1335, f1336, f1337, f1338, f1339.
+Source facts: f1333, f1334, f1335, f1336, f1337, f1338, f1339.
 
-## Kontraktstruktur: ViewOpenedContract
+## Contract structure: ViewOpenedContract
 
-![Kontraktstruktur: ViewOpenedContract](diagrams/VP09-contract-ViewOpenedContract.svg)
+![Contract structure: ViewOpenedContract](diagrams/VP09-contract-ViewOpenedContract.svg)
 
-Kildegrunnlag: f1341, f1342.
+Source facts: f1341, f1342.
 
-## Kontraktstruktur: ViewProjectionCallsProtocol
+## Contract structure: ViewProjectionCallsProtocol
 
-![Kontraktstruktur: ViewProjectionCallsProtocol](diagrams/VP09-contract-ViewProjectionCallsProtocol.svg)
+![Contract structure: ViewProjectionCallsProtocol](diagrams/VP09-contract-ViewProjectionCallsProtocol.svg)
 
-Kildegrunnlag: f1352, f1353, f1354.
+Source facts: f1352, f1353, f1354.
 
-## Kontraktstruktur: ViewPublicationCallsProtocol
+## Contract structure: ViewPublicationCallsProtocol
 
-![Kontraktstruktur: ViewPublicationCallsProtocol](diagrams/VP09-contract-ViewPublicationCallsProtocol.svg)
+![Contract structure: ViewPublicationCallsProtocol](diagrams/VP09-contract-ViewPublicationCallsProtocol.svg)
 
-Kildegrunnlag: f1369, f1370.
+Source facts: f1369, f1370.
 
-## Kontraktstruktur: ViewReferenceContract
+## Contract structure: ViewReferenceContract
 
-![Kontraktstruktur: ViewReferenceContract](diagrams/VP09-contract-ViewReferenceContract.svg)
+![Contract structure: ViewReferenceContract](diagrams/VP09-contract-ViewReferenceContract.svg)
 
-Kildegrunnlag: f1374, f1375, f1376, f1377.
+Source facts: f1374, f1375, f1376, f1377.
 
-## Kontraktstruktur: ViewSelectionContract
+## Contract structure: ViewSelectionContract
 
-![Kontraktstruktur: ViewSelectionContract](diagrams/VP09-contract-ViewSelectionContract.svg)
+![Contract structure: ViewSelectionContract](diagrams/VP09-contract-ViewSelectionContract.svg)
 
-Kildegrunnlag: f1387, f1388, f1389, f1390, f1391, f1392, f1393.
+Source facts: f1387, f1388, f1389, f1390, f1391, f1392, f1393.
 
-## Felt og kontraktegenskaper
+## Fields and contract properties
 
-Database betyr persistent datakilde, ikke nødvendigvis SQL.
+Database means a persistent data source, not necessarily SQL.
 
-| Faktum | ID |
+| Fact | ID |
 | --- | --- |
 | ActionArguments has completeness = closed. | f0000 |
 | ActionGeneration has presence = required. | f0004 |
@@ -1391,30 +1391,30 @@ Database betyr persistent datakilde, ikke nødvendigvis SQL.
 | ViewWindowId has presence = required. | f1404 |
 | ViewWindowId has value-type = text. | f1405 |
 
-## Projeksjonsansvar
+## Projection responsibilities
 
-| Functionality | Dataset | Datagram | Faktum |
+| Functionality | Dataset | Datagram | Fact |
 | --- | --- | --- | --- |
 | ProjectUiGeneration | UiSessionState | UiGenerationNotices | f0722 |
 
-## VP10 — Datagram-koding og packet
+## VP10 — Datagram encoding and packets
 
-Kun closed kontrakt med validert Encoding og eksplisitte bitplasseringer.
+Only closed contracts with validated Encoding and explicit bit positions.
 
 ## Packet: UiGenerationWire / UiGenerationChanged — big-endian, most-significant-first
 
 ![Packet: UiGenerationWire / UiGenerationChanged — big-endian, most-significant-first](diagrams/VP10-UiGenerationWire.svg)
 
-Kildegrunnlag: f0650, f0651, f0652, f0653, f1182, f1183, f1184, f1185, f1191, f1192, f1193, f1194, f1195.
+Source facts: f0650, f0651, f0652, f0653, f1182, f1183, f1184, f1185, f1191, f1192, f1193, f1194, f1195.
 
 
-## VP11 — Egenskaper, sporbarhet og modellhull
+## VP11 — Properties, traceability and model gaps
 
-Deklarasjoner og alle fakta med kildeposisjoner; støttegrenser beholdes.
+Declarations and all facts with source positions; support boundaries are retained.
 
-## Fullstendig faktaregister
+## Complete fact registry
 
-| ID | Utsagn | Linje |
+| ID | Statement | Line |
 | --- | --- | --- |
 | f0000 | ActionArguments has completeness = closed. | 465 |
 | f0001 | ActionArguments has-field ActionGeneration. | 466 |
@@ -2841,9 +2841,9 @@ Deklarasjoner og alle fakta med kildeposisjoner; støttegrenser beholdes.
 | f1422 | XfmdDocumentHost uses ViewNavigationCalls as receiver of ViewRequestRejected in mode DocumentBrowsing. | 1887 |
 | f1423 | XfmdDocumentHost uses ViewNavigationCalls as sender of SelectViewRequest in mode DocumentBrowsing. | 1888 |
 
-## Deklarasjoner
+## Declarations
 
-| ID | Type | Linje |
+| ID | Type | Line |
 | --- | --- | --- |
 | ActionArguments | contract | 2 |
 | ActionGeneration | field | 3 |

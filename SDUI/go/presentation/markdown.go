@@ -36,19 +36,19 @@ func Markdown(root *parser.Instance, columns int) (string, error) {
 			text := ""
 			switch n.Widget {
 			case "button":
-				text = "**Knapp:** " + codeSpan(n.Argument("label"))
+				text = "**Button:** " + codeSpan(n.Argument("label"))
 			case "input":
-				text = "**Inndata:** " + codeSpan(n.Argument("text")) + " — " + codeSpan(n.Argument("value"))
+				text = "**Input:** " + codeSpan(n.Argument("text")) + " — " + codeSpan(n.Argument("value"))
 			default:
 				label := n.Argument("label")
 				if label == "" {
 					label = n.Path
 				}
-				text = "**SVG-plassholder:** " + codeSpan(label)
+				text = "**SVG placeholder:** " + codeSpan(label)
 			}
 			lines = []string{text}
 		} else {
-			kind := "Gruppe"
+			kind := "Group"
 			if n.Kind == "frame" {
 				kind = "Frame"
 			}
@@ -87,11 +87,11 @@ func Markdown(root *parser.Instance, columns int) (string, error) {
 			}
 			for i, row := range rows {
 				if len(rows) > 1 || len(row) > 1 {
-					noun := "komponent"
+					noun := "component"
 					if len(row) != 1 {
-						noun += "er"
+						noun += "s"
 					}
-					lines = append(lines, fmt.Sprintf("**Rad %d · %d %s fra venstre mot høyre**", i+1, len(row), noun), "")
+					lines = append(lines, fmt.Sprintf("**Row %d · %d %s from left to right**", i+1, len(row), noun), "")
 				}
 				for _, c := range row {
 					block, e := render(c)
@@ -119,7 +119,7 @@ func Markdown(root *parser.Instance, columns int) (string, error) {
 	if e != nil {
 		return "", e
 	}
-	lines := []string{"# SDUI — " + codeSpan(root.Path), "", "Statisk GUI-dump. Knapper og felt er tekstetiketter; ingen callbacks kjøres.", "", "## Layoutoversikt", "", "Rad-/kolonnestruktur i terminalceller. Høydene følger innholdet; dette er ikke målt GUI-geometri.", "", fence + "text", overview, fence, "", "## Innhold", "", "Markdown gjengis som innhold. Nestede sitatblokker viser grupper og frames. Horisontale søsken står i leserekkefølge her; plasseringen vises i oversikten. Mermaid-diagrammer er utelatt.", ""}
+	lines := []string{"# SDUI — " + codeSpan(root.Path), "", "Static GUI dump. Buttons and fields are text labels; no callbacks execute.", "", "## Layout overview", "", "Row/column structure in terminal cells. Heights follow content; this is not measured GUI geometry.", "", fence + "text", overview, fence, "", "## Content", "", "Markdown is rendered as content. Nested blockquotes represent groups and frames. Horizontal siblings appear in reading order here; the overview shows placement. Mermaid diagrams are omitted.", ""}
 	lines = append(lines, content...)
 	text := strings.TrimRight(strings.Join(lines, "\n"), " \t\r\n") + "\n"
 	if len(text) > MaxCells {

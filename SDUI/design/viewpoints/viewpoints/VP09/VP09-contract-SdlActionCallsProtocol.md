@@ -1,12 +1,12 @@
-# Kontraktstruktur: SdlActionCallsProtocol
+# Contract structure: SdlActionCallsProtocol
 
 [Viewpoint](index.md) · [Navigator](../../navigator.md)
 
-Revisjon: `e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1`.
+Revision: `e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1`.
 
-## Kontraktstruktur: SdlActionCallsProtocol
+## Contract structure: SdlActionCallsProtocol
 
-![Kontraktstruktur: SdlActionCallsProtocol](../../diagrams/VP09-contract-SdlActionCallsProtocol.svg)
+![Contract structure: SdlActionCallsProtocol](../../diagrams/VP09-contract-SdlActionCallsProtocol.svg)
 
-Kildegrunnlag: f0835, f0836.
+Source facts: f0835, f0836.
 

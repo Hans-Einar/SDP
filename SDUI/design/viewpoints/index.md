@@ -1,16 +1,16 @@
-# SDL — designoversikt
+# SDL — design overview
 
 [Navigator](navigator.md)
 
-- [A0 — Behov og forpliktelser](A0/index.md)
-- [A1 — Funksjonell hensikt](A1/index.md)
-- [A2 — System og containere](A2/index.md)
-- [A3 — Interne enheter](A3/index.md)
-- [A4 — Detaljdesign og kontrakter](A4/index.md)
-- [A5 — Realisering og bevis](A5/index.md)
+- [A0 — Needs and obligations](A0/index.md)
+- [A1 — Functional intent](A1/index.md)
+- [A2 — System and containers](A2/index.md)
+- [A3 — Internal units](A3/index.md)
+- [A4 — Detailed design and contracts](A4/index.md)
+- [A5 — Realization and evidence](A5/index.md)
 
-[Utviklingsplan G-faser](implementation.md)
+[G-phase development plan](implementation.md)
 
-[Samlerapport](viewpoints.md)
+[Combined report](viewpoints.md)
 
-Requirement, System og State støttes ikke av design-core 0.5. Mode er driftskontekst, ikke State.
+Requirement, System and State are not supported by design-core 0.5. Mode is an operating context, not State.

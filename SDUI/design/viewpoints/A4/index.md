@@ -1,10 +1,10 @@
-# A4 — Detaljdesign og kontrakter
+# A4 — Detailed design and contracts
 
-[Oversikt](../index.md) · [Typeinventar](inventory.md)
+[Overview](../index.md) · [Type inventory](inventory.md)
 
-Nivåene klassifiserer visninger; objektenes eget nivå er uspesifisert.
+Levels classify views; object levels are unspecified.
 
-- [VP08 — Channel-kontrakter og sekvenser](../navigator.md#vp08)
-- [VP09 — Dataset, Datagram og persistent Database](../navigator.md#vp09)
-- [VP10 — Datagram-koding og packet](../navigator.md#vp10)
-- [VP11 — Egenskaper, sporbarhet og modellhull](../navigator.md#vp11)
+- [VP08 — Channel contracts and sequences](../navigator.md#vp08)
+- [VP09 — Dataset, Datagram and persistent Database](../navigator.md#vp09)
+- [VP10 — Datagram encoding and packets](../navigator.md#vp10)
+- [VP11 — Properties, traceability and model gaps](../navigator.md#vp11)

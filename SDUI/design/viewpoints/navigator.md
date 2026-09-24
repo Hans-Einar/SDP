@@ -1,72 +1,72 @@
 # SDL — navigator
 
-Revisjon: `e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1`.
+Revision: `e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1`.
 
-[Oversikt](index.md)
+[Overview](index.md)
 
 ## VP01
 
-Bruksmål og sporbarhet. pursues, supports og contributes-to; modellens omfang, uten oppdiktet System-grense.
+Use cases and traceability. pursues, supports and contributes-to; modeled scope without an invented System boundary.
 
-[Åpne viewpoint](viewpoints/VP01/index.md)
+[Open viewpoint](viewpoints/VP01/index.md)
 
 ## VP02
 
-Arkitektur og logisk inndeling. Container/Unit og contains; bibliotekstruktur er ikke en deployment-allokering.
+Architecture and logical decomposition. Container/Unit and contains; library structure is not deployment allocation.
 
-[Åpne viewpoint](viewpoints/VP02/index.md)
+[Open viewpoint](viewpoints/VP02/index.md)
 
 ## VP03
 
-Ansvar og kapabiliteter over arkitekturen. owns, realizes og provides. Capability er ikke Feature.
+Responsibilities and capabilities across the architecture. owns, realizes and provides. Capability is not Feature.
 
-[Åpne viewpoint](viewpoints/VP03/index.md)
+[Open viewpoint](viewpoints/VP03/index.md)
 
 ## VP04
 
-Grensesnitt og samarbeid. consumes viser bruk; ingen tilbyder, Channel eller kjørbar meldingsflyt utledes.
+Interfaces and collaboration. consumes records use; no provider, Channel or executable message flow is inferred.
 
-[Åpne viewpoint](viewpoints/VP04/index.md)
+[Open viewpoint](viewpoints/VP04/index.md)
 
 ## VP05
 
-Avhengigheter per modus. requires in mode; modi har ingen implisitt arv.
+Dependencies by mode. requires in mode; modes have no implicit inheritance.
 
-[Åpne viewpoint](viewpoints/VP05/index.md)
+[Open viewpoint](viewpoints/VP05/index.md)
 
 ## VP06
 
-Aktiviteter og leveranseplan. refines, addresses, delivers og depends-on; planstatus er en eksplisitt kildepåstand.
+Activities and delivery plan. refines, addresses, delivers and depends-on; status is an explicit source claim.
 
-[Åpne viewpoint](viewpoints/VP06/index.md)
+[Open viewpoint](viewpoints/VP06/index.md)
 
 ## VP07
 
-Features over arkitekturen. contributes-to, owns og eksplisitt allocated-to per modus. Uspesifisert allokering vises som hull.
+Features across the architecture. contributes-to, owns and explicit allocated-to per mode. Unspecified allocation is reported as a gap.
 
-[Åpne viewpoint](viewpoints/VP07/index.md)
+[Open viewpoint](viewpoints/VP07/index.md)
 
 ## VP08
 
-Channel-kontrakter og sekvenser. Eksplisitte scenario-steg validert mot permits, deltakelse, modus og request/resultat-korrelasjon.
+Channel contracts and sequences. Explicit scenario steps validated against permits, participation, mode and request/result correlation.
 
-[Åpne viewpoint](viewpoints/VP08/index.md)
+[Open viewpoint](viewpoints/VP08/index.md)
 
 ## VP09
 
-Dataset, Datagram og persistent Database. Eksplisitte holdere, kilde, kontrakter, varianter, felt og projeksjoner.
+Dataset, Datagram and persistent Database. Explicit holders, sources, contracts, variants, fields and projections.
 
-[Åpne viewpoint](viewpoints/VP09/index.md)
+[Open viewpoint](viewpoints/VP09/index.md)
 
 ## VP10
 
-Datagram-koding og packet. Kun closed kontrakt med validert Encoding og eksplisitte bitplasseringer.
+Datagram encoding and packets. Only closed contracts with validated Encoding and explicit bit positions.
 
-[Åpne viewpoint](viewpoints/VP10/index.md)
+[Open viewpoint](viewpoints/VP10/index.md)
 
 ## VP11
 
-Egenskaper, sporbarhet og modellhull. Deklarasjoner og alle fakta med kildeposisjoner; støttegrenser beholdes.
+Properties, traceability and model gaps. Declarations and all facts with source positions; support boundaries are retained.
 
-[Åpne viewpoint](viewpoints/VP11/index.md)
+[Open viewpoint](viewpoints/VP11/index.md)
 

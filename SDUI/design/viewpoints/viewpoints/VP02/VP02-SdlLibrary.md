@@ -1,12 +1,12 @@
-# Logisk inndeling: SdlLibrary
+# Logical decomposition: SdlLibrary
 
 [Viewpoint](index.md) · [Navigator](../../navigator.md)
 
-Revisjon: `e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1`.
+Revision: `e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1`.
 
-## Logisk inndeling: SdlLibrary
+## Logical decomposition: SdlLibrary
 
-![Logisk inndeling: SdlLibrary](../../diagrams/VP02-SdlLibrary.svg)
+![Logical decomposition: SdlLibrary](../../diagrams/VP02-SdlLibrary.svg)
 
-Kildegrunnlag: f0877, f0878, f0879.
+Source facts: f0877, f0878, f0879.
 

@@ -1,15 +1,15 @@
-# VP04 — Grensesnitt og samarbeid
+# VP04 — Interfaces and collaboration
 
 [Navigator](../../navigator.md)
 
-consumes viser bruk; ingen tilbyder, Channel eller kjørbar meldingsflyt utledes.
+consumes records use; no provider, Channel or executable message flow is inferred.
 
 
-## Grensesnittbruk
+## Interface use
 
-Ingen Channel eller tilbyder utledes.
+No Channel or provider is inferred.
 
-| Bruker | Interface | Faktum | Linje |
+| Consumer | Interface | Fact | Line |
 | --- | --- | --- | --- |
 | CommandLineHost | ExportSinkPort | f0090 | 555 |
 | CommandLineHost | PreparedFramePort | f0091 | 556 |

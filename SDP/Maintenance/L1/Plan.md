@@ -27,3 +27,5 @@ Then R3 resolves the remaining KB-SDP-001/010 deliverables or presents concrete
 choices for owner gate review. These later phases do not delay English policy.
 
 L1-M1 and L1-M2 are complete. L1-M3 is next: generator strings and current outputs.
+
+L1-M3 is complete. All three milestones are delivered; see Evidence.md.

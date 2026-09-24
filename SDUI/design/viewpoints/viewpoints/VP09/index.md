@@ -1,62 +1,62 @@
-# VP09 — Dataset, Datagram og persistent Database
+# VP09 — Dataset, Datagram and persistent Database
 
 [Navigator](../../navigator.md)
 
-Eksplisitte holdere, kilde, kontrakter, varianter, felt og projeksjoner.
+Explicit holders, sources, contracts, variants, fields and projections.
 
-- [Dataopprinnelse og holder: DesignSourceDocuments](VP09-data-DesignSourceDocuments.md)
-- [Dataopprinnelse og holder: UiSessionState](VP09-data-UiSessionState.md)
-- [Kontraktstruktur: ActionArguments](VP09-contract-ActionArguments.md)
-- [Kontraktstruktur: ActionOutcome](VP09-contract-ActionOutcome.md)
-- [Kontraktstruktur: AstArtifactContract](VP09-contract-AstArtifactContract.md)
-- [Kontraktstruktur: DesignSourceRecord](VP09-contract-DesignSourceRecord.md)
-- [Kontraktstruktur: FramePresentationCallsProtocol](VP09-contract-FramePresentationCallsProtocol.md)
-- [Kontraktstruktur: GeneratedGoContract](VP09-contract-GeneratedGoContract.md)
-- [Kontraktstruktur: GoBuildCallsProtocol](VP09-contract-GoBuildCallsProtocol.md)
-- [Kontraktstruktur: GoDomainCallsProtocol](VP09-contract-GoDomainCallsProtocol.md)
-- [Kontraktstruktur: GoGenerationCallsProtocol](VP09-contract-GoGenerationCallsProtocol.md)
-- [Kontraktstruktur: LayoutArguments](VP09-contract-LayoutArguments.md)
-- [Kontraktstruktur: LayoutCallsProtocol](VP09-contract-LayoutCallsProtocol.md)
-- [Kontraktstruktur: ModelReloadCallsProtocol](VP09-contract-ModelReloadCallsProtocol.md)
-- [Kontraktstruktur: NativeBuildContract](VP09-contract-NativeBuildContract.md)
-- [Kontraktstruktur: NativeUiActionsProtocol](VP09-contract-NativeUiActionsProtocol.md)
-- [Kontraktstruktur: NormalizedModelContract](VP09-contract-NormalizedModelContract.md)
-- [Kontraktstruktur: PreparedFrameContract](VP09-contract-PreparedFrameContract.md)
-- [Kontraktstruktur: PresentationOutcome](VP09-contract-PresentationOutcome.md)
-- [Kontraktstruktur: ReloadArguments](VP09-contract-ReloadArguments.md)
-- [Kontraktstruktur: ReloadOutcome](VP09-contract-ReloadOutcome.md)
-- [Kontraktstruktur: SdlActionCallsProtocol](VP09-contract-SdlActionCallsProtocol.md)
-- [Kontraktstruktur: SdlCompilationCallsProtocol](VP09-contract-SdlCompilationCallsProtocol.md)
-- [Kontraktstruktur: SvgDocumentContract](VP09-contract-SvgDocumentContract.md)
-- [Kontraktstruktur: SvgExportCallsProtocol](VP09-contract-SvgExportCallsProtocol.md)
-- [Kontraktstruktur: TokenArtifactContract](VP09-contract-TokenArtifactContract.md)
-- [Kontraktstruktur: UiAstCallsProtocol](VP09-contract-UiAstCallsProtocol.md)
-- [Kontraktstruktur: UiCompilationCallsProtocol](VP09-contract-UiCompilationCallsProtocol.md)
-- [Kontraktstruktur: UiDomainActionsProtocol](VP09-contract-UiDomainActionsProtocol.md)
-- [Kontraktstruktur: UiGenerationContract](VP09-contract-UiGenerationContract.md)
-- [Kontraktstruktur: UiGenerationEventsProtocol](VP09-contract-UiGenerationEventsProtocol.md)
-- [Kontraktstruktur: UiNormalizationCallsProtocol](VP09-contract-UiNormalizationCallsProtocol.md)
-- [Kontraktstruktur: UiSessionRecord](VP09-contract-UiSessionRecord.md)
-- [Kontraktstruktur: UiTokenizationCallsProtocol](VP09-contract-UiTokenizationCallsProtocol.md)
-- [Kontraktstruktur: UiValidationCallsProtocol](VP09-contract-UiValidationCallsProtocol.md)
-- [Kontraktstruktur: ValidationOutcomeContract](VP09-contract-ValidationOutcomeContract.md)
-- [Kontraktstruktur: ViewBundleContract](VP09-contract-ViewBundleContract.md)
-- [Kontraktstruktur: ViewDisplayCallsProtocol](VP09-contract-ViewDisplayCallsProtocol.md)
-- [Kontraktstruktur: ViewFailureContract](VP09-contract-ViewFailureContract.md)
-- [Kontraktstruktur: ViewLaunchCallsProtocol](VP09-contract-ViewLaunchCallsProtocol.md)
-- [Kontraktstruktur: ViewNavigationCallsProtocol](VP09-contract-ViewNavigationCallsProtocol.md)
-- [Kontraktstruktur: ViewOpenContract](VP09-contract-ViewOpenContract.md)
-- [Kontraktstruktur: ViewOpenedContract](VP09-contract-ViewOpenedContract.md)
-- [Kontraktstruktur: ViewProjectionCallsProtocol](VP09-contract-ViewProjectionCallsProtocol.md)
-- [Kontraktstruktur: ViewPublicationCallsProtocol](VP09-contract-ViewPublicationCallsProtocol.md)
-- [Kontraktstruktur: ViewReferenceContract](VP09-contract-ViewReferenceContract.md)
-- [Kontraktstruktur: ViewSelectionContract](VP09-contract-ViewSelectionContract.md)
+- [Data origin and holder: DesignSourceDocuments](VP09-data-DesignSourceDocuments.md)
+- [Data origin and holder: UiSessionState](VP09-data-UiSessionState.md)
+- [Contract structure: ActionArguments](VP09-contract-ActionArguments.md)
+- [Contract structure: ActionOutcome](VP09-contract-ActionOutcome.md)
+- [Contract structure: AstArtifactContract](VP09-contract-AstArtifactContract.md)
+- [Contract structure: DesignSourceRecord](VP09-contract-DesignSourceRecord.md)
+- [Contract structure: FramePresentationCallsProtocol](VP09-contract-FramePresentationCallsProtocol.md)
+- [Contract structure: GeneratedGoContract](VP09-contract-GeneratedGoContract.md)
+- [Contract structure: GoBuildCallsProtocol](VP09-contract-GoBuildCallsProtocol.md)
+- [Contract structure: GoDomainCallsProtocol](VP09-contract-GoDomainCallsProtocol.md)
+- [Contract structure: GoGenerationCallsProtocol](VP09-contract-GoGenerationCallsProtocol.md)
+- [Contract structure: LayoutArguments](VP09-contract-LayoutArguments.md)
+- [Contract structure: LayoutCallsProtocol](VP09-contract-LayoutCallsProtocol.md)
+- [Contract structure: ModelReloadCallsProtocol](VP09-contract-ModelReloadCallsProtocol.md)
+- [Contract structure: NativeBuildContract](VP09-contract-NativeBuildContract.md)
+- [Contract structure: NativeUiActionsProtocol](VP09-contract-NativeUiActionsProtocol.md)
+- [Contract structure: NormalizedModelContract](VP09-contract-NormalizedModelContract.md)
+- [Contract structure: PreparedFrameContract](VP09-contract-PreparedFrameContract.md)
+- [Contract structure: PresentationOutcome](VP09-contract-PresentationOutcome.md)
+- [Contract structure: ReloadArguments](VP09-contract-ReloadArguments.md)
+- [Contract structure: ReloadOutcome](VP09-contract-ReloadOutcome.md)
+- [Contract structure: SdlActionCallsProtocol](VP09-contract-SdlActionCallsProtocol.md)
+- [Contract structure: SdlCompilationCallsProtocol](VP09-contract-SdlCompilationCallsProtocol.md)
+- [Contract structure: SvgDocumentContract](VP09-contract-SvgDocumentContract.md)
+- [Contract structure: SvgExportCallsProtocol](VP09-contract-SvgExportCallsProtocol.md)
+- [Contract structure: TokenArtifactContract](VP09-contract-TokenArtifactContract.md)
+- [Contract structure: UiAstCallsProtocol](VP09-contract-UiAstCallsProtocol.md)
+- [Contract structure: UiCompilationCallsProtocol](VP09-contract-UiCompilationCallsProtocol.md)
+- [Contract structure: UiDomainActionsProtocol](VP09-contract-UiDomainActionsProtocol.md)
+- [Contract structure: UiGenerationContract](VP09-contract-UiGenerationContract.md)
+- [Contract structure: UiGenerationEventsProtocol](VP09-contract-UiGenerationEventsProtocol.md)
+- [Contract structure: UiNormalizationCallsProtocol](VP09-contract-UiNormalizationCallsProtocol.md)
+- [Contract structure: UiSessionRecord](VP09-contract-UiSessionRecord.md)
+- [Contract structure: UiTokenizationCallsProtocol](VP09-contract-UiTokenizationCallsProtocol.md)
+- [Contract structure: UiValidationCallsProtocol](VP09-contract-UiValidationCallsProtocol.md)
+- [Contract structure: ValidationOutcomeContract](VP09-contract-ValidationOutcomeContract.md)
+- [Contract structure: ViewBundleContract](VP09-contract-ViewBundleContract.md)
+- [Contract structure: ViewDisplayCallsProtocol](VP09-contract-ViewDisplayCallsProtocol.md)
+- [Contract structure: ViewFailureContract](VP09-contract-ViewFailureContract.md)
+- [Contract structure: ViewLaunchCallsProtocol](VP09-contract-ViewLaunchCallsProtocol.md)
+- [Contract structure: ViewNavigationCallsProtocol](VP09-contract-ViewNavigationCallsProtocol.md)
+- [Contract structure: ViewOpenContract](VP09-contract-ViewOpenContract.md)
+- [Contract structure: ViewOpenedContract](VP09-contract-ViewOpenedContract.md)
+- [Contract structure: ViewProjectionCallsProtocol](VP09-contract-ViewProjectionCallsProtocol.md)
+- [Contract structure: ViewPublicationCallsProtocol](VP09-contract-ViewPublicationCallsProtocol.md)
+- [Contract structure: ViewReferenceContract](VP09-contract-ViewReferenceContract.md)
+- [Contract structure: ViewSelectionContract](VP09-contract-ViewSelectionContract.md)
 
-## Felt og kontraktegenskaper
+## Fields and contract properties
 
-Database betyr persistent datakilde, ikke nødvendigvis SQL.
+Database means a persistent data source, not necessarily SQL.
 
-| Faktum | ID |
+| Fact | ID |
 | --- | --- |
 | ActionArguments has completeness = closed. | f0000 |
 | ActionGeneration has presence = required. | f0004 |
@@ -214,9 +214,9 @@ Database betyr persistent datakilde, ikke nødvendigvis SQL.
 | ViewWindowId has presence = required. | f1404 |
 | ViewWindowId has value-type = text. | f1405 |
 
-## Projeksjonsansvar
+## Projection responsibilities
 
-| Functionality | Dataset | Datagram | Faktum |
+| Functionality | Dataset | Datagram | Fact |
 | --- | --- | --- | --- |
 | ProjectUiGeneration | UiSessionState | UiGenerationNotices | f0722 |
 

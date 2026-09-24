@@ -1,5 +1,5 @@
 {
-  "version": "sdl-viewpoints-go-1.1",
+  "version": "sdl-viewpoints-go-1.2",
   "revision": "e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1",
   "renderer": "",
   "diagrams": [],
@@ -26763,7 +26763,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "DesignDocumentation",
-      "message": "Container-allokering er uspesifisert for bidrag til DesignDocumentation.",
+      "message": "Container allocation is unspecified for contributions to DesignDocumentation.",
       "mode": "DocumentBrowsing",
       "model_id": "ComposeMarkdownDocument",
       "viewpoint": "VP07"
@@ -26771,7 +26771,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "DesignDocumentation",
-      "message": "Container-allokering er uspesifisert for bidrag til DesignDocumentation.",
+      "message": "Container allocation is unspecified for contributions to DesignDocumentation.",
       "mode": "DocumentBrowsing",
       "model_id": "ExportSvgSnapshot",
       "viewpoint": "VP07"
@@ -26779,7 +26779,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "DesignDocumentation",
-      "message": "Container-allokering er uspesifisert for bidrag til DesignDocumentation.",
+      "message": "Container allocation is unspecified for contributions to DesignDocumentation.",
       "mode": "DocumentBrowsing",
       "model_id": "WriteGeneratedArtifacts",
       "viewpoint": "VP07"
@@ -26787,7 +26787,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "DesignDocumentation",
-      "message": "Container-allokering er uspesifisert for bidrag til DesignDocumentation.",
+      "message": "Container allocation is unspecified for contributions to DesignDocumentation.",
       "mode": "SourceInspection",
       "model_id": "ComposeMarkdownDocument",
       "viewpoint": "VP07"
@@ -26795,7 +26795,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "DesignDocumentation",
-      "message": "Container-allokering er uspesifisert for bidrag til DesignDocumentation.",
+      "message": "Container allocation is unspecified for contributions to DesignDocumentation.",
       "mode": "SourceInspection",
       "model_id": "ExportSvgSnapshot",
       "viewpoint": "VP07"
@@ -26803,7 +26803,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "DesignDocumentation",
-      "message": "Container-allokering er uspesifisert for bidrag til DesignDocumentation.",
+      "message": "Container allocation is unspecified for contributions to DesignDocumentation.",
       "mode": "SourceInspection",
       "model_id": "ExportViewpointMarkdown",
       "viewpoint": "VP07"
@@ -26811,7 +26811,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "DesignDocumentation",
-      "message": "Container-allokering er uspesifisert for bidrag til DesignDocumentation.",
+      "message": "Container allocation is unspecified for contributions to DesignDocumentation.",
       "mode": "SourceInspection",
       "model_id": "ProjectSdlViewpoints",
       "viewpoint": "VP07"
@@ -26819,7 +26819,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "DesignDocumentation",
-      "message": "Container-allokering er uspesifisert for bidrag til DesignDocumentation.",
+      "message": "Container allocation is unspecified for contributions to DesignDocumentation.",
       "mode": "SourceInspection",
       "model_id": "WriteGeneratedArtifacts",
       "viewpoint": "VP07"
@@ -26827,7 +26827,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "LiveModelReload",
-      "message": "Container-allokering er uspesifisert for bidrag til LiveModelReload.",
+      "message": "Container allocation is unspecified for contributions to LiveModelReload.",
       "mode": "SourceInspection",
       "model_id": "KeepLastValidModels",
       "viewpoint": "VP07"
@@ -26835,7 +26835,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "LiveModelReload",
-      "message": "Container-allokering er uspesifisert for bidrag til LiveModelReload.",
+      "message": "Container allocation is unspecified for contributions to LiveModelReload.",
       "mode": "SourceInspection",
       "model_id": "ObserveSourceChanges",
       "viewpoint": "VP07"
@@ -26843,7 +26843,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "LiveModelReload",
-      "message": "Container-allokering er uspesifisert for bidrag til LiveModelReload.",
+      "message": "Container allocation is unspecified for contributions to LiveModelReload.",
       "mode": "SourceInspection",
       "model_id": "PrepareCandidateModels",
       "viewpoint": "VP07"
@@ -26851,7 +26851,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "LiveModelReload",
-      "message": "Container-allokering er uspesifisert for bidrag til LiveModelReload.",
+      "message": "Container allocation is unspecified for contributions to LiveModelReload.",
       "mode": "SourceInspection",
       "model_id": "PreserveCompatibleUiState",
       "viewpoint": "VP07"
@@ -26859,7 +26859,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "LiveModelReload",
-      "message": "Container-allokering er uspesifisert for bidrag til LiveModelReload.",
+      "message": "Container allocation is unspecified for contributions to LiveModelReload.",
       "mode": "SourceInspection",
       "model_id": "ProjectUiGeneration",
       "viewpoint": "VP07"
@@ -26867,7 +26867,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "LiveModelReload",
-      "message": "Container-allokering er uspesifisert for bidrag til LiveModelReload.",
+      "message": "Container allocation is unspecified for contributions to LiveModelReload.",
       "mode": "SourceInspection",
       "model_id": "PublishModelGeneration",
       "viewpoint": "VP07"
@@ -26875,7 +26875,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "StructuralModelInspection",
-      "message": "Container-allokering er uspesifisert for bidrag til StructuralModelInspection.",
+      "message": "Container allocation is unspecified for contributions to StructuralModelInspection.",
       "mode": "LiveEditing",
       "model_id": "BuildSdlAst",
       "viewpoint": "VP07"
@@ -26883,7 +26883,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "StructuralModelInspection",
-      "message": "Container-allokering er uspesifisert for bidrag til StructuralModelInspection.",
+      "message": "Container allocation is unspecified for contributions to StructuralModelInspection.",
       "mode": "LiveEditing",
       "model_id": "BuildSduiAst",
       "viewpoint": "VP07"
@@ -26891,7 +26891,7 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "StructuralModelInspection",
-      "message": "Container-allokering er uspesifisert for bidrag til StructuralModelInspection.",
+      "message": "Container allocation is unspecified for contributions to StructuralModelInspection.",
       "mode": "LiveEditing",
       "model_id": "ValidateSdlStructure",
       "viewpoint": "VP07"
@@ -26899,26 +26899,26 @@
     {
       "code": "UNSPECIFIED_ALLOCATION",
       "feature": "StructuralModelInspection",
-      "message": "Container-allokering er uspesifisert for bidrag til StructuralModelInspection.",
+      "message": "Container allocation is unspecified for contributions to StructuralModelInspection.",
       "mode": "LiveEditing",
       "model_id": "ValidateWidgetArguments",
       "viewpoint": "VP07"
     }
   ],
   "outputs": {
-    "A0/index.md": "868e4166139ac7f77a52e70c701d4a265e6ada83ee145b257f8da77ec13a24aa",
-    "A0/inventory.md": "e8a556b6c47c4fcbdcd776d96bff80a1353584d8290d11fe047e7ddda940e26d",
-    "A1/index.md": "4260d23dbc4f366c29cc2b035610eb2fe54952c5b430eab10714b8e4d21db6a4",
-    "A1/inventory.md": "5d7a502f5167ad00250fd28a4d26fc77b4381d04f0de3c4fb5f4ce8e98466cd4",
-    "A2/index.md": "269770218bd46b47d9e901b8da325b43c3a66dd3d4eea2e06f0ca72b99f3d53b",
-    "A2/inventory.md": "c75c5199a4e0841e47318331512932dd389961afbbe5fc57cfd9026ae21a10bf",
-    "A3/index.md": "ffc44bcacd6451916e27f38f899952bbc7c1425b4c0e9877b1989183a68ea143",
-    "A3/inventory.md": "ec8a362bbaa7a61b58672cc7254617fb8b22c1fc34043b00f14d79f721ee3925",
-    "A4/index.md": "355c4b3d1d92f8339c54fd0ada7596881918e5e782bd7afda4585fe191775cff",
-    "A4/inventory.md": "7c91268c0397d0a76e7305911fab2d3ff1e5cc033aac587f1d5c9e2e5c67f200",
-    "A5/index.md": "2ae6c020838bfcd1c7dba834c334dc77724c8b3aed9257e1a43330c252c5335f",
-    "A5/inventory.md": "4eb21431f03ffb09a0754f6211f4059fe35be5b2fdea55063707f2eedc6f3ab8",
-    "index.md": "c7c5908f4eaa006110145ef5664915fa14d4cc2d74176f738b1a05c356eb700a",
-    "navigator.md": "9c621eba4ed20032a9ecdb206b8359b28f76a44b60c1f333da5850f2954ee1de"
+    "A0/index.md": "cbab435060e4f3a38dea1ae46c1c510f4a94ba4f90165b6cdc376e03ef348400",
+    "A0/inventory.md": "8f07cc37a67927bce7e09e4eaaa5e7ac90ac335a73f3c97535703bbf65afeebd",
+    "A1/index.md": "4995ce9f61bcb8d8eb25ab3c2d144b2f7a5b40aca5708d9db845f7a6cc9df88c",
+    "A1/inventory.md": "1dd59bde92203d29f130cbddc26c1abf705948ed10af58eb623e1772aaeefbd9",
+    "A2/index.md": "ccffe36dfb73d97b3acc9ce45911c35cf85066ff5a4595300fd0c116d33cc7c1",
+    "A2/inventory.md": "5f742497a93f56391a0d6365e4d7875ad75da29a4a975a79156281793cc8e295",
+    "A3/index.md": "574b4712e9ccd6ef836a86ec1cff788407b686d38d0cfcc6780f76195108b30d",
+    "A3/inventory.md": "75c093a8ae18255e52b31488621ec91d0221ff9debb5507e0f2449300c88b96d",
+    "A4/index.md": "f41987eec3ba93a8a34476e5b078aaddd4aea66f6056f295563816b06396274c",
+    "A4/inventory.md": "f74a4598d74482b6bbebcaa13ec9af59757baadd04633020647d860b5a38771e",
+    "A5/index.md": "e076e34b7e22d86bbaeb7ce02e8dbbf9742b24a94ad36d75f95f5a971410211d",
+    "A5/inventory.md": "c911086dff8664b3c030c544c211a6fb6dfb95aacc421b3e91dd0e8163821edd",
+    "index.md": "297ffb67f305fd24b7cfb5ada5bc9304bd30c0d0d25a055f9d131b69f2d29bc5",
+    "navigator.md": "f131dac419bbcf0e75d2b6e1abfbba20f084b0bb3a2d96da1edd3d24a6192631"
   }
 }

@@ -1,12 +1,12 @@
-# Aktivitetsinndeling: RealizeDesign
+# Activity decomposition: RealizeDesign
 
 [Viewpoint](index.md) · [Navigator](../../navigator.md)
 
-Revisjon: `e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1`.
+Revision: `e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1`.
 
-## Aktivitetsinndeling: RealizeDesign
+## Activity decomposition: RealizeDesign
 
-![Aktivitetsinndeling: RealizeDesign](../../diagrams/VP06-detail-RealizeDesign.svg)
+![Activity decomposition: RealizeDesign](../../diagrams/VP06-detail-RealizeDesign.svg)
 
-Kildegrunnlag: f0062.
+Source facts: f0062.
 

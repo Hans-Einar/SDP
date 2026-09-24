@@ -1,8 +1,8 @@
-# A0 — Behov og forpliktelser
+# A0 — Needs and obligations
 
-[Oversikt](../index.md) · [Typeinventar](inventory.md)
+[Overview](../index.md) · [Type inventory](inventory.md)
 
-Nivåene klassifiserer visninger; objektenes eget nivå er uspesifisert.
+Levels classify views; object levels are unspecified.
 
-- [VP01 — Bruksmål og sporbarhet](../navigator.md#vp01)
-- [VP11 — Egenskaper, sporbarhet og modellhull](../navigator.md#vp11)
+- [VP01 — Use cases and traceability](../navigator.md#vp01)
+- [VP11 — Properties, traceability and model gaps](../navigator.md#vp11)

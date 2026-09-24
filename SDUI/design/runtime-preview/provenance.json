@@ -4,11 +4,11 @@
   "font": "Go Regular logical DIP",
   "height": 650,
   "layout_profile": "relative-layout/1",
-  "projector": "sdl-viewpoints-go-1.1",
+  "projector": "sdl-viewpoints-go-1.2",
   "renderer": "",
   "sdui_profile": "0.2",
   "state_sha256": "4c65c1545648cd6867cd6380180d63f2aa7113ee09dc1e8b95615e8f4c73c2a2",
-  "tool": "sdl-sdui-document/1",
+  "tool": "sdl-sdui-document/2",
   "toolchain": "go1.27.1",
   "ui_sha256": "4a39f150b4a9745d83d116154812d3b6066385f6038abbc73dc40858878f9af6",
   "widgets": [

@@ -16,7 +16,7 @@
 | KB-SDP-010 | Proposal | active | [Documentation consolidation](active/%23010--Proposal--Document-consolidation.md) |
 | KB-SDP-011 | Bug | backlog | [Legacy Traceability IDs](backlog/%23011--Bug--Traceability-id-conformance.md) |
 | KB-SDP-012 | Change | completed | [K4-M1: worklogs, revisions and diffs](completed/%23012--Change--Card-history.md) |
-| KB-SDP-013 | Change | active | [English documentation](active/%23013--Change--English-documentation.md) |
+| KB-SDP-013 | Change | completed | [English documentation](completed/%23013--Change--English-documentation.md) |
 
 Maintain the index when moving cards. The ledger owns event history.
 
