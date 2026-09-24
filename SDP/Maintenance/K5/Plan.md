@@ -18,3 +18,5 @@ KB-SDP-001/010 and records concrete owner review gates and proposed next work.
 
 K5-M1 and K5-M2 are complete. Owner authorized including the concurrent registration
 after its session finished; evidence records its append-only integration.
+
+K5-M3 corrects the newly introduced event collision and records final replay checks.

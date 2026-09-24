@@ -30,7 +30,7 @@ installation evidence will be recorded at their actual completion.
 
 ## Outcome
 
-2026-09-24T17:51:13Z: K5-M1/M2 complete, EVT-KB-SDP-000057. Installed read-only kanban
+2026-09-24T17:51:13Z: K5-M1/M2 complete, EVT-KB-SDP-000058. Installed read-only kanban
 and install-cli in /home/warloc/bin. Seven behavior tests passed; no compiler
 or daemon is involved. [Evidence](../../../Maintenance/K5/Evidence.md).
 
@@ -39,3 +39,11 @@ or daemon is involved. [Evidence](../../../Maintenance/K5/Evidence.md).
 R3 resumes KB-SDP-001 and KB-SDP-010, already ready in active, because English
 documentation and work-state tracking are now delivered. Finish their bounded
 profile/consolidation results before selecting new tooling implementation.
+
+## K5-M3 correction
+
+2026-09-24T17:52:09Z: EVT-KB-SDP-000059. Initial K5-M2 board replay found a duplicate
+ID but the shell sequence continued to commit/push. The closing event is now
+000058; original bytes remain in Git c510fb7 and the K5 evidence capture.
+This is an explicit correction to an unintegrated phase record, not rewritten Git
+history. New allocation uses max ID + 1. See the final K5 checks.
