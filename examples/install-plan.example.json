@@ -79,7 +79,7 @@
       "sequence": 5,
       "action": "preserve",
       "entryId": "project-manifest",
-      "source": "Toolkit/project-templates/sdp-root/SDP-project.manifest.yaml",
+      "source": "Template/sdp-root/SDP-project.manifest.yaml",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,

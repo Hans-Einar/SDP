@@ -40,7 +40,7 @@ Dette er gjenværende arbeid i KB-SDP-001 etter fysisk organisering.
 | ID | Leveranse | Kontroll | Status |
 | --- | --- | --- | --- |
 | R1-M1 | Inventar, eierskap, flyttematrise; aktiver 001, registrer 010 | Alle flyttekilder finnes; malduplikater sammenlignet; baseline registrert | Levert |
-| R1-M2 | Template og egne prosjektrecords; arkiver gammel bootstrap | Toolkit-regresjoner, konformans, baselinevalidator, sporbarhet og lenker | Planlagt |
+| R1-M2 | Template og egne prosjektrecords; arkiver gammel bootstrap | Toolkit-regresjoner, konformans, baselinevalidator, sporbarhet og lenker | Levert |
 | R1-M3 | SDL samlet; docs fordelt; oversikter og fungerende innganger | Go race-tester, CLI/launcher, genererte manifest uendret, lenker | Planlagt |
 
 ## Migreringsregler

@@ -678,7 +678,7 @@ class InstallationContractTests(unittest.TestCase):
         contract["exclusions"] = [
             exclusion
             for exclusion in contract["exclusions"]
-            if exclusion["path"] != "Releases"
+            if exclusion["path"] != "SDP"
         ]
         errors = self.validate_contract(contract)
         self.assertTrue(
@@ -730,7 +730,7 @@ class InstallationContractTests(unittest.TestCase):
                 )
 
     def test_neutral_template_payload_contains_no_active_records(self) -> None:
-        template_root = ROOT / "Toolkit/project-templates"
+        template_root = ROOT / "Template"
         files = [path.relative_to(template_root).as_posix() for path in template_root.rglob("*") if path.is_file()]
         self.assertNotIn("sdp-root/Traceability/Ledger.ndjson", files)
         self.assertFalse(any(Path(path).name.startswith("REL-") for path in files))
@@ -765,7 +765,7 @@ class InstallationContractTests(unittest.TestCase):
                     "sequence": 1,
                     "action": "create",
                     "entryId": "project-manifest",
-                    "source": "Toolkit/project-templates/sdp-root/SDP-project.manifest.yaml",
+                    "source": "Template/sdp-root/SDP-project.manifest.yaml",
                     "generator": None,
                     "targetSource": None,
                     "targetSourceSha256": None,
@@ -805,7 +805,7 @@ class InstallationContractTests(unittest.TestCase):
                 oldToolkitVersion="0.1.0"
             ),
             "source": lambda plan: plan["actions"][0].update(
-                source="Toolkit/project-templates/sdp-root/RELEASE-NOTES.md"
+                source="Template/sdp-root/RELEASE-NOTES.md"
             ),
             "generator": lambda plan: plan["actions"][0].update(
                 source=None, generator="empty-ledger"

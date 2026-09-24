@@ -36,7 +36,7 @@ never overwritten by normal, forced or repeated installation.
 
 ### Neutral project templates
 
-Canonical missing-only seeds live under `Toolkit/project-templates/`. Default
+Canonical missing-only seeds live under `Template/`. Default
 seeds include project/release/traceability foundations. Lifecycle, operating
 README and document-guide seeds are selected only by
 `-InitializeProjectStructure`. Once created they are project-owned.

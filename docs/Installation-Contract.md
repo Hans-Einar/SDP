@@ -92,7 +92,7 @@ required and permitted properties, arrays obey their declared minima and
 uniqueness, and policy combinations are validated before any target file is
 inspected. Copied Toolkit-managed sources are restricted to `Toolkit/payload/`
 or `Toolkit/skills/`; copied project-owned sources are restricted to
-`Toolkit/project-templates/`. Governing schemas are restricted to
+`Template/`. Governing schemas are restricted to
 `Toolkit/schemas/` and use these canonical capability pairings:
 
 | Schema | Capability |
@@ -109,7 +109,7 @@ or `Toolkit/skills/`; copied project-owned sources are restricted to
 |---|---|---|
 | Repository instance records | root `Sprints/`, `Releases/`, `Traceability/`, reviews and related live folders | Excluded; never installed |
 | Toolkit-managed copies | `Toolkit/payload/`, `Toolkit/skills/` | Refreshed and backed up according to entry policy |
-| Neutral project seeds | `Toolkit/project-templates/` | Project-owned immediately; created only when missing |
+| Neutral project seeds | `Template/` | Project-owned immediately; created only when missing |
 | Generated managed facts | `installed-toolkit-manifest` generator | Regenerated from declared facts; source commit may be null |
 | Generated project history | `empty-ledger` generator | Creates an empty Ledger only when missing; never replaces history |
 

@@ -30,27 +30,22 @@ Core principle:
 
 ```text
 SDP repository
-|-- 01--Mandate/ ... 07--Implementation/   this repository's SDP records
-|-- Sprints/ Refactors/ Fixes/ Releases/   live operating and release records
-|-- CodeReview/ Verification/ Traceability/
-|-- SDP.manifest.yaml                      Toolkit release manifest
-|-- RELEASE-NOTES.md                       canonical Toolkit release notes
-|-- Toolkit/
-|   |-- SDP-install.manifest.json          canonical installation contract
-|   |-- project-templates/                 neutral project-owned seeds
-|   |-- payload/                           Toolkit-managed copied files
-|   |-- skills/                            versioned reusable skills
-|   |-- schemas/                           machine-readable contracts
-|   |-- scripts/                           installer, build identity, validation
-|   `-- tests/                             deterministic contract fixtures
-|-- docs/                                  method and compatibility guidance
-`-- examples/                              neutral contract examples
+|-- Template/                 neutral project-owned templates
+|-- Toolkit/                  installer, schemas, managed payload and skills
+|-- SDP/                      this project's KanBan, records, studies and history
+|-- SystemDesignLanguage/     SDL (moving to SDL in R1-M3)
+|-- SDL/                      SDL project KanBan
+|-- SDUI/                     UI language and project documentation
+|-- SDP.manifest.yaml         Toolkit release/capability manifest
+|-- RELEASE-NOTES.md          Toolkit release notes
+|-- docs/                     process and language documentation (R1-M3 pending)
+`-- examples/                 neutral Toolkit contract examples
 ```
 
-The root lifecycle and traceability folders are this repository's live SDP
-instance. They are not installation templates. A conforming installer copies
-only entries explicitly listed in `Toolkit/SDP-install.manifest.json`; neutral
-project seeds come only from `Toolkit/project-templates/`.
+Project records under `SDP/` are not template inputs. Installation sources are
+explicitly listed in `Toolkit/SDP-install.manifest.json`. Root-level numbered
+seed duplicates were consolidated into `Template/`; installed destinations have
+not changed. The [R1 plan](SDP/Maintenance/R1/Plan.md) records remaining work.
 
 ## Version model
 

@@ -1957,28 +1957,12 @@ def validate_installation_contract(
         )
 
     required_exclusions = {
-        "01--Mandate",
-        "02--Study",
-        "03--Requirements",
-        "04--Architecture",
-        "05--DesignAnalysis",
-        "06--Design",
-        "07--Implementation",
-        "CodeReview",
-        "Fixes",
-        "Instructions",
-        "Refactors",
-        "Releases",
-        "Sprints",
-        "Traceability",
-        "Verification",
-        "RELEASE-NOTES.md",
-        "SDP.manifest.yaml",
-        "SDP-DOCUMENT-GUIDE.md",
-        "payload",
-        "skills",
-        "Toolkit/payload/project-root/AGENTS-project.md.template",
-        "Toolkit/payload/sdp-root/AGENT-REMINDERS.md.template",
+        'RELEASE-NOTES.md',
+        'SDP.manifest.yaml',
+        'Toolkit/payload/project-root/AGENTS-project.md.template',
+        'Toolkit/payload/sdp-root/AGENT-REMINDERS.md.template',
+        'SDP',
+        'Template/README.md',
     }
     missing_exclusions = sorted(
         path
@@ -2000,7 +1984,7 @@ def validate_installation_contract(
     used_generators: set[str] = set()
     allowed_source_roots = (
         "Toolkit/payload/",
-        "Toolkit/project-templates/",
+        "Template/",
         "Toolkit/skills/",
     )
     for index, entry in enumerate(entries):
@@ -2054,7 +2038,7 @@ def validate_installation_contract(
                     )
                 if is_excluded(source):
                     errors.append(f"{label}.source: source is explicitly excluded: {source}")
-                if source.startswith("Toolkit/project-templates/"):
+                if source.startswith("Template/"):
                     if entry.get("ownership") != "project-owned":
                         errors.append(
                             f"{label}: neutral project-template sources must be project-owned"
@@ -2097,7 +2081,7 @@ def validate_installation_contract(
 
     inventory_roots = (
         repo / "Toolkit/payload",
-        repo / "Toolkit/project-templates",
+        repo / "Template",
         repo / "Toolkit/skills",
     )
     expected_sources = {
@@ -2120,7 +2104,7 @@ def validate_installation_contract(
             + ", ".join(outside_inventory)
         )
 
-    project_template_root = repo / "Toolkit/project-templates"
+    project_template_root = repo / "Template"
     forbidden_template_names = {
         "Ledger.ndjson",
         "ScrumIterations.md",
@@ -2233,8 +2217,8 @@ def validate_repository(repo: Path, base_ref: str | None = None) -> list[str]:
     project_schema = load_json(schema_root / "SDP-project-manifest.schema.json")
     project_templates = sorted(
         path
-        for path in (repo / "Toolkit").rglob("SDP-project.manifest.yaml")
-        if "project-templates" in path.parts or "payload" in path.parts
+        for base in (repo / "Template", repo / "Toolkit/payload")
+        for path in base.rglob("SDP-project.manifest.yaml")
     )
     if not project_templates:
         errors.append("No canonical SDP-project.manifest.yaml template exists")
@@ -2308,35 +2292,35 @@ def validate_repository(repo: Path, base_ref: str | None = None) -> list[str]:
         )
     current_schema = load_json(schema_root / "current-index.schema.json")
     relations_schema = load_json(schema_root / "relations.schema.json")
-    neutral_root = repo / "Toolkit/project-templates/sdp-root"
+    neutral_root = repo / "Template/sdp-root"
     neutral_project_manifest = load_yaml(neutral_root / "SDP-project.manifest.yaml")
     neutral_current = load_yaml(neutral_root / "Traceability/CurrentIndex.yaml")
     neutral_relations = load_yaml(neutral_root / "Traceability/Relations.yaml")
     errors += validate_json(
         neutral_current,
         current_schema,
-        "Toolkit/project-templates/sdp-root/Traceability/CurrentIndex.yaml",
+        "Template/sdp-root/Traceability/CurrentIndex.yaml",
     )
     errors += validate_json(
         neutral_relations,
         relations_schema,
-        "Toolkit/project-templates/sdp-root/Traceability/Relations.yaml",
+        "Template/sdp-root/Traceability/Relations.yaml",
     )
     errors += validate_current_index_semantics(
         neutral_current,
         neutral_relations,
-        "Toolkit/project-templates/sdp-root/Traceability/CurrentIndex.yaml",
+        "Template/sdp-root/Traceability/CurrentIndex.yaml",
         neutral_project_manifest,
     )
     errors += validate_release_notes(
         neutral_root / "RELEASE-NOTES.md",
-        "Toolkit/project-templates/sdp-root/RELEASE-NOTES.md",
+        "Template/sdp-root/RELEASE-NOTES.md",
     )
-    current = load_yaml(repo / "Traceability/CurrentIndex.yaml")
-    relations = load_yaml(repo / "Traceability/Relations.yaml")
+    current = load_yaml(repo / "SDP/Traceability/CurrentIndex.yaml")
+    relations = load_yaml(repo / "SDP/Traceability/Relations.yaml")
     errors += validate_json(current, current_schema, "Traceability/CurrentIndex.yaml")
     errors += validate_json(relations, relations_schema, "Traceability/Relations.yaml")
-    errors += validate_relations_semantics(relations, repo, "Traceability/Relations.yaml")
+    errors += validate_relations_semantics(relations, repo / "SDP", "Traceability/Relations.yaml", project_root=repo)
     errors += validate_current_index_semantics(
         current, relations, "Traceability/CurrentIndex.yaml"
     )
@@ -2361,12 +2345,12 @@ def validate_repository(repo: Path, base_ref: str | None = None) -> list[str]:
                 )
     errors += validate_release_and_fix_records(
         repo,
-        repo,
+        repo / "SDP",
         schema_root,
         relations if isinstance(relations, dict) else None,
     )
     errors += validate_ledger(
-        repo / "Traceability/Ledger.ndjson",
+        repo / "SDP/Traceability/Ledger.ndjson",
         schema_root,
         required=True,
         relations=relations if isinstance(relations, dict) else None,

@@ -10,7 +10,7 @@ This directory contains the reusable Toolkit boundary:
 - `tests/` — deterministic Python and PowerShell fixtures
 - `conformance/install-v1/` — language-neutral scenario and expected-outcome contract
 - `payload/` — copied Toolkit-managed files only
-- `project-templates/` — neutral files that become project-owned when created
+- [Template](../Template/README.md) — neutral files that become project-owned when created
 - `skills/` — versioned Toolkit-managed Codex skills
 
 `SDP.manifest.yaml` at repository root is authoritative for Toolkit release and

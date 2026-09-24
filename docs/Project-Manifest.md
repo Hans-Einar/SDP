@@ -3,7 +3,7 @@
 `SDP/SDP-project.manifest.yaml` is project-owned and conforms to
 `Toolkit/schemas/SDP-project-manifest.schema.json` from a compatible Toolkit.
 Its neutral source is an explicit missing-only entry under
-`Toolkit/project-templates/`; no conforming installer replaces it, including
+`Template/`; no conforming installer replaces it, including
 under force.
 
 It records the consuming project's release state, next target, active Sprint or

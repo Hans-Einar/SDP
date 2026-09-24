@@ -76,7 +76,7 @@ authorization, then reconciles the real tag and Release identity.
 
 The canonical JSON installation manifest drives managed refresh, missing-only
 project seeds and generation. Neutral project templates live physically under
-`Toolkit/project-templates/`. The Toolkit repository's root lifecycle, release,
+`Template/`. The Toolkit repository's root lifecycle, release,
 review, verification and traceability records are live instance state and are
 never template inputs.
 

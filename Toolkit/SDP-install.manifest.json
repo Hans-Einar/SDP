@@ -90,7 +90,10 @@
       "backupPolicy": "migration-aware",
       "forcePolicy": "replace-managed",
       "migrationPolicy": "preserve-existing-agents",
-      "governing": { "capability": "sdp.install.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.install.v1",
+        "schema": null
+      }
     },
     {
       "id": "managed-framework-readme",
@@ -104,7 +107,10 @@
       "backupPolicy": "before-replace",
       "forcePolicy": "replace-managed",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.install.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.install.v1",
+        "schema": null
+      }
     },
     {
       "id": "managed-fix-record-template",
@@ -118,7 +124,10 @@
       "backupPolicy": "before-replace",
       "forcePolicy": "replace-managed",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.release.v1", "schema": "Toolkit/schemas/fix-record.schema.json" }
+      "governing": {
+        "capability": "sdp.release.v1",
+        "schema": "Toolkit/schemas/fix-record.schema.json"
+      }
     },
     {
       "id": "managed-release-notes-template",
@@ -132,7 +141,10 @@
       "backupPolicy": "before-replace",
       "forcePolicy": "replace-managed",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.release-notes.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.release-notes.v1",
+        "schema": null
+      }
     },
     {
       "id": "managed-release-record-template",
@@ -146,7 +158,10 @@
       "backupPolicy": "before-replace",
       "forcePolicy": "replace-managed",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.release.v1", "schema": "Toolkit/schemas/release-record.schema.json" }
+      "governing": {
+        "capability": "sdp.release.v1",
+        "schema": "Toolkit/schemas/release-record.schema.json"
+      }
     },
     {
       "id": "managed-project-manifest-template",
@@ -160,7 +175,10 @@
       "backupPolicy": "before-replace",
       "forcePolicy": "replace-managed",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.manifest.v1", "schema": "Toolkit/schemas/SDP-project-manifest.schema.json" }
+      "governing": {
+        "capability": "sdp.manifest.v1",
+        "schema": "Toolkit/schemas/SDP-project-manifest.schema.json"
+      }
     },
     {
       "id": "managed-skill-sdp-architect",
@@ -174,7 +192,10 @@
       "backupPolicy": "before-replace",
       "forcePolicy": "replace-managed",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.skill-metadata.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.skill-metadata.v1",
+        "schema": null
+      }
     },
     {
       "id": "managed-skill-sdp-auditor",
@@ -188,7 +209,10 @@
       "backupPolicy": "before-replace",
       "forcePolicy": "replace-managed",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.skill-metadata.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.skill-metadata.v1",
+        "schema": null
+      }
     },
     {
       "id": "managed-skill-sdp-master",
@@ -202,7 +226,10 @@
       "backupPolicy": "before-replace",
       "forcePolicy": "replace-managed",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.skill-metadata.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.skill-metadata.v1",
+        "schema": null
+      }
     },
     {
       "id": "managed-skill-sdp-release",
@@ -216,7 +243,10 @@
       "backupPolicy": "before-replace",
       "forcePolicy": "replace-managed",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.skill-metadata.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.skill-metadata.v1",
+        "schema": null
+      }
     },
     {
       "id": "managed-skill-sdp-reviewer",
@@ -230,7 +260,10 @@
       "backupPolicy": "before-replace",
       "forcePolicy": "replace-managed",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.skill-metadata.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.skill-metadata.v1",
+        "schema": null
+      }
     },
     {
       "id": "managed-skill-sdp-traceability",
@@ -244,7 +277,10 @@
       "backupPolicy": "before-replace",
       "forcePolicy": "replace-managed",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.skill-metadata.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.skill-metadata.v1",
+        "schema": null
+      }
     },
     {
       "id": "managed-skill-sdp-verifier",
@@ -258,7 +294,10 @@
       "backupPolicy": "before-replace",
       "forcePolicy": "replace-managed",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.skill-metadata.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.skill-metadata.v1",
+        "schema": null
+      }
     },
     {
       "id": "managed-skill-sdp-versioning",
@@ -272,7 +311,10 @@
       "backupPolicy": "before-replace",
       "forcePolicy": "replace-managed",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.skill-metadata.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.skill-metadata.v1",
+        "schema": null
+      }
     },
     {
       "id": "managed-skill-sdp-vertical-refactor",
@@ -286,7 +328,10 @@
       "backupPolicy": "before-replace",
       "forcePolicy": "replace-managed",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.skill-metadata.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.skill-metadata.v1",
+        "schema": null
+      }
     },
     {
       "id": "managed-skill-sdp-worker",
@@ -300,7 +345,10 @@
       "backupPolicy": "before-replace",
       "forcePolicy": "replace-managed",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.skill-metadata.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.skill-metadata.v1",
+        "schema": null
+      }
     },
     {
       "id": "generated-installed-toolkit-manifest",
@@ -314,12 +362,15 @@
       "backupPolicy": "before-replace",
       "forcePolicy": "replace-managed",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.manifest.v1", "schema": "Toolkit/schemas/installed-toolkit-manifest.schema.json" }
+      "governing": {
+        "capability": "sdp.manifest.v1",
+        "schema": "Toolkit/schemas/installed-toolkit-manifest.schema.json"
+      }
     },
     {
       "id": "project-agents",
       "kind": "copied",
-      "source": "Toolkit/project-templates/project-root/AGENTS-project.md.template",
+      "source": "Template/project-root/AGENTS-project.md.template",
       "destination": "AGENTS-project.md",
       "ownership": "project-owned",
       "selectionPolicy": "default",
@@ -328,12 +379,15 @@
       "backupPolicy": "none",
       "forcePolicy": "preserve",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.install.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.install.v1",
+        "schema": null
+      }
     },
     {
       "id": "project-agent-reminders",
       "kind": "copied",
-      "source": "Toolkit/project-templates/sdp-root/AGENT-REMINDERS.md.template",
+      "source": "Template/sdp-root/AGENT-REMINDERS.md.template",
       "destination": "SDP/AGENT-REMINDERS.md",
       "ownership": "project-owned",
       "selectionPolicy": "default",
@@ -342,12 +396,15 @@
       "backupPolicy": "none",
       "forcePolicy": "preserve",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.install.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.install.v1",
+        "schema": null
+      }
     },
     {
       "id": "project-manifest",
       "kind": "copied",
-      "source": "Toolkit/project-templates/sdp-root/SDP-project.manifest.yaml",
+      "source": "Template/sdp-root/SDP-project.manifest.yaml",
       "destination": "SDP/SDP-project.manifest.yaml",
       "ownership": "project-owned",
       "selectionPolicy": "default",
@@ -356,12 +413,15 @@
       "backupPolicy": "none",
       "forcePolicy": "preserve",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.manifest.v1", "schema": "Toolkit/schemas/SDP-project-manifest.schema.json" }
+      "governing": {
+        "capability": "sdp.manifest.v1",
+        "schema": "Toolkit/schemas/SDP-project-manifest.schema.json"
+      }
     },
     {
       "id": "project-release-notes",
       "kind": "copied",
-      "source": "Toolkit/project-templates/sdp-root/RELEASE-NOTES.md",
+      "source": "Template/sdp-root/RELEASE-NOTES.md",
       "destination": "SDP/RELEASE-NOTES.md",
       "ownership": "project-owned",
       "selectionPolicy": "default",
@@ -370,12 +430,15 @@
       "backupPolicy": "none",
       "forcePolicy": "preserve",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.release-notes.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.release-notes.v1",
+        "schema": null
+      }
     },
     {
       "id": "project-traceability-readme",
       "kind": "copied",
-      "source": "Toolkit/project-templates/sdp-root/Traceability/README.md",
+      "source": "Template/sdp-root/Traceability/README.md",
       "destination": "SDP/Traceability/README.md",
       "ownership": "project-owned",
       "selectionPolicy": "default",
@@ -384,12 +447,15 @@
       "backupPolicy": "none",
       "forcePolicy": "preserve",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.traceability.release-events.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.traceability.release-events.v1",
+        "schema": null
+      }
     },
     {
       "id": "project-current-index",
       "kind": "copied",
-      "source": "Toolkit/project-templates/sdp-root/Traceability/CurrentIndex.yaml",
+      "source": "Template/sdp-root/Traceability/CurrentIndex.yaml",
       "destination": "SDP/Traceability/CurrentIndex.yaml",
       "ownership": "project-owned",
       "selectionPolicy": "default",
@@ -398,12 +464,15 @@
       "backupPolicy": "none",
       "forcePolicy": "preserve",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.traceability.current-index.v1", "schema": "Toolkit/schemas/current-index.schema.json" }
+      "governing": {
+        "capability": "sdp.traceability.current-index.v1",
+        "schema": "Toolkit/schemas/current-index.schema.json"
+      }
     },
     {
       "id": "project-relations",
       "kind": "copied",
-      "source": "Toolkit/project-templates/sdp-root/Traceability/Relations.yaml",
+      "source": "Template/sdp-root/Traceability/Relations.yaml",
       "destination": "SDP/Traceability/Relations.yaml",
       "ownership": "project-owned",
       "selectionPolicy": "default",
@@ -412,7 +481,10 @@
       "backupPolicy": "none",
       "forcePolicy": "preserve",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.traceability.relations.v1", "schema": "Toolkit/schemas/relations.schema.json" }
+      "governing": {
+        "capability": "sdp.traceability.relations.v1",
+        "schema": "Toolkit/schemas/relations.schema.json"
+      }
     },
     {
       "id": "generated-empty-ledger",
@@ -426,12 +498,15 @@
       "backupPolicy": "none",
       "forcePolicy": "preserve",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.traceability.ledger-events.v1", "schema": "Toolkit/schemas/ledger-event.schema.json" }
+      "governing": {
+        "capability": "sdp.traceability.ledger-events.v1",
+        "schema": "Toolkit/schemas/ledger-event.schema.json"
+      }
     },
     {
       "id": "project-mandate",
       "kind": "copied",
-      "source": "Toolkit/project-templates/sdp-root/01--Mandate/mandate.md",
+      "source": "Template/sdp-root/01--Mandate/mandate.md",
       "destination": "SDP/01--Mandate/mandate.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -440,12 +515,15 @@
       "backupPolicy": "none",
       "forcePolicy": "preserve",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.install.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.install.v1",
+        "schema": null
+      }
     },
     {
       "id": "project-study",
       "kind": "copied",
-      "source": "Toolkit/project-templates/sdp-root/02--Study/study.md",
+      "source": "Template/sdp-root/02--Study/study.md",
       "destination": "SDP/02--Study/study.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -454,12 +532,15 @@
       "backupPolicy": "none",
       "forcePolicy": "preserve",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.install.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.install.v1",
+        "schema": null
+      }
     },
     {
       "id": "project-requirements",
       "kind": "copied",
-      "source": "Toolkit/project-templates/sdp-root/03--Requirements/requirements.md",
+      "source": "Template/sdp-root/03--Requirements/requirements.md",
       "destination": "SDP/03--Requirements/requirements.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -468,12 +549,15 @@
       "backupPolicy": "none",
       "forcePolicy": "preserve",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.install.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.install.v1",
+        "schema": null
+      }
     },
     {
       "id": "project-architecture",
       "kind": "copied",
-      "source": "Toolkit/project-templates/sdp-root/04--Architecture/architecture.md",
+      "source": "Template/sdp-root/04--Architecture/architecture.md",
       "destination": "SDP/04--Architecture/architecture.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -482,12 +566,15 @@
       "backupPolicy": "none",
       "forcePolicy": "preserve",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.install.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.install.v1",
+        "schema": null
+      }
     },
     {
       "id": "project-design-analysis",
       "kind": "copied",
-      "source": "Toolkit/project-templates/sdp-root/05--DesignAnalysis/design-analysis.md",
+      "source": "Template/sdp-root/05--DesignAnalysis/design-analysis.md",
       "destination": "SDP/05--DesignAnalysis/design-analysis.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -496,12 +583,15 @@
       "backupPolicy": "none",
       "forcePolicy": "preserve",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.install.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.install.v1",
+        "schema": null
+      }
     },
     {
       "id": "project-design",
       "kind": "copied",
-      "source": "Toolkit/project-templates/sdp-root/06--Design/design.md",
+      "source": "Template/sdp-root/06--Design/design.md",
       "destination": "SDP/06--Design/design.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -510,12 +600,15 @@
       "backupPolicy": "none",
       "forcePolicy": "preserve",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.install.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.install.v1",
+        "schema": null
+      }
     },
     {
       "id": "project-implementation-plan",
       "kind": "copied",
-      "source": "Toolkit/project-templates/sdp-root/07--Implementation/implementation-plan.md",
+      "source": "Template/sdp-root/07--Implementation/implementation-plan.md",
       "destination": "SDP/07--Implementation/implementation-plan.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -524,12 +617,15 @@
       "backupPolicy": "none",
       "forcePolicy": "preserve",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.install.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.install.v1",
+        "schema": null
+      }
     },
     {
       "id": "project-sprints-readme",
       "kind": "copied",
-      "source": "Toolkit/project-templates/sdp-root/Sprints/README.md",
+      "source": "Template/sdp-root/Sprints/README.md",
       "destination": "SDP/Sprints/README.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -538,12 +634,15 @@
       "backupPolicy": "none",
       "forcePolicy": "preserve",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.install.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.install.v1",
+        "schema": null
+      }
     },
     {
       "id": "project-refactors-readme",
       "kind": "copied",
-      "source": "Toolkit/project-templates/sdp-root/Refactors/README.md",
+      "source": "Template/sdp-root/Refactors/README.md",
       "destination": "SDP/Refactors/README.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -552,12 +651,15 @@
       "backupPolicy": "none",
       "forcePolicy": "preserve",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.install.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.install.v1",
+        "schema": null
+      }
     },
     {
       "id": "project-fixes-readme",
       "kind": "copied",
-      "source": "Toolkit/project-templates/sdp-root/Fixes/README.md",
+      "source": "Template/sdp-root/Fixes/README.md",
       "destination": "SDP/Fixes/README.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -566,12 +668,15 @@
       "backupPolicy": "none",
       "forcePolicy": "preserve",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.release.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.release.v1",
+        "schema": null
+      }
     },
     {
       "id": "project-releases-readme",
       "kind": "copied",
-      "source": "Toolkit/project-templates/sdp-root/Releases/README.md",
+      "source": "Template/sdp-root/Releases/README.md",
       "destination": "SDP/Releases/README.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -580,12 +685,15 @@
       "backupPolicy": "none",
       "forcePolicy": "preserve",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.release.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.release.v1",
+        "schema": null
+      }
     },
     {
       "id": "project-code-review-readme",
       "kind": "copied",
-      "source": "Toolkit/project-templates/sdp-root/CodeReview/README.md",
+      "source": "Template/sdp-root/CodeReview/README.md",
       "destination": "SDP/CodeReview/README.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -594,12 +702,15 @@
       "backupPolicy": "none",
       "forcePolicy": "preserve",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.install.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.install.v1",
+        "schema": null
+      }
     },
     {
       "id": "project-verification-readme",
       "kind": "copied",
-      "source": "Toolkit/project-templates/sdp-root/Verification/README.md",
+      "source": "Template/sdp-root/Verification/README.md",
       "destination": "SDP/Verification/README.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -608,12 +719,15 @@
       "backupPolicy": "none",
       "forcePolicy": "preserve",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.install.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.install.v1",
+        "schema": null
+      }
     },
     {
       "id": "project-instructions-readme",
       "kind": "copied",
-      "source": "Toolkit/project-templates/sdp-root/Instructions/README.md",
+      "source": "Template/sdp-root/Instructions/README.md",
       "destination": "SDP/Instructions/README.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -622,12 +736,15 @@
       "backupPolicy": "none",
       "forcePolicy": "preserve",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.install.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.install.v1",
+        "schema": null
+      }
     },
     {
       "id": "project-document-guide",
       "kind": "copied",
-      "source": "Toolkit/project-templates/sdp-root/SDP-DOCUMENT-GUIDE.md",
+      "source": "Template/sdp-root/SDP-DOCUMENT-GUIDE.md",
       "destination": "SDP/SDP-DOCUMENT-GUIDE.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -636,31 +753,42 @@
       "backupPolicy": "none",
       "forcePolicy": "preserve",
       "migrationPolicy": "none",
-      "governing": { "capability": "sdp.install.v1", "schema": null }
+      "governing": {
+        "capability": "sdp.install.v1",
+        "schema": null
+      }
     }
   ],
   "exclusions": [
-    { "path": "01--Mandate", "kind": "tree", "reason": "repository-instance-state" },
-    { "path": "02--Study", "kind": "tree", "reason": "repository-instance-state" },
-    { "path": "03--Requirements", "kind": "tree", "reason": "repository-instance-state" },
-    { "path": "04--Architecture", "kind": "tree", "reason": "repository-instance-state" },
-    { "path": "05--DesignAnalysis", "kind": "tree", "reason": "repository-instance-state" },
-    { "path": "06--Design", "kind": "tree", "reason": "repository-instance-state" },
-    { "path": "07--Implementation", "kind": "tree", "reason": "repository-instance-state" },
-    { "path": "CodeReview", "kind": "tree", "reason": "repository-instance-state" },
-    { "path": "Fixes", "kind": "tree", "reason": "repository-instance-state" },
-    { "path": "Instructions", "kind": "tree", "reason": "repository-instance-state" },
-    { "path": "Refactors", "kind": "tree", "reason": "repository-instance-state" },
-    { "path": "Releases", "kind": "tree", "reason": "repository-instance-state" },
-    { "path": "Sprints", "kind": "tree", "reason": "repository-instance-state" },
-    { "path": "Traceability", "kind": "tree", "reason": "repository-instance-state" },
-    { "path": "Verification", "kind": "tree", "reason": "repository-instance-state" },
-    { "path": "RELEASE-NOTES.md", "kind": "file", "reason": "repository-release-metadata" },
-    { "path": "SDP.manifest.yaml", "kind": "file", "reason": "repository-release-metadata" },
-    { "path": "SDP-DOCUMENT-GUIDE.md", "kind": "file", "reason": "legacy-project-template" },
-    { "path": "payload", "kind": "tree", "reason": "legacy-duplicate-root" },
-    { "path": "skills", "kind": "tree", "reason": "legacy-duplicate-root" },
-    { "path": "Toolkit/payload/project-root/AGENTS-project.md.template", "kind": "file", "reason": "legacy-project-template" },
-    { "path": "Toolkit/payload/sdp-root/AGENT-REMINDERS.md.template", "kind": "file", "reason": "legacy-project-template" }
+    {
+      "path": "RELEASE-NOTES.md",
+      "kind": "file",
+      "reason": "repository-release-metadata"
+    },
+    {
+      "path": "SDP.manifest.yaml",
+      "kind": "file",
+      "reason": "repository-release-metadata"
+    },
+    {
+      "path": "Toolkit/payload/project-root/AGENTS-project.md.template",
+      "kind": "file",
+      "reason": "legacy-project-template"
+    },
+    {
+      "path": "Toolkit/payload/sdp-root/AGENT-REMINDERS.md.template",
+      "kind": "file",
+      "reason": "legacy-project-template"
+    },
+    {
+      "path": "SDP",
+      "kind": "tree",
+      "reason": "repository-instance-state"
+    },
+    {
+      "path": "Template/README.md",
+      "kind": "file",
+      "reason": "development-only"
+    }
   ]
 }

@@ -1,10 +1,14 @@
 # Utviklingen av SDP
 
-Dette er begynnelsen på SDP-produktets eget prosjektområde.
-[KanBan](Agents/KanBan/README.md) samler ideer, endringsønsker og avklaringer.
+Dette området samler SDP-produktets eget utviklingsarbeid.
 
-Den større repo-/Template-migreringen er fortsatt planlegging. Eksisterende
-nummererte rotkataloger, Toolkit-kontrakter og Traceability er ikke flyttet eller
-omdefinert. De nye KanBan-ledgerne erstatter ikke implementasjonsledgeren.
-[Strukturforslaget](Agents/KanBan/active/%23001--Proposal--Project-structure.md)
-eier videre avklaring. SDL og SDUI har egne tavler, med lenker fra felles oversikt.
+- [KanBan](Agents/KanBan/README.md): samtalefunn, prioritering og aktive oppdrag.
+- [R1 housekeeping](Maintenance/R1/Plan.md): flyttematrise, dokumentinventar og kontrollbevis.
+- [Traceability](Traceability/README.md): eksisterende implementasjonsledger og relasjoner.
+- [Sprints](Sprints/README.md), [verifikasjon](Verification/README.md) og [review](CodeReview/README.md).
+- [Bruksstudien](Studies/UsageAnalysis/README.md): datert Issue #5-materiale.
+- [Historisk bootstrap](History/legacy-bootstrap/README.md): utgåtte rotkopier, ikke installasjonskilder.
+
+Maler ligger i Template og språkimplementasjonene har egne kataloger. KanBan
+følger behandling av forslag; den erstatter ikke implementasjonsledgeren.
+Ny faseprofil og redaksjonell dokumentkonsolidering følges i KB-SDP-001/010.

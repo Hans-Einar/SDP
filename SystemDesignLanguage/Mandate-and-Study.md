@@ -35,7 +35,7 @@ Kilder til aksept og foreløpig status: [#5 Steering-aksept](https://github.com/
 
 Eksisterende faglig underlag:
 
-- [Akseptert studieretning](../SDP-usage-analysis/ProposedSDPWorkflow.md).
+- [Akseptert studieretning](../SDP/Studies/UsageAnalysis/ProposedSDPWorkflow.md).
 - [Språkkatalog med 32 profiler](research/existingDesignLanguages/README.md).
 - [P04-syntese, avgrensninger og sammenligningsforslag](research/README.md).
 

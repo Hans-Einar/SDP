@@ -1229,7 +1229,7 @@ def corpus_digest(paths: Iterable[Path], root: Path) -> str:
 
 def validate(analysis_root: Path) -> tuple[list[Diagnostic], Stats, str | None]:
     analysis_root = analysis_root.resolve()
-    repository_root = analysis_root.parent
+    repository_root = analysis_root.parents[2]
     errors: list[Diagnostic] = []
     readme_path = analysis_root / "README.md"
     inventory_path = analysis_root / "RepositoryInventory.md"

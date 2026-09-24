@@ -39,6 +39,6 @@ versjonert kontrakt og migrering før endring. Prøv én modell med to slices hv
 bare én er implementert/verifisert; generert roadmap/fremdriftsdiagram skal vise
 forskjellen og lenke til kilden og bevisene. [KB-SDP-002 — sdptool: prosjektoppslag, implementasjonsplan og viewer](%23002--Proposal--sdptool.md) er konsument.
 
-[Traceability/Ledger.ndjson](../../../../Traceability/Ledger.ndjson)
+[Traceability/Ledger.ndjson](../../../Traceability/Ledger.ndjson)
 [Toolkit/schemas/ledger-event.schema.json](../../../../Toolkit/schemas/ledger-event.schema.json)
-[Traceability/Relations.yaml](../../../../Traceability/Relations.yaml)
+[Traceability/Relations.yaml](../../../Traceability/Relations.yaml)

@@ -30,7 +30,7 @@ claim an exhaustive review of PR inline comments or all root lifecycle records.
 
 - The root document guide describes root folders as reference templates, while
   the PR #4 installation contract distinguishes live repository records from
-  neutral `Toolkit/project-templates`. Use the installation contract for
+  neutral `Template`. Use the installation contract for
   distribution; do not repeat the older description in new installation rules.
 - Accepted study direction makes Sprint optional and Iteration nonmandatory;
   the installed vNow contracts still use them. A study's acceptance does not

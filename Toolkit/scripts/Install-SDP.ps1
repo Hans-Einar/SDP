@@ -1306,13 +1306,12 @@ foreach ($exclusion in $Exclusions) {
 }
 
 foreach ($requiredLiveExclusion in @(
-    '01--Mandate', '02--Study', '03--Requirements', '04--Architecture',
-    '05--DesignAnalysis', '06--Design', '07--Implementation', 'CodeReview',
-    'Fixes', 'Instructions', 'Refactors', 'Releases', 'Sprints', 'Traceability',
-    'Verification', 'RELEASE-NOTES.md', 'SDP.manifest.yaml',
-    'SDP-DOCUMENT-GUIDE.md', 'payload', 'skills',
+    'RELEASE-NOTES.md',
+    'SDP.manifest.yaml',
     'Toolkit/payload/project-root/AGENTS-project.md.template',
-    'Toolkit/payload/sdp-root/AGENT-REMINDERS.md.template'
+    'Toolkit/payload/sdp-root/AGENT-REMINDERS.md.template',
+    'SDP',
+    'Template/README.md'
 )) {
     if (-not $ExclusionByKey.ContainsKey((Get-PortablePathKey $requiredLiveExclusion))) {
         throw "Installation contract is missing required live-state exclusion '$requiredLiveExclusion'."
@@ -1452,7 +1451,7 @@ for ($entryIndex = 0; $entryIndex -lt $Entries.Count; $entryIndex++) {
             $inAllowedSourceClass = (Test-PortablePathWithin $source 'Toolkit/payload' 'tree') -or
                 (Test-PortablePathWithin $source 'Toolkit/skills' 'tree')
         } else {
-            $inAllowedSourceClass = Test-PortablePathWithin $source 'Toolkit/project-templates' 'tree'
+            $inAllowedSourceClass = Test-PortablePathWithin $source 'Template' 'tree'
         }
         if (-not $inAllowedSourceClass) {
             throw "Entry '$entryId' source is outside its declared ownership source class: $source"

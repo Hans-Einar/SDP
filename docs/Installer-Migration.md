@@ -43,7 +43,7 @@ The canonical inventory and behavior are declared by
 `Toolkit/SDP-install.manifest.json`; PowerShell does not own a parallel file
 list. Default entries install managed contracts and missing neutral project,
 release and traceability foundations. Initialization additionally selects only
-the missing neutral files under `Toolkit/project-templates/`.
+the missing neutral files under `Template/`.
 
 Initialization never reads the repository's root lifecycle folders as payload.
 It does not copy or propose `SDP/Releases/REL-0.2.0.yaml`, the Toolkit's active
