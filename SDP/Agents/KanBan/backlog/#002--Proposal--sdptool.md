@@ -59,7 +59,25 @@ forslag/valideringsdiagnoser og kildekoblet fremdrift uten oppdiktet status.
 `view ip` skal virke fra repoets rot og eget SDP-område samt med eksplisitt sti.
 Ukjent prosjekt/ugyldig kilde får diagnose; kilde/vedtatt plan overskrives ikke.
 
-## Nåstatus
+## Tillegg: kortets revisjoner og diff
+
+Eieren ønsker 2026-09-24 å kunne følge også innholdsendringer mens kort er active.
+Fremtidig `sdptool` bør tilby historikk og diff ved stabil kort-ID, både committed
+revisjon mot revisjon og arbeidsutkast mot siste commit. Kommandonavn er ikke vedtatt.
+Gjenbruk Git; ikke lag separat repository/versjonsmotor for hvert kort.
+Vis status-/reviewhendelser sammen med Git-revisjoner, og følg eksplisitt lineage
+til kilde-/målkort ved merge/split. Ikke bruk rename-heuristikk som kortidentitet.
+Prosjektregister må løse samme oppgave innen monorepo og etter repo-utskilling.
+Akseptanse: korrekt historisk sti/innhold og diff ved flytting, samme-status-revisjon,
+merge/split og eksplisitt diagnose ved manglende historikk. [Manuell arbeidsmåte](../History.md).
+
+## Nåstatus for verktøyet
 
 Dette er planlegging, ikke en eksisterende `sdptool`-kommando. `sdl-design` og
 SDLs Go-CLI er eksisterende gjenbruksgrunnlag. [SystemDesignLanguage/scripts/README.md](../../../../SDL/scripts/README.md)
+
+## Arbeidslogg og revisjoner
+
+| Tid | Aktør / hendelse | Behandling | Restarbeid |
+| --- | --- | --- | --- |
+| 2026-09-24T14:52:35Z | Codex; EVT-KB-SDP-000019 | Registrerer integrert korthistorikk/diff som fremtidig sdptool-funksjon; manuell Git-arbeidsmåte leveres i K4. | Avtale vertikal verktøyleveranse før implementasjon. |

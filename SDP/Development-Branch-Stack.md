@@ -91,3 +91,7 @@ samler maler/prosjektrecords; M3 samler SDL og dokumentinnganger med verifikasjo
 [Plan](Maintenance/R1/Plan.md), [bevis](Maintenance/R1/Evidence.md) og
 [flyttematrise](Maintenance/R1/Migration-map.json) skiller fysisk opprydding fra
 fortsatt planlagt faseprofil og redaksjonell konsolidering.
+
+K4 følger fra R1 (`f722dc2`) på `sdp/phase-k4-card-history`. K4-M1 leverer
+[arbeidslogg og Git-historikk](Agents/KanBan/completed/%23012--Change--Card-history.md)
+for aktive kort; integrert verktøy og graf er fortsatt backlog.

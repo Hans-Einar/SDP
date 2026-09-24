@@ -7,7 +7,7 @@
 | type | Proposal |
 | created | 2026-09-23T18:25:13Z |
 | source | owner-conversation-2026-09-23 |
-| next_review | Ved neste R1-milepæl |
+| next_review | Ved neste konsolideringsmilepæl i KB-SDP-010 |
 | owner | Codex |
 
 Registrert fra eierens samtale 2026-09-23. Tidspunktet er registreringstid,
@@ -80,3 +80,12 @@ prosjektregistrering som fungerer med og uten repo-grenser, og plan for separat
 SDL/SDUI-repo. R1 oppretter ingen submodules eller nye GitHub-repoer.
 KB-SDP-010 eier faglig dokumentkonsolidering; KB-SDP-011 eier eksisterende ID-avvik.
 Disse holdes atskilt fra denne fysiske migreringen. Se R1-plan og kontrollbevis.
+
+## Arbeidslogg og revisjoner
+
+Denne loggen starter etter R1. Tidligere revisjoner finnes i Git, ikke som
+nykonstruerte loggrader med gamle tidsstempler. [Historikk/diff](../History.md).
+
+| Tid | Aktør / hendelse | Arbeid og resultat | Bevis / restarbeid |
+| --- | --- | --- | --- |
+| 2026-09-24T14:52:35Z | Codex; EVT-KB-SDP-000021 | R1 gjennomgått: M1 `d269bc7`, M2 `f42859e`, M3 `f722dc2` leverte fysisk organisering. | [R1-bevis](../../../Maintenance/R1/Evidence.md). Fase-/malprofil, prosjektregister og repo-utskilling gjenstår; dokumentkonsolidering følges i KB-SDP-010. |

@@ -15,6 +15,7 @@
 | KB-SDP-009 | Change | completed | [K3-M1: sammenslåing og splitting](completed/%23009--Change--Card-merge-and-split.md) |
 | KB-SDP-010 | Proposal | backlog | [Dokumentkonsolidering](backlog/%23010--Proposal--Document-consolidation.md) |
 | KB-SDP-011 | Bug | backlog | [Eldre Traceability-ID-er](backlog/%23011--Bug--Traceability-id-conformance.md) |
+| KB-SDP-012 | Change | completed | [K4-M1: arbeidslogg, revisjoner og diff](completed/%23012--Change--Card-history.md) |
 
 Indeksen vedlikeholdes sammen med flytting; ledgeren eier hendelseshistorikken.
 
@@ -105,6 +106,11 @@ bevarte kilder og eksplisitt restarbeid. Bare fullt erstattede kilder avsluttes;
 delvise kilder beholdes åpne. Vurder beslektede backlogkort før valg til active.
 
 ## Arbeidsrytme og omfang
+
+Aktive kort brukes som arbeidsdokumenter med gjeldende omfang, neste steg og
+arbeidslogg. [Historikk og diff](History.md) beskriver koblingen mellom loggrad,
+ledgerhendelse og Git-revisjon, også når kortet blir i samme status. Git lagrer
+innhold; ledgeren lagrer behandling; Traceability lagrer implementasjonsbevis.
 
 Ved oppstart av arbeid: les aktuell tavle og berørte Ref-kort, velg et avgrenset
 kort og flytt det til active med eksplisitt omfang. Ved nye funn som endrer oppdraget:

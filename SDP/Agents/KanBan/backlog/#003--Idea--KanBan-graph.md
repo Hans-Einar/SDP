@@ -47,3 +47,17 @@ eller vanlige links. Delvis overføring viser at kilden fortsatt har restarbeid.
 OperationId binder deltakerhendelsene sammen; en ufullstendig operasjon eller
 utilgjengelig prosjekttavle merkes som ukjent/ufullstendig, ikke ferdigbehandlet.
 Kildenes historikk og tidspunkter beholdes. [Kontrakt](../Lineage.md).
+
+## Presisering 2026-09-24: innholdsrevisjoner
+
+Vis også vesentlige reviewed-hendelser mens kortet står i active. Et datapunkt
+skal kunne åpne kortets innhold slik det var ved hendelsen, og diff mot en valgt
+revisjon. Gjeldende utkast skal merkes separat fra committed historie. Git eier
+tekstversjonene, ledgeren eier livsløpet; [K4-arbeidsmåten](../History.md) beskriver
+koblingen og begrensningene. Historikk/diff krever tilgjengelige Git-objekter.
+
+## Arbeidslogg og revisjoner
+
+| Tid | Aktør / hendelse | Behandling | Restarbeid |
+| --- | --- | --- | --- |
+| 2026-09-24T14:52:35Z | Codex; EVT-KB-SDP-000020 | Presiserer grafidé med aktive innholdsrevisjoner og historisk diff; graf fortsatt ikke implementert. | Avtale vertikal verktøyleveranse før implementasjon. |

@@ -31,6 +31,17 @@ Ved onHold: grunn, gjenopptakingsbetingelse og neste vurdering.
 Oppdater før avslutning. Lenk til beslutning, plan/slice, bevis eller etterfølger.
 Ikke påstå produktimplementasjon bare fordi forslaget er vurdert eller planlagt.
 
+## Arbeidslogg og revisjoner
+
+Oppdater også mens kortet er active. Én rad per vesentlig behandling; behold
+eldre rader og korriger med et tillegg. Gjeldende omfang og neste steg står over.
+Ikke fyll inn egen commithash før commit; hendelses-ID kobler til Git-revisjonen.
+Se [arbeidsmåten for historikk og diff](History.md).
+
+| Tid (RFC3339) | Aktør / hendelse | Arbeid, funn eller beslutning | Bevis / restarbeid |
+| --- | --- | --- | --- |
+| Faktisk registreringstid | Aktør; EVT-KB-PROJECT-NNNNNN | Skill resultat fra forslag og eierbeslutning | Lenke og konkret neste steg |
+
 ## Opphav ved sammenslåing eller splitting
 
 Bruk denne delen bare ved merge/split. Oppgi operationId og alle kilde-/mål-ID-er
