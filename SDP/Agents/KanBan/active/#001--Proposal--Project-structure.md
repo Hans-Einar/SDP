@@ -57,7 +57,7 @@ SDL-koden ligger fortsatt i `SystemDesignLanguage/`.
 
 ## Relaterte grunnlag
 
-[docs/SDL-Viewpoint-Levels-and-Notation.md](../../../../docs/SDL-Viewpoint-Levels-and-Notation.md)
+[docs/SDL-Viewpoint-Levels-and-Notation.md](../../../../SDL/docs/integration/SDL-Viewpoint-Levels-and-Notation.md)
 [Toolkit/SDP-install.manifest.json](../../../../Toolkit/SDP-install.manifest.json)
 [KB-SDP-002 — sdptool: prosjektoppslag, implementasjonsplan og viewer](../backlog/%23002--Proposal--sdptool.md)
 
@@ -68,3 +68,15 @@ R1 kartlegger eierskap, samler malene, flytter prosjektets egne driftsdokumenter
 inn i SDP, samler SDL-området og etablerer dokumentinnganger/migreringskart.
 Plan og avgrensninger føres i [R1-planen](../../../Maintenance/R1/Plan.md).
 Full redaksjonell konsolidering av dokumentinnhold har eget kort KB-SDP-010.
+
+## Etter R1 — utført og gjenstående
+
+Maler er samlet i Template; prosjektets egne records ligger i SDP; SDL-kode og
+språkdokumentasjon ligger nå i SDL. Checkpoint #1 er felles datert historikk i
+SDP/History. Tidligere plasseringer omtalt over er forhistorien til denne migreringen.
+
+Kortet forblir active for endelig fase-/malprofil (studier per fase og kravmodell),
+prosjektregistrering som fungerer med og uten repo-grenser, og plan for separat
+SDL/SDUI-repo. R1 oppretter ingen submodules eller nye GitHub-repoer.
+KB-SDP-010 eier faglig dokumentkonsolidering; KB-SDP-011 eier eksisterende ID-avvik.
+Disse holdes atskilt fra denne fysiske migreringen. Se R1-plan og kontrollbevis.

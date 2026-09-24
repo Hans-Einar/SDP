@@ -1,8 +1,8 @@
 # Design-core — port fullført
 
 Python-eksperimentet for design-core 0.5 er erstattet av
-[Go-parseren](../../SystemDesignLanguage/go/README.md) i G4/G5.
-[Språkdefinisjonen](../../docs/Design-Language-Definition.md) og
+[Go-parseren](../../SDL/go/README.md) i G4/G5.
+[Språkdefinisjonen](../../SDL/docs/studies/Design-Language-Definition.md) og
 [eksemplet](examples/ui-ownership.design) er bevart. 151 fryste parsertilfeller
 ligger under SystemDesignLanguage/go/parser/testdata; 170 diagramprojeksjoner
 med original kilde ligger under go/viewpoint/testdata.

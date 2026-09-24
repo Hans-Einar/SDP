@@ -61,4 +61,4 @@ validering, negative eksempler og dokumentprojeksjoner. En lesbar kravpakke skal
 bevare tekst nøyaktig og vise stakeholder–actor–story–use-case-sporbarhet uten
 at en løs forbindelse tolkes som kravoppfyllelse.
 
-[SystemDesignLanguage/README.md](../../../../../SystemDesignLanguage/README.md)
+[SystemDesignLanguage/README.md](../../../../README.md)

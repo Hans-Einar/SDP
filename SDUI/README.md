@@ -19,7 +19,7 @@ go -C SDUI/go run -tags desktop ./cmd/sdui-fyne -entry bucking ../examples/conce
 
 Linux desktop trenger OpenGL/X11 og C-kompilator. Parser/runtime kan brukes uten
 GUI. Fyne er første interaktive vert; XFMD viser generert dokumentasjon og kreves
-ikke for UI-kjernen. [Go-innganger](go/README.md), [felles kjøreeksempel](../SystemDesignLanguage/go/README.md).
+ikke for UI-kjernen. [Go-innganger](go/README.md), [felles kjøreeksempel](../SDL/go/README.md).
 
 [Concept1-kilden](examples/concept1-bucking.sdui) har seks hovedbokser og
 representative kontroller. Det er eksempeldata, ikke portert React- eller
@@ -35,7 +35,7 @@ callbacks. En eksplisitt verts-/bridge-registrering kreves for domenekall.
 
 - [Språk og EBNF](docs/language.md), [layoutprofil](docs/go-layout-contract.md), [Markdown-profil](docs/markdown-provider.md).
 - [Arkitektur](docs/architecture.md), [runtime](go/runtime/README.md), [Go-generering](docs/go-generation.md).
-- [Krav](docs/requirements.md), [milepæler](docs/implementation-plan.md), [gjeldende checkpoint](../docs/checkpoint%231/11-Go-Implementation-and-Navigation.md).
+- [Krav](docs/requirements.md), [milepæler](docs/implementation-plan.md), [gjeldende checkpoint](../SDP/History/checkpoint-1/11-Go-Implementation-and-Navigation.md).
 - [SDL-design og genererte viewpoints](design/README.md), [mandat](Mandate-and-Study.md).
 
 Avgrensninger: scroll-layout avvises; innebygd Mermaid er verifisert for

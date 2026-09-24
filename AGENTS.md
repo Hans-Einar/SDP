@@ -19,7 +19,7 @@ Eierbeslutning 2026-09-22 for SDL/SDUI-utviklingen:
   etter hver fullført fase i samme sesjon.
 
 Branchstakken og håndteringen av tidligere ucommittet arbeid er beskrevet i
-[utviklingshistorikken](docs/Development-Branch-Stack.md). Les også relevante
+[utviklingshistorikken](SDP/Development-Branch-Stack.md). Les også relevante
 underkatalogers AGENTS.md før endringer.
 
 ## Lokale fillenker i svar

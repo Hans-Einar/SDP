@@ -1,0 +1,3 @@
+# Local Python verification caches are not project artifacts.
+__pycache__/
+*.py[cod]

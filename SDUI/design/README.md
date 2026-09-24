@@ -1,7 +1,7 @@
 # SDL/SDUI-parser og runtime beskrevet med SDL
 
 **Daglig browsing fra SDL-kilden:** kjør `sdl-design`.
-[Launch-scriptet](../../SystemDesignLanguage/scripts/README.md) åpner hovedside
+[Launch-scriptet](../../SDL/scripts/README.md) åpner hovedside
 og navigator; detaljvisninger genereres ved klikk. De lagrede full-eksportene
 nedenfor er verifikasjons-/eksportartefakter, ikke den levende inngangen.
 
@@ -10,7 +10,7 @@ Den viser milepælstatus, eiere, avhengigheter og eksempelforløp fra SDL.
 
 [SDL-verktøyets genererte viewpoints](viewpoints/viewpoints.md) og
 [viewpoint-indeks](viewpoints/index.md) er avledet fra denne kilden.
-Regenerering og utvalg står i [verktøydokumentasjonen](../../SystemDesignLanguage/tools/README.md).
+Regenerering og utvalg står i [verktøydokumentasjonen](../../SDL/tools/README.md).
 Use Case/Feature og allokering genereres fra SDL. Datakart, packet og kontraktkontrollerte Channel-sekvenser genereres også;
 ingen diagramfakta tegnes inn manuelt.
 
@@ -20,7 +20,7 @@ SDUI/vertsmodellen på samme sted. Ingen kopi opprettes under SDL-katalogen.
 
 Modellen er skrevet i implementert `design-core 0.5` og passerer den eksisterende
 SDL-parseren. Dette profilnummeret gjelder SDL-struktur, ikke utgått SDUI 0.1.
-Den beskriver Go-koden og dens ansvar. [Gjeldende implementasjonsstatus](../../docs/checkpoint%231/11-Go-Implementation-and-Navigation.md) avgrenser profilene.
+Den beskriver Go-koden og dens ansvar. [Gjeldende implementasjonsstatus](../../SDP/History/checkpoint-1/11-Go-Implementation-and-Navigation.md) avgrenser profilene.
 
 ## Åpne modellen
 
@@ -262,7 +262,7 @@ utledes bare fordi to meldinger følger hverandre i et scenario.
 
 ## G6 — navigerbare dokumenter
 
-[Eierens navigasjonsdesign](../../docs/SDL-Navigable-Viewpoints-Design.md) er
+[Eierens navigasjonsdesign](../../SDL/docs/integration/SDL-Navigable-Viewpoints-Design.md) er
 lagt inn som G6NavigableDocumentation med seks verifiserte milepæler. DocumentBroker,
 ViewArtifactStore og ViewerLaunchAdapter holder generering/publisering atskilt
 fra XfmdDocumentHost, som eier paneler og dokumentvisning. SelectedViewOpened,
@@ -270,7 +270,7 @@ InvalidViewSelectionRejected og ViewProjectionFailed gir genererte sekvenser.
 Kontraktene er typed recordgrenser. URI-validering, Linux IPC, filpublisering,
 leases og eksplisitte XFMD-vinduer/paneler er implementert og prøvd i G6.
 
-G6-D2 presiserer [eksportformer, A0–A5 og notasjon](../../docs/SDL-Viewpoint-Levels-and-Notation.md).
+G6-D2 presiserer [eksportformer, A0–A5 og notasjon](../../SDL/docs/integration/SDL-Viewpoint-Levels-and-Notation.md).
 Navigator-only bygger oversikter uten detaljdiagrammer; M5 gir faste
 symboler og semantiske piler. M6s eksplisitte klassestruktur har egen class-core
 profil og kildekoblede diagrammer, uten å omtolke contains/owns.

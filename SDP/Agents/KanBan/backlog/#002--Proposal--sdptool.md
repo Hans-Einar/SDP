@@ -62,4 +62,4 @@ Ukjent prosjekt/ugyldig kilde får diagnose; kilde/vedtatt plan overskrives ikke
 ## Nåstatus
 
 Dette er planlegging, ikke en eksisterende `sdptool`-kommando. `sdl-design` og
-SDLs Go-CLI er eksisterende gjenbruksgrunnlag. [SystemDesignLanguage/scripts/README.md](../../../../SystemDesignLanguage/scripts/README.md)
+SDLs Go-CLI er eksisterende gjenbruksgrunnlag. [SystemDesignLanguage/scripts/README.md](../../../../SDL/scripts/README.md)

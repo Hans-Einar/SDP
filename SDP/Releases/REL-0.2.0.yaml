@@ -18,7 +18,7 @@ includedCapabilities:
   - sdp.versioning.v1
 verificationRecords: []
 reviewRecords: []
-migrationRecord: docs/Installer-Migration.md
+migrationRecord: Toolkit/docs/Installer-Migration.md
 releasePreparationCommit: null
 gitTag: null
 githubReleaseUrl: null

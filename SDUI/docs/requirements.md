@@ -1,7 +1,7 @@
 # SDUI — krav og sporbarhet
 
 Oppdatert 2026-09-22. Gjeldende fasebevis er [G1–G3](../go/README.md),
-[G4–G6](../../SystemDesignLanguage/go/README.md). Tabellen følger Go-porten;
+[G4–G6](../../SDL/go/README.md). Tabellen følger Go-porten;
 de navngitte Python-baselinetilfellene er fryst som testdata, ikke aktive tester.
 
 | ID | Krav | Eier / bevis | Status |

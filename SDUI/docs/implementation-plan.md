@@ -12,7 +12,7 @@ semantiske profilgrenser og gjenstående produktarbeid står i checkpoint tilleg
 Erstatter PLAN-002s P0–P6-løp for Rust/C-ABI/FOX. Nye milepæler bruker G-prefiks;
 henvisninger til P-faser i eldre bevis gjelder historien, ikke aktive leveranser.
 [Målarkitektur](target-architecture.md) og
-[checkpoint](../../docs/checkpoint%231/07-SDUI-0.2-and-Go-Direction.md).
+[checkpoint](../../SDP/History/checkpoint-1/07-SDUI-0.2-and-Go-Direction.md).
 
 Omfang: SDL/SDUI-parser og runtime i Go, felles SDUI-layout, SVG-eksport, første
 Fyne-vert, modellreload og Go-generering. Python-portgrunnlaget er fjernet
@@ -103,7 +103,7 @@ eller separate workerprosesser er ikke nødvendig akseptanse for hot reload.
 
 ## G6 — navigerbare dokumenter og generering ved behov
 
-**Status: G6-M1–M6 levert**, med [designkontrakt og XFMD-handoff](../../docs/SDL-Navigable-Viewpoints-Design.md).
+**Status: G6-M1–M6 levert**, med [designkontrakt og XFMD-handoff](../../SDL/docs/integration/SDL-Navigable-Viewpoints-Design.md).
 Eier: SDL for projeksjon/publisering; XFMD for dokumentpaneler og lenkeruting.
 Dette er dokumentvisning, adskilt fra G2s Fyne-vert for interaktive SDUI-widgets.
 
@@ -123,7 +123,7 @@ ved siden av vertsarbeidet; M6 følger M5 og krever avklart klassekontrakt.
 Den tidligere Python-generatoren er fryst portgrunnlag. URI/IPC og XFMD-flagg
 er verifisert mot den separate XFMD-implementasjonen; se G6-bevis.
 G6-D1/D2 leverer design og parsede planer/scenarioer, ikke implementerte
-G6-M1–M6. [Nivåer og notasjon](../../docs/SDL-Viewpoint-Levels-and-Notation.md)
+G6-M1–M6. [Nivåer og notasjon](../../SDL/docs/integration/SDL-Viewpoint-Levels-and-Notation.md)
 presiserer eksportformene, A0–A5, Mode/State og semantisk diagramprofil.
 
 ## Avgrensning og gjenbruk
@@ -135,8 +135,8 @@ ingen uttrekkscrate eller merge til Mermaid. Fullt Markdown/Mermaid-innhold må
 prøves mot en avtalt profil. Ingen flere renderere bygges bare for å holde valg åpne.
 
 SDL- og SDUI-katalogene har hver sin README for kodeansvar. Denne planen er felles;
-ikke opprett konkurrerende faseplaner under begge. Detaljert portinventar står i [Go-portoversikten](../../docs/SDL-Go-Port-Inventory.md). Git følger
-[én branch per fase og commit per milepæl](../../docs/Development-Branch-Stack.md);
+ikke opprett konkurrerende faseplaner under begge. Detaljert portinventar står i [Go-portoversikten](../../SDL/docs/integration/SDL-Go-Port-Inventory.md). Git følger
+[én branch per fase og commit per milepæl](../../SDP/Development-Branch-Stack.md);
 push er autorisert etter hver fullført fase.
 
 ## G7 — enkel oppstart av dokumentnavigator

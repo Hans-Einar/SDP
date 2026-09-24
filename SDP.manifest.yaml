@@ -39,6 +39,6 @@ capabilities:
 releaseNotesPath: RELEASE-NOTES.md
 migration:
   required: true
-  guidePath: docs/Installer-Migration.md
+  guidePath: Toolkit/docs/Installer-Migration.md
 supportedProjectManifestSchemaVersions:
   - "1.0"

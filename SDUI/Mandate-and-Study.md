@@ -3,12 +3,12 @@
 **Gjeldende retning 2026-09-21:** SDL/SDUI-parser og runtime utvikles videre i Go,
 med Fyne som første interaktive vert og SVG-eksport fra felles modell/layout.
 Dette erstatter eldre språk-/vertsteknologivalg nedenfor; avsnittene er mandatets
-historie. [Checkpoint tillegg 07](../docs/checkpoint%231/07-SDUI-0.2-and-Go-Direction.md)
+historie. [Checkpoint tillegg 07](../SDP/History/checkpoint-1/07-SDUI-0.2-and-Go-Direction.md)
 og [PLAN-003](docs/implementation-plan.md) eier dagens leveranser.
 
 **Implementasjon 2026-09-22:** Eierens Concept1-bestilling er konkretisert som
 [SDUI-kilde, AST og konsolldump](docs/concept1-console.md). Go-frontenden, layout/SVG, Fyne, runtime og modellreload er levert.
-[Checkpoint tillegg 11](../docs/checkpoint%231/11-Go-Implementation-and-Navigation.md)
+[Checkpoint tillegg 11](../SDP/History/checkpoint-1/11-Go-Implementation-and-Navigation.md)
 avgrenser SDL-kjøring, generering og dokumentnavigasjon. Eldre avsnitt
 nedenfor bevarer mandatets historie, ikke en ekstra aktiv parserprofil.
 

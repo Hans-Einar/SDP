@@ -1,0 +1,10 @@
+SDP validation failed:
+- Traceability/Relations.yaml.iterations: 'ITR-SDP-005-001' does not match '^SPI-[0-9]{3,}$'
+- Traceability/Relations.yaml.iterations: 'ITR-SDP-005-002' does not match '^SPI-[0-9]{3,}$'
+- Traceability/Relations.yaml.iterations: 'ITR-SDP-005-003' does not match '^SPI-[0-9]{3,}$'
+- Traceability/Relations.yaml.iterations: 'ITR-SDP-005-004' does not match '^SPI-[0-9]{3,}$'
+- Traceability/Relations.yaml.slices: 'SLC-SDP-005-001' does not match '^SPS-[0-9]{3,}$'
+- Traceability/Relations.yaml.slices: 'SLC-SDP-005-002' does not match '^SPS-[0-9]{3,}$'
+- Traceability/Relations.yaml.slices: 'SLC-SDP-005-003' does not match '^SPS-[0-9]{3,}$'
+- Traceability/Relations.yaml.slices: 'SLC-SDP-005-004' does not match '^SPS-[0-9]{3,}$'
+- Traceability/Relations.yaml.sprints: 'SPR-SDP-005' does not match '^Sprint-[0-9]{3,}$'

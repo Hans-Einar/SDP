@@ -54,5 +54,5 @@ and committed expected plans/failure classes without executing PowerShell.
 Normal tests do not regenerate those authorities; candidate regeneration is an
 explicit maintainer-only `--write-candidates` operation followed by diff review.
 
-See `docs/Installation-Contract.md`, `docs/Installer-Migration.md` and
-`docs/Validation.md`.
+See `Toolkit/docs/Installation-Contract.md`, `Toolkit/docs/Installer-Migration.md` and
+`Toolkit/docs/Validation.md`.

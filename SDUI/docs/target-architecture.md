@@ -2,7 +2,7 @@
 
 **ID:** SDUI-ARCH-003 · 2026-09-21 · Valgt og implementert retning; se fasebevis og profilgrenser.
 Erstatter ARCH-002s Rust/C-ABI og obligatoriske FOX/XFMD-løp.
-[Checkpoint #1, tillegg 07](../../docs/checkpoint%231/07-SDUI-0.2-and-Go-Direction.md)
+[Checkpoint #1, tillegg 07](../../SDP/History/checkpoint-1/07-SDUI-0.2-and-Go-Direction.md)
 eier beslutningsoversikten; [architecture.md](architecture.md) beskriver gjeldende Go-kode.
 
 **Detaljert SDL-modell 2026-09-22:** [parser-/runtimedesignet](../design/README.md)
@@ -13,8 +13,8 @@ Modellen valideres med Go design-core-parser; action-core-runtime er en separat 
 
 | Område | Ansvar |
 | --- | --- |
-| SystemDesignLanguage/go/parser | SDL-kilde, AST, symboler og profilvalidering; ingen domeneutførelse |
-| SystemDesignLanguage/go/runtime | Avgrenset SDL-kjøring og registrerte Go-funksjoner; ingen GUI-avhengighet |
+| SDL/go/parser | SDL-kilde, AST, symboler og profilvalidering; ingen domeneutførelse |
+| SDL/go/runtime | Avgrenset SDL-kjøring og registrerte Go-funksjoner; ingen GUI-avhengighet |
 | SDUI/go/parser | SDUI 0.2, AST, diagnoser og normalisering; én språkimplementasjon etter port |
 | SDUI/go/runtime | UI-instans, identitet, egenskaper, events, bindinger og modellreload |
 | SDUI/go/layout | Én målt layoutmodell for interaktiv visning og eksport |
@@ -24,7 +24,7 @@ Modellen valideres med Go design-core-parser; action-core-runtime er en separat 
 
 Begge katalogene er selvstendige Go-moduler med Go 1.26-baseline, verifisert
 med Go 1.27.1 og Fyne 2.8.1. Implementasjon og grenser dokumenteres i
-[gjeldende checkpoint](../../docs/checkpoint%231/11-Go-Implementation-and-Navigation.md).
+[gjeldende checkpoint](../../SDP/History/checkpoint-1/11-Go-Implementation-and-Navigation.md).
 
 Parser/runtime importerer ikke Fyne, FOX, XFMD eller Mermaid. En vert setter
 sammen bibliotekene; SDUI-kjernen krever ikke en konkret SDL-implementasjon for
@@ -90,11 +90,11 @@ og Mermaid-repoene er bevart.
 
 ## Dokumentnavigasjon — levert G6
 
-[SDLs navigasjonsdesign](../../docs/SDL-Navigable-Viewpoints-Design.md) utvider
+[SDLs navigasjonsdesign](../../SDL/docs/integration/SDL-Navigable-Viewpoints-Design.md) utvider
 verktøylaget med katalogbaserte viewpoints, generering av valgt utsnitt,
 midlertidige dokumentpakker og en valgfri bakgrunnstjeneste. XFMD har navigator
 og hoveddokument i separate Markdown-paneler i PR #38. Dette er en dokumentvert,
 ikke en erstatning for Fyne i SDUI-runtime. SDL-projektor gjenbrukes, og leser-
 launch/IPC ligger i adapteren. Begge sider er implementert og native verifisert;
-[checkpoint tillegg 11](../../docs/checkpoint%231/11-Go-Implementation-and-Navigation.md)
+[checkpoint tillegg 11](../../SDP/History/checkpoint-1/11-Go-Implementation-and-Navigation.md)
 beskriver profilgrenser og branchstatus.

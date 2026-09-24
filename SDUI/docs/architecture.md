@@ -34,13 +34,13 @@ Barn bruker sin nærmeste kildeancestor, og `{16:9,<->}` avleder høyde fra fylt
 bredde. Fonten forblir logiske DIP ved resize. SVG og Fyne deler rektangler,
 tekstmål og klipp, men native kontroller har vertens rasterisering/tema.
 
-SDL-adapteren ligger i SystemDesignLanguage/go/bridge. Parserens ref/callback/
+SDL-adapteren ligger i SDL/go/bridge. Parserens ref/callback/
 setHandle er data; komposisjonen registrerer SDL-modul, Go-funksjon og typed
 bridge.Plan. Action-core 0.1 gir eksplisitt avgrenset kjøring. En allerede
 akseptert Go-domenetransaksjon kan ikke rulles tilbake hvis senere UI-publisering
 feiler; det gjøres ingen automatisk replay. Se [runtimekontrakten](runtime-contract.md).
 
 Grenser og reelle prøver: [G1](../go/evidence/G1.md), [G2](../go/evidence/G2.md),
-[G3](../go/evidence/G3.md), [G4](../../SystemDesignLanguage/go/evidence/G4.md),
-[G5](../../SystemDesignLanguage/go/evidence/G5.md). Ingen alternativ parser i
+[G3](../go/evidence/G3.md), [G4](../../SDL/go/evidence/G4.md),
+[G5](../../SDL/go/evidence/G5.md). Ingen alternativ parser i
 SVG/Fyne/XFMD, ingen Rust-uttrekkscrate eller obligatorisk C-ABI.
