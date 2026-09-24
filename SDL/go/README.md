@@ -25,7 +25,7 @@ go run ./cmd/sdl format ../../SDUI/design/architecture.design
 `parser.Data` preserves the Python profile's named JSON AST, including start/end
 positions. Comparison evidence covers 151 port cases and the full SDUI model.
 [Evidence](evidence/G4.md), [shared plan](../../SDUI/docs/implementation-plan.md),
-[language definition](../docs/studies/Design-Language-Definition.md).
+[language definition](../docs/profiles/SDL-Structural-Core-Profile.md).
 G5-M4 replaced the Python frontend and viewpoint generator. Frozen fixtures remain
 historical oracles; there is no fallback.
 

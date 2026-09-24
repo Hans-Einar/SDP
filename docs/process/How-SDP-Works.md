@@ -5,6 +5,16 @@
 The repository is authoritative. Chat history and agent memory are temporary.
 Material decisions, evidence and state transitions belong in repository records.
 
+## Process profile and proposed evolution
+
+The progression below describes the currently distributed 01–07 template profile.
+The [R3 phase proposal](Project-Phase-Profile-Proposal.md) proposes per-phase studies
+and five numbered directories for owner review. It is not installed policy yet.
+[Project discovery/extraction](Project-Discovery-and-Extraction-Proposal.md) is a
+separate proposed tool contract. A0–A5 classify design abstraction, not Sprints,
+KanBan state or mandatory directory numbers. Do not mix candidate profiles into
+an existing project's approved process silently.
+
 ## Document progression
 
 ```text

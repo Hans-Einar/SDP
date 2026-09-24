@@ -3,12 +3,12 @@
 | Field | Value |
 | --- | --- |
 | id | KB-SDP-010 |
-| CardState | in-progress |
+| CardState | gate-review |
 | project | SDP |
 | type | Proposal |
 | created | 2026-09-24T13:54:42Z |
 | source | owner-conversation-2026-09-24 |
-| next_review | Before the next phase/template-profile delivery in KB-SDP-001 |
+| next_review | Owner review of the R3-M2 consolidation result |
 | owner | Codex |
 
 ## Request and scope
@@ -38,9 +38,33 @@ The [plan](../../../Maintenance/R2/Plan.md) bounds the first pass to entry point
 
 ## Next handling after R2
 
-R2's bounded status pass is complete. The card remains active: active and proposed SDL core material still share one large source file, and process proposals need harmonization with an adopted phase/template profile. Next, address that profile with KB-SDP-001 and KB-SDL-001, then consolidate affected documents. R2 adopts no new SDL keywords, A0–A5 levels or installation names.
+R2's bounded status pass is complete. At R2 completion, active and proposed SDL core material still shared one large source file, and process proposals needed a coherent profile proposal and explicit authority boundaries. Next, address that profile with KB-SDP-001 and KB-SDL-001, then consolidate affected documents. R2 adopts no new SDL keywords, A0–A5 levels or installation names.
 
 ## R3 activation
 
 2026-09-24T17:55:07Z: EVT-KB-SDP-000061, ready → in-progress.
 [Plan](../../../Maintenance/R3/Plan.md) bounds the remaining work and review result.
+
+## R3-M2 result and gate review
+
+2026-09-24T17:59:27Z: EVT-KB-SDP-000063, in-progress → gate-review.
+[Authority/disposition map](../../../Maintenance/R3/Authority-map.md) covers all
+50 former docs files and links the complete SDUI subject map. The active SDL
+core and future candidates now have separate owners/files; the old address
+preserves section links. Fifteen fenced blocks survive byte-for-byte and four
+complete examples validate. Current process guidance distinguishes the installed
+01–07 profile from KB-SDP-001's proposed replacement. No new language rule or
+installer behavior is claimed. [Evidence](../../../Maintenance/R3/Evidence.md).
+
+Requested review: accept this consolidation and its authority boundaries, or
+identify concrete corrections. There is no remaining agent task currently
+running on this card. New language decisions remain in SDL's board; profile
+adoption/extraction remains in KB-SDP-001. On acceptance this card can move to
+completed; requested corrections return it to in-progress.
+
+## Next selection
+
+KB-SDP-002 is queued for bounded project discovery/view-ip planning after the
+owner reviews the structure contract. This depends on clear project/source
+identity and benefits from the consolidated profile documentation. It does not
+need to implement all proposed SDL narratives or automatic slice synthesis first.

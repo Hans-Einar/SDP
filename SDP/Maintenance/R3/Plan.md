@@ -16,3 +16,8 @@ pointer. Queue one bounded successor with prerequisites, then leave active cards
 in gate-review for the owner's assessment of the submitted results.
 
 R3-M1 complete: KB-SDP-001 is gate-review for the submitted proposal. R3-M2 is in progress.
+
+R3-M2 complete. Both bounded deliveries are submitted for owner gate review;
+KB-SDP-002 is queued, with no automatic start. The agent has no remaining
+in-progress work in R3. Adoption/installer/tool implementation is explicitly
+separate from the delivered review package.

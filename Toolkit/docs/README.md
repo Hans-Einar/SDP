@@ -7,3 +7,7 @@
 - [Analyzer contract](SDP-Analyzer-Compatibility.md) and [skill versioning](Skill-Versioning.md).
 
 Installable neutral sources have moved to Template. Project records now live in the repository's SDP area. Installation destinations in consuming projects are unchanged. The JSON installation manifest and schemas remain authoritative.
+
+The [R3 process/discovery proposals](../../docs/process/Project-Discovery-and-Extraction-Proposal.md)
+are review material, not replacements for current installation/release manifests.
+[Small shell commands](../scripts/cli/README.md) are implemented independently.

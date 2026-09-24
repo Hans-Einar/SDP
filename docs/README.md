@@ -13,3 +13,10 @@
 [How SDP Works](process/How-SDP-Works.md) describes the distributed process. [Feature governance](process/Feature-Governance-And-SDP-2.0.md) and the [MVP1/process study](process/MVP1-Design-Evolution-and-SDP-Skills.md) also contain proposals, not new installation or language rules.
 
 R1 organized physical locations and navigation. [KB-SDP-010](../SDP/Agents/KanBan/active/%23010--Proposal--Document-consolidation.md) is active with [R2's concrete consolidation](../SDP/Maintenance/R2/Findings.md). Phase/template profiles and further substantive harmonization remain open. A document's location alone does not approve its content.
+
+## Proposed process changes awaiting review
+
+- [Numbered phase/template profile](process/Project-Phase-Profile-Proposal.md).
+- [Project discovery and extraction](process/Project-Discovery-and-Extraction-Proposal.md).
+
+These are the R3 review package, not an installed profile or implemented sdptool.

@@ -3,12 +3,12 @@
 | Field | Value |
 | --- | --- |
 | id | KB-SDP-002 |
-| CardState | backlog |
+| CardState | queued |
 | project | SDP |
 | type | Proposal |
 | created | 2026-09-23T18:25:13Z |
 | source | owner-conversation-2026-09-23 |
-| next_review | 2026-09-30 |
+| next_review | After owner review of KB-SDP-001 R3 discovery proposal |
 
 Registered from the owner conversation on 2026-09-23. The timestamp records registration, not a reconstructed discussion time. The directory and ledger record lifecycle status.
 
@@ -49,3 +49,21 @@ This is planning, not an implemented `sdptool` command. Existing foundations are
 | Time | Actor / event | Handling | Remaining work |
 | --- | --- | --- | --- |
 | 2026-09-24T14:52:35Z | Codex; EVT-KB-SDP-000019 | Records integrated card history/diff as a future sdptool feature; K4 delivers the manual Git workflow. | Agree on a vertical tool delivery before implementation. |
+
+## Queue
+
+Selected 2026-09-24T17:59:27Z by Codex; EVT-KB-SDP-000065. Predecessors:
+[KB-SDP-001](../active/%23001--Proposal--Project-structure.md) and
+[KB-SDP-010](../active/%23010--Proposal--Document-consolidation.md).
+
+Why next: project/source identity is needed before tools can open the correct
+implementation plan in a monorepo or extracted project. The
+[R3 proposal](../../../../docs/process/Project-Discovery-and-Extraction-Proposal.md)
+now supplies a concrete recognition matrix and exposes missing local markers.
+
+First scope: confirm the discovery contract after owner review, define tested
+marker/resolver/configuration milestones and integrate view ip with existing
+prebuilt projection/viewer tools. Preserve approved source/plan files. Full
+generate-ip slice synthesis, roadmap/evidence semantics, integrated card history
+and Git extraction remain later scope. Queued means proposed next, not running
+or automatically approved. No sdptool executable is delivered by this selection.

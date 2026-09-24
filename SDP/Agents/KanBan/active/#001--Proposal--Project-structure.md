@@ -86,3 +86,14 @@ remains authoritative until a tested versioned migration. Identical cross-Git
 lookup is an acceptance criterion for KB-SDP-002, not a delivered feature here.
 No further agent work is currently in progress on this card. Owner-requested
 changes return it to in-progress; accepted planning can close with these links.
+
+## Next selection
+
+[KB-SDP-002](../backlog/%23002--Proposal--sdptool.md) is queued because explicit
+project lookup is the prerequisite for browsing each project's plan across Git
+boundaries. Begin with resolver/configuration and view-ip integration after the
+owner reviews the R3 discovery contract. New language keywords, slice synthesis
+and extraction are separate follow-ups, not reasons to keep this planning task
+in-progress. This card remains gate-review solely for the concrete owner decisions.
+
+Selection recorded 2026-09-24T17:59:27Z, EVT-KB-SDP-000064.

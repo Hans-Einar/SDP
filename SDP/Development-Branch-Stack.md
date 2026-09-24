@@ -83,3 +83,9 @@ M2 maintained narrative documentation, M3 generator language and regenerated out
 K5 follows L1 32f6ae5 on sdp/phase-k5-card-state. M1 49310de adds CardState;
 M2 delivers the read-only CLI, installer and tests, with owner-authorized concurrent
 KB-SDP-014 registration. [Plan](Maintenance/K5/Plan.md).
+
+K5-M3 0c73cb5 corrects the newly introduced duplicate event ID in a separate
+commit, preserving the original in Git/evidence. R3 follows on
+sdp/phase-r3-profile-and-authority: M1 aca12a6 supplies the reviewable phase/
+discovery/extraction package; M2 separates active core from candidates and records
+owner gates plus the queued successor. [R3 plan](Maintenance/R3/Plan.md).

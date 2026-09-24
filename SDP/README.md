@@ -12,3 +12,7 @@ This area gathers development work for the SDP product itself.
 - [Historical bootstrap](History/legacy-bootstrap/README.md): retired root copies, not installation sources.
 
 Templates live in Template; language implementations have their own directories. KanBan tracks proposal handling, not implementation evidence. KB-SDP-001/010 track the new phase profile and editorial consolidation.
+
+The remaining structure/consolidation package is in [R3](Maintenance/R3/Plan.md).
+Its project profile is proposed for owner review; current installed templates
+retain their documented authority. CardState distinguishes review from ongoing work.
