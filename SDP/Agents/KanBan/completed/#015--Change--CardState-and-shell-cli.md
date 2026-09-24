@@ -47,3 +47,12 @@ ID but the shell sequence continued to commit/push. The closing event is now
 000058; original bytes remain in Git c510fb7 and the K5 evidence capture.
 This is an explicit correction to an unintegrated phase record, not rewritten Git
 history. New allocation uses max ID + 1. See the final K5 checks.
+
+## K6 — terminal links
+
+2026-09-24T18:20:34Z: EVT-KB-SDP-000066. Owner requests clickable OSC 8 card paths.
+One milestone: percent-encoded absolute file URLs on terminals, plain redirected
+output, real PTY verification and installation. Opening follows the terminal’s
+configured file handler; kanban itself remains read-only.
+
+2026-09-24T18:22:08Z: EVT-KB-SDP-000067. K6-M1 complete; [scope and evidence](../../../Maintenance/K6/Plan.md).

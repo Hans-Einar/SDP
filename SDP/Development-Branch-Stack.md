@@ -89,3 +89,6 @@ commit, preserving the original in Git/evidence. R3 follows on
 sdp/phase-r3-profile-and-authority: M1 aca12a6 supplies the reviewable phase/
 discovery/extraction package; M2 separates active core from candidates and records
 owner gates plus the queued successor. [R3 plan](Maintenance/R3/Plan.md).
+
+K6 follows R3 84089ae on sdp/phase-k6-terminal-links. K6-M1 adds OSC 8 card
+links on terminals with plain pipe output; [evidence](Maintenance/K6/Plan.md).

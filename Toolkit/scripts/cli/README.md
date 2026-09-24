@@ -20,6 +20,10 @@ subdirectories; within one status directory they inspect only its cards. An
 optional directory overrides the working directory: `kanban state /path/to/KanBan`.
 They do not recurse into other projects, follow symlink cards or modify files.
 Paths are shell-quoted for safe terminal display and copying, including spaces/#.
+On a terminal (except TERM=dumb), each path is an OSC 8 hyperlink to its absolute,
+percent-encoded file URL. Pipes and redirected output stay plain text. The terminal
+opens links using its configured file handler; for example, Kitty can route .md
+files to XFMD. The command does not launch a viewer or change that configuration.
 
 Only `#*.md` cards with a CardState row in the first visible Field/Value table
 immediately after the title are listed. Body examples and templates are ignored.

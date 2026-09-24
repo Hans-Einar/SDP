@@ -24,6 +24,20 @@ case ${scope##*/} in
 esac
 rows=()
 invalid=0
+links=0
+if [[ -t 1 && ${TERM:-} != dumb ]]; then links=1; fi
+file_uri() {
+  local path=$1 encoded= byte hex i
+  # LC_ALL=C makes this byte-wise, including percent-encoding UTF-8 filenames.
+  for (( i=0; i<${#path}; i++ )); do
+    byte=${path:i:1}
+    case $byte in
+      [a-zA-Z0-9/._~-]) encoded+=$byte ;;
+      *) printf -v hex '%%%02X' "'$byte"; encoded+=$hex ;;
+    esac
+  done
+  printf 'file://%s' "$encoded"
+}
 for directory in "${dirs[@]}"; do
   while IFS= read -r -d '' card; do
     # Only the first visible metadata table is authoritative; ignore examples/body.
@@ -50,12 +64,17 @@ for directory in "${dirs[@]}"; do
     relative=${card#"$scope"/}
     # Shell quoting keeps tabs/newlines/control bytes in filenames printable.
     printf -v printable '%q' "$relative"
-    rows+=("$state"$'\t'"$printable")
+    uri=
+    if (( links )); then uri=$(file_uri "$card"); fi
+    rows+=("$state"$'\t'"$printable"$'\t'"$uri")
   done < <(find "$directory" -maxdepth 1 -type f -name '#*.md' -print0)
 done
 (( invalid == 0 )) || exit 2
 if (( ${#rows[@]} == 0 )); then printf '%s\n' 'no KanBan cards found' >&2; exit 1; fi
-printf '%s\n' "${rows[@]}" | sort -t $'\t' -k1,1 -k2,2 | awk -F '\t' '
+printf '%s\n' "${rows[@]}" | sort -t $'\t' -k1,1 -k2,2 | awk -F '\t' -v links="$links" '
   $1 != previous { if (NR > 1) print ""; print $1 ":"; previous=$1 }
-  { print "  " $2 }
+  {
+    if (links) printf "  \033]8;;%s\033\\%s\033]8;;\033\\\n", $3, $2
+    else print "  " $2
+  }
 '

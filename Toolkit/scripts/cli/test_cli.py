@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Behavior checks for directory scope, metadata and safe CLI installation."""
 import os
+import errno
+import pty
 import subprocess
 import tempfile
 import unittest
@@ -76,6 +78,45 @@ class KanBanCLI(unittest.TestCase):
         self.assertEqual(self.run_cli('--help').returncode, 0)
         for args in [(), ('bad',), ('state', 'missing'), ('status', '.', 'extra')]:
             self.assertEqual(self.run_cli(*args).returncode, 2)
+
+    def test_terminal_links_encode_complete_paths_and_close_each_link(self):
+        original = self.card('active', 1, 'ready')
+        special = original.with_name('#001--space æ % ? [x]\t\x1b.md')
+        original.rename(special)
+        self.card('backlog', 2, 'queued')
+        master, slave = pty.openpty()
+        try:
+            process = subprocess.Popen(
+                ['bash', str(CLI / 'kanban.sh'), 'status'], cwd=self.board,
+                stdout=slave, stderr=subprocess.PIPE, env=dict(os.environ, TERM='xterm-kitty'))
+            os.close(slave)
+            slave = None
+            data = bytearray()
+            while True:
+                try:
+                    chunk = os.read(master, 4096)
+                except OSError as error:
+                    if error.errno != errno.EIO:
+                        raise
+                    break
+                if not chunk:
+                    break
+                data.extend(chunk)
+            _, stderr = process.communicate(timeout=5)
+            self.assertEqual(process.returncode, 0, stderr)
+        finally:
+            os.close(master)
+            if slave is not None:
+                os.close(slave)
+        opening = b'\x1b]8;;' + special.as_uri().encode() + b'\x1b\\'
+        closing = b'\x1b]8;;\x1b\\'
+        self.assertIn(opening, data)
+        self.assertEqual(data.count(closing), 2)
+        self.assertEqual(data.count(b'\x1b'), 8)  # No raw filename escape leaks.
+        plain = self.run_cli('status')
+        self.assertEqual(plain.returncode, 0, plain.stderr)
+        self.assertNotIn('\x1b', plain.stdout)
+        self.assertNotIn('file://', plain.stdout)
 
     def test_installer_copies_all_scripts_preserves_previous_and_is_idempotent(self):
         target = self.root / 'bin area'
