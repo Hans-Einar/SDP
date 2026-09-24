@@ -95,3 +95,7 @@ fortsatt planlagt faseprofil og redaksjonell konsolidering.
 K4 følger fra R1 (`f722dc2`) på `sdp/phase-k4-card-history`. K4-M1 leverer
 [arbeidslogg og Git-historikk](Agents/KanBan/completed/%23012--Change--Card-history.md)
 for aktive kort; integrert verktøy og graf er fortsatt backlog.
+
+R2 følger fra K4 (`1713778`) på `sdp/phase-r2-document-consolidation`.
+[R2-planen](Maintenance/R2/Plan.md) aktiverer KB-SDP-010 for dokumentautoritet
+og kartlagte statuskonflikter; ingen nye språk-/installasjonsregler vedtas.

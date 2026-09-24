@@ -15,6 +15,6 @@
 [MVP1/prosessstudien](process/MVP1-Design-Evolution-and-SDP-Skills.md) inneholder
 også forslag; de er ikke nye installasjons- eller språkregler.
 
-R1 rydder fysisk plassering og navigasjon. [KB-SDP-010](../SDP/Agents/KanBan/backlog/%23010--Proposal--Document-consolidation.md)
+R1 rydder fysisk plassering og navigasjon. [KB-SDP-010](../SDP/Agents/KanBan/active/%23010--Proposal--Document-consolidation.md)
 fører videre faglig konsolidering og avklaring av motstridende/utdaterte påstander.
 Et dokuments plassering alene vedtar ikke innholdet.
