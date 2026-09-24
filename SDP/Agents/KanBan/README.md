@@ -20,6 +20,7 @@
 | KB-SDP-014 | Proposal | backlog | [Define the KanBan version contract and reusable distribution](backlog/%23014--Proposal--KanBan-version-contract-and-distribution.md) |
 
 | KB-SDP-015 | Change | completed | [CardState and shell commands](completed/%23015--Change--CardState-and-shell-cli.md) |
+| KB-SDP-016 | Proposal | backlog | [SDP discovery and viewer capability contract](backlog/%23016--Proposal--SDP-discovery-and-viewer-capabilities.md) |
 
 Maintain the index when moving cards. The ledger owns event history.
 
