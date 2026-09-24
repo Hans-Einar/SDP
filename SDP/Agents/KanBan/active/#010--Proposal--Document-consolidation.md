@@ -3,7 +3,7 @@
 | Field | Value |
 | --- | --- |
 | id | KB-SDP-010 |
-| CardState | ready |
+| CardState | in-progress |
 | project | SDP |
 | type | Proposal |
 | created | 2026-09-24T13:54:42Z |
@@ -39,3 +39,8 @@ The [plan](../../../Maintenance/R2/Plan.md) bounds the first pass to entry point
 ## Next handling after R2
 
 R2's bounded status pass is complete. The card remains active: active and proposed SDL core material still share one large source file, and process proposals need harmonization with an adopted phase/template profile. Next, address that profile with KB-SDP-001 and KB-SDL-001, then consolidate affected documents. R2 adopts no new SDL keywords, A0–A5 levels or installation names.
+
+## R3 activation
+
+2026-09-24T17:55:07Z: EVT-KB-SDP-000061, ready → in-progress.
+[Plan](../../../Maintenance/R3/Plan.md) bounds the remaining work and review result.

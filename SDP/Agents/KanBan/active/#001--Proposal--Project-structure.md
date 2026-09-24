@@ -3,12 +3,12 @@
 | Field | Value |
 | --- | --- |
 | id | KB-SDP-001 |
-| CardState | ready |
+| CardState | gate-review |
 | project | SDP |
 | type | Proposal |
 | created | 2026-09-23T18:25:13Z |
 | source | owner-conversation-2026-09-23 |
-| next_review | At the next consolidation milestone in KB-SDP-010 |
+| next_review | Owner review of the R3-M1 proposals |
 | owner | Codex |
 
 Registered from the owner conversation on 2026-09-23. The timestamp records registration, not a reconstructed discussion time. The directory and ledger record lifecycle status.
@@ -30,7 +30,7 @@ Retain numbered directories, aligned more closely with existing A0–A5 abstract
 - `02--Requirements/`: optional Requirements-study, `01--Actors.design`, `02--UserStories.design`, `03--UseCases.design`. Subsequent numbering remains open.
 - Express actors/stories directly in readable SDL; [KB-SDL-001](../../../../SDL/SDP/Agents/KanBan/backlog/%23001--Proposal--Requirements-narrative.md) owns language decisions.
 
-## Next bounded work
+## Remaining planning at R1 completion
 
 R1 delivered the inventory and physical migration. Next: a coherent phase/template profile with studies per phase, A0–A5 mapping and requirements modeling; project registration independent of Git boundaries; and a possible SDL/SDUI extraction plan. Start from the existing Toolkit installer and KB-SDL-001. Submodule/subtree/other integration remains undecided; physical housekeeping does not justify creating repositories. KB-SDP-010 consolidates the supporting documentation.
 
@@ -52,7 +52,7 @@ The owner requests repository housekeeping and activation of this card. R1 inven
 
 Templates are in Template; project records are in SDP; SDL code and language documentation are in SDL. Checkpoint #1 is shared, dated history in SDP/History. Earlier locations above describe the migration's background.
 
-The card remains active for the final phase/template profile (per-phase studies and requirements model), project registration across repository boundaries, and a separate-repository plan for SDL/SDUI. R1 creates no submodules or GitHub repositories. KB-SDP-010 owns editorial consolidation; KB-SDP-011 owns existing ID mismatches. Keep these separate from physical migration. See the R1 plan and evidence.
+At the end of R1, the card remained active for the final phase/template profile (per-phase studies and requirements model), project registration across repository boundaries, and a separate-repository plan for SDL/SDUI. R1 creates no submodules or GitHub repositories. KB-SDP-010 owns editorial consolidation; KB-SDP-011 owns existing ID mismatches. Keep these separate from physical migration. See the R1 plan and evidence.
 
 ## Worklog and revisions
 
@@ -62,3 +62,27 @@ This log starts after R1. Earlier revisions remain in Git; do not invent retroac
 | --- | --- | --- | --- |
 | 2026-09-24T14:52:35Z | Codex; EVT-KB-SDP-000021 | Reviewed R1: M1 `d269bc7`, M2 `f42859e`, M3 `f722dc2` delivered physical organization. | [R1 evidence](../../../Maintenance/R1/Evidence.md). Phase/template profile, project registry and repository extraction remain; KB-SDP-010 tracks consolidation. |
 | 2026-09-24T15:03:31Z | Codex; EVT-KB-SDP-000024 | R2 corrects the current next steps and locations; no new migration/profile adopted. | KB-SDP-010 gathers the documentation basis; phase/template profile and project registry are next. |
+
+## R3 activation
+
+2026-09-24T17:55:07Z: EVT-KB-SDP-000060, ready → in-progress.
+[Plan](../../../Maintenance/R3/Plan.md) bounds the remaining work and review result.
+
+## R3-M1 result and gate review
+
+2026-09-24T17:55:43Z: EVT-KB-SDP-000062, in-progress → gate-review.
+Physical housekeeping is delivered by R1. The remaining planning package is now
+concrete and ready for owner assessment:
+
+- [Phase/template profile](../../../../docs/process/Project-Phase-Profile-Proposal.md):
+  five numbered directories, optional studies, A0–A5 mapping and migration matrix.
+- [Discovery/extraction](../../../../docs/process/Project-Discovery-and-Extraction-Proposal.md):
+  marker/resolver contract, acceptance matrix, module dependencies and E1–E5.
+- [Verification and limits](../../../Maintenance/R3/Evidence.md).
+
+Requested decisions: approve or revise the proposed phase profile and discovery
+contract; choose Git integration before extraction. Existing installed 01–07
+remains authoritative until a tested versioned migration. Identical cross-Git
+lookup is an acceptance criterion for KB-SDP-002, not a delivered feature here.
+No further agent work is currently in progress on this card. Owner-requested
+changes return it to in-progress; accepted planning can close with these links.
