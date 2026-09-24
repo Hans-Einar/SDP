@@ -7,7 +7,7 @@
 | type | Change |
 | created | 2026-09-24T17:49:15Z |
 | source | owner-conversation-2026-09-24 |
-| CardState | in-progress |
+| CardState | completed |
 | owner | Codex |
 | next_review | At K5-M2 completion |
 
@@ -27,3 +27,15 @@ existing installed commands. No new sdptool or graph implementation.
 [Plan](../../../Maintenance/K5/Plan.md): M1 metadata/workflow, M2 CLI/installation.
 2026-09-24T17:49:15Z: EVT-KB-SDP-000043 registered the authorized scope. Validation and
 installation evidence will be recorded at their actual completion.
+
+## Outcome
+
+2026-09-24T17:51:13Z: K5-M1/M2 complete, EVT-KB-SDP-000057. Installed read-only kanban
+and install-cli in /home/warloc/bin. Seven behavior tests passed; no compiler
+or daemon is involved. [Evidence](../../../Maintenance/K5/Evidence.md).
+
+## Next selection
+
+R3 resumes KB-SDP-001 and KB-SDP-010, already ready in active, because English
+documentation and work-state tracking are now delivered. Finish their bounded
+profile/consolidation results before selecting new tooling implementation.

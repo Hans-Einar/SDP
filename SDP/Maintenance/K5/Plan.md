@@ -15,3 +15,6 @@ separate. Preserve concurrent uncommitted KB-SDP-014 registration.
 
 After K5, R3 completes the remaining bounded structure/consolidation work for
 KB-SDP-001/010 and records concrete owner review gates and proposed next work.
+
+K5-M1 and K5-M2 are complete. Owner authorized including the concurrent registration
+after its session finished; evidence records its append-only integration.

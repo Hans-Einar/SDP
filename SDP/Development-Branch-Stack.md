@@ -79,3 +79,7 @@ phase/template profile and registry remain in KB-SDP-001.
 L1 follows 918fa46 on sdp/phase-l1-english-documentation: M1 English policy/boards,
 M2 maintained narrative documentation, M3 generator language and regenerated outputs.
 [Plan](Maintenance/L1/Plan.md) records verification and the subsequent CardState work.
+
+K5 follows L1 32f6ae5 on sdp/phase-k5-card-state. M1 49310de adds CardState;
+M2 delivers the read-only CLI, installer and tests, with owner-authorized concurrent
+KB-SDP-014 registration. [Plan](Maintenance/K5/Plan.md).

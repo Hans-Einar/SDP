@@ -17,8 +17,9 @@
 | KB-SDP-011 | Bug | backlog | [Legacy Traceability IDs](backlog/%23011--Bug--Traceability-id-conformance.md) |
 | KB-SDP-012 | Change | completed | [K4-M1: worklogs, revisions and diffs](completed/%23012--Change--Card-history.md) |
 | KB-SDP-013 | Change | completed | [English documentation](completed/%23013--Change--English-documentation.md) |
+| KB-SDP-014 | Proposal | backlog | [Define the KanBan version contract and reusable distribution](backlog/%23014--Proposal--KanBan-version-contract-and-distribution.md) |
 
-| KB-SDP-015 | Change | active | [CardState and shell commands](active/%23015--Change--CardState-and-shell-cli.md) |
+| KB-SDP-015 | Change | completed | [CardState and shell commands](completed/%23015--Change--CardState-and-shell-cli.md) |
 
 Maintain the index when moving cards. The ledger owns event history.
 
