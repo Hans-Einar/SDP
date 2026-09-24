@@ -99,3 +99,7 @@ for aktive kort; integrert verktøy og graf er fortsatt backlog.
 R2 følger fra K4 (`1713778`) på `sdp/phase-r2-document-consolidation`.
 [R2-planen](Maintenance/R2/Plan.md) aktiverer KB-SDP-010 for dokumentautoritet
 og kartlagte statuskonflikter; ingen nye språk-/installasjonsregler vedtas.
+R2-M1 (`68ba33e`) aktiverer kortet og registrerer ti konflikter. R2-M2 behandler
+disse, konsoliderer runtimegrensen og SDUI-dokumentkartet med CLI-/lenkekontroller.
+KB-SDP-010 forblir active for videre kandidat-/prosessharmonisering; fase-/malprofil
+og prosjektregister tilhører fortsatt KB-SDP-001.

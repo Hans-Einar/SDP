@@ -122,8 +122,8 @@ G5-M3 blir konsument av denne eksporten. G6-M2 → M3 → M4 følger hverandre. 
 ved siden av vertsarbeidet; M6 følger M5 og krever avklart klassekontrakt.
 Den tidligere Python-generatoren er fryst portgrunnlag. URI/IPC og XFMD-flagg
 er verifisert mot den separate XFMD-implementasjonen; se G6-bevis.
-G6-D1/D2 leverer design og parsede planer/scenarioer, ikke implementerte
-G6-M1–M6. [Nivåer og notasjon](../../SDL/docs/integration/SDL-Viewpoint-Levels-and-Notation.md)
+G6-D1/D2 var designleveranser. Den påfølgende G6-M1–M6-implementasjonen
+er dokumentert separat i bevisene ovenfor. [Nivåer og notasjon](../../SDL/docs/integration/SDL-Viewpoint-Levels-and-Notation.md)
 presiserer eksportformene, A0–A5, Mode/State og semantisk diagramprofil.
 
 ## Avgrensning og gjenbruk

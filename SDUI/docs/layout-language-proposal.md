@@ -1,13 +1,13 @@
 # SDUI — frame-, widget- og layoutforslag
 
 **ID:** SDUI-LAYOUT-002 · **Dato:** 2026-09-21 · **Status:** designforslag.
-Dette konkretiserer eierens retning, inkludert relative mål/sideforhold og
-kanoniske mini arrows og regioner fra 2026-09-21; øvrige regler er anbefalinger, ikke
-allerede implementert språk. Arbeidsnavn for profilen er `sdui 0.2`.
-Ingen bakoverkompatibilitet med SDUI 0.1 eller BoxUI JSON kreves. Parser, AST og
-eksempler er nå portert til 0.2 i Python; lokal formatering/normalisering støttes.
-Geometri-/runtime-reglene her er fortsatt forslag. [Implementert profil](language.md)
-og [konsolldump](concept1-console.md) angir nøyaktig kjørbart omfang. [Implementasjonsplanen](implementation-plan.md) eier leveranserekkefølgen.
+Dette bevarer eierretning og forslag fra 2026-09-21. **Leserveiledning
+2026-09-24:** SDUI 0.2 er nå implementert i Go; Python og 0.1 er utgått.
+[Språkprofil](language.md), [målekontrakt](go-layout-contract.md) og
+[Go-runtime](../go/runtime/README.md) avgrenser hva som faktisk er valgt/levert.
+Eksempelvis er scroll fortsatt avvist ved layout, font måles i DIP, og
+[Markdown-profilen](markdown-provider.md) er avgrenset. Forslag nedenfor utvider
+ikke disse kontraktene. [Implementasjonsplanen](implementation-plan.md) eier milepælene.
 
 ## 1. Minste nyttige språk
 

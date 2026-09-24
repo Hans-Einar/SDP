@@ -32,16 +32,17 @@ kopierer et statisk pixbuf til Cairo; README oppgir første bilde for GIF.
 SVG-bilder passer dagens dokumentvei, mens skjema og animasjon krever en annen
 vertsfunksjon. HTML-demoens CSS/JS kjører i nettleseren, ikke i XFMD.
 
-## Bygg og avgrensning
+## Ny eksport og historisk avgrensning
 
-Fra SDUI:
+Ny SVG eksporteres fra SDUI med den aktive Go-CLI-en:
 
 ```sh
-python3 tools/build_widget_previews.py
-PYTHONPATH=src python3 -m unittest discover -s tests -v
+go -C go run ./cmd/sdui ../examples/concept1-bucking.sdui --format svg --entry bucking -o /tmp/concept1.svg
 ```
 
-Kun standardbiblioteket kreves for generering. Verktøyet leser
+Det historiske galleriets Python-bygger er fjernet; gamle kommandoer finnes i
+Git og daterte bevis, ikke som en ekstra støttet byggemåte. Resten av denne
+seksjonen beskriver galleriet fra 2026-09-21. Det daværende verktøyet leste
 `concept1-bucking.sdui`, `prototype-controls.sdui` og tidligere registrert
 treemap-geometri. SVG-widgets og HTML-kontroller bruker samme widgetbeskrivelse.
 Boksregionene beholder treemap-prøvens rad- og kolonnefordeling; overflødige
@@ -65,9 +66,9 @@ ved utskrift. Redusert bevegelse deaktiverer CSS-overganger.
 
 ## Videreføring
 
-Dette er portgrunnlag for [Go-planens G1–G3](implementation-plan.md). G2 leverer
-felles målt geometri til Fyne og SVG og erstatter fixtureplasseringen. G3/G4
-kobler widgetidentiteter og egenskaper til runtime og SDL via typede Go-porter.
+Dette var portgrunnlag for [Go-planens G1–G3](implementation-plan.md). G2 har
+levert felles målt geometri til Fyne og SVG som erstatter fixtureplasseringen.
+G3/G4 har koblet widgetidentiteter og egenskaper til runtime og SDL via typede Go-porter.
 FOX er ikke første backend. HTML-galleriets lokale trykkteller er fortsatt bare
 en demonstrasjon, ikke en SDL/SDUI-runtime.
 

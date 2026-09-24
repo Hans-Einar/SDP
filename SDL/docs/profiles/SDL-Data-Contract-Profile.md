@@ -1,8 +1,9 @@
 # SDL — avgrenset data- og wireprofil
 
-V2, 2026-09-22. Implementeres som design-core 0.3. Dette dokumentet definerer
-den avgrensede profilen; den eldre datastudiens deklarasjonsklausuler og øvrige
-kandidater er ikke automatisk grammatikk. Strukturfakta skrives fortsatt separat.
+Data-/wireprofilen ble innført i V2 (0.3) og inngår nå i **design-core 0.5**
+i Go. Reglene nedenfor er aktive; den bredere datastudien er en kandidat.
+Strukturfakta skrives separat. Dette implementerer ikke binær serialisering.
+[Go-innganger](../../go/README.md) og [G4-bevis](../../go/evidence/G4.md).
 
 Nye deklarasjonstyper: `dataset`, `database`, `datagram`, `contract`, `variant`,
 `field`, `encoding`. Alle bruker `kind Name.` og én felles navnetabell.
@@ -57,6 +58,11 @@ AST: `Projection(subject, dataset, datagram, span)` og
 Andre utsagn bruker eksisterende Relation/PropertyAssignment. VP09 gir data-
 og kontraktkart, VP10 gir packet for en validert Encoding. Kildekartet tar med
 også projeksjonens tredje argument og hver eksplisitte feltplassering.
+
+## Historisk V2-leveranse — 2026-09-22
+
+Tall og status nedenfor gjelder denne milepælen før Go-porten. De er ikke
+nykjørte tester eller dagens samlede implementasjonsstatus.
 
 Milepæler: V2-M1 språk/validering; V2-M2 generiske VP09/VP10 og tester;
 V2-M3 portert eksempel, regenerering og verifikasjon før fasepush.

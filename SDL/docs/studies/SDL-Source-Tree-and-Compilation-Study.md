@@ -1,14 +1,15 @@
 # SDL source tree and compilation study
 
-**Implementation update 2026-09-22:** The [SDL viewpoint command](../../tools/README.md)
-now generates bounded structural views, source maps and optional SVG from
-design-core 0.1. The broader workspace, public exports, Feature/Channel/data and
-execution proposals below remain unimplemented; their original status table is historical.
+**Reading guide 2026-09-24:** [Go tooling](../../go/README.md) implements
+bounded design-core 0.5 (including Feature, data, Channel and scenario facts),
+viewpoints, and separate action-core/class-core profiles. The broader workspace,
+public-export and executable-IR proposals below are not implemented by those
+bounded profiles. The September 17 status table is historical.
 
 Date: 2026-09-17
 
 Status: architecture proposal prompted by the owner's source-tree sketch. This
-study does not change the accepted `design-core 0.1` syntax, implement a workspace
+study did not change the then-current `design-core 0.1` syntax, implement a workspace
 compiler, create files in MVP1, or settle its remaining deployment decisions.
 
 Owner follow-up, 2026-09-17: use an explicitly declared System as the root, allow

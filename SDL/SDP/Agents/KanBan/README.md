@@ -2,8 +2,9 @@
 
 [Felles arbeidsmåte, tags og ledgerkontrakt](../../../../SDP/Agents/KanBan/README.md)
 
-Dette er SDL-prosjektets nye dokumentinngang. Implementasjonen ligger fortsatt
-i `SystemDesignLanguage/`; det er ikke opprettet eget Git-repo eller flyttet kode.
+Dette er SDL-prosjektets dokumentinngang. Kode og språkdokumentasjon ligger
+i `SDL/` etter R1; eget Git-repo er ennå ikke opprettet.
+[Felles historikk/diff](../../../../SDP/Agents/KanBan/History.md) gjelder også her.
 
 ## Kortoversikt
 

@@ -10,11 +10,14 @@ Ingen nye språkregler innføres av porten.
 V1 mål/bidrag/allokering implementert 2026-09-22. Seksjon 13 og videre beskriver
 framtidig språkarbeid; gjeldende implementert grammatikk er `design-core 0.5`.
 
-Status: primary working definition of the proposed language. It consolidates the
-structural vocabulary and adds a precise grammar, type rules and canonical form.
-It is not an installed SDP contract or a completed behavioral language. An isolated
-[parser and validator prototype](../../../experiments/design_core/README.md) implements
-this bounded core, including AST inspection and canonical formatting.
+Status clarified 2026-09-24: this document has mixed authority. Sections 1–11
+specify the bounded structural core together with the registered data, Channel
+and delivery-plan profiles; section 12 lists open work and sections 13–16 are
+proposals. Only the combined **design-core 0.5** profile is active. The
+[Go frontend](../../go/README.md) is the implementation; the earlier Python
+prototype has been retired. This is neither an installed SDP process contract
+nor a complete behavioral language. Execution uses the separate
+[action-core 0.1](../profiles/SDL-Executable-Action-Profile.md) profile.
 
 ## 1. Authority and scope
 

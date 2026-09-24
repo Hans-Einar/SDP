@@ -1,8 +1,10 @@
 # SDL — Channel-kontrakter og deklarerte scenarioer
 
-V3, 2026-09-22: design-core 0.4 erstatter aktiv 0.3. Dette er strukturell
-protokollkontroll og generering av sekvensdiagrammer, ikke en runtime.
-Det videre workspace-/Channel-forslaget i språkdefinisjonen er fortsatt en studie.
+Channel-/scenarioprofilen ble innført i V3 (0.4) og inngår nå i
+**design-core 0.5** i Go. Dette er strukturell protokollkontroll og
+sekvensdiagrammer; det kjører ikke meldingene. Det videre workspace-/
+Channel-forslaget i språkdefinisjonen er fortsatt en studie.
+[Go-innganger](../../go/README.md) og [G4-bevis](../../go/evidence/G4.md).
 
 Nye typer: `channel`, `message`, `scenario`. Channel er logisk samarbeid,
 og deltakere kan være Units eller Containers. Bibliotekkall blir ikke automatisk
@@ -67,6 +69,11 @@ kilde-ID-er til step, deltakelse, governing kontrakt og permits.
 Alternativer modelleres som navngitte separate scenarioer, for eksempel godtatt
 eller avvist input. Branch/loop/parallel-syntaks utsettes til semantikken er
 definert. Et diagram er en avtalt eksempelbane, ikke hele tillatte protokollen.
+
+## Historisk V3-leveranse — 2026-09-22
+
+Tall og status nedenfor gjelder denne milepælen før Go-porten. De er ikke
+nykjørte tester eller dagens samlede implementasjonsstatus.
 
 Milepæler: V3-M1 språk og negative kontraktprøver; V3-M2 VP08/MessageSet;
 V3-M3 request/resultat- og reload-eksempler med generert renderbevis.

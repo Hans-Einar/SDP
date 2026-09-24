@@ -1,93 +1,57 @@
-# SDUI ↔ SDL-runtime — foreslått kontrakt
+# SDUI ↔ SDL — implementert runtimegrense
 
-Status 2026-09-22: G3 implementerer SDUI-session, typede Go-handles/events,
-atomiske oppdateringer og hot reload med native Fyne-adapter.
-SDL-bindingen under er fortsatt planlagt i G4.
-Ingen C-ABI eller FOX-avhengighet kreves. Dette erstatter tidligere teknologivalg.
+Oppdatert 2026-09-24 etter G3/G4. SDUI 0.2 og SDL action-core 0.1 har separate
+Go-runtimer med eksplisitt bridge. Ingen C-ABI, FOX-peker eller automatisk
+SDL-loader inngår. Dette dokumentet samler grensen; de detaljerte kontraktene
+har ett hjem hver:
 
-Kontraktgrunnlag: grunnlag for den nye kontraktleveransen i
-[målarkitekturen](target-architecture.md) og G3/G4 i [planen](implementation-plan.md).
-Identitet, livstid og hendelsesregler kan gjenbrukes, men gammel kilde-/wireform
-er ikke et kompatibilitetskrav. Kjørbar UI-kontrakt og bevaringsregler er
-beskrevet i [Go-runtime](../go/runtime/README.md); [prøvebevis](../go/evidence/G3.md).
-
-**ID:** SDUI-RUNTIME-001 · **Status:** UI-delen er implementert i G3; eksplisitt action-core/Go-bridge i G4.
-Parseren produserer bare Reference og Connection. Det finnes ingen automatisk SDL-loader eller
-automatisk SDL-callbackoppløsning. Eksplisitt registrerte Go-handlere og
-UI-propertyoppdateringer er implementert i G3.
-
-## 1. Oppkobling og to retninger
-
-```text
-ref: sdlFile "some_SDL_file.sdl";
-# callback=sdlFile.input1_sdl.@callback
-sdlFile.input1_sdl.setHandle(BoxUIDefinition.top.rightTop.input1_boxui);
-```
-
-`input1_sdl` eies av SDL-modulen, `input1_boxui` av UI-instansen. Aliaset er en
-modulreferanse, ikke import av en Markdown-fil. Callback er en symbolsk
-medlemsreferanse, ikke en minneadresse i AST.
-
-Registrert oppkobling (ingen automatisk filimport):
-
-1. Parse/valider SDUI og opprett en UI-instans med widgetregister.
-2. Vertsadapter løser modulkilder relativt til dokumentets avtalte base og policy.
-3. SDL-adapter løser objekter/medlemmer og kontrollerer typer/signaturer.
-4. Utfør deklarerte setHandle-oppkoblinger og registrer callbacks.
-5. Publiser en fullstendig ramme; aktiver handlinger når bindingene er klare.
-
-Manglende runtime eller binding skal gi eksplisitt unbound/diagnose, ikke en
-påstand om at koden er kjørt. Initialisering skal være adskilt fra vanlig rendering
-og PDF-eksport. Parseren skal aldri få ansvaret for modulopprettelse eller kjøring.
-
-## 2. Logisk widgetreferanse
-
-Foreslått identitet: session, definitionInstance, widgetInstancePath, generation.
-Statisk 0.2-oppslag bruker definisjon og navngitte komponentforeldre; anonyme
-grupper gir ikke offentlige banesegmenter. Navn gir
-ikke alene en gyldig runtime-referanse: én definisjon kan senere ha flere instanser.
-
-Handle er typet og vertseid. Det overlever kompatibel omplassering; sletting,
-dokumentlukking og inkompatibel ny instans invaliderer det. Det er aldri en
-Fyne-widgetpeker, FOX-peker eller DOM-node. setHandle må kontrollere
-forventet widgetkapabilitet. Profilens lokale validering kan bare kontrollere at
-målet er en deklarert widget, ikke SDL-objektets faktiske type.
-
-## 3. Brukerhendelser og UI-oppdateringer
-
-| Retning | Foreslått payload | Regel |
+| Ansvar | Aktiv kontrakt / implementasjon | Bevis |
 | --- | --- | --- |
-| UI → runtime | instans/generation, widget, binding, event-ID, context/value revision, activate/commit og typed verdi | Kontroller aktuell binding, type og enabled før dispatch |
-| Runtime → UI | instans/generation, batchrevision, typede property-endringer | Valider hele batchen og publiser atomisk på vertens UI-tråd |
-| Runtime → UI | accepted/rejected/pending/unknown + samme command-ID | Resultat er ikke automatisk en ny domeneobservasjon |
+| UI-session, handles, draft/accepted og propertybatch | [SDUI-runtime](../go/runtime/README.md) | [G3](../go/evidence/G3.md) |
+| SDL-handlinger, records og Go-registrering | [action-core 0.1](../../SDL/docs/profiles/SDL-Executable-Action-Profile.md) | [G4](../../SDL/go/evidence/G4.md) |
+| Feltkobling og resultatport | [bridge](../../SDL/go/bridge/bind.go), action-core-kontraktens SDUI-port | [G4-M3](../../SDL/go/evidence/G4.md#g4-m3) |
+| UI-/SDL-modellreload og Go-restart | [kjørekommandoer](../../SDL/go/README.md), UI-runtime | [G4-M4](../../SDL/go/evidence/G4.md#g4-m4) |
+| Genererte modeller mot samme runtime | [Go-generering](go-generation.md) | [G5](../../SDL/go/evidence/G5.md) |
 
-Input skiller label (`text`), akseptert verdi (`value`) og brukerens draft. Det
-framtidige SDL-API-et kan tilby `input1_sdl.text(...)` og `.value(...)`, men må
-oversette dette til validerte UI-/verdibindinger med avtalt eierskap. Programmatisk
-oppdatering skal ikke automatisk kalle samme input-callback igjen.
+## Oppkobling
 
-Enter sender draft; Escape gjenoppretter akseptert verdi. En ekstern oppdatering
-mens feltet er skittent skal ikke stille overskrive brukerens arbeid. Revisjon og
-konfliktpolitikk må defineres før kjørbar integrasjon. Egenskapsoppdateringer som
-endrer tekstmål må utløse ny layout, men bevare kompatibel fokus/draft.
+SDUI-parseren lagrer `ref`, callbacks og `setHandle` som data. Verten registrerer
+modulalias → SDL-runtime, Go-funksjonenes signaturer og en typet `bridge.Plan`.
+En ref-sti åpnes ikke av parser eller bridge. Handlingsformen er
+`module.Action.@invoke`; `module.Action.setHandle(page.input)` peker på
+resultatmottakeren. Navn alene aktiverer ikke domenekjøring.
 
-`svg`-produsenten publiserer en ressurs med identitet, revisjon, størrelse og inert
-SVG-innhold. Den kjøres ved en avtalt hendelse/oppdatering, aldri som vilkårlig
-callback fra malerens tegneoperasjon. Budsjett, avbrudd og SVG-validering må bevares.
+Bindingsplanen angir nøyaktig én inputkilde per felt: widgetdraft, eventverdi,
+typet literal eller navngitt kontekstverdi. Signaturer, alias, action og
+resultatwidget valideres før handlers installeres. Den leverte resultatporten
+skriver et text-felt til et input-handle; det er ikke en generell widget-API.
 
-## 4. API, ABI og felles IR
+## Identitet, eierskap og oppdatering
 
-En logisk kontrakt trengs selv om SDUI og SDL senere deler runtime/IR. En binær
-ABI trengs bare der faktisk implementasjon krever det, for eksempel en native
-C++/Rust-grense. Ikke innfør en ekstra binærprotokoll uten en konkret konsument.
+UI-handles inneholder session, instansbane, generation og widgettype. De er ikke
+native pekere. SDUI eier accepted/draft, fokus og UI-revisjoner; den registrerte
+Go-funksjonen eier domenestate og domenerevisjon. En ekstern verdioppdatering
+skal ikke overskrive dirty draft stille. UI-batcher valideres samlet.
 
-Foreløpig anbefaling: behold språkenes syntaks adskilt og normaliser SDUI til en
-UI-modell. Undersøk felles IR når SDL har eksplisitt kjørbar semantikk. Dagens
-XFMD parse/prepare/free-ABI er en renderergrense og er ikke denne runtime-kontrakten.
+Brukerhendelser går gjennom kontroll av handle/revisjon, binding og enabled.
+Enter committer draft; Escape gjenoppretter accepted. Programmatisk oppdatering
+utløser ikke samme bruker-callback igjen. Fyne-verten publiserer på UI-tråden.
+SDL validerer input/output-records og korrelerer kall; avviste eller dupliserte
+kommandoer gir observerbart utfall. En allerede utført Go-domenehandling rulles
+ikke tilbake ved senere UI-feil, og feilen utløser ikke automatisk replay.
 
-## 5. Avklaringer før implementasjon
+Kompatibel modellreload bevarer state etter pakkekontraktene; slettede eller
+inkompatible widgets får ugyldige gamle handles. Ugyldig kandidat beholder siste
+gyldige modell. SDL-reload validerer registreringer og bevarer Go-eid domenestate.
+Endret Go-kode krever bygg/restart og bevarer ikke automatisk minnestate.
 
-Signaturer for callbacks og setHandle; eierskap for domeneverdier; synkron/asynkron
-utførelse; thread-affinity; cancellation/teardown; feil og duplikater; modulreload;
-handle-revokering; skjemaversjoner; ressursbudsjetter; hvordan en prototype blir
-uttrykkelig aktivert. Det er ikke parserens jobb å gjette disse egenskapene.
+## Grenser og tidligere forslag
+
+Design-core-fakta blir ikke kjørbare gjennom denne koblingen. EditAptCell er
+en eksplisitt simulering; dette er ingen maskin-/Ponsse-runtime, distribuert
+transport eller exactly-once-garanti. Generell asynkron widget-API, FOX-/C-ABI
+og kjørbar SVG-produsent er ikke levert av G3/G4. SVG-widgeten er plassholder.
+
+Det opprinnelige SDUI-RUNTIME-001-forslaget finnes i Git før R2-M2. Det er
+erstattet som aktiv kontrakt av pakkekontraktene ovenfor; eldre foreslåtte
+payloads og metoder skal ikke leses som et ekstra støttet API.

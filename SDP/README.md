@@ -3,7 +3,9 @@
 Dette området samler SDP-produktets eget utviklingsarbeid.
 
 - [KanBan](Agents/KanBan/README.md): samtalefunn, prioritering og aktive oppdrag.
+- [Kortets arbeidslogg og Git-diff](Agents/KanBan/History.md): innholdshistorikk mens arbeidet pågår.
 - [R1 housekeeping](Maintenance/R1/Plan.md): flyttematrise, dokumentinventar og kontrollbevis.
+- [R2 dokumentkonsolidering](Maintenance/R2/Plan.md): aktive kontrakter, daterte designforslag og statusrettelser.
 - [Traceability](Traceability/README.md): eksisterende implementasjonsledger og relasjoner.
 - [Sprints](Sprints/README.md), [verifikasjon](Verification/README.md) og [review](CodeReview/README.md).
 - [Bruksstudien](Studies/UsageAnalysis/README.md): datert Issue #5-materiale.

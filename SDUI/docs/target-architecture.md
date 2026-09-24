@@ -24,7 +24,7 @@ Modellen valideres med Go design-core-parser; action-core-runtime er en separat 
 
 Begge katalogene er selvstendige Go-moduler med Go 1.26-baseline, verifisert
 med Go 1.27.1 og Fyne 2.8.1. Implementasjon og grenser dokumenteres i
-[gjeldende checkpoint](../../SDP/History/checkpoint-1/11-Go-Implementation-and-Navigation.md).
+[datert checkpoint](../../SDP/History/checkpoint-1/11-Go-Implementation-and-Navigation.md).
 
 Parser/runtime importerer ikke Fyne, FOX, XFMD eller Mermaid. En vert setter
 sammen bibliotekene; SDUI-kjernen krever ikke en konkret SDL-implementasjon for

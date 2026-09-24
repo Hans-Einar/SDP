@@ -45,13 +45,15 @@ align-x/align-y, justify, items, overflow-x/overflow-y, wrap, font, enabled, vis
 Tillatte verdier står i [layoutforslaget](layout-language-proposal.md).
 Ukjente egenskaper, duplikater og konkurrerende størrelsesregler avvises.
 Bare relative layoutdimensjoner; `font` er positiv absolutt tekststørrelse.
-Den native fontenheten er ikke fastsatt. Dumpen skalerer ikke terminalens font.
+Go-layout bruker absolutte logiske skjermenheter (DIP), se
+[målekontrakten](go-layout-contract.md). Dumpen skalerer ikke terminalens font.
 
 Kanoniske hjørner er ^<, >^, v<, >v; omvendt retningspar er ekvivalent.
 Kortformer senkes til egenskaper i normalisert modell, mens AST bevarer stavingen.
 `<->` og `>-<` er forskjellige hele operatorer. Ratio x:y gjelder bare frames;
 én scaleakse eller én fillakse kan styre. To akser, scale på begge, content/fr
-med ratio eller ikke-positive forhold avvises. Ingen geometriløsning hevdes.
+med ratio eller ikke-positive forhold avvises. Parservalidering alene beviser ikke
+at innhold passer; geometrien løses av den separate Go-layouten.
 Wrap gjelder én grupperad uten horisontal fill/fr på gruppen eller dens barn.
 
 Navn er ASCII `[A-Za-z_][A-Za-z0-9_]*`, case-sensitive; reserverte ord er

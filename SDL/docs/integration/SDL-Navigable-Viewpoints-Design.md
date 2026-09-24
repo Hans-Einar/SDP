@@ -1,8 +1,15 @@
 # SDL — navigerbare viewpoints og generering ved behov
 
-**Dato:** 2026-09-22 · **Status:** planlagt G6, ingen implementert lenkehandler,
-daemon eller XFMD-utvidelse. Eierens bestilling er navigasjon som Markdown,
-små viewpoint-sider og senere to Markdown-paneler i XFMD.
+**Opprinnelig design:** G6-D1/D2, 2026-09-22. **Statusavklaring 2026-09-24:**
+G6-M1–M6 er implementert, og G7 leverer oppstart med ferdigbygde verktøy.
+Bruk [Go-kommandoene](../../go/README.md), [G6-bevis](../../go/evidence/G6.md)
+og [launcheren](../../scripts/README.md) for faktisk atferd, URI/IPC og oppsett.
+Normal browsing krever ikke daemon; broker er et valgfritt levert alternativ.
+XFMDs konsument finnes i separat fasearbeid beskrevet i G6-bevisene; en vilkårlig
+installert XFMD-versjon har ikke nødvendigvis denne lenkehandleren.
+
+Resten av dokumentet bevarer designgrunnlaget, inkludert foreslåtte kataloger
+og protokollskisser. Disse er ikke eksakte CLI-/wirekontrakter for dagens kode.
 [Felles faseplan](../../../SDUI/docs/implementation-plan.md) eier milepælene;
 [SDL-modellen](../../../SDUI/design/architecture.design) eier ansvar og scenarioer.
 
@@ -162,10 +169,11 @@ G6-M2: utvalg ved behov, likt innhold som samme utvalg i full eksport, ugyldig
 utvalg og renderfeil beholder siste visning. G6-M3: ekte XFMD-panelklikk,
 flere vinduer, fokusendring og lukket mål. G6-M4: cache-hit/invalidering,
 raske klikk, crash/restart, lease, ressursgrenser og opprydding.
-Alle seks milepæler er planlagt; M5/M6 er beskrevet i nivå- og notasjonsdesignet.
+Dette var G6s akseptanseplan. Alle seks milepæler er senere levert innen de
+eksplisitte profilgrensene; se status og bevis i innledningen.
 
 Go-porten av den strukturelle SDL-frontenden (G4-M1) er forutsetning for G6-M1;
-dagens Python-verktøy er portgrunnlag. G6 trenger ikke SDL-domenekjøring,
+det daværende Python-verktøyet var portgrunnlag og er senere fjernet i G5-M4. G6 trenger ikke SDL-domenekjøring,
 Go-kodegenerering eller SDUI-layout. Viewpoint-porten flyttes fra G5-M3 til
 G6-M1; G5-M3 bruker så denne dokumenteksporten. Nummeret G6 er en arbeidsstrøm,
 ikke et krav om at G1–G5 må ferdigstilles først.

@@ -42,18 +42,20 @@ eller likestill implementasjonsfaser med abstraksjonslag uten eksplisitt beslutn
 
 ## Neste avgrensede arbeid
 
-Lag et faktisk inventar av rotkataloger, Toolkit-maler/installasjonskontrakter,
-aktive dokumenter og historiske bevis. Foreslå målstruktur og eierskap per filgruppe,
-prosjektregistrering, underprosjektavhengigheter og flyttematrise for lenker,
-Go-moduler, skript, CI og installasjon. Avklar submodule/subtree/annen innkobling
-ut fra arbeidsflyt; ingen GitHub-repoer opprettes i denne leveransen.
+R1s inventar og fysisk flytting er levert. Neste arbeid er en samlet fase-/malprofil
+med studier per fase, kobling til A0–A5 og kravmodell; prosjektregistrering som
+fungerer med og uten Git-grense; og en plan for eventuell SDL/SDUI-utskilling.
+Dette må ta utgangspunkt i eksisterende Toolkit-installasjon og KB-SDL-001.
+Submodule/subtree/annen innkobling er fortsatt uavklart; ingen nye repoer opprettes
+bare fordi fysisk housekeeping er ferdig. KB-SDP-010 konsoliderer dokumentgrunnlaget.
 
 ## Akseptanse for senere omstrukturering
 
 Godkjent migreringsplan; verifiserte lenker og bygg/installasjon; ingen dobbelt
 aktiv mal- eller språkimplementasjon; samme prosjektoppslag med og uten Git-grense.
-Historiske bevis beholdes som historie. Dagens `SDL/SDP/` er bare dokumentinngang;
-SDL-koden ligger fortsatt i `SystemDesignLanguage/`.
+Historiske bevis beholdes som historie. Etter R1 ligger SDL-koden i `SDL/go`; `SDL/SDP/` eier språkprosjektets
+prosessdokumenter. Samme prosjektoppslag på tvers av Git-grenser er fortsatt
+et akseptansekriterium for kommende verktøyarbeid, ikke en levert R1-funksjon.
 
 ## Relaterte grunnlag
 
@@ -89,3 +91,4 @@ nykonstruerte loggrader med gamle tidsstempler. [Historikk/diff](../History.md).
 | Tid | Aktør / hendelse | Arbeid og resultat | Bevis / restarbeid |
 | --- | --- | --- | --- |
 | 2026-09-24T14:52:35Z | Codex; EVT-KB-SDP-000021 | R1 gjennomgått: M1 `d269bc7`, M2 `f42859e`, M3 `f722dc2` leverte fysisk organisering. | [R1-bevis](../../../Maintenance/R1/Evidence.md). Fase-/malprofil, prosjektregister og repo-utskilling gjenstår; dokumentkonsolidering følges i KB-SDP-010. |
+| 2026-09-24T15:03:31Z | Codex; EVT-KB-SDP-000024 | R2 retter gjeldende neste steg og nåplassering; ingen ny migrering eller profil vedtas. | KB-SDP-010 samler dokumentgrunnlag; fase-/malprofil og prosjektregister er neste strukturarbeid. |

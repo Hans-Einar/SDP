@@ -20,7 +20,7 @@ med eksplisitt avgrensning; uløste faglige spørsmål skal fortsatt være synli
 | ID | Leveranse | Verifikasjon | Status |
 | --- | --- | --- | --- |
 | R2-M1 | Aktiver 010, kartlegg konkrete konflikter og avgrens autoritet | Kort/ledger/lenker, kildehenvisninger til profil/kode/bevis | Levert |
-| R2-M2 | Konsolider leserveier og rett de kartlagte statuskonfliktene | Dokumentdiff, profil-/CLI-stikkprøver, lokale lenker og bevarte historiske/genererte bytes | Pågår |
+| R2-M2 | Konsolider leserveier og rett de kartlagte statuskonfliktene | Dokumentdiff, profil-/CLI-stikkprøver, lokale lenker og bevarte historiske/genererte bytes | Levert |
 
 [Funn](Findings.md) er behandlingstabellen; [bevis](Evidence.md) registrerer
 utførte kontroller. Aktivt kort har arbeidslogg med ledgerhendelser. Hver milepæl

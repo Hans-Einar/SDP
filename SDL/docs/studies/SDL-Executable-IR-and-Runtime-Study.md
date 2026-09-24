@@ -1,5 +1,10 @@
 # Executable SDL IR and runtime study
 
+**Reading guide 2026-09-24:** This remains a study of a broader executable IR.
+It does not describe the scope of the delivered [action-core runtime](../profiles/SDL-Executable-Action-Profile.md)
+and [Go bridge](../../go/README.md). Those provide explicit registered actions,
+not automatic execution of structural design facts or every proposal below.
+
 Date: 2026-09-17
 
 Status: proposed execution direction, not an implemented interpreter or a complete

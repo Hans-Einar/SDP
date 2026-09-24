@@ -1,5 +1,8 @@
 # SDUI — prototyping av brukergrensesnitt
 
+[Dokumentoversikt](docs/README.md) skiller gjeldende profil, implementasjon,
+designbakgrunn og daterte referanser.
+
 [SDUIs KanBan](SDP/Agents/KanBan/README.md) følger ideer og lokale konsekvenser
 av SDP-planleggingen. Kortene endrer ikke den implementerte språkprofilen.
 
@@ -35,7 +38,7 @@ callbacks. En eksplisitt verts-/bridge-registrering kreves for domenekall.
 
 - [Språk og EBNF](docs/language.md), [layoutprofil](docs/go-layout-contract.md), [Markdown-profil](docs/markdown-provider.md).
 - [Arkitektur](docs/architecture.md), [runtime](go/runtime/README.md), [Go-generering](docs/go-generation.md).
-- [Krav](docs/requirements.md), [milepæler](docs/implementation-plan.md), [gjeldende checkpoint](../SDP/History/checkpoint-1/11-Go-Implementation-and-Navigation.md).
+- [Krav](docs/requirements.md), [milepæler](docs/implementation-plan.md), [datert checkpoint](../SDP/History/checkpoint-1/11-Go-Implementation-and-Navigation.md).
 - [SDL-design og genererte viewpoints](design/README.md), [mandat](Mandate-and-Study.md).
 
 Avgrensninger: scroll-layout avvises; innebygd Mermaid er verifisert for

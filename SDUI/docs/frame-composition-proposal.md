@@ -1,9 +1,11 @@
 # SDUI — frames med header, body, footer og gjenbruk
 
 **Dato:** 2026-09-21 · **Status:** eierinnspill med konkretiserende designforslag.
-Dette supplerer [layoutforslaget](layout-language-proposal.md). Python-frontenden
-parser nå 0.2-strukturen; se [implementert profil](language.md). Målt layout/runtime gjenstår. Sideforhold og kanoniske hjørner er avklart av eieren;
-reglene for normalisering/instanser nedenfor er anbefalinger.
+Dette supplerer [layoutforslaget](layout-language-proposal.md) og bevarer
+begrunnelsen fra 2026-09-21. **Statusavklaring 2026-09-24:** Go-frontend,
+normalisering, layout og runtime er levert. [Språkprofil](language.md),
+[målekontrakt](go-layout-contract.md) og [runtime](../go/runtime/README.md) gjelder
+for kjøring. Anbefalingene nedenfor er ikke en ekstra aktiv implementasjonsprofil.
 
 ## 1. Fast forholdsflate bestemt av bredden
 
@@ -119,9 +121,9 @@ To anvendelser av samme komponent må ha forskjellige instansnavn, for eksempel
 left=mainBody og right=mainBody. Da kolliderer ikke den interne button1.
 Dette presiserer den tidligere regelen om ett flatt navnerom per UI-definisjon.
 Uklar referanse, duplisert instansnavn og rekursive definisjonssykluser avvises.
-Eksakte regler for deklarasjonsrekkefølge og eksternt setHandle-oppslag må inngå
-i Go-leveransen G1; Python 0.2 støtter nå framoverreferanser og statisk
-instansekspansjon med full setHandle-bane. Gammel 0.1-parser er erstattet.
+G1s Go-profil støtter framoverreferanser og statisk instansekspansjon med full
+setHandle-bane; se språkprofilen. Python-portgrunnlaget og gammel 0.1-parser
+er fjernet. Dette er ikke automatisk oppkobling til en SDL-runtime.
 
 Kun instansiering oppretter UI-livstid. En bibliotekdefinisjon skal ikke monteres
 som en ekstra side automatisk. Verts-API-et velger hvilken frame-definisjon som

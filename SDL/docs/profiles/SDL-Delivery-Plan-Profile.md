@@ -1,8 +1,9 @@
 # SDL — sporbar leveranseplan
 
-V4, 2026-09-22. design-core 0.5 erstatter aktiv 0.4 med fire avgrensede
-planrelasjoner og en Activity-egenskap. SDL-modellen kan nå beskrive hvilke
-ansvar en planlagt utviklingsaktivitet skal levere, uten å påstå at de er utført.
+Leveranseplanprofilen ble innført i V4 og inngår i **design-core 0.5** i Go.
+Fire planrelasjoner og en Activity-egenskap beskriver hvilke ansvar en aktivitet
+skal levere. En slik kildepåstand beviser ikke at arbeidet er utført.
+[Go-innganger](../../go/README.md) og [G4-bevis](../../go/evidence/G4.md).
 
 | Utsagn | Signatur og betydning |
 | --- | --- |
@@ -21,8 +22,15 @@ og automatisk utføring av arbeidsaktiviteter inngår ikke i profilen.
 VP06 viser aktivitetsinndeling, leveranser, ansvar og en egen avhengighetsgraf.
 `implementation.md` genereres fra de samme faktaene, med kilde-ID-er og eierkobling.
 Rapporten markerer udekkede Functionality-er; den oppretter ingen milepæler for dem.
-All G1–G5-status i SDL/SDUI-designet er planned. V2–V4s verktøyleveranser og bevis
-føres i checkpoint og Git, og skal ikke forveksles med Go-implementasjon.
+G1–G6-leveransene er siden gjennomført innen profilgrensene. Gjeldende
+[designkilde](../../../SDUI/design/architecture.design) eier modellens eksplisitte
+statuspåstander; [faseplanen](../../../SDUI/docs/implementation-plan.md) peker på
+implementasjonsbevis. V4s opprinnelige planned-snapshot beholdes som historie under.
+
+## Historisk V4-leveranse — 2026-09-22
+
+Tall og status nedenfor gjelder denne milepælen før Go-porten. De er ikke
+nykjørte tester eller dagens samlede implementasjonsstatus.
 
 V4-milepæler: M1 sporbar fase-/ansvarsmodell; M2 generert leserapport og komplette
 parser/presentasjon/binding/reload-scenarioer; M3 samlet verifikasjon, checkpoint,

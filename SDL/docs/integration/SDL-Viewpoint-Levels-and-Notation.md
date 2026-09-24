@@ -1,9 +1,11 @@
 # SDL — viewpoints etter abstraksjonsnivå og fast notasjon
 
-**Status 2026-09-22:** designpresisering G6-D2. Eksportvalg, menystruktur og
-notasjon nedenfor er planlagt; dagens generator lager fortsatt hovedsakelig
-merkede flowcharts. Ingen nye SDL-typer eller UML-relasjoner vedtas av dette
-dokumentet. [G6-planen](../../../SDUI/docs/implementation-plan.md) og
+**Designgrunnlag:** G6-D2, 2026-09-22. **Statusavklaring 2026-09-24:**
+Navigator/statisk eksport, symbolprofil og class-core er siden levert i G6.
+[Go-kommandoene](../../go/README.md), [symbolprofil 1](../profiles/SDL-Symbol-Profile.md),
+[class-core 0.1](../profiles/SDL-Class-Profile.md) og [bevis](../../go/evidence/G6.md)
+eier implementert omfang. Teksten nedenfor bevarer begrunnelse og planforslag,
+ikke en påstand om at alle foreslåtte typer eller UML-relasjoner støttes. [G6-planen](../../../SDUI/docs/implementation-plan.md) og
 [navigasjonsdesignet](SDL-Navigable-Viewpoints-Design.md) hører sammen med dette.
 
 ## To likeverdige eksportformer

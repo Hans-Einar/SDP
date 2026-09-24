@@ -44,7 +44,8 @@ En avgrenset EditAptCell-prøve følger G4-M3: stabil celleidentitet, draft, for
 domenerevisjon, eksplisitt avvisning og korrelert godkjent resultat. Den skal
 merkes som simulering og utfører ingen Ponsse-/maskinhandlinger.
 
-Hot reload av modell og håndtering av pågående kall presiseres og prøves i G4-M4.
+Hot reload av modell og håndtering av pågående kall er implementert og prøvd i
+[G4-M4](../../go/evidence/G4.md#g4-m4).
 Go-funksjonsendringer krever vanlig Go-bygg og prosessrestart.
 
 ## SDUI-port — G4-M3

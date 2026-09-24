@@ -6,7 +6,7 @@
 | SDUI Python CLI, dump, markdown_dump | SDUI/go/cmd/sdui og presentation; identiske Concept1-dumper og feilveier |
 | Python prototype_widgets/html og tools/build_widget_previews | Generell go/layout + go/svg; go/host/fynehost for interaksjon; state-eksport via sdl-document |
 | Midlertidig Go prototype-svg/prototype-html | Fjernet ved portslutt; --format svg bruker felles geometri. Eksisterende HTML-galleri beholdes kun som merket historisk artefakt |
-| experiments/design_core/*.py | SystemDesignLanguage/go/parser; 151 fryste parser-/diagnose-/kanoniseringstilfeller |
+| experiments/design_core/*.py | SDL/go/parser; 151 fryste parser-/diagnose-/kanoniseringstilfeller |
 | SystemDesignLanguage/tools Python-projectorer/CLI | go/viewpoint, documents og cmd/sdl; 170 fryste diagramprojeksjoner og alle 11 viewpoints |
 | SDUI/tools/export_design.py | sdl check/ast/viewpoints; ansvarsoversikt i VP02, faktaregister i VP11 og felles manifest |
 | Python capture_port_cases | Fjernet etter frysing; original referansekilde ligger sammen med prosjektorfixturen |

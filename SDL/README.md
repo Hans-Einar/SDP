@@ -8,7 +8,7 @@ fysiske flyttingen; separat repo-/modulutskilling er ikke gjennomført.
 
 SDL-verktøyet er implementert i Go og genererer Markdown/Mermaid/SVG-viewpoints
 fra validerte modellfakta. G1–G6 er levert innen de eksplisitte profilgrensene.
-[Checkpoint #1 — gjeldende implementasjon](../SDP/History/checkpoint-1/11-Go-Implementation-and-Navigation.md)
+[Datert implementasjonssnapshot — checkpoint #1](../SDP/History/checkpoint-1/11-Go-Implementation-and-Navigation.md)
 skiller dette fra bredere kandidater og framtidig Ponsse-produksjonslogikk.
 
 - [Go-verktøy og kjørekommandoer](go/README.md): check/AST, viewpoints, dynamiske utvalg, dokumenttjeneste, runtime og Go-generering.

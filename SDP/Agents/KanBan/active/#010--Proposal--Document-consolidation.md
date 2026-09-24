@@ -7,7 +7,7 @@
 | type | Proposal |
 | created | 2026-09-24T13:54:42Z |
 | source | owner-conversation-2026-09-24 |
-| next_review | Ved R2-M2; vurder restarbeid mot dokumentkartet |
+| next_review | Før neste fase-/malprofilleveranse i KB-SDP-001 |
 | owner | Codex |
 
 ## Bestilling og omfang
@@ -48,3 +48,12 @@ prosjektregister tilhører fortsatt KB-SDP-001. Ingen nye språkregler innføres
 | Tid | Aktør / hendelse | Arbeid og funn | Bevis / neste steg |
 | --- | --- | --- | --- |
 | 2026-09-24T14:55:42Z | Codex; EVT-KB-SDP-000023 | R2-M1: aktivert etter R1. Funnet foreldet SDL-sti, planlagt G4/G6 i leverte profiler og aktive Python-instrukser. | [Funn](../../../Maintenance/R2/Findings.md); R2-M2 retter og kontrollerer disse. |
+| 2026-09-24T15:03:31Z | Codex; EVT-KB-SDP-000025 | R2-M2: kartlagte statuskonflikter behandlet, SDUI-dokumentkart opprettet og runtimeforslag erstattet som aktiv kontrakt av pakkekontrakter. | [Kontroller](../../../Maintenance/R2/Evidence.md); kandidatsemantikk og SDP-prosess-/malprofil gjenstår. |
+
+## Neste behandling etter R2
+
+R2s avgrensede statusrunde er ferdig. Kortet er fortsatt active: SDL-kjernens
+aktive og foreslåtte deler deler ennå én stor kildefil, og prosessforslagene må
+harmoniseres med vedtatt fase-/malprofil. Neste avgrensning er å behandle denne
+profilen sammen med KB-SDP-001 og KB-SDL-001, og så konsolidere de berørte
+dokumentene. R2 vedtar ikke nye SDL-keywords, A0–A5-nivåer eller installasjonsnavn.
