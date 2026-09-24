@@ -3,12 +3,12 @@
 | Field | Value |
 | --- | --- |
 | id | KB-SDP-001 |
-| CardState | gate-review |
+| CardState | completed |
 | project | SDP |
 | type | Proposal |
 | created | 2026-09-23T18:25:13Z |
 | source | owner-conversation-2026-09-23 |
-| next_review | Owner review of the R3-M1 proposals |
+| next_review | Closed by owner; reopen only for new requested changes |
 | owner | Codex |
 
 Registered from the owner conversation on 2026-09-23. The timestamp records registration, not a reconstructed discussion time. The directory and ledger record lifecycle status.
@@ -94,6 +94,21 @@ project lookup is the prerequisite for browsing each project's plan across Git
 boundaries. Begin with resolver/configuration and view-ip integration after the
 owner reviews the R3 discovery contract. New language keywords, slice synthesis
 and extraction are separate follow-ups, not reasons to keep this planning task
-in-progress. This card remains gate-review solely for the concrete owner decisions.
+in-progress. At R3 delivery, this card awaited owner review of the concrete planning package.
 
 Selection recorded 2026-09-24T17:59:27Z, EVT-KB-SDP-000064.
+
+## Owner acceptance and closure
+
+2026-09-24T21:41:46Z: EVT-KB-SDP-000069. The owner explicitly requested closing
+KB-SDP-001. Physical organization and the R3 planning package are accepted as
+the completed outcome of this card. CardState: gate-review → completed.
+
+The pending review of KB-SDP-010 does not block other backlog work.
+[KB-SDP-002](../backlog/%23002--Proposal--sdptool.md) remains the queued
+sdptool follow-up; reconcile its discovery contract with
+[KB-SDP-016](../backlog/%23016--Proposal--SDP-discovery-and-viewer-capabilities.md).
+This closure does not claim implementation of the proposed installer migration,
+project resolver or repository extraction, and does not select an otherwise
+undecided metadata filename or Git integration mechanism. Their implementation
+requirements remain in the accepted planning documents and follow-up cards.

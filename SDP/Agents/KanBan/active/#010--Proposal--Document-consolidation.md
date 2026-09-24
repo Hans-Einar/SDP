@@ -19,7 +19,7 @@ Checkpoint #1 mainly covers SDL/SDUI but also contains SDP process and shared de
 
 ## Relationships and next handling
 
-[KB-SDP-001](%23001--Proposal--Project-structure.md) owns physical structure, path migration and inventory. This card owns editorial consolidation; shared files alone do not justify merging the cards. Start from R1's inventory and consider smaller language/process deliveries with lineage where useful.
+[KB-SDP-001](../completed/%23001--Proposal--Project-structure.md) owns physical structure, path migration and inventory. This card owns editorial consolidation; shared files alone do not justify merging the cards. Start from R1's inventory and consider smaller language/process deliveries with lineage where useful.
 
 ## Acceptance
 
@@ -68,3 +68,10 @@ KB-SDP-002 is queued for bounded project discovery/view-ip planning after the
 owner reviews the structure contract. This depends on clear project/source
 identity and benefits from the consolidated profile documentation. It does not
 need to implement all proposed SDL narratives or automatic slice synthesis first.
+
+## Owner review scheduling
+
+2026-09-24T21:41:46Z: EVT-KB-SDP-000070. The owner has not yet fully reviewed
+this result and explicitly permits it to wait while other backlog work proceeds.
+CardState remains gate-review. This is a local review gate for this card, not a
+board-wide implementation freeze; do not treat it as approval of its contents.

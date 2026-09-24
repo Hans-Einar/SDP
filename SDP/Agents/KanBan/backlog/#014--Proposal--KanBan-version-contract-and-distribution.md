@@ -68,7 +68,7 @@ Agent recommendations for the selected work:
 
 ## Related-card review
 
-[KB-SDP-001](../active/%23001--Proposal--Project-structure.md) retains broader
+[KB-SDP-001](../completed/%23001--Proposal--Project-structure.md) retains broader
 project/template structure and extraction work; this card owns the bounded KanBan
 contract and distribution need. [KB-SDP-010](../active/%23010--Proposal--Document-consolidation.md)
 retains editorial consolidation. Completed K2/K3/K4 cards remain evidence for

@@ -92,3 +92,7 @@ owner gates plus the queued successor. [R3 plan](Maintenance/R3/Plan.md).
 
 K6 follows R3 84089ae on sdp/phase-k6-terminal-links. K6-M1 adds OSC 8 card
 links on terminals with plain pipe output; [evidence](Maintenance/K6/Plan.md).
+
+K7 follows 5249eb6 on sdp/phase-k7-owner-review. K7-M1 records owner closure
+of KB-SDP-001 and non-blocking deferred review of KB-SDP-010, with updated links
+and queued follow-up. [Plan](Maintenance/R3/Plan.md).

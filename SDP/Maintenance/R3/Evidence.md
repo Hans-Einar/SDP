@@ -37,3 +37,18 @@ replay passes with 76 events; post-K5 ledger prefixes are intact. Current bundle
 document checks pass: 105 frozen records, 574 outputs, 2133 local file links and
 130 fragments before final evidence links. git diff --check passes. External URLs
 and new native UI rendering are not claimed as verified here.
+
+## K7-M1 — owner closure and deferred review
+
+The owner requested closing KB-SDP-001 and explicitly allowed KB-SDP-010 to
+remain pending review while other backlog work proceeds. KB-SDP-001 moved to
+completed with CardState=completed and its acceptance recorded. KB-SDP-010 stays
+active/gate-review; no approval is inferred. KB-SDP-002 remains queued and now
+references KB-SDP-016's unresolved discovery metadata decisions. Current incoming
+links and planning-entry status were updated; prior event bytes are unchanged.
+
+Verification: 20 cards/82 events across three boards; schema/replay/location and
+ledger prefixes from 5249eb6 pass. Document checks pass for 105 frozen records,
+574 generated outputs, 2147 local file links and 130 fragments. Actual active-folder
+listing shows only KB-SDP-010 at gate-review. No code tests are needed for this
+status/document-link change. git diff --check passes.

@@ -17,7 +17,7 @@ Primary card: [KB-SDP-002 — sdptool](../../../../../SDP/Agents/KanBan/backlog/
 
 ## Local impact
 
-SDUI should have its own SDP area and KanBan, and work as a library/subproject with the same structure in a monorepo or later separate repository. `sdptool` must support explicit selection of the SDUI project. [KB-SDP-001](../../../../../SDP/Agents/KanBan/active/%23001--Proposal--Project-structure.md) owns the structural migration.
+SDUI should have its own SDP area and KanBan, and work as a library/subproject with the same structure in a monorepo or later separate repository. `sdptool` must support explicit selection of the SDUI project. [KB-SDP-001](../../../../../SDP/Agents/KanBan/completed/%23001--Proposal--Project-structure.md) owns the structural migration.
 
 Preserve the current Go/Fyne/SVG direction. This does not request a FOX host, another parser, a KanBan GUI or full Markdown/Mermaid support. The [KB-SDP-003 graph idea](../../../../../SDP/Agents/KanBan/backlog/%23003--Idea--KanBan-graph.md) does not select SDUI as its host.
 

@@ -1,7 +1,13 @@
 # Project discovery and SDL/SDUI extraction — review proposal
 
+**Owner review update:** KB-SDP-001 is accepted and closed. This document is the
+accepted planning deliverable; the original proposal/review wording below records
+its R3 submission. It is not an installed implementation contract. Outstanding
+metadata choices are handled with KB-SDP-002/016; repository-linking choices remain
+explicit prerequisites before extraction. KB-SDP-010 review can proceed separately.
+
 Status: **proposed**, R3-M1, 2026-09-24. Completes the design package for
-[KB-SDP-001](../../SDP/Agents/KanBan/active/%23001--Proposal--Project-structure.md).
+[KB-SDP-001](../../SDP/Agents/KanBan/completed/%23001--Proposal--Project-structure.md).
 No sdptool implementation or repository extraction is delivered here.
 
 ## Actual baseline

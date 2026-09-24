@@ -21,3 +21,12 @@ R3-M2 complete. Both bounded deliveries are submitted for owner gate review;
 KB-SDP-002 is queued, with no automatic start. The agent has no remaining
 in-progress work in R3. Adoption/installer/tool implementation is explicitly
 separate from the delivered review package.
+
+## K7-M1 — owner review disposition
+
+Follow-up phase sdp/phase-k7-owner-review starts from 5249eb6 (K6 plus the
+committed KB-SDP-016 registration). One milestone: close KB-SDP-001 on explicit
+owner instruction, keep KB-SDP-010 in gate-review without blocking backlog work,
+update current links/queue rationale, and verify states/replay/append-only history.
+No parser, renderer, installation or schema changes are in this disposition.
+The completed card records owner acceptance and future implementation boundaries.

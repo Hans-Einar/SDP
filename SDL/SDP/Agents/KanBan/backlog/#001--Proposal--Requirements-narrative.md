@@ -14,7 +14,7 @@ Registered from the owner conversation on 2026-09-23. The timestamp records regi
 
 ## Owner proposal
 
-Start requirements work directly in SDL: `01--Actors.design`, followed by `02--UserStories.design` and `03--UseCases.design`. List stakeholders first. Actors may be linked to stakeholders, but this is optional. [KB-SDP-001](../../../../../SDP/Agents/KanBan/active/%23001--Proposal--Project-structure.md) owns process placement and studies.
+Start requirements work directly in SDL: `01--Actors.design`, followed by `02--UserStories.design` and `03--UseCases.design`. List stakeholders first. Actors may be linked to stakeholders, but this is optional. [KB-SDP-001](../../../../../SDP/Agents/KanBan/completed/%23001--Proposal--Project-structure.md) owns process placement and studies.
 
 A Stakeholder has an interest in the system. An Actor is a role or external entity that interacts with it. Distinguish human users from machines/software systems: P1000 is a machine actor, not a User. Define explicit actor types and consistent visual symbols; do not infer type from names or draw every actor as a person.
 

@@ -17,7 +17,7 @@ Primary card: [KB-SDL-001 — requirements narrative](../../../../SDL/SDP/Agents
 
 ## Local impact
 
-Requirements templates must use an adopted SDL profile for stakeholders, actors, user stories and use cases. Do not distribute syntax sketches as parser-approved project templates. Coordinate with [KB-SDP-001](../active/%23001--Proposal--Project-structure.md) before renumbering or template migration.
+Requirements templates must use an adopted SDL profile for stakeholders, actors, user stories and use cases. Do not distribute syntax sketches as parser-approved project templates. Coordinate with [KB-SDP-001](../completed/%23001--Proposal--Project-structure.md) before renumbering or template migration.
 
 ## Handling
 

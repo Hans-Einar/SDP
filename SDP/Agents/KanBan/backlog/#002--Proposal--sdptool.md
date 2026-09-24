@@ -8,7 +8,7 @@
 | type | Proposal |
 | created | 2026-09-23T18:25:13Z |
 | source | owner-conversation-2026-09-23 |
-| next_review | After owner review of KB-SDP-001 R3 discovery proposal |
+| next_review | Next bounded discovery scope; coordinate KB-SDP-016 metadata decisions |
 
 Registered from the owner conversation on 2026-09-23. The timestamp records registration, not a reconstructed discussion time. The directory and ledger record lifecycle status.
 
@@ -26,7 +26,7 @@ An optional project path precedes the command; otherwise use `.`. First check wh
 
 ## Responsibilities and proposed plans
 
-SDL is the language; SDP is the process. SDP tools should consume SDL/SDUI libraries without duplicating parsers or runtimes. The process CLI should behave identically for monorepos and subprojects in separate repositories. [KB-SDP-001](../active/%23001--Proposal--Project-structure.md) owns directory/Git migration.
+SDL is the language; SDP is the process. SDP tools should consume SDL/SDUI libraries without duplicating parsers or runtimes. The process CLI should behave identically for monorepos and subprojects in separate repositories. [KB-SDP-001](../completed/%23001--Proposal--Project-structure.md) owns directory/Git migration.
 
 Support both proposing vertical slices from the SDL model and validating manually or agent-proposed slices. Each slice should deliver a bounded, verifiable capability across relevant layers/containers, with explicit prerequisites and acceptance. Tools can check coverage and dependencies; business priorities and value come from the project. Proposed plans are not automatically approved. `generate ip` must preserve approved plans and show proposed changes. Plan format, decision process and how goals/constraints are specified remain open.
 
@@ -53,7 +53,7 @@ This is planning, not an implemented `sdptool` command. Existing foundations are
 ## Queue
 
 Selected 2026-09-24T17:59:27Z by Codex; EVT-KB-SDP-000065. Predecessors:
-[KB-SDP-001](../active/%23001--Proposal--Project-structure.md) and
+[KB-SDP-001](../completed/%23001--Proposal--Project-structure.md) and
 [KB-SDP-010](../active/%23010--Proposal--Document-consolidation.md).
 
 Why next: project/source identity is needed before tools can open the correct
@@ -67,3 +67,13 @@ prebuilt projection/viewer tools. Preserve approved source/plan files. Full
 generate-ip slice synthesis, roadmap/evidence semantics, integrated card history
 and Git extraction remain later scope. Queued means proposed next, not running
 or automatically approved. No sdptool executable is delivered by this selection.
+
+## Queue update after owner review
+
+2026-09-24T21:41:46Z: EVT-KB-SDP-000071. KB-SDP-001 is accepted and completed.
+KB-SDP-010 may await review independently; its open gate does not block this
+queue. Keep CardState=queued until bounded work actually starts. The next step
+is to reconcile discovery metadata with
+[KB-SDP-016](%23016--Proposal--SDP-discovery-and-viewer-capabilities.md), then
+confirm the first resolver/view-ip deliverable. Do not assume that closing the
+planning card chose a final metadata filename or implemented its proposed schema.

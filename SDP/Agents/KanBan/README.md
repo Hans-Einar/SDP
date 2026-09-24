@@ -4,7 +4,7 @@
 
 | ID | Type | Status | Document |
 | --- | --- | --- | --- |
-| KB-SDP-001 | Proposal | active | [Project structure, Template and studies per phase](active/%23001--Proposal--Project-structure.md) |
+| KB-SDP-001 | Proposal | completed | [Project structure, Template and studies per phase](completed/%23001--Proposal--Project-structure.md) |
 | KB-SDP-002 | Proposal | backlog | [sdptool: project lookup, implementation plan and viewer](backlog/%23002--Proposal--sdptool.md) |
 | KB-SDP-003 | Idea | backlog | [KanBan timeline with progressive detail](backlog/%23003--Idea--KanBan-graph.md) |
 | KB-SDP-004 | Proposal | backlog | [Traceability from SDL design to slices, code and evidence](backlog/%23004--Proposal--Design-traceability.md) |
