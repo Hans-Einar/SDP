@@ -1,6 +1,6 @@
-# Stakeholders, actors, user stories og lesbar SDL
+# Stakeholders, actors, user stories and readable SDL
 
-| Felt | Verdi |
+| Field | Value |
 | --- | --- |
 | id | KB-SDL-001 |
 | project | SDL |
@@ -9,56 +9,35 @@
 | source | owner-conversation-2026-09-23 |
 | next_review | 2026-09-30 |
 
-Registrert fra eierens samtale 2026-09-23. Tidspunktet er registreringstid,
-ikke rekonstruert tidspunkt for tidligere diskusjoner. Status følger katalog/ledger.
+Registered from the owner conversation on 2026-09-23. The timestamp records registration, not a reconstructed time for earlier discussions. The directory and ledger record lifecycle status.
 
-## Eierens forslag
+## Owner proposal
 
-Start kravarbeidet direkte i SDL, med `01--Actors.design`, deretter
-`02--UserStories.design` og `03--UseCases.design`. Stakeholders listes først;
-actors kan kobles til stakeholders, men kobling er ikke obligatorisk.
-Prosessens plassering/studier eies av [KB-SDP-001 — Prosjektstruktur, Template og studier per fase](../../../../../SDP/Agents/KanBan/active/%23001--Proposal--Project-structure.md).
+Start requirements work directly in SDL: `01--Actors.design`, followed by `02--UserStories.design` and `03--UseCases.design`. List stakeholders first. Actors may be linked to stakeholders, but this is optional. [KB-SDP-001](../../../../../SDP/Agents/KanBan/active/%23001--Proposal--Project-structure.md) owns process placement and studies.
 
-Stakeholder har interesser i systemet. Actor er en rolle eller ekstern enhet
-som samhandler med det. Skill menneskelig bruker fra maskin/programvaresystem:
-P1000 er en maskinaktør, ikke en User. Avklar eksplisitte aktørtyper og faste
-visuelle kjennetegn; ikke bestem type ut fra navnet eller tegn alle som mennesker.
+A Stakeholder has an interest in the system. An Actor is a role or external entity that interacts with it. Distinguish human users from machines/software systems: P1000 is a machine actor, not a User. Define explicit actor types and consistent visual symbols; do not infer type from names or draw every actor as a person.
 
-UserStory har identitet, fritekst og koblinger til actors og senere use cases.
-Teksten er informasjonsgrunnlag, ikke automatisk kjørbar logikk eller utledede krav.
-Foreslå engelsk stavemåte `UserStory` (eierens `userstorry` er samtaleskisse).
+A UserStory has identity, free text and links to actors and, later, use cases. Its text is information, not automatically executable logic or inferred requirements. Proposed English spelling: `UserStory`; the owner's `userstorry` was a conversational sketch.
 
-## Syntaksskisser — ikke gyldiggjort som implementert SDL
+## Syntax sketches — not implemented SDL
 
 ```text
 Stakeholder stakeholder1
 Actor actor1 links to stakeholder1
 UserStory story1 links to actor1
-story1.story = "Som operatør ønsker jeg ..."
+story1.story = "As an operator, I want ..."
 
 UserStory story2 links to actor1
-.story = "Som operatør ønsker jeg ..."
-.comment = "Beskrivelse som skal vises i dokumentasjonen."
+.story = "As an operator, I want ..."
+.comment = "Description to display in the documentation."
 ```
 
-Eieren ønsker både eksplisitt objektegenskap og vurdering av en kortform med
-innledende punktum. Anbefaling til avklaring: kortformen gjelder bare nærmeste
-foregående deklarasjon i samme blokk, ikke vilkårlig tidligere bruk av en referanse.
-Avklar regler ved import, blokkgrense, blanklinjer, blandede utsagn og filslutt.
+The owner wants explicit object properties and consideration of a leading-dot shorthand. Recommendation for review: bind the shorthand only to the nearest preceding declaration in the same block, not any earlier reference use. Define behavior at imports, block boundaries, blank lines, mixed statements and end of file.
 
-`comment` skal være dokumenterbart beskrivelsesinnhold, adskilt fra kommentarer
-som bare er for kildekoden. Keyword kontra egenskap er ikke besluttet.
-Flerlinjet tekst (quotes/braces/brackets) og import som eierens skisse
-`#include 01--Actors.design` må sammenholdes med faktisk grammatikk før valg.
-Ingen include-preprosessor eller friteksttolkning innføres ved å skrive dette kortet.
-Svake forbindelser og visuelle stier eies av [KB-SDL-002 — Svake links og visuelle stier gjennom noder](%23002--Proposal--Links-through.md).
+`comment` should provide documentable descriptions, distinct from source-only comments. Keyword versus property remains undecided. Compare multiline text (quotes/braces/brackets) and the owner's `#include 01--Actors.design` sketch with the actual grammar before choosing. This card does not introduce an include preprocessor or interpretation of narrative text. [KB-SDL-002](%23002--Proposal--Links-through.md) owns weak links and visual paths.
 
-## Neste arbeid og akseptanse
+## Next work and acceptance
 
-Undersøk aktiv parser/profil før grammatikkforslag. Avklar ord, casing, aktørtyper,
-multiline/import og kortformsbinding. Deretter versjonert profil, AST/kildeposisjoner,
-validering, negative eksempler og dokumentprojeksjoner. En lesbar kravpakke skal
-bevare tekst nøyaktig og vise stakeholder–actor–story–use-case-sporbarhet uten
-at en løs forbindelse tolkes som kravoppfyllelse.
+Inspect the active parser/profile before proposing grammar. Resolve names, casing, actor types, multiline/import rules and shorthand binding. Then deliver a versioned profile, AST/source positions, validation, negative examples and document projections. A readable requirements package must preserve text exactly and show stakeholder–actor–story–use-case traceability without treating a descriptive link as requirements satisfaction.
 
-[SystemDesignLanguage/README.md](../../../../README.md)
+[SDL overview](../../../../README.md)

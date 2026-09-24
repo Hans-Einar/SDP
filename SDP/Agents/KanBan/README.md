@@ -1,186 +1,170 @@
 # SDP — KanBan
 
-## Kortoversikt
+## Card index
 
-| ID | Type | Status | Dokument |
+| ID | Type | Status | Document |
 | --- | --- | --- | --- |
-| KB-SDP-001 | Proposal | active | [Prosjektstruktur, Template og studier per fase](active/%23001--Proposal--Project-structure.md) |
-| KB-SDP-002 | Proposal | backlog | [sdptool: prosjektoppslag, implementasjonsplan og viewer](backlog/%23002--Proposal--sdptool.md) |
-| KB-SDP-003 | Idea | backlog | [KanBan-graf med tidsakse og trinnvis detaljering](backlog/%23003--Idea--KanBan-graph.md) |
-| KB-SDP-004 | Proposal | backlog | [Traceability mellom SDL-design, slices, kode og bevis](backlog/%23004--Proposal--Design-traceability.md) |
-| KB-SDP-005 | Ref | backlog | [SDL: links through i SDP-viewpoints](backlog/%23005--Ref--SDL--002--Links-through.md) |
-| KB-SDP-006 | Ref | backlog | [SDL: kravmodeller i SDP-prosessen](backlog/%23006--Ref--SDL--001--Requirements-narrative.md) |
-| KB-SDP-007 | Change | completed | [K1-M1: etablere KanBan og bevare samtalens forslag](completed/%23007--Change--KanBan-foundation.md) |
-| KB-SDP-008 | Change | completed | [K2-M1: synlig metadata i KanBan-kort](completed/%23008--Change--Visible-card-metadata.md) |
-| KB-SDP-009 | Change | completed | [K3-M1: sammenslåing og splitting](completed/%23009--Change--Card-merge-and-split.md) |
-| KB-SDP-010 | Proposal | active | [Dokumentkonsolidering](active/%23010--Proposal--Document-consolidation.md) |
-| KB-SDP-011 | Bug | backlog | [Eldre Traceability-ID-er](backlog/%23011--Bug--Traceability-id-conformance.md) |
-| KB-SDP-012 | Change | completed | [K4-M1: arbeidslogg, revisjoner og diff](completed/%23012--Change--Card-history.md) |
+| KB-SDP-001 | Proposal | active | [Project structure, Template and studies per phase](active/%23001--Proposal--Project-structure.md) |
+| KB-SDP-002 | Proposal | backlog | [sdptool: project lookup, implementation plan and viewer](backlog/%23002--Proposal--sdptool.md) |
+| KB-SDP-003 | Idea | backlog | [KanBan timeline with progressive detail](backlog/%23003--Idea--KanBan-graph.md) |
+| KB-SDP-004 | Proposal | backlog | [Traceability from SDL design to slices, code and evidence](backlog/%23004--Proposal--Design-traceability.md) |
+| KB-SDP-005 | Ref | backlog | [SDL links through in SDP viewpoints](backlog/%23005--Ref--SDL--002--Links-through.md) |
+| KB-SDP-006 | Ref | backlog | [SDL requirements models in SDP](backlog/%23006--Ref--SDL--001--Requirements-narrative.md) |
+| KB-SDP-007 | Change | completed | [K1-M1: establish KanBan and capture proposals](completed/%23007--Change--KanBan-foundation.md) |
+| KB-SDP-008 | Change | completed | [K2-M1: visible card metadata](completed/%23008--Change--Visible-card-metadata.md) |
+| KB-SDP-009 | Change | completed | [K3-M1: merge and split](completed/%23009--Change--Card-merge-and-split.md) |
+| KB-SDP-010 | Proposal | active | [Documentation consolidation](active/%23010--Proposal--Document-consolidation.md) |
+| KB-SDP-011 | Bug | backlog | [Legacy Traceability IDs](backlog/%23011--Bug--Traceability-id-conformance.md) |
+| KB-SDP-012 | Change | completed | [K4-M1: worklogs, revisions and diffs](completed/%23012--Change--Card-history.md) |
+| KB-SDP-013 | Change | active | [English documentation](active/%23013--Change--English-documentation.md) |
 
-Indeksen vedlikeholdes sammen med flytting; ledgeren eier hendelseshistorikken.
+Maintain the index when moving cards. The ledger owns event history.
 
-## Formål og autoritet
+## Purpose and authority
 
-Dette er prosjektets inngang for ideer, spørsmål og endringsønsker fra samtaler.
-Opprett kort ved registrering, også når innholdet foreløpig er uavklart. Å skrive
-et kort er ikke å vedta en språkregel eller autorisere hele implementasjonen.
-Bevar forskjellen mellom eierens beslutning, agentens anbefaling og åpne valg.
-Ikke kopier allerede leverte G-faser inn som nye ønsker.
+Capture ideas, questions and requested changes from conversations as cards, even
+when details remain unresolved. Registration does not adopt a language rule or
+authorize implementation. Distinguish owner decisions, agent recommendations and
+open choices. Do not re-register delivered G phases as new requests.
 
-`SDP/Agents/KanBan/` er valgt plassering, også i underprosjekter. Ingen ekstra
-`SDP/KanBan/` opprettes. [Prosjektregisteret](boards.json) peker til de tre
-lokale tavlene; [SDL](../../../SDL/SDP/Agents/KanBan/README.md) og
-[SDUI](../../../SDUI/SDP/Agents/KanBan/README.md) har egne ID-serier og ledgere.
-Registeret er en lokal kontrakt 0.1, ikke implementert sdptool-prosjektoppdagelse.
-Underrepoene er ennå ikke skilt ut. Relative lenker fungerer i dagens katalogtre;
-ved flytting/utskilling må register, policy og lenker migreres og verifiseres.
+Use `SDP/Agents/KanBan/` in each project; do not create a second `SDP/KanBan/`.
+The [board registry](boards.json) identifies [SDL](../../../SDL/SDP/Agents/KanBan/README.md)
+and [SDUI](../../../SDUI/SDP/Agents/KanBan/README.md), each with its own ID sequence
+and ledger. This local 0.1 registry is not implemented sdptool project discovery.
+Separate repositories have not yet been extracted. Extraction must preserve or
+migrate the registry, policies and links, with verification.
 
-## Typer/tags
+**All card and workflow documentation must be English**, including metadata
+values, worklogs, queue explanations and new event descriptions. Preserve old
+append-only event bytes and clearly identified verbatim source quotations.
 
-Første tag er kortets `type` og del av filnavnet. Valgfrie `tags` i metadatatabellen
-kan angi tema som `tooling`, `language`, `process` eller `visualization`.
-Type beskriver innhold, ikke prioritet eller arbeidsstatus.
+## Types and tags
 
-| Type | Bruk |
+The primary `type` appears in the filename. Optional `tags` may identify topics
+such as tooling, language, process or visualization. Type is not priority or status.
+
+| Type | Purpose |
 | --- | --- |
-| Idea | Mulighet som skal vurderes; ingen ferdig løsning kreves |
-| Proposal | Konkret forslag med hensikt, åpne valg og akseptansekriterier |
-| Question | Avklaring som trenger et dokumentert svar |
-| Study | Avgrenset undersøkelse, med spørsmål og forventet resultat |
-| Change | Bestilt endring med kjent omfang |
-| Bug | Observert avvik med forventet atferd og reproduksjon |
-| Decision | Beslutning med beslutter, dato, grunnlag og konsekvenser; tag alene er ikke godkjenning |
-| Ref | Lokal påvirkning og lenke til ett hovedkort i et annet prosjekt |
+| Idea | A possibility to evaluate; no finished solution required |
+| Proposal | A concrete proposal with purpose, open choices and acceptance criteria |
+| Question | A clarification requiring a recorded answer |
+| Study | A bounded investigation with questions and expected outcomes |
+| Change | An authorized change with known scope |
+| Bug | An observed deviation with expected behavior and reproduction |
+| Decision | Decision, decision-maker, date, rationale and consequences; the type alone is not approval |
+| Ref | Local impact and a link to one primary card in another project |
 
-Bruk `UserStory` og andre modellbegreper i SDL når profilen støtter dem;
-KanBan-tags er ikke nye SDL-keywords. Unngå nye typer uten et eget behov.
+Use UserStory and other model concepts in SDL only when its profile supports
+them. KanBan types are not new SDL keywords. Add types only for a concrete need.
 
-## Identitet og dokumenter
+## Identity and document format
 
-Filnavn: `#003--Idea--KanBan-graph.md`. Referanseeksempel:
-`#001--Ref--SDP--002--sdptool.md`. Tall er fortløpende per prosjekt på tvers av
-status og type, minst tre sifre. Ikke gjenbruk slettede/avsluttede nummer.
-Stabil ID er `KB-<PROJECT>-<nummer>`, eksempelvis `KB-SDP-003`; navn og plassering
-kan endres uten at ID gjør det. Sjekk alle mapper og ledger før nummer tildeles.
-Parallelle registreringer må løse ID-/eventkollisjoner før commit, ikke overskrive.
+Example filename: `#003--Idea--KanBan-graph.md`; reference card:
+`#001--Ref--SDP--002--sdptool.md`. Allocate increasing numbers per project across
+all statuses/types, with at least three digits. Never reuse closed/deleted IDs.
+The stable ID is `KB-<PROJECT>-<number>`; filenames and locations may change.
+Check every directory and ledger before allocation. Resolve parallel ID/event
+collisions before committing; never overwrite another registration.
 
-[Mal](Card-template.md) angir minste innhold. Metadata skrives som en vanlig
-Markdown-tabell rett under tittelen, med kolonnene `Felt` og `Verdi`. Behold
-feltnavnene `id`, `project`, `type`, `created`, `source` og eventuell `next_review`,
-`primary` og `tags`. Verdiene skal være synlige i Markdown-visere med tabellstøtte.
-Ikke legg en ekstra kopi i YAML-frontmatter; det gir ulik visning og to kilder
-som kan komme ut av takt. Ledgeren beholder JSON-formatet og hendelseshistorikken.
-Hvert hovedkort eier ett sammenhengende
-behov. Ref har eget nummer/status, `primary` med hovedkortets stabile ID, klikkbar
-Markdown-lenke og lokal påvirkning. Ref peker direkte til hovedkort, ikke en Ref-kjede.
-Et hovedkort kan registreres i hvilken som helst tavle; velg nærmeste faglige eier
-når det er praktisk. Ikke dupliser behovet for å oppnå perfekt plassering.
+Use the [card template](Card-template.md). Metadata is a visible Markdown table
+immediately below the title, with `Field` and `Value` columns. Keep field names
+`id`, `project`, `type`, `created`, `source` and optional `next_review`, `primary`
+and `tags`. Do not duplicate metadata in YAML frontmatter. The ledger remains
+JSON and owns event history.
 
-Lokal ferdigbehandling av Ref lukker ikke hovedkortet. Ved behov opprettes egne
-implementasjonsslices med tilbakekobling til hovedkortet. Gi kortets ID i eventuelle
-GitHub-issues/PR-er; GitHub-status er ikke automatisk lokal KanBan-status.
+Each primary card owns one coherent need. A Ref has its own ID/status, `primary`
+containing the primary card ID, a clickable link and local impact. Link directly
+to the primary card, never through a Ref chain. Prefer the nearest responsible
+project, but do not duplicate a need merely to obtain perfect placement.
+Completing a Ref does not complete its primary card. Link implementation slices
+back to the card where needed. Include card IDs in related issues/PRs; GitHub
+status does not automatically change local KanBan status.
 
-## Statuskataloger
+## Lifecycle directories
 
-| Katalog | Betydning og krav |
+| Directory | Meaning and requirements |
 | --- | --- |
-| backlog | Registrert og venter på prioritering eller avklaring; ha konkret neste vurdering |
-| active | Avtalt, avgrenset arbeid pågår; oppgi omfang, ansvar og ferdigkriterier |
-| onHold | Beholdes, men blokkert/utsatt; oppgi grunn, utløsende betingelse og vurderingsdato |
-| completed | Kortets avtalte utfall er oppnådd, med lenke til beslutning/leveranse/bevis |
-| canceled | Arbeid som var aktuelt eller besluttet, er aktivt avbrutt; begrunn valget |
-| superseded | Fullt erstattet, slått sammen eller splittet; alle etterfølger-ID-er og lenker kreves |
-| irrelevant | Vurdert som utenfor behov/omfang eller ikke lenger relevant; begrunn vurderingen |
+| backlog | Registered, awaiting prioritization or clarification; specify the next review |
+| active | Selected, bounded work; specify scope, owner and completion criteria |
+| onHold | Blocked or deferred; specify reason, restart condition and review date |
+| completed | Agreed outcome achieved, with linked decision/delivery/evidence |
+| canceled | Previously relevant or selected work deliberately stopped; explain why |
+| superseded | Fully replaced, merged or split; name and link every successor |
+| irrelevant | Reviewed as outside scope or no longer relevant; explain why |
 
-Katalognavnene er case-sensitive; bruk `superseded`, ikke `superseeded`.
-En Idea/Question/Study kan bli completed når den avtalte vurderingen er levert.
-Det betyr ikke at produktfunksjonen er implementert. Ved godkjent viderearbeid:
-lenk til ny plan/slice; implementasjonsstatus hentes fra Traceability. For et kort
-som faktisk lover implementasjon, krever completed dokumentert implementasjon
-og avtalt verifikasjon. Ikke lukk det bare fordi en plan finnes.
+Names are case-sensitive: use `superseded`, not `superseeded`. An Idea, Question
+or Study can complete when its agreed evaluation is delivered; that does not
+mean the proposed product feature is implemented. Implementation cards require
+actual implementation and agreed verification, not just a plan. Link authorized
+follow-up work and obtain implementation status from Traceability.
 
-Alle statuser kan gjenåpnes med begrunnelse; historikken beholdes. Ikke slett gamle
-kort for å få tom backlog. Duplikater flyttes til superseded og peker på hovedkortet.
-Sammenslåing og splitting følger [opphavskontrakten](Lineage.md): nye målkort,
-bevarte kilder og eksplisitt restarbeid. Bare fullt erstattede kilder avsluttes;
-delvise kilder beholdes åpne. Vurder beslektede backlogkort før valg til active.
+Any status may be reopened with a reason. Do not delete cards to empty backlog.
+Move duplicates to superseded with a primary-card link. Follow [Lineage](Lineage.md)
+for merge/split: new targets, preserved sources and explicit remaining work.
+Only fully replaced sources close. Review related cards before selecting work.
 
-## Arbeidsrytme og omfang
+## Work rhythm and scope
 
-Aktive kort brukes som arbeidsdokumenter med gjeldende omfang, neste steg og
-arbeidslogg. [Historikk og diff](History.md) beskriver koblingen mellom loggrad,
-ledgerhendelse og Git-revisjon, også når kortet blir i samme status. Git lagrer
-innhold; ledgeren lagrer behandling; Traceability lagrer implementasjonsbevis.
+Use active cards as working documents, with current scope, next action and a
+worklog. [History and diff](History.md) connects log entries, ledger events and
+Git revisions, including reviews without a status change. Git stores content;
+KanBan stores processing history; Traceability stores implementation evidence.
 
-Ved oppstart av arbeid: les aktuell tavle og berørte Ref-kort, velg et avgrenset
-kort og flytt det til active med eksplisitt omfang. Ved nye funn som endrer oppdraget:
-registrer eller oppdater et kort og lenk fra pågående arbeid før du bytter retning.
-Registrering gir ikke i seg selv autorisasjon til å implementere det nye omfanget.
+At startup, read the board and affected Refs, select bounded work and activate
+it with explicit scope. Record scope-changing discoveries before changing focus.
+At milestones, update outcomes, ledger and references. Review backlog/onHold
+before the next phase and at the agreed review date. Decide the next work,
+defer with a new date, cancel, supersede or mark irrelevant. The initial
+2026-09-30 review date is not a delivery deadline. Age alone does not justify
+deleting or rejecting an idea. Aim for a small, well-understood backlog.
 
-Ved milepælslutt: oppdater utfall, ledger og referanser. Før neste fase og ved
-avtalt vurderingsdato: gjennomgå backlog/onHold og velg konkret neste arbeid,
-utsatt vurdering, canceled, superseded eller irrelevant. Standard første
-vurderingsfrist for disse nyregistrerte kortene er 2026-09-30; det er ikke en
-leveransefrist. Nye frister settes ut fra faktisk prosjektbehov. Aldring alene
-skal ikke automatisk slette eller avvise en idé. Målet er få, tydelige og behandlede
-kort, ikke et permanent arkiv av uavklarte ønsker i backlog.
+## Moving cards — manual workflow
 
-## Flytting og lenker — manuell arbeidsflyt i første versjon
+1. Read the card and its latest event; note ID, state and old path.
+2. Record reason/outcome, successors if any, plan and evidence in the card.
+3. Move the whole file, preserving its ID and normally its filename.
+4. Append an event with actual time, actor and old/new status and paths.
+5. Update the index and incoming Markdown links across registered boards. Search
+   both stable ID and old filename; encode `#` as `%23` in URL targets. Do not
+   rewrite historical ledger paths.
+6. Verify links, replay and physical placement. Commit the document, ledger and
+   indexes together. Investigate mismatches; do not infer state from mtime.
 
-1. Les gjeldende kort og siste hendelse. Noter ID, nåstatus og gammel sti.
-2. Dokumenter grunn/utfall, eventuelt etterfølger, plan og bevis i kortet.
-3. Flytt hele filen til ny statuskatalog; behold ID og normalt filnavn.
-4. Append én hendelse i `Ledger.ndjson` med reell tid, aktør, gammel/ny status og sti.
-5. Oppdater tavleindeks og alle innkommende Markdown-lenker i registrerte tavler.
-   Søk på stabil ID og gammelt filnavn; prosentkod `#` som `%23` i lenkemålet.
-   Ikke skriv om gamle ledgerhendelser eller deres historiske stier.
-6. Kontroller lenker og at replay av ledger stemmer med fysisk plassering, og
-   commit dokument/flytting/ledger/indekser samlet. Ved avvik: stopp og avklar;
-   ikke gjett status fra mtime. Det er ingen automatisk flyttekommando ennå.
+The durable reference is the card ID; its Markdown link is its current address.
+Moves within one board preserve relative depth. For cross-project transfer,
+retain the original primary card/ID and create a Ref for now; no general
+transfer/ID-migration contract has been implemented.
 
-Varig dokumentreferanse er ID; Markdown-lenken er nåværende lokal åpneadresse.
-Flytting innen samme tavle beholder relativ dybde. For flytting mellom prosjekter
-beholdes opprinnelig hovedkort/ID foreløpig og nytt prosjekt får Ref; en generell
-transfer-/ID-migreringskontrakt er ikke implementert.
+## Ledger contract — payload 0.1 and 0.2
 
-## Ledgerkontrakt — payload 0.1 og 0.2
+Each board has [board.json](board.json) and append-only Ledger.ndjson, one JSON
+event per line. Use the [SDP envelope](../../../Toolkit/schemas/ledger-event.schema.json)
+with schemaVersion 1.0. New events use [payload 0.2](ledger-payload-0.2.schema.json);
+historical events retain [0.1](ledger-payload.schema.json). This does not change
+the Toolkit envelope or the implementation ledger in Traceability.
 
-Hver tavle har [board.json](board.json) og append-only `Ledger.ndjson`, én JSON-
-hendelse per linje. Gjenbruk eksisterende
-[SDP event-envelope](../../../Toolkit/schemas/ledger-event.schema.json) med
-`schemaVersion: "1.0"`. Nye hendelser bruker [payload 0.2](ledger-payload-0.2.schema.json);
-historiske hendelser beholder [payload 0.1](ledger-payload.schema.json).
-Dette endrer ikke Toolkit-skjemaet eller implementasjonsledgeren i Traceability.
+- `eventId`: unique, increasing `EVT-KB-<PROJECT>-<number>` within the board.
+- `eventType`: `x-kanban:created`, `x-kanban:moved` or `x-kanban:reviewed`.
+- `subjectId`: stable card ID. `occurredAt`: actual RFC3339 timestamp with timezone
+  (UTC here). `actor`: recorder. `commit` may be null; the introducing Git commit
+  records the event. Never rewrite an event to add its own commit hash later.
+- Payload: `schemaVersion`, `projectId`, `previousEventId` for the same card,
+  `from`, `to`, `fromPath`, `toPath`, `reason`, `links`. Version 0.2 also permits
+  typed `lineage`; see [its completeness rules](Lineage.md).
+- Paths are literal UTF-8 board-relative paths, with no `..` or absolute prefix,
+  not URLs. `links` contains stable card/slice IDs or board-relative evidence paths.
+- created: first event; previous event/status/path are null. Start in backlog or
+  active. Do not invent an earlier history.
+- moved: predecessor matches the latest event; origin matches previous status/path;
+  target represents a real move or rename.
+- reviewed: same status/path, with outcome/reason and any new review date in the
+  card. Correct state through a new explained event, not by rewriting history.
+- completed/superseded transitions require an outcome/successor reference in
+  `links`. Superseded must name every successor, each an existing primary card.
 
-- `eventId`: `EVT-KB-<PROJECT>-<løpenummer>`, unik og fortløpende innen tavlen.
-- `eventType`: `x-kanban:created`, `x-kanban:moved` eller `x-kanban:reviewed`.
-- `subjectId`: stabil kort-ID. `occurredAt`: faktisk RFC3339-tid med tidssone,
-  her UTC. `actor`: hvem som registrerte. `commit` er null ved registrering;
-  Git-commiten som introduserer linjen dokumenterer hendelsen. Ikke skriv om
-  historikk bare for å sette hendelsens egen commithash etter commit.
-- Payload: `schemaVersion`, `projectId`, `previousEventId` (for samme kort),
-  `from`, `to`, `fromPath`, `toPath`, `reason`, `links`. Versjon 0.2 tillater også
-  `lineage` med operationId, merge/split, kilder, mål og overført/gjenstående omfang.
-  Se [opphavskontrakten](Lineage.md) for deltakerhendelser og fullstendighetskrav.
-- Stier er bokstavelige UTF-8-stier relativt til tavlen, uten `..` eller absolutt
-  prefiks. De er historiske hendelsesdata, ikke URL-er. `links` inneholder stabile
-  kort-/slice-ID-er eller bevis-/beslutningsstier relativt til tavlen.
-- created: første hendelse, tidligere event/status/sti er null. Registrering kan
-  starte i backlog eller active; eldre forløp skal ikke oppdiktes.
-- moved: `previousEventId` treffer siste hendelse; from/fromPath treffer forrige
-  tilstand; ny sti/status beskriver faktisk flytting eller navneendring.
-- reviewed: samme status og sti, med resultat/begrunnelse og eventuell ny frist
-  i kortet. Ingen skjult flytting. Korrigering av gjeldende tilstand registreres
-  som en ny begrunnet hendelse; tidligere feil kan forklares, ikke slettes.
-- completed og superseded krever minst én utfalls-/etterfølgerreferanse i `links`
-  ved overgangen. For superseded må alle etterfølgere være navngitte, eksisterende hovedkort.
-
-Replay følger linjerekkefølge og forrige-hendelse-kjeden, ikke bare klokkeslett.
-Dette gir entydig forløp også når flere hendelser har samme tidsstempel. Ved
-Git-merge må nye, ikke-integrerte event-ID-kollisjoner løses før integrasjon.
-Siste hendelse må samsvare med nøyaktig én fil for kortet i oppgitt katalog.
-
-Skjemaene validerer envelope/payload. Kjederegler, referansemål, statusoverganger,
-filplassering og lenker må også kontrolleres; ingen generell validator eller
-interaktiv graf er levert her. K1s konkrete kontrollresultat dokumenteres i
-[leveransekortet](completed/%23007--Change--KanBan-foundation.md).
+Replay follows line order and the predecessor chain, not timestamps alone.
+Resolve new, unintegrated event-ID collisions before merging. The last event
+must match exactly one physical card at the recorded location. Schema validation
+alone does not prove chain rules, references, status transitions or placement.
+No interactive graph is delivered by this contract. See the
+[K1 evidence](completed/%23007--Change--KanBan-foundation.md) for its original checks.

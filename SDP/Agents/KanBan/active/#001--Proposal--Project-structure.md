@@ -1,94 +1,63 @@
-# Prosjektstruktur, Template og studier per fase
+# Project structure, Template and studies per phase
 
-| Felt | Verdi |
+| Field | Value |
 | --- | --- |
 | id | KB-SDP-001 |
 | project | SDP |
 | type | Proposal |
 | created | 2026-09-23T18:25:13Z |
 | source | owner-conversation-2026-09-23 |
-| next_review | Ved neste konsolideringsmilepæl i KB-SDP-010 |
+| next_review | At the next consolidation milestone in KB-SDP-010 |
 | owner | Codex |
 
-Registrert fra eierens samtale 2026-09-23. Tidspunktet er registreringstid,
-ikke rekonstruert tidspunkt for tidligere diskusjoner. Status følger katalog/ledger.
+Registered from the owner conversation on 2026-09-23. The timestamp records registration, not a reconstructed discussion time. The directory and ledger record lifecycle status.
 
-## Bakgrunn og eierretning
+## Background and owner direction
 
-SDP skal bruke sin egen prosess: repoets `SDP/` skal eie utviklingsdokumentasjonen
-for SDP-produktet. `Template/` skal etter planlegging eie malene andre prosjekter
-bruker. Eksisterende nummererte rotkataloger må undersøkes før de flyttes;
-malinnhold og faktisk prosjekthistorie må ikke blandes.
+SDP should use its own process: the repository's `SDP/` owns development documentation for the SDP product. Following planning, `Template/` should own templates used by other projects. Inspect existing numbered root directories before moving them; do not mix templates with actual project history.
 
-SDL og SDUI ønskes på sikt i egne GitHub-repoer, innkoblet i SDP. Verktøyene skal
-fungere med samme underkataloger i monorepo og med separate repoer. Hvert prosjekt
-har eget SDP-område, plan, ledger og KanBan. Git-mekanisme er ikke valgt.
+The eventual aim is separate GitHub repositories for SDL and SDUI, linked into SDP. Tools should work with identical subdirectories in a monorepo and separate repositories. Each project has its own SDP area, plan, ledger and KanBan. The Git integration mechanism is undecided.
 
-## Prosess og nummerering — forslag som skal avklares
+## Process and numbering — proposals to resolve
 
-Behold nummererte kataloger, tettere knyttet til eksisterende A0–A5-abstraksjonslag.
-Mandatet kommer fra Project Owner, som ikke nødvendigvis er utvikler. Mandate er
-prosessinngang, ikke automatisk et nytt SDL-abstraksjonslag. Ikke erstatt A0–A5
-eller likestill implementasjonsfaser med abstraksjonslag uten eksplisitt beslutning.
+Retain numbered directories, aligned more closely with existing A0–A5 abstraction levels. The mandate comes from the Project Owner, who need not be a developer. Mandate is a process input, not automatically another SDL abstraction level. Do not replace A0–A5 or equate implementation phases with abstraction levels without an explicit decision.
 
-- `01--Mandate/Mandate.md`: eierens oppdrag.
-- Valgfri `01--Mandate/Mandate-study.md`: forståelse, uklarheter og mulige måter å
-  realisere oppdraget. Tolkning blir ikke automatisk godkjent mandat eller krav.
-- Mandat og eventuell studie må samlet identifisere stakeholders.
-- Egen `02--Study` foreslås fjernet som fast fase; valgfri studie per fase i stedet.
-- `02--Requirements/`: valgfri Requirements-study, `01--Actors.design`,
-  `02--UserStories.design`, `03--UseCases.design`. Videre nummerering er uavklart.
-- Aktører/historier uttrykkes direkte i lesbar SDL; språkavklaringen eies av [KB-SDL-001 — Stakeholders, actors, user stories og lesbar SDL](../../../../SDL/SDP/Agents/KanBan/backlog/%23001--Proposal--Requirements-narrative.md).
+- `01--Mandate/Mandate.md`: the owner's assignment.
+- Optional `01--Mandate/Mandate-study.md`: understanding, uncertainties and possible approaches. Interpretation does not automatically become an approved mandate or requirement.
+- Together, mandate and optional study must identify stakeholders.
+- Propose removing a mandatory standalone `02--Study`, with optional studies per phase instead.
+- `02--Requirements/`: optional Requirements-study, `01--Actors.design`, `02--UserStories.design`, `03--UseCases.design`. Subsequent numbering remains open.
+- Express actors/stories directly in readable SDL; [KB-SDL-001](../../../../SDL/SDP/Agents/KanBan/backlog/%23001--Proposal--Requirements-narrative.md) owns language decisions.
 
-## Neste avgrensede arbeid
+## Next bounded work
 
-R1s inventar og fysisk flytting er levert. Neste arbeid er en samlet fase-/malprofil
-med studier per fase, kobling til A0–A5 og kravmodell; prosjektregistrering som
-fungerer med og uten Git-grense; og en plan for eventuell SDL/SDUI-utskilling.
-Dette må ta utgangspunkt i eksisterende Toolkit-installasjon og KB-SDL-001.
-Submodule/subtree/annen innkobling er fortsatt uavklart; ingen nye repoer opprettes
-bare fordi fysisk housekeeping er ferdig. KB-SDP-010 konsoliderer dokumentgrunnlaget.
+R1 delivered the inventory and physical migration. Next: a coherent phase/template profile with studies per phase, A0–A5 mapping and requirements modeling; project registration independent of Git boundaries; and a possible SDL/SDUI extraction plan. Start from the existing Toolkit installer and KB-SDL-001. Submodule/subtree/other integration remains undecided; physical housekeeping does not justify creating repositories. KB-SDP-010 consolidates the supporting documentation.
 
-## Akseptanse for senere omstrukturering
+## Acceptance for later restructuring
 
-Godkjent migreringsplan; verifiserte lenker og bygg/installasjon; ingen dobbelt
-aktiv mal- eller språkimplementasjon; samme prosjektoppslag med og uten Git-grense.
-Historiske bevis beholdes som historie. Etter R1 ligger SDL-koden i `SDL/go`; `SDL/SDP/` eier språkprosjektets
-prosessdokumenter. Samme prosjektoppslag på tvers av Git-grenser er fortsatt
-et akseptansekriterium for kommende verktøyarbeid, ikke en levert R1-funksjon.
+Approved migration plan; verified links and build/installation; no competing active template or language implementation; identical project lookup across Git boundaries. Keep historical evidence as history. After R1, SDL code is in `SDL/go`; `SDL/SDP/` owns its process documents. Cross-boundary project lookup remains acceptance for future tools, not a delivered R1 feature.
 
-## Relaterte grunnlag
+## Related foundations
 
-[docs/SDL-Viewpoint-Levels-and-Notation.md](../../../../SDL/docs/integration/SDL-Viewpoint-Levels-and-Notation.md)
-[Toolkit/SDP-install.manifest.json](../../../../Toolkit/SDP-install.manifest.json)
-[KB-SDP-002 — sdptool: prosjektoppslag, implementasjonsplan og viewer](../backlog/%23002--Proposal--sdptool.md)
+[Viewpoint levels and notation](../../../../SDL/docs/integration/SDL-Viewpoint-Levels-and-Notation.md)
+[Toolkit installation manifest](../../../../Toolkit/SDP-install.manifest.json)
+[KB-SDP-002 — sdptool](../backlog/%23002--Proposal--sdptool.md)
 
-## Aktivering 2026-09-24
+## Activation, 2026-09-24
 
-Eieren ber nå om housekeeping av repo-roten og at dette kortet tas i arbeid.
-R1 kartlegger eierskap, samler malene, flytter prosjektets egne driftsdokumenter
-inn i SDP, samler SDL-området og etablerer dokumentinnganger/migreringskart.
-Plan og avgrensninger føres i [R1-planen](../../../Maintenance/R1/Plan.md).
-Full redaksjonell konsolidering av dokumentinnhold har eget kort KB-SDP-010.
+The owner requests repository housekeeping and activation of this card. R1 inventories ownership, gathers templates, moves the project's operational documents into SDP, gathers SDL material and establishes documentation entry points/migration maps. The [R1 plan](../../../Maintenance/R1/Plan.md) records scope and limits. KB-SDP-010 separately owns editorial consolidation.
 
-## Etter R1 — utført og gjenstående
+## After R1 — delivered and remaining
 
-Maler er samlet i Template; prosjektets egne records ligger i SDP; SDL-kode og
-språkdokumentasjon ligger nå i SDL. Checkpoint #1 er felles datert historikk i
-SDP/History. Tidligere plasseringer omtalt over er forhistorien til denne migreringen.
+Templates are in Template; project records are in SDP; SDL code and language documentation are in SDL. Checkpoint #1 is shared, dated history in SDP/History. Earlier locations above describe the migration's background.
 
-Kortet forblir active for endelig fase-/malprofil (studier per fase og kravmodell),
-prosjektregistrering som fungerer med og uten repo-grenser, og plan for separat
-SDL/SDUI-repo. R1 oppretter ingen submodules eller nye GitHub-repoer.
-KB-SDP-010 eier faglig dokumentkonsolidering; KB-SDP-011 eier eksisterende ID-avvik.
-Disse holdes atskilt fra denne fysiske migreringen. Se R1-plan og kontrollbevis.
+The card remains active for the final phase/template profile (per-phase studies and requirements model), project registration across repository boundaries, and a separate-repository plan for SDL/SDUI. R1 creates no submodules or GitHub repositories. KB-SDP-010 owns editorial consolidation; KB-SDP-011 owns existing ID mismatches. Keep these separate from physical migration. See the R1 plan and evidence.
 
-## Arbeidslogg og revisjoner
+## Worklog and revisions
 
-Denne loggen starter etter R1. Tidligere revisjoner finnes i Git, ikke som
-nykonstruerte loggrader med gamle tidsstempler. [Historikk/diff](../History.md).
+This log starts after R1. Earlier revisions remain in Git; do not invent retroactive log entries. [History/diff](../History.md).
 
-| Tid | Aktør / hendelse | Arbeid og resultat | Bevis / restarbeid |
+| Time | Actor / event | Work and outcome | Evidence / remaining work |
 | --- | --- | --- | --- |
-| 2026-09-24T14:52:35Z | Codex; EVT-KB-SDP-000021 | R1 gjennomgått: M1 `d269bc7`, M2 `f42859e`, M3 `f722dc2` leverte fysisk organisering. | [R1-bevis](../../../Maintenance/R1/Evidence.md). Fase-/malprofil, prosjektregister og repo-utskilling gjenstår; dokumentkonsolidering følges i KB-SDP-010. |
-| 2026-09-24T15:03:31Z | Codex; EVT-KB-SDP-000024 | R2 retter gjeldende neste steg og nåplassering; ingen ny migrering eller profil vedtas. | KB-SDP-010 samler dokumentgrunnlag; fase-/malprofil og prosjektregister er neste strukturarbeid. |
+| 2026-09-24T14:52:35Z | Codex; EVT-KB-SDP-000021 | Reviewed R1: M1 `d269bc7`, M2 `f42859e`, M3 `f722dc2` delivered physical organization. | [R1 evidence](../../../Maintenance/R1/Evidence.md). Phase/template profile, project registry and repository extraction remain; KB-SDP-010 tracks consolidation. |
+| 2026-09-24T15:03:31Z | Codex; EVT-KB-SDP-000024 | R2 corrects the current next steps and locations; no new migration/profile adopted. | KB-SDP-010 gathers the documentation basis; phase/template profile and project registry are next. |

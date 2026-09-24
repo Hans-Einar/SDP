@@ -1,6 +1,6 @@
-# K2-M1: synlig metadata i KanBan-kort
+# K2-M1: visible metadata in KanBan cards
 
-| Felt | Verdi |
+| Field | Value |
 | --- | --- |
 | id | KB-SDP-008 |
 | project | SDP |
@@ -8,29 +8,16 @@
 | created | 2026-09-23T22:22:08Z |
 | source | owner-conversation-2026-09-24 |
 
-## Behov og omfang
+## Need and scope
 
-Eieren rapporterer at YAML-frontmatter skjules i VS Code og tegnes som overskrifter
-av XFMD. Metadata skal kunne leses som en vanlig Markdown-tabell.
+The owner reports that VS Code hides YAML frontmatter while XFMD renders it as headings. Metadata should be readable as a normal Markdown table.
 
-## Implementasjonsplan K2
+## Implementation plan K2
 
-Ansvar: Codex. Fasebranch `sdp/phase-k2-readable-metadata` fra K1 (`bb3728c`).
-K2-M1 konverterer metadata i alle eksisterende kort og malen til én synlig tabell
-rett under tittelen. Bevar feltnavn, verdier, innhold, identiteter og eksisterende
-ledgerhistorikk. Oppdater formatbeskrivelsen; ingen viewer-/parserendring.
+Owner: Codex. Phase branch `sdp/phase-k2-readable-metadata` from K1 (`bb3728c`). K2-M1 converts metadata in every existing card and the template into one visible table immediately below the title. Preserve field names/values, content, identities and ledger history. Update the format description; no viewer/parser changes.
 
-## Verifikasjon og utfall
+## Verification and outcome
 
-Kontroller at metadata og øvrig kortinnhold er bevart, at ingen kort bruker
-frontmatter, og at tabellstrukturen, lenkene og ledgerforløpet er gyldige.
-**K2-M1 levert 2026-09-24.** Tolv kort og malen har synlige metadatatabeller.
-Sammenligning før/etter konvertering bekreftet identiske feltnavn/verdier i alle
-13 dokumenter og uendret innhold i alle 12 kort. Malinstruksen er oppdatert til
-rader i tabellen. Etterpå er dette kortets utfall ferdigstilt.
+Check preservation of metadata and other card content, absence of frontmatter, and valid tables, links and ledger histories. **K2-M1 delivered on 2026-09-24.** Twelve cards and the template have visible metadata tables. Before/after comparison confirmed identical field names/values in all 13 documents and unchanged content in all 12 cards. Template instructions now describe table rows. This card's outcome was then finalized.
 
-Kontroll av tre tavler, 21 statuskataloger, 12 kort, fire Ref-kort og 101 lokale
-Markdown-lenker bestod, inkludert JSON-schema og replay av ledger mot filplassering.
-Etter avslutning har ledgerne samlet 14 hendelser. `git diff --check` bestod.
-Dette er en dokument-/strukturkontroll; native visning i VS Code og XFMD er ikke
-prøvekjørt. Det er ingen endring i viewernes kode eller Markdown-parser.
+Checks passed for three boards, 21 status directories, 12 cards, four Ref cards and 101 local Markdown links, including JSON schema and ledger replay against file locations. After closure, ledgers contain 14 events. `git diff --check` passed. This verifies documentation/structure; native VS Code and XFMD viewing was not tested. Viewer code and Markdown parsers are unchanged.

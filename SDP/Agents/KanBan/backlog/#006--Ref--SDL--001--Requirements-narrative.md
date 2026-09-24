@@ -1,6 +1,6 @@
-# SDL: kravmodeller i SDP-prosessen
+# SDL: requirements models in the SDP process
 
-| Felt | Verdi |
+| Field | Value |
 | --- | --- |
 | id | KB-SDP-006 |
 | project | SDP |
@@ -10,18 +10,14 @@
 | next_review | 2026-09-30 |
 | primary | KB-SDL-001 |
 
-Registrert fra eierens samtale 2026-09-23. Tidspunktet er registreringstid,
-ikke rekonstruert tidspunkt for tidligere diskusjoner. Status følger katalog/ledger.
+Registered from the owner conversation on 2026-09-23. The timestamp records registration, not a reconstructed discussion time. The directory and ledger record lifecycle status.
 
-Hoveddokument: [KB-SDL-001 — Stakeholders, actors, user stories og lesbar SDL](../../../../SDL/SDP/Agents/KanBan/backlog/%23001--Proposal--Requirements-narrative.md)
+Primary card: [KB-SDL-001 — requirements narrative](../../../../SDL/SDP/Agents/KanBan/backlog/%23001--Proposal--Requirements-narrative.md).
 
-## Lokal påvirkning
+## Local impact
 
-Requirements-malen må bruke vedtatt SDL-profil for stakeholders, actors, user stories
-og use cases. Ikke distribuér syntaksskissene som parsergodkjente prosjektmaler.
-Samordne med [KB-SDP-001 — Prosjektstruktur, Template og studier per fase](../active/%23001--Proposal--Project-structure.md) før omnummerering eller malmigrering.
+Requirements templates must use an adopted SDL profile for stakeholders, actors, user stories and use cases. Do not distribute syntax sketches as parser-approved project templates. Coordinate with [KB-SDP-001](../active/%23001--Proposal--Project-structure.md) before renumbering or template migration.
 
-## Behandling
+## Handling
 
-Avklar malens behov og registrer avhengighet til språkprofilen i implementasjonsplanen.
-En lokal ferdigbehandling betyr ikke at SDL-utvidelsen er implementert.
+Resolve template needs and record the language-profile dependency in the implementation plan. Closing local handling does not mean the SDL extension is implemented.

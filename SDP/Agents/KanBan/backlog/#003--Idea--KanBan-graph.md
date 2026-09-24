@@ -1,6 +1,6 @@
-# KanBan-graf med tidsakse og trinnvis detaljering
+# KanBan graph with a time axis and progressive detail
 
-| Felt | Verdi |
+| Field | Value |
 | --- | --- |
 | id | KB-SDP-003 |
 | project | SDP |
@@ -9,55 +9,32 @@
 | source | owner-conversation-2026-09-23 |
 | next_review | 2026-09-30 |
 
-Registrert fra eierens samtale 2026-09-23. Tidspunktet er registreringstid,
-ikke rekonstruert tidspunkt for tidligere diskusjoner. Status følger katalog/ledger.
+Registered from the owner conversation on 2026-09-23. The timestamp records registration, not a reconstructed discussion time. The directory and ledger record lifecycle status.
 
-## Idé fra eieren
+## Owner's idea
 
-Vis hver statuskatalog som en vertikal kolonne. Tiden går nedover, i utgangspunktet
-én rad per uke. Hvert dokument får et datapunkt når det opprettes eller flyttes,
-og en sammenhengende sti gjennom statuskolonnene viser forløpet frem til nå.
-Et klikk på en uke utvider dagene; videre klikk fokuserer på timene der det faktisk
-var aktivitet. Punkter skal kunne åpne dokumentet og forklaringen til hendelsen.
+Display each status directory as a vertical column. Time runs downwards, initially one row per week. Each document receives a point when created or moved; a continuous path through columns shows its lifecycle. Clicking a week expands its days; further clicks focus on hours with activity. Points should open the document and event explanation.
 
-## Grunnlag og avgrensning
+## Basis and scope
 
-Les append-only KanBan-ledger, ikke filenes mtime eller antatt Git-committid.
-Bevar reelle tidsstempler og deterministisk rekkefølge ved samtidige hendelser.
-Skille hendelser fra nåværende plassering og vise gjenåpning/tilbakeflytting.
-Vis Ref som referanse til hovedkort, ikke en ekstra implementert leveranse.
-Filtrering på prosjekt, type/tag og tidsrom kan gjøre grafen lesbar.
+Read the append-only KanBan ledger, not file mtime or assumed Git commit times. Preserve real timestamps and deterministic ordering for simultaneous events. Distinguish events from current location and show reopenings/backward moves. Display Ref cards as references to primary cards, not additional implemented deliveries. Project, type/tag and time filters can improve readability.
 
-Interaktiv visning, tidszoom og valg av vert er åpne designvalg. Markdown/SVG kan
-være en statisk eksport, men statisk Markdown alene oppfyller ikke klikkbar tidszoom.
-Ikke bygg en ny renderer eller velg Fyne/XFMD/SDUI før et avgrenset forsøk er avtalt.
+Interactive viewing, time zoom and host selection remain open. Markdown/SVG can provide static export, but static Markdown alone cannot provide clickable time zoom. Do not build a new renderer or select Fyne/XFMD/SDUI before agreeing on a bounded trial.
 
-## Mulig første forsøk
+## Possible first trial
 
-Lag en statisk ukevisning fra en liten validert ledger med flyttinger og gjenåpning.
-Kontroller status, stier, tidspunkt og lenker. Avklar deretter en interaktiv vert,
-tidssone/ukegrenser, håndtering av tette hendelser og skjulte uker uten aktivitet.
-Ingen graf er implementert i KanBan-grunnlaget.
+Generate a static weekly view from a small validated ledger with moves and reopenings. Check status, paths, timestamps and links. Then decide the interactive host, timezone/week boundaries, dense-event handling and hidden inactive weeks. The KanBan foundation implements no graph.
 
-## Presisering 2026-09-24: sammenløp og forgrening
+## Clarification, 2026-09-24: convergence and branching
 
-Grafen skal kunne vise merge (flere kilder → ett mål) og split (én kilde → flere
-mål) fra ledgerens typede lineage-felt. Ikke gjett disse forbindelsene fra fritekst
-eller vanlige links. Delvis overføring viser at kilden fortsatt har restarbeid.
-OperationId binder deltakerhendelsene sammen; en ufullstendig operasjon eller
-utilgjengelig prosjekttavle merkes som ukjent/ufullstendig, ikke ferdigbehandlet.
-Kildenes historikk og tidspunkter beholdes. [Kontrakt](../Lineage.md).
+Show merge (multiple sources → one target) and split (one source → multiple targets) using typed ledger lineage, not guesses from prose or ordinary links. Partial transfer shows remaining work in the source. OperationId connects participant events; mark incomplete operations or inaccessible boards as unknown/incomplete. Preserve source history and timestamps. [Contract](../Lineage.md).
 
-## Presisering 2026-09-24: innholdsrevisjoner
+## Clarification, 2026-09-24: content revisions
 
-Vis også vesentlige reviewed-hendelser mens kortet står i active. Et datapunkt
-skal kunne åpne kortets innhold slik det var ved hendelsen, og diff mot en valgt
-revisjon. Gjeldende utkast skal merkes separat fra committed historie. Git eier
-tekstversjonene, ledgeren eier livsløpet; [K4-arbeidsmåten](../History.md) beskriver
-koblingen og begrensningene. Historikk/diff krever tilgjengelige Git-objekter.
+Also show significant reviewed events while a card remains active. A point should open the card content as it was at that event and a diff against a selected revision. Label working drafts separately from committed history. Git owns text versions; the ledger owns lifecycle events. [K4 workflow](../History.md) explains their connection and limits. History/diff requires available Git objects.
 
-## Arbeidslogg og revisjoner
+## Worklog and revisions
 
-| Tid | Aktør / hendelse | Behandling | Restarbeid |
+| Time | Actor / event | Handling | Remaining work |
 | --- | --- | --- | --- |
-| 2026-09-24T14:52:35Z | Codex; EVT-KB-SDP-000020 | Presiserer grafidé med aktive innholdsrevisjoner og historisk diff; graf fortsatt ikke implementert. | Avtale vertikal verktøyleveranse før implementasjon. |
+| 2026-09-24T14:52:35Z | Codex; EVT-KB-SDP-000020 | Adds active content revisions and historical diff to the graph idea; graph remains unimplemented. | Agree on a vertical tool delivery before implementation. |

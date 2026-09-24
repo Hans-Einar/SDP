@@ -1,6 +1,6 @@
-# Traceability mellom SDL-design, slices, kode og bevis
+# Traceability between SDL design, slices, code and evidence
 
-| Felt | Verdi |
+| Field | Value |
 | --- | --- |
 | id | KB-SDP-004 |
 | project | SDP |
@@ -9,36 +9,22 @@
 | source | owner-conversation-2026-09-23 |
 | next_review | 2026-09-30 |
 
-Registrert fra eierens samtale 2026-09-23. Tidspunktet er registreringstid,
-ikke rekonstruert tidspunkt for tidligere diskusjoner. Status følger katalog/ledger.
+Registered from the owner conversation on 2026-09-23. The timestamp records registration, not a reconstructed discussion time. The directory and ledger record lifecycle status.
 
-## Behov
+## Need
 
-Design- og implementasjonsløpet må bruke Traceability-ledger aktivt. SDP tools
-skal kunne koble SDL-design og vedtatt implementasjonsplan til faktisk leveranse,
-og vise både nåstatus og hvordan systemet vokser gjennom roadmapens milepæler.
-KanBan-historikk erstatter ikke denne dokumentasjonen.
+Design and implementation must actively use the Traceability ledger. SDP tools should link SDL design and the approved implementation plan to actual deliveries, showing current status and system growth across roadmap milestones. KanBan history does not replace this evidence.
 
-## Kontrakt som må utredes
+## Contract to investigate
 
-Gjenbruk og utvid eksisterende envelope, ID-er og relasjonskontrakter etter
-inventar; ikke opprett konkurrerende implementasjonsledger. Modellobjektets
-stabile ID og modellrevisjon må kobles til slice-/milepæl-ID, kode-/commitreferanse,
-verifikasjonsresultat og bevis. Avklar også ugyldiggjøring når design eller bevis
-endres, delvis leveranse, manglende dekning og kryssprosjektavhengigheter.
+Inventory and reuse/extend existing envelopes, IDs and relation contracts; do not create a competing implementation ledger. Link stable model-object identity and model revision to slice/milestone identity, code/commit references, verification results and evidence. Resolve invalidation when design/evidence changes, partial delivery, missing coverage and cross-project dependencies.
 
-Hold foreslått, planlagt, implementert og verifisert atskilt. En grønn test eller
-én levert Functionality innebærer ikke at en hel Feature er ferdig. Ukjent eller
-utdatert grunnlag skal være synlig; status må ikke utledes av fritekst eller svake
-`links`. Aggregasjonsregler og avgrensning må vises i rapporten.
+Keep proposed, planned, implemented and verified distinct. A passing test or one delivered Functionality does not complete a whole Feature. Expose unknown/stale evidence; do not infer status from prose or weak `links`. Reports must show aggregation rules and scope.
 
-## Neste arbeid og akseptanse
+## Next work and acceptance
 
-Kartlegg dagens Ledger.ndjson, Current-Index og Relations mot behovene. Definer
-versjonert kontrakt og migrering før endring. Prøv én modell med to slices hvor
-bare én er implementert/verifisert; generert roadmap/fremdriftsdiagram skal vise
-forskjellen og lenke til kilden og bevisene. [KB-SDP-002 — sdptool: prosjektoppslag, implementasjonsplan og viewer](%23002--Proposal--sdptool.md) er konsument.
+Compare current Ledger.ndjson, Current-Index and Relations with these needs. Define a versioned contract and migration before making changes. Test one model with two slices, only one implemented/verified; generated roadmap/progress diagrams should show the difference and link to sources/evidence. [KB-SDP-002](%23002--Proposal--sdptool.md) is a consumer.
 
-[Traceability/Ledger.ndjson](../../../Traceability/Ledger.ndjson)
-[Toolkit/schemas/ledger-event.schema.json](../../../../Toolkit/schemas/ledger-event.schema.json)
-[Traceability/Relations.yaml](../../../Traceability/Relations.yaml)
+[Traceability ledger](../../../Traceability/Ledger.ndjson)
+[Ledger envelope schema](../../../../Toolkit/schemas/ledger-event.schema.json)
+[Traceability relations](../../../Traceability/Relations.yaml)

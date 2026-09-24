@@ -39,3 +39,11 @@ explicit human authorization.
 `AGENTS-project.md` may add repository-specific commands, constraints and context,
 but must not weaken role boundaries, independent review, traceability,
 verification, release gates, publication truthfulness or stop conditions.
+
+## Documentation language
+
+Write all maintained project documentation in English, including KanBan cards,
+worklogs, plans, reviews and new ledger descriptions. Conversation language does
+not change this rule. Preserve technical identifiers, clearly marked source
+quotations, intentional localized UI examples and immutable historical records.
+Translate generated documentation in its source/generator, then regenerate it.

@@ -1,59 +1,40 @@
-# Konsolider dokumenter og skill aktiv kontrakt fra historikk
+# Consolidate documentation and separate active contracts from history
 
-| Felt | Verdi |
+| Field | Value |
 | --- | --- |
 | id | KB-SDP-010 |
 | project | SDP |
 | type | Proposal |
 | created | 2026-09-24T13:54:42Z |
 | source | owner-conversation-2026-09-24 |
-| next_review | Før neste fase-/malprofilleveranse i KB-SDP-001 |
+| next_review | Before the next phase/template-profile delivery in KB-SDP-001 |
 | owner | Codex |
 
-## Bestilling og omfang
+## Request and scope
 
-Kartlegg og konsolider dokumenter i docs, checkpoint #1, SDL og SDUI. Det finnes
-mange overlappende studier og planer, og enkelte eldre dokumenter omtaler levert
-Go-funksjonalitet som uimplementert. Finn ett aktivt inngangsdokument per ansvar,
-og skill språkprofil, prosess, implementasjonsstatus, forslag og daterte bevis.
+Inventory and consolidate documents in docs, checkpoint #1, SDL and SDUI. Overlapping studies/plans exist, and some older documents describe delivered Go functionality as unimplemented. Establish one active entry point per responsibility, distinguishing language profiles, process, implementation status, proposals and dated evidence.
 
-Checkpoint #1 inneholder mest SDL/SDUI, men også SDP-prosess og felles beslutninger.
-Det skal ikke flyttes til SDL og presenteres som en ren, gjeldende språkspesifikasjon.
-Bevar opprinnelige bevis/fingeravtrykk og registrer hvor materialet hører hjemme.
+Checkpoint #1 mainly covers SDL/SDUI but also contains SDP process and shared decisions. Do not move it into SDL and present it as a current language specification. Preserve original evidence/fingerprints and record ownership.
 
-## Sammenheng og neste behandling
+## Relationships and next handling
 
-[KB-SDP-001](../active/%23001--Proposal--Project-structure.md) eier fysisk struktur,
-stimigrering og inventar. Dette kortet eier redaksjonell konsolidering av innhold;
-ikke slå kortene sammen bare fordi de berører samme filer. Bruk R1-inventaret
-som start, og vurder mindre språk-/prosessleveranser med lineage ved behov.
+[KB-SDP-001](%23001--Proposal--Project-structure.md) owns physical structure, path migration and inventory. This card owns editorial consolidation; shared files alone do not justify merging the cards. Start from R1's inventory and consider smaller language/process deliveries with lineage where useful.
 
-## Akseptanse
+## Acceptance
 
-Alle kildedokumenter har eier og status. Motstridende påstander er gjennomgått
-mot gjeldende profil/kode/bevis. Erstattede dokumenter peker til riktig etterfølger
-eller arkiveres eksplisitt. Aktiv dokumentasjon og genererte viewpoints har
-forskjellig autoritet; genererte filer bygges av verktøyet, ikke håndredigeres.
-Ingen historisk test eller kandidat påstås å være bevis for nyere implementasjon.
+Every source document has an owner and status. Review contradictory claims against current profiles, code and evidence. Superseded documents point to successors or are explicitly archived. Active documentation and generated viewpoints have different authority; tools regenerate generated files. Historical tests and candidates are not evidence for newer implementations.
 
-## Aktiv leveranse R2
+## Active delivery R2
 
-[Plan](../../../Maintenance/R2/Plan.md) avgrenser første runde til innganger,
-autoritet og konkrete feil om hva som er implementert. [Funn og oppfølging](../../../Maintenance/R2/Findings.md)
-viser hver rettelse og grunnlaget. Omnummerering/installasjonsprofil og
-prosjektregister tilhører fortsatt KB-SDP-001. Ingen nye språkregler innføres.
+The [plan](../../../Maintenance/R2/Plan.md) bounds the first pass to entry points, authority and incorrect implementation claims. [Findings and follow-up](../../../Maintenance/R2/Findings.md) identify corrections and evidence. Renumbering/installation profiles and project registry remain in KB-SDP-001. No new language rules are introduced.
 
-## Arbeidslogg og revisjoner
+## Worklog and revisions
 
-| Tid | Aktør / hendelse | Arbeid og funn | Bevis / neste steg |
+| Time | Actor / event | Work and findings | Evidence / next step |
 | --- | --- | --- | --- |
-| 2026-09-24T14:55:42Z | Codex; EVT-KB-SDP-000023 | R2-M1: aktivert etter R1. Funnet foreldet SDL-sti, planlagt G4/G6 i leverte profiler og aktive Python-instrukser. | [Funn](../../../Maintenance/R2/Findings.md); R2-M2 retter og kontrollerer disse. |
-| 2026-09-24T15:03:31Z | Codex; EVT-KB-SDP-000025 | R2-M2: kartlagte statuskonflikter behandlet, SDUI-dokumentkart opprettet og runtimeforslag erstattet som aktiv kontrakt av pakkekontrakter. | [Kontroller](../../../Maintenance/R2/Evidence.md); kandidatsemantikk og SDP-prosess-/malprofil gjenstår. |
+| 2026-09-24T14:55:42Z | Codex; EVT-KB-SDP-000023 | R2-M1: activated after R1. Found obsolete SDL path, delivered G4/G6 still described as planned, and active Python instructions. | [Findings](../../../Maintenance/R2/Findings.md); R2-M2 corrects and checks them. |
+| 2026-09-24T15:03:31Z | Codex; EVT-KB-SDP-000025 | R2-M2: addressed identified status conflicts, created SDUI documentation map, replaced runtime proposal as active contract with package contracts. | [Checks](../../../Maintenance/R2/Evidence.md); candidate semantics and SDP process/template profile remain. |
 
-## Neste behandling etter R2
+## Next handling after R2
 
-R2s avgrensede statusrunde er ferdig. Kortet er fortsatt active: SDL-kjernens
-aktive og foreslåtte deler deler ennå én stor kildefil, og prosessforslagene må
-harmoniseres med vedtatt fase-/malprofil. Neste avgrensning er å behandle denne
-profilen sammen med KB-SDP-001 og KB-SDL-001, og så konsolidere de berørte
-dokumentene. R2 vedtar ikke nye SDL-keywords, A0–A5-nivåer eller installasjonsnavn.
+R2's bounded status pass is complete. The card remains active: active and proposed SDL core material still share one large source file, and process proposals need harmonization with an adopted phase/template profile. Next, address that profile with KB-SDP-001 and KB-SDL-001, then consolidate affected documents. R2 adopts no new SDL keywords, A0–A5 levels or installation names.

@@ -1,41 +1,62 @@
-# Samarbeid og Git-sporbarhet
+# Collaboration and Git traceability
 
-Eierbeslutning 2026-09-22 for SDL/SDUI-utviklingen:
+Owner decision of 2026-09-22 for SDL/SDUI development:
 
-- Bruk én branch per fase og én egen commit per fullført milepæl.
-- Opprett neste fasebranch fra siste commit på forrige fasebranch. Bevar
-  fasebranchene slik at leveransene kan gjennomgås hver for seg.
-- Målbranch for det samlede arbeidet er `sdp-vNow`, opprinnelig på
-  `9ad432407004080dd7f4f0ab06d107523f4316fd`. Ikke utvikle direkte på denne.
-- Bruk fase-/milepæl-ID i commitmeldingen, med konkret leveranse og relevant
-  verifikasjon i committeksten. Ikke merk uferdig arbeid som levert.
-- Kontroller Git-status før branching og staging. Stage bare arbeidet som
-  tilhører milepælen; bevar annet lokalt arbeid. Unngå genererte cacher.
-- Oppdater implementasjonsplan og bevis ved milepælen. Genererte SDL-viewpoints
-  skal komme fra SDL-verktøyet og validerte modellfakta.
-- Opprett samlet PR mot `sdp-vNow` når det avtalte arbeidet er klart. Opprettelse
-  av lokale fasebrancher og milepælcommits er autorisert; dette er ikke en
-  instruks om å merge. Eierens tillegg 2026-09-22 autoriserer push til origin
-  etter hver fullført fase i samme sesjon.
+- Use one branch per phase and a separate commit for every completed milestone.
+- Create each phase branch from the last commit of the preceding phase. Preserve
+  phase branches so their deliveries can be reviewed separately.
+- The combined target branch is `sdp-vNow`, originally at
+  `9ad432407004080dd7f4f0ab06d107523f4316fd`. Do not develop directly on it.
+- Include the phase/milestone ID in commit messages, with the concrete delivery
+  and relevant verification in the body. Do not label unfinished work delivered.
+- Check Git status before branching and staging. Stage only the milestone's work;
+  preserve unrelated local changes and exclude generated caches.
+- Update the implementation plan and evidence at each milestone. Generated SDL
+  viewpoints must come from the SDL tool and validated model facts.
+- Open a combined PR against `sdp-vNow` when the agreed work is ready. Local phase
+  branches and milestone commits are authorized; merging is not. The owner's
+  addition of 2026-09-22 authorizes pushing to origin after each completed phase
+  in the same session.
 
-Branchstakken og håndteringen av tidligere ucommittet arbeid er beskrevet i
-[utviklingshistorikken](SDP/Development-Branch-Stack.md). Les også relevante
-underkatalogers AGENTS.md før endringer.
+The [development history](SDP/Development-Branch-Stack.md) describes the branch
+stack and handling of earlier uncommitted work. Read applicable subdirectory
+AGENTS.md files before making changes.
 
-## Lokale fillenker i svar
+## Documentation language — English
 
-Bruk rene absolutte `file:///`-URL-er, én per linje, uten Markdown-innpakking,
-linjenummersuffiks eller terminalkontrollkoder. Utvid hjemmekatalogen og
-prosentkod mellomrom og reserverte URL-tegn.
+Owner decision of 2026-09-24: **all maintained documentation must be in English**.
+This includes READMEs, language specifications, studies, plans, decisions, agent
+instructions, evidence narratives, KanBan cards, metadata values, worklogs,
+queue/review explanations and new ledger event descriptions. This rule applies
+to SDP, SDL, SDUI, Toolkit and distributed templates. Do not add Norwegian prose
+because the owner discusses the work in Norwegian. Conversation replies may
+remain in the owner's language.
 
-## KanBan for ideer og omfangsendringer
+Translate existing prose when maintaining it; preserve its meaning, authority,
+identifiers, technical syntax and provenance. Clearly identify verbatim source
+quotations or intentional localized UI example text. Frozen test fixtures,
+append-only historical event bytes and hash-pinned machine evidence are records,
+not editable prose: retain them and use English explanations for new records.
+Generated documentation must be translated in the generator/source and rebuilt,
+never hand-edited. Do not describe translation as new implementation evidence.
 
-Les [KanBan-arbeidsmåten](SDP/Agents/KanBan/README.md) og relevant prosjekttavle
-før nytt arbeid. SDP, SDL og SDUI har egne tavler registrert der. Nye ideer og
-funn utenfor avtalt omfang registreres i et hovedkort, med Ref-kort ved behov,
-før arbeidet skifter retning. Registrering er ikke autorisasjon til implementasjon.
-Ved behandling/flytting oppdateres kort, append-only KanBan-ledger og lenker
-samlet. Gjennomgå backlog/onHold ved milepælslutt og før neste fase.
-KanBan dokumenterer behandlingen av forslag; faktisk implementasjon og
-verifikasjon tilhører fortsatt Traceability. Ikke migrer gamle prosessområder
-eller vedta nye språkregler bare fordi de er beskrevet i et backlogkort.
+## Local file URLs in responses
+
+Use plain absolute `file:///` URLs, one per line, without Markdown wrapping,
+line-number suffixes or terminal control codes. Expand the home directory and
+percent-encode spaces and reserved URL characters.
+
+## KanBan for ideas and scope changes
+
+Read the [KanBan workflow](SDP/Agents/KanBan/README.md) and relevant project board
+before new work. SDP, SDL and SDUI have their own boards registered there.
+Record new ideas and out-of-scope findings in a primary card, with Ref cards
+where needed, before changing direction. Registration alone does not authorize
+implementation. Update the card, append-only KanBan ledger and links together
+when processing or moving a card. Review backlog/onHold at milestones and before
+the next phase. Keep cards useful as working documents, including progress,
+evidence and explicit remaining work.
+
+KanBan records how proposals are handled; implementation and verification still
+belong in Traceability. Do not migrate old process areas or adopt language rules
+merely because a backlog card describes them.

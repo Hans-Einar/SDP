@@ -1,6 +1,6 @@
-# sdptool: prosjektoppslag, implementasjonsplan og viewer
+# sdptool: project discovery, implementation plan and viewer
 
-| Felt | Verdi |
+| Field | Value |
 | --- | --- |
 | id | KB-SDP-002 |
 | project | SDP |
@@ -9,10 +9,9 @@
 | source | owner-conversation-2026-09-23 |
 | next_review | 2026-09-30 |
 
-Registrert fra eierens samtale 2026-09-23. Tidspunktet er registreringstid,
-ikke rekonstruert tidspunkt for tidligere diskusjoner. Status følger katalog/ledger.
+Registered from the owner conversation on 2026-09-23. The timestamp records registration, not a reconstructed discussion time. The directory and ledger record lifecycle status.
 
-## Eierens ønskede bruk
+## Owner's intended usage
 
 ```sh
 sdptool ~/git/XFMD generate ip
@@ -20,64 +19,32 @@ sdptool generate ip
 sdptool view ip
 ```
 
-Valgfri prosjektsti kommer før kommandoen. Uten sti brukes `.`. Undersøk først
-om valgt katalog selv er et gyldig SDP-område, ellers om den har et gyldig `SDP/`.
-Ikke gjett foreldreprosjekt eller skift til underprosjekt uten eksplisitt regel.
-Et versjonert prosjektmerke foreslås for gjenkjenning; format er ikke vedtatt.
-`ip` er foreslått kortform for `implementation-plan`.
+An optional project path precedes the command; otherwise use `.`. First check whether the selected directory is a valid SDP area; otherwise check its `SDP/` child. Do not infer a parent project or switch to a subproject without an explicit rule. A versioned project marker is proposed for recognition; its format is undecided. `ip` is proposed shorthand for `implementation-plan`.
 
-`view ip` skal åpne planens hovedside og navigator i konfigurert SDP/SDL-viewer,
-for eksempel XFMD, med kilde/prosjekt/verktøy riktig registrert. Gjenbruk dagens
-kildebaserte dokumentgenerering, viewer-adapter og ferdigbygde programmer.
-Generer detaljer fra gjeldende kilder ved behov; ingen obligatorisk full eksport,
-kompilering ved oppstart eller daemon. Aktuell navigator kan være et snapshot;
-endringer i modellens struktur må få en eksplisitt oppdateringsmekanisme.
+`view ip` should open the plan's main page and navigator in the configured SDP/SDL viewer, such as XFMD, with the correct source/project/tool registration. Reuse current source-based document generation, viewer adapters and prebuilt executables. Generate details from current sources on demand; do not require a full export, startup compilation or daemon. The navigator may be a snapshot; model-structure changes need an explicit refresh mechanism.
 
-## Ansvar og planforslag
+## Responsibilities and proposed plans
 
-SDL er språket, SDP er prosessen. SDP tools skal bruke SDL-/SDUI-biblioteker,
-ikke duplisere parser eller runtime. Prosess-CLI skal fungere likt for monorepo
-og underprosjekter i separate repoer. Katalog-/Git-migrering eies av [KB-SDP-001 — Prosjektstruktur, Template og studier per fase](../active/%23001--Proposal--Project-structure.md).
+SDL is the language; SDP is the process. SDP tools should consume SDL/SDUI libraries without duplicating parsers or runtimes. The process CLI should behave identically for monorepos and subprojects in separate repositories. [KB-SDP-001](../active/%23001--Proposal--Project-structure.md) owns directory/Git migration.
 
-Støtt både å foreslå vertikale slices fra SDL-modell og å validere manuelt eller
-agentforeslåtte slices. En slice skal gi en avgrenset, verifiserbar evne gjennom
-relevante lag/containere, med eksplisitte forutsetninger og akseptanse.
-Verktøyet kan kontrollere dekning og avhengigheter; forretningsprioritet og nytte
-må komme fra prosjektet. Foreslåtte planer blir ikke automatisk vedtatt.
-`generate ip` må bevare godkjent plan og vise hva som er foreslått endret.
-Planformat, beslutningsprosess og hvordan mål/rammer oppgis, gjenstår å avklare.
+Support both proposing vertical slices from the SDL model and validating manually or agent-proposed slices. Each slice should deliver a bounded, verifiable capability across relevant layers/containers, with explicit prerequisites and acceptance. Tools can check coverage and dependencies; business priorities and value come from the project. Proposed plans are not automatically approved. `generate ip` must preserve approved plans and show proposed changes. Plan format, decision process and how goals/constraints are specified remain open.
 
-Bruk modell, vedtatt plan og Traceability til å vise roadmap og gradvis vekst i
-bruksmål, features og functionality. Kontrakten for status og bevis eies av
-[KB-SDP-004 — Traceability mellom SDL-design, slices, kode og bevis](%23004--Proposal--Design-traceability.md). Svake `links` må aldri telle som implementasjonsbevis.
+Use the model, approved plan and Traceability to show a roadmap and incremental growth in use cases, features and functionality. [KB-SDP-004](%23004--Proposal--Design-traceability.md) owns status/evidence semantics. Weak `links` must never count as implementation evidence.
 
-## Neste leveranse og akseptanse
+## Next delivery and acceptance
 
-Avtal kommandokontrakt og prosjektoppslag før implementasjon. Første vertikale
-prøve bruker én eksisterende SDL-modell, en liten slice-plan og ledgeren; viser
-forslag/valideringsdiagnoser og kildekoblet fremdrift uten oppdiktet status.
-`view ip` skal virke fra repoets rot og eget SDP-område samt med eksplisitt sti.
-Ukjent prosjekt/ugyldig kilde får diagnose; kilde/vedtatt plan overskrives ikke.
+Agree on the command contract and project discovery before implementation. The first vertical trial uses an existing SDL model, a small slice plan and the ledger. It shows proposal/validation diagnostics and source-linked progress without invented status. `view ip` must work from a repository root, its SDP area and an explicit path. Unknown projects/invalid sources produce diagnostics; sources and approved plans are not overwritten.
 
-## Tillegg: kortets revisjoner og diff
+## Addition: card revisions and diff
 
-Eieren ønsker 2026-09-24 å kunne følge også innholdsendringer mens kort er active.
-Fremtidig `sdptool` bør tilby historikk og diff ved stabil kort-ID, både committed
-revisjon mot revisjon og arbeidsutkast mot siste commit. Kommandonavn er ikke vedtatt.
-Gjenbruk Git; ikke lag separat repository/versjonsmotor for hvert kort.
-Vis status-/reviewhendelser sammen med Git-revisjoner, og følg eksplisitt lineage
-til kilde-/målkort ved merge/split. Ikke bruk rename-heuristikk som kortidentitet.
-Prosjektregister må løse samme oppgave innen monorepo og etter repo-utskilling.
-Akseptanse: korrekt historisk sti/innhold og diff ved flytting, samme-status-revisjon,
-merge/split og eksplisitt diagnose ved manglende historikk. [Manuell arbeidsmåte](../History.md).
+On 2026-09-24 the owner requested content history while cards are active. Future `sdptool` should offer history/diff by stable card ID: committed revision against revision, and working draft against latest commit. Command names remain undecided. Reuse Git rather than a separate repository/version engine for every card. Show status/review events alongside Git revisions and follow explicit source/target lineage for merge/split. Rename heuristics do not define card identity. The project registry must support this in monorepos and after extraction. Acceptance: correct historical paths/content and diffs across moves, same-status revisions and merge/split; explicit diagnostics for unavailable history. [Manual workflow](../History.md).
 
-## Nåstatus for verktøyet
+## Current tool status
 
-Dette er planlegging, ikke en eksisterende `sdptool`-kommando. `sdl-design` og
-SDLs Go-CLI er eksisterende gjenbruksgrunnlag. [SystemDesignLanguage/scripts/README.md](../../../../SDL/scripts/README.md)
+This is planning, not an implemented `sdptool` command. Existing foundations are `sdl-design` and SDL's Go CLI. [SDL scripts](../../../../SDL/scripts/README.md).
 
-## Arbeidslogg og revisjoner
+## Worklog and revisions
 
-| Tid | Aktør / hendelse | Behandling | Restarbeid |
+| Time | Actor / event | Handling | Remaining work |
 | --- | --- | --- | --- |
-| 2026-09-24T14:52:35Z | Codex; EVT-KB-SDP-000019 | Registrerer integrert korthistorikk/diff som fremtidig sdptool-funksjon; manuell Git-arbeidsmåte leveres i K4. | Avtale vertikal verktøyleveranse før implementasjon. |
+| 2026-09-24T14:52:35Z | Codex; EVT-KB-SDP-000019 | Records integrated card history/diff as a future sdptool feature; K4 delivers the manual Git workflow. | Agree on a vertical tool delivery before implementation. |

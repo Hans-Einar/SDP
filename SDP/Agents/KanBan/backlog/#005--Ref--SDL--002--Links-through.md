@@ -1,6 +1,6 @@
-# SDL: links through i SDP-viewpoints
+# SDL: links through in SDP viewpoints
 
-| Felt | Verdi |
+| Field | Value |
 | --- | --- |
 | id | KB-SDP-005 |
 | project | SDP |
@@ -10,19 +10,14 @@
 | next_review | 2026-09-30 |
 | primary | KB-SDL-002 |
 
-Registrert fra eierens samtale 2026-09-23. Tidspunktet er registreringstid,
-ikke rekonstruert tidspunkt for tidligere diskusjoner. Status følger katalog/ledger.
+Registered from the owner conversation on 2026-09-23. The timestamp records registration, not a reconstructed discussion time. The directory and ledger record lifecycle status.
 
-Hoveddokument: [KB-SDL-002 — Svake links og visuelle stier gjennom noder](../../../../SDL/SDP/Agents/KanBan/backlog/%23002--Proposal--Links-through.md)
+Primary card: [KB-SDL-002 — weak links and visual paths](../../../../SDL/SDP/Agents/KanBan/backlog/%23002--Proposal--Links-through.md).
 
-## Lokal påvirkning
+## Local impact
 
-SDP tools skal kunne velge og vise sammenhengende feature-stier i arkitektur og
-klassediagrammer. Svake forbindelser skal ikke telle i slice-/dekningsanalyse.
-Språk- og sti-semantikken eies av hovedkortet; dette kortet dupliserer ikke kravene.
+SDP tools should select and show continuous feature paths in architecture and class diagrams. Weak links must not count in slice/coverage analysis. The primary card owns language/path semantics; this card does not duplicate those requirements.
 
-## Behandling
+## Handling
 
-Avklar konsumentgrensen og knytt hovedkortet til senere plan for viewpoints.
-Kortet kan avsluttes når SDP-konsekvensen er ivaretatt med lenket beslutning/plan;
-hovedkortets status endres ikke automatisk.
+Resolve the consumer boundary and connect the primary card to the future viewpoint plan. This card can close once SDP consequences are addressed through a linked decision/plan; the primary card's status does not change automatically.

@@ -1,6 +1,6 @@
-# SDP tools som konsument av SDL
+# SDP tools as a consumer of SDL
 
-| Felt | Verdi |
+| Field | Value |
 | --- | --- |
 | id | KB-SDL-003 |
 | project | SDL |
@@ -10,18 +10,14 @@
 | next_review | 2026-09-30 |
 | primary | KB-SDP-002 |
 
-Registrert fra eierens samtale 2026-09-23. Tidspunktet er registreringstid,
-ikke rekonstruert tidspunkt for tidligere diskusjoner. Status følger katalog/ledger.
+Registered from the owner conversation on 2026-09-23. The timestamp records registration, not a reconstructed discussion time. The directory and ledger record lifecycle status.
 
-Hoveddokument: [KB-SDP-002 — sdptool: prosjektoppslag, implementasjonsplan og viewer](../../../../../SDP/Agents/KanBan/backlog/%23002--Proposal--sdptool.md)
+Primary card: [KB-SDP-002 — sdptool](../../../../../SDP/Agents/KanBan/backlog/%23002--Proposal--sdptool.md).
 
-## Lokal påvirkning
+## Local impact
 
-SDP-prosesskommandoer skal bruke SDL som bibliotek for parse/validering og modellfakta.
-Avklar hva som tilhører språkpakken og hva som tilhører prosess/viewpointlaget før
-repo-utskilling. Ikke lag en konkurrerende parser eller flytt Go-moduler nå.
+SDP process commands should consume SDL as a library for parsing/validation and model facts. Resolve language-package versus process/viewpoint responsibilities before repository extraction. Do not create a competing parser or move Go modules now.
 
-## Behandling
+## Handling
 
-Kartlegg eksisterende API/CLI og nødvendige eksportgrenser for planforslag,
-validering og viewer. Registrer konkrete leveranser/avhengigheter i vedtatt plan.
+Map existing APIs/CLIs and the export boundaries needed for plan proposals, validation and viewing. Record concrete deliveries/dependencies in the approved plan.

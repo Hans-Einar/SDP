@@ -1,11 +1,11 @@
 # SDUI — KanBan
 
-[Felles arbeidsmåte, tags og ledgerkontrakt](../../../../SDP/Agents/KanBan/README.md)
+[Shared workflow, tags and ledger contract](../../../../SDP/Agents/KanBan/README.md)
 
-## Kortoversikt
+## Card index
 
-| ID | Type | Status | Dokument |
+| ID | Type | Status | Document |
 | --- | --- | --- | --- |
-| KB-SDUI-001 | Ref | backlog | [SDUI som underprosjekt og bibliotek for SDP tools](backlog/%23001--Ref--SDP--002--sdptool.md) |
+| KB-SDUI-001 | Ref | backlog | [SDUI as a subproject and library for SDP tools](backlog/%23001--Ref--SDP--002--sdptool.md) |
 
-Indeksen vedlikeholdes sammen med flytting; ledgeren eier hendelseshistorikken.
+Update the index with card moves; the ledger owns event history.

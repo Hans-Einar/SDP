@@ -1,6 +1,6 @@
-# K3-M1: sporbar sammenslåing og splitting av kort
+# K3-M1: traceable card merging and splitting
 
-| Felt | Verdi |
+| Field | Value |
 | --- | --- |
 | id | KB-SDP-009 |
 | project | SDP |
@@ -9,54 +9,30 @@
 | source | owner-conversation-2026-09-24; XFMD conversation board |
 | owner | Codex |
 
-## Behov og grunnlag
+## Need and basis
 
-Eieren ønsker at backlogkort kan slås sammen før aktivering eller splittes i
-flere arbeidskort, med sporbarhet i ledgeren. Ny kunnskap må kunne presisere og
-erstatte eldre forslag uten at informasjon eller restarbeid forsvinner.
+The owner wants backlog cards to merge before activation or split into multiple work cards, with ledger traceability. New knowledge must clarify/replace older proposals without losing information or remaining work.
 
-XFMDs lokale KanBan-regler foreslår nytt samlekort, kildetabell, toveis lenker,
-superseded for fullt erstattede kilder og reviewed for kilder med restarbeid.
-Splitting nevnes også. Dette er nyttig gjenbruk av arbeidsmåte, uten at XFMD tar
-inn SDP-prosessen. XFMDs filer var ucommittede ved lesing; ingen endres her.
+XFMD's local KanBan rules propose a new consolidated card, source table, bidirectional links, superseded for fully replaced sources and reviewed for sources retaining work. They also mention splitting. Reuse this workflow without requiring XFMD to adopt SDP. XFMD files were uncommitted when inspected; none are modified here.
 
-Inspisert kilde: `/home/warloc/git/xfmd-sdl-navigation/Agents/KanBan/README.md`.
-Registrering: 2026-09-23T23:57:37Z. SHA-256: `eb7488d631dc8c9c934a71da15fe3e3f52239989998596648e64154a8ff2c7c8`.
-Det er lokal proveniens, ikke påstand om en publisert XFMD-kontrakt.
+Inspected source: `/home/warloc/git/xfmd-sdl-navigation/Agents/KanBan/README.md`. Registration: 2026-09-23T23:57:37Z. SHA-256: `eb7488d631dc8c9c934a71da15fe3e3f52239989998596648e64154a8ff2c7c8`. This records local provenance, not a published XFMD contract.
 
-## Implementasjonsplan K3
+## Implementation plan K3
 
-Én fasebranch `sdp/phase-k3-card-lineage` fra K2 (`321e193`), én milepæl K3-M1:
+One phase branch `sdp/phase-k3-card-lineage` from K2 (`321e193`); one milestone K3-M1:
 
-1. Beskriv full/delvis sammenslåing og splitting, kilde-/målroller, bevaring av
-   åpne spørsmål og aktivering med avgrenset, autorisert omfang.
-2. Utvid ledger-payload med versjonert, typet opphav uten å skrive om gamle
-   hendelser; bruk eksisterende created/moved/reviewed og stabile kort-ID-er.
-3. Oppdater kortmal og grafidé; lag isolerte, eksplisitt fiktive eksempler og
-   kontroller positive/negative tilfeller, replay og eksisterende tavler.
+1. Describe full/partial merge and split, source/target roles, preservation of questions and activation with bounded, authorized scope.
+2. Extend ledger payload with versioned, typed lineage without rewriting old events; reuse created/moved/reviewed and stable card IDs.
+3. Update card template and graph idea; create isolated, explicitly fictional examples and check positive/negative cases, replay and existing boards.
 
-Dette leverer arbeidsmåte og datakontrakt, ikke automatisk filflytting, graf eller
-sdptool-implementasjon. Ingen eksisterende produktforslag skal slås sammen uten
-faglig vurdering. Kildene i XFMD er bare lest.
+This delivers workflow/data contracts, not automatic file movement, a graph or sdptool implementation. Do not merge existing product proposals without substantive review. XFMD sources are read only.
 
-## Akseptanse og bevis
+## Acceptance and evidence
 
-**K3-M1 levert 2026-09-24.** Opphavskontrakt, payload-schema 0.2, oppdatert
-kortmal og grafpresisering er levert. Eksisterende payload-schema 0.1 og historiske
-hendelser beholdes uendret. Nye kort opprettes ved merge/split; delvis overføring
-beholder eksplisitt restarbeid. Ingen produksjonskort er slått sammen eller splittet.
+**K3-M1 delivered on 2026-09-24.** Lineage contract, payload schema 0.2, updated card template and graph clarification are delivered. Payload schema 0.1 and historical events remain unchanged. Merge/split creates new cards; partial transfer retains explicit remaining work. No production cards were merged or split.
 
-`python3 SDP/Agents/KanBan/examples/verify_lineage.py` bestod: fiktive fulle og
-delvise merge/split-forløp, historisk payload 0.1 og 15 negative tilfeller.
-Prøvene avviser blant annet manglende deltakere/lenker, sprikende definisjoner,
-gjenbrukte mål-ID-er, overlapp og ugyldig håndtering av restarbeid.
+`python3 SDP/Agents/KanBan/examples/verify_lineage.py` passed: fictional full/partial merge/split histories, historical payload 0.1 and 15 negative cases. Tests reject missing participants/links, inconsistent definitions, reused target IDs, overlapping sets and invalid remaining-work handling.
 
-En separat engangskontroll av produksjonstavlene bestod: tre tavler, 21 statusmapper,
-13 kort, fire Ref og 112 lokale Markdown-lenker. Schema/replay og filplassering
-bestod også etter avslutning; samlet ledgerantall er 17 hendelser.
-Gamle ledgerlinjer er kontrollert som bytebevarte prefikser mot foreldercommiten;
-SDL/SDUI-ledgerne og payload 0.1 er uendret. `git diff --check` bestod.
+A separate one-off production-board check passed: three boards, 21 status directories, 13 cards, four Refs and 112 local Markdown links. Schema/replay and locations also passed after closure; ledgers contain 17 events. Old ledger lines were verified as byte-preserved prefixes against the parent commit; SDL/SDUI ledgers and payload 0.1 are unchanged. `git diff --check` passed.
 
-Dette er en manuell prosess og testet datakontrakt. Ingen generell flyttekommando,
-KanBan-graf eller kryssrepo-transaksjonsmotor er levert. XFMD-filer er bare lest;
-forslaget der er brukt som lokalt, ucommittet grunnlag, ikke endret eller publisert.
+This is a manual process and tested data contract. No general move command, KanBan graph or cross-repository transaction engine was delivered. XFMD's proposal was used as local, uncommitted evidence, not modified or published.

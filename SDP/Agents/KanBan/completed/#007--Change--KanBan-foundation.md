@@ -1,6 +1,6 @@
-# K1-M1: etablere KanBan og bevare samtalens forslag
+# K1-M1: establish KanBan and preserve conversation proposals
 
-| Felt | Verdi |
+| Field | Value |
 | --- | --- |
 | id | KB-SDP-007 |
 | project | SDP |
@@ -8,46 +8,26 @@
 | created | 2026-09-23T18:25:13Z |
 | source | owner-conversation-2026-09-23 |
 
-Registrert fra eierens samtale 2026-09-23. Tidspunktet er registreringstid,
-ikke rekonstruert tidspunkt for tidligere diskusjoner. Status følger katalog/ledger.
+Registered from the owner conversation on 2026-09-23. The timestamp records registration, not a reconstructed discussion time. The directory and ledger record lifecycle status.
 
-## Oppdrag og avgrensning
+## Assignment and scope
 
-Eierens bestilling 2026-09-23: etabler prosessen og katalogene, foreslå tags, og
-registrer nyere samtale om SDP/SDL/SDUI med hovedkort og referanser. Dette er
-leveransen for K1-M1; forslagene i de øvrige kortene skal ikke implementeres nå.
+Owner request of 2026-09-23: establish the process/directories, propose tags, and capture recent SDP/SDL/SDUI discussions in primary and reference cards. This is K1-M1; do not implement the other cards' proposals now.
 
-## Implementasjonsplan K1
+## Implementation plan K1
 
-Én fasebranch `sdp/phase-k1-kanban` fra G7-M1 (`d03eb78`). Én milepæl:
+One phase branch `sdp/phase-k1-kanban` from G7-M1 (`d03eb78`); one milestone:
 
-1. Etabler sju statuskataloger i hvert av tre prosjekter, stabile ID-er, indeks,
-   kortmal, ledger-format og behandling ved flytting/avslutning.
-2. Registrer seks hovedforslag og fire referansekort; merk kilde, åpne spørsmål,
-   eierskap, neste behandling og kriterier uten å vedta ny språkprofil.
-3. Kontroller JSON/schema, hendelsesforløp, plassering, identiteter og alle nye
-   lokale Markdown-lenker. Dokumenter resultat, fullfør milepælen, commit og push.
+1. Establish seven status directories in each of three projects, stable IDs, indexes, card template, ledger format and move/closure workflow.
+2. Register six primary proposals and four reference cards; identify sources, questions, ownership, next handling and criteria without adopting a new language profile.
+3. Check JSON/schema, event histories, locations, identities and new local Markdown links. Record results, complete the milestone, commit and push.
 
-Ingen gammel katalog, implementasjonsledger, Go-kode, GitHub-issue eller generert
-SDL-viewpoint skal flyttes/endres. Ingen separat repo-opprettelse eller merge.
+No existing process directory, implementation ledger, Go code, GitHub issue or generated SDL viewpoint is moved/changed. No separate repository creation or merge.
 
-## Akseptanse og bevis
+## Acceptance and evidence
 
-**K1-M1 levert lokalt 2026-09-23.** Tre tavler, sju statuskataloger per tavle,
-seks hovedforslag, fire Ref-kort og dette leveransekortet er registrert.
-Tags, arbeidsrytme, ID-/referanseregler, kortmal og versjonert ledger-payload er
-beskrevet. Rotens agentinstruks og dokumentinnganger peker til prosessen.
+**K1-M1 delivered locally on 2026-09-23.** Three boards, seven status directories per board, six primary proposals, four Ref cards and this delivery card were registered. Tags, cadence, ID/reference rules, card template and versioned ledger payload were documented. Root agent instructions and documentation entry points link to the process.
 
-Kontroll utført med Python 3 / jsonschema mot eksisterende Toolkit-envelope og
-KanBan-payload: alle JSON-filer kan leses, alle 11 kort har unik og riktig ID/type,
-alle Ref peker direkte på eksisterende hovedkort. Hendelsene er spilt gjennom
-per kort med kontroll av forrige-hendelse, før/etter-status, sti og fysisk fil.
-Alle 99 lokale Markdown-lenker i tavlene og berørte dokumentinnganger ble kontrollert.
-`git diff --check` bestod. Kontrollene bestod også etter avslutningsflyttingen;
-ledgeren har 12 hendelser, inkludert active → completed for dette kortet.
-Dette er en engangskontroll av leveransen, ikke et levert generelt KanBan-verktøy.
+Python 3/jsonschema checks against the existing Toolkit envelope and KanBan payload passed: all JSON files readable, all 11 cards with unique/correct IDs and types, all Refs directly linked to existing primary cards. Per-card event replay checked previous events, before/after status, paths and physical files. All 99 local Markdown links in boards and affected entry points were checked. `git diff --check` passed. Checks also passed after closing this card; 12 events include its active → completed transition. This was a one-off delivery check, not a general KanBan tool.
 
-Ingen Go-kode, gammel prosesskatalog, Traceability-ledger eller Toolkit-skjema er
-endret. Ingen ny språkprofil, sdptool-kommando, graf eller repo-utskilling er
-implementert. Disse temaene står eksplisitt som backlog. Commit/push avslutter
-fasen i Git; denne filens milepælcommit er sporbar med `git log --follow`.
+No Go code, old process directory, Traceability ledger or Toolkit schema changed. No new language profile, sdptool command, graph or repository extraction was implemented; these remain backlog proposals. Commit/push closes the phase in Git; this file's milestone commit is traceable with `git log --follow`.

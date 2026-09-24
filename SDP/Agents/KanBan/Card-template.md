@@ -1,6 +1,6 @@
-# Kort tittel
+# Short title
 
-| Felt | Verdi |
+| Field | Value |
 | --- | --- |
 | id | KB-PROJECT-NNN |
 | project | PROJECT |
@@ -9,47 +9,50 @@
 | source | REPLACE_WITH_CONVERSATION_OR_ISSUE_REFERENCE |
 | next_review | YYYY-MM-DD |
 
-Dette er en mal, ikke et registrert kort. Opprett fil og created-hendelse samlet.
-For Ref: legg til raden `primary` med verdien `KB-OTHER-NNN` og Markdown-lenke til hovedkortet.
-Valgfrie tema-tags: raden `tags` med verdien `process, tooling`. Status følger katalog og ledger.
+This is a template, not a registered card. Create the file and created event
+together. For Ref cards, add `primary` with `KB-OTHER-NNN` and a Markdown link
+to that primary card. Optional `tags`: process, tooling. Lifecycle status follows
+the directory and ledger. Write all prose and metadata values in English.
 
-## Behov og kilde
+## Need and source
 
-Hva prøver vi å løse? Skill eierens bestilling/beslutning fra anbefalinger.
+What problem should be solved? Distinguish the owner's request/decision from
+recommendations and observations.
 
-## Forslag, omfang og åpne spørsmål
+## Proposal, scope and open questions
 
-Hva er kjent, hva er ikke bestemt, og hvem/hvilke prosjekter berøres?
+What is known, what remains undecided, and which projects are affected?
 
-## Neste behandling og ferdigkriterier
+## Next action and completion criteria
 
-Hva må avgjøres eller leveres? Ved active: ansvar, avgrensning og verifikasjon.
-Ved onHold: grunn, gjenopptakingsbetingelse og neste vurdering.
+What must be decided or delivered? In active: owner, bounded scope and checks.
+In onHold: reason, restart condition and next review.
 
-## Utfall og referanser
+## Outcome and references
 
-Oppdater før avslutning. Lenk til beslutning, plan/slice, bevis eller etterfølger.
-Ikke påstå produktimplementasjon bare fordi forslaget er vurdert eller planlagt.
+Update before closing. Link decisions, plans/slices, evidence or successors.
+Do not claim product implementation merely because a proposal was evaluated.
 
-## Arbeidslogg og revisjoner
+## Worklog and revisions
 
-Oppdater også mens kortet er active. Én rad per vesentlig behandling; behold
-eldre rader og korriger med et tillegg. Gjeldende omfang og neste steg står over.
-Ikke fyll inn egen commithash før commit; hendelses-ID kobler til Git-revisjonen.
-Se [arbeidsmåten for historikk og diff](History.md).
+Update while active as well as at transitions. Add a row for each substantive
+review; retain older entries and correct them through additions. Keep current
+scope and next steps above. Do not insert the commit's own hash before committing;
+the event ID connects the record to its introducing Git revision.
+See [history and diff](History.md).
 
-| Tid (RFC3339) | Aktør / hendelse | Arbeid, funn eller beslutning | Bevis / restarbeid |
+| Time (RFC3339) | Actor / event | Work, finding or decision | Evidence / remaining work |
 | --- | --- | --- | --- |
-| Faktisk registreringstid | Aktør; EVT-KB-PROJECT-NNNNNN | Skill resultat fra forslag og eierbeslutning | Lenke og konkret neste steg |
+| Actual registration time | Actor; EVT-KB-PROJECT-NNNNNN | Distinguish outcomes, proposals and owner decisions | Link and concrete next step |
 
-## Opphav ved sammenslåing eller splitting
+## Lineage when merging or splitting
 
-Bruk denne delen bare ved merge/split. Oppgi operationId og alle kilde-/mål-ID-er
-med klikkbare lenker. Valgfrie metadatarader `sources` og `superseded_by` viser
-ID-ene; ledgerens lineage-felt beskriver hele operasjonen.
+Use this section only for merge/split. Name the operationId and all source/target
+IDs with clickable links. Optional metadata `sources` and `superseded_by` lists
+IDs; the ledger's lineage field describes the complete operation.
 
-| Kilde-ID og lenke | Videreført til mål-ID | Overført omfang | Erstattet utsagn og grunn | Restarbeid og hjem |
+| Source ID/link | Target ID | Transferred scope | Replaced statement and reason | Remaining work and home |
 | --- | --- | --- | --- | --- |
-| Fyll ut én rad per relevant kilde/mål | Nytt mål | Hva videreføres | Beslutning, dato og autoritet | I kilden eller navngitt målkort |
+| One row per relevant source/target | New target | What is carried forward | Decision, date and authority | In the source or a named target |
 
-Se [opphavskontrakten](Lineage.md). Ikke lukk en kilde mens restarbeid mangler et hjem.
+See [Lineage](Lineage.md). Never close a source while remaining work has no home.

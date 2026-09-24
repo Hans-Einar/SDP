@@ -1,26 +1,18 @@
-# Avklar eldre Traceability-ID-er mot Toolkit-kontrakten
+# Resolve older Traceability IDs against the Toolkit contract
 
-| Felt | Verdi |
+| Field | Value |
 | --- | --- |
 | id | KB-SDP-011 |
 | project | SDP |
 | type | Bug |
 | created | 2026-09-24T14:06:02Z |
-| source | R1-baselinekontroll, videreføring av kjent CI-avvik |
-| next_review | Ved neste prioritering etter R1 |
+| source | R1 baseline check; continuation of a known CI mismatch |
+| next_review | At the next prioritization after R1 |
 
-## Observasjon
+## Observation
 
-RepositoryValidation og contracts-CI feiler på ni eldre Issue #5-ID-er:
-SPR-SDP-005, fire ITR-SDP-005-* og fire SLC-SDP-005-*. Schema krever Sprint-, SPI-
-og SPS-format. R1s baseline og etterkontroll gir identisk feilsett.
-[Baseline](../../../Maintenance/R1/toolkit-baseline.txt).
+RepositoryValidation and contracts CI fail on nine older Issue #5 IDs: SPR-SDP-005, four ITR-SDP-005-* and four SLC-SDP-005-*. The schema requires Sprint-, SPI- and SPS-style IDs. R1 baseline and post-migration checks report the same failures. [Baseline](../../../Maintenance/R1/toolkit-baseline.txt).
 
-## Avgrensning og akseptanse
+## Scope and acceptance
 
-Avklar om dette er støttet ekstern ID-form eller data som skal migreres, og lag
-én konsekvent løsning med alias-/sporbarhetsregler. Ikke omskriv append-only
-ledgerhistorikk eller gamle bevis for å få grønn CI. Følg alle innkommende
-referanser i records, bevis, issue og schema før endring. Full Toolkit-validator
-og unittest-suite skal bestå uten unntak som skjuler feil. Dette er ikke fikset
-som del av fysisk katalogopprydding.
+Decide whether these are supported external IDs or data requiring migration; provide one consistent solution with alias/traceability rules. Do not rewrite append-only ledger history or old evidence to make CI pass. Follow incoming references in records, evidence, issues and schemas before changing anything. The full Toolkit validator and unittest suite must pass without exceptions that hide errors. Physical directory housekeeping did not fix this.

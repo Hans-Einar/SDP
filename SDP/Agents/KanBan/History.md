@@ -1,48 +1,47 @@
-# Arbeidslogg, revisjoner og diff for KanBan-kort
+# Worklogs, revisions and diffs for KanBan cards
 
-Kortet er et levende arbeidsdokument også i `active`. Behold én fil med stabil
-ID gjennom livsløpet. Git eier innholdsrevisjonene; KanBan-ledgeren eier
-behandlingshendelsene; Traceability eier implementasjon og verifikasjon.
-Dette er K4s manuelle arbeidsmåte, ikke et nytt versjonskontrollsystem eller en
-implementert `sdptool history`-kommando.
+A card is a working document while active. Keep one file with a stable ID through
+its lifecycle. Git owns content revisions; the KanBan ledger owns processing
+events; Traceability owns implementation and verification. This is K4's manual
+workflow, not a new version-control system or an implemented sdptool command.
 
-## Mens kortet er aktivt
+## While a card is active
 
-Kortets øverste deler viser gjeldende behov, avtalt omfang, ansvar, neste steg
-og ferdigkriterier. Legg til en kort arbeidslogg med tidspunkt, aktør, hendelses-ID,
-arbeid/resultat og bevis. Oppdater ved vesentlig funn, omfangsendring, beslutning,
-verifikasjon og milepæl, også uten statusendring. Loggen er ikke en chattranskripsjon.
+The opening sections describe current needs, agreed scope, owner, next action and
+completion criteria. Add a concise worklog with time, actor, event ID, result and
+evidence. Update it for important findings, scope changes, decisions, checks and
+milestones even when status does not change. It is not a chat transcript.
 
-- Skill observert funn, agentforslag og eierbeslutning. Skriv hvem som vedtok hva.
-- Bruk `x-kanban:reviewed` ved en behandling uten flytting, med samme sti/status
-  og lenker til resultatet. Flere nært sammenhengende småendringer kan samles i én
-  revisjon; rene stave-/lenkerettelser trenger ikke en egen ledgerhendelse.
-- Før ny kunnskap inn i gjeldende tekst. Forklar hva som erstattes i en ny loggrad;
-  ikke fjern tidligere begrunnelse fra loggen eller omskriv gammel ledger.
-- Oppgi eksplisitt restarbeid ved hver milepæl. Et ferdig delarbeid lukker ikke
-  hele kortet. Behold opprinnelig oppdrag og skille mellom levert og planlagt.
-- Commit kort, relevante dokumenter, indeks og ledger samlet ved milepælen.
-  Bruk både milepæl-ID og kort-ID i committeksten. Mellom milepæler er endringer
-  lokale utkast; Git kan ikke vise mellomversjoner som aldri ble committet.
+- Distinguish observations, agent proposals and owner decisions; name the decider.
+- Use `x-kanban:reviewed` for substantive processing without a move, preserving
+  path/status and linking the outcome. Group related small edits where sensible;
+  spelling and link repairs do not each need an event.
+- Update current text with new knowledge and explain replacements in a new log
+  entry. Do not remove earlier rationale or rewrite ledger history.
+- State remaining work at each milestone. A finished subtask does not complete
+  the entire card. Preserve the original request and separate delivered/planned work.
+- Commit card, related documents, index and ledger together at milestones. Include
+  both milestone ID and card ID in the commit. Between milestones, local drafts
+  are not durable Git snapshots; Git cannot show revisions never committed.
 
-Arbeidslogg er et menneskelesbart sammendrag; gamle logger korrigeres med tillegg.
-Ikke legg nye snapshotkopier av kortet i en revisjonsmappe. Ikke skriv commitens
-egen hash inn i filen som inngår i commiten. Ledgerens `commit: null` er fortsatt
-gyldig: Git-commiten som introduserer den unike event-ID-en identifiserer revisjonen.
-Henvis gjerne til tidligere, allerede eksisterende commits i senere loggrader.
+The worklog is a readable summary. Correct earlier entries through additions.
+Do not create snapshot copies of cards in a revision directory. Do not insert a
+commit's own hash into its contents. `commit: null` remains valid in the ledger:
+the Git commit introducing its unique event ID identifies the revision. Later
+log entries may refer to already existing commits.
 
-## Maintenance og de aktive kortene
+## Maintenance and active cards
 
-`SDP/Maintenance/<fase>/` kan eie en sammenhengende faseplan, inventar og større
-kontrollbevis. Kortet peker dit og summerer fremdrift, neste steg og restarbeid.
-Det skal være mulig å forstå kortets situasjon uten å lete i tilfeldig plasserte
-arbeidsnotater. Ikke kopier hele planen eller rå testutskrifter inn i kortet.
-Ved avslutning bevares både kort og bevis. Maintenance er en leveranseadresse,
-ikke en ny obligatorisk SDP-fase eller et nytt abstraksjonslag.
+`SDP/Maintenance/<phase>/` may own a coherent phase plan, inventory and larger
+verification evidence. The card links there and summarizes progress, next steps
+and remaining work. A reader should understand its situation without searching
+random notes. Do not duplicate whole plans or raw test logs inside the card.
+Preserve cards and evidence on closure. Maintenance is a delivery location,
+not another mandatory SDP phase or abstraction level.
 
-## Se historikken med Git nå
+## Inspect history with Git today
 
-Kjør fra repoets rot. Dette konkrete eksemplet gjelder KB-SDP-001:
+Run from the repository root. This concrete example uses KB-SDP-001:
 
 ```sh
 git log --follow --date=iso-strict --format='%h %ad %s' -- 'SDP/Agents/KanBan/active/#001--Proposal--Project-structure.md'
@@ -51,8 +50,8 @@ git diff -- 'SDP/Agents/KanBan/active/#001--Proposal--Project-structure.md'
 git diff --cached -- 'SDP/Agents/KanBan/active/#001--Proposal--Project-structure.md'
 ```
 
-De to siste viser henholdsvis ustagede og stagede endringer. For historiske
-revisjoner, finn commit og daværende sti; de behøver ikke være dagens sti:
+The last two show unstaged and staged changes. For historical revisions, find
+the commit and the path at that revision; it need not match today's path:
 
 ```sh
 git show 'bb3728c:SDP/Agents/KanBan/backlog/#001--Proposal--Project-structure.md'
@@ -60,28 +59,27 @@ git diff 'bb3728c:SDP/Agents/KanBan/backlog/#001--Proposal--Project-structure.md
 git log --format='%h %s' -G '"eventId"[[:space:]]*:[[:space:]]*"EVT-KB-SDP-000015"' -- SDP/Agents/KanBan/Ledger.ndjson
 ```
 
-`--follow` følger én fils antatte omdøpinger og er nyttig for vanlig flytting,
-men Git gjetter renames fra likhet. Det er ikke autoritet for kortidentitet og
-følger ikke semantisk merge/split. Ved tvil, slå opp ID-ens historiske stier i
-ledgeren og sammenlign de eksakte `commit:sti`-blobene som over. Finn også eldre
-ledgerstier via repoets migreringskart dersom selve tavlen er flyttet.
+`--follow` infers renames for one file. It is useful for ordinary moves, but is
+not authoritative for card identity and does not follow semantic merge/split.
+When uncertain, obtain historical paths from the ledger and compare exact
+`commit:path` blobs. If the board itself moved, consult the repository migration map.
 
-## Flere kilder, repoer og ufullstendig historikk
+## Multiple sources, repositories and incomplete history
 
-Merge/split følger [Lineage](Lineage.md): nye målkort har egne revisjoner og
-bevarte kildekort har sine. En livsløpsvisning må vise dette som flere grener,
-ikke late som alt var én fil. Ved delvis overføring fortsetter kildekortets logg.
+[Lineage](Lineage.md) governs merge/split. New targets and preserved sources have
+separate revisions. A lifecycle view must show their branches, rather than pretend
+there was one file. Partial transfer leaves the source's worklog active.
 
-Et fremtidig verktøy må slå opp prosjektets Git-repo fra prosjektregisteret,
-deretter stabil kort-ID, ledgersti og revisjon. Bruk repoidentitet sammen med
-commithash; en hash alene er ikke en kryssrepoadresse. Ref-kort peker til
-hovedkortets historie og beholder sin egen lokale behandling.
+A future tool must resolve the project's Git repository through project registration,
+then the stable card ID, ledger path and revision. Pair repository identity with
+commit hashes; a hash alone is not a cross-repository address. Refs link the
+primary card's history while retaining their own local processing history.
 
-Ucommittede utkast, manglende repo, grunn klone, manglende Git-objekt og avbrutt
-historikk skal vises som nettopp det. Ikke rekonstruer innhold fra mtime eller
-hevde at en manglende revisjon var tom. En eksport av bare Markdown inneholder
-arbeidslogg, men ikke full Git-historikk. Rebase/squash kan endre commitidentiteter;
-eierens fase-/milepælcommits skal bevares, mens kort- og event-ID-er er stabile.
+Label local drafts, unavailable repositories, shallow clones, missing objects and
+broken history explicitly. Never reconstruct content from mtime or present a
+missing revision as empty. A Markdown-only export includes the worklog, not full
+Git history. Rebase/squash may change commit identities; preserve the owner's
+phase/milestone commits. Card/event IDs remain stable.
 
-Integrert historikk/diff følges i [sdptool-kortet](backlog/%23002--Proposal--sdptool.md)
-og [grafidéen](backlog/%23003--Idea--KanBan-graph.md). Det er fortsatt backlog.
+Integrated history/diff remains in [sdptool](backlog/%23002--Proposal--sdptool.md)
+and the [timeline idea](backlog/%23003--Idea--KanBan-graph.md).

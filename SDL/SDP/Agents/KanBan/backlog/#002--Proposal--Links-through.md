@@ -1,6 +1,6 @@
-# Svake links og visuelle stier gjennom noder
+# Weak links and visual paths through nodes
 
-| Felt | Verdi |
+| Field | Value |
 | --- | --- |
 | id | KB-SDL-002 |
 | project | SDL |
@@ -9,23 +9,15 @@
 | source | owner-conversation-2026-09-23 |
 | next_review | 2026-09-30 |
 
-Registrert fra eierens samtale 2026-09-23. Tidspunktet er registreringstid,
-ikke rekonstruert tidspunkt for tidligere diskusjoner. Status følger katalog/ledger.
+Registered from the owner conversation on 2026-09-23. The timestamp records registration, not a reconstructed time for earlier discussions. The directory and ledger record lifecycle status.
 
-## Avklart hensikt fra eieren
+## Owner's clarified intent
 
-`links` er en beskrivende forbindelse; `uses`, `realizes` og andre spesifikke
-relasjoner beholder sin egen semantikk. Svake forbindelser kan tegnes som stiplede
-linjer med pil etter `to`/`from`. Referanser skal valideres, men forbindelsen er
-ikke en forpliktelse, dataflyt, avhengighet eller bevis på implementasjon.
+`links` is a descriptive relationship; `uses`, `realizes` and other specific relations retain their own semantics. Weak links may appear as dashed lines with arrow direction determined by `to`/`from`. Validate references, but do not treat the link as an obligation, data flow, dependency or implementation evidence.
 
-`through` angir én sammenhengende visuell sti via en ordnet liste av noder.
-Stien går inn på en visuell port, tegnes synlig oppå noden og går ut på motstående
-side før neste ledd. Dette er tilsiktet gjennomgang, ikke hindringsunngåelse eller
-bare en linje bak en boks. Kan vise hvordan en Feature går gjennom arkitektur-
-eller klasseblokker. Visuelle porter er ikke automatisk modellens Channel-porter.
+`through` specifies one continuous visual path through an ordered list of nodes. The path enters a visual port, remains visible over the node, and exits on the opposite side before continuing. This is deliberate traversal, not obstacle avoidance or a line hidden behind a box. It can show a Feature passing through architecture or class blocks. Visual ports do not automatically represent model Channel ports.
 
-## Foreløpig syntaksskisse
+## Provisional syntax sketch
 
 ```text
 Actor actor1 links to stakeholder1
@@ -33,23 +25,12 @@ Actor actor2 links through actor1 to stakeholder1
 Feature feature1 links through container1, container2 to container3
 ```
 
-Bevar én relasjon med kilde, retning, ordnede mellomledd og mål i AST/modell.
-Ikke senk til uavhengige semantiske `uses`/`realizes`-kanter. Hele stien må kunne
-kjennes igjen med etikett og sammenhengende markering, ikke farge alene.
+Preserve a single relation with source, direction, ordered intermediate nodes and target in the AST/model. Do not lower it to independent semantic `uses`/`realizes` edges. Identify the complete path through a label and continuous marking, not color alone.
 
-## Åpent og neste arbeid
+## Open questions and next work
 
-Avklar endelig grammatikk, `from` i kombinasjon med `through`, flere relasjoner,
-identitet, tillatte gjentatte noder/sykler og diagnoser. Avklar portplassering ut
-fra diagramretning, kollisjoner med tekst, kryssende stier og delvis skjulte noder
-i viewpoints. En eksport som ikke kan tegne gjennomgang må oppgi begrensningen.
-Undersøk eksisterende SDL-projektor/renderadapter før backendvalg eller endringer
-i Mermaid-repoet; ingen rendererendring er autorisert av selve registreringen.
+Resolve final grammar, `from` combined with `through`, multiple relations, identity, permitted repeated nodes/cycles and diagnostics. Define port placement by diagram direction, text collisions, crossing paths and partially hidden nodes in viewpoints. An exporter unable to draw traversal must state that limitation. Inspect the existing SDL projector/render adapter before selecting a backend or changing the Mermaid repository; registering this card does not authorize renderer changes.
 
-## Akseptanse for senere implementasjon
+## Acceptance for later implementation
 
-Parser/AST bevarer rekkefølge og kildeposisjoner; ukjente referanser får diagnose.
-En figur med minst to mellomnoder viser innport, synlig passasje over hver node,
-utport på motstående side og korrekt pilretning. Stien må overleve viewpoint-
-utvalg med eksplisitt håndtering av utelatte noder. Status/dekningsberegning
-ignorerer forbindelsen som oppfyllelsesbevis.
+Parser/AST preserve order and source positions; unknown references produce diagnostics. A figure with at least two intermediate nodes shows entry ports, visible traversal over each node, exit ports on opposite sides and correct arrow direction. Viewpoint selection preserves the path with explicit handling of omitted nodes. Status/coverage calculations ignore the link as satisfaction evidence.

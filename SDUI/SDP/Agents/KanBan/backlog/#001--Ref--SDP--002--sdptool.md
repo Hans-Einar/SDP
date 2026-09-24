@@ -1,6 +1,6 @@
-# SDUI som underprosjekt og bibliotek for SDP tools
+# SDUI as a subproject and library for SDP tools
 
-| Felt | Verdi |
+| Field | Value |
 | --- | --- |
 | id | KB-SDUI-001 |
 | project | SDUI |
@@ -10,23 +10,18 @@
 | next_review | 2026-09-30 |
 | primary | KB-SDP-002 |
 
-Registrert fra eierens samtale 2026-09-23. Tidspunktet er registreringstid,
-ikke rekonstruert tidspunkt for tidligere diskusjoner. Status følger katalog/ledger.
+Registered from the owner conversation on 2026-09-23. The timestamp records registration, not a reconstructed discussion time. The directory and ledger record lifecycle status.
 
-Hoveddokument: [KB-SDP-002 — sdptool: prosjektoppslag, implementasjonsplan og viewer](../../../../../SDP/Agents/KanBan/backlog/%23002--Proposal--sdptool.md)
+Primary card: [KB-SDP-002 — sdptool](../../../../../SDP/Agents/KanBan/backlog/%23002--Proposal--sdptool.md).
 
-## Lokal påvirkning
+## Local impact
 
-SDUI skal ha eget SDP-område og KanBan, og kunne brukes som bibliotek/underprosjekt
-med samme struktur i monorepo og senere separat repo. `sdptool` må kunne velge
-SDUI-prosjektet eksplisitt. [KB-SDP-001 — Prosjektstruktur, Template og studier per fase](../../../../../SDP/Agents/KanBan/active/%23001--Proposal--Project-structure.md) eier selve strukturmigreringen.
+SDUI should have its own SDP area and KanBan, and work as a library/subproject with the same structure in a monorepo or later separate repository. `sdptool` must support explicit selection of the SDUI project. [KB-SDP-001](../../../../../SDP/Agents/KanBan/active/%23001--Proposal--Project-structure.md) owns the structural migration.
 
-Bevar nåværende Go/Fyne/SVG-retning. Dette er ikke en bestilling av FOX-vert,
-ny parser, ny KanBan-GUI eller full Markdown/Mermaid-støtte. Grafidéen
-[KB-SDP-003 — KanBan-graf med tidsakse og trinnvis detaljering](../../../../../SDP/Agents/KanBan/backlog/%23003--Idea--KanBan-graph.md) avgjør ikke valg av SDUI som vert.
+Preserve the current Go/Fyne/SVG direction. This does not request a FOX host, another parser, a KanBan GUI or full Markdown/Mermaid support. The [KB-SDP-003 graph idea](../../../../../SDP/Agents/KanBan/backlog/%23003--Idea--KanBan-graph.md) does not select SDUI as its host.
 
-## Behandling
+## Handling
 
-Avklar lokal prosjektkonfigurasjon, modell-/plankilder og biblioteksgrenser før
-migrering. Hold kodeplanens G-faser og denne idebacklogen tydelig atskilt.
-[SDUI/docs/implementation-plan.md](../../../../docs/implementation-plan.md)
+Resolve local project configuration, model/plan sources and library boundaries before migration. Keep the code plan's G phases distinct from this ideas backlog.
+
+[SDUI implementation plan](../../../../docs/implementation-plan.md)
