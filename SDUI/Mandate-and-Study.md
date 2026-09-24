@@ -1,99 +1,51 @@
-# SDUI — mandat og innledende studie
+# SDUI — mandate and initial study
 
-**Gjeldende retning 2026-09-21:** SDL/SDUI-parser og runtime utvikles videre i Go,
-med Fyne som første interaktive vert og SVG-eksport fra felles modell/layout.
-Dette erstatter eldre språk-/vertsteknologivalg nedenfor; avsnittene er mandatets
-historie. [Checkpoint tillegg 07](../SDP/History/checkpoint-1/07-SDUI-0.2-and-Go-Direction.md)
-og [PLAN-003](docs/implementation-plan.md) eier dagens leveranser.
+**Current direction, 2026-09-21:** develop SDL/SDUI parsers/runtimes in Go, Fyne as first interactive host, SVG export from shared models/layout. This supersedes earlier language/host choices below, retained as mandate history. [Checkpoint 07](../SDP/History/checkpoint-1/07-SDUI-0.2-and-Go-Direction.md) and [PLAN-003](docs/implementation-plan.md) own current deliveries.
 
-**Implementasjon 2026-09-22:** Eierens Concept1-bestilling er konkretisert som
-[SDUI-kilde, AST og konsolldump](docs/concept1-console.md). Go-frontenden, layout/SVG, Fyne, runtime og modellreload er levert.
-[Checkpoint tillegg 11](../SDP/History/checkpoint-1/11-Go-Implementation-and-Navigation.md)
-avgrenser SDL-kjøring, generering og dokumentnavigasjon. Eldre avsnitt
-nedenfor bevarer mandatets historie, ikke en ekstra aktiv parserprofil.
+**Implementation, 2026-09-22:** the Concept1 request now has [SDUI source, AST and console dump](docs/concept1-console.md). Go frontend, layout/SVG, Fyne, runtime and reload are delivered. [Checkpoint 11](../SDP/History/checkpoint-1/11-Go-Implementation-and-Navigation.md) bounds SDL execution, generation and navigation. Earlier sections preserve history, not another active parser profile.
 
-**Presisering 2026-09-21:** Kanoniske hjørner er ^< og >^ øverst, v< og >v
-nederst. Ytterframe `{16:9,<->}` bruker hele layoutbredden og avleder høyden;
-den fyller rollen til FixedAspectViewport uten høydebegrenset contain-fallback.
-Header/footer kan være frames eller widgetinnhold; `body=` kan være eksplisitt.
-Eierens mainBody/page-eksempel innfører navngitte gjenbrukbare widgetgrupper.
-`font=10/12` er absolutte tekststørrelser; vindusresize skalerer ikke innholdet.
-Hver UI-komponent kan ha formatering `{...}` før separatoren. Komma fortsetter
-horisontalt, semikolon starter en ny rad under den foregående. Detaljer står i
-[komposisjonsforslaget](docs/frame-composition-proposal.md).
+**Clarification, 2026-09-21:** canonical corners: ^<, >^ at top; v<, >v at bottom. Outer `{16:9,<->}` fills width/derives height, expressing FixedAspectViewport without height-constrained contain fallback. Header/footer may hold frames/widgets; body= is optional. Named reusable groups come from the owner's mainBody/page example. font=10/12 are absolute; resize does not scale content. Formatting follows every component before separators; comma continues horizontally, semicolon begins below the preceding row. [Composition proposal](docs/frame-composition-proposal.md).
 
-**Ytterligere eierpresisering 2026-09-20:** Frame-sideforhold uttrykkes som x:y.
-Scale er relativ til nærmeste ancestor, for root til vertens layoutområde.
-Med ratio styres bare én akse; ellers kan x, y eller begge skaleres. Ingen
-pikselbredde/-høyde i ny kilde. Mini arrows har kanonisk shape uten at rekkefølgen
-på hjørneparets retninger endrer betydningen; ned/venstre skrives v<.
-Tegnet ¤ er en idé uten fastlagt betydning. Se det oppdaterte layoutforslaget.
+**Owner clarification, 2026-09-20:** frame ratio x:y; scale relative to nearest ancestor/root host area. Ratio allows one driven axis; otherwise x/y/both may scale. No source pixel width/height. Canonical mini-arrow shapes preserve direction-pair equivalence; down-left is v<. ¤ has no defined meaning. See layout proposal.
 
-**Tillegg 2026-09-20:** Eieren autoriserer videreutvikling av libsdui,
-SDUI-runtime og layout/presentasjon og ber om phases/milestones. Generelle frames,
-widgetlister, Markdown-innhold og layoututtrykk videreutvikles i
-[layoutforslaget](docs/layout-language-proposal.md). Ingen støtte for gammel
-SDUI 0.1/BoxUI-kontrakt kreves: port eksempler og fjern erstattede kjøreveier.
-[Implementasjonsplanen](docs/implementation-plan.md) er gjeldende videreplan.
-Resten av dokumentet bevarer den opprinnelige parserleveransens grunnlag.
+**Addition, 2026-09-20:** owner authorizes libsdui, runtime and layout/presentation development with phases/milestones. [Layout proposal](docs/layout-language-proposal.md) develops general frames, widget lists, Markdown and layout expressions. No old SDUI 0.1/BoxUI compatibility required: port examples/remove replaced paths. [Implementation plan](docs/implementation-plan.md) is current. The remainder preserves the initial parser foundation.
 
-**ID:** SDUI-MANDATE-001 · **Revisjon:** 0.1 · **Dato:** 2026-09-19.
-Eierens bestilling autoriserer dokumentasjon, språkdefinisjon i EBNF og en parser
-som genererer AST. SDUI er et arbeidsnavn; ingen navnekollisjonsundersøkelse eller
-endelig navneregistrering er gjort.
+**ID:** SDUI-MANDATE-001 · **Revision:** 0.1 · **Date:** 2026-09-19. Owner request authorizes documentation, EBNF and an AST-generating parser. SDUI is a working name; no collision investigation/final registration performed.
 
-## 1. Eierens hensikt
+## 1. Owner intent
 
-Et UI skal kunne beskrives som en stor ytre boks med navngitte underbokser og
-widgetinnhold, slik Ponsse/Concept1s BoxUI er organisert. Plasseringen skal være
-forutsigbar og skjemastyrt. Et lett språk inne i Markdown skal kunne beskrive
-layout og koble widgets til objekter/funksjoner som er definert i en SDL-fil.
+Describe UI as a large outer box with named nested boxes/widget content, like Ponsse/Concept1 BoxUI. Placement should be predictable/schema-driven. A small language in Markdown describes layout and binds widgets to SDL-defined objects/functions.
 
-`input1_boxui` er widgeten. `sdlFile.input1_sdl` er SDL-objektet. Callback går fra
-brukerhendelsen til SDL-objektet; `setHandle(BoxUIDefinition.input1_boxui)` gir
-SDL-objektet en logisk referanse for senere oppdateringer. Dette er to retninger,
-ikke en rå FOX-peker eller en callback som tegner direkte på skjermen.
+`input1_boxui` is the widget; `sdlFile.input1_sdl` the SDL object. Callbacks travel from user events to SDL objects; `setHandle(BoxUIDefinition.input1_boxui)` supplies a logical reference for later updates. These are two directions, not raw FOX pointers or callbacks drawing directly on screen.
 
-Eieren ønsker et avgrenset eget språk og støtter retningen om å skille det fra
-Mermaid. Denne leveransen flytter ikke allerede implementert kode eller endrer
-XFMD-installasjonen. Et senere integrasjonsløp skal gjenbruke eksisterende arbeid.
+The owner supports a bounded independent language, separate from Mermaid. This initial delivery moves no existing implementation or XFMD installation. Later integration should reuse existing work.
 
-## 2. Undersøkt grunnlag
+## 2. Inspected foundations
 
-| Kilde | Faktisk observasjon | Konsekvens |
+| Source | Observation | Consequence |
 | --- | --- | --- |
-| Ponsse `882ad7c`, Concept1/shared/ui-box/model.mjs og UILayout.jsx | group/axis/weight/box-id; CSS-grid fordeler spor. Innhold leveres separat som React-komponenter. | Bevar skillet mellom plassering og innhold. Fullt UI er ikke allerede ett portabelt deklarativt skjema. |
-| Concept1/apps/operator-ui/src/ui/operator-layout.mjs | Nestede grupper med 15/45/40 vekt og stabile boks-ID-er. | Realistisk framtidig kompatibilitetsfixture. |
-| Rendererfork `61a85b6`, src/boxui/layout.rs, svg.rs, model.rs | BoxUI har selvstendig row/column-plassering, tekstcallback og SVG; bruker ikke treemap-layout. | Kjernen kan undersøkes for uttrekk; det finnes ingen nødvendig treemap-avhengighet. |
-| XFMD `ffb98e8`, BoxUiAbi, BoxUiFrame, BoxUiSession | Parse/prepare/free-ABI, typed modell, native kontroller, lokale simulerte deltakere. Ingen SDL-runtime. | Gjenbruk identitet/revisjon/utkast; ikke kall dagens renderer-ABI en SDL-ABI. |
-| SDL-arbeidsdokumentet i søsterkatalogen | Utforskende designmodell. Modellinterpreter trenger ikke kjøre produktfunksjonalitet. | Ikke forutsett en ferdig kjørbar SDL-runtime eller vedta dens semantikk her. |
+| Ponsse `882ad7c`, Concept1/shared/ui-box/model.mjs and UILayout.jsx | group/axis/weight/box-id, CSS Grid tracks; separate React content. | Preserve placement/content separation; full UI is not already one portable declarative schema. |
+| Concept1/apps/operator-ui/src/ui/operator-layout.mjs | Nested 15/45/40 groups and stable box IDs. | Realistic future compatibility fixture. |
+| Renderer fork `61a85b6`, src/boxui/layout.rs, svg.rs, model.rs | Independent row/column placement, text callbacks and SVG, without treemap layout. | Investigate extraction; treemap is not required. |
+| XFMD `ffb98e8`, BoxUiAbi, BoxUiFrame, BoxUiSession | Parse/prepare/free ABI, typed model, native controls, local simulated participants; no SDL runtime. | Reuse identity/revision/draft concepts; renderer ABI is not SDL ABI. |
+| Sibling SDL working document | Exploratory design model; interpreters need not execute product functionality. | Do not assume completed executable SDL or adopt its semantics here. |
 
-SDL-arbeidsdokumentet har lokale, ucommittede endringer. Vi behandler det som
-arbeidsgrunnlag, ikke som en frosset godkjent kontrakt. Ingen nye eksterne
-biblioteker er valgt i denne parserleveransen.
+The SDL working document had uncommitted local changes; treat as working evidence, not frozen approved contract. No new external libraries selected for this parser delivery.
 
-## 3. Avgrensning og beslutning
+## 3. Scope and decision
 
-Velg én avgrenset kildeprofil, ett eksplisitt AST-format og separat lokal
-validering. Python-standardbibliotek er valgt for en liten, inspiserbar
-referanseprototype. Dette vedtar ikke implementasjonsspråk for den framtidige
-UI-kjernen eller vertsadapteren.
+Select one bounded source profile, explicit AST format and separate local validation. Python standard library was chosen for a small inspectable reference prototype, not as a future UI-core/host technology decision.
 
-Prototypen støtter bokser, rader med text/button/input/svg, modulreferanser og
-deklarativ setHandle. Den kjører ingen av disse koblingene. Heller ikke syntaktisk
-korrekte referanser er bevis på at SDL-objektet eller medlemmet finnes.
+The prototype supports boxes, text/button/input/svg rows, module references and declarative setHandle, executing none. Syntactically valid refs do not prove object/member existence.
 
-Et eget språk gir kortere uttrykk enn wire-JSON, men krever tydelig grammatikk,
-diagnoser, versjonering og tooling. UI-modellen skal senere være felles inngang
-for SDUI og relevante eksisterende skjemaer; det er en plan, ikke en ferdig adapter.
+A language is shorter than wire JSON but needs grammar, diagnostics, versioning and tools. A future shared model for SDUI/existing schemas remains a plan, not a completed adapter.
 
-## 4. Åpne spørsmål
+## 4. Open questions at the initial delivery
 
-- Endelig navn og profilnavnerom; behold SDUI som arbeidstittel.
-- Faktiske SDL-funksjonssignaturer, objektopprettelse, asynkronitet og feilmodell.
-- Første mål for UI-kjernen etter uttrekk: Rust eller annen implementasjon.
-- Detaljert størrelse-/overflowprofil og hvor tett Concept1-geometrien skal samsvare.
-- Om senere SDUI normaliseres til en delt IR med SDL. Det behøver ikke endre kildeprofilen.
+- Final name/profile namespace; retain working name SDUI.
+- SDL signatures, object creation, asynchronous behavior and error model.
+- First extracted UI-core target: Rust or another implementation.
+- Detailed sizing/overflow and desired Concept1 geometry fidelity.
+- Possible shared normalized IR with SDL, without necessarily changing source profile.
 
-Disse spørsmålene blokkerer ikke parsing til et kildetro AST. De blokkerer påstander
-om kjørbar oppkobling og kompatibel UI-rendering.
+These did not block source-faithful AST parsing; they blocked executable-binding and compatible-rendering claims. Later direction/status is recorded above.

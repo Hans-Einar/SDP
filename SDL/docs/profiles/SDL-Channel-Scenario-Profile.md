@@ -1,26 +1,20 @@
-# SDL — Channel-kontrakter og deklarerte scenarioer
+# SDL — Channel contracts and declared scenarios
 
-Channel-/scenarioprofilen ble innført i V3 (0.4) og inngår nå i
-**design-core 0.5** i Go. Dette er strukturell protokollkontroll og
-sekvensdiagrammer; det kjører ikke meldingene. Det videre workspace-/
-Channel-forslaget i språkdefinisjonen er fortsatt en studie.
-[Go-innganger](../../go/README.md) og [G4-bevis](../../go/evidence/G4.md).
+Introduced in V3 (0.4), this profile is now part of **design-core 0.5** in Go. It provides structural protocol validation and sequence diagrams, not message execution. The broader workspace/Channel proposal in the language definition remains a study. [Go entry points](../../go/README.md); [G4 evidence](../../go/evidence/G4.md).
 
-Nye typer: `channel`, `message`, `scenario`. Channel er logisk samarbeid,
-og deltakere kan være Units eller Containers. Bibliotekkall blir ikke automatisk
-nettverkstrafikk. Scenario beskriver en eksplisitt ordnet eksempelbane.
+New types: `channel`, `message`, `scenario`. A Channel represents logical collaboration; participants may be Units or Containers. Library calls do not automatically imply network traffic. A Scenario describes an explicitly ordered example path.
 
-| Utsagn | Betydning |
+| Statement | Meaning |
 | --- | --- |
-| `C upholds K.` | Channel → Contract, nøyaktig én kontrakt |
-| `K permits M.` | Contract → Message/Datagram; tillatte meldingstyper/familier |
-| `M upholds K.` | Message → record-Contract; ingen Dataset kreves for en handling |
-| `M has message-kind = request/result/event.` | Meldingsrolle; obligatorisk for Message |
-| `Result replies-to Request.` | Message → Message; én request-type per result-type |
+| `C upholds K.` | Channel → Contract; exactly one contract |
+| `K permits M.` | Contract → Message/Datagram; permitted message types/families |
+| `M upholds K.` | Message → record Contract; an action requires no Dataset |
+| `M has message-kind = request/result/event.` | Message role; required for Message |
+| `Result replies-to Request.` | Message → Message; one request type per result type |
 | `P uses C as sender of M in mode Mode.` | Unit × Channel × sender/receiver × Message/Datagram × Mode |
-| `S runs-in Mode.` | Scenario → Mode, nøyaktig én |
-| `S exercises Goal.` | Scenario → UseCase, eksplisitt sporbarhet; ingen kjørbarhetsbevis |
-| `S has completeness = closed/open.` | Closed krever svar på alle requests; open kan vise en avgrenset prefix |
+| `S runs-in Mode.` | Scenario → Mode; exactly one |
+| `S exercises Goal.` | Scenario → UseCase; explicit traceability, not execution evidence |
+| `S has completeness = closed/open.` | Closed requires responses to all requests; open may show a bounded prefix |
 
 ```text
 S step 1 sends Request from Client to Server via Service.
@@ -28,30 +22,15 @@ S step 2 sends Result from Server to Client via Service reply-to 1.
 S step 3 sends Notices variant Changed from Server to Observer via Events.
 ```
 
-Stegindekser er eksplisitte positive heltall, unike og sammenhengende fra 1.
-Kanonisk tekstsortering gir ikke tidsrekkefølge; generatoren bruker stegindeksene.
-Datagram krever en variant som tilhører familiens kontrakt. Vanlig Message skal
-ikke ha variant. Alle brukte kontrakter må være closed før sekvensen kan bygges.
-Open modeller kan fortsatt deklarere Channel/Message uten kjørbart scenario.
+Step ordinals are explicit positive integers, unique and consecutive from 1. Canonical text sorting does not determine time order; the generator uses ordinals. Datagram requires a variant belonging to its family's contract; ordinary Message must not specify a variant. All contracts used must be closed before generating the sequence. Open models may still declare Channels/Messages without executable scenarios.
 
-En step må finnes blant Channel-kontraktens permits og samsvare med sender- og
-receiver-deltakelse for meldingstypen i scenarioets eksplisitte Mode. Ingen arv
-av deltakere, kontrakter eller modi. Selvsend er tillatt som et uttrykkelig lokalt
-kall. Flere receivers krever separate steps; ingen broadcast utledes.
+A step must be permitted by its Channel contract and match sender/receiver participation for its message type in the scenario's explicit Mode. Participants, contracts and modes are not inherited. Self-send is allowed as an explicitly local call. Multiple receivers require separate steps; no broadcast is inferred.
 
-Result krever reply-to til en tidligere request i samme scenario, på samme
-Channel og med reverserte deltakere, og result-typen må ha riktig replies-to.
-Én requeststep får høyst ett result. Request/event/Datagram kan ikke bruke
-reply-to. Dette kontrollerer eksempelbanens korrelasjon, ikke runtime-ID-er,
-leveringsgarantier, tid, reentrancy, transaksjoner eller faktisk utføring.
+A Result requires reply-to referencing an earlier request in the same scenario, on the same Channel, with reversed participants and matching result-type replies-to. A request step has at most one result. Request/event/Datagram cannot use reply-to. This checks example-path correlation, not runtime IDs, delivery guarantees, timing, reentrancy, transactions or actual execution.
 
-Channel-kontraktens form er permits, uten record-felt/varianter. Message bruker
-record-felt. Et Contract kan ikke samtidig være Channel-kontrakt og payloadform.
-Alle Message-resulttyper krever replies-to; øvrige message-kinds kan ikke ha det.
-MessageSet er kun avledet eksport per Channel/Mode fra permits og deltakelse;
-ingen selvstendig authored MessageSet-syntaks innføres.
+Channel contracts contain permits, not record fields/variants. Message uses record fields. A Contract cannot serve as both Channel contract and payload shape. Every result Message type requires replies-to; other message kinds forbid it. MessageSet is only a derived per-Channel/Mode export from permits and participation; there is no independently authored MessageSet syntax.
 
-EBNF-tillegg:
+EBNF additions:
 
 ```text
 participation = identifier, "uses", identifier, "as", ("sender" | "receiver"),
@@ -61,32 +40,18 @@ step = identifier, "step", integer, "sends", identifier,
        "via", identifier, [ "reply-to", integer ], "." ;
 ```
 
-AST: `Participation(subject, channel, role, message, mode, span)` og
-`Step(subject, ordinal, message, variant, sender, receiver, channel, reply_to, span)`.
-Identifier-/Integer-noder har kildeposisjoner. Sekvenspil og MessageSet-rad får
-kilde-ID-er til step, deltakelse, governing kontrakt og permits.
+AST: `Participation(subject, channel, role, message, mode, span)` and `Step(subject, ordinal, message, variant, sender, receiver, channel, reply_to, span)`. Identifier/Integer nodes carry source positions. Sequence arrows and MessageSet rows carry source IDs for steps, participation, governing contracts and permits.
 
-Alternativer modelleres som navngitte separate scenarioer, for eksempel godtatt
-eller avvist input. Branch/loop/parallel-syntaks utsettes til semantikken er
-definert. Et diagram er en avtalt eksempelbane, ikke hele tillatte protokollen.
+Model alternatives as separate named scenarios, such as accepted/rejected input. Branch/loop/parallel syntax awaits defined semantics. A diagram is an agreed example path, not the entire permitted protocol.
 
-## Historisk V3-leveranse — 2026-09-22
+## Historical V3 delivery — 2026-09-22
 
-Tall og status nedenfor gjelder denne milepælen før Go-porten. De er ikke
-nykjørte tester eller dagens samlede implementasjonsstatus.
+These counts/statuses describe this milestone before the Go port, not newly run tests or current overall implementation status.
 
-Milepæler: V3-M1 språk og negative kontraktprøver; V3-M2 VP08/MessageSet;
-V3-M3 request/resultat- og reload-eksempler med generert renderbevis.
+Milestones: V3-M1 language and negative contract tests; V3-M2 VP08/MessageSet; V3-M3 request/result and reload examples with generated rendering evidence.
 
-V3-M1 verifisert: 59 parser-/kontrakttester består, inkludert request/resultat,
-modus, tillatelser, korrelasjon, stegorden og obligatorisk Datagram-variant.
+V3-M1 verified: 59 parser/contract tests pass, covering requests/results, modes, permissions, correlation, step ordering and required Datagram variants.
 
-V3-M2: VP08 og avledet MessageSet er implementert. 22 verktøytester består;
-numerisk stegorden, korrelasjon og pilens kontraktgrunnlag kontrolleres.
-Sekvenssyntaks følger [Mermaid sequence](https://mermaid.js.org/syntax/sequenceDiagram.html);
-rendererens grafplassering påvirker ikke meldingsretning eller rekkefølge.
+V3-M2: VP08 and derived MessageSet implemented; 22 tool tests pass, checking numeric order, correlation and arrow contract evidence. Syntax follows [Mermaid sequence](https://mermaid.js.org/syntax/sequenceDiagram.html); backend layout does not alter message direction/order.
 
-V3-M3 levert: 273 deklarasjoner, 675 fakta, fire scenarioer og 88 SVG-diagrammer.
-59 SDL-, 22 viewpoint- og 36 SDUI-tester består. Alle kildefakta, pilreferanser,
-bitområder og eksportfingeravtrykk kontrolleres; gjentatt eksport er identisk.
-Akseptert handling og avvist reload er visuelt stikkprøvekontrollert.
+V3-M3 delivered: 273 declarations, 675 facts, four scenarios and 88 SVG diagrams. 59 SDL, 22 viewpoint and 36 SDUI tests pass. Source facts, arrow references, bit ranges and export fingerprints checked; repeated export identical. Accepted-action and rejected-reload diagrams visually spot-checked.

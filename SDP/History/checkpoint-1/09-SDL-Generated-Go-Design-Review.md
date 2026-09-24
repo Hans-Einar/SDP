@@ -1,78 +1,41 @@
-# Checkpoint #1 — generert G1–G5-design
+# Checkpoint #1 — generated G1–G5 design
 
-**Implementasjonsstatus er oppdatert i [tillegg 11](11-Go-Implementation-and-Navigation.md).**
-Nedenfor beholdes det daterte design-/V-fasegrunnlaget; gamle Python-kommandoer
-er historiske og erstattet av Go-inngangene.
+**Updated implementation status: [supplement 11](11-Go-Implementation-and-Navigation.md).** Dated design/V-phase foundations remain below; Python commands are historical.
 
-Dato: 2026-09-22. V2–V4 er levert for gjennomgang før Go-implementasjon.
-Tallene nedenfor dokumenterer V4-leveransen. Den levende SDL-modellen er senere
-utvidet med [G6 dokumentnavigasjon](10-SDL-Viewpoint-Navigation.md).
-**Start med [den genererte implementasjonsrapporten](../../../SDUI/design/viewpoints/implementation.md).**
-Den kommer fra [SDL-kilden](../../../SDUI/design/architecture.design), via SDLs
-parser, validator og viewpoint-verktøy. Faser, ansvar, avhengigheter og
-scenariofigurer er ikke håndskrevet inn i rapporten.
+Date: 2026-09-22. V2–V4 delivered for review before Go implementation. Counts describe V4; the living model later gained [G6](10-SDL-Viewpoint-Navigation.md). **Start with the [generated implementation report](../../../SDUI/design/viewpoints/implementation.md).** SDL parser/validator/projector derive phases, responsibilities, dependencies and scenarios from [source](../../../SDUI/design/architecture.design), not manual report additions.
 
-## Hva som kan gjennomgås
+## Review scope
 
-Fem planlagte faser, 18 milepæler og eksplisitte milepælkoblinger til alle 94
-Functionality-er beskriver frontendport, layout/presentasjon, UI-runtime/reload,
-SDL-runtime/binding og native Go-generering. Alle har status **planned**.
-Rapporten viser logiske eiere og kilde-ID-er for ansvar og avhengigheter.
+Five planned phases, 18 milestones and links for all 94 Functionalities cover frontend, layout/presentation, UI runtime/reload, SDL runtime/binding and native generation. All statuses were **planned**. Reports identify logical owners/source IDs.
 
-[Den samlede utskriften](../../../SDUI/design/viewpoints/viewpoints.md) inneholder
-alle elleve viewpoints: bruksmål/bidrag, arkitektur, ansvar, porter, modi,
-arbeidsplan, Feature-allokering, Channel-sekvenser, data/kontrakter, packet og
-faktaregister. [Mermaid-utgaven](../../../SDUI/design/viewpoints/viewpoints.md)
-og de enkelte diagramkildene genereres samtidig.
+The [combined report](../../../SDUI/design/viewpoints/viewpoints.md) contains 11 viewpoints: goals/contributions, architecture, responsibilities, ports, modes, work plan, allocation, sequences, data/contracts, packets and facts. Mermaid/individual diagram sources generate together.
 
-Ti scenarioer illustrerer kompilering, statisk/interaktiv presentasjon,
-ubundet Go-handling, akseptert/avvist binding, UI-/SDL-reload og native bygg.
-47 [MessageSet-oppføringer](../../../SDUI/design/viewpoints/message-sets.json)
-avledes fra Channel, modus, tillatte meldinger og deltakere.
+Ten scenarios cover compilation, static/interactive presentation, unbound Go actions, accepted/rejected bindings, reload and native builds. 47 [MessageSet entries](../../../SDUI/design/viewpoints/message-sets.json) derive from Channels, modes, permits and participation.
 
-## Leveranse og verifikasjon
+## Delivery and verification
 
-| Fase | Levert verktøyfunksjon |
+| Phase | Delivered capability |
 | --- | --- |
-| V2 | Typede data-/feltkontrakter, persistent Database-begrep, Datagram-projeksjon og eksplisitt packet-layout |
-| V3 | Channel-roller, tillatte meldinger, ordnede scenarioer, request/resultat-korrelasjon og avledet MessageSet |
-| V4 | Sporbar G1–G5-plan i SDL, generisk implementasjonsrapport og samlet designutskrift |
+| V2 | Typed data/fields, persistent Database, projections, explicit packets |
+| V3 | Channel roles/permits, ordered scenarios, correlation, derived MessageSet |
+| V4 | Traceable G1–G5 plan, generic implementation report, complete design printout |
 
-Aktiv SDL-profil er **design-core 0.5**. SDUI er fortsatt **0.2**; numrene
-tilhører forskjellige språk. Erstattede SDL-profiler har ingen aktiv fallback.
-Checkpointets øvrige kandidater og MVP1-korpus er ikke dermed vedtatt grammatikk.
+SDL **design-core 0.5** and SDUI **0.2** have independent versions. No replaced-profile fallback; broader checkpoint/MVP1 candidates remain unadopted.
 
-[Maskinrapporten](../../../SDL/tools/verification.json) registrerer
-61 SDL-parsertester, 24 verktøytester og 36 SDUI-tester: **121 bestått**.
-Modellen har 368 deklarasjoner og 1106 fakta og gir 142 SVG-diagrammer.
-Verifikasjonen kontrollerer kildeposisjoner, diagramfakta, SVG-etiketter,
-bitområder, sekvensrekkefølge/korrelasjon, hasher og byte-identisk reeksport.
-Fasegraf, parsersekvens og bindingssekvens er visuelt stikkprøvekontrollert.
-Ingen fysisk utskrift eller paginert PDF er testet.
+[Machine report](../../../SDL/tools/verification.json): 61 SDL + 24 tool + 36 SDUI = **121 passing tests**; 368 declarations, 1106 facts, 142 SVGs. Checks cover source positions/facts, SVG labels, bit ranges, sequence order/correlation, hashes and identical re-export. Phase/parser/binding figures visually spot-checked; no physical print/paginated PDF test.
 
-Fra repoets rot kan hele kontrollen gjentas:
+Historical command, requiring the original pre-Go revision:
 
 ```sh
 python3 SystemDesignLanguage/tools/verify_design.py --phase V4 --renderer /home/warloc/git/mermaid-rs-renderer/target/debug/mmdr
 ```
 
-Rendererstien velger et eksisterende program. Leveransen endrer verken
-mermaid-rs-renderer eller XFMD og legger ingen SDUI-parser i dem.
+Uses an existing renderer; changed neither Mermaid nor XFMD and added no parser to them.
 
-## Grenser før G-fasene
+## Limits before G phases
 
-Det finnes fortsatt ingen Go-parser eller Go-runtime i denne leveransen.
-Scenarioene er validerte designbaner, ikke utført domenelogikk. Tokens, AST,
-normalisert modell og prepared frame er opake bytesfelt ved scenarioets grenser;
-interne Go-typer, funksjonssignaturer, atomisk publisering, state-migrering,
-widgetlivstid og font-/måleenheter må konkretiseres og testes i G-fasene.
+This delivery contained no Go parser/runtime. Scenarios are validated design paths, not executed domain logic. Tokens/AST/normalized/prepared-frame boundary fields are opaque bytes; Go types/signatures, atomic publication, state migration, widget lifetime and font/measurement units awaited G phases.
 
-VP07 rapporterer 15 manglende allokeringer i Feature-/modusutsnitt. Modellen er
-derfor ikke en fullstendig deploymentplan, selv om alle ansvar har milepælkobling.
-Packet-eksemplet er en eksplisitt prototypeprofil, ikke en vedtatt runtime-ABI
-eller et P1000-/StanForD-format. Database betyr persistent datatilgang ved behov,
-uten krav om SQL.
+VP07 reports 15 missing allocations, so this is not a complete deployment plan despite milestone coverage. Packets use an explicit prototype profile, not adopted runtime ABI or P1000/StanForD format. Database means on-demand persistent data, without SQL requirement.
 
-Arbeidet følger [branchstakken](../../Development-Branch-Stack.md), med tre commits
-per V2–V4-fase og push ved faseavslutning. Samlet PR har `sdp-vNow` som base;
-merge og oppstart av G-fasene inngår ikke i denne leveransen.
+[Branch stack](../../Development-Branch-Stack.md): three commits per V2–V4 phase, push after each, combined PR against sdp-vNow. Merge/start of G phases were outside this delivery.

@@ -1,28 +1,28 @@
 # SCXML 1.0
 
-[Katalog](README.md) · Kategori: **Tilstandsmaskin-/atferdsspråk** · Research: **2026-09-10**
+[Catalogue](README.md) · Category: **State-machine/behavior language** · Research: **2026-09-10**
 
-## Formål og abstraksjonsnivå
+## Purpose and abstraction level
 
-XML-basert beskrivelse av eventdrevne tilstandsmaskiner, inkludert hierarkiske/parallelle tilstander og transitions.
+XML descriptions of event-driven state machines, including hierarchical/parallel states and transitions.
 
-## Modellmekanismer
+## Model mechanisms
 
-Identitet: state-ID-er og eventnavn. Relasjoner: transitions og nesting. Contracts: hendelsesstyrt atferd; payload/schema trenger separat avtale. Maskinell kjøring i en SCXML-prosessor. Utvidelse via datamodeller og støttede eksekveringsmekanismer; viewpoints er eksterne.
+Identity: state IDs/event names. Relations: transitions/nesting. Contracts: event-driven behavior; agree payload/schema separately. SCXML processors execute models. Extension: data models/supported execution mechanisms; external viewpoints.
 
-## Styrker og begrensninger — vår vurdering
+## Strengths and limitations — our assessment
 
-**Styrke:** Presis beskrivelse av hvilke inputhendelser som kan endre en komponenttilstand.
+**Strength:** Precisely describes input events that can change component state.
 
-**Begrensning:** Et korrekt statechart gir ikke arkitekturgrenser, FEAT-sporing eller automatisk test av en faktisk renderer.
+**Limitation:** Correct statecharts provide neither architecture boundaries, FEAT traceability nor automatic tests of actual renderers.
 
-## Historikk, endring og transitions
+## History, change and transitions
 
-Elementet history husker en tidligere runtime-substate. Det er uttrykkelig ikke modellhistorikk eller kildekodemigrasjon.
+The history element remembers previous runtime substates, explicitly not model history or source-code migration.
 
-## Illustrativt eksempel
+## Illustrative example
 
-Illustrativ eventdrevet oppstart. Eksemplet er ikke parser-/runtime-testet.
+Event-driven startup. The example has not been parser/runtime tested.
 
 ```xml
 <scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" initial="idle">
@@ -33,12 +33,12 @@ Illustrativ eventdrevet oppstart. Eksemplet er ikke parser-/runtime-testet.
 </scxml>
 ```
 
-## Verktøy, vedlikehold og vilkår
+## Tools, maintenance and terms
 
-W3C Recommendation fra 2015 er tilgjengelig. Prosessorstøtte, datamodell og distribusjonslisens må undersøkes separat; ingen runtime er valgt.
+W3C Recommendation from 2015 available. Assess processor support, data model and distribution license separately; no runtime selected.
 
-## Primærkilder
+## Primary sources
 
-Alle kilder kontrollert 2026-09-10; se katalogens metode for evidens- og lisensbegrensninger.
+All sources checked on 2026-09-10; see the catalogue methodology for evidence and licensing limits. Translation does not refresh these dated findings.
 
 - [W3C SCXML Recommendation](https://www.w3.org/TR/scxml/)

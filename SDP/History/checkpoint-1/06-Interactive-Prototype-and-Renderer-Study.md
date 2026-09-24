@@ -1,8 +1,8 @@
 # Interactive SDL prototype and renderer study
 
-**Avløst implementasjonsretning 2026-09-21:** Go/Fyne og selvstendig SVG-eksport
-er første løp, se [tillegg 07](07-SDUI-0.2-and-Go-Direction.md). XFMD-/renderer-
-studien nedenfor er historisk grunnlag, ikke et aktivt integrasjonsoppdrag.
+**Implementation direction superseded on 2026-09-21:** Go/Fyne and independent
+SVG export are the first track; see [supplement 07](07-SDUI-0.2-and-Go-Direction.md).
+The XFMD/renderer study below is historical evidence, not an active integration assignment.
 
 Date: 2026-09-18  
 Status: owner-proposed direction and candidate design, not an implemented runtime,

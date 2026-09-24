@@ -1,28 +1,28 @@
 # Smithy 2.0
 
-[Katalog](README.md) · Kategori: **Service-/data-IDL** · Research: **2026-09-10**
+[Catalogue](README.md) · Category: **Service/data IDL** · Research: **2026-09-10**
 
-## Formål og abstraksjonsnivå
+## Purpose and abstraction level
 
-Protokolluavhengige service- og datamodeller med shapes, traits og kodegenerering. Har tekstlig IDL og en maskinell modellrepresentasjon.
+Protocol-independent service/data models with shapes, traits and code generation. Textual IDL and machine model representation.
 
-## Modellmekanismer
+## Model mechanisms
 
-Identitet: namespace og shape-ID. Relasjoner: members, operation inputs/outputs og services. Contracts: strukturelle constraints/traits og protokollspesifikke bindings. Utvidelse: custom traits og generators. Views: tooling/projections, ikke en komplett arkitekturmodell.
+Identity: namespace/shape ID. Relations: members, operation inputs/outputs and services. Contracts: structural constraints/traits and protocol bindings. Extension: custom traits/generators. Views: tooling/projections, not complete architecture models.
 
-## Styrker og begrensninger — vår vurdering
+## Strengths and limitations — our assessment
 
-**Styrke:** Førsteklasses shape-identitet og eksplisitte utvidelser er relevante for kontrakter som kan knyttes til FEAT. Mixins viser gjenbruk av modellmedlemmer uten å bestemme klassedesignet i runtime.
+**Strength:** First-class shape identity/explicit extensions support FEAT-linked contracts. Mixins reuse model members without dictating runtime class design.
 
-**Begrensning:** Servicekontrakter dekker ikke feature-ansvar gjennom alle lag. En custom trait får bare maskinell betydning dersom validator/generator håndterer den.
+**Limitation:** Service contracts do not cover feature responsibilities across all layers. Custom traits gain machine meaning only through supporting validators/generators.
 
-## Historikk, endring og transitions
+## History, change and transitions
 
-Serviceversjon og projections må ikke forveksles med en historikk over designbeslutninger. Endrings-/kompatibilitetsregler og stable IDs må kobles til baselines.
+Service versions/projections are not design-decision history. Link change/compatibility rules and stable IDs to baselines.
 
-## Illustrativt eksempel
+## Illustrative example
 
-Illustrativ datashape; ingen service eller valgt transport. Eksemplet er ikke parser-/runtime-testet.
+Data shape, without service or selected transport. The example has not been parser/runtime tested.
 
 ```text
 $version: "2"
@@ -33,14 +33,14 @@ structure Length {
 }
 ```
 
-## Verktøy, vedlikehold og vilkår
+## Tools, maintenance and terms
 
-Offisiell 2.0-dokumentasjon og repository er tilgjengelige. Metadata: Apache-2.0, ikke arkivert. Generatorer/protokoller må velges og versjonspinnes separat.
+Official 2.0 documentation/repository available. Metadata: Apache-2.0, not archived. Select/pin generators/protocols separately.
 
-## Primærkilder
+## Primary sources
 
-Alle kilder kontrollert 2026-09-10; se katalogens metode for evidens- og lisensbegrensninger.
+All sources checked on 2026-09-10; see the catalogue methodology for evidence and licensing limits. Translation does not refresh these dated findings.
 
 - [Smithy IDL](https://smithy.io/2.0/spec/idl.html)
 - [Smithy mixins](https://smithy.io/2.0/spec/mixins.html)
-- [Offisielt repository; metadata kontrollert via GitHub API](https://github.com/smithy-lang/smithy)
+- [Official repository; metadata checked through GitHub API](https://github.com/smithy-lang/smithy)

@@ -1,103 +1,99 @@
-# P04 — Syntese og videre undersøkelse
+# P04 — synthesis and further investigation
 
-**Dato:** 2026-09-10. **Status:** research og anbefalinger; ingen språkbeslutning.
-**Oppdrag:** [#10/P04](https://github.com/Hans-Einar/SDP/issues/10#issuecomment-5618871491).
-**Underlag:** [32 profiler og metode](existingDesignLanguages/README.md).
+**Date:** 2026-09-10. **Status:** research/recommendations, no language decision. **Assignment:** [#10/P04](https://github.com/Hans-Einar/SDP/issues/10#issuecomment-5618871491). **Basis:** [32 profiles and methodology](existingDesignLanguages/README.md).
 
-## Eierens intensjon
+## Owner intent
 
-SDP skal gjøre Features, deres ansvar og pathways synlige gjennom endringer. Architect/Designer skal kunne foreslå et avgrenset design-delta før Workers endrer kode. Eier og Verifier skal kunne se hva som er godkjent, hva som er endret, og hvilke påstander som faktisk er verifisert. Språkvalg, historieformat og de tre foreslåtte Feature-klassene er åpne hypoteser.
+SDP should expose Features, responsibilities and pathways through change. Architects/Designers propose bounded design deltas before Workers change code. Owners/Verifiers see approvals, changes and verified assertions. Language selection, history formats and three proposed Feature classes remain hypotheses.
 
-Erfaringene med SharedUI-drift og store refactorløp er her **eieropplysninger fra P04**, ikke nye verifiserte funn om GrassPhenology, TerrainAnalyzer eller HSX. Ponsse UI-beskrivelsen er et mulig case fra [design discussion #72](https://github.com/Hans-Einar/ponsse/issues/72), ikke en kontrollert beskrivelse av dagens implementasjon.
+SharedUI drift/large refactors are **owner reports from P04**, not newly verified GrassPhenology, TerrainAnalyzer or HSX findings. Ponsse UI is a possible case from [discussion #72](https://github.com/Hans-Einar/ponsse/issues/72), not verified current implementation.
 
-## Hva kartleggingen viser
+## Survey findings
 
-Det finnes allerede byggeklosser for mye av ideen. Et nytt tekstformat er ikke nødvendigvis den største oppgaven; det vanskelige er presis semantikk, identitet, kontroll av kode og en forståelig endringsprosess.
+Existing building blocks cover much of the idea. A new text format may be easier than precise semantics, identity, code checking and understandable change processes.
 
-| Behov | Observerte mekanismer | Hva SDP fortsatt må tilføre |
+| Need | Observed mechanisms | SDP still needs |
 | --- | --- | --- |
-| Flere views fra én modell | Structurizr, LikeC4; modelleringsstandarder som UML/SysML | Hvilket utsnitt en FEAT trenger, hvilken baseline det kommer fra og hva viewet utelater |
-| Ansvar og begrepsgrenser | Context Mapper contexts/aggregates og refactoreringer | Produktets stabile FEAT-identitet og verifisering av faktisk ansvar etter endring |
-| Varianter av et produkt | UVL og Clafer | Skille konfigurasjons-feature fra varig kapabilitet og tidsrevisjon |
-| Eksplisitte kontrakter | OpenAPI, AsyncAPI, Protobuf, Smithy | Consumer-impact, semantiske enheter, leverings-/feilregler og releasekobling |
-| Maskinelle fences | OCL, CUE, Rego og formell analyse | Pålitelig observerte kodefakta og prosessen for godkjente unntak |
-| Modelltransformasjoner | ATL, QVT, Epsilon | Bevaringskrav, identitetsmapping og kontroll av informasjonstap |
-| Historikk/provenance | Edapt change-modeller; PROV-O revision/derivation | Godkjenningsstatus, ansvarsmigrasjon og evidens om produktet |
-| Kravutveksling | ReqIF | Stakeholders/UseCases→REQ→FEAT→verifikasjon→release |
+| Multiple views/one model | Structurizr, LikeC4, UML/SysML | FEAT selections, baseline identity and explicit omissions |
+| Responsibility/concept boundaries | Context Mapper contexts/aggregates/refactoring | Stable FEAT identity and actual responsibility verification |
+| Product variants | UVL, Clafer | Distinguish configuration choices, persistent capabilities and revisions |
+| Explicit contracts | OpenAPI, AsyncAPI, Protobuf, Smithy | Consumer impact, units, delivery/errors and releases |
+| Machine-checkable boundaries | OCL, CUE, Rego, formal analysis | Reliable observed code facts and approved-exception process |
+| Model transformations | ATL, QVT, Epsilon | Preservation, identity mapping and loss checks |
+| History/provenance | Edapt change models, PROV-O revision/derivation | Approval, responsibility migration and product evidence |
+| Requirements interchange | ReqIF | Stakeholder/UseCase→REQ→FEAT→verification→release |
 
-Dette er en funksjonsoversikt, ikke rangering. Begrunnelse og primærkilder finnes i de respektive profilene.
+This is a capability map, not ranking; profiles provide rationale/primary sources.
 
-Tre funn fortjener særlig oppmerksomhet:
+1. [Context Mapper](existingDesignLanguages/context-mapper-cml.md) already splits bounded contexts by use cases/stories and merges contexts. Useful precedent for responsibility changes; valid resulting CML does not prove preserved program behavior.
+2. [Edapt](existingDesignLanguages/edapt.md) provides explicit operation history/model migration; [Epsilon](existingDesignLanguages/epsilon.md) adds matching/transformation/validation. Not all transition infrastructure needs reinvention.
+3. [Structurizr](existingDesignLanguages/structurizr-dsl.md) and [LikeC4](existingDesignLanguages/likec4.md) demonstrate practical textual model→viewpoints. No mechanism alone proves complete FEAT pathways/release readiness.
 
-1. [Context Mapper](existingDesignLanguages/context-mapper-cml.md) har allerede refactoreringer som deler bounded contexts etter use cases/user stories, samt merge-operasjoner. Det er et nært forbildet for å studere ansvar gjennom endring. Korrekt CML etter operasjonen er likevel ikke bevis på bevart programatferd.
-2. [Edapt](existingDesignLanguages/edapt.md) beskriver eksplisitt operasjonshistorikk og migrasjon av modellinstanser. [Epsilon](existingDesignLanguages/epsilon.md) tilfører matching, transformasjon og validering. Dette utfordrer antakelsen om at all transition-infrastruktur må oppfinnes fra grunnen.
-3. [Structurizr](existingDesignLanguages/structurizr-dsl.md) og [LikeC4](existingDesignLanguages/likec4.md) viser at tekstlig modell→flere viewpoints er praktisk tilgjengelig. Ingen dokumentert mekanisme her alene beviser komplette FEAT-pathways eller release-readiness.
+## Four kinds of change
 
-## Fire forskjellige former for endring
-
-| Form | Eksempel | Må ikke forveksles med |
+| Kind | Example | Not equivalent to |
 | --- | --- | --- |
-| Runtime-transition | En handling endrer UI-/domenetilstand | Endring av arkitektur over commits |
-| Produktvariant | WebUI eller DesktopUI velges | Før/etter-revisjon av samme produkt |
-| Modell-/schema-evolusjon | En type eller ansvarsgrense deles | Bevis på at programmet migreres korrekt |
-| Levert produktendring | En bruker får endret funksjonalitet i en bestemt build | At et issue eller en PR er lukket |
+| Runtime transition | Action changes UI/domain state | Architecture evolution across commits |
+| Product variant | Select WebUI/DesktopUI | Before/after revision |
+| Model/schema evolution | Split type/responsibility | Correct product migration evidence |
+| Delivered product change | User receives changed behavior in identified build | Closed issue/PR |
 
-SCXML history og temporal støtte i Alloy/TLA+ løser andre problemer enn Git-historikk. Protobufs feltidentitet beskytter deler av kontraktevolusjonen, mens PROV-O kan uttrykke avledning. Vi bør kombinere disse ideene ut fra behov fremfor å kalle alt «history».
+SCXML history and Alloy/TLA+ temporal support solve different problems from Git. Protobuf field identity supports contract evolution; PROV-O expresses derivation. Combine by need rather than call everything history.
 
-En **anbefalt undersøkelseshypotese** er stabil designobjekt-ID + eksplisitte modellrevisjoner + separat transition-beskrivelse. Git kan lagre materialet; semantikken må si om ansvar er bevart, flyttet, splittet, slått sammen, erstattet eller ikke kartlagt. Ikke all historie trenger å ligge i hvert enkelt featureobjekt.
+**Recommended hypothesis:** stable design IDs + explicit model revisions + separate transition descriptions. Git stores data; semantics explain preserved/moved/split/merged/replaced/unmapped responsibility. Avoid embedding all history in every Feature.
 
-Godkjent baseline, foreslått design og observert implementasjon bør være separate tilstander. Et generert blueprint bør kunne identifisere modellrevisjon, generatorversjon og utsnittsregler. Et grønt blueprint er ikke tilstrekkelig dersom kodeinventaret mangler en dependency.
+Separate approved baselines, proposals and observed implementations. Blueprints identify model revisions, generator versions and selection rules. Passing blueprint checks are insufficient if code inventories omit dependencies.
 
-## Utfordring av Feature-/Refactor-taksonomien
+## Challenge the Feature/Refactor taxonomy
 
-**Anbefaling til neste sammenligning:** prøv kategoriene som uavhengige dimensjoner før de gjøres til en typehierarki.
+**Recommendation:** trial independent dimensions before a type hierarchy:
 
-- **Kapabilitet/Feature:** hva systemet skal kunne gjøre og for hvem, med REQ og akseptkriterier.
-- **Designobjekt:** en ansvarsenhet, et lag, en kontrakt, en implementeringsbinding eller en beslutning som realiserer kapabiliteter.
-- **Endringsobjekt:** hvorfor og hvordan noe endres, hvilke objekter som berøres og hvilke egenskaper som skal bevares.
-- **Klassifikasjon:** domain, design og architecture kan tagge ansvar/endringsomfang; en endring kan ha flere av dem.
+- Capability/Feature: what the system does, for whom, with REQ/acceptance.
+- Design object: responsibility, layer, contract, implementation binding or decision realizing capabilities.
+- Change object: why/how changes occur, affected objects and preservation requirements.
+- Classification: domain/design/architecture tags may overlap in one change.
 
-«Distribuerbarhet» kan være et kvalitetskrav eller en kapabilitet, mens socket-valget kan være en arkitekturbeslutning med kontraktskonsekvenser. En ny renderer kan realisere et nytt brukerbehov eller bare endre implementasjonen. Det avgjøres av intensjon og observerbar atferd, ikke rollenavnet.
+Distributability may be quality/capability; sockets may be architecture decisions with contract effects. New renderers may satisfy new needs or merely replace implementation. Intent/observable behavior decides, not role names.
 
-Refactor bør ha eksplisitte bevaringskrav. Hvis brukeratferd endres samtidig, må den funksjonelle endringen være synlig. Architecture→design→domain kan være en planleggingsretning, men gjennomføring bør følge dependencies og migrasjonsrisiko; en liten vertikal overgang kan gi bedre læring enn tre store sekvensielle omskrivinger.
+Refactors require preservation criteria; simultaneous behavior changes must be explicit. Architecture→design→domain can guide planning, but implementation follows dependencies/migration risk. Small vertical transitions may teach more than three large rewrites.
 
-«Domain» er et godt fagbegrep, men det bør ikke bindes én-til-én til prosess. Skill begrepsområdet, bounded context, logisk komponent/container og deployert prosessinstans. Namespace/package og source-folder er implementeringsbindinger til slike grenser. Et lag bør også kunne inneholde flere tydelige ansvarsenheter; lagdeling alene hindrer ikke en stor, uoversiktlig fil.
+Domain is not one-to-one with processes. Distinguish conceptual domain, bounded context, logical component/Container and deployed process instance. Namespaces/packages/folders bind implementations. Layers can contain multiple responsibilities; layering alone does not prevent large tangled files.
 
-Interfaces og komposisjon kan være designregler uten å kreve klasser eller arv. [Smithy mixins](existingDesignLanguages/smithy.md) illustrerer gjenbruk i en modell, men er ikke et argument for runtime-mixins. Modellen bør angi tillatte avhengigheter og kontrakter fremfor å gjøre ett programmeringsparadigme universelt.
+Interfaces/composition need not imply classes/inheritance. [Smithy mixins](existingDesignLanguages/smithy.md) illustrate model reuse, not a case for runtime mixins. Specify contracts/dependencies rather than universal programming paradigms.
 
-## Contracts, gjenbruk og release-spor
+## Contracts, reuse and release traceability
 
-En senere modell må kunne skille kontraktsform fra kontraktsmening: type/schema, enhet, command/event-retning, ordering, levering, feil, timeout, idempotens og kompatibilitetsregler. For UI-caset må også eierskap/livstid for representations, flere presentasjoner av samme instans, abonnement/avmelding og ubehandlede events avklares. Hint/lokalisering er ikke det samme som domenets identitet. En test-renderer kan verifisere meldingsløp, men erstatter ikke alle tester av en faktisk web- eller desktop-adapter.
+Separate contract shape from meaning: types/schemas, units, command/event direction, ordering, delivery, failures, timeouts, idempotency and compatibility. UI needs representation ownership/lifetime, multiple presentations per instance, subscribe/unsubscribe and unhandled-event rules. Hints/localization differ from domain identity. Test renderers check messaging but do not replace all real web/desktop adapter tests.
 
-Bibliotekbindinger bør kunne angi package, tillatt versjon/kontrakt, implementeringsspråk, source-område og beslutning om reuse/adapt/build-new. Et modellfelt alene hindrer ikke SharedUI-drift: et uavhengig kodeinventar må kontrollere faktiske imports og eventuell duplisering. Go er en eierpreferanse, ikke et generelt SDP-krav. Gjenbruk bør begrunnes i reelle behov og kontrakter fremfor spekulative universalabstraksjoner.
+Library bindings should identify packages, permitted versions/contracts, implementation language, source areas and reuse/adapt/build-new decisions. Model fields alone cannot prevent SharedUI drift: independently inspect imports/duplication. Go is an owner preference, not universal SDP policy. Justify reuse by actual needs/contracts, not speculative abstractions.
 
-Traceability må nå frem til det som faktisk er levert. En **anbefalt hypotese** for senere gh-sdp-arbeid er et release-manifest med stabil FEAT-ID, levert revisjon/variant, brukerrettet endringsbeskrivelse, kontraktsversjoner, verifikasjonsreferanser, commit og identifisert build-artefakt. PR/issue er støttelenker, ikke release-notes-authority.
+Traceability must reach actual deliveries. A **future gh-sdp hypothesis** is a release manifest with stable FEAT ID, revision/variant, user-facing changes, contract versions, verification references, commit and build artifact. PRs/issues support it; they do not own release-note truth.
 
-Et slikt manifest må håndtere delvis levert Feature, superseded arbeid, backports, features som går over flere releases og implementert kode som ennå ikke er eksponert for brukeren. CodeReview og interne refactoroppgaver trenger ikke automatisk en brukerrettet release-note, men må fortsatt kunne spores til endringen de kontrollerer. Ingen gh-sdp-funksjonalitet implementeres i P04.
+Handle partial Features, superseded work, backports, multi-release Features and implemented-but-unexposed code. Reviews/internal refactors need traceability without automatic user-facing release notes. P04 implements no gh-sdp feature.
 
-## Vesentlige åpne spørsmål
+## Significant open questions
 
-1. Hva er minste autoritative designobjektsett, og hvilke identiteter skal overleve rename/split/merge?
-2. Hva er det presise kriteriet for bevart Feature-atferd, inkludert kvalitetskrav?
-3. Er pathway en tillatt strukturell rute, et runtime-scenario eller begge med forskjellige relasjonstyper?
-4. Hvordan registreres overgangstilstander, kompatibilitetsvinduer, rollback og ufullstendig mapping?
-5. Hvordan hentes observerte kodefakta uavhengig av modellforfatter/Worker, og hvordan vises usikkerhet?
-6. Hvilke kontroller er syntaktiske, semantiske, statiske kodekontroller, runtime-tester eller faglig review?
-7. Hvordan holdes små prosjekter lette, og hva er maksimal kostnad for modellvedlikehold og genererte viewpoints?
-8. Hvem kan endre authority, og når må en Worker stoppe fremfor å «fikse» modellen for å få grønt resultat?
+1. Minimum authoritative objects and identities surviving rename/split/merge?
+2. Precise preserved-Feature behavior, including quality?
+3. Pathway as allowed route, runtime scenario or distinct types for both?
+4. Transition states, compatibility windows, rollback and partial mappings?
+5. Independent observed code facts and visible uncertainty?
+6. Which checks are syntax, semantics, static analysis, runtime or substantive review?
+7. Lightweight small projects and bounded model/view maintenance cost?
+8. Change authority and Worker stop conditions instead of changing models to pass?
 
-Modellen bør være en begrenset beskrivelse av ansvar og kontrakter, ikke en kopi av hver klasse og kodelinje. Arkitekt-/designer-skills, Worker-skills og uavhengig verifikasjon trenger samme identifiserte oppdragsgrunnlag. Rework-budsjett, stoppkriterier og eskalering må ligge i arbeidsprosessen; en DSL kan bære disse opplysningene, men kan ikke alene stoppe agentløkker.
+Models should bound responsibilities/contracts, not copy every class/line. Architect/Designer/Worker skills and independent verification share identified assignments. Rework budgets, stops and escalation belong to process; DSLs can carry them but cannot alone prevent agent loops.
 
-## Neste bounded assignment — forslag, ikke startet
+## Next bounded assignment — proposed, not started
 
-**Formål:** sammenligne representasjon av én liten endring; ikke velge/fryse språk.
+**Purpose:** compare one small change representation without selecting/freezing language.
 
-**Input:** en separat bekreftet beskrivelse av dagens MVP1-UI og ett foreslått delta fra #72. Bruk én output-kapabilitet og én input-action, én kontrakt og maksimalt seks ansvarsenheter. Dersom dagens design ikke er verifisert, bruk et tydelig hypotetisk case fremfor å erklære det som baseline.
+**Input:** separately confirmed current MVP1 UI and one #72 delta, with one output capability, one input action, one contract and at most six responsibility units. If current design is unverified, use a labeled hypothetical case.
 
-**Tre kontrasterende spor:** (A) en eksisterende arkitektur-DSL som Structurizr eller LikeC4, (B) CML eller SysML som semantisk modell, (C) en liten eksplisitt JSON/CUE-modell med refererte kontrakter. Før utføring velges ett konkret verktøy i A/B og versjon/lisens avklares. Dette er forsøksspor, ikke shortlist med vedtatt vinner.
+**Tracks:** A: Structurizr/LikeC4-style architecture DSL; B: CML/SysML semantic model; C: small JSON/CUE model with referenced contracts. Select concrete tools/versions/terms first. These are experiments, not an approved shortlist winner.
 
-**Leveranse:** samme baseline og foreslåtte endring i tre spor; FEAT→REQ→ansvar→contract-view, før/etter-ansvarsmapping og et Worker-/Verifier-utsnitt. Registrer hvilke begreper som er native, metadata-konvensjon eller krever egen kode. Test rename og ett split/move, en brutt referanse og en forbudt dependency. Vis også hva verktøyet ikke oppdager. Sammenlign redigeringsmengde, informasjonstap, eierlesbarhet og integrasjonskostnad.
+**Delivery:** same baseline/delta in all tracks; FEAT→REQ→responsibility→contract view, before/after mappings and Worker/Verifier selections. Identify native concepts, metadata conventions and custom code. Trial rename, split/move, broken references and forbidden dependencies, including undetected failures. Compare edits, information loss, owner readability and integration cost.
 
-**Grenser:** ingen produktkode, ingen full Concept1→MVP1-mapping, ingen generell compiler eller skill. Maksimalt én reparasjonsrunde per spor; ved fortsatt verktøyproblem registreres hindringen i stedet for en åpen Worker/Verifier-løkke. Stopp etter sammenligning og owner-review av resultatet.
+**Limits:** no product code, full Concept1→MVP1 map, general compiler or skill. At most one repair round per track; record unresolved tool issues rather than endless Worker/Verifier loops. Stop after comparison and owner review.
 
-Concept1→MVP1 kan senere brukes som stresstest med eksplisitt delvis ekvivalens. At modellen virker for MVP1 er ikke bevis på universell anvendelighet; et lite prosjekt og et annerledes kontrakts-/deploymentmønster bør etter hvert prøves.
+Later, Concept1→MVP1 can stress-test explicit partial equivalence. MVP1 success does not prove universal suitability; eventually trial a small project and different contract/deployment pattern.

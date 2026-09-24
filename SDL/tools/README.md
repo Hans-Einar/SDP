@@ -1,23 +1,15 @@
-# SDL-verktøy — Go-inngangen
+# SDL tools — Go entry point
 
-Python-CLI/projektorer er erstattet i G5-M4 etter fryste portprøver. Det finnes
-én aktiv frontend for design-core 0.5 og én viewpointprojektor, i [Go-modulen](../go/README.md).
-Historisk Python-kode finnes i Git før G5-M4, ikke som fallback i arbeidstreet.
+G5-M4 replaced Python CLI/projectors after frozen port comparisons. One design-core 0.5 frontend and one viewpoint projector remain in the [Go module](../go/README.md). Historical Python code is in Git before G5-M4, not a working-tree fallback.
 
-Fra SDP-roten:
+From the SDP root:
 
 ```sh
-go -C SystemDesignLanguage/go run ./cmd/sdl check ../../SDUI/design/architecture.design
-go -C SystemDesignLanguage/go run ./cmd/sdl viewpoints ../../SDUI/design/architecture.design --format static --monolithic --output ../../SDUI/design/viewpoints --renderer /absolute/mmdr
-go -C SystemDesignLanguage/go run ./cmd/sdl viewpoints ../../SDUI/design/architecture.design --output ../../SDUI/design/navigation --project sdui
+go -C SDL/go run ./cmd/sdl check ../../SDUI/design/architecture.design
+go -C SDL/go run ./cmd/sdl viewpoints ../../SDUI/design/architecture.design --format static --monolithic --output ../../SDUI/design/viewpoints --renderer /absolute/mmdr
+go -C SDL/go run ./cmd/sdl viewpoints ../../SDUI/design/architecture.design --output ../../SDUI/design/navigation --project sdui
 ```
 
-Standardeksport gir navigator/overview uten detaljrendering. Statisk eksport
-lager separate viewpointkataloger og en valgfri samlet fil. --renderer velger
-registrert mmdr; uten flagget beholdes portable Mermaid-blokker. SVG-symbolprofilen
-bruker faste aktør-/use-case-/Feature-figurer og eksplisitte kildelenker.
+Default export creates navigator/overview without detailed rendering. Static export creates viewpoint directories and an optional combined file. --renderer selects registered mmdr; otherwise portable Mermaid blocks remain. SVG uses consistent actor/use-case/Feature symbols and explicit source links.
 
-[Utvalg/IPC/leases](../go/README.md), [G6-bevis](../go/evidence/G6.md),
-[abstraksjonsnivåer/notasjon](../docs/integration/SDL-Viewpoint-Levels-and-Notation.md).
-Dataset/database er logiske kilder til data; database betyr ikke nødvendigvis SQL.
-Mode er allokerings-/driftskontekst. Egen State-maskin er ikke vedtatt i design-core.
+[Selection/IPC/leases](../go/README.md), [G6 evidence](../go/evidence/G6.md), [abstraction levels/notation](../docs/integration/SDL-Viewpoint-Levels-and-Notation.md). Dataset/database are logical data sources; database does not necessarily mean SQL. Mode is allocation/operating context. A separate State machine is not adopted in design-core.

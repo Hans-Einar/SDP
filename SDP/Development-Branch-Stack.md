@@ -1,105 +1,81 @@
-# SDL/SDUI — fasebrancher og milepælcommits
+# SDL/SDUI — phase branches and milestone commits
 
-Eierbeslutning 2026-09-22: én branch per fase, stablet på forrige fase, og
-egne commits ved fullførte milepæler. Push til origin etter hver fullført fase
-er autorisert i samme sesjon. Samlet PR skal ha `sdp-vNow` som base.
-Utgangspunktet er `9ad432407004080dd7f4f0ab06d107523f4316fd`.
+Owner decision, 2026-09-22: one branch per phase, stacked on its predecessor, and
+separate commits for completed milestones. Push after each completed phase is
+authorized in the same session. Combined PR base: sdp-vNow, originally
+9ad432407004080dd7f4f0ab06d107523f4316fd.
 
-| Fasebranch | Forelder | Milepæler |
+| Phase branch | Parent | Milestones |
 | --- | --- | --- |
-| `sdl-sdui/phase-baseline` | `sdp-vNow` | B0-M1: samle eksisterende SDUI 0.2-prototype, eksempler, bevis og Go-retning; etablere Git-arbeidsmåten |
-| `sdl/phase-v1-viewpoints` | `sdl-sdui/phase-baseline` | V1-M1: språk/AST/validering; V1-M2: verktøyprojeksjoner; V1-M3: felles modell, generert utskrift og checkpoint |
-| `sdl/phase-v2-data-contracts` | `sdl/phase-v1-viewpoints` | V2-M1: data-/wireprofil; V2-M2: VP09/VP10; V2-M3: verifisert prøve og fasepush |
-| `sdl/phase-v3-channels` | `sdl/phase-v2-data-contracts` | V3-M1: kontraktkontrollerte scenarioer; V3-M2: sekvens og MessageSet; V3-M3: renderbevis og fasepush |
-| `sdl/phase-v4-integrated-design` | `sdl/phase-v3-channels` | V4-M1: G1–G5 som SDL; V4-M2: generert implementasjonsrapport; V4-M3: samlet eksport, checkpoint, fasepush og PR |
-| `sdl/phase-g6-navigation-design` | `sdl/phase-v4-integrated-design` | G6-D1: navigasjon og scenarioer; G6-D2: navigator-only, abstraksjonsnivåer og notasjon; G6-M1–M6 fortsatt planlagt |
-| `sdui/phase-g1-frontend` | `sdl/phase-g6-navigation-design` | G1-M1: parser/AST; G1-M2: lokal semantikk; G1-M3: porterte eksporter |
+| sdl-sdui/phase-baseline | sdp-vNow | B0-M1: existing SDUI 0.2 prototype/examples/evidence/Go direction and Git workflow |
+| sdl/phase-v1-viewpoints | sdl-sdui/phase-baseline | M1 language/AST/validation; M2 projections; M3 shared model/export/checkpoint |
+| sdl/phase-v2-data-contracts | sdl/phase-v1-viewpoints | M1 data/wire profile; M2 VP09/VP10; M3 verified example/push |
+| sdl/phase-v3-channels | sdl/phase-v2-data-contracts | M1 checked scenarios; M2 sequences/MessageSets; M3 rendering/push |
+| sdl/phase-v4-integrated-design | sdl/phase-v3-channels | M1 G1–G5 in SDL; M2 implementation report; M3 export/checkpoint/push/PR |
+| sdl/phase-g6-navigation-design | sdl/phase-v4-integrated-design | D1 navigation/scenarios; D2 navigation-only, levels/notation; M1–M6 planned at that point |
+| sdui/phase-g1-frontend | sdl/phase-g6-navigation-design | M1 parser/AST; M2 semantics; M3 ported exports |
 
-De første to fasene samler arbeid som allerede var utført lokalt. Dette er en
-bevisst etterregistrering, ikke en påstand om at gamle økter hadde disse commit-
-grensene. V0-generatoren og V1-utvidelsen var allerede utviklet i de samme filene;
-de registreres samlet på V1-branchen. Ingen hypotetisk tidligere V0-kode bygges
-opp for å skape en mer detaljert historie enn kildegrunnlaget tillater.
+The first two phases deliberately record already-completed local work retrospectively;
+they do not claim earlier sessions had these commit boundaries. V0/V1 already shared
+files and are recorded together on V1. No hypothetical old V0 version was reconstructed.
+Baseline preserves SDUI and its direction; some links point forward to V1. V1 milestones
+separate language, consumer and validated example/evidence; its head is the combined review.
 
-Baseline bevarer eksisterende SDUI-kode og dens dokumenterte retning. Enkelte
-plan-/dokumentlenker peker fram til SDL-leveransen som følger på V1-branchen.
-De tre V1-milepælene er henholdsvis språkgrunnlag, konsument og validert eksempel
-med bevis; fasehodet er den samlede leveransen som skal gjennomgås.
+From V2, milestones were followed as work proceeded. Check scope, tests and generated
+artifacts before each commit; create the phase branch before changes and commit only
+completed deliveries. [V2–V4 scope](History/checkpoint-1/08-SDL-Viewpoints-and-Implementation-Status.md),
+[Go phases](../SDUI/docs/implementation-plan.md).
 
-Fra V2 følger arbeidet milepælene fortløpende. Før hver commit kontrolleres
-avgrensningen, relevante tester og genererte artefakter. Fasebranch opprettes
-før første endring i fasen; bare fullførte milepæler får leveransecommits.
-V2/V3/V4s faglige omfang står i
-[checkpointets implementasjonsplan](History/checkpoint-1/08-SDL-Viewpoints-and-Implementation-Status.md).
-Go-arbeidet følger fortsatt G-fasene i [SDUI-planen](../SDUI/docs/implementation-plan.md).
+Use the last completed phase as PR head against sdp-vNow. Preserve milestone commits;
+do not squash, delete phase branches or rewrite history as automatic cleanup.
 
-Ved samlet PR brukes siste ferdige fasebranch som head og `sdp-vNow` som base.
-Milepælcommits skal bevares ved integrasjon; ikke squash dem til én commit.
-Branchene slettes eller historikken omskrives ikke som automatisk opprydding.
+| Implementation phase | Pushed head / branch | Predecessor |
+| --- | --- | --- |
+| G1 | ca5aa91 — sdui/phase-g1-frontend | G6 design |
+| G2 | 6a4d968 — sdui/phase-g2-presentation | G1 |
+| G3 | d29a48f — sdui/phase-g3-runtime | G2 |
+| G4 | d5430f0 — sdl/phase-g4-runtime | G3 |
+| G6 | 1d52677 — sdl/phase-g6-navigation | G4 |
+| G5 | sdl-sdui/phase-g5-codegen; final M4 32fadca | G6 |
 
-G2-implementasjonen fortsetter fra G1 på `sdui/phase-g2-presentation`.
-Milepælbevis: `SDUI/go/evidence/G2.md`.
+G6 precedes G5 because G5-M3 consumes navigation. XFMD consumer changes are isolated
+in its PR #38; at that delivery both stacks were pushed, not merged. G5 comprises M1
+constructors, M2 execution parity, M3 reproducible documents and M4 port cleanup/checkpoint.
+The combined PR then used G5's head. No merge was part of delivery.
 
-G3 fortsetter fra ferdig G2 (`6a4d968`) på `sdui/phase-g3-runtime`.
+G7 follows 32fadca on sdl/phase-g7-launch. M1 provides source-based browsing through a
+prebuilt-tool launcher, as a separate startup follow-up.
 
-G4 fortsetter fra ferdig G3 (`d29a48f`) på `sdl/phase-g4-runtime`.
+K1 follows G7 d03eb78 on sdp/phase-k1-kanban. M1 establishes project boards, append-only
+history and owner proposals. [Plan/evidence](Agents/KanBan/completed/%23007--Change--KanBan-foundation.md).
+At that point repository/template migration, sdptool, Traceability extensions and new
+SDL keywords remained backlog.
 
-G6 implementeres fra ferdig G4 (`d5430f0`) på `sdl/phase-g6-navigation`,
-før G5 fordi dokumentgenereringen i G5-M3 konsumerer G6-M1.
+K2 follows bb3728c on sdp/phase-k2-readable-metadata. M1 replaces YAML frontmatter with
+visible tables. [Evidence](Agents/KanBan/completed/%23008--Change--Visible-card-metadata.md)
+separates format changes from unchanged ledger/language contracts.
 
-G6 er fullført på `1d52677`. G5 følger på `sdl-sdui/phase-g5-codegen`.
-XFMDs nødvendige konsumentendringer er isolert i PR #38 i XFMD-repoet;
-SDP- og XFMD-branchene er pushet, ikke merget.
+K3 follows 321e193 on sdp/phase-k3-card-lineage. M1 defines full/partial merges/splits
+with typed lineage in payload 0.2, informed by XFMD's local proposal.
+[Plan/evidence](Agents/KanBan/completed/%23009--Change--Card-merge-and-split.md).
 
+R1 follows 431e47e on sdp/phase-r1-repository-organization. M1 d269bc7 inventories ownership
+and activates KB-SDP-001; M2 f42859e gathers templates/project records; M3 f722dc2 gathers
+SDL/document entry points with verification. [Plan](Maintenance/R1/Plan.md),
+[evidence](Maintenance/R1/Evidence.md), [migration map](Maintenance/R1/Migration-map.json)
+separate physical cleanup from pending profile/editorial work.
 
-| Implementasjonsfase | Pushet fasehode / branch |
-| --- | --- |
-| G1 | ca5aa91 — sdui/phase-g1-frontend |
-| G2 | 6a4d968 — sdui/phase-g2-presentation |
-| G3 | d29a48f — sdui/phase-g3-runtime |
-| G4 | d5430f0 — sdl/phase-g4-runtime |
-| G6 | 1d52677 — sdl/phase-g6-navigation |
-| G5 | sdl-sdui/phase-g5-codegen; siste commit er G5-M4 |
+K4 follows f722dc2 on sdp/phase-k4-card-history. M1 1713778 adds
+[worklogs/Git history](Agents/KanBan/completed/%23012--Change--Card-history.md);
+integrated tooling/graph remained backlog.
 
-G5 har M1 konstruktører, M2 kjøreparitet, M3 reproduserbar dokumentasjon og M4
-portopprydding/checkpoint. Samlet PR bruker G5-hodet mot sdp-vNow. Opprinnelige
-fasebrancher og milepælcommits beholdes. Ingen merge er en del av leveransen.
+R2 follows 1713778 on sdp/phase-r2-document-consolidation. Its
+[plan](Maintenance/R2/Plan.md) activates KB-SDP-010 for authority/status conflicts,
+without new language/installation rules. M1 68ba33e records ten conflicts; M2 918fa46
+resolves them and consolidates runtime boundaries/SDUI entry points with CLI/link checks.
+At R2 completion KB-SDP-010 remains active for candidate/process harmonization;
+phase/template profile and registry remain in KB-SDP-001.
 
-G7 følger fra G5-M4 (`32fadca`) på `sdl/phase-g7-launch`. G7-M1 gjør
-kildebasert dokumentbrowsing tilgjengelig med ett launch-script som bruker
-ferdigbygde programmer. Det er en separat oppfølging av brukerens oppstartsbehov.
-
-K1 følger fra G7-M1 (`d03eb78`) på `sdp/phase-k1-kanban`. K1-M1 etablerer
-prosjekttavler, append-only KanBan-historikk og registrering av eierens nyere
-forslag. [Milepælplan og kontrollbevis](Agents/KanBan/completed/%23007--Change--KanBan-foundation.md)
-ligger sammen med leveransekortet. Større repo-/Template-migrering, sdptool,
-Traceability-utvidelser og nye SDL-keywords er fortsatt backlog, ikke levert kode.
-
-K2 følger fra K1-M1 (`bb3728c`) på `sdp/phase-k2-readable-metadata`. K2-M1
-viser kortmetadata som Markdown-tabeller i stedet for YAML-frontmatter.
-[Milepæl og kontrollbevis](Agents/KanBan/completed/%23008--Change--Visible-card-metadata.md)
-bevarer skillet mellom dokumentformat og uendrede ledger-/språkkontrakter.
-
-K3 følger fra K2-M1 (`321e193`) på `sdp/phase-k3-card-lineage`. K3-M1 beskriver
-full/delvis sammenslåing og splitting med typet opphav i ledger-payload 0.2.
-[Plan og kontrollbevis](Agents/KanBan/completed/%23009--Change--Card-merge-and-split.md)
-ligger i leveransekortet; XFMDs lokale forslag brukes som lest grunnlag.
-
-R1 følger fra K3 (`431e47e`) på `sdp/phase-r1-repository-organization`.
-M1 (`d269bc7`) kartlegger eierskap og aktiverer KB-SDP-001; M2 (`f42859e`)
-samler maler/prosjektrecords; M3 samler SDL og dokumentinnganger med verifikasjon.
-[Plan](Maintenance/R1/Plan.md), [bevis](Maintenance/R1/Evidence.md) og
-[flyttematrise](Maintenance/R1/Migration-map.json) skiller fysisk opprydding fra
-fortsatt planlagt faseprofil og redaksjonell konsolidering.
-
-K4 følger fra R1 (`f722dc2`) på `sdp/phase-k4-card-history`. K4-M1 leverer
-[arbeidslogg og Git-historikk](Agents/KanBan/completed/%23012--Change--Card-history.md)
-for aktive kort; integrert verktøy og graf er fortsatt backlog.
-
-R2 følger fra K4 (`1713778`) på `sdp/phase-r2-document-consolidation`.
-[R2-planen](Maintenance/R2/Plan.md) aktiverer KB-SDP-010 for dokumentautoritet
-og kartlagte statuskonflikter; ingen nye språk-/installasjonsregler vedtas.
-R2-M1 (`68ba33e`) aktiverer kortet og registrerer ti konflikter. R2-M2 behandler
-disse, konsoliderer runtimegrensen og SDUI-dokumentkartet med CLI-/lenkekontroller.
-KB-SDP-010 forblir active for videre kandidat-/prosessharmonisering; fase-/malprofil
-og prosjektregister tilhører fortsatt KB-SDP-001.
+L1 follows 918fa46 on sdp/phase-l1-english-documentation: M1 English policy/boards,
+M2 maintained narrative documentation, M3 generator language and regenerated outputs.
+[Plan](Maintenance/L1/Plan.md) records verification and the subsequent CardState work.

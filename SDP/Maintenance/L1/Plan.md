@@ -17,11 +17,13 @@ records and explanatory prose are English. Intentional localized UI strings are
 example data, not an alternative documentation language. Generated artifacts are
 changed only by rebuilding from translated generator text.
 
-A local translation model assists with long prose; no document text is sent to a
-translation service. Critical policy, active cards and technical boundaries are
-reviewed directly. Original revisions remain in Git. A source/hash inventory
+Local translation models were evaluated but their drafts were not adopted; the
+translation was written and reviewed directly. No document text was sent to an
+external translation service. Original revisions remain in Git. A source/hash inventory
 records translated narrative snapshots without rewriting their old machine evidence.
 
 After L1, K5 adds a simple CardState convention and shell listing/installer.
 Then R3 resolves the remaining KB-SDP-001/010 deliverables or presents concrete
 choices for owner gate review. These later phases do not delay English policy.
+
+L1-M1 and L1-M2 are complete. L1-M3 is next: generator strings and current outputs.

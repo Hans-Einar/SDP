@@ -1,28 +1,28 @@
 # Universal Variability Language (UVL)
 
-[Katalog](README.md) · Kategori: **Feature-/variabilitetsmodell** · Research: **2026-09-10**
+[Catalogue](README.md) · Category: **Feature/variability model** · Research: **2026-09-10**
 
-## Formål og abstraksjonsnivå
+## Purpose and abstraction level
 
-Beskriver programvareproduktlinjer: tillatte kombinasjoner av features, grupper, attributter og constraints.
+Software product lines: allowed combinations of features, groups, attributes and constraints.
 
-## Modellmekanismer
+## Model mechanisms
 
-Identitet: navngitte features med hierarki/referanser. Relasjoner: obligatorisk, valgfritt, alternative grupper og constraints. Contracts: konfigurasjonsbetingelser, ikke tjeneste-API. Views: featuretre/analyser via verktøy. Maskinell parsing og analyse; språkets støttede nivå må avklares per verktøy.
+Identity: named features/hierarchy/references. Relations: mandatory, optional, alternative groups and constraints. Contracts: configuration conditions, not service APIs. Views: feature trees/tool analyses. Machine parsing/analysis; establish supported language level per tool.
 
-## Styrker og begrensninger — vår vurdering
+## Strengths and limitations — our assessment
 
-**Styrke:** Kan undersøke om varianter som WebUI og DesktopUI kan velges konsistent med øvrige kapabiliteter.
+**Strength:** Can check whether WebUI/DesktopUI variants are selectable consistently with other capabilities.
 
-**Begrensning:** Feature betyr et konfigurasjonsvalg. Det er ikke automatisk den varige REQ-koblede SDP-kapabiliteten eller en implementeringspathway.
+**Limitation:** Feature means a configuration choice, not automatically a persistent requirement-linked SDP capability or implementation pathway.
 
-## Historikk, endring og transitions
+## History, change and transitions
 
-En produktvariant er ikke en tidsrevisjon. Evolusjon av featuremodellen, identitet ved omdøping og migrasjon av lagrede konfigurasjoner krever ekstra regler og versjonering.
+Product variants are not time revisions. Feature-model evolution, rename identity and saved-configuration migration need additional rules/versioning.
 
-## Illustrativt eksempel
+## Illustrative example
 
-Illustrativ UVL-variantstruktur. Ingen påstand om at Ponsse skal ha akkurat én UI-variant. Eksemplet er ikke parser-/runtime-testet.
+UVL variant structure; no claim that Ponsse needs exactly one UI variant. The example has not been parser/runtime tested.
 
 ```text
 features
@@ -32,13 +32,13 @@ features
             DesktopUI
 ```
 
-## Verktøy, vedlikehold og vilkår
+## Tools, maintenance and terms
 
-Offisiell språkside og parser finnes. Parserrepositoryet er ikke arkivert og metadata oppgir LGPL-3.0. Lisensen gjelder parseren, ikke automatisk alle UVL-verktøy.
+Official language site/parser available. Parser repository not archived; metadata lists LGPL-3.0. This license covers the parser, not every UVL tool.
 
-## Primærkilder
+## Primary sources
 
-Alle kilder kontrollert 2026-09-10; se katalogens metode for evidens- og lisensbegrensninger.
+All sources checked on 2026-09-10; see the catalogue methodology for evidence and licensing limits. Translation does not refresh these dated findings.
 
-- [UVL språk og økosystem](https://universal-variability-language.github.io/)
-- [Offisielt repository; metadata kontrollert via GitHub API](https://github.com/Universal-Variability-Language/uvl-parser)
+- [Primary documentation](https://universal-variability-language.github.io/)
+- [Official repository; metadata checked through GitHub API](https://github.com/Universal-Variability-Language/uvl-parser)

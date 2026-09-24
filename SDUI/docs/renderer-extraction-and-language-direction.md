@@ -1,144 +1,127 @@
-# SDUI — worktrees, uttrekk og ny språkretning
+# SDUI — worktrees, extraction and language direction
 
-**Historisk worktree-kart:** Kontroller og råd nedenfor er datert 19.–20. september.
-Fra 21. september er Go/Fyne og selvstendig SVG valgt; se
-[målarkitekturen](target-architecture.md). Ingen kilde-/worktree-status er
-kontrollert på nytt i dokumentasjonsoppdateringen. FOX/C-ABI er ikke aktive leveranser.
+**Historical mapping:** inspections/advice date from September 19–20. Go/Fyne and
+independent SVG were selected on September 21; see [architecture](target-architecture.md).
+Documentation translation does not recheck source/worktree status. FOX/C ABI are
+not active deliverables.
 
-Kartlagt 2026-09-19, korrigert 2026-09-20. Status: arbeidsoversikt og kildeinventar.
-Dette notatet bevarer eierens nye innspill etter opprydding i chat-/worktree-
-organiseringen. Dokumentendringen implementerer ikke ny kode. Eieren har avvist krav om gammel SDUI-/BoxUI-kompatibilitet.
-Versjonsnumre, nye biblioteknavn og API-navn nedenfor er forslag der annet ikke er sagt.
+Mapped 2026-09-19, corrected 2026-09-20. This source inventory preserves the owner's
+input after chat/worktree reorganization. It implements no code. The owner rejected
+legacy SDUI/BoxUI compatibility. Versions/library/API names below are proposals unless
+stated otherwise.
 
-## 1. Eierens nye innspill
+## 1. Owner input at the time
 
-- SDUI utvikles som et eget språk for UI-prototyper, med XFMD som første vert.
-- BoxUI skal skilles fra Mermaid-rendereren. Eieren foreslår en egen
-  `sdui-fox-renderer` og spør hvordan lagdelingen bør være.
-- Rendererløsningen skal bruke SDUI-parserimplementasjonen, ikke få en kopi av
-  parseren. `libsdui` er foreslått biblioteksnavn.
-- SDUI og SDL trenger runtime-samspill over en definert ABI, og verten må kunne
-  koble SDUI-widgetinstanser til native FOX-widgets med callbacks og oppdateringer.
-- Fritekst på en SDUI-side skal være Markdown. En frame skal kunne inneholde
-  full Markdown, inkludert Mermaid-diagrammer; dette er ønsket dekning, ikke
-  allerede implementert støtte.
-- `[]` skal betegne en generell frame. BoxUI blir et valgt uttrykk/implementasjon
-  av en frame. `<>` foreslås for widgetinnhold, og `{}` reserveres for layout.
-- `*box` foreslås som valg av alternativ komponentimplementasjon; `*b` som
-  forkortelse når den er entydig. Dette betyr ikke repetisjon eller multiplikasjon.
+- Independent SDUI prototype language, initially with XFMD as host.
+- Separate BoxUI from Mermaid; proposed sdui-fox-renderer and a layering review.
+- Reuse the SDUI parser, never copy it; libsdui was a proposed library name.
+- Defined SDL/SDUI runtime ABI and host hooks for native FOX widgets, callbacks
+  and property updates.
+- Free text as Markdown, including Mermaid within frames: desired coverage,
+  not evidence of implemented support.
+- General frames `[]`, widget contents `<>`, layout `{}`; BoxUI as a selected
+  frame implementation.
+- `*box` selects an alternative implementation; `*b` is an unambiguous abbreviation,
+  not multiplication/repetition.
 
-Eierens eksempel, bevart som skisse (ikke gyldig SDUI 0.1):
+Owner sketch (not valid SDUI 0.1; localized example text retained):
 
 ```text
 [heading='boxui heading', [<"# gyldig markdown"; button('OK') > ]*box, [ ]*b ; [ ]*b ]*b
 ```
 
-## 2. Faktisk Git-status
+## 2. Git snapshot
 
-Alle opplysningene er et kontrollert øyeblikksbilde; nye sesjoner må kontrollere
-status før endringer. Kartleggingen brukte worktree-listene, status, logg,
-merge-base, differ og konkret kildekode. Ingen branch er byttet eller slettet.
+New sessions must recheck status before changes. This inspection used worktree lists,
+status/log/merge-base/diffs and source code. No branches were switched/deleted.
+SDP-vNow was clean on sdp-vNow 9ad4324 before this note. SDL/MVP1 was preserved in
+e051fe2, SDUI in 3becdb1.
 
-SDP-worktreet `/home/warloc/git/SDP-vNow` var rent på `sdp-vNow`, `9ad4324`, før
-dette notatet. SDL/MVP1 er bevart i `e051fe2`, SDUI i `3becdb1`.
+### Mermaid worktrees
 
-### Mermaid-rendererens worktrees
-
-| Absolutt katalog | Branch / HEAD | Innhold og status |
+| Absolute directory | Branch / HEAD | Content and observed status |
 | --- | --- | --- |
-| `/home/warloc/git/mermaid-rs-renderer` | `master`, `afab5e9` | Ren. Mermaid-utvidelser, måling/ruting og diagramarbeid. Ingen BoxUI-modul på denne branchen. |
-| `/home/warloc/git/mermaid-rs-renderer-boxui` | `phase/boxui-045-core`, `4bfd179` | Ren. Felles mandat/design pluss en tidlig BoxUI-kjerne: modell, JSON-parser, målt layout, SVG og seks dokumenterte kjernetester. |
-| `/home/warloc/git/mermaid-rs-renderer-boxui-implementation` | `phase/boxui-046-implementation`, `61a85b6` | Ren ved kontrollen. R1–R4-implementasjonen som XFMD faktisk er pinnet til: strict kilde-/prepare-parsing, typed modell, snapshots, geometri, SVG, kontrollkart, child-SVG-komposisjon og grenser. Ingen FOX eller SDL-runtime. |
-| `/tmp/xfmd-mrr-measurements` | detached, `3726ccb` | 23 staged filer, 784 tilføyde linjer: forhåndsmålte tekster og kooperativt tidsbudsjett/checkpoints i diagramlayout. Separat fra BoxUI. Bevares. |
+| /home/warloc/git/mermaid-rs-renderer | master, afab5e9 | Clean. Mermaid extensions, measurement/routing and diagrams; no BoxUI module. |
+| /home/warloc/git/mermaid-rs-renderer-boxui | phase/boxui-045-core, 4bfd179 | Clean. Shared mandate/design and early core: model, JSON parser, measured layout, SVG, six documented core tests. |
+| /home/warloc/git/mermaid-rs-renderer-boxui-implementation | phase/boxui-046-implementation, 61a85b6 | Clean. R1–R4 pinned by XFMD: strict source/prepare parsing, typed model, snapshots, geometry, SVG, control maps, child-SVG composition and limits. No FOX/SDL runtime. |
+| /tmp/xfmd-mrr-measurements | detached, 3726ccb | 23 staged files, 784 added lines: premeasured text and cooperative time budgets/checkpoints in diagram layout. Separate from BoxUI; preserve. |
 
-De to BoxUI-grenene har felles base `7076cac`; core har én egen commit og
-implementation fire egne commits. **Implementation er ikke en fortsettelse oppå
-core.** Ikke bland parser-/layoutfilene fra dem. Produsentens overlevering og
-XFMDs integrasjonsdokument sier eksplisitt at implementation er integrasjonskilden.
-`feature/boxui-extension` peker på designbasen `7076cac`, uten eget registrert worktree.
+Both BoxUI branches share 7076cac; core has one exclusive commit, implementation
+four. **Implementation does not descend from core.** Do not mix their parsers/layout.
+Producer handoff and XFMD integration identify implementation as the integration source.
+feature/boxui-extension points to design base 7076cac without a registered worktree.
 
-Målearbeid er senere representert i Mermaid-historikken ved `38b6018` og utvidet
-ved `3aad3fb`. Den staged patchen i `/tmp` har ikke samme stabile patch-ID som
-`38b6018`; det er ikke bevist at hele den midlertidige tilstanden er redundant.
-Ingen opprydding av den er utført eller anbefalt uten en egen differansekontroll.
+Measurement work later appears as 38b6018 and extensions in 3aad3fb. The staged /tmp
+patch has a different stable patch ID from 38b6018; complete redundancy is unproven.
+No cleanup was performed/recommended without a separate comparison. `gh pr list
+--state open` returned none for the renderer; that does not prove integration.
+Local master had no BoxUI.
 
-`gh pr list --state open` for Hans-Einar/mermaid-rs-renderer returnerte ingen åpne
-PR-er ved kontrollen. Dette sier ikke at grenene er integrert. Lokal Git viser
-at BoxUI ikke finnes i `master`.
+### XFMD worktrees
 
-### XFMDs worktrees
-
-| Absolutt katalog | Branch / HEAD | Innhold og status |
+| Absolute directory | Branch / HEAD | Content and observed status |
 | --- | --- | --- |
-| `/home/warloc/git/xfmd` | `main`, `c245fd9` | Ren, uten BoxUI-integrasjonen. Mermaid-pinnen er `589517a`. |
-| `/home/warloc/git/xfmd-boxui` | `sprint/003/phase/048-boxui-verification`, `a7495b8` | Ren. Native input/knapper, lokal syntetisk aktivitet, sesjon/ledger, statisk PDF og BoxUI-fence. Mermaid-pinnen er hele `61a85b6`. PR #37 er åpen og ikke merget. |
-| `/tmp/xfmd-p31-lifecycle` | `phase/p31-mermaid-svg`, `35e70b7` | Ren. Eldre SVG/Cairo-integrasjon og Pango-opprydding; HEAD er allerede stamfar til `main` og BoxUI-grenen. Ingen nye lokale endringer funnet. |
+| /home/warloc/git/xfmd | main, c245fd9 | Clean, no BoxUI integration; Mermaid pin 589517a. |
+| /home/warloc/git/xfmd-boxui | sprint/003/phase/048-boxui-verification, a7495b8 | Clean. Native controls, local synthetic activity, session/ledger, static PDF, BoxUI fence. Full Mermaid pin 61a85b6; PR #37 open/unmerged. |
+| /tmp/xfmd-p31-lifecycle | phase/p31-mermaid-svg, 35e70b7 | Clean. Older SVG/Cairo integration and Pango cleanup; already ancestor of main/BoxUI, no new local changes. |
 
-PR: https://github.com/Hans-Einar/xfmd/pull/37
+[XFMD PR #37](https://github.com/Hans-Einar/xfmd/pull/37).
+No reversal from Mermaid master is needed. The then-proposed extraction would reuse
+implementation code and redirect XFMD to an independent producer. Historical
+branches/worktrees remain provenance; the later Go decision supersedes that delivery.
 
-Det er derfor ikke nødvendig å reversere BoxUI ut av Mermaid `master` nå.
-Uttrekket skal ta vare på implementation-koden og flytte XFMDs avhengighet til
-en selvstendig produsent. Historiske branches/worktrees kan beholdes som proveniens.
+## 3. Concrete extraction boundaries
 
-## 3. Konkrete kodegrenser for uttrekket
+Paths below are relative to the named worktree, not SDP. These are historical
+recommendations, superseded where the current Go architecture differs.
 
-Relative stier i denne tabellen gjelder navngitt worktree, ikke SDP.
-
-| Nåværende eier | Kilder | Anbefalt disposisjon |
+| Owner | Sources | Proposed disposition at inspection |
 | --- | --- | --- |
-| Mermaid implementation | `src/boxui/{model,parse,validate,frame,layout,svg,embedded}.rs`, `mod.rs` | Gjenbruk egnede deler i ny FOX-uavhengig SDUI-kjerne. Gammel JSON-parser og wiremodell skal ikke bli en kompatibilitetsvei. |
-| Mermaid implementation | `tests/boxui.rs`, `examples/boxui_*`, `SDP/06--Container-Design/contracts`, fixtures og bevis | Bevar proveniens/lisens og port relevante tester; gamle kontrakter er historisk sammenligningsgrunnlag. |
-| Mermaid implementation | `src/lib.rs`, Cargo-manifest/-lock | BoxUI er lagt til via `pub mod boxui` og `roxmltree`. Selvstendig crate trenger sine faktiske avhengigheter; den trenger ikke hele Mermaid-craten for kjernen. |
-| XFMD BoxUI | `src/interpreter/mermaid/rust/src/boxui.rs` | Dagens tynne parseadapter kaller `mermaid_rs_renderer::boxui`. Flytt avhengigheten til ny produsent. |
-| XFMD BoxUI | `src/renderer/diagram/rust/src/boxui.rs` | Dagens prepareadapter kaller samme produsent og låner tekstmåling/cancellation. Skill UI-adapteren fra Mermaid-adapteren. |
-| XFMD BoxUI | `src/application/composition/mermaid/src/boxui.rs` | Eier C-ABI parse/prepare/free, bufferfrigjøring og panic-grense. Er ikke implementert i rendererforken. Bevar funksjonen under overgangen. |
-| XFMD BoxUI | `src/contracts/boxui`, `src/interpreter/boxui`, `src/renderer/boxui` | Modell, fence-ekstraksjon, vertsadaptere og plassering. Migrer koordinert med produsenten. |
-| XFMD BoxUI | `src/application/boxui/BoxUiSession.*`, `BoxUiPreparation.*` | Sesjonsidentitet, snapshots, ledger og forberedelse. Vurder generisk runtime-uttrekk separat; kopier ikke all applikasjonskoordinering inn i layoutmotoren. |
-| XFMD BoxUI | `src/application/boxui/SyntheticActivity.*` | Lokal simulering/testadapter. Skal fortsatt merkes som simulering, ikke SDL-runtime. |
-| XFMD BoxUI | `src/application/adapters/FoxBoxUiOverlay.*`, `FoxBoxUiInput.*` | Gjenbruksgrunnlag for FOX-backend. I dag koblet til FoxRenderHost og BoxUiSession; krever en eksplisitt vertsgrense før det blir et selvstendig bibliotek. |
+| Mermaid implementation | src/boxui/{model,parse,validate,frame,layout,svg,embedded}.rs, mod.rs | Reuse suitable parts in a FOX-independent SDUI core; no legacy JSON/wire compatibility path. |
+| Mermaid implementation | tests/boxui.rs, examples/boxui_*, SDP/06--Container-Design/contracts, fixtures/evidence | Preserve provenance/license; port relevant tests, retain old contracts as historical comparisons. |
+| Mermaid implementation | src/lib.rs, Cargo manifest/lock | BoxUI added via pub mod boxui and roxmltree; an independent crate needs actual dependencies, not the entire Mermaid core. |
+| XFMD BoxUI | src/interpreter/mermaid/rust/src/boxui.rs | Thin mermaid_rs_renderer::boxui parse adapter; redirect producer dependency. |
+| XFMD BoxUI | src/renderer/diagram/rust/src/boxui.rs | Prepare adapter sharing measurement/cancellation; separate UI from Mermaid adapter. |
+| XFMD BoxUI | src/application/composition/mermaid/src/boxui.rs | C ABI parse/prepare/free, buffer release and panic boundary; not owned by renderer fork. Preserve function during transition. |
+| XFMD BoxUI | src/contracts/boxui, src/interpreter/boxui, src/renderer/boxui | Model, fence extraction, host adapters and placement; migrate with producer. |
+| XFMD BoxUI | src/application/boxui/BoxUiSession.*, BoxUiPreparation.* | Identity, snapshots, ledger and preparation; evaluate runtime extraction separately, do not copy application coordination into layout. |
+| XFMD BoxUI | src/application/boxui/SyntheticActivity.* | Local simulation/test adapter, not SDL runtime. |
+| XFMD BoxUI | src/application/adapters/FoxBoxUiOverlay.*, FoxBoxUiInput.* | FOX reuse candidates coupled to FoxRenderHost/BoxUiSession; require an explicit host boundary before independence. |
 
-Rust-kjernens moduler bruker egne `super`-moduler og standard-/støttebiblioteker;
-parent-prepare parser ikke Mermaid. Verten leverer allerede forberedte child-SVG-er.
-Eksempler og integrasjonstester kan fortsatt bruke Mermaid som testkonsument.
-Vanlig Mermaid og standard treemap skal beholde sine eiere og regresjoner.
+Rust modules use local super modules and standard/support libraries. Parent preparation
+does not parse Mermaid; the host supplies prepared child SVGs. Examples/integration
+tests may use Mermaid as a test consumer. Ordinary Mermaid/treemap retain ownership
+and regressions.
 
-## 4. Gjeldende retning etter eierens korrigering 2026-09-20
+## 4. Owner correction, 2026-09-20
 
-Tidligere anbefaling om et selvstendig bibliotek med bevart BoxUI 0.1/BX-HOST
-som første leveranse er trukket tilbake. Vi trenger ingen kompatibilitetsvei;
-gjenbruk egnet kode direkte i ny SDUI-modell, port eksempler og fjern erstattede
-kjøreveier. Mermaid master trenger ingen SDUI-endring. Historiske worktrees
-skal ikke forveksles med aktive produktavhengigheter.
+The proposed first delivery preserving BoxUI 0.1/BX-HOST is withdrawn. Reuse suitable
+code directly in the new model, port examples and remove replaced execution paths.
+No Mermaid master change is needed. Historical worktrees are not active product
+dependencies. [Plan](implementation-plan.md) owns phases/milestones/cleanup;
+[architecture](target-architecture.md) owns ports/libraries;
+[layout proposal](layout-language-proposal.md) develops frames, widgets, Markdown,
+modifiers and symbols. At the date of this mapping it was planned, not parser support.
+This note freezes no old ABI/wire format.
 
-[Implementasjonsplanen](implementation-plan.md) eier phases/milestones og opprydding.
-[Målarkitekturen](target-architecture.md) eier nye porter og bibliotekansvar.
-[Layoutforslaget](layout-language-proposal.md) konkretiserer frames, widgets,
-Markdown, modifiere og symbolene eieren skisserte. Disse er planlagt ny profil,
-ikke støtte i dagens parser. Ingen gamle ABI-/wireformer fryses av dette notatet.
+## 5. SDP pilot
 
-## 5. SDP-piloten
+The numbered structure was piloted in both Mermaid BoxUI worktrees' SDP directories:
+01--Mandate/01-01--Mandate.md, 00--Project/00-02--SDP-Structure.md and sdp-project.json.
+The former Mermaid-extension mandate is superseded by independent SDUI and creates
+no new constraint.
 
-Den nummererte strukturen ble pilotert i BoxUI-prosjektet, og finnes i begge
-Mermaid BoxUI-worktreenes SDP-katalog. Mandat: 01--Mandate/01-01--Mandate.md.
-Struktur: 00--Project/00-02--SDP-Structure.md. Manifest: sdp-project.json.
-Den tidligere intensjonen om BoxUI som Mermaid-utvidelse er nå erstattet av
-selvstendig SDUI-retning; pilotens historiske mandat er ikke en ny begrensning.
+## 8. Verification boundary
 
-## 8. Verifikasjonsgrense
-
-Dette notatet bygger på faktisk kilde-/Git-kontroll. Den foregående gjennomgangen
-i samme sesjon kjørte SDUI 15/15, design-core 31/31 og MVP1-inventarkontroll;
-disse testene etablerer ikke det nye språket eller runtime/rendering.
-I denne kartleggingen ble følgende kjørt fra renderer-implementation på `61a85b6`:
+The preceding review ran SDUI 15/15, design-core 31/31 and MVP1 inventory checks;
+these do not prove the new language/runtime/rendering. This mapping ran on 61a85b6:
 
 ```sh
 cargo test --offline --locked --no-default-features --test boxui
 ```
 
-**18/18 tester bestod.** Bygget ga ni dead-code-advarsler fra ordinære
-diagramrutingmoduler. Testene omfatter blant annet deterministisk frame,
-kontrollgeometri, child-komposisjon, ressurser og kansellering. De beviser ikke
-at en ny selvstendig crate finnes eller fungerer. Worktreet forble Git-rent.
-
-Ny uttrekksleveranse må kjøre sine egne regresjoner og identifisere konsumentpin.
-Ingen ny GUI-/PDF-verifikasjon eller installasjon inngår i kartleggingen.
+18/18 passed, with nine dead-code warnings from ordinary routing modules. Tests cover
+deterministic frames, control geometry, child composition, resources and cancellation.
+They do not prove an independent crate exists. The worktree stayed clean. Any extraction
+must run its own regressions and identify consumer pins. No new GUI/PDF test or installation
+was part of this inspection.

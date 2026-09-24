@@ -1,21 +1,15 @@
-# Dokumentasjon — start her
+# Documentation — start here
 
-| Spørsmål | Inngang |
+| Question | Entry point |
 | --- | --- |
-| Hvordan er repoet organisert? | [Repooversikt](../README.md) og [R1-plan](../SDP/Maintenance/R1/Plan.md) |
-| Hva arbeider vi med? | [SDP KanBan](../SDP/Agents/KanBan/README.md), [SDL KanBan](../SDL/SDP/Agents/KanBan/README.md), [SDUI KanBan](../SDUI/SDP/Agents/KanBan/README.md) |
-| Hvilken SDL er implementert? | [SDL dokumentoversikt](../SDL/docs/README.md) og [Go-verktøy](../SDL/go/README.md) |
-| Hvilken SDUI er implementert? | [SDUI dokumentoversikt](../SDUI/docs/README.md), [språk](../SDUI/docs/language.md), [Go-layout](../SDUI/docs/go-layout-contract.md) |
-| Hvordan installeres Toolkit? | [Toolkit-kontrakter](../Toolkit/docs/README.md) og [maler](../Template/README.md) |
-| Hvor ble tidligere docs-filer av? | [Dokumentkart](../SDP/Maintenance/R1/Documentation-index.md) |
-| Hva var checkpoint #1? | [Felles historisk snapshot](../SDP/History/checkpoint-1/README.md) |
+| How is the repository organized? | [Repository overview](../README.md) and [R1 plan](../SDP/Maintenance/R1/Plan.md) |
+| What are we working on? | [SDP KanBan](../SDP/Agents/KanBan/README.md), [SDL KanBan](../SDL/SDP/Agents/KanBan/README.md), [SDUI KanBan](../SDUI/SDP/Agents/KanBan/README.md) |
+| Which SDL is implemented? | [SDL documentation](../SDL/docs/README.md) and [Go tools](../SDL/go/README.md) |
+| Which SDUI is implemented? | [SDUI documentation](../SDUI/docs/README.md), [language](../SDUI/docs/language.md), [Go layout](../SDUI/docs/go-layout-contract.md) |
+| How is Toolkit installed? | [Toolkit contracts](../Toolkit/docs/README.md) and [templates](../Template/README.md) |
+| Where did former docs files move? | [Document map](../SDP/Maintenance/R1/Documentation-index.md) |
+| What was checkpoint #1? | [Shared historical snapshot](../SDP/History/checkpoint-1/README.md) |
 
-[How SDP Works](process/How-SDP-Works.md) beskriver den distribuerte prosessen.
-[Feature governance](process/Feature-Governance-And-SDP-2.0.md) og
-[MVP1/prosessstudien](process/MVP1-Design-Evolution-and-SDP-Skills.md) inneholder
-også forslag; de er ikke nye installasjons- eller språkregler.
+[How SDP Works](process/How-SDP-Works.md) describes the distributed process. [Feature governance](process/Feature-Governance-And-SDP-2.0.md) and the [MVP1/process study](process/MVP1-Design-Evolution-and-SDP-Skills.md) also contain proposals, not new installation or language rules.
 
-R1 har ryddet fysisk plassering og navigasjon. [KB-SDP-010](../SDP/Agents/KanBan/active/%23010--Proposal--Document-consolidation.md)
-er aktiv med [R2s konkrete konsolidering](../SDP/Maintenance/R2/Findings.md).
-Fase-/malprofil og videre faglig harmonisering er fortsatt åpne oppgaver.
-Et dokuments plassering alene vedtar ikke innholdet.
+R1 organized physical locations and navigation. [KB-SDP-010](../SDP/Agents/KanBan/active/%23010--Proposal--Document-consolidation.md) is active with [R2's concrete consolidation](../SDP/Maintenance/R2/Findings.md). Phase/template profiles and further substantive harmonization remain open. A document's location alone does not approve its content.

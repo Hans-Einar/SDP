@@ -1,20 +1,14 @@
-# R2 — kontrollbevis
+# R2 — verification evidence
 
 ## R2-M1
 
-R1-baseline og dagens dokumentinnganger er lest; ti konkrete konflikter er
-registrert i Findings. KanBan schema/replay/filplassering og lokale lenker
-består: 16 kort, 27 hendelser og 1907 lokale Markdown-filmål. Historiske
-ledgerprefikser, 574 genererte artefakter og R1s migreringsgrenser er bevart.
-`git diff --check` består. Ingen kode eller genererte modeller er endret.
+Read R1 baseline/current entry points; registered ten concrete conflicts in Findings. KanBan schema/replay/locations and local links pass: 16 cards, 27 events, 1907 local Markdown targets. Historical ledger prefixes, 574 generated artifacts and R1 migration boundaries preserved. `git diff --check` passes. No code or generated model changes.
 
 ## R2-M2
 
-Dokumentendringer kontrollert mot SDL parser/vocabulary, bridge.Plan og
-SDUI Handle, samt eksisterende G3/G4/G6/G5-bevis. Ingen endring i grammatikk,
-Go-kilde, moduler, installasjonsmanifest eller genererte viewpoints.
+Checked document changes against SDL parser/vocabulary, bridge.Plan, SDUI Handle and existing G3/G4/G6/G5 evidence. No grammar, Go source/module, installation-manifest or generated-viewpoint changes.
 
-Kjørte CLI-stikkprøver med lokal Go 1.27.1 fra repoets rot:
+CLI spot checks from repository root using local Go 1.27.1:
 
 ```sh
 go -C SDL/go run ./cmd/sdl check ../../SDUI/design/architecture.design
@@ -23,22 +17,10 @@ go -C SDL/go run ./cmd/sdl class-check examples/runtime-classes.sdl
 go -C SDUI/go run ./cmd/sdui ../examples/concept1-bucking.sdui --format svg --entry bucking -o /tmp/concept1.svg
 ```
 
-Alle tre SDL-profiler ga valid=true. SVG-kommandoen ble kjørt med unik midlertidig
-utkatalog: gyldig XML/SVG, viewBox 0 0 1920 1200, 402669 bytes. Dette er strukturell
-CLI-verifikasjon, ingen ny visuell eller native GUI-prøve. G-fasenes gamle
-testtall er ikke nykjørt. Full Go-regresjon er ikke gjentatt for kun dokumentendringer.
+All three SDL profiles returned valid=true. SVG used a unique temporary output directory: valid XML/SVG, viewBox 0 0 1920 1200, 402669 bytes. This is structural CLI verification, not a new visual/native GUI trial. Old G-phase test counts were not rerun. Full Go regression was not repeated for documentation-only changes.
 
-R1-kontrollen validerer lokale Markdown-filmål, 574 uendrede genererte artefakter,
-historiske fingeravtrykk, Go-kilder og installasjonspolicy. KanBan kontrolleres
-med K3s schema/replay-funksjon og fysisk kortplassering på tre tavler; ledgerens
-prefikser fra K4 beholdes byte for byte. Avsluttende kontrolltall føres under.
+R1 checks local Markdown targets, 574 unchanged generated artifacts, historical fingerprints, Go sources and installation policy. K3 schema/replay and physical locations check all three boards; K4 ledger prefixes remain byte-preserved.
 
-Begrensninger: lenkekontrollen tester ikke ankre eller eksterne URL-er. Ingen ny
-påstand om gjeldende status i andre repoer/PR-er er lagt inn; G6s eksterne bevis
-er datert. De ni eldre Toolkit-ID-avvikene i KB-SDP-011 er ikke endret eller
-retestet her. Fase-/malprofil og større kandidatsemantikk forblir åpne.
+Limits: no anchor/external URL checks. No new current-status claims about other repositories/PRs; G6 external evidence is dated. KB-SDP-011's nine older Toolkit ID mismatches were neither changed nor retested. Phase/template profiles and broader candidate semantics remain open.
 
-Avsluttende kontroller bestod: 16 kort / 29 hendelser på tre tavler;
-1973 lokale Markdown-filmål; alle 17 faglige SDUI-docs indeksert. Git-diff mot
-K4 bekrefter uendrede History-, Go-, design-, Template- og installasjonsfiler.
-Kun Markdown og append-only ledgerhendelser inngår i R2. `git diff --check` består.
+Final checks passed: 16 cards / 29 events across three boards; 1973 local Markdown targets; all 17 SDUI subject documents indexed. Git diff against K4 confirms unchanged History, Go, design, Template and installation files. R2 contains only Markdown and append-only ledger events. `git diff --check` passes.

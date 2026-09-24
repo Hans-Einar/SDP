@@ -1,28 +1,28 @@
-# TLA+ og PlusCal
+# TLA+ and PlusCal
 
-[Katalog](README.md) · Kategori: **Formell atferdsspesifikasjon** · Research: **2026-09-10**
+[Catalogue](README.md) · Category: **Formal behavior specification** · Research: **2026-09-10**
 
-## Formål og abstraksjonsnivå
+## Purpose and abstraction level
 
-Beskriver systemers mulige tilstander og steg med matematisk presisjon. PlusCal er en algoritmenotasjon som oversettes til TLA+.
+Mathematically precise descriptions of possible system states/steps. PlusCal is algorithm notation translated into TLA+.
 
-## Modellmekanismer
+## Model mechanisms
 
-Identitet: moduler, konstanter, variabler og operators. Relasjoner/contracts: invariants og temporale properties. Views: utforskede traces/counterexamples gjennom verktøy, ikke ferdige arkitekturviews. Moduler og operators gir gjenbruk.
+Identity: modules, constants, variables and operators. Relations/contracts: invariants and temporal properties. Views: tool-explored traces/counterexamples, not ready-made architecture views. Reuse through modules/operators.
 
-## Styrker og begrensninger — vår vurdering
+## Strengths and limitations — our assessment
 
-**Styrke:** Relevant for køer, samtidighet, leveringsgarantier og om en overgang bevarer et uttrykt invariant.
+**Strength:** Relevant to queues, concurrency, delivery guarantees and invariant preservation through transitions.
 
-**Begrensning:** Krever riktig abstraksjon og ekspertise. TLC-søk i et konfigurert endelig rom er ikke et generelt bevis på programkoden; modell og kode må kobles gjennom egne evidenskrav.
+**Limitation:** Requires appropriate abstraction/expertise. TLC searches finite configured spaces, not general program proofs; connect models/code through evidence requirements.
 
-## Historikk, endring og transitions
+## History, change and transitions
 
-Temporal logikk beskriver systematferd over tid. Refinement kan sammenligne abstraksjoner, men gir ikke automatisk FEAT-ID-historikk, Git-migrasjon eller godkjenning av et refactorløp.
+Temporal logic describes behavior over time. Refinement compares abstractions but does not automatically supply FEAT-ID history, Git migration or refactoring approval.
 
-## Illustrativt eksempel
+## Illustrative example
 
-Illustrativ spesifikasjon; mangler TLC-konfigurasjon og er ikke modellkontrollert her. Eksemplet er ikke parser-/runtime-testet.
+Specification without TLC configuration; not model-checked here. The example has not been parser/runtime tested.
 
 ```text
 ---- MODULE Counter ----
@@ -34,13 +34,13 @@ Spec == Init /\ [][Next]_n
 ====
 ```
 
-## Verktøy, vedlikehold og vilkår
+## Tools, maintenance and terms
 
-Forfatterens dokumentasjon og TLA+-verktøyrepository er tilgjengelige. Metadata for tlaplus/tlaplus: MIT, ikke arkivert. Velg eksplisitt mellom modellkontroll og eventuelt teorembevis i en pilot.
+Author documentation/TLA+ tools repository available. tlaplus/tlaplus metadata: MIT, not archived. Explicitly choose model checking versus theorem proving in a pilot.
 
-## Primærkilder
+## Primary sources
 
-Alle kilder kontrollert 2026-09-10; se katalogens metode for evidens- og lisensbegrensninger.
+All sources checked on 2026-09-10; see the catalogue methodology for evidence and licensing limits. Translation does not refresh these dated findings.
 
 - [Leslie Lamports TLA+-side](https://lamport.azurewebsites.net/tla/tla.html)
-- [Offisielt repository; metadata kontrollert via GitHub API](https://github.com/tlaplus/tlaplus)
+- [Official repository; metadata checked through GitHub API](https://github.com/tlaplus/tlaplus)

@@ -1,28 +1,28 @@
 # Context Mapper CML
 
-[Katalog](README.md) · Kategori: **DDD- og arkitektur-DSL** · Research: **2026-09-10**
+[Catalogue](README.md) · Category: **DDD and architecture DSL** · Research: **2026-09-10**
 
-## Formål og abstraksjonsnivå
+## Purpose and abstraction level
 
-Bounded contexts, aggregates, context maps og relasjoner fra domain-driven design. Dokumentasjonen inkluderer user requirements, stakeholders og generators.
+Bounded contexts, aggregates, context maps and domain-driven-design relations. Documentation includes user requirements, stakeholders and generators.
 
-## Modellmekanismer
+## Model mechanisms
 
-Identitet: navngitte contexts/aggregates og references. Relasjoner: DDD-typer. Contracts: blant annet Published Language/Open Host Service og kontraktsgenerering som egen funksjon. Views: context-map-/PlantUML-generators. Utvidelse/integrasjon: Xtext og bibliotekbruk.
+Identity: named contexts/aggregates and references. Relations: DDD types. Contracts include Published Language/Open Host Service and separate contract generation. Views: context-map/PlantUML generators. Extension/integration: Xtext and library use.
 
-## Styrker og begrensninger — vår vurdering
+## Strengths and limitations — our assessment
 
-**Styrke:** Spesielt relevant for brukerens spørsmål om domains og ansvar. Verktøyet har split/merge-refactoreringer, inkludert split av bounded context etter brukte use cases/user stories.
+**Strength:** Especially relevant to domain/responsibility questions. Provides split/merge refactorings, including bounded-context splitting by used use cases/user stories.
 
-**Begrensning:** En bounded context er en begreps-/modellgrense; ikke nødvendigvis én OS-prosess. Modellens kompilering etter refactor beviser ikke at produktets atferd er bevart.
+**Limitation:** A bounded context is a conceptual/model boundary, not necessarily an OS process. Compiling after refactoring does not prove product behavior preserved.
 
-## Historikk, endring og transitions
+## History, change and transitions
 
-Refactoreringene oppdaterer referanser i CML. Vedvarende Feature-ID, begrunnelse og gammel→ny ansvarsmapping må fortsatt lagres; Git alene forklarer ikke meningen med endringen.
+Refactorings update CML references. Persistent Feature IDs, rationale and old→new responsibility maps still need storage; Git alone does not explain meaning.
 
-## Illustrativt eksempel
+## Illustrative example
 
-Illustrativ bounded context; ikke et forslag om å omorganisere Ponsse. Eksemplet er ikke parser-/runtime-testet.
+Bounded context, not a proposal to reorganize Ponsse. The example has not been parser/runtime tested.
 
 ```text
 BoundedContext Measurement {
@@ -34,14 +34,14 @@ BoundedContext Measurement {
 }
 ```
 
-## Verktøy, vedlikehold og vilkår
+## Tools, maintenance and terms
 
-VS Code/Eclipse-støtte dokumentert; online IDE er merket ikke lenger støttet. Repositorymetadata: Apache-2.0, ikke arkivert, siste push oppgitt 2025-07-08. Praktisk vedlikehold og kompatibilitet må undersøkes i en pilot.
+VS Code/Eclipse support documented; online IDE labeled unsupported. Repository metadata: Apache-2.0, not archived, last reported push 2025-07-08. Assess practical maintenance/compatibility in a pilot.
 
-## Primærkilder
+## Primary sources
 
-Alle kilder kontrollert 2026-09-10; se katalogens metode for evidens- og lisensbegrensninger.
+All sources checked on 2026-09-10; see the catalogue methodology for evidence and licensing limits. Translation does not refresh these dated findings.
 
-- [CML språkoversikt](https://contextmapper.org/docs/language-reference/)
-- [Arkitekturrefactoreringer](https://contextmapper.org/docs/architectural-refactorings/)
-- [Offisielt repository; metadata kontrollert via GitHub API](https://github.com/ContextMapper/context-mapper-dsl)
+- [Context Mapper documentation](https://contextmapper.org/docs/language-reference/)
+- [Context Mapper documentation](https://contextmapper.org/docs/architectural-refactorings/)
+- [Official repository; metadata checked through GitHub API](https://github.com/ContextMapper/context-mapper-dsl)

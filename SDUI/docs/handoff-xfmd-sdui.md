@@ -1,22 +1,20 @@
-# FOX/XFMD — tidligere handoff, avløst av Go/Fyne-retning
+# FOX/XFMD — historical handoff superseded by Go/Fyne
 
-Oppdatert 2026-09-22. Den gamle FOX-widget-handoffen er avløst.
-G6s dokumentnavigasjon er implementert separat i [XFMD PR #38](https://github.com/Hans-Einar/xfmd/pull/38);
-se [G6-bevis](../../SDL/go/evidence/G6.md).
-Eieren har valgt selvstendige SDL/SDUI-biblioteker i Go, første interaktive vert
-Fyne og statisk SVG-eksport. [Målarkitektur](target-architecture.md) og
-[PLAN-003](implementation-plan.md) erstatter tidligere P4–P6/Rust/C-ABI-instrukser.
+Updated 2026-09-22. The former FOX widget handoff is superseded. G6 documentation
+navigation was implemented separately in [XFMD PR #38](https://github.com/Hans-Einar/xfmd/pull/38);
+see [G6 evidence](../../SDL/go/evidence/G6.md). The owner selected independent SDL/SDUI
+Go libraries, Fyne as first interactive host, and static SVG export.
+[Architecture](target-architecture.md) and [PLAN-003](implementation-plan.md) replace
+P4–P6/Rust/C-ABI instructions.
 
-XFMD kan fortsatt vise genererte SVG-bilder i Markdown. Det krever ikke en
-SDUI-parser eller SDL-runtime i XFMD. Ekte interaktiv SDUI i XFMD er en eventuell
-senere konsument, med egen avklart leveranse og nødvendig port.
+XFMD can display generated SVG in Markdown without an SDUI parser or SDL runtime.
+Interactive SDUI inside XFMD is a possible later consumer requiring its own agreed
+deliverable/port. Existing FoxBoxUiOverlay/FoxBoxUiInput, local simulation, diagrams
+and Cairo/PDF code remain reference material in their repositories. G6 includes no
+cleanup or merge of the old BoxUI worktree. Historical pins/reuse sources are in the
+[worktree map](renderer-extraction-and-language-direction.md).
 
-Eksisterende FoxBoxUiOverlay/FoxBoxUiInput, lokal simulering, diagrammer og
-Cairo/PDF-kode kan være referansemateriale. Bevar dem i sine repoer; ingen
-opprydding eller merge av det gamle BoxUI-worktreet inngår i G6-leveransen.
-Historiske pinner og gjenbrukskilder står i [worktree-kartet](renderer-extraction-and-language-direction.md).
-G6-implementasjonen ble basert på kontrollert ren XFMD-main c245fd9 i eget
-xfmd-sdl-navigation-worktree. Phase 049/050 er pushet; PR #38 er ikke merget.
-
-Ikke start en ny FOX-backend, privat SDUI-parser eller C-ABI for å følge den gamle
-handoffen. Første Go-leveranse ligger under SDUI/go og SDL/go.
+G6 started from verified clean XFMD main c245fd9 in xfmd-sdl-navigation. At this
+handoff phases 049/050 were pushed and PR #38 was not merged. Do not start a FOX
+backend, private parser or C ABI to follow superseded instructions. The first Go
+deliveries are under SDUI/go and SDL/go.

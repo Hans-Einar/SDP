@@ -1,9 +1,6 @@
-# SDL — kjørbar handlingsprofil
+# SDL — executable action profile
 
-G4-M2, 2026-09-22. `action-core 0.1` er en eksplisitt, avgrenset kjøreprofil
-ved siden av strukturell `design-core 0.5`. Strukturelle Functionality-, Mode-
-og Channel-fakta får ingen skjult utføringsbetydning. Profilene deler SDL-lexer,
-identifikatorregler og kildeposisjoner; hver har sin lukkede grammatikk.
+G4-M2, 2026-09-22. `action-core 0.1` is an explicit, bounded execution profile alongside structural `design-core 0.5`. Structural Functionality, Mode and Channel facts receive no implicit execution semantics. Profiles share the SDL lexer, identifier rules and source positions; each has a closed grammar.
 
 ```text
 language action-core version 0.1.
@@ -17,60 +14,22 @@ EchoInput field Value as text.
 EchoOutput field Value as text.
 ```
 
-En Action må ha nøyaktig én `takes`, `returns` og `invokes`. De to første
-refererer deklarerte Records; `invokes` navngir én eksplisitt registrert Go-
-funksjon. Den er en symbolreferanse, aldri Go-kildetekst, shell eller dynamisk
-kodeimport. Samme funksjon kan gjenbrukes når begge recordsignaturer er like.
-Hver Record har 1–32 navngitte felt; feltnavn er lokale for recorden. Felt er
-obligatoriske og typede `text`, `integer` (signert 64-bit) eller `boolean`.
-Ekstra/manglende felt og feil scalar-type avvises. Ingen null/default eller
-implisitt konvertering. Tekst er gyldig UTF-8, uten NUL, maksimalt 32 KiB.
+An Action requires exactly one `takes`, `returns` and `invokes`. The first two reference declared Records; `invokes` names an explicitly registered Go function. It is a symbolic reference, never Go source, shell or dynamic code import. A function may be reused when both record signatures match. Each Record has 1–32 locally named fields. Fields are required and typed `text`, `integer` (signed 64-bit) or `boolean`. Reject extra/missing fields and wrong scalar types. No null/default or implicit conversion. Text must be valid UTF-8 without NUL, at most 32 KiB.
 
-Deklarasjoner sorteres på navn, deretter alle fakta på full ASCII-setning.
-Ingen kommentarer i kanonisk kilde; dokumentasjon ligger rundt modellen.
-Maksimalt 128 Actions, 128 Records og 32 felt per Record støttes først.
-Kilde-/tokengrenser følger den felles SDL-frontenden. Ukjente utsagn avvises.
+Sort declarations by name, then all facts by complete ASCII sentence. Canonical source contains no comments; documentation surrounds the model. Initial limits: 128 Actions, 128 Records, 32 fields per Record. Source/token limits follow the shared SDL frontend. Unknown statements are rejected.
 
-Go-registeret angir input-/outputsignatur og en funksjon
-`func(context.Context, Record) (Record, error)`. Hele modellen og alle nødvendige
-registreringer valideres før runtime opprettes. Kallet validerer record før
-handleren og resultat før publisering. Recordverdier kopieres ved grensen.
-Feil er observerbare resultater; runtime gjetter ikke domeneregler.
+The Go registry provides input/output signatures and a `func(context.Context, Record) (Record, error)` function. Validate the whole model and required registrations before creating runtime. Validate input before invoking handlers and results before publication. Copy record values at boundaries. Errors are observable outcomes; runtime does not infer domain rules.
 
-Domene-state eies av den registrerte Go-implementasjonen. UI-draft, UI-revisjon,
-command-identitet og akseptert domeneresultat holdes atskilt. Denne profilen er
-ikke et distribuert meldingssystem eller et garantilag for eksterne sideeffekter.
-En avgrenset EditAptCell-prøve følger G4-M3: stabil celleidentitet, draft, forventet
-domenerevisjon, eksplisitt avvisning og korrelert godkjent resultat. Den skal
-merkes som simulering og utfører ingen Ponsse-/maskinhandlinger.
+Registered Go implementations own domain state. Keep UI draft, UI revision, command identity and accepted domain result separate. This is not a distributed messaging system or a guarantee layer for external side effects. G4-M3 includes a bounded EditAptCell trial: stable cell identity, draft, expected domain revision, explicit rejection and correlated accepted result. Label it a simulation; it performs no Ponsse/machine actions.
 
-Hot reload av modell og håndtering av pågående kall er implementert og prøvd i
-[G4-M4](../../go/evidence/G4.md#g4-m4).
-Go-funksjonsendringer krever vanlig Go-bygg og prosessrestart.
+Model hot reload and in-flight call handling are implemented/tested in [G4-M4](../../go/evidence/G4.md#g4-m4). Changing Go functions requires a normal Go build and process restart.
 
-## SDUI-port — G4-M3
+## SDUI bridge — G4-M3
 
-SDUI-refene er symbolske. Verten leverer en eksplisitt alias→SDL-runtime-tabell;
-bridge eller parser åpner ikke ref-stien. Kjørbar callback er
-`module.Action.@invoke`. `module.Action.setHandle(page.input)` navngir resultat-
-mottakeren. Første resultatport skriver et `text`-felt til et input-handle.
+SDUI refs are symbolic. The host supplies an explicit alias→SDL-runtime table; neither bridge nor parser opens ref paths. Executable callback: `module.Action.@invoke`. `module.Action.setHandle(page.input)` names the result receiver. The initial result port writes a `text` field to an input handle.
 
-En typet Go-bindingsplan sier hvor hvert inputfelt kommer fra: widgetens draft,
-eventverdi, typed literal eller navngitt kontekstverdi. Det finnes nøyaktig én
-kilde per felt. Tekstinput konverteres eksplisitt i adapteren hvis SDL-feltet er
-integer/boolean; runtime gjør ingen implisitt konvertering. Hele bindingssettet
-valideres før noen handler installeres. Ukjent modul/member/action, manglende
-feltkilde og feil resultatwidget avvises. Linkoversikten har kildeposisjoner til
-både SDUI-widgeten og SDL-handlingen.
+A typed Go binding plan identifies each input field's source: widget draft, event value, typed literal or named context value. Exactly one source per field. The adapter explicitly converts text input for integer/boolean SDL fields; runtime performs no implicit conversion. Validate all bindings before installing handlers. Reject unknown modules/members/actions, missing field sources and wrong result widgets. Link maps contain source positions for SDUI widgets and SDL actions.
 
-Domenerevisjon er egen bindingskontekst, aldri UI-verdirevisjonen. Et godkjent
-SDL-resultat kan oppdatere denne konteksten og UI-verdien. UI-propertybatchen
-valideres fortsatt samlet; en presentasjonsfeil ruller ikke tilbake en allerede
-utført Go-domenehandling og må ikke føre til automatisk gjentakelse.
-`CurrentInvocation(ctx)` gir Go-funksjonen action, modellrevisjon og sekvens-ID.
-Profilen har én ordnet kommandokilde per Engine; flere samtidige avsendere må
-koordineres av samme sekvenseier. Ingen distribuert exactly-once-garanti utledes.
+Domain revision is separate binding context, never the UI value revision. An accepted SDL result may update that context and the UI value. UI property batches still validate atomically; presentation failure does not roll back an already executed Go domain action and must not trigger automatic retries. `CurrentInvocation(ctx)` exposes action, model revision and sequence ID to Go functions. The profile has one ordered command source per Engine; concurrent senders must share a sequence owner. No distributed exactly-once guarantee is implied.
 
-[EditAptCell-kildene og håndskrevet simulering](../../go/examples)
-viser stabil celleidentitet, separat domenerevisjon og eksplisitt avvist edit.
-Den eldre MVP1-scenariofilen er en kravreferanse, ikke innlest kjørbar kode.
+[EditAptCell sources and handwritten simulation](../../go/examples) demonstrate stable cell identity, separate domain revision and explicit edit rejection. The older MVP1 scenario is a requirements reference, not loaded executable code.

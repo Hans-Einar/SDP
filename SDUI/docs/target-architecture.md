@@ -1,100 +1,52 @@
-# SDL/SDUI — målarkitektur i Go
+# SDL/SDUI — target Go architecture
 
-**ID:** SDUI-ARCH-003 · 2026-09-21 · Valgt og implementert retning; se fasebevis og profilgrenser.
-Erstatter ARCH-002s Rust/C-ABI og obligatoriske FOX/XFMD-løp.
-[Checkpoint #1, tillegg 07](../../SDP/History/checkpoint-1/07-SDUI-0.2-and-Go-Direction.md)
-eier beslutningsoversikten; [architecture.md](architecture.md) beskriver gjeldende Go-kode.
+**ID:** SDUI-ARCH-003 · 2026-09-21 · Selected and implemented direction; see phase evidence/profile limits. Replaces ARCH-002's Rust/C-ABI and mandatory FOX/XFMD track. [Checkpoint supplement 07](../../SDP/History/checkpoint-1/07-SDUI-0.2-and-Go-Direction.md) records decisions; [architecture.md](architecture.md) describes current Go code.
 
-**Detaljert SDL-modell 2026-09-22:** [parser-/runtimedesignet](../design/README.md)
-dekker begge språkene og deres porter, reload, layout, vert og kodegenerering.
-Modellen valideres med Go design-core-parser; action-core-runtime er en separat profil.
+**Detailed SDL model, 2026-09-22:** [parser/runtime design](../design/README.md) covers both languages, ports, reload, layout, host and generation. Go design-core validates it; action-core runtime is separate.
 
-## Eiendom og avhengigheter
+## Ownership and dependencies
 
-| Område | Ansvar |
+| Area | Responsibility |
 | --- | --- |
-| SDL/go/parser | SDL-kilde, AST, symboler og profilvalidering; ingen domeneutførelse |
-| SDL/go/runtime | Avgrenset SDL-kjøring og registrerte Go-funksjoner; ingen GUI-avhengighet |
-| SDUI/go/parser | SDUI 0.2, AST, diagnoser og normalisering; én språkimplementasjon etter port |
-| SDUI/go/runtime | UI-instans, identitet, egenskaper, events, bindinger og modellreload |
-| SDUI/go/layout | Én målt layoutmodell for interaktiv visning og eksport |
-| SDUI/go/svg | Statisk dokumentasjonsbilde fra samme geometri og eksplisitt tilstand |
-| SDUI/go/host/fynehost | Vindu, widgetlivstid, fokus, inndata og publisering på UI-tråden |
-| SDUI/go/codegen og SDL/go/codegen | Modell-/koblingskode; håndskrevne domenefunksjoner ligger separat |
+| SDL/go/parser | Source, AST, symbols/profile validation; no domain execution |
+| SDL/go/runtime | Bounded execution/registered Go functions; no GUI dependency |
+| SDUI/go/parser | SDUI 0.2, AST, diagnostics, normalization; single implementation after port |
+| SDUI/go/runtime | UI instances, identity, properties, events, bindings, reload |
+| SDUI/go/layout | Shared measured layout for interaction/export |
+| SDUI/go/svg | Static documentation from shared geometry/explicit state |
+| SDUI/go/host/fynehost | Window, widget lifetime, focus/input, UI-thread publication |
+| SDUI/go/codegen and SDL/go/codegen | Model/binding code; separate handwritten domain functions |
 
-Begge katalogene er selvstendige Go-moduler med Go 1.26-baseline, verifisert
-med Go 1.27.1 og Fyne 2.8.1. Implementasjon og grenser dokumenteres i
-[datert checkpoint](../../SDP/History/checkpoint-1/11-Go-Implementation-and-Navigation.md).
+Separate Go modules with Go 1.26 baseline, verified using Go 1.27.1/Fyne 2.8.1. [Dated implementation snapshot](../../SDP/History/checkpoint-1/11-Go-Implementation-and-Navigation.md).
 
-Parser/runtime importerer ikke Fyne, FOX, XFMD eller Mermaid. En vert setter
-sammen bibliotekene; SDUI-kjernen krever ikke en konkret SDL-implementasjon for
-å vise et ubundet design. SDL eier domenetilstand, SDUI eier widgetidentiteter og
-UI-tilstand. Koblinger går over typede Go-grensesnitt; ingen ekstra binær ABI før
-en konkret konsument krever den. Navnet libsdui er bibliotekrollen, ikke krav
-om en .so-fil eller C-header.
+Parser/runtime import no Fyne, FOX, XFMD or Mermaid. Hosts compose libraries; unbound SDUI designs require no particular SDL implementation. SDL owns domain state; SDUI owns widget identity/UI state. Typed Go interfaces connect them; add binary ABI only for a concrete consumer. libsdui names the library role, not a required .so/C header.
 
-## Måling og presentasjon
+## Measurement and presentation
 
-Kildens relative størrelser, ratio og ancestorreferanse beholdes fram til layout.
-Root får vertens tilgjengelige område. `{16:9,<->}` avleder høyden fra bredden;
-resize endrer geometri og tekstombryting uten å skalere fonten. Fontenhet er logiske DIP; Go Regular brukes til felles måling/SVG. Header/body/footer ligger innen ratio.
+Preserve relative dimensions, ratios and ancestor references until layout. Root receives host area. `{16:9,<->}` derives height from width; resize changes geometry/wrapping without font scaling. Fonts use logical DIP and Go Regular for shared measurement/SVG. Regions remain inside ratio.
 
-Layoutresultatet inneholder widgetidentiteter, rektangler, klipping, tekstmål og
-ressurser. Fyne bruker dette til interaktiv visning; SVG-eksport bruker samme
-resultat og tema. Ingen separat Fyne-layout som tolker språkreglene på nytt.
-Fyne-kontroller gjenbrukes særlig for tekstinntasting, fokus og tastatur. Et helt
-UI som ett SVG-bilde er ikke interaktivt uten ekstra hendelses- og treffhåndtering.
+Layout outputs identities, rectangles, clipping, text measurements and resources. Fyne and SVG share geometry/theme; no second Fyne interpretation of language rules. Reuse native controls for text entry, focus and keyboard. One SVG image is not interactive without hit/event handling.
 
-Fyne har SVG-bilder og egne widgetrenderere, men bilde-/tekst-/klippstøtten for vår
-konkrete SVG-profil må prøves. Ingen garanti om pikselidentiske rendererresultater.
-[SVG-bilder](https://docs.fyne.io/canvas/image/),
-[widgetrenderere](https://docs.fyne.io/extend/custom-widget/).
+Fyne supports SVG/custom renderers, but actual image/text/clipping coverage must be tested; no pixel-identical rendering guarantee. [SVG images](https://docs.fyne.io/canvas/image/), [custom widgets](https://docs.fyne.io/extend/custom-widget/).
 
-Markdown er fortsatt ønsket innhold, inkludert Mermaid. En avgrenset innholdsport
-må definere profil, tekstmåling, ressurser og diagramdekning. Fyne RichText er ikke
-automatisk full XFMD-kompatibilitet. Vi bygger ikke en ny Mermaid-parser.
-Første prøve krever enkel Markdown; full innholdsdekning er en egen milepæl.
-Dokumentasjon kan inkludere SVG som et statisk bilde uten SDUI-runtime.
+Markdown, including Mermaid, remains desired content. Define bounded provider profiles, measurement, resources and diagram coverage. RichText does not automatically equal XFMD compatibility. Do not build another Mermaid parser. Start with simple Markdown; full coverage is separate. Documentation can embed static SVG without SDUI runtime.
 
-## Tilstand, binding og reload
+## State, binding and reload
 
-Logisk widgetreferanse består av sesjon, instansbane og generation. Omplassering
-bevarer kompatibel identitet; sletting/typebytte invaliderer gamle referanser.
-UI skiller akseptert verdi fra brukerens draft. Programmatisk endring er ikke et
-nytt brukerklikk. Runtime kontrollerer typer, enabled og revisjon før dispatch.
-Se [runtime-kontrakten](runtime-contract.md) for videre kontraktarbeid.
+Logical references contain session, instance path and generation. Movement preserves compatible identity; deletion/type changes invalidate references. Separate accepted values/drafts; programmatic updates are not clicks. Runtime checks type/enabled/revision before dispatch. [Runtime contract](runtime-contract.md).
 
-Reload bygger en ny validert modell før publisering. Kilde-/bindingsfeil beholder
-siste gyldige modell. Kompatibel verdi/fokus kan videreføres; inkompatible endringer
-krever diagnose og eksplisitt reset/migrering. Utestående callbacks kanselleres eller
-avvises med generation/revisjon; reload skal ikke gjenta domenehandlinger.
+Build/validate candidates before publication. Errors retain last valid model. Preserve compatible values/focus; incompatible changes need diagnostics and explicit reset/migration. Cancel/reject outstanding callbacks by generation/revision; reload must not repeat domain actions.
 
-SDL/SDUI-modell kan skiftes i den kjørende Go-runtime. Endringer i Go-funksjoner
-krever bygg/restart i første løsning. Prosessbytte og stateoverføring er senere
-muligheter, ikke innlastning av modifiserte plugins.
+Running Go runtimes can replace SDL/SDUI models. Initially, Go-function changes require builds/restarts. Process switching/state transfer are later options, not loading modified plugins.
 
-## Kodegenerering og portering
+## Generation and porting
 
-Første Go-generering oppretter samme modell/bindinger som filbasert utviklingsmodus;
-begge bruker samme runtime. En senere direkte kodeoversetting av atferd krever
-samsvarstester mot definert kjøresemantikk. Ikke implementer to SDL-semantikker.
-Genererte filer overskriver aldri håndskrevet domene-Go.
+Initial generated Go constructs the same models/bindings as file-based development, sharing runtime. Later direct behavior compilation requires conformance against defined execution semantics; do not implement two SDL semantics. Generated files never overwrite handwritten domain Go.
 
-Python-frontender og relevante tester var portgrunnlag. Aktive implementasjoner
-er fjernet i G5-M4 etter verifisert port; fryste testdata beholdes. Dette gir ingen bakoverkompatibilitet for SDUI 0.1. SDL design-core er en separat profil, nå 0.5; eldre aktive SDL-profiler er
-erstattet gjennom V1–V4, uavhengig av SDUI-versjonen.
+Python frontends/tests provided port evidence. G5-M4 removed active implementations after verified ports; frozen data remain. No SDUI 0.1 compatibility. SDL design-core is separate, now 0.5; V1–V4 replaced older active SDL profiles independently of SDUI versions.
 
-Tidligere FOX/XFMD-/Mermaid-arbeid er gjenbruksgrunnlag, ikke en forutsetning.
-G6 endrer XFMDs dokumentvert i et eget worktree/PR; det gamle BoxUI-arbeidet
-og Mermaid-repoene er bevart.
+Prior FOX/XFMD/Mermaid work offers reuse evidence, not prerequisites. G6 changes XFMD's document host in a separate worktree/PR; old BoxUI/Mermaid work remains preserved.
 
-## Dokumentnavigasjon — levert G6
+## Document navigation — delivered G6
 
-[SDLs navigasjonsdesign](../../SDL/docs/integration/SDL-Navigable-Viewpoints-Design.md) utvider
-verktøylaget med katalogbaserte viewpoints, generering av valgt utsnitt,
-midlertidige dokumentpakker og en valgfri bakgrunnstjeneste. XFMD har navigator
-og hoveddokument i separate Markdown-paneler i PR #38. Dette er en dokumentvert,
-ikke en erstatning for Fyne i SDUI-runtime. SDL-projektor gjenbrukes, og leser-
-launch/IPC ligger i adapteren. Begge sider er implementert og native verifisert;
-[checkpoint tillegg 11](../../SDP/History/checkpoint-1/11-Go-Implementation-and-Navigation.md)
-beskriver profilgrenser og branchstatus.
+[Navigation design](../../SDL/docs/integration/SDL-Navigable-Viewpoints-Design.md) adds directory-based viewpoints, selected generation, temporary packages and optional background service. PR #38 provides XFMD navigator/main Markdown panels; this document host does not replace Fyne runtime. Reuse SDL projection; reader launch/IPC belongs to adapters. Both sides were implemented/native-tested; [supplement 11](../../SDP/History/checkpoint-1/11-Go-Implementation-and-Navigation.md) identifies profile/branch limits.

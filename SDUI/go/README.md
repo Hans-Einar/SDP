@@ -1,38 +1,20 @@
-# SDUI i Go
+# SDUI in Go
 
-G1-M1–M3: SDUI 0.2 lexer/parser og kildeposisjonert AST er implementert uten GUI eller
-I/O i parserpakken. Den taggede JSON-AST-en samsvarer med de eksisterende
-Python-fixturene. CLI-en validerer lokal profil som standard. Normalisering bevarer regioner,
-gjenbruk og instansbaner; 93 porttilfeller sammenlignes med Python-grunnlaget.
+G1-M1–M3 implement SDUI 0.2 lexer/parser and source-positioned AST without GUI/I/O in the parser package. Tagged JSON AST matches Python fixtures. CLI validates the local profile by default. Normalization preserves regions, reuse and instance paths; 93 port cases compare against Python evidence.
 
-Modul: `github.com/Hans-Einar/SDP/SDUI/go`, språkbaseline Go 1.26 (krevd av x/text 0.42.0).
-Verifisert med lokal Go 1.27.1 fra go.dev, kontrollert mot publisert SHA-256.
-Installerte byggeverktøy ligger utenfor repoet.
+Module: `github.com/Hans-Einar/SDP/SDUI/go`; Go 1.26 baseline required by x/text 0.42.0. Verified with local Go 1.27.1 from go.dev, checked against published SHA-256. Build tools are installed outside the repository.
 
-Fra denne katalogen:
+From this directory:
 
 ```sh
 go test ./...
 go run ./cmd/sdui ../examples/concept1-bucking.sdui
 ```
 
-Parseren åpner ikke symbolske SDL-referanser eller kjører callbacks.
-Python-frontenden er fjernet i G5-M4. Fryste portfixturer beholder sammenligningsgrunnlaget.
-[Faseplan](../docs/implementation-plan.md), [bevis](evidence/G1.md).
+Parser opens no symbolic SDL refs and runs no callbacks. G5-M4 removed the Python frontend; frozen port fixtures preserve comparisons. [Phase plan](../docs/implementation-plan.md); [evidence](evidence/G1.md).
 
-CLI tilbyr `--format ast|dump|markdown|svg`,
-`--entry`, `--columns`, `--syntax-only` og `-o`. Flag kan stå før eller etter
-kilden. Eksport til fil publiseres atomisk etter validering og overskriver
-ikke kildefilen. Konsoll/Markdown samsvarer byte-for-byte med Concept1-fixturene.
-De midlertidige prototype-svg/html-inngangene er fjernet i G5-M4;
-generell SVG bruker den felles layoutmotoren.
+CLI supports `--format ast|dump|markdown|svg`, `--entry`, `--columns`, `--syntax-only` and `-o`. Flags may precede/follow source. File export publishes atomically after validation and refuses to overwrite source. Console/Markdown match Concept1 fixtures byte-for-byte. G5-M4 removed temporary prototype-svg/html commands; general SVG uses shared layout.
 
-G2 leverer felles geometri (`layout`), SVG (`svg`), native Fyne-adapter
-(`host/fynehost`) og avgrenset Markdown (`markdown`). [Bevis](evidence/G2.md).
-Generell eksport bruker `--format svg --width 1920 --height 1200` og valgfritt
-`--mermaid-renderer /sti/til/mmdr --resources DIR`. [Profil](../docs/markdown-provider.md).
+G2 supplies shared geometry (`layout`), SVG (`svg`), Fyne adapter (`host/fynehost`) and bounded Markdown (`markdown`). [Evidence](evidence/G2.md). General export: `--format svg --width 1920 --height 1200`, optionally `--mermaid-renderer /path/to/mmdr --resources DIR`. [Profile](../docs/markdown-provider.md).
 
-Native prøve: `go run -tags desktop ./cmd/sdui-fyne -entry bucking
-../examples/concept1-bucking.sdui`. CLI-flaggene må stå før filnavnet i den
-native Go-flag-inngangen. Native bygg trenger OpenGL/X11/C-kompilator på Linux.
-Vanlige pakkeprøver bruker Fynes minnedriver uten skjermserver.
+Native trial: `go run -tags desktop ./cmd/sdui-fyne -entry bucking ../examples/concept1-bucking.sdui`. Native Go-flag entry points require flags before filenames. Linux desktop builds require OpenGL/X11/C compiler. Ordinary package tests use Fyne's memory driver without a display server.

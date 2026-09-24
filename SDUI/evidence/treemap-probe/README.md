@@ -1,30 +1,24 @@
-# Treemap som statisk UI-skisse — 2026-09-21
+# Treemap as static UI sketch — 2026-09-21
 
-Eierens hensikt er et samlet boksoppsett med innhold, tilsvarende tekstdumpen.
-Den tidligere Markdown-rapporten med ASCII og separate sitatblokker oppfyller
-ikke dette visuelle målet.
+The owner wanted one box layout with content, matching the text dump. The earlier
+ASCII-plus-blockquote Markdown report did not meet that visual goal.
 
-Kontroll av lokal mermaid-rs-renderer-kode viste at treemap fordeler horisontalt
-ved partallsdybde og vertikalt ved oddetallsdybde. En rot med tre undergrupper
-og blader i disse gir ønsket rad-/kolonnemønster. Foreldre summerer barnas vekter.
-Prøvens blader 7.5+7.5 / 11.25+22.5+11.25 / 40 gir radene 15/45/40.
+Local renderer inspection found horizontal allocation at even depth and vertical at odd
+depth. A root with three groups and their leaves gives the required pattern. Parents sum
+child weights: 7.5+7.5 / 11.25+22.5+11.25 / 40 produces rows 15/45/40.
 
-Den eksisterende lokale mmdr 0.3.1-binæren ble brukt, uten bygg eller kodeendringer
-i rendererrepoet. Binærhash og kontroller finnes i verification.json. Repoets
-HEAD var afab5e9; dette er ikke bevis på hvilken kilde binæren opprinnelig ble bygget fra.
+The existing local mmdr 0.3.1 binary was used without build/source changes. verification.json
+records its hash/checks. Repository HEAD was afab5e9; this does not prove the binary's build
+source. mmdr consumed view.mmd/config.json and produced SVG/layout.json; rsvg-convert produced
+a visually inspected PNG. Assertions covered row weights, middle columns, equal top columns
+and nonempty labels in all six leaves. The SVG is displayed by the corresponding example
+Markdown document.
 
-Kjørte operasjoner: mmdr med view.mmd og config.json → SVG + layout.json;
-rsvg-convert → PNG; PNG inspisert visuelt. Assertions på layout.json kontrollerte
-radvekter, midtkolonner, like toppkolonner og ikke-tomme etiketter i alle seks blader.
-SVG-en ligger i ../../examples/concept1-bucking.treemap.svg og vises fra tilhørende .md.
+Long top labels disappeared because measured blocks did not fit. Shortening them produced
+six visible labeled boxes. Leaf weights are also printed; metadata/padding mean inner box
+heights are not exactly 15/45/40 of the root.
 
-Viktig funn: lengre toppetiketter ble helt borte fordi de målte tekstblokkene
-ikke fikk plass. Kortere etiketter ga seks synlige bokser med tekst. Vektene
-blir også skrevet som tall i bladene. Metadata/padding gjør at de indre boksenes
-høyder ikke er eksakt 15/45/40 av hele rotflaten.
-
-Dette er en manuelt avgrenset prøve, ingen generell AST→treemap-eksport og ingen
-full Markdown-rendering inni boksene. Ingen garanti om identisk plassering i
-andre Mermaid-motorer. XFMD dokumenterer lokal SVG-bildestøtte, men denne økten
-kjørte ikke XFMD GUI. Markdown bruker derfor forhåndsrendret SVG. Ingen runtime,
-interaktive kontroller, nye parserregler, commit eller push.
+This is a manually bounded probe, not general AST→treemap export or full Markdown in boxes.
+Other Mermaid engines need not place identically. XFMD documents local SVG support, but no
+XFMD GUI was run here; Markdown uses prerendered SVG. No runtime, interactive controls,
+parser rules, commit or push were added.

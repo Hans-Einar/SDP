@@ -1,46 +1,26 @@
-# SDUI — implementert Go-arkitektur
+# SDUI — implemented Go architecture
 
-Oppdatert 2026-09-22. Én aktiv frontend for SDUI 0.2. Kjørbare moduler og
-kommandoer står i [Go-området](../go/README.md); felles design er
-[beskrevet i SDL](../design/README.md).
+Updated 2026-09-22. One active SDUI 0.2 frontend. Executable modules/commands are in the [Go area](../go/README.md); the shared design is [described in SDL](../design/README.md).
 
-| Pakke | Ansvar |
+| Package | Responsibility |
 | --- | --- |
-| go/parser | Lexer, recursive descent, AST/spans, lokale regler og normalisering |
-| go/layout | Én målt geometri; relative dimensjoner, rader, wrap, ratio og klipp |
-| go/markdown | Avgrenset Goldmark-innhold; måling og registrert Mermaid-provider |
-| go/svg | Statisk eksport fra samme geometri, Go Regular-glypher og native kontrollutseende |
-| go/presentation | Strukturell konsoll-/Markdown-dump og avgrenset kontrollgalleri |
-| go/runtime | Sesjon, handles, accepted/draft, typed events og atomiske propertybatches |
-| go/reload | Validerte kandidater og bevaring av kompatibel state/identitet |
-| go/host/fynehost | Native input/button, fokus/tastatur og UI-trådpublisering |
-| go/codegen | Uavhengige typede Go-konstruktører for Document/Root |
-| go/cmd | CLI og native komposisjon; filtilgang skjer her, ikke i parseren |
+| go/parser | Lexer, recursive descent, AST/spans, local rules and normalization |
+| go/layout | One measured geometry; relative dimensions, rows, wrap, ratio and clipping |
+| go/markdown | Bounded Goldmark content; measurement and registered Mermaid provider |
+| go/svg | Static export using shared geometry, Go Regular glyphs and native-control appearance |
+| go/presentation | Structural console/Markdown dumps and bounded control gallery |
+| go/runtime | Session, handles, accepted/draft, typed events and atomic property batches |
+| go/reload | Validated candidates and compatible state/identity preservation |
+| go/host/fynehost | Native input/button, focus/keyboard and UI-thread publication |
+| go/codegen | Independent typed Go constructors for Document/Root |
+| go/cmd | CLI and native composition; file access belongs here, not in parser |
 
-Parse → Normalize/Compile produserer Document og ekspanderte Instance-trær.
-AST-JSON er tagget sdui-ast/0.2. Span er halvlukkede UTF-8-byteområder med
-ettbaserte Unicode-linje-/kolonneposisjoner. Node bevarer grupper, rader,
-regioner og suffix-formatering. Runtime kopierer inputmodeller; Go-structs er
-ikke språklig immutable. Ikke muter en modell som er i bruk av en vert.
+Parse → Normalize/Compile produces Document and expanded Instance trees. AST JSON is tagged sdui-ast/0.2. Spans are half-open UTF-8 byte ranges with one-based Unicode line/column positions. Nodes preserve groups, rows, regions and suffix formatting. Runtime copies input models; Go structs are not language-level immutable. Do not mutate models in use by a host.
 
-Eksplisitte widgetnavn gir offentlige instansbaner; anonyme segmenter har
-syntetiske navn. Session/Path/Generation/Kind identifiserer handles.
-Reload bevarer kompatible navngitte instanser, accepted/draft og fokus;
-sletting/typebytte invaliderer tidligere handles. Kilde- og bindingsfeil beholder
-siste gyldige modell. Kildewatchere leverer kandidater gjennom fyne.Do.
+Explicit widget names produce public instance paths; anonymous segments use synthetic names. Session/Path/Generation/Kind identify handles. Reload preserves compatible named instances, accepted/draft and focus; deletion/type changes invalidate old handles. Source/binding failures retain the last valid model. Source watchers publish candidates through fyne.Do.
 
-Layout får vertens tilgjengelige område; kilde har ingen pikselbredde/-høyde.
-Barn bruker sin nærmeste kildeancestor, og `{16:9,<->}` avleder høyde fra fylt
-bredde. Fonten forblir logiske DIP ved resize. SVG og Fyne deler rektangler,
-tekstmål og klipp, men native kontroller har vertens rasterisering/tema.
+Layout receives the host's available area; source has no pixel width/height. Children use their nearest source ancestor; `{16:9,<->}` derives height from filled width. Fonts remain logical DIP during resize. SVG and Fyne share rectangles, text measurements and clipping; native controls use host rasterization/theme.
 
-SDL-adapteren ligger i SDL/go/bridge. Parserens ref/callback/
-setHandle er data; komposisjonen registrerer SDL-modul, Go-funksjon og typed
-bridge.Plan. Action-core 0.1 gir eksplisitt avgrenset kjøring. En allerede
-akseptert Go-domenetransaksjon kan ikke rulles tilbake hvis senere UI-publisering
-feiler; det gjøres ingen automatisk replay. Se [runtimekontrakten](runtime-contract.md).
+The SDL adapter lives in SDL/go/bridge. Parser ref/callback/setHandle are data; composition registers SDL modules, Go functions and typed bridge.Plan. Action-core 0.1 provides explicitly bounded execution. An accepted Go domain transaction cannot roll back if later UI publication fails; there is no automatic replay. See the [runtime contract](runtime-contract.md).
 
-Grenser og reelle prøver: [G1](../go/evidence/G1.md), [G2](../go/evidence/G2.md),
-[G3](../go/evidence/G3.md), [G4](../../SDL/go/evidence/G4.md),
-[G5](../../SDL/go/evidence/G5.md). Ingen alternativ parser i
-SVG/Fyne/XFMD, ingen Rust-uttrekkscrate eller obligatorisk C-ABI.
+Limits and actual trials: [G1](../go/evidence/G1.md), [G2](../go/evidence/G2.md), [G3](../go/evidence/G3.md), [G4](../../SDL/go/evidence/G4.md), [G5](../../SDL/go/evidence/G5.md). No alternative SVG/Fyne/XFMD parser, extracted Rust crate or mandatory C ABI.

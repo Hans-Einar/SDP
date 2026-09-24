@@ -1,28 +1,28 @@
 # DBML
 
-[Katalog](README.md) · Kategori: **Databasemodell-/diagram-DSL** · Research: **2026-09-10**
+[Catalogue](README.md) · Category: **Database model/diagram DSL** · Research: **2026-09-10**
 
-## Formål og abstraksjonsnivå
+## Purpose and abstraction level
 
-Tekstlig beskrivelse av databaser: tabeller, kolonner, indekser og relasjoner. Brukes blant annet av dbdiagram.
+Textual database descriptions: tables, columns, indexes and relations. Used by dbdiagram, among others.
 
-## Modellmekanismer
+## Model mechanisms
 
-Identitet: schema-/tabell-/kolonnenavn. Relasjoner: refs og keys. Contracts: databaseform, ikke komplette tjenestecontracts. Views: ER-diagram via verktøy. Gjenbruk/annotations og SQL-import/eksport avhenger av støttede constructs.
+Identity: schema/table/column names. Relations: refs/keys. Contracts: database shape, not complete service contracts. Views: tool-generated ER diagrams. Reuse/annotations and SQL import/export depend on supported constructs.
 
-## Styrker og begrensninger — vår vurdering
+## Strengths and limitations — our assessment
 
-**Styrke:** Kompakt og lesbar modell for et avgrenset data-viewpoint. Et godt eksempel på verdien av et lite domeneorientert språk.
+**Strength:** Compact, readable model for a bounded data viewpoint; illustrates the value of a small domain-oriented language.
 
-**Begrensning:** En database-relasjon er ikke en feature-pathway. SQL-dialekter og import/eksport kan gi tap; egnethet må vurderes på den faktiske databasen.
+**Limitation:** Database relations are not feature pathways. SQL dialect/import/export differences may lose information; assess the actual database.
 
-## Historikk, endring og transitions
+## History, change and transitions
 
-Tekstversjonering er mulig; dokumentert struktur er ikke i seg selv en kjørbar, tapsfri migrasjonsplan. Rename og datatransformasjoner må håndteres separat.
+Text versioning is possible; documented structure alone is not an executable, lossless migration plan. Handle renames/data transformations separately.
 
-## Illustrativt eksempel
+## Illustrative example
 
-Illustrativ datarelasjon; ikke forslag til Ponsse-database. Eksemplet er ikke parser-/runtime-testet.
+Data relation, not a proposed Ponsse database. The example has not been parser/runtime tested.
 
 ```text
 Table readings {
@@ -36,13 +36,13 @@ Table sessions {
 Ref: readings.session_id > sessions.id
 ```
 
-## Verktøy, vedlikehold og vilkår
+## Tools, maintenance and terms
 
-Offisiell språkguide og repository er tilgjengelige. DBML-kode: Apache-2.0 ifølge metadata. Det gir ikke automatisk samme vilkår for den hostede dbdiagram-tjenesten.
+Official guide/repository available. Metadata lists DBML code as Apache-2.0; hosted dbdiagram services do not automatically share those terms.
 
-## Primærkilder
+## Primary sources
 
-Alle kilder kontrollert 2026-09-10; se katalogens metode for evidens- og lisensbegrensninger.
+All sources checked on 2026-09-10; see the catalogue methodology for evidence and licensing limits. Translation does not refresh these dated findings.
 
-- [DBML språkguide](https://dbml.dbdiagram.io/docs/)
-- [Offisielt repository; metadata kontrollert via GitHub API](https://github.com/holistics/dbml)
+- [DBML language guide](https://dbml.dbdiagram.io/docs/)
+- [Official repository; metadata checked through GitHub API](https://github.com/holistics/dbml)

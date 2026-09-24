@@ -4,11 +4,11 @@ Version: **design-core 0.5 — draft**
 
 Date: 2026-09-22
 
-Go-port G4-M1 implementert 2026-09-22: [frontend og bevis](../../go/README.md).
-Ingen nye språkregler innføres av porten.
+Go port G4-M1 implemented on 2026-09-22: [frontend and evidence](../../go/README.md).
+The port introduces no new language rules.
 
-V1 mål/bidrag/allokering implementert 2026-09-22. Seksjon 13 og videre beskriver
-framtidig språkarbeid; gjeldende implementert grammatikk er `design-core 0.5`.
+V1 goals/contributions/allocation implemented on 2026-09-22. Section 13 onwards
+describes future language work; current implemented grammar is `design-core 0.5`.
 
 Status clarified 2026-09-24: this document has mixed authority. Sections 1–11
 specify the bounded structural core together with the registered data, Channel
@@ -187,36 +187,15 @@ view can derive indirect containment without storing those derived edges as
 new immediate relations. Provided capabilities do not automatically propagate
 up the containment hierarchy.
 
-### 5.1 V1 — mål, bidrag og allokering
+### 5.1 V1 — goals, contributions and allocation
 
-`pursues`, `supports` og `contributes-to` bevarer mange-til-mange-forhold.
-Et direkte Functionality-bidrag til UseCase krever ingen Feature. En Feature
-kan mangle bidrag, og en UseCase kan mangle Actor; modellen er da ufullstendig,
-men strukturelt gyldig. Viewpoints viser hull uten å opprette mellomledd.
-Feature er ikke subtype eller synonym for Capability.
+`pursues`, `supports` and `contributes-to` preserve many-to-many relationships. Direct Functionality contributions to UseCase require no Feature. Features may lack contributions and UseCases may lack Actors: incomplete but structurally valid. Viewpoints expose gaps without inventing intermediaries. Feature is neither a Capability subtype nor synonym.
 
-`allocated-to` lagres som `Allocation(subject, container, mode, span)` i AST,
-med posisjonerte Identifier-argumenter. Alle tre argumenter typekontrolleres.
-Flere forskjellige Containers for samme Functionality/Mode avvises med
-`ALLOCATION_CARDINALITY`. Samme Functionality kan plasseres forskjellig i ulike
-modi; slike plasseringer er alternative kontekster, ikke samtidige instanser.
-Kopier eller flere samtidige realiseringer trenger egne Functionality-identiteter.
-Duplikatfakta avvises som ellers. Manglende allokering er uspesifisert.
-Ingen allokering arves fra `contains`, eier, navn eller en annen Mode. Eierskap
-er logisk ansvar; allokering er kjørekontekst. Denne profilen implementerer ikke
-System, deployer, prosesser, startrekkefølge, modusaktivering eller instansbinding.
+`allocated-to` is stored as `Allocation(subject, container, mode, span)` in AST, with source positions for all three identifiers. Multiple distinct Containers for the same Functionality/Mode are rejected with `ALLOCATION_CARDINALITY`. A Functionality may be allocated differently across modes; these are alternative contexts, not concurrent instances. Copies/concurrent realizations need separate Functionality identities. Duplicate facts are rejected normally; absent allocation is unspecified. No allocation inherits from `contains`, ownership, names or another Mode. Ownership is logical responsibility; allocation is execution context. This profile implements no System, deployer, processes, startup ordering, mode activation or instance binding.
 
-VP01 viser deklarerte mål og direkte/Feature-formidlede bidrag som en merket
-flowchart, delt i bruksmålskart og Feature-bidragskart for lesbarhet.
-Modellen er visningens omfang; ingen formell System-grense oppdiktes.
-VP07 lager ett Feature-utsnitt per eksplisitt allokeringsmodus, med bidrag,
-logiske eiere og Container-plasseringer. Uallokerte bidrag vises også og listes
-som hull i den viste modusen. Alle piler tilsvarer nøyaktig ett kildefaktum;
-modus fremgår av tegningstittel og faktaregister, uten implisitt arv.
+VP01 shows declared goals and direct/Feature-mediated contributions as labeled flowcharts, split into use-case and Feature-contribution maps for readability. Model scope defines view scope; no formal System boundary is invented. VP07 produces a Feature selection per explicit allocation mode, with contributions, logical owners and Container placements. Unallocated contributions remain visible and are listed as gaps for that mode. Every arrow maps to exactly one source fact; diagram titles/fact registers identify modes without implicit inheritance.
 
-0.2 erstatter den aktive 0.1-profilen. Lokale parserprøver og SDL/SDUI-modellen
-er portert; ingen gammel parser eller fallback beholdes. Historiske checkpoint-
-og MVP1-kilder er ikke automatisk portert eller erklært kompatible.
+0.2 replaces the active 0.1 profile. Local parser tests and SDL/SDUI models were ported; no old parser/fallback remains. Historical checkpoint/MVP1 sources are not automatically ported or declared compatible.
 
 ## 6. Adjectives as typed properties
 
@@ -243,26 +222,15 @@ pending until their scope/conditions and validation rules are defined.
 Reject adjective-prefix alternatives such as `deterministic functionality
 ValidateBindings.` They would create a second way to encode the same property.
 
-V2 utvider de lukkede type-, relasjons- og egenskapstabellene med den
-[normative data-/wireprofilen](../profiles/SDL-Data-Contract-Profile.md). Denne inngår i 0.3;
-Dataset/Datagram/Database er nå implementerte begreper i denne avgrensningen.
+V2 extends the closed type/relation/property tables through the [normative data/wire profile](../profiles/SDL-Data-Contract-Profile.md), included in 0.3. Dataset/Datagram/Database are implemented within that scope.
 
-V3s [Channel-/scenarioprofil](../profiles/SDL-Channel-Scenario-Profile.md) inngår i 0.4.
-Den avgrenser de videre kandidatene i seksjon 13–15; de blir ikke automatisk språkregler.
+V3's [Channel/scenario profile](../profiles/SDL-Channel-Scenario-Profile.md) joins 0.4. It bounds the broader section 13–15 candidates; they do not automatically become language rules.
 
-V4s [leveranseplanprofil](../profiles/SDL-Delivery-Plan-Profile.md) inngår i 0.5. Den utvider
-relasjonstabellen og Activity-egenskapene med addresses/delivers/depends-on og
-implementation-status. Dette er planfakta, ikke runtime-utføring.
+V4's [delivery-plan profile](../profiles/SDL-Delivery-Plan-Profile.md) joins 0.5, adding addresses/delivers/depends-on and implementation-status to relations/Activity properties. These are plan facts, not runtime execution.
 
 ## 7. Core productions and registered profile extensions
 
-Data-, Channel- og leveranseplanprofilene lenket ovenfor er normative tillegg
-til disse kjerneproduksjonene; deres type-/verb-/egenskapsregistre utvider de
-avgrensede tabellene nedenfor. Bare den samlede 0.5-profilen er aktiv.
-
-EBNF notation: quoted strings are literal tokens, comma is concatenation,
-`|` is choice, and braces mean zero or more repetitions. Whitespace separates
-tokens; Section 9 fixes canonical serialization. Identifiers follow Section 3.
+The linked data, Channel and delivery-plan profiles are normative extensions to these core productions. Their type/verb/property registries extend the bounded tables below. Only the combined 0.5 profile is active.
 
 ```text
 model = header, { declaration }, { statement } ;
@@ -430,10 +398,10 @@ as an unknown property; missing mandatory Mode; incorrect qualifier type;
 incorrect property subject type; incorrect property value type. The lines are
 independent negative examples, not one complete model.
 
-### 10.3 Bruksmål, bidrag og alternative kjørekontekster
+### 10.3 Use cases, contributions and alternative execution contexts
 
-Direkte og Feature-formidlet bidrag er begge eksplisitte fakta. Eierskapet er
-uendret når samme ansvar plasseres i forskjellige Containers i ulike modi.
+Direct and Feature-mediated contributions are explicit facts. Ownership remains
+unchanged when the same responsibility is allocated to different Containers in different modes.
 
 ```design-core
 language design-core version 0.5.
@@ -455,9 +423,8 @@ ValidateModel contributes-to StructuralChecking.
 Validator owns ValidateModel.
 ```
 
-To forskjellige Containers i samme Mode ville feilet med
-`ALLOCATION_CARDINALITY`. Å bytte Feature med Capability i `contributes-to`
-ville feilet med `OBJECT_TYPE_MISMATCH`.
+Two distinct Containers in one Mode would fail with `ALLOCATION_CARDINALITY`.
+Replacing Feature with Capability in `contributes-to` would fail with `OBJECT_TYPE_MISMATCH`.
 
 ## 11. Updating the other documents
 

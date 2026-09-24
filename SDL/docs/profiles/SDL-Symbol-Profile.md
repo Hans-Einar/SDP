@@ -1,30 +1,11 @@
-# SDL symbolprofil 1
+# SDL symbol profile 1
 
-G6-M5: kildeidentitet/type følger hver figur; relasjon og kildefaktum følger
-hver kant. Mermaid-rs-renderer eier fortsatt plassering og ruting. SDL-verktøyets
-presentasjonsadapter leser dens eksisterende `--dumpLayout`-kontrakt og tegner
-faste SVG-figurer fra samme node-/kantgeometri. Ingen parser eller layoutmotor
-kopieres inn. Backendens node-ID-er, kanter og geometri kontrolleres før tegning.
+G6-M5: each figure carries source identity/type; each edge carries relation and source fact. Mermaid-rs-renderer still owns placement/routing. SDL's presentation adapter reads its existing `--dumpLayout` contract and draws consistent SVG symbols using the same node/edge geometry. It copies neither parser nor layout engine. Backend node IDs, edges and geometry are checked before drawing.
 
-Actor: menneskefigur med hode, kropp, armer og ben. UseCase: ellipse.
-Feature: kort med fane. Functionality: avrundet kort med sidemarkør.
-Capability: sekskant. Activity: avrundet aktivitetskort. Mode: stiplet
-kontekstramme. Container: dobbel grense. Unit: enkel grense. Interface: merket
-portkort. Database: sylindersymbol for persistent datakilde. Øvrige data-/
-kontraktobjekter bruker kort med eksplisitt typeetikett. Farge er ikke typekoden.
+Actor: human figure with head, torso, arms and legs. UseCase: ellipse. Feature: tabbed card. Functionality: rounded card with side marker. Capability: hexagon. Activity: rounded activity card. Mode: dashed context frame. Container: double border. Unit: single border. Interface: labeled port card. Database: cylinder representing a persistent data source. Other data/contract objects use cards with explicit type labels. Color alone does not encode type.
 
-`consumes` bruker stiplet dependency med åpen pil mot Interface.
-Andre strukturelle relasjoner har merkede SDL-piler. `realizes` betyr fortsatt
-bidrag til realisering og får ingen UML-hul trekant. `contains`/`owns` blir aldri
-composition. `uses` i Channel-kontrakten er deltakelse/rolle, ikke UML Usage.
-Ingen System-grense eller include/extend-relasjon utledes.
+`consumes` uses a dashed dependency with an open arrow toward Interface. Other structural relations use labeled SDL arrows. `realizes` still means contribution to realization and receives no UML hollow triangle. `contains`/`owns` never become composition. Channel-contract `uses` is participation/role, not UML Usage. No System boundary or include/extend relation is inferred.
 
-SVG er symbolprofilens autoritative bilde. Mermaid-kilden er tilgjengelig som
-portabel, merket strukturvisning; den hevder ikke samme figurer i alle lesere.
-Sequence og packet bruker eksisterende, prøvde backend-former. Native
-`usecase-beta` er ikke valgt: den lokale backendens tidligere prøve ga feil
-figurer til tross for exitkode 0. Klassediagram krever egen eksplisitt profil.
+SVG is the symbol profile's authoritative image. Mermaid source remains available as a portable, labeled structural view; it does not claim identical figures in every reader. Sequence and packet use existing tested backend forms. Native `usecase-beta` was not selected: an earlier local backend probe produced incorrect figures despite exit code 0. Class diagrams require their own explicit profile.
 
-Grunnlag: [Mermaid flowchart](https://mermaid.js.org/syntax/flowchart.html),
-[Mermaid classDiagram](https://mermaid.js.org/syntax/classDiagram) og
-[prosjektets semantiske notasjonsregler](../integration/SDL-Viewpoint-Levels-and-Notation.md).
+Basis: [Mermaid flowchart](https://mermaid.js.org/syntax/flowchart.html), [Mermaid classDiagram](https://mermaid.js.org/syntax/classDiagram) and [project notation semantics](../integration/SDL-Viewpoint-Levels-and-Notation.md).

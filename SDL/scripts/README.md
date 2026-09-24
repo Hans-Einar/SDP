@@ -1,36 +1,26 @@
-# Åpne SDL-dokumentasjonen
+# Open SDL documentation
 
-Kjør `sdl-design` når kommandoen er lagt i PATH. Scriptet kan også kjøres direkte
-fra denne katalogen som `./sdl-design`, eller fra repo-roten som
-`./SDL/scripts/sdl-design`. Arbeidskatalogen ellers er irrelevant.
+Run `sdl-design` when installed in PATH, `./sdl-design` from this directory, or `./SDL/scripts/sdl-design` from the repository root. Otherwise the working directory is irrelevant.
 
-Scriptet bruker **ferdigbygde** programmer. Det kompilerer ikke Go, starter ikke
-daemon og åpner ikke den forhåndsgenererte full-eksporten. Det gjør følgende:
+The launcher uses **prebuilt** programs. It does not compile Go, start a daemon or open the pregenerated full export. It:
 
-1. Leser prosjektets `SDUI/design/architecture.design` med det registrerte SDL-verktøyet.
-2. Genererer navigator og oversikter i en privat midlertidig katalog (14 Markdown-sider og ett manifest, ingen detaljdiagrammer).
-3. Åpner hovedsiden `index.md` i XFMDs hovedpanel og `navigator.md` i sidepanelet.
-4. Registrerer verktøy, kilde, prosjekt og Mermaid-renderer. Klikk på `sdl-view://` kjører SDL-verktøyet mot kilden slik den er ved klikket.
-5. Fjerner oppstartsfilene når vinduet lukkes. XFMD eier levetiden til detaljvisningene.
+1. Reads this project's `SDUI/design/architecture.design` using the registered SDL tool.
+2. Generates navigator/overviews in a private temporary directory: 14 Markdown pages and one manifest, no detailed diagrams.
+3. Opens `index.md` in XFMD's main panel and `navigator.md` in its side panel.
+4. Registers tool, source, project and Mermaid renderer. `sdl-view://` clicks run the SDL tool against source as it exists at click time.
+5. Removes startup files when the window closes. XFMD owns detailed-view lifetimes.
 
-Navigatoren er et snapshot fra oppstart; start på nytt for å oppdatere dens liste
-etter strukturelle modellendringer. Detaljutvalg validerer alltid gjeldende SDL.
-Ugyldig kilde gir en diagnose og beholder siste visning.
+The navigator is a startup snapshot; restart to refresh its inventory after structural model changes. Detail selection always validates current SDL. Invalid sources report diagnostics and retain the last view.
 
-Standardprogrammer og valgfrie overstyringer:
+Defaults and optional overrides:
 
-| Variabel | Standard |
+| Variable | Default |
 | --- | --- |
-| SDP_SDL_TOOL | `$HOME/.local/lib/sdp/sdl` — ferdigbygd SDL CLI |
-| SDP_XFMD | `xfmd-sdl-navigation/build/xfmd` i søsterrepoet |
-| SDP_MMDR | `mermaid-rs-renderer/target/debug/mmdr` i søsterrepoet |
-| SDP_SDL_SOURCE | Dette repoets `SDUI/design/architecture.design` |
+| SDP_SDL_TOOL | `$HOME/.local/lib/sdp/sdl` — prebuilt SDL CLI |
+| SDP_XFMD | Sibling `xfmd-sdl-navigation/build/xfmd` |
+| SDP_MMDR | Sibling `mermaid-rs-renderer/target/debug/mmdr` |
+| SDP_SDL_SOURCE | This repository's `SDUI/design/architecture.design` |
 
-`--help` viser bruken. Ett filargument velger en annen SDL-kilde. Manglende
-programmer gir en konkret feil; det skjer ingen automatisk bygging/installasjon.
-`--navigator` og `--sdl-tool` er XFMD-flagg som krever filnavn etter seg;
-launch-scriptet fyller dem ut. Det vanlige installerte XFMD-programmet velges
-ikke automatisk, siden det kan mangle navigasjonsintegrasjonen fra PR #38.
+`--help` displays usage. One file argument selects another SDL source. Missing executables produce explicit errors, without automatic builds/installations. XFMD's `--navigator` and `--sdl-tool` require file arguments; the launcher supplies them. It does not automatically select the ordinary installed XFMD, which may lack PR #38 navigation integration.
 
-Full eksport under `SDUI/design/viewpoints` er det lagrede G5-verifikasjons-/
-eksportresultatet. Den er ikke inngangen for daglig kildebasert browsing.
+The full `SDUI/design/viewpoints` export is the saved G5 verification/export result, not the daily source-based browsing entry point.

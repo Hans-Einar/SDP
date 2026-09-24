@@ -1,28 +1,28 @@
 # BPMN 2.0.2
 
-[Katalog](README.md) · Kategori: **Prosessmodell og notasjon** · Research: **2026-09-10**
+[Catalogue](README.md) · Category: **Process model and notation** · Research: **2026-09-10**
 
-## Formål og abstraksjonsnivå
+## Purpose and abstraction level
 
-Forretningsprosesser, oppgaver, hendelser, gateways og samarbeid mellom deltakere. Kan beskrive UseCase-forløp og menneskelige godkjenninger.
+Business processes, tasks, events, gateways and participant collaboration. Can describe UseCase paths and human approvals.
 
-## Modellmekanismer
+## Model mechanisms
 
-Identitet: element-ID-er i XML. Relasjoner: sequence/message flows. Contracts: melding-/deltakergrenser, men payload og software-importregler krever mer. Views: prosess/choreography/collaboration. Extension elements og maskinlesbare XSD/CMOF; eksekvering er motoravhengig.
+Identity: XML element IDs. Relations: sequence/message flows. Contracts: messaging/participant boundaries; payloads and software import rules require more. Views: process/choreography/collaboration. Extension elements and machine-readable XSD/CMOF; execution depends on engines.
 
-## Styrker og begrensninger — vår vurdering
+## Strengths and limitations — our assessment
 
-**Styrke:** God til å gjøre ansvar og beslutningspunkter synlige for eier og andre stakeholders.
+**Strength:** Makes responsibilities and decision points visible to owners/stakeholders.
 
-**Begrensning:** Prosessflyt er ikke et arkitekturkart eller en feature-pathway gjennom kode. Ikke alle gyldige diagrammer er eksekverbare.
+**Limitation:** Process flow is neither an architecture map nor a feature pathway through code. Valid diagrams are not necessarily executable.
 
-## Historikk, endring og transitions
+## History, change and transitions
 
-Runtime-prosessinstanser og motorens prosessversjoner er ikke modellens generelle overgangssemantikk. Flytting av Feature-ansvar trenger eksterne modellkoblinger.
+Runtime process instances and engine process versions are not general model-transition semantics. Moving Feature responsibilities needs external model links.
 
-## Illustrativt eksempel
+## Illustrative example
 
-Illustrativ prosess uten diagram-layout eller motorkonfigurasjon. Eksemplet er ikke parser-/runtime-testet.
+Process without diagram layout or engine configuration. The example has not been parser/runtime tested.
 
 ```xml
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
@@ -35,12 +35,12 @@ Illustrativ prosess uten diagram-layout eller motorkonfigurasjon. Eksemplet er i
 </definitions>
 ```
 
-## Verktøy, vedlikehold og vilkår
+## Tools, maintenance and terms
 
-OMG lister 2.0.2 fra januar 2014 med normative schemafiler. Standardvilkår og valgt editor/runtime-lisens er separate; ingen motor er evaluert.
+OMG lists 2.0.2 from January 2014 with normative schemas. Standard terms and chosen editor/runtime licenses are separate; no engine was evaluated.
 
-## Primærkilder
+## Primary sources
 
-Alle kilder kontrollert 2026-09-10; se katalogens metode for evidens- og lisensbegrensninger.
+All sources checked on 2026-09-10; see the catalogue methodology for evidence and licensing limits. Translation does not refresh these dated findings.
 
 - [OMG BPMN](https://www.omg.org/spec/BPMN/)

@@ -1,578 +1,534 @@
-# Arbeidsdokument: modellbasert og kontrollert programvareutvikling med agenter
+# Working document: model-based, controlled software development with agents
 
-**Dokument-ID:** SDL-MANDATE-STUDY-001  
-**Revisjon:** 0.1, 2026-09-14  
-**Status:** Renskrevet eierintensjon med innledende studie og eksplisitt merkede forslag. Ikke vedtatt språk, schema eller implementeringsplan.  
-**Kontekst:** Hans-Einar/SDP, issue #5, #7 / PR #8, #9 og #10.  
-**Målgruppe:** Eieren, arkitekter, designere og agenter som skal undersøke, videreutvikle eller bruke SDP.
+**Document ID:** SDL-MANDATE-STUDY-001  
+**Revision:** 0.1, 2026-09-14  
+**Status:** Edited owner intent with an initial study and explicitly labeled proposals. Not an adopted language, schema or implementation plan.  
+**Context:** Hans-Einar/SDP, issues #5, #7 / PR #8, #9 and #10.  
+**Audience:** Owner, architects, designers and agents investigating, developing or using SDP.
 
-## 0. Les dette først
+## 0. Read this first
 
-Vi ønsker en standardisert utviklingsmodell som gjør det mulig å styre agentdrevet programvareutvikling gjennom en kompakt, maskinlesbar beskrivelse av systemets hensikt, struktur, ansvar, kontrakter og atferd. Verktøy skal kunne utlede oppgavetilpasset kontekst, endringsbeskrivelser og kontroller fra modellen. Store endringer skal skje gjennom eksplisitte revisjoner og faseoverganger, mens læring og videreutvikling fortsatt er mulig.
+We want a standardized development model for directing agent-driven software development through compact, machine-readable descriptions of system purpose, structure, responsibilities, contracts and behavior. Tools should derive task-specific context, change descriptions and checks. Major changes should follow explicit revisions and phase transitions while allowing learning and further development.
 
-Det sentrale problemet er at lokale kodeendringer ofte mangler en forstått sammenheng fra brukerbehov til faktisk virkning gjennom hele systemet. Gjentatte lokale reparasjoner kan skjule manglende integrasjon, flytte ansvar og gradvis bryte arkitekturen. Modellen, arbeidsprosessen og kontrollene skal sammen gjøre slike avvik synlige og håndterbare.
+Local code changes often lack an understood connection from user needs to actual effects across the system. Repeated local repairs can conceal missing integration, move responsibilities and gradually violate architecture. The model, process and checks should make these deviations visible and manageable.
 
-Vi ønsker detalj der den styrer utviklingen, men ikke en manuelt vedlikeholdt kopi av hele implementasjonen. Maskinelle svar må oppgi hvilke egenskaper, kodeområder og kjørevarianter de faktisk dekker. Ukjent eller ukontrollert samsvar skal være synlig.
+We want detail where it directs development, not a manually maintained copy of the whole implementation. Machine-generated answers must identify covered properties, code areas and execution variants. Unknown or unchecked conformance must remain visible.
 
-**Leserveiledning:** Del I renskriver mandatet. Del II er en innledende studie og forslag til hvordan det kan realiseres. Del III angir åpne spørsmål, mulige neste undersøkelser og regler for videre arbeid. En agent som får dette dokumentet, skal ikke behandle forslagene som allerede godkjente SDP-kontrakter.
+**Reading guide:** Part I restates the mandate. Part II provides an initial study and implementation proposals. Part III lists questions, possible investigations and continuation rules. Agents must not treat proposals as approved SDP contracts.
 
-Snarveier: [Mandat](#del-i--mandat) · [Faser og læring](#4-faser-revisjoner-og-læring) · [Foreslått endringsmodell](#11-forslag-til-fase--og-endringsmodell) · [Fra design til implementasjon](#13-fra-designbeskrivelse-til-implementasjon) · [Standarder](#15-standarder-rundt-designbeskrivelse-livsløp-og-implementasjon) · [Verifikasjonsgrenser](#17-hva-kan-verifiseres-programmatisk) · [Videre arbeid](#del-iii--videre-arbeid)
+Shortcuts: [Mandate](#part-i--mandate) · [Phases and learning](#4-phases-revisions-and-learning) · [Change model](#11-proposed-phase-and-change-model) · [Implementation](#13-from-design-description-to-implementation) · [Standards](#15-standards-for-design-lifecycle-and-implementation) · [Verification limits](#17-what-can-be-verified-programmatically) · [Further work](#part-iii--further-work)
 
-## 1. Proveniens, status og forholdet til eksisterende SDP
+## 1. Provenance, status and existing SDP
 
-### 1.1 Hva som er grunnlag for dette dokumentet
+### 1.1 Sources
 
-Renskrivingen bygger på eierens innspill i samtalen 14. september 2026, inkludert den gjengitte Gemini-dialogen. Den bygger også videre på eksisterende SDP-arbeid; dette er ikke en ny start som opphever tidligere beslutninger.
+Based on owner input from 14 September 2026, including the quoted Gemini dialogue, and existing SDP work. This does not restart the project or revoke earlier decisions.
 
-| Spor | Kontrollert status 2026-09-14 | Betydning her |
+| Track | Status checked 2026-09-14 | Meaning here |
 | --- | --- | --- |
-| [Issue #5](https://github.com/Hans-Einar/SDP/issues/5) / PR #6 | Studien er akseptert og merget; #5 er lukket. Akseptert merge er `2cb49c02145621b099c47d05786716598e414e75`. | Evidensgrunnlag og vedtatt overordnet retning videreføres. |
-| [Issue #7](https://github.com/Hans-Einar/SDP/issues/7) / [PR #8](https://github.com/Hans-Einar/SDP/pull/8) | Åpent, foreløpig pilotarbeid. PR #8 er draft på `ea9fcf1cdd3198aeac515b89b55398282c463838`. Siste statuskommentar sier at rework mangler ny uavhengig verifikasjon/review. | Dette dokumentet erklærer ikke pilotkontrakten ferdig eller reviewfunn lukket. |
-| [Issue #9](https://github.com/Hans-Einar/SDP/issues/9) | Åpent Steering- og koordineringsspor. | Samlet videre retning og samordning hører hjemme her. |
-| [Issue #10](https://github.com/Hans-Einar/SDP/issues/10) / [PR #11](https://github.com/Hans-Einar/SDP/pull/11) | Modellinnspill og research. PR #11 er draft på `319ee2a43fe8a05bc3aac0860ff937bba57819ee`. | Eksisterende kartlegging av 32 språk/notasjoner er underlag, ikke språkvalg. |
+| [Issue #5](https://github.com/Hans-Einar/SDP/issues/5) / PR #6 | Study accepted and merged; #5 closed. Accepted merge: `2cb49c02145621b099c47d05786716598e414e75`. | Preserve evidence and accepted overall direction. |
+| [Issue #7](https://github.com/Hans-Einar/SDP/issues/7) / [PR #8](https://github.com/Hans-Einar/SDP/pull/8) | Open preliminary pilot. Draft PR #8 at `ea9fcf1cdd3198aeac515b89b55398282c463838`. Latest status says rework lacks renewed independent verification/review. | Does not declare pilot contracts complete or findings closed. |
+| [Issue #9](https://github.com/Hans-Einar/SDP/issues/9) | Open Steering/coordination track. | Home for overall direction and coordination. |
+| [Issue #10](https://github.com/Hans-Einar/SDP/issues/10) / [PR #11](https://github.com/Hans-Einar/SDP/pull/11) | Model input/research. Draft PR #11 at `319ee2a43fe8a05bc3aac0860ff937bba57819ee`. | Existing 32-language survey is evidence, not language selection. |
 
-Kilder til aksept og foreløpig status: [#5 Steering-aksept](https://github.com/Hans-Einar/SDP/issues/5#issuecomment-5368329242), [#7 WIP-status](https://github.com/Hans-Einar/SDP/issues/7#issuecomment-5607093722) og [#10 R04-leveranse](https://github.com/Hans-Einar/SDP/issues/10#issuecomment-5622626432). Dette er en statuskontroll av issue-/PR-informasjon, ikke en ny gjennomgang av #7-koden eller alle reviewfunnene. Issue #10s opprinnelige stopptekst må leses sammen med senere autorisasjon og R04; den beskriver ikke alene dagens leveransestatus.
+Acceptance/status sources: [#5 Steering acceptance](https://github.com/Hans-Einar/SDP/issues/5#issuecomment-5368329242), [#7 WIP status](https://github.com/Hans-Einar/SDP/issues/7#issuecomment-5607093722), [#10 R04 delivery](https://github.com/Hans-Einar/SDP/issues/10#issuecomment-5622626432). These are issue/PR status checks, not renewed review of #7 code or every finding. Read #10's original stop instruction with later authorization and R04; it alone does not establish delivery status.
 
-Eksisterende faglig underlag:
+Existing foundations:
 
-- [Akseptert studieretning](../SDP/Studies/UsageAnalysis/ProposedSDPWorkflow.md).
-- [Språkkatalog med 32 profiler](research/existingDesignLanguages/README.md).
-- [P04-syntese, avgrensninger og sammenligningsforslag](research/README.md).
+- [Accepted study direction](../SDP/Studies/UsageAnalysis/ProposedSDPWorkflow.md).
+- [Catalogue of 32 languages](research/existingDesignLanguages/README.md).
+- [P04 synthesis, limits and proposed comparison](research/README.md).
 
-### 1.2 Hvordan utsagn skal tolkes
+### 1.2 Interpreting statements
 
-| Merking / plassering | Betydning |
+| Label / location | Meaning |
 | --- | --- |
-| Mandat, Del I | Renskrevet eierintensjon. Kravene er mål for utviklingsarbeidet, ikke påstander om eksisterende verktøyfunksjonalitet. |
-| Kildebelagt observasjon | Hva de oppgitte kildene faktisk beskriver, innenfor angitt undersøkelsesomfang. |
-| Forslag / vurdering, Del II | Assistentens forslag til konkretisering. Krever evaluering før det blir normativ SDP. |
-| Åpent spørsmål, Del III | Et spørsmål som ennå ikke er avgjort. |
+| Mandate, Part I | Restated owner intent: development goals, not existing tool capabilities. |
+| Sourced observation | What cited sources describe within the stated investigation scope. |
+| Proposal/assessment, Part II | Assistant proposals requiring evaluation before becoming normative SDP. |
+| Open question, Part III | Undecided matter. |
 
-Denne revisjonen dokumenterer oppdraget og utfører en innledende studie. Den endrer ikke canonical Toolkit eller godkjenner migrasjon av andre prosjekter. De nye Feature-/Functionality-/Channel-begrepene og fasereglene må samordnes med #7/#9 før de eventuelt blir canonical SDP.
+This revision documents the assignment and initial study. It changes no canonical Toolkit contract and approves no project migration. Coordinate Feature/Functionality/Channel concepts and phase rules with #7/#9 before potential adoption.
 
-# Del I — Mandat
+# Part I — Mandate
 
-## 2. Formål og problem som skal løses
+## 2. Purpose and problem
 
-### 2.1 Formål
+### 2.1 Purpose
 
-Utvikle en gjenbrukbar metode og et tilhørende designspråk/verktøygrunnlag for programvareprosjekter der agenter skriver og vedlikeholder mye av koden. En ny agent skal raskt kunne forstå systemet på relevant granularitetsnivå og få presise rammer for en endring, uten å lese store mengder historiske dokumenter.
+Develop a reusable method and associated design-language/tool foundation for projects where agents write and maintain substantial code. A new agent should quickly understand the system at relevant granularity and receive precise change boundaries without reading extensive history.
 
-Metoden skal gi fleksibilitet til å endre arkitektur, design og implementasjon gjennom prosjektets levetid, samtidig som endringene blir eksplisitte, sporbare og kontrollerbare. Rigiditet gjelder særlig ansvar, gjeldende beslutningsgrunnlag, endringsmyndighet og kriterier for å gå videre.
+Allow architecture, design and implementation to evolve while keeping changes explicit, traceable and checkable. Rigor primarily concerns responsibilities, current decision evidence, change authority and progression criteria.
 
-### 2.2 Feilmønsteret vi vil motvirke
+### 2.2 Failure pattern to counter
 
-1. En agent endrer en lavtliggende del av systemet og antar at den ønskede funksjonen dermed virker fra ende til ende.
-2. Nødvendige endringer i andre komponenter, kontrakter, konfigurasjon eller brukerflater overses.
-3. Tester eller praktisk bruk avdekker mangler. Agenten reparerer lokalt uten å revurdere helheten.
-4. Nye lokale løsninger flytter ansvar, dupliserer funksjonalitet eller bryter avtalte grenser.
-5. Systemet kan til slutt se ut til å virke, men implementasjonen har avveket vesentlig fra tiltenkt arkitektur og design.
-6. Senere endringer blir stadig vanskeligere, og eieren mister oversikten over hva som er bygget og hvorfor.
+1. An agent changes a low-level subsystem and assumes the desired function now works end to end.
+2. Necessary changes to other components, contracts, configuration or user interfaces are missed.
+3. Tests/use expose gaps; local repairs proceed without reconsidering the system.
+4. Repairs move responsibility, duplicate functionality or violate boundaries.
+5. The system eventually appears functional while implementation substantially diverges from intended architecture/design.
+6. Later changes become harder; the owner loses track of what was built and why.
 
-Dette er eierens beskrevne erfaring og motivasjon. Dokumentet hevder ikke å ha utført en ny empirisk analyse av alle berørte produktrepoer eller fastslått årsaken til konkrete produktfeil.
+This is the owner's reported experience/motivation, not a new empirical audit of affected products or a proven explanation of specific defects.
 
-### 2.3 Sammenheng med tidligere SDP-retning
+### 2.3 Earlier SDP direction
 
-Ønsket om mindre «agile» tankegang forstås her som mindre ad hoc-prioritering og lokal improvisasjon uten tydelig systemgrunnlag. Det skal samtidig være mulig å lære, levere små vertikale endringer og revidere tidligere valg.
+The desire for less “agile” thinking means less ad hoc prioritization and local improvisation without a system basis. Learning, small vertical deliveries and revisiting decisions remain possible.
 
-Dette viderefører #5s retning: Feature, Refactor eller reell Fix eier intensjonen; issue avgrenser et oppdrag; Slice er et sammenhengende, kontrollerbart resultat. Sprint er valgfri organisering. En fasebasert modell må kunne romme dette uten at en tidlig implementeringsplan blir styrende for all fremtidig utvikling.
+Continue #5's direction: Feature, Refactor or genuine Fix owns intent; an issue bounds an assignment; a Slice provides a coherent, checkable result. Sprint organization is optional. A phase model must accommodate this without letting early implementation plans dictate all future development.
 
-## 3. Ønsket system- og designspråk
+## 3. Desired system/design language
 
-### 3.1 En maskinlesbar designmodell
+### 3.1 Machine-readable model
 
-Systembeskrivelsen skal kunne uttrykkes som faktisk, versjonerbar designkode med definert syntaks og semantikk. En interpreter eller modellkompilator skal kunne laste modellen, kontrollere den og utlede informasjon. Den trenger ikke kjøre produktets funksjonalitet.
+Express system descriptions as versionable design code with defined syntax/semantics. An interpreter/model compiler should load, validate and derive information; it need not execute product functionality.
 
-Vi skal undersøke tre muligheter: bruke et eksisterende designspråk, utvide et eksisterende språk eller definere et eget språk. Språkvalg og implementasjonsteknologi er åpne. Knytning til etablerte standarder og metoder skal bidra til presise begreper og gjennomtenkte prosesser.
+Investigate using an existing language, extending one or defining our own. Language and implementation technology remain open. Established standards/methods should help make concepts and processes precise.
 
-### 3.2 Struktur på flere nivåer
+### 3.2 Structure at multiple levels
 
-Modellen skal kunne beskrive:
+Describe system context, external actors and boundaries; architecture components with responsibilities, contents and relations; *design constituents* with information needed to guide implementation; and bindings to source trees, code areas and actual implementations.
 
-- Systemkontekst, eksterne aktører og systemgrenser.
-- Arkitekturkomponenter med ansvar, innhold og relasjoner.
-- Designbestanddeler, her omtalt som *design constituents*, med det innholdet som er nødvendig for å forstå og styre implementasjonen.
-- Binding til relevant source tree, kodeområder og faktiske implementasjoner.
+Detail may vary by subsystem and phase. Do not automatically require a manually modeled object for every class, method or code line.
 
-Detaljeringsnivået skal kunne variere mellom delsystemer og utviklingsfaser. Det skal ikke automatisk kreves et manuelt designobjekt for hver klasse, metode eller kodelinje.
+### 3.3 First-class cross-cutting objects
 
-### 3.3 Førsteklasses designobjekter på tvers av strukturen
-
-Eieren ønsker særlig å undersøke følgende objekter:
-
-| Objekt | Renskrevet hensikt | Avklaring som fortsatt trengs |
+| Object | Owner intent | Remaining clarification |
 | --- | --- | --- |
-| Feature | Gjøre en varig kapabilitet og dens sammenheng gjennom systemet synlig. | Nøyaktig forhold til brukerbehov, REQ, kvalitetskrav og eksisterende SDP-Feature. |
-| Functionality | Beskrive hvordan funksjonalitet realiseres og henger sammen gjennom systemet. | Grensen mot Feature, funksjon, scenario, pathway, sekvens og tilstandsmaskin. |
-| Channel | Beskrive kommunikasjon mellom selvstendige enheter, med protokoll og kontrakt. | Logisk kontra fysisk kanal, endepunkter, retning, versjonering og støtte for flere deltakere. |
+| Feature | Expose persistent capability and its path through the system. | Relationship to user needs, REQ, quality requirements and existing SDP Feature. |
+| Functionality | Describe realization and connections of functionality across the system. | Boundary against Feature, function, scenario, pathway, sequence and state machine. |
+| Channel | Describe communication between independent units, with protocol/contract. | Logical/physical distinction, endpoints, direction, versioning and multiple participants. |
 
-«Førsteklasses» betyr at objektene kan identifiseres, refereres til, analyseres og endres eksplisitt. De skal knytte sammen den strukturelle modellen; de trenger ikke ha hvert sitt isolerte deltre eller hver sin kopi av komponentene.
+First-class objects can be identified, referenced, analyzed and explicitly changed. They connect the structural model without requiring isolated subtrees or duplicate components. These starting points are not an exhaustive/adopted type hierarchy. Functionality especially needs a definition adding value beyond Feature.
 
-Disse tre er utgangspunkter, ikke et uttømmende eller vedtatt typehierarki. Særlig Functionality trenger en definisjon som tilfører informasjon utover Feature.
+## 4. Phases, revisions and learning
 
-## 4. Faser, revisjoner og læring
+### 4.1 Phase-based development
 
-### 4.1 Fasebasert utvikling
+Support phases such as Concept/MVP with named iterations Concept1, Concept2 and MVP1. Link architecture, design and implementation to iteration scope/maturity.
 
-Utviklingen skal kunne organiseres i definerte faser, eksempelvis Concept og MVP, med identifiserte gjennomføringer som Concept1, Concept2 og MVP1. Arkitektur, design og implementasjon skal kunne knyttes til den aktuelle gjennomføringen og dens modenhet.
+Major architecture/design changes require explicit phase transitions or new iterations within a phase. Define “major” and handling of smaller changes. Each iteration needs an identifiable source tree/design basis. Git/directory organization remains open: tree traceability does not necessarily require a new repository, permanent branch or rewrite.
 
-Store arkitektur- eller designendringer skal kreve en eksplisitt faseovergang eller ny gjennomføring innenfor samme fase. Hva som teller som «stor», og hvordan mindre endringer håndteres, må defineres i metoden.
-
-Hver gjennomføring skal ha et identifiserbart source tree og tilhørende designgrunnlag. Den konkrete Git-/katalogorganiseringen er ikke avgjort. Sporbarhet til et tre innebærer ikke nødvendigvis et nytt repository, en permanent separat branch eller full omskriving.
-
-### 4.2 Eksempler på tillatte utviklingsforløp
+### 4.2 Example paths
 
 ```text
 Concept1
-  |-- nye arkitektur-/designvalg -------------> Concept2
-  |-- annen implementasjon av samme design ---> Concept2
-  `-- tilstrekkelig læring -------------------> MVP1
+  |-- new architecture/design decisions ------> Concept2
+  |-- different implementation, same design --> Concept2
+  `-- sufficient learning --------------------> MVP1
           |
-          `-- lærdom og endringsbehov bevares før MVP1-designet utformes
+          `-- preserve lessons/change needs before designing MVP1
 ```
 
-Concept2 er ikke et obligatorisk mellomsteg. En ny gjennomføring kan bevare designet og endre implementasjonen, eller endre både arkitektur, design og kode. Hva som videreføres, må fremgå.
+Concept2 is optional. A new iteration may retain design and replace implementation, or change architecture, design and code. Identify what carries forward.
 
-### 4.3 Lærdom skal kunne bevares uten å beslutte neste design
+### 4.3 Preserve learning without deciding the next design
 
-Concept-fasen er prototyping og læring. Erfaringer kan vise at neste versjon bør ha andre ansvarsgrenser, kontrakter eller tekniske løsninger. Vi trenger en strukturert måte å bevare observasjonen, begrunnelsen, usikkerheten og ønsket virkning av en endring på.
+Concept work prototypes and learns. Experience may suggest new responsibility boundaries, contracts or technologies. Preserve observations, rationale, uncertainty and desired effects structurally.
 
-Det er ikke alltid riktig å utforme MVP1s konkrete arkitektur mens Concept1 pågår. Et ønsket fremtidig målbilde skal derfor kunne uttrykkes uten å presenteres som et ferdig eller godkjent design. Issues og kommentarer kan være innspill og referanser; de bør ikke alene bære den samlede, gjeldende lærdommen.
+Do not necessarily design MVP1 architecture during Concept1. Express future desired outcomes without presenting them as approved designs. Issues/comments provide input/references but should not alone carry consolidated current learning.
 
-Ved oppstart av MVP1 skal relevant lærdom brukes til å utforme et sammenhengende arkitektur- og designgrunnlag for det avtalte MVP1-omfanget. Ambisjonen om et komplett grunnlag for dette omfanget må forenes med at vi ikke skal detaljmodellere hele fremtidens implementasjon.
+At MVP1 planning, use relevant learning to produce a coherent architecture/design for agreed scope. Reconcile completeness for that scope with avoiding detailed models of all future implementation.
 
-## 5. Utledede visninger og agentgrunnlag
+## 5. Derived views and agent context
 
-Verktøyet skal kunne gi oversikt på flere nivåer og generere avgrensede utsnitt til bruk i agentinstruksjoner. Eksempler er systemoversikt, komponentinnhold, Feature-forløp, Functionality-atferd og Channel-kontrakter.
+Tools should provide multiple-level overviews and bounded selections for agent instructions: system structure, component contents, Feature paths, Functionality behavior and Channel contracts.
 
-Et utsnitt må bevare nødvendig kontekst: relevante ansvar, eksterne berøringspunkter, begrensninger og kriterier for et ferdig resultat. Å gjøre vedlegget kort må ikke skjule avhengighetene som avgjør om oppgaven lykkes.
+Selections must preserve responsibilities, external touchpoints, constraints and completion criteria. Brevity must not hide dependencies essential to success. Owners need understandable explanations of proposed changes, reasons and actual checks. Owner/agent views derive from the same identified model basis.
 
-Eieren skal også kunne få en forståelig forklaring på hva som foreslås endret, hvorfor og hva som faktisk er kontrollert. Agentenes oversikt og eierens oversikt skal utledes fra samme identifiserte modellgrunnlag.
+## 6. Change descriptions and impact analysis
 
-## 6. Endringsbeskrivelse og konsekvensanalyse
+### 6.1 Design before implementation
 
-### 6.1 Design før implementasjon
+Describe intended changes in design code first. Compare an identified baseline with a proposed target and explain necessary work. Defects/new learning may revise proposals through a defined process.
 
-Tiltenkte designendringer skal først beskrives i designkoden. Verktøyet skal sammenligne et identifisert utgangspunkt med et foreslått målbilde og beskrive hva som må endres. Feil og ny læring under implementering skal kunne føre til revisjon av forslaget gjennom en definert prosess.
+Keep approved design, proposed design and observed system facts distinct. Approved designs may differ from code; code may differ from deployed systems.
 
-Vi trenger å holde fra hverandre designet som er godkjent, designet vi foreslår, og det vi vet om det faktiske systemet. Et tidligere designvedtak kan ha avvik fra dagens kode; dagens kode kan også avvike fra det som faktisk er deployert.
+### 6.2 Semantic and residual diff
 
-### 6.2 Semantisk diff og rest-diff
+Explain changed meaning, responsibilities, contracts and connections, not merely lines. Show whole-system diffs and filters by Feature, Functionality, Channel or other objects. Residual diffs expose changes unexplained by selected objects, including unlinked/unjustified work. One change may matter to multiple objects.
 
-Diffen skal forklare endringer i betydning, ansvar, kontrakter og forbindelser, ikke bare endrede tekstlinjer. Den skal kunne vises for hele systemet og filtreres gjennom Feature, Functionality, Channel eller andre designobjekter.
+### 6.3 System-wide consequences
 
-En rest-diff skal synliggjøre endringer som ikke er forklart gjennom de valgte objektene. Den må ikke gjemme bort arbeid som mangler tilknytning eller begrunnelse. Samme endring kan være relevant for flere objekter.
+Find affected elements and changes/checks necessary to expose desired effects end to end. Support reconsidering architecture where dependencies are strong or widespread. Expose missing information: an absent modeled dependency does not prove no dependency exists.
 
-### 6.3 Konsekvenser gjennom systemet
+## 7. Conformance to actual software
 
-Analysen skal hjelpe oss å finne både det som blir berørt, og det som må endres eller kontrolleres for at en ønsket effekt skal bli tilgjengelig fra ende til ende. Den skal også støtte vurdering av om sterke eller vidtrekkende avhengigheter bør reduseres gjennom endret arkitektur.
+Investigate programmatic checks of agreed design properties through source annotations (possibly Doxygen), code/type/compiler-API analysis, intermediate representations such as LLVM IR where useful, and tests/observations of behavior/integration.
 
-Systemet må kunne vise manglende informasjon. Fravær av en modellert avhengighet er ikke i seg selv bevis på at avhengigheten ikke finnes.
+Check comments/annotations against referenced code. Agreement between descriptions alone does not prove functionality. Compiling some/all design language to LLVM IR is exploratory, not a first-solution prerequisite; establish what comparison/proof it enables.
 
-## 7. Samsvar mellom modell og faktisk programvare
+## 8. Measurable goals
 
-Ambisjonen er å kunne få programmatiske svar på om implementasjonen følger avtalte egenskaper i designet. Vi skal undersøke flere evidenskilder:
-
-- Strukturerte annotasjoner i kildefiler, eventuelt Doxygen eller en tilsvarende mekanisme.
-- Uttrekk fra kildekode, typesystem, compiler-API eller annen statisk analyse.
-- Kompilatorens mellomrepresentasjon, eksempelvis LLVM IR, der dette er relevant.
-- Tester og observasjoner som kontrollerer faktisk atferd og integrasjon.
-
-Det skal også undersøkes hvordan påstander i kommentarer eller annotasjoner kan kontrolleres mot koden de viser til. Samsvar mellom to beskrivelser alene beviser ikke samsvar med faktisk funksjon.
-
-Å kompilere hele eller deler av designspråket til LLVM IR er en utforskende idé. Det er ikke en forutsetning for første løsning, og vi må undersøke hvilken sammenligning eller hvilket bevis det faktisk muliggjør.
-
-## 8. Målbare mål for metoden
-
-| ID | Ønsket resultat | Hva en senere pilot må demonstrere |
+| ID | Desired outcome | Future pilot demonstration |
 | --- | --- | --- |
-| M01 | Rask systemforståelse | En ny agent kan finne gjeldende ansvar, kontrakter og Feature-forløp fra et kompakt utsnitt. |
-| M02 | Kontrollerte endringer | Før/etter-modell og begrunnelse finnes før en designendrende kodeoppgave starter. |
-| M03 | Bevart lærdom | Et Concept-funn kan overføres til planlegging av MVP uten et forhåndsbestemt MVP-design. |
-| M04 | Synlig helhet | En endring i en Channel avdekker relevante produsenter, konsumenter og berørte Feature-forløp. |
-| M05 | Fullstendig endringsregnskap | Alle oppdagede modelldeltaer fremgår i total-diff, objektvisninger eller rest-diff uten tap. |
-| M06 | Etterprøvbart samsvar | Resultatene angir kontrollert egenskap, kilde-/build-identitet, evidens og dekningsbegrensning. |
-| M07 | Kontrollert avvik | En agent kan ikke gjøre brudd på designet akseptabelt ved stille å endre forventningen. |
-| M08 | Begrenset vedlikehold | Kostnad i modellredigering, antall håndskrevne opplysninger og kontekststørrelse måles. |
-| M09 | Gjenbrukbar metode | En enkel prosjektprofil fungerer uten hele kompleksiteten til et distribuert system. |
+| M01 | Rapid understanding | New agent finds current responsibilities, contracts and Feature paths in compact context. |
+| M02 | Controlled change | Before/after model and rationale exist before design-changing code work. |
+| M03 | Preserved learning | Concept findings inform MVP planning without predetermined MVP design. |
+| M04 | Visible whole | Channel changes reveal producers, consumers and affected Feature paths. |
+| M05 | Complete change accounting | Detected deltas appear without loss in total/object/residual diffs. |
+| M06 | Reproducible conformance | Results identify property, source/build, evidence and coverage limits. |
+| M07 | Controlled deviation | Agents cannot silently change expectations to excuse violations. |
+| M08 | Bounded maintenance | Measure model editing, handwritten information and context size. |
+| M09 | Reusable method | Lightweight profiles work without distributed-system complexity. |
 
-Tallfestede terskler for tidsbruk, kontekststørrelse og vedlikehold må avtales før en pilot måles. Denne studien hevder ikke at målene allerede er oppnådd.
+Agree numerical time/context/maintenance thresholds before pilot measurement. This study does not claim these goals achieved.
 
-# Del II — Innledende studie og forslag
+# Part II — Initial study and proposals
 
-## 9. Vurdering: hva som må skilles før vi velger språk
+## 9. Separate concerns before choosing a language
 
-**Forslag:** Del løsningen konseptuelt i fire deler:
+**Proposal:** distinguish method (decision authority, evidence and reconsideration), semantic model (objects, relations, rules, identity), representation/tools (editing, validation, comparison, presentation), and evidence (independent code/build/runtime investigation).
 
-1. **Metode:** Hvem kan beslutte hva, hvilket grunnlag kreves og når må arbeidet revurderes?
-2. **Semantisk modell:** Hvilke objekter, relasjoner, regler og identiteter uttrykker designet?
-3. **Representasjon og verktøy:** Hvordan redigeres, valideres, sammenlignes og presenteres modellen?
-4. **Evidens:** Hvordan undersøkes kode, bygg og kjøring uavhengig av modellens påstander?
+Rich languages may lack good change processes. Valid schemas may coexist with architecture violations. Good processes become expensive when information is manually copied across documents.
 
-Et rikt språk kan mangle en god endringsprosess. Et skjema kan være gyldig selv om implementasjonen bryter arkitekturen. En god prosess kan på sin side bli tung hvis informasjonen må kopieres manuelt mellom mange dokumenter.
+## 10. Proposed precise model concepts
 
-## 10. Forslag til presise modellbegreper
+### 10.1 Graph with different relations
 
-### 10.1 En graf med ulike relasjoner
+Allow structural decomposition and cross-cutting relations. Folder trees cannot adequately represent shared services, multiple consumers and Features spanning components.
 
-Modellen bør kunne ha en strukturell nedbrytning, men også relasjoner som går på tvers. Et enkelt mappetre er utilstrekkelig for delte tjenester, flere konsumenter og Features som går gjennom mange komponenter.
-
-| Begrep | Foreslått betydning |
+| Concept | Proposed meaning |
 | --- | --- |
-| Component | En ansvarsbærende del av arkitekturen på et oppgitt nivå. |
-| Design constituent | En modellert bestanddel av designet; ikke synonymt med klasse eller fil. Eksakt mapping mot IEEE 1016 må studeres. |
-| Feature | En varig kapabilitet med formål, krav og observerbare akseptkriterier. |
-| Functionality | Foreløpig kandidat: et sammenhengende atferdsansvar som realiserer deler av én eller flere Features. Bør bare bli egen type hvis piloten viser at skillet er nyttig. |
-| Scenario / witness | Et konkret observerbart forløp som kan brukes til å undersøke en Feature-påstand. |
-| Pathway | En definert kjede av ansvar og overganger. Strukturelt tillatt rute og faktisk runtime-forløp må ha ulik merking. |
-| Channel | En logisk kommunikasjonsforbindelse med identifiserte deltakere og kontrakt. Transport og deployering bindes separat ved behov. |
-| Contract | Tillatte interaksjoner, data, betydning, feil og kompatibilitetsforutsetninger. |
-| Implementation binding | En kobling fra designobjekt til package, symbol, kodeområde, build-variant eller deployeringsenhet. |
-| Constraint / invariant | En uttrykt regel, for eksempel forbudt avhengighet eller krav om aktuell revisjon. |
+| Component | Responsibility-bearing architectural part at an identified level. |
+| Design constituent | Modeled design part, not synonymous with class/file; study exact IEEE 1016 mapping. |
+| Feature | Persistent capability with purpose, requirements and observable acceptance criteria. |
+| Functionality | Provisional candidate: coherent behavioral responsibility realizing parts of Features; retain as a type only if useful in a pilot. |
+| Scenario / witness | Observable concrete path for examining Feature assertions. |
+| Pathway | Defined responsibility/transition chain; distinguish permitted structural routes from actual runtime paths. |
+| Channel | Logical communication with identified participants/contract; bind transport/deployment separately. |
+| Contract | Permitted interactions, data, meaning, errors and compatibility assumptions. |
+| Implementation binding | Design-object link to package, symbol, code area, build variant or deployment unit. |
+| Constraint / invariant | Expressed rule, such as forbidden dependencies or required current revision. |
 
-Eksempel på relasjonstyper som kan prøves: «inneholder», «realiserer», «bruker kontrakt», «sender», «mottar», «må bevares», «verifiseres av». Relasjonene må ha definert retning og betydning. En generell `depends_on`-kant alene forklarer sjelden hva en endring krever.
+Candidate relations: contains, realizes, uses contract, sends, receives, must preserve, verified by. Define direction/meaning; generic `depends_on` alone rarely explains change obligations.
 
-Én Feature kan bruke flere Functionalities; én Functionality kan støtte flere Features. Én Channel kan inngå i flere forløp. Domain, logisk komponent, lag, prosess og source-folder bør ikke automatisk være samme objekt.
+Features may use multiple Functionalities and vice versa; Channels may participate in multiple paths. Domain, logical component, layer, process and source folder are not automatically one object.
 
-### 10.2 Stabil identitet og endring over tid
+### 10.2 Stable identity over time
 
-**Forslag:** Skill objekt-ID fra navn, plassering, revisjon, fase og release. Ved rename beholdes identiteten når ansvaret er det samme. Ved split/merge trengs eksplisitt mapping av ansvar og bevaringskrav; navnelikhet er ikke tilstrekkelig.
+**Proposal:** separate IDs from names, locations, revisions, phases and releases. Renames preserve identity when responsibility is unchanged. Split/merge needs explicit responsibility/preservation mappings, not name similarity.
 
-Git lagrer revisjonene, mens modellen eller et separat endringsobjekt forklarer hva endringen betyr. Vi bør prøve en separat transition-beskrivelse før vi bygger all historikk inn i hvert designobjekt. Identitetsreglene må samordnes med #7s foreløpige regler om scope, reservasjon og flytting mellom repositories.
+Git stores revisions; models/change objects explain meaning. Trial separate transition descriptions before embedding all history in every object. Coordinate identity rules with #7's provisional scope/reservation/cross-repository rules.
 
-### 10.3 Deklarert dekning fremfor digital tvilling
+### 10.3 Declared coverage instead of a digital twin
 
-**Forslag:** Beskriv manuelt det som uttrykker hensikt og styrer utvikling: ansvar, kontrakter, vesentlige tilstander, invariants, forbudte avhengigheter og akseptscenarier. Hent mekaniske fakta som filinventar og imports fra verktøy når det er mulig.
+**Proposal:** manually describe intent-bearing information: responsibilities, contracts, important states/invariants, forbidden dependencies and acceptance scenarios. Obtain mechanical facts such as files/imports through tools.
 
-Hvert modellområde bør oppgi hva som er bindende, hva som er beskrivende, hva som utledes, og hva som er utenfor dekningen. En lett profil kan begynne med komponentgrenser, kritiske kontrakter og ett Feature-forløp. Ekstra detaljer innføres der feilrisiko eller endringsbehov begrunner dem.
+Each model area identifies binding/descriptive/derived/out-of-scope information. Lightweight profiles may start with component boundaries, critical contracts and one Feature path. Add detail where risk/change needs justify it.
 
-## 11. Forslag til fase- og endringsmodell
+## 11. Proposed phase and change model
 
-### 11.1 Separate koordinater
+### 11.1 Separate coordinates
 
-Følgende opplysninger bør ikke presses inn i ett versjonsnummer:
-
-| Koordinat | Eksempel | Hva den identifiserer |
+| Coordinate | Example | Identifies |
 | --- | --- | --- |
-| Livsløpsfase | Concept, MVP | Formål og forventet modenhet. |
-| Fasegjennomføring | Concept1, Concept2, MVP1 | En navngitt gjennomføring med omfang og inngangsgrunnlag. |
-| Modellrevisjon | D17 | Et bestemt designinnhold. |
-| Kilderevisjon | Git commit SHA | Et konkret source tree. |
-| Build / deployment | Artefaktdigest + konfigurasjon | Hva som er bygget eller faktisk kjøres. |
-| Aksept | Designgodkjent, Feature-verifisert, eierakseptert | Hvilken beslutning eller evidens som foreligger. |
+| Lifecycle phase | Concept, MVP | Purpose and expected maturity. |
+| Phase iteration | Concept1, Concept2, MVP1 | Named execution with scope and input basis. |
+| Model revision | D17 | Particular design content. |
+| Source revision | Git commit SHA | Concrete source tree. |
+| Build / deployment | Artifact digest + configuration | Built or actually running system. |
+| Acceptance | Design approved, Feature verified, owner accepted | Available decisions/evidence. |
 
-Innenfor Concept1 kan det finnes flere ordinære modell- og kilderevisjoner. En beslutning om ny fasegjennomføring er en egen hendelse. MVP1 er heller ikke det samme som programvarens SemVer-release 1.0.0.
+Do not compress these into one version number. Concept1 may contain ordinary model/source revisions; a new iteration is a separate decision. MVP1 is not SemVer 1.0.0.
 
-### 11.2 Læringsregister
+### 11.2 Learning register
 
-**Foreslått minimumsinnhold i en læringspost:** stabil ID; hvor observasjonen kom fra; hva vi observerte; evidens eller uttrykkelig antakelse; konsekvens; ønsket egenskap ved en fremtidig løsning; vurderte alternativer; uavklarte spørsmål; og senere beslutning/videreføring.
+**Proposed minimum:** stable ID, observation origin/content, evidence or explicit assumption, consequence, desired future property, alternatives, questions and subsequent decision/disposition.
 
-Illustrativt eksempel, ikke et produktfunn:
+Illustrative example, not a product finding:
 
 ```yaml
 id: LEARN-EXAMPLE-01
 origin: Concept1
-observation: "UI og domenelogikk kan ikke testes uavhengig i forsøket."
-evidence: "Referanse til konkret forsøk må fylles inn."
-desired_outcome: "Domeneforløpet skal kunne kjøres uten UI-renderer."
+observation: "UI and domain logic cannot be tested independently in this trial."
+evidence: "Insert a reference to the actual trial."
+desired_outcome: "Run the domain path without a UI renderer."
 options:
-  - "Tydelig port mellom domene og presentasjon"
-  - "Separat presentasjonsprosess"
+  - "Explicit port between domain and presentation"
+  - "Separate presentation process"
 decision: deferred
 candidate_target: MVP1
 ```
 
-Posten binder oss til å behandle problemet, ikke til å velge en bestemt arkitektur. Ved MVP1-planlegging får relevant lærdom en eksplisitt disposisjon: tatt inn i krav/design, undersøkes videre, utsatt eller avvist med begrunnelse. Et beslutningsnotat kan referere læringsposten uten å overskrive den opprinnelige observasjonen.
+The entry commits us to handling the problem, not choosing architecture. During MVP1 planning, explicitly classify learning as incorporated into requirements/design, further investigation, deferred or rejected with reasons. Decision notes reference entries without overwriting observations.
 
-### 11.3 Fasegater
+### 11.3 Phase gates
 
-**Forslag til gater; detaljene er ikke vedtatt:**
+**Proposed, not adopted:**
 
-| Gate | Minimum før videre arbeid | Mulige utfall |
+| Gate | Minimum basis | Outcomes |
 | --- | --- | --- |
-| Starte gjennomføring | Formål, omfang, relevant lærdom, foreløpige grenser og planlagte undersøkelser. | Start Concept2/MVP1, eller avklar manglende grunnlag. |
-| Starte avgrenset implementasjon | Sammenhengende design for endringen, eksplisitte ukjente forhold, kontrakter, konsekvenser og akseptscenarier. | Implementer, eller utfør et avgrenset forsøk først. |
-| Endre arkitektur/design vesentlig | Begrunnelse, før/etter-ansvar, berørte kapabiliteter, migrasjon og nye kontrollbehov. | Ny fasegjennomføring, faseovergang eller avvist/utsatt forslag. |
-| Integrere resultat | Kode og modell er identifisert; relevante struktur-, kontrakt- og integrasjonskontroller foreligger. | Integrer innenfor uttrykt aksept, eller returner et avgrenset funn. |
-| Avslutte gjennomføring | Resultater, lærdom, kjente avvik og uferdig arbeid har eksplisitt disposisjon. | Fortsett i ny gjennomføring, gå til neste fase, eller avslutt. |
+| Start iteration | Purpose, scope, learning, provisional boundaries, planned investigations. | Start Concept2/MVP1 or resolve missing basis. |
+| Start bounded implementation | Coherent change design, explicit unknowns, contracts, consequences, acceptance scenarios. | Implement or run a bounded experiment first. |
+| Substantial architecture/design change | Rationale, before/after responsibilities, capabilities, migration, new checks. | New iteration/phase, rejection or deferral. |
+| Integrate result | Identified code/model and relevant structural, contract and integration checks. | Integrate within stated acceptance or return a bounded finding. |
+| End iteration | Explicit disposition of outcomes, lessons, deviations and unfinished work. | New iteration, next phase or closure. |
 
-Et «stort» designinngrep kan defineres gjennom beskyttede grenser: flyttet ansvar mellom komponenter, endret prosess-/trust-grense, brutt offentlig kontrakt, endret dataeierskap eller endret Feature-semantikk. Antall endrede linjer er et dårlig hovedkriterium.
+Define major changes by protected boundaries: moved component responsibility, process/trust boundaries, broken public contracts, data ownership or Feature semantics. Changed-line count is a poor primary criterion.
 
-Mindre rettelser innenfor godkjente kontrakter kan behandles som vanlige revisjoner. En utforskende spike kan starte med lettere designgrunnlag dersom hypotese, avgrensning og disponering av resultatet er tydelig. Ingen fase trenger å love et «endelig design» for resten av produktets levetid.
+Small fixes within approved contracts may be ordinary revisions. Exploratory spikes may use lighter design if hypotheses, limits and result disposition are explicit. No phase promises a final lifetime design.
 
-## 12. Forslag: tre grunnlag og tre forskjellige sammenligninger
+## 12. Three bases and three comparisons
 
-La **B** være godkjent designbaseline, **T** foreslått måldesign og **O** observerte implementasjonsfakta for en identifisert kode-/build-/konfigurasjonsvariant. O er et faktagrunnlag med kjent dekning, ikke en automatisk fullstendig rekonstruksjon av designet.
+**B** is approved design baseline, **T** proposed target, **O** observed implementation facts for identified code/build/configuration. O has known coverage, not automatically complete reconstructed design.
 
-| Sammenligning | Spørsmål |
+| Comparison | Question |
 | --- | --- |
-| B → T | Hva foreslås endret i designet, og hvorfor? |
-| O mot B | Hvilke observerte forhold samsvarer med eller avviker fra gjeldende design? |
-| O mot T | Hva gjenstår eller avviker i implementasjonen av måldesignet? |
+| B → T | What design changes are proposed, and why? |
+| O versus B | Which observations conform to/deviate from approved design? |
+| O versus T | What remains or differs in target implementation? |
 
-Den første kan være en semantisk modelldiff. De to siste trenger oversetting av kodefakta til egenskaper og relasjoner modellen kan kontrollere. De er ikke nødvendigvis vanlig diff mellom to like dokumenter.
+B→T may be semantic model diff; the others translate code facts into checkable properties/relations rather than ordinary document diff. Source observation is not deployment observation. Claims about running systems require identified artifacts/configuration/environment. Record preexisting deviations before changes to avoid misattribution.
 
-Observasjon av kildekode er ikke observasjon av en deployering. Påstander om «systemet som kjører nå» trenger identifisert artefakt, konfigurasjon og miljø. Eksisterende avvik må registreres før en ny endring, slik at de ikke feilaktig tilskrives den nye implementasjonen.
+### 12.1 Semantic change accounting
 
-### 12.1 Semantisk endringsregnskap
-
-Hver oppdaget endring bør ha én identitet og kunne vises i flere utsnitt. Eksempler på operasjoner er lagt til, fjernet, flyttet ansvar, endret kontrakt, splittet, slått sammen og endret invariant. Automatisk matching må ikke late som den vet om to ulike objekter har samme hensikt; usikker mapping krever avklaring.
+Each detected change has one identity and may appear in multiple views: addition, removal, moved responsibility, changed contract, split, merge, changed invariant. Automatic matching must expose uncertain identity mappings rather than assume common intent.
 
 ```text
-D_total = alle registrerte semantiske endringer mellom B og T
-D_objekt = unionen av endringer forklart i valgte objektvisninger
-D_rest = D_total minus D_objekt
+D_total = all recorded semantic changes between B and T
+D_object = union of changes explained by selected object views
+D_rest = D_total minus D_object
 ```
 
-Objektvisningene kan overlappe. En kontraktendring trenger ikke telles som tre uavhengige endringer selv om den berører en Feature, en Functionality og en Channel. Rest-diff kan inneholde legitim infrastrukturendring eller manglende tilknytning; begge må få en forklaring. Dette regnskapet sier bare noe om oppdagede modelldeltaer. Et separat kodeinventar må finne kodeendringer som mangler modell-/oppdragskobling.
+Views may overlap; one contract change affecting Feature/Functionality/Channel remains one change. Explain residual infrastructure changes and missing links. Accounting covers detected model deltas only; independent code inventory must find code changes without model/assignment links.
 
-### 12.2 Konsekvenser er mer enn grafnaboer
+### 12.2 Impact exceeds graph adjacency
 
-Analysen bør skille mellom:
+Distinguish directly changed objects, potentially affected objects through defined relations, derived assessment/adaptation/test obligations, and concrete decisions to change/retain/unresolved.
 
-- Direkte endrede objekter.
-- Objekter som potensielt påvirkes gjennom en definert relasjon.
-- Avledede forpliktelser: noe må vurderes, tilpasses eller testes.
-- Konkret avgjørelse: endres, beholdes med begrunnelse, eller er uavklart.
+Not every schema change requires every consumer to change, but relevant consumers need assessment. Impact claims should show their rules/relation chains. Dynamic registration, configuration and external services may require evidence beyond static imports. Fewer dependencies are not always better: assess responsibility, cohesion, performance, operations and migration cost.
 
-Ikke alle konsumenter må endres ved enhver schemaendring. Men de relevante konsumentene må vurderes. Hver påvirkningspåstand bør vise hvilken regel og relasjonskjede som førte til den. Dynamisk registrering, konfigurasjon og eksterne tjenester kan kreve andre kilder enn statiske imports.
+## 13. From design description to implementation
 
-Færre avhengigheter er heller ikke alltid bedre arkitektur. Resultatet må vurderes mot ansvar, kohesjon, ytelse, driftsbehov og migrasjonskostnad.
+**Proposed workflow, not prescribed by IEEE 1016:**
 
-## 13. Fra designbeskrivelse til implementasjon
+1. Confirm assignment/baseline: need, Feature revisions, B, source baseline, known deviations.
+2. Investigate horizontally: follow responsibilities, contracts, consumers and paths; resolve unknown wiring/critical choices.
+3. Describe T/rationale: preserve/change/move/migrate decisions and appropriate revision/gate.
+4. Derive obligations/acceptance: end-to-end result, failure paths, checks and deviation criteria.
+5. Plan vertical Slices by dependencies/risk; a compatible contract extension or adapter may come first without rewriting every layer.
+6. Give agents identified context: contracts, permitted changes, affected neighbors, stop rules.
+7. Implement/gather evidence: check code facts/runtime; return new design needs as proposals, not silent changes.
+8. Integrate/check Feature paths: local Slice acceptance does not replace checks on actual integration baseline/configuration.
+9. Record acceptance/remaining work: distinguish implemented, integrated, verified, owner-accepted and released; update current pointers through proper decisions.
 
-Dette er en **foreslått arbeidssekvens**, ikke en arbeidsflyt foreskrevet av IEEE 1016.
+### 13.1 Worker and Verifier context
 
-1. **Bekreft oppdrag og utgangspunkt.** Finn behov, berørte Feature-revisjoner, B, aktuell kildebaseline og kjente avvik.
-2. **Undersøk horisontalt.** Følg berørte ansvar, kontrakter, konsumenter og forløp gjennom systemet. Avklar ukjent wiring eller kritiske designvalg før gjennomføring.
-3. **Beskriv T og endringsbegrunnelsen.** Registrer hva som skal bevares, endres, flyttes og eventuelt migreres. Velg riktig revisjon eller fasegate.
-4. **Utled forpliktelser og aksept.** Beskriv forventet ende-til-ende-resultat, feilforløp, nødvendige kontroller og kriterier for avvik.
-5. **Planlegg vertikale Slices.** Rekkefølgen styres av avhengigheter og risiko. En kompatibel kontraktutvidelse eller adapter kan være første steg; alle lag må ikke omskrives samtidig.
-6. **Gi agenten et identifisert oppdragsutsnitt.** Agenten får kontrakter, tillatte endringer, berørte naboer og stoppregler.
-7. **Implementer og innhent evidens.** Kontroller kodefakta og relevant runtime-atferd. Nye designbehov returneres som et forslag fremfor å innarbeides stille.
-8. **Integrer og kontroller Feature-forløpet.** Lokalt godkjente Slices erstatter ikke kontroll på faktisk integrasjonsbaseline og aktuell konfigurasjon.
-9. **Registrer aksept og gjenværende arbeid.** Bevar forskjellen på implementert, integrert, verifisert, eierakseptert og inkludert i release. Oppdater gjeldende pekere gjennom riktig beslutning.
+**Proposed minimum:** assignment ID/goal, B/T revisions, source baseline, generator/rule versions, affected Feature/Functionality/Channel IDs, responsibilities/contracts, permitted code areas, shared touchpoints, preservation/check requirements, known deviations, unknowns and design-change authority.
 
-### 13.1 Oppdragsutsnitt til Worker og Verifier
+Provide concise summaries with necessary detail links and visible omissions. Reject stale context after model/contract/integration changes. Worker and Verifier share contract evidence; verification must also find flaws/gaps in that evidence.
 
-**Foreslått minimum:** oppdrags-ID og mål; B/T-revisjoner; kildebaseline; generator-/regelversjon; berørte Feature-/Functionality-/Channel-ID-er; ansvar og kontrakter; tillatte kodeområder; delte berøringspunkter; bevaringskrav; konkrete kontrollkrav; kjente avvik; uavklarte forhold; og hvem som kan beslutte en designendring.
+### 13.2 Prevent repair loops
 
-Utsnittet bør gi et kort sammendrag med lenker til nødvendige detaljer og vise hva som er utelatt. Det må kunne avvises som foreldet dersom modell, kontrakt eller integrasjonsgrunnlag endres. Worker og Verifier trenger samme kontraktgrunnlag, mens verifikasjonen også må kunne oppdage feil og hull i dette grunnlaget.
+Agree rework budgets and stop criteria: repeated failure classes without new explanation, crossing protected boundaries, new consumers or missing Feature effects despite local test passes.
 
-### 13.2 Hindre reparasjonsløkker
+On stopping, return observation, hypothesis and concrete analysis/decision needs. Models may be corrected, but changing verification expectations must remain visible. Tools must not normalize drift by overwriting approved designs with incidental code behavior.
 
-Hvert oppdrag bør ha et avtalt rework-budsjett og tydelige stoppkriterier. Eksempler: samme feilklasse gjentas uten ny forklaring; nødvendig arbeid krysser en beskyttet grense; ny konsument dukker opp; eller forventet Feature-effekt mangler til tross for lokale testpass.
+## 14. Worked example: a Channel change that can cause tunnel vision
 
-Ved stopp skal agenten levere observasjon, hypotese og konkret behov for ny analyse eller designbeslutning. En feil i modellen kan rettes, men endring av kontrollgrunnlaget må være synlig. Verktøyet skal ikke normalisere drift ved å overskrive godkjent design med det koden tilfeldigvis gjør.
+**Hypothetical**, not a verified description of Ponsse, HSX or other product code.
 
-## 14. Gjennomgående eksempel: en Channel-endring som ellers kan gi tunnelsyn
-
-**Hypotetisk case.** Dette er ikke en kontrollert beskrivelse av Ponsse, HSX eller annen produktkode.
-
-Feature `FEAT-LENGTH` lar en operatør se aktuell målt lengde. Functionality-kandidaten `FUNC-PRESENT-LENGTH` fører målingen fra domenelogikk til presentasjon. Channel `CH-MEASUREMENT` sender måleverdi til klienten.
+`FEAT-LENGTH` lets operators see current measured length. Candidate `FUNC-PRESENT-LENGTH` carries measurements from domain to presentation. `CH-MEASUREMENT` sends values to clients.
 
 ```text
-Målekilde -> domenelogikk -> CH-MEASUREMENT -> klientadapter -> presentasjon
-                                 |
-                                 `-> historikklagring
+Measurement source -> domain -> CH-MEASUREMENT -> client adapter -> presentation
+                                     |
+                                     `-> history storage
 ```
 
-**B:** Kanalens verdi er i millimeter; presentasjonen viser centimeter. Historikklagring bruker også millimeter.  
-**T:** Kanalen skal sende meter; begge konsumentene må fortsatt oppfylle sine avtalte egenskaper. Utvendig visning skal være uendret.
+**B:** Channel values and history storage use millimeters; presentation shows centimeters.  
+**T:** Channel sends meters; both consumers retain agreed properties, with unchanged external display.
 
-En naiv lokal rettelse endrer bare domenets serialisering. JSON-typen kan fortsatt være `number`, alle imports kan være uendret, og tester som kun kontrollerer tallformat kan passere. Likevel er visning og historikk feil.
+A local serialization-only fix can retain JSON `number`, imports and passing format tests while breaking display/history.
 
-En nyttig modell og analyse skal gi:
-
-| Utledning | Konsekvens / kontroll |
+| Derivation | Consequence / check |
 | --- | --- |
-| Kanalens semantiske enhet endres | Registrer kontraktbrudd selv om syntaktisk datatype er den samme. |
-| Klientadapter konsumerer kanalen | Vurder konvertering og kontraktversjon. |
-| Historikklagring konsumerer kanalen | Vurder lagringsenhet, kompatibilitet og behandling av eksisterende data. |
-| FEAT-LENGTH bruker forløpet | Krev scenario med kjent fysisk verdi helt frem til faktisk presentasjon. |
-| Gamle og nye komponenter kan sameksistere | Beskriv eksplisitt overgang, kompatibilitetsvindu og eventuell rollback. |
-| Deployment-konfigurasjon velger adapter | Bekreft at riktig implementasjon faktisk registreres og brukes. |
+| Semantic unit changes | Record contract break despite unchanged syntax/type. |
+| Client adapter consumes Channel | Assess conversion/contract version. |
+| History consumes Channel | Assess storage units, compatibility, existing data. |
+| FEAT-LENGTH uses path | Require known physical-value scenario through actual display. |
+| Old/new components may coexist | Explicit transition, compatibility window and possible rollback. |
+| Deployment selects adapter | Verify correct registration and actual use. |
 
-Eksempel på witness: En input som representerer 1 meter skal ende som 100 centimeter i presentasjonen og korrekt verdi i historikken, med avtalt presisjon. En headless test er nyttig; den må suppleres hvis den ikke bruker samme binding som den faktiske klienten.
+Witness: input representing 1 meter becomes 100 centimeters on screen and correct history at agreed precision. Supplement headless tests when they do not use actual client bindings.
 
-Diffen kan vises både under Feature, Functionality og Channel, med samme endrings-ID. Endret deployeringskonfigurasjon skal inngå med forklaring eller fremgå i rest-diff. Hvis historikk-konsumenten ikke er kartlagt, må uavhengig inventar/observasjon kunne avdekke hullet; grafen alene kan ikke utlede en ukjent konsument.
+Show the same change ID under Feature, Functionality and Channel. Explain deployment changes or expose them in residual diff. Independent inventory/observation must reveal omitted history consumers; graphs cannot infer unknown consumers.
 
-Hvis det i Concept1 oppdages at enheter håndteres inkonsistent, kan dette først registreres som lærdom: «Neste gjennomføring trenger en eksplisitt enhetskontrakt.» Det bestemmer ikke på forhånd om MVP1 skal bruke meter, millimeter eller en type som bærer enheten.
+Concept1 may first record inconsistent units as learning: “The next iteration needs explicit unit contracts.” This does not predetermine meters, millimeters or unit-bearing types in MVP1.
 
-## 15. Standarder rundt designbeskrivelse, livsløp og implementasjon
+## 15. Standards for design, lifecycle and implementation
 
-### 15.1 Kildegrunnlag og avgrensning
+### 15.1 Sources and limits
 
-Oversikten nedenfor er kontrollert mot offentlige primærkilder 2026-09-14, hovedsakelig ISO-/IEEE-kataloger og sammendrag. Full normativ tekst er ikke gjennomgått klausul for klausul. Vi kan derfor angi dokumentert virkeområde og foreslå bruk, men ikke hevde standardkonformitet eller en komplett liste over normative referanser i IEEE 1016.
+Checked against public primary sources on 2026-09-14, mainly ISO/IEEE catalogues and summaries. Full normative texts were not reviewed clause by clause. We can state documented scope/proposed use, not standard conformance or a complete IEEE 1016 normative-reference list.
 
-«Økosystem» brukes her som et praktisk kart over beslektede behov. Det betyr ikke at alle standardene er del av én formell IEEE 1016-familie, eller at 42010 erstatter 1016.
+“Ecosystem” is a practical map of related needs, not a claim that all standards form one IEEE 1016 family or that 42010 replaces 1016.
 
-### 15.2 Design og arkitektur
+### 15.2 Design and architecture
 
-| Referanse og observert status | Dokumentert virkeområde | Foreslått bruk i SDP |
+| Reference and observed status | Documented scope | Proposed SDP use |
 | --- | --- | --- |
-| [IEEE 1016-2009](https://standards.ieee.org/ieee/1016/4502/) — Inactive-Reserved; inaktivert 2020-03-05 | Innhold og organisering av Software Design Descriptions, for overordnet og detaljert design. Foreskriver ikke én designmetode eller ett designspråk. | Faglig grunnlag for hva modellen og avledede SDD-visninger bør kunne uttrykke. Statusen må følge referansen. |
-| [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — publisert | Krav til arkitekturbeskrivelser, beskrivelsesrammeverk, språk, viewpoints og model kinds; skiller arkitektur fra beskrivelsen av den. | Terminologi og struktur for concerns, modelltyper og målrettede visninger. |
-| [ISO/IEC/IEEE 42020:2019](https://www.iso.org/standard/68982.html) — publisert; revisjon under utvikling | Prosesser for styring, forvaltning og utforming av arkitekturer gjennom levetiden. | Ansvar og beslutningsprosess for å utforme og revidere arkitektur. |
-| [ISO/IEC/IEEE 42030:2019](https://www.iso.org/standard/73436.html) — publisert; markert for revisjon | Rammeverk for organisering og dokumentering av arkitekturevaluering. | Vurdere alternativer, kvalitet og risiko før større overgang. |
+| [IEEE 1016-2009](https://standards.ieee.org/ieee/1016/4502/) — Inactive-Reserved; inactivated 2020-03-05 | Software Design Description content/organization at high and detailed levels; does not prescribe a design method/language. | Basis for model/derived SDD information; retain status with citation. |
+| [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html) — published | Requirements for architecture descriptions, frameworks, languages, viewpoints and model kinds; distinguishes architecture from its description. | Terminology/structure for concerns, model kinds and targeted views. |
+| [ISO/IEC/IEEE 42020:2019](https://www.iso.org/standard/68982.html) — published; revision developing | Architecture governance, management and development through lifecycle. | Responsibility/decision processes for architecture design/revision. |
+| [ISO/IEC/IEEE 42030:2019](https://www.iso.org/standard/73436.html) — published; marked for revision | Framework for organizing/documenting architecture evaluation. | Alternatives, quality and risk before major transitions. |
 
-**Presisering av 1016:** Den er fortsatt relevant for idéarbeidet, men bør ikke omtales som en aktiv, oppdatert universalløsning. En SDD behøver ikke være én stor manuelt skrevet Markdown-fil; IEEE beskriver også andre medier og verktøybaserte representasjoner. [IEEE 1016-2009](https://standards.ieee.org/ieee/1016/4502/)
+**1016 clarification:** still relevant to exploration, not an active, current universal solution. SDDs need not be large handwritten Markdown files; IEEE also describes other media/tool-based representations. [IEEE 1016-2009](https://standards.ieee.org/ieee/1016/4502/)
 
-**Viewpoint versus view:** Arbeidsdefinisjonen vi bør bruke, er at et viewpoint angir hvilke spørsmål og konvensjoner en visning skal følge, mens et view er den konkrete fremstillingen for et bestemt modellgrunnlag. Dette må presiseres mot valgt standardutgave under videre modellarbeid. 42010 velger ikke diagramverktøy eller utviklingsmetode for oss. [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html)
+**Viewpoint versus view:** proposed working distinction: viewpoints define questions/conventions; views are concrete presentations for identified model evidence. Refine this against the selected edition. 42010 does not choose diagram tools/development methods. [ISO/IEC/IEEE 42010:2022](https://www.iso.org/standard/74393.html)
 
-Påstanden i Gemini-utkastet om «IEEE 1016s 12 standard-viewpoints» er ikke brukt som et normativt krav her. Nøyaktig liste, terminologi og krav til valg/tilpasning må kontrolleres i full 1016-tekst før vi gjør en slik mapping. Vi skal ikke anta at alle viewpoints må materialiseres for hvert prosjekt.
+The Gemini draft's “IEEE 1016's 12 standard viewpoints” claim is not normative here. Verify exact lists, terminology and selection/adaptation requirements in full text before mapping. Do not assume every viewpoint must be materialized for every project.
 
-### 15.3 Livsløp, krav, dokumentasjon og kontrollert endring
+### 15.3 Lifecycle, requirements, documentation and controlled change
 
-| Referanse og observert status | Dokumentert virkeområde | Foreslått bruk i SDP |
+| Reference and observed status | Documented scope | Proposed SDP use |
 | --- | --- | --- |
-| [ISO/IEC/IEEE 12207:2026](https://standards.ieee.org/ieee/12207/11416/) — Active; erstatter 2017-utgaven | Felles prosessrammeverk for programvarens livsløp; prosessene kan brukes samtidig, iterativt og rekursivt. | Forankre sammenhengen mellom design, realisering, integrasjon, verifikasjon og videre utvikling. Velg relevante prosesser per fase. |
-| [ISO/IEC/IEEE 15288:2023](https://www.iso.org/standard/81702.html) — publisert | Systemlivsløpsprosesser; foreskriver ikke én livsløpsmodell eller metode. | Utvide konteksten der programvaren inngår i maskinvare, operatørarbeid og større systemer. |
-| [ISO/IEC/IEEE 24748-1:2024](https://www.iso.org/standard/84709.html) — publisert | Veiledning om livsløpsstyring, modeller, stadier og tilpasning, i sammenheng med 12207 og 15288. | Særlig relevant for å definere Concept/MVP, inngangs-/utgangskriterier og nye gjennomføringer. |
-| [ISO/IEC/IEEE 29148:2018](https://www.iso.org/standard/72089.html) — publisert; markert for revisjon | Requirements engineering gjennom livsløpet. | Skille behov og normative krav fra løsningsvalg; knytte dem til Feature og verifikasjon. |
-| [ISO/IEC/IEEE 15289:2019](https://www.iso.org/standard/74909.html) — publisert; bekreftet 2025 | Formål og innhold i livsløpets informasjonsprodukter. | Bestemme hvilken informasjon vi trenger, og hvilke dokumenter som kan utledes fra modellen. |
-| [ISO 10007:2017](https://www.iso.org/standard/70400.html) — publisert; markert for revisjon | Veiledning for konfigurasjonsstyring fra konsept til avvikling. | Baselines, identifiserte konfigurasjoner og kontrollert endring fremfor umerket design drift. |
-| [ISO/IEC/IEEE 14764:2022](https://www.iso.org/standard/80710.html) — publisert | Programvarevedlikehold som del av livsløpet. | Undersøke hvordan endringsanalyse, gjennomføring og videre vedlikehold bør organiseres. |
+| [ISO/IEC/IEEE 12207:2026](https://standards.ieee.org/ieee/12207/11416/) — Active; replaces 2017 | Software lifecycle process framework; processes may be concurrent, iterative and recursive. | Connect design, realization, integration, verification and evolution; select relevant processes per phase. |
+| [ISO/IEC/IEEE 15288:2023](https://www.iso.org/standard/81702.html) — published | System lifecycle processes; prescribes no single lifecycle model/method. | Include hardware, operator work and larger systems. |
+| [ISO/IEC/IEEE 24748-1:2024](https://www.iso.org/standard/84709.html) — published | Lifecycle management, models, stages and tailoring with 12207/15288. | Concept/MVP, entry/exit criteria and new iterations. |
+| [ISO/IEC/IEEE 29148:2018](https://www.iso.org/standard/72089.html) — published; marked for revision | Lifecycle requirements engineering. | Distinguish needs/normative requirements from solutions; link Features/verification. |
+| [ISO/IEC/IEEE 15289:2019](https://www.iso.org/standard/74909.html) — published; confirmed 2025 | Lifecycle information-item purposes/content. | Identify required information and model-derived documents. |
+| [ISO 10007:2017](https://www.iso.org/standard/70400.html) — published; marked for revision | Configuration management from concept to disposal. | Baselines, identified configurations, controlled change instead of unlabeled drift. |
+| [ISO/IEC/IEEE 14764:2022](https://www.iso.org/standard/80710.html) — published | Software maintenance within lifecycle. | Organize change analysis, execution and maintenance. |
 
-Ingen av disse kildene gjør navnene Concept1, Concept2 og MVP1 til standardiserte stadier. Den konkrete fasemodellen er et SDP-valg. 12207s prosesser må heller ikke fremstilles som en obligatorisk engangssekvens. [ISO/IEC/IEEE 12207:2026](https://standards.ieee.org/ieee/12207/11416/)
+These sources do not standardize Concept1/Concept2/MVP1 names; SDP chooses its phases. Do not present 12207 processes as a mandatory once-only sequence. [ISO/IEC/IEEE 12207:2026](https://standards.ieee.org/ieee/12207/11416/)
 
-Utgavene er heller ikke automatisk harmonisert på alle detaljer: 14764:2022 viser uttrykkelig til vedlikeholdsprosessen i 12207:2017. En senere SDP-standardprofil må kontrollere slike utgavekoblinger før den overfører prosess- eller klausulreferanser til 12207:2026. [ISO/IEC/IEEE 14764:2022](https://www.iso.org/standard/80710.html)
+Editions are not automatically harmonized: 14764:2022 explicitly references 12207:2017 maintenance. Check edition relationships before transferring process/clause references to 12207:2026. [ISO/IEC/IEEE 14764:2022](https://www.iso.org/standard/80710.html)
 
-### 15.4 Verifikasjon, validering og kvalitet under implementasjon
+### 15.4 Verification, validation and quality during implementation
 
-| Referanse og observert status | Dokumentert virkeområde | Foreslått bruk i SDP |
+| Reference and observed status | Documented scope | Proposed SDP use |
 | --- | --- | --- |
-| [IEEE 1012-2024](https://standards.ieee.org/ieee/1012/7324/) — Active | Verifikasjon og validering av systemer, programvare og maskinvare. | Utforme en begrunnet V&V-strategi, med konkrete oppgaver, evidens og passende uavhengighet. |
-| [ISO/IEC/IEEE 29119-2:2021](https://www.iso.org/standard/79428.html) — publisert | Prosesser for styring og gjennomføring av programvaretesting på tvers av livsløpsmodeller. | Koble design-/endringsgrunnlag til planlagte tester og faktisk utføring. |
-| [ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html) — publisert | Produktkvalitetsmodell i SQuaRE-serien. | Sørge for at kontrakter og aksept også omfatter relevante kvalitetsegenskaper, ikke bare happy-path-funksjon. |
+| [IEEE 1012-2024](https://standards.ieee.org/ieee/1012/7324/) — Active | System/software/hardware V&V. | Justified V&V strategy with tasks, evidence and appropriate independence. |
+| [ISO/IEC/IEEE 29119-2:2021](https://www.iso.org/standard/79428.html) — published | Software test management/execution across lifecycle models. | Link design/change basis to planned tests and actual execution. |
+| [ISO/IEC 25010:2023](https://www.iso.org/standard/78176.html) — published | SQuaRE product quality model. | Cover quality in contracts/acceptance beyond happy paths. |
 
-**Vurdering:** 1016 hjelper med designbeskrivelsen, men er ikke alene svaret på hvordan implementasjonen angripes. Det mest relevante studiesporet for selve gjennomføringen er samspillet mellom 12207, 24748-1, konfigurasjonsstyring, V&V og testprosesser, anvendt på en konkret endring. Arbeidssekvensen i kapittel 13 er vårt forslag til en slik anvendelse, ikke et standardkrav.
+**Assessment:** 1016 supports design descriptions but does not alone explain implementation. Study the interaction of 12207, 24748-1, configuration management, V&V and testing on concrete changes. Section 13 proposes an application, not a standard requirement.
 
-**Videre standardarbeid:** Velg en liten referanseprofil og lag en sporbar mapping mellom aktuell standardutgave, relevant begrep/prosess, SDP-felt eller gate, kontrollform og eventuelle gap. Det krever tilgang til fulltekst for de standardene der vi vil hevde konkret samsvar. Unngå å gi en lang litteraturliste status som implementert metode.
+**Further standards work:** choose a small reference profile and trace standard editions/concepts/processes to SDP fields/gates, checks and gaps. Specific conformance claims require full texts. A bibliography is not an implemented method.
 
-## 16. Designspråk og metodikker å bygge videre på
+## 16. Languages and methods to build on
 
-Dette kapitlet bruker den eksisterende P04-kartleggingen som underlag. Den er datert 2026-09-10; profilene er ikke alle undersøkt på nytt i denne revisjonen. Ingen kandidat er valgt, og P04s eksempler er ikke parser-/runtime-testet.
+Uses P04 research dated 2026-09-10; profiles were not all rechecked for this revision. No candidate selected; P04 examples remain untested.
 
-| Byggekloss | Relevante kandidater | Vurdering for dette mandatet |
+| Building block | Candidates | Assessment for this mandate |
 | --- | --- | --- |
-| Struktur og visninger | [Structurizr DSL](research/existingDesignLanguages/structurizr-dsl.md), [LikeC4](research/existingDesignLanguages/likec4.md) | Gode forsøksspor for én modell med flere utsnitt. Undersøk behovet for ekstra Feature-, atferds- og endringssemantikk. |
-| Rikere system-/designmodell | [SysML v2](research/existingDesignLanguages/sysml-v2.md), [UML](research/existingDesignLanguages/uml.md), [AADL](research/existingDesignLanguages/aadl.md), [Context Mapper](research/existingDesignLanguages/context-mapper-cml.md) | Vurder presisjon og innebygde begreper opp mot redigeringskostnad og agentbruk. |
-| Kontrakter | [OpenAPI](research/existingDesignLanguages/openapi.md), [AsyncAPI](research/existingDesignLanguages/asyncapi.md), [Protobuf](research/existingDesignLanguages/protobuf.md), [Smithy](research/existingDesignLanguages/smithy.md) | Referer eksisterende kontrakter der de passer. Kompletter eksplisitt med semantikk som ikke dekkes av den valgte kontrakten. |
-| Constraints og avgrenset atferd | [CUE](research/existingDesignLanguages/cue.md), [OCL](research/existingDesignLanguages/ocl.md), [SCXML](research/existingDesignLanguages/scxml.md), [TLA+](research/existingDesignLanguages/tla-plus.md), [Alloy](research/existingDesignLanguages/alloy.md) | Ulike verktøy for forskjellige spørsmål; modellkontroll er ikke automatisk kontroll av produktkoden. |
-| Modellendring og provenance | [Epsilon](research/existingDesignLanguages/epsilon.md), [Edapt](research/existingDesignLanguages/edapt.md), [PROV-O](research/existingDesignLanguages/prov-o.md) | Studer matching, transformasjon, historikk og avledning før vi bygger egen transition-infrastruktur. |
-| Presentasjon | [Mermaid](research/existingDesignLanguages/mermaid.md), [PlantUML](research/existingDesignLanguages/plantuml.md), [D2](research/existingDesignLanguages/d2.md) | Mulige utdataformater. Diagramnotasjon alene definerer ikke hele systemmodellens semantikk. |
+| Structure/views | [Structurizr DSL](research/existingDesignLanguages/structurizr-dsl.md), [LikeC4](research/existingDesignLanguages/likec4.md) | Trial one model/multiple views; investigate extra Feature, behavior and change semantics. |
+| Richer system/design models | [SysML v2](research/existingDesignLanguages/sysml-v2.md), [UML](research/existingDesignLanguages/uml.md), [AADL](research/existingDesignLanguages/aadl.md), [Context Mapper](research/existingDesignLanguages/context-mapper-cml.md) | Balance precision/concepts with editing cost and agent use. |
+| Contracts | [OpenAPI](research/existingDesignLanguages/openapi.md), [AsyncAPI](research/existingDesignLanguages/asyncapi.md), [Protobuf](research/existingDesignLanguages/protobuf.md), [Smithy](research/existingDesignLanguages/smithy.md) | Reference suitable existing contracts; explicitly add uncovered semantics. |
+| Constraints/bounded behavior | [CUE](research/existingDesignLanguages/cue.md), [OCL](research/existingDesignLanguages/ocl.md), [SCXML](research/existingDesignLanguages/scxml.md), [TLA+](research/existingDesignLanguages/tla-plus.md), [Alloy](research/existingDesignLanguages/alloy.md) | Different questions need different tools; model checking is not product-code checking. |
+| Model change/provenance | [Epsilon](research/existingDesignLanguages/epsilon.md), [Edapt](research/existingDesignLanguages/edapt.md), [PROV-O](research/existingDesignLanguages/prov-o.md) | Study matching, transformation, history and derivation before custom transition infrastructure. |
+| Presentation | [Mermaid](research/existingDesignLanguages/mermaid.md), [PlantUML](research/existingDesignLanguages/plantuml.md), [D2](research/existingDesignLanguages/d2.md) | Possible outputs; diagram notation does not define full model semantics. |
 
-C4 er en nyttig abstraksjons- og visningstilnærming, men bør ikke uten videre gjøres til metamodel for alle designbestanddeler og atferdsobjekter. JSON/YAML kan serialisere en modell, men velger ikke semantikken. Langium og Xtext er mulige verktøy for å bygge språk/editor; de bør vurderes etter at behovet for egen syntaks er dokumentert, ikke som alternativer av samme type som Mermaid.
+C4 helps abstraction/views but need not become the metamodel for every constituent/behavior object. JSON/YAML serialize without choosing semantics. Langium/Xtext build languages/editors; assess after demonstrating syntax needs, not as Mermaid-equivalent alternatives.
 
-To metodiske tillegg fortjener undersøkelse:
+Further methodological candidates:
 
-- **Arcadia/Capella:** Arcadia skiller blant annet behovsanalyse fra arkitekturutforming og har en verktøystøttet modelleringstilnærming. Vår vurdering er at dette er relevant for å studere sammenhengen mellom operativt behov, funksjoner og struktur. Vi har ikke gjennomført en Capella-pilot eller bekreftet dekning av SDP-transition og agentutsnitt. [Eclipse om metode og verktøy](https://www.eclipse.org/community/eclipse_newsletter/2017/december/article3.php)
-- **ATAM:** SEIs metode undersøker avveininger i programvarearkitektur. Vår vurdering er at scenario- og kvalitetsbasert evaluering kan gi bedre grunnlag for faseoverganger enn antall avhengigheter alene. Full ATAM er ikke foreslått som obligatorisk seremoni for små prosjekter. [SEI: The Architecture Tradeoff Analysis Method](https://www.sei.cmu.edu/library/the-architecture-tradeoff-analysis-method/)
+- **Arcadia/Capella:** separates needs analysis from architecture design with model tooling. Relevant to connecting operational needs, functions and structure. No pilot or verification of SDP transitions/agent-context coverage. [Eclipse method/tool article](https://www.eclipse.org/community/eclipse_newsletter/2017/december/article3.php)
+- **ATAM:** SEI architecture tradeoff analysis. Scenario/quality evaluation may justify phase transitions better than dependency counts alone. Full ATAM is not proposed as mandatory ceremony for small projects. [SEI ATAM](https://www.sei.cmu.edu/library/the-architecture-tradeoff-analysis-method/)
 
-**Foreløpig anbefaling:** Definer hvilke spørsmål modellen skal besvare og hvilke endringer den skal representere før språkvalg. Prøv først gjenbruk eller en liten semantisk utvidelse. Eget språk fra bunnen av bør begrunnes med konkrete gap demonstrert i samme case.
+**Provisional recommendation:** define questions/changes before language selection. Trial reuse or small semantic extensions first; justify a new language with concrete gaps in the same case.
 
-## 17. Hva kan verifiseres programmatisk?
+## 17. What can be verified programmatically?
 
-### 17.1 Kontroller på forskjellige nivåer
+### 17.1 Different checking levels
 
-| Nivå | Eksempel | Hva et positivt resultat ikke beviser |
+| Level | Example | Passing does not prove |
 | --- | --- | --- |
-| Modellform | ID-er finnes; referanser løses; felter har gyldig type. | At modellen beskriver riktig system. |
-| Modellregler | En forbudt dependency finnes ikke i modellgrafen. | At koden ikke har avhengigheten. |
-| Kodestruktur | Faktiske imports/typesymboler samsvarer med definerte grenser. | At riktig funksjon er koblet inn ved kjøring. |
-| Kontrakt og kompatibilitet | Observerte endepunkter og meldinger følger angitt schema/versjon. | At for eksempel enhet, autorisasjon og feilhåndtering er riktig hvis dette ikke kontrolleres. |
-| Integrert atferd | Et definert Feature-scenario virker på aktuell build og konfigurasjon. | Alle mulige input, tidsforløp, miljøer og feiltilstander. |
-| Formell egenskap | En presist formulert invariant er bevist innenfor en formell modell og dens forutsetninger. | At vilkårlig produktkode automatisk er en korrekt realisering av modellen. |
+| Model shape | IDs exist, references resolve, fields have valid types. | Correct system description. |
+| Model rules | No forbidden dependency in model graph. | No such code dependency. |
+| Code structure | Imports/type symbols match boundaries. | Correct runtime wiring. |
+| Contract/compatibility | Observed endpoints/messages follow schema/version. | Unchecked units, authorization or error handling. |
+| Integrated behavior | Defined Feature scenario works on identified build/configuration. | All inputs, timing, environments/failures. |
+| Formal property | Precise invariant proven within formal assumptions. | Arbitrary code correctly realizes the model. |
 
-**Forslag til resultatmodell:** `satisfied`, `violated`, `unknown`, `not_applicable`. Et kontrollresultat trenger egenskap, metode, verktøy-/regelversjon, kilde-/build-identitet, variant, evidens og dekningsomfang. Parserfeil eller manglende dekning må ikke bli et tomt «ingen avvik»-resultat. Policyen bestemmer hvilke ukjente forhold som blokkerer en bestemt gate.
+**Proposed outcomes:** `satisfied`, `violated`, `unknown`, `not_applicable`. Each result identifies property, method, tool/rule version, source/build, variant, evidence and coverage. Parse failures/missing coverage must not become empty “no violations” results. Policies decide which unknowns block particular gates.
 
-«Korrekte programmatiske svar» må bety korrekte svar innenfor en definert semantikk og kontrollmodell. Verktøyet skal ikke love å avgjøre full atferdsekvivalens mellom en vilkårlig designbeskrivelse og vilkårlig programkode.
+Correct programmatic answers mean correctness within defined semantics/checking models, not deciding complete behavioral equivalence between arbitrary designs and code.
 
-### 17.2 Doxygen og annotasjoner
+### 17.2 Doxygen and annotations
 
-Doxygen kan generere XML som andre verktøy kan bearbeide. Det gir et konkret mulig integrasjonspunkt for dokumentasjon og kodekoblinger. [Doxygen: XML output](https://www.doxygen.nl/manual/customize.html#xmloutput)
+Doxygen can generate XML for downstream processing: a possible documentation/code-link integration point. [Doxygen XML](https://www.doxygen.nl/manual/customize.html#xmloutput)
 
-**Vurdering:** Annotasjoner er nyttige for å knytte et symbol til en stabil design-ID og uttrykke hensikt som ikke kan utledes fra kode. Det er fortsatt en deklarasjon. Hvis både modellen og kommentaren sier «bruker CH-MEASUREMENT», men koden benytter en annen vei, kan en sammenligning av tekstene gi falsk trygghet.
+**Assessment:** annotations link symbols to stable design IDs and express non-inferable intent, but remain declarations. Matching model/comment claims of CH-MEASUREMENT use can falsely reassure when code uses another route. Combine annotations with independent symbol/dependency analysis and tests. Do not copy whole designs into comments. Trial Doxygen support/extraction quality for the actual language; it is not universal.
 
-Undersøk derfor annotasjoner sammen med uavhengig symbol-/dependencyanalyse og relevante tester. Ikke kopier hele designbeskrivelsen inn i kodekommentarer. Doxygen-støtte og uttrekkskvalitet må prøves for det konkrete programmeringsspråket; dette er ikke en universell løsning for alle SDP-prosjekter.
+### 17.3 AST and language-specific analysis
 
-### 17.3 AST og språkspesifikke analyseverktøy
+Clang AST matchers find C/C++ patterns near source structure. [Clang AST Matchers](https://clang.llvm.org/docs/LibASTMatchers.html)
 
-Clang tilbyr blant annet AST-matchere for å finne mønstre i C/C++-kode. Dette er et dokumentert eksempel på et analysegrunnlag nær kildekodens struktur. [Clang AST Matchers](https://clang.llvm.org/docs/LibASTMatchers.html)
+**Assessment:** start with reliably extractable symbols, imports, calls, contract implementations and registrations. Syntax trees alone may lack type resolution/complete call graphs. Explicitly handle plugins, reflection, generated code and configuration-driven wiring. Report investigated build variants/code areas.
 
-**Vurdering:** Start med det pilotens språkverktøy kan hente pålitelig: symboler, imports, kall, kontraktimplementasjoner og registreringer. Et syntakstre alene har ikke nødvendigvis typeoppløsning eller komplett kallgraf. Plugins, refleksjon, generert kode og konfigurasjonsstyrt wiring krever eksplisitt behandling. Analyzerens funn må angi hvilke build-varianter og kodeområder som ble undersøkt.
+### 17.4 LLVM
 
-### 17.4 LLVM-sporet
+LLVM IR is typed low-level representation with functions, instructions, control flow and metadata, potentially useful for bounded analysis. [LLVM Language Reference](https://llvm.org/docs/LangRef.html)
 
-LLVM IR er en typet, lavnivå mellomrepresentasjon med blant annet funksjoner, instruksjoner, kontrollflyt og metadata. Den kan være et grunnlag for avgrenset kodeanalyse. [LLVM Language Reference](https://llvm.org/docs/LangRef.html)
+**Assessment:** Feature IDs, user intent and logical Channels do not automatically survive as understood domain objects. Preserve/construct mappings. Optimization, frontend and debug/metadata configuration affect recoverability. LLVM is not a universal common format across relevant toolchains.
 
-**Vurdering:** En Feature-ID, brukerhensikt eller logisk Channel følger ikke automatisk med som et forstått domeneobjekt. Mapping må bevares eller konstrueres. Optimering, valgt frontend og debug-/metadataoppsett påvirker hva vi kan gjenfinne. LLVM er heller ikke et gitt felles mellomformat for alle aktuelle språkverktøykjeder.
+Compiling design and implementation to LLVM does not automate semantic comparison. Different instructions may realize the same property; identical local computations may occur in different system paths. Multiple valid realizations need precise specification/implementation relations, not identical IR.
 
-Å kompilere både design og implementasjon til LLVM gjør ikke meningssammenligningen automatisk. Ulike instruksjoner kan realisere samme egenskap, og samme lokalberegning kan inngå i forskjellige systemforløp. Et design med flere lovlige realiseringer trenger dessuten en presis relasjon mellom spesifikasjon og implementasjon, ikke krav om identisk IR.
+A later bounded LLVM trial may be valuable with explicit mapping/assumptions. A normalized **design IR** for objects, relations and contracts is a different concept, useful without machine-code generation.
 
-Et senere LLVM-forsøk kan være verdifullt for én avgrenset egenskap med eksplisitt mapping og forutsetninger. En egen **design-IR** som normaliserer objekter, relasjoner og kontrakter er et annet konsept enn LLVM IR og kan være nyttig uten å generere maskinkode.
+**Provisional recommendation:** start with model checks, code bindings, structural/contract analysis and Feature witnesses. Keep LLVM/formal proof as bounded studies justified by concrete needs.
 
-**Foreløpig anbefaling:** Begynn med modellkontroll, kodebindinger, struktur-/kontraktanalyse og Feature-witnesses. Behold LLVM og formelle bevis som avgrensede studiespor. Velg dem når et konkret kontrollbehov rettferdiggjør kostnaden.
+# Part III — Further work
 
-# Del III — Videre arbeid
+## 18. Open questions and decisions
 
-## 18. Åpne spørsmål og beslutninger som må tas
-
-| ID | Spørsmål | Egnet undersøkelse |
+| ID | Question | Investigation |
 | --- | --- | --- |
-| Q01 | Når tilfører Functionality et eget ansvar utover Feature, pathway og scenario? | Beskriv samme lille case med og uten objekttypen. |
-| Q02 | Hvilke grenser utløser Concept2/MVP2 fremfor vanlig revisjon? | Prøv lokal Fix, intern refactor, kontraktbrudd og flyttet prosessansvar. |
-| Q03 | Hvor komplett må designet være før implementasjon på hvert modenhetsnivå? | Definer minimumsprofil og eksplisitt tillatt uavklart innhold. |
-| Q04 | Hva skal håndskrives, hva skal utledes og hva skal bare refereres? | Mål redigeringskostnad og risiko for motstridende opplysninger. |
-| Q05 | Hvordan overlever objektidentitet rename, split, merge og repo-flytting? | Samordne med #7 og prøv ansvarsmapping med ukjente deler. |
-| Q06 | Hvordan oppdages kode/konsumenter som ingen har annotert? | Bruk et uavhengig kode-/konfigurasjonsinventar og bevisst utelatt konsument. |
-| Q07 | Hvordan holdes oppdragsutsnitt korte uten å skjule nødvendig kontekst? | La en ny agent forklare og planlegge samme endring fra ulike utsnitt. |
-| Q08 | Hvilke properties skal være maskinelt bindende? | Klassifiser hver regel etter egnet kontroll og uunngåelige ukjente forhold. |
-| Q09 | Hvordan bevares lærdom uten at en uvalgt løsning blir gjeldende design? | Følg én læringspost fra Concept1 til MVP1-disposisjon. |
-| Q10 | Hvilke standardbegreper adopteres, og hvilke er SDP-spesifikke? | Lag en liten standardmapping med eksplisitte avvik og fulltekstsjekk ved behov. |
+| Q01 | When does Functionality add responsibility beyond Feature/pathway/scenario? | Model the same case with/without it. |
+| Q02 | Which boundaries trigger Concept2/MVP2 instead of ordinary revision? | Trial local Fix, internal refactor, contract break, process-responsibility move. |
+| Q03 | Required design completeness at each maturity? | Define minimum profile and permitted unknowns. |
+| Q04 | What is handwritten, derived or referenced? | Measure editing cost/conflict risk. |
+| Q05 | Identity through rename/split/merge/repository moves? | Coordinate #7; trial mappings with unknown portions. |
+| Q06 | Find unannotated code/consumers? | Independent code/configuration inventory with deliberately omitted consumer. |
+| Q07 | Keep agent context short without hiding essentials? | New agent explains/plans same change from different selections. |
+| Q08 | Which properties bind machine checks? | Classify rules by check method/inevitable unknowns. |
+| Q09 | Preserve learning without adopting unselected solutions? | Follow Concept1 learning to MVP1 disposition. |
+| Q10 | Which standard concepts versus SDP-specific ones? | Small standards mapping with explicit differences/full-text checks as needed. |
 
-## 19. Foreslått neste avgrensede undersøkelse
+## 19. Proposed next bounded investigation
 
-Dette er et forslag til senere oppdrag, ikke en allerede startet implementasjon.
+Future assignment proposal, not implementation already underway.
 
-**Formål:** Test om vi kan beskrive én liten endring slik at eier, Worker og Verifier ser samme sammenheng, og at verktøygrunnlaget viser minst ett bevisst avvik.
+**Purpose:** describe one small change so owner, Worker and Verifier see the same relationships and tools reveal at least one deliberate deviation.
 
-**Case:** Bruk kapittel 14 som tydelig hypotetisk fixture, eller en separat bekreftet produktendring. Begrens til én Feature, én Functionality-kandidat, én Channel og høyst seks ansvarsenheter. Ikke modellér hele Concept1 → MVP1 først.
+**Case:** section 14 as an explicitly hypothetical fixture, or a separately confirmed product change. One Feature, one Functionality candidate, one Channel, at most six responsibility units. Do not model all Concept1→MVP1 first.
 
-**Tre sammenligningsspor**, i tråd med P04s forslag:
+**Three comparison tracks**, following P04:
 
-1. Ett konkret eksisterende arkitektur-DSL, for eksempel Structurizr eller LikeC4.
-2. Ett rikere modellspor, for eksempel CML eller SysML v2.
-3. En liten eksplisitt modell i JSON/CUE eller tilsvarende, med egen begrenset SDP-semantikk.
+1. Concrete architecture DSL, such as Structurizr/LikeC4.
+2. Richer model approach, such as CML/SysML v2.
+3. Small explicit JSON/CUE-style model with bounded SDP semantics.
 
-Før utføring må konkrete verktøy, versjoner og bruksvilkår velges. Alle spor skal bruke samme behov, B/T, forutsetninger og vurderingskriterier. Skill innebygd støtte fra metadata-konvensjoner, manuelt arbeid og ny kode.
+Select tools, versions and terms before execution. Use identical needs, B/T, assumptions and assessment criteria. Distinguish built-in support, metadata conventions, manual work and new code.
 
-**Forventede leveranser:** før/etter-modell; total- og objekt-diff med rest; ansvarsmapping; ett Worker- og ett Verifier-utsnitt; læringspost og fasebeslutning; samt en kort evaluering av vedlikehold, forståelighet og kontrollgrenser.
+**Deliverables:** before/after models; total/object/residual diffs; responsibility map; Worker/Verifier context selections; learning entry and phase decision; concise evaluation of maintenance, readability and checking limits.
 
-**Negative prøver:** brutt referanse; rename uten ansvarsendring; split/move med delvis bevart atferd; feil enhet med uendret datatype; en konsument utelatt fra modellen; kode som bryter en tillatt-avhengighetsregel; manglende runtime-registrering; og utsnitt basert på gammel modellrevisjon. Prøvene kan være manuelle i første sammenligning, men må merkes som det. Et spor skal ikke få kredit for en automatisk kontroll som bare er håndlaget i rapporten.
+**Negative cases:** broken reference; rename without changed responsibility; split/move with partial behavior preservation; changed unit with unchanged data type; omitted consumer; code violating dependency rules; missing runtime registration; stale model context. First comparisons may be manual if labeled; do not credit report-only manual checks as automation.
 
-Vurderingen skal måle hvor mye som må redigeres, hva som faktisk oppdages, hvilke opplysninger som går tapt og hva som fortsatt er ukjent. Registrer kostnad ved én normal endring og én revisjon av selve modellskjemaet.
+Measure editing effort, detected issues, lost information and remaining unknowns. Record costs of a normal change and model-schema revision.
 
-**Stopp:** Lever sammenligningen og anbefalt neste beslutning. Ikke frys språk/schema, bygg generell compiler eller migrer produktrepoer som en skjult del av undersøkelsen. P04s forslag om maksimalt én reparasjonsrunde per verktøyspor kan videreføres; verktøyproblemer dokumenteres dersom de ikke løses innenfor rammen.
+**Stop:** deliver comparison and recommended next decision. Do not secretly freeze language/schema, build a general compiler or migrate product repositories. P04's maximum one repair round per tool track may carry forward; document unresolved tool issues within that boundary.
 
-## 20. Regler for agenter som viderefører arbeidsdokumentet
+## 20. Continuation rules for agents
 
-1. Bevar skillet mellom eierintensjon, eksisterende aksept, undersøkte fakta og egne forslag.
-2. Start fra gjeldende dokumentrevisjon og relevante repo-/issue-kilder. Ikke behandle chatminne eller gamle statusformuleringer som dagens autoritet.
-3. Studer et konkret spørsmål og registrer spørsmål, metode, kilder, resultat, begrensning og anbefaling.
-4. Ikke gjør Functionality, fasegrenser, en DSL eller et teknologiønske normativt uten en eksplisitt beslutning.
-5. Bruk daterte primærkilder og konkrete standardutgaver. Skill katalog-/sammendragslesing fra full normativ gjennomgang.
-6. Bevar opprinnelig lærdom og beslutningshistorikk; bruk revisjon og supersession når en oppfatning endres.
-7. Beskriv negative resultater og blindsoner. Ingen modell-, test- eller reviewrapport skal påstå bredere dekning enn evidensen gir.
-8. Samordne metodeforslag med #9 og #7/#8; bevar #5s grunnlag og eksisterende reviewfunn.
-9. Hold eksempler adskilt fra produktfakta. Produktbaseline må bekreftes før den modelleres som dagens system.
-10. Avslutt hvert forskningsoppdrag med en konkret beslutning eller et avgrenset nytt spørsmål, slik at utforskningen ikke blir en ny endeløs iterasjonsløkke.
+1. Preserve distinctions between owner intent, accepted decisions, observations and proposals.
+2. Start from current document revision/repository/issue evidence, not chat memory or old status wording.
+3. Investigate specific questions; record question, method, sources, results, limits and recommendation.
+4. Do not make Functionality, phase boundaries, DSLs or technology preferences normative without decisions.
+5. Use dated primary sources/specific standard editions; distinguish summaries from full normative review.
+6. Preserve learning/decision history; use revisions/supersession for changed understanding.
+7. Record negative results/blind spots; never claim more coverage than evidence supports.
+8. Coordinate method proposals with #9 and #7/#8; preserve #5 foundations and review findings.
+9. Separate examples from product facts; confirm product baselines before modeling current systems.
+10. End research assignments with concrete decisions or bounded questions, avoiding endless exploration loops.
 
-## 21. Revisjonslogg og kontroll av denne leveransen
+## 21. Revision log and delivery verification
 
-| Revisjon | Dato | Endring / beslutning |
+| Revision | Date | Change / decision |
 | --- | --- | --- |
-| 0.1 | 2026-09-14 | Renskrevet mandat, forhold til eksisterende SDP, første standardoversikt, foreslått fase-/diff-/evidensmodell og avgrenset videre studie. Ingen ny metode-/språkaksept registrert. |
+| 0.1 | 2026-09-14 | Restated mandate, relationship to existing SDP, initial standards survey, proposed phase/diff/evidence model and bounded follow-up study. No new method/language acceptance. |
 
-Kontrollomfang: lest lokale indeks-/syntesedokumenter og relevante issue-/PR-opplysninger; undersøkt offentlige standardkataloger og de tekniske primærkildene lenket i studien; kontrollert lokale Markdown-lenker og kodeblokker. Ingen compiler, parser eller produktintegrasjon er implementert/testet her. Ingen full standardkonformitetsvurdering eller uavhengig reviewgodkjenning påstås.
+Verification scope: local index/synthesis documents and relevant issue/PR information read; public standards catalogues and linked technical primary sources examined; local Markdown links/code blocks checked. No compiler, parser or product integration implemented/tested here. No full standards-conformance assessment or independent review approval claimed.

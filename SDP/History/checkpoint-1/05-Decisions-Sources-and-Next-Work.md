@@ -1,8 +1,8 @@
 # Decisions, sources and next work
 
-**Tillegg 2026-09-21:** CP1-D18–D23 og dagens neste leveranse står i
-[07 — SDUI 0.2 og Go-retning](07-SDUI-0.2-and-Go-Direction.md). Tabell og
-arbeidsforslag nedenfor er 18. september-baseline; kandidatstatus for SDL beholdes.
+**Addition, 2026-09-21:** CP1-D18–D23 and the next delivery are in
+[07 — SDUI 0.2 and Go direction](07-SDUI-0.2-and-Go-Direction.md). Tables and
+proposed work below retain the 18 September baseline and SDL candidate status.
 
 Date: 2026-09-18  
 Status: checkpoint disposition index. A recommendation here is not a new

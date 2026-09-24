@@ -1,28 +1,28 @@
 # LikeC4
 
-[Katalog](README.md) · Kategori: **Utvidbar arkitektur-DSL** · Research: **2026-09-10**
+[Catalogue](README.md) · Category: **Extensible architecture DSL** · Research: **2026-09-10**
 
-## Formål og abstraksjonsnivå
+## Purpose and abstraction level
 
-Tekstlig arkitekturmodell med egne elementtyper og relasjoner. Flere kildefiler samles til en modell, og views velger hva som vises.
+Textual architecture models with custom element types/relations. Multiple source files combine into one model; views select displayed elements.
 
-## Modellmekanismer
+## Model mechanisms
 
-Identitet: kvalifiserte elementreferanser. Relasjoner: eksplisitte forbindelser. Contracts: kan refereres/modelleres, men API-konformitet følger ikke av en pil. Viewpoints: statiske/dynamiske views og predicates. Utvidelse: specification med egne kinds, metadata og generators/API.
+Identity: qualified element references. Relations: explicit connections. Contracts can be referenced/modeled, but arrows do not prove API conformance. Viewpoints: static/dynamic views and predicates. Extension: custom kinds, metadata, generators/API.
 
-## Styrker og begrensninger — vår vurdering
+## Strengths and limitations — our assessment
 
-**Styrke:** Egne kinds kan uttrykke SDP-begreper uten å låse alt til C4s opprinnelige nivåer. Programmatisk modelltilgang er interessant for Analyzer.
+**Strength:** Custom kinds can express SDP concepts without imposing original C4 levels. Programmatic model access is relevant to Analyzer.
 
-**Begrensning:** Et element kalt feature får ikke automatisk krav-, release- eller transition-semantikk. Fleksibiliteten trenger en validert profil.
+**Limitation:** Naming an element feature does not supply requirements/release/transition semantics. Flexibility requires a validated profile.
 
-## Historikk, endring og transitions
+## History, change and transitions
 
-Modellutvidelse mellom filer er komposisjon, ikke historikk. Git og en separat før/etter-mapping må bevare identiteter ved rename, split og merge.
+Cross-file model extension is composition, not history. Git and separate before/after mappings must preserve identity through rename/split/merge.
 
-## Illustrativt eksempel
+## Illustrative example
 
-Illustrativ arkitektur med en egen elementtype. Eksemplet er ikke parser-/runtime-testet.
+Architecture with a custom element type. The example has not been parser/runtime tested.
 
 ```text
 specification {
@@ -38,13 +38,13 @@ views {
 }
 ```
 
-## Verktøy, vedlikehold og vilkår
+## Tools, maintenance and terms
 
-Dokumentasjonen viser CLI, editorstøtte, API, generators og releases. Repositorymetadata: ikke arkivert; MIT. Nøyaktig versjon og API-stabilitet må pinnes i en eventuell pilot.
+Documentation shows CLI, editor support, API, generators and releases. Repository metadata: not archived, MIT. Pin exact version/API stability in a pilot.
 
-## Primærkilder
+## Primary sources
 
-Alle kilder kontrollert 2026-09-10; se katalogens metode for evidens- og lisensbegrensninger.
+All sources checked on 2026-09-10; see the catalogue methodology for evidence and licensing limits. Translation does not refresh these dated findings.
 
 - [DSL introduksjon](https://likec4.dev/dsl/intro/)
-- [Offisielt repository; metadata kontrollert via GitHub API](https://github.com/likec4/likec4)
+- [Official repository; metadata checked through GitHub API](https://github.com/likec4/likec4)

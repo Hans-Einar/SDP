@@ -1,36 +1,26 @@
-# R2 — konkrete dokumentkonflikter
+# R2 — concrete documentation conflicts
 
-Inventargrunnlag: [R1s dokumentkart](../R1/Documentation-index.md). Tabellen
-skiller observerte feil fra uløste språk-/prosessvalg. Bevis er eksisterende
-implementasjon/bevis fra G-fasene; R2 er dokumentvedlikehold.
+Inventory basis: [R1 document map](../R1/Documentation-index.md). Distinguish observed errors from unresolved language/process choices. Evidence comes from existing G-phase implementations/checks; R2 is documentation maintenance.
 
-| ID | Dokument / observert konflikt | Grunnlag for behandling | R2-M2 |
+| ID | Document / observed conflict | Basis for handling | R2-M2 |
 | --- | --- | --- | --- |
-| D01 | SDLs KanBan sier koden fortsatt ligger i SystemDesignLanguage | R1 flyttematrise og SDL/go | Rettet til SDL |
-| D02 | SDL språkdefinisjon peker på isolert parserprototype; docs-oversikten kaller hele studies/ utforskning | Definisjonens §§1–11 + registrerte profiler (§12 er åpent arbeid) er design-core 0.5; §§13–16 er kandidater; Go-parser er aktiv | Blandet autoritet presisert; utgått parserinngang fjernet |
-| D03 | Data-/Channel-profiler bruker 0.3/0.4 som nåstatus og gamle Python-testtall uten klar seksjonsgrense | design-core 0.5 i Go inkluderer V2–V4; G4/G6/G5-bevis | Aktive regler skilt fra daterte V2–V4-bevis |
-| D04 | Leveranseplanprofil sier all G-status fortsatt er planned | Arkitekturmodellen og G-fasebevis; implementation-status er fortsatt bare en eksplisitt kildepåstand | V4-snapshot merket; global nåstatuspåstand rettet |
-| D05 | Navigasjons-/notasjonsdesign sier G6 ikke er implementert | SDL/go/documents, query, broker, reader, G6-bevis og G7-launcher | Merket som opprinnelig design med lenker til implementasjon og begrensninger |
-| D06 | SDUI runtime-kontrakt sier binding ennå er planlagt og har uavklarte regler som nå finnes i Go | SDUI/go/runtime/README, SDL action-core/bridge, G3/G4 | Levert én kort gjeldende grenseoversikt som peker til pakkekontraktene |
-| D07 | SDUI layout-/komposisjonsforslag sier Python er aktiv og layout/runtime gjenstår | SDUI language, go-layout-contract, architecture og G1–G3 | Designbakgrunn beholdt; aktiv profil og avvik merket eksplisitt |
-| D08 | prototype-widgets har kjørbare instruksjoner for slettet Python-verktøy | G5-M4, Go SVG-CLI og sdl-document | Utgåtte kjørekommandoer fjernet; datert artefaktbeskrivelse beholdt |
-| D09 | SDUI mangler samlet docs-inngang; checkpoint omtales som gjeldende autoritet | README, aktive Go-kontrakter, implementasjonsplan; checkpoint er datert historie | Dokumentkart og tydelige aktive innganger levert |
-| D10 | Portinventarets nåværende Go-sti er gammel; IR-studie kan leses som ingen runtime finnes | R1, action-core 0.1 og G4 | Aktiv sti rettet; bred IR-studie avgrenset fra levert handlingsruntime |
+| D01 | SDL KanBan says code still lives in SystemDesignLanguage | R1 migration map and SDL/go | Corrected to SDL |
+| D02 | SDL definition points to isolated parser prototype; docs index labels all studies/ exploratory | Sections 1–11 plus registered profiles (section 12 is open) are design-core 0.5; 13–16 are candidates; Go parser is active | Clarified mixed authority; removed obsolete parser entry point |
+| D03 | Data/Channel profiles present 0.3/0.4 and old Python test counts as current | Go design-core 0.5 includes V2–V4; G4/G6/G5 evidence | Separated active rules from dated V2–V4 evidence |
+| D04 | Delivery-plan profile says all G statuses remain planned | Architecture model and G evidence; implementation-status remains an explicit source assertion | Labeled V4 snapshot; corrected global current-status claim |
+| D05 | Navigation/notation design says G6 is unimplemented | SDL/go/documents, query, broker, reader, G6 evidence and G7 launcher | Labeled original design with implementation/limit links |
+| D06 | SDUI runtime contract calls binding planned and leaves rules open that now exist in Go | SDUI/go/runtime/README, SDL action-core/bridge, G3/G4 | Replaced with concise current boundary overview linking package contracts |
+| D07 | SDUI layout/composition proposals call Python active and layout/runtime pending | SDUI language, go-layout-contract, architecture, G1–G3 | Kept design background; explicitly identified active profile and differences |
+| D08 | prototype-widgets gives runnable instructions for deleted Python tools | G5-M4, Go SVG CLI and sdl-document | Removed obsolete commands; kept dated artifact description |
+| D09 | SDUI lacks a docs index; checkpoint is described as current authority | README, active Go contracts, implementation plan; checkpoint is dated history | Delivered document map and clear active entry points |
+| D10 | Port inventory uses obsolete Go path; IR study suggests no runtime exists | R1, action-core 0.1 and G4 | Corrected path; distinguished broad IR study from delivered action runtime |
 
-Videre arbeid: bred kandidatsemantikk, SDP-prosess-/malprofil og full faglig
-harmonisering. R2 hevder ikke at alle formuleringer i 7000+ linjer studier er
-normativt avklart. Genererte viewpoints endres bare via verktøyet ved endret kilde.
+Further work: broader candidate semantics, SDP process/template profile and complete substantive harmonization. R2 does not claim to resolve every statement in over 7000 study lines. Change generated viewpoints through tools when sources change.
 
-## Kontrollert resultat
+## Verified outcome
 
-D01 gjelder også KB-SDP-001s foreldede førtilstand. D07 omfatter retting av
-språkprofilens påstand om at fontenheten ikke var fastsatt: Go bruker DIP.
-D10 omfatter source-tree-studiens gamle 0.1-/Python-inngang; bred workspace/IR
-forblir kandidat, mens avgrensede data-/Channel-/action-profiler er implementert.
-SDUI har et [komplett dokumentkart](../../../SDUI/docs/README.md) over alle 17
-faglige docs-filer. SDLs [inngang](../../../SDL/docs/README.md) beskriver eksplisitt
-at språkdefinisjonen har både aktiv kjerne og forslag. Runtimekontrakten peker
-til én kilde per pakkeansvar; opprinnelig runtimeforslag bevares i Git.
+D01 also covers KB-SDP-001's obsolete baseline. D07 corrects the claim that font units were undecided: Go uses DIP. D10 includes the source-tree study's old 0.1/Python entry point; broad workspace/IR remains a candidate, while bounded data/Channel/action profiles are implemented.
 
-Historiske tall under V2–V4 og opprinnelige G6-designskisser er ikke oppdatert
-som om de var nye prøver. R2 markerer alder/autoritet og peker til aktive innganger.
+SDUI has a [complete map](../../../SDUI/docs/README.md) covering all 17 subject documents. The [SDL entry point](../../../SDL/docs/README.md) explicitly identifies active core and proposals in the definition. Runtime documentation points to one source per package responsibility; the original proposal remains in Git.
+
+V2–V4 historical counts and original G6 sketches are not rewritten as fresh tests. R2 identifies age/authority and points to active entry points.

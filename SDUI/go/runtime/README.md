@@ -1,27 +1,9 @@
-# SDUI-runtime i Go
+# SDUI runtime in Go
 
-G3-M1 implementerer en synkron, vertseid UI-session med typede handles/events og
-atomiske property-batcher. Kall fra bakgrunnsarbeid må først marshalles til
-eierens UI-goroutine. Runtime lagrer ingen native pekere og kjører ikke SDL.
+G3-M1 implements a synchronous, host-owned UI session with typed handles/events and atomic property batches. Marshal background calls onto the owning UI goroutine first. Runtime stores no native pointers and does not execute SDL.
 
-`New` tar et validert instanstre. `Bind` registrerer en Go-handler eksplisitt;
-`Dispatch` avviser stale/dupliserte hendelser og ubundne kontroller. `Draft` er
-lokal redigering uten callback; `Commit` sender gjeldende draft til handleren.
-`Apply` validerer hele batchen før publisering. Ekstern verdioppdatering mens
-feltet er dirty gir konflikt; en eksplisitt aksept må matche gjeldende draft.
-`Revert` er Escape-semantikken. `SnapshotRoot` gir en uavhengig visningsmodell;
-programmatisk oppdatering er ikke en ny brukerhendelse. `Close` revokerer session.
+`New` accepts a validated instance tree. `Bind` explicitly registers Go handlers; `Dispatch` rejects stale/duplicate events and unbound controls. `Draft` edits locally without callbacks; `Commit` sends current draft to its handler. `Apply` validates complete batches before publication. External value updates conflict with dirty fields; explicit acceptance must match current draft. `Revert` provides Escape behavior. `SnapshotRoot` creates an independent presentation model; programmatic updates are not user events. `Close` revokes the session.
 
-G3-M2/M3 leverer hashbasert filwatcher i `../reload`, siste gyldige modell og
-native Fyne-adapter. Nye kandidater blir parse-/profilvalidert og målt før
-publisering. `Reload` beholder verdi/draft/fokus og handle for samme navngitte
-bane/type. Nye defaults gjelder nye instanser; etikett og enabled/visible fra
-ny kilde gjelder straks. Anonyme widgets får nye generasjoner. Endret callback-
-referanse gjenbruker ikke gammel handler. Typebytte/sletting revokerer handle.
+G3-M2/M3 add hash-based file watching in `../reload`, last-valid-model handling and native Fyne adaptation. Parse/profile validation and measurement precede candidate publication. `Reload` preserves value/draft/focus/handle for compatible named paths/types. New defaults affect new instances; new labels/enabled/visible apply immediately. Anonymous widgets receive new generations. Changed callback references do not reuse old handlers. Type changes/deletion revoke handles.
 
-CLI overvåker filen som standard (`-watch=false` slår av). Inputendring er draft;
-Enter committer, Escape gjenoppretter akseptert verdi. Native callbacks fanger
-modellrevisjonen de ble opprettet for. Gamle callbacks og resultater etter
-teardown eller reload utfører ingen ny handling. Programmatisk `SetText` er
-mutet hos adapteren, slik at en propertyoppdatering ikke blir et domene-event.
-Session har fortsatt ingen SDL-loader. [Bevis](../evidence/G3.md).
+CLI watches by default (`-watch=false` disables it). Input edits update draft; Enter commits, Escape restores accepted values. Native callbacks capture their model revision. Old callbacks/results after teardown/reload cause no new action. The adapter mutes programmatic `SetText`, preventing property updates from becoming domain events. Session still contains no SDL loader. [Evidence](../evidence/G3.md).

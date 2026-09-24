@@ -1,40 +1,40 @@
 # Object Constraint Language (OCL) 2.4
 
-[Katalog](README.md) · Kategori: **Modellconstraints og queries** · Research: **2026-09-10**
+[Catalogue](README.md) · Category: **Model constraints and queries** · Research: **2026-09-10**
 
-## Formål og abstraksjonsnivå
+## Purpose and abstraction level
 
-Deklarative uttrykk over modeller: invariants, preconditions, postconditions og navigering. Komplementerer blant annet UML.
+Declarative model expressions: invariants, preconditions, postconditions and navigation. Complements UML and other models.
 
-## Modellmekanismer
+## Model mechanisms
 
-Identitet/relasjoner: arves fra vertsmodellen. Contracts: presise logiske betingelser. Viewpoints: queries kan velge elementer, men rendering er eksternt. Maskinell evaluering avhenger av metamodel, standardbibliotek og implementasjon.
+Identity/relations derive from the host model. Contracts: precise logical conditions. Queries can select viewpoint elements; rendering is external. Machine evaluation depends on metamodel, standard library and implementation.
 
-## Styrker og begrensninger — vår vurdering
+## Strengths and limitations — our assessment
 
-**Styrke:** Et mulig middel for å uttrykke at en modell ikke tillater bestemte dependencies eller manglende kontraktskoblinger.
+**Strength:** Can express forbidden dependencies or missing contract links.
 
-**Begrensning:** Gir ikke selv en systemmodel eller kildekodeanalyse. Navnet på en constraint er ikke bevis på at den tilsvarende egenskapen er riktig formalisert.
+**Limitation:** Provides neither a system model nor source-code analysis by itself. Constraint names do not prove correct formalization.
 
-## Historikk, endring og transitions
+## History, change and transitions
 
-OCL er ikke et migrasjonsspråk. Constraints kan sjekke før/etter-modeller dersom begge representeres; koblingen mellom dem må etableres separat.
+Not a migration language. Constraints can check before/after models if both are represented; establish their correspondence separately.
 
-## Illustrativt eksempel
+## Illustrative example
 
-Illustrativ OCL som forutsetter en hypotetisk metamodel med Feature.requirements; dette oppretter ingen normativ SDP-regel. Eksemplet er ikke parser-/runtime-testet.
+OCL assumes a hypothetical metamodel with Feature.requirements; creates no normative SDP rule. The example has not been parser/runtime tested.
 
 ```ocl
 context Feature
 inv HasRequirement: self.requirements->notEmpty()
 ```
 
-## Verktøy, vedlikehold og vilkår
+## Tools, maintenance and terms
 
-OMG publiserer OCL 2.4. Spesifikasjon og konkret OCL-motor har separate vilkår. Parser-/dialektkompatibilitet er ikke testet.
+OMG publishes OCL 2.4. Specification and engine terms differ. Parser/dialect compatibility not tested.
 
-## Primærkilder
+## Primary sources
 
-Alle kilder kontrollert 2026-09-10; se katalogens metode for evidens- og lisensbegrensninger.
+All sources checked on 2026-09-10; see the catalogue methodology for evidence and licensing limits. Translation does not refresh these dated findings.
 
 - [OMG OCL](https://www.omg.org/spec/OCL/)

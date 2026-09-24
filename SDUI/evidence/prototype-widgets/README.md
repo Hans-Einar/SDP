@@ -1,49 +1,43 @@
-# Prototype-widgets — verifikasjon 2026-09-21
+# Prototype widgets — verification, 2026-09-21
 
-R24 er levert som SVG-referansekomposisjon og lokalt HTML-widgetgalleri.
-Ingen generell layout, FOX, SDL-runtime eller ABI er implementert i denne prøven.
-Oppdatert samme dag: kontrollene for Lengde, Diameter og Stammeforløp er flyttet
-til overskriftsradene; Diameter viser nå også Δ. Kilde, AST og begge strukturelle
-dumper er regenerert. SVG-en er rendret med librsvg og inspisert på nytt uten
-overlapp mellom titler og kontroller. Manifestet og testloggen gjelder denne utgaven;
-nettleserbeviset gjelder det uendrede HTML-galleriet.
+R24 delivered an SVG reference composition and local HTML gallery, not general layout,
+FOX, SDL runtime or ABI. Same-day update moved Length/Diameter/Stem-track controls into
+heading rows and added Diameter Δ. Source, AST and both structural dumps were regenerated.
+Librsvg visual review found no title/control overlap. Manifest/log describe this revision;
+browser evidence covers the unchanged HTML gallery. Localized labels remain example data.
 
-## Kontroller
+## Checks
 
-- 36/36 Python-tester består; [rå logg](tests.txt). Seks nye tester dekker modell-
-  og kildegjenbruk, utelatte callbacks, synlighet/disabled-arv, SVG-tilstander,
-  escaping, utskriftsblokker og de genererte SVG-artefaktene.
-- Nettleserprøve med Playwright og lokal Google Chrome: redigering, synlig musetrykk,
-  tastaturaktivering, deaktivert knapp, aktuelle utskriftsverdier, linjebryting,
-  smal visning, tilbakestilling ved reload, ingen eksterne forespørsler og ingen
-  JavaScript-feil. [Maskinresultat](browser-verification.json).
-- [Skjerm med knapp nedtrykket](browser-pressed.png) og
-  [utskriftsvisning med utfylte verdier](print-preview.png) er visuelt inspisert.
-  Utskriftskontrollen emulerer nettleserens print-CSS. Fysisk utskrift,
-  paginert PDF og XFMD GUI er ikke verifisert her.
-- Begge SVG-er er rendret med lokal librsvg og visuelt inspisert: kontroller og
-  innhold er synlige uten overlapp. SVG-en er et bilde; ingen klikk eller redigering.
-- Generering gir identiske bytes ved gjentakelse. [SHA-256-manifest](manifest.json)
-  identifiserer kilde og artefakter fra denne prøven.
+- 36/36 Python tests passed; [log](tests.txt). Six new tests cover model/source reuse,
+  omitted callbacks, visibility/disabled inheritance, SVG states, escaping, print blocks
+  and generated SVG artifacts.
+- Playwright/local Chrome tested editing, visible mouse press, keyboard activation,
+  disabled controls, current print values, wrapping, narrow view, reload reset, no
+  external requests and no JS errors. [Results](browser-verification.json).
+- [Pressed button](browser-pressed.png) and [filled print preview](print-preview.png)
+  were visually checked. Print CSS was emulated; physical printing, paginated PDF and
+  XFMD GUI were not verified.
+- Both SVGs were rasterized with local librsvg and checked for visible, nonoverlapping
+  controls/content. SVG is a static image, with no clicks/editing.
+- Repeated generation was byte-identical; [SHA-256 manifest](manifest.json) identifies
+  original source/artifacts.
 
-## Reproduksjon
+## Historical reproduction
 
-Fra SDUI, standardbibliotek for produksjon og enhetstester:
+These commands describe the retired builder at the recorded revision, from SDUI:
 
 ```sh
 python3 tools/build_widget_previews.py
 PYTHONPATH=src python3 -m unittest discover -s tests -v
 ```
 
-Den separate nettleserprøven trenger Python-pakken `playwright` og
-`/usr/bin/google-chrome`; dette er verifikasjonsverktøy, ikke produksjonsavhengigheter:
+The separate browser probe requires playwright and /usr/bin/google-chrome as verification
+tools, not production dependencies:
 
 ```sh
 python3 evidence/prototype-widgets/verify_browser.py
 ```
 
-Den åpner det lokale HTML-galleriet og regenererer de to skjermbildene og
-nettleserrapporten. Ingen server eller eksterne nettressurser kreves av demoen.
-
-Se [bibliotekets omfang](../../docs/prototype-widgets.md) for begrensninger,
-XFMD-kildekontroll og videreføring til felles geometri/FOX.
+It opens the local gallery and regenerates two screenshots/report. The demo requires no
+server or external resources. [Scope and continuation](../../docs/prototype-widgets.md)
+records limits, XFMD source inspection and the later shared geometry direction.

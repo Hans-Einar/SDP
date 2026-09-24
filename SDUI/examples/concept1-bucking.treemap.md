@@ -1,18 +1,16 @@
-# Aptering — statisk treemap-prøve
+# Bucking — static treemap probe
 
-![Apteringsflate med to bokser øverst, tre i midten og stammeforløp nederst](concept1-bucking.treemap.svg)
+![Bucking surface: two top boxes, three middle boxes and stem track below](concept1-bucking.treemap.svg)
 
-Denne prøven viser boksene og teksten samlet. Den er rendret med den lokale
-Mermaid Rust-rendereren og lagt inn som SVG-bilde, slik at Markdown-leseren
-kan vise samme layout uten å beregne diagrammet på nytt.
+This probe displays boxes and text together. The local Mermaid Rust renderer produced
+SVG so Markdown readers can display the same layout without recomputing it.
 
-Radene fordeles 15/45/40; midtkolonnene 25/50/25. Overskrifter, padding og gap
-tar plass innenfor gruppene. Tallene 7.5, 11.25, 22.5 og 40 er arealvekter som
-rendereren også skriver i boksene; de er ikke apteringsdata.
+Rows use 15/45/40; middle columns 25/50/25. Headings, padding and gaps occupy group space.
+Printed numbers 7.5, 11.25, 22.5 and 40 are area weights, not bucking data.
 
-Innholdet er bevisst forkortet. Dette er en håndlaget mulighetsprøve basert på
-Concept1-layouten, ikke en generell SDUI-eksport. Etikettene er enkel tekst med
-linjeskift; tabeller, full Markdown og native widgets er ikke implementert.
+Content is deliberately shortened, with intentional localized UI labels. This handcrafted
+Concept1 feasibility probe is not general SDUI export. Labels are plain multiline text;
+tables, full Markdown and native widgets are not implemented by the probe.
 
-[Treemap-kilde](../evidence/treemap-probe/view.mmd) ·
-[Renderer-konfigurasjon](../evidence/treemap-probe/config.json)
+[Treemap source](../evidence/treemap-probe/view.mmd) ·
+[Renderer configuration](../evidence/treemap-probe/config.json)

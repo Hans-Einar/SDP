@@ -1,14 +1,5 @@
-# SDP-prosjektmaler
+# SDP project templates
 
-Dette er eneste kilde for nøytrale maler som blir prosjekteide ved installasjon.
-`project-root/` inneholder filer for prosjektroten; `sdp-root/` for prosjektets SDP/.
-Installerens eksplisitte kilde-/måloversikt står i
-[installasjonsmanifestet](../Toolkit/SDP-install.manifest.json).
-Administrert payload og skills ligger fortsatt under Toolkit.
+This is the sole source of neutral templates that become project-owned on installation. `project-root/` supplies repository-root files; `sdp-root/` supplies the project's SDP area. The [installation manifest](../Toolkit/SDP-install.manifest.json) explicitly maps sources to destinations. Managed payload and skills remain in Toolkit.
 
-R1 flytter malene uten å endre installerte destinasjoner eller eksisterende
-prosjektinnhold. Nummereringen 01–07 følger foreløpig den distribuerte profilen.
-Ny Requirements-inndeling, studier per fase og SDL-baserte maler må avklares i
-[KB-SDP-001](../SDP/Agents/KanBan/active/%23001--Proposal--Project-structure.md)
-og språkprofilen før de innføres samlet. Det finnes ingen ekstra aktiv malkopi
-under Toolkit eller nummererte kataloger i repo-roten.
+R1 moves templates without changing installed destinations or existing project content. Numbering 01–07 still follows the distributed profile. New Requirements subdivisions, per-phase studies and SDL-based templates must be resolved together in [KB-SDP-001](../SDP/Agents/KanBan/active/%23001--Proposal--Project-structure.md) and the language profile before introduction. There is no second active template copy under Toolkit or numbered directories in the repository root.

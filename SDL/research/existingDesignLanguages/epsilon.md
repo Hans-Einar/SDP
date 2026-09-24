@@ -1,28 +1,28 @@
-# Epsilon-språkfamilien
+# Epsilon language family
 
-[Katalog](README.md) · Kategori: **Modellvalidering, transformasjon og generering** · Research: **2026-09-10**
+[Catalogue](README.md) · Category: **Model validation, transformation and generation** · Research: **2026-09-10**
 
-## Formål og abstraksjonsnivå
+## Purpose and abstraction level
 
-EOL er uttrykksgrunnlag for blant annet ETL (transformasjon), EVL (validering), EGL (tekstgenerering), ECL (matching), EML (merge) og Flock (modellmigrasjon).
+EOL underpins ETL (transformation), EVL (validation), EGL (text generation), ECL (matching), EML (merge) and Flock (model migration).
 
-## Modellmekanismer
+## Model mechanisms
 
-Identitet/relasjoner: fra tilknyttede modeller; ECL kan beskrive korrespondanser. Contracts: EVL-constraints. Views: EGL/Picto kan avlede fremstillinger. EMC kobler flere modellformater. Utvidelse: regler, templates og drivers.
+Identity/relations come from connected models; ECL describes correspondences. Contracts: EVL constraints. Views: EGL/Picto derive presentations. EMC connects model formats. Extension: rules, templates and drivers.
 
-## Styrker og begrensninger — vår vurdering
+## Strengths and limitations — our assessment
 
-**Styrke:** En direkte relevant verktøyfamilie for å undersøke blueprints, validering og modell-delta i samme økosystem.
+**Strength:** Directly relevant to exploring blueprints, validation and model deltas within one ecosystem.
 
-**Begrensning:** Flere små språk og drivers gir integrasjonskostnad. En automatisk match mellom objekter må ikke få autoritet som verifisert bevart ansvar.
+**Limitation:** Multiple small languages/drivers add integration costs. Automatic object matching must not be treated as verified responsibility preservation.
 
-## Historikk, endring og transitions
+## History, change and transitions
 
-Flock håndterer oppdatering ved metamodelendring; ECL/EML kan hjelpe sammenligning/merge. Dette er ikke automatisk releasehistorikk eller bevis på kodekonformitet.
+Flock handles metamodel-change updates; ECL/EML assist comparison/merge. Neither automatically provides release history or code-conformance evidence.
 
-## Illustrativt eksempel
+## Illustrative example
 
-Illustrativ EVL over en hypotetisk Feature-type; ingen vedtatt SDP-regel. Eksemplet er ikke parser-/runtime-testet.
+EVL over a hypothetical Feature type; not an adopted SDP rule. The example has not been parser/runtime tested.
 
 ```text
 context Feature {
@@ -33,13 +33,13 @@ context Feature {
 }
 ```
 
-## Verktøy, vedlikehold og vilkår
+## Tools, maintenance and terms
 
-Eclipse-siden angir Mature og EPL-2.0. Den lister 2.8 fra 2025-02-20 og en fremtidsdatert 2.9 (2026-10-19); sistnevnte behandles ikke som utgitt per researchedato. Driverkompatibilitet og konkrete bundle-vilkår gjenstår.
+Eclipse lists Mature and EPL-2.0, with 2.8 dated 2025-02-20 and future-dated 2.9 (2026-10-19). The latter is not treated as released at the research date. Driver compatibility and bundle terms remain open.
 
-## Primærkilder
+## Primary sources
 
-Alle kilder kontrollert 2026-09-10; se katalogens metode for evidens- og lisensbegrensninger.
+All sources checked on 2026-09-10; see the catalogue methodology for evidence and licensing limits. Translation does not refresh these dated findings.
 
-- [Epsilon språk og verktøy](https://eclipse.dev/epsilon/doc/)
+- [Primary documentation](https://eclipse.dev/epsilon/doc/)
 - [Epsilon prosjektstatus](https://projects.eclipse.org/projects/modeling.epsilon)

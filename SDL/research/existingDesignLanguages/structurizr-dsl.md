@@ -1,28 +1,28 @@
 # Structurizr DSL / C4
 
-[Katalog](README.md) · Kategori: **Arkitekturmodell som tekst** · Research: **2026-09-10**
+[Catalogue](README.md) · Category: **Architecture model as text** · Research: **2026-09-10**
 
-## Formål og abstraksjonsnivå
+## Purpose and abstraction level
 
-Definerer én arkitekturmodell med flere C4-diagrammer: systemer, containere, komponenter, deployment og dynamiske forløp. C4 er abstraksjonsmodellen; Structurizr DSL er et konkret språk.
+One architecture model with multiple C4 diagrams: systems, containers, components, deployment and dynamic paths. C4 is the abstraction model; Structurizr DSL is a concrete language.
 
-## Modellmekanismer
+## Model mechanisms
 
-Identitet: DSL-identifiers og modelelementer. Relasjoner: modellerte forbindelser. Contracts: beskrivelser/metadata og eksterne lenker, ikke full API-semantikk. Views: sterke eksplisitte utsnitt. Utvidelse: properties, tags, includes, workspace extension og plugins.
+Identity: DSL identifiers/model elements. Relations: modeled connections. Contracts: descriptions/metadata/external links, not full API semantics. Views: explicit selections. Extension: properties, tags, includes, workspace extensions and plugins.
 
-## Styrker og begrensninger — vår vurdering
+## Strengths and limitations — our assessment
 
-**Styrke:** God kandidat til lesbare eier-viewpoints og featurefiltrerte fremstillinger over en felles modell.
+**Strength:** Candidate for readable owner viewpoints and feature-filtered views over one model.
 
-**Begrensning:** FEAT→REQ, fences og semantisk kompatibilitet må spesifiseres utenfor standard C4-begrepene. DSL-navn må ikke forveksles med en stabil livsløps-ID.
+**Limitation:** Define FEAT→REQ, fences and semantic compatibility beyond standard C4 concepts. DSL names are not stable lifecycle IDs.
 
-## Historikk, endring og transitions
+## History, change and transitions
 
-Git kan versjonere DSL. Serverdokumentasjonen har workspace-versjoner/branches, men dette er verktøystøtte; en flytting av ansvar er ikke en innebygget, verifisert Feature-transition.
+Git versions DSL. Server documentation includes workspace versions/branches, but these are tool features; responsibility moves are not built-in verified Feature transitions.
 
-## Illustrativt eksempel
+## Illustrative example
 
-Illustrativ variant av dokumentasjonens workspace/model/views-struktur. Eksemplet er ikke parser-/runtime-testet.
+Variant of the documented workspace/model/views structure. The example has not been parser/runtime tested.
 
 ```text
 workspace {
@@ -37,13 +37,13 @@ workspace {
 }
 ```
 
-## Verktøy, vedlikehold og vilkår
+## Tools, maintenance and terms
 
-Nåværende dokumentasjon viser en samlet kommandoflate og markerer eldre Lite/CLI/cloud under end-of-life. Ikke bygg neste pilot på antakelser om gammel produktpakking. Dokumentasjonen sier at prebygget server krever lisens; øvrige kommandoer er gratis å bruke. Dette er ikke en generell lisensgodkjenning.
+Current documentation shows a unified command surface and marks older Lite/CLI/cloud as end-of-life. Do not base the next pilot on old packaging assumptions. Documentation says prebuilt server requires a license; other commands are free to use. This is not general license approval.
 
-## Primærkilder
+## Primary sources
 
-Alle kilder kontrollert 2026-09-10; se katalogens metode for evidens- og lisensbegrensninger.
+All sources checked on 2026-09-10; see the catalogue methodology for evidence and licensing limits. Translation does not refresh these dated findings.
 
 - [DSL-eksempel](https://docs.structurizr.com/dsl/example)
-- [Nåværende verktøy og bruksvilkår](https://docs.structurizr.com/)
+- [Primary documentation](https://docs.structurizr.com/)

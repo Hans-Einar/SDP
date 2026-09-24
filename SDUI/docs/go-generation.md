@@ -1,20 +1,7 @@
-# Go-generering — G5-profil
+# Go generation — G5 profile
 
-Generatoren validerer hele kilden før den skriver Go. SDUI 0.2 genereres som
-kildeposisjonert Document og valgt normalisert Root; SDL action-core 0.1 som
-Program med records, actions og Go-symbolreferanser. Typede Go-litteraler
-brukes, ikke innebygd kildekode som parses på nytt ved oppstart. Hvert konstruktør-
-kall lager uavhengige modeller. Originale posisjoner og bindingsreferanser bevares.
+The generator validates the whole source before writing Go. SDUI 0.2 becomes a source-positioned Document and selected normalized Root; SDL action-core 0.1 becomes a Program with records, actions and Go symbol references. It emits typed Go literals, not embedded source reparsed at startup. Each constructor call creates independent models. Original positions and binding references are preserved.
 
-Generert kode er modell-/koblingsdata, ikke en ny runtime. Verten registrerer
-håndskrevne Go-funksjoner og eksplisitte bridge.Plan-feltkoblinger. Disse følger
-samme validering som filbasert oppstart. Generering finner ikke på Go-domene-
-funksjoner, lagring, channel-transport eller en oversettelse av design-core til
-kjørbar atferd. Feil profil eller ukjent root avvises før publisering.
+Generated code contains model/binding data, not another runtime. The host registers handwritten Go functions and explicit bridge.Plan field bindings, using the same validation as file-based startup. Generation invents no domain functions, storage, Channel transport or executable interpretation of design-core. Wrong profiles and unknown roots are rejected before publication.
 
-`sdl-gen -actions actions.sdl -ui page.sdui -entry page -package model -output DIR`
-lager actions_gen.go, ui_gen.go og manifest.json med kildehasher/generatorversjon.
-Publisering gjenbruker manifeststyrt atomisk dokumentpublisering; egne filer i
-katalogen bevares, redigerte genererte filer avvises. Generert kode bygger mot
-de samme Go-modulversjonene som generatoren. Go-kilde skal bygges normalt;
-hot reload av språkmodeller og Go-rebuild/restart er forskjellige mekanismer.
+`sdl-gen -actions actions.sdl -ui page.sdui -entry page -package model -output DIR` creates actions_gen.go, ui_gen.go and manifest.json with source hashes/generator version. Publication reuses manifest-managed atomic document publication: preserve user-owned files and reject modified generated files. Generated code builds against the generator's Go module versions. Build Go source normally; language-model hot reload and Go rebuild/restart are distinct mechanisms.

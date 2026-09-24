@@ -1,49 +1,27 @@
-# SDL — viewpoints etter abstraksjonsnivå og fast notasjon
+# SDL — viewpoints by abstraction level and consistent notation
 
-**Designgrunnlag:** G6-D2, 2026-09-22. **Statusavklaring 2026-09-24:**
-Navigator/statisk eksport, symbolprofil og class-core er siden levert i G6.
-[Go-kommandoene](../../go/README.md), [symbolprofil 1](../profiles/SDL-Symbol-Profile.md),
-[class-core 0.1](../profiles/SDL-Class-Profile.md) og [bevis](../../go/evidence/G6.md)
-eier implementert omfang. Teksten nedenfor bevarer begrunnelse og planforslag,
-ikke en påstand om at alle foreslåtte typer eller UML-relasjoner støttes. [G6-planen](../../../SDUI/docs/implementation-plan.md) og
-[navigasjonsdesignet](SDL-Navigable-Viewpoints-Design.md) hører sammen med dette.
+**Design basis:** G6-D2, 2026-09-22. **Status clarification, 2026-09-24:** navigator/static export, symbol profile and class-core have since been delivered in G6. [Go commands](../../go/README.md), [symbol profile 1](../profiles/SDL-Symbol-Profile.md), [class-core 0.1](../profiles/SDL-Class-Profile.md) and [evidence](../../go/evidence/G6.md) define implemented scope. The remainder preserves rationale/proposals, not support claims for every proposed type/UML relation. See the [G6 plan](../../../SDUI/docs/implementation-plan.md) and [navigation design](SDL-Navigable-Viewpoints-Design.md).
 
-## To likeverdige eksportformer
+## Two equivalent export forms
 
-**Navigator/overview** er anbefalt utviklingsvisning. Generer bare navigasjon,
-små faseoversikter og navne-/typekataloger. List UseCase, Feature, Functionality,
-Capability, Activity, Mode, Container, Unit, Interface og Channel fra den
-validerte modellen, med antall og stabile identiteter. Detaljdiagrammer,
-bidragskart, tilbydere, avhengigheter og valgte scenarioer bygges først ved klikk.
-Ingen detalj-SVG eller skjult full rendering kreves for å lage navigatoren.
+**Navigator/overview** is recommended for development. Generate navigation, small phase overviews and name/type catalogues from validated UseCase, Feature, Functionality, Capability, Activity, Mode, Container, Unit, Interface and Channel objects, with counts/stable identities. Build detailed diagrams, contributions, providers, dependencies and selected scenarios on click. Navigator creation requires neither detailed SVG nor hidden full rendering.
 
-**Statisk pakke** materialiserer et eksplisitt utvalg eller alle viewpoints for
-deling, arkivering og lesere uten lenkehandler. Samlet rapport er et ekstra valg.
-Begge bruker samme prosjektor og samme utvalgsbeskrivelse. Dette er alternative
-leveranseformer, ikke et krav om først å generere hundrevis av diagrammer.
+**Static packages** materialize explicit selections/all viewpoints for sharing, archives and readers without handlers. Combined reports are optional. Both forms share projectors/selection descriptions; neither requires first rendering hundreds of diagrams.
 
-Navigatoren kan være dynamisk eller eksportert med relative fallback-lenker.
-En ennå ikke generert side må ha en handlingslenke, ikke en død fil-lenke.
-En generisk leser får forklarende oversikt og tilbud om statisk eksport.
-Klikket angir viewpoint, fokusobjekt, relasjonstyper, retning, dybde, mode og
-notasjonsprofil. Serveren avgrenser utvalg og arbeid; dette er ikke fri kode.
-Kilderevisjon og utvalgsnøkkel følger både navigator og generert side.
+Navigators may be dynamic or exported with relative fallbacks. Ungenerated pages need action links, not broken file links. Generic readers receive explanatory overviews/static-export options. Clicks specify viewpoint, focus, relations, direction, depth, mode and notation profile. Servers bound selection/work; requests are not arbitrary code. Navigator/pages identify source revisions/selection keys.
 
-## Abstraksjonslag og dokumentstruktur
+## Abstraction levels and document structure
 
-Checkpoint [02, avsnitt 2 og 6](../../../SDP/History/checkpoint-1/02-SDL-Model-and-Abstraction-Levels.md)
-definerer A0–A5 som organiserende nivåer, med kandidatprofilene Intent,
-Architecture, Detailed design og Execution binding. Disse er ikke parser-headere.
-Vi beholder denne inndelingen framfor å innføre konkurrerende nivåer:
+Checkpoint [02, sections 2 and 6](../../../SDP/History/checkpoint-1/02-SDL-Model-and-Abstraction-Levels.md) defines A0–A5 with candidate Intent, Architecture, Detailed design and Execution binding profiles, not parser headers. Retain these levels:
 
-| Dokumentområde | Nivå | Oversikt og relevante visninger |
+| Document area | Level | Overview / relevant views |
 | --- | --- | --- |
-| Krav og hensikt | A0 behov/forpliktelser, A1 funksjonell hensikt | Actors, bruksmål, Features, Functionality, Capability, overordnet Activity, krav og sporbarhet |
-| Arkitektur | A2 system/container, A3 interne Units/lag | Container-/Unit-kart, Channels, porter, tilbydere, bidrag og allokering |
-| Detaljdesign | A4 atferd/kontrakter | Scenariosekvenser, Activity-detaljer, data-/meldingskontrakter, packet; senere klassestruktur og state-maskiner |
-| Realisering og bevis | A5 | Bindinger til kode, generering, verifikasjon, utførte spor og deployment |
+| Requirements and intent | A0 needs/obligations, A1 functional intent | Actors, use cases, Features, Functionality, Capability, high-level Activity, requirements, traceability |
+| Architecture | A2 system/Container, A3 internal Units/layers | Container/Unit maps, Channels, ports, providers, contributions, allocation |
+| Detailed design | A4 behavior/contracts | Sequences, Activity details, data/message contracts, packets; later classes/state machines |
+| Realization and evidence | A5 | Code bindings, generation, verification, executed traces, deployment |
 
-Foreslått minste navigatorpakke:
+Proposed minimum navigator package:
 
 ```text
 viewpoints/
@@ -63,131 +41,69 @@ viewpoints/
     inventory.md
 ```
 
-Katalogene er navigasjonsplasseringer, ikke kopier av SDL-objekter. Samme
-Functionality eller kontrakt kan være relevant på flere nivåer. Modell-ID og
-kilde er den samme. Katalogene bygges fra et eksplisitt viewpoint-register
-med nivåer, spørsmål, nødvendige typer/relasjoner, tillatte utvalg og notasjonsprofil.
-Objekttypen alene bestemmer ikke abstraksjonsnivået; en Activity kan være A1 eller A4.
-Manglende nivåklassifisering vises som uspesifisert, ikke gjettet fra objektnavn.
+Directories locate navigation, not duplicate SDL objects. Functionality/contracts may matter at multiple levels with the same ID/source. Build from explicit viewpoint registries specifying levels, questions, required types/relations, permitted selections and notation. Type alone does not determine level: Activity may be A1 or A4. Show missing classification as unspecified, not inferred from names.
 
-Foreløpig registerkart: VP01 primært A0/A1; VP02 A2/A3; VP03 og VP07 kobler A1
-til A2/A3; VP04/VP05 A2/A3; VP08 A1 eller A4 etter eksplisitt scenarioomfang;
-VP09 A1/A4; VP10 A4. VP11 er kilde-/sporbarhetsvisning på tvers av nivåene.
-VP06s arbeidsplan G1–G6 hører til utviklingsarbeidet og får eget menypunkt;
-den skal ikke forveksles med systemets abstraksjonslag eller runtime-Activities.
-G-faser beskriver vår implementasjon, A-nivåer beskriver systemdesignet.
+Provisional registry: VP01 primarily A0/A1; VP02 A2/A3; VP03/VP07 connect A1 to A2/A3; VP04/VP05 A2/A3; VP08 A1 or A4 by explicit scenario scope; VP09 A1/A4; VP10 A4; VP11 cross-level source/traceability. VP06's G1–G6 work plan has its own menu entry; implementation phases are not system abstraction levels/runtime Activities. G phases describe our work; A levels describe system design.
 
-Requirement, System, Class og State er foreløpig ikke egne deklarasjonstyper
-i design-core 0.5. Oversikten må skille **ikke støttet av profilen**, **ikke
-modellert** og **ingen treff i utvalget**. En tom liste betyr ikke at systemet
-mangler krav eller tilstander. Planlagt eller dokumentert innhold merkes tydelig.
+Requirement, System, Class and State are not declaration types in design-core 0.5. Distinguish **unsupported profile**, **not modeled** and **no selection matches**. Empty inventories do not prove absent requirements/states. Label planned/documented content clearly.
 
-## Mode og State
+## Mode and State
 
-**Mode** er i aktiv SDL en navngitt drifts-/anvendelseskontekst som avgrenser
-avhengigheter, allokering og Channel-deltakelse. UiPreview, BoundExecution og
-DocumentBrowsing er eksempler. Aktiviseringsregler, gjensidig utelukkelse og
-mode-hierarki er ikke implementert.
+Active SDL **Mode** names operating/application contexts bounding dependencies, allocation and Channel participation, such as UiPreview, BoundExecution and DocumentBrowsing. Activation, mutual exclusion and hierarchies are unimplemented.
 
-**State** er en situasjon eller tilstand hos et bestemt system-/aktivitetsobjekt,
-for eksempel Ready, Processing eller Suspended. Eieren og livstiden må være
-definert. Overganger krever hendelser/betingelser og virkning; navn alene er
-ingen state-maskin. Checkpointets State/Activity-semantikk er fortsatt delvis
-kandidatgrunnlag, ikke parserstøtte.
+**State** describes a particular system/activity object's condition, such as Ready, Processing or Suspended, with defined ownership/lifetime. Transitions require events/conditions/effects; names alone do not form state machines. Checkpoint State/Activity semantics remain partly candidate material, not parser support.
 
-En Activity kan gå fra Ready til Processing og tilbake mens samme Mode gjelder.
-Samme State kan være relevant i flere Modes. En modell kan senere gjøre en Mode
-avhengig av et state-predikat, eller gi en Mode en eksplisitt under-state-maskin.
-Ingen slik relasjon utledes automatisk. **State er altså ikke generelt et barn
-av Mode, og ordene er ikke synonymer.** Navigatoren viser dem separat når
-språkprofilen kan uttrykke begge.
+Activity may move Ready→Processing→Ready within one Mode. States may matter in several Modes. Future models might condition Modes on state predicates or define Mode-local state machines, but nothing is inferred. **State is not generally a child of Mode; the terms are not synonyms.** Display them separately when profiles support both.
 
-## Fast visuelt vokabular
+## Consistent visual vocabulary
 
-Bruk UML der semantikken passer og et eksplisitt SDL-symbolsett for SDL-spesifikke
-begreper. Tabellen er en foreslått visningsprofil, ikke nye språkregler.
-Alle symboler har typeetikett og navn; farge alene skal aldri skille typer.
-Detaljnivå endrer innhold/compartments, ikke objektets gjenkjennelige typeikon.
+Use UML when semantics match and explicit SDL symbols for its own concepts. This proposed display profile introduces no language rules. Every symbol carries type/name; color alone never distinguishes types. Detail changes contents/compartments, not recognizable type icons.
 
-| Begrep | Fast visuelt kjennetegn |
+| Concept | Visual identity |
 | --- | --- |
-| Actor | UML-aktørfigur med navn; ekstern systemaktør kan merkes som sådan |
-| UseCase | Ellipse med bruksmålets navn |
-| Requirement | Dokumentform med ID og kort forpliktelse; planlagt type |
-| Feature | Rektangel med fane og tydelig Feature-merke |
-| Functionality | Avrundet ansvarskort med vertikal sidemarkør og Functionality-merke |
-| Capability | Kort med fast evne-ikon og Capability-merke, forskjellig fra use-case-ellipsen |
-| Activity | Avrundet aktivitetsform med Activity-merke; detaljvisning kan åpne flyt |
-| Mode | Kontekstfane/ramme med Mode-merke; ingen start-/sluttmarkør |
-| State | UML-state-form inne i navngitt tilstandsmaskin; planlagt type |
-| System / Container / Unit | Nestbare grenser med respektive faste typeikoner; Container er ikke automatisk en UML deployment-node |
-| Interface | Merket kontraktport; UML lollipop/socket bare når tilbud/krav er uttrykkelig modellert |
-| Channel | Navngitt forbindelseslinje/knutepunkt med endepunkter, roller og kontrakt |
-| Class | UML-klasse med compartments for egenskaper/operasjoner; bare ved eksplisitt klassemodell |
+| Actor | Named UML actor figure; external system actors may be labeled accordingly |
+| UseCase | Named ellipse |
+| Requirement | Document shape with ID/short obligation; planned type |
+| Feature | Tabbed rectangle with Feature label |
+| Functionality | Rounded responsibility card with vertical side marker/type label |
+| Capability | Consistent capability icon/type label, distinct from UseCase ellipse |
+| Activity | Rounded activity shape/type label; details may expose flow |
+| Mode | Context tab/frame/type label, no start/end marker |
+| State | UML state inside a named state machine; planned type |
+| System / Container / Unit | Nestable boundaries with distinct type icons; Container is not automatically UML deployment node |
+| Interface | Labeled contract port; lollipop/socket only for explicit provided/required modeling |
+| Channel | Named connection/junction with endpoints, roles, contract |
+| Class | UML compartments for attributes/operations; explicit class models only |
 
-Bruksmålvisningen skal få aktører og ellipser. Feature-/Functionality-sporbarhet
-kan ligge i et separat tilknyttet diagram; alt behøver ikke presses inn i en ren
-UML use-case-visning. Ingen systemgrense eller include/extend-relasjon oppdiktes
-fra plassering eller supports-fakta.
+Use-case views need actors/ellipses. Feature/Functionality traceability may be a linked separate diagram. Infer neither System boundaries nor include/extend from placement/supports facts.
 
-## Piler: UML der betydningen stemmer
+## Arrows: UML where semantics match
 
-[OMG UML 2.5.1](https://www.omg.org/spec/UML/2.5.1), avsnitt 7.7 om
-avhengigheter/realisering og 9.5 om Property/aggregation, er semantisk referanse.
-[Mermaids klassediagramprofil](https://mermaid.js.org/syntax/classDiagram.html)
-har notasjon for dependency, realization, aggregation og composition; renderer-
-syntaks alene er ikke bevis for at en SDL-relasjon har den samme betydningen.
+[OMG UML 2.5.1](https://www.omg.org/spec/UML/2.5.1), sections 7.7 (dependency/realization) and 9.5 (Property/aggregation), is the semantic reference. [Mermaid class diagrams](https://mermaid.js.org/syntax/classDiagram.html) support dependency, realization, aggregation and composition notation; renderer syntax does not prove matching SDL semantics.
 
-| SDL-faktum / senere relasjon | Visningsregel |
+| SDL fact / future relation | Display rule |
 | --- | --- |
-| Unit consumes Interface | UML-inspirert stiplet dependency med åpen pil mot grensesnittet; behold teksten consumes. Ingen faktisk melding eller obligatorisk avhengighet utledes. |
-| Participant uses Channel as sender/receiver | Vis Channel-deltakelse og rolle. Dette er ikke UML Usage bare fordi ordet uses forekommer. |
-| Functionality realizes Capability | Dagens betydning er **bidrar til realisering**, ikke full oppfyllelse. Behold merket SDL-pil realizes; ikke gi den UMLs hule realiseringstrekant uten en sterkere eksplisitt kontrakt. |
-| Unit provides Capability | Merket tilbyr-relasjon; Capability omdøpes ikke til Interface eller lollipop. |
-| supports / contributes-to / addresses | Egne merkede SDL-sporbarhetsrelasjoner; ingen implisitt arv, include eller extend. |
-| contains / owns | Logisk inndeling/ansvar; ingen UML composition-diamant uten modellert helhet/del- og livstidskontrakt. |
-| Senere eksplisitt UML realization | Stiplet linje og hul trekant mot spesifikasjonen som realiseres. |
-| Senere aggregation / composition | Hul/fylt diamant ved helheten; retning, roller, multiplisitet og eierskapsbetydning må være eksplisitt. |
+| Unit consumes Interface | UML-inspired dashed dependency/open arrow toward Interface; retain consumes label. Infer no actual message or mandatory dependency. |
+| Participant uses Channel as sender/receiver | Channel participation/role, not UML Usage merely because it says uses. |
+| Functionality realizes Capability | Means **contributes to realization**, not complete satisfaction. Retain labeled SDL realizes arrow; no hollow UML triangle without stronger explicit contract. |
+| Unit provides Capability | Labeled provision; do not rename Capability to Interface/lollipop. |
+| supports / contributes-to / addresses | Labeled SDL traceability; no implicit inheritance/include/extend. |
+| contains / owns | Logical decomposition/responsibility; no composition diamond without whole/part/lifetime contract. |
+| Future explicit UML realization | Dashed line/hollow triangle toward realized specification. |
+| Future aggregation / composition | Open/filled diamond at whole; explicit direction, roles, multiplicity and ownership. |
 
-Etikettene uses/consumes/realizes skal beholdes også når pilen har en kjent form.
-En legende angir hva som er SDL og hva som er UML. UML-inspirert er ikke det samme
-som en formelt definert UML-profil. Først bestemmes forholdets betydning, deretter
-velges pil; ikke omvendt.
+Keep uses/consumes/realizes labels even with familiar arrows. Legends distinguish SDL/UML. UML-inspired is not a formal UML profile. Establish meaning before selecting arrows.
 
-## Rendererprofil og senere klassediagrammer
+## Renderer profile and later class diagrams
 
-Mermaids offisielle dokumentasjon beskriver nå
-[usecase-beta](https://mermaid.js.org/syntax/usecase.html), med aktørfigurer og
-ellipser. Det beviser ikke støtte i den lokale Rust-rendereren. Lokal prøve med
-den eksisterende mmdr-binæren ga exit 0, men tegnet syntaksord som noder i stedet
-for et use-case-diagram. Den er ikke godkjent for denne notasjonen.
-En framtidig kapabilitetsprøve må kontrollere AST/figurer og pilmarkører, ikke bare
-exitkode eller at en SVG-fil finnes. Dette oppdraget endrer ikke renderer-koden.
+Official Mermaid documentation describes [usecase-beta](https://mermaid.js.org/syntax/usecase.html) with actors/ellipses. This does not prove local Rust-backend support. A local mmdr probe returned 0 but drew syntax words as nodes, not a use-case diagram. It is not approved for that notation. Future capability tests must inspect AST/shapes/markers, not merely exit code/SVG existence. This assignment changes no renderer code.
 
-G6-M5 skal etablere en versjonert symbol-/pilprofil, riktig use-case-visning og
-testede backend-kapabiliteter. Manglende støtte gir en tydelig merket alternativ
-visning eller en diagnose; en flowchart skal ikke kalles et UML use-case-diagram.
-Full-/enkeltvisning skal bruke samme symboler og projeksjon.
+G6-M5 establishes versioned symbols/arrows, correct use-case views and tested capabilities. Missing support produces labeled alternatives/diagnostics; do not call flowcharts UML use-case diagrams. Full/selected views share symbols/projections.
 
-G6-M6 planlegger klassediagrammer senere. Før rendering må SDL uttrykke klassene,
-attributter/operasjoner, assosiasjonsender/roller, multiplisitet og forskjellen på
-aggregation og composition. Unit-contains blir ikke automatisk klassestruktur.
-Språkprofil, validering, negative tester og kildekart må leveres samlet. State-
-maskiner og include/extend krever tilsvarende eksplisitte framtidige profiler;
-de legges ikke til automatisk gjennom et notasjonsvalg.
+G6-M6 plans class diagrams after explicit classes, attributes/operations, association ends/roles, multiplicity and aggregation/composition semantics. Unit-contains does not imply class structure. Deliver profiles, validation, negative tests and source maps together. State machines/include/extend similarly need future explicit profiles.
 
-Akseptanse: navigator-only gir ingen detaljdiagrammer; utvalg matcher tilsvarende
-del av statisk eksport; alle viste symboler beholder modelltype/kilde-ID; relasjoner
-har korrekt retning og markør; sort/hvitt og nestede grenser er lesbare; unsupported
-diagramtype kan ikke passere bare fordi renderer returnerte exit 0.
+Acceptance: navigator-only renders no details; selections match static-export subsets; symbols retain type/source ID; relations have correct directions/markers; monochrome/nested boundaries remain readable; unsupported diagrams cannot pass on exit code alone.
 
-SDL-modellen skiller Feature-en NavigableDesignDocumentation (navigasjon og
-dokumentlevering) fra TypedDesignInspection (nivåkataloger, relasjonsutvalg og
-semantisk notasjon). Begge støtter BrowseDesignViews; sistnevnte støtter også
-InspectModels. Dette gir egne kildekoblede bidragsvisninger for to ulike behov.
+The model separates NavigableDesignDocumentation (navigation/delivery) from TypedDesignInspection (level catalogues, relation selection, semantic notation). Both support BrowseDesignViews; the latter also supports InspectModels, producing distinct source-linked contribution views.
 
-Verifikasjonsgrense: første samlede VP07-prøve med alle G6-ansvar i én Feature
-traff generatorens 60-sekunders renderergrense. Den endelige modellen skiller de
-to behovene ovenfor; en vellykket eksport av disse mindre visningene opphever
-ikke renderergrensen. G6-M2 skal også ha utvalgs-/diagramgrenser og diagnoser
-for tunge utsnitt. Ingen generator-timeout eller ekstern renderer er endret her.
+Verification limit: an initial VP07 with all G6 responsibilities in one Feature hit the 60-second rendering limit. The final model separates the two needs; successful smaller exports do not remove that limit. G6-M2 also needs selection/diagram bounds and heavy-selection diagnostics. No generator timeout or external renderer changed here.

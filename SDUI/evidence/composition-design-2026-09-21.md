@@ -1,20 +1,17 @@
-# SDUI — komposisjonsavklaring 2026-09-21
+# SDUI — composition clarification, 2026-09-21
 
-Dokumentarbeid, ingen parser/runtime/renderer-endring.
+Documentation only; no parser/runtime/renderer change.
 
-Eierens kanoniske hjørner ^</>^/v</>v erstatter forrige forslag. Ratio med
-horisontalt strekk styrer full bredde og avledet høyde, ikke contain-fit.
-Header/body/footer og navngitt mainBody-referanse er bevart og konkretisert
-i komposisjonsforslaget. Senere eierpresisering samme dato: font=10/12 er
-absolutt tekststørrelse og resize skalerer ikke innholdet. Den konkrete native
-fontenheten gjenstår. Formatering etter hver komponent står før separator;
-komma fortsetter horisontalt og semikolon starter neste rad. Krav R21 og
-P1/P2/P5-planen registrerer parser-, måle- og GUI-kontrollene som gjenstår.
-Ytterligere presisering: flere nivåer av `<>` danner grupper med egen layout.
-Et designeksempel viser tre nivåer og lokal separatorvirkning. R13 og P1/P2
-krever bevart gruppestruktur, også når en eksplisitt gruppe bare har ett barn.
+The owner's canonical corners ^</>^/v</>v replace the preceding proposal. Ratio with
+horizontal stretch uses full width and derived height, not contain-fit. The composition
+proposal preserves header/body/footer and named mainBody references. Later clarification:
+font=10/12 is absolute text size; resize does not scale content. The native font unit
+remained open. Component formatting precedes separators; comma continues horizontally,
+semicolon starts a row. R21 and the then-current P1/P2/P5 plan record remaining parser,
+measurement and GUI checks. Nested `<>` groups have independent layout; a three-level
+example demonstrates local separators. R13 and P1/P2 require explicit single-child groups
+to survive normalization.
 
-Kontroll: relative Markdown-lenker, balanserte kodegjerder, fravær av pikselmål
-i nye eksempler og aritmetikken W=1, H=0.25, ratio=16/9 → 1×0.5625 med
-høydeoverflow. Dette er dokument-/aritmetikkontroll, ikke en layoutimplementasjon.
-Ingen ny GUI-/PDF-kjøring. Ingen commit/push eller endringer i eksterne repoer.
+Checks: relative Markdown links, balanced fences, no pixel dimensions in new examples,
+and W=1, H=0.25, ratio=16/9 → 1×0.5625 with height overflow. This is documentation/arithmetic,
+not layout implementation. No GUI/PDF run, commit/push or external repository changes.

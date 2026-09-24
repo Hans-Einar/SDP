@@ -1,42 +1,42 @@
 # ArchiMate
 
-[Katalog](README.md) · Kategori: **Arkitekturmodell og grafisk notasjon** · Research: **2026-09-10**
+[Catalogue](README.md) · Category: **Architecture model and graphical notation** · Research: **2026-09-10**
 
-## Formål og abstraksjonsnivå
+## Purpose and abstraction level
 
-Enterprise-arkitektur med forretnings-, applikasjons- og teknologiperspektiver. Relevant når SDP må vise eierens mål og ansvar på et høyere nivå enn klasser og funksjoner.
+Enterprise architecture across business, application and technology perspectives. Relevant to showing owner goals/responsibilities above class/function level.
 
-## Modellmekanismer
+## Model mechanisms
 
-Identitet/relasjoner: modelelementer med typede forbindelser. Viewpoints: utvalg av modellen for ulike interessenter; Archi gjenbruker elementer mellom views. Contracts: høynivå service-/grensesnittbeskrivelser, ikke wire-schema. Egenskaper og utveksling er verktøy-/standardavhengige.
+Identity/relations: model elements with typed connections. Viewpoints select model elements for different stakeholders; Archi reuses elements across views. Contracts: high-level service/interface descriptions, not wire schemas. Properties/interchange depend on tools/standards.
 
-## Styrker og begrensninger — vår vurdering
+## Strengths and limitations — our assessment
 
-**Styrke:** Eierorientert helhetsbilde og gjenbruk av samme element i flere views. Skiller modell og diagram.
+**Strength:** Owner-oriented overview and reuse across views; distinguishes models from diagrams.
 
-**Begrensning:** For grovt alene til å håndheve importgrenser og presise input/output-kontrakter. Grafisk redigering kan gi større terskel for en tekstbasert agentløype.
+**Limitation:** Too coarse alone to enforce import boundaries and precise input/output contracts. Graphical editing may raise the entry barrier for a text-based agent workflow.
 
-## Historikk, endring og transitions
+## History, change and transitions
 
-Implementasjon/migrasjon er et relevant ArchiMate-område, men presis transition-semantikk er ikke verifisert mot The Open Groups normative tekst i denne runden. Archi undo/redo er editorhistorikk, ikke varig Feature-provenance.
+Implementation/migration is an ArchiMate area, but this research did not verify precise transition semantics against normative Open Group text. Archi undo/redo is editor history, not persistent Feature provenance.
 
-## Illustrativt eksempel
+## Illustrative example
 
-Illustrativ elementliste for et grafisk språk; ikke ArchiMate-DSL-syntaks. Eksemplet er ikke parser-/runtime-testet.
+Element list for a graphical language, not ArchiMate DSL syntax. The example has not been parser/runtime tested.
 
 ```text
 Application Component: Domain service
 Application Interface: Measurement input
 Application Service: Provide measurements
-View: komponenten, grensesnittet og tjenesten som ett utsnitt
+View: component, interface and service in one selection
 ```
 
-## Verktøy, vedlikehold og vilkår
+## Tools, maintenance and terms
 
-Archi-manualen som ble lest er versjon 5.10.0. The Open Groups spesifikasjonssider lot seg ikke hente; normativ versjons-/lisensvurdering står åpen. Archi som verktøy og ArchiMate som standard har forskjellige bruksvilkår.
+The inspected Archi manual is 5.10.0. Open Group specification pages could not be retrieved; normative version/licensing assessment remains open. Archi tooling and the ArchiMate standard have different terms.
 
-## Primærkilder
+## Primary sources
 
-Alle kilder kontrollert 2026-09-10; se katalogens metode for evidens- og lisensbegrensninger.
+All sources checked on 2026-09-10; see the catalogue methodology for evidence and licensing limits. Translation does not refresh these dated findings.
 
-- [Archi-utviklernes brukerhåndbok](https://www.archimatetool.com/downloads/archi/Archi%20User%20Guide.pdf)
+- [Archi user guide](https://www.archimatetool.com/downloads/archi/Archi%20User%20Guide.pdf)

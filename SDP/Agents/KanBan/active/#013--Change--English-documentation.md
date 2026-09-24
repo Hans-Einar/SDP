@@ -27,3 +27,9 @@ A translation is not a new implementation or a new test result.
 | Time | Actor | Work / next step |
 | --- | --- | --- |
 | 2026-09-24T16:31:15Z | Codex | Registered L1, added English policy and inventoried Norwegian documentation. Translation and verification in progress. |
+
+## L1-M2 result
+
+2026-09-24T17:38:36Z: 110 narrative documents translated; source/hash inventory and
+checks are in [L1 evidence](../../../Maintenance/L1/Evidence.md). Generator output
+translation is the remaining milestone. Event: EVT-KB-SDP-000040.

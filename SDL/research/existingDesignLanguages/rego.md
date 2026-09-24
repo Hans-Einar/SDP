@@ -1,28 +1,28 @@
 # Rego / Open Policy Agent
 
-[Katalog](README.md) · Kategori: **Policyspråk** · Research: **2026-09-10**
+[Catalogue](README.md) · Category: **Policy language** · Research: **2026-09-10**
 
-## Formål og abstraksjonsnivå
+## Purpose and abstraction level
 
-Deklarative regler som evaluerer strukturert input og data. Kan brukes til maskinelle designfences når en pålitelig modell eller kodeinventar finnes.
+Declarative rules evaluate structured input/data. Can enforce machine-checkable design boundaries when a reliable model/code inventory exists.
 
-## Modellmekanismer
+## Model mechanisms
 
-Identitet/relasjoner: felter/referanser i input, ikke et innebygget arkitekturregister. Contracts: policybeslutninger. Views: resultater/avvik; rendering er ekstern. Gjenbruk: packages/regler og data. Maskinell evaluering med OPA.
+Identity/relations: input fields/references, not a built-in architecture registry. Contracts: policy decisions. Views: results/violations; external rendering. Reuse: packages/rules/data. Evaluation through OPA.
 
-## Styrker og begrensninger — vår vurdering
+## Strengths and limitations — our assessment
 
-**Styrke:** Et separat kontrollag kan avvise avtalebrudd som forbudte dependencies uten å tvinge alle designobjekter inn i et nytt språk.
+**Strength:** A separate checking layer can reject forbidden dependencies without forcing every design object into another language.
 
-**Begrensning:** Policy kan bare kontrollere fakta den mottar. En Worker som leverer feil inventar kan få en grønn modellkontroll uten at koden er riktig.
+**Limitation:** Policies only check supplied facts. A Worker supplying incorrect inventory may obtain passing model checks despite incorrect code.
 
-## Historikk, endring og transitions
+## History, change and transitions
 
-Git og policy-bundles kan versjonere regler/data. Ingen innebygd FEAT-transitionmodell. Policyversjon og observert code-SHA må kobles til evidensen.
+Git/policy bundles version rules/data. No built-in FEAT transition model; connect policy versions and observed code SHA to evidence.
 
-## Illustrativt eksempel
+## Illustrative example
 
-Illustrativ Rego v1-policy over et hypotetisk dependency-inventar; ingen scanner eller håndheving implementert. Eksemplet er ikke parser-/runtime-testet.
+Rego v1 over hypothetical dependencies; no scanner/enforcement implemented. The example has not been parser/runtime tested.
 
 ```rego
 package sdp.fences
@@ -35,13 +35,13 @@ deny contains "Domain must not import Renderer" if {
 }
 ```
 
-## Verktøy, vedlikehold og vilkår
+## Tools, maintenance and terms
 
-Offisiell policyguide og OPA-repository er tilgjengelige. Metadata: Apache-2.0, ikke arkivert. Evalueringsversjon og inputkontrakt må pinnes.
+Official guide/OPA repository available. Metadata: Apache-2.0, not archived. Pin evaluation version/input contract.
 
-## Primærkilder
+## Primary sources
 
-Alle kilder kontrollert 2026-09-10; se katalogens metode for evidens- og lisensbegrensninger.
+All sources checked on 2026-09-10; see the catalogue methodology for evidence and licensing limits. Translation does not refresh these dated findings.
 
 - [Rego policy language](https://www.openpolicyagent.org/docs/policy-language)
-- [Offisielt repository; metadata kontrollert via GitHub API](https://github.com/open-policy-agent/opa)
+- [Official repository; metadata checked through GitHub API](https://github.com/open-policy-agent/opa)

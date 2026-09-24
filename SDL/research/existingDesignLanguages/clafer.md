@@ -1,28 +1,28 @@
 # Clafer
 
-[Katalog](README.md) · Kategori: **Struktur-/featuremodell med constraints** · Research: **2026-09-10**
+[Catalogue](README.md) · Category: **Structural/feature modeling with constraints** · Research: **2026-09-10**
 
-## Formål og abstraksjonsnivå
+## Purpose and abstraction level
 
-Kombinerer lettvekts strukturell modellering, kardinaliteter, referanser og featurevariabilitet. Solverstøtte brukes til å undersøke mulige instanser.
+Combines lightweight structural modeling, cardinalities, references and feature variability. Solver support explores possible instances.
 
-## Modellmekanismer
+## Model mechanisms
 
-Identitet: deklarerte clafers og referanser. Relasjoner: nesting, cardinality, reference og inheritance. Contracts: logiske constraints. Views: genererte instanser/analyser, ikke en ferdig SDP-viewpointpakke. Maskinell behandling gjennom Clafer-verktøy.
+Identity: declared clafers/references. Relations: nesting, cardinality, references and inheritance. Contracts: logical constraints. Views: generated instances/analyses, not a complete SDP viewpoint package. Machine processing through Clafer tools.
 
-## Styrker og begrensninger — vår vurdering
+## Strengths and limitations — our assessment
 
-**Styrke:** Kan uttrykke strukturelle alternativer og avdekke umulige kombinasjoner før implementering.
+**Strength:** Expresses structural alternatives and can expose impossible combinations before implementation.
 
-**Begrensning:** Solverens omfang og modellens abstraksjon begrenser hva en analyse viser. Klasselignende syntaks betyr ikke at programmet bør implementeres med arv.
+**Limitation:** Solver scope and model abstraction limit findings. Class-like syntax does not require implementation through inheritance.
 
-## Historikk, endring og transitions
+## History, change and transitions
 
-Modellert struktur/variabilitet gir ikke en generell livsløpshistorikk. Dersom en bestemt Clafer-utvidelse har temporal støtte, må den vurderes særskilt; denne profilen bygger ikke på det.
+Structure/variability modeling does not provide general lifecycle history. Assess temporal support in particular extensions separately; this profile does not rely on it.
 
-## Illustrativt eksempel
+## Illustrative example
 
-Illustrativ gruppering av alternativer; syntaks og solveroppsett må kontrolleres i valgt implementasjon. Eksemplet er ikke parser-/runtime-testet.
+Grouping of alternatives; syntax/solver configuration needs checking in the selected implementation. The example has not been parser/runtime tested.
 
 ```text
 Monitor
@@ -31,13 +31,13 @@ Monitor
     Desktop
 ```
 
-## Verktøy, vedlikehold og vilkår
+## Tools, maintenance and terms
 
-Prosjektets språkside og compilerrepository finnes. Repositorymetadata: MIT, ikke arkivert, push i juli 2026. Dette er aktivitetssignal, ikke en vurdering av brukerbase eller produksjonsmodenhet.
+Official language site/compiler repository available. Metadata: MIT, not archived, pushed July 2026. This signals activity, not user-base size or production maturity.
 
-## Primærkilder
+## Primary sources
 
-Alle kilder kontrollert 2026-09-10; se katalogens metode for evidens- og lisensbegrensninger.
+All sources checked on 2026-09-10; see the catalogue methodology for evidence and licensing limits. Translation does not refresh these dated findings.
 
-- [Clafer offisiell side](https://www.clafer.org/)
-- [Offisielt repository; metadata kontrollert via GitHub API](https://github.com/gsdlab/clafer)
+- [Official Clafer site](https://www.clafer.org/)
+- [Official repository; metadata checked through GitHub API](https://github.com/gsdlab/clafer)

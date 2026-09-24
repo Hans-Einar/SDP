@@ -1,75 +1,66 @@
-# SDUI — begrensede prototype-widgets
+# SDUI — limited prototype widgets
 
-**Historisk kontrollgalleri.** Fixturebygger og midlertidige CLI-formater er
-fjernet i G5-M4. Bruk [felles Go-layout/SVG](../go/README.md) og
-[state-dokumenteksport](../../SDL/go/README.md) for ny UI.
+**Historical control gallery.** G5-M4 removed its fixture builder and temporary CLI
+formats. Use [shared Go layout/SVG](../go/README.md) and
+[state document export](../../SDL/go/README.md) for new UI.
 
-Levert 2026-09-21 for R24: `button` og `input` kan tegnes som SVG i
-[Markdown-prøven](../examples/concept1-bucking.widgets.md). En separat
-[HTML-demo](../examples/prototype-controls.html) viser redigering, mus-/tastaturtrykk,
-fokus, deaktivert knapp og utskrift av gjeldende feltverdier.
+Delivered for R24 on 2026-09-21: button/input SVG in the
+[Markdown example](../examples/concept1-bucking.widgets.md). The separate
+[HTML demo](../examples/prototype-controls.html) supports editing, mouse/keyboard press,
+focus, disabled buttons and printing current values.
 
-Dette bruker eksisterende SDUI 0.2-syntaks. `prototype_widgets` leser normaliserte
-instanser fra samme parser og bevarer identitet, label, value og enabled.
-Skjulte grener utelates; disabled arves gjennom foreldre. Callback-referanser
-overføres ikke til demoen. Ingen SDL-fil åpnes og ingen SVG-produsent kjøres.
+The gallery used SDUI 0.2. prototype_widgets consumed normalized instances from the
+same parser, retaining identity, label, value and enabled. Hidden branches are omitted;
+disabled is inherited. Callbacks are not transferred; no SDL file opens or SVG producer
+runs. This description records the historical implementation.
 
-## To presentasjonsformer
+## Two presentation formats
 
-| Format | Mulighet | Begrensning |
+| Format | Capability | Limit |
 | --- | --- | --- |
-| SVG-bilde i Markdown | Tegnede knapper/felt, normal/trykket/fokus/deaktivert | Statisk bilde; ingen redigering eller klikk |
-| Lokal HTML i nettleser | Native HTML-input, lokal knappetrykkrespons, utskrift | Separat widgetgalleri, ingen lagring eller domenefunksjon |
+| SVG image in Markdown | Drawn buttons/fields, normal/pressed/focused/disabled | Static; no editing/clicks |
+| Local HTML in browser | Native input, local button response, printing | Separate gallery; no storage/domain function |
 
-CommonMark har ingen standard for skjema-widgets. [Rå HTML](https://spec.commonmark.org/0.31.2/#raw-html)
-kan inngå i kilden, men leseren bestemmer hva som tillates og kjøres.
-SVG brukt som bilde har også [begrensninger på interaktivitet og skript](https://developer.mozilla.org/en-US/docs/Web/SVG/Guides/SVG_as_an_image).
-Dette er derfor ikke en ny Markdown-utvidelse som andre lesere må implementere.
+CommonMark has no standard form widgets. [Raw HTML](https://spec.commonmark.org/0.31.2/#raw-html)
+may appear in source, but readers control execution. SVG images also have
+[interaction/script limits](https://developer.mozilla.org/en-US/docs/Web/SVG/Guides/SVG_as_an_image).
+This is not a new Markdown extension for other readers.
 
-Kontroll av lokal XFMD-kode: `src/interpreter/ModelBuilder.cpp` behandler rå HTML
-som tekst, ikke som DOM-kontroller. `src/application/media/ImageDecoder.cpp`
-kopierer et statisk pixbuf til Cairo; README oppgir første bilde for GIF.
-SVG-bilder passer dagens dokumentvei, mens skjema og animasjon krever en annen
-vertsfunksjon. HTML-demoens CSS/JS kjører i nettleseren, ikke i XFMD.
+Local XFMD inspection found ModelBuilder.cpp treats raw HTML as text, not DOM controls;
+ImageDecoder.cpp copies a static pixbuf to Cairo, and README specifies GIF's first
+frame. SVG fits its document path; forms/animation need another host capability.
+HTML CSS/JS runs in a browser, not XFMD.
 
-## Ny eksport og historisk avgrensning
+## Current export and historical scope
 
-Ny SVG eksporteres fra SDUI med den aktive Go-CLI-en:
+From SDUI, export with the active Go CLI:
 
 ```sh
 go -C go run ./cmd/sdui ../examples/concept1-bucking.sdui --format svg --entry bucking -o /tmp/concept1.svg
 ```
 
-Det historiske galleriets Python-bygger er fjernet; gamle kommandoer finnes i
-Git og daterte bevis, ikke som en ekstra støttet byggemåte. Resten av denne
-seksjonen beskriver galleriet fra 2026-09-21. Det daværende verktøyet leste
-`concept1-bucking.sdui`, `prototype-controls.sdui` og tidligere registrert
-treemap-geometri. SVG-widgets og HTML-kontroller bruker samme widgetbeskrivelse.
-Boksregionene beholder treemap-prøvens rad- og kolonnefordeling; overflødige
-gruppeoverskrifter fjernes for å gi kontrollene plass.
-Lengde/Diameter har Cursor AV og Δ i overskriftsraden; Diameter har også
-O/B · U/B og BarkNOR-kalibrering. Stammeforløp har taperNOR og Mixed i samme
-rad som tittelen. SDUI-kilden plasserer disse kontrollene i `header`-regionene.
-Selve tegningen av overskriftskontroller skjer i SDUI-prøvens SVG-komposisjon;
-det er ikke en ny funksjon i Mermaids treemap-renderer.
+The Python gallery builder is removed. Old commands remain in Git/dated evidence,
+not as another supported build path. On September 21 it read concept1-bucking.sdui,
+prototype-controls.sdui and recorded treemap geometry. SVG/HTML shared widget descriptions.
+Regions retained reference rows/columns, with redundant group headings removed for space.
+Length/Diameter have Cursor AV and Δ in their heading row; Diameter also has O/B · U/B
+and BarkNOR calibration. Stem track has taperNOR/Mixed beside its title. Source places
+these in header regions; SDUI's SVG composition draws them. This adds no Mermaid treemap
+heading-control capability.
 
-Komposisjonen er manuelt plassert innen referanseboksene. Den gjengir utvalgte
-kontroller og håndskrevne eksempeldata, ikke alle innholdsblokker i AST-et.
-Den tolker ikke generell SDUI-layout, Markdown-innhold eller fontarv.
-SVG-koordinater og demofont er presentasjonsvalg; de innfører ikke pikselmål i
-SDUI-språket. Trykk/fokus i SVG er illustrasjonstilstand, ikke nye språkattributter.
+Placement was manual inside reference boxes, rendering selected controls/handwritten
+data rather than every AST block. It did not implement general layout, Markdown or
+font inheritance. SVG coordinates/demo fonts introduce no pixel dimensions into SDUI.
+Pressed/focused SVG states are illustrations, not language attributes.
 
-HTML-demoen har ingen nettverksavhengigheter eller lagring. Inndata kopieres som
-tekst til separate utskriftsblokker ved redigering og før utskrift. Lange verdier
-kan da brytes uten inputfeltets horisontale klipping. Trykk-/fokusutseende fjernes
-ved utskrift. Redusert bevegelse deaktiverer CSS-overganger.
+HTML has no network/storage dependency. Editing and pre-print handling copy values as
+text into print blocks, allowing long values to wrap without input clipping. Print
+removes pressed/focus styles; reduced motion disables CSS transitions.
 
-## Videreføring
+## Continuation
 
-Dette var portgrunnlag for [Go-planens G1–G3](implementation-plan.md). G2 har
-levert felles målt geometri til Fyne og SVG som erstatter fixtureplasseringen.
-G3/G4 har koblet widgetidentiteter og egenskaper til runtime og SDL via typede Go-porter.
-FOX er ikke første backend. HTML-galleriets lokale trykkteller er fortsatt bare
-en demonstrasjon, ikke en SDL/SDUI-runtime.
-
-[Verifikasjon](../evidence/prototype-widgets/README.md)
+This supplied port material for [G1–G3](implementation-plan.md). G2 replaced manual
+placement with shared Fyne/SVG geometry; G3/G4 connect identities/properties to runtime
+and SDL through typed Go ports. FOX is not first. The HTML press counter remains a
+local demonstration, not an SDL/SDUI runtime.
+[Verification](../evidence/prototype-widgets/README.md).

@@ -1,28 +1,28 @@
 # AADL
 
-[Katalog](README.md) · Kategori: **Architecture Description Language** · Research: **2026-09-10**
+[Catalogue](README.md) · Category: **Architecture Description Language** · Research: **2026-09-10**
 
-## Formål og abstraksjonsnivå
+## Purpose and abstraction level
 
-Arkitektur for software-/hardware-systemer, særlig der prosesser, tråder, porter, deployment og analyseelementer er viktige. OSATE er et konkret modellerings- og analysemiljø.
+Architecture of software/hardware systems, especially where processes, threads, ports, deployment and analysis matter. OSATE is a concrete modeling/analysis environment.
 
-## Modellmekanismer
+## Model mechanisms
 
-Identitet: packages og navngitte classifiers/implementations. Relasjoner: komponenthierarki, forbindelser og bindings. Contracts: porter, datatyper og properties; annexes kan tilføre semantikk. Views/analyser genereres av verktøy. Utvidelse gjennom properties og annexes.
+Identity: packages and named classifiers/implementations. Relations: component hierarchy, connections and bindings. Contracts: ports, data types and properties; annexes may add semantics. Tools generate views/analyses. Extension through properties and annexes.
 
-## Styrker og begrensninger — vår vurdering
+## Strengths and limitations — our assessment
 
-**Styrke:** Mer presist om eksekveringsstruktur enn generelle boksdiagrammer. Interessant for distribuerte prosesser og ressurskrav.
+**Strength:** More precise about execution structure than generic box diagrams; relevant to distributed processes and resource requirements.
 
-**Begrensning:** Sanntids-/embedded-orienteringen kan bli tung for en liten webapp. AADL-feature betyr eksempelvis en port eller tilgang, ikke en brukerrettet SDP Feature.
+**Limitation:** Real-time/embedded orientation may be heavy for a small web app. An AADL feature can mean a port or access, not a user-facing SDP Feature.
 
-## Historikk, endring og transitions
+## History, change and transitions
 
-Modes beskriver driftskonfigurasjoner; de er ikke versjonshistorikk. Reorganisering av ansvar over revisjoner krever mapping og ekstern versjonering.
+Modes describe operating configurations, not version history. Reorganizing responsibilities across revisions requires mapping and external versioning.
 
-## Illustrativt eksempel
+## Illustrative example
 
-Illustrativ minimal komponentdefinisjon; ingen analyseegenskaper eller deploymentpåstand. Eksemplet er ikke parser-/runtime-testet.
+Minimal component definition, without analysis properties or deployment claims. The example has not been parser/runtime tested.
 
 ```aadl
 package Demo
@@ -34,13 +34,13 @@ public
 end Demo;
 ```
 
-## Verktøy, vedlikehold og vilkår
+## Tools, maintenance and terms
 
-OSATE-dokumentasjonen er tilgjengelig som 2.19.0. SAE-standarden og OSATE-distribusjonen har separate vilkår. Repositorymetadata ga ingen entydig SPDX-lisens; konkrete LICENSE/NOTICE og eventuelle annex-verktøy må undersøkes før bruk.
+OSATE documentation is available as 2.19.0. The SAE standard and OSATE distribution have separate terms. Repository metadata provided no unambiguous SPDX license; inspect actual LICENSE/NOTICE files and annex tools before use.
 
-## Primærkilder
+## Primary sources
 
-Alle kilder kontrollert 2026-09-10; se katalogens metode for evidens- og lisensbegrensninger.
+All sources checked on 2026-09-10; see the catalogue methodology for evidence and licensing limits. Translation does not refresh these dated findings.
 
-- [OSATE og AADL-støtte](https://osate.org/about-osate.html)
-- [Offisielt repository; metadata kontrollert via GitHub API](https://github.com/osate/osate2)
+- [OSATE and AADL support](https://osate.org/about-osate.html)
+- [Official repository; metadata checked through GitHub API](https://github.com/osate/osate2)

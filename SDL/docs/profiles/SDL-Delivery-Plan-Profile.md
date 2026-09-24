@@ -1,52 +1,27 @@
-# SDL — sporbar leveranseplan
+# SDL — traceable delivery plans
 
-Leveranseplanprofilen ble innført i V4 og inngår i **design-core 0.5** i Go.
-Fire planrelasjoner og en Activity-egenskap beskriver hvilke ansvar en aktivitet
-skal levere. En slik kildepåstand beviser ikke at arbeidet er utført.
-[Go-innganger](../../go/README.md) og [G4-bevis](../../go/evidence/G4.md).
+Introduced in V4, this profile is part of **design-core 0.5** in Go. Four planning relations and an Activity property identify responsibilities an activity should deliver. A source assertion does not prove completion. [Go entry points](../../go/README.md); [G4 evidence](../../go/evidence/G4.md).
 
-| Utsagn | Signatur og betydning |
+| Statement | Signature and meaning |
 | --- | --- |
-| `A addresses F.` | Activity → Functionality; aktiviteten dekker dette implementasjonsansvaret |
-| `A delivers F.` | Activity → Feature; planlagt leveransebidrag, ikke bevis på ferdig Feature |
-| `A depends-on B.` | Activity → Activity; eksplisitt forutsetning, ingen selvreferanse/syklus |
-| `S illustrates A.` | Scenario → Activity; eksplisitt eksempelbane knyttet til milepælen |
-| `A has implementation-status = planned/implemented/verified.` | Activity-egenskap; en kildepåstand, ikke en status verktøyet utleder fra tester |
+| `A addresses F.` | Activity → Functionality; activity covers this implementation responsibility |
+| `A delivers F.` | Activity → Feature; planned contribution, not proof of a complete Feature |
+| `A depends-on B.` | Activity → Activity; explicit prerequisite, without self-reference/cycles |
+| `S illustrates A.` | Scenario → Activity; explicit example path linked to a milestone |
+| `A has implementation-status = planned/implemented/verified.` | Activity property; a source assertion, not status inferred from tests |
 
-G-fasene og deres milepæler er Activity-identiteter. Milepælen `refines` sin fase.
-Dette er en visningskonvensjon i eksemplet; generatoren kjenner ikke G-navn eller
-antall faser. Den bruker relasjonene, ikke prefiks eller en innebygd plan.
-`refines` gir ikke arvet status eller avhengighet. Tidsplan, varighet, ressurser
-og automatisk utføring av arbeidsaktiviteter inngår ikke i profilen.
+G phases and milestones are Activity identities. Each milestone `refines` its phase. This is the example's display convention; the generator knows neither G names nor phase counts. It uses relations, not prefixes or a built-in plan. `refines` does not inherit status or dependencies. Scheduling, duration, resources and automatic work execution are outside this profile.
 
-VP06 viser aktivitetsinndeling, leveranser, ansvar og en egen avhengighetsgraf.
-`implementation.md` genereres fra de samme faktaene, med kilde-ID-er og eierkobling.
-Rapporten markerer udekkede Functionality-er; den oppretter ingen milepæler for dem.
-G1–G6-leveransene er siden gjennomført innen profilgrensene. Gjeldende
-[designkilde](../../../SDUI/design/architecture.design) eier modellens eksplisitte
-statuspåstander; [faseplanen](../../../SDUI/docs/implementation-plan.md) peker på
-implementasjonsbevis. V4s opprinnelige planned-snapshot beholdes som historie under.
+VP06 shows activity decomposition, deliveries, responsibilities and a separate dependency graph. `implementation.md` is generated from the same facts, with source IDs and ownership links. It reports uncovered Functionality elements without inventing milestones. G1–G6 have since been delivered within profile boundaries. The current [design source](../../../SDUI/design/architecture.design) owns explicit model status assertions; the [phase plan](../../../SDUI/docs/implementation-plan.md) links implementation evidence. The original V4 planned snapshot remains below as history.
 
-## Historisk V4-leveranse — 2026-09-22
+## Historical V4 delivery — 2026-09-22
 
-Tall og status nedenfor gjelder denne milepælen før Go-porten. De er ikke
-nykjørte tester eller dagens samlede implementasjonsstatus.
+These counts/statuses describe this milestone before the Go port, not newly run tests or current overall implementation status.
 
-V4-milepæler: M1 sporbar fase-/ansvarsmodell; M2 generert leserapport og komplette
-parser/presentasjon/binding/reload-scenarioer; M3 samlet verifikasjon, checkpoint,
-fasepush og PR for gjennomgang mot sdp-vNow.
+V4 milestones: M1 traceable phase/responsibility model; M2 generated reader report and complete parser/presentation/binding/reload scenarios; M3 combined verification, checkpoint, phase push and review PR against sdp-vNow.
 
-V4-M1 verifisert: 61 parsertester består. Modellen angir 5 planlagte G-faser,
-18 milepæler og ansvarskoblinger for alle 94 Functionality-er. Ingen status er
-oppgradert til implemented/verified for den kommende Go-koden.
+V4-M1 verified: 61 parser tests pass. The model declares five planned G phases, 18 milestones and responsibility links for all 94 Functionality elements. No future Go-code status was upgraded to implemented/verified.
 
-V4-M2 levert: generisk implementation.md fra fase-/milepælrelasjoner, med
-ansvarseiere og scenariofigurer. 24 verktøytester består. Modellens ti scenarioer
-dekker kompilering, interaktiv/statisk presentasjon, lokal Go-handling, SDL-binding,
-UI-/SDL-reload og native bygg. Dette er designbaner, ikke kjørte Go-programmer.
+V4-M2 delivered: generic implementation.md from phase/milestone relations, with responsibility owners and scenario diagrams. 24 tool tests pass. Ten model scenarios cover compilation, interactive/static presentation, local Go actions, SDL binding, UI/SDL reload and native builds. These are design paths, not executed Go programs.
 
-V4-M3 verifisert: 61 SDL-parsertester, 24 verktøytester og 36 SDUI-tester
-består. 142 SVG-diagrammer fra 368 deklarasjoner og 1106 fakta er kontrollert
-for kildekobling og byte-identisk reeksport. Femten ufullstendige modusallokeringer
-rapporteres fortsatt eksplisitt. Fasegraf, parser- og bindingssekvens er visuelt
-stikkprøvekontrollert; ingen Go-runtime eller fysisk print er verifisert.
+V4-M3 verified: 61 SDL parser, 24 tool and 36 SDUI tests pass. 142 SVG diagrams from 368 declarations and 1106 facts checked for source links and byte-identical re-export. Fifteen incomplete mode allocations remain explicitly reported. Phase graph, parser and binding sequences visually spot-checked; neither Go runtime nor physical printing verified.

@@ -1,17 +1,10 @@
-# SDUI — prototyping av brukergrensesnitt
+# SDUI — user interface prototyping
 
-[Dokumentoversikt](docs/README.md) skiller gjeldende profil, implementasjon,
-designbakgrunn og daterte referanser.
+The [documentation map](docs/README.md) distinguishes current profiles, implementation, design background and dated references. [SDUI KanBan](SDP/Agents/KanBan/README.md) tracks ideas and local effects of SDP planning; cards do not change the implemented language profile.
 
-[SDUIs KanBan](SDP/Agents/KanBan/README.md) følger ideer og lokale konsekvenser
-av SDP-planleggingen. Kortene endrer ikke den implementerte språkprofilen.
+SDUI 0.2 is implemented in Go: parser/AST, validation, normalization, relative layout, SVG, structural console/Markdown dumps, runtime and Fyne host with model reload. SDL bindings and Go generation share these models/runtimes. No active Python frontend or 0.1 compatibility path remains.
 
-SDUI 0.2 er implementert i Go: parser/AST, validering, normalisering, relativ
-layout, SVG, strukturell konsoll-/Markdown-dump, runtime og Fyne-vert med modellreload.
-SDL-kobling og Go-generering bruker de samme modellene og runtimene.
-Ingen aktiv Python-frontend eller 0.1-kompatibilitetsvei beholdes.
-
-Fra SDP-roten, med Go 1.26+ (verifisert med 1.27.1):
+From the SDP root, with Go 1.26+ (verified using 1.27.1):
 
 ```sh
 go -C SDUI/go test ./...
@@ -20,30 +13,15 @@ go -C SDUI/go run ./cmd/sdui ../examples/concept1-bucking.sdui --format svg --en
 go -C SDUI/go run -tags desktop ./cmd/sdui-fyne -entry bucking ../examples/concept1-bucking.sdui
 ```
 
-Linux desktop trenger OpenGL/X11 og C-kompilator. Parser/runtime kan brukes uten
-GUI. Fyne er første interaktive vert; XFMD viser generert dokumentasjon og kreves
-ikke for UI-kjernen. [Go-innganger](go/README.md), [felles kjøreeksempel](../SDL/go/README.md).
+Linux desktop requires OpenGL/X11 and a C compiler. Parser/runtime work without a GUI. Fyne is the first interactive host; XFMD displays generated documentation and is not required by the UI core. [Go entry points](go/README.md); [shared execution example](../SDL/go/README.md).
 
-[Concept1-kilden](examples/concept1-bucking.sdui) har seks hovedbokser og
-representative kontroller. Det er eksempeldata, ikke portert React- eller
-apteringslogikk. [AST](examples/concept1-bucking.ast.json),
-[konsolldump](examples/concept1-bucking.dump.txt) og [Markdown-dump](examples/concept1-bucking.dump.md)
-bevarer strukturen. [UI/state-dokumentasjon](design/runtime-preview/entry.md)
-viser SVG fra felles layout og eksplisitt valgt tilstand.
+The [Concept1 source](examples/concept1-bucking.sdui) has six main boxes and representative controls. These are example data, not ported React/bucking logic. The [AST](examples/concept1-bucking.ast.json), [console dump](examples/concept1-bucking.dump.txt) and [Markdown dump](examples/concept1-bucking.dump.md) preserve structure. [UI/state documentation](design/runtime-preview/entry.md) shows SVG from shared layout and explicitly selected state. Norwegian UI labels in this example are intentional localized sample data.
 
-`[]` er frame, `<>` nestede grupper, `*b` BoxUI-dekorasjon, `{}` formatering.
-Komma fortsetter horisontalt; semikolon starter neste rad. Kildestørrelser er
-relative; font er absolutt i logiske DIP. Parseren åpner aldri SDL-ref eller kjører
-callbacks. En eksplisitt verts-/bridge-registrering kreves for domenekall.
+`[]` is a frame; `<>` nested groups; `*b` BoxUI decoration; `{}` formatting. Comma continues horizontally; semicolon starts a new row. Source dimensions are relative; fonts are absolute logical DIP. The parser never opens SDL refs or runs callbacks. Domain calls require explicit host/bridge registration.
 
-- [Språk og EBNF](docs/language.md), [layoutprofil](docs/go-layout-contract.md), [Markdown-profil](docs/markdown-provider.md).
-- [Arkitektur](docs/architecture.md), [runtime](go/runtime/README.md), [Go-generering](docs/go-generation.md).
-- [Krav](docs/requirements.md), [milepæler](docs/implementation-plan.md), [datert checkpoint](../SDP/History/checkpoint-1/11-Go-Implementation-and-Navigation.md).
-- [SDL-design og genererte viewpoints](design/README.md), [mandat](Mandate-and-Study.md).
+- [Language/EBNF](docs/language.md), [layout profile](docs/go-layout-contract.md), [Markdown profile](docs/markdown-provider.md).
+- [Architecture](docs/architecture.md), [runtime](go/runtime/README.md), [Go generation](docs/go-generation.md).
+- [Requirements](docs/requirements.md), [milestones](docs/implementation-plan.md), [dated checkpoint](../SDP/History/checkpoint-1/11-Go-Implementation-and-Navigation.md).
+- [SDL design/generated viewpoints](design/README.md), [mandate](Mandate-and-Study.md).
 
-Avgrensninger: scroll-layout avvises; innebygd Mermaid er verifisert for
-flowchart/graph med registrert renderer. Fyne uten slik provider viser plassholder.
-SVG-widgeten er en merket plassholder. FOX-widgets, TUI, full Markdown/Mermaid-
-dekning og produksjonsintegrasjon med Ponsse er ikke levert. Det eldre
-[HTML-kontrollgalleriet](examples/prototype-controls.html) er en statisk historisk
-prøve; ny generell UI-plassering går gjennom Go-layouten.
+Limits: scroll layout is rejected; embedded Mermaid is verified for flowchart/graph with a registered renderer. Fyne without that provider displays placeholders. The SVG widget is a labeled placeholder. FOX widgets, TUI, full Markdown/Mermaid coverage and Ponsse production integration are not delivered. The older [HTML control gallery](examples/prototype-controls.html) is a static historical trial; new general UI placement uses Go layout.

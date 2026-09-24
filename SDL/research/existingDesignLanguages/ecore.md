@@ -1,28 +1,28 @@
 # Ecore / Eclipse Modeling Framework
 
-[Katalog](README.md) · Kategori: **Metamodel og modelleringsinfrastruktur** · Research: **2026-09-10**
+[Catalogue](README.md) · Category: **Metamodel and modeling infrastructure** · Research: **2026-09-10**
 
-## Formål og abstraksjonsnivå
+## Purpose and abstraction level
 
-Ecore definerer modellens typer, attributter og referanser. EMF er rammeverket rundt modellen, blant annet serialisering og kodegenerering; ikke ett selvstendig designspråk.
+Ecore defines model types, attributes and references. EMF surrounds models with serialization/code generation and other infrastructure; it is not one standalone design language.
 
-## Modellmekanismer
+## Model mechanisms
 
-Identitet: EPackage namespace URI og modelelementer; instans-ID-policy må defineres. Relasjoner: EReference med cardinality/containment. Contracts: struktur; rikere constraints via andre språk/verktøy. Utvidelse: egen metamodel. Views/editorer krever verktøy.
+Identity: EPackage namespace URI/model elements; define instance-ID policy. Relations: EReference cardinality/containment. Contracts: structure; richer constraints need other languages/tools. Extension: custom metamodels. Views/editors need tooling.
 
-## Styrker og begrensninger — vår vurdering
+## Strengths and limitations — our assessment
 
-**Styrke:** Et etablert grunnlag dersom SDP trenger egen semantikk og integrasjon med modelltransformasjoner.
+**Strength:** Established foundation for custom SDP semantics and model-transformation integration.
 
-**Begrensning:** En egen Ecore-metamodel er fortsatt vårt eget språkansvar. JVM-/Eclipse-infrastruktur og model-persistence kan være mer enn små prosjekter trenger.
+**Limitation:** A custom Ecore metamodel remains our language responsibility. JVM/Eclipse infrastructure and model persistence may exceed small-project needs.
 
-## Historikk, endring og transitions
+## History, change and transitions
 
-Ecore beskriver typer, ikke automatisk deres evolusjon. Edapt og Epsilon Flock er separate mekanismer for migrasjon; Git kan supplere med revisjoner.
+Ecore describes types, not their evolution automatically. Edapt/Epsilon Flock provide separate migration mechanisms; Git can add revisions.
 
-## Illustrativt eksempel
+## Illustrative example
 
-Illustrativ Ecore-klasse uten attributter; ikke en SDP-metamodelbeslutning. Eksemplet er ikke parser-/runtime-testet.
+Ecore class without attributes, not an SDP metamodel decision. The example has not been parser/runtime tested.
 
 ```xml
 <ecore:EPackage xmi:version="2.0"
@@ -34,12 +34,12 @@ Illustrativ Ecore-klasse uten attributter; ikke en SDP-metamodelbeslutning. Ekse
 </ecore:EPackage>
 ```
 
-## Verktøy, vedlikehold og vilkår
+## Tools, maintenance and terms
 
-Eclipse-prosjektet og dokumentasjonen er tilgjengelige; prosjektsiden oppgir EPL-2.0. Konkrete bundle-NOTICE-filer og versjonskompatibilitet må kontrolleres før bruk. Ingen toolchain er installert eller valgt.
+Eclipse project/documentation available; project page lists EPL-2.0. Check bundle NOTICE files/version compatibility before use. No toolchain installed or selected.
 
-## Primærkilder
+## Primary sources
 
-Alle kilder kontrollert 2026-09-10; se katalogens metode for evidens- og lisensbegrensninger.
+All sources checked on 2026-09-10; see the catalogue methodology for evidence and licensing limits. Translation does not refresh these dated findings.
 
-- [Eclipse EMF prosjekt](https://projects.eclipse.org/projects/modeling.emf)
+- [Eclipse EMF project](https://projects.eclipse.org/projects/modeling.emf)

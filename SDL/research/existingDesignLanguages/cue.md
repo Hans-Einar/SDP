@@ -1,28 +1,28 @@
 # CUE
 
-[Katalog](README.md) · Kategori: **Constraint-/konfigurasjonsspråk** · Research: **2026-09-10**
+[Catalogue](README.md) · Category: **Constraint/configuration language** · Research: **2026-09-10**
 
-## Formål og abstraksjonsnivå
+## Purpose and abstraction level
 
-Kombinerer data og constraints gjennom unification. Kan validere og generere konfigurasjon og strukturert data.
+Combines data and constraints through unification; validates/generates configuration and structured data.
 
-## Modellmekanismer
+## Model mechanisms
 
-Identitet: fields, definitions og packages; varige design-ID-er må modelleres. Relasjoner: references og constraints. Contracts: datakrav. Utvidelse/gjenbruk: definitions, imports og komposisjon. Views: eksport og egne generators.
+Identity: fields, definitions and packages; model persistent design IDs explicitly. Relations: references/constraints. Contracts: data requirements. Extension/reuse: definitions, imports and composition. Views: export/custom generators.
 
-## Styrker og begrensninger — vår vurdering
+## Strengths and limitations — our assessment
 
-**Styrke:** Kan samle standardkrav og prosjektspesifikke begrensninger uten å kopiere hele schemaet. Go-implementasjonen er interessant, men SDP trenger ikke kreve Go.
+**Strength:** Combines standard requirements and project constraints without copying entire schemas. Go implementation is interesting, but SDP need not require Go.
 
-**Begrensning:** Ufullstendige verdier og unification har læringskostnad. Gyldig CUE-data beviser ikke at observert kode følger modellen.
+**Limitation:** Incomplete values and unification require learning. Valid CUE data does not prove observed code follows the model.
 
-## Historikk, endring og transitions
+## History, change and transitions
 
-Git lagrer revisjoner. Schema-/datamigrasjon og bevart identitet må spesifiseres separat; unification er ikke en før/etter-transitionmekanisme.
+Git stores revisions. Define schema/data migration and identity preservation separately; unification is not a before/after transition mechanism.
 
-## Illustrativt eksempel
+## Illustrative example
 
-Illustrativ lokal constraint og instans; ikke normativt SDP-format. Eksemplet er ikke parser-/runtime-testet.
+Local constraint and instance, not normative SDP format. The example has not been parser/runtime tested.
 
 ```cue
 #Feature: {
@@ -35,14 +35,14 @@ feature: #Feature & {
 }
 ```
 
-## Verktøy, vedlikehold og vilkår
+## Tools, maintenance and terms
 
-Offisiell tour og repository er tilgjengelige. Metadata: Apache-2.0, ikke arkivert. Verktøyets versjon og eksportadferd må pinnes i en eventuell pilot.
+Official tour/repository available. Metadata: Apache-2.0, not archived. Pin tool version/export behavior in any pilot.
 
-## Primærkilder
+## Primary sources
 
-Alle kilder kontrollert 2026-09-10; se katalogens metode for evidens- og lisensbegrensninger.
+All sources checked on 2026-09-10; see the catalogue methodology for evidence and licensing limits. Translation does not refresh these dated findings.
 
-- [CUE constraints](https://cuelang.org/docs/tour/basics/constraints/)
-- [CUE tour](https://cuelang.org/docs/tour/)
-- [Offisielt repository; metadata kontrollert via GitHub API](https://github.com/cue-lang/cue)
+- [CUE documentation](https://cuelang.org/docs/tour/basics/constraints/)
+- [CUE documentation](https://cuelang.org/docs/tour/)
+- [Official repository; metadata checked through GitHub API](https://github.com/cue-lang/cue)

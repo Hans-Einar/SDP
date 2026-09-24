@@ -1,37 +1,18 @@
-# Avgrenset Markdown-provider — G2-M4
+# Bounded Markdown provider — G2-M4
 
-Go-provideren parser Markdown én gang før måling. Måling og SVG bruker samme
-blokker, tabellceller og diagramdimensjoner. Den brukes av SVG-CLI og Fyne-CLI;
-konsolldumpens rå Markdown er fortsatt en annen, bevisst eksportform.
+The Go provider parses Markdown once before measurement. Measurement and SVG share blocks, table cells and diagram dimensions. SVG/Fyne CLIs use it; raw Markdown in console dumps remains a deliberately separate export form.
 
-Støttet presentasjonsprofil:
+Supported presentation profile:
 
-- Overskrifter i seks grader, avsnitt, linjebrudd og enkle listepunkter.
-- Inline strong/emphasis, kode og lenker beholder lesbart innhold uten Markdown-
-  markørene. Denne første profilen gjengir ikke egne fontvekter, kursiv eller
-  lenkenavigasjon; den påstår ikke full CommonMark-presentasjon.
-- Inngjerdet/innrykket kode som literal tekst, og GFM-tabeller med cellegrenser,
-  tekstombryting og samme mål i SVG som i layout.
-- Mermaid-fences blir separate, identifiserte diagramressurser. Uten registrert
-  renderer vises en uttrykkelig plassholder; de forsvinner ikke stille.
+- Six heading levels, paragraphs, line breaks and simple list items.
+- Inline strong/emphasis, code and links retain readable content without Markdown markers. This initial profile does not render separate font weights, italics or link navigation and does not claim full CommonMark presentation.
+- Fenced/indented code as literal text; GFM tables with cell borders, wrapping and identical SVG/layout measurements.
+- Mermaid fences become separately identified diagram resources. Without a registered renderer they show explicit placeholders, not silent omission.
 
-HTML og bilder avvises. Ingen URL lastes automatisk. Markdown-widgeten er
-begrenset til 32 KiB, 256 blokker og åtte diagrammer. Eksterne ressurser,
-animasjon, CSS og DOM-scripting er ikke del av profilen.
+HTML/images are rejected. URLs are never loaded automatically. Each Markdown widget is limited to 32 KiB, 256 blocks and eight diagrams. External resources, animation, CSS and DOM scripting are outside the profile.
 
-`--mermaid-renderer /absolutt/sti/til/mmdr` registrerer en lokal renderer for
-SVG-eksport. Kilden går på stdin, aldri gjennom shell. Første verifiserte
-kapabilitet er `flowchart`/`graph`; andre diagramtyper gir profilfeil. Kilden er
-maksimalt 12 KiB, renderer får fem sekunder og maksimalt 4 MiB utdata. SVG må ha
-endelig viewBox og være uten aktive eller eksterne elementer/referanser.
-Initialiseringsdirektiver er ikke tillatt. Parseren importerer ingen renderer.
+`--mermaid-renderer /absolute/path/to/mmdr` registers a local SVG-export renderer. Source goes through stdin, never a shell. Initial verified capability: `flowchart`/`graph`; other diagram types produce profile errors. Maximum source: 12 KiB; renderer timeout: five seconds; maximum output: 4 MiB. SVG requires a finite viewBox and no active/external elements or references. Initialization directives are forbidden. The parser imports no renderer.
 
-`--resources DIR` skriver innholdsnavngitte `.svg`-filer separat; den samlede
-SVG-en har også data-ressurser og kan vises alene. Eksisterende ressurs med
-samme navn må ha identiske bytes. Publisering med katalogtransaksjon, cache-
-revisjoner og lease følger G6; M4 er ingen dokumentdaemon.
+`--resources DIR` writes content-named `.svg` files separately; the combined SVG also embeds data resources and works alone. Existing resources of the same name must have identical bytes. Directory-transaction publication, cache revisions and leases follow in G6; M4 is not a document daemon.
 
-Fyne-CLI bruker Markdown-provideren uten ekstern diagramrenderer i denne fasen.
-Diagrammer viser derfor den eksplisitte plassholderen der. Dette unngår å hevde
-støtte for alle Mermaid-SVG-funksjoner i Fynes SVG-rasteriserer uten prøvebevis.
-Den eksterne flowchart-ressursen er verifisert i SVG-eksport via librsvg.
+In this phase Fyne CLI uses the provider without an external diagram renderer, so diagrams show explicit placeholders. This avoids claiming support for every Mermaid SVG feature in Fyne's rasterizer without evidence. External flowchart resources are verified in SVG export through librsvg.

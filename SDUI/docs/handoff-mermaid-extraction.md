@@ -1,48 +1,46 @@
-# Oppstart — Mermaid som diagrammotor og kilde for gjenbruk
+# Handoff — Mermaid as diagram engine and reuse source
 
-Oppdatert 2026-09-21: Go/Fyne er valgt; [PLAN-003](implementation-plan.md) gjelder.
-Historisk Mermaid-kartlegging nedenfor er fra 19.–20. september, ikke ny Git-kontroll. Dette erstatter overleveringen
-som krevde et eget uttrekk med bevart BoxUI 0.1/BX-HOST-kompatibilitet.
+Updated 2026-09-21: Go/Fyne is selected; [PLAN-003](implementation-plan.md) applies.
+The mapping below dates from September 19–20, not a fresh Git inspection. It replaces
+the handoff requiring extraction with BoxUI 0.1/BX-HOST compatibility.
 
-## Oppdragets nåværende grense
+## Current scope
 
-Mermaid master på afab5e9 har ingen BoxUI-kode. Vi trenger **ingen endring i
-Mermaid nå** for å starte ny SDUI-utvikling. Ikke opprett en cleanup-PR eller
-legg SDUI-kode inn i master. Bevar vanlig Mermaid, treemap, måling og ruting.
+Mermaid master at afab5e9 contains no BoxUI. **No Mermaid change is needed now** to
+start SDUI development. Do not create a cleanup PR or add SDUI to master. Preserve
+ordinary Mermaid, treemap, measurement and routing.
 
-SDUI-sesjonen i `/home/warloc/git/SDP-vNow` eier ny frontend, runtime og layout/
-presentasjon. Den kan studere og porte egnede algoritmer/tester fra implementation-worktreet
-til Go med dokumentert proveniens. Ingen Rust-avhengighet opprettes automatisk. Det kreves ikke en mellomliggende legacy-crate, gammel
-JSON-parser, gammel wire-protokoll eller bakoverkompatibel geometri.
+The SDUI session in /home/warloc/git/SDP-vNow owns frontend, runtime and layout/
+presentation. Suitable algorithms/tests may be studied and ported from the
+implementation worktree to Go with provenance. This creates no automatic Rust
+dependency and requires no intermediate legacy crate, JSON parser, wire protocol
+or backward-compatible geometry.
 
-Les gjeldende AGENTS.md der de finnes, og:
+Read applicable AGENTS.md plus [plan](implementation-plan.md),
+[layout proposal](layout-language-proposal.md), [architecture](target-architecture.md)
+and [worktree mapping](renderer-extraction-and-language-direction.md).
 
-- `/home/warloc/git/SDP-vNow/SDUI/docs/implementation-plan.md`
-- `/home/warloc/git/SDP-vNow/SDUI/docs/layout-language-proposal.md`
-- `/home/warloc/git/SDP-vNow/SDUI/docs/target-architecture.md`
-- `/home/warloc/git/SDP-vNow/SDUI/docs/renderer-extraction-and-language-direction.md`
+## Reuse sources and preservation
 
-## Gjenbrukskilder og arbeid som skal bevares
+- mermaid-rs-renderer-boxui-implementation, 61a85b6: XFMD's implementation source.
+  Measurement, SVG escaping/presentation, control maps, budgets and tests are
+  candidates; new fr/frame rules replace grow semantics.
+- mermaid-rs-renderer-boxui, 4bfd179: parallel early implementation from the same
+  base, not a required additional merge. Do not mix these parsers.
+- /tmp/xfmd-mrr-measurements: 23 staged files at inspection; no deletion/reset
+  without a separate inventory. Outside SDUI cleanup.
+- Numbered SDP pilot and mandate in the BoxUI worktrees' SDP directories record
+  earlier work, not new authority to retain legacy behavior.
 
-- `mermaid-rs-renderer-boxui-implementation`, 61a85b6: implementasjonen XFMD
-  bruker. Tekstmåling, SVG-escaping/presentasjon, kontrollkart, budsjett og
-  tester er kandidater. Nye fr-/frame-regler erstatter gammel grow-semantikk.
-- `mermaid-rs-renderer-boxui`, 4bfd179: parallell tidlig implementasjon fra
-  samme base, ikke en nødvendig ekstra merge. Ikke bland disse parserfilene.
-- `/tmp/xfmd-mrr-measurements`: 23 staged filer i siste kontroll; ingen
-  sletting/nullstilling uten egen kartlegging. Ikke del av SDUI-oppryddingen.
-- Den nummererte SDP-piloten med mandat ligger i BoxUI-worktreenes SDP-katalog.
-  Den dokumenterer tidligere arbeid, ikke ny myndighet til å bevare legacy.
+Record source commit/license for reuse. Port tests that still check relevant
+properties against new contracts. Identical historical AST/wire/SVG bytes are not
+required; geometry tests change when semantics change.
 
-Gjenbruk dokumenteres med kildecommit og lisens. Gamle tester portes til nye
-kontrakter der de fortsatt kontrollerer relevante egenskaper. Identiske gamle
-AST-/wire-/SVG-bytes er ikke et krav. Testgeometri endres når semantikken endres.
+## Possible later Mermaid work
 
-## Eventuelt senere Mermaid-arbeid
+Only a concrete diagram defect/capability gap found by the Markdown provider should
+create a separate Mermaid task. The SDUI core must not depend on Mermaid as a
+production library; diagram rendering remains a host dependency.
 
-Bare en konkret feil/manglende diagramkapabilitet avdekket av Markdown-provideren
-skal gi et separat Mermaid-oppdrag. Den nye SDUI-kjernen skal ikke avhenge av
-Mermaid som produksjonsbibliotek. Diagramtjenesten forblir en vertsavhengighet.
-
-Ingen kildekode/worktrees er fjernet av kartleggingssesjonen. Ingen merge/push
-eller installasjon er utført. Gamle worktrees er proveniens, ikke aktive språkveier.
+The mapping session removed no source/worktrees and performed no merge, push or
+installation. Historical worktrees are provenance, not active language paths.

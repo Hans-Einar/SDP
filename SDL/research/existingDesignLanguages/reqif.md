@@ -1,42 +1,42 @@
 # ReqIF 1.2
 
-[Katalog](README.md) · Kategori: **Kravutveksling (tilgrensende format)** · Research: **2026-09-10**
+[Catalogue](README.md) · Category: **Requirements interchange (adjacent format)** · Research: **2026-09-10**
 
-## Formål og abstraksjonsnivå
+## Purpose and abstraction level
 
-Utveksler krav med typer, attributter, hierarkier og relasjoner mellom kravverktøy. Relevant for stakeholders→UseCases→REQ-sporet, ikke en komplett systemarkitektur.
+Exchanges typed requirements, attributes, hierarchies and relations between requirements tools. Relevant to stakeholder→UseCase→REQ traceability, not complete system architecture.
 
-## Modellmekanismer
+## Model mechanisms
 
-Identitet: IDENTIFIER for elementer. Relasjoner: SpecRelations og strukturer. Contracts: krav kan beskrive dem; ingen API-eksekveringssemantikk. Utvidelse: typer/attributter og tool extensions. Maskinell XML-utveksling; views avhenger av kravverktøy.
+Identity: element IDENTIFIER. Relations: SpecRelations/structures. Contracts can be described, without API execution semantics. Extension: types/attributes/tool extensions. Machine XML interchange; views depend on requirements tools.
 
-## Styrker og begrensninger — vår vurdering
+## Strengths and limitations — our assessment
 
-**Styrke:** Et eksisterende alternativ til å finne opp et nytt interchange-format for krav og identitet.
+**Strength:** Existing alternative to inventing requirements/identity interchange formats.
 
-**Begrensning:** Et importert krav dokumenterer ikke at en Feature oppfyller kravet. Round-trip kan være verktøyavhengig og må testes.
+**Limitation:** Imported requirements do not prove Feature satisfaction. Tool-dependent round trips need testing.
 
-## Historikk, endring og transitions
+## History, change and transitions
 
-Metadata som LAST-CHANGE er ikke et revisjonsarkiv. Baselines, endringsgodkjenning og kobling til FEAT/releases må etableres separat.
+LAST-CHANGE metadata is not a revision archive. Establish baselines, change approval and FEAT/release links separately.
 
-## Illustrativt eksempel
+## Illustrative example
 
-Illustrativt XML-fragment, ikke et komplett schema-validert ReqIF-dokument. Eksemplet er ikke parser-/runtime-testet.
+XML fragment, not a complete schema-validated ReqIF document. The example has not been parser/runtime tested.
 
 ```xml
 <SPEC-OBJECT IDENTIFIER="REQ-1"
  LONG-NAME="Display measured length"
  LAST-CHANGE="2026-09-10T00:00:00Z"/>
-<!-- Fragment: type og øvrig ReqIF-dokument er utelatt. -->
+<!-- Fragment: type and the rest of the ReqIF document are omitted. -->
 ```
 
-## Verktøy, vedlikehold og vilkår
+## Tools, maintenance and terms
 
-OMG publiserer ReqIF 1.2. Standardvilkår er separate fra importør-/eksportørlisenser. Ingen konkret round-trip eller editor er evaluert.
+OMG publishes ReqIF 1.2. Standard terms differ from importer/exporter licenses. No specific round trip/editor evaluated.
 
-## Primærkilder
+## Primary sources
 
-Alle kilder kontrollert 2026-09-10; se katalogens metode for evidens- og lisensbegrensninger.
+All sources checked on 2026-09-10; see the catalogue methodology for evidence and licensing limits. Translation does not refresh these dated findings.
 
 - [OMG ReqIF](https://www.omg.org/spec/ReqIF/)

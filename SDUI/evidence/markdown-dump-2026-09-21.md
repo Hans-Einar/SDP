@@ -1,34 +1,28 @@
-# Statisk Markdown-dump — verifikasjon 2026-09-21
+# Static Markdown dump — verification, 2026-09-21
 
-**30 av 30 tester bestod**, inkludert seks nye Markdown-eksporttester.
-[Testlogg](markdown-dump-tests-2026-09-21.txt),
-[kode-/miljømanifest](markdown-dump-manifest.json),
-[generert Concept1-dump](../examples/concept1-bucking.dump.md).
-Dette er gjeldende eksportbevis etter den tidligere frontend-/tekstdumpleveransen;
-eldre manifest gjelder kildeversjonen før Markdown-eksporten ble lagt til.
-
-Fra SDUI-katalogen:
+**30/30 tests passed**, including six new export tests.
+[Log](markdown-dump-tests-2026-09-21.txt), [manifest](markdown-dump-manifest.json),
+[generated dump](../examples/concept1-bucking.dump.md). This was the export evidence
+following the frontend/text dump; older manifests describe pre-Markdown source.
+The commands are historical, from SDUI:
 
 ```sh
 PYTHONPATH=src python3 -m sdui examples/concept1-bucking.sdui --format markdown --entry bucking -o examples/concept1-bucking.dump.md
 PYTHONPATH=src python3 -m unittest discover -s tests -v
 ```
 
-Kontrollert: Markdown beholdes som renderbart innhold, Mermaid utelates,
-andre kodeblokker bevares, åpne gjerder avgrenses ved widgetgrensen, backticks
-i innhold/etiketter kan ikke lukke eksportens omsluttende gjerde, skjulte noder
-utelates, region-/radrekkefølge og nesting bevares. CLI krever profilvalidering,
-gyldig entry og tilstrekkelig oversiktsbredde; feil gir ingen delvis stdout.
-Lagret Markdown er byteidentisk med ny CLI-kjøring. `git diff --check` bestod.
+Checks covered renderable Markdown, omitted Mermaid, retained other fences, open-fence
+closure at widget boundaries, safe enclosing fences despite embedded backticks, hidden
+nodes, region/row ordering and nesting. CLI requires profile validation, valid entry and
+sufficient overview width; errors produce no partial stdout. Stored output matched a
+fresh run byte-for-byte; git diff --check passed.
 
-En separat midlertidig venv med markdown-it-py 4.2.0 rendret dokumentet til HTML
-med CommonMark og tabellutvidelsen. Kontrollen fant h2-overskriften Lengde,
-fet måleverdi, tabellcellen Sagtømmer, kodeetiketten Cursor AV og nestede
-blockquote-elementer. Ingen button/input-elementer eller Mermaid-kodeblokker
-ble generert. Dette er strukturell Markdown→HTML-verifikasjon, ikke visuell
-XFMD-/nettleser-/PDF-verifikasjon. Ingen ny produksjonsavhengighet er lagt til.
+Separate markdown-it-py 4.2.0 in a temporary venv rendered CommonMark plus tables to HTML.
+Assertions found localized heading Lengde, bold measurement, Sagtømmer cell, Cursor AV
+code label and nested blockquotes; no button/input elements or Mermaid blocks. This was
+structural Markdown→HTML checking, not visual XFMD/browser/PDF verification. No new
+production dependency.
 
-Ren Markdown har ikke en generell mekanisme for SDUI-kolonner og vekter.
-Eksporten viser derfor terminaloversikten først og renderbart innhold i
-leserekkefølge etterpå. Ingen interaktivitet, callbackkjøring, ny parser,
-rendererendring i Mermaid/XFMD, commit eller push.
+Plain Markdown has no general SDUI column/weight mechanism. The export therefore shows
+a terminal overview followed by content in reading order. No interaction, callbacks,
+new parser, Mermaid/XFMD changes, commit or push occurred in this delivery.

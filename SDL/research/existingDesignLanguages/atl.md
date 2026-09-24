@@ -1,28 +1,28 @@
 # ATL
 
-[Katalog](README.md) · Kategori: **Model-to-model-transformasjon** · Research: **2026-09-10**
+[Catalogue](README.md) · Category: **Model-to-model transformation** · Research: **2026-09-10**
 
-## Formål og abstraksjonsnivå
+## Purpose and abstraction level
 
-Regler som lager en målmodell fra en kildemodell med definerte metamodeller. Eclipse tilbyr editor-/debugging-verktøy.
+Rules produce a target model from a source model with defined metamodels. Eclipse supplies editing/debugging tools.
 
-## Modellmekanismer
+## Model mechanisms
 
-Identitet: kilde-/målelementer og transformasjonskoblinger; stabil business-ID må kopieres eller mappes eksplisitt. Relasjoner/contracts: avhenger av metamodellene. Views: en target-model kan mate en renderer. Utvidelse: helpers/regler og integrasjon.
+Identity: source/target elements and transformation links; copy or map stable business IDs explicitly. Relations/contracts depend on metamodels. Views: target models can feed renderers. Extension: helpers/rules and integration.
 
-## Styrker og begrensninger — vår vurdering
+## Strengths and limitations — our assessment
 
-**Styrke:** Konkret forløper for tanken om å kompilere én modell til flere blueprints.
+**Strength:** A concrete precedent for compiling one model into multiple blueprints.
 
-**Begrensning:** Korrekt transformasjon er ikke korrekt produktmigrasjon. Tapsfrihet og retningsvalg må spesifiseres; en transformasjon er ikke automatisk reversibel.
+**Limitation:** A correct transformation does not prove correct product migration. Specify losslessness/direction; transformations are not automatically reversible.
 
-## Historikk, endring og transitions
+## History, change and transitions
 
-Transformasjonsregler kan beskrive gammel→ny modellstruktur. Revisjonslagring, beslutningsprovenance og forklaring av split/merge må legges til.
+Transformation rules can describe old→new model structures. Add revision storage, decision provenance and explanations of split/merge.
 
-## Illustrativt eksempel
+## Illustrative example
 
-Illustrativ ATL med hypotetiske Source/Target-metamodeller; ingen kjørbar bundle uten dem. Eksemplet er ikke parser-/runtime-testet.
+ATL with hypothetical Source/Target metamodels; not executable without them. The example has not been parser/runtime tested.
 
 ```text
 module CopyFeature;
@@ -33,13 +33,13 @@ rule FeatureToFeature {
 }
 ```
 
-## Verktøy, vedlikehold og vilkår
+## Tools, maintenance and terms
 
-Eclipse-prosjektsiden angir Mature, EPL-2.0 og siste oppførte release 4.12.0 fra 2025-05-19. Runtime-/metamodelkompatibilitet er ikke testet; konkrete bundle-NOTICE-filer kan inneholde ytterligere vilkår.
+The Eclipse project page lists Mature, EPL-2.0 and latest listed release 4.12.0 dated 2025-05-19. Runtime/metamodel compatibility was not tested; bundle NOTICE files may add terms.
 
-## Primærkilder
+## Primary sources
 
-Alle kilder kontrollert 2026-09-10; se katalogens metode for evidens- og lisensbegrensninger.
+All sources checked on 2026-09-10; see the catalogue methodology for evidence and licensing limits. Translation does not refresh these dated findings.
 
-- [Eclipse ATL](https://eclipse.dev/atl/)
-- [Eclipse prosjektstatus og lisens](https://projects.eclipse.org/projects/modeling.atl)
+- [Eclipse ATL project](https://eclipse.dev/atl/)
+- [Eclipse ATL project](https://projects.eclipse.org/projects/modeling.atl)

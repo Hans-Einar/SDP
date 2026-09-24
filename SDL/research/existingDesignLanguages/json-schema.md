@@ -1,28 +1,28 @@
 # JSON Schema 2020-12
 
-[Katalog](README.md) · Kategori: **Datavalidering og schema** · Research: **2026-09-10**
+[Catalogue](README.md) · Category: **Data validation and schemas** · Research: **2026-09-10**
 
-## Formål og abstraksjonsnivå
+## Purpose and abstraction level
 
-Beskriver hvilke JSON-instansdata som er gyldige, samt annotations. Kan definere formen på et lite SDP-manifest uten å kreve et nytt parser-språk.
+Defines valid JSON instance data and annotations. Can specify a small SDP manifest without requiring a new parser language.
 
-## Modellmekanismer
+## Model mechanisms
 
-Identitet: $id, anchors og references for schemaressurser. Relasjoner: $ref/$dynamicRef; ikke automatisk foreign-key-kontroll mellom instansobjekter. Contracts: typer og strukturelle constraints. Utvidelse: vocabularies. Views/grafspørringer er eksterne.
+Identity: $id, anchors and references for schema resources. Relations: $ref/$dynamicRef, not automatic foreign-key checking between instances. Contracts: types/structural constraints. Extension: vocabularies. Views/graph queries are external.
 
-## Styrker og begrensninger — vår vurdering
+## Strengths and limitations — our assessment
 
-**Styrke:** Mange generiske verktøy kan lese en JSON-basert modell. God inngang til lettvekts validering av obligatoriske felt.
+**Strength:** Many generic tools can read JSON-based models; lightweight entry point for required-field validation.
 
-**Begrensning:** Validering av FEAT-ID-referanser, sykluser og laggrenser krever vanligvis ekstra logikk. YAML/JSON er serialisering; semantikken kommer ikke gratis.
+**Limitation:** FEAT-ID references, cycles and layer boundaries generally require additional logic. YAML/JSON provide serialization, not semantics for free.
 
-## Historikk, endring og transitions
+## History, change and transitions
 
-$schema angir dialekt, $id identifiserer schemaressursen. Ingen av dem er en innebygd historikk for modellinstanser eller transition-migrasjon.
+$schema names a dialect; $id identifies a schema resource. Neither provides built-in instance history or transition migration.
 
-## Illustrativt eksempel
+## Illustrative example
 
-Illustrativ ID-formkontroll, ikke vedtatt SDP-schema eller kontroll av ID-unikhet. Eksemplet er ikke parser-/runtime-testet.
+ID-shape validation, not an adopted SDP schema or ID-uniqueness check. The example has not been parser/runtime tested.
 
 ```json
 {
@@ -33,12 +33,12 @@ Illustrativ ID-formkontroll, ikke vedtatt SDP-schema eller kontroll av ID-unikhe
 }
 ```
 
-## Verktøy, vedlikehold og vilkår
+## Tools, maintenance and terms
 
-2020-12-spesifikasjonen og vocabularies er tilgjengelige. Kontroller validatorens dialektstøtte. Spesifikasjonsvilkår og valgt validatorlisens er forskjellige; ingen validator er valgt.
+2020-12 specification/vocabularies available. Check validator dialect support. Specification terms and validator licenses differ; no validator selected.
 
-## Primærkilder
+## Primary sources
 
-Alle kilder kontrollert 2026-09-10; se katalogens metode for evidens- og lisensbegrensninger.
+All sources checked on 2026-09-10; see the catalogue methodology for evidence and licensing limits. Translation does not refresh these dated findings.
 
 - [JSON Schema 2020-12](https://json-schema.org/draft/2020-12)

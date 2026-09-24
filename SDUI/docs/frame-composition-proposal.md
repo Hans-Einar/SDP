@@ -1,34 +1,20 @@
-# SDUI — frames med header, body, footer og gjenbruk
+# SDUI — frames with header, body, footer and reuse
 
-**Dato:** 2026-09-21 · **Status:** eierinnspill med konkretiserende designforslag.
-Dette supplerer [layoutforslaget](layout-language-proposal.md) og bevarer
-begrunnelsen fra 2026-09-21. **Statusavklaring 2026-09-24:** Go-frontend,
-normalisering, layout og runtime er levert. [Språkprofil](language.md),
-[målekontrakt](go-layout-contract.md) og [runtime](../go/runtime/README.md) gjelder
-for kjøring. Anbefalingene nedenfor er ikke en ekstra aktiv implementasjonsprofil.
+**Date:** 2026-09-21 · **Status:** owner input and concrete design proposals. Supplements the [layout proposal](layout-language-proposal.md). **Status clarification, 2026-09-24:** Go frontend, normalization, layout and runtime are delivered. [Language](language.md), [measurement](go-layout-contract.md) and [runtime](../go/runtime/README.md) govern execution; proposals below are not another active profile.
 
-## 1. Fast forholdsflate bestemt av bredden
+## 1. Width-driven aspect surface
 
 ```text
-page = [ <"Innhold"> ] {16:9, <->};
+page = [ <"Content"> ] {16:9, <->};
 ```
 
-Rotframe bruker hele bredden W i vertens layoutområde. Høyden er W × 9/16.
-Tilgjengelig vindushøyde endrer ikke denne bredden. For liten høyde håndteres
-av avtalt overflow/scroll, ikke ved å bytte til contain eller endre forholdet.
-Dette er eierens SDUI-uttrykk for rollen til FixedAspectViewport.
+Root fills host width W and derives height W×9/16. Available height does not reduce width. Insufficient height uses agreed overflow/scroll rather than contain/ratio changes. This expresses FixedAspectViewport's role in SDUI.
 
-`<->` bestemmer x-aksen, ratio bestemmer y. Tilsvarende kan `^|v` bestemme y
-og la ratio bestemme x. Begge strekkoperatorene med ratio er en konflikt.
-En underframe bruker sitt tildelte tilgjengelige område i nærmeste mor.
-`scale-x=0.75` velger en eksplisitt andel av ancestorbredden; `<->` fyller sitt
-tildelte område. På rot er `<->` det samme breddemålet som scale-x=1.
+Horizontal fill drives x; ratio drives y. Vertical fill may drive y/derive x; both conflict with ratio. Subframes reference assigned areas in nearest parents. scale-x=0.75 selects an explicit ancestor fraction; fill uses allocated space. Root fill and scale-x=1 have equal width targets.
 
-Rollen som fast forholdsflate er dermed avklart. Resize endrer framegeometrien,
-men skalerer ikke innholdet. Tekst har absolutt fontstørrelse. Concept1s samlede
-skalering av en fast designflate skal ikke videreføres som SDUI-resizeatferd.
+Resize changes geometry, not content scale. Fonts stay absolute; do not copy Concept1's fixed-surface overall scaling.
 
-## 2. Regioner som egne innholdsverdier
+## 2. Regions as content values
 
 ```text
 page = [
@@ -38,69 +24,45 @@ page = [
 ]*b {16:9, <->};
 ```
 
-Anbefaling: `header`, `body` og `footer` er strukturelle regionroller i en frame.
-De er ikke en alternativ måte å gi en vilkårlig widget ID-en header/footer på.
-En region kan inneholde en frame, widgetgruppe, Markdown-streng eller referanse
-til en slik definisjon. Layoutsuffix på en streng gjelder Markdown-widgeten.
-Rolleformen gjelder også en udekorert frame; `*b` velger BoxUI-presentasjonen.
+Recommend header/body/footer as structural frame roles, not arbitrary widget IDs. Regions may contain frames, groups, Markdown or references. String formatting belongs to Markdown widgets. Roles also apply to undecorated frames; *b selects BoxUI presentation.
 
-Anbefalte regler:
+Proposed rules:
 
-- Høyst én header, body og footer per frame. Manglende region tar ingen plass.
-- Vanlig umerket innhold blir body. Eksplisitt `body=...` er valgfritt, men skal
-  ikke blandes med ytterligere implisitt body i samme frame.
-- Header/body/footer ligger vertikalt uavhengig av rekkefølgen på rollefeltene.
-  De er ikke tre vanlige søsken i samme kommarad. Inne i body gjelder fortsatt
-  komma/semikolon-reglene for rader.
-- Header/footer måles etter innhold ved framebredden. Body får resten etter
-  dekorasjon, padding og avstand. Hele ytterframen, inkludert alle tre regionene,
-  har 16:9; header/footer legges ikke utenpå ratiohøyden.
-- For stor header/footer gir overflowdiagnose/policy. Ratio endres ikke.
-- Regionene gir semantiske innholdsområder: body-barnas relative mål bruker det
-  resterende bodyområdet. En syntetisk rad endrer fortsatt ikke målreferansen.
-- En tom frame er en lovlig plassholder. Ingen skjult standardheader/footer
-  opprettes bare fordi varianten er box.
+- At most one region of each kind; absent regions consume no space.
+- Unmarked content becomes body. Optional explicit body cannot mix with implicit body content.
+- Regions stack header/body/footer independently of source order, not as ordinary comma siblings. Body retains comma/semicolon rows.
+- Measure header/footer at frame width; body receives remainder after decoration/padding/gaps. Ratio covers the entire frame, not body plus external regions.
+- Oversized headers/footers follow overflow without ratio distortion.
+- Regions define semantic content areas: body children reference remaining body area; synthetic rows do not change references.
+- Empty frames are valid placeholders; box does not invent headers/footers.
 
-Tidligere `heading='...'` erstattes av `header=...`; vi beholder ikke to aktive
-overskriftsmekanismer. `header="## Overskrift"` bruker vanlig Markdown-rendering,
-så headingnivå, flere linjer og annet innhold kan beskrives uten ny widgettype.
+Replace heading with header rather than maintain two mechanisms. `header="## Heading"` uses ordinary Markdown, supporting levels/multiline content without new widget types.
 
-## 3. Navngitte grupper og instanser
+## 3. Named groups and instances
 
-### Nestede grupper med egen layout
+### Nested groups with independent layout
 
-Eierpresisering 2026-09-21: `<>` kan nestes i flere nivåer. Hver eksplisitte
-gruppe er én komponent i den omsluttende listen og kan ha egne layoutregler.
+Owner clarification, 2026-09-21: nested <> groups are individual parent-list components with independent layout.
 
 ```text
 mainBody = <
-  <"gruppe1", "med to UI-komponenter"> {v<, >-<, >|<},
-  <"gruppe2"; <"undergruppe", "med to UI-komponenter"> {>-<}>
+  <"group1", "with two UI components"> {v<, >-<, >|<},
+  <"group2"; <"subgroup", "with two UI components"> {>-<}>
     {>^, >-<, >|<}
 > {<->};
 ```
 
-Det ytre kommaet plasserer gruppe1 og gruppe2 horisontalt etter hverandre.
-Kommaet inne i gruppe1 plasserer dens to tekster horisontalt. Semikolonet inne
-i gruppe2 legger undergruppen under teksten «gruppe2», uten å starte en ny rad
-i den ytre gruppen. Separatorene virker bare i listen de tilhører.
+Outer comma places groups horizontally; group1's comma places its texts horizontally; group2's semicolon places its subgroup below its label without affecting the outer row. Separators are list-local.
 
-Formateringsblokken etter `>` tilhører akkurat den avsluttede gruppen.
-Gruppens justering plasserer den samlet i området den får av forelderen;
-gruppens innvendige layoutregler styrer dens egne barn. Nestede grupper
-bevares i AST og normalisert modell, også med ett barn: de må ikke flates bort
-slik at egen formatering eller ancestor-referansen for barna går tapt.
-Grupper kan være anonyme eller navngitte; navn kreves ikke for å gi dem layout.
+Formatting after > belongs to that group. Group alignment places it within parent allocation; internal rules govern children. Preserve explicit groups in AST/normalization even with one child, retaining formatting/ancestor references. Groups need no name to receive layout.
 
-### Gjenbruk av navngitte grupper
+### Reusing named groups
 
-Eierens eksempel, med avsluttende semikolon som foreslått dokumentseparator:
+Owner example with proposed top-level semicolon separators:
 
 ```text
 sdui 0.2;
-
 mainBody = <"main body widgets", button1 = button("OK")>;
-
 page = [
   header = "##Markdown Heading" {<-},
   mainBody,
@@ -111,61 +73,22 @@ page = [
 ]*b {16:9, <->};
 ```
 
-`mainBody` er en gjenbrukbar definisjon; referansen i page instansierer innholdet.
-Den er ikke en tekststreng, callback eller et delt levende FOX-objekt.
-Man kan skrive `body=mainBody` for å gjøre regionen eksplisitt.
+mainBody is a reusable definition instantiated by reference, not a string/callback/shared live FOX object. `body=mainBody` makes its role explicit.
 
-Anbefaling: lokale navn er unike per komponentdefinisjon. Full widgetidentitet
-inkluderer instansbanen, for eksempel page/mainBody/button1, og runtimegeneration.
-To anvendelser av samme komponent må ha forskjellige instansnavn, for eksempel
-left=mainBody og right=mainBody. Da kolliderer ikke den interne button1.
-Dette presiserer den tidligere regelen om ett flatt navnerom per UI-definisjon.
-Uklar referanse, duplisert instansnavn og rekursive definisjonssykluser avvises.
-G1s Go-profil støtter framoverreferanser og statisk instansekspansjon med full
-setHandle-bane; se språkprofilen. Python-portgrunnlaget og gammel 0.1-parser
-er fjernet. Dette er ikke automatisk oppkobling til en SDL-runtime.
+Recommend definition-local name uniqueness and full runtime identity including instance path (page/mainBody/button1) plus generation. Two uses need distinct names, such as left/right=mainBody, avoiding internal button1 collision. This refines the former flat namespace rule. Reject ambiguous refs, duplicate instance names and cycles. G1 Go supports forward refs/static expansion/full setHandle paths; Python/0.1 are removed. This does not automatically bind SDL runtime.
 
-Kun instansiering oppretter UI-livstid. En bibliotekdefinisjon skal ikke monteres
-som en ekstra side automatisk. Verts-API-et velger hvilken frame-definisjon som
-er inngang, her page. Ingen avhengighet av navnet page eller filrekkefølgen.
+Only instantiation establishes UI lifetime. Library definitions do not mount as extra pages. Host APIs select entry frames without depending on the name page or source order.
 
-## 4. Footerjustering og font
+## 4. Footer alignment and fonts
 
-`<-` og `->` betyr henholdsvis venstre/midten og høyre/midten. For at den høyre
-teksten faktisk skal nå høyre kant, trenger gruppen restplass å justere innenfor.
-Anbefalt footer-default er full bredde og justify=between for én rad; med to
-innholdstilpassede tekster gir dette ønsket plassering uten ekstra kildeegenskaper.
-Eksplisitt layout kan overstyre defaulten. Overlapp ved for liten bredde gir
-avtalt overflow, ikke automatisk bytte til en annen uoppgitt layout.
+<- and -> mean left-center/right-center. Right alignment needs free space. Proposed single-row footer defaults: full width, justify=between, placing two content-sized texts at opposite edges. Explicit rules may override. Insufficient width follows overflow, not an undeclared layout switch.
 
-Eierpresisering 2026-09-21: `font=10` og `font=12` er absolutte tekststørrelser.
-De beholdes ved vindusresize. Font påvirker måling, header/footerhøyde og
-innholdsrom; ny tilgjengelig bredde kan endre tekstombryting og dermed høyde.
-Den felles native fontenheten må fastsettes før måleimplementasjonen; dette
-gjenåpner ikke beslutningen om absolutt størrelse. Forslaget til arv er at en
-gruppe/frame gir basisfont til barna, og barnets eksplisitte font overstyrer den.
+Owner clarification, 2026-09-21: font=10/12 are absolute and retained on resize. Fonts affect measurement/region height; width changes can rewrap text/change height. At proposal time, shared native units were still to be specified; absolute sizing was settled. Proposed inheritance: parent base font, explicit child override. Current Go units are DIP.
 
-Formatering er tillatt etter hver UI-komponent og hører til komponenten foran.
-`{...}` kommer etter eventuell variant og før `,` eller `;`. Komma plasserer
-neste komponent horisontalt etter den foregående; semikolon starter en ny rad
-under foregående rad. Dette gjelder innholdslistene; regionroller følger
-forslaget i del 2. Se [layoutforslaget](layout-language-proposal.md) for
-eksempler med formatering på strenger, widgetkall, grupper og referanser.
+Formatting follows any variant and precedes comma/semicolon, including strings, calls, groups and references. Comma advances horizontally; semicolon starts below the previous row. Regions follow section 2. [Layout examples](layout-language-proposal.md).
 
-Merk at vanlig Markdown normalt krever mellomrom i `## Markdown Heading`.
-Eierens tekst `##Markdown Heading` er bevart ovenfor; SDUI skal ikke stille
-reparere Markdown-kilden. Egenskapens innhold gis videre til innholdsprovideren.
+Ordinary Markdown usually requires a space in `## Markdown Heading`. The owner's `##Markdown Heading` is preserved above; SDUI must not silently repair it. Pass content to the provider unchanged.
 
-## 5. Kontrolltilfeller for G1–G4
+## 5. G1–G4 verification cases
 
-Kanoniske hjørner ^</>^/v</>v og ekvivalente alternative retningstavemåter;
-ratio med bare x-strekk og bare y-strekk; avvis begge med ratio; behold bredde
-ved for liten vindushøyde; header/footer innen ratio; eksplisitt og implisitt body
-gir samme struktur hver for seg; konflikt mellom dem avvises; multiline header;
-footerens høyre tekst når høyre kant; uendret font ved resize og korrekt ny
-tekstombryting; formatering på alle komponenttyper før separator og avvisning
-av løs formateringsblokk etter separator;
-tre gruppenivåer med uavhengig layout; lokal virkning av komma/semikolon;
-bevar eksplisitt gruppe med ett barn og dens ancestor-referanse;
-to komponentinstanser med separat state; referansesyklus; ubundet callback;
-ny kilde/instancegeneration og avvisning av events fra gammel instans.
+Canonical/equivalent corners; ratio with only x or y fill and rejection of both; preserved width under height overflow; regions inside ratio; equivalent explicit/implicit bodies separately and conflict when mixed; multiline headers; right footer reaching the edge; stable fonts/correct rewrap; all-component suffix formatting and detached-block rejection; three independent group levels/local separators; preserved single-child groups/ancestor references; separate instance state; cycles; unbound callbacks; new source/instance generations and stale-event rejection.

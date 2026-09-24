@@ -1,28 +1,28 @@
 # Mermaid
 
-[Katalog](README.md) · Kategori: **Diagramnotasjon** · Research: **2026-09-10**
+[Catalogue](README.md) · Category: **Diagram notation** · Research: **2026-09-10**
 
-## Formål og abstraksjonsnivå
+## Purpose and abstraction level
 
-Diagrammer i Markdown/web: flyt, sekvenser, klasser, tilstander og andre perspektiver. Nyttig som lett tilgjengelig presentasjon av et utsnitt.
+Diagrams in Markdown/web: flow, sequence, class, state and other perspectives. Accessible presentation of selected model portions.
 
-## Modellmekanismer
+## Model mechanisms
 
-Identitet: lokale node-ID-er. Relasjoner: diagramavhengige piler. Contracts: tekstlig forklaring, ikke kontraktsvalidering. Viewpoints: hver diagramtekst er et utsnitt. Utvidelse: konfigurasjon og integrasjoner; parser/rendering gir ikke SDP-semantikk.
+Identity: local node IDs. Relations: diagram-specific arrows. Contracts: textual explanation, not validation. Viewpoints: each diagram text is a selection. Extension: configuration/integration; parsing/rendering adds no SDP semantics.
 
-## Styrker og begrensninger — vår vurdering
+## Strengths and limitations — our assessment
 
-**Styrke:** Eieren kan lese diagramskisser sammen med reviewtekst. Godt format for genererte, avgrensede viewpoints.
+**Strength:** Owners can read diagrams alongside review text; useful output for generated bounded viewpoints.
 
-**Begrensning:** Separate diagrammer kan drive fra hverandre. En grønn parser sier lite om arkitekturen, og vertens Mermaid-versjon begrenser syntaksen.
+**Limitation:** Separate diagrams may drift apart. Successful parsing says little about architecture; host Mermaid versions constrain syntax.
 
-## Historikk, endring og transitions
+## History, change and transitions
 
-Git lagrer teksten. Diagramtyper for forløp beskriver ikke modellens historikk; transition-identitet og ansvar må defineres separat.
+Git stores text. Sequence-oriented diagram types do not describe model history; define transition identity/responsibility separately.
 
-## Illustrativt eksempel
+## Illustrative example
 
-Kun illustrativt utsnitt; ikke den komplette foreslåtte MVP1-lagdelingen. Eksemplet er ikke parser-/runtime-testet.
+Partial view, not the complete proposed MVP1 layering. The example has not been parser/runtime tested.
 
 ```mermaid
 flowchart TD
@@ -30,13 +30,13 @@ flowchart TD
   R --> P["Presentation"]
 ```
 
-## Verktøy, vedlikehold og vilkår
+## Tools, maintenance and terms
 
-Dokumentasjon og repository er tilgjengelige; MIT, ikke arkivert. Pinn renderer-versjonen ved reproducerbare builds.
+Documentation/repository available; MIT, not archived. Pin renderer versions for reproducible builds.
 
-## Primærkilder
+## Primary sources
 
-Alle kilder kontrollert 2026-09-10; se katalogens metode for evidens- og lisensbegrensninger.
+All sources checked on 2026-09-10; see the catalogue methodology for evidence and licensing limits. Translation does not refresh these dated findings.
 
 - [Mermaid introduksjon](https://mermaid.js.org/intro/)
-- [Offisielt repository; metadata kontrollert via GitHub API](https://github.com/mermaid-js/mermaid)
+- [Official repository; metadata checked through GitHub API](https://github.com/mermaid-js/mermaid)

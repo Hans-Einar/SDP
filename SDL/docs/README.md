@@ -1,42 +1,25 @@
-# SDL — dokumentoversikt og autoritet
+# SDL — documentation map and authority
 
-SDL-koden ligger nå i SDL/go. R1 har flyttet dokumentene etter ansvar; det er
-ikke en ny språkversjon. [Go-README](../go/README.md) og de aktive parserprofilene
-angir kjørbart omfang. [SDL KanBan](../SDP/Agents/KanBan/README.md) inneholder
-forslag som ennå ikke er språkregler.
+SDL code now lives in SDL/go. R1 moved documentation by responsibility; this is not a new language version. The [Go README](../go/README.md) and active parser profiles define executable scope. [SDL KanBan](../SDP/Agents/KanBan/README.md) contains proposals that are not yet language rules.
 
-## Aktive profiler og grenser
+## Active profiles and boundaries
 
-Design-core 0.5, action-core 0.1 og class-core 0.1 er separate avgrensede profiler.
+Design-core 0.5, action-core 0.1 and class-core 0.1 are separate bounded profiles.
 
-- [Strukturell kjerne](studies/Design-Language-Definition.md): §§1–11 og registrerte tillegg; §12 og videre er åpent arbeid/kandidater.
-- [Data-/wirekontrakter](profiles/SDL-Data-Contract-Profile.md).
-- [Channels og scenarioer](profiles/SDL-Channel-Scenario-Profile.md).
-- [Leveranseplanfakta](profiles/SDL-Delivery-Plan-Profile.md).
-- [Kjørbare handlinger](profiles/SDL-Executable-Action-Profile.md) og [grammatikk](../grammar/action-core-0.1.ebnf).
-- [Klasser](profiles/SDL-Class-Profile.md) og [grammatikk](../grammar/class-core-0.1.ebnf).
-- [Symbolprofil](profiles/SDL-Symbol-Profile.md).
+- [Structural core](studies/Design-Language-Definition.md): sections 1–11 and registered additions; section 12 onwards contains open work/candidates.
+- [Data/wire contracts](profiles/SDL-Data-Contract-Profile.md).
+- [Channels and scenarios](profiles/SDL-Channel-Scenario-Profile.md).
+- [Delivery-plan facts](profiles/SDL-Delivery-Plan-Profile.md).
+- [Executable actions](profiles/SDL-Executable-Action-Profile.md) and [grammar](../grammar/action-core-0.1.ebnf).
+- [Classes](profiles/SDL-Class-Profile.md) and [grammar](../grammar/class-core-0.1.ebnf).
+- [Symbol profile](profiles/SDL-Symbol-Profile.md).
 
-Profilfilene skiller aktive regler fra daterte V2–V4-leveransebevis. Gamle
-testtall og planned-status gjelder de navngitte milepælene. Nåværende
-[Go-kommandoer](../go/README.md) og [implementasjonsplan](../../SDUI/docs/implementation-plan.md)
-leder til senere G-fasebevis; en modellpåstand er ikke alene verifikasjon.
+Profiles distinguish active rules from dated V2–V4 delivery evidence. Old test counts and planned statuses apply to the named milestones. Current [Go commands](../go/README.md) and the [implementation plan](../../SDUI/docs/implementation-plan.md) lead to later G-phase evidence; a model assertion alone is not verification.
 
-## Integrasjon, studier og historikk
+## Integration, studies and history
 
-[Go-portoversikt](integration/SDL-Go-Port-Inventory.md),
-[navigasjonsdesign](integration/SDL-Navigable-Viewpoints-Design.md) og
-[nivåer/notasjon](integration/SDL-Viewpoint-Levels-and-Notation.md) dokumenterer
-gjenbruk og opprinnelig designgrunnlag. G6 er implementert innen avgrensede
-profiler; de daterte designtekstene har ikke selvstendig myndighet til å utvide dem.
-[G6-bevis](../go/evidence/G6.md) og [launcher](../scripts/README.md) viser levert omfang.
+The [Go port inventory](integration/SDL-Go-Port-Inventory.md), [navigation design](integration/SDL-Navigable-Viewpoints-Design.md) and [levels/notation](integration/SDL-Viewpoint-Levels-and-Notation.md) record reuse and original design foundations. G6 is implemented within bounded profiles; dated design prose cannot independently extend them. [G6 evidence](../go/evidence/G6.md) and the [launcher](../scripts/README.md) identify delivered scope.
 
-[Design Language Definition](studies/Design-Language-Definition.md) inneholder
-både aktiv kjerne og tydelig avgrensede forslag; katalogen studies/ alene avgjør
-ikke autoriteten. De øvrige studiene utforsker bredere begreper enn aktive profiler.
-[Research](../research/README.md) sammenligner andre designspråk.
-[MVP1-korpuset](../../experiments/mvp1_sdl/README.md) er en kandidatøvelse.
-[Checkpoint #1](../../SDP/History/checkpoint-1/README.md) er et felles datert
-SDP/SDL/SDUI-snapshot, ikke en samlet aktiv SDL-spesifikasjon.
+[Design Language Definition](studies/Design-Language-Definition.md) contains both active core and explicitly bounded proposals; the studies/ directory alone does not determine authority. Other studies explore concepts beyond active profiles. [Research](../research/README.md) compares other design languages. The [MVP1 corpus](../../experiments/mvp1_sdl/README.md) is a candidate exercise. [Checkpoint #1](../../SDP/History/checkpoint-1/README.md) is a shared dated SDP/SDL/SDUI snapshot, not a unified active SDL specification.
 
-Alle tidligere docs-filer finnes i [dokumentkartet](../../SDP/Maintenance/R1/Documentation-index.md).
+The [document map](../../SDP/Maintenance/R1/Documentation-index.md) locates all former docs files.

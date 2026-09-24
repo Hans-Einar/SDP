@@ -1,28 +1,28 @@
 # AsyncAPI 3.0
 
-[Katalog](README.md) · Kategori: **Event-/meldingskontrakt** · Research: **2026-09-10**
+[Catalogue](README.md) · Category: **Event/message contract** · Research: **2026-09-10**
 
-## Formål og abstraksjonsnivå
+## Purpose and abstraction level
 
-Beskriver meldingsorienterte API-er med channels, messages, operations og protokollbindings.
+Message-oriented APIs with channels, messages, operations and protocol bindings.
 
-## Modellmekanismer
+## Model mechanisms
 
-Identitet: component-/operation-navn og references. Relasjoner: operation→channel→message. Contracts: payload og bindings. Views: generert dokumentasjon og kode via verktøy. Utvidelse: extensions og eksterne schemaformater.
+Identity: component/operation names and references. Relations: operation→channel→message. Contracts: payloads and bindings. Views: tool-generated documentation/code. Extension: extensions and external schema formats.
 
-## Styrker og begrensninger — vår vurdering
+## Strengths and limitations — our assessment
 
-**Styrke:** Nært brukerens input/output-events og abonnenter. Kan gjøre meldingsgrenser eksplisitte uavhengig av renderer.
+**Strength:** Close to the owner’s input/output events and subscribers; makes messaging boundaries explicit independently of renderers.
 
-**Begrensning:** En send/receive-definisjon garanterer ikke bestilling, levering, backpressure eller at alle runtime-events håndteres; dette må spesifiseres og testes.
+**Limitation:** A send/receive definition does not guarantee ordering, delivery, backpressure or handling of every runtime event; specify and test these separately.
 
-## Historikk, endring og transitions
+## History, change and transitions
 
-Dokumentversjoner og meldingskompatibilitet er forskjellige. Endringer trenger consumer-impact, migrasjonsplan og historikk utenfor enkeltkontrakten.
+Document versions and message compatibility differ. Changes need consumer-impact analysis, migration plans and history beyond one contract.
 
-## Illustrativt eksempel
+## Illustrative example
 
-Illustrativ minimal meldingskontrakt; ingen valgt broker eller leveringsgaranti. Eksemplet er ikke parser-/runtime-testet.
+Minimal message contract without a selected broker or delivery guarantee. The example has not been parser/runtime tested.
 
 ```yaml
 asyncapi: 3.0.0
@@ -43,12 +43,12 @@ operations:
       $ref: "#/channels/readings"
 ```
 
-## Verktøy, vedlikehold og vilkår
+## Tools, maintenance and terms
 
-Offisiell 3.0.0-spesifikasjon er tilgjengelig. Verktøyversjoner og binding-version må pinnes i en pilot. Spesifikasjonsvilkår og generator-/runtime-lisens må vurderes separat.
+Official 3.0.0 specification is available. Pin tool/binding versions in a pilot. Assess specification terms separately from generator/runtime licenses.
 
-## Primærkilder
+## Primary sources
 
-Alle kilder kontrollert 2026-09-10; se katalogens metode for evidens- og lisensbegrensninger.
+All sources checked on 2026-09-10; see the catalogue methodology for evidence and licensing limits. Translation does not refresh these dated findings.
 
 - [AsyncAPI 3.0.0](https://www.asyncapi.com/docs/reference/specification/v3.0.0)

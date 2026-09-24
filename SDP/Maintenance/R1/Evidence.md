@@ -1,19 +1,14 @@
-# R1-verifikasjon
+# R1 verification
 
-## R1-M2 — maler og prosjektområde
+## R1-M2 — templates and project area
 
-- 106 filplasseringer behandlet etter flyttematrise; sju nummererte rotmaler
-  deduplisert etter innholdssammenligning uten avsluttende linjeskift.
-- Toolkit: 80 unittest-prøver kjørt, 79 bestått. RepositoryValidation feiler bare
-  på de samme ni gamle Issue #5-ID-ene som før flytting; baseline og etter-logg
-  er byteidentiske. Det er ikke en grønn fullsuite.
-- Install-v1 konformanspakke: 17 scenarioer validert. Forventede source-adresser
-  er flyttet til Template; destinations og policy er bevart.
-- PowerShell finnes ikke lokalt; native Windows-prøver er ikke utført her.
-- Gamle bootstrapfiler er arkivert uten innholdsendring. Historiske ledgerlinjer
-  beholdes og nye R1-hendelser appendes. Ingen eksisterende installasjon oppdateres.
+- Addressed 106 file locations per migration map; deduplicated seven numbered root templates after comparing content without trailing newlines.
+- Toolkit: 80 unittest cases run, 79 passed. RepositoryValidation fails only on the same nine old Issue #5 IDs as before migration; baseline/post-check logs are byte-identical. The full suite is not green.
+- Install-v1 conformance: 17 scenarios validated. Expected source addresses moved to Template; destinations/policies preserved.
+- PowerShell is unavailable locally; no native Windows tests ran here.
+- Old bootstrap files archived without content changes. Historical ledger lines preserved, new R1 events appended. No existing installation updated.
 
-Kommandoer fra repo-roten:
+Commands from repository root:
 
 ```sh
 python3 Toolkit/scripts/validate_sdp.py
@@ -21,27 +16,18 @@ python3 -m unittest discover -s Toolkit/tests -p 'test_*.py'
 python3 Toolkit/conformance/install-v1/run_conformance.py --validate-only
 ```
 
-## R1-M3 — språk, dokumenter og innganger
+## R1-M3 — languages, documents and entry points
 
-- 216 ytterligere filplasseringer utført. Hele 322-raders migreringskartet
-  kontrolleres av verify_structure.py; malduplikater er konsolidert, ikke nye kopier.
-- SDL og SDUI: `go test -race ./...` bestod med Go 1.27.1 og registrert mmdr.
-  Alle flyttede Go-kildefiler samt go.mod/go.sum er byteuendrede.
-- 574 genererte manifestførte outputs under SDUI/design er hashkontrollert og
-  uendret. Ingen viewpoints er håndredigert eller regenerert ved flytting.
-- Historiske source-index/release-fingeravtrykk er byteuendrede; gamle
-  implementasjonsledgerlinjer er bevart som prefiks. Arkivert bootstrap er uendret.
-- Native launcher-prøve i isolert Xvfb bestod: installert sdl-design-symlink peker
-  nå til SDL/scripts; hovedside/navigator åpnes, SVG genereres ved behov, ingen
-  Go-bygg startes, manglende-verktøy-diagnose og opprydding ved lukking virker.
-- Issue #5-bruksstudien bestod sin validator: 35 vurderte repoer, 17 rapporter.
-- Lokal lenkekontroll omfatter fil-/katalogmål, ikke ankre eller eksterne URL-er;
-  fryste testfixturer og utgått bootstrap er eksplisitt unntatt.
-- KanBan-kjeder, metadata og plassering er kontrollert. Kort 001 forblir active
-  med avgrenset restarbeid; 010 (innholdskonsolidering) og 011 (gamle ID-avvik)
-  ligger i backlog. Ingen språkprofil eller underrepo er opprettet gjennom flyttingen.
+- Moved 216 additional files. verify_structure.py checks all 322 migration entries; duplicate templates consolidated, not copied again.
+- SDL/SDUI: `go test -race ./...` passed with Go 1.27.1 and registered mmdr. Moved Go files and go.mod/go.sum are byte-unchanged.
+- Hash-checked 574 manifest-listed SDUI/design outputs, unchanged. No viewpoints hand-edited or regenerated during migration.
+- Historical source-index/release fingerprints byte-unchanged; old implementation-ledger lines preserved as a prefix. Archived bootstrap unchanged.
+- Native launcher trial in isolated Xvfb passed: installed sdl-design symlink now targets SDL/scripts; main page/navigator open, SVG generates on demand, no Go build starts, missing-tool diagnostics and close-time cleanup work.
+- Issue #5 usage-study validator passed: 35 assessed repositories, 17 reports.
+- Local link checks cover file/directory targets, not anchors/external URLs; frozen fixtures and retired bootstrap explicitly excluded.
+- KanBan chains, metadata and locations checked. Card 001 remains active with bounded remaining work; 010 (consolidation) and 011 (old IDs) are backlog. Migration created no language profile or subrepository.
 
-Kommandoer:
+Commands:
 
 ```sh
 python3 SDP/Maintenance/R1/verify_structure.py
@@ -51,11 +37,6 @@ go -C SDL/go test -race ./...
 go -C SDUI/go test -race ./...
 ```
 
-Go og native renderer ble valgt med eksplisitte lokale stier i denne kjøringen.
-Toolkit-status etter M3 sammenlignes med baseline; ni gamle ID-avvik skal være
-hele restfeilsettet. Windows-installer kjøres av CI; ingen lokal Windows-verifikasjon.
+Go and native renderer were selected through explicit local paths. Post-M3 Toolkit status is compared with baseline; the nine old ID mismatches must be the entire remaining failure set. CI runs Windows installer tests; there is no local Windows verification.
 
-Sluttkontroll: 322 filplasseringer, 574 genererte outputs og 1 887 lokale
-Markdown-filmål bestod. KanBan: 15 kort, 21 hendelser, 130 lokale lenker.
-CI-variant av Toolkit-validatoren med `--base-ref origin/main` ga nøyaktig samme
-ni baselineavvik. Rå race-logger ligger i sdl-race.txt og sdui-race.txt.
+Final checks passed: 322 file locations, 574 generated outputs and 1887 local Markdown targets. KanBan: 15 cards, 21 events, 130 local links. Toolkit's CI validator mode with `--base-ref origin/main` returned exactly the same nine baseline mismatches. Raw race logs: sdl-race.txt and sdui-race.txt.

@@ -1,16 +1,14 @@
-# Utviklingen av SDP
+# Developing SDP
 
-Dette området samler SDP-produktets eget utviklingsarbeid.
+This area gathers development work for the SDP product itself.
 
-- [KanBan](Agents/KanBan/README.md): samtalefunn, prioritering og aktive oppdrag.
-- [Kortets arbeidslogg og Git-diff](Agents/KanBan/History.md): innholdshistorikk mens arbeidet pågår.
-- [R1 housekeeping](Maintenance/R1/Plan.md): flyttematrise, dokumentinventar og kontrollbevis.
-- [R2 dokumentkonsolidering](Maintenance/R2/Plan.md): aktive kontrakter, daterte designforslag og statusrettelser.
-- [Traceability](Traceability/README.md): eksisterende implementasjonsledger og relasjoner.
-- [Sprints](Sprints/README.md), [verifikasjon](Verification/README.md) og [review](CodeReview/README.md).
-- [Bruksstudien](Studies/UsageAnalysis/README.md): datert Issue #5-materiale.
-- [Historisk bootstrap](History/legacy-bootstrap/README.md): utgåtte rotkopier, ikke installasjonskilder.
+- [KanBan](Agents/KanBan/README.md): conversation findings, prioritization and active assignments.
+- [Card worklogs and Git diff](Agents/KanBan/History.md): content history during active work.
+- [R1 housekeeping](Maintenance/R1/Plan.md): migration map, document inventory and verification.
+- [R2 document consolidation](Maintenance/R2/Plan.md): active contracts, dated proposals and status corrections.
+- [Traceability](Traceability/README.md): existing implementation ledger and relations.
+- [Sprints](Sprints/README.md), [verification](Verification/README.md) and [review](CodeReview/README.md).
+- [Usage study](Studies/UsageAnalysis/README.md): dated Issue #5 material.
+- [Historical bootstrap](History/legacy-bootstrap/README.md): retired root copies, not installation sources.
 
-Maler ligger i Template og språkimplementasjonene har egne kataloger. KanBan
-følger behandling av forslag; den erstatter ikke implementasjonsledgeren.
-Ny faseprofil og redaksjonell dokumentkonsolidering følges i KB-SDP-001/010.
+Templates live in Template; language implementations have their own directories. KanBan tracks proposal handling, not implementation evidence. KB-SDP-001/010 track the new phase profile and editorial consolidation.

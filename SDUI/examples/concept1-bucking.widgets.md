@@ -1,31 +1,27 @@
-# Aptering — SDUI med prototype-widgets
+# Bucking — SDUI prototype widgets
 
-Knapper og inputfelt tegnet i den samme boksinndelingen som treemap-prøven.
-Bildet er statisk; kontrollenes etiketter og feltverdier hentes gjennom SDUI-parseren.
-Plasseringen er en avgrenset referansekomposisjon, ikke en generell layoutmotor.
-Overskriftsradene inneholder Cursor AV/Δ for Lengde og Diameter, O/B · U/B og
-BarkNOR-kalibrering for Diameter, samt taperNOR/Mixed for Stammeforløp.
+Buttons and inputs share the treemap probe's box structure. This is a static image;
+labels/values come through the SDUI parser. Placement is a bounded reference composition,
+not general layout. Heading rows contain Cursor AV/Δ for Length/Diameter, O/B · U/B and
+BarkNOR calibration for Diameter, and taperNOR/Mixed for Stem track. Norwegian labels in
+the image are intentional localized prototype content.
 
-![Apteringsflaten med tegnede knapper og inputfelt](concept1-bucking.widgets.svg)
+![Bucking surface with drawn buttons and inputs](concept1-bucking.widgets.svg)
 
-Operatør, Stamme-ID og Merknad er lagt til som prototypeinnhold. De er ikke en
-påstand om eksisterende felter i Ponsse. Øvrige verdier er også eksempeldata.
+Operator, Stem ID and Note are added prototype content, not claims about existing Ponsse
+fields. Other values are also examples.
 
-## Det begrensede widgetbiblioteket
+## Limited widget library
 
-![Normal, trykket, fokusert og deaktivert knapp; tekstfelt](prototype-controls.svg)
+![Normal, pressed, focused and disabled buttons; text input](prototype-controls.svg)
 
-## Prøv utfylling og knappetrykk
+## Try editing and button presses
 
-Åpne [den lokale HTML-demoen](prototype-controls.html) i en nettleser.
-Du kan skrive i feltene, trykke knapper med mus eller tastatur og velge
-«Skriv ut utfylte verdier». Utskriften bruker de aktuelle feltverdiene og bryter
-lange verdier over flere linjer. Nettleserens utskriftsdialog kan også lagre PDF.
-Feltene tilbakestilles til eksempelverdiene når siden lastes på nytt.
+Open the [local HTML demo](prototype-controls.html) in a browser. Edit fields, activate
+buttons with mouse/keyboard, and choose its localized print-filled-values control.
+Print uses current values and wraps long text; the browser dialog can save PDF.
+Reload restores examples. The demo shows the widget set, not an interactive version of
+the whole bucking surface. Buttons provide local visual response and a press counter.
 
-HTML-demoen viser widgetsettet; den er ikke en interaktiv utgave av hele
-apteringsflaten. Knappene gir bare lokal visuell respons og en trykkteller.
-
-[SDUI-kilde for widgetprøven](prototype-controls.sdui) ·
-[SDUI-kilde for apteringsflaten](concept1-bucking.sdui) ·
-[Omfang og videreføring til FOX](../docs/prototype-widgets.md)
+[Widget source](prototype-controls.sdui) · [Bucking source](concept1-bucking.sdui) ·
+[Scope and continuation](../docs/prototype-widgets.md)

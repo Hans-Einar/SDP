@@ -1,323 +1,180 @@
-# SDUI — frame-, widget- og layoutforslag
+# SDUI — frame, widget and layout proposal
 
-**ID:** SDUI-LAYOUT-002 · **Dato:** 2026-09-21 · **Status:** designforslag.
-Dette bevarer eierretning og forslag fra 2026-09-21. **Leserveiledning
-2026-09-24:** SDUI 0.2 er nå implementert i Go; Python og 0.1 er utgått.
-[Språkprofil](language.md), [målekontrakt](go-layout-contract.md) og
-[Go-runtime](../go/runtime/README.md) avgrenser hva som faktisk er valgt/levert.
-Eksempelvis er scroll fortsatt avvist ved layout, font måles i DIP, og
-[Markdown-profilen](markdown-provider.md) er avgrenset. Forslag nedenfor utvider
-ikke disse kontraktene. [Implementasjonsplanen](implementation-plan.md) eier milepælene.
+**ID:** SDUI-LAYOUT-002 · **Date:** 2026-09-21 · **Status:** design proposal. Preserves owner direction/proposals from that date. **Reading guide, 2026-09-24:** Go now implements SDUI 0.2; Python/0.1 are retired. [Language](language.md), [measurement](go-layout-contract.md) and [runtime](../go/runtime/README.md) bound selected/delivered behavior. Scroll is still rejected, fonts use DIP, and [Markdown coverage](markdown-provider.md) is bounded. These proposals do not extend active contracts. The [plan](implementation-plan.md) owns milestones.
 
-## 1. Minste nyttige språk
+## 1. Smallest useful language
 
-Målet er skjemaer, kontrollpaneler og dokumentflater med native input, knapper,
-Markdown og diagrammer. Vi trenger forutsigbar nesting, størrelse, avstand,
-justering og overflow. Vi trenger foreløpig ikke CSS, fri posisjonering,
-animasjonslayout, spans over ruter eller en generell constraint solver.
+Target forms, control panels and document surfaces with native inputs/buttons, Markdown and diagrams. Need predictable nesting, sizing, spacing, alignment and overflow; initially no CSS, free positioning, layout animation, grid spans or general constraint solver.
 
-| Form | Betydning i forslaget |
+| Form | Proposed meaning |
 | --- | --- |
-| `page = [...];` | Navngitt frame-definisjon; ingen ekstra rot-tilordning eller `{}` rundt definisjonen. |
-| `mainBody = <...>;` | Navngitt widgetgruppedefinisjon som kan instansieres med en referanse. |
-| `[...]` | Frame; kan inneholde underframes og widgetgrupper i samme innholdsliste. |
-| `<...>` | Widgetgruppe; widgets, Markdown-strenger og nestede widgetgrupper. |
-| `name = button("OK")` | Navngitt widget; argumentstrengen er en etikett, ikke en Markdown-widget. |
-| `"# Forklaring"` som listeelement | Kortform for en Markdown-widget. Kan navngis med `intro = "..."`. |
-| `]*box` | Framevariant med ramme/overskrift. `*b` er et fast alias for `box` i denne profilen. |
-| `node { ... }` | Formatering/layout på komponenten foran; gjelder også Markdown-strenger og komponentreferanser. |
+| `page = [...];` | Named frame definition; no extra root assignment/wrapping braces. |
+| `mainBody = <...>;` | Named reusable widget group. |
+| `[...]` | Frame containing subframes/groups in one content list. |
+| `<...>` | Widgets, Markdown strings and nested groups. |
+| `name = button("OK")` | Named widget; argument is a label, not a Markdown widget. |
+| `"# Explanation"` as list item | Markdown-widget shorthand; may be named `intro = "..."`. |
+| `]*box` | Decorated frame; `*b` is a fixed alias for `box`. |
+| `node { ... }` | Formatting/layout of preceding component, including strings/references. |
 
-Eierens idé om entydige prefikser er bevart i historikken. Anbefalt første løsning
-er det eksplisitte aliaset `b`, slik at installerte komponenter ikke endrer
-betydningen av gammel kilde. Normalisert modell lagrer `box`. Flere varianter
-krever registrerte egenskaper/måling/presentasjon; `*` er ikke dynamisk kodelasting.
+The owner's unique-prefix idea remains historical. Recommend fixed alias b so installed components cannot change old source meaning. Normalize to box. Additional variants need registered properties/measurement/presentation; `*` is not dynamic loading.
 
-En frame er en layout-/klippegrense, ikke nødvendigvis et FOX-vindu. Udekorert
-frame tegner ingen kant. `header=`, valgfri `body=` og `footer=` er innholdsregioner;
-vanlig umerket innhold blir body. `heading` erstattes av header, ikke et alias.
-Tomme frames/grupper er lovlige plassholdere uten iboende innholdsstørrelse.
-[Komposisjonsforslaget](frame-composition-proposal.md) beskriver regioner, referanser og font.
+Frames are layout/clip boundaries, not necessarily FOX windows. Undecorated frames draw no border. header/body/footer are regions; unmarked content becomes body. header replaces heading, not an alias. Empty frames/groups are placeholders without intrinsic size. [Composition proposal](frame-composition-proposal.md).
 
-Lokale navn er unike per komponentdefinisjon; instansbanen skiller gjenbrukte grupper. Widgets med callback eller eksternt
-handle må navngis; ubundne knapper/input kan være anonyme. Anonym statisk Markdown kan få kildebasert intern ID,
-men ingen garanti om stabil identitet ved kildeendring. Layoutendring alene skal
-ikke endre navngitte widgetidentiteter. `ref`/callback og deklarativ `setHandle`
-kan videreføres som bindingsdata; parseren åpner eller kjører aldri SDL-kilder.
+Names are unique per definition; instance paths distinguish reuse. Callbacks/external handles require widget names; unbound controls may be anonymous. Anonymous Markdown may receive source-based internal IDs without reload-stability guarantees. Layout-only changes preserve named identity. ref/callback/setHandle remain binding data; parsing never opens/executes SDL.
 
-## 2. Rader, grupper og akser
+## 2. Rows, groups and axes
 
-Eierpresisering 2026-09-21: hver UI-komponent kan ha en etterfølgende `{...}`.
-Blokken tilhører hele komponenten foran og kommer **før** dens `,` eller `;`.
-Dette gjelder navngitte og anonyme widgets, Markdown-strenger, widgetgrupper,
-frames og komponentreferanser, også som verdier for header/body/footer.
-Rekkefølgen er komponent → eventuell `*variant` → eventuell `{...}` → separator.
-Siste komponent kan avsluttes direkte av omsluttende `>` eller `]` etter blokken.
-Forslag: én samlet formateringsblokk per komponent; egenskapene valideres mot
-komponenttypen. En løs blokk etter separator har ingen komponent og avvises.
+Owner clarification, 2026-09-21: formatting applies to the preceding whole component **before** its separator, for named/anonymous widgets, strings, groups, frames, references and region values. Order: component → optional variant → optional formatting → separator. Final items may close directly with > or ]. Propose one combined formatting block per component, validated by type. Detached post-separator blocks are invalid.
 
 ```text
 mainBody = <
-  "Tekst" {font=10}, ok = button("OK") {font=12};
-  "Neste rad" {font=10}
+  "Text" {font=10}, ok = button("OK") {font=12};
+  "Next row" {font=10}
 > {<->};
 page = [mainBody {font=12}]*b {16:9, <->};
 ```
 
-På en referanse gjelder formateringen den aktuelle instansen. Forslag til
-fontarv: frame-/gruppefont er default for etterkommere; eksplisitt font på et
-barn overstyrer den. Referanseformatering endrer ikke originaldefinisjonen.
+Reference formatting affects that instance, not its definition. Proposed font inheritance: frame/group defaults, overridden explicitly by children.
 
-Komma skiller elementer i samme rad; semikolon starter neste rad. Dette gjelder
-både frame-body og `<>`. Header/body/footer er regionroller, ikke elementer
-i den samme kommaraden. Komma inne i widgetargumenter/layout tilhører den indre
-konstruksjonen. Parseren tolker aldri `<` inne i en Markdown-streng som widgetstart.
-Neste rad begynner under hele den foregående radens utstrekning, med valgt gap.
-Semikolon etter en toppnivådefinisjon avslutter definisjonen; det lager ingen UI-rad.
-`<>` kan nestes i flere nivåer med egen layout per gruppe. Separatorer gjelder
-bare sin egen liste; en undergruppe er ett element i morens liste. Eksplisitte
-grupper bevares ved normalisering, også med ett barn. Se
-[gruppeeksemplet](frame-composition-proposal.md#nestede-grupper-med-egen-layout).
+Comma separates row siblings; semicolon starts below the entire preceding row plus gap. Applies to body/groups; regions are separate roles. Inner argument/layout commas belong to inner syntax. `<` within strings never starts widgets. Top-level semicolons end definitions, not UI rows. Nested groups are single parent-list items; separators are local. Preserve explicit groups even with one child. [Group example](frame-composition-proposal.md#nested-groups-with-independent-layout).
 
-Normalisering lager en vertikal stabel av rader. Én rad er en horisontal gruppe.
-Rader deler ikke automatisk kolonnebredder: dette er ikke et tabell-/grid-språk.
-En rad med ett element senkes uten ekstra geometrisk mellomledd, slik at
-elementets høyde/vekt gjelder direkte i den vertikale stabelen. Bruk navngitte
-underframes for eksplisitte spor når flere kolonner skal dele samme høyde/vekt.
-
-Eksempel med to kolonner over en fullbredde fot:
+Normalization creates vertical row stacks/horizontal rows, without shared column widths; this is not a grid/table language. A one-item row adds no geometric intermediate, so its height/weight applies to the stack. Use explicit subframes for shared-height/weight tracks.
 
 ```text
 sdui 0.2;
 page = [
-  tools = [<"## Verktøy"; run = button("Kjør")>]*box {scale-x=0.25},
-  content = [<"## Resultat">]*box {x=1fr};
-  status = <"Klar"> {x=fill}
+  tools = [<"## Tools"; run = button("Run")>]*box {scale-x=0.25},
+  content = [<"## Result">]*box {x=1fr};
+  status = <"Ready"> {x=fill}
 ] {scale=1, gap=0.01, padding=0.01};
 ```
 
-I flerradsformen får en rad med flere elementer innholdshøyde. Vil man fordele
-høyde mellom slike rader, pakk hver rad i en eksplisitt frame som i panel-eksemplet.
-Ikke innfør skjult propagering av én tilfeldig barnewidgets `y=1fr` til raden.
+Multicomponent rows use content height. To distribute height, wrap rows in explicit frames. Do not propagate arbitrary child y=1fr to synthetic rows.
 
-## 3. Kanoniske former, relative mål og sideforhold
+## 3. Canonical shapes, relative dimensions and aspect ratios
 
-Eierpresisering 2026-09-20: layoutdimensjoner i kilden skal være relative til nærmeste
-ancestor. Ingen width/height i piksler. `x:y` angir frame-sideforhold, og skalering
-kan styre x, y eller begge; med låst sideforhold kan bare én akse styres.
-Konkrete navn som `scale-x` nedenfor er forslag til skrivemåte for disse reglene.
+Owner clarification, 2026-09-20: source dimensions reference nearest ancestors, with no pixel width/height. Ratio x:y applies to frames. Scale may drive x/y/both, but ratio permits one axis only. Names such as scale-x are proposed spellings.
 
-### Mini arrows og kanonisk skrivemåte
+### Mini arrows and canonical spelling
 
-Retningsparet angir to uordnede justeringer. `v<` og `<v` betyr begge ned/venstre,
-men formatterer/eksempler bruker `v<`. Eierens kanoniske hjørner er nå
-`^<`, `>^`, `v<`, `>v`. `<^` normaliseres som `^<`, og `^>` som `>^`.
-Kilde-AST bevarer opprinnelig skrivemåte for diagnoser.
+Direction pairs express unordered alignments: v< and <v both mean down-left, canonically v<. Corners: ^<, >^, v<, >v. Normalize <^→^< and ^>→>^; source AST retains spelling.
 
-| Kanonisk form | Betydning |
+| Canonical form | Meaning |
 | --- | --- |
-| `^<`, `-^`, `>^` | Venstre/midt/høyre, øverst |
-| `<-`, `--`, `->` | Venstre/midt/høyre, vertikalt sentrert |
-| `v<`, `-v`, `>v` | Venstre/midt/høyre, nederst |
-| `<->` | Bruk hele tildelte bredden; med ratio avledes høyden |
-| `^\|v` | Fyll tildelt område vertikalt |
-| `>-<` | Pakk til innholdets horisontale utstrekning |
-| `>\|<` | Pakk til innholdets vertikale utstrekning |
+| `^<`, `-^`, `>^` | Left/center/right, top |
+| `<-`, `--`, `->` | Left/center/right, vertically centered |
+| `v<`, `-v`, `>v` | Left/center/right, bottom |
+| `<->` | Fill assigned width; ratio derives height |
+| `^\|v` | Fill assigned height |
+| `>-<` | Fit horizontal content extent |
+| `>\|<` | Fit vertical content extent |
 
-Vertikale former staves `^|v` og `>|<`; tabellen escaper bare Markdown-tegnet.
-Uavhengige regler i blokken kan også stå i vilkårlig rekkefølge. `{v<, >-<, >|<}`
-pakker innholdet og plasserer det nedre venstre i det tildelte området.
-Innover-/utoverformene er hele operatorer: `<->` og `>-<` har ulike betydninger,
-selv om de bruker samme tegn. Permutasjonsregelen for retningspar gjør dem ikke
-like. Det bevarer eierens forskjell mellom å strekke og å pakke.
+Vertical operators are ^|v and >|<; table escaping is Markdown only. Independent rules may reorder. `{v<, >-<, >|<}` packs content at lower left. Inward/outward operators are complete tokens: `<->` and `>-<` differ despite sharing characters; direction-pair permutation does not equate them.
 
-`¤` får foreløpig ingen betydning. Det er en ledig kandidat til en senere tydelig
-operasjon; vi innfører ikke et tilfeldig synonym eller en parserregel nå.
+¤ remains undefined, reserved as a possible future meaningful operation, not an arbitrary synonym/parser rule.
 
-### Nærmeste ancestor og relative dimensjoner
+### Nearest ancestor and relative dimensions
 
-En eksplisitt frame/widgetgruppe etablerer referanse for barna. En node bruker
-sin nærmeste slike ancestors **indre tilgjengelige rektangel**, etter header/footer,
-dekorasjon og padding. Automatisk opprettede rader i normalisert modell endrer
-ikke denne kildereferansen. Widgetargumenter er ikke ancestors. Roten bruker
-layoutområdet verten stiller til rådighet, uten vindusdekorasjon/verktøylinjer.
+Explicit frames/groups establish child references: their **inner available rectangle** after regions, decoration and padding. Synthetic rows do not change source ancestors; arguments are not ancestors. Root references host-provided layout area excluding window decoration/toolbars.
 
-`scale-x=0.5` ber om halvparten av referansebredden; `scale-y=0.5` halvparten av
-referansehøyden. `scale=0.5` angir begge. Uten sideforhold kan x/y være forskjellige.
-Alle scaleverdier er positive, endelige forholdstall; over 1 er lovlig med
-avtalt overflowpolicy. Ingen skjult prosent-/pikselkonvertering av bare tall.
+scale-x=0.5 requests half reference width; scale-y=0.5 half height; scale=0.5 both. Without ratio, x/y may differ. Values are positive finite ratios; above 1 is permitted with overflow policy. Bare numbers imply no hidden pixel/percentage conversion.
 
-Referansen er mors innholdsområde **før** søskenspor fordeles. To barn på 0.5
-hver pluss et gap fyller derfor mer enn mor; det skal ikke stille korrigeres.
-Bruk relative vekter når søsken skal dele plassen som er igjen etter gap.
-Er referanseaksen ubestemt, rapporteres en størrelsesavhengighet som ikke kan
-løses; vi hopper ikke stille til en fjernere ancestor eller til hovedvinduet.
+References use parent content area **before** sibling allocation. Two 0.5 children plus gap overflow; do not silently correct. Use weights to share remaining space after gaps. Indeterminate reference axes produce dependency diagnostics, not fallback to distant ancestors/main window.
 
-### Aspect ratio og styrende akse
+### Aspect ratio and driving axis
 
-`16:9` i layoutblokken betyr ytterbredde/ytterhøyde for framen, med header, body, footer og
-padding innenfor denne formen. Begge ledd må være positive endelige tall.
-Normalisering lagrer ett forholdstall; `32:18` og `16:9` har samme betydning.
+16:9 means outer width/height including regions/padding. Both terms positive/finite; normalize 32:18 and 16:9 equivalently. For reference W×H and r=x/y:
 
-La referanseområdet være W × H og forholdet r = x/y:
+- `{16:9,<->}`: assigned width B, height B/r; root B=W.
+- `{16:9,^|v}`: assigned height, width height*r.
+- `{16:9,scale-x=0.75}`: width 0.75W, derived height.
+- `{16:9,scale-y=0.5}`: height 0.5H, derived width.
+- Reject scale=0.75 or simultaneous scale-x/scale-y even if values accidentally fit the ratio.
+- Reject simultaneous horizontal/vertical fill with ratio.
+- Without explicit scale/fill, propose contain: largest fitting ratio rectangle, deriving one axis.
 
-- `{16:9, <->}` gir hele tildelte bredde B og høyde B/r; for root er B=W.
-- `{16:9, ^|v}` gir hele tildelte høyde og bredde høyde*r.
-- `{16:9, scale-x=0.75}` gir bredde 0.75W og høyde bredde/r.
-- `{16:9, scale-y=0.5}` gir høyde 0.5H og bredde høyde*r.
-- `{16:9, scale=0.75}` og samtidig scale-x/scale-y avvises, også når tallene
-  tilfeldigvis ville gitt riktig form. Bare én akse skal styre.
-- Med ratio avvises også samtidig `<->` og `^|v`.
-- Uten eksplisitt scale eller strekk foreslås contain: største rektangel med forhold r som
-  passer referanseområdet. Den begrensende aksen velges, den andre avledes.
+Never adjust explicit scale silently to fit; apply overflow. Min/max/native minima never silently distort ratios. The derived axis cannot have another fill/content/size policy. One scale/fill axis drives explicit ratio sizing; auto-contain only applies without a chosen axis. Width fill never becomes contain because height is insufficient. Define fr interactions before supporting them.
 
-Ingen automatisk etterjustering av eksplisitt scale for å få det til å passe;
-hvis avledet størrelse går utenfor mor, gjelder overflowregelen. Min/max eller
-native minimum må aldri deformere sideforholdet stille. Når sideforhold er
-låst, kan den frie aksen ikke få en annen fill/content-/størrelsesregel.
-Eksplisitt størrelsesvalg for slike frames kan være én scaleakse eller én
-strekkakse. Auto-contain er bare for manglende aksevalg. `<->` skal aldri
-nedskaleres til contain fordi vindushøyden er for liten. Blanding med fr
-må defineres før støtte; ingen skjult andre styrende akse.
+### Other relative layout
 
-### Øvrig relativ layout
-
-| Egenskap / form | Foreslått første profil |
+| Property / form | Proposed initial profile |
 | --- | --- |
-| scale-x, scale-y, scale | Forhold til referanseområdet som definert over; ingen px. |
-| x, y | `content` (default), `fill` eller positiv `Nfr`; ingen tall med absolutt lengde. |
-| min-x, min-y, max-x, max-y | Relative grenser mot samme referanseakser; valgfrie, min ≤ max. |
-| align-x, align-y | start/center/end; default start; kan skrives med mini arrows. |
-| gap, gap-x, gap-y | Ikke-negative forholdstall mot referansebredden/-høyden. Default 0.01; aksevariant overstyrer gap. |
-| padding | Relativ faktor eller `(top,right,bottom,left)`; vannrett mot referansebredde, loddrett mot referansehøyde. Default 0, eller 0.01 for box. |
-| justify | start/center/end/between; styrer restplass mellom barn langs hovedaksen. |
-| items | start/center/end/stretch; barnas default på tverraksen. |
-| overflow-x, overflow-y | error/clip/scroll; default error. |
-| wrap | none/wrap, bare widgetgruppe med én eksplisitt rad i første profil. |
-| font | Absolutt tekststørrelse, eksempelvis `font=10`; ingen ancestor-/resizefaktor. Se målekontrakten nedenfor. |
+| scale-x, scale-y, scale | Ancestor ratios; no px. |
+| x, y | content (default), fill or positive Nfr; no absolute lengths. |
+| min-x/min-y/max-x/max-y | Optional relative bounds on same axes; min ≤ max. |
+| align-x/align-y | start/center/end, default start; mini-arrow equivalents. |
+| gap/gap-x/gap-y | Nonnegative width/height ratios, default 0.01; axis-specific overrides gap. |
+| padding | Relative factor or (top,right,bottom,left); horizontal relative to width, vertical to height; default 0, box 0.01. |
+| justify | start/center/end/between; main-axis leftover spacing. |
+| items | start/center/end/stretch; child cross-axis defaults. |
+| overflow-x/overflow-y | error/clip/scroll; default error. |
+| wrap | none/wrap, initially one explicit group row. |
+| font | Absolute text size such as font=10; no ancestor/resize scaling. |
 
-Tall på gap/padding/grenser er altså relative, ikke de tidligere foreslåtte
-logiske pikslene. De bruker nodens ancestor-referanse som scale; dette er et
-forslag for å unngå sirkulær selvreferanse på innholdstilpassede containere.
-Eksplisitt min/max valideres uten å endre native widgetminimum. `scale-x` og
-`x=...` er konkurrerende størrelsesvalg og kan ikke angis samtidig; tilsvarende y.
-To regler for samme egenskap avvises, heller enn at siste tekstlige regel vinner.
+Gap/padding/bounds are relative, not previously proposed logical pixels. Ancestor reference avoids circular self-reference in content-sized containers. Validate explicit min/max without changing native minima. scale-x and x policies conflict, likewise y. Duplicate property rules are errors, not last-one-wins.
 
-`fill` deler restplassen som 1fr på hovedaksen, og fyller tildelingen på tverraksen.
-Fr er en **søskenvekt**, scale er en **andel av mor**. Relative scale-barn og
-innholdsbarn reserveres først, deretter fordeles rest etter fr med min/max:
-`size = clamp(lambda * weight, min, max)`. Dette er ikke gammel minimum+grow.
-Ved max-metning går restplass til justify. Ingen skjult flex-shrink innføres.
-`items` gir bare defaults når barnet ikke har eksplisitt tverraksestørrelse/justering.
+fill acts as 1fr on the main axis and fills cross-axis allocation. **fr weights siblings; scale takes a parent fraction.** Reserve scaled/content children first, then distribute remainder with `size = clamp(lambda * weight, min, max)`, not old minimum+grow. Max saturation leaves space for justify. No implicit flex-shrink. items supplies defaults only without explicit child cross-axis size/alignment.
 
-## 4. Måling, skalering og responsivitet
+## 4. Measurement, scaling and responsiveness
 
-Layoutdimensjoner bruker relative mål/størrelsespolicy. Eierpresisering
-2026-09-21: `font=10` angir absolutt tekststørrelse, ikke en relativ fontskala.
-Vindusresize endrer tilgjengelig layoutområde, plassering og eventuell
-tekstombryting, men skalerer ikke tekst eller øvrig innhold samlet.
-`scale-x`, `scale-y` og `scale` bestemmer utstrekningen til layoutområdet;
-de er ikke visuelle transformasjoner av innholdet. Widgets kan få større eller
-mindre tildelte rektangler gjennom layoutreglene uten at etikettfonten skaleres.
-Renderer og native toolkit får konkrete rektangler og tekstmål fra verten.
-Visningszoom og DPI er egne vertsegenskaper, uavhengige av vindusresize.
+Owner clarification, 2026-09-21: font=10 is absolute, not relative. Resize changes area, placement and wrapping, not overall content/text scale. Frame scale properties define layout extents, not visual content transforms. Widgets may receive larger/smaller rectangles without changing label fonts. Hosts supply concrete rectangles/text measurements; display zoom/DPI are independent.
 
-Før native måling implementeres må profilen angi den felles absolutte fontenheten
-og konverteringen til Fyne/Markdown/SVG. Absolutt størrelse er avklart; valget
-mellom eksempelvis punkter og logiske skjermenheter er ennå ikke spesifisert.
-Ingen backend får velge en privat enhet. Markdownstiler kan bruke relative
-overskriftsstørrelser fra den absolutte basisfonten uten avhengighet av vinduet.
+At this proposal date shared absolute units and Fyne/Markdown/SVG conversions remained to be defined. Absolute sizing was decided; point versus logical-display units was open. Backends cannot choose private units. Heading styles may scale relative to the absolute base font, independently of windows. Current Go units are defined in the linked measurement contract.
 
-Eierens presisering: ytterframen med `{16:9,<->}` skal fylle rollen til
-FixedAspectViewport, med bredde bestemt av verten og ratioavledet høyde.
-Det er breddefylling, ikke contain. Concept1s samlede innholdsskalering ved resize
-videreføres ikke. Behold samordnet geometri for visning, native kontroller og input.
+Outer `{16:9,<->}` expresses FixedAspectViewport's role through host width/derived height, not contain. Do not copy Concept1's overall content scaling. Keep display/control/input geometry consistent.
 
-`wrap` bryter før neste widget når den ikke passer, med kilde-/tabrekkefølge
-bevart. Relative scale-/innholdsstørrelser brukes til radvalg; fr/fill på
-hovedaksen sammen med wrap avvises foreløpig for å unngå sirkulær fordeling.
-En for stor widget får overflowdiagnose/policy, ikke automatisk usynlighet.
+wrap starts before nonfitting widgets while preserving source/tab order. Use relative/content sizes for row selection; initially reject main-axis fr/fill with wrap to avoid circular allocation. Oversized widgets follow overflow rather than disappear.
 
-`clip` klipper også inputområdet. `scroll` krever endelig viewport og
-vertskapabilitet. Første leveranse støtter scroll-y; x-scroll får eksplisitt
-unsupported-diagnose inntil vert/eksport er testet. Scrollbar og målpass er
-budsjettert. Sideforhold bevares; scroll endrer innholdsområde, ikke frameformen.
+clip also clips input areas. scroll needs finite viewports/host support. The original proposal called for scroll-y first, x-scroll unsupported until tested, with bounded scrollbar/measurement passes. **Current implementation rejects both scroll axes**, as stated above. Preserve ratios; scrolling affects content areas, not frame shapes.
 
-Markdownhøyde måles ved avtalt bredde. Native widgets leverer minimum/preferred
-og eventuell baseline ved den valgte absolutte fontstørrelsen. Bredde/høyde-
-avhengigheter med innholdstilpasset mor må oppdages; ingen uendelig målfeedback.
-Baselinejustering utsettes foreløpig.
+Measure Markdown height at agreed width. Native widgets provide minimum/preferred sizes and optional baselines at selected fonts. Detect content-parent width/height cycles; no unbounded measurement feedback. Baseline alignment deferred.
 
-`visible=false` fjerner noden fra layout/tabrekkefølge, men beholder instansen.
-`enabled=false` beholder geometri og blokkerer handling. Skjuling må ha avtalt
-fokus-/draft-policy. Programmatisk oppdatering er ikke en brukerhendelse.
+visible=false removes layout/tab participation but retains instances. enabled=false retains geometry while blocking actions. Define hiding/focus/draft policy. Programmatic updates are not user events.
 
-## 5. Markdown og grenser
+## 5. Markdown and boundaries
 
-Vanlige strenger bruker eksplisitt escaping. Forslag: triple doble anførselstegn
-for multiline Markdown; innholdet er rått, uten dedent/interpolasjon, og slutter
-ved neste triple delimiter. En bokstavelig triple delimiter må foreløpig skrives
-i en vanlig escaped streng. Normaliser aldri Markdown-innrykk ved parsing.
+Ordinary strings escape explicitly. Proposed triple double quotes preserve raw multiline content without dedent/interpolation until the next triple delimiter; literal triple delimiters initially require ordinary escaped strings. Never normalize Markdown indentation during parsing.
 
-Quoted tekst som listeelement eller header/footer-innhold er Markdown;
-widgetetikett som button("OK") er fortsatt en vanlig egenskapsstreng.
-Mermaid-fences inne i Markdown behandles av
-innholdstjenesten, ikke SDUI-lexer. Tjenesten får kildebase, bredde, tema,
-kansellering og budsjett; returnerer mål, diagnose, kildekart og visningsressurs.
+Quoted list/region content is Markdown; button labels remain ordinary property strings. Content services, not SDUI lexers, handle Mermaid fences. Inputs: source base, width, theme, cancellation, budget. Outputs: measurements, diagnostics, source maps, resources.
 
-Første leveranse skal gjenbruke XFMDs støttede Markdown/diagramprofiler. Eksterne
-ressurser følger samme vertsregler som dokumentet. Nestede sdui-fences i en
-Markdown-widget avvises foreløpig med lokal diagnose, slik at ingen utilsiktet
-rekursiv UI-instans opprettes. Dette er en eksplisitt første profilgrense.
-Print bruker frosset akseptert state, ingen callbacks og ingen usendte drafts.
-`scroll` eksporteres som klippet viewport med tydelig overflowindikasjon i første
-profil; full utvidelse/paginering av alle scrollområder er en senere funksjon.
+The original proposal planned XFMD's supported Markdown/diagram profiles and host resource rules. Nested sdui fences were to be rejected locally, preventing recursive UI instantiation. Printing was to use frozen accepted state, no callbacks/unsent drafts. Proposed scroll export clips viewports with visible overflow; full expansion/pagination is later work. Active Go Markdown limits supersede these unimplemented broader proposals.
 
 ## 6. Representative fixtures
 
-Eksemplene under kan parses/valideres i 0.2-frontenden; geometriutførelsen gjenstår.
+At the proposal date these parsed/validated in 0.2; geometry was still pending.
 
 ```text
 sdui 0.2;
 panel = [
-  header="## Arbeidsflate",
+  header="## Workspace",
   top = [
-    length = [<"## Lengde\n12,4 m">]*b {x=1fr},
+    length = [<"## Length\n12.4 m">]*b {x=1fr},
     diameter = [<"## Diameter\n32 cm">]*b {x=1fr}
   ] {y=15fr, items=stretch};
   middle = [
-    selection = [<"Valg">]*b {x=25fr},
-    suggestions = [<"Forslag">]*b {x=50fr},
-    stem = [<"Stamme">]*b {x=25fr}
+    selection = [<"Selection">]*b {x=25fr},
+    suggestions = [<"Suggestions">]*b {x=50fr},
+    stem = [<"Stem">]*b {x=25fr}
   ] {y=45fr, items=stretch};
-  track = [<"Stammeprofil">]*b {y=40fr}
+  track = [<"Stem profile">]*b {y=40fr}
 ]*box {16:9, <->, items=stretch, gap=0.01};
 ```
 
-Dette låner Concept1s seks boksidentiteter og 15/45/40, 25/50/25-fordeling.
-Header/dekorasjon, minimum og innhold gjør at det ikke automatisk er identisk
-med CSS Grid. Geometri-fixturen må oppgi viewport og hva som sammenlignes.
+Borrows Concept1's six box identities and 15/45/40, 25/50/25 distribution. Headers, decoration, minima and content prevent automatic CSS Grid equivalence. Geometry fixtures must specify viewports/comparison targets.
 
 ```text
 sdui 0.2;
 form = [
-  fields = <"## Kontekst"; context = input("Navn", value="C1")>
+  fields = <"## Context"; context = input("Name", value="C1")>
     {x=fill};
-  actions = <cancel = button("Avbryt"), ok = button("OK")>
+  actions = <cancel = button("Cancel"), ok = button("OK")>
     {v<, >-<, >|<, gap=0.01}
 ] {scale=1, justify=between, padding=0.01};
 ```
 
-Negative prøver: doble ID-er; ukjent variant; layout uten mål; min > max;
-negativ gap; x=fill sammen med `>-<`; uavsluttet Markdown-streng;
-wrap kombinert med fr; x-scroll uten kapabilitet; callback på anonym widget;
-native minimum som ikke får plass; rå layouttokens inne i streng bevart som tekst;
-px/bare absolutt layoutdimensjon (font er et eksplisitt unntak); løs formateringsblokk
-etter separator; ugyldig ratio; ratio med begge scaleakser; uløselig
-ancestor-referanse; ny ekte forelder kontra syntetisk rad som ikke endrer referansen.
+Negative cases: duplicate IDs; unknown variants; targetless layout; min>max; negative gap; fill with content packing; unterminated Markdown; wrap with fr; unsupported scroll; anonymous callbacks; nonfitting native minima; layout tokens preserved inside strings; px/bare absolute layout lengths (font excepted); detached formatting; invalid ratio/two scale axes; unresolved ancestors; real parents versus synthetic rows.
 
-## 7. Bevisst utsatt
+## 7. Deliberately deferred
 
-Fri koordinatposisjonering, overlapp/z-order, calc-uttrykk, media queries,
-tabell-grid med spans, endring av rekkefølge uten kildeendring, dock/splittere,
-layoutanimasjon, dynamisk pluginlasting og virtuelle lister. Først utvides
-språket når en konkret prototype viser et behov som nesting ikke løser godt.
+Free coordinates, overlap/z-order, calc expressions, media queries, grid spans, source-independent reordering, docks/splitters, layout animation, dynamic plugins and virtual lists. Extend only when concrete prototypes demonstrate needs poorly served by nesting.

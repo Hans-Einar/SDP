@@ -1,28 +1,28 @@
 # OpenAPI
 
-[Katalog](README.md) · Kategori: **HTTP API-kontrakt** · Research: **2026-09-10**
+[Catalogue](README.md) · Category: **HTTP API contract** · Research: **2026-09-10**
 
-## Formål og abstraksjonsnivå
+## Purpose and abstraction level
 
-Maskinlesbar beskrivelse av HTTP-operasjoner, parametere, responses, schemaer og sikkerhetskrav.
+Machine-readable HTTP operations, parameters, responses, schemas and security requirements.
 
-## Modellmekanismer
+## Model mechanisms
 
-Identitet: paths, operationId og component-referanser. Relasjoner: $ref og API-links. Contracts: HTTP og dataskjema. Views: dokumentasjon/klienter via verktøy. Utvidelse: specification extensions; parser/generator/validator-støtte varierer.
+Identity: paths, operationId and component references. Relations: $ref/API links. Contracts: HTTP/data schemas. Views: tool-generated documentation/clients. Extension: specification extensions; parser/generator/validator support varies.
 
-## Styrker og begrensninger — vår vurdering
+## Strengths and limitations — our assessment
 
-**Styrke:** Kan være en autoritativ kontrakt på en feature-pathway mellom backend og klient.
+**Strength:** Can provide an authoritative contract along a feature pathway between backend and client.
 
-**Begrensning:** Beskriver ikke hele domenets atferd, UI-lag eller gjenbrukspolicy. Et schema som validerer er ikke et bevis på bakoverkompatibel brukeropplevelse.
+**Limitation:** Does not describe all domain behavior, UI layers or reuse policies. Schema validation does not prove backward-compatible user experience.
 
-## Historikk, endring og transitions
+## History, change and transitions
 
-info.version er API-dokumentets oppgitte versjon, ikke en komplett historikk. Git, kompatibilitetsanalyse og consumer-mapping trengs ved endringer.
+info.version declares an API-document version, not complete history. Changes require Git, compatibility analysis and consumer mappings.
 
-## Illustrativt eksempel
+## Illustrative example
 
-Illustrativ 3.1.0-beskrivelse, bevisst ikke et forsøk på å demonstrere nyeste syntaks. Payload utelatt. Eksemplet er ikke parser-/runtime-testet.
+3.1.0 example, deliberately not a demonstration of latest syntax. Payload omitted. The example has not been parser/runtime tested.
 
 ```yaml
 openapi: 3.1.0
@@ -38,12 +38,12 @@ paths:
           description: Measurements available
 ```
 
-## Verktøy, vedlikehold og vilkår
+## Tools, maintenance and terms
 
-Latest-siden viste 3.2.0 (19. september 2025). Verktøystøtte må sjekkes per versjon. Spesifikasjonen angir Apache-2.0; generators og tjenester kan ha andre vilkår.
+The latest page showed 3.2.0 (19 September 2025). Check tool support per version. Specification states Apache-2.0; generators/services may have different terms.
 
-## Primærkilder
+## Primary sources
 
-Alle kilder kontrollert 2026-09-10; se katalogens metode for evidens- og lisensbegrensninger.
+All sources checked on 2026-09-10; see the catalogue methodology for evidence and licensing limits. Translation does not refresh these dated findings.
 
-- [OpenAPI 3.2.0 spesifikasjon](https://spec.openapis.org/oas/v3.2.0.html)
+- [Primary documentation](https://spec.openapis.org/oas/v3.2.0.html)

@@ -1,28 +1,28 @@
-# PROV-O med RDF/Turtle
+# PROV-O with RDF/Turtle
 
-[Katalog](README.md) · Kategori: **Provenance-ontologi (tilgrensende)** · Research: **2026-09-10**
+[Catalogue](README.md) · Category: **Provenance ontology (adjacent)** · Research: **2026-09-10**
 
-## Formål og abstraksjonsnivå
+## Purpose and abstraction level
 
-W3C-vokabular for entities, activities, agents og avledning. Turtle kan serialisere grafen; PROV-O er semantikken, ikke et eget arkitekturdiagram-DSL.
+W3C vocabulary for entities, activities, agents and derivation. Turtle serializes graphs; PROV-O supplies semantics, not an architecture-diagram DSL.
 
-## Modellmekanismer
+## Model mechanisms
 
-Identitet: IRIs. Relasjoner: derivation, revision, attribution og generation. Contracts: ingen domene-/API-kontrakter i seg selv. Views: graph queries og egne renderere. Utvidelse: RDF-vokabularer og kvalifiserte relasjoner.
+Identity: IRIs. Relations: derivation, revision, attribution and generation. Contracts: no intrinsic domain/API contracts. Views: graph queries/custom renderers. Extension: RDF vocabularies/qualified relations.
 
-## Styrker og begrensninger — vår vurdering
+## Strengths and limitations — our assessment
 
-**Styrke:** Kan knytte en modellrevisjon eller et blueprint til kilder og produksjonsaktivitet uten å kopiere alt kildeinnhold.
+**Strength:** Links model revisions/blueprints to sources and production activities without copying all source content.
 
-**Begrensning:** En provenance-påstand er ikke bevis på at avledningen er korrekt. SDP trenger fortsatt identitetsregler og en avklart policy for hvilke fakta som er pålitelige.
+**Limitation:** Provenance assertions do not prove correct derivation. SDP still needs identity rules and a policy for trusted facts.
 
-## Historikk, endring og transitions
+## History, change and transitions
 
-wasRevisionOf og wasDerivedFrom uttrykker historiske koblinger eksplisitt. De gir ikke en kjørbar migrasjon eller forklaring av hvert ansvar som flyttes.
+wasRevisionOf and wasDerivedFrom explicitly express history. They provide neither executable migration nor explanations for every moved responsibility.
 
-## Illustrativt eksempel
+## Illustrative example
 
-Illustrativ provenancegraf. Entity-navnene er revisjoner/artefakter, ikke automatisk den varige Feature-identiteten. Eksemplet er ikke parser-/runtime-testet.
+Provenance graph; entity names identify revisions/artifacts, not automatically persistent Feature identity. The example has not been parser/runtime tested.
 
 ```turtle
 @prefix prov: <http://www.w3.org/ns/prov#> .
@@ -33,12 +33,12 @@ ex:blueprint2 a prov:Entity ;
   prov:wasDerivedFrom ex:revision2 .
 ```
 
-## Verktøy, vedlikehold og vilkår
+## Tools, maintenance and terms
 
-W3C Recommendation er tilgjengelig. RDF-verktøy og validatorer velges separat med egne lisenser; ontologien alene gir ingen komplett repositoryløsning.
+W3C Recommendation available. Select RDF tools/validators separately under their own licenses; the ontology alone is not a complete repository solution.
 
-## Primærkilder
+## Primary sources
 
-Alle kilder kontrollert 2026-09-10; se katalogens metode for evidens- og lisensbegrensninger.
+All sources checked on 2026-09-10; see the catalogue methodology for evidence and licensing limits. Translation does not refresh these dated findings.
 
 - [W3C PROV-O](https://www.w3.org/TR/prov-o/)

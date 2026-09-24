@@ -1,29 +1,26 @@
-# Checkpoint #1 — SDP, SystemDesignLanguage og SDUI
+# Checkpoint #1 — SDP, SystemDesignLanguage and SDUI
 
-**Plassering/status etter R1, 2026-09-24:** Dette er et datert felles snapshot
-for SDP, SDL og SDUI. Start i [dagens dokumentoversikt](../../../docs/README.md)
-eller [SDL-profiloversikten](../../../SDL/docs/README.md) for gjeldende innganger.
-Tillegg 11 er siste implementasjonssnapshot i denne serien. Eldre avsnitt nedenfor
-kan beskrive tidligere status og bredere kandidater. Source-index beholder
-opprinnelige stier/fingeravtrykk; [R1-kartet](../../Maintenance/R1/Migration-map.json)
-viser flyttingen. Ny plassering innebærer ingen ny verifikasjon av gamle påstander.
+**Location/status after R1, 2026-09-24:** a dated shared SDP/SDL/SDUI snapshot.
+Use the [current documentation map](../../../docs/README.md) or
+[SDL profiles](../../../SDL/docs/README.md) for active entry points. Addendum 11 is
+this series' latest implementation snapshot. Older sections retain earlier status
+and broader candidates. Source-index preserves original paths/fingerprints;
+[R1 migration map](../../Maintenance/R1/Migration-map.json) records moves, not new
+verification of historical claims.
 
-**Gjeldende implementasjonsstatus:** [tillegg 11 — Go, runtime og navigasjon](11-Go-Implementation-and-Navigation.md).
+**Implementation snapshot:** [11 — Go, runtime and navigation](11-Go-Implementation-and-Navigation.md)
+collects delivered G phases, cleanup and actual tests. [10 — navigation](10-SDL-Viewpoint-Navigation.md),
+[09 — generated Go design](09-SDL-Generated-Go-Design-Review.md),
+[08 — viewpoints](08-SDL-Viewpoints-and-Implementation-Status.md) and
+[07 — Go direction](07-SDUI-0.2-and-Go-Direction.md) retain design/V-phase foundations.
+Documents 01–06 retain the September 18 discussion. Implementation of bounded profiles
+does not adopt the broader candidate rules.
 
-Tillegg 11 samler de leverte G-fasene, portopprydding og faktisk verifikasjon.
-[10 — dokumentnavigasjon](10-SDL-Viewpoint-Navigation.md),
-[09 — generert Go-design](09-SDL-Generated-Go-Design-Review.md),
-[08 — viewpoints](08-SDL-Viewpoints-and-Implementation-Status.md) og
-[07 — Go-retning](07-SDUI-0.2-and-Go-Direction.md) bevarer design-/V-fasegrunnlaget.
-Dokument 01–06 bevarer SDL-diskusjonen fra 18. september. Kandidater blir ikke
-vedtatte språkregler ved at en implementasjon av avgrensede profiler finnes.
+Active Go profiles: SDL design-core 0.5, action-core 0.1, class-core 0.1 and SDUI 0.2.
+[SDUI code](../../../SDUI/go/README.md) · [SDL code](../../../SDL/go/README.md).
+G1–G6 are delivered; Go exports models, viewpoints and selected UI/state. Retired
+Python entry points are removed. Original checkpoint: 2026-09-18; updated 2026-09-22.
 
-Aktive Go-profiler er SDL design-core 0.5, action-core 0.1, class-core 0.1 og
-SDUI 0.2. [SDUI-kodeområde](../../../SDUI/go/README.md) · [SDL-kodeområde](../../../SDL/go/README.md).
-G1–G6 er levert; språkmodeller, viewpoints og valgt UI/state eksporteres av
-Go-verktøyene. Eldre Python-innganger er fjernet.
-
-Opprinnelig checkpoint: 2026-09-18; oppdatert 2026-09-22.
 Status: consolidated discussion checkpoint, not an approved language release.
 
 This checkpoint brings the system-wide view back into focus after the detailed

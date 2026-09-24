@@ -1,28 +1,28 @@
 # SysML v2
 
-[Katalog](README.md) · Kategori: **Systemmodelleringsspråk** · Research: **2026-09-10**
+[Catalogue](README.md) · Category: **Systems modeling language** · Research: **2026-09-10**
 
-## Formål og abstraksjonsnivå
+## Purpose and abstraction level
 
-Systemstruktur, behavior, requirements, forbindelser og analyser på tvers av software og fysiske systemer. V2 har tekstlig og grafisk notasjon og bygger på KerML; det er ikke bare en ny UML-profile.
+System structure, behavior, requirements, connections and analyses across software/physical systems. V2 has textual/graphical notation and builds on KerML; it is not just another UML profile.
 
-## Modellmekanismer
+## Model mechanisms
 
-Identitet: modelelementer og kvalifiserte navn. Relasjoner: blant annet parts, ports, connections og requirement-sammenhenger. Contracts: definerte grensesnitt og constraints. Views/viewpoints og biblioteker er del av modelleringsområdet. API/repository-støtte må vurderes som egne spesifikasjoner/verktøy.
+Identity: model elements/qualified names. Relations include parts, ports, connections and requirements links. Contracts: defined interfaces/constraints. Views/viewpoints and libraries belong to the modeling domain. Assess API/repository support as separate specifications/tools.
 
-## Styrker og begrensninger — vår vurdering
+## Strengths and limitations — our assessment
 
-**Styrke:** Kan knytte krav, struktur og atferd tettere sammen enn rene diagram-DSL-er. Tekstformatet er interessant for agentarbeid.
+**Strength:** Links requirements, structure and behavior more closely than pure diagram DSLs; textual format is relevant to agent work.
 
-**Begrensning:** Stor semantisk overflate og læringskostnad. SysML/KerML-begrepet feature må ikke automatisk tolkes som SDP FEAT.
+**Limitation:** Large semantic surface/learning cost. SysML/KerML feature must not automatically mean SDP FEAT.
 
-## Historikk, endring og transitions
+## History, change and transitions
 
-Skill språkets modeller fra repositoryets commits/branches og API-støtte. En før/etter-modell er ikke automatisk en verifisert migrasjon. Langlivet FEAT-identitet og ansvarsflytting trenger en avtalt mapping.
+Distinguish language models from repository commits/branches/API support. Before/after models do not automatically prove migrations. Agree persistent FEAT identity/responsibility mappings.
 
-## Illustrativt eksempel
+## Illustrative example
 
-Illustrativ, liten tekstlig struktur; ingen Ponsse-mapping eller requirements-pilot. Eksemplet er ikke parser-/runtime-testet.
+Small textual structure, not a Ponsse mapping or requirements pilot. The example has not been parser/runtime tested.
 
 ```sysml
 package Demo {
@@ -33,13 +33,13 @@ package Demo {
 }
 ```
 
-## Verktøy, vedlikehold og vilkår
+## Tools, maintenance and terms
 
-OMG har en formell 2.0-side med publiserte normative dokumenter. Pilotimplementasjon og eksempler finnes i Systems-Modeling-repositoryet. Pilotstøtte er ikke bevis på full standardkonformitet. OMG-dokumentvilkår og LICENSE-filer i den valgte implementasjonen må kontrolleres hver for seg.
+OMG has a formal 2.0 page with normative documents. Systems-Modeling provides pilot implementation/examples; pilot support does not prove full conformance. Check OMG document terms and selected implementation LICENSE files separately.
 
-## Primærkilder
+## Primary sources
 
-Alle kilder kontrollert 2026-09-10; se katalogens metode for evidens- og lisensbegrensninger.
+All sources checked on 2026-09-10; see the catalogue methodology for evidence and licensing limits. Translation does not refresh these dated findings.
 
 - [OMG SysML 2.0](https://www.omg.org/spec/SysML/2.0/)
-- [Offisiell pilot og eksempler](https://github.com/Systems-Modeling/SysML-v2-Release)
+- [Official repository; metadata checked through GitHub API](https://github.com/Systems-Modeling/SysML-v2-Release)

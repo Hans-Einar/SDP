@@ -1,34 +1,17 @@
 # SDL class-core 0.1
 
-Eksplisitt G6-M6-profil for klassedesign; ingen design-core-fakta omtolkes.
-Felles SDL-lexer/kildeposisjoner brukes. Alle deklarasjoner kommer før fakta,
-sortert etter navn; fakta sorteres etter sin kanoniske tekst.
+Explicit G6-M6 class-design profile; it does not reinterpret design-core facts. Uses the shared SDL lexer/source positions. All declarations precede facts, sorted by name; facts sort by canonical text.
 
-`class` deklarerer en klasse. `attribute Name as Type` og
-`operation Name returns Type` angir egenskaper og parameterløse operasjonssignaturer.
-Type er text/integer/boolean eller navnet på en deklarert klasse. Dette er
-signaturer, ikke implementerte funksjoner eller en kjørbar objektruntime.
+`class` declares a class. `attribute Name as Type` and `operation Name returns Type` define attributes and parameterless operation signatures. Type is text/integer/boolean or a declared class name. These are signatures, not implemented functions or an executable object runtime.
 
-`association` deklarerer et forhold med to eksplisitte klasser, rollenavn og
-multiplisitet ved begge ender. `multiplicity 0 to many` betyr 0..*, `1 to 1`
-betyr 1. Begge tall må være 0–65536; many er eneste åpne øvre grense.
-Endene uttrykker antall objekter på den enden per objekt på motsatt ende.
+`association` declares a relationship between two explicit classes, with role names and multiplicity at both ends. `multiplicity 0 to many` means 0..*; `1 to 1` means 1. Numeric bounds must be 0–65536; many is the only open upper bound. Each end gives the number of objects at that end per object at the opposite end.
 
-Hver association må ha nøyaktig én `links` og én `ownership`:
+Each association requires exactly one `links` and one `ownership`:
 
-- none: vanlig assosiasjon, ingen eierskaps-/livstidsbetydning.
-- aggregation: første ende er helheten; delt del, uten påstått kaskadesletting.
-- composition: første ende er helheten; delen har høyst én helhet samtidig,
-  og inngår i helhetens livstid. Første endes øvre multiplisitet må derfor være 1.
+- none: ordinary association, without ownership/lifetime semantics.
+- aggregation: first end is the whole; shared parts, without implied cascading deletion.
+- composition: first end is the whole; a part has at most one whole at a time and participates in its lifetime. The first end's upper multiplicity must therefore be 1.
 
-Profilen krever også asyklisk composition mellom klassetypene. Dette er en
-streng, avgrenset modellregel; den påstår ikke å dekke alle UML-modeller.
-Roller må være forskjellige og unike for en klasses assosiasjonsender.
-Egenskaper/operasjoner har unike navn innen hvert compartment. Maks 128 klasser,
-256 assosiasjoner og 64 members per klasse. Udeklarerte typer, feil intervaller,
-gjentatte/ufullstendige relasjoner og ubegrunnet composition avvises.
+Composition between class types must also be acyclic. This is a strict, bounded model rule, not a claim to cover all UML models. Roles must differ and be unique among a class's association ends. Attribute/operation names are unique within each compartment. Limits: 128 classes, 256 associations and 64 members per class. Undeclared types, invalid ranges, repeated/incomplete relations and unjustified composition are rejected.
 
-Mermaid classDiagram bruker hul diamant for aggregation og fylt diamant for
-composition ved første ende. Vanlig association bruker strek. Begge rollenavn
-og begge multiplisiteter følger diagrammet. Ingen contains/owns/allocation
-oversettes hit. Klasseprofiler blir ikke automatisk del av action-core-runtime.
+Mermaid classDiagram places an open aggregation diamond or filled composition diamond at the first end. Ordinary associations use a line. Both role names and multiplicities accompany the diagram. Contains/owns/allocation are not translated into these relations. Class profiles do not automatically join the action-core runtime.

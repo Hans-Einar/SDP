@@ -1,20 +1,19 @@
-# SDL i Go
+# SDL in Go
 
-For å browse dokumentasjonen: kjør `sdl-design`. Det åpner hovedside og
-navigator i XFMD med ferdigbygde verktøy, og genererer detaljer ved klikk.
-[Launch-script og oppsett](../scripts/README.md).
+Run `sdl-design` to browse the documentation. It opens the main page and navigator
+in XFMD using prebuilt tools; details are generated when selected.
+[Launcher and setup](../scripts/README.md).
 
-G4-M1 leverer parser, kildeposisjonert AST, symbol-/typekontroll, data-/wire- og
-Channel-/scenariovalidering og kanonisk form for **design-core 0.5**.
-Ingen struktursetning utføres. Checkpoint-kandidater og hele MVP1-korpuset er
-ikke del av profilen. G4-M2 leverer også den eksplisitte kjøreprofilen
-[action-core 0.1](../docs/profiles/SDL-Executable-Action-Profile.md), parser og runtime
-med typede records og registrerte Go-funksjoner.
+G4-M1 provides parsing, source-positioned AST, symbol/type checking, data/wire and
+Channel/scenario validation, and canonical formatting for **design-core 0.5**.
+Structural statements are not executed. Checkpoint candidates and the complete
+MVP1 corpus are outside this profile. G4-M2 adds the explicit
+[action-core 0.1](../docs/profiles/SDL-Executable-Action-Profile.md), with a parser,
+typed records, registered Go functions and runtime.
 
-Modul: `github.com/Hans-Einar/SDP/SystemDesignLanguage/go`, Go 1.26 som felles
-baseline. Verifisert med Go 1.27.1. Strukturkjernen bruker bare standardbiblioteket.
-
-Fra denne katalogen:
+Module: `github.com/Hans-Einar/SDP/SystemDesignLanguage/go`. Shared baseline:
+Go 1.26; verified with Go 1.27.1. The structural core uses the standard library.
+From this directory:
 
 ```sh
 go test -race ./...
@@ -23,67 +22,62 @@ go run ./cmd/sdl ast ../../SDUI/design/architecture.design
 go run ./cmd/sdl format ../../SDUI/design/architecture.design
 ```
 
-`parser.Data` beholder Python-profilens navngitte JSON-AST-form, inkludert start-
-og sluttposisjoner. 151 porttilfeller og full SDUI-modell har sammenligningsbevis.
-[Faktiske bevis](evidence/G4.md), [felles plan](../../SDUI/docs/implementation-plan.md),
-[språkdefinisjon](../docs/studies/Design-Language-Definition.md).
+`parser.Data` preserves the Python profile's named JSON AST, including start/end
+positions. Comparison evidence covers 151 port cases and the full SDUI model.
+[Evidence](evidence/G4.md), [shared plan](../../SDUI/docs/implementation-plan.md),
+[language definition](../docs/studies/Design-Language-Definition.md).
+G5-M4 replaced the Python frontend and viewpoint generator. Frozen fixtures remain
+historical oracles; there is no fallback.
 
-Python-frontenden og viewpoint-generatoren er erstattet i G5-M4. Fryste
-portfixturer beholdes som historisk orakel; det finnes ingen fallback.
+Check actions with `go run ./cmd/sdl action-check examples/echo.sdl`.
+`runtime.New` requires explicit signature registration; source is never executed
+as Go. G4-M3 supplies a typed SDUI port in `bridge/`. Echo and explicitly simulated
+EditAptCell pass through both runtimes. `go run ./cmd/sdl-simulate` emits correlated
+events; `go run -tags desktop ./cmd/sdl-demo` opens the native Fyne prototype.
+`examples/simulation` contains separate, handwritten Go domain logic.
 
-Kjøreprofilkontroll: `go run ./cmd/sdl action-check examples/echo.sdl`.
-`runtime.New` krever eksplisitt signaturregistrering; ingen kilde kjøres som Go.
-
-G4-M3 har en typet SDUI-port i `bridge/`. Enkel Echo og en eksplisitt simulert
-EditAptCell går gjennom begge runtimene. `go run ./cmd/sdl-simulate` skriver
-korrelert hendelsesspor; `go run -tags desktop ./cmd/sdl-demo` viser den native
-Fyne-prototypen. `examples/simulation` er separat håndskrevet Go-domenelogikk.
-
-G4-M4: demoen følger begge kildefiler; ugyldig kilde beholder siste gyldige
-modell og feilstatus. SDL-modelreload beholder Go-eid domenestate og avviser
-eldre hendelser. Endret Go-kode krever bygg/restart:
+G4-M4 watches both sources. Invalid source retains the last valid model and an
+error status. SDL model reload preserves Go-owned domain state and rejects old
+events. Changed Go code requires a build and restart:
 
 ```sh
 go run ./cmd/sdl-dev -root . -package ./cmd/sdl-demo -tags desktop
 ```
 
-Utviklingsverten beholder kjørende prosess ved byggfeil. Vellykket bygg starter
-ny prosess; vedvarende domenetilstand over prosessrestart krever egen lagring.
+The development host retains the running process on build failure. Successful
+builds start a new process; state across process restarts requires storage.
 
-G6-M1 porter alle 11 strukturelle viewpoints med uendret kildegrunnlag:
+G6-M1 ports all 11 structural viewpoints without changing their source basis:
 
 ```sh
 go run ./cmd/sdl viewpoints ../../SDUI/design/architecture.design --output /tmp/sdl-navigation --project sdui-design
 go run ./cmd/sdl viewpoints ../../SDUI/design/architecture.design --output /tmp/sdl-static --format static --monolithic
 ```
 
-Valgfritt `--renderer /absolutt/sti/til/mmdr` lager SVG i statisk eksport.
-`--viewpoint VP02,VP08` avgrenser eksporten. Navigator er standard og renderer
-ingen detaljer. Dens handlingslenker krever den registrerte XFMD-leseradapteren.
-
-Et utvalg ved behov:
+Optional `--renderer /absolute/path/to/mmdr` produces SVG for static export.
+`--viewpoint VP02,VP08` limits the export. Navigation is the default and renders no
+details. Its action links require the registered XFMD reader adapter.
+Select a view on demand:
 
 ```sh
 go run ./cmd/sdl view ../../SDUI/design/architecture.design --uri 'sdl-view://sdui-design/VP02?focus=SduiFrontend&relations=contains&direction=out&depth=1&level=A2' --output /tmp/sdl-selected
 ```
 
-`--renderer` er valgfri også her. Hele pakken publiseres før `entry.md` tilbys.
-CLI-en løser kildefilen eksplisitt; en vertsadapter må registrere prosjekt-ID.
-
-Valgfri dokumenttjeneste (Linux):
+`--renderer` is optional here too. Publication completes before `entry.md` is
+offered. The CLI resolves the source explicitly; host adapters register project IDs.
+Optional document service (Linux):
 
 ```sh
 go run ./cmd/sdl-viewsd -source ../../SDUI/design/architecture.design -project sdui-design -xfmd /absolute/xfmd -renderer /absolute/mmdr
 go run ./cmd/sdl-view-request -socket /private/sdl/views.sock -uri 'sdl-view://sdui-design/VP02?diagram=VP02-roots' -window design-one -client terminal -sequence 1 -open
 ```
 
-Tjenesten skriver valgt socket ved start. Bruk ny sekvens per klient/vindu/panel.
-Uten `-open` returneres en lesbar pakke og lease. `-release TOKEN` frigjør den;
-`-sweep` fjerner bare frigjorte pakker. Leases overlever daemonkrasj; ved krasjet
-leser kreves eksplisitt release. XFMD fase 050 frigjør automatisk ved bytte/lukking.
+The service prints its socket on startup. Use a new sequence per client/window/panel.
+Without `-open`, it returns a readable package and lease. `-release TOKEN` releases
+it; `-sweep` removes only released packages. Leases survive daemon crashes; crashed
+readers require explicit release. XFMD phase 050 releases on replacement/close.
 
-
-G5 — generer og bygg modeller sammen med håndskrevet Go-domene:
+G5 generates and builds models alongside handwritten Go domain code:
 
 ```sh
 go run ./cmd/sdl-gen -actions examples/edit-apt-cell.sdl -ui examples/edit-apt-cell.sdui -output examples/generatedmodel -package generatedmodel
@@ -92,17 +86,18 @@ go run -tags desktop ./cmd/sdl-compiled-fyne
 go run ./cmd/sdl-document -ui examples/edit-apt-cell.sdui -state examples/accepted-state.json -design ../../SDUI/design/architecture.design -output /tmp/sdl-ui-document
 ```
 
-Genererte konstruktører åpner ikke kildefiler. -values på sdl-compiled/sdl-simulate
-velger simulert hendelsesserie. sdl-document utfører ingen callbacks; -state angir
-aksepterte widgetverdier, label, enabled/visible, og manifestet eier bare genererte
-filer. Full layout eksporteres som SVG og Markdown med provenance og SDL-navigator.
-
-Klasseprofilen er eksplisitt, uten utledning fra contains/owns:
+Generated constructors do not open source files. `-values` on sdl-compiled or
+sdl-simulate selects simulated events. sdl-document invokes no callbacks; `-state`
+specifies accepted values, labels and enabled/visible properties. The manifest
+owns generated files only. Full layout exports as SVG and Markdown with provenance
+and an SDL navigator. The class profile requires explicit declarations; it infers
+nothing from contains/owns:
 
 ```sh
 go run ./cmd/sdl class-check examples/runtime-classes.sdl
 go run ./cmd/sdl class-view examples/runtime-classes.sdl --output /tmp/sdl-classes --renderer /absolute/mmdr
 ```
 
-[Go-genereringsprofil](../../SDUI/docs/go-generation.md), [G5-bevis](evidence/G5.md),
-[class-core](../docs/profiles/SDL-Class-Profile.md), [samlet status](../../SDP/History/checkpoint-1/11-Go-Implementation-and-Navigation.md).
+[Go generation](../../SDUI/docs/go-generation.md), [G5 evidence](evidence/G5.md),
+[class-core](../docs/profiles/SDL-Class-Profile.md),
+[consolidated status](../../SDP/History/checkpoint-1/11-Go-Implementation-and-Navigation.md).

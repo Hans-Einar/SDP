@@ -1,28 +1,28 @@
 # Edapt
 
-[Katalog](README.md) · Kategori: **Modellhistorikk-/migrasjonsrammeverk (tilgrensende)** · Research: **2026-09-10**
+[Catalogue](README.md) · Category: **Model history/migration framework (adjacent)** · Research: **2026-09-10**
 
-## Formål og abstraksjonsnivå
+## Purpose and abstraction level
 
-Lagrer endringer mellom Ecore-versjoner som en historie med migrasjonsinstruksjoner; runtime kan migrere eldre modellinstanser.
+Records changes between Ecore versions as histories with migration instructions; runtime can migrate older model instances.
 
-## Modellmekanismer
+## Model mechanisms
 
-Identitet/relasjoner: Ecore-/change-modeller. Contracts: metamodel og migrasjonsoperasjoner. Views: inspeksjon av operasjoner/effekter gjennom verktøy. Utvidelse: nye operasjoner og migrasjonsinstruksjoner. Ikke et generelt arkitektur-DSL.
+Identity/relations: Ecore/change models. Contracts: metamodel and migration operations. Views: tool inspection of operations/effects. Extension: new operations/instructions. Not a general architecture DSL.
 
-## Styrker og begrensninger — vår vurdering
+## Strengths and limitations — our assessment
 
-**Styrke:** Det tydeligste undersøkte eksemplet på eksplisitt operasjonshistorikk knyttet til modellendring.
+**Strength:** The clearest investigated example of explicit operation history associated with model changes.
 
-**Begrensning:** Migrasjon av modellinstanser er forskjellig fra refactorering av et distribuert produkt. En ny Ecore-struktur sier ikke at alle FEAT-kontrakter fortsatt er oppfylt.
+**Limitation:** Model-instance migration differs from distributed-product refactoring. New Ecore structures do not prove every FEAT contract remains satisfied.
 
-## Historikk, endring og transitions
+## History, change and transitions
 
-Historikk er uttrykkelig en del av rammeverkets change-modeller, ikke bare Git. Designansvar, eiergodkjenning og implementeringsbevis må fortsatt modelleres separat.
+History explicitly belongs to framework change models, not just Git. Model design responsibility, owner approval and implementation evidence separately.
 
-## Illustrativt eksempel
+## Illustrative example
 
-Illustrativ operasjonsbeskrivelse, ikke Edapt API-/filsyntaks. Eksemplet er ikke parser-/runtime-testet.
+Operation description, not Edapt API/file syntax. The example has not been parser/runtime tested.
 
 ```text
 Ecore revision A -> revision B
@@ -31,12 +31,12 @@ attach migration instructions
 migrate stored instances from A to B
 ```
 
-## Verktøy, vedlikehold og vilkår
+## Tools, maintenance and terms
 
-Eclipse-siden angir Mature, EPL-2.0 og siste oppførte release 1.5.0 fra 2022-05-20. Det er ikke bevis på opphørt aktivitet, men nyere kompatibilitet er et konkret uavklart punkt.
+Eclipse lists Mature, EPL-2.0 and latest listed release 1.5.0 dated 2022-05-20. This does not prove inactivity, but newer compatibility is unresolved.
 
-## Primærkilder
+## Primary sources
 
-Alle kilder kontrollert 2026-09-10; se katalogens metode for evidens- og lisensbegrensninger.
+All sources checked on 2026-09-10; see the catalogue methodology for evidence and licensing limits. Translation does not refresh these dated findings.
 
-- [Edapt prosjekt, historie og lisens](https://projects.eclipse.org/projects/modeling.edapt)
+- [Primary documentation](https://projects.eclipse.org/projects/modeling.edapt)

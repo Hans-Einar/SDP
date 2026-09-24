@@ -1,28 +1,28 @@
 # PlantUML
 
-[Katalog](README.md) · Kategori: **Diagramnotasjon** · Research: **2026-09-10**
+[Catalogue](README.md) · Category: **Diagram notation** · Research: **2026-09-10**
 
-## Formål og abstraksjonsnivå
+## Purpose and abstraction level
 
-Tekst til UML-lignende diagrammer og flere andre diagramfamilier. Velegnet til sekvensbilder og små strukturutsnitt i dokumentasjon.
+Text-to-UML-like diagrams and other diagram families; useful for sequences and small structural documentation views.
 
-## Modellmekanismer
+## Model mechanisms
 
-Identitet: diagramlokale aliaser. Relasjoner: tegnede forbindelser. Contracts: illustreres, ikke håndheves. Viewpoints: separate diagrammer/includes, ikke automatisk én semantisk modelbase. Utvidelse: preprocessing, macros og biblioteker; maskinell rendering.
+Identity: diagram-local aliases. Relations: drawn connections. Contracts: illustrated, not enforced. Viewpoints: separate diagrams/includes, not automatically one semantic model. Extension: preprocessing, macros and libraries; machine rendering.
 
-## Styrker og begrensninger — vår vurdering
+## Strengths and limitations — our assessment
 
-**Styrke:** Lav terskel for review i Git og mange diagramtyper. Kan være et outputformat fra SDP-Analyzer.
+**Strength:** Easy Git review and many diagram types; possible SDP-Analyzer output format.
 
-**Begrensning:** En renderbar tegning beviser verken lovlige dependencies eller samsvar mellom flere diagrammer. Ikke erstatning for en UML-metamodel.
+**Limitation:** Renderable drawings prove neither allowed dependencies nor consistency between diagrams. Not a replacement for a UML metamodel.
 
-## Historikk, endring og transitions
+## History, change and transitions
 
-Tekstdiff via Git. Før/etter og ansvarsflytting kan tegnes, men identitetskobling og overgangsregler må komme fra en annen modell.
+Git provides text diffs. Before/after responsibility moves can be drawn, but identity/transition rules must come from another model.
 
-## Illustrativt eksempel
+## Illustrative example
 
-Illustrativ tegning; pilen er ikke et verifisert event-contract. Eksemplet er ikke parser-/runtime-testet.
+Drawing; its arrow is not a verified event contract. The example has not been parser/runtime tested.
 
 ```plantuml
 @startuml
@@ -32,13 +32,13 @@ Domain --> Representation : measurement event
 @enduml
 ```
 
-## Verktøy, vedlikehold og vilkår
+## Tools, maintenance and terms
 
-Prosjekt og dokumentasjon er tilgjengelige. Repositorymetadata oppgir LGPL-3.0; PlantUML tilbyr ulike distribusjoner, så vilkår må kontrolleres for valgt artefakt og eventuelle integrasjoner.
+Project/documentation available. Metadata lists LGPL-3.0; PlantUML offers different distributions, so check the selected artifact/integration terms.
 
-## Primærkilder
+## Primary sources
 
-Alle kilder kontrollert 2026-09-10; se katalogens metode for evidens- og lisensbegrensninger.
+All sources checked on 2026-09-10; see the catalogue methodology for evidence and licensing limits. Translation does not refresh these dated findings.
 
-- [Offisiell dokumentasjon](https://plantuml.com/)
-- [Offisielt repository; metadata kontrollert via GitHub API](https://github.com/plantuml/plantuml)
+- [Primary documentation](https://plantuml.com/)
+- [Official repository; metadata checked through GitHub API](https://github.com/plantuml/plantuml)

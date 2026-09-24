@@ -1,149 +1,107 @@
-# SDL/SDUI — implementasjonsplan i Go
+# SDL/SDUI — Go implementation plan
 
-**Status 2026-09-22:** SDL-løpet V0–V4 er levert og pushet som fasebrancher.
-Eieren har autorisert implementasjon av alle G-faser i én sammenhengende økt,
-med fasebrancher, milepælcommits og push ved faseslutt. G1–G6 er levert innen de avgrensede profilene.
-[Faktiske implementasjonsbevis](../go/evidence/G1.md) holdes atskilt fra
-[den genererte designplanen](../design/viewpoints/implementation.md).
-Designmodellens verified-status viser fullførte fase-/milepælprøver;
-semantiske profilgrenser og gjenstående produktarbeid står i checkpoint tillegg 11.
+**Status 2026-09-22:** SDL V0–V4 are delivered and pushed as phase branches. The owner authorized all G phases in one continuous session, with phase branches, milestone commits and end-of-phase pushes. G1–G6 are delivered within bounded profiles. [Implementation evidence](../go/evidence/G1.md) remains separate from the [generated design plan](../design/viewpoints/implementation.md). Model verified statuses record completed phase/milestone checks; checkpoint supplement 11 identifies semantic limits and remaining product work.
 
-**ID:** SDUI-PLAN-003 · **Revisjon:** 2026-09-22.
-Erstatter PLAN-002s P0–P6-løp for Rust/C-ABI/FOX. Nye milepæler bruker G-prefiks;
-henvisninger til P-faser i eldre bevis gjelder historien, ikke aktive leveranser.
-[Målarkitektur](target-architecture.md) og
-[checkpoint](../../SDP/History/checkpoint-1/07-SDUI-0.2-and-Go-Direction.md).
+**ID:** SDUI-PLAN-003 · **Revision:** 2026-09-22. Replaces PLAN-002's Rust/C-ABI/FOX P0–P6 track. New milestones use G prefixes; older P-phase evidence is historical. [Target architecture](target-architecture.md); [checkpoint](../../SDP/History/checkpoint-1/07-SDUI-0.2-and-Go-Direction.md).
 
-Omfang: SDL/SDUI-parser og runtime i Go, felles SDUI-layout, SVG-eksport, første
-Fyne-vert, modellreload og Go-generering. Python-portgrunnlaget er fjernet
-etter verifiserte konsumentporter; fryste fixturer og historiske bevis bevares.
+Scope: Go SDL/SDUI parsers/runtimes, shared SDUI layout, SVG, first Fyne host, model reload and Go generation. Python port sources were removed after verified consumer ports; frozen fixtures/historical evidence remain.
 
-Designgrunnlag 2026-09-22: [felles SDL-strukturmodell](../design/README.md) beskriver
-ansvar og avhengigheter for G1–G6 og passerer eksisterende parser. Dette er
-designdekning, ikke fullførte implementasjonsmilepæler.
+Design basis, 2026-09-22: the [shared SDL structural model](../design/README.md) describes G1–G6 responsibilities/dependencies and passes the existing parser. This establishes design coverage, not implementation completion by itself.
 
-## G0 — oppdatert grunnlag og kataloger
+## G0 — updated foundations and directories
 
-| Milepæl | Akseptanse | Status |
+| Milestone | Acceptance | Status |
 | --- | --- | --- |
-| G0-M1 | Checkpoint beskriver SDUI 0.2, faktisk implementasjon, Go-retning og historiske avvik | Levert |
-| G0-M2 | Aktive arkitektur-/plan-/handoff-instrukser peker samme vei | Levert |
-| G0-M3 | SDL og SDUI har egne Go-områder med parser/runtime og dokumentert ansvar | Levert som kataloggrunnlag; senere implementert i G1–G6 |
+| G0-M1 | Checkpoint describes SDUI 0.2, actual implementation, Go direction and historical differences | Delivered |
+| G0-M2 | Active architecture/plan/handoff instructions agree | Delivered |
+| G0-M3 | Separate SDL/SDUI Go areas with parser/runtime responsibilities | Directory foundation delivered; implemented later in G1–G6 |
 
-## G1 — kjørbar SDUI-frontend i Go
+## G1 — executable SDUI frontend in Go
 
-| Milepæl | Leveranse og akseptanse |
+| Milestone | Delivery and acceptance |
 | --- | --- |
-| G1-M1 | **Levert:** Go-modul, syntax-only CLI og parser/AST med kildeposisjoner; alle eksempel-AST-er samsvarer med Python-fixturene |
-| G1-M2 | **Levert:** Validator/normalisering, relative regler, frame-regioner, instansbaner og kildegrenser; porterte positive/negative Python-tilfeller |
-| G1-M3 | **Levert:** Concept1 AST/diagnoser og identiske konsoll-/Markdown-dumper; SVG/HTML-kontrollgalleri uten callbacks. Generell geometri levert i G2; midlertidige galleriformater fjernet i G5-M4 |
+| G1-M1 | **Delivered:** Go module, syntax-only CLI, parser/AST/source positions; example ASTs match Python fixtures |
+| G1-M2 | **Delivered:** Validation/normalization, relative rules, regions, instance paths and source limits; ported positive/negative Python cases |
+| G1-M3 | **Delivered:** Concept1 AST/diagnostics and identical console/Markdown dumps; callback-free SVG/HTML gallery. General geometry in G2; temporary gallery formats removed in G5-M4 |
 
-Krav R01–R09, R13–R15, R19, R21–R24. Ingen SDL-kilde åpnes av parseren.
-Ingen Go- eller Python-fallback for SDUI 0.1. Portorakelet er fryst som testdata; aktive Python-konsumenter er fjernet.
+Requirements R01–R09, R13–R15, R19, R21–R24. Parser opens no SDL sources. No Go/Python SDUI 0.1 fallback. Port oracle frozen as test data; active Python consumers removed.
 
-## G2 — én layoutmodell, SVG og første Fyne-vindu
+## G2 — shared layout, SVG and first Fyne window
 
-Avhenger av G1-M2. Eier: SDUI-implementasjonen.
+Depends on G1-M2. Owner: SDUI implementation.
 
-| Milepæl | Leveranse og akseptanse |
+| Milestone | Delivery and acceptance |
 | --- | --- |
-| G2-M1 | **Levert:** Målekontrakt og fontenhet; relative akser, ratio, rader/grupper, header/body/footer, gap/padding og eksplisitte overflowgrenser |
-| G2-M2 | **Levert:** Generell SVG-eksport fra målt modell; liten frame + knapp/input og deretter Concept1 uten håndplassert fixture; geometri- og visuell kontroll |
-| G2-M3 | **Levert:** Fyne-vindu med samme geometri, knapper/input, Tab/fokus og registrert lokal Go-funksjon; ingen SDL-avhengighet |
-| G2-M4 | **Levert:** Avgrenset Markdown-provider og separate Mermaid-ressurser; dokumentert støtteprofil og negative tilfeller, ikke påstått full diagramdekning |
+| G2-M1 | **Delivered:** Measurement/font contract; relative axes, ratio, rows/groups, header/body/footer, gap/padding and explicit overflow limits |
+| G2-M2 | **Delivered:** General measured SVG export; small frame/button/input, then Concept1 without manually placed fixture; geometry/visual checks |
+| G2-M3 | **Delivered:** Fyne window sharing geometry, buttons/inputs, Tab/focus and registered local Go function; no SDL dependency |
+| G2-M4 | **Delivered:** Bounded Markdown provider and separate Mermaid resources; documented profile/negative cases, no full diagram-coverage claim |
 
-Krav R10/R11/R14/R15/R17/R20/R21/R24. Begynn med liten vertikal prøve i M1–M3;
-full Concept1/Markdown følger. Mål oppstart, resize og hukommelse før påstander
-om «lettvekts». Fyne håndterer widgetinteraksjon; kjerne og SVG skal fungere uten GUI.
-SVG-eksport gjengir valgt tilstand og utfører aldri callbacks.
+Requirements R10/R11/R14/R15/R17/R20/R21/R24. Start with a small vertical M1–M3 trial; full Concept1/Markdown follows. Measure startup, resize and memory before claiming lightweight operation. Fyne handles interaction; core/SVG work without GUI. SVG exports selected state without callbacks.
 
-## G3 — UI-runtime og SDUI hot reload
+## G3 — UI runtime and SDUI hot reload
 
-Avhenger av G1-M2/G2-M3. Eier: SDUI-implementasjonen.
+Depends on G1-M2/G2-M3. Owner: SDUI implementation.
 
-| Milepæl | Leveranse og akseptanse |
+| Milestone | Delivery and acceptance |
 | --- | --- |
-| G3-M1 | **Levert:** Typede hendelser/oppdateringer, stabile widgetinstanser og revisjoner; ubundet knapp gir eksplisitt status |
-| G3-M2 | **Levert:** Filendring → parse/valider → publisering; ugyldig kilde beholder siste gyldige UI og viser kildediagnose |
-| G3-M3 | **Levert:** Bevar kompatibel verdi/draft/fokus; typebytte/sletting håndteres, stale events og callback etter teardown avvises; ingen gjentatte domenehandlinger ved reload |
+| G3-M1 | **Delivered:** Typed events/updates, stable widget instances/revisions; explicit unbound-button status |
+| G3-M2 | **Delivered:** File change → parse/validate → publish; invalid source retains last valid UI and shows source diagnostics |
+| G3-M3 | **Delivered:** Preserve compatible value/draft/focus; handle type changes/deletion; reject stale events/post-teardown callbacks; no repeated domain actions on reload |
 
-Krav R12/R16/R18/R25. UI-state og domene-state holdes adskilt. Avtal eventgrense
-og UI-tråd før asynkronisering; ingen kompleks plugin-/prosessmekanisme i denne fasen.
+Requirements R12/R16/R18/R25. Separate UI/domain state. Define event/UI-thread boundaries before asynchronous work; no complex plugin/process mechanism here.
 
-## G4 — avgrenset SDL-parser/runtime og kobling til SDUI
+## G4 — bounded SDL parser/runtime and SDUI bridge
 
-SDL-parserarbeid kan starte ved siden av G1. Integrasjon avhenger av G3-M1.
-Eier: SDL-implementasjonen for semantikk/runtime; SDUI eier UI-siden av porten.
+SDL parsing may start alongside G1; integration depends on G3-M1. SDL owns semantics/runtime; SDUI owns its bridge endpoint.
 
-| Milepæl | Leveranse og akseptanse |
+| Milestone | Delivery and acceptance |
 | --- | --- |
-| G4-M1 | **Levert:** Port design-core-struktur til Go med dokumentert grammatikk og tester; checkpoint/MVP1-kandidater blir ikke automatisk støttet |
-| G4-M2 | **Levert:** Definer én kjørbar profil for navngitt handling, typed input/resultat og binding til registrert Go-funksjon; negative og manglende bindinger avvises |
-| G4-M3 | **Levert:** SDUI-knapp/input → SDL-handling → Go-funksjon → UI-oppdatering; kildekart og samme kontrakt med eksplisitt simulert domene |
-| G4-M4 | **Levert:** Reload av SDL-modell med siste gyldige versjon, tilstandsregel og håndtering av pågående hendelser; Go-endring bygges/restartes |
+| G4-M1 | **Delivered:** Go design-core port with grammar/tests; checkpoint/MVP1 candidates not automatically supported |
+| G4-M2 | **Delivered:** Bounded named-action profile with typed inputs/results and registered Go functions; invalid/missing bindings rejected |
+| G4-M3 | **Delivered:** SDUI button/input → SDL action → Go function → UI update; source maps and shared contract with explicit simulated domain |
+| G4-M4 | **Delivered:** SDL reload with last valid model, state rules and in-flight handling; Go changes rebuild/restart |
 
-R12/R18/R25. Bruk et avgrenset EditAptCell-scenario fra MVP1 som referanse etter
-at enkel binding virker. Hele 66-fils korpuset er ikke et parserakseptansemål ennå.
-Ingen maskin-/domenealgoritmer utledes fra struktur alene. Produktkoden i Ponsse
-endres ikke automatisk som del av språkimplementasjonen.
+Requirements R12/R18/R25. Use bounded MVP1 EditAptCell after simple binding works. The full 66-file corpus is not yet a parser acceptance target. Infer no machine/domain algorithms from structure; language implementation does not automatically change Ponsse product code.
 
-## G5 — Go-generering og samlet dokumentasjon
+## G5 — Go generation and shared documentation
 
-Avhenger av avklart G4-profil og felles runtime. Eier: SDL/SDUI sammen.
+Depends on resolved G4 profile/shared runtime. Joint SDL/SDUI ownership.
 
-| Milepæl | Leveranse og akseptanse |
+| Milestone | Delivery and acceptance |
 | --- | --- |
-| G5-M1 | **Levert:** Generert Go oppretter samme modeller/bindinger; bygger sammen med separate håndskrevne domenefunksjoner |
-| G5-M2 | **Levert:** Filbasert utviklingsmodus og generert program gir samme hendelsesspor/tilstand for avtalt profil; ufullstendig semantikk gir diagnose |
-| G5-M3 | **Levert:** Reproduserbar SVG/Markdown-dokumentasjon fra valgt UI/state; kilde-/verktøyversjon og renderbevis |
-| G5-M4 | **Levert:** Port fullført: gamle aktive Python-innganger/fixtureplassering fjernet eller erstattet, lenker/kommandoer oppdatert; én språkimplementasjon per profil |
+| G5-M1 | **Delivered:** Generated Go creates equivalent models/bindings and builds with separate handwritten domain functions |
+| G5-M2 | **Delivered:** File-based development/generated programs yield equivalent event traces/state for agreed profile; incomplete semantics diagnosed |
+| G5-M3 | **Delivered:** Reproducible SVG/Markdown from selected UI/state, with source/tool versions and rendering evidence |
+| G5-M4 | **Delivered:** Port complete: obsolete active Python entry points/fixture locations removed or replaced, links/commands updated; one implementation per profile |
 
-Krav R19/R26. Go-byggcache gjenbrukes ved restart; dynamisk maskinkodeutskifting
-eller separate workerprosesser er ikke nødvendig akseptanse for hot reload.
+Requirements R19/R26. Reuse Go build cache on restart; dynamic machine-code replacement/separate workers are not hot-reload acceptance requirements.
 
-## G6 — navigerbare dokumenter og generering ved behov
+## G6 — navigable documents and on-demand generation
 
-**Status: G6-M1–M6 levert**, med [designkontrakt og XFMD-handoff](../../SDL/docs/integration/SDL-Navigable-Viewpoints-Design.md).
-Eier: SDL for projeksjon/publisering; XFMD for dokumentpaneler og lenkeruting.
-Dette er dokumentvisning, adskilt fra G2s Fyne-vert for interaktive SDUI-widgets.
+**G6-M1–M6 delivered.** [Design contract/XFMD handoff](../../SDL/docs/integration/SDL-Navigable-Viewpoints-Design.md). SDL owns projection/publication; XFMD owns document panels/link routing. Document viewing is separate from G2's interactive Fyne host.
 
-| Milepæl | Leveranse og akseptanse |
+| Milestone | Delivery and acceptance |
 | --- | --- |
-| G6-M1 | **Levert:** Alternative eksportformer: navigator/overview uten detaljdiagrammer, eller statisk pakke; A0–A5-kataloger, typeinventar og stabile lenker/ankre fra samme modell; port eksisterende SDL-projektor; samleeksport valgfri; lenker/bilder og determinisme kontrollert |
-| G6-M2 | **Levert:** Typet utvalg av relasjoner, retning, dybde, nivå og mode ved klikk/CLI, revisjon og publisering av bare valgt dokument med ressurser; samme innhold som tilsvarende full eksport; feil beholder siste visning |
-| G6-M3 | **Levert:** XFMD med navigasjons-/hovedpanel, registrert leseradapter og eksplisitt vindu/panel; klikk, fokusbytte, flere vinduer og lukket mål testet |
-| G6-M4 | **Levert:** Valgfri Go-bakgrunnstjeneste med lokal IPC, cache/invalidering, leser-lease, request-rekkefølge, kvoter og opprydding; ingen døde bilder ved dokumentbytte/reload |
-| G6-M5 | **Levert:** Fast symbol-/pilprofil med UML der semantikken stemmer; aktørfigurer og use-case-ellipser; rendererprøver kontrollerer faktiske figurer/markører, ikke bare exitkode |
-| G6-M6 | **Levert:** Eksplisitt klasse-/relasjonsprofil med multiplisitet og aggregation/composition; språk/validator før kildekoblede klassediagrammer, ingen automatisk oversettelse fra contains |
+| G6-M1 | **Delivered:** Navigator/overview without detailed diagrams or static package; A0–A5 directories, type inventory and stable links/anchors from the same model; ported projector; optional monolithic export; checked links/images/determinism |
+| G6-M2 | **Delivered:** Typed relation/direction/depth/level/mode selection by click/CLI; revision and publication of selected document/resources only; equivalent to corresponding full export; errors retain last view |
+| G6-M3 | **Delivered:** XFMD navigation/main panels, registered reader adapter and explicit window/panel; click, focus, multiple-window and closed-target tests |
+| G6-M4 | **Delivered:** Optional Go service with local IPC, cache/invalidation, leases, request ordering, quotas and cleanup; resources survive document changes/reload |
+| G6-M5 | **Delivered:** Consistent symbol/arrow profile, UML where semantics match; actor figures/use-case ellipses; actual shape/marker tests beyond exit codes |
+| G6-M6 | **Delivered:** Explicit class/relation profile with multiplicity and aggregation/composition; grammar/validation before source-linked diagrams; no inference from contains |
 
-G6-M1 avhenger av G4-M1s strukturelle frontendport, ikke SDL-runtime eller G5s
-Go-generering. Viewpoint-port og kildekart flyttes fra G5-M3 til G6-M1;
-G5-M3 blir konsument av denne eksporten. G6-M2 → M3 → M4 følger hverandre. M5 avhenger av M1 og kan utvikles
-ved siden av vertsarbeidet; M6 følger M5 og krever avklart klassekontrakt.
-Den tidligere Python-generatoren er fryst portgrunnlag. URI/IPC og XFMD-flagg
-er verifisert mot den separate XFMD-implementasjonen; se G6-bevis.
-G6-D1/D2 var designleveranser. Den påfølgende G6-M1–M6-implementasjonen
-er dokumentert separat i bevisene ovenfor. [Nivåer og notasjon](../../SDL/docs/integration/SDL-Viewpoint-Levels-and-Notation.md)
-presiserer eksportformene, A0–A5, Mode/State og semantisk diagramprofil.
+G6-M1 depends on G4-M1's structural frontend, not SDL runtime or G5 generation. Viewpoint/source-map port moved from G5-M3 to G6-M1; G5-M3 consumes it. M2→M3→M4 are sequential; M5 depends on M1 and can accompany host work; M6 follows M5 with a resolved class contract. Earlier Python generator remains frozen port evidence. URI/IPC/XFMD flags were verified against the separate implementation; see G6 evidence. G6-D1/D2 were design deliveries; later M1–M6 implementation has separate evidence. [Levels/notation](../../SDL/docs/integration/SDL-Viewpoint-Levels-and-Notation.md) defines export forms, A0–A5, Mode/State and diagram semantics.
 
-## Avgrensning og gjenbruk
+## Scope and reuse
 
-Fyne er første interaktive SDUI-vert. XFMD-dokumentnavigasjon er levert i G6;
-FOX-baserte SDUI-widgets, C-ABI og Bubble Tea er fortsatt utsatt. Eksisterende renderer-/worktree-kode
-kan gi ideer, tester og egnede algoritmer med dokumentert proveniens; det kreves
-ingen uttrekkscrate eller merge til Mermaid. Fullt Markdown/Mermaid-innhold må
-prøves mot en avtalt profil. Ingen flere renderere bygges bare for å holde valg åpne.
+Fyne is the first interactive host. G6 delivers XFMD document navigation; FOX-based SDUI widgets, C ABI and Bubble Tea remain deferred. Existing renderer/worktree code can provide ideas, tests and suitable algorithms with provenance; no extracted crate or Mermaid merge is required. Test Markdown/Mermaid against an agreed profile. Do not build extra renderers merely to preserve options.
 
-SDL- og SDUI-katalogene har hver sin README for kodeansvar. Denne planen er felles;
-ikke opprett konkurrerende faseplaner under begge. Detaljert portinventar står i [Go-portoversikten](../../SDL/docs/integration/SDL-Go-Port-Inventory.md). Git følger
-[én branch per fase og commit per milepæl](../../SDP/Development-Branch-Stack.md);
-push er autorisert etter hver fullført fase.
+SDL/SDUI each document code ownership in their READMEs. This is the shared plan; do not duplicate phase plans. [Go port inventory](../../SDL/docs/integration/SDL-Go-Port-Inventory.md). Git uses [one branch per phase and commit per milestone](../../SDP/Development-Branch-Stack.md); end-of-phase pushes are authorized.
 
-## G7 — enkel oppstart av dokumentnavigator
+## G7 — simple document-navigator launch
 
-Eierpresisering etter G6: daglig bruk skal starte fra SDL-kilden og generere
-utvalgte detaljer ved klikk. Full statisk eksport er et eksplisitt arkiv-/eksportvalg.
+Owner clarification after G6: daily use starts from SDL source and generates selected details on click. Full static export is an explicit archival/export option.
 
-| Milepæl | Leveranse og akseptanse |
+| Milestone | Delivery and acceptance |
 | --- | --- |
-| G7-M1 | **Levert:** Launch-script uten obligatoriske argumenter: bruk ferdigbygd SDL-verktøy uten kompilering; regenerer bare navigator/oversikter, registrer source/project/renderer i riktig XFMD; direkte modus uten daemon; feil og opprydding kontrollert |
+| G7-M1 | **Delivered:** Launcher without required arguments; prebuilt SDL tool, no compilation; regenerate navigator/overviews only; register source/project/renderer in correct XFMD; direct mode without daemon; checked errors/cleanup |

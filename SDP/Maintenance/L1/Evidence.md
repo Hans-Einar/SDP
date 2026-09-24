@@ -20,3 +20,20 @@ claim a new runtime delivery.
 
 L1-M2/M3 remain in progress. No machine-translated draft is accepted without
 review; the local draft model is not reliable enough for technical contracts.
+
+## L1-M2 — maintained narrative documentation
+
+110 additional Markdown documents translated: language/profile and integration
+contracts, SDUI design/requirements, 32 research profiles and their catalogue,
+checkpoint narrative addenda, Go evidence and repository maintenance/history.
+The translation inventory pins original and translated bytes. Existing proposal
+status, historical limitations, source commits and test counts remain explicit.
+Localized UI labels and frozen machine evidence are retained as such.
+
+R1 structural verification passed before generator edits: 322 dispositions,
+574 generated outputs, original Go/archive/evidence bytes and installation
+destinations preserved; 1978 local file links resolved. Markdown heading-link
+inspection found zero unresolved local fragments. Three boards: 17 cards, 47
+events before this milestone review, with historical ledger prefixes intact.
+Active examples now use SDL/go instead of the retired source directory; historical
+commands retain their original revision context. No new runtime behavior is claimed.

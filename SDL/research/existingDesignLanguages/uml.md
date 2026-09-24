@@ -1,28 +1,28 @@
 # UML 2.5.1
 
-[Katalog](README.md) · Kategori: **Modell-/designspråk** · Research: **2026-09-10**
+[Catalogue](README.md) · Category: **Model/design language** · Research: **2026-09-10**
 
-## Formål og abstraksjonsnivå
+## Purpose and abstraction level
 
-Generell struktur og atferd: komponenter, klasser, interfaces, aktiviteter, sekvenser og tilstandsmaskiner. OMG publiserer metamodel og XMI-artefakter; UML er mer enn klassediagrammer.
+General structure/behavior: components, classes, interfaces, activities, sequences and state machines. OMG publishes metamodel/XMI artifacts; UML is more than class diagrams.
 
-## Modellmekanismer
+## Model mechanisms
 
-Identitet: modelelementer/XMI-ID. Relasjoner: typede dependencies, association og realization. Contracts: interfaces og constraints, gjerne OCL. Viewpoints: flere diagramtyper. Utvidelse: profiles/stereotypes; maskinell utveksling via XMI.
+Identity: model elements/XMI IDs. Relations: typed dependencies, association and realization. Contracts: interfaces/constraints, often OCL. Viewpoints: multiple diagram types. Extension: profiles/stereotypes; machine interchange through XMI.
 
-## Styrker og begrensninger — vår vurdering
+## Strengths and limitations — our assessment
 
-**Styrke:** Bred semantikk og flere perspektiver på samme modell. Interfaces kan beskrives uten å kreve objektorientert implementasjon.
+**Strength:** Broad semantics and multiple perspectives on one model. Interfaces need not require object-oriented implementation.
 
-**Begrensning:** Store modeller og verktøyspesifikke profiler kan gjøre oversikten og utvekslingen krevende. Et diagram alene sikrer ikke konsistens mellom views.
+**Limitation:** Large models/tool-specific profiles complicate overview/interchange. A diagram alone does not ensure cross-view consistency.
 
-## Historikk, endring og transitions
+## History, change and transitions
 
-Tilstandsmaskiner beskriver kjøreatferd, ikke modellrevisjoner. Baselines, semantiske differanser og split/merge-sporing trenger repository-/modellverktøy og eksplisitte identitetsregler.
+State machines describe execution, not model revisions. Baselines, semantic diffs and split/merge tracking need repository/model tools and explicit identity rules.
 
-## Illustrativt eksempel
+## Illustrative example
 
-Pseudonotasjon for UML-elementer, ikke en standardisert tekstlig UML-grammatikk. Eksemplet er ikke parser-/runtime-testet.
+Pseudonotation for UML elements, not standardized textual UML grammar. The example has not been parser/runtime tested.
 
 ```text
 Class Measurement
@@ -32,12 +32,12 @@ Component Domain realizes interface MeasurementSource
 Component Representation uses interface MeasurementSource
 ```
 
-## Verktøy, vedlikehold og vilkår
+## Tools, maintenance and terms
 
-OMG-listingen angir 2.5.1 (desember 2017). Normativ spesifikasjon er tilgjengelig; dette sier ikke at alle verktøy støtter hele standarden. Standarddokumentets bruksvilkår og modellverktøyets lisens må vurderes separat; ingen konkret editor er valgt.
+OMG lists 2.5.1 (December 2017). Normative specification available; this does not imply every tool supports it fully. Assess specification terms and model-tool licenses separately; no editor selected.
 
-## Primærkilder
+## Primary sources
 
-Alle kilder kontrollert 2026-09-10; se katalogens metode for evidens- og lisensbegrensninger.
+All sources checked on 2026-09-10; see the catalogue methodology for evidence and licensing limits. Translation does not refresh these dated findings.
 
-- [OMG UML spesifikasjon og maskinlesbare artefakter](https://www.omg.org/spec/UML/)
+- [Primary documentation](https://www.omg.org/spec/UML/)
