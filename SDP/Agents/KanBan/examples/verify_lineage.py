@@ -153,7 +153,7 @@ def main():
         ('duplicate source ID', lambda op: op['sources'][1].update(id='KB-DEMO-001')),
         ('source/target overlap', lambda op: op['targets'][0].update(id='KB-DEMO-001')),
         ('unknown source', lambda op: op['sources'][0].update(id='KB-DEMO-099')),
-        
+
     ]
     for name, transform in grouped:
         reject(name, lambda es, transform=transform: change_group(es, transform))
