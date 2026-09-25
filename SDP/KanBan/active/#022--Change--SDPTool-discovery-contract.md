@@ -5,7 +5,7 @@
 | id | KB-SDP-022 |
 | project | SDP |
 | type | Change |
-| CardState | ready |
+| CardState | in-progress |
 | ScrumId | SCRUM-SDP-0002 |
 | SprintId | SPR-SDP-0001 |
 | Systems | SDPTOOL |
@@ -49,3 +49,5 @@ membership and completion. No implementation is delivered by this registration.
 2026-09-25T12:38:14Z — EVT-KB-SDP-000125: registered with acceptance and dependency boundaries. Await Sprint start.
 
 2026-09-25T13:08:52Z — EVT-KB-SDP-000135: Owner selects Sprint execution before the skills and installer Scrums; backlog to active/ready.
+
+2026-09-25T13:14:46Z — EVT-KB-SDP-000142: T1-M1: reconcile existing manifests and define a navigation-only registration; no installer/profile migration.

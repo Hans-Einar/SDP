@@ -117,3 +117,10 @@ Go saved-file preview implemented using existing SDL projection, query and bundl
 
 [Verification](../Verification/SDPTOOL-VER-P0-M1.md). Remaining milestones retain their existing status;
 this delivery is limited to the named milestone.
+
+## T1-M1 delivery
+
+Selected navigation-only registration with explicit local profile, source bindings and optional references to existing version authorities. Added schema and minimal/current-project registrations without changing installer contracts.
+
+[Verification](../Verification/SDPTOOL-VER-T1-M1.md). Remaining milestones retain their existing status;
+this delivery is limited to the named milestone.
