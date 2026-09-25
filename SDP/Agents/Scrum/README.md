@@ -10,3 +10,7 @@ The [management contract](../../ProjectManagement/README.md) owns semantics.
 SDP/SDL/SDUI board and selects project-management housekeeping.
 
 [Scrum-0002](Scrum--%230002--SDPTool-delivery-sprint.md) selects the planned SDPTool Sprint and registers two future Maintenance reviews.
+
+[Scrum-0003](Scrum--%230003--Skills-and-agent-activation.md) completes the skills
+Study and selects planned MAINT-SDP-0002, with measured Codex discovery and an
+installer-Scrum handoff.

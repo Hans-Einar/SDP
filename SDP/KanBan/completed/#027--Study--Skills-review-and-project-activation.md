@@ -5,12 +5,12 @@
 | id | KB-SDP-027 |
 | project | SDP |
 | type | Study |
-| CardState | backlog |
-| ScrumId | SCRUM-SDP-0002 |
+| CardState | completed |
+| ScrumId | SCRUM-SDP-0003 |
 | Systems | SDP |
 | created | 2026-09-25T12:38:14Z |
 | source | Owner conversation 2026-09-25 |
-| next_review | Separate future Scrum before the related migration or distribution change |
+| next_review | Study complete; execution tracked by MAINT-SDP-0002 |
 | tags | maintenance, scrum, skills, activation |
 
 ## Requested outcome
@@ -46,13 +46,13 @@ agent loading/routing in a fresh context, plus repeat installation and absence
 of duplicate catalog names. Preserve history and frozen evidence. Specify which
 hosts/versions were tested and remaining gaps; a root file alone proves nothing.
 
-Coordinate [KB-SDP-018](%23018--Study--Toolkit-audit-and-organization.md) for the
-broader Toolkit audit and [KB-SDP-028](%23028--Study--Installer-upgrade-and-versioned-layout.md)
+Coordinate [KB-SDP-018](../backlog/%23018--Study--Toolkit-audit-and-organization.md) for the
+broader Toolkit audit and [KB-SDP-028](../backlog/%23028--Study--Installer-upgrade-and-versioned-layout.md)
 for distribution. Do not repeat those reviews or block the SDPTool Sprint.
 
-ScrumId records registration provenance in Scrum-0002, not completion of the
-future topic-specific Scrum. No SprintId is assigned and no Maintenance job is
-started by this card.
+Original registration was in Scrum-0002. Current ScrumId identifies the actual
+topic review in Scrum-0003. No SprintId is assigned; the selected Maintenance
+remains planned independently of this completed Study.
 
 ## Worklog
 
@@ -67,3 +67,20 @@ skills have been moved/activated. This remains a future Scrum, not a completed
 review because the tool now exists.
 
 2026-09-25T13:42:06Z — EVT-KB-SDP-000152: future Scrum remains unstarted.
+
+## Scrum-0003 worklog
+
+2026-09-25T14:15:36Z — EVT-KB-SDP-000155: in-progress; review and Maintenance planning only.
+
+## Scrum-0003 outcome
+
+[Scrum-0003](../../Agents/Scrum/Scrum--%230003--Skills-and-agent-activation.md)
+completes this Study. [MAINT-SDP-0002](../../Maintenance/SK1/Plan-and-Evidence.md)
+owns the selected adoption map, three milestones, installer coordination and
+activation acceptance. Codex CLI 0.156.1 catalog probing confirmed the proposed
+symlink adapter; no real-project activation or agent behavior is claimed. The
+Maintenance remains planned. #028 is the recommended next Scrum because source
+and adapter migration affects its installer contract. Historical future-tense
+sections above preserve the original request and Sprint handoff.
+
+2026-09-25T14:18:18Z — EVT-KB-SDP-000156: completed Study; Maintenance execution remains planned.

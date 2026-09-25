@@ -66,7 +66,7 @@ failed/partial recovery and a fixture of manually adopted XFMD. A real XFMD
 migration requires its own selected work; this card does not perform one.
 
 Deliver the Scrum decision and bounded Maintenance plan first. Coordinate
-[KB-SDP-027](%23027--Study--Skills-review-and-project-activation.md) for skills and
+[KB-SDP-027](../completed/%23027--Study--Skills-review-and-project-activation.md) for skills and
 [KB-SDP-018](%23018--Study--Toolkit-audit-and-organization.md) for broader Toolkit
 ownership. Extend existing mechanisms and conformance tests rather than replacing
 them merely because process folders changed.
@@ -91,3 +91,22 @@ upgrade/configuration build design. See Toolkit/SDPTool/Contract.md; no installe
 or XFMD migration was performed by this Sprint.
 
 2026-09-25T13:42:06Z — EVT-KB-SDP-000153: future Scrum remains unstarted.
+
+## Scrum-0003 skills handoff
+
+[MAINT-SDP-0002](../../Maintenance/SK1/Plan-and-Evidence.md) is now planned from
+completed skills Study #027. It selects one root Skills/ source and a tested
+Codex .agents/skills symlink adapter. The current installer still copies ten
+legacy roles into .codex/skills, while the new router sdp is excluded by the old
+validator's skill-ID pattern. Native name/description and distribution version
+metadata must coexist. Root SKILL.md alone did not register a skill in the
+installed Codex CLI 0.156.1 probe. File discovery does not prove agent behavior.
+
+This card's Scrum is recommended next, before the skills job changes distribution.
+Set the shared ordering/compatibility contract for canonical source migration,
+host adapters, manifest facts, generated AGENTS and repeat installation. Keep
+SK1's mechanical skill-consumer migration bounded; this card owns broad process
+profile upgrades and manual-project adoption. It remains an unexecuted Scrum,
+not a delivered installer merely because the dependency is now documented.
+
+2026-09-25T14:18:18Z — EVT-KB-SDP-000157: handoff recorded; card remains backlog.

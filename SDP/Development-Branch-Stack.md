@@ -152,3 +152,12 @@ combined review includes the full stack against sdp-vNow; no merge is performed.
 SDP/Verification contains milestone evidence and REVIEW-SDP-0001. The prior
 untracked SDL sourceinput draft remains excluded. Skills/installer Scrums remain
 backlog and have received the Sprint's concrete contract findings.
+
+## PM3 — skills Scrum
+
+Branch sdp/phase-pm3-skills-scrum follows T4 c4aed09. PM3-M1 completes KB-SDP-027
+as a Study, records Scrum-0003 and plans MAINT-SDP-0002. A disposable native Codex
+catalog probe informs the adapter decision; actual skill adoption/loading remains
+future work. #028 retains the next recommended Scrum for installer coordination.
+This documentation/evidence phase preserves the untracked sourceinput draft and
+adds no system implementation claim. See the Scrum for verification results.

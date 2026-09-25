@@ -68,8 +68,18 @@ EVT-KB-SDP-000120; next review at the next selection or relevant dependency deli
 ## Scrum-0002 coordination
 
 2026-09-25T12:38:14Z — EVT-KB-SDP-000133: the owner selected future focused Scrums in
-[KB-SDP-027](%23027--Study--Skills-review-and-project-activation.md) and
+[KB-SDP-027](../completed/%23027--Study--Skills-review-and-project-activation.md) and
 [KB-SDP-028](%23028--Study--Installer-upgrade-and-versioned-layout.md).
 Reuse their eventual skills/install findings here; do not create competing
 migration plans. This card retains the broader Toolkit inventory, ownership,
 organization and remaining areas. No audit has been delivered by registration.
+
+## Scrum-0003 focused review available
+
+Reuse [MAINT-SDP-0002](../../Maintenance/SK1/Plan-and-Evidence.md) for the current
+skills inventory, draft adoption map, native catalog probe and installer coupling.
+The skills Study is complete; adoption remains planned. This broad Toolkit audit
+still owns the other responsibilities, organization and distribution questions;
+do not repeat the focused review or infer that the whole Toolkit is consolidated.
+
+2026-09-25T14:18:18Z — EVT-KB-SDP-000158: handoff recorded; card remains backlog.
