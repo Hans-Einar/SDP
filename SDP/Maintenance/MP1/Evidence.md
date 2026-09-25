@@ -50,3 +50,35 @@ upgrade. The old source is not replaced by current output.
 Local candidate generation and plan/apply conformance: all 19 scenarios pass with
 PowerShell /tmp/sk1-pwsh/pwsh. Normal comparison, profile installation, interruption
 matrix and remote Windows/Linux gates are recorded below when actually complete.
+
+## MP1-V-M1 — candidate checks and independent review
+
+Implementation candidate: 0ee89e1ce8695752a93e2cca4c99d6020b0de430.
+A detached worktree excludes the unrelated sourceinput draft. With Go 1.27.1,
+`go test -race ./...` and `go vet ./...` pass in SDL/go, SDUI/go and
+Toolkit/SDPTool. The optional real-renderer tests were additionally run with
+MMDR/SDUI_MMDR pointing to the existing mermaid-rs-renderer target/debug/mmdr:
+SDL documents (including semantic/class backend checks) and SDUI markdown pass.
+Maintained parser/runtime tests are Go; old Python parser implementations have
+been removed. No new desktop GUI acceptance or feature readiness is claimed.
+
+Exact-checkout Toolkit discovery passes 106 tests (19 host tests deferred to the
+separate host runs); six management test groups pass. The document check passes
+105 frozen records/prefixes, 574 generated outputs, 2,467 local links and 130
+fragments when checked out beside the existing XFMD repository. Its first /tmp
+checkout correctly failed on an existing external sibling link; the repository
+layout requirement was restored without changing or suppressing link checks.
+
+Independent reviewer /root/mp1_review reviewed 0803470 through 0ee89e1 and approved
+these bounded changes, with one low documentation finding: the Traceability
+README still described KB-SDP-011 as unresolved. That current assertion is now
+corrected. The reviewer independently confirmed exact SPS-001 restoration,
+preserved ledger prefixes, ID and relation rejection controls, all conformance
+audit hashes/deltas, and a passing real PowerShell old-profile upgrade (107 s).
+This is not a new review of the entire earlier development stack. The reviewer
+explicitly retained remote Windows/Linux and full interruption-matrix gates.
+
+Remote check run 36197129935 was started for 0ee89e1; no result is claimed here.
+The next documentation-only candidate must also receive green remote checks
+before its SHA is selected for integration. Publication and version release
+remain outside scope.
