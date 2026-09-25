@@ -121,3 +121,13 @@ S1-M0 records the owner's three-system decision and the independently committed
 XFMD SDP1-M1 bootstrap (fadf90c). It is a process/design milestone, not delivery
 of System syntax, source input loading or model relocation. S1-M1/M2 remain open;
 sourceinput draft code is excluded from this commit. The S1 phase is not complete.
+
+## PM1 — shared project management
+
+Branch sdp/phase-pm1-project-management starts at S1-M0 b2fb900; S1's uncommitted
+sourceinput drafts are preserved outside this phase. PM1-M1 (088734f) consolidates
+boards/history and records Scrum-0001. PM1-M2 delivers optional CLI grouping and
+verification, completing MAINT-SDP-0001. This phase does not deliver S1's source
+loader/model work; KB-SDL-005 and KB-SDP-020 now own those split responsibilities.
+The completed phase is pushed and offered as the latest combined stack against
+sdp-vNow, without merging or rewriting earlier phase branches.

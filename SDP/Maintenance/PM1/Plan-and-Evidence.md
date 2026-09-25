@@ -4,7 +4,7 @@
 | --- | --- |
 | id | MAINT-SDP-0001 |
 | project | SDP |
-| state | active |
+| state | completed |
 | source | SCRUM-SDP-0001; owner-conversation-2026-09-25 |
 
 Base b2fb900; branch sdp/phase-pm1-project-management. Owner: Project Owner;
@@ -15,7 +15,7 @@ SDL System implementation or the outstanding model migration.
 | Milestone | Acceptance | State |
 | --- | --- | --- |
 | PM1-M1 | Consolidate boards and histories, review all cards, preserve identities/lineage, define optional grouping and one management ledger with validation | Delivered |
-| PM1-M2 | Extend shell listing for Sprint/Scrum grouping/filtering, verify workflow/negative cases/links and hand off next work | Planned |
+| PM1-M2 | Extend shell listing for Sprint/Scrum grouping/filtering, verify workflow/negative cases/links and hand off next work | Delivered |
 
 ## Invariants and migration
 
@@ -58,3 +58,33 @@ cover the three permitted origin paths, review/refactor work, 12 corrupt histori
 sprint membership and actual-start activation, and exact import bytes. The existing
 105 frozen records/ledger prefixes and 574 generated artifacts remain intact;
 local documentation links/anchors pass. PM1-M2 adds CLI grouping next.
+
+## PM1-M2 result and completion
+
+The installed kanban command supports --group-by state|sprint|scrum, --sprint ID
+and --scrum ID. Filters match exact identities and combine with AND; unassigned
+cards remain visible under (none). State-only behavior, bounded directory scope,
+OSC 8 terminal links and plain redirected output remain intact. Optional tags do
+not create/move cards or start a Sprint. Every reviewed card now references
+SCRUM-SDP-0001; there is no actual Sprint to pretend has started.
+
+Verification: 10 CLI tests passed, including grouping/filter combinations,
+missing matches, malformed/duplicate metadata, first-table scope, hostile filename
+encoding, installer backup/idempotence and symlink protection. Four management
+test groups and the lineage examples/15 negatives still pass. Installed into
+/home/warloc/bin; the previous command was preserved by the installer backup.
+Current ledger: 27 cards, two management records, two lineage operations, 164
+combined events after closure. Eleven cards remain open, six routing Refs are
+complete, and the split's two successor scopes remain visible.
+
+Frozen evidence checks retain 105 records/prefixes and 574 generated outputs;
+all current local links/anchors pass. The old three board ledgers remain exact
+113-event archive/import bytes. No new management-only event was added to
+Traceability: its single new record covers the actual project-tooling code change
+and verification, referring to this maintenance and its completion event.
+
+No SDL System/source-set behavior, model migration, native graph/sidebar, released
+KanBan package or installer-template migration is claimed. KB-SDL-005 is queued
+next; KB-SDP-020 depends on it; #010 remains on owner review. XFMD keeps its pinned
+profile, with producer-card links updated and the future contract impact recorded
+in its existing #012 Ref. No XFMD product code is changed.

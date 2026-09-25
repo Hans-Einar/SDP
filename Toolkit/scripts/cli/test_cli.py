@@ -118,6 +118,44 @@ class KanBanCLI(unittest.TestCase):
         self.assertNotIn('\x1b', plain.stdout)
         self.assertNotIn('file://', plain.stdout)
 
+    def test_optional_sprint_scrum_grouping_and_exact_filters(self):
+        p = self.card('active', 1, 'ready')
+        p.write_text(p.read_text().replace('| CardState | ready |', '| CardState | ready |\n| SprintId | SPR-SDP-0001 |\n| ScrumId | SCRUM-SDP-0001 |'))
+        p = self.card('backlog', 2, 'queued')
+        p.write_text(p.read_text().replace('| CardState | queued |', '| CardState | queued |\n| SprintId | SPR-SDP-0010 |\n| ScrumId | SCRUM-SDP-0001 |'))
+        self.card('backlog', 3, 'backlog', '| Field | Value |\n| SprintId | SPR-SDP-0001 |\n')
+        grouped = self.run_cli('status', '--group-by', 'sprint')
+        self.assertEqual(grouped.returncode, 0, grouped.stderr)
+        for label in ['SPR-SDP-0001:', 'SPR-SDP-0010:', '(none):', '[ready]', '[queued]', '[backlog]']:
+            self.assertIn(label, grouped.stdout)
+        selected = self.run_cli('status', '--sprint', 'SPR-SDP-0001')
+        self.assertEqual(selected.returncode, 0, selected.stderr)
+        self.assertIn('#001', selected.stdout)
+        self.assertNotIn('#002', selected.stdout)
+        self.assertNotIn('#003', selected.stdout)
+        both = self.run_cli('status', '--group-by', 'scrum', '--scrum', 'SCRUM-SDP-0001')
+        self.assertIn('#001', both.stdout)
+        self.assertIn('#002', both.stdout)
+        self.assertNotIn('#003', both.stdout)
+        intersection = self.run_cli('state', '--scrum', 'SCRUM-SDP-0001', '--sprint', 'SPR-SDP-0010')
+        self.assertIn('#002', intersection.stdout)
+        self.assertNotIn('#001', intersection.stdout)
+        missing = self.run_cli('status', '--sprint', 'SPR-SDP-9999')
+        self.assertEqual((missing.returncode, missing.stdout, missing.stderr), (1, '', 'no KanBan cards found\n'))
+
+    def test_bad_or_duplicate_group_metadata_and_options(self):
+        p = self.card('active', 1, 'ready')
+        original = p.read_text()
+        for fields in ['| SprintId | SPR-SDP-0001 |\n| SprintId | SPR-SDP-0002 |',
+                       '| ScrumId | invalid |', '| SprintId | |']:
+            p.write_text(original.replace('| CardState | ready |', '| CardState | ready |\n' + fields))
+            result = self.run_cli('status')
+            self.assertEqual(result.returncode, 2, result)
+            self.assertEqual(result.stdout, '')
+        p.write_text(original)
+        for options in [('--group-by', 'unknown'), ('--sprint',), ('--scrum', ''), ('--sprint', 'not-an-id')]:
+            self.assertEqual(self.run_cli('status', *options).returncode, 2)
+
     def test_installer_copies_all_scripts_preserves_previous_and_is_idempotent(self):
         target = self.root / 'bin area'
         target.mkdir()

@@ -8,6 +8,7 @@
 | created | 2026-09-25T10:32:43Z |
 | source | owner-conversation-2026-09-25 |
 | CardState | completed |
+| ScrumId | SCRUM-SDP-0001 |
 | primary | KB-SDL-004 |
 
 ## Local impact

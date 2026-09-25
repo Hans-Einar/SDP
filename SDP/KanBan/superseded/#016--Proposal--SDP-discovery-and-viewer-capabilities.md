@@ -6,6 +6,7 @@
 | project | SDP |
 | type | Proposal |
 | CardState | superseded |
+| ScrumId | SCRUM-SDP-0001 |
 | created | 2026-09-24T20:52:36+00:00 |
 | source | Owner conversation in XFMD, 2026-09-24: SDP sidebar and version/capability marker |
 | next_review | Continue in KB-SDP-017 |

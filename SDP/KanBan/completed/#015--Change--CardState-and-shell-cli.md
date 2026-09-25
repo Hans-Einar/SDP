@@ -8,6 +8,7 @@
 | created | 2026-09-24T17:49:15Z |
 | source | owner-conversation-2026-09-24 |
 | CardState | completed |
+| ScrumId | SCRUM-SDP-0001 |
 | owner | Codex |
 | next_review | At K5-M2 completion |
 

@@ -4,6 +4,7 @@
 | --- | --- |
 | id | KB-SDP-008 |
 | CardState | completed |
+| ScrumId | SCRUM-SDP-0001 |
 | project | SDP |
 | type | Change |
 | created | 2026-09-23T22:22:08Z |

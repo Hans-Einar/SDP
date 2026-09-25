@@ -7,7 +7,7 @@ CLI entry scripts; the installer copies every `*.sh` file into `~/bin`, strippin
 
 ```sh
 bash Toolkit/scripts/cli/install-cli.sh
-cd SDP/Agents/KanBan
+cd SDP/KanBan
 kanban status
 kanban state
 cd active
@@ -52,3 +52,27 @@ bash -n Toolkit/scripts/cli/*.sh
 Only shell scripts are installed; tests and this README stay in the repository.
 This is a local utility, not `sdptool`, a KanBan graph or a released compatibility
 contract. Shared versioning/template distribution has separate backlog scope.
+
+## Optional Sprint and Scrum grouping — PM1
+
+```sh
+kanban status --group-by sprint
+kanban status --group-by scrum
+kanban status --sprint SPR-SDP-0001
+kanban status --scrum SCRUM-SDP-0001 --group-by sprint
+kanban status /path/to/KanBan/active --sprint SPR-SDP-0001
+```
+
+SprintId and ScrumId are optional metadata rows. Grouping displays current
+CardState beside each file; unassigned cards appear under `(none)`. Filters match
+full IDs exactly and combine with AND. No matching cards retains the existing
+`no KanBan cards found` error. Invalid/duplicate grouping metadata returns 2 with
+no partial output. Only the first visible metadata table is read; body examples
+cannot assign a card to a sprint. Default status/state behavior and directory
+scope are unchanged, including terminal OSC 8 links and plain redirected output.
+
+These options read metadata; they do not validate the ledger, edit membership,
+start Sprints or move cards. The [management validator](../../../SDP/ProjectManagement/validate.py)
+checks current membership against the common ledger and Sprint records.
+The example Sprint above is illustrative; Scrum-0001 selected Maintenance and did
+not create an actual Sprint. No script is required to create a management event.

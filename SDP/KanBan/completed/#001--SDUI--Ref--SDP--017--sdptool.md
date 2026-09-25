@@ -4,6 +4,7 @@
 | --- | --- |
 | id | KB-SDUI-001 |
 | CardState | completed |
+| ScrumId | SCRUM-SDP-0001 |
 | project | SDUI |
 | type | Ref |
 | created | 2026-09-23T18:25:13Z |
