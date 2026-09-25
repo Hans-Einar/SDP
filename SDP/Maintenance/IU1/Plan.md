@@ -151,7 +151,7 @@ push completed phases, offer a combined PR against sdp-vNow, and do not merge.
 | --- | --- | --- | --- |
 | IU1 / sdp/phase-iu1-profile-build | IU1-M1 | Finalize implementable profile/configuration, ownership/transition matrix, version/read compatibility, operation/report and neutral-template contracts against existing code and fixtures | Completed |
 | IU1 | IU1-M2 | Implement deterministic configuration build and validated target templates/inventory; reproducibility and negative cases pass; preserve an explicit supported legacy artifact/reader boundary | Completed |
-| IU2 / sdp/phase-iu2-safe-upgrades | IU2-M1 | Implement inspection and mutation-free exact-plan generation for clean, versioned, local and manual baselines, with explicit conflicts/unknown facts and input identities | Planned |
+| IU2 / sdp/phase-iu2-safe-upgrades | IU2-M1 | Implement inspection and mutation-free exact-plan generation for clean, versioned, local and manual baselines, with explicit conflicts/unknown facts and input identities | Completed |
 | IU2 | IU2-M2 | Implement apply, preservation, backups, ordered migrations and crash/concurrency recovery; verify target facts and retry-safe Maintenance/history finalization | Planned |
 | IU3 / sdp/phase-iu3-consumer-validation | IU3-M1 | Update installed-fact readers and supported navigation bindings; define prebuilt tool distribution; installed SDPTool discovers actual facts without invented models/viewer settings | Planned |
 | IU3 | IU3-M2 | Complete end-to-end transition/rollback-resume conformance, independent review and operator guidance; disposition remaining gaps before Maintenance closure | Planned |

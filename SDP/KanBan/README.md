@@ -39,6 +39,7 @@
 | KB-SDP-026 | CodeReview | completed | [Consumer contract and end-to-end delivery review](completed/%23026--CodeReview--SDPTool-consumer-contract-review.md) |
 | KB-SDP-027 | Study | completed | [Scrum for skills consolidation and project activation](completed/%23027--Study--Skills-review-and-project-activation.md) |
 | KB-SDP-028 | Study | completed | [Versioned SDP installation and upgrades](completed/%23028--Study--Installer-upgrade-and-versioned-layout.md) |
+| KB-SDP-029 | Proposal | backlog | [Typed plans and a shared Planning skill](backlog/%23029--Proposal--Typed-plans-and-planning-skill.md) |
 
 ## Purpose and authority
 
