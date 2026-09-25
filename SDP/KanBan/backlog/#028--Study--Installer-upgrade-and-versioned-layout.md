@@ -110,3 +110,24 @@ profile upgrades and manual-project adoption. It remains an unexecuted Scrum,
 not a delivered installer merely because the dependency is now documented.
 
 2026-09-25T14:18:18Z — EVT-KB-SDP-000157: handoff recorded; card remains backlog.
+
+## Completed SK1 handoff
+
+The owner selected skills Maintenance before this Scrum. [MAINT-SDP-0002](../../Maintenance/SK1/Plan-and-Evidence.md)
+is now complete: root Skills/ is canonical, .agents/skills exposes this repository,
+and generated .codex/skills copies retain the existing installed destination.
+Codex CLI 0.156.1 discovers both tested adapters; do not assume that all hosts do.
+All thirteen roles and shared references are explicit installation inventory.
+Native metadata v2 coexists with legacy installed metadata validation; the bare
+sdp router is supported. The Toolkit remains unreleased 0.2.0; AGENTS contract
+is 2.0.0, ten replacement roles are 2.0.0 and three new roles 1.0.0.
+
+A same-Toolkit-version skill contract change fails before writes unless using
+ForceManagedFiles; reviewed force plans preserve backups/project-owned content.
+Nineteen normative conformance scenarios and the faithful old-installation probe
+cover this boundary. Reuse these mechanisms; do not reimplement or silently bypass
+them when designing broader process-profile migration. No real consuming project
+was upgraded. Versioned layout builds, manual adoption and old/new-profile
+Maintenance entries remain this card's future Scrum and implementation scope.
+
+2026-09-25T14:48:15Z — EVT-KB-SDP-000161.

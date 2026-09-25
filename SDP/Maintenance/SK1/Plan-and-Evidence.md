@@ -4,7 +4,7 @@
 | --- | --- |
 | id | MAINT-SDP-0002 |
 | project | SDP |
-| state | active |
+| state | completed |
 | source | SCRUM-SDP-0003; KB-SDP-027; owner conversation 2026-09-25 |
 | Systems | SDP |
 
@@ -130,7 +130,7 @@ per completed milestone, evidence here and push at phase completion.
 | --- | --- | --- |
 | SK1-M1 | Apply the owner-selected maintenance-first ordering; finalize concise role/workflow content, compatible metadata and migration inventory, including every current source/consumer and removal condition | Delivered |
 | SK1-M2 | Atomically adopt root Skills/, migrate manifest/template/validator consumers and project adapter/AGENTS, remove the two superseded maintained sources; verify links, metadata, no duplicate names and supported clean/repeat install plus preservation/failure cases | Delivered |
-| SK1-M3 | Verify all adopted roles in a fresh host catalog and actual explicit loading/routing on representative tasks; record host/version, results and gaps, update evidence and close Maintenance only after acceptance | Planned |
+| SK1-M3 | Verify all adopted roles in a fresh host catalog and actual explicit loading/routing on representative tasks; record host/version, results and gaps, update evidence and close Maintenance only after acceptance | Delivered |
 
 Milestone verification must preserve frozen hashes/history and unrelated drafts.
 Run affected installer/conformance and skill metadata tests, compare any known
@@ -190,3 +190,18 @@ maintained sources are removed. Installed paths remain .codex/skills as measured
 on the current host, and all shared references are included. Two new conformance
 scenarios make the same-version skill-transition boundary portable and explicit.
 The broader installer Scrum remains unstarted; no external project was migrated.
+
+## SK1-M3 result and closure
+
+MAINT-SDP-0002 is complete. [Catalog and behavior evidence](Evidence.md) verifies
+all thirteen roles on Codex CLI 0.156.1 plus four independent representative tasks.
+The native catalog was rechecked on M2 commit 2d1c560; role bytes match the M1
+inventory, and the original Scrum probe remains reproducible from baseline Git
+bytes. Local/current profile adoption is complete within the tested host scope;
+other hosts and implicit-selection generalization remain explicit limitations.
+
+No parallel maintained legacy skill collection remains. No external repository,
+process tree or global user configuration was migrated. #028 receives the measured
+install boundary and version facts; #018 reuses the completed skills inventory;
+#011 retains the exact 38-error pre-existing Traceability baseline. #010 remains
+on its owner's existing non-blocking review. The next Scrum has not started.

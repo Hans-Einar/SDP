@@ -55,6 +55,44 @@ The reviewer approved the corrected scope; owner acceptance remains separate.
 
 ## SK1-M3 — catalog and actual use
 
-Results will identify adopted source hashes, host version, exact catalog checks
-and independently evaluated task artifacts. Catalog discovery, explicit source
-loading, observed task behavior and untested hosts remain distinct claims.
+[Catalog record](catalog-evidence.json) and [reproduction helper](verify_catalog.py)
+identify the committed M2 source and every adopted skill/reference hash. Codex CLI
+0.156.1 discovers all thirteen enabled roles without duplicates in four contexts:
+repository root, nested cwd, a separate Git worktree and an actual fresh Toolkit
+installation using .codex/skills. A nested independent Git repository does not
+inherit the parent's collection. No user configuration was changed. The original
+four-case discovery probe also reproduces its retained baseline from Git bytes.
+
+[Behavior record](behavior-evaluation.json) retains fixture inputs, final hashes,
+diffs, prompts and reported read paths. Four independent fresh contexts received
+realistic isolated tasks, without this thread's conclusions or expected answers:
+
+| Trial | Actual selected skills and result |
+| --- | --- |
+| Bounded formatter fix | sdp → Worker/Verifier; changes only formatter, tests and the existing Maintenance record; three tests pass; missing labels fixed, other IDs preserved |
+| Read-only evidence audit | sdp → Auditor/Verifier; identifies stale candidate evidence and unrun application checks; no edits or false demand for a Sprint/installed Framework |
+| Owner-choice advice | sdp → Architect; recommends the supported temporary-file route, distinguishes advice from approval, identifies remaining decisions; no implementation |
+| Trivial arithmetic | No skill loaded or lifecycle work started; correct answer |
+
+Explicit source paths were supplied for the first three trials. The tests prove
+observed explicit loading/routing and bounded behavior; they do not prove every
+possible implicit prompt match. Read paths are agent-reported, supported by the
+returned task artifacts, rather than an exported native-host telemetry trace.
+Other unexercised roles have metadata/reference/catalog evidence, not claimed
+individual behavioral certification. Sustained compliance, other IDE/desktop
+hosts and Windows installation remain outside these measured results.
+
+The coordinating session also read the adopted router, Worker and Traceability
+instructions for this Maintenance. Independent M2 review approved the corrected
+implementation/evidence and both old and new conformance authorities. This is
+agent review, not owner acceptance or publication of a release.
+
+## Final structural checks
+
+Management validation: 35 cards, seven management records, three lineage operations
+and 227 events. Four management test groups and 15 lineage negative cases pass.
+All pre-SK1 ledger bytes remain exact prefixes; 105 frozen records/prefixes and
+574 generated artifacts are preserved. Documentation check resolves 2,380 local
+file links and 130 fragments. Full Toolkit errors remain byte-for-byte the
+recorded baseline; git diff --check passes. The phase has separate M1/M2/M3
+commits and retains the owner's branch stack.

@@ -165,8 +165,13 @@ adds no system implementation claim. See the Scrum for verification results.
 ## SK1 — canonical skills and activation
 
 Branch sdp/phase-sk1-skills-activation follows PM3 aabb359. SK1-M1 (7df5afe)
-prepares the profile-aware collection and migration contract. SK1-M2 adopts root
+prepares the profile-aware collection and migration contract. SK1-M2 (2d1c560) adopts root
 Skills/ and the project adapter, migrates installed-source consumers and validates
 metadata/upgrade behavior. SK1-M3 records observed native discovery and independent
 behavior trials before Maintenance closure. The owner selected execution before
 the installer Scrum; that broader review receives actual results afterward.
+
+SK1-M3 completes MAINT-SDP-0002 after committed-candidate catalog checks and
+four independent task trials. The complete phase is pushed for combined review
+against sdp-vNow, without merge. Known baseline Traceability failures remain
+separately recorded; no unrelated sourceinput changes enter these commits.

@@ -84,3 +84,12 @@ and adapter migration affects its installer contract. Historical future-tense
 sections above preserve the original request and Sprint handoff.
 
 2026-09-25T14:18:18Z — EVT-KB-SDP-000156: completed Study; Maintenance execution remains planned.
+
+## Maintenance execution completed
+
+The owner subsequently authorized MAINT-SDP-0002 before the next Scrum. Its
+[plan](../../Maintenance/SK1/Plan-and-Evidence.md) and [evidence](../../Maintenance/SK1/Evidence.md)
+now record completed adoption, installation and measured activation. This card's
+original Study closure remains unchanged; later execution has its own lifecycle.
+
+2026-09-25T14:48:15Z — EVT-KB-SDP-000160.

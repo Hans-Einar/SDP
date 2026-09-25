@@ -83,3 +83,12 @@ still owns the other responsibilities, organization and distribution questions;
 do not repeat the focused review or infer that the whole Toolkit is consolidated.
 
 2026-09-25T14:18:18Z — EVT-KB-SDP-000158: handoff recorded; card remains backlog.
+
+## SK1 completion available
+
+[MAINT-SDP-0002](../../Maintenance/SK1/Plan-and-Evidence.md) now completes skills
+consolidation, metadata/installation consumer migration and tested agent activation.
+Reuse its current ownership map and evidence. The broad Toolkit audit still owns
+other modules, packaging and organization; it need not repeat this delivered work.
+
+2026-09-25T14:48:15Z — EVT-KB-SDP-000162.
