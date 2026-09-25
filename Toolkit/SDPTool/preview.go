@@ -39,6 +39,7 @@ type Result struct {
 }
 type PreviewOptions struct {
 	Source, Output, Renderer, Viewpoint, URI, Revision string
+	operation                                          string
 }
 
 func readSource(name string) ([]byte, error) {
@@ -206,7 +207,11 @@ func Preview(ctx context.Context, o PreviewOptions) (Result, error) {
 	if e != nil {
 		return result, e
 	}
-	result = Result{Version, "preview", source, "design-core/0.5", v.Revision, filepath.Join(output, "entry.md"), output, "caller-owned; remove directory after consumer release"}
+	operation := o.operation
+	if operation == "" {
+		operation = "preview"
+	}
+	result = Result{Version, operation, source, "design-core/0.5", v.Revision, filepath.Join(output, "entry.md"), output, "caller-owned; remove directory after consumer release"}
 	j, _ := json.MarshalIndent(result, "", "  ")
 	b.Files["sdptool.json"] = append(j, '\n')
 	b.Seal()

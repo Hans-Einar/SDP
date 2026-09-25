@@ -46,7 +46,7 @@ the then-current delivery tip rather than rebasing earlier history.
 | [KB-SDP-021](../KanBan/completed/%23021--Change--SDPTool-saved-design-preview.md) | P0-M1 |
 | [KB-SDP-022](../KanBan/completed/%23022--Change--SDPTool-discovery-contract.md) | T1-M1/M2 |
 | [KB-SDP-023](../KanBan/completed/%23023--Change--SDPTool-project-viewer-bridge.md) | T2-M1/M2 |
-| [KB-SDP-024](../KanBan/active/%23024--Change--SDPTool-model-navigation.md) | T3-M1/M2 |
+| [KB-SDP-024](../KanBan/completed/%23024--Change--SDPTool-model-navigation.md) | T3-M1/M2 |
 | [KB-SDP-025](../KanBan/active/%23025--Change--SDPTool-KanBan-and-SDUI-inventory.md) | T3-M3 |
 | [KB-SDP-026](../KanBan/active/%23026--CodeReview--SDPTool-consumer-contract-review.md) | T4-M1 |
 
@@ -151,4 +151,11 @@ this delivery is limited to the named milestone.
 Implemented versioned SDL catalog/phase/abstraction, typed collection, object and diagram navigation from validated language-owned facts, with stable IDs and explicit shared references.
 
 [Verification](../Verification/SDPTOOL-VER-T3-M1.md). Remaining milestones retain their existing status;
+this delivery is limited to the named milestone.
+
+## T3-M2 delivery
+
+Implemented finite relationship references, stable semantic edge identity and project-bound selected generation with mandatory expected revision; source and request refresh semantics are explicit.
+
+[Verification](../Verification/SDPTOOL-VER-T3-M2.md). Remaining milestones retain their existing status;
 this delivery is limited to the named milestone.

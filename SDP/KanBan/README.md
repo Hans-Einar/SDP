@@ -34,7 +34,7 @@
 | KB-SDP-021 | Change | completed | [Saved-file design preview](completed/%23021--Change--SDPTool-saved-design-preview.md) |
 | KB-SDP-022 | Change | completed | [Project recognition and delegation contract](completed/%23022--Change--SDPTool-discovery-contract.md) |
 | KB-SDP-023 | Change | completed | [Project resolver and configured viewer bridge](completed/%23023--Change--SDPTool-project-viewer-bridge.md) |
-| KB-SDP-024 | Change | active | [Model-derived navigation and selected generation](active/%23024--Change--SDPTool-model-navigation.md) |
+| KB-SDP-024 | Change | completed | [Model-derived navigation and selected generation](completed/%23024--Change--SDPTool-model-navigation.md) |
 | KB-SDP-025 | Change | active | [KanBan and SDUI navigation services](active/%23025--Change--SDPTool-KanBan-and-SDUI-inventory.md) |
 | KB-SDP-026 | CodeReview | active | [Consumer contract and end-to-end delivery review](active/%23026--CodeReview--SDPTool-consumer-contract-review.md) |
 | KB-SDP-027 | Study | backlog | [Scrum for skills consolidation and project activation](backlog/%23027--Study--Skills-review-and-project-activation.md) |

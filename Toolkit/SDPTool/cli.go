@@ -29,6 +29,36 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 		return 0
 	}
 
+	if len(args) > 0 && args[0] == "select" {
+		fs := flag.NewFlagSet("select", flag.ContinueOnError)
+		fs.SetOutput(io.Discard)
+		var o PreviewOptions
+		var model string
+		fs.StringVar(&model, "model", "", "model ID")
+		fs.StringVar(&o.Output, "output", "", "bundle directory")
+		fs.StringVar(&o.URI, "uri", "", "selection URI")
+		fs.StringVar(&o.Revision, "revision", "", "expected revision")
+		fs.StringVar(&o.Renderer, "renderer", os.Getenv("SDP_MMDR"), "renderer")
+		if e := fs.Parse(args[1:]); e != nil {
+			return report(errs, failure("arguments", e))
+		}
+		if fs.NArg() != 0 {
+			return report(errs, failure("arguments", fmt.Errorf("unexpected arguments")))
+		}
+		p, e := Discover(selected)
+		if e != nil {
+			return report(errs, e)
+		}
+		r, e := SelectProject(ctx, p, model, o)
+		if e != nil {
+			return report(errs, e)
+		}
+		if e = json.NewEncoder(out).Encode(r); e != nil {
+			return report(errs, e)
+		}
+		return 0
+	}
+
 	if len(args) > 0 && args[0] == "tree" {
 		fs := flag.NewFlagSet("tree", flag.ContinueOnError)
 		fs.SetOutput(io.Discard)

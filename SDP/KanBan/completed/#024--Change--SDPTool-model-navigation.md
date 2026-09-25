@@ -5,7 +5,7 @@
 | id | KB-SDP-024 |
 | project | SDP |
 | type | Change |
-| CardState | in-progress |
+| CardState | completed |
 | ScrumId | SCRUM-SDP-0002 |
 | SprintId | SPR-SDP-0001 |
 | Systems | SDPTOOL |
@@ -36,7 +36,7 @@ Record any small required SDL-owned API extension in SDL Traceability.
 
 | Source | Transferred scope | Retained scope |
 | --- | --- | --- |
-| [KB-SDP-017](%23017--Proposal--sdptool-and-project-navigation.md) | T3-M1/M2: Model-derived navigation and selected generation | P0-M2, T4-M2 and T5 remain in the source; sibling cards own the other selected milestones |
+| [KB-SDP-017](../active/%23017--Proposal--sdptool-and-project-navigation.md) | T3-M1/M2: Model-derived navigation and selected generation | P0-M2, T4-M2 and T5 remain in the source; sibling cards own the other selected milestones |
 
 Typed partial split: KBO-SDP-000004. The [single feature plan](../../05--Implementation/SDPTool.md)
 owns phase/milestone acceptance; the [Sprint](../../Sprints/Sprint--%230001--SDPTool-preview-and-navigation.md) owns
@@ -49,3 +49,5 @@ membership and completion. No implementation is delivered by this registration.
 2026-09-25T13:08:53Z — EVT-KB-SDP-000137: Owner selects Sprint execution before the skills and installer Scrums; backlog to active/ready.
 
 2026-09-25T13:27:42Z — EVT-KB-SDP-000146: T3-M1: expose SDL-owned catalog, typed collections and object identity as a versioned navigation graph.
+
+2026-09-25T13:30:23Z — EVT-KB-SDP-000147: T3-M1/M2 delivered: all-catalog typed model navigation, finite relationship references and current-source selected generation with revision checks.

@@ -142,3 +142,23 @@ Diagnostics leave the previous successful bundle displayed. Consumers release
 bundles explicitly according to the ownership contract; transport completion alone
 is not a request to delete files still in use. Fixture/harness validation belongs
 to T4-M1; actual XFMD GUI integration is T4-M2 and XFMD-owned.
+
+## Implemented tree and selection limits — T3
+
+The SDL tree groups requirements (A0/A1), architecture (A2/A3), design (A4) and
+implementation (A5/delivery). These are viewpoint groupings, not an assignment of
+every model object to a process folder. Every catalog viewpoint appears, even
+when empty. Typed collections use diagram/source-fact membership; VP11 exposes
+all declarations. Canonical object IDs combine model ID, kind and authored name;
+a rename changes identity because this SDL profile has no separate persistent ID.
+
+Relationship leaves reference canonical objects instead of recursively copying
+them. Consumers follow references with a visited set and the declared expansion
+limit of eight. The producer graph has a 20,000-node cap. SDL selected generation
+also enforces its query depth limit. Relationship IDs hash semantic endpoints;
+fact source positions remain owned by SDL. Inventory only builds data, not SVG.
+
+`select` requires both expected revision and a URI whose project matches the
+selected registration, plus an explicit model when ambiguous. It delegates to the
+same guarded preview path. Refresh and retry after a stale error. A foreign URI
+never switches project/source selection implicitly.

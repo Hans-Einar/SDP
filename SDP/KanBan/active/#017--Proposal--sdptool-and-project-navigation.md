@@ -23,7 +23,7 @@ background and do not create duplicate implementation assignments.
 - [KB-SDP-021](../completed/%23021--Change--SDPTool-saved-design-preview.md)
 - [KB-SDP-022](../completed/%23022--Change--SDPTool-discovery-contract.md)
 - [KB-SDP-023](../completed/%23023--Change--SDPTool-project-viewer-bridge.md)
-- [KB-SDP-024](%23024--Change--SDPTool-model-navigation.md)
+- [KB-SDP-024](../completed/%23024--Change--SDPTool-model-navigation.md)
 - [KB-SDP-025](%23025--Change--SDPTool-KanBan-and-SDUI-inventory.md)
 - [KB-SDP-026](%23026--CodeReview--SDPTool-consumer-contract-review.md)
 
