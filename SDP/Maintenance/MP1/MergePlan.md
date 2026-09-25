@@ -4,7 +4,7 @@
 | --- | --- |
 | id | MAINT-SDP-0005 |
 | project | SDP |
-| state | planned |
+| state | active |
 | PlanType | MaintenancePlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
@@ -16,9 +16,11 @@
 Bring the accepted, verified SDP development stack onto main without losing
 milestone history, project records or earlier review references. MergePlan is
 this MaintenancePlan's purpose, not an unimplemented seventh PlanType.
-The owner requested plan preparation and the archive tag. This document does not
-record authorization to execute the future target-branch merges. Existing phase
-commit/push/PR authority remains applicable to preparing the work.
+The owner requested plan preparation and the archive tag on 2026-09-25. On
+2026-09-26 the owner selected the current SDP-vNow lineage as the new SDP, excluded
+Issue #7 explicitly, and requested backlog capture before merging to main. This
+authorizes execution of this integration plan, including its readiness repairs
+and target-branch merges after verification; it does not waive failed checks.
 
 No new Scrum, Sprint or wrapper card is required. Dependencies KB-SDP-011 and
 KB-SDP-030 retain their own bounded acceptance. This is integration, not a Toolkit
@@ -53,12 +55,12 @@ rebase the stack, or cherry-pick all its already-contained phase commits.
 
 Draft PR #8 / codex/issue-7-provisional-vnext-pilot is separate: 34 unique commits,
 experimental process authority, and conflicts with the current folder layout.
-Recommended disposition: preserve the draft/branch separately and exclude it
-from this main promotion, documenting why. This is a recommendation requiring
-owner disposition of what “all” includes before the integration milestone. If
-selected for inclusion, map its useful content against adopted contracts, resolve
-conflicts in a separate work branch and run its own checks plus current checks.
-Do not merge it wholesale or call it incorporated/superseded merely from age.
+Owner disposition, 2026-09-26: exclude all Issue #7-specific work from main.
+The former vNext pilot stopped when SDL/SDUI development began; the current
+SDP-vNow lineage is the selected successor. Preserve the pilot branch and draft
+as historical work; do not merge/cherry-pick its contracts, validator or records.
+The already shared Issue #5 study remains part of the accepted baseline.
+Capture new owner intent in KB-SDP-031/032/033 without adopting pilot schemas.
 
 SDL/go/sourceinput is unrelated untracked work. Preserve it without staging,
 cleaning or stashing it as part of this plan. Use a disposable checkout for
@@ -70,7 +72,7 @@ Use one maintenance branch, sdp/maintenance-mp1-main-integration, descended from
 completed PL1. Commit each real milestone; no branch per phase is needed. Keep
 fixes bounded and include their card/milestone IDs. Push completed milestones.
 
-After readiness and owner merge authorization, use two explicit integrations:
+With owner merge authorization now recorded, after readiness use two integrations:
 latest combined candidate → sdp-vNow → main. This preserves the agreed staging
 target and provides one final main PR. Use merge commits to preserve milestone
 ancestry and traceability. A direct main PR would also contain the stack today,
@@ -87,7 +89,7 @@ and candidate identities immediately before each integration.
 
 | Phase | Milestone | Delivery and acceptance | State |
 | --- | --- | --- | --- |
-| MP1-R — readiness | MP1-R-M1 | Resolve explicit inclusion/exclusion of PR #8; refresh branch/PR/local-work inventory and freeze intended scope | Planned |
+| MP1-R — readiness | MP1-R-M1 | Resolve explicit inclusion/exclusion of PR #8; refresh branch/PR/local-work inventory and freeze intended scope | Complete |
 | MP1-R | MP1-R-M2 | Repair KB-SDP-011's 38 findings without rewriting historical evidence; full Toolkit validator and unit suite pass | Planned |
 | MP1-R | MP1-R-M3 | Repair KB-SDP-030: portable historical artifact provisioning and audited v1 expected outcomes; Linux/Windows CI jobs pass including the previously skipped fault matrix | Planned |
 | MP1-V — candidate verification | MP1-V-M1 | Fresh disposable checkout of the exact candidate; current contract, language, consumer and process checks pass; independent review covers fixes and candidate; record full SHA/tree and CI run | Planned |
@@ -191,3 +193,17 @@ bytes); xfmd_diagram_layout_measured_v1 with Pango text metrics returned status 
 metrics. Standalone rendering was also visually inspected. This checks XFMD's
 built parser/layout library, not its running GUI or an unknown installed binary.
 No XFMD source or target Git branch was changed. Merge execution remains planned.
+
+### MP1-R-M1 — owner scope decision and backlog intake
+
+The owner excludes Issue #7-specific work and selects current SDP-vNow as the new
+SDP. Registered KB-SDP-031 (SDL-derived assignment bundles/blueprints), KB-SDP-032
+(viewpoint navigation feedback) and KB-SDP-033 (gh-sdp/XFMD adoption and SDL pilot).
+These remain backlog studies; they are not implementation prerequisites for this
+merge. Readiness repairs KB-SDP-011 and KB-SDP-030 remain required. Integration
+execution is now selected; earlier planned-state observations remain historical.
+
+MP1-R-M1 verification: remote main/staging/pilot heads and old tag still match the
+recorded snapshot; PR #35 is the combined candidate. Backlog and document checks
+pass after activating readiness dependencies. No Issue #7-specific commits are
+selected, and SDL/go/sourceinput remains untracked and excluded.

@@ -38,7 +38,7 @@ gitGraph
 | main / old at 2cb49c0 | Observed main and the preserved archive tag |
 | sdp_vNow at 9ad4324 | Alias for the observed sdp-vNow staging target, before any proposed merge |
 | candidate at 481cafd | Initial combined stack; the subsequent planning and readiness work will extend it on sdp/maintenance-mp1-main-integration |
-| pilot_7 at ea9fcf1 | Abbreviation for codex/issue-7-provisional-vnext-pilot; 34 unique commits remain separate in the recommended route, pending owner scope disposition |
+| pilot_7 at ea9fcf1 | Abbreviation for codex/issue-7-provisional-vnext-pilot; 34 unique commits remain separate in the recommended route, excluded by owner decision on 2026-09-26 |
 | PROPOSED_ready | Placeholder for the final reviewed candidate including planning and readiness fixes; not a claim that a single commit delivers them all |
 | Final merge circle on sdp_vNow (proposed) | MP1-I-M1: merge the verified candidate into sdp-vNow |
 | Final merge circle on main (proposed) | MP1-I-M2: merge the verified staging result into main |
@@ -46,8 +46,8 @@ gitGraph
 The proposed route uses merge commits deliberately, even though the observed
 ancestry permits fast-forwarding. Rendering this graph changes no Git references.
 It illustrates the [MergePlan](MergePlan.md); it is not output emitted by
-merge-tree. The pilot exclusion remains a recommendation, and readiness checks
-and owner merge authorization remain outstanding.
+merge-tree. The owner confirmed pilot exclusion and authorized integration on 2026-09-26;
+readiness checks remain outstanding.
 
 ## Branch coverage
 

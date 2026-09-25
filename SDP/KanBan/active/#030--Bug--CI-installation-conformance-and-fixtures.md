@@ -5,7 +5,7 @@
 | id | KB-SDP-030 |
 | project | SDP |
 | type | Bug |
-| CardState | backlog |
+| CardState | ready |
 | PlanId | MAINT-SDP-0005 |
 | Systems | SDP |
 | created | 2026-09-25T17:58:59Z |
@@ -43,3 +43,8 @@ evidence; they are not a remote CI pass. No live consumer migration is included.
 
 Registered during MP1 preparation from actual job logs. Card remains backlog
 until the authorized MergePlan execution activates its readiness work.
+
+## MP1 execution selection
+
+2026-09-25T22:21:31Z: Owner authorized main integration on 2026-09-26; activate this
+readiness dependency as ready. Earlier planning-only statements are historical.

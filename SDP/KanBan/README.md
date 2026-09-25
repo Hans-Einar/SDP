@@ -19,7 +19,7 @@
 | KB-SDP-008 | Change | completed | [K2-M1: visible metadata in KanBan cards](completed/%23008--Change--Visible-card-metadata.md) |
 | KB-SDP-009 | Change | completed | [K3-M1: traceable card merging and splitting](completed/%23009--Change--Card-merge-and-split.md) |
 | KB-SDP-010 | Proposal | active | [Consolidate documentation and separate active contracts from history](active/%23010--Proposal--Document-consolidation.md) |
-| KB-SDP-011 | Bug | backlog | [Resolve older Traceability IDs against the Toolkit contract](backlog/%23011--Bug--Traceability-id-conformance.md) |
+| KB-SDP-011 | Bug | active | [Resolve older Traceability IDs against the Toolkit contract](active/%23011--Bug--Traceability-id-conformance.md) |
 | KB-SDP-012 | Change | completed | [K4-M1: living cards, revision logs and Git diff](completed/%23012--Change--Card-history.md) |
 | KB-SDP-013 | Change | completed | [English documentation throughout SDP, SDL and SDUI](completed/%23013--Change--English-documentation.md) |
 | KB-SDP-014 | Proposal | backlog | [Define the KanBan version contract and reusable distribution](backlog/%23014--Proposal--KanBan-version-contract-and-distribution.md) |
@@ -40,7 +40,10 @@
 | KB-SDP-027 | Study | completed | [Scrum for skills consolidation and project activation](completed/%23027--Study--Skills-review-and-project-activation.md) |
 | KB-SDP-028 | Study | completed | [Versioned SDP installation and upgrades](completed/%23028--Study--Installer-upgrade-and-versioned-layout.md) |
 | KB-SDP-029 | Proposal | completed | [Typed plans and a shared Planning skill](completed/%23029--Proposal--Typed-plans-and-planning-skill.md) |
-| KB-SDP-030 | Bug | backlog | [Restore installation conformance in CI](backlog/%23030--Bug--CI-installation-conformance-and-fixtures.md) |
+| KB-SDP-030 | Bug | active | [Restore installation conformance in CI](active/%23030--Bug--CI-installation-conformance-and-fixtures.md) |
+| KB-SDP-031 | Study | backlog | [Study SDL-derived assignment bundles and blueprints](backlog/%23031--Study--SDL-assignment-bundles-and-blueprints.md) |
+| KB-SDP-032 | Study | backlog | [Evaluate SDL viewpoints through integrated XFMD navigation](backlog/%23032--Study--Viewpoint-navigation-feedback.md) |
+| KB-SDP-033 | Study | backlog | [Plan XFMD SDP adoption through gh-sdp and a practical SDL design pilot](backlog/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md) |
 
 ## Purpose and authority
 

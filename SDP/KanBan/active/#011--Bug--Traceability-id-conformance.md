@@ -3,7 +3,7 @@
 | Field | Value |
 | --- | --- |
 | id | KB-SDP-011 |
-| CardState | backlog |
+| CardState | in-progress |
 | ScrumId | SCRUM-SDP-0001 |
 | Systems | SDP |
 | project | SDP |
@@ -44,3 +44,8 @@ This card retains repair ownership. EVT-KB-SDP-000159.
 merging the current stack into main. The current remote contracts job reproduces
 the known 38 findings. Planning does not mark repair started or permit an exception
 that conceals errors; the card remains backlog until execution is selected.
+
+## MP1 execution selection
+
+2026-09-25T22:21:31Z: Owner authorized main integration on 2026-09-26; activate this
+readiness dependency as in-progress. Earlier planning-only statements are historical.

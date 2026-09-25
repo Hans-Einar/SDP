@@ -36,7 +36,7 @@ lineage KBO-SDP-000003. Its responsibilities remain fully assigned.
 | [KB-SDP-003](../../KanBan/backlog/%23003--Idea--KanBan-graph.md) | backlog | Keep bounded scope; reviewed dependencies and acceptance |
 | [KB-SDP-004](../../KanBan/backlog/%23004--Proposal--Design-traceability.md) | backlog | Keep bounded scope; reviewed dependencies and acceptance |
 | [KB-SDL-005](../../KanBan/backlog/%23005--SDL--Change--System-and-source-sets.md) | queued | Next proposed implementation after maintenance |
-| [KB-SDP-011](../../KanBan/backlog/%23011--Bug--Traceability-id-conformance.md) | backlog | Keep bounded scope; reviewed dependencies and acceptance |
+| [KB-SDP-011](../../KanBan/active/%23011--Bug--Traceability-id-conformance.md) | backlog | Keep bounded scope; reviewed dependencies and acceptance |
 | [KB-SDP-014](../../KanBan/backlog/%23014--Proposal--KanBan-version-contract-and-distribution.md) | backlog | Keep bounded scope; reviewed dependencies and acceptance |
 | [KB-SDP-018](../../KanBan/backlog/%23018--Study--Toolkit-audit-and-organization.md) | backlog | Keep bounded scope; reviewed dependencies and acceptance |
 | [KB-SDP-020](../../KanBan/backlog/%23020--Change--Shared-design-source-organization.md) | backlog | Keep bounded scope; reviewed dependencies and acceptance |
