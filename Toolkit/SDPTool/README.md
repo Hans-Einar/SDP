@@ -2,11 +2,16 @@
 
 This is the owner-selected home for `sdptool`, the project-aware entry point for
 SDP operations and selected SDL/SDUI services. Created on 2026-09-25. The directory
-and [implementation plan](Implementation-Plan.md) are delivered; an executable,
+and [implementation plan](../../SDP/05--Implementation/SDPTool.md) are delivered; an executable,
 discovery schema and navigator API are not implemented here yet.
 
-The governing backlog item is
-[KB-SDP-017](../../SDP/Agents/KanBan/backlog/%23017--Proposal--sdptool-and-project-navigation.md).
+The active feature assignment is
+[KB-SDP-017](../../SDP/Agents/KanBan/active/%23017--Proposal--sdptool-and-project-navigation.md).
+The feature is designed in the [shared SDP process](../../SDP/README.md), using
+its five numbered phases and common Traceability/KanBan. Do not create a nested
+SDP directory here. Source code stays here; the single phase/milestone plan lives
+in SDP/05--Implementation.
+
 SDPTool owns project discovery/configuration, command coordination, navigation
 inventory and viewer adapters. SDL and SDUI retain their parsers, runtimes and
 projection/export implementations. Prefer reuse of existing APIs/commands.

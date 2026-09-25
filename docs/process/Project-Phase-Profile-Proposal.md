@@ -3,10 +3,15 @@
 **Owner review update:** KB-SDP-001 is accepted and closed. This document is the
 accepted planning deliverable; the original proposal/review wording below records
 its R3 submission. It is not an installed implementation contract. Outstanding
-metadata choices are handled with KB-SDP-002/016; repository-linking choices remain
+metadata choices are handled with KB-SDP-017; repository-linking choices remain
 explicit prerequisites before extraction. KB-SDP-010 review can proceed separately.
 
-Status: **proposed for owner review**, R3-M1, 2026-09-24. Primary card:
+**Local adoption, 2026-09-25:** the owner explicitly directs first real use of
+these five numbered phases in SDP-vNow/SDP, starting with SDPTool. The local
+[project entry](../../SDP/README.md) is initialized accordingly. Installer/template
+migration remains separate; local adoption does not select discovery metadata.
+
+Original submission: **proposed for owner review**, R3-M1, 2026-09-24. Primary card:
 [KB-SDP-001](../../SDP/Agents/KanBan/completed/%23001--Proposal--Project-structure.md).
 This is the single proposed replacement for the numbered directory profile.
 The current [installation manifest](../../Toolkit/SDP-install.manifest.json)
@@ -98,5 +103,5 @@ until that versioned change passes its acceptance tests.
 
 [Project discovery and extraction proposal](Project-Discovery-and-Extraction-Proposal.md)
 completes KB-SDP-001's remaining design package. The proposed next implementation
-planning item is [KB-SDP-017](../../SDP/Agents/KanBan/backlog/%23017--Proposal--sdptool-and-project-navigation.md),
+planning item is [KB-SDP-017](../../SDP/Agents/KanBan/active/%23017--Proposal--sdptool-and-project-navigation.md),
 limited first to discovery and view-ip integration, rather than all slice synthesis.

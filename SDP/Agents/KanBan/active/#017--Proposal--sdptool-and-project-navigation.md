@@ -5,11 +5,38 @@
 | id | KB-SDP-017 |
 | project | SDP |
 | type | Proposal |
-| CardState | queued |
+| CardState | ready |
 | created | 2026-09-25T01:41:26Z |
 | source | KB-SDP-002 and KB-SDP-016; owner clarification 2026-09-25 |
 | next_review | First discovery contract and navigation delivery; coordinate with XFMD |
 | tags | tooling, discovery, navigation, SDL, SDUI, XFMD |
+
+## Active assignment — owner decision 2026-09-25
+
+SDPTool is one SDP product feature, **SdpTool**, designed through this project's
+numbered 01--Mandate through 05--Implementation directories. No SDP directory,
+board or implementation ledger belongs under Toolkit/SDPTool. The owner explicitly
+requests first real use of the five-phase structure accepted in KB-SDP-001.
+
+The [project entry](../../../README.md), [requirements](../../../02--Requirements/SDPTool.md),
+[architecture/model](../../../03--Architecture/SDPTool.md),
+[detailed design](../../../04--Design/SDPTool.md) and
+[single implementation plan](../../../05--Implementation/SDPTool.md) own the work.
+CardState is ready at the design milestone handoff; no owner gate is requested.
+Next work is the saved-file preview contract. Code stays in Toolkit/SDPTool. Shared Traceability registers DES-SDPTOOL-001,
+requirements and design-check evidence; implementation status remains unimplemented.
+
+The [pipeline explanation](../../../../Toolkit/SDPTool/Navigation-and-Design-Preview.md)
+records existing Go SDL parsing/projection, Rust mmdr layout, Go SDL symbols,
+sdl-view:// selection, temporary-file lifetime and the optional broker. Reuse this
+chain through the future facade; do not create another parser or renderer now.
+
+Selected bounded work: establish the feature in the numbered process homes, parse
+its structural model and record its requirements/ownership/verification. Then
+specify the saved-file preview operation before implementing it. Full discovery,
+native tree, unsaved preview and advanced process services remain later milestones.
+XFMD application changes stay in its own KB-XFMD-014/015. KB-SDP-010 review remains
+non-blocking; KB-SDP-018 retains the later Toolkit audit.
 
 ## Consolidated scope and authority
 
@@ -112,7 +139,7 @@ the same semantic inventory. Decide a structured adapter/contract after inspecti
 existing exports; do not introduce a second projector.
 
 The KanBan status tree is the initial browsing feature; the time-axis/zoom/lineage
-graph belongs to [KB-SDP-003](%23003--Idea--KanBan-graph.md). Folder lifecycle,
+graph belongs to [KB-SDP-003](../backlog/%23003--Idea--KanBan-graph.md). Folder lifecycle,
 CardState, ledger history and Git content revisions are distinct data. Specify
 refresh after card moves/edits and behavior for inaccessible subproject boards.
 
@@ -146,7 +173,7 @@ relative paths, CLI override precedence and shared model selection.
 Distinguish absent, declared, validated and unsupported optional capabilities.
 Not every project has SDUI, SDL or KanBan. Agree whether unavailable subtabs are
 hidden or disabled with explanation; do not mistake a boolean directory check for
-version compatibility. [KB-SDP-014](%23014--Proposal--KanBan-version-contract-and-distribution.md)
+version compatibility. [KB-SDP-014](../backlog/%23014--Proposal--KanBan-version-contract-and-distribution.md)
 owns reusable KanBan compatibility/distribution, including standalone consumers.
 
 Executable resolution belongs to deliberate host/tool registration. Durable
@@ -167,7 +194,7 @@ value. `generate ip` must preserve approved plans and present proposed changes.
 Plan format, approval process and goal/constraint input remain open.
 
 Use model, approved plan and Traceability for roadmaps and incremental use-case,
-feature and functionality coverage. [KB-SDP-004](%23004--Proposal--Design-traceability.md)
+feature and functionality coverage. [KB-SDP-004](../backlog/%23004--Proposal--Design-traceability.md)
 owns evidence/status semantics; weak links never prove implementation. Its contract
 is a prerequisite for evidence-aware reporting, not for ordinary navigation.
 
@@ -194,15 +221,15 @@ invented implementation claims. The first browsing delivery does not wait for th
 later trial, a full export, the KanBan timeline graph or repository extraction.
 
 The concrete SDPTool phase/milestone plan is maintained in
-[Toolkit/SDPTool/Implementation-Plan.md](../../../../Toolkit/SDPTool/Implementation-Plan.md).
-The wider [Toolkit audit](%23018--Study--Toolkit-audit-and-organization.md) is
+[SDP/05--Implementation/SDPTool.md](../../../05--Implementation/SDPTool.md).
+The wider [Toolkit audit](../backlog/%23018--Study--Toolkit-audit-and-organization.md) is
 separate and does not block the bounded first tool delivery.
 
-## Queue
+## Historical queue — activation supersedes this selection
 
 Transferred from KB-SDP-002 by the owner's consolidation request on 2026-09-25.
 [KB-SDP-001](../completed/%23001--Proposal--Project-structure.md) is accepted;
-[KB-SDP-010](../active/%23010--Proposal--Document-consolidation.md) remains at
+[KB-SDP-010](%23010--Proposal--Document-consolidation.md) remains at
 non-blocking owner review. Explicit project/source identity unlocks navigation for
 all three projects, so this remains the next proposed work.
 
@@ -217,3 +244,5 @@ these cards. Queued means selected next for consideration, not currently in prog
 | 2026-09-25T01:41:26Z | Codex; EVT-KB-SDP-000072 | Consolidated full scope of #002/#016 and captured native tab/tree direction; queue transferred and SDL/SDUI Refs updated. | N1 contract, then bounded implementation; see the [all-card review](../../../Maintenance/K8/Plan.md). |
 | 2026-09-25T09:09:52Z | Codex; EVT-KB-SDP-000083 | Established SDPTool source home/plan, generalized tree scope and updated XFMD companion. | T1 discovery/delegation contract next; no executable delivered. |
 | 2026-09-25T09:35:14Z | Codex; EVT-KB-SDP-000084 | Verified existing generation and recorded early standalone preview plus XFMD-owned consumer card. | Define the bounded producer operation; no Rust rewrite or native implementation selected. |
+| 2026-09-25T10:11:01Z | Codex; EVT-KB-SDP-000085 | Owner-authorized activation: queued → in-progress; establish SDP feature design without a nested SDP project. | Feature model, plan placement and shared traceability. |
+| 2026-09-25T10:16:50Z | Codex; EVT-KB-SDP-000087 | Five-phase local feature design and parser/projection checks delivered; in-progress → ready at this handoff. | Next: define saved-file preview operation, then implement it. Overall feature remains active. |

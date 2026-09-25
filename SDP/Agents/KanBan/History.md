@@ -81,5 +81,5 @@ missing revision as empty. A Markdown-only export includes the worklog, not full
 Git history. Rebase/squash may change commit identities; preserve the owner's
 phase/milestone commits. Card/event IDs remain stable.
 
-Integrated history/diff remains in [sdptool](backlog/%23017--Proposal--sdptool-and-project-navigation.md)
+Integrated history/diff remains in [sdptool](active/%23017--Proposal--sdptool-and-project-navigation.md)
 and the [timeline idea](backlog/%23003--Idea--KanBan-graph.md).

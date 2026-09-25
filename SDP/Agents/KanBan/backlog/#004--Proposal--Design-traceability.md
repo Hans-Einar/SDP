@@ -24,7 +24,7 @@ Keep proposed, planned, implemented and verified distinct. A passing test or one
 
 ## Next work and acceptance
 
-Compare current Ledger.ndjson, Current-Index and Relations with these needs. Define a versioned contract and migration before making changes. Test one model with two slices, only one implemented/verified; generated roadmap/progress diagrams should show the difference and link to sources/evidence. [KB-SDP-017](%23017--Proposal--sdptool-and-project-navigation.md) is a consumer.
+Compare current Ledger.ndjson, Current-Index and Relations with these needs. Define a versioned contract and migration before making changes. Test one model with two slices, only one implemented/verified; generated roadmap/progress diagrams should show the difference and link to sources/evidence. [KB-SDP-017](../active/%23017--Proposal--sdptool-and-project-navigation.md) is a consumer.
 
 [Traceability ledger](../../../Traceability/Ledger.ndjson)
 [Ledger envelope schema](../../../../Toolkit/schemas/ledger-event.schema.json)

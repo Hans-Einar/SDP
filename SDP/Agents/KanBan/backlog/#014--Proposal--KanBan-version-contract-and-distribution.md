@@ -74,7 +74,7 @@ contract and distribution need. [KB-SDP-010](../active/%23010--Proposal--Documen
 retains editorial consolidation. Completed K2/K3/K4 cards remain evidence for
 metadata, lineage and history; they do not prove a released compatibility contract.
 [KB-SDP-003](%23003--Idea--KanBan-graph.md) retains the future graph, and
-[KB-SDP-017](%23017--Proposal--sdptool-and-project-navigation.md) retains tooling implementation.
+[KB-SDP-017](../active/%23017--Proposal--sdptool-and-project-navigation.md) retains tooling implementation.
 No existing card is superseded, moved or reduced by this registration.
 
 Consumer follow-up: [KB-XFMD-012](../../../../../xfmd-sdl-navigation/Agents/KanBan/backlog/%23012--Ref--SDP--014--KanBan-format-sync.md) is the direct XFMD Ref. It owns the local gap

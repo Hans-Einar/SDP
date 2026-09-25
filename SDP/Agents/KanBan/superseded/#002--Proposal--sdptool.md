@@ -12,7 +12,7 @@
 
 ## Consolidation outcome — 2026-09-25
 
-Full scope transferred to [KB-SDP-017](../backlog/%23017--Proposal--sdptool-and-project-navigation.md)
+Full scope transferred to [KB-SDP-017](../active/%23017--Proposal--sdptool-and-project-navigation.md)
 under `KBO-SDP-000001`. No work remains assigned to this source. The proposal
 and queue statements below are historical; the successor owns current planning.
 Recorded 2026-09-25T01:41:26Z, Codex, EVT-KB-SDP-000073. Superseded is not implemented.

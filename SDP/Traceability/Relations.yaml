@@ -1,5 +1,37 @@
-requirements: {}
-designs: {}
+requirements:
+  REQ-SDPTOOL-001:
+    status: specified
+    path: 02--Requirements/SDPTool.md
+    design: DES-SDPTOOL-001
+  REQ-SDPTOOL-002:
+    status: specified
+    path: 02--Requirements/SDPTool.md
+    design: DES-SDPTOOL-001
+  REQ-SDPTOOL-003:
+    status: specified
+    path: 02--Requirements/SDPTool.md
+    design: DES-SDPTOOL-001
+  REQ-SDPTOOL-004:
+    status: specified
+    path: 02--Requirements/SDPTool.md
+    design: DES-SDPTOOL-001
+  REQ-SDPTOOL-005:
+    status: specified
+    path: 02--Requirements/SDPTool.md
+    design: DES-SDPTOOL-001
+  REQ-SDPTOOL-006:
+    status: specified
+    path: 02--Requirements/SDPTool.md
+    design: DES-SDPTOOL-001
+designs:
+  DES-SDPTOOL-001:
+    status: initial-design
+    path: 03--Architecture/SDPTool.design
+    feature: SdpTool
+    requirements: [REQ-SDPTOOL-001, REQ-SDPTOOL-002, REQ-SDPTOOL-003, REQ-SDPTOOL-004, REQ-SDPTOOL-005, REQ-SDPTOOL-006]
+    implementationPlan: 05--Implementation/SDPTool.md
+    kanban: KB-SDP-017
+    verification: [VER-SDPTOOL-001]
 sprints:
   Sprint-001:
     status: complete
@@ -163,6 +195,11 @@ reviews:
       low: 0
       note: 4
 verification:
+  VER-SDPTOOL-001:
+    status: pass
+    path: Verification/VER-SDPTOOL-001.md
+    design: DES-SDPTOOL-001
+    scope: design-model-and-document-consistency-only
   VER-SPS-001:
     status: passed
     path: Verification/VER-SPS-001.md

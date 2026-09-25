@@ -32,7 +32,7 @@ consumers, approved project data, append-only ledgers and historical evidence.
 
 ## Related work and boundaries
 
-- [KB-SDP-017](%23017--Proposal--sdptool-and-project-navigation.md) owns sdptool;
+- [KB-SDP-017](../active/%23017--Proposal--sdptool-and-project-navigation.md) owns sdptool;
   this audit does not block its bounded discovery/viewer implementation.
 - [KB-SDP-014](%23014--Proposal--KanBan-version-contract-and-distribution.md) owns
   KanBan compatibility/distribution; coordinate its canonical/distributed paths.

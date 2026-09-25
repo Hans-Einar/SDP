@@ -116,6 +116,15 @@ requirements remain in the accepted planning documents and follow-up cards.
 ## Queue successor consolidation — 2026-09-25
 
 The historical #002 selection above now continues in
-[KB-SDP-017](../backlog/%23017--Proposal--sdptool-and-project-navigation.md),
+[KB-SDP-017](../active/%23017--Proposal--sdptool-and-project-navigation.md),
 which combines #002/#016. Project/source identity and viewer registration remain
 the reason for selecting it next; #010 review remains non-blocking.
+
+## First local use — 2026-09-25
+
+The owner explicitly requests applying 01--Mandate through 05--Implementation
+to this project now, with SDPTool as its first feature. The
+[project entry](../../../README.md) links actual phase artifacts. This completed
+planning card remains closed; feature delivery is in active KB-SDP-017. No
+installer/template migration or discovery descriptor is delivered by local setup.
+Recorded 2026-09-25T10:15:08Z, Codex, EVT-KB-SDP-000086.

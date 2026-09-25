@@ -13,7 +13,7 @@
 
 Registered from the owner conversation on 2026-09-23. The timestamp records registration, not a reconstructed discussion time. The directory and ledger record lifecycle status.
 
-Primary card: [KB-SDP-017 — sdptool and project navigation](../../../../../SDP/Agents/KanBan/backlog/%23017--Proposal--sdptool-and-project-navigation.md).
+Primary card: [KB-SDP-017 — sdptool and project navigation](../../../../../SDP/Agents/KanBan/active/%23017--Proposal--sdptool-and-project-navigation.md).
 
 ## Local impact
 
