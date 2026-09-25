@@ -393,8 +393,8 @@ class ReleaseNotesTests(unittest.TestCase):
 
 class FrontMatterTests(unittest.TestCase):
     def test_all_canonical_skills_have_metadata(self) -> None:
-        for path in ROOT.glob("Toolkit/skills/*/SKILL.md"):
-            metadata = VALIDATE.parse_front_matter(path)
+        for path in ROOT.glob("Skills/*/SKILL.md"):
+            metadata = VALIDATE.parse_skill_metadata(path)
             self.assertEqual(metadata["skillId"], path.parent.name)
             VALIDATE.SemVer.parse(metadata["skillVersion"])
             self.assertTrue(metadata["capabilities"])
@@ -502,7 +502,7 @@ class InstallationContractTests(unittest.TestCase):
         )
         self.assertEqual(self.validate_contract(self.contract), [])
         entries = self.contract["entries"]
-        self.assertEqual(len(entries), 40)
+        self.assertEqual(len(entries), 45)
         self.assertEqual(len({entry["id"] for entry in entries}), len(entries))
         self.assertEqual(
             len({entry["destination"].casefold() for entry in entries}), len(entries)

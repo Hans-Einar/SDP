@@ -10,8 +10,8 @@
 
 Selected by [Scrum-0003](../../Agents/Scrum/Scrum--%230003--Skills-and-agent-activation.md).
 This record owns the future Maintenance delivery; the source Study closes when
-its Scrum and plan are delivered. No wrapper card or Sprint is required. This
-plan does not claim that the project skills have been adopted or activated.
+its Scrum and plan are delivered. No wrapper card or Sprint is required. Current delivery and evidence are recorded in the milestone table and execution
+sections below; the earlier inventory describes the pre-adoption baseline.
 
 ## Outcome and boundary
 
@@ -129,7 +129,7 @@ per completed milestone, evidence here and push at phase completion.
 | Milestone | Delivery and acceptance | State |
 | --- | --- | --- |
 | SK1-M1 | Apply the owner-selected maintenance-first ordering; finalize concise role/workflow content, compatible metadata and migration inventory, including every current source/consumer and removal condition | Delivered |
-| SK1-M2 | Atomically adopt root Skills/, migrate manifest/template/validator consumers and project adapter/AGENTS, remove the two superseded maintained sources; verify links, metadata, no duplicate names and supported clean/repeat install plus preservation/failure cases | Planned |
+| SK1-M2 | Atomically adopt root Skills/, migrate manifest/template/validator consumers and project adapter/AGENTS, remove the two superseded maintained sources; verify links, metadata, no duplicate names and supported clean/repeat install plus preservation/failure cases | Delivered |
 | SK1-M3 | Verify all adopted roles in a fresh host catalog and actual explicit loading/routing on representative tasks; record host/version, results and gaps, update evidence and close Maintenance only after acceptance | Planned |
 
 Milestone verification must preserve frozen hashes/history and unrelated drafts.
@@ -160,8 +160,8 @@ report conflicts, and use the existing installer plan/backup policy.
 Completion requires one maintained collection, working references and installation,
 observable discovery/loading/routing evidence, truthful version facts, and explicit
 remaining host limitations. No parallel legacy implementation should remain active.
-Until then this Maintenance is planned, and #027's completed Study means only that
-the review selected an actionable job.
+The current state is maintained in the metadata and milestone table. #027's
+completed Study selected this job; its status does not substitute for execution.
 
 ## Execution authority — 2026-09-25
 
@@ -180,3 +180,13 @@ shared references now describe the actual profile and distinguish the two histor
 The active install source and repository catalog remain unchanged until M2.
 [Baseline](toolkit-baseline.txt) records 38 existing Toolkit errors; no unrelated
 Traceability repair is included. The earlier draft evaluation is retained as history.
+
+## SK1-M2 result
+
+The atomic adoption and installer migration are delivered. See [execution
+evidence](Evidence.md) for metadata, preservation, native adapter and independent
+review results. Root Skills/ is now the only authored collection; both former
+maintained sources are removed. Installed paths remain .codex/skills as measured
+on the current host, and all shared references are included. Two new conformance
+scenarios make the same-version skill-transition boundary portable and explicit.
+The broader installer Scrum remains unstarted; no external project was migrated.

@@ -1,7 +1,7 @@
 # SDP Framework
 
 Framework-Version: 1.0.0
-AGENTS-Contract-Version: 1.0.0
+AGENTS-Contract-Version: 2.0.0
 
 This directory is Toolkit-managed. A conforming installer refreshes only the
 explicit Framework entries in `Toolkit/SDP-install.manifest.json` and backs up

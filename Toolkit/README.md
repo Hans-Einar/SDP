@@ -4,7 +4,7 @@ Toolkit-Version: 0.2.0 (unreleased)
 
 This directory contains the reusable Toolkit boundary:
 
-- [SDPTool](SDPTool/README.md) — source home and plan for the project-aware sdptool facade; executable not yet delivered
+- [SDPTool](SDPTool/README.md) — source home and plan for the project-aware sdptool facade; Go facade delivered; see its current scope
 - `SDP-install.manifest.json` — authoritative installable inventory and policy
 - `schemas/` — installation, plan, manifest, traceability, record and build contracts
 - `scripts/` — supported PowerShell installer, build metadata and validator
@@ -12,7 +12,7 @@ This directory contains the reusable Toolkit boundary:
 - `conformance/install-v1/` — language-neutral scenario and expected-outcome contract
 - `payload/` — copied Toolkit-managed files only
 - [Template](../Template/README.md) — neutral files that become project-owned when created
-- `skills/` — versioned Toolkit-managed Codex skills
+- [Skills](../Skills/README.md) — canonical versioned skills and shared references
 
 `SDP.manifest.yaml` at repository root is authoritative for Toolkit release and
 capability facts. It is not the installation inventory. The JSON installation

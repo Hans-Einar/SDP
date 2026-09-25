@@ -1928,7 +1928,7 @@ Release-Date: unreleased
 
     $invalidContract = $archiveManifestOriginal | ConvertFrom-Json
     $invalidContract.exclusions = @(
-        $invalidContract.exclusions | Where-Object { $_.path -cne 'SDP-DOCUMENT-GUIDE.md' }
+        $invalidContract.exclusions | Where-Object { $_.path -cne 'SDP' }
     )
     Assert-InvalidArchiveContract 'contract-required-legacy-exclusion' $invalidContract $archiveManifestPath $archiveManifestOriginal $archiveInstaller
 

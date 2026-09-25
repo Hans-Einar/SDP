@@ -161,3 +161,12 @@ catalog probe informs the adapter decision; actual skill adoption/loading remain
 future work. #028 retains the next recommended Scrum for installer coordination.
 This documentation/evidence phase preserves the untracked sourceinput draft and
 adds no system implementation claim. See the Scrum for verification results.
+
+## SK1 — canonical skills and activation
+
+Branch sdp/phase-sk1-skills-activation follows PM3 aabb359. SK1-M1 (7df5afe)
+prepares the profile-aware collection and migration contract. SK1-M2 adopts root
+Skills/ and the project adapter, migrates installed-source consumers and validates
+metadata/upgrade behavior. SK1-M3 records observed native discovery and independent
+behavior trials before Maintenance closure. The owner selected execution before
+the installer Scrum; that broader review receives actual results afterward.

@@ -14,6 +14,7 @@
     "sdp.release.v1",
     "sdp.release-notes.v1",
     "sdp.skill-metadata.v1",
+    "sdp.skill-metadata.v2",
     "sdp.traceability.current-index.v1",
     "sdp.traceability.ledger-events.v1",
     "sdp.traceability.relations.v1",
@@ -30,19 +31,22 @@
         "schemaVersion": "1.0",
         "toolkitVersion": "0.2.0",
         "frameworkVersion": "1.0.0",
-        "agentsContractVersion": "1.0.0",
+        "agentsContractVersion": "2.0.0",
         "installerVersion": "0.2.0",
         "skills": {
-          "sdp-architect": "1.0.0",
-          "sdp-auditor": "1.0.0",
-          "sdp-master": "1.0.0",
-          "sdp-release": "1.0.0",
-          "sdp-reviewer": "1.0.0",
-          "sdp-traceability": "1.0.0",
-          "sdp-verifier": "1.0.0",
-          "sdp-versioning": "1.0.0",
-          "sdp-vertical-refactor": "1.0.0",
-          "sdp-worker": "1.0.0"
+          "sdp": "1.0.0",
+          "sdp-architect": "2.0.0",
+          "sdp-auditor": "2.0.0",
+          "sdp-change-analysis": "1.0.0",
+          "sdp-master": "2.0.0",
+          "sdp-release": "2.0.0",
+          "sdp-reviewer": "2.0.0",
+          "sdp-steering": "1.0.0",
+          "sdp-traceability": "2.0.0",
+          "sdp-verifier": "2.0.0",
+          "sdp-versioning": "2.0.0",
+          "sdp-vertical-refactor": "2.0.0",
+          "sdp-worker": "2.0.0"
         },
         "capabilities": [
           "sdp.install.v1",
@@ -51,6 +55,7 @@
           "sdp.release.v1",
           "sdp.release-notes.v1",
           "sdp.skill-metadata.v1",
+          "sdp.skill-metadata.v2",
           "sdp.traceability.current-index.v1",
           "sdp.traceability.ledger-events.v1",
           "sdp.traceability.relations.v1",
@@ -181,9 +186,60 @@
       }
     },
     {
+      "id": "managed-skill-sdp",
+      "kind": "copied",
+      "source": "Skills/sdp/SKILL.md",
+      "destination": ".codex/skills/sdp/SKILL.md",
+      "ownership": "toolkit-managed",
+      "selectionPolicy": "default",
+      "installPolicy": "always",
+      "refreshPolicy": "upgrade-or-force",
+      "backupPolicy": "before-replace",
+      "forcePolicy": "replace-managed",
+      "migrationPolicy": "none",
+      "governing": {
+        "capability": "sdp.skill-metadata.v2",
+        "schema": null
+      }
+    },
+    {
+      "id": "managed-skill-sdp-references-document-workflow",
+      "kind": "copied",
+      "source": "Skills/sdp/references/document-workflow.md",
+      "destination": ".codex/skills/sdp/references/document-workflow.md",
+      "ownership": "toolkit-managed",
+      "selectionPolicy": "default",
+      "installPolicy": "always",
+      "refreshPolicy": "upgrade-or-force",
+      "backupPolicy": "before-replace",
+      "forcePolicy": "replace-managed",
+      "migrationPolicy": "none",
+      "governing": {
+        "capability": "sdp.skill-metadata.v2",
+        "schema": null
+      }
+    },
+    {
+      "id": "managed-skill-sdp-references-source-map",
+      "kind": "copied",
+      "source": "Skills/sdp/references/source-map.md",
+      "destination": ".codex/skills/sdp/references/source-map.md",
+      "ownership": "toolkit-managed",
+      "selectionPolicy": "default",
+      "installPolicy": "always",
+      "refreshPolicy": "upgrade-or-force",
+      "backupPolicy": "before-replace",
+      "forcePolicy": "replace-managed",
+      "migrationPolicy": "none",
+      "governing": {
+        "capability": "sdp.skill-metadata.v2",
+        "schema": null
+      }
+    },
+    {
       "id": "managed-skill-sdp-architect",
       "kind": "copied",
-      "source": "Toolkit/skills/sdp-architect/SKILL.md",
+      "source": "Skills/sdp-architect/SKILL.md",
       "destination": ".codex/skills/sdp-architect/SKILL.md",
       "ownership": "toolkit-managed",
       "selectionPolicy": "default",
@@ -193,14 +249,14 @@
       "forcePolicy": "replace-managed",
       "migrationPolicy": "none",
       "governing": {
-        "capability": "sdp.skill-metadata.v1",
+        "capability": "sdp.skill-metadata.v2",
         "schema": null
       }
     },
     {
       "id": "managed-skill-sdp-auditor",
       "kind": "copied",
-      "source": "Toolkit/skills/sdp-auditor/SKILL.md",
+      "source": "Skills/sdp-auditor/SKILL.md",
       "destination": ".codex/skills/sdp-auditor/SKILL.md",
       "ownership": "toolkit-managed",
       "selectionPolicy": "default",
@@ -210,14 +266,31 @@
       "forcePolicy": "replace-managed",
       "migrationPolicy": "none",
       "governing": {
-        "capability": "sdp.skill-metadata.v1",
+        "capability": "sdp.skill-metadata.v2",
+        "schema": null
+      }
+    },
+    {
+      "id": "managed-skill-sdp-change-analysis",
+      "kind": "copied",
+      "source": "Skills/sdp-change-analysis/SKILL.md",
+      "destination": ".codex/skills/sdp-change-analysis/SKILL.md",
+      "ownership": "toolkit-managed",
+      "selectionPolicy": "default",
+      "installPolicy": "always",
+      "refreshPolicy": "upgrade-or-force",
+      "backupPolicy": "before-replace",
+      "forcePolicy": "replace-managed",
+      "migrationPolicy": "none",
+      "governing": {
+        "capability": "sdp.skill-metadata.v2",
         "schema": null
       }
     },
     {
       "id": "managed-skill-sdp-master",
       "kind": "copied",
-      "source": "Toolkit/skills/sdp-master/SKILL.md",
+      "source": "Skills/sdp-master/SKILL.md",
       "destination": ".codex/skills/sdp-master/SKILL.md",
       "ownership": "toolkit-managed",
       "selectionPolicy": "default",
@@ -227,14 +300,14 @@
       "forcePolicy": "replace-managed",
       "migrationPolicy": "none",
       "governing": {
-        "capability": "sdp.skill-metadata.v1",
+        "capability": "sdp.skill-metadata.v2",
         "schema": null
       }
     },
     {
       "id": "managed-skill-sdp-release",
       "kind": "copied",
-      "source": "Toolkit/skills/sdp-release/SKILL.md",
+      "source": "Skills/sdp-release/SKILL.md",
       "destination": ".codex/skills/sdp-release/SKILL.md",
       "ownership": "toolkit-managed",
       "selectionPolicy": "default",
@@ -244,14 +317,14 @@
       "forcePolicy": "replace-managed",
       "migrationPolicy": "none",
       "governing": {
-        "capability": "sdp.skill-metadata.v1",
+        "capability": "sdp.skill-metadata.v2",
         "schema": null
       }
     },
     {
       "id": "managed-skill-sdp-reviewer",
       "kind": "copied",
-      "source": "Toolkit/skills/sdp-reviewer/SKILL.md",
+      "source": "Skills/sdp-reviewer/SKILL.md",
       "destination": ".codex/skills/sdp-reviewer/SKILL.md",
       "ownership": "toolkit-managed",
       "selectionPolicy": "default",
@@ -261,14 +334,31 @@
       "forcePolicy": "replace-managed",
       "migrationPolicy": "none",
       "governing": {
-        "capability": "sdp.skill-metadata.v1",
+        "capability": "sdp.skill-metadata.v2",
+        "schema": null
+      }
+    },
+    {
+      "id": "managed-skill-sdp-steering",
+      "kind": "copied",
+      "source": "Skills/sdp-steering/SKILL.md",
+      "destination": ".codex/skills/sdp-steering/SKILL.md",
+      "ownership": "toolkit-managed",
+      "selectionPolicy": "default",
+      "installPolicy": "always",
+      "refreshPolicy": "upgrade-or-force",
+      "backupPolicy": "before-replace",
+      "forcePolicy": "replace-managed",
+      "migrationPolicy": "none",
+      "governing": {
+        "capability": "sdp.skill-metadata.v2",
         "schema": null
       }
     },
     {
       "id": "managed-skill-sdp-traceability",
       "kind": "copied",
-      "source": "Toolkit/skills/sdp-traceability/SKILL.md",
+      "source": "Skills/sdp-traceability/SKILL.md",
       "destination": ".codex/skills/sdp-traceability/SKILL.md",
       "ownership": "toolkit-managed",
       "selectionPolicy": "default",
@@ -278,14 +368,14 @@
       "forcePolicy": "replace-managed",
       "migrationPolicy": "none",
       "governing": {
-        "capability": "sdp.skill-metadata.v1",
+        "capability": "sdp.skill-metadata.v2",
         "schema": null
       }
     },
     {
       "id": "managed-skill-sdp-verifier",
       "kind": "copied",
-      "source": "Toolkit/skills/sdp-verifier/SKILL.md",
+      "source": "Skills/sdp-verifier/SKILL.md",
       "destination": ".codex/skills/sdp-verifier/SKILL.md",
       "ownership": "toolkit-managed",
       "selectionPolicy": "default",
@@ -295,14 +385,14 @@
       "forcePolicy": "replace-managed",
       "migrationPolicy": "none",
       "governing": {
-        "capability": "sdp.skill-metadata.v1",
+        "capability": "sdp.skill-metadata.v2",
         "schema": null
       }
     },
     {
       "id": "managed-skill-sdp-versioning",
       "kind": "copied",
-      "source": "Toolkit/skills/sdp-versioning/SKILL.md",
+      "source": "Skills/sdp-versioning/SKILL.md",
       "destination": ".codex/skills/sdp-versioning/SKILL.md",
       "ownership": "toolkit-managed",
       "selectionPolicy": "default",
@@ -312,14 +402,14 @@
       "forcePolicy": "replace-managed",
       "migrationPolicy": "none",
       "governing": {
-        "capability": "sdp.skill-metadata.v1",
+        "capability": "sdp.skill-metadata.v2",
         "schema": null
       }
     },
     {
       "id": "managed-skill-sdp-vertical-refactor",
       "kind": "copied",
-      "source": "Toolkit/skills/sdp-vertical-refactor/SKILL.md",
+      "source": "Skills/sdp-vertical-refactor/SKILL.md",
       "destination": ".codex/skills/sdp-vertical-refactor/SKILL.md",
       "ownership": "toolkit-managed",
       "selectionPolicy": "default",
@@ -329,14 +419,14 @@
       "forcePolicy": "replace-managed",
       "migrationPolicy": "none",
       "governing": {
-        "capability": "sdp.skill-metadata.v1",
+        "capability": "sdp.skill-metadata.v2",
         "schema": null
       }
     },
     {
       "id": "managed-skill-sdp-worker",
       "kind": "copied",
-      "source": "Toolkit/skills/sdp-worker/SKILL.md",
+      "source": "Skills/sdp-worker/SKILL.md",
       "destination": ".codex/skills/sdp-worker/SKILL.md",
       "ownership": "toolkit-managed",
       "selectionPolicy": "default",
@@ -346,7 +436,7 @@
       "forcePolicy": "replace-managed",
       "migrationPolicy": "none",
       "governing": {
-        "capability": "sdp.skill-metadata.v1",
+        "capability": "sdp.skill-metadata.v2",
         "schema": null
       }
     },
@@ -787,6 +877,11 @@
     },
     {
       "path": "Template/README.md",
+      "kind": "file",
+      "reason": "development-only"
+    },
+    {
+      "path": "Skills/README.md",
       "kind": "file",
       "reason": "development-only"
     }

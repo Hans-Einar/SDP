@@ -2,7 +2,7 @@
 """Read-only Codex catalog probe in disposable repositories; no agent/model turns."""
 import pathlib,tempfile,subprocess,json,selectors,shutil,time,hashlib
 ROOT=pathlib.Path(__file__).resolve().parents[3]
-out={'host':subprocess.check_output(['codex','--version'],text=True).strip(),'sourceCommit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'operation':'Local app-server initialize + skills/list only; no thread or model turn','cases':[]}
+out={'host':subprocess.check_output(['codex','--version'],text=True).strip(),'sourceCommit':'c4aed09944235f5da1d247001688f6f162ec124d','operation':'Local app-server initialize + skills/list only; no thread or model turn','cases':[]}
 with tempfile.TemporaryDirectory(prefix='sdp-skills-probe-') as d:
  base=pathlib.Path(d)
  def query(repo):
@@ -33,8 +33,11 @@ with tempfile.TemporaryDirectory(prefix='sdp-skills-probe-') as d:
  for mode in ['root-only','symlink-candidate','legacy-frontmatter','root-skill-only']:
   repo=base/mode;repo.mkdir();subprocess.run(['git','init','-q',str(repo)],check=True)
   p=repo/'Skills';p.mkdir()
-  if mode=='legacy-frontmatter':shutil.copytree(ROOT/'Toolkit/skills/sdp-master',p/'sdp-master')
-  else:shutil.copytree(ROOT/'Toolkit/skills_v2/sdp',p/'sdp')
+  source = 'Toolkit/skills/sdp-master' if mode=='legacy-frontmatter' else 'Toolkit/skills_v2/sdp'
+  name = 'sdp-master' if mode=='legacy-frontmatter' else 'sdp'
+  target = p/name;target.mkdir()
+  data = subprocess.check_output(['git','show','c4aed09:'+source+'/SKILL.md'],cwd=ROOT)
+  (target/'SKILL.md').write_bytes(data)
   if mode in ['symlink-candidate','legacy-frontmatter']:
    a=repo/'.agents/skills';a.mkdir(parents=True)
    name='sdp-master' if mode=='legacy-frontmatter' else 'sdp'

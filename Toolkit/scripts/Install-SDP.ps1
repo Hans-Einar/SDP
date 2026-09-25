@@ -1208,7 +1208,7 @@ if (($null -eq $skillFacts) -or ($skillFacts -isnot [pscustomobject]) -or
     throw "Installed-manifest generator must declare installed skill versions."
 }
 foreach ($skillProperty in $skillFacts.psobject.Properties) {
-    if ($skillProperty.Name -cnotmatch '^sdp-[a-z0-9]+(?:-[a-z0-9]+)*$') {
+    if ($skillProperty.Name -cnotmatch '^sdp(?:-[a-z0-9]+)*$') {
         throw "Installed-manifest generator has invalid skill ID '$($skillProperty.Name)'."
     }
     Assert-JsonString $skillProperty.Value "installed skill '$($skillProperty.Name)' version"
@@ -1449,7 +1449,7 @@ for ($entryIndex = 0; $entryIndex -lt $Entries.Count; $entryIndex++) {
         Assert-PortableRelativePath $source "entry '$entryId' source"
         if ($ownership -eq 'toolkit-managed') {
             $inAllowedSourceClass = (Test-PortablePathWithin $source 'Toolkit/payload' 'tree') -or
-                (Test-PortablePathWithin $source 'Toolkit/skills' 'tree')
+                (Test-PortablePathWithin $source 'Skills' 'tree')
         } else {
             $inAllowedSourceClass = Test-PortablePathWithin $source 'Template' 'tree'
         }
@@ -1829,6 +1829,23 @@ if (($InstalledToolkitVersion -ceq $ToolkitVersion) -and
     $InstalledAt = $PreviousInstalledAt
 } else {
     $InstalledAt = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
+}
+# An unreleased Toolkit can evolve its skill contract without changing its version.
+# Do not claim new skill facts while preserving old procedures on a normal repeat.
+if ((-not $BlockReason) -and (-not $IsUpgrade) -and (-not $ForceManagedFiles)) {
+    $expectedSkillPaths = @($InstalledGenerator.facts.skills.psobject.Properties | ForEach-Object { 'skills/' + $_.Name })
+    $actualSkillPaths = @($InstalledManifestDocument.ActualPaths | Where-Object { $_ -cmatch '^skills/' })
+    $skillContractChanged = ($expectedSkillPaths.Count -ne $actualSkillPaths.Count)
+    foreach ($skill in $InstalledGenerator.facts.skills.psobject.Properties) {
+        $skillPath = 'skills/' + $skill.Name
+        if (($actualSkillPaths -cnotcontains $skillPath) -or
+            ((Get-StrictYamlString $InstalledManifestDocument $skillPath 'installed skill') -cne [string]$skill.Value)) {
+            $skillContractChanged = $true
+        }
+    }
+    if ($skillContractChanged) {
+        Throw-InstallFailure 'install-manifest-invalid' 'Installed skill inventory/version differs at the same Toolkit version. Review -PlanJson -ForceManagedFiles, then apply -ForceManagedFiles to refresh with backups; no files were changed.'
+    }
 }
 $SourceCommit = Get-RepositorySourceCommit
 

@@ -32,7 +32,7 @@ WINDOWS_RESERVED_SEGMENT_PATTERN = re.compile(
     re.IGNORECASE,
 )
 WINDOWS_FORBIDDEN_PATH_CHARACTERS = frozenset('<>:"|?*~')
-SKILL_ID_PATTERN = re.compile(r"^sdp-[a-z0-9]+(?:-[a-z0-9]+)*$")
+SKILL_ID_PATTERN = re.compile(r"^sdp(?:-[a-z0-9]+)*$")
 
 SUPPORTED_PROJECT_MANIFEST_SCHEMAS = frozenset({"1.0"})
 SUPPORTED_INSTALLED_MANIFEST_SCHEMAS = frozenset({"1.0"})
@@ -513,6 +513,25 @@ def parse_front_matter(path: Path) -> dict[str, Any]:
     return data
 
 
+def parse_skill_metadata(path: Path) -> dict[str, Any]:
+    """Normalize native metadata v2; v1 remains readable for installed history."""
+    front = parse_front_matter(path)
+    if "metadata" not in front:
+        return front
+    meta = front["metadata"]
+    if not isinstance(meta, dict) or any(not isinstance(v, str) for v in meta.values()):
+        raise ValueError(f"{path}: native metadata values must be strings")
+    if front.get("name") != meta.get("skillId") or not isinstance(front.get("name"), str):
+        raise ValueError(f"{path}: native name must equal skillId")
+    if not isinstance(front.get("description"), str) or not front["description"].strip():
+        raise ValueError(f"{path}: native description must be non-empty")
+    if any(key in front for key in ("skillId", "skillVersion", "capabilities")):
+        raise ValueError(f"{path}: mixed v1/v2 metadata is ambiguous")
+    result = dict(meta)
+    result["capabilities"] = [v.strip() for v in meta.get("capabilities", "").split(",") if v.strip()]
+    return result
+
+
 def release_sections(text: str) -> list[tuple[str, str]]:
     headings = list(re.finditer(r"(?m)^## \[([^\]]+)\](?: - \d{4}-\d{2}-\d{2})?\s*$", text))
     sections: list[tuple[str, str]] = []
@@ -710,10 +729,13 @@ def validate_skill_metadata(
     expected_skill_id: str,
     expected_version: str,
     toolkit_version: str,
+    *, require_native: bool = False,
 ) -> list[str]:
     errors: list[str] = []
     try:
-        metadata = parse_front_matter(path)
+        if require_native and "metadata" not in parse_front_matter(path):
+            return [f"{path}: native metadata required by current skill capability"]
+        metadata = parse_skill_metadata(path)
     except ValueError as exc:
         return [str(exc)]
     if metadata.get("skillId") != expected_skill_id:
@@ -1486,7 +1508,8 @@ def validate_project(project_root: Path, schema_root: Path | None = None) -> lis
                         errors.append(f"Installed skill is missing: {skill_path}")
                         continue
                     errors += validate_skill_metadata(
-                        skill_path, skill_id, expected_version, toolkit_version
+                        skill_path, skill_id, expected_version, toolkit_version,
+                        require_native="sdp.skill-metadata.v2" in installed_manifest.get("capabilities", [])
                     )
 
     trace_root = sdp_root / "Traceability"
@@ -1985,7 +2008,7 @@ def validate_installation_contract(
     allowed_source_roots = (
         "Toolkit/payload/",
         "Template/",
-        "Toolkit/skills/",
+        "Skills/",
     )
     for index, entry in enumerate(entries):
         label = f"Toolkit/SDP-install.manifest.json.entries[{index}]"
@@ -2082,7 +2105,7 @@ def validate_installation_contract(
     inventory_roots = (
         repo / "Toolkit/payload",
         repo / "Template",
-        repo / "Toolkit/skills",
+        repo / "Skills",
     )
     expected_sources = {
         path.relative_to(repo).as_posix()
@@ -2189,19 +2212,19 @@ def validate_repository(repo: Path, base_ref: str | None = None) -> list[str]:
 
     expected_skills = manifest.get("skills", {})
     actual_skill_dirs = {
-        path.parent.name for path in (repo / "Toolkit/skills").glob("*/SKILL.md")
+        path.parent.name for path in (repo / "Skills").glob("*/SKILL.md")
     }
     if isinstance(expected_skills, dict) and set(expected_skills) != actual_skill_dirs:
         errors.append(
-            "Skill set differs between manifest and Toolkit/skills: "
+            "Skill set differs between manifest and Skills: "
             f"manifest={sorted(expected_skills)}, files={sorted(actual_skill_dirs)}"
         )
     if isinstance(expected_skills, dict):
         for skill_id, expected_version in sorted(expected_skills.items()):
-            path = repo / "Toolkit/skills" / skill_id / "SKILL.md"
+            path = repo / "Skills" / skill_id / "SKILL.md"
             if isinstance(expected_version, str) and isinstance(toolkit.get("version"), str):
                 errors += validate_skill_metadata(
-                    path, skill_id, expected_version, toolkit["version"]
+                    path, skill_id, expected_version, toolkit["version"], require_native=True
                 )
 
     errors += validate_installation_contract(repo, manifest)

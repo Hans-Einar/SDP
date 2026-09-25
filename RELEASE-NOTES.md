@@ -18,6 +18,8 @@ Release-Date: unreleased
 
 ### Changed
 
+- [SK1] One canonical root Skills/ collection, native metadata, profile-aware routing and complete installed references replace both maintained legacy collections.
+
 - [REL-0.2.0] Canonical skills now carry machine-readable version metadata.
 - [REL-0.2.0] Traceability templates model releases and bounded Fix records as first-class entities.
 - [REL-0.2.0] Toolkit-managed AGENTS and Framework guidance now require release/version awareness.
@@ -33,6 +35,8 @@ Release-Date: unreleased
 - [SPS-001] Project validation now enforces governed-path resolution, canonical YAML names, reciprocal traceability, Ledger subjects and coherent publication identities while accepting the pinned supported `gh-sdp` extension surface.
 
 ### Migration
+
+- [SK1] Existing installed skill paths remain .codex/skills. Same-Toolkit-version skill contract changes require reviewed ForceManagedFiles application with backups; unforced transitions fail before writes.
 
 - [REL-0.2.0] Existing consuming projects gain missing manifests and release templates without replacing populated project-owned files.
 - [REL-0.2.0] Managed-file changes are backed up before replacement; unsupported manifest schemas stop safely.

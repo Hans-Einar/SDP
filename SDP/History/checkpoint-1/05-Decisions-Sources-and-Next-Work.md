@@ -68,7 +68,7 @@ flowchart TD
 | [ControlSet/layer study](../../../SDL/docs/studies/SDL-ControlSets-Layer-Boundaries-and-Data-Access.md) | Prior-art evidence, generated catalogs, layer concerns and data-access distinctions. | Its combined Commands-and-Values recommendation is now an alternative under reconsideration. |
 | [How SDP Works](../../../docs/process/How-SDP-Works.md) | Repository evidence, progressive design, bounded delivery and traceability. | Describes the existing Toolkit process, not an adopted new SDP specification. |
 | [Feature governance proposal](../../../docs/process/Feature-Governance-And-SDP-2.0.md) | Durable intent, deliberate integration and lifecycle distinctions. | Historical SDP version/role proposals are not automatically inherited by the new concept. |
-| [Skill candidates](../../../Toolkit/skills_v2/README.md) | Context recovery, design assessment and truthful evidence. | Candidate/not installed; this checkpoint does not update or activate skills. |
+| [Skill candidates](https://github.com/Hans-Einar/SDP/blob/aabb359559eaa807e3ecc3217d1f6b5be6cce96d/Toolkit/skills_v2/README.md) | Context recovery, design assessment and truthful evidence. | Candidate/not installed; this checkpoint does not update or activate skills. |
 
 Read the checkpoint first for the current discussion, then follow a source when
 its detail or rationale matters. Preserve prior records rather than deleting

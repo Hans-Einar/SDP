@@ -103,3 +103,13 @@ supported.
 
 The ordinary GitHub source archive is sufficient for this contract. No custom
 release asset is required unless future verification demonstrates a real gap.
+
+## Native skills transition
+
+Canonical role sources now live in root Skills/. Installed copies retain
+.codex/skills; all shared references are explicit inventory entries. The bare
+sdp entrypoint routes by the actual project profile. For an existing installation
+with the same Toolkit version but older skill facts, inspect -PlanJson with
+-ForceManagedFiles before applying the same option. Without it the installer
+fails before writes; with it, existing backup rules preserve changed files.
+This bounded transition does not migrate a project's process directories.

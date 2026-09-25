@@ -20,10 +20,10 @@ review SDP skills, adopt a canonical root Skills/ collection and make the select
 skills usable by agents in this project. This card registers that review; it does
 not promote drafts, move files or activate anything now.
 
-## Evidence and questions for the Scrum
+## Evidence and questions recorded before the Scrum
 
-[Toolkit/skills](../../../Toolkit/README.md) is the current versioned install
-source; [Toolkit/skills_v2](../../../Toolkit/skills_v2/README.md) explicitly remains
+At registration, Toolkit/skills was the versioned install
+source; [Toolkit/skills_v2](https://github.com/Hans-Einar/SDP/blob/aabb359559eaa807e3ecc3217d1f6b5be6cce96d/Toolkit/skills_v2/README.md) was explicitly
 a draft evaluation collection. Frozen bootstrap copies are historical evidence.
 Compare the two current collections against the adopted five-phase process,
 shared board, project-management ledger, system ownership and English policy.

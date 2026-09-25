@@ -501,6 +501,82 @@
       "assertions": {
         "planningPreservesTree": true
       }
+    },
+    {
+      "id": "same-version-skill-contract-unforced",
+      "categories": [
+        "error"
+      ],
+      "sourceMode": "archive-no-git",
+      "options": {
+        "initializeProjectStructure": false,
+        "forceManagedFiles": false
+      },
+      "before": {
+        "profile": "installed-default",
+        "directories": [],
+        "files": [
+          {
+            "path": ".codex/skills/sdp-worker/SKILL.md",
+            "contentUtf8": "Prior customized worker instructions.\n"
+          },
+          {
+            "path": "SDP/Framework/installed-toolkit.manifest.yaml",
+            "contentUtf8": "schemaVersion: \"1.0\"\ntoolkitVersion: \"0.2.0\"\nframeworkVersion: \"1.0.0\"\nagentsContractVersion: \"1.0.0\"\ninstallerVersion: \"0.2.0\"\ntoolkitInstalledAt: \"2026-01-01T00:00:00Z\"\nsourceCommit: null\nskills:\n  sdp-worker: \"1.0.0\"\ncapabilities:\n  - sdp.skill-metadata.v1\n"
+          }
+        ]
+      },
+      "expected": {
+        "kind": "fatal",
+        "path": "expected/same-version-skill-contract-unforced.failure.json"
+      },
+      "assertions": {
+        "planningPreservesTree": true
+      }
+    },
+    {
+      "id": "same-version-skill-contract-force",
+      "categories": [
+        "upgrade"
+      ],
+      "sourceMode": "archive-no-git",
+      "options": {
+        "initializeProjectStructure": false,
+        "forceManagedFiles": true
+      },
+      "before": {
+        "profile": "installed-default",
+        "directories": [],
+        "files": [
+          {
+            "path": ".codex/skills/sdp-worker/SKILL.md",
+            "contentUtf8": "Prior customized worker instructions.\n"
+          },
+          {
+            "path": "SDP/Framework/installed-toolkit.manifest.yaml",
+            "contentUtf8": "schemaVersion: \"1.0\"\ntoolkitVersion: \"0.2.0\"\nframeworkVersion: \"1.0.0\"\nagentsContractVersion: \"1.0.0\"\ninstallerVersion: \"0.2.0\"\ntoolkitInstalledAt: \"2026-01-01T00:00:00Z\"\nsourceCommit: null\nskills:\n  sdp-worker: \"1.0.0\"\ncapabilities:\n  - sdp.skill-metadata.v1\n"
+          }
+        ]
+      },
+      "expected": {
+        "kind": "applicable-plan",
+        "path": "expected/same-version-skill-contract-force.plan.json"
+      },
+      "assertions": {
+        "planningPreservesTree": true,
+        "afterApply": {
+          "utf8Contains": [
+            {
+              "path": ".codex/skills/sdp-worker/SKILL.md",
+              "value": "name: sdp-worker"
+            },
+            {
+              "path": "SDP/Framework/installed-toolkit.manifest.yaml",
+              "value": "sdp-worker: \"2.0.0\""
+            }
+          ]
+        }
+      }
     }
   ]
 }

@@ -95,3 +95,12 @@ no mandatory wrapper card or Sprint. Optional SprintId/ScrumId metadata groups
 cards without copying/moving them into sprint-specific directories. Actual sprint
 start activates its selected backlog cards as ready with recorded events; retain
 existing CardState meanings. Current metadata and ledger/record membership must agree.
+
+## Project skills
+
+For SDP-governed study, implementation, review or Maintenance, load
+Skills/sdp/SKILL.md and only the relevant roles it routes to. Preserve an explicitly
+assigned role and current host/session delegation rules. A trivial factual question
+or unrelated task does not need SDP lifecycle work. Root Skills/ is the only
+maintained source; .agents/skills contains relative discovery symlinks. Do not
+create a second collection or imply that discovery proves actual loading.
