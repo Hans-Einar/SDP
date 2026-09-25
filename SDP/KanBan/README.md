@@ -39,7 +39,7 @@
 | KB-SDP-026 | CodeReview | completed | [Consumer contract and end-to-end delivery review](completed/%23026--CodeReview--SDPTool-consumer-contract-review.md) |
 | KB-SDP-027 | Study | completed | [Scrum for skills consolidation and project activation](completed/%23027--Study--Skills-review-and-project-activation.md) |
 | KB-SDP-028 | Study | completed | [Versioned SDP installation and upgrades](completed/%23028--Study--Installer-upgrade-and-versioned-layout.md) |
-| KB-SDP-029 | Proposal | backlog | [Typed plans and a shared Planning skill](backlog/%23029--Proposal--Typed-plans-and-planning-skill.md) |
+| KB-SDP-029 | Proposal | active | [Typed plans and a shared Planning skill](active/%23029--Proposal--Typed-plans-and-planning-skill.md) |
 
 ## Purpose and authority
 
@@ -92,7 +92,7 @@ collisions before committing; never overwrite another registration.
 Use the [card template](Card-template.md). Metadata is a visible Markdown table
 immediately below the title, with `Field` and `Value` columns. Keep field names
 `id`, `project`, `type`, `created`, `source` and optional `next_review`, `primary`,
-`tags`, `SprintId`, `ScrumId`, `Systems`, plus mandatory `CardState`. Do not duplicate metadata in YAML frontmatter. The ledger remains
+`tags`, `SprintId`, `ScrumId`, `Systems`, optional `PlanId`, plus mandatory `CardState`. Do not duplicate metadata in YAML frontmatter. The ledger remains
 JSON and owns event history.
 
 Each primary card owns one coherent need. A Ref has its own ID/status, `primary`
@@ -108,7 +108,7 @@ status does not automatically change local KanBan status.
 | Directory | Meaning and requirements |
 | --- | --- |
 | backlog | Registered, awaiting prioritization or clarification; specify the next review |
-| active | Selected, bounded work; specify scope, owner and completion criteria |
+| active | Selected plan execution; specify scope, owner and completion criteria |
 | onHold | Blocked or deferred; specify reason, restart condition and review date |
 | completed | Agreed outcome achieved, with linked decision/delivery/evidence |
 | canceled | Previously relevant or selected work deliberately stopped; explain why |
@@ -133,8 +133,9 @@ worklog. [History and diff](History.md) connects log entries, ledger events and
 Git revisions, including reviews without a status change. Git stores content;
 KanBan stores processing history; Traceability stores implementation evidence.
 
-At startup, read the board and affected Refs, select bounded work and activate
-it with explicit scope. Record scope-changing discoveries before changing focus.
+At startup, read the board and affected Refs. Use the [plan contract](../ProjectManagement/Plans.md):
+keep planning in backlog/queued, then activate the card when its authorized plan
+executes. A planning-only Study may close with its plan and explicit successor. Record scope-changing discoveries before changing focus.
 At milestones, update outcomes, ledger and references. Review backlog/onHold
 before the next phase and at the agreed review date. Decide the next work,
 defer with a new date, cancel, supersede or mark irrelevant. The initial
@@ -231,3 +232,10 @@ For a quick text search: `rg '^\| CardState \|' backlog active`. K5's
 [CLI](../../Toolkit/scripts/cli/README.md) lists grouped states without mutation.
 Old cards without CardState are ignored by the lister and should gain metadata
 when maintained; an empty result is an error. New maintained cards require it.
+
+## Typed-plan adoption
+
+A card normally produces a plan; execution cards stay linked through delivery.
+Use optional PlanId for the selected authoritative plan. Historical card states
+retain their original meaning. Sprint may group plans as well as direct cards;
+see [Plans](../ProjectManagement/Plans.md) for the adopted contract.

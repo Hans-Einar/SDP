@@ -1,22 +1,21 @@
 # Collaboration and Git traceability
 
-Owner decision of 2026-09-22 for SDL/SDUI development:
+Owner decisions of 2026-09-22 and 2026-09-25 (KB-SDP-029):
 
-- Use one branch per phase and a separate commit for every completed milestone.
-- Create each phase branch from the last commit of the preceding phase. Preserve
-  phase branches so their deliveries can be reviewed separately.
-- The combined target branch is `sdp-vNow`, originally at
-  `9ad432407004080dd7f4f0ab06d107523f4316fd`. Do not develop directly on it.
-- Include the phase/milestone ID in commit messages, with the concrete delivery
-  and relevant verification in the body. Do not label unfinished work delivered.
-- Check Git status before branching and staging. Stage only the milestone's work;
-  preserve unrelated local changes and exclude generated caches.
-- Update the implementation plan and evidence at each milestone. Generated SDL
-  viewpoints must come from the SDL tool and validated model facts.
-- Open a combined PR against `sdp-vNow` when the agreed work is ready. Local phase
-  branches and milestone commits are authorized; merging is not. The owner's
-  addition of 2026-09-22 authorizes pushing to origin after each completed phase
-  in the same session.
+- Follow the selected plan's explicit BranchPolicy and CommitPolicy. Small plans
+  normally use the current working branch with commits per phase or milestone.
+  Large implementation plans may select stacked phase branches and milestone
+  commits. Preserve historical plans' already selected branch commitments.
+- Do not develop directly on the combined target branch sdp-vNow (originally
+  9ad432407004080dd7f4f0ab06d107523f4316fd). Create a working branch when needed.
+- Include the phase/milestone ID and concrete delivery in commits. Update plan
+  and evidence at each delivery; never label unfinished work delivered.
+- Check Git status before branching/staging. Preserve unrelated changes and
+  exclude caches. Generated SDL viewpoints must come from validated model facts.
+- Existing owner authorization permits phase pushes to origin and a combined
+  PR against sdp-vNow when agreed work is ready. Merging remains unauthorized.
+- Read the [plan contract](SDP/ProjectManagement/Plans.md). For plan creation,
+  selection or revision, load Skills/sdp-planning/SKILL.md after the SDP entrypoint.
 
 The [development history](SDP/Development-Branch-Stack.md) describes the branch
 stack and handling of earlier uncommitted work. Read applicable subdirectory

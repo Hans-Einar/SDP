@@ -1,6 +1,6 @@
-# Shared project management — local profile 0.1
+# Shared project management — profile 0.2
 
-Owner decision: 2026-09-25. This is the local `sdp-project-management/0.1`
+Owner decision: 2026-09-25. This is the adopted `sdp-project-management/0.2`
 profile, not a new published version of the SDP Toolkit or KanBan distribution.
 
 ## One workflow, two histories with different purposes
@@ -36,7 +36,8 @@ honestly; a review recommendation alone does not authorize it.
 
 ## Optional sprint grouping
 
-A Sprint groups explicitly selected cards under a goal. Use one concise record
+A Sprint groups selected plans and/or direct cards under a goal; see [Plans](Plans.md).
+The paragraphs below retain the direct-card path and historical membership rules. Use one concise record
 in Sprints, listing membership/goal and exceptions; do not copy the cards there.
 Before start, cards remain backlog (possibly queued). On actual Sprint start,
 move the selected backlog cards to active/ready together, appending a transition
@@ -104,3 +105,14 @@ Validate with `python3 SDP/ProjectManagement/validate.py` and its negative tests
 Schema validation alone cannot prove that the written work was actually done.
 Do not infer activity from mtime, count duplicate archive events or run new writers
 against the historical roots. The generated-state graph/history UI is still backlog.
+
+## Typed plans (0.2)
+
+[Plans](Plans.md) is the current planning authority. New typed work uses management
+payload 0.2: kind Maintenance with planType MaintenancePlan, or kind Plan with
+one of the six planType values. Plan IDs use PLAN-SDP-<four or more digits>.
+Existing untyped records and all payload 0.1 event bytes remain supported.
+Typed plan identity/type cannot change during its lifecycle. Sprint payload 0.2
+retains members for direct cards and adds plans for plan IDs; both snapshots
+are required, and at least one must be nonempty. Document Plans and each plan's
+SprintId must agree with history. No new ledger or CardState is introduced.

@@ -160,4 +160,4 @@ No live consumer was upgraded. Earlier worklog statements describe their dated
 planning state, not the current implementation outcome.
 
 The later typed-plan and Planning-skill direction is tracked separately in
-[KB-SDP-029](../backlog/%23029--Proposal--Typed-plans-and-planning-skill.md).
+[KB-SDP-029](../active/%23029--Proposal--Typed-plans-and-planning-skill.md).

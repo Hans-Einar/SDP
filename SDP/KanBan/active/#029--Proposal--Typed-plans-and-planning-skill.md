@@ -5,10 +5,10 @@
 | id | KB-SDP-029 |
 | project | SDP |
 | type | Proposal |
-| CardState | backlog |
+| CardState | in-progress |
 | created | 2026-09-25T15:19:14Z |
 | source | Owner conversation 2026-09-25 during MAINT-SDP-0003 |
-| next_review | After MAINT-SDP-0003 |
+| next_review | At MAINT-SDP-0004 milestones |
 | tags | process, planning, skills |
 
 ## Owner direction
@@ -51,3 +51,9 @@ branch commitments.
 Registered during IU2. MAINT-SDP-0003 continues using its already selected
 stacked phase branches and milestone commits. This proposal does not restart
 that maintenance or retrospectively change existing record states.
+
+## Selected execution
+
+The owner authorized planning and execution. [MAINT-SDP-0004](../../Maintenance/PL1/Plan.md)
+owns the MaintenancePlan; this card follows its execution through completion.
+2026-09-25T16:57:20Z — plan selected; CardState backlog → in-progress.
