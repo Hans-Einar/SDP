@@ -105,3 +105,7 @@ T0 follows K8 94eb052 on sdp/phase-t0-sdptool-foundation. T0-M1 establishes
 Toolkit/SDPTool, generalizes navigation scope and separates XFMD-owned work;
 KB-SDP-018 captures the wider Toolkit audit.
 [Plan and evidence](../Toolkit/SDPTool/Implementation-Plan.md).
+
+T0-M2 records the verified existing Go/Rust document pipeline and a proposed
+early direct-design-preview producer slice. XFMD KB-XFMD-015 owns its native
+consumer; existing diagram generation is reused, not reimplemented.

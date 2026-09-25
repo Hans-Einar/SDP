@@ -35,6 +35,18 @@ The earlier suggestion to handle discovery in separate cards is superseded.
 The owner's subtab/tree direction replaces the XFMD companion's provisional
 single generated-navigator panel sketch for planning here.
 
+## Early standalone design preview
+
+Owner discussion on 2026-09-25 proposes direct .design preview before the full
+native tree. Add a bounded sdptool facade operation over the existing Go SDL
+parser/projector/document packages; standalone supported files need not wait for
+project discovery. Preserve Mermaid export and the current SDL-specific SVG
+symbols. Exact command name, default views and unsaved-buffer input contract are
+to be defined. Native source/preview integration belongs to
+[KB-XFMD-015](../../../../../xfmd-sdl-navigation/Agents/KanBan/backlog/%23015--Proposal--SDL-design-file-preview.md).
+The [current pipeline guide](../../../../Toolkit/SDPTool/Navigation-and-Design-Preview.md)
+records existing tools, URI, temporary files and the proposed early slice.
+
 ## Project discovery and common commands
 
 Owner examples, still proposed commands:
@@ -204,3 +216,4 @@ these cards. Queued means selected next for consideration, not currently in prog
 | --- | --- | --- | --- |
 | 2026-09-25T01:41:26Z | Codex; EVT-KB-SDP-000072 | Consolidated full scope of #002/#016 and captured native tab/tree direction; queue transferred and SDL/SDUI Refs updated. | N1 contract, then bounded implementation; see the [all-card review](../../../Maintenance/K8/Plan.md). |
 | 2026-09-25T09:09:52Z | Codex; EVT-KB-SDP-000083 | Established SDPTool source home/plan, generalized tree scope and updated XFMD companion. | T1 discovery/delegation contract next; no executable delivered. |
+| 2026-09-25T09:35:14Z | Codex; EVT-KB-SDP-000084 | Verified existing generation and recorded early standalone preview plus XFMD-owned consumer card. | Define the bounded producer operation; no Rust rewrite or native implementation selected. |

@@ -24,6 +24,9 @@ Recognition checks the selected SDP area, then its SDP child. Define validity
 against the reconciled manifest contract, not directory existence alone. Do not
 infer a parent project. Keep monorepo and separately checked-out projects equivalent.
 
+For the existing tools, URI scheme and temporary-file lifecycle, read
+[Current navigation and design preview](Navigation-and-Design-Preview.md).
+
 ## Navigation responsibility
 
 The service must describe all supported groupable concepts and relationships as
