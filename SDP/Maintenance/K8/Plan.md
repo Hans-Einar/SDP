@@ -37,7 +37,7 @@ remains active at non-blocking gate-review.
 
 ## Ownership and external handoff
 
-The [consolidated card](../../Agents/KanBan/active/%23017--Proposal--sdptool-and-project-navigation.md)
+The [consolidated card](../../KanBan/active/%23017--Proposal--sdptool-and-project-navigation.md)
 is the current producer-side planning entry. XFMD's separate KB-XFMD-014 was read
 for protocol/consumer alignment, but that repository and its card are not edited
 here. Its old bare file URL for #016 now points to the previous location; the

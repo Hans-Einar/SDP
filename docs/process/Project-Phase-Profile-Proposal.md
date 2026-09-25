@@ -12,7 +12,7 @@ these five numbered phases in SDP-vNow/SDP, starting with SDPTool. The local
 migration remains separate; local adoption does not select discovery metadata.
 
 Original submission: **proposed for owner review**, R3-M1, 2026-09-24. Primary card:
-[KB-SDP-001](../../SDP/Agents/KanBan/completed/%23001--Proposal--Project-structure.md).
+[KB-SDP-001](../../SDP/KanBan/completed/%23001--Proposal--Project-structure.md).
 This is the single proposed replacement for the numbered directory profile.
 The current [installation manifest](../../Toolkit/SDP-install.manifest.json)
 continues to distribute 01–07; this document does not change installed destinations.
@@ -62,7 +62,7 @@ Use plain English Markdown for stakeholder descriptions, actor kind and stories
 until the required SDL syntax is adopted. Current actor/usecase/feature facts may
 already use design-core 0.5. Do not create apparently executable .design files with
 unsupported stakeholder, userstory, comment, links, include or shortcut syntax.
-[KB-SDL-001](../../SDL/SDP/Agents/KanBan/backlog/%23001--Proposal--Requirements-narrative.md)
+[KB-SDL-001](../../SDP/KanBan/backlog/%23001--SDL--Proposal--Requirements-narrative.md)
 owns that language work; existing candidates remain examples, not alternate syntax.
 The proposed Actors/UserStories filenames become active templates only with a
 supported profile and parser-tested examples.
@@ -103,5 +103,13 @@ until that versioned change passes its acceptance tests.
 
 [Project discovery and extraction proposal](Project-Discovery-and-Extraction-Proposal.md)
 completes KB-SDP-001's remaining design package. The proposed next implementation
-planning item is [KB-SDP-017](../../SDP/Agents/KanBan/active/%23017--Proposal--sdptool-and-project-navigation.md),
+planning item is [KB-SDP-017](../../SDP/KanBan/active/%23017--Proposal--sdptool-and-project-navigation.md),
 limited first to discovery and view-ip integration, rather than all slice synthesis.
+
+## Local management placement update — 2026-09-25
+
+PM1 adopts one operational SDP/KanBan board and SDP/ProjectManagement ledger for
+SDP, SDL and SDUI, with Scrum reviews under SDP/Agents/Scrum. This supersedes
+separate language-board placement for this project. It does not change frozen
+consumer versions or installer/template destinations. The
+[current profile](../../SDP/ProjectManagement/README.md) owns that local contract.

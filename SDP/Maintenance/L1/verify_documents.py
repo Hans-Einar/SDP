@@ -44,7 +44,8 @@ def main():
         ledger = name.endswith('/Ledger.ndjson')
         if frozen or machine_evidence or archive or ledger:
             before = subprocess.check_output(['git', 'show', BASE + ':' + name], cwd=ROOT)
-            current = (ROOT / name).read_bytes()
+            relocated = {item['source']: item['archive'] for item in json.loads((ROOT / 'SDP/ProjectManagement/History/import.json').read_text())['imports']}
+            current = (ROOT / relocated.get(name, name)).read_bytes()
             assert current.startswith(before) if ledger else current == before, name
             preserved += 1
     generated = 0

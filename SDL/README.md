@@ -1,6 +1,6 @@
 # SystemDesignLanguage
 
-The [documentation map](docs/README.md) distinguishes active profiles, studies and historical snapshots. [SDL KanBan](SDP/Agents/KanBan/README.md) tracks further language proposals. R1 moved sources from SystemDesignLanguage to SDL, retaining the Go module identity `github.com/Hans-Einar/SDP/SystemDesignLanguage/go`. Separate repository/module extraction has not occurred.
+The [documentation map](docs/README.md) distinguishes active profiles, studies and historical snapshots. [SDL KanBan](../SDP/KanBan/README.md) tracks further language proposals. R1 moved sources from SystemDesignLanguage to SDL, retaining the Go module identity `github.com/Hans-Einar/SDP/SystemDesignLanguage/go`. Separate repository/module extraction has not occurred.
 
 The SDL tool is implemented in Go and generates Markdown/Mermaid/SVG viewpoints from validated model facts. G1–G6 are delivered within explicit profile boundaries. The [dated checkpoint #1 implementation snapshot](../SDP/History/checkpoint-1/11-Go-Implementation-and-Navigation.md) distinguishes this from broader candidates and future Ponsse production logic.
 

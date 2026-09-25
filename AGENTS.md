@@ -48,8 +48,8 @@ percent-encode spaces and reserved URL characters.
 
 ## KanBan for ideas and scope changes
 
-Read the [KanBan workflow](SDP/Agents/KanBan/README.md) and relevant project board
-before new work. SDP, SDL and SDUI have their own boards registered there.
+Read the [KanBan workflow](SDP/KanBan/README.md) and relevant project board
+before new work. One shared board retains SDP, SDL and SDUI identity namespaces.
 Record new ideas and out-of-scope findings in a primary card, with Ref cards
 where needed, before changing direction. Registration alone does not authorize
 implementation. Update the card, append-only KanBan ledger and links together
@@ -74,11 +74,24 @@ to future work. Use kanban status/state for listing; there is no separate gate f
 
 Owner decision of 2026-09-25: SDL, SDUI and SDPTool are three separate software
 systems documented in the shared root SDP area. Do not create a full parallel
-process tree per language/system. Existing SDL/SDUI board locations are retained
-until the explicit migration preserves IDs, ledger history and links. Group
+process tree per language/system. The shared board is SDP/KanBan; earlier SDL/SDUI board histories are frozen
+under SDP/ProjectManagement/History with a byte-preserving import map. Group
 architecture/design sources by system and actual container responsibility;
 shared libraries are not automatically runtime containers. System is a selected
 design concept, not yet implemented syntax in design-core 0.5.
 XFMD is a collaborating system with its own SDP area in its repository. Its
 process bootstrap and adoption card do not authorize XFMD application changes
 from this workstream. See SDP/03--Architecture/System-Boundaries-study.md.
+
+## Project-management history and optional sprints
+
+Owner decision of 2026-09-25: read SDP/ProjectManagement/README.md before lifecycle
+work. Its Ledger.ndjson is the only writable history for cards, Scrum, Sprint,
+Maintenance, CodeReview and Refactor. Do not append management-only transitions
+to Traceability. System design/code evidence references management IDs/events;
+new traceability IDs use the affected system prefix. Preserve old IDs/ledger bytes.
+Scrum reviews live in SDP/Agents/Scrum. A review can select Maintenance directly;
+no mandatory wrapper card or Sprint. Optional SprintId/ScrumId metadata groups
+cards without copying/moving them into sprint-specific directories. Actual sprint
+start activates its selected backlog cards as ready with recorded events; retain
+existing CardState meanings. Current metadata and ledger/record membership must agree.

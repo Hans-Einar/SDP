@@ -1,6 +1,6 @@
 # SDL — documentation map and authority
 
-SDL code now lives in SDL/go. R1 moved documentation by responsibility; this is not a new language version. The [Go README](../go/README.md) and active parser profiles define executable scope. [SDL KanBan](../SDP/Agents/KanBan/README.md) contains proposals that are not yet language rules.
+SDL code now lives in SDL/go. R1 moved documentation by responsibility; this is not a new language version. The [Go README](../go/README.md) and active parser profiles define executable scope. [SDL KanBan](../../SDP/KanBan/README.md) contains proposals that are not yet language rules.
 
 ## Active profiles and boundaries
 

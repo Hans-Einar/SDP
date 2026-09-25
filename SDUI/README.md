@@ -1,6 +1,6 @@
 # SDUI — user interface prototyping
 
-The [documentation map](docs/README.md) distinguishes current profiles, implementation, design background and dated references. [SDUI KanBan](SDP/Agents/KanBan/README.md) tracks ideas and local effects of SDP planning; cards do not change the implemented language profile.
+The [documentation map](docs/README.md) distinguishes current profiles, implementation, design background and dated references. [SDUI KanBan](../SDP/KanBan/README.md) tracks ideas and local effects of SDP planning; cards do not change the implemented language profile.
 
 SDUI 0.2 is implemented in Go: parser/AST, validation, normalization, relative layout, SVG, structural console/Markdown dumps, runtime and Fyne host with model reload. SDL bindings and Go generation share these models/runtimes. No active Python frontend or 0.1 compatibility path remains.
 

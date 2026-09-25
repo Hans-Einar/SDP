@@ -1,0 +1,36 @@
+# SDL: requirements models in the SDP process
+
+| Field | Value |
+| --- | --- |
+| id | KB-SDP-006 |
+| CardState | completed |
+| project | SDP |
+| type | Ref |
+| created | 2026-09-23T18:25:13Z |
+| source | owner-conversation-2026-09-23 |
+| next_review | 2026-09-30 |
+| primary | KB-SDL-001 |
+
+Registered from the owner conversation on 2026-09-23. The timestamp records registration, not a reconstructed discussion time. The directory and ledger record lifecycle status.
+
+Primary card: [KB-SDL-001 — requirements narrative](../backlog/%23001--SDL--Proposal--Requirements-narrative.md).
+
+## Local impact
+
+Requirements templates must use an adopted SDL profile for stakeholders, actors, user stories and use cases. Do not distribute syntax sketches as parser-approved project templates. Coordinate with [KB-SDP-001](../completed/%23001--Proposal--Project-structure.md) before renumbering or template migration.
+
+## Handling
+
+Resolve template needs and record the language-profile dependency in the implementation plan. Closing local handling does not mean the SDL extension is implemented.
+
+## Backlog review — 2026-09-25
+
+Retained as the local Ref to KB-SDL-001. Requirements templates need an adopted narrative profile; browsing existing models does not depend on adopting the sketches.
+
+Recorded 2026-09-25T01:41:26Z, Codex, EVT-KB-SDP-000078. CardState remains backlog.
+
+## Scrum-0001 routing outcome
+
+Local consequence is recorded in [KB-SDL-001](../backlog/%23001--SDL--Proposal--Requirements-narrative.md). The former separate-board
+routing is no longer needed. This closes only this Ref, not language, tool or
+model implementation. Historical identity and original primary remain recorded.

@@ -1,7 +1,7 @@
 # System boundaries and shared process ownership — study
 
 Date: 2026-09-25. Status: owner-selected system boundaries; SDL syntax implementation remains pending. Primary tracking:
-[KB-SDL-004](../../SDL/SDP/Agents/KanBan/active/%23004--Change--Language-source-organization.md).
+[KB-SDL-004](../KanBan/superseded/%23004--SDL--Change--Language-source-organization.md).
 
 ## Owner clarification
 

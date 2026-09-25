@@ -6,7 +6,7 @@ and [implementation plan](../../SDP/05--Implementation/SDPTool.md) are delivered
 discovery schema and navigator API are not implemented here yet.
 
 The active feature assignment is
-[KB-SDP-017](../../SDP/Agents/KanBan/active/%23017--Proposal--sdptool-and-project-navigation.md).
+[KB-SDP-017](../../SDP/KanBan/active/%23017--Proposal--sdptool-and-project-navigation.md).
 The feature is designed in the [shared SDP process](../../SDP/README.md), using
 its five numbered phases and common Traceability/KanBan. Do not create a nested
 SDP directory here. Source code stays here; the single phase/milestone plan lives
@@ -48,7 +48,7 @@ in XFMD's own `Agents/KanBan`. No XFMD implementation is done from this workstre
 XFMD does not adopt SDP's project-development process or gain an SDP directory.
 SDPTool provides the reusable producer services; XFMD supplies a native consumer.
 
-The broader [Toolkit audit](../../SDP/Agents/KanBan/backlog/%23018--Study--Toolkit-audit-and-organization.md)
+The broader [Toolkit audit](../../SDP/KanBan/backlog/%23018--Study--Toolkit-audit-and-organization.md)
 is separate. Creating this directory changes neither installation inventory nor
 published Toolkit versions. Existing installers, schemas and language tools keep
 their current responsibilities until an explicit migration is delivered.

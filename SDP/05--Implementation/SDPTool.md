@@ -1,6 +1,6 @@
 # SDPTool implementation plan
 
-Owner direction: 2026-09-25. Primary: [KB-SDP-017](../Agents/KanBan/active/%23017--Proposal--sdptool-and-project-navigation.md).
+Owner direction: 2026-09-25. Primary: [KB-SDP-017](../KanBan/active/%23017--Proposal--sdptool-and-project-navigation.md).
 This is the single SDPTool feature plan in the shared SDP project. It was moved
 from Toolkit/SDPTool on owner instruction; implementation code remains there.
 [Requirements](../02--Requirements/SDPTool.md), [architecture](../03--Architecture/SDPTool.md)

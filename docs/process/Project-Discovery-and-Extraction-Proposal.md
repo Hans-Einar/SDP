@@ -7,7 +7,7 @@ metadata choices are handled with KB-SDP-002/016; repository-linking choices rem
 explicit prerequisites before extraction. KB-SDP-010 review can proceed separately.
 
 Status: **proposed**, R3-M1, 2026-09-24. Completes the design package for
-[KB-SDP-001](../../SDP/Agents/KanBan/completed/%23001--Proposal--Project-structure.md).
+[KB-SDP-001](../../SDP/KanBan/completed/%23001--Proposal--Project-structure.md).
 No sdptool implementation or repository extraction is delivered here.
 
 ## Actual baseline
@@ -16,7 +16,7 @@ The Toolkit's project manifest schema 1.0 owns installed release/work state;
 [its contract](../../Toolkit/docs/Project-Manifest.md) remains authoritative.
 The local SDP, SDL/SDP and SDUI/SDP process areas currently contain no installed
 SDP-project.manifest.yaml. Their existence is not proof of a conforming installed
-project. The [board registry](../../SDP/Agents/KanBan/boards.json) registers boards,
+project. The [board registry](../../SDP/ProjectManagement/History/SDP/boards.json) registers boards,
 not complete projects. Avoid silently treating it as sdptool discovery.
 
 SDL/go still declares module github.com/Hans-Einar/SDP/SystemDesignLanguage/go;

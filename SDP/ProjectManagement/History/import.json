@@ -1,0 +1,161 @@
+{
+  "profile": "sdp-project-management/0.1",
+  "baseline": "b2fb900",
+  "ledger": "SDP/ProjectManagement/Ledger.ndjson",
+  "imports": [
+    {
+      "namespace": "SDP",
+      "source": "SDP/Agents/KanBan/Ledger.ndjson",
+      "archive": "SDP/ProjectManagement/History/SDP/Ledger.ndjson",
+      "sha256": "0b13424d3e9307c883375f8362a478f0b01fa119be19d3daec883cd93abb2f2d",
+      "offset": 0,
+      "bytes": 54724,
+      "events": 91
+    },
+    {
+      "namespace": "SDL",
+      "source": "SDL/SDP/Agents/KanBan/Ledger.ndjson",
+      "archive": "SDP/ProjectManagement/History/SDL/Ledger.ndjson",
+      "sha256": "21e3d2fb589b4dd9724f8cef1bd09ba502c479a3a3543dfe74e17b4f145a334e",
+      "offset": 54724,
+      "bytes": 8338,
+      "events": 15
+    },
+    {
+      "namespace": "SDUI",
+      "source": "SDUI/SDP/Agents/KanBan/Ledger.ndjson",
+      "archive": "SDP/ProjectManagement/History/SDUI/Ledger.ndjson",
+      "sha256": "851c7f9cf017feda1fe74aad1fb3be60ebf107e2bec15b7b4f3e5a2e58a32a4c",
+      "offset": 63062,
+      "bytes": 3969,
+      "events": 7
+    }
+  ],
+  "cards": {
+    "KB-SDP-003": {
+      "old": "SDP/Agents/KanBan/backlog/#003--Idea--KanBan-graph.md",
+      "path": "SDP/KanBan/backlog/#003--Idea--KanBan-graph.md",
+      "project": "SDP"
+    },
+    "KB-SDP-004": {
+      "old": "SDP/Agents/KanBan/backlog/#004--Proposal--Design-traceability.md",
+      "path": "SDP/KanBan/backlog/#004--Proposal--Design-traceability.md",
+      "project": "SDP"
+    },
+    "KB-SDP-005": {
+      "old": "SDP/Agents/KanBan/backlog/#005--Ref--SDL--002--Links-through.md",
+      "path": "SDP/KanBan/backlog/#005--Ref--SDL--002--Links-through.md",
+      "project": "SDP"
+    },
+    "KB-SDP-006": {
+      "old": "SDP/Agents/KanBan/backlog/#006--Ref--SDL--001--Requirements-narrative.md",
+      "path": "SDP/KanBan/backlog/#006--Ref--SDL--001--Requirements-narrative.md",
+      "project": "SDP"
+    },
+    "KB-SDP-011": {
+      "old": "SDP/Agents/KanBan/backlog/#011--Bug--Traceability-id-conformance.md",
+      "path": "SDP/KanBan/backlog/#011--Bug--Traceability-id-conformance.md",
+      "project": "SDP"
+    },
+    "KB-SDP-014": {
+      "old": "SDP/Agents/KanBan/backlog/#014--Proposal--KanBan-version-contract-and-distribution.md",
+      "path": "SDP/KanBan/backlog/#014--Proposal--KanBan-version-contract-and-distribution.md",
+      "project": "SDP"
+    },
+    "KB-SDP-018": {
+      "old": "SDP/Agents/KanBan/backlog/#018--Study--Toolkit-audit-and-organization.md",
+      "path": "SDP/KanBan/backlog/#018--Study--Toolkit-audit-and-organization.md",
+      "project": "SDP"
+    },
+    "KB-SDP-010": {
+      "old": "SDP/Agents/KanBan/active/#010--Proposal--Document-consolidation.md",
+      "path": "SDP/KanBan/active/#010--Proposal--Document-consolidation.md",
+      "project": "SDP"
+    },
+    "KB-SDP-017": {
+      "old": "SDP/Agents/KanBan/active/#017--Proposal--sdptool-and-project-navigation.md",
+      "path": "SDP/KanBan/active/#017--Proposal--sdptool-and-project-navigation.md",
+      "project": "SDP"
+    },
+    "KB-SDP-019": {
+      "old": "SDP/Agents/KanBan/active/#019--Ref--SDL--004--Language-source-organization.md",
+      "path": "SDP/KanBan/active/#019--Ref--SDL--004--Language-source-organization.md",
+      "project": "SDP"
+    },
+    "KB-SDP-007": {
+      "old": "SDP/Agents/KanBan/completed/#007--Change--KanBan-foundation.md",
+      "path": "SDP/KanBan/completed/#007--Change--KanBan-foundation.md",
+      "project": "SDP"
+    },
+    "KB-SDP-008": {
+      "old": "SDP/Agents/KanBan/completed/#008--Change--Visible-card-metadata.md",
+      "path": "SDP/KanBan/completed/#008--Change--Visible-card-metadata.md",
+      "project": "SDP"
+    },
+    "KB-SDP-009": {
+      "old": "SDP/Agents/KanBan/completed/#009--Change--Card-merge-and-split.md",
+      "path": "SDP/KanBan/completed/#009--Change--Card-merge-and-split.md",
+      "project": "SDP"
+    },
+    "KB-SDP-012": {
+      "old": "SDP/Agents/KanBan/completed/#012--Change--Card-history.md",
+      "path": "SDP/KanBan/completed/#012--Change--Card-history.md",
+      "project": "SDP"
+    },
+    "KB-SDP-013": {
+      "old": "SDP/Agents/KanBan/completed/#013--Change--English-documentation.md",
+      "path": "SDP/KanBan/completed/#013--Change--English-documentation.md",
+      "project": "SDP"
+    },
+    "KB-SDP-015": {
+      "old": "SDP/Agents/KanBan/completed/#015--Change--CardState-and-shell-cli.md",
+      "path": "SDP/KanBan/completed/#015--Change--CardState-and-shell-cli.md",
+      "project": "SDP"
+    },
+    "KB-SDP-001": {
+      "old": "SDP/Agents/KanBan/completed/#001--Proposal--Project-structure.md",
+      "path": "SDP/KanBan/completed/#001--Proposal--Project-structure.md",
+      "project": "SDP"
+    },
+    "KB-SDP-002": {
+      "old": "SDP/Agents/KanBan/superseded/#002--Proposal--sdptool.md",
+      "path": "SDP/KanBan/superseded/#002--Proposal--sdptool.md",
+      "project": "SDP"
+    },
+    "KB-SDP-016": {
+      "old": "SDP/Agents/KanBan/superseded/#016--Proposal--SDP-discovery-and-viewer-capabilities.md",
+      "path": "SDP/KanBan/superseded/#016--Proposal--SDP-discovery-and-viewer-capabilities.md",
+      "project": "SDP"
+    },
+    "KB-SDL-001": {
+      "old": "SDL/SDP/Agents/KanBan/backlog/#001--Proposal--Requirements-narrative.md",
+      "path": "SDP/KanBan/backlog/#001--SDL--Proposal--Requirements-narrative.md",
+      "project": "SDL"
+    },
+    "KB-SDL-002": {
+      "old": "SDL/SDP/Agents/KanBan/backlog/#002--Proposal--Links-through.md",
+      "path": "SDP/KanBan/backlog/#002--SDL--Proposal--Links-through.md",
+      "project": "SDL"
+    },
+    "KB-SDL-003": {
+      "old": "SDL/SDP/Agents/KanBan/backlog/#003--Ref--SDP--017--sdptool.md",
+      "path": "SDP/KanBan/backlog/#003--SDL--Ref--SDP--017--sdptool.md",
+      "project": "SDL"
+    },
+    "KB-SDL-004": {
+      "old": "SDL/SDP/Agents/KanBan/active/#004--Change--Language-source-organization.md",
+      "path": "SDP/KanBan/active/#004--SDL--Change--Language-source-organization.md",
+      "project": "SDL"
+    },
+    "KB-SDUI-001": {
+      "old": "SDUI/SDP/Agents/KanBan/backlog/#001--Ref--SDP--017--sdptool.md",
+      "path": "SDP/KanBan/backlog/#001--SDUI--Ref--SDP--017--sdptool.md",
+      "project": "SDUI"
+    },
+    "KB-SDUI-002": {
+      "old": "SDUI/SDP/Agents/KanBan/active/#002--Ref--SDL--004--Language-source-organization.md",
+      "path": "SDP/KanBan/active/#002--SDUI--Ref--SDL--004--Language-source-organization.md",
+      "project": "SDUI"
+    }
+  }
+}

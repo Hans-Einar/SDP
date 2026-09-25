@@ -1,7 +1,7 @@
 # Small SDP shell commands
 
 K5 defines a read-only `kanban` command. The local CardState convention is in
-[the KanBan workflow](../../../SDP/Agents/KanBan/README.md). This directory contains
+[the KanBan workflow](../../../SDP/KanBan/README.md). This directory contains
 CLI entry scripts; the installer copies every `*.sh` file into `~/bin`, stripping
 `.sh` (including `install-cli`). No compilation, daemon or shell startup changes.
 

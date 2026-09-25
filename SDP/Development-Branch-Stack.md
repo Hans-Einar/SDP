@@ -47,17 +47,17 @@ G7 follows 32fadca on sdl/phase-g7-launch. M1 provides source-based browsing thr
 prebuilt-tool launcher, as a separate startup follow-up.
 
 K1 follows G7 d03eb78 on sdp/phase-k1-kanban. M1 establishes project boards, append-only
-history and owner proposals. [Plan/evidence](Agents/KanBan/completed/%23007--Change--KanBan-foundation.md).
+history and owner proposals. [Plan/evidence](KanBan/completed/%23007--Change--KanBan-foundation.md).
 At that point repository/template migration, sdptool, Traceability extensions and new
 SDL keywords remained backlog.
 
 K2 follows bb3728c on sdp/phase-k2-readable-metadata. M1 replaces YAML frontmatter with
-visible tables. [Evidence](Agents/KanBan/completed/%23008--Change--Visible-card-metadata.md)
+visible tables. [Evidence](KanBan/completed/%23008--Change--Visible-card-metadata.md)
 separates format changes from unchanged ledger/language contracts.
 
 K3 follows 321e193 on sdp/phase-k3-card-lineage. M1 defines full/partial merges/splits
 with typed lineage in payload 0.2, informed by XFMD's local proposal.
-[Plan/evidence](Agents/KanBan/completed/%23009--Change--Card-merge-and-split.md).
+[Plan/evidence](KanBan/completed/%23009--Change--Card-merge-and-split.md).
 
 R1 follows 431e47e on sdp/phase-r1-repository-organization. M1 d269bc7 inventories ownership
 and activates KB-SDP-001; M2 f42859e gathers templates/project records; M3 f722dc2 gathers
@@ -66,7 +66,7 @@ SDL/document entry points with verification. [Plan](Maintenance/R1/Plan.md),
 separate physical cleanup from pending profile/editorial work.
 
 K4 follows f722dc2 on sdp/phase-k4-card-history. M1 1713778 adds
-[worklogs/Git history](Agents/KanBan/completed/%23012--Change--Card-history.md);
+[worklogs/Git history](KanBan/completed/%23012--Change--Card-history.md);
 integrated tooling/graph remained backlog.
 
 R2 follows 1713778 on sdp/phase-r2-document-consolidation. Its

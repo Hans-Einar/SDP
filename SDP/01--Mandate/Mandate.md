@@ -28,7 +28,7 @@ contracts; XFMD integrators consume navigation/preview services. XFMD owns its
 native UI implementation and continues its own development process.
 
 The feature's [requirements](../02--Requirements/SDPTool.md),
-[active card](../Agents/KanBan/active/%23017--Proposal--sdptool-and-project-navigation.md)
+[active card](../KanBan/active/%23017--Proposal--sdptool-and-project-navigation.md)
 and [implementation plan](../05--Implementation/SDPTool.md) record acceptance and
 current work. The [pipeline study](../../Toolkit/SDPTool/Navigation-and-Design-Preview.md)
 provides reuse evidence. No additional mandate study is needed for this explicit

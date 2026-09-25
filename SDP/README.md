@@ -23,8 +23,8 @@ profiles and automatic project discovery have not been migrated by this local se
 
 ## Shared project records
 
-- [KanBan](Agents/KanBan/README.md): conversation findings, prioritization and active assignments.
-- [Card worklogs and Git diff](Agents/KanBan/History.md): content history during active work.
+- [KanBan](KanBan/README.md): conversation findings, prioritization and active assignments.
+- [Card worklogs and Git diff](KanBan/History.md): content history during active work.
 - [R1 housekeeping](Maintenance/R1/Plan.md): migration map, document inventory and verification.
 - [R2 document consolidation](Maintenance/R2/Plan.md): active contracts, dated proposals and status corrections.
 - [Traceability](Traceability/README.md): existing implementation ledger and relations.
@@ -40,3 +40,11 @@ The remaining structure/consolidation package is in [R3](Maintenance/R3/Plan.md)
 Its five-phase profile is now applied locally by the owner's instruction; current
 installed templates retain their documented authority until a tested migration.
 CardState distinguishes review from ongoing work.
+
+## Shared management — PM1
+
+[One KanBan board](KanBan/README.md) contains SDP, SDL and SDUI cards.
+[ProjectManagement](ProjectManagement/README.md) owns their history together with
+Scrums, Sprints, Maintenance, CodeReview and Refactor. [Scrum-0001](Agents/Scrum/Scrum--%230001--Backlog-and-project-management.md)
+selects [MAINT-SDP-0001](Maintenance/PM1/Plan-and-Evidence.md), without a new wrapper
+card or forced Sprint. Traceability records system changes and links to that history.

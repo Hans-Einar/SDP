@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "0.2",
+  "projectId": "SDP",
+  "namespaces": [
+    "SDP",
+    "SDL",
+    "SDUI"
+  ],
+  "ledger": "../ProjectManagement/Ledger.ndjson",
+  "profile": "sdp-project-management/0.1"
+}
