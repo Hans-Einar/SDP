@@ -79,6 +79,11 @@ slices:
     study: Sprints/Sprint-001/InstallationContractStudy.md
     implementationNotes: Sprints/Sprint-001/implementationNotes.md
     verification:
+  SDPTOOL-VER-T3-M1:
+    status: passed
+    path: Verification/SDPTOOL-VER-T3-M1.md
+    card: KB-SDP-024
+    managementId: SPR-SDP-0001
   SDPTOOL-VER-T2-M2:
     status: passed
     path: Verification/SDPTOOL-VER-T2-M2.md

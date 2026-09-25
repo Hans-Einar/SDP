@@ -145,3 +145,10 @@ Implemented configured view ip/implementation-plan with prebuilt host arguments,
 
 [Verification](../Verification/SDPTOOL-VER-T2-M2.md). Remaining milestones retain their existing status;
 this delivery is limited to the named milestone.
+
+## T3-M1 delivery
+
+Implemented versioned SDL catalog/phase/abstraction, typed collection, object and diagram navigation from validated language-owned facts, with stable IDs and explicit shared references.
+
+[Verification](../Verification/SDPTOOL-VER-T3-M1.md). Remaining milestones retain their existing status;
+this delivery is limited to the named milestone.
