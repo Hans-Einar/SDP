@@ -272,6 +272,11 @@
       "source": "Template/profiles/five-phase/ProjectManagement/kanban-payload-0.2.schema.json",
       "destination": "SDP/ProjectManagement/kanban-payload-0.2.schema.json",
       "ownership": "project"
+    },
+    {
+      "source": "Template/sdp-root/RELEASE-NOTES.md",
+      "destination": "SDP/RELEASE-NOTES.md",
+      "ownership": "project"
     }
   ],
   "relocations": [

@@ -52,3 +52,19 @@ allocates target-project Maintenance/event IDs from existing history/documents.
 Backlog review: KB014 still owns standalone KanBan packaging, KB018 the wider
 Toolkit audit, KB029 the new plan/Planning-skill proposal. None is silently
 marked implemented by this installation milestone.
+
+## IU3-M1
+
+SDPTool now reads installed schemas 1.0/2.0, exposes early/late incomplete
+installation state and has a prebuilt version/capability protocol. Native
+package.sh emits the executable, manifest and checksums without changing host
+PATH or rebuilding during viewing. Go race tests and vet pass. A disposable
+fresh install was discovered from both project root and SDP area; its model-free
+KanBan tree and full consuming-project validator pass. Added neutral release
+notes because that existing consuming-project obligation still applies.
+
+Independent consumer review found and verified corrections for non-mapping YAML,
+early interruption before navigation publication and unknown operation folders.
+Review approves this consumer scope; Windows/live rollout and full exit-matrix
+proof remain outside that approval. Package evidence is a dirty working candidate
+based on 8e36a5d, not a published release.

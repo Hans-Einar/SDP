@@ -1174,6 +1174,13 @@ class ProjectValidationTests(unittest.TestCase):
         self.assert_error_contains("installed-toolkit.manifest.yaml")
         self.assert_error_contains("Cannot parse YAML")
 
+    def test_installed_manifest_non_mapping_is_reported(self) -> None:
+        path = self.root / "SDP/Framework/installed-toolkit.manifest.yaml"
+        for text in ("- not-a-mapping\n", "42\n"):
+            with self.subTest(text=text):
+                path.write_text(text, encoding="utf-8")
+                self.assert_error_contains("installed-toolkit.manifest.yaml")
+
     def test_unsupported_project_manifest_schema_fails_clearly(self) -> None:
         path = self.root / "SDP/SDP-project.manifest.yaml"
         manifest = read_yaml(path)

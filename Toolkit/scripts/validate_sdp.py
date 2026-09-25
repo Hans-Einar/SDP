@@ -35,7 +35,7 @@ WINDOWS_FORBIDDEN_PATH_CHARACTERS = frozenset('<>:"|?*~')
 SKILL_ID_PATTERN = re.compile(r"^sdp(?:-[a-z0-9]+)*$")
 
 SUPPORTED_PROJECT_MANIFEST_SCHEMAS = frozenset({"1.0"})
-SUPPORTED_INSTALLED_MANIFEST_SCHEMAS = frozenset({"1.0"})
+SUPPORTED_INSTALLED_MANIFEST_SCHEMAS = frozenset({"1.0", "2.0"})
 SUPPORTED_TRACE_EVENT_SCHEMAS = frozenset({"1.0"})
 SUPPORTED_RELEASE_RECORD_SCHEMAS = frozenset({"1.0"})
 SUPPORTED_FIX_RECORD_SCHEMAS = frozenset({"1.0"})
@@ -1492,6 +1492,8 @@ def validate_project(project_root: Path, schema_root: Path | None = None) -> lis
             SUPPORTED_INSTALLED_MANIFEST_SCHEMAS,
             installed_label,
         )
+        if isinstance(installed_manifest, dict) and installed_manifest.get("schemaVersion") == "2.0":
+            installed_schema = load_json(schemas / "installed-toolkit-manifest-v2.schema.json")
         errors += validate_json(installed_manifest, installed_schema, installed_label)
         if isinstance(installed_manifest, dict):
             toolkit_version = installed_manifest.get("toolkitVersion")

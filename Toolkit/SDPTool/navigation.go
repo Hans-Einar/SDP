@@ -9,6 +9,10 @@ import (
 // Navigation keeps optional unavailable services visible instead of claiming
 // that absence means a validated empty system.
 func Navigation(p Project, id string) (Tree, error) {
+	if p.Status == "incomplete" {
+		return Tree{}, failure("incomplete", fmt.Errorf("installation has not published navigation; resume its recorded operation"))
+	}
+
 	t := Tree{Schema: Version, Operation: "tree", Project: p.Registration.ProjectID, Roots: []string{"sdl", "kanban", "sdui"}, Nodes: []Node{}, ExpansionDepthLimit: 8}
 	if len(p.Registration.Models) > 0 {
 		modelTree, e := ModelTree(p, id)

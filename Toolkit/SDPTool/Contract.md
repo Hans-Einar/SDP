@@ -86,10 +86,10 @@ paths must exist and be readable before the associated operation runs.
 T2 reads referenced YAML manifests safely, rejects malformed/unsupported schema
 versions and reports installation facts without asserting full validation. Missing
 manifests are errors when explicitly referenced; omitted manifests yield unknown
-installation facts. An installer can later distribute/create bindings under
-KB-SDP-028, with ownership/preservation decisions there. This local descriptor
-neither installs the five-phase profile elsewhere nor changes strict 1.0 manifest
-schemas; that is why a separate, narrowly scoped binding file is justified.
+installation facts. The versioned profile installer now creates empty bindings for new projects and
+preserves existing registration under MAINT-SDP-0003. This local descriptor
+does not change strict 1.0 manifest schemas; the versioned installer uses explicit
+2.0 installed facts while preserving this separate navigation binding.
 
 ## Commands, host policy and consumer protocol — T1-M2
 
@@ -192,3 +192,34 @@ is not an assertion that every existing SDUI export is exposed by this facade.
 Review limits: navigation accepts at most 2,000 model declarations, 10,000 model
 facts, 20,000 combined nodes and 32 MiB of inventory JSON. These are facade limits,
 not new language rules. defaultModel is a registration binding, not a heuristic.
+
+## Installed profile facts — IU3
+
+Discovery accepts installed manifest schemas 1.0 and 2.0; project manifests remain
+1.0. Version 2.0 adds processProfile, managementProfile and configurationDigest.
+The closed shape and profile identity are checked; the full Toolkit validator
+owns installation conformance. Navigation remains schema 1.0 and does not copy
+those facts or infer models from folders. An active/failed installation journal
+makes installation.state incomplete (including when final facts are not present).
+Before navigation has been published, discovery returns status incomplete with
+operation identities and no invented registration/models. Tree navigation is
+unavailable until the registration exists. A completed journal is a declared
+status, not independent verification.
+
+Metadata remains limited to 1 MiB per file; operation journals have a separate
+64 MiB read limit because they contain exact plans and recovery payloads.
+Unsupported journal states/identities are errors. No discovery call resumes or
+repairs an installation.
+
+sdptool --version returns JSON build version/revision and installedFactSchemas.
+A consumer requiring profile 2.0 should check that array before invoking discovery.
+A source build is marked unknown or dirty when exact committed provenance is
+unavailable; it is never advertised as a published Toolkit release.
+
+package.sh NEW_OUTPUT_DIRECTORY is a maintainer-only native build. It emits a
+prebuilt sdptool, its version/capability manifest and SHA256SUMS. Select a Go
+compiler with SDP_GO when needed. Verify checksums and --version before putting
+the executable on the host's configured PATH. The package does not modify PATH,
+overwrite an existing destination, install a viewer or build during viewing.
+PowerShell profile installation remains the single install/update engine;
+this Go facade consumes its results and does not implement another engine.

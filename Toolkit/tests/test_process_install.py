@@ -170,5 +170,44 @@ class ProcessInstall(unittest.TestCase):
         p=subprocess.run([PWSH,'-NoProfile','-File',str(INSTALLER),'-ProjectRoot',str(self.root),'-ProfileArtifact',str(ARTIFACT),'-PlanJson'],capture_output=True,text=True,timeout=20)
         self.assertNotEqual(p.returncode,0)
 
+    def test_legacy_versioned_upgrade_and_downgrade(self):
+        legacy=subprocess.run([PWSH,'-NoProfile','-File',str(INSTALLER),'-ProjectRoot',str(self.root),'-InitializeProjectStructure'],capture_output=True,text=True)
+        self.assertEqual(legacy.returncode,0,legacy.stderr)
+        plan=self.plan()
+        self.assertEqual(plan['oldFacts']['schemaVersion'],'1.0')
+        self.assertTrue(plan['canApply'],plan['conflicts'])
+        self.apply(plan)
+        facts=self.root/'SDP/Framework/installed-toolkit.manifest.yaml'
+        data=facts.read_text()
+        facts.write_text(data.replace('toolkitVersion: "0.2.0"','toolkitVersion: "99.0.0"'))
+        self.assertIn('downgrade-blocked',self.plan()['conflicts'])
+        facts.write_text(data.replace('schemaVersion: "2.0"','schemaVersion: "99.0"'))
+        self.call('-PlanJson',ok=False)
+
+    @unittest.skipUnless(os.environ.get('SDP_TEST_TOOL'),'prebuilt SDPTool required')
+    def test_installed_consumer_workflow(self):
+        self.apply()
+        tool=os.environ['SDP_TEST_TOOL']
+        for selected in (self.root,self.root/'SDP'):
+            result=subprocess.run([tool,str(selected),'discover'],capture_output=True,text=True)
+            self.assertEqual(result.returncode,0,result.stderr)
+            p=json.loads(result.stdout)
+            self.assertEqual(p['installation']['facts']['schemaVersion'],'2.0')
+            self.assertEqual(p['installation']['state'],'declared')
+            self.assertEqual(p['registration']['models'],[])
+            self.assertEqual(p['registration']['sdui'],[])
+        result=subprocess.run([tool,str(self.root),'tree'],capture_output=True,text=True)
+        self.assertEqual(result.returncode,0,result.stderr)
+        nodes={n['id']:n for n in json.loads(result.stdout)['nodes']}
+        self.assertEqual(nodes['kanban']['state'],'validated')
+        self.assertEqual(nodes['sdl']['state'],'absent')
+        validator=subprocess.run([__import__('sys').executable,str(ROOT/'Toolkit/scripts/validate_sdp.py'),'--mode','project','--project-root',str(self.root)],capture_output=True,text=True)
+        self.assertEqual(validator.returncode,0,validator.stdout+validator.stderr)
+
+    def test_case_collision(self):
+        self.put('SDP/02--Requirements/A.md','one')
+        self.put('SDP/02--Requirements/a.md','two')
+        self.call('-PlanJson',ok=False)
+
 if __name__ == '__main__':
     unittest.main()

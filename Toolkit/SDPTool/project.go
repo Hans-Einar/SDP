@@ -45,6 +45,17 @@ type Project struct {
 var identifier = regexp.MustCompile(`^[a-z][a-z0-9-]{0,63}$`)
 
 func boundedFile(path string) ([]byte, error) {
+	return boundedFileLimit(path, 1<<20)
+}
+func boundedFileLimit(path string, limit int64) ([]byte, error) {
+	before, e := os.Stat(path)
+	if e != nil {
+		return nil, e
+	}
+	if !before.Mode().IsRegular() {
+		return nil, fmt.Errorf("expected regular file: %s", path)
+	}
+
 	f, e := os.Open(path)
 	if e != nil {
 		return nil, e
@@ -57,9 +68,9 @@ func boundedFile(path string) ([]byte, error) {
 	if !st.Mode().IsRegular() {
 		return nil, fmt.Errorf("expected regular file: %s", path)
 	}
-	b, e := io.ReadAll(io.LimitReader(f, (1<<20)+1))
-	if e == nil && len(b) > 1<<20 {
-		e = fmt.Errorf("metadata exceeds 1 MiB")
+	b, e := io.ReadAll(io.LimitReader(f, limit+1))
+	if e == nil && int64(len(b)) > limit {
+		e = fmt.Errorf("metadata exceeds %d bytes", limit)
 	}
 	return b, e
 }
@@ -136,7 +147,7 @@ func resolvePath(root, p string) (string, error) {
 	}
 	return q, nil
 }
-func readYAML(path string) (map[string]any, error) {
+func readYAML(path string, schemas ...string) (map[string]any, error) {
 	b, e := boundedFile(path)
 	if e != nil {
 		return nil, e
@@ -153,7 +164,16 @@ func readYAML(path string) (map[string]any, error) {
 	if v == nil {
 		return nil, fmt.Errorf("expected YAML mapping")
 	}
-	if v["schemaVersion"] != "1.0" {
+	if len(schemas) == 0 {
+		schemas = []string{"1.0"}
+	}
+	supported := false
+	for _, schema := range schemas {
+		if v["schemaVersion"] == schema {
+			supported = true
+		}
+	}
+	if !supported {
 		return nil, failure("unsupported", fmt.Errorf("unsupported manifest schema in %s", path))
 	}
 	return v, nil
@@ -172,16 +192,31 @@ func Discover(selected string) (Project, error) {
 	if e != nil || !st.IsDir() {
 		return bad("missing", fmt.Errorf("selected directory unavailable: %s", dir))
 	}
+	pending, err := pendingInstallations(dir)
+	if err != nil {
+		return bad("invalid", err)
+	}
 	area := dir
 	file := filepath.Join(area, "navigation.json")
-	if _, e = os.Lstat(file); os.IsNotExist(e) {
+	if _, e = os.Lstat(file); os.IsNotExist(e) && len(pending) == 0 {
 		area = filepath.Join(dir, "SDP")
 		file = filepath.Join(area, "navigation.json")
+		pending, err = pendingInstallations(area)
+		if err != nil {
+			return bad("invalid", err)
+		}
 	}
 	p.Area = area
 	p.Root = filepath.Dir(area)
+	if len(pending) != 0 {
+		p.Installation = map[string]any{"state": "incomplete", "operations": pending}
+	}
 	b, e := boundedFile(file)
 	if os.IsNotExist(e) {
+		if len(pending) != 0 {
+			p.Status = "incomplete"
+			return p, nil
+		}
 		return bad("missing", fmt.Errorf("no navigation.json in selected area or SDP child; register navigation without inferring installation"))
 	}
 	if e != nil {
@@ -277,14 +312,26 @@ func Discover(selected string) (Project, error) {
 		if err != nil {
 			return bad("invalid", err)
 		}
-		facts, err := readYAML(dest)
+		facts, err := readYAML(dest, "1.0", "2.0")
+		if os.IsNotExist(err) && len(pending) != 0 {
+			p.Status = "valid"
+			return p, nil
+		}
 		if err != nil {
 			if x, ok := err.(*Failure); ok {
 				return bad(x.Code, err)
 			}
 			return bad("invalid", err)
 		}
+		if err = validateProcessFacts(facts); err != nil {
+			return bad("invalid", err)
+		}
 		p.Installation = map[string]any{"state": "declared", "projectManifest": f, "installedManifest": dest, "facts": facts, "validation": "schema version and YAML structure only; use installer validator for full conformance"}
+		if len(pending) != 0 {
+			p.Installation["state"] = "incomplete"
+			p.Installation["operations"] = pending
+		}
+
 	}
 	p.Status = "valid"
 	return p, nil
