@@ -36,6 +36,16 @@ capabilities:
 	if e != nil || p.Installation["state"] != "declared" {
 		t.Fatalf("%v %v", p, e)
 	}
+	for _, profile := range []string{"sdp-project-management/0.1", "sdp-project-management/0.2"} {
+		os.WriteFile(dest, []byte(strings.ReplaceAll(facts, "sdp-project-management/0.1", profile)), 0600)
+		if got, err := Discover(root); err != nil || got.Installation["state"] != "declared" {
+			t.Fatalf("profile %s: %v %v", profile, got, err)
+		}
+	}
+	os.WriteFile(dest, []byte(strings.ReplaceAll(facts, "sdp-project-management/0.1", "sdp-project-management/9.0")), 0600)
+	if _, err := Discover(root); err == nil {
+		t.Fatal("unknown management profile accepted")
+	}
 	for _, bad := range []string{facts + "unknown: true\n", strings.Replace(facts, strings.Repeat("a", 64), "broken", 1), strings.Replace(facts, "schemaVersion: \"2.0\"", "schemaVersion: \"3.0\"", 1)} {
 		os.WriteFile(dest, []byte(bad), 0600)
 		if _, e = Discover(root); e == nil {

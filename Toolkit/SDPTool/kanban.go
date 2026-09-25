@@ -62,7 +62,7 @@ func BoardNodes(p Project) ([]Node, string, error) {
 	if e = strictJSON(b, &descriptor); e != nil {
 		return nil, "", e
 	}
-	if descriptor.Schema != "0.2" || descriptor.Profile != "sdp-project-management/0.1" {
+	if descriptor.Schema != "0.2" || !supportedManagementProfile(descriptor.Profile) {
 		return nil, "", failure("unsupported", fmt.Errorf("unsupported KanBan board/profile"))
 	}
 	rel, e := filepath.Rel(p.Root, filepath.Join(root, descriptor.Ledger))

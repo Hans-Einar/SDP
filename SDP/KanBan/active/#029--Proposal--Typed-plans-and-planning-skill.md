@@ -6,6 +6,7 @@
 | project | SDP |
 | type | Proposal |
 | CardState | in-progress |
+| PlanId | MAINT-SDP-0004 |
 | created | 2026-09-25T15:19:14Z |
 | source | Owner conversation 2026-09-25 during MAINT-SDP-0003 |
 | next_review | At MAINT-SDP-0004 milestones |

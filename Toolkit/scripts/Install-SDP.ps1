@@ -1030,7 +1030,7 @@ function ConvertFrom-InstalledManifestDocument {
     if ($version -ceq '2.0' -and $AllowV2) {
         $allowedRoot += @('processProfile','managementProfile','configurationDigest')
         if ((Get-StrictYamlString $document 'processProfile' $label) -cne 'sdp-five-phase/0.1' -or
-            (Get-StrictYamlString $document 'managementProfile' $label) -cne 'sdp-project-management/0.1' -or
+            (Get-StrictYamlString $document 'managementProfile' $label) -cnotin @('sdp-project-management/0.1','sdp-project-management/0.2') -or
             (Get-StrictYamlString $document 'configurationDigest' $label) -cnotmatch '^[a-f0-9]{64}$') {
             throw 'Unsupported or invalid installed process facts'
         }

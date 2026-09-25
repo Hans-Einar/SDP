@@ -1,8 +1,8 @@
 # SDP skills — canonical source
 
 Root Skills/ is the sole authored collection for the System Design Process.
-Thirteen skills provide one method entrypoint, coordination/implementation/review
-roles and focused analysis, architecture, evidence and release work. Start with
+Fourteen skills provide one method entrypoint, coordination/implementation/review
+roles, [Planning](sdp-planning/SKILL.md) and focused analysis, architecture, evidence and release work. Start with
 [sdp](sdp/SKILL.md); load only relevant roles. This replaces the former
 Toolkit/skills and Toolkit/skills_v2 maintained collections.
 

@@ -53,7 +53,7 @@ def shape(obj, fields):
 
 def build(config, root=ROOT):
     shape(config, 'schemaVersion profile managementProfile prerequisites capabilities files relocations')
-    if config['schemaVersion'] != '2.0' or config['profile'] != 'sdp-five-phase/0.1' or config['managementProfile'] != 'sdp-project-management/0.1':
+    if config['schemaVersion'] != '2.0' or config['profile'] != 'sdp-five-phase/0.1' or config['managementProfile'] not in ('sdp-project-management/0.1', 'sdp-project-management/0.2'):
         raise ValueError('unsupported profile/schema')
     if config['prerequisites'] != ['powershell>=7.4']:
         raise ValueError('unsupported prerequisites')

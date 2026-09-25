@@ -1,12 +1,13 @@
 schemaVersion: "1.0"
 toolkitVersion: "0.2.0"
 frameworkVersion: "1.0.0"
-agentsContractVersion: "2.0.0"
+agentsContractVersion: "2.1.0"
 installerVersion: "0.2.0"
 toolkitInstalledAt: "2026-07-12T00:00:00Z"
 sourceCommit: null
 skills:
-  sdp: "1.0.0"
+  sdp: "1.1.0"
+  sdp-planning: "1.0.0"
   sdp-architect: "2.0.0"
   sdp-auditor: "2.0.0"
   sdp-change-analysis: "1.0.0"

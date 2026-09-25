@@ -107,7 +107,7 @@ function Read-ProcessArtifact {
     $text = [IO.File]::ReadAllText($path)
     $a = Read-ProcessJson $text
     Assert-ProcessKeys $a @('schemaVersion','profile','managementProfile','prerequisites','capabilities','files','relocations','facts','sourceDigest','configurationDigest')
-    if ($a.schemaVersion -cne '2.0' -or $a.profile -cne 'sdp-five-phase/0.1' -or $a.managementProfile -cne 'sdp-project-management/0.1') { throw 'Unsupported artifact profile/schema' }
+    if ($a.schemaVersion -cne '2.0' -or $a.profile -cne 'sdp-five-phase/0.1' -or $a.managementProfile -cnotin @('sdp-project-management/0.1','sdp-project-management/0.2')) { throw 'Unsupported artifact profile/schema' }
     if ($a.configurationDigest -cnotmatch '^[a-f0-9]{64}$') { throw 'Invalid configuration digest' }
     $withoutDigest = $text.Replace('"configurationDigest":"' + $a.configurationDigest + '",','')
     if ((Get-Sha256Hex (ConvertTo-ProcessBytes $withoutDigest)) -cne $a.configurationDigest) { throw 'Artifact digest mismatch (use canonical build output)' }
@@ -143,6 +143,24 @@ function Read-ProcessArtifact {
 }
 function ConvertFrom-ProcessBase64([string]$Value) { return [Text.Encoding]::UTF8.GetString([Convert]::FromBase64String($Value)) }
 
+function Get-PlanningMetadata($Files, [string]$Path) {
+    [void](Get-ProcessPath $Path)
+    if (-not $Files.Contains($Path)) { throw 'Missing planning document' }
+    $text = ConvertFrom-ProcessBase64 $Files[$Path]
+    $result = @{}
+    foreach ($m in [regex]::Matches($text,'(?m)^\|[ \t]*(id|state|PlanType|BranchPolicy|CommitPolicy|SprintId|Plans|Members|PlanId|CardState)[ \t]*\|[ \t]*([^|\r\n]*)\|[ \t]*\r?$')) {
+        $key = $m.Groups[1].Value
+        if ($result.ContainsKey($key)) { throw 'Duplicate planning metadata' }
+        $result[$key] = $m.Groups[2].Value.Trim()
+    }
+    return $result
+}
+function Assert-PlanningSet([object[]]$Expected, [string]$Declared) {
+    $values = @($Declared.Split(',') | ForEach-Object { $_.Trim() } | Where-Object { $_ })
+    if (@($values | Select-Object -Unique).Count -ne $values.Count -or
+        (@($Expected | Sort-Object) -join ',') -cne (@($values | Sort-Object) -join ',')) { throw 'Planning membership metadata mismatch' }
+}
+
 function Assert-ProcessHistory($Artifact, [string]$History, $Files) {
     $schemas = @{}
     foreach ($entry in $Artifact.files) {
@@ -164,13 +182,34 @@ function Assert-ProcessHistory($Artifact, [string]$History, $Files) {
             $schema = 'kanban-payload-'+$payload.schemaVersion+'.schema.json'
             if ($event.subjectId -cnotmatch '^KB-[A-Z][A-Z0-9]*-[0-9]{3,}$') { throw 'Invalid card identity' }
         } elseif ($event.eventType.StartsWith('x-management:')) {
-            $schema = 'management-payload.schema.json'
+            if ($payload.schemaVersion -ceq '0.1') { $schema = 'management-payload.schema.json' }
+            elseif ($payload.schemaVersion -ceq '0.2' -and $Artifact.managementProfile -ceq 'sdp-project-management/0.2') { $schema = 'management-payload-0.2.schema.json' }
+            else { throw 'Unsupported management payload/profile' }
         } else { throw 'Unsupported event type in shared management history' }
         if (-not (Test-Json -Json (ConvertTo-ProcessJson $payload) -Schema $schemas[$schema] -ErrorAction SilentlyContinue)) { throw 'Invalid management/card payload' }
         $prior = $latest[$event.subjectId]
         if ($null -eq $prior) {
             if ($null -ne $payload.previousEventId -or $null -ne $payload.from -or $null -ne $payload.fromPath) { throw 'Broken initial history chain' }
         } elseif ($payload.previousEventId -cne $prior.eventId -or $payload.from -cne $prior.payload.to -or $payload.fromPath -cne $prior.payload.toPath) { throw 'Broken history chain' }
+        if ($null -ne $prior -and $prior.payload.Contains('planType') -and
+            ($payload.planType -cne $prior.payload.planType -or $payload.kind -cne $prior.payload.kind)) { throw 'Plan type changed or removed' }
+        if ($event.eventType.StartsWith('x-management:') -and $payload.schemaVersion -ceq '0.2') {
+            $prefix = @{Plan='PLAN';Maintenance='MAINT';Sprint='SPR';Scrum='SCRUM';CodeReview='REVIEW';Refactor='REFACTOR'}[$payload.kind]
+            if ($event.subjectId -cnotmatch ('^'+$prefix+'-[A-Z][A-Z0-9]*-[0-9]{4,}$')) { throw 'Planning kind/ID mismatch' }
+            $action = $event.eventType.Substring('x-management:'.Length)
+            if ($null -eq $prior) {
+                if ($action -cne 'created' -or $payload.to -cnotin @('planned','active')) { throw 'Invalid planning creation' }
+            } else {
+                if ($payload.kind -cne $prior.payload.kind) { throw 'Planning kind changed' }
+                switch ($action) {
+                    'updated' { if ($payload.from -cne $payload.to -or $payload.fromPath -cne $payload.toPath -or $payload.from -cin @('completed','canceled')) { throw 'Invalid planning update' } }
+                    'started' { if ($payload.from -cne 'planned' -or $payload.to -cne 'active') { throw 'Invalid planning start' } }
+                    { $_ -cin @('completed','canceled') } { if ($payload.from -cnotin @('planned','active') -or $payload.to -cne $action -or $payload.links.Count -eq 0) { throw 'Invalid planning closure' } }
+                    default { throw 'Invalid planning transition' }
+                }
+            }
+            if ($payload.kind -ceq 'Sprint' -and $action -cin @('created','started') -and $payload.members.Count -eq 0 -and $payload.plans.Count -eq 0) { throw 'Empty selected Sprint' }
+        }
         $latest[$event.subjectId] = $event
     }
     $cards = @{}
@@ -191,6 +230,50 @@ function Assert-ProcessHistory($Artifact, [string]$History, $Files) {
     foreach ($key in $latest.Keys) {
         if ($key.StartsWith('KB-') -and -not $cards.ContainsKey($key)) { throw 'History points to missing card' }
     }
+    $planning = @{}
+    foreach ($key in $latest.Keys) {
+        $e = $latest[$key]; $p = $e.payload
+        if (-not $e.eventType.StartsWith('x-management:') -or $p.schemaVersion -cne '0.2') { continue }
+        Assert-PortableRelativePath $p.toPath 'planning document'
+        $m = Get-PlanningMetadata $Files ('SDP/'+$p.toPath)
+        if ($m.id -cne $key -or $m.state -cne $p.to) { throw 'Planning document/history mismatch' }
+        foreach ($link in $p.links) { if (-not $latest.ContainsKey($link)) { throw 'Unresolved planning link' } }
+        if ($p.Contains('planType')) {
+            if ($m.PlanType -cne $p.planType -or $m.BranchPolicy -cnotin @('current','phase') -or $m.CommitPolicy -cnotin @('phase','milestone')) { throw 'Invalid typed plan metadata/Git policy' }
+        }
+        $planning[$key]=$m
+    }
+    foreach ($key in $planning.Keys) {
+        $p = $latest[$key].payload; $m = $planning[$key]
+        if ($p.kind -ceq 'Sprint') {
+            Assert-PlanningSet @($p.plans) $m['Plans']
+            Assert-PlanningSet @($p.members) $m['Members']
+            foreach ($plan in $p.plans) {
+                if (-not $planning.ContainsKey($plan) -or -not $latest[$plan].payload.Contains('planType')) { throw 'Unresolved Sprint plan' }
+                if ($planning[$plan].SprintId -cne $key) { throw 'Sprint plan membership mismatch' }
+                $state = $latest[$plan].payload.to
+                if ($p.to -ceq 'active' -and $state -ceq 'planned') { throw 'Started Sprint has planned plans' }
+                if ($p.to -ceq 'completed' -and $state -cnotin @('completed','canceled')) { throw 'Closed Sprint has unfinished plans' }
+            }
+            foreach ($card in $p.members) {
+                if (-not $cards.ContainsKey($card)) { throw 'Unresolved Sprint card' }
+                $cm = Get-PlanningMetadata $Files ('SDP/KanBan/'+$latest[$card].payload.toPath)
+                if ($cm.SprintId -cne $key -or ($p.to -ceq 'active' -and $cm.CardState -cin @('backlog','queued'))) { throw 'Sprint card membership/state mismatch' }
+            }
+        }
+        if ($m.ContainsKey('SprintId')) {
+            $sprint = $latest[$m.SprintId]
+            if ($null -eq $sprint -or $sprint.payload.kind -cne 'Sprint' -or $sprint.payload.plans -cnotcontains $key) { throw 'Unknown plan SprintId' }
+        }
+    }
+    foreach ($card in $cards.Keys) {
+        $m = Get-PlanningMetadata $Files ('SDP/KanBan/'+$latest[$card].payload.toPath)
+        if ($m.ContainsKey('PlanId')) {
+            if (-not $planning.ContainsKey($m.PlanId) -or -not $latest[$m.PlanId].payload.Contains('planType')) { throw 'Unknown card PlanId' }
+            if ($latest[$m.PlanId].payload.to -ceq 'active' -and $m.CardState -cin @('backlog','queued')) { throw 'Active plan has backlog execution card' }
+        }
+        if ($m.ContainsKey('SprintId') -and $planning.ContainsKey($m.SprintId) -and $latest[$m.SprintId].payload.members -cnotcontains $card) { throw 'Unlisted Sprint card' }
+    }
 }
 
 function Get-ProcessPlan($Artifact) {
@@ -200,7 +283,7 @@ function Get-ProcessPlan($Artifact) {
     $conflicts = [Collections.Generic.List[string]]::new()
     $warnings = [Collections.Generic.List[string]]::new()
     $moves = [ordered]@{}
-    $old = [ordered]@{toolkitVersion='unknown';processProfile='unknown';schemaVersion='unknown'}
+    $old = [ordered]@{toolkitVersion='unknown';processProfile='unknown';managementProfile='unknown';schemaVersion='unknown'}
     $factsPath = 'SDP/Framework/installed-toolkit.manifest.yaml'
     $oldFacts = $null
     $projectManifest = 'SDP/SDP-project.manifest.yaml'
@@ -218,6 +301,8 @@ function Get-ProcessPlan($Artifact) {
         if ((Compare-SemVer $old.toolkitVersion $Artifact.facts.toolkitVersion) -gt 0) { $conflicts.Add('downgrade-blocked') }
         if ($version -ceq '2.0') {
             $old.processProfile = Get-StrictYamlString $oldFacts 'processProfile' 'installed facts'
+            $old.managementProfile = Get-StrictYamlString $oldFacts 'managementProfile' 'installed facts'
+            if ($old.managementProfile -ceq 'sdp-project-management/0.2' -and $Artifact.managementProfile -ceq 'sdp-project-management/0.1') { $conflicts.Add('management-profile-downgrade-blocked') }
             if ($old.processProfile -cne $Artifact.profile) { $conflicts.Add('unsupported-process-transition') }
         }
     }
@@ -256,6 +341,10 @@ function Get-ProcessPlan($Artifact) {
                 $board = [ordered]@{schemaVersion='0.2';projectId=$board.projectId;namespaces=@($board.projectId);ledger='../ProjectManagement/Ledger.ndjson';profile=$Artifact.managementProfile}
                 $after[$boardPath] = ConvertTo-ProcessBase64 (ConvertTo-ProcessJson $board)
             }
+        } elseif ($board.schemaVersion -ceq '0.2' -and $board.profile -ceq 'sdp-project-management/0.1' -and $Artifact.managementProfile -ceq 'sdp-project-management/0.2' -and $board.ledger -ceq '../ProjectManagement/Ledger.ndjson') {
+            $board.profile = $Artifact.managementProfile
+            $after[$boardPath] = ConvertTo-ProcessBase64 (ConvertTo-ProcessJson $board)
+            $warnings.Add('Planning profile adopted; project-owned legacy guidance is preserved. Read managed Framework/planning/Plans.md for current planning rules.')
         } elseif ($board.schemaVersion -cne '0.2' -or $board.profile -cne $Artifact.managementProfile -or $board.ledger -cne '../ProjectManagement/Ledger.ndjson') { $conflicts.Add('unsupported-board-history-contract') }
         $projectID = $board.projectId
     } else {
@@ -462,7 +551,7 @@ function New-ProcessJournal($Plan, $Artifact) {
         $history += ConvertTo-ProcessJson $event
     }
     $report = "# $maint — SDP process installation`n`n| Field | Value |`n| --- | --- |`n| id | $maint |`n| project | $($Plan.managementProject) |`n| state | completed |`n| operation | $id |`n| source | Reviewed installation plan |`n`n"
-    $report += "Old Toolkit: $($Plan.oldFacts.toolkitVersion). Old process profile: $($Plan.oldFacts.processProfile).`nObserved layout: $($Plan.baseline). Target Toolkit: $($Artifact.facts.toolkitVersion).`nNew profile: $($Artifact.profile). Management: $($Artifact.managementProfile).`nConfiguration SHA-256: $($Artifact.configurationDigest).`n`n"
+    $report += "Old Toolkit: $($Plan.oldFacts.toolkitVersion). Old process profile: $($Plan.oldFacts.processProfile). Old management profile: $($Plan.oldFacts.managementProfile).`nObserved layout: $($Plan.baseline). Target Toolkit: $($Artifact.facts.toolkitVersion).`nNew profile: $($Artifact.profile). Management: $($Artifact.managementProfile).`nConfiguration SHA-256: $($Artifact.configurationDigest).`n`n"
     $report += "Operation journal and byte backups: SDP/.sdp-operations/$id.`nEvery recorded before/after hash is verified. This report is finalized only when`nthe operation journal says completed; an earlier interruption is incomplete.`nThe operation uses forward resume, not whole-tree rollback.`n`n## Changed paths`n`n"
     foreach ($a in $Plan.actions) { $report += '- '+$a.action+' '+$a.destination+"`n" }
     $report += "`n## Preserved paths`n`n"

@@ -199,3 +199,12 @@ PR targets sdp-vNow without merging. See Maintenance/IU1/Plan.md and Evidence.md
 SDL/go/sourceinput remains unrelated/untracked. The owner's later typed-plan
 and per-plan Git-policy proposal is registered as KB-SDP-029; this existing large
 plan keeps its already selected phase/milestone branch strategy.
+
+## PL1 — typed plans and Planning skill
+
+MAINT-SDP-0004 selects one working branch, sdp/maintenance-pl1-typed-plans,
+from completed IU3 28bf156. It applies the owner's per-plan Git policy: commits
+per phase rather than branches per phase. PL1-A-M1 c2d8edf adopts the contract;
+PL1-B-M1 delivers executable support and distribution; PL1-C-M1 verifies and
+closes work. Phase pushes and combined review against sdp-vNow remain authorized;
+merging is not. Earlier phase branches and promised strategies remain unchanged.

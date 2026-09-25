@@ -18,8 +18,9 @@ them; code remains in Toolkit/SDPTool, with no nested SDP project.
 
 Studies belong within the phase that needs them. One model can support viewpoints
 at multiple levels; a folder does not assign every model fact the same level.
-The shared records below remain project-wide. Distributed Template/installer
-profiles and automatic project discovery have not been migrated by this local setup.
+The shared records below remain project-wide. The later IU1–IU3 delivery
+implements versioned profile installation and consumer discovery; this does not
+mean every consuming project has been upgraded.
 
 ## Shared project records
 
@@ -37,8 +38,8 @@ KanBan tracks proposal handling, not implementation evidence. KB-SDP-001 is the
 accepted structure decision; KB-SDP-010 retains its separate editorial review.
 
 The remaining structure/consolidation package is in [R3](Maintenance/R3/Plan.md).
-Its five-phase profile is now applied locally by the owner's instruction; current
-installed templates retain their documented authority until a tested migration.
+Its five-phase profile is applied locally; installed consumer facts retain their
+authority until that project selects a supported migration.
 CardState distinguishes review from ongoing work.
 
 ## Shared management — PM1
@@ -49,9 +50,12 @@ Scrums, Sprints, Maintenance, CodeReview and Refactor. [Scrum-0001](Agents/Scrum
 selects [MAINT-SDP-0001](Maintenance/PM1/Plan-and-Evidence.md), without a new wrapper
 card or forced Sprint. Traceability records system changes and links to that history.
 
-## Selected installer Maintenance
+## Current planning and completed installation work
 
-[MAINT-SDP-0003](Maintenance/IU1/Plan.md) is planned directly from KB-SDP-028,
-without a separate Scrum. It covers versioned process configuration, safe
-installation/upgrades and truthful target Maintenance reports. The Study is
-complete; implementation and consumer rollout have not started.
+[MAINT-SDP-0003](Maintenance/IU1/Plan.md) completed versioned process configuration,
+safe installation/upgrades and truthful target Maintenance reports. Live consumer
+rollout remains separately selected.
+
+[MAINT-SDP-0004](Maintenance/PL1/Plan.md) implements KB-SDP-029's typed plans,
+scaled Git policy and Planning skill. Read [Plans](ProjectManagement/Plans.md)
+for the shared contract; keep one authoritative plan per selected work item.

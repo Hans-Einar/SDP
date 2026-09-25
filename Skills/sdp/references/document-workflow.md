@@ -40,7 +40,9 @@ Pure planning/board changes do not get duplicate Traceability events. Keep curre
 explanations in their documents and revision history in Git. Write maintained
 documentation in English; preserve frozen records and intentional localized UI.
 
-Honor the project's phase branches and milestone commits when required. Update
+For typed-plan projects, read [Planning](../../sdp-planning/SKILL.md) when creating
+or revising a plan. Honor the selected plan's BranchPolicy and CommitPolicy;
+retain explicit phase/milestone commitments for existing large plans. Update
 its plan and evidence for each delivered milestone; phase push, PR, merge,
 release and owner acceptance are separate operations with their own authority.
 

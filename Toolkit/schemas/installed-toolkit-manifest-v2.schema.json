@@ -63,7 +63,10 @@
       "const": "sdp-five-phase/0.1"
     },
     "managementProfile": {
-      "const": "sdp-project-management/0.1"
+      "enum": [
+        "sdp-project-management/0.1",
+        "sdp-project-management/0.2"
+      ]
     },
     "configurationDigest": {
       "type": "string",

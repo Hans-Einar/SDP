@@ -26,9 +26,9 @@ frozen consumer fixtures; current canonical skills must use native metadata.
 Skill IDs remain stable, including the bare sdp router. Skill versions are SemVer
 independent of Toolkit, process/profile, language and project product versions.
 Increment MAJOR for incompatible procedures, MINOR for compatible capabilities,
-PATCH for corrections. Ten replacement procedures use 2.0.0; three new roles use
-1.0.0. The Toolkit and install generator declare exact versions and the v2 metadata
-capability. AGENTS contract 2.0.0 adopts routing instead of mandatory Master.
+PATCH for corrections. Ten replacement procedures use 2.0.0; newer focused roles use 1.0.0.
+The routing skill is 1.1.0 with Planning, whose initial version is 1.0.0. The Toolkit and install generator declare exact versions and the v2 metadata
+capability. AGENTS contract 2.1.0 retains routing and adds adopted per-plan Git policy.
 These are source distribution facts in the unreleased Toolkit, not a publication.
 
 Installed files remain under .codex/skills and come from root Skills/ through the

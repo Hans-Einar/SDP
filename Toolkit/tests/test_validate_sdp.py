@@ -502,7 +502,7 @@ class InstallationContractTests(unittest.TestCase):
         )
         self.assertEqual(self.validate_contract(self.contract), [])
         entries = self.contract["entries"]
-        self.assertEqual(len(entries), 45)
+        self.assertEqual(len(entries), 48)  # Planning skill and two portable references
         self.assertEqual(len({entry["id"] for entry in entries}), len(entries))
         self.assertEqual(
             len({entry["destination"].casefold() for entry in entries}), len(entries)

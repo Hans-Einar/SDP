@@ -1,6 +1,7 @@
 # Versioned process installation — contract 2.0
 
-Authority: MAINT-SDP-0003, executed by owner instruction on 2026-09-25.
+Authority: MAINT-SDP-0003 and typed-planning extension MAINT-SDP-0004,
+executed by owner instruction on 2026-09-25.
 This contract extends Install-SDP.ps1; the existing unqualified install-v1
 interface remains supported. There is no second installer executable or Go
 installation engine.
@@ -9,7 +10,7 @@ installation engine.
 
 Toolkit/profiles/five-phase.json is the authored process configuration.
 A build command emits a self-contained JSON artifact with schemaVersion 2.0,
-profile sdp-five-phase/0.1, managementProfile sdp-project-management/0.1,
+profile sdp-five-phase/0.1, managementProfile sdp-project-management/0.2,
 configurationDigest, release facts, file inventory (source, destination,
 ownership, SHA-256 and base64 bytes), ordered relocations and prerequisites.
 Build identity excludes timestamps. The digest covers canonical configuration
@@ -129,3 +130,19 @@ The recovery guarantee covers process interruption at journaled boundaries.
 Per-file flush/rename is used; power-loss durability of the filesystem and
 whole-operation rollback are not claimed. Verification must distinguish injected
 process exits from hardware/power failure.
+
+## Typed-planning profile update (PL1)
+
+The current artifact selects management profile sdp-project-management/0.2 with
+sdp.planning.v1, while the five-phase layout stays 0.1. Both management profiles
+are supported for reading; known board 0.1 → 0.2 adoption is explicit in the plan.
+A reverse profile change is rejected. New payload 0.2 is validated against its
+separate schema; existing payload 0.1 bytes are retained. No plan, card or Sprint
+from this repository is copied into consumers.
+
+The new Planning skill and managed Framework/planning guidance/template are
+distributed together. Existing project-owned README text remains untouched; the
+plan warns that it may describe an older workflow. Managed instruction refresh
+still requires ForceManagedFiles and backups. There is no automatic migration
+of historical card states or product records. SDPTool recognizes both management
+profiles; ordinary viewing does not rebuild tools.

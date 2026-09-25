@@ -61,6 +61,7 @@ silently finish or lose them. Closing a Sprint requires each member's dispositio
 | Scrum | SCRUM-SDP-0001; file Scrum--#0001--Topic.md |
 | Sprint | SPR-SDP-0001; distinguish from legacy SPR-SDP-005 |
 | Maintenance | MAINT-SDP-0001 |
+| Standalone typed plan | PLAN-SDP-0001 |
 | CodeReview | REVIEW-SDP-0001 |
 | Refactor | REFACTOR-SDP-0001 |
 | Management event | EVT-PM-SDP-000001 |
@@ -81,7 +82,8 @@ Use the existing generic envelope 1.0. KanBan events retain x-kanban event types
 and payload 0.1/0.2 interpretation; new card events use 0.2 and per-namespace
 EVT-KB counters. Their paths are relative to SDP/KanBan. New management records
 use x-management:created/updated/started/completed/canceled and
-[management-payload.schema.json](management-payload.schema.json). Management
+[payload 0.1](management-payload.schema.json) for existing untyped work or
+[payload 0.2](management-payload-0.2.schema.json) for typed plans/Sprint plan groups. Management
 paths are relative to SDP; each Sprint event includes its current `members` ID
 array. previousEventId chains each subject, with exact
 from/to states and paths. Use meaningful links to source/result record IDs.
@@ -114,5 +116,6 @@ one of the six planType values. Plan IDs use PLAN-SDP-<four or more digits>.
 Existing untyped records and all payload 0.1 event bytes remain supported.
 Typed plan identity/type cannot change during its lifecycle. Sprint payload 0.2
 retains members for direct cards and adds plans for plan IDs; both snapshots
-are required, and at least one must be nonempty. Document Plans and each plan's
+are required; creation/start requires selected work. Later explicit removals may
+leave an empty Sprint for truthful closure. Document Plans and each plan's
 SprintId must agree with history. No new ledger or CardState is introduced.

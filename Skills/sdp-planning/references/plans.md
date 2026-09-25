@@ -77,10 +77,14 @@ On sprint start, begin its selected planned plans and activate their linked
 execution cards; already active work keeps its state. Completed predecessor
 cards are references, not execution members. A sprint can list direct cards too,
 but a card is selected for execution once, not duplicated as work. Every selected
-member needs an explicit disposition at closure; onHold or canceled work must
-be explained, not falsely completed. Membership changes update both sides and
-append events. A deferred active plan may stay active with a documented pause;
-card onHold describes the pause without adding a new plan state.
+member needs an explicit disposition at closure. Before closing a Sprint, its
+remaining plans must be completed/canceled. Remove unfinished or deferred plans
+through an explicit membership-update event with reasons and reciprocal SprintId
+updates; keep predecessor links in the documents/history. If every member is
+deferred, that explicit removal may leave an empty Sprint for closure; creation
+and start still require selected work. Do not falsely complete
+or cancel work to close a Sprint. A deferred active plan may stay active with a
+documented pause; card onHold describes that pause without a new plan state.
 
 Management transitions record plan selection/start/progress/closure; system
 design/code verification goes to Traceability with management references. Pure

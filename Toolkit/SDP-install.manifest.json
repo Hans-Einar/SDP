@@ -31,10 +31,10 @@
         "schemaVersion": "1.0",
         "toolkitVersion": "0.2.0",
         "frameworkVersion": "1.0.0",
-        "agentsContractVersion": "2.0.0",
+        "agentsContractVersion": "2.1.0",
         "installerVersion": "0.2.0",
         "skills": {
-          "sdp": "1.0.0",
+          "sdp": "1.1.0",
           "sdp-architect": "2.0.0",
           "sdp-auditor": "2.0.0",
           "sdp-change-analysis": "1.0.0",
@@ -46,7 +46,8 @@
           "sdp-verifier": "2.0.0",
           "sdp-versioning": "2.0.0",
           "sdp-vertical-refactor": "2.0.0",
-          "sdp-worker": "2.0.0"
+          "sdp-worker": "2.0.0",
+          "sdp-planning": "1.0.0"
         },
         "capabilities": [
           "sdp.install.v1",
@@ -845,6 +846,57 @@
       "migrationPolicy": "none",
       "governing": {
         "capability": "sdp.install.v1",
+        "schema": null
+      }
+    },
+    {
+      "id": "managed-skill-sdp-planning-skill-md",
+      "kind": "copied",
+      "source": "Skills/sdp-planning/SKILL.md",
+      "destination": ".codex/skills/sdp-planning/SKILL.md",
+      "ownership": "toolkit-managed",
+      "selectionPolicy": "default",
+      "installPolicy": "always",
+      "refreshPolicy": "upgrade-or-force",
+      "backupPolicy": "before-replace",
+      "forcePolicy": "replace-managed",
+      "migrationPolicy": "none",
+      "governing": {
+        "capability": "sdp.skill-metadata.v2",
+        "schema": null
+      }
+    },
+    {
+      "id": "managed-skill-sdp-planning-references-plans-md",
+      "kind": "copied",
+      "source": "Skills/sdp-planning/references/plans.md",
+      "destination": ".codex/skills/sdp-planning/references/plans.md",
+      "ownership": "toolkit-managed",
+      "selectionPolicy": "default",
+      "installPolicy": "always",
+      "refreshPolicy": "upgrade-or-force",
+      "backupPolicy": "before-replace",
+      "forcePolicy": "replace-managed",
+      "migrationPolicy": "none",
+      "governing": {
+        "capability": "sdp.skill-metadata.v2",
+        "schema": null
+      }
+    },
+    {
+      "id": "managed-skill-sdp-planning-references-plan-template-md",
+      "kind": "copied",
+      "source": "Skills/sdp-planning/references/plan-template.md",
+      "destination": ".codex/skills/sdp-planning/references/plan-template.md",
+      "ownership": "toolkit-managed",
+      "selectionPolicy": "default",
+      "installPolicy": "always",
+      "refreshPolicy": "upgrade-or-force",
+      "backupPolicy": "before-replace",
+      "forcePolicy": "replace-managed",
+      "migrationPolicy": "none",
+      "governing": {
+        "capability": "sdp.skill-metadata.v2",
         "schema": null
       }
     }

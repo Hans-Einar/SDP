@@ -172,7 +172,7 @@ sources. Consumers refresh on either appropriate revision. All targets retain
 source/card-specific hashes. No UI state is persisted by the inventory operation.
 
 The initial board reader supports board schema 0.2 with the local
-sdp-project-management/0.1 profile, payload 0.1/0.2 history and the board descriptor's
+sdp-project-management/0.1 or /0.2 profile, payload 0.1/0.2 history and the board descriptor's
 single ledger. It checks card chains, current paths, unique metadata/IDs, CardState
 placement and local Ref resolution. It never reads archived copies as extra events.
 This is a read-side consistency check, not the full management validator. Other
@@ -223,3 +223,9 @@ the executable on the host's configured PATH. The package does not modify PATH,
 overwrite an existing destination, install a viewer or build during viewing.
 PowerShell profile installation remains the single install/update engine;
 this Go facade consumes its results and does not implement another engine.
+
+Typed-planning update: installed management facts and KanBan descriptors accept
+sdp-project-management/0.2 as well as 0.1. The facade still projects cards; it
+does not claim to render plans or validate every management transition. Layout
+registration remains sdp-five-phase/0.1. sdp.planning.v1 is an installed process
+capability, not a new navigation command.

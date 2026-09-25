@@ -56,7 +56,7 @@ Phases still have milestone acceptance; record evidence at each commit.
 | Phase | Milestone | Acceptance | State |
 | --- | --- | --- | --- |
 | PL1-A | PL1-A-M1 | Adopt one plan contract, template and scaled Git/lifecycle guidance; activate KB029 and preserve history | Completed |
-| PL1-B | PL1-B-M1 | Implement typed-plan/sprint validation, portable Planning skill, profile/readers and safe distribution | Planned |
+| PL1-B | PL1-B-M1 | Implement typed-plan/sprint validation, portable Planning skill, profile/readers and safe distribution | Completed |
 | PL1-C | PL1-C-M1 | Verify behavior, compatibility, installed workflow and records; resolve review findings and close work | Planned |
 
 ## Verification and completion

@@ -11,9 +11,10 @@ toolkit:
 framework:
   version: "1.0.0"
 agentsContract:
-  version: "2.0.0"
+  version: "2.1.0"
 skills:
-  sdp: "1.0.0"
+  sdp: "1.1.0"
+  sdp-planning: "1.0.0"
   sdp-architect: "2.0.0"
   sdp-auditor: "2.0.0"
   sdp-change-analysis: "1.0.0"

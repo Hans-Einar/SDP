@@ -25,7 +25,7 @@ func validateProcessFacts(facts map[string]any) error {
 			return fmt.Errorf("missing installed field %s", key)
 		}
 	}
-	if facts["processProfile"] != "sdp-five-phase/0.1" || facts["managementProfile"] != "sdp-project-management/0.1" {
+	if facts["processProfile"] != "sdp-five-phase/0.1" || !supportedManagementProfile(facts["managementProfile"]) {
 		return fmt.Errorf("unsupported installed process profile")
 	}
 	digest, ok := facts["configurationDigest"].(string)
@@ -106,4 +106,8 @@ func pendingInstallations(area string) ([]string, error) {
 		}
 	}
 	return pending, nil
+}
+
+func supportedManagementProfile(value any) bool {
+	return value == "sdp-project-management/0.1" || value == "sdp-project-management/0.2"
 }

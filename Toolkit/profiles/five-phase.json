@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2.0",
   "profile": "sdp-five-phase/0.1",
-  "managementProfile": "sdp-project-management/0.1",
+  "managementProfile": "sdp-project-management/0.2",
   "prerequisites": [
     "powershell>=7.4"
   ],
@@ -10,7 +10,8 @@
     "sdp.install-plan.v2",
     "sdp.manifest.v2",
     "sdp.process.five-phase.v1",
-    "sdp.project-management.v1"
+    "sdp.project-management.v1",
+    "sdp.planning.v1"
   ],
   "files": [
     {
@@ -276,6 +277,36 @@
     {
       "source": "Template/sdp-root/RELEASE-NOTES.md",
       "destination": "SDP/RELEASE-NOTES.md",
+      "ownership": "project"
+    },
+    {
+      "source": "Skills/sdp-planning/SKILL.md",
+      "destination": ".codex/skills/sdp-planning/SKILL.md",
+      "ownership": "managed"
+    },
+    {
+      "source": "Skills/sdp-planning/references/plans.md",
+      "destination": ".codex/skills/sdp-planning/references/plans.md",
+      "ownership": "managed"
+    },
+    {
+      "source": "Skills/sdp-planning/references/plan-template.md",
+      "destination": ".codex/skills/sdp-planning/references/plan-template.md",
+      "ownership": "managed"
+    },
+    {
+      "source": "Skills/sdp-planning/references/plans.md",
+      "destination": "SDP/Framework/planning/Plans.md",
+      "ownership": "managed"
+    },
+    {
+      "source": "Skills/sdp-planning/references/plan-template.md",
+      "destination": "SDP/Framework/planning/Plan-template.md",
+      "ownership": "managed"
+    },
+    {
+      "source": "Template/profiles/five-phase/ProjectManagement/management-payload-0.2.schema.json",
+      "destination": "SDP/ProjectManagement/management-payload-0.2.schema.json",
       "ownership": "project"
     }
   ],

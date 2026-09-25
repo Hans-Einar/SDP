@@ -11,7 +11,7 @@ class Skills(unittest.TestCase):
         manifest=yaml.safe_load((ROOT/'SDP.manifest.yaml').read_text())
         contract=json.loads((ROOT/'Toolkit/SDP-install.manifest.json').read_text())
         roles=list((ROOT/'Skills').glob('*/SKILL.md'))
-        self.assertEqual(len(roles),13)
+        self.assertEqual(len(roles),14)
         self.assertEqual({p.parent.name for p in roles},set(manifest['skills']))
         with tempfile.TemporaryDirectory() as t:
             installed=Path(t)

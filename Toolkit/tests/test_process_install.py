@@ -214,6 +214,85 @@ class ProcessInstall(unittest.TestCase):
         self.put('SDP/02--Requirements/a.md','two')
         self.call('-PlanJson',ok=False)
 
+    def test_typed_plan_history_and_sprint_rejections(self):
+        import copy
+        self.put('SDP/02--Requirements/README.md','# Requirements\n')
+        plan=dict(schemaVersion='1.0',eventId='EVT-PM-PROJECT-000001',eventType='x-management:created',subjectId='PLAN-PROJECT-0001',occurredAt='2026-09-25T18:00:00Z',actor='fixture',commit=None,payload=dict(schemaVersion='0.2',kind='Plan',planType='DesignPlan',previousEventId=None,**{'from':None,'to':'planned'},fromPath=None,toPath='04--Design/Plan.md',reason='Plan fixture',links=[]))
+        text='# Plan\n\n| Field | Value |\n| --- | --- |\n| id | PLAN-PROJECT-0001 |\n| state | planned |\n| PlanType | DesignPlan |\n| BranchPolicy | current |\n| CommitPolicy | phase |\n'
+        def put_events(events):self.put('SDP/ProjectManagement/Ledger.ndjson',''.join(json.dumps(e)+'\n' for e in events))
+        put_events([plan]);self.put('SDP/04--Design/Plan.md',text)
+        self.assertTrue(self.plan()['canApply'])
+        update=copy.deepcopy(plan);update.update(eventId='EVT-PM-PROJECT-000002',eventType='x-management:updated')
+        update['payload'].update(previousEventId=plan['eventId'],**{'from':'planned'},fromPath=plan['payload']['toPath'],planType='ImplementationPlan')
+        put_events([plan,update]);self.put('SDP/04--Design/Plan.md',text.replace('DesignPlan','ImplementationPlan'))
+        self.assertFalse(self.plan()['canApply'])
+        put_events([plan]);self.put('SDP/04--Design/Plan.md',text.replace('current','unknown'))
+        self.assertFalse(self.plan()['canApply'])
+        self.put('SDP/04--Design/Plan.md',text+'| SprintId | SPR-PROJECT-0001 |\n')
+        sprint=copy.deepcopy(plan);sprint.update(eventId='EVT-PM-PROJECT-000002',subjectId='SPR-PROJECT-0001')
+        sprint['payload'].pop('planType');sprint['payload'].update(kind='Sprint',members=[],plans=['PLAN-PROJECT-0001'],links=['PLAN-PROJECT-0001'],toPath='Sprints/One.md')
+        put_events([plan,sprint]);self.put('SDP/Sprints/One.md','# Sprint\n\n| Field | Value |\n| --- | --- |\n| id | SPR-PROJECT-0001 |\n| state | planned |\n| Members |  |\n| Plans | PLAN-PROJECT-0001 |\n')
+        self.assertTrue(self.plan()['canApply'])
+        bad=copy.deepcopy(sprint);bad['payload']['plans']=['PLAN-PROJECT-9999'];put_events([plan,bad])
+        self.assertFalse(self.plan()['canApply'])
+        put_events([plan,sprint]);self.put('SDP/04--Design/Plan.md',text) # missing reciprocal link
+        self.assertFalse(self.plan()['canApply'])
+        self.put('SDP/04--Design/Plan.md',text+'| SprintId | SPR-PROJECT-0001 |\n')
+        started=copy.deepcopy(sprint);started.update(eventId='EVT-PM-PROJECT-000003',eventType='x-management:started');started['payload'].update(previousEventId=sprint['eventId'],**{'from':'planned','to':'active'},fromPath=sprint['payload']['toPath'])
+        put_events([plan,sprint,started]);self.put('SDP/Sprints/One.md',(self.root/'SDP/Sprints/One.md').read_text().replace('| state | planned |','| state | active |'))
+        before=snapshot(self.root)
+        self.assertFalse(self.plan()['canApply']) # plan has not started
+        self.assertEqual(before,snapshot(self.root))
+        # All selected work may be deferred explicitly; ordinary empty Markdown rows work.
+        plan['payload']['to']='active'
+        removed=copy.deepcopy(started);removed.update(eventId='EVT-PM-PROJECT-000004',eventType='x-management:updated')
+        removed['payload'].update(previousEventId=started['eventId'],**{'from':'active'},plans=[],reason='Defer the only plan with a preserved reference.')
+        closed=copy.deepcopy(removed);closed.update(eventId='EVT-PM-PROJECT-000005',eventType='x-management:completed')
+        closed['payload'].update(previousEventId=removed['eventId'],to='completed')
+        put_events([plan,sprint,started,removed,closed])
+        self.put('SDP/04--Design/Plan.md',text.replace('| state | planned |','| state | active |'))
+        self.put('SDP/Sprints/One.md','# Sprint\n\n| Field | Value |\n| --- | --- |\n| id | SPR-PROJECT-0001 |\n| state | completed |\n| Members | |\n| Plans | |\n')
+        self.assertTrue(self.plan()['canApply'])
+
+    def test_planning_profile_upgrade(self):
+        import yaml
+        old=Path(self.tmp.name)/'old.artifact.json'
+        old.write_bytes(subprocess.check_output(['git','show','28bf156:Toolkit/profiles/five-phase.artifact.json'],cwd=ROOT))
+        old_plan=json.loads(self.call('-PlanJson',artifact=old).stdout)
+        self.call('-ApplyPlan',self.save(old_plan),artifact=old)
+        history=(self.root/'SDP/ProjectManagement/Ledger.ndjson').read_bytes()
+        self.put('SDP/ProjectManagement/README.md','# Owner workflow notes\n')
+        self.assertFalse(self.plan()['canApply'])  # managed instructions must be explicitly refreshed
+        plan=self.plan('-ForceManagedFiles');self.assertTrue(plan['canApply'],plan['conflicts'])
+        self.apply(plan,'-ForceManagedFiles')
+        self.assertTrue((self.root/'SDP/ProjectManagement/Ledger.ndjson').read_bytes().startswith(history))
+        self.assertEqual((self.root/'SDP/ProjectManagement/README.md').read_text(),'# Owner workflow notes\n')
+        facts=yaml.safe_load((self.root/'SDP/Framework/installed-toolkit.manifest.yaml').read_text())
+        self.assertEqual(facts['managementProfile'],'sdp-project-management/0.2')
+        self.assertIn('sdp.planning.v1',facts['capabilities'])
+        self.assertEqual(facts['skills']['sdp-planning'],'1.0.0')
+        self.assertTrue((self.root/'SDP/Framework/planning/Plans.md').is_file())
+        self.assertTrue((self.root/'.codex/skills/sdp-planning/SKILL.md').is_file())
+        board=json.loads((self.root/'SDP/KanBan/board.json').read_text())
+        self.assertEqual(board['profile'],'sdp-project-management/0.2')
+        self.assertEqual(self.plan()['actions'],[])
+        downgrade=json.loads(self.call('-PlanJson','-ForceManagedFiles',artifact=old).stdout)
+        self.assertFalse(downgrade['canApply'])
+        self.assertIn('management-profile-downgrade-blocked',downgrade['conflicts'])
+        # New typed events are accepted only through the new explicit payload schema.
+        ledger=self.root/'SDP/ProjectManagement/Ledger.ndjson'
+        event=dict(schemaVersion='1.0',eventId='EVT-PM-PROJECT-000003',eventType='x-management:created',subjectId='PLAN-PROJECT-0001',occurredAt='2026-09-25T18:00:00Z',actor='fixture',commit=None,payload=dict(schemaVersion='0.2',kind='Plan',planType='DesignPlan',previousEventId=None,**{'from':None,'to':'planned'},fromPath=None,toPath='04--Design/Plan.md',reason='Plan fixture',links=[]))
+        # Installer has already allocated four events across the two operations.
+        events=[json.loads(x) for x in ledger.read_text().splitlines()]
+        n=max(int(e['eventId'].rsplit('-',1)[1]) for e in events)+1
+        event['eventId']=f'EVT-PM-PROJECT-{n:06d}'
+        with ledger.open('a') as f:f.write(json.dumps(event)+'\n')
+        self.put('SDP/04--Design/Plan.md','# Plan\n\n| Field | Value |\n| --- | --- |\n| id | PLAN-PROJECT-0001 |\n| state | planned |\n| PlanType | DesignPlan |\n| BranchPolicy | current |\n| CommitPolicy | phase |\n')
+        self.assertTrue(self.plan()['canApply'])
+        event['payload']['planType']='InventedPlan'
+        ledger.write_text('\n'.join(json.dumps(e) for e in events+[event])+'\n')
+        self.assertFalse(self.plan()['canApply'])
+
     def test_final_artifact_release_notes_recovery(self):
         self.xfmd()
         history=(self.root/'SDP/Agents/KanBan/Ledger.ndjson').read_bytes()

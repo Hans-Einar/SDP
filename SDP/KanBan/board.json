@@ -7,5 +7,5 @@
     "SDUI"
   ],
   "ledger": "../ProjectManagement/Ledger.ndjson",
-  "profile": "sdp-project-management/0.1"
+  "profile": "sdp-project-management/0.2"
 }
