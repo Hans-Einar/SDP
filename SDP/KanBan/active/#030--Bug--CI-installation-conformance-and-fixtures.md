@@ -5,7 +5,7 @@
 | id | KB-SDP-030 |
 | project | SDP |
 | type | Bug |
-| CardState | ready |
+| CardState | in-progress |
 | PlanId | MAINT-SDP-0005 |
 | Systems | SDP |
 | created | 2026-09-25T17:58:59Z |
@@ -48,3 +48,10 @@ until the authorized MergePlan execution activates its readiness work.
 
 2026-09-25T22:21:31Z: Owner authorized main integration on 2026-09-26; activate this
 readiness dependency as ready. Earlier planning-only statements are historical.
+
+## MP1-R-M3 investigation
+
+Planning skill delivery added three managed entries without refreshing v1
+expected outcomes. Audit every generated candidate before accepting the additions.
+Linux shallow checkout lacks the earlier profile artifact; provision full history
+and pin its full commit identity.

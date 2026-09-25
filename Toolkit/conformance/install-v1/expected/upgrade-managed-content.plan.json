@@ -522,6 +522,54 @@
       "mutatesTarget": false,
       "oldToolkitVersion": "0.1.0",
       "newToolkitVersion": "0.2.0"
+    },
+    {
+      "sequence": 33,
+      "action": "unchanged",
+      "entryId": "managed-skill-sdp-planning-skill-md",
+      "source": "Skills/sdp-planning/SKILL.md",
+      "generator": null,
+      "targetSource": null,
+      "targetSourceSha256": null,
+      "destinationPrecondition": null,
+      "destination": ".codex/skills/sdp-planning/SKILL.md",
+      "ownership": "toolkit-managed",
+      "reason": "content-matches",
+      "mutatesTarget": false,
+      "oldToolkitVersion": "0.1.0",
+      "newToolkitVersion": "0.2.0"
+    },
+    {
+      "sequence": 34,
+      "action": "unchanged",
+      "entryId": "managed-skill-sdp-planning-references-plans-md",
+      "source": "Skills/sdp-planning/references/plans.md",
+      "generator": null,
+      "targetSource": null,
+      "targetSourceSha256": null,
+      "destinationPrecondition": null,
+      "destination": ".codex/skills/sdp-planning/references/plans.md",
+      "ownership": "toolkit-managed",
+      "reason": "content-matches",
+      "mutatesTarget": false,
+      "oldToolkitVersion": "0.1.0",
+      "newToolkitVersion": "0.2.0"
+    },
+    {
+      "sequence": 35,
+      "action": "unchanged",
+      "entryId": "managed-skill-sdp-planning-references-plan-template-md",
+      "source": "Skills/sdp-planning/references/plan-template.md",
+      "generator": null,
+      "targetSource": null,
+      "targetSourceSha256": null,
+      "destinationPrecondition": null,
+      "destination": ".codex/skills/sdp-planning/references/plan-template.md",
+      "ownership": "toolkit-managed",
+      "reason": "content-matches",
+      "mutatesTarget": false,
+      "oldToolkitVersion": "0.1.0",
+      "newToolkitVersion": "0.2.0"
     }
   ]
 }

@@ -257,7 +257,7 @@ class ProcessInstall(unittest.TestCase):
     def test_planning_profile_upgrade(self):
         import yaml
         old=Path(self.tmp.name)/'old.artifact.json'
-        old.write_bytes(subprocess.check_output(['git','show','28bf156:Toolkit/profiles/five-phase.artifact.json'],cwd=ROOT))
+        old.write_bytes(subprocess.check_output(['git','show','28bf156a02e1dc3e6aa29fd8579a1273bb343a1f:Toolkit/profiles/five-phase.artifact.json'],cwd=ROOT))
         old_plan=json.loads(self.call('-PlanJson',artifact=old).stdout)
         self.call('-ApplyPlan',self.save(old_plan),artifact=old)
         history=(self.root/'SDP/ProjectManagement/Ledger.ndjson').read_bytes()

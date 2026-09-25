@@ -28,3 +28,25 @@ the actual repository graph and both schema surfaces.
 MP1-R-M3 installation conformance, exact-candidate verification, independent
 review and remote CI remain outstanding. Local compatibility checks do not
 establish main integration readiness.
+
+## MP1-R-M3 — installation readiness repair
+
+The v1 reference mismatch is a stale conformance authority after PL1's authorized
+Planning skill distribution. Generated candidates were written outside the repo
+and structurally compared with every existing expected outcome before acceptance.
+Exactly 12 of 19 outcomes change, each by three Planning skill entries only:
+create/missing-target for empty profiles, unchanged/content-matches for populated
+profiles. Removing these entries and normalizing sequence numbers yields exact
+structural equality with every previous outcome. Seven blocked/fatal outcomes
+remain byte-identical. [Audit](ConformanceAudit.json) records before/after hashes.
+No installer behavior or error expectation was weakened to obtain a pass.
+
+The Linux workflow now checks out full history for the upgrade test, which reads
+a specific earlier committed five-phase artifact. The test now names its full
+40-character commit rather than an abbreviation. It still installs the old
+artifact and checks history preservation and current Planning capability on
+upgrade. The old source is not replaced by current output.
+
+Local candidate generation and plan/apply conformance: all 19 scenarios pass with
+PowerShell /tmp/sk1-pwsh/pwsh. Normal comparison, profile installation, interruption
+matrix and remote Windows/Linux gates are recorded below when actually complete.
