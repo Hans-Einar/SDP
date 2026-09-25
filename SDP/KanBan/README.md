@@ -32,7 +32,7 @@
 | KB-SDUI-001 | Ref | completed | [SDUI as a subproject and library for SDP tools](completed/%23001--SDUI--Ref--SDP--017--sdptool.md) |
 | KB-SDUI-002 | Ref | completed | [KB-SDUI-002 — Split the shared design into phase-owned sources](completed/%23002--SDUI--Ref--SDL--004--Language-source-organization.md) |
 | KB-SDP-021 | Change | completed | [Saved-file design preview](completed/%23021--Change--SDPTool-saved-design-preview.md) |
-| KB-SDP-022 | Change | active | [Project recognition and delegation contract](active/%23022--Change--SDPTool-discovery-contract.md) |
+| KB-SDP-022 | Change | completed | [Project recognition and delegation contract](completed/%23022--Change--SDPTool-discovery-contract.md) |
 | KB-SDP-023 | Change | active | [Project resolver and configured viewer bridge](active/%23023--Change--SDPTool-project-viewer-bridge.md) |
 | KB-SDP-024 | Change | active | [Model-derived navigation and selected generation](active/%23024--Change--SDPTool-model-navigation.md) |
 | KB-SDP-025 | Change | active | [KanBan and SDUI navigation services](active/%23025--Change--SDPTool-KanBan-and-SDUI-inventory.md) |

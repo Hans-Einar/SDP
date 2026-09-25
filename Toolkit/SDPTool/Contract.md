@@ -90,3 +90,55 @@ installation facts. An installer can later distribute/create bindings under
 KB-SDP-028, with ownership/preservation decisions there. This local descriptor
 neither installs the five-phase profile elsewhere nor changes strict 1.0 manifest
 schemas; that is why a separate, narrowly scoped binding file is justified.
+
+## Commands, host policy and consumer protocol — T1-M2
+
+| Invocation | Result and ownership |
+| --- | --- |
+| sdptool [PROJECT-OR-SDP-AREA] discover | JSON recognition and declared capabilities; read-only |
+| sdptool preview FILE --output DIR | Standalone saved-file operation above |
+| sdptool [PATH] view ip --model ID | Open the registered authored plan with generated navigation in the configured viewer |
+| sdptool [PATH] tree --model ID | JSON navigation inventory; no detail rendering or writes |
+| sdptool [PATH] select --model ID --uri URI --revision HASH --output DIR | Validate project binding/revision, then generate selected current-source detail |
+| sdptool [PATH] sdui-preview --model ID --output DIR | Only the implemented, registered SDUI service selected in T3 |
+
+`implementation-plan` is an alias for `ip`. `generate ip` remains unsupported;
+opening a plan must not synthesize, overwrite or imply approval of one. Explicit
+path precedes the command; omission means current directory. Flags follow the
+operation's fixed positional arguments. Reject extra arguments and unknown flags.
+
+Host executable precedence: explicit --viewer/--sdl-tool/--renderer options,
+then SDP_XFMD/SDP_SDL_TOOL/SDP_MMDR, then viewer/sdl names on PATH when needed.
+No renderer means Mermaid output, not an automatic build/install. Resolve programs
+before launch, preserve argument boundaries and never invoke a shell. Registration
+files cannot register executables. No startup tool compilation or required daemon.
+Standalone library calls accept already chosen options and do not read host policy.
+
+The initial bridge opens the actual plan in the main pane and the selected model's
+generated navigator in the navigation pane. Register --navigator, --sdl-tool,
+--sdl-source, --project and optional --renderer with existing XFMD conventions;
+allocate a unique --window-id. A model-free project can open its plan without
+SDL flags. The configured viewer is the long-lived process owning that window;
+keep temporary navigation resources until that process exits, then clean up on
+normal/error/canceled exit. A viewer that detaches must use a future explicit
+lease adapter, not this synchronous bridge. Use XDG_RUNTIME_DIR when available,
+otherwise the normal temporary directory; never hardcode a user ID.
+
+JSON responses identify schema `sdptool/0.1` and operation. Recognition reports
+status, root, area, registration and capabilities; language capabilities remain
+`declared` until the owning parser is run. Tree replies include source revision,
+nodes and roots. Each node has stable id, kind, label, state and optional children,
+reference or typed target. A target carries project/model identity, operation and
+an SDL-owned URI or source path; it is not a shell command. Nodes are shared by ID
+rather than recursively cloning graphs. Bound expansion with explicit references.
+All catalog viewpoints appear, with empty/unsupported states where applicable.
+
+On structure changes refresh the tree. Select with the exact source revision
+from that tree; reject mismatches before rendering and again before publication.
+A client tracks its own monotonically increasing request/selection identity and
+ignores late replies, including same-revision replies for a former selection.
+Cancellation kills owned child requests; it never signals unrelated consumers.
+Diagnostics leave the previous successful bundle displayed. Consumers release
+bundles explicitly according to the ownership contract; transport completion alone
+is not a request to delete files still in use. Fixture/harness validation belongs
+to T4-M1; actual XFMD GUI integration is T4-M2 and XFMD-owned.
