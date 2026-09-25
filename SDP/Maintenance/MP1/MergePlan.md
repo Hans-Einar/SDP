@@ -90,7 +90,7 @@ and candidate identities immediately before each integration.
 | Phase | Milestone | Delivery and acceptance | State |
 | --- | --- | --- | --- |
 | MP1-R — readiness | MP1-R-M1 | Resolve explicit inclusion/exclusion of PR #8; refresh branch/PR/local-work inventory and freeze intended scope | Complete |
-| MP1-R | MP1-R-M2 | Repair KB-SDP-011's 38 findings without rewriting historical evidence; full Toolkit validator and unit suite pass | Planned |
+| MP1-R | MP1-R-M2 | Repair KB-SDP-011's 38 findings without rewriting historical evidence; full Toolkit validator and unit suite pass | Complete |
 | MP1-R | MP1-R-M3 | Repair KB-SDP-030: portable historical artifact provisioning and audited v1 expected outcomes; Linux/Windows CI jobs pass including the previously skipped fault matrix | Planned |
 | MP1-V — candidate verification | MP1-V-M1 | Fresh disposable checkout of the exact candidate; current contract, language, consumer and process checks pass; independent review covers fixes and candidate; record full SHA/tree and CI run | Planned |
 | MP1-I — integration | MP1-I-M1 | With owner merge authorization, merge the verified combined candidate to sdp-vNow; verify remote ancestry/tree and record actual merge SHA | Planned |
@@ -207,3 +207,8 @@ MP1-R-M1 verification: remote main/staging/pilot heads and old tag still match t
 recorded snapshot; PR #35 is the combined candidate. Backlog and document checks
 pass after activating readiness dependencies. No Issue #7-specific commits are
 selected, and SDL/go/sourceinput remains untracked and excluded.
+
+### MP1-R-M2 — compatibility repair
+
+[Evidence](Evidence.md) records the resolution of all 38 Traceability findings.
+KB-SDP-011 is completed; installation host tests and CI remain separate gates.

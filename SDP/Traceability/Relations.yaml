@@ -79,51 +79,6 @@ slices:
     study: Sprints/Sprint-001/InstallationContractStudy.md
     implementationNotes: Sprints/Sprint-001/implementationNotes.md
     verification:
-  SDPTOOL-VER-T4-M1:
-    status: passed
-    path: Verification/SDPTOOL-VER-T4-M1.md
-    card: KB-SDP-026
-    managementId: SPR-SDP-0001
-  SDPTOOL-VER-T3-M3:
-    status: passed
-    path: Verification/SDPTOOL-VER-T3-M3.md
-    card: KB-SDP-025
-    managementId: SPR-SDP-0001
-  SDPTOOL-VER-T3-M2:
-    status: passed
-    path: Verification/SDPTOOL-VER-T3-M2.md
-    card: KB-SDP-024
-    managementId: SPR-SDP-0001
-  SDPTOOL-VER-T3-M1:
-    status: passed
-    path: Verification/SDPTOOL-VER-T3-M1.md
-    card: KB-SDP-024
-    managementId: SPR-SDP-0001
-  SDPTOOL-VER-T2-M2:
-    status: passed
-    path: Verification/SDPTOOL-VER-T2-M2.md
-    card: KB-SDP-023
-    managementId: SPR-SDP-0001
-  SDPTOOL-VER-T2-M1:
-    status: passed
-    path: Verification/SDPTOOL-VER-T2-M1.md
-    card: KB-SDP-023
-    managementId: SPR-SDP-0001
-  SDPTOOL-VER-T1-M2:
-    status: passed
-    path: Verification/SDPTOOL-VER-T1-M2.md
-    card: KB-SDP-022
-    managementId: SPR-SDP-0001
-  SDPTOOL-VER-T1-M1:
-    status: passed
-    path: Verification/SDPTOOL-VER-T1-M1.md
-    card: KB-SDP-022
-    managementId: SPR-SDP-0001
-  SDPTOOL-VER-P0-M1:
-    status: passed
-    path: Verification/SDPTOOL-VER-P0-M1.md
-    card: KB-SDP-021
-    managementId: SPR-SDP-0001
       - VER-SPS-001
       - VER-SPS-001-002
       - VER-SPS-001-003
@@ -240,6 +195,51 @@ reviews:
       low: 0
       note: 4
 verification:
+  SDPTOOL-VER-T4-M1:
+    status: passed
+    path: Verification/SDPTOOL-VER-T4-M1.md
+    card: KB-SDP-026
+    managementId: SPR-SDP-0001
+  SDPTOOL-VER-T3-M3:
+    status: passed
+    path: Verification/SDPTOOL-VER-T3-M3.md
+    card: KB-SDP-025
+    managementId: SPR-SDP-0001
+  SDPTOOL-VER-T3-M2:
+    status: passed
+    path: Verification/SDPTOOL-VER-T3-M2.md
+    card: KB-SDP-024
+    managementId: SPR-SDP-0001
+  SDPTOOL-VER-T3-M1:
+    status: passed
+    path: Verification/SDPTOOL-VER-T3-M1.md
+    card: KB-SDP-024
+    managementId: SPR-SDP-0001
+  SDPTOOL-VER-T2-M2:
+    status: passed
+    path: Verification/SDPTOOL-VER-T2-M2.md
+    card: KB-SDP-023
+    managementId: SPR-SDP-0001
+  SDPTOOL-VER-T2-M1:
+    status: passed
+    path: Verification/SDPTOOL-VER-T2-M1.md
+    card: KB-SDP-023
+    managementId: SPR-SDP-0001
+  SDPTOOL-VER-T1-M2:
+    status: passed
+    path: Verification/SDPTOOL-VER-T1-M2.md
+    card: KB-SDP-022
+    managementId: SPR-SDP-0001
+  SDPTOOL-VER-T1-M1:
+    status: passed
+    path: Verification/SDPTOOL-VER-T1-M1.md
+    card: KB-SDP-022
+    managementId: SPR-SDP-0001
+  SDPTOOL-VER-P0-M1:
+    status: passed
+    path: Verification/SDPTOOL-VER-P0-M1.md
+    card: KB-SDP-021
+    managementId: SPR-SDP-0001
   VER-SDPTOOL-001:
     status: pass
     path: Verification/VER-SDPTOOL-001.md

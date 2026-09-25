@@ -38,7 +38,7 @@ consumers, approved project data, append-only ledgers and historical evidence.
   this audit does not block its bounded discovery/viewer implementation.
 - [KB-SDP-014](%23014--Proposal--KanBan-version-contract-and-distribution.md) owns
   KanBan compatibility/distribution; coordinate its canonical/distributed paths.
-- [KB-SDP-011](../active/%23011--Bug--Traceability-id-conformance.md) owns the known ID/CI
+- [KB-SDP-011](../completed/%23011--Bug--Traceability-id-conformance.md) owns the known ID/CI
   mismatch; record it as a baseline, not proof that reorganization fixed it.
 - [KB-SDP-010](../active/%23010--Proposal--Document-consolidation.md) owns the
   existing editorial consolidation review. Reuse that work; this is a broader

@@ -3,7 +3,7 @@
 | Field | Value |
 | --- | --- |
 | id | KB-SDP-011 |
-| CardState | in-progress |
+| CardState | completed |
 | ScrumId | SCRUM-SDP-0001 |
 | Systems | SDP |
 | project | SDP |
@@ -49,3 +49,9 @@ that conceals errors; the card remains backlog until execution is selected.
 
 2026-09-25T22:21:31Z: Owner authorized main integration on 2026-09-26; activate this
 readiness dependency as in-progress. Earlier planning-only statements are historical.
+
+## Outcome
+
+MP1-R-M2 resolves all 38 findings with compatible typed IDs and corrected evidence ownership; full Toolkit validator and 106-test discovery pass (19 host-dependent tests deferred to MP1-R-M3). Historical evidence is preserved.
+
+[MP1 evidence](../../Maintenance/MP1/Evidence.md).

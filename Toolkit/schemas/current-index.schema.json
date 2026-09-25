@@ -78,10 +78,10 @@
       "type": "string",
       "pattern": "^REL-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\\+([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?$"
     },
-    "sprintId": { "type": "string", "pattern": "^Sprint-[0-9]{3,}$" },
+    "sprintId": { "type": "string", "pattern": "^(?:Sprint-[0-9]{3,}|SPR-[A-Z][A-Z0-9]*-[0-9]{3,})$" },
     "refactorId": { "type": "string", "pattern": "^Refactor-[0-9]{3,}$" },
-    "iterationId": { "type": "string", "pattern": "^SPI-[0-9]{3,}$" },
-    "sliceId": { "type": "string", "pattern": "^SPS-[0-9]{3,}$" },
+    "iterationId": { "type": "string", "pattern": "^(?:SPI-[0-9]{3,}|ITR-[A-Z][A-Z0-9]*-[0-9]{3,}-[0-9]{3,})$" },
+    "sliceId": { "type": "string", "pattern": "^(?:SPS-[0-9]{3,}|SLC-[A-Z][A-Z0-9]*-[0-9]{3,}-[0-9]{3,})$" },
     "fixId": {
       "type": "string",
       "pattern": "^(FIX|HOTFIX)-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\\+([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?-[0-9]{3}$"

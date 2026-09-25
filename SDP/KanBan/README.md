@@ -19,7 +19,7 @@
 | KB-SDP-008 | Change | completed | [K2-M1: visible metadata in KanBan cards](completed/%23008--Change--Visible-card-metadata.md) |
 | KB-SDP-009 | Change | completed | [K3-M1: traceable card merging and splitting](completed/%23009--Change--Card-merge-and-split.md) |
 | KB-SDP-010 | Proposal | active | [Consolidate documentation and separate active contracts from history](active/%23010--Proposal--Document-consolidation.md) |
-| KB-SDP-011 | Bug | active | [Resolve older Traceability IDs against the Toolkit contract](active/%23011--Bug--Traceability-id-conformance.md) |
+| KB-SDP-011 | Bug | completed | [Resolve older Traceability IDs against the Toolkit contract](completed/%23011--Bug--Traceability-id-conformance.md) |
 | KB-SDP-012 | Change | completed | [K4-M1: living cards, revision logs and Git diff](completed/%23012--Change--Card-history.md) |
 | KB-SDP-013 | Change | completed | [English documentation throughout SDP, SDL and SDUI](completed/%23013--Change--English-documentation.md) |
 | KB-SDP-014 | Proposal | backlog | [Define the KanBan version contract and reusable distribution](backlog/%23014--Proposal--KanBan-version-contract-and-distribution.md) |
