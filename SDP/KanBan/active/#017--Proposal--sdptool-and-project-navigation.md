@@ -25,7 +25,7 @@ background and do not create duplicate implementation assignments.
 - [KB-SDP-023](../completed/%23023--Change--SDPTool-project-viewer-bridge.md)
 - [KB-SDP-024](../completed/%23024--Change--SDPTool-model-navigation.md)
 - [KB-SDP-025](../completed/%23025--Change--SDPTool-KanBan-and-SDUI-inventory.md)
-- [KB-SDP-026](%23026--CodeReview--SDPTool-consumer-contract-review.md)
+- [KB-SDP-026](../completed/%23026--CodeReview--SDPTool-consumer-contract-review.md)
 
 Explicit work retained here: P0-M2 unsaved-buffer/snapshot input; T4-M2 interoperability with the separately delivered native XFMD consumer; T5 slice proposal/validation, evidence-aware implementation plans/roadmaps, and Git-backed card history/diff.
 
@@ -35,7 +35,7 @@ semantics, advanced plan generation or native XFMD implementation is silently
 added to the Sprint. The [Sprint](../../Sprints/Sprint--%230001--SDPTool-preview-and-navigation.md)
 records dependencies, exclusions and start/completion rules.
 
-## Active assignment — owner decision 2026-09-25
+## Earlier assignment — owner decision 2026-09-25
 
 SDPTool is one SDP product feature, **SdpTool**, designed through this project's
 numbered 01--Mandate through 05--Implementation directories. No SDP directory,
@@ -290,3 +290,10 @@ EVT-KB-SDP-000123; next review at the next selection or relevant dependency deli
 ## Scrum-0002 worklog
 
 2026-09-25T12:38:14Z — EVT-KB-SDP-000130: recorded partial transfer and remaining scope; no product delivery claimed.
+
+## Sprint-0001 outcome
+
+2026-09-25T13:42:41Z — EVT-KB-SDP-000154: all six transferred cards are completed with
+producer verification. Remaining scope above stays open; no additional feature
+implementation is in progress on this parent. Skills/install Maintenance Scrums
+are separately registered in #027/#028 and remain unstarted.

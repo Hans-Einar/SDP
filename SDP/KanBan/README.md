@@ -36,7 +36,7 @@
 | KB-SDP-023 | Change | completed | [Project resolver and configured viewer bridge](completed/%23023--Change--SDPTool-project-viewer-bridge.md) |
 | KB-SDP-024 | Change | completed | [Model-derived navigation and selected generation](completed/%23024--Change--SDPTool-model-navigation.md) |
 | KB-SDP-025 | Change | completed | [KanBan and SDUI navigation services](completed/%23025--Change--SDPTool-KanBan-and-SDUI-inventory.md) |
-| KB-SDP-026 | CodeReview | active | [Consumer contract and end-to-end delivery review](active/%23026--CodeReview--SDPTool-consumer-contract-review.md) |
+| KB-SDP-026 | CodeReview | completed | [Consumer contract and end-to-end delivery review](completed/%23026--CodeReview--SDPTool-consumer-contract-review.md) |
 | KB-SDP-027 | Study | backlog | [Scrum for skills consolidation and project activation](backlog/%23027--Study--Skills-review-and-project-activation.md) |
 | KB-SDP-028 | Study | backlog | [Scrum for versioned SDP installation and upgrades](backlog/%23028--Study--Installer-upgrade-and-versioned-layout.md) |
 

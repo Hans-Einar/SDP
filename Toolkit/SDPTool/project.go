@@ -21,6 +21,7 @@ type Model struct {
 	Profile string `json:"profile"`
 }
 type Registration struct {
+	DefaultModel       string  `json:"defaultModel,omitempty"`
 	SchemaVersion      string  `json:"schemaVersion"`
 	ProjectID          string  `json:"projectId"`
 	ProcessProfile     string  `json:"processProfile"`
@@ -190,6 +191,19 @@ func Discover(selected string) (Project, error) {
 	if e = json.Unmarshal(b, &raw); e != nil {
 		return bad("invalid", e)
 	}
+	if _, ok := raw["schemaVersion"].(string); !ok {
+		return bad("invalid", fmt.Errorf("missing/string schemaVersion required"))
+	}
+	if _, ok := raw["processProfile"].(string); !ok {
+		return bad("invalid", fmt.Errorf("missing/string processProfile required"))
+	}
+	for _, key := range []string{"projectManifest", "implementationPlan", "kanban", "defaultModel"} {
+		if value, exists := raw[key]; exists {
+			if text, ok := value.(string); !ok || text == "" {
+				return bad("invalid", fmt.Errorf("%s must be a nonempty path", key))
+			}
+		}
+	}
 	if raw["schemaVersion"] != "1.0" || raw["processProfile"] != "sdp-five-phase/0.1" {
 		return bad("unsupported", fmt.Errorf("unsupported navigation schema or process profile"))
 	}
@@ -208,6 +222,17 @@ func Discover(selected string) (Project, error) {
 		ids[m.ID] = true
 		if _, e = resolvePath(p.Root, m.Source); e != nil {
 			return bad("invalid", e)
+		}
+	}
+	if r.DefaultModel != "" {
+		found := false
+		for _, m := range r.Models {
+			if m.ID == r.DefaultModel {
+				found = true
+			}
+		}
+		if !found {
+			return bad("invalid", fmt.Errorf("defaultModel is not a registered SDL model"))
 		}
 	}
 	for _, v := range []string{r.ImplementationPlan, r.KanBan, r.ProjectManifest} {
@@ -268,6 +293,9 @@ func (p Project) model(id string, sdui bool) (Model, string, error) {
 	list := p.Registration.Models
 	if sdui {
 		list = p.Registration.SDUI
+	}
+	if id == "" && !sdui {
+		id = p.Registration.DefaultModel
 	}
 	if id == "" && len(list) == 1 {
 		id = list[0].ID

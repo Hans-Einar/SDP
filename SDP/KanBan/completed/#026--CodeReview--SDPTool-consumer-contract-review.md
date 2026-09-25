@@ -5,7 +5,7 @@
 | id | KB-SDP-026 |
 | project | SDP |
 | type | CodeReview |
-| CardState | ready |
+| CardState | completed |
 | ScrumId | SCRUM-SDP-0002 |
 | SprintId | SPR-SDP-0001 |
 | Systems | SDPTOOL |
@@ -38,7 +38,7 @@ are recorded; review completion alone cannot mark missing code delivered.
 
 | Source | Transferred scope | Retained scope |
 | --- | --- | --- |
-| [KB-SDP-017](%23017--Proposal--sdptool-and-project-navigation.md) | T4-M1: Consumer contract and end-to-end delivery review | P0-M2, T4-M2 and T5 remain in the source; sibling cards own the other selected milestones |
+| [KB-SDP-017](../active/%23017--Proposal--sdptool-and-project-navigation.md) | T4-M1: Consumer contract and end-to-end delivery review | P0-M2, T4-M2 and T5 remain in the source; sibling cards own the other selected milestones |
 
 Typed partial split: KBO-SDP-000004. The [single feature plan](../../05--Implementation/SDPTool.md)
 owns phase/milestone acceptance; the [Sprint](../../Sprints/Sprint--%230001--SDPTool-preview-and-navigation.md) owns
@@ -49,3 +49,7 @@ membership and completion. No implementation is delivered by this registration.
 2026-09-25T12:38:14Z — EVT-KB-SDP-000129: registered with acceptance and dependency boundaries. Await Sprint start.
 
 2026-09-25T13:08:54Z — EVT-KB-SDP-000139: Owner selects Sprint execution before the skills and installer Scrums; backlog to active/ready.
+
+2026-09-25T13:36:16Z — EVT-KB-SDP-000150: T4-M1: review the complete producer through executable CLI consumer tests and record concrete findings and limits.
+
+2026-09-25T13:42:06Z — EVT-KB-SDP-000151: T4-M1 delivered: executable consumer fixtures, combined producer review and fixes; REVIEW-SDP-0001 records actual evidence and external native acceptance limits.

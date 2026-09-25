@@ -17,11 +17,11 @@ SDPTool owns project discovery/configuration, command coordination, navigation
 inventory and viewer adapters. SDL and SDUI retain their parsers, runtimes and
 projection/export implementations. Prefer reuse of existing APIs/commands.
 
-Intended usage:
+Current project operations:
 
 ```sh
-sdptool ~/git/XFMD generate ip
-sdptool generate ip
+sdptool /path/to/project discover
+sdptool tree
 sdptool view ip
 ```
 
@@ -76,7 +76,8 @@ sdptool /path/to/project discover
 sdptool /path/to/project view ip --model sdptool --viewer /path/to/xfmd --sdl-tool /path/to/sdl
 ```
 
-The repository registration includes two model entries, so select the desired ID.
+The repository registers two SDL model entries and explicitly defaults to sdptool;
+select --model sdl-sdui for the shared language design.
 The viewer command waits until that window exits to keep generated navigation
 resources alive. Host options can also use SDP_XFMD, SDP_SDL_TOOL and SDP_MMDR.
 `generate ip` remains later scope and never runs implicitly while viewing.
@@ -93,3 +94,6 @@ Use the revision/targets returned by tree, not a hardcoded hash. KanBan nodes ca
 current file paths, CardState and optional Scrum/Sprint grouping; SDL tree nodes
 cover every catalog viewpoint and supported kind. SDUI preview currently delegates
 the structural Markdown exporter; it does not imply interactive controls.
+
+[Consumer examples and executable harness](Consumer-Examples.md) document the
+producer boundary available to XFMD and other hosts.

@@ -25,5 +25,6 @@
       "source": "SDUI/examples/concept1-bucking.sdui",
       "profile": "sdui/0.2"
     }
-  ]
+  ],
+  "defaultModel": "sdptool"
 }

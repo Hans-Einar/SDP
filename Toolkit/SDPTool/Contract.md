@@ -59,8 +59,8 @@ visible as unsupported and are never dispatched through a different parser.
 
 All registration paths are relative to the **parent of the SDP area**, including
 when the caller selected the SDP area itself. They must remain inside that root
-also after resolving symlinks. Model selection is explicit when multiple models
-exist. No recursively discovered repositories, implicit parent search, Git-based
+also after resolving symlinks. An optional defaultModel selects the initial registered SDL model. Otherwise
+model selection is explicit when multiple models exist. No recursively discovered repositories, implicit parent search, Git-based
 identity, child-directory scanning or executable commands are part of registration.
 Selecting a separate repo explicitly follows the same rule as a monorepo area.
 
@@ -159,7 +159,7 @@ also enforces its query depth limit. Relationship IDs hash semantic endpoints;
 fact source positions remain owned by SDL. Inventory only builds data, not SVG.
 
 `select` requires both expected revision and a URI whose project matches the
-selected registration, plus an explicit model when ambiguous. It delegates to the
+selected registration, plus an explicit model when no registered default resolves ambiguity. It delegates to the
 same guarded preview path. Refresh and retry after a stale error. A foreign URI
 never switches project/source selection implicitly.
 
@@ -188,3 +188,7 @@ It is the existing structural layout dump plus Markdown content and static widge
 labels, not interactive controls, SVG/Fyne runtime or full Mermaid rendering.
 Other SDUI profiles are visible as unsupported. This intentionally narrow service
 is not an assertion that every existing SDUI export is exposed by this facade.
+
+Review limits: navigation accepts at most 2,000 model declarations, 10,000 model
+facts, 20,000 combined nodes and 32 MiB of inventory JSON. These are facade limits,
+not new language rules. defaultModel is a registration binding, not a heuristic.

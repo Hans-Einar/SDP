@@ -1,8 +1,18 @@
-# Current SDL navigation and proposed design-file preview
+# SDL navigation and SDPTool design preview
 
-Inspected 2026-09-25. Current code, proposed SDPTool responsibilities and future
+Baseline inspected 2026-09-25, before Sprint-0001. Current code, proposed SDPTool responsibilities and future
 XFMD integration are distinguished below. Python is not in the active SDL
 parsing/projection/rendering path.
+
+## Sprint-0001 update
+
+The Go SDPTool facade now implements saved-file preview, explicit project
+recognition, configured plan viewing, typed SDL/KanBan/SDUI inventory and selected
+current-source generation. [Contract](Contract.md) and [consumer examples](Consumer-Examples.md)
+own the implemented wire/CLI behavior. Native XFMD sidebar/editor integration,
+unsaved buffers and advanced process commands remain separately tracked. The
+baseline explanation and original proposal below retain their dated context;
+read the current contract for executable signatures and supported capabilities.
 
 ## What runs today
 
@@ -14,7 +24,7 @@ parsing/projection/rendering path.
 | [documents](../../SDL/go/documents/bundle.go) | Go Markdown/resource bundles, source revision, manifests and publication |
 | [render adapter](../../SDL/go/documents/geometry.go) | Calls Rust mmdr; uses its layout dump for flowcharts and adds SDL symbols/arrows in Go; other diagram kinds use mmdr SVG |
 | XFMD DocumentViews | Registered URI handling, child processes, main/navigation panes and resource lifetime; no SDL parser |
-| sdptool | Go saved-file preview facade; see [current contract](Contract.md); remaining discovery/navigation work is planned |
+| sdptool | Go preview, discovery, viewer and navigation facade; see [current contract](Contract.md) |
 
 The eleven VP01–VP11 definitions are a fixed supported catalog. Their diagram
 instances, content, relations, gaps and selections come from the current validated

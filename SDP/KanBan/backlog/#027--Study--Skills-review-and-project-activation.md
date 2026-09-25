@@ -57,3 +57,13 @@ started by this card.
 ## Worklog
 
 2026-09-25T12:38:14Z — EVT-KB-SDP-000131: registered; future Scrum and Maintenance execution remain unstarted.
+
+## Sprint-0001 handoff
+
+Sprint-0001 added a Go SDPTool facade and producer contracts. The future skills
+review must route agents to the shared phase plan, single management ledger and
+actual implementation evidence, with the explicit external XFMD boundary. No
+skills have been moved/activated. This remains a future Scrum, not a completed
+review because the tool now exists.
+
+2026-09-25T13:42:06Z — EVT-KB-SDP-000152: future Scrum remains unstarted.

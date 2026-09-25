@@ -128,3 +128,23 @@ func TestReferencedInstallationFacts(t *testing.T) {
 		t.Fatal("missing declared facts")
 	}
 }
+
+func TestExplicitDefaultModel(t *testing.T) {
+	root, r := projectFixture(t)
+	r.Models = []Model{{"first", "SDL", "one.design", "design-core/0.5"}, {"second", "SDL", "two.design", "design-core/0.5"}}
+	r.DefaultModel = "second"
+	saveRegistration(t, root, r)
+	p, e := Discover(root)
+	if e != nil {
+		t.Fatal(e)
+	}
+	m, _, e := p.model("", false)
+	if e != nil || m.ID != "second" {
+		t.Fatalf("default %v %v", m, e)
+	}
+	r.DefaultModel = "missing"
+	saveRegistration(t, root, r)
+	if _, e = Discover(root); e == nil {
+		t.Fatal("unknown default accepted")
+	}
+}

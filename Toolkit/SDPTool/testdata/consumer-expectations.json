@@ -1,0 +1,9 @@
+{
+ "schema":"sdptool-consumer-fixture/1",
+ "producerSchema":"sdptool/0.1",
+ "roots":["sdl","kanban","sdui"],
+ "viewpoints":11,
+ "firstDiagram":"VP02-roots",
+ "requiredBundleFiles":["entry.md","manifest.json","selection.json","sdptool.json","delivery.txt","diagrams/VP02-roots.mmd"],
+ "staleError":"stale"
+}

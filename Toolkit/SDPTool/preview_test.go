@@ -116,3 +116,29 @@ func TestCanceledAndStructuredDiagnostics(t *testing.T) {
 		t.Fatal(errs.String())
 	}
 }
+
+func TestFailedRefreshKeepsPreviousBundle(t *testing.T) {
+	p, d := fixture(t)
+	o := PreviewOptions{Source: p, Output: d}
+	r, e := Preview(context.Background(), o)
+	if e != nil {
+		t.Fatal(e)
+	}
+	before, _ := os.ReadFile(r.Entry)
+	for _, kind := range []string{"parse", "render"} {
+		os.WriteFile(p, []byte(sample), 0600)
+		o.Renderer = ""
+		if kind == "parse" {
+			os.WriteFile(p, []byte("invalid source"), 0600)
+		} else {
+			o.Renderer = executable(t, "exit 9\n")
+		}
+		if _, e = Preview(context.Background(), o); e == nil {
+			t.Fatal("expected failure", kind)
+		}
+		after, _ := os.ReadFile(r.Entry)
+		if !bytes.Equal(before, after) {
+			t.Fatal("failed refresh damaged last valid bundle", kind)
+		}
+	}
+}

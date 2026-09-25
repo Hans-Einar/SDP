@@ -139,3 +139,16 @@ records Scrum-0002, planned SPR-SDP-0001, partial split KBO-SDP-000004 and two
 future Maintenance-review cards. The implementation plan maps six delivery cards
 to existing phases. This is planning only; uncommitted SDL sourceinput drafts
 remain excluded. Evidence is recorded in the Scrum document.
+
+## Sprint-0001 — SDPTool producer
+
+From PM2 1ed9d54, phase branches stack as follows: p0-saved-design-preview
+(4cdcc88), t1-discovery-contract (60b960a, 173ac7f), t2-project-context
+(88aae42, a2e5c2b), t3-navigation-services (207fed2, 22da73d, f7d1947),
+and t4-consumer-contract-review. Each uses the sdp/phase- prefix and retains
+its milestone commits. P0-M2/T4-M2 remain unselected scope: delivery of the selected
+producer milestones does not complete those larger phase scopes or T5. The final
+combined review includes the full stack against sdp-vNow; no merge is performed.
+SDP/Verification contains milestone evidence and REVIEW-SDP-0001. The prior
+untracked SDL sourceinput draft remains excluded. Skills/installer Scrums remain
+backlog and have received the Sprint's concrete contract findings.

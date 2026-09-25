@@ -2,6 +2,7 @@ package sdptool
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/Hans-Einar/SDP/SystemDesignLanguage/go/documents"
 )
 
@@ -44,6 +45,9 @@ func Navigation(p Project, id string) (Tree, error) {
 		Versions     []string
 		Nodes        []Node
 	}{p.Registration, versions, t.Nodes})
+	if len(t.Nodes) > 20000 || len(b) > 32<<20 {
+		return Tree{}, failure("limit", fmt.Errorf("combined inventory exceeds 20000 nodes or 32 MiB"))
+	}
 	t.InventoryRevision = documents.Hash(b)
 	return t, nil
 }

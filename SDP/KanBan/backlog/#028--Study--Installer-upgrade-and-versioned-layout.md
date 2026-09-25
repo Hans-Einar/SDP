@@ -78,3 +78,16 @@ started by this card.
 ## Worklog
 
 2026-09-25T12:38:14Z — EVT-KB-SDP-000132: registered; future Scrum and Maintenance execution remain unstarted.
+
+## Sprint-0001 handoff
+
+Sprint-0001 now implements local SDP/navigation.json bindings, including an
+explicit default model, model/source lists and optional project-manifest pointer.
+It intentionally does not duplicate installed Toolkit versions. The facade reads
+installation facts as declared and distinguishes navigation eligibility from full
+installation validation. Include binding creation/preservation, default model,
+local board profile support and prebuilt Go tool distribution in the future
+upgrade/configuration build design. See Toolkit/SDPTool/Contract.md; no installer
+or XFMD migration was performed by this Sprint.
+
+2026-09-25T13:42:06Z — EVT-KB-SDP-000153: future Scrum remains unstarted.

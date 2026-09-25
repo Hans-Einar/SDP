@@ -67,6 +67,13 @@ func ModelTree(p Project, id string) (Tree, error) {
 }
 func modelTree(p Project, m Model, v *viewpoint.Views) (Tree, error) {
 	t := Tree{Schema: Version, Operation: "tree", Project: p.Registration.ProjectID, Model: m.ID, Revision: v.Revision, Roots: []string{"sdl"}, Nodes: []Node{}, ExpansionDepthLimit: 8}
+	if len(v.Kinds) > 2000 || len(v.Facts) > 10000 {
+		return Tree{}, failure("limit", fmt.Errorf("navigation model exceeds 2000 declarations or 10000 facts; select a smaller source"))
+	}
+	factsByID := map[string]viewpoint.Fact{}
+	for _, f := range v.Facts {
+		factsByID[f.S("id")] = f
+	}
 	prefix := "sdl/" + m.ID + "/"
 	nodes := map[string]*Node{}
 	add := func(n Node) { copy := n; nodes[n.ID] = &copy }
@@ -129,10 +136,7 @@ func modelTree(p Project, m Model, v *viewpoint.Views) (Tree, error) {
 			}
 			// Sequence/packet membership is carried by source facts, not necessarily nodes.
 			for _, fid := range d.SourceFacts {
-				for _, f := range v.Facts {
-					if f.S("id") != fid {
-						continue
-					}
+				for _, f := range []viewpoint.Fact{factsByID[fid]} {
 					for _, field := range []string{"subject", "object", "sender", "receiver", "channel", "message", "field", "dataset", "datagram", "mode"} {
 						name := f.S(field)
 						if v.Kinds[name] != "" {

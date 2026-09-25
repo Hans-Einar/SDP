@@ -14,11 +14,11 @@ Use stacked phase branches and one commit per completed milestone.
 | --- | --- | --- |
 | T0 — ownership and location | M1: establish this directory/plan, generalize navigation scope, update the XFMD card and register the Toolkit audit; verify boards and links | Delivered, documentation only |
 | TF1 — feature design in SDP | M1: apply five-phase local structure; establish mandate, requirements and parser-checked SDL model; relocate plan and register shared design evidence | Delivered; design only, feature still active |
-| P0 — early design-preview slice (proposed priority) | M1: define and implement a small saved-file preview facade over existing Go SDL projection/document services; choose default relevant views, preserve SDL symbols and return a resource bundle with diagnostics. M2: source snapshot/revision input for unsaved-buffer preview, coordinated with XFMD KB-XFMD-015. No dependency on full project discovery/native tree | Proposed before T1; operation contract still to define |
-| T1 — discovery and delegation contract | M1: inventory existing manifests, validators, SDL/SDUI commands and viewer protocol; decide one project-recognition contract with valid/minimal/invalid examples. M2: specify path/override/tool-resolution rules, versioned machine-readable results and errors, plus first command mapping | Planned |
-| T2 — sdptool project context | M1: implement CLI and read-only resolver for explicit path, repo root and SDP area with no parent guessing. M2: implement configured `view ip` through prebuilt tooling and current XFMD arguments; verify errors, temporary-resource lifetime and preserved sources/plans | Planned |
-| T3 — general navigation services | M1: expose catalog/phase/typed collection/object nodes using existing SDL facts, including non-UseCase collections. M2: add bounded relationship expansion, stable IDs, revision/refresh semantics and tests for shared objects/cycles. M3: expose KanBan status/card inventory and explicitly selected SDUI services through their existing owners | Planned |
-| T4 — consumer adapter validation | M1: publish executable examples/contract fixtures for XFMD; test on-demand generation, unsupported capabilities and stale results using a consumer harness. M2: verify interoperability against the separately delivered XFMD consumer; record its exact version and remaining native acceptance | Planned; native delivery is external |
+| P0 — early design-preview slice (proposed priority) | M1: define and implement a small saved-file preview facade over existing Go SDL projection/document services; choose default relevant views, preserve SDL symbols and return a resource bundle with diagnostics. M2: source snapshot/revision input for unsaved-buffer preview, coordinated with XFMD KB-XFMD-015. No dependency on full project discovery/native tree | M1 delivered; M2 remains later scope |
+| T1 — discovery and delegation contract | M1: inventory existing manifests, validators, SDL/SDUI commands and viewer protocol; decide one project-recognition contract with valid/minimal/invalid examples. M2: specify path/override/tool-resolution rules, versioned machine-readable results and errors, plus first command mapping | Delivered in Sprint-0001 |
+| T2 — sdptool project context | M1: implement CLI and read-only resolver for explicit path, repo root and SDP area with no parent guessing. M2: implement configured `view ip` through prebuilt tooling and current XFMD arguments; verify errors, temporary-resource lifetime and preserved sources/plans | Delivered in Sprint-0001 |
+| T3 — general navigation services | M1: expose catalog/phase/typed collection/object nodes using existing SDL facts, including non-UseCase collections. M2: add bounded relationship expansion, stable IDs, revision/refresh semantics and tests for shared objects/cycles. M3: expose KanBan status/card inventory and explicitly selected SDUI services through their existing owners | Delivered in Sprint-0001 |
+| T4 — consumer adapter validation | M1: publish executable examples/contract fixtures for XFMD; test on-demand generation, unsupported capabilities and stale results using a consumer harness. M2: verify interoperability against the separately delivered XFMD consumer; record its exact version and remaining native acceptance | M1 delivered; M2 remains external/native acceptance |
 | T5 — advanced process commands | Separately select milestones for proposing/validating slices and preserving approved plans, evidence-aware roadmaps using KB-SDP-004, and Git-backed card history/diff. Define concrete acceptance before implementation | Later scope retained from #017 |
 
 T2 may use the existing Markdown navigator before the native tree is available.
@@ -48,7 +48,7 @@ the then-current delivery tip rather than rebasing earlier history.
 | [KB-SDP-023](../KanBan/completed/%23023--Change--SDPTool-project-viewer-bridge.md) | T2-M1/M2 |
 | [KB-SDP-024](../KanBan/completed/%23024--Change--SDPTool-model-navigation.md) | T3-M1/M2 |
 | [KB-SDP-025](../KanBan/completed/%23025--Change--SDPTool-KanBan-and-SDUI-inventory.md) | T3-M3 |
-| [KB-SDP-026](../KanBan/active/%23026--CodeReview--SDPTool-consumer-contract-review.md) | T4-M1 |
+| [KB-SDP-026](../KanBan/completed/%23026--CodeReview--SDPTool-consumer-contract-review.md) | T4-M1 |
 
 The source card retains P0-M2 unsaved-buffer/snapshot input; T4-M2 interoperability with the separately delivered native XFMD consumer; T5 slice proposal/validation, evidence-aware implementation plans/roadmaps, and Git-backed card history/diff.
 They require later selection and are not prerequisites for this producer Sprint.
@@ -165,4 +165,11 @@ this delivery is limited to the named milestone.
 Added common KanBan/SDL/SDUI roots, card status/work/sprint/scrum metadata with descriptor-selected history, inventory revisions, local Ref resolution and SDUI frame-entry static Markdown preview through existing Go libraries.
 
 [Verification](../Verification/SDPTOOL-VER-T3-M3.md). Remaining milestones retain their existing status;
+this delivery is limited to the named milestone.
+
+## T4-M1 delivery
+
+Published executable consumer fixtures/examples and completed producer review with strict metadata/default-model fixes, bounded inventory and verified error preservation.
+
+[Verification](../Verification/SDPTOOL-VER-T4-M1.md). Remaining milestones retain their existing status;
 this delivery is limited to the named milestone.

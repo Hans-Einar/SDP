@@ -1,6 +1,7 @@
 # SDPTool — detailed design work
 
-Design record: DES-SDPTOOL-001. Status: initial scope; wire/API decisions pending.
+Design record: DES-SDPTOOL-001. Status: producer contract implemented in Sprint-0001; advanced services and
+native XFMD integration remain later scope.
 [Requirements](../02--Requirements/SDPTool.md) ·
 [Architecture/model](../03--Architecture/SDPTool.md) ·
 [Implementation plan](../05--Implementation/SDPTool.md).
@@ -10,7 +11,8 @@ Design record: DES-SDPTOOL-001. Status: initial scope; wire/API decisions pendin
 The [pipeline study](../../Toolkit/SDPTool/Navigation-and-Design-Preview.md) records
 Go parsing/projection/document publication, Rust mmdr layout, Go SDL SVG symbols,
 sdl-view selection and temporary-resource ownership. These are implemented SDL
-services; the SDPTool facade and native .design source/preview adapter are not.
+services reused by the implemented SDPTool facade. The native .design
+source/preview adapter remains XFMD-owned.
 
 ## First contract: saved design preview
 

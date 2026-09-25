@@ -1,0 +1,4 @@
+language design-core version 0.5.
+unit Child.
+container Main.
+Main contains Child.
