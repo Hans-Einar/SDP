@@ -96,3 +96,7 @@ links on terminals with plain pipe output; [evidence](Maintenance/K6/Plan.md).
 K7 follows 5249eb6 on sdp/phase-k7-owner-review. K7-M1 records owner closure
 of KB-SDP-001 and non-blocking deferred review of KB-SDP-010, with updated links
 and queued follow-up. [Plan](Maintenance/R3/Plan.md).
+
+K8 follows K7 29d5828 on sdp/phase-k8-backlog-consolidation. K8-M1 reviews all
+12 backlog cards, merges KB-SDP-002/016 into queued KB-SDP-017 with typed lineage,
+and captures native XFMD tab/tree direction. [Plan](Maintenance/K8/Plan.md).

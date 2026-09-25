@@ -22,3 +22,9 @@ Requirements templates must use an adopted SDL profile for stakeholders, actors,
 ## Handling
 
 Resolve template needs and record the language-profile dependency in the implementation plan. Closing local handling does not mean the SDL extension is implemented.
+
+## Backlog review — 2026-09-25
+
+Retained as the local Ref to KB-SDL-001. Requirements templates need an adopted narrative profile; browsing existing models does not depend on adopting the sketches.
+
+Recorded 2026-09-25T01:41:26Z, Codex, EVT-KB-SDP-000078. CardState remains backlog.

@@ -9,11 +9,11 @@
 | created | 2026-09-23T18:25:13Z |
 | source | owner-conversation-2026-09-23 |
 | next_review | 2026-09-30 |
-| primary | KB-SDP-002 |
+| primary | KB-SDP-017 |
 
 Registered from the owner conversation on 2026-09-23. The timestamp records registration, not a reconstructed discussion time. The directory and ledger record lifecycle status.
 
-Primary card: [KB-SDP-002 — sdptool](../../../../../SDP/Agents/KanBan/backlog/%23002--Proposal--sdptool.md).
+Primary card: [KB-SDP-017 — sdptool and project navigation](../../../../../SDP/Agents/KanBan/backlog/%23017--Proposal--sdptool-and-project-navigation.md).
 
 ## Local impact
 
@@ -26,3 +26,11 @@ Preserve the current Go/Fyne/SVG direction. This does not request a FOX host, an
 Resolve local project configuration, model/plan sources and library boundaries before migration. Keep the code plan's G phases distinct from this ideas backlog.
 
 [SDUI implementation plan](../../../../docs/implementation-plan.md)
+
+## Navigation and consolidation review — 2026-09-25
+
+The owner requests an SDUI subtab inside native XFMD’s SDP tab. Define its initial source/documentation/preview actions explicitly with the host; preserve SDUI-owned parsing, layout and export. This entry point does not authorize a FOX widget runtime or change the Go/Fyne/SVG architecture.
+
+The previous primary KB-SDP-002 and discovery card KB-SDP-016 were fully merged
+into KB-SDP-017. This Ref keeps its identity and backlog state; only its primary
+and filename change. Recorded 2026-09-25T01:41:26Z, Codex, EVT-KB-SDUI-000004.

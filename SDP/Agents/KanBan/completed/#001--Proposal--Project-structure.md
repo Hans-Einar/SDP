@@ -42,7 +42,7 @@ Approved migration plan; verified links and build/installation; no competing act
 
 [Viewpoint levels and notation](../../../../SDL/docs/integration/SDL-Viewpoint-Levels-and-Notation.md)
 [Toolkit installation manifest](../../../../Toolkit/SDP-install.manifest.json)
-[KB-SDP-002 — sdptool](../backlog/%23002--Proposal--sdptool.md)
+[KB-SDP-002 — sdptool](../superseded/%23002--Proposal--sdptool.md)
 
 ## Activation, 2026-09-24
 
@@ -89,7 +89,7 @@ changes return it to in-progress; accepted planning can close with these links.
 
 ## Next selection
 
-[KB-SDP-002](../backlog/%23002--Proposal--sdptool.md) is queued because explicit
+[KB-SDP-002](../superseded/%23002--Proposal--sdptool.md) is queued because explicit
 project lookup is the prerequisite for browsing each project's plan across Git
 boundaries. Begin with resolver/configuration and view-ip integration after the
 owner reviews the R3 discovery contract. New language keywords, slice synthesis
@@ -105,10 +105,17 @@ KB-SDP-001. Physical organization and the R3 planning package are accepted as
 the completed outcome of this card. CardState: gate-review → completed.
 
 The pending review of KB-SDP-010 does not block other backlog work.
-[KB-SDP-002](../backlog/%23002--Proposal--sdptool.md) remains the queued
+[KB-SDP-002](../superseded/%23002--Proposal--sdptool.md) remains the queued
 sdptool follow-up; reconcile its discovery contract with
-[KB-SDP-016](../backlog/%23016--Proposal--SDP-discovery-and-viewer-capabilities.md).
+[KB-SDP-016](../superseded/%23016--Proposal--SDP-discovery-and-viewer-capabilities.md).
 This closure does not claim implementation of the proposed installer migration,
 project resolver or repository extraction, and does not select an otherwise
 undecided metadata filename or Git integration mechanism. Their implementation
 requirements remain in the accepted planning documents and follow-up cards.
+
+## Queue successor consolidation — 2026-09-25
+
+The historical #002 selection above now continues in
+[KB-SDP-017](../backlog/%23017--Proposal--sdptool-and-project-navigation.md),
+which combines #002/#016. Project/source identity and viewer registration remain
+the reason for selecting it next; #010 review remains non-blocking.

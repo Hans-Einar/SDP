@@ -35,3 +35,9 @@ Resolve final grammar, `from` combined with `through`, multiple relations, ident
 ## Acceptance for later implementation
 
 Parser/AST preserve order and source positions; unknown references produce diagnostics. A figure with at least two intermediate nodes shows entry ports, visible traversal over each node, exit ports on opposite sides and correct arrow direction. Viewpoint selection preserves the path with explicit handling of omitted nodes. Status/coverage calculations ignore the link as satisfaction evidence.
+
+## Backlog review — 2026-09-25
+
+Retained as a distinct relationship/path proposal usable across requirements, architecture and design. Coordinate grammar with KB-SDL-001; the new navigator does not implement these semantics.
+
+Recorded 2026-09-25T01:41:26Z, Codex, EVT-KB-SDL-000011. CardState remains backlog.

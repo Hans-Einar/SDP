@@ -24,8 +24,14 @@ Keep proposed, planned, implemented and verified distinct. A passing test or one
 
 ## Next work and acceptance
 
-Compare current Ledger.ndjson, Current-Index and Relations with these needs. Define a versioned contract and migration before making changes. Test one model with two slices, only one implemented/verified; generated roadmap/progress diagrams should show the difference and link to sources/evidence. [KB-SDP-002](%23002--Proposal--sdptool.md) is a consumer.
+Compare current Ledger.ndjson, Current-Index and Relations with these needs. Define a versioned contract and migration before making changes. Test one model with two slices, only one implemented/verified; generated roadmap/progress diagrams should show the difference and link to sources/evidence. [KB-SDP-017](%23017--Proposal--sdptool-and-project-navigation.md) is a consumer.
 
 [Traceability ledger](../../../Traceability/Ledger.ndjson)
 [Ledger envelope schema](../../../../Toolkit/schemas/ledger-event.schema.json)
 [Traceability relations](../../../Traceability/Relations.yaml)
+
+## Backlog review — 2026-09-25
+
+Retained as the independent evidence/status contract. KB-SDP-017 consumes it for advanced plan/roadmap reporting; ordinary navigation need not wait for evidence aggregation.
+
+Recorded 2026-09-25T01:41:26Z, Codex, EVT-KB-SDP-000076. CardState remains backlog.

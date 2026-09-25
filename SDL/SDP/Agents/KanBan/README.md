@@ -12,6 +12,6 @@ The [shared history/diff workflow](../../../../SDP/Agents/KanBan/History.md) app
 | --- | --- | --- | --- |
 | KB-SDL-001 | Proposal | backlog | [Stakeholders, actors, user stories and readable SDL](backlog/%23001--Proposal--Requirements-narrative.md) |
 | KB-SDL-002 | Proposal | backlog | [Weak links and visual paths through nodes](backlog/%23002--Proposal--Links-through.md) |
-| KB-SDL-003 | Ref | backlog | [SDP tools as a consumer of SDL](backlog/%23003--Ref--SDP--002--sdptool.md) |
+| KB-SDL-003 | Ref | backlog | [SDP tools as a consumer of SDL](backlog/%23003--Ref--SDP--017--sdptool.md) |
 
 Update the index with card moves; the ledger owns event history.

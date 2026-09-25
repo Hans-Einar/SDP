@@ -98,5 +98,5 @@ until that versioned change passes its acceptance tests.
 
 [Project discovery and extraction proposal](Project-Discovery-and-Extraction-Proposal.md)
 completes KB-SDP-001's remaining design package. The proposed next implementation
-planning item is [KB-SDP-002](../../SDP/Agents/KanBan/backlog/%23002--Proposal--sdptool.md),
+planning item is [KB-SDP-017](../../SDP/Agents/KanBan/backlog/%23017--Proposal--sdptool-and-project-navigation.md),
 limited first to discovery and view-ip integration, rather than all slice synthesis.

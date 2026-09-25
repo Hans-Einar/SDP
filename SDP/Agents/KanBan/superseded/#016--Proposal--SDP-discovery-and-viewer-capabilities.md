@@ -5,11 +5,19 @@
 | id | KB-SDP-016 |
 | project | SDP |
 | type | Proposal |
-| CardState | backlog |
+| CardState | superseded |
 | created | 2026-09-24T20:52:36+00:00 |
 | source | Owner conversation in XFMD, 2026-09-24: SDP sidebar and version/capability marker |
-| next_review | Joint review with KB-SDP-001/002/014 and XFMD KB-XFMD-014 before discovery implementation |
+| next_review | Continue in KB-SDP-017 |
 | tags | discovery, compatibility, SDL, SDUI, XFMD |
+
+## Consolidation outcome — 2026-09-25
+
+Full scope transferred to [KB-SDP-017](../backlog/%23017--Proposal--sdptool-and-project-navigation.md)
+under `KBO-SDP-000001`. No work remains assigned to this source. The proposal
+and queue statements below are historical; the successor owns current planning.
+Recorded 2026-09-25T01:41:26Z, Codex, EVT-KB-SDP-000074. Superseded is not implemented.
+
 
 ## Owner request and consumer
 
@@ -49,7 +57,7 @@ Inspected SDP-vNow at afd9edb and XFMD at 9b93edb on 2026-09-24:
   already own installed project/release/work state and project capabilities.
   Reconcile reuse, extension or an explicitly separate discovery descriptor before
   introducing another version source. Do not replace release semantics silently.
-- [KB-SDP-014](%23014--Proposal--KanBan-version-contract-and-distribution.md)
+- [KB-SDP-014](../backlog/%23014--Proposal--KanBan-version-contract-and-distribution.md)
   owns KanBan compatibility/distribution. A boolean folder check is not proof of a
   compatible board contract. Coordinate capability/version declarations there.
 

@@ -42,3 +42,9 @@ The owner wants explicit object properties and consideration of a leading-dot sh
 Inspect the active parser/profile before proposing grammar. Resolve names, casing, actor types, multiline/import rules and shorthand binding. Then deliver a versioned profile, AST/source positions, validation, negative examples and document projections. A readable requirements package must preserve text exactly and show stakeholder–actor–story–use-case traceability without treating a descriptive link as requirements satisfaction.
 
 [SDL overview](../../../../README.md)
+
+## Backlog review — 2026-09-25
+
+Retained as a bounded requirements-language proposal. Coordinate basic weak-link semantics with KB-SDL-002, but narrative/profile delivery need not absorb visual traversal through architecture nodes.
+
+Recorded 2026-09-25T01:41:26Z, Codex, EVT-KB-SDL-000010. CardState remains backlog.

@@ -39,3 +39,9 @@ Also show significant reviewed events while a card remains active. A point shoul
 | Time | Actor / event | Handling | Remaining work |
 | --- | --- | --- | --- |
 | 2026-09-24T14:52:35Z | Codex; EVT-KB-SDP-000020 | Adds active content revisions and historical diff to the graph idea; graph remains unimplemented. | Agree on a vertical tool delivery before implementation. |
+
+## Backlog review — 2026-09-25
+
+Retained as a separate Idea: the native KanBan status/card tree in KB-SDP-017 does not implement the time-axis graph, zoom or historical revisions.
+
+Recorded 2026-09-25T01:41:26Z, Codex, EVT-KB-SDP-000075. CardState remains backlog.

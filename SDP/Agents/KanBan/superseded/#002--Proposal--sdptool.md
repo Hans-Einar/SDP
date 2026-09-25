@@ -3,12 +3,20 @@
 | Field | Value |
 | --- | --- |
 | id | KB-SDP-002 |
-| CardState | queued |
+| CardState | superseded |
 | project | SDP |
 | type | Proposal |
 | created | 2026-09-23T18:25:13Z |
 | source | owner-conversation-2026-09-23 |
-| next_review | Next bounded discovery scope; coordinate KB-SDP-016 metadata decisions |
+| next_review | Continue in KB-SDP-017 |
+
+## Consolidation outcome — 2026-09-25
+
+Full scope transferred to [KB-SDP-017](../backlog/%23017--Proposal--sdptool-and-project-navigation.md)
+under `KBO-SDP-000001`. No work remains assigned to this source. The proposal
+and queue statements below are historical; the successor owns current planning.
+Recorded 2026-09-25T01:41:26Z, Codex, EVT-KB-SDP-000073. Superseded is not implemented.
+
 
 Registered from the owner conversation on 2026-09-23. The timestamp records registration, not a reconstructed discussion time. The directory and ledger record lifecycle status.
 
@@ -30,7 +38,7 @@ SDL is the language; SDP is the process. SDP tools should consume SDL/SDUI libra
 
 Support both proposing vertical slices from the SDL model and validating manually or agent-proposed slices. Each slice should deliver a bounded, verifiable capability across relevant layers/containers, with explicit prerequisites and acceptance. Tools can check coverage and dependencies; business priorities and value come from the project. Proposed plans are not automatically approved. `generate ip` must preserve approved plans and show proposed changes. Plan format, decision process and how goals/constraints are specified remain open.
 
-Use the model, approved plan and Traceability to show a roadmap and incremental growth in use cases, features and functionality. [KB-SDP-004](%23004--Proposal--Design-traceability.md) owns status/evidence semantics. Weak `links` must never count as implementation evidence.
+Use the model, approved plan and Traceability to show a roadmap and incremental growth in use cases, features and functionality. [KB-SDP-004](../backlog/%23004--Proposal--Design-traceability.md) owns status/evidence semantics. Weak `links` must never count as implementation evidence.
 
 ## Next delivery and acceptance
 

@@ -74,7 +74,7 @@ contract and distribution need. [KB-SDP-010](../active/%23010--Proposal--Documen
 retains editorial consolidation. Completed K2/K3/K4 cards remain evidence for
 metadata, lineage and history; they do not prove a released compatibility contract.
 [KB-SDP-003](%23003--Idea--KanBan-graph.md) retains the future graph, and
-[KB-SDP-002](%23002--Proposal--sdptool.md) retains tooling implementation.
+[KB-SDP-017](%23017--Proposal--sdptool-and-project-navigation.md) retains tooling implementation.
 No existing card is superseded, moved or reduced by this registration.
 
 Consumer follow-up: [KB-XFMD-012](../../../../../xfmd-sdl-navigation/Agents/KanBan/backlog/%23012--Ref--SDP--014--KanBan-format-sync.md) is the direct XFMD Ref. It owns the local gap
@@ -106,3 +106,9 @@ uncommitted event originally numbered EVT-KB-SDP-000041 was reassigned to
 EVT-KB-SDP-000057 and appended after committed events. Registration time, card
 identity, content and the XFMD Ref are preserved; no committed ledger bytes
 were reordered. The local CardState addition does not deliver this version contract.
+
+## Backlog review — 2026-09-25
+
+Retained as the shared KanBan compatibility/distribution contract, including standalone consumers. KB-SDP-017 consumes this contract; native sidebar layout is not its responsibility.
+
+Recorded 2026-09-25T01:41:26Z, Codex, EVT-KB-SDP-000080. CardState remains backlog.

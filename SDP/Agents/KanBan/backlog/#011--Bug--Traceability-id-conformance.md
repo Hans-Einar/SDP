@@ -17,3 +17,9 @@ RepositoryValidation and contracts CI fail on nine older Issue #5 IDs: SPR-SDP-0
 ## Scope and acceptance
 
 Decide whether these are supported external IDs or data requiring migration; provide one consistent solution with alias/traceability rules. Do not rewrite append-only ledger history or old evidence to make CI pass. Follow incoming references in records, evidence, issues and schemas before changing anything. The full Toolkit validator and unittest suite must pass without exceptions that hide errors. Physical directory housekeeping did not fix this.
+
+## Backlog review — 2026-09-25
+
+Retained as a bounded compatibility/CI Bug. Repairing historical ID interpretation must not be hidden inside a future evidence redesign or rewrite append-only records.
+
+Recorded 2026-09-25T01:41:26Z, Codex, EVT-KB-SDP-000079. CardState remains backlog.

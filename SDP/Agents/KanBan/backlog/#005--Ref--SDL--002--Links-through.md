@@ -22,3 +22,9 @@ SDP tools should select and show continuous feature paths in architecture and cl
 ## Handling
 
 Resolve the consumer boundary and connect the primary card to the future viewpoint plan. This card can close once SDP consequences are addressed through a linked decision/plan; the primary card's status does not change automatically.
+
+## Backlog review — 2026-09-25
+
+Retained as the local Ref to KB-SDL-002. Weak-link visual traversal and exclusion from satisfaction evidence remain language/viewpoint work, independent of the navigation facade.
+
+Recorded 2026-09-25T01:41:26Z, Codex, EVT-KB-SDP-000077. CardState remains backlog.

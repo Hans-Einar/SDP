@@ -5,7 +5,7 @@
 | ID | Type | Status | Document |
 | --- | --- | --- | --- |
 | KB-SDP-001 | Proposal | completed | [Project structure, Template and studies per phase](completed/%23001--Proposal--Project-structure.md) |
-| KB-SDP-002 | Proposal | backlog | [sdptool: project lookup, implementation plan and viewer](backlog/%23002--Proposal--sdptool.md) |
+| KB-SDP-002 | Proposal | superseded | [sdptool: project lookup, implementation plan and viewer](superseded/%23002--Proposal--sdptool.md) |
 | KB-SDP-003 | Idea | backlog | [KanBan timeline with progressive detail](backlog/%23003--Idea--KanBan-graph.md) |
 | KB-SDP-004 | Proposal | backlog | [Traceability from SDL design to slices, code and evidence](backlog/%23004--Proposal--Design-traceability.md) |
 | KB-SDP-005 | Ref | backlog | [SDL links through in SDP viewpoints](backlog/%23005--Ref--SDL--002--Links-through.md) |
@@ -18,9 +18,9 @@
 | KB-SDP-012 | Change | completed | [K4-M1: worklogs, revisions and diffs](completed/%23012--Change--Card-history.md) |
 | KB-SDP-013 | Change | completed | [English documentation](completed/%23013--Change--English-documentation.md) |
 | KB-SDP-014 | Proposal | backlog | [Define the KanBan version contract and reusable distribution](backlog/%23014--Proposal--KanBan-version-contract-and-distribution.md) |
-
 | KB-SDP-015 | Change | completed | [CardState and shell commands](completed/%23015--Change--CardState-and-shell-cli.md) |
-| KB-SDP-016 | Proposal | backlog | [SDP discovery and viewer capability contract](backlog/%23016--Proposal--SDP-discovery-and-viewer-capabilities.md) |
+| KB-SDP-016 | Proposal | superseded | [SDP discovery and viewer capability contract](superseded/%23016--Proposal--SDP-discovery-and-viewer-capabilities.md) |
+| KB-SDP-017 | Proposal | backlog | [sdptool and integrated project navigation](backlog/%23017--Proposal--sdptool-and-project-navigation.md) |
 
 Maintain the index when moving cards. The ledger owns event history.
 
