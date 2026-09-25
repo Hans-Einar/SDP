@@ -208,3 +208,13 @@ per phase rather than branches per phase. PL1-A-M1 c2d8edf adopts the contract;
 PL1-B-M1 16dacf2 delivers executable support and distribution; PL1-C-M1 verifies and
 closes work. Phase pushes and combined review against sdp-vNow remain authorized;
 merging is not. Earlier phase branches and promised strategies remain unchanged.
+
+## MP1 — main integration preparation
+
+Branch sdp/maintenance-mp1-main-integration follows PL1 481cafd. MP1-P1 prepares
+MAINT-SDP-0005 with one branch/milestone commits; actual integration remains planned.
+Annotated tag old (bf420cceb773210757376d0813415bf09ee8bdba) preserves remote main
+2cb49c02145621b099c47d05786716598e414e75. The combined candidate contains 49 of
+50 inspected origin branch heads; only the provisional Issue #7 pilot is separate.
+Preparation records failed CI gates and scope decisions before merging, and
+preserves all earlier phase branches and the unrelated sourceinput draft.

@@ -59,3 +59,10 @@ rollout remains separately selected.
 [MAINT-SDP-0004](Maintenance/PL1/Plan.md) completed KB-SDP-029's typed plans,
 scaled Git policy and Planning skill. Read [Plans](ProjectManagement/Plans.md)
 for the shared contract; keep one authoritative plan per selected work item.
+
+## Planned main integration
+
+[MAINT-SDP-0005 MergePlan](Maintenance/MP1/MergePlan.md) prepares the combined
+stack for sdp-vNow and then main. The old tag preserves the original main commit.
+Readiness requires CI repairs and explicit scope disposition of the separate
+Issue #7 pilot. No target branch merge has been performed by plan preparation.

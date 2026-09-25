@@ -10,7 +10,7 @@
 | type | Bug |
 | created | 2026-09-24T14:06:02Z |
 | source | R1 baseline check; continuation of a known CI mismatch |
-| next_review | At the next prioritization after R1 |
+| next_review | MP1-R-M2, before main integration |
 
 ## Observation
 
@@ -37,3 +37,10 @@ EVT-KB-SDP-000118; next review at the next selection or relevant dependency deli
 The actual baseline now has 38 errors; see [exact output](../../Maintenance/SK1/toolkit-baseline.txt).
 They predate SK1 and include reciprocal-relation errors as well as ID formats.
 This card retains repair ownership. EVT-KB-SDP-000159.
+
+## Main integration dependency
+
+[MAINT-SDP-0005](../../Maintenance/MP1/MergePlan.md) requires this repair before
+merging the current stack into main. The current remote contracts job reproduces
+the known 38 findings. Planning does not mark repair started or permit an exception
+that conceals errors; the card remains backlog until execution is selected.

@@ -1,0 +1,510 @@
+{
+  "observedAt": "2026-09-25T17:57:22+00:00",
+  "main": "2cb49c02145621b099c47d05786716598e414e75",
+  "staging": "9ad432407004080dd7f4f0ab06d107523f4316fd",
+  "candidate": "481cafdc0279d2b28781ccaef08112de3312818c",
+  "archiveTag": {
+    "name": "old",
+    "tagObject": "bf420cceb773210757376d0813415bf09ee8bdba",
+    "peeledCommit": "2cb49c02145621b099c47d05786716598e414e75",
+    "published": true
+  },
+  "candidateAheadOfMain": 121,
+  "candidateAheadOfStaging": 92,
+  "mergeTree": "be023b6183644471e4b9bce5ca63e4b4b2f59462",
+  "mainProtected": false,
+  "branches": [
+    {
+      "ref": "origin",
+      "commit": "2cb49c02145621b099c47d05786716598e414e75",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/agent/sdp-release-versioning",
+      "commit": "e05f74ddf8fb222398fab708176b5603e80adddf",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/codex/issue-5-sdp-usage-study",
+      "commit": "0783ffbfd0fec3044687a9b69ef223f694e7a3da",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/codex/issue-7-provisional-vnext-pilot",
+      "commit": "ea9fcf1cdd3198aeac515b89b55398282c463838",
+      "commitsNotInCandidate": 34
+    },
+    {
+      "ref": "origin/codex/sdp-install-contract-v1",
+      "commit": "d611b8bf72aeb30d86c5ef28902469462b06a803",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/feature/sdp-toolkit-and-skills",
+      "commit": "373ef590083490544e54bea7ac1f0b1c518b51fa",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/main",
+      "commit": "2cb49c02145621b099c47d05786716598e414e75",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/research/issue-10-system-design-languages",
+      "commit": "3becdb152410edc2ba844cacdf23f7e08334a5f2",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdl-sdui/phase-baseline",
+      "commit": "73aaf5d39c23787debdb6d8e72a219998ce858a0",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdl-sdui/phase-g5-codegen",
+      "commit": "32fadca62ebfcfb15c3a81722bf035427efa1272",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdl/phase-g4-runtime",
+      "commit": "d5430f014b21353b85612a486dcd17da7a61aaf8",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdl/phase-g6-navigation",
+      "commit": "1d526774a0c9e9e463c362bccdb3f76bba8700a4",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdl/phase-g6-navigation-design",
+      "commit": "5887c7f0755424c5a81a36ec9484dcf232d02c97",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdl/phase-g7-launch",
+      "commit": "d03eb7872d5f3cbd5f7366a6d0a013ecdda37d9f",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdl/phase-v1-viewpoints",
+      "commit": "25c85e6f86577644abc68a042a414a4180c75f35",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdl/phase-v2-data-contracts",
+      "commit": "e9b1421df74dce32c558e7186361ef73c4c57f43",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdl/phase-v3-channels",
+      "commit": "13409833a008d611a23f37cfded3023d16738630",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdl/phase-v4-integrated-design",
+      "commit": "5bcc495b7f3f6e6e8d169edcdc6c1c19c8dc2831",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdp-vNow",
+      "commit": "9ad432407004080dd7f4f0ab06d107523f4316fd",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdp/maintenance-pl1-typed-plans",
+      "commit": "481cafdc0279d2b28781ccaef08112de3312818c",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdp/phase-iu1-profile-build",
+      "commit": "89981fdb8698bbbcaad079c6be232b1cdce8529b",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdp/phase-iu2-safe-upgrades",
+      "commit": "8e36a5d2ebcac7ab392b203f98acb5302c3c5801",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdp/phase-iu3-consumer-validation",
+      "commit": "28bf156a02e1dc3e6aa29fd8579a1273bb343a1f",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdp/phase-k1-kanban",
+      "commit": "bb3728ced4f10bd148955741828f45c9e641cd39",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdp/phase-k2-readable-metadata",
+      "commit": "321e193258966bea049ea02178192404f8daad99",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdp/phase-k3-card-lineage",
+      "commit": "431e47ee38bc764ef4786b9e8ae0fb643552aeb1",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdp/phase-k4-card-history",
+      "commit": "1713778c78a24420ee4e5a2afe5ec380fcc30fda",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdp/phase-k5-card-state",
+      "commit": "0c73cb59c6a54c71dbee3c4971193e4261d606ea",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdp/phase-k6-terminal-links",
+      "commit": "afd9edbc14b6c0ab3564300ff6848bf97191a628",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdp/phase-k7-owner-review",
+      "commit": "29d582811fce2f1c182c77c41c83cf6933ff7dec",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdp/phase-k8-backlog-consolidation",
+      "commit": "94eb05267f9b6885058f5e9268ba0247e460bb28",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdp/phase-l1-english-documentation",
+      "commit": "32f6ae586bbcb49baa1e73eab6252cd40f45ef36",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdp/phase-p0-saved-design-preview",
+      "commit": "4cdcc88ae29263ac5966cc2e039ef99096c08d01",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdp/phase-pm1-project-management",
+      "commit": "8d85b394c820442cc5c895b555a516a8752681a8",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdp/phase-pm2-sdptool-sprint-planning",
+      "commit": "1ed9d54845e7c1b68c151c8144f69d4c1d0fced7",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdp/phase-pm3-skills-scrum",
+      "commit": "aabb359559eaa807e3ecc3217d1f6b5be6cce96d",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdp/phase-pm4-installer-maintenance-planning",
+      "commit": "33182ac5de674460ce63708989fbaee081d46346",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdp/phase-r1-repository-organization",
+      "commit": "f722dc2fe1335bba11b66af243b929dae428c4b4",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdp/phase-r2-document-consolidation",
+      "commit": "918fa46b0740fa2905c4c0c8348a8aeb15ddeee6",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdp/phase-r3-profile-and-authority",
+      "commit": "84089ae22d819dadaca3c20ee6f759aeb41d05b0",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdp/phase-sk1-skills-activation",
+      "commit": "6cf74e058695c25aeac2727b57540d34d31430e5",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdp/phase-t0-sdptool-foundation",
+      "commit": "fbd434aa40bed2db413c14e83a299f326916d68e",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdp/phase-t1-discovery-contract",
+      "commit": "173ac7f31f330aeb811b6c64ed89c943bde8e13d",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdp/phase-t2-project-context",
+      "commit": "a2e5c2b4321c8b0707b33de0bf5c42c9cefc507b",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdp/phase-t3-navigation-services",
+      "commit": "f7d1947c05e3a89ef0a16d8ad28d3833f541f1e0",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdp/phase-t4-consumer-contract-review",
+      "commit": "c4aed09944235f5da1d247001688f6f162ec124d",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdp/phase-tf1-sdptool-feature-design",
+      "commit": "1a3f5e88364ee219b063dd4615fac19ced33d89b",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdui/phase-g1-frontend",
+      "commit": "ca5aa9154bbdeb650646cbfe9082cec7873c104d",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdui/phase-g2-presentation",
+      "commit": "6a4d9687cb3cf95d012e23ea3839fffbf65dba33",
+      "commitsNotInCandidate": 0
+    },
+    {
+      "ref": "origin/sdui/phase-g3-runtime",
+      "commit": "d29a48f91ab7bebf181fc43f30029cbe9ead652e",
+      "commitsNotInCandidate": 0
+    }
+  ],
+  "openPRs": [
+    {
+      "baseRefName": "sdp-vNow",
+      "headRefName": "sdp/maintenance-pl1-typed-plans",
+      "isDraft": false,
+      "number": 34,
+      "title": "SDP: adopt typed plans and a distributed Planning skill",
+      "url": "https://github.com/Hans-Einar/SDP/pull/34"
+    },
+    {
+      "baseRefName": "sdp-vNow",
+      "headRefName": "sdp/phase-iu3-consumer-validation",
+      "isDraft": false,
+      "number": 33,
+      "title": "SDP: deliver versioned process installation and recoverable upgrades",
+      "url": "https://github.com/Hans-Einar/SDP/pull/33"
+    },
+    {
+      "baseRefName": "sdp-vNow",
+      "headRefName": "sdp/phase-pm4-installer-maintenance-planning",
+      "isDraft": false,
+      "number": 32,
+      "title": "SDP: plan versioned project installation and upgrades",
+      "url": "https://github.com/Hans-Einar/SDP/pull/32"
+    },
+    {
+      "baseRefName": "sdp-vNow",
+      "headRefName": "sdp/phase-sk1-skills-activation",
+      "isDraft": false,
+      "number": 31,
+      "title": "SDP: consolidate and activate canonical project skills",
+      "url": "https://github.com/Hans-Einar/SDP/pull/31"
+    },
+    {
+      "baseRefName": "sdp-vNow",
+      "headRefName": "sdp/phase-pm3-skills-scrum",
+      "isDraft": false,
+      "number": 30,
+      "title": "SDP: deliver SDPTool and plan canonical skills activation",
+      "url": "https://github.com/Hans-Einar/SDP/pull/30"
+    },
+    {
+      "baseRefName": "sdp-vNow",
+      "headRefName": "sdp/phase-t4-consumer-contract-review",
+      "isDraft": false,
+      "number": 29,
+      "title": "SDPTool: deliver Go preview and project navigation facade",
+      "url": "https://github.com/Hans-Einar/SDP/pull/29"
+    },
+    {
+      "baseRefName": "sdp-vNow",
+      "headRefName": "sdp/phase-pm2-sdptool-sprint-planning",
+      "isDraft": false,
+      "number": 28,
+      "title": "SDP: plan SDPTool delivery sprint and maintenance reviews",
+      "url": "https://github.com/Hans-Einar/SDP/pull/28"
+    },
+    {
+      "baseRefName": "sdp-vNow",
+      "headRefName": "sdp/phase-pm1-project-management",
+      "isDraft": false,
+      "number": 27,
+      "title": "SDP: consolidate project management, backlog and optional sprint grouping",
+      "url": "https://github.com/Hans-Einar/SDP/pull/27"
+    },
+    {
+      "baseRefName": "sdp-vNow",
+      "headRefName": "sdp/phase-tf1-sdptool-feature-design",
+      "isDraft": false,
+      "number": 26,
+      "title": "SDP: initialize numbered phases and design SDPTool as a product feature",
+      "url": "https://github.com/Hans-Einar/SDP/pull/26"
+    },
+    {
+      "baseRefName": "sdp-vNow",
+      "headRefName": "sdp/phase-t0-sdptool-foundation",
+      "isDraft": false,
+      "number": 25,
+      "title": "SDP: establish SDPTool scope and separate native XFMD delivery",
+      "url": "https://github.com/Hans-Einar/SDP/pull/25"
+    },
+    {
+      "baseRefName": "sdp-vNow",
+      "headRefName": "sdp/phase-k8-backlog-consolidation",
+      "isDraft": false,
+      "number": 24,
+      "title": "SDP: consolidate project tooling and integrated navigation backlog",
+      "url": "https://github.com/Hans-Einar/SDP/pull/24"
+    },
+    {
+      "baseRefName": "sdp-vNow",
+      "headRefName": "sdp/phase-k7-owner-review",
+      "isDraft": false,
+      "number": 23,
+      "title": "SDP: close accepted structure planning and retain non-blocking review",
+      "url": "https://github.com/Hans-Einar/SDP/pull/23"
+    },
+    {
+      "baseRefName": "sdp-vNow",
+      "headRefName": "sdp/phase-k6-terminal-links",
+      "isDraft": false,
+      "number": 22,
+      "title": "SDP: clickable KanBan paths and consolidated documentation/tooling stack",
+      "url": "https://github.com/Hans-Einar/SDP/pull/22"
+    },
+    {
+      "baseRefName": "sdp-vNow",
+      "headRefName": "sdp/phase-r3-profile-and-authority",
+      "isDraft": false,
+      "number": 21,
+      "title": "SDP: English documentation, scoped KanBan CLI and reviewable project profiles",
+      "url": "https://github.com/Hans-Einar/SDP/pull/21"
+    },
+    {
+      "baseRefName": "sdp-vNow",
+      "headRefName": "sdp/phase-r2-document-consolidation",
+      "isDraft": false,
+      "number": 20,
+      "title": "SDP: organize repositories, track card revisions and reconcile SDL/SDUI docs",
+      "url": "https://github.com/Hans-Einar/SDP/pull/20"
+    },
+    {
+      "baseRefName": "sdp-vNow",
+      "headRefName": "sdp/phase-r1-repository-organization",
+      "isDraft": false,
+      "number": 19,
+      "title": "SDP: organize templates, project records and SDL documentation (through R1)",
+      "url": "https://github.com/Hans-Einar/SDP/pull/19"
+    },
+    {
+      "baseRefName": "sdp-vNow",
+      "headRefName": "sdp/phase-k3-card-lineage",
+      "isDraft": false,
+      "number": 18,
+      "title": "SDP: Go tooling and KanBan with merge/split provenance (through K3)",
+      "url": "https://github.com/Hans-Einar/SDP/pull/18"
+    },
+    {
+      "baseRefName": "sdp-vNow",
+      "headRefName": "sdp/phase-k2-readable-metadata",
+      "isDraft": false,
+      "number": 17,
+      "title": "SDP: Go tooling and KanBan with visible card metadata (through K2)",
+      "url": "https://github.com/Hans-Einar/SDP/pull/17"
+    },
+    {
+      "baseRefName": "sdp-vNow",
+      "headRefName": "sdp/phase-k1-kanban",
+      "isDraft": false,
+      "number": 16,
+      "title": "SDP: Go language/tooling stack and project KanBan planning (G1\u2013G7, K1)",
+      "url": "https://github.com/Hans-Einar/SDP/pull/16"
+    },
+    {
+      "baseRefName": "sdp-vNow",
+      "headRefName": "sdl/phase-g7-launch",
+      "isDraft": false,
+      "number": 15,
+      "title": "SDL/SDUI: Go implementation and launchable documentation browser (G1\u2013G7)",
+      "url": "https://github.com/Hans-Einar/SDP/pull/15"
+    },
+    {
+      "baseRefName": "sdp-vNow",
+      "headRefName": "sdl-sdui/phase-g5-codegen",
+      "isDraft": false,
+      "number": 14,
+      "title": "SDL/SDUI: implement G1\u2013G6 in Go with runtime, codegen and navigable viewpoints",
+      "url": "https://github.com/Hans-Einar/SDP/pull/14"
+    },
+    {
+      "baseRefName": "sdp-vNow",
+      "headRefName": "sdl/phase-g6-navigation-design",
+      "isDraft": false,
+      "number": 13,
+      "title": "SDL: viewpoints og G1\u2013G6-design med dokumentnavigasjon",
+      "url": "https://github.com/Hans-Einar/SDP/pull/13"
+    },
+    {
+      "baseRefName": "sdp-vNow",
+      "headRefName": "sdl/phase-v4-integrated-design",
+      "isDraft": false,
+      "number": 12,
+      "title": "SDL: generer viewpoints og G1\u2013G5-design fra validerte modellfakta",
+      "url": "https://github.com/Hans-Einar/SDP/pull/12"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "codex/issue-7-provisional-vnext-pilot",
+      "isDraft": true,
+      "number": 8,
+      "title": "Pilot provisional SDP vNext workflow and scoped domains",
+      "url": "https://github.com/Hans-Einar/SDP/pull/8"
+    },
+    {
+      "baseRefName": "main",
+      "headRefName": "codex/sdp-install-contract-v1",
+      "isDraft": true,
+      "number": 4,
+      "title": "Add canonical SDP installation contract v1",
+      "url": "https://github.com/Hans-Einar/SDP/pull/4"
+    }
+  ],
+  "pr34": {
+    "baseRefName": "sdp-vNow",
+    "headRefOid": "481cafdc0279d2b28781ccaef08112de3312818c",
+    "mergeStateStatus": "UNSTABLE",
+    "mergeable": "MERGEABLE",
+    "number": 34,
+    "reviews": [],
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-25T17:47:25Z",
+        "conclusion": "FAILURE",
+        "detailsUrl": "https://github.com/Hans-Einar/SDP/actions/runs/36169301165/job/108184646807",
+        "name": "contracts",
+        "startedAt": "2026-09-25T17:47:18Z",
+        "status": "COMPLETED",
+        "workflowName": "Validate SDP Toolkit"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-25T17:51:18Z",
+        "conclusion": "FAILURE",
+        "detailsUrl": "https://github.com/Hans-Einar/SDP/actions/runs/36169301165/job/108184647268",
+        "name": "installer",
+        "startedAt": "2026-09-25T17:47:17Z",
+        "status": "COMPLETED",
+        "workflowName": "Validate SDP Toolkit"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-09-25T17:51:40Z",
+        "conclusion": "FAILURE",
+        "detailsUrl": "https://github.com/Hans-Einar/SDP/actions/runs/36169301165/job/108184647010",
+        "name": "process-profile-linux",
+        "startedAt": "2026-09-25T17:47:17Z",
+        "status": "COMPLETED",
+        "workflowName": "Validate SDP Toolkit"
+      }
+    ]
+  }
+}

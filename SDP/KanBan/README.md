@@ -40,6 +40,7 @@
 | KB-SDP-027 | Study | completed | [Scrum for skills consolidation and project activation](completed/%23027--Study--Skills-review-and-project-activation.md) |
 | KB-SDP-028 | Study | completed | [Versioned SDP installation and upgrades](completed/%23028--Study--Installer-upgrade-and-versioned-layout.md) |
 | KB-SDP-029 | Proposal | completed | [Typed plans and a shared Planning skill](completed/%23029--Proposal--Typed-plans-and-planning-skill.md) |
+| KB-SDP-030 | Bug | backlog | [Restore installation conformance in CI](backlog/%23030--Bug--CI-installation-conformance-and-fixtures.md) |
 
 ## Purpose and authority
 
