@@ -183,3 +183,19 @@ PM4-M1 completes KB-SDP-028's Study through direct selection of planned
 MAINT-SDP-0003, without a Scrum or Sprint. Three phases/six milestones own the
 future implementation. No installer/consumer mutation or Traceability event is
 claimed by this planning milestone; the sourceinput draft remains excluded.
+
+## IU1–IU3 — versioned process installation
+
+MAINT-SDP-0003 executes the owner's direct Maintenance selection after PM4.
+
+| Phase branch | Parent | Milestones |
+| --- | --- | --- |
+| sdp/phase-iu1-profile-build | PM4 33182ac | IU1-M1 9a5c79a; IU1-M2 89981fd |
+| sdp/phase-iu2-safe-upgrades | IU1 89981fd | IU2-M1 d075ab2; IU2-M2 8e36a5d |
+| sdp/phase-iu3-consumer-validation | IU2 8e36a5d | IU3-M1 b3f0513; IU3-M2 verification/closeout |
+
+Each completed phase is pushed and retained for separate review; the combined
+PR targets sdp-vNow without merging. See Maintenance/IU1/Plan.md and Evidence.md.
+SDL/go/sourceinput remains unrelated/untracked. The owner's later typed-plan
+and per-plan Git-policy proposal is registered as KB-SDP-029; this existing large
+plan keeps its already selected phase/milestone branch strategy.

@@ -1,0 +1,15 @@
+partition 0: PASS step 0/14
+partition 1: PASS step 15/30
+partition 2: PASS step 31/45
+partition 3: PASS step 46/61
+partition 0: PASS step 5/14
+partition 1: PASS step 20/30
+partition 2: PASS step 36/45
+partition 3: PASS step 51/61
+partition 0: PASS step 10/14
+partition 1: PASS step 25/30
+partition 2: PASS step 41/45
+partition 3: PASS step 56/61
+partition 1: PASS step 30/30
+partition 3: PASS step 61/61
+PASS: all 62 steps at backup/write/journal boundaries plus prepare/completion exits; forward resume, preserved history and exactly-once finalization

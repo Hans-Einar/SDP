@@ -1,4 +1,10 @@
-# Installation Contract
+# Installation Contract — retained install-v1
+
+For current five-phase installation and upgrades, see
+[Process Installation 2.0](Process-Installation.md). This document remains the
+unchanged inventory/behavior authority for calls without -ProfileArtifact and
+for external v1 clients. Do not reinterpret its schema 1.0 as the new process
+profile or silently add v2 fields to its installed facts.
 
 ## Authorities
 

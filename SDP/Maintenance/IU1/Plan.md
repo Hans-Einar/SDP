@@ -4,7 +4,7 @@
 | --- | --- |
 | id | MAINT-SDP-0003 |
 | project | SDP |
-| state | active |
+| state | completed |
 | source | KB-SDP-028; owner decision 2026-09-25: direct card to Maintenance, without Scrum |
 | Systems | SDP, SDPTOOL |
 
@@ -154,7 +154,7 @@ push completed phases, offer a combined PR against sdp-vNow, and do not merge.
 | IU2 / sdp/phase-iu2-safe-upgrades | IU2-M1 | Implement inspection and mutation-free exact-plan generation for clean, versioned, local and manual baselines, with explicit conflicts/unknown facts and input identities | Completed |
 | IU2 | IU2-M2 | Implement apply, preservation, backups, ordered migrations and crash/concurrency recovery; verify target facts and retry-safe Maintenance/history finalization | Completed |
 | IU3 / sdp/phase-iu3-consumer-validation | IU3-M1 | Update installed-fact readers and supported navigation bindings; define prebuilt tool distribution; installed SDPTool discovers actual facts without invented models/viewer settings | Completed |
-| IU3 | IU3-M2 | Complete end-to-end transition/rollback-resume conformance, independent review and operator guidance; disposition remaining gaps before Maintenance closure | Planned |
+| IU3 | IU3-M2 | Complete end-to-end transition/rollback-resume conformance, independent review and operator guidance; disposition remaining gaps before Maintenance closure | Completed |
 
 IU1-M1 resolves field/version identifiers, exact packaging destinations, supported
 host matrix and report finalization semantics before code depends on them. This
@@ -216,3 +216,17 @@ fixes the artifact, transition matrix, explicit 2.0 facts/plan boundary and
 forward-resume recovery policy. Linux PowerShell 7 is the initial verified host;
 Windows remains experimental until tested. XFMD baseline cf11709e was inspected
 read-only. KB-SDP-014/018 retain standalone distribution and wider audit work.
+
+## Execution outcome
+
+All six milestones are complete. The versioned profile build, exact-plan installer,
+forward resume and consumer readers are implemented and independently reviewed.
+[Evidence](Evidence.md) identifies tested candidates, aggregate interruption
+coverage, the disposable XFMD snapshot and unchanged baseline findings.
+EVT-PM-SDP-000037 records completion. No live project was upgraded.
+
+The planning-baseline and proposed-contract sections above preserve the original
+selection rationale; the implemented authority is
+[Process installation 2.0](../../../Toolkit/docs/Process-Installation.md).
+KB-SDP-029 owns the later typed-plan/Planning-skill proposal. This delivery keeps
+its original Git policy and does not adopt that proposal by implication.

@@ -20,7 +20,7 @@ def run(part):
         history=(case.root/'SDP/Agents/KanBan/Ledger.ndjson').read_bytes()
         plan=case.plan('-ForceManagedFiles')
         env=dict(os.environ,SDP_INSTALL_INTERRUPT='prepared:0',SDP_INSTALL_HARD_EXIT='1')
-        case.apply(plan,'-ForceManagedFiles',env=env,ok=False)
+        assert case.apply(plan,'-ForceManagedFiles',env=env,ok=False).returncode==97
         path=next((case.root/'SDP/.sdp-operations').glob('*/journal.json'))
         j=json.loads(path.read_text());ident=j['operationId'];count=len(j['steps'])
         start=count*part//WORKERS;end=count*(part+1)//WORKERS
@@ -34,7 +34,7 @@ def run(part):
                 assert p.returncode==97,(i,boundary,p.stderr)
             if (i-start)%5==0: print(f'partition {part}: PASS step {i}/{end-1}',flush=True)
         env=dict(os.environ,SDP_INSTALL_INTERRUPT=f'complete:{count}',SDP_INSTALL_HARD_EXIT='1')
-        case.call('-ResumeOperation',ident,env=env,ok=False)
+        assert case.call('-ResumeOperation',ident,env=env,ok=False).returncode==97
         case.call('-ResumeOperation',ident)
         assert json.loads(path.read_text())['status']=='completed'
         final=(case.root/'SDP/ProjectManagement/Ledger.ndjson').read_bytes()

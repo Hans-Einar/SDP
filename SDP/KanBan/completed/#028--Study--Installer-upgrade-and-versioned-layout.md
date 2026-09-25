@@ -10,7 +10,7 @@
 | Systems | SDP |
 | created | 2026-09-25T12:38:14Z |
 | source | Owner conversation 2026-09-25 |
-| next_review | Planning outcome owned by MAINT-SDP-0003; implementation remains planned |
+| next_review | Closed; implementation delivered by MAINT-SDP-0003; live rollout separately selected |
 | tags | maintenance, scrum, installation, upgrade, versions |
 
 ## Original requested outcome
@@ -147,3 +147,17 @@ Study's planning outcome only. Implementation and any actual consuming-project
 upgrade remain planned; no new Scrum, Sprint or wrapper card has been created.
 
 2026-09-25T15:03:56Z — EVT-KB-SDP-000164: planning complete; Maintenance execution not started.
+
+## Maintenance completion
+
+2026-09-25T16:02:42Z — EVT-KB-SDP-000167: [MAINT-SDP-0003](../../Maintenance/IU1/Plan.md)
+is complete across IU1–IU3. The explicit profile/configuration drives read-only
+plans, journaled apply/resume, truthful installed facts and target Maintenance
+history. Updated SDPTool consumes both supported fact schemas.
+[Verification](../../Maintenance/IU1/Evidence.md) includes independent review,
+forced interruption and a disposable copy of the actual XFMD baseline.
+No live consumer was upgraded. Earlier worklog statements describe their dated
+planning state, not the current implementation outcome.
+
+The later typed-plan and Planning-skill direction is tracked separately in
+[KB-SDP-029](../backlog/%23029--Proposal--Typed-plans-and-planning-skill.md).

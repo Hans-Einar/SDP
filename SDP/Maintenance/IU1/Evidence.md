@@ -68,3 +68,82 @@ early interruption before navigation publication and unknown operation folders.
 Review approves this consumer scope; Windows/live rollout and full exit-matrix
 proof remain outside that approval. Package evidence is a dirty working candidate
 based on 8e36a5d, not a published release.
+
+## IU3-M2 — completion evidence
+
+Candidate: IU3-M1 b3f0513 plus the conformance/CI/operator-documentation and
+closeout diff. The installer and builder hashes above are unchanged. Final
+profile artifact SHA256:
+662107441efcefc028bda51927053766a901c754681620a97033ee3d7c069239.
+Host: Linux, Python 3, PowerShell 7.6.6, Go 1.27.1.
+
+### Recovery coverage
+
+The [forced-exit matrix](fault-matrix.txt) passed every one of the reviewed
+artifact's 62 steps at backup/write/journal boundaries, plus preparation and
+completion. Four isolated fixtures partitioned those indices. Actual process
+termination and forward resume proved preserved history and exactly-once
+finalization. This is process interruption evidence, not hardware-failure or
+whole-tree rollback evidence.
+
+The final artifact differs only by adding project-owned RELEASE-NOTES.md.
+The [final-artifact test](final-artifact-recovery.txt) passed explicit exit 97
+at preparation, all three boundaries of that added step and completion. It
+also checked the final configuration digest, preserved ledger prefix, unique
+events, no-change repetition and owner release-note preservation under force.
+This is aggregate coverage: the original matrix covers unchanged engine steps,
+and the added test covers the new artifact step. It is not an exhaustive matrix
+run against the final artifact. Independent reviewer iu_review explicitly
+accepted this evidence combination after confirming the unchanged engine hashes.
+The source runner now also requires exit 97 at preparation/completion.
+
+### Consumer and migration evidence
+
+[Three integration groups](consumer-tests.txt) passed fresh installed SDPTool
+discovery from both project root and SDP, model-free KanBan navigation, consuming
+project validation, actual legacy-v1 installation to v2 upgrade, downgrade and
+unknown-schema rejection, and case collisions. A separate old-entrypoint probe
+rejects installed schema 2.0 with unsupported-installed-schema before mutation.
+That check is now part of the automated versioned-upgrade test.
+
+The [XFMD snapshot test](xfmd-snapshot.txt) passed against 242 recorded files
+from commit cf11709e4ec9d6925b0d17d95c71f72fbf011959.
+[Provenance](xfmd-provenance.json) records original hashes and the disposable
+operation result. Existing history remained a byte prefix, repetition produced
+no changes, and original source bytes/Git status remained unchanged. This is
+not a live XFMD upgrade.
+
+Go race tests and vet passed for SDPTool; malformed installed YAML list/scalar
+regressions passed. Independent IU3 review approved corrections for those inputs,
+early interruption before navigation exists and unknown operation folders.
+No material review finding remains in the selected scope.
+
+### Reproduction and limits
+
+Use the commands and environment variables in
+[conformance guidance](../../../Toolkit/conformance/install-v2/README.md).
+Run Go tests/vet from Toolkit/SDPTool with the selected Go toolchain. Native
+package.sh was exercised with a new output directory; its dirty build identity
+is truthful and is not a release/publication claim. The Linux CI job now supplies
+PowerShell and a prebuilt SDPTool, runs integration tests and the complete matrix;
+configuration is delivered, but a remote CI pass is not claimed here.
+
+The full Python run had 100 tests, one known failure and 16 environment skips
+before the final extra regression tests were added. Installation/consumer groups
+were separately run with explicit PowerShell/prebuilt-tool paths as documented
+above. The full Toolkit validator still reports exactly the same 38 legacy
+Traceability findings as the SK1 baseline: zero added or removed findings.
+KB-SDP-011 owns that existing failure; this delivery does not claim an entirely
+green repository-wide suite. Windows profile execution remains experimental.
+
+Backlog disposition: KB-SDP-014 retains standalone KanBan distribution;
+KB-SDP-018 retains the broader Toolkit audit; KB-SDP-029 retains typed plans
+and the Planning skill. Owner review of KB-SDP-010 remains independent.
+All six selected Maintenance milestones are delivered; live rollout, product
+release and those separate backlog proposals remain outside completion.
+
+Final closeout checks pass: 36 cards, eight management records, three lineage
+operations and 240 events; four management tests and 15 lineage negative cases.
+Documentation checks preserve 105 frozen records/ledger prefixes and 574
+generated outputs, resolving 2,414 local file links and 130 fragments.
+git diff --check passes. These checks prove record integrity, not GUI behavior.

@@ -5,7 +5,8 @@ Toolkit-Version: 0.2.0 (unreleased)
 This directory contains the reusable Toolkit boundary:
 
 - [SDPTool](SDPTool/README.md) — source home and plan for the project-aware sdptool facade; Go facade delivered; see its current scope
-- `SDP-install.manifest.json` — authoritative installable inventory and policy
+- `profiles/five-phase.json` — authored current process configuration and reproducible artifact
+- `SDP-install.manifest.json` — authoritative legacy install-v1 inventory and policy
 - `schemas/` — installation, plan, manifest, traceability, record and build contracts
 - `scripts/` — supported PowerShell installer, build metadata and validator
 - `tests/` — deterministic Python and PowerShell fixtures
@@ -19,7 +20,14 @@ capability facts. It is not the installation inventory. The JSON installation
 manifest explicitly lists every copied or generated target so PowerShell and
 independent clients such as `gh-sdp` do not reconstruct hidden behavior.
 
-Produce a portable, mutation-free plan:
+For the current five-phase/shared-management profile, follow
+[versioned process installation](docs/Process-Installation.md): build the artifact,
+inspect -ProfileArtifact/-PlanJson, then consume that exact plan with -ApplyPlan.
+Recovery, installed facts 2.0 and target Maintenance reports belong to that
+contract. [V2 conformance](conformance/install-v2/README.md) includes interrupted
+execution and the prebuilt SDPTool consumer.
+
+The following retained interface is install-v1. Produce its mutation-free plan:
 
 ```powershell
 .\Toolkit\scripts\Install-SDP.ps1 `

@@ -20,6 +20,12 @@ Core principle:
 
 > Design horizontally. Implement vertically.
 
+For the current five-phase process installation/update workflow, use the
+[versioned profile installer](Toolkit/docs/Process-Installation.md). It builds a
+reviewable plan, preserves project material and records the actual operation in
+the target project's Maintenance/history. The older install-v1 examples below
+remain compatibility instructions.
+
 ## Repository layout
 
 ```text

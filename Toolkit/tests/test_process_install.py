@@ -177,6 +177,11 @@ class ProcessInstall(unittest.TestCase):
         self.assertEqual(plan['oldFacts']['schemaVersion'],'1.0')
         self.assertTrue(plan['canApply'],plan['conflicts'])
         self.apply(plan)
+        old_reader=subprocess.run([PWSH,'-NoProfile','-File',str(INSTALLER),'-ProjectRoot',str(self.root),'-PlanJson'],capture_output=True,text=True)
+        self.assertEqual(old_reader.returncode,0,old_reader.stderr)
+        blocked=json.loads(old_reader.stdout)
+        self.assertFalse(blocked['canApply'])
+        self.assertEqual(blocked['actions'][0]['reason'],'unsupported-installed-schema')
         facts=self.root/'SDP/Framework/installed-toolkit.manifest.yaml'
         data=facts.read_text()
         facts.write_text(data.replace('toolkitVersion: "0.2.0"','toolkitVersion: "99.0.0"'))
@@ -208,6 +213,34 @@ class ProcessInstall(unittest.TestCase):
         self.put('SDP/02--Requirements/A.md','one')
         self.put('SDP/02--Requirements/a.md','two')
         self.call('-PlanJson',ok=False)
+
+    def test_final_artifact_release_notes_recovery(self):
+        self.xfmd()
+        history=(self.root/'SDP/Agents/KanBan/Ledger.ndjson').read_bytes()
+        env=dict(os.environ,SDP_INSTALL_INTERRUPT='prepared:0',SDP_INSTALL_HARD_EXIT='1')
+        self.assertEqual(self.apply(ok=False,env=env).returncode,97)
+        path=next((self.root/'SDP/.sdp-operations').glob('*/journal.json'))
+        journal=json.loads(path.read_text());ident=journal['operationId']
+        index=next(i for i,s in enumerate(journal['steps']) if s['destination']=='SDP/RELEASE-NOTES.md')
+        for boundary in ('backup','write','journal'):
+            env=dict(os.environ,SDP_INSTALL_INTERRUPT=f'{boundary}:{index}',SDP_INSTALL_HARD_EXIT='1')
+            self.assertEqual(self.call('-ResumeOperation',ident,env=env,ok=False).returncode,97)
+        env=dict(os.environ,SDP_INSTALL_INTERRUPT=f'complete:{len(journal["steps"])}',SDP_INSTALL_HARD_EXIT='1')
+        self.assertEqual(self.call('-ResumeOperation',ident,env=env,ok=False).returncode,97)
+        self.call('-ResumeOperation',ident)
+        final=(self.root/'SDP/ProjectManagement/Ledger.ndjson').read_bytes()
+        self.assertTrue(final.startswith(history))
+        events=[json.loads(x) for x in final.splitlines()]
+        self.assertEqual(len(events),3)
+        self.assertEqual(len({e['eventId'] for e in events}),3)
+        import yaml
+        facts=yaml.safe_load((self.root/'SDP/Framework/installed-toolkit.manifest.yaml').read_text())
+        self.assertEqual(facts['configurationDigest'],json.loads(ARTIFACT.read_text())['configurationDigest'])
+        self.assertEqual(self.plan()['actions'],[])
+        # Project release notes are owned by the consuming project, including force mode.
+        self.put('SDP/RELEASE-NOTES.md','# Owner release history\n')
+        self.assertEqual(self.plan('-ForceManagedFiles')['actions'],[])
+        self.assertEqual((self.root/'SDP/RELEASE-NOTES.md').read_text(),'# Owner release history\n')
 
 if __name__ == '__main__':
     unittest.main()
