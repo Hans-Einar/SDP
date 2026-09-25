@@ -41,3 +41,10 @@ Add A4 Channel/scenario/data/class details only when their semantics and actual
 consumer are defined. Do not introduce unsupported imports, Requirement or State
 keywords to make this feature look more complete. Requirement prose is currently
 Markdown; the validated architectural model uses design-core 0.5.
+
+## P0-M1 implemented contract
+
+The [producer contract](../../Toolkit/SDPTool/Contract.md) resolves the saved-file
+operation above with a Go facade, bounded selection, language diagnostics and
+caller-owned revision-tagged bundles. Unsaved-buffer and native viewer behavior
+remain separately owned. P0-M1 evidence is in the implementation plan.

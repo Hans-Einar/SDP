@@ -20,12 +20,12 @@ KBO-SDP-000004 transfers the selected producer milestones to the six cards below
 Their acceptance now belongs there; earlier sequence descriptions below remain
 background and do not create duplicate implementation assignments.
 
-- [KB-SDP-021](../backlog/%23021--Change--SDPTool-saved-design-preview.md)
-- [KB-SDP-022](../backlog/%23022--Change--SDPTool-discovery-contract.md)
-- [KB-SDP-023](../backlog/%23023--Change--SDPTool-project-viewer-bridge.md)
-- [KB-SDP-024](../backlog/%23024--Change--SDPTool-model-navigation.md)
-- [KB-SDP-025](../backlog/%23025--Change--SDPTool-KanBan-and-SDUI-inventory.md)
-- [KB-SDP-026](../backlog/%23026--CodeReview--SDPTool-consumer-contract-review.md)
+- [KB-SDP-021](../completed/%23021--Change--SDPTool-saved-design-preview.md)
+- [KB-SDP-022](%23022--Change--SDPTool-discovery-contract.md)
+- [KB-SDP-023](%23023--Change--SDPTool-project-viewer-bridge.md)
+- [KB-SDP-024](%23024--Change--SDPTool-model-navigation.md)
+- [KB-SDP-025](%23025--Change--SDPTool-KanBan-and-SDUI-inventory.md)
+- [KB-SDP-026](%23026--CodeReview--SDPTool-consumer-contract-review.md)
 
 Explicit work retained here: P0-M2 unsaved-buffer/snapshot input; T4-M2 interoperability with the separately delivered native XFMD consumer; T5 slice proposal/validation, evidence-aware implementation plans/roadmaps, and Git-backed card history/diff.
 

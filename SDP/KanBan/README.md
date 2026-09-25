@@ -31,12 +31,12 @@
 | KB-SDP-020 | Change | backlog | [Organize shared system design sources by phase](backlog/%23020--Change--Shared-design-source-organization.md) |
 | KB-SDUI-001 | Ref | completed | [SDUI as a subproject and library for SDP tools](completed/%23001--SDUI--Ref--SDP--017--sdptool.md) |
 | KB-SDUI-002 | Ref | completed | [KB-SDUI-002 — Split the shared design into phase-owned sources](completed/%23002--SDUI--Ref--SDL--004--Language-source-organization.md) |
-| KB-SDP-021 | Change | backlog | [Saved-file design preview](backlog/%23021--Change--SDPTool-saved-design-preview.md) |
-| KB-SDP-022 | Change | backlog | [Project recognition and delegation contract](backlog/%23022--Change--SDPTool-discovery-contract.md) |
-| KB-SDP-023 | Change | backlog | [Project resolver and configured viewer bridge](backlog/%23023--Change--SDPTool-project-viewer-bridge.md) |
-| KB-SDP-024 | Change | backlog | [Model-derived navigation and selected generation](backlog/%23024--Change--SDPTool-model-navigation.md) |
-| KB-SDP-025 | Change | backlog | [KanBan and SDUI navigation services](backlog/%23025--Change--SDPTool-KanBan-and-SDUI-inventory.md) |
-| KB-SDP-026 | CodeReview | backlog | [Consumer contract and end-to-end delivery review](backlog/%23026--CodeReview--SDPTool-consumer-contract-review.md) |
+| KB-SDP-021 | Change | completed | [Saved-file design preview](completed/%23021--Change--SDPTool-saved-design-preview.md) |
+| KB-SDP-022 | Change | active | [Project recognition and delegation contract](active/%23022--Change--SDPTool-discovery-contract.md) |
+| KB-SDP-023 | Change | active | [Project resolver and configured viewer bridge](active/%23023--Change--SDPTool-project-viewer-bridge.md) |
+| KB-SDP-024 | Change | active | [Model-derived navigation and selected generation](active/%23024--Change--SDPTool-model-navigation.md) |
+| KB-SDP-025 | Change | active | [KanBan and SDUI navigation services](active/%23025--Change--SDPTool-KanBan-and-SDUI-inventory.md) |
+| KB-SDP-026 | CodeReview | active | [Consumer contract and end-to-end delivery review](active/%23026--CodeReview--SDPTool-consumer-contract-review.md) |
 | KB-SDP-027 | Study | backlog | [Scrum for skills consolidation and project activation](backlog/%23027--Study--Skills-review-and-project-activation.md) |
 | KB-SDP-028 | Study | backlog | [Scrum for versioned SDP installation and upgrades](backlog/%23028--Study--Installer-upgrade-and-versioned-layout.md) |
 

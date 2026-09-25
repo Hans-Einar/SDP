@@ -43,12 +43,12 @@ the then-current delivery tip rather than rebasing earlier history.
 
 | Card | Selected phase/milestone |
 | --- | --- |
-| [KB-SDP-021](../KanBan/backlog/%23021--Change--SDPTool-saved-design-preview.md) | P0-M1 |
-| [KB-SDP-022](../KanBan/backlog/%23022--Change--SDPTool-discovery-contract.md) | T1-M1/M2 |
-| [KB-SDP-023](../KanBan/backlog/%23023--Change--SDPTool-project-viewer-bridge.md) | T2-M1/M2 |
-| [KB-SDP-024](../KanBan/backlog/%23024--Change--SDPTool-model-navigation.md) | T3-M1/M2 |
-| [KB-SDP-025](../KanBan/backlog/%23025--Change--SDPTool-KanBan-and-SDUI-inventory.md) | T3-M3 |
-| [KB-SDP-026](../KanBan/backlog/%23026--CodeReview--SDPTool-consumer-contract-review.md) | T4-M1 |
+| [KB-SDP-021](../KanBan/completed/%23021--Change--SDPTool-saved-design-preview.md) | P0-M1 |
+| [KB-SDP-022](../KanBan/active/%23022--Change--SDPTool-discovery-contract.md) | T1-M1/M2 |
+| [KB-SDP-023](../KanBan/active/%23023--Change--SDPTool-project-viewer-bridge.md) | T2-M1/M2 |
+| [KB-SDP-024](../KanBan/active/%23024--Change--SDPTool-model-navigation.md) | T3-M1/M2 |
+| [KB-SDP-025](../KanBan/active/%23025--Change--SDPTool-KanBan-and-SDUI-inventory.md) | T3-M3 |
+| [KB-SDP-026](../KanBan/active/%23026--CodeReview--SDPTool-consumer-contract-review.md) | T4-M1 |
 
 The source card retains P0-M2 unsaved-buffer/snapshot input; T4-M2 interoperability with the separately delivered native XFMD consumer; T5 slice proposal/validation, evidence-aware implementation plans/roadmaps, and Git-backed card history/diff.
 They require later selection and are not prerequisites for this producer Sprint.
@@ -110,3 +110,10 @@ interfaces and planned delivery activities. All implementation-status assertions
 remain planned. Preview API details are the next bounded work. Evidence is in
 [VER-SDPTOOL-001](../Verification/VER-SDPTOOL-001.md); the shared Relations/ledger
 records this design delivery, not runtime verification.
+
+## P0-M1 delivery
+
+Go saved-file preview implemented using existing SDL projection, query and bundle services, with compact default selection, structured diagnostics, cancellation and revision checks, guarded publication and caller-owned resources.
+
+[Verification](../Verification/SDPTOOL-VER-P0-M1.md). Remaining milestones retain their existing status;
+this delivery is limited to the named milestone.

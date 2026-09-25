@@ -124,7 +124,7 @@ ResolveProjectContext contributes-to SdpTool.
 ResolveProjectContext realizes ProjectNavigation.
 SavedFilePreview addresses BuildDesignPreview.
 SavedFilePreview addresses DeliverViewBundle.
-SavedFilePreview has implementation-status = planned.
+SavedFilePreview has implementation-status = implemented.
 SavedFilePreview refines PreviewSlice.
 SdpTool supports BrowseProject.
 SdpTool supports InspectCardHistory.

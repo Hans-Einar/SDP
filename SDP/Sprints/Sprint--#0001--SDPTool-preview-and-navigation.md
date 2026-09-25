@@ -4,7 +4,7 @@
 | --- | --- |
 | id | SPR-SDP-0001 |
 | project | SDP |
-| state | planned |
+| state | active |
 | ScrumId | SCRUM-SDP-0002 |
 | Members | KB-SDP-021, KB-SDP-022, KB-SDP-023, KB-SDP-024, KB-SDP-025, KB-SDP-026 |
 | source | KB-SDP-017; owner-conversation-2026-09-25 |
@@ -26,12 +26,12 @@ Sprint start; mark only the currently worked card in-progress.
 
 | Card | Phase | Depends on | Outcome |
 | --- | --- | --- | --- |
-| [KB-SDP-021](../KanBan/backlog/%23021--Change--SDPTool-saved-design-preview.md) | P0-M1 | None; existing SDL pipeline | Saved-file design preview |
-| [KB-SDP-022](../KanBan/backlog/%23022--Change--SDPTool-discovery-contract.md) | T1-M1/M2 | Existing manifests and P0 contract alignment | Project recognition and delegation contract |
-| [KB-SDP-023](../KanBan/backlog/%23023--Change--SDPTool-project-viewer-bridge.md) | T2-M1/M2 | 021, 022 | Project resolver and configured viewer bridge |
-| [KB-SDP-024](../KanBan/backlog/%23024--Change--SDPTool-model-navigation.md) | T3-M1/M2 | 021–023 | Model-derived navigation and selected generation |
-| [KB-SDP-025](../KanBan/backlog/%23025--Change--SDPTool-KanBan-and-SDUI-inventory.md) | T3-M3 | 022, 023; coordinate 024 | KanBan and SDUI navigation services |
-| [KB-SDP-026](../KanBan/backlog/%23026--CodeReview--SDPTool-consumer-contract-review.md) | T4-M1 | 021–025 | Consumer contract and end-to-end delivery review |
+| [KB-SDP-021](../KanBan/completed/%23021--Change--SDPTool-saved-design-preview.md) | P0-M1 | None; existing SDL pipeline | Saved-file design preview |
+| [KB-SDP-022](../KanBan/active/%23022--Change--SDPTool-discovery-contract.md) | T1-M1/M2 | Existing manifests and P0 contract alignment | Project recognition and delegation contract |
+| [KB-SDP-023](../KanBan/active/%23023--Change--SDPTool-project-viewer-bridge.md) | T2-M1/M2 | 021, 022 | Project resolver and configured viewer bridge |
+| [KB-SDP-024](../KanBan/active/%23024--Change--SDPTool-model-navigation.md) | T3-M1/M2 | 021–023 | Model-derived navigation and selected generation |
+| [KB-SDP-025](../KanBan/active/%23025--Change--SDPTool-KanBan-and-SDUI-inventory.md) | T3-M3 | 022, 023; coordinate 024 | KanBan and SDUI navigation services |
+| [KB-SDP-026](../KanBan/active/%23026--CodeReview--SDPTool-consumer-contract-review.md) | T4-M1 | 021–025 | Consumer contract and end-to-end delivery review |
 
 Each phase uses a branch stacked on the previous phase; commit each completed
 milestone with plan and evidence updates, then push the phase. Register actual
@@ -69,3 +69,7 @@ folder-exists check.
 PM2-M1 records Scrum-0002, the partial split KBO-SDP-000004 and this planned
 membership. Validation results are recorded in the Scrum document; no product
 implementation or native UI evidence is claimed here.
+
+## Execution
+
+2026-09-25T13:08:54Z — EVT-PM-SDP-000010: Sprint started on owner direction. #027/#028 remain backlog; review them after Sprint outcomes are available.

@@ -14,7 +14,7 @@ parsing/projection/rendering path.
 | [documents](../../SDL/go/documents/bundle.go) | Go Markdown/resource bundles, source revision, manifests and publication |
 | [render adapter](../../SDL/go/documents/geometry.go) | Calls Rust mmdr; uses its layout dump for flowcharts and adds SDL symbols/arrows in Go; other diagram kinds use mmdr SVG |
 | XFMD DocumentViews | Registered URI handling, child processes, main/navigation panes and resource lifetime; no SDL parser |
-| sdptool | Planned common facade; no executable implemented yet |
+| sdptool | Go saved-file preview facade; see [current contract](Contract.md); remaining discovery/navigation work is planned |
 
 The eleven VP01–VP11 definitions are a fixed supported catalog. Their diagram
 instances, content, relations, gaps and selections come from the current validated

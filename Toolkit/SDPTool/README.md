@@ -2,8 +2,9 @@
 
 This is the owner-selected home for `sdptool`, the project-aware entry point for
 SDP operations and selected SDL/SDUI services. Created on 2026-09-25. The directory
-and [implementation plan](../../SDP/05--Implementation/SDPTool.md) are delivered; an executable,
-discovery schema and navigator API are not implemented here yet.
+and [implementation plan](../../SDP/05--Implementation/SDPTool.md) are delivered.
+The Go executable supports saved design preview; project discovery and the native
+navigation API are the next milestones.
 
 The active feature assignment is
 [KB-SDP-017](../../SDP/KanBan/active/%23017--Proposal--sdptool-and-project-navigation.md).
@@ -52,3 +53,18 @@ The broader [Toolkit audit](../../SDP/KanBan/backlog/%23018--Study--Toolkit-audi
 is separate. Creating this directory changes neither installation inventory nor
 published Toolkit versions. Existing installers, schemas and language tools keep
 their current responsibilities until an explicit migration is delivered.
+
+## Implemented saved-file preview — P0-M1
+
+The Go facade now implements the [producer contract](Contract.md). Build it once
+from this directory, then use the prebuilt executable for document requests:
+
+```sh
+go build -o /desired/bin/sdptool ./cmd/sdptool
+sdptool preview ../../SDP/03--Architecture/SDPTool.design --output /tmp/design-preview
+```
+
+The local module replacements locate existing SDL/SDUI libraries in this checkout;
+no Python parser or second language implementation is introduced. Tests run with
+`go test -race ./...`. Discovery/navigation below remain planned until their
+own milestones; direct preview already works without project metadata.

@@ -5,7 +5,7 @@
 | id | KB-SDP-021 |
 | project | SDP |
 | type | Change |
-| CardState | queued |
+| CardState | completed |
 | ScrumId | SCRUM-SDP-0002 |
 | SprintId | SPR-SDP-0001 |
 | Systems | SDPTOOL |
@@ -49,3 +49,9 @@ metadata or System/source-set language work. The Sprint is planned, not started.
 ## Worklog
 
 2026-09-25T12:38:14Z — EVT-KB-SDP-000124: registered with acceptance and dependency boundaries. Await Sprint start.
+
+2026-09-25T13:08:52Z — EVT-KB-SDP-000134: Owner selects Sprint execution before the skills and installer Scrums; backlog to active/ready.
+
+2026-09-25T13:08:54Z — EVT-KB-SDP-000140: P0-M1: implement the saved-file preview facade and verify the existing SDL bundle pipeline.
+
+2026-09-25T13:13:02Z — EVT-KB-SDP-000141: P0-M1 delivered: saved-file preview, resource/revision contract and tests; see SDPTOOL-VER-P0-M1. Unsaved preview remains P0-M2.

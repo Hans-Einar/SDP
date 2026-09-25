@@ -5,7 +5,7 @@
 | id | KB-SDP-022 |
 | project | SDP |
 | type | Change |
-| CardState | backlog |
+| CardState | ready |
 | ScrumId | SCRUM-SDP-0002 |
 | SprintId | SPR-SDP-0001 |
 | Systems | SDPTOOL |
@@ -38,7 +38,7 @@ P0's standalone operation stays usable independently.
 
 | Source | Transferred scope | Retained scope |
 | --- | --- | --- |
-| [KB-SDP-017](../active/%23017--Proposal--sdptool-and-project-navigation.md) | T1-M1/M2: Project recognition and delegation contract | P0-M2, T4-M2 and T5 remain in the source; sibling cards own the other selected milestones |
+| [KB-SDP-017](%23017--Proposal--sdptool-and-project-navigation.md) | T1-M1/M2: Project recognition and delegation contract | P0-M2, T4-M2 and T5 remain in the source; sibling cards own the other selected milestones |
 
 Typed partial split: KBO-SDP-000004. The [single feature plan](../../05--Implementation/SDPTool.md)
 owns phase/milestone acceptance; the [Sprint](../../Sprints/Sprint--%230001--SDPTool-preview-and-navigation.md) owns
@@ -47,3 +47,5 @@ membership and completion. No implementation is delivered by this registration.
 ## Worklog
 
 2026-09-25T12:38:14Z — EVT-KB-SDP-000125: registered with acceptance and dependency boundaries. Await Sprint start.
+
+2026-09-25T13:08:52Z — EVT-KB-SDP-000135: Owner selects Sprint execution before the skills and installer Scrums; backlog to active/ready.
