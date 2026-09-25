@@ -131,3 +131,10 @@ Defined read-only command mapping, host-only executable precedence, JSON respons
 
 [Verification](../Verification/SDPTOOL-VER-T1-M2.md). Remaining milestones retain their existing status;
 this delivery is limited to the named milestone.
+
+## T2-M1 delivery
+
+Implemented read-only project recognition for explicit repo/SDP-area selection, strict bounded JSON registration, confined paths, capability declarations and referenced YAML installation facts.
+
+[Verification](../Verification/SDPTOOL-VER-T2-M1.md). Remaining milestones retain their existing status;
+this delivery is limited to the named milestone.

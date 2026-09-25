@@ -9,6 +9,25 @@ import (
 )
 
 func Run(ctx context.Context, args []string, out, errs io.Writer) int {
+	selected := "."
+	if len(args) > 1 && !isCommand(args[0]) {
+		selected = args[0]
+		args = args[1:]
+	}
+	if len(args) > 0 && args[0] == "discover" {
+		if len(args) != 1 {
+			return report(errs, failure("arguments", fmt.Errorf("discover takes no positional arguments")))
+		}
+		p, e := Discover(selected)
+		if e != nil {
+			return report(errs, e)
+		}
+		if e = json.NewEncoder(out).Encode(p); e != nil {
+			return report(errs, e)
+		}
+		return 0
+	}
+
 	if len(args) < 2 || args[0] != "preview" {
 		return report(errs, failure("arguments", fmt.Errorf("usage: sdptool preview FILE --output DIRECTORY [--viewpoint VPnn | --uri URI] [--renderer PROGRAM] [--revision HASH]")))
 	}
@@ -42,4 +61,12 @@ func report(w io.Writer, e error) int {
 	}
 	_ = json.NewEncoder(w).Encode(map[string]any{"schema": Version, "error": f})
 	return 1
+}
+
+func isCommand(s string) bool {
+	switch s {
+	case "preview", "discover", "view", "tree", "select", "sdui-preview":
+		return true
+	}
+	return false
 }
