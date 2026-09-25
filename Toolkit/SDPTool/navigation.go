@@ -1,0 +1,49 @@
+package sdptool
+
+import (
+	"encoding/json"
+	"github.com/Hans-Einar/SDP/SystemDesignLanguage/go/documents"
+)
+
+// Navigation keeps optional unavailable services visible instead of claiming
+// that absence means a validated empty system.
+func Navigation(p Project, id string) (Tree, error) {
+	t := Tree{Schema: Version, Operation: "tree", Project: p.Registration.ProjectID, Roots: []string{"sdl", "kanban", "sdui"}, Nodes: []Node{}, ExpansionDepthLimit: 8}
+	if len(p.Registration.Models) > 0 {
+		modelTree, e := ModelTree(p, id)
+		if e != nil {
+			return t, e
+		}
+		t.Model = modelTree.Model
+		t.Revision = modelTree.Revision
+		t.Nodes = modelTree.Nodes
+	} else {
+		t.Nodes = append(t.Nodes, Node{ID: "sdl", Kind: "tab", Label: "SDL", State: "absent"})
+	}
+	versions := []string{t.Revision}
+	if p.Registration.KanBan != "" {
+		nodes, hash, e := BoardNodes(p)
+		if e != nil {
+			t.Nodes = append(t.Nodes, Node{ID: "kanban", Kind: "tab", Label: "KanBan", State: "unavailable", Diagnostic: e.Error()})
+		} else {
+			t.Nodes = append(t.Nodes, nodes...)
+			versions = append(versions, hash)
+		}
+	} else {
+		t.Nodes = append(t.Nodes, Node{ID: "kanban", Kind: "tab", Label: "KanBan", State: "absent"})
+	}
+	nodes, hash, e := UINodes(p)
+	if e != nil {
+		t.Nodes = append(t.Nodes, Node{ID: "sdui", Kind: "tab", Label: "SDUI", State: "unavailable", Diagnostic: e.Error()})
+	} else {
+		t.Nodes = append(t.Nodes, nodes...)
+		versions = append(versions, hash)
+	}
+	b, _ := json.Marshal(struct {
+		Registration Registration
+		Versions     []string
+		Nodes        []Node
+	}{p.Registration, versions, t.Nodes})
+	t.InventoryRevision = documents.Hash(b)
+	return t, nil
+}

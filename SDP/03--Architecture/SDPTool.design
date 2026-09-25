@@ -88,7 +88,7 @@ NavigationInventory owns DescribeNavigationTree.
 NavigationSlice addresses DescribeNavigationTree.
 NavigationSlice delivers SdpTool.
 NavigationSlice depends-on ProjectDiscoverySlice.
-NavigationSlice has implementation-status = planned.
+NavigationSlice has implementation-status = implemented.
 NavigationSlice refines DeliverSdpTool.
 PlanAssistance requires TraceabilityReadPort in mode ProcessPlanning.
 PlanAssistanceSlice addresses ProposeImplementationSlices.

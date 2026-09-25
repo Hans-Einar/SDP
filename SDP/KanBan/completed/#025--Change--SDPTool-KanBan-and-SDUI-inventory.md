@@ -5,7 +5,7 @@
 | id | KB-SDP-025 |
 | project | SDP |
 | type | Change |
-| CardState | in-progress |
+| CardState | completed |
 | ScrumId | SCRUM-SDP-0002 |
 | SprintId | SPR-SDP-0001 |
 | Systems | SDPTOOL |
@@ -36,7 +36,7 @@ reusable contract/distribution work.
 
 | Source | Transferred scope | Retained scope |
 | --- | --- | --- |
-| [KB-SDP-017](%23017--Proposal--sdptool-and-project-navigation.md) | T3-M3: KanBan and SDUI navigation services | P0-M2, T4-M2 and T5 remain in the source; sibling cards own the other selected milestones |
+| [KB-SDP-017](../active/%23017--Proposal--sdptool-and-project-navigation.md) | T3-M3: KanBan and SDUI navigation services | P0-M2, T4-M2 and T5 remain in the source; sibling cards own the other selected milestones |
 
 Typed partial split: KBO-SDP-000004. The [single feature plan](../../05--Implementation/SDPTool.md)
 owns phase/milestone acceptance; the [Sprint](../../Sprints/Sprint--%230001--SDPTool-preview-and-navigation.md) owns
@@ -49,3 +49,5 @@ membership and completion. No implementation is delivered by this registration.
 2026-09-25T13:08:53Z — EVT-KB-SDP-000138: Owner selects Sprint execution before the skills and installer Scrums; backlog to active/ready.
 
 2026-09-25T13:30:23Z — EVT-KB-SDP-000148: T3-M3: add KanBan status/card and explicit SDUI preview inventory to the common navigation contract.
+
+2026-09-25T13:35:18Z — EVT-KB-SDP-000149: T3-M3 delivered: board/Ref/work-state inventory and explicit SDUI structural Markdown preview with source/entry targets; see SDPTOOL-VER-T3-M3.

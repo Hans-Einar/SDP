@@ -162,3 +162,29 @@ fact source positions remain owned by SDL. Inventory only builds data, not SVG.
 selected registration, plus an explicit model when ambiguous. It delegates to the
 same guarded preview path. Refresh and retry after a stale error. A foreign URI
 never switches project/source selection implicitly.
+
+## KanBan and SDUI services — T3-M3
+
+`tree` returns KanBan, SDL and SDUI roots, with unavailable diagnostics rather than
+hiding failures in optional services. `revision` is the selected SDL source hash;
+`inventoryRevision` also changes with registration, card/ledger data and SDUI
+sources. Consumers refresh on either appropriate revision. All targets retain
+source/card-specific hashes. No UI state is persisted by the inventory operation.
+
+The initial board reader supports board schema 0.2 with the local
+sdp-project-management/0.1 profile, payload 0.1/0.2 history and the board descriptor's
+single ledger. It checks card chains, current paths, unique metadata/IDs, CardState
+placement and local Ref resolution. It never reads archived copies as extra events.
+This is a read-side consistency check, not the full management validator. Other
+pinned profiles, including XFMD's separate board contract, remain explicitly
+unsupported until adapted. Optional SprintId/ScrumId are grouping facts, not proof
+of implemented features. Metadata files/history are bounded to 1 MiB each.
+
+SDUI registrations currently support the existing sdui/0.2 Go parser/normalizer
+and structural Markdown export. Frame entry nodes include target.entry for
+explicit selection. `sdui-preview --model ID --entry FRAME --output DIRECTORY
+--revision HASH` returns a caller-owned entry.md/provenance/manifest bundle.
+It is the existing structural layout dump plus Markdown content and static widget
+labels, not interactive controls, SVG/Fyne runtime or full Mermaid rendering.
+Other SDUI profiles are visible as unsupported. This intentionally narrow service
+is not an assertion that every existing SDUI export is exposed by this facade.

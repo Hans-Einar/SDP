@@ -59,6 +59,33 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 		return 0
 	}
 
+	if len(args) > 0 && args[0] == "sdui-preview" {
+		fs := flag.NewFlagSet("sdui-preview", flag.ContinueOnError)
+		fs.SetOutput(io.Discard)
+		model := fs.String("model", "", "registered source")
+		entry := fs.String("entry", "", "root frame")
+		output := fs.String("output", "", "bundle directory")
+		revision := fs.String("revision", "", "expected revision")
+		if e := fs.Parse(args[1:]); e != nil {
+			return report(errs, failure("arguments", e))
+		}
+		if fs.NArg() != 0 {
+			return report(errs, failure("arguments", fmt.Errorf("unexpected arguments")))
+		}
+		p, e := Discover(selected)
+		if e != nil {
+			return report(errs, e)
+		}
+		r, e := UIPreview(ctx, p, *model, *entry, *output, *revision)
+		if e != nil {
+			return report(errs, e)
+		}
+		if e = json.NewEncoder(out).Encode(r); e != nil {
+			return report(errs, e)
+		}
+		return 0
+	}
+
 	if len(args) > 0 && args[0] == "tree" {
 		fs := flag.NewFlagSet("tree", flag.ContinueOnError)
 		fs.SetOutput(io.Discard)
@@ -73,7 +100,7 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 		if e != nil {
 			return report(errs, e)
 		}
-		t, e := ModelTree(p, *model)
+		t, e := Navigation(p, *model)
 		if e != nil {
 			return report(errs, e)
 		}

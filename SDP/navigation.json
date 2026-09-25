@@ -5,8 +5,25 @@
   "implementationPlan": "SDP/05--Implementation/SDPTool.md",
   "kanban": "SDP/KanBan",
   "models": [
-    {"id":"sdptool","system":"SDPTOOL","source":"SDP/03--Architecture/SDPTool.design","profile":"design-core/0.5"},
-    {"id":"sdl-sdui","system":"SDL+SDUI","source":"SDUI/design/architecture.design","profile":"design-core/0.5"}
+    {
+      "id": "sdptool",
+      "system": "SDPTOOL",
+      "source": "SDP/03--Architecture/SDPTool.design",
+      "profile": "design-core/0.5"
+    },
+    {
+      "id": "sdl-sdui",
+      "system": "SDL+SDUI",
+      "source": "SDUI/design/architecture.design",
+      "profile": "design-core/0.5"
+    }
   ],
-  "sdui": []
+  "sdui": [
+    {
+      "id": "concept1",
+      "system": "SDUI",
+      "source": "SDUI/examples/concept1-bucking.sdui",
+      "profile": "sdui/0.2"
+    }
+  ]
 }

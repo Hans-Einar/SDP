@@ -24,7 +24,7 @@ background and do not create duplicate implementation assignments.
 - [KB-SDP-022](../completed/%23022--Change--SDPTool-discovery-contract.md)
 - [KB-SDP-023](../completed/%23023--Change--SDPTool-project-viewer-bridge.md)
 - [KB-SDP-024](../completed/%23024--Change--SDPTool-model-navigation.md)
-- [KB-SDP-025](%23025--Change--SDPTool-KanBan-and-SDUI-inventory.md)
+- [KB-SDP-025](../completed/%23025--Change--SDPTool-KanBan-and-SDUI-inventory.md)
 - [KB-SDP-026](%23026--CodeReview--SDPTool-consumer-contract-review.md)
 
 Explicit work retained here: P0-M2 unsaved-buffer/snapshot input; T4-M2 interoperability with the separately delivered native XFMD consumer; T5 slice proposal/validation, evidence-aware implementation plans/roadmaps, and Git-backed card history/diff.

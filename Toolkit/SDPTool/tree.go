@@ -11,6 +11,7 @@ import (
 )
 
 type Target struct {
+	Entry     string `json:"entry,omitempty"`
 	Operation string `json:"operation"`
 	Project   string `json:"project"`
 	Model     string `json:"model,omitempty"`
@@ -19,18 +20,20 @@ type Target struct {
 	Revision  string `json:"revision,omitempty"`
 }
 type Node struct {
-	ID        string   `json:"id"`
-	Kind      string   `json:"kind"`
-	Label     string   `json:"label"`
-	State     string   `json:"state"`
-	Children  []string `json:"children,omitempty"`
-	Reference string   `json:"reference,omitempty"`
-	Target    *Target  `json:"target,omitempty"`
-	WorkState string   `json:"cardState,omitempty"`
-	Sprint    string   `json:"sprintId,omitempty"`
-	Scrum     string   `json:"scrumId,omitempty"`
+	Diagnostic string   `json:"diagnostic,omitempty"`
+	ID         string   `json:"id"`
+	Kind       string   `json:"kind"`
+	Label      string   `json:"label"`
+	State      string   `json:"state"`
+	Children   []string `json:"children,omitempty"`
+	Reference  string   `json:"reference,omitempty"`
+	Target     *Target  `json:"target,omitempty"`
+	WorkState  string   `json:"cardState,omitempty"`
+	Sprint     string   `json:"sprintId,omitempty"`
+	Scrum      string   `json:"scrumId,omitempty"`
 }
 type Tree struct {
+	InventoryRevision   string   `json:"inventoryRevision,omitempty"`
 	Schema              string   `json:"schema"`
 	Operation           string   `json:"operation"`
 	Project             string   `json:"project"`

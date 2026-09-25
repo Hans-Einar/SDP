@@ -30,7 +30,7 @@ Sprint start; mark only the currently worked card in-progress.
 | [KB-SDP-022](../KanBan/completed/%23022--Change--SDPTool-discovery-contract.md) | T1-M1/M2 | Existing manifests and P0 contract alignment | Project recognition and delegation contract |
 | [KB-SDP-023](../KanBan/completed/%23023--Change--SDPTool-project-viewer-bridge.md) | T2-M1/M2 | 021, 022 | Project resolver and configured viewer bridge |
 | [KB-SDP-024](../KanBan/completed/%23024--Change--SDPTool-model-navigation.md) | T3-M1/M2 | 021–023 | Model-derived navigation and selected generation |
-| [KB-SDP-025](../KanBan/active/%23025--Change--SDPTool-KanBan-and-SDUI-inventory.md) | T3-M3 | 022, 023; coordinate 024 | KanBan and SDUI navigation services |
+| [KB-SDP-025](../KanBan/completed/%23025--Change--SDPTool-KanBan-and-SDUI-inventory.md) | T3-M3 | 022, 023; coordinate 024 | KanBan and SDUI navigation services |
 | [KB-SDP-026](../KanBan/active/%23026--CodeReview--SDPTool-consumer-contract-review.md) | T4-M1 | 021–025 | Consumer contract and end-to-end delivery review |
 
 Each phase uses a branch stacked on the previous phase; commit each completed

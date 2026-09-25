@@ -4,7 +4,7 @@ This is the owner-selected home for `sdptool`, the project-aware entry point for
 SDP operations and selected SDL/SDUI services. Created on 2026-09-25. The directory
 and [implementation plan](../../SDP/05--Implementation/SDPTool.md) are delivered.
 The Go executable supports saved design preview, project discovery and configured
-plan viewing; native navigation data follows in T3.
+plan viewing, typed navigation data and SDUI structural Markdown previews.
 
 The active feature assignment is
 [KB-SDP-017](../../SDP/KanBan/active/%23017--Proposal--sdptool-and-project-navigation.md).
@@ -80,3 +80,16 @@ The repository registration includes two model entries, so select the desired ID
 The viewer command waits until that window exits to keep generated navigation
 resources alive. Host options can also use SDP_XFMD, SDP_SDL_TOOL and SDP_MMDR.
 `generate ip` remains later scope and never runs implicitly while viewing.
+
+## Navigation services
+
+```sh
+sdptool /path/to/project tree --model sdptool
+sdptool /path/to/project select --model sdptool --uri 'sdl-view://sdp-vnow/VP02?diagram=VP02-roots&target=main&consumer=xfmd' --revision SOURCE_HASH --output /tmp/selected-view
+sdptool /path/to/project sdui-preview --model concept1 --entry page --output /tmp/ui-document
+```
+
+Use the revision/targets returned by tree, not a hardcoded hash. KanBan nodes carry
+current file paths, CardState and optional Scrum/Sprint grouping; SDL tree nodes
+cover every catalog viewpoint and supported kind. SDUI preview currently delegates
+the structural Markdown exporter; it does not imply interactive controls.
