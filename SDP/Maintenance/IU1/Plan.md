@@ -4,14 +4,14 @@
 | --- | --- |
 | id | MAINT-SDP-0003 |
 | project | SDP |
-| state | planned |
+| state | active |
 | source | KB-SDP-028; owner decision 2026-09-25: direct card to Maintenance, without Scrum |
 | Systems | SDP, SDPTOOL |
 
 This job is selected directly from [KB-SDP-028](../../KanBan/completed/%23028--Study--Installer-upgrade-and-versioned-layout.md).
 No Scrum, Sprint or wrapper card is required. The card's Study is fulfilled by
-this plan; this Maintenance owns the implementation and remains planned.
-The owner requested planning in this turn, not installation into live projects.
+this plan; this Maintenance owns the implementation.
+The owner authorized execution on 2026-09-25. Live consumer rollout remains excluded.
 
 ## User outcome
 
@@ -149,7 +149,7 @@ push completed phases, offer a combined PR against sdp-vNow, and do not merge.
 
 | Phase / branch | Milestone | Concrete acceptance | State |
 | --- | --- | --- | --- |
-| IU1 / sdp/phase-iu1-profile-build | IU1-M1 | Finalize implementable profile/configuration, ownership/transition matrix, version/read compatibility, operation/report and neutral-template contracts against existing code and fixtures | Planned |
+| IU1 / sdp/phase-iu1-profile-build | IU1-M1 | Finalize implementable profile/configuration, ownership/transition matrix, version/read compatibility, operation/report and neutral-template contracts against existing code and fixtures | Completed |
 | IU1 | IU1-M2 | Implement deterministic configuration build and validated target templates/inventory; reproducibility and negative cases pass; preserve an explicit supported legacy artifact/reader boundary | Planned |
 | IU2 / sdp/phase-iu2-safe-upgrades | IU2-M1 | Implement inspection and mutation-free exact-plan generation for clean, versioned, local and manual baselines, with explicit conflicts/unknown facts and input identities | Planned |
 | IU2 | IU2-M2 | Implement apply, preservation, backups, ordered migrations and crash/concurrency recovery; verify target facts and retry-safe Maintenance/history finalization | Planned |
@@ -208,3 +208,11 @@ ledger bytes remain an exact prefix and Traceability is unchanged. Documentation
 verification preserves 105 frozen records/prefixes and 574 generated artifacts
 and resolves 2,397 local links and 130 fragments. git diff --check passes.
 These checks verify planning/history integrity, not future installation behavior.
+
+## IU1-M1 execution decision
+
+The [versioned installation contract](../../../Toolkit/docs/Process-Installation.md)
+fixes the artifact, transition matrix, explicit 2.0 facts/plan boundary and
+forward-resume recovery policy. Linux PowerShell 7 is the initial verified host;
+Windows remains experimental until tested. XFMD baseline cf11709e was inspected
+read-only. KB-SDP-014/018 retain standalone distribution and wider audit work.
