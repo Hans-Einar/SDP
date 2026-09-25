@@ -6,38 +6,41 @@ Snapshot candidate: 481cafdc0279d2b28781ccaef08112de3312818c. This inventory pre
 
 The graph condenses the observed history to its relevant endpoints. Intermediate
 commits and phase branches are omitted; each line between observed commits means
-ancestry, not necessarily a direct parent relationship. The **PROPOSED** node and the two merge circles following it are placeholders,
-not existing commits or completed verification. Commit labels are hidden because
-Mermaid otherwise invents hash-like labels for the hypothetical merges; tags
-identify the real snapshot commits. Only old is an actual Git tag; the other
-tags in this diagram are explanatory labels.
+ancestry, not necessarily a direct parent relationship. The PROPOSED_ready node
+and the two merge circles following it are placeholders, not existing commits
+or completed verification. XFMD supplies synthetic labels such as __merge0 for
+merge nodes; these are diagram identifiers, not Git commit hashes.
+
+The block uses XFMD's supported Git graph subset: a plain gitGraph header,
+explicit commit IDs, branches, checkouts and bare merges. The branch aliases
+sdp_vNow and pilot_7 avoid unsupported hyphens. The old tag is documented in the
+table because this viewer does not support tag attributes or init directives.
 
 ```mermaid
-%%{init: {"gitGraph": {"showCommitLabel": false, "commitStep": 100}}}%%
-gitGraph LR:
-    commit id: "2cb49c0" tag: "old: 2cb49c0"
-    branch pilot-7
-    commit id: "ea9fcf1" tag: "ea9fcf1"
+gitGraph
+    commit id:"2cb49c0"
+    branch pilot_7
+    commit id:"ea9fcf1"
     checkout main
-    branch sdp-vNow
-    commit id: "9ad4324" tag: "9ad4324"
+    branch sdp_vNow
+    commit id:"9ad4324"
     branch candidate
-    commit id: "481cafd" tag: "481cafd"
-    commit id: "PROPOSED-ready" tag: "PROPOSED ready" type: HIGHLIGHT
-    checkout sdp-vNow
+    commit id:"481cafd"
+    commit id:"PROPOSED_ready"
+    checkout sdp_vNow
     merge candidate
     checkout main
-    merge sdp-vNow
+    merge sdp_vNow
 ```
 
 | Graph element | Meaning |
 | --- | --- |
 | main / old at 2cb49c0 | Observed main and the preserved archive tag |
-| sdp-vNow at 9ad4324 | Observed staging target, before any proposed merge |
+| sdp_vNow at 9ad4324 | Alias for the observed sdp-vNow staging target, before any proposed merge |
 | candidate at 481cafd | Initial combined stack; the subsequent planning and readiness work will extend it on sdp/maintenance-mp1-main-integration |
-| pilot-7 at ea9fcf1 | Abbreviation for codex/issue-7-provisional-vnext-pilot; 34 unique commits remain separate in the recommended route, pending owner scope disposition |
-| PROPOSED ready | Placeholder for the final reviewed candidate including planning and readiness fixes; not a claim that a single commit delivers them all |
-| Final merge circle on sdp-vNow (proposed) | MP1-I-M1: merge the verified candidate into sdp-vNow |
+| pilot_7 at ea9fcf1 | Abbreviation for codex/issue-7-provisional-vnext-pilot; 34 unique commits remain separate in the recommended route, pending owner scope disposition |
+| PROPOSED_ready | Placeholder for the final reviewed candidate including planning and readiness fixes; not a claim that a single commit delivers them all |
+| Final merge circle on sdp_vNow (proposed) | MP1-I-M1: merge the verified candidate into sdp-vNow |
 | Final merge circle on main (proposed) | MP1-I-M2: merge the verified staging result into main |
 
 The proposed route uses merge commits deliberately, even though the observed

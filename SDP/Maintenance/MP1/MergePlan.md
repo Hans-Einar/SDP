@@ -172,3 +172,22 @@ MP1-P2 checks pass: management validation covers 37 cards, ten management record
 three lineage operations and 251 events; document verification preserves 105
 frozen records/ledger prefixes and 574 generated outputs and resolves 2,452 local
 links and 130 fragments. git diff --check passes.
+
+### MP1-P3 — XFMD-compatible graph
+
+The owner reported that XFMD rejected MP1-P2's init directive. The earlier
+standalone renderer check did not establish compatibility with XFMD's interpreter.
+Replaced the graph with XFMD's supported subset: plain gitGraph header, explicit
+IDs without spaces after id:, underscore branch aliases, and bare merges.
+Removed tag/type attributes and the init directive. The adjacent legend preserves
+the real branch names, archive tag and hypothetical merge status. Synthetic merge
+labels are explicitly identified as diagram IDs, not Git commit hashes.
+
+Verification on 6cac4e6 plus this document diff: extracted the exact Mermaid block
+and passed it through xfmd-sdl-navigation/build/cargo/release/libxfmd_mermaid_ffi.a
+using a temporary C++ ABI harness. xfmd_mermaid_parse_v1 returned status 0 (564
+bytes); xfmd_diagram_layout_measured_v1 with Pango text metrics returned status 0
+(6,019 bytes). An initial unmeasured layout call correctly required external text
+metrics. Standalone rendering was also visually inspected. This checks XFMD's
+built parser/layout library, not its running GUI or an unknown installed binary.
+No XFMD source or target Git branch was changed. Merge execution remains planned.
