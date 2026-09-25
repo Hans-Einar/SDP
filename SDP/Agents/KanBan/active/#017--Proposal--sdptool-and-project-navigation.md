@@ -70,7 +70,7 @@ parser/projector/document packages; standalone supported files need not wait for
 project discovery. Preserve Mermaid export and the current SDL-specific SVG
 symbols. Exact command name, default views and unsaved-buffer input contract are
 to be defined. Native source/preview integration belongs to
-[KB-XFMD-015](../../../../../xfmd-sdl-navigation/Agents/KanBan/backlog/%23015--Proposal--SDL-design-file-preview.md).
+[KB-XFMD-015](../../../../../xfmd-sdl-navigation/SDP/Agents/KanBan/backlog/%23015--Proposal--SDL-design-file-preview.md).
 The [current pipeline guide](../../../../Toolkit/SDPTool/Navigation-and-Design-Preview.md)
 records existing tools, URI, temporary files and the proposed early slice.
 
@@ -144,7 +144,7 @@ CardState, ledger history and Git content revisions are distinct data. Specify
 refresh after card moves/edits and behavior for inaccessible subproject boards.
 
 XFMD owns tabs, selection, main-pane display, window targeting and lifecycle.
-Its companion is [KB-XFMD-014](../../../../../xfmd-sdl-navigation/Agents/KanBan/backlog/%23014--Proposal--SDP-sidebar-and-generated-navigation.md).
+Its companion is [KB-XFMD-014](../../../../../xfmd-sdl-navigation/SDP/Agents/KanBan/backlog/%23014--Proposal--SDP-sidebar-and-generated-navigation.md).
 SDP owns common discovery and coordination; SDL owns model/projection facts;
 SDUI owns UI-language services. Owner clarification on 2026-09-25: all XFMD
 implementation belongs to its own cards and development session. SDP-vNow owns

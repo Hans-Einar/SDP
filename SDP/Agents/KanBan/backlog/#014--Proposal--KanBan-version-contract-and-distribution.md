@@ -77,7 +77,7 @@ metadata, lineage and history; they do not prove a released compatibility contra
 [KB-SDP-017](../active/%23017--Proposal--sdptool-and-project-navigation.md) retains tooling implementation.
 No existing card is superseded, moved or reduced by this registration.
 
-Consumer follow-up: [KB-XFMD-012](../../../../../xfmd-sdl-navigation/Agents/KanBan/backlog/%23012--Ref--SDP--014--KanBan-format-sync.md) is the direct XFMD Ref. It owns the local gap
+Consumer follow-up: [KB-XFMD-012](../../../../../xfmd-sdl-navigation/SDP/Agents/KanBan/backlog/%23012--Ref--SDP--014--KanBan-format-sync.md) is the direct XFMD Ref. It owns the local gap
 review and later adaptation, without duplicating the shared contract decision.
 
 ## Next action and completion criteria
@@ -112,3 +112,14 @@ were reordered. The local CardState addition does not deliver this version contr
 Retained as the shared KanBan compatibility/distribution contract, including standalone consumers. KB-SDP-017 consumes this contract; native sidebar layout is not its responsibility.
 
 Recorded 2026-09-25T01:41:26Z, Codex, EVT-KB-SDP-000080. CardState remains backlog.
+
+## XFMD baseline adoption — 2026-09-25
+
+Owner instruction now adopts a full XFMD SDP area. SDP1-M1 relocates its board to
+SDP/Agents/KanBan and pins our 1a3f5e8 definition baseline, with CardState, worklogs,
+lineage, payload 0.2 for new events and preserved payload 0.1 history. Local schemas
+and examples make that consumer self-contained. This is a pinned adaptation,
+not the published overall version/distribution contract requested here.
+KB-XFMD-012 remains backlog for a future contract release; the current local
+migration must not be repeated. Standalone consumers can still be supported;
+XFMD's adoption does not make full SDP mandatory for every KanBan consumer.

@@ -113,3 +113,11 @@ consumer; existing diagram generation is reused, not reimplemented.
 TF1 follows fbd434a on sdp/phase-tf1-sdptool-feature-design. TF1-M1 applies
 the accepted five-phase profile locally and activates SDPTool as an SDP feature;
 [plan](05--Implementation/SDPTool.md), [evidence](Verification/VER-SDPTOOL-001.md).
+
+## S1 — language source organization and system decisions
+
+Branch sdp/phase-s1-language-source-organization starts at TF1 commit 1a3f5e8.
+S1-M0 records the owner's three-system decision and the independently committed
+XFMD SDP1-M1 bootstrap (fadf90c). It is a process/design milestone, not delivery
+of System syntax, source input loading or model relocation. S1-M1/M2 remain open;
+sourceinput draft code is excluded from this commit. The S1 phase is not complete.

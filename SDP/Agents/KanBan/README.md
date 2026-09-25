@@ -22,6 +22,7 @@
 | KB-SDP-016 | Proposal | superseded | [SDP discovery and viewer capability contract](superseded/%23016--Proposal--SDP-discovery-and-viewer-capabilities.md) |
 | KB-SDP-017 | Proposal | active | [sdptool and integrated project navigation](active/%23017--Proposal--sdptool-and-project-navigation.md) |
 | KB-SDP-018 | Study | backlog | [Toolkit audit and organization](backlog/%23018--Study--Toolkit-audit-and-organization.md) |
+| KB-SDP-019 | Ref | active | [Shared process adoption for SDL and SDUI](active/%23019--Ref--SDL--004--Language-source-organization.md) |
 
 Maintain the index when moving cards. The ledger owns event history.
 

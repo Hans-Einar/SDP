@@ -69,3 +69,16 @@ while working, and gate-review only for a concrete owner review. Queued cards
 remain in backlog with a Queue explanation and predecessor reference. Update
 worklog and ledger at changes; do not leave delivered work active solely to point
 to future work. Use kanban status/state for listing; there is no separate gate file.
+
+## Systems and shared process ownership
+
+Owner decision of 2026-09-25: SDL, SDUI and SDPTool are three separate software
+systems documented in the shared root SDP area. Do not create a full parallel
+process tree per language/system. Existing SDL/SDUI board locations are retained
+until the explicit migration preserves IDs, ledger history and links. Group
+architecture/design sources by system and actual container responsibility;
+shared libraries are not automatically runtime containers. System is a selected
+design concept, not yet implemented syntax in design-core 0.5.
+XFMD is a collaborating system with its own SDP area in its repository. Its
+process bootstrap and adoption card do not authorize XFMD application changes
+from this workstream. See SDP/03--Architecture/System-Boundaries-study.md.

@@ -43,7 +43,7 @@ model itself is a tree. Produce documents on selection, without pre-rendering th
 entire model. Exact wire format and command names remain to be specified.
 
 The native XFMD SDP tab, its KanBan / SDL / SDUI subtabs, widgets and interaction
-belong to [KB-XFMD-014](../../../xfmd-sdl-navigation/Agents/KanBan/backlog/%23014--Proposal--SDP-sidebar-and-generated-navigation.md)
+belong to [KB-XFMD-014](../../../xfmd-sdl-navigation/SDP/Agents/KanBan/backlog/%23014--Proposal--SDP-sidebar-and-generated-navigation.md)
 in XFMD's own `Agents/KanBan`. No XFMD implementation is done from this workstream.
 XFMD does not adopt SDP's project-development process or gain an SDP directory.
 SDPTool provides the reusable producer services; XFMD supplies a native consumer.

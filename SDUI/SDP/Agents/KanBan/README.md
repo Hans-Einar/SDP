@@ -7,5 +7,6 @@
 | ID | Type | Status | Document |
 | --- | --- | --- | --- |
 | KB-SDUI-001 | Ref | backlog | [SDUI as a subproject and library for SDP tools](backlog/%23001--Ref--SDP--017--sdptool.md) |
+| KB-SDUI-002 | Ref | active | [Split the shared design into phase-owned sources](active/%23002--Ref--SDL--004--Language-source-organization.md) |
 
 Update the index with card moves; the ledger owns event history.

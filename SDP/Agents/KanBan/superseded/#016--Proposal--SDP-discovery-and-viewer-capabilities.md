@@ -34,7 +34,7 @@ format remain open; do not create both or present either as an adopted schema.
 Consumer-side companion: **KB-XFMD-014**, owning XFMD discovery integration, tab
 layout and viewer lifecycle (the owner has further UI ideas).
 
-file:///home/warloc/git/xfmd-sdl-navigation/Agents/KanBan/backlog/%23014--Proposal--SDP-sidebar-and-generated-navigation.md
+file:///home/warloc/git/xfmd-sdl-navigation/SDP/Agents/KanBan/backlog/%23014--Proposal--SDP-sidebar-and-generated-navigation.md
 
 ## Existing work and overlap review
 
