@@ -2,9 +2,56 @@
 
 Snapshot candidate: 481cafdc0279d2b28781ccaef08112de3312818c. This inventory precedes the planning commit and any future readiness fixes. Refresh it before selecting the merge candidate.
 
+## Observed ancestry and proposed integration
+
+The graph condenses the observed history to its relevant endpoints. Intermediate
+commits and phase branches are omitted; each line between observed commits means
+ancestry, not necessarily a direct parent relationship. The **PROPOSED** node and the two merge circles following it are placeholders,
+not existing commits or completed verification. Commit labels are hidden because
+Mermaid otherwise invents hash-like labels for the hypothetical merges; tags
+identify the real snapshot commits. Only old is an actual Git tag; the other
+tags in this diagram are explanatory labels.
+
+```mermaid
+%%{init: {"gitGraph": {"showCommitLabel": false, "commitStep": 100}}}%%
+gitGraph LR:
+    commit id: "2cb49c0" tag: "old: 2cb49c0"
+    branch pilot-7
+    commit id: "ea9fcf1" tag: "ea9fcf1"
+    checkout main
+    branch sdp-vNow
+    commit id: "9ad4324" tag: "9ad4324"
+    branch candidate
+    commit id: "481cafd" tag: "481cafd"
+    commit id: "PROPOSED-ready" tag: "PROPOSED ready" type: HIGHLIGHT
+    checkout sdp-vNow
+    merge candidate
+    checkout main
+    merge sdp-vNow
+```
+
+| Graph element | Meaning |
+| --- | --- |
+| main / old at 2cb49c0 | Observed main and the preserved archive tag |
+| sdp-vNow at 9ad4324 | Observed staging target, before any proposed merge |
+| candidate at 481cafd | Initial combined stack; the subsequent planning and readiness work will extend it on sdp/maintenance-mp1-main-integration |
+| pilot-7 at ea9fcf1 | Abbreviation for codex/issue-7-provisional-vnext-pilot; 34 unique commits remain separate in the recommended route, pending owner scope disposition |
+| PROPOSED ready | Placeholder for the final reviewed candidate including planning and readiness fixes; not a claim that a single commit delivers them all |
+| Final merge circle on sdp-vNow (proposed) | MP1-I-M1: merge the verified candidate into sdp-vNow |
+| Final merge circle on main (proposed) | MP1-I-M2: merge the verified staging result into main |
+
+The proposed route uses merge commits deliberately, even though the observed
+ancestry permits fast-forwarding. Rendering this graph changes no Git references.
+It illustrates the [MergePlan](MergePlan.md); it is not output emitted by
+merge-tree. The pilot exclusion remains a recommendation, and readiness checks
+and owner merge authorization remain outstanding.
+
 ## Branch coverage
 
-Fifty origin branches were inspected. Forty-nine are ancestors of the candidate. Only the provisional Issue #7 pilot has unique commits outside it. Ancestry proves commit inclusion, not feature acceptance.
+Fifty origin references were inspected: 49 branches and the origin/HEAD symbolic
+alias (displayed as origin below and in the raw snapshot). Of those branches, 48
+are ancestors of the candidate. Only the provisional Issue #7 pilot has unique
+commits outside it. Ancestry proves commit inclusion, not feature acceptance.
 
 | Branch | Snapshot commit | Commits absent from candidate |
 | --- | --- | --- |
@@ -77,7 +124,26 @@ No new platform-wide pass is claimed. The Linux error is a CI fixture/history pr
 
 ## Merge inspection
 
-git merge-tree --write-tree origin/main HEAD succeeded and produced the same tree as the candidate (be023b6183644471e4b9bce5ca63e4b4b2f59462). Main has no unique commits relative to the candidate. No branch/worktree merge was performed.
+`git merge-tree --write-tree origin/main HEAD` computes the merged file tree and
+writes Git objects, returning a tree object ID on success. It creates no commit,
+moves no branch and changes neither the index nor the working directory. A tree
+describes files and directories; commit parent relationships supply the ancestry
+shown in a gitGraph. See the [Git command documentation](https://git-scm.com/docs/git-merge-tree)
+and [Mermaid gitGraph syntax](https://mermaid.js.org/syntax/gitgraph.html).
+
+At the recorded snapshot, HEAD was 481cafd. The command succeeded with tree
+be023b6183644471e4b9bce5ca63e4b4b2f59462, exactly that candidate's tree: main
+has no unique commits relative to it. Reproduce that specific inspection with
+pinned inputs rather than today's moving HEAD:
+
+```sh
+git merge-tree --write-tree 2cb49c02145621b099c47d05786716598e414e75 481cafdc0279d2b28781ccaef08112de3312818c
+git rev-parse '481cafdc0279d2b28781ccaef08112de3312818c^{tree}'
+```
+
+Both commands return the same tree ID. This establishes the snapshot's content
+result, not the final tree after future fixes or its readiness for integration.
+No branch/worktree merge was performed.
 
 A separate merge-tree probe of the Issue #7 pilot reported conflicts, including directory relocations of review/verification records. Its 34 unique commits change 418 files (19,721 additions, three removals) from its merge base. Its own README declares provisional/experimental/pilot-only status. Do not silently promote those contracts into the adopted process.
 

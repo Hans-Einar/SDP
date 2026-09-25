@@ -151,3 +151,24 @@ operations and 250 events; six management test groups. Document verification
 preserves 105 frozen records/ledger prefixes and 574 generated outputs and resolves
 2,451 local links and 130 fragments. git diff --check passes. These results verify
 this plan/history, not the future merge candidate or the still-failing CI gates.
+
+### MP1-P2 — preparation visualization
+
+Added a condensed Mermaid gitGraph to Preparation.md, distinguishing observed
+commits from proposed readiness and integration nodes. Explained merge-tree's
+file-tree result and pinned the reproduction commands to the original snapshot.
+Corrected the inventory count: 50 inspected refs include one symbolic alias,
+leaving 49 actual branches. The raw observation JSON remains unchanged.
+
+The pinned merge-tree and candidate tree IDs match. The embedded diagram was
+extracted and rendered with the local mermaid-rs-renderer target/debug/mmdr,
+then visually inspected as PNG: both merge connections and snapshot labels are
+visible. Bare merge statements avoid that installed renderer's mishandling of
+merge attributes; hidden automatic commit labels prevent invented hashes from
+appearing as evidence. This is a document-rendering check, not an XFMD GUI test.
+The MergePlan remains planned; no target branch was merged.
+
+MP1-P2 checks pass: management validation covers 37 cards, ten management records,
+three lineage operations and 251 events; document verification preserves 105
+frozen records/ledger prefixes and 574 generated outputs and resolves 2,452 local
+links and 130 fragments. git diff --check passes.
