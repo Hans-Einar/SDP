@@ -66,7 +66,7 @@ to this repository's SDUI design and fixes `--project sdui`. General project
 discovery/registration is the missing bridge; the launcher is not that bridge.
 This is source inspection, not new GUI verification.
 
-## Native XFMD navigation
+## Native XFMD consumer requirements — owned in XFMD
 
 On successful project/SDP-area recognition, expose the SDP tab alongside XFMD's
 ordinary sidebar tabs. The owner-selected inner tabs are:
@@ -81,7 +81,15 @@ The ViewPoint catalog and child objects must come from SDL tooling and validated
 model facts, not names extracted from rendered Markdown or a manually maintained
 XFMD copy. Represent every catalog viewpoint; define disabled/empty/unsupported
 states and preserve the established abstraction-phase grouping. The VP01 example
-is the requested hierarchy, not an assertion that a native tree API exists today.
+is illustrative, not a UseCase-only implementation or a fixed three-level depth.
+The owner explicitly requires the same grouping for every supported groupable
+concept: features, functionality, capabilities, activities, modes/states, actors,
+containers, channels, contracts and data concepts where the selected profile
+provides them. Group relationship selections where useful too. Candidate concepts
+such as Stakeholder/UserStory remain profile-dependent, not assumed implemented.
+Use variable nesting, explicit references and bounded/cycle-aware expansion for
+shared objects and graph relationships. This does not assert a native tree API
+exists today.
 Use stable object/viewpoint identity separately from display names and file paths.
 
 Generate only the small overview/navigation inventory initially. Generate details
@@ -99,9 +107,12 @@ refresh after card moves/edits and behavior for inaccessible subproject boards.
 XFMD owns tabs, selection, main-pane display, window targeting and lifecycle.
 Its companion is [KB-XFMD-014](../../../../../xfmd-sdl-navigation/Agents/KanBan/backlog/%23014--Proposal--SDP-sidebar-and-generated-navigation.md).
 SDP owns common discovery and coordination; SDL owns model/projection facts;
-SDUI owns UI-language services. No XFMD code or companion card is changed here.
-The companion needs this updated producer ID and owner layout clarification when
-XFMD work resumes; its older direct link to the moved #016 is historical.
+SDUI owns UI-language services. Owner clarification on 2026-09-25: all XFMD
+implementation belongs to its own cards and development session. SDP-vNow owns
+`sdptool` in [Toolkit/SDPTool](../../../../Toolkit/SDPTool/README.md). The existing
+XFMD companion was updated with this scope and current producer link; only its
+KanBan documentation and ledger were changed. XFMD uses `Agents/KanBan` without
+adopting the SDP process or adding an SDP directory.
 
 ## Metadata decision before implementation
 
@@ -161,13 +172,19 @@ command names remain open. Do not create a second version-control engine.
 | --- | --- |
 | N1 — shared contract | Decide descriptor ownership/name/version, validity, path bases, overrides and capability behavior. Inventory existing APIs and define the model-backed tree boundary with XFMD. Include valid, minimal, unsupported and invalid examples and argument mapping. |
 | N2 — resolver and viewer bridge | Implement the selected contract and first `view ip` path using prebuilt tools. Verify explicit project path, repo root, SDP area, unrelated cwd, missing/nested projects, optional capabilities, unavailable tools and preserved source/plan files. |
-| N3 — native navigation consumer | XFMD companion implements SDP / KanBan / SDL / SDUI tabs with bounded supported actions. Verify source-derived ViewPoint/use-case nodes, card status/filenames, one on-demand click, refresh, root switching, correct window/pane, stale-result cancellation and dirty-document retention. Decide the initial SDUI actions explicitly. |
+| N3 — general navigation producer | SDPTool supplies a versioned model-derived tree inventory for all supported groupable concepts, stable targets and selected generation, with SDL/SDUI-owned semantics. Test non-UseCase collections, variable depth, shared references/cycles, revision/refresh and KanBan inventory. |
+| External consumer — KB-XFMD-014 | Native SDP / KanBan / SDL / SDUI tabs and all XFMD integration/GUI checks are planned and implemented in XFMD. They are not SDP-vNow implementation milestones. |
 | Later milestones | Separately select slice synthesis/validation, evidence-aware roadmap and integrated history/diff. Each needs its owning contract and concrete trial; navigation completion does not complete these. |
 
 For the process trial, use one existing model, a small proposed/approved slice plan
 and real ledger evidence. Demonstrate diagnostics and source-linked status without
 invented implementation claims. The first browsing delivery does not wait for this
 later trial, a full export, the KanBan timeline graph or repository extraction.
+
+The concrete SDPTool phase/milestone plan is maintained in
+[Toolkit/SDPTool/Implementation-Plan.md](../../../../Toolkit/SDPTool/Implementation-Plan.md).
+The wider [Toolkit audit](%23018--Study--Toolkit-audit-and-organization.md) is
+separate and does not block the bounded first tool delivery.
 
 ## Queue
 
@@ -186,3 +203,4 @@ these cards. Queued means selected next for consideration, not currently in prog
 | Time | Actor / event | Handling | Remaining work |
 | --- | --- | --- | --- |
 | 2026-09-25T01:41:26Z | Codex; EVT-KB-SDP-000072 | Consolidated full scope of #002/#016 and captured native tab/tree direction; queue transferred and SDL/SDUI Refs updated. | N1 contract, then bounded implementation; see the [all-card review](../../../Maintenance/K8/Plan.md). |
+| 2026-09-25T09:09:52Z | Codex; EVT-KB-SDP-000083 | Established SDPTool source home/plan, generalized tree scope and updated XFMD companion. | T1 discovery/delegation contract next; no executable delivered. |

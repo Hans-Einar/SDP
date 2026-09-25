@@ -4,6 +4,7 @@ Toolkit-Version: 0.2.0 (unreleased)
 
 This directory contains the reusable Toolkit boundary:
 
+- [SDPTool](SDPTool/README.md) — source home and plan for the project-aware sdptool facade; executable not yet delivered
 - `SDP-install.manifest.json` — authoritative installable inventory and policy
 - `schemas/` — installation, plan, manifest, traceability, record and build contracts
 - `scripts/` — supported PowerShell installer, build metadata and validator

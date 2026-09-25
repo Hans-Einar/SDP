@@ -21,6 +21,7 @@
 | KB-SDP-015 | Change | completed | [CardState and shell commands](completed/%23015--Change--CardState-and-shell-cli.md) |
 | KB-SDP-016 | Proposal | superseded | [SDP discovery and viewer capability contract](superseded/%23016--Proposal--SDP-discovery-and-viewer-capabilities.md) |
 | KB-SDP-017 | Proposal | backlog | [sdptool and integrated project navigation](backlog/%23017--Proposal--sdptool-and-project-navigation.md) |
+| KB-SDP-018 | Study | backlog | [Toolkit audit and organization](backlog/%23018--Study--Toolkit-audit-and-organization.md) |
 
 Maintain the index when moving cards. The ledger owns event history.
 

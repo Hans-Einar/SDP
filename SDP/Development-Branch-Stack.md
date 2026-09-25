@@ -100,3 +100,8 @@ and queued follow-up. [Plan](Maintenance/R3/Plan.md).
 K8 follows K7 29d5828 on sdp/phase-k8-backlog-consolidation. K8-M1 reviews all
 12 backlog cards, merges KB-SDP-002/016 into queued KB-SDP-017 with typed lineage,
 and captures native XFMD tab/tree direction. [Plan](Maintenance/K8/Plan.md).
+
+T0 follows K8 94eb052 on sdp/phase-t0-sdptool-foundation. T0-M1 establishes
+Toolkit/SDPTool, generalizes navigation scope and separates XFMD-owned work;
+KB-SDP-018 captures the wider Toolkit audit.
+[Plan and evidence](../Toolkit/SDPTool/Implementation-Plan.md).
