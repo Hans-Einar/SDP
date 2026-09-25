@@ -48,3 +48,10 @@ CardState distinguishes review from ongoing work.
 Scrums, Sprints, Maintenance, CodeReview and Refactor. [Scrum-0001](Agents/Scrum/Scrum--%230001--Backlog-and-project-management.md)
 selects [MAINT-SDP-0001](Maintenance/PM1/Plan-and-Evidence.md), without a new wrapper
 card or forced Sprint. Traceability records system changes and links to that history.
+
+## Selected installer Maintenance
+
+[MAINT-SDP-0003](Maintenance/IU1/Plan.md) is planned directly from KB-SDP-028,
+without a separate Scrum. It covers versioned process configuration, safe
+installation/upgrades and truthful target Maintenance reports. The Study is
+complete; implementation and consumer rollout have not started.

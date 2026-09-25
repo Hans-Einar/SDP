@@ -69,7 +69,7 @@ EVT-KB-SDP-000120; next review at the next selection or relevant dependency deli
 
 2026-09-25T12:38:14Z — EVT-KB-SDP-000133: the owner selected future focused Scrums in
 [KB-SDP-027](../completed/%23027--Study--Skills-review-and-project-activation.md) and
-[KB-SDP-028](%23028--Study--Installer-upgrade-and-versioned-layout.md).
+[KB-SDP-028](../completed/%23028--Study--Installer-upgrade-and-versioned-layout.md).
 Reuse their eventual skills/install findings here; do not create competing
 migration plans. This card retains the broader Toolkit inventory, ownership,
 organization and remaining areas. No audit has been delivered by registration.

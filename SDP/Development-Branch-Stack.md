@@ -175,3 +175,11 @@ SK1-M3 completes MAINT-SDP-0002 after committed-candidate catalog checks and
 four independent task trials. The complete phase is pushed for combined review
 against sdp-vNow, without merge. Known baseline Traceability failures remain
 separately recorded; no unrelated sourceinput changes enter these commits.
+
+## PM4 — direct installer Maintenance plan
+
+Branch sdp/phase-pm4-installer-maintenance-planning follows SK1 6cf74e0.
+PM4-M1 completes KB-SDP-028's Study through direct selection of planned
+MAINT-SDP-0003, without a Scrum or Sprint. Three phases/six milestones own the
+future implementation. No installer/consumer mutation or Traceability event is
+claimed by this planning milestone; the sourceinput draft remains excluded.

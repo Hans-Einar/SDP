@@ -47,7 +47,7 @@ of duplicate catalog names. Preserve history and frozen evidence. Specify which
 hosts/versions were tested and remaining gaps; a root file alone proves nothing.
 
 Coordinate [KB-SDP-018](../backlog/%23018--Study--Toolkit-audit-and-organization.md) for the
-broader Toolkit audit and [KB-SDP-028](../backlog/%23028--Study--Installer-upgrade-and-versioned-layout.md)
+broader Toolkit audit and [KB-SDP-028](%23028--Study--Installer-upgrade-and-versioned-layout.md)
 for distribution. Do not repeat those reviews or block the SDPTool Sprint.
 
 Original registration was in Scrum-0002. Current ScrumId identifies the actual

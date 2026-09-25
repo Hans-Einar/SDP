@@ -131,3 +131,11 @@ XFMD's adoption does not make full SDP mandatory for every KanBan consumer.
 Keep reusable compatibility/release/distribution distinct from this local management profile. Include the common ledger and optional sprint metadata in its next contract review; XFMD stays pinned until separately migrated.
 
 EVT-KB-SDP-000119; next review at the next selection or relevant dependency delivery.
+
+## Installer Maintenance coordination
+
+[MAINT-SDP-0003](../../Maintenance/IU1/Plan.md) plans the minimum distributable
+management/KanBan profile, ownership and upgrade compatibility required for SDP
+installation. This card retains standalone-consumer packaging, extraction and
+publication scope; it is not merged or claimed implemented. Reuse the IU1-M1
+contract instead of defining conflicting version facts. EVT-KB-SDP-000165.

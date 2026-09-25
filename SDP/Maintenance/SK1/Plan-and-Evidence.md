@@ -112,7 +112,7 @@ compatibility impact at execution; draft.2 is not a released 2.0.0. For a platfo
 without usable symlinks, a generated install copy may be justified and hash-checked;
 it must never become a separately authored skill collection.
 
-[KB-SDP-028](../../KanBan/backlog/%23028--Study--Installer-upgrade-and-versioned-layout.md)
+[KB-SDP-028](../../KanBan/completed/%23028--Study--Installer-upgrade-and-versioned-layout.md)
 owns the broader declarative layout compiler, versioned process upgrades and
 manual-project adoption. The owner authorized SK1 execution before that Scrum on 2026-09-25. SK1
 therefore decides its minimal distribution boundary now and hands the actual

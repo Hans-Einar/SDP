@@ -1,19 +1,19 @@
-# Scrum for versioned SDP installation and upgrades
+# Versioned SDP installation and upgrades
 
 | Field | Value |
 | --- | --- |
 | id | KB-SDP-028 |
 | project | SDP |
 | type | Study |
-| CardState | backlog |
+| CardState | completed |
 | ScrumId | SCRUM-SDP-0002 |
 | Systems | SDP |
 | created | 2026-09-25T12:38:14Z |
 | source | Owner conversation 2026-09-25 |
-| next_review | Separate future Scrum before the related migration or distribution change |
+| next_review | Planning outcome owned by MAINT-SDP-0003; implementation remains planned |
 | tags | maintenance, scrum, installation, upgrade, versions |
 
-## Requested outcome
+## Original requested outcome
 
 The owner requests a future Scrum resulting in Maintenance work on SDP install
 and upgrade scripts. The desired workflow builds a versioned declarative layout
@@ -40,7 +40,7 @@ Do not invent another competing version file or claim current installers already
 migrate this profile. JSON is already used for inventory; choose any YAML source
 or build-to-JSON step only with a concrete authority and reproducibility reason.
 
-## Required Scrum decisions and Maintenance acceptance
+## Required planning decisions and Maintenance acceptance
 
 Define the versioned process/layout profile and deterministic build/validation
 of the configuration consumed by installers. Reconcile existing schemas and
@@ -65,15 +65,15 @@ Test clean install, supported upgrade, current local profile, repeat install,
 failed/partial recovery and a fixture of manually adopted XFMD. A real XFMD
 migration requires its own selected work; this card does not perform one.
 
-Deliver the Scrum decision and bounded Maintenance plan first. Coordinate
+The later owner decision below selects a direct Maintenance plan without Scrum. Coordinate
 [KB-SDP-027](../completed/%23027--Study--Skills-review-and-project-activation.md) for skills and
-[KB-SDP-018](%23018--Study--Toolkit-audit-and-organization.md) for broader Toolkit
+[KB-SDP-018](../backlog/%23018--Study--Toolkit-audit-and-organization.md) for broader Toolkit
 ownership. Extend existing mechanisms and conformance tests rather than replacing
 them merely because process folders changed.
 
-ScrumId records registration provenance in Scrum-0002, not completion of the
-future topic-specific Scrum. No SprintId is assigned and no Maintenance job is
-started by this card.
+ScrumId preserves original registration provenance in Scrum-0002. The owner
+subsequently selected direct Maintenance planning; no new Scrum or Sprint is
+created. MAINT-SDP-0003 owns execution separately from this Study.
 
 ## Worklog
 
@@ -131,3 +131,19 @@ was upgraded. Versioned layout builds, manual adoption and old/new-profile
 Maintenance entries remain this card's future Scrum and implementation scope.
 
 2026-09-25T14:48:15Z — EVT-KB-SDP-000161.
+
+## Direct Maintenance selection — 2026-09-25
+
+EVT-KB-SDP-000163: selected and in-progress for planning. The owner chooses
+KBCard → Maintenance because this is one coherent card; the earlier suggestion
+of another Scrum is superseded. This changes the planning route, not the scope.
+
+## Planning outcome
+
+[MAINT-SDP-0003](../../Maintenance/IU1/Plan.md) contains the selected Maintenance
+plan: three phases, six milestones, current authority map, migration/preservation
+rules, report/recovery semantics and acceptance scenarios. This completes the
+Study's planning outcome only. Implementation and any actual consuming-project
+upgrade remain planned; no new Scrum, Sprint or wrapper card has been created.
+
+2026-09-25T15:03:56Z — EVT-KB-SDP-000164: planning complete; Maintenance execution not started.
