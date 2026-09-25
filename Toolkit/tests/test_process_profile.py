@@ -32,6 +32,13 @@ class ProfileBuild(unittest.TestCase):
             lambda c: c['relocations'].append(c['relocations'][0]),
             lambda c: c['relocations'][0].update(to='SDP/02--Study/nested'),
             lambda c: c.update(prerequisites=['execute anything']),
+            lambda c: c['files'][0].update(destination='SDP/.sdp-operations/install.lock'),
+            lambda c: c['files'][0].update(destination='SDP/Framework/installed-toolkit.manifest.yaml'),
+            lambda c: c['files'][0].update(destination='arbitrary.py'),
+            lambda c: c['files'][0].update(destination='SDP/Framework/installed-toolkit.manifest.yaml/child.md'),
+            lambda c: c['relocations'][0].update(to='SDP/.sdp-operations/imported'),
+            lambda c: c['relocations'][0].update(to='SDP/ProjectManagement'),
+            lambda c: c['relocations'][0].update(to='SDP/Framework/installed-toolkit.manifest.yaml/child'),
         ]
         for change in mutations:
             c = copy.deepcopy(self.config)

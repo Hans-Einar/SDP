@@ -45,8 +45,8 @@ class ProcessInstall(unittest.TestCase):
         # Shape observed at XFMD cf11709e; neutral fixture IDs/content, no live mutation.
         self.put('SDP/02--Requirements/README.md','# Requirements\n')
         self.put('SDP/Agents/KanBan/board.json',json.dumps(dict(schemaVersion='0.1',projectId='FIXTURE',ledger='Ledger.ndjson')))
-        self.put('SDP/Agents/KanBan/Ledger.ndjson',json.dumps(dict(schemaVersion='1.0',eventId='EVT-KB-FIXTURE-000001',eventType='x-kanban:created',subjectId='KB-FIXTURE-001',payload=dict(schemaVersion='0.2',previousEventId=None,toPath='backlog/#001--Idea.md')))+'\n')
-        self.put('SDP/Agents/KanBan/backlog/#001--Idea.md','# Idea\n\n[Requirements](../../../02--Requirements/README.md)\n')
+        self.put('SDP/Agents/KanBan/Ledger.ndjson',json.dumps(dict(schemaVersion='1.0',eventId='EVT-KB-FIXTURE-000001',eventType='x-kanban:created',subjectId='KB-FIXTURE-001',occurredAt='2026-09-25T10:00:00Z',actor='fixture',commit=None,payload=dict(schemaVersion='0.2',projectId='FIXTURE',previousEventId=None,**{'from':None,'to':'backlog'},fromPath=None,toPath='backlog/#001--Idea.md',reason='Register fixture idea',links=[])))+'\n')
+        self.put('SDP/Agents/KanBan/backlog/#001--Idea.md','# Idea\n\n| Field | Value |\n| --- | --- |\n| id | KB-FIXTURE-001 |\n| CardState | backlog |\n\n[Requirements](../../../02--Requirements/README.md)\n')
         self.put('SDP/README.md','[Card](Agents/KanBan/backlog/%23001--Idea.md)\n')
     def test_plan_clean_readonly_deterministic(self):
         before = snapshot(self.root)
@@ -85,6 +85,90 @@ class ProcessInstall(unittest.TestCase):
         bad=Path(self.tmp.name)/'artifact.json'
         bad.write_bytes(ARTIFACT.read_bytes().replace(b'sdp-five-phase/0.1',b'sdp-five-phase/0.2'))
         self.call('-PlanJson',artifact=bad,ok=False)
+
+    def apply(self, plan=None, *args, **kw):
+        return self.call('-ApplyPlan',self.save(plan or self.plan(*args)),*args,**kw)
+    def test_apply_repeat_and_history(self):
+        result=json.loads(self.apply().stdout)
+        self.assertEqual(result['status'],'completed')
+        self.assertEqual(len((self.root/'SDP/ProjectManagement/Ledger.ndjson').read_text().splitlines()),2)
+        self.assertEqual(self.plan()['actions'],[])
+        before=snapshot(self.root)
+        self.assertEqual(json.loads(self.apply().stdout)['status'],'no-change')
+        self.assertEqual(before,snapshot(self.root))
+    def test_apply_manual_preserves_ledger_prefix(self):
+        self.xfmd()
+        history=(self.root/'SDP/Agents/KanBan/Ledger.ndjson').read_bytes()
+        self.apply()
+        self.assertTrue((self.root/'SDP/ProjectManagement/Ledger.ndjson').read_bytes().startswith(history))
+        self.assertFalse((self.root/'SDP/Agents/KanBan/Ledger.ndjson').exists())
+        self.assertIn('KanBan/backlog/%23001', (self.root/'SDP/README.md').read_text())
+        self.assertEqual(self.plan()['actions'],[])
+    def test_target_drift_and_managed_backup(self):
+        plan=self.plan()
+        self.put('notes.md','owner edit')
+        self.apply(plan,ok=False)
+        self.assertFalse((self.root/'SDP/Framework/installed-toolkit.manifest.yaml').exists())
+        self.apply()
+        self.put('.codex/skills/sdp-worker/SKILL.md','custom worker')
+        self.assertFalse(self.plan()['canApply'])
+        forced=self.plan('-ForceManagedFiles')
+        result=json.loads(self.apply(forced,'-ForceManagedFiles').stdout)
+        backups=self.root/'SDP/.sdp-operations'/result['operationId']/'backups'
+        self.assertIn(b'custom worker',[p.read_bytes() for p in backups.iterdir()])
+    def test_resume_and_postfailure_edits(self):
+        plan=self.plan()
+        env=dict(os.environ, SDP_INSTALL_INTERRUPT='write:0', SDP_INSTALL_HARD_EXIT='1')
+        self.assertEqual(self.apply(plan,ok=False,env=env).returncode,97)
+        self.assertFalse(self.plan()['canApply'])
+        jpath=next((self.root/'SDP/.sdp-operations').glob('*/journal.json'))
+        j=json.loads(jpath.read_text())
+        self.put(j['steps'][0]['destination'],'later owner edit')
+        self.call('-ResumeOperation',j['operationId'],ok=False)
+        import base64
+        self.put(j['steps'][0]['destination'],base64.b64decode(j['steps'][0]['content']).decode())
+        self.call('-ResumeOperation',j['operationId'])
+        ledger=(self.root/'SDP/ProjectManagement/Ledger.ndjson').read_bytes()
+        self.call('-ResumeOperation',j['operationId'])
+        self.assertEqual(ledger,(self.root/'SDP/ProjectManagement/Ledger.ndjson').read_bytes())
+        self.assertEqual(self.plan()['actions'],[])
+    def test_concurrent_writer(self):
+        import time
+        path=self.root/'SDP/.sdp-operations/install.lock'
+        path.parent.mkdir(parents=True)
+        script=Path(self.tmp.name)/'lock.ps1'
+        script.write_text("$s=[IO.FileStream]::new($args[0],[IO.FileMode]::OpenOrCreate,[IO.FileAccess]::ReadWrite,[IO.FileShare]::None); Write-Output 'locked'; Start-Sleep 30; $s.Dispose()")
+        lock=subprocess.Popen([PWSH,'-NoProfile','-File',str(script),str(path)],stdout=subprocess.PIPE,text=True)
+        try:
+            self.assertEqual(lock.stdout.readline().strip(),'locked')
+            self.apply(ok=False)
+        finally:
+            lock.terminate();lock.wait();lock.stdout.close()
+
+    def test_history_rejects_broken_chain(self):
+        self.xfmd()
+        p=self.root/'SDP/Agents/KanBan/Ledger.ndjson'
+        event=json.loads(p.read_text());event['payload']['previousEventId']='EVT-KB-FIXTURE-999999'
+        p.write_text(json.dumps(event)+'\n')
+        self.assertFalse(self.plan()['canApply'])
+    def test_all_markdown_link_forms(self):
+        self.put('SDP/03--Requirements/a file.md','# Source\n')
+        self.put('SDP/03--Requirements/a(v1).md','# Source\n')
+        self.put('docs/guide.md','[inline](../SDP/03--Requirements/a%20file.md "title")\n[angle](<../SDP/03--Requirements/a file.md>)\n[ref]: ../SDP/03--Requirements/a%20file.md "title"\n[balanced](../SDP/03--Requirements/a(v1).md)\n[escaped](../SDP/03--Requirements/a\\(v1\\).md)\n')
+        plan=self.plan()
+        import base64
+        a=next(a for a in plan['actions'] if a['destination']=='docs/guide.md')
+        data=base64.b64decode(a['content']).decode()
+        self.assertNotIn('03--Requirements',data)
+        self.assertEqual(data.count('02--Requirements/a%20file.md'),3)
+        self.assertIn('"title"',data)
+        self.assertEqual(data.count('02--Requirements/a%28v1%29.md'),2)
+    @unittest.skipUnless(os.name=='posix','POSIX special objects')
+    def test_special_file_rejected_without_blocking(self):
+        self.put('SDP/02--Requirements/README.md','requirements')
+        os.mkfifo(self.root/'SDP/fifo')
+        p=subprocess.run([PWSH,'-NoProfile','-File',str(INSTALLER),'-ProjectRoot',str(self.root),'-ProfileArtifact',str(ARTIFACT),'-PlanJson'],capture_output=True,text=True,timeout=20)
+        self.assertNotEqual(p.returncode,0)
 
 if __name__ == '__main__':
     unittest.main()

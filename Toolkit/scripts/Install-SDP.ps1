@@ -91,6 +91,10 @@ function Get-PathObjectState {
     if (($attributes -band [System.IO.FileAttributes]::Directory) -ne 0) {
         return 'unsupported'
     }
+    if (-not $IsWindowsPlatform) {
+        $item = Get-Item -LiteralPath $Path -Force
+        if ($item.UnixStat.ItemType.ToString() -cne 'File') { return 'unsupported' }
+    }
     return 'regular-file'
 }
 

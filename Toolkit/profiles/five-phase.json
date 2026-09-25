@@ -242,6 +242,36 @@
       "source": "Template/sdp-root/SDP-project.manifest.yaml",
       "destination": "SDP/SDP-project.manifest.yaml",
       "ownership": "project"
+    },
+    {
+      "source": "Template/sdp-root/Traceability/CurrentIndex.yaml",
+      "destination": "SDP/Traceability/CurrentIndex.yaml",
+      "ownership": "project"
+    },
+    {
+      "source": "Template/sdp-root/Traceability/Relations.yaml",
+      "destination": "SDP/Traceability/Relations.yaml",
+      "ownership": "project"
+    },
+    {
+      "source": "Template/profiles/five-phase/ProjectManagement/management-payload.schema.json",
+      "destination": "SDP/ProjectManagement/management-payload.schema.json",
+      "ownership": "project"
+    },
+    {
+      "source": "Template/profiles/five-phase/ProjectManagement/ledger-event.schema.json",
+      "destination": "SDP/ProjectManagement/ledger-event.schema.json",
+      "ownership": "project"
+    },
+    {
+      "source": "Template/profiles/five-phase/ProjectManagement/kanban-payload-0.1.schema.json",
+      "destination": "SDP/ProjectManagement/kanban-payload-0.1.schema.json",
+      "ownership": "project"
+    },
+    {
+      "source": "Template/profiles/five-phase/ProjectManagement/kanban-payload-0.2.schema.json",
+      "destination": "SDP/ProjectManagement/kanban-payload-0.2.schema.json",
+      "ownership": "project"
     }
   ],
   "relocations": [

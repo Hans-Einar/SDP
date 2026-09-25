@@ -95,3 +95,37 @@ unsupported schemas, unknown versions, links and case collisions. Baseline
 XFMD provenance: cf11709e4ec9d6925b0d17d95c71f72fbf011959, clean worktree,
 inspected 2026-09-25; board schema 0.1 in SDP/Agents/KanBan, no installed facts.
 No live project upgrade is authorized by this implementation assignment.
+
+## Executing the built profile
+
+From a Toolkit checkout or packaged source distribution, using an existing
+separate project directory:
+
+~~~sh
+python3 Toolkit/scripts/build_process_profile.py --output /tmp/sdp-profile.json
+pwsh -NoProfile -File Toolkit/scripts/Install-SDP.ps1 -ProjectRoot /path/to/project -ProfileArtifact /tmp/sdp-profile.json -PlanJson > /tmp/sdp-plan.json
+pwsh -NoProfile -File Toolkit/scripts/Install-SDP.ps1 -ProjectRoot /path/to/project -ProfileArtifact /tmp/sdp-profile.json -ApplyPlan /tmp/sdp-plan.json
+~~~
+
+Review canApply, conflicts, warnings, before/after hashes and preserved paths.
+A managed refresh requires -ForceManagedFiles on both plan and apply; this does
+not authorize overwriting project content. Keep the reviewed artifact and plan.
+Use -ResumeOperation with the returned install-<digest> ID and original artifact
+after an interruption. The journal's error/status and backups are under
+SDP/.sdp-operations/<ID>. Do not edit the journal or remove its lock file while
+another process may be using it. A failed operation blocks another installation.
+Restore a conflicting post-failure edit deliberately before resuming; the engine
+will not discard it. Missing dependencies fail explicitly; no tool is downloaded.
+
+Markdown rebasing covers inline links (including balanced/escaped parentheses,
+titles and angle destinations), images and reference definitions. It scans SDP
+and incoming project Markdown. Git metadata, node_modules, .venv, vendor, build,
+.cache and symlink trees are excluded from incoming-reference discovery; review
+these and non-Markdown code/config references when a relocation is planned.
+An existing broken link is not evidence of successful content repair. Historical
+NDJSON bytes are transferred without reinterpretation or rewriting.
+
+The recovery guarantee covers process interruption at journaled boundaries.
+Per-file flush/rename is used; power-loss durability of the filesystem and
+whole-operation rollback are not claimed. Verification must distinguish injected
+process exits from hardware/power failure.

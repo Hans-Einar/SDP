@@ -10,7 +10,9 @@ SPR-<PROJECT>-<number>, REVIEW-<PROJECT>-<number> and REFACTOR-<PROJECT>-<number
 Use x-management:created/started/updated/completed/canceled. A created item is
 planned or active; started changes planned to active; completed requires real
 completion. Chain previousEventId with exact from/to states and SDP-relative
-document paths. Installation events use EVT-PM-INSTALL-<operation>-<step>.
+document paths. Installation events allocate EVT-PM-<PROJECT>-<number> from target history.
+The distributed payload schema generalizes the project namespace; the Toolkit
+repository retains its local SDP-specific validation policy.
 
 Cards retain KB-<PROJECT>-<number>, x-kanban events and payload 0.1/0.2.
 Card paths are KanBan-relative. Optional SprintId/ScrumId metadata groups work.

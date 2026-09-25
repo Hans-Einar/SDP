@@ -34,6 +34,19 @@ def path(value):
         raise ValueError(f'unsafe portable path: {value!r}')
     return value
 
+def reserved(value, board_mapping=False):
+    protected = ['SDP/.sdp-operations', 'SDP/.sdp-backups',
+                 'SDP/Framework/installed-toolkit.manifest.yaml',
+                 'SDP/ProjectManagement/Ledger.ndjson', 'SDP/navigation.json',
+                 'SDP/Traceability/Ledger.ndjson']
+    if not board_mapping:
+        protected.append('SDP/KanBan/board.json')
+    key = value.lower()
+    for p in protected:
+        p = p.lower()
+        if key == p or key.startswith(p+'/') or p.startswith(key+'/'):
+            raise ValueError('engine-owned destination or ancestor/descendant')
+
 def shape(obj, fields):
     if not isinstance(obj, dict) or set(obj) != set(fields.split()):
         raise ValueError(f'unknown/missing fields: expected {fields}')
@@ -58,6 +71,11 @@ def build(config, root=ROOT):
             raise ValueError('source outside distribution')
         if item['ownership'] == 'managed' and source.startswith('Template/'):
             raise ValueError('templates must remain project owned')
+        reserved(dest)
+        if dest != 'AGENTS.md' and not dest.startswith(('SDP/', '.codex/skills/')):
+            raise ValueError('destination outside installation scope')
+        if item['ownership'] == 'managed' and not (dest == 'AGENTS.md' or dest.startswith(('.codex/skills/', 'SDP/Framework/'))):
+            raise ValueError('invalid managed destination')
         key = dest.lower()
         if any(key == p or key.startswith(p+'/') or p.startswith(key+'/') for p in seen):
             raise ValueError('duplicate, overlapping or case-colliding destination')
@@ -67,10 +85,18 @@ def build(config, root=ROOT):
             raise ValueError('missing or linked source')
         data = src.read_bytes()
         inventory.append(dict(item, sha256=digest(data), content=base64.b64encode(data).decode()))
+    # Every claimed skill must actually be in the bundle.
+    for skill in facts['skills']:
+        expected = f'.codex/skills/{skill}/SKILL.md'
+        if not any(f['destination'] == expected and f['source'] == f'Skills/{skill}/SKILL.md'
+                   and f['ownership'] == 'managed' for f in inventory):
+            raise ValueError(f'missing declared skill: {skill}')
     seen_moves = set()
     for move in config['relocations']:
         shape(move, 'from to')
         a, b = path(move['from']), path(move['to'])
+        reserved(a)
+        reserved(b, board_mapping=(a == 'SDP/Agents/KanBan' and b == 'SDP/KanBan'))
         if not a.startswith('SDP/') or not b.startswith('SDP/') or a.lower() == b.lower() or b.lower().startswith(a.lower()+'/'):
             raise ValueError('unsafe relocation')
         for k in (a.lower(), b.lower()):
