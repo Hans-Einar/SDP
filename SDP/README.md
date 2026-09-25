@@ -56,6 +56,6 @@ card or forced Sprint. Traceability records system changes and links to that his
 safe installation/upgrades and truthful target Maintenance reports. Live consumer
 rollout remains separately selected.
 
-[MAINT-SDP-0004](Maintenance/PL1/Plan.md) implements KB-SDP-029's typed plans,
+[MAINT-SDP-0004](Maintenance/PL1/Plan.md) completed KB-SDP-029's typed plans,
 scaled Git policy and Planning skill. Read [Plans](ProjectManagement/Plans.md)
 for the shared contract; keep one authoritative plan per selected work item.

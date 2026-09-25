@@ -5,11 +5,11 @@
 | id | KB-SDP-029 |
 | project | SDP |
 | type | Proposal |
-| CardState | in-progress |
+| CardState | completed |
 | PlanId | MAINT-SDP-0004 |
 | created | 2026-09-25T15:19:14Z |
 | source | Owner conversation 2026-09-25 during MAINT-SDP-0003 |
-| next_review | At MAINT-SDP-0004 milestones |
+| next_review | Closed; later changes require selected follow-up |
 | tags | process, planning, skills |
 
 ## Owner direction
@@ -58,3 +58,14 @@ that maintenance or retrospectively change existing record states.
 The owner authorized planning and execution. [MAINT-SDP-0004](../../Maintenance/PL1/Plan.md)
 owns the MaintenancePlan; this card follows its execution through completion.
 2026-09-25T16:57:20Z — plan selected; CardState backlog → in-progress.
+
+## Completed outcome
+
+[MAINT-SDP-0004](../../Maintenance/PL1/Plan.md) is complete. It delivers the six
+PlanTypes, optional plan-based Sprint grouping, per-plan Git policies and the
+portable sdp-planning skill. Local/installed validators and profile readers
+support the new contracts while preserving old history.
+[Evidence](../../Maintenance/PL1/Evidence.md) contains tests and independent
+review, including corrected deferred-Sprint and metadata cases. No live consumer
+was upgraded; existing baseline Traceability issues remain separately tracked.
+2026-09-25T17:45:40Z — EVT-KB-SDP-000169: CardState in-progress → completed.

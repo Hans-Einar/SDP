@@ -205,6 +205,6 @@ plan keeps its already selected phase/milestone branch strategy.
 MAINT-SDP-0004 selects one working branch, sdp/maintenance-pl1-typed-plans,
 from completed IU3 28bf156. It applies the owner's per-plan Git policy: commits
 per phase rather than branches per phase. PL1-A-M1 c2d8edf adopts the contract;
-PL1-B-M1 delivers executable support and distribution; PL1-C-M1 verifies and
+PL1-B-M1 16dacf2 delivers executable support and distribution; PL1-C-M1 verifies and
 closes work. Phase pushes and combined review against sdp-vNow remain authorized;
 merging is not. Earlier phase branches and promised strategies remain unchanged.

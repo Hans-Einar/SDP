@@ -62,3 +62,41 @@ the same 38 SK1/KB-SDP-011 findings, with no additions/removals.
 
 PL1-C owns final integrated evidence/record checks and closure. No live XFMD
 rollout, full fault-matrix rerun, remote CI pass or release publication is claimed.
+
+## PL1-C-M1 — final verification and closeout
+
+Implementation candidate: 16dacf2. All eight files/artifacts identified in
+[final independent review hashes](implementation-review-final-source-hashes.json)
+match this commit. The remaining C-phase diff contains current-document/index,
+evidence and lifecycle closure updates only. The shared Sprint entrypoint was
+reconciled with the new plan-grouping contract, retaining the completed historical
+Sprint's actual state.
+
+[Final engine checks](final-engine-tests.txt) passed three integrated groups:
+clean apply/no-change repetition, manual history-prefix preservation and actual
+installed SDPTool workflow. The final installed malformed-history suite includes
+the corrected empty-cell path and passes. Recovery/journal implementation was not
+redesigned; this work does not claim a new exhaustive interruption matrix. The
+prior IU3 evidence remains attached to its own candidate.
+
+Reproduction on Linux: set SDP_TEST_PWSH to PowerShell 7.4+ and SDP_TEST_TOOL to
+the prebuilt SDPTool; run Toolkit/tests/test_process_install.py groups named in
+the retained logs. Run local management tests with unittest discover under
+SDP/ProjectManagement, skill/profile tests under Toolkit/tests, Go test -race ./...
+and go vet ./... under Toolkit/SDPTool. The catalog probe is
+SDP/Maintenance/SK1/verify_catalog.py with the PowerShell executable argument.
+Host evidence used PowerShell 7.6.6, Go 1.27.1 and Codex CLI 0.156.1.
+
+Management, lineage, historical-prefix, generated-output and local-link checks
+pass. Full Toolkit validation retains exactly 38 pre-existing findings under
+KB-SDP-011; this is not a green repository-wide validation claim. Windows profile
+execution remains experimental. No live consumer migration or release occurred.
+
+Backlog review: KB-SDP-014 still owns standalone KanBan distribution; KB-SDP-018
+still owns the broader Toolkit audit. Neither is closed by typed planning.
+KB-SDP-029's selected plan, skill, validation and distribution are delivered.
+
+Final closure checks: 36 cards, nine management records, three lineage operations
+and 247 events; six management tests and 15 lineage negative cases pass. Document
+checks preserve 105 frozen records/ledger prefixes and 574 generated outputs,
+resolving 2,445 local links and 130 fragments. git diff --check passes.

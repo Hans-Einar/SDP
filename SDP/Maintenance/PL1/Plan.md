@@ -4,7 +4,7 @@
 | --- | --- |
 | id | MAINT-SDP-0004 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | MaintenancePlan |
 | BranchPolicy | current |
 | CommitPolicy | phase |
@@ -57,7 +57,7 @@ Phases still have milestone acceptance; record evidence at each commit.
 | --- | --- | --- | --- |
 | PL1-A | PL1-A-M1 | Adopt one plan contract, template and scaled Git/lifecycle guidance; activate KB029 and preserve history | Completed |
 | PL1-B | PL1-B-M1 | Implement typed-plan/sprint validation, portable Planning skill, profile/readers and safe distribution | Completed |
-| PL1-C | PL1-C-M1 | Verify behavior, compatibility, installed workflow and records; resolve review findings and close work | Planned |
+| PL1-C | PL1-C-M1 | Verify behavior, compatibility, installed workflow and records; resolve review findings and close work | Completed |
 
 ## Verification and completion
 
@@ -70,3 +70,12 @@ links, unchanged historical prefixes and the known 38 Toolkit baseline findings.
 Review actual final changes, distinguishing independent skill trials from local
 checks. Evidence belongs in Evidence.md. Completion requires the usable contract,
 skill and distribution, not a live project upgrade or release publication.
+
+## Delivered outcome
+
+All three phases are complete. [Evidence](Evidence.md) records independent skill
+trials, corrected review findings, installed upgrade/consumer checks, preservation
+and unchanged known baseline errors. Six PlanTypes share one work-record contract;
+sprints can select plans, Git policy is explicit per plan, and sdp-planning is
+discoverable/distributed with schema/profile support. KB-SDP-029 is completed.
+No historical mass migration, live consumer upgrade or release is claimed.
