@@ -110,7 +110,7 @@ PreviewSlice refines DeliverSdpTool.
 ProjectContext owns ResolveProjectContext.
 ProjectDiscoverySlice addresses ResolveProjectContext.
 ProjectDiscoverySlice delivers SdpTool.
-ProjectDiscoverySlice has implementation-status = planned.
+ProjectDiscoverySlice has implementation-status = implemented.
 ProjectDiscoverySlice refines DeliverSdpTool.
 ProjectNavigation requires SdlProjectionPort in mode ProjectBrowsing.
 ProposeImplementationSlices allocated-to SdpToolProcess in mode ProcessPlanning.

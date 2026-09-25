@@ -3,8 +3,8 @@
 This is the owner-selected home for `sdptool`, the project-aware entry point for
 SDP operations and selected SDL/SDUI services. Created on 2026-09-25. The directory
 and [implementation plan](../../SDP/05--Implementation/SDPTool.md) are delivered.
-The Go executable supports saved design preview; project discovery and the native
-navigation API are the next milestones.
+The Go executable supports saved design preview, project discovery and configured
+plan viewing; native navigation data follows in T3.
 
 The active feature assignment is
 [KB-SDP-017](../../SDP/KanBan/active/%23017--Proposal--sdptool-and-project-navigation.md).
@@ -66,5 +66,17 @@ sdptool preview ../../SDP/03--Architecture/SDPTool.design --output /tmp/design-p
 
 The local module replacements locate existing SDL/SDUI libraries in this checkout;
 no Python parser or second language implementation is introduced. Tests run with
-`go test -race ./...`. Discovery/navigation below remain planned until their
-own milestones; direct preview already works without project metadata.
+`go test -race ./...`. Discovery and view ip use the navigation registration described in the contract;
+direct preview works without project metadata.
+
+## Project selection and viewer
+
+```sh
+sdptool /path/to/project discover
+sdptool /path/to/project view ip --model sdptool --viewer /path/to/xfmd --sdl-tool /path/to/sdl
+```
+
+The repository registration includes two model entries, so select the desired ID.
+The viewer command waits until that window exits to keep generated navigation
+resources alive. Host options can also use SDP_XFMD, SDP_SDL_TOOL and SDP_MMDR.
+`generate ip` remains later scope and never runs implicitly while viewing.
