@@ -1627,6 +1627,8 @@ class InstallConformancePackageTests(unittest.TestCase):
             {
                 "empty-default",
                 "empty-initialize",
+                "same-version-skill-contract-unforced",
+                "same-version-skill-contract-force",
                 "repeat-default",
                 "repeat-initialize",
                 "legacy-agents-migrate",

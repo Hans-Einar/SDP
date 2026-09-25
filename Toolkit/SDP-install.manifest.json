@@ -884,6 +884,11 @@
       "path": "Skills/README.md",
       "kind": "file",
       "reason": "development-only"
+    },
+    {
+      "path": "Template/profiles",
+      "kind": "tree",
+      "reason": "development-only"
     }
   ]
 }
