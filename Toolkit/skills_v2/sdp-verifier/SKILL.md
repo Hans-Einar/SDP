@@ -1,9 +1,13 @@
 ---
 name: sdp-verifier
-description: Establish whether SDP test and inspection evidence proves the claimed outcome on the actual candidate, at the correct function, service, workflow, application or release level.
+description: Establish whether SDP test and inspection evidence proves the claimed outcome on the actual candidate,
+  at the correct function, service, workflow, application or release level.
 metadata:
-  candidate-version: "2.0.0-draft.2"
-  status: "vNow evaluation candidate; not installed"
+  skillId: sdp-verifier
+  skillVersion: 2.0.0
+  minimumToolkitVersion: 0.2.0
+  capabilities: sdp.verification.validate,sdp.release.evidence
+  compatibilityNotes: Profile-aware workflow; native skill metadata. Supersedes the legacy procedure.
 ---
 
 # SDP Verifier

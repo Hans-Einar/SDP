@@ -1,9 +1,13 @@
 ---
 name: sdp-versioning
-description: Select an SDP release version from public compatibility impact and maintain development identity separately. Use for version decisions, not as mandatory ceremony for every code edit.
+description: Select an SDP release version from public compatibility impact and maintain development identity separately.
+  Use for version decisions, not as mandatory ceremony for every code edit.
 metadata:
-  candidate-version: "2.0.0-draft.2"
-  status: "vNow evaluation candidate; not installed"
+  skillId: sdp-versioning
+  skillVersion: 2.0.0
+  minimumToolkitVersion: 0.2.0
+  capabilities: sdp.versioning.select,sdp.versioning.development-identity,sdp.versioning.validate
+  compatibilityNotes: Profile-aware workflow; native skill metadata. Supersedes the legacy procedure.
 ---
 
 # SDP Versioning

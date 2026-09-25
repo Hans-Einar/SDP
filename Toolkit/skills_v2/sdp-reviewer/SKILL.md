@@ -1,9 +1,13 @@
 ---
 name: sdp-reviewer
-description: Independently review whether an SDP assignment and its implementation satisfy owner intent and governing design, including regressions and evidence adequacy. Use a context independent of implementation.
+description: Independently review whether an SDP assignment and its implementation satisfy owner intent and governing
+  design, including regressions and evidence adequacy. Use a context independent of implementation.
 metadata:
-  candidate-version: "2.0.0-draft.2"
-  status: "vNow evaluation candidate; not installed"
+  skillId: sdp-reviewer
+  skillVersion: 2.0.0
+  minimumToolkitVersion: 0.2.0
+  capabilities: sdp.review.independent,sdp.release.review
+  compatibilityNotes: Profile-aware workflow; native skill metadata. Supersedes the legacy procedure.
 ---
 
 # SDP Reviewer

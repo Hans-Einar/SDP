@@ -1,9 +1,13 @@
 ---
 name: sdp-release
-description: Prepare or reconcile an explicitly scoped SDP release using exact-candidate evidence, compatibility and truthful publication records. Publication requires existing explicit authorization.
+description: Prepare or reconcile an explicitly scoped SDP release using exact-candidate evidence, compatibility
+  and truthful publication records. Publication requires existing explicit authorization.
 metadata:
-  candidate-version: "2.0.0-draft.2"
-  status: "vNow evaluation candidate; not installed"
+  skillId: sdp-release
+  skillVersion: 2.0.0
+  minimumToolkitVersion: 0.2.0
+  capabilities: sdp.release.prepare,sdp.release.gate,sdp.release.reconcile
+  compatibilityNotes: Profile-aware workflow; native skill metadata. Supersedes the legacy procedure.
 ---
 
 # SDP Release

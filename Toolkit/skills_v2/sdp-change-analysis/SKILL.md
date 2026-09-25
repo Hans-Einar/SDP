@@ -1,9 +1,13 @@
 ---
 name: sdp-change-analysis
-description: Analyze an SDP user-reported symptom or new capability before choosing an implementation. Recover the affected workflow, governing decisions and change impact; reuse current analysis for already specified work.
+description: Analyze an SDP user-reported symptom or new capability before choosing an implementation. Recover the
+  affected workflow, governing decisions and change impact; reuse current analysis for already specified work.
 metadata:
-  candidate-version: "2.0.0-draft.2"
-  status: "vNow evaluation candidate; not installed"
+  skillId: sdp-change-analysis
+  skillVersion: 1.0.0
+  minimumToolkitVersion: 0.2.0
+  capabilities: sdp.change.analyze
+  compatibilityNotes: Initial adopted profile-aware role.
 ---
 
 # SDP Change Analysis

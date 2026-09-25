@@ -1,9 +1,13 @@
 ---
 name: sdp-steering
-description: Assist an explicitly assigned SDP Steering or project-owner decision by assessing evidence, framing unresolved choices and recording actual dispositions. Does not authorize the agent to impersonate owner approval.
+description: Assist an explicitly assigned SDP Steering or project-owner decision by assessing evidence, framing
+  unresolved choices and recording actual dispositions. Does not authorize the agent to impersonate owner approval.
 metadata:
-  candidate-version: "2.0.0-draft.2"
-  status: "vNow evaluation candidate; not installed"
+  skillId: sdp-steering
+  skillVersion: 1.0.0
+  minimumToolkitVersion: 0.2.0
+  capabilities: sdp.steering.assist
+  compatibilityNotes: Initial adopted profile-aware role.
 ---
 
 # SDP Steering
@@ -32,8 +36,8 @@ exercise may explore user needs but is not owner acceptance.
 
 ## Preserve the interaction
 
-Use the existing project Steering record convention, or a small project-owned
-`SDP/Steering/` record when such recording is assigned:
+Use the existing project Steering record convention, including an existing Scrum, work card or Maintenance decision section when
+appropriate; create a separate record only when assigned:
 
 1. Preserve the exact material assignment prompt and its source/time.
 2. Preserve the Master's complete received response separately from assessment.

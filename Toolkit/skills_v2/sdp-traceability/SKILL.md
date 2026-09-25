@@ -1,9 +1,13 @@
 ---
 name: sdp-traceability
-description: Maintain SDP links between owner intent, current design decisions, work and evidence using installed records and schemas. Use for material decisions, state transitions and handoffs, not decorative bookkeeping.
+description: Maintain SDP links between owner intent, current design decisions, work and evidence using installed
+  records and schemas. Use for material decisions, state transitions and handoffs, not decorative bookkeeping.
 metadata:
-  candidate-version: "2.0.0-draft.2"
-  status: "vNow evaluation candidate; not installed"
+  skillId: sdp-traceability
+  skillVersion: 2.0.0
+  minimumToolkitVersion: 0.2.0
+  capabilities: sdp.traceability.update,sdp.traceability.release-events
+  compatibilityNotes: Profile-aware workflow; native skill metadata. Supersedes the legacy procedure.
 ---
 
 # SDP Traceability
@@ -32,6 +36,13 @@ Preserve superseded decisions and explain their replacement; do not leave two
 apparently current contradictory sources.
 
 ## Maintain work and evidence
+
+Under the shared-management profile, card/Scrum/Sprint/Maintenance/Review/Refactor
+transitions go only to ProjectManagement/Ledger.ndjson. System design/code and
+verification go to Traceability, referencing management IDs/events. A completed
+card is not proof of an implemented feature. Use current system-prefixed IDs;
+retain historical IDs and report schema limitations without rewriting history.
+
 
 1. Update CurrentIndex only for actual current work under the installed contract.
 2. Update Relations with resolvable requirement, decision, assignment/Slice/Fix,

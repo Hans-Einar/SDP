@@ -1,9 +1,13 @@
 ---
 name: sdp-auditor
-description: Perform a read-only SDP consistency audit of installation, skill availability, current decisions, traceability and evidence claims. Report gaps without applying migrations or repairs.
+description: Perform a read-only SDP consistency audit of installation, skill availability, current decisions, traceability
+  and evidence claims. Report gaps without applying migrations or repairs.
 metadata:
-  candidate-version: "2.0.0-draft.2"
-  status: "vNow evaluation candidate; not installed"
+  skillId: sdp-auditor
+  skillVersion: 2.0.0
+  minimumToolkitVersion: 0.2.0
+  capabilities: sdp.audit.consistency,sdp.audit.release-state
+  compatibilityNotes: Profile-aware workflow; native skill metadata. Supersedes the legacy procedure.
 ---
 
 # SDP Auditor

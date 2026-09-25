@@ -1,9 +1,13 @@
 ---
 name: sdp-architect
-description: Resolve material SDP architecture or workflow choices using system evidence, alternatives and decision rationale. Use before implementation when ownership, shared contracts or user behavior may change.
+description: Resolve material SDP architecture or workflow choices using system evidence, alternatives and decision
+  rationale. Use before implementation when ownership, shared contracts or user behavior may change.
 metadata:
-  candidate-version: "2.0.0-draft.2"
-  status: "vNow evaluation candidate; not installed"
+  skillId: sdp-architect
+  skillVersion: 2.0.0
+  minimumToolkitVersion: 0.2.0
+  capabilities: sdp.architecture.design,sdp.release.architecture
+  compatibilityNotes: Profile-aware workflow; native skill metadata. Supersedes the legacy procedure.
 ---
 
 # SDP Architect

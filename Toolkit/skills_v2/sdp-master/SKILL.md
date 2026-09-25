@@ -1,9 +1,14 @@
 ---
 name: sdp-master
-description: Coordinate an authorized SDP assignment, including deciding whether analysis is sufficient before delegating implementation, independent review and evidence-based closeout. Not a substitute for an explicitly assigned Worker or Reviewer role.
+description: Coordinate an authorized SDP assignment, including deciding whether analysis is sufficient before delegating
+  implementation, independent review and evidence-based closeout. Not a substitute for an explicitly assigned Worker
+  or Reviewer role.
 metadata:
-  candidate-version: "2.0.0-draft.2"
-  status: "vNow evaluation candidate; not installed"
+  skillId: sdp-master
+  skillVersion: 2.0.0
+  minimumToolkitVersion: 0.2.0
+  capabilities: sdp.coordinate,sdp.release.coordinate,sdp.traceability.coordinate
+  compatibilityNotes: Profile-aware workflow; native skill metadata. Supersedes the legacy procedure.
 ---
 
 # SDP Master
@@ -29,7 +34,7 @@ permanent owner of unrelated work.
 3. Confirm the assignment is adequate: solving it preserves relevant user
    operations and fits the enclosing system contracts. If it requires a new
    behavior decision, resolve that decision before asking a Worker to implement.
-4. Define the bounded Slice/Fix using existing project conventions: outcome,
+4. Define the bounded work (milestone, Maintenance, Slice/Fix) using project conventions: outcome,
    baseline, allowed areas/shared touchpoints, invariants, non-goals, verification
    level and completion boundary. Do not impose pilot-only schemas or waive
    installed vNow records. Documentation should be proportional within that
@@ -37,7 +42,11 @@ permanent owner of unrelated work.
 
 ## Execute and integrate
 
-Delegate product implementation to a bounded Worker and review to a fresh
+Delegate only when current host/session instructions and task authorization permit
+it; a role name does not grant delegation. Otherwise perform the authorized work
+directly and label same-context review honestly. Where independent review is
+required, retain the unfulfilled review boundary rather than pretending it passed.
+When delegation is permitted, assign implementation to a bounded Worker and review to a fresh
 independent context where the project contract requires those roles. Supply
 owner intent and source references, not only your solution. Independent review
 must be able to challenge the assignment. Use a separate Verifier when risk or

@@ -4,7 +4,7 @@
 | --- | --- |
 | id | MAINT-SDP-0002 |
 | project | SDP |
-| state | planned |
+| state | active |
 | source | SCRUM-SDP-0003; KB-SDP-027; owner conversation 2026-09-25 |
 | Systems | SDP |
 
@@ -114,20 +114,21 @@ it must never become a separately authored skill collection.
 
 [KB-SDP-028](../../KanBan/backlog/%23028--Study--Installer-upgrade-and-versioned-layout.md)
 owns the broader declarative layout compiler, versioned process upgrades and
-manual-project adoption. Its Scrum should reuse these findings and decide the
-shared migration order before SK1 changes distribution behavior. Do not expand
+manual-project adoption. The owner authorized SK1 execution before that Scrum on 2026-09-25. SK1
+therefore decides its minimal distribution boundary now and hands the actual
+result to the later installer Scrum. Do not expand
 SK1 into migration of every SDP process directory. The broad
 [Toolkit audit](../../KanBan/backlog/%23018--Study--Toolkit-audit-and-organization.md)
 reuses this inventory. Existing ID compatibility failures remain KB-SDP-011.
 
-## Implementation milestones — not executed
+## Implementation milestones
 
 Use a new stacked phase branch sdp/phase-sk1-skills-activation, with one commit
 per completed milestone, evidence here and push at phase completion.
 
 | Milestone | Delivery and acceptance | State |
 | --- | --- | --- |
-| SK1-M1 | Reconcile this map with installer Scrum; finalize concise role/workflow content, compatible metadata and migration inventory, including every current source/consumer and removal condition | Planned |
+| SK1-M1 | Apply the owner-selected maintenance-first ordering; finalize concise role/workflow content, compatible metadata and migration inventory, including every current source/consumer and removal condition | Delivered |
 | SK1-M2 | Atomically adopt root Skills/, migrate manifest/template/validator consumers and project adapter/AGENTS, remove the two superseded maintained sources; verify links, metadata, no duplicate names and supported clean/repeat install plus preservation/failure cases | Planned |
 | SK1-M3 | Verify all adopted roles in a fresh host catalog and actual explicit loading/routing on representative tasks; record host/version, results and gaps, update evidence and close Maintenance only after acceptance | Planned |
 
@@ -161,3 +162,21 @@ observable discovery/loading/routing evidence, truthful version facts, and expli
 remaining host limitations. No parallel legacy implementation should remain active.
 Until then this Maintenance is planned, and #027's completed Study means only that
 the review selected an actionable job.
+
+## Execution authority — 2026-09-25
+
+The owner requests this Maintenance now, before the next Scrum. This supersedes
+the earlier recommended dependency order; no additional meeting is required.
+Root Skills/ and the native repository adapter are in scope. Keep existing
+consumer destinations when tested host support allows it, avoiding an unrelated
+process-tree migration. Final distribution/version choices and evidence follow.
+
+## SK1-M1 result
+
+[Migration contract](Migration-contract.md) fixes the consumer inventory, metadata,
+versions and maintenance-first ordering. Thirteen prepared entrypoints pass the
+skill-creator validator. Their measured source hashes are in Content-inventory.json;
+shared references now describe the actual profile and distinguish the two histories.
+The active install source and repository catalog remain unchanged until M2.
+[Baseline](toolkit-baseline.txt) records 38 existing Toolkit errors; no unrelated
+Traceability repair is included. The earlier draft evaluation is retained as history.

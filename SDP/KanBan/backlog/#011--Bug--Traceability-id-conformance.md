@@ -31,3 +31,9 @@ Recorded 2026-09-25T01:41:26Z, Codex, EVT-KB-SDP-000079. CardState remains backl
 Keep the nine existing Toolkit ID/CI failures as a bounded compatibility bug. Coordinate new system prefixes without rewriting historical IDs or hiding failures.
 
 EVT-KB-SDP-000118; next review at the next selection or relevant dependency delivery.
+
+## SK1 baseline update
+
+The actual baseline now has 38 errors; see [exact output](../../Maintenance/SK1/toolkit-baseline.txt).
+They predate SK1 and include reciprocal-relation errors as well as ID formats.
+This card retains repair ownership. EVT-KB-SDP-000159.

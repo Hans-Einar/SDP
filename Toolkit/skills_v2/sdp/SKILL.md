@@ -1,12 +1,20 @@
 ---
 name: sdp
-description: Use the project's Standard Document Procedure for SDP-governed study, development, review or maintenance. Resolve current project authority, select the relevant SDP role and keep durable project documents aligned with the work. Use when explicitly invoked or when the project requires SDP.
+description: Use the project's System Design Process for SDP-governed study, development, review or maintenance.
+  Resolve current project authority, select the relevant SDP role and keep durable project documents aligned with
+  the work. Use when explicitly invoked or when the project requires SDP.
 metadata:
-  candidate-version: "2.0.0-draft.2"
-  status: "vNow evaluation candidate; not installed"
+  skillId: sdp
+  skillVersion: 1.0.0
+  minimumToolkitVersion: 0.2.0
+  capabilities: sdp.route
+  compatibilityNotes: Initial adopted profile-aware role.
 ---
 
 # SDP entrypoint
+
+For a trivial factual question or unrelated task, answer directly without starting
+SDP lifecycle work.
 
 Translate a short owner request into the appropriate existing SDP workflow.
 This is a method entrypoint, not a new management role or an authorization to
@@ -29,7 +37,7 @@ installed project rules. Report missing authority with its practical effect.
 
 Preserve an explicitly assigned role. Otherwise select the smallest applicable
 set below and read those entrypoints; do not load all roles for every task.
-Paths assume this candidate collection is distributed together. If a required
+Paths assume this collection is distributed together. If a required
 role or reference is absent, report the gap; do not claim it was loaded or
 silently install a different version. Continue only work supported by available
 project instructions and authorization.
@@ -39,7 +47,7 @@ project instructions and authorization.
 | Unexplained symptom or new capability | [Change Analysis](../sdp-change-analysis/SKILL.md) |
 | Material design alternatives or conflicting contracts | [Architect](../sdp-architect/SKILL.md) |
 | Coordinate an authorized implementation assignment | [Master](../sdp-master/SKILL.md) |
-| Implement an assigned Slice/Fix | [Worker](../sdp-worker/SKILL.md) |
+| Implement an assigned milestone, Maintenance task, Slice/Fix | [Worker](../sdp-worker/SKILL.md) |
 | Independent review | [Reviewer](../sdp-reviewer/SKILL.md) |
 | Establish evidence for a claimed outcome | [Verifier](../sdp-verifier/SKILL.md) |
 | Maintain decision/work/evidence links | [Traceability](../sdp-traceability/SKILL.md) |

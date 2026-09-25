@@ -1,9 +1,13 @@
 ---
 name: sdp-vertical-refactor
-description: Plan and perform an authorized SDP architecture migration through complete runnable workflows while preserving declared behavior and compatibility. Not for cosmetic file splitting or unrequested redesign.
+description: Plan and perform an authorized SDP architecture migration through complete runnable workflows while
+  preserving declared behavior and compatibility. Not for cosmetic file splitting or unrequested redesign.
 metadata:
-  candidate-version: "2.0.0-draft.2"
-  status: "vNow evaluation candidate; not installed"
+  skillId: sdp-vertical-refactor
+  skillVersion: 2.0.0
+  minimumToolkitVersion: 0.2.0
+  capabilities: sdp.refactor.vertical,sdp.compatibility.preserve
+  compatibilityNotes: Profile-aware workflow; native skill metadata. Supersedes the legacy procedure.
 ---
 
 # SDP Vertical Refactor

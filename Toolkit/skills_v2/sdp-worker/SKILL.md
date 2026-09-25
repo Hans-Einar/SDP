@@ -1,9 +1,14 @@
 ---
 name: sdp-worker
-description: Implement one explicitly assigned SDP Slice or Fix with preserved behavior, scoped changes and reproducible evidence. Return material design contradictions rather than silently expanding the assignment.
+description: Implement one authorized, bounded SDP milestone, Maintenance task, Slice or Fix with preserved behavior,
+  scoped changes and reproducible evidence. Return material design contradictions rather than silently expanding
+  the assignment.
 metadata:
-  candidate-version: "2.0.0-draft.2"
-  status: "vNow evaluation candidate; not installed"
+  skillId: sdp-worker
+  skillVersion: 2.0.0
+  minimumToolkitVersion: 0.2.0
+  capabilities: sdp.slice.implement,sdp.fix.implement
+  compatibilityNotes: Profile-aware workflow; native skill metadata. Supersedes the legacy procedure.
 ---
 
 # SDP Worker
@@ -19,8 +24,8 @@ linked requirements/design decisions and verification contract before editing.
 1. Check repository status and concurrent edits. Understand the affected
    workflow and surrounding consumers, not just the named files.
 2. Confirm that the proposed implementation preserves the assignment's
-   invariants. If relevant design evidence is missing or contradictory, return
-   the specific gap to Master before the dependent change.
+   invariants. If relevant design evidence is missing or contradictory, record
+   the specific gap for the coordinator/owner before the dependent change.
 3. Implement the smallest coherent solution. Use established project patterns;
    do not add unrelated cleanup, rename public concepts, alter dependencies or
    change action semantics to make a local solution convenient.

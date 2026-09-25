@@ -1,12 +1,14 @@
 # SDP document workflow
 
-Status: candidate operating guidance for vNow skills. Installed project
+Profile-aware operating guidance. Current project
 contracts control record names, IDs, schemas, ownership and required gates.
 This guide introduces no new schema, mandatory document type or work hierarchy.
 
 ## Read the current authority
 
-Start at project instructions, the installed Framework and current index.
+Start at project instructions and the actual declared process profile. Read the
+installed Framework/manifest and current index when present; absence of an
+installed manifest does not invalidate an explicitly adopted local profile.
 Follow relevant intent/Feature links to Requirements, Architecture and Design,
 including enclosing-system decisions and their reasons. Search historical
 work and GitHub comments when current documents omit the reason or conflict;
@@ -17,6 +19,30 @@ observations and superseded history. Neither a recent comment nor existing
 code automatically overrides the current contract. Establish the source's
 status and scope. If precedence remains unresolved and changes the solution,
 identify that exact conflict before the dependent implementation.
+
+## Shared-management profile
+
+When adopted by the project, the five phases are Mandate, Requirements,
+Architecture, Design and Implementation. Study belongs with the affected phase;
+phase directories do not assign abstraction levels. Organize architecture by
+Systems and actual containers; a shared library is not automatically a container.
+Do not assume this local profile is already installed in every consuming project.
+
+Use the shared KanBan board and existing cards for scope discoveries. A Scrum may
+select Maintenance directly; Sprint membership is optional. CardState belongs in
+one visible metadata row: queued stays in backlog; ready, in-progress and
+concrete gate-review belong in active. A delivered card does not remain active
+merely to point at later work. Maintain links and append the actual transition.
+
+ProjectManagement/Ledger.ndjson records management lifecycles. Traceability records
+system design/code changes and evidence, referring to management identities.
+Pure planning/board changes do not get duplicate Traceability events. Keep current
+explanations in their documents and revision history in Git. Write maintained
+documentation in English; preserve frozen records and intentional localized UI.
+
+Honor the project's phase branches and milestone commits when required. Update
+its plan and evidence for each delivered milestone; phase push, PR, merge,
+release and owner acceptance are separate operations with their own authority.
 
 ## Read and update by consequence
 
