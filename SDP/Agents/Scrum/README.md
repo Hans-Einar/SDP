@@ -8,3 +8,5 @@ The [management contract](../../ProjectManagement/README.md) owns semantics.
 
 [Scrum-0001](Scrum--%230001--Backlog-and-project-management.md) consolidates the
 SDP/SDL/SDUI board and selects project-management housekeeping.
+
+[Scrum-0002](Scrum--%230002--SDPTool-delivery-sprint.md) selects the planned SDPTool Sprint and registers two future Maintenance reviews.

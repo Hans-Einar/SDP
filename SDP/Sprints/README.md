@@ -15,3 +15,5 @@ Existing Sprint directories retain dated scope and identifiers. Their richer
 iteration/notes/handoff documents remain historical authorities; new work need
 not create empty equivalents. Actual system design/code changes are recorded in
 Traceability with references to the Sprint's management identity/event.
+
+[SPR-SDP-0001](Sprint--%230001--SDPTool-preview-and-navigation.md) is the planned SDPTool preview/navigation delivery selected by Scrum-0002.

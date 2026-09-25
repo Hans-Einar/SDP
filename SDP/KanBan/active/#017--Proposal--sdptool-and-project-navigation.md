@@ -6,12 +6,34 @@
 | project | SDP |
 | type | Proposal |
 | CardState | ready |
-| ScrumId | SCRUM-SDP-0001 |
+| ScrumId | SCRUM-SDP-0002 |
 | Systems | SDPTOOL |
 | created | 2026-09-25T01:41:26Z |
 | source | KB-SDP-002 and KB-SDP-016; owner clarification 2026-09-25 |
 | next_review | First discovery contract and navigation delivery; coordinate with XFMD |
 | tags | tooling, discovery, navigation, SDL, SDUI, XFMD |
+
+## Current disposition — Scrum-0002
+
+The feature remains open; this card is not a Sprint member. Typed partial split
+KBO-SDP-000004 transfers the selected producer milestones to the six cards below.
+Their acceptance now belongs there; earlier sequence descriptions below remain
+background and do not create duplicate implementation assignments.
+
+- [KB-SDP-021](../backlog/%23021--Change--SDPTool-saved-design-preview.md)
+- [KB-SDP-022](../backlog/%23022--Change--SDPTool-discovery-contract.md)
+- [KB-SDP-023](../backlog/%23023--Change--SDPTool-project-viewer-bridge.md)
+- [KB-SDP-024](../backlog/%23024--Change--SDPTool-model-navigation.md)
+- [KB-SDP-025](../backlog/%23025--Change--SDPTool-KanBan-and-SDUI-inventory.md)
+- [KB-SDP-026](../backlog/%23026--CodeReview--SDPTool-consumer-contract-review.md)
+
+Explicit work retained here: P0-M2 unsaved-buffer/snapshot input; T4-M2 interoperability with the separately delivered native XFMD consumer; T5 slice proposal/validation, evidence-aware implementation plans/roadmaps, and Git-backed card history/diff.
+
+CardState remains ready for the retained feature scope; no work is in progress
+on this parent. The planned Sprint selects the child cards only. No source
+semantics, advanced plan generation or native XFMD implementation is silently
+added to the Sprint. The [Sprint](../../Sprints/Sprint--%230001--SDPTool-preview-and-navigation.md)
+records dependencies, exclusions and start/completion rules.
 
 ## Active assignment — owner decision 2026-09-25
 
@@ -152,8 +174,8 @@ SDUI owns UI-language services. Owner clarification on 2026-09-25: all XFMD
 implementation belongs to its own cards and development session. SDP-vNow owns
 `sdptool` in [Toolkit/SDPTool](../../../Toolkit/SDPTool/README.md). The existing
 XFMD companion was updated with this scope and current producer link; only its
-KanBan documentation and ledger were changed. XFMD uses `Agents/KanBan` without
-adopting the SDP process or adding an SDP directory.
+KanBan documentation and ledger were changed. XFMD now has its own SDP area and board at `SDP/Agents/KanBan`; its separate
+process-adoption card owns further adoption. The former standalone path is historical.
 
 ## Metadata decision before implementation
 
@@ -264,3 +286,7 @@ lives on the shared board. Product acceptance remains with this primary.
 Keep SDPTool as one feature delivery with its existing phase plan. Include reading the shared board/management history and optional SprintId/ScrumId in the navigation contract; do not absorb language changes or the timeline UI.
 
 EVT-KB-SDP-000123; next review at the next selection or relevant dependency delivery.
+
+## Scrum-0002 worklog
+
+2026-09-25T12:38:14Z — EVT-KB-SDP-000130: recorded partial transfer and remaining scope; no product delivery claimed.

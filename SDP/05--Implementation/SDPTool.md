@@ -32,6 +32,31 @@ explicitly and coordinate changes with #014 rather than inventing another contra
 Neither a required daemon, startup compilation nor new language implementation is
 part of the first delivery.
 
+## Scrum-0002 execution allocation
+
+[SPR-SDP-0001](../Sprints/Sprint--%230001--SDPTool-preview-and-navigation.md) selects the following milestones, without starting
+implementation. This table refines assignment ownership; the phase acceptance
+above remains the single feature plan. P0-M1 is selected first, not all of P0.
+P0 and T4 retain open milestones after this Sprint; mark only their selected
+milestones delivered. Preserve their phase branches and stack later work from
+the then-current delivery tip rather than rebasing earlier history.
+
+| Card | Selected phase/milestone |
+| --- | --- |
+| [KB-SDP-021](../KanBan/backlog/%23021--Change--SDPTool-saved-design-preview.md) | P0-M1 |
+| [KB-SDP-022](../KanBan/backlog/%23022--Change--SDPTool-discovery-contract.md) | T1-M1/M2 |
+| [KB-SDP-023](../KanBan/backlog/%23023--Change--SDPTool-project-viewer-bridge.md) | T2-M1/M2 |
+| [KB-SDP-024](../KanBan/backlog/%23024--Change--SDPTool-model-navigation.md) | T3-M1/M2 |
+| [KB-SDP-025](../KanBan/backlog/%23025--Change--SDPTool-KanBan-and-SDUI-inventory.md) | T3-M3 |
+| [KB-SDP-026](../KanBan/backlog/%23026--CodeReview--SDPTool-consumer-contract-review.md) | T4-M1 |
+
+The source card retains P0-M2 unsaved-buffer/snapshot input; T4-M2 interoperability with the separately delivered native XFMD consumer; T5 slice proposal/validation, evidence-aware implementation plans/roadmaps, and Git-backed card history/diff.
+They require later selection and are not prerequisites for this producer Sprint.
+KB-SDP-026 owns producer contract/harness review, not XFMD native implementation.
+System/source-set and subsequent model migration remain KB-SDL-005/KB-SDP-020;
+use supported existing saved-file inputs meanwhile. No milestone is newly delivered
+by this planning allocation. See Scrum-0002 for PM2-M1 planning evidence.
+
 ## T0-M1 record
 
 Base: `94eb052`; branch `sdp/phase-t0-sdptool-foundation`. Created the source home

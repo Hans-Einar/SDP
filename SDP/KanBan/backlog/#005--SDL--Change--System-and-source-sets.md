@@ -5,10 +5,10 @@
 | id | KB-SDL-005 |
 | project | SDL |
 | type | Change |
-| CardState | queued |
+| CardState | backlog |
 | created | 2026-09-25T11:42:10Z |
 | source | SCRUM-SDP-0001; owner-conversation-2026-09-25 |
-| ScrumId | SCRUM-SDP-0001 |
+| ScrumId | SCRUM-SDP-0002 |
 | Systems | SDL |
 | next_review | After MAINT-SDP-0001, before selecting the next implementation |
 
@@ -28,7 +28,7 @@ limits, file diagnostics, tool projection and source-change handling. Independen
 system entries and cross-system landscape references need explicit semantics.
 Migrate consumers with the selected profile; preserve frozen evidence.
 
-## Queue
+## Historical queue — superseded by Scrum-0002
 
 CardState is queued after MAINT-SDP-0001: source semantics must be settled before
 KB-SDP-020 moves the mixed model. First milestone: a bounded profile/acceptance
@@ -46,3 +46,9 @@ claimed implemented by this split. Work in a phase branch with milestone evidenc
 Queue the explicit System/input contract after this maintenance. A draft loader does not deliver it.
 
 EVT-KB-SDL-000025; next review at the next selection or relevant dependency delivery.
+
+## Scrum-0002 disposition
+
+2026-09-25T12:38:14Z — EVT-KB-SDL-000026: backlog, no longer queued. KB-SDP-021 is next.
+Existing single-file SDL services allow the first SDPTool Sprint to proceed;
+future source-set support still depends on this contract before model migration.

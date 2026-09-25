@@ -131,3 +131,11 @@ verification, completing MAINT-SDP-0001. This phase does not deliver S1's source
 loader/model work; KB-SDL-005 and KB-SDP-020 now own those split responsibilities.
 The completed phase is pushed and offered as the latest combined stack against
 sdp-vNow, without merging or rewriting earlier phase branches.
+
+## PM2 — SDPTool Sprint planning
+
+Branch sdp/phase-pm2-sdptool-sprint-planning starts at PM1 8d85b39. PM2-M1
+records Scrum-0002, planned SPR-SDP-0001, partial split KBO-SDP-000004 and two
+future Maintenance-review cards. The implementation plan maps six delivery cards
+to existing phases. This is planning only; uncommitted SDL sourceinput drafts
+remain excluded. Evidence is recorded in the Scrum document.

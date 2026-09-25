@@ -6,7 +6,7 @@
 | project | SDP |
 | type | Study |
 | CardState | backlog |
-| ScrumId | SCRUM-SDP-0001 |
+| ScrumId | SCRUM-SDP-0002 |
 | Systems | SDP |
 | created | 2026-09-25T09:09:52Z |
 | source | Owner conversation 2026-09-25: SDPTool location and future Toolkit review |
@@ -64,3 +64,12 @@ Do not delete or move Toolkit contents merely because this request is registered
 Keep Toolkit audit separate from the release contract and current maintenance; it covers ownership/installers/payload/scripts, not only KanBan.
 
 EVT-KB-SDP-000120; next review at the next selection or relevant dependency delivery.
+
+## Scrum-0002 coordination
+
+2026-09-25T12:38:14Z — EVT-KB-SDP-000133: the owner selected future focused Scrums in
+[KB-SDP-027](%23027--Study--Skills-review-and-project-activation.md) and
+[KB-SDP-028](%23028--Study--Installer-upgrade-and-versioned-layout.md).
+Reuse their eventual skills/install findings here; do not create competing
+migration plans. This card retains the broader Toolkit inventory, ownership,
+organization and remaining areas. No audit has been delivered by registration.
