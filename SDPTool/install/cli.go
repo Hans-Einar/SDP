@@ -18,9 +18,35 @@ func Run(ctx context.Context, root, op string, args []string, out, errs io.Write
 	fs.BoolVar(&o.AllowUnreleased, "allow-unreleased", false, "allow development artifacts")
 	dest := fs.String("plan-output", "", "new plan file outside project")
 	jsonMode := fs.Bool("json", false, "machine-readable result")
+	apply := fs.String("apply", "", "apply saved plan")
+	resume := fs.String("resume", "", "resume operation")
 	e := fs.Parse(args)
 	if e == nil && fs.NArg() != 0 {
 		e = fmt.Errorf("unexpected positional arguments")
+	}
+	if e == nil && (*apply != "" || *resume != "") {
+		if *apply != "" && *resume != "" || o.Artifact != "" || o.PreviousArtifact != "" || o.Manifest != "" || o.AllowUnreleased || *dest != "" {
+			return output(out, errs, *jsonMode, root, op, nil, fail("arguments", 2, "preview/apply/resume flags cannot be combined"))
+		}
+		canonical, err := Root(root)
+		if err != nil {
+			return output(out, errs, *jsonMode, root, op, nil, err)
+		}
+		var r Result
+		if *apply != "" {
+			var p Plan
+			p, err = LoadPlan(*apply)
+			if err == nil {
+				if p.Operation != op {
+					err = fail("arguments", 2, "plan operation mismatch")
+				} else {
+					r, err = (Executor{}).Apply(ctx, canonical, p)
+				}
+			}
+		} else {
+			r, err = (Executor{}).Resume(ctx, canonical, *resume)
+		}
+		return output(out, errs, *jsonMode, canonical, op, r, err)
 	}
 	if e == nil && o.Artifact == "" {
 		e = fmt.Errorf("select --artifact and --allow-unreleased; signed releases are not implemented yet")
@@ -76,6 +102,9 @@ func output(out, errs io.Writer, jsonMode bool, root, op string, result any, e e
 			for _, w := range p.Warnings {
 				fmt.Fprintln(out, "Warning:", w)
 			}
+		}
+		if r, ok := result.(Result); ok {
+			fmt.Fprintf(out, "%s: operation %s; report %s\n", r.Status, r.OperationID, r.Report)
 		}
 		if problem != nil {
 			fmt.Fprintln(errs, problem.Error())

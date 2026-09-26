@@ -35,3 +35,19 @@ excluded dependency/build trees remain explicitly outside link-rewrite coverage.
 
 The engine supports Go 1.26 or newer. Native platform verification, trusted release
 keys and published catalog selection are separate from schema availability.
+
+## Apply and lock placement
+
+Apply re-derives the reviewed plan under an advisory lock keyed by physical project
+root in the private platform cache (`sdptool/locks`). Keeping the lock outside the
+project allows a clean target to be re-inspected before creating SDP itself; lock
+ownership ends automatically if the process exits. Journals/backups remain under
+SDP/.sdp-operations. The Linux implementation is exercised here; other native
+platform support must not be inferred from compilation. A legacy pending journal
+blocks Go apply and requires its matching legacy engine.
+
+Operations use root-confined Go filesystem handles for writes and atomic replacement
+from operation-owned temporary files. Backups are verified before each mutation.
+Apply may create parent directories; no recursive directory deletion is used.
+Project documents and unrelated executable source files are never treated as
+release-owned. No rollback or filesystem power-loss guarantee is advertised.
