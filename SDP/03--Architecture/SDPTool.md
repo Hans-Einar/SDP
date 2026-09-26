@@ -57,7 +57,10 @@ holders. [Installation contract](../04--Design/SDPTool/Installation/Contract.md)
 and [scenario review](../04--Design/SDPTool/Installation/Scenarios.md) define the
 design beyond SDL payload shapes; none is runtime implementation.
 
-[PLAN-SDP-0002](../04--Design/SDPTool/Installation/Plan.md) owns this active design;
+[PLAN-SDP-0002](../04--Design/SDPTool/Installation/Plan.md) owns this design delivery;
 [IPD evidence](../04--Design/SDPTool/Installation/Evidence.md) records parser checks.
 [KB-SDP-033](../KanBan/active/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md)
 retains the subsequent implementation/adoption workflow.
+
+Review the [generated installation viewpoints](../04--Design/SDPTool/Installation/review/index.md)
+and [planned Go implementation](../05--Implementation/SDPTool/Installation/Plan.md).

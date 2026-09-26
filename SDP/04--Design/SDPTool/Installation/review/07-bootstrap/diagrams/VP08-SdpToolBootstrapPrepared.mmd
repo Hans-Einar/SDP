@@ -1,0 +1,5 @@
+sequenceDiagram
+    participant n_GhSdpLauncher as Gh Sdp Launcher
+    participant n_ReleaseArtifactService as Release Artifact Service
+    n_GhSdpLauncher->>n_ReleaseArtifactService: 1: Fetch Sdp Tool Request (Sdp Tool Bootstrap Calls)
+    n_ReleaseArtifactService-->>n_GhSdpLauncher: 2: Fetch Sdp Tool Result (Sdp Tool Bootstrap Calls) reply-to 1

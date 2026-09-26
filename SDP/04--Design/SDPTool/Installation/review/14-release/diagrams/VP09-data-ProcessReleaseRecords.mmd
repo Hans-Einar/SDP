@@ -1,0 +1,8 @@
+flowchart LR
+    n_InstallReleaseRecord["InstallReleaseRecord (contract)"]
+    n_ProcessReleaseRecords["ProcessReleaseRecords (dataset)"]
+    n_ReleaseArtifactService["ReleaseArtifactService (unit)"]
+    n_ReleaseCatalogStore["ReleaseCatalogStore (database)"]
+    n_ProcessReleaseRecords -->|upholds| n_InstallReleaseRecord
+    n_ReleaseArtifactService -->|owns| n_ReleaseCatalogStore
+    n_ReleaseCatalogStore -->|holds| n_ProcessReleaseRecords

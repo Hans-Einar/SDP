@@ -1,0 +1,6 @@
+flowchart LR
+    n_InstallPlanRecord["InstallPlanRecord (contract)"]
+    n_InstallationPlanner["InstallationPlanner (unit)"]
+    n_ReviewedInstallationPlans["ReviewedInstallationPlans (dataset)"]
+    n_InstallationPlanner -->|holds| n_ReviewedInstallationPlans
+    n_ReviewedInstallationPlans -->|upholds| n_InstallPlanRecord

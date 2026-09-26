@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant n_GhSdpLauncher as Gh Sdp Launcher
+    participant n_InstallationCoordinator as Installation Coordinator
+    participant n_InstallationExecutor as Installation Executor
+    participant n_InstallationJournal as Installation Journal
+    participant n_InstallationRecorder as Installation Recorder
+    n_GhSdpLauncher->>n_InstallationCoordinator: 1: Apply Installation Request (Installation Apply Calls)
+    n_InstallationCoordinator->>n_InstallationExecutor: 2: Execute Installation Plan Request (Installation Execution Calls)
+    n_InstallationExecutor->>n_InstallationJournal: 3: Checkpoint Installation Request (Installation Journal Calls)
+    n_InstallationJournal-->>n_InstallationExecutor: 4: Checkpoint Installation Result (Installation Journal Calls) reply-to 3
+    n_InstallationExecutor->>n_InstallationRecorder: 5: Record Installation Request (Installation Receipt Calls)
+    n_InstallationRecorder-->>n_InstallationExecutor: 6: Record Installation Result (Installation Receipt Calls) reply-to 5
+    n_InstallationExecutor->>n_InstallationJournal: 7: Checkpoint Installation Request (Installation Journal Calls)
+    n_InstallationJournal-->>n_InstallationExecutor: 8: Checkpoint Installation Result (Installation Journal Calls) reply-to 7
+    n_InstallationExecutor-->>n_InstallationCoordinator: 9: Execute Installation Plan Result (Installation Execution Calls) reply-to 2
+    n_InstallationCoordinator-->>n_GhSdpLauncher: 10: Apply Installation Result (Installation Apply Calls) reply-to 1

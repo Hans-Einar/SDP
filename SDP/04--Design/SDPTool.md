@@ -64,6 +64,7 @@ planned; no blueprint command or new SDL semantics are adopted.
 The owner selected [PLAN-SDP-0002](SDPTool/Installation/Plan.md) on 2026-09-27
 under active KB-SDP-033. It extends the canonical SDL model for SDPTool-owned
 install/upgrade and a thin gh-sdp client, then specifies contracts and produces
-generated review viewpoints and an implementation handoff. IPD-0 records the
-baseline; model and protocol milestones remain pending. Go installation is not
-implemented by selecting this plan. The separate BP2 blueprint plan stays deferred.
+generated review viewpoints and an implementation handoff. IPD now delivers the checked model, working protocol contract and reproducible
+[generated review](SDPTool/Installation/review/index.md). Its
+[implementation successor](../05--Implementation/SDPTool/Installation/Plan.md)
+remains planned; Go installation is not implemented by this design. The separate BP2 blueprint plan stays deferred.

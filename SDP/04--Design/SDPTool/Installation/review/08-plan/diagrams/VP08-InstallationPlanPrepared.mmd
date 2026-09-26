@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant n_GhSdpLauncher as Gh Sdp Launcher
+    participant n_InstallationCoordinator as Installation Coordinator
+    participant n_InstallationBaselineInspector as Installation Baseline Inspector
+    participant n_InstallationReleaseResolver as Installation Release Resolver
+    participant n_ReleaseArtifactService as Release Artifact Service
+    participant n_InstallationPlanner as Installation Planner
+    n_GhSdpLauncher->>n_InstallationCoordinator: 1: Plan Installation Request (Installation Planning Calls)
+    n_InstallationCoordinator->>n_InstallationBaselineInspector: 2: Inspect Baseline Request (Baseline Inspection Calls)
+    n_InstallationBaselineInspector-->>n_InstallationCoordinator: 3: Inspect Baseline Result (Baseline Inspection Calls) reply-to 2
+    n_InstallationCoordinator->>n_InstallationReleaseResolver: 4: Resolve Process Release Request (Release Resolution Calls)
+    n_InstallationReleaseResolver->>n_ReleaseArtifactService: 5: Fetch Process Artifact Request (Release Artifact Calls)
+    n_ReleaseArtifactService-->>n_InstallationReleaseResolver: 6: Fetch Process Artifact Result (Release Artifact Calls) reply-to 5
+    n_InstallationReleaseResolver-->>n_InstallationCoordinator: 7: Resolve Process Release Result (Release Resolution Calls) reply-to 4
+    n_InstallationCoordinator->>n_InstallationPlanner: 8: Create Installation Plan Request (Installation Plan Calls)
+    n_InstallationPlanner-->>n_InstallationCoordinator: 9: Create Installation Plan Result (Installation Plan Calls) reply-to 8
+    n_InstallationCoordinator-->>n_GhSdpLauncher: 10: Plan Installation Result (Installation Planning Calls) reply-to 1

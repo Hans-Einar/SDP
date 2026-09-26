@@ -1,0 +1,6 @@
+flowchart LR
+    n_ProjectMaintainer["ProjectMaintainer (actor)"]
+    n_SdpTool["SdpTool (feature)"]
+    n_UpgradeProjectProcess["UpgradeProjectProcess (usecase)"]
+    n_ProjectMaintainer -->|pursues| n_UpgradeProjectProcess
+    n_SdpTool -->|supports| n_UpgradeProjectProcess

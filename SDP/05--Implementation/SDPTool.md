@@ -189,5 +189,6 @@ that workflow. None of T0–T5 is retroactively credited with an installer.
 
 The owner activated [PLAN-SDP-0002](../04--Design/SDPTool/Installation/Plan.md)
 on 2026-09-27 for the preceding SDL/contract design and generated review.
-Its IPD-3 handoff will select concrete installation implementation milestones;
+Its IPD-3 handoff supplies the planned
+[installation milestones](SDPTool/Installation/Plan.md);
 the existing T0–T5 history and branch policies are unchanged.

@@ -68,6 +68,10 @@ retains the Go installation/XFMD adoption workflow. KB-SDP-018's separate Toolki
 audit has been withdrawn. CLI commands remain limited to those listed below;
 this ownership decision adds no implemented command or release capability.
 
+The installation design now has [SDL-generated review views](../SDP/04--Design/SDPTool/Installation/review/index.md)
+and a [planned Go implementation](../SDP/05--Implementation/SDPTool/Installation/Plan.md).
+Use these for review; install/upgrade execution remains future work.
+
 ## Implemented saved-file preview — P0-M1
 
 The Go facade now implements the [producer contract](Contract.md). Build it once

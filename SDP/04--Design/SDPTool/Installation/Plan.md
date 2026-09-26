@@ -4,7 +4,7 @@
 | --- | --- |
 | id | PLAN-SDP-0002 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | DesignPlan |
 | BranchPolicy | current |
 | CommitPolicy | phase |
@@ -79,7 +79,7 @@ this plan must not silently close that card as a delivered live upgrade.
 | IPD-0 — selection and baseline | IPD-0-M1 | Activate KB-SDP-033, link this typed plan, inspect current responsibilities and record scope/Git policy | Completed |
 | IPD-1 — SDL model | IPD-1-M1 | Model installation/upgrade actors, use cases, capabilities, functionality, process boundaries, units and interfaces; allocate responsibilities to SDPTool versus thin gh-sdp; mark all new delivery activities planned; run SDL check/AST and preserve existing navigation/preview facts | Completed |
 | IPD-2 — detailed contracts | IPD-2-M1 | Specify direct CLI/wrapper protocol, release inventory versus installed receipt versus adoption manifest, deterministic plan/apply binding, ownership/migration/error/recovery behavior and compatibility; trace each contract to model elements and acceptance cases | Completed |
-| IPD-3 — generated review and implementation handoff | IPD-3-M1 | Generate selected Markdown viewpoints from validated SDL; record source/tool identities and coverage/gaps; walk the XFMD adoption scenario and failure cases; write a bounded ImplementationPlan with phases/milestones and remaining decisions | Planned |
+| IPD-3 — generated review and implementation handoff | IPD-3-M1 | Generate selected Markdown viewpoints from validated SDL; record source/tool identities and coverage/gaps; walk the XFMD adoption scenario and failure cases; write a bounded ImplementationPlan with phases/milestones and remaining decisions | Completed |
 
 ## Model and contract method
 
@@ -146,7 +146,7 @@ existing authorization; do not merge or publish releases. This small design plan
 does not change the historical feature plan's stacked implementation branches.
 The later ImplementationPlan must explicitly select its own Git policy.
 
-## Current evidence and next action
+## IPD-0 handoff — historical
 
 IPD-0 inspected the current model, architecture, requirement, producer/installer
 contracts and management state at f10a276 plus this planning diff. This delivery
@@ -167,3 +167,18 @@ Next: IPD-2 contracts and modeled exchanges. CardState is in-progress.
 IPD-2-M1: [Contract](Contract.md) and [Scenarios](Scenarios.md) define execution,
 identity/trust, preservation and recovery. Twelve channels and five scenarios
 validate in SDL; detailed schemas and runtime tests remain implementation work.
+
+## IPD-3 delivery and review
+
+All selected design phases have delivered their artifacts. [Generated review](review/index.md)
+is reproduced through the SDL CLI by [review.py](review.py), with source/tool hashes,
+semantic negative checks and repeatability evidence in [Evidence](Evidence.md).
+The [working contract](Contract.md) and [scenario review](Scenarios.md) state remaining
+runtime/schema limits. [PLAN-SDP-0003](../../../05--Implementation/SDPTool/Installation/Plan.md)
+is a planned ImplementationPlan, not an executed Go implementation.
+
+Owner review can now assess concrete choices: preview-only default and explicit
+saved-plan apply, descriptor trust/key distribution, cached executable delegation,
+forward-only recovery and the proposed implementation phases. KB-SDP-033 stays
+active at gate-review for this actual deliverable, with the later adoption/SDL
+pilot explicitly outstanding. No independent approval or owner acceptance is inferred.
