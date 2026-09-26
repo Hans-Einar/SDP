@@ -60,9 +60,17 @@ rollout remains separately selected.
 scaled Git policy and Planning skill. Read [Plans](ProjectManagement/Plans.md)
 for the shared contract; keep one authoritative plan per selected work item.
 
-## Planned main integration
+## Main integration and next studies
 
-[MAINT-SDP-0005 MergePlan](Maintenance/MP1/MergePlan.md) prepares the combined
-stack for sdp-vNow and then main. The old tag preserves the original main commit.
-Readiness requires CI repairs and explicit scope disposition of the separate
-Issue #7 pilot. No target branch merge has been performed by plan preparation.
+[MAINT-SDP-0005 MergePlan](Maintenance/MP1/MergePlan.md) integrated the verified
+stack through sdp-vNow into main on 2026-09-26. Main promotion commit:
+2f0256f7e822ef2965e8f3d287095f1d90eac46c. The old tag preserves the original
+main; Issue #7-specific work remains excluded. [Evidence](Maintenance/MP1/Evidence.md)
+records actual CI, merge identities and the administrative closeout boundary.
+New working branches target main. Integration does not publish a Toolkit release
+or upgrade any consuming project.
+
+The shared backlog retains the owner's next studies: KB-SDP-031 for SDL-derived
+assignment bundles/blueprints, KB-SDP-032 for practical viewpoint feedback through
+XFMD, and KB-SDP-033 for gh-sdp/XFMD adoption with a bounded SDL design pilot.
+These are unselected studies, not delivered features or automatic follow-up work.

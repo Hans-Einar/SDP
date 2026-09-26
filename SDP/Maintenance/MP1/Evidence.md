@@ -23,7 +23,7 @@ the actual repository graph and both schema surfaces.
   required separately for MP1-R-M3/V-M1 and are not counted as passed here.
 - Dedicated compatibility regression: two test groups pass.
 
-## Remaining gates
+## Gates remaining after MP1-R-M2 (historical)
 
 MP1-R-M3 installation conformance, exact-candidate verification, independent
 review and remote CI remain outstanding. Local compatibility checks do not
@@ -120,3 +120,37 @@ GitHub automatically closed the included staging PRs; PR #4 remains open against
 main, and pilot PR #8 remains separate. [PR #36](https://github.com/Hans-Einar/SDP/pull/36)
 now proposes this exact staging result to main. Its own checks are pending at this
 recording point. The old archive tag remains unchanged; main is not yet advanced.
+
+## MP1-I-M2 — main integration
+
+[Run 36228514036](https://github.com/Hans-Einar/SDP/actions/runs/36228514036)
+passed contracts, Windows installer/conformance and Linux process-profile tests
+on exact PR #36 head 8039700198cecf8dbd27d6394773955b3849178e. The Windows job
+took 12m21s and Linux 12m7s; the complete fault matrix passed. Before merging,
+remote main still equaled the original baseline and merge-tree equaled the
+verified staging tree. No checks were bypassed.
+
+PR #36 merged at 2026-09-26T08:13:57Z as
+2f0256f7e822ef2965e8f3d287095f1d90eac46c. Its parents are former main
+2cb49c02145621b099c47d05786716598e414e75 and staging
+8039700198cecf8dbd27d6394773955b3849178e. Its tree is
+f19bb3f99ee01eec618d03f6c640142a2c0ae924, exactly the verified candidate.
+All selected milestone commits are ancestors. The 34 Issue #7-specific commits
+remain outside main; draft PR #8 and its branch remain untouched. GitHub marked
+included PR #4 merged at 08:13:59Z; PRs #12–#34 were already reconciled by staging.
+
+Remote annotated old remains bf420cceb773210757376d0813415bf09ee8bdba,
+peeling to 2cb49c02145621b099c47d05786716598e414e75. No phase branch was deleted
+or rewritten. The local main worktree was not reset or changed; this observation
+is about remote main. The untracked SDL/go/sourceinput draft remains excluded.
+
+## MP1-C-M1 — administrative closeout boundary
+
+Current AGENTS and development entry points now target main and preserve earlier
+staging history as dated records. KB-SDP-031/032/033 remain backlog studies.
+No Toolkit version, published release or live XFMD installation is claimed.
+The earlier staging administration commit c9f64a7 was independently approved
+with no findings; its evidence and KB-SDP-030 closure join this follow-up delivery.
+The closeout is documentation/history only and is delivered through a separate
+reviewed PR to main. Its GitHub merge record will own the final merge identity;
+the already observed main promotion above remains the stable evidence baseline.

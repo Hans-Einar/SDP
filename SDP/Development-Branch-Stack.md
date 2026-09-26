@@ -1,5 +1,21 @@
 # SDL/SDUI — phase branches and milestone commits
 
+## Current integration target — main
+
+Owner decision and MP1 integration, 2026-09-26: main is the current integration
+target. [PR #36](https://github.com/Hans-Einar/SDP/pull/36) merged the verified
+sdp-vNow stack as 2f0256f7e822ef2965e8f3d287095f1d90eac46c. The old tag retains
+the former main commit 2cb49c02145621b099c47d05786716598e414e75. All phase
+branches and milestone commits remain; the Issue #7 pilot is explicitly excluded.
+Use working branches and the selected plan's Git policy for new work, targeting
+main for review. Subsequent merges still require owner authorization.
+See [MergePlan](Maintenance/MP1/MergePlan.md) and [evidence](Maintenance/MP1/Evidence.md).
+
+## Historical staging policy and deliveries
+
+The dated records below describe their original targets and authorization.
+They do not instruct new work to target the retired sdp-vNow staging branch.
+
 Owner decision, 2026-09-22: one branch per phase, stacked on its predecessor, and
 separate commits for completed milestones. Push after each completed phase is
 authorized in the same session. Combined PR base: sdp-vNow, originally
@@ -26,7 +42,7 @@ artifacts before each commit; create the phase branch before changes and commit 
 completed deliveries. [V2–V4 scope](History/checkpoint-1/08-SDL-Viewpoints-and-Implementation-Status.md),
 [Go phases](../SDUI/docs/implementation-plan.md).
 
-Use the last completed phase as PR head against sdp-vNow. Preserve milestone commits;
+The historical policy used the last completed phase as PR head against sdp-vNow. Preserve milestone commits;
 do not squash, delete phase branches or rewrite history as automatic cleanup.
 
 | Implementation phase | Pushed head / branch | Predecessor |
