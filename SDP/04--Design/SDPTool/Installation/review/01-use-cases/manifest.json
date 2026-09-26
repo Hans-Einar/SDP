@@ -1,6 +1,6 @@
 {
   "version": "sdl-viewpoints-go-1.2",
-  "revision": "c62878ccf713fe1fd51d9a7d14e90dd7f8a70dd5deb346af2d8fb9edae9969d2",
+  "revision": "7cb1cdf04b9bb1b9779aa570f9fdbeedc313873a8838d94908e7e6118829e936",
   "renderer": "",
   "diagrams": [
     {
@@ -272,12 +272,12 @@
       "object": "AdoptManualProcess",
       "span": {
         "column": 1,
-        "end": 37827,
+        "end": 37835,
         "end_column": 46,
         "end_line": 625,
         "line": 625,
         "node": "Span",
-        "start": 37782
+        "start": 37790
       },
       "subject": "ProjectMaintainer",
       "text": "ProjectMaintainer pursues AdoptManualProcess.",
@@ -290,12 +290,12 @@
       "object": "InstallProjectProcess",
       "span": {
         "column": 1,
-        "end": 37876,
+        "end": 37884,
         "end_column": 49,
         "end_line": 626,
         "line": 626,
         "node": "Span",
-        "start": 37828
+        "start": 37836
       },
       "subject": "ProjectMaintainer",
       "text": "ProjectMaintainer pursues InstallProjectProcess.",
@@ -308,12 +308,12 @@
       "object": "RecoverProjectUpgrade",
       "span": {
         "column": 1,
-        "end": 37925,
+        "end": 37933,
         "end_column": 49,
         "end_line": 627,
         "line": 627,
         "node": "Span",
-        "start": 37877
+        "start": 37885
       },
       "subject": "ProjectMaintainer",
       "text": "ProjectMaintainer pursues RecoverProjectUpgrade.",
@@ -326,12 +326,12 @@
       "object": "UpgradeProjectProcess",
       "span": {
         "column": 1,
-        "end": 37974,
+        "end": 37982,
         "end_column": 49,
         "end_line": 628,
         "line": 628,
         "node": "Span",
-        "start": 37926
+        "start": 37934
       },
       "subject": "ProjectMaintainer",
       "text": "ProjectMaintainer pursues UpgradeProjectProcess.",
@@ -344,12 +344,12 @@
       "object": "AdoptManualProcess",
       "span": {
         "column": 1,
-        "end": 42223,
+        "end": 42231,
         "end_column": 37,
         "end_line": 696,
         "line": 696,
         "node": "Span",
-        "start": 42187
+        "start": 42195
       },
       "subject": "SdpTool",
       "text": "SdpTool supports AdoptManualProcess.",
@@ -362,12 +362,12 @@
       "object": "BrowseProject",
       "span": {
         "column": 1,
-        "end": 42255,
+        "end": 42263,
         "end_column": 32,
         "end_line": 697,
         "line": 697,
         "node": "Span",
-        "start": 42224
+        "start": 42232
       },
       "subject": "SdpTool",
       "text": "SdpTool supports BrowseProject.",
@@ -380,12 +380,12 @@
       "object": "InspectCardHistory",
       "span": {
         "column": 1,
-        "end": 42292,
+        "end": 42300,
         "end_column": 37,
         "end_line": 698,
         "line": 698,
         "node": "Span",
-        "start": 42256
+        "start": 42264
       },
       "subject": "SdpTool",
       "text": "SdpTool supports InspectCardHistory.",
@@ -398,12 +398,12 @@
       "object": "InstallProjectProcess",
       "span": {
         "column": 1,
-        "end": 42332,
+        "end": 42340,
         "end_column": 40,
         "end_line": 699,
         "line": 699,
         "node": "Span",
-        "start": 42293
+        "start": 42301
       },
       "subject": "SdpTool",
       "text": "SdpTool supports InstallProjectProcess.",
@@ -416,12 +416,12 @@
       "object": "PreviewDesign",
       "span": {
         "column": 1,
-        "end": 42364,
+        "end": 42372,
         "end_column": 32,
         "end_line": 700,
         "line": 700,
         "node": "Span",
-        "start": 42333
+        "start": 42341
       },
       "subject": "SdpTool",
       "text": "SdpTool supports PreviewDesign.",
@@ -434,12 +434,12 @@
       "object": "RecoverProjectUpgrade",
       "span": {
         "column": 1,
-        "end": 42404,
+        "end": 42412,
         "end_column": 40,
         "end_line": 701,
         "line": 701,
         "node": "Span",
-        "start": 42365
+        "start": 42373
       },
       "subject": "SdpTool",
       "text": "SdpTool supports RecoverProjectUpgrade.",
@@ -452,12 +452,12 @@
       "object": "ReviewImplementationPlan",
       "span": {
         "column": 1,
-        "end": 42447,
+        "end": 42455,
         "end_column": 43,
         "end_line": 702,
         "line": 702,
         "node": "Span",
-        "start": 42405
+        "start": 42413
       },
       "subject": "SdpTool",
       "text": "SdpTool supports ReviewImplementationPlan.",
@@ -470,12 +470,12 @@
       "object": "UpgradeProjectProcess",
       "span": {
         "column": 1,
-        "end": 42487,
+        "end": 42495,
         "end_column": 40,
         "end_line": 703,
         "line": 703,
         "node": "Span",
-        "start": 42448
+        "start": 42456
       },
       "subject": "SdpTool",
       "text": "SdpTool supports UpgradeProjectProcess.",
@@ -489,7 +489,7 @@
     "diagrams/VP01-InstallProjectProcess.mmd": "dbb27aa650124282ca2f6505277e4ef7fdc9b7666e0ae280ad0d3f120e0fca46",
     "diagrams/VP01-RecoverProjectUpgrade.mmd": "da038ad5f325b5bca67ce021919611ccb0d8b45dc5e71def2c2e6c261a0e2890",
     "diagrams/VP01-UpgradeProjectProcess.mmd": "e827b852f6dc43ffc64d7d5bbd3acd3e4b5cf15d962ba41f062cd39c7e98bc30",
-    "entry.md": "6c86b0d9091d24d064620c3a8c22efa6594aa7246dc23003b4af609523701581",
+    "entry.md": "92d4ea60c67fd7f7c8729c1a0414740d86a521fb9975ced46701ebd964230e0c",
     "selection.json": "128e7d1a20895757556c56d67b64eb38ea043557032a9936a9725f7158d9f0e6"
   }
 }

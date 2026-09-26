@@ -14,3 +14,7 @@ the introducing commit binds that diff. Live XFMD remains untouched.
 ## GIP-2-M1
 
 2026-09-26T23:20:20Z. Root-bound saved-plan apply, advisory lock, drift revalidation, byte backups, atomic replacements and journaled receipt/history/report publication delivered. Clean install and known upgrade tests pass with race detection. Actual packaged apply completed and discovery reads schema 3.0. Interruption matrix remains GIP-2-M2.
+
+## GIP-2-M2
+
+2026-09-26T23:24:02Z. Process-exit fault matrix passes every preparation/backup/write/checkpoint/completion boundary for clean, known-upgrade and manual-adoption cases. Reserved finalization bytes/IDs and ledger prefixes remain stable; edited targets and legacy pending operations block. Full Go race suite passes (installation package 48.3 seconds). Model apply/recovery activities updated and review regenerated through SDL. No power-loss or rollback guarantee.

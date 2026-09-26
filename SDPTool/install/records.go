@@ -478,10 +478,17 @@ func ValidateDescriptor(d Descriptor) error {
 	if total > PayloadLimit {
 		return fail("limit", 2, "payload too large")
 	}
-	for i, a := range d.Files {
-		for _, b := range d.Files[i+1:] {
-			if strings.EqualFold(a.Path, b.Path) || a.Type == "file" && strings.HasPrefix(b.Path, a.Path+"/") || b.Type == "file" && strings.HasPrefix(a.Path, b.Path+"/") {
-				return fail("path", 2, "duplicate or overlapping files")
+	files := map[string]string{}
+	for _, f := range d.Files {
+		if _, ok := files[f.Path]; ok {
+			return fail("path", 2, "duplicate destination")
+		}
+		files[f.Path] = f.Type
+	}
+	for _, f := range d.Files {
+		for parent := path.Dir(f.Path); parent != "."; parent = path.Dir(parent) {
+			if files[parent] == "file" {
+				return fail("path", 2, "file is ancestor of destination")
 			}
 		}
 	}

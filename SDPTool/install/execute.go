@@ -353,7 +353,14 @@ func progress(root string, j Journal) error {
 		}
 	}
 	for i := 0; i < j.Next; i++ {
-		apply(j.Steps[i])
+		a := j.Steps[i]
+		if a.Before != nil {
+			h, e := fileHash(root, Operations+"/"+j.OperationID+"/backups/"+strconv.Itoa(i))
+			if e != nil || !equalHash(h, a.Before) {
+				return fail("backup", 4, "missing/corrupt completed backup %d", i)
+			}
+		}
+		apply(a)
 	}
 	if j.Next < len(j.Steps) {
 		a := j.Steps[j.Next]

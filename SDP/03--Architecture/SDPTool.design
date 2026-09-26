@@ -414,7 +414,7 @@ InstallationApplySlice addresses CoordinateInstallation.
 InstallationApplySlice addresses PublishInstalledProcessFacts.
 InstallationApplySlice delivers SdpTool.
 InstallationApplySlice depends-on InstallationPlanSlice.
-InstallationApplySlice has implementation-status = planned.
+InstallationApplySlice has implementation-status = implemented.
 InstallationApplySlice refines DeliverSdpTool.
 InstallationBaselineInspector consumes InstallationFilesystemPort.
 InstallationBaselineInspector owns InspectInstallationBaseline.
@@ -534,7 +534,7 @@ InstallationRecoverySlice addresses PersistInstallationJournal.
 InstallationRecoverySlice addresses ResumeInstallationOperation.
 InstallationRecoverySlice delivers SdpTool.
 InstallationRecoverySlice depends-on InstallationApplySlice.
-InstallationRecoverySlice has implementation-status = planned.
+InstallationRecoverySlice has implementation-status = implemented.
 InstallationRecoverySlice refines DeliverSdpTool.
 InstallationReleaseResolver consumes ReleaseArtifactPort.
 InstallationReleaseResolver owns ResolveInstallationRelease.

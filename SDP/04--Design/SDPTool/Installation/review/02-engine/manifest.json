@@ -1,6 +1,6 @@
 {
   "version": "sdl-viewpoints-go-1.2",
-  "revision": "c62878ccf713fe1fd51d9a7d14e90dd7f8a70dd5deb346af2d8fb9edae9969d2",
+  "revision": "7cb1cdf04b9bb1b9779aa570f9fdbeedc313873a8838d94908e7e6118829e936",
   "renderer": "",
   "diagrams": [
     {
@@ -4574,16 +4574,16 @@
       "property": "implementation-status",
       "span": {
         "column": 1,
-        "end": 20677,
-        "end_column": 60,
+        "end": 20681,
+        "end_column": 64,
         "end_line": 417,
         "line": 417,
         "node": "Span",
         "start": 20618
       },
       "subject": "InstallationApplySlice",
-      "text": "InstallationApplySlice has implementation-status = planned.",
-      "value": "planned",
+      "text": "InstallationApplySlice has implementation-status = implemented.",
+      "value": "implemented",
       "verb": "has"
     },
     {
@@ -4593,12 +4593,12 @@
       "object": "DeliverSdpTool",
       "span": {
         "column": 1,
-        "end": 20724,
+        "end": 20728,
         "end_column": 47,
         "end_line": 418,
         "line": 418,
         "node": "Span",
-        "start": 20678
+        "start": 20682
       },
       "subject": "InstallationApplySlice",
       "text": "InstallationApplySlice refines DeliverSdpTool.",
@@ -4611,12 +4611,12 @@
       "object": "InstallationFilesystemPort",
       "span": {
         "column": 1,
-        "end": 20791,
+        "end": 20795,
         "end_column": 67,
         "end_line": 419,
         "line": 419,
         "node": "Span",
-        "start": 20725
+        "start": 20729
       },
       "subject": "InstallationBaselineInspector",
       "text": "InstallationBaselineInspector consumes InstallationFilesystemPort.",
@@ -4629,12 +4629,12 @@
       "object": "InspectInstallationBaseline",
       "span": {
         "column": 1,
-        "end": 20855,
+        "end": 20859,
         "end_column": 64,
         "end_line": 420,
         "line": 420,
         "node": "Span",
-        "start": 20792
+        "start": 20796
       },
       "subject": "InstallationBaselineInspector",
       "text": "InstallationBaselineInspector owns InspectInstallationBaseline.",
@@ -4647,12 +4647,12 @@
       "object": "ValidateAdoptionBaseline",
       "span": {
         "column": 1,
-        "end": 20916,
+        "end": 20920,
         "end_column": 61,
         "end_line": 421,
         "line": 421,
         "node": "Span",
-        "start": 20856
+        "start": 20860
       },
       "subject": "InstallationBaselineInspector",
       "text": "InstallationBaselineInspector owns ValidateAdoptionBaseline.",
@@ -4668,12 +4668,12 @@
       "role": "receiver",
       "span": {
         "column": 1,
-        "end": 21043,
+        "end": 21047,
         "end_column": 127,
         "end_line": 422,
         "line": 422,
         "node": "Span",
-        "start": 20917
+        "start": 20921
       },
       "subject": "InstallationBaselineInspector",
       "text": "InstallationBaselineInspector uses BaselineInspectionCalls as receiver of InspectBaselineRequest in mode InstallationPlanning.",
@@ -4689,12 +4689,12 @@
       "role": "sender",
       "span": {
         "column": 1,
-        "end": 21167,
+        "end": 21171,
         "end_column": 124,
         "end_line": 423,
         "line": 423,
         "node": "Span",
-        "start": 21044
+        "start": 21048
       },
       "subject": "InstallationBaselineInspector",
       "text": "InstallationBaselineInspector uses BaselineInspectionCalls as sender of InspectBaselineResult in mode InstallationPlanning.",
@@ -4707,12 +4707,12 @@
       "object": "CoordinateInstallation",
       "span": {
         "column": 1,
-        "end": 21220,
+        "end": 21224,
         "end_column": 53,
         "end_line": 424,
         "line": 424,
         "node": "Span",
-        "start": 21168
+        "start": 21172
       },
       "subject": "InstallationCoordinator",
       "text": "InstallationCoordinator owns CoordinateInstallation.",
@@ -4728,12 +4728,12 @@
       "role": "receiver",
       "span": {
         "column": 1,
-        "end": 21340,
+        "end": 21344,
         "end_column": 120,
         "end_line": 425,
         "line": 425,
         "node": "Span",
-        "start": 21221
+        "start": 21225
       },
       "subject": "InstallationCoordinator",
       "text": "InstallationCoordinator uses BaselineInspectionCalls as receiver of InspectBaselineResult in mode InstallationPlanning.",
@@ -4749,12 +4749,12 @@
       "role": "sender",
       "span": {
         "column": 1,
-        "end": 21459,
+        "end": 21463,
         "end_column": 119,
         "end_line": 426,
         "line": 426,
         "node": "Span",
-        "start": 21341
+        "start": 21345
       },
       "subject": "InstallationCoordinator",
       "text": "InstallationCoordinator uses BaselineInspectionCalls as sender of InspectBaselineRequest in mode InstallationPlanning.",
@@ -4770,12 +4770,12 @@
       "role": "receiver",
       "span": {
         "column": 1,
-        "end": 21582,
+        "end": 21586,
         "end_column": 123,
         "end_line": 427,
         "line": 427,
         "node": "Span",
-        "start": 21460
+        "start": 21464
       },
       "subject": "InstallationCoordinator",
       "text": "InstallationCoordinator uses InstallationApplyCalls as receiver of ApplyInstallationRequest in mode InstallationExecution.",
@@ -4791,12 +4791,12 @@
       "role": "sender",
       "span": {
         "column": 1,
-        "end": 21704,
+        "end": 21708,
         "end_column": 122,
         "end_line": 428,
         "line": 428,
         "node": "Span",
-        "start": 21583
+        "start": 21587
       },
       "subject": "InstallationCoordinator",
       "text": "InstallationCoordinator uses InstallationApplyCalls as sender of ApplyInstallationRejected in mode InstallationExecution.",
@@ -4812,12 +4812,12 @@
       "role": "sender",
       "span": {
         "column": 1,
-        "end": 21824,
+        "end": 21828,
         "end_column": 120,
         "end_line": 429,
         "line": 429,
         "node": "Span",
-        "start": 21705
+        "start": 21709
       },
       "subject": "InstallationCoordinator",
       "text": "InstallationCoordinator uses InstallationApplyCalls as sender of ApplyInstallationResult in mode InstallationExecution.",
@@ -4833,12 +4833,12 @@
       "role": "receiver",
       "span": {
         "column": 1,
-        "end": 21956,
+        "end": 21960,
         "end_column": 132,
         "end_line": 430,
         "line": 430,
         "node": "Span",
-        "start": 21825
+        "start": 21829
       },
       "subject": "InstallationCoordinator",
       "text": "InstallationCoordinator uses InstallationExecutionCalls as receiver of ExecuteInstallationPlanResult in mode InstallationExecution.",
@@ -4854,12 +4854,12 @@
       "role": "sender",
       "span": {
         "column": 1,
-        "end": 22087,
+        "end": 22091,
         "end_column": 131,
         "end_line": 431,
         "line": 431,
         "node": "Span",
-        "start": 21957
+        "start": 21961
       },
       "subject": "InstallationCoordinator",
       "text": "InstallationCoordinator uses InstallationExecutionCalls as sender of ExecuteInstallationPlanRequest in mode InstallationExecution.",
@@ -4875,12 +4875,12 @@
       "role": "receiver",
       "span": {
         "column": 1,
-        "end": 22212,
+        "end": 22216,
         "end_column": 125,
         "end_line": 432,
         "line": 432,
         "node": "Span",
-        "start": 22088
+        "start": 22092
       },
       "subject": "InstallationCoordinator",
       "text": "InstallationCoordinator uses InstallationPlanCalls as receiver of CreateInstallationPlanResult in mode InstallationPlanning.",
@@ -4896,12 +4896,12 @@
       "role": "sender",
       "span": {
         "column": 1,
-        "end": 22336,
+        "end": 22340,
         "end_column": 124,
         "end_line": 433,
         "line": 433,
         "node": "Span",
-        "start": 22213
+        "start": 22217
       },
       "subject": "InstallationCoordinator",
       "text": "InstallationCoordinator uses InstallationPlanCalls as sender of CreateInstallationPlanRequest in mode InstallationPlanning.",
@@ -4917,12 +4917,12 @@
       "role": "receiver",
       "span": {
         "column": 1,
-        "end": 22460,
+        "end": 22464,
         "end_column": 124,
         "end_line": 434,
         "line": 434,
         "node": "Span",
-        "start": 22337
+        "start": 22341
       },
       "subject": "InstallationCoordinator",
       "text": "InstallationCoordinator uses InstallationPlanningCalls as receiver of PlanInstallationRequest in mode InstallationPlanning.",
@@ -4938,12 +4938,12 @@
       "role": "sender",
       "span": {
         "column": 1,
-        "end": 22583,
+        "end": 22587,
         "end_column": 123,
         "end_line": 435,
         "line": 435,
         "node": "Span",
-        "start": 22461
+        "start": 22465
       },
       "subject": "InstallationCoordinator",
       "text": "InstallationCoordinator uses InstallationPlanningCalls as sender of PlanInstallationRejected in mode InstallationPlanning.",
@@ -4959,12 +4959,12 @@
       "role": "sender",
       "span": {
         "column": 1,
-        "end": 22704,
+        "end": 22708,
         "end_column": 121,
         "end_line": 436,
         "line": 436,
         "node": "Span",
-        "start": 22584
+        "start": 22588
       },
       "subject": "InstallationCoordinator",
       "text": "InstallationCoordinator uses InstallationPlanningCalls as sender of PlanInstallationResult in mode InstallationPlanning.",
@@ -4980,12 +4980,12 @@
       "role": "receiver",
       "span": {
         "column": 1,
-        "end": 22834,
+        "end": 22838,
         "end_column": 130,
         "end_line": 437,
         "line": 437,
         "node": "Span",
-        "start": 22705
+        "start": 22709
       },
       "subject": "InstallationCoordinator",
       "text": "InstallationCoordinator uses InstallationRecoveryCalls as receiver of RecoverInstallationResult in mode InstallationRecoveryMode.",
@@ -5001,12 +5001,12 @@
       "role": "sender",
       "span": {
         "column": 1,
-        "end": 22963,
+        "end": 22967,
         "end_column": 129,
         "end_line": 438,
         "line": 438,
         "node": "Span",
-        "start": 22835
+        "start": 22839
       },
       "subject": "InstallationCoordinator",
       "text": "InstallationCoordinator uses InstallationRecoveryCalls as sender of RecoverInstallationRequest in mode InstallationRecoveryMode.",
@@ -5022,12 +5022,12 @@
       "role": "receiver",
       "span": {
         "column": 1,
-        "end": 23091,
+        "end": 23095,
         "end_column": 128,
         "end_line": 439,
         "line": 439,
         "node": "Span",
-        "start": 22964
+        "start": 22968
       },
       "subject": "InstallationCoordinator",
       "text": "InstallationCoordinator uses InstallationResumeCalls as receiver of ResumeInstallationRequest in mode InstallationRecoveryMode.",
@@ -5043,12 +5043,12 @@
       "role": "sender",
       "span": {
         "column": 1,
-        "end": 23218,
+        "end": 23222,
         "end_column": 127,
         "end_line": 440,
         "line": 440,
         "node": "Span",
-        "start": 23092
+        "start": 23096
       },
       "subject": "InstallationCoordinator",
       "text": "InstallationCoordinator uses InstallationResumeCalls as sender of ResumeInstallationRejected in mode InstallationRecoveryMode.",
@@ -5064,12 +5064,12 @@
       "role": "sender",
       "span": {
         "column": 1,
-        "end": 23343,
+        "end": 23347,
         "end_column": 125,
         "end_line": 441,
         "line": 441,
         "node": "Span",
-        "start": 23219
+        "start": 23223
       },
       "subject": "InstallationCoordinator",
       "text": "InstallationCoordinator uses InstallationResumeCalls as sender of ResumeInstallationResult in mode InstallationRecoveryMode.",
@@ -5085,12 +5085,12 @@
       "role": "receiver",
       "span": {
         "column": 1,
-        "end": 23468,
+        "end": 23472,
         "end_column": 125,
         "end_line": 442,
         "line": 442,
         "node": "Span",
-        "start": 23344
+        "start": 23348
       },
       "subject": "InstallationCoordinator",
       "text": "InstallationCoordinator uses ReleaseResolutionCalls as receiver of ResolveProcessReleaseResult in mode InstallationPlanning.",
@@ -5106,12 +5106,12 @@
       "role": "sender",
       "span": {
         "column": 1,
-        "end": 23592,
+        "end": 23596,
         "end_column": 124,
         "end_line": 443,
         "line": 443,
         "node": "Span",
-        "start": 23469
+        "start": 23473
       },
       "subject": "InstallationCoordinator",
       "text": "InstallationCoordinator uses ReleaseResolutionCalls as sender of ResolveProcessReleaseRequest in mode InstallationPlanning.",
@@ -5124,12 +5124,12 @@
       "object": "UpgradeProjectProcess",
       "span": {
         "column": 1,
-        "end": 23651,
+        "end": 23655,
         "end_column": 59,
         "end_line": 444,
         "line": 444,
         "node": "Span",
-        "start": 23593
+        "start": 23597
       },
       "subject": "InstallationDriftRejected",
       "text": "InstallationDriftRejected exercises UpgradeProjectProcess.",
@@ -5142,12 +5142,12 @@
       "property": "completeness",
       "span": {
         "column": 1,
-        "end": 23704,
+        "end": 23708,
         "end_column": 53,
         "end_line": 445,
         "line": 445,
         "node": "Span",
-        "start": 23652
+        "start": 23656
       },
       "subject": "InstallationDriftRejected",
       "text": "InstallationDriftRejected has completeness = closed.",
@@ -5161,12 +5161,12 @@
       "object": "InstallationApplySlice",
       "span": {
         "column": 1,
-        "end": 23766,
+        "end": 23770,
         "end_column": 62,
         "end_line": 446,
         "line": 446,
         "node": "Span",
-        "start": 23705
+        "start": 23709
       },
       "subject": "InstallationDriftRejected",
       "text": "InstallationDriftRejected illustrates InstallationApplySlice.",
@@ -5179,12 +5179,12 @@
       "object": "InstallationExecution",
       "span": {
         "column": 1,
-        "end": 23823,
+        "end": 23827,
         "end_column": 57,
         "end_line": 447,
         "line": 447,
         "node": "Span",
-        "start": 23767
+        "start": 23771
       },
       "subject": "InstallationDriftRejected",
       "text": "InstallationDriftRejected runs-in InstallationExecution.",
@@ -5202,12 +5202,12 @@
       "sender": "GhSdpLauncher",
       "span": {
         "column": 1,
-        "end": 23961,
+        "end": 23965,
         "end_column": 138,
         "end_line": 448,
         "line": 448,
         "node": "Span",
-        "start": 23824
+        "start": 23828
       },
       "subject": "InstallationDriftRejected",
       "text": "InstallationDriftRejected step 1 sends ApplyInstallationRequest from GhSdpLauncher to InstallationCoordinator via InstallationApplyCalls.",
@@ -5226,12 +5226,12 @@
       "sender": "InstallationCoordinator",
       "span": {
         "column": 1,
-        "end": 24111,
+        "end": 24115,
         "end_column": 150,
         "end_line": 449,
         "line": 449,
         "node": "Span",
-        "start": 23962
+        "start": 23966
       },
       "subject": "InstallationDriftRejected",
       "text": "InstallationDriftRejected step 2 sends ApplyInstallationRejected from InstallationCoordinator to GhSdpLauncher via InstallationApplyCalls reply-to 1.",
@@ -5245,12 +5245,12 @@
       "object": "InstallationExecutionCallsProtocol",
       "span": {
         "column": 1,
-        "end": 24182,
+        "end": 24186,
         "end_column": 71,
         "end_line": 450,
         "line": 450,
         "node": "Span",
-        "start": 24112
+        "start": 24116
       },
       "subject": "InstallationExecutionCalls",
       "text": "InstallationExecutionCalls upholds InstallationExecutionCallsProtocol.",
@@ -5263,12 +5263,12 @@
       "property": "completeness",
       "span": {
         "column": 1,
-        "end": 24244,
+        "end": 24248,
         "end_column": 62,
         "end_line": 451,
         "line": 451,
         "node": "Span",
-        "start": 24183
+        "start": 24187
       },
       "subject": "InstallationExecutionCallsProtocol",
       "text": "InstallationExecutionCallsProtocol has completeness = closed.",
@@ -5282,12 +5282,12 @@
       "object": "ExecuteInstallationPlanRequest",
       "span": {
         "column": 1,
-        "end": 24319,
+        "end": 24323,
         "end_column": 75,
         "end_line": 452,
         "line": 452,
         "node": "Span",
-        "start": 24245
+        "start": 24249
       },
       "subject": "InstallationExecutionCallsProtocol",
       "text": "InstallationExecutionCallsProtocol permits ExecuteInstallationPlanRequest.",
@@ -5300,12 +5300,12 @@
       "object": "ExecuteInstallationPlanResult",
       "span": {
         "column": 1,
-        "end": 24393,
+        "end": 24397,
         "end_column": 74,
         "end_line": 453,
         "line": 453,
         "node": "Span",
-        "start": 24320
+        "start": 24324
       },
       "subject": "InstallationExecutionCallsProtocol",
       "text": "InstallationExecutionCallsProtocol permits ExecuteInstallationPlanResult.",
@@ -5318,12 +5318,12 @@
       "object": "InstallationFilesystemPort",
       "span": {
         "column": 1,
-        "end": 24451,
+        "end": 24455,
         "end_column": 58,
         "end_line": 454,
         "line": 454,
         "node": "Span",
-        "start": 24394
+        "start": 24398
       },
       "subject": "InstallationExecutor",
       "text": "InstallationExecutor consumes InstallationFilesystemPort.",
@@ -5336,12 +5336,12 @@
       "object": "InstallationJournalPort",
       "span": {
         "column": 1,
-        "end": 24506,
+        "end": 24510,
         "end_column": 55,
         "end_line": 455,
         "line": 455,
         "node": "Span",
-        "start": 24452
+        "start": 24456
       },
       "subject": "InstallationExecutor",
       "text": "InstallationExecutor consumes InstallationJournalPort.",
@@ -5354,12 +5354,12 @@
       "object": "ApplyInstallationPlan",
       "span": {
         "column": 1,
-        "end": 24555,
+        "end": 24559,
         "end_column": 49,
         "end_line": 456,
         "line": 456,
         "node": "Span",
-        "start": 24507
+        "start": 24511
       },
       "subject": "InstallationExecutor",
       "text": "InstallationExecutor owns ApplyInstallationPlan.",
@@ -5372,12 +5372,12 @@
       "object": "ResumeInstallationOperation",
       "span": {
         "column": 1,
-        "end": 24610,
+        "end": 24614,
         "end_column": 55,
         "end_line": 457,
         "line": 457,
         "node": "Span",
-        "start": 24556
+        "start": 24560
       },
       "subject": "InstallationExecutor",
       "text": "InstallationExecutor owns ResumeInstallationOperation.",
@@ -5393,12 +5393,12 @@
       "role": "receiver",
       "span": {
         "column": 1,
-        "end": 24740,
+        "end": 24744,
         "end_column": 130,
         "end_line": 458,
         "line": 458,
         "node": "Span",
-        "start": 24611
+        "start": 24615
       },
       "subject": "InstallationExecutor",
       "text": "InstallationExecutor uses InstallationExecutionCalls as receiver of ExecuteInstallationPlanRequest in mode InstallationExecution.",
@@ -5414,12 +5414,12 @@
       "role": "sender",
       "span": {
         "column": 1,
-        "end": 24867,
+        "end": 24871,
         "end_column": 127,
         "end_line": 459,
         "line": 459,
         "node": "Span",
-        "start": 24741
+        "start": 24745
       },
       "subject": "InstallationExecutor",
       "text": "InstallationExecutor uses InstallationExecutionCalls as sender of ExecuteInstallationPlanResult in mode InstallationExecution.",
@@ -5435,12 +5435,12 @@
       "role": "receiver",
       "span": {
         "column": 1,
-        "end": 24993,
+        "end": 24997,
         "end_column": 126,
         "end_line": 460,
         "line": 460,
         "node": "Span",
-        "start": 24868
+        "start": 24872
       },
       "subject": "InstallationExecutor",
       "text": "InstallationExecutor uses InstallationJournalCalls as receiver of CheckpointInstallationResult in mode InstallationExecution.",
@@ -5456,12 +5456,12 @@
       "role": "receiver",
       "span": {
         "column": 1,
-        "end": 25122,
+        "end": 25126,
         "end_column": 129,
         "end_line": 461,
         "line": 461,
         "node": "Span",
-        "start": 24994
+        "start": 24998
       },
       "subject": "InstallationExecutor",
       "text": "InstallationExecutor uses InstallationJournalCalls as receiver of CheckpointInstallationResult in mode InstallationRecoveryMode.",
@@ -5477,12 +5477,12 @@
       "role": "sender",
       "span": {
         "column": 1,
-        "end": 25247,
+        "end": 25251,
         "end_column": 125,
         "end_line": 462,
         "line": 462,
         "node": "Span",
-        "start": 25123
+        "start": 25127
       },
       "subject": "InstallationExecutor",
       "text": "InstallationExecutor uses InstallationJournalCalls as sender of CheckpointInstallationRequest in mode InstallationExecution.",
@@ -5498,12 +5498,12 @@
       "role": "sender",
       "span": {
         "column": 1,
-        "end": 25375,
+        "end": 25379,
         "end_column": 128,
         "end_line": 463,
         "line": 463,
         "node": "Span",
-        "start": 25248
+        "start": 25252
       },
       "subject": "InstallationExecutor",
       "text": "InstallationExecutor uses InstallationJournalCalls as sender of CheckpointInstallationRequest in mode InstallationRecoveryMode.",
@@ -5519,12 +5519,12 @@
       "role": "receiver",
       "span": {
         "column": 1,
-        "end": 25497,
+        "end": 25501,
         "end_column": 122,
         "end_line": 464,
         "line": 464,
         "node": "Span",
-        "start": 25376
+        "start": 25380
       },
       "subject": "InstallationExecutor",
       "text": "InstallationExecutor uses InstallationReceiptCalls as receiver of RecordInstallationResult in mode InstallationExecution.",
@@ -5540,12 +5540,12 @@
       "role": "receiver",
       "span": {
         "column": 1,
-        "end": 25622,
+        "end": 25626,
         "end_column": 125,
         "end_line": 465,
         "line": 465,
         "node": "Span",
-        "start": 25498
+        "start": 25502
       },
       "subject": "InstallationExecutor",
       "text": "InstallationExecutor uses InstallationReceiptCalls as receiver of RecordInstallationResult in mode InstallationRecoveryMode.",
@@ -5561,12 +5561,12 @@
       "role": "sender",
       "span": {
         "column": 1,
-        "end": 25743,
+        "end": 25747,
         "end_column": 121,
         "end_line": 466,
         "line": 466,
         "node": "Span",
-        "start": 25623
+        "start": 25627
       },
       "subject": "InstallationExecutor",
       "text": "InstallationExecutor uses InstallationReceiptCalls as sender of RecordInstallationRequest in mode InstallationExecution.",
@@ -5582,12 +5582,12 @@
       "role": "sender",
       "span": {
         "column": 1,
-        "end": 25867,
+        "end": 25871,
         "end_column": 124,
         "end_line": 467,
         "line": 467,
         "node": "Span",
-        "start": 25744
+        "start": 25748
       },
       "subject": "InstallationExecutor",
       "text": "InstallationExecutor uses InstallationReceiptCalls as sender of RecordInstallationRequest in mode InstallationRecoveryMode.",
@@ -5603,12 +5603,12 @@
       "role": "receiver",
       "span": {
         "column": 1,
-        "end": 25995,
+        "end": 25999,
         "end_column": 128,
         "end_line": 468,
         "line": 468,
         "node": "Span",
-        "start": 25868
+        "start": 25872
       },
       "subject": "InstallationExecutor",
       "text": "InstallationExecutor uses InstallationRecoveryCalls as receiver of RecoverInstallationRequest in mode InstallationRecoveryMode.",
@@ -5624,12 +5624,12 @@
       "role": "sender",
       "span": {
         "column": 1,
-        "end": 26120,
+        "end": 26124,
         "end_column": 125,
         "end_line": 469,
         "line": 469,
         "node": "Span",
-        "start": 25996
+        "start": 26000
       },
       "subject": "InstallationExecutor",
       "text": "InstallationExecutor uses InstallationRecoveryCalls as sender of RecoverInstallationResult in mode InstallationRecoveryMode.",
@@ -5642,12 +5642,12 @@
       "object": "OperationStore",
       "span": {
         "column": 1,
-        "end": 26161,
+        "end": 26165,
         "end_column": 41,
         "end_line": 470,
         "line": 470,
         "node": "Span",
-        "start": 26121
+        "start": 26125
       },
       "subject": "InstallationJournal",
       "text": "InstallationJournal owns OperationStore.",
@@ -5660,12 +5660,12 @@
       "object": "PersistInstallationJournal",
       "span": {
         "column": 1,
-        "end": 26214,
+        "end": 26218,
         "end_column": 53,
         "end_line": 471,
         "line": 471,
         "node": "Span",
-        "start": 26162
+        "start": 26166
       },
       "subject": "InstallationJournal",
       "text": "InstallationJournal owns PersistInstallationJournal.",
@@ -5681,12 +5681,12 @@
       "role": "receiver",
       "span": {
         "column": 1,
-        "end": 26340,
+        "end": 26344,
         "end_column": 126,
         "end_line": 472,
         "line": 472,
         "node": "Span",
-        "start": 26215
+        "start": 26219
       },
       "subject": "InstallationJournal",
       "text": "InstallationJournal uses InstallationJournalCalls as receiver of CheckpointInstallationRequest in mode InstallationExecution.",
@@ -5702,12 +5702,12 @@
       "role": "receiver",
       "span": {
         "column": 1,
-        "end": 26469,
+        "end": 26473,
         "end_column": 129,
         "end_line": 473,
         "line": 473,
         "node": "Span",
-        "start": 26341
+        "start": 26345
       },
       "subject": "InstallationJournal",
       "text": "InstallationJournal uses InstallationJournalCalls as receiver of CheckpointInstallationRequest in mode InstallationRecoveryMode.",
@@ -5723,12 +5723,12 @@
       "role": "sender",
       "span": {
         "column": 1,
-        "end": 26592,
+        "end": 26596,
         "end_column": 123,
         "end_line": 474,
         "line": 474,
         "node": "Span",
-        "start": 26470
+        "start": 26474
       },
       "subject": "InstallationJournal",
       "text": "InstallationJournal uses InstallationJournalCalls as sender of CheckpointInstallationResult in mode InstallationExecution.",
@@ -5744,12 +5744,12 @@
       "role": "sender",
       "span": {
         "column": 1,
-        "end": 26718,
+        "end": 26722,
         "end_column": 126,
         "end_line": 475,
         "line": 475,
         "node": "Span",
-        "start": 26593
+        "start": 26597
       },
       "subject": "InstallationJournal",
       "text": "InstallationJournal uses InstallationJournalCalls as sender of CheckpointInstallationResult in mode InstallationRecoveryMode.",
@@ -5762,12 +5762,12 @@
       "object": "InstallationJournalCallsProtocol",
       "span": {
         "column": 1,
-        "end": 26785,
+        "end": 26789,
         "end_column": 67,
         "end_line": 476,
         "line": 476,
         "node": "Span",
-        "start": 26719
+        "start": 26723
       },
       "subject": "InstallationJournalCalls",
       "text": "InstallationJournalCalls upholds InstallationJournalCallsProtocol.",
@@ -5780,12 +5780,12 @@
       "property": "completeness",
       "span": {
         "column": 1,
-        "end": 26845,
+        "end": 26849,
         "end_column": 60,
         "end_line": 477,
         "line": 477,
         "node": "Span",
-        "start": 26786
+        "start": 26790
       },
       "subject": "InstallationJournalCallsProtocol",
       "text": "InstallationJournalCallsProtocol has completeness = closed.",
@@ -5799,12 +5799,12 @@
       "object": "CheckpointInstallationRequest",
       "span": {
         "column": 1,
-        "end": 26917,
+        "end": 26921,
         "end_column": 72,
         "end_line": 478,
         "line": 478,
         "node": "Span",
-        "start": 26846
+        "start": 26850
       },
       "subject": "InstallationJournalCallsProtocol",
       "text": "InstallationJournalCallsProtocol permits CheckpointInstallationRequest.",
@@ -5817,12 +5817,12 @@
       "object": "CheckpointInstallationResult",
       "span": {
         "column": 1,
-        "end": 26988,
+        "end": 26992,
         "end_column": 71,
         "end_line": 479,
         "line": 479,
         "node": "Span",
-        "start": 26918
+        "start": 26922
       },
       "subject": "InstallationJournalCallsProtocol",
       "text": "InstallationJournalCallsProtocol permits CheckpointInstallationResult.",
@@ -5835,12 +5835,12 @@
       "object": "InstallJournalRecord",
       "span": {
         "column": 1,
-        "end": 27047,
+        "end": 27051,
         "end_column": 59,
         "end_line": 480,
         "line": 480,
         "node": "Span",
-        "start": 26989
+        "start": 26993
       },
       "subject": "InstallationOperationRecords",
       "text": "InstallationOperationRecords upholds InstallJournalRecord.",
@@ -5853,12 +5853,12 @@
       "object": "InstallationPlanCallsProtocol",
       "span": {
         "column": 1,
-        "end": 27108,
+        "end": 27112,
         "end_column": 61,
         "end_line": 481,
         "line": 481,
         "node": "Span",
-        "start": 27048
+        "start": 27052
       },
       "subject": "InstallationPlanCalls",
       "text": "InstallationPlanCalls upholds InstallationPlanCallsProtocol.",
@@ -5871,12 +5871,12 @@
       "property": "completeness",
       "span": {
         "column": 1,
-        "end": 27165,
+        "end": 27169,
         "end_column": 57,
         "end_line": 482,
         "line": 482,
         "node": "Span",
-        "start": 27109
+        "start": 27113
       },
       "subject": "InstallationPlanCallsProtocol",
       "text": "InstallationPlanCallsProtocol has completeness = closed.",
@@ -5890,12 +5890,12 @@
       "object": "CreateInstallationPlanRequest",
       "span": {
         "column": 1,
-        "end": 27234,
+        "end": 27238,
         "end_column": 69,
         "end_line": 483,
         "line": 483,
         "node": "Span",
-        "start": 27166
+        "start": 27170
       },
       "subject": "InstallationPlanCallsProtocol",
       "text": "InstallationPlanCallsProtocol permits CreateInstallationPlanRequest.",
@@ -5908,12 +5908,12 @@
       "object": "CreateInstallationPlanResult",
       "span": {
         "column": 1,
-        "end": 27302,
+        "end": 27306,
         "end_column": 68,
         "end_line": 484,
         "line": 484,
         "node": "Span",
-        "start": 27235
+        "start": 27239
       },
       "subject": "InstallationPlanCallsProtocol",
       "text": "InstallationPlanCallsProtocol permits CreateInstallationPlanResult.",
@@ -5926,12 +5926,12 @@
       "object": "UpgradeProjectProcess",
       "span": {
         "column": 1,
-        "end": 27360,
+        "end": 27364,
         "end_column": 58,
         "end_line": 485,
         "line": 485,
         "node": "Span",
-        "start": 27303
+        "start": 27307
       },
       "subject": "InstallationPlanPrepared",
       "text": "InstallationPlanPrepared exercises UpgradeProjectProcess.",
@@ -5944,12 +5944,12 @@
       "property": "completeness",
       "span": {
         "column": 1,
-        "end": 27412,
+        "end": 27416,
         "end_column": 52,
         "end_line": 486,
         "line": 486,
         "node": "Span",
-        "start": 27361
+        "start": 27365
       },
       "subject": "InstallationPlanPrepared",
       "text": "InstallationPlanPrepared has completeness = closed.",
@@ -5963,12 +5963,12 @@
       "object": "InstallationPlanSlice",
       "span": {
         "column": 1,
-        "end": 27472,
+        "end": 27476,
         "end_column": 60,
         "end_line": 487,
         "line": 487,
         "node": "Span",
-        "start": 27413
+        "start": 27417
       },
       "subject": "InstallationPlanPrepared",
       "text": "InstallationPlanPrepared illustrates InstallationPlanSlice.",
@@ -5981,12 +5981,12 @@
       "object": "InstallationPlanning",
       "span": {
         "column": 1,
-        "end": 27527,
+        "end": 27531,
         "end_column": 55,
         "end_line": 488,
         "line": 488,
         "node": "Span",
-        "start": 27473
+        "start": 27477
       },
       "subject": "InstallationPlanPrepared",
       "text": "InstallationPlanPrepared runs-in InstallationPlanning.",
@@ -6004,12 +6004,12 @@
       "sender": "GhSdpLauncher",
       "span": {
         "column": 1,
-        "end": 27666,
+        "end": 27670,
         "end_column": 139,
         "end_line": 489,
         "line": 489,
         "node": "Span",
-        "start": 27528
+        "start": 27532
       },
       "subject": "InstallationPlanPrepared",
       "text": "InstallationPlanPrepared step 1 sends PlanInstallationRequest from GhSdpLauncher to InstallationCoordinator via InstallationPlanningCalls.",
@@ -6028,12 +6028,12 @@
       "sender": "InstallationCoordinator",
       "span": {
         "column": 1,
-        "end": 27816,
+        "end": 27820,
         "end_column": 150,
         "end_line": 490,
         "line": 490,
         "node": "Span",
-        "start": 27667
+        "start": 27671
       },
       "subject": "InstallationPlanPrepared",
       "text": "InstallationPlanPrepared step 10 sends PlanInstallationResult from InstallationCoordinator to GhSdpLauncher via InstallationPlanningCalls reply-to 1.",
@@ -6052,12 +6052,12 @@
       "sender": "InstallationCoordinator",
       "span": {
         "column": 1,
-        "end": 27968,
+        "end": 27972,
         "end_column": 152,
         "end_line": 491,
         "line": 491,
         "node": "Span",
-        "start": 27817
+        "start": 27821
       },
       "subject": "InstallationPlanPrepared",
       "text": "InstallationPlanPrepared step 2 sends InspectBaselineRequest from InstallationCoordinator to InstallationBaselineInspector via BaselineInspectionCalls.",
@@ -6076,12 +6076,12 @@
       "sender": "InstallationBaselineInspector",
       "span": {
         "column": 1,
-        "end": 28130,
+        "end": 28134,
         "end_column": 162,
         "end_line": 492,
         "line": 492,
         "node": "Span",
-        "start": 27969
+        "start": 27973
       },
       "subject": "InstallationPlanPrepared",
       "text": "InstallationPlanPrepared step 3 sends InspectBaselineResult from InstallationBaselineInspector to InstallationCoordinator via BaselineInspectionCalls reply-to 2.",
@@ -6100,12 +6100,12 @@
       "sender": "InstallationCoordinator",
       "span": {
         "column": 1,
-        "end": 28285,
+        "end": 28289,
         "end_column": 155,
         "end_line": 493,
         "line": 493,
         "node": "Span",
-        "start": 28131
+        "start": 28135
       },
       "subject": "InstallationPlanPrepared",
       "text": "InstallationPlanPrepared step 4 sends ResolveProcessReleaseRequest from InstallationCoordinator to InstallationReleaseResolver via ReleaseResolutionCalls.",
@@ -6124,12 +6124,12 @@
       "sender": "InstallationReleaseResolver",
       "span": {
         "column": 1,
-        "end": 28436,
+        "end": 28440,
         "end_column": 151,
         "end_line": 494,
         "line": 494,
         "node": "Span",
-        "start": 28286
+        "start": 28290
       },
       "subject": "InstallationPlanPrepared",
       "text": "InstallationPlanPrepared step 5 sends FetchProcessArtifactRequest from InstallationReleaseResolver to ReleaseArtifactService via ReleaseArtifactCalls.",
@@ -6148,12 +6148,12 @@
       "sender": "ReleaseArtifactService",
       "span": {
         "column": 1,
-        "end": 28597,
+        "end": 28601,
         "end_column": 161,
         "end_line": 495,
         "line": 495,
         "node": "Span",
-        "start": 28437
+        "start": 28441
       },
       "subject": "InstallationPlanPrepared",
       "text": "InstallationPlanPrepared step 6 sends FetchProcessArtifactResult from ReleaseArtifactService to InstallationReleaseResolver via ReleaseArtifactCalls reply-to 5.",
@@ -6172,12 +6172,12 @@
       "sender": "InstallationReleaseResolver",
       "span": {
         "column": 1,
-        "end": 28762,
+        "end": 28766,
         "end_column": 165,
         "end_line": 496,
         "line": 496,
         "node": "Span",
-        "start": 28598
+        "start": 28602
       },
       "subject": "InstallationPlanPrepared",
       "text": "InstallationPlanPrepared step 7 sends ResolveProcessReleaseResult from InstallationReleaseResolver to InstallationCoordinator via ReleaseResolutionCalls reply-to 4.",
@@ -6196,12 +6196,12 @@
       "sender": "InstallationCoordinator",
       "span": {
         "column": 1,
-        "end": 28909,
+        "end": 28913,
         "end_column": 147,
         "end_line": 497,
         "line": 497,
         "node": "Span",
-        "start": 28763
+        "start": 28767
       },
       "subject": "InstallationPlanPrepared",
       "text": "InstallationPlanPrepared step 8 sends CreateInstallationPlanRequest from InstallationCoordinator to InstallationPlanner via InstallationPlanCalls.",
@@ -6220,12 +6220,12 @@
       "sender": "InstallationPlanner",
       "span": {
         "column": 1,
-        "end": 29066,
+        "end": 29070,
         "end_column": 157,
         "end_line": 498,
         "line": 498,
         "node": "Span",
-        "start": 28910
+        "start": 28914
       },
       "subject": "InstallationPlanPrepared",
       "text": "InstallationPlanPrepared step 9 sends CreateInstallationPlanResult from InstallationPlanner to InstallationCoordinator via InstallationPlanCalls reply-to 8.",
@@ -6239,12 +6239,12 @@
       "object": "BuildInstallationPlan",
       "span": {
         "column": 1,
-        "end": 29121,
+        "end": 29125,
         "end_column": 55,
         "end_line": 499,
         "line": 499,
         "node": "Span",
-        "start": 29067
+        "start": 29071
       },
       "subject": "InstallationPlanSlice",
       "text": "InstallationPlanSlice addresses BuildInstallationPlan.",
@@ -6257,12 +6257,12 @@
       "object": "InspectInstallationBaseline",
       "span": {
         "column": 1,
-        "end": 29182,
+        "end": 29186,
         "end_column": 61,
         "end_line": 500,
         "line": 500,
         "node": "Span",
-        "start": 29122
+        "start": 29126
       },
       "subject": "InstallationPlanSlice",
       "text": "InstallationPlanSlice addresses InspectInstallationBaseline.",
@@ -6275,12 +6275,12 @@
       "object": "ResolveInstallationRelease",
       "span": {
         "column": 1,
-        "end": 29242,
+        "end": 29246,
         "end_column": 60,
         "end_line": 501,
         "line": 501,
         "node": "Span",
-        "start": 29183
+        "start": 29187
       },
       "subject": "InstallationPlanSlice",
       "text": "InstallationPlanSlice addresses ResolveInstallationRelease.",
@@ -6293,12 +6293,12 @@
       "object": "ValidateAdoptionBaseline",
       "span": {
         "column": 1,
-        "end": 29300,
+        "end": 29304,
         "end_column": 58,
         "end_line": 502,
         "line": 502,
         "node": "Span",
-        "start": 29243
+        "start": 29247
       },
       "subject": "InstallationPlanSlice",
       "text": "InstallationPlanSlice addresses ValidateAdoptionBaseline.",
@@ -6311,12 +6311,12 @@
       "object": "SdpTool",
       "span": {
         "column": 1,
-        "end": 29340,
+        "end": 29344,
         "end_column": 40,
         "end_line": 503,
         "line": 503,
         "node": "Span",
-        "start": 29301
+        "start": 29305
       },
       "subject": "InstallationPlanSlice",
       "text": "InstallationPlanSlice delivers SdpTool.",
@@ -6329,12 +6329,12 @@
       "object": "ProjectDiscoverySlice",
       "span": {
         "column": 1,
-        "end": 29396,
+        "end": 29400,
         "end_column": 56,
         "end_line": 504,
         "line": 504,
         "node": "Span",
-        "start": 29341
+        "start": 29345
       },
       "subject": "InstallationPlanSlice",
       "text": "InstallationPlanSlice depends-on ProjectDiscoverySlice.",
@@ -6347,12 +6347,12 @@
       "property": "implementation-status",
       "span": {
         "column": 1,
-        "end": 29455,
+        "end": 29459,
         "end_column": 59,
         "end_line": 505,
         "line": 505,
         "node": "Span",
-        "start": 29397
+        "start": 29401
       },
       "subject": "InstallationPlanSlice",
       "text": "InstallationPlanSlice has implementation-status = planned.",
@@ -6366,12 +6366,12 @@
       "object": "DeliverSdpTool",
       "span": {
         "column": 1,
-        "end": 29501,
+        "end": 29505,
         "end_column": 46,
         "end_line": 506,
         "line": 506,
         "node": "Span",
-        "start": 29456
+        "start": 29460
       },
       "subject": "InstallationPlanSlice",
       "text": "InstallationPlanSlice refines DeliverSdpTool.",
@@ -6384,12 +6384,12 @@
       "object": "InstallationFilesystemPort",
       "span": {
         "column": 1,
-        "end": 29558,
+        "end": 29562,
         "end_column": 57,
         "end_line": 507,
         "line": 507,
         "node": "Span",
-        "start": 29502
+        "start": 29506
       },
       "subject": "InstallationPlanner",
       "text": "InstallationPlanner consumes InstallationFilesystemPort.",
@@ -6402,12 +6402,12 @@
       "object": "ReviewedInstallationPlans",
       "span": {
         "column": 1,
-        "end": 29611,
+        "end": 29615,
         "end_column": 53,
         "end_line": 508,
         "line": 508,
         "node": "Span",
-        "start": 29559
+        "start": 29563
       },
       "subject": "InstallationPlanner",
       "text": "InstallationPlanner holds ReviewedInstallationPlans.",
@@ -6420,12 +6420,12 @@
       "object": "BuildInstallationPlan",
       "span": {
         "column": 1,
-        "end": 29659,
+        "end": 29663,
         "end_column": 48,
         "end_line": 509,
         "line": 509,
         "node": "Span",
-        "start": 29612
+        "start": 29616
       },
       "subject": "InstallationPlanner",
       "text": "InstallationPlanner owns BuildInstallationPlan.",
@@ -6441,12 +6441,12 @@
       "role": "receiver",
       "span": {
         "column": 1,
-        "end": 29781,
+        "end": 29785,
         "end_column": 122,
         "end_line": 510,
         "line": 510,
         "node": "Span",
-        "start": 29660
+        "start": 29664
       },
       "subject": "InstallationPlanner",
       "text": "InstallationPlanner uses InstallationPlanCalls as receiver of CreateInstallationPlanRequest in mode InstallationPlanning.",
@@ -6462,12 +6462,12 @@
       "role": "sender",
       "span": {
         "column": 1,
-        "end": 29900,
+        "end": 29904,
         "end_column": 119,
         "end_line": 511,
         "line": 511,
         "node": "Span",
-        "start": 29782
+        "start": 29786
       },
       "subject": "InstallationPlanner",
       "text": "InstallationPlanner uses InstallationPlanCalls as sender of CreateInstallationPlanResult in mode InstallationPlanning.",
@@ -6480,12 +6480,12 @@
       "object": "InstallationPlanningCallsProtocol",
       "span": {
         "column": 1,
-        "end": 29969,
+        "end": 29973,
         "end_column": 69,
         "end_line": 512,
         "line": 512,
         "node": "Span",
-        "start": 29901
+        "start": 29905
       },
       "subject": "InstallationPlanningCalls",
       "text": "InstallationPlanningCalls upholds InstallationPlanningCallsProtocol.",
@@ -6498,12 +6498,12 @@
       "property": "completeness",
       "span": {
         "column": 1,
-        "end": 30030,
+        "end": 30034,
         "end_column": 61,
         "end_line": 513,
         "line": 513,
         "node": "Span",
-        "start": 29970
+        "start": 29974
       },
       "subject": "InstallationPlanningCallsProtocol",
       "text": "InstallationPlanningCallsProtocol has completeness = closed.",
@@ -6517,12 +6517,12 @@
       "object": "PlanInstallationRejected",
       "span": {
         "column": 1,
-        "end": 30098,
+        "end": 30102,
         "end_column": 68,
         "end_line": 514,
         "line": 514,
         "node": "Span",
-        "start": 30031
+        "start": 30035
       },
       "subject": "InstallationPlanningCallsProtocol",
       "text": "InstallationPlanningCallsProtocol permits PlanInstallationRejected.",
@@ -6535,12 +6535,12 @@
       "object": "PlanInstallationRequest",
       "span": {
         "column": 1,
-        "end": 30165,
+        "end": 30169,
         "end_column": 67,
         "end_line": 515,
         "line": 515,
         "node": "Span",
-        "start": 30099
+        "start": 30103
       },
       "subject": "InstallationPlanningCallsProtocol",
       "text": "InstallationPlanningCallsProtocol permits PlanInstallationRequest.",
@@ -6553,12 +6553,12 @@
       "object": "PlanInstallationResult",
       "span": {
         "column": 1,
-        "end": 30231,
+        "end": 30235,
         "end_column": 66,
         "end_line": 516,
         "line": 516,
         "node": "Span",
-        "start": 30166
+        "start": 30170
       },
       "subject": "InstallationPlanningCallsProtocol",
       "text": "InstallationPlanningCallsProtocol permits PlanInstallationResult.",
@@ -6571,12 +6571,12 @@
       "object": "InstallationReceiptCallsProtocol",
       "span": {
         "column": 1,
-        "end": 30298,
+        "end": 30302,
         "end_column": 67,
         "end_line": 517,
         "line": 517,
         "node": "Span",
-        "start": 30232
+        "start": 30236
       },
       "subject": "InstallationReceiptCalls",
       "text": "InstallationReceiptCalls upholds InstallationReceiptCallsProtocol.",
@@ -6589,12 +6589,12 @@
       "property": "completeness",
       "span": {
         "column": 1,
-        "end": 30358,
+        "end": 30362,
         "end_column": 60,
         "end_line": 518,
         "line": 518,
         "node": "Span",
-        "start": 30299
+        "start": 30303
       },
       "subject": "InstallationReceiptCallsProtocol",
       "text": "InstallationReceiptCallsProtocol has completeness = closed.",
@@ -6608,12 +6608,12 @@
       "object": "RecordInstallationRequest",
       "span": {
         "column": 1,
-        "end": 30426,
+        "end": 30430,
         "end_column": 68,
         "end_line": 519,
         "line": 519,
         "node": "Span",
-        "start": 30359
+        "start": 30363
       },
       "subject": "InstallationReceiptCallsProtocol",
       "text": "InstallationReceiptCallsProtocol permits RecordInstallationRequest.",
@@ -6626,12 +6626,12 @@
       "object": "RecordInstallationResult",
       "span": {
         "column": 1,
-        "end": 30493,
+        "end": 30497,
         "end_column": 67,
         "end_line": 520,
         "line": 520,
         "node": "Span",
-        "start": 30427
+        "start": 30431
       },
       "subject": "InstallationReceiptCallsProtocol",
       "text": "InstallationReceiptCallsProtocol permits RecordInstallationResult.",
@@ -6644,12 +6644,12 @@
       "object": "InstallationFilesystemPort",
       "span": {
         "column": 1,
-        "end": 30551,
+        "end": 30555,
         "end_column": 58,
         "end_line": 521,
         "line": 521,
         "node": "Span",
-        "start": 30494
+        "start": 30498
       },
       "subject": "InstallationRecorder",
       "text": "InstallationRecorder consumes InstallationFilesystemPort.",
@@ -6662,12 +6662,12 @@
       "object": "InstallationStore",
       "span": {
         "column": 1,
-        "end": 30596,
+        "end": 30600,
         "end_column": 45,
         "end_line": 522,
         "line": 522,
         "node": "Span",
-        "start": 30552
+        "start": 30556
       },
       "subject": "InstallationRecorder",
       "text": "InstallationRecorder owns InstallationStore.",
@@ -6680,12 +6680,12 @@
       "object": "PublishInstalledProcessFacts",
       "span": {
         "column": 1,
-        "end": 30652,
+        "end": 30656,
         "end_column": 56,
         "end_line": 523,
         "line": 523,
         "node": "Span",
-        "start": 30597
+        "start": 30601
       },
       "subject": "InstallationRecorder",
       "text": "InstallationRecorder owns PublishInstalledProcessFacts.",
@@ -6701,12 +6701,12 @@
       "role": "receiver",
       "span": {
         "column": 1,
-        "end": 30775,
+        "end": 30779,
         "end_column": 123,
         "end_line": 524,
         "line": 524,
         "node": "Span",
-        "start": 30653
+        "start": 30657
       },
       "subject": "InstallationRecorder",
       "text": "InstallationRecorder uses InstallationReceiptCalls as receiver of RecordInstallationRequest in mode InstallationExecution.",
@@ -6722,12 +6722,12 @@
       "role": "receiver",
       "span": {
         "column": 1,
-        "end": 30901,
+        "end": 30905,
         "end_column": 126,
         "end_line": 525,
         "line": 525,
         "node": "Span",
-        "start": 30776
+        "start": 30780
       },
       "subject": "InstallationRecorder",
       "text": "InstallationRecorder uses InstallationReceiptCalls as receiver of RecordInstallationRequest in mode InstallationRecoveryMode.",
@@ -6743,12 +6743,12 @@
       "role": "sender",
       "span": {
         "column": 1,
-        "end": 31021,
+        "end": 31025,
         "end_column": 120,
         "end_line": 526,
         "line": 526,
         "node": "Span",
-        "start": 30902
+        "start": 30906
       },
       "subject": "InstallationRecorder",
       "text": "InstallationRecorder uses InstallationReceiptCalls as sender of RecordInstallationResult in mode InstallationExecution.",
@@ -6764,12 +6764,12 @@
       "role": "sender",
       "span": {
         "column": 1,
-        "end": 31144,
+        "end": 31148,
         "end_column": 123,
         "end_line": 527,
         "line": 527,
         "node": "Span",
-        "start": 31022
+        "start": 31026
       },
       "subject": "InstallationRecorder",
       "text": "InstallationRecorder uses InstallationReceiptCalls as sender of RecordInstallationResult in mode InstallationRecoveryMode.",
@@ -6783,12 +6783,12 @@
       "object": "InstallationJournalPort",
       "span": {
         "column": 1,
-        "end": 31232,
+        "end": 31236,
         "end_column": 88,
         "end_line": 528,
         "line": 528,
         "node": "Span",
-        "start": 31145
+        "start": 31149
       },
       "subject": "InstallationRecovery",
       "text": "InstallationRecovery requires InstallationJournalPort in mode InstallationRecoveryMode.",
@@ -6801,12 +6801,12 @@
       "object": "InstallationRecoveryCallsProtocol",
       "span": {
         "column": 1,
-        "end": 31301,
+        "end": 31305,
         "end_column": 69,
         "end_line": 529,
         "line": 529,
         "node": "Span",
-        "start": 31233
+        "start": 31237
       },
       "subject": "InstallationRecoveryCalls",
       "text": "InstallationRecoveryCalls upholds InstallationRecoveryCallsProtocol.",
@@ -6819,12 +6819,12 @@
       "property": "completeness",
       "span": {
         "column": 1,
-        "end": 31362,
+        "end": 31366,
         "end_column": 61,
         "end_line": 530,
         "line": 530,
         "node": "Span",
-        "start": 31302
+        "start": 31306
       },
       "subject": "InstallationRecoveryCallsProtocol",
       "text": "InstallationRecoveryCallsProtocol has completeness = closed.",
@@ -6838,12 +6838,12 @@
       "object": "RecoverInstallationRequest",
       "span": {
         "column": 1,
-        "end": 31432,
+        "end": 31436,
         "end_column": 70,
         "end_line": 531,
         "line": 531,
         "node": "Span",
-        "start": 31363
+        "start": 31367
       },
       "subject": "InstallationRecoveryCallsProtocol",
       "text": "InstallationRecoveryCallsProtocol permits RecoverInstallationRequest.",
@@ -6856,12 +6856,12 @@
       "object": "RecoverInstallationResult",
       "span": {
         "column": 1,
-        "end": 31501,
+        "end": 31505,
         "end_column": 69,
         "end_line": 532,
         "line": 532,
         "node": "Span",
-        "start": 31433
+        "start": 31437
       },
       "subject": "InstallationRecoveryCallsProtocol",
       "text": "InstallationRecoveryCallsProtocol permits RecoverInstallationResult.",
@@ -6874,12 +6874,12 @@
       "object": "PersistInstallationJournal",
       "span": {
         "column": 1,
-        "end": 31565,
+        "end": 31569,
         "end_column": 64,
         "end_line": 533,
         "line": 533,
         "node": "Span",
-        "start": 31502
+        "start": 31506
       },
       "subject": "InstallationRecoverySlice",
       "text": "InstallationRecoverySlice addresses PersistInstallationJournal.",
@@ -6892,12 +6892,12 @@
       "object": "ResumeInstallationOperation",
       "span": {
         "column": 1,
-        "end": 31630,
+        "end": 31634,
         "end_column": 65,
         "end_line": 534,
         "line": 534,
         "node": "Span",
-        "start": 31566
+        "start": 31570
       },
       "subject": "InstallationRecoverySlice",
       "text": "InstallationRecoverySlice addresses ResumeInstallationOperation.",
@@ -6910,12 +6910,12 @@
       "object": "SdpTool",
       "span": {
         "column": 1,
-        "end": 31674,
+        "end": 31678,
         "end_column": 44,
         "end_line": 535,
         "line": 535,
         "node": "Span",
-        "start": 31631
+        "start": 31635
       },
       "subject": "InstallationRecoverySlice",
       "text": "InstallationRecoverySlice delivers SdpTool.",
@@ -6928,12 +6928,12 @@
       "object": "InstallationApplySlice",
       "span": {
         "column": 1,
-        "end": 31735,
+        "end": 31739,
         "end_column": 61,
         "end_line": 536,
         "line": 536,
         "node": "Span",
-        "start": 31675
+        "start": 31679
       },
       "subject": "InstallationRecoverySlice",
       "text": "InstallationRecoverySlice depends-on InstallationApplySlice.",
@@ -6946,16 +6946,16 @@
       "property": "implementation-status",
       "span": {
         "column": 1,
-        "end": 31798,
-        "end_column": 63,
+        "end": 31806,
+        "end_column": 67,
         "end_line": 537,
         "line": 537,
         "node": "Span",
-        "start": 31736
+        "start": 31740
       },
       "subject": "InstallationRecoverySlice",
-      "text": "InstallationRecoverySlice has implementation-status = planned.",
-      "value": "planned",
+      "text": "InstallationRecoverySlice has implementation-status = implemented.",
+      "value": "implemented",
       "verb": "has"
     },
     {
@@ -6965,12 +6965,12 @@
       "object": "DeliverSdpTool",
       "span": {
         "column": 1,
-        "end": 31848,
+        "end": 31856,
         "end_column": 50,
         "end_line": 538,
         "line": 538,
         "node": "Span",
-        "start": 31799
+        "start": 31807
       },
       "subject": "InstallationRecoverySlice",
       "text": "InstallationRecoverySlice refines DeliverSdpTool.",
@@ -6983,12 +6983,12 @@
       "object": "ReleaseArtifactPort",
       "span": {
         "column": 1,
-        "end": 31906,
+        "end": 31914,
         "end_column": 58,
         "end_line": 539,
         "line": 539,
         "node": "Span",
-        "start": 31849
+        "start": 31857
       },
       "subject": "InstallationReleaseResolver",
       "text": "InstallationReleaseResolver consumes ReleaseArtifactPort.",
@@ -7001,12 +7001,12 @@
       "object": "ResolveInstallationRelease",
       "span": {
         "column": 1,
-        "end": 31967,
+        "end": 31975,
         "end_column": 61,
         "end_line": 540,
         "line": 540,
         "node": "Span",
-        "start": 31907
+        "start": 31915
       },
       "subject": "InstallationReleaseResolver",
       "text": "InstallationReleaseResolver owns ResolveInstallationRelease.",
@@ -7022,12 +7022,12 @@
       "role": "receiver",
       "span": {
         "column": 1,
-        "end": 32093,
+        "end": 32101,
         "end_column": 126,
         "end_line": 541,
         "line": 541,
         "node": "Span",
-        "start": 31968
+        "start": 31976
       },
       "subject": "InstallationReleaseResolver",
       "text": "InstallationReleaseResolver uses ReleaseArtifactCalls as receiver of FetchProcessArtifactResult in mode InstallationPlanning.",
@@ -7043,12 +7043,12 @@
       "role": "sender",
       "span": {
         "column": 1,
-        "end": 32218,
+        "end": 32226,
         "end_column": 125,
         "end_line": 542,
         "line": 542,
         "node": "Span",
-        "start": 32094
+        "start": 32102
       },
       "subject": "InstallationReleaseResolver",
       "text": "InstallationReleaseResolver uses ReleaseArtifactCalls as sender of FetchProcessArtifactRequest in mode InstallationPlanning.",
@@ -7064,12 +7064,12 @@
       "role": "receiver",
       "span": {
         "column": 1,
-        "end": 32348,
+        "end": 32356,
         "end_column": 130,
         "end_line": 543,
         "line": 543,
         "node": "Span",
-        "start": 32219
+        "start": 32227
       },
       "subject": "InstallationReleaseResolver",
       "text": "InstallationReleaseResolver uses ReleaseResolutionCalls as receiver of ResolveProcessReleaseRequest in mode InstallationPlanning.",
@@ -7085,12 +7085,12 @@
       "role": "sender",
       "span": {
         "column": 1,
-        "end": 32475,
+        "end": 32483,
         "end_column": 127,
         "end_line": 544,
         "line": 544,
         "node": "Span",
-        "start": 32349
+        "start": 32357
       },
       "subject": "InstallationReleaseResolver",
       "text": "InstallationReleaseResolver uses ReleaseResolutionCalls as sender of ResolveProcessReleaseResult in mode InstallationPlanning.",
@@ -7103,12 +7103,12 @@
       "object": "InstallationResumeCallsProtocol",
       "span": {
         "column": 1,
-        "end": 32540,
+        "end": 32548,
         "end_column": 65,
         "end_line": 545,
         "line": 545,
         "node": "Span",
-        "start": 32476
+        "start": 32484
       },
       "subject": "InstallationResumeCalls",
       "text": "InstallationResumeCalls upholds InstallationResumeCallsProtocol.",
@@ -7121,12 +7121,12 @@
       "property": "completeness",
       "span": {
         "column": 1,
-        "end": 32599,
+        "end": 32607,
         "end_column": 59,
         "end_line": 546,
         "line": 546,
         "node": "Span",
-        "start": 32541
+        "start": 32549
       },
       "subject": "InstallationResumeCallsProtocol",
       "text": "InstallationResumeCallsProtocol has completeness = closed.",
@@ -7140,12 +7140,12 @@
       "object": "ResumeInstallationRejected",
       "span": {
         "column": 1,
-        "end": 32667,
+        "end": 32675,
         "end_column": 68,
         "end_line": 547,
         "line": 547,
         "node": "Span",
-        "start": 32600
+        "start": 32608
       },
       "subject": "InstallationResumeCallsProtocol",
       "text": "InstallationResumeCallsProtocol permits ResumeInstallationRejected.",
@@ -7158,12 +7158,12 @@
       "object": "ResumeInstallationRequest",
       "span": {
         "column": 1,
-        "end": 32734,
+        "end": 32742,
         "end_column": 67,
         "end_line": 548,
         "line": 548,
         "node": "Span",
-        "start": 32668
+        "start": 32676
       },
       "subject": "InstallationResumeCallsProtocol",
       "text": "InstallationResumeCallsProtocol permits ResumeInstallationRequest.",
@@ -7176,12 +7176,12 @@
       "object": "ResumeInstallationResult",
       "span": {
         "column": 1,
-        "end": 32800,
+        "end": 32808,
         "end_column": 66,
         "end_line": 549,
         "line": 549,
         "node": "Span",
-        "start": 32735
+        "start": 32743
       },
       "subject": "InstallationResumeCallsProtocol",
       "text": "InstallationResumeCallsProtocol permits ResumeInstallationResult.",
@@ -7194,12 +7194,12 @@
       "object": "RecoverProjectUpgrade",
       "span": {
         "column": 1,
-        "end": 32853,
+        "end": 32861,
         "end_column": 53,
         "end_line": 550,
         "line": 550,
         "node": "Span",
-        "start": 32801
+        "start": 32809
       },
       "subject": "InstallationResumed",
       "text": "InstallationResumed exercises RecoverProjectUpgrade.",
@@ -7212,12 +7212,12 @@
       "property": "completeness",
       "span": {
         "column": 1,
-        "end": 32900,
+        "end": 32908,
         "end_column": 47,
         "end_line": 551,
         "line": 551,
         "node": "Span",
-        "start": 32854
+        "start": 32862
       },
       "subject": "InstallationResumed",
       "text": "InstallationResumed has completeness = closed.",
@@ -7231,12 +7231,12 @@
       "object": "InstallationRecoverySlice",
       "span": {
         "column": 1,
-        "end": 32959,
+        "end": 32967,
         "end_column": 59,
         "end_line": 552,
         "line": 552,
         "node": "Span",
-        "start": 32901
+        "start": 32909
       },
       "subject": "InstallationResumed",
       "text": "InstallationResumed illustrates InstallationRecoverySlice.",
@@ -7249,12 +7249,12 @@
       "object": "InstallationRecoveryMode",
       "span": {
         "column": 1,
-        "end": 33013,
+        "end": 33021,
         "end_column": 54,
         "end_line": 553,
         "line": 553,
         "node": "Span",
-        "start": 32960
+        "start": 32968
       },
       "subject": "InstallationResumed",
       "text": "InstallationResumed runs-in InstallationRecoveryMode.",
@@ -7272,12 +7272,12 @@
       "sender": "GhSdpLauncher",
       "span": {
         "column": 1,
-        "end": 33147,
+        "end": 33155,
         "end_column": 134,
         "end_line": 554,
         "line": 554,
         "node": "Span",
-        "start": 33014
+        "start": 33022
       },
       "subject": "InstallationResumed",
       "text": "InstallationResumed step 1 sends ResumeInstallationRequest from GhSdpLauncher to InstallationCoordinator via InstallationResumeCalls.",
@@ -7296,12 +7296,12 @@
       "sender": "InstallationCoordinator",
       "span": {
         "column": 1,
-        "end": 33292,
+        "end": 33300,
         "end_column": 145,
         "end_line": 555,
         "line": 555,
         "node": "Span",
-        "start": 33148
+        "start": 33156
       },
       "subject": "InstallationResumed",
       "text": "InstallationResumed step 10 sends ResumeInstallationResult from InstallationCoordinator to GhSdpLauncher via InstallationResumeCalls reply-to 1.",
@@ -7320,12 +7320,12 @@
       "sender": "InstallationCoordinator",
       "span": {
         "column": 1,
-        "end": 33436,
+        "end": 33444,
         "end_column": 144,
         "end_line": 556,
         "line": 556,
         "node": "Span",
-        "start": 33293
+        "start": 33301
       },
       "subject": "InstallationResumed",
       "text": "InstallationResumed step 2 sends RecoverInstallationRequest from InstallationCoordinator to InstallationExecutor via InstallationRecoveryCalls.",
@@ -7344,12 +7344,12 @@
       "sender": "InstallationExecutor",
       "span": {
         "column": 1,
-        "end": 33578,
+        "end": 33586,
         "end_column": 142,
         "end_line": 557,
         "line": 557,
         "node": "Span",
-        "start": 33437
+        "start": 33445
       },
       "subject": "InstallationResumed",
       "text": "InstallationResumed step 3 sends CheckpointInstallationRequest from InstallationExecutor to InstallationJournal via InstallationJournalCalls.",
@@ -7368,12 +7368,12 @@
       "sender": "InstallationJournal",
       "span": {
         "column": 1,
-        "end": 33730,
+        "end": 33738,
         "end_column": 152,
         "end_line": 558,
         "line": 558,
         "node": "Span",
-        "start": 33579
+        "start": 33587
       },
       "subject": "InstallationResumed",
       "text": "InstallationResumed step 4 sends CheckpointInstallationResult from InstallationJournal to InstallationExecutor via InstallationJournalCalls reply-to 3.",
@@ -7392,12 +7392,12 @@
       "sender": "InstallationExecutor",
       "span": {
         "column": 1,
-        "end": 33869,
+        "end": 33877,
         "end_column": 139,
         "end_line": 559,
         "line": 559,
         "node": "Span",
-        "start": 33731
+        "start": 33739
       },
       "subject": "InstallationResumed",
       "text": "InstallationResumed step 5 sends RecordInstallationRequest from InstallationExecutor to InstallationRecorder via InstallationReceiptCalls.",
@@ -7416,12 +7416,12 @@
       "sender": "InstallationRecorder",
       "span": {
         "column": 1,
-        "end": 34018,
+        "end": 34026,
         "end_column": 149,
         "end_line": 560,
         "line": 560,
         "node": "Span",
-        "start": 33870
+        "start": 33878
       },
       "subject": "InstallationResumed",
       "text": "InstallationResumed step 6 sends RecordInstallationResult from InstallationRecorder to InstallationExecutor via InstallationReceiptCalls reply-to 5.",
@@ -7440,12 +7440,12 @@
       "sender": "InstallationExecutor",
       "span": {
         "column": 1,
-        "end": 34160,
+        "end": 34168,
         "end_column": 142,
         "end_line": 561,
         "line": 561,
         "node": "Span",
-        "start": 34019
+        "start": 34027
       },
       "subject": "InstallationResumed",
       "text": "InstallationResumed step 7 sends CheckpointInstallationRequest from InstallationExecutor to InstallationJournal via InstallationJournalCalls.",
@@ -7464,12 +7464,12 @@
       "sender": "InstallationJournal",
       "span": {
         "column": 1,
-        "end": 34312,
+        "end": 34320,
         "end_column": 152,
         "end_line": 562,
         "line": 562,
         "node": "Span",
-        "start": 34161
+        "start": 34169
       },
       "subject": "InstallationResumed",
       "text": "InstallationResumed step 8 sends CheckpointInstallationResult from InstallationJournal to InstallationExecutor via InstallationJournalCalls reply-to 7.",
@@ -7488,12 +7488,12 @@
       "sender": "InstallationExecutor",
       "span": {
         "column": 1,
-        "end": 34466,
+        "end": 34474,
         "end_column": 154,
         "end_line": 563,
         "line": 563,
         "node": "Span",
-        "start": 34313
+        "start": 34321
       },
       "subject": "InstallationResumed",
       "text": "InstallationResumed step 9 sends RecoverInstallationResult from InstallationExecutor to InstallationCoordinator via InstallationRecoveryCalls reply-to 2.",
@@ -7507,12 +7507,12 @@
       "object": "InstalledProcessRecords",
       "span": {
         "column": 1,
-        "end": 34515,
+        "end": 34523,
         "end_column": 49,
         "end_line": 564,
         "line": 564,
         "node": "Span",
-        "start": 34467
+        "start": 34475
       },
       "subject": "InstallationStore",
       "text": "InstallationStore holds InstalledProcessRecords.",
@@ -7525,12 +7525,12 @@
       "object": "InstallReceiptRecord",
       "span": {
         "column": 1,
-        "end": 34569,
+        "end": 34577,
         "end_column": 54,
         "end_line": 565,
         "line": 565,
         "node": "Span",
-        "start": 34516
+        "start": 34524
       },
       "subject": "InstalledProcessRecords",
       "text": "InstalledProcessRecords upholds InstallReceiptRecord.",
@@ -7544,12 +7544,12 @@
       "object": "GhSdpProcess",
       "span": {
         "column": 1,
-        "end": 34652,
+        "end": 34660,
         "end_column": 83,
         "end_line": 566,
         "line": 566,
         "node": "Span",
-        "start": 34570
+        "start": 34578
       },
       "subject": "InvokeInstallationCommand",
       "text": "InvokeInstallationCommand allocated-to GhSdpProcess in mode InstallationExecution.",
@@ -7563,12 +7563,12 @@
       "object": "GhSdpProcess",
       "span": {
         "column": 1,
-        "end": 34734,
+        "end": 34742,
         "end_column": 82,
         "end_line": 567,
         "line": 567,
         "node": "Span",
-        "start": 34653
+        "start": 34661
       },
       "subject": "InvokeInstallationCommand",
       "text": "InvokeInstallationCommand allocated-to GhSdpProcess in mode InstallationPlanning.",
@@ -7582,12 +7582,12 @@
       "object": "GhSdpProcess",
       "span": {
         "column": 1,
-        "end": 34820,
+        "end": 34828,
         "end_column": 86,
         "end_line": 568,
         "line": 568,
         "node": "Span",
-        "start": 34735
+        "start": 34743
       },
       "subject": "InvokeInstallationCommand",
       "text": "InvokeInstallationCommand allocated-to GhSdpProcess in mode InstallationRecoveryMode.",
@@ -7600,12 +7600,12 @@
       "object": "SdpTool",
       "span": {
         "column": 1,
-        "end": 34870,
+        "end": 34878,
         "end_column": 50,
         "end_line": 569,
         "line": 569,
         "node": "Span",
-        "start": 34821
+        "start": 34829
       },
       "subject": "InvokeInstallationCommand",
       "text": "InvokeInstallationCommand contributes-to SdpTool.",
@@ -7618,12 +7618,12 @@
       "object": "SdpToolBootstrap",
       "span": {
         "column": 1,
-        "end": 34923,
+        "end": 34931,
         "end_column": 53,
         "end_line": 570,
         "line": 570,
         "node": "Span",
-        "start": 34871
+        "start": 34879
       },
       "subject": "InvokeInstallationCommand",
       "text": "InvokeInstallationCommand realizes SdpToolBootstrap.",
@@ -7636,12 +7636,12 @@
       "object": "ApplyInstallationPlan",
       "span": {
         "column": 1,
-        "end": 34976,
+        "end": 34984,
         "end_column": 53,
         "end_line": 571,
         "line": 571,
         "node": "Span",
-        "start": 34924
+        "start": 34932
       },
       "subject": "ManualAdoptionTrial",
       "text": "ManualAdoptionTrial addresses ApplyInstallationPlan.",
@@ -7654,12 +7654,12 @@
       "object": "ValidateAdoptionBaseline",
       "span": {
         "column": 1,
-        "end": 35032,
+        "end": 35040,
         "end_column": 56,
         "end_line": 572,
         "line": 572,
         "node": "Span",
-        "start": 34977
+        "start": 34985
       },
       "subject": "ManualAdoptionTrial",
       "text": "ManualAdoptionTrial addresses ValidateAdoptionBaseline.",
@@ -7672,12 +7672,12 @@
       "object": "SdpTool",
       "span": {
         "column": 1,
-        "end": 35070,
+        "end": 35078,
         "end_column": 38,
         "end_line": 573,
         "line": 573,
         "node": "Span",
-        "start": 35033
+        "start": 35041
       },
       "subject": "ManualAdoptionTrial",
       "text": "ManualAdoptionTrial delivers SdpTool.",
@@ -7690,12 +7690,12 @@
       "object": "GhSdpClientSlice",
       "span": {
         "column": 1,
-        "end": 35119,
+        "end": 35127,
         "end_column": 49,
         "end_line": 574,
         "line": 574,
         "node": "Span",
-        "start": 35071
+        "start": 35079
       },
       "subject": "ManualAdoptionTrial",
       "text": "ManualAdoptionTrial depends-on GhSdpClientSlice.",
@@ -7708,12 +7708,12 @@
       "property": "implementation-status",
       "span": {
         "column": 1,
-        "end": 35176,
+        "end": 35184,
         "end_column": 57,
         "end_line": 575,
         "line": 575,
         "node": "Span",
-        "start": 35120
+        "start": 35128
       },
       "subject": "ManualAdoptionTrial",
       "text": "ManualAdoptionTrial has implementation-status = planned.",
@@ -7727,12 +7727,12 @@
       "object": "DeliverSdpTool",
       "span": {
         "column": 1,
-        "end": 35220,
+        "end": 35228,
         "end_column": 44,
         "end_line": 576,
         "line": 576,
         "node": "Span",
-        "start": 35177
+        "start": 35185
       },
       "subject": "ManualAdoptionTrial",
       "text": "ManualAdoptionTrial refines DeliverSdpTool.",
@@ -7746,12 +7746,12 @@
       "object": "InstallationFilesystemPort",
       "span": {
         "column": 1,
-        "end": 35308,
+        "end": 35316,
         "end_column": 88,
         "end_line": 577,
         "line": 577,
         "node": "Span",
-        "start": 35221
+        "start": 35229
       },
       "subject": "ManualProcessAdoption",
       "text": "ManualProcessAdoption requires InstallationFilesystemPort in mode InstallationPlanning.",
@@ -7764,12 +7764,12 @@
       "object": "KanBanReadPort",
       "span": {
         "column": 1,
-        "end": 35353,
+        "end": 35361,
         "end_column": 45,
         "end_line": 578,
         "line": 578,
         "node": "Span",
-        "start": 35309
+        "start": 35317
       },
       "subject": "NavigationInventory",
       "text": "NavigationInventory consumes KanBanReadPort.",
@@ -7782,12 +7782,12 @@
       "object": "SdlProjectionPort",
       "span": {
         "column": 1,
-        "end": 35401,
+        "end": 35409,
         "end_column": 48,
         "end_line": 579,
         "line": 579,
         "node": "Span",
-        "start": 35354
+        "start": 35362
       },
       "subject": "NavigationInventory",
       "text": "NavigationInventory consumes SdlProjectionPort.",
@@ -7800,12 +7800,12 @@
       "object": "SduiDocumentPort",
       "span": {
         "column": 1,
-        "end": 35448,
+        "end": 35456,
         "end_column": 47,
         "end_line": 580,
         "line": 580,
         "node": "Span",
-        "start": 35402
+        "start": 35410
       },
       "subject": "NavigationInventory",
       "text": "NavigationInventory consumes SduiDocumentPort.",
@@ -7818,12 +7818,12 @@
       "object": "DescribeNavigationTree",
       "span": {
         "column": 1,
-        "end": 35497,
+        "end": 35505,
         "end_column": 49,
         "end_line": 581,
         "line": 581,
         "node": "Span",
-        "start": 35449
+        "start": 35457
       },
       "subject": "NavigationInventory",
       "text": "NavigationInventory owns DescribeNavigationTree.",
@@ -7836,12 +7836,12 @@
       "object": "DescribeNavigationTree",
       "span": {
         "column": 1,
-        "end": 35547,
+        "end": 35555,
         "end_column": 50,
         "end_line": 582,
         "line": 582,
         "node": "Span",
-        "start": 35498
+        "start": 35506
       },
       "subject": "NavigationSlice",
       "text": "NavigationSlice addresses DescribeNavigationTree.",
@@ -7854,12 +7854,12 @@
       "object": "SdpTool",
       "span": {
         "column": 1,
-        "end": 35581,
+        "end": 35589,
         "end_column": 34,
         "end_line": 583,
         "line": 583,
         "node": "Span",
-        "start": 35548
+        "start": 35556
       },
       "subject": "NavigationSlice",
       "text": "NavigationSlice delivers SdpTool.",
@@ -7872,12 +7872,12 @@
       "object": "ProjectDiscoverySlice",
       "span": {
         "column": 1,
-        "end": 35631,
+        "end": 35639,
         "end_column": 50,
         "end_line": 584,
         "line": 584,
         "node": "Span",
-        "start": 35582
+        "start": 35590
       },
       "subject": "NavigationSlice",
       "text": "NavigationSlice depends-on ProjectDiscoverySlice.",
@@ -7890,12 +7890,12 @@
       "property": "implementation-status",
       "span": {
         "column": 1,
-        "end": 35688,
+        "end": 35696,
         "end_column": 57,
         "end_line": 585,
         "line": 585,
         "node": "Span",
-        "start": 35632
+        "start": 35640
       },
       "subject": "NavigationSlice",
       "text": "NavigationSlice has implementation-status = implemented.",
@@ -7909,12 +7909,12 @@
       "object": "DeliverSdpTool",
       "span": {
         "column": 1,
-        "end": 35728,
+        "end": 35736,
         "end_column": 40,
         "end_line": 586,
         "line": 586,
         "node": "Span",
-        "start": 35689
+        "start": 35697
       },
       "subject": "NavigationSlice",
       "text": "NavigationSlice refines DeliverSdpTool.",
@@ -7927,12 +7927,12 @@
       "object": "InstallationOperationRecords",
       "span": {
         "column": 1,
-        "end": 35779,
+        "end": 35787,
         "end_column": 51,
         "end_line": 587,
         "line": 587,
         "node": "Span",
-        "start": 35729
+        "start": 35737
       },
       "subject": "OperationStore",
       "text": "OperationStore holds InstallationOperationRecords.",
@@ -7946,12 +7946,12 @@
       "object": "SdpToolProcess",
       "span": {
         "column": 1,
-        "end": 35865,
+        "end": 35873,
         "end_column": 86,
         "end_line": 588,
         "line": 588,
         "node": "Span",
-        "start": 35780
+        "start": 35788
       },
       "subject": "PersistInstallationJournal",
       "text": "PersistInstallationJournal allocated-to SdpToolProcess in mode InstallationExecution.",
@@ -7965,12 +7965,12 @@
       "object": "SdpToolProcess",
       "span": {
         "column": 1,
-        "end": 35954,
+        "end": 35962,
         "end_column": 89,
         "end_line": 589,
         "line": 589,
         "node": "Span",
-        "start": 35866
+        "start": 35874
       },
       "subject": "PersistInstallationJournal",
       "text": "PersistInstallationJournal allocated-to SdpToolProcess in mode InstallationRecoveryMode.",
@@ -7983,12 +7983,12 @@
       "object": "SdpTool",
       "span": {
         "column": 1,
-        "end": 36005,
+        "end": 36013,
         "end_column": 51,
         "end_line": 590,
         "line": 590,
         "node": "Span",
-        "start": 35955
+        "start": 35963
       },
       "subject": "PersistInstallationJournal",
       "text": "PersistInstallationJournal contributes-to SdpTool.",
@@ -8001,12 +8001,12 @@
       "object": "InstallationRecovery",
       "span": {
         "column": 1,
-        "end": 36063,
+        "end": 36071,
         "end_column": 58,
         "end_line": 591,
         "line": 591,
         "node": "Span",
-        "start": 36006
+        "start": 36014
       },
       "subject": "PersistInstallationJournal",
       "text": "PersistInstallationJournal realizes InstallationRecovery.",
@@ -8020,12 +8020,12 @@
       "object": "TraceabilityReadPort",
       "span": {
         "column": 1,
-        "end": 36133,
+        "end": 36141,
         "end_column": 70,
         "end_line": 592,
         "line": 592,
         "node": "Span",
-        "start": 36064
+        "start": 36072
       },
       "subject": "PlanAssistance",
       "text": "PlanAssistance requires TraceabilityReadPort in mode ProcessPlanning.",
@@ -8038,12 +8038,12 @@
       "object": "ProposeImplementationSlices",
       "span": {
         "column": 1,
-        "end": 36192,
+        "end": 36200,
         "end_column": 59,
         "end_line": 593,
         "line": 593,
         "node": "Span",
-        "start": 36134
+        "start": 36142
       },
       "subject": "PlanAssistanceSlice",
       "text": "PlanAssistanceSlice addresses ProposeImplementationSlices.",
@@ -8056,12 +8056,12 @@
       "object": "ValidateImplementationPlan",
       "span": {
         "column": 1,
-        "end": 36250,
+        "end": 36258,
         "end_column": 58,
         "end_line": 594,
         "line": 594,
         "node": "Span",
-        "start": 36193
+        "start": 36201
       },
       "subject": "PlanAssistanceSlice",
       "text": "PlanAssistanceSlice addresses ValidateImplementationPlan.",
@@ -8074,12 +8074,12 @@
       "object": "SdpTool",
       "span": {
         "column": 1,
-        "end": 36288,
+        "end": 36296,
         "end_column": 38,
         "end_line": 595,
         "line": 595,
         "node": "Span",
-        "start": 36251
+        "start": 36259
       },
       "subject": "PlanAssistanceSlice",
       "text": "PlanAssistanceSlice delivers SdpTool.",
@@ -8092,12 +8092,12 @@
       "object": "ProjectDiscoverySlice",
       "span": {
         "column": 1,
-        "end": 36342,
+        "end": 36350,
         "end_column": 54,
         "end_line": 596,
         "line": 596,
         "node": "Span",
-        "start": 36289
+        "start": 36297
       },
       "subject": "PlanAssistanceSlice",
       "text": "PlanAssistanceSlice depends-on ProjectDiscoverySlice.",
@@ -8110,12 +8110,12 @@
       "property": "implementation-status",
       "span": {
         "column": 1,
-        "end": 36399,
+        "end": 36407,
         "end_column": 57,
         "end_line": 597,
         "line": 597,
         "node": "Span",
-        "start": 36343
+        "start": 36351
       },
       "subject": "PlanAssistanceSlice",
       "text": "PlanAssistanceSlice has implementation-status = planned.",
@@ -8129,12 +8129,12 @@
       "object": "DeliverSdpTool",
       "span": {
         "column": 1,
-        "end": 36443,
+        "end": 36451,
         "end_column": 44,
         "end_line": 598,
         "line": 598,
         "node": "Span",
-        "start": 36400
+        "start": 36408
       },
       "subject": "PlanAssistanceSlice",
       "text": "PlanAssistanceSlice refines DeliverSdpTool.",
@@ -8147,12 +8147,12 @@
       "object": "SdlProjectionPort",
       "span": {
         "column": 1,
-        "end": 36487,
+        "end": 36495,
         "end_column": 44,
         "end_line": 599,
         "line": 599,
         "node": "Span",
-        "start": 36444
+        "start": 36452
       },
       "subject": "PlanCoordinator",
       "text": "PlanCoordinator consumes SdlProjectionPort.",
@@ -8165,12 +8165,12 @@
       "object": "TraceabilityReadPort",
       "span": {
         "column": 1,
-        "end": 36534,
+        "end": 36542,
         "end_column": 47,
         "end_line": 600,
         "line": 600,
         "node": "Span",
-        "start": 36488
+        "start": 36496
       },
       "subject": "PlanCoordinator",
       "text": "PlanCoordinator consumes TraceabilityReadPort.",
@@ -8183,12 +8183,12 @@
       "object": "ProposeImplementationSlices",
       "span": {
         "column": 1,
-        "end": 36584,
+        "end": 36592,
         "end_column": 50,
         "end_line": 601,
         "line": 601,
         "node": "Span",
-        "start": 36535
+        "start": 36543
       },
       "subject": "PlanCoordinator",
       "text": "PlanCoordinator owns ProposeImplementationSlices.",
@@ -8201,12 +8201,12 @@
       "object": "ValidateImplementationPlan",
       "span": {
         "column": 1,
-        "end": 36633,
+        "end": 36641,
         "end_column": 49,
         "end_line": 602,
         "line": 602,
         "node": "Span",
-        "start": 36585
+        "start": 36593
       },
       "subject": "PlanCoordinator",
       "text": "PlanCoordinator owns ValidateImplementationPlan.",
@@ -8219,12 +8219,12 @@
       "property": "message-kind",
       "span": {
         "column": 1,
-        "end": 36685,
+        "end": 36693,
         "end_column": 52,
         "end_line": 603,
         "line": 603,
         "node": "Span",
-        "start": 36634
+        "start": 36642
       },
       "subject": "PlanInstallationRejected",
       "text": "PlanInstallationRejected has message-kind = result.",
@@ -8238,12 +8238,12 @@
       "object": "PlanInstallationRequest",
       "span": {
         "column": 1,
-        "end": 36746,
+        "end": 36754,
         "end_column": 61,
         "end_line": 604,
         "line": 604,
         "node": "Span",
-        "start": 36686
+        "start": 36694
       },
       "subject": "PlanInstallationRejected",
       "text": "PlanInstallationRejected replies-to PlanInstallationRequest.",
@@ -8256,12 +8256,12 @@
       "object": "InstallOutcome",
       "span": {
         "column": 1,
-        "end": 36795,
+        "end": 36803,
         "end_column": 49,
         "end_line": 605,
         "line": 605,
         "node": "Span",
-        "start": 36747
+        "start": 36755
       },
       "subject": "PlanInstallationRejected",
       "text": "PlanInstallationRejected upholds InstallOutcome.",
@@ -8274,12 +8274,12 @@
       "property": "message-kind",
       "span": {
         "column": 1,
-        "end": 36847,
+        "end": 36855,
         "end_column": 52,
         "end_line": 606,
         "line": 606,
         "node": "Span",
-        "start": 36796
+        "start": 36804
       },
       "subject": "PlanInstallationRequest",
       "text": "PlanInstallationRequest has message-kind = request.",
@@ -8293,12 +8293,12 @@
       "object": "InstallPlanningArguments",
       "span": {
         "column": 1,
-        "end": 36905,
+        "end": 36913,
         "end_column": 58,
         "end_line": 607,
         "line": 607,
         "node": "Span",
-        "start": 36848
+        "start": 36856
       },
       "subject": "PlanInstallationRequest",
       "text": "PlanInstallationRequest upholds InstallPlanningArguments.",
@@ -8311,12 +8311,12 @@
       "property": "message-kind",
       "span": {
         "column": 1,
-        "end": 36955,
+        "end": 36963,
         "end_column": 50,
         "end_line": 608,
         "line": 608,
         "node": "Span",
-        "start": 36906
+        "start": 36914
       },
       "subject": "PlanInstallationResult",
       "text": "PlanInstallationResult has message-kind = result.",
@@ -8330,12 +8330,12 @@
       "object": "PlanInstallationRequest",
       "span": {
         "column": 1,
-        "end": 37014,
+        "end": 37022,
         "end_column": 59,
         "end_line": 609,
         "line": 609,
         "node": "Span",
-        "start": 36956
+        "start": 36964
       },
       "subject": "PlanInstallationResult",
       "text": "PlanInstallationResult replies-to PlanInstallationRequest.",
@@ -8348,12 +8348,12 @@
       "object": "InstallOutcome",
       "span": {
         "column": 1,
-        "end": 37061,
+        "end": 37069,
         "end_column": 47,
         "end_line": 610,
         "line": 610,
         "node": "Span",
-        "start": 37015
+        "start": 37023
       },
       "subject": "PlanInstallationResult",
       "text": "PlanInstallationResult upholds InstallOutcome.",
@@ -8366,12 +8366,12 @@
       "object": "SdlProjectionPort",
       "span": {
         "column": 1,
-        "end": 37108,
+        "end": 37116,
         "end_column": 47,
         "end_line": 611,
         "line": 611,
         "node": "Span",
-        "start": 37062
+        "start": 37070
       },
       "subject": "PreviewCoordinator",
       "text": "PreviewCoordinator consumes SdlProjectionPort.",
@@ -8384,12 +8384,12 @@
       "object": "AcceptSourceSnapshot",
       "span": {
         "column": 1,
-        "end": 37154,
+        "end": 37162,
         "end_column": 46,
         "end_line": 612,
         "line": 612,
         "node": "Span",
-        "start": 37109
+        "start": 37117
       },
       "subject": "PreviewCoordinator",
       "text": "PreviewCoordinator owns AcceptSourceSnapshot.",
@@ -8402,12 +8402,12 @@
       "object": "BuildDesignPreview",
       "span": {
         "column": 1,
-        "end": 37198,
+        "end": 37206,
         "end_column": 44,
         "end_line": 613,
         "line": 613,
         "node": "Span",
-        "start": 37155
+        "start": 37163
       },
       "subject": "PreviewCoordinator",
       "text": "PreviewCoordinator owns BuildDesignPreview.",
@@ -8420,12 +8420,12 @@
       "object": "SdpTool",
       "span": {
         "column": 1,
-        "end": 37229,
+        "end": 37237,
         "end_column": 31,
         "end_line": 614,
         "line": 614,
         "node": "Span",
-        "start": 37199
+        "start": 37207
       },
       "subject": "PreviewSlice",
       "text": "PreviewSlice delivers SdpTool.",
@@ -8438,12 +8438,12 @@
       "property": "implementation-status",
       "span": {
         "column": 1,
-        "end": 37279,
+        "end": 37287,
         "end_column": 50,
         "end_line": 615,
         "line": 615,
         "node": "Span",
-        "start": 37230
+        "start": 37238
       },
       "subject": "PreviewSlice",
       "text": "PreviewSlice has implementation-status = planned.",
@@ -8457,12 +8457,12 @@
       "object": "DeliverSdpTool",
       "span": {
         "column": 1,
-        "end": 37316,
+        "end": 37324,
         "end_column": 37,
         "end_line": 616,
         "line": 616,
         "node": "Span",
-        "start": 37280
+        "start": 37288
       },
       "subject": "PreviewSlice",
       "text": "PreviewSlice refines DeliverSdpTool.",
@@ -8475,12 +8475,12 @@
       "object": "InstallReleaseRecord",
       "span": {
         "column": 1,
-        "end": 37368,
+        "end": 37376,
         "end_column": 52,
         "end_line": 617,
         "line": 617,
         "node": "Span",
-        "start": 37317
+        "start": 37325
       },
       "subject": "ProcessReleaseRecords",
       "text": "ProcessReleaseRecords upholds InstallReleaseRecord.",
@@ -8493,12 +8493,12 @@
       "object": "ResolveProjectContext",
       "span": {
         "column": 1,
-        "end": 37411,
+        "end": 37419,
         "end_column": 43,
         "end_line": 618,
         "line": 618,
         "node": "Span",
-        "start": 37369
+        "start": 37377
       },
       "subject": "ProjectContext",
       "text": "ProjectContext owns ResolveProjectContext.",
@@ -8511,12 +8511,12 @@
       "object": "ResolveProjectContext",
       "span": {
         "column": 1,
-        "end": 37466,
+        "end": 37474,
         "end_column": 55,
         "end_line": 619,
         "line": 619,
         "node": "Span",
-        "start": 37412
+        "start": 37420
       },
       "subject": "ProjectDiscoverySlice",
       "text": "ProjectDiscoverySlice addresses ResolveProjectContext.",
@@ -8529,12 +8529,12 @@
       "object": "SdpTool",
       "span": {
         "column": 1,
-        "end": 37506,
+        "end": 37514,
         "end_column": 40,
         "end_line": 620,
         "line": 620,
         "node": "Span",
-        "start": 37467
+        "start": 37475
       },
       "subject": "ProjectDiscoverySlice",
       "text": "ProjectDiscoverySlice delivers SdpTool.",
@@ -8547,12 +8547,12 @@
       "property": "implementation-status",
       "span": {
         "column": 1,
-        "end": 37569,
+        "end": 37577,
         "end_column": 63,
         "end_line": 621,
         "line": 621,
         "node": "Span",
-        "start": 37507
+        "start": 37515
       },
       "subject": "ProjectDiscoverySlice",
       "text": "ProjectDiscoverySlice has implementation-status = implemented.",
@@ -8566,12 +8566,12 @@
       "object": "DeliverSdpTool",
       "span": {
         "column": 1,
-        "end": 37615,
+        "end": 37623,
         "end_column": 46,
         "end_line": 622,
         "line": 622,
         "node": "Span",
-        "start": 37570
+        "start": 37578
       },
       "subject": "ProjectDiscoverySlice",
       "text": "ProjectDiscoverySlice refines DeliverSdpTool.",
@@ -8585,12 +8585,12 @@
       "object": "InstallationFilesystemPort",
       "span": {
         "column": 1,
-        "end": 37702,
+        "end": 37710,
         "end_column": 87,
         "end_line": 623,
         "line": 623,
         "node": "Span",
-        "start": 37616
+        "start": 37624
       },
       "subject": "ProjectInstallation",
       "text": "ProjectInstallation requires InstallationFilesystemPort in mode InstallationExecution.",
@@ -8604,12 +8604,12 @@
       "object": "ReleaseArtifactPort",
       "span": {
         "column": 1,
-        "end": 37781,
+        "end": 37789,
         "end_column": 79,
         "end_line": 624,
         "line": 624,
         "node": "Span",
-        "start": 37703
+        "start": 37711
       },
       "subject": "ProjectInstallation",
       "text": "ProjectInstallation requires ReleaseArtifactPort in mode InstallationPlanning.",
@@ -8622,12 +8622,12 @@
       "object": "AdoptManualProcess",
       "span": {
         "column": 1,
-        "end": 37827,
+        "end": 37835,
         "end_column": 46,
         "end_line": 625,
         "line": 625,
         "node": "Span",
-        "start": 37782
+        "start": 37790
       },
       "subject": "ProjectMaintainer",
       "text": "ProjectMaintainer pursues AdoptManualProcess.",
@@ -8640,12 +8640,12 @@
       "object": "InstallProjectProcess",
       "span": {
         "column": 1,
-        "end": 37876,
+        "end": 37884,
         "end_column": 49,
         "end_line": 626,
         "line": 626,
         "node": "Span",
-        "start": 37828
+        "start": 37836
       },
       "subject": "ProjectMaintainer",
       "text": "ProjectMaintainer pursues InstallProjectProcess.",
@@ -8658,12 +8658,12 @@
       "object": "RecoverProjectUpgrade",
       "span": {
         "column": 1,
-        "end": 37925,
+        "end": 37933,
         "end_column": 49,
         "end_line": 627,
         "line": 627,
         "node": "Span",
-        "start": 37877
+        "start": 37885
       },
       "subject": "ProjectMaintainer",
       "text": "ProjectMaintainer pursues RecoverProjectUpgrade.",
@@ -8676,12 +8676,12 @@
       "object": "UpgradeProjectProcess",
       "span": {
         "column": 1,
-        "end": 37974,
+        "end": 37982,
         "end_column": 49,
         "end_line": 628,
         "line": 628,
         "node": "Span",
-        "start": 37926
+        "start": 37934
       },
       "subject": "ProjectMaintainer",
       "text": "ProjectMaintainer pursues UpgradeProjectProcess.",
@@ -8695,12 +8695,12 @@
       "object": "SdlProjectionPort",
       "span": {
         "column": 1,
-        "end": 38044,
+        "end": 38052,
         "end_column": 70,
         "end_line": 629,
         "line": 629,
         "node": "Span",
-        "start": 37975
+        "start": 37983
       },
       "subject": "ProjectNavigation",
       "text": "ProjectNavigation requires SdlProjectionPort in mode ProjectBrowsing.",
@@ -8714,12 +8714,12 @@
       "object": "SdpToolProcess",
       "span": {
         "column": 1,
-        "end": 38125,
+        "end": 38133,
         "end_column": 81,
         "end_line": 630,
         "line": 630,
         "node": "Span",
-        "start": 38045
+        "start": 38053
       },
       "subject": "ProposeImplementationSlices",
       "text": "ProposeImplementationSlices allocated-to SdpToolProcess in mode ProcessPlanning.",
@@ -8732,12 +8732,12 @@
       "object": "SdpTool",
       "span": {
         "column": 1,
-        "end": 38177,
+        "end": 38185,
         "end_column": 52,
         "end_line": 631,
         "line": 631,
         "node": "Span",
-        "start": 38126
+        "start": 38134
       },
       "subject": "ProposeImplementationSlices",
       "text": "ProposeImplementationSlices contributes-to SdpTool.",
@@ -8750,12 +8750,12 @@
       "object": "PlanAssistance",
       "span": {
         "column": 1,
-        "end": 38230,
+        "end": 38238,
         "end_column": 53,
         "end_line": 632,
         "line": 632,
         "node": "Span",
-        "start": 38178
+        "start": 38186
       },
       "subject": "ProposeImplementationSlices",
       "text": "ProposeImplementationSlices realizes PlanAssistance.",
@@ -8769,12 +8769,12 @@
       "object": "SdpToolProcess",
       "span": {
         "column": 1,
-        "end": 38318,
+        "end": 38326,
         "end_column": 88,
         "end_line": 633,
         "line": 633,
         "node": "Span",
-        "start": 38231
+        "start": 38239
       },
       "subject": "PublishInstalledProcessFacts",
       "text": "PublishInstalledProcessFacts allocated-to SdpToolProcess in mode InstallationExecution.",
@@ -8788,12 +8788,12 @@
       "object": "SdpToolProcess",
       "span": {
         "column": 1,
-        "end": 38409,
+        "end": 38417,
         "end_column": 91,
         "end_line": 634,
         "line": 634,
         "node": "Span",
-        "start": 38319
+        "start": 38327
       },
       "subject": "PublishInstalledProcessFacts",
       "text": "PublishInstalledProcessFacts allocated-to SdpToolProcess in mode InstallationRecoveryMode.",
@@ -8806,12 +8806,12 @@
       "object": "SdpTool",
       "span": {
         "column": 1,
-        "end": 38462,
+        "end": 38470,
         "end_column": 53,
         "end_line": 635,
         "line": 635,
         "node": "Span",
-        "start": 38410
+        "start": 38418
       },
       "subject": "PublishInstalledProcessFacts",
       "text": "PublishInstalledProcessFacts contributes-to SdpTool.",
@@ -8824,12 +8824,12 @@
       "object": "ProjectInstallation",
       "span": {
         "column": 1,
-        "end": 38521,
+        "end": 38529,
         "end_column": 59,
         "end_line": 636,
         "line": 636,
         "node": "Span",
-        "start": 38463
+        "start": 38471
       },
       "subject": "PublishInstalledProcessFacts",
       "text": "PublishInstalledProcessFacts realizes ProjectInstallation.",
@@ -8842,12 +8842,12 @@
       "property": "message-kind",
       "span": {
         "column": 1,
-        "end": 38575,
+        "end": 38583,
         "end_column": 54,
         "end_line": 637,
         "line": 637,
         "node": "Span",
-        "start": 38522
+        "start": 38530
       },
       "subject": "RecordInstallationRequest",
       "text": "RecordInstallationRequest has message-kind = request.",
@@ -8861,12 +8861,12 @@
       "object": "InstallReceiptRecord",
       "span": {
         "column": 1,
-        "end": 38631,
+        "end": 38639,
         "end_column": 56,
         "end_line": 638,
         "line": 638,
         "node": "Span",
-        "start": 38576
+        "start": 38584
       },
       "subject": "RecordInstallationRequest",
       "text": "RecordInstallationRequest upholds InstallReceiptRecord.",
@@ -8879,12 +8879,12 @@
       "property": "message-kind",
       "span": {
         "column": 1,
-        "end": 38683,
+        "end": 38691,
         "end_column": 52,
         "end_line": 639,
         "line": 639,
         "node": "Span",
-        "start": 38632
+        "start": 38640
       },
       "subject": "RecordInstallationResult",
       "text": "RecordInstallationResult has message-kind = result.",
@@ -8898,12 +8898,12 @@
       "object": "RecordInstallationRequest",
       "span": {
         "column": 1,
-        "end": 38746,
+        "end": 38754,
         "end_column": 63,
         "end_line": 640,
         "line": 640,
         "node": "Span",
-        "start": 38684
+        "start": 38692
       },
       "subject": "RecordInstallationResult",
       "text": "RecordInstallationResult replies-to RecordInstallationRequest.",
@@ -8916,12 +8916,12 @@
       "object": "InstallOutcome",
       "span": {
         "column": 1,
-        "end": 38795,
+        "end": 38803,
         "end_column": 49,
         "end_line": 641,
         "line": 641,
         "node": "Span",
-        "start": 38747
+        "start": 38755
       },
       "subject": "RecordInstallationResult",
       "text": "RecordInstallationResult upholds InstallOutcome.",
@@ -8934,12 +8934,12 @@
       "property": "message-kind",
       "span": {
         "column": 1,
-        "end": 38850,
+        "end": 38858,
         "end_column": 55,
         "end_line": 642,
         "line": 642,
         "node": "Span",
-        "start": 38796
+        "start": 38804
       },
       "subject": "RecoverInstallationRequest",
       "text": "RecoverInstallationRequest has message-kind = request.",
@@ -8953,12 +8953,12 @@
       "object": "InstallResumeArguments",
       "span": {
         "column": 1,
-        "end": 38909,
+        "end": 38917,
         "end_column": 59,
         "end_line": 643,
         "line": 643,
         "node": "Span",
-        "start": 38851
+        "start": 38859
       },
       "subject": "RecoverInstallationRequest",
       "text": "RecoverInstallationRequest upholds InstallResumeArguments.",
@@ -8971,12 +8971,12 @@
       "property": "message-kind",
       "span": {
         "column": 1,
-        "end": 38962,
+        "end": 38970,
         "end_column": 53,
         "end_line": 644,
         "line": 644,
         "node": "Span",
-        "start": 38910
+        "start": 38918
       },
       "subject": "RecoverInstallationResult",
       "text": "RecoverInstallationResult has message-kind = result.",
@@ -8990,12 +8990,12 @@
       "object": "RecoverInstallationRequest",
       "span": {
         "column": 1,
-        "end": 39027,
+        "end": 39035,
         "end_column": 65,
         "end_line": 645,
         "line": 645,
         "node": "Span",
-        "start": 38963
+        "start": 38971
       },
       "subject": "RecoverInstallationResult",
       "text": "RecoverInstallationResult replies-to RecoverInstallationRequest.",
@@ -9008,12 +9008,12 @@
       "object": "InstallOutcome",
       "span": {
         "column": 1,
-        "end": 39077,
+        "end": 39085,
         "end_column": 50,
         "end_line": 646,
         "line": 646,
         "node": "Span",
-        "start": 39028
+        "start": 39036
       },
       "subject": "RecoverInstallationResult",
       "text": "RecoverInstallationResult upholds InstallOutcome.",
@@ -9026,12 +9026,12 @@
       "object": "ReleaseArtifactCallsProtocol",
       "span": {
         "column": 1,
-        "end": 39136,
+        "end": 39144,
         "end_column": 59,
         "end_line": 647,
         "line": 647,
         "node": "Span",
-        "start": 39078
+        "start": 39086
       },
       "subject": "ReleaseArtifactCalls",
       "text": "ReleaseArtifactCalls upholds ReleaseArtifactCallsProtocol.",
@@ -9044,12 +9044,12 @@
       "property": "completeness",
       "span": {
         "column": 1,
-        "end": 39192,
+        "end": 39200,
         "end_column": 56,
         "end_line": 648,
         "line": 648,
         "node": "Span",
-        "start": 39137
+        "start": 39145
       },
       "subject": "ReleaseArtifactCallsProtocol",
       "text": "ReleaseArtifactCallsProtocol has completeness = closed.",
@@ -9063,12 +9063,12 @@
       "object": "FetchProcessArtifactRequest",
       "span": {
         "column": 1,
-        "end": 39258,
+        "end": 39266,
         "end_column": 66,
         "end_line": 649,
         "line": 649,
         "node": "Span",
-        "start": 39193
+        "start": 39201
       },
       "subject": "ReleaseArtifactCallsProtocol",
       "text": "ReleaseArtifactCallsProtocol permits FetchProcessArtifactRequest.",
@@ -9081,12 +9081,12 @@
       "object": "FetchProcessArtifactResult",
       "span": {
         "column": 1,
-        "end": 39323,
+        "end": 39331,
         "end_column": 65,
         "end_line": 650,
         "line": 650,
         "node": "Span",
-        "start": 39259
+        "start": 39267
       },
       "subject": "ReleaseArtifactCallsProtocol",
       "text": "ReleaseArtifactCallsProtocol permits FetchProcessArtifactResult.",
@@ -9099,12 +9099,12 @@
       "object": "ReleaseCatalogStore",
       "span": {
         "column": 1,
-        "end": 39372,
+        "end": 39380,
         "end_column": 49,
         "end_line": 651,
         "line": 651,
         "node": "Span",
-        "start": 39324
+        "start": 39332
       },
       "subject": "ReleaseArtifactService",
       "text": "ReleaseArtifactService owns ReleaseCatalogStore.",
@@ -9120,12 +9120,12 @@
       "role": "receiver",
       "span": {
         "column": 1,
-        "end": 39494,
+        "end": 39502,
         "end_column": 122,
         "end_line": 652,
         "line": 652,
         "node": "Span",
-        "start": 39373
+        "start": 39381
       },
       "subject": "ReleaseArtifactService",
       "text": "ReleaseArtifactService uses ReleaseArtifactCalls as receiver of FetchProcessArtifactRequest in mode InstallationPlanning.",
@@ -9141,12 +9141,12 @@
       "role": "sender",
       "span": {
         "column": 1,
-        "end": 39613,
+        "end": 39621,
         "end_column": 119,
         "end_line": 653,
         "line": 653,
         "node": "Span",
-        "start": 39495
+        "start": 39503
       },
       "subject": "ReleaseArtifactService",
       "text": "ReleaseArtifactService uses ReleaseArtifactCalls as sender of FetchProcessArtifactResult in mode InstallationPlanning.",
@@ -9162,12 +9162,12 @@
       "role": "receiver",
       "span": {
         "column": 1,
-        "end": 39723,
+        "end": 39731,
         "end_column": 110,
         "end_line": 654,
         "line": 654,
         "node": "Span",
-        "start": 39614
+        "start": 39622
       },
       "subject": "ReleaseArtifactService",
       "text": "ReleaseArtifactService uses SdpToolBootstrapCalls as receiver of FetchSdpToolRequest in mode ClientBootstrap.",
@@ -9183,12 +9183,12 @@
       "role": "sender",
       "span": {
         "column": 1,
-        "end": 39832,
+        "end": 39840,
         "end_column": 109,
         "end_line": 655,
         "line": 655,
         "node": "Span",
-        "start": 39724
+        "start": 39732
       },
       "subject": "ReleaseArtifactService",
       "text": "ReleaseArtifactService uses SdpToolBootstrapCalls as sender of FetchSdpToolRejected in mode ClientBootstrap.",
@@ -9204,12 +9204,12 @@
       "role": "sender",
       "span": {
         "column": 1,
-        "end": 39939,
+        "end": 39947,
         "end_column": 107,
         "end_line": 656,
         "line": 656,
         "node": "Span",
-        "start": 39833
+        "start": 39841
       },
       "subject": "ReleaseArtifactService",
       "text": "ReleaseArtifactService uses SdpToolBootstrapCalls as sender of FetchSdpToolResult in mode ClientBootstrap.",
@@ -9222,12 +9222,12 @@
       "object": "ProcessReleaseRecords",
       "span": {
         "column": 1,
-        "end": 39988,
+        "end": 39996,
         "end_column": 49,
         "end_line": 657,
         "line": 657,
         "node": "Span",
-        "start": 39940
+        "start": 39948
       },
       "subject": "ReleaseCatalogStore",
       "text": "ReleaseCatalogStore holds ProcessReleaseRecords.",
@@ -9240,12 +9240,12 @@
       "object": "ReleaseArtifactService",
       "span": {
         "column": 1,
-        "end": 40046,
+        "end": 40054,
         "end_column": 58,
         "end_line": 658,
         "line": 658,
         "node": "Span",
-        "start": 39989
+        "start": 39997
       },
       "subject": "ReleaseRepositoryProcess",
       "text": "ReleaseRepositoryProcess contains ReleaseArtifactService.",
@@ -9258,12 +9258,12 @@
       "object": "ReleaseResolutionCallsProtocol",
       "span": {
         "column": 1,
-        "end": 40109,
+        "end": 40117,
         "end_column": 63,
         "end_line": 659,
         "line": 659,
         "node": "Span",
-        "start": 40047
+        "start": 40055
       },
       "subject": "ReleaseResolutionCalls",
       "text": "ReleaseResolutionCalls upholds ReleaseResolutionCallsProtocol.",
@@ -9276,12 +9276,12 @@
       "property": "completeness",
       "span": {
         "column": 1,
-        "end": 40167,
+        "end": 40175,
         "end_column": 58,
         "end_line": 660,
         "line": 660,
         "node": "Span",
-        "start": 40110
+        "start": 40118
       },
       "subject": "ReleaseResolutionCallsProtocol",
       "text": "ReleaseResolutionCallsProtocol has completeness = closed.",
@@ -9295,12 +9295,12 @@
       "object": "ResolveProcessReleaseRequest",
       "span": {
         "column": 1,
-        "end": 40236,
+        "end": 40244,
         "end_column": 69,
         "end_line": 661,
         "line": 661,
         "node": "Span",
-        "start": 40168
+        "start": 40176
       },
       "subject": "ReleaseResolutionCallsProtocol",
       "text": "ReleaseResolutionCallsProtocol permits ResolveProcessReleaseRequest.",
@@ -9313,12 +9313,12 @@
       "object": "ResolveProcessReleaseResult",
       "span": {
         "column": 1,
-        "end": 40304,
+        "end": 40312,
         "end_column": 68,
         "end_line": 662,
         "line": 662,
         "node": "Span",
-        "start": 40237
+        "start": 40245
       },
       "subject": "ReleaseResolutionCallsProtocol",
       "text": "ReleaseResolutionCallsProtocol permits ResolveProcessReleaseResult.",
@@ -9332,12 +9332,12 @@
       "object": "SdpToolProcess",
       "span": {
         "column": 1,
-        "end": 40378,
+        "end": 40386,
         "end_column": 74,
         "end_line": 663,
         "line": 663,
         "node": "Span",
-        "start": 40305
+        "start": 40313
       },
       "subject": "ResolveCardHistory",
       "text": "ResolveCardHistory allocated-to SdpToolProcess in mode HistoryInspection.",
@@ -9350,12 +9350,12 @@
       "object": "SdpTool",
       "span": {
         "column": 1,
-        "end": 40421,
+        "end": 40429,
         "end_column": 43,
         "end_line": 664,
         "line": 664,
         "node": "Span",
-        "start": 40379
+        "start": 40387
       },
       "subject": "ResolveCardHistory",
       "text": "ResolveCardHistory contributes-to SdpTool.",
@@ -9368,12 +9368,12 @@
       "object": "CardRevisionAccess",
       "span": {
         "column": 1,
-        "end": 40469,
+        "end": 40477,
         "end_column": 48,
         "end_line": 665,
         "line": 665,
         "node": "Span",
-        "start": 40422
+        "start": 40430
       },
       "subject": "ResolveCardHistory",
       "text": "ResolveCardHistory realizes CardRevisionAccess.",
@@ -9387,12 +9387,12 @@
       "object": "SdpToolProcess",
       "span": {
         "column": 1,
-        "end": 40554,
+        "end": 40562,
         "end_column": 85,
         "end_line": 666,
         "line": 666,
         "node": "Span",
-        "start": 40470
+        "start": 40478
       },
       "subject": "ResolveInstallationRelease",
       "text": "ResolveInstallationRelease allocated-to SdpToolProcess in mode InstallationPlanning.",
@@ -9405,12 +9405,12 @@
       "object": "SdpTool",
       "span": {
         "column": 1,
-        "end": 40605,
+        "end": 40613,
         "end_column": 51,
         "end_line": 667,
         "line": 667,
         "node": "Span",
-        "start": 40555
+        "start": 40563
       },
       "subject": "ResolveInstallationRelease",
       "text": "ResolveInstallationRelease contributes-to SdpTool.",
@@ -9423,12 +9423,12 @@
       "object": "ProjectInstallation",
       "span": {
         "column": 1,
-        "end": 40662,
+        "end": 40670,
         "end_column": 57,
         "end_line": 668,
         "line": 668,
         "node": "Span",
-        "start": 40606
+        "start": 40614
       },
       "subject": "ResolveInstallationRelease",
       "text": "ResolveInstallationRelease realizes ProjectInstallation.",
@@ -9441,12 +9441,12 @@
       "property": "message-kind",
       "span": {
         "column": 1,
-        "end": 40719,
+        "end": 40727,
         "end_column": 57,
         "end_line": 669,
         "line": 669,
         "node": "Span",
-        "start": 40663
+        "start": 40671
       },
       "subject": "ResolveProcessReleaseRequest",
       "text": "ResolveProcessReleaseRequest has message-kind = request.",
@@ -9460,12 +9460,12 @@
       "object": "InstallReleaseArguments",
       "span": {
         "column": 1,
-        "end": 40781,
+        "end": 40789,
         "end_column": 62,
         "end_line": 670,
         "line": 670,
         "node": "Span",
-        "start": 40720
+        "start": 40728
       },
       "subject": "ResolveProcessReleaseRequest",
       "text": "ResolveProcessReleaseRequest upholds InstallReleaseArguments.",
@@ -9478,12 +9478,12 @@
       "property": "message-kind",
       "span": {
         "column": 1,
-        "end": 40836,
+        "end": 40844,
         "end_column": 55,
         "end_line": 671,
         "line": 671,
         "node": "Span",
-        "start": 40782
+        "start": 40790
       },
       "subject": "ResolveProcessReleaseResult",
       "text": "ResolveProcessReleaseResult has message-kind = result.",
@@ -9497,12 +9497,12 @@
       "object": "ResolveProcessReleaseRequest",
       "span": {
         "column": 1,
-        "end": 40905,
+        "end": 40913,
         "end_column": 69,
         "end_line": 672,
         "line": 672,
         "node": "Span",
-        "start": 40837
+        "start": 40845
       },
       "subject": "ResolveProcessReleaseResult",
       "text": "ResolveProcessReleaseResult replies-to ResolveProcessReleaseRequest.",
@@ -9515,12 +9515,12 @@
       "object": "InstallOutcome",
       "span": {
         "column": 1,
-        "end": 40957,
+        "end": 40965,
         "end_column": 52,
         "end_line": 673,
         "line": 673,
         "node": "Span",
-        "start": 40906
+        "start": 40914
       },
       "subject": "ResolveProcessReleaseResult",
       "text": "ResolveProcessReleaseResult upholds InstallOutcome.",
@@ -9534,12 +9534,12 @@
       "object": "SdpToolProcess",
       "span": {
         "column": 1,
-        "end": 41032,
+        "end": 41040,
         "end_column": 75,
         "end_line": 674,
         "line": 674,
         "node": "Span",
-        "start": 40958
+        "start": 40966
       },
       "subject": "ResolveProjectContext",
       "text": "ResolveProjectContext allocated-to SdpToolProcess in mode ProjectBrowsing.",
@@ -9552,12 +9552,12 @@
       "object": "SdpTool",
       "span": {
         "column": 1,
-        "end": 41078,
+        "end": 41086,
         "end_column": 46,
         "end_line": 675,
         "line": 675,
         "node": "Span",
-        "start": 41033
+        "start": 41041
       },
       "subject": "ResolveProjectContext",
       "text": "ResolveProjectContext contributes-to SdpTool.",
@@ -9570,12 +9570,12 @@
       "object": "ProjectNavigation",
       "span": {
         "column": 1,
-        "end": 41128,
+        "end": 41136,
         "end_column": 50,
         "end_line": 676,
         "line": 676,
         "node": "Span",
-        "start": 41079
+        "start": 41087
       },
       "subject": "ResolveProjectContext",
       "text": "ResolveProjectContext realizes ProjectNavigation.",
@@ -9589,12 +9589,12 @@
       "object": "SdpToolProcess",
       "span": {
         "column": 1,
-        "end": 41218,
+        "end": 41226,
         "end_column": 90,
         "end_line": 677,
         "line": 677,
         "node": "Span",
-        "start": 41129
+        "start": 41137
       },
       "subject": "ResumeInstallationOperation",
       "text": "ResumeInstallationOperation allocated-to SdpToolProcess in mode InstallationRecoveryMode.",
@@ -9607,12 +9607,12 @@
       "object": "SdpTool",
       "span": {
         "column": 1,
-        "end": 41270,
+        "end": 41278,
         "end_column": 52,
         "end_line": 678,
         "line": 678,
         "node": "Span",
-        "start": 41219
+        "start": 41227
       },
       "subject": "ResumeInstallationOperation",
       "text": "ResumeInstallationOperation contributes-to SdpTool.",
@@ -9625,12 +9625,12 @@
       "object": "InstallationRecovery",
       "span": {
         "column": 1,
-        "end": 41329,
+        "end": 41337,
         "end_column": 59,
         "end_line": 679,
         "line": 679,
         "node": "Span",
-        "start": 41271
+        "start": 41279
       },
       "subject": "ResumeInstallationOperation",
       "text": "ResumeInstallationOperation realizes InstallationRecovery.",
@@ -9643,12 +9643,12 @@
       "property": "message-kind",
       "span": {
         "column": 1,
-        "end": 41383,
+        "end": 41391,
         "end_column": 54,
         "end_line": 680,
         "line": 680,
         "node": "Span",
-        "start": 41330
+        "start": 41338
       },
       "subject": "ResumeInstallationRejected",
       "text": "ResumeInstallationRejected has message-kind = result.",
@@ -9662,12 +9662,12 @@
       "object": "ResumeInstallationRequest",
       "span": {
         "column": 1,
-        "end": 41448,
+        "end": 41456,
         "end_column": 65,
         "end_line": 681,
         "line": 681,
         "node": "Span",
-        "start": 41384
+        "start": 41392
       },
       "subject": "ResumeInstallationRejected",
       "text": "ResumeInstallationRejected replies-to ResumeInstallationRequest.",
@@ -9680,12 +9680,12 @@
       "object": "InstallOutcome",
       "span": {
         "column": 1,
-        "end": 41499,
+        "end": 41507,
         "end_column": 51,
         "end_line": 682,
         "line": 682,
         "node": "Span",
-        "start": 41449
+        "start": 41457
       },
       "subject": "ResumeInstallationRejected",
       "text": "ResumeInstallationRejected upholds InstallOutcome.",
@@ -9698,12 +9698,12 @@
       "property": "message-kind",
       "span": {
         "column": 1,
-        "end": 41553,
+        "end": 41561,
         "end_column": 54,
         "end_line": 683,
         "line": 683,
         "node": "Span",
-        "start": 41500
+        "start": 41508
       },
       "subject": "ResumeInstallationRequest",
       "text": "ResumeInstallationRequest has message-kind = request.",
@@ -9717,12 +9717,12 @@
       "object": "InstallResumeArguments",
       "span": {
         "column": 1,
-        "end": 41611,
+        "end": 41619,
         "end_column": 58,
         "end_line": 684,
         "line": 684,
         "node": "Span",
-        "start": 41554
+        "start": 41562
       },
       "subject": "ResumeInstallationRequest",
       "text": "ResumeInstallationRequest upholds InstallResumeArguments.",
@@ -9735,12 +9735,12 @@
       "property": "message-kind",
       "span": {
         "column": 1,
-        "end": 41663,
+        "end": 41671,
         "end_column": 52,
         "end_line": 685,
         "line": 685,
         "node": "Span",
-        "start": 41612
+        "start": 41620
       },
       "subject": "ResumeInstallationResult",
       "text": "ResumeInstallationResult has message-kind = result.",
@@ -9754,12 +9754,12 @@
       "object": "ResumeInstallationRequest",
       "span": {
         "column": 1,
-        "end": 41726,
+        "end": 41734,
         "end_column": 63,
         "end_line": 686,
         "line": 686,
         "node": "Span",
-        "start": 41664
+        "start": 41672
       },
       "subject": "ResumeInstallationResult",
       "text": "ResumeInstallationResult replies-to ResumeInstallationRequest.",
@@ -9772,12 +9772,12 @@
       "object": "InstallOutcome",
       "span": {
         "column": 1,
-        "end": 41775,
+        "end": 41783,
         "end_column": 49,
         "end_line": 687,
         "line": 687,
         "node": "Span",
-        "start": 41727
+        "start": 41735
       },
       "subject": "ResumeInstallationResult",
       "text": "ResumeInstallationResult upholds InstallOutcome.",
@@ -9791,12 +9791,12 @@
       "object": "GhSdpProcess",
       "span": {
         "column": 1,
-        "end": 41848,
+        "end": 41856,
         "end_column": 73,
         "end_line": 688,
         "line": 688,
         "node": "Span",
-        "start": 41776
+        "start": 41784
       },
       "subject": "RetrieveSdpToolBinary",
       "text": "RetrieveSdpToolBinary allocated-to GhSdpProcess in mode ClientBootstrap.",
@@ -9809,12 +9809,12 @@
       "object": "SdpTool",
       "span": {
         "column": 1,
-        "end": 41894,
+        "end": 41902,
         "end_column": 46,
         "end_line": 689,
         "line": 689,
         "node": "Span",
-        "start": 41849
+        "start": 41857
       },
       "subject": "RetrieveSdpToolBinary",
       "text": "RetrieveSdpToolBinary contributes-to SdpTool.",
@@ -9827,12 +9827,12 @@
       "object": "SdpToolBootstrap",
       "span": {
         "column": 1,
-        "end": 41943,
+        "end": 41951,
         "end_column": 49,
         "end_line": 690,
         "line": 690,
         "node": "Span",
-        "start": 41895
+        "start": 41903
       },
       "subject": "RetrieveSdpToolBinary",
       "text": "RetrieveSdpToolBinary realizes SdpToolBootstrap.",
@@ -9845,12 +9845,12 @@
       "object": "InstallPlanRecord",
       "span": {
         "column": 1,
-        "end": 41996,
+        "end": 42004,
         "end_column": 53,
         "end_line": 691,
         "line": 691,
         "node": "Span",
-        "start": 41944
+        "start": 41952
       },
       "subject": "ReviewedInstallationPlans",
       "text": "ReviewedInstallationPlans upholds InstallPlanRecord.",
@@ -9863,12 +9863,12 @@
       "object": "BuildDesignPreview",
       "span": {
         "column": 1,
-        "end": 42043,
+        "end": 42051,
         "end_column": 47,
         "end_line": 692,
         "line": 692,
         "node": "Span",
-        "start": 41997
+        "start": 42005
       },
       "subject": "SavedFilePreview",
       "text": "SavedFilePreview addresses BuildDesignPreview.",
@@ -9881,12 +9881,12 @@
       "object": "DeliverViewBundle",
       "span": {
         "column": 1,
-        "end": 42089,
+        "end": 42097,
         "end_column": 46,
         "end_line": 693,
         "line": 693,
         "node": "Span",
-        "start": 42044
+        "start": 42052
       },
       "subject": "SavedFilePreview",
       "text": "SavedFilePreview addresses DeliverViewBundle.",
@@ -9899,12 +9899,12 @@
       "property": "implementation-status",
       "span": {
         "column": 1,
-        "end": 42147,
+        "end": 42155,
         "end_column": 58,
         "end_line": 694,
         "line": 694,
         "node": "Span",
-        "start": 42090
+        "start": 42098
       },
       "subject": "SavedFilePreview",
       "text": "SavedFilePreview has implementation-status = implemented.",
@@ -9918,12 +9918,12 @@
       "object": "PreviewSlice",
       "span": {
         "column": 1,
-        "end": 42186,
+        "end": 42194,
         "end_column": 39,
         "end_line": 695,
         "line": 695,
         "node": "Span",
-        "start": 42148
+        "start": 42156
       },
       "subject": "SavedFilePreview",
       "text": "SavedFilePreview refines PreviewSlice.",
@@ -9936,12 +9936,12 @@
       "object": "AdoptManualProcess",
       "span": {
         "column": 1,
-        "end": 42223,
+        "end": 42231,
         "end_column": 37,
         "end_line": 696,
         "line": 696,
         "node": "Span",
-        "start": 42187
+        "start": 42195
       },
       "subject": "SdpTool",
       "text": "SdpTool supports AdoptManualProcess.",
@@ -9954,12 +9954,12 @@
       "object": "BrowseProject",
       "span": {
         "column": 1,
-        "end": 42255,
+        "end": 42263,
         "end_column": 32,
         "end_line": 697,
         "line": 697,
         "node": "Span",
-        "start": 42224
+        "start": 42232
       },
       "subject": "SdpTool",
       "text": "SdpTool supports BrowseProject.",
@@ -9972,12 +9972,12 @@
       "object": "InspectCardHistory",
       "span": {
         "column": 1,
-        "end": 42292,
+        "end": 42300,
         "end_column": 37,
         "end_line": 698,
         "line": 698,
         "node": "Span",
-        "start": 42256
+        "start": 42264
       },
       "subject": "SdpTool",
       "text": "SdpTool supports InspectCardHistory.",
@@ -9990,12 +9990,12 @@
       "object": "InstallProjectProcess",
       "span": {
         "column": 1,
-        "end": 42332,
+        "end": 42340,
         "end_column": 40,
         "end_line": 699,
         "line": 699,
         "node": "Span",
-        "start": 42293
+        "start": 42301
       },
       "subject": "SdpTool",
       "text": "SdpTool supports InstallProjectProcess.",
@@ -10008,12 +10008,12 @@
       "object": "PreviewDesign",
       "span": {
         "column": 1,
-        "end": 42364,
+        "end": 42372,
         "end_column": 32,
         "end_line": 700,
         "line": 700,
         "node": "Span",
-        "start": 42333
+        "start": 42341
       },
       "subject": "SdpTool",
       "text": "SdpTool supports PreviewDesign.",
@@ -10026,12 +10026,12 @@
       "object": "RecoverProjectUpgrade",
       "span": {
         "column": 1,
-        "end": 42404,
+        "end": 42412,
         "end_column": 40,
         "end_line": 701,
         "line": 701,
         "node": "Span",
-        "start": 42365
+        "start": 42373
       },
       "subject": "SdpTool",
       "text": "SdpTool supports RecoverProjectUpgrade.",
@@ -10044,12 +10044,12 @@
       "object": "ReviewImplementationPlan",
       "span": {
         "column": 1,
-        "end": 42447,
+        "end": 42455,
         "end_column": 43,
         "end_line": 702,
         "line": 702,
         "node": "Span",
-        "start": 42405
+        "start": 42413
       },
       "subject": "SdpTool",
       "text": "SdpTool supports ReviewImplementationPlan.",
@@ -10062,12 +10062,12 @@
       "object": "UpgradeProjectProcess",
       "span": {
         "column": 1,
-        "end": 42487,
+        "end": 42495,
         "end_column": 40,
         "end_line": 703,
         "line": 703,
         "node": "Span",
-        "start": 42448
+        "start": 42456
       },
       "subject": "SdpTool",
       "text": "SdpTool supports UpgradeProjectProcess.",
@@ -10081,12 +10081,12 @@
       "object": "SdpToolInvocationPort",
       "span": {
         "column": 1,
-        "end": 42560,
+        "end": 42568,
         "end_column": 73,
         "end_line": 704,
         "line": 704,
         "node": "Span",
-        "start": 42488
+        "start": 42496
       },
       "subject": "SdpToolBootstrap",
       "text": "SdpToolBootstrap requires SdpToolInvocationPort in mode ClientBootstrap.",
@@ -10099,12 +10099,12 @@
       "object": "SdpToolBootstrapCallsProtocol",
       "span": {
         "column": 1,
-        "end": 42621,
+        "end": 42629,
         "end_column": 61,
         "end_line": 705,
         "line": 705,
         "node": "Span",
-        "start": 42561
+        "start": 42569
       },
       "subject": "SdpToolBootstrapCalls",
       "text": "SdpToolBootstrapCalls upholds SdpToolBootstrapCallsProtocol.",
@@ -10117,12 +10117,12 @@
       "property": "completeness",
       "span": {
         "column": 1,
-        "end": 42678,
+        "end": 42686,
         "end_column": 57,
         "end_line": 706,
         "line": 706,
         "node": "Span",
-        "start": 42622
+        "start": 42630
       },
       "subject": "SdpToolBootstrapCallsProtocol",
       "text": "SdpToolBootstrapCallsProtocol has completeness = closed.",
@@ -10136,12 +10136,12 @@
       "object": "FetchSdpToolRejected",
       "span": {
         "column": 1,
-        "end": 42738,
+        "end": 42746,
         "end_column": 60,
         "end_line": 707,
         "line": 707,
         "node": "Span",
-        "start": 42679
+        "start": 42687
       },
       "subject": "SdpToolBootstrapCallsProtocol",
       "text": "SdpToolBootstrapCallsProtocol permits FetchSdpToolRejected.",
@@ -10154,12 +10154,12 @@
       "object": "FetchSdpToolRequest",
       "span": {
         "column": 1,
-        "end": 42797,
+        "end": 42805,
         "end_column": 59,
         "end_line": 708,
         "line": 708,
         "node": "Span",
-        "start": 42739
+        "start": 42747
       },
       "subject": "SdpToolBootstrapCallsProtocol",
       "text": "SdpToolBootstrapCallsProtocol permits FetchSdpToolRequest.",
@@ -10172,12 +10172,12 @@
       "object": "FetchSdpToolResult",
       "span": {
         "column": 1,
-        "end": 42855,
+        "end": 42863,
         "end_column": 58,
         "end_line": 709,
         "line": 709,
         "node": "Span",
-        "start": 42798
+        "start": 42806
       },
       "subject": "SdpToolBootstrapCallsProtocol",
       "text": "SdpToolBootstrapCallsProtocol permits FetchSdpToolResult.",
@@ -10190,12 +10190,12 @@
       "object": "UpgradeProjectProcess",
       "span": {
         "column": 1,
-        "end": 42913,
+        "end": 42921,
         "end_column": 58,
         "end_line": 710,
         "line": 710,
         "node": "Span",
-        "start": 42856
+        "start": 42864
       },
       "subject": "SdpToolBootstrapPrepared",
       "text": "SdpToolBootstrapPrepared exercises UpgradeProjectProcess.",
@@ -10208,12 +10208,12 @@
       "property": "completeness",
       "span": {
         "column": 1,
-        "end": 42965,
+        "end": 42973,
         "end_column": 52,
         "end_line": 711,
         "line": 711,
         "node": "Span",
-        "start": 42914
+        "start": 42922
       },
       "subject": "SdpToolBootstrapPrepared",
       "text": "SdpToolBootstrapPrepared has completeness = closed.",
@@ -10227,12 +10227,12 @@
       "object": "GhSdpClientSlice",
       "span": {
         "column": 1,
-        "end": 43020,
+        "end": 43028,
         "end_column": 55,
         "end_line": 712,
         "line": 712,
         "node": "Span",
-        "start": 42966
+        "start": 42974
       },
       "subject": "SdpToolBootstrapPrepared",
       "text": "SdpToolBootstrapPrepared illustrates GhSdpClientSlice.",
@@ -10245,12 +10245,12 @@
       "object": "ClientBootstrap",
       "span": {
         "column": 1,
-        "end": 43070,
+        "end": 43078,
         "end_column": 50,
         "end_line": 713,
         "line": 713,
         "node": "Span",
-        "start": 43021
+        "start": 43029
       },
       "subject": "SdpToolBootstrapPrepared",
       "text": "SdpToolBootstrapPrepared runs-in ClientBootstrap.",
@@ -10268,12 +10268,12 @@
       "sender": "GhSdpLauncher",
       "span": {
         "column": 1,
-        "end": 43200,
+        "end": 43208,
         "end_column": 130,
         "end_line": 714,
         "line": 714,
         "node": "Span",
-        "start": 43071
+        "start": 43079
       },
       "subject": "SdpToolBootstrapPrepared",
       "text": "SdpToolBootstrapPrepared step 1 sends FetchSdpToolRequest from GhSdpLauncher to ReleaseArtifactService via SdpToolBootstrapCalls.",
@@ -10292,12 +10292,12 @@
       "sender": "ReleaseArtifactService",
       "span": {
         "column": 1,
-        "end": 43340,
+        "end": 43348,
         "end_column": 140,
         "end_line": 715,
         "line": 715,
         "node": "Span",
-        "start": 43201
+        "start": 43209
       },
       "subject": "SdpToolBootstrapPrepared",
       "text": "SdpToolBootstrapPrepared step 2 sends FetchSdpToolResult from ReleaseArtifactService to GhSdpLauncher via SdpToolBootstrapCalls reply-to 1.",
@@ -10311,12 +10311,12 @@
       "object": "CardHistory",
       "span": {
         "column": 1,
-        "end": 43377,
+        "end": 43385,
         "end_column": 37,
         "end_line": 716,
         "line": 716,
         "node": "Span",
-        "start": 43341
+        "start": 43349
       },
       "subject": "SdpToolProcess",
       "text": "SdpToolProcess contains CardHistory.",
@@ -10329,12 +10329,12 @@
       "object": "InstallationBaselineInspector",
       "span": {
         "column": 1,
-        "end": 43432,
+        "end": 43440,
         "end_column": 55,
         "end_line": 717,
         "line": 717,
         "node": "Span",
-        "start": 43378
+        "start": 43386
       },
       "subject": "SdpToolProcess",
       "text": "SdpToolProcess contains InstallationBaselineInspector.",
@@ -10347,12 +10347,12 @@
       "object": "InstallationCoordinator",
       "span": {
         "column": 1,
-        "end": 43481,
+        "end": 43489,
         "end_column": 49,
         "end_line": 718,
         "line": 718,
         "node": "Span",
-        "start": 43433
+        "start": 43441
       },
       "subject": "SdpToolProcess",
       "text": "SdpToolProcess contains InstallationCoordinator.",
@@ -10365,12 +10365,12 @@
       "object": "InstallationExecutor",
       "span": {
         "column": 1,
-        "end": 43527,
+        "end": 43535,
         "end_column": 46,
         "end_line": 719,
         "line": 719,
         "node": "Span",
-        "start": 43482
+        "start": 43490
       },
       "subject": "SdpToolProcess",
       "text": "SdpToolProcess contains InstallationExecutor.",
@@ -10383,12 +10383,12 @@
       "object": "InstallationJournal",
       "span": {
         "column": 1,
-        "end": 43572,
+        "end": 43580,
         "end_column": 45,
         "end_line": 720,
         "line": 720,
         "node": "Span",
-        "start": 43528
+        "start": 43536
       },
       "subject": "SdpToolProcess",
       "text": "SdpToolProcess contains InstallationJournal.",
@@ -10401,12 +10401,12 @@
       "object": "InstallationPlanner",
       "span": {
         "column": 1,
-        "end": 43617,
+        "end": 43625,
         "end_column": 45,
         "end_line": 721,
         "line": 721,
         "node": "Span",
-        "start": 43573
+        "start": 43581
       },
       "subject": "SdpToolProcess",
       "text": "SdpToolProcess contains InstallationPlanner.",
@@ -10419,12 +10419,12 @@
       "object": "InstallationRecorder",
       "span": {
         "column": 1,
-        "end": 43663,
+        "end": 43671,
         "end_column": 46,
         "end_line": 722,
         "line": 722,
         "node": "Span",
-        "start": 43618
+        "start": 43626
       },
       "subject": "SdpToolProcess",
       "text": "SdpToolProcess contains InstallationRecorder.",
@@ -10437,12 +10437,12 @@
       "object": "InstallationReleaseResolver",
       "span": {
         "column": 1,
-        "end": 43716,
+        "end": 43724,
         "end_column": 53,
         "end_line": 723,
         "line": 723,
         "node": "Span",
-        "start": 43664
+        "start": 43672
       },
       "subject": "SdpToolProcess",
       "text": "SdpToolProcess contains InstallationReleaseResolver.",
@@ -10455,12 +10455,12 @@
       "object": "NavigationInventory",
       "span": {
         "column": 1,
-        "end": 43761,
+        "end": 43769,
         "end_column": 45,
         "end_line": 724,
         "line": 724,
         "node": "Span",
-        "start": 43717
+        "start": 43725
       },
       "subject": "SdpToolProcess",
       "text": "SdpToolProcess contains NavigationInventory.",
@@ -10473,12 +10473,12 @@
       "object": "PlanCoordinator",
       "span": {
         "column": 1,
-        "end": 43802,
+        "end": 43810,
         "end_column": 41,
         "end_line": 725,
         "line": 725,
         "node": "Span",
-        "start": 43762
+        "start": 43770
       },
       "subject": "SdpToolProcess",
       "text": "SdpToolProcess contains PlanCoordinator.",
@@ -10491,12 +10491,12 @@
       "object": "PreviewCoordinator",
       "span": {
         "column": 1,
-        "end": 43846,
+        "end": 43854,
         "end_column": 44,
         "end_line": 726,
         "line": 726,
         "node": "Span",
-        "start": 43803
+        "start": 43811
       },
       "subject": "SdpToolProcess",
       "text": "SdpToolProcess contains PreviewCoordinator.",
@@ -10509,12 +10509,12 @@
       "object": "ProjectContext",
       "span": {
         "column": 1,
-        "end": 43886,
+        "end": 43894,
         "end_column": 40,
         "end_line": 727,
         "line": 727,
         "node": "Span",
-        "start": 43847
+        "start": 43855
       },
       "subject": "SdpToolProcess",
       "text": "SdpToolProcess contains ProjectContext.",
@@ -10527,12 +10527,12 @@
       "object": "ViewerBridge",
       "span": {
         "column": 1,
-        "end": 43924,
+        "end": 43932,
         "end_column": 38,
         "end_line": 728,
         "line": 728,
         "node": "Span",
-        "start": 43887
+        "start": 43895
       },
       "subject": "SdpToolProcess",
       "text": "SdpToolProcess contains ViewerBridge.",
@@ -10545,12 +10545,12 @@
       "object": "CardRevisionAccess",
       "span": {
         "column": 1,
-        "end": 43968,
+        "end": 43976,
         "end_column": 44,
         "end_line": 729,
         "line": 729,
         "node": "Span",
-        "start": 43925
+        "start": 43933
       },
       "subject": "SdpToolProcess",
       "text": "SdpToolProcess provides CardRevisionAccess.",
@@ -10563,12 +10563,12 @@
       "object": "DesignPreview",
       "span": {
         "column": 1,
-        "end": 44007,
+        "end": 44015,
         "end_column": 39,
         "end_line": 730,
         "line": 730,
         "node": "Span",
-        "start": 43969
+        "start": 43977
       },
       "subject": "SdpToolProcess",
       "text": "SdpToolProcess provides DesignPreview.",
@@ -10581,12 +10581,12 @@
       "object": "InstallationRecovery",
       "span": {
         "column": 1,
-        "end": 44053,
+        "end": 44061,
         "end_column": 46,
         "end_line": 731,
         "line": 731,
         "node": "Span",
-        "start": 44008
+        "start": 44016
       },
       "subject": "SdpToolProcess",
       "text": "SdpToolProcess provides InstallationRecovery.",
@@ -10599,12 +10599,12 @@
       "object": "ManualProcessAdoption",
       "span": {
         "column": 1,
-        "end": 44100,
+        "end": 44108,
         "end_column": 47,
         "end_line": 732,
         "line": 732,
         "node": "Span",
-        "start": 44054
+        "start": 44062
       },
       "subject": "SdpToolProcess",
       "text": "SdpToolProcess provides ManualProcessAdoption.",
@@ -10617,12 +10617,12 @@
       "object": "PlanAssistance",
       "span": {
         "column": 1,
-        "end": 44140,
+        "end": 44148,
         "end_column": 40,
         "end_line": 733,
         "line": 733,
         "node": "Span",
-        "start": 44101
+        "start": 44109
       },
       "subject": "SdpToolProcess",
       "text": "SdpToolProcess provides PlanAssistance.",
@@ -10635,12 +10635,12 @@
       "object": "ProjectInstallation",
       "span": {
         "column": 1,
-        "end": 44185,
+        "end": 44193,
         "end_column": 45,
         "end_line": 734,
         "line": 734,
         "node": "Span",
-        "start": 44141
+        "start": 44149
       },
       "subject": "SdpToolProcess",
       "text": "SdpToolProcess provides ProjectInstallation.",
@@ -10653,12 +10653,12 @@
       "object": "ProjectNavigation",
       "span": {
         "column": 1,
-        "end": 44228,
+        "end": 44236,
         "end_column": 43,
         "end_line": 735,
         "line": 735,
         "node": "Span",
-        "start": 44186
+        "start": 44194
       },
       "subject": "SdpToolProcess",
       "text": "SdpToolProcess provides ProjectNavigation.",
@@ -10671,12 +10671,12 @@
       "object": "AcceptSourceSnapshot",
       "span": {
         "column": 1,
-        "end": 44281,
+        "end": 44289,
         "end_column": 53,
         "end_line": 736,
         "line": 736,
         "node": "Span",
-        "start": 44229
+        "start": 44237
       },
       "subject": "UnsavedSourcePreview",
       "text": "UnsavedSourcePreview addresses AcceptSourceSnapshot.",
@@ -10689,12 +10689,12 @@
       "object": "SavedFilePreview",
       "span": {
         "column": 1,
-        "end": 44331,
+        "end": 44339,
         "end_column": 50,
         "end_line": 737,
         "line": 737,
         "node": "Span",
-        "start": 44282
+        "start": 44290
       },
       "subject": "UnsavedSourcePreview",
       "text": "UnsavedSourcePreview depends-on SavedFilePreview.",
@@ -10707,12 +10707,12 @@
       "property": "implementation-status",
       "span": {
         "column": 1,
-        "end": 44389,
+        "end": 44397,
         "end_column": 58,
         "end_line": 738,
         "line": 738,
         "node": "Span",
-        "start": 44332
+        "start": 44340
       },
       "subject": "UnsavedSourcePreview",
       "text": "UnsavedSourcePreview has implementation-status = planned.",
@@ -10726,12 +10726,12 @@
       "object": "PreviewSlice",
       "span": {
         "column": 1,
-        "end": 44432,
+        "end": 44440,
         "end_column": 43,
         "end_line": 739,
         "line": 739,
         "node": "Span",
-        "start": 44390
+        "start": 44398
       },
       "subject": "UnsavedSourcePreview",
       "text": "UnsavedSourcePreview refines PreviewSlice.",
@@ -10745,12 +10745,12 @@
       "object": "SdpToolProcess",
       "span": {
         "column": 1,
-        "end": 44515,
+        "end": 44523,
         "end_column": 83,
         "end_line": 740,
         "line": 740,
         "node": "Span",
-        "start": 44433
+        "start": 44441
       },
       "subject": "ValidateAdoptionBaseline",
       "text": "ValidateAdoptionBaseline allocated-to SdpToolProcess in mode InstallationPlanning.",
@@ -10763,12 +10763,12 @@
       "object": "SdpTool",
       "span": {
         "column": 1,
-        "end": 44564,
+        "end": 44572,
         "end_column": 49,
         "end_line": 741,
         "line": 741,
         "node": "Span",
-        "start": 44516
+        "start": 44524
       },
       "subject": "ValidateAdoptionBaseline",
       "text": "ValidateAdoptionBaseline contributes-to SdpTool.",
@@ -10781,12 +10781,12 @@
       "object": "ManualProcessAdoption",
       "span": {
         "column": 1,
-        "end": 44621,
+        "end": 44629,
         "end_column": 57,
         "end_line": 742,
         "line": 742,
         "node": "Span",
-        "start": 44565
+        "start": 44573
       },
       "subject": "ValidateAdoptionBaseline",
       "text": "ValidateAdoptionBaseline realizes ManualProcessAdoption.",
@@ -10800,12 +10800,12 @@
       "object": "SdpToolProcess",
       "span": {
         "column": 1,
-        "end": 44701,
+        "end": 44709,
         "end_column": 80,
         "end_line": 743,
         "line": 743,
         "node": "Span",
-        "start": 44622
+        "start": 44630
       },
       "subject": "ValidateImplementationPlan",
       "text": "ValidateImplementationPlan allocated-to SdpToolProcess in mode ProcessPlanning.",
@@ -10818,12 +10818,12 @@
       "object": "SdpTool",
       "span": {
         "column": 1,
-        "end": 44752,
+        "end": 44760,
         "end_column": 51,
         "end_line": 744,
         "line": 744,
         "node": "Span",
-        "start": 44702
+        "start": 44710
       },
       "subject": "ValidateImplementationPlan",
       "text": "ValidateImplementationPlan contributes-to SdpTool.",
@@ -10836,12 +10836,12 @@
       "object": "PlanAssistance",
       "span": {
         "column": 1,
-        "end": 44804,
+        "end": 44812,
         "end_column": 52,
         "end_line": 745,
         "line": 745,
         "node": "Span",
-        "start": 44753
+        "start": 44761
       },
       "subject": "ValidateImplementationPlan",
       "text": "ValidateImplementationPlan realizes PlanAssistance.",
@@ -10854,12 +10854,12 @@
       "object": "ViewerDeliveryPort",
       "span": {
         "column": 1,
-        "end": 44846,
+        "end": 44854,
         "end_column": 42,
         "end_line": 746,
         "line": 746,
         "node": "Span",
-        "start": 44805
+        "start": 44813
       },
       "subject": "ViewerBridge",
       "text": "ViewerBridge consumes ViewerDeliveryPort.",
@@ -10872,12 +10872,12 @@
       "object": "DeliverViewBundle",
       "span": {
         "column": 1,
-        "end": 44883,
+        "end": 44891,
         "end_column": 37,
         "end_line": 747,
         "line": 747,
         "node": "Span",
-        "start": 44847
+        "start": 44855
       },
       "subject": "ViewerBridge",
       "text": "ViewerBridge owns DeliverViewBundle.",
@@ -10888,7 +10888,7 @@
   "outputs": {
     "delivery.txt": "6403203dd5a0867eb14d104ee8a73730bd72dd9ad92e78d996a6dba0a5dcfc01",
     "diagrams/VP02-SdpToolProcess.mmd": "c8447ab6acfa84170a3c021966a860013e40c3c70fb59c1e8c278152d450ab45",
-    "entry.md": "3cd4d0f6f85dc3ac77525fba4836a42e2edf022f3bcc16a54cb065d1f6c37a2a",
+    "entry.md": "0b6a39c6e7c5f349547418add6bb2f4b77a5926f387a8fbe4452c545782f49d8",
     "selection.json": "5d16aebc6998ace4a905f9ab9731e4be7ba498f3c03c1a9598e76d4083cd4f16"
   }
 }
