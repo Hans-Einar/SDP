@@ -1,0 +1,664 @@
+{
+  "baseline": "2ff71c4a033aa1393e02657777e85f5fb67ccefd",
+  "cases": {
+    "current": {
+      "preserves_authored_delivery_owner": true,
+      "source_sha256": "44adae9604a5f555c3ac4e00eb77c5cc2a28da2979ed7e84d3e411252a0b9a35",
+      "valid": true,
+      "views": {
+        "VP03-PreviewCoordinator": {
+          "diagram_ids": [
+            "VP03-DesignPreview"
+          ],
+          "fact_count": 19,
+          "manifest_sha256": "7775257c1b613070f038d9a42a1b33332ddcb3a385e6f49f1c05f3f55b9cd52c",
+          "ownership_facts": [
+            {
+              "id": "f0057",
+              "line": 105,
+              "node": "Relation",
+              "object": "AcceptSourceSnapshot",
+              "span": {
+                "column": 1,
+                "end": 4162,
+                "end_column": 46,
+                "end_line": 105,
+                "line": 105,
+                "node": "Span",
+                "start": 4117
+              },
+              "subject": "PreviewCoordinator",
+              "text": "PreviewCoordinator owns AcceptSourceSnapshot.",
+              "verb": "owns"
+            },
+            {
+              "id": "f0058",
+              "line": 106,
+              "node": "Relation",
+              "object": "BuildDesignPreview",
+              "span": {
+                "column": 1,
+                "end": 4206,
+                "end_column": 44,
+                "end_line": 106,
+                "line": 106,
+                "node": "Span",
+                "start": 4163
+              },
+              "subject": "PreviewCoordinator",
+              "text": "PreviewCoordinator owns BuildDesignPreview.",
+              "verb": "owns"
+            }
+          ],
+          "revision": "44adae9604a5f555c3ac4e00eb77c5cc2a28da2979ed7e84d3e411252a0b9a35",
+          "uri": "sdl-view://bp1/VP03?focus=PreviewCoordinator&direction=both&depth=1&diagram=VP03-DesignPreview"
+        },
+        "VP03-SdpToolProcess": {
+          "diagram_ids": [
+            "VP03-DesignPreview"
+          ],
+          "fact_count": 93,
+          "manifest_sha256": "3e490de8c85311141fb728e1e7509d17555dffde1ccb8f54748275c75fc84ed0",
+          "ownership_facts": [
+            {
+              "id": "f0057",
+              "line": 105,
+              "node": "Relation",
+              "object": "AcceptSourceSnapshot",
+              "span": {
+                "column": 1,
+                "end": 4162,
+                "end_column": 46,
+                "end_line": 105,
+                "line": 105,
+                "node": "Span",
+                "start": 4117
+              },
+              "subject": "PreviewCoordinator",
+              "text": "PreviewCoordinator owns AcceptSourceSnapshot.",
+              "verb": "owns"
+            },
+            {
+              "id": "f0058",
+              "line": 106,
+              "node": "Relation",
+              "object": "BuildDesignPreview",
+              "span": {
+                "column": 1,
+                "end": 4206,
+                "end_column": 44,
+                "end_line": 106,
+                "line": 106,
+                "node": "Span",
+                "start": 4163
+              },
+              "subject": "PreviewCoordinator",
+              "text": "PreviewCoordinator owns BuildDesignPreview.",
+              "verb": "owns"
+            },
+            {
+              "id": "f0103",
+              "line": 151,
+              "node": "Relation",
+              "object": "DeliverViewBundle",
+              "span": {
+                "column": 1,
+                "end": 6374,
+                "end_column": 37,
+                "end_line": 151,
+                "line": 151,
+                "node": "Span",
+                "start": 6338
+              },
+              "subject": "ViewerBridge",
+              "text": "ViewerBridge owns DeliverViewBundle.",
+              "verb": "owns"
+            }
+          ],
+          "revision": "44adae9604a5f555c3ac4e00eb77c5cc2a28da2979ed7e84d3e411252a0b9a35",
+          "uri": "sdl-view://bp1/VP03?focus=SdpToolProcess&direction=both&depth=2&diagram=VP03-DesignPreview"
+        },
+        "VP06-UnsavedSourcePreview": {
+          "diagram_ids": [
+            "VP06-detail-DeliverSdpTool",
+            "VP06-detail-PreviewSlice",
+            "VP06-work-SavedFilePreview",
+            "VP06-work-UnsavedSourcePreview",
+            "VP06-dependencies"
+          ],
+          "fact_count": 41,
+          "manifest_sha256": "a868464cf559a54f4e003697e0a6d47e7b8bb1fa2731f671c1fee9382cc94779",
+          "ownership_facts": [
+            {
+              "id": "f0057",
+              "line": 105,
+              "node": "Relation",
+              "object": "AcceptSourceSnapshot",
+              "span": {
+                "column": 1,
+                "end": 4162,
+                "end_column": 46,
+                "end_line": 105,
+                "line": 105,
+                "node": "Span",
+                "start": 4117
+              },
+              "subject": "PreviewCoordinator",
+              "text": "PreviewCoordinator owns AcceptSourceSnapshot.",
+              "verb": "owns"
+            },
+            {
+              "id": "f0058",
+              "line": 106,
+              "node": "Relation",
+              "object": "BuildDesignPreview",
+              "span": {
+                "column": 1,
+                "end": 4206,
+                "end_column": 44,
+                "end_line": 106,
+                "line": 106,
+                "node": "Span",
+                "start": 4163
+              },
+              "subject": "PreviewCoordinator",
+              "text": "PreviewCoordinator owns BuildDesignPreview.",
+              "verb": "owns"
+            }
+          ],
+          "revision": "44adae9604a5f555c3ac4e00eb77c5cc2a28da2979ed7e84d3e411252a0b9a35",
+          "uri": "sdl-view://bp1/VP06?focus=UnsavedSourcePreview&direction=both&depth=2"
+        }
+      }
+    },
+    "ownership-drift": {
+      "preserves_authored_delivery_owner": false,
+      "source_sha256": "f901db263c917301d5366f604006a5388b4d95b9e390580942c2fbd43f11f557",
+      "valid": true,
+      "views": {
+        "VP03-PreviewCoordinator": {
+          "diagram_ids": [
+            "VP03-DesignPreview"
+          ],
+          "fact_count": 29,
+          "manifest_sha256": "1fe698db7d8bdaeda8283afd3a7c4df1c18bf1510727a7d4b670239e94e5e67e",
+          "ownership_facts": [
+            {
+              "id": "f0057",
+              "line": 106,
+              "node": "Relation",
+              "object": "AcceptSourceSnapshot",
+              "span": {
+                "column": 1,
+                "end": 4202,
+                "end_column": 46,
+                "end_line": 106,
+                "line": 106,
+                "node": "Span",
+                "start": 4157
+              },
+              "subject": "PreviewCoordinator",
+              "text": "PreviewCoordinator owns AcceptSourceSnapshot.",
+              "verb": "owns"
+            },
+            {
+              "id": "f0058",
+              "line": 107,
+              "node": "Relation",
+              "object": "BuildDesignPreview",
+              "span": {
+                "column": 1,
+                "end": 4246,
+                "end_column": 44,
+                "end_line": 107,
+                "line": 107,
+                "node": "Span",
+                "start": 4203
+              },
+              "subject": "PreviewCoordinator",
+              "text": "PreviewCoordinator owns BuildDesignPreview.",
+              "verb": "owns"
+            },
+            {
+              "id": "f0059",
+              "line": 108,
+              "node": "Relation",
+              "object": "DeliverViewBundle",
+              "span": {
+                "column": 1,
+                "end": 4289,
+                "end_column": 43,
+                "end_line": 108,
+                "line": 108,
+                "node": "Span",
+                "start": 4247
+              },
+              "subject": "PreviewCoordinator",
+              "text": "PreviewCoordinator owns DeliverViewBundle.",
+              "verb": "owns"
+            },
+            {
+              "id": "f0060",
+              "line": 109,
+              "node": "Relation",
+              "object": "ValidateSnapshotRevision",
+              "span": {
+                "column": 1,
+                "end": 4339,
+                "end_column": 50,
+                "end_line": 109,
+                "line": 109,
+                "node": "Span",
+                "start": 4290
+              },
+              "subject": "PreviewCoordinator",
+              "text": "PreviewCoordinator owns ValidateSnapshotRevision.",
+              "verb": "owns"
+            }
+          ],
+          "revision": "f901db263c917301d5366f604006a5388b4d95b9e390580942c2fbd43f11f557",
+          "uri": "sdl-view://bp1/VP03?focus=PreviewCoordinator&direction=both&depth=1&diagram=VP03-DesignPreview"
+        },
+        "VP03-SdpToolProcess": {
+          "diagram_ids": [
+            "VP03-DesignPreview"
+          ],
+          "fact_count": 98,
+          "manifest_sha256": "53ca21d130b59e14224fdd5a02518dcb5b94be4c80a5ec3bacf50165e68c67b2",
+          "ownership_facts": [
+            {
+              "id": "f0057",
+              "line": 106,
+              "node": "Relation",
+              "object": "AcceptSourceSnapshot",
+              "span": {
+                "column": 1,
+                "end": 4202,
+                "end_column": 46,
+                "end_line": 106,
+                "line": 106,
+                "node": "Span",
+                "start": 4157
+              },
+              "subject": "PreviewCoordinator",
+              "text": "PreviewCoordinator owns AcceptSourceSnapshot.",
+              "verb": "owns"
+            },
+            {
+              "id": "f0058",
+              "line": 107,
+              "node": "Relation",
+              "object": "BuildDesignPreview",
+              "span": {
+                "column": 1,
+                "end": 4246,
+                "end_column": 44,
+                "end_line": 107,
+                "line": 107,
+                "node": "Span",
+                "start": 4203
+              },
+              "subject": "PreviewCoordinator",
+              "text": "PreviewCoordinator owns BuildDesignPreview.",
+              "verb": "owns"
+            },
+            {
+              "id": "f0059",
+              "line": 108,
+              "node": "Relation",
+              "object": "DeliverViewBundle",
+              "span": {
+                "column": 1,
+                "end": 4289,
+                "end_column": 43,
+                "end_line": 108,
+                "line": 108,
+                "node": "Span",
+                "start": 4247
+              },
+              "subject": "PreviewCoordinator",
+              "text": "PreviewCoordinator owns DeliverViewBundle.",
+              "verb": "owns"
+            },
+            {
+              "id": "f0060",
+              "line": 109,
+              "node": "Relation",
+              "object": "ValidateSnapshotRevision",
+              "span": {
+                "column": 1,
+                "end": 4339,
+                "end_column": 50,
+                "end_line": 109,
+                "line": 109,
+                "node": "Span",
+                "start": 4290
+              },
+              "subject": "PreviewCoordinator",
+              "text": "PreviewCoordinator owns ValidateSnapshotRevision.",
+              "verb": "owns"
+            }
+          ],
+          "revision": "f901db263c917301d5366f604006a5388b4d95b9e390580942c2fbd43f11f557",
+          "uri": "sdl-view://bp1/VP03?focus=SdpToolProcess&direction=both&depth=2&diagram=VP03-DesignPreview"
+        },
+        "VP06-UnsavedSourcePreview": {
+          "diagram_ids": [
+            "VP06-detail-DeliverSdpTool",
+            "VP06-detail-PreviewSlice",
+            "VP06-work-ConsumerValidationSlice",
+            "VP06-work-SavedFilePreview",
+            "VP06-work-UnsavedSourcePreview",
+            "VP06-dependencies"
+          ],
+          "fact_count": 47,
+          "manifest_sha256": "18ef95304886549ea8dee70aa12ed4107f00545f9b5ea8d6a34fa9e3d195f7d3",
+          "ownership_facts": [
+            {
+              "id": "f0057",
+              "line": 106,
+              "node": "Relation",
+              "object": "AcceptSourceSnapshot",
+              "span": {
+                "column": 1,
+                "end": 4202,
+                "end_column": 46,
+                "end_line": 106,
+                "line": 106,
+                "node": "Span",
+                "start": 4157
+              },
+              "subject": "PreviewCoordinator",
+              "text": "PreviewCoordinator owns AcceptSourceSnapshot.",
+              "verb": "owns"
+            },
+            {
+              "id": "f0058",
+              "line": 107,
+              "node": "Relation",
+              "object": "BuildDesignPreview",
+              "span": {
+                "column": 1,
+                "end": 4246,
+                "end_column": 44,
+                "end_line": 107,
+                "line": 107,
+                "node": "Span",
+                "start": 4203
+              },
+              "subject": "PreviewCoordinator",
+              "text": "PreviewCoordinator owns BuildDesignPreview.",
+              "verb": "owns"
+            },
+            {
+              "id": "f0059",
+              "line": 108,
+              "node": "Relation",
+              "object": "DeliverViewBundle",
+              "span": {
+                "column": 1,
+                "end": 4289,
+                "end_column": 43,
+                "end_line": 108,
+                "line": 108,
+                "node": "Span",
+                "start": 4247
+              },
+              "subject": "PreviewCoordinator",
+              "text": "PreviewCoordinator owns DeliverViewBundle.",
+              "verb": "owns"
+            },
+            {
+              "id": "f0060",
+              "line": 109,
+              "node": "Relation",
+              "object": "ValidateSnapshotRevision",
+              "span": {
+                "column": 1,
+                "end": 4339,
+                "end_column": 50,
+                "end_line": 109,
+                "line": 109,
+                "node": "Span",
+                "start": 4290
+              },
+              "subject": "PreviewCoordinator",
+              "text": "PreviewCoordinator owns ValidateSnapshotRevision.",
+              "verb": "owns"
+            }
+          ],
+          "revision": "f901db263c917301d5366f604006a5388b4d95b9e390580942c2fbd43f11f557",
+          "uri": "sdl-view://bp1/VP06?focus=UnsavedSourcePreview&direction=both&depth=2"
+        }
+      }
+    },
+    "target": {
+      "preserves_authored_delivery_owner": true,
+      "source_sha256": "f5f88b57d67fd722bcf54c8ded0f46f905f749b5052780ed0f36706b0b3db8bf",
+      "valid": true,
+      "views": {
+        "VP03-PreviewCoordinator": {
+          "diagram_ids": [
+            "VP03-DesignPreview"
+          ],
+          "fact_count": 23,
+          "manifest_sha256": "9091875e5ac83dad5d37c0d84e4ddedfe4ad2cf0157bd923def0dd4f15d71b34",
+          "ownership_facts": [
+            {
+              "id": "f0057",
+              "line": 106,
+              "node": "Relation",
+              "object": "AcceptSourceSnapshot",
+              "span": {
+                "column": 1,
+                "end": 4202,
+                "end_column": 46,
+                "end_line": 106,
+                "line": 106,
+                "node": "Span",
+                "start": 4157
+              },
+              "subject": "PreviewCoordinator",
+              "text": "PreviewCoordinator owns AcceptSourceSnapshot.",
+              "verb": "owns"
+            },
+            {
+              "id": "f0058",
+              "line": 107,
+              "node": "Relation",
+              "object": "BuildDesignPreview",
+              "span": {
+                "column": 1,
+                "end": 4246,
+                "end_column": 44,
+                "end_line": 107,
+                "line": 107,
+                "node": "Span",
+                "start": 4203
+              },
+              "subject": "PreviewCoordinator",
+              "text": "PreviewCoordinator owns BuildDesignPreview.",
+              "verb": "owns"
+            },
+            {
+              "id": "f0059",
+              "line": 108,
+              "node": "Relation",
+              "object": "ValidateSnapshotRevision",
+              "span": {
+                "column": 1,
+                "end": 4296,
+                "end_column": 50,
+                "end_line": 108,
+                "line": 108,
+                "node": "Span",
+                "start": 4247
+              },
+              "subject": "PreviewCoordinator",
+              "text": "PreviewCoordinator owns ValidateSnapshotRevision.",
+              "verb": "owns"
+            }
+          ],
+          "revision": "f5f88b57d67fd722bcf54c8ded0f46f905f749b5052780ed0f36706b0b3db8bf",
+          "uri": "sdl-view://bp1/VP03?focus=PreviewCoordinator&direction=both&depth=1&diagram=VP03-DesignPreview"
+        },
+        "VP03-SdpToolProcess": {
+          "diagram_ids": [
+            "VP03-DesignPreview"
+          ],
+          "fact_count": 98,
+          "manifest_sha256": "1fd7a095419027e22e839a1cd181e7a7dbf1e1537384807de1203e4f98edfe24",
+          "ownership_facts": [
+            {
+              "id": "f0057",
+              "line": 106,
+              "node": "Relation",
+              "object": "AcceptSourceSnapshot",
+              "span": {
+                "column": 1,
+                "end": 4202,
+                "end_column": 46,
+                "end_line": 106,
+                "line": 106,
+                "node": "Span",
+                "start": 4157
+              },
+              "subject": "PreviewCoordinator",
+              "text": "PreviewCoordinator owns AcceptSourceSnapshot.",
+              "verb": "owns"
+            },
+            {
+              "id": "f0058",
+              "line": 107,
+              "node": "Relation",
+              "object": "BuildDesignPreview",
+              "span": {
+                "column": 1,
+                "end": 4246,
+                "end_column": 44,
+                "end_line": 107,
+                "line": 107,
+                "node": "Span",
+                "start": 4203
+              },
+              "subject": "PreviewCoordinator",
+              "text": "PreviewCoordinator owns BuildDesignPreview.",
+              "verb": "owns"
+            },
+            {
+              "id": "f0059",
+              "line": 108,
+              "node": "Relation",
+              "object": "ValidateSnapshotRevision",
+              "span": {
+                "column": 1,
+                "end": 4296,
+                "end_column": 50,
+                "end_line": 108,
+                "line": 108,
+                "node": "Span",
+                "start": 4247
+              },
+              "subject": "PreviewCoordinator",
+              "text": "PreviewCoordinator owns ValidateSnapshotRevision.",
+              "verb": "owns"
+            },
+            {
+              "id": "f0108",
+              "line": 157,
+              "node": "Relation",
+              "object": "DeliverViewBundle",
+              "span": {
+                "column": 1,
+                "end": 6699,
+                "end_column": 37,
+                "end_line": 157,
+                "line": 157,
+                "node": "Span",
+                "start": 6663
+              },
+              "subject": "ViewerBridge",
+              "text": "ViewerBridge owns DeliverViewBundle.",
+              "verb": "owns"
+            }
+          ],
+          "revision": "f5f88b57d67fd722bcf54c8ded0f46f905f749b5052780ed0f36706b0b3db8bf",
+          "uri": "sdl-view://bp1/VP03?focus=SdpToolProcess&direction=both&depth=2&diagram=VP03-DesignPreview"
+        },
+        "VP06-UnsavedSourcePreview": {
+          "diagram_ids": [
+            "VP06-detail-DeliverSdpTool",
+            "VP06-detail-PreviewSlice",
+            "VP06-work-SavedFilePreview",
+            "VP06-work-UnsavedSourcePreview",
+            "VP06-dependencies"
+          ],
+          "fact_count": 46,
+          "manifest_sha256": "6972cb066cc31d089318775def26e16a59075e1fcd629c7efda5144e792aa491",
+          "ownership_facts": [
+            {
+              "id": "f0057",
+              "line": 106,
+              "node": "Relation",
+              "object": "AcceptSourceSnapshot",
+              "span": {
+                "column": 1,
+                "end": 4202,
+                "end_column": 46,
+                "end_line": 106,
+                "line": 106,
+                "node": "Span",
+                "start": 4157
+              },
+              "subject": "PreviewCoordinator",
+              "text": "PreviewCoordinator owns AcceptSourceSnapshot.",
+              "verb": "owns"
+            },
+            {
+              "id": "f0058",
+              "line": 107,
+              "node": "Relation",
+              "object": "BuildDesignPreview",
+              "span": {
+                "column": 1,
+                "end": 4246,
+                "end_column": 44,
+                "end_line": 107,
+                "line": 107,
+                "node": "Span",
+                "start": 4203
+              },
+              "subject": "PreviewCoordinator",
+              "text": "PreviewCoordinator owns BuildDesignPreview.",
+              "verb": "owns"
+            },
+            {
+              "id": "f0059",
+              "line": 108,
+              "node": "Relation",
+              "object": "ValidateSnapshotRevision",
+              "span": {
+                "column": 1,
+                "end": 4296,
+                "end_column": 50,
+                "end_line": 108,
+                "line": 108,
+                "node": "Span",
+                "start": 4247
+              },
+              "subject": "PreviewCoordinator",
+              "text": "PreviewCoordinator owns ValidateSnapshotRevision.",
+              "verb": "owns"
+            }
+          ],
+          "revision": "f5f88b57d67fd722bcf54c8ded0f46f905f749b5052780ed0f36706b0b3db8bf",
+          "uri": "sdl-view://bp1/VP06?focus=UnsavedSourcePreview&direction=both&depth=2"
+        }
+      }
+    }
+  },
+  "go": "go version go1.27.1 linux/amd64",
+  "model": "SDP/03--Architecture/SDPTool.design",
+  "probe_sha256": "03b8b2a88b37ab5b775a530db66073a5a040ac3b877b4996e5f55144c30b599a",
+  "scope": "Existing Go parser/projection experiment; authored target and guard; no worker trial"
+}

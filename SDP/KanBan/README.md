@@ -9,6 +9,7 @@
 | KB-SDL-003 | Ref | completed | [SDP tools as a consumer of SDL](completed/%23003--SDL--Ref--SDP--017--sdptool.md) |
 | KB-SDL-004 | Change | superseded | [KB-SDL-004 — Organize language development by process phase](superseded/%23004--SDL--Change--Language-source-organization.md) |
 | KB-SDL-005 | Change | backlog | [SDL System and explicit source-set contract](backlog/%23005--SDL--Change--System-and-source-sets.md) |
+| KB-SDL-006 | Study | backlog | [Executable Channel tests and real Unit bindings](backlog/%23006--SDL--Study--Executable-channel-tests-and-unit-bindings.md) |
 | KB-SDP-001 | Proposal | completed | [Project structure, Template and studies per phase](completed/%23001--Proposal--Project-structure.md) |
 | KB-SDP-002 | Proposal | superseded | [sdptool: project discovery, implementation plan and viewer](superseded/%23002--Proposal--sdptool.md) |
 | KB-SDP-003 | Idea | backlog | [KanBan graph with a time axis and progressive detail](backlog/%23003--Idea--KanBan-graph.md) |
@@ -41,7 +42,7 @@
 | KB-SDP-028 | Study | completed | [Versioned SDP installation and upgrades](completed/%23028--Study--Installer-upgrade-and-versioned-layout.md) |
 | KB-SDP-029 | Proposal | completed | [Typed plans and a shared Planning skill](completed/%23029--Proposal--Typed-plans-and-planning-skill.md) |
 | KB-SDP-030 | Bug | completed | [Restore installation conformance in CI](completed/%23030--Bug--CI-installation-conformance-and-fixtures.md) |
-| KB-SDP-031 | Study | backlog | [Study SDL-derived assignment bundles and blueprints](backlog/%23031--Study--SDL-assignment-bundles-and-blueprints.md) |
+| KB-SDP-031 | Study | completed | [Study SDL-derived assignment bundles and blueprints](completed/%23031--Study--SDL-assignment-bundles-and-blueprints.md) |
 | KB-SDP-032 | Study | backlog | [Evaluate SDL viewpoints through integrated XFMD navigation](backlog/%23032--Study--Viewpoint-navigation-feedback.md) |
 | KB-SDP-033 | Study | backlog | [Plan XFMD SDP adoption through gh-sdp and a practical SDL design pilot](backlog/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md) |
 
