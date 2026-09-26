@@ -6,14 +6,17 @@ Owner decisions of 2026-09-22 and 2026-09-25 (KB-SDP-029):
   normally use the current working branch with commits per phase or milestone.
   Large implementation plans may select stacked phase branches and milestone
   commits. Preserve historical plans' already selected branch commitments.
-- Do not develop directly on the combined target branch sdp-vNow (originally
-  9ad432407004080dd7f4f0ab06d107523f4316fd). Create a working branch when needed.
+- Do not develop directly on main. Create a working branch when needed. The
+  owner-authorized MP1 integration on 2026-09-26 promoted sdp-vNow to main;
+  sdp-vNow and the earlier phase branches now preserve development history.
 - Include the phase/milestone ID and concrete delivery in commits. Update plan
   and evidence at each delivery; never label unfinished work delivered.
 - Check Git status before branching/staging. Preserve unrelated changes and
   exclude caches. Generated SDL viewpoints must come from validated model facts.
 - Existing owner authorization permits phase pushes to origin and a combined
-  PR against sdp-vNow when agreed work is ready. Merging remains unauthorized.
+  PR against main when agreed work is ready. Merging requires explicit owner
+  authorization; MAINT-SDP-0005 received that authorization for its integration
+  and closeout only. Do not infer authorization for later merges or releases.
 - Read the [plan contract](SDP/ProjectManagement/Plans.md). For plan creation,
   selection or revision, load Skills/sdp-planning/SKILL.md after the SDP entrypoint.
 
