@@ -9,6 +9,7 @@
 | KB-SDL-003 | Ref | completed | [SDP tools as a consumer of SDL](completed/%23003--SDL--Ref--SDP--017--sdptool.md) |
 | KB-SDL-004 | Change | superseded | [KB-SDL-004 — Organize language development by process phase](superseded/%23004--SDL--Change--Language-source-organization.md) |
 | KB-SDL-005 | Change | backlog | [SDL System and explicit source-set contract](backlog/%23005--SDL--Change--System-and-source-sets.md) |
+| KB-SDL-006 | Study | backlog | [Executable Channel tests and real Unit bindings](backlog/%23006--SDL--Study--Executable-channel-tests-and-unit-bindings.md) |
 | KB-SDP-001 | Proposal | completed | [Project structure, Template and studies per phase](completed/%23001--Proposal--Project-structure.md) |
 | KB-SDP-002 | Proposal | superseded | [sdptool: project discovery, implementation plan and viewer](superseded/%23002--Proposal--sdptool.md) |
 | KB-SDP-003 | Idea | backlog | [KanBan graph with a time axis and progressive detail](backlog/%23003--Idea--KanBan-graph.md) |

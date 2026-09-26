@@ -7,6 +7,56 @@ bundle schema, language extension or product command is adopted by this study.
 [Worked assignment](Pilot.md) · [Generated model extracts](Model-extracts.md) ·
 [Machine evidence](Evidence.json) · [Proposed DesignPlan](Plan.md)
 
+## Owner clarification after BP1 — 2026-09-26
+
+The owner has not reviewed the study in detail. This clarification recovers the
+intended outcome; it is not blanket acceptance of BP1's recommendations and does
+not select implementation. Preserve it when refining the planned successor.
+
+- If a change inside a Unit can affect its environment, show the entire potentially
+  affected environment, including indirect effects through contracts and shared
+  state. It is not enough to show only the selected Unit or its direct neighbors.
+  Unmodeled dependencies must be reported as uncertainty; bounded traversal cannot
+  honestly certify complete real-world impact from an incomplete model.
+- Annotate both boxes and connections with explicit work/constraint codes and a
+  legend. Initial meanings: this is the work area; this must not change; this
+  obligation must still be satisfied. Additional useful candidates are affected
+  neighbor, allowed contract change, unknown dependency and required verification.
+  These labels are proposed presentation vocabulary, not adopted SDL keywords.
+  Distinguish immutable content from preserved observable behavior: the latter may
+  permit internal refactoring. Every mark needs scope and source of authority.
+- Include complete SDL **NOW** and **TARGET** snapshots in an assignment bundle.
+  NOW records the baseline; TARGET is the desired result (the owner's DONE/NEW
+  terminology remains open). Do not label a proposal DONE as if it were verified.
+  A reviewer must be able to run baseline checks against pinned baseline code
+  before implementation, then target checks against the resulting code. Preserve
+  checks for unchanged surroundings in both runs and record expected baseline
+  failures where fixing a defect is the task. A model alone is not executable tests.
+- Put SDL identity tags in implementation code so tooling can locate the mapped
+  units, contracts and implementations and check correspondence. Design exact
+  syntax, cardinality, generated-code ownership and stale/missing/ambiguous tag
+  handling with KB-SDP-004. Tags establish declared links, not behavioral proof.
+- Investigate an SDL execution/test harness that sends contract-valid data through
+  Channels to real Unit implementations and checks processed results. The owner
+  also recalls a companion scripting language and eventual code generation; Go is
+  a candidate, not a selected new language or interpreter dependency.
+
+The affected-environment view is an impact envelope, not a claim to display every
+object in the repository. Use the union of NOW and TARGET dependencies so removed
+connections cannot hide affected consumers. If the view must be folded, preserve
+an explicit frontier and accessible detail; never silently omit impacted nodes.
+
+The runtime exploration is captured in
+[KB-SDL-006](../../../KanBan/backlog/%23006--SDL--Study--Executable-channel-tests-and-unit-bindings.md).
+The current [action-core profile](../../../../SDL/docs/profiles/SDL-Executable-Action-Profile.md)
+already binds typed actions to registered Go functions, validates input/output
+records and executes them through SDL/go/runtime. Structural Channel/scenario
+facts are not automatically executable through it. Existing SDL/go/codegen emits
+model constructors, not arbitrary Unit/domain implementations. Prefer investigating
+an adapter to real compiled Go handlers before adding a Go source interpreter.
+Expected processed results need authored scenarios/assertions or another reviewed
+oracle; contract-valid inputs alone do not determine correct domain output.
+
 ## Finding and recommendation
 
 SDL already supplies validated structural facts and source-linked projections.

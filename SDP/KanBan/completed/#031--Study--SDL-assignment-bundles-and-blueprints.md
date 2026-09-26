@@ -103,3 +103,14 @@ actual worker/reviewer pilot before a separate implementation plan. It is not
 activated by Study closure. KB-SDP-004/032/033 retain their original scope.
 
 2026-09-26T09:30:34Z: BP1-M2 completed the selected study; EVT-KB-SDP-000181. Proposed successor registered by EVT-PM-SDP-000049.
+
+## Post-study owner clarification — BP1-M3
+
+2026-09-26T10:12:02Z: EVT-KB-SDP-000184. Incorporated the owner's
+[clarification](../../04--Design/SDPTool/Blueprints/Study.md#owner-clarification-after-bp1--2026-09-26)
+into the study and planned successor: impacted surroundings, box/connection
+constraints, NOW/TARGET snapshots, before/after checks and SDL code tags. The owner
+has not reviewed the study in detail; do not infer agreement with all proposals.
+[KB-SDL-006](../backlog/%23006--SDL--Study--Executable-channel-tests-and-unit-bindings.md)
+captures the distinct runtime/Channel-test exploration. Study remains completed;
+no successor implementation has started.
