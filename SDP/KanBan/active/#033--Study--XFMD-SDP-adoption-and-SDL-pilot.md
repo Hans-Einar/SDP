@@ -5,20 +5,27 @@
 | id | KB-SDP-033 |
 | project | SDP |
 | type | Study |
-| CardState | in-progress |
+| CardState | gate-review |
 | PlanId | PLAN-SDP-0003 |
 | Systems | SDP, SDL, SDPTOOL |
 | created | 2026-09-25T22:20:56Z |
 | source | Owner conversation 2026-09-26: SDL context, implementation drift and post-main XFMD adoption |
-| next_review | GIP phase milestones and disposable adoption evidence |
+| next_review | Concrete production release/live rollout proposal after completed GIP |
 
-## Current disposition — GIP execution selected, 2026-09-27
+## Current disposition — GIP delivered, rollout proposal for review
 
-The owner authorized [PLAN-SDP-0003](../../05--Implementation/SDPTool/Installation/Plan.md).
-Implement the Go engine and thin client, followed by a disposable XFMD adoption
-trial. CardState is in-progress. The completed IPD design remains the governing
-input. Live upgrades, release publication and the later XFMD SDL modeling pilot
-remain outside this execution boundary.
+[PLAN-SDP-0003](../../05--Implementation/SDPTool/Installation/Plan.md) has delivered
+all selected phases: one Go engine, shared signed-test bootstrap, thin gh-sdp,
+independent client review and fresh disposable XFMD adoption through both entry
+points. Read the [evidence](../../05--Implementation/SDPTool/Installation/Evidence.md)
+and [concrete rollout/retirement proposal](../../05--Implementation/SDPTool/Installation/Rollout-and-Retirement.md).
+
+CardState is gate-review for that concrete next-delivery proposal: select a
+production process-release identity/trust key and live XFMD adoption plan, or
+request changes. No published default release or live upgrade is claimed.
+The later practical XFMD SDL-modeling pilot remains explicitly deferred as a
+separate bounded assignment; it does not keep the completed GIP plan active.
+This broader adoption/pilot card is therefore not marked completed.
 
 ## Owner intent and baseline
 
@@ -225,3 +232,5 @@ publication remain outstanding. No new executable is delivered by this card upda
 2026-09-26T22:39:32Z: EVT-KB-SDP-000194. CardState in-progress to gate-review for completed IPD design, generated views and concrete planned GIP implementation phases. Owner review concerns preview/apply, trust/bootstrap and recovery choices. Broader adoption and SDL pilot remain outstanding.
 
 2026-09-26T23:05:54Z: EVT-KB-SDP-000195. CardState gate-review to in-progress; owner selects PLAN-SDP-0003 implementation after IPD design.
+
+2026-09-26T23:54:50Z: EVT-KB-SDP-000196. CardState in-progress to gate-review for concrete production release/live-adoption proposal. GIP is complete; subsequent XFMD SDL modeling explicitly deferred.

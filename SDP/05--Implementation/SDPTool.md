@@ -179,16 +179,15 @@ this delivery is limited to the named milestone.
 
 ## Owner-selected installation follow-up — 2026-09-26
 
-Root SDPTool owns future Go install/upgrade; gh-sdp will be a thin client.
-[REQ-SDPTOOL-007](../02--Requirements/SDPTool.md) and
+Root SDPTool now implements Go install/upgrade; gh-sdp delegates to its verified
+prebuilt executable. [REQ-SDPTOOL-007](../02--Requirements/SDPTool.md) and
 [KB-SDP-033](../KanBan/active/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md)
-retain this requirement. ST1 only moves the existing module and reconciles its
-consumers. Select a bounded implementation plan for the installation contract,
-Go migration, packaged client and disposable XFMD adoption before implementing
-that workflow. None of T0–T5 is retroactively credited with an installer.
+retain the installation/adoption context. ST1 was relocation only; IPD designed
+the workflow, and [PLAN-SDP-0003](SDPTool/Installation/Plan.md) owns GIP execution.
+None of T0–T5 is retroactively credited with an installer.
 
-The owner activated [PLAN-SDP-0002](../04--Design/SDPTool/Installation/Plan.md)
-on 2026-09-27 for the preceding SDL/contract design and generated review.
-Its IPD-3 handoff supplies the planned
-[installation milestones](SDPTool/Installation/Plan.md);
-the existing T0–T5 history and branch policies are unchanged.
+The GIP evidence records exact Linux candidates, strict records, deterministic
+preview, journaled apply/recovery, shared signed test bootstrap, independent thin
+client review and disposable XFMD adoption through both entry points. Production
+release/trust selection, live upgrade and the later XFMD SDL-modeling pilot remain
+outside that completed implementation boundary.

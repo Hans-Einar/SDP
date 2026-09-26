@@ -221,8 +221,11 @@ prebuilt sdptool, its version/capability manifest and SHA256SUMS. Select a Go
 compiler with SDP_GO when needed. Verify checksums and --version before putting
 the executable on the host's configured PATH. The package does not modify PATH,
 overwrite an existing destination, install a viewer or build during viewing.
-PowerShell profile installation remains the single install/update engine;
-this Go facade consumes its results and does not implement another engine.
+The Go installation engine now owns the new install/upgrade path. The separate
+[installation record contract](install/Records.md) defines preview/apply/resume,
+receipt 3.0, signature provenance and explicit development/test selection.
+Legacy facts 1.0/2.0 and journals remain readable; a pending legacy operation must
+be recovered by its original engine. No discovery command performs installation.
 
 Typed-planning update: installed management facts and KanBan descriptors accept
 sdp-project-management/0.2 as well as 0.1. The facade still projects cards; it

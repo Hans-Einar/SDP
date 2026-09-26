@@ -57,3 +57,71 @@ silently overwritten. The injected publication-failure regression proves unchang
 project content and successful fresh retry; normal apply/recovery checks still pass.
 This is distinct from failures after publication, which retain their journal and
 forward-resume identity. Final exact-candidate runs follow this source correction.
+
+## Final candidate verification and reproduction
+
+Product source: 07335b0. Packaged from a clean detached checkout, then the temporary
+worktree was removed. The unrelated untracked SDL/go/sourceinput draft stayed in
+the working checkout and was never inspected, staged or modified. That draft had
+made earlier Go VCS metadata dirty, so those binaries were superseded explicitly
+by the clean build rather than misrepresented as exact commits.
+
+Final engine and client identities, review scope and rollout limitations are in
+[Rollout-and-Retirement.md](Rollout-and-Retirement.md). Runtime code is unchanged by
+the subsequent documentation/evidence closeout commit.
+
+Commands (Go 1.27.1, Linux amd64):
+
+```sh
+go -C SDPTool/bootstrap test -race -count=1 ./...
+go -C SDPTool/bootstrap vet ./...
+SDP_TEST_BINARY=/tmp/gip4-exact-package/sdptool \
+  go -C SDPTool test -race -count=1 ./...
+go -C SDPTool vet ./...
+SDP_TEST_XFMD=/home/warloc/git/xfmd-sdl-navigation \
+SDP_TEST_BINARY=/tmp/gip4-exact-package/sdptool \
+GH_SDP_BINARY=/tmp/gip-gh-sdp \
+SDP_TEST_ARTIFACT=/tmp/gip4-exact-package/release.json \
+SDP_TEST_EVIDENCE=/tmp/gip4-final-xfmd.json \
+  go -C SDPTool test ./install -run '^TestXFMDDisposableAdoption$' -count=1 -v
+python3 SDP/ProjectManagement/validate.py
+python3 Toolkit/scripts/validate_sdp.py --mode toolkit
+python3 SDP/Maintenance/L1/verify_documents.py
+python3 SDP/04--Design/SDPTool/Installation/review.py --sdl /tmp/ipd-sdl --check
+```
+
+Use local tool paths appropriate to the checkout when reproducing. The profile
+fixture is generated with `go -C SDPTool run ./tools/profile --repo ..` and explicit
+source-commit, packaged binary and output parameters. It is unsigned development
+input; the test harness generates an ephemeral test signature and isolates GitHub
+CLI config, extension data and distribution cache. It writes only a disposable
+project copy. Tests without the required candidate/source environment variables
+skip that external fixture; an ordinary package test run is not a claim it ran.
+
+[Final engine log](evidence/Final-engine-tests.txt): all packages pass with race
+detection; installation suite 56.96 seconds, including the process-exit matrix and
+actual packaged signed-test install. Bootstrap race/vet and engine vet also pass.
+[Final XFMD log](evidence/Final-XFMD-trial.txt): 30.52 seconds, real direct/gh entry
+points, full-copy exit/resume and no-change repeat. The
+[machine record](evidence/Final-XFMD-trial.json) contains exact source observations,
+adoption manifest, action hashes, candidate hashes and assertions. Temporary roots
+in that record are provenance, not reusable live destinations.
+
+The retained PowerShell engine was used only for a read-only comparison capture:
+`Install-SDP.ps1 -ProjectRoot /home/warloc/git/xfmd-sdl-navigation -ProfileArtifact
+Toolkit/profiles/five-phase.artifact.json -PlanJson -ForceManagedFiles`.
+No PowerShell command applied to live XFMD. The
+[comparison record](evidence/Final-legacy-comparison.json) pins that capture hash
+and the Go evidence hash. Reproduce the comparison with
+SDPTool/conformance/compare_legacy.py; it accepts captured JSON and runs no installer.
+The older M1 trial/comparison records are preserved as historical evidence.
+
+All current canonical management/schema/document checks pass. Generated review
+files retain their generator's final blank line; whitespace checks use the previously
+documented blank-at-EOF exception for generated output only. No generated Markdown
+or Mermaid was manually edited. No independent full-core review, native Windows/macOS
+acceptance, release publication, merge or live project mutation is claimed.
+
+## GIP-4-M2
+
+2026-09-26T23:54:50Z. Exact clean candidate 07335b0 and reviewed client fca8480 pass final packaged/race/XFMD verification. Delivered rollout proposal and legacy retirement map; retained only compatibility/recovery and shared inputs whose consumers are not yet replaced. Production keys/default release, native Windows/macOS and live upgrade remain unselected; broader XFMD SDL pilot explicitly deferred. All selected GIP milestones delivered.

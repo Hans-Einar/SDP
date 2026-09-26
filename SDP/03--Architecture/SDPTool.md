@@ -37,25 +37,28 @@ planned work; they are not proof of native XFMD acceptance. SDPTool interfaces d
 boundaries, not implemented signatures. Native XFMD work remains external; no
 functionality in this model owns its widget implementation.
 
-## Installation ownership — selected target, 2026-09-26
+## Installation ownership — GIP delivery, 2026-09-27
 
-SDPTool is the common Go command entry point at root SDPTool/. It also owns future
+SDPTool is the common Go command entry point at root SDPTool/. It owns Go
 installation planning, validation, migration, backup/recovery and installed facts.
 gh-sdp is a thin distribution/invocation client; it must not duplicate migration
 policy. No separate Toolkit Go runtime is selected. The legacy PowerShell engine
 and reusable contracts remain in Toolkit until a verified Go migration replaces
-it. Existing installation.go is a facts/journal reader, not an apply engine.
+it. The install package owns policy and execution; installation.go keeps the
+compatible facts/journal discovery adapter. The separate stdlib bootstrap module
+is shared by the engine and thin client; it has no project migration policy.
 
 [REQ-SDPTOOL-007](../02--Requirements/SDPTool.md) records the target outcome.
 The canonical SDL model now allocates installation work to InstallationCoordinator,
 InstallationBaselineInspector, InstallationReleaseResolver, InstallationPlanner,
 InstallationExecutor, InstallationJournal and InstallationRecorder within
 SdpToolProcess. GhSdpProcess contains only GhSdpLauncher; ReleaseRepositoryProcess
-is an external artifact service. Five installation/client/adoption activities remain
-planned. IPD-2 adds twelve logical channels, five validated scenarios and file-based data
+is an external artifact service. The five installation/client/adoption activities now carry implemented status
+based on GIP evidence. IPD-2 adds twelve logical channels, five validated scenarios and file-based data
 holders. [Installation contract](../04--Design/SDPTool/Installation/Contract.md)
 and [scenario review](../04--Design/SDPTool/Installation/Scenarios.md) define the
-design beyond SDL payload shapes; none is runtime implementation.
+design beyond SDL payload shapes. Runtime verification is recorded separately in
+[PLAN-SDP-0003 evidence](../05--Implementation/SDPTool/Installation/Evidence.md).
 
 [PLAN-SDP-0002](../04--Design/SDPTool/Installation/Plan.md) owns this design delivery;
 [IPD evidence](../04--Design/SDPTool/Installation/Evidence.md) records parser checks.

@@ -1,0 +1,4 @@
+=== RUN   TestXFMDDisposableAdoption
+--- PASS: TestXFMDDisposableAdoption (30.52s)
+PASS
+ok  	github.com/Hans-Einar/SDP/SDPTool/install	30.524s

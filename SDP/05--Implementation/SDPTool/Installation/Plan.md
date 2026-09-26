@@ -4,7 +4,7 @@
 | --- | --- |
 | id | PLAN-SDP-0003 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | ImplementationPlan |
 | BranchPolicy | phase |
 | CommitPolicy | milestone |
@@ -61,8 +61,8 @@ pretend today's PowerShell prerequisite is already engine-neutral.
 | GIP-4 — XFMD adoption and retirement readiness | GIP-4-M1 | Refresh an exact XFMD baseline, author a reviewed adoption manifest, then preview/apply/resume/repeat on a disposable copy through both entry points. Prove original live bytes/status unchanged, project documents/root instructions preserved and KanBan/history migrated exactly. | ManualAdoptionTrial; IC03–08/11 |
 | GIP-4 — XFMD adoption and retirement readiness | GIP-4-M2 | Deliver exact-candidate evidence, documented remaining platform gaps, compatibility/retirement map and a concrete live-upgrade/release proposal. Remove legacy execution only where replacement evidence covers actual consumers; retained schemas/assets migrate explicitly. | IC01–12; no live release/upgrade claim |
 
-Milestone status is recorded in Execution progress below. The model's matching activities remain planned until
-actual implementation evidence warrants a status change. GIP-1-M2 alone is not a
+Milestone status is recorded in Execution progress below. The model's matching activities now reflect the delivered implementation and
+disposable trial, linked to their actual evidence. GIP-1-M2 alone is not a
 working installer; GIP-2 local fixture execution is not signed release support;
 GIP-4 copy success is not authorization to apply to live XFMD.
 
@@ -111,9 +111,8 @@ manifest/plan, preservation evidence and remaining limitations as a concrete res
 
 ## Remaining decisions and handoff
 
-Working choices to review with the generated design: preview-only default with
-explicit saved-plan apply; signed descriptor/key distribution; fixed local binary
-delegation; forward-only recovery. Actual release number, production trust keys,
+Implemented choices: preview-only default with explicit saved-plan apply; verified
+descriptors; fixed local binary delegation; forward-only journal recovery. Actual release number, production trust keys,
 supported OS matrix and live XFMD rollout date remain unselected. These do not
 block local schema/fixture design but must be resolved before publication/support.
 
@@ -138,3 +137,11 @@ remaining scope instead of leaving a delivered installer card ambiguously active
 - GIP-3-M2: delivered. Thin gh-sdp client implemented in its own repository with shared bootstrap pinned to fb79727. Independent review REV-SPS-003-002 approves client fca8480 plus clean engine fb79727 on Linux after resolving FIFO and evidence findings. Actual gh sdp/direct plan and apply parity, offline behavior, race and vet pass. Client implementation does not duplicate installation policy. Wider engine and XFMD evidence remain GIP-4.
 
 - GIP-4-M1: delivered. Fresh XFMD b95a4bb baseline verified unchanged. Real direct sdptool and isolated gh sdp produce identical plans and successfully apply the same root-bound plan on a disposable copy: 138 actions, 194 preserved paths. Full-copy process exit followed by actual gh resume and repeat/no-change pass. Original history prefix and root instruction backup are exact; only the inspected KanBan link changes in AGENTS-project.md. Legacy comparison matches all 138 actions, with JSON key order normalized for board/navigation and receipt 3.0 intentionally separate.
+
+- GIP-4-M2: delivered. Exact clean candidate 07335b0 and reviewed client fca8480 pass final packaged/race/XFMD verification. Delivered rollout proposal and legacy retirement map; retained only compatibility/recovery and shared inputs whose consumers are not yet replaced. Production keys/default release, native Windows/macOS and live upgrade remain unselected; broader XFMD SDL pilot explicitly deferred. All selected GIP milestones delivered.
+
+See [rollout and retirement handoff](Rollout-and-Retirement.md) for exact candidate
+evidence, production decisions and remaining legacy consumer boundaries.
+
+GIP completed on 2026-09-27. Production publication/live rollout and the deferred
+XFMD SDL pilot require separate selection; they are not unfinished GIP milestones.

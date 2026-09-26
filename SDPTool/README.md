@@ -52,25 +52,22 @@ SDPTool provides the reusable producer services; XFMD supplies a native consumer
 
 ## Installation ownership — owner decision 2026-09-26
 
-Root SDPTool is the common Go entry point for SDP commands, including the future
-install/upgrade engine. gh-sdp will be a thin distribution/invocation client for
-SDPTool, not another migration engine. No separate Toolkit Go product is planned.
+Root SDPTool is the common Go entry point, including installation planning,
+apply and forward recovery. gh-sdp is a thin client that verifies/caches the
+prebuilt executable and delegates the argument vector. No separate Toolkit Go
+product or PowerShell runtime is needed on this path.
 
-**Current status:** install/upgrade execution is not implemented here.
-installation.go validates declared facts and reads incomplete-operation journals;
-it is not an installer. The retained PowerShell engine is documented in the
-[legacy/transition Toolkit](../Toolkit/README.md). Its schemas, payload and fixtures
-are still used and will be migrated deliberately, with preserved behavior.
+[Installation records](install/Records.md) define the implemented protocol.
+[PLAN-SDP-0003](../SDP/05--Implementation/SDPTool/Installation/Plan.md) and its
+[evidence](../SDP/05--Implementation/SDPTool/Installation/Evidence.md) record
+Linux verification, signed test fixtures and disposable XFMD adoption. Production
+keys/releases, native Windows/macOS acceptance and live rollout remain unselected.
+The [legacy Toolkit](../Toolkit/README.md) retains old-engine recovery, schemas,
+payload sources and comparison fixtures; it is not the new user's execution path.
 
-[ST1](../SDP/Maintenance/ST1/Plan.md) records the relocation.
-[KB-SDP-033](../SDP/KanBan/active/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md)
-retains the Go installation/XFMD adoption workflow. KB-SDP-018's separate Toolkit
-audit has been withdrawn. CLI commands remain limited to those listed below;
-this ownership decision adds no implemented command or release capability.
-
-The installation design now has [SDL-generated review views](../SDP/04--Design/SDPTool/Installation/review/index.md)
-and a [planned Go implementation](../SDP/05--Implementation/SDPTool/Installation/Plan.md).
-Use these for review; install/upgrade execution remains future work.
+The [SDL-generated review](../SDP/04--Design/SDPTool/Installation/review/index.md)
+reflects implemented activities. Runtime evidence remains separately linked;
+a rendered diagram does not prove executable behavior.
 
 ## Implemented saved-file preview — P0-M1
 

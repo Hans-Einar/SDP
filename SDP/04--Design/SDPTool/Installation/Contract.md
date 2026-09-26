@@ -1,6 +1,9 @@
 # SDPTool installation design contract — draft 1
 
-Status: design for implementation, not an implemented or published API.
+Status: implemented development protocol under PLAN-SDP-0003; not a published
+production release. Exact executable record shapes and selection refinements are
+in [SDPTool/install/Records.md](../../../../SDPTool/install/Records.md). Linux
+implementation evidence is distinct from this authored design contract.
 Authority: REQ-SDPTOOL-007, owner-selected SDPTool/gh-sdp ownership and
 [PLAN-SDP-0002](Plan.md). The [canonical SDL model](../../../03--Architecture/SDPTool.design)
 provides identities, responsibilities and validated exchanges. This document defines
@@ -236,8 +239,8 @@ path confinement, hash comparisons or idempotence. Reused message payload shapes
 are not assertions that each internal request has identical Go structs. Contract-
 scoped field identities satisfy SDL's single-owner rule. AdoptionDigest has an
 explicit textual `none` sentinel for normal install/upgrade; the wire schema uses
-null and the adapter maps it. New activities remain planned even when the design
-parses. The domain has no fixed-bit datagram encoding, so VP10 is intentionally
+null and the adapter maps it. Activity status changes require runtime evidence; parsing alone never changes
+implementation status. The domain has no fixed-bit datagram encoding, so VP10 is intentionally
 not used. Database storage is file-based and the generated data view is logical.
 
 See [scenario acceptance](Scenarios.md) for the design walkthrough and planned
