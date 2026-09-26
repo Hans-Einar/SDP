@@ -5,11 +5,11 @@
 | id | KB-SDP-031 |
 | project | SDP |
 | type | Study |
-| CardState | in-progress |
+| CardState | completed |
 | Systems | SDL, SDPTOOL |
 | created | 2026-09-25T22:20:56Z |
 | source | Owner conversation 2026-09-26: SDL context, implementation drift and post-main XFMD adoption |
-| next_review | At BP1 study delivery |
+| next_review | Study delivered; select PLAN-SDP-0001 separately |
 
 ## Owner problem and intent
 
@@ -79,3 +79,27 @@ production SDL/SDPTool code, adopt Issue #7 schemas or modify XFMD. Preserve the
 untracked SDL/go/sourceinput draft. Study recommendations remain proposed.
 
 2026-09-26T09:22:59Z: Backlog → active/in-progress for the owner-selected BP1 study; EVT-KB-SDP-000180.
+
+## BP1-M2 outcome and successor
+
+[Study](../../04--Design/SDPTool/Blueprints/Study.md),
+[worked assignment](../../04--Design/SDPTool/Blueprints/Pilot.md),
+[generated views](../../04--Design/SDPTool/Blueprints/Model-extracts.md) and
+[reproducible evidence](../../04--Design/SDPTool/Blueprints/Evidence.json)
+deliver the selected research. The recommended layered bundle combines authored
+intent, SDL-derived context and observed code/evidence with separate provenance.
+
+All three complete models validate through the existing Go toolkit. The authored
+scope guard accepts current/target and rejects the ownership-drift variant; parser
+validity alone does not reject it. Two final runs produce identical retained
+artifacts. Existing saved-file stale/result-preservation tests pass. This is a
+research experiment, not a production blueprint generator, automatic code
+conformance or proof of improved agent behavior. No independent worker trial was
+performed. XFMD was inspected read-only, and Issue #7 remains excluded.
+
+The explicit successor is [PLAN-SDP-0001](../../04--Design/SDPTool/Blueprints/Plan.md),
+a planned DesignPlan. It owns contract choices, context/evidence design and an
+actual worker/reviewer pilot before a separate implementation plan. It is not
+activated by Study closure. KB-SDP-004/032/033 retain their original scope.
+
+2026-09-26T09:30:34Z: BP1-M2 completed the selected study; EVT-KB-SDP-000181. Proposed successor registered by EVT-PM-SDP-000049.

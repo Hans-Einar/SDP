@@ -26,7 +26,7 @@ requirements/use cases, features/functionality, system/container structure,
 channels/contracts and cross-cutting relationships across abstraction levels.
 Capture navigation tasks, missing context, ambiguous notation, duplication and
 useful drill-down/filter behavior. Include an assignment-authoring task so results
-feed [KB-SDP-031](../active/%23031--Study--SDL-assignment-bundles-and-blueprints.md).
+feed [KB-SDP-031](../completed/%23031--Study--SDL-assignment-bundles-and-blueprints.md).
 
 Keep the SDL model as source of truth. Reproduce all diagrams via the tools;
 record model revision, generation parameters and derived-versus-authored facts.

@@ -50,3 +50,11 @@ The [producer contract](../../Toolkit/SDPTool/Contract.md) resolves the saved-fi
 operation above with a Go facade, bounded selection, language diagnostics and
 caller-owned revision-tagged bundles. Unsaved-buffer and native viewer behavior
 remain separately owned. P0-M1 evidence is in the implementation plan.
+
+## Proposed blueprint follow-up — BP1
+
+The [SDL blueprint study](SDPTool/Blueprints/Study.md) investigates model-derived
+assignment context, protected boundaries and observed evidence. Its worked example
+uses planned unsaved-source preview without changing this canonical model or the
+implemented producer contract. [PLAN-SDP-0001](SDPTool/Blueprints/Plan.md) remains
+planned; no blueprint command or new SDL semantics are adopted.

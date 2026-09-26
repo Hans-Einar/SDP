@@ -44,7 +44,7 @@ code/model authoring and gh-sdp changes to their repository agents/cards; do not
 perform live migration or product changes during this intake or main merge.
 
 Depends on main consolidation and coordinates with
-[KB-SDP-031](../active/%23031--Study--SDL-assignment-bundles-and-blueprints.md),
+[KB-SDP-031](../completed/%23031--Study--SDL-assignment-bundles-and-blueprints.md),
 [KB-SDP-032](%23032--Study--Viewpoint-navigation-feedback.md) and
 [KB-SDP-018](%23018--Study--Toolkit-audit-and-organization.md).
 
