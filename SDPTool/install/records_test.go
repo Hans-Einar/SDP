@@ -87,12 +87,42 @@ func TestDescriptorCollisions(t *testing.T) {
 }
 
 func TestRecordShapes(t *testing.T) {
- d:=fixture();raw,_:=Canonical(d);input:=Input{Path:"/fixture/release.json",SHA256:Hash(raw),Bytes:raw,Provenance:"local-development"}
- a:=Adoption{SchemaVersion:AdoptionSchema,ProjectRoot:"/fixture/project",Baseline:"manual",TargetDigest:input.SHA256,Inventory:map[string]Observation{},Moves:[]Move{},RefreshManaged:[]string{}}
- r:=Receipt{ReceiptSchema,d.Release,input.SHA256,d.SourceCommit,d.ProcessProfile,d.ManagementProfile,d.Capabilities,"local-development","install-0123456789abcdef01234567","2026-09-27T00:00:00Z"}
- p:=Plan{SchemaVersion:PlanSchema,ProjectRoot:a.ProjectRoot,Release:input,Snapshot:map[string]Observation{},Actions:[]Action{},Preserved:[]string{},Conflicts:[]string{},Warnings:[]string{}}
- p.PlanDigest=planHash(p)
- j:=Journal{SchemaVersion:JournalSchema,Plan:p,Steps:[]Action{}}
- cases:=[]struct{name string;value any;target any}{{"release",d,&Descriptor{}},{"adoption",a,&Adoption{}},{"receipt",r,&Receipt{}},{"plan",p,&Plan{}},{"journal",j,&Journal{}}}
- for _,c:=range cases{t.Run(c.name,func(t *testing.T){b,e:=Canonical(c.value);if e!=nil{t.Fatal(e)};if e=Decode(b,RecordLimit,c.target);e!=nil{t.Fatal(e)};gold:=filepath.Join("testdata",c.name+".json");if os.Getenv("SDP_UPDATE_GOLDEN")=="1"{if e=os.WriteFile(gold,b,0600);e!=nil{t.Fatal(e)}};want,e:=os.ReadFile(gold);if e!=nil||string(want)!=string(b){t.Fatalf("golden differs: %v",e)};missing:=strings.Replace(string(b),`"schemaVersion":"`+map[string]string{"release":ReleaseSchema,"adoption":AdoptionSchema,"receipt":ReceiptSchema,"plan":PlanSchema,"journal":JournalSchema}[c.name]+`",`,"",1);if Decode([]byte(missing),RecordLimit,c.target)==nil{t.Fatal("missing schema accepted")}})}
+	d := fixture()
+	raw, _ := Canonical(d)
+	input := Input{Path: "/fixture/release.json", SHA256: Hash(raw), Bytes: raw, Provenance: "local-development"}
+	a := Adoption{SchemaVersion: AdoptionSchema, ProjectRoot: "/fixture/project", Baseline: "manual", TargetDigest: input.SHA256, Inventory: map[string]Observation{}, Moves: []Move{}, RefreshManaged: []string{}}
+	r := Receipt{ReceiptSchema, d.Release, input.SHA256, d.SourceCommit, d.ProcessProfile, d.ManagementProfile, d.Capabilities, "local-development", "install-0123456789abcdef01234567", "2026-09-27T00:00:00Z"}
+	p := Plan{SchemaVersion: PlanSchema, ProjectRoot: a.ProjectRoot, Release: input, Snapshot: map[string]Observation{}, Actions: []Action{}, Preserved: []string{}, Conflicts: []string{}, Warnings: []string{}}
+	p.PlanDigest = planHash(p)
+	j := Journal{SchemaVersion: JournalSchema, Plan: p, Steps: []Action{}}
+	cases := []struct {
+		name   string
+		value  any
+		target any
+	}{{"release", d, &Descriptor{}}, {"adoption", a, &Adoption{}}, {"receipt", r, &Receipt{}}, {"plan", p, &Plan{}}, {"journal", j, &Journal{}}}
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			b, e := Canonical(c.value)
+			if e != nil {
+				t.Fatal(e)
+			}
+			if e = Decode(b, RecordLimit, c.target); e != nil {
+				t.Fatal(e)
+			}
+			gold := filepath.Join("testdata", c.name+".json")
+			if os.Getenv("SDP_UPDATE_GOLDEN") == "1" {
+				if e = os.WriteFile(gold, b, 0600); e != nil {
+					t.Fatal(e)
+				}
+			}
+			want, e := os.ReadFile(gold)
+			if e != nil || string(want) != string(b) {
+				t.Fatalf("golden differs: %v", e)
+			}
+			missing := strings.Replace(string(b), `"schemaVersion":"`+map[string]string{"release": ReleaseSchema, "adoption": AdoptionSchema, "receipt": ReceiptSchema, "plan": PlanSchema, "journal": JournalSchema}[c.name]+`",`, "", 1)
+			if Decode([]byte(missing), RecordLimit, c.target) == nil {
+				t.Fatal("missing schema accepted")
+			}
+		})
+	}
 }

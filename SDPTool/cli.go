@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
+	"github.com/Hans-Einar/SDP/SDPTool/install"
 	"io"
 	"os"
 )
@@ -32,6 +33,9 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 	if len(args) > 1 && !isCommand(args[0]) {
 		selected = args[0]
 		args = args[1:]
+	}
+	if len(args) > 0 && (args[0] == "install" || args[0] == "upgrade") {
+		return install.Run(ctx, selected, args[0], args[1:], out, errs)
 	}
 	if len(args) > 0 && args[0] == "discover" {
 		if len(args) != 1 {
@@ -196,7 +200,7 @@ func report(w io.Writer, e error) int {
 
 func isCommand(s string) bool {
 	switch s {
-	case "preview", "discover", "view", "tree", "select", "sdui-preview":
+	case "install", "upgrade", "preview", "discover", "view", "tree", "select", "sdui-preview":
 		return true
 	}
 	return false
