@@ -312,7 +312,7 @@ func Discover(selected string) (Project, error) {
 		if err != nil {
 			return bad("invalid", err)
 		}
-		facts, err := readYAML(dest, "1.0", "2.0")
+		facts, err := readYAML(dest, "1.0", "2.0", "3.0")
 		if os.IsNotExist(err) && len(pending) != 0 {
 			p.Status = "valid"
 			return p, nil

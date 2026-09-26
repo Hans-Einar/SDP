@@ -4,7 +4,7 @@
 | --- | --- |
 | id | PLAN-SDP-0003 |
 | project | SDP |
-| state | planned |
+| state | active |
 | PlanType | ImplementationPlan |
 | BranchPolicy | phase |
 | CommitPolicy | milestone |
@@ -20,8 +20,7 @@ produce equivalent plans/outcomes. No PowerShell is required by the new user pat
 
 This is the implementation handoff from the completed
 [IPD DesignPlan](../../../04--Design/SDPTool/Installation/Plan.md), not an instruction
-to execute production work during the design assignment. The owner has authorized
-IPD execution; GIP remains planned until selected. No live rollout, merge, key
+to execute production work during the design assignment. The owner selected execution of GIP on 2026-09-27 after IPD delivery. No live rollout, merge, key
 publication, signed production release or support claim is implicit.
 
 Inputs: [working contract](../../../04--Design/SDPTool/Installation/Contract.md),
@@ -62,7 +61,7 @@ pretend today's PowerShell prerequisite is already engine-neutral.
 | GIP-4 — XFMD adoption and retirement readiness | GIP-4-M1 | Refresh an exact XFMD baseline, author a reviewed adoption manifest, then preview/apply/resume/repeat on a disposable copy through both entry points. Prove original live bytes/status unchanged, project documents/root instructions preserved and KanBan/history migrated exactly. | ManualAdoptionTrial; IC03–08/11 |
 | GIP-4 — XFMD adoption and retirement readiness | GIP-4-M2 | Deliver exact-candidate evidence, documented remaining platform gaps, compatibility/retirement map and a concrete live-upgrade/release proposal. Remove legacy execution only where replacement evidence covers actual consumers; retained schemas/assets migrate explicitly. | IC01–12; no live release/upgrade claim |
 
-All milestones are planned. The model's matching activities remain planned until
+Milestone status is recorded in Execution progress below. The model's matching activities remain planned until
 actual implementation evidence warrants a status change. GIP-1-M2 alone is not a
 working installer; GIP-2 local fixture execution is not signed release support;
 GIP-4 copy success is not authorization to apply to live XFMD.
@@ -122,3 +121,8 @@ IPD evidence remains linked rather than copied as Go implementation evidence.
 KB-SDP-033 also retains the later practical XFMD SDL-modeling pilot; this plan
 covers installation/adoption only. On completion, explicitly disposition that
 remaining scope instead of leaving a delivered installer card ambiguously active.
+
+## Execution progress
+
+
+- GIP-1-M1: delivered. Executable closed records, five canonical golden fixtures, bounded strict JSON/YAML decoding, portable path/root inspection and receipt 3.0 reader delivered. Go package suite passes; management validator passes. No apply engine or signed distribution claimed.

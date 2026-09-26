@@ -3,6 +3,7 @@ package sdptool
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/Hans-Einar/SDP/SDPTool/install"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -13,6 +14,17 @@ var BuildVersion = "0.1.0-dev"
 var BuildRevision = "unknown"
 
 func validateProcessFacts(facts map[string]any) error {
+	if facts["schemaVersion"] == install.ReceiptSchema {
+		b, err := json.Marshal(facts)
+		if err != nil {
+			return err
+		}
+		var receipt install.Receipt
+		if err = install.Decode(b, install.MetadataLimit, &receipt); err != nil {
+			return err
+		}
+		return install.ValidateReceipt(receipt)
+	}
 	if facts["schemaVersion"] != "2.0" {
 		return nil
 	} // v1's declared-facts contract remains supported.
@@ -94,7 +106,7 @@ func pendingInstallations(area string) ([]string, error) {
 		if err = json.Unmarshal(b, &journal); err != nil {
 			return nil, err
 		}
-		if journal.Schema != "2.0" || journal.ID != entry.Name() {
+		if (journal.Schema != "2.0" && journal.Schema != install.JournalSchema) || journal.ID != entry.Name() {
 			return nil, fmt.Errorf("invalid installation journal identity")
 		}
 		switch journal.Status {

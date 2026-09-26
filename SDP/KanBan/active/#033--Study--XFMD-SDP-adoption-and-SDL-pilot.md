@@ -5,32 +5,20 @@
 | id | KB-SDP-033 |
 | project | SDP |
 | type | Study |
-| CardState | gate-review |
-| PlanId | PLAN-SDP-0002 |
+| CardState | in-progress |
+| PlanId | PLAN-SDP-0003 |
 | Systems | SDP, SDL, SDPTOOL |
 | created | 2026-09-25T22:20:56Z |
 | source | Owner conversation 2026-09-26: SDL context, implementation drift and post-main XFMD adoption |
-| next_review | Owner review of IPD design and proposed PLAN-SDP-0003 implementation scope |
+| next_review | GIP phase milestones and disposable adoption evidence |
 
-## Current disposition — IPD design delivered, 2026-09-27
+## Current disposition — GIP execution selected, 2026-09-27
 
-[PLAN-SDP-0002](../../04--Design/SDPTool/Installation/Plan.md) has delivered all
-selected design phases: canonical SDL responsibilities/exchanges, authored contracts,
-reproducible generated views and a concrete implementation handoff. Review the
-[generated index](../../04--Design/SDPTool/Installation/review/index.md),
-[contract](../../04--Design/SDPTool/Installation/Contract.md) and
-[evidence](../../04--Design/SDPTool/Installation/Evidence.md).
-
-CardState is gate-review for this concrete result. Requested owner disposition:
-review preview-only versus explicit apply, descriptor trust/key distribution,
-thin cached executable delegation and forward-only recovery; select or revise
-[PLAN-SDP-0003](../../05--Implementation/SDPTool/Installation/Plan.md) before Go
-implementation. No approval is inferred from the validated model.
-
-The Go engine, signed client distribution, live adoption and broader XFMD SDL pilot
-are still outstanding. The disposable PowerShell reference trial is preservation
-evidence, not their implementation. This card is not complete. Historical baseline
-and ready/backlog worklog statements below keep their original temporal meaning.
+The owner authorized [PLAN-SDP-0003](../../05--Implementation/SDPTool/Installation/Plan.md).
+Implement the Go engine and thin client, followed by a disposable XFMD adoption
+trial. CardState is in-progress. The completed IPD design remains the governing
+input. Live upgrades, release publication and the later XFMD SDL modeling pilot
+remain outside this execution boundary.
 
 ## Owner intent and baseline
 
@@ -235,3 +223,5 @@ publication remain outstanding. No new executable is delivered by this card upda
 2026-09-26T22:31:14Z: EVT-KB-SDP-000193. IPD-2-M1 completes design contracts and scenario walkthrough; CardState remains in-progress for reproducible generated review and implementation handoff.
 
 2026-09-26T22:39:32Z: EVT-KB-SDP-000194. CardState in-progress to gate-review for completed IPD design, generated views and concrete planned GIP implementation phases. Owner review concerns preview/apply, trust/bootstrap and recovery choices. Broader adoption and SDL pilot remain outstanding.
+
+2026-09-26T23:05:54Z: EVT-KB-SDP-000195. CardState gate-review to in-progress; owner selects PLAN-SDP-0003 implementation after IPD design.
