@@ -126,3 +126,13 @@ func TestRecordShapes(t *testing.T) {
 		})
 	}
 }
+
+func TestRepositoryNamedSDPIsNotItsParent(t *testing.T) {
+	root := filepath.Join(t.TempDir(), "SDP")
+	os.Mkdir(root, 0700)
+	os.WriteFile(filepath.Join(root, ".git"), []byte("gitdir: ignored\n"), 0600)
+	got, e := Root(root)
+	if e != nil || got != root {
+		t.Fatal(got, e)
+	}
+}

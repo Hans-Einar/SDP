@@ -126,6 +126,13 @@ func read(p string, limit int64) ([]byte, error) {
 	if e := safe(p); e != nil {
 		return nil, e
 	}
+	before, e := os.Lstat(p)
+	if e != nil {
+		return nil, e
+	}
+	if !before.Mode().IsRegular() || before.Size() > limit {
+		return nil, fmt.Errorf("not a bounded regular file: %s", p)
+	}
 	f, e := os.Open(p)
 	if e != nil {
 		return nil, e

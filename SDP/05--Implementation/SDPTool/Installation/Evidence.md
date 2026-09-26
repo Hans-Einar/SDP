@@ -22,3 +22,19 @@ the introducing commit binds that diff. Live XFMD remains untouched.
 ## GIP-3-M1
 
 2026-09-26T23:31:03Z. Shared stdlib bootstrap verifies Ed25519 test descriptors, platform binary digest/size and advertised protocol, with private immutable cache and offline checks. Engine independently verifies signed input, records test-signed versus production provenance and resolves previous descriptors by digest. Go profile explicitly reuses files-only legacy inventory without PowerShell prerequisites. Packaged signed install passes; bootstrap race tests pass. No production keys, stable catalog or published release exists.
+
+### GIP-3 integration review and hardening
+
+Independent gh-sdp review found a FIFO-open hang in shared bootstrap input reading.
+Both bootstrap and engine now reject nonregular objects before opening, retaining
+post-open bounds checks. A native FIFO regression and signed negative tests for
+protocol, platform, binary size/path/digest and missing protocol advertisement pass.
+HTTP/probe timeouts exist but are not claimed as separately exercised timing tests.
+
+Full engine race suite passes after management-history predecessor/card validation,
+cache publication hardening and incoming Markdown ancestor consistency fixes.
+The updated version test explicitly expects receipt 3.0 and the now-implemented
+installation protocol; this is the authorized compatibility addition, not a waived
+legacy obligation. Clean project AGENTS.md is preserved automatically; unequal
+AGENTS-project.md collisions still block. A fresh XFMD copied baseline preview/apply
+also succeeded during integration; its reproducible paired trial belongs to GIP-4.

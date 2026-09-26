@@ -31,26 +31,40 @@ func createIdentical(p string, b []byte) error {
 	if e := SafeAbsolute(p); e != nil {
 		return e
 	}
-	f, e := os.OpenFile(p, os.O_WRONLY|os.O_CREATE|os.O_EXCL, 0600)
-	if os.IsExist(e) {
-		old, e := Read(p, RecordLimit)
-		if e != nil {
-			return e
-		}
+	if old, e := Read(p, RecordLimit); e == nil {
 		if !bytes.Equal(old, b) {
 			return fail("cache", 4, "unequal cache entry")
 		}
 		return nil
+	} else if !os.IsNotExist(e) {
+		return e
 	}
+	f, e := os.CreateTemp(filepath.Dir(p), ".pending-")
 	if e != nil {
 		return e
 	}
-	_, e = f.Write(b)
+	temp := f.Name()
+	defer os.Remove(temp)
+	if e = f.Chmod(0600); e == nil {
+		_, e = f.Write(b)
+	}
+	if e == nil {
+		e = f.Sync()
+	}
 	ce := f.Close()
+	if e == nil {
+		e = ce
+	}
 	if e != nil {
 		return e
 	}
-	return ce
+	if e = os.Link(temp, p); e != nil {
+		old, re := Read(p, RecordLimit)
+		if re != nil || !bytes.Equal(old, b) {
+			return fail("cache", 4, "cache publication conflict")
+		}
+	}
+	return nil
 }
 func cacheInput(in Input) error {
 	if _, e := descriptor(in); e != nil {

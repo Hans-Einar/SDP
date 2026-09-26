@@ -300,7 +300,7 @@ func Build(root, operation string, release Input, previous, adoption *Input) (Pl
 		}
 		prev, known := oldManaged[f.Path]
 		unchanged := known && prev.SHA256 != nil && Hash(current) == *prev.SHA256
-		if !unchanged && !contains(ad.RefreshManaged, f.Path) {
+		if !unchanged && !contains(ad.RefreshManaged, f.Path) && !(f.Path == "AGENTS.md" && !known && p.Baseline == "clean") {
 			p.Conflicts = append(p.Conflicts, "managed-edit-requires-named-refresh: "+f.Path)
 			continue
 		}
@@ -491,6 +491,9 @@ func board(after map[string][]byte, moves map[string]string) (string, error) {
 			return "", fail("history", 2, "duplicate/absent event identity")
 		}
 		ids[id] = true
+	}
+	if e := validateHistory(history, after); e != nil {
+		return "", fail("history", 3, "%v", e)
 	}
 	return project, nil
 }

@@ -115,3 +115,24 @@ the structural Markdown exporter; it does not imply interactive controls.
 
 [Consumer examples and executable harness](Consumer-Examples.md) document the
 producer boundary available to XFMD and other hosts.
+
+## Installation and upgrade (Go development implementation)
+
+The installation engine now owns read-only previews, saved-plan apply and forward
+recovery. It uses no PowerShell. Existing navigation/preview commands remain intact.
+See [installation records and usage](install/Records.md) and the
+[GIP implementation plan](../SDP/05--Implementation/SDPTool/Installation/Plan.md).
+
+```sh
+sdptool /path/to/project upgrade --release /path/to/exact/release.json \
+  --test-key /path/to/test.pub --manifest /path/to/adoption.yaml \
+  --plan-output /tmp/reviewed-plan.json --json
+sdptool /path/to/project upgrade --apply /tmp/reviewed-plan.json --json
+sdptool /path/to/project upgrade --resume install-OPERATION-ID --json
+```
+
+The first command only previews. Local unsigned development inputs require
+`--artifact FILE --allow-unreleased`. The test-key example records test provenance;
+it is not a production release. Production keys, default release catalog, native
+Windows/macOS acceptance and live XFMD rollout remain unselected. Root-bound plans
+cannot be applied to another project copy. Journals and backups are retained.

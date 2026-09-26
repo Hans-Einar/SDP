@@ -104,6 +104,26 @@ func Inspect(root string, extra []string) (Tree, error) {
 	if e != nil {
 		return t, e
 	}
+	// Include ancestors of every selected file, independently of whether it was
+	// selected by Markdown scope or explicitly by an adoption inventory.
+	selected := make([]string, 0, len(t.Snapshot))
+	for rel := range t.Snapshot {
+		selected = append(selected, rel)
+	}
+	for _, rel := range selected {
+		for parent := filepath.ToSlash(filepath.Dir(rel)); parent != "."; parent = filepath.ToSlash(filepath.Dir(parent)) {
+			if _, ok := t.Snapshot[parent]; ok {
+				continue
+			}
+			info, e := os.Lstat(filepath.Join(root, parent))
+			if e != nil {
+				return t, e
+			}
+			if e = add(parent, info); e != nil {
+				return t, e
+			}
+		}
+	}
 	for _, p := range extra {
 		if e := Relative(p); e != nil {
 			return t, e

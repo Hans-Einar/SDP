@@ -85,9 +85,9 @@ func TestUnknownAndManualAdoption(t *testing.T) {
 	root := t.TempDir()
 	put(t, root, "AGENTS.md", []byte("project instructions\n"))
 	put(t, root, "SDP/Agents/KanBan/board.json", []byte(`{"schemaVersion":"0.1","projectId":"XFMD","ledger":"Ledger.ndjson"}`))
-	prefix := []byte("{\"eventId\":\"EVT-KB-XFMD-000001\"}\n")
+	prefix := historyFixture()
 	put(t, root, "SDP/Agents/KanBan/Ledger.ndjson", prefix)
-	put(t, root, "SDP/Agents/KanBan/backlog/#1.md", []byte("[peer](%231.md)\n"))
+	put(t, root, "SDP/Agents/KanBan/backlog/#1.md", cardFixture("[peer](%231.md)\n"))
 	put(t, root, "README.md", []byte("[card](SDP/Agents/KanBan/backlog/%231.md)\n"))
 	a := artifact(t, fixture())
 	p, e := Preview(Options{root, "upgrade", a, "", "", true})
@@ -188,5 +188,60 @@ func TestKnownUpgradeAndLocalEdits(t *testing.T) {
 	q, e = Preview(Options{root, "upgrade", next, p.Release.Path, "", true})
 	if e != nil || q.CanApply {
 		t.Fatal(q, e)
+	}
+}
+
+func historyFixture() []byte {
+	b, _ := Canonical(map[string]any{"schemaVersion": "1.0", "eventId": "EVT-KB-XFMD-000001", "eventType": "x-kanban:created", "occurredAt": "2026-09-27T00:00:00Z", "actor": "test", "commit": nil, "subjectId": "KB-XFMD-001", "payload": map[string]any{"schemaVersion": "0.1", "projectId": "XFMD", "previousEventId": nil, "from": nil, "to": "backlog", "fromPath": nil, "toPath": "backlog/#1.md", "reason": "Test baseline", "links": []string{}}})
+	return b
+}
+func cardFixture(body string) []byte {
+	return []byte("# Fixture\n\n| Field | Value |\n| --- | --- |\n| id | KB-XFMD-001 |\n| CardState | backlog |\n\n" + body)
+}
+func TestHistoryRejectsBrokenChainAndMissingCard(t *testing.T) {
+	files := map[string][]byte{"SDP/KanBan/backlog/#1.md": cardFixture("body")}
+	if e := validateHistory(historyFixture(), files); e != nil {
+		t.Fatal(e)
+	}
+	bad := bytes.Replace(historyFixture(), []byte(`"previousEventId":null`), []byte(`"previousEventId":"missing"`), 1)
+	if validateHistory(bad, files) == nil {
+		t.Fatal("broken chain accepted")
+	}
+	if validateHistory(historyFixture(), map[string][]byte{}) == nil {
+		t.Fatal("missing card accepted")
+	}
+}
+
+func TestCleanRootInstructionsPreserved(t *testing.T) {
+	root := t.TempDir()
+	put(t, root, "AGENTS.md", []byte("owner instructions"))
+	p := preview(t, root, fixture())
+	if !p.CanApply {
+		t.Fatal(p.Conflicts)
+	}
+	found := false
+	for _, a := range p.Actions {
+		if a.Path == "AGENTS-project.md" && string(a.Content) == "owner instructions" {
+			found = true
+		}
+	}
+	if !found {
+		t.Fatal("instructions not preserved")
+	}
+	put(t, root, "AGENTS-project.md", []byte("different instructions"))
+	p = preview(t, root, fixture())
+	if p.CanApply {
+		t.Fatal("preservation collision accepted")
+	}
+}
+func TestAdoptionNestedMarkdownAncestorsStable(t *testing.T) {
+	root := t.TempDir()
+	put(t, root, "docs/deep/note.md", []byte("incoming link scope"))
+	put(t, root, "SDP/README.md", []byte("manual"))
+	in, _ := LocalInput(artifact(t, fixture()), true)
+	m := adoption(t, root, in, []Move{}, []string{})
+	p, e := Preview(Options{root, "upgrade", in.Path, "", m, true})
+	if e != nil || !p.CanApply {
+		t.Fatal(p.Conflicts, e)
 	}
 }

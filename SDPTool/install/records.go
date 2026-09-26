@@ -355,6 +355,13 @@ func Read(path string, limit int) ([]byte, error) {
 	if e := SafeAbsolute(path); e != nil {
 		return nil, e
 	}
+	before, e := os.Lstat(path)
+	if e != nil {
+		return nil, e
+	}
+	if !before.Mode().IsRegular() || before.Size() > int64(limit) {
+		return nil, fail("limit", 2, "not a bounded regular file: %s", path)
+	}
 	f, e := os.Open(path)
 	if e != nil {
 		return nil, e
@@ -406,7 +413,11 @@ func Root(selected string) (string, error) {
 		return "", fail("root", 2, "existing project directory required")
 	}
 	if filepath.Base(p) == "SDP" {
-		p = filepath.Dir(p)
+		_, gitErr := os.Lstat(filepath.Join(p, ".git"))
+		_, childErr := os.Lstat(filepath.Join(p, "SDP"))
+		if os.IsNotExist(gitErr) && os.IsNotExist(childErr) {
+			p = filepath.Dir(p)
+		}
 	}
 	return p, nil
 }

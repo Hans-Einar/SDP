@@ -72,3 +72,61 @@ func TestTrustAndProtocolFailures(t *testing.T) {
 		t.Fatal("ambiguous JSON accepted")
 	}
 }
+
+func TestSignedDescriptorCompatibilityAndBounds(t *testing.T) {
+	for _, kind := range []string{"protocol", "platform", "size", "path", "binary-digest", "probe"} {
+		t.Run(kind, func(t *testing.T) {
+			c, _ := fixture(t)
+			public, private, _ := ed25519.GenerateKey(nil)
+			os.WriteFile(c.TestKey, []byte(base64.StdEncoding.EncodeToString(public)), 0600)
+			data, _ := os.ReadFile(c.Descriptor)
+			var d map[string]any
+			json.Unmarshal(data, &d)
+			a := d["binaries"].([]any)[0].(map[string]any)
+			switch kind {
+			case "protocol":
+				d["protocol"] = "unsupported"
+			case "platform":
+				a["platform"] = "unknown/architecture"
+			case "size":
+				a["size"] = maxBinary + 1
+			case "path":
+				a["path"] = "../escape"
+			case "binary-digest":
+				a["sha256"] = hash([]byte("wrong"))
+			case "probe":
+				b := []byte("#!/bin/sh\nprintf '%s\\n' '{}'\n")
+				os.WriteFile(filepath.Join(filepath.Dir(c.Descriptor), "engine"), b, 0700)
+				a["sha256"] = hash(b)
+				a["size"] = len(b)
+			}
+			data, _ = json.Marshal(d)
+			os.WriteFile(c.Descriptor, data, 0600)
+			sig, _ := json.Marshal(signature{hash(public), ed25519.Sign(private, data)})
+			os.WriteFile(c.Descriptor+".sig", sig, 0600)
+			if _, e := Bootstrap(context.Background(), c); e == nil {
+				t.Fatal("accepted incompatible input")
+			}
+		})
+	}
+}
+func TestImmutableSelectorAndReadBound(t *testing.T) {
+	c, _ := fixture(t)
+	if _, e := Resolve(context.Background(), c); e != nil {
+		t.Fatal(e)
+	}
+	public, private, _ := ed25519.GenerateKey(nil)
+	data := []byte(`{"protocol":"sdp-install-command/1","revision":"changed"}`)
+	os.WriteFile(c.Descriptor, data, 0600)
+	sig, _ := json.Marshal(signature{hash(public), ed25519.Sign(private, data)})
+	os.WriteFile(c.Descriptor+".sig", sig, 0600)
+	os.WriteFile(c.TestKey, []byte(base64.StdEncoding.EncodeToString(public)), 0600)
+	if _, e := Resolve(context.Background(), c); e == nil {
+		t.Fatal("mutable selector accepted")
+	}
+	p := filepath.Join(t.TempDir(), "large")
+	os.WriteFile(p, []byte("12345"), 0600)
+	if _, e := read(p, 4); e == nil {
+		t.Fatal("local read bound ignored")
+	}
+}

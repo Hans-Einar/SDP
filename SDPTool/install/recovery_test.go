@@ -55,8 +55,8 @@ func recoveryFixture(t *testing.T, kind string) (string, Plan) {
 	if kind == "manual" {
 		put(t, root, "AGENTS.md", []byte("owner instructions\n"))
 		put(t, root, "SDP/Agents/KanBan/board.json", []byte(`{"schemaVersion":"0.1","projectId":"XFMD","ledger":"Ledger.ndjson"}`))
-		put(t, root, "SDP/Agents/KanBan/Ledger.ndjson", []byte("{\"eventId\":\"EVT-KB-XFMD-000001\"}\n"))
-		put(t, root, "SDP/Agents/KanBan/backlog/#1.md", []byte("project card\n"))
+		put(t, root, "SDP/Agents/KanBan/Ledger.ndjson", historyFixture())
+		put(t, root, "SDP/Agents/KanBan/backlog/#1.md", cardFixture("project card\n"))
 		a := artifact(t, d)
 		in, _ := LocalInput(a, true)
 		m := adoption(t, root, in, []Move{{"SDP/Agents/KanBan", "SDP/KanBan"}}, []string{"AGENTS.md"})
@@ -140,7 +140,7 @@ func TestProcessExitRecoveryMatrix(t *testing.T) {
 					}
 					if kind == "manual" {
 						history, _ := os.ReadFile(filepath.Join(root, "SDP/ProjectManagement/Ledger.ndjson"))
-						if !bytes.HasPrefix(history, []byte("{\"eventId\":\"EVT-KB-XFMD-000001\"}\n")) {
+						if !bytes.HasPrefix(history, historyFixture()) {
 							t.Fatal("history prefix altered")
 						}
 					}

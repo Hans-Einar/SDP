@@ -26,6 +26,9 @@ func Run(ctx context.Context, root, op string, args []string, out, errs io.Write
 	key := fs.String("test-key", os.Getenv("SDP_TEST_KEY"), "explicit nonproduction signer key")
 	offline := fs.Bool("offline", os.Getenv("SDP_OFFLINE") == "true", "verified cache only")
 	e := fs.Parse(args)
+	if value := os.Getenv("SDP_OFFLINE"); e == nil && value != "" && value != "true" && value != "false" {
+		e = fmt.Errorf("SDP_OFFLINE must be true or false")
+	}
 	if e == nil && fs.NArg() != 0 {
 		e = fmt.Errorf("unexpected positional arguments")
 	}
