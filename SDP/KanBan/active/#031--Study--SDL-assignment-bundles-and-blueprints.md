@@ -5,11 +5,11 @@
 | id | KB-SDP-031 |
 | project | SDP |
 | type | Study |
-| CardState | backlog |
+| CardState | in-progress |
 | Systems | SDL, SDPTOOL |
 | created | 2026-09-25T22:20:56Z |
 | source | Owner conversation 2026-09-26: SDL context, implementation drift and post-main XFMD adoption |
-| next_review | After MAINT-SDP-0005 main consolidation |
+| next_review | At BP1 study delivery |
 
 ## Owner problem and intent
 
@@ -53,11 +53,29 @@ record whether worker/reviewer guidance or tooling detects it, and remaining gap
 Describe generated versus authored content and propose phased implementation.
 No blueprint generator or reduction in drift is claimed by registering this card.
 
-[KB-SDP-004](%23004--Proposal--Design-traceability.md) owns design/code/evidence
-traceability. [KB-SDP-032](%23032--Study--Viewpoint-navigation-feedback.md) supplies
-navigation feedback. [KB-SDP-033](%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md)
+[KB-SDP-004](../backlog/%23004--Proposal--Design-traceability.md) owns design/code/evidence
+traceability. [KB-SDP-032](../backlog/%23032--Study--Viewpoint-navigation-feedback.md) supplies
+navigation feedback. [KB-SDP-033](../backlog/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md)
 provides a prospective practical pilot; the study need not wait for its completion.
 
 ## Worklog
 
 2026-09-25T22:20:56Z: Registered in backlog before main integration; EVT-KB-SDP-000172.
+
+## Selected study execution — BP1
+
+Owner request, 2026-09-26: study blueprints regarding SDL. This selects research
+and a proposed follow-up plan, not production implementation or language adoption.
+Work on sdp/study-bp1-sdl-blueprints, based on main 2ff71c4. BranchPolicy: current;
+CommitPolicy: milestone. BP1-M1 records scope; BP1-M2 delivers the evidence-backed
+study, reproducible bounded experiment and proposed phased successor. Push the
+completed study phase and offer review against main; no merge is authorized.
+
+Use SDPTool's planned unsaved-source preview as the bounded example. Validate
+current and proposed target SDL with the existing Go parser and derive viewpoints
+with existing tools. Challenge the context with an ownership-drift variant.
+A research harness may collect evidence; do not ship a blueprint command, change
+production SDL/SDPTool code, adopt Issue #7 schemas or modify XFMD. Preserve the
+untracked SDL/go/sourceinput draft. Study recommendations remain proposed.
+
+2026-09-26T09:22:59Z: Backlog → active/in-progress for the owner-selected BP1 study; EVT-KB-SDP-000180.
