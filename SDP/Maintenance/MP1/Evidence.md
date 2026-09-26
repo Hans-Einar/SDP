@@ -82,3 +82,41 @@ Remote check run 36197129935 was started for 0ee89e1; no result is claimed here.
 The next documentation-only candidate must also receive green remote checks
 before its SHA is selected for integration. Publication and version release
 remain outside scope.
+
+## MP1-R-M3 / MP1-V-M1 — completed remote gates
+
+Selected candidate: 0cf22458002809c58748f65354edbadcc70a8279; tree
+f19bb3f99ee01eec618d03f6c640142a2c0ae924. Independent reviewer /root/mp1_review
+also approved its documentation-only delta after the low finding was corrected.
+[Run 36197403423](https://github.com/Hans-Einar/SDP/actions/runs/36197403423)
+completed all three jobs successfully for that exact head:
+
+- contracts: full Toolkit validator and 106 tests, followed by v1 package checks;
+- Windows installer: PowerShell fixture suite and all 19 v1 reference scenarios;
+- Linux process profile: two build tests, all 19 installation/upgrade/consumer
+  tests, and all 69 journal steps at backup/write/journal boundaries plus
+  prepare/completion exits, with forward resume, preserved history and
+  exactly-once finalization.
+
+The separate local PowerShell integration run completed all 19 tests in 521.539 s.
+The exact final documentation candidate passed management, document and Toolkit
+checks in a detached checkout. The Go implementation is unchanged from 0ee89e1;
+its passing race/vet and real backend checks retain that candidate identity.
+All 574 generated outputs and their design-source revision bindings match
+(538 viewpoints, 14 navigation outputs and 22 runtime-preview outputs).
+
+## MP1-I-M1 — staging integration
+
+Owner resumed the MergePlan on 2026-09-26 after the authentication interruption.
+[PR #35](https://github.com/Hans-Einar/SDP/pull/35) was merged at
+2026-09-26T08:00:43Z using the exact-head guard and a merge commit:
+8039700198cecf8dbd27d6394773955b3849178e. Its parents are the original staging
+head 9ad432407004080dd7f4f0ab06d107523f4316fd and verified candidate
+0cf22458002809c58748f65354edbadcc70a8279. Its tree is exactly
+f19bb3f99ee01eec618d03f6c640142a2c0ae924. No conflict resolution or code changes
+were needed. The 34 Issue #7-specific commits remain outside this ancestry.
+
+GitHub automatically closed the included staging PRs; PR #4 remains open against
+main, and pilot PR #8 remains separate. [PR #36](https://github.com/Hans-Einar/SDP/pull/36)
+now proposes this exact staging result to main. Its own checks are pending at this
+recording point. The old archive tag remains unchanged; main is not yet advanced.

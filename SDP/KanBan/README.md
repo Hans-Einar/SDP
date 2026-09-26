@@ -40,7 +40,7 @@
 | KB-SDP-027 | Study | completed | [Scrum for skills consolidation and project activation](completed/%23027--Study--Skills-review-and-project-activation.md) |
 | KB-SDP-028 | Study | completed | [Versioned SDP installation and upgrades](completed/%23028--Study--Installer-upgrade-and-versioned-layout.md) |
 | KB-SDP-029 | Proposal | completed | [Typed plans and a shared Planning skill](completed/%23029--Proposal--Typed-plans-and-planning-skill.md) |
-| KB-SDP-030 | Bug | active | [Restore installation conformance in CI](active/%23030--Bug--CI-installation-conformance-and-fixtures.md) |
+| KB-SDP-030 | Bug | completed | [Restore installation conformance in CI](completed/%23030--Bug--CI-installation-conformance-and-fixtures.md) |
 | KB-SDP-031 | Study | backlog | [Study SDL-derived assignment bundles and blueprints](backlog/%23031--Study--SDL-assignment-bundles-and-blueprints.md) |
 | KB-SDP-032 | Study | backlog | [Evaluate SDL viewpoints through integrated XFMD navigation](backlog/%23032--Study--Viewpoint-navigation-feedback.md) |
 | KB-SDP-033 | Study | backlog | [Plan XFMD SDP adoption through gh-sdp and a practical SDL design pilot](backlog/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md) |

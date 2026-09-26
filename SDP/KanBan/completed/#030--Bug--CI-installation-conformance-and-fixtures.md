@@ -5,7 +5,7 @@
 | id | KB-SDP-030 |
 | project | SDP |
 | type | Bug |
-| CardState | in-progress |
+| CardState | completed |
 | PlanId | MAINT-SDP-0005 |
 | Systems | SDP |
 | created | 2026-09-25T17:58:59Z |
@@ -55,3 +55,9 @@ Planning skill delivery added three managed entries without refreshing v1
 expected outcomes. Audit every generated candidate before accepting the additions.
 Linux shallow checkout lacks the earlier profile artifact; provision full history
 and pin its full commit identity.
+
+## Outcome
+
+MP1-R-M3 complete: CI run 36197403423 passes contracts, Windows 19-scenario conformance, Linux 19 upgrade/consumer tests and all 69 journal steps at backup/write/journal boundaries. The audited Planning additions and pinned history provisioning resolve both reported failures.
+
+[MP1 evidence](../../Maintenance/MP1/Evidence.md).
