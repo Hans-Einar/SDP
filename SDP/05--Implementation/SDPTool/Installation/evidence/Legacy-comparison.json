@@ -1,0 +1,20 @@
+{
+  "actionCount": 138,
+  "exactPayloads": 136,
+  "excludedReceipt": [
+    "SDP/Framework/installed-toolkit.manifest.yaml"
+  ],
+  "goEvidenceSHA256": "ebeb37293f13a60b24425d4ee05e237759a035e9c1eb4c7aa6d9cd815affbe9f",
+  "jsonKeyOrderingOnly": [
+    "SDP/KanBan/board.json",
+    "SDP/navigation.json"
+  ],
+  "legacyCaptureSHA256": "e7b2eb962b2239a05e5b9ef087672452764c710e29589c41bf5aaece247e5787",
+  "policyDifferences": [
+    "Go requires named managed refresh for adoption; legacy uses global ForceManagedFiles",
+    "Go receipt 3.0 pins descriptor/provenance; legacy facts 2.0 pin configuration",
+    "Go observes directory types as well as file hashes"
+  ],
+  "schemaVersion": "gip-legacy-comparison/1",
+  "status": "passed"
+}

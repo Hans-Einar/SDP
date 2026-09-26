@@ -42,3 +42,7 @@ also succeeded during integration; its reproducible paired trial belongs to GIP-
 ## GIP-3-M2
 
 2026-09-26T23:42:57Z. Thin gh-sdp client implemented in its own repository with shared bootstrap pinned to fb79727. Independent review REV-SPS-003-002 approves client fca8480 plus clean engine fb79727 on Linux after resolving FIFO and evidence findings. Actual gh sdp/direct plan and apply parity, offline behavior, race and vet pass. Client implementation does not duplicate installation policy. Wider engine and XFMD evidence remain GIP-4.
+
+## GIP-4-M1
+
+2026-09-26T23:48:18Z. Fresh XFMD b95a4bb baseline verified unchanged. Real direct sdptool and isolated gh sdp produce identical plans and successfully apply the same root-bound plan on a disposable copy: 138 actions, 194 preserved paths. Full-copy process exit followed by actual gh resume and repeat/no-change pass. Original history prefix and root instruction backup are exact; only the inspected KanBan link changes in AGENTS-project.md. Legacy comparison matches all 138 actions, with JSON key order normalized for board/navigation and receipt 3.0 intentionally separate.

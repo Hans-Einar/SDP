@@ -572,7 +572,7 @@ ManualAdoptionTrial addresses ApplyInstallationPlan.
 ManualAdoptionTrial addresses ValidateAdoptionBaseline.
 ManualAdoptionTrial delivers SdpTool.
 ManualAdoptionTrial depends-on GhSdpClientSlice.
-ManualAdoptionTrial has implementation-status = planned.
+ManualAdoptionTrial has implementation-status = implemented.
 ManualAdoptionTrial refines DeliverSdpTool.
 ManualProcessAdoption requires InstallationFilesystemPort in mode InstallationPlanning.
 NavigationInventory consumes KanBanReadPort.

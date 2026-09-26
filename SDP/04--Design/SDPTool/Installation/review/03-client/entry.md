@@ -1,6 +1,6 @@
 # VP02 — Architecture and logical decomposition
 
-Revision: `dddd841c13f7b842c7f5e404aeb6ac2abc599ef1c382f54c21548aef53006417`.
+Revision: `c05cf8fcba4a1c7abb985b1a3814bf9690759dfa74d12cdf58d20a9c46d96330`.
 
 Container/Unit and contains; library structure is not deployment allocation.
 
