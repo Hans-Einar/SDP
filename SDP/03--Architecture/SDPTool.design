@@ -1,10 +1,15 @@
 language design-core version 0.5.
 functionality AcceptSourceSnapshot.
+usecase AdoptManualProcess.
+functionality ApplyInstallationPlan.
 usecase BrowseProject.
 functionality BuildDesignPreview.
+functionality BuildInstallationPlan.
 unit CardHistory.
 capability CardRevisionAccess.
+mode ClientBootstrap.
 activity ConsumerValidationSlice.
+functionality CoordinateInstallation.
 activity DeliverSdpTool.
 functionality DeliverViewBundle.
 functionality DescribeNavigationTree.
@@ -12,13 +17,38 @@ actor DesignAuthor.
 capability DesignPreview.
 actor DesignReviewer.
 actor DocumentViewer.
+activity GhSdpClientSlice.
+unit GhSdpLauncher.
+container GhSdpProcess.
 interface GitHistoryPort.
 mode HistoryInspection.
 activity HistorySlice.
 usecase InspectCardHistory.
+functionality InspectInstallationBaseline.
+usecase InstallProjectProcess.
+activity InstallationApplySlice.
+unit InstallationBaselineInspector.
+unit InstallationCoordinator.
+mode InstallationExecution.
+unit InstallationExecutor.
+interface InstallationFilesystemPort.
+unit InstallationJournal.
+interface InstallationJournalPort.
+activity InstallationPlanSlice.
+unit InstallationPlanner.
+mode InstallationPlanning.
+unit InstallationRecorder.
+capability InstallationRecovery.
+mode InstallationRecoveryMode.
+activity InstallationRecoverySlice.
+unit InstallationReleaseResolver.
+functionality InvokeInstallationCommand.
 interface KanBanReadPort.
+activity ManualAdoptionTrial.
+capability ManualProcessAdoption.
 unit NavigationInventory.
 activity NavigationSlice.
+functionality PersistInstallationJournal.
 capability PlanAssistance.
 activity PlanAssistanceSlice.
 unit PlanCoordinator.
@@ -29,28 +59,48 @@ mode ProcessPlanning.
 mode ProjectBrowsing.
 unit ProjectContext.
 activity ProjectDiscoverySlice.
+capability ProjectInstallation.
+actor ProjectMaintainer.
 capability ProjectNavigation.
 functionality ProposeImplementationSlices.
+functionality PublishInstalledProcessFacts.
+usecase RecoverProjectUpgrade.
+interface ReleaseArtifactPort.
+unit ReleaseArtifactService.
+container ReleaseRepositoryProcess.
 functionality ResolveCardHistory.
+functionality ResolveInstallationRelease.
 functionality ResolveProjectContext.
+functionality ResumeInstallationOperation.
+functionality RetrieveSdpToolBinary.
 usecase ReviewImplementationPlan.
 activity SavedFilePreview.
 interface SdlProjectionPort.
 feature SdpTool.
+capability SdpToolBootstrap.
+interface SdpToolInvocationPort.
 container SdpToolProcess.
 interface SduiDocumentPort.
 mode StandalonePreview.
 interface TraceabilityReadPort.
 activity UnsavedSourcePreview.
+usecase UpgradeProjectProcess.
+functionality ValidateAdoptionBaseline.
 functionality ValidateImplementationPlan.
 unit ViewerBridge.
 interface ViewerDeliveryPort.
 AcceptSourceSnapshot allocated-to SdpToolProcess in mode StandalonePreview.
 AcceptSourceSnapshot contributes-to SdpTool.
 AcceptSourceSnapshot realizes DesignPreview.
+ApplyInstallationPlan allocated-to SdpToolProcess in mode InstallationExecution.
+ApplyInstallationPlan contributes-to SdpTool.
+ApplyInstallationPlan realizes ProjectInstallation.
 BuildDesignPreview allocated-to SdpToolProcess in mode StandalonePreview.
 BuildDesignPreview contributes-to SdpTool.
 BuildDesignPreview realizes DesignPreview.
+BuildInstallationPlan allocated-to SdpToolProcess in mode InstallationPlanning.
+BuildInstallationPlan contributes-to SdpTool.
+BuildInstallationPlan realizes ProjectInstallation.
 CardHistory consumes GitHistoryPort.
 CardHistory consumes KanBanReadPort.
 CardHistory owns ResolveCardHistory.
@@ -59,6 +109,9 @@ ConsumerValidationSlice addresses DeliverViewBundle.
 ConsumerValidationSlice depends-on NavigationSlice.
 ConsumerValidationSlice has implementation-status = planned.
 ConsumerValidationSlice refines DeliverSdpTool.
+CoordinateInstallation allocated-to SdpToolProcess in mode InstallationExecution.
+CoordinateInstallation contributes-to SdpTool.
+CoordinateInstallation realizes ProjectInstallation.
 DeliverSdpTool has implementation-status = planned.
 DeliverViewBundle allocated-to SdpToolProcess in mode ProjectBrowsing.
 DeliverViewBundle allocated-to SdpToolProcess in mode StandalonePreview.
@@ -76,11 +129,73 @@ DesignReviewer pursues InspectCardHistory.
 DesignReviewer pursues ReviewImplementationPlan.
 DocumentViewer pursues BrowseProject.
 DocumentViewer pursues PreviewDesign.
+GhSdpClientSlice addresses InvokeInstallationCommand.
+GhSdpClientSlice addresses RetrieveSdpToolBinary.
+GhSdpClientSlice delivers SdpTool.
+GhSdpClientSlice depends-on InstallationRecoverySlice.
+GhSdpClientSlice has implementation-status = planned.
+GhSdpClientSlice refines DeliverSdpTool.
+GhSdpLauncher consumes ReleaseArtifactPort.
+GhSdpLauncher consumes SdpToolInvocationPort.
+GhSdpLauncher owns InvokeInstallationCommand.
+GhSdpLauncher owns RetrieveSdpToolBinary.
+GhSdpProcess contains GhSdpLauncher.
+GhSdpProcess provides SdpToolBootstrap.
 HistorySlice addresses ResolveCardHistory.
 HistorySlice delivers SdpTool.
 HistorySlice depends-on ProjectDiscoverySlice.
 HistorySlice has implementation-status = planned.
 HistorySlice refines DeliverSdpTool.
+InspectInstallationBaseline allocated-to SdpToolProcess in mode InstallationPlanning.
+InspectInstallationBaseline contributes-to SdpTool.
+InspectInstallationBaseline realizes ProjectInstallation.
+InstallationApplySlice addresses ApplyInstallationPlan.
+InstallationApplySlice addresses CoordinateInstallation.
+InstallationApplySlice addresses PublishInstalledProcessFacts.
+InstallationApplySlice delivers SdpTool.
+InstallationApplySlice depends-on InstallationPlanSlice.
+InstallationApplySlice has implementation-status = planned.
+InstallationApplySlice refines DeliverSdpTool.
+InstallationBaselineInspector consumes InstallationFilesystemPort.
+InstallationBaselineInspector owns InspectInstallationBaseline.
+InstallationBaselineInspector owns ValidateAdoptionBaseline.
+InstallationCoordinator owns CoordinateInstallation.
+InstallationExecutor consumes InstallationFilesystemPort.
+InstallationExecutor consumes InstallationJournalPort.
+InstallationExecutor owns ApplyInstallationPlan.
+InstallationExecutor owns ResumeInstallationOperation.
+InstallationJournal owns PersistInstallationJournal.
+InstallationPlanSlice addresses BuildInstallationPlan.
+InstallationPlanSlice addresses InspectInstallationBaseline.
+InstallationPlanSlice addresses ResolveInstallationRelease.
+InstallationPlanSlice addresses ValidateAdoptionBaseline.
+InstallationPlanSlice delivers SdpTool.
+InstallationPlanSlice depends-on ProjectDiscoverySlice.
+InstallationPlanSlice has implementation-status = planned.
+InstallationPlanSlice refines DeliverSdpTool.
+InstallationPlanner consumes InstallationFilesystemPort.
+InstallationPlanner owns BuildInstallationPlan.
+InstallationRecorder consumes InstallationFilesystemPort.
+InstallationRecorder owns PublishInstalledProcessFacts.
+InstallationRecovery requires InstallationJournalPort in mode InstallationRecoveryMode.
+InstallationRecoverySlice addresses PersistInstallationJournal.
+InstallationRecoverySlice addresses ResumeInstallationOperation.
+InstallationRecoverySlice delivers SdpTool.
+InstallationRecoverySlice depends-on InstallationApplySlice.
+InstallationRecoverySlice has implementation-status = planned.
+InstallationRecoverySlice refines DeliverSdpTool.
+InstallationReleaseResolver consumes ReleaseArtifactPort.
+InstallationReleaseResolver owns ResolveInstallationRelease.
+InvokeInstallationCommand allocated-to GhSdpProcess in mode InstallationPlanning.
+InvokeInstallationCommand contributes-to SdpTool.
+InvokeInstallationCommand realizes SdpToolBootstrap.
+ManualAdoptionTrial addresses ApplyInstallationPlan.
+ManualAdoptionTrial addresses ValidateAdoptionBaseline.
+ManualAdoptionTrial delivers SdpTool.
+ManualAdoptionTrial depends-on GhSdpClientSlice.
+ManualAdoptionTrial has implementation-status = planned.
+ManualAdoptionTrial refines DeliverSdpTool.
+ManualProcessAdoption requires InstallationFilesystemPort in mode InstallationPlanning.
 NavigationInventory consumes KanBanReadPort.
 NavigationInventory consumes SdlProjectionPort.
 NavigationInventory consumes SduiDocumentPort.
@@ -90,6 +205,9 @@ NavigationSlice delivers SdpTool.
 NavigationSlice depends-on ProjectDiscoverySlice.
 NavigationSlice has implementation-status = implemented.
 NavigationSlice refines DeliverSdpTool.
+PersistInstallationJournal allocated-to SdpToolProcess in mode InstallationExecution.
+PersistInstallationJournal contributes-to SdpTool.
+PersistInstallationJournal realizes InstallationRecovery.
 PlanAssistance requires TraceabilityReadPort in mode ProcessPlanning.
 PlanAssistanceSlice addresses ProposeImplementationSlices.
 PlanAssistanceSlice addresses ValidateImplementationPlan.
@@ -112,25 +230,56 @@ ProjectDiscoverySlice addresses ResolveProjectContext.
 ProjectDiscoverySlice delivers SdpTool.
 ProjectDiscoverySlice has implementation-status = implemented.
 ProjectDiscoverySlice refines DeliverSdpTool.
+ProjectInstallation requires InstallationFilesystemPort in mode InstallationExecution.
+ProjectInstallation requires ReleaseArtifactPort in mode InstallationPlanning.
+ProjectMaintainer pursues AdoptManualProcess.
+ProjectMaintainer pursues InstallProjectProcess.
+ProjectMaintainer pursues RecoverProjectUpgrade.
+ProjectMaintainer pursues UpgradeProjectProcess.
 ProjectNavigation requires SdlProjectionPort in mode ProjectBrowsing.
 ProposeImplementationSlices allocated-to SdpToolProcess in mode ProcessPlanning.
 ProposeImplementationSlices contributes-to SdpTool.
 ProposeImplementationSlices realizes PlanAssistance.
+PublishInstalledProcessFacts allocated-to SdpToolProcess in mode InstallationExecution.
+PublishInstalledProcessFacts contributes-to SdpTool.
+PublishInstalledProcessFacts realizes ProjectInstallation.
+ReleaseRepositoryProcess contains ReleaseArtifactService.
 ResolveCardHistory allocated-to SdpToolProcess in mode HistoryInspection.
 ResolveCardHistory contributes-to SdpTool.
 ResolveCardHistory realizes CardRevisionAccess.
+ResolveInstallationRelease allocated-to SdpToolProcess in mode InstallationPlanning.
+ResolveInstallationRelease contributes-to SdpTool.
+ResolveInstallationRelease realizes ProjectInstallation.
 ResolveProjectContext allocated-to SdpToolProcess in mode ProjectBrowsing.
 ResolveProjectContext contributes-to SdpTool.
 ResolveProjectContext realizes ProjectNavigation.
+ResumeInstallationOperation allocated-to SdpToolProcess in mode InstallationRecoveryMode.
+ResumeInstallationOperation contributes-to SdpTool.
+ResumeInstallationOperation realizes InstallationRecovery.
+RetrieveSdpToolBinary allocated-to GhSdpProcess in mode ClientBootstrap.
+RetrieveSdpToolBinary contributes-to SdpTool.
+RetrieveSdpToolBinary realizes SdpToolBootstrap.
 SavedFilePreview addresses BuildDesignPreview.
 SavedFilePreview addresses DeliverViewBundle.
 SavedFilePreview has implementation-status = implemented.
 SavedFilePreview refines PreviewSlice.
+SdpTool supports AdoptManualProcess.
 SdpTool supports BrowseProject.
 SdpTool supports InspectCardHistory.
+SdpTool supports InstallProjectProcess.
 SdpTool supports PreviewDesign.
+SdpTool supports RecoverProjectUpgrade.
 SdpTool supports ReviewImplementationPlan.
+SdpTool supports UpgradeProjectProcess.
+SdpToolBootstrap requires SdpToolInvocationPort in mode ClientBootstrap.
 SdpToolProcess contains CardHistory.
+SdpToolProcess contains InstallationBaselineInspector.
+SdpToolProcess contains InstallationCoordinator.
+SdpToolProcess contains InstallationExecutor.
+SdpToolProcess contains InstallationJournal.
+SdpToolProcess contains InstallationPlanner.
+SdpToolProcess contains InstallationRecorder.
+SdpToolProcess contains InstallationReleaseResolver.
 SdpToolProcess contains NavigationInventory.
 SdpToolProcess contains PlanCoordinator.
 SdpToolProcess contains PreviewCoordinator.
@@ -138,12 +287,18 @@ SdpToolProcess contains ProjectContext.
 SdpToolProcess contains ViewerBridge.
 SdpToolProcess provides CardRevisionAccess.
 SdpToolProcess provides DesignPreview.
+SdpToolProcess provides InstallationRecovery.
+SdpToolProcess provides ManualProcessAdoption.
 SdpToolProcess provides PlanAssistance.
+SdpToolProcess provides ProjectInstallation.
 SdpToolProcess provides ProjectNavigation.
 UnsavedSourcePreview addresses AcceptSourceSnapshot.
 UnsavedSourcePreview depends-on SavedFilePreview.
 UnsavedSourcePreview has implementation-status = planned.
 UnsavedSourcePreview refines PreviewSlice.
+ValidateAdoptionBaseline allocated-to SdpToolProcess in mode InstallationPlanning.
+ValidateAdoptionBaseline contributes-to SdpTool.
+ValidateAdoptionBaseline realizes ManualProcessAdoption.
 ValidateImplementationPlan allocated-to SdpToolProcess in mode ProcessPlanning.
 ValidateImplementationPlan contributes-to SdpTool.
 ValidateImplementationPlan realizes PlanAssistance.

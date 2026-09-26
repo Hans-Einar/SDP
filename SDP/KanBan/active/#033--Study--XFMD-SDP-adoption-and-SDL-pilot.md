@@ -5,7 +5,7 @@
 | id | KB-SDP-033 |
 | project | SDP |
 | type | Study |
-| CardState | ready |
+| CardState | in-progress |
 | PlanId | PLAN-SDP-0002 |
 | Systems | SDP, SDL, SDPTOOL |
 | created | 2026-09-25T22:20:56Z |
@@ -222,3 +222,7 @@ copy before any live adoption. Detailed CLI/manifest/protocol design and release
 publication remain outstanding. No new executable is delivered by this card update.
 
 2026-09-26T22:16:08Z: EVT-KB-SDP-000190. Activated as ready under PLAN-SDP-0002; IPD-0-M1 records plan/baseline, installation modeling remains next.
+
+2026-09-26T22:23:11Z: EVT-KB-SDP-000191. Owner starts execution of IPD-1 through IPD-3; CardState ready to in-progress. SDL model, contracts and generated design review only; no live migration or production installer implementation.
+
+2026-09-26T22:24:18Z: EVT-KB-SDP-000192. IPD-1-M1 delivered installation responsibilities in SDL. CardState remains in-progress for contracts and generated review.

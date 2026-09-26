@@ -47,13 +47,14 @@ and reusable contracts remain in Toolkit until a verified Go migration replaces
 it. Existing installation.go is a facts/journal reader, not an apply engine.
 
 [REQ-SDPTOOL-007](../02--Requirements/SDPTool.md) records the target outcome.
-The concrete installation units/protocol and additions to the SDL model remain
-future design; the current model describes the earlier navigation/preview scope.
-[ST1](../Maintenance/ST1/Plan.md) changes source location without claiming a new
-command. [KB-SDP-033](../KanBan/active/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md)
-retains the executable adoption workflow and thin-client coordination.
+The canonical SDL model now allocates installation work to InstallationCoordinator,
+InstallationBaselineInspector, InstallationReleaseResolver, InstallationPlanner,
+InstallationExecutor, InstallationJournal and InstallationRecorder within
+SdpToolProcess. GhSdpProcess contains only GhSdpLauncher; ReleaseRepositoryProcess
+is an external artifact service. Five installation/client/adoption activities remain
+planned. Detailed protocol design is IPD-2, not implemented by these declarations.
 
-[PLAN-SDP-0002](../04--Design/SDPTool/Installation/Plan.md) is now selected for this
-installation design. IPD-1 will extend the canonical SDL model; the present model
-still describes the earlier scope. No allocation/contract additions are claimed
-by plan activation alone.
+[PLAN-SDP-0002](../04--Design/SDPTool/Installation/Plan.md) owns this active design;
+[IPD evidence](../04--Design/SDPTool/Installation/Evidence.md) records parser checks.
+[KB-SDP-033](../KanBan/active/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md)
+retains the subsequent implementation/adoption workflow.
