@@ -1,0 +1,22 @@
+flowchart LR
+    n_ComposeInteractiveSession["ComposeInteractiveSession (functionality)"]
+    n_FyneBackend["FyneBackend (unit)"]
+    n_FyneHost["FyneHost (container)"]
+    n_G2M3FyneInteractions["G2M3FyneInteractions (activity)"]
+    n_HandleFocusAndTextInput["HandleFocusAndTextInput (functionality)"]
+    n_PublishPresentation["PublishPresentation (functionality)"]
+    n_ReconcileWidgets["ReconcileWidgets (functionality)"]
+    n_ReleaseNativeWidgets["ReleaseNativeWidgets (functionality)"]
+    n_ScheduleUiPublication["ScheduleUiPublication (functionality)"]
+    n_FyneBackend -->|owns| n_HandleFocusAndTextInput
+    n_FyneBackend -->|owns| n_PublishPresentation
+    n_FyneBackend -->|owns| n_ReconcileWidgets
+    n_FyneBackend -->|owns| n_ReleaseNativeWidgets
+    n_FyneHost -->|owns| n_ComposeInteractiveSession
+    n_FyneHost -->|owns| n_ScheduleUiPublication
+    n_G2M3FyneInteractions -->|addresses| n_ComposeInteractiveSession
+    n_G2M3FyneInteractions -->|addresses| n_HandleFocusAndTextInput
+    n_G2M3FyneInteractions -->|addresses| n_PublishPresentation
+    n_G2M3FyneInteractions -->|addresses| n_ReconcileWidgets
+    n_G2M3FyneInteractions -->|addresses| n_ReleaseNativeWidgets
+    n_G2M3FyneInteractions -->|addresses| n_ScheduleUiPublication

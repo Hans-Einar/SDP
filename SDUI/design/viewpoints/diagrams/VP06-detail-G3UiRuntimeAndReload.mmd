@@ -1,0 +1,10 @@
+flowchart LR
+    n_G3M1TypedUiSession["G3M1TypedUiSession (activity)"]
+    n_G3M2CandidatePublication["G3M2CandidatePublication (activity)"]
+    n_G3M3CompatibleState["G3M3CompatibleState (activity)"]
+    n_G3UiRuntimeAndReload["G3UiRuntimeAndReload (activity)"]
+    n_LiveModelReload["LiveModelReload (feature)"]
+    n_G3M1TypedUiSession -->|refines| n_G3UiRuntimeAndReload
+    n_G3M2CandidatePublication -->|refines| n_G3UiRuntimeAndReload
+    n_G3M3CompatibleState -->|refines| n_G3UiRuntimeAndReload
+    n_G3UiRuntimeAndReload -->|delivers| n_LiveModelReload

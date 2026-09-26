@@ -1,0 +1,77 @@
+language sdl-mvp1-exercise version 0.1.
+
+representation AggregateLogLength.
+representation MeasuredDiameter.
+representation HeadCursorPosition.
+representation StemSeries.
+representation BuckingAlternatives.
+representation AptPriceMatrix.
+representation AptStandardIdentity.
+representation AptAvailability.
+representation StoreAptAction.
+representation OperatorCommandCatalog.
+representation ServiceBanner.
+representation UnhandledDiagnostics.
+representation SimulatorTruthView.
+composition OperatorComposition.
+composition SimulatorComposition.
+presentation OperatorPresentationSchema.
+presentation SimulatorPresentationSchema.
+view MainLengthView.
+view CompactLengthView.
+view StemPlotView.
+view AptMatrixView.
+
+AggregateLogLength typed-as LengthValue.
+AggregateLogLength describes "Current semantic length, scoped to operator context/stem; one underlying value may have two views.".
+MeasuredDiameter typed-as LengthValue.
+MeasuredDiameter describes "Evidence-backed calibrated diameter; explicit quality and calibration lineage.".
+HeadCursorPosition typed-as LengthValue.
+HeadCursorPosition describes "Current cursor separate from lagging profile history and frame cadence.".
+StemSeries typed-as SeriesValue.
+StemSeries describes "Domain-correlated profile sample stream; renderer receives incremental points.".
+BuckingAlternatives typed-as ListValue.
+BuckingAlternatives describes "Stable proposal IDs, ranking/value and permitted selection intent.".
+AptPriceMatrix typed-as MatrixValue.
+AptPriceMatrix describes "Stable length/diameter class axes; accepted draft revision and typed edit intent.".
+AptStandardIdentity typed-as IdentityValue.
+AptStandardIdentity describes "Structural discriminator for active standard/version; not a value-change schema trigger.".
+AptAvailability typed-as StateRecord.
+AptAvailability describes "Common and standard-specific semantics with explicit unsupported/unavailable fields.".
+StoreAptAction typed-as ActionValue.
+StoreAptAction describes "Domain-owned store request; no renderer codec/serialization.".
+OperatorCommandCatalog typed-as StateRecord.
+OperatorCommandCatalog describes "Federated upstream availability; no authority grant implied.".
+ServiceBanner typed-as TextValue.
+ServiceBanner describes "Global service/session/error presentation separated from unrelated box updates.".
+UnhandledDiagnostics typed-as ListValue.
+UnhandledDiagnostics describes "Bounded routing/failure diagnostics with drop counts and recursion exclusion.".
+SimulatorTruthView typed-as StateRecord.
+SimulatorTruthView describes "Explicit simulator-only hidden truth with provenance label; never normal machine evidence.".
+OperatorComposition references AggregateLogLength.
+OperatorComposition references MeasuredDiameter.
+OperatorComposition references HeadCursorPosition.
+OperatorComposition references StemSeries.
+OperatorComposition references BuckingAlternatives.
+OperatorComposition references AptPriceMatrix.
+OperatorComposition references AptStandardIdentity.
+OperatorComposition references AptAvailability.
+OperatorComposition references StoreAptAction.
+OperatorComposition references OperatorCommandCatalog.
+OperatorComposition references ServiceBanner.
+OperatorComposition references UnhandledDiagnostics.
+SimulatorComposition references SimulatorTruthView.
+OperatorUiDomain configures OperatorComposition.
+SimulatorUiDomain configures SimulatorComposition.
+OperatorUiDomain configures OperatorPresentationSchema.
+SimulatorUiDomain configures SimulatorPresentationSchema.
+OperatorPresentationSchema renders OperatorComposition.
+SimulatorPresentationSchema renders SimulatorComposition.
+MainLengthView binds-to AggregateLogLength.
+CompactLengthView binds-to AggregateLogLength.
+StemPlotView binds-to StemSeries.
+AptMatrixView binds-to AptPriceMatrix.
+MainLengthView describes "Localized primary view; display unit/precision may differ while source value stays unchanged.".
+CompactLengthView describes "Second independent view of the same Representation, not a second domain subscription.".
+OperatorComposition specifies "Instances are created per context/stem; references survive view replacement. No cross-session singleton or data-transfer ACK authority.".
+OperatorPresentationSchema specifies "Standard-specific schema selection, trusted kinds, abstract layout/style roles and per-binding delivery; actual geometry must preserve the accepted visual reference.".

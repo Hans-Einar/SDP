@@ -1,0 +1,10 @@
+flowchart LR
+    n_BrowseDesignViews["BrowseDesignViews (usecase)"]
+    n_DesignAuthor["DesignAuthor (actor)"]
+    n_DesignReviewer["DesignReviewer (actor)"]
+    n_NavigableDesignDocumentation["NavigableDesignDocumentation (feature)"]
+    n_TypedDesignInspection["TypedDesignInspection (feature)"]
+    n_DesignAuthor -->|pursues| n_BrowseDesignViews
+    n_DesignReviewer -->|pursues| n_BrowseDesignViews
+    n_NavigableDesignDocumentation -->|supports| n_BrowseDesignViews
+    n_TypedDesignInspection -->|supports| n_BrowseDesignViews

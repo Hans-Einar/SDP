@@ -1,0 +1,12 @@
+flowchart LR
+    n_AllocateGeometry["AllocateGeometry (functionality)"]
+    n_BuildPreparedFrame["BuildPreparedFrame (functionality)"]
+    n_ComposeInteractiveSession["ComposeInteractiveSession (functionality)"]
+    n_HandleFocusAndTextInput["HandleFocusAndTextInput (functionality)"]
+    n_InteractiveUiPreview["InteractiveUiPreview (feature)"]
+    n_ReconcileWidgets["ReconcileWidgets (functionality)"]
+    n_AllocateGeometry -->|contributes-to| n_InteractiveUiPreview
+    n_BuildPreparedFrame -->|contributes-to| n_InteractiveUiPreview
+    n_ComposeInteractiveSession -->|contributes-to| n_InteractiveUiPreview
+    n_HandleFocusAndTextInput -->|contributes-to| n_InteractiveUiPreview
+    n_ReconcileWidgets -->|contributes-to| n_InteractiveUiPreview

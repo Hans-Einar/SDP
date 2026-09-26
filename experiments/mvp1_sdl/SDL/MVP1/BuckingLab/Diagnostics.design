@@ -1,0 +1,18 @@
+language sdl-mvp1-exercise version 0.1.
+
+capability BuckingDiagnostics.
+functionality ObserveBuckingHistory.
+functionality ServeBuckingLabRequests.
+functionality RouteAptAdminCommand.
+
+BuckingLab cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-lab/SDP/03--Requirements/requirements.md".
+BuckingLab provides BuckingDiagnostics.
+BuckingLab owns ObserveBuckingHistory.
+ObserveBuckingHistory realizes BuckingDiagnostics.
+ObserveBuckingHistory specifies "Normal Bucking v1 client; recent history/optional NDJSON with service, event and revision lineage; no production authority.".
+BuckingLab owns ServeBuckingLabRequests.
+ServeBuckingLabRequests realizes BuckingDiagnostics.
+ServeBuckingLabRequests specifies "LabKit checkpoint, bounded artifact and configured isolated replay with explicit capabilities and request IDs.".
+BuckingLab owns RouteAptAdminCommand.
+RouteAptAdminCommand realizes BuckingDiagnostics.
+RouteAptAdminCommand specifies "buckctl load submits Bucking import; save obtains authoritative export then writes locally; never edits owner storage directly.".

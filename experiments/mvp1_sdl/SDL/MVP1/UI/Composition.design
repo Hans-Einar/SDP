@@ -1,0 +1,21 @@
+language sdl-mvp1-exercise version 0.1.
+
+unit CompositionManager.
+capability StableUiContext.
+functionality CreateCompositionScope.
+functionality ShareRepresentationReferences.
+functionality DisposeCompositionScope.
+
+UIRuntime contains CompositionManager.
+CompositionManager provides StableUiContext.
+CompositionManager status proposed.
+CompositionManager cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/Domains/UIDomain/DetailedDesignDiscussion.md".
+CompositionManager owns CreateCompositionScope.
+CreateCompositionScope realizes StableUiContext.
+CreateCompositionScope specifies "Create context-owned Representation instances/references; never equate semantic type with global singleton.".
+CompositionManager owns ShareRepresentationReferences.
+ShareRepresentationReferences realizes StableUiContext.
+ShareRepresentationReferences specifies "Two locations reference one Representation and its subscription; mounting does not decide domain event handling.".
+CompositionManager owns DisposeCompositionScope.
+DisposeCompositionScope realizes StableUiContext.
+DisposeCompositionScope specifies "Release only owned references/subscriptions after last use; view replacement does not destroy shared semantic context.".

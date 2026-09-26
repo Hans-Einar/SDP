@@ -1,0 +1,6 @@
+flowchart LR
+    n_LaunchViewRequest["LaunchViewRequest (message)"]
+    n_ViewLaunchCallsProtocol["ViewLaunchCallsProtocol (contract)"]
+    n_ViewLaunchResult["ViewLaunchResult (message)"]
+    n_ViewLaunchCallsProtocol -->|permits| n_LaunchViewRequest
+    n_ViewLaunchCallsProtocol -->|permits| n_ViewLaunchResult

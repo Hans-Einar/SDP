@@ -1,0 +1,6 @@
+flowchart LR
+    n_ReloadBoundModels["ReloadBoundModels (activity)"]
+    n_ReloadDesignSession["ReloadDesignSession (activity)"]
+    n_ReloadUiModel["ReloadUiModel (activity)"]
+    n_ReloadBoundModels -->|refines| n_ReloadDesignSession
+    n_ReloadUiModel -->|refines| n_ReloadDesignSession

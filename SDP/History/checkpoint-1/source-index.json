@@ -1,0 +1,1213 @@
+{
+  "checkpoint": "checkpoint#1",
+  "date": "2026-09-18",
+  "repository_head_at_capture": "40add14b55d8378aab89b0473d1f45c6ff3480c0",
+  "branch_at_capture": "sdp-vNow",
+  "scope": "Consolidation references from this conversation and repository; no claim of new external research, product execution or full-document reread for every source. Forward pointers added during consolidation are included in hashes.",
+  "sources": [
+    {
+      "path": "README.md",
+      "sha256": "ee85bdc9b55f702d1a23167b9e1dd5d9dac8db859c83a29027fb7911e3eb09e4",
+      "git_tracked": true,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "docs/How-SDP-Works.md",
+      "sha256": "816f7f2f678ef3bf64f9e442886a682111c4a848f290806ffbb3461fab88065d",
+      "git_tracked": true,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "docs/Feature-Governance-And-SDP-2.0.md",
+      "sha256": "3ab00b08cce34ed992b242b8a01c2850429e1ac83810655d051ecf171fa91788",
+      "git_tracked": true,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "docs/Feature-Functionality-and-Channel-Study.md",
+      "sha256": "5cbff06128d73564d6947a590df578cd3ef1580d7c898e313d7ae3205eef966c",
+      "git_tracked": true,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "docs/Scenarios-State-and-Implementation-Traceability.md",
+      "sha256": "5c7c3a07b84e0fb63ed59259fe191eb0a5d35445bf458862d05f52847d57694f",
+      "git_tracked": false,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "docs/Vocabulary-and-Grammar-Exploration.md",
+      "sha256": "bad94c32c21d2f9ee960819109ac0267cae014d4cd7a2cb0ef00a35efbe7cb25",
+      "git_tracked": false,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "docs/Design-Language-Definition.md",
+      "sha256": "5f72f2cf767aecc413beb65554210257f310e22cf65c38dcff0b7e07d8747f2e",
+      "git_tracked": false,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "docs/Design-Language-Conformance-Scenarios.md",
+      "sha256": "e1fcf3347ab4b21c07b1a4e2dca57823bcc094de71fb27ac20fb2fdc17ff46f5",
+      "git_tracked": false,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "docs/MVP1-Design-Evolution-and-SDP-Skills.md",
+      "sha256": "3906a1bff5c7db98d4e710abdf32835ed4824b3167dfb0e7ce0e0035424c0a34",
+      "git_tracked": true,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "docs/MVP1-Design-Language-Example.md",
+      "sha256": "1f3189eb03a8d5f712d088dbc89cf992c68a3727a84a2611212d9914b1cf7a38",
+      "git_tracked": false,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "docs/SDL-Source-Tree-and-Compilation-Study.md",
+      "sha256": "e24ebe7bc81601acdc51fd51100be2891a350a8b4c183e2a16ffd1ca3d49a21d",
+      "git_tracked": false,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "docs/SDL-Executable-IR-and-Runtime-Study.md",
+      "sha256": "b5bb60ff65afc016b37c9f693777d11317ebf77774cfc39472a12c0ba3fbbfab",
+      "git_tracked": false,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "docs/MVP1-SDL-Exercise-Findings-and-Extensions.md",
+      "sha256": "d7589f7382210c971d6cafaedcfe2b75587ae84d83e807e218bc601769bbf29e",
+      "git_tracked": false,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "docs/SDL-Datasets-Datagrams-and-Data-Contracts.md",
+      "sha256": "5e94e01d7b9588a194c472965b5e2205749f4b9ef708221a11121e7ee7642e8b",
+      "git_tracked": false,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "docs/SDL-ControlSets-Layer-Boundaries-and-Data-Access.md",
+      "sha256": "55152541c929b6d311c835579d5a1ed9fb9bdf999f25e96b0a5130371709b868",
+      "git_tracked": false,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "experiments/design_core/README.md",
+      "sha256": "a816c9941c231743d9ef387b1b3e10cae67108356f16bdcc9f144907bf6b8470",
+      "git_tracked": false,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "experiments/mvp1_sdl/README.md",
+      "sha256": "043e9f2ace6791cdb460831a32d76c593a800ba5b50e4409b25a30306fed5dda",
+      "git_tracked": false,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "experiments/mvp1_sdl/inventory-audit.json",
+      "sha256": "ffbea60e88f0a1a61d4351aa903e3eadf2d9767d6bdfe99bf0309fc99b545ac7",
+      "git_tracked": false,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    },
+    {
+      "path": "Toolkit/skills_v2/README.md",
+      "sha256": "79752bb6d37ff0a8cc2c4a40744a0808db11c15314be18f68bfe3a9beca31d9b",
+      "git_tracked": true,
+      "content_origin": "local working tree; not asserted to match HEAD"
+    }
+  ],
+  "renderer_sources_added_2026_09_18": [
+    {
+      "path": "../xfmd/mermaid_coverage.md",
+      "sha256": "fec93913484ed13898a93214125741b8803fb129b02111646dcdd27c7379280b",
+      "repository_head": "4e21e99"
+    },
+    {
+      "path": "../xfmd/mermaid_evicence.md",
+      "sha256": "1846e619390130744d0882c621b414ce624af643bfc65718ae4b1a893dce03e0",
+      "repository_head": "4e21e99"
+    },
+    {
+      "path": "../xfmd/docs/design/mermaid-sequence-authoring.md",
+      "sha256": "28b8285a5ddaa25aec290302ccd9682e5c869b88289f5a61ff758a52e3967c82",
+      "repository_head": "4e21e99"
+    },
+    {
+      "path": "../xfmd/docs/design/mermaid-semantic-authoring.md",
+      "sha256": "789bb77360506930bd74d8883eb4f1b57986b954d81ae710a0e74665dd964bdf",
+      "repository_head": "4e21e99"
+    }
+  ],
+  "updates": [
+    {
+      "date": "2026-09-21",
+      "reason": "Owner requested checkpoint update for SDUI 0.2 and selected Go/Fyne direction, then parser/runtime directories for SDL and SDUI. Earlier capture hashes remain historical.",
+      "repository_head_at_capture": "9ad432407004080dd7f4f0ab06d107523f4316fd",
+      "branch_at_capture": "sdp-vNow",
+      "content_origin": "local working tree; contains prior uncommitted work; no commit/push performed",
+      "scope": "Current checkpoint, active SDUI plan/architecture and language references, parser/runtime directories, existing Python port sources and bounded prototype evidence. Does not claim Go implementation or fresh external worktree verification.",
+      "verification": {
+        "sdui_python_tests": 36,
+        "sdl_design_core_python_tests": 31,
+        "architecture_design_check": "valid, no diagnostics after canonical formatting",
+        "markdown_files_checked": 29,
+        "missing_local_link_targets": 0,
+        "go_tests": "not applicable: directories only; no Go packages"
+      },
+      "sources": [
+        {
+          "path": "README.md",
+          "sha256": "5b503ca3865e63948cb5eb33971026fa2b51aeb01500d7105fda5e41e4dc7094",
+          "git_tracked": true
+        },
+        {
+          "path": "SDUI/AGENTS.md",
+          "sha256": "fac41556d45ee70988f555854f98e508e714e196c9dd7b8bba56f83590b3bbff",
+          "git_tracked": true
+        },
+        {
+          "path": "SDUI/Mandate-and-Study.md",
+          "sha256": "27ade9998079303ea06449a317d32aafbd448a38df067924a502296c62a5d581",
+          "git_tracked": true
+        },
+        {
+          "path": "SDUI/README.md",
+          "sha256": "0dea29e2f67851c844e314eca671c06692d59d5c4d512a1f230713dafb833dc5",
+          "git_tracked": true
+        },
+        {
+          "path": "SDUI/design/README.md",
+          "sha256": "239c4597b9c3461f4ba314b84e5ae7af059e0bb66b5152be0c7b0e78a3f51138",
+          "git_tracked": false
+        },
+        {
+          "path": "SDUI/design/architecture.design",
+          "sha256": "b9874cbb0c649a4852cbc7fd9583dbf0638af299e531f1ac45c5b81a875363cc",
+          "git_tracked": false
+        },
+        {
+          "path": "SDUI/docs/architecture.md",
+          "sha256": "9ab241738fa2942f03455a864aaadc237dcc9c7b615c8a91192cc843017a9efd",
+          "git_tracked": true
+        },
+        {
+          "path": "SDUI/docs/concept1-console.md",
+          "sha256": "8c833473f1c495a182f66fd1910a8f038fd930e76989a4ffd094599c4202ff43",
+          "git_tracked": false
+        },
+        {
+          "path": "SDUI/docs/concept1-relative-layout-study.md",
+          "sha256": "31d28ddcdf1c9a321c114768a98d38cd5e06af45ffdba689356be7493e463ca5",
+          "git_tracked": false
+        },
+        {
+          "path": "SDUI/docs/frame-composition-proposal.md",
+          "sha256": "d074828ccf4d46128004012cc6f04615945a43c002599623f24c3084a76df09e",
+          "git_tracked": false
+        },
+        {
+          "path": "SDUI/docs/handoff-mermaid-extraction.md",
+          "sha256": "0c388715f70df56da8f74104d706c017525f1a49fdbec722a389877c089a8893",
+          "git_tracked": false
+        },
+        {
+          "path": "SDUI/docs/handoff-xfmd-sdui.md",
+          "sha256": "c240a538c01d27dc394b64107abaad3b57214a869e237189528cf99608abe1fa",
+          "git_tracked": false
+        },
+        {
+          "path": "SDUI/docs/implementation-plan.md",
+          "sha256": "bf0ad439f8aeb6fa54412f5ddba4d51b406a309b36746ca69c65e161a2fed163",
+          "git_tracked": true
+        },
+        {
+          "path": "SDUI/docs/language.md",
+          "sha256": "339d8b8bbf56243f5ec4485553f0ddf7eb1a7f8a1689ad48b0693cc3d93435ba",
+          "git_tracked": true
+        },
+        {
+          "path": "SDUI/docs/layout-language-proposal.md",
+          "sha256": "103e6d1287745e9ed46abfb7e26adc9940e2bd0c5986644bd61a09eefa4a71b7",
+          "git_tracked": false
+        },
+        {
+          "path": "SDUI/docs/prototype-widgets.md",
+          "sha256": "eea76456ff6d2693a009f6e0aa045878f3adb7c3daf5dc72a039204c92d3004e",
+          "git_tracked": false
+        },
+        {
+          "path": "SDUI/docs/renderer-extraction-and-language-direction.md",
+          "sha256": "983254baa65c90ce27dc589e7eb6e6e57f67267ca483c26bd17c5219194bb06f",
+          "git_tracked": false
+        },
+        {
+          "path": "SDUI/docs/requirements.md",
+          "sha256": "6b197916879967f3784bbc652e1ff095ef26d326c43b3066fd35a71f87ca61a8",
+          "git_tracked": true
+        },
+        {
+          "path": "SDUI/docs/runtime-contract.md",
+          "sha256": "930e68d0c58a819518a9dc00a934dcd96ab469f67c66d8fce20c4b0c861f9417",
+          "git_tracked": true
+        },
+        {
+          "path": "SDUI/docs/target-architecture.md",
+          "sha256": "6c25a071002768ef5b23a8b32a347b3aba4ac0587007a2f0a862827d0bd291ac",
+          "git_tracked": false
+        },
+        {
+          "path": "SDUI/evidence/prototype-widgets/README.md",
+          "sha256": "723bc41741a765e4aad2977212eecb7f879a7635d2a0d84d2511c44c65b5773c",
+          "git_tracked": false
+        },
+        {
+          "path": "SDUI/evidence/prototype-widgets/tests.txt",
+          "sha256": "3d8513d69c48d1b7dea0665ebf8c85f174e94975c824623d16efbf7a1532dbb5",
+          "git_tracked": false
+        },
+        {
+          "path": "SDUI/examples/concept1-bucking.sdui",
+          "sha256": "92c9e3ff329b035353072653ebfd396108fd63439eb7d0f7ec747c78426d1569",
+          "git_tracked": false
+        },
+        {
+          "path": "SDUI/examples/concept1-bucking.widgets.md",
+          "sha256": "03df0f7599c1d8f1e1f86f311c0b2a0b377b9220b7b9cd647555235b4d21071c",
+          "git_tracked": false
+        },
+        {
+          "path": "SDUI/examples/concept1-bucking.widgets.svg",
+          "sha256": "e1cafbbc6882490dbe2bdb7a97cff2f1a8dadbf2468b477285207e37fa808977",
+          "git_tracked": false
+        },
+        {
+          "path": "SDUI/go/README.md",
+          "sha256": "51bbb65ff678d5dfe68d4776b9144881f0a687f7ee9ebfe2d25727f809cb75ca",
+          "git_tracked": false
+        },
+        {
+          "path": "SDUI/go/parser/.gitkeep",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_tracked": false
+        },
+        {
+          "path": "SDUI/go/runtime/.gitkeep",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_tracked": false
+        },
+        {
+          "path": "SDUI/grammar/sdui-0.2.ebnf",
+          "sha256": "54cdde6168cb196118bfc01628075cd2c8df6e7f048c03df3ce80f5ceeedee3c",
+          "git_tracked": false
+        },
+        {
+          "path": "SDUI/src/sdui/__init__.py",
+          "sha256": "febee3f8bdccfd526f3e5e871666d32050134e3337d7a335fb6682506848288a",
+          "git_tracked": true
+        },
+        {
+          "path": "SDUI/src/sdui/__main__.py",
+          "sha256": "1033bc42e815bd64040be57765ab827dc41b31e88851596e6fb43de2c173bfd3",
+          "git_tracked": true
+        },
+        {
+          "path": "SDUI/src/sdui/ast.py",
+          "sha256": "6fd75bbe60b3a69482f530de85afd579baf57b5f2f007791e0d16c1861084f07",
+          "git_tracked": true
+        },
+        {
+          "path": "SDUI/src/sdui/dump.py",
+          "sha256": "c4111df538cc726c9157809f27aee5031703485891654a319ac4d17740b33756",
+          "git_tracked": false
+        },
+        {
+          "path": "SDUI/src/sdui/formatting.py",
+          "sha256": "fca4864c5acd949f91803b19996a7e4d17686c0f02011faf777baea851fa4442",
+          "git_tracked": false
+        },
+        {
+          "path": "SDUI/src/sdui/lexer.py",
+          "sha256": "ef9b1a3c29b44b6e36f9423a9f3679a818473f370d997167a788fc6624a72b98",
+          "git_tracked": true
+        },
+        {
+          "path": "SDUI/src/sdui/markdown_dump.py",
+          "sha256": "bf89c74c14140c82086fd7e2bdafe1896c5fbbab875edcdf74a8d19a3f120ec5",
+          "git_tracked": false
+        },
+        {
+          "path": "SDUI/src/sdui/normalize.py",
+          "sha256": "1355218d7c8149a5fe22f9b5478deb5993de34291dbb3b6618324e5e0d5d1e9a",
+          "git_tracked": false
+        },
+        {
+          "path": "SDUI/src/sdui/parser.py",
+          "sha256": "f0e4e0e17dff4ebef34a7cb565835bf02ed6ea0a3d555dc9e3a55c836a13d6c5",
+          "git_tracked": true
+        },
+        {
+          "path": "SDUI/src/sdui/prototype_html.py",
+          "sha256": "31156d39a03ba2e0207aef7c88b4319a828296e8e4b567b8bfd3da980189a01c",
+          "git_tracked": false
+        },
+        {
+          "path": "SDUI/src/sdui/prototype_widgets.py",
+          "sha256": "2210db902eb78bd9d83b627d8c2f8a5621ea3fe205fde5f4ff2361c642a08a31",
+          "git_tracked": false
+        },
+        {
+          "path": "SDUI/src/sdui/validate.py",
+          "sha256": "51f71d294303e8a109cfa219387f7034ad90c70c51798de03a4fc9c6c625cd01",
+          "git_tracked": true
+        },
+        {
+          "path": "SystemDesignLanguage/README.md",
+          "sha256": "3287d5fe262897d55c61c1facb5fed1a2e821d9af738674a89bc57656ce01335",
+          "git_tracked": true
+        },
+        {
+          "path": "SystemDesignLanguage/go/README.md",
+          "sha256": "5f7a4aa6b74444b45886bbc16d686cacc92682cf0b9512b03c6b43c4712481c2",
+          "git_tracked": false
+        },
+        {
+          "path": "SystemDesignLanguage/go/parser/.gitkeep",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_tracked": false
+        },
+        {
+          "path": "SystemDesignLanguage/go/runtime/.gitkeep",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "git_tracked": false
+        },
+        {
+          "path": "docs/checkpoint#1/01-System-Development-Process.md",
+          "sha256": "7c68a943ce38d3f8abec19ab7804cef29d8421c3c2a030b0918f551144ff1de6",
+          "git_tracked": true
+        },
+        {
+          "path": "docs/checkpoint#1/02-SDL-Model-and-Abstraction-Levels.md",
+          "sha256": "a5bdff09937000c850d6a281666d60fdc1d27a38b66458250bf1c63177caef67",
+          "git_tracked": true
+        },
+        {
+          "path": "docs/checkpoint#1/03-Values-Data-and-Control.md",
+          "sha256": "4f3f1efb13e261c296a6db39d3b42fceb4c1d35ff8cfe28d509dff59dfbe585c",
+          "git_tracked": true
+        },
+        {
+          "path": "docs/checkpoint#1/04-Worked-Realization-and-Change-Impact.md",
+          "sha256": "161a9f0cadbb2307cb56dd66e195e0632e487c9f6d43230b8447b67f8b075fb2",
+          "git_tracked": true
+        },
+        {
+          "path": "docs/checkpoint#1/05-Decisions-Sources-and-Next-Work.md",
+          "sha256": "fd1943618188e75a8ec2d3f8d0418cb33b5194f13d73337d09eb4add92b65623",
+          "git_tracked": true
+        },
+        {
+          "path": "docs/checkpoint#1/06-Interactive-Prototype-and-Renderer-Study.md",
+          "sha256": "900f3abd8df5ad4a665211a0fd9365c53ab190c3a2917b6605db7ef83e4c5de0",
+          "git_tracked": true
+        },
+        {
+          "path": "docs/checkpoint#1/07-SDUI-0.2-and-Go-Direction.md",
+          "sha256": "d1544dcd7830bb77775f55c3689f94a4fdd90a30f4e33b635a5eb26864ca93b0",
+          "git_tracked": false
+        },
+        {
+          "path": "docs/checkpoint#1/README.md",
+          "sha256": "411f5da6dac2dcfeb6d91df11aafc61680ad2b316fb4fcb1596de91cfb00da7c",
+          "git_tracked": true
+        },
+        {
+          "path": "experiments/design_core/README.md",
+          "sha256": "a816c9941c231743d9ef387b1b3e10cae67108356f16bdcc9f144907bf6b8470",
+          "git_tracked": true
+        },
+        {
+          "path": "experiments/design_core/design_core.py",
+          "sha256": "4df8fffa931a3f1d12d75d6fc5e6391c0dad254cfbbb0237e91e0344e19dbc83",
+          "git_tracked": true
+        },
+        {
+          "path": "experiments/mvp1_sdl/README.md",
+          "sha256": "043e9f2ace6791cdb460831a32d76c593a800ba5b50e4409b25a30306fed5dda",
+          "git_tracked": true
+        },
+        {
+          "path": "experiments/mvp1_sdl/SDL/MVP1/Scenarios/EditAptCell.design",
+          "sha256": "7b7502c002019c58b86189fd8da172519185196b596ad31d5f7ebe5cb1bf1a77",
+          "git_tracked": true
+        }
+      ]
+    },
+    {
+      "date": "2026-09-22",
+      "reason": "Owner requested complete parser/runtime target design in SDL and verification through the existing parser. Expanded the single shared model; no language extension or Go implementation.",
+      "repository_head_at_capture": "9ad432407004080dd7f4f0ab06d107523f4316fd",
+      "content_origin": "local uncommitted working tree; earlier captures remain historical",
+      "verification": {
+        "profile": "design-core 0.1",
+        "valid": true,
+        "declarations": 193,
+        "facts": 381,
+        "sdl_design_core_tests": 31,
+        "sdui_tests": 36,
+        "cli_ast_matches_saved_ast": true,
+        "export_reproducible": true,
+        "local_link_check": "passed"
+      },
+      "sources": [
+        {
+          "path": "SDUI/design/README.md",
+          "sha256": "0e9cafe7e0ff0eec98e6bfb2542876bab9bd2209a09412f3201969b71c2892d7"
+        },
+        {
+          "path": "SDUI/design/architecture.ast.json",
+          "sha256": "6f3e426147f1018c4cb8aaad007114e410809f6c9b2452a7ec421f38a16970b8"
+        },
+        {
+          "path": "SDUI/design/architecture.catalog.md",
+          "sha256": "12d959d1f12e6fd52616d1d8a8bad9fbc4d0dc7621e2b896fc4d10e3c6ba1f91"
+        },
+        {
+          "path": "SDUI/design/architecture.design",
+          "sha256": "056e81e6248c1c26ac62d4c5c6fb1a2d3b6313a240f83a69269565ddd04da49a"
+        },
+        {
+          "path": "SDUI/design/architecture.validation.json",
+          "sha256": "2480f08102a3f5d9aa65194bcc3b62f729d05e2619ab45dd9c3ec82cf39501b3"
+        },
+        {
+          "path": "SDUI/docs/implementation-plan.md",
+          "sha256": "30ec6820182da42d7743f7597acfc5d68e00b9d07d931a3ddb95fa66f5f9b431"
+        },
+        {
+          "path": "SDUI/docs/target-architecture.md",
+          "sha256": "16eee78de1475f0e6a1bba3daeac4480699bd88db55f624561fae615362b5b8e"
+        },
+        {
+          "path": "SDUI/go/README.md",
+          "sha256": "84d2fec074b6d535534afa3e254cb0eef05279393dbf8a4f45c67b67cab3f6e6"
+        },
+        {
+          "path": "SDUI/tools/export_design.py",
+          "sha256": "b51f88631256e33b7dbbc543822399efa0bb6e4185635c53c363c476aa644060"
+        },
+        {
+          "path": "SystemDesignLanguage/go/README.md",
+          "sha256": "291f1e9902488e7f9c71db9a10224a4741d570afc61e48309710793179cea1a5"
+        },
+        {
+          "path": "docs/checkpoint#1/07-SDUI-0.2-and-Go-Direction.md",
+          "sha256": "9102afb23839ae14d888d63b5039c223b2afafb993eb21a4de4b232c2a2390c4"
+        },
+        {
+          "path": "experiments/design_core/design_core.py",
+          "sha256": "4df8fffa931a3f1d12d75d6fc5e6391c0dad254cfbbb0237e91e0344e19dbc83"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-22",
+      "reason": "SDL checkpoint implementation audit, persistent Database clarification, viewpoint catalogue and executable SDL toolkit generator. All diagrams derive from validated SDL; unsupported concepts are reported, not invented.",
+      "repository_head_at_capture": "9ad432407004080dd7f4f0ab06d107523f4316fd",
+      "content_origin": "local uncommitted working tree; earlier fingerprints remain historical",
+      "verification": {
+        "viewpoint_tool": 7,
+        "sdl_parser": 31,
+        "sdui": 36
+      },
+      "sources": [
+        {
+          "path": "SDUI/design/README.md",
+          "sha256": "96246c751fe267d3428f05bbacdb6e4a7e8d68e090ded6f74027f50c70a81845"
+        },
+        {
+          "path": "SDUI/design/architecture.design",
+          "sha256": "056e81e6248c1c26ac62d4c5c6fb1a2d3b6313a240f83a69269565ddd04da49a"
+        },
+        {
+          "path": "SDUI/design/viewpoints/manifest.json",
+          "sha256": "00187f9492b04d2330f5312e3987f4cc7002dc430c0e28be038e346b43edcdc9"
+        },
+        {
+          "path": "SDUI/design/viewpoints/printout.md",
+          "sha256": "f3b7b672b648e92d3289d0673f6f172571dfa3f588686517b3b3f79a825d2fea"
+        },
+        {
+          "path": "SDUI/design/viewpoints/viewpoints.md",
+          "sha256": "e0943ad4ce0fe80c5a35e486de9f5ce03e4173e39eda66f227283895687e6bdf"
+        },
+        {
+          "path": "SDUI/docs/implementation-plan.md",
+          "sha256": "206cb03fc9aaa83f3afbf53f65fccc59f041a91b076d733fa3f9a6f85f89bd73"
+        },
+        {
+          "path": "SystemDesignLanguage/README.md",
+          "sha256": "38537e1f9b261c43b793c3fa57c8c26f63fdfa5abb11eb9d26568ca056799af8"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/README.md",
+          "sha256": "a569bed199dbc2900ec91b5551ab9117fe56a5d079d8e408fe9e963b55efe251"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/sdl.py",
+          "sha256": "2bd5972f117f0a4c0fb5e059db282567c562a1928db081b1f104e83326da8d03"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/test_viewpoints.py",
+          "sha256": "17a63d908cac4273baf3dde4d5a49dfa0f1821b95cd11416027d09156a143ed3"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/verification.json",
+          "sha256": "25a9dbf918f2356637cc96cb922971f5a11a736cf842167e8284aed081b36caa"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/viewpoints.py",
+          "sha256": "62ecafcca5e47eda0e58fe9b9c1965c320a7c87cb44fdf83b8c9302e31aa54d9"
+        },
+        {
+          "path": "docs/SDL-Datasets-Datagrams-and-Data-Contracts.md",
+          "sha256": "a68a0181687efa93e3097e472e4f0f1517d21cc93057bab6fa9b5362b60e58e9"
+        },
+        {
+          "path": "docs/SDL-Source-Tree-and-Compilation-Study.md",
+          "sha256": "780a01cbb1d4afc2bd92e29bac91c05d78b9415fb0de483c117cdeb14bc3919c"
+        },
+        {
+          "path": "docs/checkpoint#1/01-System-Development-Process.md",
+          "sha256": "7c68a943ce38d3f8abec19ab7804cef29d8421c3c2a030b0918f551144ff1de6"
+        },
+        {
+          "path": "docs/checkpoint#1/02-SDL-Model-and-Abstraction-Levels.md",
+          "sha256": "a5bdff09937000c850d6a281666d60fdc1d27a38b66458250bf1c63177caef67"
+        },
+        {
+          "path": "docs/checkpoint#1/03-Values-Data-and-Control.md",
+          "sha256": "d330d5001a5cafd07158ecfc461063f079a9e10a326b17a7c3742dad12315571"
+        },
+        {
+          "path": "docs/checkpoint#1/04-Worked-Realization-and-Change-Impact.md",
+          "sha256": "161a9f0cadbb2307cb56dd66e195e0632e487c9f6d43230b8447b67f8b075fb2"
+        },
+        {
+          "path": "docs/checkpoint#1/05-Decisions-Sources-and-Next-Work.md",
+          "sha256": "0cdf59a31856a3f5123b39f573350e911e1fad9cbb54ee5bcede65883861d534"
+        },
+        {
+          "path": "docs/checkpoint#1/06-Interactive-Prototype-and-Renderer-Study.md",
+          "sha256": "900f3abd8df5ad4a665211a0fd9365c53ab190c3a2917b6605db7ef83e4c5de0"
+        },
+        {
+          "path": "docs/checkpoint#1/07-SDUI-0.2-and-Go-Direction.md",
+          "sha256": "9102afb23839ae14d888d63b5039c223b2afafb993eb21a4de4b232c2a2390c4"
+        },
+        {
+          "path": "docs/checkpoint#1/08-SDL-Viewpoints-and-Implementation-Status.md",
+          "sha256": "5f7f90242c6fcb837edb0e9ec64f8166132482600e5ca54ddea689d285b82469"
+        },
+        {
+          "path": "docs/checkpoint#1/README.md",
+          "sha256": "f0b67afc60656ea3cfb095f4efa1605d6761bbd5205706287c26cc498edcb553"
+        },
+        {
+          "path": "experiments/design_core/design_core.py",
+          "sha256": "4df8fffa931a3f1d12d75d6fc5e6391c0dad254cfbbb0237e91e0344e19dbc83"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-22",
+      "reason": "SDL V1: design-core 0.2 replaces active 0.1; Actor/UseCase/Feature contributions and explicit per-mode Functionality allocation. Toolkit generates VP01/VP07 from the ported SDL/SDUI model; no handwritten diagram facts or Go runtime.",
+      "repository_head_at_capture": "9ad432407004080dd7f4f0ab06d107523f4316fd",
+      "content_origin": "local uncommitted working tree; earlier fingerprints remain historical",
+      "verification": {
+        "viewpoint_tool": 13,
+        "sdl_parser": 40,
+        "sdui": 36,
+        "rendered_diagrams": 67,
+        "model_gaps": 14
+      },
+      "sources": [
+        {
+          "path": "SDUI/design/README.md",
+          "sha256": "321610db203be84879d7996c2f22f471e4b3ff73e3a2b0676da271762e8f454a"
+        },
+        {
+          "path": "SDUI/design/architecture.ast.json",
+          "sha256": "07368e9b7498db3e6437955251f1e60d1773b8d2dce53118ab28df9b329b9add"
+        },
+        {
+          "path": "SDUI/design/architecture.catalog.md",
+          "sha256": "1d5f82fec5bddce3a18e896edf499c2d4087dbb7f1a80ac5dc8f5826639372cf"
+        },
+        {
+          "path": "SDUI/design/architecture.design",
+          "sha256": "4e9f08a8c8c05ebcbb4f3b16ce6eaecc819d1d3ca036e99c5bf191fc028b2419"
+        },
+        {
+          "path": "SDUI/design/architecture.validation.json",
+          "sha256": "5bd6140db598706e4f9c1dabaf390e152b4dca4b9b9cbec53620e5a53a518ff6"
+        },
+        {
+          "path": "SDUI/design/viewpoints/manifest.json",
+          "sha256": "2a1f83823b4e734e8fcef854dbcc1cb47ddb1b61692dbfd812b8ace9314f2b6a"
+        },
+        {
+          "path": "SDUI/design/viewpoints/printout.md",
+          "sha256": "cb2ea136850332cc6c356dbdfc8450c66992d4c076eded39214c40b3152e4ed2"
+        },
+        {
+          "path": "SDUI/design/viewpoints/viewpoints.md",
+          "sha256": "a09b343810c81e425b8dc95abaa2060521ac8743bece7864edd79a7563c93bd9"
+        },
+        {
+          "path": "SDUI/docs/implementation-plan.md",
+          "sha256": "9e640cd0f3dc88d4af526ddec02bd56dd4c71c0591f1bd9c9b61dc4d556120ee"
+        },
+        {
+          "path": "SDUI/tools/export_design.py",
+          "sha256": "b173d85cfd6093d190fd34c9ea1a1345179d698e2055f8337865750e525021b0"
+        },
+        {
+          "path": "SystemDesignLanguage/README.md",
+          "sha256": "15b54c73c683a8948dbc81b3413b3f81ece664c734d8218035a838cbb797e533"
+        },
+        {
+          "path": "SystemDesignLanguage/go/README.md",
+          "sha256": "65f14d83b0804c00311828f4a76db624afef5a79a2101eedaf77f621c837eb41"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/README.md",
+          "sha256": "8198b8f642e6f2c2e94e81b7d83bb8584aa044a3b9a830a41a8acf035b9c81df"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/goal_views.py",
+          "sha256": "e312f68c4e204e6f119ccb9a7978e4876d8348e23d3c1a0bdf80f3dd317e440b"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/sdl.py",
+          "sha256": "d7a9f03e2e29c47da56f3722f0df21ecef8613b0bafc172e676113b63a9d49e6"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/test_goal_views.py",
+          "sha256": "22be17ed783fd039cc183f6b2845fe9dc45dd9c243979258caba647893ba7296"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/test_viewpoints.py",
+          "sha256": "b1b422aad29073ce26a855289714d61864e7343dd01fd9181df3d70c3e42ac19"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/verification.json",
+          "sha256": "59b3411bd655e98faaa459710d0f81965a34646390feddfc4182d6155f0a2e2a"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/viewpoints.py",
+          "sha256": "002acb879b8cc54157610b0b6e6527f31079754b7fc60e2330aece307d6b77d3"
+        },
+        {
+          "path": "docs/Design-Language-Definition.md",
+          "sha256": "90db28d4ca32becdf67ae717bcb855e2ff92c1178c7f9c9ce222263c3055e24c"
+        },
+        {
+          "path": "docs/checkpoint#1/07-SDUI-0.2-and-Go-Direction.md",
+          "sha256": "1bc9b24db98e1240700f72ead3e320e086f505a6161f630f0f5fc1449e16ba4a"
+        },
+        {
+          "path": "docs/checkpoint#1/08-SDL-Viewpoints-and-Implementation-Status.md",
+          "sha256": "4ec75f197a9989218f9ae9ae1cdcfbbf1de85121f670bcc9a8dc376f2da33662"
+        },
+        {
+          "path": "docs/checkpoint#1/README.md",
+          "sha256": "2ab96ac646cb185c79a5c00804ab9f771fce2201ebfcdf89bb3eb3678e66d18c"
+        },
+        {
+          "path": "experiments/design_core/README.md",
+          "sha256": "002fc2a1d113208ebb58664f85fb7344cbaccb96ff0db099c4e305228d9c458c"
+        },
+        {
+          "path": "experiments/design_core/design_core.py",
+          "sha256": "fb4c1cbfb76c4e3570fad2fe62578a87c1cd2f8e9663467fb391247df3970641"
+        },
+        {
+          "path": "experiments/design_core/examples/ui-ownership.design",
+          "sha256": "379276e9bd8ebfa5f8da0d32072dc8d7ab53a70a6148a9ba6d6c04c1ed9addd4"
+        },
+        {
+          "path": "experiments/design_core/test_design_core.py",
+          "sha256": "3918cafcaf23a9be7e1c910afa841930af476ce052671d2a1d6606fa04635a2d"
+        },
+        {
+          "path": "experiments/design_core/test_design_goals.py",
+          "sha256": "0e070d2a697efdfc20f65e96054ba0ea35d36611eb07db1316d7f1a594dec44e"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-22",
+      "reason": "V2–V4 delivered: design-core 0.5 data/contracts, validated channel scenarios, derived MessageSets and generated G1–G5 implementation review. No Go implementation.",
+      "repository_head_at_capture": "46027e06762c2a00290a3cb27ef8f61e2eb32c33",
+      "content_origin": "V4-M3 working tree before milestone commit; earlier fingerprints remain historical",
+      "verification": {
+        "viewpoint_tool": 24,
+        "sdl_parser": 61,
+        "sdui": 36,
+        "rendered_diagrams": 142,
+        "model_gaps": 15
+      },
+      "sources": [
+        {
+          "path": "SDUI/design/README.md",
+          "sha256": "7a20d0e9b2fe2e6aa7cabba0d0b4a3c74c3ed146d90fc07ede29840dfda78978"
+        },
+        {
+          "path": "SDUI/design/architecture.ast.json",
+          "sha256": "22feb4754b5f3809ab3d877b70d249d94e40a38e4ac7b5551eca42ec91dbd0de"
+        },
+        {
+          "path": "SDUI/design/architecture.catalog.md",
+          "sha256": "26898a1db732913d266bb6c5ca0cc377c0547244d2288fa2fd1d3b1b862a7ff0"
+        },
+        {
+          "path": "SDUI/design/architecture.design",
+          "sha256": "c4d147021b6adca7213aa0235d9459c23d2e7c411afd85b1a56f766c08ba68eb"
+        },
+        {
+          "path": "SDUI/design/architecture.validation.json",
+          "sha256": "32adf1b0fab9e94a87c51ae8a439031c677407cc984e7ae1e9b31f55f7f23533"
+        },
+        {
+          "path": "SDUI/design/viewpoints/implementation.md",
+          "sha256": "9010b403f5a90a7828f67742d4dedf9b032737993ee66cd4a8aa1e876cb7a1cf"
+        },
+        {
+          "path": "SDUI/design/viewpoints/manifest.json",
+          "sha256": "3201aa4136bb3def16e6849dd5066639359bb30711e8dad0c5ef204c36a0c0f0"
+        },
+        {
+          "path": "SDUI/design/viewpoints/message-sets.json",
+          "sha256": "672af77356dd15153c105832e67568af98090c0e9dcc9754b36b9a7a88f21db6"
+        },
+        {
+          "path": "SDUI/design/viewpoints/printout.md",
+          "sha256": "0fb26b9af5c3e52873ace6da1e9d2ed29ec147d714bab5a021b7ff4ba5692537"
+        },
+        {
+          "path": "SDUI/docs/implementation-plan.md",
+          "sha256": "1d38ec3ddb11e02147fd91b9443175fd9203177d5545d7bc89b409d758a2e024"
+        },
+        {
+          "path": "SystemDesignLanguage/README.md",
+          "sha256": "cb4285c2a79f5097e0f60f496d17b0db879c13b59e4364ee930b2baf167afbf6"
+        },
+        {
+          "path": "SystemDesignLanguage/go/README.md",
+          "sha256": "73f07eaabc41d6ce62fc0792179a774286c97a4d80c6358869b2b6f0343e2aad"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/README.md",
+          "sha256": "ae3de345d94b9f31c9ba15e3f0498ab5ed3063903f79402888a1623e49ef70ca"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/channel_views.py",
+          "sha256": "ce28341184bf1ddb7aad65e611ff5cc6af5bcbf03cc8a92883e4db7b64577dfc"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/data_views.py",
+          "sha256": "015440a1dd66ed45d9178a57ae523fa7e61e73ee5424c4de636304fe15526128"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/goal_views.py",
+          "sha256": "e312f68c4e204e6f119ccb9a7978e4876d8348e23d3c1a0bdf80f3dd317e440b"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/plan_views.py",
+          "sha256": "dc840dca34650d0fe57eceda039e4cf147954421c912617c4a3954697267e31e"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/sdl.py",
+          "sha256": "6fc15da4834b381d29c1e6157b4ec4dcf1e1446346f0a05b43090c3f01a65211"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/test_channel_views.py",
+          "sha256": "778f59dfaea4fa002ad57f05bd1095f3f06a5e1b24cad7a7d7d87b96556fc8f7"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/test_data_views.py",
+          "sha256": "58e9d7916f6753a160a43cfab601b1a101d7a8904e2d0c67b56158864ce13b57"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/test_goal_views.py",
+          "sha256": "7adb506ea69dbf7f4788f0d8ba076a1738fe69477fca1120bfb89ed6d41d54fd"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/test_plan_views.py",
+          "sha256": "c0898abd7fa74a385daca787a2be053a3780794871e7001a35083de94b01cd99"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/test_viewpoints.py",
+          "sha256": "a30a099e7f4b2158fc13409c6b86a7f9af01a07e1073ee2bd23deef34eb9e510"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/verification.json",
+          "sha256": "a90068e8ad59fb1f327874473f41eb78c922cd20d4bf245fc7522d7e12d94064"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/verify_design.py",
+          "sha256": "4071b898f5fa4f6af34c58045383a9fc0c6c4ea3f74015a4927e926627c4140b"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/viewpoints.py",
+          "sha256": "531ce26c789dcfd9230bb9c1020c895cc339e1dbebaa41db1896e726a99d8c17"
+        },
+        {
+          "path": "docs/Design-Language-Definition.md",
+          "sha256": "bc1bb600fa63de44f6178a8e746114238644c5195d8bcd040d14b1b383ba04f4"
+        },
+        {
+          "path": "docs/Development-Branch-Stack.md",
+          "sha256": "4cfdb6957bf311f4408df01ae4d434595732535bf9a3337f53d79d4964383970"
+        },
+        {
+          "path": "docs/SDL-Channel-Scenario-Profile.md",
+          "sha256": "52834182fc12891892606745f1505a8010c9e62f736bf3c4305b766945ba10be"
+        },
+        {
+          "path": "docs/SDL-Data-Contract-Profile.md",
+          "sha256": "958c831c2b244e7db4b4dab66ea2e7516f64ecc5f36b5a4666322b8045a87700"
+        },
+        {
+          "path": "docs/SDL-Delivery-Plan-Profile.md",
+          "sha256": "f3129a456cf915a431a503e9568a2ef00e00082daf998b8943d0165fe47c2c1d"
+        },
+        {
+          "path": "docs/checkpoint#1/01-System-Development-Process.md",
+          "sha256": "7c68a943ce38d3f8abec19ab7804cef29d8421c3c2a030b0918f551144ff1de6"
+        },
+        {
+          "path": "docs/checkpoint#1/02-SDL-Model-and-Abstraction-Levels.md",
+          "sha256": "a5bdff09937000c850d6a281666d60fdc1d27a38b66458250bf1c63177caef67"
+        },
+        {
+          "path": "docs/checkpoint#1/03-Values-Data-and-Control.md",
+          "sha256": "d330d5001a5cafd07158ecfc461063f079a9e10a326b17a7c3742dad12315571"
+        },
+        {
+          "path": "docs/checkpoint#1/04-Worked-Realization-and-Change-Impact.md",
+          "sha256": "161a9f0cadbb2307cb56dd66e195e0632e487c9f6d43230b8447b67f8b075fb2"
+        },
+        {
+          "path": "docs/checkpoint#1/05-Decisions-Sources-and-Next-Work.md",
+          "sha256": "0cdf59a31856a3f5123b39f573350e911e1fad9cbb54ee5bcede65883861d534"
+        },
+        {
+          "path": "docs/checkpoint#1/06-Interactive-Prototype-and-Renderer-Study.md",
+          "sha256": "900f3abd8df5ad4a665211a0fd9365c53ab190c3a2917b6605db7ef83e4c5de0"
+        },
+        {
+          "path": "docs/checkpoint#1/07-SDUI-0.2-and-Go-Direction.md",
+          "sha256": "c9794d422c8326b0f2aa1f271bba3ec5c8207562ad6db4f681019a60bd25ad12"
+        },
+        {
+          "path": "docs/checkpoint#1/08-SDL-Viewpoints-and-Implementation-Status.md",
+          "sha256": "3343d033cb08f11b151ec1781a04db3c356ea33143c23004d108f64fa913f406"
+        },
+        {
+          "path": "docs/checkpoint#1/09-SDL-Generated-Go-Design-Review.md",
+          "sha256": "d0075450c9ffd87fb3cf9a3bd958ad81629d08a0239e5819a80d3f7775a071a3"
+        },
+        {
+          "path": "docs/checkpoint#1/README.md",
+          "sha256": "b54333a02de25be451f6f8431b9ce71d6a424860106b6a57cab927047781497e"
+        },
+        {
+          "path": "experiments/design_core/README.md",
+          "sha256": "9071a502bde944b4c370872682545964006cb8f6391f7c65a14798675b0f7891"
+        },
+        {
+          "path": "experiments/design_core/channel_core.py",
+          "sha256": "bfb289aa11045528f2146189975a7e66e0f00acb51ae2acf147a6f88306e675c"
+        },
+        {
+          "path": "experiments/design_core/data_core.py",
+          "sha256": "c967bd05a927fc6efee2bd22483e340b4e9dec304973e4bc5536272a6bb1d308"
+        },
+        {
+          "path": "experiments/design_core/design_core.py",
+          "sha256": "242ca11e2d08128a541ce03bbbf557b3fb7bc6060c74b2dd89f06922a91f843e"
+        },
+        {
+          "path": "experiments/design_core/test_channel_core.py",
+          "sha256": "8d040cfb7a1356b6a557efae247286807bd300f59dc0aa78f636a8334c5550da"
+        },
+        {
+          "path": "experiments/design_core/test_data_core.py",
+          "sha256": "e8312092b0c5619a6eb34ccccf1b2951f2fe81793f56c13b49c07469e46f0053"
+        },
+        {
+          "path": "experiments/design_core/test_delivery_plan.py",
+          "sha256": "f718948473bee56de201aea91a1bd5e96e32411d5f04ccf9bef35ab95d63184f"
+        },
+        {
+          "path": "experiments/design_core/test_design_core.py",
+          "sha256": "391baa6fe59ae171119b5276b4c339d5bf8a0a068aa3d3a37540c92f3562510d"
+        },
+        {
+          "path": "experiments/design_core/test_design_goals.py",
+          "sha256": "31a4a974563cbe829639a21b1a28de7f038ac602eff4e49b3a8864ab11bf8c6b"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-22",
+      "reason": "G6-D1: planned navigation, selected view generation, XFMD document panels and optional session service. SDL model and generated review updated; no generator/runtime implementation change.",
+      "repository_head_at_capture": "5bcc495b7f3f6e6e8d169edcdc6c1c19c8dc2831",
+      "content_origin": "G6-D1 working tree before design milestone commit; previous fingerprints remain historical",
+      "verification": {
+        "sdl_parser": 61,
+        "viewpoint_tool": 24,
+        "sdui": 36,
+        "rendered_diagrams": 166,
+        "model_gaps": 18
+      },
+      "sources": [
+        {
+          "path": "SDUI/design/README.md",
+          "sha256": "672479ecd7de5c57f96f8f894208536837d4dc7dc9fbcbf06eb7f5518fc539e4"
+        },
+        {
+          "path": "SDUI/design/architecture.ast.json",
+          "sha256": "87e8995077e2c09419f7f5ac9da3776ed34b21fc1d22e7fa62bbd69c33f706f6"
+        },
+        {
+          "path": "SDUI/design/architecture.catalog.md",
+          "sha256": "d395c0bcfe27608b036ef05265b528e21f7f709a43ee7817cb64d2c6322013eb"
+        },
+        {
+          "path": "SDUI/design/architecture.design",
+          "sha256": "54e5788cd19b48e20b40aabfa32a17d7beb4efd7a4e70f65dda754edd65acc24"
+        },
+        {
+          "path": "SDUI/design/architecture.validation.json",
+          "sha256": "bcfc9ca24fcb3c631d35a100b88571573e092647cee5e335dcf3bd126c9ecdba"
+        },
+        {
+          "path": "SDUI/design/viewpoints/implementation.md",
+          "sha256": "a47a5823994b74a7d2b39db8bc27029611fbcbe31289f6347f5c85a5918122e1"
+        },
+        {
+          "path": "SDUI/design/viewpoints/manifest.json",
+          "sha256": "114f2c8adf899fc04d24285bd879aca1e0d15b4e5cb59b9b61c0466c55a30a50"
+        },
+        {
+          "path": "SDUI/design/viewpoints/printout.md",
+          "sha256": "c8094c236439e0f6f9617a37de842e13b49855a892ce8da6a565ce55c3be0396"
+        },
+        {
+          "path": "SDUI/docs/implementation-plan.md",
+          "sha256": "1279d47f43473e4fe72b7e225cb2cde2a16b9cfc0d43cfb7af594367844259a4"
+        },
+        {
+          "path": "SDUI/docs/target-architecture.md",
+          "sha256": "c3140ca0282db6a4d8f7bfe9cdfca2e99a14a0bdab773ac413fe143e621d16ff"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/README.md",
+          "sha256": "7dc89e6dbfa11b875a3cb99f9e9793d7f0da934fd0953b74ef5d4a43399116ee"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/channel_views.py",
+          "sha256": "ce28341184bf1ddb7aad65e611ff5cc6af5bcbf03cc8a92883e4db7b64577dfc"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/data_views.py",
+          "sha256": "015440a1dd66ed45d9178a57ae523fa7e61e73ee5424c4de636304fe15526128"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/goal_views.py",
+          "sha256": "e312f68c4e204e6f119ccb9a7978e4876d8348e23d3c1a0bdf80f3dd317e440b"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/plan_views.py",
+          "sha256": "dc840dca34650d0fe57eceda039e4cf147954421c912617c4a3954697267e31e"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/sdl.py",
+          "sha256": "6fc15da4834b381d29c1e6157b4ec4dcf1e1446346f0a05b43090c3f01a65211"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/verification.json",
+          "sha256": "1d5958f72bf42c554ac24d19da32246a3fa43a2bc4a4b83a1d804729f9781b79"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/verify_design.py",
+          "sha256": "4071b898f5fa4f6af34c58045383a9fc0c6c4ea3f74015a4927e926627c4140b"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/viewpoints.py",
+          "sha256": "531ce26c789dcfd9230bb9c1020c895cc339e1dbebaa41db1896e726a99d8c17"
+        },
+        {
+          "path": "docs/Development-Branch-Stack.md",
+          "sha256": "92390922fb18aad9d6f867db61550cda50b6cabccd3395dcf58d4b28fbdecf22"
+        },
+        {
+          "path": "docs/SDL-Navigable-Viewpoints-Design.md",
+          "sha256": "1fb784366bad2d2924e441b405411a2419c5d568bee747ba1aae50ca23eed26e"
+        },
+        {
+          "path": "docs/checkpoint#1/10-SDL-Viewpoint-Navigation.md",
+          "sha256": "e1578d875d39086d78dfaa9b88ef9d9374730da690260f1012cab117e107a18e"
+        },
+        {
+          "path": "docs/checkpoint#1/README.md",
+          "sha256": "dd67d150213a7013a642f8408c49fdda71a6a5af31095689cb4eec667ccfd24d"
+        },
+        {
+          "path": "experiments/design_core/channel_core.py",
+          "sha256": "bfb289aa11045528f2146189975a7e66e0f00acb51ae2acf147a6f88306e675c"
+        },
+        {
+          "path": "experiments/design_core/data_core.py",
+          "sha256": "c967bd05a927fc6efee2bd22483e340b4e9dec304973e4bc5536272a6bb1d308"
+        },
+        {
+          "path": "experiments/design_core/design_core.py",
+          "sha256": "242ca11e2d08128a541ce03bbbf557b3fb7bc6060c74b2dd89f06922a91f843e"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-22",
+      "reason": "G6-D2: navigator-only/overview versus static export, A0–A5 organization, Mode/State distinction, semantic notation and planned class views. No generator or language rule changes.",
+      "repository_head_at_capture": "24206f7afa9f011f517137154b7271e817e39cef",
+      "content_origin": "G6-D2 working tree before design milestone commit; previous fingerprints remain historical",
+      "verification": {
+        "sdl_parser": 61,
+        "viewpoint_tool": 24,
+        "sdui": 36,
+        "rendered_diagrams": 170,
+        "model_gaps": 18
+      },
+      "sources": [
+        {
+          "path": "SDUI/design/README.md",
+          "sha256": "fecea514fbb83a7467930a1c4d8236be5e3ac33b3f168c67a2640e8d01f0d826"
+        },
+        {
+          "path": "SDUI/design/architecture.design",
+          "sha256": "be0dfcfdca6e04f7b8c4594dc5e72d920724ef96e1f604e749432121aa83e862"
+        },
+        {
+          "path": "SDUI/design/architecture.validation.json",
+          "sha256": "51018b2087e07f0748181d65ab5bc6d601deaa195b416800a9ed6403183585c6"
+        },
+        {
+          "path": "SDUI/design/viewpoints/implementation.md",
+          "sha256": "58bbbbcfc6427239ebd3a056ebdc7f5403557388151b7e833aa2d7d8929bae2a"
+        },
+        {
+          "path": "SDUI/design/viewpoints/manifest.json",
+          "sha256": "01693dc53b1c1e0f5d37e3d79d949f97a1ce121838c62a92d594d08bf9707ab2"
+        },
+        {
+          "path": "SDUI/design/viewpoints/printout.md",
+          "sha256": "ce8eac9cc4b3084209d3be692a3dcece50ec8961cae58475c1ea3723b34115e9"
+        },
+        {
+          "path": "SDUI/docs/implementation-plan.md",
+          "sha256": "b0bb9c1522c92c2a7e222606d4b5ec36ce3fced614d8e2cfd46098d1aab5cdde"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/channel_views.py",
+          "sha256": "ce28341184bf1ddb7aad65e611ff5cc6af5bcbf03cc8a92883e4db7b64577dfc"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/data_views.py",
+          "sha256": "015440a1dd66ed45d9178a57ae523fa7e61e73ee5424c4de636304fe15526128"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/goal_views.py",
+          "sha256": "e312f68c4e204e6f119ccb9a7978e4876d8348e23d3c1a0bdf80f3dd317e440b"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/plan_views.py",
+          "sha256": "dc840dca34650d0fe57eceda039e4cf147954421c912617c4a3954697267e31e"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/sdl.py",
+          "sha256": "6fc15da4834b381d29c1e6157b4ec4dcf1e1446346f0a05b43090c3f01a65211"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/verification.json",
+          "sha256": "89a19dfb7510704b721da68a75a907d235f93335a21ff20d4100d4328813f3f2"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/verify_design.py",
+          "sha256": "4071b898f5fa4f6af34c58045383a9fc0c6c4ea3f74015a4927e926627c4140b"
+        },
+        {
+          "path": "SystemDesignLanguage/tools/viewpoints.py",
+          "sha256": "531ce26c789dcfd9230bb9c1020c895cc339e1dbebaa41db1896e726a99d8c17"
+        },
+        {
+          "path": "docs/Development-Branch-Stack.md",
+          "sha256": "28cfc465ffc85692c37123426c79c8e04e6e5d58dff30cd603e28d7dd0b9ca34"
+        },
+        {
+          "path": "docs/SDL-Navigable-Viewpoints-Design.md",
+          "sha256": "9f0d62abe1c7eb27d5c01d68228611c9e641f87535b8c6b6499f03268e5c3e35"
+        },
+        {
+          "path": "docs/SDL-Viewpoint-Levels-and-Notation.md",
+          "sha256": "0f66d9fe467e2c5e6f8f058cc0158b4917f18a47ac7bd4ee2749b7623bf94105"
+        },
+        {
+          "path": "docs/checkpoint#1/10-SDL-Viewpoint-Navigation.md",
+          "sha256": "717369c899b3eb67b354a11b6bce8e768705a8cb64b6eec2701bf6c086570e44"
+        },
+        {
+          "path": "experiments/design_core/channel_core.py",
+          "sha256": "bfb289aa11045528f2146189975a7e66e0f00acb51ae2acf147a6f88306e675c"
+        },
+        {
+          "path": "experiments/design_core/data_core.py",
+          "sha256": "c967bd05a927fc6efee2bd22483e340b4e9dec304973e4bc5536272a6bb1d308"
+        },
+        {
+          "path": "experiments/design_core/design_core.py",
+          "sha256": "242ca11e2d08128a541ce03bbbf557b3fb7bc6060c74b2dd89f06922a91f843e"
+        }
+      ]
+    }
+  ],
+  "implementation_update": {
+    "date": "2026-09-22",
+    "phase": "G5-M4",
+    "note": "Original capture above remains historical; Go implementation status and evidence are listed here.",
+    "sources": [
+      {
+        "path": "docs/checkpoint#1/11-Go-Implementation-and-Navigation.md",
+        "sha256": "ac8d7d97d0718cc0378917b8cbce10975f705742395980d3555995abdf207020"
+      },
+      {
+        "path": "docs/checkpoint#1/README.md",
+        "sha256": "766a99be26986e50bc14caab5ced189226265851518c01459657043770d3b4c7"
+      },
+      {
+        "path": "SDUI/docs/implementation-plan.md",
+        "sha256": "78a8705e302b2e1a8cac5e2e90dec3401868440e7bb33296be3a31364e98d11b"
+      },
+      {
+        "path": "SystemDesignLanguage/go/evidence/release.json",
+        "sha256": "52f755b8967106a8b0ff2d91dac8c753b9af8229f072c45a318433cbee9f0690"
+      }
+    ]
+  }
+}

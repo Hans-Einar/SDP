@@ -1,0 +1,22 @@
+flowchart LR
+    n_CoalesceSourceChanges["CoalesceSourceChanges (functionality)"]
+    n_DevelopmentReload["DevelopmentReload (capability)"]
+    n_KeepLastValidModels["KeepLastValidModels (functionality)"]
+    n_ObserveSourceChanges["ObserveSourceChanges (functionality)"]
+    n_PrepareCandidateModels["PrepareCandidateModels (functionality)"]
+    n_PublishModelGeneration["PublishModelGeneration (functionality)"]
+    n_ReloadCoordinator["ReloadCoordinator (unit)"]
+    n_RetirePreviousGeneration["RetirePreviousGeneration (functionality)"]
+    n_SourceWatcher["SourceWatcher (unit)"]
+    n_CoalesceSourceChanges -->|realizes| n_DevelopmentReload
+    n_KeepLastValidModels -->|realizes| n_DevelopmentReload
+    n_ObserveSourceChanges -->|realizes| n_DevelopmentReload
+    n_PrepareCandidateModels -->|realizes| n_DevelopmentReload
+    n_PublishModelGeneration -->|realizes| n_DevelopmentReload
+    n_ReloadCoordinator -->|owns| n_KeepLastValidModels
+    n_ReloadCoordinator -->|owns| n_PrepareCandidateModels
+    n_ReloadCoordinator -->|owns| n_PublishModelGeneration
+    n_ReloadCoordinator -->|owns| n_RetirePreviousGeneration
+    n_RetirePreviousGeneration -->|realizes| n_DevelopmentReload
+    n_SourceWatcher -->|owns| n_CoalesceSourceChanges
+    n_SourceWatcher -->|owns| n_ObserveSourceChanges

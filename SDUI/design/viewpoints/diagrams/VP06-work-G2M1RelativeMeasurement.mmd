@@ -1,0 +1,15 @@
+flowchart LR
+    n_AllocateGeometry["AllocateGeometry (functionality)"]
+    n_ComputeClipping["ComputeClipping (functionality)"]
+    n_G2M1RelativeMeasurement["G2M1RelativeMeasurement (activity)"]
+    n_MeasureUiContent["MeasureUiContent (functionality)"]
+    n_ResolveAncestorDimensions["ResolveAncestorDimensions (functionality)"]
+    n_SduiLayout["SduiLayout (unit)"]
+    n_G2M1RelativeMeasurement -->|addresses| n_AllocateGeometry
+    n_G2M1RelativeMeasurement -->|addresses| n_ComputeClipping
+    n_G2M1RelativeMeasurement -->|addresses| n_MeasureUiContent
+    n_G2M1RelativeMeasurement -->|addresses| n_ResolveAncestorDimensions
+    n_SduiLayout -->|owns| n_AllocateGeometry
+    n_SduiLayout -->|owns| n_ComputeClipping
+    n_SduiLayout -->|owns| n_MeasureUiContent
+    n_SduiLayout -->|owns| n_ResolveAncestorDimensions

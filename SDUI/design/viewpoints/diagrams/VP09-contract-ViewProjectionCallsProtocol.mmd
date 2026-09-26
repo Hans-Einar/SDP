@@ -1,0 +1,8 @@
+flowchart LR
+    n_ProjectViewRequest["ProjectViewRequest (message)"]
+    n_ViewBundleResult["ViewBundleResult (message)"]
+    n_ViewProjectionCallsProtocol["ViewProjectionCallsProtocol (contract)"]
+    n_ViewProjectionRejected["ViewProjectionRejected (message)"]
+    n_ViewProjectionCallsProtocol -->|permits| n_ProjectViewRequest
+    n_ViewProjectionCallsProtocol -->|permits| n_ViewBundleResult
+    n_ViewProjectionCallsProtocol -->|permits| n_ViewProjectionRejected

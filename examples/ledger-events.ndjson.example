@@ -1,0 +1,4 @@
+{"schemaVersion":"1.0","eventId":"EVT-WORK-0001","eventType":"work-slice-opened","occurredAt":"2026-01-01T00:00:00Z","actor":"example","commit":null,"subjectId":"SPS-001","payload":{"status":"active"}}
+{"schemaVersion":"1.0","eventId":"EVT-REVIEW-0001","eventType":"review-completed","occurredAt":"2026-01-01T00:01:00Z","actor":"example","commit":"abc1234","subjectId":"REV-001","payload":{"disposition":"approved"}}
+{"schemaVersion":"1.0","eventId":"EVT-VERIFICATION-0001","eventType":"verification-completed","occurredAt":"2026-01-01T00:02:00Z","actor":"example","commit":"abc1234","subjectId":"VER-001","payload":{"result":"passed"}}
+{"schemaVersion":"1.0","eventId":"EVT-EXTENSION-0001","eventType":"x-acme.example:deployment-approved","occurredAt":"2026-01-01T00:03:00Z","actor":"example","commit":"abc1234","subjectId":"DEPLOY-001","payload":{"environment":"staging"}}

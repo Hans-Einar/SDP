@@ -1,0 +1,25 @@
+language sdl-mvp1-exercise version 0.1.
+
+unit UiTransportSession.
+capability CoherentUiBaseline.
+functionality RecoverUiSession.
+functionality CommitUiBaseline.
+functionality ResyncRenderer.
+functionality CloseUiSession.
+
+UIRuntime contains UiTransportSession.
+UiTransportSession provides CoherentUiBaseline.
+UiTransportSession status proposed.
+UiTransportSession cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/Domains/UIDomain/DetailedDesignDiscussion.md".
+UiTransportSession owns RecoverUiSession.
+RecoverUiSession realizes CoherentUiBaseline.
+RecoverUiSession specifies "Track independent service/browser sessions, source and delivery sequences; typed resume and snapshot watermark before replaying later events.".
+UiTransportSession owns CommitUiBaseline.
+CommitUiBaseline realizes CoherentUiBaseline.
+CommitUiBaseline specifies "Publish validated complete baseline and subsequent deliveries; sparse source sequence is not delivery loss.".
+UiTransportSession owns ResyncRenderer.
+ResyncRenderer realizes CoherentUiBaseline.
+ResyncRenderer specifies "Bootstrap schema and state at compatible revisions without duplicating underlying domain subscriptions.".
+UiTransportSession owns CloseUiSession.
+CloseUiSession realizes CoherentUiBaseline.
+CloseUiSession specifies "Stop new intents, account for unresolved command results and detach transports/subscriptions during explicit application shutdown; ordinary view disposal does not close a shared session.".

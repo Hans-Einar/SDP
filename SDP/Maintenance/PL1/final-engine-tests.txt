@@ -1,0 +1,8 @@
+test_apply_repeat_and_history (test_process_install.ProcessInstall.test_apply_repeat_and_history) ... ok
+test_apply_manual_preserves_ledger_prefix (test_process_install.ProcessInstall.test_apply_manual_preserves_ledger_prefix) ... ok
+test_installed_consumer_workflow (test_process_install.ProcessInstall.test_installed_consumer_workflow) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 162.175s
+
+OK

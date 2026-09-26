@@ -1,0 +1,6 @@
+flowchart LR
+    n_FramePresentationCallsProtocol["FramePresentationCallsProtocol (contract)"]
+    n_PresentFrameRequest["PresentFrameRequest (message)"]
+    n_PresentFrameResult["PresentFrameResult (message)"]
+    n_FramePresentationCallsProtocol -->|permits| n_PresentFrameRequest
+    n_FramePresentationCallsProtocol -->|permits| n_PresentFrameResult

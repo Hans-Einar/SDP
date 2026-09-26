@@ -1,0 +1,14 @@
+flowchart LR
+    n_DevelopmentTools["DevelopmentTools (unit)"]
+    n_DiagnosticReporter["DiagnosticReporter (unit)"]
+    n_GoBuildRunner["GoBuildRunner (unit)"]
+    n_GoCodeGenerator["GoCodeGenerator (unit)"]
+    n_ReloadCoordinator["ReloadCoordinator (unit)"]
+    n_SourceLoader["SourceLoader (unit)"]
+    n_SourceWatcher["SourceWatcher (unit)"]
+    n_DevelopmentTools -->|contains| n_DiagnosticReporter
+    n_DevelopmentTools -->|contains| n_GoBuildRunner
+    n_DevelopmentTools -->|contains| n_GoCodeGenerator
+    n_DevelopmentTools -->|contains| n_ReloadCoordinator
+    n_DevelopmentTools -->|contains| n_SourceLoader
+    n_DevelopmentTools -->|contains| n_SourceWatcher

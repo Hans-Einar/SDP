@@ -1,0 +1,8 @@
+sequenceDiagram
+    participant n_CommandLineHost as Command Line Host
+    participant n_GoCodeGenerator as Go Code Generator
+    participant n_GoBuildRunner as Go Build Runner
+    n_CommandLineHost->>n_GoCodeGenerator: 1: Generate Go Request (Go Generation Calls)
+    n_GoCodeGenerator-->>n_CommandLineHost: 2: Generate Go Result (Go Generation Calls) reply-to 1
+    n_CommandLineHost->>n_GoBuildRunner: 3: Build Go Request (Go Build Calls)
+    n_GoBuildRunner-->>n_CommandLineHost: 4: Build Go Result (Go Build Calls) reply-to 3

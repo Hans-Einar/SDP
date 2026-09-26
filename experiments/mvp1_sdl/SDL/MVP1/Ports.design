@@ -1,0 +1,32 @@
+language sdl-mvp1-exercise version 0.1.
+
+port SerialObservationPort.
+port PermissiveObservationPort.
+port LabArtifactPort.
+port ConsoleInteractionPort.
+adapter PassiveSerialAdapter.
+adapter ReplayInputAdapter.
+adapter PermissiveInputAdapter.
+adapter LabFileAdapter.
+adapter ConsoleAdapter.
+
+P1000Gateway contains PassiveSerialAdapter.
+MachineService contains PermissiveInputAdapter.
+LabKit contains ReplayInputAdapter.
+LabKit contains LabFileAdapter.
+LabKit contains ConsoleAdapter.
+P1000Gateway exposes SerialObservationPort.
+MachineService exposes PermissiveObservationPort.
+LabKit exposes LabArtifactPort.
+LabKit exposes ConsoleInteractionPort.
+SerialObservationPort follows PhysicalSerialContract.
+PermissiveObservationPort follows PermissiveContract.
+SerialObservationPort through PassiveSerialAdapter.
+PermissiveObservationPort through PermissiveInputAdapter.
+LabArtifactPort through LabFileAdapter.
+ConsoleInteractionPort through ConsoleAdapter.
+PassiveSerialAdapter specifies "Design-only passive read boundary; no writable serial default. Partial bytes/framing and disconnects are explicit.".
+ReplayInputAdapter specifies "Recorded inputs at explicit target layer, deterministic order and simulated time; default isolated target only.".
+PermissiveInputAdapter specifies "Typed external presence/permissive input distinct from P1000 framing; unknown signal cannot silently grant authority.".
+LabFileAdapter specifies "Bounded explicit-path artifact read/write with offset/integrity and failure outcomes; production persistence is a different owner.".
+ConsoleAdapter specifies "stdin commands use the same public contracts; stdout application output and stderr diagnostics remain distinct from runtime diagnostics.".

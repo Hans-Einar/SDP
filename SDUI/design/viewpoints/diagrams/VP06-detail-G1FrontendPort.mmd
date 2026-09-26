@@ -1,0 +1,10 @@
+flowchart LR
+    n_G1FrontendPort["G1FrontendPort (activity)"]
+    n_G1M1ParserAndAst["G1M1ParserAndAst (activity)"]
+    n_G1M2ValidationAndNormalization["G1M2ValidationAndNormalization (activity)"]
+    n_G1M3Concept1AndDumps["G1M3Concept1AndDumps (activity)"]
+    n_StructuralModelInspection["StructuralModelInspection (feature)"]
+    n_G1FrontendPort -->|delivers| n_StructuralModelInspection
+    n_G1M1ParserAndAst -->|refines| n_G1FrontendPort
+    n_G1M2ValidationAndNormalization -->|refines| n_G1FrontendPort
+    n_G1M3Concept1AndDumps -->|refines| n_G1FrontendPort

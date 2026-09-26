@@ -1,0 +1,15 @@
+language sdl-mvp1-exercise version 0.1.
+
+contract TargetContract.
+interface TargetInterface.
+message-set TargetRequests.
+message-set TargetResponses.
+
+TargetInterface follows TargetContract.
+TargetContract allows TargetRequests.
+TargetContract specifies "SIM or PGW selected by deployment mode, never both. Target delivery commit differs from P1000 ACK. Recovery choice is explicit. PhysicalPassive forbids TargetTxRequest even though the schema defines it.".
+TargetContract status inherited.
+TargetContract allows TargetResponses.
+TargetContract schema "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/contracts/proto/mvp1/target/v1/target.proto".
+TargetRequests member "mvp1.target.v1.MachineToTarget".
+TargetResponses member "mvp1.target.v1.TargetToMachine".

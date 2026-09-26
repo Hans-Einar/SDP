@@ -1,0 +1,110 @@
+functionality,owner,capability,design_file,scenario_steps,claim
+AcceptPlanningResult,PlanningCoordinator,CurrentBuckingAdvice,BuckingService/Planning.design,PlanCurrentStemAccept;ComputeArchiveAccept,design path only; no execution
+ActivateAptDefinition,AptDomain,ValidatedAptDefinitions,BuckingService/AptDomain.design,ActivateAptActivate,design path only; no execution
+AdaptBrowserState,BuckingWeb,FederatedBrowserAccess,BuckingWeb/Adaptation.design,InspectMachineAdapt,design path only; no execution
+AdvanceP1000Protocol,MachineService,AuthoritativeMachineState,MachineService/Domain.design,RecoverTargetRebuild,design path only; no execution
+AdvanceSimulatedPhysics,P1000Simulator,DeterministicTargetSimulation,P1000Simulator/Domain.design,,responsibility specified; no direct scenario call
+AppendLabRecord,LabKit,RecordedDiagnosticReplay,Libraries/LabKit.design,ReplayDiagnosticsRecord,design path only; no execution
+BufferTargetHistory,P1000Gateway,BoundedPhysicalTransport,P1000Gateway/Domain.design,RecoverTargetAdvertise,design path only; no execution
+BuildPresentationSchema,PresentationManager,ReplaceablePresentation,UI/Presentation.design,ImportAptSchema;ReplacePresentationPrepare,design path only; no execution
+CalibrateMeasurement,MachineService,AuthoritativeMachineState,MachineService/Domain.design,InspectMachineCalibrate,design path only; no execution
+CheckCrossLanguageFixtures,ContractRegistry,ContractCompatibility,Libraries/Contracts.design,,responsibility specified; no direct scenario call
+ClassifyUiRouting,UiCommandCoordinator,CorrelatedUiCommands,UI/CommandsDiagnostics.design,UiDiagnosticRoutingClassify,design path only; no execution
+CloseUiSession,UiTransportSession,CoherentUiBaseline,UI/Transport.design,ShutdownRunOperatorSession;ShutdownRunSimulatorSession,design path only; no execution
+CoalescePresentationPatch,DeliveryScheduler,BoundedUiDelivery,UI/Delivery.design,,responsibility specified; no direct scenario call
+CommitUiBaseline,UiTransportSession,CoherentUiBaseline,UI/Transport.design,RecoverUiBaselineCommit,design path only; no execution
+ComputeBestArchive,BuckingCore,RankedLegalBucking,Libraries/BuckingCore.design,ComputeArchiveCompute,design path only; no execution
+ComputeOneBest,BuckingCore,RankedLegalBucking,Libraries/BuckingCore.design,PlanCurrentStemCompute,design path only; no execution
+ConsumeTargetRecord,MachineService,AuthoritativeMachineState,MachineService/Domain.design,InspectMachineReceive;RecoverTargetChoose,design path only; no execution
+CorrelateStemSamples,StemProfile,CoherentStemProfile,BuckingService/StemProfile.design,PlanCurrentStemCorrelate,design path only; no execution
+CreateCompositionScope,CompositionManager,StableUiContext,UI/Composition.design,ShareUiValueCreate,design path only; no execution
+DecodeClassicApt,StanfordClassic,ClassicAptCompatibility,Libraries/StanfordClassic.design,ImportAptDecode,design path only; no execution
+DecodeP1000Frames,MachineService,AuthoritativeMachineState,MachineService/Domain.design,InspectMachineDecode;SimulatorWireActionDecode,design path only; no execution
+DeliverDurableOutcome,DeliveryScheduler,BoundedUiDelivery,UI/Delivery.design,GlobalStopFlowResult,design path only; no execution
+DisplaySimulatorStatus,SimulatorUiDomain,SimulatorInteraction,UI/SimulatorDomain.design,,responsibility specified; no direct scenario call
+DisposeCompositionScope,CompositionManager,StableUiContext,UI/Composition.design,ShutdownRunOperatorScope;ShutdownRunSimulatorScope,design path only; no execution
+EditAptDraft,AptDomain,ValidatedAptDefinitions,BuckingService/AptDomain.design,EditAptCellValidate,design path only; no execution
+EmitBoundUserIntent,RendererAdapter,MaterializedPresentation,UI/Renderer.design,EditAptCellIntent,design path only; no execution
+EmitSimulatedWire,P1000Simulator,DeterministicTargetSimulation,P1000Simulator/Domain.design,SimulatorWireActionEmit,design path only; no execution
+EncodeClassicApt,StanfordClassic,ClassicAptCompatibility,Libraries/StanfordClassic.design,StoreAptEncode,design path only; no execution
+EnumerateLegalLogs,BuckingCore,RankedLegalBucking,Libraries/BuckingCore.design,,responsibility specified; no direct scenario call
+ExportAptDefinition,AptDomain,ValidatedAptDefinitions,BuckingService/AptDomain.design,StoreAptExport,design path only; no execution
+FederateCommandCatalog,BuckingWeb,FederatedBrowserAccess,BuckingWeb/Adaptation.design,,responsibility specified; no direct scenario call
+FitMixedKozak,TaperModels,TaperPrediction,Libraries/TaperModels.design,,responsibility specified; no direct scenario call
+FitProfileModel,StemProfile,CoherentStemProfile,BuckingService/StemProfile.design,PlanCurrentStemFit,design path only; no execution
+FitTaperNor,TaperModels,TaperPrediction,Libraries/TaperModels.design,,responsibility specified; no direct scenario call
+FormatLabConsole,LabKit,RecordedDiagnosticReplay,Libraries/LabKit.design,,responsibility specified; no direct scenario call
+FormatPresentationValue,PresentationManager,ReplaceablePresentation,UI/Presentation.design,ShareUiValueFormat,design path only; no execution
+FrameServiceMessages,ServiceKit,ReliableServiceExchange,Libraries/ServiceKit.design,,responsibility specified; no direct scenario call
+FreezePlanningInput,PlanningCoordinator,CurrentBuckingAdvice,BuckingService/Planning.design,PlanCurrentStemFreeze,design path only; no execution
+GatePhysicalWrite,P1000Gateway,BoundedPhysicalTransport,P1000Gateway/Domain.design,,responsibility specified; no direct scenario call
+GenerateContractBindings,ContractRegistry,ContractCompatibility,Libraries/Contracts.design,,responsibility specified; no direct scenario call
+GovernContractEvolution,ContractRegistry,ContractCompatibility,Libraries/Contracts.design,,responsibility specified; no direct scenario call
+HandleBuckingStop,BuckingCommandCoordinator,BuckingStopCoordination,BuckingService/EconomicsProduction.design,GlobalStopFlowBucking,design path only; no execution
+HandleMachineStop,MachineService,AuthoritativeMachineState,MachineService/Domain.design,GlobalStopFlowMachine,design path only; no execution
+HandleSimulatorControl,P1000Simulator,DeterministicTargetSimulation,P1000Simulator/Domain.design,SimulatorWireActionAccept,design path only; no execution
+ImportAptDefinition,AptDomain,ValidatedAptDefinitions,BuckingService/AptDomain.design,ImportAptAccept,design path only; no execution
+InjectSemanticOperatorInput,MachineService,AuthoritativeMachineState,MachineService/Domain.design,SemanticOperatorActionInject,design path only; no execution
+KeepMachineViewAvailable,OperatorUiDomain,OperatorInteraction,UI/PonsseDomain.design,DegradedOperationDisplay,design path only; no execution
+MaintainAbsoluteProfile,StemProfile,CoherentStemProfile,BuckingService/StemProfile.design,,responsibility specified; no direct scenario call
+MaintainDualUpstreams,BuckingWeb,FederatedBrowserAccess,BuckingWeb/Adaptation.design,DegradedOperationDetect,design path only; no execution
+MaintainRepresentationIdentity,RepresentationRuntime,ObservableSemanticState,UI/Representation.design,,responsibility specified; no direct scenario call
+ManageLabCheckpoint,LabKit,RecordedDiagnosticReplay,Libraries/LabKit.design,ReplayDiagnosticsSelect,design path only; no execution
+ManageServiceSubscription,ServiceKit,ReliableServiceExchange,Libraries/ServiceKit.design,,responsibility specified; no direct scenario call
+NegotiateServiceSession,ServiceKit,ReliableServiceExchange,Libraries/ServiceKit.design,,responsibility specified; no direct scenario call
+ObserveBuckingHistory,BuckingLab,BuckingDiagnostics,BuckingLab/Diagnostics.design,CommitProductionObserve,design path only; no execution
+ObserveMachineHistory,MachineLab,MachineDiagnostics,MachineLab/Diagnostics.design,,responsibility specified; no direct scenario call
+ObserveRenderedRevision,RendererAdapter,MaterializedPresentation,UI/Renderer.design,ReplacePresentationObserve,design path only; no execution
+ObserveSerialBytes,P1000Gateway,BoundedPhysicalTransport,P1000Gateway/Domain.design,,responsibility specified; no direct scenario call
+PatchRepresentationCollection,RepresentationRuntime,ObservableSemanticState,UI/Representation.design,EditAptCellPatch,design path only; no execution
+PersistLabLedger,LabKit,RecordedDiagnosticReplay,Libraries/LabKit.design,ShutdownRunMachineLedger;ShutdownRunBuckingLedger,design path only; no execution
+PreservePresentationContinuity,PresentationManager,ReplaceablePresentation,UI/Presentation.design,,responsibility specified; no direct scenario call
+PreserveValueQuality,RepresentationRuntime,ObservableSemanticState,UI/Representation.design,,responsibility specified; no direct scenario call
+ProjectAptAvailability,OperatorUiDomain,OperatorInteraction,UI/PonsseDomain.design,ImportAptProject;EditAptCellProject,design path only; no execution
+ProjectOperatorDomain,OperatorUiDomain,OperatorInteraction,UI/PonsseDomain.design,InspectMachineProject,design path only; no execution
+ProjectRepresentationValue,RepresentationRuntime,ObservableSemanticState,UI/Representation.design,,responsibility specified; no direct scenario call
+ProjectSimulatorDomain,SimulatorUiDomain,SimulatorInteraction,UI/SimulatorDomain.design,,responsibility specified; no direct scenario call
+ProjectWorkingProfile,TaperModels,TaperPrediction,Libraries/TaperModels.design,,responsibility specified; no direct scenario call
+PublishAccessCatalog,ServiceKit,ReliableServiceExchange,Libraries/ServiceKit.design,,responsibility specified; no direct scenario call
+PublishBuckingState,PlanningCoordinator,CurrentBuckingAdvice,BuckingService/Planning.design,PlanCurrentStemPublish;ComputeArchivePublish;ActivateAptPublish;CommitProductionPublish,design path only; no execution
+PublishMachineBaseline,MachineService,AuthoritativeMachineState,MachineService/Domain.design,InspectMachinePublish,design path only; no execution
+PublishPresentationRevision,PresentationManager,ReplaceablePresentation,UI/Presentation.design,ReplacePresentationPublish,design path only; no execution
+ReconcileUiCommandResult,UiCommandCoordinator,CorrelatedUiCommands,UI/CommandsDiagnostics.design,EditAptCellResult;RecoverCommandObserve,design path only; no execution
+ReconcileViewNodes,RendererAdapter,MaterializedPresentation,UI/Renderer.design,ReplacePresentationReconcile;UiDiagnosticRoutingDisplay;ShareUiValueRender,design path only; no execution
+RecordProductionFact,ProductionAuthority,DurableProduction,BuckingService/EconomicsProduction.design,CommitProductionCommit,design path only; no execution
+RecoverCommandLifecycle,ServiceKit,ReliableServiceExchange,Libraries/ServiceKit.design,RecoverCommandServer,design path only; no execution
+RecoverTargetHistory,P1000Gateway,BoundedPhysicalTransport,P1000Gateway/Domain.design,RecoverTargetDeliver,design path only; no execution
+RecoverUiCommand,UiCommandCoordinator,CorrelatedUiCommands,UI/CommandsDiagnostics.design,RecoverCommandLookup,design path only; no execution
+RecoverUiSession,UiTransportSession,CoherentUiBaseline,UI/Transport.design,RecoverUiBaselineResume,design path only; no execution
+ReduceMachineState,MachineService,AuthoritativeMachineState,MachineService/Domain.design,InspectMachineReduce;SimulatorWireActionReduce;SemanticOperatorActionReduce,design path only; no execution
+RenderSharedShell,RendererAdapter,MaterializedPresentation,UI/Renderer.design,,responsibility specified; no direct scenario call
+ReplayConfiguredRange,LabKit,RecordedDiagnosticReplay,Libraries/LabKit.design,ReplayDiagnosticsReplay,design path only; no execution
+ReportDiagnosticLoss,DeliveryScheduler,BoundedUiDelivery,UI/Delivery.design,UiDiagnosticRoutingBound,design path only; no execution
+ReportGatewayHealth,P1000Gateway,BoundedPhysicalTransport,P1000Gateway/Domain.design,,responsibility specified; no direct scenario call
+ResetSimulatedTruth,P1000Simulator,DeterministicTargetSimulation,P1000Simulator/Domain.design,,responsibility specified; no direct scenario call
+ResyncRenderer,UiTransportSession,CoherentUiBaseline,UI/Transport.design,RecoverUiBaselineRenderer,design path only; no execution
+RetainDegradedBrowserState,BuckingWeb,FederatedBrowserAccess,BuckingWeb/Adaptation.design,DegradedOperationMark,design path only; no execution
+RouteAptAdminCommand,BuckingLab,BuckingDiagnostics,BuckingLab/Diagnostics.design,StoreAptRoute,design path only; no execution
+RouteBrowserCommand,BuckingWeb,FederatedBrowserAccess,BuckingWeb/Adaptation.design,ImportAptRoute;EditAptCellRoute;SemanticOperatorActionRoute;GlobalStopSendMachine;GlobalStopSendBucking,design path only; no execution
+RouteMachineToolCommand,MachineLab,MachineDiagnostics,MachineLab/Diagnostics.design,,responsibility specified; no direct scenario call
+RouteOperatorIntent,OperatorUiDomain,OperatorInteraction,UI/PonsseDomain.design,,responsibility specified; no direct scenario call
+RouteSimulatorIntent,SimulatorUiDomain,SimulatorInteraction,UI/SimulatorDomain.design,SimulatorWireActionIntent,design path only; no execution
+ScheduleOneBest,PlanningCoordinator,CurrentBuckingAdvice,BuckingService/Planning.design,,responsibility specified; no direct scenario call
+ScheduleQuietArchive,PlanningCoordinator,CurrentBuckingAdvice,BuckingService/Planning.design,ComputeArchiveSchedule,design path only; no execution
+ScheduleSubscriberDelivery,ServiceKit,ReliableServiceExchange,Libraries/ServiceKit.design,,responsibility specified; no direct scenario call
+ScheduleUiDelivery,DeliveryScheduler,BoundedUiDelivery,UI/Delivery.design,,responsibility specified; no direct scenario call
+SelectEconomicPolicy,EconomicPolicy,EconomicDecisionContext,BuckingService/EconomicsProduction.design,ActivateAptContext,design path only; no execution
+ServeBuckingLabRequests,BuckingLab,BuckingDiagnostics,BuckingLab/Diagnostics.design,,responsibility specified; no direct scenario call
+ServeMachineLabRequests,MachineLab,MachineDiagnostics,MachineLab/Diagnostics.design,ReplayDiagnosticsRead,design path only; no execution
+ServeSimulatedTarget,P1000Simulator,DeterministicTargetSimulation,P1000Simulator/Domain.design,,responsibility specified; no direct scenario call
+ShareRepresentationReferences,CompositionManager,StableUiContext,UI/Composition.design,ShareUiValueShare,design path only; no execution
+ShutdownServiceRuntime,ServiceKit,ReliableServiceExchange,Libraries/ServiceKit.design,ShutdownRunBucking;ShutdownRunBuckingWeb;ShutdownRunMachine;ShutdownRunMachineLab;ShutdownRunBuckingLab;ShutdownRunSimulator;ShutdownRunGateway,design path only; no execution
+StageRepresentationSnapshot,RepresentationRuntime,ObservableSemanticState,UI/Representation.design,RecoverUiBaselineStage,design path only; no execution
+StopLabAutomation,MachineLab,MachineDiagnostics,MachineLab/Diagnostics.design,GlobalStopFlowLab,design path only; no execution
+StoreAptDraft,AptDomain,ValidatedAptDefinitions,BuckingService/AptDomain.design,StoreAptCommit,design path only; no execution
+SubmitUiCommand,UiCommandCoordinator,CorrelatedUiCommands,UI/CommandsDiagnostics.design,ImportAptIntent;EditAptCellCorrelate,design path only; no execution
+TransferLabArtifact,LabKit,RecordedDiagnosticReplay,Libraries/LabKit.design,StoreAptWrite,design path only; no execution
+TransformClassicApt,StanfordClassic,ClassicAptCompatibility,Libraries/StanfordClassic.design,,responsibility specified; no direct scenario call
+ValidateCutContext,ProductionAuthority,DurableProduction,BuckingService/EconomicsProduction.design,CommitProductionCapture,design path only; no execution
+ValidateMachineCommand,MachineService,AuthoritativeMachineState,MachineService/Domain.design,SemanticOperatorActionValidate,design path only; no execution
+ValidatePresentationBindings,PresentationManager,ReplaceablePresentation,UI/Presentation.design,ReplacePresentationValidate,design path only; no execution

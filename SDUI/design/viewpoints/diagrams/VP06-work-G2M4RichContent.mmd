@@ -1,0 +1,20 @@
+flowchart LR
+    n_DiagramProvider["DiagramProvider (unit)"]
+    n_G2M4RichContent["G2M4RichContent (activity)"]
+    n_MarkdownProvider["MarkdownProvider (unit)"]
+    n_MeasureMarkdownContent["MeasureMarkdownContent (functionality)"]
+    n_PrepareDiagramResource["PrepareDiagramResource (functionality)"]
+    n_PrepareMarkdown["PrepareMarkdown (functionality)"]
+    n_ReleaseVisualResources["ReleaseVisualResources (functionality)"]
+    n_ResourceStore["ResourceStore (unit)"]
+    n_ValidateVisualResources["ValidateVisualResources (functionality)"]
+    n_DiagramProvider -->|owns| n_PrepareDiagramResource
+    n_G2M4RichContent -->|addresses| n_MeasureMarkdownContent
+    n_G2M4RichContent -->|addresses| n_PrepareDiagramResource
+    n_G2M4RichContent -->|addresses| n_PrepareMarkdown
+    n_G2M4RichContent -->|addresses| n_ReleaseVisualResources
+    n_G2M4RichContent -->|addresses| n_ValidateVisualResources
+    n_MarkdownProvider -->|owns| n_MeasureMarkdownContent
+    n_MarkdownProvider -->|owns| n_PrepareMarkdown
+    n_ResourceStore -->|owns| n_ReleaseVisualResources
+    n_ResourceStore -->|owns| n_ValidateVisualResources

@@ -1,0 +1,29 @@
+language sdl-mvp1-exercise version 0.1.
+
+unit RepresentationRuntime.
+capability ObservableSemanticState.
+functionality MaintainRepresentationIdentity.
+functionality ProjectRepresentationValue.
+functionality PatchRepresentationCollection.
+functionality StageRepresentationSnapshot.
+functionality PreserveValueQuality.
+
+UIRuntime contains RepresentationRuntime.
+RepresentationRuntime provides ObservableSemanticState.
+RepresentationRuntime status proposed.
+RepresentationRuntime cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/Domains/UIDomain/DetailedDesignDiscussion.md".
+RepresentationRuntime owns MaintainRepresentationIdentity.
+MaintainRepresentationIdentity realizes ObservableSemanticState.
+MaintainRepresentationIdentity specifies "Separate semantic type, context-scoped instance, data revision, Composition reference and View identity.".
+RepresentationRuntime owns ProjectRepresentationValue.
+ProjectRepresentationValue realizes ObservableSemanticState.
+ProjectRepresentationValue specifies "Generic Scalar/Action/List/Matrix/Series value operations; no forestry algorithm or format parser.".
+RepresentationRuntime owns PatchRepresentationCollection.
+PatchRepresentationCollection realizes ObservableSemanticState.
+PatchRepresentationCollection specifies "Stable list entries/matrix axes/series points; lightweight cell capabilities rather than full subscriptions per cell.".
+RepresentationRuntime owns StageRepresentationSnapshot.
+StageRepresentationSnapshot realizes ObservableSemanticState.
+StageRepresentationSnapshot specifies "Build shadow collection revision; verify end marker/integrity then publish atomically while prior revision remains readable.".
+RepresentationRuntime owns PreserveValueQuality.
+PreserveValueQuality realizes ObservableSemanticState.
+PreserveValueQuality specifies "Distinguish valid zero, unknown, unavailable, stale, invalid and pending with source/quality metadata.".

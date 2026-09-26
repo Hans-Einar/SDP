@@ -1,0 +1,44 @@
+language sdl-mvp1-exercise version 0.1.
+
+scenario ShareUiValue.
+condition ShareUiValueReady.
+condition ShareUiValueContinue.
+condition ShareUiValueReject.
+outcome ShareUiValueCompleted.
+outcome ShareUiValueRejected.
+step ShareUiValueCreate.
+step ShareUiValueShare.
+step ShareUiValueFormat.
+step ShareUiValueRender.
+step ShareUiValueFailure.
+step ShareUiValueSuccess.
+
+ShareUiValue illustrates ChangeUiPresentation.
+ShareUiValue exercises StableUiContext.
+ShareUiValue starts-when ShareUiValueReady.
+ShareUiValue starts-at ShareUiValueCreate.
+ShareUiValueReady describes "A Composition needs two views of the same semantic length.".
+ShareUiValueContinue describes "The previous operation succeeded and the next step's declared contract preconditions remain true; exact predicates are an executable-language gap.".
+ShareUiValueReject describes "Validation, authority, applicability or operation failure prevents continuation; preserve prior valid state and report the specific reason.".
+ShareUiValueCompleted describes "The stated design path completed under its explicit obligations; this is not an observed test result.".
+ShareUiValueRejected describes "The path terminated without claiming the requested change succeeded; failures remain observable.".
+ShareUiValue preserves PreserveRepresentationIdentity.
+ShareUiValue preserves ConservativeQuality.
+ShareUiValueCreate calls CreateCompositionScope within BuckingUI.
+ShareUiValueCreate describes "Allocate context-scoped semantic instance.".
+ShareUiValueCreate proceeds-to ShareUiValueFailure when ShareUiValueReject.
+ShareUiValueCreate proceeds-to ShareUiValueShare when ShareUiValueContinue.
+ShareUiValueShare calls ShareRepresentationReferences within BuckingUI.
+ShareUiValueShare describes "Two view references, one value/subscription.".
+ShareUiValueShare proceeds-to ShareUiValueFailure when ShareUiValueReject.
+ShareUiValueShare proceeds-to ShareUiValueFormat when ShareUiValueContinue.
+ShareUiValueFormat calls FormatPresentationValue within BuckingUI.
+ShareUiValueFormat describes "Different display units/precision without mutating source.".
+ShareUiValueFormat proceeds-to ShareUiValueFailure when ShareUiValueReject.
+ShareUiValueFormat proceeds-to ShareUiValueRender when ShareUiValueContinue.
+ShareUiValueRender calls ReconcileViewNodes within BuckingUI.
+ShareUiValueRender describes "Independent view handles and delivery cadence.".
+ShareUiValueRender proceeds-to ShareUiValueFailure when ShareUiValueReject.
+ShareUiValueRender proceeds-to ShareUiValueSuccess when ShareUiValueContinue.
+ShareUiValueFailure finishes ShareUiValue with ShareUiValueRejected.
+ShareUiValueSuccess finishes ShareUiValue with ShareUiValueCompleted.

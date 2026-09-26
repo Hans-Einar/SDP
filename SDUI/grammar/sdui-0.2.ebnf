@@ -1,0 +1,58 @@
+(* SDUI 0.2. EBNF: {repeat}, [optional], quoted terminals.
+   Whitespace/comments are permitted between tokens; EOF is mandatory.
+   Local profile restrictions, numeric types and resource limits: docs/language.md. *)
+document       = "sdui", "0.2", ";", { module-ref }, definition,
+                 { definition }, { connection }, EOF ;
+module-ref     = "ref", ":", identifier, string, ";" ;
+definition     = identifier, "=", component, ";" ;
+component      = [ identifier, "=" ], primary, [ "*", identifier ], [ formatting ] ;
+primary        = frame | group | string | widget-call | identifier ;
+frame          = "[", [ rows ], "]" ;
+group          = "<", [ rows ], ">" ;
+rows           = row, { ";", row }, [ ";" ] ;
+row            = component, { ",", component } ;
+widget-call    = identifier, "(", [ arguments ], ")" ;
+arguments      = argument, { ",", argument } ;
+argument       = [ identifier, "=" ], value ;
+value          = literal | member-ref ;
+member-ref     = identifier, ".", identifier, ".", "@", identifier ;
+connection     = identifier, ".", identifier, ".", "setHandle", "(",
+                 identifier, ".", identifier, { ".", identifier }, ")", ";" ;
+formatting     = "{", [ layout-rule, { ",", layout-rule } ], "}" ;
+layout-rule    = property-name, "=", layout-value | number, ":", number | arrow ;
+layout-value   = literal | identifier | number, "fr"
+               | "(", number, { ",", number }, ")" ;
+arrow          = "^<" | "<^" | "-^" | "^-" | ">^" | "^>"
+               | "<-" | "-<" | "--" | "->" | ">-"
+               | "v<" | "<v" | "-v" | "v-" | ">v" | "v>"
+               | "<->" | "^|v" | ">-<" | ">|<" ;
+property-name  = identifier, { "-", identifier } ;
+literal        = string | number | "true" | "false" | "null" ;
+identifier     = letter-or-underscore, { letter-or-underscore | digit } ;
+number         = [ "-" ], ( "0" | nonzero-digit, { digit } ),
+                 [ ".", digit, { digit } ],
+                 [ ( "e" | "E" ), [ "+" | "-" ], digit, { digit } ] ;
+string         = '"""', { raw-char }, '"""'
+               | '"', { double-char | escape }, '"'
+               | "'", { single-char | escape }, "'" ;
+escape         = "\", ( '"' | "'" | "\" | "n" | "r" | "t"
+                         | "u", hex, hex, hex, hex ) ;
+comment        = "#", { comment-char } ;
+letter-or-underscore = "A" .. "Z" | "a" .. "z" | "_" ;
+digit          = "0" .. "9" ;
+nonzero-digit  = "1" .. "9" ;
+hex            = digit | "a" .. "f" | "A" .. "F" ;
+(* String tokens use longest opening delimiter. Raw strings end at the next
+   triple double quote, no escapes/interpolation/dedent. raw-char: Unicode scalar
+   except controls (TAB/CR/LF permitted) and DEL; delimiter cannot occur inside.
+   double-char/single-char exclude matching quote, backslash, U+0000..001F, DEL.
+   comment-char excludes CR/LF. Escaped NUL/surrogates are rejected.
+   Keywords sdui/ref/true/false/null/setHandle are reserved identifiers.
+   Numbers must fit finite binary64; profile spelling is exactly '0.2'.
+   Layout arrow whitespace is insignificant; hyphenated property names are
+   single lexical tokens, with no whitespace inside the name.
+   Parser accepts unknown arrow spellings for syntax-only diagnostics; local
+   validation restricts them to this grammar. Empty containers are valid.
+   In frames header/body/footer assignments are regions. In groups they are names.
+   No trailing commas or empty rows; a final semicolon inside a container is valid.
+   Frame variant is box/b only. Widget group elements cannot resolve to frames. *)

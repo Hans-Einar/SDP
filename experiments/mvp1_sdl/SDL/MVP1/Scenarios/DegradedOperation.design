@@ -1,0 +1,39 @@
+language sdl-mvp1-exercise version 0.1.
+
+scenario DegradedOperation.
+condition DegradedOperationReady.
+condition DegradedOperationContinue.
+condition DegradedOperationReject.
+outcome DegradedOperationCompleted.
+outcome DegradedOperationRejected.
+step DegradedOperationDetect.
+step DegradedOperationMark.
+step DegradedOperationDisplay.
+step DegradedOperationFailure.
+step DegradedOperationSuccess.
+
+DegradedOperation illustrates InspectMachineWithoutBucking.
+DegradedOperation exercises FederatedBrowserAccess.
+DegradedOperation starts-when DegradedOperationReady.
+DegradedOperation starts-at DegradedOperationDetect.
+DegradedOperationReady describes "Machine is available and Bucking is unavailable.".
+DegradedOperationContinue describes "The previous operation succeeded and the next step's declared contract preconditions remain true; exact predicates are an executable-language gap.".
+DegradedOperationReject describes "Validation, authority, applicability or operation failure prevents continuation; preserve prior valid state and report the specific reason.".
+DegradedOperationCompleted describes "The stated design path completed under its explicit obligations; this is not an observed test result.".
+DegradedOperationRejected describes "The path terminated without claiming the requested change succeeded; failures remain observable.".
+DegradedOperation preserves ConservativeQuality.
+DegradedOperation preserves DomainTruthOwned.
+DegradedOperationDetect calls MaintainDualUpstreams within BuckingWeb.
+DegradedOperationDetect describes "Detect independent upstream availability.".
+DegradedOperationDetect proceeds-to DegradedOperationFailure when DegradedOperationReject.
+DegradedOperationDetect proceeds-to DegradedOperationMark when DegradedOperationContinue.
+DegradedOperationMark calls RetainDegradedBrowserState within BuckingWeb.
+DegradedOperationMark describes "Mark only dependent data stale/unavailable.".
+DegradedOperationMark proceeds-to DegradedOperationFailure when DegradedOperationReject.
+DegradedOperationMark proceeds-to DegradedOperationDisplay when DegradedOperationContinue.
+DegradedOperationDisplay calls KeepMachineViewAvailable within BuckingUI.
+DegradedOperationDisplay describes "Retain Machine telemetry, health and available semantic controls.".
+DegradedOperationDisplay proceeds-to DegradedOperationFailure when DegradedOperationReject.
+DegradedOperationDisplay proceeds-to DegradedOperationSuccess when DegradedOperationContinue.
+DegradedOperationFailure finishes DegradedOperation with DegradedOperationRejected.
+DegradedOperationSuccess finishes DegradedOperation with DegradedOperationCompleted.

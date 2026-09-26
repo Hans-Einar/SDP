@@ -1,0 +1,34 @@
+language sdl-mvp1-exercise version 0.1.
+
+contract CommonServiceContract.
+invariant DistinctSequenceDomains.
+invariant BoundedSubscribers.
+invariant DurableFactsRetained.
+invariant ServerBoundAuthority.
+invariant StableCommandIdentity.
+invariant HiddenTruthIsolated.
+invariant DomainTruthOwned.
+invariant DiagnosticsSurviveStop.
+invariant PreserveRepresentationIdentity.
+invariant NoPhysicalExecution.
+invariant PureLibraries.
+invariant GenericUiMechanisms.
+invariant UiResponsiveness.
+invariant ConservativeQuality.
+
+CommonServiceContract schema "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/contracts/proto/mvp1/common/v1/common.proto".
+CommonServiceContract specifies "Hello negotiation, server-bound peer identity, one active subscription, typed resume/baseline and source versus delivery sequence are required by all applicable internal service contracts.".
+DistinctSequenceDomains specifies "Service session, source event_seq, delivery stream sequence, command_id, domain revision, target delivery sequence and P1000 sequence remain distinct.".
+BoundedSubscribers specifies "A slow observer cannot cause unbounded memory or indefinitely block another observer or an authoritative reducer.".
+DurableFactsRetained specifies "Command results, accepted activation/config changes and production facts never use latest-wins. Overflow requires explicit failure/recovery.".
+ServerBoundAuthority specifies "Overlapping grants are service-controlled and bound to connection identity; a schema, UI action or caller label grants no authority.".
+StableCommandIdentity specifies "Same ID/same payload recovers prior lifecycle; conflicting or expired IDs cannot silently execute as retries.".
+HiddenTruthIsolated specifies "Simulator truth is confined to simulator-control and simulator diagnostic views, never normal Target/Machine/Bucking inputs.".
+DomainTruthOwned specifies "Machine owns machine/calibration truth; Bucking owns forestry/APT/economics/production unless an explicit ownership migration is adopted.".
+DiagnosticsSurviveStop specifies "GlobalStop halts invalidated automation and normal queued intents; observation and evidence collection remain alive.".
+PreserveRepresentationIdentity specifies "Presentation replacement preserves semantic instances, domain subscriptions, in-flight command correlation and domain drafts.".
+NoPhysicalExecution specifies "This exercise permits offline/simulated design evaluation only; live serial output and actuation are disabled.".
+PureLibraries specifies "TaperModels, BuckingCore and StanfordClassic contain no network, UI or service scheduling authority.".
+GenericUiMechanisms specifies "UIRuntime and BoxUI generic mechanisms contain no Ponsse business algorithms, P1000 decoder or StanForD parser.".
+UiResponsiveness specifies "Realtime values and durable outcomes progress while bulk schema/matrix/profile work is pending; precise budgets remain declared gaps.".
+ConservativeQuality specifies "Unknown, unavailable, stale, invalid and pending remain distinguishable from legitimate zero.".

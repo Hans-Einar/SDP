@@ -1,0 +1,8 @@
+flowchart LR
+    n_DesignAuthor["DesignAuthor (actor)"]
+    n_EditRunningPrototype["EditRunningPrototype (usecase)"]
+    n_LiveModelReload["LiveModelReload (feature)"]
+    n_StructuralModelInspection["StructuralModelInspection (feature)"]
+    n_DesignAuthor -->|pursues| n_EditRunningPrototype
+    n_LiveModelReload -->|supports| n_EditRunningPrototype
+    n_StructuralModelInspection -->|supports| n_EditRunningPrototype

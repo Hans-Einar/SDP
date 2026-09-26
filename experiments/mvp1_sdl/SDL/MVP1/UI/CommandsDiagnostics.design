@@ -1,0 +1,25 @@
+language sdl-mvp1-exercise version 0.1.
+
+unit UiCommandCoordinator.
+capability CorrelatedUiCommands.
+functionality SubmitUiCommand.
+functionality RecoverUiCommand.
+functionality ReconcileUiCommandResult.
+functionality ClassifyUiRouting.
+
+UIRuntime contains UiCommandCoordinator.
+UiCommandCoordinator provides CorrelatedUiCommands.
+UiCommandCoordinator status proposed.
+UiCommandCoordinator cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/Domains/UIDomain/DetailedDesignDiscussion.md".
+UiCommandCoordinator owns SubmitUiCommand.
+SubmitUiCommand realizes CorrelatedUiCommands.
+SubmitUiCommand specifies "Assign identity for a deliberate new action; retain initiating surface, expected revision and observed lifecycle.".
+UiCommandCoordinator owns RecoverUiCommand.
+RecoverUiCommand realizes CorrelatedUiCommands.
+RecoverUiCommand specifies "Ambiguous transport result stays unknown; same-ID lookup/retry, conflict and expiry distinct; no automatic replacement ID.".
+UiCommandCoordinator owns ReconcileUiCommandResult.
+ReconcileUiCommandResult realizes CorrelatedUiCommands.
+ReconcileUiCommandResult specifies "Route durable result to initiating context even if a view changes or disappears.".
+UiCommandCoordinator owns ClassifyUiRouting.
+ClassifyUiRouting realizes CorrelatedUiCommands.
+ClassifyUiRouting specifies "Distinguish no handler, handler failure, intentional ignore and no visible view; bounded diagnostics cannot recursively report themselves.".

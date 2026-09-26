@@ -1,0 +1,8 @@
+flowchart LR
+    n_DesignAuthor["DesignAuthor (actor)"]
+    n_DesignReviewer["DesignReviewer (actor)"]
+    n_InteractiveUiPreview["InteractiveUiPreview (feature)"]
+    n_PrototypeUserInterface["PrototypeUserInterface (usecase)"]
+    n_DesignAuthor -->|pursues| n_PrototypeUserInterface
+    n_DesignReviewer -->|pursues| n_PrototypeUserInterface
+    n_InteractiveUiPreview -->|supports| n_PrototypeUserInterface

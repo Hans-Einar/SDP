@@ -1,0 +1,116 @@
+{
+  "host": "codex-cli 0.156.1",
+  "baseCommit": "2d1c5602fdef38f3088220fa7a0f834279212596",
+  "sourceHashes": {
+    "Skills/sdp/SKILL.md": "5c5e997039acba5237212a45991c59b4848f145d0c454c98e927596796ec3b4e",
+    "Skills/sdp/references/document-workflow.md": "308f9708d18e38bf18c5ad46952b3e0fe32ccb82cb6425b61a88db70f5691718",
+    "Skills/sdp/references/source-map.md": "4e0ba5162dc636c259fbad99c3ddba64cee3ca9ae8c4aed3af4c232b8308201b",
+    "Skills/sdp-architect/SKILL.md": "f6934bc63ccf9380f284c2377a835b7b14b175a9098e374a27541aed031909a1",
+    "Skills/sdp-auditor/SKILL.md": "5e860229491391777987db3a1704d19c7c6fcb510a7e11a13187b76a1d8ed88c",
+    "Skills/sdp-change-analysis/SKILL.md": "38c28a72835868399090d2581555fdb07114b07afade1666f1b55744a165d26a",
+    "Skills/sdp-master/SKILL.md": "d0426f50b1d618b34f737cbefefd0bdeb91c60862cbce78cfaf982aaedfc48d7",
+    "Skills/sdp-release/SKILL.md": "32d5fdf28b6e12bf37d09732dc55e97447b7c5a3baf0a93a09846893e7bce6dc",
+    "Skills/sdp-reviewer/SKILL.md": "9a8535fe9bfd874c0cbd9f37d38ec0eb79e13f73a49a68898b28ad87773dd33d",
+    "Skills/sdp-steering/SKILL.md": "75e99700b596a40bc0062c6ba825e1e4848616404104dcd03d4dd21c16e9d759",
+    "Skills/sdp-traceability/SKILL.md": "df43145056ae2880e957027f7a96d02634b10d15db408510e5f666052b9a8d7d",
+    "Skills/sdp-verifier/SKILL.md": "48467899b466f2b795a8a2f5b5b935eb2cb1570ed39b4f2e6438997e85149cb8",
+    "Skills/sdp-versioning/SKILL.md": "c70edeed949d54a630fbe5d8b6a2a8bb7f4e2724a21ff328f60399d44c146f05",
+    "Skills/sdp-vertical-refactor/SKILL.md": "fd451120ce16b697eacdd241c14acf5cfe5c238f45e4255debc69a62a221d121",
+    "Skills/sdp-worker/SKILL.md": "fb7d83cfc7d4f26133eb0c2370dd6f8b30abfe32ce23e10107069b235ba70681"
+  },
+  "cases": [
+    {
+      "case": "project-root",
+      "count": 13,
+      "names": [
+        "sdp",
+        "sdp-architect",
+        "sdp-auditor",
+        "sdp-change-analysis",
+        "sdp-master",
+        "sdp-release",
+        "sdp-reviewer",
+        "sdp-steering",
+        "sdp-traceability",
+        "sdp-verifier",
+        "sdp-versioning",
+        "sdp-vertical-refactor",
+        "sdp-worker"
+      ],
+      "duplicates": false,
+      "allEnabled": true,
+      "sourcePathsMatch": true
+    },
+    {
+      "case": "nested-cwd",
+      "count": 13,
+      "names": [
+        "sdp",
+        "sdp-architect",
+        "sdp-auditor",
+        "sdp-change-analysis",
+        "sdp-master",
+        "sdp-release",
+        "sdp-reviewer",
+        "sdp-steering",
+        "sdp-traceability",
+        "sdp-verifier",
+        "sdp-versioning",
+        "sdp-vertical-refactor",
+        "sdp-worker"
+      ],
+      "duplicates": false,
+      "allEnabled": true,
+      "sourcePathsMatch": true
+    },
+    {
+      "case": "separate-git-worktree",
+      "count": 13,
+      "names": [
+        "sdp",
+        "sdp-architect",
+        "sdp-auditor",
+        "sdp-change-analysis",
+        "sdp-master",
+        "sdp-release",
+        "sdp-reviewer",
+        "sdp-steering",
+        "sdp-traceability",
+        "sdp-verifier",
+        "sdp-versioning",
+        "sdp-vertical-refactor",
+        "sdp-worker"
+      ],
+      "duplicates": false,
+      "allEnabled": true,
+      "sourcePathsMatch": true
+    },
+    {
+      "case": "actual-installer-codex-destination",
+      "count": 13,
+      "names": [
+        "sdp",
+        "sdp-architect",
+        "sdp-auditor",
+        "sdp-change-analysis",
+        "sdp-master",
+        "sdp-release",
+        "sdp-reviewer",
+        "sdp-steering",
+        "sdp-traceability",
+        "sdp-verifier",
+        "sdp-versioning",
+        "sdp-vertical-refactor",
+        "sdp-worker"
+      ],
+      "duplicates": false,
+      "allEnabled": true,
+      "sourcePathsMatch": true
+    },
+    {
+      "case": "independent-nested-repository",
+      "inheritedNames": []
+    }
+  ],
+  "limit": "Catalog only; behavior and reference loading have separate fresh-context evaluation."
+}

@@ -1,0 +1,10 @@
+flowchart LR
+    n_BuildPreparedFrame["BuildPreparedFrame (functionality)"]
+    n_ExportSvgSnapshot["ExportSvgSnapshot (functionality)"]
+    n_G2M2SharedSvgGeometry["G2M2SharedSvgGeometry (activity)"]
+    n_SduiLayout["SduiLayout (unit)"]
+    n_SduiPresentation["SduiPresentation (unit)"]
+    n_G2M2SharedSvgGeometry -->|addresses| n_BuildPreparedFrame
+    n_G2M2SharedSvgGeometry -->|addresses| n_ExportSvgSnapshot
+    n_SduiLayout -->|owns| n_BuildPreparedFrame
+    n_SduiPresentation -->|owns| n_ExportSvgSnapshot

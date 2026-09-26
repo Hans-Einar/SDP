@@ -1,0 +1,32 @@
+SDUI GUI dump | bucking | 160 columns | structural preview
++-length-----------------------------------------------------------------------+ +-diameter--------------------------------------------------------------------+
+|## Lengde                               [ Cursor AV ]       [ Δ ]             | |## Diameter                            [ Cursor  [ Δ ]     [ O/B · U [ BarkNO|
+|**412,0 cm**                                                                  | |                                       AV ]                /B ]      R-kalibr|
+|Måling · aggregat                                                             | |                                                                     ering ] |
++------------------------------------------------------------------------------+ |**28,4 cm**                                                                  |
+                                                                                 |Måling · O/B · eksempelprofil                                                |
+                                                                                 +-----------------------------------------------------------------------------+
++-selection----------------------------+ +-suggestions----------------------------------------------------------------+ +-currentStem--------------------------+
+|## Treslag / Sortiment                | |## Apteringsforslag                                                         | |## Stammen i aggregatet               |
+|**Treslag**                           | |[ Optimalisering ]                     [ Kolonner ]                         | |Aktuell stamme                        |
+|Gran                                  | |Neste kapp · eksempeldata                                                   | |                                      |
+|                                      | || Nr | Sortiment | Lengde | Topp-Ø |                                        | |**Låste feil: 0**                     |
+|**Sortiment**                         | || -- | --------- | ------ | ------ |                                        | |Ingen låste feil registrert           |
+|Sagtømmer                             | || 1  | Sagtømmer | 430 cm | 26 cm  |                                        | |                                      |
+|                                      | || 2  | Massevirke| 310 cm | 18 cm  |                                        | |Nåposisjon: 412,0 cm                  |
+|Siste knapp: GRAN                     | |[ Canonical ]                          [ Alternativ 1 ]                     | |Maks kvistet: 412,0 cm                |
++--------------------------------------+ |Planvalg er ubundet i denne prototypen.                                     | |Produsert / kappet: 0 cm              |
+                                         +----------------------------------------------------------------------------+ |Segmentrot: 0 cm                      |
+                                                                                                                        |Produksjon og feilflyt er plassholdere|
+                                                                                                                        |.                                     |
+                                                                                                                        +--------------------------------------+
++-stemTrack-40fr-----------------------------------------------------------------------------------------------------------------------------------------------+
+|## Stammeforløp                                                                 [ taperNOR ]                            [ Mixed ]                             |
+|Hele estimatet · Predikert · Målt · Plan · Rest · Kvalitet 1/2 · Underkjent · Utkast                                                                          |
+|**Plassholder for OperatorUnifiedStemSvg**                                                                                                                    |
+|Stammeprofil, målepunkter, kapp og manuell cursor trenger en egen visuell provider.                                                                           |
+|Eksempel på Mermaid-innhold nedenfor utelates av konsolldumpen:                                                                                               |
+|[Mermaid utelatt]                                                                                                                                             |
+|FØLGER AGGREGAT                                      Lengde: 412,0 cm                                     Rel. lengde: 0,0 cm                                 |
+|Pred. Ø O/B: 28,4 cm                                 Profilvolum O/B: 0,312 m³                            Toppsylinder: 0,260 m³                              |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+

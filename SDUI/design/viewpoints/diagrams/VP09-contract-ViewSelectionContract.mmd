@@ -1,0 +1,16 @@
+flowchart LR
+    n_ViewConsumerId["ViewConsumerId (field)"]
+    n_ViewPaneId["ViewPaneId (field)"]
+    n_ViewProjectId["ViewProjectId (field)"]
+    n_ViewRequestId["ViewRequestId (field)"]
+    n_ViewSelectionContract["ViewSelectionContract (contract)"]
+    n_ViewSelector["ViewSelector (field)"]
+    n_ViewSourceRevision["ViewSourceRevision (field)"]
+    n_ViewWindowId["ViewWindowId (field)"]
+    n_ViewSelectionContract -->|has-field| n_ViewConsumerId
+    n_ViewSelectionContract -->|has-field| n_ViewPaneId
+    n_ViewSelectionContract -->|has-field| n_ViewProjectId
+    n_ViewSelectionContract -->|has-field| n_ViewRequestId
+    n_ViewSelectionContract -->|has-field| n_ViewSelector
+    n_ViewSelectionContract -->|has-field| n_ViewSourceRevision
+    n_ViewSelectionContract -->|has-field| n_ViewWindowId

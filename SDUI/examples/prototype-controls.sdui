@@ -1,0 +1,12 @@
+sdui 0.2;
+
+controls = [
+  header="## SDUI prototype-widgets",
+  <
+    ok=button("OK"), cancel=button("Avbryt"),
+    pressed=button("Trykket"), disabled=button("Utilgjengelig") {enabled=false};
+    operator=input("Operatør", value="Ola Nordmann");
+    stemId=input("Stamme-ID", value="GRAN-0042");
+    note=input("Merknad", value="Kontroller barkmåling før neste kapp")
+  >
+]*b {<->, font=12};

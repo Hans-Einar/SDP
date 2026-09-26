@@ -1,0 +1,30 @@
+language sdl-mvp1-exercise version 0.1.
+
+capability RecordedDiagnosticReplay.
+functionality AppendLabRecord.
+functionality PersistLabLedger.
+functionality ManageLabCheckpoint.
+functionality TransferLabArtifact.
+functionality ReplayConfiguredRange.
+functionality FormatLabConsole.
+
+LabKit cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/labkit/SDP/03--Requirements/requirements.md".
+LabKit provides RecordedDiagnosticReplay.
+LabKit owns AppendLabRecord.
+AppendLabRecord realizes RecordedDiagnosticReplay.
+AppendLabRecord specifies "Assign local record sequence; retain bounded per-family history and report gaps independently of source-event sequence.".
+LabKit owns PersistLabLedger.
+PersistLabLedger realizes RecordedDiagnosticReplay.
+PersistLabLedger specifies "Optional append-only versioned NDJSON ledger with source-session-qualified cursors.".
+LabKit owns ManageLabCheckpoint.
+ManageLabCheckpoint realizes RecordedDiagnosticReplay.
+ManageLabCheckpoint specifies "Create/list/resolve checkpoints by stable identity, name and local record sequence.".
+LabKit owns TransferLabArtifact.
+TransferLabArtifact realizes RecordedDiagnosticReplay.
+TransferLabArtifact specifies "Bounded chunked import/export with request correlation, offset, size and integrity checks.".
+LabKit owns ReplayConfiguredRange.
+ReplayConfiguredRange realizes RecordedDiagnosticReplay.
+ReplayConfiguredRange specifies "Select explicit layer and server-configured isolated target; replay sequence/time/checkpoint range without arbitrary live endpoints.".
+LabKit owns FormatLabConsole.
+FormatLabConsole realizes RecordedDiagnosticReplay.
+FormatLabConsole specifies "Provide domain-neutral command/RPC formatting helpers and deterministic in-memory clock/store seams.".

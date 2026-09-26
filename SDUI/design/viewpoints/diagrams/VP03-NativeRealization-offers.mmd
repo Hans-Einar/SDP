@@ -1,0 +1,6 @@
+flowchart LR
+    n_GoBuildRunner["GoBuildRunner (unit)"]
+    n_GoCodeGenerator["GoCodeGenerator (unit)"]
+    n_NativeRealization["NativeRealization (capability)"]
+    n_GoBuildRunner -->|provides| n_NativeRealization
+    n_GoCodeGenerator -->|provides| n_NativeRealization

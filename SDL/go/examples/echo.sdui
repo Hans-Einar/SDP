@@ -1,0 +1,8 @@
+sdui 0.2;
+ref: api "echo.sdl";
+page = [
+  header="## SDL / SDUI · Echo",
+  edit=input("Value", value="hello", callback=api.Echo.@invoke),
+  ok=button("OK", callback=api.Echo.@invoke)
+] {scale=1};
+api.Echo.setHandle(page.edit);

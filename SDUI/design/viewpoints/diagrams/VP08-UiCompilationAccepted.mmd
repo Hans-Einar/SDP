@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant n_CommandLineHost as Command Line Host
+    participant n_SduiFrontend as Sdui Frontend
+    participant n_SduiLexer as Sdui Lexer
+    participant n_SduiParser as Sdui Parser
+    participant n_SduiValidator as Sdui Validator
+    participant n_SduiNormalizer as Sdui Normalizer
+    n_CommandLineHost->>n_SduiFrontend: 1: Compile Ui Request (Ui Compilation Calls)
+    n_SduiFrontend->>n_SduiLexer: 2: Tokenize Ui Request (Ui Tokenization Calls)
+    n_SduiLexer-->>n_SduiFrontend: 3: Tokenize Ui Result (Ui Tokenization Calls) reply-to 2
+    n_SduiFrontend->>n_SduiParser: 4: Build Ui Ast Request (Ui Ast Calls)
+    n_SduiParser-->>n_SduiFrontend: 5: Build Ui Ast Result (Ui Ast Calls) reply-to 4
+    n_SduiFrontend->>n_SduiValidator: 6: Validate Ui Request (Ui Validation Calls)
+    n_SduiValidator-->>n_SduiFrontend: 7: Validate Ui Result (Ui Validation Calls) reply-to 6
+    n_SduiFrontend->>n_SduiNormalizer: 8: Normalize Ui Request (Ui Normalization Calls)
+    n_SduiNormalizer-->>n_SduiFrontend: 9: Normalize Ui Result (Ui Normalization Calls) reply-to 8
+    n_SduiFrontend-->>n_CommandLineHost: 10: Compile Ui Result (Ui Compilation Calls) reply-to 1

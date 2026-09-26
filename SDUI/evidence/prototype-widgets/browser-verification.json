@@ -1,0 +1,20 @@
+{
+  "browser": "153.0.8010.36",
+  "checks": [
+    "editing",
+    "mouse press appearance",
+    "keyboard activation",
+    "disabled button",
+    "print mirrors current values",
+    "print text wrapping",
+    "mobile no horizontal overflow",
+    "reload restores defaults",
+    "no external requests",
+    "no JavaScript errors"
+  ],
+  "requests": [
+    "file:///home/warloc/git/SDP-vNow/SDUI/examples/prototype-controls.html",
+    "file:///home/warloc/git/SDP-vNow/SDUI/examples/prototype-controls.html"
+  ],
+  "printVerification": "CSS print media emulation; no physical printing or PDF verification"
+}

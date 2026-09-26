@@ -1,0 +1,26 @@
+language sdl-mvp1-exercise version 0.1.
+
+capability BoundedPhysicalTransport.
+functionality ObserveSerialBytes.
+functionality BufferTargetHistory.
+functionality RecoverTargetHistory.
+functionality GatePhysicalWrite.
+functionality ReportGatewayHealth.
+
+P1000Gateway cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-gateway/SDP/03--Requirements/requirements.md".
+P1000Gateway provides BoundedPhysicalTransport.
+P1000Gateway owns ObserveSerialBytes.
+ObserveSerialBytes realizes BoundedPhysicalTransport.
+ObserveSerialBytes specifies "Configured passive serial input preserves bytes/order/timestamps/provenance; framing remains capture-backed.".
+P1000Gateway owns BufferTargetHistory.
+BufferTargetHistory realizes BoundedPhysicalTransport.
+BufferTargetHistory specifies "Bounded RX across Machine disconnect; advertise session/range/count/bytes/age and overflow.".
+P1000Gateway owns RecoverTargetHistory.
+RecoverTargetHistory realizes BoundedPhysicalTransport.
+RecoverTargetHistory specifies "Honor explicit resume/live-only/discard; internal delivery commit is not protocol ACK.".
+P1000Gateway owns GatePhysicalWrite.
+GatePhysicalWrite realizes BoundedPhysicalTransport.
+GatePhysicalWrite specifies "Design obligation only: bounded correlated TX and end-to-end expiry, no stale replay, no autonomous ACK. Physical execution is disabled in this exercise.".
+P1000Gateway owns ReportGatewayHealth.
+ReportGatewayHealth realizes BoundedPhysicalTransport.
+ReportGatewayHealth specifies "Expose counters/reconnect diagnostics; MachineService restart does not require restarting serial observation.".

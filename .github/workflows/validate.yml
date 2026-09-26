@@ -18,10 +18,47 @@ jobs:
       - run: python -m pip install -r Toolkit/tests/requirements.txt
       - run: python Toolkit/scripts/validate_sdp.py --base-ref origin/main
       - run: python -m unittest discover -s Toolkit/tests -p "test_*.py" -v
+      - run: python Toolkit/conformance/install-v1/run_conformance.py --validate-only
 
   installer:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -r Toolkit/tests/requirements.txt
       - shell: pwsh
         run: ./Toolkit/tests/Install-SDP.Tests.ps1
+      - run: python Toolkit/conformance/install-v1/run_conformance.py --powershell pwsh
+
+  process-profile-linux:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Upgrade test reads a pinned earlier profile artifact.
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.27.1"
+      - run: python -m pip install -r Toolkit/tests/requirements.txt
+      - name: Require the supported PowerShell host
+        shell: pwsh
+        run: |
+          if ($PSVersionTable.PSVersion -lt [version]'7.4') { throw 'PowerShell 7.4+ required' }
+      - run: Toolkit/SDPTool/package.sh build/sdptool-package
+      - name: Profile build and installed consumer contracts
+        env:
+          SDP_TEST_PWSH: pwsh
+          SDP_TEST_TOOL: ${{ github.workspace }}/build/sdptool-package/sdptool
+        run: |
+          python -m unittest discover -s Toolkit/tests -p test_process_profile.py -v
+          python -m unittest discover -s Toolkit/tests -p test_process_install.py -v
+      - name: Every journal boundary under forced process exit
+        env:
+          SDP_TEST_PWSH: pwsh
+        run: python Toolkit/conformance/install-v2/run_fault_matrix.py

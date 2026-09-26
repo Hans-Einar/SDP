@@ -1,0 +1,12 @@
+language action-core version 0.1.
+record CellEdit.
+record CellResult.
+action EditAptCell.
+CellEdit field CellKey as text.
+CellEdit field ExpectedRevision as integer.
+CellEdit field Value as text.
+CellResult field Revision as integer.
+CellResult field Value as text.
+EditAptCell invokes GoEditAptCell.
+EditAptCell returns CellResult.
+EditAptCell takes CellEdit.

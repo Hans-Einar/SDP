@@ -1,0 +1,19 @@
+flowchart LR
+    n_CommandLineHost["CommandLineHost (container)"]
+    n_ComposeHeadlessExport["ComposeHeadlessExport (functionality)"]
+    n_ComposeMarkdownDocument["ComposeMarkdownDocument (functionality)"]
+    n_ExportConsoleSnapshot["ExportConsoleSnapshot (functionality)"]
+    n_ExportSvgSnapshot["ExportSvgSnapshot (functionality)"]
+    n_SduiPresentation["SduiPresentation (unit)"]
+    n_StaticDocumentation["StaticDocumentation (capability)"]
+    n_WriteGeneratedArtifacts["WriteGeneratedArtifacts (functionality)"]
+    n_CommandLineHost -->|owns| n_ComposeHeadlessExport
+    n_CommandLineHost -->|owns| n_WriteGeneratedArtifacts
+    n_ComposeHeadlessExport -->|realizes| n_StaticDocumentation
+    n_ComposeMarkdownDocument -->|realizes| n_StaticDocumentation
+    n_ExportConsoleSnapshot -->|realizes| n_StaticDocumentation
+    n_ExportSvgSnapshot -->|realizes| n_StaticDocumentation
+    n_SduiPresentation -->|owns| n_ComposeMarkdownDocument
+    n_SduiPresentation -->|owns| n_ExportConsoleSnapshot
+    n_SduiPresentation -->|owns| n_ExportSvgSnapshot
+    n_WriteGeneratedArtifacts -->|realizes| n_StaticDocumentation

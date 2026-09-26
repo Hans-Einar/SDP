@@ -1,0 +1,32 @@
+{
+  "version": "sdl-sdui-document/2",
+  "revision": "4a39f150b4a9745d83d116154812d3b6066385f6038abbc73dc40858878f9af6",
+  "renderer": "",
+  "diagrams": null,
+  "facts": null,
+  "model_gaps": null,
+  "outputs": {
+    "design/A0/index.md": "cbab435060e4f3a38dea1ae46c1c510f4a94ba4f90165b6cdc376e03ef348400",
+    "design/A0/inventory.md": "8f07cc37a67927bce7e09e4eaaa5e7ac90ac335a73f3c97535703bbf65afeebd",
+    "design/A1/index.md": "4995ce9f61bcb8d8eb25ab3c2d144b2f7a5b40aca5708d9db845f7a6cc9df88c",
+    "design/A1/inventory.md": "1dd59bde92203d29f130cbddc26c1abf705948ed10af58eb623e1772aaeefbd9",
+    "design/A2/index.md": "ccffe36dfb73d97b3acc9ce45911c35cf85066ff5a4595300fd0c116d33cc7c1",
+    "design/A2/inventory.md": "5f742497a93f56391a0d6365e4d7875ad75da29a4a975a79156281793cc8e295",
+    "design/A3/index.md": "574b4712e9ccd6ef836a86ec1cff788407b686d38d0cfcc6780f76195108b30d",
+    "design/A3/inventory.md": "75c093a8ae18255e52b31488621ec91d0221ff9debb5507e0f2449300c88b96d",
+    "design/A4/index.md": "f41987eec3ba93a8a34476e5b078aaddd4aea66f6056f295563816b06396274c",
+    "design/A4/inventory.md": "f74a4598d74482b6bbebcaa13ec9af59757baadd04633020647d860b5a38771e",
+    "design/A5/index.md": "e076e34b7e22d86bbaeb7ce02e8dbbf9742b24a94ad36d75f95f5a971410211d",
+    "design/A5/inventory.md": "c911086dff8664b3c030c544c211a6fb6dfb95aacc421b3e91dd0e8163821edd",
+    "design/index.md": "297ffb67f305fd24b7cfb5ada5bc9304bd30c0d0d25a055f9d131b69f2d29bc5",
+    "design/manifest.json": "7b43f7825af37742feacecf00d65d8cdc2dd6edefa4a3dfef141ac2aade5a932",
+    "design/navigator.md": "370271bedc8b179cf4bf7e99499f09d956c920eeee905fbf582bf1f9b96383c3",
+    "entry.md": "2915ea78afcc0967241851ad49e9532d61c7f1c00659562df1d4f310c27b1bf4",
+    "inputs/architecture.design": "e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1",
+    "inputs/state.json": "c70a2b9358169c10b37dae81dc0b7053d5170b8ef1fe4705e41ce07ce64485c9",
+    "inputs/ui.sdui": "4a39f150b4a9745d83d116154812d3b6066385f6038abbc73dc40858878f9af6",
+    "provenance.json": "96216117c4e4fc986fc074648edbff2221113b02089b818c337f95e37ac81133",
+    "structure.md": "71c50e7651f1a8ee1e1f17861dfb7daa201eed21b82838d2283ee5b0ee28a3a8",
+    "ui.svg": "8e7f910364f8fa96d92aff27513c194a2e0bdd5fdc65c8bae9b2b1a9d9d0e549"
+  }
+}

@@ -11,7 +11,7 @@
   ],
   "properties": {
     "schemaVersion": { "const": "1.0" },
-    "fixId": { "type": "string", "pattern": "^(FIX|HOTFIX)-[0-9]+\\.[0-9]+\\.[0-9]+-[0-9]{3}$" },
+    "fixId": { "type": "string", "pattern": "^(FIX|HOTFIX)-(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\\+([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?-[0-9]{3}$" },
     "targetVersion": { "$ref": "#/$defs/semver" },
     "status": { "enum": ["planned", "active", "verification", "review", "complete", "cancelled"] },
     "reasonFullSliceIsDisproportionate": { "type": "string", "minLength": 1 },
@@ -26,7 +26,7 @@
   "$defs": {
     "semver": {
       "type": "string",
-      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\\+([0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?$"
     }
   }
 }

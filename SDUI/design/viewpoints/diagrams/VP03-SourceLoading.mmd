@@ -1,0 +1,9 @@
+flowchart LR
+    n_IdentifySourceRevision["IdentifySourceRevision (functionality)"]
+    n_ReadBoundedSources["ReadBoundedSources (functionality)"]
+    n_SourceLoader["SourceLoader (unit)"]
+    n_SourceLoading["SourceLoading (capability)"]
+    n_IdentifySourceRevision -->|realizes| n_SourceLoading
+    n_ReadBoundedSources -->|realizes| n_SourceLoading
+    n_SourceLoader -->|owns| n_IdentifySourceRevision
+    n_SourceLoader -->|owns| n_ReadBoundedSources

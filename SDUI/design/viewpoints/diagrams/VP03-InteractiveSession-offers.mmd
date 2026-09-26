@@ -1,0 +1,14 @@
+flowchart LR
+    n_InteractiveSession["InteractiveSession (capability)"]
+    n_SduiDispatcher["SduiDispatcher (unit)"]
+    n_SduiInstanceStore["SduiInstanceStore (unit)"]
+    n_SduiLibrary["SduiLibrary (unit)"]
+    n_SduiPropertyStore["SduiPropertyStore (unit)"]
+    n_SduiRuntime["SduiRuntime (unit)"]
+    n_UiStateReconciler["UiStateReconciler (unit)"]
+    n_SduiDispatcher -->|provides| n_InteractiveSession
+    n_SduiInstanceStore -->|provides| n_InteractiveSession
+    n_SduiLibrary -->|provides| n_InteractiveSession
+    n_SduiPropertyStore -->|provides| n_InteractiveSession
+    n_SduiRuntime -->|provides| n_InteractiveSession
+    n_UiStateReconciler -->|provides| n_InteractiveSession

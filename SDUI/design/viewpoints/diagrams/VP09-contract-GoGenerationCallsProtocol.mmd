@@ -1,0 +1,6 @@
+flowchart LR
+    n_GenerateGoRequest["GenerateGoRequest (message)"]
+    n_GenerateGoResult["GenerateGoResult (message)"]
+    n_GoGenerationCallsProtocol["GoGenerationCallsProtocol (contract)"]
+    n_GoGenerationCallsProtocol -->|permits| n_GenerateGoRequest
+    n_GoGenerationCallsProtocol -->|permits| n_GenerateGoResult

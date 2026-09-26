@@ -1,0 +1,8 @@
+flowchart LR
+    n_SelectViewRequest["SelectViewRequest (message)"]
+    n_ViewNavigationCallsProtocol["ViewNavigationCallsProtocol (contract)"]
+    n_ViewOpenedResult["ViewOpenedResult (message)"]
+    n_ViewRequestRejected["ViewRequestRejected (message)"]
+    n_ViewNavigationCallsProtocol -->|permits| n_SelectViewRequest
+    n_ViewNavigationCallsProtocol -->|permits| n_ViewOpenedResult
+    n_ViewNavigationCallsProtocol -->|permits| n_ViewRequestRejected

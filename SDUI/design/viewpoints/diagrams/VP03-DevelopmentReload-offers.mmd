@@ -1,0 +1,8 @@
+flowchart LR
+    n_DevelopmentReload["DevelopmentReload (capability)"]
+    n_DevelopmentTools["DevelopmentTools (unit)"]
+    n_ReloadCoordinator["ReloadCoordinator (unit)"]
+    n_SourceWatcher["SourceWatcher (unit)"]
+    n_DevelopmentTools -->|provides| n_DevelopmentReload
+    n_ReloadCoordinator -->|provides| n_DevelopmentReload
+    n_SourceWatcher -->|provides| n_DevelopmentReload

@@ -1,0 +1,6 @@
+flowchart LR
+    n_DesignSourceRecord["DesignSourceRecord (contract)"]
+    n_SourceDocumentRevision["SourceDocumentRevision (field)"]
+    n_SourceDocumentText["SourceDocumentText (field)"]
+    n_DesignSourceRecord -->|has-field| n_SourceDocumentRevision
+    n_DesignSourceRecord -->|has-field| n_SourceDocumentText

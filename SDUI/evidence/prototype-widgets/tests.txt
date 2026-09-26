@@ -1,0 +1,41 @@
+test_cli_dump_entry_and_no_partial_error_output (test_dump.DumpTest.test_cli_dump_entry_and_no_partial_error_output) ... ok
+test_concept1_has_six_boxes_and_source_weights (test_dump.DumpTest.test_concept1_has_six_boxes_and_source_weights) ... ok
+test_no_terminal_escapes_and_unicode_cell_bounds (test_dump.DumpTest.test_no_terminal_escapes_and_unicode_cell_bounds) ... ok
+test_raw_markdown_and_mermaid_fences (test_dump.DumpTest.test_raw_markdown_and_mermaid_fences) ... ok
+test_reference_layout_and_finite_space_errors (test_dump.DumpTest.test_reference_layout_and_finite_space_errors) ... ok
+test_rows_columns_and_groups_are_visible (test_dump.DumpTest.test_rows_columns_and_groups_are_visible) ... ok
+test_anonymous_unbound_widgets_and_wrap_constraints (test_language.LanguageTest.test_anonymous_unbound_widgets_and_wrap_constraints) ... ok
+test_bounded_work (test_language.LanguageTest.test_bounded_work) ... ok
+test_cli_source_protection_and_exit_codes (test_language.LanguageTest.test_cli_source_protection_and_exit_codes) ... ok
+test_deterministic_ast_and_syntax_semantics_separation (test_language.LanguageTest.test_deterministic_ast_and_syntax_semantics_separation) ... ok
+test_formatting_binds_before_separator (test_language.LanguageTest.test_formatting_binds_before_separator) ... ok
+test_lexical_failures (test_language.LanguageTest.test_lexical_failures) ... ok
+test_local_symbol_errors (test_language.LanguageTest.test_local_symbol_errors) ... ok
+test_nested_groups_and_local_rows_preserved (test_language.LanguageTest.test_nested_groups_and_local_rows_preserved) ... ok
+test_no_arbitrary_code_or_empty_rows (test_language.LanguageTest.test_no_arbitrary_code_or_empty_rows) ... ok
+test_ported_example_bindings_and_instance_paths (test_language.LanguageTest.test_ported_example_bindings_and_instance_paths) ... ok
+test_raw_markdown_and_utf8_spans (test_language.LanguageTest.test_raw_markdown_and_utf8_spans) ... ok
+test_references_forward_reuse_and_cycles (test_language.LanguageTest.test_references_forward_reuse_and_cycles) ... ok
+test_regions_and_empty_containers (test_language.LanguageTest.test_regions_and_empty_containers) ... ok
+test_shapes_ratio_and_relative_dimensions (test_language.LanguageTest.test_shapes_ratio_and_relative_dimensions) ... ok
+test_static_comments_quotes_and_unicode (test_language.LanguageTest.test_static_comments_quotes_and_unicode) ... ok
+test_truncations_and_malformed_inputs_are_structured (test_language.LanguageTest.test_truncations_and_malformed_inputs_are_structured) ... ok
+test_version_is_exact_no_legacy (test_language.LanguageTest.test_version_is_exact_no_legacy) ... ok
+test_widget_contracts (test_language.LanguageTest.test_widget_contracts) ... ok
+test_cli_stdout_output_and_errors (test_markdown_dump.MarkdownDumpTest.test_cli_stdout_output_and_errors) ... ok
+test_concept1_snapshot (test_markdown_dump.MarkdownDumpTest.test_concept1_snapshot) ... ok
+test_fence_containment_and_literal_widget_labels (test_markdown_dump.MarkdownDumpTest.test_fence_containment_and_literal_widget_labels) ... ok
+test_markdown_is_renderable_source_not_escaped_text (test_markdown_dump.MarkdownDumpTest.test_markdown_is_renderable_source_not_escaped_text) ... ok
+test_mermaid_is_omitted_and_other_code_is_preserved (test_markdown_dump.MarkdownDumpTest.test_mermaid_is_omitted_and_other_code_is_preserved) ... ok
+test_regions_rows_visibility_and_static_widgets (test_markdown_dump.MarkdownDumpTest.test_regions_rows_visibility_and_static_widgets) ... ok
+test_gallery_has_print_mirrors_and_no_submit_or_external_resources (test_prototype_widgets.PrototypeWidgetTest.test_gallery_has_print_mirrors_and_no_submit_or_external_resources) ... ok
+test_generated_preview_shapes_are_static_and_have_real_source_values (test_prototype_widgets.PrototypeWidgetTest.test_generated_preview_shapes_are_static_and_have_real_source_values) ... ok
+test_literal_labels_and_values_do_not_become_markup (test_prototype_widgets.PrototypeWidgetTest.test_literal_labels_and_values_do_not_become_markup) ... ok
+test_same_source_controls_are_used_and_callbacks_are_not_transferred (test_prototype_widgets.PrototypeWidgetTest.test_same_source_controls_are_used_and_callbacks_are_not_transferred) ... ok
+test_svg_states_and_field_values (test_prototype_widgets.PrototypeWidgetTest.test_svg_states_and_field_values) ... ok
+test_visibility_and_disabled_ancestor (test_prototype_widgets.PrototypeWidgetTest.test_visibility_and_disabled_ancestor) ... ok
+
+----------------------------------------------------------------------
+Ran 36 tests in 3.387s
+
+OK

@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+# Start source-driven SDL documentation in the navigation-enabled XFMD build.
+set -euo pipefail
+umask 077
+
+fail() { printf 'sdl-design: %s\n' "$*" >&2; exit 2; }
+script=$(readlink -f -- "${BASH_SOURCE[0]}")
+repo=$(cd -- "$(dirname -- "$script")/../.." && pwd)
+siblings=$(dirname -- "$repo")
+source_file=${SDP_SDL_SOURCE:-"$repo/SDUI/design/architecture.design"}
+xfmd=${SDP_XFMD:-"$siblings/xfmd-sdl-navigation/build/xfmd"}
+renderer=${SDP_MMDR:-"$siblings/mermaid-rs-renderer/target/debug/mmdr"}
+sdl_tool=${SDP_SDL_TOOL:-"$HOME/.local/lib/sdp/sdl"}
+
+if [[ ${1:-} == --help ]]; then
+    cat <<'HELP'
+Bruk: sdl-design [modell.design]
+
+Åpner SDL-dokumentasjonens hovedside og navigator i XFMD.
+Bruker ferdigbygde verktøy; ingen kompilering ved oppstart.
+Klikk genererer valgt detalj fra gjeldende kilde. Ingen daemon er nødvendig.
+Midlertidige oppstartsfiler fjernes når vinduet lukkes.
+
+Valgfrie miljøvariabler: SDP_SDL_TOOL, SDP_XFMD, SDP_MMDR, SDP_SDL_SOURCE.
+HELP
+    exit 0
+fi
+[[ $# -le 1 ]] || fail 'Bruk sdl-design [modell.design]'
+if [[ $# == 1 ]]; then
+    [[ $1 != -* ]] || fail "Ukjent argument: $1 (se --help)"
+    source_file=$1
+fi
+[[ -f $source_file ]] || fail "SDL-kilden finnes ikke: $source_file"
+source_file=$(realpath -- "$source_file")
+[[ -x $xfmd ]] || fail "XFMD med navigatorstøtte mangler: $xfmd (sett SDP_XFMD)"
+[[ -x $renderer ]] || fail "Mermaid-renderer mangler: $renderer (sett SDP_MMDR)"
+xfmd=$(realpath -- "$xfmd")
+renderer=$(realpath -- "$renderer")
+# Test the explicitly selected navigation build, never silently use installed xfmd.
+help_text=$("$xfmd" --help) || fail 'Kan ikke undersøke valgt XFMD'
+[[ $help_text == *--navigator* && $help_text == *--sdl-tool* ]] || fail 'Valgt XFMD mangler SDL-navigatorstøtte'
+[[ -x $sdl_tool ]] || fail "Ferdigbygd SDL-verktøy mangler: $sdl_tool (sett SDP_SDL_TOOL)"
+sdl_tool=$(realpath -- "$sdl_tool")
+
+session=$(mktemp -d "${XDG_RUNTIME_DIR:-${TMPDIR:-/tmp}}/sdl-design.XXXXXXXX")
+child=
+cleanup() {
+    if [[ -n $child ]]; then
+        kill "$child" 2>/dev/null || true
+        wait "$child" 2>/dev/null || true
+    fi
+    rm -rf -- "$session"
+}
+trap cleanup EXIT
+trap 'exit 130' INT
+trap 'exit 143' TERM
+printf 'Lager dokumentasjonens hovedside og navigator fra SDL…\n'
+"$sdl_tool" viewpoints "$source_file" --format navigator --project sdui --output "$session/navigation"
+printf 'Åpner XFMD. Velg en detalj i navigatoren for å generere den fra SDL.\n'
+"$xfmd" "$session/navigation/index.md" \
+    --navigator "$session/navigation/navigator.md" \
+    --sdl-tool "$sdl_tool" --sdl-source "$source_file" \
+    --project sdui --renderer "$renderer" --window-id "sdl-design-$$" &
+child=$!
+set +e
+wait "$child"
+status=$?
+set -e
+child=
+exit "$status"

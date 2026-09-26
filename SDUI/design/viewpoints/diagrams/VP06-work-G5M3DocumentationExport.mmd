@@ -1,0 +1,13 @@
+flowchart LR
+    n_CommandLineHost["CommandLineHost (container)"]
+    n_ComposeHeadlessExport["ComposeHeadlessExport (functionality)"]
+    n_ComposeMarkdownDocument["ComposeMarkdownDocument (functionality)"]
+    n_G5M3DocumentationExport["G5M3DocumentationExport (activity)"]
+    n_SduiPresentation["SduiPresentation (unit)"]
+    n_WriteGeneratedArtifacts["WriteGeneratedArtifacts (functionality)"]
+    n_CommandLineHost -->|owns| n_ComposeHeadlessExport
+    n_CommandLineHost -->|owns| n_WriteGeneratedArtifacts
+    n_G5M3DocumentationExport -->|addresses| n_ComposeHeadlessExport
+    n_G5M3DocumentationExport -->|addresses| n_ComposeMarkdownDocument
+    n_G5M3DocumentationExport -->|addresses| n_WriteGeneratedArtifacts
+    n_SduiPresentation -->|owns| n_ComposeMarkdownDocument

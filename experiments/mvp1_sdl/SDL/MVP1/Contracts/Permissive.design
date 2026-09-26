@@ -1,0 +1,11 @@
+language sdl-mvp1-exercise version 0.1.
+
+contract PermissiveContract.
+interface PermissiveInterface.
+message-set PermissiveObservations.
+
+PermissiveInterface follows PermissiveContract.
+PermissiveContract allows PermissiveObservations.
+PermissiveContract specifies "Explicit external presence/permissive input separate from P1000 gateway/framing. This contract is not a safety-rated emergency-stop realization.".
+PermissiveContract status proposed.
+PermissiveObservations describes "Permissive incoming message family; exact allowed variants follow the cited schema or the associated contract gap.".

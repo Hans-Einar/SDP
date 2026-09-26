@@ -1,0 +1,58 @@
+language sdl-mvp1-exercise version 0.1.
+
+scenario StoreApt.
+condition StoreAptReady.
+condition StoreAptContinue.
+condition StoreAptReject.
+outcome StoreAptCompleted.
+outcome StoreAptRejected.
+step StoreAptRoute.
+step StoreAptCommit.
+step StoreAptEncode.
+step StoreAptExport.
+step StoreAptWrite.
+step StoreAptFailure.
+step StoreAptSuccess.
+step ReportStoredAptExportFailure.
+condition StoredAptExportFailed.
+outcome AptStoredArtifactUnavailable.
+
+StoreApt illustrates ManageAptDefinitions.
+StoreApt exercises ValidatedAptDefinitions.
+StoreApt starts-when StoreAptReady.
+StoreApt starts-at StoreAptRoute.
+StoreAptReady describes "An identified draft and explicit create/update request exist.".
+StoreAptContinue describes "The previous operation succeeded and the next step's declared contract preconditions remain true; exact predicates are an executable-language gap.".
+StoreAptReject describes "Validation, authority, applicability or operation failure prevents continuation; preserve prior valid state and report the specific reason.".
+StoreAptCompleted describes "The stated design path completed under its explicit obligations; this is not an observed test result.".
+StoreAptRejected describes "The path terminated without claiming the requested change succeeded; failures remain observable.".
+StoreApt preserves DomainTruthOwned.
+StoreApt preserves StableCommandIdentity.
+StoreAptRoute calls RouteAptAdminCommand within BuckingLab.
+StoreAptRoute describes "Tool uses public Bucking command; never owner storage.".
+StoreAptRoute proceeds-to StoreAptFailure when StoreAptReject.
+StoreAptRoute proceeds-to StoreAptCommit when StoreAptContinue.
+StoreAptCommit calls StoreAptDraft within BuckingService.
+StoreAptCommit describes "Validate complete revision and commit the explicitly selected persistence action; the exact lifecycle/schema remains AptEditSchemaGap.".
+StoreAptCommit proceeds-to StoreAptFailure when StoreAptReject.
+StoreAptCommit proceeds-to StoreAptEncode when StoreAptContinue.
+StoreAptEncode calls EncodeClassicApt within BuckingService.
+StoreAptEncode describes "Use correct supported codec and preserved companion semantics.".
+StoreAptEncode proceeds-to ReportStoredAptExportFailure when StoredAptExportFailed.
+StoreAptEncode proceeds-to StoreAptExport when StoreAptContinue.
+StoreAptExport calls ExportAptDefinition within BuckingService.
+StoreAptExport describes "Return authoritative file identity/bytes/digest.".
+StoreAptExport proceeds-to ReportStoredAptExportFailure when StoredAptExportFailed.
+StoreAptExport proceeds-to StoreAptWrite when StoreAptContinue.
+StoreAptWrite calls TransferLabArtifact within BuckingLab.
+StoreAptWrite describes "Write chosen local artifact with bounded transfer and explicit errors.".
+StoreAptWrite proceeds-to ReportStoredAptExportFailure when StoredAptExportFailed.
+StoreAptWrite proceeds-to StoreAptSuccess when StoreAptContinue.
+StoreAptFailure finishes StoreApt with StoreAptRejected.
+StoreAptSuccess finishes StoreApt with StoreAptCompleted.
+StoreAptRoute emits BuckingRequests through BuckingServiceUpstream.
+StoreAptExport emits BuckingResponses through BuckingServiceUpstream.
+StoreAptWrite receives BuckingResponses through BuckingServiceUpstream.
+StoredAptExportFailed describes "The domain draft was stored, but encoding/export/local artifact transfer failed; retain stored identity/revision and report the failed phase.".
+ReportStoredAptExportFailure finishes StoreApt with AptStoredArtifactUnavailable.
+AptStoredArtifactUnavailable describes "Stored domain state remains authoritative; requested local export is unavailable or incomplete, never implicit rollback.".

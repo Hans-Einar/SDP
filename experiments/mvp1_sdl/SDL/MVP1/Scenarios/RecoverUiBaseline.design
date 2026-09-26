@@ -1,0 +1,44 @@
+language sdl-mvp1-exercise version 0.1.
+
+scenario RecoverUiBaseline.
+condition RecoverUiBaselineReady.
+condition RecoverUiBaselineContinue.
+condition RecoverUiBaselineReject.
+outcome RecoverUiBaselineCompleted.
+outcome RecoverUiBaselineRejected.
+step RecoverUiBaselineResume.
+step RecoverUiBaselineStage.
+step RecoverUiBaselineCommit.
+step RecoverUiBaselineRenderer.
+step RecoverUiBaselineFailure.
+step RecoverUiBaselineSuccess.
+
+RecoverUiBaseline illustrates InspectConnectionHealth.
+RecoverUiBaseline exercises CoherentUiBaseline.
+RecoverUiBaseline starts-when RecoverUiBaselineReady.
+RecoverUiBaseline starts-at RecoverUiBaselineResume.
+RecoverUiBaselineReady describes "A session changes, delivery gap is detected, or typed resume requires a snapshot.".
+RecoverUiBaselineContinue describes "The previous operation succeeded and the next step's declared contract preconditions remain true; exact predicates are an executable-language gap.".
+RecoverUiBaselineReject describes "Validation, authority, applicability or operation failure prevents continuation; preserve prior valid state and report the specific reason.".
+RecoverUiBaselineCompleted describes "The stated design path completed under its explicit obligations; this is not an observed test result.".
+RecoverUiBaselineRejected describes "The path terminated without claiming the requested change succeeded; failures remain observable.".
+RecoverUiBaseline preserves DistinctSequenceDomains.
+RecoverUiBaseline preserves PreserveRepresentationIdentity.
+RecoverUiBaselineResume calls RecoverUiSession within BuckingUI.
+RecoverUiBaselineResume describes "Sparse source gaps alone are not loss; distinguish actual delivery/session changes.".
+RecoverUiBaselineResume proceeds-to RecoverUiBaselineFailure when RecoverUiBaselineReject.
+RecoverUiBaselineResume proceeds-to RecoverUiBaselineStage when RecoverUiBaselineContinue.
+RecoverUiBaselineStage calls StageRepresentationSnapshot within BuckingUI.
+RecoverUiBaselineStage describes "Build shadow revision from coherent snapshot/watermark.".
+RecoverUiBaselineStage proceeds-to RecoverUiBaselineFailure when RecoverUiBaselineReject.
+RecoverUiBaselineStage proceeds-to RecoverUiBaselineCommit when RecoverUiBaselineContinue.
+RecoverUiBaselineCommit calls CommitUiBaseline within BuckingUI.
+RecoverUiBaselineCommit describes "Atomically publish verified baseline; apply only later appropriate events.".
+RecoverUiBaselineCommit proceeds-to RecoverUiBaselineFailure when RecoverUiBaselineReject.
+RecoverUiBaselineCommit proceeds-to RecoverUiBaselineRenderer when RecoverUiBaselineContinue.
+RecoverUiBaselineRenderer calls ResyncRenderer within BuckingUI.
+RecoverUiBaselineRenderer describes "Resync schema/state without duplicate domain subscriptions.".
+RecoverUiBaselineRenderer proceeds-to RecoverUiBaselineFailure when RecoverUiBaselineReject.
+RecoverUiBaselineRenderer proceeds-to RecoverUiBaselineSuccess when RecoverUiBaselineContinue.
+RecoverUiBaselineFailure finishes RecoverUiBaseline with RecoverUiBaselineRejected.
+RecoverUiBaselineSuccess finishes RecoverUiBaseline with RecoverUiBaselineCompleted.

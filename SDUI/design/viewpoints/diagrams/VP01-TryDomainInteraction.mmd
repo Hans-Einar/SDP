@@ -1,0 +1,6 @@
+flowchart LR
+    n_DesignAuthor["DesignAuthor (actor)"]
+    n_TryDomainInteraction["TryDomainInteraction (usecase)"]
+    n_TypedDomainBinding["TypedDomainBinding (feature)"]
+    n_DesignAuthor -->|pursues| n_TryDomainInteraction
+    n_TypedDomainBinding -->|supports| n_TryDomainInteraction

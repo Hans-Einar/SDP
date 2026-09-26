@@ -1,0 +1,25 @@
+sdui 0.2;
+# Symbolsk kilde: parseren åpner/kjører ikke SDL-filen.
+ref: sdlFile "some_SDL_file.sdl";
+
+BoxUIDefinition = [
+  header="## Main page box",
+  top = [
+    leftTop = [
+      header="### Left box",
+      <button1=button("OK", callback=sdlFile.button1_sdl.@callback),
+       button2=button("Cancel", callback=sdlFile.button2_sdl.@callback)>
+    ]*b {x=1fr},
+    rightTop = [
+      header="### Right box",
+      <"Forklaring over feltet — Æøå";
+       input1_boxui=input("Input text here:", value="C1", callback=sdlFile.input1_sdl.@callback)>
+    ]*b {x=2fr}
+  ] {y=2fr};
+  svgBox = [
+    header="### SVG view",
+    <svg1=svg(source=sdlFile.svg1_sdl.@callback, label="Generated illustration")>
+  ]*b {y=1fr}
+]*b {16:9, <->, font=10};
+
+sdlFile.input1_sdl.setHandle(BoxUIDefinition.top.rightTop.input1_boxui);

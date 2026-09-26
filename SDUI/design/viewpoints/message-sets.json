@@ -1,0 +1,1266 @@
+[
+  {
+    "channel": "FramePresentationCalls",
+    "contract": "FramePresentationCallsProtocol",
+    "message": "PresentFrameRequest",
+    "mode": "UiPreview",
+    "payload_contract": "PreparedFrameContract",
+    "receivers": [
+      "FyneBackend"
+    ],
+    "senders": [
+      "FyneHost"
+    ],
+    "source_facts": [
+      "f0242",
+      "f0244",
+      "f0253",
+      "f0271",
+      "f0686"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "FramePresentationCalls",
+    "contract": "FramePresentationCallsProtocol",
+    "message": "PresentFrameResult",
+    "mode": "UiPreview",
+    "payload_contract": "PresentationOutcome",
+    "receivers": [
+      "FyneHost"
+    ],
+    "senders": [
+      "FyneBackend"
+    ],
+    "source_facts": [
+      "f0242",
+      "f0245",
+      "f0254",
+      "f0270",
+      "f0689"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "GoBuildCalls",
+    "contract": "GoBuildCallsProtocol",
+    "message": "BuildGoRequest",
+    "mode": "NativeBuild",
+    "payload_contract": "GeneratedGoContract",
+    "receivers": [
+      "GoBuildRunner"
+    ],
+    "senders": [
+      "CommandLineHost"
+    ],
+    "source_facts": [
+      "f0058",
+      "f0098",
+      "f0499",
+      "f0501",
+      "f0508"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "GoBuildCalls",
+    "contract": "GoBuildCallsProtocol",
+    "message": "BuildGoResult",
+    "mode": "NativeBuild",
+    "payload_contract": "NativeBuildContract",
+    "receivers": [
+      "CommandLineHost"
+    ],
+    "senders": [
+      "GoBuildRunner"
+    ],
+    "source_facts": [
+      "f0061",
+      "f0097",
+      "f0499",
+      "f0502",
+      "f0509"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "GoDomainCalls",
+    "contract": "GoDomainCallsProtocol",
+    "message": "DomainActionRequest",
+    "mode": "BoundExecution",
+    "payload_contract": "ActionArguments",
+    "receivers": [
+      "GoDomainImplementation"
+    ],
+    "senders": [
+      "SdlDispatcher"
+    ],
+    "source_facts": [
+      "f0208",
+      "f0519",
+      "f0521",
+      "f0525",
+      "f0854"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "GoDomainCalls",
+    "contract": "GoDomainCallsProtocol",
+    "message": "DomainActionResult",
+    "mode": "BoundExecution",
+    "payload_contract": "ActionOutcome",
+    "receivers": [
+      "SdlDispatcher"
+    ],
+    "senders": [
+      "GoDomainImplementation"
+    ],
+    "source_facts": [
+      "f0211",
+      "f0519",
+      "f0522",
+      "f0527",
+      "f0853"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "GoDomainCalls",
+    "contract": "GoDomainCallsProtocol",
+    "message": "DomainActionRequest",
+    "mode": "UiPreview",
+    "payload_contract": "ActionArguments",
+    "receivers": [
+      "GoDomainImplementation"
+    ],
+    "senders": [
+      "FyneHost"
+    ],
+    "source_facts": [
+      "f0208",
+      "f0273",
+      "f0519",
+      "f0521",
+      "f0526"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "GoDomainCalls",
+    "contract": "GoDomainCallsProtocol",
+    "message": "DomainActionResult",
+    "mode": "UiPreview",
+    "payload_contract": "ActionOutcome",
+    "receivers": [
+      "FyneHost"
+    ],
+    "senders": [
+      "GoDomainImplementation"
+    ],
+    "source_facts": [
+      "f0211",
+      "f0272",
+      "f0519",
+      "f0522",
+      "f0528"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "GoGenerationCalls",
+    "contract": "GoGenerationCallsProtocol",
+    "message": "GenerateGoRequest",
+    "mode": "NativeBuild",
+    "payload_contract": "NormalizedModelContract",
+    "receivers": [
+      "GoCodeGenerator"
+    ],
+    "senders": [
+      "CommandLineHost"
+    ],
+    "source_facts": [
+      "f0100",
+      "f0486",
+      "f0517",
+      "f0529",
+      "f0531"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "GoGenerationCalls",
+    "contract": "GoGenerationCallsProtocol",
+    "message": "GenerateGoResult",
+    "mode": "NativeBuild",
+    "payload_contract": "GeneratedGoContract",
+    "receivers": [
+      "CommandLineHost"
+    ],
+    "senders": [
+      "GoCodeGenerator"
+    ],
+    "source_facts": [
+      "f0099",
+      "f0489",
+      "f0518",
+      "f0529",
+      "f0532"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "LayoutCalls",
+    "contract": "LayoutCallsProtocol",
+    "message": "LayoutRequest",
+    "mode": "StaticExport",
+    "payload_contract": "LayoutArguments",
+    "receivers": [
+      "SduiLayout"
+    ],
+    "senders": [
+      "CommandLineHost"
+    ],
+    "source_facts": [
+      "f0102",
+      "f0572",
+      "f0574",
+      "f0579",
+      "f0995"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "LayoutCalls",
+    "contract": "LayoutCallsProtocol",
+    "message": "LayoutResult",
+    "mode": "StaticExport",
+    "payload_contract": "PreparedFrameContract",
+    "receivers": [
+      "CommandLineHost"
+    ],
+    "senders": [
+      "SduiLayout"
+    ],
+    "source_facts": [
+      "f0101",
+      "f0572",
+      "f0575",
+      "f0582",
+      "f0997"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "LayoutCalls",
+    "contract": "LayoutCallsProtocol",
+    "message": "LayoutRequest",
+    "mode": "UiPreview",
+    "payload_contract": "LayoutArguments",
+    "receivers": [
+      "SduiLayout"
+    ],
+    "senders": [
+      "FyneHost"
+    ],
+    "source_facts": [
+      "f0275",
+      "f0572",
+      "f0574",
+      "f0579",
+      "f0996"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "LayoutCalls",
+    "contract": "LayoutCallsProtocol",
+    "message": "LayoutResult",
+    "mode": "UiPreview",
+    "payload_contract": "PreparedFrameContract",
+    "receivers": [
+      "FyneHost"
+    ],
+    "senders": [
+      "SduiLayout"
+    ],
+    "source_facts": [
+      "f0274",
+      "f0572",
+      "f0575",
+      "f0582",
+      "f0998"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "ModelReloadCalls",
+    "contract": "ModelReloadCallsProtocol",
+    "message": "ReloadPublished",
+    "mode": "BoundLiveEditing",
+    "payload_contract": "ReloadOutcome",
+    "receivers": [
+      "SourceWatcher"
+    ],
+    "senders": [
+      "ReloadCoordinator"
+    ],
+    "source_facts": [
+      "f0608",
+      "f0610",
+      "f0767",
+      "f0783",
+      "f1092"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "ModelReloadCalls",
+    "contract": "ModelReloadCallsProtocol",
+    "message": "ReloadRejected",
+    "mode": "BoundLiveEditing",
+    "payload_contract": "ReloadOutcome",
+    "receivers": [
+      "SourceWatcher"
+    ],
+    "senders": [
+      "ReloadCoordinator"
+    ],
+    "source_facts": [
+      "f0608",
+      "f0611",
+      "f0769",
+      "f0788",
+      "f1094"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "ModelReloadCalls",
+    "contract": "ModelReloadCallsProtocol",
+    "message": "ReloadRequest",
+    "mode": "BoundLiveEditing",
+    "payload_contract": "ReloadArguments",
+    "receivers": [
+      "ReloadCoordinator"
+    ],
+    "senders": [
+      "SourceWatcher"
+    ],
+    "source_facts": [
+      "f0608",
+      "f0612",
+      "f0765",
+      "f0790",
+      "f1096"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "ModelReloadCalls",
+    "contract": "ModelReloadCallsProtocol",
+    "message": "ReloadPublished",
+    "mode": "LiveEditing",
+    "payload_contract": "ReloadOutcome",
+    "receivers": [
+      "SourceWatcher"
+    ],
+    "senders": [
+      "ReloadCoordinator"
+    ],
+    "source_facts": [
+      "f0608",
+      "f0610",
+      "f0768",
+      "f0783",
+      "f1093"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "ModelReloadCalls",
+    "contract": "ModelReloadCallsProtocol",
+    "message": "ReloadRejected",
+    "mode": "LiveEditing",
+    "payload_contract": "ReloadOutcome",
+    "receivers": [
+      "SourceWatcher"
+    ],
+    "senders": [
+      "ReloadCoordinator"
+    ],
+    "source_facts": [
+      "f0608",
+      "f0611",
+      "f0770",
+      "f0788",
+      "f1095"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "ModelReloadCalls",
+    "contract": "ModelReloadCallsProtocol",
+    "message": "ReloadRequest",
+    "mode": "LiveEditing",
+    "payload_contract": "ReloadArguments",
+    "receivers": [
+      "ReloadCoordinator"
+    ],
+    "senders": [
+      "SourceWatcher"
+    ],
+    "source_facts": [
+      "f0608",
+      "f0612",
+      "f0766",
+      "f0790",
+      "f1097"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "NativeUiActions",
+    "contract": "NativeUiActionsProtocol",
+    "message": "UiActionRejected",
+    "mode": "BoundExecution",
+    "payload_contract": "ActionOutcome",
+    "receivers": [
+      "FyneBackend"
+    ],
+    "senders": [
+      "SduiDispatcher"
+    ],
+    "source_facts": [
+      "f0255",
+      "f0632",
+      "f0634",
+      "f0952",
+      "f1148"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "NativeUiActions",
+    "contract": "NativeUiActionsProtocol",
+    "message": "UiActionRequest",
+    "mode": "BoundExecution",
+    "payload_contract": "ActionArguments",
+    "receivers": [
+      "SduiDispatcher"
+    ],
+    "senders": [
+      "FyneBackend"
+    ],
+    "source_facts": [
+      "f0257",
+      "f0632",
+      "f0635",
+      "f0951",
+      "f1150"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "NativeUiActions",
+    "contract": "NativeUiActionsProtocol",
+    "message": "UiActionResult",
+    "mode": "BoundExecution",
+    "payload_contract": "ActionOutcome",
+    "receivers": [
+      "FyneBackend"
+    ],
+    "senders": [
+      "SduiDispatcher"
+    ],
+    "source_facts": [
+      "f0256",
+      "f0632",
+      "f0636",
+      "f0953",
+      "f1153"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "SdlActionCalls",
+    "contract": "SdlActionCallsProtocol",
+    "message": "SdlActionRequest",
+    "mode": "BoundExecution",
+    "payload_contract": "ActionArguments",
+    "receivers": [
+      "SdlDispatcher"
+    ],
+    "senders": [
+      "SdlUiBindingAdapter"
+    ],
+    "source_facts": [
+      "f0833",
+      "f0835",
+      "f0838",
+      "f0855",
+      "f0920"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "SdlActionCalls",
+    "contract": "SdlActionCallsProtocol",
+    "message": "SdlActionResult",
+    "mode": "BoundExecution",
+    "payload_contract": "ActionOutcome",
+    "receivers": [
+      "SdlUiBindingAdapter"
+    ],
+    "senders": [
+      "SdlDispatcher"
+    ],
+    "source_facts": [
+      "f0833",
+      "f0836",
+      "f0841",
+      "f0856",
+      "f0919"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "SdlCompilationCalls",
+    "contract": "SdlCompilationCallsProtocol",
+    "message": "CompileSdlRequest",
+    "mode": "BoundLiveEditing",
+    "payload_contract": "ReloadArguments",
+    "receivers": [
+      "SdlFrontend"
+    ],
+    "senders": [
+      "ReloadCoordinator"
+    ],
+    "source_facts": [
+      "f0109",
+      "f0772",
+      "f0842",
+      "f0844",
+      "f0869"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "SdlCompilationCalls",
+    "contract": "SdlCompilationCallsProtocol",
+    "message": "CompileSdlResult",
+    "mode": "BoundLiveEditing",
+    "payload_contract": "ReloadOutcome",
+    "receivers": [
+      "ReloadCoordinator"
+    ],
+    "senders": [
+      "SdlFrontend"
+    ],
+    "source_facts": [
+      "f0112",
+      "f0771",
+      "f0842",
+      "f0845",
+      "f0870"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "SvgExportCalls",
+    "contract": "SvgExportCallsProtocol",
+    "message": "ExportSvgRequest",
+    "mode": "StaticExport",
+    "payload_contract": "PreparedFrameContract",
+    "receivers": [
+      "SduiPresentation"
+    ],
+    "senders": [
+      "CommandLineHost"
+    ],
+    "source_facts": [
+      "f0104",
+      "f0227",
+      "f1026",
+      "f1115",
+      "f1117"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "SvgExportCalls",
+    "contract": "SvgExportCallsProtocol",
+    "message": "ExportSvgResult",
+    "mode": "StaticExport",
+    "payload_contract": "SvgDocumentContract",
+    "receivers": [
+      "CommandLineHost"
+    ],
+    "senders": [
+      "SduiPresentation"
+    ],
+    "source_facts": [
+      "f0103",
+      "f0230",
+      "f1027",
+      "f1115",
+      "f1118"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "UiAstCalls",
+    "contract": "UiAstCallsProtocol",
+    "message": "BuildUiAstRequest",
+    "mode": "SourceInspection",
+    "payload_contract": "TokenArtifactContract",
+    "receivers": [
+      "SduiParser"
+    ],
+    "senders": [
+      "SduiFrontend"
+    ],
+    "source_facts": [
+      "f0077",
+      "f0965",
+      "f1019",
+      "f1154",
+      "f1156"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "UiAstCalls",
+    "contract": "UiAstCallsProtocol",
+    "message": "BuildUiAstResult",
+    "mode": "SourceInspection",
+    "payload_contract": "AstArtifactContract",
+    "receivers": [
+      "SduiFrontend"
+    ],
+    "senders": [
+      "SduiParser"
+    ],
+    "source_facts": [
+      "f0080",
+      "f0964",
+      "f1020",
+      "f1154",
+      "f1157"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "UiCompilationCalls",
+    "contract": "UiCompilationCallsProtocol",
+    "message": "CompileUiRejected",
+    "mode": "LiveEditing",
+    "payload_contract": "ReloadOutcome",
+    "receivers": [
+      "ReloadCoordinator"
+    ],
+    "senders": [
+      "SduiFrontend"
+    ],
+    "source_facts": [
+      "f0115",
+      "f0773",
+      "f0968",
+      "f1173",
+      "f1175"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "UiCompilationCalls",
+    "contract": "UiCompilationCallsProtocol",
+    "message": "CompileUiRequest",
+    "mode": "LiveEditing",
+    "payload_contract": "ReloadArguments",
+    "receivers": [
+      "SduiFrontend"
+    ],
+    "senders": [
+      "ReloadCoordinator"
+    ],
+    "source_facts": [
+      "f0117",
+      "f0775",
+      "f0966",
+      "f1173",
+      "f1176"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "UiCompilationCalls",
+    "contract": "UiCompilationCallsProtocol",
+    "message": "CompileUiResult",
+    "mode": "LiveEditing",
+    "payload_contract": "ReloadOutcome",
+    "receivers": [
+      "ReloadCoordinator"
+    ],
+    "senders": [
+      "SduiFrontend"
+    ],
+    "source_facts": [
+      "f0120",
+      "f0774",
+      "f0970",
+      "f1173",
+      "f1177"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "UiCompilationCalls",
+    "contract": "UiCompilationCallsProtocol",
+    "message": "CompileUiRejected",
+    "mode": "SourceInspection",
+    "payload_contract": "ReloadOutcome",
+    "receivers": [
+      "CommandLineHost"
+    ],
+    "senders": [
+      "SduiFrontend"
+    ],
+    "source_facts": [
+      "f0105",
+      "f0115",
+      "f0969",
+      "f1173",
+      "f1175"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "UiCompilationCalls",
+    "contract": "UiCompilationCallsProtocol",
+    "message": "CompileUiRequest",
+    "mode": "SourceInspection",
+    "payload_contract": "ReloadArguments",
+    "receivers": [
+      "SduiFrontend"
+    ],
+    "senders": [
+      "CommandLineHost"
+    ],
+    "source_facts": [
+      "f0107",
+      "f0117",
+      "f0967",
+      "f1173",
+      "f1176"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "UiCompilationCalls",
+    "contract": "UiCompilationCallsProtocol",
+    "message": "CompileUiResult",
+    "mode": "SourceInspection",
+    "payload_contract": "ReloadOutcome",
+    "receivers": [
+      "CommandLineHost"
+    ],
+    "senders": [
+      "SduiFrontend"
+    ],
+    "source_facts": [
+      "f0106",
+      "f0120",
+      "f0971",
+      "f1173",
+      "f1177"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "UiDomainActions",
+    "contract": "UiDomainActionsProtocol",
+    "message": "BoundActionRequest",
+    "mode": "BoundExecution",
+    "payload_contract": "ActionArguments",
+    "receivers": [
+      "SdlUiBindingAdapter"
+    ],
+    "senders": [
+      "SduiDispatcher"
+    ],
+    "source_facts": [
+      "f0048",
+      "f0921",
+      "f0955",
+      "f1178",
+      "f1180"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "UiDomainActions",
+    "contract": "UiDomainActionsProtocol",
+    "message": "BoundActionResult",
+    "mode": "BoundExecution",
+    "payload_contract": "ActionOutcome",
+    "receivers": [
+      "SduiDispatcher"
+    ],
+    "senders": [
+      "SdlUiBindingAdapter"
+    ],
+    "source_facts": [
+      "f0051",
+      "f0922",
+      "f0954",
+      "f1178",
+      "f1181"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "UiGenerationEvents",
+    "contract": "UiGenerationEventsProtocol",
+    "message": "UiGenerationNotices",
+    "mode": "BoundExecution",
+    "payload_contract": "UiGenerationContract",
+    "receivers": [
+      "FyneBackend"
+    ],
+    "senders": [
+      "SduiInstanceStore"
+    ],
+    "source_facts": [
+      "f0258",
+      "f0984",
+      "f1186",
+      "f1188",
+      "f1190"
+    ],
+    "variants": [
+      "UiGenerationChanged"
+    ]
+  },
+  {
+    "channel": "UiGenerationEvents",
+    "contract": "UiGenerationEventsProtocol",
+    "message": "UiGenerationNotices",
+    "mode": "LiveEditing",
+    "payload_contract": "UiGenerationContract",
+    "receivers": [
+      "FyneBackend"
+    ],
+    "senders": [
+      "SduiInstanceStore"
+    ],
+    "source_facts": [
+      "f0259",
+      "f0985",
+      "f1186",
+      "f1188",
+      "f1190"
+    ],
+    "variants": [
+      "UiGenerationChanged"
+    ]
+  },
+  {
+    "channel": "UiNormalizationCalls",
+    "contract": "UiNormalizationCallsProtocol",
+    "message": "NormalizeUiRequest",
+    "mode": "SourceInspection",
+    "payload_contract": "AstArtifactContract",
+    "receivers": [
+      "SduiNormalizer"
+    ],
+    "senders": [
+      "SduiFrontend"
+    ],
+    "source_facts": [
+      "f0642",
+      "f0973",
+      "f1015",
+      "f1214",
+      "f1216"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "UiNormalizationCalls",
+    "contract": "UiNormalizationCallsProtocol",
+    "message": "NormalizeUiResult",
+    "mode": "SourceInspection",
+    "payload_contract": "NormalizedModelContract",
+    "receivers": [
+      "SduiFrontend"
+    ],
+    "senders": [
+      "SduiNormalizer"
+    ],
+    "source_facts": [
+      "f0645",
+      "f0972",
+      "f1016",
+      "f1214",
+      "f1217"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "UiTokenizationCalls",
+    "contract": "UiTokenizationCallsProtocol",
+    "message": "TokenizeUiRequest",
+    "mode": "SourceInspection",
+    "payload_contract": "ReloadArguments",
+    "receivers": [
+      "SduiLexer"
+    ],
+    "senders": [
+      "SduiFrontend"
+    ],
+    "source_facts": [
+      "f0975",
+      "f1001",
+      "f1130",
+      "f1228",
+      "f1230"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "UiTokenizationCalls",
+    "contract": "UiTokenizationCallsProtocol",
+    "message": "TokenizeUiResult",
+    "mode": "SourceInspection",
+    "payload_contract": "TokenArtifactContract",
+    "receivers": [
+      "SduiFrontend"
+    ],
+    "senders": [
+      "SduiLexer"
+    ],
+    "source_facts": [
+      "f0974",
+      "f1002",
+      "f1133",
+      "f1228",
+      "f1231"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "UiValidationCalls",
+    "contract": "UiValidationCallsProtocol",
+    "message": "ValidateUiRequest",
+    "mode": "SourceInspection",
+    "payload_contract": "AstArtifactContract",
+    "receivers": [
+      "SduiValidator"
+    ],
+    "senders": [
+      "SduiFrontend"
+    ],
+    "source_facts": [
+      "f0977",
+      "f1048",
+      "f1232",
+      "f1234",
+      "f1262"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "UiValidationCalls",
+    "contract": "UiValidationCallsProtocol",
+    "message": "ValidateUiResult",
+    "mode": "SourceInspection",
+    "payload_contract": "ValidationOutcomeContract",
+    "receivers": [
+      "SduiFrontend"
+    ],
+    "senders": [
+      "SduiValidator"
+    ],
+    "source_facts": [
+      "f0976",
+      "f1049",
+      "f1232",
+      "f1235",
+      "f1265"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "ViewDisplayCalls",
+    "contract": "ViewDisplayCallsProtocol",
+    "message": "DisplayViewRequest",
+    "mode": "DocumentBrowsing",
+    "payload_contract": "ViewOpenContract",
+    "receivers": [
+      "XfmdDocumentHost"
+    ],
+    "senders": [
+      "ViewerLaunchAdapter"
+    ],
+    "source_facts": [
+      "f0192",
+      "f1298",
+      "f1300",
+      "f1410",
+      "f1418"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "ViewDisplayCalls",
+    "contract": "ViewDisplayCallsProtocol",
+    "message": "ViewDisplayResult",
+    "mode": "DocumentBrowsing",
+    "payload_contract": "ViewOpenedContract",
+    "receivers": [
+      "ViewerLaunchAdapter"
+    ],
+    "senders": [
+      "XfmdDocumentHost"
+    ],
+    "source_facts": [
+      "f1298",
+      "f1301",
+      "f1305",
+      "f1408",
+      "f1419"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "ViewDisplayCalls",
+    "contract": "ViewDisplayCallsProtocol",
+    "message": "ViewTargetUnavailable",
+    "mode": "DocumentBrowsing",
+    "payload_contract": "ViewFailureContract",
+    "receivers": [
+      "ViewerLaunchAdapter"
+    ],
+    "senders": [
+      "XfmdDocumentHost"
+    ],
+    "source_facts": [
+      "f1298",
+      "f1302",
+      "f1403",
+      "f1409",
+      "f1420"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "ViewLaunchCalls",
+    "contract": "ViewLaunchCallsProtocol",
+    "message": "LaunchViewRequest",
+    "mode": "DocumentBrowsing",
+    "payload_contract": "ViewOpenContract",
+    "receivers": [
+      "ViewerLaunchAdapter"
+    ],
+    "senders": [
+      "DocumentBroker"
+    ],
+    "source_facts": [
+      "f0198",
+      "f0567",
+      "f1316",
+      "f1318",
+      "f1411"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "ViewLaunchCalls",
+    "contract": "ViewLaunchCallsProtocol",
+    "message": "ViewLaunchResult",
+    "mode": "DocumentBrowsing",
+    "payload_contract": "ViewOpenedContract",
+    "receivers": [
+      "DocumentBroker"
+    ],
+    "senders": [
+      "ViewerLaunchAdapter"
+    ],
+    "source_facts": [
+      "f0197",
+      "f1316",
+      "f1319",
+      "f1322",
+      "f1412"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "ViewNavigationCalls",
+    "contract": "ViewNavigationCallsProtocol",
+    "message": "SelectViewRequest",
+    "mode": "DocumentBrowsing",
+    "payload_contract": "ViewSelectionContract",
+    "receivers": [
+      "DocumentBroker"
+    ],
+    "senders": [
+      "XfmdDocumentHost"
+    ],
+    "source_facts": [
+      "f0199",
+      "f1053",
+      "f1327",
+      "f1329",
+      "f1423"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "ViewNavigationCalls",
+    "contract": "ViewNavigationCallsProtocol",
+    "message": "ViewOpenedResult",
+    "mode": "DocumentBrowsing",
+    "payload_contract": "ViewOpenedContract",
+    "receivers": [
+      "XfmdDocumentHost"
+    ],
+    "senders": [
+      "DocumentBroker"
+    ],
+    "source_facts": [
+      "f0200",
+      "f1327",
+      "f1330",
+      "f1345",
+      "f1421"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "ViewNavigationCalls",
+    "contract": "ViewNavigationCallsProtocol",
+    "message": "ViewRequestRejected",
+    "mode": "DocumentBrowsing",
+    "payload_contract": "ViewFailureContract",
+    "receivers": [
+      "XfmdDocumentHost"
+    ],
+    "senders": [
+      "DocumentBroker"
+    ],
+    "source_facts": [
+      "f0201",
+      "f1327",
+      "f1331",
+      "f1385",
+      "f1422"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "ViewProjectionCalls",
+    "contract": "ViewProjectionCallsProtocol",
+    "message": "ProjectViewRequest",
+    "mode": "DocumentBrowsing",
+    "payload_contract": "ViewSelectionContract",
+    "receivers": [
+      "SdlViewpointGenerator"
+    ],
+    "senders": [
+      "DocumentBroker"
+    ],
+    "source_facts": [
+      "f0204",
+      "f0724",
+      "f0941",
+      "f1350",
+      "f1352"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "ViewProjectionCalls",
+    "contract": "ViewProjectionCallsProtocol",
+    "message": "ViewBundleResult",
+    "mode": "DocumentBrowsing",
+    "payload_contract": "ViewBundleContract",
+    "receivers": [
+      "DocumentBroker"
+    ],
+    "senders": [
+      "SdlViewpointGenerator"
+    ],
+    "source_facts": [
+      "f0202",
+      "f0942",
+      "f1293",
+      "f1350",
+      "f1353"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "ViewProjectionCalls",
+    "contract": "ViewProjectionCallsProtocol",
+    "message": "ViewProjectionRejected",
+    "mode": "DocumentBrowsing",
+    "payload_contract": "ViewFailureContract",
+    "receivers": [
+      "DocumentBroker"
+    ],
+    "senders": [
+      "SdlViewpointGenerator"
+    ],
+    "source_facts": [
+      "f0203",
+      "f0943",
+      "f1350",
+      "f1354",
+      "f1366"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "ViewPublicationCalls",
+    "contract": "ViewPublicationCallsProtocol",
+    "message": "PublishViewRequest",
+    "mode": "DocumentBrowsing",
+    "payload_contract": "ViewBundleContract",
+    "receivers": [
+      "ViewArtifactStore"
+    ],
+    "senders": [
+      "DocumentBroker"
+    ],
+    "source_facts": [
+      "f0206",
+      "f0736",
+      "f1284",
+      "f1367",
+      "f1369"
+    ],
+    "variants": []
+  },
+  {
+    "channel": "ViewPublicationCalls",
+    "contract": "ViewPublicationCallsProtocol",
+    "message": "ViewReferenceResult",
+    "mode": "DocumentBrowsing",
+    "payload_contract": "ViewReferenceContract",
+    "receivers": [
+      "DocumentBroker"
+    ],
+    "senders": [
+      "ViewArtifactStore"
+    ],
+    "source_facts": [
+      "f0205",
+      "f1285",
+      "f1367",
+      "f1370",
+      "f1380"
+    ],
+    "variants": []
+  }
+]

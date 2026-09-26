@@ -1,0 +1,5 @@
+sequenceDiagram
+    participant n_XfmdDocumentHost as Xfmd Document Host
+    participant n_DocumentBroker as Document Broker
+    n_XfmdDocumentHost->>n_DocumentBroker: 1: Select View Request (View Navigation Calls)
+    n_DocumentBroker-->>n_XfmdDocumentHost: 2: View Request Rejected (View Navigation Calls) reply-to 1

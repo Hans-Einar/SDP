@@ -1,0 +1,6 @@
+test_typed_plan_history_and_sprint_rejections (test_process_install.ProcessInstall.test_typed_plan_history_and_sprint_rejections) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 63.916s
+
+OK

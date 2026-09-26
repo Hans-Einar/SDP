@@ -1,0 +1,10 @@
+flowchart LR
+    n_SduiFrontend["SduiFrontend (unit)"]
+    n_SduiLexer["SduiLexer (unit)"]
+    n_SduiNormalizer["SduiNormalizer (unit)"]
+    n_SduiParser["SduiParser (unit)"]
+    n_SduiValidator["SduiValidator (unit)"]
+    n_SduiFrontend -->|contains| n_SduiLexer
+    n_SduiFrontend -->|contains| n_SduiNormalizer
+    n_SduiFrontend -->|contains| n_SduiParser
+    n_SduiFrontend -->|contains| n_SduiValidator

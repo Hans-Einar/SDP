@@ -1,0 +1,29 @@
+language sdl-mvp1-exercise version 0.1.
+
+unit PresentationManager.
+capability ReplaceablePresentation.
+functionality BuildPresentationSchema.
+functionality ValidatePresentationBindings.
+functionality PublishPresentationRevision.
+functionality FormatPresentationValue.
+functionality PreservePresentationContinuity.
+
+BoxUI contains PresentationManager.
+PresentationManager provides ReplaceablePresentation.
+PresentationManager status proposed.
+PresentationManager cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/Domains/UIDomain/DetailedDesignDiscussion.md".
+PresentationManager owns BuildPresentationSchema.
+BuildPresentationSchema realizes ReplaceablePresentation.
+BuildPresentationSchema specifies "Select schema using structural discriminator, available bindings and trusted view kinds; ordinary values generate patches.".
+PresentationManager owns ValidatePresentationBindings.
+ValidatePresentationBindings realizes ReplaceablePresentation.
+ValidatePresentationBindings specifies "Check typed binding targets, renderer capabilities, schema and Composition contract revision.".
+PresentationManager owns PublishPresentationRevision.
+PublishPresentationRevision realizes ReplaceablePresentation.
+PublishPresentationRevision specifies "Atomic schema publication only after current relevant revision check; invalid/stale candidates retain active valid schema under the specified policy.".
+PresentationManager owns FormatPresentationValue.
+FormatPresentationValue realizes ReplaceablePresentation.
+FormatPresentationValue specifies "Localized labels, display units/precision and abstract styles without changing underlying quantity or value.".
+PresentationManager owns PreservePresentationContinuity.
+PreservePresentationContinuity realizes ReplaceablePresentation.
+PreservePresentationContinuity specifies "Keep Representation identity, subscriptions, command correlation and domain draft during schema replacement; local focus/text policy remains explicit.".

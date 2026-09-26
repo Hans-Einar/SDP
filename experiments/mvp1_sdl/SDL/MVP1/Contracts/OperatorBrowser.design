@@ -1,0 +1,14 @@
+language sdl-mvp1-exercise version 0.1.
+
+contract OperatorBrowserContract.
+interface OperatorBrowserInterface.
+message-set OperatorBrowserRequests.
+message-set OperatorBrowserResponses.
+
+OperatorBrowserInterface follows OperatorBrowserContract.
+OperatorBrowserContract allows OperatorBrowserRequests.
+OperatorBrowserContract specifies "Versioned JSON WebSocket plus specified REST snapshot/config/export/recovery. BWEB retains independent Machine and Bucking routes, identities and degraded state.".
+OperatorBrowserContract status proposed.
+OperatorBrowserContract allows OperatorBrowserResponses.
+OperatorBrowserRequests describes "OperatorBrowser incoming message family; exact allowed variants follow the cited schema or the associated contract gap.".
+OperatorBrowserResponses describes "OperatorBrowser outgoing message family; payload schema and variant routing need the declared contract.".

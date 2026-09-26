@@ -1,0 +1,21 @@
+language sdl-mvp1-exercise version 0.1.
+
+unit SimulatorUiDomain.
+capability SimulatorInteraction.
+functionality ProjectSimulatorDomain.
+functionality RouteSimulatorIntent.
+functionality DisplaySimulatorStatus.
+
+SimulatorUI contains SimulatorUiDomain.
+SimulatorUiDomain provides SimulatorInteraction.
+SimulatorUiDomain status proposed.
+SimulatorUiDomain cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/Domains/UIDomain/DetailedDesignDiscussion.md".
+SimulatorUiDomain owns ProjectSimulatorDomain.
+ProjectSimulatorDomain realizes SimulatorInteraction.
+ProjectSimulatorDomain specifies "Use separate simulator-control/diagnostic contract; clearly distinguish hidden truth from P1000-visible/emitted data.".
+SimulatorUiDomain owns RouteSimulatorIntent.
+RouteSimulatorIntent realizes SimulatorInteraction.
+RouteSimulatorIntent specifies "Preserve commandId through ambiguous POST/retry/GET lookup; explicit result states without optimistic simulator-state mutation.".
+SimulatorUiDomain owns DisplaySimulatorStatus.
+DisplaySimulatorStatus realizes SimulatorInteraction.
+DisplaySimulatorStatus specifies "Per-consumer cadence, stable plot identities and session/error feedback through shared UI primitives.".

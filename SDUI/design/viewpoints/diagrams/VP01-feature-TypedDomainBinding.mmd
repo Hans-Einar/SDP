@@ -1,0 +1,12 @@
+flowchart LR
+    n_ConnectTypedWidgetHandles["ConnectTypedWidgetHandles (functionality)"]
+    n_DispatchUiEvent["DispatchUiEvent (functionality)"]
+    n_InvokeRegisteredFunction["InvokeRegisteredFunction (functionality)"]
+    n_PublishDomainUpdates["PublishDomainUpdates (functionality)"]
+    n_ResolveCallbackSymbols["ResolveCallbackSymbols (functionality)"]
+    n_TypedDomainBinding["TypedDomainBinding (feature)"]
+    n_ConnectTypedWidgetHandles -->|contributes-to| n_TypedDomainBinding
+    n_DispatchUiEvent -->|contributes-to| n_TypedDomainBinding
+    n_InvokeRegisteredFunction -->|contributes-to| n_TypedDomainBinding
+    n_PublishDomainUpdates -->|contributes-to| n_TypedDomainBinding
+    n_ResolveCallbackSymbols -->|contributes-to| n_TypedDomainBinding

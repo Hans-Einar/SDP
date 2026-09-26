@@ -1,0 +1,46 @@
+language sdl-mvp1-exercise version 0.1.
+
+scenario SemanticOperatorAction.
+condition SemanticOperatorActionReady.
+condition SemanticOperatorActionContinue.
+condition SemanticOperatorActionReject.
+outcome SemanticOperatorActionCompleted.
+outcome SemanticOperatorActionRejected.
+step SemanticOperatorActionRoute.
+step SemanticOperatorActionValidate.
+step SemanticOperatorActionInject.
+step SemanticOperatorActionReduce.
+step SemanticOperatorActionFailure.
+step SemanticOperatorActionSuccess.
+
+SemanticOperatorAction illustrates OperateMachineInputs.
+SemanticOperatorAction exercises AuthoritativeMachineState.
+SemanticOperatorAction starts-when SemanticOperatorActionReady.
+SemanticOperatorAction starts-at SemanticOperatorActionRoute.
+SemanticOperatorActionReady describes "An authorized semantic operator action is requested via UI/tool public contract.".
+SemanticOperatorActionContinue describes "The previous operation succeeded and the next step's declared contract preconditions remain true; exact predicates are an executable-language gap.".
+SemanticOperatorActionReject describes "Validation, authority, applicability or operation failure prevents continuation; preserve prior valid state and report the specific reason.".
+SemanticOperatorActionCompleted describes "The stated design path completed under its explicit obligations; this is not an observed test result.".
+SemanticOperatorActionRejected describes "The path terminated without claiming the requested change succeeded; failures remain observable.".
+SemanticOperatorAction preserves ServerBoundAuthority.
+SemanticOperatorAction preserves DomainTruthOwned.
+SemanticOperatorActionRoute calls RouteBrowserCommand within BuckingWeb.
+SemanticOperatorActionRoute describes "Virtual palette goes to MachineService.".
+SemanticOperatorActionRoute proceeds-to SemanticOperatorActionFailure when SemanticOperatorActionReject.
+SemanticOperatorActionRoute proceeds-to SemanticOperatorActionValidate when SemanticOperatorActionContinue.
+SemanticOperatorActionValidate calls ValidateMachineCommand within MachineService.
+SemanticOperatorActionValidate describes "Server checks runtime capability, peer and scope.".
+SemanticOperatorActionValidate proceeds-to SemanticOperatorActionFailure when SemanticOperatorActionReject.
+SemanticOperatorActionValidate proceeds-to SemanticOperatorActionInject when SemanticOperatorActionContinue.
+SemanticOperatorActionInject calls InjectSemanticOperatorInput within MachineService.
+SemanticOperatorActionInject describes "Generate normalized injected event without fake P1000 bytes.".
+SemanticOperatorActionInject proceeds-to SemanticOperatorActionFailure when SemanticOperatorActionReject.
+SemanticOperatorActionInject proceeds-to SemanticOperatorActionReduce when SemanticOperatorActionContinue.
+SemanticOperatorActionReduce calls ReduceMachineState within MachineService.
+SemanticOperatorActionReduce describes "Serialize accepted state and correlated result.".
+SemanticOperatorActionReduce proceeds-to SemanticOperatorActionFailure when SemanticOperatorActionReject.
+SemanticOperatorActionReduce proceeds-to SemanticOperatorActionSuccess when SemanticOperatorActionContinue.
+SemanticOperatorActionFailure finishes SemanticOperatorAction with SemanticOperatorActionRejected.
+SemanticOperatorActionSuccess finishes SemanticOperatorAction with SemanticOperatorActionCompleted.
+SemanticOperatorActionRoute emits MachineRequests through MachineServiceUpstream.
+SemanticOperatorActionValidate receives MachineRequests through MachineServiceUpstream.

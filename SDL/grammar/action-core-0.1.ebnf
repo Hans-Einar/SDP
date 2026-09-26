@@ -1,0 +1,9 @@
+model = "language", "action-core", "version", "0.1", ".",
+        { declaration }, { statement } ;
+declaration = ("action" | "record"), identifier, "." ;
+statement = identifier, ("takes" | "returns" | "invokes"), identifier, "."
+          | identifier, "field", identifier, "as", scalarType, "." ;
+scalarType = "text" | "integer" | "boolean" ;
+identifier = uppercaseLetter, { letter | digit } ;
+(* ASCII identifiers, lexical rules and spans are shared with design-core.
+   Semantic cardinalities and canonical form: docs/SDL-Executable-Action-Profile.md. *)

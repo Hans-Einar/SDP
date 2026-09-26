@@ -1,0 +1,34 @@
+language sdl-mvp1-exercise version 0.1.
+
+capability ReliableServiceExchange.
+functionality FrameServiceMessages.
+functionality NegotiateServiceSession.
+functionality ManageServiceSubscription.
+functionality ScheduleSubscriberDelivery.
+functionality RecoverCommandLifecycle.
+functionality PublishAccessCatalog.
+functionality ShutdownServiceRuntime.
+
+ServiceKit cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/servicekit/SDP/03--Requirements/requirements.md".
+ServiceKit provides ReliableServiceExchange.
+ServiceKit owns FrameServiceMessages.
+FrameServiceMessages realizes ReliableServiceExchange.
+FrameServiceMessages specifies "Bounded length-delimited TCP framing handles partial/multiple reads, malformed lengths and shutdown.".
+ServiceKit owns NegotiateServiceSession.
+NegotiateServiceSession realizes ReliableServiceExchange.
+NegotiateServiceSession specifies "Hello first, selected version or typed failure, handshake timeout, server-bound peer context.".
+ServiceKit owns ManageServiceSubscription.
+ManageServiceSubscription realizes ReliableServiceExchange.
+ManageServiceSubscription specifies "One active subscription per connection; replace on second Subscribe; explicit Unsubscribe; typed live/resumed/snapshot-required/outside-retention.".
+ServiceKit owns ScheduleSubscriberDelivery.
+ScheduleSubscriberDelivery realizes ReliableServiceExchange.
+ScheduleSubscriberDelivery specifies "Independent bounded subscriber queues; separate source and contiguous delivery sequence; family-specific non-supersedable/latest/diagnostic policy.".
+ServiceKit owns RecoverCommandLifecycle.
+RecoverCommandLifecycle realizes ReliableServiceExchange.
+RecoverCommandLifecycle specifies "Same ID and semantic payload recovers known result without re-execution; conflict/expired/unknown are distinct; never invent a fresh retry ID.".
+ServiceKit owns PublishAccessCatalog.
+PublishAccessCatalog realizes ReliableServiceExchange.
+PublishAccessCatalog specifies "Publish capabilities and scoped authority updates durably; only domain owners grant authority.".
+ServiceKit owns ShutdownServiceRuntime.
+ShutdownServiceRuntime realizes ReliableServiceExchange.
+ShutdownServiceRuntime specifies "Deterministically close sessions and cancel owned work while draining or reporting required durable output.".

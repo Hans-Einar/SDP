@@ -1,0 +1,16 @@
+flowchart LR
+    n_ApplySemanticNotation["ApplySemanticNotation (functionality)"]
+    n_ExportModelInventories["ExportModelInventories (functionality)"]
+    n_IndexViewpointLevels["IndexViewpointLevels (functionality)"]
+    n_ProjectClassViews["ProjectClassViews (functionality)"]
+    n_SelectRelationshipViews["SelectRelationshipViews (functionality)"]
+    n_TypedDesignInspection["TypedDesignInspection (feature)"]
+    n_ValidateClassRelations["ValidateClassRelations (functionality)"]
+    n_VerifyDiagramCapabilities["VerifyDiagramCapabilities (functionality)"]
+    n_ApplySemanticNotation -->|contributes-to| n_TypedDesignInspection
+    n_ExportModelInventories -->|contributes-to| n_TypedDesignInspection
+    n_IndexViewpointLevels -->|contributes-to| n_TypedDesignInspection
+    n_ProjectClassViews -->|contributes-to| n_TypedDesignInspection
+    n_SelectRelationshipViews -->|contributes-to| n_TypedDesignInspection
+    n_ValidateClassRelations -->|contributes-to| n_TypedDesignInspection
+    n_VerifyDiagramCapabilities -->|contributes-to| n_TypedDesignInspection

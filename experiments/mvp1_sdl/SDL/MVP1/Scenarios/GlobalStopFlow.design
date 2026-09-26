@@ -1,0 +1,77 @@
+language sdl-mvp1-exercise version 0.1.
+
+scenario GlobalStopFlow.
+condition GlobalStopFlowReady.
+condition GlobalStopFlowContinue.
+condition GlobalStopFlowReject.
+outcome GlobalStopFlowCompleted.
+outcome GlobalStopFlowRejected.
+step GlobalStopFlowBucking.
+step GlobalStopFlowMachine.
+step GlobalStopFlowLab.
+step GlobalStopFlowResult.
+step GlobalStopFlowFailure.
+step GlobalStopFlowSuccess.
+step GlobalStopFlowRoute.
+step GlobalStopSendMachine.
+step GlobalStopSendBucking.
+step GlobalStopFlowPartial.
+condition StopRouteDirect.
+condition StopRouteViaBucking.
+condition StopLabPresent.
+condition StopLabAbsent.
+condition StopCoordinationPartial.
+outcome StopPartiallyObserved.
+
+GlobalStopFlow illustrates RequestSoftwareStop.
+GlobalStopFlow exercises AuthoritativeMachineState.
+GlobalStopFlow starts-when GlobalStopFlowReady.
+GlobalStopFlow starts-at GlobalStopFlowRoute.
+GlobalStopFlowReady describes "A valid connected client requests an identified software stop occurrence.".
+GlobalStopFlowContinue describes "The previous operation succeeded and the next step's declared contract preconditions remain true; exact predicates are an executable-language gap.".
+GlobalStopFlowReject describes "Validation, authority, applicability or operation failure prevents continuation; preserve prior valid state and report the specific reason.".
+GlobalStopFlowCompleted describes "The stated design path completed under its explicit obligations; this is not an observed test result.".
+GlobalStopFlowRejected describes "The path terminated without claiming the requested change succeeded; failures remain observable.".
+GlobalStopFlow preserves DiagnosticsSurviveStop.
+GlobalStopFlow preserves ServerBoundAuthority.
+GlobalStopFlow preserves DurableFactsRetained.
+GlobalStopFlowRoute describes "A routed operator stop may target Machine directly or Bucking for local handling and forwarding; Bucking absence never blocks the direct path.".
+GlobalStopFlowRoute proceeds-to GlobalStopFlowFailure when GlobalStopFlowReject.
+GlobalStopFlowRoute proceeds-to GlobalStopSendMachine when StopRouteDirect.
+GlobalStopFlowRoute proceeds-to GlobalStopSendBucking when StopRouteViaBucking.
+GlobalStopSendMachine calls RouteBrowserCommand within BuckingWeb.
+GlobalStopSendMachine proceeds-to GlobalStopFlowMachine when GlobalStopFlowContinue.
+GlobalStopSendMachine proceeds-to GlobalStopFlowPartial when StopCoordinationPartial.
+GlobalStopSendBucking calls RouteBrowserCommand within BuckingWeb.
+GlobalStopSendBucking proceeds-to GlobalStopFlowBucking when GlobalStopFlowContinue.
+GlobalStopSendBucking proceeds-to GlobalStopFlowPartial when StopCoordinationPartial.
+GlobalStopFlowBucking calls HandleBuckingStop within BuckingService.
+GlobalStopFlowBucking describes "Optional forwarding retains stop_id and invalidates local normal work.".
+GlobalStopFlowBucking proceeds-to GlobalStopFlowPartial when StopCoordinationPartial.
+GlobalStopFlowBucking proceeds-to GlobalStopFlowMachine when GlobalStopFlowContinue.
+GlobalStopFlowMachine calls HandleMachineStop within MachineService.
+GlobalStopFlowMachine describes "Deduplicate by service session/retention; reject conflicting retained payload; invalidate old generations.".
+GlobalStopFlowMachine proceeds-to GlobalStopFlowPartial when StopCoordinationPartial.
+GlobalStopFlowMachine proceeds-to GlobalStopFlowLab when StopLabPresent.
+GlobalStopFlowMachine proceeds-to GlobalStopFlowResult when StopLabAbsent.
+GlobalStopFlowLab calls StopLabAutomation within MachineLab.
+GlobalStopFlowLab describes "Cancel configured automation, preserve observers/ledger.".
+GlobalStopFlowLab proceeds-to GlobalStopFlowPartial when StopCoordinationPartial.
+GlobalStopFlowLab proceeds-to GlobalStopFlowResult when GlobalStopFlowContinue.
+GlobalStopFlowResult calls DeliverDurableOutcome within BuckingUI.
+GlobalStopFlowResult describes "Report software stop without claiming certified physical E-stop.".
+GlobalStopFlowResult proceeds-to GlobalStopFlowPartial when StopCoordinationPartial.
+GlobalStopFlowResult proceeds-to GlobalStopFlowSuccess when GlobalStopFlowContinue.
+GlobalStopFlowFailure finishes GlobalStopFlow with GlobalStopFlowRejected.
+GlobalStopFlowSuccess finishes GlobalStopFlow with GlobalStopFlowCompleted.
+GlobalStopFlowBucking emits MachineRequests through MachineServiceUpstream.
+GlobalStopFlowMachine receives MachineRequests through MachineServiceUpstream.
+GlobalStopSendMachine emits MachineRequests through MachineServiceUpstream.
+GlobalStopSendBucking emits BuckingRequests through BuckingServiceUpstream.
+StopRouteDirect describes "Validated routing selects MachineService directly; Bucking availability is irrelevant.".
+StopRouteViaBucking describes "Validated routing selects BuckingService local handling and forwarding with the same stop_id.".
+StopLabPresent describes "Machine local handling succeeded and configured Lab automation participates.".
+StopLabAbsent describes "Machine local handling succeeded and no Lab automation participates.".
+StopCoordinationPartial describes "A downstream handler or delivery failed or remains unknown after dispatch; retain all already handled stop effects and report per-owner outcome.".
+GlobalStopFlowPartial finishes GlobalStopFlow with StopPartiallyObserved.
+StopPartiallyObserved describes "Do not claim every participant stopped or undo an accepted stop. Further per-owner recovery is required; no physical safety conclusion follows.".

@@ -1,0 +1,18 @@
+language sdl-mvp1-exercise version 0.1.
+
+capability ClassicAptCompatibility.
+functionality DecodeClassicApt.
+functionality TransformClassicApt.
+functionality EncodeClassicApt.
+
+StanfordClassic cites "https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/stanford-classic/SDP/03--Requirements/requirements.md".
+StanfordClassic provides ClassicAptCompatibility.
+StanfordClassic owns DecodeClassicApt.
+DecodeClassicApt realizes ClassicAptCompatibility.
+DecodeClassicApt specifies "Deterministically decode accepted corpus with source digest, matrix ordering and audited var161/190/191/197 semantics; reject unsupported structure.".
+StanfordClassic owns TransformClassicApt.
+TransformClassicApt realizes ClassicAptCompatibility.
+TransformClassicApt specifies "Apply controlled transforms while retaining source-bound companion data for unresolved bark/settlement meaning.".
+StanfordClassic owns EncodeClassicApt.
+EncodeClassicApt realizes ClassicAptCompatibility.
+EncodeClassicApt specifies "Preserve evidenced encoding/checksum/trailer constraints and unknown supported fields; no transport or UI dependencies.".

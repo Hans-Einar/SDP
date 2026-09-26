@@ -1,0 +1,63 @@
+language sdl-mvp1-exercise version 0.1.
+
+scenario EditAptCell.
+condition EditAptCellReady.
+condition EditAptCellContinue.
+condition EditAptCellReject.
+outcome EditAptCellCompleted.
+outcome EditAptCellRejected.
+step EditAptCellIntent.
+step EditAptCellCorrelate.
+step EditAptCellRoute.
+step EditAptCellValidate.
+step EditAptCellProject.
+step EditAptCellPatch.
+step EditAptCellResult.
+step EditAptCellFailure.
+step EditAptCellSuccess.
+
+EditAptCell illustrates ManageAptDefinitions.
+EditAptCell exercises ValidatedAptDefinitions.
+EditAptCell starts-when EditAptCellReady.
+EditAptCell starts-at EditAptCellIntent.
+EditAptCellReady describes "An editable draft, stable cell identity and expected revision are present.".
+EditAptCellContinue describes "The previous operation succeeded and the next step's declared contract preconditions remain true; exact predicates are an executable-language gap.".
+EditAptCellReject describes "Validation, authority, applicability or operation failure prevents continuation; preserve prior valid state and report the specific reason.".
+EditAptCellCompleted describes "The stated design path completed under its explicit obligations; this is not an observed test result.".
+EditAptCellRejected describes "The path terminated without claiming the requested change succeeded; failures remain observable.".
+EditAptCell preserves DomainTruthOwned.
+EditAptCell preserves StableCommandIdentity.
+EditAptCellIntent calls EmitBoundUserIntent within BuckingUI.
+EditAptCellIntent describes "Collect local text then submit typed intent, not optimistic domain truth.".
+EditAptCellIntent proceeds-to EditAptCellFailure when EditAptCellReject.
+EditAptCellIntent proceeds-to EditAptCellCorrelate when EditAptCellContinue.
+EditAptCellCorrelate calls SubmitUiCommand within BuckingUI.
+EditAptCellCorrelate describes "Preserve draft/cell/expected revision and command identity.".
+EditAptCellCorrelate proceeds-to EditAptCellFailure when EditAptCellReject.
+EditAptCellCorrelate proceeds-to EditAptCellRoute when EditAptCellContinue.
+EditAptCellRoute calls RouteBrowserCommand within BuckingWeb.
+EditAptCellRoute describes "Use authoritative APT endpoint.".
+EditAptCellRoute proceeds-to EditAptCellFailure when EditAptCellReject.
+EditAptCellRoute proceeds-to EditAptCellValidate when EditAptCellContinue.
+EditAptCellValidate calls EditAptDraft within BuckingService.
+EditAptCellValidate describes "Validate authority/revision/domain value; reject stale or invalid edit.".
+EditAptCellValidate proceeds-to EditAptCellFailure when EditAptCellReject.
+EditAptCellValidate proceeds-to EditAptCellProject when EditAptCellContinue.
+EditAptCellProject calls ProjectAptAvailability within BuckingUI.
+EditAptCellProject describes "Reflect accepted draft revision from authoritative result.".
+EditAptCellProject proceeds-to EditAptCellFailure when EditAptCellReject.
+EditAptCellProject proceeds-to EditAptCellPatch when EditAptCellContinue.
+EditAptCellPatch calls PatchRepresentationCollection within BuckingUI.
+EditAptCellPatch describes "Update semantic cell without rebuilding whole schema.".
+EditAptCellPatch proceeds-to EditAptCellFailure when EditAptCellReject.
+EditAptCellPatch proceeds-to EditAptCellResult when EditAptCellContinue.
+EditAptCellResult calls ReconcileUiCommandResult within BuckingUI.
+EditAptCellResult describes "Deliver correlated accepted/rejected result to initiating context.".
+EditAptCellResult proceeds-to EditAptCellFailure when EditAptCellReject.
+EditAptCellResult proceeds-to EditAptCellSuccess when EditAptCellContinue.
+EditAptCellFailure finishes EditAptCell with EditAptCellRejected.
+EditAptCellSuccess finishes EditAptCell with EditAptCellCompleted.
+EditAptCellCorrelate emits OperatorBrowserRequests through OperatorBrowserChannel.
+EditAptCellRoute receives OperatorBrowserRequests through OperatorBrowserChannel.
+EditAptCellRoute emits BuckingRequests through BuckingServiceUpstream.
+EditAptCellValidate receives BuckingRequests through BuckingServiceUpstream.

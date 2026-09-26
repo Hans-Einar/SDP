@@ -1,0 +1,39 @@
+language sdl-mvp1-exercise version 0.1.
+
+scenario UiDiagnosticRouting.
+condition UiDiagnosticRoutingReady.
+condition UiDiagnosticRoutingContinue.
+condition UiDiagnosticRoutingReject.
+outcome UiDiagnosticRoutingCompleted.
+outcome UiDiagnosticRoutingRejected.
+step UiDiagnosticRoutingClassify.
+step UiDiagnosticRoutingBound.
+step UiDiagnosticRoutingDisplay.
+step UiDiagnosticRoutingFailure.
+step UiDiagnosticRoutingSuccess.
+
+UiDiagnosticRouting illustrates InspectUiDiagnostics.
+UiDiagnosticRouting exercises CorrelatedUiCommands.
+UiDiagnosticRouting starts-when UiDiagnosticRoutingReady.
+UiDiagnosticRouting starts-at UiDiagnosticRoutingClassify.
+UiDiagnosticRoutingReady describes "A typed event enters a registered UI dispatch context.".
+UiDiagnosticRoutingContinue describes "The previous operation succeeded and the next step's declared contract preconditions remain true; exact predicates are an executable-language gap.".
+UiDiagnosticRoutingReject describes "Validation, authority, applicability or operation failure prevents continuation; preserve prior valid state and report the specific reason.".
+UiDiagnosticRoutingCompleted describes "The stated design path completed under its explicit obligations; this is not an observed test result.".
+UiDiagnosticRoutingRejected describes "The path terminated without claiming the requested change succeeded; failures remain observable.".
+UiDiagnosticRouting preserves BoundedSubscribers.
+UiDiagnosticRouting preserves GenericUiMechanisms.
+UiDiagnosticRoutingClassify calls ClassifyUiRouting within BuckingUI.
+UiDiagnosticRoutingClassify describes "Registered handlers, intentional ignore, failure and hidden output are distinct.".
+UiDiagnosticRoutingClassify proceeds-to UiDiagnosticRoutingFailure when UiDiagnosticRoutingReject.
+UiDiagnosticRoutingClassify proceeds-to UiDiagnosticRoutingBound when UiDiagnosticRoutingContinue.
+UiDiagnosticRoutingBound calls ReportDiagnosticLoss within BuckingUI.
+UiDiagnosticRoutingBound describes "Bounded storage/drop count, no recursive diagnostic storm.".
+UiDiagnosticRoutingBound proceeds-to UiDiagnosticRoutingFailure when UiDiagnosticRoutingReject.
+UiDiagnosticRoutingBound proceeds-to UiDiagnosticRoutingDisplay when UiDiagnosticRoutingContinue.
+UiDiagnosticRoutingDisplay calls ReconcileViewNodes within BuckingUI.
+UiDiagnosticRoutingDisplay describes "Expose diagnostic state without coupling handler existence to mounting.".
+UiDiagnosticRoutingDisplay proceeds-to UiDiagnosticRoutingFailure when UiDiagnosticRoutingReject.
+UiDiagnosticRoutingDisplay proceeds-to UiDiagnosticRoutingSuccess when UiDiagnosticRoutingContinue.
+UiDiagnosticRoutingFailure finishes UiDiagnosticRouting with UiDiagnosticRoutingRejected.
+UiDiagnosticRoutingSuccess finishes UiDiagnosticRouting with UiDiagnosticRoutingCompleted.

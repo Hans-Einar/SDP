@@ -1,0 +1,12 @@
+flowchart LR
+    n_DomainStateMigrator["DomainStateMigrator (unit)"]
+    n_SdlDispatcher["SdlDispatcher (unit)"]
+    n_SdlExecutionGate["SdlExecutionGate (unit)"]
+    n_SdlFunctionRegistry["SdlFunctionRegistry (unit)"]
+    n_SdlRuntime["SdlRuntime (unit)"]
+    n_SdlStateStore["SdlStateStore (unit)"]
+    n_SdlRuntime -->|contains| n_DomainStateMigrator
+    n_SdlRuntime -->|contains| n_SdlDispatcher
+    n_SdlRuntime -->|contains| n_SdlExecutionGate
+    n_SdlRuntime -->|contains| n_SdlFunctionRegistry
+    n_SdlRuntime -->|contains| n_SdlStateStore

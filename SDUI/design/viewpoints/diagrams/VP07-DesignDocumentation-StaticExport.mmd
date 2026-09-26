@@ -1,0 +1,29 @@
+flowchart LR
+    n_CommandLineHost["CommandLineHost (container)"]
+    n_ComposeMarkdownDocument["ComposeMarkdownDocument (functionality)"]
+    n_DesignDocumentation["DesignDocumentation (feature)"]
+    n_ExportSvgSnapshot["ExportSvgSnapshot (functionality)"]
+    n_ExportViewpointMarkdown["ExportViewpointMarkdown (functionality)"]
+    n_ProjectSdlViewpoints["ProjectSdlViewpoints (functionality)"]
+    n_SdlViewpointGenerator["SdlViewpointGenerator (unit)"]
+    n_SduiPresentation["SduiPresentation (unit)"]
+    n_TraceViewpointFacts["TraceViewpointFacts (functionality)"]
+    n_WriteGeneratedArtifacts["WriteGeneratedArtifacts (functionality)"]
+    n_CommandLineHost -->|owns| n_WriteGeneratedArtifacts
+    n_ComposeMarkdownDocument -->|allocated-to| n_CommandLineHost
+    n_ComposeMarkdownDocument -->|contributes-to| n_DesignDocumentation
+    n_ExportSvgSnapshot -->|allocated-to| n_CommandLineHost
+    n_ExportSvgSnapshot -->|contributes-to| n_DesignDocumentation
+    n_ExportViewpointMarkdown -->|allocated-to| n_CommandLineHost
+    n_ExportViewpointMarkdown -->|contributes-to| n_DesignDocumentation
+    n_ProjectSdlViewpoints -->|allocated-to| n_CommandLineHost
+    n_ProjectSdlViewpoints -->|contributes-to| n_DesignDocumentation
+    n_SdlViewpointGenerator -->|owns| n_ExportViewpointMarkdown
+    n_SdlViewpointGenerator -->|owns| n_ProjectSdlViewpoints
+    n_SdlViewpointGenerator -->|owns| n_TraceViewpointFacts
+    n_SduiPresentation -->|owns| n_ComposeMarkdownDocument
+    n_SduiPresentation -->|owns| n_ExportSvgSnapshot
+    n_TraceViewpointFacts -->|allocated-to| n_CommandLineHost
+    n_TraceViewpointFacts -->|contributes-to| n_DesignDocumentation
+    n_WriteGeneratedArtifacts -->|allocated-to| n_CommandLineHost
+    n_WriteGeneratedArtifacts -->|contributes-to| n_DesignDocumentation

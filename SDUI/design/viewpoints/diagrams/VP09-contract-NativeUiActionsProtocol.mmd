@@ -1,0 +1,8 @@
+flowchart LR
+    n_NativeUiActionsProtocol["NativeUiActionsProtocol (contract)"]
+    n_UiActionRejected["UiActionRejected (message)"]
+    n_UiActionRequest["UiActionRequest (message)"]
+    n_UiActionResult["UiActionResult (message)"]
+    n_NativeUiActionsProtocol -->|permits| n_UiActionRejected
+    n_NativeUiActionsProtocol -->|permits| n_UiActionRequest
+    n_NativeUiActionsProtocol -->|permits| n_UiActionResult

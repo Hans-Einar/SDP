@@ -1,0 +1,8 @@
+test_installed_consumer_workflow (test_process_install.ProcessInstall.test_installed_consumer_workflow) ... ok
+test_legacy_versioned_upgrade_and_downgrade (test_process_install.ProcessInstall.test_legacy_versioned_upgrade_and_downgrade) ... ok
+test_case_collision (test_process_install.ProcessInstall.test_case_collision) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 420.870s
+
+OK

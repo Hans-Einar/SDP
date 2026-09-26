@@ -1,0 +1,48 @@
+language sdl-mvp1-exercise version 0.1.
+
+scenario RecoverTarget.
+condition RecoverTargetReady.
+condition RecoverTargetContinue.
+condition RecoverTargetReject.
+outcome RecoverTargetCompleted.
+outcome RecoverTargetRejected.
+step RecoverTargetAdvertise.
+step RecoverTargetChoose.
+step RecoverTargetDeliver.
+step RecoverTargetRebuild.
+step RecoverTargetFailure.
+step RecoverTargetSuccess.
+
+RecoverTarget illustrates InspectConnectionHealth.
+RecoverTarget exercises BoundedPhysicalTransport.
+RecoverTarget starts-when RecoverTargetReady.
+RecoverTarget starts-at RecoverTargetAdvertise.
+RecoverTargetReady describes "Machine reconnects to a configured target with possible buffered history.".
+RecoverTargetContinue describes "The previous operation succeeded and the next step's declared contract preconditions remain true; exact predicates are an executable-language gap.".
+RecoverTargetReject describes "Validation, authority, applicability or operation failure prevents continuation; preserve prior valid state and report the specific reason.".
+RecoverTargetCompleted describes "The stated design path completed under its explicit obligations; this is not an observed test result.".
+RecoverTargetRejected describes "The path terminated without claiming the requested change succeeded; failures remain observable.".
+RecoverTarget preserves NoPhysicalExecution.
+RecoverTarget preserves DistinctSequenceDomains.
+RecoverTargetAdvertise calls BufferTargetHistory within P1000Gateway.
+RecoverTargetAdvertise describes "Expose range/count/age/overflow without blind replay.".
+RecoverTargetAdvertise proceeds-to RecoverTargetFailure when RecoverTargetReject.
+RecoverTargetAdvertise proceeds-to RecoverTargetChoose when RecoverTargetContinue.
+RecoverTargetChoose calls ConsumeTargetRecord within MachineService.
+RecoverTargetChoose describes "Explicit resume/live-only/discard chosen from typed target state.".
+RecoverTargetChoose proceeds-to RecoverTargetFailure when RecoverTargetReject.
+RecoverTargetChoose proceeds-to RecoverTargetDeliver when RecoverTargetContinue.
+RecoverTargetDeliver calls RecoverTargetHistory within P1000Gateway.
+RecoverTargetDeliver describes "Delivery commit acknowledges internal delivery, not P1000 semantics.".
+RecoverTargetDeliver proceeds-to RecoverTargetFailure when RecoverTargetReject.
+RecoverTargetDeliver proceeds-to RecoverTargetRebuild when RecoverTargetContinue.
+RecoverTargetRebuild calls AdvanceP1000Protocol within MachineService.
+RecoverTargetRebuild describes "Evidence-backed protocol recovery; no stale physical TX.".
+RecoverTargetRebuild proceeds-to RecoverTargetFailure when RecoverTargetReject.
+RecoverTargetRebuild proceeds-to RecoverTargetSuccess when RecoverTargetContinue.
+RecoverTargetFailure finishes RecoverTarget with RecoverTargetRejected.
+RecoverTargetSuccess finishes RecoverTarget with RecoverTargetCompleted.
+RecoverTargetAdvertise emits TargetResponses through TargetChannel.
+RecoverTargetChoose receives TargetResponses through TargetChannel.
+RecoverTargetChoose emits TargetRequests through TargetChannel.
+RecoverTargetDeliver receives TargetRequests through TargetChannel.

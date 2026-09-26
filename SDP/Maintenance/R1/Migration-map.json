@@ -1,0 +1,1938 @@
+{
+  "baseline_commit": "431e47ee38bc764ef4786b9e8ae0fb643552aeb1",
+  "scope": "Physical organization; original hashes are before movement/link repair. Historical ledgers, fingerprints and frozen/generated fixtures are not rewritten.",
+  "files": {
+    "01--Mandate/mandate.md": {
+      "target": "Template/sdp-root/01--Mandate/mandate.md",
+      "action": "deduplicate",
+      "milestone": "R1-M2",
+      "sha256_before": "9b77eae92e36c567d1c3e51b20d96b0d0a6b21f46e91274ceb15763c69cd30fd"
+    },
+    "02--Study/study.md": {
+      "target": "Template/sdp-root/02--Study/study.md",
+      "action": "deduplicate",
+      "milestone": "R1-M2",
+      "sha256_before": "4e89c94211c54e57c01d312a4d3b5c5d734eabd91b20d2b2b9394b1c97b5f5c4"
+    },
+    "03--Requirements/requirements.md": {
+      "target": "Template/sdp-root/03--Requirements/requirements.md",
+      "action": "deduplicate",
+      "milestone": "R1-M2",
+      "sha256_before": "642790177a4ddd354d1c3bb7e4e34994ab4a75a25816f7f6b38ab9f5d8fcdf38"
+    },
+    "04--Architecture/architecture.md": {
+      "target": "Template/sdp-root/04--Architecture/architecture.md",
+      "action": "deduplicate",
+      "milestone": "R1-M2",
+      "sha256_before": "9c117f12d3044a218822cbf4f0f058893d45511cbf3a4966aa87c46dc5254427"
+    },
+    "05--DesignAnalysis/design-analysis.md": {
+      "target": "Template/sdp-root/05--DesignAnalysis/design-analysis.md",
+      "action": "deduplicate",
+      "milestone": "R1-M2",
+      "sha256_before": "a71fdb63896ce6f282001205fc7333de93996f9b93005e628d98a3ea9da53034"
+    },
+    "06--Design/design.md": {
+      "target": "Template/sdp-root/06--Design/design.md",
+      "action": "deduplicate",
+      "milestone": "R1-M2",
+      "sha256_before": "2a550aaa922572dd446c47b1302c05d014112bbee5ca2d9dc9bd079e6648ccba"
+    },
+    "07--Implementation/implementation-plan.md": {
+      "target": "Template/sdp-root/07--Implementation/implementation-plan.md",
+      "action": "deduplicate",
+      "milestone": "R1-M2",
+      "sha256_before": "55f61bca0c9c9ff10cdb25973bfa1032386e2bcec58873dbb8a1c272e0fbe86c"
+    },
+    "CodeReview/README.md": {
+      "target": "SDP/CodeReview/README.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "a61c4b23fe88e022009394c5285252dbde3e6c676556813191eaec515986be6b"
+    },
+    "CodeReview/REV-SDP-005-001.md": {
+      "target": "SDP/CodeReview/REV-SDP-005-001.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "e71151b26a62fd350b80e5c1c9ae13f0342f4d0ca7a01794e300c147d9230b0b"
+    },
+    "CodeReview/REV-SDP-005-002.md": {
+      "target": "SDP/CodeReview/REV-SDP-005-002.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "0bbd8e65691534fdfbce3c645c539b0b4dd34420f7ae9182dcf9bbb1e2077587"
+    },
+    "CodeReview/REV-SDP-005-003.md": {
+      "target": "SDP/CodeReview/REV-SDP-005-003.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "bac7d069a31d6638eb571a8cd85158660d59410c7a10cb244952959a94efa4d9"
+    },
+    "CodeReview/REV-SPS-001-001.md": {
+      "target": "SDP/CodeReview/REV-SPS-001-001.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "093ac8d5e25c3fe8e641a3656355cc280321acc59cd44732ebe6759b2bfc0ce0"
+    },
+    "CodeReview/REV-SPS-001-002.md": {
+      "target": "SDP/CodeReview/REV-SPS-001-002.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "45f3e768630537f7fbe53d4c5c28a3c5b80a7e8a70946059068ef12b6bf5c1fd"
+    },
+    "CodeReview/REV-SPS-001-003.md": {
+      "target": "SDP/CodeReview/REV-SPS-001-003.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "8c7687ebe9180ec83c42cc588385a3d83b64fa90eeb6de9e26f49732ae3ac205"
+    },
+    "CodeReview/REV-SPS-001-004.md": {
+      "target": "SDP/CodeReview/REV-SPS-001-004.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "652b27a58658e1e64d7813df4232fbf8b1718674512e19322cf052ff4d64eff0"
+    },
+    "CodeReview/REV-SPS-001-005.md": {
+      "target": "SDP/CodeReview/REV-SPS-001-005.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "56dac8fb765fff8964add5c624ef304f5ddacdb690417675ecc67cf25ce9fea4"
+    },
+    "CodeReview/REV-SPS-001-006.md": {
+      "target": "SDP/CodeReview/REV-SPS-001-006.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "a4e409a9fca172f8f16fb003c5cc1fd9389abd212e2692dd61779f33c58f8d1a"
+    },
+    "CodeReview/REV-SPS-001-007.md": {
+      "target": "SDP/CodeReview/REV-SPS-001-007.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "b4865cd8982f37b4c7f6d90210e43c23ac7a56a7c5eba221221dee9b42b5a507"
+    },
+    "DraftStandardDocumentProcedure.md": {
+      "target": "SDP/History/process-drafts/DraftStandardDocumentProcedure.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "498ffdae414ad88fb765ae8f710b8c86d08fe737604e20590b86b32762b2fe79"
+    },
+    "Fixes/README.md": {
+      "target": "SDP/Fixes/README.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "76c217ccdec62770af02709d7befb522637edecbdefbd25de2e326df3158759e"
+    },
+    "Instructions/README.md": {
+      "target": "SDP/Instructions/README.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "9f51eada4db504dcb3e0e11ff5805f4021b71ce7519d0292f5236ee74a66debc"
+    },
+    "Refactors/README.md": {
+      "target": "SDP/Refactors/README.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "e0de56056c435438ebdc924172e53b5a64ce12bb993a11e19daf70e581068d29"
+    },
+    "Releases/README.md": {
+      "target": "SDP/Releases/README.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "dd0d59bdfddcc6ea6532872206f0a720c7cbfb11b0456bd835be72a6cb83953c"
+    },
+    "Releases/REL-0.2.0.yaml": {
+      "target": "SDP/Releases/REL-0.2.0.yaml",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "06f86ba3b0939ce4b5977849bc56e19ba90592346d870a768f333e57146ad6a6"
+    },
+    "SDP-DOCUMENT-GUIDE.md": {
+      "target": "SDP/History/legacy-bootstrap/SDP-DOCUMENT-GUIDE.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "e8b4eff079ad9be236d68a0111d88b71802e0ecc2f3790ca42743209cfc03456"
+    },
+    "SDP-usage-analysis/CrossRepositoryPatterns.md": {
+      "target": "SDP/Studies/UsageAnalysis/CrossRepositoryPatterns.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "4ac2a325e7a9c1a7e545e1e69efb17f07192784d2421d919d621540cd8a7778b"
+    },
+    "SDP-usage-analysis/EvidenceMatrix.md": {
+      "target": "SDP/Studies/UsageAnalysis/EvidenceMatrix.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "2e40e32d8583b2532942103b7c62f93b1b2e54cac2e68c71896a5e570ac74480"
+    },
+    "SDP-usage-analysis/FollowUpIssues.md": {
+      "target": "SDP/Studies/UsageAnalysis/FollowUpIssues.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "d81dc36c8b9cda3078771cce7e85c985bd42b870a580e682168996cf18f7cb52"
+    },
+    "SDP-usage-analysis/LegacyAndDeprecation.md": {
+      "target": "SDP/Studies/UsageAnalysis/LegacyAndDeprecation.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "a99c82a794d61be816cc73d898d0a984cc246f2e32306426e1b331731bb2c22f"
+    },
+    "SDP-usage-analysis/MigrationImpact.md": {
+      "target": "SDP/Studies/UsageAnalysis/MigrationImpact.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "f9d18bb757f5adb11d3e7aa16679aeef095b9a191facf610746856ca92d5e014"
+    },
+    "SDP-usage-analysis/ProposedSDPWorkflow.md": {
+      "target": "SDP/Studies/UsageAnalysis/ProposedSDPWorkflow.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "f9ae488cf7e13d03f07560ef609a49d72352382ba16ae76cbca351d6687768b6"
+    },
+    "SDP-usage-analysis/README.md": {
+      "target": "SDP/Studies/UsageAnalysis/README.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "29aa070f05be443e3cb9a008bbf1fc72b8fc5788165b7d51d4113f1fdcba9f77"
+    },
+    "SDP-usage-analysis/RepositoryInventory.md": {
+      "target": "SDP/Studies/UsageAnalysis/RepositoryInventory.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "b28158b2bd9d4fb6fedbe7fa8f7d0e85dfa3e224e4229b0aa4ce7944ab9ed4bb"
+    },
+    "SDP-usage-analysis/SkillsAndRoles.md": {
+      "target": "SDP/Studies/UsageAnalysis/SkillsAndRoles.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "c57d58cc9e16dc72a3dab9745310bfc23832b915a99a737dc4b2c8c1ff7755a3"
+    },
+    "SDP-usage-analysis/repositories/ActionCam.md": {
+      "target": "SDP/Studies/UsageAnalysis/repositories/ActionCam.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "7b04131c716005ed9cc21360dc28972f67ffca98e6c2706062d0e4811f7a2a8c"
+    },
+    "SDP-usage-analysis/repositories/GrassPhenology.md": {
+      "target": "SDP/Studies/UsageAnalysis/repositories/GrassPhenology.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "1b6f1934021a8c45a2aadc924fc0c2817361b83b1895ee73bb7f98f86f2141ae"
+    },
+    "SDP-usage-analysis/repositories/HEOS.md": {
+      "target": "SDP/Studies/UsageAnalysis/repositories/HEOS.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "dd566f755059f9ea089192497736da8a74a6bcfd8e719e871d67958cfcf6a89b"
+    },
+    "SDP-usage-analysis/repositories/HSX.md": {
+      "target": "SDP/Studies/UsageAnalysis/repositories/HSX.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "456e7e1c5bea359214d8bc09296c233516dc57ee94f66e42b9627f40c2e4eefe"
+    },
+    "SDP-usage-analysis/repositories/LogClassifier.md": {
+      "target": "SDP/Studies/UsageAnalysis/repositories/LogClassifier.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "10658d57f834e12ec68310f6c20ca85f54ef04601c577a2216f7b5cb20f62596"
+    },
+    "SDP-usage-analysis/repositories/LogParser.md": {
+      "target": "SDP/Studies/UsageAnalysis/repositories/LogParser.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "8bf751eaa0f40bf117ae5e2c41363d92e9200c3b2fb7b1893a84b46dd8ef9cdb"
+    },
+    "SDP-usage-analysis/repositories/Lyndata.md": {
+      "target": "SDP/Studies/UsageAnalysis/repositories/Lyndata.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "b414165da480c55d155bbe4ab04cd44a57a324369f3ac570aac2ffaf8517df8e"
+    },
+    "SDP-usage-analysis/repositories/RadarData.md": {
+      "target": "SDP/Studies/UsageAnalysis/repositories/RadarData.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "37b2bfd5c46742ff596754bf663f068d4bed9058deac8637ee446bcc29d8bed0"
+    },
+    "SDP-usage-analysis/repositories/SDP-Analyzer.md": {
+      "target": "SDP/Studies/UsageAnalysis/repositories/SDP-Analyzer.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "c9f91d509ae8d53e16d9e12c33d0c24d647a1e7e08800243c34a8260640a6ef4"
+    },
+    "SDP-usage-analysis/repositories/SDP.md": {
+      "target": "SDP/Studies/UsageAnalysis/repositories/SDP.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "6a5180fbd972a6aa2b76c9ddb7459d8f91a2eaa383a97a58be9c243d37ac5ef4"
+    },
+    "SDP-usage-analysis/repositories/SharedUI.md": {
+      "target": "SDP/Studies/UsageAnalysis/repositories/SharedUI.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "7032f92d7a8ba360efae1dab5d8b3aaa910124eb71545251af746ac46ffdfe71"
+    },
+    "SDP-usage-analysis/repositories/TerrainAnalyzer.md": {
+      "target": "SDP/Studies/UsageAnalysis/repositories/TerrainAnalyzer.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "504b3fb80e61af2b6b2c7e2e8ca5c1940b577c5ff6f6c5769ec5732014a39f04"
+    },
+    "SDP-usage-analysis/repositories/gh-sdp.md": {
+      "target": "SDP/Studies/UsageAnalysis/repositories/gh-sdp.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "870923f2d8380e92c31ffa10aec7bb9b44adc19a9c0a62d5b5b3d32b36922f7a"
+    },
+    "SDP-usage-analysis/repositories/map_tracker.md": {
+      "target": "SDP/Studies/UsageAnalysis/repositories/map_tracker.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "225c0cd0318d1ccc892f947266720b477ec19cd718cc0405ba8433e59c52330d"
+    },
+    "SDP-usage-analysis/repositories/python.md": {
+      "target": "SDP/Studies/UsageAnalysis/repositories/python.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "342ef57cf8a0d31031c0d4d391a74d4fe634327abdb6d259019460737b7f1ebf"
+    },
+    "SDP-usage-analysis/repositories/tplink.md": {
+      "target": "SDP/Studies/UsageAnalysis/repositories/tplink.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "0477527c764ddf1e67c6d95eb4fca1841f7bc7f9bdcd3b243936a8fc773a340b"
+    },
+    "SDP-usage-analysis/repositories/weight_app_flutter.md": {
+      "target": "SDP/Studies/UsageAnalysis/repositories/weight_app_flutter.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "89cf9c79611bfcba15d6316b73395ddfa51c21aca4858d6c622eb7662e83cbfc"
+    },
+    "SDP-usage-analysis/validate_analysis.py": {
+      "target": "SDP/Studies/UsageAnalysis/validate_analysis.py",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "fd9fe794f64d96e57984bc09b7e0e7ef60bcaa197ad192fde66859e36299287d"
+    },
+    "Sprints/README.md": {
+      "target": "SDP/Sprints/README.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "cd90bb609d7beb984eb0a01f0846d922297f246f4850b016629429c81ce357c6"
+    },
+    "Sprints/SPR-SDP-005--recent-sdp-usage-study/Handoff.md": {
+      "target": "SDP/Sprints/SPR-SDP-005--recent-sdp-usage-study/Handoff.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "1da81ca951ffd7ac1af2ba9cbf4ced7d055a6c8d3aead9a153cf8d5bdf26e027"
+    },
+    "Sprints/SPR-SDP-005--recent-sdp-usage-study/ScrumIterations.md": {
+      "target": "SDP/Sprints/SPR-SDP-005--recent-sdp-usage-study/ScrumIterations.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "3d6d4bd8d1d1803ecec5275b698f72c87bd787594428faa53db89ffaaba8242b"
+    },
+    "Sprints/SPR-SDP-005--recent-sdp-usage-study/implementationNotes.md": {
+      "target": "SDP/Sprints/SPR-SDP-005--recent-sdp-usage-study/implementationNotes.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "906d1797e901927a8454b424950aaff3b9061164387f21780640dbec27c45f02"
+    },
+    "Sprints/SPR-SDP-005--recent-sdp-usage-study/sprint.md": {
+      "target": "SDP/Sprints/SPR-SDP-005--recent-sdp-usage-study/sprint.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "ce23a4fbae65bf2f9c0379521235e77c661b35612416e86c8f6b2d43185ef08f"
+    },
+    "Sprints/Sprint-001/Handoff.md": {
+      "target": "SDP/Sprints/Sprint-001/Handoff.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "987009ebf8c92463b587d2aca0c22ade5837810c0d4b15bb1862be7dc700abbd"
+    },
+    "Sprints/Sprint-001/InstallationContractStudy.md": {
+      "target": "SDP/Sprints/Sprint-001/InstallationContractStudy.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "0407d8a4ed6f8ec00594792605289f89d38132d6d3cc9b10cdf232c5eac0785e"
+    },
+    "Sprints/Sprint-001/ScrumIterations.md": {
+      "target": "SDP/Sprints/Sprint-001/ScrumIterations.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "5cccbb490a56c13113412c2414cc47c3fcddd3df4e7058aa2443bb0b687b6c9c"
+    },
+    "Sprints/Sprint-001/implementationNotes.md": {
+      "target": "SDP/Sprints/Sprint-001/implementationNotes.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "7cdaf4e1ca93e2a0ff3a2739de70d07407347023d983aa1a2eb02a92bef0d0c3"
+    },
+    "SystemDesignLanguage/Mandate-and-Study.md": {
+      "target": "SDL/Mandate-and-Study.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "33c8828fb55706d34b97279a3a3b524b6422a739d1ab63fdb6fb1293863912cf"
+    },
+    "SystemDesignLanguage/README.md": {
+      "target": "SDL/README.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "858189d85d2af8390c2528f4e0e3c80f2490e9e6c7bc2b8a11a98b1e07dd2b00"
+    },
+    "SystemDesignLanguage/System-Design.docx": {
+      "target": "SDL/System-Design.docx",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "a49c4eab16970f2dfd4fed970214195b85975b56346237c8c5e3b50d9cfc0bdb"
+    },
+    "SystemDesignLanguage/go/README.md": {
+      "target": "SDL/go/README.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "5fb00963645d8b694ef5dbcacff07219569ff84037cea3490090fb592ab18f4c"
+    },
+    "SystemDesignLanguage/go/bridge/bind.go": {
+      "target": "SDL/go/bridge/bind.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "bb6e72d383cdf1b219ce0652e61bef4df19b0ae7adee9918cda1930a28b70246"
+    },
+    "SystemDesignLanguage/go/bridge/bind_test.go": {
+      "target": "SDL/go/bridge/bind_test.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "adb9aac6ded58097112d199f5859c69d3e9539b533bfee10b48186f26607b2b8"
+    },
+    "SystemDesignLanguage/go/bridge/cmd/smoke/main.go": {
+      "target": "SDL/go/bridge/cmd/smoke/main.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "0c5c4f9ef59de37c5e77cf5eb17263b8cddca452e120421fb4c857c38545066d"
+    },
+    "SystemDesignLanguage/go/bridge/values.go": {
+      "target": "SDL/go/bridge/values.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "d2b2e6c0304e568aeae8246a1652d3d138f0c81d5c8c89e3a315e1ef2aa9966e"
+    },
+    "SystemDesignLanguage/go/broker/broker.go": {
+      "target": "SDL/go/broker/broker.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "ffc0d84d397b8edac08ce35d96acb02a11b08336601f77ee996dd5157d184bb1"
+    },
+    "SystemDesignLanguage/go/broker/broker_test.go": {
+      "target": "SDL/go/broker/broker_test.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "f0cdee7e4f557e60a6d4f5869df0b6b2d920f912ee24b9181904bd397806fbd8"
+    },
+    "SystemDesignLanguage/go/broker/ipc_linux.go": {
+      "target": "SDL/go/broker/ipc_linux.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "945bb28b79c3adfc8889a3398c89439fceec49b6dfc00d96fbd747ad9d87eed8"
+    },
+    "SystemDesignLanguage/go/broker/store.go": {
+      "target": "SDL/go/broker/store.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "b599844711d964bbca7bf773c9b3659a066fe58763c562e3afb258eed4dce51f"
+    },
+    "SystemDesignLanguage/go/broker/store_lock_linux.go": {
+      "target": "SDL/go/broker/store_lock_linux.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "95ef75d0de62aaf6f1de6ecf210fa99424f8d393d190294dba34cbe3727919b0"
+    },
+    "SystemDesignLanguage/go/cmd/sdl-compiled-fyne/main.go": {
+      "target": "SDL/go/cmd/sdl-compiled-fyne/main.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "c07bbb4d4788b578a066d850284f8a17490941d021069d98d6d7712a289a5fb2"
+    },
+    "SystemDesignLanguage/go/cmd/sdl-compiled/main.go": {
+      "target": "SDL/go/cmd/sdl-compiled/main.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "91deaeea035e70357a667b8cc1ea61fb8902e6c56b0e341ab168f1d69b5da574"
+    },
+    "SystemDesignLanguage/go/cmd/sdl-demo/main.go": {
+      "target": "SDL/go/cmd/sdl-demo/main.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "ff53afa4dd9f27faae8fc2dfbada214712dfb7b493521ea2b3320aa2e7b02327"
+    },
+    "SystemDesignLanguage/go/cmd/sdl-dev/main.go": {
+      "target": "SDL/go/cmd/sdl-dev/main.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "794a15676425ffff0d25ab3aa78ae309c34922a77853476ab476d5f5ce61099f"
+    },
+    "SystemDesignLanguage/go/cmd/sdl-document/main.go": {
+      "target": "SDL/go/cmd/sdl-document/main.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "201654836f48c79cac9768a85dceefb2341a84e12f664d50cfd5303257f41911"
+    },
+    "SystemDesignLanguage/go/cmd/sdl-gen/main.go": {
+      "target": "SDL/go/cmd/sdl-gen/main.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "e1dd680c713fca27643221a9899e6a190e8201fa350c5816a76fd4c372dbae7a"
+    },
+    "SystemDesignLanguage/go/cmd/sdl-simulate/main.go": {
+      "target": "SDL/go/cmd/sdl-simulate/main.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "6d568abe56e6ce55e09b1ba7c766b928bef04f3c1e69db69663aaec384ca0b2b"
+    },
+    "SystemDesignLanguage/go/cmd/sdl-view-request/main.go": {
+      "target": "SDL/go/cmd/sdl-view-request/main.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "7d96b953d51d6e6d71650595322a7132778a8355445f5056996fa3188cef0811"
+    },
+    "SystemDesignLanguage/go/cmd/sdl-viewsd/main.go": {
+      "target": "SDL/go/cmd/sdl-viewsd/main.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "62969541c0a25bb7376019269e631eb3310acd1511c61dcfcde414c57956f542"
+    },
+    "SystemDesignLanguage/go/cmd/sdl/classes.go": {
+      "target": "SDL/go/cmd/sdl/classes.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "0b61875ac0b7f238f47f385c841c88896146a21eeae5f75da11f900be7f8acfa"
+    },
+    "SystemDesignLanguage/go/cmd/sdl/main.go": {
+      "target": "SDL/go/cmd/sdl/main.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "81f10e487a5eaf19b9dc825fb1603d85f95ad00e99d62c54d643e7d97496ab70"
+    },
+    "SystemDesignLanguage/go/cmd/sdl/main_test.go": {
+      "target": "SDL/go/cmd/sdl/main_test.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "a19a5e63c63c3baa5e418abfbc314d42a01d4702c020efb6b99467f809179a10"
+    },
+    "SystemDesignLanguage/go/cmd/sdl/select.go": {
+      "target": "SDL/go/cmd/sdl/select.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "8ab7c4b87dab2115c00862df677f84d091ddbee8937c64afac9f57d013215397"
+    },
+    "SystemDesignLanguage/go/cmd/sdl/views.go": {
+      "target": "SDL/go/cmd/sdl/views.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "c46b641a2faffca3e034d9033f49cc9f90cc77935e93ce3fa666d9ca34a09a3f"
+    },
+    "SystemDesignLanguage/go/codegen/generate.go": {
+      "target": "SDL/go/codegen/generate.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "2aed1be86607d2e1046c39cefa55b8807561834f4568c567888320796d6e22a5"
+    },
+    "SystemDesignLanguage/go/codegen/generate_test.go": {
+      "target": "SDL/go/codegen/generate_test.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "b70d1662b2c3bf9b3d38ebf6a6905cb2f558e535fba0dc013d03c18c9e6c82b1"
+    },
+    "SystemDesignLanguage/go/codegen/parity_test.go": {
+      "target": "SDL/go/codegen/parity_test.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "f9e1f8380bc84a76cccbe0412ad30547ccf742bdbd967aeaa011123f084a7a4d"
+    },
+    "SystemDesignLanguage/go/devhost/manager.go": {
+      "target": "SDL/go/devhost/manager.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "029013ceeef1741090d8b6f6568e4f1043d2e83a0eb057f5746f9a2b61d5df9e"
+    },
+    "SystemDesignLanguage/go/devhost/manager_test.go": {
+      "target": "SDL/go/devhost/manager_test.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "e2ba1a1a76e4a8a03036041bf4202d9ac3f2de33564764137bf7b15f745d9506"
+    },
+    "SystemDesignLanguage/go/devhost/process_linux.go": {
+      "target": "SDL/go/devhost/process_linux.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "69ec277c285e0c6055aeef01dfacb2e6fa8e5201583a52edb684829b4dee2c32"
+    },
+    "SystemDesignLanguage/go/devhost/process_other.go": {
+      "target": "SDL/go/devhost/process_other.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "e768109e838b83dade521d9895d1fc2ae5814157e2390af951dff64c48e492f1"
+    },
+    "SystemDesignLanguage/go/devhost/watch.go": {
+      "target": "SDL/go/devhost/watch.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "34e729f68b926a65482b5e1fbc499913090a82cae48c389188efb95724ede973"
+    },
+    "SystemDesignLanguage/go/documents/bundle.go": {
+      "target": "SDL/go/documents/bundle.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "a82cdbf6736ca71d2324aaf7b4995bcddd4bba1d62679c12d7ef53b7cc9b8866"
+    },
+    "SystemDesignLanguage/go/documents/bundle_test.go": {
+      "target": "SDL/go/documents/bundle_test.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "3fc498d692d5a80e8d51559af45e6122a3695969228dbbf5b9482e9ef04f3b20"
+    },
+    "SystemDesignLanguage/go/documents/classes.go": {
+      "target": "SDL/go/documents/classes.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "4ce1a91e91671767762706386400541fbed846b32c0c397f0dbd156b2e50b53e"
+    },
+    "SystemDesignLanguage/go/documents/classes_test.go": {
+      "target": "SDL/go/documents/classes_test.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "0b47b35e95e20034c5f0ec24384e1844bb01cf8107ab3376bc48c4a5e2a937d5"
+    },
+    "SystemDesignLanguage/go/documents/geometry.go": {
+      "target": "SDL/go/documents/geometry.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "155dc773418e0739baaf32b1ffface778e8c3576abc0ffaf31c6a4d92b230ffb"
+    },
+    "SystemDesignLanguage/go/documents/publish.go": {
+      "target": "SDL/go/documents/publish.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "c2b8323c6e38ece2c4457e475df7c331e8cbb505b87dedfea5dfb91372a24a6e"
+    },
+    "SystemDesignLanguage/go/documents/renderer.go": {
+      "target": "SDL/go/documents/renderer.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "a73ae91f5375660fe8a19c00804a1e47fad20701c84a5715c4a993b347c2444c"
+    },
+    "SystemDesignLanguage/go/documents/selection.go": {
+      "target": "SDL/go/documents/selection.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "1a7c98863d2f5a665fb82b1d7591faf057ef94a182fe8c2e3de72b2e56ca8b8b"
+    },
+    "SystemDesignLanguage/go/documents/selection_test.go": {
+      "target": "SDL/go/documents/selection_test.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "a47ded806f365f8a913ebb39fc8be23ad80fdebf5cc5639d529b0bbf4ed45d94"
+    },
+    "SystemDesignLanguage/go/documents/symbols.go": {
+      "target": "SDL/go/documents/symbols.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "4f019016a9d4a1faf6c0cb719aba2229b0d6e759d2bcc8ac3e055bedb0fdacf4"
+    },
+    "SystemDesignLanguage/go/documents/symbols_test.go": {
+      "target": "SDL/go/documents/symbols_test.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "678130cf5d99024fbe472a8bd7b996ccaf3f3c28aaedc56f5c4a817faed3f143"
+    },
+    "SystemDesignLanguage/go/evidence/G4.md": {
+      "target": "SDL/go/evidence/G4.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "0d16fb157aca03107eb51fe7a13bf6bffb868d71cb926c84fe5b9f97ee1ad76c"
+    },
+    "SystemDesignLanguage/go/evidence/G5.md": {
+      "target": "SDL/go/evidence/G5.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "6f53ec4fd562c68e176f51549ed06fd3b9a4694f50bf69569e5a3bea853cf933"
+    },
+    "SystemDesignLanguage/go/evidence/G6.md": {
+      "target": "SDL/go/evidence/G6.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "527f8efe2ab94cb70b6eb3bb2e181a63ef44997636ba15857d5db7187ec8a2cd"
+    },
+    "SystemDesignLanguage/go/evidence/G7.md": {
+      "target": "SDL/go/evidence/G7.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "5459c4aa583810f7f464b641ccdc3601366a7bf1d8c7c2deb70c607777e42a62"
+    },
+    "SystemDesignLanguage/go/evidence/broker-native.png": {
+      "target": "SDL/go/evidence/broker-native.png",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "32b016380dbf5f71cced16f52a8eb149807065f4a80949eda02e0a3e2b621b3f"
+    },
+    "SystemDesignLanguage/go/evidence/classes.png": {
+      "target": "SDL/go/evidence/classes.png",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "05cd9f1faedb7d783e818fb17891e37965747e28677639a40cdc50e9afe9c243"
+    },
+    "SystemDesignLanguage/go/evidence/classes.svg": {
+      "target": "SDL/go/evidence/classes.svg",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "50b0a6b802c40a23fd3bdbf68fce250544e960ec73da30fbccd36a90c2bfef85"
+    },
+    "SystemDesignLanguage/go/evidence/compiled-native.png": {
+      "target": "SDL/go/evidence/compiled-native.png",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "a423b9670653638b44cdd247032c606878ac617b7cee5f31f9f9210941b4f567"
+    },
+    "SystemDesignLanguage/go/evidence/compiled-trace.json": {
+      "target": "SDL/go/evidence/compiled-trace.json",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "e4003429c10ffc2b42e532308ab5531b575099c761473cf096611972059e028c"
+    },
+    "SystemDesignLanguage/go/evidence/dual-reload-invalid.png": {
+      "target": "SDL/go/evidence/dual-reload-invalid.png",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "63d8316f8310559d4510c3ff139a340e8178df79caf7dd27dd51fa88daf21610"
+    },
+    "SystemDesignLanguage/go/evidence/dual-reload.png": {
+      "target": "SDL/go/evidence/dual-reload.png",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "3b475aa90c3d42149f1df50b51f5a09f840806b4859810d7e2659f8510d4f06e"
+    },
+    "SystemDesignLanguage/go/evidence/edit-apt-cell-trace.json": {
+      "target": "SDL/go/evidence/edit-apt-cell-trace.json",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "e4003429c10ffc2b42e532308ab5531b575099c761473cf096611972059e028c"
+    },
+    "SystemDesignLanguage/go/evidence/native-binding.png": {
+      "target": "SDL/go/evidence/native-binding.png",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "416dc83afb8e1c5deca427c05a511dab20e27e8fb2de35d0032607da3b467cc2"
+    },
+    "SystemDesignLanguage/go/evidence/release.json": {
+      "target": "SDL/go/evidence/release.json",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "52f755b8967106a8b0ff2d91dac8c753b9af8229f072c45a318433cbee9f0690"
+    },
+    "SystemDesignLanguage/go/evidence/runtime-preview.png": {
+      "target": "SDL/go/evidence/runtime-preview.png",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "20622b6dc34f62cb5a7df3eccc199b5c2c0772d5a83575f99f884f7248df5b37"
+    },
+    "SystemDesignLanguage/go/evidence/sdp-validator-baseline.txt": {
+      "target": "SDL/go/evidence/sdp-validator-baseline.txt",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "1f3319ff10d5f6675cd6426da4926c7eb53b4c6ac5c982742c36c48ddd6c36f2"
+    },
+    "SystemDesignLanguage/go/evidence/symbol-usecase.png": {
+      "target": "SDL/go/evidence/symbol-usecase.png",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "4e7198ace207587684500813414347a73a2cec5bf4ab45dba453ed08d749eeae"
+    },
+    "SystemDesignLanguage/go/evidence/symbol-usecase.svg": {
+      "target": "SDL/go/evidence/symbol-usecase.svg",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "69e402a25da9c58cfbd7e4ce15f7ca9e2190f9b72817999ab6c2d0c5c7a2ede2"
+    },
+    "SystemDesignLanguage/go/evidence/xfmd-navigation.png": {
+      "target": "SDL/go/evidence/xfmd-navigation.png",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "b254c30309c6e37e1bf0122f4e4b6367c798be01625f1c68149f210332efbd03"
+    },
+    "SystemDesignLanguage/go/examples/accepted-state.json": {
+      "target": "SDL/go/examples/accepted-state.json",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "f387c1602b5701d017f9c3139b84e90e9c2c9c02c519bd3a572d80b3ea0b20c0"
+    },
+    "SystemDesignLanguage/go/examples/application/application.go": {
+      "target": "SDL/go/examples/application/application.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "eaa070a57524ae3881b6904cc77e6f9f9b95bfd81d83c4434d9976d4e61c222f"
+    },
+    "SystemDesignLanguage/go/examples/application/reload.go": {
+      "target": "SDL/go/examples/application/reload.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "ea3d8e44fb3427da890849edacf2bdde1ab556884dc780255e3cc9408083f758"
+    },
+    "SystemDesignLanguage/go/examples/application/reload_test.go": {
+      "target": "SDL/go/examples/application/reload_test.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "e91abf4214a38908a3dabcb82a28960acd7f2577c7474963fc158e0743b9b01a"
+    },
+    "SystemDesignLanguage/go/examples/application/trace.go": {
+      "target": "SDL/go/examples/application/trace.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "e60a0293f50f2266fe6ac3fc67d4754a9c857ed6194e365e9e025fc5a021830a"
+    },
+    "SystemDesignLanguage/go/examples/echo.sdl": {
+      "target": "SDL/go/examples/echo.sdl",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "3344c793fb9af4b7e2a11c6435222032b9a460ab2d7dfcdeeb6fb1d2d6f51a4d"
+    },
+    "SystemDesignLanguage/go/examples/echo.sdui": {
+      "target": "SDL/go/examples/echo.sdui",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "3852175ca27691140abdc83af4c4b0f91ecb07a417dd281f1638f54fb896c6dd"
+    },
+    "SystemDesignLanguage/go/examples/edit-apt-cell.sdl": {
+      "target": "SDL/go/examples/edit-apt-cell.sdl",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "6de6f64f1b5a19897458ff348e2cb0c98b8340125d10a73bc509bb1ba632b329"
+    },
+    "SystemDesignLanguage/go/examples/edit-apt-cell.sdui": {
+      "target": "SDL/go/examples/edit-apt-cell.sdui",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "4a39f150b4a9745d83d116154812d3b6066385f6038abbc73dc40858878f9af6"
+    },
+    "SystemDesignLanguage/go/examples/generatedmodel/actions_gen.go": {
+      "target": "SDL/go/examples/generatedmodel/actions_gen.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "93ab69fe94443c2e03a2cb16caad110c90ec9b7535d6b7cb22f54e9fe77ad018"
+    },
+    "SystemDesignLanguage/go/examples/generatedmodel/manifest.json": {
+      "target": "SDL/go/examples/generatedmodel/manifest.json",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "65608093b49d782637a1501de3a03e0158bd173314c30401fdeaf1173ed8e4fa"
+    },
+    "SystemDesignLanguage/go/examples/generatedmodel/ui_gen.go": {
+      "target": "SDL/go/examples/generatedmodel/ui_gen.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "a4a44f89666f240e6f6ee96b26dbe80afda970f466cc4e092e291d69084ccc56"
+    },
+    "SystemDesignLanguage/go/examples/runtime-classes.sdl": {
+      "target": "SDL/go/examples/runtime-classes.sdl",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "0867eb969cfc92a31a86d2d2faae73648227b636906a1d1e9dd5518e8586c013"
+    },
+    "SystemDesignLanguage/go/examples/simulation/apt.go": {
+      "target": "SDL/go/examples/simulation/apt.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "a1e709f1e734fd4035b811102fde21af3c25d1e3ef40d304db8f791f16b56e85"
+    },
+    "SystemDesignLanguage/go/go.mod": {
+      "target": "SDL/go/go.mod",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "bbdc55f0cd0d9e173a6d73e3d56905cd466a5cb45836021860b8801682423237"
+    },
+    "SystemDesignLanguage/go/go.sum": {
+      "target": "SDL/go/go.sum",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "fe773228c62502f999e9cf9eedd335cdc17bff0eb9adb893f57aa91a45a04034"
+    },
+    "SystemDesignLanguage/go/parser/actions.go": {
+      "target": "SDL/go/parser/actions.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "32451a414cc22060cd234484d4a70714f08084da36162f3a344448022c16da43"
+    },
+    "SystemDesignLanguage/go/parser/actions_test.go": {
+      "target": "SDL/go/parser/actions_test.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "0ac76761ad8adaa751268d7576c48486125eb64f067fe9600f8bc1282ab8d602"
+    },
+    "SystemDesignLanguage/go/parser/ast.go": {
+      "target": "SDL/go/parser/ast.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "87cead0cd8dfab253272ec6c96db8073e7a72336f90b411260fd6d800cbe5b9f"
+    },
+    "SystemDesignLanguage/go/parser/channels.go": {
+      "target": "SDL/go/parser/channels.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "6db514c929fcaaed796cb3776de7e3913e2c27623612bbe782c4d75d49d295b3"
+    },
+    "SystemDesignLanguage/go/parser/class_validation.go": {
+      "target": "SDL/go/parser/class_validation.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "dc066dccd67bf3d9141b443154497d7b0a381ec6ae95d4cfad0bdf08999fe98a"
+    },
+    "SystemDesignLanguage/go/parser/classes.go": {
+      "target": "SDL/go/parser/classes.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "37398db860d6d8e63742248a7b78cf0b58c4008a69c7de9c2aac16b90d02775a"
+    },
+    "SystemDesignLanguage/go/parser/classes_test.go": {
+      "target": "SDL/go/parser/classes_test.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "79ff5aca672c647fc5b90081cd107fe0d06e2502add2c9e8b8cbe47ca7b054c4"
+    },
+    "SystemDesignLanguage/go/parser/data.go": {
+      "target": "SDL/go/parser/data.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "fb01dc4258aac2030d44e981dca458197f69c7d3e3ec75b3b5c2c383eb78df21"
+    },
+    "SystemDesignLanguage/go/parser/data_contracts.go": {
+      "target": "SDL/go/parser/data_contracts.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "bd927377b84d26ebadc825df52651f2e8ad3dafd09f5280aaf0dfdab40de6132"
+    },
+    "SystemDesignLanguage/go/parser/index.go": {
+      "target": "SDL/go/parser/index.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "d9f1d3c857617937bbe9411e687d4f5e755448b7a5db03845a7eec642bd18b13"
+    },
+    "SystemDesignLanguage/go/parser/parse.go": {
+      "target": "SDL/go/parser/parse.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "9a74626ebab0572cb9283367616e725c7e80ca5c9c7fc339869563fbc6fe87a3"
+    },
+    "SystemDesignLanguage/go/parser/port_test.go": {
+      "target": "SDL/go/parser/port_test.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "72e10f81b5a9755d36829c1a178d75b98ddd2417c94bcb193b5ac651a5635320"
+    },
+    "SystemDesignLanguage/go/parser/testdata/python-port-cases.json": {
+      "target": "SDL/go/parser/testdata/python-port-cases.json",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "8bdab2664ada8d8ebcde8d964824462483e59555f4d946d155a24a4b8e83f5d9"
+    },
+    "SystemDesignLanguage/go/parser/validate.go": {
+      "target": "SDL/go/parser/validate.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "5508eed76c3e4a236e3703e7a40e5e21a72e9370b1eecbab94f4d8575fb83508"
+    },
+    "SystemDesignLanguage/go/parser/vocabulary.go": {
+      "target": "SDL/go/parser/vocabulary.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "4246a0092ce2d149690654a316f46edd5dcfce8ff83fdf816b9a3625426d0c1a"
+    },
+    "SystemDesignLanguage/go/reader/xfmd.go": {
+      "target": "SDL/go/reader/xfmd.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "63594149f550297cb55e2e68591134dac09bc88eeda14c91e8518deb3114453f"
+    },
+    "SystemDesignLanguage/go/reader/xfmd_test.go": {
+      "target": "SDL/go/reader/xfmd_test.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "6230e2dd9d26fd540cc2e3f9176ea173b0e9c6f62c7cba4d862e44078cfb4c94"
+    },
+    "SystemDesignLanguage/go/reload/actions.go": {
+      "target": "SDL/go/reload/actions.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "15e7984720b5e7ce968c2bd17768c691640ad9a3dfb639323f37a2114ee4754e"
+    },
+    "SystemDesignLanguage/go/reload/actions_test.go": {
+      "target": "SDL/go/reload/actions_test.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "bf6e7b2df5568458c9c4ad2183caec087e2d713b9027e697ea80a953dc9da566"
+    },
+    "SystemDesignLanguage/go/runtime/engine.go": {
+      "target": "SDL/go/runtime/engine.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "ca395df96e5896d23d8708f20e868b0517c40c07af443d17ebc6c006533fa978"
+    },
+    "SystemDesignLanguage/go/runtime/engine_test.go": {
+      "target": "SDL/go/runtime/engine_test.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "879dde8ae7898f8bbb4f10b57e2433e468330816ec24ce6bdc9485c37d7ca0d7"
+    },
+    "SystemDesignLanguage/go/runtime/reload.go": {
+      "target": "SDL/go/runtime/reload.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "9dcf8b595a42a25eb4280acf0e311784e47aee37fa63e5eb03594002dc4e0bca"
+    },
+    "SystemDesignLanguage/go/runtime/reload_test.go": {
+      "target": "SDL/go/runtime/reload_test.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "d02cb247ae0bf0a6f7dbc8d6e49c450316bc4e5b4ec20f7e1d433cd227c089be"
+    },
+    "SystemDesignLanguage/go/runtime/value.go": {
+      "target": "SDL/go/runtime/value.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "b112f33d17121adf189b98c3c09e2d1090d3539be3cdebf2f7a2d14a02b915d8"
+    },
+    "SystemDesignLanguage/go/snapshot/snapshot.go": {
+      "target": "SDL/go/snapshot/snapshot.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "0cd1fb936ed5f7f6784c6a444aeff3f9a583df0b2d831f186b34078795382d3c"
+    },
+    "SystemDesignLanguage/go/snapshot/snapshot_test.go": {
+      "target": "SDL/go/snapshot/snapshot_test.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "dfb2af12f51bbac3ab600ddd40a22122e6b1f6aac5d44ac9480176814a0f6f9a"
+    },
+    "SystemDesignLanguage/go/tools/verify_design_launcher.py": {
+      "target": "SDL/go/tools/verify_design_launcher.py",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "ff283edc5bba623156a15a1ef914c06945b8363fabe93a08645b006aa51e4602"
+    },
+    "SystemDesignLanguage/go/tools/verify_native_broker.py": {
+      "target": "SDL/go/tools/verify_native_broker.py",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "b7058cfa15014b7efce09c895dadb9fcb413da362ccd51b4ac6efbb8ff3cf58e"
+    },
+    "SystemDesignLanguage/go/tools/verify_release.py": {
+      "target": "SDL/go/tools/verify_release.py",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "eeea4e7acf31f658e0b5727e1e84cfaba63610d4394d14c79f94c92699369884"
+    },
+    "SystemDesignLanguage/go/viewpoint/catalog.go": {
+      "target": "SDL/go/viewpoint/catalog.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "0d2b3473c168de5b6ade2a50475a1f85d7b8b15f0891e1cfbb3e3ae3249a6fc7"
+    },
+    "SystemDesignLanguage/go/viewpoint/channels.go": {
+      "target": "SDL/go/viewpoint/channels.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "e414e56bab192483a15054e8138bd779a01caff01eb460b47d7c050c912d229f"
+    },
+    "SystemDesignLanguage/go/viewpoint/classes.go": {
+      "target": "SDL/go/viewpoint/classes.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "c8ad6d1da023fdc99e903cee06bcb31a2a31ebc9fff3ca4689b5cf9077136059"
+    },
+    "SystemDesignLanguage/go/viewpoint/data.go": {
+      "target": "SDL/go/viewpoint/data.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "abe01b7aa840be1371041daed72aa45ff2a079020d0b26cbf7180fe29b7745d2"
+    },
+    "SystemDesignLanguage/go/viewpoint/documents.go": {
+      "target": "SDL/go/viewpoint/documents.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "7957f139a08bd1343d8726f00619406885f803f5ddfaec3180314445b3523843"
+    },
+    "SystemDesignLanguage/go/viewpoint/model.go": {
+      "target": "SDL/go/viewpoint/model.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "7d98621b74fa2a67cee51a928695a134db33c67ab34eb13b866d7773b547dc47"
+    },
+    "SystemDesignLanguage/go/viewpoint/port_test.go": {
+      "target": "SDL/go/viewpoint/port_test.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "13f5bc11ff3164c19605a3e7d1cc09c13e5110844ee424c68ba527ecf55ed8b3"
+    },
+    "SystemDesignLanguage/go/viewpoint/query.go": {
+      "target": "SDL/go/viewpoint/query.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "920c8e4323d6de7fb0051aa1a23a25e0e9688ac2ef8f9ddc1217e533c0a714b1"
+    },
+    "SystemDesignLanguage/go/viewpoint/query_test.go": {
+      "target": "SDL/go/viewpoint/query_test.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "88c6458afec27ff6185bcbeae6f825d7a7f7d42380d8e85b4dd6dc95ab8d8be9"
+    },
+    "SystemDesignLanguage/go/viewpoint/structure.go": {
+      "target": "SDL/go/viewpoint/structure.go",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "d51b0584c35cbee91dfca69806e02785138e712ddbd3d6ee7ef6c18fef61182f"
+    },
+    "SystemDesignLanguage/go/viewpoint/testdata/python-projection-source.design": {
+      "target": "SDL/go/viewpoint/testdata/python-projection-source.design",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "be0dfcfdca6e04f7b8c4594dc5e72d920724ef96e1f604e749432121aa83e862"
+    },
+    "SystemDesignLanguage/go/viewpoint/testdata/python-projections.json": {
+      "target": "SDL/go/viewpoint/testdata/python-projections.json",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "9f7ed53550b79e17baf83ac5149a30bb35d0b5cc9ff7932e7c41ed3deae4d222"
+    },
+    "SystemDesignLanguage/grammar/action-core-0.1.ebnf": {
+      "target": "SDL/grammar/action-core-0.1.ebnf",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "e51e2d8cd7a715d1da764568fef8c70e50f61a42d5825e0ddf9fb672aca3a134"
+    },
+    "SystemDesignLanguage/grammar/class-core-0.1.ebnf": {
+      "target": "SDL/grammar/class-core-0.1.ebnf",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "d2e2023a93fe92057f46cfdd4238143b96d304e2f570223104b257d18418e0ef"
+    },
+    "SystemDesignLanguage/research/README.md": {
+      "target": "SDL/research/README.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "e2939b1131c39b74c5055208e28556714fbd488bb67f9c3d3d4fc447c778b1e4"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/README.md": {
+      "target": "SDL/research/existingDesignLanguages/README.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "563b2a7287c289e11126f1048ab68ca62b9a28d2a58b62f53a987e4e980e8b5f"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/aadl.md": {
+      "target": "SDL/research/existingDesignLanguages/aadl.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "cc19741a7842288712247b609a0b3aa45e0284df509e2d8144d06910a7473787"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/alloy.md": {
+      "target": "SDL/research/existingDesignLanguages/alloy.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "aac5f68e41d131d9e4a24bcf5667becc63b1a087d137940d0c5d6cc22bb0efe6"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/archimate.md": {
+      "target": "SDL/research/existingDesignLanguages/archimate.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "bf2f68ea594881a4e992c7b57b57b5831dd9a78ecb21b591332ce182b1d93f94"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/asyncapi.md": {
+      "target": "SDL/research/existingDesignLanguages/asyncapi.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "dbc22b3b4bd6af24e6e9fccc0bfe094adfa196e1e6976c30feeebc236e1e2001"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/atl.md": {
+      "target": "SDL/research/existingDesignLanguages/atl.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "40673811bcb8d01fd0266a1caac3bde2405712a3699b56096ee5895c4421f9c5"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/bpmn.md": {
+      "target": "SDL/research/existingDesignLanguages/bpmn.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "b55020c867a8d1c1a5c749eb3db1c98296fc3c92bdcd1fed422b267562fc4531"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/clafer.md": {
+      "target": "SDL/research/existingDesignLanguages/clafer.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "882bfd7cba753502f3aee0b137dbdea370752be5e2457364a0e189d718cf2396"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/context-mapper-cml.md": {
+      "target": "SDL/research/existingDesignLanguages/context-mapper-cml.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "31694d9eee4ae084ddc52f5d34ddc4d0cbb53065dc7fd90013e50bef189cea1a"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/cue.md": {
+      "target": "SDL/research/existingDesignLanguages/cue.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "b369854b74fe91d99ee27cba9a71d59c40c66d5e289d92b31097e442087eaba8"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/d2.md": {
+      "target": "SDL/research/existingDesignLanguages/d2.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "b2bc33cedbabb1d9ba44c13c6d9a0e5de69464a2239e4e9b3fba59f72f116102"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/dbml.md": {
+      "target": "SDL/research/existingDesignLanguages/dbml.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "7f990ab1470e2ec0fb7582f954b0c0ca480e3ed55ceb7c07cd1784c0a16ec2a8"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/ecore.md": {
+      "target": "SDL/research/existingDesignLanguages/ecore.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "07fbb3df9348821e6c149fe1e8c01cf6909bdac0023cd0c575178ffc6a8b9552"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/edapt.md": {
+      "target": "SDL/research/existingDesignLanguages/edapt.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "8336115d3a064edd9f0e8f1f9ac116e7df5fab0ab75a5e360481eae7501db63a"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/epsilon.md": {
+      "target": "SDL/research/existingDesignLanguages/epsilon.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "1ec782ced6834ba2ae7cb2d9a6f78928e47cbbefa172fdd9fdf08b444e0ed38b"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/json-schema.md": {
+      "target": "SDL/research/existingDesignLanguages/json-schema.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "298bd9de32efbd343a8af8d11571d3a4a0e3be8cf15d6c12cce27b2fc12fbeb2"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/likec4.md": {
+      "target": "SDL/research/existingDesignLanguages/likec4.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "dd0ea1248f3f1465f9bbf3df592b70c76845c67d5539f26ab7ac73f63acb322e"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/mermaid.md": {
+      "target": "SDL/research/existingDesignLanguages/mermaid.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "620d20f964739863f1b66d9393dc1b7e3fe83784f09863ec274ea440c9f6070d"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/ocl.md": {
+      "target": "SDL/research/existingDesignLanguages/ocl.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "acb8d1b025b58b362bbcacc3b7e4ec8052f1aaebecc8c36c982ed5cd77ec4267"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/openapi.md": {
+      "target": "SDL/research/existingDesignLanguages/openapi.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "e83ab0714fcb5544504e9dc800469074baac35bc7045878ef7086fa5b1f29849"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/plantuml.md": {
+      "target": "SDL/research/existingDesignLanguages/plantuml.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "c54e6c67950107e81fbf16284e7a741a4287567d644fd77c86c68a379068f8c3"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/protobuf.md": {
+      "target": "SDL/research/existingDesignLanguages/protobuf.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "f83c8e03c8a286a4a979efda24df5a006ae82e2592c1a43cd66ee7a1a238870c"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/prov-o.md": {
+      "target": "SDL/research/existingDesignLanguages/prov-o.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "4147a6e7830b201d89a47ed447899a894805fa955edb01951c32101320f86eec"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/qvt.md": {
+      "target": "SDL/research/existingDesignLanguages/qvt.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "a0e78d4e8544d70cb77add3f2a9d43af01d42e7f1955bf5eff307e79eb2cf25c"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/rego.md": {
+      "target": "SDL/research/existingDesignLanguages/rego.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "f9d37240e206898773cd88a902789db9d2fadfdc1753bf31ea80019ee32683fd"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/reqif.md": {
+      "target": "SDL/research/existingDesignLanguages/reqif.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "4df8e7d866d2f4be12a5c858a3920d53f61c765fd8366154e7214506eda45184"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/scxml.md": {
+      "target": "SDL/research/existingDesignLanguages/scxml.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "a7bac7a0b6900be3199fac0de7aa478a28fb058bc594c5ae009996aa1b532361"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/smithy.md": {
+      "target": "SDL/research/existingDesignLanguages/smithy.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "67fcb539cdba99977434893bc8462a2e5221b76acfb7d8916425adb22517874a"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/structurizr-dsl.md": {
+      "target": "SDL/research/existingDesignLanguages/structurizr-dsl.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "1794755c07680314cb299a2bd9f0b52c004d5a3b66d2c8186f600201a331e66d"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/sysml-v2.md": {
+      "target": "SDL/research/existingDesignLanguages/sysml-v2.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "282b352312d67d58a1ba139e4806968c2564a8d395400ddb1e286c25f2d3c747"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/tla-plus.md": {
+      "target": "SDL/research/existingDesignLanguages/tla-plus.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "a4c3c613b121ea45b027cf7d440d3a3a809af4786e64079e881fdb053021f458"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/uml.md": {
+      "target": "SDL/research/existingDesignLanguages/uml.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "89cc5921b3b2357fdfdacaf46f94723e361abfc784008a0440971fa502a86516"
+    },
+    "SystemDesignLanguage/research/existingDesignLanguages/uvl.md": {
+      "target": "SDL/research/existingDesignLanguages/uvl.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "ccd6cef8d43f42f687477286292ea3676783e1cccb789791acb90688c2851096"
+    },
+    "SystemDesignLanguage/scripts/README.md": {
+      "target": "SDL/scripts/README.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "4f13126d412bd835bc68f2bfb88e2f98f23c6d0f47e30fdbe16ede6d8f415fca"
+    },
+    "SystemDesignLanguage/scripts/sdl-design": {
+      "target": "SDL/scripts/sdl-design",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "9cc4d1d3e82911ccae98932113d80290cefff6bbea0c340ffca5086ad2fc53ff"
+    },
+    "SystemDesignLanguage/tools/.gitignore": {
+      "target": "SDL/tools/.gitignore",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "862263fa1f46c20f0d1e4dac5ffcc75abd55c08211b2c3864c5f8764b9d87793"
+    },
+    "SystemDesignLanguage/tools/README.md": {
+      "target": "SDL/tools/README.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "c0f92dee3555e9a1cde11dd08c7eba1058e26f66c20206611467a5282ad02182"
+    },
+    "SystemDesignLanguage/tools/verification.json": {
+      "target": "SDL/tools/verification.json",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "89a19dfb7510704b721da68a75a907d235f93335a21ff20d4100d4328813f3f2"
+    },
+    "TieredDesignAndImplementation.md": {
+      "target": "SDP/History/process-drafts/TieredDesignAndImplementation.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "b2b9d5f084733893a58f12f54d2ffa3256c03bb0fc84759ff3da962c2a95d02b"
+    },
+    "Toolkit/project-templates/project-root/AGENTS-project.md.template": {
+      "target": "Template/project-root/AGENTS-project.md.template",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "a95a871f9f8b10f4bbdd4420a5cb936ba7dfc3c8badd30342b9460a22e12f471"
+    },
+    "Toolkit/project-templates/sdp-root/01--Mandate/mandate.md": {
+      "target": "Template/sdp-root/01--Mandate/mandate.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "710ba450c91fd8ead4963eff73d7b5ef2c90c39d988ffe24527c227b851fae85"
+    },
+    "Toolkit/project-templates/sdp-root/02--Study/study.md": {
+      "target": "Template/sdp-root/02--Study/study.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "cda0ebd6d1ef80bde2e18a15bf7e33fa106f61910f199ad1fd5c91dc55c0e6c2"
+    },
+    "Toolkit/project-templates/sdp-root/03--Requirements/requirements.md": {
+      "target": "Template/sdp-root/03--Requirements/requirements.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "7c5e881f29c6825ae5ecae18bb792669f70429abccdcbf22ebf4b117eef2071d"
+    },
+    "Toolkit/project-templates/sdp-root/04--Architecture/architecture.md": {
+      "target": "Template/sdp-root/04--Architecture/architecture.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "f75031b9f2c22bc77a706dabff1233d83e273490693050a8f23e66311394013a"
+    },
+    "Toolkit/project-templates/sdp-root/05--DesignAnalysis/design-analysis.md": {
+      "target": "Template/sdp-root/05--DesignAnalysis/design-analysis.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "d4ebd3b069bd08fb2ad95c151595448805cc9c592823d60da9771361006050c1"
+    },
+    "Toolkit/project-templates/sdp-root/06--Design/design.md": {
+      "target": "Template/sdp-root/06--Design/design.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "cea9d92f6e1fa41fbbb21739f7d4b99957e59b0a75b03b19dd52203a7fc8c03a"
+    },
+    "Toolkit/project-templates/sdp-root/07--Implementation/implementation-plan.md": {
+      "target": "Template/sdp-root/07--Implementation/implementation-plan.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "d1a9b88fab07561e537199cb68f10596860e9769201854cc0f7c4fa38798dd04"
+    },
+    "Toolkit/project-templates/sdp-root/AGENT-REMINDERS.md.template": {
+      "target": "Template/sdp-root/AGENT-REMINDERS.md.template",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "0e67229fda082b8bc30519084a58e254be73101d573a0d2ed2a2ee802b5f998d"
+    },
+    "Toolkit/project-templates/sdp-root/CodeReview/README.md": {
+      "target": "Template/sdp-root/CodeReview/README.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "f7d7a477e95f21e240f9cd9cc0ed2b0f6b754c3889dd79dae8223e45358d6b18"
+    },
+    "Toolkit/project-templates/sdp-root/Fixes/README.md": {
+      "target": "Template/sdp-root/Fixes/README.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "0b8275376ce81d999d749cc8af553cfbfcec44608dfda87d0da9bfba330a25f5"
+    },
+    "Toolkit/project-templates/sdp-root/Instructions/README.md": {
+      "target": "Template/sdp-root/Instructions/README.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "110a4653e9f29b063d1b68c7e77c0bd008070b36d491de336d6bd8591190b6de"
+    },
+    "Toolkit/project-templates/sdp-root/RELEASE-NOTES.md": {
+      "target": "Template/sdp-root/RELEASE-NOTES.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "05c956b34811a4ebed31114b19eaa3a78c4e83ae00e3511bfae47175b2c40a86"
+    },
+    "Toolkit/project-templates/sdp-root/Refactors/README.md": {
+      "target": "Template/sdp-root/Refactors/README.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "19c070ecbc480db867aae9d6dd74f8c9cba5c002e18953e0f25f96be237677c6"
+    },
+    "Toolkit/project-templates/sdp-root/Releases/README.md": {
+      "target": "Template/sdp-root/Releases/README.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "42539bd5853eef554e1e46323b47a657e876a1533c2e5b92bd23eadb8c528b68"
+    },
+    "Toolkit/project-templates/sdp-root/SDP-DOCUMENT-GUIDE.md": {
+      "target": "Template/sdp-root/SDP-DOCUMENT-GUIDE.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "930b8be7f093bd27e91fc3a4570453ee420eaf26f322dfac81e6f164b7fd03b8"
+    },
+    "Toolkit/project-templates/sdp-root/SDP-project.manifest.yaml": {
+      "target": "Template/sdp-root/SDP-project.manifest.yaml",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "2f1ab86af14c87d0b2b3fd811ac4fb015576bea105ed0926735061bd45598b9d"
+    },
+    "Toolkit/project-templates/sdp-root/Sprints/README.md": {
+      "target": "Template/sdp-root/Sprints/README.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "c34445dd2302208046873b78ee107c6bd61fedc3e985cfdad3714641961f6525"
+    },
+    "Toolkit/project-templates/sdp-root/Traceability/CurrentIndex.yaml": {
+      "target": "Template/sdp-root/Traceability/CurrentIndex.yaml",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "26ca52c91ecce89f31f515e6cf91aa6bdc8d7688d06e2781250aadcc12ca40f3"
+    },
+    "Toolkit/project-templates/sdp-root/Traceability/README.md": {
+      "target": "Template/sdp-root/Traceability/README.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "e4de8f6d8ccd225f9b56d56265f04f53974ec1bdf4e8d94984aa870e01b0af03"
+    },
+    "Toolkit/project-templates/sdp-root/Traceability/Relations.yaml": {
+      "target": "Template/sdp-root/Traceability/Relations.yaml",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "5b3805ad5ae0a04995b9d1e86f0fadc9d2ee14c91e806fdd4d4dd06bf627a3ac"
+    },
+    "Toolkit/project-templates/sdp-root/Verification/README.md": {
+      "target": "Template/sdp-root/Verification/README.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "66725e495a9523ab4b9b3bd2b60abcfcd78a46f28a05245c67d757200a25a8a9"
+    },
+    "Traceability/CurrentIndex.yaml": {
+      "target": "SDP/Traceability/CurrentIndex.yaml",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "c06b9cd30d5ece6f97a2f6f4974bbf317e12e5f8a3d58c9a81226a7bb4df6512"
+    },
+    "Traceability/Ledger.ndjson": {
+      "target": "SDP/Traceability/Ledger.ndjson",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "0f1abc9b71dd4ba2c5108bb1fcf41945e3fb8d5c1b1cb1dd6102ed4233f91caa"
+    },
+    "Traceability/README.md": {
+      "target": "SDP/Traceability/README.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "dff02e9b3e8fb69bd8761f0063afc824baf9e9762f8962383ed22c3a20becdfd"
+    },
+    "Traceability/Relations.yaml": {
+      "target": "SDP/Traceability/Relations.yaml",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "3fd304db4e0352b01427f7287f04d75b9e4524524c92246d81bd1c907b8c40ef"
+    },
+    "Verification/README.md": {
+      "target": "SDP/Verification/README.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "d199a075e76ca8a97225bff92a4f525452fefb30fcb0237d76256bdca7a0f044"
+    },
+    "Verification/VER-SDP-005-001.md": {
+      "target": "SDP/Verification/VER-SDP-005-001.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "9f500cdf1cfb013d7eea74be9baff58f9bd45f22d116995dd6a922528d48fc4e"
+    },
+    "Verification/VER-SDP-005-002.md": {
+      "target": "SDP/Verification/VER-SDP-005-002.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "922285ae4f51a4277ba3ce66f69c3dd1dcade68695701fc7e66037f3d2842f59"
+    },
+    "Verification/VER-SDP-005-003.md": {
+      "target": "SDP/Verification/VER-SDP-005-003.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "56ac95ee2f4b0b382d0c4ffd693411a28e96cf863ef41aff6ffef6df3deac9e5"
+    },
+    "Verification/VER-SPS-001-002.md": {
+      "target": "SDP/Verification/VER-SPS-001-002.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "905e335e7573cc240f550227dd12096c138fb8eade8ebfa24bed9a0804ca122f"
+    },
+    "Verification/VER-SPS-001-003.md": {
+      "target": "SDP/Verification/VER-SPS-001-003.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "343ae5e67295305c1a94488b8d036de3be4a270f14e0485102071003ecfbff23"
+    },
+    "Verification/VER-SPS-001-004.md": {
+      "target": "SDP/Verification/VER-SPS-001-004.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "9980f50ce99537079192770bd08bfa0df1d261387fa7c3b67d1c6498a51e6f50"
+    },
+    "Verification/VER-SPS-001-005.md": {
+      "target": "SDP/Verification/VER-SPS-001-005.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "dea95e827ecc8a4e87586aabf4283e85de32d7c7a1f3270b08b49cd89b379c99"
+    },
+    "Verification/VER-SPS-001-006.md": {
+      "target": "SDP/Verification/VER-SPS-001-006.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "7e5d92c88aca7a3292363b003e186d2edcf34483665317e4a48f50cac9af730f"
+    },
+    "Verification/VER-SPS-001.md": {
+      "target": "SDP/Verification/VER-SPS-001.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "1be0b9678e53df566fd27f81d2ac068e1e5224afa454206855ed145b058adff1"
+    },
+    "docs/Design-Language-Conformance-Scenarios.md": {
+      "target": "SDL/docs/studies/Design-Language-Conformance-Scenarios.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "e1fcf3347ab4b21c07b1a4e2dca57823bcc094de71fb27ac20fb2fdc17ff46f5"
+    },
+    "docs/Design-Language-Definition.md": {
+      "target": "SDL/docs/studies/Design-Language-Definition.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "e7d33e60f2469238d1ee8b7de0ab5eb2ca69948683088f0e3cc17229b4d21de5"
+    },
+    "docs/Development-Branch-Stack.md": {
+      "target": "SDP/Development-Branch-Stack.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "e2b92c8015614d877700932aa3948eec0b27aaae79c65e47e90e3e5965e9895d"
+    },
+    "docs/Development-Identity.md": {
+      "target": "Toolkit/docs/Development-Identity.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "f22754c2c0b52e30ab9b50ed7d1816f3a4ab36a9e2dcac1f0092f45fa6de9a98"
+    },
+    "docs/Distribution-And-Upgrades.md": {
+      "target": "Toolkit/docs/Distribution-And-Upgrades.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "ad99394ad6fa29f5f3a1909a95c471fb783e02e92d880293703a804cb8c60a85"
+    },
+    "docs/Feature-Functionality-and-Channel-Study.md": {
+      "target": "SDL/docs/studies/Feature-Functionality-and-Channel-Study.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "5cbff06128d73564d6947a590df578cd3ef1580d7c898e313d7ae3205eef966c"
+    },
+    "docs/Feature-Governance-And-SDP-2.0.md": {
+      "target": "docs/process/Feature-Governance-And-SDP-2.0.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "3ab00b08cce34ed992b242b8a01c2850429e1ac83810655d051ecf171fa91788"
+    },
+    "docs/How-SDP-Works.md": {
+      "target": "docs/process/How-SDP-Works.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "816f7f2f678ef3bf64f9e442886a682111c4a848f290806ffbb3461fab88065d"
+    },
+    "docs/Installation-Contract.md": {
+      "target": "Toolkit/docs/Installation-Contract.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "8bf9623d2be96fe92b86ce16fb2d1b83a29c2586b5a5e36ee95267a65371bf35"
+    },
+    "docs/Installer-Migration.md": {
+      "target": "Toolkit/docs/Installer-Migration.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "0addd7c7bbfdb423acfbbb15b2de1db1ccac349a991901370ed0e7c4d27ed8fa"
+    },
+    "docs/MVP1-Design-Evolution-and-SDP-Skills.md": {
+      "target": "docs/process/MVP1-Design-Evolution-and-SDP-Skills.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "3906a1bff5c7db98d4e710abdf32835ed4824b3167dfb0e7ce0e0035424c0a34"
+    },
+    "docs/MVP1-Design-Language-Example.md": {
+      "target": "SDL/docs/studies/MVP1-Design-Language-Example.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "1f3189eb03a8d5f712d088dbc89cf992c68a3727a84a2611212d9914b1cf7a38"
+    },
+    "docs/MVP1-SDL-Exercise-Findings-and-Extensions.md": {
+      "target": "SDL/docs/studies/MVP1-SDL-Exercise-Findings-and-Extensions.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "d7589f7382210c971d6cafaedcfe2b75587ae84d83e807e218bc601769bbf29e"
+    },
+    "docs/Project-Manifest.md": {
+      "target": "Toolkit/docs/Project-Manifest.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "36446f73734f9359161836f40df4753b7d25a5c62b424e96e0f75ba5b9703f98"
+    },
+    "docs/Release-And-Versioning.md": {
+      "target": "Toolkit/docs/Release-And-Versioning.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "6165cc908fc0449b46fa7a0e075c1454e3b6c67b5b11fa29cf65dfb60b540788"
+    },
+    "docs/Release-Lifecycle.md": {
+      "target": "Toolkit/docs/Release-Lifecycle.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "0145f2a44e2fca646d334337ba325a0c5707a3266b5e17491f37336ea87455e1"
+    },
+    "docs/Release-Notes-Policy.md": {
+      "target": "Toolkit/docs/Release-Notes-Policy.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "c0c610a77835f3b69b52a5dc450f053b808df8d2a65d2e842b3f06e017b98497"
+    },
+    "docs/SDL-Channel-Scenario-Profile.md": {
+      "target": "SDL/docs/profiles/SDL-Channel-Scenario-Profile.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "52834182fc12891892606745f1505a8010c9e62f736bf3c4305b766945ba10be"
+    },
+    "docs/SDL-Class-Profile.md": {
+      "target": "SDL/docs/profiles/SDL-Class-Profile.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "44197f249ff2553b413dc8975c3711a0425059ec4c1a7b43814e5d1be7d68932"
+    },
+    "docs/SDL-ControlSets-Layer-Boundaries-and-Data-Access.md": {
+      "target": "SDL/docs/studies/SDL-ControlSets-Layer-Boundaries-and-Data-Access.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "55152541c929b6d311c835579d5a1ed9fb9bdf999f25e96b0a5130371709b868"
+    },
+    "docs/SDL-Data-Contract-Profile.md": {
+      "target": "SDL/docs/profiles/SDL-Data-Contract-Profile.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "958c831c2b244e7db4b4dab66ea2e7516f64ecc5f36b5a4666322b8045a87700"
+    },
+    "docs/SDL-Datasets-Datagrams-and-Data-Contracts.md": {
+      "target": "SDL/docs/studies/SDL-Datasets-Datagrams-and-Data-Contracts.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "2db459a6627bfdd96fa92612461767138630930460975fcace6d06cf40ecb776"
+    },
+    "docs/SDL-Delivery-Plan-Profile.md": {
+      "target": "SDL/docs/profiles/SDL-Delivery-Plan-Profile.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "f3129a456cf915a431a503e9568a2ef00e00082daf998b8943d0165fe47c2c1d"
+    },
+    "docs/SDL-Executable-Action-Profile.md": {
+      "target": "SDL/docs/profiles/SDL-Executable-Action-Profile.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "cab1db9f9f0cc89597b862f074a2f38ccf60d3ccd833c1c78229e136ecfa6537"
+    },
+    "docs/SDL-Executable-IR-and-Runtime-Study.md": {
+      "target": "SDL/docs/studies/SDL-Executable-IR-and-Runtime-Study.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "b5bb60ff65afc016b37c9f693777d11317ebf77774cfc39472a12c0ba3fbbfab"
+    },
+    "docs/SDL-Go-Port-Inventory.md": {
+      "target": "SDL/docs/integration/SDL-Go-Port-Inventory.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "858dee049b46bf184ff53f24fb1876cc4f53a900a23564fc7d8ee5e8ed7a3b0d"
+    },
+    "docs/SDL-Navigable-Viewpoints-Design.md": {
+      "target": "SDL/docs/integration/SDL-Navigable-Viewpoints-Design.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "9f0d62abe1c7eb27d5c01d68228611c9e641f87535b8c6b6499f03268e5c3e35"
+    },
+    "docs/SDL-Source-Tree-and-Compilation-Study.md": {
+      "target": "SDL/docs/studies/SDL-Source-Tree-and-Compilation-Study.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "780a01cbb1d4afc2bd92e29bac91c05d78b9415fb0de483c117cdeb14bc3919c"
+    },
+    "docs/SDL-Symbol-Profile.md": {
+      "target": "SDL/docs/profiles/SDL-Symbol-Profile.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "0a6b8058b8a8b2ee419f9d8b21a84d28d5ca28a7c10c0f7f293a92c68bddb631"
+    },
+    "docs/SDL-Viewpoint-Levels-and-Notation.md": {
+      "target": "SDL/docs/integration/SDL-Viewpoint-Levels-and-Notation.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "0f66d9fe467e2c5e6f8f058cc0158b4917f18a47ac7bd4ee2749b7623bf94105"
+    },
+    "docs/SDP-Analyzer-Compatibility.md": {
+      "target": "Toolkit/docs/SDP-Analyzer-Compatibility.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "fc0fc8067bea3ab1622882964d23aca0bd7d8caccbc58aa77bc3c8e083e7e988"
+    },
+    "docs/Scenarios-State-and-Implementation-Traceability.md": {
+      "target": "SDL/docs/studies/Scenarios-State-and-Implementation-Traceability.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "5c7c3a07b84e0fb63ed59259fe191eb0a5d35445bf458862d05f52847d57694f"
+    },
+    "docs/Skill-Versioning.md": {
+      "target": "Toolkit/docs/Skill-Versioning.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "ae02b81ed8a4d1dee806d217478d0394a453dbec0f341cf1821003a1818a3c92"
+    },
+    "docs/Small-Fix-Policy.md": {
+      "target": "Toolkit/docs/Small-Fix-Policy.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "d37c44235488499a35236f3c7ee31631cd416c57d64c5a1a2e2d4e4636f2dcee"
+    },
+    "docs/Toolkit-Manifest.md": {
+      "target": "Toolkit/docs/Toolkit-Manifest.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "d23c28ab7c2c20e73fc8fc2a123660f6eea85293337d29c678a4e4c4000eef1f"
+    },
+    "docs/Traceability-Release-Events.md": {
+      "target": "Toolkit/docs/Traceability-Release-Events.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "04b80522c3a9f00ee5debc5a92b3073734e3360e48bc083e1080223579c3f7de"
+    },
+    "docs/Validation.md": {
+      "target": "Toolkit/docs/Validation.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "97c924d75fc7a61f251e2354397505d615ba42d11e59b8fce3d4bb5886f1b497"
+    },
+    "docs/Vocabulary-and-Grammar-Exploration.md": {
+      "target": "SDL/docs/studies/Vocabulary-and-Grammar-Exploration.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "bad94c32c21d2f9ee960819109ac0267cae014d4cd7a2cb0ef00a35efbe7cb25"
+    },
+    "docs/checkpoint#1/01-System-Development-Process.md": {
+      "target": "SDP/History/checkpoint-1/01-System-Development-Process.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "7c68a943ce38d3f8abec19ab7804cef29d8421c3c2a030b0918f551144ff1de6"
+    },
+    "docs/checkpoint#1/02-SDL-Model-and-Abstraction-Levels.md": {
+      "target": "SDP/History/checkpoint-1/02-SDL-Model-and-Abstraction-Levels.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "a5bdff09937000c850d6a281666d60fdc1d27a38b66458250bf1c63177caef67"
+    },
+    "docs/checkpoint#1/03-Values-Data-and-Control.md": {
+      "target": "SDP/History/checkpoint-1/03-Values-Data-and-Control.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "d330d5001a5cafd07158ecfc461063f079a9e10a326b17a7c3742dad12315571"
+    },
+    "docs/checkpoint#1/04-Worked-Realization-and-Change-Impact.md": {
+      "target": "SDP/History/checkpoint-1/04-Worked-Realization-and-Change-Impact.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "161a9f0cadbb2307cb56dd66e195e0632e487c9f6d43230b8447b67f8b075fb2"
+    },
+    "docs/checkpoint#1/05-Decisions-Sources-and-Next-Work.md": {
+      "target": "SDP/History/checkpoint-1/05-Decisions-Sources-and-Next-Work.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "0cdf59a31856a3f5123b39f573350e911e1fad9cbb54ee5bcede65883861d534"
+    },
+    "docs/checkpoint#1/06-Interactive-Prototype-and-Renderer-Study.md": {
+      "target": "SDP/History/checkpoint-1/06-Interactive-Prototype-and-Renderer-Study.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "900f3abd8df5ad4a665211a0fd9365c53ab190c3a2917b6605db7ef83e4c5de0"
+    },
+    "docs/checkpoint#1/07-SDUI-0.2-and-Go-Direction.md": {
+      "target": "SDP/History/checkpoint-1/07-SDUI-0.2-and-Go-Direction.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "5928b58873aaba994be52ef60b66572c91b92f800648792189edbd1e413ebf52"
+    },
+    "docs/checkpoint#1/08-SDL-Viewpoints-and-Implementation-Status.md": {
+      "target": "SDP/History/checkpoint-1/08-SDL-Viewpoints-and-Implementation-Status.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "cf3585eb5ee34d9d93fbb96f2ba266ac412ad756e3064ccfa9eb1d598cb55425"
+    },
+    "docs/checkpoint#1/09-SDL-Generated-Go-Design-Review.md": {
+      "target": "SDP/History/checkpoint-1/09-SDL-Generated-Go-Design-Review.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "c7fa85105ced45e1f3a06ff8fc271c1385e652c5d9d54681bbee2cfac332850e"
+    },
+    "docs/checkpoint#1/10-SDL-Viewpoint-Navigation.md": {
+      "target": "SDP/History/checkpoint-1/10-SDL-Viewpoint-Navigation.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "4c5528fe5584683c6f5c9c940b4258277964c68aec55cd73bb455009d52bf7ab"
+    },
+    "docs/checkpoint#1/11-Go-Implementation-and-Navigation.md": {
+      "target": "SDP/History/checkpoint-1/11-Go-Implementation-and-Navigation.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "ac8d7d97d0718cc0378917b8cbce10975f705742395980d3555995abdf207020"
+    },
+    "docs/checkpoint#1/README.md": {
+      "target": "SDP/History/checkpoint-1/README.md",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "766a99be26986e50bc14caab5ced189226265851518c01459657043770d3b4c7"
+    },
+    "docs/checkpoint#1/source-index.json": {
+      "target": "SDP/History/checkpoint-1/source-index.json",
+      "action": "move",
+      "milestone": "R1-M3",
+      "sha256_before": "aef984bfe44dfa8a3a2f0d32310637c4b14b27bfd1950956723236571620227a"
+    },
+    "payload/project-root/AGENTS.md.template": {
+      "target": "SDP/History/legacy-bootstrap/payload/project-root/AGENTS.md.template",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "d34a48e37267d807b978d9b9d8f582f7ab5cca7b8e940d16a3caf4dc5776c427"
+    },
+    "payload/sdp-root/AGENT-REMINDERS.md.template": {
+      "target": "SDP/History/legacy-bootstrap/payload/sdp-root/AGENT-REMINDERS.md.template",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "5949ce5c01c12fef3874db7e000a877a3e2ed4428bd71774216982934aa0e3fe"
+    },
+    "payload/sdp-root/Framework/README.md": {
+      "target": "SDP/History/legacy-bootstrap/payload/sdp-root/Framework/README.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "91e88f047ffe1d857d5e8f692eba5b86995e700786b31430d4a841cf5bd28db3"
+    },
+    "scripts/Install-SDP.ps1": {
+      "target": "SDP/History/legacy-bootstrap/scripts/Install-SDP.ps1",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "40afb6fa10249521f877e0a43436f0288694df04506f1b8347aa345ca7f180c6"
+    },
+    "skills/sdp-architect/SKILL.md": {
+      "target": "SDP/History/legacy-bootstrap/skills/sdp-architect/SKILL.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "b2ddcc79cef97a1add56750be52e767d79b19f5c021cedf5294de65e325ed8cd"
+    },
+    "skills/sdp-master/SKILL.md": {
+      "target": "SDP/History/legacy-bootstrap/skills/sdp-master/SKILL.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "627903a43d55e849a9cd14b480669fae30b0a507112de8958958b1e1d5cee083"
+    },
+    "skills/sdp-reviewer/SKILL.md": {
+      "target": "SDP/History/legacy-bootstrap/skills/sdp-reviewer/SKILL.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "596aa7b82f01341bf133104cf9d576841acc1b6cf5ad94d81aba8e41dd486499"
+    },
+    "skills/sdp-traceability/SKILL.md": {
+      "target": "SDP/History/legacy-bootstrap/skills/sdp-traceability/SKILL.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "b14d076adcf7c06b5d9889ba61f0558c9e1ef7a8748d7fd869c8241377c68271"
+    },
+    "skills/sdp-vertical-refactor/SKILL.md": {
+      "target": "SDP/History/legacy-bootstrap/skills/sdp-vertical-refactor/SKILL.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "1d18b123715d7e33273c864d9d6eb6f838346069728c85f89b24126a96461461"
+    },
+    "skills/sdp-worker/SKILL.md": {
+      "target": "SDP/History/legacy-bootstrap/skills/sdp-worker/SKILL.md",
+      "action": "move",
+      "milestone": "R1-M2",
+      "sha256_before": "352be5dc4af6004d834678479d7f8ba9439e792f61d78b3c266fd4e4e4f996d9"
+    }
+  }
+}

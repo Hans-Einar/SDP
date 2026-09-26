@@ -1,0 +1,11 @@
+{
+  "source_revision": "aca12a6",
+  "source_path": "SDL/docs/studies/Design-Language-Definition.md",
+  "source_sha256": "15c7d8252936edc0e8350c57c067c5cacd2761ce69d3fb442a8ddc5ae89b6b4a",
+  "active_sections": "1\u201311",
+  "active_path": "SDL/docs/profiles/SDL-Structural-Core-Profile.md",
+  "candidate_sections": "12\u201316",
+  "candidate_path": "SDL/docs/studies/SDL-Language-Candidates.md",
+  "preserved_fenced_blocks": 15,
+  "changes": "Authority prefaces, relocated links, duplicate subsection number 10.3 corrected to 10.4; all grammar/example fenced bytes preserved."
+}

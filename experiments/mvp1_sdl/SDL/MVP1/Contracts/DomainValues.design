@@ -1,0 +1,45 @@
+language sdl-mvp1-exercise version 0.1.
+
+data-type IdentityValue.
+data-type RevisionValue.
+data-type QualityValue.
+data-type LengthValue.
+data-type DecimalValue.
+data-type TextValue.
+data-type ActionValue.
+data-type StateRecord.
+data-type ProfileSampleValue.
+data-type SeriesValue.
+data-type MatrixValue.
+data-type ListValue.
+data-type SchemaValue.
+data-type StopOccurrenceValue.
+data-type ProductionRecordValue.
+
+IdentityValue describes "Stable opaque identity, not interchangeable merely because two IDs use strings.".
+RevisionValue describes "Monotonic within explicitly identified owner/session; no universal global revision.".
+QualityValue describes "Valid/unknown/unavailable/stale/invalid/pending are distinct; actual wire enum mapping is contract-specific.".
+LengthValue describes "Quantity length; source contract defines actual unit, e.g. Machine v1 cm; display conversion is explicit.".
+DecimalValue describes "Numeric value with domain precision/rounding policy still to be bound where unspecified.".
+TextValue describes "Text content; human labels are not semantic identity.".
+ActionValue describes "Typed intent plus availability; does not itself grant server control authority.".
+StateRecord describes "Composite owner state whose complete member schema must be supplied before execution.".
+ProfileSampleValue describes "Coherent profile identity/revision, position, diameter and quality from domain owner.".
+SeriesValue describes "Ordered/indexed stable samples with append/patch semantics; collection revision differs from view revision.".
+MatrixValue describes "Semantic row/column identities, value type and matrix revision; visual order is not cell identity.".
+ListValue describes "Independent stable entries; reorder does not recreate entry identity.".
+SchemaValue describes "Presentation node/binding/compatibility schema with structural revision; no executable callbacks.".
+StopOccurrenceValue describes "Session-qualified stop_id, semantic payload and advertised retention, distinct from command_id.".
+ProductionRecordValue describes "Durable cut-time provenance and domain fact, not optional Lab history.".
+ProfileSampleValue field "profileId" as IdentityValue.
+ProfileSampleValue field "revision" as RevisionValue.
+ProfileSampleValue field "position" as LengthValue.
+ProfileSampleValue field "diameter" as LengthValue.
+ProfileSampleValue field "quality" as QualityValue.
+ProductionRecordValue field "recordId" as IdentityValue.
+ProductionRecordValue field "calibrationRevision" as RevisionValue.
+ProductionRecordValue field "policyRevision" as RevisionValue.
+ProductionRecordValue field "economicRevision" as RevisionValue.
+ProductionRecordValue field "aptSourceId" as IdentityValue.
+ProductionRecordValue field "modelId" as IdentityValue.
+ProductionRecordValue field "planRevision" as RevisionValue.

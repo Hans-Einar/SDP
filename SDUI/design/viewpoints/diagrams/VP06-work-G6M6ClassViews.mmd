@@ -1,0 +1,10 @@
+flowchart LR
+    n_G6M6ClassViews["G6M6ClassViews (activity)"]
+    n_ProjectClassViews["ProjectClassViews (functionality)"]
+    n_SdlValidator["SdlValidator (unit)"]
+    n_SdlViewpointGenerator["SdlViewpointGenerator (unit)"]
+    n_ValidateClassRelations["ValidateClassRelations (functionality)"]
+    n_G6M6ClassViews -->|addresses| n_ProjectClassViews
+    n_G6M6ClassViews -->|addresses| n_ValidateClassRelations
+    n_SdlValidator -->|owns| n_ValidateClassRelations
+    n_SdlViewpointGenerator -->|owns| n_ProjectClassViews

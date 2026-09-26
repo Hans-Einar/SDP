@@ -1,0 +1,6 @@
+flowchart LR
+    n_FyneBackend["FyneBackend (unit)"]
+    n_FyneHost["FyneHost (container)"]
+    n_NativeInteraction["NativeInteraction (capability)"]
+    n_FyneBackend -->|provides| n_NativeInteraction
+    n_FyneHost -->|provides| n_NativeInteraction

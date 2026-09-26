@@ -1,0 +1,8 @@
+flowchart LR
+    n_LayoutArguments["LayoutArguments (contract)"]
+    n_LayoutModelArtifact["LayoutModelArtifact (field)"]
+    n_LayoutViewportHeight["LayoutViewportHeight (field)"]
+    n_LayoutViewportWidth["LayoutViewportWidth (field)"]
+    n_LayoutArguments -->|has-field| n_LayoutModelArtifact
+    n_LayoutArguments -->|has-field| n_LayoutViewportHeight
+    n_LayoutArguments -->|has-field| n_LayoutViewportWidth

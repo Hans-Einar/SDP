@@ -1,0 +1,32 @@
+language sdl-mvp1-exercise version 0.1.
+
+layer PonsseDomainLayer.
+layer RepresentationLayer.
+layer CompositionLayer.
+layer PresentationLayer.
+layer RendererLayer.
+layer UiSupportLayer.
+
+UI describes "Logical UI responsibility subsystem; distinct operator and simulator contexts using reusable definitions. Exact Go-host versus embedded runtime allocation remains open.".
+UI status selected.
+UI has-layer PonsseDomainLayer.
+UI has-layer RepresentationLayer.
+UI has-layer CompositionLayer.
+UI has-layer PresentationLayer.
+UI has-layer RendererLayer.
+UI has-layer UiSupportLayer.
+PonsseDomainLayer groups OperatorUiDomain.
+PonsseDomainLayer groups SimulatorUiDomain.
+RepresentationLayer groups RepresentationRuntime.
+CompositionLayer groups CompositionManager.
+PresentationLayer groups PresentationManager.
+RendererLayer groups RendererAdapter.
+UiSupportLayer groups UiTransportSession.
+UiSupportLayer groups DeliveryScheduler.
+UiSupportLayer groups UiCommandCoordinator.
+GenericUiMechanisms constrains UIRuntime.
+GenericUiMechanisms constrains BoxUI.
+DomainTruthOwned constrains OperatorUiDomain.
+DomainTruthOwned constrains SimulatorUiDomain.
+PreserveRepresentationIdentity constrains PresentationManager.
+UiResponsiveness constrains DeliveryScheduler.

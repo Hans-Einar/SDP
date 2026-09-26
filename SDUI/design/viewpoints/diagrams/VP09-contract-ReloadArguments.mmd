@@ -1,0 +1,6 @@
+flowchart LR
+    n_ReloadArguments["ReloadArguments (contract)"]
+    n_ReloadSourceRevision["ReloadSourceRevision (field)"]
+    n_ReloadSourceText["ReloadSourceText (field)"]
+    n_ReloadArguments -->|has-field| n_ReloadSourceRevision
+    n_ReloadArguments -->|has-field| n_ReloadSourceText

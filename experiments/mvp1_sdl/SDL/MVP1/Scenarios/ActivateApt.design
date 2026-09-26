@@ -1,0 +1,45 @@
+language sdl-mvp1-exercise version 0.1.
+
+scenario ActivateApt.
+condition ActivateAptReady.
+condition ActivateAptContinue.
+condition ActivateAptReject.
+outcome ActivateAptCompleted.
+outcome ActivateAptRejected.
+step ActivateAptContext.
+step ActivateAptActivate.
+step ActivateAptPublish.
+step ActivateAptFailure.
+step ActivateAptSuccess.
+condition ActivationDeliveryPending.
+outcome ActivationCommittedDeliveryPending.
+step ReportActivationDeliveryPending.
+
+ActivateApt illustrates ManageAptDefinitions.
+ActivateApt exercises EconomicDecisionContext.
+ActivateApt starts-when ActivateAptReady.
+ActivateApt starts-at ActivateAptContext.
+ActivateAptReady describes "Explicit activation requested for a valid definition under selected policy.".
+ActivateAptContinue describes "The previous operation succeeded and the next step's declared contract preconditions remain true; exact predicates are an executable-language gap.".
+ActivateAptReject describes "Validation, authority, applicability or operation failure prevents continuation; preserve prior valid state and report the specific reason.".
+ActivateAptCompleted describes "The stated design path completed under its explicit obligations; this is not an observed test result.".
+ActivateAptRejected describes "The path terminated without claiming the requested change succeeded; failures remain observable.".
+ActivateApt preserves DurableFactsRetained.
+ActivateApt preserves DomainTruthOwned.
+ActivateAptContext calls SelectEconomicPolicy within BuckingService.
+ActivateAptContext describes "Do not confuse APT relative machine instruction with settlement economics.".
+ActivateAptContext proceeds-to ActivateAptFailure when ActivateAptReject.
+ActivateAptContext proceeds-to ActivateAptActivate when ActivateAptContinue.
+ActivateAptActivate calls ActivateAptDefinition within BuckingService.
+ActivateAptActivate describes "Check lifecycle/generation preconditions; exact activation policy is an open contract.".
+ActivateAptActivate proceeds-to ActivateAptFailure when ActivateAptReject.
+ActivateAptActivate proceeds-to ActivateAptPublish when ActivateAptContinue.
+ActivateAptPublish calls PublishBuckingState within BuckingService.
+ActivateAptPublish describes "Durable activation event with source/revision identity.".
+ActivateAptPublish proceeds-to ReportActivationDeliveryPending when ActivationDeliveryPending.
+ActivateAptPublish proceeds-to ActivateAptSuccess when ActivateAptContinue.
+ActivateAptFailure finishes ActivateApt with ActivateAptRejected.
+ActivateAptSuccess finishes ActivateApt with ActivateAptCompleted.
+ActivationDeliveryPending describes "Activation committed but its publication/delivery is pending; retain the active definition identity and revision while recovering delivery.".
+ReportActivationDeliveryPending finishes ActivateApt with ActivationCommittedDeliveryPending.
+ActivationCommittedDeliveryPending describes "Activation is authoritative despite incomplete observer delivery; no rollback or repeated activation inferred.".

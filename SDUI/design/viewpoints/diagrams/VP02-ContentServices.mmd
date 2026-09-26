@@ -1,0 +1,8 @@
+flowchart LR
+    n_ContentServices["ContentServices (unit)"]
+    n_DiagramProvider["DiagramProvider (unit)"]
+    n_MarkdownProvider["MarkdownProvider (unit)"]
+    n_ResourceStore["ResourceStore (unit)"]
+    n_ContentServices -->|contains| n_DiagramProvider
+    n_ContentServices -->|contains| n_MarkdownProvider
+    n_ContentServices -->|contains| n_ResourceStore

@@ -1,0 +1,6 @@
+flowchart LR
+    n_OpenedViewRequestId["OpenedViewRequestId (field)"]
+    n_OpenedViewRevision["OpenedViewRevision (field)"]
+    n_ViewOpenedContract["ViewOpenedContract (contract)"]
+    n_ViewOpenedContract -->|has-field| n_OpenedViewRequestId
+    n_ViewOpenedContract -->|has-field| n_OpenedViewRevision

@@ -1,0 +1,9 @@
+language action-core version 0.1.
+action Echo.
+record EchoInput.
+record EchoOutput.
+Echo invokes GoEcho.
+Echo returns EchoOutput.
+Echo takes EchoInput.
+EchoInput field Value as text.
+EchoOutput field Value as text.
