@@ -1,0 +1,8 @@
+flowchart LR
+    n_ModelReloadCallsProtocol["ModelReloadCallsProtocol (contract)"]
+    n_ReloadPublished["ReloadPublished (message)"]
+    n_ReloadRejected["ReloadRejected (message)"]
+    n_ReloadRequest["ReloadRequest (message)"]
+    n_ModelReloadCallsProtocol -->|permits| n_ReloadPublished
+    n_ModelReloadCallsProtocol -->|permits| n_ReloadRejected
+    n_ModelReloadCallsProtocol -->|permits| n_ReloadRequest

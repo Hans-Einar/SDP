@@ -1,0 +1,6 @@
+flowchart LR
+    n_DevelopmentTools["DevelopmentTools (unit)"]
+    n_G5M2BehaviorParity["G5M2BehaviorParity (activity)"]
+    n_VerifyNativeBehaviorParity["VerifyNativeBehaviorParity (functionality)"]
+    n_DevelopmentTools -->|owns| n_VerifyNativeBehaviorParity
+    n_G5M2BehaviorParity -->|addresses| n_VerifyNativeBehaviorParity

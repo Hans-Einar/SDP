@@ -1,0 +1,32 @@
+flowchart LR
+    n_CaptureNavigationTarget["CaptureNavigationTarget (functionality)"]
+    n_ComposeViewPackage["ComposeViewPackage (functionality)"]
+    n_DispatchViewOpen["DispatchViewOpen (functionality)"]
+    n_EvictUnusedViewBundles["EvictUnusedViewBundles (functionality)"]
+    n_GenerateViewNavigation["GenerateViewNavigation (functionality)"]
+    n_KeyViewRevision["KeyViewRevision (functionality)"]
+    n_NavigableDesignDocumentation["NavigableDesignDocumentation (feature)"]
+    n_PreserveViewAnchors["PreserveViewAnchors (functionality)"]
+    n_ProjectSelectedView["ProjectSelectedView (functionality)"]
+    n_PublishViewBundle["PublishViewBundle (functionality)"]
+    n_RejectStaleViewResults["RejectStaleViewResults (functionality)"]
+    n_ResolveConfiguredViewer["ResolveConfiguredViewer (functionality)"]
+    n_RetainVisibleViewBundle["RetainVisibleViewBundle (functionality)"]
+    n_RouteDocumentToPane["RouteDocumentToPane (functionality)"]
+    n_ServeViewRequests["ServeViewRequests (functionality)"]
+    n_ValidateViewRequest["ValidateViewRequest (functionality)"]
+    n_CaptureNavigationTarget -->|contributes-to| n_NavigableDesignDocumentation
+    n_ComposeViewPackage -->|contributes-to| n_NavigableDesignDocumentation
+    n_DispatchViewOpen -->|contributes-to| n_NavigableDesignDocumentation
+    n_EvictUnusedViewBundles -->|contributes-to| n_NavigableDesignDocumentation
+    n_GenerateViewNavigation -->|contributes-to| n_NavigableDesignDocumentation
+    n_KeyViewRevision -->|contributes-to| n_NavigableDesignDocumentation
+    n_PreserveViewAnchors -->|contributes-to| n_NavigableDesignDocumentation
+    n_ProjectSelectedView -->|contributes-to| n_NavigableDesignDocumentation
+    n_PublishViewBundle -->|contributes-to| n_NavigableDesignDocumentation
+    n_RejectStaleViewResults -->|contributes-to| n_NavigableDesignDocumentation
+    n_ResolveConfiguredViewer -->|contributes-to| n_NavigableDesignDocumentation
+    n_RetainVisibleViewBundle -->|contributes-to| n_NavigableDesignDocumentation
+    n_RouteDocumentToPane -->|contributes-to| n_NavigableDesignDocumentation
+    n_ServeViewRequests -->|contributes-to| n_NavigableDesignDocumentation
+    n_ValidateViewRequest -->|contributes-to| n_NavigableDesignDocumentation

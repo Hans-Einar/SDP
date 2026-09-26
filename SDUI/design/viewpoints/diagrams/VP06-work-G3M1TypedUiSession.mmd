@@ -1,0 +1,45 @@
+flowchart LR
+    n_ApplyPropertyBatch["ApplyPropertyBatch (functionality)"]
+    n_CloseUiInstance["CloseUiInstance (functionality)"]
+    n_CorrelateUiResult["CorrelateUiResult (functionality)"]
+    n_CreateUiInstance["CreateUiInstance (functionality)"]
+    n_DispatchUiEvent["DispatchUiEvent (functionality)"]
+    n_G3M1TypedUiSession["G3M1TypedUiSession (activity)"]
+    n_ManageWidgetIdentities["ManageWidgetIdentities (functionality)"]
+    n_ProjectUiGeneration["ProjectUiGeneration (functionality)"]
+    n_RejectStaleUiEvent["RejectStaleUiEvent (functionality)"]
+    n_RevokeWidgetGenerations["RevokeWidgetGenerations (functionality)"]
+    n_SduiDispatcher["SduiDispatcher (unit)"]
+    n_SduiInstanceStore["SduiInstanceStore (unit)"]
+    n_SduiPropertyStore["SduiPropertyStore (unit)"]
+    n_SduiRuntime["SduiRuntime (unit)"]
+    n_SnapshotUiState["SnapshotUiState (functionality)"]
+    n_TrackInputDraft["TrackInputDraft (functionality)"]
+    n_ValidatePropertyBatch["ValidatePropertyBatch (functionality)"]
+    n_ValidateUiEvent["ValidateUiEvent (functionality)"]
+    n_G3M1TypedUiSession -->|addresses| n_ApplyPropertyBatch
+    n_G3M1TypedUiSession -->|addresses| n_CloseUiInstance
+    n_G3M1TypedUiSession -->|addresses| n_CorrelateUiResult
+    n_G3M1TypedUiSession -->|addresses| n_CreateUiInstance
+    n_G3M1TypedUiSession -->|addresses| n_DispatchUiEvent
+    n_G3M1TypedUiSession -->|addresses| n_ManageWidgetIdentities
+    n_G3M1TypedUiSession -->|addresses| n_ProjectUiGeneration
+    n_G3M1TypedUiSession -->|addresses| n_RejectStaleUiEvent
+    n_G3M1TypedUiSession -->|addresses| n_RevokeWidgetGenerations
+    n_G3M1TypedUiSession -->|addresses| n_SnapshotUiState
+    n_G3M1TypedUiSession -->|addresses| n_TrackInputDraft
+    n_G3M1TypedUiSession -->|addresses| n_ValidatePropertyBatch
+    n_G3M1TypedUiSession -->|addresses| n_ValidateUiEvent
+    n_SduiDispatcher -->|owns| n_CorrelateUiResult
+    n_SduiDispatcher -->|owns| n_DispatchUiEvent
+    n_SduiDispatcher -->|owns| n_RejectStaleUiEvent
+    n_SduiDispatcher -->|owns| n_ValidateUiEvent
+    n_SduiInstanceStore -->|owns| n_ManageWidgetIdentities
+    n_SduiInstanceStore -->|owns| n_ProjectUiGeneration
+    n_SduiInstanceStore -->|owns| n_RevokeWidgetGenerations
+    n_SduiInstanceStore -->|owns| n_SnapshotUiState
+    n_SduiPropertyStore -->|owns| n_ApplyPropertyBatch
+    n_SduiPropertyStore -->|owns| n_TrackInputDraft
+    n_SduiPropertyStore -->|owns| n_ValidatePropertyBatch
+    n_SduiRuntime -->|owns| n_CloseUiInstance
+    n_SduiRuntime -->|owns| n_CreateUiInstance

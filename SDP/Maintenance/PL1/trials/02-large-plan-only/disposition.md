@@ -1,0 +1,2 @@
+# Proposed disposition
+Reuse PLAN-FILES-0007 rather than create a new plan or an ArchitecturePlan for already resolved contracts. Record actual planning revision in the existing plan and source card worklog with an updated/reviewed management event, keeping both planned/backlog. Do not activate the feature card, create future phase branches, implement code or claim verification. Stop with the reviewable plan; do not require an extra approval merely to finish it.

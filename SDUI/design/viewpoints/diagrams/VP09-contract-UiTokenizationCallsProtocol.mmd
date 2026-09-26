@@ -1,0 +1,6 @@
+flowchart LR
+    n_TokenizeUiRequest["TokenizeUiRequest (message)"]
+    n_TokenizeUiResult["TokenizeUiResult (message)"]
+    n_UiTokenizationCallsProtocol["UiTokenizationCallsProtocol (contract)"]
+    n_UiTokenizationCallsProtocol -->|permits| n_TokenizeUiRequest
+    n_UiTokenizationCallsProtocol -->|permits| n_TokenizeUiResult

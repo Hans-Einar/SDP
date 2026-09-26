@@ -1,0 +1,29 @@
+flowchart LR
+    n_CoordinateSduiCompilation["CoordinateSduiCompilation (functionality)"]
+    n_ExpandUiDefinitions["ExpandUiDefinitions (functionality)"]
+    n_G1M2ValidationAndNormalization["G1M2ValidationAndNormalization (activity)"]
+    n_PreserveUiRegions["PreserveUiRegions (functionality)"]
+    n_PreserveUiSourceMap["PreserveUiSourceMap (functionality)"]
+    n_ResolveUiNames["ResolveUiNames (functionality)"]
+    n_SduiFrontend["SduiFrontend (unit)"]
+    n_SduiNormalizer["SduiNormalizer (unit)"]
+    n_SduiValidator["SduiValidator (unit)"]
+    n_ValidateRelativeFormatting["ValidateRelativeFormatting (functionality)"]
+    n_ValidateSymbolicBindings["ValidateSymbolicBindings (functionality)"]
+    n_ValidateWidgetArguments["ValidateWidgetArguments (functionality)"]
+    n_G1M2ValidationAndNormalization -->|addresses| n_CoordinateSduiCompilation
+    n_G1M2ValidationAndNormalization -->|addresses| n_ExpandUiDefinitions
+    n_G1M2ValidationAndNormalization -->|addresses| n_PreserveUiRegions
+    n_G1M2ValidationAndNormalization -->|addresses| n_PreserveUiSourceMap
+    n_G1M2ValidationAndNormalization -->|addresses| n_ResolveUiNames
+    n_G1M2ValidationAndNormalization -->|addresses| n_ValidateRelativeFormatting
+    n_G1M2ValidationAndNormalization -->|addresses| n_ValidateSymbolicBindings
+    n_G1M2ValidationAndNormalization -->|addresses| n_ValidateWidgetArguments
+    n_SduiFrontend -->|owns| n_CoordinateSduiCompilation
+    n_SduiNormalizer -->|owns| n_ExpandUiDefinitions
+    n_SduiNormalizer -->|owns| n_PreserveUiRegions
+    n_SduiNormalizer -->|owns| n_PreserveUiSourceMap
+    n_SduiValidator -->|owns| n_ResolveUiNames
+    n_SduiValidator -->|owns| n_ValidateRelativeFormatting
+    n_SduiValidator -->|owns| n_ValidateSymbolicBindings
+    n_SduiValidator -->|owns| n_ValidateWidgetArguments

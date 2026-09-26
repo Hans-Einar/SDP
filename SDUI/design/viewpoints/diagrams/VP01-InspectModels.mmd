@@ -1,0 +1,12 @@
+flowchart LR
+    n_DesignAuthor["DesignAuthor (actor)"]
+    n_DesignReviewer["DesignReviewer (actor)"]
+    n_InspectModels["InspectModels (usecase)"]
+    n_StructuralModelInspection["StructuralModelInspection (feature)"]
+    n_TraceViewpointFacts["TraceViewpointFacts (functionality)"]
+    n_TypedDesignInspection["TypedDesignInspection (feature)"]
+    n_DesignAuthor -->|pursues| n_InspectModels
+    n_DesignReviewer -->|pursues| n_InspectModels
+    n_StructuralModelInspection -->|supports| n_InspectModels
+    n_TraceViewpointFacts -->|contributes-to| n_InspectModels
+    n_TypedDesignInspection -->|supports| n_InspectModels

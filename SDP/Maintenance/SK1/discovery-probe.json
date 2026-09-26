@@ -1,0 +1,55 @@
+{
+  "host": "codex-cli 0.156.1",
+  "sourceCommit": "c4aed09944235f5da1d247001688f6f162ec124d",
+  "operation": "Local app-server initialize + skills/list only; no thread or model turn",
+  "cases": [
+    {
+      "case": "root-only",
+      "result": [
+        {
+          "skills": [],
+          "errors": []
+        }
+      ]
+    },
+    {
+      "case": "symlink-candidate",
+      "result": [
+        {
+          "skills": [
+            {
+              "name": "sdp",
+              "path": "$FIXTURE/Skills/sdp/SKILL.md",
+              "scope": "repo"
+            }
+          ],
+          "errors": []
+        }
+      ]
+    },
+    {
+      "case": "legacy-frontmatter",
+      "result": [
+        {
+          "skills": [],
+          "errors": [
+            {
+              "path": "$FIXTURE/Skills/sdp-master/SKILL.md",
+              "message": "missing field `description`"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case": "root-skill-only",
+      "result": [
+        {
+          "skills": [],
+          "errors": []
+        }
+      ]
+    }
+  ],
+  "limits": "Filtered to fixture-local catalog results. No project activation, model loading, routing behavior, other host or installer tested."
+}

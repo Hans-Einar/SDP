@@ -1,0 +1,8 @@
+flowchart LR
+    n_DocumentBroker["DocumentBroker (unit)"]
+    n_ViewArtifactStore["ViewArtifactStore (unit)"]
+    n_ViewServiceHost["ViewServiceHost (container)"]
+    n_ViewerLaunchAdapter["ViewerLaunchAdapter (unit)"]
+    n_ViewServiceHost -->|contains| n_DocumentBroker
+    n_ViewServiceHost -->|contains| n_ViewArtifactStore
+    n_ViewServiceHost -->|contains| n_ViewerLaunchAdapter

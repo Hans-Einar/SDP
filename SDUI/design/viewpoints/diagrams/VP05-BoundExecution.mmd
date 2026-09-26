@@ -1,0 +1,9 @@
+flowchart LR
+    n_BoundInteraction["BoundInteraction (capability)"]
+    n_DomainFunctionPort["DomainFunctionPort (interface)"]
+    n_ExecutableDesign["ExecutableDesign (capability)"]
+    n_SdlExecutionPort["SdlExecutionPort (interface)"]
+    n_UiSessionPort["UiSessionPort (interface)"]
+    n_BoundInteraction -->|requires| n_SdlExecutionPort
+    n_BoundInteraction -->|requires| n_UiSessionPort
+    n_ExecutableDesign -->|requires| n_DomainFunctionPort

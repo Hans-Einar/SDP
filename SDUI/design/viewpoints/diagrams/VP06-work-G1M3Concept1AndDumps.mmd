@@ -1,0 +1,10 @@
+flowchart LR
+    n_DiagnosticReporter["DiagnosticReporter (unit)"]
+    n_ExportConsoleSnapshot["ExportConsoleSnapshot (functionality)"]
+    n_G1M3Concept1AndDumps["G1M3Concept1AndDumps (activity)"]
+    n_ReportSourceDiagnostics["ReportSourceDiagnostics (functionality)"]
+    n_SduiPresentation["SduiPresentation (unit)"]
+    n_DiagnosticReporter -->|owns| n_ReportSourceDiagnostics
+    n_G1M3Concept1AndDumps -->|addresses| n_ExportConsoleSnapshot
+    n_G1M3Concept1AndDumps -->|addresses| n_ReportSourceDiagnostics
+    n_SduiPresentation -->|owns| n_ExportConsoleSnapshot

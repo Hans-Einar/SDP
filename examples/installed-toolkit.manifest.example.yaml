@@ -1,21 +1,25 @@
 schemaVersion: "1.0"
 toolkitVersion: "0.2.0"
 frameworkVersion: "1.0.0"
-agentsContractVersion: "1.0.0"
+agentsContractVersion: "2.1.0"
 installerVersion: "0.2.0"
 toolkitInstalledAt: "2026-07-12T00:00:00Z"
 sourceCommit: null
 skills:
-  sdp-architect: "1.0.0"
-  sdp-auditor: "1.0.0"
-  sdp-master: "1.0.0"
-  sdp-release: "1.0.0"
-  sdp-reviewer: "1.0.0"
-  sdp-traceability: "1.0.0"
-  sdp-verifier: "1.0.0"
-  sdp-versioning: "1.0.0"
-  sdp-vertical-refactor: "1.0.0"
-  sdp-worker: "1.0.0"
+  sdp: "1.1.0"
+  sdp-planning: "1.0.0"
+  sdp-architect: "2.0.0"
+  sdp-auditor: "2.0.0"
+  sdp-change-analysis: "1.0.0"
+  sdp-master: "2.0.0"
+  sdp-release: "2.0.0"
+  sdp-reviewer: "2.0.0"
+  sdp-steering: "1.0.0"
+  sdp-traceability: "2.0.0"
+  sdp-verifier: "2.0.0"
+  sdp-versioning: "2.0.0"
+  sdp-vertical-refactor: "2.0.0"
+  sdp-worker: "2.0.0"
 capabilities:
   - sdp.install.v1
   - sdp.install-plan.v1
@@ -23,6 +27,7 @@ capabilities:
   - sdp.release.v1
   - sdp.release-notes.v1
   - sdp.skill-metadata.v1
+  - sdp.skill-metadata.v2
   - sdp.traceability.current-index.v1
   - sdp.traceability.ledger-events.v1
   - sdp.traceability.relations.v1

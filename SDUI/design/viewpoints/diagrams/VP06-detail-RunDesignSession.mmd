@@ -1,0 +1,6 @@
+flowchart LR
+    n_RunBoundUiAction["RunBoundUiAction (activity)"]
+    n_RunDesignSession["RunDesignSession (activity)"]
+    n_RunUnboundUiPreview["RunUnboundUiPreview (activity)"]
+    n_RunBoundUiAction -->|refines| n_RunDesignSession
+    n_RunUnboundUiPreview -->|refines| n_RunDesignSession

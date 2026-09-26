@@ -1,0 +1,16 @@
+flowchart LR
+    n_OpenViewConsumerId["OpenViewConsumerId (field)"]
+    n_OpenViewEntryPath["OpenViewEntryPath (field)"]
+    n_OpenViewLeaseId["OpenViewLeaseId (field)"]
+    n_OpenViewPaneId["OpenViewPaneId (field)"]
+    n_OpenViewRequestId["OpenViewRequestId (field)"]
+    n_OpenViewRevision["OpenViewRevision (field)"]
+    n_OpenViewWindowId["OpenViewWindowId (field)"]
+    n_ViewOpenContract["ViewOpenContract (contract)"]
+    n_ViewOpenContract -->|has-field| n_OpenViewConsumerId
+    n_ViewOpenContract -->|has-field| n_OpenViewEntryPath
+    n_ViewOpenContract -->|has-field| n_OpenViewLeaseId
+    n_ViewOpenContract -->|has-field| n_OpenViewPaneId
+    n_ViewOpenContract -->|has-field| n_OpenViewRequestId
+    n_ViewOpenContract -->|has-field| n_OpenViewRevision
+    n_ViewOpenContract -->|has-field| n_OpenViewWindowId

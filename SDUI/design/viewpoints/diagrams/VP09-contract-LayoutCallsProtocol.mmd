@@ -1,0 +1,6 @@
+flowchart LR
+    n_LayoutCallsProtocol["LayoutCallsProtocol (contract)"]
+    n_LayoutRequest["LayoutRequest (message)"]
+    n_LayoutResult["LayoutResult (message)"]
+    n_LayoutCallsProtocol -->|permits| n_LayoutRequest
+    n_LayoutCallsProtocol -->|permits| n_LayoutResult

@@ -1,0 +1,12 @@
+flowchart LR
+    n_G3M3CompatibleState["G3M3CompatibleState (activity)"]
+    n_MatchCompatibleWidgets["MatchCompatibleWidgets (functionality)"]
+    n_PreserveCompatibleUiState["PreserveCompatibleUiState (functionality)"]
+    n_ResetIncompatibleUiState["ResetIncompatibleUiState (functionality)"]
+    n_UiStateReconciler["UiStateReconciler (unit)"]
+    n_G3M3CompatibleState -->|addresses| n_MatchCompatibleWidgets
+    n_G3M3CompatibleState -->|addresses| n_PreserveCompatibleUiState
+    n_G3M3CompatibleState -->|addresses| n_ResetIncompatibleUiState
+    n_UiStateReconciler -->|owns| n_MatchCompatibleWidgets
+    n_UiStateReconciler -->|owns| n_PreserveCompatibleUiState
+    n_UiStateReconciler -->|owns| n_ResetIncompatibleUiState

@@ -1,0 +1,10 @@
+flowchart LR
+    n_SduiInstanceStore["SduiInstanceStore (unit)"]
+    n_UiGenerationContract["UiGenerationContract (contract)"]
+    n_UiGenerationNotices["UiGenerationNotices (datagram)"]
+    n_UiSessionRecord["UiSessionRecord (contract)"]
+    n_UiSessionState["UiSessionState (dataset)"]
+    n_SduiInstanceStore -->|holds| n_UiSessionState
+    n_UiGenerationNotices -->|from| n_UiSessionState
+    n_UiGenerationNotices -->|upholds| n_UiGenerationContract
+    n_UiSessionState -->|upholds| n_UiSessionRecord

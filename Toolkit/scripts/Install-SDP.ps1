@@ -11,7 +11,13 @@ param(
 
     [switch]$PlanJson,
 
-    [string]$BackupRoot
+    [string]$BackupRoot,
+
+    [string]$ProfileArtifact,
+
+    [string]$ApplyPlan,
+
+    [string]$ResumeOperation
 )
 
 Set-StrictMode -Version Latest
@@ -84,6 +90,10 @@ function Get-PathObjectState {
     }
     if (($attributes -band [System.IO.FileAttributes]::Directory) -ne 0) {
         return 'unsupported'
+    }
+    if (-not $IsWindowsPlatform) {
+        $item = Get-Item -LiteralPath $Path -Force
+        if ($item.UnixStat.ItemType.ToString() -cne 'File') { return 'unsupported' }
     }
     return 'regular-file'
 }
@@ -1004,10 +1014,115 @@ function ConvertTo-YamlQuotedScalar {
     return '"' + $Value.Replace('\', '\\').Replace('"', '\"') + '"'
 }
 
+function ConvertFrom-InstalledManifestDocument {
+    param([string]$Content, [switch]$AllowV2)
+
+    $label = 'installed Toolkit manifest'
+    $document = ConvertFrom-StrictYamlDocument $Content $label @(
+        'schemaVersion', 'toolkitVersion', 'toolkitInstalledAt'
+    )
+    $allowedRoot = @(
+        'schemaVersion', 'toolkitVersion', 'frameworkVersion',
+        'agentsContractVersion', 'installerVersion', 'toolkitInstalledAt',
+        'sourceCommit', 'skills', 'capabilities'
+    )
+    $version = Get-StrictYamlString $document 'schemaVersion' $label
+    if ($version -ceq '2.0' -and $AllowV2) {
+        $allowedRoot += @('processProfile','managementProfile','configurationDigest')
+        if ((Get-StrictYamlString $document 'processProfile' $label) -cne 'sdp-five-phase/0.1' -or
+            (Get-StrictYamlString $document 'managementProfile' $label) -cnotin @('sdp-project-management/0.1','sdp-project-management/0.2') -or
+            (Get-StrictYamlString $document 'configurationDigest' $label) -cnotmatch '^[a-f0-9]{64}$') {
+            throw 'Unsupported or invalid installed process facts'
+        }
+    } elseif ($version -cne '1.0') { throw 'Unsupported installed manifest schema' }
+    $rootKeys = @($document.ActualPaths | Where-Object { $_ -cnotmatch '/' })
+    foreach ($required in $allowedRoot) {
+        if ($rootKeys -cnotcontains $required) {
+            throw "$label is missing required root field '$required'."
+        }
+    }
+    foreach ($rootKey in $rootKeys) {
+        if ($allowedRoot -cnotcontains $rootKey) {
+            throw "$label contains unknown root field '$rootKey'."
+        }
+    }
+    if ([string]$document.Containers['skills'] -cne 'mapping') {
+        throw "$label field 'skills' must be a mapping."
+    }
+    if ([string]$document.Containers['capabilities'] -cne 'sequence') {
+        throw "$label field 'capabilities' must be a scalar sequence."
+    }
+
+    foreach ($path in $document.ActualPaths) {
+        if ($path -cnotmatch '/') { continue }
+        if ($path -cnotmatch '^skills/[a-z][a-z0-9]*(?:-[a-z0-9]+)*$') {
+            throw "$label contains unsupported nested field '$path'."
+        }
+    }
+    $skillPaths = @($document.ActualPaths | Where-Object { $_ -cmatch '^skills/' })
+    if ($skillPaths.Count -eq 0) {
+        throw "$label must declare at least one installed skill."
+    }
+    foreach ($path in $skillPaths) {
+        $version = Get-StrictYamlString $document $path $label
+        [void](ConvertTo-SemVer $version)
+    }
+    $capabilityRows = @($document.Sequences['capabilities'])
+    if ($capabilityRows.Count -eq 0) {
+        throw "$label must declare at least one capability."
+    }
+    $capabilityKeys = @{}
+    foreach ($row in $capabilityRows) {
+        if ([string]$row.Type -cne 'string') {
+            throw "$label capabilities must be strings."
+        }
+        $capability = [string]$row.Value
+        if (($capability -cnotmatch '^sdp\.[a-z0-9.-]+\.v[0-9]+$') -or
+            $capabilityKeys.ContainsKey($capability)) {
+            throw "$label contains an invalid or duplicate capability '$capability'."
+        }
+        $capabilityKeys[$capability] = $true
+    }
+
+    foreach ($versionField in @(
+        'toolkitVersion', 'frameworkVersion', 'agentsContractVersion', 'installerVersion'
+    )) {
+        [void](ConvertTo-SemVer (Get-StrictYamlString $document $versionField $label))
+    }
+    [void](Get-StrictYamlString $document 'schemaVersion' $label)
+    $installedAt = Get-StrictYamlString $document 'toolkitInstalledAt' $label
+    $parsedInstalledAt = [DateTimeOffset]::MinValue
+    $rfc3339DateTimePattern = '^\d{4}-\d{2}-\d{2}[Tt]\d{2}:\d{2}:\d{2}' +
+        '(?:\.\d+)?(?:[Zz]|[+-]\d{2}:\d{2})$'
+    if (($installedAt -cnotmatch $rfc3339DateTimePattern) -or
+        (-not [DateTimeOffset]::TryParse(
+        $installedAt,
+        [System.Globalization.CultureInfo]::InvariantCulture,
+        [System.Globalization.DateTimeStyles]::RoundtripKind,
+        [ref]$parsedInstalledAt
+    ))) {
+        throw "$label toolkitInstalledAt must be an RFC 3339 timestamp."
+    }
+    $sourceCommit = $document.Values['sourceCommit']
+    if (($null -eq $sourceCommit) -or
+        ([string]$sourceCommit.Type -notin @('string', 'null')) -or
+        (([string]$sourceCommit.Type -eq 'string') -and
+        [string]::IsNullOrWhiteSpace([string]$sourceCommit.Value))) {
+        throw "$label sourceCommit must be a non-empty string or null."
+    }
+    return $document
+}
+
 $InstallerScriptRoot = Get-ProviderCompatibleFullPath $PSScriptRoot 'installer script root'
 $ToolkitRoot = Get-ProviderCompatibleFullPath (Split-Path -Parent $InstallerScriptRoot) 'Toolkit root'
 $RepositoryRoot = Get-ProviderCompatibleFullPath (Join-Path $ToolkitRoot '..') 'SDP repository root'
 Assert-NoLinkOrReparsePointInExistingAncestors $RepositoryRoot 'SDP repository root'
+if ($ProfileArtifact) {
+    . (Join-Path $InstallerScriptRoot 'Process-Install.ps1')
+    Invoke-ProcessInstallation
+    return
+}
+if ($ApplyPlan -or $ResumeOperation) { throw 'ProfileArtifact is required for versioned plan/apply.' }
 $InstallManifestPath = Join-Path $ToolkitRoot 'SDP-install.manifest.json'
 Assert-ContainedPhysicalPath $RepositoryRoot $InstallManifestPath 'installation manifest source'
 if (-not (Test-Path -LiteralPath $InstallManifestPath -PathType Leaf)) {
@@ -1208,7 +1323,7 @@ if (($null -eq $skillFacts) -or ($skillFacts -isnot [pscustomobject]) -or
     throw "Installed-manifest generator must declare installed skill versions."
 }
 foreach ($skillProperty in $skillFacts.psobject.Properties) {
-    if ($skillProperty.Name -cnotmatch '^sdp-[a-z0-9]+(?:-[a-z0-9]+)*$') {
+    if ($skillProperty.Name -cnotmatch '^sdp(?:-[a-z0-9]+)*$') {
         throw "Installed-manifest generator has invalid skill ID '$($skillProperty.Name)'."
     }
     Assert-JsonString $skillProperty.Value "installed skill '$($skillProperty.Name)' version"
@@ -1306,13 +1421,12 @@ foreach ($exclusion in $Exclusions) {
 }
 
 foreach ($requiredLiveExclusion in @(
-    '01--Mandate', '02--Study', '03--Requirements', '04--Architecture',
-    '05--DesignAnalysis', '06--Design', '07--Implementation', 'CodeReview',
-    'Fixes', 'Instructions', 'Refactors', 'Releases', 'Sprints', 'Traceability',
-    'Verification', 'RELEASE-NOTES.md', 'SDP.manifest.yaml',
-    'SDP-DOCUMENT-GUIDE.md', 'payload', 'skills',
+    'RELEASE-NOTES.md',
+    'SDP.manifest.yaml',
     'Toolkit/payload/project-root/AGENTS-project.md.template',
-    'Toolkit/payload/sdp-root/AGENT-REMINDERS.md.template'
+    'Toolkit/payload/sdp-root/AGENT-REMINDERS.md.template',
+    'SDP',
+    'Template/README.md'
 )) {
     if (-not $ExclusionByKey.ContainsKey((Get-PortablePathKey $requiredLiveExclusion))) {
         throw "Installation contract is missing required live-state exclusion '$requiredLiveExclusion'."
@@ -1450,9 +1564,9 @@ for ($entryIndex = 0; $entryIndex -lt $Entries.Count; $entryIndex++) {
         Assert-PortableRelativePath $source "entry '$entryId' source"
         if ($ownership -eq 'toolkit-managed') {
             $inAllowedSourceClass = (Test-PortablePathWithin $source 'Toolkit/payload' 'tree') -or
-                (Test-PortablePathWithin $source 'Toolkit/skills' 'tree')
+                (Test-PortablePathWithin $source 'Skills' 'tree')
         } else {
-            $inAllowedSourceClass = Test-PortablePathWithin $source 'Toolkit/project-templates' 'tree'
+            $inAllowedSourceClass = Test-PortablePathWithin $source 'Template' 'tree'
         }
         if (-not $inAllowedSourceClass) {
             throw "Entry '$entryId' source is outside its declared ownership source class: $source"
@@ -1604,96 +1718,6 @@ function Get-RepositorySourceCommit {
     return ($head | Select-Object -First 1).Trim()
 }
 
-function ConvertFrom-InstalledManifestDocument {
-    param([string]$Content)
-
-    $label = 'installed Toolkit manifest'
-    $document = ConvertFrom-StrictYamlDocument $Content $label @(
-        'schemaVersion', 'toolkitVersion', 'toolkitInstalledAt'
-    )
-    $allowedRoot = @(
-        'schemaVersion', 'toolkitVersion', 'frameworkVersion',
-        'agentsContractVersion', 'installerVersion', 'toolkitInstalledAt',
-        'sourceCommit', 'skills', 'capabilities'
-    )
-    $rootKeys = @($document.ActualPaths | Where-Object { $_ -cnotmatch '/' })
-    foreach ($required in $allowedRoot) {
-        if ($rootKeys -cnotcontains $required) {
-            throw "$label is missing required root field '$required'."
-        }
-    }
-    foreach ($rootKey in $rootKeys) {
-        if ($allowedRoot -cnotcontains $rootKey) {
-            throw "$label contains unknown root field '$rootKey'."
-        }
-    }
-    if ([string]$document.Containers['skills'] -cne 'mapping') {
-        throw "$label field 'skills' must be a mapping."
-    }
-    if ([string]$document.Containers['capabilities'] -cne 'sequence') {
-        throw "$label field 'capabilities' must be a scalar sequence."
-    }
-
-    foreach ($path in $document.ActualPaths) {
-        if ($path -cnotmatch '/') { continue }
-        if ($path -cnotmatch '^skills/[a-z][a-z0-9]*(?:-[a-z0-9]+)*$') {
-            throw "$label contains unsupported nested field '$path'."
-        }
-    }
-    $skillPaths = @($document.ActualPaths | Where-Object { $_ -cmatch '^skills/' })
-    if ($skillPaths.Count -eq 0) {
-        throw "$label must declare at least one installed skill."
-    }
-    foreach ($path in $skillPaths) {
-        $version = Get-StrictYamlString $document $path $label
-        [void](ConvertTo-SemVer $version)
-    }
-    $capabilityRows = @($document.Sequences['capabilities'])
-    if ($capabilityRows.Count -eq 0) {
-        throw "$label must declare at least one capability."
-    }
-    $capabilityKeys = @{}
-    foreach ($row in $capabilityRows) {
-        if ([string]$row.Type -cne 'string') {
-            throw "$label capabilities must be strings."
-        }
-        $capability = [string]$row.Value
-        if (($capability -cnotmatch '^sdp\.[a-z0-9.-]+\.v[0-9]+$') -or
-            $capabilityKeys.ContainsKey($capability)) {
-            throw "$label contains an invalid or duplicate capability '$capability'."
-        }
-        $capabilityKeys[$capability] = $true
-    }
-
-    foreach ($versionField in @(
-        'toolkitVersion', 'frameworkVersion', 'agentsContractVersion', 'installerVersion'
-    )) {
-        [void](ConvertTo-SemVer (Get-StrictYamlString $document $versionField $label))
-    }
-    [void](Get-StrictYamlString $document 'schemaVersion' $label)
-    $installedAt = Get-StrictYamlString $document 'toolkitInstalledAt' $label
-    $parsedInstalledAt = [DateTimeOffset]::MinValue
-    $rfc3339DateTimePattern = '^\d{4}-\d{2}-\d{2}[Tt]\d{2}:\d{2}:\d{2}' +
-        '(?:\.\d+)?(?:[Zz]|[+-]\d{2}:\d{2})$'
-    if (($installedAt -cnotmatch $rfc3339DateTimePattern) -or
-        (-not [DateTimeOffset]::TryParse(
-        $installedAt,
-        [System.Globalization.CultureInfo]::InvariantCulture,
-        [System.Globalization.DateTimeStyles]::RoundtripKind,
-        [ref]$parsedInstalledAt
-    ))) {
-        throw "$label toolkitInstalledAt must be an RFC 3339 timestamp."
-    }
-    $sourceCommit = $document.Values['sourceCommit']
-    if (($null -eq $sourceCommit) -or
-        ([string]$sourceCommit.Type -notin @('string', 'null')) -or
-        (([string]$sourceCommit.Type -eq 'string') -and
-        [string]::IsNullOrWhiteSpace([string]$sourceCommit.Value))) {
-        throw "$label sourceCommit must be a non-empty string or null."
-    }
-    return $document
-}
-
 function Test-InstalledManifestEquivalent {
     param($Document)
 
@@ -1830,6 +1854,23 @@ if (($InstalledToolkitVersion -ceq $ToolkitVersion) -and
     $InstalledAt = $PreviousInstalledAt
 } else {
     $InstalledAt = (Get-Date).ToUniversalTime().ToString('yyyy-MM-ddTHH:mm:ssZ')
+}
+# An unreleased Toolkit can evolve its skill contract without changing its version.
+# Do not claim new skill facts while preserving old procedures on a normal repeat.
+if ((-not $BlockReason) -and (-not $IsUpgrade) -and (-not $ForceManagedFiles)) {
+    $expectedSkillPaths = @($InstalledGenerator.facts.skills.psobject.Properties | ForEach-Object { 'skills/' + $_.Name })
+    $actualSkillPaths = @($InstalledManifestDocument.ActualPaths | Where-Object { $_ -cmatch '^skills/' })
+    $skillContractChanged = ($expectedSkillPaths.Count -ne $actualSkillPaths.Count)
+    foreach ($skill in $InstalledGenerator.facts.skills.psobject.Properties) {
+        $skillPath = 'skills/' + $skill.Name
+        if (($actualSkillPaths -cnotcontains $skillPath) -or
+            ((Get-StrictYamlString $InstalledManifestDocument $skillPath 'installed skill') -cne [string]$skill.Value)) {
+            $skillContractChanged = $true
+        }
+    }
+    if ($skillContractChanged) {
+        Throw-InstallFailure 'install-manifest-invalid' 'Installed skill inventory/version differs at the same Toolkit version. Review -PlanJson -ForceManagedFiles, then apply -ForceManagedFiles to refresh with backups; no files were changed.'
+    }
 }
 $SourceCommit = Get-RepositorySourceCommit
 

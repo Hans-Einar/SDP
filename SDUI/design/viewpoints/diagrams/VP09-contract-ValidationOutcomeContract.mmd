@@ -1,0 +1,6 @@
+flowchart LR
+    n_ModelDiagnostics["ModelDiagnostics (field)"]
+    n_ModelIsValid["ModelIsValid (field)"]
+    n_ValidationOutcomeContract["ValidationOutcomeContract (contract)"]
+    n_ValidationOutcomeContract -->|has-field| n_ModelDiagnostics
+    n_ValidationOutcomeContract -->|has-field| n_ModelIsValid

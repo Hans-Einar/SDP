@@ -1,0 +1,12 @@
+# Planned responsibilities: G4M4DomainReload
+
+[Viewpoint](index.md) · [Navigator](../../navigator.md)
+
+Revision: `e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1`.
+
+## Planned responsibilities: G4M4DomainReload
+
+![Planned responsibilities: G4M4DomainReload](../../diagrams/VP06-work-G4M4DomainReload.svg)
+
+Source facts: f0214, f0215, f0400, f0401, f0402, f0506.
+

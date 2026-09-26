@@ -1,0 +1,6 @@
+flowchart LR
+    n_ReloadDiagnostic["ReloadDiagnostic (field)"]
+    n_ReloadOutcome["ReloadOutcome (contract)"]
+    n_ReloadPublishedGeneration["ReloadPublishedGeneration (field)"]
+    n_ReloadOutcome -->|has-field| n_ReloadDiagnostic
+    n_ReloadOutcome -->|has-field| n_ReloadPublishedGeneration

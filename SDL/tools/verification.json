@@ -1,0 +1,37 @@
+{
+  "phase": "G6-D2",
+  "scope": "Generated SDL model/views; no Go/runtime execution",
+  "tests": {
+    "sdl_parser": 61,
+    "viewpoint_tool": 24,
+    "sdui": 36
+  },
+  "rendered_diagrams": 170,
+  "source_declarations": 463,
+  "source_facts": 1424,
+  "unsupported_viewpoints": [],
+  "model_gap_count": 18,
+  "checks": [
+    "all SVG node labels",
+    "exact source facts/spans",
+    "output/generator hashes",
+    "packet bit ranges",
+    "sequence order/correlation/provenance",
+    "byte-identical repeat export"
+  ],
+  "files": {
+    "SystemDesignLanguage/tools/channel_views.py": "ce28341184bf1ddb7aad65e611ff5cc6af5bcbf03cc8a92883e4db7b64577dfc",
+    "SystemDesignLanguage/tools/data_views.py": "015440a1dd66ed45d9178a57ae523fa7e61e73ee5424c4de636304fe15526128",
+    "SystemDesignLanguage/tools/goal_views.py": "e312f68c4e204e6f119ccb9a7978e4876d8348e23d3c1a0bdf80f3dd317e440b",
+    "SystemDesignLanguage/tools/plan_views.py": "dc840dca34650d0fe57eceda039e4cf147954421c912617c4a3954697267e31e",
+    "SystemDesignLanguage/tools/sdl.py": "6fc15da4834b381d29c1e6157b4ec4dcf1e1446346f0a05b43090c3f01a65211",
+    "SystemDesignLanguage/tools/verify_design.py": "4071b898f5fa4f6af34c58045383a9fc0c6c4ea3f74015a4927e926627c4140b",
+    "SystemDesignLanguage/tools/viewpoints.py": "531ce26c789dcfd9230bb9c1020c895cc339e1dbebaa41db1896e726a99d8c17",
+    "experiments/design_core/channel_core.py": "bfb289aa11045528f2146189975a7e66e0f00acb51ae2acf147a6f88306e675c",
+    "experiments/design_core/data_core.py": "c967bd05a927fc6efee2bd22483e340b4e9dec304973e4bc5536272a6bb1d308",
+    "experiments/design_core/design_core.py": "242ca11e2d08128a541ce03bbbf557b3fb7bc6060c74b2dd89f06922a91f843e",
+    "SDUI/design/architecture.design": "be0dfcfdca6e04f7b8c4594dc5e72d920724ef96e1f604e749432121aa83e862",
+    "SDUI/design/architecture.validation.json": "51018b2087e07f0748181d65ab5bc6d601deaa195b416800a9ed6403183585c6",
+    "SDUI/design/viewpoints/manifest.json": "01693dc53b1c1e0f5d37e3d79d949f97a1ce121838c62a92d594d08bf9707ab2"
+  }
+}

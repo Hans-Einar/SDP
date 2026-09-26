@@ -1,0 +1,8 @@
+flowchart LR
+    n_FailedViewRequestId["FailedViewRequestId (field)"]
+    n_ViewFailureCode["ViewFailureCode (field)"]
+    n_ViewFailureContract["ViewFailureContract (contract)"]
+    n_ViewFailureDiagnostic["ViewFailureDiagnostic (field)"]
+    n_ViewFailureContract -->|has-field| n_FailedViewRequestId
+    n_ViewFailureContract -->|has-field| n_ViewFailureCode
+    n_ViewFailureContract -->|has-field| n_ViewFailureDiagnostic

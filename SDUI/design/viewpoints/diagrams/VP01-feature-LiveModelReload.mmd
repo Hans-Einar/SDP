@@ -1,0 +1,16 @@
+flowchart LR
+    n_KeepLastValidModels["KeepLastValidModels (functionality)"]
+    n_LiveModelReload["LiveModelReload (feature)"]
+    n_ObserveSourceChanges["ObserveSourceChanges (functionality)"]
+    n_PrepareCandidateModels["PrepareCandidateModels (functionality)"]
+    n_PreserveCompatibleUiState["PreserveCompatibleUiState (functionality)"]
+    n_ProjectUiGeneration["ProjectUiGeneration (functionality)"]
+    n_PublishModelGeneration["PublishModelGeneration (functionality)"]
+    n_ReportSourceDiagnostics["ReportSourceDiagnostics (functionality)"]
+    n_KeepLastValidModels -->|contributes-to| n_LiveModelReload
+    n_ObserveSourceChanges -->|contributes-to| n_LiveModelReload
+    n_PrepareCandidateModels -->|contributes-to| n_LiveModelReload
+    n_PreserveCompatibleUiState -->|contributes-to| n_LiveModelReload
+    n_ProjectUiGeneration -->|contributes-to| n_LiveModelReload
+    n_PublishModelGeneration -->|contributes-to| n_LiveModelReload
+    n_ReportSourceDiagnostics -->|contributes-to| n_LiveModelReload

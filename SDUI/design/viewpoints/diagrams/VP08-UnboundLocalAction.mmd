@@ -1,0 +1,5 @@
+sequenceDiagram
+    participant n_FyneHost as Fyne Host
+    participant n_GoDomainImplementation as Go Domain Implementation
+    n_FyneHost->>n_GoDomainImplementation: 1: Domain Action Request (Go Domain Calls)
+    n_GoDomainImplementation-->>n_FyneHost: 2: Domain Action Result (Go Domain Calls) reply-to 1

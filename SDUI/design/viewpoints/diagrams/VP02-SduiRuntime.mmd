@@ -1,0 +1,10 @@
+flowchart LR
+    n_SduiDispatcher["SduiDispatcher (unit)"]
+    n_SduiInstanceStore["SduiInstanceStore (unit)"]
+    n_SduiPropertyStore["SduiPropertyStore (unit)"]
+    n_SduiRuntime["SduiRuntime (unit)"]
+    n_UiStateReconciler["UiStateReconciler (unit)"]
+    n_SduiRuntime -->|contains| n_SduiDispatcher
+    n_SduiRuntime -->|contains| n_SduiInstanceStore
+    n_SduiRuntime -->|contains| n_SduiPropertyStore
+    n_SduiRuntime -->|contains| n_UiStateReconciler

@@ -1,0 +1,6 @@
+test_final_artifact_release_notes_recovery (test_process_install.ProcessInstall.test_final_artifact_release_notes_recovery) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 154.842s
+
+OK

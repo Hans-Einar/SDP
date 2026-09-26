@@ -1,0 +1,6 @@
+flowchart LR
+    n_ActionOutcome["ActionOutcome (contract)"]
+    n_ActionOutputText["ActionOutputText (field)"]
+    n_ActionStatusCode["ActionStatusCode (field)"]
+    n_ActionOutcome -->|has-field| n_ActionOutputText
+    n_ActionOutcome -->|has-field| n_ActionStatusCode

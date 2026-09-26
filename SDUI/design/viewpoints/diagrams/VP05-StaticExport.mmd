@@ -1,0 +1,9 @@
+flowchart LR
+    n_ExportSinkPort["ExportSinkPort (interface)"]
+    n_MeasuredPresentation["MeasuredPresentation (capability)"]
+    n_MeasurementPort["MeasurementPort (interface)"]
+    n_PreparedFramePort["PreparedFramePort (interface)"]
+    n_StaticDocumentation["StaticDocumentation (capability)"]
+    n_MeasuredPresentation -->|requires| n_MeasurementPort
+    n_StaticDocumentation -->|requires| n_ExportSinkPort
+    n_StaticDocumentation -->|requires| n_PreparedFramePort

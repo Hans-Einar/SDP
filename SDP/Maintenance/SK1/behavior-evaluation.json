@@ -1,0 +1,118 @@
+{
+  "created": "2026-09-25T14:41:32.028187+00:00",
+  "method": "Four independent fork_turns=none child contexts; no producer conclusions or expected answers supplied. Explicit path loading is distinct from native implicit selection. Parent inspected returned artifacts/diffs.",
+  "sourceHashes": {
+    "Skills/sdp/SKILL.md": "5c5e997039acba5237212a45991c59b4848f145d0c454c98e927596796ec3b4e",
+    "Skills/sdp/references/document-workflow.md": "308f9708d18e38bf18c5ad46952b3e0fe32ccb82cb6425b61a88db70f5691718",
+    "Skills/sdp/references/source-map.md": "4e0ba5162dc636c259fbad99c3ddba64cee3ca9ae8c4aed3af4c232b8308201b",
+    "Skills/sdp-architect/SKILL.md": "f6934bc63ccf9380f284c2377a835b7b14b175a9098e374a27541aed031909a1",
+    "Skills/sdp-auditor/SKILL.md": "5e860229491391777987db3a1704d19c7c6fcb510a7e11a13187b76a1d8ed88c",
+    "Skills/sdp-change-analysis/SKILL.md": "38c28a72835868399090d2581555fdb07114b07afade1666f1b55744a165d26a",
+    "Skills/sdp-master/SKILL.md": "d0426f50b1d618b34f737cbefefd0bdeb91c60862cbce78cfaf982aaedfc48d7",
+    "Skills/sdp-release/SKILL.md": "32d5fdf28b6e12bf37d09732dc55e97447b7c5a3baf0a93a09846893e7bce6dc",
+    "Skills/sdp-reviewer/SKILL.md": "9a8535fe9bfd874c0cbd9f37d38ec0eb79e13f73a49a68898b28ad87773dd33d",
+    "Skills/sdp-steering/SKILL.md": "75e99700b596a40bc0062c6ba825e1e4848616404104dcd03d4dd21c16e9d759",
+    "Skills/sdp-traceability/SKILL.md": "df43145056ae2880e957027f7a96d02634b10d15db408510e5f666052b9a8d7d",
+    "Skills/sdp-verifier/SKILL.md": "48467899b466f2b795a8a2f5b5b935eb2cb1570ed39b4f2e6438997e85149cb8",
+    "Skills/sdp-versioning/SKILL.md": "c70edeed949d54a630fbe5d8b6a2a8bb7f4e2724a21ff328f60399d44c146f05",
+    "Skills/sdp-vertical-refactor/SKILL.md": "fd451120ce16b697eacdd241c14acf5cfe5c238f45e4255debc69a62a221d121",
+    "Skills/sdp-worker/SKILL.md": "fb7d83cfc7d4f26133eb0c2370dd6f8b30abfe32ce23e10107069b235ba70681"
+  },
+  "cases": [
+    {
+      "case": "worker",
+      "prompt": "Please fix the missing sprint label according to SDP/Maintenance.md and verify it.",
+      "invocation": "Explicit sdp source path supplied",
+      "fixtureCommit": "c3660305f952d85f17ed09638498c79d31046ffb",
+      "inputFiles": {
+        "AGENTS.md": "# Fixture instructions\nThis is an isolated SDP behavioral evaluation, not a live project.\nUse the method skill at /home/warloc/git/SDP-vNow/Skills/sdp/SKILL.md for SDP-governed work.\nUse current fixture documents. Write only within this fixture. Do not commit, push,\ninstall tools, spawn other agents, or edit the producer repository. Documentation\nlanguage is English. Report loaded skill paths and actual verification separately.\n",
+        "SDP/Maintenance.md": "# Maintenance fixture\nState: active\nOwner request: render missing sprint IDs as (none), including None and empty string.\nPreserve nonempty IDs verbatim. Change the formatter and tests; record verification\nhere. No other behavior or process migration is authorized.\n",
+        "SDP/README.md": "This fixture uses one bounded Maintenance record. No Sprint is required.\nThe maintenance record owns scope and verification; no installed Framework exists.\n",
+        "formatting.py": "def sprint_label(value):\n    return str(value)\n",
+        "test_formatting.py": "import unittest\nfrom formatting import sprint_label\nclass Labels(unittest.TestCase):\n    def test_named(self):\n        self.assertEqual(sprint_label('SPR-DEMO-0001'),'SPR-DEMO-0001')\n"
+      },
+      "agentReportedReads": [
+        "Skills/sdp/SKILL.md",
+        "Skills/sdp-worker/SKILL.md",
+        "Skills/sdp-verifier/SKILL.md",
+        "Skills/sdp/references/document-workflow.md"
+      ],
+      "observedResult": "Updated only formatter, tests and existing Maintenance record; three tests passed including missing and verbatim labels.",
+      "gitDiff": "diff --git a/SDP/Maintenance.md b/SDP/Maintenance.md\nindex 65b63bb..5105952 100644\n--- a/SDP/Maintenance.md\n+++ b/SDP/Maintenance.md\n@@ -1,5 +1,31 @@\n # Maintenance fixture\n-State: active\n+State: complete\n Owner request: render missing sprint IDs as (none), including None and empty string.\n Preserve nonempty IDs verbatim. Change the formatter and tests; record verification\n here. No other behavior or process migration is authorized.\n+\n+## Implementation and verification\n+\n+The formatter now returns `(none)` for `None` and the empty string. Nonempty\n+IDs retain their exact text, including whitespace. The existing conversion\n+behavior for other inputs is unchanged. The owner contract above remains accurate;\n+no requirements, design or process changes were needed.\n+\n+Candidate: uncommitted changes to `formatting.py`, `test_formatting.py` and this\n+record on HEAD `c3660305f952d85f17ed09638498c79d31046ffb`. Initial Git status was\n+clean. Tested source artifact SHA-256 identities:\n+\n+- `formatting.py`: `65865800c91a24fe0827c50dfe875039f74e1a36316099f174dfc2dda984d1c8`\n+- `test_formatting.py`: `afaf70273e62cde79622822c74ad64c725a828905f7753b47bb3dccd7a88ac93`\n+\n+Environment: isolated fixture `/tmp/sk1-behavior/worker`, Python 3.12.14.\n+\n+- Baseline `python3 -B -m unittest -v`: passed the existing named-ID test (1 test).\n+- Updated `python3 -B -m unittest -v`: passed all 3 tests. Subtests cover both\n+  missing values and preserve padded IDs, whitespace-only IDs and literal\n+  `(none)` text; the original named-ID check remains.\n+- `git diff --check`: passed.\n+\n+Verification covers the local formatter contract, which is the full assigned\n+boundary. No application/UI workflow, independent review, owner acceptance,\n+commit or publication is claimed. No other work remains in this assignment.\ndiff --git a/formatting.py b/formatting.py\nindex 51e65f8..970d8d7 100644\n--- a/formatting.py\n+++ b/formatting.py\n@@ -1,2 +1,4 @@\n def sprint_label(value):\n+    if value is None or value == '':\n+        return '(none)'\n     return str(value)\ndiff --git a/test_formatting.py b/test_formatting.py\nindex e5dec6a..75aa532 100644\n--- a/test_formatting.py\n+++ b/test_formatting.py\n@@ -3,3 +3,13 @@ from formatting import sprint_label\n class Labels(unittest.TestCase):\n     def test_named(self):\n         self.assertEqual(sprint_label('SPR-DEMO-0001'),'SPR-DEMO-0001')\n+\n+    def test_missing(self):\n+        for value in (None, ''):\n+            with self.subTest(value=value):\n+                self.assertEqual(sprint_label(value), '(none)')\n+\n+    def test_nonempty_verbatim(self):\n+        for value in (' SPR-DEMO-0001 ', ' ', '(none)'):\n+            with self.subTest(value=value):\n+                self.assertEqual(sprint_label(value), value)\n",
+      "finalFileHashes": {
+        "AGENTS.md": "f11ee143a57e4121c1ee84c8211a9f816cae809dfbbe8a2ea27bdee7b300b710",
+        "SDP/Maintenance.md": "b253a7b58a34f47f8a5803486181dc5e57566de30c332ec27e8c2f2e993a13c5",
+        "SDP/README.md": "06fc5352a5a7c3c055e87eb6ebf07bfcb4b578d90d25c6b9efc53221ca2403aa",
+        "formatting.py": "65865800c91a24fe0827c50dfe875039f74e1a36316099f174dfc2dda984d1c8",
+        "test_formatting.py": "afaf70273e62cde79622822c74ad64c725a828905f7753b47bb3dccd7a88ac93"
+      }
+    },
+    {
+      "case": "audit",
+      "prompt": "Can you audit whether the completion claim in this project Maintenance record is supported? Read-only.",
+      "invocation": "Explicit sdp source path supplied",
+      "fixtureCommit": "ea3b5f35fcf0537dabaca1d6e1df1d67f5e823af",
+      "inputFiles": {
+        "AGENTS.md": "# Fixture instructions\nThis is an isolated SDP behavioral evaluation, not a live project.\nUse the method skill at /home/warloc/git/SDP-vNow/Skills/sdp/SKILL.md for SDP-governed work.\nUse current fixture documents. Write only within this fixture. Do not commit, push,\ninstall tools, spawn other agents, or edit the producer repository. Documentation\nlanguage is English. Report loaded skill paths and actual verification separately.\n",
+        "SDP/Maintenance.md": "# Maintenance fixture\nState: completed\nThe widget formatter is implemented and verified on the current candidate.\nEvidence: Verification.txt.\n",
+        "SDP/README.md": "This fixture uses one bounded Maintenance record. No Sprint is required.\nThe maintenance record owns scope and verification; no installed Framework exists.\n",
+        "SDP/Verification.txt": "Candidate: older draft\nUnit test: PASS\nInstalled application check: NOT RUN\nCurrent candidate changed input normalization after this test.\n"
+      },
+      "agentReportedReads": [
+        "Skills/sdp/SKILL.md",
+        "Skills/sdp-auditor/SKILL.md",
+        "Skills/sdp-verifier/SKILL.md",
+        "Skills/sdp/references/document-workflow.md"
+      ],
+      "observedResult": "Read-only finding: older-candidate evidence cannot substantiate current completion; application check not run. No missing-Sprint/Framework false positive.",
+      "gitDiff": "",
+      "finalFileHashes": {
+        "AGENTS.md": "f11ee143a57e4121c1ee84c8211a9f816cae809dfbbe8a2ea27bdee7b300b710",
+        "SDP/Maintenance.md": "146a2d1cc4f0969cb754c9629777edbbd801cc5d888798effa3826712f62d2bd",
+        "SDP/README.md": "06fc5352a5a7c3c055e87eb6ebf07bfcb4b578d90d25c6b9efc53221ca2403aa",
+        "SDP/Verification.txt": "fd105ad0d0c36cacb3b14051627bb7ae9b257f79d470b03bd5522e0a1431fd2f"
+      }
+    },
+    {
+      "case": "choice",
+      "prompt": "Which approach should we choose for the preview proposal in SDP/Maintenance.md? Give your recommendation and what remains to decide.",
+      "invocation": "Explicit sdp source path supplied",
+      "fixtureCommit": "1ca94a91e32c8696da12dbc8d16c548cb8b95474",
+      "inputFiles": {
+        "AGENTS.md": "# Fixture instructions\nThis is an isolated SDP behavioral evaluation, not a live project.\nUse the method skill at /home/warloc/git/SDP-vNow/Skills/sdp/SKILL.md for SDP-governed work.\nUse current fixture documents. Write only within this fixture. Do not commit, push,\ninstall tools, spawn other agents, or edit the producer repository. Documentation\nlanguage is English. Report loaded skill paths and actual verification separately.\n",
+        "SDP/Maintenance.md": "# Maintenance fixture\nState: planned\nOwner outcome: preview current design sources without writing generated files to the repository.\nProposal A: produce temporary files for an existing viewer.\nProposal B: run a daemon retaining documents in memory and exposing virtual paths.\nCurrent consumer accepts filesystem paths. No daemon API exists. No latency or\nconcurrency requirement has been selected. Neither proposal is approved.\nThe owner currently asks for advice, not implementation.\n",
+        "SDP/README.md": "This fixture uses one bounded Maintenance record. No Sprint is required.\nThe maintenance record owns scope and verification; no installed Framework exists.\n"
+      },
+      "agentReportedReads": [
+        "Skills/sdp/SKILL.md",
+        "Skills/sdp-architect/SKILL.md",
+        "Skills/sdp/references/document-workflow.md"
+      ],
+      "observedResult": "Recommended temporary files based on current consumer; distinguished recommendation from approval and left implementation untouched.",
+      "gitDiff": "",
+      "finalFileHashes": {
+        "AGENTS.md": "f11ee143a57e4121c1ee84c8211a9f816cae809dfbbe8a2ea27bdee7b300b710",
+        "SDP/Maintenance.md": "37cf7066c6659872350516e0346d145423dbb888175e965a081d503a54fc7d78",
+        "SDP/README.md": "06fc5352a5a7c3c055e87eb6ebf07bfcb4b578d90d25c6b9efc53221ca2403aa"
+      }
+    },
+    {
+      "case": "trivial",
+      "prompt": "What is 7 times 8?",
+      "invocation": "Fixture AGENTS only; no explicit skill invocation",
+      "fixtureCommit": "e2cea91df12c48eb95c192836661b23ca9fd749f",
+      "inputFiles": {
+        "AGENTS.md": "# Fixture instructions\nThis is an isolated SDP behavioral evaluation, not a live project.\nUse the method skill at /home/warloc/git/SDP-vNow/Skills/sdp/SKILL.md for SDP-governed work.\nUse current fixture documents. Write only within this fixture. Do not commit, push,\ninstall tools, spawn other agents, or edit the producer repository. Documentation\nlanguage is English. Report loaded skill paths and actual verification separately.\n",
+        "SDP/README.md": "This fixture uses one bounded Maintenance record. No Sprint is required.\nThe maintenance record owns scope and verification; no installed Framework exists.\n"
+      },
+      "agentReportedReads": [],
+      "observedResult": "Answered 56 without loading skills or starting workflow.",
+      "gitDiff": "",
+      "finalFileHashes": {
+        "AGENTS.md": "f11ee143a57e4121c1ee84c8211a9f816cae809dfbbe8a2ea27bdee7b300b710",
+        "SDP/README.md": "06fc5352a5a7c3c055e87eb6ebf07bfcb4b578d90d25c6b9efc53221ca2403aa"
+      }
+    }
+  ],
+  "limits": "Representative isolated behavior, not proof of every role, sustained compliance, real product application or all agent hosts. Read paths are agent-reported; per-message tool activity was not exported as a host telemetry log."
+}

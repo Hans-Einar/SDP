@@ -1,0 +1,151 @@
+language design-core version 0.5.
+functionality AcceptSourceSnapshot.
+usecase BrowseProject.
+functionality BuildDesignPreview.
+unit CardHistory.
+capability CardRevisionAccess.
+activity ConsumerValidationSlice.
+activity DeliverSdpTool.
+functionality DeliverViewBundle.
+functionality DescribeNavigationTree.
+actor DesignAuthor.
+capability DesignPreview.
+actor DesignReviewer.
+actor DocumentViewer.
+interface GitHistoryPort.
+mode HistoryInspection.
+activity HistorySlice.
+usecase InspectCardHistory.
+interface KanBanReadPort.
+unit NavigationInventory.
+activity NavigationSlice.
+capability PlanAssistance.
+activity PlanAssistanceSlice.
+unit PlanCoordinator.
+unit PreviewCoordinator.
+usecase PreviewDesign.
+activity PreviewSlice.
+mode ProcessPlanning.
+mode ProjectBrowsing.
+unit ProjectContext.
+activity ProjectDiscoverySlice.
+capability ProjectNavigation.
+functionality ProposeImplementationSlices.
+functionality ResolveCardHistory.
+functionality ResolveProjectContext.
+usecase ReviewImplementationPlan.
+activity SavedFilePreview.
+interface SdlProjectionPort.
+feature SdpTool.
+container SdpToolProcess.
+interface SduiDocumentPort.
+mode StandalonePreview.
+interface TraceabilityReadPort.
+activity UnsavedSourcePreview.
+functionality ValidateImplementationPlan.
+unit ViewerBridge.
+interface ViewerDeliveryPort.
+AcceptSourceSnapshot allocated-to SdpToolProcess in mode StandalonePreview.
+AcceptSourceSnapshot contributes-to SdpTool.
+AcceptSourceSnapshot realizes DesignPreview.
+BuildDesignPreview allocated-to SdpToolProcess in mode StandalonePreview.
+BuildDesignPreview contributes-to SdpTool.
+BuildDesignPreview realizes DesignPreview.
+CardHistory consumes GitHistoryPort.
+CardHistory consumes KanBanReadPort.
+CardHistory owns ResolveCardHistory.
+CardRevisionAccess requires GitHistoryPort in mode HistoryInspection.
+ConsumerValidationSlice addresses DeliverViewBundle.
+ConsumerValidationSlice depends-on NavigationSlice.
+ConsumerValidationSlice has implementation-status = planned.
+ConsumerValidationSlice refines DeliverSdpTool.
+DeliverSdpTool has implementation-status = planned.
+DeliverViewBundle allocated-to SdpToolProcess in mode ProjectBrowsing.
+DeliverViewBundle allocated-to SdpToolProcess in mode StandalonePreview.
+DeliverViewBundle contributes-to SdpTool.
+DeliverViewBundle realizes DesignPreview.
+DeliverViewBundle realizes ProjectNavigation.
+DescribeNavigationTree allocated-to SdpToolProcess in mode ProjectBrowsing.
+DescribeNavigationTree contributes-to SdpTool.
+DescribeNavigationTree realizes ProjectNavigation.
+DesignAuthor pursues BrowseProject.
+DesignAuthor pursues PreviewDesign.
+DesignPreview requires SdlProjectionPort in mode StandalonePreview.
+DesignReviewer pursues BrowseProject.
+DesignReviewer pursues InspectCardHistory.
+DesignReviewer pursues ReviewImplementationPlan.
+DocumentViewer pursues BrowseProject.
+DocumentViewer pursues PreviewDesign.
+HistorySlice addresses ResolveCardHistory.
+HistorySlice delivers SdpTool.
+HistorySlice depends-on ProjectDiscoverySlice.
+HistorySlice has implementation-status = planned.
+HistorySlice refines DeliverSdpTool.
+NavigationInventory consumes KanBanReadPort.
+NavigationInventory consumes SdlProjectionPort.
+NavigationInventory consumes SduiDocumentPort.
+NavigationInventory owns DescribeNavigationTree.
+NavigationSlice addresses DescribeNavigationTree.
+NavigationSlice delivers SdpTool.
+NavigationSlice depends-on ProjectDiscoverySlice.
+NavigationSlice has implementation-status = implemented.
+NavigationSlice refines DeliverSdpTool.
+PlanAssistance requires TraceabilityReadPort in mode ProcessPlanning.
+PlanAssistanceSlice addresses ProposeImplementationSlices.
+PlanAssistanceSlice addresses ValidateImplementationPlan.
+PlanAssistanceSlice delivers SdpTool.
+PlanAssistanceSlice depends-on ProjectDiscoverySlice.
+PlanAssistanceSlice has implementation-status = planned.
+PlanAssistanceSlice refines DeliverSdpTool.
+PlanCoordinator consumes SdlProjectionPort.
+PlanCoordinator consumes TraceabilityReadPort.
+PlanCoordinator owns ProposeImplementationSlices.
+PlanCoordinator owns ValidateImplementationPlan.
+PreviewCoordinator consumes SdlProjectionPort.
+PreviewCoordinator owns AcceptSourceSnapshot.
+PreviewCoordinator owns BuildDesignPreview.
+PreviewSlice delivers SdpTool.
+PreviewSlice has implementation-status = planned.
+PreviewSlice refines DeliverSdpTool.
+ProjectContext owns ResolveProjectContext.
+ProjectDiscoverySlice addresses ResolveProjectContext.
+ProjectDiscoverySlice delivers SdpTool.
+ProjectDiscoverySlice has implementation-status = implemented.
+ProjectDiscoverySlice refines DeliverSdpTool.
+ProjectNavigation requires SdlProjectionPort in mode ProjectBrowsing.
+ProposeImplementationSlices allocated-to SdpToolProcess in mode ProcessPlanning.
+ProposeImplementationSlices contributes-to SdpTool.
+ProposeImplementationSlices realizes PlanAssistance.
+ResolveCardHistory allocated-to SdpToolProcess in mode HistoryInspection.
+ResolveCardHistory contributes-to SdpTool.
+ResolveCardHistory realizes CardRevisionAccess.
+ResolveProjectContext allocated-to SdpToolProcess in mode ProjectBrowsing.
+ResolveProjectContext contributes-to SdpTool.
+ResolveProjectContext realizes ProjectNavigation.
+SavedFilePreview addresses BuildDesignPreview.
+SavedFilePreview addresses DeliverViewBundle.
+SavedFilePreview has implementation-status = implemented.
+SavedFilePreview refines PreviewSlice.
+SdpTool supports BrowseProject.
+SdpTool supports InspectCardHistory.
+SdpTool supports PreviewDesign.
+SdpTool supports ReviewImplementationPlan.
+SdpToolProcess contains CardHistory.
+SdpToolProcess contains NavigationInventory.
+SdpToolProcess contains PlanCoordinator.
+SdpToolProcess contains PreviewCoordinator.
+SdpToolProcess contains ProjectContext.
+SdpToolProcess contains ViewerBridge.
+SdpToolProcess provides CardRevisionAccess.
+SdpToolProcess provides DesignPreview.
+SdpToolProcess provides PlanAssistance.
+SdpToolProcess provides ProjectNavigation.
+UnsavedSourcePreview addresses AcceptSourceSnapshot.
+UnsavedSourcePreview depends-on SavedFilePreview.
+UnsavedSourcePreview has implementation-status = planned.
+UnsavedSourcePreview refines PreviewSlice.
+ValidateImplementationPlan allocated-to SdpToolProcess in mode ProcessPlanning.
+ValidateImplementationPlan contributes-to SdpTool.
+ValidateImplementationPlan realizes PlanAssistance.
+ViewerBridge consumes ViewerDeliveryPort.
+ViewerBridge owns DeliverViewBundle.

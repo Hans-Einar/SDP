@@ -1,0 +1,8 @@
+sequenceDiagram
+    participant n_SourceWatcher as Source Watcher
+    participant n_ReloadCoordinator as Reload Coordinator
+    participant n_SdlFrontend as Sdl Frontend
+    n_SourceWatcher->>n_ReloadCoordinator: 1: Reload Request (Model Reload Calls)
+    n_ReloadCoordinator->>n_SdlFrontend: 2: Compile Sdl Request (Sdl Compilation Calls)
+    n_SdlFrontend-->>n_ReloadCoordinator: 3: Compile Sdl Result (Sdl Compilation Calls) reply-to 2
+    n_ReloadCoordinator-->>n_SourceWatcher: 4: Reload Published (Model Reload Calls) reply-to 1

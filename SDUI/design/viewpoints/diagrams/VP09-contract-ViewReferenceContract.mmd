@@ -1,0 +1,10 @@
+flowchart LR
+    n_ViewEntryPath["ViewEntryPath (field)"]
+    n_ViewLeaseId["ViewLeaseId (field)"]
+    n_ViewManifestPath["ViewManifestPath (field)"]
+    n_ViewPublishedRevision["ViewPublishedRevision (field)"]
+    n_ViewReferenceContract["ViewReferenceContract (contract)"]
+    n_ViewReferenceContract -->|has-field| n_ViewEntryPath
+    n_ViewReferenceContract -->|has-field| n_ViewLeaseId
+    n_ViewReferenceContract -->|has-field| n_ViewManifestPath
+    n_ViewReferenceContract -->|has-field| n_ViewPublishedRevision

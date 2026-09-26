@@ -5,7 +5,7 @@ Status: proposed design corpus, with selected and inherited obligations explicit
 Language: `sdl-mvp1-exercise 0.1`, an isolated candidate extension profile.
 
 For the later system-wide conceptual consolidation, see
-[Checkpoint #1](../../docs/checkpoint%231/README.md). Its Value/ControlSet and
+[Checkpoint #1](../../SDP/History/checkpoint-1/README.md). Its Value/ControlSet and
 Functionality proposals do not change the meaning or validation of this baseline.
 
 Start at [System.design](SDL/MVP1/System.design). It declares the one System,
@@ -24,8 +24,8 @@ The 23 named Gaps keep those missing decisions visible.
 
 The owner requested a system-wide trial before extending the parser. Necessary
 language additions were first recorded in
-[findings and local extensions](../../docs/MVP1-SDL-Exercise-Findings-and-Extensions.md).
-The general [language definition](../../docs/Design-Language-Definition.md) and
+[findings and local extensions](../../SDL/docs/studies/MVP1-SDL-Exercise-Findings-and-Extensions.md).
+The general [language definition](../../SDL/docs/studies/Design-Language-Definition.md) and
 `design-core 0.1` implementation have not been changed for this exercise.
 These files cannot be passed to that parser as conforming inputs.
 
@@ -211,15 +211,15 @@ open. The model does not assert 109 implemented source functions.
 
 ## Findings and limits
 
-The [findings document](../../docs/MVP1-SDL-Exercise-Findings-and-Extensions.md)
+The [findings document](../../SDL/docs/studies/MVP1-SDL-Exercise-Findings-and-Extensions.md)
 records 15 extension candidates and the concrete modeling mistakes/omissions found.
-The subsequent [Dataset/Datagram proposal](../../docs/SDL-Datasets-Datagrams-and-Data-Contracts.md)
+The subsequent [Dataset/Datagram proposal](../../SDL/docs/studies/SDL-Datasets-Datagrams-and-Data-Contracts.md)
 adds candidate E16 for internal datasets, optional databases and Dataset-linked
 Datagram families with contract-defined variants, source identity, missing values
 and snapshot consistency. It has not yet been applied
 to this corpus or its inventory audit; the 15 candidates above describe the
 original modeling pass.
-The later [ControlSet/layer/data-access study](../../docs/SDL-ControlSets-Layer-Boundaries-and-Data-Access.md)
+The later [ControlSet/layer/data-access study](../../SDL/docs/studies/SDL-ControlSets-Layer-Boundaries-and-Data-Access.md)
 records E17–E18, including the owner-selected move from authored MessageSets to
 generated catalogs. Baseline `.design` files still use their original MessageSets;
 their migration is future work, not a completed compiler feature.

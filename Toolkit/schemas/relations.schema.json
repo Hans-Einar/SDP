@@ -133,7 +133,7 @@
     },
     "sprints": {
       "type": "object",
-      "propertyNames": { "pattern": "^Sprint-[0-9]{3,}$" },
+      "propertyNames": { "pattern": "^(?:Sprint-[0-9]{3,}|SPR-[A-Z][A-Z0-9]*-[0-9]{3,})$" },
       "additionalProperties": { "$ref": "#/$defs/relation" }
     },
     "refactors": {
@@ -143,12 +143,12 @@
     },
     "iterations": {
       "type": "object",
-      "propertyNames": { "pattern": "^SPI-[0-9]{3,}$" },
+      "propertyNames": { "pattern": "^(?:SPI-[0-9]{3,}|ITR-[A-Z][A-Z0-9]*-[0-9]{3,}-[0-9]{3,})$" },
       "additionalProperties": { "$ref": "#/$defs/relation" }
     },
     "slices": {
       "type": "object",
-      "propertyNames": { "pattern": "^SPS-[0-9]{3,}$" },
+      "propertyNames": { "pattern": "^(?:SPS-[0-9]{3,}|SLC-[A-Z][A-Z0-9]*-[0-9]{3,}-[0-9]{3,})$" },
       "additionalProperties": { "$ref": "#/$defs/relation" }
     },
     "fixes": {
@@ -163,7 +163,7 @@
     },
     "verification": {
       "type": "object",
-      "propertyNames": { "pattern": "^VER-[A-Za-z0-9]+(?:[.-][A-Za-z0-9]+)*$" },
+      "propertyNames": { "pattern": "^(?:VER-|[A-Z][A-Z0-9]*-VER-)[A-Za-z0-9]+(?:[.-][A-Za-z0-9]+)*$" },
       "additionalProperties": { "$ref": "#/$defs/relation" }
     },
     "releaseRelation": {

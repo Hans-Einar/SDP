@@ -1,0 +1,6 @@
+flowchart LR
+    n_SdlSourceModel["SdlSourceModel (capability)"]
+    n_SduiSourceModel["SduiSourceModel (capability)"]
+    n_SourceSnapshotPort["SourceSnapshotPort (interface)"]
+    n_SdlSourceModel -->|requires| n_SourceSnapshotPort
+    n_SduiSourceModel -->|requires| n_SourceSnapshotPort

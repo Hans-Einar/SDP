@@ -1,0 +1,665 @@
+{
+  "purpose": "English narrative translation; historical machine evidence is unchanged",
+  "documents": [
+    {
+      "path": "SDL/Mandate-and-Study.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "9bea60c65d848b07a713f17dcf4b06584f511546c844798674c6d42b9ac0d91f",
+      "translated_sha256": "77ea0bb9fe791b637493910e56f4722d543f77a364fd27275dcd3af06463e6c8"
+    },
+    {
+      "path": "SDL/README.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "563fc8c7e1c0bcdd25c66835a133aa2291ce11b78ae957196233e308d95df33d",
+      "translated_sha256": "520d94069e698b0f31a1fd2874b5b9706b773ad67858feac50647b719ac0930a"
+    },
+    {
+      "path": "SDL/docs/README.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "f43b137913b41899e67b93ebc85fde8bd9144090969267959b52c52b70e99c38",
+      "translated_sha256": "d6505e306895a34ce9a673039d2ff4a6b8390273aca7658df231c50bb0ba1de0"
+    },
+    {
+      "path": "SDL/docs/integration/SDL-Go-Port-Inventory.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "fe6d27a2013fc5f47e0d55ddfec5e2d1d0e8152889adf6f2fba7e75f520b6639",
+      "translated_sha256": "c99f6c19a59c3d591c70ba56b81a43acb6d2139a4763dd48b07b151ecf7cd578"
+    },
+    {
+      "path": "SDL/docs/integration/SDL-Navigable-Viewpoints-Design.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "efbc90e953fb491acf16053925866fd800fc4f6e3f21527a297ebd41df8c8039",
+      "translated_sha256": "3cf4e318d2b312ff93e8fd1ae5f9831902ed8683980f2636afcf82ffa2f6375c"
+    },
+    {
+      "path": "SDL/docs/integration/SDL-Viewpoint-Levels-and-Notation.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "5f14c5ee697c789df48834c84b77aa71e27b428275c8f6d1dd3dfa568cf3e35e",
+      "translated_sha256": "999c57c008abf4df731bf6964df31498ea9342504c7d35d0f17ba5e413cebcda"
+    },
+    {
+      "path": "SDL/docs/profiles/SDL-Channel-Scenario-Profile.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "f21cee8058fcbb88cd9730d718ccb91c6efdf005007a516887d8847277a2e635",
+      "translated_sha256": "b4ba809bd0adf474fbcddad41a89cadce2f153550c5b641638af4888c1aa66fc"
+    },
+    {
+      "path": "SDL/docs/profiles/SDL-Class-Profile.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "44197f249ff2553b413dc8975c3711a0425059ec4c1a7b43814e5d1be7d68932",
+      "translated_sha256": "4a1bd5b5466c5dbfee0c443f890d9d244042d7ab6a91ad1b8882af3482246e19"
+    },
+    {
+      "path": "SDL/docs/profiles/SDL-Data-Contract-Profile.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "8d775b8abe43330864ec381c5cdff0d0cf3b562c1b31d4f1f06de7dab6cf8cab",
+      "translated_sha256": "0325fa6440e56ee2883972bcc9f8a4587302629ac1085b0e2c1838bb29707c40"
+    },
+    {
+      "path": "SDL/docs/profiles/SDL-Delivery-Plan-Profile.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "a063bf510d1cb3979af0187488ce9ab7925d4dbc19c73eb020a8b4f4d335d25a",
+      "translated_sha256": "6a75970000d279d96731e7bcde0e2913b0d5637113212ef48df273c450f77536"
+    },
+    {
+      "path": "SDL/docs/profiles/SDL-Executable-Action-Profile.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "1375fe1939d96ba43b3d4fbb558b8dd22bd4cee12dd5b544cd244cde0127d923",
+      "translated_sha256": "32318abfb2db0ed39c66749443692adcdf276a601cd5145792c9cc87d078bb3e"
+    },
+    {
+      "path": "SDL/docs/profiles/SDL-Symbol-Profile.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "c781d099c5504e3b4ca98b4d2c7c7c85c9c004753722edc550c43d5ea0e4c15e",
+      "translated_sha256": "8d075b2091b7fab422ca423a3ac0bb5279eb4202ef3ce802446ab5db2a7fb7a7"
+    },
+    {
+      "path": "SDL/docs/studies/Design-Language-Definition.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "634c26e9a8a840012cdf2389bc46f5099ea3429ff3d917c6dd7c990cfb07d579",
+      "translated_sha256": "15c7d8252936edc0e8350c57c067c5cacd2761ce69d3fb442a8ddc5ae89b6b4a"
+    },
+    {
+      "path": "SDL/go/README.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "1ae7e56a994d99cae3b5d43c57d4c9305f65a0329ad2cf9c39560ec508e2d012",
+      "translated_sha256": "5bd6cc67fc6439fd72d565056f3b4e3836d4eaa920b2304c88b3b2e19411005e"
+    },
+    {
+      "path": "SDL/go/evidence/G4.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "0d16fb157aca03107eb51fe7a13bf6bffb868d71cb926c84fe5b9f97ee1ad76c",
+      "translated_sha256": "794ab2eccde0a9ebfe2213630eade703394d1e8d1bedef4a788776de6b4f298e"
+    },
+    {
+      "path": "SDL/go/evidence/G5.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "bf86fecafe305471c17b1e3714710385eaeb3b39559eea586d5c6997000da04d",
+      "translated_sha256": "4268459597d5860dcfe2007163d58ed812c4d4ddd72c20e33716838838bf638e"
+    },
+    {
+      "path": "SDL/go/evidence/G6.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "527f8efe2ab94cb70b6eb3bb2e181a63ef44997636ba15857d5db7187ec8a2cd",
+      "translated_sha256": "c3629828bc52e0b1c4877eca023482a44f940246ab63189bc6c00e93f9b7a6ab"
+    },
+    {
+      "path": "SDL/go/evidence/G7.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "5459c4aa583810f7f464b641ccdc3601366a7bf1d8c7c2deb70c607777e42a62",
+      "translated_sha256": "f8056c4e1593aea31895bba65ed524b77bcb68a541af7018d03232414fe7886f"
+    },
+    {
+      "path": "SDL/research/README.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "e2939b1131c39b74c5055208e28556714fbd488bb67f9c3d3d4fc447c778b1e4",
+      "translated_sha256": "e271eb0cd2bdb0043623a636fd243709214efa45ea0bc5b6f24b4817e953d887"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/README.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "563b2a7287c289e11126f1048ab68ca62b9a28d2a58b62f53a987e4e980e8b5f",
+      "translated_sha256": "712f881c9f93c6e19d3b37833154299301854584864e02808f25c0b0375ff7d1"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/aadl.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "cc19741a7842288712247b609a0b3aa45e0284df509e2d8144d06910a7473787",
+      "translated_sha256": "459ee41a7b2fab49caa21f6064667889083478406f551ba06d18f342d76b03a2"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/alloy.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "aac5f68e41d131d9e4a24bcf5667becc63b1a087d137940d0c5d6cc22bb0efe6",
+      "translated_sha256": "dc48cd5b357b4d18d917c2e5b185f59c549695040261f9f21b5644487d9482c9"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/archimate.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "bf2f68ea594881a4e992c7b57b57b5831dd9a78ecb21b591332ce182b1d93f94",
+      "translated_sha256": "01bd444ec02039cc770447fae1e10e6c641b2df2e577895d2fb8f18db128d56b"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/asyncapi.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "dbc22b3b4bd6af24e6e9fccc0bfe094adfa196e1e6976c30feeebc236e1e2001",
+      "translated_sha256": "57bd3b2f5ff4395e7e865f75344f4aa495aebc8c5b20b86fba3b5ceaa6a47e0b"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/atl.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "40673811bcb8d01fd0266a1caac3bde2405712a3699b56096ee5895c4421f9c5",
+      "translated_sha256": "da362cacac7b1dec75e5cadd2f5408a310ef5052bd79720ceb94d426dcc1b71d"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/bpmn.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "b55020c867a8d1c1a5c749eb3db1c98296fc3c92bdcd1fed422b267562fc4531",
+      "translated_sha256": "47d9775bbb3ff012dc86cdc383dc8f44a9af6c946358d5186e48120f0ec7f128"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/clafer.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "882bfd7cba753502f3aee0b137dbdea370752be5e2457364a0e189d718cf2396",
+      "translated_sha256": "58d4f7fee874b043d184e0fbdf91a51e48c02908f3884e04dae1667f9e92e04a"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/context-mapper-cml.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "31694d9eee4ae084ddc52f5d34ddc4d0cbb53065dc7fd90013e50bef189cea1a",
+      "translated_sha256": "d82708a8a8690de414c252a55f6b99e17c63a095f25669ba818c7af8bedd1db1"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/cue.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "b369854b74fe91d99ee27cba9a71d59c40c66d5e289d92b31097e442087eaba8",
+      "translated_sha256": "c9f1271495d6b1b0cbc91f9a15b8b53c4e7086cd071d5ed60e8a2fe186b45f23"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/d2.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "b2bc33cedbabb1d9ba44c13c6d9a0e5de69464a2239e4e9b3fba59f72f116102",
+      "translated_sha256": "29586266c9041b89286f6f6f1273170a1c95a6757f9854cc74bd3bcb725d6c02"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/dbml.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "7f990ab1470e2ec0fb7582f954b0c0ca480e3ed55ceb7c07cd1784c0a16ec2a8",
+      "translated_sha256": "27b6b0395c79b245fc867ece4e492310ff454b383e9d7ef6c00ed6b79a97a109"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/ecore.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "07fbb3df9348821e6c149fe1e8c01cf6909bdac0023cd0c575178ffc6a8b9552",
+      "translated_sha256": "1fd2e181650d19182259a52a52d3c6a7a1868283a5c1661f1a7d002da9e3e94d"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/edapt.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "8336115d3a064edd9f0e8f1f9ac116e7df5fab0ab75a5e360481eae7501db63a",
+      "translated_sha256": "27c069e1c67f53d6c00c6ae7c0d4aebd4d37c86d7c4a7cd77ca762c9e99d705b"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/epsilon.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "1ec782ced6834ba2ae7cb2d9a6f78928e47cbbefa172fdd9fdf08b444e0ed38b",
+      "translated_sha256": "ba493a81b8993388b587ca34be86de7ea331f6f6d0d88706153ff160ec8b9edf"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/json-schema.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "298bd9de32efbd343a8af8d11571d3a4a0e3be8cf15d6c12cce27b2fc12fbeb2",
+      "translated_sha256": "e25ef8a11ec68be63fe36bf3b14e930d9ea9308616b8f538c9e7d3c62327bbba"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/likec4.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "dd0ea1248f3f1465f9bbf3df592b70c76845c67d5539f26ab7ac73f63acb322e",
+      "translated_sha256": "3daf4211b50f7d754d3990cf1b42724c32ced77309c1ba1a8c8e75cffdd8bd6e"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/mermaid.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "620d20f964739863f1b66d9393dc1b7e3fe83784f09863ec274ea440c9f6070d",
+      "translated_sha256": "a6a66f5ce53fee96ab31d9f9326be2933ce53d036f1964ae3cb350a615a91696"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/ocl.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "acb8d1b025b58b362bbcacc3b7e4ec8052f1aaebecc8c36c982ed5cd77ec4267",
+      "translated_sha256": "805300935a1f47e7bd8ca35725e88085a0ce6f309b8492950accd1c839e53d9e"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/openapi.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "e83ab0714fcb5544504e9dc800469074baac35bc7045878ef7086fa5b1f29849",
+      "translated_sha256": "593ccfcc5f9cd1a0938c9cb14e2a8f939a441512d591ef89e6476b8201346df6"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/plantuml.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "c54e6c67950107e81fbf16284e7a741a4287567d644fd77c86c68a379068f8c3",
+      "translated_sha256": "55b3906711bc4e6d0739915eaf3f999596fb34a4924cfdf1b9251c2cb0134756"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/protobuf.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "f83c8e03c8a286a4a979efda24df5a006ae82e2592c1a43cd66ee7a1a238870c",
+      "translated_sha256": "2e8750aeec10ca94ce9f52fb4a25a4c034e6ffa022d6b8e6327fd2a71e0808ad"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/prov-o.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "4147a6e7830b201d89a47ed447899a894805fa955edb01951c32101320f86eec",
+      "translated_sha256": "7c64a11db2f9408f0401b9f0dd0c7647e20075701118cb8b2e8c1de4a2bf69c2"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/qvt.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "a0e78d4e8544d70cb77add3f2a9d43af01d42e7f1955bf5eff307e79eb2cf25c",
+      "translated_sha256": "cb1809f14f79d20391971cb112da7f6deddfda7467d456b7fa2c5a104cfd393d"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/rego.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "f9d37240e206898773cd88a902789db9d2fadfdc1753bf31ea80019ee32683fd",
+      "translated_sha256": "3f0e16f66dd8bc9de9ec7d6764e3995defbcf43b07723fb54bdd2e32d9776a44"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/reqif.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "4df8e7d866d2f4be12a5c858a3920d53f61c765fd8366154e7214506eda45184",
+      "translated_sha256": "d7b62317170a10da52e4384152f54036bdb2e62677ee8f2f7398f1a65271e12a"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/scxml.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "a7bac7a0b6900be3199fac0de7aa478a28fb058bc594c5ae009996aa1b532361",
+      "translated_sha256": "d9521bb2644031cf8de02338e5dc40c6efe4692f0bdbf52d5b59d8ae2d4ba52b"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/smithy.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "67fcb539cdba99977434893bc8462a2e5221b76acfb7d8916425adb22517874a",
+      "translated_sha256": "0371306219897a2a995b73c71d5363faac0e5bf4c45a4b276d999f68e520dca6"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/structurizr-dsl.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "1794755c07680314cb299a2bd9f0b52c004d5a3b66d2c8186f600201a331e66d",
+      "translated_sha256": "d271e3f7ae5cc712e62d6ed834fc4a2a9530bda930b58f2e571b5c4a706a46c8"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/sysml-v2.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "282b352312d67d58a1ba139e4806968c2564a8d395400ddb1e286c25f2d3c747",
+      "translated_sha256": "789785d1e1b8fc5de030d68fad3bc11e7f19a8fcdee2244c4231b087643201b5"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/tla-plus.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "a4c3c613b121ea45b027cf7d440d3a3a809af4786e64079e881fdb053021f458",
+      "translated_sha256": "e4abcd142eacff60a3ff5cc41264d54c4131ccb3053e1ab310b5151372513a4a"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/uml.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "89cc5921b3b2357fdfdacaf46f94723e361abfc784008a0440971fa502a86516",
+      "translated_sha256": "d8ae226c6e92c97d2248e1da28083624d18be33500ee74a92d68e2f1851316a6"
+    },
+    {
+      "path": "SDL/research/existingDesignLanguages/uvl.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "ccd6cef8d43f42f687477286292ea3676783e1cccb789791acb90688c2851096",
+      "translated_sha256": "d82b37904275fa0daf570174307facbd7cb13fcc1bfe66036871d95e589bcf95"
+    },
+    {
+      "path": "SDL/scripts/README.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "65ff08ad7f81cc25092216147981c01118ba6bb38011ea5a800d7fb6a0491919",
+      "translated_sha256": "924a733db0313094a2ba45c10f464ae971b41d72efd79dbe6c7039539cc1aa1b"
+    },
+    {
+      "path": "SDL/tools/README.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "32233cb5220a17740cd8dfa8df7329ab8f5a4808a5b33538302e90333df0523c",
+      "translated_sha256": "0023106e707f81cc1297c6bc28eb5058b9e9919783cbc5bcb0c179d4272a071e"
+    },
+    {
+      "path": "SDP/Development-Branch-Stack.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "742f082040a09db01867cc48d92c4390078c45584464dce5334a9b6cfcaaf80a",
+      "translated_sha256": "68898896cbf09dadabca4bef90ec58fbeae681a552b95322f16084f8d6d8b0e9"
+    },
+    {
+      "path": "SDP/History/checkpoint-1/05-Decisions-Sources-and-Next-Work.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "c5260f379c229da14bc9a60a9b1adc658c2be4c61848241595fa179a7ec47585",
+      "translated_sha256": "15cc9c93de17a2b24a70642dc75323ba5e89d0bdc54a20ae1299367a999c55a8"
+    },
+    {
+      "path": "SDP/History/checkpoint-1/06-Interactive-Prototype-and-Renderer-Study.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "feececbb10e45016f44657ec5ba6f6cb9db0a71574ec3f1630658d033ab01d62",
+      "translated_sha256": "d85a043cbc9defb430ab22935a7a8dbdd2116f5f679bdfd21b0425b7385553bf"
+    },
+    {
+      "path": "SDP/History/checkpoint-1/07-SDUI-0.2-and-Go-Direction.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "1b309c529ca2b9e618028b328f921085d4097082843033e803faf2287a47424a",
+      "translated_sha256": "eb6a523b75044afa56fcce45012bcde6198850eab0a20db5a332094393c1ca03"
+    },
+    {
+      "path": "SDP/History/checkpoint-1/08-SDL-Viewpoints-and-Implementation-Status.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "9e425a547fbc06364f89a12c3719229e67f73da2c8bf862b0e104c18b6568c6d",
+      "translated_sha256": "caa83700d852e31e96f032377b73a5ce9832f56636ac70bec0c4ed4351576915"
+    },
+    {
+      "path": "SDP/History/checkpoint-1/09-SDL-Generated-Go-Design-Review.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "03723b7b3999f3876917e60674a1cb806b3c45bbc1d4ab36463f1c37ed866025",
+      "translated_sha256": "a2ca0febbcb8a457e112d99d34629e21100308604f4fe03eab175eba9596a81d"
+    },
+    {
+      "path": "SDP/History/checkpoint-1/10-SDL-Viewpoint-Navigation.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "004c0f4fb1bdca33cd9d45dfae6d0113a9823d93cc41e97bcb37aef7ed1fb8be",
+      "translated_sha256": "0b44f3f65d97364fd2cfd4520c4e372df4856efbe4b3863cce4b2f16834ad470"
+    },
+    {
+      "path": "SDP/History/checkpoint-1/11-Go-Implementation-and-Navigation.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "1e8d8e4244830c7cacb86d989ff202e7d6e895a2960da4eae94d6be388a0981e",
+      "translated_sha256": "1afca46da751d8ddf0ca2a0d86fa57ab57e2011aa93ab89c9e5069eaa5747688"
+    },
+    {
+      "path": "SDP/History/checkpoint-1/README.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "1236bf826e06802488b72d418ed20db71e1e4d9f26e03edb90ca927f323b6159",
+      "translated_sha256": "478ba78abf494013a27d03083bd97e1ffc4066f69d0f46329aec18abf37191e4"
+    },
+    {
+      "path": "SDP/History/legacy-bootstrap/README.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "339e9a2cac68a175e7a9c9c10520e7f73d7699102959570be60434af211947cf",
+      "translated_sha256": "e44e1ff76a70d9bad3f0407a1765d03df20c3df9c4fcc7d9c71e2a1db7428515"
+    },
+    {
+      "path": "SDP/Maintenance/R1/Documentation-index.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "23b83f788fe931c0a39341617a4a35a3a3e1a8fe7c9fe346ca1903c14d4ac802",
+      "translated_sha256": "1d48039bafc9478f5fabd7f94804c627c73feac6af8a5896c0ff67cd0d1392ef"
+    },
+    {
+      "path": "SDP/Maintenance/R1/Evidence.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "08d7620ca395816d9ddb719cd419bcc5aa7a6abea8b6ffedfe2deda7c75ed2d0",
+      "translated_sha256": "dd025955230bd4bc4c1b5b51ea93540c8796d5960489ca2d7ac71f0537ee8018"
+    },
+    {
+      "path": "SDP/Maintenance/R1/Plan.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "fdea569970987e819bc45a60eaf07ed1dbefe5c461689c9ce9d17d595fe54cb4",
+      "translated_sha256": "857ab40e83ce2a9962e3c0185988e1bfae1c53eef6764263ab0ab5b1fdb2b4d1"
+    },
+    {
+      "path": "SDP/Maintenance/R2/Evidence.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "33307dca2b831e94d70c9b4a0d8359be0980c25077ac585023b47318117fa432",
+      "translated_sha256": "f597d59f6ac1109c179cfda4faf123811b24d13d4fc678159c4b59b2be544aa1"
+    },
+    {
+      "path": "SDP/Maintenance/R2/Findings.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "7bd3add200e3ca3473fd2f7905a625fae497a1fae118b61399c099c5a8179be4",
+      "translated_sha256": "0456589cad65c07ff0060497e28ccfefcf0059b8d86b4b95a296adcb8c9fbd70"
+    },
+    {
+      "path": "SDP/Maintenance/R2/Plan.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "4c2b122be5458953650e6db5df814240fe5ed5d0abf206adaede8edfb8e33209",
+      "translated_sha256": "ff0526314fa2b71e3f815bcd15d56f0839a444d37670fd9c7a2fe7a7016a0dbb"
+    },
+    {
+      "path": "SDP/README.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "a749e9b43c46dc508ad88888751c1c78bb60928f45f3b2dc8ba020c5bc218dc2",
+      "translated_sha256": "9bc33986b23f38df2df5e5668d555647c9d416a6ba6211916a45ce745cf8bafe"
+    },
+    {
+      "path": "SDUI/Mandate-and-Study.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "e7e55f47a8cef00c8d12e8924aa48ab85c5cae72e62792a02b3b4e9f67e86634",
+      "translated_sha256": "e055094db03ca5be7a7f0f18bceb9e6ca4cd26e42c040ed9285226d4e31a04a6"
+    },
+    {
+      "path": "SDUI/README.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "4630bcb4fa1e3aa3abb241d87d651eaf405b5bcec1aa3372156322cf87671e14",
+      "translated_sha256": "0435a8f05f7c413f1a1bbf9b79117875871b874001c87f30c85154425cbd6ea3"
+    },
+    {
+      "path": "SDUI/design/README.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "e7b6a48419151c63e4ea69d766fc6ef6f390fca8d8bc0c347c4a04bc1aa5348c",
+      "translated_sha256": "0b2e5df6b7ee73d086fcbe6ea3fea92f994a5401ec8d6653785cb06fb8454451"
+    },
+    {
+      "path": "SDUI/docs/README.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "22ee9688048f689aede20484c8b0def3f8f588b5ffb248d250c1897b63fd34ef",
+      "translated_sha256": "8526a6123a56a7ba98d6b6224cadcea47a6b8ec3e6f1635c3fb9de7eae6b7836"
+    },
+    {
+      "path": "SDUI/docs/architecture.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "66e76090d62403530013bc6107173c74a3fd617e0b345997a0fd67dba2d820ec",
+      "translated_sha256": "8f7aa2ed4c306ede666c984b32dfe7bafa71c4f8bcc4d56c06841ce348d9606d"
+    },
+    {
+      "path": "SDUI/docs/concept1-console.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "db29fbe4acf7786a5fa24f5def3cb1cbc9bcf584d9f475ef128041097a05abfa",
+      "translated_sha256": "d9db7b53441208e3217d82b23d9ebf92481ae2f50fc55a2c56f6c2a27c4da159"
+    },
+    {
+      "path": "SDUI/docs/concept1-relative-layout-study.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "31d28ddcdf1c9a321c114768a98d38cd5e06af45ffdba689356be7493e463ca5",
+      "translated_sha256": "7be595856b1d676ab1fc89f2a9f67269fa95f819c7937d01a186b5bca8d23621"
+    },
+    {
+      "path": "SDUI/docs/frame-composition-proposal.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "b8d07a65721884cdaca1d56574e92557e233336856eebb50ef92b2dba18d7e83",
+      "translated_sha256": "77089207f015ff5ca7cf796ac995790eb4f7d1146bb3286c398fe7a5903f04b4"
+    },
+    {
+      "path": "SDUI/docs/go-generation.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "eb143749aba07a5caea7f35e3bdff719a6c17a0704ef1734a5d4c646cb062b5d",
+      "translated_sha256": "3ece84308afc32c54e684e19ef1f148da06f031cdafe3469f130e6ac8c5ba62e"
+    },
+    {
+      "path": "SDUI/docs/go-layout-contract.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "ecc7f6c3ca99892f0520df4ceb7c86f418f6cb02bc18c35c9cbe67e911420976",
+      "translated_sha256": "c201fd9db1df4a34cfda27a68251e18a906af7078cb951ac5a136f426e891c0c"
+    },
+    {
+      "path": "SDUI/docs/handoff-mermaid-extraction.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "0c388715f70df56da8f74104d706c017525f1a49fdbec722a389877c089a8893",
+      "translated_sha256": "df2aaae083edf41f58db9c2c26e136d0f5150048c2efb04c1bcd6477b6db7fa5"
+    },
+    {
+      "path": "SDUI/docs/handoff-xfmd-sdui.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "4156366cbdd07355f30fedc948f67eebd3c82957968a96a1112bca34ae6f0919",
+      "translated_sha256": "c5ae447e8fc0b4b4f049071f3e3d517893dc1fa0572208ef34eba8e1bd5547a0"
+    },
+    {
+      "path": "SDUI/docs/implementation-plan.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "85a89213d0395e8540e41266b3f2df77627f40f4f5b306bb96293416cf8f367a",
+      "translated_sha256": "5c195cd50d5607cef3e92ae6dfa8cb5d248e4aeb8224086562a64c85d9a2352e"
+    },
+    {
+      "path": "SDUI/docs/language.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "9499e13b3e57a412ac7a379d272c578b8e9f04eb64d7ce4ab79a008fdb05fd9c",
+      "translated_sha256": "c7dbed0ad9008e7189aa8f23380f914afe13745a935108915f3652f3b49fc77a"
+    },
+    {
+      "path": "SDUI/docs/layout-language-proposal.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "2e6a6a8a069f36de8aeda1a5b3e401089f1f52bcf09cc64307dfdc201c68e4fc",
+      "translated_sha256": "9a1cf2b354551ee7aae88a4137ee59b32d422315752d951ea0bfec8475b9e3de"
+    },
+    {
+      "path": "SDUI/docs/markdown-provider.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "70e6aa4bff72f5b486512d5f9196101332b61ddbd6ea74728a730fefc8002652",
+      "translated_sha256": "ab0ed253f60b4c3e61a89a5008fe2f7c13701ec2111c66928cb6b57559d2002f"
+    },
+    {
+      "path": "SDUI/docs/prototype-widgets.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "2eb42910a211e070bfbe0ee9ac52a21bbcfb94ac3bba7533c6fc6f21d168186b",
+      "translated_sha256": "9819affe6f1b2f2d320f8c56e60eb0c63b2d894ea5608745301517901f23fabd"
+    },
+    {
+      "path": "SDUI/docs/renderer-extraction-and-language-direction.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "983254baa65c90ce27dc589e7eb6e6e57f67267ca483c26bd17c5219194bb06f",
+      "translated_sha256": "9f401abac68cc39fa03a1db73452931c9a69e2eede6973973454b85aa3206523"
+    },
+    {
+      "path": "SDUI/docs/requirements.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "baf2779db85f327d25c9ecf0dbb65a3b2efbab16f94862876697490b7b9dffa1",
+      "translated_sha256": "c5491169be104fbb0eeac3e63032f04105a657bd834886ccbfcc68c649042fa1"
+    },
+    {
+      "path": "SDUI/docs/runtime-contract.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "3e980d04508f3ce3c7f0d164d202a7c3324215c07130f5671323203dd320517a",
+      "translated_sha256": "eb199c9387768a08153324d62085b88d8823b9a061952231575f159beacb2b20"
+    },
+    {
+      "path": "SDUI/docs/target-architecture.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "de257e42d63fb967b3143a06ae3c2f691e59ab4cee8358a0017bd7935d457761",
+      "translated_sha256": "94171a8a4cbb7281f877c04661515de453454713b9868103b9a47d780f74a49a"
+    },
+    {
+      "path": "SDUI/evidence/composition-design-2026-09-21.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "df675a23d74feb9b131f2a2939abd06188ff448699f686f06ca8d5ddde875d12",
+      "translated_sha256": "05a9ad6fcd05cb9893227255e22fbe2e9065282500226aaba6cea85c8a5e8bdd"
+    },
+    {
+      "path": "SDUI/evidence/frontend-console-2026-09-21.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "a0379d821893eaad03db20ef81ec2214228a292e5b4a4f37b778d9e8aa7d6983",
+      "translated_sha256": "a353967c418998abd6330338cb9e7cfdceae1d4c4fc2b3e7dc1c5701cabb5b25"
+    },
+    {
+      "path": "SDUI/evidence/markdown-dump-2026-09-21.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "3abd652d8049c06573be1677e1de428001193a35d757f1fee4e6fb5ad77ecee0",
+      "translated_sha256": "c15db782b12107a6f49919adc9c2928a0b0daeb81207910e2c628a41ae5d9ff5"
+    },
+    {
+      "path": "SDUI/evidence/planning-2026-09-20.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "0fd5925fc68bc8ac96384a50429d229983e9c1c900031c772f9b7138d630b2e9",
+      "translated_sha256": "28f0d7fd6beca70fa35411f132a2de7300ddb6e88b388bf63d80c13037c5d786"
+    },
+    {
+      "path": "SDUI/evidence/prototype-widgets/README.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "723bc41741a765e4aad2977212eecb7f879a7635d2a0d84d2511c44c65b5773c",
+      "translated_sha256": "c5eb36f8afe22a8b7d70820327ebe4be46c467b12c7f70a3316e63df6e5b62fd"
+    },
+    {
+      "path": "SDUI/evidence/treemap-probe/README.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "a879a322fa32db0bab43e54c2f65cf767a4c0a4f78d3315549827128c1dbcd43",
+      "translated_sha256": "e064e5538a85878a029940049579eb30dd9c0b1245e695c3b28ce4c7818a872e"
+    },
+    {
+      "path": "SDUI/evidence/verification.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "c112bfb4687db710f5074379ceb1a710bcbe48ee0670c91ff3ba4da639f9f5e5",
+      "translated_sha256": "1f967f0745a8bf473616d0763ef04a84ccba8ced8162572c04c7cf748b39ae86"
+    },
+    {
+      "path": "SDUI/examples/concept1-bucking.treemap.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "1719641c6e4c8224ee1950550c484691e7ea4fb54cfdc4ef1b3b15cabc5dac63",
+      "translated_sha256": "ca04236825cf93991c084896c8e85f5e8e83b5980ebf3a5a22ef10af2e05ced4"
+    },
+    {
+      "path": "SDUI/examples/concept1-bucking.widgets.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "03df0f7599c1d8f1e1f86f311c0b2a0b377b9220b7b9cd647555235b4d21071c",
+      "translated_sha256": "cd4bae2e7d4abbc307cdbc6dc1ef2b3f9ba56a98ba1002dbe63f5930dbacb630"
+    },
+    {
+      "path": "SDUI/go/README.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "256649b7544f0a5ea02c3bc0f5154fe7cbee9491f0c8b21e6cc2d68a33c773f1",
+      "translated_sha256": "0782799db5473b4537b6aa193292c7e8600118a11b710fb9557bb87a10ed27d8"
+    },
+    {
+      "path": "SDUI/go/evidence/G1.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "276706539c6598f12ac6323661f30745ba7a5e4c83f3cd38bd3eec14395b96d6",
+      "translated_sha256": "d5fd0c72fbd8c8d34500cd45c9a45277753e84484512bc2e010d7efe2a7fceb7"
+    },
+    {
+      "path": "SDUI/go/evidence/G2.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "4a6fa53d90cb9027146a2617b29e3a3b8559cdfd071b8ae2f0c96c579dac672e",
+      "translated_sha256": "7f696aa9e76490636c01ac3b31cdb61f4fe03a59bb1b149121aca9b9343d97b4"
+    },
+    {
+      "path": "SDUI/go/evidence/G3.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "4324b418a7023e4f4f5d0b116fabe91798cb427e4eee3cc349228450a2e99963",
+      "translated_sha256": "6d01fca491c58d5d5a4ae8f2217b62905af667d37e2be9a844ec5a3501108b73"
+    },
+    {
+      "path": "SDUI/go/runtime/README.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "63dfbc9873395494fbfcf750aaffd221b6a34a2c5388ad8990282fe849e9c305",
+      "translated_sha256": "f0e1e7d55412997b96094a4f9c751ee2ca4747d7437ac74662fa4ba75fe7de1b"
+    },
+    {
+      "path": "Template/README.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "67cfab07ab218c6188c306cf525c8afca40796b28b64b43b87f15bba902d0f79",
+      "translated_sha256": "57ee8dfcc09808702607d3a52af030d2ccd80571942084c34e371eb070372611"
+    },
+    {
+      "path": "Toolkit/docs/README.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "b64b083d9d09e0f162224a8a6cd53804ee1cd9e1b84dfb29c5825e4a1ebefe6c",
+      "translated_sha256": "51f4db2957aa8880caa255628d1d37d748fefc700122f671c6628eaa15dc6e10"
+    },
+    {
+      "path": "docs/README.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "229ad2b860fe263e798978d14a7e0f5436e61873f7ba03ef09982c9fc6927236",
+      "translated_sha256": "f7567f8b2f867051c49e05146451ecd3c03b2053e7730d2e52734622b198264a"
+    },
+    {
+      "path": "experiments/design_core/README.md",
+      "source_revision": "9e0d555",
+      "source_sha256": "134be03c42882929e168a8025427cdc8a5913b87eab255bbb1dcb070e9ad096e",
+      "translated_sha256": "dfca61b7dd12caf0729096cf1dd02075f47dc8d590942c6c3d360e2f95ebb696"
+    }
+  ]
+}

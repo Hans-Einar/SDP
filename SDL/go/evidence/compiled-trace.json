@@ -1,0 +1,144 @@
+{
+  "domain_revision": 2,
+  "domain_trace": [
+    {
+      "sequence": 1,
+      "Expected": 0,
+      "Revision": 1,
+      "Value": "430",
+      "Accepted": true
+    },
+    {
+      "sequence": 2,
+      "Expected": 1,
+      "Revision": 1,
+      "Value": "invalid",
+      "Accepted": false
+    },
+    {
+      "sequence": 3,
+      "Expected": 1,
+      "Revision": 2,
+      "Value": "440",
+      "Accepted": true
+    }
+  ],
+  "domain_value": "440",
+  "events": [
+    {
+      "accepted": true,
+      "draft": "430",
+      "sequence": 1
+    },
+    {
+      "accepted": false,
+      "draft": "invalid",
+      "error": "apt-value: simulation requires integer 100–1000",
+      "sequence": 2
+    },
+    {
+      "accepted": true,
+      "draft": "440",
+      "sequence": 3
+    }
+  ],
+  "links": [
+    {
+      "Widget": "page/apply",
+      "Symbol": "apt.EditAptCell",
+      "Target": "page/value",
+      "UISpan": {
+        "start": 312,
+        "end": 373,
+        "line": 7,
+        "column": 3
+      },
+      "SDLSpan": {
+        "start": 70,
+        "end": 89,
+        "line": 4,
+        "column": 1,
+        "end_line": 4,
+        "end_column": 20
+      }
+    },
+    {
+      "Widget": "page/value",
+      "Symbol": "apt.EditAptCell",
+      "Target": "page/value",
+      "UISpan": {
+        "start": 235,
+        "end": 308,
+        "line": 6,
+        "column": 3
+      },
+      "SDLSpan": {
+        "start": 70,
+        "end": 89,
+        "line": 4,
+        "column": 1,
+        "end_line": 4,
+        "end_column": 20
+      }
+    }
+  ],
+  "simulation": true,
+  "widgets": [
+    {
+      "Handle": {
+        "Session": "apt-prototype",
+        "Path": "page/apply",
+        "Generation": 2,
+        "Kind": "button"
+      },
+      "InstancePath": "page/apply",
+      "Label": "Godta celle",
+      "Value": "",
+      "Draft": "",
+      "ValueRevision": 1,
+      "DraftRevision": 1,
+      "Dirty": false,
+      "Enabled": true,
+      "Visible": true,
+      "Binding": {
+        "module": "apt",
+        "object": "EditAptCell",
+        "member": "invoke",
+        "span": {
+          "start": 349,
+          "end": 372,
+          "line": 7,
+          "column": 40
+        }
+      }
+    },
+    {
+      "Handle": {
+        "Session": "apt-prototype",
+        "Path": "page/value",
+        "Generation": 1,
+        "Kind": "input"
+      },
+      "InstancePath": "page/value",
+      "Label": "Lengdeverdi",
+      "Value": "440",
+      "Draft": "440",
+      "ValueRevision": 3,
+      "DraftRevision": 6,
+      "Dirty": false,
+      "Enabled": true,
+      "Visible": true,
+      "Binding": {
+        "module": "apt",
+        "object": "EditAptCell",
+        "member": "invoke",
+        "span": {
+          "start": 284,
+          "end": 307,
+          "line": 6,
+          "column": 52
+        }
+      }
+    }
+  ]
+}

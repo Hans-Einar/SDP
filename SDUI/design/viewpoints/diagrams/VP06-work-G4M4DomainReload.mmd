@@ -1,0 +1,13 @@
+flowchart LR
+    n_CheckDomainStateCompatibility["CheckDomainStateCompatibility (functionality)"]
+    n_DomainStateMigrator["DomainStateMigrator (unit)"]
+    n_G4M4DomainReload["G4M4DomainReload (activity)"]
+    n_GoBuildRunner["GoBuildRunner (unit)"]
+    n_MigrateOrResetDomainState["MigrateOrResetDomainState (functionality)"]
+    n_RestartChangedGoProgram["RestartChangedGoProgram (functionality)"]
+    n_DomainStateMigrator -->|owns| n_CheckDomainStateCompatibility
+    n_DomainStateMigrator -->|owns| n_MigrateOrResetDomainState
+    n_G4M4DomainReload -->|addresses| n_CheckDomainStateCompatibility
+    n_G4M4DomainReload -->|addresses| n_MigrateOrResetDomainState
+    n_G4M4DomainReload -->|addresses| n_RestartChangedGoProgram
+    n_GoBuildRunner -->|owns| n_RestartChangedGoProgram

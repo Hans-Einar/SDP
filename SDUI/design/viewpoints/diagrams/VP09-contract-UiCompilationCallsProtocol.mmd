@@ -1,0 +1,8 @@
+flowchart LR
+    n_CompileUiRejected["CompileUiRejected (message)"]
+    n_CompileUiRequest["CompileUiRequest (message)"]
+    n_CompileUiResult["CompileUiResult (message)"]
+    n_UiCompilationCallsProtocol["UiCompilationCallsProtocol (contract)"]
+    n_UiCompilationCallsProtocol -->|permits| n_CompileUiRejected
+    n_UiCompilationCallsProtocol -->|permits| n_CompileUiRequest
+    n_UiCompilationCallsProtocol -->|permits| n_CompileUiResult

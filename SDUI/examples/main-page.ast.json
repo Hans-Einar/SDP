@@ -1,9 +1,9 @@
 {
-  "astFormat": "sdui-ast/0.1",
+  "astFormat": "sdui-ast/0.2",
   "validation": "local-profile",
   "document": {
     "type": "Document",
-    "profile": "sdui/0.1",
+    "profile": "sdui/0.2",
     "references": [
       {
         "type": "ModuleRef",
@@ -11,8 +11,8 @@
         "path": "some_SDL_file.sdl",
         "span": {
           "type": "Span",
-          "start": 71,
-          "end": 104,
+          "start": 68,
+          "end": 101,
           "line": 3,
           "column": 1
         }
@@ -23,770 +23,923 @@
         "type": "Definition",
         "name": "BoxUIDefinition",
         "root": {
-          "type": "Box",
-          "name": "main",
-          "properties": [
+          "type": "Node",
+          "kind": "frame",
+          "name": null,
+          "role": null,
+          "rows": [
             {
-              "type": "Property",
-              "name": "title",
-              "value": {
-                "type": "Literal",
-                "kind": "string",
-                "value": "Main page box",
-                "span": {
-                  "type": "Span",
-                  "start": 142,
-                  "end": 157,
-                  "line": 6,
-                  "column": 17
-                }
-              },
-              "span": {
-                "type": "Span",
-                "start": 136,
-                "end": 157,
-                "line": 6,
-                "column": 11
-              }
-            },
-            {
-              "type": "Property",
-              "name": "axis",
-              "value": {
-                "type": "Literal",
-                "kind": "string",
-                "value": "column",
-                "span": {
-                  "type": "Span",
-                  "start": 164,
-                  "end": 172,
-                  "line": 6,
-                  "column": 39
-                }
-              },
-              "span": {
-                "type": "Span",
-                "start": 159,
-                "end": 172,
-                "line": 6,
-                "column": 34
-              }
-            },
-            {
-              "type": "Property",
-              "name": "gap",
-              "value": {
-                "type": "Literal",
-                "kind": "number",
-                "value": 12.0,
-                "span": {
-                  "type": "Span",
-                  "start": 178,
-                  "end": 180,
-                  "line": 6,
-                  "column": 53
-                }
-              },
-              "span": {
-                "type": "Span",
-                "start": 174,
-                "end": 180,
-                "line": 6,
-                "column": 49
-              }
-            },
-            {
-              "type": "Property",
-              "name": "padding",
-              "value": {
-                "type": "Literal",
-                "kind": "number",
-                "value": 12.0,
-                "span": {
-                  "type": "Span",
-                  "start": 190,
-                  "end": 192,
-                  "line": 6,
-                  "column": 65
-                }
-              },
-              "span": {
-                "type": "Span",
-                "start": 182,
-                "end": 192,
-                "line": 6,
-                "column": 57
-              }
-            }
-          ],
-          "children": [
-            {
-              "type": "Box",
-              "name": "top",
-              "properties": [
+              "type": "Row",
+              "items": [
                 {
-                  "type": "Property",
-                  "name": "title",
-                  "value": {
+                  "type": "Node",
+                  "kind": "markdown",
+                  "name": null,
+                  "role": "header",
+                  "rows": [],
+                  "widget": null,
+                  "arguments": [],
+                  "text": {
                     "type": "Literal",
                     "kind": "string",
-                    "value": "Grouping leftTop & rightTop",
+                    "value": "## Main page box",
                     "span": {
                       "type": "Span",
-                      "start": 211,
-                      "end": 240,
-                      "line": 7,
-                      "column": 18
+                      "start": 132,
+                      "end": 150,
+                      "line": 6,
+                      "column": 10
                     }
                   },
+                  "target": null,
+                  "variant": null,
+                  "layout": [],
                   "span": {
                     "type": "Span",
-                    "start": 205,
-                    "end": 240,
-                    "line": 7,
-                    "column": 12
+                    "start": 125,
+                    "end": 150,
+                    "line": 6,
+                    "column": 3
                   }
                 },
                 {
-                  "type": "Property",
-                  "name": "axis",
-                  "value": {
-                    "type": "Literal",
-                    "kind": "string",
-                    "value": "row",
-                    "span": {
-                      "type": "Span",
-                      "start": 247,
-                      "end": 252,
-                      "line": 7,
-                      "column": 54
-                    }
-                  },
-                  "span": {
-                    "type": "Span",
-                    "start": 242,
-                    "end": 252,
-                    "line": 7,
-                    "column": 49
-                  }
-                },
-                {
-                  "type": "Property",
-                  "name": "weight",
-                  "value": {
-                    "type": "Literal",
-                    "kind": "number",
-                    "value": 2.0,
-                    "span": {
-                      "type": "Span",
-                      "start": 261,
-                      "end": 262,
-                      "line": 7,
-                      "column": 68
-                    }
-                  },
-                  "span": {
-                    "type": "Span",
-                    "start": 254,
-                    "end": 262,
-                    "line": 7,
-                    "column": 61
-                  }
-                }
-              ],
-              "children": [
-                {
-                  "type": "Box",
-                  "name": "leftTop",
-                  "properties": [
+                  "type": "Node",
+                  "kind": "frame",
+                  "name": "top",
+                  "role": null,
+                  "rows": [
                     {
-                      "type": "Property",
-                      "name": "title",
-                      "value": {
-                        "type": "Literal",
-                        "kind": "string",
-                        "value": "Left box",
-                        "span": {
-                          "type": "Span",
-                          "start": 287,
-                          "end": 297,
-                          "line": 8,
-                          "column": 24
+                      "type": "Row",
+                      "items": [
+                        {
+                          "type": "Node",
+                          "kind": "frame",
+                          "name": "leftTop",
+                          "role": null,
+                          "rows": [
+                            {
+                              "type": "Row",
+                              "items": [
+                                {
+                                  "type": "Node",
+                                  "kind": "markdown",
+                                  "name": null,
+                                  "role": "header",
+                                  "rows": [],
+                                  "widget": null,
+                                  "arguments": [],
+                                  "text": {
+                                    "type": "Literal",
+                                    "kind": "string",
+                                    "value": "### Left box",
+                                    "span": {
+                                      "type": "Span",
+                                      "start": 191,
+                                      "end": 205,
+                                      "line": 9,
+                                      "column": 14
+                                    }
+                                  },
+                                  "target": null,
+                                  "variant": null,
+                                  "layout": [],
+                                  "span": {
+                                    "type": "Span",
+                                    "start": 184,
+                                    "end": 205,
+                                    "line": 9,
+                                    "column": 7
+                                  }
+                                },
+                                {
+                                  "type": "Node",
+                                  "kind": "group",
+                                  "name": null,
+                                  "role": null,
+                                  "rows": [
+                                    {
+                                      "type": "Row",
+                                      "items": [
+                                        {
+                                          "type": "Node",
+                                          "kind": "widget",
+                                          "name": "button1",
+                                          "role": null,
+                                          "rows": [],
+                                          "widget": "button",
+                                          "arguments": [
+                                            {
+                                              "type": "Argument",
+                                              "name": null,
+                                              "value": {
+                                                "type": "Literal",
+                                                "kind": "string",
+                                                "value": "OK",
+                                                "span": {
+                                                  "type": "Span",
+                                                  "start": 229,
+                                                  "end": 233,
+                                                  "line": 10,
+                                                  "column": 23
+                                                }
+                                              },
+                                              "span": {
+                                                "type": "Span",
+                                                "start": 229,
+                                                "end": 233,
+                                                "line": 10,
+                                                "column": 23
+                                              }
+                                            },
+                                            {
+                                              "type": "Argument",
+                                              "name": "callback",
+                                              "value": {
+                                                "type": "Reference",
+                                                "module": "sdlFile",
+                                                "object": "button1_sdl",
+                                                "member": "callback",
+                                                "span": {
+                                                  "type": "Span",
+                                                  "start": 244,
+                                                  "end": 273,
+                                                  "line": 10,
+                                                  "column": 38
+                                                }
+                                              },
+                                              "span": {
+                                                "type": "Span",
+                                                "start": 235,
+                                                "end": 273,
+                                                "line": 10,
+                                                "column": 29
+                                              }
+                                            }
+                                          ],
+                                          "text": null,
+                                          "target": null,
+                                          "variant": null,
+                                          "layout": [],
+                                          "span": {
+                                            "type": "Span",
+                                            "start": 214,
+                                            "end": 274,
+                                            "line": 10,
+                                            "column": 8
+                                          }
+                                        },
+                                        {
+                                          "type": "Node",
+                                          "kind": "widget",
+                                          "name": "button2",
+                                          "role": null,
+                                          "rows": [],
+                                          "widget": "button",
+                                          "arguments": [
+                                            {
+                                              "type": "Argument",
+                                              "name": null,
+                                              "value": {
+                                                "type": "Literal",
+                                                "kind": "string",
+                                                "value": "Cancel",
+                                                "span": {
+                                                  "type": "Span",
+                                                  "start": 298,
+                                                  "end": 306,
+                                                  "line": 11,
+                                                  "column": 23
+                                                }
+                                              },
+                                              "span": {
+                                                "type": "Span",
+                                                "start": 298,
+                                                "end": 306,
+                                                "line": 11,
+                                                "column": 23
+                                              }
+                                            },
+                                            {
+                                              "type": "Argument",
+                                              "name": "callback",
+                                              "value": {
+                                                "type": "Reference",
+                                                "module": "sdlFile",
+                                                "object": "button2_sdl",
+                                                "member": "callback",
+                                                "span": {
+                                                  "type": "Span",
+                                                  "start": 317,
+                                                  "end": 346,
+                                                  "line": 11,
+                                                  "column": 42
+                                                }
+                                              },
+                                              "span": {
+                                                "type": "Span",
+                                                "start": 308,
+                                                "end": 346,
+                                                "line": 11,
+                                                "column": 33
+                                              }
+                                            }
+                                          ],
+                                          "text": null,
+                                          "target": null,
+                                          "variant": null,
+                                          "layout": [],
+                                          "span": {
+                                            "type": "Span",
+                                            "start": 283,
+                                            "end": 347,
+                                            "line": 11,
+                                            "column": 8
+                                          }
+                                        }
+                                      ],
+                                      "span": {
+                                        "type": "Span",
+                                        "start": 214,
+                                        "end": 347,
+                                        "line": 10,
+                                        "column": 8
+                                      }
+                                    }
+                                  ],
+                                  "widget": null,
+                                  "arguments": [],
+                                  "text": null,
+                                  "target": null,
+                                  "variant": null,
+                                  "layout": [],
+                                  "span": {
+                                    "type": "Span",
+                                    "start": 213,
+                                    "end": 348,
+                                    "line": 10,
+                                    "column": 7
+                                  }
+                                }
+                              ],
+                              "span": {
+                                "type": "Span",
+                                "start": 184,
+                                "end": 348,
+                                "line": 9,
+                                "column": 7
+                              }
+                            }
+                          ],
+                          "widget": null,
+                          "arguments": [],
+                          "text": null,
+                          "target": null,
+                          "variant": "b",
+                          "layout": [
+                            {
+                              "type": "LayoutRule",
+                              "name": "x",
+                              "value": {
+                                "type": "Literal",
+                                "kind": "fr",
+                                "value": 1.0,
+                                "span": {
+                                  "type": "Span",
+                                  "start": 360,
+                                  "end": 363,
+                                  "line": 12,
+                                  "column": 12
+                                }
+                              },
+                              "spelling": "x=1fr",
+                              "span": {
+                                "type": "Span",
+                                "start": 358,
+                                "end": 363,
+                                "line": 12,
+                                "column": 10
+                              }
+                            }
+                          ],
+                          "span": {
+                            "type": "Span",
+                            "start": 166,
+                            "end": 364,
+                            "line": 8,
+                            "column": 5
+                          }
+                        },
+                        {
+                          "type": "Node",
+                          "kind": "frame",
+                          "name": "rightTop",
+                          "role": null,
+                          "rows": [
+                            {
+                              "type": "Row",
+                              "items": [
+                                {
+                                  "type": "Node",
+                                  "kind": "markdown",
+                                  "name": null,
+                                  "role": "header",
+                                  "rows": [],
+                                  "widget": null,
+                                  "arguments": [],
+                                  "text": {
+                                    "type": "Literal",
+                                    "kind": "string",
+                                    "value": "### Right box",
+                                    "span": {
+                                      "type": "Span",
+                                      "start": 396,
+                                      "end": 411,
+                                      "line": 14,
+                                      "column": 14
+                                    }
+                                  },
+                                  "target": null,
+                                  "variant": null,
+                                  "layout": [],
+                                  "span": {
+                                    "type": "Span",
+                                    "start": 389,
+                                    "end": 411,
+                                    "line": 14,
+                                    "column": 7
+                                  }
+                                },
+                                {
+                                  "type": "Node",
+                                  "kind": "group",
+                                  "name": null,
+                                  "role": null,
+                                  "rows": [
+                                    {
+                                      "type": "Row",
+                                      "items": [
+                                        {
+                                          "type": "Node",
+                                          "kind": "markdown",
+                                          "name": null,
+                                          "role": null,
+                                          "rows": [],
+                                          "widget": null,
+                                          "arguments": [],
+                                          "text": {
+                                            "type": "Literal",
+                                            "kind": "string",
+                                            "value": "Forklaring over feltet — Æøå",
+                                            "span": {
+                                              "type": "Span",
+                                              "start": 420,
+                                              "end": 455,
+                                              "line": 15,
+                                              "column": 8
+                                            }
+                                          },
+                                          "target": null,
+                                          "variant": null,
+                                          "layout": [],
+                                          "span": {
+                                            "type": "Span",
+                                            "start": 420,
+                                            "end": 455,
+                                            "line": 15,
+                                            "column": 8
+                                          }
+                                        }
+                                      ],
+                                      "span": {
+                                        "type": "Span",
+                                        "start": 420,
+                                        "end": 455,
+                                        "line": 15,
+                                        "column": 8
+                                      }
+                                    },
+                                    {
+                                      "type": "Row",
+                                      "items": [
+                                        {
+                                          "type": "Node",
+                                          "kind": "widget",
+                                          "name": "input1_boxui",
+                                          "role": null,
+                                          "rows": [],
+                                          "widget": "input",
+                                          "arguments": [
+                                            {
+                                              "type": "Argument",
+                                              "name": null,
+                                              "value": {
+                                                "type": "Literal",
+                                                "kind": "string",
+                                                "value": "Input text here:",
+                                                "span": {
+                                                  "type": "Span",
+                                                  "start": 483,
+                                                  "end": 501,
+                                                  "line": 16,
+                                                  "column": 27
+                                                }
+                                              },
+                                              "span": {
+                                                "type": "Span",
+                                                "start": 483,
+                                                "end": 501,
+                                                "line": 16,
+                                                "column": 27
+                                              }
+                                            },
+                                            {
+                                              "type": "Argument",
+                                              "name": "value",
+                                              "value": {
+                                                "type": "Literal",
+                                                "kind": "string",
+                                                "value": "C1",
+                                                "span": {
+                                                  "type": "Span",
+                                                  "start": 509,
+                                                  "end": 513,
+                                                  "line": 16,
+                                                  "column": 53
+                                                }
+                                              },
+                                              "span": {
+                                                "type": "Span",
+                                                "start": 503,
+                                                "end": 513,
+                                                "line": 16,
+                                                "column": 47
+                                              }
+                                            },
+                                            {
+                                              "type": "Argument",
+                                              "name": "callback",
+                                              "value": {
+                                                "type": "Reference",
+                                                "module": "sdlFile",
+                                                "object": "input1_sdl",
+                                                "member": "callback",
+                                                "span": {
+                                                  "type": "Span",
+                                                  "start": 524,
+                                                  "end": 552,
+                                                  "line": 16,
+                                                  "column": 68
+                                                }
+                                              },
+                                              "span": {
+                                                "type": "Span",
+                                                "start": 515,
+                                                "end": 552,
+                                                "line": 16,
+                                                "column": 59
+                                              }
+                                            }
+                                          ],
+                                          "text": null,
+                                          "target": null,
+                                          "variant": null,
+                                          "layout": [],
+                                          "span": {
+                                            "type": "Span",
+                                            "start": 464,
+                                            "end": 553,
+                                            "line": 16,
+                                            "column": 8
+                                          }
+                                        }
+                                      ],
+                                      "span": {
+                                        "type": "Span",
+                                        "start": 464,
+                                        "end": 553,
+                                        "line": 16,
+                                        "column": 8
+                                      }
+                                    }
+                                  ],
+                                  "widget": null,
+                                  "arguments": [],
+                                  "text": null,
+                                  "target": null,
+                                  "variant": null,
+                                  "layout": [],
+                                  "span": {
+                                    "type": "Span",
+                                    "start": 419,
+                                    "end": 554,
+                                    "line": 15,
+                                    "column": 7
+                                  }
+                                }
+                              ],
+                              "span": {
+                                "type": "Span",
+                                "start": 389,
+                                "end": 554,
+                                "line": 14,
+                                "column": 7
+                              }
+                            }
+                          ],
+                          "widget": null,
+                          "arguments": [],
+                          "text": null,
+                          "target": null,
+                          "variant": "b",
+                          "layout": [
+                            {
+                              "type": "LayoutRule",
+                              "name": "x",
+                              "value": {
+                                "type": "Literal",
+                                "kind": "fr",
+                                "value": 2.0,
+                                "span": {
+                                  "type": "Span",
+                                  "start": 566,
+                                  "end": 569,
+                                  "line": 17,
+                                  "column": 12
+                                }
+                              },
+                              "spelling": "x=2fr",
+                              "span": {
+                                "type": "Span",
+                                "start": 564,
+                                "end": 569,
+                                "line": 17,
+                                "column": 10
+                              }
+                            }
+                          ],
+                          "span": {
+                            "type": "Span",
+                            "start": 370,
+                            "end": 570,
+                            "line": 13,
+                            "column": 5
+                          }
                         }
-                      },
+                      ],
                       "span": {
                         "type": "Span",
-                        "start": 281,
-                        "end": 297,
+                        "start": 166,
+                        "end": 570,
                         "line": 8,
-                        "column": 18
-                      }
-                    },
-                    {
-                      "type": "Property",
-                      "name": "weight",
-                      "value": {
-                        "type": "Literal",
-                        "kind": "number",
-                        "value": 1.0,
-                        "span": {
-                          "type": "Span",
-                          "start": 306,
-                          "end": 307,
-                          "line": 8,
-                          "column": 43
-                        }
-                      },
-                      "span": {
-                        "type": "Span",
-                        "start": 299,
-                        "end": 307,
-                        "line": 8,
-                        "column": 36
+                        "column": 5
                       }
                     }
                   ],
-                  "children": [],
-                  "content": {
-                    "type": "Content",
-                    "rows": [
-                      {
-                        "type": "Row",
-                        "widgets": [
-                          {
-                            "type": "Widget",
-                            "name": "button1",
-                            "kind": "button",
-                            "arguments": [
-                              {
-                                "type": "Argument",
-                                "name": null,
-                                "value": {
-                                  "type": "Literal",
-                                  "kind": "string",
-                                  "value": "OK",
-                                  "span": {
-                                    "type": "Span",
-                                    "start": 346,
-                                    "end": 350,
-                                    "line": 10,
-                                    "column": 28
-                                  }
-                                },
-                                "span": {
-                                  "type": "Span",
-                                  "start": 346,
-                                  "end": 350,
-                                  "line": 10,
-                                  "column": 28
-                                }
-                              },
-                              {
-                                "type": "Argument",
-                                "name": "callback",
-                                "value": {
-                                  "type": "Reference",
-                                  "module": "sdlFile",
-                                  "object": "button1_sdl",
-                                  "member": "callback",
-                                  "span": {
-                                    "type": "Span",
-                                    "start": 361,
-                                    "end": 390,
-                                    "line": 10,
-                                    "column": 43
-                                  }
-                                },
-                                "span": {
-                                  "type": "Span",
-                                  "start": 352,
-                                  "end": 390,
-                                  "line": 10,
-                                  "column": 34
-                                }
-                              }
-                            ],
-                            "span": {
-                              "type": "Span",
-                              "start": 329,
-                              "end": 391,
-                              "line": 10,
-                              "column": 11
-                            }
-                          },
-                          {
-                            "type": "Widget",
-                            "name": "button2",
-                            "kind": "button",
-                            "arguments": [
-                              {
-                                "type": "Argument",
-                                "name": null,
-                                "value": {
-                                  "type": "Literal",
-                                  "kind": "string",
-                                  "value": "Cancel",
-                                  "span": {
-                                    "type": "Span",
-                                    "start": 420,
-                                    "end": 428,
-                                    "line": 11,
-                                    "column": 28
-                                  }
-                                },
-                                "span": {
-                                  "type": "Span",
-                                  "start": 420,
-                                  "end": 428,
-                                  "line": 11,
-                                  "column": 28
-                                }
-                              },
-                              {
-                                "type": "Argument",
-                                "name": "callback",
-                                "value": {
-                                  "type": "Reference",
-                                  "module": "sdlFile",
-                                  "object": "button2_sdl",
-                                  "member": "callback",
-                                  "span": {
-                                    "type": "Span",
-                                    "start": 439,
-                                    "end": 468,
-                                    "line": 11,
-                                    "column": 47
-                                  }
-                                },
-                                "span": {
-                                  "type": "Span",
-                                  "start": 430,
-                                  "end": 468,
-                                  "line": 11,
-                                  "column": 38
-                                }
-                              }
-                            ],
-                            "span": {
-                              "type": "Span",
-                              "start": 403,
-                              "end": 469,
-                              "line": 11,
-                              "column": 11
-                            }
-                          }
-                        ],
-                        "span": {
-                          "type": "Span",
-                          "start": 329,
-                          "end": 469,
-                          "line": 10,
-                          "column": 11
-                        }
-                      }
-                    ],
-                    "span": {
-                      "type": "Span",
-                      "start": 317,
-                      "end": 479,
-                      "line": 9,
-                      "column": 9
-                    }
-                  },
-                  "span": {
-                    "type": "Span",
-                    "start": 280,
-                    "end": 487,
-                    "line": 8,
-                    "column": 17
-                  }
-                },
-                {
-                  "type": "Box",
-                  "name": "rightTop",
-                  "properties": [
+                  "widget": null,
+                  "arguments": [],
+                  "text": null,
+                  "target": null,
+                  "variant": null,
+                  "layout": [
                     {
-                      "type": "Property",
-                      "name": "title",
+                      "type": "LayoutRule",
+                      "name": "y",
                       "value": {
                         "type": "Literal",
-                        "kind": "string",
-                        "value": "Right box",
-                        "span": {
-                          "type": "Span",
-                          "start": 513,
-                          "end": 524,
-                          "line": 14,
-                          "column": 25
-                        }
-                      },
-                      "span": {
-                        "type": "Span",
-                        "start": 507,
-                        "end": 524,
-                        "line": 14,
-                        "column": 19
-                      }
-                    },
-                    {
-                      "type": "Property",
-                      "name": "weight",
-                      "value": {
-                        "type": "Literal",
-                        "kind": "number",
+                        "kind": "fr",
                         "value": 2.0,
                         "span": {
                           "type": "Span",
-                          "start": 533,
-                          "end": 534,
-                          "line": 14,
-                          "column": 45
+                          "start": 578,
+                          "end": 581,
+                          "line": 18,
+                          "column": 8
                         }
                       },
+                      "spelling": "y=2fr",
                       "span": {
                         "type": "Span",
-                        "start": 526,
-                        "end": 534,
-                        "line": 14,
-                        "column": 38
+                        "start": 576,
+                        "end": 581,
+                        "line": 18,
+                        "column": 6
                       }
                     }
                   ],
-                  "children": [],
-                  "content": {
-                    "type": "Content",
-                    "rows": [
-                      {
-                        "type": "Row",
-                        "widgets": [
-                          {
-                            "type": "Widget",
-                            "name": "textfield1",
-                            "kind": "text",
-                            "arguments": [
-                              {
-                                "type": "Argument",
-                                "name": null,
-                                "value": {
-                                  "type": "Literal",
-                                  "kind": "string",
-                                  "value": "Forklaring over feltet — Æøå",
-                                  "span": {
-                                    "type": "Span",
-                                    "start": 574,
-                                    "end": 609,
-                                    "line": 16,
-                                    "column": 29
-                                  }
-                                },
-                                "span": {
-                                  "type": "Span",
-                                  "start": 574,
-                                  "end": 609,
-                                  "line": 16,
-                                  "column": 29
-                                }
-                              }
-                            ],
-                            "span": {
-                              "type": "Span",
-                              "start": 556,
-                              "end": 610,
-                              "line": 16,
-                              "column": 11
-                            }
-                          }
-                        ],
-                        "span": {
-                          "type": "Span",
-                          "start": 556,
-                          "end": 610,
-                          "line": 16,
-                          "column": 11
-                        }
-                      },
-                      {
-                        "type": "Row",
-                        "widgets": [
-                          {
-                            "type": "Widget",
-                            "name": "input1_boxui",
-                            "kind": "input",
-                            "arguments": [
-                              {
-                                "type": "Argument",
-                                "name": "text",
-                                "value": {
-                                  "type": "Literal",
-                                  "kind": "string",
-                                  "value": "Input text here:",
-                                  "span": {
-                                    "type": "Span",
-                                    "start": 648,
-                                    "end": 666,
-                                    "line": 17,
-                                    "column": 37
-                                  }
-                                },
-                                "span": {
-                                  "type": "Span",
-                                  "start": 643,
-                                  "end": 666,
-                                  "line": 17,
-                                  "column": 32
-                                }
-                              },
-                              {
-                                "type": "Argument",
-                                "name": "value",
-                                "value": {
-                                  "type": "Literal",
-                                  "kind": "string",
-                                  "value": "C1",
-                                  "span": {
-                                    "type": "Span",
-                                    "start": 674,
-                                    "end": 678,
-                                    "line": 17,
-                                    "column": 63
-                                  }
-                                },
-                                "span": {
-                                  "type": "Span",
-                                  "start": 668,
-                                  "end": 678,
-                                  "line": 17,
-                                  "column": 57
-                                }
-                              },
-                              {
-                                "type": "Argument",
-                                "name": "callback",
-                                "value": {
-                                  "type": "Reference",
-                                  "module": "sdlFile",
-                                  "object": "input1_sdl",
-                                  "member": "callback",
-                                  "span": {
-                                    "type": "Span",
-                                    "start": 719,
-                                    "end": 747,
-                                    "line": 18,
-                                    "column": 40
-                                  }
-                                },
-                                "span": {
-                                  "type": "Span",
-                                  "start": 710,
-                                  "end": 747,
-                                  "line": 18,
-                                  "column": 31
-                                }
-                              }
-                            ],
-                            "span": {
-                              "type": "Span",
-                              "start": 622,
-                              "end": 748,
-                              "line": 17,
-                              "column": 11
-                            }
-                          }
-                        ],
-                        "span": {
-                          "type": "Span",
-                          "start": 622,
-                          "end": 748,
-                          "line": 17,
-                          "column": 11
-                        }
-                      }
-                    ],
-                    "span": {
-                      "type": "Span",
-                      "start": 544,
-                      "end": 758,
-                      "line": 15,
-                      "column": 9
-                    }
-                  },
                   "span": {
                     "type": "Span",
-                    "start": 506,
-                    "end": 766,
-                    "line": 14,
-                    "column": 18
+                    "start": 154,
+                    "end": 582,
+                    "line": 7,
+                    "column": 3
                   }
                 }
               ],
-              "content": null,
               "span": {
                 "type": "Span",
-                "start": 204,
-                "end": 772,
-                "line": 7,
-                "column": 11
+                "start": 125,
+                "end": 582,
+                "line": 6,
+                "column": 3
               }
             },
             {
-              "type": "Box",
-              "name": "svgBox",
-              "properties": [
+              "type": "Row",
+              "items": [
                 {
-                  "type": "Property",
-                  "name": "title",
-                  "value": {
-                    "type": "Literal",
-                    "kind": "string",
-                    "value": "SVG view",
-                    "span": {
-                      "type": "Span",
-                      "start": 794,
-                      "end": 804,
-                      "line": 22,
-                      "column": 21
+                  "type": "Node",
+                  "kind": "frame",
+                  "name": "svgBox",
+                  "role": null,
+                  "rows": [
+                    {
+                      "type": "Row",
+                      "items": [
+                        {
+                          "type": "Node",
+                          "kind": "markdown",
+                          "name": null,
+                          "role": "header",
+                          "rows": [],
+                          "widget": null,
+                          "arguments": [],
+                          "text": {
+                            "type": "Literal",
+                            "kind": "string",
+                            "value": "### SVG view",
+                            "span": {
+                              "type": "Span",
+                              "start": 608,
+                              "end": 622,
+                              "line": 20,
+                              "column": 12
+                            }
+                          },
+                          "target": null,
+                          "variant": null,
+                          "layout": [],
+                          "span": {
+                            "type": "Span",
+                            "start": 601,
+                            "end": 622,
+                            "line": 20,
+                            "column": 5
+                          }
+                        },
+                        {
+                          "type": "Node",
+                          "kind": "group",
+                          "name": null,
+                          "role": null,
+                          "rows": [
+                            {
+                              "type": "Row",
+                              "items": [
+                                {
+                                  "type": "Node",
+                                  "kind": "widget",
+                                  "name": "svg1",
+                                  "role": null,
+                                  "rows": [],
+                                  "widget": "svg",
+                                  "arguments": [
+                                    {
+                                      "type": "Argument",
+                                      "name": "source",
+                                      "value": {
+                                        "type": "Reference",
+                                        "module": "sdlFile",
+                                        "object": "svg1_sdl",
+                                        "member": "callback",
+                                        "span": {
+                                          "type": "Span",
+                                          "start": 645,
+                                          "end": 671,
+                                          "line": 21,
+                                          "column": 22
+                                        }
+                                      },
+                                      "span": {
+                                        "type": "Span",
+                                        "start": 638,
+                                        "end": 671,
+                                        "line": 21,
+                                        "column": 15
+                                      }
+                                    },
+                                    {
+                                      "type": "Argument",
+                                      "name": "label",
+                                      "value": {
+                                        "type": "Literal",
+                                        "kind": "string",
+                                        "value": "Generated illustration",
+                                        "span": {
+                                          "type": "Span",
+                                          "start": 679,
+                                          "end": 703,
+                                          "line": 21,
+                                          "column": 56
+                                        }
+                                      },
+                                      "span": {
+                                        "type": "Span",
+                                        "start": 673,
+                                        "end": 703,
+                                        "line": 21,
+                                        "column": 50
+                                      }
+                                    }
+                                  ],
+                                  "text": null,
+                                  "target": null,
+                                  "variant": null,
+                                  "layout": [],
+                                  "span": {
+                                    "type": "Span",
+                                    "start": 629,
+                                    "end": 704,
+                                    "line": 21,
+                                    "column": 6
+                                  }
+                                }
+                              ],
+                              "span": {
+                                "type": "Span",
+                                "start": 629,
+                                "end": 704,
+                                "line": 21,
+                                "column": 6
+                              }
+                            }
+                          ],
+                          "widget": null,
+                          "arguments": [],
+                          "text": null,
+                          "target": null,
+                          "variant": null,
+                          "layout": [],
+                          "span": {
+                            "type": "Span",
+                            "start": 628,
+                            "end": 705,
+                            "line": 21,
+                            "column": 5
+                          }
+                        }
+                      ],
+                      "span": {
+                        "type": "Span",
+                        "start": 601,
+                        "end": 705,
+                        "line": 20,
+                        "column": 5
+                      }
                     }
-                  },
+                  ],
+                  "widget": null,
+                  "arguments": [],
+                  "text": null,
+                  "target": null,
+                  "variant": "b",
+                  "layout": [
+                    {
+                      "type": "LayoutRule",
+                      "name": "y",
+                      "value": {
+                        "type": "Literal",
+                        "kind": "fr",
+                        "value": 1.0,
+                        "span": {
+                          "type": "Span",
+                          "start": 715,
+                          "end": 718,
+                          "line": 22,
+                          "column": 10
+                        }
+                      },
+                      "spelling": "y=1fr",
+                      "span": {
+                        "type": "Span",
+                        "start": 713,
+                        "end": 718,
+                        "line": 22,
+                        "column": 8
+                      }
+                    }
+                  ],
                   "span": {
                     "type": "Span",
-                    "start": 788,
-                    "end": 804,
-                    "line": 22,
-                    "column": 15
-                  }
-                },
-                {
-                  "type": "Property",
-                  "name": "weight",
-                  "value": {
-                    "type": "Literal",
-                    "kind": "number",
-                    "value": 1.0,
-                    "span": {
-                      "type": "Span",
-                      "start": 813,
-                      "end": 814,
-                      "line": 22,
-                      "column": 40
-                    }
-                  },
-                  "span": {
-                    "type": "Span",
-                    "start": 806,
-                    "end": 814,
-                    "line": 22,
-                    "column": 33
+                    "start": 586,
+                    "end": 719,
+                    "line": 19,
+                    "column": 3
                   }
                 }
               ],
-              "children": [],
-              "content": {
-                "type": "Content",
-                "rows": [
-                  {
-                    "type": "Row",
-                    "widgets": [
-                      {
-                        "type": "Widget",
-                        "name": "svg1",
-                        "kind": "svg",
-                        "arguments": [
-                          {
-                            "type": "Argument",
-                            "name": "source",
-                            "value": {
-                              "type": "Reference",
-                              "module": "sdlFile",
-                              "object": "svg1_sdl",
-                              "member": "callback",
-                              "span": {
-                                "type": "Span",
-                                "start": 842,
-                                "end": 868,
-                                "line": 23,
-                                "column": 27
-                              }
-                            },
-                            "span": {
-                              "type": "Span",
-                              "start": 835,
-                              "end": 868,
-                              "line": 23,
-                              "column": 20
-                            }
-                          },
-                          {
-                            "type": "Argument",
-                            "name": "label",
-                            "value": {
-                              "type": "Literal",
-                              "kind": "string",
-                              "value": "Generated illustration",
-                              "span": {
-                                "type": "Span",
-                                "start": 876,
-                                "end": 900,
-                                "line": 23,
-                                "column": 61
-                              }
-                            },
-                            "span": {
-                              "type": "Span",
-                              "start": 870,
-                              "end": 900,
-                              "line": 23,
-                              "column": 55
-                            }
-                          }
-                        ],
-                        "span": {
-                          "type": "Span",
-                          "start": 824,
-                          "end": 901,
-                          "line": 23,
-                          "column": 9
-                        }
-                      }
-                    ],
-                    "span": {
-                      "type": "Span",
-                      "start": 824,
-                      "end": 901,
-                      "line": 23,
-                      "column": 9
-                    }
-                  }
-                ],
-                "span": {
-                  "type": "Span",
-                  "start": 822,
-                  "end": 903,
-                  "line": 23,
-                  "column": 7
-                }
-              },
               "span": {
                 "type": "Span",
-                "start": 787,
-                "end": 909,
-                "line": 22,
-                "column": 14
+                "start": 586,
+                "end": 719,
+                "line": 19,
+                "column": 3
               }
             }
           ],
-          "content": null,
+          "widget": null,
+          "arguments": [],
+          "text": null,
+          "target": null,
+          "variant": "b",
+          "layout": [
+            {
+              "type": "LayoutRule",
+              "name": "ratio",
+              "value": {
+                "type": "Literal",
+                "kind": "ratio",
+                "value": [
+                  16.0,
+                  9.0
+                ],
+                "span": {
+                  "type": "Span",
+                  "start": 725,
+                  "end": 729,
+                  "line": 23,
+                  "column": 6
+                }
+              },
+              "spelling": "16:9",
+              "span": {
+                "type": "Span",
+                "start": 725,
+                "end": 729,
+                "line": 23,
+                "column": 6
+              }
+            },
+            {
+              "type": "LayoutRule",
+              "name": "arrow",
+              "value": {
+                "type": "Literal",
+                "kind": "arrow",
+                "value": "<->",
+                "span": {
+                  "type": "Span",
+                  "start": 731,
+                  "end": 734,
+                  "line": 23,
+                  "column": 12
+                }
+              },
+              "spelling": "<->",
+              "span": {
+                "type": "Span",
+                "start": 731,
+                "end": 734,
+                "line": 23,
+                "column": 12
+              }
+            },
+            {
+              "type": "LayoutRule",
+              "name": "font",
+              "value": {
+                "type": "Literal",
+                "kind": "number",
+                "value": 10.0,
+                "span": {
+                  "type": "Span",
+                  "start": 741,
+                  "end": 743,
+                  "line": 23,
+                  "column": 22
+                }
+              },
+              "spelling": "font=10",
+              "span": {
+                "type": "Span",
+                "start": 736,
+                "end": 743,
+                "line": 23,
+                "column": 17
+              }
+            }
+          ],
           "span": {
             "type": "Span",
-            "start": 135,
-            "end": 913,
-            "line": 6,
-            "column": 10
+            "start": 121,
+            "end": 744,
+            "line": 5,
+            "column": 19
           }
         },
         "span": {
           "type": "Span",
-          "start": 106,
-          "end": 916,
+          "start": 103,
+          "end": 745,
           "line": 5,
           "column": 1
         }
@@ -798,12 +951,16 @@
         "module": "sdlFile",
         "object": "input1_sdl",
         "definition": "BoxUIDefinition",
-        "widget": "input1_boxui",
+        "path": [
+          "top",
+          "rightTop",
+          "input1_boxui"
+        ],
         "span": {
           "type": "Span",
-          "start": 973,
-          "end": 1032,
-          "line": 29,
+          "start": 747,
+          "end": 819,
+          "line": 25,
           "column": 1
         }
       }
@@ -811,7 +968,7 @@
     "span": {
       "type": "Span",
       "start": 0,
-      "end": 1033,
+      "end": 820,
       "line": 1,
       "column": 1
     }

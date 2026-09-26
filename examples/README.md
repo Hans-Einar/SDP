@@ -47,7 +47,7 @@ The authoritative cross-client examples are the 17 scenarios under
 independent implementation can parse `scenarios.json`, materialize its portable
 before-state declarations, and compare with committed plan JSON or fatal
 failure JSON without executing PowerShell.
-Neutral installation seeds live in `Toolkit/project-templates/`; none contains
+Neutral installation seeds live in `Template/`; none contains
 the Toolkit repository's `REL-0.2.0` record, active Sprint, Ledger, review or
 verification history. The release-event example uses an illustrative release ID
 and is never an installation source.

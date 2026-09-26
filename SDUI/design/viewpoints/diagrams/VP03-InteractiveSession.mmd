@@ -1,0 +1,52 @@
+flowchart LR
+    n_ApplyPropertyBatch["ApplyPropertyBatch (functionality)"]
+    n_CloseUiInstance["CloseUiInstance (functionality)"]
+    n_CorrelateUiResult["CorrelateUiResult (functionality)"]
+    n_CreateUiInstance["CreateUiInstance (functionality)"]
+    n_DispatchUiEvent["DispatchUiEvent (functionality)"]
+    n_InteractiveSession["InteractiveSession (capability)"]
+    n_ManageWidgetIdentities["ManageWidgetIdentities (functionality)"]
+    n_MatchCompatibleWidgets["MatchCompatibleWidgets (functionality)"]
+    n_PreserveCompatibleUiState["PreserveCompatibleUiState (functionality)"]
+    n_RejectStaleUiEvent["RejectStaleUiEvent (functionality)"]
+    n_ResetIncompatibleUiState["ResetIncompatibleUiState (functionality)"]
+    n_RevokeWidgetGenerations["RevokeWidgetGenerations (functionality)"]
+    n_SduiDispatcher["SduiDispatcher (unit)"]
+    n_SduiInstanceStore["SduiInstanceStore (unit)"]
+    n_SduiPropertyStore["SduiPropertyStore (unit)"]
+    n_SduiRuntime["SduiRuntime (unit)"]
+    n_SnapshotUiState["SnapshotUiState (functionality)"]
+    n_TrackInputDraft["TrackInputDraft (functionality)"]
+    n_UiStateReconciler["UiStateReconciler (unit)"]
+    n_ValidatePropertyBatch["ValidatePropertyBatch (functionality)"]
+    n_ValidateUiEvent["ValidateUiEvent (functionality)"]
+    n_ApplyPropertyBatch -->|realizes| n_InteractiveSession
+    n_CloseUiInstance -->|realizes| n_InteractiveSession
+    n_CorrelateUiResult -->|realizes| n_InteractiveSession
+    n_CreateUiInstance -->|realizes| n_InteractiveSession
+    n_DispatchUiEvent -->|realizes| n_InteractiveSession
+    n_ManageWidgetIdentities -->|realizes| n_InteractiveSession
+    n_MatchCompatibleWidgets -->|realizes| n_InteractiveSession
+    n_PreserveCompatibleUiState -->|realizes| n_InteractiveSession
+    n_RejectStaleUiEvent -->|realizes| n_InteractiveSession
+    n_ResetIncompatibleUiState -->|realizes| n_InteractiveSession
+    n_RevokeWidgetGenerations -->|realizes| n_InteractiveSession
+    n_SduiDispatcher -->|owns| n_CorrelateUiResult
+    n_SduiDispatcher -->|owns| n_DispatchUiEvent
+    n_SduiDispatcher -->|owns| n_RejectStaleUiEvent
+    n_SduiDispatcher -->|owns| n_ValidateUiEvent
+    n_SduiInstanceStore -->|owns| n_ManageWidgetIdentities
+    n_SduiInstanceStore -->|owns| n_RevokeWidgetGenerations
+    n_SduiInstanceStore -->|owns| n_SnapshotUiState
+    n_SduiPropertyStore -->|owns| n_ApplyPropertyBatch
+    n_SduiPropertyStore -->|owns| n_TrackInputDraft
+    n_SduiPropertyStore -->|owns| n_ValidatePropertyBatch
+    n_SduiRuntime -->|owns| n_CloseUiInstance
+    n_SduiRuntime -->|owns| n_CreateUiInstance
+    n_SnapshotUiState -->|realizes| n_InteractiveSession
+    n_TrackInputDraft -->|realizes| n_InteractiveSession
+    n_UiStateReconciler -->|owns| n_MatchCompatibleWidgets
+    n_UiStateReconciler -->|owns| n_PreserveCompatibleUiState
+    n_UiStateReconciler -->|owns| n_ResetIncompatibleUiState
+    n_ValidatePropertyBatch -->|realizes| n_InteractiveSession
+    n_ValidateUiEvent -->|realizes| n_InteractiveSession

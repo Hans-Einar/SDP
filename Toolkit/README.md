@@ -4,21 +4,30 @@ Toolkit-Version: 0.2.0 (unreleased)
 
 This directory contains the reusable Toolkit boundary:
 
-- `SDP-install.manifest.json` — authoritative installable inventory and policy
+- [SDPTool](SDPTool/README.md) — source home and plan for the project-aware sdptool facade; Go facade delivered; see its current scope
+- `profiles/five-phase.json` — authored current process configuration and reproducible artifact
+- `SDP-install.manifest.json` — authoritative legacy install-v1 inventory and policy
 - `schemas/` — installation, plan, manifest, traceability, record and build contracts
 - `scripts/` — supported PowerShell installer, build metadata and validator
 - `tests/` — deterministic Python and PowerShell fixtures
 - `conformance/install-v1/` — language-neutral scenario and expected-outcome contract
 - `payload/` — copied Toolkit-managed files only
-- `project-templates/` — neutral files that become project-owned when created
-- `skills/` — versioned Toolkit-managed Codex skills
+- [Template](../Template/README.md) — neutral files that become project-owned when created
+- [Skills](../Skills/README.md) — canonical versioned skills and shared references
 
 `SDP.manifest.yaml` at repository root is authoritative for Toolkit release and
 capability facts. It is not the installation inventory. The JSON installation
 manifest explicitly lists every copied or generated target so PowerShell and
 independent clients such as `gh-sdp` do not reconstruct hidden behavior.
 
-Produce a portable, mutation-free plan:
+For the current five-phase/shared-management profile, follow
+[versioned process installation](docs/Process-Installation.md): build the artifact,
+inspect -ProfileArtifact/-PlanJson, then consume that exact plan with -ApplyPlan.
+Recovery, installed facts 2.0 and target Maintenance reports belong to that
+contract. [V2 conformance](conformance/install-v2/README.md) includes interrupted
+execution and the prebuilt SDPTool consumer.
+
+The following retained interface is install-v1. Produce its mutation-free plan:
 
 ```powershell
 .\Toolkit\scripts\Install-SDP.ps1 `
@@ -54,5 +63,5 @@ and committed expected plans/failure classes without executing PowerShell.
 Normal tests do not regenerate those authorities; candidate regeneration is an
 explicit maintainer-only `--write-candidates` operation followed by diff review.
 
-See `docs/Installation-Contract.md`, `docs/Installer-Migration.md` and
-`docs/Validation.md`.
+See `Toolkit/docs/Installation-Contract.md`, `Toolkit/docs/Installer-Migration.md` and
+`Toolkit/docs/Validation.md`.

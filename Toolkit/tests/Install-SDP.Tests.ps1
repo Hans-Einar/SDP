@@ -1928,7 +1928,7 @@ Release-Date: unreleased
 
     $invalidContract = $archiveManifestOriginal | ConvertFrom-Json
     $invalidContract.exclusions = @(
-        $invalidContract.exclusions | Where-Object { $_.path -cne 'SDP-DOCUMENT-GUIDE.md' }
+        $invalidContract.exclusions | Where-Object { $_.path -cne 'SDP' }
     )
     Assert-InvalidArchiveContract 'contract-required-legacy-exclusion' $invalidContract $archiveManifestPath $archiveManifestOriginal $archiveInstaller
 
@@ -1954,7 +1954,7 @@ Release-Date: unreleased
 
     $invalidContract = $archiveManifestOriginal | ConvertFrom-Json
     $entryContract = @($invalidContract.entries | Where-Object { $_.id -eq 'managed-framework-readme' })[0]
-    $entryContract.source = 'Toolkit/project-templates/sdp-root/Traceability/README.md'
+    $entryContract.source = 'Template/sdp-root/Traceability/README.md'
     Assert-InvalidArchiveContract 'contract-wrong-source-class' $invalidContract $archiveManifestPath $archiveManifestOriginal $archiveInstaller
 
     $invalidContract = $archiveManifestOriginal | ConvertFrom-Json

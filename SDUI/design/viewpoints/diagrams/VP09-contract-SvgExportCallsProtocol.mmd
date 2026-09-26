@@ -1,0 +1,6 @@
+flowchart LR
+    n_ExportSvgRequest["ExportSvgRequest (message)"]
+    n_ExportSvgResult["ExportSvgResult (message)"]
+    n_SvgExportCallsProtocol["SvgExportCallsProtocol (contract)"]
+    n_SvgExportCallsProtocol -->|permits| n_ExportSvgRequest
+    n_SvgExportCallsProtocol -->|permits| n_ExportSvgResult

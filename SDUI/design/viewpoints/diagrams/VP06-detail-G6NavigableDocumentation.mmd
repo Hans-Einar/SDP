@@ -1,0 +1,18 @@
+flowchart LR
+    n_G6M1StaticNavigation["G6M1StaticNavigation (activity)"]
+    n_G6M2OnDemandViews["G6M2OnDemandViews (activity)"]
+    n_G6M3XfmdNavigation["G6M3XfmdNavigation (activity)"]
+    n_G6M4SessionPublication["G6M4SessionPublication (activity)"]
+    n_G6M5SemanticNotation["G6M5SemanticNotation (activity)"]
+    n_G6M6ClassViews["G6M6ClassViews (activity)"]
+    n_G6NavigableDocumentation["G6NavigableDocumentation (activity)"]
+    n_NavigableDesignDocumentation["NavigableDesignDocumentation (feature)"]
+    n_TypedDesignInspection["TypedDesignInspection (feature)"]
+    n_G6M1StaticNavigation -->|refines| n_G6NavigableDocumentation
+    n_G6M2OnDemandViews -->|refines| n_G6NavigableDocumentation
+    n_G6M3XfmdNavigation -->|refines| n_G6NavigableDocumentation
+    n_G6M4SessionPublication -->|refines| n_G6NavigableDocumentation
+    n_G6M5SemanticNotation -->|refines| n_G6NavigableDocumentation
+    n_G6M6ClassViews -->|refines| n_G6NavigableDocumentation
+    n_G6NavigableDocumentation -->|delivers| n_NavigableDesignDocumentation
+    n_G6NavigableDocumentation -->|delivers| n_TypedDesignInspection

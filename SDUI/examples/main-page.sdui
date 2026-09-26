@@ -1,29 +1,25 @@
-sdui 0.1;
-# Symbolsk referanse. Parseren leser/kjører ikke SDL-filen.
+sdui 0.2;
+# Symbolsk kilde: parseren åpner/kjører ikke SDL-filen.
 ref: sdlFile "some_SDL_file.sdl";
 
-BoxUIDefinition = {
-  main = [title="Main page box", axis="column", gap=12, padding=12,
-    top = [title="Grouping leftTop & rightTop", axis="row", weight=2,
-      leftTop = [title="Left box", weight=1,
-        {
-          button1 = button("OK", callback=sdlFile.button1_sdl.@callback),
-          button2 = button("Cancel", callback=sdlFile.button2_sdl.@callback)
-        }
-      ],
-      rightTop = [title="Right box", weight=2,
-        {
-          textfield1 = text("Forklaring over feltet — Æøå");
-          input1_boxui = input(text="Input text here:", value="C1",
-                              callback=sdlFile.input1_sdl.@callback)
-        }
-      ]
-    ],
-    svgBox = [title="SVG view", weight=1,
-      { svg1 = svg(source=sdlFile.svg1_sdl.@callback, label="Generated illustration") }
-    ]
-  ]
-};
+BoxUIDefinition = [
+  header="## Main page box",
+  top = [
+    leftTop = [
+      header="### Left box",
+      <button1=button("OK", callback=sdlFile.button1_sdl.@callback),
+       button2=button("Cancel", callback=sdlFile.button2_sdl.@callback)>
+    ]*b {x=1fr},
+    rightTop = [
+      header="### Right box",
+      <"Forklaring over feltet — Æøå";
+       input1_boxui=input("Input text here:", value="C1", callback=sdlFile.input1_sdl.@callback)>
+    ]*b {x=2fr}
+  ] {y=2fr};
+  svgBox = [
+    header="### SVG view",
+    <svg1=svg(source=sdlFile.svg1_sdl.@callback, label="Generated illustration")>
+  ]*b {y=1fr}
+]*b {16:9, <->, font=10};
 
-# Deklarativ oppkobling, ikke vilkårlig kodekjøring.
-sdlFile.input1_sdl.setHandle(BoxUIDefinition.input1_boxui);
+sdlFile.input1_sdl.setHandle(BoxUIDefinition.top.rightTop.input1_boxui);

@@ -1,0 +1,8 @@
+flowchart LR
+    n_DisplayViewRequest["DisplayViewRequest (message)"]
+    n_ViewDisplayCallsProtocol["ViewDisplayCallsProtocol (contract)"]
+    n_ViewDisplayResult["ViewDisplayResult (message)"]
+    n_ViewTargetUnavailable["ViewTargetUnavailable (message)"]
+    n_ViewDisplayCallsProtocol -->|permits| n_DisplayViewRequest
+    n_ViewDisplayCallsProtocol -->|permits| n_ViewDisplayResult
+    n_ViewDisplayCallsProtocol -->|permits| n_ViewTargetUnavailable

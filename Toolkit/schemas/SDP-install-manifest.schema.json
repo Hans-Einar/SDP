@@ -216,7 +216,7 @@
             "skills": {
               "type": "object",
               "minProperties": 1,
-              "propertyNames": { "pattern": "^sdp-[a-z0-9]+(?:-[a-z0-9]+)*$" },
+              "propertyNames": { "pattern": "^sdp(?:-[a-z0-9]+)*$" },
               "additionalProperties": { "$ref": "#/$defs/semver" }
             },
             "capabilities": {

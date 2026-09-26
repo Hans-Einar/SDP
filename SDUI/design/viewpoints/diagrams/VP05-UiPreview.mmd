@@ -1,0 +1,7 @@
+flowchart LR
+    n_MeasuredPresentation["MeasuredPresentation (capability)"]
+    n_MeasurementPort["MeasurementPort (interface)"]
+    n_NativeInteraction["NativeInteraction (capability)"]
+    n_WidgetBackendPort["WidgetBackendPort (interface)"]
+    n_MeasuredPresentation -->|requires| n_MeasurementPort
+    n_NativeInteraction -->|requires| n_WidgetBackendPort

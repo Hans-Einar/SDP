@@ -1,0 +1,73 @@
+{
+  "design_sha256": "e946313a6ae4a80603a8f13d3467373c8fa1990eb9c42ed8f82b759ee12845e1",
+  "entry": "page",
+  "font": "Go Regular logical DIP",
+  "height": 650,
+  "layout_profile": "relative-layout/1",
+  "projector": "sdl-viewpoints-go-1.2",
+  "renderer": "",
+  "sdui_profile": "0.2",
+  "state_sha256": "4c65c1545648cd6867cd6380180d63f2aa7113ee09dc1e8b95615e8f4c73c2a2",
+  "tool": "sdl-sdui-document/2",
+  "toolchain": "go1.27.1",
+  "ui_sha256": "4a39f150b4a9745d83d116154812d3b6066385f6038abbc73dc40858878f9af6",
+  "widgets": [
+    {
+      "Handle": {
+        "Session": "document",
+        "Path": "page/apply",
+        "Generation": 2,
+        "Kind": "button"
+      },
+      "InstancePath": "page/apply",
+      "Label": "Bruk verdi",
+      "Value": "",
+      "Draft": "",
+      "ValueRevision": 1,
+      "DraftRevision": 1,
+      "Dirty": false,
+      "Enabled": true,
+      "Visible": true,
+      "Binding": {
+        "module": "apt",
+        "object": "EditAptCell",
+        "member": "invoke",
+        "span": {
+          "start": 349,
+          "end": 372,
+          "line": 7,
+          "column": 40
+        }
+      }
+    },
+    {
+      "Handle": {
+        "Session": "document",
+        "Path": "page/value",
+        "Generation": 1,
+        "Kind": "input"
+      },
+      "InstancePath": "page/value",
+      "Label": "Lengdeverdi",
+      "Value": "440",
+      "Draft": "440",
+      "ValueRevision": 2,
+      "DraftRevision": 2,
+      "Dirty": false,
+      "Enabled": true,
+      "Visible": true,
+      "Binding": {
+        "module": "apt",
+        "object": "EditAptCell",
+        "member": "invoke",
+        "span": {
+          "start": 284,
+          "end": 307,
+          "line": 6,
+          "column": 52
+        }
+      }
+    }
+  ],
+  "width": 1000
+}

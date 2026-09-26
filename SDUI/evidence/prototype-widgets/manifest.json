@@ -1,0 +1,12 @@
+{
+  "examples/concept1-bucking.widgets.svg": "e1cafbbc6882490dbe2bdb7a97cff2f1a8dadbf2468b477285207e37fa808977",
+  "examples/prototype-controls.svg": "a34b3b520cc1612ba63fe07b77b22359d094a19b84693e9c28f25e029ef7396d",
+  "examples/prototype-controls.html": "b4ea237769c9912c870e3d3f38b5b2917944db44039222b3064bd248bd5c2aa6",
+  "examples/prototype-controls.sdui": "083bcb48d0a1b5e0474eb34fc2095b6f3e6f923f1be41e20bc5f5eb58c7642d9",
+  "examples/concept1-bucking.sdui": "92c9e3ff329b035353072653ebfd396108fd63439eb7d0f7ec747c78426d1569",
+  "src/sdui/prototype_widgets.py": "2210db902eb78bd9d83b627d8c2f8a5621ea3fe205fde5f4ff2361c642a08a31",
+  "src/sdui/prototype_html.py": "31156d39a03ba2e0207aef7c88b4319a828296e8e4b567b8bfd3da980189a01c",
+  "tools/build_widget_previews.py": "5b12620fb1677056d328230df34bda7fb61851692a64e81190d17f9fbc8f48d4",
+  "tests/test_prototype_widgets.py": "58f35720bf33c90477ca9e8fd6a0d2a82b1939cfebfeae89f59272e7b68d9ba4",
+  "evidence/treemap-probe/layout.json": "c8938f7cd414c8ba627007c5525eae53d9bec25492f7fc2a9c5c481e16aa6cf8"
+}

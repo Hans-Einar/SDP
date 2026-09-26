@@ -1,0 +1,22 @@
+flowchart LR
+    n_ConnectTypedWidgetHandles["ConnectTypedWidgetHandles (functionality)"]
+    n_DiagnosticReporter["DiagnosticReporter (unit)"]
+    n_DisconnectBindings["DisconnectBindings (functionality)"]
+    n_G4M3UiDomainBinding["G4M3UiDomainBinding (activity)"]
+    n_PublishDomainUpdates["PublishDomainUpdates (functionality)"]
+    n_ReportBindingDiagnostics["ReportBindingDiagnostics (functionality)"]
+    n_ResolveCallbackSymbols["ResolveCallbackSymbols (functionality)"]
+    n_RouteDomainBindings["RouteDomainBindings (functionality)"]
+    n_SdlUiBindingAdapter["SdlUiBindingAdapter (unit)"]
+    n_DiagnosticReporter -->|owns| n_ReportBindingDiagnostics
+    n_G4M3UiDomainBinding -->|addresses| n_ConnectTypedWidgetHandles
+    n_G4M3UiDomainBinding -->|addresses| n_DisconnectBindings
+    n_G4M3UiDomainBinding -->|addresses| n_PublishDomainUpdates
+    n_G4M3UiDomainBinding -->|addresses| n_ReportBindingDiagnostics
+    n_G4M3UiDomainBinding -->|addresses| n_ResolveCallbackSymbols
+    n_G4M3UiDomainBinding -->|addresses| n_RouteDomainBindings
+    n_SdlUiBindingAdapter -->|owns| n_ConnectTypedWidgetHandles
+    n_SdlUiBindingAdapter -->|owns| n_DisconnectBindings
+    n_SdlUiBindingAdapter -->|owns| n_PublishDomainUpdates
+    n_SdlUiBindingAdapter -->|owns| n_ResolveCallbackSymbols
+    n_SdlUiBindingAdapter -->|owns| n_RouteDomainBindings

@@ -1,0 +1,64 @@
+sdui 0.2;
+# Statisk port av Concept1 OPERATOR_BUCKING_LAYOUT og OperatorBuckingView.
+# Alle verdier er eksempeldata. Ingen Ponsse-/SDL-runtime kjøres.
+
+navigation = <
+  "# Apteringssystem — Concept1";
+  <showBucking=button("Aptering"), showStemData=button("Stammedata"),
+   showProduction=button("Produksjon / måletabell"), showRules=button("Apteringsregler"),
+   showApt=button("APT / Apteringsfil")> {<->}
+>;
+
+bucking = [
+  top = [
+    length = [
+      header=<"## Lengde", <lengthCursor=button("Cursor AV"), lengthDelta=button("Δ")> {>-<}>,
+      "**412,0 cm**" {font=24};
+      "Måling · aggregat"
+    ]*b {x=1fr},
+    diameter = [
+      header=<"## Diameter", <diameterCursor=button("Cursor AV"), diameterDelta=button("Δ"),
+              barkBasis=button("O/B · U/B"), barkSettings=button("BarkNOR-kalibrering")> {>-<}>,
+      "**28,4 cm**" {font=24};
+      "Måling · O/B · eksempelprofil"
+    ]*b {x=1fr}
+  ] {y=15fr, items=stretch};
+  middle = [
+    selection = [
+      header="## Treslag / Sortiment",
+      "**Treslag**\nGran\n\n**Sortiment**\nSagtømmer\n\nSiste knapp: GRAN"
+    ]*b {x=25fr},
+    suggestions = [
+      header=<"## Apteringsforslag"; <optimize=button("Optimalisering"), columns=button("Kolonner")>>,
+      """Neste kapp · eksempeldata
+| Nr | Sortiment | Lengde | Topp-Ø |
+| -- | --------- | ------ | ------ |
+| 1  | Sagtømmer | 430 cm | 26 cm  |
+| 2  | Massevirke| 310 cm | 18 cm  |""";
+      <canonical=button("Canonical"), alternative=button("Alternativ 1")>;
+      "Planvalg er ubundet i denne prototypen."
+    ]*b {x=50fr},
+    currentStem = [
+      header="## Stammen i aggregatet",
+      "Aktuell stamme\n\n**Låste feil: 0**\nIngen låste feil registrert\n\nNåposisjon: 412,0 cm\nMaks kvistet: 412,0 cm\nProdusert / kappet: 0 cm\nSegmentrot: 0 cm";
+      "Produksjon og feilflyt er plassholdere."
+    ]*b {x=25fr}
+  ] {y=45fr, items=stretch};
+  stemTrack = [
+    header=<
+      "## Stammeforløp", <taperNor=button("taperNOR"), mixed=button("Mixed")> {>-<};
+      "Hele estimatet · Predikert · Målt · Plan · Rest · Kvalitet 1/2 · Underkjent · Utkast"
+    >,
+    """**Plassholder for OperatorUnifiedStemSvg**
+Stammeprofil, målepunkter, kapp og manuell cursor trenger en egen visuell provider.
+Eksempel på Mermaid-innhold nedenfor utelates av konsolldumpen:
+```mermaid
+flowchart LR
+    Rot --> Kapp1 --> Kapp2 --> Topp
+```""",
+    footer=<"FØLGER AGGREGAT", "Lengde: 412,0 cm", "Rel. lengde: 0,0 cm";
+            "Pred. Ø O/B: 28,4 cm", "Profilvolum O/B: 0,312 m³", "Toppsylinder: 0,260 m³">
+  ]*b {y=40fr}
+] {16:9, <->, font=10, items=stretch, gap=0.01};
+
+page = [header=navigation, body=bucking, footer="STATISK PROTOTYPE · eksempeldata · ingen runtime"] {<->};

@@ -1,0 +1,14 @@
+flowchart LR
+    n_DesignDocumentation["DesignDocumentation (feature)"]
+    n_G5M1GeneratedGo["G5M1GeneratedGo (activity)"]
+    n_G5M2BehaviorParity["G5M2BehaviorParity (activity)"]
+    n_G5M3DocumentationExport["G5M3DocumentationExport (activity)"]
+    n_G5M4RetirePython["G5M4RetirePython (activity)"]
+    n_G5NativeGeneration["G5NativeGeneration (activity)"]
+    n_NativeGoAssembly["NativeGoAssembly (feature)"]
+    n_G5M1GeneratedGo -->|refines| n_G5NativeGeneration
+    n_G5M2BehaviorParity -->|refines| n_G5NativeGeneration
+    n_G5M3DocumentationExport -->|refines| n_G5NativeGeneration
+    n_G5M4RetirePython -->|refines| n_G5NativeGeneration
+    n_G5NativeGeneration -->|delivers| n_DesignDocumentation
+    n_G5NativeGeneration -->|delivers| n_NativeGoAssembly

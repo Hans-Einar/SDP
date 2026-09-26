@@ -1,0 +1,33 @@
+flowchart LR
+    n_ApplySemanticNotation["ApplySemanticNotation (functionality)"]
+    n_ExportModelInventories["ExportModelInventories (functionality)"]
+    n_IndexViewpointLevels["IndexViewpointLevels (functionality)"]
+    n_ProjectClassViews["ProjectClassViews (functionality)"]
+    n_SdlValidator["SdlValidator (unit)"]
+    n_SdlViewpointGenerator["SdlViewpointGenerator (unit)"]
+    n_SelectRelationshipViews["SelectRelationshipViews (functionality)"]
+    n_TypedDesignInspection["TypedDesignInspection (feature)"]
+    n_ValidateClassRelations["ValidateClassRelations (functionality)"]
+    n_VerifyDiagramCapabilities["VerifyDiagramCapabilities (functionality)"]
+    n_ViewServiceHost["ViewServiceHost (container)"]
+    n_ApplySemanticNotation -->|allocated-to| n_ViewServiceHost
+    n_ApplySemanticNotation -->|contributes-to| n_TypedDesignInspection
+    n_ExportModelInventories -->|allocated-to| n_ViewServiceHost
+    n_ExportModelInventories -->|contributes-to| n_TypedDesignInspection
+    n_IndexViewpointLevels -->|allocated-to| n_ViewServiceHost
+    n_IndexViewpointLevels -->|contributes-to| n_TypedDesignInspection
+    n_ProjectClassViews -->|allocated-to| n_ViewServiceHost
+    n_ProjectClassViews -->|contributes-to| n_TypedDesignInspection
+    n_SdlValidator -->|owns| n_ValidateClassRelations
+    n_SdlViewpointGenerator -->|owns| n_ApplySemanticNotation
+    n_SdlViewpointGenerator -->|owns| n_ExportModelInventories
+    n_SdlViewpointGenerator -->|owns| n_IndexViewpointLevels
+    n_SdlViewpointGenerator -->|owns| n_ProjectClassViews
+    n_SdlViewpointGenerator -->|owns| n_SelectRelationshipViews
+    n_SdlViewpointGenerator -->|owns| n_VerifyDiagramCapabilities
+    n_SelectRelationshipViews -->|allocated-to| n_ViewServiceHost
+    n_SelectRelationshipViews -->|contributes-to| n_TypedDesignInspection
+    n_ValidateClassRelations -->|allocated-to| n_ViewServiceHost
+    n_ValidateClassRelations -->|contributes-to| n_TypedDesignInspection
+    n_VerifyDiagramCapabilities -->|allocated-to| n_ViewServiceHost
+    n_VerifyDiagramCapabilities -->|contributes-to| n_TypedDesignInspection

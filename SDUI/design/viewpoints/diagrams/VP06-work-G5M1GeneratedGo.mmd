@@ -1,0 +1,16 @@
+flowchart LR
+    n_BuildGeneratedApplication["BuildGeneratedApplication (functionality)"]
+    n_G5M1GeneratedGo["G5M1GeneratedGo (activity)"]
+    n_GenerateBindingRegistration["GenerateBindingRegistration (functionality)"]
+    n_GenerateModelConstructors["GenerateModelConstructors (functionality)"]
+    n_GoBuildRunner["GoBuildRunner (unit)"]
+    n_GoCodeGenerator["GoCodeGenerator (unit)"]
+    n_PreserveHandwrittenSources["PreserveHandwrittenSources (functionality)"]
+    n_G5M1GeneratedGo -->|addresses| n_BuildGeneratedApplication
+    n_G5M1GeneratedGo -->|addresses| n_GenerateBindingRegistration
+    n_G5M1GeneratedGo -->|addresses| n_GenerateModelConstructors
+    n_G5M1GeneratedGo -->|addresses| n_PreserveHandwrittenSources
+    n_GoBuildRunner -->|owns| n_BuildGeneratedApplication
+    n_GoCodeGenerator -->|owns| n_GenerateBindingRegistration
+    n_GoCodeGenerator -->|owns| n_GenerateModelConstructors
+    n_GoCodeGenerator -->|owns| n_PreserveHandwrittenSources

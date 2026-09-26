@@ -1,0 +1,8 @@
+flowchart LR
+    n_NoticeGeneration["NoticeGeneration (field)"]
+    n_NoticeVersion["NoticeVersion (field)"]
+    n_UiGenerationChanged["UiGenerationChanged (variant)"]
+    n_UiGenerationContract["UiGenerationContract (contract)"]
+    n_UiGenerationChanged -->|has-field| n_NoticeGeneration
+    n_UiGenerationContract -->|defines| n_UiGenerationChanged
+    n_UiGenerationContract -->|has-field| n_NoticeVersion

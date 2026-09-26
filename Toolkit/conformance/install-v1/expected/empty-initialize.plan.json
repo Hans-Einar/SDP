@@ -110,8 +110,56 @@
     {
       "sequence": 7,
       "action": "create",
+      "entryId": "managed-skill-sdp",
+      "source": "Skills/sdp/SKILL.md",
+      "generator": null,
+      "targetSource": null,
+      "targetSourceSha256": null,
+      "destinationPrecondition": null,
+      "destination": ".codex/skills/sdp/SKILL.md",
+      "ownership": "toolkit-managed",
+      "reason": "missing-target",
+      "mutatesTarget": true,
+      "oldToolkitVersion": null,
+      "newToolkitVersion": "0.2.0"
+    },
+    {
+      "sequence": 8,
+      "action": "create",
+      "entryId": "managed-skill-sdp-references-document-workflow",
+      "source": "Skills/sdp/references/document-workflow.md",
+      "generator": null,
+      "targetSource": null,
+      "targetSourceSha256": null,
+      "destinationPrecondition": null,
+      "destination": ".codex/skills/sdp/references/document-workflow.md",
+      "ownership": "toolkit-managed",
+      "reason": "missing-target",
+      "mutatesTarget": true,
+      "oldToolkitVersion": null,
+      "newToolkitVersion": "0.2.0"
+    },
+    {
+      "sequence": 9,
+      "action": "create",
+      "entryId": "managed-skill-sdp-references-source-map",
+      "source": "Skills/sdp/references/source-map.md",
+      "generator": null,
+      "targetSource": null,
+      "targetSourceSha256": null,
+      "destinationPrecondition": null,
+      "destination": ".codex/skills/sdp/references/source-map.md",
+      "ownership": "toolkit-managed",
+      "reason": "missing-target",
+      "mutatesTarget": true,
+      "oldToolkitVersion": null,
+      "newToolkitVersion": "0.2.0"
+    },
+    {
+      "sequence": 10,
+      "action": "create",
       "entryId": "managed-skill-sdp-architect",
-      "source": "Toolkit/skills/sdp-architect/SKILL.md",
+      "source": "Skills/sdp-architect/SKILL.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -124,10 +172,10 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 8,
+      "sequence": 11,
       "action": "create",
       "entryId": "managed-skill-sdp-auditor",
-      "source": "Toolkit/skills/sdp-auditor/SKILL.md",
+      "source": "Skills/sdp-auditor/SKILL.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -140,10 +188,26 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 9,
+      "sequence": 12,
+      "action": "create",
+      "entryId": "managed-skill-sdp-change-analysis",
+      "source": "Skills/sdp-change-analysis/SKILL.md",
+      "generator": null,
+      "targetSource": null,
+      "targetSourceSha256": null,
+      "destinationPrecondition": null,
+      "destination": ".codex/skills/sdp-change-analysis/SKILL.md",
+      "ownership": "toolkit-managed",
+      "reason": "missing-target",
+      "mutatesTarget": true,
+      "oldToolkitVersion": null,
+      "newToolkitVersion": "0.2.0"
+    },
+    {
+      "sequence": 13,
       "action": "create",
       "entryId": "managed-skill-sdp-master",
-      "source": "Toolkit/skills/sdp-master/SKILL.md",
+      "source": "Skills/sdp-master/SKILL.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -156,10 +220,10 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 10,
+      "sequence": 14,
       "action": "create",
       "entryId": "managed-skill-sdp-release",
-      "source": "Toolkit/skills/sdp-release/SKILL.md",
+      "source": "Skills/sdp-release/SKILL.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -172,10 +236,10 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 11,
+      "sequence": 15,
       "action": "create",
       "entryId": "managed-skill-sdp-reviewer",
-      "source": "Toolkit/skills/sdp-reviewer/SKILL.md",
+      "source": "Skills/sdp-reviewer/SKILL.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -188,10 +252,26 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 12,
+      "sequence": 16,
+      "action": "create",
+      "entryId": "managed-skill-sdp-steering",
+      "source": "Skills/sdp-steering/SKILL.md",
+      "generator": null,
+      "targetSource": null,
+      "targetSourceSha256": null,
+      "destinationPrecondition": null,
+      "destination": ".codex/skills/sdp-steering/SKILL.md",
+      "ownership": "toolkit-managed",
+      "reason": "missing-target",
+      "mutatesTarget": true,
+      "oldToolkitVersion": null,
+      "newToolkitVersion": "0.2.0"
+    },
+    {
+      "sequence": 17,
       "action": "create",
       "entryId": "managed-skill-sdp-traceability",
-      "source": "Toolkit/skills/sdp-traceability/SKILL.md",
+      "source": "Skills/sdp-traceability/SKILL.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -204,10 +284,10 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 13,
+      "sequence": 18,
       "action": "create",
       "entryId": "managed-skill-sdp-verifier",
-      "source": "Toolkit/skills/sdp-verifier/SKILL.md",
+      "source": "Skills/sdp-verifier/SKILL.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -220,10 +300,10 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 14,
+      "sequence": 19,
       "action": "create",
       "entryId": "managed-skill-sdp-versioning",
-      "source": "Toolkit/skills/sdp-versioning/SKILL.md",
+      "source": "Skills/sdp-versioning/SKILL.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -236,10 +316,10 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 15,
+      "sequence": 20,
       "action": "create",
       "entryId": "managed-skill-sdp-vertical-refactor",
-      "source": "Toolkit/skills/sdp-vertical-refactor/SKILL.md",
+      "source": "Skills/sdp-vertical-refactor/SKILL.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -252,10 +332,10 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 16,
+      "sequence": 21,
       "action": "create",
       "entryId": "managed-skill-sdp-worker",
-      "source": "Toolkit/skills/sdp-worker/SKILL.md",
+      "source": "Skills/sdp-worker/SKILL.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -268,7 +348,7 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 17,
+      "sequence": 22,
       "action": "generate",
       "entryId": "generated-installed-toolkit-manifest",
       "source": null,
@@ -284,10 +364,10 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 18,
+      "sequence": 23,
       "action": "create",
       "entryId": "project-agents",
-      "source": "Toolkit/project-templates/project-root/AGENTS-project.md.template",
+      "source": "Template/project-root/AGENTS-project.md.template",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -300,10 +380,10 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 19,
+      "sequence": 24,
       "action": "create",
       "entryId": "project-agent-reminders",
-      "source": "Toolkit/project-templates/sdp-root/AGENT-REMINDERS.md.template",
+      "source": "Template/sdp-root/AGENT-REMINDERS.md.template",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -316,10 +396,10 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 20,
+      "sequence": 25,
       "action": "create",
       "entryId": "project-manifest",
-      "source": "Toolkit/project-templates/sdp-root/SDP-project.manifest.yaml",
+      "source": "Template/sdp-root/SDP-project.manifest.yaml",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -332,10 +412,10 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 21,
+      "sequence": 26,
       "action": "create",
       "entryId": "project-release-notes",
-      "source": "Toolkit/project-templates/sdp-root/RELEASE-NOTES.md",
+      "source": "Template/sdp-root/RELEASE-NOTES.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -348,10 +428,10 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 22,
+      "sequence": 27,
       "action": "create",
       "entryId": "project-traceability-readme",
-      "source": "Toolkit/project-templates/sdp-root/Traceability/README.md",
+      "source": "Template/sdp-root/Traceability/README.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -364,10 +444,10 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 23,
+      "sequence": 28,
       "action": "create",
       "entryId": "project-current-index",
-      "source": "Toolkit/project-templates/sdp-root/Traceability/CurrentIndex.yaml",
+      "source": "Template/sdp-root/Traceability/CurrentIndex.yaml",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -380,10 +460,10 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 24,
+      "sequence": 29,
       "action": "create",
       "entryId": "project-relations",
-      "source": "Toolkit/project-templates/sdp-root/Traceability/Relations.yaml",
+      "source": "Template/sdp-root/Traceability/Relations.yaml",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -396,7 +476,7 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 25,
+      "sequence": 30,
       "action": "generate",
       "entryId": "generated-empty-ledger",
       "source": null,
@@ -412,10 +492,10 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 26,
+      "sequence": 31,
       "action": "create",
       "entryId": "project-mandate",
-      "source": "Toolkit/project-templates/sdp-root/01--Mandate/mandate.md",
+      "source": "Template/sdp-root/01--Mandate/mandate.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -428,10 +508,10 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 27,
+      "sequence": 32,
       "action": "create",
       "entryId": "project-study",
-      "source": "Toolkit/project-templates/sdp-root/02--Study/study.md",
+      "source": "Template/sdp-root/02--Study/study.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -444,10 +524,10 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 28,
+      "sequence": 33,
       "action": "create",
       "entryId": "project-requirements",
-      "source": "Toolkit/project-templates/sdp-root/03--Requirements/requirements.md",
+      "source": "Template/sdp-root/03--Requirements/requirements.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -460,10 +540,10 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 29,
+      "sequence": 34,
       "action": "create",
       "entryId": "project-architecture",
-      "source": "Toolkit/project-templates/sdp-root/04--Architecture/architecture.md",
+      "source": "Template/sdp-root/04--Architecture/architecture.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -476,10 +556,10 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 30,
+      "sequence": 35,
       "action": "create",
       "entryId": "project-design-analysis",
-      "source": "Toolkit/project-templates/sdp-root/05--DesignAnalysis/design-analysis.md",
+      "source": "Template/sdp-root/05--DesignAnalysis/design-analysis.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -492,10 +572,10 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 31,
+      "sequence": 36,
       "action": "create",
       "entryId": "project-design",
-      "source": "Toolkit/project-templates/sdp-root/06--Design/design.md",
+      "source": "Template/sdp-root/06--Design/design.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -508,10 +588,10 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 32,
+      "sequence": 37,
       "action": "create",
       "entryId": "project-implementation-plan",
-      "source": "Toolkit/project-templates/sdp-root/07--Implementation/implementation-plan.md",
+      "source": "Template/sdp-root/07--Implementation/implementation-plan.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -524,10 +604,10 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 33,
+      "sequence": 38,
       "action": "create",
       "entryId": "project-sprints-readme",
-      "source": "Toolkit/project-templates/sdp-root/Sprints/README.md",
+      "source": "Template/sdp-root/Sprints/README.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -540,10 +620,10 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 34,
+      "sequence": 39,
       "action": "create",
       "entryId": "project-refactors-readme",
-      "source": "Toolkit/project-templates/sdp-root/Refactors/README.md",
+      "source": "Template/sdp-root/Refactors/README.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -556,10 +636,10 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 35,
+      "sequence": 40,
       "action": "create",
       "entryId": "project-fixes-readme",
-      "source": "Toolkit/project-templates/sdp-root/Fixes/README.md",
+      "source": "Template/sdp-root/Fixes/README.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -572,10 +652,10 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 36,
+      "sequence": 41,
       "action": "create",
       "entryId": "project-releases-readme",
-      "source": "Toolkit/project-templates/sdp-root/Releases/README.md",
+      "source": "Template/sdp-root/Releases/README.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -588,10 +668,10 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 37,
+      "sequence": 42,
       "action": "create",
       "entryId": "project-code-review-readme",
-      "source": "Toolkit/project-templates/sdp-root/CodeReview/README.md",
+      "source": "Template/sdp-root/CodeReview/README.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -604,10 +684,10 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 38,
+      "sequence": 43,
       "action": "create",
       "entryId": "project-verification-readme",
-      "source": "Toolkit/project-templates/sdp-root/Verification/README.md",
+      "source": "Template/sdp-root/Verification/README.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -620,10 +700,10 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 39,
+      "sequence": 44,
       "action": "create",
       "entryId": "project-instructions-readme",
-      "source": "Toolkit/project-templates/sdp-root/Instructions/README.md",
+      "source": "Template/sdp-root/Instructions/README.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -636,16 +716,64 @@
       "newToolkitVersion": "0.2.0"
     },
     {
-      "sequence": 40,
+      "sequence": 45,
       "action": "create",
       "entryId": "project-document-guide",
-      "source": "Toolkit/project-templates/sdp-root/SDP-DOCUMENT-GUIDE.md",
+      "source": "Template/sdp-root/SDP-DOCUMENT-GUIDE.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
       "destinationPrecondition": null,
       "destination": "SDP/SDP-DOCUMENT-GUIDE.md",
       "ownership": "project-owned",
+      "reason": "missing-target",
+      "mutatesTarget": true,
+      "oldToolkitVersion": null,
+      "newToolkitVersion": "0.2.0"
+    },
+    {
+      "sequence": 46,
+      "action": "create",
+      "entryId": "managed-skill-sdp-planning-skill-md",
+      "source": "Skills/sdp-planning/SKILL.md",
+      "generator": null,
+      "targetSource": null,
+      "targetSourceSha256": null,
+      "destinationPrecondition": null,
+      "destination": ".codex/skills/sdp-planning/SKILL.md",
+      "ownership": "toolkit-managed",
+      "reason": "missing-target",
+      "mutatesTarget": true,
+      "oldToolkitVersion": null,
+      "newToolkitVersion": "0.2.0"
+    },
+    {
+      "sequence": 47,
+      "action": "create",
+      "entryId": "managed-skill-sdp-planning-references-plans-md",
+      "source": "Skills/sdp-planning/references/plans.md",
+      "generator": null,
+      "targetSource": null,
+      "targetSourceSha256": null,
+      "destinationPrecondition": null,
+      "destination": ".codex/skills/sdp-planning/references/plans.md",
+      "ownership": "toolkit-managed",
+      "reason": "missing-target",
+      "mutatesTarget": true,
+      "oldToolkitVersion": null,
+      "newToolkitVersion": "0.2.0"
+    },
+    {
+      "sequence": 48,
+      "action": "create",
+      "entryId": "managed-skill-sdp-planning-references-plan-template-md",
+      "source": "Skills/sdp-planning/references/plan-template.md",
+      "generator": null,
+      "targetSource": null,
+      "targetSourceSha256": null,
+      "destinationPrecondition": null,
+      "destination": ".codex/skills/sdp-planning/references/plan-template.md",
+      "ownership": "toolkit-managed",
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,

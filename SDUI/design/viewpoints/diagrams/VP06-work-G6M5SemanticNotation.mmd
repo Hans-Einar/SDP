@@ -1,0 +1,9 @@
+flowchart LR
+    n_ApplySemanticNotation["ApplySemanticNotation (functionality)"]
+    n_G6M5SemanticNotation["G6M5SemanticNotation (activity)"]
+    n_SdlViewpointGenerator["SdlViewpointGenerator (unit)"]
+    n_VerifyDiagramCapabilities["VerifyDiagramCapabilities (functionality)"]
+    n_G6M5SemanticNotation -->|addresses| n_ApplySemanticNotation
+    n_G6M5SemanticNotation -->|addresses| n_VerifyDiagramCapabilities
+    n_SdlViewpointGenerator -->|owns| n_ApplySemanticNotation
+    n_SdlViewpointGenerator -->|owns| n_VerifyDiagramCapabilities

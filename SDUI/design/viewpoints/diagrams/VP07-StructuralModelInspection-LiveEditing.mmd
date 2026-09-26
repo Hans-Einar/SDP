@@ -1,0 +1,24 @@
+flowchart LR
+    n_BuildSdlAst["BuildSdlAst (functionality)"]
+    n_BuildSduiAst["BuildSduiAst (functionality)"]
+    n_DiagnosticReporter["DiagnosticReporter (unit)"]
+    n_FyneHost["FyneHost (container)"]
+    n_ReportSourceDiagnostics["ReportSourceDiagnostics (functionality)"]
+    n_SdlParser["SdlParser (unit)"]
+    n_SdlValidator["SdlValidator (unit)"]
+    n_SduiParser["SduiParser (unit)"]
+    n_SduiValidator["SduiValidator (unit)"]
+    n_StructuralModelInspection["StructuralModelInspection (feature)"]
+    n_ValidateSdlStructure["ValidateSdlStructure (functionality)"]
+    n_ValidateWidgetArguments["ValidateWidgetArguments (functionality)"]
+    n_BuildSdlAst -->|contributes-to| n_StructuralModelInspection
+    n_BuildSduiAst -->|contributes-to| n_StructuralModelInspection
+    n_DiagnosticReporter -->|owns| n_ReportSourceDiagnostics
+    n_ReportSourceDiagnostics -->|allocated-to| n_FyneHost
+    n_ReportSourceDiagnostics -->|contributes-to| n_StructuralModelInspection
+    n_SdlParser -->|owns| n_BuildSdlAst
+    n_SdlValidator -->|owns| n_ValidateSdlStructure
+    n_SduiParser -->|owns| n_BuildSduiAst
+    n_SduiValidator -->|owns| n_ValidateWidgetArguments
+    n_ValidateSdlStructure -->|contributes-to| n_StructuralModelInspection
+    n_ValidateWidgetArguments -->|contributes-to| n_StructuralModelInspection

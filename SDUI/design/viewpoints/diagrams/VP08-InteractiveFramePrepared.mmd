@@ -1,0 +1,8 @@
+sequenceDiagram
+    participant n_FyneHost as Fyne Host
+    participant n_SduiLayout as Sdui Layout
+    participant n_FyneBackend as Fyne Backend
+    n_FyneHost->>n_SduiLayout: 1: Layout Request (Layout Calls)
+    n_SduiLayout-->>n_FyneHost: 2: Layout Result (Layout Calls) reply-to 1
+    n_FyneHost->>n_FyneBackend: 3: Present Frame Request (Frame Presentation Calls)
+    n_FyneBackend-->>n_FyneHost: 4: Present Frame Result (Frame Presentation Calls) reply-to 3

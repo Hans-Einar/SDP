@@ -1,0 +1,12 @@
+flowchart LR
+    n_BuildSdlAst["BuildSdlAst (functionality)"]
+    n_BuildSduiAst["BuildSduiAst (functionality)"]
+    n_ReportSourceDiagnostics["ReportSourceDiagnostics (functionality)"]
+    n_StructuralModelInspection["StructuralModelInspection (feature)"]
+    n_ValidateSdlStructure["ValidateSdlStructure (functionality)"]
+    n_ValidateWidgetArguments["ValidateWidgetArguments (functionality)"]
+    n_BuildSdlAst -->|contributes-to| n_StructuralModelInspection
+    n_BuildSduiAst -->|contributes-to| n_StructuralModelInspection
+    n_ReportSourceDiagnostics -->|contributes-to| n_StructuralModelInspection
+    n_ValidateSdlStructure -->|contributes-to| n_StructuralModelInspection
+    n_ValidateWidgetArguments -->|contributes-to| n_StructuralModelInspection

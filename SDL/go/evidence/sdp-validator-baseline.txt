@@ -1,0 +1,17 @@
+Command: python3 Toolkit/scripts/validate_sdp.py --base-ref origin/main
+Exit: 1
+Baseline: 9ad432407004080dd7f4f0ab06d107523f4316fd (sdp-vNow)
+Toolkit/ and Traceability/: no diff from baseline
+
+Existing format mismatches in Traceability/Relations.yaml:
+ITR-SDP-005-001
+ITR-SDP-005-002
+ITR-SDP-005-003
+ITR-SDP-005-004
+SLC-SDP-005-001
+SLC-SDP-005-002
+SLC-SDP-005-003
+SLC-SDP-005-004
+SPR-SDP-005
+Expected prefixes: SPI-, SPS-, Sprint- respectively.
+No SDL/SDUI change introduced these IDs or changed the validator.

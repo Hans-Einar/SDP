@@ -1,0 +1,26 @@
+flowchart LR
+    n_ConnectTypedWidgetHandles["ConnectTypedWidgetHandles (functionality)"]
+    n_DispatchUiEvent["DispatchUiEvent (functionality)"]
+    n_FyneHost["FyneHost (container)"]
+    n_InvokeRegisteredFunction["InvokeRegisteredFunction (functionality)"]
+    n_PublishDomainUpdates["PublishDomainUpdates (functionality)"]
+    n_ResolveCallbackSymbols["ResolveCallbackSymbols (functionality)"]
+    n_SdlDispatcher["SdlDispatcher (unit)"]
+    n_SdlUiBindingAdapter["SdlUiBindingAdapter (unit)"]
+    n_SduiDispatcher["SduiDispatcher (unit)"]
+    n_TypedDomainBinding["TypedDomainBinding (feature)"]
+    n_ConnectTypedWidgetHandles -->|allocated-to| n_FyneHost
+    n_ConnectTypedWidgetHandles -->|contributes-to| n_TypedDomainBinding
+    n_DispatchUiEvent -->|allocated-to| n_FyneHost
+    n_DispatchUiEvent -->|contributes-to| n_TypedDomainBinding
+    n_InvokeRegisteredFunction -->|allocated-to| n_FyneHost
+    n_InvokeRegisteredFunction -->|contributes-to| n_TypedDomainBinding
+    n_PublishDomainUpdates -->|allocated-to| n_FyneHost
+    n_PublishDomainUpdates -->|contributes-to| n_TypedDomainBinding
+    n_ResolveCallbackSymbols -->|allocated-to| n_FyneHost
+    n_ResolveCallbackSymbols -->|contributes-to| n_TypedDomainBinding
+    n_SdlDispatcher -->|owns| n_InvokeRegisteredFunction
+    n_SdlUiBindingAdapter -->|owns| n_ConnectTypedWidgetHandles
+    n_SdlUiBindingAdapter -->|owns| n_PublishDomainUpdates
+    n_SdlUiBindingAdapter -->|owns| n_ResolveCallbackSymbols
+    n_SduiDispatcher -->|owns| n_DispatchUiEvent

@@ -1,0 +1,199 @@
+{
+  "baselineCommit": "20b1932",
+  "reason": "PL1 authorized Planning skill distribution added three entries; expected v1 outcomes had not been refreshed.",
+  "changedOutcomes": [
+    {
+      "path": "Toolkit/conformance/install-v1/expected/archive-source-no-git.plan.json",
+      "previousSha256": "9a8112b00818e3488f8f06b320d412760acc1e2d88194e957fc6f111aff8e5e4",
+      "newSha256": "a20781b190aca72584af91f8b56bed5d76ca77d5c7a35579e8be27176703ccc5",
+      "addedEntries": [
+        "managed-skill-sdp-planning-skill-md",
+        "managed-skill-sdp-planning-references-plans-md",
+        "managed-skill-sdp-planning-references-plan-template-md"
+      ],
+      "actions": [
+        "create",
+        "create",
+        "create"
+      ],
+      "otherSemanticChanges": false
+    },
+    {
+      "path": "Toolkit/conformance/install-v1/expected/empty-default.plan.json",
+      "previousSha256": "9a8112b00818e3488f8f06b320d412760acc1e2d88194e957fc6f111aff8e5e4",
+      "newSha256": "a20781b190aca72584af91f8b56bed5d76ca77d5c7a35579e8be27176703ccc5",
+      "addedEntries": [
+        "managed-skill-sdp-planning-skill-md",
+        "managed-skill-sdp-planning-references-plans-md",
+        "managed-skill-sdp-planning-references-plan-template-md"
+      ],
+      "actions": [
+        "create",
+        "create",
+        "create"
+      ],
+      "otherSemanticChanges": false
+    },
+    {
+      "path": "Toolkit/conformance/install-v1/expected/empty-initialize.plan.json",
+      "previousSha256": "dc22c399cb84768a81d0855bd3f54df2e6fe8b1239754993e6f7dc07e48131ff",
+      "newSha256": "7fac69339a23373502a861465bfe10529a2fb5010e9256cffd5ee1ff7d0241e5",
+      "addedEntries": [
+        "managed-skill-sdp-planning-skill-md",
+        "managed-skill-sdp-planning-references-plans-md",
+        "managed-skill-sdp-planning-references-plan-template-md"
+      ],
+      "actions": [
+        "create",
+        "create",
+        "create"
+      ],
+      "otherSemanticChanges": false
+    },
+    {
+      "path": "Toolkit/conformance/install-v1/expected/legacy-agents-conflict-already-preserved.plan.json",
+      "previousSha256": "d610c4f52c473ec87c255adcd3576050357237436f9fc1e950f2a9668ef28df1",
+      "newSha256": "6583c61dae27d872dd7cd1d98958ebbb1b0b462b309187893753557773248aa2",
+      "addedEntries": [
+        "managed-skill-sdp-planning-skill-md",
+        "managed-skill-sdp-planning-references-plans-md",
+        "managed-skill-sdp-planning-references-plan-template-md"
+      ],
+      "actions": [
+        "create",
+        "create",
+        "create"
+      ],
+      "otherSemanticChanges": false
+    },
+    {
+      "path": "Toolkit/conformance/install-v1/expected/legacy-agents-conflict-new-hash-target.plan.json",
+      "previousSha256": "ab0f3c0b5dce8b563bfa1e026110873a7496668533c08289c97c897a810d6654",
+      "newSha256": "7ca7cdf93b62768cd14b0e72cd37cdb55bd86d31c6a610f1f8f10026ef247412",
+      "addedEntries": [
+        "managed-skill-sdp-planning-skill-md",
+        "managed-skill-sdp-planning-references-plans-md",
+        "managed-skill-sdp-planning-references-plan-template-md"
+      ],
+      "actions": [
+        "create",
+        "create",
+        "create"
+      ],
+      "otherSemanticChanges": false
+    },
+    {
+      "path": "Toolkit/conformance/install-v1/expected/legacy-agents-migrate.plan.json",
+      "previousSha256": "6c7844dc53e32c667e37bf5ee7601a3ba816d9120822c180fb3b2695390db6dd",
+      "newSha256": "861d958f6ec928cb508910e5683b3ab88a8a08efc2adf3db67fe84bde9702ad5",
+      "addedEntries": [
+        "managed-skill-sdp-planning-skill-md",
+        "managed-skill-sdp-planning-references-plans-md",
+        "managed-skill-sdp-planning-references-plan-template-md"
+      ],
+      "actions": [
+        "create",
+        "create",
+        "create"
+      ],
+      "otherSemanticChanges": false
+    },
+    {
+      "path": "Toolkit/conformance/install-v1/expected/project-owned-content-preserved.plan.json",
+      "previousSha256": "dd4af701f5e09c4b1ef4f7e50d2507f82e634b9f18a34e551fa115b22da5eec4",
+      "newSha256": "9f7fc44c7516f76aff6b2a64b0a9eb3a8b6552ffa278e36d5cd473f86005b139",
+      "addedEntries": [
+        "managed-skill-sdp-planning-skill-md",
+        "managed-skill-sdp-planning-references-plans-md",
+        "managed-skill-sdp-planning-references-plan-template-md"
+      ],
+      "actions": [
+        "unchanged",
+        "unchanged",
+        "unchanged"
+      ],
+      "otherSemanticChanges": false
+    },
+    {
+      "path": "Toolkit/conformance/install-v1/expected/repeat-default.plan.json",
+      "previousSha256": "49c346bf8d2bc2e7f7a9b27906e20a6ddf193bf470222498994727ab1f31ed33",
+      "newSha256": "1632dffe5809a4ee12402c65d974a67486e2d9724e06731c46227ff2727f8f88",
+      "addedEntries": [
+        "managed-skill-sdp-planning-skill-md",
+        "managed-skill-sdp-planning-references-plans-md",
+        "managed-skill-sdp-planning-references-plan-template-md"
+      ],
+      "actions": [
+        "unchanged",
+        "unchanged",
+        "unchanged"
+      ],
+      "otherSemanticChanges": false
+    },
+    {
+      "path": "Toolkit/conformance/install-v1/expected/repeat-initialize.plan.json",
+      "previousSha256": "c55aa656d1d3c212c5ef444651431f6bd18feb09994747ca79166544bf0d2a1f",
+      "newSha256": "87602e367ffd57c4992a39ba4045d987344ed0abbc904b9d479ce30fb0541c35",
+      "addedEntries": [
+        "managed-skill-sdp-planning-skill-md",
+        "managed-skill-sdp-planning-references-plans-md",
+        "managed-skill-sdp-planning-references-plan-template-md"
+      ],
+      "actions": [
+        "unchanged",
+        "unchanged",
+        "unchanged"
+      ],
+      "otherSemanticChanges": false
+    },
+    {
+      "path": "Toolkit/conformance/install-v1/expected/same-version-force-managed-content.plan.json",
+      "previousSha256": "94b46294c0e90a9c1fc9afffb3197852baf2e549bc1f53159baa1e391b53bbea",
+      "newSha256": "ace84d8a7d67d615c439f44ae44f179d415567bb82db591e515d9b199c8e539d",
+      "addedEntries": [
+        "managed-skill-sdp-planning-skill-md",
+        "managed-skill-sdp-planning-references-plans-md",
+        "managed-skill-sdp-planning-references-plan-template-md"
+      ],
+      "actions": [
+        "unchanged",
+        "unchanged",
+        "unchanged"
+      ],
+      "otherSemanticChanges": false
+    },
+    {
+      "path": "Toolkit/conformance/install-v1/expected/same-version-skill-contract-force.plan.json",
+      "previousSha256": "4405d531275566c7aa619db2db1214feecd6d17e9d5226560a10ca4a5b4e6acc",
+      "newSha256": "40dc8ea9b4458355e0ca610abe8358a144673779979586e09165783bb5d6f578",
+      "addedEntries": [
+        "managed-skill-sdp-planning-skill-md",
+        "managed-skill-sdp-planning-references-plans-md",
+        "managed-skill-sdp-planning-references-plan-template-md"
+      ],
+      "actions": [
+        "unchanged",
+        "unchanged",
+        "unchanged"
+      ],
+      "otherSemanticChanges": false
+    },
+    {
+      "path": "Toolkit/conformance/install-v1/expected/upgrade-managed-content.plan.json",
+      "previousSha256": "0142d71bbcaefae3f6f4b92ce6bc95d16ccaf255d5ecd99d5ad7b5d4bad05a79",
+      "newSha256": "2656ad216d30b4b21e76fdffe957045e6d2bcec967a2daf798b530ba85d56d1f",
+      "addedEntries": [
+        "managed-skill-sdp-planning-skill-md",
+        "managed-skill-sdp-planning-references-plans-md",
+        "managed-skill-sdp-planning-references-plan-template-md"
+      ],
+      "actions": [
+        "unchanged",
+        "unchanged",
+        "unchanged"
+      ],
+      "otherSemanticChanges": false
+    }
+  ],
+  "unchangedOutcomes": 7
+}

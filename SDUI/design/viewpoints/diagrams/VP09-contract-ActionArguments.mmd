@@ -1,0 +1,8 @@
+flowchart LR
+    n_ActionArguments["ActionArguments (contract)"]
+    n_ActionGeneration["ActionGeneration (field)"]
+    n_ActionInputText["ActionInputText (field)"]
+    n_ActionSymbol["ActionSymbol (field)"]
+    n_ActionArguments -->|has-field| n_ActionGeneration
+    n_ActionArguments -->|has-field| n_ActionInputText
+    n_ActionArguments -->|has-field| n_ActionSymbol

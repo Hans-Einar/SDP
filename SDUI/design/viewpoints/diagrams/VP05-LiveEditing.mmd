@@ -1,0 +1,8 @@
+flowchart LR
+    n_DevelopmentReload["DevelopmentReload (capability)"]
+    n_FileChangePort["FileChangePort (interface)"]
+    n_SourceSnapshotPort["SourceSnapshotPort (interface)"]
+    n_UiReloadPort["UiReloadPort (interface)"]
+    n_DevelopmentReload -->|requires| n_FileChangePort
+    n_DevelopmentReload -->|requires| n_SourceSnapshotPort
+    n_DevelopmentReload -->|requires| n_UiReloadPort

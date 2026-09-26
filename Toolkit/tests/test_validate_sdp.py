@@ -393,8 +393,8 @@ class ReleaseNotesTests(unittest.TestCase):
 
 class FrontMatterTests(unittest.TestCase):
     def test_all_canonical_skills_have_metadata(self) -> None:
-        for path in ROOT.glob("Toolkit/skills/*/SKILL.md"):
-            metadata = VALIDATE.parse_front_matter(path)
+        for path in ROOT.glob("Skills/*/SKILL.md"):
+            metadata = VALIDATE.parse_skill_metadata(path)
             self.assertEqual(metadata["skillId"], path.parent.name)
             VALIDATE.SemVer.parse(metadata["skillVersion"])
             self.assertTrue(metadata["capabilities"])
@@ -502,7 +502,7 @@ class InstallationContractTests(unittest.TestCase):
         )
         self.assertEqual(self.validate_contract(self.contract), [])
         entries = self.contract["entries"]
-        self.assertEqual(len(entries), 40)
+        self.assertEqual(len(entries), 48)  # Planning skill and two portable references
         self.assertEqual(len({entry["id"] for entry in entries}), len(entries))
         self.assertEqual(
             len({entry["destination"].casefold() for entry in entries}), len(entries)
@@ -678,7 +678,7 @@ class InstallationContractTests(unittest.TestCase):
         contract["exclusions"] = [
             exclusion
             for exclusion in contract["exclusions"]
-            if exclusion["path"] != "Releases"
+            if exclusion["path"] != "SDP"
         ]
         errors = self.validate_contract(contract)
         self.assertTrue(
@@ -730,7 +730,7 @@ class InstallationContractTests(unittest.TestCase):
                 )
 
     def test_neutral_template_payload_contains_no_active_records(self) -> None:
-        template_root = ROOT / "Toolkit/project-templates"
+        template_root = ROOT / "Template"
         files = [path.relative_to(template_root).as_posix() for path in template_root.rglob("*") if path.is_file()]
         self.assertNotIn("sdp-root/Traceability/Ledger.ndjson", files)
         self.assertFalse(any(Path(path).name.startswith("REL-") for path in files))
@@ -765,7 +765,7 @@ class InstallationContractTests(unittest.TestCase):
                     "sequence": 1,
                     "action": "create",
                     "entryId": "project-manifest",
-                    "source": "Toolkit/project-templates/sdp-root/SDP-project.manifest.yaml",
+                    "source": "Template/sdp-root/SDP-project.manifest.yaml",
                     "generator": None,
                     "targetSource": None,
                     "targetSourceSha256": None,
@@ -805,7 +805,7 @@ class InstallationContractTests(unittest.TestCase):
                 oldToolkitVersion="0.1.0"
             ),
             "source": lambda plan: plan["actions"][0].update(
-                source="Toolkit/project-templates/sdp-root/RELEASE-NOTES.md"
+                source="Template/sdp-root/RELEASE-NOTES.md"
             ),
             "generator": lambda plan: plan["actions"][0].update(
                 source=None, generator="empty-ledger"
@@ -1173,6 +1173,13 @@ class ProjectValidationTests(unittest.TestCase):
         )
         self.assert_error_contains("installed-toolkit.manifest.yaml")
         self.assert_error_contains("Cannot parse YAML")
+
+    def test_installed_manifest_non_mapping_is_reported(self) -> None:
+        path = self.root / "SDP/Framework/installed-toolkit.manifest.yaml"
+        for text in ("- not-a-mapping\n", "42\n"):
+            with self.subTest(text=text):
+                path.write_text(text, encoding="utf-8")
+                self.assert_error_contains("installed-toolkit.manifest.yaml")
 
     def test_unsupported_project_manifest_schema_fails_clearly(self) -> None:
         path = self.root / "SDP/SDP-project.manifest.yaml"
@@ -1627,6 +1634,8 @@ class InstallConformancePackageTests(unittest.TestCase):
             {
                 "empty-default",
                 "empty-initialize",
+                "same-version-skill-contract-unforced",
+                "same-version-skill-contract-force",
                 "repeat-default",
                 "repeat-initialize",
                 "legacy-agents-migrate",

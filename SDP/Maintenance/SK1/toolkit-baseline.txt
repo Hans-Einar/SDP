@@ -1,0 +1,39 @@
+SDP validation failed:
+- Traceability/Relations.yaml.iterations: 'ITR-SDP-005-001' does not match '^SPI-[0-9]{3,}$'
+- Traceability/Relations.yaml.iterations: 'ITR-SDP-005-002' does not match '^SPI-[0-9]{3,}$'
+- Traceability/Relations.yaml.iterations: 'ITR-SDP-005-003' does not match '^SPI-[0-9]{3,}$'
+- Traceability/Relations.yaml.iterations: 'ITR-SDP-005-004' does not match '^SPI-[0-9]{3,}$'
+- Traceability/Relations.yaml.slices: 'SDPTOOL-VER-T4-M1' does not match '^SPS-[0-9]{3,}$'
+- Traceability/Relations.yaml.slices: 'SDPTOOL-VER-T3-M3' does not match '^SPS-[0-9]{3,}$'
+- Traceability/Relations.yaml.slices: 'SDPTOOL-VER-T3-M2' does not match '^SPS-[0-9]{3,}$'
+- Traceability/Relations.yaml.slices: 'SDPTOOL-VER-T3-M1' does not match '^SPS-[0-9]{3,}$'
+- Traceability/Relations.yaml.slices: 'SDPTOOL-VER-T2-M2' does not match '^SPS-[0-9]{3,}$'
+- Traceability/Relations.yaml.slices: 'SDPTOOL-VER-T2-M1' does not match '^SPS-[0-9]{3,}$'
+- Traceability/Relations.yaml.slices: 'SDPTOOL-VER-T1-M2' does not match '^SPS-[0-9]{3,}$'
+- Traceability/Relations.yaml.slices: 'SDPTOOL-VER-T1-M1' does not match '^SPS-[0-9]{3,}$'
+- Traceability/Relations.yaml.slices: 'SDPTOOL-VER-P0-M1' does not match '^SPS-[0-9]{3,}$'
+- Traceability/Relations.yaml.slices: 'SLC-SDP-005-001' does not match '^SPS-[0-9]{3,}$'
+- Traceability/Relations.yaml.slices: 'SLC-SDP-005-002' does not match '^SPS-[0-9]{3,}$'
+- Traceability/Relations.yaml.slices: 'SLC-SDP-005-003' does not match '^SPS-[0-9]{3,}$'
+- Traceability/Relations.yaml.slices: 'SLC-SDP-005-004' does not match '^SPS-[0-9]{3,}$'
+- Traceability/Relations.yaml.sprints: 'SPR-SDP-005' does not match '^Sprint-[0-9]{3,}$'
+- Traceability/Relations.yaml.slices.SDPTOOL-VER-P0-M1.reviews: missing reverse link from reviews.REV-SPS-001-001.slice
+- Traceability/Relations.yaml.slices.SDPTOOL-VER-P0-M1.reviews: missing reverse link from reviews.REV-SPS-001-002.slice
+- Traceability/Relations.yaml.slices.SDPTOOL-VER-P0-M1.reviews: missing reverse link from reviews.REV-SPS-001-003.slice
+- Traceability/Relations.yaml.slices.SDPTOOL-VER-P0-M1.reviews: missing reverse link from reviews.REV-SPS-001-004.slice
+- Traceability/Relations.yaml.slices.SDPTOOL-VER-P0-M1.reviews: missing reverse link from reviews.REV-SPS-001-005.slice
+- Traceability/Relations.yaml.slices.SDPTOOL-VER-P0-M1.reviews: missing reverse link from reviews.REV-SPS-001-006.slice
+- Traceability/Relations.yaml.slices.SDPTOOL-VER-P0-M1.reviews: missing reverse link from reviews.REV-SPS-001-007.slice
+- Traceability/Relations.yaml.reviews.REV-SPS-001-001.slice: missing reverse link from slices.SPS-001.review or reviews
+- Traceability/Relations.yaml.reviews.REV-SPS-001-002.slice: missing reverse link from slices.SPS-001.review or reviews
+- Traceability/Relations.yaml.reviews.REV-SPS-001-003.slice: missing reverse link from slices.SPS-001.review or reviews
+- Traceability/Relations.yaml.reviews.REV-SPS-001-004.slice: missing reverse link from slices.SPS-001.review or reviews
+- Traceability/Relations.yaml.reviews.REV-SPS-001-005.slice: missing reverse link from slices.SPS-001.review or reviews
+- Traceability/Relations.yaml.reviews.REV-SPS-001-006.slice: missing reverse link from slices.SPS-001.review or reviews
+- Traceability/Relations.yaml.reviews.REV-SPS-001-007.slice: missing reverse link from slices.SPS-001.review or reviews
+- Traceability/Relations.yaml.verification.VER-SPS-001.slice: missing reverse link from slices.SPS-001.verification
+- Traceability/Relations.yaml.verification.VER-SPS-001-002.slice: missing reverse link from slices.SPS-001.verification
+- Traceability/Relations.yaml.verification.VER-SPS-001-003.slice: missing reverse link from slices.SPS-001.verification
+- Traceability/Relations.yaml.verification.VER-SPS-001-004.slice: missing reverse link from slices.SPS-001.verification
+- Traceability/Relations.yaml.verification.VER-SPS-001-005.slice: missing reverse link from slices.SPS-001.verification
+- Traceability/Relations.yaml.verification.VER-SPS-001-006.slice: missing reverse link from slices.SPS-001.verification

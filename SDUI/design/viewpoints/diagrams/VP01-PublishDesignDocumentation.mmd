@@ -1,0 +1,8 @@
+flowchart LR
+    n_DesignAuthor["DesignAuthor (actor)"]
+    n_DesignDocumentation["DesignDocumentation (feature)"]
+    n_DesignReviewer["DesignReviewer (actor)"]
+    n_PublishDesignDocumentation["PublishDesignDocumentation (usecase)"]
+    n_DesignAuthor -->|pursues| n_PublishDesignDocumentation
+    n_DesignDocumentation -->|supports| n_PublishDesignDocumentation
+    n_DesignReviewer -->|pursues| n_PublishDesignDocumentation
