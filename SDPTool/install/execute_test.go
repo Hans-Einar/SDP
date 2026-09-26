@@ -98,3 +98,29 @@ func TestLockAndLegacyPending(t *testing.T) {
 		t.Fatal("legacy pending ignored")
 	}
 }
+
+func TestUnstartedPublicationFailureIsNotResumable(t *testing.T) {
+	root := t.TempDir()
+	p := preview(t, root, fixture())
+	x := Executor{Fault: func(name string, index int) error {
+		if name == "publication" {
+			return os.ErrPermission
+		}
+		return nil
+	}}
+	r, e := x.Apply(context.Background(), root, p)
+	if e == nil || r.OperationID != "" {
+		t.Fatal(r, e)
+	}
+	failure, ok := e.(*Error)
+	if !ok || failure.Exit != 4 {
+		t.Fatal(e)
+	}
+	entries, _ := os.ReadDir(root)
+	if len(entries) != 0 {
+		t.Fatal("unstarted failure changed project")
+	}
+	if _, e = (Executor{}).Apply(context.Background(), root, p); e != nil {
+		t.Fatal("retry failed", e)
+	}
+}

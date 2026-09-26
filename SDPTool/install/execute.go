@@ -56,8 +56,22 @@ func (x Executor) Apply(ctx context.Context, root string, p Plan) (Result, error
 		return r, e
 	}
 	r = result(j)
-	if e = saveJournal(root, &j); e != nil {
-		return r, fail("mutation", 6, "operation %s: %v", j.OperationID, e)
+	if _, err := os.Lstat(filepath.Join(root, Operations, j.OperationID)); err == nil {
+		return Result{}, fail("operation-exists", 5, "operation identity already exists; inspect or resume %s", j.OperationID)
+	} else if !os.IsNotExist(err) {
+		return Result{}, err
+	}
+	// Nothing in the reviewed inventory has changed until this first publication.
+	// A caught preparation failure is retryable, not a fictitious resumable journal.
+	if e = x.boundary("publication", 0); e == nil {
+		e = saveJournal(root, &j)
+	}
+	if e != nil {
+		discardPreparation(root, j)
+		if problem, ok := e.(*Error); ok && problem.Exit == 2 {
+			return Result{}, e
+		}
+		return Result{}, fail("preparation", 4, "initial journal not published; no file actions ran: %v", e)
 	}
 	if e = x.boundary("prepared", 0); e != nil {
 		return r, e
@@ -525,4 +539,24 @@ func (x Executor) run(ctx context.Context, root string, j *Journal) (Result, err
 		return abort(e)
 	}
 	return result(*j), nil
+}
+
+func discardPreparation(root string, j Journal) {
+	r, e := os.OpenRoot(root)
+	if e != nil {
+		return
+	}
+	defer r.Close()
+	rel := Operations + "/" + j.OperationID + "/journal.json"
+	// Remove only the temporary/empty directories belonging to this unstarted
+	// operation. Remove fails safely if another writer populated a directory.
+	if _, e := r.Lstat(rel); !os.IsNotExist(e) {
+		return
+	}
+	_ = r.Remove(Operations + "/temp-" + Hash([]byte(rel)))
+	_ = r.Remove(Operations + "/" + j.OperationID)
+	_ = r.Remove(Operations)
+	if j.Plan.Snapshot["SDP"].Type != "directory" {
+		_ = r.Remove("SDP")
+	}
 }
