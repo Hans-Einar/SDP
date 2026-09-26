@@ -55,7 +55,7 @@ No blueprint generator or reduction in drift is claimed by registering this card
 
 [KB-SDP-004](../backlog/%23004--Proposal--Design-traceability.md) owns design/code/evidence
 traceability. [KB-SDP-032](../backlog/%23032--Study--Viewpoint-navigation-feedback.md) supplies
-navigation feedback. [KB-SDP-033](../backlog/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md)
+navigation feedback. [KB-SDP-033](../active/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md)
 provides a prospective practical pilot; the study need not wait for its completion.
 
 ## Worklog

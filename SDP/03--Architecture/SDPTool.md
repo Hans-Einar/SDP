@@ -50,5 +50,10 @@ it. Existing installation.go is a facts/journal reader, not an apply engine.
 The concrete installation units/protocol and additions to the SDL model remain
 future design; the current model describes the earlier navigation/preview scope.
 [ST1](../Maintenance/ST1/Plan.md) changes source location without claiming a new
-command. [KB-SDP-033](../KanBan/backlog/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md)
+command. [KB-SDP-033](../KanBan/active/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md)
 retains the executable adoption workflow and thin-client coordination.
+
+[PLAN-SDP-0002](../04--Design/SDPTool/Installation/Plan.md) is now selected for this
+installation design. IPD-1 will extend the canonical SDL model; the present model
+still describes the earlier scope. No allocation/contract additions are claimed
+by plan activation alone.

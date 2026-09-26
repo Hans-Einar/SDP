@@ -181,8 +181,13 @@ this delivery is limited to the named milestone.
 
 Root SDPTool owns future Go install/upgrade; gh-sdp will be a thin client.
 [REQ-SDPTOOL-007](../02--Requirements/SDPTool.md) and
-[KB-SDP-033](../KanBan/backlog/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md)
+[KB-SDP-033](../KanBan/active/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md)
 retain this requirement. ST1 only moves the existing module and reconciles its
 consumers. Select a bounded implementation plan for the installation contract,
 Go migration, packaged client and disposable XFMD adoption before implementing
 that workflow. None of T0–T5 is retroactively credited with an installer.
+
+The owner activated [PLAN-SDP-0002](../04--Design/SDPTool/Installation/Plan.md)
+on 2026-09-27 for the preceding SDL/contract design and generated review.
+Its IPD-3 handoff will select concrete installation implementation milestones;
+the existing T0–T5 history and branch policies are unchanged.

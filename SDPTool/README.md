@@ -63,7 +63,7 @@ it is not an installer. The retained PowerShell engine is documented in the
 are still used and will be migrated deliberately, with preserved behavior.
 
 [ST1](../SDP/Maintenance/ST1/Plan.md) records the relocation.
-[KB-SDP-033](../SDP/KanBan/backlog/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md)
+[KB-SDP-033](../SDP/KanBan/active/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md)
 retains the Go installation/XFMD adoption workflow. KB-SDP-018's separate Toolkit
 audit has been withdrawn. CLI commands remain limited to those listed below;
 this ownership decision adds no implemented command or release capability.

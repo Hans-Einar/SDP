@@ -58,3 +58,12 @@ assignment context, protected boundaries and observed evidence. Its worked examp
 uses planned unsaved-source preview without changing this canonical model or the
 implemented producer contract. [PLAN-SDP-0001](SDPTool/Blueprints/Plan.md) remains
 planned; no blueprint command or new SDL semantics are adopted.
+
+## Active installation design — IPD
+
+The owner selected [PLAN-SDP-0002](SDPTool/Installation/Plan.md) on 2026-09-27
+under active KB-SDP-033. It extends the canonical SDL model for SDPTool-owned
+install/upgrade and a thin gh-sdp client, then specifies contracts and produces
+generated review viewpoints and an implementation handoff. IPD-0 records the
+baseline; model and protocol milestones remain pending. Go installation is not
+implemented by selecting this plan. The separate BP2 blueprint plan stays deferred.

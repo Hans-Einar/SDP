@@ -5,11 +5,27 @@
 | id | KB-SDP-033 |
 | project | SDP |
 | type | Study |
-| CardState | backlog |
+| CardState | ready |
+| PlanId | PLAN-SDP-0002 |
 | Systems | SDP, SDL, SDPTOOL |
 | created | 2026-09-25T22:20:56Z |
 | source | Owner conversation 2026-09-26: SDL context, implementation drift and post-main XFMD adoption |
-| next_review | After MAINT-SDP-0005 main consolidation |
+| next_review | IPD-1-M1 installation SDL model and allocation |
+
+## Current selected work — 2026-09-27
+
+The owner activates this card for the SDPTool installation/upgrade DesignPlan:
+[PLAN-SDP-0002](../../04--Design/SDPTool/Installation/Plan.md). IPD-0 selects the
+baseline and scope; IPD-1 models responsibilities in SDL, IPD-2 specifies contracts,
+and IPD-3 generates review viewpoints and an implementation handoff. CardState is
+ready after plan creation; use in-progress during the modeling work. No owner
+review gate is requested merely for activating the card.
+
+Current acceptance for this selected work is a validated SDL design and generated
+review documentation with a concrete implementation plan. The broader disposable
+XFMD migration, eventual live adoption and practical XFMD SDL-modeling pilot remain
+explicit follow-up scope. Plan creation or design completion does not deliver them.
+Dated backlog/status statements below are historical observations.
 
 ## Owner intent and baseline
 
@@ -45,7 +61,7 @@ perform live migration or product changes during this intake or main merge.
 
 Depends on main consolidation and coordinates with
 [KB-SDP-031](../completed/%23031--Study--SDL-assignment-bundles-and-blueprints.md),
-[KB-SDP-032](%23032--Study--Viewpoint-navigation-feedback.md) and
+[KB-SDP-032](../backlog/%23032--Study--Viewpoint-navigation-feedback.md) and
 [KB-SDP-018](../canceled/%23018--Study--Toolkit-audit-and-organization.md).
 
 ## Worklog
@@ -204,3 +220,5 @@ Next selected implementation plan must implement the bounded workflow
 `gh sdp upgrade --manifest xfmd-upgrade.yaml` through SDPTool on a disposable XFMD
 copy before any live adoption. Detailed CLI/manifest/protocol design and release
 publication remain outstanding. No new executable is delivered by this card update.
+
+2026-09-26T22:16:08Z: EVT-KB-SDP-000190. Activated as ready under PLAN-SDP-0002; IPD-0-M1 records plan/baseline, installation modeling remains next.
