@@ -38,3 +38,7 @@ installation protocol; this is the authorized compatibility addition, not a waiv
 legacy obligation. Clean project AGENTS.md is preserved automatically; unequal
 AGENTS-project.md collisions still block. A fresh XFMD copied baseline preview/apply
 also succeeded during integration; its reproducible paired trial belongs to GIP-4.
+
+## GIP-3-M2
+
+2026-09-26T23:42:57Z. Thin gh-sdp client implemented in its own repository with shared bootstrap pinned to fb79727. Independent review REV-SPS-003-002 approves client fca8480 plus clean engine fb79727 on Linux after resolving FIFO and evidence findings. Actual gh sdp/direct plan and apply parity, offline behavior, race and vet pass. Client implementation does not duplicate installation policy. Wider engine and XFMD evidence remain GIP-4.

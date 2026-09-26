@@ -273,7 +273,7 @@ GhSdpClientSlice addresses InvokeInstallationCommand.
 GhSdpClientSlice addresses RetrieveSdpToolBinary.
 GhSdpClientSlice delivers SdpTool.
 GhSdpClientSlice depends-on InstallationRecoverySlice.
-GhSdpClientSlice has implementation-status = planned.
+GhSdpClientSlice has implementation-status = implemented.
 GhSdpClientSlice refines DeliverSdpTool.
 GhSdpLauncher consumes ReleaseArtifactPort.
 GhSdpLauncher consumes SdpToolInvocationPort.
@@ -502,7 +502,7 @@ InstallationPlanSlice addresses ResolveInstallationRelease.
 InstallationPlanSlice addresses ValidateAdoptionBaseline.
 InstallationPlanSlice delivers SdpTool.
 InstallationPlanSlice depends-on ProjectDiscoverySlice.
-InstallationPlanSlice has implementation-status = planned.
+InstallationPlanSlice has implementation-status = implemented.
 InstallationPlanSlice refines DeliverSdpTool.
 InstallationPlanner consumes InstallationFilesystemPort.
 InstallationPlanner holds ReviewedInstallationPlans.
