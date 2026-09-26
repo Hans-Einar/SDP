@@ -226,3 +226,5 @@ publication remain outstanding. No new executable is delivered by this card upda
 2026-09-26T22:23:11Z: EVT-KB-SDP-000191. Owner starts execution of IPD-1 through IPD-3; CardState ready to in-progress. SDL model, contracts and generated design review only; no live migration or production installer implementation.
 
 2026-09-26T22:24:18Z: EVT-KB-SDP-000192. IPD-1-M1 delivered installation responsibilities in SDL. CardState remains in-progress for contracts and generated review.
+
+2026-09-26T22:31:14Z: EVT-KB-SDP-000193. IPD-2-M1 completes design contracts and scenario walkthrough; CardState remains in-progress for reproducible generated review and implementation handoff.

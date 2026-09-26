@@ -78,7 +78,7 @@ this plan must not silently close that card as a delivered live upgrade.
 | --- | --- | --- | --- |
 | IPD-0 — selection and baseline | IPD-0-M1 | Activate KB-SDP-033, link this typed plan, inspect current responsibilities and record scope/Git policy | Completed |
 | IPD-1 — SDL model | IPD-1-M1 | Model installation/upgrade actors, use cases, capabilities, functionality, process boundaries, units and interfaces; allocate responsibilities to SDPTool versus thin gh-sdp; mark all new delivery activities planned; run SDL check/AST and preserve existing navigation/preview facts | Completed |
-| IPD-2 — detailed contracts | IPD-2-M1 | Specify direct CLI/wrapper protocol, release inventory versus installed receipt versus adoption manifest, deterministic plan/apply binding, ownership/migration/error/recovery behavior and compatibility; trace each contract to model elements and acceptance cases | Planned |
+| IPD-2 — detailed contracts | IPD-2-M1 | Specify direct CLI/wrapper protocol, release inventory versus installed receipt versus adoption manifest, deterministic plan/apply binding, ownership/migration/error/recovery behavior and compatibility; trace each contract to model elements and acceptance cases | Completed |
 | IPD-3 — generated review and implementation handoff | IPD-3-M1 | Generate selected Markdown viewpoints from validated SDL; record source/tool identities and coverage/gaps; walk the XFMD adoption scenario and failure cases; write a bounded ImplementationPlan with phases/milestones and remaining decisions | Planned |
 
 ## Model and contract method
@@ -163,3 +163,7 @@ begins. The plan stays active until its actual design deliverables are complete.
 
 IPD-1-M1: [Evidence](Evidence.md) records the checked model and preserved baseline.
 Next: IPD-2 contracts and modeled exchanges. CardState is in-progress.
+
+IPD-2-M1: [Contract](Contract.md) and [Scenarios](Scenarios.md) define execution,
+identity/trust, preservation and recovery. Twelve channels and five scenarios
+validate in SDL; detailed schemas and runtime tests remain implementation work.

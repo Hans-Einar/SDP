@@ -19,8 +19,8 @@ renderer repository, mandatory daemon or startup compilation is required.
 
 ViewerDeliveryPort is the producer/consumer boundary. Native XFMD tabs and direct
 .design source/preview behavior belong to KB-XFMD-014 and KB-XFMD-015. SDPTool does
-not own FOX widgets. The model intentionally does not invent Channels, scenarios
-or packet contracts before the preview/configuration interfaces are specified.
+not own FOX widgets. Preview/configuration protocols remain separately specified. The installation
+extension adds explicit Channels and scenarios, with no invented packet encoding.
 It has one local namespace and imports no external design model.
 
 
@@ -30,7 +30,7 @@ This self-contained model includes A0/A1 goal/feature facts, A2/A3 ownership and
 planned delivery activities for several viewpoints. It is stored here because
 architecture integrates these facts; it is not a claim that every fact is A2/A3.
 Current SDL has no cross-file imports. Do not maintain parallel model copies
-in Requirements, Design and Implementation. Detailed A4 protocols remain open.
+in Requirements, Design and Implementation. Installation A4 exchanges are modeled; preview A4 details retain their own scope.
 
 Activity implementation-status values in the SDL model distinguish delivered and
 planned work; they are not proof of native XFMD acceptance. SDPTool interfaces describe required collaboration
@@ -52,7 +52,10 @@ InstallationBaselineInspector, InstallationReleaseResolver, InstallationPlanner,
 InstallationExecutor, InstallationJournal and InstallationRecorder within
 SdpToolProcess. GhSdpProcess contains only GhSdpLauncher; ReleaseRepositoryProcess
 is an external artifact service. Five installation/client/adoption activities remain
-planned. Detailed protocol design is IPD-2, not implemented by these declarations.
+planned. IPD-2 adds twelve logical channels, five validated scenarios and file-based data
+holders. [Installation contract](../04--Design/SDPTool/Installation/Contract.md)
+and [scenario review](../04--Design/SDPTool/Installation/Scenarios.md) define the
+design beyond SDL payload shapes; none is runtime implementation.
 
 [PLAN-SDP-0002](../04--Design/SDPTool/Installation/Plan.md) owns this active design;
 [IPD evidence](../04--Design/SDPTool/Installation/Evidence.md) records parser checks.
