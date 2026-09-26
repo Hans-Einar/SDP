@@ -92,8 +92,9 @@ says 0.2.0 unreleased. gh extension list has no gh-sdp. Remote gh-sdp main remai
 32613734781bf39f2fce176db2acfb2284dfc92f and contains process documents rather than
 CLI product code. Do not present gh-sdp release lookup/install as implemented.
 
-Recommended boundary: reuse the existing installer; add release retrieval/verification
-as a facade rather than another migration engine. Keep an externally authoritative
+Historical recommendation, superseded by the owner decision below: reuse the
+existing installer and add release retrieval/verification as a facade rather than
+another migration engine. Keep an externally authoritative
 release inventory and a project receipt binding repository, version, immutable
 artifact digest and process identity. A local cached copy is acceptable if verified;
 not storing the inventory locally is not itself a tamper-proof guarantee. The
@@ -129,3 +130,51 @@ A hash from a mutable local manifest alone does not establish a trusted baseline
 2026-09-26T12:37:22Z: EVT-KB-SDP-000185. CardState remains backlog while adoption/release/facade boundaries
 are clarified; this is a preflight observation, not completion of the card's wider
 SDL-modeling pilot.
+
+
+## Owner decision: Go Toolkit and a thin gh-sdp client — 2026-09-26
+
+The owner selects a compiled Go installation engine owned by the SDP repository.
+gh-sdp should be a thin client for accessing that engine without a separate manual
+Toolkit installation. This supersedes any interpretation of the earlier facade
+recommendation that would retain PowerShell as the required production engine.
+Reuse the existing ownership, planning, preservation and recovery contracts and
+verification cases; do not maintain a separate migration-policy implementation in
+gh-sdp. The current PowerShell implementation remains the observed implementation,
+not the selected target. Its replacement/removal requires a migration plan and
+verified Go behavior; no executable is changed by this decision capture.
+
+Clarification: GitHub CLI extensions execute locally. GitHub hosts source and
+precompiled release assets; it does not execute a local project upgrade remotely.
+Official references: [extension execution](https://cli.github.com/manual/gh_extension)
+and [extension distribution](https://docs.github.com/en/github-cli/github-cli/creating-github-cli-extensions).
+
+Recommended distribution, pending detailed design: gh-sdp resolves an exact,
+compatible Toolkit release, verifies and caches its platform-specific Go executable
+and release inventory, then delegates local plan/apply operations. This avoids a
+manual Toolkit setup while preserving one engine. An alternative is linking the
+same SDP-owned Go package into gh-sdp; it avoids a second runtime download but
+couples engine updates to extension releases. Neither packaging choice changes
+ownership. Define engine/protocol compatibility, provenance verification, cache
+behavior and installed-version receipts before implementation.
+
+The desired user entrypoint is `gh sdp upgrade --manifest xfmd-upgrade.yaml`, run
+from the project repository. The custom manifest describes the observed manual
+baseline and explicit adoption mapping; it does not replace the authoritative
+release inventory. This command and custom-manifest schema are not implemented.
+
+Refreshed gh-sdp inspection: origin/main at be990cc includes merged PR #3 and
+accepts the historical Study with low findings. Requirements and Architecture
+remain templates; there is no product executable. Its mandate explicitly rejects
+required PowerShell on Linux/macOS. The old Study's upstream assessment must be
+reconciled against the current Toolkit contract before using it as a current gap
+list. The new owner allocation keeps the engine in SDP rather than assigning a
+separate apply engine to gh-sdp. Coordinate that change in gh-sdp's governing
+records during its next authorized work item.
+
+Next scope: plan the Go engine migration and thin client as one runnable XFMD
+adoption workflow, using a disposable copy first. Keep release publication and
+live project mutation explicit. CardState remains backlog; the broader SDL pilot
+is still outstanding.
+
+2026-09-26T18:51:00Z: EVT-KB-SDP-000186. XA1-M2 records the owner-selected Go engine ownership and local extension execution; no implementation or installation claimed.
