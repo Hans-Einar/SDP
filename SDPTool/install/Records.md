@@ -51,3 +51,27 @@ from operation-owned temporary files. Backups are verified before each mutation.
 Apply may create parent directories; no recursive directory deletion is used.
 Project documents and unrelated executable source files are never treated as
 release-owned. No rollback or filesystem power-loss guarantee is advertised.
+
+## Distribution selection and development fixtures
+
+`--release PATH-OR-HTTPS-URL` selects an exact descriptor; `SDP_RELEASE` supplies
+that default for both entry points. There is no published stable catalog/default
+release yet. Detached signatures are JSON with keyId (SHA-256 of public key) and
+base64 signature. Production keys must ship in the reviewed bootstrap module;
+the initial key set is empty. `--test-key FILE` / `SDP_TEST_KEY` explicitly enables
+an Ed25519 public test key (base64 file), producing **test-signed** provenance,
+never signed production provenance. The saved proof stores this distinction.
+
+`--offline` / `SDP_OFFLINE=true` permits only verified cached distribution bytes.
+`SDP_CACHE_DIR` selects a private cache directory. Immutable selector entries bind
+an exact descriptor digest; a changed selector is an error, not silent latest
+selection. Engine inputs are reverified independently of client bootstrap.
+Saved apply/resume do not fetch or change input selection. Previous descriptors
+are recovered by receipt digest from the verified external cache; development
+operators can also supply `--previous-artifact` with explicit unreleased consent.
+
+Build the engine-neutral development fixture with `go run ./tools/profile`, using
+an explicit source commit, output path and packaged binary. profiles/five-phase.json
+selects reuse of **files only** from the retained Toolkit inventory. It does not
+reuse the PowerShell engine, prerequisites, legacy facts or implicit migrations.
+This builder refuses production release identities and does not sign/publish.

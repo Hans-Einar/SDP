@@ -62,3 +62,18 @@ jobs:
         env:
           SDP_TEST_PWSH: pwsh
         run: python Toolkit/conformance/install-v2/run_fault_matrix.py
+
+  go-installation-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.27.1"
+      - run: go -C SDPTool/bootstrap test -race -count=1 ./...
+      - run: go -C SDPTool test -race -count=1 ./...
+      - run: SDPTool/package.sh build/go-installer
+      - name: Signed test descriptor and actual packaged child
+        env:
+          SDP_TEST_BINARY: ${{ github.workspace }}/build/go-installer/sdptool
+        run: go -C SDPTool test ./install -run TestPackagedSignedInstall -count=1 -v

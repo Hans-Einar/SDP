@@ -18,3 +18,7 @@ the introducing commit binds that diff. Live XFMD remains untouched.
 ## GIP-2-M2
 
 2026-09-26T23:24:02Z. Process-exit fault matrix passes every preparation/backup/write/checkpoint/completion boundary for clean, known-upgrade and manual-adoption cases. Reserved finalization bytes/IDs and ledger prefixes remain stable; edited targets and legacy pending operations block. Full Go race suite passes (installation package 48.3 seconds). Model apply/recovery activities updated and review regenerated through SDL. No power-loss or rollback guarantee.
+
+## GIP-3-M1
+
+2026-09-26T23:31:03Z. Shared stdlib bootstrap verifies Ed25519 test descriptors, platform binary digest/size and advertised protocol, with private immutable cache and offline checks. Engine independently verifies signed input, records test-signed versus production provenance and resolves previous descriptors by digest. Go profile explicitly reuses files-only legacy inventory without PowerShell prerequisites. Packaged signed install passes; bootstrap race tests pass. No production keys, stable catalog or published release exists.

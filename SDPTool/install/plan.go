@@ -3,6 +3,7 @@ package install
 import (
 	"bytes"
 	"encoding/json"
+	"github.com/Hans-Einar/SDP/SDPTool/bootstrap"
 	"os"
 	"path/filepath"
 	"regexp"
@@ -35,7 +36,9 @@ func descriptor(in Input) (Descriptor, error) {
 		return d, fail("digest", 4, "input digest mismatch")
 	}
 	if in.Provenance != "local-development" {
-		return d, fail("trust", 4, "signed input resolver unavailable")
+		if e := bootstrap.Verify(in.Bytes, in.Signature, in.KeyID, in.Provenance); e != nil {
+			return d, fail("trust", 4, "%v", e)
+		}
 	}
 	if e := Decode(in.Bytes, MetadataLimit, &d); e != nil {
 		return d, e
@@ -52,6 +55,10 @@ func Preview(o Options) (Plan, error) {
 	if e != nil {
 		return p, e
 	}
+	return previewInput(o, root, r)
+}
+func previewInput(o Options, root string, r Input) (Plan, error) {
+	var p Plan
 	var old, adopt *Input
 	if o.PreviousArtifact != "" {
 		v, e := LocalInput(o.PreviousArtifact, o.AllowUnreleased)
@@ -67,6 +74,20 @@ func Preview(o Options) (Plan, error) {
 		}
 		v.Provenance = "adoption"
 		adopt = &v
+	}
+	if e := cacheInput(r); e != nil {
+		return p, e
+	}
+	if old == nil {
+		if b, e := Read(filepath.Join(root, ReceiptPath), MetadataLimit); e == nil {
+			var receipt Receipt
+			if Decode(b, MetadataLimit, &receipt) == nil && receipt.DescriptorDigest != r.SHA256 {
+				v, e := cachedInput(receipt.DescriptorDigest)
+				if e == nil {
+					old = &v
+				}
+			}
+		}
 	}
 	return Build(root, o.Operation, r, old, adopt)
 }

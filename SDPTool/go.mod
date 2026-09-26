@@ -13,3 +13,7 @@ require golang.org/x/text v0.42.0 // indirect
 replace github.com/Hans-Einar/SDP/SystemDesignLanguage/go => ../SDL/go
 
 replace github.com/Hans-Einar/SDP/SDUI/go => ../SDUI/go
+
+require github.com/Hans-Einar/SDP/SDPTool/bootstrap v0.0.0
+
+replace github.com/Hans-Einar/SDP/SDPTool/bootstrap => ./bootstrap

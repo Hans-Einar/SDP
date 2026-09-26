@@ -511,7 +511,7 @@ func ValidateDescriptor(d Descriptor) error {
 	return nil
 }
 func ValidateReceipt(r Receipt) error {
-	if r.SchemaVersion != ReceiptSchema || !identityRE.MatchString(r.Release) || !digestRE.MatchString(r.DescriptorDigest) || !operationRE.MatchString(r.OperationID) || r.ProcessProfile != "sdp-five-phase/0.1" || r.ManagementProfile != "sdp-project-management/0.2" || r.InstalledAt == "" || (r.Provenance != "local-development" && r.Provenance != "signed") {
+	if r.SchemaVersion != ReceiptSchema || !identityRE.MatchString(r.Release) || !digestRE.MatchString(r.DescriptorDigest) || !operationRE.MatchString(r.OperationID) || r.ProcessProfile != "sdp-five-phase/0.1" || r.ManagementProfile != "sdp-project-management/0.2" || r.InstalledAt == "" || (r.Provenance != "local-development" && r.Provenance != "signed" && r.Provenance != "test-signed") {
 		return fail("receipt", 2, "invalid installed receipt")
 	}
 	return nil

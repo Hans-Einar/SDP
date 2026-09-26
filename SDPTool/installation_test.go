@@ -91,7 +91,7 @@ func TestBuildVersionProtocol(t *testing.T) {
 	if result["operation"] != "version" || result["version"] != BuildVersion {
 		t.Fatal(result)
 	}
-	if len(result["installedFactSchemas"].([]any)) != 2 {
+	if len(result["installedFactSchemas"].([]any)) != 3 || result["installationProtocol"] != "sdp-install-command/1" {
 		t.Fatal(result)
 	}
 }
