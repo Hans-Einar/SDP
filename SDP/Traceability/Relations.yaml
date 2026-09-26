@@ -23,6 +23,11 @@ requirements:
     status: specified
     path: 02--Requirements/SDPTool.md
     design: DES-SDPTOOL-001
+  REQ-SDPTOOL-007:
+    status: specified
+    path: 02--Requirements/SDPTool.md
+    kanban: KB-SDP-033
+    note: Installation target selected; detailed design and implementation pending.
 designs:
   DES-SDPTOOL-001:
     status: initial-design

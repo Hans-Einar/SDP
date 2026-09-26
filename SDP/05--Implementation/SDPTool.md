@@ -2,7 +2,9 @@
 
 Owner direction: 2026-09-25. Primary: [KB-SDP-017](../KanBan/active/%23017--Proposal--sdptool-and-project-navigation.md).
 This is the single SDPTool feature plan in the shared SDP project. It was moved
-from Toolkit/SDPTool on owner instruction; implementation code remains there.
+from Toolkit/SDPTool on owner instruction; implementation code now lives in root
+SDPTool after [ST1](../Maintenance/ST1/Plan.md). Historical milestones retain
+their original paths and branch commitments.
 [Requirements](../02--Requirements/SDPTool.md), [architecture](../03--Architecture/SDPTool.md)
 and [detailed design](../04--Design/SDPTool.md) provide the design basis.
 
@@ -26,7 +28,8 @@ T3 data must support all model kinds the selected SDL profile actually exposes;
 future Stakeholder/UserStory or other candidates must not be advertised as current
 parser capabilities. Grouping a graph for navigation does not change its semantics.
 
-The general Toolkit audit (#018), time-axis graph (#003) and repository extraction
+The separate Toolkit audit (#018) was withdrawn on 2026-09-26. The time-axis
+graph (#003) and repository extraction
 do not block the first resolver/viewer delivery. Reuse existing KanBan versions
 explicitly and coordinate changes with #014 rather than inventing another contract.
 Neither a required daemon, startup compilation nor new language implementation is
@@ -84,7 +87,7 @@ existing branch for its own development session; no XFMD push is part of T0.
 ## T0-M2 — pipeline review and direct-preview capture
 
 Inspected the actual Go CLI/projector/documents code and XFMD invocation/file
-routing. Recorded the [pipeline guide](../../Toolkit/SDPTool/Navigation-and-Design-Preview.md), a proposed
+routing. Recorded the [pipeline guide](../../SDPTool/Navigation-and-Design-Preview.md), a proposed
 early producer slice, and XFMD-owned KB-XFMD-015. The guide records a successful
 installed-tool navigator and one-diagram SVG generation trial and its build-provenance
 limit. No source parser, renderer, runtime or native preview code was changed.
@@ -173,3 +176,13 @@ Published executable consumer fixtures/examples and completed producer review wi
 
 [Verification](../Verification/SDPTOOL-VER-T4-M1.md). Remaining milestones retain their existing status;
 this delivery is limited to the named milestone.
+
+## Owner-selected installation follow-up — 2026-09-26
+
+Root SDPTool owns future Go install/upgrade; gh-sdp will be a thin client.
+[REQ-SDPTOOL-007](../02--Requirements/SDPTool.md) and
+[KB-SDP-033](../KanBan/backlog/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md)
+retain this requirement. ST1 only moves the existing module and reconciles its
+consumers. Select a bounded implementation plan for the installation contract,
+Go migration, packaged client and disposable XFMD adoption before implementing
+that workflow. None of T0–T5 is retroactively credited with an installer.

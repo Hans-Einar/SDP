@@ -2,13 +2,13 @@
 
 This is the owner-selected home for `sdptool`, the project-aware entry point for
 SDP operations and selected SDL/SDUI services. Created on 2026-09-25. The directory
-and [implementation plan](../../SDP/05--Implementation/SDPTool.md) are delivered.
+and [implementation plan](../SDP/05--Implementation/SDPTool.md) are delivered.
 The Go executable supports saved design preview, project discovery and configured
 plan viewing, typed navigation data and SDUI structural Markdown previews.
 
 The active feature assignment is
-[KB-SDP-017](../../SDP/KanBan/active/%23017--Proposal--sdptool-and-project-navigation.md).
-The feature is designed in the [shared SDP process](../../SDP/README.md), using
+[KB-SDP-017](../SDP/KanBan/active/%23017--Proposal--sdptool-and-project-navigation.md).
+The feature is designed in the [shared SDP process](../SDP/README.md), using
 its five numbered phases and common Traceability/KanBan. Do not create a nested
 SDP directory here. Source code stays here; the single phase/milestone plan lives
 in SDP/05--Implementation.
@@ -44,15 +44,29 @@ model itself is a tree. Produce documents on selection, without pre-rendering th
 entire model. Exact wire format and command names remain to be specified.
 
 The native XFMD SDP tab, its KanBan / SDL / SDUI subtabs, widgets and interaction
-belong to [KB-XFMD-014](../../../xfmd-sdl-navigation/SDP/Agents/KanBan/backlog/%23014--Proposal--SDP-sidebar-and-generated-navigation.md)
-in XFMD's own `Agents/KanBan`. No XFMD implementation is done from this workstream.
-XFMD does not adopt SDP's project-development process or gain an SDP directory.
+belong to [KB-XFMD-014](../../xfmd-sdl-navigation/SDP/Agents/KanBan/backlog/%23014--Proposal--SDP-sidebar-and-generated-navigation.md)
+in XFMD's own process board (the linked bootstrap path is historical). No XFMD implementation is done from this workstream.
+XFMD has its own SDP bootstrap; adoption and application implementation remain
+owned by its workstream.
 SDPTool provides the reusable producer services; XFMD supplies a native consumer.
 
-The broader [Toolkit audit](../../SDP/KanBan/backlog/%23018--Study--Toolkit-audit-and-organization.md)
-is separate. Creating this directory changes neither installation inventory nor
-published Toolkit versions. Existing installers, schemas and language tools keep
-their current responsibilities until an explicit migration is delivered.
+## Installation ownership — owner decision 2026-09-26
+
+Root SDPTool is the common Go entry point for SDP commands, including the future
+install/upgrade engine. gh-sdp will be a thin distribution/invocation client for
+SDPTool, not another migration engine. No separate Toolkit Go product is planned.
+
+**Current status:** install/upgrade execution is not implemented here.
+installation.go validates declared facts and reads incomplete-operation journals;
+it is not an installer. The retained PowerShell engine is documented in the
+[legacy/transition Toolkit](../Toolkit/README.md). Its schemas, payload and fixtures
+are still used and will be migrated deliberately, with preserved behavior.
+
+[ST1](../SDP/Maintenance/ST1/Plan.md) records the relocation.
+[KB-SDP-033](../SDP/KanBan/backlog/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md)
+retains the Go installation/XFMD adoption workflow. KB-SDP-018's separate Toolkit
+audit has been withdrawn. CLI commands remain limited to those listed below;
+this ownership decision adds no implemented command or release capability.
 
 ## Implemented saved-file preview — P0-M1
 
@@ -61,7 +75,7 @@ from this directory, then use the prebuilt executable for document requests:
 
 ```sh
 go build -o /desired/bin/sdptool ./cmd/sdptool
-sdptool preview ../../SDP/03--Architecture/SDPTool.design --output /tmp/design-preview
+sdptool preview ../SDP/03--Architecture/SDPTool.design --output /tmp/design-preview
 ```
 
 The local module replacements locate existing SDL/SDUI libraries in this checkout;

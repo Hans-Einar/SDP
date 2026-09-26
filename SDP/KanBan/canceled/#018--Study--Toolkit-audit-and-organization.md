@@ -5,15 +5,25 @@
 | id | KB-SDP-018 |
 | project | SDP |
 | type | Study |
-| CardState | backlog |
+| CardState | canceled |
 | ScrumId | SCRUM-SDP-0002 |
 | Systems | SDP |
 | created | 2026-09-25T09:09:52Z |
 | source | Owner conversation 2026-09-25: SDPTool location and future Toolkit review |
-| next_review | Before broader Toolkit restructuring or distribution changes |
+| next_review | None; withdrawn by owner |
 | tags | toolkit, maintenance, ownership, distribution |
 
-## Need and scope
+## Disposition — withdrawn by owner, 2026-09-26
+
+The owner withdrew the separate Toolkit workstream. Root SDPTool is the common
+Go command entry point and owns future installation/upgrade execution; gh-sdp is
+a thin client. [MAINT-SDP-0006](../../Maintenance/ST1/Plan.md) performs the root
+relocation and records retained Toolkit dependencies. [KB-SDP-033](../backlog/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md)
+retains the concrete installation/adoption outcome. This audit was canceled,
+not completed; no comprehensive Toolkit audit is claimed. Historical scope below
+explains the withdrawal and must not be used to start another Toolkit engine.
+
+## Historical proposed scope (withdrawn)
 
 Perform a thorough review of Toolkit's current organization, supported tools,
 contracts and documentation. The new owner-selected `Toolkit/SDPTool/` home must
@@ -36,7 +46,7 @@ consumers, approved project data, append-only ledgers and historical evidence.
 
 - [KB-SDP-017](../active/%23017--Proposal--sdptool-and-project-navigation.md) owns sdptool;
   this audit does not block its bounded discovery/viewer implementation.
-- [KB-SDP-014](%23014--Proposal--KanBan-version-contract-and-distribution.md) owns
+- [KB-SDP-014](../backlog/%23014--Proposal--KanBan-version-contract-and-distribution.md) owns
   KanBan compatibility/distribution; coordinate its canonical/distributed paths.
 - [KB-SDP-011](../completed/%23011--Bug--Traceability-id-conformance.md) owns the known ID/CI
   mismatch; record it as a baseline, not proof that reorganization fixed it.
@@ -92,3 +102,5 @@ Reuse its current ownership map and evidence. The broad Toolkit audit still owns
 other modules, packaging and organization; it need not repeat this delivered work.
 
 2026-09-25T14:48:15Z — EVT-KB-SDP-000162.
+
+2026-09-26T19:03:42Z: EVT-KB-SDP-000187. Owner withdraws separate Toolkit audit; root SDPTool owns future Go installation. Cancel unexecuted audit, retain historical evidence and concrete adoption in KB-SDP-033.

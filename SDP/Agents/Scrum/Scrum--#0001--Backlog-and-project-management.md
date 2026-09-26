@@ -38,7 +38,7 @@ lineage KBO-SDP-000003. Its responsibilities remain fully assigned.
 | [KB-SDL-005](../../KanBan/backlog/%23005--SDL--Change--System-and-source-sets.md) | queued | Next proposed implementation after maintenance |
 | [KB-SDP-011](../../KanBan/completed/%23011--Bug--Traceability-id-conformance.md) | backlog | Keep bounded scope; reviewed dependencies and acceptance |
 | [KB-SDP-014](../../KanBan/backlog/%23014--Proposal--KanBan-version-contract-and-distribution.md) | backlog | Keep bounded scope; reviewed dependencies and acceptance |
-| [KB-SDP-018](../../KanBan/backlog/%23018--Study--Toolkit-audit-and-organization.md) | backlog | Keep bounded scope; reviewed dependencies and acceptance |
+| [KB-SDP-018](../../KanBan/canceled/%23018--Study--Toolkit-audit-and-organization.md) | backlog | Keep bounded scope; reviewed dependencies and acceptance |
 | [KB-SDP-020](../../KanBan/backlog/%23020--Change--Shared-design-source-organization.md) | backlog | Keep bounded scope; reviewed dependencies and acceptance |
 | [KB-SDP-001](../../KanBan/completed/%23001--Proposal--Project-structure.md) | completed | Preserve completed or superseded history |
 | [KB-SDUI-001](../../KanBan/completed/%23001--SDUI--Ref--SDP--017--sdptool.md) | completed | Routing consequence transferred to its primary; no product completion claimed |

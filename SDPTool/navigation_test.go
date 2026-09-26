@@ -10,7 +10,7 @@ import (
 )
 
 func TestLocalBoardInventory(t *testing.T) {
-	p, e := Discover("../..")
+	p, e := Discover("..")
 	if e != nil {
 		t.Fatal(e)
 	}

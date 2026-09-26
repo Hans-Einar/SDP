@@ -18,11 +18,11 @@ read the current contract for executable signatures and supported capabilities.
 
 | Component | Current role |
 | --- | --- |
-| [sdl-design](../../SDL/scripts/sdl-design) | Bash launcher using prebuilt sdl, mmdr and XFMD; defaults to the SDUI architecture model and fixes project registration to sdui |
-| [sdl CLI](../../SDL/go/cmd/sdl/views.go) | Go commands: viewpoints builds navigator/static exports; view generates a selected bundle |
-| [parser and viewpoint](../../SDL/go/viewpoint/model.go) | Go validation, model facts, typed diagrams and Mermaid projection |
-| [documents](../../SDL/go/documents/bundle.go) | Go Markdown/resource bundles, source revision, manifests and publication |
-| [render adapter](../../SDL/go/documents/geometry.go) | Calls Rust mmdr; uses its layout dump for flowcharts and adds SDL symbols/arrows in Go; other diagram kinds use mmdr SVG |
+| [sdl-design](../SDL/scripts/sdl-design) | Bash launcher using prebuilt sdl, mmdr and XFMD; defaults to the SDUI architecture model and fixes project registration to sdui |
+| [sdl CLI](../SDL/go/cmd/sdl/views.go) | Go commands: viewpoints builds navigator/static exports; view generates a selected bundle |
+| [parser and viewpoint](../SDL/go/viewpoint/model.go) | Go validation, model facts, typed diagrams and Mermaid projection |
+| [documents](../SDL/go/documents/bundle.go) | Go Markdown/resource bundles, source revision, manifests and publication |
+| [render adapter](../SDL/go/documents/geometry.go) | Calls Rust mmdr; uses its layout dump for flowcharts and adds SDL symbols/arrows in Go; other diagram kinds use mmdr SVG |
 | XFMD DocumentViews | Registered URI handling, child processes, main/navigation panes and resource lifetime; no SDL parser |
 | sdptool | Go preview, discovery, viewer and navigation facade; see [current contract](Contract.md) |
 
@@ -83,7 +83,7 @@ support; filename alone does not identify all supported language profiles.
 
 There is an important presentation distinction: flowchart Mermaid text does not
 encode every SDL symbol. Current SVG output uses mmdr geometry plus
-[Go SDL symbol drawing](../../SDL/go/documents/symbols.go), including actor,
+[Go SDL symbol drawing](../SDL/go/documents/symbols.go), including actor,
 use-case, feature and container shapes. Giving only Mermaid to another renderer
 may not preserve that appearance. Reuse the complete document pipeline for the
 first preview; Mermaid remains an available export/intermediate representation.

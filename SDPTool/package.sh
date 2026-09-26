@@ -23,7 +23,7 @@ if [[ -n "$(git -C "$sdp_package_module" status --porcelain 2>/dev/null)" ]]; th
 fi
 (
     cd -- "$sdp_package_module"
-    GOTOOLCHAIN=local "$sdp_package_go" build -trimpath -mod=readonly         -ldflags "-X github.com/Hans-Einar/SDP/Toolkit/SDPTool.BuildRevision=$sdp_package_revision"         -o "$sdp_package_temp/sdptool" ./cmd/sdptool
+    GOTOOLCHAIN=local "$sdp_package_go" build -trimpath -mod=readonly         -ldflags "-X github.com/Hans-Einar/SDP/SDPTool.BuildRevision=$sdp_package_revision"         -o "$sdp_package_temp/sdptool" ./cmd/sdptool
 )
 "$sdp_package_temp/sdptool" --version > "$sdp_package_temp/sdptool.manifest.json"
 (

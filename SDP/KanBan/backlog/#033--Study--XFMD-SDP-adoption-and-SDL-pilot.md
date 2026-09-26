@@ -46,7 +46,7 @@ perform live migration or product changes during this intake or main merge.
 Depends on main consolidation and coordinates with
 [KB-SDP-031](../completed/%23031--Study--SDL-assignment-bundles-and-blueprints.md),
 [KB-SDP-032](%23032--Study--Viewpoint-navigation-feedback.md) and
-[KB-SDP-018](%23018--Study--Toolkit-audit-and-organization.md).
+[KB-SDP-018](../canceled/%23018--Study--Toolkit-audit-and-organization.md).
 
 ## Worklog
 
@@ -132,7 +132,7 @@ are clarified; this is a preflight observation, not completion of the card's wid
 SDL-modeling pilot.
 
 
-## Owner decision: Go Toolkit and a thin gh-sdp client — 2026-09-26
+## Earlier Go-engine allocation — superseded by SDPTool clarification below
 
 The owner selects a compiled Go installation engine owned by the SDP repository.
 gh-sdp should be a thin client for accessing that engine without a separate manual
@@ -178,3 +178,29 @@ live project mutation explicit. CardState remains backlog; the broader SDL pilot
 is still outstanding.
 
 2026-09-26T18:51:00Z: EVT-KB-SDP-000186. XA1-M2 records the owner-selected Go engine ownership and local extension execution; no implementation or installation claimed.
+
+2026-09-26T19:03:42Z: EVT-KB-SDP-000188. Owner clarifies existing SDPTool owns installation and all common commands; withdraw separate Toolkit-engine direction. Preserve XFMD adoption and SDL pilot; root relocation tracked by MAINT-SDP-0006.
+
+## Current owner direction: reuse root SDPTool
+
+The owner identifies the existing Go SDPTool as the common entry point for all
+SDP commands. Its new source home is [SDPTool](../../../SDPTool/README.md).
+Installation/upgrade is a responsibility to implement inside that existing
+system, not a new Toolkit executable or a gh-sdp apply engine. gh-sdp should
+retrieve/invoke SDPTool as a thin client. The preceding standalone-Toolkit binary
+recommendation is withdrawn; its release identity, integrity, preservation and
+manual-baseline requirements still apply to SDPTool distribution and execution.
+
+SDPTool currently reads installation facts/journals but does not implement
+install/upgrade. Existing PowerShell behavior, schemas and fixtures remain in the
+legacy/transition Toolkit until the Go migration is verified. The current
+[SDPTool requirements](../../02--Requirements/SDPTool.md) distinguish that target
+from implemented discovery/preview/navigation. [MAINT-SDP-0006](../../Maintenance/ST1/Plan.md)
+only relocates source and reconciles responsibilities. Completed KB-SDP-028 and its
+Maintenance evidence remain historical deliveries; they are not retroactively
+canceled. The separate KB-SDP-018 audit is canceled at the owner's request.
+
+Next selected implementation plan must implement the bounded workflow
+`gh sdp upgrade --manifest xfmd-upgrade.yaml` through SDPTool on a disposable XFMD
+copy before any live adoption. Detailed CLI/manifest/protocol design and release
+publication remain outstanding. No new executable is delivered by this card update.

@@ -38,7 +38,7 @@ is complete. This planning milestone changes no installer or consuming project.
 | [Migration guide](../../../Toolkit/docs/Installer-Migration.md) | Current missing-manifest behavior treats it as pre-versioning; does not establish an observed process version; no complete transactional rollback guarantee |
 | [Installed facts schema](../../../Toolkit/schemas/installed-toolkit-manifest.schema.json) | Strict 1.0 schema has Toolkit/Framework/AGENTS/installer/skills/capabilities but no process profile or configuration identity |
 | [Project manifest](../../../Toolkit/docs/Project-Manifest.md) | Project-owned identity/release/work facts and pointer to installed facts; preserve it |
-| [SDPTool contract](../../../Toolkit/SDPTool/Contract.md) | navigation.json declares bindings and navigation eligibility, not installation conformance; readers currently support their declared schemas |
+| [SDPTool contract](../../../SDPTool/Contract.md) | navigation.json declares bindings and navigation eligibility, not installation conformance; readers currently support their declared schemas |
 | [Management contract](../../ProjectManagement/README.md) | Management events and reports belong here; system design/code verification remains in Traceability |
 
 SK1 installed all thirteen canonical skills and their references without moving
@@ -188,7 +188,7 @@ supported or a Toolkit release has been published.
 Reuse SK1 and the existing install-v1 conformance suite. Coordinate
 [KB-SDP-014](../../KanBan/backlog/%23014--Proposal--KanBan-version-contract-and-distribution.md)
 for minimum distributable management compatibility; keep its independent-consumer
-packaging/publication scope open. [KB-SDP-018](../../KanBan/backlog/%23018--Study--Toolkit-audit-and-organization.md)
+packaging/publication scope open. [KB-SDP-018](../../KanBan/canceled/%23018--Study--Toolkit-audit-and-organization.md)
 retains the broad Toolkit audit. KB-SDL-005/KB-SDP-020 own language/source-set
 semantics and shared model splitting; installer work must not bypass them.
 No graphical history, implementation-plan synthesis or native XFMD integration

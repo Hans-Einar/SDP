@@ -22,7 +22,7 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 	}
 
 	if len(args) == 1 && (args[0] == "--help" || args[0] == "help") {
-		_, e := io.WriteString(out, "Usage: sdptool [PROJECT-OR-SDP-AREA] discover|tree|select|view ip|sdui-preview [options]\n       sdptool preview FILE --output DIRECTORY [--renderer PROGRAM]\nSee Toolkit/SDPTool/Contract.md for source, model, revision and resource contracts.\n")
+		_, e := io.WriteString(out, "Usage: sdptool [PROJECT-OR-SDP-AREA] discover|tree|select|view ip|sdui-preview [options]\n       sdptool preview FILE --output DIRECTORY [--renderer PROGRAM]\nSee SDPTool/Contract.md for source, model, revision and resource contracts.\n")
 		if e != nil {
 			return report(errs, e)
 		}

@@ -37,7 +37,7 @@ def check(label,cwd,source):
     return {'case':label,'count':len(skills),'names':EXPECTED,'duplicates':False,'allEnabled':True,'sourcePathsMatch':True}
 
 def git(repo,*args):return subprocess.run(['git',*args],cwd=repo,check=True,capture_output=True)
-results=[check('project-root',ROOT,ROOT/'Skills'),check('nested-cwd',ROOT/'Toolkit/SDPTool',ROOT/'Skills')]
+results=[check('project-root',ROOT,ROOT/'Skills'),check('nested-cwd',ROOT/'SDPTool',ROOT/'Skills')]
 with tempfile.TemporaryDirectory(prefix='sk1-catalog-') as d:
     d=pathlib.Path(d);repo=d/'repository';repo.mkdir();git(repo,'init','-q')
     shutil.copytree(ROOT/'Skills',repo/'Skills');a=repo/'.agents/skills';a.mkdir(parents=True)

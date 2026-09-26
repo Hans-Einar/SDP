@@ -27,7 +27,7 @@
 | KB-SDP-015 | Change | completed | [CardState and scoped shell commands](completed/%23015--Change--CardState-and-shell-cli.md) |
 | KB-SDP-016 | Proposal | superseded | [Define SDP discovery, version and viewer capability metadata](superseded/%23016--Proposal--SDP-discovery-and-viewer-capabilities.md) |
 | KB-SDP-017 | Proposal | active | [sdptool and integrated project navigation](active/%23017--Proposal--sdptool-and-project-navigation.md) |
-| KB-SDP-018 | Study | backlog | [Audit Toolkit responsibilities, organization and distribution](backlog/%23018--Study--Toolkit-audit-and-organization.md) |
+| KB-SDP-018 | Study | canceled | [Audit Toolkit responsibilities, organization and distribution](canceled/%23018--Study--Toolkit-audit-and-organization.md) |
 | KB-SDP-019 | Ref | completed | [KB-SDP-019 — Shared process adoption for SDL and SDUI](completed/%23019--Ref--SDL--004--Language-source-organization.md) |
 | KB-SDP-020 | Change | backlog | [Organize shared system design sources by phase](backlog/%23020--Change--Shared-design-source-organization.md) |
 | KB-SDUI-001 | Ref | completed | [SDUI as a subproject and library for SDP tools](completed/%23001--SDUI--Ref--SDP--017--sdptool.md) |

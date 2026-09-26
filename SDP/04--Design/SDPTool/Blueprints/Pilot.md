@@ -32,7 +32,7 @@ facts, not a generated Go call graph or proof that each planned responsibility h
 an implementation. UnsavedSourcePreview depends on SavedFilePreview and remains
 planned; the target does not change that status.
 
-Protected context comes from the [producer contract](../../../../Toolkit/SDPTool/Contract.md)
+Protected context comes from the [producer contract](../../../../SDPTool/Contract.md)
 and [requirements](../../../02--Requirements/SDPTool.md):
 
 - Parse and validate the complete snapshot through SDL; no second parser.
@@ -48,10 +48,10 @@ and [requirements](../../../02--Requirements/SDPTool.md):
 
 ## Observed code and write-scope proposal
 
-| Design responsibility | Observed implementation at baseline | Proposed treatment |
+| Design responsibility | Observed implementation (paths updated by ST1 relocation) | Proposed treatment |
 | --- | --- | --- |
-| Saved source validation and bundle creation | Toolkit/SDPTool/preview.go: Preview, loadModel, readSource | Reuse and separate snapshot input from saved-file acquisition; exact API is still to design |
-| Project selection | Toolkit/SDPTool/selection.go: SelectProject | Keep explicit registration and expected revision; no parent/project inference |
+| Saved source validation and bundle creation | SDPTool/preview.go: Preview, loadModel, readSource | Reuse and separate snapshot input from saved-file acquisition; exact API is still to design |
+| Project selection | SDPTool/selection.go: SelectProject | Keep explicit registration and expected revision; no parent/project inference |
 | Language and projections | SDL/go/parser, SDL/go/viewpoint, SDL/go/documents | Dependencies; no parser/projection semantics change in this example |
 | Host request ordering and window behavior | Consumer contract, XFMD-owned implementation | Protected neighboring boundary; no XFMD edits in SDP assignment |
 | Design-to-code mapping | This inspected table | Authored observation, not an SDL fact or a stable mapping schema |
@@ -132,7 +132,7 @@ From repository root, with a Go toolchain supporting the module's declared versi
 
 ```sh
 python3 SDP/04--Design/SDPTool/Blueprints/probe.py --go /path/to/go --output /tmp/bp1-fresh-output
-cd Toolkit/SDPTool
+cd SDPTool
 go test ./... -run 'TestPreviewFreshSourceAndPreservation|TestFailedRefreshKeepsPreviousBundle|TestRelationshipReferencesAndSelectionRevision' -count=1
 ```
 

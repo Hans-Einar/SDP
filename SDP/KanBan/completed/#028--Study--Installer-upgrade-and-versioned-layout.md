@@ -67,7 +67,7 @@ migration requires its own selected work; this card does not perform one.
 
 The later owner decision below selects a direct Maintenance plan without Scrum. Coordinate
 [KB-SDP-027](../completed/%23027--Study--Skills-review-and-project-activation.md) for skills and
-[KB-SDP-018](../backlog/%23018--Study--Toolkit-audit-and-organization.md) for broader Toolkit
+[KB-SDP-018](../canceled/%23018--Study--Toolkit-audit-and-organization.md) for broader Toolkit
 ownership. Extend existing mechanisms and conformance tests rather than replacing
 them merely because process folders changed.
 

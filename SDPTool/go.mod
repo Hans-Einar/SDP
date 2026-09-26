@@ -1,4 +1,4 @@
-module github.com/Hans-Einar/SDP/Toolkit/SDPTool
+module github.com/Hans-Einar/SDP/SDPTool
 
 go 1.26.0
 
@@ -10,6 +10,6 @@ require (
 
 require golang.org/x/text v0.42.0 // indirect
 
-replace github.com/Hans-Einar/SDP/SystemDesignLanguage/go => ../../SDL/go
+replace github.com/Hans-Einar/SDP/SystemDesignLanguage/go => ../SDL/go
 
-replace github.com/Hans-Einar/SDP/SDUI/go => ../../SDUI/go
+replace github.com/Hans-Einar/SDP/SDUI/go => ../SDUI/go

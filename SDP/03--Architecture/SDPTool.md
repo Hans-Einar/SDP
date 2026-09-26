@@ -32,6 +32,23 @@ architecture integrates these facts; it is not a claim that every fact is A2/A3.
 Current SDL has no cross-file imports. Do not maintain parallel model copies
 in Requirements, Design and Implementation. Detailed A4 protocols remain open.
 
-Every Activity remains planned. SDPTool interfaces describe required collaboration
+Activity implementation-status values in the SDL model distinguish delivered and
+planned work; they are not proof of native XFMD acceptance. SDPTool interfaces describe required collaboration
 boundaries, not implemented signatures. Native XFMD work remains external; no
 functionality in this model owns its widget implementation.
+
+## Installation ownership — selected target, 2026-09-26
+
+SDPTool is the common Go command entry point at root SDPTool/. It also owns future
+installation planning, validation, migration, backup/recovery and installed facts.
+gh-sdp is a thin distribution/invocation client; it must not duplicate migration
+policy. No separate Toolkit Go runtime is selected. The legacy PowerShell engine
+and reusable contracts remain in Toolkit until a verified Go migration replaces
+it. Existing installation.go is a facts/journal reader, not an apply engine.
+
+[REQ-SDPTOOL-007](../02--Requirements/SDPTool.md) records the target outcome.
+The concrete installation units/protocol and additions to the SDL model remain
+future design; the current model describes the earlier navigation/preview scope.
+[ST1](../Maintenance/ST1/Plan.md) changes source location without claiming a new
+command. [KB-SDP-033](../KanBan/backlog/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md)
+retains the executable adoption workflow and thin-client coordination.

@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	tool "github.com/Hans-Einar/SDP/Toolkit/SDPTool"
+	tool "github.com/Hans-Einar/SDP/SDPTool"
 	"os"
 	"os/signal"
 )
