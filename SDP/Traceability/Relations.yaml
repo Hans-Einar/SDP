@@ -324,12 +324,12 @@ verification:
     corpusDigest: e346fc230b26c3045305c1ffee22ff43edfc61aa99597005134a314b210b8114
 migrations: {}
 releases:
-  REL-0.2.2:
-    version: "0.2.2"
+  REL-1.0.0:
+    version: "1.0.0"
     state: prerelease
     releaseNotes: RELEASE-NOTES.md
     manifest: SDP.manifest.yaml
-    releaseRecord: Releases/REL-0.2.2.yaml
+    releaseRecord: Releases/REL-1.0.0.yaml
     verification: [SDP-VER-TS1]
     reviews: []
     releaseCommit: null

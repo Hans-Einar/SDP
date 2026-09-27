@@ -12,8 +12,8 @@ installation seeds.
 
 ## Distribution and upgrades
 
-[Toolkit/profiles/five-phase.json](../Toolkit/profiles/five-phase.json) is the
-explicit current inventory. The Go descriptor builder uses its files only and
+[SDPTool/profiles/payload.json](../SDPTool/profiles/payload.json) is the
+explicit current inventory. The Go descriptor builder validates it and
 freezes the selected bytes into a release descriptor. Adding a file here without
 an inventory entry does not distribute it. The profile identifier and configuration
 filenames remain stable; relocating authoring templates does not migrate consumers.
@@ -26,7 +26,7 @@ project prose. Reconcile local documentation explicitly when adopting newer rule
 ## Legacy
 
 [legacy/install-v1](legacy/install-v1/README.md) retains both old template roots
-for the legacy installation contract and compatibility checks. It is not an
-alternative recommendation for new projects. That inventory now points to the
-archive, while the current inventory points only to sdp-root. Historical evidence
+as historical data for the legacy installation contract. It is not an
+alternative recommendation for new projects. The retired contract points to the
+archive; the current Go inventory points only to sdp-root. Historical evidence
 and already published release bytes remain unchanged.

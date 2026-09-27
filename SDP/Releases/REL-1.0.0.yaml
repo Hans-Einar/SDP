@@ -1,6 +1,6 @@
 schemaVersion: "1.0"
-releaseId: REL-0.2.2
-version: "0.2.2"
+releaseId: REL-1.0.0
+version: "1.0.0"
 state: prerelease
 releaseNotesPath: RELEASE-NOTES.md
 includedCapabilities:

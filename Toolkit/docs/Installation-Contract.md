@@ -1,5 +1,10 @@
 # Installation Contract — retained install-v1
 
+Historical install-v1 data contract: the reference engine and executable runner
+are retired. This page preserves interpretation of old records, not current
+installation instructions. Use [SDPTool records](../../SDPTool/install/Records.md)
+and [current validation](Validation.md).
+
 For current five-phase installation and upgrades, see
 [Process Installation 2.0](Process-Installation.md). This document remains the
 unchanged inventory/behavior authority for calls without -ProfileArtifact and

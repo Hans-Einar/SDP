@@ -42,8 +42,8 @@ The working tree contains unrelated untracked SDL/go/sourceinput; preserve it.
 | XFMD | Prior preflight observed a manual five-phase bootstrap with unknown installed version | Refresh exact worktree facts before a future adoption trial; the dated snapshot is not a standard release |
 
 Inputs: [process installation contract](../../../../Toolkit/docs/Process-Installation.md),
-[profile source](../../../../Toolkit/profiles/five-phase.json),
-[profile artifact](../../../../Toolkit/profiles/five-phase.artifact.json),
+[profile source](https://github.com/Hans-Einar/SDP/blob/56919a19edcbd6e672c8a26661d87d16828be4f8/Toolkit/profiles/five-phase.json),
+[profile artifact](https://github.com/Hans-Einar/SDP/blob/56919a19edcbd6e672c8a26661d87d16828be4f8/Toolkit/profiles/five-phase.artifact.json),
 [conformance](../../../../Toolkit/conformance/install-v2/README.md), and the dated
 observations in KB-SDP-033. Reconcile the old gh-sdp Study against these inputs;
 its previous recommendation of a client-owned apply engine is superseded.

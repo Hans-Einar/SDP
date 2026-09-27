@@ -1836,7 +1836,6 @@ def validate_installation_contract(
     toolkit_manifest: dict[str, Any],
     *,
     contract_data: Any | None = None,
-    check_installer_integration: bool = True,
 ) -> list[str]:
     """Validate the portable install manifest plus deterministic source inventory."""
 
@@ -2148,11 +2147,6 @@ def validate_installation_contract(
         except UnicodeError as exc:
             errors.append(f"Cannot read neutral project template {relative}: {exc}")
 
-    installer_path = repo / "Toolkit/scripts/Install-SDP.ps1"
-    if check_installer_integration and installer_path.is_file():
-        installer_text = installer_path.read_text(encoding="utf-8")
-        if "SDP-install.manifest.json" not in installer_text:
-            errors.append("PowerShell installer does not reference the canonical installation manifest")
     return errors
 
 

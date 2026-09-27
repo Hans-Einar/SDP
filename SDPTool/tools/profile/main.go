@@ -3,7 +3,6 @@
 package main
 
 import (
-	"encoding/json"
 	"flag"
 	"fmt"
 	"github.com/Hans-Einar/SDP/SDPTool/install"
@@ -57,7 +56,6 @@ func build(repo, output, commit, release, binary string) error {
 	var config struct {
 		SchemaVersion     string   `json:"schemaVersion"`
 		InventorySource   string   `json:"inventorySource"`
-		Reuse             string   `json:"reuse"`
 		Protocol          string   `json:"protocol"`
 		ProcessProfile    string   `json:"processProfile"`
 		ManagementProfile string   `json:"managementProfile"`
@@ -71,7 +69,7 @@ func build(repo, output, commit, release, binary string) error {
 	if e = install.Decode(b, install.MetadataLimit, &config); e != nil {
 		return e
 	}
-	if config.SchemaVersion != "sdp-go-profile/1" || config.Reuse != "files-only" {
+	if config.SchemaVersion != "sdp-go-profile/1" {
 		return fmt.Errorf("unsupported authoring profile")
 	}
 	if e = install.Relative(config.InventorySource); e != nil {
@@ -82,14 +80,18 @@ func build(repo, output, commit, release, binary string) error {
 		return e
 	}
 	var source struct {
-		Files []struct {
-			Source      string
-			Destination string
-			Ownership   string
-		}
+		SchemaVersion string `json:"schemaVersion"`
+		Files         []struct {
+			Source      string `json:"source"`
+			Destination string `json:"destination"`
+			Ownership   string `json:"ownership"`
+		} `json:"files"`
 	}
-	if e = json.Unmarshal(b, &source); e != nil {
+	if e = install.Decode(b, install.MetadataLimit, &source); e != nil {
 		return e
+	}
+	if source.SchemaVersion != "sdp-payload-inventory/1" {
+		return fmt.Errorf("unsupported payload inventory")
 	}
 	d := install.Descriptor{SchemaVersion: install.ReleaseSchema, Release: release, SourceCommit: commit, Protocol: config.Protocol, ProcessProfile: config.ProcessProfile, ManagementProfile: config.ManagementProfile, Capabilities: config.Capabilities, Files: []install.File{}, Retired: []string{}, UpgradesFrom: []string{}, Binaries: []install.Asset{}}
 	d.UpgradesFrom = append(d.UpgradesFrom, config.UpgradesFrom...)

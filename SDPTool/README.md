@@ -55,7 +55,7 @@ SDPTool provides the reusable producer services; XFMD supplies a native consumer
 Root SDPTool is the common Go entry point, including installation planning,
 apply and forward recovery. gh-sdp is a thin client that verifies/caches the
 prebuilt executable and delegates the argument vector. No separate Toolkit Go
-product or PowerShell runtime is needed on this path.
+product or retired shell runtime is needed on this path.
 
 [Installation records](install/Records.md) define the implemented protocol.
 [PLAN-SDP-0003](../SDP/05--Implementation/SDPTool/Installation/Plan.md) and its
@@ -63,8 +63,9 @@ product or PowerShell runtime is needed on this path.
 Linux verification, signed test fixtures and disposable XFMD adoption.
 The RP1 release selects v0.2.0 and a production signing key. Native Windows/macOS
 acceptance remains outstanding. Live adoption evidence is recorded in RP1.
-The [legacy Toolkit](../Toolkit/README.md) retains old-engine recovery, schemas,
-payload sources and comparison fixtures; it is not the new user's execution path.
+The [shared Toolkit data](../Toolkit/README.md) retains schemas, managed payload
+and historical contract fixtures. The old executable installer/recovery path is
+removed. Current installation and recovery use only the Go engine.
 
 The [SDL-generated review](../SDP/04--Design/SDPTool/Installation/review/index.md)
 reflects implemented activities. Runtime evidence remains separately linked;
@@ -117,7 +118,7 @@ producer boundary available to XFMD and other hosts.
 ## Installation and upgrade
 
 The installation engine now owns read-only previews, saved-plan apply and forward
-recovery. It uses no PowerShell. Existing navigation/preview commands remain intact.
+recovery. It uses no retired shell. Existing navigation/preview commands remain intact.
 See [installation records and usage](install/Records.md) and the
 [GIP implementation plan](../SDP/05--Implementation/SDPTool/Installation/Plan.md).
 

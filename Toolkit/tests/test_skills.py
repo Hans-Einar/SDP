@@ -9,13 +9,13 @@ v=importlib.util.module_from_spec(spec);sys.modules[spec.name]=v;spec.loader.exe
 class Skills(unittest.TestCase):
     def test_canonical_inventory_and_portable_references(self):
         manifest=yaml.safe_load((ROOT/'SDP.manifest.yaml').read_text())
-        contract=json.loads((ROOT/'Toolkit/SDP-install.manifest.json').read_text())
+        contract=json.loads((ROOT/'SDPTool/profiles/payload.json').read_text())
         roles=list((ROOT/'Skills').glob('*/SKILL.md'))
         self.assertEqual(len(roles),14)
         self.assertEqual({p.parent.name for p in roles},set(manifest['skills']))
         with tempfile.TemporaryDirectory() as t:
             installed=Path(t)
-            for e in contract['entries']:
+            for e in contract['files']:
                 if e.get('source','').startswith('Skills/'):
                     p=installed/e['destination'];p.parent.mkdir(parents=True,exist_ok=True)
                     p.write_bytes((ROOT/e['source']).read_bytes())

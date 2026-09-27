@@ -5,8 +5,8 @@ AGENTS-Contract-Version: 2.0.0
 
 This directory is Toolkit-managed. A conforming installer refreshes only the
 selected release inventory and backs up changed managed files according to
-the installation protocol. Current Go releases use signed descriptors; the
-retained install-v1 interface uses Toolkit/SDP-install.manifest.json.
+the installation protocol. Current releases use signed Go descriptors. Historical install-v1 records do
+not select payloads or provide an alternate execution path.
 
 Project-specific Mandate, Study, Requirements, Architecture, Design,
 Implementation, Sprints, Refactors, Fixes, review, verification, release notes

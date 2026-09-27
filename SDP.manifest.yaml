@@ -1,11 +1,11 @@
 schemaVersion: "1.0"
 toolkit:
-  version: "0.2.2"
+  version: "1.0.0"
   releaseState: prerelease
-  releaseTargetVersion: "0.2.2"
+  releaseTargetVersion: "1.0.0"
   releaseDate: "2026-09-28"
   minimumInstallerVersion: "0.2.0"
-  compatibilityRange: ">=0.1.0 <1.0.0"
+  compatibilityRange: ">=0.2.0 <2.0.0"
   gitTag: null
   releaseCommit: null
 framework:

@@ -1,18 +1,5 @@
 {
-  "schemaVersion": "2.0",
-  "profile": "sdp-five-phase/0.1",
-  "managementProfile": "sdp-project-management/0.2",
-  "prerequisites": [
-    "powershell>=7.4"
-  ],
-  "capabilities": [
-    "sdp.install.v2",
-    "sdp.install-plan.v2",
-    "sdp.manifest.v2",
-    "sdp.process.five-phase.v1",
-    "sdp.project-management.v1",
-    "sdp.planning.v1"
-  ],
+  "schemaVersion": "sdp-payload-inventory/1",
   "files": [
     {
       "source": "Toolkit/payload/project-root/AGENTS.md.template",
@@ -318,36 +305,6 @@
       "source": "Template/sdp-root/SDL/AGENTS.md",
       "destination": "SDP/SDL/AGENTS.md",
       "ownership": "project"
-    }
-  ],
-  "relocations": [
-    {
-      "from": "SDP/02--Study",
-      "to": "SDP/Archive/Legacy/02--Study"
-    },
-    {
-      "from": "SDP/03--Requirements",
-      "to": "SDP/02--Requirements"
-    },
-    {
-      "from": "SDP/04--Architecture",
-      "to": "SDP/03--Architecture"
-    },
-    {
-      "from": "SDP/05--DesignAnalysis",
-      "to": "SDP/Archive/Legacy/05--DesignAnalysis"
-    },
-    {
-      "from": "SDP/06--Design",
-      "to": "SDP/04--Design"
-    },
-    {
-      "from": "SDP/07--Implementation",
-      "to": "SDP/05--Implementation"
-    },
-    {
-      "from": "SDP/Agents/KanBan",
-      "to": "SDP/KanBan"
     }
   ]
 }

@@ -1,5 +1,10 @@
 # SDP-Analyzer Compatibility Contract
 
+Historical install-v1 data contract: the reference engine and executable runner
+are retired. This page preserves interpretation of old records, not current
+installation instructions. Use [SDPTool records](../../SDPTool/install/Records.md)
+and [current validation](Validation.md).
+
 SDP-Analyzer should consume, but is not implemented by, this release.
 
 ## Toolkit repository inputs

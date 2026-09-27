@@ -4,7 +4,15 @@
 
 Release-Date: unreleased
 
-## [0.2.2] - 2026-09-28
+## [1.0.0] - 2026-09-28
+
+### Removed
+
+- [MAINT-SDP-0010] Retired installation scripts, profile-artifact generator and shell-driven test/recovery jobs are removed, including the executable bootstrap archive copy. Go SDPTool is the only current install/upgrade engine. Pending legacy journals still block unsafe migration and require a separately assessed recovery; they are not silently resumed.
+
+### Changed
+
+- [MAINT-SDP-0010] Go release authoring owns its explicit payload inventory in SDPTool/profiles/payload.json. Current CI uses Go for installation, signatures and recovery; Python remains for schema/document checks.
 
 ### Fixed
 

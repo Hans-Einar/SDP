@@ -45,6 +45,11 @@ def main():
         if frozen or machine_evidence or archive or ledger:
             before = subprocess.check_output(['git', 'show', BASE + ':' + name], cwd=ROOT)
             relocated = {item['source']: item['archive'] for item in json.loads((ROOT / 'SDP/ProjectManagement/History/import.json').read_text())['imports']}
+            if name == 'SDP/History/legacy-bootstrap/scripts/Install-SDP.ps1':
+                # Owner retirement RP3-GO: executable removed; original bytes remain
+                # pinned in Git. No other frozen-file absence is accepted.
+                assert not (ROOT / name).exists(), 'retired executable restored'
+                continue
             current = (ROOT / relocated.get(name, name)).read_bytes()
             assert current.startswith(before) if ledger else current == before, name
             preserved += 1

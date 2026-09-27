@@ -241,7 +241,8 @@ The Go installation engine now owns the new install/upgrade path. The separate
 [installation record contract](install/Records.md) defines preview/apply/resume,
 receipt 3.0, signature provenance and explicit development/test selection.
 Legacy facts 1.0/2.0 and journals remain readable; a pending legacy operation must
-be recovered by its original engine. No discovery command performs installation.
+receive a separately assessed recovery/migration before upgrade. The current
+distribution does not execute a retired engine or reinterpret its journal. No discovery command performs installation.
 
 Typed-planning update: installed management facts and KanBan descriptors accept
 sdp-project-management/0.2 as well as 0.1. The facade still projects cards; it
