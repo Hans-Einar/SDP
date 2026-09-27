@@ -68,3 +68,12 @@ was published. Go command/receipt compatibility and supported signed predecessor
 Only Go-based release gates apply to this revised candidate; previous runtime
 results describe the superseded candidate and do not require rerunning retired
 engines. All .ps1/.psm1/.psd1 files and executable invocation paths are absent.
+
+## RP3-M1 revised candidate verified
+
+Go-only candidate 705df7e passes both CI jobs (contracts 11 seconds; Go race,
+packaged signed child and descriptor build 1m37s). Independent review is in
+evidence/review-go-only.md. Clean production-signed 1.0.0 rehearsal from both
+published predecessors passes with four payload actions, preserved owner prose
+and repeat no-op; see evidence/go-only-signed-upgrades.json. The minor signing
+example now names 1.0.0. Final release artifacts must be rebuilt from merged HEAD.

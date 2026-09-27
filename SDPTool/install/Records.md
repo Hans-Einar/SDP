@@ -74,6 +74,6 @@ operators can also supply `--previous-artifact` with explicit unreleased consent
 Build the engine-neutral development fixture with `go run ./tools/profile`, using
 an explicit source commit, output path and packaged binary. profiles/five-phase.json selects the native profiles/payload.json inventory.
 Go builds descriptors directly; no legacy artifact generator or installer is used.
-For authorized publication, --release 0.2.0 --sign-key PRIVATE_FILE requires
+For authorized publication, --release 1.0.0 --sign-key PRIVATE_FILE requires
 a clean exact Git HEAD, a binary, and the compiled-in publisher key. It writes a
 detached signature but does not publish. Keep the private key outside repositories.
