@@ -74,3 +74,25 @@ bfc4838a7fbe7e7e3e84f86b9b435e69e6e503f4caf01a92319147e9ab701618.
 The private key remains at the owner's private publisher configuration; only the
 public anchor is committed. Preserve that key for future releases; loss requires
 a newly reviewed trust distribution, not an unsigned fallback.
+
+
+### RP1-M2 — published
+
+All four PR40 CI jobs passed (contracts, Go installation, Windows legacy installer,
+Linux process-profile/recovery). PR40 merged to 738e6c882daed85591311f18248dab2a48ce2076.
+That clean exact candidate was packaged, production-signed, tested with a fresh
+install/apply/zero-change repeat and tagged v0.2.0. Runtime sources are unchanged
+from the tested cbb6a4f candidate. Actual GitHub archive extraction also validated
+and rebuilt the identical 59-file payload inventory without Git metadata.
+
+SDP release: https://github.com/Hans-Einar/SDP/releases/tag/v0.2.0
+
+gh-sdp release: https://github.com/Hans-Einar/gh-sdp/releases/tag/v0.1.0
+
+Downloaded SDP assets pass SHA256SUMS. The descriptor digest is
+edc0c72101a437c6e12c40a081ef59ae41cf0db32bcaedb73824ec48495aaee5.
+Client tag source is 8ad0fc2906fc52bd4ee4c214e801a5872a4b0faa. Independent client
+review approved the corrected GitHub CLI asset name gh-sdp-linux-amd64 before
+publication. Actual `gh extension install Hans-Einar/gh-sdp` selected v0.1.0 and
+`gh sdp --version` downloaded/verified SDPTool 0.2.0 with no test configuration.
+
