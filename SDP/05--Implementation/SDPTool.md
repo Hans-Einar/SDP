@@ -181,7 +181,7 @@ this delivery is limited to the named milestone.
 
 Root SDPTool now implements Go install/upgrade; gh-sdp delegates to its verified
 prebuilt executable. [REQ-SDPTOOL-007](../02--Requirements/SDPTool.md) and
-[KB-SDP-033](../KanBan/active/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md)
+[KB-SDP-033](../KanBan/completed/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md)
 retain the installation/adoption context. ST1 was relocation only; IPD designed
 the workflow, and [PLAN-SDP-0003](SDPTool/Installation/Plan.md) owns GIP execution.
 None of T0–T5 is retroactively credited with an installer.

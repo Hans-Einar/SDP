@@ -320,7 +320,7 @@ migrations: {}
 releases:
   REL-0.2.0:
     version: "0.2.0"
-    state: prerelease
+    state: released
     releaseNotes: RELEASE-NOTES.md
     manifest: SDP.manifest.yaml
     releaseRecord: Releases/REL-0.2.0.yaml
@@ -331,9 +331,9 @@ releases:
     verification:
       - SDPTOOL-VER-GIP-4
     reviews: []
-    releaseCommit: null
-    gitTag: null
-    githubRelease: null
+    releaseCommit: 738e6c882daed85591311f18248dab2a48ce2076
+    gitTag: v0.2.0
+    githubRelease: https://github.com/Hans-Einar/SDP/releases/tag/v0.2.0
 
 # Map stable IDs only to records that actually exist. Publication identities stay
 # null until the corresponding Git/GitHub objects exist.

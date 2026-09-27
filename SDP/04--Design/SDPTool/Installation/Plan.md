@@ -19,7 +19,7 @@ Markdown viewpoints and concrete contracts sufficient to plan Go implementation.
 The owner selected this design work; this plan does not authorize live installation,
 release publication or merging. It does not mark the Go engine implemented.
 
-Primary: [KB-SDP-033](../../../KanBan/active/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md).
+Primary: [KB-SDP-033](../../../KanBan/completed/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md).
 Governing requirement: [REQ-SDPTOOL-007](../../../02--Requirements/SDPTool.md).
 Reuse the existing [architecture](../../../03--Architecture/SDPTool.md),
 [SDL model](../../../03--Architecture/SDPTool.design),

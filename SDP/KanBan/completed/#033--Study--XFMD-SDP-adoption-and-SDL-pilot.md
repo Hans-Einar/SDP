@@ -5,14 +5,14 @@
 | id | KB-SDP-033 |
 | project | SDP |
 | type | Study |
-| CardState | in-progress |
+| CardState | completed |
 | PlanId | MAINT-SDP-0007 |
 | Systems | SDP, SDL, SDPTOOL |
 | created | 2026-09-25T22:20:56Z |
 | source | Owner conversation 2026-09-26: SDL context, implementation drift and post-main XFMD adoption |
-| next_review | Concrete production release/live rollout proposal after completed GIP |
+| next_review | Closed; successors KB-XFMD-017, KB-SDP-032 and KB-SDP-034 retain remaining work |
 
-## Current disposition — RP1 release and live adoption authorized
+## Current disposition — released installation and live adoption completed
 
 [PLAN-SDP-0003](../../05--Implementation/SDPTool/Installation/Plan.md) has delivered
 all selected phases: one Go engine, shared signed-test bootstrap, thin gh-sdp,
@@ -21,8 +21,11 @@ points. Read the [evidence](../../05--Implementation/SDPTool/Installation/Eviden
 and [concrete rollout/retirement proposal](../../05--Implementation/SDPTool/Installation/Rollout-and-Retirement.md).
 
 The owner selected [RP1](../../Maintenance/RP1/Plan.md) for publication and live
-adoption on 2026-09-27. CardState is in-progress. The broader SDL-modeling pilot
-remains a separate subsequent assignment.
+adoption on 2026-09-27. RP1 is completed and the worktree is upgraded.
+The remaining SDL-modeling pilot is handed off to the existing XFMD KB-XFMD-017,
+which remains backlog; native viewpoint feedback remains KB-SDP-032. KB-SDP-034
+records the observed external-reference navigation limitation. These successors
+remain unimplemented; they do not keep this delivered adoption card active.
 
 ## Owner intent and baseline
 
@@ -233,3 +236,5 @@ publication remain outstanding. No new executable is delivered by this card upda
 2026-09-26T23:54:50Z: EVT-KB-SDP-000196. CardState in-progress to gate-review for concrete production release/live-adoption proposal. GIP is complete; subsequent XFMD SDL modeling explicitly deferred.
 
 2026-09-27T07:53:08.653575Z: EVT-KB-SDP-000197. Owner selects RP1; CardState gate-review to in-progress.
+
+2026-09-27T08:22:06.815649Z: EVT-KB-SDP-000198. RP1 delivered; moved to completed with explicit modeling/navigation successors.

@@ -18,7 +18,7 @@
 The owner withdrew the separate Toolkit workstream. Root SDPTool is the common
 Go command entry point and owns future installation/upgrade execution; gh-sdp is
 a thin client. [MAINT-SDP-0006](../../Maintenance/ST1/Plan.md) performs the root
-relocation and records retained Toolkit dependencies. [KB-SDP-033](../active/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md)
+relocation and records retained Toolkit dependencies. [KB-SDP-033](../completed/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md)
 retains the concrete installation/adoption outcome. This audit was canceled,
 not completed; no comprehensive Toolkit audit is claimed. Historical scope below
 explains the withdrawal and must not be used to start another Toolkit engine.

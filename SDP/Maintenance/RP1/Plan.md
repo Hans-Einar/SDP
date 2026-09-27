@@ -4,7 +4,7 @@
 | --- | --- |
 | id | MAINT-SDP-0007 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | MaintenancePlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
@@ -74,3 +74,61 @@ bfc4838a7fbe7e7e3e84f86b9b435e69e6e503f4caf01a92319147e9ab701618.
 The private key remains at the owner's private publisher configuration; only the
 public anchor is committed. Preserve that key for future releases; loss requires
 a newly reviewed trust distribution, not an unsigned fallback.
+
+
+### RP1-M2 — published
+
+All four PR40 CI jobs passed (contracts, Go installation, Windows legacy installer,
+Linux process-profile/recovery). PR40 merged to 738e6c882daed85591311f18248dab2a48ce2076.
+That clean exact candidate was packaged, production-signed, tested with a fresh
+install/apply/zero-change repeat and tagged v0.2.0. Runtime sources are unchanged
+from the tested cbb6a4f candidate. Actual GitHub archive extraction also validated
+and rebuilt the identical 59-file payload inventory without Git metadata.
+
+SDP release: https://github.com/Hans-Einar/SDP/releases/tag/v0.2.0
+
+gh-sdp release: https://github.com/Hans-Einar/gh-sdp/releases/tag/v0.1.0
+
+Downloaded SDP assets pass SHA256SUMS. The descriptor digest is
+edc0c72101a437c6e12c40a081ef59ae41cf0db32bcaedb73824ec48495aaee5.
+Client tag source is 8ad0fc2906fc52bd4ee4c214e801a5872a4b0faa. Independent client
+review approved the corrected GitHub CLI asset name gh-sdp-linux-amd64 before
+publication. Actual `gh extension install Hans-Einar/gh-sdp` selected v0.1.0 and
+`gh sdp --version` downloaded/verified SDPTool 0.2.0 with no test configuration.
+
+### RP1-M3 — live adoption completed
+
+Fresh inspection of the clean xfmd-sdl-navigation worktree at b95a4bb recorded 371
+paths. The released client produced the same inspected 138 actions and 194 preserved
+paths, with signed provenance and no conflicts. Apply completed as
+install-141ecdb474cd970124926c4e, recorded by MAINT-XFMD-0001. Original history bytes
+remain an exact prefix and all preserved paths were verified immediately after apply.
+All 350 recorded application/build/tooling file hashes remain unchanged.
+
+MAINT-XFMD-0002 reconciles the project-owned board verifier and current path prose,
+sets the project name without inventing XFMD product release metadata, and excludes
+local recovery journals/backups from Git. Both prior and current board schemas are
+understood; management schemas/predecessors/current states are checked. Live validation
+passes 18 cards, 77 card events and two management records; 15 lineage negative cases
+pass. Copy checks reject broken management predecessors and false completion states.
+The complete process adoption is committed locally in XFMD as 41fa494 on its existing
+active branch. No XFMD application changes or branch merge/push is included.
+
+Released `gh sdp discover` reports valid. Repeated upgrade before and after local
+reconciliation proposes zero changes. The original instructions and operation backups
+remain available locally. Fresh manifest/plan and machine evidence are retained in
+/home/warloc/.local/state/sdp/adoptions/xfmd-20260927; those inputs target only that root.
+
+**Navigation limitation:** `gh sdp tree` returns KanBan unavailable for the existing
+cross-project Ref KB-SDP-014. A successful process exit was insufficient evidence of
+a usable tree; inspecting node states exposed this pre-existing local-only resolver
+restriction. KB-SDP-034 records the follow-up. No reference was removed or renamed to
+hide it. Native XFMD navigation acceptance is not claimed. SDL/SDUI roots remain absent
+because XFMD's domain models are not yet registered; KB-XFMD-017 owns that next work.
+
+The authorized merge/release/install/upgrade scope is complete. Published artifacts
+remain immutable; this reconciliation commit records real outcomes after publication.
+
+Publication reconciliation passes 106 Toolkit tests (19 environment-dependent
+skips), Toolkit/schema validation, management replay and document/frozen-evidence
+checks. No executable source changed after the released candidate.

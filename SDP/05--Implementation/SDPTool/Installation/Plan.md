@@ -28,7 +28,7 @@ Inputs: [working contract](../../../04--Design/SDPTool/Installation/Contract.md)
 [generated review](../../../04--Design/SDPTool/Installation/review/index.md),
 [canonical model](../../../03--Architecture/SDPTool.design),
 [REQ-SDPTOOL-007](../../../02--Requirements/SDPTool.md),
-[KB-SDP-033](../../../KanBan/active/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md).
+[KB-SDP-033](../../../KanBan/completed/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md).
 This installation-specific plan supplies concrete milestones to the existing
 [feature plan](../../SDPTool.md); it does not rewrite T0–T5 history or restart BP2.
 

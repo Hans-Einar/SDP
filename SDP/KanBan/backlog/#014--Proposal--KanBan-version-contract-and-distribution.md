@@ -79,7 +79,7 @@ metadata, lineage and history; they do not prove a released compatibility contra
 [KB-SDP-017](../active/%23017--Proposal--sdptool-and-project-navigation.md) retains tooling implementation.
 No existing card is superseded, moved or reduced by this registration.
 
-Consumer follow-up: [KB-XFMD-012](../../../../xfmd-sdl-navigation/SDP/Agents/KanBan/backlog/%23012--Ref--SDP--014--KanBan-format-sync.md) is the direct XFMD Ref. It owns the local gap
+Consumer follow-up: [KB-XFMD-012](../../../../xfmd-sdl-navigation/SDP/KanBan/backlog/%23012--Ref--SDP--014--KanBan-format-sync.md) is the direct XFMD Ref. It owns the local gap
 review and later adaptation, without duplicating the shared contract decision.
 
 ## Next action and completion criteria

@@ -44,7 +44,8 @@
 | KB-SDP-030 | Bug | completed | [Restore installation conformance in CI](completed/%23030--Bug--CI-installation-conformance-and-fixtures.md) |
 | KB-SDP-031 | Study | completed | [Study SDL-derived assignment bundles and blueprints](completed/%23031--Study--SDL-assignment-bundles-and-blueprints.md) |
 | KB-SDP-032 | Study | backlog | [Evaluate SDL viewpoints through integrated XFMD navigation](backlog/%23032--Study--Viewpoint-navigation-feedback.md) |
-| KB-SDP-033 | Study | active | [Plan XFMD SDP adoption through gh-sdp and a practical SDL design pilot](active/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md) |
+| KB-SDP-033 | Study | completed | [Plan XFMD SDP adoption through gh-sdp and a practical SDL design pilot](completed/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md) |
+| KB-SDP-034 | Bug | backlog | [External KanBan references](backlog/%23034--Bug--External-KanBan-references.md) |
 
 ## Purpose and authority
 
