@@ -55,8 +55,8 @@ release-owned. No rollback or filesystem power-loss guarantee is advertised.
 ## Distribution selection and development fixtures
 
 `--release PATH-OR-HTTPS-URL` selects an exact descriptor; `SDP_RELEASE` supplies
-an override for both entry points. The compiled default selects the immutable
-SDP v0.2.0 descriptor URL. Detached signatures are JSON with keyId (SHA-256 of public key) and
+an override for both entry points. The compiled default selects an immutable release descriptor URL; see
+bootstrap.DefaultRelease for the candidate's exact version. Detached signatures are JSON with keyId (SHA-256 of public key) and
 base64 signature. Production keys must ship in the reviewed bootstrap module;
 the selected publisher public key ships with v0.2.0. `--test-key FILE` / `SDP_TEST_KEY` explicitly enables
 an Ed25519 public test key (base64 file), producing **test-signed** provenance,
