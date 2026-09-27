@@ -60,8 +60,9 @@ product or PowerShell runtime is needed on this path.
 [Installation records](install/Records.md) define the implemented protocol.
 [PLAN-SDP-0003](../SDP/05--Implementation/SDPTool/Installation/Plan.md) and its
 [evidence](../SDP/05--Implementation/SDPTool/Installation/Evidence.md) record
-Linux verification, signed test fixtures and disposable XFMD adoption. Production
-keys/releases, native Windows/macOS acceptance and live rollout remain unselected.
+Linux verification, signed test fixtures and disposable XFMD adoption.
+The RP1 release selects v0.2.0 and a production signing key. Native Windows/macOS
+acceptance remains outstanding. Live adoption evidence is recorded in RP1.
 The [legacy Toolkit](../Toolkit/README.md) retains old-engine recovery, schemas,
 payload sources and comparison fixtures; it is not the new user's execution path.
 
@@ -113,7 +114,7 @@ the structural Markdown exporter; it does not imply interactive controls.
 [Consumer examples and executable harness](Consumer-Examples.md) document the
 producer boundary available to XFMD and other hosts.
 
-## Installation and upgrade (Go development implementation)
+## Installation and upgrade
 
 The installation engine now owns read-only previews, saved-plan apply and forward
 recovery. It uses no PowerShell. Existing navigation/preview commands remain intact.
@@ -121,15 +122,14 @@ See [installation records and usage](install/Records.md) and the
 [GIP implementation plan](../SDP/05--Implementation/SDPTool/Installation/Plan.md).
 
 ```sh
-sdptool /path/to/project upgrade --release /path/to/exact/release.json \
-  --test-key /path/to/test.pub --manifest /path/to/adoption.yaml \
+sdptool /path/to/project upgrade --manifest /path/to/adoption.yaml \
   --plan-output /tmp/reviewed-plan.json --json
 sdptool /path/to/project upgrade --apply /tmp/reviewed-plan.json --json
 sdptool /path/to/project upgrade --resume install-OPERATION-ID --json
 ```
 
 The first command only previews. Local unsigned development inputs require
-`--artifact FILE --allow-unreleased`. The test-key example records test provenance;
-it is not a production release. Production keys, default release catalog, native
-Windows/macOS acceptance and live XFMD rollout remain unselected. Root-bound plans
+`--artifact FILE --allow-unreleased`. The default selects signed SDP v0.2.0;
+--release or SDP_RELEASE may select another exact descriptor. Test-key inputs
+record test provenance only. Native Windows/macOS acceptance is outstanding. Root-bound plans
 cannot be applied to another project copy. Journals and backups are retained.

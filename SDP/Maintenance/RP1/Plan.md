@@ -48,3 +48,13 @@ PR39 passed four CI jobs and merged as bdfca5f. XFMD initially clean at b95a4bb;
 recheck before adoption. No application source changes selected. Independent
 review covers the thin client; engine release checks are author verification.
 Broader XFMD SDL modeling is deferred. Append observed progress below.
+
+### RP1-M1 preparation progress
+
+The production public anchor and immutable default are committed in 659e543.
+The private key is in the owner's private publisher configuration (not Git).
+Go race suites pass, including installation recovery (59.33 seconds), bootstrap
+trust checks and maintainer signer rejection tests; vet passes. Production signing
+requires a clean exact source checkout and refuses an unknown publisher or an
+exposed private key. Package version is explicitly selectable for release builds.
+The retained Toolkit artifact is rebuilt from sources after release metadata changes.

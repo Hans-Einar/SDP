@@ -1,5 +1,5 @@
-// profile builds an explicitly unreleased Go descriptor from shared authored
-// payload sources. It never signs or publishes a production release.
+// profile builds descriptors from shared authored payloads. Production signing
+// requires a clean exact source and a locally held, compiled-in publisher key.
 package main
 
 import (
@@ -8,7 +8,9 @@ import (
 	"fmt"
 	"github.com/Hans-Einar/SDP/SDPTool/install"
 	"os"
+	"os/exec"
 	"path/filepath"
+	"regexp"
 	"runtime"
 	"strings"
 )
@@ -17,18 +19,41 @@ func main() {
 	repo := flag.String("repo", "..", "SDP repository")
 	output := flag.String("output", "", "new descriptor")
 	commit := flag.String("source-commit", "", "exact source commit")
-	release := flag.String("release", "development-gip", "unreleased identity")
+	release := flag.String("release", "development-gip", "development identity or selected release version")
+	key := flag.String("sign-key", "", "private publisher key file for a production release")
 	binary := flag.String("binary", "", "packaged executable")
 	flag.Parse()
-	if e := build(*repo, *output, *commit, *release, *binary); e != nil {
+	if e := run(*repo, *output, *commit, *release, *binary, *key); e != nil {
 		fmt.Fprintln(os.Stderr, e)
 		os.Exit(1)
 	}
 }
-func build(repo, output, commit, release, binary string) error {
-	if !strings.HasPrefix(release, "development-") {
-		return fmt.Errorf("this fixture builder only creates development-* identities")
+func run(repo, output, commit, release, binary, key string) error {
+	if key == "" && !strings.HasPrefix(release, "development-") {
+		return fmt.Errorf("production descriptor requires --sign-key")
 	}
+	if key != "" {
+		if !regexp.MustCompile(`^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$`).MatchString(release) || binary == "" {
+			return fmt.Errorf("signing requires a final version and binary")
+		}
+		head, err := exec.Command("git", "-C", repo, "rev-parse", "HEAD").Output()
+		if err != nil || strings.TrimSpace(string(head)) != commit {
+			return fmt.Errorf("signing requires exact source HEAD")
+		}
+		status, err := exec.Command("git", "-C", repo, "status", "--porcelain").Output()
+		if err != nil || len(status) != 0 {
+			return fmt.Errorf("signing requires clean source checkout")
+		}
+	}
+	if err := build(repo, output, commit, release, binary); err != nil {
+		return err
+	}
+	if key != "" {
+		return sign(output, key)
+	}
+	return nil
+}
+func build(repo, output, commit, release, binary string) error {
 	var config struct {
 		SchemaVersion     string   `json:"schemaVersion"`
 		InventorySource   string   `json:"inventorySource"`

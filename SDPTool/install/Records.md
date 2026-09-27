@@ -55,10 +55,10 @@ release-owned. No rollback or filesystem power-loss guarantee is advertised.
 ## Distribution selection and development fixtures
 
 `--release PATH-OR-HTTPS-URL` selects an exact descriptor; `SDP_RELEASE` supplies
-that default for both entry points. There is no published stable catalog/default
-release yet. Detached signatures are JSON with keyId (SHA-256 of public key) and
+an override for both entry points. The compiled default selects the immutable
+SDP v0.2.0 descriptor URL. Detached signatures are JSON with keyId (SHA-256 of public key) and
 base64 signature. Production keys must ship in the reviewed bootstrap module;
-the initial key set is empty. `--test-key FILE` / `SDP_TEST_KEY` explicitly enables
+the selected publisher public key ships with v0.2.0. `--test-key FILE` / `SDP_TEST_KEY` explicitly enables
 an Ed25519 public test key (base64 file), producing **test-signed** provenance,
 never signed production provenance. The saved proof stores this distinction.
 
@@ -74,4 +74,6 @@ Build the engine-neutral development fixture with `go run ./tools/profile`, usin
 an explicit source commit, output path and packaged binary. profiles/five-phase.json
 selects reuse of **files only** from the retained Toolkit inventory. It does not
 reuse the PowerShell engine, prerequisites, legacy facts or implicit migrations.
-This builder refuses production release identities and does not sign/publish.
+For authorized publication, --release 0.2.0 --sign-key PRIVATE_FILE requires
+a clean exact Git HEAD, a binary, and the compiled-in publisher key. It writes a
+detached signature but does not publish. Keep the private key outside repositories.

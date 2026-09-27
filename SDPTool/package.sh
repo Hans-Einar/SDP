@@ -12,6 +12,7 @@ if [[ -e "$sdp_package_output" ]]; then
     exit 2
 fi
 sdp_package_go=${SDP_GO:-go}
+sdp_package_version=${SDP_VERSION:-0.2.0-dev}
 command -v -- "$sdp_package_go" >/dev/null || { echo "Go build tool unavailable; set SDP_GO" >&2; exit 2; }
 sdp_package_parent=$(dirname -- "$sdp_package_output")
 mkdir -p -- "$sdp_package_parent"
@@ -23,7 +24,7 @@ if [[ -n "$(git -C "$sdp_package_module" status --porcelain 2>/dev/null)" ]]; th
 fi
 (
     cd -- "$sdp_package_module"
-    GOTOOLCHAIN=local "$sdp_package_go" build -trimpath -mod=readonly         -ldflags "-X github.com/Hans-Einar/SDP/SDPTool.BuildRevision=$sdp_package_revision"         -o "$sdp_package_temp/sdptool" ./cmd/sdptool
+    GOTOOLCHAIN=local "$sdp_package_go" build -trimpath -mod=readonly         -ldflags "-X github.com/Hans-Einar/SDP/SDPTool.BuildRevision=$sdp_package_revision -X github.com/Hans-Einar/SDP/SDPTool.BuildVersion=$sdp_package_version"         -o "$sdp_package_temp/sdptool" ./cmd/sdptool
 )
 "$sdp_package_temp/sdptool" --version > "$sdp_package_temp/sdptool.manifest.json"
 (

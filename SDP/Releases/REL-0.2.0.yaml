@@ -1,7 +1,7 @@
 schemaVersion: "1.0"
 releaseId: REL-0.2.0
 version: "0.2.0"
-state: unreleased
+state: prerelease
 releaseNotesPath: RELEASE-NOTES.md
 includedCapabilities:
   - sdp.install.v1
@@ -16,7 +16,8 @@ includedCapabilities:
   - sdp.traceability.release-events.v1
   - sdp.validation.project.v1
   - sdp.versioning.v1
-verificationRecords: []
+verificationRecords:
+  - SDPTOOL-VER-GIP-4
 reviewRecords: []
 migrationRecord: Toolkit/docs/Installer-Migration.md
 releasePreparationCommit: null

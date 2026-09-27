@@ -77,6 +77,10 @@ Conversely, a non-null value from a dirty checkout would identify only its
 available `HEAD`, not attest that the installed bytes equal that commit; release
 archive verification must rely on the clean, exact candidate evidence.
 
-The normal GitHub source archive is the selected distribution artifact. Do not
-add a custom release asset unless concrete verification shows that the normal
-archive cannot satisfy the contract safely.
+The source archive remains the legacy installer/source distribution. RP1 selects
+additional signed Go descriptor and prebuilt Linux amd64 binary assets: an archive
+alone cannot supply the compiler-free gh-sdp workflow. The Go descriptor embeds
+hash-pinned payloads and exact sourceCommit; its explicit release identity remains
+valid when downloaded outside Git. Preserve the legacy archive/null-commit test.
+The adopted typed-plan RP1-M1 is the release-preparation work unit for this repo;
+consumers with the earlier Slice contract retain their dedicated Slice requirement.
