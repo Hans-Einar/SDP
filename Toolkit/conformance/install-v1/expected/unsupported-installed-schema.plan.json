@@ -3,7 +3,7 @@
   "manifestSchemaVersion": "1.0",
   "orderingPolicy": "migration-first-manifest-order-v1",
   "mode": "plan",
-  "toolkitVersion": "0.2.0",
+  "toolkitVersion": "0.2.1",
   "installedToolkitVersion": "9.0.0",
   "options": {
     "initializeProjectStructure": false,
@@ -25,7 +25,7 @@
       "reason": "unsupported-installed-schema",
       "mutatesTarget": false,
       "oldToolkitVersion": "9.0.0",
-      "newToolkitVersion": "0.2.0"
+      "newToolkitVersion": "0.2.1"
     }
   ]
 }

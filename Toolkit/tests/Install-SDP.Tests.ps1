@@ -457,7 +457,7 @@ try {
     # The portable manifest is the only install inventory and every policy is explicit.
     $contract = Get-Content -Raw -LiteralPath $InstallManifestPath | ConvertFrom-Json
     Assert-Equal '1.0' ([string]$contract.schemaVersion) 'installation contract schema'
-    Assert-Equal '0.2.0' ([string]$contract.toolkitVersion) 'installation contract Toolkit version'
+    Assert-Equal '0.2.1' ([string]$contract.toolkitVersion) 'installation contract Toolkit version'
     Assert-Equal `
         'migration-first-manifest-order-v1' `
         ([string]$contract.orderingPolicy) `
@@ -591,7 +591,7 @@ try {
     Assert-PlanConforms $repeatPlanJson 'repeat installed-manifest round trip'
     $repeatPlan = $repeatPlanJson | ConvertFrom-Json
     Assert-True ([bool]$repeatPlan.canApply) 'generated installed manifest failed its strict YAML round trip'
-    Assert-Equal '0.2.0' ([string]$repeatPlan.installedToolkitVersion) 'repeat plan installed Toolkit version'
+    Assert-Equal '0.2.1' ([string]$repeatPlan.installedToolkitVersion) 'repeat plan installed Toolkit version'
     Assert-PlanReasonSemantics $repeatPlan 'repeat installed-manifest round trip'
     $repeatInstalledAction = @($repeatPlan.actions | Where-Object {
         $_.entryId -eq 'generated-installed-toolkit-manifest'
@@ -1147,10 +1147,10 @@ Release-Date: unreleased
     $initializePreviewOutput = (& $Installer -ProjectRoot $bootstrap -InitializeProjectStructure -Preview 6>&1 | Out-String)
     $afterInitializePreview = Get-TreeFingerprint $bootstrap
     Assert-Equal $beforeInitializePreview $afterInitializePreview 'repeated initialize preview mutated project'
-    Assert-True ($initializePreviewOutput -notmatch 'REL-0\.2\.0') 'repeated initialize preview proposed Toolkit release state'
+    Assert-True ($initializePreviewOutput -notmatch 'REL-0\.2\.1') 'repeated initialize preview proposed Toolkit release state'
     $bootstrapPlanJson = Invoke-PlanJson $bootstrap -Initialize
     Assert-PlanConforms $bootstrapPlanJson 'repeated initialize'
-    Assert-True ($bootstrapPlanJson -notmatch 'REL-0\.2\.0') 'repeated initialize plan proposed Toolkit release state'
+    Assert-True ($bootstrapPlanJson -notmatch 'REL-0\.2\.1') 'repeated initialize plan proposed Toolkit release state'
     & python $ProjectValidator --mode project --project-root $bootstrap | Out-Host
     Assert-Equal 0 $LASTEXITCODE 'initialized consuming-project validation'
 
@@ -1232,21 +1232,21 @@ Release-Date: unreleased
     $semverSeedContent = Get-Content -Raw -LiteralPath (Join-Path $semverSeed 'SDP\Framework\installed-toolkit.manifest.yaml')
 
     $prereleaseInstalled = New-FixtureProject 'installed-prerelease'
-    $prereleaseContent = $semverSeedContent -replace '(?m)^toolkitVersion: "0\.2\.0"$', 'toolkitVersion: "0.2.0-rc.1"'
+    $prereleaseContent = $semverSeedContent -replace '(?m)^toolkitVersion: "0\.2\.1"$', 'toolkitVersion: "0.2.1-rc.1"'
     Write-Utf8File (Join-Path $prereleaseInstalled 'SDP\Framework\installed-toolkit.manifest.yaml') $prereleaseContent
     $prereleasePlan = (Invoke-PlanJson $prereleaseInstalled) | ConvertFrom-Json
     Assert-True ([bool]$prereleasePlan.canApply) 'final Toolkit did not upgrade its prerelease'
     Assert-PlanReasonSemantics $prereleasePlan 'prerelease-to-final plan'
 
     $newerPrerelease = New-FixtureProject 'newer-prerelease'
-    $newerPrereleaseContent = $semverSeedContent -replace '(?m)^toolkitVersion: "0\.2\.0"$', 'toolkitVersion: "0.2.1-alpha.1"'
+    $newerPrereleaseContent = $semverSeedContent -replace '(?m)^toolkitVersion: "0\.2\.1"$', 'toolkitVersion: "0.2.2-alpha.1"'
     Write-Utf8File (Join-Path $newerPrerelease 'SDP\Framework\installed-toolkit.manifest.yaml') $newerPrereleaseContent
     $newerPrereleasePlan = (Invoke-PlanJson $newerPrerelease) | ConvertFrom-Json
     Assert-True (-not [bool]$newerPrereleasePlan.canApply) 'newer prerelease core did not block downgrade'
     Assert-Equal 'downgrade-blocked' ([string]$newerPrereleasePlan.actions[0].reason) 'newer prerelease block reason'
 
     $invalidPrerelease = New-FixtureProject 'invalid-prerelease'
-    $invalidPrereleaseContent = $semverSeedContent -replace '(?m)^toolkitVersion: "0\.2\.0"$', 'toolkitVersion: "0.2.0-01"'
+    $invalidPrereleaseContent = $semverSeedContent -replace '(?m)^toolkitVersion: "0\.2\.1"$', 'toolkitVersion: "0.2.1-01"'
     Write-Utf8File (Join-Path $invalidPrerelease 'SDP\Framework\installed-toolkit.manifest.yaml') $invalidPrereleaseContent
     $invalidPrereleasePlan = (Invoke-PlanJson $invalidPrerelease) | ConvertFrom-Json
     Assert-True (-not [bool]$invalidPrereleasePlan.canApply) 'invalid numeric prerelease passed preflight'
@@ -2011,9 +2011,9 @@ Release-Date: unreleased
     # precedence, so differing builds refresh rather than block as a downgrade.
     try {
         $prereleaseSourceContract = $archiveManifestOriginal | ConvertFrom-Json
-        $prereleaseSourceContract.toolkitVersion = '0.2.0-rc.1'
+        $prereleaseSourceContract.toolkitVersion = '0.2.1-rc.1'
         $prereleaseGenerator = @($prereleaseSourceContract.generators | Where-Object { $_.id -eq 'installed-toolkit-manifest' })[0]
-        $prereleaseGenerator.facts.toolkitVersion = '0.2.0-rc.1'
+        $prereleaseGenerator.facts.toolkitVersion = '0.2.1-rc.1'
         Write-Utf8File $archiveManifestPath ($prereleaseSourceContract | ConvertTo-Json -Depth 60)
         $finalTarget = New-FixtureProject 'final-over-prerelease-source'
         Write-Utf8File (Join-Path $finalTarget 'SDP\Framework\installed-toolkit.manifest.yaml') $semverSeedContent
@@ -2031,7 +2031,7 @@ Release-Date: unreleased
         $buildGenerator.facts.toolkitVersion = '0.2.0+source.2'
         Write-Utf8File $archiveManifestPath ($buildSourceContract | ConvertTo-Json -Depth 60)
         $buildTarget = New-FixtureProject 'build-identity-change'
-        $buildInstalled = $semverSeedContent -replace '(?m)^toolkitVersion: "0\.2\.0"$', 'toolkitVersion: "0.2.0+consumer.9"'
+        $buildInstalled = $semverSeedContent -replace '(?m)^toolkitVersion: "0\.2\.1"$', 'toolkitVersion: "0.2.0+consumer.9"'
         Write-Utf8File (Join-Path $buildTarget 'SDP\Framework\installed-toolkit.manifest.yaml') $buildInstalled
         $buildPlan = (Invoke-PlanJson $buildTarget -InstallerPath $archiveInstaller) | ConvertFrom-Json
         Assert-True ([bool]$buildPlan.canApply) 'SemVer build metadata incorrectly determined precedence'
