@@ -1,0 +1,210 @@
+{
+  "baselineCommit": "17c5dfb37d2e8c25df9c697aa3722f4d90db73e7",
+  "baselineFiles": 66,
+  "currentFiles": 68,
+  "statementCount": 4523,
+  "statementSha256": "2caba8c467449c9d1922011fa43f7a335ef60e61387b34ef77b454e17b775365",
+  "normalization": "Strip line whitespace; omit blanks, language headers, includes and // comments; sort remaining complete statements retaining multiplicity. This checks preservation, not SDL grammar.",
+  "moves": {
+    "BuckingLab/Diagnostics.design": [
+      "Containers/BuckingLab/Diagnostics.design"
+    ],
+    "BuckingService/AptDomain.design": [
+      "Containers/BuckingService/AptDomain.design"
+    ],
+    "BuckingService/EconomicsProduction.design": [
+      "Containers/BuckingService/EconomicsProduction.design"
+    ],
+    "BuckingService/Planning.design": [
+      "Containers/BuckingService/Planning.design"
+    ],
+    "BuckingService/StemProfile.design": [
+      "Containers/BuckingService/StemProfile.design"
+    ],
+    "BuckingWeb/Adaptation.design": [
+      "Containers/BuckingWeb/Adaptation.design"
+    ],
+    "Contracts/Bucking.design": [
+      "Contracts/Bucking.design"
+    ],
+    "Contracts/Common.design": [
+      "Contracts/Common.design"
+    ],
+    "Contracts/DomainValues.design": [
+      "Contracts/DomainValues.design"
+    ],
+    "Contracts/Lab.design": [
+      "Contracts/Lab.design"
+    ],
+    "Contracts/Machine.design": [
+      "Contracts/Machine.design"
+    ],
+    "Contracts/OperatorBrowser.design": [
+      "Contracts/OperatorBrowser.design"
+    ],
+    "Contracts/Permissive.design": [
+      "Contracts/Permissive.design"
+    ],
+    "Contracts/PhysicalSerial.design": [
+      "Contracts/PhysicalSerial.design"
+    ],
+    "Contracts/Presentation.design": [
+      "Contracts/Presentation.design"
+    ],
+    "Contracts/SimulatorControl.design": [
+      "Contracts/SimulatorControl.design"
+    ],
+    "Contracts/Target.design": [
+      "Contracts/Target.design"
+    ],
+    "Features.design": [
+      "Features.design"
+    ],
+    "Governance/Bindings.design": [
+      "Governance/Bindings.design"
+    ],
+    "Governance/Decisions.design": [
+      "Governance/Decisions.design"
+    ],
+    "Governance/Gaps.design": [
+      "Governance/Gaps.design"
+    ],
+    "Governance/Requirements.design": [
+      "Governance/Requirements.design"
+    ],
+    "Libraries/BuckingCore.design": [
+      "Shared/Libraries/BuckingCore.design"
+    ],
+    "Libraries/Contracts.design": [
+      "Shared/Libraries/Contracts.design"
+    ],
+    "Libraries/LabKit.design": [
+      "Shared/Libraries/LabKit.design"
+    ],
+    "Libraries/ServiceKit.design": [
+      "Shared/Libraries/ServiceKit.design"
+    ],
+    "Libraries/StanfordClassic.design": [
+      "Shared/Libraries/StanfordClassic.design"
+    ],
+    "Libraries/TaperModels.design": [
+      "Shared/Libraries/TaperModels.design"
+    ],
+    "MachineLab/Diagnostics.design": [
+      "Containers/MachineLab/Diagnostics.design"
+    ],
+    "MachineService/Domain.design": [
+      "Containers/MachineService/Domain.design"
+    ],
+    "P1000Gateway/Domain.design": [
+      "Containers/P1000Gateway/Domain.design"
+    ],
+    "P1000Simulator/Domain.design": [
+      "Containers/P1000Simulator/Domain.design"
+    ],
+    "Ports.design": [
+      "Ports.design"
+    ],
+    "Scenarios/ActivateApt.design": [
+      "Scenarios/ActivateApt.design"
+    ],
+    "Scenarios/CommitProduction.design": [
+      "Scenarios/CommitProduction.design"
+    ],
+    "Scenarios/ComputeArchive.design": [
+      "Scenarios/ComputeArchive.design"
+    ],
+    "Scenarios/DegradedOperation.design": [
+      "Scenarios/DegradedOperation.design"
+    ],
+    "Scenarios/EditAptCell.design": [
+      "Scenarios/EditAptCell.design"
+    ],
+    "Scenarios/GlobalStopFlow.design": [
+      "Scenarios/GlobalStopFlow.design"
+    ],
+    "Scenarios/ImportApt.design": [
+      "Scenarios/ImportApt.design"
+    ],
+    "Scenarios/InspectMachine.design": [
+      "Scenarios/InspectMachine.design"
+    ],
+    "Scenarios/PlanCurrentStem.design": [
+      "Scenarios/PlanCurrentStem.design"
+    ],
+    "Scenarios/RecoverCommand.design": [
+      "Scenarios/RecoverCommand.design"
+    ],
+    "Scenarios/RecoverTarget.design": [
+      "Scenarios/RecoverTarget.design"
+    ],
+    "Scenarios/RecoverUiBaseline.design": [
+      "Scenarios/RecoverUiBaseline.design"
+    ],
+    "Scenarios/ReplacePresentation.design": [
+      "Scenarios/ReplacePresentation.design"
+    ],
+    "Scenarios/ReplayDiagnostics.design": [
+      "Scenarios/ReplayDiagnostics.design"
+    ],
+    "Scenarios/SemanticOperatorAction.design": [
+      "Scenarios/SemanticOperatorAction.design"
+    ],
+    "Scenarios/ShareUiValue.design": [
+      "Scenarios/ShareUiValue.design"
+    ],
+    "Scenarios/ShutdownSystem.design": [
+      "Scenarios/ShutdownSystem.design"
+    ],
+    "Scenarios/SimulatorWireAction.design": [
+      "Scenarios/SimulatorWireAction.design"
+    ],
+    "Scenarios/StoreApt.design": [
+      "Scenarios/StoreApt.design"
+    ],
+    "Scenarios/UiDiagnosticRouting.design": [
+      "Scenarios/UiDiagnosticRouting.design"
+    ],
+    "State.design": [
+      "State.design"
+    ],
+    "System.design": [
+      "System.design"
+    ],
+    "UI/Boundary.design": [
+      "Shared/UI/Boundary.design"
+    ],
+    "UI/CommandsDiagnostics.design": [
+      "Shared/Libraries/UIRuntime/CommandsDiagnostics.design"
+    ],
+    "UI/Composition.design": [
+      "Shared/Libraries/UIRuntime/Composition.design"
+    ],
+    "UI/Delivery.design": [
+      "Shared/Libraries/UIRuntime/Delivery.design"
+    ],
+    "UI/PonsseDomain.design": [
+      "Containers/BuckingUI/Domain.design"
+    ],
+    "UI/Presentation.design": [
+      "Shared/Libraries/BoxUI/Presentation.design"
+    ],
+    "UI/Renderer.design": [
+      "Shared/Libraries/BoxUI/Renderer.design"
+    ],
+    "UI/Representation.design": [
+      "Shared/Libraries/UIRuntime/Representation.design"
+    ],
+    "UI/SimulatorDomain.design": [
+      "Containers/SimulatorUI/Domain.design"
+    ],
+    "UI/Transport.design": [
+      "Shared/Libraries/UIRuntime/Transport.design"
+    ],
+    "UI/Views.design": [
+      "Containers/BuckingUI/Views.design",
+      "Containers/SimulatorUI/Views.design",
+      "Shared/UI/Views.design"
+    ]
+  }
+}

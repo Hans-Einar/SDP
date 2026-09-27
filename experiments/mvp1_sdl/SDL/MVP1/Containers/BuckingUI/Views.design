@@ -10,18 +10,12 @@ representation AptStandardIdentity.
 representation AptAvailability.
 representation StoreAptAction.
 representation OperatorCommandCatalog.
-representation ServiceBanner.
-representation UnhandledDiagnostics.
-representation SimulatorTruthView.
 composition OperatorComposition.
-composition SimulatorComposition.
 presentation OperatorPresentationSchema.
-presentation SimulatorPresentationSchema.
 view MainLengthView.
 view CompactLengthView.
 view StemPlotView.
 view AptMatrixView.
-
 AggregateLogLength typed-as LengthValue.
 AggregateLogLength describes "Current semantic length, scoped to operator context/stem; one underlying value may have two views.".
 MeasuredDiameter typed-as LengthValue.
@@ -42,12 +36,6 @@ StoreAptAction typed-as ActionValue.
 StoreAptAction describes "Domain-owned store request; no renderer codec/serialization.".
 OperatorCommandCatalog typed-as StateRecord.
 OperatorCommandCatalog describes "Federated upstream availability; no authority grant implied.".
-ServiceBanner typed-as TextValue.
-ServiceBanner describes "Global service/session/error presentation separated from unrelated box updates.".
-UnhandledDiagnostics typed-as ListValue.
-UnhandledDiagnostics describes "Bounded routing/failure diagnostics with drop counts and recursion exclusion.".
-SimulatorTruthView typed-as StateRecord.
-SimulatorTruthView describes "Explicit simulator-only hidden truth with provenance label; never normal machine evidence.".
 OperatorComposition references AggregateLogLength.
 OperatorComposition references MeasuredDiameter.
 OperatorComposition references HeadCursorPosition.
@@ -60,13 +48,9 @@ OperatorComposition references StoreAptAction.
 OperatorComposition references OperatorCommandCatalog.
 OperatorComposition references ServiceBanner.
 OperatorComposition references UnhandledDiagnostics.
-SimulatorComposition references SimulatorTruthView.
 OperatorUiDomain configures OperatorComposition.
-SimulatorUiDomain configures SimulatorComposition.
 OperatorUiDomain configures OperatorPresentationSchema.
-SimulatorUiDomain configures SimulatorPresentationSchema.
 OperatorPresentationSchema renders OperatorComposition.
-SimulatorPresentationSchema renders SimulatorComposition.
 MainLengthView binds-to AggregateLogLength.
 CompactLengthView binds-to AggregateLogLength.
 StemPlotView binds-to StemSeries.

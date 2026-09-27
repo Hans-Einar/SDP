@@ -46,6 +46,18 @@ of its sentences or make the extensions below executable.
 
 ## 2. Proposed authoring layout
 
+**MVP1 pilot update, 2026-09-27:** the owner selected a concrete organization in
+[the authoring exercise](../../../experiments/mvp1_sdl/README.md): Containers/
+for the nine application containers (including separate BuckingUI/SimulatorUI),
+Shared/Libraries/ for library definitions, Shared/UI/ for MVP1-wide UI composition,
+and system-local SDUI/ for application screens. Contracts/, Scenarios/,
+Governance/ and System/Features/Ports/State.design remain at the system root.
+The [pilot plan](../../../SDP/04--Design/MVP1/SourcePilot/Plan.md) preserves existing
+model facts; reusable candidates are not automatically extracted libraries.
+The historical sketch below predates that organization. It is rationale, not a
+second required layout or a delivered multi-file compiler contract.
+
+
 This is an illustrative future tree under the Ponsse repository, not a set of
 existing files or valid new declaration syntax:
 
