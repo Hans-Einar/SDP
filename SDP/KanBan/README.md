@@ -46,6 +46,7 @@
 | KB-SDP-032 | Study | backlog | [Evaluate SDL viewpoints through integrated XFMD navigation](backlog/%23032--Study--Viewpoint-navigation-feedback.md) |
 | KB-SDP-033 | Study | completed | [Plan XFMD SDP adoption through gh-sdp and a practical SDL design pilot](completed/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md) |
 | KB-SDP-034 | Bug | completed | [External KanBan references](completed/%23034--Bug--External-KanBan-references.md) |
+| KB-SDP-035 | Proposal | backlog | [Community feedback after an understood internal pilot](backlog/%23035--Proposal--Community-feedback-after-internal-pilot.md) |
 
 ## Purpose and authority
 
