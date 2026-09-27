@@ -1,13 +1,13 @@
 schemaVersion: "1.0"
 toolkit:
-  version: "0.2.1"
-  releaseState: released
-  releaseTargetVersion: "0.2.1"
-  releaseDate: "2026-09-27"
+  version: "0.2.2"
+  releaseState: prerelease
+  releaseTargetVersion: "0.2.2"
+  releaseDate: "2026-09-28"
   minimumInstallerVersion: "0.2.0"
   compatibilityRange: ">=0.1.0 <1.0.0"
-  gitTag: v0.2.1
-  releaseCommit: 4bacfce05f92f0dab9680456e297214727b54bc6
+  gitTag: null
+  releaseCommit: null
 framework:
   version: "1.0.0"
 agentsContract:

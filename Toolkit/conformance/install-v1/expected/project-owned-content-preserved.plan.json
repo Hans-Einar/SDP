@@ -3,8 +3,8 @@
   "manifestSchemaVersion": "1.0",
   "orderingPolicy": "migration-first-manifest-order-v1",
   "mode": "plan",
-  "toolkitVersion": "0.2.1",
-  "installedToolkitVersion": "0.2.1",
+  "toolkitVersion": "0.2.2",
+  "installedToolkitVersion": "0.2.2",
   "options": {
     "initializeProjectStructure": false,
     "forceManagedFiles": true
@@ -24,8 +24,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 2,
@@ -40,8 +40,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 3,
@@ -56,8 +56,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 4,
@@ -72,8 +72,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 5,
@@ -88,8 +88,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 6,
@@ -104,8 +104,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 7,
@@ -120,8 +120,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 8,
@@ -136,8 +136,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 9,
@@ -152,8 +152,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 10,
@@ -168,8 +168,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 11,
@@ -184,8 +184,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 12,
@@ -200,8 +200,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 13,
@@ -216,8 +216,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 14,
@@ -232,8 +232,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 15,
@@ -248,8 +248,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 16,
@@ -264,8 +264,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 17,
@@ -280,8 +280,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 18,
@@ -296,8 +296,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 19,
@@ -312,8 +312,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 20,
@@ -328,8 +328,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 21,
@@ -344,8 +344,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 22,
@@ -360,8 +360,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 23,
@@ -376,8 +376,8 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 24,
@@ -392,8 +392,8 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 25,
@@ -408,8 +408,8 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 26,
@@ -424,8 +424,8 @@
       "ownership": "project-owned",
       "reason": "missing-only-content",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 27,
@@ -440,8 +440,8 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 28,
@@ -456,8 +456,8 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 29,
@@ -472,8 +472,8 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 30,
@@ -488,8 +488,8 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 31,
@@ -504,8 +504,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 32,
@@ -520,8 +520,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     },
     {
       "sequence": 33,
@@ -536,8 +536,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "0.2.2",
+      "newToolkitVersion": "0.2.2"
     }
   ]
 }

@@ -1,0 +1,14 @@
+schemaVersion: "1.0"
+releaseId: REL-0.2.2
+version: "0.2.2"
+state: prerelease
+releaseNotesPath: RELEASE-NOTES.md
+includedCapabilities:
+  - sdp.install.v1
+verificationRecords:
+  - SDP-VER-TS1
+reviewRecords: []
+migrationRecord: Toolkit/docs/Installer-Migration.md
+releasePreparationCommit: null
+gitTag: null
+githubReleaseUrl: null

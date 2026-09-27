@@ -4,6 +4,21 @@
 
 Release-Date: unreleased
 
+## [0.2.2] - 2026-09-28
+
+### Fixed
+
+- [MAINT-SDP-0009] Current project templates have one canonical Template/sdp-root home; legacy install-v1 templates are archived separately with preserved payloads.
+- [MAINT-SDP-0009] Installed source guidance defines SDP/SDL/<System> ownership, container and shared-library boundaries, SDUI screen homes, and authored versus generated documentation.
+
+### Added
+
+- [PLAN-SDP-0005] Repository-only MVP1 source organization and three static SDUI examples with reproducible previews. This does not add experimental MVP1 parsing or runtime integration to the released tools.
+
+### Migration
+
+- [MAINT-SDP-0010] Signed upgrades support SDP 0.2.0 and 0.2.1. Missing SDL guides initialize; existing project-owned documents and model locations remain unchanged. Managed agent instructions link the source convention. gh-sdp 0.1.2 selects this release by default.
+
 ## [0.2.1] - 2026-09-27
 
 ### Fixed

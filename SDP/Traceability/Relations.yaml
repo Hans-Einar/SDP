@@ -201,6 +201,9 @@ reviews:
       low: 0
       note: 4
 verification:
+  SDP-VER-TS1:
+    status: passed
+    path: Maintenance/TS1/Evidence.md
   SDPTOOL-VER-ER1-M1:
     status: passed
     path: 05--Implementation/SDPTool/ExternalReferences/Plan.md
@@ -321,6 +324,17 @@ verification:
     corpusDigest: e346fc230b26c3045305c1ffee22ff43edfc61aa99597005134a314b210b8114
 migrations: {}
 releases:
+  REL-0.2.2:
+    version: "0.2.2"
+    state: prerelease
+    releaseNotes: RELEASE-NOTES.md
+    manifest: SDP.manifest.yaml
+    releaseRecord: Releases/REL-0.2.2.yaml
+    verification: [SDP-VER-TS1]
+    reviews: []
+    releaseCommit: null
+    gitTag: null
+    githubRelease: null
   REL-0.2.1:
     version: "0.2.1"
     state: released
