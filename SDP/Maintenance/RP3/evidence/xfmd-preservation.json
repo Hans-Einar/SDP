@@ -1,0 +1,29 @@
+{
+  "beforeFileCount": 1229,
+  "modifiedExistingFiles": [
+    "AGENTS.md",
+    "SDP/Framework/README.md",
+    "SDP/Framework/installed-toolkit.manifest.yaml",
+    "SDP/ProjectManagement/Ledger.ndjson"
+  ],
+  "missingFiles": [],
+  "originalLedgerPrefixPreserved": true,
+  "allOtherOriginalFilesUnchanged": true,
+  "receipt": {
+    "capabilities": [
+      "sdp-install-command/1",
+      "sdp.process.five-phase.v1",
+      "sdp.project-management.v1",
+      "sdp.planning.v1"
+    ],
+    "descriptorDigest": "767527e0d7f54866bab95f4642ffffb2a344024c1805f44b3d5ea9c024829125",
+    "installedAt": "2026-09-27T23:43:32Z",
+    "managementProfile": "sdp-project-management/0.2",
+    "operationId": "install-908de684b6794a7c03c58b95",
+    "processProfile": "sdp-five-phase/0.1",
+    "provenance": "signed",
+    "release": "1.0.0",
+    "schemaVersion": "3.0",
+    "sourceCommit": "fede327d6f3af35fe7aad323e2c485a27134d20d"
+  }
+}
