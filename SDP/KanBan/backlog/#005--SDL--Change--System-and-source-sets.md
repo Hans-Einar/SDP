@@ -52,3 +52,9 @@ EVT-KB-SDL-000025; next review at the next selection or relevant dependency deli
 2026-09-25T12:38:14Z — EVT-KB-SDL-000026: backlog, no longer queued. KB-SDP-021 is next.
 Existing single-file SDL services allow the first SDPTool Sprint to proceed;
 future source-set support still depends on this contract before model migration.
+
+## MVP1 pilot follow-up — 2026-09-27
+
+The owner-authorized MVP1 pilot (PLAN-SDP-0005) now preserves 4,523 statements across 68 explicitly listed files with separate UI containers. Full navigation still requires System/source-set linking AND decisions on the candidate exercise profile; source assembly alone is insufficient. Revisions must cover all inputs. Do not use the inventory auditor as an SDL parser.
+
+[Pilot and navigation handoff](../../../experiments/mvp1_sdl/Navigation.md).

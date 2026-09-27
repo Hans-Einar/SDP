@@ -34,6 +34,15 @@ The September 17 inventory-audit.json remains dated baseline evidence (66 files)
 Current migration evidence is in [evidence/MPV1](evidence/MPV1/README.md).
 The candidate exercise profile is still not supported by the released Go parser.
 
+## UI design and navigation pilot
+
+[Open the generated UI gallery](preview/index.md) for the operator dashboard,
+APT editor and separate simulator console. [SDUI source/binding guide](SDL/MVP1/SDUI/README.md)
+records ownership, prototype boundaries and reproducible export commands.
+[Navigation handoff](Navigation.md) distinguishes working SDUI discovery/Markdown
+preview from the remaining full SDL source-set/profile work. These sources are
+registered for SDPTool navigation; the experimental SDL model is not.
+
 ## Purpose and authority
 
 The owner requested a system-wide trial before extending the parser. Necessary

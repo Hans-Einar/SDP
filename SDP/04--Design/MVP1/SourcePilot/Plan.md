@@ -4,7 +4,7 @@
 | --- | --- |
 | id | PLAN-SDP-0005 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | DesignPlan |
 | Systems | SDL, SDUI |
 | BranchPolicy | current |
@@ -43,8 +43,8 @@ machine connectivity, executable contracts or domain authority.
 | Phase / milestone | Acceptance | Status |
 | --- | --- | --- |
 | MPV1-M1 | Move/split sources by ownership; update explicit includes, coverage and live links; exact normalized statement multiset unchanged; inventory passes | Delivered |
-| MPV2-M1 | Operator, APT editing and simulator SDUI screens parse and generate AST, dump and SVG; inspect rendered results; document intended bindings and limitations | Pending |
-| MPV2-M2 | Reproducible export, source/tool provenance and navigation handoff; record remaining multi-file/profile support in existing backlog; verify docs/history and close plan | Pending |
+| MPV2-M1 | Operator, APT editing and simulator SDUI screens parse and generate AST, dump and SVG; inspect rendered results; document intended bindings and limitations | Delivered |
+| MPV2-M2 | Reproducible export, source/tool provenance and navigation handoff; record remaining multi-file/profile support in existing backlog; verify docs/history and close plan | Delivered |
 
 ## Git and verification
 
@@ -67,3 +67,27 @@ need explicit profile decisions before dynamic SDL navigation. Do not flatten or
 silently discard those facts to make a legacy parser accept the system.
 
 MPV1-M1 evidence: [preservation and inventory](../../../../experiments/mvp1_sdl/evidence/MPV1/README.md). All 4,523 statements preserved; 68 files; management replay passes.
+
+## MPV2 outcome
+
+[Generated gallery](../../../../experiments/mvp1_sdl/preview/index.md) and
+[SDUI binding guide](../../../../experiments/mvp1_sdl/SDL/MVP1/SDUI/README.md)
+deliver the operator dashboard, APT editor and separate simulator console.
+[MPV2 evidence](../../../../experiments/mvp1_sdl/evidence/MPV2/README.md) records
+current Go parsing, AST/dump/SVG generation, deterministic export, visual inspection,
+six additional viewport checks and passing relevant Go package tests.
+All three registered screens also generate structural Markdown on demand through
+the installed gh sdp producer with expected source revisions.
+
+Management replay passes. The L1 document/preserved-history checker passes with
+Markdown enumeration limited to Git-indexed files: 105 frozen records/prefixes,
+574 existing generated outputs, 2705 links and 134 fragments at the pre-closeout
+check. Its unfiltered scan encounters unrelated untracked node_modules documentation;
+that dependency tree is excluded, untouched and not claimed verified.
+
+The existing backlog cards were reviewed and retain their broader unfinished
+scope. [The navigation handoff](../../../../experiments/mvp1_sdl/Navigation.md)
+records required multi-file/profile support and a concrete first MVP1 workflow.
+This plan is complete for source organization and proposed static UI designs.
+Full SDL navigation, actual domain bindings, native interaction and owner visual
+acceptance remain separate work. No Ponsse/XFMD application changes or release.

@@ -1,0 +1,2255 @@
+{
+  "astFormat": "sdui-ast/0.2",
+  "document": {
+    "connections": [],
+    "definitions": [
+      {
+        "name": "session",
+        "root": {
+          "arguments": [],
+          "kind": "frame",
+          "layout": [
+            {
+              "name": "x",
+              "span": {
+                "column": 6,
+                "end": 438,
+                "line": 11,
+                "start": 432,
+                "type": "Span"
+              },
+              "spelling": "x=28fr",
+              "type": "LayoutRule",
+              "value": {
+                "kind": "fr",
+                "span": {
+                  "column": 8,
+                  "end": 438,
+                  "line": 11,
+                  "start": 434,
+                  "type": "Span"
+                },
+                "type": "Literal",
+                "value": 28
+              }
+            }
+          ],
+          "name": null,
+          "role": null,
+          "rows": [
+            {
+              "items": [
+                {
+                  "arguments": [],
+                  "kind": "markdown",
+                  "layout": [],
+                  "name": null,
+                  "role": "header",
+                  "rows": [],
+                  "span": {
+                    "column": 3,
+                    "end": 141,
+                    "line": 5,
+                    "start": 112,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": {
+                    "kind": "string",
+                    "span": {
+                      "column": 10,
+                      "end": 141,
+                      "line": 5,
+                      "start": 119,
+                      "type": "Span"
+                    },
+                    "type": "Literal",
+                    "value": "## Simulator session"
+                  },
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                },
+                {
+                  "arguments": [],
+                  "kind": "markdown",
+                  "layout": [],
+                  "name": null,
+                  "role": null,
+                  "rows": [],
+                  "span": {
+                    "column": 3,
+                    "end": 243,
+                    "line": 6,
+                    "start": 145,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": {
+                    "kind": "string",
+                    "span": {
+                      "column": 3,
+                      "end": 243,
+                      "line": 6,
+                      "start": 145,
+                      "type": "Span"
+                    },
+                    "type": "Literal",
+                    "value": "**Target** / simulated P1000\n\n**Session** / preview only\n\n**Control channel** / disconnected"
+                  },
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                }
+              ],
+              "span": {
+                "column": 3,
+                "end": 243,
+                "line": 5,
+                "start": 112,
+                "type": "Span"
+              },
+              "type": "Row"
+            },
+            {
+              "items": [
+                {
+                  "arguments": [],
+                  "kind": "group",
+                  "layout": [],
+                  "name": null,
+                  "role": null,
+                  "rows": [
+                    {
+                      "items": [
+                        {
+                          "arguments": [],
+                          "kind": "markdown",
+                          "layout": [],
+                          "name": null,
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 4,
+                            "end": 258,
+                            "line": 7,
+                            "start": 248,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": {
+                            "kind": "string",
+                            "span": {
+                              "column": 4,
+                              "end": 258,
+                              "line": 7,
+                              "start": 248,
+                              "type": "Span"
+                            },
+                            "type": "Literal",
+                            "value": "Scenario"
+                          },
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        },
+                        {
+                          "arguments": [
+                            {
+                              "name": null,
+                              "span": {
+                                "column": 31,
+                                "end": 289,
+                                "line": 7,
+                                "start": 275,
+                                "type": "Span"
+                              },
+                              "type": "Argument",
+                              "value": {
+                                "kind": "string",
+                                "span": {
+                                  "column": 31,
+                                  "end": 289,
+                                  "line": 7,
+                                  "start": 275,
+                                  "type": "Span"
+                                },
+                                "type": "Literal",
+                                "value": "demo-stem-01"
+                              }
+                            }
+                          ],
+                          "kind": "widget",
+                          "layout": [],
+                          "name": "scenario",
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 16,
+                            "end": 290,
+                            "line": 7,
+                            "start": 260,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": null,
+                          "type": "Node",
+                          "variant": null,
+                          "widget": "input"
+                        }
+                      ],
+                      "span": {
+                        "column": 4,
+                        "end": 290,
+                        "line": 7,
+                        "start": 248,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    }
+                  ],
+                  "span": {
+                    "column": 3,
+                    "end": 291,
+                    "line": 7,
+                    "start": 247,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": null,
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                }
+              ],
+              "span": {
+                "column": 3,
+                "end": 291,
+                "line": 7,
+                "start": 247,
+                "type": "Span"
+              },
+              "type": "Row"
+            },
+            {
+              "items": [
+                {
+                  "arguments": [],
+                  "kind": "group",
+                  "layout": [],
+                  "name": null,
+                  "role": null,
+                  "rows": [
+                    {
+                      "items": [
+                        {
+                          "arguments": [],
+                          "kind": "markdown",
+                          "layout": [],
+                          "name": null,
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 4,
+                            "end": 302,
+                            "line": 8,
+                            "start": 296,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": {
+                            "kind": "string",
+                            "span": {
+                              "column": 4,
+                              "end": 302,
+                              "line": 8,
+                              "start": 296,
+                              "type": "Span"
+                            },
+                            "type": "Literal",
+                            "value": "Seed"
+                          },
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        },
+                        {
+                          "arguments": [
+                            {
+                              "name": null,
+                              "span": {
+                                "column": 23,
+                                "end": 319,
+                                "line": 8,
+                                "start": 315,
+                                "type": "Span"
+                              },
+                              "type": "Argument",
+                              "value": {
+                                "kind": "string",
+                                "span": {
+                                  "column": 23,
+                                  "end": 319,
+                                  "line": 8,
+                                  "start": 315,
+                                  "type": "Span"
+                                },
+                                "type": "Literal",
+                                "value": "42"
+                              }
+                            }
+                          ],
+                          "kind": "widget",
+                          "layout": [],
+                          "name": "seed",
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 12,
+                            "end": 320,
+                            "line": 8,
+                            "start": 304,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": null,
+                          "type": "Node",
+                          "variant": null,
+                          "widget": "input"
+                        }
+                      ],
+                      "span": {
+                        "column": 4,
+                        "end": 320,
+                        "line": 8,
+                        "start": 296,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    }
+                  ],
+                  "span": {
+                    "column": 3,
+                    "end": 321,
+                    "line": 8,
+                    "start": 295,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": null,
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                }
+              ],
+              "span": {
+                "column": 3,
+                "end": 321,
+                "line": 8,
+                "start": 295,
+                "type": "Span"
+              },
+              "type": "Row"
+            },
+            {
+              "items": [
+                {
+                  "arguments": [],
+                  "kind": "group",
+                  "layout": [],
+                  "name": null,
+                  "role": null,
+                  "rows": [
+                    {
+                      "items": [
+                        {
+                          "arguments": [
+                            {
+                              "name": null,
+                              "span": {
+                                "column": 16,
+                                "end": 353,
+                                "line": 9,
+                                "start": 338,
+                                "type": "Span"
+                              },
+                              "type": "Argument",
+                              "value": {
+                                "kind": "string",
+                                "span": {
+                                  "column": 16,
+                                  "end": 353,
+                                  "line": 9,
+                                  "start": 338,
+                                  "type": "Span"
+                                },
+                                "type": "Literal",
+                                "value": "Load scenario"
+                              }
+                            }
+                          ],
+                          "kind": "widget",
+                          "layout": [],
+                          "name": "load",
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 4,
+                            "end": 354,
+                            "line": 9,
+                            "start": 326,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": null,
+                          "type": "Node",
+                          "variant": null,
+                          "widget": "button"
+                        },
+                        {
+                          "arguments": [
+                            {
+                              "name": null,
+                              "span": {
+                                "column": 47,
+                                "end": 376,
+                                "line": 9,
+                                "start": 369,
+                                "type": "Span"
+                              },
+                              "type": "Argument",
+                              "value": {
+                                "kind": "string",
+                                "span": {
+                                  "column": 47,
+                                  "end": 376,
+                                  "line": 9,
+                                  "start": 369,
+                                  "type": "Span"
+                                },
+                                "type": "Literal",
+                                "value": "Reset"
+                              }
+                            }
+                          ],
+                          "kind": "widget",
+                          "layout": [],
+                          "name": "reset",
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 34,
+                            "end": 377,
+                            "line": 9,
+                            "start": 356,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": null,
+                          "type": "Node",
+                          "variant": null,
+                          "widget": "button"
+                        }
+                      ],
+                      "span": {
+                        "column": 4,
+                        "end": 377,
+                        "line": 9,
+                        "start": 326,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    }
+                  ],
+                  "span": {
+                    "column": 3,
+                    "end": 378,
+                    "line": 9,
+                    "start": 325,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": null,
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                }
+              ],
+              "span": {
+                "column": 3,
+                "end": 378,
+                "line": 9,
+                "start": 325,
+                "type": "Span"
+              },
+              "type": "Row"
+            },
+            {
+              "items": [
+                {
+                  "arguments": [],
+                  "kind": "markdown",
+                  "layout": [],
+                  "name": null,
+                  "role": null,
+                  "rows": [],
+                  "span": {
+                    "column": 3,
+                    "end": 426,
+                    "line": 10,
+                    "start": 382,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": {
+                    "kind": "string",
+                    "span": {
+                      "column": 3,
+                      "end": 426,
+                      "line": 10,
+                      "start": 382,
+                      "type": "Span"
+                    },
+                    "type": "Literal",
+                    "value": "No control request is sent by this design."
+                  },
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                }
+              ],
+              "span": {
+                "column": 3,
+                "end": 426,
+                "line": 10,
+                "start": 382,
+                "type": "Span"
+              },
+              "type": "Row"
+            }
+          ],
+          "span": {
+            "column": 11,
+            "end": 439,
+            "line": 4,
+            "start": 108,
+            "type": "Span"
+          },
+          "target": null,
+          "text": null,
+          "type": "Node",
+          "variant": "b",
+          "widget": null
+        },
+        "span": {
+          "column": 1,
+          "end": 440,
+          "line": 4,
+          "start": 98,
+          "type": "Span"
+        },
+        "type": "Definition"
+      },
+      {
+        "name": "truth",
+        "root": {
+          "arguments": [],
+          "kind": "frame",
+          "layout": [
+            {
+              "name": "x",
+              "span": {
+                "column": 6,
+                "end": 731,
+                "line": 17,
+                "start": 725,
+                "type": "Span"
+              },
+              "spelling": "x=36fr",
+              "type": "LayoutRule",
+              "value": {
+                "kind": "fr",
+                "span": {
+                  "column": 8,
+                  "end": 731,
+                  "line": 17,
+                  "start": 727,
+                  "type": "Span"
+                },
+                "type": "Literal",
+                "value": 36
+              }
+            }
+          ],
+          "name": null,
+          "role": null,
+          "rows": [
+            {
+              "items": [
+                {
+                  "arguments": [],
+                  "kind": "markdown",
+                  "layout": [],
+                  "name": null,
+                  "role": "header",
+                  "rows": [],
+                  "span": {
+                    "column": 3,
+                    "end": 486,
+                    "line": 14,
+                    "start": 454,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": {
+                    "kind": "string",
+                    "span": {
+                      "column": 10,
+                      "end": 486,
+                      "line": 14,
+                      "start": 461,
+                      "type": "Span"
+                    },
+                    "type": "Literal",
+                    "value": "## Simulator-only truth"
+                  },
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                },
+                {
+                  "arguments": [],
+                  "kind": "markdown",
+                  "layout": [],
+                  "name": null,
+                  "role": null,
+                  "rows": [],
+                  "span": {
+                    "column": 3,
+                    "end": 682,
+                    "line": 15,
+                    "start": 490,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": {
+                    "kind": "string",
+                    "span": {
+                      "column": 3,
+                      "end": 682,
+                      "line": 15,
+                      "start": 490,
+                      "type": "Span"
+                    },
+                    "type": "Literal",
+                    "value": "**HIDDEN TRUTH / diagnostic context only**\n\nConfigured length / 18.2 m\nButt diameter / 42 cm\nSpecies / spruce\n\nSample truth is diagnostic only.\nIt is not machine measurement evidence."
+                  },
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                }
+              ],
+              "span": {
+                "column": 3,
+                "end": 682,
+                "line": 14,
+                "start": 454,
+                "type": "Span"
+              },
+              "type": "Row"
+            },
+            {
+              "items": [
+                {
+                  "arguments": [
+                    {
+                      "name": null,
+                      "span": {
+                        "column": 18,
+                        "end": 718,
+                        "line": 16,
+                        "start": 701,
+                        "type": "Span"
+                      },
+                      "type": "Argument",
+                      "value": {
+                        "kind": "string",
+                        "span": {
+                          "column": 18,
+                          "end": 718,
+                          "line": 16,
+                          "start": 701,
+                          "type": "Span"
+                        },
+                        "type": "Literal",
+                        "value": "Inspect fixture"
+                      }
+                    }
+                  ],
+                  "kind": "widget",
+                  "layout": [],
+                  "name": "inspect",
+                  "role": null,
+                  "rows": [],
+                  "span": {
+                    "column": 3,
+                    "end": 719,
+                    "line": 16,
+                    "start": 686,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": null,
+                  "type": "Node",
+                  "variant": null,
+                  "widget": "button"
+                }
+              ],
+              "span": {
+                "column": 3,
+                "end": 719,
+                "line": 16,
+                "start": 686,
+                "type": "Span"
+              },
+              "type": "Row"
+            }
+          ],
+          "span": {
+            "column": 9,
+            "end": 732,
+            "line": 13,
+            "start": 450,
+            "type": "Span"
+          },
+          "target": null,
+          "text": null,
+          "type": "Node",
+          "variant": "b",
+          "widget": null
+        },
+        "span": {
+          "column": 1,
+          "end": 733,
+          "line": 13,
+          "start": 442,
+          "type": "Span"
+        },
+        "type": "Definition"
+      },
+      {
+        "name": "wire",
+        "root": {
+          "arguments": [],
+          "kind": "frame",
+          "layout": [
+            {
+              "name": "x",
+              "span": {
+                "column": 6,
+                "end": 1002,
+                "line": 23,
+                "start": 996,
+                "type": "Span"
+              },
+              "spelling": "x=36fr",
+              "type": "LayoutRule",
+              "value": {
+                "kind": "fr",
+                "span": {
+                  "column": 8,
+                  "end": 1002,
+                  "line": 23,
+                  "start": 998,
+                  "type": "Span"
+                },
+                "type": "Literal",
+                "value": 36
+              }
+            }
+          ],
+          "name": null,
+          "role": null,
+          "rows": [
+            {
+              "items": [
+                {
+                  "arguments": [],
+                  "kind": "markdown",
+                  "layout": [],
+                  "name": null,
+                  "role": "header",
+                  "rows": [],
+                  "span": {
+                    "column": 3,
+                    "end": 784,
+                    "line": 20,
+                    "start": 746,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": {
+                    "kind": "string",
+                    "span": {
+                      "column": 10,
+                      "end": 784,
+                      "line": 20,
+                      "start": 753,
+                      "type": "Span"
+                    },
+                    "type": "Literal",
+                    "value": "## P1000-visible observations"
+                  },
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                },
+                {
+                  "arguments": [],
+                  "kind": "markdown",
+                  "layout": [],
+                  "name": null,
+                  "role": null,
+                  "rows": [],
+                  "span": {
+                    "column": 3,
+                    "end": 915,
+                    "line": 21,
+                    "start": 788,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": {
+                    "kind": "string",
+                    "span": {
+                      "column": 3,
+                      "end": 915,
+                      "line": 21,
+                      "start": 788,
+                      "type": "Span"
+                    },
+                    "type": "Literal",
+                    "value": "**Emitted length** / 412.0 cm\n\n**Emitted diameter** / 28.4 cm\n\n**Sequence** / sample 108\n\n**Delivery** / no live stream"
+                  },
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                }
+              ],
+              "span": {
+                "column": 3,
+                "end": 915,
+                "line": 20,
+                "start": 746,
+                "type": "Span"
+              },
+              "type": "Row"
+            },
+            {
+              "items": [
+                {
+                  "arguments": [],
+                  "kind": "markdown",
+                  "layout": [],
+                  "name": null,
+                  "role": null,
+                  "rows": [],
+                  "span": {
+                    "column": 3,
+                    "end": 990,
+                    "line": 22,
+                    "start": 919,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": {
+                    "kind": "string",
+                    "span": {
+                      "column": 3,
+                      "end": 990,
+                      "line": 22,
+                      "start": 919,
+                      "type": "Span"
+                    },
+                    "type": "Literal",
+                    "value": "View emitted observations separately from configured simulator truth."
+                  },
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                }
+              ],
+              "span": {
+                "column": 3,
+                "end": 990,
+                "line": 22,
+                "start": 919,
+                "type": "Span"
+              },
+              "type": "Row"
+            }
+          ],
+          "span": {
+            "column": 8,
+            "end": 1003,
+            "line": 19,
+            "start": 742,
+            "type": "Span"
+          },
+          "target": null,
+          "text": null,
+          "type": "Node",
+          "variant": "b",
+          "widget": null
+        },
+        "span": {
+          "column": 1,
+          "end": 1004,
+          "line": 19,
+          "start": 735,
+          "type": "Span"
+        },
+        "type": "Definition"
+      },
+      {
+        "name": "control",
+        "root": {
+          "arguments": [],
+          "kind": "frame",
+          "layout": [
+            {
+              "name": "x",
+              "span": {
+                "column": 6,
+                "end": 1215,
+                "line": 29,
+                "start": 1209,
+                "type": "Span"
+              },
+              "spelling": "x=40fr",
+              "type": "LayoutRule",
+              "value": {
+                "kind": "fr",
+                "span": {
+                  "column": 8,
+                  "end": 1215,
+                  "line": 29,
+                  "start": 1211,
+                  "type": "Span"
+                },
+                "type": "Literal",
+                "value": 40
+              }
+            }
+          ],
+          "name": null,
+          "role": null,
+          "rows": [
+            {
+              "items": [
+                {
+                  "arguments": [],
+                  "kind": "markdown",
+                  "layout": [],
+                  "name": null,
+                  "role": "header",
+                  "rows": [],
+                  "span": {
+                    "column": 3,
+                    "end": 1049,
+                    "line": 26,
+                    "start": 1020,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": {
+                    "kind": "string",
+                    "span": {
+                      "column": 10,
+                      "end": 1049,
+                      "line": 26,
+                      "start": 1027,
+                      "type": "Span"
+                    },
+                    "type": "Literal",
+                    "value": "## Scenario controls"
+                  },
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                },
+                {
+                  "arguments": [],
+                  "kind": "group",
+                  "layout": [],
+                  "name": null,
+                  "role": null,
+                  "rows": [
+                    {
+                      "items": [
+                        {
+                          "arguments": [
+                            {
+                              "name": null,
+                              "span": {
+                                "column": 17,
+                                "end": 1074,
+                                "line": 27,
+                                "start": 1067,
+                                "type": "Span"
+                              },
+                              "type": "Argument",
+                              "value": {
+                                "kind": "string",
+                                "span": {
+                                  "column": 17,
+                                  "end": 1074,
+                                  "line": 27,
+                                  "start": 1067,
+                                  "type": "Span"
+                                },
+                                "type": "Literal",
+                                "value": "Start"
+                              }
+                            }
+                          ],
+                          "kind": "widget",
+                          "layout": [],
+                          "name": "start",
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 4,
+                            "end": 1075,
+                            "line": 27,
+                            "start": 1054,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": null,
+                          "type": "Node",
+                          "variant": null,
+                          "widget": "button"
+                        },
+                        {
+                          "arguments": [
+                            {
+                              "name": null,
+                              "span": {
+                                "column": 40,
+                                "end": 1097,
+                                "line": 27,
+                                "start": 1090,
+                                "type": "Span"
+                              },
+                              "type": "Argument",
+                              "value": {
+                                "kind": "string",
+                                "span": {
+                                  "column": 40,
+                                  "end": 1097,
+                                  "line": 27,
+                                  "start": 1090,
+                                  "type": "Span"
+                                },
+                                "type": "Literal",
+                                "value": "Pause"
+                              }
+                            }
+                          ],
+                          "kind": "widget",
+                          "layout": [],
+                          "name": "pause",
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 27,
+                            "end": 1098,
+                            "line": 27,
+                            "start": 1077,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": null,
+                          "type": "Node",
+                          "variant": null,
+                          "widget": "button"
+                        },
+                        {
+                          "arguments": [
+                            {
+                              "name": null,
+                              "span": {
+                                "column": 62,
+                                "end": 1125,
+                                "line": 27,
+                                "start": 1112,
+                                "type": "Span"
+                              },
+                              "type": "Argument",
+                              "value": {
+                                "kind": "string",
+                                "span": {
+                                  "column": 62,
+                                  "end": 1125,
+                                  "line": 27,
+                                  "start": 1112,
+                                  "type": "Span"
+                                },
+                                "type": "Literal",
+                                "value": "Single step"
+                              }
+                            }
+                          ],
+                          "kind": "widget",
+                          "layout": [],
+                          "name": "step",
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 50,
+                            "end": 1126,
+                            "line": 27,
+                            "start": 1100,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": null,
+                          "type": "Node",
+                          "variant": null,
+                          "widget": "button"
+                        }
+                      ],
+                      "span": {
+                        "column": 4,
+                        "end": 1126,
+                        "line": 27,
+                        "start": 1054,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    }
+                  ],
+                  "span": {
+                    "column": 3,
+                    "end": 1127,
+                    "line": 27,
+                    "start": 1053,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": null,
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                }
+              ],
+              "span": {
+                "column": 3,
+                "end": 1127,
+                "line": 26,
+                "start": 1020,
+                "type": "Span"
+              },
+              "type": "Row"
+            },
+            {
+              "items": [
+                {
+                  "arguments": [],
+                  "kind": "markdown",
+                  "layout": [],
+                  "name": null,
+                  "role": null,
+                  "rows": [],
+                  "span": {
+                    "column": 3,
+                    "end": 1203,
+                    "line": 28,
+                    "start": 1131,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": {
+                    "kind": "string",
+                    "span": {
+                      "column": 3,
+                      "end": 1203,
+                      "line": 28,
+                      "start": 1131,
+                      "type": "Span"
+                    },
+                    "type": "Literal",
+                    "value": "Named prototype actions / exact control protocol binding remains open."
+                  },
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                }
+              ],
+              "span": {
+                "column": 3,
+                "end": 1203,
+                "line": 28,
+                "start": 1131,
+                "type": "Span"
+              },
+              "type": "Row"
+            }
+          ],
+          "span": {
+            "column": 11,
+            "end": 1216,
+            "line": 25,
+            "start": 1016,
+            "type": "Span"
+          },
+          "target": null,
+          "text": null,
+          "type": "Node",
+          "variant": "b",
+          "widget": null
+        },
+        "span": {
+          "column": 1,
+          "end": 1217,
+          "line": 25,
+          "start": 1006,
+          "type": "Span"
+        },
+        "type": "Definition"
+      },
+      {
+        "name": "commands",
+        "root": {
+          "arguments": [],
+          "kind": "frame",
+          "layout": [
+            {
+              "name": "x",
+              "span": {
+                "column": 6,
+                "end": 1496,
+                "line": 36,
+                "start": 1490,
+                "type": "Span"
+              },
+              "spelling": "x=60fr",
+              "type": "LayoutRule",
+              "value": {
+                "kind": "fr",
+                "span": {
+                  "column": 8,
+                  "end": 1496,
+                  "line": 36,
+                  "start": 1492,
+                  "type": "Span"
+                },
+                "type": "Literal",
+                "value": 60
+              }
+            }
+          ],
+          "name": null,
+          "role": null,
+          "rows": [
+            {
+              "items": [
+                {
+                  "arguments": [],
+                  "kind": "markdown",
+                  "layout": [],
+                  "name": null,
+                  "role": "header",
+                  "rows": [],
+                  "span": {
+                    "column": 3,
+                    "end": 1265,
+                    "line": 32,
+                    "start": 1234,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": {
+                    "kind": "string",
+                    "span": {
+                      "column": 10,
+                      "end": 1265,
+                      "line": 32,
+                      "start": 1241,
+                      "type": "Span"
+                    },
+                    "type": "Literal",
+                    "value": "## Command observation"
+                  },
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                },
+                {
+                  "arguments": [],
+                  "kind": "markdown",
+                  "layout": [],
+                  "name": null,
+                  "role": null,
+                  "rows": [],
+                  "span": {
+                    "column": 3,
+                    "end": 1328,
+                    "line": 33,
+                    "start": 1269,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": {
+                    "kind": "string",
+                    "span": {
+                      "column": 3,
+                      "end": 1328,
+                      "line": 33,
+                      "start": 1269,
+                      "type": "Span"
+                    },
+                    "type": "Literal",
+                    "value": "**Command ID** / none\n**Outcome** / no request submitted"
+                  },
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                }
+              ],
+              "span": {
+                "column": 3,
+                "end": 1328,
+                "line": 32,
+                "start": 1234,
+                "type": "Span"
+              },
+              "type": "Row"
+            },
+            {
+              "items": [
+                {
+                  "arguments": [],
+                  "kind": "group",
+                  "layout": [],
+                  "name": null,
+                  "role": null,
+                  "rows": [
+                    {
+                      "items": [
+                        {
+                          "arguments": [
+                            {
+                              "name": null,
+                              "span": {
+                                "column": 18,
+                                "end": 1364,
+                                "line": 34,
+                                "start": 1347,
+                                "type": "Span"
+                              },
+                              "type": "Argument",
+                              "value": {
+                                "kind": "string",
+                                "span": {
+                                  "column": 18,
+                                  "end": 1364,
+                                  "line": 34,
+                                  "start": 1347,
+                                  "type": "Span"
+                                },
+                                "type": "Literal",
+                                "value": "Look up outcome"
+                              }
+                            }
+                          ],
+                          "kind": "widget",
+                          "layout": [],
+                          "name": "lookup",
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 4,
+                            "end": 1365,
+                            "line": 34,
+                            "start": 1333,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": null,
+                          "type": "Node",
+                          "variant": null,
+                          "widget": "button"
+                        },
+                        {
+                          "arguments": [
+                            {
+                              "name": null,
+                              "span": {
+                                "column": 51,
+                                "end": 1395,
+                                "line": 34,
+                                "start": 1380,
+                                "type": "Span"
+                              },
+                              "type": "Argument",
+                              "value": {
+                                "kind": "string",
+                                "span": {
+                                  "column": 51,
+                                  "end": 1395,
+                                  "line": 34,
+                                  "start": 1380,
+                                  "type": "Span"
+                                },
+                                "type": "Literal",
+                                "value": "Retry same ID"
+                              }
+                            }
+                          ],
+                          "kind": "widget",
+                          "layout": [],
+                          "name": "retry",
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 38,
+                            "end": 1396,
+                            "line": 34,
+                            "start": 1367,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": null,
+                          "type": "Node",
+                          "variant": null,
+                          "widget": "button"
+                        }
+                      ],
+                      "span": {
+                        "column": 4,
+                        "end": 1396,
+                        "line": 34,
+                        "start": 1333,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    }
+                  ],
+                  "span": {
+                    "column": 3,
+                    "end": 1397,
+                    "line": 34,
+                    "start": 1332,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": null,
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                }
+              ],
+              "span": {
+                "column": 3,
+                "end": 1397,
+                "line": 34,
+                "start": 1332,
+                "type": "Span"
+              },
+              "type": "Row"
+            },
+            {
+              "items": [
+                {
+                  "arguments": [],
+                  "kind": "markdown",
+                  "layout": [],
+                  "name": null,
+                  "role": null,
+                  "rows": [],
+                  "span": {
+                    "column": 3,
+                    "end": 1484,
+                    "line": 35,
+                    "start": 1401,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": {
+                    "kind": "string",
+                    "span": {
+                      "column": 3,
+                      "end": 1484,
+                      "line": 35,
+                      "start": 1401,
+                      "type": "Span"
+                    },
+                    "type": "Literal",
+                    "value": "Unknown outcomes stay unknown. Retry must preserve the original command identity."
+                  },
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                }
+              ],
+              "span": {
+                "column": 3,
+                "end": 1484,
+                "line": 35,
+                "start": 1401,
+                "type": "Span"
+              },
+              "type": "Row"
+            }
+          ],
+          "span": {
+            "column": 12,
+            "end": 1497,
+            "line": 31,
+            "start": 1230,
+            "type": "Span"
+          },
+          "target": null,
+          "text": null,
+          "type": "Node",
+          "variant": "b",
+          "widget": null
+        },
+        "span": {
+          "column": 1,
+          "end": 1498,
+          "line": 31,
+          "start": 1219,
+          "type": "Span"
+        },
+        "type": "Definition"
+      },
+      {
+        "name": "page",
+        "root": {
+          "arguments": [],
+          "kind": "frame",
+          "layout": [
+            {
+              "name": "ratio",
+              "span": {
+                "column": 4,
+                "end": 1888,
+                "line": 45,
+                "start": 1884,
+                "type": "Span"
+              },
+              "spelling": "16:9",
+              "type": "LayoutRule",
+              "value": {
+                "kind": "ratio",
+                "span": {
+                  "column": 4,
+                  "end": 1888,
+                  "line": 45,
+                  "start": 1884,
+                  "type": "Span"
+                },
+                "type": "Literal",
+                "value": [
+                  16,
+                  9
+                ]
+              }
+            },
+            {
+              "name": "arrow",
+              "span": {
+                "column": 10,
+                "end": 1893,
+                "line": 45,
+                "start": 1890,
+                "type": "Span"
+              },
+              "spelling": "\u003c-\u003e",
+              "type": "LayoutRule",
+              "value": {
+                "kind": "arrow",
+                "span": {
+                  "column": 10,
+                  "end": 1893,
+                  "line": 45,
+                  "start": 1890,
+                  "type": "Span"
+                },
+                "type": "Literal",
+                "value": "\u003c-\u003e"
+              }
+            },
+            {
+              "name": "font",
+              "span": {
+                "column": 15,
+                "end": 1902,
+                "line": 45,
+                "start": 1895,
+                "type": "Span"
+              },
+              "spelling": "font=16",
+              "type": "LayoutRule",
+              "value": {
+                "kind": "number",
+                "span": {
+                  "column": 20,
+                  "end": 1902,
+                  "line": 45,
+                  "start": 1900,
+                  "type": "Span"
+                },
+                "type": "Literal",
+                "value": 16
+              }
+            },
+            {
+              "name": "gap",
+              "span": {
+                "column": 24,
+                "end": 1913,
+                "line": 45,
+                "start": 1904,
+                "type": "Span"
+              },
+              "spelling": "gap=0.012",
+              "type": "LayoutRule",
+              "value": {
+                "kind": "number",
+                "span": {
+                  "column": 28,
+                  "end": 1913,
+                  "line": 45,
+                  "start": 1908,
+                  "type": "Span"
+                },
+                "type": "Literal",
+                "value": 0.012
+              }
+            },
+            {
+              "name": "padding",
+              "span": {
+                "column": 35,
+                "end": 1928,
+                "line": 45,
+                "start": 1915,
+                "type": "Span"
+              },
+              "spelling": "padding=0.012",
+              "type": "LayoutRule",
+              "value": {
+                "kind": "number",
+                "span": {
+                  "column": 43,
+                  "end": 1928,
+                  "line": 45,
+                  "start": 1923,
+                  "type": "Span"
+                },
+                "type": "Literal",
+                "value": 0.012
+              }
+            }
+          ],
+          "name": null,
+          "role": null,
+          "rows": [
+            {
+              "items": [
+                {
+                  "arguments": [],
+                  "kind": "group",
+                  "layout": [],
+                  "name": null,
+                  "role": "header",
+                  "rows": [
+                    {
+                      "items": [
+                        {
+                          "arguments": [],
+                          "kind": "markdown",
+                          "layout": [
+                            {
+                              "name": "font",
+                              "span": {
+                                "column": 41,
+                                "end": 1556,
+                                "line": 39,
+                                "start": 1549,
+                                "type": "Span"
+                              },
+                              "spelling": "font=24",
+                              "type": "LayoutRule",
+                              "value": {
+                                "kind": "number",
+                                "span": {
+                                  "column": 46,
+                                  "end": 1556,
+                                  "line": 39,
+                                  "start": 1554,
+                                  "type": "Span"
+                                },
+                                "type": "Literal",
+                                "value": 24
+                              }
+                            }
+                          ],
+                          "name": null,
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 11,
+                            "end": 1557,
+                            "line": 39,
+                            "start": 1519,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": {
+                            "kind": "string",
+                            "span": {
+                              "column": 11,
+                              "end": 1547,
+                              "line": 39,
+                              "start": 1519,
+                              "type": "Span"
+                            },
+                            "type": "Literal",
+                            "value": "# MVP1 / Simulator console"
+                          },
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        }
+                      ],
+                      "span": {
+                        "column": 11,
+                        "end": 1557,
+                        "line": 39,
+                        "start": 1519,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    },
+                    {
+                      "items": [
+                        {
+                          "arguments": [],
+                          "kind": "markdown",
+                          "layout": [],
+                          "name": null,
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 51,
+                            "end": 1636,
+                            "line": 39,
+                            "start": 1559,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": {
+                            "kind": "string",
+                            "span": {
+                              "column": 51,
+                              "end": 1636,
+                              "line": 39,
+                              "start": 1559,
+                              "type": "Span"
+                            },
+                            "type": "Literal",
+                            "value": "DESIGN PREVIEW / isolated simulator context / no physical device connection"
+                          },
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        }
+                      ],
+                      "span": {
+                        "column": 51,
+                        "end": 1636,
+                        "line": 39,
+                        "start": 1559,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    }
+                  ],
+                  "span": {
+                    "column": 3,
+                    "end": 1637,
+                    "line": 39,
+                    "start": 1511,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": null,
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                },
+                {
+                  "arguments": [],
+                  "kind": "frame",
+                  "layout": [
+                    {
+                      "name": "scale",
+                      "span": {
+                        "column": 6,
+                        "end": 1760,
+                        "line": 43,
+                        "start": 1753,
+                        "type": "Span"
+                      },
+                      "spelling": "scale=1",
+                      "type": "LayoutRule",
+                      "value": {
+                        "kind": "number",
+                        "span": {
+                          "column": 12,
+                          "end": 1760,
+                          "line": 43,
+                          "start": 1759,
+                          "type": "Span"
+                        },
+                        "type": "Literal",
+                        "value": 1
+                      }
+                    },
+                    {
+                      "name": "items",
+                      "span": {
+                        "column": 15,
+                        "end": 1775,
+                        "line": 43,
+                        "start": 1762,
+                        "type": "Span"
+                      },
+                      "spelling": "items=stretch",
+                      "type": "LayoutRule",
+                      "value": {
+                        "kind": "enum",
+                        "span": {
+                          "column": 21,
+                          "end": 1775,
+                          "line": 43,
+                          "start": 1768,
+                          "type": "Span"
+                        },
+                        "type": "Literal",
+                        "value": "stretch"
+                      }
+                    },
+                    {
+                      "name": "gap",
+                      "span": {
+                        "column": 30,
+                        "end": 1786,
+                        "line": 43,
+                        "start": 1777,
+                        "type": "Span"
+                      },
+                      "spelling": "gap=0.012",
+                      "type": "LayoutRule",
+                      "value": {
+                        "kind": "number",
+                        "span": {
+                          "column": 34,
+                          "end": 1786,
+                          "line": 43,
+                          "start": 1781,
+                          "type": "Span"
+                        },
+                        "type": "Literal",
+                        "value": 0.012
+                      }
+                    }
+                  ],
+                  "name": null,
+                  "role": "body",
+                  "rows": [
+                    {
+                      "items": [
+                        {
+                          "arguments": [],
+                          "kind": "frame",
+                          "layout": [
+                            {
+                              "name": "y",
+                              "span": {
+                                "column": 29,
+                                "end": 1682,
+                                "line": 41,
+                                "start": 1676,
+                                "type": "Span"
+                              },
+                              "spelling": "y=65fr",
+                              "type": "LayoutRule",
+                              "value": {
+                                "kind": "fr",
+                                "span": {
+                                  "column": 31,
+                                  "end": 1682,
+                                  "line": 41,
+                                  "start": 1678,
+                                  "type": "Span"
+                                },
+                                "type": "Literal",
+                                "value": 65
+                              }
+                            },
+                            {
+                              "name": "items",
+                              "span": {
+                                "column": 37,
+                                "end": 1697,
+                                "line": 41,
+                                "start": 1684,
+                                "type": "Span"
+                              },
+                              "spelling": "items=stretch",
+                              "type": "LayoutRule",
+                              "value": {
+                                "kind": "enum",
+                                "span": {
+                                  "column": 43,
+                                  "end": 1697,
+                                  "line": 41,
+                                  "start": 1690,
+                                  "type": "Span"
+                                },
+                                "type": "Literal",
+                                "value": "stretch"
+                              }
+                            }
+                          ],
+                          "name": null,
+                          "role": null,
+                          "rows": [
+                            {
+                              "items": [
+                                {
+                                  "arguments": [],
+                                  "kind": "use",
+                                  "layout": [],
+                                  "name": null,
+                                  "role": null,
+                                  "rows": [],
+                                  "span": {
+                                    "column": 6,
+                                    "end": 1660,
+                                    "line": 41,
+                                    "start": 1653,
+                                    "type": "Span"
+                                  },
+                                  "target": "session",
+                                  "text": null,
+                                  "type": "Node",
+                                  "variant": null,
+                                  "widget": null
+                                },
+                                {
+                                  "arguments": [],
+                                  "kind": "use",
+                                  "layout": [],
+                                  "name": null,
+                                  "role": null,
+                                  "rows": [],
+                                  "span": {
+                                    "column": 15,
+                                    "end": 1667,
+                                    "line": 41,
+                                    "start": 1662,
+                                    "type": "Span"
+                                  },
+                                  "target": "truth",
+                                  "text": null,
+                                  "type": "Node",
+                                  "variant": null,
+                                  "widget": null
+                                },
+                                {
+                                  "arguments": [],
+                                  "kind": "use",
+                                  "layout": [],
+                                  "name": null,
+                                  "role": null,
+                                  "rows": [],
+                                  "span": {
+                                    "column": 22,
+                                    "end": 1673,
+                                    "line": 41,
+                                    "start": 1669,
+                                    "type": "Span"
+                                  },
+                                  "target": "wire",
+                                  "text": null,
+                                  "type": "Node",
+                                  "variant": null,
+                                  "widget": null
+                                }
+                              ],
+                              "span": {
+                                "column": 6,
+                                "end": 1673,
+                                "line": 41,
+                                "start": 1653,
+                                "type": "Span"
+                              },
+                              "type": "Row"
+                            }
+                          ],
+                          "span": {
+                            "column": 5,
+                            "end": 1698,
+                            "line": 41,
+                            "start": 1652,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": null,
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        }
+                      ],
+                      "span": {
+                        "column": 5,
+                        "end": 1698,
+                        "line": 41,
+                        "start": 1652,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    },
+                    {
+                      "items": [
+                        {
+                          "arguments": [],
+                          "kind": "frame",
+                          "layout": [
+                            {
+                              "name": "y",
+                              "span": {
+                                "column": 26,
+                                "end": 1731,
+                                "line": 42,
+                                "start": 1725,
+                                "type": "Span"
+                              },
+                              "spelling": "y=35fr",
+                              "type": "LayoutRule",
+                              "value": {
+                                "kind": "fr",
+                                "span": {
+                                  "column": 28,
+                                  "end": 1731,
+                                  "line": 42,
+                                  "start": 1727,
+                                  "type": "Span"
+                                },
+                                "type": "Literal",
+                                "value": 35
+                              }
+                            },
+                            {
+                              "name": "items",
+                              "span": {
+                                "column": 34,
+                                "end": 1746,
+                                "line": 42,
+                                "start": 1733,
+                                "type": "Span"
+                              },
+                              "spelling": "items=stretch",
+                              "type": "LayoutRule",
+                              "value": {
+                                "kind": "enum",
+                                "span": {
+                                  "column": 40,
+                                  "end": 1746,
+                                  "line": 42,
+                                  "start": 1739,
+                                  "type": "Span"
+                                },
+                                "type": "Literal",
+                                "value": "stretch"
+                              }
+                            }
+                          ],
+                          "name": null,
+                          "role": null,
+                          "rows": [
+                            {
+                              "items": [
+                                {
+                                  "arguments": [],
+                                  "kind": "use",
+                                  "layout": [],
+                                  "name": null,
+                                  "role": null,
+                                  "rows": [],
+                                  "span": {
+                                    "column": 6,
+                                    "end": 1712,
+                                    "line": 42,
+                                    "start": 1705,
+                                    "type": "Span"
+                                  },
+                                  "target": "control",
+                                  "text": null,
+                                  "type": "Node",
+                                  "variant": null,
+                                  "widget": null
+                                },
+                                {
+                                  "arguments": [],
+                                  "kind": "use",
+                                  "layout": [],
+                                  "name": null,
+                                  "role": null,
+                                  "rows": [],
+                                  "span": {
+                                    "column": 15,
+                                    "end": 1722,
+                                    "line": 42,
+                                    "start": 1714,
+                                    "type": "Span"
+                                  },
+                                  "target": "commands",
+                                  "text": null,
+                                  "type": "Node",
+                                  "variant": null,
+                                  "widget": null
+                                }
+                              ],
+                              "span": {
+                                "column": 6,
+                                "end": 1722,
+                                "line": 42,
+                                "start": 1705,
+                                "type": "Span"
+                              },
+                              "type": "Row"
+                            }
+                          ],
+                          "span": {
+                            "column": 5,
+                            "end": 1747,
+                            "line": 42,
+                            "start": 1704,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": null,
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        }
+                      ],
+                      "span": {
+                        "column": 5,
+                        "end": 1747,
+                        "line": 42,
+                        "start": 1704,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    }
+                  ],
+                  "span": {
+                    "column": 3,
+                    "end": 1787,
+                    "line": 40,
+                    "start": 1641,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": null,
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                },
+                {
+                  "arguments": [],
+                  "kind": "markdown",
+                  "layout": [],
+                  "name": null,
+                  "role": "footer",
+                  "rows": [],
+                  "span": {
+                    "column": 3,
+                    "end": 1880,
+                    "line": 44,
+                    "start": 1791,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": {
+                    "kind": "string",
+                    "span": {
+                      "column": 10,
+                      "end": 1880,
+                      "line": 44,
+                      "start": 1798,
+                      "type": "Span"
+                    },
+                    "type": "Literal",
+                    "value": "Static sample data / controls unbound / simulator truth is not machine authority"
+                  },
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                }
+              ],
+              "span": {
+                "column": 3,
+                "end": 1880,
+                "line": 39,
+                "start": 1511,
+                "type": "Span"
+              },
+              "type": "Row"
+            }
+          ],
+          "span": {
+            "column": 8,
+            "end": 1929,
+            "line": 38,
+            "start": 1507,
+            "type": "Span"
+          },
+          "target": null,
+          "text": null,
+          "type": "Node",
+          "variant": null,
+          "widget": null
+        },
+        "span": {
+          "column": 1,
+          "end": 1930,
+          "line": 38,
+          "start": 1500,
+          "type": "Span"
+        },
+        "type": "Definition"
+      }
+    ],
+    "profile": "sdui/0.2",
+    "references": [],
+    "span": {
+      "column": 1,
+      "end": 1931,
+      "line": 1,
+      "start": 0,
+      "type": "Span"
+    },
+    "type": "Document"
+  },
+  "validation": "local-profile"
+}

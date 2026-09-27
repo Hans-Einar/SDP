@@ -1,0 +1,21 @@
+SDUI GUI dump | page | 160 columns | structural preview
+# MVP1 / APT editor
+DESIGN PREVIEW / no file import, persistence or activation is connected
++-context--------------------------------+ +-matrix-----------------------------------------------------------------+ +-lifecycle------------------------------+
+|## Draft context                        | |## Price matrix / sample draft                                          | |## Publication                          |
+|**Document** / demo.apt                 | || Diameter class | 310 cm | 370 cm | 430 cm |                           | |**Validation** / preview only           |
+|                                        | || --- | --- | --- | --- |                                               | |                                        |
+|**Standard** / sample classic format    | || 18 cm | 310 | 340 | 360 |                                             | |**Pending command** / none              |
+|                                        | || 22 cm | 360 | 390 | 420 |                                             | |                                        |
+|**Draft revision** / 7                  | || 26 cm | 400 | 440 | 470 |                                             | |**Result** / no operation performed     |
+|                                        | |Read-only matrix preview. Edit the selected cell through the form below.| |[ Store draft ]      [ Export ]         |
+|**Active revision** / 6                 | |+-selected-------------------------------------------------------------+| |[ Activate draft ]                      |
+|[ Import ]           [ Load draft ]     | ||### Selected cell / 22 cm x 430 cm                                    || |Activation requires a current, validated|
+|Unsupported fields stay unavailable.    | ||Proposed price          420: []                 [ Submit edit ]       || |draft and explicit domain permission.   |
+|Import does not activate a draft.       | ||Accepted value / 420    Draft input / 420                             || |                                        |
++----------------------------------------+ ||Submission must carry the expected draft revision.                    || |Stored does not mean active.            |
+                                           |+----------------------------------------------------------------------+| +----------------------------------------+
+                                           |Rejected edits retain the accepted domain value and explain the rejectio|
+                                           |n.                                                                      |
+                                           +------------------------------------------------------------------------+
+[ Back to bucking ]                                                              Sample prices / named controls await typed application bindings

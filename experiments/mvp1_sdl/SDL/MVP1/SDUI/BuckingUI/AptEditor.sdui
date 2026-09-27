@@ -1,0 +1,39 @@
+sdui 0.2;
+# APT design: importing, editing, storing and activating are separate domain actions.
+
+context = [
+  header="## Draft context",
+  "**Document** / demo.apt\n\n**Standard** / sample classic format\n\n**Draft revision** / 7\n\n**Active revision** / 6";
+  <importFile=button("Import"), load=button("Load draft")>;
+  "Unsupported fields stay unavailable.\nImport does not activate a draft."
+]*b {x=26fr};
+
+matrix = [
+  header="## Price matrix / sample draft",
+  """| Diameter class | 310 cm | 370 cm | 430 cm |
+| --- | --- | --- | --- |
+| 18 cm | 310 | 340 | 360 |
+| 22 cm | 360 | 390 | 420 |
+| 26 cm | 400 | 440 | 470 |""";
+  "Read-only matrix preview. Edit the selected cell through the form below.";
+  selected = [
+    header="### Selected cell / 22 cm x 430 cm",
+    <"Proposed price", price=input("420"), submit=button("Submit edit")>;
+    "Accepted value / 420    Draft input / 420\nSubmission must carry the expected draft revision."
+  ]*b;
+  "Rejected edits retain the accepted domain value and explain the rejection."
+]*b {x=48fr};
+
+lifecycle = [
+  header="## Publication",
+  "**Validation** / preview only\n\n**Pending command** / none\n\n**Result** / no operation performed";
+  <store=button("Store draft"), exportFile=button("Export")>;
+  activate=button("Activate draft") {enabled=false};
+  "Activation requires a current, validated\ndraft and explicit domain permission.\n\nStored does not mean active."
+]*b {x=26fr};
+
+page = [
+  header=<"# MVP1 / APT editor" {font=24}; "DESIGN PREVIEW / no file import, persistence or activation is connected">,
+  body=[context, matrix, lifecycle] {scale=1, items=stretch, gap=0.012},
+  footer=<back=button("Back to bucking"), "Sample prices / named controls await typed application bindings">
+] {16:9, <->, font=16, gap=0.012, padding=0.012};

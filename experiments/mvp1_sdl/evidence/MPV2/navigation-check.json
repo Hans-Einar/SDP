@@ -1,0 +1,26 @@
+[
+  {
+    "model": "mvp1-operator",
+    "revision": "309f6256fdcce5fecfb844954a9062e2951a1bb1236fd0c5adaa91e87f22af45",
+    "entry": "page",
+    "operation": "sdui-preview",
+    "result": "pass",
+    "markdownSha256": "8608d187203a9aeb7d9b29756a45f770cfed4b8df8063833a00fe5e1a7e06655"
+  },
+  {
+    "model": "mvp1-apt",
+    "revision": "15898057cbe8a148f1aeda1f2c72bc6af5c773ed0c6125dc05f957ed23708cbd",
+    "entry": "page",
+    "operation": "sdui-preview",
+    "result": "pass",
+    "markdownSha256": "0c771d0b123e688d39065ca5abb7eccfc019a3cc5cdca5d1c5eb69c4bc242060"
+  },
+  {
+    "model": "mvp1-simulator",
+    "revision": "33c923733cf8ce7d4f67d900e246b8497fe6e2a863619e3378fc5a28a0ac5546",
+    "entry": "page",
+    "operation": "sdui-preview",
+    "result": "pass",
+    "markdownSha256": "309573956b39c9d470c75efc0f4c317cfb5f8c2b911d11d40018b79bcf221b56"
+  }
+]

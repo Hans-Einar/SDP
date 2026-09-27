@@ -1,0 +1,45 @@
+sdui 0.2;
+# Separate simulator application. Hidden truth is never operator measurement evidence.
+
+session = [
+  header="## Simulator session",
+  "**Target** / simulated P1000\n\n**Session** / preview only\n\n**Control channel** / disconnected";
+  <"Scenario", scenario=input("demo-stem-01")>;
+  <"Seed", seed=input("42")>;
+  <load=button("Load scenario"), reset=button("Reset")>;
+  "No control request is sent by this design."
+]*b {x=28fr};
+
+truth = [
+  header="## Simulator-only truth",
+  "**HIDDEN TRUTH / diagnostic context only**\n\nConfigured length / 18.2 m\nButt diameter / 42 cm\nSpecies / spruce\n\nSample truth is diagnostic only.\nIt is not machine measurement evidence.";
+  inspect=button("Inspect fixture")
+]*b {x=36fr};
+
+wire = [
+  header="## P1000-visible observations",
+  "**Emitted length** / 412.0 cm\n\n**Emitted diameter** / 28.4 cm\n\n**Sequence** / sample 108\n\n**Delivery** / no live stream";
+  "View emitted observations separately from configured simulator truth."
+]*b {x=36fr};
+
+control = [
+  header="## Scenario controls",
+  <start=button("Start"), pause=button("Pause"), step=button("Single step")>;
+  "Named prototype actions / exact control protocol binding remains open."
+]*b {x=40fr};
+
+commands = [
+  header="## Command observation",
+  "**Command ID** / none\n**Outcome** / no request submitted";
+  <lookup=button("Look up outcome"), retry=button("Retry same ID")>;
+  "Unknown outcomes stay unknown. Retry must preserve the original command identity."
+]*b {x=60fr};
+
+page = [
+  header=<"# MVP1 / Simulator console" {font=24}; "DESIGN PREVIEW / isolated simulator context / no physical device connection">,
+  body=[
+    [session, truth, wire] {y=65fr, items=stretch};
+    [control, commands] {y=35fr, items=stretch}
+  ] {scale=1, items=stretch, gap=0.012},
+  footer="Static sample data / controls unbound / simulator truth is not machine authority"
+] {16:9, <->, font=16, gap=0.012, padding=0.012};

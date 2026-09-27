@@ -46,3 +46,9 @@ application change or new broad renderer integration is authorized here.
 ## Worklog
 
 2026-09-25T22:20:56Z: Registered in backlog before main integration; EVT-KB-SDP-000173.
+
+## MVP1 pilot follow-up — 2026-09-27
+
+The MVP1 pilot supplies separate operator/APT/simulator SDUI screens, registered for current SDPTool structural Markdown preview, plus a generated SVG review gallery. The first full SDL navigation acceptance path is BuckingUI → OperatorInteraction → InspectMachine → MachineService, then the separate simulator path. Full corpus parsing/linking remains a prerequisite; no owner GUI feedback has yet occurred.
+
+[Pilot and navigation handoff](../../../experiments/mvp1_sdl/Navigation.md).

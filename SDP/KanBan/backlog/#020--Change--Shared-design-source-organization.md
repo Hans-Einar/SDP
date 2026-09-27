@@ -60,3 +60,9 @@ lives on the shared board. Product acceptance remains with this primary.
 Keep the dependent shared model/source migration separate from the prerequisite language/input contract.
 
 EVT-KB-SDP-000121; next review at the next selection or relevant dependency delivery.
+
+## MVP1 pilot follow-up — 2026-09-27
+
+PLAN-SDP-0005 pilots a system-owned source tree in experiments/mvp1_sdl: Containers, Shared/Libraries, Shared/UI, Contracts, Scenarios, Governance and SDUI. This refines the earlier phase-folder placement proposal for MVP1; numbered folders remain process/document organization. The broader SDL/SDUI/SDPTool migration is still pending. Preserve one declaration/fact authority and use this pilot as migration evidence, not as multi-file compiler evidence.
+
+[Pilot and navigation handoff](../../../experiments/mvp1_sdl/Navigation.md).

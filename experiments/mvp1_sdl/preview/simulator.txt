@@ -1,0 +1,23 @@
+SDUI GUI dump | page | 160 columns | structural preview
+# MVP1 / Simulator console
+DESIGN PREVIEW / isolated simulator context / no physical device connection
++-session-----------------------------------+ +-truth-------------------------------------------------+ +-wire-------------------------------------------------+
+|## Simulator session                       | |## Simulator-only truth                                | |## P1000-visible observations                         |
+|**Target** / simulated P1000               | |**HIDDEN TRUTH / diagnostic context only**             | |**Emitted length** / 412.0 cm                         |
+|                                           | |                                                       | |                                                      |
+|**Session** / preview only                 | |Configured length / 18.2 m                             | |**Emitted diameter** / 28.4 cm                        |
+|                                           | |Butt diameter / 42 cm                                  | |                                                      |
+|**Control channel** / disconnected         | |Species / spruce                                       | |**Sequence** / sample 108                             |
+|Scenario              demo-stem-01: []     | |                                                       | |                                                      |
+|Seed                  42: []               | |Sample truth is diagnostic only.                       | |**Delivery** / no live stream                         |
+|[ Load scenario ]     [ Reset ]            | |It is not machine measurement evidence.                | |View emitted observations separately from configured s|
+|No control request is sent by this design. | |[ Inspect fixture ]                                    | |imulator truth.                                       |
++-------------------------------------------+ +-------------------------------------------------------+ +------------------------------------------------------+
++-control------------------------------------------------------+ +-commands------------------------------------------------------------------------------------+
+|## Scenario controls                                          | |## Command observation                                                                       |
+|[ Start ]            [ Pause ]            [ Single step ]     | |**Command ID** / none                                                                        |
+|Named prototype actions / exact control protocol binding remai| |**Outcome** / no request submitted                                                           |
+|ns open.                                                      | |[ Look up outcome ]                            [ Retry same ID ]                             |
++--------------------------------------------------------------+ |Unknown outcomes stay unknown. Retry must preserve the original command identity.            |
+                                                                 +---------------------------------------------------------------------------------------------+
+Static sample data / controls unbound / simulator truth is not machine authority
