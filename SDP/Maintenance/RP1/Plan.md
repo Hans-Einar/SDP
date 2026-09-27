@@ -58,3 +58,19 @@ trust checks and maintainer signer rejection tests; vet passes. Production signi
 requires a clean exact source checkout and refuses an unknown publisher or an
 exposed private key. Package version is explicitly selectable for release builds.
 The retained Toolkit artifact is rebuilt from sources after release metadata changes.
+
+Candidate cbb6a4f was packaged from a clean detached worktree with version 0.2.0.
+Its descriptor was signed with the production publisher and verified by SDPTool
+without test-key configuration. Clean install applied 63 actions; repeated upgrade
+proposed zero. The source archive extracted without .git passes Toolkit validation;
+the retained legacy installer applied to an isolated target and recorded
+sourceCommit: null. No live project was touched by these tests. The normal Toolkit
+unit suite passed 106 tests with 19 environment-dependent installer tests skipped;
+those skips are not claimed as coverage. GIP PR39 separately passed all four CI jobs,
+including Windows installer and Linux profile execution.
+
+The publisher key ID is
+bfc4838a7fbe7e7e3e84f86b9b435e69e6e503f4caf01a92319147e9ab701618.
+The private key remains at the owner's private publisher configuration; only the
+public anchor is committed. Preserve that key for future releases; loss requires
+a newly reviewed trust distribution, not an unsigned fallback.
