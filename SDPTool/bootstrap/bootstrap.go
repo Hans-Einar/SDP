@@ -26,9 +26,21 @@ const Protocol = "sdp-install-command/1"
 const maxDescriptor = 16 << 20
 const maxBinary = 512 << 20
 
-// No production trust key or release is selected yet. Production keys must be
-// compiled into a reviewed distribution; a descriptor cannot add a trusted key.
-var trustedKeys = map[string]ed25519.PublicKey{}
+// DefaultRelease is immutable; upgrading the default requires a new client.
+const DefaultRelease = "https://github.com/Hans-Einar/SDP/releases/download/v0.2.0/sdp-release.json"
+
+// Publisher trust is compiled into the distribution, never supplied by a descriptor.
+var trustedKeys = map[string]ed25519.PublicKey{
+	"bfc4838a7fbe7e7e3e84f86b9b435e69e6e503f4caf01a92319147e9ab701618": publisherKey(),
+}
+
+func publisherKey() ed25519.PublicKey {
+	b, err := base64.StdEncoding.DecodeString("N9eFgkVFngWcVlW39UELu9R6J6+wIbisdHh6VFGfFao=")
+	if err != nil {
+		panic(err)
+	}
+	return ed25519.PublicKey(b)
+}
 
 type Config struct {
 	Descriptor string
