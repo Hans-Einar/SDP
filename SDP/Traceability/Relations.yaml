@@ -23,12 +23,18 @@ requirements:
     status: specified
     path: 02--Requirements/SDPTool.md
     design: DES-SDPTOOL-001
+  REQ-SDPTOOL-007:
+    status: specified
+    path: 02--Requirements/SDPTool.md
+    kanban: KB-SDP-033
+    design: DES-SDPTOOL-001
+    note: IPD models planned installation responsibilities; runtime implementation pending.
 designs:
   DES-SDPTOOL-001:
     status: initial-design
     path: 03--Architecture/SDPTool.design
     feature: SdpTool
-    requirements: [REQ-SDPTOOL-001, REQ-SDPTOOL-002, REQ-SDPTOOL-003, REQ-SDPTOOL-004, REQ-SDPTOOL-005, REQ-SDPTOOL-006]
+    requirements: [REQ-SDPTOOL-001, REQ-SDPTOOL-002, REQ-SDPTOOL-003, REQ-SDPTOOL-004, REQ-SDPTOOL-005, REQ-SDPTOOL-006, REQ-SDPTOOL-007]
     implementationPlan: 05--Implementation/SDPTool.md
     kanban: KB-SDP-017
     verification: [VER-SDPTOOL-001]

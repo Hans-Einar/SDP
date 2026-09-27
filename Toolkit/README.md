@@ -1,10 +1,21 @@
-# SDP Toolkit
+# SDP Toolkit — legacy and transition area
 
 Toolkit-Version: 0.2.0 (unreleased)
 
-This directory contains the reusable Toolkit boundary:
+Owner decision, 2026-09-26: [root SDPTool](../SDPTool/README.md) is the common Go
+command entry point and the home of future installation/upgrade execution.
+gh-sdp will be a thin client for SDPTool. Do not create a competing Toolkit Go
+executable. The relocation is recorded in [ST1](../SDP/Maintenance/ST1/Plan.md).
 
-- [SDPTool](SDPTool/README.md) — source home and plan for the project-aware sdptool facade; Go facade delivered; see its current scope
+This directory is retained as a legacy/transition area. **Legacy does not mean
+unused:** the PowerShell installer is still the implemented installation engine;
+profiles, schemas, payload, validators and conformance fixtures remain active
+inputs. Do not delete them or claim Go installation parity before the SDPTool
+migration is verified. Current compatibility instructions below remain accurate
+for the retained engine, not the target architecture.
+
+Retained contents:
+
 - `profiles/five-phase.json` — authored current process configuration and reproducible artifact
 - `SDP-install.manifest.json` — authoritative legacy install-v1 inventory and policy
 - `schemas/` — installation, plan, manifest, traceability, record and build contracts

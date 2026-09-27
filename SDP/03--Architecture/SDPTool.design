@@ -1,10 +1,24 @@
 language design-core version 0.5.
 functionality AcceptSourceSnapshot.
+usecase AdoptManualProcess.
+functionality ApplyInstallationPlan.
+message ApplyInstallationRejected.
+message ApplyInstallationRequest.
+message ApplyInstallationResult.
+channel BaselineInspectionCalls.
+contract BaselineInspectionCallsProtocol.
 usecase BrowseProject.
 functionality BuildDesignPreview.
+functionality BuildInstallationPlan.
 unit CardHistory.
 capability CardRevisionAccess.
+message CheckpointInstallationRequest.
+message CheckpointInstallationResult.
+mode ClientBootstrap.
 activity ConsumerValidationSlice.
+functionality CoordinateInstallation.
+message CreateInstallationPlanRequest.
+message CreateInstallationPlanResult.
 activity DeliverSdpTool.
 functionality DeliverViewBundle.
 functionality DescribeNavigationTree.
@@ -12,53 +26,214 @@ actor DesignAuthor.
 capability DesignPreview.
 actor DesignReviewer.
 actor DocumentViewer.
+message ExecuteInstallationPlanRequest.
+message ExecuteInstallationPlanResult.
+message FetchProcessArtifactRequest.
+message FetchProcessArtifactResult.
+message FetchSdpToolRejected.
+message FetchSdpToolRequest.
+message FetchSdpToolResult.
+activity GhSdpClientSlice.
+unit GhSdpLauncher.
+container GhSdpProcess.
 interface GitHistoryPort.
 mode HistoryInspection.
 activity HistorySlice.
+message InspectBaselineRequest.
+message InspectBaselineResult.
 usecase InspectCardHistory.
+functionality InspectInstallationBaseline.
+contract InstallApplyArguments.
+field InstallApplyArgumentsPlanDigest.
+field InstallApplyArgumentsProjectRoot.
+contract InstallJournalRecord.
+field InstallJournalRecordOperationIdentity.
+field InstallJournalRecordPlanDigest.
+field InstallJournalRecordRecordBytes.
+field InstallJournalRecordResultStatus.
+contract InstallOutcome.
+field InstallOutcomeRecordBytes.
+field InstallOutcomeResultStatus.
+contract InstallPlanRecord.
+field InstallPlanRecordPlanDigest.
+field InstallPlanRecordProjectRoot.
+field InstallPlanRecordRecordBytes.
+contract InstallPlanningArguments.
+field InstallPlanningArgumentsAdoptionDigest.
+field InstallPlanningArgumentsArtifactDigest.
+field InstallPlanningArgumentsProjectRoot.
+field InstallPlanningArgumentsReleaseIdentity.
+usecase InstallProjectProcess.
+contract InstallReceiptRecord.
+field InstallReceiptRecordArtifactDigest.
+field InstallReceiptRecordRecordBytes.
+field InstallReceiptRecordReleaseIdentity.
+field InstallReceiptRecordSchemaIdentity.
+contract InstallReleaseArguments.
+field InstallReleaseArgumentsReleaseIdentity.
+contract InstallReleaseRecord.
+field InstallReleaseRecordArtifactDigest.
+field InstallReleaseRecordRecordBytes.
+field InstallReleaseRecordReleaseIdentity.
+contract InstallResumeArguments.
+field InstallResumeArgumentsOperationIdentity.
+field InstallResumeArgumentsProjectRoot.
+scenario InstallationApplied.
+channel InstallationApplyCalls.
+contract InstallationApplyCallsProtocol.
+activity InstallationApplySlice.
+unit InstallationBaselineInspector.
+unit InstallationCoordinator.
+scenario InstallationDriftRejected.
+mode InstallationExecution.
+channel InstallationExecutionCalls.
+contract InstallationExecutionCallsProtocol.
+unit InstallationExecutor.
+interface InstallationFilesystemPort.
+unit InstallationJournal.
+channel InstallationJournalCalls.
+contract InstallationJournalCallsProtocol.
+interface InstallationJournalPort.
+dataset InstallationOperationRecords.
+channel InstallationPlanCalls.
+contract InstallationPlanCallsProtocol.
+scenario InstallationPlanPrepared.
+activity InstallationPlanSlice.
+unit InstallationPlanner.
+mode InstallationPlanning.
+channel InstallationPlanningCalls.
+contract InstallationPlanningCallsProtocol.
+channel InstallationReceiptCalls.
+contract InstallationReceiptCallsProtocol.
+unit InstallationRecorder.
+capability InstallationRecovery.
+channel InstallationRecoveryCalls.
+contract InstallationRecoveryCallsProtocol.
+mode InstallationRecoveryMode.
+activity InstallationRecoverySlice.
+unit InstallationReleaseResolver.
+channel InstallationResumeCalls.
+contract InstallationResumeCallsProtocol.
+scenario InstallationResumed.
+database InstallationStore.
+dataset InstalledProcessRecords.
+functionality InvokeInstallationCommand.
 interface KanBanReadPort.
+activity ManualAdoptionTrial.
+capability ManualProcessAdoption.
 unit NavigationInventory.
 activity NavigationSlice.
+database OperationStore.
+functionality PersistInstallationJournal.
 capability PlanAssistance.
 activity PlanAssistanceSlice.
 unit PlanCoordinator.
+message PlanInstallationRejected.
+message PlanInstallationRequest.
+message PlanInstallationResult.
 unit PreviewCoordinator.
 usecase PreviewDesign.
 activity PreviewSlice.
 mode ProcessPlanning.
+dataset ProcessReleaseRecords.
 mode ProjectBrowsing.
 unit ProjectContext.
 activity ProjectDiscoverySlice.
+capability ProjectInstallation.
+actor ProjectMaintainer.
 capability ProjectNavigation.
 functionality ProposeImplementationSlices.
+functionality PublishInstalledProcessFacts.
+message RecordInstallationRequest.
+message RecordInstallationResult.
+message RecoverInstallationRequest.
+message RecoverInstallationResult.
+usecase RecoverProjectUpgrade.
+channel ReleaseArtifactCalls.
+contract ReleaseArtifactCallsProtocol.
+interface ReleaseArtifactPort.
+unit ReleaseArtifactService.
+database ReleaseCatalogStore.
+container ReleaseRepositoryProcess.
+channel ReleaseResolutionCalls.
+contract ReleaseResolutionCallsProtocol.
 functionality ResolveCardHistory.
+functionality ResolveInstallationRelease.
+message ResolveProcessReleaseRequest.
+message ResolveProcessReleaseResult.
 functionality ResolveProjectContext.
+functionality ResumeInstallationOperation.
+message ResumeInstallationRejected.
+message ResumeInstallationRequest.
+message ResumeInstallationResult.
+functionality RetrieveSdpToolBinary.
 usecase ReviewImplementationPlan.
+dataset ReviewedInstallationPlans.
 activity SavedFilePreview.
 interface SdlProjectionPort.
 feature SdpTool.
+capability SdpToolBootstrap.
+channel SdpToolBootstrapCalls.
+contract SdpToolBootstrapCallsProtocol.
+scenario SdpToolBootstrapPrepared.
+interface SdpToolInvocationPort.
 container SdpToolProcess.
 interface SduiDocumentPort.
 mode StandalonePreview.
 interface TraceabilityReadPort.
 activity UnsavedSourcePreview.
+usecase UpgradeProjectProcess.
+functionality ValidateAdoptionBaseline.
 functionality ValidateImplementationPlan.
 unit ViewerBridge.
 interface ViewerDeliveryPort.
 AcceptSourceSnapshot allocated-to SdpToolProcess in mode StandalonePreview.
 AcceptSourceSnapshot contributes-to SdpTool.
 AcceptSourceSnapshot realizes DesignPreview.
+ApplyInstallationPlan allocated-to SdpToolProcess in mode InstallationExecution.
+ApplyInstallationPlan contributes-to SdpTool.
+ApplyInstallationPlan realizes ProjectInstallation.
+ApplyInstallationRejected has message-kind = result.
+ApplyInstallationRejected replies-to ApplyInstallationRequest.
+ApplyInstallationRejected upholds InstallOutcome.
+ApplyInstallationRequest has message-kind = request.
+ApplyInstallationRequest upholds InstallApplyArguments.
+ApplyInstallationResult has message-kind = result.
+ApplyInstallationResult replies-to ApplyInstallationRequest.
+ApplyInstallationResult upholds InstallOutcome.
+BaselineInspectionCalls upholds BaselineInspectionCallsProtocol.
+BaselineInspectionCallsProtocol has completeness = closed.
+BaselineInspectionCallsProtocol permits InspectBaselineRequest.
+BaselineInspectionCallsProtocol permits InspectBaselineResult.
 BuildDesignPreview allocated-to SdpToolProcess in mode StandalonePreview.
 BuildDesignPreview contributes-to SdpTool.
 BuildDesignPreview realizes DesignPreview.
+BuildInstallationPlan allocated-to SdpToolProcess in mode InstallationPlanning.
+BuildInstallationPlan contributes-to SdpTool.
+BuildInstallationPlan realizes ProjectInstallation.
 CardHistory consumes GitHistoryPort.
 CardHistory consumes KanBanReadPort.
 CardHistory owns ResolveCardHistory.
 CardRevisionAccess requires GitHistoryPort in mode HistoryInspection.
+CheckpointInstallationRequest has message-kind = request.
+CheckpointInstallationRequest upholds InstallJournalRecord.
+CheckpointInstallationResult has message-kind = result.
+CheckpointInstallationResult replies-to CheckpointInstallationRequest.
+CheckpointInstallationResult upholds InstallOutcome.
 ConsumerValidationSlice addresses DeliverViewBundle.
 ConsumerValidationSlice depends-on NavigationSlice.
 ConsumerValidationSlice has implementation-status = planned.
 ConsumerValidationSlice refines DeliverSdpTool.
+CoordinateInstallation allocated-to SdpToolProcess in mode InstallationExecution.
+CoordinateInstallation allocated-to SdpToolProcess in mode InstallationPlanning.
+CoordinateInstallation allocated-to SdpToolProcess in mode InstallationRecoveryMode.
+CoordinateInstallation contributes-to SdpTool.
+CoordinateInstallation realizes ProjectInstallation.
+CreateInstallationPlanRequest has message-kind = request.
+CreateInstallationPlanRequest upholds InstallPlanningArguments.
+CreateInstallationPlanResult has message-kind = result.
+CreateInstallationPlanResult replies-to CreateInstallationPlanRequest.
+CreateInstallationPlanResult upholds InstallOutcome.
 DeliverSdpTool has implementation-status = planned.
 DeliverViewBundle allocated-to SdpToolProcess in mode ProjectBrowsing.
 DeliverViewBundle allocated-to SdpToolProcess in mode StandalonePreview.
@@ -76,11 +251,330 @@ DesignReviewer pursues InspectCardHistory.
 DesignReviewer pursues ReviewImplementationPlan.
 DocumentViewer pursues BrowseProject.
 DocumentViewer pursues PreviewDesign.
+ExecuteInstallationPlanRequest has message-kind = request.
+ExecuteInstallationPlanRequest upholds InstallApplyArguments.
+ExecuteInstallationPlanResult has message-kind = result.
+ExecuteInstallationPlanResult replies-to ExecuteInstallationPlanRequest.
+ExecuteInstallationPlanResult upholds InstallOutcome.
+FetchProcessArtifactRequest has message-kind = request.
+FetchProcessArtifactRequest upholds InstallReleaseArguments.
+FetchProcessArtifactResult has message-kind = result.
+FetchProcessArtifactResult replies-to FetchProcessArtifactRequest.
+FetchProcessArtifactResult upholds InstallOutcome.
+FetchSdpToolRejected has message-kind = result.
+FetchSdpToolRejected replies-to FetchSdpToolRequest.
+FetchSdpToolRejected upholds InstallOutcome.
+FetchSdpToolRequest has message-kind = request.
+FetchSdpToolRequest upholds InstallReleaseArguments.
+FetchSdpToolResult has message-kind = result.
+FetchSdpToolResult replies-to FetchSdpToolRequest.
+FetchSdpToolResult upholds InstallOutcome.
+GhSdpClientSlice addresses InvokeInstallationCommand.
+GhSdpClientSlice addresses RetrieveSdpToolBinary.
+GhSdpClientSlice delivers SdpTool.
+GhSdpClientSlice depends-on InstallationRecoverySlice.
+GhSdpClientSlice has implementation-status = implemented.
+GhSdpClientSlice refines DeliverSdpTool.
+GhSdpLauncher consumes ReleaseArtifactPort.
+GhSdpLauncher consumes SdpToolInvocationPort.
+GhSdpLauncher owns InvokeInstallationCommand.
+GhSdpLauncher owns RetrieveSdpToolBinary.
+GhSdpLauncher uses InstallationApplyCalls as receiver of ApplyInstallationRejected in mode InstallationExecution.
+GhSdpLauncher uses InstallationApplyCalls as receiver of ApplyInstallationResult in mode InstallationExecution.
+GhSdpLauncher uses InstallationApplyCalls as sender of ApplyInstallationRequest in mode InstallationExecution.
+GhSdpLauncher uses InstallationPlanningCalls as receiver of PlanInstallationRejected in mode InstallationPlanning.
+GhSdpLauncher uses InstallationPlanningCalls as receiver of PlanInstallationResult in mode InstallationPlanning.
+GhSdpLauncher uses InstallationPlanningCalls as sender of PlanInstallationRequest in mode InstallationPlanning.
+GhSdpLauncher uses InstallationResumeCalls as receiver of ResumeInstallationRejected in mode InstallationRecoveryMode.
+GhSdpLauncher uses InstallationResumeCalls as receiver of ResumeInstallationResult in mode InstallationRecoveryMode.
+GhSdpLauncher uses InstallationResumeCalls as sender of ResumeInstallationRequest in mode InstallationRecoveryMode.
+GhSdpLauncher uses SdpToolBootstrapCalls as receiver of FetchSdpToolRejected in mode ClientBootstrap.
+GhSdpLauncher uses SdpToolBootstrapCalls as receiver of FetchSdpToolResult in mode ClientBootstrap.
+GhSdpLauncher uses SdpToolBootstrapCalls as sender of FetchSdpToolRequest in mode ClientBootstrap.
+GhSdpProcess contains GhSdpLauncher.
+GhSdpProcess provides SdpToolBootstrap.
 HistorySlice addresses ResolveCardHistory.
 HistorySlice delivers SdpTool.
 HistorySlice depends-on ProjectDiscoverySlice.
 HistorySlice has implementation-status = planned.
 HistorySlice refines DeliverSdpTool.
+InspectBaselineRequest has message-kind = request.
+InspectBaselineRequest upholds InstallPlanningArguments.
+InspectBaselineResult has message-kind = result.
+InspectBaselineResult replies-to InspectBaselineRequest.
+InspectBaselineResult upholds InstallOutcome.
+InspectInstallationBaseline allocated-to SdpToolProcess in mode InstallationPlanning.
+InspectInstallationBaseline contributes-to SdpTool.
+InspectInstallationBaseline realizes ProjectInstallation.
+InstallApplyArguments has completeness = closed.
+InstallApplyArguments has-field InstallApplyArgumentsPlanDigest.
+InstallApplyArguments has-field InstallApplyArgumentsProjectRoot.
+InstallApplyArgumentsPlanDigest has presence = required.
+InstallApplyArgumentsPlanDigest has value-type = text.
+InstallApplyArgumentsProjectRoot has presence = required.
+InstallApplyArgumentsProjectRoot has value-type = text.
+InstallJournalRecord has completeness = closed.
+InstallJournalRecord has-field InstallJournalRecordOperationIdentity.
+InstallJournalRecord has-field InstallJournalRecordPlanDigest.
+InstallJournalRecord has-field InstallJournalRecordRecordBytes.
+InstallJournalRecord has-field InstallJournalRecordResultStatus.
+InstallJournalRecordOperationIdentity has presence = required.
+InstallJournalRecordOperationIdentity has value-type = text.
+InstallJournalRecordPlanDigest has presence = required.
+InstallJournalRecordPlanDigest has value-type = text.
+InstallJournalRecordRecordBytes has presence = required.
+InstallJournalRecordRecordBytes has value-type = bytes.
+InstallJournalRecordResultStatus has presence = required.
+InstallJournalRecordResultStatus has value-type = text.
+InstallOutcome has completeness = closed.
+InstallOutcome has-field InstallOutcomeRecordBytes.
+InstallOutcome has-field InstallOutcomeResultStatus.
+InstallOutcomeRecordBytes has presence = required.
+InstallOutcomeRecordBytes has value-type = bytes.
+InstallOutcomeResultStatus has presence = required.
+InstallOutcomeResultStatus has value-type = text.
+InstallPlanRecord has completeness = closed.
+InstallPlanRecord has-field InstallPlanRecordPlanDigest.
+InstallPlanRecord has-field InstallPlanRecordProjectRoot.
+InstallPlanRecord has-field InstallPlanRecordRecordBytes.
+InstallPlanRecordPlanDigest has presence = required.
+InstallPlanRecordPlanDigest has value-type = text.
+InstallPlanRecordProjectRoot has presence = required.
+InstallPlanRecordProjectRoot has value-type = text.
+InstallPlanRecordRecordBytes has presence = required.
+InstallPlanRecordRecordBytes has value-type = bytes.
+InstallPlanningArguments has completeness = closed.
+InstallPlanningArguments has-field InstallPlanningArgumentsAdoptionDigest.
+InstallPlanningArguments has-field InstallPlanningArgumentsArtifactDigest.
+InstallPlanningArguments has-field InstallPlanningArgumentsProjectRoot.
+InstallPlanningArguments has-field InstallPlanningArgumentsReleaseIdentity.
+InstallPlanningArgumentsAdoptionDigest has presence = required.
+InstallPlanningArgumentsAdoptionDigest has value-type = text.
+InstallPlanningArgumentsArtifactDigest has presence = required.
+InstallPlanningArgumentsArtifactDigest has value-type = text.
+InstallPlanningArgumentsProjectRoot has presence = required.
+InstallPlanningArgumentsProjectRoot has value-type = text.
+InstallPlanningArgumentsReleaseIdentity has presence = required.
+InstallPlanningArgumentsReleaseIdentity has value-type = text.
+InstallReceiptRecord has completeness = closed.
+InstallReceiptRecord has-field InstallReceiptRecordArtifactDigest.
+InstallReceiptRecord has-field InstallReceiptRecordRecordBytes.
+InstallReceiptRecord has-field InstallReceiptRecordReleaseIdentity.
+InstallReceiptRecord has-field InstallReceiptRecordSchemaIdentity.
+InstallReceiptRecordArtifactDigest has presence = required.
+InstallReceiptRecordArtifactDigest has value-type = text.
+InstallReceiptRecordRecordBytes has presence = required.
+InstallReceiptRecordRecordBytes has value-type = bytes.
+InstallReceiptRecordReleaseIdentity has presence = required.
+InstallReceiptRecordReleaseIdentity has value-type = text.
+InstallReceiptRecordSchemaIdentity has presence = required.
+InstallReceiptRecordSchemaIdentity has value-type = text.
+InstallReleaseArguments has completeness = closed.
+InstallReleaseArguments has-field InstallReleaseArgumentsReleaseIdentity.
+InstallReleaseArgumentsReleaseIdentity has presence = required.
+InstallReleaseArgumentsReleaseIdentity has value-type = text.
+InstallReleaseRecord has completeness = closed.
+InstallReleaseRecord has-field InstallReleaseRecordArtifactDigest.
+InstallReleaseRecord has-field InstallReleaseRecordRecordBytes.
+InstallReleaseRecord has-field InstallReleaseRecordReleaseIdentity.
+InstallReleaseRecordArtifactDigest has presence = required.
+InstallReleaseRecordArtifactDigest has value-type = text.
+InstallReleaseRecordRecordBytes has presence = required.
+InstallReleaseRecordRecordBytes has value-type = bytes.
+InstallReleaseRecordReleaseIdentity has presence = required.
+InstallReleaseRecordReleaseIdentity has value-type = text.
+InstallResumeArguments has completeness = closed.
+InstallResumeArguments has-field InstallResumeArgumentsOperationIdentity.
+InstallResumeArguments has-field InstallResumeArgumentsProjectRoot.
+InstallResumeArgumentsOperationIdentity has presence = required.
+InstallResumeArgumentsOperationIdentity has value-type = text.
+InstallResumeArgumentsProjectRoot has presence = required.
+InstallResumeArgumentsProjectRoot has value-type = text.
+InstallationApplied exercises InstallProjectProcess.
+InstallationApplied has completeness = closed.
+InstallationApplied illustrates InstallationApplySlice.
+InstallationApplied runs-in InstallationExecution.
+InstallationApplied step 1 sends ApplyInstallationRequest from GhSdpLauncher to InstallationCoordinator via InstallationApplyCalls.
+InstallationApplied step 10 sends ApplyInstallationResult from InstallationCoordinator to GhSdpLauncher via InstallationApplyCalls reply-to 1.
+InstallationApplied step 2 sends ExecuteInstallationPlanRequest from InstallationCoordinator to InstallationExecutor via InstallationExecutionCalls.
+InstallationApplied step 3 sends CheckpointInstallationRequest from InstallationExecutor to InstallationJournal via InstallationJournalCalls.
+InstallationApplied step 4 sends CheckpointInstallationResult from InstallationJournal to InstallationExecutor via InstallationJournalCalls reply-to 3.
+InstallationApplied step 5 sends RecordInstallationRequest from InstallationExecutor to InstallationRecorder via InstallationReceiptCalls.
+InstallationApplied step 6 sends RecordInstallationResult from InstallationRecorder to InstallationExecutor via InstallationReceiptCalls reply-to 5.
+InstallationApplied step 7 sends CheckpointInstallationRequest from InstallationExecutor to InstallationJournal via InstallationJournalCalls.
+InstallationApplied step 8 sends CheckpointInstallationResult from InstallationJournal to InstallationExecutor via InstallationJournalCalls reply-to 7.
+InstallationApplied step 9 sends ExecuteInstallationPlanResult from InstallationExecutor to InstallationCoordinator via InstallationExecutionCalls reply-to 2.
+InstallationApplyCalls upholds InstallationApplyCallsProtocol.
+InstallationApplyCallsProtocol has completeness = closed.
+InstallationApplyCallsProtocol permits ApplyInstallationRejected.
+InstallationApplyCallsProtocol permits ApplyInstallationRequest.
+InstallationApplyCallsProtocol permits ApplyInstallationResult.
+InstallationApplySlice addresses ApplyInstallationPlan.
+InstallationApplySlice addresses CoordinateInstallation.
+InstallationApplySlice addresses PublishInstalledProcessFacts.
+InstallationApplySlice delivers SdpTool.
+InstallationApplySlice depends-on InstallationPlanSlice.
+InstallationApplySlice has implementation-status = implemented.
+InstallationApplySlice refines DeliverSdpTool.
+InstallationBaselineInspector consumes InstallationFilesystemPort.
+InstallationBaselineInspector owns InspectInstallationBaseline.
+InstallationBaselineInspector owns ValidateAdoptionBaseline.
+InstallationBaselineInspector uses BaselineInspectionCalls as receiver of InspectBaselineRequest in mode InstallationPlanning.
+InstallationBaselineInspector uses BaselineInspectionCalls as sender of InspectBaselineResult in mode InstallationPlanning.
+InstallationCoordinator owns CoordinateInstallation.
+InstallationCoordinator uses BaselineInspectionCalls as receiver of InspectBaselineResult in mode InstallationPlanning.
+InstallationCoordinator uses BaselineInspectionCalls as sender of InspectBaselineRequest in mode InstallationPlanning.
+InstallationCoordinator uses InstallationApplyCalls as receiver of ApplyInstallationRequest in mode InstallationExecution.
+InstallationCoordinator uses InstallationApplyCalls as sender of ApplyInstallationRejected in mode InstallationExecution.
+InstallationCoordinator uses InstallationApplyCalls as sender of ApplyInstallationResult in mode InstallationExecution.
+InstallationCoordinator uses InstallationExecutionCalls as receiver of ExecuteInstallationPlanResult in mode InstallationExecution.
+InstallationCoordinator uses InstallationExecutionCalls as sender of ExecuteInstallationPlanRequest in mode InstallationExecution.
+InstallationCoordinator uses InstallationPlanCalls as receiver of CreateInstallationPlanResult in mode InstallationPlanning.
+InstallationCoordinator uses InstallationPlanCalls as sender of CreateInstallationPlanRequest in mode InstallationPlanning.
+InstallationCoordinator uses InstallationPlanningCalls as receiver of PlanInstallationRequest in mode InstallationPlanning.
+InstallationCoordinator uses InstallationPlanningCalls as sender of PlanInstallationRejected in mode InstallationPlanning.
+InstallationCoordinator uses InstallationPlanningCalls as sender of PlanInstallationResult in mode InstallationPlanning.
+InstallationCoordinator uses InstallationRecoveryCalls as receiver of RecoverInstallationResult in mode InstallationRecoveryMode.
+InstallationCoordinator uses InstallationRecoveryCalls as sender of RecoverInstallationRequest in mode InstallationRecoveryMode.
+InstallationCoordinator uses InstallationResumeCalls as receiver of ResumeInstallationRequest in mode InstallationRecoveryMode.
+InstallationCoordinator uses InstallationResumeCalls as sender of ResumeInstallationRejected in mode InstallationRecoveryMode.
+InstallationCoordinator uses InstallationResumeCalls as sender of ResumeInstallationResult in mode InstallationRecoveryMode.
+InstallationCoordinator uses ReleaseResolutionCalls as receiver of ResolveProcessReleaseResult in mode InstallationPlanning.
+InstallationCoordinator uses ReleaseResolutionCalls as sender of ResolveProcessReleaseRequest in mode InstallationPlanning.
+InstallationDriftRejected exercises UpgradeProjectProcess.
+InstallationDriftRejected has completeness = closed.
+InstallationDriftRejected illustrates InstallationApplySlice.
+InstallationDriftRejected runs-in InstallationExecution.
+InstallationDriftRejected step 1 sends ApplyInstallationRequest from GhSdpLauncher to InstallationCoordinator via InstallationApplyCalls.
+InstallationDriftRejected step 2 sends ApplyInstallationRejected from InstallationCoordinator to GhSdpLauncher via InstallationApplyCalls reply-to 1.
+InstallationExecutionCalls upholds InstallationExecutionCallsProtocol.
+InstallationExecutionCallsProtocol has completeness = closed.
+InstallationExecutionCallsProtocol permits ExecuteInstallationPlanRequest.
+InstallationExecutionCallsProtocol permits ExecuteInstallationPlanResult.
+InstallationExecutor consumes InstallationFilesystemPort.
+InstallationExecutor consumes InstallationJournalPort.
+InstallationExecutor owns ApplyInstallationPlan.
+InstallationExecutor owns ResumeInstallationOperation.
+InstallationExecutor uses InstallationExecutionCalls as receiver of ExecuteInstallationPlanRequest in mode InstallationExecution.
+InstallationExecutor uses InstallationExecutionCalls as sender of ExecuteInstallationPlanResult in mode InstallationExecution.
+InstallationExecutor uses InstallationJournalCalls as receiver of CheckpointInstallationResult in mode InstallationExecution.
+InstallationExecutor uses InstallationJournalCalls as receiver of CheckpointInstallationResult in mode InstallationRecoveryMode.
+InstallationExecutor uses InstallationJournalCalls as sender of CheckpointInstallationRequest in mode InstallationExecution.
+InstallationExecutor uses InstallationJournalCalls as sender of CheckpointInstallationRequest in mode InstallationRecoveryMode.
+InstallationExecutor uses InstallationReceiptCalls as receiver of RecordInstallationResult in mode InstallationExecution.
+InstallationExecutor uses InstallationReceiptCalls as receiver of RecordInstallationResult in mode InstallationRecoveryMode.
+InstallationExecutor uses InstallationReceiptCalls as sender of RecordInstallationRequest in mode InstallationExecution.
+InstallationExecutor uses InstallationReceiptCalls as sender of RecordInstallationRequest in mode InstallationRecoveryMode.
+InstallationExecutor uses InstallationRecoveryCalls as receiver of RecoverInstallationRequest in mode InstallationRecoveryMode.
+InstallationExecutor uses InstallationRecoveryCalls as sender of RecoverInstallationResult in mode InstallationRecoveryMode.
+InstallationJournal owns OperationStore.
+InstallationJournal owns PersistInstallationJournal.
+InstallationJournal uses InstallationJournalCalls as receiver of CheckpointInstallationRequest in mode InstallationExecution.
+InstallationJournal uses InstallationJournalCalls as receiver of CheckpointInstallationRequest in mode InstallationRecoveryMode.
+InstallationJournal uses InstallationJournalCalls as sender of CheckpointInstallationResult in mode InstallationExecution.
+InstallationJournal uses InstallationJournalCalls as sender of CheckpointInstallationResult in mode InstallationRecoveryMode.
+InstallationJournalCalls upholds InstallationJournalCallsProtocol.
+InstallationJournalCallsProtocol has completeness = closed.
+InstallationJournalCallsProtocol permits CheckpointInstallationRequest.
+InstallationJournalCallsProtocol permits CheckpointInstallationResult.
+InstallationOperationRecords upholds InstallJournalRecord.
+InstallationPlanCalls upholds InstallationPlanCallsProtocol.
+InstallationPlanCallsProtocol has completeness = closed.
+InstallationPlanCallsProtocol permits CreateInstallationPlanRequest.
+InstallationPlanCallsProtocol permits CreateInstallationPlanResult.
+InstallationPlanPrepared exercises UpgradeProjectProcess.
+InstallationPlanPrepared has completeness = closed.
+InstallationPlanPrepared illustrates InstallationPlanSlice.
+InstallationPlanPrepared runs-in InstallationPlanning.
+InstallationPlanPrepared step 1 sends PlanInstallationRequest from GhSdpLauncher to InstallationCoordinator via InstallationPlanningCalls.
+InstallationPlanPrepared step 10 sends PlanInstallationResult from InstallationCoordinator to GhSdpLauncher via InstallationPlanningCalls reply-to 1.
+InstallationPlanPrepared step 2 sends InspectBaselineRequest from InstallationCoordinator to InstallationBaselineInspector via BaselineInspectionCalls.
+InstallationPlanPrepared step 3 sends InspectBaselineResult from InstallationBaselineInspector to InstallationCoordinator via BaselineInspectionCalls reply-to 2.
+InstallationPlanPrepared step 4 sends ResolveProcessReleaseRequest from InstallationCoordinator to InstallationReleaseResolver via ReleaseResolutionCalls.
+InstallationPlanPrepared step 5 sends FetchProcessArtifactRequest from InstallationReleaseResolver to ReleaseArtifactService via ReleaseArtifactCalls.
+InstallationPlanPrepared step 6 sends FetchProcessArtifactResult from ReleaseArtifactService to InstallationReleaseResolver via ReleaseArtifactCalls reply-to 5.
+InstallationPlanPrepared step 7 sends ResolveProcessReleaseResult from InstallationReleaseResolver to InstallationCoordinator via ReleaseResolutionCalls reply-to 4.
+InstallationPlanPrepared step 8 sends CreateInstallationPlanRequest from InstallationCoordinator to InstallationPlanner via InstallationPlanCalls.
+InstallationPlanPrepared step 9 sends CreateInstallationPlanResult from InstallationPlanner to InstallationCoordinator via InstallationPlanCalls reply-to 8.
+InstallationPlanSlice addresses BuildInstallationPlan.
+InstallationPlanSlice addresses InspectInstallationBaseline.
+InstallationPlanSlice addresses ResolveInstallationRelease.
+InstallationPlanSlice addresses ValidateAdoptionBaseline.
+InstallationPlanSlice delivers SdpTool.
+InstallationPlanSlice depends-on ProjectDiscoverySlice.
+InstallationPlanSlice has implementation-status = implemented.
+InstallationPlanSlice refines DeliverSdpTool.
+InstallationPlanner consumes InstallationFilesystemPort.
+InstallationPlanner holds ReviewedInstallationPlans.
+InstallationPlanner owns BuildInstallationPlan.
+InstallationPlanner uses InstallationPlanCalls as receiver of CreateInstallationPlanRequest in mode InstallationPlanning.
+InstallationPlanner uses InstallationPlanCalls as sender of CreateInstallationPlanResult in mode InstallationPlanning.
+InstallationPlanningCalls upholds InstallationPlanningCallsProtocol.
+InstallationPlanningCallsProtocol has completeness = closed.
+InstallationPlanningCallsProtocol permits PlanInstallationRejected.
+InstallationPlanningCallsProtocol permits PlanInstallationRequest.
+InstallationPlanningCallsProtocol permits PlanInstallationResult.
+InstallationReceiptCalls upholds InstallationReceiptCallsProtocol.
+InstallationReceiptCallsProtocol has completeness = closed.
+InstallationReceiptCallsProtocol permits RecordInstallationRequest.
+InstallationReceiptCallsProtocol permits RecordInstallationResult.
+InstallationRecorder consumes InstallationFilesystemPort.
+InstallationRecorder owns InstallationStore.
+InstallationRecorder owns PublishInstalledProcessFacts.
+InstallationRecorder uses InstallationReceiptCalls as receiver of RecordInstallationRequest in mode InstallationExecution.
+InstallationRecorder uses InstallationReceiptCalls as receiver of RecordInstallationRequest in mode InstallationRecoveryMode.
+InstallationRecorder uses InstallationReceiptCalls as sender of RecordInstallationResult in mode InstallationExecution.
+InstallationRecorder uses InstallationReceiptCalls as sender of RecordInstallationResult in mode InstallationRecoveryMode.
+InstallationRecovery requires InstallationJournalPort in mode InstallationRecoveryMode.
+InstallationRecoveryCalls upholds InstallationRecoveryCallsProtocol.
+InstallationRecoveryCallsProtocol has completeness = closed.
+InstallationRecoveryCallsProtocol permits RecoverInstallationRequest.
+InstallationRecoveryCallsProtocol permits RecoverInstallationResult.
+InstallationRecoverySlice addresses PersistInstallationJournal.
+InstallationRecoverySlice addresses ResumeInstallationOperation.
+InstallationRecoverySlice delivers SdpTool.
+InstallationRecoverySlice depends-on InstallationApplySlice.
+InstallationRecoverySlice has implementation-status = implemented.
+InstallationRecoverySlice refines DeliverSdpTool.
+InstallationReleaseResolver consumes ReleaseArtifactPort.
+InstallationReleaseResolver owns ResolveInstallationRelease.
+InstallationReleaseResolver uses ReleaseArtifactCalls as receiver of FetchProcessArtifactResult in mode InstallationPlanning.
+InstallationReleaseResolver uses ReleaseArtifactCalls as sender of FetchProcessArtifactRequest in mode InstallationPlanning.
+InstallationReleaseResolver uses ReleaseResolutionCalls as receiver of ResolveProcessReleaseRequest in mode InstallationPlanning.
+InstallationReleaseResolver uses ReleaseResolutionCalls as sender of ResolveProcessReleaseResult in mode InstallationPlanning.
+InstallationResumeCalls upholds InstallationResumeCallsProtocol.
+InstallationResumeCallsProtocol has completeness = closed.
+InstallationResumeCallsProtocol permits ResumeInstallationRejected.
+InstallationResumeCallsProtocol permits ResumeInstallationRequest.
+InstallationResumeCallsProtocol permits ResumeInstallationResult.
+InstallationResumed exercises RecoverProjectUpgrade.
+InstallationResumed has completeness = closed.
+InstallationResumed illustrates InstallationRecoverySlice.
+InstallationResumed runs-in InstallationRecoveryMode.
+InstallationResumed step 1 sends ResumeInstallationRequest from GhSdpLauncher to InstallationCoordinator via InstallationResumeCalls.
+InstallationResumed step 10 sends ResumeInstallationResult from InstallationCoordinator to GhSdpLauncher via InstallationResumeCalls reply-to 1.
+InstallationResumed step 2 sends RecoverInstallationRequest from InstallationCoordinator to InstallationExecutor via InstallationRecoveryCalls.
+InstallationResumed step 3 sends CheckpointInstallationRequest from InstallationExecutor to InstallationJournal via InstallationJournalCalls.
+InstallationResumed step 4 sends CheckpointInstallationResult from InstallationJournal to InstallationExecutor via InstallationJournalCalls reply-to 3.
+InstallationResumed step 5 sends RecordInstallationRequest from InstallationExecutor to InstallationRecorder via InstallationReceiptCalls.
+InstallationResumed step 6 sends RecordInstallationResult from InstallationRecorder to InstallationExecutor via InstallationReceiptCalls reply-to 5.
+InstallationResumed step 7 sends CheckpointInstallationRequest from InstallationExecutor to InstallationJournal via InstallationJournalCalls.
+InstallationResumed step 8 sends CheckpointInstallationResult from InstallationJournal to InstallationExecutor via InstallationJournalCalls reply-to 7.
+InstallationResumed step 9 sends RecoverInstallationResult from InstallationExecutor to InstallationCoordinator via InstallationRecoveryCalls reply-to 2.
+InstallationStore holds InstalledProcessRecords.
+InstalledProcessRecords upholds InstallReceiptRecord.
+InvokeInstallationCommand allocated-to GhSdpProcess in mode InstallationExecution.
+InvokeInstallationCommand allocated-to GhSdpProcess in mode InstallationPlanning.
+InvokeInstallationCommand allocated-to GhSdpProcess in mode InstallationRecoveryMode.
+InvokeInstallationCommand contributes-to SdpTool.
+InvokeInstallationCommand realizes SdpToolBootstrap.
+ManualAdoptionTrial addresses ApplyInstallationPlan.
+ManualAdoptionTrial addresses ValidateAdoptionBaseline.
+ManualAdoptionTrial delivers SdpTool.
+ManualAdoptionTrial depends-on GhSdpClientSlice.
+ManualAdoptionTrial has implementation-status = implemented.
+ManualAdoptionTrial refines DeliverSdpTool.
+ManualProcessAdoption requires InstallationFilesystemPort in mode InstallationPlanning.
 NavigationInventory consumes KanBanReadPort.
 NavigationInventory consumes SdlProjectionPort.
 NavigationInventory consumes SduiDocumentPort.
@@ -90,6 +584,11 @@ NavigationSlice delivers SdpTool.
 NavigationSlice depends-on ProjectDiscoverySlice.
 NavigationSlice has implementation-status = implemented.
 NavigationSlice refines DeliverSdpTool.
+OperationStore holds InstallationOperationRecords.
+PersistInstallationJournal allocated-to SdpToolProcess in mode InstallationExecution.
+PersistInstallationJournal allocated-to SdpToolProcess in mode InstallationRecoveryMode.
+PersistInstallationJournal contributes-to SdpTool.
+PersistInstallationJournal realizes InstallationRecovery.
 PlanAssistance requires TraceabilityReadPort in mode ProcessPlanning.
 PlanAssistanceSlice addresses ProposeImplementationSlices.
 PlanAssistanceSlice addresses ValidateImplementationPlan.
@@ -101,36 +600,127 @@ PlanCoordinator consumes SdlProjectionPort.
 PlanCoordinator consumes TraceabilityReadPort.
 PlanCoordinator owns ProposeImplementationSlices.
 PlanCoordinator owns ValidateImplementationPlan.
+PlanInstallationRejected has message-kind = result.
+PlanInstallationRejected replies-to PlanInstallationRequest.
+PlanInstallationRejected upholds InstallOutcome.
+PlanInstallationRequest has message-kind = request.
+PlanInstallationRequest upholds InstallPlanningArguments.
+PlanInstallationResult has message-kind = result.
+PlanInstallationResult replies-to PlanInstallationRequest.
+PlanInstallationResult upholds InstallOutcome.
 PreviewCoordinator consumes SdlProjectionPort.
 PreviewCoordinator owns AcceptSourceSnapshot.
 PreviewCoordinator owns BuildDesignPreview.
 PreviewSlice delivers SdpTool.
 PreviewSlice has implementation-status = planned.
 PreviewSlice refines DeliverSdpTool.
+ProcessReleaseRecords upholds InstallReleaseRecord.
 ProjectContext owns ResolveProjectContext.
 ProjectDiscoverySlice addresses ResolveProjectContext.
 ProjectDiscoverySlice delivers SdpTool.
 ProjectDiscoverySlice has implementation-status = implemented.
 ProjectDiscoverySlice refines DeliverSdpTool.
+ProjectInstallation requires InstallationFilesystemPort in mode InstallationExecution.
+ProjectInstallation requires ReleaseArtifactPort in mode InstallationPlanning.
+ProjectMaintainer pursues AdoptManualProcess.
+ProjectMaintainer pursues InstallProjectProcess.
+ProjectMaintainer pursues RecoverProjectUpgrade.
+ProjectMaintainer pursues UpgradeProjectProcess.
 ProjectNavigation requires SdlProjectionPort in mode ProjectBrowsing.
 ProposeImplementationSlices allocated-to SdpToolProcess in mode ProcessPlanning.
 ProposeImplementationSlices contributes-to SdpTool.
 ProposeImplementationSlices realizes PlanAssistance.
+PublishInstalledProcessFacts allocated-to SdpToolProcess in mode InstallationExecution.
+PublishInstalledProcessFacts allocated-to SdpToolProcess in mode InstallationRecoveryMode.
+PublishInstalledProcessFacts contributes-to SdpTool.
+PublishInstalledProcessFacts realizes ProjectInstallation.
+RecordInstallationRequest has message-kind = request.
+RecordInstallationRequest upholds InstallReceiptRecord.
+RecordInstallationResult has message-kind = result.
+RecordInstallationResult replies-to RecordInstallationRequest.
+RecordInstallationResult upholds InstallOutcome.
+RecoverInstallationRequest has message-kind = request.
+RecoverInstallationRequest upholds InstallResumeArguments.
+RecoverInstallationResult has message-kind = result.
+RecoverInstallationResult replies-to RecoverInstallationRequest.
+RecoverInstallationResult upholds InstallOutcome.
+ReleaseArtifactCalls upholds ReleaseArtifactCallsProtocol.
+ReleaseArtifactCallsProtocol has completeness = closed.
+ReleaseArtifactCallsProtocol permits FetchProcessArtifactRequest.
+ReleaseArtifactCallsProtocol permits FetchProcessArtifactResult.
+ReleaseArtifactService owns ReleaseCatalogStore.
+ReleaseArtifactService uses ReleaseArtifactCalls as receiver of FetchProcessArtifactRequest in mode InstallationPlanning.
+ReleaseArtifactService uses ReleaseArtifactCalls as sender of FetchProcessArtifactResult in mode InstallationPlanning.
+ReleaseArtifactService uses SdpToolBootstrapCalls as receiver of FetchSdpToolRequest in mode ClientBootstrap.
+ReleaseArtifactService uses SdpToolBootstrapCalls as sender of FetchSdpToolRejected in mode ClientBootstrap.
+ReleaseArtifactService uses SdpToolBootstrapCalls as sender of FetchSdpToolResult in mode ClientBootstrap.
+ReleaseCatalogStore holds ProcessReleaseRecords.
+ReleaseRepositoryProcess contains ReleaseArtifactService.
+ReleaseResolutionCalls upholds ReleaseResolutionCallsProtocol.
+ReleaseResolutionCallsProtocol has completeness = closed.
+ReleaseResolutionCallsProtocol permits ResolveProcessReleaseRequest.
+ReleaseResolutionCallsProtocol permits ResolveProcessReleaseResult.
 ResolveCardHistory allocated-to SdpToolProcess in mode HistoryInspection.
 ResolveCardHistory contributes-to SdpTool.
 ResolveCardHistory realizes CardRevisionAccess.
+ResolveInstallationRelease allocated-to SdpToolProcess in mode InstallationPlanning.
+ResolveInstallationRelease contributes-to SdpTool.
+ResolveInstallationRelease realizes ProjectInstallation.
+ResolveProcessReleaseRequest has message-kind = request.
+ResolveProcessReleaseRequest upholds InstallReleaseArguments.
+ResolveProcessReleaseResult has message-kind = result.
+ResolveProcessReleaseResult replies-to ResolveProcessReleaseRequest.
+ResolveProcessReleaseResult upholds InstallOutcome.
 ResolveProjectContext allocated-to SdpToolProcess in mode ProjectBrowsing.
 ResolveProjectContext contributes-to SdpTool.
 ResolveProjectContext realizes ProjectNavigation.
+ResumeInstallationOperation allocated-to SdpToolProcess in mode InstallationRecoveryMode.
+ResumeInstallationOperation contributes-to SdpTool.
+ResumeInstallationOperation realizes InstallationRecovery.
+ResumeInstallationRejected has message-kind = result.
+ResumeInstallationRejected replies-to ResumeInstallationRequest.
+ResumeInstallationRejected upholds InstallOutcome.
+ResumeInstallationRequest has message-kind = request.
+ResumeInstallationRequest upholds InstallResumeArguments.
+ResumeInstallationResult has message-kind = result.
+ResumeInstallationResult replies-to ResumeInstallationRequest.
+ResumeInstallationResult upholds InstallOutcome.
+RetrieveSdpToolBinary allocated-to GhSdpProcess in mode ClientBootstrap.
+RetrieveSdpToolBinary contributes-to SdpTool.
+RetrieveSdpToolBinary realizes SdpToolBootstrap.
+ReviewedInstallationPlans upholds InstallPlanRecord.
 SavedFilePreview addresses BuildDesignPreview.
 SavedFilePreview addresses DeliverViewBundle.
 SavedFilePreview has implementation-status = implemented.
 SavedFilePreview refines PreviewSlice.
+SdpTool supports AdoptManualProcess.
 SdpTool supports BrowseProject.
 SdpTool supports InspectCardHistory.
+SdpTool supports InstallProjectProcess.
 SdpTool supports PreviewDesign.
+SdpTool supports RecoverProjectUpgrade.
 SdpTool supports ReviewImplementationPlan.
+SdpTool supports UpgradeProjectProcess.
+SdpToolBootstrap requires SdpToolInvocationPort in mode ClientBootstrap.
+SdpToolBootstrapCalls upholds SdpToolBootstrapCallsProtocol.
+SdpToolBootstrapCallsProtocol has completeness = closed.
+SdpToolBootstrapCallsProtocol permits FetchSdpToolRejected.
+SdpToolBootstrapCallsProtocol permits FetchSdpToolRequest.
+SdpToolBootstrapCallsProtocol permits FetchSdpToolResult.
+SdpToolBootstrapPrepared exercises UpgradeProjectProcess.
+SdpToolBootstrapPrepared has completeness = closed.
+SdpToolBootstrapPrepared illustrates GhSdpClientSlice.
+SdpToolBootstrapPrepared runs-in ClientBootstrap.
+SdpToolBootstrapPrepared step 1 sends FetchSdpToolRequest from GhSdpLauncher to ReleaseArtifactService via SdpToolBootstrapCalls.
+SdpToolBootstrapPrepared step 2 sends FetchSdpToolResult from ReleaseArtifactService to GhSdpLauncher via SdpToolBootstrapCalls reply-to 1.
 SdpToolProcess contains CardHistory.
+SdpToolProcess contains InstallationBaselineInspector.
+SdpToolProcess contains InstallationCoordinator.
+SdpToolProcess contains InstallationExecutor.
+SdpToolProcess contains InstallationJournal.
+SdpToolProcess contains InstallationPlanner.
+SdpToolProcess contains InstallationRecorder.
+SdpToolProcess contains InstallationReleaseResolver.
 SdpToolProcess contains NavigationInventory.
 SdpToolProcess contains PlanCoordinator.
 SdpToolProcess contains PreviewCoordinator.
@@ -138,12 +728,18 @@ SdpToolProcess contains ProjectContext.
 SdpToolProcess contains ViewerBridge.
 SdpToolProcess provides CardRevisionAccess.
 SdpToolProcess provides DesignPreview.
+SdpToolProcess provides InstallationRecovery.
+SdpToolProcess provides ManualProcessAdoption.
 SdpToolProcess provides PlanAssistance.
+SdpToolProcess provides ProjectInstallation.
 SdpToolProcess provides ProjectNavigation.
 UnsavedSourcePreview addresses AcceptSourceSnapshot.
 UnsavedSourcePreview depends-on SavedFilePreview.
 UnsavedSourcePreview has implementation-status = planned.
 UnsavedSourcePreview refines PreviewSlice.
+ValidateAdoptionBaseline allocated-to SdpToolProcess in mode InstallationPlanning.
+ValidateAdoptionBaseline contributes-to SdpTool.
+ValidateAdoptionBaseline realizes ManualProcessAdoption.
 ValidateImplementationPlan allocated-to SdpToolProcess in mode ProcessPlanning.
 ValidateImplementationPlan contributes-to SdpTool.
 ValidateImplementationPlan realizes PlanAssistance.

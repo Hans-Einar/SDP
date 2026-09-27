@@ -43,3 +43,13 @@ Recorded 2026-09-25T01:41:26Z, Codex, EVT-KB-SDP-000076. CardState remains backl
 Keep model-to-code evidence and aggregation separate from management lifecycle. Include system-prefixed new IDs and management-event references; never infer implementation from sprint/card completion.
 
 EVT-KB-SDP-000117; next review at the next selection or relevant dependency delivery.
+
+## Owner clarification — SDL code tags and paired model verification
+
+2026-09-26T10:12:02Z: EVT-KB-SDP-000183. The owner intends SDL tags in implementation code to bind
+model identities to actual implementation locations and support code/model checks.
+Design missing/stale/duplicate/ambiguous tag diagnostics and exact model/code
+revision references. A tag is a declared mapping, not proof of behavior. Assignment
+bundles must support NOW/baseline tests before work and TARGET/result tests after
+work, retaining unchanged-neighbor obligations. Coordinate PLAN-SDP-0001 and
+KB-SDL-006; no tag grammar or executable mapping is adopted by this clarification.

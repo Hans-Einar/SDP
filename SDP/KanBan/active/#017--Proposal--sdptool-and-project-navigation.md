@@ -50,7 +50,7 @@ CardState is ready at the design milestone handoff; no owner gate is requested.
 Next work is the saved-file preview contract. Code stays in Toolkit/SDPTool. Shared Traceability registers DES-SDPTOOL-001,
 requirements and design-check evidence; implementation status remains unimplemented.
 
-The [pipeline explanation](../../../Toolkit/SDPTool/Navigation-and-Design-Preview.md)
+The [pipeline explanation](../../../SDPTool/Navigation-and-Design-Preview.md)
 records existing Go SDL parsing/projection, Rust mmdr layout, Go SDL symbols,
 sdl-view:// selection, temporary-file lifetime and the optional broker. Reuse this
 chain through the future facade; do not create another parser or renderer now.
@@ -95,7 +95,7 @@ project discovery. Preserve Mermaid export and the current SDL-specific SVG
 symbols. Exact command name, default views and unsaved-buffer input contract are
 to be defined. Native source/preview integration belongs to
 [KB-XFMD-015](../../../../xfmd-sdl-navigation/SDP/Agents/KanBan/backlog/%23015--Proposal--SDL-design-file-preview.md).
-The [current pipeline guide](../../../Toolkit/SDPTool/Navigation-and-Design-Preview.md)
+The [current pipeline guide](../../../SDPTool/Navigation-and-Design-Preview.md)
 records existing tools, URI, temporary files and the proposed early slice.
 
 ## Project discovery and common commands
@@ -172,7 +172,7 @@ Its companion is [KB-XFMD-014](../../../../xfmd-sdl-navigation/SDP/Agents/KanBan
 SDP owns common discovery and coordination; SDL owns model/projection facts;
 SDUI owns UI-language services. Owner clarification on 2026-09-25: all XFMD
 implementation belongs to its own cards and development session. SDP-vNow owns
-`sdptool` in [Toolkit/SDPTool](../../../Toolkit/SDPTool/README.md). The existing
+`sdptool` in [SDPTool](../../../SDPTool/README.md). The existing
 XFMD companion was updated with this scope and current producer link; only its
 KanBan documentation and ledger were changed. XFMD now has its own SDP area and board at `SDP/Agents/KanBan`; its separate
 process-adoption card owns further adoption. The former standalone path is historical.
@@ -246,8 +246,8 @@ later trial, a full export, the KanBan timeline graph or repository extraction.
 
 The concrete SDPTool phase/milestone plan is maintained in
 [SDP/05--Implementation/SDPTool.md](../../05--Implementation/SDPTool.md).
-The wider [Toolkit audit](../backlog/%23018--Study--Toolkit-audit-and-organization.md) is
-separate and does not block the bounded first tool delivery.
+The separate [Toolkit audit](../canceled/%23018--Study--Toolkit-audit-and-organization.md)
+was withdrawn by the owner on 2026-09-26; it is no longer a future workstream.
 
 ## Historical queue — activation supersedes this selection
 
@@ -297,3 +297,15 @@ EVT-KB-SDP-000123; next review at the next selection or relevant dependency deli
 producer verification. Remaining scope above stays open; no additional feature
 implementation is in progress on this parent. Skills/install Maintenance Scrums
 are separately registered in #027/#028 and remain unstarted.
+
+## Current source and installation ownership — 2026-09-26
+
+[MAINT-SDP-0006](../../Maintenance/ST1/Plan.md) relocates code to root SDPTool,
+updates consumers and withdraws the separate Toolkit audit. Historical assignments
+above retain their dated context. SDPTool remains the common Go command entry point;
+future install/upgrade belongs here, with a thin gh-sdp client. KB-SDP-033 owns the
+specific adoption workflow and REQ-SDPTOOL-007 captures the unimplemented target.
+This relocation delivers no new install/upgrade command and leaves this card ready
+for its independently retained feature scope.
+
+2026-09-26T19:06:43Z: EVT-KB-SDP-000189. Ownership/source references reconciled; CardState remains ready.

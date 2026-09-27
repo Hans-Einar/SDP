@@ -1,0 +1,6 @@
+flowchart LR
+    n_AdoptManualProcess["AdoptManualProcess (usecase)"]
+    n_ProjectMaintainer["ProjectMaintainer (actor)"]
+    n_SdpTool["SdpTool (feature)"]
+    n_ProjectMaintainer -->|pursues| n_AdoptManualProcess
+    n_SdpTool -->|supports| n_AdoptManualProcess

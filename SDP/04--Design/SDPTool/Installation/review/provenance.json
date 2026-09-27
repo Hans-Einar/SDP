@@ -1,0 +1,239 @@
+{
+  "checks": {
+    "baselineStatementsPreserved": "db7d82d",
+    "installationActivityStatus": {
+      "GhSdpClientSlice": "implemented",
+      "InstallationApplySlice": "implemented",
+      "InstallationPlanSlice": "implemented",
+      "InstallationRecoverySlice": "implemented",
+      "ManualAdoptionTrial": "implemented"
+    },
+    "negativeCases": {
+      "invalid-reply": [
+        "CORRELATION_MISMATCH",
+        "INCOMPLETE_SCENARIO"
+      ],
+      "unpermitted-message": [
+        "MESSAGE_NOT_PERMITTED"
+      ]
+    },
+    "symbolCounts": {
+      "activity": 14,
+      "actor": 4,
+      "capability": 8,
+      "channel": 12,
+      "container": 3,
+      "contract": 21,
+      "database": 3,
+      "dataset": 4,
+      "feature": 1,
+      "field": 25,
+      "functionality": 19,
+      "interface": 10,
+      "message": 28,
+      "mode": 8,
+      "scenario": 5,
+      "unit": 15,
+      "usecase": 8
+    },
+    "valid": true
+  },
+  "generator": "SDL Go CLI view",
+  "generatorBinarySha256": "30572dd4b175a23d4f958bd00a5d72cba2ffcf3e78e65a1d3fabd9190176314f",
+  "generatorSourceDigest": "8fab290bea6fddf7e6fa7c8acba5a131272119ff9a1ece3507bcfcc0e6a8bec0",
+  "model": "SDP/03--Architecture/SDPTool.design",
+  "orchestratorSha256": "99bb69b71d8da23f91e7285cb4f43a20a30dbe28f65b44bc29ea912b69f7af44",
+  "outputs": {
+    "01-use-cases/delivery.txt": "6403203dd5a0867eb14d104ee8a73730bd72dd9ad92e78d996a6dba0a5dcfc01",
+    "01-use-cases/diagrams/VP01-AdoptManualProcess.mmd": "c4072408d8089d314d412ae55d0f66a846b7ad1787df8ffb0ca85fdf125f5dde",
+    "01-use-cases/diagrams/VP01-InstallProjectProcess.mmd": "dbb27aa650124282ca2f6505277e4ef7fdc9b7666e0ae280ad0d3f120e0fca46",
+    "01-use-cases/diagrams/VP01-RecoverProjectUpgrade.mmd": "da038ad5f325b5bca67ce021919611ccb0d8b45dc5e71def2c2e6c261a0e2890",
+    "01-use-cases/diagrams/VP01-UpgradeProjectProcess.mmd": "e827b852f6dc43ffc64d7d5bbd3acd3e4b5cf15d962ba41f062cd39c7e98bc30",
+    "01-use-cases/entry.md": "f92649a8a5e4b57f9a849c351362c02c9507e4b3fb6f2adf9dde9147fbe8f8e2",
+    "01-use-cases/manifest.json": "957f8be11ad2cb2f0c6e844f7aa5ce817177ec7860beb63e135c7a70cdfb1b1f",
+    "01-use-cases/selection.json": "128e7d1a20895757556c56d67b64eb38ea043557032a9936a9725f7158d9f0e6",
+    "02-engine/delivery.txt": "6403203dd5a0867eb14d104ee8a73730bd72dd9ad92e78d996a6dba0a5dcfc01",
+    "02-engine/diagrams/VP02-SdpToolProcess.mmd": "c8447ab6acfa84170a3c021966a860013e40c3c70fb59c1e8c278152d450ab45",
+    "02-engine/entry.md": "26a29600345046323d8905b83685ab09bdfaf205495f5cba632601f4cab3a450",
+    "02-engine/manifest.json": "7d9fd9f8fb575d8680316580fdb2e7d2b6a40c0550b62fa6a6e11b575b870810",
+    "02-engine/selection.json": "5d16aebc6998ace4a905f9ab9731e4be7ba498f3c03c1a9598e76d4083cd4f16",
+    "03-client/delivery.txt": "6403203dd5a0867eb14d104ee8a73730bd72dd9ad92e78d996a6dba0a5dcfc01",
+    "03-client/diagrams/VP02-GhSdpProcess.mmd": "82006bd2de886987f5ff6e34b180448ec6fb06a1d26569cca68ed52fa8b3501e",
+    "03-client/entry.md": "a2bb5654c5a7512d2cd28929953f7f0a6faaf68af21d539711a7f081b519bfd0",
+    "03-client/manifest.json": "810fb2aa392caa3e69516d3fcb17b587ebd139581ebd747209d93ba6877f2b1e",
+    "03-client/selection.json": "ea6096136d176a921633c3ed38f7ad80a7e5e17e06b037bd2dfac9628a65265d",
+    "04-plan-allocation/delivery.txt": "6403203dd5a0867eb14d104ee8a73730bd72dd9ad92e78d996a6dba0a5dcfc01",
+    "04-plan-allocation/diagrams/VP07-SdpTool-InstallationPlanning.mmd": "07a4f62b261ec70d70c82e0a8f19c0a6ca1c21cf6449a9bf438336125dfacbf3",
+    "04-plan-allocation/entry.md": "676928c0356bfdd5cbbdd99d38635cef3dda245f6fb0e586f8858f8ee398fd70",
+    "04-plan-allocation/manifest.json": "0b4576f70e2c5b87496adb68449d0489b78694a8b19eea2d0f33249d36b2a07d",
+    "04-plan-allocation/selection.json": "2904f3a5974dd285b230fca0b45bee0ddc8a891b49b033ae454a66209571db17",
+    "05-apply-allocation/delivery.txt": "6403203dd5a0867eb14d104ee8a73730bd72dd9ad92e78d996a6dba0a5dcfc01",
+    "05-apply-allocation/diagrams/VP07-SdpTool-InstallationExecution.mmd": "8010cb803d056f9e646141dc47f4e76a3a5976c5c3df01c5a80360fb514e9241",
+    "05-apply-allocation/entry.md": "b821ee965572896179572460a667b4b2fd554b311f7d8c9174ec9dc5791ed744",
+    "05-apply-allocation/manifest.json": "96b56b4c77e2e123bbdcb1d7f61c8dc691bd54ef9defb4a3611ec3a4be52e440",
+    "05-apply-allocation/selection.json": "4268beecc379fd2d49e42ebf6edd17da2e84b4d8e6bff2b48dbfa457d03f6918",
+    "06-delivery/delivery.txt": "6403203dd5a0867eb14d104ee8a73730bd72dd9ad92e78d996a6dba0a5dcfc01",
+    "06-delivery/diagrams/VP06-dependencies.mmd": "5426f3e1679da12e5810ee4879f47a645153893a8a49e465a4515187eecb2ce0",
+    "06-delivery/entry.md": "8ff77e59d822d3697b6e79d7c901b18fc04d58f29f16930b463eecce1ea9993d",
+    "06-delivery/manifest.json": "b87a97136a855dcc4202f82cf1fca84fb206d6b032b61ff7886fa01967c2b62f",
+    "06-delivery/selection.json": "d7479ce511b925cfb36b8540f7f099708f7206f1060445169c2d422efc8f5843",
+    "07-bootstrap/delivery.txt": "6403203dd5a0867eb14d104ee8a73730bd72dd9ad92e78d996a6dba0a5dcfc01",
+    "07-bootstrap/diagrams/VP08-SdpToolBootstrapPrepared.mmd": "7c207900636fdffc35597377f304656aff4bc63ab4fc175407c72f27aa8ed047",
+    "07-bootstrap/entry.md": "dd1db551bdd714b9cae219c000485341d56bb2246dc0c34c7cf992be8538b72b",
+    "07-bootstrap/manifest.json": "de851b53688b41c41040559048602840fcd8a23cdc8de27b94d08750c2aad8df",
+    "07-bootstrap/selection.json": "7b8cf005fac44868077917e298aa8551070bd6b937757bd1212ca4e5fa8beca0",
+    "08-plan/delivery.txt": "6403203dd5a0867eb14d104ee8a73730bd72dd9ad92e78d996a6dba0a5dcfc01",
+    "08-plan/diagrams/VP08-InstallationPlanPrepared.mmd": "69fc6239cea9f329fbcdddff238b28d583f9bbb5448fab6f37a668c09ba33e92",
+    "08-plan/entry.md": "14d61dc3902ff998123176983a885ac2214c9b3b3c81fdd40601a32898cebdd0",
+    "08-plan/manifest.json": "736cf0d6732b21a2d73d01d14db8677d34d1b34c833f368e126ca1f9688d683c",
+    "08-plan/selection.json": "29ff6cbe741f3499103394336383bd1bc56b7b9391ed5579ecb70ebac39b904b",
+    "09-apply/delivery.txt": "6403203dd5a0867eb14d104ee8a73730bd72dd9ad92e78d996a6dba0a5dcfc01",
+    "09-apply/diagrams/VP08-InstallationApplied.mmd": "93a42c0b0843e38eb4218e5bdb88894ff6172735b994f35a074aea4d3a077ca6",
+    "09-apply/entry.md": "321ca1b9e6017a4a17b12e82896f245dad93f6b7f4c3e19acd0bf615269fb30e",
+    "09-apply/manifest.json": "8b71cbe9840284677d1bff4bc375adf42c5d5d7b3030a90ec0703be8136f4e5d",
+    "09-apply/selection.json": "c937716d86934522a0541661d0a29335930c67d0a1059ca1b3a89da94d2fb992",
+    "10-resume/delivery.txt": "6403203dd5a0867eb14d104ee8a73730bd72dd9ad92e78d996a6dba0a5dcfc01",
+    "10-resume/diagrams/VP08-InstallationResumed.mmd": "6bbe4b305ed75dae8adbfdcaba736c0133cd2cd032bd41dc4a2cb2d975b2fe48",
+    "10-resume/entry.md": "2265842b4e0e0ca916c4077e2b01ff61f64cbec4bcc9a415598d94c64bcf997e",
+    "10-resume/manifest.json": "e412bb2a9a10ae31d1399333681afa9a9f0f7ce031cf5d0dea6f78d3927afadf",
+    "10-resume/selection.json": "148c5499637e44a82345204894e8f1534863b356bb97bd92bc8657ee54514019",
+    "11-reject/delivery.txt": "6403203dd5a0867eb14d104ee8a73730bd72dd9ad92e78d996a6dba0a5dcfc01",
+    "11-reject/diagrams/VP08-InstallationDriftRejected.mmd": "9fbdb3deb566a8c51804c6529e251eec9a9d6b4c7db4a675a839c62bd836efda",
+    "11-reject/entry.md": "67bb2507e2ad6a1bbe08445a8ce98c64888a17694b692e03f51ddf7096350e10",
+    "11-reject/manifest.json": "119ec3e579263d9ee561ef93b9d9c5f4088ac48ffcba5bad19df4f104277ee1c",
+    "11-reject/selection.json": "85585e59ec5c01ca4889c4d7672847a5a5074a3a5d3eeffcebc7f001dc7f8baa",
+    "12-receipt/delivery.txt": "6403203dd5a0867eb14d104ee8a73730bd72dd9ad92e78d996a6dba0a5dcfc01",
+    "12-receipt/diagrams/VP09-data-InstalledProcessRecords.mmd": "3d7b45d28f3702ea26f07f6fc5568c55eaf92655fc599068eb4801f700cd5f72",
+    "12-receipt/entry.md": "30d2178c849cbe88fd11179160a7d804a3ee577d3404c2d72d5c851cf25db1f8",
+    "12-receipt/manifest.json": "a1ff31fb354f8632ce6a015ba022697b4bb3421ea2410a0f5af3b24c0714f383",
+    "12-receipt/selection.json": "7dcf5feed422cb199aee4d9d4be766358a9537ec2668425d86058897c74c3369",
+    "13-journal/delivery.txt": "6403203dd5a0867eb14d104ee8a73730bd72dd9ad92e78d996a6dba0a5dcfc01",
+    "13-journal/diagrams/VP09-data-InstallationOperationRecords.mmd": "18e7d9e1affbcdeefc13bc72c02f7bb488a431a2da4b84e3f9a4390ffe7c4be8",
+    "13-journal/entry.md": "76e5f89ed069cb4d3f02043bad7a66abe0facd7cf4fbbf8005daefdbd53f1fd8",
+    "13-journal/manifest.json": "117c581b2f10f95fc9b0c96b2ea39ff180e65eaf053ba1675b6d7b48a955d607",
+    "13-journal/selection.json": "6aa6ecfe60fd182e4d84f11f79301bd111dc3647b1c23b595ac63c14f721b823",
+    "14-release/delivery.txt": "6403203dd5a0867eb14d104ee8a73730bd72dd9ad92e78d996a6dba0a5dcfc01",
+    "14-release/diagrams/VP09-data-ProcessReleaseRecords.mmd": "1c366e3b00a8658c80079c7b75db039651ba62687ec7dd3ff4d02765cbf6b36c",
+    "14-release/entry.md": "ee5659b338abfd38ba57377567de28fa371325086383826d8f3a39f8074fddd1",
+    "14-release/manifest.json": "26ec4709fe745940b13205c7e776a116660e5d09d6a7bfdf938ce7b0c2fdf0eb",
+    "14-release/selection.json": "b32a429f6becbbf16513e5cfa5535f909bf6bc34c01d4c5f74693d6a94470c28",
+    "15-plan-record/delivery.txt": "6403203dd5a0867eb14d104ee8a73730bd72dd9ad92e78d996a6dba0a5dcfc01",
+    "15-plan-record/diagrams/VP09-data-ReviewedInstallationPlans.mmd": "f696bee40882a98dcb15e4117e6ee498e320cc03812c010386d8b39743beb1bb",
+    "15-plan-record/entry.md": "154dcd0318242a672fefe1b2a25d1ba3466d20639e4825340a83774022f91f1f",
+    "15-plan-record/manifest.json": "307bd2f1e1298bb1245481227ca0d7ca6758ddf7fa7391f98ac7f057d02cd31c",
+    "15-plan-record/selection.json": "b07c7a76af47fd56797308048b3142e916f24202f4ed0b1473ea0a7b181a2a98",
+    "index.md": "517d1b67dc4ec61b5e5fe2f0e07530613698a464ba589545fb414d939ed7b294"
+  },
+  "revision": "c05cf8fcba4a1c7abb985b1a3814bf9690759dfa74d12cdf58d20a9c46d96330",
+  "schemaVersion": "ipd-review/1",
+  "selections": [
+    {
+      "diagrams": [
+        "VP01-AdoptManualProcess",
+        "VP01-InstallProjectProcess",
+        "VP01-RecoverProjectUpgrade",
+        "VP01-UpgradeProjectProcess"
+      ],
+      "path": "01-use-cases/entry.md",
+      "uri": "sdl-view://sdp-vnow/VP01?focus=ProjectMaintainer&relations=pursues%2Csupports&depth=2"
+    },
+    {
+      "diagrams": [
+        "VP02-SdpToolProcess"
+      ],
+      "path": "02-engine/entry.md",
+      "uri": "sdl-view://sdp-vnow/VP02?diagram=VP02-SdpToolProcess"
+    },
+    {
+      "diagrams": [
+        "VP02-GhSdpProcess"
+      ],
+      "path": "03-client/entry.md",
+      "uri": "sdl-view://sdp-vnow/VP02?diagram=VP02-GhSdpProcess"
+    },
+    {
+      "diagrams": [
+        "VP07-SdpTool-InstallationPlanning"
+      ],
+      "path": "04-plan-allocation/entry.md",
+      "uri": "sdl-view://sdp-vnow/VP07?diagram=VP07-SdpTool-InstallationPlanning"
+    },
+    {
+      "diagrams": [
+        "VP07-SdpTool-InstallationExecution"
+      ],
+      "path": "05-apply-allocation/entry.md",
+      "uri": "sdl-view://sdp-vnow/VP07?diagram=VP07-SdpTool-InstallationExecution"
+    },
+    {
+      "diagrams": [
+        "VP06-dependencies"
+      ],
+      "path": "06-delivery/entry.md",
+      "uri": "sdl-view://sdp-vnow/VP06?diagram=VP06-dependencies"
+    },
+    {
+      "diagrams": [
+        "VP08-SdpToolBootstrapPrepared"
+      ],
+      "path": "07-bootstrap/entry.md",
+      "uri": "sdl-view://sdp-vnow/VP08?diagram=VP08-SdpToolBootstrapPrepared"
+    },
+    {
+      "diagrams": [
+        "VP08-InstallationPlanPrepared"
+      ],
+      "path": "08-plan/entry.md",
+      "uri": "sdl-view://sdp-vnow/VP08?diagram=VP08-InstallationPlanPrepared"
+    },
+    {
+      "diagrams": [
+        "VP08-InstallationApplied"
+      ],
+      "path": "09-apply/entry.md",
+      "uri": "sdl-view://sdp-vnow/VP08?diagram=VP08-InstallationApplied"
+    },
+    {
+      "diagrams": [
+        "VP08-InstallationResumed"
+      ],
+      "path": "10-resume/entry.md",
+      "uri": "sdl-view://sdp-vnow/VP08?diagram=VP08-InstallationResumed"
+    },
+    {
+      "diagrams": [
+        "VP08-InstallationDriftRejected"
+      ],
+      "path": "11-reject/entry.md",
+      "uri": "sdl-view://sdp-vnow/VP08?diagram=VP08-InstallationDriftRejected"
+    },
+    {
+      "diagrams": [
+        "VP09-data-InstalledProcessRecords"
+      ],
+      "path": "12-receipt/entry.md",
+      "uri": "sdl-view://sdp-vnow/VP09?diagram=VP09-data-InstalledProcessRecords"
+    },
+    {
+      "diagrams": [
+        "VP09-data-InstallationOperationRecords"
+      ],
+      "path": "13-journal/entry.md",
+      "uri": "sdl-view://sdp-vnow/VP09?diagram=VP09-data-InstallationOperationRecords"
+    },
+    {
+      "diagrams": [
+        "VP09-data-ProcessReleaseRecords"
+      ],
+      "path": "14-release/entry.md",
+      "uri": "sdl-view://sdp-vnow/VP09?diagram=VP09-data-ProcessReleaseRecords"
+    },
+    {
+      "diagrams": [
+        "VP09-data-ReviewedInstallationPlans"
+      ],
+      "path": "15-plan-record/entry.md",
+      "uri": "sdl-view://sdp-vnow/VP09?diagram=VP09-data-ReviewedInstallationPlans"
+    }
+  ]
+}

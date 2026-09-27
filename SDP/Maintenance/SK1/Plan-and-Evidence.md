@@ -118,7 +118,7 @@ manual-project adoption. The owner authorized SK1 execution before that Scrum on
 therefore decides its minimal distribution boundary now and hands the actual
 result to the later installer Scrum. Do not expand
 SK1 into migration of every SDP process directory. The broad
-[Toolkit audit](../../KanBan/backlog/%23018--Study--Toolkit-audit-and-organization.md)
+[Toolkit audit](../../KanBan/canceled/%23018--Study--Toolkit-audit-and-organization.md)
 reuses this inventory. Existing ID compatibility failures remain KB-SDP-011.
 
 ## Implementation milestones

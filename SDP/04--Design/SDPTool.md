@@ -8,7 +8,7 @@ native XFMD integration remain later scope.
 
 ## Existing implementation to reuse
 
-The [pipeline study](../../Toolkit/SDPTool/Navigation-and-Design-Preview.md) records
+The [pipeline study](../../SDPTool/Navigation-and-Design-Preview.md) records
 Go parsing/projection/document publication, Rust mmdr layout, Go SDL SVG symbols,
 sdl-view selection and temporary-resource ownership. These are implemented SDL
 services reused by the implemented SDPTool facade. The native .design
@@ -46,7 +46,25 @@ Markdown; the validated architectural model uses design-core 0.5.
 
 ## P0-M1 implemented contract
 
-The [producer contract](../../Toolkit/SDPTool/Contract.md) resolves the saved-file
+The [producer contract](../../SDPTool/Contract.md) resolves the saved-file
 operation above with a Go facade, bounded selection, language diagnostics and
 caller-owned revision-tagged bundles. Unsaved-buffer and native viewer behavior
 remain separately owned. P0-M1 evidence is in the implementation plan.
+
+## Proposed blueprint follow-up — BP1
+
+The [SDL blueprint study](SDPTool/Blueprints/Study.md) investigates model-derived
+assignment context, protected boundaries and observed evidence. Its worked example
+uses planned unsaved-source preview without changing this canonical model or the
+implemented producer contract. [PLAN-SDP-0001](SDPTool/Blueprints/Plan.md) remains
+planned; no blueprint command or new SDL semantics are adopted.
+
+## Active installation design — IPD
+
+The owner selected [PLAN-SDP-0002](SDPTool/Installation/Plan.md) on 2026-09-27
+under active KB-SDP-033. It extends the canonical SDL model for SDPTool-owned
+install/upgrade and a thin gh-sdp client, then specifies contracts and produces
+generated review viewpoints and an implementation handoff. IPD now delivers the checked model, working protocol contract and reproducible
+[generated review](SDPTool/Installation/review/index.md). Its
+[implementation successor](../05--Implementation/SDPTool/Installation/Plan.md)
+remains planned; Go installation is not implemented by this design. The separate BP2 blueprint plan stays deferred.

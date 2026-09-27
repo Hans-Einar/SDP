@@ -9,6 +9,7 @@
 | KB-SDL-003 | Ref | completed | [SDP tools as a consumer of SDL](completed/%23003--SDL--Ref--SDP--017--sdptool.md) |
 | KB-SDL-004 | Change | superseded | [KB-SDL-004 — Organize language development by process phase](superseded/%23004--SDL--Change--Language-source-organization.md) |
 | KB-SDL-005 | Change | backlog | [SDL System and explicit source-set contract](backlog/%23005--SDL--Change--System-and-source-sets.md) |
+| KB-SDL-006 | Study | backlog | [Executable Channel tests and real Unit bindings](backlog/%23006--SDL--Study--Executable-channel-tests-and-unit-bindings.md) |
 | KB-SDP-001 | Proposal | completed | [Project structure, Template and studies per phase](completed/%23001--Proposal--Project-structure.md) |
 | KB-SDP-002 | Proposal | superseded | [sdptool: project discovery, implementation plan and viewer](superseded/%23002--Proposal--sdptool.md) |
 | KB-SDP-003 | Idea | backlog | [KanBan graph with a time axis and progressive detail](backlog/%23003--Idea--KanBan-graph.md) |
@@ -26,7 +27,7 @@
 | KB-SDP-015 | Change | completed | [CardState and scoped shell commands](completed/%23015--Change--CardState-and-shell-cli.md) |
 | KB-SDP-016 | Proposal | superseded | [Define SDP discovery, version and viewer capability metadata](superseded/%23016--Proposal--SDP-discovery-and-viewer-capabilities.md) |
 | KB-SDP-017 | Proposal | active | [sdptool and integrated project navigation](active/%23017--Proposal--sdptool-and-project-navigation.md) |
-| KB-SDP-018 | Study | backlog | [Audit Toolkit responsibilities, organization and distribution](backlog/%23018--Study--Toolkit-audit-and-organization.md) |
+| KB-SDP-018 | Study | canceled | [Audit Toolkit responsibilities, organization and distribution](canceled/%23018--Study--Toolkit-audit-and-organization.md) |
 | KB-SDP-019 | Ref | completed | [KB-SDP-019 — Shared process adoption for SDL and SDUI](completed/%23019--Ref--SDL--004--Language-source-organization.md) |
 | KB-SDP-020 | Change | backlog | [Organize shared system design sources by phase](backlog/%23020--Change--Shared-design-source-organization.md) |
 | KB-SDUI-001 | Ref | completed | [SDUI as a subproject and library for SDP tools](completed/%23001--SDUI--Ref--SDP--017--sdptool.md) |
@@ -41,9 +42,9 @@
 | KB-SDP-028 | Study | completed | [Versioned SDP installation and upgrades](completed/%23028--Study--Installer-upgrade-and-versioned-layout.md) |
 | KB-SDP-029 | Proposal | completed | [Typed plans and a shared Planning skill](completed/%23029--Proposal--Typed-plans-and-planning-skill.md) |
 | KB-SDP-030 | Bug | completed | [Restore installation conformance in CI](completed/%23030--Bug--CI-installation-conformance-and-fixtures.md) |
-| KB-SDP-031 | Study | backlog | [Study SDL-derived assignment bundles and blueprints](backlog/%23031--Study--SDL-assignment-bundles-and-blueprints.md) |
+| KB-SDP-031 | Study | completed | [Study SDL-derived assignment bundles and blueprints](completed/%23031--Study--SDL-assignment-bundles-and-blueprints.md) |
 | KB-SDP-032 | Study | backlog | [Evaluate SDL viewpoints through integrated XFMD navigation](backlog/%23032--Study--Viewpoint-navigation-feedback.md) |
-| KB-SDP-033 | Study | backlog | [Plan XFMD SDP adoption through gh-sdp and a practical SDL design pilot](backlog/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md) |
+| KB-SDP-033 | Study | active | [Plan XFMD SDP adoption through gh-sdp and a practical SDL design pilot](active/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md) |
 
 ## Purpose and authority
 

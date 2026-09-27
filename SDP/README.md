@@ -6,7 +6,7 @@ This area gathers development work for the SDP product itself.
 
 Owner application of KB-SDP-001, 2026-09-25: this project now uses the five
 numbered phase directories. SDPTool is the first product feature designed through
-them; code remains in Toolkit/SDPTool, with no nested SDP project.
+them; code remains in SDPTool, with no nested SDP project.
 
 | Phase | Responsibility / abstraction | First feature artifact |
 | --- | --- | --- |

@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "sdp-go-profile/1",
+  "inventorySource": "Toolkit/profiles/five-phase.json",
+  "reuse": "files-only",
+  "protocol": "sdp-install-command/1",
+  "processProfile": "sdp-five-phase/0.1",
+  "managementProfile": "sdp-project-management/0.2",
+  "capabilities": [
+    "sdp-install-command/1",
+    "sdp.process.five-phase.v1",
+    "sdp.project-management.v1",
+    "sdp.planning.v1"
+  ]
+}

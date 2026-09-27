@@ -16,9 +16,9 @@ project level. Phase homes and SDL A0–A5 abstractions have different purposes.
 
 ## First feature: SDPTool
 
-Create sdptool as one SDP product feature, with code in Toolkit/SDPTool and design
+Create sdptool as one SDP product feature, with code in SDPTool and design
 in this shared project area. Do not create a separate SDP project, board or ledger
-under Toolkit/SDPTool. Its first candidate delivery is a facade for saved .design
+under SDPTool. Its first candidate delivery is a facade for saved .design
 preview, reusing existing Go SDL projection and Rust layout. Further scope includes
 project recognition, general navigation and later process/traceability services.
 
@@ -30,10 +30,19 @@ native UI implementation and continues its own development process.
 The feature's [requirements](../02--Requirements/SDPTool.md),
 [active card](../KanBan/active/%23017--Proposal--sdptool-and-project-navigation.md)
 and [implementation plan](../05--Implementation/SDPTool.md) record acceptance and
-current work. The [pipeline study](../../Toolkit/SDPTool/Navigation-and-Design-Preview.md)
+current work. The [pipeline study](../../SDPTool/Navigation-and-Design-Preview.md)
 provides reuse evidence. No additional mandate study is needed for this explicit
 placement decision; unresolved API and discovery details belong in Design.
 
 Applying the local directory profile does not migrate distributed templates,
 select a discovery descriptor or make the future sdptool resolver recognize it.
 Those have separate implementation/compatibility requirements.
+
+## Common command entry point — owner clarification 2026-09-26
+
+Root SDPTool is the common Go entry point for SDP operations, including future
+installation and upgrade. gh-sdp delegates to SDPTool as a thin client; no separate
+Toolkit Go product or competing migration engine is selected. The retained Toolkit
+is a legacy/transition area whose required schemas, profiles and fixtures remain
+until deliberately migrated. This target does not claim Go installation is already
+implemented. See [REQ-SDPTOOL-007](../02--Requirements/SDPTool.md).

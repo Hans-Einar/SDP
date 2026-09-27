@@ -1,0 +1,8 @@
+flowchart LR
+    n_InstallReceiptRecord["InstallReceiptRecord (contract)"]
+    n_InstallationRecorder["InstallationRecorder (unit)"]
+    n_InstallationStore["InstallationStore (database)"]
+    n_InstalledProcessRecords["InstalledProcessRecords (dataset)"]
+    n_InstallationRecorder -->|owns| n_InstallationStore
+    n_InstallationStore -->|holds| n_InstalledProcessRecords
+    n_InstalledProcessRecords -->|upholds| n_InstallReceiptRecord

@@ -83,3 +83,12 @@ board-wide implementation freeze; do not treat it as approval of its contents.
 Keep gate-review as explicitly authorized by the owner; its concrete R3 authority-map review is still pending and does not block other work.
 
 EVT-KB-SDP-000122; next review at the next selection or relevant dependency delivery.
+
+## BP1 documentation observation
+
+2026-09-26T09:30:34Z: EVT-KB-SDP-000182. Toolkit/SDPTool/README.md still says XFMD does not gain an SDP
+directory and leaves implemented tree wire details in future tense. Reconcile
+these statements against the current producer Contract.md, delivered T phases
+and XFMD bootstrap records in a selected editorial follow-up. This observation
+does not change product scope, approve the pending owner review, or start
+implementation. CardState remains gate-review.

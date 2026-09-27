@@ -1,5 +1,11 @@
 # Versioned process installation — contract 2.0
 
+Implementation status: this documents the retained PowerShell engine. The owner
+selected [SDPTool](../../SDPTool/README.md) for future Go install/upgrade execution
+on 2026-09-26. It currently reads facts/journals only; no Go apply parity is claimed.
+Reuse these preservation/recovery contracts during migration; do not introduce a
+separate Toolkit Go product. See [ST1](../../SDP/Maintenance/ST1/Plan.md).
+
 Authority: MAINT-SDP-0003 and typed-planning extension MAINT-SDP-0004,
 executed by owner instruction on 2026-09-25.
 This contract extends Install-SDP.ps1; the existing unqualified install-v1

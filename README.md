@@ -4,7 +4,7 @@ Status: working draft
 Toolkit-Version: 0.2.0 (unreleased)
 
 Start with the [documentation navigator](docs/README.md), the
-[SDL language/tooling overview](SDL/docs/README.md), or [SDUI](SDUI/README.md).
+[SDL language/tooling overview](SDL/docs/README.md), [SDUI](SDUI/README.md), or the common Go command entry point [SDPTool](SDPTool/README.md).
 The repository's own work lives under [SDP](SDP/README.md); reusable project seeds
 live under [Template](Template/README.md). The R1 reorganization preserves the
 installed Toolkit process while its next SDL-based phase profile is designed.
@@ -31,10 +31,10 @@ remain compatibility instructions.
 ```text
 SDP repository
 |-- Template/                 neutral project-owned templates
-|-- Toolkit/                  installer, schemas, managed payload and skills
+|-- SDPTool/                  common Go command entry point
+|-- Toolkit/                  legacy installer and retained migration inputs
 |-- SDP/                      this project's KanBan, records, studies and history
-|-- SDL/     SDL (moving to SDL in R1-M3)
-|-- SDL/                      SDL project KanBan
+|-- SDL/                      system design language and tools
 |-- SDUI/                     UI language and project documentation
 |-- SDP.manifest.yaml         Toolkit release/capability manifest
 |-- RELEASE-NOTES.md          Toolkit release notes
@@ -58,7 +58,12 @@ Sprint/Refactor, Iteration, Slice/Fix, revision and Git SHA are separate
 development coordinates. See `Toolkit/docs/Release-And-Versioning.md` and
 `Toolkit/docs/Development-Identity.md`.
 
-## Install or update a project
+## Retained installer: install or update a project
+
+The selected target is Go install/upgrade inside SDPTool, invoked directly or
+through a thin gh-sdp client. Those commands are not implemented yet. The
+PowerShell workflow below remains available during migration; Toolkit retains
+required schemas, profiles and fixtures. See [installation ownership](SDPTool/README.md#installation-ownership--owner-decision-2026-09-26).
 
 Use an independent clone or an extracted GitHub source archive. Let `$SdpSource`
 name its root, the directory containing `Toolkit/SDP-install.manifest.json`:

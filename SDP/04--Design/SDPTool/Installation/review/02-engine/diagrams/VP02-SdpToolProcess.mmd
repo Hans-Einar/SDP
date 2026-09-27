@@ -1,0 +1,28 @@
+flowchart LR
+    n_CardHistory["CardHistory (unit)"]
+    n_InstallationBaselineInspector["InstallationBaselineInspector (unit)"]
+    n_InstallationCoordinator["InstallationCoordinator (unit)"]
+    n_InstallationExecutor["InstallationExecutor (unit)"]
+    n_InstallationJournal["InstallationJournal (unit)"]
+    n_InstallationPlanner["InstallationPlanner (unit)"]
+    n_InstallationRecorder["InstallationRecorder (unit)"]
+    n_InstallationReleaseResolver["InstallationReleaseResolver (unit)"]
+    n_NavigationInventory["NavigationInventory (unit)"]
+    n_PlanCoordinator["PlanCoordinator (unit)"]
+    n_PreviewCoordinator["PreviewCoordinator (unit)"]
+    n_ProjectContext["ProjectContext (unit)"]
+    n_SdpToolProcess["SdpToolProcess (container)"]
+    n_ViewerBridge["ViewerBridge (unit)"]
+    n_SdpToolProcess -->|contains| n_CardHistory
+    n_SdpToolProcess -->|contains| n_InstallationBaselineInspector
+    n_SdpToolProcess -->|contains| n_InstallationCoordinator
+    n_SdpToolProcess -->|contains| n_InstallationExecutor
+    n_SdpToolProcess -->|contains| n_InstallationJournal
+    n_SdpToolProcess -->|contains| n_InstallationPlanner
+    n_SdpToolProcess -->|contains| n_InstallationRecorder
+    n_SdpToolProcess -->|contains| n_InstallationReleaseResolver
+    n_SdpToolProcess -->|contains| n_NavigationInventory
+    n_SdpToolProcess -->|contains| n_PlanCoordinator
+    n_SdpToolProcess -->|contains| n_PreviewCoordinator
+    n_SdpToolProcess -->|contains| n_ProjectContext
+    n_SdpToolProcess -->|contains| n_ViewerBridge

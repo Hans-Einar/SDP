@@ -17,7 +17,7 @@ append-only histories have not yet been moved or combined.
 Use one project process area in root SDP for the work we coordinate together.
 A process project may document one or more software systems; it is not itself a
 C4 software-system boundary. Keep the five numbered process homes and organize
-artifacts inside them by responsibility. Preserve SDL, SDUI and Toolkit/SDPTool
+artifacts inside them by responsibility. Preserve SDL, SDUI and SDPTool
 as implementation source locations.
 
 The owner selects **SDL**, **SDUI** and **SDPTool** as three separate software

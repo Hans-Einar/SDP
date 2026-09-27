@@ -1,0 +1,5 @@
+sequenceDiagram
+    participant n_GhSdpLauncher as Gh Sdp Launcher
+    participant n_InstallationCoordinator as Installation Coordinator
+    n_GhSdpLauncher->>n_InstallationCoordinator: 1: Apply Installation Request (Installation Apply Calls)
+    n_InstallationCoordinator-->>n_GhSdpLauncher: 2: Apply Installation Rejected (Installation Apply Calls) reply-to 1
