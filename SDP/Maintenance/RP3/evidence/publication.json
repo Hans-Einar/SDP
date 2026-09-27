@@ -1,0 +1,80 @@
+{
+  "assets": [
+    {
+      "apiUrl": "https://api.github.com/repos/Hans-Einar/SDP/releases/assets/594008162",
+      "contentType": "application/json",
+      "createdAt": "2026-09-27T23:39:02Z",
+      "digest": "sha256:767527e0d7f54866bab95f4642ffffb2a344024c1805f44b3d5ea9c024829125",
+      "downloadCount": 0,
+      "id": "RA_kwDOTVOewM4jZ9hi",
+      "label": "",
+      "name": "sdp-release.json",
+      "size": 156194,
+      "state": "uploaded",
+      "updatedAt": "2026-09-27T23:39:03Z",
+      "url": "https://github.com/Hans-Einar/SDP/releases/download/v1.0.0/sdp-release.json"
+    },
+    {
+      "apiUrl": "https://api.github.com/repos/Hans-Einar/SDP/releases/assets/594008165",
+      "contentType": "application/pgp-signature",
+      "createdAt": "2026-09-27T23:39:02Z",
+      "digest": "sha256:443efea12c100e8d50001e1e1633bcf6dd7b607ade61d6623c229f753e19bf0f",
+      "downloadCount": 0,
+      "id": "RA_kwDOTVOewM4jZ9hl",
+      "label": "",
+      "name": "sdp-release.json.sig",
+      "size": 180,
+      "state": "uploaded",
+      "updatedAt": "2026-09-27T23:39:02Z",
+      "url": "https://github.com/Hans-Einar/SDP/releases/download/v1.0.0/sdp-release.json.sig"
+    },
+    {
+      "apiUrl": "https://api.github.com/repos/Hans-Einar/SDP/releases/assets/594008153",
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-09-27T23:39:02Z",
+      "digest": "sha256:7e787ddc781bb80b752130b610ac9eb7c4d6f2039a7babcac557c81d77a2c94c",
+      "downloadCount": 0,
+      "id": "RA_kwDOTVOewM4jZ9hZ",
+      "label": "",
+      "name": "sdptool",
+      "size": 12521893,
+      "state": "uploaded",
+      "updatedAt": "2026-09-27T23:39:06Z",
+      "url": "https://github.com/Hans-Einar/SDP/releases/download/v1.0.0/sdptool"
+    },
+    {
+      "apiUrl": "https://api.github.com/repos/Hans-Einar/SDP/releases/assets/594008166",
+      "contentType": "application/json",
+      "createdAt": "2026-09-27T23:39:02Z",
+      "digest": "sha256:2bb114d20797801c63781c7a11859f5cab271000ea7b3dfa06a7eac30958cd0d",
+      "downloadCount": 0,
+      "id": "RA_kwDOTVOewM4jZ9hm",
+      "label": "",
+      "name": "sdptool.manifest.json",
+      "size": 209,
+      "state": "uploaded",
+      "updatedAt": "2026-09-27T23:39:02Z",
+      "url": "https://github.com/Hans-Einar/SDP/releases/download/v1.0.0/sdptool.manifest.json"
+    },
+    {
+      "apiUrl": "https://api.github.com/repos/Hans-Einar/SDP/releases/assets/594008168",
+      "contentType": "application/octet-stream",
+      "createdAt": "2026-09-27T23:39:02Z",
+      "digest": "sha256:f00ec9a64d177fa2902e7847346ad59c88948ecb79f86c85e4bb3b8b395a6280",
+      "downloadCount": 0,
+      "id": "RA_kwDOTVOewM4jZ9ho",
+      "label": "",
+      "name": "SHA256SUMS",
+      "size": 332,
+      "state": "uploaded",
+      "updatedAt": "2026-09-27T23:39:02Z",
+      "url": "https://github.com/Hans-Einar/SDP/releases/download/v1.0.0/SHA256SUMS"
+    }
+  ],
+  "publishedAt": "2026-09-27T23:39:07Z",
+  "tagName": "v1.0.0",
+  "url": "https://github.com/Hans-Einar/SDP/releases/tag/v1.0.0",
+  "sourceCommit": "fede327d6f3af35fe7aad323e2c485a27134d20d",
+  "tagObject": "a51be8485050bc3a6690d1a9cfd39af53dd52c4d",
+  "downloadChecksumsPassed": true
+}

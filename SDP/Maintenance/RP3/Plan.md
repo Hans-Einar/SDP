@@ -4,7 +4,7 @@
 | --- | --- |
 | id | MAINT-SDP-0010 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | MaintenancePlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
@@ -56,8 +56,9 @@ moves current payload authoring into SDPTool, and makes CI use only Go for
 installation/recovery. Historical prose, immutable release assets and data contracts
 remain historical; no runnable shell copies remain, including the bootstrap archive.
 Verify actual Go signed install/upgrade/recovery and preservation before resuming
-release. The requested version decision is pending because removal retires former
-source-distributed entry points; do not reuse the old candidate evidence as final.
+release. At that pause the version decision was pending because removal retires former
+source-distributed entry points. The subsequent owner decision below selects 1.0.0;
+the old candidate evidence is not final evidence.
 
 ## Current release selection
 
@@ -77,3 +78,58 @@ evidence/review-go-only.md. Clean production-signed 1.0.0 rehearsal from both
 published predecessors passes with four payload actions, preserved owner prose
 and repeat no-op; see evidence/go-only-signed-upgrades.json. The minor signing
 example now names 1.0.0. Final release artifacts must be rebuilt from merged HEAD.
+
+## RP3-M2 — exact-source publication
+
+Exact-head ff959935 CI passed contracts and Go installation/race/package gates.
+PR45 merged to fede327d6f3af35fe7aad323e2c485a27134d20d. Its clean package
+was production-signed and rehearsed from both published predecessors: owner prose
+preserved, four payload actions and repeat no-op. Downloaded release assets pass
+SHA256SUMS. Production bootstrap verifies the signature and exact executable.
+
+SDP 1.0.0 was published at 2026-09-27T23:39:07Z (2026-09-28 locally):
+https://github.com/Hans-Einar/SDP/releases/tag/v1.0.0
+
+Descriptor digest: 767527e0d7f54866bab95f4642ffffb2a344024c1805f44b3d5ea9c024829125.
+Client 0.1.2 was independently reviewed and published from clean merged
+a4988846432c7f7f7b3f722f2786359c9b127372:
+https://github.com/Hans-Einar/gh-sdp/releases/tag/v0.1.2
+
+The global extension was upgraded from 0.1.1 to 0.1.2. A fresh-cache installed
+`gh sdp --version`, with no release/trust overrides, returns SDP 1.0.0 at the
+exact tagged source. Publication reconciliation leaves tagged assets immutable.
+No PowerShell command ran after the owner correction.
+
+## RP3-M3 — live XFMD upgrade completed
+
+The existing signed 0.2.0 receipt permits normal upgrade; no custom adoption
+manifest is needed. The installed client previewed and applied the root-bound
+plan to /home/warloc/git/xfmd-sdl-navigation. Four payload actions update managed
+AGENTS.md and Framework/README.md, and initialize SDP/SDL/README.md and AGENTS.md.
+The installer wrote signed receipt 1.0.0, MAINT-XFMD-0003 and a ledger event.
+
+All 1229 original tracked/nonignored files were hash-checked. Only the declared
+managed files, receipt and appended management ledger changed; the complete
+previous ledger bytes remain a prefix. Pre-existing KanBan README/card changes
+and application code are preserved. The upgrade changes remain uncommitted in
+the XFMD worktree alongside that unrelated local work. Existing project prose
+was deliberately preserved, so old dated installation narratives are not rewritten.
+
+A repeated upgrade is noChange=true with zero actions. Actual `gh sdp tree`
+returns validated KanBan, including the external primary reference and new local
+card. SDL/SDUI remain absent because XFMD has no registered models yet; the
+process upgrade does not implement its native sidebar or application design.
+
+Evidence: [publication](evidence/publication.json),
+[final package](evidence/final-package.json),
+[signed upgrades](evidence/final-signed-upgrades.json),
+[installed default](evidence/installed-version.json),
+[upgrade summary](evidence/xfmd-upgrade-summary.json),
+[apply result](evidence/xfmd-apply.json),
+[preservation](evidence/xfmd-preservation.json) and
+[actual tree](evidence/installed-xfmd-tree.json).
+All selected milestones are delivered; no wider platform or GUI claim is made.
+
+[Independent publication review](evidence/review-publication.md) approves d634101
+with no findings and independently reproduces receipt, preservation, no-op and
+actual-navigation checks.
