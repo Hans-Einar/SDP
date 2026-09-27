@@ -7,9 +7,13 @@ import (
 	"github.com/Hans-Einar/SDP/SystemDesignLanguage/go/documents"
 	"os"
 	"path/filepath"
+	"regexp"
 	"sort"
 	"strings"
 )
+
+var cardReferenceID = regexp.MustCompile(`^KB-([A-Z][A-Z0-9]*)-[0-9]{3,}$`)
+var cardNamespace = regexp.MustCompile(`^[A-Z][A-Z0-9]*$`)
 
 func metadata(b []byte) (map[string]string, error) {
 	out := map[string]string{}
@@ -64,6 +68,15 @@ func BoardNodes(p Project) ([]Node, string, error) {
 	}
 	if descriptor.Schema != "0.2" || !supportedManagementProfile(descriptor.Profile) {
 		return nil, "", failure("unsupported", fmt.Errorf("unsupported KanBan board/profile"))
+	}
+	localNamespaces := map[string]bool{descriptor.Project: true}
+	for _, namespace := range descriptor.Namespaces {
+		localNamespaces[namespace] = true
+	}
+	for namespace := range localNamespaces {
+		if !cardNamespace.MatchString(namespace) {
+			return nil, "", fmt.Errorf("invalid KanBan namespace %q", namespace)
+		}
 	}
 	rel, e := filepath.Rel(p.Root, filepath.Join(root, descriptor.Ledger))
 	if e != nil {
@@ -180,6 +193,15 @@ func BoardNodes(p Project) ([]Node, string, error) {
 	}
 	for i := range nodes {
 		if primary := refs[nodes[i].ID]; primary != "" {
+			parts := cardReferenceID.FindStringSubmatch(primary)
+			if parts == nil {
+				return nil, "", fmt.Errorf("invalid Ref ID %s", primary)
+			}
+			if !localNamespaces[parts[1]] {
+				// Foreign IDs are informational. Never resolve a checkout or imply existence.
+				nodes[i].ExternalReference = primary
+				continue
+			}
 			if !ids[primary] {
 				return nil, "", fmt.Errorf("unresolved Ref %s", primary)
 			}

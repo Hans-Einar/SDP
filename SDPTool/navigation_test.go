@@ -124,3 +124,109 @@ func TestSDUIServiceAndOptionalTabs(t *testing.T) {
 		t.Fatalf("%v", e)
 	}
 }
+
+func TestKanBanReferenceScope(t *testing.T) {
+	for _, tc := range []struct {
+		name, primary, target, wantLocal, wantExternal, wantError string
+		namespaces                                                []string
+		brokenHistory                                             bool
+	}{
+		{name: "foreign XFMD reference", primary: "KB-SDP-014", wantExternal: "KB-SDP-014"},
+		{name: "invalid board namespace", namespaces: []string{"../bad"}, primary: "KB-SDP-014", wantError: "invalid KanBan namespace"},
+		{name: "unknown foreign project", primary: "KB-UNKNOWN-999", wantExternal: "KB-UNKNOWN-999"},
+		{name: "local reference", primary: "KB-XFMD-001", target: "KB-XFMD-001", wantLocal: "kanban/card/KB-XFMD-001"},
+		{name: "missing project reference", primary: "KB-XFMD-999", wantError: "unresolved Ref"},
+		{name: "shared namespace reference", namespaces: []string{"XFMD", "SDL"}, primary: "KB-SDL-001", target: "KB-SDL-001", wantLocal: "kanban/card/KB-SDL-001"},
+		{name: "missing shared reference", namespaces: []string{"XFMD", "SDL"}, primary: "KB-SDL-999", wantError: "unresolved Ref"},
+		{name: "malformed foreign ID", primary: "KB-SDP-nope", wantError: "invalid Ref ID"},
+		{name: "path is not ID", primary: "../SDP/KB-SDP-014", wantError: "invalid Ref ID"},
+		{name: "URI is not ID", primary: "https://example.com/KB-SDP-014", wantError: "invalid Ref ID"},
+		{name: "foreign reference cannot hide broken history", primary: "KB-SDP-014", brokenHistory: true, wantError: "broken card chain"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			root, r := projectFixture(t)
+			r.KanBan = "SDP/KanBan"
+			saveRegistration(t, root, r)
+			board := filepath.Join(root, r.KanBan)
+			write := func(name string, data []byte) {
+				t.Helper()
+				if err := os.WriteFile(filepath.Join(board, name), data, 0600); err != nil {
+					t.Fatal(err)
+				}
+			}
+			for _, folder := range []string{"backlog", "active", "onHold", "completed", "canceled", "superseded", "irrelevant"} {
+				if err := os.MkdirAll(filepath.Join(board, folder), 0700); err != nil {
+					t.Fatal(err)
+				}
+			}
+			descriptor, err := json.Marshal(map[string]any{"schemaVersion": "0.2", "projectId": "XFMD", "namespaces": tc.namespaces, "ledger": "Ledger.ndjson", "profile": "sdp-project-management/0.2"})
+			if err != nil {
+				t.Fatal(err)
+			}
+			write("board.json", descriptor)
+			var history []byte
+			addCard := func(id, primary string) {
+				name := "backlog/#" + id + ".md"
+				card := "| Field | Value |\n| --- | --- |\n| id | " + id + " |\n| CardState | backlog |\n"
+				if primary != "" {
+					card += "| primary | " + primary + " |\n"
+				}
+				write(name, []byte(card))
+				var previous any
+				if tc.brokenHistory {
+					previous = "missing-event"
+				}
+				ev, err := json.Marshal(map[string]any{"eventId": "created-" + id, "eventType": "x-kanban:created", "subjectId": id, "payload": map[string]any{"schemaVersion": "0.2", "previousEventId": previous, "toPath": name}})
+				if err != nil {
+					t.Fatal(err)
+				}
+				history = append(history, append(ev, '\n')...)
+			}
+			addCard("KB-XFMD-012", tc.primary)
+			if tc.target != "" {
+				addCard(tc.target, "")
+			}
+			write("Ledger.ndjson", history)
+			p, err := Discover(root)
+			if err != nil {
+				t.Fatal(err)
+			}
+			nav, err := Navigation(p, "")
+			if err != nil {
+				t.Fatal(err)
+			}
+			foundTab, foundCard := false, false
+			for _, n := range nav.Nodes {
+				if n.ID == "kanban" {
+					foundTab = true
+					if tc.wantError != "" {
+						if n.State != "unavailable" || !strings.Contains(n.Diagnostic, tc.wantError) {
+							t.Fatalf("bad diagnostic: %+v", n)
+						}
+					} else if n.State != "validated" {
+						t.Fatalf("board unavailable: %+v", n)
+					}
+				}
+				if n.ID == "kanban/card/KB-XFMD-012" {
+					foundCard = true
+					if n.Reference != tc.wantLocal || n.ExternalReference != tc.wantExternal || n.State != "available" || n.Target == nil || n.Target.Operation != "open" || n.Target.Revision == "" {
+						t.Fatalf("bad card: %+v", n)
+					}
+					if n.Target.Path != filepath.Join(board, "backlog/#KB-XFMD-012.md") {
+						t.Fatal("target must open the local card")
+					}
+					b, err := json.Marshal(n)
+					if err != nil {
+						t.Fatal(err)
+					}
+					if tc.wantExternal != "" && (!strings.Contains(string(b), `"externalReference":"`+tc.wantExternal+`"`) || strings.Contains(string(b), `"reference":`)) {
+						t.Fatalf("foreign reference must not be a local node link: %s", b)
+					}
+				}
+			}
+			if !foundTab || (tc.wantError == "" && !foundCard) {
+				t.Fatal("missing navigation nodes")
+			}
+		})
+	}
+}
