@@ -58,3 +58,8 @@ or existence guarantees. Local references and history remain strict. Eleven
 regression cases, the full race suite and vet pass; the built CLI returns all 18
 XFMD cards with a validated KanBan tab. See the linked ER1 plan for evidence.
 The installed 0.2.0 engine still requires a subsequent release to receive this fix.
+
+2026-09-27: EVT-KB-SDP-000202. RP2 published SDP 0.2.1 and gh-sdp 0.1.1; the
+installed default client now returns all 18 XFMD cards with validated KanBan and
+the external primary retained. [Release evidence](../../Maintenance/RP2/Plan.md).
+No XFMD project-file or application change was required.

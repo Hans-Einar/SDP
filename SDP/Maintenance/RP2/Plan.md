@@ -4,7 +4,7 @@
 | --- | --- |
 | id | MAINT-SDP-0008 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | MaintenancePlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
@@ -63,3 +63,40 @@ SemVer upgrade permission or installer-policy relaxation is introduced. The sign
 upgrade rehearsal must pass before release. An existing process integration test
 also now derives its current version from artifact facts before exercising the
 99.0.0 downgrade rejection; its previous 0.2.0 literal stopped mutating the fixture.
+
+### RP2-M2 — upstream published
+
+PR43 passed all four CI jobs: contracts 4m31s, Go installation 1m41s, Windows
+installer 11m52s and Linux process/recovery 6m47s. All local review conditions passed;
+[final independent review](evidence/review.md) approves preparation 60dbbe8 with no
+unresolved blocker/high/medium findings. Ordinary conformance passes 19 scenarios.
+The corrected real downgrade fixture passes.
+
+PR43 merged to 4bacfce05f92f0dab9680456e297214727b54bc6. Its exact clean package was
+production-signed, installed, repeated and used for read-only XFMD navigation.
+Signed 0.2.0 → 0.2.1 upgrade preserves owner content and history; unchanged payload
+requires zero file actions while the signed receipt records 0.2.1. The extracted
+GitHub source archive installs successfully and records null sourceCommit.
+
+The annotated v0.2.1 tag and final GitHub Release now exist:
+https://github.com/Hans-Einar/SDP/releases/tag/v0.2.1
+
+Descriptor SHA256: 66590e8e967ede6b36d8fa45cdbee1cd80f69505cca698b0e4a9bd960842735a.
+[Publication](evidence/publication.json), [final package](evidence/final-package.json),
+[upgrade](evidence/final-upgrade.json) and [archive](evidence/final-archive-install.txt)
+record observed outcomes. Prior 0.2.0 tag/assets/released notes remain unchanged.
+gh-sdp 0.1.1 is published at
+https://github.com/Hans-Einar/gh-sdp/releases/tag/v0.1.1
+from 8cbef9693e353cb04dc6d98021aca454b9078e3f, with its own independent review.
+The installed extension was upgraded from 0.1.0 to 0.1.1. With no release or test-key
+override, it resolves SDPTool 0.2.1 at the exact released source revision and returns
+all 18 XFMD cards with validated KanBan and externalReference KB-SDP-014.
+[Installed identity](evidence/installed-version.json) and
+[actual tree](evidence/installed-xfmd-tree.json) record the completed user workflow.
+XFMD remains clean and its project process files are unchanged. The other gh-tree
+extension remains installed. No native GUI badge or wider platform claim is made.
+
+Downloaded upstream assets pass SHA256SUMS and production signature/install checks;
+see [download verification](evidence/downloaded-package.json). All selected RP2
+milestones are complete. Publication reconciliation changes only current records
+and their derived profile artifact; the published tagged artifacts remain immutable.

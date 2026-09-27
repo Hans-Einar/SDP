@@ -1,0 +1,4 @@
+contracts	pass	4m31s	https://github.com/Hans-Einar/SDP/actions/runs/36310690234/job/108595893272	
+go-installation-linux	pass	1m41s	https://github.com/Hans-Einar/SDP/actions/runs/36310690234/job/108595893301	
+installer	pass	11m52s	https://github.com/Hans-Einar/SDP/actions/runs/36310690234/job/108595893318	
+process-profile-linux	pass	6m47s	https://github.com/Hans-Einar/SDP/actions/runs/36310690234/job/108595893198	
