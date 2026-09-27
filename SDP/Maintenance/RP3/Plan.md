@@ -129,3 +129,7 @@ Evidence: [publication](evidence/publication.json),
 [preservation](evidence/xfmd-preservation.json) and
 [actual tree](evidence/installed-xfmd-tree.json).
 All selected milestones are delivered; no wider platform or GUI claim is made.
+
+[Independent publication review](evidence/review-publication.md) approves d634101
+with no findings and independently reproduces receipt, preservation, no-op and
+actual-navigation checks.
