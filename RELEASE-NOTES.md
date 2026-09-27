@@ -4,6 +4,16 @@
 
 Release-Date: unreleased
 
+## [0.2.1] - 2026-09-27
+
+### Fixed
+
+- [KB-SDP-034] Foreign KanBan primary references are explicitly external and unverified. They no longer disable an otherwise valid board. Local references and history remain validated; no external checkout or network lookup is performed.
+
+### Migration
+
+- [MAINT-SDP-0008] Update the engine to receive the navigation fix. The gh-sdp client patch pins SDP 0.2.1. No project document or receipt-format migration is required; existing 0.2.0 installations remain valid.
+
 ## [0.2.0] - 2026-09-27
 
 ### Added

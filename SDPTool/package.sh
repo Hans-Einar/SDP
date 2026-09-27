@@ -12,7 +12,7 @@ if [[ -e "$sdp_package_output" ]]; then
     exit 2
 fi
 sdp_package_go=${SDP_GO:-go}
-sdp_package_version=${SDP_VERSION:-0.2.0-dev}
+sdp_package_version=${SDP_VERSION:-0.2.1-dev}
 command -v -- "$sdp_package_go" >/dev/null || { echo "Go build tool unavailable; set SDP_GO" >&2; exit 2; }
 sdp_package_parent=$(dirname -- "$sdp_package_output")
 mkdir -p -- "$sdp_package_parent"

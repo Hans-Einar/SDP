@@ -10,5 +10,8 @@
     "sdp.process.five-phase.v1",
     "sdp.project-management.v1",
     "sdp.planning.v1"
+  ],
+  "upgradesFrom": [
+    "edc0c72101a437c6e12c40a081ef59ae41cf0db32bcaedb73824ec48495aaee5"
   ]
 }

@@ -522,7 +522,7 @@
           },
           {
             "path": "SDP/Framework/installed-toolkit.manifest.yaml",
-            "contentUtf8": "schemaVersion: \"1.0\"\ntoolkitVersion: \"0.2.0\"\nframeworkVersion: \"1.0.0\"\nagentsContractVersion: \"1.0.0\"\ninstallerVersion: \"0.2.0\"\ntoolkitInstalledAt: \"2026-01-01T00:00:00Z\"\nsourceCommit: null\nskills:\n  sdp-worker: \"1.0.0\"\ncapabilities:\n  - sdp.skill-metadata.v1\n"
+            "contentUtf8": "schemaVersion: \"1.0\"\ntoolkitVersion: \"0.2.1\"\nframeworkVersion: \"1.0.0\"\nagentsContractVersion: \"1.0.0\"\ninstallerVersion: \"0.2.1\"\ntoolkitInstalledAt: \"2026-01-01T00:00:00Z\"\nsourceCommit: null\nskills:\n  sdp-worker: \"1.0.0\"\ncapabilities:\n  - sdp.skill-metadata.v1\n"
           }
         ]
       },
@@ -554,7 +554,7 @@
           },
           {
             "path": "SDP/Framework/installed-toolkit.manifest.yaml",
-            "contentUtf8": "schemaVersion: \"1.0\"\ntoolkitVersion: \"0.2.0\"\nframeworkVersion: \"1.0.0\"\nagentsContractVersion: \"1.0.0\"\ninstallerVersion: \"0.2.0\"\ntoolkitInstalledAt: \"2026-01-01T00:00:00Z\"\nsourceCommit: null\nskills:\n  sdp-worker: \"1.0.0\"\ncapabilities:\n  - sdp.skill-metadata.v1\n"
+            "contentUtf8": "schemaVersion: \"1.0\"\ntoolkitVersion: \"0.2.1\"\nframeworkVersion: \"1.0.0\"\nagentsContractVersion: \"1.0.0\"\ninstallerVersion: \"0.2.1\"\ntoolkitInstalledAt: \"2026-01-01T00:00:00Z\"\nsourceCommit: null\nskills:\n  sdp-worker: \"1.0.0\"\ncapabilities:\n  - sdp.skill-metadata.v1\n"
           }
         ]
       },
