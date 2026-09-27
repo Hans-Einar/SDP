@@ -66,3 +66,15 @@ EVT-KB-SDP-000121; next review at the next selection or relevant dependency deli
 PLAN-SDP-0005 pilots a system-owned source tree in experiments/mvp1_sdl: Containers, Shared/Libraries, Shared/UI, Contracts, Scenarios, Governance and SDUI. This refines the earlier phase-folder placement proposal for MVP1; numbered folders remain process/document organization. The broader SDL/SDUI/SDPTool migration is still pending. Preserve one declaration/fact authority and use this pilot as migration evidence, not as multi-file compiler evidence.
 
 [Pilot and navigation handoff](../../../experiments/mvp1_sdl/Navigation.md).
+
+## Source convention and template follow-up — 2026-09-28
+
+MAINT-SDP-0009 documents SDP/SDL/<System>/ as the home for new authored models,
+with container details and system-owned SDUI screens. This supersedes the earlier
+phase-folder source-placement proposal above; numbered folders remain process
+and reader-document organization. Current five-phase installation seeds now carry
+the convention. Existing models remain authoritative at their current paths until
+this card's migration is selected and verified. Parser support and registration
+are not inferred from directory structure. This card remains backlog.
+
+[Source guide](../../SDL/README.md) and [template work](../../Maintenance/TS1/Plan.md).

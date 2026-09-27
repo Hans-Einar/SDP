@@ -106,3 +106,11 @@ assigned role and current host/session delegation rules. A trivial factual quest
 or unrelated task does not need SDP lifecycle work. Root Skills/ is the only
 maintained source; .agents/skills contains relative discovery symlinks. Do not
 create a second collection or imply that discovery proves actual loading.
+
+## SDL source convention
+
+For new system model work, read SDP/SDL/README.md and SDP/SDL/AGENTS.md.
+Use SDP/SDL/<System>/ as the source home; numbered folders hold process documents
+and derived views. Existing models remain in their current authoritative locations
+until an explicit migration. The MVP1 experiment is a reference layout, not proof
+that the released parser supports its experimental profile.

@@ -120,122 +120,122 @@
       "ownership": "managed"
     },
     {
-      "source": "Template/profiles/five-phase/01--Mandate/README.md",
+      "source": "Template/sdp-root/01--Mandate/README.md",
       "destination": "SDP/01--Mandate/README.md",
       "ownership": "project"
     },
     {
-      "source": "Template/profiles/five-phase/02--Requirements/README.md",
+      "source": "Template/sdp-root/02--Requirements/README.md",
       "destination": "SDP/02--Requirements/README.md",
       "ownership": "project"
     },
     {
-      "source": "Template/profiles/five-phase/03--Architecture/README.md",
+      "source": "Template/sdp-root/03--Architecture/README.md",
       "destination": "SDP/03--Architecture/README.md",
       "ownership": "project"
     },
     {
-      "source": "Template/profiles/five-phase/04--Design/README.md",
+      "source": "Template/sdp-root/04--Design/README.md",
       "destination": "SDP/04--Design/README.md",
       "ownership": "project"
     },
     {
-      "source": "Template/profiles/five-phase/05--Implementation/README.md",
+      "source": "Template/sdp-root/05--Implementation/README.md",
       "destination": "SDP/05--Implementation/README.md",
       "ownership": "project"
     },
     {
-      "source": "Template/profiles/five-phase/Agents/Scrum/README.md",
+      "source": "Template/sdp-root/Agents/Scrum/README.md",
       "destination": "SDP/Agents/Scrum/README.md",
       "ownership": "project"
     },
     {
-      "source": "Template/profiles/five-phase/CodeReview/README.md",
+      "source": "Template/sdp-root/CodeReview/README.md",
       "destination": "SDP/CodeReview/README.md",
       "ownership": "project"
     },
     {
-      "source": "Template/profiles/five-phase/KanBan/Card-template.md",
+      "source": "Template/sdp-root/KanBan/Card-template.md",
       "destination": "SDP/KanBan/Card-template.md",
       "ownership": "project"
     },
     {
-      "source": "Template/profiles/five-phase/KanBan/README.md",
+      "source": "Template/sdp-root/KanBan/README.md",
       "destination": "SDP/KanBan/README.md",
       "ownership": "project"
     },
     {
-      "source": "Template/profiles/five-phase/KanBan/active/.gitkeep",
+      "source": "Template/sdp-root/KanBan/active/.gitkeep",
       "destination": "SDP/KanBan/active/.gitkeep",
       "ownership": "project"
     },
     {
-      "source": "Template/profiles/five-phase/KanBan/backlog/.gitkeep",
+      "source": "Template/sdp-root/KanBan/backlog/.gitkeep",
       "destination": "SDP/KanBan/backlog/.gitkeep",
       "ownership": "project"
     },
     {
-      "source": "Template/profiles/five-phase/KanBan/canceled/.gitkeep",
+      "source": "Template/sdp-root/KanBan/canceled/.gitkeep",
       "destination": "SDP/KanBan/canceled/.gitkeep",
       "ownership": "project"
     },
     {
-      "source": "Template/profiles/five-phase/KanBan/completed/.gitkeep",
+      "source": "Template/sdp-root/KanBan/completed/.gitkeep",
       "destination": "SDP/KanBan/completed/.gitkeep",
       "ownership": "project"
     },
     {
-      "source": "Template/profiles/five-phase/KanBan/irrelevant/.gitkeep",
+      "source": "Template/sdp-root/KanBan/irrelevant/.gitkeep",
       "destination": "SDP/KanBan/irrelevant/.gitkeep",
       "ownership": "project"
     },
     {
-      "source": "Template/profiles/five-phase/KanBan/onHold/.gitkeep",
+      "source": "Template/sdp-root/KanBan/onHold/.gitkeep",
       "destination": "SDP/KanBan/onHold/.gitkeep",
       "ownership": "project"
     },
     {
-      "source": "Template/profiles/five-phase/KanBan/superseded/.gitkeep",
+      "source": "Template/sdp-root/KanBan/superseded/.gitkeep",
       "destination": "SDP/KanBan/superseded/.gitkeep",
       "ownership": "project"
     },
     {
-      "source": "Template/profiles/five-phase/Maintenance/README.md",
+      "source": "Template/sdp-root/Maintenance/README.md",
       "destination": "SDP/Maintenance/README.md",
       "ownership": "project"
     },
     {
-      "source": "Template/profiles/five-phase/ProjectManagement/README.md",
+      "source": "Template/sdp-root/ProjectManagement/README.md",
       "destination": "SDP/ProjectManagement/README.md",
       "ownership": "project"
     },
     {
-      "source": "Template/profiles/five-phase/README.md",
+      "source": "Template/sdp-root/README.md",
       "destination": "SDP/README.md",
       "ownership": "project"
     },
     {
-      "source": "Template/profiles/five-phase/Refactors/README.md",
+      "source": "Template/sdp-root/Refactors/README.md",
       "destination": "SDP/Refactors/README.md",
       "ownership": "project"
     },
     {
-      "source": "Template/profiles/five-phase/SDP-DOCUMENT-GUIDE.md",
+      "source": "Template/sdp-root/SDP-DOCUMENT-GUIDE.md",
       "destination": "SDP/SDP-DOCUMENT-GUIDE.md",
       "ownership": "project"
     },
     {
-      "source": "Template/profiles/five-phase/Sprints/README.md",
+      "source": "Template/sdp-root/Sprints/README.md",
       "destination": "SDP/Sprints/README.md",
       "ownership": "project"
     },
     {
-      "source": "Template/profiles/five-phase/Traceability/README.md",
+      "source": "Template/sdp-root/Traceability/README.md",
       "destination": "SDP/Traceability/README.md",
       "ownership": "project"
     },
     {
-      "source": "Template/profiles/five-phase/Verification/README.md",
+      "source": "Template/sdp-root/Verification/README.md",
       "destination": "SDP/Verification/README.md",
       "ownership": "project"
     },
@@ -255,22 +255,22 @@
       "ownership": "project"
     },
     {
-      "source": "Template/profiles/five-phase/ProjectManagement/management-payload.schema.json",
+      "source": "Template/sdp-root/ProjectManagement/management-payload.schema.json",
       "destination": "SDP/ProjectManagement/management-payload.schema.json",
       "ownership": "project"
     },
     {
-      "source": "Template/profiles/five-phase/ProjectManagement/ledger-event.schema.json",
+      "source": "Template/sdp-root/ProjectManagement/ledger-event.schema.json",
       "destination": "SDP/ProjectManagement/ledger-event.schema.json",
       "ownership": "project"
     },
     {
-      "source": "Template/profiles/five-phase/ProjectManagement/kanban-payload-0.1.schema.json",
+      "source": "Template/sdp-root/ProjectManagement/kanban-payload-0.1.schema.json",
       "destination": "SDP/ProjectManagement/kanban-payload-0.1.schema.json",
       "ownership": "project"
     },
     {
-      "source": "Template/profiles/five-phase/ProjectManagement/kanban-payload-0.2.schema.json",
+      "source": "Template/sdp-root/ProjectManagement/kanban-payload-0.2.schema.json",
       "destination": "SDP/ProjectManagement/kanban-payload-0.2.schema.json",
       "ownership": "project"
     },
@@ -305,8 +305,18 @@
       "ownership": "managed"
     },
     {
-      "source": "Template/profiles/five-phase/ProjectManagement/management-payload-0.2.schema.json",
+      "source": "Template/sdp-root/ProjectManagement/management-payload-0.2.schema.json",
       "destination": "SDP/ProjectManagement/management-payload-0.2.schema.json",
+      "ownership": "project"
+    },
+    {
+      "source": "Template/sdp-root/SDL/README.md",
+      "destination": "SDP/SDL/README.md",
+      "ownership": "project"
+    },
+    {
+      "source": "Template/sdp-root/SDL/AGENTS.md",
+      "destination": "SDP/SDL/AGENTS.md",
       "ownership": "project"
     }
   ],
