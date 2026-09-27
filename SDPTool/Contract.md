@@ -174,7 +174,23 @@ source/card-specific hashes. No UI state is persisted by the inventory operation
 The initial board reader supports board schema 0.2 with the local
 sdp-project-management/0.1 or /0.2 profile, payload 0.1/0.2 history and the board descriptor's
 single ledger. It checks card chains, current paths, unique metadata/IDs, CardState
-placement and local Ref resolution. It never reads archived copies as extra events.
+placement and local Ref resolution. The board's `projectId` and `namespaces`
+declare the local namespace set (including SDL/SDUI on a shared board). A `primary`
+ID must match `KB-<PROJECT>-<number>` with an uppercase alphanumeric project
+starting with a letter and at least three digits. Within that local set it must
+resolve to a card; `reference` then contains its canonical local node ID.
+
+A primary outside that set is represented by optional `externalReference`, whose
+value is the authored card ID. This is an **unverified external reference**, not a
+node ID, path, URI, promise of existence or selectable foreign target. Consumers
+may show an external badge/label; they must not expand it as a local `reference`.
+The containing local card remains available and its `target` still opens that
+local card. No checkout scan, filesystem traversal, network lookup or external
+configuration is used. External references do not excuse invalid local references,
+CardState, placement or history. Older consumers may ignore this additive field;
+all emitted `reference` values still resolve locally.
+
+It never reads archived copies as extra events.
 This is a read-side consistency check, not the full management validator. Other
 pinned profiles, including XFMD's separate board contract, remain explicitly
 unsupported until adapted. Optional SprintId/ScrumId are grouping facts, not proof

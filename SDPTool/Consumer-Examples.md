@@ -52,3 +52,11 @@ bundle, tests stale/reload behavior and opens a deterministic viewer harness.
 The ordinary suite also exercises the real shared board, SDUI normalization/static
 Markdown export, resource cleanup, cancellation and malformed metadata. These are
 producer/harness checks; real native GUI behavior needs separate evidence.
+
+## External KanBan card references
+
+A card may have `externalReference: "KB-SDP-014"`. Display this as an external,
+unverified reference; there is no foreign node to expand or target to open.
+Continue using the card's own `target` to open its local document. Only `reference`
+points to a canonical node in the returned tree. External IDs need not exist and
+are never resolved by SDPTool across checkouts or through a remote service.

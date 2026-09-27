@@ -26,3 +26,12 @@ Requirement prose and acceptance IDs are not SDL keywords. design-core 0.5 lacks
 imports, so do not duplicate declarations in independent phase files or invent
 #include to join them. Split the model only when a supported composition contract
 is available. The phase folder classifies the work, not every model object.
+
+## External KanBan references — REQ-SDPTOOL-003 clarification
+
+Owner decision 2026-09-27 (KB-SDP-034): permit references to cards outside the
+board's declared local namespaces without requiring their existence or a local
+checkout. Report them explicitly as external and unverified; keep local cards
+openable. Do not locate external cards or introduce a cross-project configuration.
+Missing local references and invalid history remain errors. The
+[consumer contract](../../SDPTool/Contract.md) defines the additive representation.

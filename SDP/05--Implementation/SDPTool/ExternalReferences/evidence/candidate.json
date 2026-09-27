@@ -1,0 +1,11 @@
+{
+  "base": "26529bee1bd1fe4cb25af122e73074a9761d8cc9",
+  "sourceSHA256": {
+    "SDPTool/kanban.go": "9d44ba4a345a36ab407c96e17b8fd077927efcb61d816838c2809eece66e3941",
+    "SDPTool/tree.go": "1caeebc990902be35a1e418287148e7f20262678501f25ecd1d1fc22b6b49242",
+    "SDPTool/navigation_test.go": "038c914a4c5496dc906cc9551f85164f6bbb5aa95add0c6225cf20a972113f40"
+  },
+  "binarySHA256": "b1d64c16d058c2a4d5ea2bb8e75a2dbb131d1d085f166e63b2484c82ea3a0fed",
+  "go": "go1.27.1 linux/amd64",
+  "xfmdRevision": "41fa4948c5377edd792ba3f503e6b92b0fd4717a"
+}
