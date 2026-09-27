@@ -1,9 +1,5 @@
 # RP3 — Release Go-only SDP 1.0.0 and upgrade XFMD
 
-Current authority: the owner's Go-only correction and explicit 1.0.0 selection
-below supersede earlier 0.2.2 and legacy-runtime release-gate text. No 0.2.2
-release was published. Only the revised Go candidate may proceed.
-
 | Field | Value |
 | --- | --- |
 | id | MAINT-SDP-0010 |
@@ -12,6 +8,10 @@ release was published. Only the revised Go candidate may proceed.
 | PlanType | MaintenancePlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
+
+Current authority: the owner's Go-only correction and explicit 1.0.0 selection
+below supersede earlier 0.2.2 and legacy-runtime release-gate text. No 0.2.2
+release was published. Only the revised Go candidate may proceed.
 
 Owner authorization, 2026-09-28: commit, integrate and release SDP plus gh-sdp,
 then use the client to upgrade xfmd-sdl-navigation. Git write access is restored.
