@@ -1,0 +1,11 @@
+language sdl-mvp1-exercise version 0.1.
+
+representation SimulatorTruthView.
+composition SimulatorComposition.
+presentation SimulatorPresentationSchema.
+SimulatorTruthView typed-as StateRecord.
+SimulatorTruthView describes "Explicit simulator-only hidden truth with provenance label; never normal machine evidence.".
+SimulatorComposition references SimulatorTruthView.
+SimulatorUiDomain configures SimulatorComposition.
+SimulatorUiDomain configures SimulatorPresentationSchema.
+SimulatorPresentationSchema renders SimulatorComposition.

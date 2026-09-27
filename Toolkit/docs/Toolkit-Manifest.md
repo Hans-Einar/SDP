@@ -6,10 +6,12 @@ version/state, Framework and AGENTS contract versions, skill versions,
 capabilities, compatibility, release-note and migration paths, supported project
 schemas and real publication identities when they exist.
 
-`Toolkit/SDP-install.manifest.json` is a separate authority. It owns the
-installable inventory, generators, destinations, ownership and update policies.
-The two manifests must agree on Toolkit version and the complete ordered
-capability list; Toolkit validation detects disagreement.
+The current payload inventory is `SDPTool/profiles/payload.json`, selected by
+`SDPTool/profiles/five-phase.json`. The Go builder emits the authoritative signed
+release descriptor. `Toolkit/SDP-install.manifest.json` is retained only as a
+schema-regression contract for the retired interface; current installation never
+reads it. Root release identity, historical schema examples and actual published
+Go descriptors have distinct roles.
 
 The `0.2.0` capability set includes the portable install and plan contracts,
 Toolkit/project manifests, release metadata, skill metadata, reusable

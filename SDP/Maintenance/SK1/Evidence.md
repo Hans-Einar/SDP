@@ -32,7 +32,7 @@ Commands and results:
 - PowerShell 7.6.6 full Toolkit/tests/Install-SDP.Tests.ps1 passes on Linux.
   A stale required-exclusion test now removes the actual SDP exclusion instead
   of the already-retired root document name, restoring that negative test.
-- [Upgrade probe](verify_skill_upgrade.py) passes clean/repeat installation,
+- [Upgrade probe](https://github.com/Hans-Einar/SDP/blob/56919a19edcbd6e672c8a26661d87d16828be4f8/SDP/Maintenance/SK1/verify_skill_upgrade.py) passes clean/repeat installation,
   complete baseline managed-file restoration, unforced mutation-free failure,
   forced upgrade with customization backup, new router/reference creation,
   AGENTS replacement, project-content preservation, repeat idempotence and
@@ -55,7 +55,7 @@ The reviewer approved the corrected scope; owner acceptance remains separate.
 
 ## SK1-M3 — catalog and actual use
 
-[Catalog record](catalog-evidence.json) and [reproduction helper](verify_catalog.py)
+[Catalog record](catalog-evidence.json) and [reproduction helper](https://github.com/Hans-Einar/SDP/blob/56919a19edcbd6e672c8a26661d87d16828be4f8/SDP/Maintenance/SK1/verify_catalog.py)
 identify the committed M2 source and every adopted skill/reference hash. Codex CLI
 0.156.1 discovers all thirteen enabled roles without duplicates in four contexts:
 repository root, nested cwd, a separate Git worktree and an actual fresh Toolkit

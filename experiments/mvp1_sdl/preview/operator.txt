@@ -1,0 +1,26 @@
+SDUI GUI dump | page | 160 columns | structural preview
+# MVP1 / Operator                                                                [ Bucking ]                [ APT editor ]             [ Production ]
+DESIGN PREVIEW / Machine: sample data / Bucking: sample data / No live connection
++-length-----------------------------------------------------------------------+ +-diameter--------------------------------------------------------------------+
+|## Length                               [ Cursor OFF ]      [ Delta ]         | |## Diameter                            [ O/B ]             [ BarkNOR ]       |
+|**412.0 cm**                                                                  | |**28.4 cm**                                                                  |
+|Sample measurement / current head position                                    | |Sample calibrated value / over bark                                          |
++------------------------------------------------------------------------------+ +-----------------------------------------------------------------------------+
++-selection---------------------------+ +-alternatives-----------------------------------------------------------+ +-stem--------------------------------------+
+|## Material                          | |## Bucking advice                    [ Recalculate ]                    | |## Current stem                            |
+|**Species** / Spruce                 | || Rank | Assortment | Length | Top diameter |                           | |**Stem** / demo-042                        |
+|                                     | || --- | --- | --- | --- |                                               | |                                           |
+|**Assortment** / Sawlog              | || 1 | Sawlog | 430 cm | 26 cm |                                         | |Head position / 412.0 cm                   |
+|[ Species ]        [ Assortment ]    | || 2 | Pulpwood | 310 cm | 18 cm |                                       | |Processed / 0 cm                           |
+|Selection requires domain validation.| |[ Canonical ]                        [ Alternative 1 ]                  | |Locked defects / 0                         |
++-------------------------------------+ |Sample proposals / retain last valid plan while recalculating           | |[ Inspect defects ]                        |
+                                        +------------------------------------------------------------------------+ +-------------------------------------------+
++-profile-40fr-------------------------------------------------------------------------------------------------------------------------------------------------+
+|## Stem profile                                                                 [ TaperNOR ]                            [ Mixed ]                             |
+|**Measured profile / predicted taper / planned cuts**                                                                                                         |
+|                                                                                                                                                              |
+|Plot provider placeholder. No curve is fabricated from these sample measurements.                                                                             |
+|[ Inspect sample ]                                                              [ Follow head ]                                                               |
+|Head / 412.0 cm                                      Cursor / sample                                      Plan / not executed                                 |
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+Static SDUI prototype / controls unbound / no machine commands or production writes

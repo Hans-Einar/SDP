@@ -1,12 +1,7 @@
 # Sprints
 
-Create one folder per Sprint. A Sprint normally contains:
-
-- Sprint goal and scope
-- `ScrumIterations.md` or equivalent Iteration/Slice contracts
-- `implementationNotes.md`
-- `Handoff.md` when useful
-
-There should normally be one active Sprint, one active Iteration and one active
-Slice. A Slice states its goal, why now, expected files, invariants, non-goals,
-verification and completion signal.
+A Sprint optionally groups one or more plans and/or direct cards under a goal.
+Use the shared management ledger, explicit Plans/Members metadata and matching
+SprintId references. Preserve completed source Studies; do not reactivate them
+merely to populate a Sprint. Follow SDP/Framework/planning/Plans.md for start,
+membership changes and completion dispositions. Do not duplicate plan text here.

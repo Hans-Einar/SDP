@@ -1,0 +1,57 @@
+sdui 0.2;
+# MVP1 operator design. Sample values; named controls are intentionally unbound.
+# Layout follows the Concept1 measurement / advice / stem structure.
+
+navigation = <
+  "# MVP1 / Operator" {font=24},
+  <bucking=button("Bucking"), apt=button("APT editor"), production=button("Production")> {>-<}
+> {<->};
+
+measurements = [
+  length = [
+    header=<"## Length", <cursor=button("Cursor OFF"), delta=button("Delta")> {>-<}>,
+    "**412.0 cm**" {font=28};
+    "Sample measurement / current head position"
+  ]*b {x=1fr},
+  diameter = [
+    header=<"## Diameter", <basis=button("O/B"), calibration=button("BarkNOR")> {>-<}>,
+    "**28.4 cm**" {font=28};
+    "Sample calibrated value / over bark"
+  ]*b {x=1fr}
+] {y=22fr, items=stretch};
+
+advice = [
+  selection = [
+    header="## Material",
+    "**Species** / Spruce\n\n**Assortment** / Sawlog";
+    <species=button("Species"), assortment=button("Assortment")>;
+    "Selection requires domain validation."
+  ]*b {x=24fr},
+  alternatives = [
+    header=<"## Bucking advice", optimize=button("Recalculate")>,
+    """| Rank | Assortment | Length | Top diameter |
+| --- | --- | --- | --- |
+| 1 | Sawlog | 430 cm | 26 cm |
+| 2 | Pulpwood | 310 cm | 18 cm |""";
+    <canonical=button("Canonical"), alternative=button("Alternative 1")>;
+    "Sample proposals / retain last valid plan while recalculating"
+  ]*b {x=48fr},
+  stem = [
+    header="## Current stem",
+    "**Stem** / demo-042\n\nHead position / 412.0 cm\nProcessed / 0 cm\nLocked defects / 0";
+    defects=button("Inspect defects")
+  ]*b {x=28fr}
+] {y=38fr, items=stretch};
+
+profile = [
+  header=<"## Stem profile", <taper=button("TaperNOR"), mixed=button("Mixed")> {>-<}>,
+  "**Measured profile / predicted taper / planned cuts**\n\nPlot provider placeholder. No curve is fabricated from these sample measurements.";
+  <inspect=button("Inspect sample"), follow=button("Follow head")>;
+  footer=<"Head / 412.0 cm", "Cursor / sample", "Plan / not executed"> {<->}
+]*b {y=40fr};
+
+page = [
+  header=<navigation; "DESIGN PREVIEW / Machine: sample data / Bucking: sample data / No live connection">,
+  body=[measurements; advice; profile] {scale=1, items=stretch, gap=0.012},
+  footer="Static SDUI prototype / controls unbound / no machine commands or production writes"
+] {16:9, <->, font=16, gap=0.012, padding=0.012};

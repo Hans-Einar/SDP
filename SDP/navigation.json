@@ -24,6 +24,24 @@
       "system": "SDUI",
       "source": "SDUI/examples/concept1-bucking.sdui",
       "profile": "sdui/0.2"
+    },
+    {
+      "id": "mvp1-operator",
+      "system": "MVP1",
+      "source": "experiments/mvp1_sdl/SDL/MVP1/SDUI/BuckingUI/MainPage.sdui",
+      "profile": "sdui/0.2"
+    },
+    {
+      "id": "mvp1-apt",
+      "system": "MVP1",
+      "source": "experiments/mvp1_sdl/SDL/MVP1/SDUI/BuckingUI/AptEditor.sdui",
+      "profile": "sdui/0.2"
+    },
+    {
+      "id": "mvp1-simulator",
+      "system": "MVP1",
+      "source": "experiments/mvp1_sdl/SDL/MVP1/SDUI/SimulatorUI/MainPage.sdui",
+      "profile": "sdui/0.2"
     }
   ],
   "defaultModel": "sdptool"

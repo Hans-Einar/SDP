@@ -3,7 +3,7 @@
   "manifestSchemaVersion": "1.0",
   "orderingPolicy": "migration-first-manifest-order-v1",
   "mode": "plan",
-  "toolkitVersion": "0.2.1",
+  "toolkitVersion": "1.0.0",
   "installedToolkitVersion": null,
   "options": {
     "initializeProjectStructure": false,
@@ -25,7 +25,7 @@
       "reason": "preserve-existing-agents-conflict",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 2,
@@ -41,7 +41,7 @@
       "reason": "refresh-managed-content",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 3,
@@ -57,7 +57,7 @@
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 4,
@@ -73,7 +73,7 @@
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 5,
@@ -89,7 +89,7 @@
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 6,
@@ -105,7 +105,7 @@
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 7,
@@ -121,7 +121,7 @@
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 8,
@@ -137,7 +137,7 @@
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 9,
@@ -153,7 +153,7 @@
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 10,
@@ -169,7 +169,7 @@
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 11,
@@ -185,7 +185,7 @@
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 12,
@@ -201,7 +201,7 @@
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 13,
@@ -217,7 +217,7 @@
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 14,
@@ -233,7 +233,7 @@
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 15,
@@ -249,7 +249,7 @@
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 16,
@@ -265,7 +265,7 @@
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 17,
@@ -281,7 +281,7 @@
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 18,
@@ -297,7 +297,7 @@
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 19,
@@ -313,7 +313,7 @@
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 20,
@@ -329,7 +329,7 @@
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 21,
@@ -345,7 +345,7 @@
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 22,
@@ -361,7 +361,7 @@
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 23,
@@ -377,13 +377,13 @@
       "reason": "missing-generated-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 24,
       "action": "preserve",
       "entryId": "project-agents",
-      "source": "Template/project-root/AGENTS-project.md.template",
+      "source": "Template/legacy/install-v1/project-root/AGENTS-project.md.template",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -393,13 +393,13 @@
       "reason": "missing-only-content",
       "mutatesTarget": false,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 25,
       "action": "create",
       "entryId": "project-agent-reminders",
-      "source": "Template/sdp-root/AGENT-REMINDERS.md.template",
+      "source": "Template/legacy/install-v1/sdp-root/AGENT-REMINDERS.md.template",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -409,13 +409,13 @@
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 26,
       "action": "create",
       "entryId": "project-manifest",
-      "source": "Template/sdp-root/SDP-project.manifest.yaml",
+      "source": "Template/legacy/install-v1/sdp-root/SDP-project.manifest.yaml",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -425,13 +425,13 @@
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 27,
       "action": "create",
       "entryId": "project-release-notes",
-      "source": "Template/sdp-root/RELEASE-NOTES.md",
+      "source": "Template/legacy/install-v1/sdp-root/RELEASE-NOTES.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -441,13 +441,13 @@
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 28,
       "action": "create",
       "entryId": "project-traceability-readme",
-      "source": "Template/sdp-root/Traceability/README.md",
+      "source": "Template/legacy/install-v1/sdp-root/Traceability/README.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -457,13 +457,13 @@
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 29,
       "action": "create",
       "entryId": "project-current-index",
-      "source": "Template/sdp-root/Traceability/CurrentIndex.yaml",
+      "source": "Template/legacy/install-v1/sdp-root/Traceability/CurrentIndex.yaml",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -473,13 +473,13 @@
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 30,
       "action": "create",
       "entryId": "project-relations",
-      "source": "Template/sdp-root/Traceability/Relations.yaml",
+      "source": "Template/legacy/install-v1/sdp-root/Traceability/Relations.yaml",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -489,7 +489,7 @@
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 31,
@@ -505,7 +505,7 @@
       "reason": "missing-generated-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 32,
@@ -521,7 +521,7 @@
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 33,
@@ -537,7 +537,7 @@
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 34,
@@ -553,7 +553,7 @@
       "reason": "missing-target",
       "mutatesTarget": true,
       "oldToolkitVersion": null,
-      "newToolkitVersion": "0.2.1"
+      "newToolkitVersion": "1.0.0"
     }
   ]
 }

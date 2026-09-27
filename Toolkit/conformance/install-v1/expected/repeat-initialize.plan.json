@@ -3,8 +3,8 @@
   "manifestSchemaVersion": "1.0",
   "orderingPolicy": "migration-first-manifest-order-v1",
   "mode": "plan",
-  "toolkitVersion": "0.2.1",
-  "installedToolkitVersion": "0.2.1",
+  "toolkitVersion": "1.0.0",
+  "installedToolkitVersion": "1.0.0",
   "options": {
     "initializeProjectStructure": true,
     "forceManagedFiles": false
@@ -24,8 +24,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 2,
@@ -40,8 +40,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 3,
@@ -56,8 +56,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 4,
@@ -72,8 +72,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 5,
@@ -88,8 +88,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 6,
@@ -104,8 +104,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 7,
@@ -120,8 +120,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 8,
@@ -136,8 +136,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 9,
@@ -152,8 +152,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 10,
@@ -168,8 +168,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 11,
@@ -184,8 +184,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 12,
@@ -200,8 +200,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 13,
@@ -216,8 +216,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 14,
@@ -232,8 +232,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 15,
@@ -248,8 +248,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 16,
@@ -264,8 +264,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 17,
@@ -280,8 +280,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 18,
@@ -296,8 +296,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 19,
@@ -312,8 +312,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 20,
@@ -328,8 +328,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 21,
@@ -344,8 +344,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 22,
@@ -360,14 +360,14 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 23,
       "action": "unchanged",
       "entryId": "project-agents",
-      "source": "Template/project-root/AGENTS-project.md.template",
+      "source": "Template/legacy/install-v1/project-root/AGENTS-project.md.template",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -376,14 +376,14 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 24,
       "action": "unchanged",
       "entryId": "project-agent-reminders",
-      "source": "Template/sdp-root/AGENT-REMINDERS.md.template",
+      "source": "Template/legacy/install-v1/sdp-root/AGENT-REMINDERS.md.template",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -392,14 +392,14 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 25,
       "action": "unchanged",
       "entryId": "project-manifest",
-      "source": "Template/sdp-root/SDP-project.manifest.yaml",
+      "source": "Template/legacy/install-v1/sdp-root/SDP-project.manifest.yaml",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -408,14 +408,14 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 26,
       "action": "unchanged",
       "entryId": "project-release-notes",
-      "source": "Template/sdp-root/RELEASE-NOTES.md",
+      "source": "Template/legacy/install-v1/sdp-root/RELEASE-NOTES.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -424,14 +424,14 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 27,
       "action": "unchanged",
       "entryId": "project-traceability-readme",
-      "source": "Template/sdp-root/Traceability/README.md",
+      "source": "Template/legacy/install-v1/sdp-root/Traceability/README.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -440,14 +440,14 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 28,
       "action": "unchanged",
       "entryId": "project-current-index",
-      "source": "Template/sdp-root/Traceability/CurrentIndex.yaml",
+      "source": "Template/legacy/install-v1/sdp-root/Traceability/CurrentIndex.yaml",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -456,14 +456,14 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 29,
       "action": "unchanged",
       "entryId": "project-relations",
-      "source": "Template/sdp-root/Traceability/Relations.yaml",
+      "source": "Template/legacy/install-v1/sdp-root/Traceability/Relations.yaml",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -472,8 +472,8 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 30,
@@ -488,14 +488,14 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 31,
       "action": "unchanged",
       "entryId": "project-mandate",
-      "source": "Template/sdp-root/01--Mandate/mandate.md",
+      "source": "Template/legacy/install-v1/sdp-root/01--Mandate/mandate.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -504,14 +504,14 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 32,
       "action": "unchanged",
       "entryId": "project-study",
-      "source": "Template/sdp-root/02--Study/study.md",
+      "source": "Template/legacy/install-v1/sdp-root/02--Study/study.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -520,14 +520,14 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 33,
       "action": "unchanged",
       "entryId": "project-requirements",
-      "source": "Template/sdp-root/03--Requirements/requirements.md",
+      "source": "Template/legacy/install-v1/sdp-root/03--Requirements/requirements.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -536,14 +536,14 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 34,
       "action": "unchanged",
       "entryId": "project-architecture",
-      "source": "Template/sdp-root/04--Architecture/architecture.md",
+      "source": "Template/legacy/install-v1/sdp-root/04--Architecture/architecture.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -552,14 +552,14 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 35,
       "action": "unchanged",
       "entryId": "project-design-analysis",
-      "source": "Template/sdp-root/05--DesignAnalysis/design-analysis.md",
+      "source": "Template/legacy/install-v1/sdp-root/05--DesignAnalysis/design-analysis.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -568,14 +568,14 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 36,
       "action": "unchanged",
       "entryId": "project-design",
-      "source": "Template/sdp-root/06--Design/design.md",
+      "source": "Template/legacy/install-v1/sdp-root/06--Design/design.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -584,14 +584,14 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 37,
       "action": "unchanged",
       "entryId": "project-implementation-plan",
-      "source": "Template/sdp-root/07--Implementation/implementation-plan.md",
+      "source": "Template/legacy/install-v1/sdp-root/07--Implementation/implementation-plan.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -600,14 +600,14 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 38,
       "action": "unchanged",
       "entryId": "project-sprints-readme",
-      "source": "Template/sdp-root/Sprints/README.md",
+      "source": "Template/legacy/install-v1/sdp-root/Sprints/README.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -616,14 +616,14 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 39,
       "action": "unchanged",
       "entryId": "project-refactors-readme",
-      "source": "Template/sdp-root/Refactors/README.md",
+      "source": "Template/legacy/install-v1/sdp-root/Refactors/README.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -632,14 +632,14 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 40,
       "action": "unchanged",
       "entryId": "project-fixes-readme",
-      "source": "Template/sdp-root/Fixes/README.md",
+      "source": "Template/legacy/install-v1/sdp-root/Fixes/README.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -648,14 +648,14 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 41,
       "action": "unchanged",
       "entryId": "project-releases-readme",
-      "source": "Template/sdp-root/Releases/README.md",
+      "source": "Template/legacy/install-v1/sdp-root/Releases/README.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -664,14 +664,14 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 42,
       "action": "unchanged",
       "entryId": "project-code-review-readme",
-      "source": "Template/sdp-root/CodeReview/README.md",
+      "source": "Template/legacy/install-v1/sdp-root/CodeReview/README.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -680,14 +680,14 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 43,
       "action": "unchanged",
       "entryId": "project-verification-readme",
-      "source": "Template/sdp-root/Verification/README.md",
+      "source": "Template/legacy/install-v1/sdp-root/Verification/README.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -696,14 +696,14 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 44,
       "action": "unchanged",
       "entryId": "project-instructions-readme",
-      "source": "Template/sdp-root/Instructions/README.md",
+      "source": "Template/legacy/install-v1/sdp-root/Instructions/README.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -712,14 +712,14 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 45,
       "action": "unchanged",
       "entryId": "project-document-guide",
-      "source": "Template/sdp-root/SDP-DOCUMENT-GUIDE.md",
+      "source": "Template/legacy/install-v1/sdp-root/SDP-DOCUMENT-GUIDE.md",
       "generator": null,
       "targetSource": null,
       "targetSourceSha256": null,
@@ -728,8 +728,8 @@
       "ownership": "project-owned",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 46,
@@ -744,8 +744,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 47,
@@ -760,8 +760,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     },
     {
       "sequence": 48,
@@ -776,8 +776,8 @@
       "ownership": "toolkit-managed",
       "reason": "content-matches",
       "mutatesTarget": false,
-      "oldToolkitVersion": "0.2.1",
-      "newToolkitVersion": "0.2.1"
+      "oldToolkitVersion": "1.0.0",
+      "newToolkitVersion": "1.0.0"
     }
   ]
 }

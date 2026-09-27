@@ -10,7 +10,7 @@ Functionality proposals do not change the meaning or validation of this baseline
 
 Start at [System.design](SDL/MVP1/System.design). It declares the one System,
 registered constituents, Channels, endpoint roles and modes, and explicitly
-includes the other 65 source files. The filename is a convention for this exercise;
+includes the other 67 source files. The filename is a convention for this exercise;
 the proposed language does not require that entry filename.
 
 This is a full-scope **design authoring exercise**, not a running system. It covers
@@ -19,6 +19,29 @@ all 17 registered constituents and maps all 332 source requirement identifiers
 14 Features, 20 scenario graphs and 11 Channels. These counts establish inventory
 coverage, not completeness of every predicate, payload, algorithm or implementation.
 The 23 named Gaps keep those missing decisions visible.
+
+## Current source organization — 2026-09-27
+
+The owner-authorized [source/UI pilot](../../SDP/04--Design/MVP1/SourcePilot/Plan.md)
+organizes nine separate Containers, shared libraries and MVP1-wide UI concerns.
+BuckingUI and SimulatorUI each own Domain.design and Views.design. The logical UI
+subsystem remains a model grouping, not a tenth runtime container.
+[Shared responsibility index](SDL/MVP1/Shared/README.md) explains reuse boundaries.
+All pre-existing model statements are preserved; only file locations and explicit
+source membership change. The current tree has 68 design files.
+
+The September 17 inventory-audit.json remains dated baseline evidence (66 files).
+Current migration evidence is in [evidence/MPV1](evidence/MPV1/README.md).
+The candidate exercise profile is still not supported by the released Go parser.
+
+## UI design and navigation pilot
+
+[Open the generated UI gallery](preview/index.md) for the operator dashboard,
+APT editor and separate simulator console. [SDUI source/binding guide](SDL/MVP1/SDUI/README.md)
+records ownership, prototype boundaries and reproducible export commands.
+[Navigation handoff](Navigation.md) distinguishes working SDUI discovery/Markdown
+preview from the remaining full SDL source-set/profile work. These sources are
+registered for SDPTool navigation; the experimental SDL model is not.
 
 ## Purpose and authority
 
@@ -80,23 +103,23 @@ contains nine Containers and eight Libraries. The model preserves all of them.
 
 | Registry code | Modeled constituent / responsibility entry | Kind | Pinned source location |
 |---|---|---|---|
-| CTR | [ContractRegistry](SDL/MVP1/Libraries/Contracts.design) | library | [contracts](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/contracts) |
-| SVK | [ServiceKit](SDL/MVP1/Libraries/ServiceKit.design) | library | [shared/servicekit](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/servicekit) |
-| LBK | [LabKit](SDL/MVP1/Libraries/LabKit.design) | library | [shared/labkit](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/labkit) |
-| UIR | [UIRuntime](SDL/MVP1/UI/Representation.design) | library | [shared/ui-runtime](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/ui-runtime) |
-| BOX | [BoxUI](SDL/MVP1/UI/Presentation.design) | library | [shared/box-ui](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/box-ui) |
-| TPR | [TaperModels](SDL/MVP1/Libraries/TaperModels.design) | library | [packages/taper-models](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/taper-models) |
-| BCK | [BuckingCore](SDL/MVP1/Libraries/BuckingCore.design) | library | [packages/bucking-core](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/bucking-core) |
-| SFC | [StanfordClassic](SDL/MVP1/Libraries/StanfordClassic.design) | library | [packages/stanford-classic](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/stanford-classic) |
-| SIM | [P1000Simulator](SDL/MVP1/P1000Simulator/Domain.design) | container | [services/p1000-simulator](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-simulator) |
-| SUI | [SimulatorUI](SDL/MVP1/UI/SimulatorDomain.design) | container | [web/simulator-ui](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/simulator-ui) |
-| MCH | [MachineService](SDL/MVP1/MachineService/Domain.design) | container | [services/machine-service](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-service) |
-| MLB | [MachineLab](SDL/MVP1/MachineLab/Diagnostics.design) | container | [services/machine-lab](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-lab) |
-| BKS | [BuckingService](SDL/MVP1/BuckingService/Planning.design) | container | [services/bucking-service](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-service) |
-| BLB | [BuckingLab](SDL/MVP1/BuckingLab/Diagnostics.design) | container | [services/bucking-lab](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-lab) |
-| BWEB | [BuckingWeb](SDL/MVP1/BuckingWeb/Adaptation.design) | container | [services/bucking-web](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-web) |
-| BUI | [BuckingUI](SDL/MVP1/UI/PonsseDomain.design) | container | [web/bucking-ui](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/bucking-ui) |
-| PGW | [P1000Gateway](SDL/MVP1/P1000Gateway/Domain.design) | container | [services/p1000-gateway](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-gateway) |
+| CTR | [ContractRegistry](SDL/MVP1/Shared/Libraries/Contracts.design) | library | [contracts](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/contracts) |
+| SVK | [ServiceKit](SDL/MVP1/Shared/Libraries/ServiceKit.design) | library | [shared/servicekit](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/servicekit) |
+| LBK | [LabKit](SDL/MVP1/Shared/Libraries/LabKit.design) | library | [shared/labkit](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/labkit) |
+| UIR | [UIRuntime](SDL/MVP1/Shared/Libraries/UIRuntime/Representation.design) | library | [shared/ui-runtime](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/ui-runtime) |
+| BOX | [BoxUI](SDL/MVP1/Shared/Libraries/BoxUI/Presentation.design) | library | [shared/box-ui](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/shared/box-ui) |
+| TPR | [TaperModels](SDL/MVP1/Shared/Libraries/TaperModels.design) | library | [packages/taper-models](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/taper-models) |
+| BCK | [BuckingCore](SDL/MVP1/Shared/Libraries/BuckingCore.design) | library | [packages/bucking-core](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/bucking-core) |
+| SFC | [StanfordClassic](SDL/MVP1/Shared/Libraries/StanfordClassic.design) | library | [packages/stanford-classic](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/packages/stanford-classic) |
+| SIM | [P1000Simulator](SDL/MVP1/Containers/P1000Simulator/Domain.design) | container | [services/p1000-simulator](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-simulator) |
+| SUI | [SimulatorUI](SDL/MVP1/Containers/SimulatorUI/Domain.design) | container | [web/simulator-ui](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/simulator-ui) |
+| MCH | [MachineService](SDL/MVP1/Containers/MachineService/Domain.design) | container | [services/machine-service](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-service) |
+| MLB | [MachineLab](SDL/MVP1/Containers/MachineLab/Diagnostics.design) | container | [services/machine-lab](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/machine-lab) |
+| BKS | [BuckingService](SDL/MVP1/Containers/BuckingService/Planning.design) | container | [services/bucking-service](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-service) |
+| BLB | [BuckingLab](SDL/MVP1/Containers/BuckingLab/Diagnostics.design) | container | [services/bucking-lab](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-lab) |
+| BWEB | [BuckingWeb](SDL/MVP1/Containers/BuckingWeb/Adaptation.design) | container | [services/bucking-web](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/bucking-web) |
+| BUI | [BuckingUI](SDL/MVP1/Containers/BuckingUI/Domain.design) | container | [web/bucking-ui](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/web/bucking-ui) |
+| PGW | [P1000Gateway](SDL/MVP1/Containers/P1000Gateway/Domain.design) | container | [services/p1000-gateway](https://github.com/Hans-Einar/ponsse/blob/7589a5811a21ec6bb13979612060ceff0f690df8/MVP1/services/p1000-gateway) |
 
 StemProfile and AptDomain are explicit Units within BuckingService; extraction
 into new services is open. The logical UI subsystem groups BuckingUI, SimulatorUI
@@ -109,14 +132,14 @@ configuration; modeled future TX obligations do not enable hardware output.
 
 | Layer / concern | Source | Responsibility |
 |---|---|---|
-| Boundary | [Boundary](SDL/MVP1/UI/Boundary.design) | Logical subsystem and horizontal grouping. |
-| Ponsse domain | [Operator](SDL/MVP1/UI/PonsseDomain.design), [Simulator](SDL/MVP1/UI/SimulatorDomain.design) | App-owned projections and intentions; simulator truth stays isolated. |
-| Representation | [Representation](SDL/MVP1/UI/Representation.design) | Typed semantic identity, value quality and incremental collections. |
-| Composition | [Composition](SDL/MVP1/UI/Composition.design) | Context lifetime and shared references. |
-| Presentation | [Presentation](SDL/MVP1/UI/Presentation.design) | Validated schema, bindings, formatting and publication. |
-| Renderer | [Renderer](SDL/MVP1/UI/Renderer.design) | Trusted views and actual render observation. |
-| Support | [Transport](SDL/MVP1/UI/Transport.design), [Delivery](SDL/MVP1/UI/Delivery.design), [Commands/diagnostics](SDL/MVP1/UI/CommandsDiagnostics.design) | Independent sessions, bounded work, recovery, commands and diagnostic routing. |
-| Concrete design objects | [Views](SDL/MVP1/UI/Views.design) | Two views of one value, stem series, APT matrix, app Compositions and Presentation schemas. |
+| Boundary | [Boundary](SDL/MVP1/Shared/UI/Boundary.design) | Logical subsystem and horizontal grouping. |
+| Ponsse domain | [Operator](SDL/MVP1/Containers/BuckingUI/Domain.design), [Simulator](SDL/MVP1/Containers/SimulatorUI/Domain.design) | App-owned projections and intentions; simulator truth stays isolated. |
+| Representation | [Representation](SDL/MVP1/Shared/Libraries/UIRuntime/Representation.design) | Typed semantic identity, value quality and incremental collections. |
+| Composition | [Composition](SDL/MVP1/Shared/Libraries/UIRuntime/Composition.design) | Context lifetime and shared references. |
+| Presentation | [Presentation](SDL/MVP1/Shared/Libraries/BoxUI/Presentation.design) | Validated schema, bindings, formatting and publication. |
+| Renderer | [Renderer](SDL/MVP1/Shared/Libraries/BoxUI/Renderer.design) | Trusted views and actual render observation. |
+| Support | [Transport](SDL/MVP1/Shared/Libraries/UIRuntime/Transport.design), [Delivery](SDL/MVP1/Shared/Libraries/UIRuntime/Delivery.design), [Commands/diagnostics](SDL/MVP1/Shared/Libraries/UIRuntime/CommandsDiagnostics.design) | Independent sessions, bounded work, recovery, commands and diagnostic routing. |
+| Concrete design objects | [Operator views](SDL/MVP1/Containers/BuckingUI/Views.design), [Simulator views](SDL/MVP1/Containers/SimulatorUI/Views.design), [Common views](SDL/MVP1/Shared/UI/Views.design) | Two views of one value, stem series, APT matrix, app Compositions and Presentation schemas. |
 
 The selected sequence is Representation → Composition → Presentation → Renderer.
 The UIR/BOX responsibility assignment is a proposed realization of that choice;

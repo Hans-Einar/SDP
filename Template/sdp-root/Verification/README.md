@@ -1,8 +1,9 @@
 # Verification
 
-Store exact verification records here. Each record identifies the Slice/Fix and
-release target, commands and environment, build/test/manual results, artifacts,
-failures, limitations and reviewer confirmation.
+Record the actual candidate/source identity, commands, environment, results and
+limitations. Link evidence to requirements and design via Traceability. Distinguish
+parser validation, static UI previews, runtime tests and owner acceptance.
+Generated reports must retain provenance; never label a proposed check passed.
 
-Never infer evidence or accept a summary as proof. Evidence must apply to the
-exact candidate under review.
+Plan and review lifecycle belongs in ProjectManagement. Technical design/code
+verification belongs in Traceability; do not substitute card completion for it.

@@ -22,6 +22,16 @@ The shared records below remain project-wide. The later IU1–IU3 delivery
 implements versioned profile installation and consumer discovery; this does not
 mean every consuming project has been upgraded.
 
+## Authored system sources
+
+New system models follow [SDL source organization](SDL/README.md), under
+SDP/SDL/<System>/ with Containers, Shared, Contracts, Scenarios, Governance and
+system-owned SDUI screens. Numbered folders remain homes for authored process
+inputs, decisions, plans and generated reader views. Their earlier model links
+above are still authoritative: no existing .design files were moved by this
+convention update. KB-SDP-020 owns the remaining shared-model migration.
+[Template maintenance](Maintenance/TS1/Plan.md) records distribution and limits.
+
 ## Shared project records
 
 - [KanBan](KanBan/README.md): conversation findings, prioritization and active assignments.

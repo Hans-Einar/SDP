@@ -1,0 +1,44 @@
+[
+  {
+    "source": "SDL/MVP1/SDUI/BuckingUI/AptEditor.sdui",
+    "width": 1280,
+    "height": 720,
+    "exitCode": 0,
+    "diagnostic": ""
+  },
+  {
+    "source": "SDL/MVP1/SDUI/BuckingUI/AptEditor.sdui",
+    "width": 1920,
+    "height": 1080,
+    "exitCode": 0,
+    "diagnostic": ""
+  },
+  {
+    "source": "SDL/MVP1/SDUI/BuckingUI/MainPage.sdui",
+    "width": 1280,
+    "height": 720,
+    "exitCode": 0,
+    "diagnostic": ""
+  },
+  {
+    "source": "SDL/MVP1/SDUI/BuckingUI/MainPage.sdui",
+    "width": 1920,
+    "height": 1080,
+    "exitCode": 0,
+    "diagnostic": ""
+  },
+  {
+    "source": "SDL/MVP1/SDUI/SimulatorUI/MainPage.sdui",
+    "width": 1280,
+    "height": 720,
+    "exitCode": 0,
+    "diagnostic": ""
+  },
+  {
+    "source": "SDL/MVP1/SDUI/SimulatorUI/MainPage.sdui",
+    "width": 1920,
+    "height": 1080,
+    "exitCode": 0,
+    "diagnostic": ""
+  }
+]

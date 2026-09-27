@@ -1,0 +1,3190 @@
+{
+  "astFormat": "sdui-ast/0.2",
+  "document": {
+    "connections": [],
+    "definitions": [
+      {
+        "name": "navigation",
+        "root": {
+          "arguments": [],
+          "kind": "group",
+          "layout": [
+            {
+              "name": "arrow",
+              "span": {
+                "column": 4,
+                "end": 310,
+                "line": 8,
+                "start": 307,
+                "type": "Span"
+              },
+              "spelling": "\u003c-\u003e",
+              "type": "LayoutRule",
+              "value": {
+                "kind": "arrow",
+                "span": {
+                  "column": 4,
+                  "end": 310,
+                  "line": 8,
+                  "start": 307,
+                  "type": "Span"
+                },
+                "type": "Literal",
+                "value": "\u003c-\u003e"
+              }
+            }
+          ],
+          "name": null,
+          "role": null,
+          "rows": [
+            {
+              "items": [
+                {
+                  "arguments": [],
+                  "kind": "markdown",
+                  "layout": [
+                    {
+                      "name": "font",
+                      "span": {
+                        "column": 24,
+                        "end": 206,
+                        "line": 6,
+                        "start": 199,
+                        "type": "Span"
+                      },
+                      "spelling": "font=24",
+                      "type": "LayoutRule",
+                      "value": {
+                        "kind": "number",
+                        "span": {
+                          "column": 29,
+                          "end": 206,
+                          "line": 6,
+                          "start": 204,
+                          "type": "Span"
+                        },
+                        "type": "Literal",
+                        "value": 24
+                      }
+                    }
+                  ],
+                  "name": null,
+                  "role": null,
+                  "rows": [],
+                  "span": {
+                    "column": 3,
+                    "end": 207,
+                    "line": 6,
+                    "start": 178,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": {
+                    "kind": "string",
+                    "span": {
+                      "column": 3,
+                      "end": 197,
+                      "line": 6,
+                      "start": 178,
+                      "type": "Span"
+                    },
+                    "type": "Literal",
+                    "value": "# MVP1 / Operator"
+                  },
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                },
+                {
+                  "arguments": [],
+                  "kind": "group",
+                  "layout": [
+                    {
+                      "name": "arrow",
+                      "span": {
+                        "column": 91,
+                        "end": 302,
+                        "line": 7,
+                        "start": 299,
+                        "type": "Span"
+                      },
+                      "spelling": "\u003e-\u003c",
+                      "type": "LayoutRule",
+                      "value": {
+                        "kind": "arrow",
+                        "span": {
+                          "column": 91,
+                          "end": 302,
+                          "line": 7,
+                          "start": 299,
+                          "type": "Span"
+                        },
+                        "type": "Literal",
+                        "value": "\u003e-\u003c"
+                      }
+                    }
+                  ],
+                  "name": null,
+                  "role": null,
+                  "rows": [
+                    {
+                      "items": [
+                        {
+                          "arguments": [
+                            {
+                              "name": null,
+                              "span": {
+                                "column": 19,
+                                "end": 236,
+                                "line": 7,
+                                "start": 227,
+                                "type": "Span"
+                              },
+                              "type": "Argument",
+                              "value": {
+                                "kind": "string",
+                                "span": {
+                                  "column": 19,
+                                  "end": 236,
+                                  "line": 7,
+                                  "start": 227,
+                                  "type": "Span"
+                                },
+                                "type": "Literal",
+                                "value": "Bucking"
+                              }
+                            }
+                          ],
+                          "kind": "widget",
+                          "layout": [],
+                          "name": "bucking",
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 4,
+                            "end": 237,
+                            "line": 7,
+                            "start": 212,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": null,
+                          "type": "Node",
+                          "variant": null,
+                          "widget": "button"
+                        },
+                        {
+                          "arguments": [
+                            {
+                              "name": null,
+                              "span": {
+                                "column": 42,
+                                "end": 262,
+                                "line": 7,
+                                "start": 250,
+                                "type": "Span"
+                              },
+                              "type": "Argument",
+                              "value": {
+                                "kind": "string",
+                                "span": {
+                                  "column": 42,
+                                  "end": 262,
+                                  "line": 7,
+                                  "start": 250,
+                                  "type": "Span"
+                                },
+                                "type": "Literal",
+                                "value": "APT editor"
+                              }
+                            }
+                          ],
+                          "kind": "widget",
+                          "layout": [],
+                          "name": "apt",
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 31,
+                            "end": 263,
+                            "line": 7,
+                            "start": 239,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": null,
+                          "type": "Node",
+                          "variant": null,
+                          "widget": "button"
+                        },
+                        {
+                          "arguments": [
+                            {
+                              "name": null,
+                              "span": {
+                                "column": 75,
+                                "end": 295,
+                                "line": 7,
+                                "start": 283,
+                                "type": "Span"
+                              },
+                              "type": "Argument",
+                              "value": {
+                                "kind": "string",
+                                "span": {
+                                  "column": 75,
+                                  "end": 295,
+                                  "line": 7,
+                                  "start": 283,
+                                  "type": "Span"
+                                },
+                                "type": "Literal",
+                                "value": "Production"
+                              }
+                            }
+                          ],
+                          "kind": "widget",
+                          "layout": [],
+                          "name": "production",
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 57,
+                            "end": 296,
+                            "line": 7,
+                            "start": 265,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": null,
+                          "type": "Node",
+                          "variant": null,
+                          "widget": "button"
+                        }
+                      ],
+                      "span": {
+                        "column": 4,
+                        "end": 296,
+                        "line": 7,
+                        "start": 212,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    }
+                  ],
+                  "span": {
+                    "column": 3,
+                    "end": 303,
+                    "line": 7,
+                    "start": 211,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": null,
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                }
+              ],
+              "span": {
+                "column": 3,
+                "end": 303,
+                "line": 6,
+                "start": 178,
+                "type": "Span"
+              },
+              "type": "Row"
+            }
+          ],
+          "span": {
+            "column": 14,
+            "end": 311,
+            "line": 5,
+            "start": 174,
+            "type": "Span"
+          },
+          "target": null,
+          "text": null,
+          "type": "Node",
+          "variant": null,
+          "widget": null
+        },
+        "span": {
+          "column": 1,
+          "end": 312,
+          "line": 5,
+          "start": 161,
+          "type": "Span"
+        },
+        "type": "Definition"
+      },
+      {
+        "name": "measurements",
+        "root": {
+          "arguments": [],
+          "kind": "frame",
+          "layout": [
+            {
+              "name": "y",
+              "span": {
+                "column": 4,
+                "end": 721,
+                "line": 21,
+                "start": 715,
+                "type": "Span"
+              },
+              "spelling": "y=22fr",
+              "type": "LayoutRule",
+              "value": {
+                "kind": "fr",
+                "span": {
+                  "column": 6,
+                  "end": 721,
+                  "line": 21,
+                  "start": 717,
+                  "type": "Span"
+                },
+                "type": "Literal",
+                "value": 22
+              }
+            },
+            {
+              "name": "items",
+              "span": {
+                "column": 12,
+                "end": 736,
+                "line": 21,
+                "start": 723,
+                "type": "Span"
+              },
+              "spelling": "items=stretch",
+              "type": "LayoutRule",
+              "value": {
+                "kind": "enum",
+                "span": {
+                  "column": 18,
+                  "end": 736,
+                  "line": 21,
+                  "start": 729,
+                  "type": "Span"
+                },
+                "type": "Literal",
+                "value": "stretch"
+              }
+            }
+          ],
+          "name": null,
+          "role": null,
+          "rows": [
+            {
+              "items": [
+                {
+                  "arguments": [],
+                  "kind": "frame",
+                  "layout": [
+                    {
+                      "name": "x",
+                      "span": {
+                        "column": 8,
+                        "end": 521,
+                        "line": 15,
+                        "start": 516,
+                        "type": "Span"
+                      },
+                      "spelling": "x=1fr",
+                      "type": "LayoutRule",
+                      "value": {
+                        "kind": "fr",
+                        "span": {
+                          "column": 10,
+                          "end": 521,
+                          "line": 15,
+                          "start": 518,
+                          "type": "Span"
+                        },
+                        "type": "Literal",
+                        "value": 1
+                      }
+                    }
+                  ],
+                  "name": "length",
+                  "role": null,
+                  "rows": [
+                    {
+                      "items": [
+                        {
+                          "arguments": [],
+                          "kind": "group",
+                          "layout": [],
+                          "name": null,
+                          "role": "header",
+                          "rows": [
+                            {
+                              "items": [
+                                {
+                                  "arguments": [],
+                                  "kind": "markdown",
+                                  "layout": [],
+                                  "name": null,
+                                  "role": null,
+                                  "rows": [],
+                                  "span": {
+                                    "column": 13,
+                                    "end": 367,
+                                    "line": 12,
+                                    "start": 356,
+                                    "type": "Span"
+                                  },
+                                  "target": null,
+                                  "text": {
+                                    "kind": "string",
+                                    "span": {
+                                      "column": 13,
+                                      "end": 367,
+                                      "line": 12,
+                                      "start": 356,
+                                      "type": "Span"
+                                    },
+                                    "type": "Literal",
+                                    "value": "## Length"
+                                  },
+                                  "type": "Node",
+                                  "variant": null,
+                                  "widget": null
+                                },
+                                {
+                                  "arguments": [],
+                                  "kind": "group",
+                                  "layout": [
+                                    {
+                                      "name": "arrow",
+                                      "span": {
+                                        "column": 80,
+                                        "end": 426,
+                                        "line": 12,
+                                        "start": 423,
+                                        "type": "Span"
+                                      },
+                                      "spelling": "\u003e-\u003c",
+                                      "type": "LayoutRule",
+                                      "value": {
+                                        "kind": "arrow",
+                                        "span": {
+                                          "column": 80,
+                                          "end": 426,
+                                          "line": 12,
+                                          "start": 423,
+                                          "type": "Span"
+                                        },
+                                        "type": "Literal",
+                                        "value": "\u003e-\u003c"
+                                      }
+                                    }
+                                  ],
+                                  "name": null,
+                                  "role": null,
+                                  "rows": [
+                                    {
+                                      "items": [
+                                        {
+                                          "arguments": [
+                                            {
+                                              "name": null,
+                                              "span": {
+                                                "column": 41,
+                                                "end": 396,
+                                                "line": 12,
+                                                "start": 384,
+                                                "type": "Span"
+                                              },
+                                              "type": "Argument",
+                                              "value": {
+                                                "kind": "string",
+                                                "span": {
+                                                  "column": 41,
+                                                  "end": 396,
+                                                  "line": 12,
+                                                  "start": 384,
+                                                  "type": "Span"
+                                                },
+                                                "type": "Literal",
+                                                "value": "Cursor OFF"
+                                              }
+                                            }
+                                          ],
+                                          "kind": "widget",
+                                          "layout": [],
+                                          "name": "cursor",
+                                          "role": null,
+                                          "rows": [],
+                                          "span": {
+                                            "column": 27,
+                                            "end": 397,
+                                            "line": 12,
+                                            "start": 370,
+                                            "type": "Span"
+                                          },
+                                          "target": null,
+                                          "text": null,
+                                          "type": "Node",
+                                          "variant": null,
+                                          "widget": "button"
+                                        },
+                                        {
+                                          "arguments": [
+                                            {
+                                              "name": null,
+                                              "span": {
+                                                "column": 69,
+                                                "end": 419,
+                                                "line": 12,
+                                                "start": 412,
+                                                "type": "Span"
+                                              },
+                                              "type": "Argument",
+                                              "value": {
+                                                "kind": "string",
+                                                "span": {
+                                                  "column": 69,
+                                                  "end": 419,
+                                                  "line": 12,
+                                                  "start": 412,
+                                                  "type": "Span"
+                                                },
+                                                "type": "Literal",
+                                                "value": "Delta"
+                                              }
+                                            }
+                                          ],
+                                          "kind": "widget",
+                                          "layout": [],
+                                          "name": "delta",
+                                          "role": null,
+                                          "rows": [],
+                                          "span": {
+                                            "column": 56,
+                                            "end": 420,
+                                            "line": 12,
+                                            "start": 399,
+                                            "type": "Span"
+                                          },
+                                          "target": null,
+                                          "text": null,
+                                          "type": "Node",
+                                          "variant": null,
+                                          "widget": "button"
+                                        }
+                                      ],
+                                      "span": {
+                                        "column": 27,
+                                        "end": 420,
+                                        "line": 12,
+                                        "start": 370,
+                                        "type": "Span"
+                                      },
+                                      "type": "Row"
+                                    }
+                                  ],
+                                  "span": {
+                                    "column": 26,
+                                    "end": 427,
+                                    "line": 12,
+                                    "start": 369,
+                                    "type": "Span"
+                                  },
+                                  "target": null,
+                                  "text": null,
+                                  "type": "Node",
+                                  "variant": null,
+                                  "widget": null
+                                }
+                              ],
+                              "span": {
+                                "column": 13,
+                                "end": 427,
+                                "line": 12,
+                                "start": 356,
+                                "type": "Span"
+                              },
+                              "type": "Row"
+                            }
+                          ],
+                          "span": {
+                            "column": 5,
+                            "end": 428,
+                            "line": 12,
+                            "start": 348,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": null,
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        },
+                        {
+                          "arguments": [],
+                          "kind": "markdown",
+                          "layout": [
+                            {
+                              "name": "font",
+                              "span": {
+                                "column": 21,
+                                "end": 457,
+                                "line": 13,
+                                "start": 450,
+                                "type": "Span"
+                              },
+                              "spelling": "font=28",
+                              "type": "LayoutRule",
+                              "value": {
+                                "kind": "number",
+                                "span": {
+                                  "column": 26,
+                                  "end": 457,
+                                  "line": 13,
+                                  "start": 455,
+                                  "type": "Span"
+                                },
+                                "type": "Literal",
+                                "value": 28
+                              }
+                            }
+                          ],
+                          "name": null,
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 5,
+                            "end": 458,
+                            "line": 13,
+                            "start": 434,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": {
+                            "kind": "string",
+                            "span": {
+                              "column": 5,
+                              "end": 448,
+                              "line": 13,
+                              "start": 434,
+                              "type": "Span"
+                            },
+                            "type": "Literal",
+                            "value": "**412.0 cm**"
+                          },
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        }
+                      ],
+                      "span": {
+                        "column": 5,
+                        "end": 458,
+                        "line": 12,
+                        "start": 348,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    },
+                    {
+                      "items": [
+                        {
+                          "arguments": [],
+                          "kind": "markdown",
+                          "layout": [],
+                          "name": null,
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 5,
+                            "end": 508,
+                            "line": 14,
+                            "start": 464,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": {
+                            "kind": "string",
+                            "span": {
+                              "column": 5,
+                              "end": 508,
+                              "line": 14,
+                              "start": 464,
+                              "type": "Span"
+                            },
+                            "type": "Literal",
+                            "value": "Sample measurement / current head position"
+                          },
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        }
+                      ],
+                      "span": {
+                        "column": 5,
+                        "end": 508,
+                        "line": 14,
+                        "start": 464,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    }
+                  ],
+                  "span": {
+                    "column": 3,
+                    "end": 522,
+                    "line": 11,
+                    "start": 333,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": null,
+                  "type": "Node",
+                  "variant": "b",
+                  "widget": null
+                },
+                {
+                  "arguments": [],
+                  "kind": "frame",
+                  "layout": [
+                    {
+                      "name": "x",
+                      "span": {
+                        "column": 8,
+                        "end": 710,
+                        "line": 20,
+                        "start": 705,
+                        "type": "Span"
+                      },
+                      "spelling": "x=1fr",
+                      "type": "LayoutRule",
+                      "value": {
+                        "kind": "fr",
+                        "span": {
+                          "column": 10,
+                          "end": 710,
+                          "line": 20,
+                          "start": 707,
+                          "type": "Span"
+                        },
+                        "type": "Literal",
+                        "value": 1
+                      }
+                    }
+                  ],
+                  "name": "diameter",
+                  "role": null,
+                  "rows": [
+                    {
+                      "items": [
+                        {
+                          "arguments": [],
+                          "kind": "group",
+                          "layout": [],
+                          "name": null,
+                          "role": "header",
+                          "rows": [
+                            {
+                              "items": [
+                                {
+                                  "arguments": [],
+                                  "kind": "markdown",
+                                  "layout": [],
+                                  "name": null,
+                                  "role": null,
+                                  "rows": [],
+                                  "span": {
+                                    "column": 13,
+                                    "end": 564,
+                                    "line": 17,
+                                    "start": 551,
+                                    "type": "Span"
+                                  },
+                                  "target": null,
+                                  "text": {
+                                    "kind": "string",
+                                    "span": {
+                                      "column": 13,
+                                      "end": 564,
+                                      "line": 17,
+                                      "start": 551,
+                                      "type": "Span"
+                                    },
+                                    "type": "Literal",
+                                    "value": "## Diameter"
+                                  },
+                                  "type": "Node",
+                                  "variant": null,
+                                  "widget": null
+                                },
+                                {
+                                  "arguments": [],
+                                  "kind": "group",
+                                  "layout": [
+                                    {
+                                      "name": "arrow",
+                                      "span": {
+                                        "column": 82,
+                                        "end": 623,
+                                        "line": 17,
+                                        "start": 620,
+                                        "type": "Span"
+                                      },
+                                      "spelling": "\u003e-\u003c",
+                                      "type": "LayoutRule",
+                                      "value": {
+                                        "kind": "arrow",
+                                        "span": {
+                                          "column": 82,
+                                          "end": 623,
+                                          "line": 17,
+                                          "start": 620,
+                                          "type": "Span"
+                                        },
+                                        "type": "Literal",
+                                        "value": "\u003e-\u003c"
+                                      }
+                                    }
+                                  ],
+                                  "name": null,
+                                  "role": null,
+                                  "rows": [
+                                    {
+                                      "items": [
+                                        {
+                                          "arguments": [
+                                            {
+                                              "name": null,
+                                              "span": {
+                                                "column": 42,
+                                                "end": 585,
+                                                "line": 17,
+                                                "start": 580,
+                                                "type": "Span"
+                                              },
+                                              "type": "Argument",
+                                              "value": {
+                                                "kind": "string",
+                                                "span": {
+                                                  "column": 42,
+                                                  "end": 585,
+                                                  "line": 17,
+                                                  "start": 580,
+                                                  "type": "Span"
+                                                },
+                                                "type": "Literal",
+                                                "value": "O/B"
+                                              }
+                                            }
+                                          ],
+                                          "kind": "widget",
+                                          "layout": [],
+                                          "name": "basis",
+                                          "role": null,
+                                          "rows": [],
+                                          "span": {
+                                            "column": 29,
+                                            "end": 586,
+                                            "line": 17,
+                                            "start": 567,
+                                            "type": "Span"
+                                          },
+                                          "target": null,
+                                          "text": null,
+                                          "type": "Node",
+                                          "variant": null,
+                                          "widget": "button"
+                                        },
+                                        {
+                                          "arguments": [
+                                            {
+                                              "name": null,
+                                              "span": {
+                                                "column": 69,
+                                                "end": 616,
+                                                "line": 17,
+                                                "start": 607,
+                                                "type": "Span"
+                                              },
+                                              "type": "Argument",
+                                              "value": {
+                                                "kind": "string",
+                                                "span": {
+                                                  "column": 69,
+                                                  "end": 616,
+                                                  "line": 17,
+                                                  "start": 607,
+                                                  "type": "Span"
+                                                },
+                                                "type": "Literal",
+                                                "value": "BarkNOR"
+                                              }
+                                            }
+                                          ],
+                                          "kind": "widget",
+                                          "layout": [],
+                                          "name": "calibration",
+                                          "role": null,
+                                          "rows": [],
+                                          "span": {
+                                            "column": 50,
+                                            "end": 617,
+                                            "line": 17,
+                                            "start": 588,
+                                            "type": "Span"
+                                          },
+                                          "target": null,
+                                          "text": null,
+                                          "type": "Node",
+                                          "variant": null,
+                                          "widget": "button"
+                                        }
+                                      ],
+                                      "span": {
+                                        "column": 29,
+                                        "end": 617,
+                                        "line": 17,
+                                        "start": 567,
+                                        "type": "Span"
+                                      },
+                                      "type": "Row"
+                                    }
+                                  ],
+                                  "span": {
+                                    "column": 28,
+                                    "end": 624,
+                                    "line": 17,
+                                    "start": 566,
+                                    "type": "Span"
+                                  },
+                                  "target": null,
+                                  "text": null,
+                                  "type": "Node",
+                                  "variant": null,
+                                  "widget": null
+                                }
+                              ],
+                              "span": {
+                                "column": 13,
+                                "end": 624,
+                                "line": 17,
+                                "start": 551,
+                                "type": "Span"
+                              },
+                              "type": "Row"
+                            }
+                          ],
+                          "span": {
+                            "column": 5,
+                            "end": 625,
+                            "line": 17,
+                            "start": 543,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": null,
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        },
+                        {
+                          "arguments": [],
+                          "kind": "markdown",
+                          "layout": [
+                            {
+                              "name": "font",
+                              "span": {
+                                "column": 20,
+                                "end": 653,
+                                "line": 18,
+                                "start": 646,
+                                "type": "Span"
+                              },
+                              "spelling": "font=28",
+                              "type": "LayoutRule",
+                              "value": {
+                                "kind": "number",
+                                "span": {
+                                  "column": 25,
+                                  "end": 653,
+                                  "line": 18,
+                                  "start": 651,
+                                  "type": "Span"
+                                },
+                                "type": "Literal",
+                                "value": 28
+                              }
+                            }
+                          ],
+                          "name": null,
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 5,
+                            "end": 654,
+                            "line": 18,
+                            "start": 631,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": {
+                            "kind": "string",
+                            "span": {
+                              "column": 5,
+                              "end": 644,
+                              "line": 18,
+                              "start": 631,
+                              "type": "Span"
+                            },
+                            "type": "Literal",
+                            "value": "**28.4 cm**"
+                          },
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        }
+                      ],
+                      "span": {
+                        "column": 5,
+                        "end": 654,
+                        "line": 17,
+                        "start": 543,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    },
+                    {
+                      "items": [
+                        {
+                          "arguments": [],
+                          "kind": "markdown",
+                          "layout": [],
+                          "name": null,
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 5,
+                            "end": 697,
+                            "line": 19,
+                            "start": 660,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": {
+                            "kind": "string",
+                            "span": {
+                              "column": 5,
+                              "end": 697,
+                              "line": 19,
+                              "start": 660,
+                              "type": "Span"
+                            },
+                            "type": "Literal",
+                            "value": "Sample calibrated value / over bark"
+                          },
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        }
+                      ],
+                      "span": {
+                        "column": 5,
+                        "end": 697,
+                        "line": 19,
+                        "start": 660,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    }
+                  ],
+                  "span": {
+                    "column": 3,
+                    "end": 711,
+                    "line": 16,
+                    "start": 526,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": null,
+                  "type": "Node",
+                  "variant": "b",
+                  "widget": null
+                }
+              ],
+              "span": {
+                "column": 3,
+                "end": 711,
+                "line": 11,
+                "start": 333,
+                "type": "Span"
+              },
+              "type": "Row"
+            }
+          ],
+          "span": {
+            "column": 16,
+            "end": 737,
+            "line": 10,
+            "start": 329,
+            "type": "Span"
+          },
+          "target": null,
+          "text": null,
+          "type": "Node",
+          "variant": null,
+          "widget": null
+        },
+        "span": {
+          "column": 1,
+          "end": 738,
+          "line": 10,
+          "start": 314,
+          "type": "Span"
+        },
+        "type": "Definition"
+      },
+      {
+        "name": "advice",
+        "root": {
+          "arguments": [],
+          "kind": "frame",
+          "layout": [
+            {
+              "name": "y",
+              "span": {
+                "column": 4,
+                "end": 1562,
+                "line": 44,
+                "start": 1556,
+                "type": "Span"
+              },
+              "spelling": "y=38fr",
+              "type": "LayoutRule",
+              "value": {
+                "kind": "fr",
+                "span": {
+                  "column": 6,
+                  "end": 1562,
+                  "line": 44,
+                  "start": 1558,
+                  "type": "Span"
+                },
+                "type": "Literal",
+                "value": 38
+              }
+            },
+            {
+              "name": "items",
+              "span": {
+                "column": 12,
+                "end": 1577,
+                "line": 44,
+                "start": 1564,
+                "type": "Span"
+              },
+              "spelling": "items=stretch",
+              "type": "LayoutRule",
+              "value": {
+                "kind": "enum",
+                "span": {
+                  "column": 18,
+                  "end": 1577,
+                  "line": 44,
+                  "start": 1570,
+                  "type": "Span"
+                },
+                "type": "Literal",
+                "value": "stretch"
+              }
+            }
+          ],
+          "name": null,
+          "role": null,
+          "rows": [
+            {
+              "items": [
+                {
+                  "arguments": [],
+                  "kind": "frame",
+                  "layout": [
+                    {
+                      "name": "x",
+                      "span": {
+                        "column": 8,
+                        "end": 971,
+                        "line": 29,
+                        "start": 965,
+                        "type": "Span"
+                      },
+                      "spelling": "x=24fr",
+                      "type": "LayoutRule",
+                      "value": {
+                        "kind": "fr",
+                        "span": {
+                          "column": 10,
+                          "end": 971,
+                          "line": 29,
+                          "start": 967,
+                          "type": "Span"
+                        },
+                        "type": "Literal",
+                        "value": 24
+                      }
+                    }
+                  ],
+                  "name": "selection",
+                  "role": null,
+                  "rows": [
+                    {
+                      "items": [
+                        {
+                          "arguments": [],
+                          "kind": "markdown",
+                          "layout": [],
+                          "name": null,
+                          "role": "header",
+                          "rows": [],
+                          "span": {
+                            "column": 5,
+                            "end": 791,
+                            "line": 25,
+                            "start": 771,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": {
+                            "kind": "string",
+                            "span": {
+                              "column": 12,
+                              "end": 791,
+                              "line": 25,
+                              "start": 778,
+                              "type": "Span"
+                            },
+                            "type": "Literal",
+                            "value": "## Material"
+                          },
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        },
+                        {
+                          "arguments": [],
+                          "kind": "markdown",
+                          "layout": [],
+                          "name": null,
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 5,
+                            "end": 846,
+                            "line": 26,
+                            "start": 797,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": {
+                            "kind": "string",
+                            "span": {
+                              "column": 5,
+                              "end": 846,
+                              "line": 26,
+                              "start": 797,
+                              "type": "Span"
+                            },
+                            "type": "Literal",
+                            "value": "**Species** / Spruce\n\n**Assortment** / Sawlog"
+                          },
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        }
+                      ],
+                      "span": {
+                        "column": 5,
+                        "end": 846,
+                        "line": 25,
+                        "start": 771,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    },
+                    {
+                      "items": [
+                        {
+                          "arguments": [],
+                          "kind": "group",
+                          "layout": [],
+                          "name": null,
+                          "role": null,
+                          "rows": [
+                            {
+                              "items": [
+                                {
+                                  "arguments": [
+                                    {
+                                      "name": null,
+                                      "span": {
+                                        "column": 21,
+                                        "end": 877,
+                                        "line": 27,
+                                        "start": 868,
+                                        "type": "Span"
+                                      },
+                                      "type": "Argument",
+                                      "value": {
+                                        "kind": "string",
+                                        "span": {
+                                          "column": 21,
+                                          "end": 877,
+                                          "line": 27,
+                                          "start": 868,
+                                          "type": "Span"
+                                        },
+                                        "type": "Literal",
+                                        "value": "Species"
+                                      }
+                                    }
+                                  ],
+                                  "kind": "widget",
+                                  "layout": [],
+                                  "name": "species",
+                                  "role": null,
+                                  "rows": [],
+                                  "span": {
+                                    "column": 6,
+                                    "end": 878,
+                                    "line": 27,
+                                    "start": 853,
+                                    "type": "Span"
+                                  },
+                                  "target": null,
+                                  "text": null,
+                                  "type": "Node",
+                                  "variant": null,
+                                  "widget": "button"
+                                },
+                                {
+                                  "arguments": [
+                                    {
+                                      "name": null,
+                                      "span": {
+                                        "column": 51,
+                                        "end": 910,
+                                        "line": 27,
+                                        "start": 898,
+                                        "type": "Span"
+                                      },
+                                      "type": "Argument",
+                                      "value": {
+                                        "kind": "string",
+                                        "span": {
+                                          "column": 51,
+                                          "end": 910,
+                                          "line": 27,
+                                          "start": 898,
+                                          "type": "Span"
+                                        },
+                                        "type": "Literal",
+                                        "value": "Assortment"
+                                      }
+                                    }
+                                  ],
+                                  "kind": "widget",
+                                  "layout": [],
+                                  "name": "assortment",
+                                  "role": null,
+                                  "rows": [],
+                                  "span": {
+                                    "column": 33,
+                                    "end": 911,
+                                    "line": 27,
+                                    "start": 880,
+                                    "type": "Span"
+                                  },
+                                  "target": null,
+                                  "text": null,
+                                  "type": "Node",
+                                  "variant": null,
+                                  "widget": "button"
+                                }
+                              ],
+                              "span": {
+                                "column": 6,
+                                "end": 911,
+                                "line": 27,
+                                "start": 853,
+                                "type": "Span"
+                              },
+                              "type": "Row"
+                            }
+                          ],
+                          "span": {
+                            "column": 5,
+                            "end": 912,
+                            "line": 27,
+                            "start": 852,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": null,
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        }
+                      ],
+                      "span": {
+                        "column": 5,
+                        "end": 912,
+                        "line": 27,
+                        "start": 852,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    },
+                    {
+                      "items": [
+                        {
+                          "arguments": [],
+                          "kind": "markdown",
+                          "layout": [],
+                          "name": null,
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 5,
+                            "end": 957,
+                            "line": 28,
+                            "start": 918,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": {
+                            "kind": "string",
+                            "span": {
+                              "column": 5,
+                              "end": 957,
+                              "line": 28,
+                              "start": 918,
+                              "type": "Span"
+                            },
+                            "type": "Literal",
+                            "value": "Selection requires domain validation."
+                          },
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        }
+                      ],
+                      "span": {
+                        "column": 5,
+                        "end": 957,
+                        "line": 28,
+                        "start": 918,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    }
+                  ],
+                  "span": {
+                    "column": 3,
+                    "end": 972,
+                    "line": 24,
+                    "start": 753,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": null,
+                  "type": "Node",
+                  "variant": "b",
+                  "widget": null
+                },
+                {
+                  "arguments": [],
+                  "kind": "frame",
+                  "layout": [
+                    {
+                      "name": "x",
+                      "span": {
+                        "column": 8,
+                        "end": 1363,
+                        "line": 38,
+                        "start": 1357,
+                        "type": "Span"
+                      },
+                      "spelling": "x=48fr",
+                      "type": "LayoutRule",
+                      "value": {
+                        "kind": "fr",
+                        "span": {
+                          "column": 10,
+                          "end": 1363,
+                          "line": 38,
+                          "start": 1359,
+                          "type": "Span"
+                        },
+                        "type": "Literal",
+                        "value": 48
+                      }
+                    }
+                  ],
+                  "name": "alternatives",
+                  "role": null,
+                  "rows": [
+                    {
+                      "items": [
+                        {
+                          "arguments": [],
+                          "kind": "group",
+                          "layout": [],
+                          "name": null,
+                          "role": "header",
+                          "rows": [
+                            {
+                              "items": [
+                                {
+                                  "arguments": [],
+                                  "kind": "markdown",
+                                  "layout": [],
+                                  "name": null,
+                                  "role": null,
+                                  "rows": [],
+                                  "span": {
+                                    "column": 13,
+                                    "end": 1024,
+                                    "line": 31,
+                                    "start": 1005,
+                                    "type": "Span"
+                                  },
+                                  "target": null,
+                                  "text": {
+                                    "kind": "string",
+                                    "span": {
+                                      "column": 13,
+                                      "end": 1024,
+                                      "line": 31,
+                                      "start": 1005,
+                                      "type": "Span"
+                                    },
+                                    "type": "Literal",
+                                    "value": "## Bucking advice"
+                                  },
+                                  "type": "Node",
+                                  "variant": null,
+                                  "widget": null
+                                },
+                                {
+                                  "arguments": [
+                                    {
+                                      "name": null,
+                                      "span": {
+                                        "column": 50,
+                                        "end": 1055,
+                                        "line": 31,
+                                        "start": 1042,
+                                        "type": "Span"
+                                      },
+                                      "type": "Argument",
+                                      "value": {
+                                        "kind": "string",
+                                        "span": {
+                                          "column": 50,
+                                          "end": 1055,
+                                          "line": 31,
+                                          "start": 1042,
+                                          "type": "Span"
+                                        },
+                                        "type": "Literal",
+                                        "value": "Recalculate"
+                                      }
+                                    }
+                                  ],
+                                  "kind": "widget",
+                                  "layout": [],
+                                  "name": "optimize",
+                                  "role": null,
+                                  "rows": [],
+                                  "span": {
+                                    "column": 34,
+                                    "end": 1056,
+                                    "line": 31,
+                                    "start": 1026,
+                                    "type": "Span"
+                                  },
+                                  "target": null,
+                                  "text": null,
+                                  "type": "Node",
+                                  "variant": null,
+                                  "widget": "button"
+                                }
+                              ],
+                              "span": {
+                                "column": 13,
+                                "end": 1056,
+                                "line": 31,
+                                "start": 1005,
+                                "type": "Span"
+                              },
+                              "type": "Row"
+                            }
+                          ],
+                          "span": {
+                            "column": 5,
+                            "end": 1057,
+                            "line": 31,
+                            "start": 997,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": null,
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        },
+                        {
+                          "arguments": [],
+                          "kind": "markdown",
+                          "layout": [],
+                          "name": null,
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 5,
+                            "end": 1206,
+                            "line": 32,
+                            "start": 1063,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": {
+                            "kind": "string",
+                            "span": {
+                              "column": 5,
+                              "end": 1206,
+                              "line": 32,
+                              "start": 1063,
+                              "type": "Span"
+                            },
+                            "type": "Literal",
+                            "value": "| Rank | Assortment | Length | Top diameter |\n| --- | --- | --- | --- |\n| 1 | Sawlog | 430 cm | 26 cm |\n| 2 | Pulpwood | 310 cm | 18 cm |"
+                          },
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        }
+                      ],
+                      "span": {
+                        "column": 5,
+                        "end": 1206,
+                        "line": 31,
+                        "start": 997,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    },
+                    {
+                      "items": [
+                        {
+                          "arguments": [],
+                          "kind": "group",
+                          "layout": [],
+                          "name": null,
+                          "role": null,
+                          "rows": [
+                            {
+                              "items": [
+                                {
+                                  "arguments": [
+                                    {
+                                      "name": null,
+                                      "span": {
+                                        "column": 23,
+                                        "end": 1241,
+                                        "line": 36,
+                                        "start": 1230,
+                                        "type": "Span"
+                                      },
+                                      "type": "Argument",
+                                      "value": {
+                                        "kind": "string",
+                                        "span": {
+                                          "column": 23,
+                                          "end": 1241,
+                                          "line": 36,
+                                          "start": 1230,
+                                          "type": "Span"
+                                        },
+                                        "type": "Literal",
+                                        "value": "Canonical"
+                                      }
+                                    }
+                                  ],
+                                  "kind": "widget",
+                                  "layout": [],
+                                  "name": "canonical",
+                                  "role": null,
+                                  "rows": [],
+                                  "span": {
+                                    "column": 6,
+                                    "end": 1242,
+                                    "line": 36,
+                                    "start": 1213,
+                                    "type": "Span"
+                                  },
+                                  "target": null,
+                                  "text": null,
+                                  "type": "Node",
+                                  "variant": null,
+                                  "widget": "button"
+                                },
+                                {
+                                  "arguments": [
+                                    {
+                                      "name": null,
+                                      "span": {
+                                        "column": 56,
+                                        "end": 1278,
+                                        "line": 36,
+                                        "start": 1263,
+                                        "type": "Span"
+                                      },
+                                      "type": "Argument",
+                                      "value": {
+                                        "kind": "string",
+                                        "span": {
+                                          "column": 56,
+                                          "end": 1278,
+                                          "line": 36,
+                                          "start": 1263,
+                                          "type": "Span"
+                                        },
+                                        "type": "Literal",
+                                        "value": "Alternative 1"
+                                      }
+                                    }
+                                  ],
+                                  "kind": "widget",
+                                  "layout": [],
+                                  "name": "alternative",
+                                  "role": null,
+                                  "rows": [],
+                                  "span": {
+                                    "column": 37,
+                                    "end": 1279,
+                                    "line": 36,
+                                    "start": 1244,
+                                    "type": "Span"
+                                  },
+                                  "target": null,
+                                  "text": null,
+                                  "type": "Node",
+                                  "variant": null,
+                                  "widget": "button"
+                                }
+                              ],
+                              "span": {
+                                "column": 6,
+                                "end": 1279,
+                                "line": 36,
+                                "start": 1213,
+                                "type": "Span"
+                              },
+                              "type": "Row"
+                            }
+                          ],
+                          "span": {
+                            "column": 5,
+                            "end": 1280,
+                            "line": 36,
+                            "start": 1212,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": null,
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        }
+                      ],
+                      "span": {
+                        "column": 5,
+                        "end": 1280,
+                        "line": 36,
+                        "start": 1212,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    },
+                    {
+                      "items": [
+                        {
+                          "arguments": [],
+                          "kind": "markdown",
+                          "layout": [],
+                          "name": null,
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 5,
+                            "end": 1349,
+                            "line": 37,
+                            "start": 1286,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": {
+                            "kind": "string",
+                            "span": {
+                              "column": 5,
+                              "end": 1349,
+                              "line": 37,
+                              "start": 1286,
+                              "type": "Span"
+                            },
+                            "type": "Literal",
+                            "value": "Sample proposals / retain last valid plan while recalculating"
+                          },
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        }
+                      ],
+                      "span": {
+                        "column": 5,
+                        "end": 1349,
+                        "line": 37,
+                        "start": 1286,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    }
+                  ],
+                  "span": {
+                    "column": 3,
+                    "end": 1364,
+                    "line": 30,
+                    "start": 976,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": null,
+                  "type": "Node",
+                  "variant": "b",
+                  "widget": null
+                },
+                {
+                  "arguments": [],
+                  "kind": "frame",
+                  "layout": [
+                    {
+                      "name": "x",
+                      "span": {
+                        "column": 8,
+                        "end": 1551,
+                        "line": 43,
+                        "start": 1545,
+                        "type": "Span"
+                      },
+                      "spelling": "x=28fr",
+                      "type": "LayoutRule",
+                      "value": {
+                        "kind": "fr",
+                        "span": {
+                          "column": 10,
+                          "end": 1551,
+                          "line": 43,
+                          "start": 1547,
+                          "type": "Span"
+                        },
+                        "type": "Literal",
+                        "value": 28
+                      }
+                    }
+                  ],
+                  "name": "stem",
+                  "role": null,
+                  "rows": [
+                    {
+                      "items": [
+                        {
+                          "arguments": [],
+                          "kind": "markdown",
+                          "layout": [],
+                          "name": null,
+                          "role": "header",
+                          "rows": [],
+                          "span": {
+                            "column": 5,
+                            "end": 1405,
+                            "line": 40,
+                            "start": 1381,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": {
+                            "kind": "string",
+                            "span": {
+                              "column": 12,
+                              "end": 1405,
+                              "line": 40,
+                              "start": 1388,
+                              "type": "Span"
+                            },
+                            "type": "Literal",
+                            "value": "## Current stem"
+                          },
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        },
+                        {
+                          "arguments": [],
+                          "kind": "markdown",
+                          "layout": [],
+                          "name": null,
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 5,
+                            "end": 1498,
+                            "line": 41,
+                            "start": 1411,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": {
+                            "kind": "string",
+                            "span": {
+                              "column": 5,
+                              "end": 1498,
+                              "line": 41,
+                              "start": 1411,
+                              "type": "Span"
+                            },
+                            "type": "Literal",
+                            "value": "**Stem** / demo-042\n\nHead position / 412.0 cm\nProcessed / 0 cm\nLocked defects / 0"
+                          },
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        }
+                      ],
+                      "span": {
+                        "column": 5,
+                        "end": 1498,
+                        "line": 40,
+                        "start": 1381,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    },
+                    {
+                      "items": [
+                        {
+                          "arguments": [
+                            {
+                              "name": null,
+                              "span": {
+                                "column": 20,
+                                "end": 1536,
+                                "line": 42,
+                                "start": 1519,
+                                "type": "Span"
+                              },
+                              "type": "Argument",
+                              "value": {
+                                "kind": "string",
+                                "span": {
+                                  "column": 20,
+                                  "end": 1536,
+                                  "line": 42,
+                                  "start": 1519,
+                                  "type": "Span"
+                                },
+                                "type": "Literal",
+                                "value": "Inspect defects"
+                              }
+                            }
+                          ],
+                          "kind": "widget",
+                          "layout": [],
+                          "name": "defects",
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 5,
+                            "end": 1537,
+                            "line": 42,
+                            "start": 1504,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": null,
+                          "type": "Node",
+                          "variant": null,
+                          "widget": "button"
+                        }
+                      ],
+                      "span": {
+                        "column": 5,
+                        "end": 1537,
+                        "line": 42,
+                        "start": 1504,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    }
+                  ],
+                  "span": {
+                    "column": 3,
+                    "end": 1552,
+                    "line": 39,
+                    "start": 1368,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": null,
+                  "type": "Node",
+                  "variant": "b",
+                  "widget": null
+                }
+              ],
+              "span": {
+                "column": 3,
+                "end": 1552,
+                "line": 24,
+                "start": 753,
+                "type": "Span"
+              },
+              "type": "Row"
+            }
+          ],
+          "span": {
+            "column": 10,
+            "end": 1578,
+            "line": 23,
+            "start": 749,
+            "type": "Span"
+          },
+          "target": null,
+          "text": null,
+          "type": "Node",
+          "variant": null,
+          "widget": null
+        },
+        "span": {
+          "column": 1,
+          "end": 1579,
+          "line": 23,
+          "start": 740,
+          "type": "Span"
+        },
+        "type": "Definition"
+      },
+      {
+        "name": "profile",
+        "root": {
+          "arguments": [],
+          "kind": "frame",
+          "layout": [
+            {
+              "name": "y",
+              "span": {
+                "column": 6,
+                "end": 1980,
+                "line": 51,
+                "start": 1974,
+                "type": "Span"
+              },
+              "spelling": "y=40fr",
+              "type": "LayoutRule",
+              "value": {
+                "kind": "fr",
+                "span": {
+                  "column": 8,
+                  "end": 1980,
+                  "line": 51,
+                  "start": 1976,
+                  "type": "Span"
+                },
+                "type": "Literal",
+                "value": 40
+              }
+            }
+          ],
+          "name": null,
+          "role": null,
+          "rows": [
+            {
+              "items": [
+                {
+                  "arguments": [],
+                  "kind": "group",
+                  "layout": [],
+                  "name": null,
+                  "role": "header",
+                  "rows": [
+                    {
+                      "items": [
+                        {
+                          "arguments": [],
+                          "kind": "markdown",
+                          "layout": [],
+                          "name": null,
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 11,
+                            "end": 1620,
+                            "line": 47,
+                            "start": 1603,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": {
+                            "kind": "string",
+                            "span": {
+                              "column": 11,
+                              "end": 1620,
+                              "line": 47,
+                              "start": 1603,
+                              "type": "Span"
+                            },
+                            "type": "Literal",
+                            "value": "## Stem profile"
+                          },
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        },
+                        {
+                          "arguments": [],
+                          "kind": "group",
+                          "layout": [
+                            {
+                              "name": "arrow",
+                              "span": {
+                                "column": 81,
+                                "end": 1676,
+                                "line": 47,
+                                "start": 1673,
+                                "type": "Span"
+                              },
+                              "spelling": "\u003e-\u003c",
+                              "type": "LayoutRule",
+                              "value": {
+                                "kind": "arrow",
+                                "span": {
+                                  "column": 81,
+                                  "end": 1676,
+                                  "line": 47,
+                                  "start": 1673,
+                                  "type": "Span"
+                                },
+                                "type": "Literal",
+                                "value": "\u003e-\u003c"
+                              }
+                            }
+                          ],
+                          "name": null,
+                          "role": null,
+                          "rows": [
+                            {
+                              "items": [
+                                {
+                                  "arguments": [
+                                    {
+                                      "name": null,
+                                      "span": {
+                                        "column": 44,
+                                        "end": 1646,
+                                        "line": 47,
+                                        "start": 1636,
+                                        "type": "Span"
+                                      },
+                                      "type": "Argument",
+                                      "value": {
+                                        "kind": "string",
+                                        "span": {
+                                          "column": 44,
+                                          "end": 1646,
+                                          "line": 47,
+                                          "start": 1636,
+                                          "type": "Span"
+                                        },
+                                        "type": "Literal",
+                                        "value": "TaperNOR"
+                                      }
+                                    }
+                                  ],
+                                  "kind": "widget",
+                                  "layout": [],
+                                  "name": "taper",
+                                  "role": null,
+                                  "rows": [],
+                                  "span": {
+                                    "column": 31,
+                                    "end": 1647,
+                                    "line": 47,
+                                    "start": 1623,
+                                    "type": "Span"
+                                  },
+                                  "target": null,
+                                  "text": null,
+                                  "type": "Node",
+                                  "variant": null,
+                                  "widget": "button"
+                                },
+                                {
+                                  "arguments": [
+                                    {
+                                      "name": null,
+                                      "span": {
+                                        "column": 70,
+                                        "end": 1669,
+                                        "line": 47,
+                                        "start": 1662,
+                                        "type": "Span"
+                                      },
+                                      "type": "Argument",
+                                      "value": {
+                                        "kind": "string",
+                                        "span": {
+                                          "column": 70,
+                                          "end": 1669,
+                                          "line": 47,
+                                          "start": 1662,
+                                          "type": "Span"
+                                        },
+                                        "type": "Literal",
+                                        "value": "Mixed"
+                                      }
+                                    }
+                                  ],
+                                  "kind": "widget",
+                                  "layout": [],
+                                  "name": "mixed",
+                                  "role": null,
+                                  "rows": [],
+                                  "span": {
+                                    "column": 57,
+                                    "end": 1670,
+                                    "line": 47,
+                                    "start": 1649,
+                                    "type": "Span"
+                                  },
+                                  "target": null,
+                                  "text": null,
+                                  "type": "Node",
+                                  "variant": null,
+                                  "widget": "button"
+                                }
+                              ],
+                              "span": {
+                                "column": 31,
+                                "end": 1670,
+                                "line": 47,
+                                "start": 1623,
+                                "type": "Span"
+                              },
+                              "type": "Row"
+                            }
+                          ],
+                          "span": {
+                            "column": 30,
+                            "end": 1677,
+                            "line": 47,
+                            "start": 1622,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": null,
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        }
+                      ],
+                      "span": {
+                        "column": 11,
+                        "end": 1677,
+                        "line": 47,
+                        "start": 1603,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    }
+                  ],
+                  "span": {
+                    "column": 3,
+                    "end": 1678,
+                    "line": 47,
+                    "start": 1595,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": null,
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                },
+                {
+                  "arguments": [],
+                  "kind": "markdown",
+                  "layout": [],
+                  "name": null,
+                  "role": null,
+                  "rows": [],
+                  "span": {
+                    "column": 3,
+                    "end": 1822,
+                    "line": 48,
+                    "start": 1682,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": {
+                    "kind": "string",
+                    "span": {
+                      "column": 3,
+                      "end": 1822,
+                      "line": 48,
+                      "start": 1682,
+                      "type": "Span"
+                    },
+                    "type": "Literal",
+                    "value": "**Measured profile / predicted taper / planned cuts**\n\nPlot provider placeholder. No curve is fabricated from these sample measurements."
+                  },
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                }
+              ],
+              "span": {
+                "column": 3,
+                "end": 1822,
+                "line": 47,
+                "start": 1595,
+                "type": "Span"
+              },
+              "type": "Row"
+            },
+            {
+              "items": [
+                {
+                  "arguments": [],
+                  "kind": "group",
+                  "layout": [],
+                  "name": null,
+                  "role": null,
+                  "rows": [
+                    {
+                      "items": [
+                        {
+                          "arguments": [
+                            {
+                              "name": null,
+                              "span": {
+                                "column": 19,
+                                "end": 1858,
+                                "line": 49,
+                                "start": 1842,
+                                "type": "Span"
+                              },
+                              "type": "Argument",
+                              "value": {
+                                "kind": "string",
+                                "span": {
+                                  "column": 19,
+                                  "end": 1858,
+                                  "line": 49,
+                                  "start": 1842,
+                                  "type": "Span"
+                                },
+                                "type": "Literal",
+                                "value": "Inspect sample"
+                              }
+                            }
+                          ],
+                          "kind": "widget",
+                          "layout": [],
+                          "name": "inspect",
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 4,
+                            "end": 1859,
+                            "line": 49,
+                            "start": 1827,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": null,
+                          "type": "Node",
+                          "variant": null,
+                          "widget": "button"
+                        },
+                        {
+                          "arguments": [
+                            {
+                              "name": null,
+                              "span": {
+                                "column": 52,
+                                "end": 1888,
+                                "line": 49,
+                                "start": 1875,
+                                "type": "Span"
+                              },
+                              "type": "Argument",
+                              "value": {
+                                "kind": "string",
+                                "span": {
+                                  "column": 52,
+                                  "end": 1888,
+                                  "line": 49,
+                                  "start": 1875,
+                                  "type": "Span"
+                                },
+                                "type": "Literal",
+                                "value": "Follow head"
+                              }
+                            }
+                          ],
+                          "kind": "widget",
+                          "layout": [],
+                          "name": "follow",
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 38,
+                            "end": 1889,
+                            "line": 49,
+                            "start": 1861,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": null,
+                          "type": "Node",
+                          "variant": null,
+                          "widget": "button"
+                        }
+                      ],
+                      "span": {
+                        "column": 4,
+                        "end": 1889,
+                        "line": 49,
+                        "start": 1827,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    }
+                  ],
+                  "span": {
+                    "column": 3,
+                    "end": 1890,
+                    "line": 49,
+                    "start": 1826,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": null,
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                }
+              ],
+              "span": {
+                "column": 3,
+                "end": 1890,
+                "line": 49,
+                "start": 1826,
+                "type": "Span"
+              },
+              "type": "Row"
+            },
+            {
+              "items": [
+                {
+                  "arguments": [],
+                  "kind": "group",
+                  "layout": [
+                    {
+                      "name": "arrow",
+                      "span": {
+                        "column": 73,
+                        "end": 1967,
+                        "line": 50,
+                        "start": 1964,
+                        "type": "Span"
+                      },
+                      "spelling": "\u003c-\u003e",
+                      "type": "LayoutRule",
+                      "value": {
+                        "kind": "arrow",
+                        "span": {
+                          "column": 73,
+                          "end": 1967,
+                          "line": 50,
+                          "start": 1964,
+                          "type": "Span"
+                        },
+                        "type": "Literal",
+                        "value": "\u003c-\u003e"
+                      }
+                    }
+                  ],
+                  "name": null,
+                  "role": "footer",
+                  "rows": [
+                    {
+                      "items": [
+                        {
+                          "arguments": [],
+                          "kind": "markdown",
+                          "layout": [],
+                          "name": null,
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 11,
+                            "end": 1919,
+                            "line": 50,
+                            "start": 1902,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": {
+                            "kind": "string",
+                            "span": {
+                              "column": 11,
+                              "end": 1919,
+                              "line": 50,
+                              "start": 1902,
+                              "type": "Span"
+                            },
+                            "type": "Literal",
+                            "value": "Head / 412.0 cm"
+                          },
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        },
+                        {
+                          "arguments": [],
+                          "kind": "markdown",
+                          "layout": [],
+                          "name": null,
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 30,
+                            "end": 1938,
+                            "line": 50,
+                            "start": 1921,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": {
+                            "kind": "string",
+                            "span": {
+                              "column": 30,
+                              "end": 1938,
+                              "line": 50,
+                              "start": 1921,
+                              "type": "Span"
+                            },
+                            "type": "Literal",
+                            "value": "Cursor / sample"
+                          },
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        },
+                        {
+                          "arguments": [],
+                          "kind": "markdown",
+                          "layout": [],
+                          "name": null,
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 49,
+                            "end": 1961,
+                            "line": 50,
+                            "start": 1940,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": {
+                            "kind": "string",
+                            "span": {
+                              "column": 49,
+                              "end": 1961,
+                              "line": 50,
+                              "start": 1940,
+                              "type": "Span"
+                            },
+                            "type": "Literal",
+                            "value": "Plan / not executed"
+                          },
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        }
+                      ],
+                      "span": {
+                        "column": 11,
+                        "end": 1961,
+                        "line": 50,
+                        "start": 1902,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    }
+                  ],
+                  "span": {
+                    "column": 3,
+                    "end": 1968,
+                    "line": 50,
+                    "start": 1894,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": null,
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                }
+              ],
+              "span": {
+                "column": 3,
+                "end": 1968,
+                "line": 50,
+                "start": 1894,
+                "type": "Span"
+              },
+              "type": "Row"
+            }
+          ],
+          "span": {
+            "column": 11,
+            "end": 1981,
+            "line": 46,
+            "start": 1591,
+            "type": "Span"
+          },
+          "target": null,
+          "text": null,
+          "type": "Node",
+          "variant": "b",
+          "widget": null
+        },
+        "span": {
+          "column": 1,
+          "end": 1982,
+          "line": 46,
+          "start": 1581,
+          "type": "Span"
+        },
+        "type": "Definition"
+      },
+      {
+        "name": "page",
+        "root": {
+          "arguments": [],
+          "kind": "frame",
+          "layout": [
+            {
+              "name": "ratio",
+              "span": {
+                "column": 4,
+                "end": 2279,
+                "line": 57,
+                "start": 2275,
+                "type": "Span"
+              },
+              "spelling": "16:9",
+              "type": "LayoutRule",
+              "value": {
+                "kind": "ratio",
+                "span": {
+                  "column": 4,
+                  "end": 2279,
+                  "line": 57,
+                  "start": 2275,
+                  "type": "Span"
+                },
+                "type": "Literal",
+                "value": [
+                  16,
+                  9
+                ]
+              }
+            },
+            {
+              "name": "arrow",
+              "span": {
+                "column": 10,
+                "end": 2284,
+                "line": 57,
+                "start": 2281,
+                "type": "Span"
+              },
+              "spelling": "\u003c-\u003e",
+              "type": "LayoutRule",
+              "value": {
+                "kind": "arrow",
+                "span": {
+                  "column": 10,
+                  "end": 2284,
+                  "line": 57,
+                  "start": 2281,
+                  "type": "Span"
+                },
+                "type": "Literal",
+                "value": "\u003c-\u003e"
+              }
+            },
+            {
+              "name": "font",
+              "span": {
+                "column": 15,
+                "end": 2293,
+                "line": 57,
+                "start": 2286,
+                "type": "Span"
+              },
+              "spelling": "font=16",
+              "type": "LayoutRule",
+              "value": {
+                "kind": "number",
+                "span": {
+                  "column": 20,
+                  "end": 2293,
+                  "line": 57,
+                  "start": 2291,
+                  "type": "Span"
+                },
+                "type": "Literal",
+                "value": 16
+              }
+            },
+            {
+              "name": "gap",
+              "span": {
+                "column": 24,
+                "end": 2304,
+                "line": 57,
+                "start": 2295,
+                "type": "Span"
+              },
+              "spelling": "gap=0.012",
+              "type": "LayoutRule",
+              "value": {
+                "kind": "number",
+                "span": {
+                  "column": 28,
+                  "end": 2304,
+                  "line": 57,
+                  "start": 2299,
+                  "type": "Span"
+                },
+                "type": "Literal",
+                "value": 0.012
+              }
+            },
+            {
+              "name": "padding",
+              "span": {
+                "column": 35,
+                "end": 2319,
+                "line": 57,
+                "start": 2306,
+                "type": "Span"
+              },
+              "spelling": "padding=0.012",
+              "type": "LayoutRule",
+              "value": {
+                "kind": "number",
+                "span": {
+                  "column": 43,
+                  "end": 2319,
+                  "line": 57,
+                  "start": 2314,
+                  "type": "Span"
+                },
+                "type": "Literal",
+                "value": 0.012
+              }
+            }
+          ],
+          "name": null,
+          "role": null,
+          "rows": [
+            {
+              "items": [
+                {
+                  "arguments": [],
+                  "kind": "group",
+                  "layout": [],
+                  "name": null,
+                  "role": "header",
+                  "rows": [
+                    {
+                      "items": [
+                        {
+                          "arguments": [],
+                          "kind": "use",
+                          "layout": [],
+                          "name": null,
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 11,
+                            "end": 2013,
+                            "line": 54,
+                            "start": 2003,
+                            "type": "Span"
+                          },
+                          "target": "navigation",
+                          "text": null,
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        }
+                      ],
+                      "span": {
+                        "column": 11,
+                        "end": 2013,
+                        "line": 54,
+                        "start": 2003,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    },
+                    {
+                      "items": [
+                        {
+                          "arguments": [],
+                          "kind": "markdown",
+                          "layout": [],
+                          "name": null,
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 23,
+                            "end": 2098,
+                            "line": 54,
+                            "start": 2015,
+                            "type": "Span"
+                          },
+                          "target": null,
+                          "text": {
+                            "kind": "string",
+                            "span": {
+                              "column": 23,
+                              "end": 2098,
+                              "line": 54,
+                              "start": 2015,
+                              "type": "Span"
+                            },
+                            "type": "Literal",
+                            "value": "DESIGN PREVIEW / Machine: sample data / Bucking: sample data / No live connection"
+                          },
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        }
+                      ],
+                      "span": {
+                        "column": 23,
+                        "end": 2098,
+                        "line": 54,
+                        "start": 2015,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    }
+                  ],
+                  "span": {
+                    "column": 3,
+                    "end": 2099,
+                    "line": 54,
+                    "start": 1995,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": null,
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                },
+                {
+                  "arguments": [],
+                  "kind": "frame",
+                  "layout": [
+                    {
+                      "name": "scale",
+                      "span": {
+                        "column": 41,
+                        "end": 2148,
+                        "line": 55,
+                        "start": 2141,
+                        "type": "Span"
+                      },
+                      "spelling": "scale=1",
+                      "type": "LayoutRule",
+                      "value": {
+                        "kind": "number",
+                        "span": {
+                          "column": 47,
+                          "end": 2148,
+                          "line": 55,
+                          "start": 2147,
+                          "type": "Span"
+                        },
+                        "type": "Literal",
+                        "value": 1
+                      }
+                    },
+                    {
+                      "name": "items",
+                      "span": {
+                        "column": 50,
+                        "end": 2163,
+                        "line": 55,
+                        "start": 2150,
+                        "type": "Span"
+                      },
+                      "spelling": "items=stretch",
+                      "type": "LayoutRule",
+                      "value": {
+                        "kind": "enum",
+                        "span": {
+                          "column": 56,
+                          "end": 2163,
+                          "line": 55,
+                          "start": 2156,
+                          "type": "Span"
+                        },
+                        "type": "Literal",
+                        "value": "stretch"
+                      }
+                    },
+                    {
+                      "name": "gap",
+                      "span": {
+                        "column": 65,
+                        "end": 2174,
+                        "line": 55,
+                        "start": 2165,
+                        "type": "Span"
+                      },
+                      "spelling": "gap=0.012",
+                      "type": "LayoutRule",
+                      "value": {
+                        "kind": "number",
+                        "span": {
+                          "column": 69,
+                          "end": 2174,
+                          "line": 55,
+                          "start": 2169,
+                          "type": "Span"
+                        },
+                        "type": "Literal",
+                        "value": 0.012
+                      }
+                    }
+                  ],
+                  "name": null,
+                  "role": "body",
+                  "rows": [
+                    {
+                      "items": [
+                        {
+                          "arguments": [],
+                          "kind": "use",
+                          "layout": [],
+                          "name": null,
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 9,
+                            "end": 2121,
+                            "line": 55,
+                            "start": 2109,
+                            "type": "Span"
+                          },
+                          "target": "measurements",
+                          "text": null,
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        }
+                      ],
+                      "span": {
+                        "column": 9,
+                        "end": 2121,
+                        "line": 55,
+                        "start": 2109,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    },
+                    {
+                      "items": [
+                        {
+                          "arguments": [],
+                          "kind": "use",
+                          "layout": [],
+                          "name": null,
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 23,
+                            "end": 2129,
+                            "line": 55,
+                            "start": 2123,
+                            "type": "Span"
+                          },
+                          "target": "advice",
+                          "text": null,
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        }
+                      ],
+                      "span": {
+                        "column": 23,
+                        "end": 2129,
+                        "line": 55,
+                        "start": 2123,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    },
+                    {
+                      "items": [
+                        {
+                          "arguments": [],
+                          "kind": "use",
+                          "layout": [],
+                          "name": null,
+                          "role": null,
+                          "rows": [],
+                          "span": {
+                            "column": 31,
+                            "end": 2138,
+                            "line": 55,
+                            "start": 2131,
+                            "type": "Span"
+                          },
+                          "target": "profile",
+                          "text": null,
+                          "type": "Node",
+                          "variant": null,
+                          "widget": null
+                        }
+                      ],
+                      "span": {
+                        "column": 31,
+                        "end": 2138,
+                        "line": 55,
+                        "start": 2131,
+                        "type": "Span"
+                      },
+                      "type": "Row"
+                    }
+                  ],
+                  "span": {
+                    "column": 3,
+                    "end": 2175,
+                    "line": 55,
+                    "start": 2103,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": null,
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                },
+                {
+                  "arguments": [],
+                  "kind": "markdown",
+                  "layout": [],
+                  "name": null,
+                  "role": "footer",
+                  "rows": [],
+                  "span": {
+                    "column": 3,
+                    "end": 2271,
+                    "line": 56,
+                    "start": 2179,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": {
+                    "kind": "string",
+                    "span": {
+                      "column": 10,
+                      "end": 2271,
+                      "line": 56,
+                      "start": 2186,
+                      "type": "Span"
+                    },
+                    "type": "Literal",
+                    "value": "Static SDUI prototype / controls unbound / no machine commands or production writes"
+                  },
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                }
+              ],
+              "span": {
+                "column": 3,
+                "end": 2271,
+                "line": 54,
+                "start": 1995,
+                "type": "Span"
+              },
+              "type": "Row"
+            }
+          ],
+          "span": {
+            "column": 8,
+            "end": 2320,
+            "line": 53,
+            "start": 1991,
+            "type": "Span"
+          },
+          "target": null,
+          "text": null,
+          "type": "Node",
+          "variant": null,
+          "widget": null
+        },
+        "span": {
+          "column": 1,
+          "end": 2321,
+          "line": 53,
+          "start": 1984,
+          "type": "Span"
+        },
+        "type": "Definition"
+      }
+    ],
+    "profile": "sdui/0.2",
+    "references": [],
+    "span": {
+      "column": 1,
+      "end": 2322,
+      "line": 1,
+      "start": 0,
+      "type": "Span"
+    },
+    "type": "Document"
+  },
+  "validation": "local-profile"
+}

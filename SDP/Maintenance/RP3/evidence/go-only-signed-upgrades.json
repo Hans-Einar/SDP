@@ -1,0 +1,50 @@
+[
+  {
+    "predecessor": "0.2.0",
+    "status": "completed",
+    "actions": 4,
+    "ownerProsePreserved": true,
+    "repeatNoChange": true,
+    "receipt": {
+      "capabilities": [
+        "sdp-install-command/1",
+        "sdp.process.five-phase.v1",
+        "sdp.project-management.v1",
+        "sdp.planning.v1"
+      ],
+      "descriptorDigest": "c8e5caef7304bed17b7a865fd1f355316151b7cce03c712c45190c02ea92bef7",
+      "installedAt": "2026-09-27T23:32:06Z",
+      "managementProfile": "sdp-project-management/0.2",
+      "operationId": "install-fc87205907d814647ffdacd2",
+      "processProfile": "sdp-five-phase/0.1",
+      "provenance": "signed",
+      "release": "1.0.0",
+      "schemaVersion": "3.0",
+      "sourceCommit": "705df7e3d550629f13b8e9b0044fee8f6b1b3bed"
+    }
+  },
+  {
+    "predecessor": "0.2.1",
+    "status": "completed",
+    "actions": 4,
+    "ownerProsePreserved": true,
+    "repeatNoChange": true,
+    "receipt": {
+      "capabilities": [
+        "sdp-install-command/1",
+        "sdp.process.five-phase.v1",
+        "sdp.project-management.v1",
+        "sdp.planning.v1"
+      ],
+      "descriptorDigest": "c8e5caef7304bed17b7a865fd1f355316151b7cce03c712c45190c02ea92bef7",
+      "installedAt": "2026-09-27T23:32:09Z",
+      "managementProfile": "sdp-project-management/0.2",
+      "operationId": "install-3a26343944e5516f6e878e5f",
+      "processProfile": "sdp-five-phase/0.1",
+      "provenance": "signed",
+      "release": "1.0.0",
+      "schemaVersion": "3.0",
+      "sourceCommit": "705df7e3d550629f13b8e9b0044fee8f6b1b3bed"
+    }
+  }
+]

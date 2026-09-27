@@ -1,0 +1,262 @@
+{
+  "schema": "sdptool/0.1",
+  "operation": "tree",
+  "project": "sdp-vnow",
+  "nodes": [
+    {
+      "id": "sdui/mvp1-operator/frame/advice",
+      "kind": "frame",
+      "label": "advice",
+      "state": "validated",
+      "target": {
+        "entry": "advice",
+        "operation": "sdui-preview",
+        "project": "sdp-vnow",
+        "model": "mvp1-operator",
+        "path": "/home/warloc/git/SDP-vNow/experiments/mvp1_sdl/SDL/MVP1/SDUI/BuckingUI/MainPage.sdui",
+        "revision": "309f6256fdcce5fecfb844954a9062e2951a1bb1236fd0c5adaa91e87f22af45"
+      }
+    },
+    {
+      "id": "sdui/mvp1-operator/frame/measurements",
+      "kind": "frame",
+      "label": "measurements",
+      "state": "validated",
+      "target": {
+        "entry": "measurements",
+        "operation": "sdui-preview",
+        "project": "sdp-vnow",
+        "model": "mvp1-operator",
+        "path": "/home/warloc/git/SDP-vNow/experiments/mvp1_sdl/SDL/MVP1/SDUI/BuckingUI/MainPage.sdui",
+        "revision": "309f6256fdcce5fecfb844954a9062e2951a1bb1236fd0c5adaa91e87f22af45"
+      }
+    },
+    {
+      "id": "sdui/mvp1-operator/frame/page",
+      "kind": "frame",
+      "label": "page",
+      "state": "validated",
+      "target": {
+        "entry": "page",
+        "operation": "sdui-preview",
+        "project": "sdp-vnow",
+        "model": "mvp1-operator",
+        "path": "/home/warloc/git/SDP-vNow/experiments/mvp1_sdl/SDL/MVP1/SDUI/BuckingUI/MainPage.sdui",
+        "revision": "309f6256fdcce5fecfb844954a9062e2951a1bb1236fd0c5adaa91e87f22af45"
+      }
+    },
+    {
+      "id": "sdui/mvp1-operator/frame/profile",
+      "kind": "frame",
+      "label": "profile",
+      "state": "validated",
+      "target": {
+        "entry": "profile",
+        "operation": "sdui-preview",
+        "project": "sdp-vnow",
+        "model": "mvp1-operator",
+        "path": "/home/warloc/git/SDP-vNow/experiments/mvp1_sdl/SDL/MVP1/SDUI/BuckingUI/MainPage.sdui",
+        "revision": "309f6256fdcce5fecfb844954a9062e2951a1bb1236fd0c5adaa91e87f22af45"
+      }
+    },
+    {
+      "id": "sdui/mvp1-operator",
+      "kind": "source",
+      "label": "mvp1-operator",
+      "state": "validated",
+      "children": [
+        "sdui/mvp1-operator/frame/advice",
+        "sdui/mvp1-operator/frame/measurements",
+        "sdui/mvp1-operator/frame/page",
+        "sdui/mvp1-operator/frame/profile"
+      ],
+      "target": {
+        "operation": "sdui-preview",
+        "project": "sdp-vnow",
+        "model": "mvp1-operator",
+        "path": "/home/warloc/git/SDP-vNow/experiments/mvp1_sdl/SDL/MVP1/SDUI/BuckingUI/MainPage.sdui",
+        "revision": "309f6256fdcce5fecfb844954a9062e2951a1bb1236fd0c5adaa91e87f22af45"
+      }
+    },
+    {
+      "id": "sdui/mvp1-apt/frame/context",
+      "kind": "frame",
+      "label": "context",
+      "state": "validated",
+      "target": {
+        "entry": "context",
+        "operation": "sdui-preview",
+        "project": "sdp-vnow",
+        "model": "mvp1-apt",
+        "path": "/home/warloc/git/SDP-vNow/experiments/mvp1_sdl/SDL/MVP1/SDUI/BuckingUI/AptEditor.sdui",
+        "revision": "15898057cbe8a148f1aeda1f2c72bc6af5c773ed0c6125dc05f957ed23708cbd"
+      }
+    },
+    {
+      "id": "sdui/mvp1-apt/frame/lifecycle",
+      "kind": "frame",
+      "label": "lifecycle",
+      "state": "validated",
+      "target": {
+        "entry": "lifecycle",
+        "operation": "sdui-preview",
+        "project": "sdp-vnow",
+        "model": "mvp1-apt",
+        "path": "/home/warloc/git/SDP-vNow/experiments/mvp1_sdl/SDL/MVP1/SDUI/BuckingUI/AptEditor.sdui",
+        "revision": "15898057cbe8a148f1aeda1f2c72bc6af5c773ed0c6125dc05f957ed23708cbd"
+      }
+    },
+    {
+      "id": "sdui/mvp1-apt/frame/matrix",
+      "kind": "frame",
+      "label": "matrix",
+      "state": "validated",
+      "target": {
+        "entry": "matrix",
+        "operation": "sdui-preview",
+        "project": "sdp-vnow",
+        "model": "mvp1-apt",
+        "path": "/home/warloc/git/SDP-vNow/experiments/mvp1_sdl/SDL/MVP1/SDUI/BuckingUI/AptEditor.sdui",
+        "revision": "15898057cbe8a148f1aeda1f2c72bc6af5c773ed0c6125dc05f957ed23708cbd"
+      }
+    },
+    {
+      "id": "sdui/mvp1-apt/frame/page",
+      "kind": "frame",
+      "label": "page",
+      "state": "validated",
+      "target": {
+        "entry": "page",
+        "operation": "sdui-preview",
+        "project": "sdp-vnow",
+        "model": "mvp1-apt",
+        "path": "/home/warloc/git/SDP-vNow/experiments/mvp1_sdl/SDL/MVP1/SDUI/BuckingUI/AptEditor.sdui",
+        "revision": "15898057cbe8a148f1aeda1f2c72bc6af5c773ed0c6125dc05f957ed23708cbd"
+      }
+    },
+    {
+      "id": "sdui/mvp1-apt",
+      "kind": "source",
+      "label": "mvp1-apt",
+      "state": "validated",
+      "children": [
+        "sdui/mvp1-apt/frame/context",
+        "sdui/mvp1-apt/frame/lifecycle",
+        "sdui/mvp1-apt/frame/matrix",
+        "sdui/mvp1-apt/frame/page"
+      ],
+      "target": {
+        "operation": "sdui-preview",
+        "project": "sdp-vnow",
+        "model": "mvp1-apt",
+        "path": "/home/warloc/git/SDP-vNow/experiments/mvp1_sdl/SDL/MVP1/SDUI/BuckingUI/AptEditor.sdui",
+        "revision": "15898057cbe8a148f1aeda1f2c72bc6af5c773ed0c6125dc05f957ed23708cbd"
+      }
+    },
+    {
+      "id": "sdui/mvp1-simulator/frame/commands",
+      "kind": "frame",
+      "label": "commands",
+      "state": "validated",
+      "target": {
+        "entry": "commands",
+        "operation": "sdui-preview",
+        "project": "sdp-vnow",
+        "model": "mvp1-simulator",
+        "path": "/home/warloc/git/SDP-vNow/experiments/mvp1_sdl/SDL/MVP1/SDUI/SimulatorUI/MainPage.sdui",
+        "revision": "33c923733cf8ce7d4f67d900e246b8497fe6e2a863619e3378fc5a28a0ac5546"
+      }
+    },
+    {
+      "id": "sdui/mvp1-simulator/frame/control",
+      "kind": "frame",
+      "label": "control",
+      "state": "validated",
+      "target": {
+        "entry": "control",
+        "operation": "sdui-preview",
+        "project": "sdp-vnow",
+        "model": "mvp1-simulator",
+        "path": "/home/warloc/git/SDP-vNow/experiments/mvp1_sdl/SDL/MVP1/SDUI/SimulatorUI/MainPage.sdui",
+        "revision": "33c923733cf8ce7d4f67d900e246b8497fe6e2a863619e3378fc5a28a0ac5546"
+      }
+    },
+    {
+      "id": "sdui/mvp1-simulator/frame/page",
+      "kind": "frame",
+      "label": "page",
+      "state": "validated",
+      "target": {
+        "entry": "page",
+        "operation": "sdui-preview",
+        "project": "sdp-vnow",
+        "model": "mvp1-simulator",
+        "path": "/home/warloc/git/SDP-vNow/experiments/mvp1_sdl/SDL/MVP1/SDUI/SimulatorUI/MainPage.sdui",
+        "revision": "33c923733cf8ce7d4f67d900e246b8497fe6e2a863619e3378fc5a28a0ac5546"
+      }
+    },
+    {
+      "id": "sdui/mvp1-simulator/frame/session",
+      "kind": "frame",
+      "label": "session",
+      "state": "validated",
+      "target": {
+        "entry": "session",
+        "operation": "sdui-preview",
+        "project": "sdp-vnow",
+        "model": "mvp1-simulator",
+        "path": "/home/warloc/git/SDP-vNow/experiments/mvp1_sdl/SDL/MVP1/SDUI/SimulatorUI/MainPage.sdui",
+        "revision": "33c923733cf8ce7d4f67d900e246b8497fe6e2a863619e3378fc5a28a0ac5546"
+      }
+    },
+    {
+      "id": "sdui/mvp1-simulator/frame/truth",
+      "kind": "frame",
+      "label": "truth",
+      "state": "validated",
+      "target": {
+        "entry": "truth",
+        "operation": "sdui-preview",
+        "project": "sdp-vnow",
+        "model": "mvp1-simulator",
+        "path": "/home/warloc/git/SDP-vNow/experiments/mvp1_sdl/SDL/MVP1/SDUI/SimulatorUI/MainPage.sdui",
+        "revision": "33c923733cf8ce7d4f67d900e246b8497fe6e2a863619e3378fc5a28a0ac5546"
+      }
+    },
+    {
+      "id": "sdui/mvp1-simulator/frame/wire",
+      "kind": "frame",
+      "label": "wire",
+      "state": "validated",
+      "target": {
+        "entry": "wire",
+        "operation": "sdui-preview",
+        "project": "sdp-vnow",
+        "model": "mvp1-simulator",
+        "path": "/home/warloc/git/SDP-vNow/experiments/mvp1_sdl/SDL/MVP1/SDUI/SimulatorUI/MainPage.sdui",
+        "revision": "33c923733cf8ce7d4f67d900e246b8497fe6e2a863619e3378fc5a28a0ac5546"
+      }
+    },
+    {
+      "id": "sdui/mvp1-simulator",
+      "kind": "source",
+      "label": "mvp1-simulator",
+      "state": "validated",
+      "children": [
+        "sdui/mvp1-simulator/frame/commands",
+        "sdui/mvp1-simulator/frame/control",
+        "sdui/mvp1-simulator/frame/page",
+        "sdui/mvp1-simulator/frame/session",
+        "sdui/mvp1-simulator/frame/truth",
+        "sdui/mvp1-simulator/frame/wire"
+      ],
+      "target": {
+        "operation": "sdui-preview",
+        "project": "sdp-vnow",
+        "model": "mvp1-simulator",
+        "path": "/home/warloc/git/SDP-vNow/experiments/mvp1_sdl/SDL/MVP1/SDUI/SimulatorUI/MainPage.sdui",
+        "revision": "33c923733cf8ce7d4f67d900e246b8497fe6e2a863619e3378fc5a28a0ac5546"
+      }
+    }
+  ]
+}

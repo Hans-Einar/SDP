@@ -50,7 +50,16 @@ func TestProfileRetainsExplicitReleasePredecessor(t *testing.T) {
 	if err := json.Unmarshal(b, &descriptor); err != nil {
 		t.Fatal(err)
 	}
-	if len(descriptor.UpgradesFrom) != 1 || descriptor.UpgradesFrom[0] != "edc0c72101a437c6e12c40a081ef59ae41cf0db32bcaedb73824ec48495aaee5" {
-		t.Fatalf("published predecessor missing: %v", descriptor.UpgradesFrom)
+	want := []string{
+		"edc0c72101a437c6e12c40a081ef59ae41cf0db32bcaedb73824ec48495aaee5", // published 0.2.0
+		"66590e8e967ede6b36d8fa45cdbee1cd80f69505cca698b0e4a9bd960842735a", // published 0.2.1
+	}
+	if len(descriptor.UpgradesFrom) != len(want) {
+		t.Fatalf("unexpected predecessor inventory: %v", descriptor.UpgradesFrom)
+	}
+	for i, digest := range want {
+		if descriptor.UpgradesFrom[i] != digest {
+			t.Fatalf("published predecessor missing: %v", descriptor.UpgradesFrom)
+		}
 	}
 }

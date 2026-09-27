@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "contractId": "sdp-install",
-  "toolkitVersion": "0.2.1",
+  "toolkitVersion": "1.0.0",
   "orderingPolicy": "migration-first-manifest-order-v1",
   "sources": {
     "repositoryRoot": "..",
@@ -29,10 +29,10 @@
       "format": "yaml",
       "facts": {
         "schemaVersion": "1.0",
-        "toolkitVersion": "0.2.1",
+        "toolkitVersion": "1.0.0",
         "frameworkVersion": "1.0.0",
         "agentsContractVersion": "2.1.0",
-        "installerVersion": "0.2.1",
+        "installerVersion": "1.0.0",
         "skills": {
           "sdp": "1.1.0",
           "sdp-architect": "2.0.0",
@@ -461,7 +461,7 @@
     {
       "id": "project-agents",
       "kind": "copied",
-      "source": "Template/project-root/AGENTS-project.md.template",
+      "source": "Template/legacy/install-v1/project-root/AGENTS-project.md.template",
       "destination": "AGENTS-project.md",
       "ownership": "project-owned",
       "selectionPolicy": "default",
@@ -478,7 +478,7 @@
     {
       "id": "project-agent-reminders",
       "kind": "copied",
-      "source": "Template/sdp-root/AGENT-REMINDERS.md.template",
+      "source": "Template/legacy/install-v1/sdp-root/AGENT-REMINDERS.md.template",
       "destination": "SDP/AGENT-REMINDERS.md",
       "ownership": "project-owned",
       "selectionPolicy": "default",
@@ -495,7 +495,7 @@
     {
       "id": "project-manifest",
       "kind": "copied",
-      "source": "Template/sdp-root/SDP-project.manifest.yaml",
+      "source": "Template/legacy/install-v1/sdp-root/SDP-project.manifest.yaml",
       "destination": "SDP/SDP-project.manifest.yaml",
       "ownership": "project-owned",
       "selectionPolicy": "default",
@@ -512,7 +512,7 @@
     {
       "id": "project-release-notes",
       "kind": "copied",
-      "source": "Template/sdp-root/RELEASE-NOTES.md",
+      "source": "Template/legacy/install-v1/sdp-root/RELEASE-NOTES.md",
       "destination": "SDP/RELEASE-NOTES.md",
       "ownership": "project-owned",
       "selectionPolicy": "default",
@@ -529,7 +529,7 @@
     {
       "id": "project-traceability-readme",
       "kind": "copied",
-      "source": "Template/sdp-root/Traceability/README.md",
+      "source": "Template/legacy/install-v1/sdp-root/Traceability/README.md",
       "destination": "SDP/Traceability/README.md",
       "ownership": "project-owned",
       "selectionPolicy": "default",
@@ -546,7 +546,7 @@
     {
       "id": "project-current-index",
       "kind": "copied",
-      "source": "Template/sdp-root/Traceability/CurrentIndex.yaml",
+      "source": "Template/legacy/install-v1/sdp-root/Traceability/CurrentIndex.yaml",
       "destination": "SDP/Traceability/CurrentIndex.yaml",
       "ownership": "project-owned",
       "selectionPolicy": "default",
@@ -563,7 +563,7 @@
     {
       "id": "project-relations",
       "kind": "copied",
-      "source": "Template/sdp-root/Traceability/Relations.yaml",
+      "source": "Template/legacy/install-v1/sdp-root/Traceability/Relations.yaml",
       "destination": "SDP/Traceability/Relations.yaml",
       "ownership": "project-owned",
       "selectionPolicy": "default",
@@ -597,7 +597,7 @@
     {
       "id": "project-mandate",
       "kind": "copied",
-      "source": "Template/sdp-root/01--Mandate/mandate.md",
+      "source": "Template/legacy/install-v1/sdp-root/01--Mandate/mandate.md",
       "destination": "SDP/01--Mandate/mandate.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -614,7 +614,7 @@
     {
       "id": "project-study",
       "kind": "copied",
-      "source": "Template/sdp-root/02--Study/study.md",
+      "source": "Template/legacy/install-v1/sdp-root/02--Study/study.md",
       "destination": "SDP/02--Study/study.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -631,7 +631,7 @@
     {
       "id": "project-requirements",
       "kind": "copied",
-      "source": "Template/sdp-root/03--Requirements/requirements.md",
+      "source": "Template/legacy/install-v1/sdp-root/03--Requirements/requirements.md",
       "destination": "SDP/03--Requirements/requirements.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -648,7 +648,7 @@
     {
       "id": "project-architecture",
       "kind": "copied",
-      "source": "Template/sdp-root/04--Architecture/architecture.md",
+      "source": "Template/legacy/install-v1/sdp-root/04--Architecture/architecture.md",
       "destination": "SDP/04--Architecture/architecture.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -665,7 +665,7 @@
     {
       "id": "project-design-analysis",
       "kind": "copied",
-      "source": "Template/sdp-root/05--DesignAnalysis/design-analysis.md",
+      "source": "Template/legacy/install-v1/sdp-root/05--DesignAnalysis/design-analysis.md",
       "destination": "SDP/05--DesignAnalysis/design-analysis.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -682,7 +682,7 @@
     {
       "id": "project-design",
       "kind": "copied",
-      "source": "Template/sdp-root/06--Design/design.md",
+      "source": "Template/legacy/install-v1/sdp-root/06--Design/design.md",
       "destination": "SDP/06--Design/design.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -699,7 +699,7 @@
     {
       "id": "project-implementation-plan",
       "kind": "copied",
-      "source": "Template/sdp-root/07--Implementation/implementation-plan.md",
+      "source": "Template/legacy/install-v1/sdp-root/07--Implementation/implementation-plan.md",
       "destination": "SDP/07--Implementation/implementation-plan.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -716,7 +716,7 @@
     {
       "id": "project-sprints-readme",
       "kind": "copied",
-      "source": "Template/sdp-root/Sprints/README.md",
+      "source": "Template/legacy/install-v1/sdp-root/Sprints/README.md",
       "destination": "SDP/Sprints/README.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -733,7 +733,7 @@
     {
       "id": "project-refactors-readme",
       "kind": "copied",
-      "source": "Template/sdp-root/Refactors/README.md",
+      "source": "Template/legacy/install-v1/sdp-root/Refactors/README.md",
       "destination": "SDP/Refactors/README.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -750,7 +750,7 @@
     {
       "id": "project-fixes-readme",
       "kind": "copied",
-      "source": "Template/sdp-root/Fixes/README.md",
+      "source": "Template/legacy/install-v1/sdp-root/Fixes/README.md",
       "destination": "SDP/Fixes/README.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -767,7 +767,7 @@
     {
       "id": "project-releases-readme",
       "kind": "copied",
-      "source": "Template/sdp-root/Releases/README.md",
+      "source": "Template/legacy/install-v1/sdp-root/Releases/README.md",
       "destination": "SDP/Releases/README.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -784,7 +784,7 @@
     {
       "id": "project-code-review-readme",
       "kind": "copied",
-      "source": "Template/sdp-root/CodeReview/README.md",
+      "source": "Template/legacy/install-v1/sdp-root/CodeReview/README.md",
       "destination": "SDP/CodeReview/README.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -801,7 +801,7 @@
     {
       "id": "project-verification-readme",
       "kind": "copied",
-      "source": "Template/sdp-root/Verification/README.md",
+      "source": "Template/legacy/install-v1/sdp-root/Verification/README.md",
       "destination": "SDP/Verification/README.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -818,7 +818,7 @@
     {
       "id": "project-instructions-readme",
       "kind": "copied",
-      "source": "Template/sdp-root/Instructions/README.md",
+      "source": "Template/legacy/install-v1/sdp-root/Instructions/README.md",
       "destination": "SDP/Instructions/README.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -835,7 +835,7 @@
     {
       "id": "project-document-guide",
       "kind": "copied",
-      "source": "Template/sdp-root/SDP-DOCUMENT-GUIDE.md",
+      "source": "Template/legacy/install-v1/sdp-root/SDP-DOCUMENT-GUIDE.md",
       "destination": "SDP/SDP-DOCUMENT-GUIDE.md",
       "ownership": "project-owned",
       "selectionPolicy": "initialize-only",
@@ -938,8 +938,13 @@
       "reason": "development-only"
     },
     {
-      "path": "Template/profiles",
+      "path": "Template/sdp-root",
       "kind": "tree",
+      "reason": "development-only"
+    },
+    {
+      "path": "Template/legacy/install-v1/README.md",
+      "kind": "file",
       "reason": "development-only"
     }
   ]

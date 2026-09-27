@@ -1,0 +1,32 @@
+{
+  "candidate": "56919a19edcbd6e672c8a26661d87d16828be4f8",
+  "canApply": true,
+  "conflicts": [],
+  "actions": [
+    {
+      "action": "write",
+      "path": "AGENTS.md",
+      "before": "f72e8ba84547e7a8b68e35d79cce8295a4dbe901d916fae9f7949ad094fcacb8",
+      "after": "cde80e8ae3c339e3d4b80bb7331c450abe51313d03327079c4fb7eaa11d3b675"
+    },
+    {
+      "action": "write",
+      "path": "SDP/Framework/README.md",
+      "before": "e7877519884f3129a27d6565042d3320a977984c19b43548dbedcddb34c0a8d5",
+      "after": "1988417286a58f42edd451dcb6a1e832af9065d7d63d4b9730c9cc8af20ba3dc"
+    },
+    {
+      "action": "write",
+      "path": "SDP/SDL/AGENTS.md",
+      "before": null,
+      "after": "1a8f6a92e759d7ab452d1a856bc4214208201935917945f9287764842d21e215"
+    },
+    {
+      "action": "write",
+      "path": "SDP/SDL/README.md",
+      "before": null,
+      "after": "935cd908e11119c9398be9c1e9b2058ec39fc745a81500a534a2563b92b29f6e"
+    }
+  ],
+  "applied": false
+}

@@ -425,7 +425,6 @@ class InstallationContractTests(unittest.TestCase):
             ROOT,
             self.toolkit_manifest,
             contract_data=contract,
-            check_installer_integration=False,
         )
 
     def valid_plan(self) -> dict[str, object]:

@@ -1,0 +1,44 @@
+{
+  "profile": "sdui/0.2",
+  "kind": "static-design-review",
+  "viewport": {
+    "width": 1600,
+    "height": 900
+  },
+  "toolSha256": "c74069f405fad8d49f29652546f85ba16be5d97a872d4ba24625cba79004e88f",
+  "screens": [
+    {
+      "id": "operator",
+      "title": "Operator dashboard",
+      "source": "SDL/MVP1/SDUI/BuckingUI/MainPage.sdui",
+      "entry": "page",
+      "sourceSha256": "309f6256fdcce5fecfb844954a9062e2951a1bb1236fd0c5adaa91e87f22af45"
+    },
+    {
+      "id": "apt",
+      "title": "APT draft editor",
+      "source": "SDL/MVP1/SDUI/BuckingUI/AptEditor.sdui",
+      "entry": "page",
+      "sourceSha256": "15898057cbe8a148f1aeda1f2c72bc6af5c773ed0c6125dc05f957ed23708cbd"
+    },
+    {
+      "id": "simulator",
+      "title": "Simulator console",
+      "source": "SDL/MVP1/SDUI/SimulatorUI/MainPage.sdui",
+      "entry": "page",
+      "sourceSha256": "33c923733cf8ce7d4f67d900e246b8497fe6e2a863619e3378fc5a28a0ac5546"
+    }
+  ],
+  "outputs": {
+    "apt.ast.json": "8f52ddf0ecf7b3fbea59aa5a9d60a4b7ef190a6024758c78e00197d961ac2471",
+    "apt.svg": "4b8f8eb9800db4fcb286651e008e5bdeb3d70a1ada4b4d953044fd6fc6fe2181",
+    "apt.txt": "517976dd8c6398f261fae7920587bf1dde1bcaf59ef60f0c249162e3349a95ea",
+    "index.md": "c3d8993620fbc23aa9a3c46232ee30b27b9e6f8b691e0f6d4da81e9bd58fdd21",
+    "operator.ast.json": "c0d6b3468340e96193b44d8d79576c540e29ddf36e98f875add63004860225db",
+    "operator.svg": "e4cf3e533868c9b5862892dfe1c90ada48fed14929fb82da28d34a7abf04bfe2",
+    "operator.txt": "3f66adde27bf427181d91de2c9e37ffe58a060689caeb26b6a587555b9e36185",
+    "simulator.ast.json": "318a2e069c4f93c4d7514822e3ac25d83acb1756924ea15a3b8a973923103c0d",
+    "simulator.svg": "a35eddaf458934c1240d1204ef7e5890df2e606e833080b9d57bba45474756ba",
+    "simulator.txt": "d8be37e5d65d9efce641c1d93fd7b9b9027f8cb31430f631296f88ffe0ade537"
+  }
+}

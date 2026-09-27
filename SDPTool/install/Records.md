@@ -44,7 +44,8 @@ project allows a clean target to be re-inspected before creating SDP itself; loc
 ownership ends automatically if the process exits. Journals/backups remain under
 SDP/.sdp-operations. The Linux implementation is exercised here; other native
 platform support must not be inferred from compilation. A legacy pending journal
-blocks Go apply and requires its matching legacy engine.
+blocks Go apply and requires a separately assessed recovery or migration. The
+current distribution does not ship or invoke the retired engine.
 
 Operations use root-confined Go filesystem handles for writes and atomic replacement
 from operation-owned temporary files. Backups are verified before each mutation.
@@ -55,8 +56,8 @@ release-owned. No rollback or filesystem power-loss guarantee is advertised.
 ## Distribution selection and development fixtures
 
 `--release PATH-OR-HTTPS-URL` selects an exact descriptor; `SDP_RELEASE` supplies
-an override for both entry points. The compiled default selects the immutable
-SDP v0.2.0 descriptor URL. Detached signatures are JSON with keyId (SHA-256 of public key) and
+an override for both entry points. The compiled default selects an immutable release descriptor URL; see
+bootstrap.DefaultRelease for the candidate's exact version. Detached signatures are JSON with keyId (SHA-256 of public key) and
 base64 signature. Production keys must ship in the reviewed bootstrap module;
 the selected publisher public key ships with v0.2.0. `--test-key FILE` / `SDP_TEST_KEY` explicitly enables
 an Ed25519 public test key (base64 file), producing **test-signed** provenance,
@@ -71,9 +72,8 @@ are recovered by receipt digest from the verified external cache; development
 operators can also supply `--previous-artifact` with explicit unreleased consent.
 
 Build the engine-neutral development fixture with `go run ./tools/profile`, using
-an explicit source commit, output path and packaged binary. profiles/five-phase.json
-selects reuse of **files only** from the retained Toolkit inventory. It does not
-reuse the PowerShell engine, prerequisites, legacy facts or implicit migrations.
-For authorized publication, --release 0.2.0 --sign-key PRIVATE_FILE requires
+an explicit source commit, output path and packaged binary. profiles/five-phase.json selects the native profiles/payload.json inventory.
+Go builds descriptors directly; no legacy artifact generator or installer is used.
+For authorized publication, --release 1.0.0 --sign-key PRIVATE_FILE requires
 a clean exact Git HEAD, a binary, and the compiled-in publisher key. It writes a
 detached signature but does not publish. Keep the private key outside repositories.

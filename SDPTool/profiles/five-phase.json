@@ -1,7 +1,6 @@
 {
   "schemaVersion": "sdp-go-profile/1",
-  "inventorySource": "Toolkit/profiles/five-phase.json",
-  "reuse": "files-only",
+  "inventorySource": "SDPTool/profiles/payload.json",
   "protocol": "sdp-install-command/1",
   "processProfile": "sdp-five-phase/0.1",
   "managementProfile": "sdp-project-management/0.2",
@@ -12,6 +11,7 @@
     "sdp.planning.v1"
   ],
   "upgradesFrom": [
-    "edc0c72101a437c6e12c40a081ef59ae41cf0db32bcaedb73824ec48495aaee5"
+    "edc0c72101a437c6e12c40a081ef59ae41cf0db32bcaedb73824ec48495aaee5",
+    "66590e8e967ede6b36d8fa45cdbee1cd80f69505cca698b0e4a9bd960842735a"
   ]
 }
