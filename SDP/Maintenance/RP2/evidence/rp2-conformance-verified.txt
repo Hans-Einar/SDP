@@ -1,0 +1,20 @@
+PASS empty-default
+PASS empty-initialize
+PASS repeat-default
+PASS repeat-initialize
+PASS legacy-agents-migrate
+PASS legacy-agents-conflict-new-hash-target
+PASS legacy-agents-conflict-already-preserved
+PASS legacy-agents-conflict-different-content
+PASS legacy-agents-conflict-invalid-object
+PASS upgrade-managed-content
+PASS same-version-force-managed-content
+PASS project-owned-content-preserved
+PASS archive-source-no-git
+PASS unsupported-project-schema
+PASS unsupported-installed-schema
+PASS downgrade-blocked
+PASS malformed-manifest
+PASS same-version-skill-contract-unforced
+PASS same-version-skill-contract-force
+install-v1 PowerShell reference conformance passed (19 scenarios; pwsh)

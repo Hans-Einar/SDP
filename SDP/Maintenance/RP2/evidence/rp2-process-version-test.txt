@@ -1,0 +1,6 @@
+test_legacy_versioned_upgrade_and_downgrade (Toolkit.tests.test_process_install.ProcessInstall.test_legacy_versioned_upgrade_and_downgrade) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 130.844s
+
+OK

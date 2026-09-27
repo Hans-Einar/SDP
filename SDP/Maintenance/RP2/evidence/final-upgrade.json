@@ -1,0 +1,10 @@
+{
+  "result": "passed",
+  "baseline": "signed published 0.2.0",
+  "target": "signed candidate 0.2.1",
+  "preservedOwnerDocument": true,
+  "preservedHistoryPrefix": true,
+  "repeatActions": 0,
+  "actionCount": 0,
+  "directory": "/tmp/sdp-rp2-upgrade-j_1t61_5"
+}

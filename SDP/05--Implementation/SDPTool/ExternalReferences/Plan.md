@@ -64,5 +64,7 @@ responsibility, capability or model graph changed. No independent review claimed
 
 KB-SDP-034 is complete for implementation. Related KB-SDP-014 (reusable board
 contract) and KB-SDP-032 (viewpoint feedback) remain separate backlog scope.
-This fix is not yet merged or released. Installed gh-sdp/SDP 0.2.0 remains unchanged;
-a subsequent release must distribute the new engine to installed consumers.
+Subsequently merged and published as SDP 0.2.1, selected by gh-sdp 0.1.1.
+[RP2](../../../Maintenance/RP2/Plan.md) records exact signed publication and the
+installed client's successful read-only XFMD navigation. ER1's original test
+candidate and implementation evidence remain unchanged.

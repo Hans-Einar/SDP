@@ -323,15 +323,15 @@ migrations: {}
 releases:
   REL-0.2.1:
     version: "0.2.1"
-    state: prerelease
+    state: released
     releaseNotes: RELEASE-NOTES.md
     manifest: SDP.manifest.yaml
     releaseRecord: Releases/REL-0.2.1.yaml
     verification: [SDPTOOL-VER-ER1-M1]
     reviews: []
-    releaseCommit: 7ff5a4e661dc6f6f16fbc00da0a7934eeef386ae
-    gitTag: null
-    githubRelease: null
+    releaseCommit: 4bacfce05f92f0dab9680456e297214727b54bc6
+    gitTag: v0.2.1
+    githubRelease: https://github.com/Hans-Einar/SDP/releases/tag/v0.2.1
   REL-0.2.0:
     version: "0.2.0"
     state: released

@@ -1,0 +1,24 @@
+{
+  "candidate": "60dbbe85622a2604616aae653c73e202a654bef2",
+  "sha256": {
+    "SDPTool/kanban.go": "9d44ba4a345a36ab407c96e17b8fd077927efcb61d816838c2809eece66e3941",
+    "SDPTool/tree.go": "1caeebc990902be35a1e418287148e7f20262678501f25ecd1d1fc22b6b49242",
+    "SDPTool/bootstrap/bootstrap.go": "08443c65c814bf9645e676c8fcc43eb26e3b0a8c2ce2b5000750d2e8a8c9102e",
+    "SDPTool/tools/profile/main.go": "54b5f2b2dc73a30e5ba80c3cea7eb8263ab2bf8c502e93699e9ca9054c5cb01f",
+    "SDPTool/profiles/five-phase.json": "6db4b36c47b72c3de928af23aba1b9d601408ead3140c2bd4763d7d2505a07c3",
+    "Toolkit/SDP-install.manifest.json": "878dc28135a698f0e675b078b7757c3edf98651e5f118117352e8af6cb243203"
+  },
+  "review": {
+    "reviewer": "rp2_review",
+    "result": "approved",
+    "blocker": 0,
+    "high": 0,
+    "medium": 0,
+    "conditionsSatisfied": [
+      "ordinary19scenario replay",
+      "corrected integration test",
+      "signed install/repeat and XFMD tree",
+      "signed0.2.0 to0.2.1 preservation and receipt"
+    ]
+  }
+}
