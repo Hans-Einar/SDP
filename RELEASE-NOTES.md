@@ -4,7 +4,14 @@
 
 Release-Date: unreleased
 
+## [0.2.0] - 2026-09-27
+
 ### Added
+
+- [PLAN-SDP-0003] Go SDPTool install/upgrade preview, root-bound apply, journaled recovery and receipt 3.0. Shared signed distribution bootstrap supports the thin gh-sdp client.
+- [MAINT-SDP-0007] First signed Linux amd64 binary/descriptor distribution, compiled publisher trust and exact release selection. Other native platforms are not advertised.
+- [MAINT-SDP-0007] Shared five-phase SDP layout, typed plans, project-management history and canonical agent skills are delivered through the Go profile.
+
 
 - [REL-0.2.0] First-class Toolkit, project, skill, release and development identity manifests.
 - [REL-0.2.0] Release preparation, versioning, auditing and verification skills.
@@ -41,3 +48,5 @@ Release-Date: unreleased
 - [REL-0.2.0] Existing consuming projects gain missing manifests and release templates without replacing populated project-owned files.
 - [REL-0.2.0] Managed-file changes are backed up before replacement; unsupported manifest schemas stop safely.
 - [SPS-001] Project-owned content remains missing-only and is preserved even under force; extracted archives may truthfully generate installed facts with `sourceCommit: null`.
+
+- [MAINT-SDP-0007] Manual installations require a fresh explicit adoption manifest. Project files are preserved; a legacy pending journal must be recovered by its original installer. Production signatures require the published client/engine; test keys never establish production provenance.

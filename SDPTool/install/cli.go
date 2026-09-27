@@ -62,7 +62,7 @@ func Run(ctx context.Context, root, op string, args []string, out, errs io.Write
 	if e == nil && o.Artifact == "" && *release == "" {
 		*release = os.Getenv("SDP_RELEASE")
 		if *release == "" {
-			e = fmt.Errorf("select --release or explicit --artifact --allow-unreleased; no published default release yet")
+			*release = bootstrap.DefaultRelease
 		}
 	}
 	if e != nil {
