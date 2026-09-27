@@ -1,0 +1,58 @@
+{
+  "identity": {
+    "installationProtocol": "sdp-install-command/1",
+    "installedFactSchemas": [
+      "1.0",
+      "2.0",
+      "3.0"
+    ],
+    "operation": "version",
+    "revision": "7ff5a4e661dc6f6f16fbc00da0a7934eeef386ae",
+    "schema": "sdptool/0.1",
+    "version": "0.2.1"
+  },
+  "descriptorSHA256": "0e7de7eb376a21bffdc91b5cb8780aea4d4d6465b3515c6e7dfa26e32744f994",
+  "install": {
+    "operation": "install",
+    "projectRoot": "/tmp/sdp-rp2-check-q2d94kbk/project",
+    "result": {
+      "status": "completed",
+      "operationId": "install-6fb6d49f9fbba1fc0916c896",
+      "maintenanceId": "MAINT-PROJECT-0001",
+      "report": "SDP/Maintenance/MAINT-PROJECT-0001.md"
+    },
+    "schemaVersion": "sdp-install-command/1",
+    "status": "ok"
+  },
+  "repeatActions": 0,
+  "xfmdKanBan": {
+    "id": "kanban",
+    "kind": "tab",
+    "label": "KanBan",
+    "state": "validated",
+    "children": [
+      "kanban/backlog",
+      "kanban/active",
+      "kanban/onHold",
+      "kanban/completed",
+      "kanban/canceled",
+      "kanban/superseded",
+      "kanban/irrelevant"
+    ]
+  },
+  "xfmdRef": {
+    "id": "kanban/card/KB-XFMD-012",
+    "kind": "card",
+    "label": "#012--Ref--SDP--014--KanBan-format-sync.md",
+    "state": "available",
+    "externalReference": "KB-SDP-014",
+    "target": {
+      "operation": "open",
+      "project": "xfmd",
+      "path": "/home/warloc/git/xfmd-sdl-navigation/SDP/KanBan/backlog/#012--Ref--SDP--014--KanBan-format-sync.md",
+      "revision": "220de73a2b178f2817a28407042804844c7321c981a6eee76cb73759d438902b"
+    },
+    "cardState": "backlog"
+  },
+  "directory": "/tmp/sdp-rp2-check-q2d94kbk"
+}

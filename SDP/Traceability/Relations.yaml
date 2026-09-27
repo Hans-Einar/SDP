@@ -329,7 +329,7 @@ releases:
     releaseRecord: Releases/REL-0.2.1.yaml
     verification: [SDPTOOL-VER-ER1-M1]
     reviews: []
-    releaseCommit: null
+    releaseCommit: 7ff5a4e661dc6f6f16fbc00da0a7934eeef386ae
     gitTag: null
     githubRelease: null
   REL-0.2.0:

@@ -38,4 +38,17 @@ plan supersedes RP1's default pin for new packages, not its historical evidence.
 
 ## Evidence
 
-Pending. No tag or publication is claimed by preparation.
+Preparation candidate 7ff5a4e passes full Go race tests (including bootstrap),
+vet, 106 Toolkit tests (19 environment-dependent skips), schema/management and
+preserved-history/document checks. The clean signed package passes install/apply,
+zero-change repeat and actual read-only XFMD tree checks; see
+[evidence](evidence/candidate-package.json). Production signing uses the existing
+publisher key. PR42 passed all four CI jobs and merged as ae08e81.
+
+The legacy expected-authority refresh was independently reviewed by rp2_review:
+15 plans contain only 638 scalar version substitutions, with unchanged actions,
+ordering, safety and failure outcomes. Same-version fixture and prerelease tests
+retain their meaning. No blocker/high/medium findings; approval is conditional on
+the ordinary non-regenerating 19-scenario replay passing before publication.
+The replay and release-preparation CI remain pending; no tag/publication claimed.
+Final merged-source signing and downloaded-package checks are still required.
