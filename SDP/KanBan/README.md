@@ -47,6 +47,7 @@
 | KB-SDP-033 | Study | completed | [Plan XFMD SDP adoption through gh-sdp and a practical SDL design pilot](completed/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md) |
 | KB-SDP-034 | Bug | completed | [External KanBan references](completed/%23034--Bug--External-KanBan-references.md) |
 | KB-SDP-035 | Proposal | backlog | [Community feedback after an understood internal pilot](backlog/%23035--Proposal--Community-feedback-after-internal-pilot.md) |
+| KB-SDP-036 | Proposal | backlog | [Request classification and mandatory routine selection](backlog/%23036--Proposal--Request-routines-and-process-control.md) |
 
 ## Purpose and authority
 
