@@ -62,7 +62,7 @@ design beyond SDL payload shapes. Runtime verification is recorded separately in
 
 [PLAN-SDP-0002](../04--Design/SDPTool/Installation/Plan.md) owns this design delivery;
 [IPD evidence](../04--Design/SDPTool/Installation/Evidence.md) records parser checks.
-[KB-SDP-033](../KanBan/active/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md)
+[KB-SDP-033](../KanBan/completed/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md)
 retains the subsequent implementation/adoption workflow.
 
 Review the [generated installation viewpoints](../04--Design/SDPTool/Installation/review/index.md)

@@ -126,4 +126,4 @@ and valid .design models to another agent. This does not implement System in SDL
 
 file:///home/warloc/git/xfmd-sdl-navigation/SDP/README.md
 
-file:///home/warloc/git/xfmd-sdl-navigation/SDP/Agents/KanBan/backlog/%23017--Proposal--Adopt-SDP-and-model-XFMD.md
+file:///home/warloc/git/xfmd-sdl-navigation/SDP/KanBan/backlog/%23017--Proposal--Adopt-SDP-and-model-XFMD.md
