@@ -62,6 +62,7 @@ func build(repo, output, commit, release, binary string) error {
 		ProcessProfile    string   `json:"processProfile"`
 		ManagementProfile string   `json:"managementProfile"`
 		Capabilities      []string `json:"capabilities"`
+		UpgradesFrom      []string `json:"upgradesFrom"`
 	}
 	b, e := install.Read(filepath.Join(repo, "SDPTool/profiles/five-phase.json"), install.MetadataLimit)
 	if e != nil {
@@ -91,6 +92,7 @@ func build(repo, output, commit, release, binary string) error {
 		return e
 	}
 	d := install.Descriptor{SchemaVersion: install.ReleaseSchema, Release: release, SourceCommit: commit, Protocol: config.Protocol, ProcessProfile: config.ProcessProfile, ManagementProfile: config.ManagementProfile, Capabilities: config.Capabilities, Files: []install.File{}, Retired: []string{}, UpgradesFrom: []string{}, Binaries: []install.Asset{}}
+	d.UpgradesFrom = append(d.UpgradesFrom, config.UpgradesFrom...)
 	for _, f := range source.Files {
 		if e = install.Relative(f.Source); e != nil {
 			return e

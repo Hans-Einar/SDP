@@ -184,7 +184,10 @@ class ProcessInstall(unittest.TestCase):
         self.assertEqual(blocked['actions'][0]['reason'],'unsupported-installed-schema')
         facts=self.root/'SDP/Framework/installed-toolkit.manifest.yaml'
         data=facts.read_text()
-        facts.write_text(data.replace('toolkitVersion: "0.2.0"','toolkitVersion: "99.0.0"'))
+        current_version = json.loads(ARTIFACT.read_text())['facts']['toolkitVersion']
+        current_fact = f'toolkitVersion: "{current_version}"'
+        self.assertIn(current_fact, data)
+        facts.write_text(data.replace(current_fact, 'toolkitVersion: "99.0.0"'))
         self.assertIn('downgrade-blocked',self.plan()['conflicts'])
         facts.write_text(data.replace('schemaVersion: "2.0"','schemaVersion: "99.0"'))
         self.call('-PlanJson',ok=False)

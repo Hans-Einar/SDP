@@ -52,3 +52,14 @@ retain their meaning. No blocker/high/medium findings; approval is conditional o
 the ordinary non-regenerating 19-scenario replay passing before publication.
 The replay and release-preparation CI remain pending; no tag/publication claimed.
 Final merged-source signing and downloaded-package checks are still required.
+
+### Release predecessor correction
+
+The first signed 0.2.0 → 0.2.1 rehearsal correctly rejected the candidate because
+the descriptor builder always emitted an empty upgradesFrom list. RP2 therefore
+adds the exact published 0.2.0 descriptor digest to the authored Go profile and
+passes that list through the existing descriptor validator/signature. No implicit
+SemVer upgrade permission or installer-policy relaxation is introduced. The signed
+upgrade rehearsal must pass before release. An existing process integration test
+also now derives its current version from artifact facts before exercising the
+99.0.0 downgrade rejection; its previous 0.2.0 literal stopped mutating the fixture.
