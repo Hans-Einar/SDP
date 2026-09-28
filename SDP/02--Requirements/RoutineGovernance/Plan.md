@@ -41,8 +41,8 @@ Preserve unrelated sourceinput/node files and all historical ledger bytes.
 
 | Phase | Milestone | Acceptance | State |
 | --- | --- | --- | --- |
-| A — evidence | RGS1-A-M1 | Pin current local/remote project samples, reconcile historical studies, inspect relevant tool boundaries and official MCP/host documentation; distinguish findings from owner reports | In progress |
-| B — proposed contract | RGS1-B-M1 | Cover intent-to-assignment and execution/release/learning; specify candidate categories, procedure gaps, procedure distribution, state/evidence ownership and observation/enforcement limits | Planned |
+| A — evidence | RGS1-A-M1 | Pin current local/remote project samples, reconcile historical studies, inspect relevant tool boundaries and official MCP/host documentation; distinguish findings from owner reports | Complete |
+| B — proposed contract | RGS1-B-M1 | Cover intent-to-assignment and execution/release/learning; specify candidate categories, procedure gaps, procedure distribution, state/evidence ownership and observation/enforcement limits | In progress |
 | C — challenge and handoff | RGS1-C-M1 | Walk concrete cross-project scenarios and negative cases; deliver testable requirements, alternatives, staged roadmap and explicit decisions/limits; validate links and management history | Planned |
 
 ## Verification and closeout
@@ -61,3 +61,9 @@ Study.md is the main reading entry. Evidence.md identifies inspected sources and
 limits. Routine-Catalog.md describes candidate coverage. Scenarios.md records
 worked cases and future acceptance tests. Recommendations remain proposed until
 the owner selects a bounded implementation or design plan.
+
+## Delivery log
+
+- RGS1-A-M1: Evidence.md and Source-pins.json record 33 sampled source files,
+  current PR observations and official interface boundaries. No product tests,
+  independent review or host-hook enforcement are claimed.
