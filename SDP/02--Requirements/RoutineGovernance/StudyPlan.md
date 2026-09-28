@@ -56,7 +56,7 @@ empty report files or label preliminary observations completed studies.
 | Study area | Status at plan creation | Available result / evidence | Remaining result destination |
 | --- | --- | --- | --- |
 | Request and routine governance | RGS1 delivered; RGS2-A-M2 role/routing reconciliation delivered | [Main study](Study.md), [routine catalog](Routine-Catalog.md), [scenario challenge](Scenarios.md), [evidence](Evidence.md), [source pins](Source-pins.json) | [RGS2-A-M2 findings](Study.md#10-rgs2-a-m2--operational-responsibility-and-procedure-reconciliation); same authoritative reports maintained |
-| SDPTool MCP connection | Preliminary responsibility and interface findings within RGS1; dedicated study planned | [Existing study](Study.md), especially sections 3–6; [KB038 boundary](../../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) | MCP-Study.md, to be linked here after delivery |
+| SDPTool MCP connection | RGS2-B-M1 report delivered; combined review pending | [Existing study](Study.md), especially sections 3–6; [KB038 boundary](../../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) | [MCP study](MCP-Study.md) and [source pins](Evidence/RGS2-MCP-source-pins.json) |
 | Codex app-server/client | Bounded official-documentation inquiry completed; dedicated study and compatibility assessment planned | [Evidence E11](Evidence.md#e11--codex-panel-follow-up), [client proposal](../../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) | AppServer-Study.md, to be linked here after delivery |
 | Joint recommendation and next delivery | Planned after the three areas are reconciled | Existing staged recommendation in [RGS1](Study.md), section 8 | Synthesis.md, to be linked here after delivery |
 
@@ -133,7 +133,7 @@ do not execute or silently activate that successor.
 | --- | --- | --- | --- |
 | A — governance | RGS2-A-M1 | Resolve existing RGS1 report links and preserve completed predecessor evidence | Available predecessor result; indexed during plan creation |
 | A — governance | RGS2-A-M2 | Reconcile role ownership, routing/gap lifecycle and remaining decisions; update the existing reports with dated findings | Delivered |
-| B — MCP | RGS2-B-M1 | Deliver MCP-Study.md with capability inventory, candidate interface/transport alternatives, authority and failure boundaries | In progress |
+| B — MCP | RGS2-B-M1 | Deliver MCP-Study.md with capability inventory, candidate interface/transport alternatives, authority and failure boundaries | Delivered; combined review pending |
 | C — app-server | RGS2-C-M1 | Deliver AppServer-Study.md with versioned evidence, lifecycle/telemetry/auth limits and client-option comparison | In progress |
 | D — synthesis | RGS2-D-M1 | Deliver Synthesis.md with reconciled boundaries, unresolved decisions, one bounded pilot and linked acceptance cases | Planned |
 
@@ -196,3 +196,6 @@ manufactured by creating their entries above.
 - RGS2-A-M2: role/authority matrix, handoff contents, scope-delta routing, gap
   lifecycle and four-path pilot subset delivered in Study.md; S17–S19 add
   analytical role/escalation cases. No engine behavior or policy adoption claimed.
+- RGS2-B-M1: dedicated MCP report and 19 local / 10 external source pins
+  delivered. Proposed interfaces, protocol intersection gap and durable recovery
+  boundaries are explicit. No MCP integration or product tests were executed.

@@ -212,3 +212,5 @@ implement another process engine. Neither card is activated by registration.
 2026-09-28T15:20:29.600210+00:00: EVT-KB-SDP-000218 — linked the shared StudyPlan and result index; remaining research planned, CardState unchanged.
 
 2026-09-28T21:31:58.382764+00:00: EVT-KB-SDP-000221 — owner starts RGS2 studies; backlog -> active/in-progress, implementation remains unselected.
+
+2026-09-28T21:40:04.917083+00:00: EVT-KB-SDP-000224 — RGS2-B-M1 MCP study delivered with [report and evidence](../../02--Requirements/RoutineGovernance/MCP-Study.md); synthesis/review continues, CardState remains in-progress.
