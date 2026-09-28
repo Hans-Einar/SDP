@@ -170,3 +170,22 @@ backlog because none of the proposed engine/observer capability has been deliver
 No mandatory owner review of the study is invented as a reason to keep it active.
 
 2026-09-28T00:43:32.046442+00:00: EVT-KB-SDP-000211 — active/in-progress -> backlog; RGS1 study complete, capability implementation unselected.
+
+## Owner follow-up: supervision, task Masters and Codex presentation
+
+The owner clarifies that their normal dialogue is with a Steering/Project Manager
+agent responsible for the broader project and procedure coverage. A fresh Master
+coordinates each bounded task and delegates implementation/review as permitted.
+Record project supervision, task coordination and implementing Worker as distinct
+responsibilities, with durable handoff and escalation rather than relying on the
+parent chat's memory. See the dated clarification in the
+[RGS1 study](../../02--Requirements/RoutineGovernance/Study.md).
+
+The owner also asks about a Codex TUI right-side panel for skills, MCP use and the
+work tree. [Evidence E11](../../02--Requirements/RoutineGovernance/Evidence.md#e11--codex-panel-follow-up)
+records available command/interface building blocks and uncertainty about a
+combined built-in panel. Retain separate-pane, TUI-extension and custom app-server
+client alternatives. Skill availability is not skill compliance. This inquiry
+records an observer option; it does not select a Codex fork or implementation.
+
+2026-09-28T15:00:58.823677+00:00: EVT-KB-SDP-000213 — recorded owner clarification and proposed design implications; CardState remains backlog.

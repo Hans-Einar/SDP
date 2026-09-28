@@ -210,3 +210,36 @@ MCP/local-function tools, but is not a complete interception boundary: some path
 are excluded and write_stdin does not repeat it for later input. This makes a
 host adapter worth testing; it does not prove every request or mutation can be
 guarded in this session. No hook setup, bypass test or live monitor was performed.
+
+
+## E11 — Codex panel follow-up
+
+Owner follow-up and documentation check: 2026-09-28, after the original RGS1
+closeout. Local `codex --version` now reports 0.158.0. This observation does not
+replace the earlier 0.157.1 observation or imply that UI behavior was exercised.
+No Codex source checkout was found among the inspected top-level local candidates;
+no source patch, fork, build, installation or host configuration was performed.
+
+The official [Open Source page](https://learn.chatgpt.com/docs/open-source) identifies
+Codex CLI and app-server as open-source components. A custom TUI is therefore a
+feasible direction to investigate, not an implemented SDP extension.
+
+[Developer commands](https://learn.chatgpt.com/docs/developer-commands) documents
+`/statusline`, `/status`, `/mcp` and agent-thread switching through `/agent` or
+`/subagents`. These provide footer/session, available-tool and thread inspection.
+The [configuration reference](https://learn.chatgpt.com/docs/config-file/config-reference)
+documents TUI footer settings. This bounded search found no documented permanent
+right-side panel combining active skills, MCP calls and an SDP work tree; it is
+not an exhaustive claim about every branch or experimental build.
+
+[Subagent documentation](https://learn.chatgpt.com/docs/agent-configuration/subagents)
+distinguishes CLI thread inspection from an expandable background-agent panel in
+the IDE. Do not confuse that IDE panel with the requested TUI feature.
+
+[App-server documentation](https://learn.chatgpt.com/docs/app-server) describes
+item lifecycle events, MCP and collaboration call items, plan updates and skill
+listing/explicit skill inputs. Those are candidate telemetry/client interfaces.
+They do not establish a reliable generic “currently active skills” indicator,
+SDP semantic task state or passive observation of an arbitrary existing TUI.
+The interpretation and UI recommendation in Study.md are design inferences;
+actual integration requires a version-specific prototype and negative cases.

@@ -154,3 +154,16 @@ cover authority reconciliation and discovery of missing/incompatible procedures,
 rather than papering over these cases with another generic instruction. These
 findings are captured here; this study has not repaired those sources or authorized
 changes in external projects.
+
+## Owner follow-up: responsibility for routing
+
+The owner clarifies the intended agent hierarchy: the project-facing Steering/
+Project Manager agent has primary responsibility for request classification,
+procedure coverage and project scope; each bounded task starts with a fresh Master
+that coordinates Worker/review roles and enforces the assignment boundary.
+Workers still report missing context, procedure gaps and scope conflicts. The
+[RGS1 study](../../02--Requirements/RoutineGovernance/Study.md) records the detailed
+responsibility split and handoff implications. This does not adopt a new skill,
+automatic spawning rule or grant publication/owner-decision authority to agents.
+
+2026-09-28T15:00:58.823677+00:00: EVT-KB-SDP-000214 — recorded owner clarification and proposed design implications; CardState remains backlog.

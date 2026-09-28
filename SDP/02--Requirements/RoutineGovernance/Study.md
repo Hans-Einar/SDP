@@ -119,6 +119,54 @@ facts supported by the current SDL parser. The unsupported MVP1 experiment must
 be labeled partial input, not presented as a complete executable system model.
 A source tag links code and design; it does not prove their behavioral agreement.
 
+### Owner clarification: project supervision and bounded task Masters
+
+Owner clarification, 2026-09-28, after the original RGS1 delivery: the owner
+normally talks to a Steering/Project Manager agent. That role carries additional
+responsibility for project context, request/routine selection, priorities and
+scope before preparing work for execution. Start a fresh task Master for each
+bounded assignment. The task Master coordinates Worker, Reviewer and, where
+needed, Verifier subagents, as permitted by the host and selected assignment.
+
+```text
+Owner <-> Steering / Project Manager
+             -> Task Master: bounded assignment A
+                  -> Worker
+                  -> Independent Reviewer
+                  -> Verifier, when needed
+             -> Task Master: bounded assignment B
+```
+
+This is the intended responsibility model for the next design, not evidence of
+an implemented supervisor or automatic spawning. Master means coordinator for
+one assignment; Worker means an implementing child role. Neither is the permanent
+project owner. Steering and Project Manager responsibilities may be held by one
+agent initially without pretending that an independent group review occurred.
+Owner decisions remain distinct from recommendations made by an agent in that role.
+
+The project-facing agent must recover the wider system and work context, detect
+missing procedures, resolve or escalate scope choices, prepare the assignment,
+and assess returned evidence against the intended outcome. The task Master owns
+assignment-level routine checks, decomposition, integration and honest completion.
+Workers also report missing context or scope conflicts; supervision does not waive
+their responsibility to stop an unsupported dependent action.
+
+A fresh task context reduces accumulation of unrelated work. It still needs the
+relevant surrounding design, constraints, decisions and unknown impact frontier
+in its assignment/blueprint. Do not create an isolated task with no system context.
+Findings that change project intent or shared boundaries return to supervision;
+routine technical choices inside the assigned boundary stay with the task Master.
+A returned summary alone is insufficient: supervision inspects linked candidate,
+diff, review and verification evidence before recording disposition.
+
+The monitor should show both the semantic work tree and the associated agent
+threads. They are different identities: a new session may resume the same task,
+and one task may require several attempts. Test supervisor-session replacement,
+fresh-Master handoff and escalation from a Worker without silently expanding scope.
+The existing R08/R09/R14 requirements and S13/S15 cases should include this model
+when converted into executable acceptance tests. No new skill or host configuration
+is installed by recording this clarification.
+
 ## 3. Request routing and the missing-routine path
 
 The agent interprets intent; a deterministic service checks declared conditions.
@@ -321,6 +369,30 @@ make a new GUI, Mermaid enhancement or XFMD application change a pilot prerequis
 Closing the monitor changes no work state. Reconnecting resumes after an event
 cursor or reloads a snapshot. A checklist is a projection of state/evidence, never
 an animation driven solely by agent prose. Do not display invented percentages.
+
+### Codex-integrated panel as an alternative presentation
+
+The owner also proposes a persistent right-side panel in Codex TUI, showing skills,
+MCP activity and position in the assignment tree. A bounded documentation check
+is recorded in [Evidence E11](Evidence.md#e11--codex-panel-follow-up). Existing
+status/subagent commands cover parts of this need; a combined permanent panel
+was not established by that check. The open-source CLI makes a custom UI change
+possible, but no source-level patch feasibility audit or implementation occurred.
+
+Keep three presentation options open: a separate Kitty pane, a small upstreamable
+Codex TUI extension, or a custom client using Codex app-server. Recommend proving
+the SDP state/event contract in a separate pane first, then evaluating an integrated
+panel against actual use and maintenance cost. All should read the same SDPTool
+state; avoid putting project process rules into a Codex fork.
+
+Display skill availability, explicit loading/invocation and task-scoped declared
+use separately. Unknown activation must remain unknown; reading a file does not
+prove compliance. Likewise distinguish a configured MCP server from a running
+call and its result. Combine observed Codex activity with SDP-owned assignment,
+procedure, role, milestone and gate state using explicit thread/run links. Do not
+infer project completion from a tool call ending or a Codex conversational plan
+item changing to completed. Testing must establish how telemetry is obtained;
+this proposal does not assume passive attachment to an arbitrary running TUI.
 
 ## 6. Distribution and project specialization
 
