@@ -50,6 +50,8 @@
 | KB-SDP-036 | Proposal | backlog | [Request classification and mandatory routine selection](backlog/%23036--Proposal--Request-routines-and-process-control.md) |
 | KB-SDP-037 | Proposal | backlog | [Observable routine execution and agent work-package progress](backlog/%23037--Proposal--Observable-routine-state-machine.md) |
 | KB-SDP-038 | Proposal | backlog | [SDP development client using Codex app-server](backlog/%23038--Proposal--Codex-app-server-development-client.md) |
+| KB-SDP-039 | Change | active | [Ecosystem and system models](active/%23039--Change--Ecosystem-and-system-models.md) |
+| KB-SDP-040 | Proposal | backlog | [KanBan terminal navigator](backlog/%23040--Proposal--KanBan-TUI.md) |
 
 ## Purpose and authority
 

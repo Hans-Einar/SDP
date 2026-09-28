@@ -75,7 +75,11 @@ to future work. Use kanban status/state for listing; there is no separate gate f
 ## Systems and shared process ownership
 
 Owner decision of 2026-09-25: SDL, SDUI and SDPTool are three separate software
-systems documented in the shared root SDP area. Do not create a full parallel
+systems documented in the shared root SDP area. The owner refinement of
+2026-09-29 treats SDL and SDUI as ecosystems of separately modeled tools, alongside
+ProjectGovernance. See SDP/03--Architecture/Ecosystems/Decisions.md for current
+boundaries and existing binary versus proposed extraction distinctions.
+Do not create a full parallel
 process tree per language/system. The shared board is SDP/KanBan; earlier SDL/SDUI board histories are frozen
 under SDP/ProjectManagement/History with a byte-preserving import map. Group
 architecture/design sources by system and actual container responsibility;
@@ -110,7 +114,7 @@ create a second collection or imply that discovery proves actual loading.
 ## SDL source convention
 
 For new system model work, read SDP/SDL/README.md and SDP/SDL/AGENTS.md.
-Use SDP/SDL/<System>/ as the source home; numbered folders hold process documents
+Use SDP/SDL/<Ecosystem>/<System>/ as the source home (owner refinement 2026-09-29); numbered folders hold process documents
 and derived views. Existing models remain in their current authoritative locations
 until an explicit migration. The MVP1 experiment is a reference layout, not proof
 that the released parser supports its experimental profile.
