@@ -4,7 +4,7 @@
 | --- | --- |
 | id | PLAN-SDP-0007 |
 | project | SDP |
-| state | planned |
+| state | active |
 | PlanType | RequirementPlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
@@ -16,8 +16,8 @@
 This is the shared **StudyPlan** and result index for request/routine governance,
 an MCP connection to SDPTool, and a Codex app-server-based development client.
 The owner requests one plan linked from the relevant cards, with separate study
-results discoverable here. The current request selects creation of this plan;
-remaining research and implementation are not started by recording it.
+results discoverable here. The owner subsequently authorized execution of these studies on 2026-09-28.
+Research is active; production implementation remains outside this assignment.
 
 StudyPlan describes the purpose of this document. Its machine-readable PlanType
 is RequirementPlan under the existing planning contract: the studies establish
@@ -33,9 +33,9 @@ and synthesis. It is the current study entry point for all three cards.
 
 | Card | Study responsibility |
 | --- | --- |
-| [KB-SDP-036](../../KanBan/backlog/%23036--Proposal--Request-routines-and-process-control.md) | Request classification, routine selection, missing-procedure handling and entry/skill responsibilities |
-| [KB-SDP-037](../../KanBan/backlog/%23037--Proposal--Observable-routine-state-machine.md) | Durable routine state, evidence/gates, SDPTool MCP operations and read-only observation |
-| [KB-SDP-038](../../KanBan/backlog/%23038--Proposal--Codex-app-server-development-client.md) | Codex client, supervision/task handoff, app-server integration and presentation alternatives |
+| [KB-SDP-036](../../KanBan/active/%23036--Proposal--Request-routines-and-process-control.md) | Request classification, routine selection, missing-procedure handling and entry/skill responsibilities |
+| [KB-SDP-037](../../KanBan/active/%23037--Proposal--Observable-routine-state-machine.md) | Durable routine state, evidence/gates, SDPTool MCP operations and read-only observation |
+| [KB-SDP-038](../../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) | Codex client, supervision/task handoff, app-server integration and presentation alternatives |
 
 Steering/Project Manager retains the project-facing dialogue and broader context.
 A fresh task Master coordinates each bounded assignment and permitted Worker,
@@ -56,8 +56,8 @@ empty report files or label preliminary observations completed studies.
 | Study area | Status at plan creation | Available result / evidence | Remaining result destination |
 | --- | --- | --- | --- |
 | Request and routine governance | RGS1 delivered; owner-role clarification recorded; focused reconciliation remains | [Main study](Study.md), [routine catalog](Routine-Catalog.md), [scenario challenge](Scenarios.md), [evidence](Evidence.md), [source pins](Source-pins.json) | Maintain these authoritative reports for phase A findings; no duplicate governance study |
-| SDPTool MCP connection | Preliminary responsibility and interface findings within RGS1; dedicated study planned | [Existing study](Study.md), especially sections 3–6; [KB038 boundary](../../KanBan/backlog/%23038--Proposal--Codex-app-server-development-client.md) | MCP-Study.md, to be linked here after delivery |
-| Codex app-server/client | Bounded official-documentation inquiry completed; dedicated study and compatibility assessment planned | [Evidence E11](Evidence.md#e11--codex-panel-follow-up), [client proposal](../../KanBan/backlog/%23038--Proposal--Codex-app-server-development-client.md) | AppServer-Study.md, to be linked here after delivery |
+| SDPTool MCP connection | Preliminary responsibility and interface findings within RGS1; dedicated study planned | [Existing study](Study.md), especially sections 3–6; [KB038 boundary](../../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) | MCP-Study.md, to be linked here after delivery |
+| Codex app-server/client | Bounded official-documentation inquiry completed; dedicated study and compatibility assessment planned | [Evidence E11](Evidence.md#e11--codex-panel-follow-up), [client proposal](../../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) | AppServer-Study.md, to be linked here after delivery |
 | Joint recommendation and next delivery | Planned after the three areas are reconciled | Existing staged recommendation in [RGS1](Study.md), section 8 | Synthesis.md, to be linked here after delivery |
 
 RGS1 contains analytical scenarios, not executed routine-engine tests. Its role
@@ -132,7 +132,7 @@ do not execute or silently activate that successor.
 | Phase | Milestone | Required outcome | Initial state |
 | --- | --- | --- | --- |
 | A — governance | RGS2-A-M1 | Resolve existing RGS1 report links and preserve completed predecessor evidence | Available predecessor result; indexed during plan creation |
-| A — governance | RGS2-A-M2 | Reconcile role ownership, routing/gap lifecycle and remaining decisions; update the existing reports with dated findings | Planned |
+| A — governance | RGS2-A-M2 | Reconcile role ownership, routing/gap lifecycle and remaining decisions; update the existing reports with dated findings | In progress |
 | B — MCP | RGS2-B-M1 | Deliver MCP-Study.md with capability inventory, candidate interface/transport alternatives, authority and failure boundaries | Planned |
 | C — app-server | RGS2-C-M1 | Deliver AppServer-Study.md with versioned evidence, lifecycle/telemetry/auth limits and client-option comparison | Planned |
 | D — synthesis | RGS2-D-M1 | Deliver Synthesis.md with reconciled boundaries, unresolved decisions, one bounded pilot and linked acceptance cases | Planned |
@@ -176,9 +176,9 @@ main. CommitPolicy milestone: commit each meaningful study delivery together wit
 its report index, card references and management history. Preserve unrelated work.
 Existing phase-push/PR authorization applies; merging and release remain separate.
 
-This plan is registered as planned. KB036–038 remain backlog and link here via
-PlanId. At actual authorized execution, record plan start and activate the covered
-cards with honest work state. Retain PLAN-SDP-0006 as the completed predecessor;
+Execution is active under the owner instruction of 2026-09-28. KB036–038 are
+active/in-progress and link here via PlanId. Record milestone progress and the
+actual closeout disposition together with their management history. Retain PLAN-SDP-0006 as the completed predecessor;
 do not reopen it to track this work. Study completion does not automatically
 implement routines, adopt a process schema or activate BP2/client development.
 
@@ -188,3 +188,8 @@ RGS2-P0: the owner requested this shared StudyPlan on 2026-09-28. Plan creation
 links existing results and assigns destinations for later studies. The new
 research milestones remain planned; no study result or runtime evidence is
 manufactured by creating their entries above.
+
+## Execution log
+
+- RGS2 start: owner authorizes the studies; KB036–038 move to active/in-progress.
+  Research reports and bounded read-only probes are in scope, not product changes.

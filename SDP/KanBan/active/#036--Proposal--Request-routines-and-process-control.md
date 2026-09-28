@@ -5,7 +5,7 @@
 | id | KB-SDP-036 |
 | project | SDP |
 | type | Proposal |
-| CardState | backlog |
+| CardState | in-progress |
 | created | 2026-09-27T23:51:37.811184+00:00 |
 | source | Owner conversation 2026-09-28: mandatory routines for every request and scope change |
 | next_review | At selection/start of the shared RGS2 StudyPlan; review its result register at study milestones |
@@ -18,7 +18,7 @@
 [PLAN-SDP-0007 — shared StudyPlan](../../02--Requirements/RoutineGovernance/StudyPlan.md)
 now coordinates governance, SDPTool MCP and Codex app-server research. It links
 the existing RGS1 results and owns the result register for subsequent studies.
-The plan is planned; this card remains backlog. Read it before selecting further
+The owner has authorized the studies; this card is active/in-progress. Read it before selecting further
 study work or a successor DesignPlan. Earlier RGS1 work remains delivered under
 PLAN-SDP-0006; this link does not reopen that completed plan.
 
@@ -179,3 +179,5 @@ automatic spawning rule or grant publication/owner-decision authority to agents.
 2026-09-28T15:00:58.823677+00:00: EVT-KB-SDP-000214 — recorded owner clarification and proposed design implications; CardState remains backlog.
 
 2026-09-28T15:20:29.600210+00:00: EVT-KB-SDP-000217 — linked the shared StudyPlan and result index; remaining research planned, CardState unchanged.
+
+2026-09-28T21:31:58.382764+00:00: EVT-KB-SDP-000220 — owner starts RGS2 studies; backlog -> active/in-progress, implementation remains unselected.
