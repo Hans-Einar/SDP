@@ -28,6 +28,10 @@ from project assertions and owner reports. [Routine catalog](Routine-Catalog.md)
 is the candidate coverage map; [scenarios](Scenarios.md) challenge the proposal
 and define future acceptance cases.
 
+Further coordinated study work and the result register are now collected in
+[the shared RGS2 StudyPlan](StudyPlan.md). The original RGS1 delivery remains
+recorded under completed PLAN-SDP-0006.
+
 ## 1. What the portfolio teaches us
 
 The owner reports repeated implementation drift and difficulty recovering project

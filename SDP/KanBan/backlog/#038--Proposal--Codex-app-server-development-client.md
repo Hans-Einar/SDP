@@ -8,9 +8,19 @@
 | CardState | backlog |
 | created | 2026-09-28T15:10:13.034937+00:00 |
 | source | Owner conversation 2026-09-28: register app-server-based system development and assess SDPTool MCP |
-| next_review | With KB-SDP-036/037 when selecting the bounded routine and client DesignPlan |
+| next_review | At selection/start of the shared RGS2 StudyPlan; review its result register at study milestones |
 | tags | codex, app-server, client, MCP, supervision, blueprints, observability |
 | Systems | SDPTOOL |
+| PlanId | PLAN-SDP-0007 |
+
+## Current study entry point
+
+[PLAN-SDP-0007 — shared StudyPlan](../../02--Requirements/RoutineGovernance/StudyPlan.md)
+now coordinates governance, SDPTool MCP and Codex app-server research. It links
+the existing RGS1 results and owns the result register for subsequent studies.
+The plan is planned; this card remains backlog. Read it before selecting further
+study work or a successor DesignPlan. Earlier RGS1 work remains delivered under
+PLAN-SDP-0006; this link does not reopen that completed plan.
 
 ## Owner intent
 
@@ -117,3 +127,5 @@ successful MCP connection alone does not complete the capability.
 | Time (RFC3339) | Actor / event | Work, finding or decision | Evidence / remaining work |
 | --- | --- | --- | --- |
 | 2026-09-28T15:10:13.034937+00:00 | codex; EVT-KB-SDP-000215 | Registered the requested app-server client investigation and complementary SDPTool MCP boundary | Backlog only; plan, prototype and implementation unselected |
+
+2026-09-28T15:20:29.600210+00:00: EVT-KB-SDP-000219 — linked the shared StudyPlan and result index; remaining research planned, CardState unchanged.

@@ -8,10 +8,19 @@
 | CardState | backlog |
 | created | 2026-09-28T00:04:17.612149+00:00 |
 | source | Owner conversation 2026-09-28: MCP-connected state machine and live side-by-side process visualization |
-| next_review | Select the shared bounded routine DesignPlan with KB-SDP-036 after RGS1 |
+| next_review | At selection/start of the shared RGS2 StudyPlan; review its result register at study milestones |
 | tags | workflow, state-machine, MCP, observability, terminal, blueprints |
 | Systems | SDPTOOL, SDL |
-| PlanId | PLAN-SDP-0006 |
+| PlanId | PLAN-SDP-0007 |
+
+## Current study entry point
+
+[PLAN-SDP-0007 — shared StudyPlan](../../02--Requirements/RoutineGovernance/StudyPlan.md)
+now coordinates governance, SDPTool MCP and Codex app-server research. It links
+the existing RGS1 results and owns the result register for subsequent studies.
+The plan is planned; this card remains backlog. Read it before selecting further
+study work or a successor DesignPlan. Earlier RGS1 work remains delivered under
+PLAN-SDP-0006; this link does not reopen that completed plan.
 
 ## Owner intent
 
@@ -199,3 +208,5 @@ with explicit links between SDP work identities and Codex threads, rather than
 implement another process engine. Neither card is activated by registration.
 
 2026-09-28T15:10:13.034937+00:00: EVT-KB-SDP-000216 — linked the new client proposal and retained shared-core ownership; backlog unchanged.
+
+2026-09-28T15:20:29.600210+00:00: EVT-KB-SDP-000218 — linked the shared StudyPlan and result index; remaining research planned, CardState unchanged.

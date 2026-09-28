@@ -6,6 +6,10 @@ versioning and installed paths belong to the next selected DesignPlan. Reuse
 current skills, KanBan and typed plans rather than creating another documentation
 hierarchy. A procedure is not a new KanBan card type.
 
+Further coordinated study work and the result register are now collected in
+[the shared RGS2 StudyPlan](StudyPlan.md). The original RGS1 delivery remains
+recorded under completed PLAN-SDP-0006.
+
 ## Matching model
 
 Match action and context together. A message can combine categories; select a
