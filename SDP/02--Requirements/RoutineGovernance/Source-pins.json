@@ -1,0 +1,264 @@
+{
+  "schema": "rgs1-source-pins/1",
+  "observedAt": "2026-09-28T00:34:40.527066+00:00",
+  "purpose": "Source identity only; not product or workflow-engine verification",
+  "files": [
+    {
+      "repository": "GrassPhenology",
+      "revision": "8ba7567aaaf0524d86bdb4675a09232b41496f36",
+      "path": "AGENTS-project.md",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "private": true,
+      "inspection": "bounded process sample; no product verification"
+    },
+    {
+      "repository": "GrassPhenology",
+      "revision": "8ba7567aaaf0524d86bdb4675a09232b41496f36",
+      "path": "SDP/README.md",
+      "sha256": "261175ced1d4b4b8150da3ea80d50bbf990b3730e17b2043c1e877f888523c24",
+      "private": true,
+      "inspection": "bounded process sample; no product verification"
+    },
+    {
+      "repository": "GrassPhenology",
+      "revision": "8ba7567aaaf0524d86bdb4675a09232b41496f36",
+      "path": "SDP/Refactors/Refactor-001-POCWorkbenchArchitecture/07--Iterations/RFI-004A-WorkspacePatternReview.md",
+      "sha256": "c9adcc61eac7929a996624a6f09d19fb088c3090b27b43acb748dc783994495e",
+      "private": true,
+      "inspection": "bounded process sample; no product verification"
+    },
+    {
+      "repository": "HSX",
+      "revision": "e374da88f4dd470bad2d8ec6a2a14f1ce367e40e",
+      "path": "agents.md",
+      "sha256": "262f9ce07e8f1dc9299d217014b280f7c5dcfc718e2850e399a85ba2c770dfe2",
+      "private": false,
+      "inspection": "bounded process sample; no product verification"
+    },
+    {
+      "repository": "HSX",
+      "revision": "e374da88f4dd470bad2d8ec6a2a14f1ce367e40e",
+      "path": "functionality/#1_TUI_DEBUGGER/main_code_implementation_gaps.md",
+      "sha256": "a8dcfd804755b16ae9b1ec04a2872ad51ff765d1124d866bc141f853a9b1c962",
+      "private": false,
+      "inspection": "bounded process sample; no product verification"
+    },
+    {
+      "repository": "TerrainAnalyzer",
+      "revision": "9c422f7d02e6e1d1b0ac212abf2010f883783f31",
+      "path": "AGENTS.md",
+      "sha256": "167db336b285c9b561766866866c9a57e952a5e50744a22c3c2ee545d6f0509b",
+      "private": true,
+      "inspection": "bounded process sample; no product verification"
+    },
+    {
+      "repository": "TerrainAnalyzer",
+      "revision": "9c422f7d02e6e1d1b0ac212abf2010f883783f31",
+      "path": "SDP/Steering/CurrentAssignment.yaml",
+      "sha256": "5de0bb345f06a7a7240a48be4a4cafba9da2483f0c8a2d997b6fe1a6b351d337",
+      "private": true,
+      "inspection": "bounded process sample; no product verification"
+    },
+    {
+      "repository": "TerrainAnalyzer",
+      "revision": "9c422f7d02e6e1d1b0ac212abf2010f883783f31",
+      "path": "SDP/Traceability/CurrentIndex.yaml",
+      "sha256": "197875297c59006485eb222357dd7faa08f97b630511e478bba7697fd6ff29cd",
+      "private": true,
+      "inspection": "bounded process sample; no product verification"
+    },
+    {
+      "repository": "agro-crm",
+      "revision": "4e6c01ac328779c45e5e5707bbd0e839b2119a3e",
+      "path": "AGENTS.md",
+      "sha256": "3896feb156112ad683663f482ef1ed8bdaa58b058a44a83ae7430eef3dd342d1",
+      "private": true,
+      "inspection": "bounded process sample; no product verification"
+    },
+    {
+      "repository": "agro-crm",
+      "revision": "4e6c01ac328779c45e5e5707bbd0e839b2119a3e",
+      "path": "SDP/CodeReview/001-StateUpdateLogic.md",
+      "sha256": "596c7994f670550b8815db449558a5be56df589f44dd3494d395bbbcb87d5b85",
+      "private": true,
+      "inspection": "bounded process sample; no product verification"
+    },
+    {
+      "repository": "agro-crm",
+      "revision": "4e6c01ac328779c45e5e5707bbd0e839b2119a3e",
+      "path": "SDP/Refactor/Refactor-006--CoveragePathPlanning/Sprint-001-smartAlgorithm/ScrumIterations.md",
+      "sha256": "923204a4ab2c64962d3ab0de6e63f3f6a6588074d83af17a396708c64bef9e24",
+      "private": true,
+      "inspection": "bounded process sample; no product verification"
+    },
+    {
+      "repository": "emuSA80535-DAP",
+      "revision": "2e4c2dae2bb3637c4f3dbf803b83cc3f7e246301",
+      "path": "README.md",
+      "sha256": "1df8330161fab7e10eefae9be09ac821c5da3632129417f7151f6b0a69f9278a",
+      "private": false,
+      "inspection": "bounded process sample; no product verification"
+    },
+    {
+      "repository": "emuSA80535-DAP",
+      "revision": "2e4c2dae2bb3637c4f3dbf803b83cc3f7e246301",
+      "path": "SDP/CodeReview/DAP-STEERING-REV-001.md",
+      "sha256": "a39d17fe6c7814dc7a25e7096986b3cd4073d286db721deb225d07dbdfb3a234",
+      "private": false,
+      "inspection": "bounded process sample; no product verification"
+    },
+    {
+      "repository": "emuSA80535-DAP",
+      "revision": "2e4c2dae2bb3637c4f3dbf803b83cc3f7e246301",
+      "path": "SDP/Traceability/CurrentIndex.yaml",
+      "sha256": "a16e961bda0c4ef3d0a1d556c9a6815102cbfe0d5d5d14c62d36ae4f0fffc152",
+      "private": false,
+      "inspection": "bounded process sample; no product verification"
+    },
+    {
+      "repository": "emuSA80535-N",
+      "revision": "b43fe36b0965b6ac8628677bb6fcc16513d1f567",
+      "path": "AGENTS.md",
+      "sha256": "16a3933749f80260e4834783bbd5970d4414ca3a6cee96a9bbf62d5b04d46c8a",
+      "private": false,
+      "inspection": "bounded process sample; no product verification"
+    },
+    {
+      "repository": "emuSA80535-N",
+      "revision": "b43fe36b0965b6ac8628677bb6fcc16513d1f567",
+      "path": "README.md",
+      "sha256": "c8187347543ae311b071cf23174d08220595720a131791aa60e1d4bd043b2944",
+      "private": false,
+      "inspection": "bounded process sample; no product verification"
+    },
+    {
+      "repository": "emuSA80535-N",
+      "revision": "b43fe36b0965b6ac8628677bb6fcc16513d1f567",
+      "path": "SDP/04--Architecture/EMU-DEBUG-ARCH-002.md",
+      "sha256": "dee65b52b8be0a26ef318605334056c6162d15c218e8d2814fdbcb7c9bf9468c",
+      "private": false,
+      "inspection": "bounded process sample; no product verification"
+    },
+    {
+      "repository": "emuSA80535-N",
+      "revision": "b43fe36b0965b6ac8628677bb6fcc16513d1f567",
+      "path": "SDP/Traceability/CurrentIndex.yaml",
+      "sha256": "1cb6fea11039293fb2918f8524a672ad061367b0a1482e940453850b72ecf768",
+      "private": false,
+      "inspection": "bounded process sample; no product verification"
+    },
+    {
+      "repository": "HSX",
+      "revision": "69a54aeb3394d3cd4792bce620748e15bab69f1f",
+      "path": "AGENTS.md",
+      "sha256": "6b8138d3a5a38f64c8651cc45eb79e9a2765b8512dbca2579559d8dfbd10d40f",
+      "inspection": "bounded process sample; no product verification"
+    },
+    {
+      "repository": "HSX",
+      "revision": "69a54aeb3394d3cd4792bce620748e15bab69f1f",
+      "path": "SDP/Shared/Process.md",
+      "sha256": "a92ed64a40b6681404002cb858c2febebcb6cb606734c793c9f6f8b4af899d4f",
+      "inspection": "bounded process sample; no product verification"
+    },
+    {
+      "repository": "ponsse",
+      "revision": "7589a5811a21ec6bb13979612060ceff0f690df8",
+      "path": "MVP1/SDP/README.md",
+      "sha256": "2439c3567ec7da41ac201e8fb2eee3729d872851162381a165eabc1bdb8e0d56",
+      "inspection": "bounded process sample; no product verification"
+    },
+    {
+      "repository": "SDP",
+      "path": "Skills/sdp/references/source-map.md",
+      "sha256": "4e0ba5162dc636c259fbad99c3ddba64cee3ca9ae8c4aed3af4c232b8308201b",
+      "inspection": "local bytes; revision and dirty-state limits in Evidence.md"
+    },
+    {
+      "repository": "SDP",
+      "path": "SDPTool/Contract.md",
+      "sha256": "35b08d3775427cb9b2f42e5e9ac54a1c88b5ebdbf0c1252497914dd3879689f6",
+      "inspection": "local bytes; revision and dirty-state limits in Evidence.md"
+    },
+    {
+      "repository": "SDP",
+      "path": "SDPTool/cli.go",
+      "sha256": "23bc1b43cc2e21328398ed18ab4885e0d4dc6423aa5f1d8d74c27dc881de38ee",
+      "inspection": "local bytes; revision and dirty-state limits in Evidence.md"
+    },
+    {
+      "repository": "SDP",
+      "path": "SDPTool/profiles/five-phase.json",
+      "sha256": "965b64e1aa4e41fb6924c86226107a67201a7821a7e9258b0c3fd617fddd8a6b",
+      "inspection": "local bytes; revision and dirty-state limits in Evidence.md"
+    },
+    {
+      "repository": "SDP",
+      "path": "SDPTool/install/records.go",
+      "sha256": "4479e59b11310b7902003d1a577e49f202c1e790cd9f2da21602c75de5461cbe",
+      "inspection": "local bytes; revision and dirty-state limits in Evidence.md"
+    },
+    {
+      "repository": "SDP",
+      "path": "SDP/ProjectManagement/Plans.md",
+      "sha256": "b8f3648fdda40cac134f3ce3d3d358af7b1da93e60541966931c2828ee802959",
+      "inspection": "local bytes; revision and dirty-state limits in Evidence.md"
+    },
+    {
+      "repository": "SDP",
+      "path": "SDP/04--Design/SDPTool/Blueprints/Study.md",
+      "sha256": "f2b42a8b6e06164e4eeb006c8c7c64ffaff4a99f17e2f35565e46c122eaf8a85",
+      "inspection": "local bytes; revision and dirty-state limits in Evidence.md"
+    },
+    {
+      "repository": "SDP",
+      "path": "experiments/mvp1_sdl/README.md",
+      "sha256": "64f0ce2d6b8d4efea159b6d867ca8d1126d7421e7bb023ebdecda3a68ae5c6d4",
+      "inspection": "local bytes; revision and dirty-state limits in Evidence.md"
+    },
+    {
+      "repository": "xfmd-sdl-navigation",
+      "path": "docs/working-method.md",
+      "sha256": "345f8319e1a5337f9526575252f931724ca7acba58ef275b198b85693301ff71",
+      "inspection": "local bytes; revision and dirty-state limits in Evidence.md"
+    },
+    {
+      "repository": "ponsse",
+      "path": "AGENTS.md",
+      "sha256": "4138e6385a293a2944e033b88e150d3fa3f55a8ba8736c6a2c1189646cf1599e",
+      "inspection": "local bytes; revision and dirty-state limits in Evidence.md"
+    },
+    {
+      "repository": "ponsse",
+      "path": "Concept1/SDP/Traceability/CurrentIndex.yaml",
+      "sha256": "bfed8b0f208c0a82b1c7688318882cc466332fb43235ffb492dbf48f370bb5aa",
+      "inspection": "local bytes; revision and dirty-state limits in Evidence.md"
+    },
+    {
+      "repository": "ponsse",
+      "path": "Concept1/SDP/Work/WORK-101/Handoff.md",
+      "sha256": "c0cf8a170cc05018bdd5a11f6e7c966bb859527322e9ff7215219df28bb53046",
+      "inspection": "local bytes; revision and dirty-state limits in Evidence.md"
+    }
+  ],
+  "remoteObservations": [
+    {
+      "number": 21,
+      "state": "closed",
+      "draft": false,
+      "merged_at": "2026-08-19T17:53:15Z",
+      "html_url": "https://github.com/Hans-Einar/TerrainAnalyzer/pull/21",
+      "head": "8163c74d6643d8f65fb1f4d9523b3935573bb474",
+      "base": "main"
+    },
+    {
+      "number": 4,
+      "state": "closed",
+      "draft": false,
+      "merged_at": "2026-09-02T08:30:12Z",
+      "html_url": "https://github.com/Hans-Einar/emuSA80535-DAP/pull/4",
+      "head": "b1b1c2d55d8379fff74110372c8095e3095920cf",
+      "base": "main"
+    }
+  ]
+}
