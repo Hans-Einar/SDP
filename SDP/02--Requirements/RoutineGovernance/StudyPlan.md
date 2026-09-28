@@ -4,7 +4,7 @@
 | --- | --- |
 | id | PLAN-SDP-0007 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | RequirementPlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
@@ -17,7 +17,7 @@ This is the shared **StudyPlan** and result index for request/routine governance
 an MCP connection to SDPTool, and a Codex app-server-based development client.
 The owner requests one plan linked from the relevant cards, with separate study
 results discoverable here. The owner subsequently authorized execution of these studies on 2026-09-28.
-Research is active; production implementation remains outside this assignment.
+The authorized research is now complete; production implementation remains outside this assignment.
 
 StudyPlan describes the purpose of this document. Its machine-readable PlanType
 is RequirementPlan under the existing planning contract: the studies establish
@@ -33,9 +33,9 @@ and synthesis. It is the current study entry point for all three cards.
 
 | Card | Study responsibility |
 | --- | --- |
-| [KB-SDP-036](../../KanBan/active/%23036--Proposal--Request-routines-and-process-control.md) | Request classification, routine selection, missing-procedure handling and entry/skill responsibilities |
-| [KB-SDP-037](../../KanBan/active/%23037--Proposal--Observable-routine-state-machine.md) | Durable routine state, evidence/gates, SDPTool MCP operations and read-only observation |
-| [KB-SDP-038](../../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) | Codex client, supervision/task handoff, app-server integration and presentation alternatives |
+| [KB-SDP-036](../../KanBan/backlog/%23036--Proposal--Request-routines-and-process-control.md) | Request classification, routine selection, missing-procedure handling and entry/skill responsibilities |
+| [KB-SDP-037](../../KanBan/backlog/%23037--Proposal--Observable-routine-state-machine.md) | Durable routine state, evidence/gates, SDPTool MCP operations and read-only observation |
+| [KB-SDP-038](../../KanBan/backlog/%23038--Proposal--Codex-app-server-development-client.md) | Codex client, supervision/task handoff, app-server integration and presentation alternatives |
 
 Steering/Project Manager retains the project-facing dialogue and broader context.
 A fresh task Master coordinates each bounded assignment and permitted Worker,
@@ -53,12 +53,12 @@ This table is the maintained result register. Add a result link when the report
 exists, with its actual status, evidence and unresolved questions. Do not create
 empty report files or label preliminary observations completed studies.
 
-| Study area | Status at plan creation | Available result / evidence | Remaining result destination |
+| Study area | Current result status | Available result / evidence | Result / follow-up |
 | --- | --- | --- | --- |
 | Request and routine governance | RGS1 delivered; RGS2-A-M2 role/routing reconciliation delivered | [Main study](Study.md), [routine catalog](Routine-Catalog.md), [scenario challenge](Scenarios.md), [evidence](Evidence.md), [source pins](Source-pins.json) | [RGS2-A-M2 findings](Study.md#10-rgs2-a-m2--operational-responsibility-and-procedure-reconciliation); same authoritative reports maintained |
-| SDPTool MCP connection | RGS2-B-M1 delivered; independently reviewed | [Existing study](Study.md), especially sections 3–6; [KB038 boundary](../../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) | [MCP study](MCP-Study.md) and [source pins](Evidence/RGS2-MCP-source-pins.json) |
-| Codex app-server/client | RGS2-C-M1 delivered; installed schemas inspected; runtime behavior untested | [Evidence E11](Evidence.md#e11--codex-panel-follow-up), [client proposal](../../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) | [App-server study](AppServer-Study.md), [probe evidence](Evidence/RGS2-AppServer-evidence.json) and [schema extract](Evidence/RGS2-AppServer-schema-extract.json) |
-| Joint recommendation and next delivery | Planned after the three areas are reconciled | Existing staged recommendation in [RGS1](Study.md), section 8 | Synthesis.md, to be linked here after delivery |
+| SDPTool MCP connection | RGS2-B-M1 delivered; independently reviewed | [Existing study](Study.md), especially sections 3–6; [KB038 boundary](../../KanBan/backlog/%23038--Proposal--Codex-app-server-development-client.md) | [MCP study](MCP-Study.md) and [source pins](Evidence/RGS2-MCP-source-pins.json) |
+| Codex app-server/client | RGS2-C-M1 delivered; installed schemas inspected; runtime behavior untested | [Evidence E11](Evidence.md#e11--codex-panel-follow-up), [client proposal](../../KanBan/backlog/%23038--Proposal--Codex-app-server-development-client.md) | [App-server study](AppServer-Study.md), [probe evidence](Evidence/RGS2-AppServer-evidence.json) and [schema extract](Evidence/RGS2-AppServer-schema-extract.json) |
+| Joint recommendation and next delivery | RGS2-D-M1 delivered; independently reviewed | Existing staged recommendation in [RGS1](Study.md), section 8 | [Synthesis](Synthesis.md) and [verification/closeout](RGS2-Verification.md) |
 
 RGS1 contains analytical scenarios, not executed routine-engine tests. Its role
 clarifications and subsequent official-documentation findings retain their dates.
@@ -129,13 +129,13 @@ do not execute or silently activate that successor.
 
 ## Phases and milestone acceptance
 
-| Phase | Milestone | Required outcome | Initial state |
+| Phase | Milestone | Required outcome | Current state |
 | --- | --- | --- | --- |
 | A — governance | RGS2-A-M1 | Resolve existing RGS1 report links and preserve completed predecessor evidence | Available predecessor result; indexed during plan creation |
 | A — governance | RGS2-A-M2 | Reconcile role ownership, routing/gap lifecycle and remaining decisions; update the existing reports with dated findings | Delivered |
 | B — MCP | RGS2-B-M1 | Deliver MCP-Study.md with capability inventory, candidate interface/transport alternatives, authority and failure boundaries | Delivered |
 | C — app-server | RGS2-C-M1 | Deliver AppServer-Study.md with versioned evidence, lifecycle/telemetry/auth limits and client-option comparison | Delivered |
-| D — synthesis | RGS2-D-M1 | Deliver Synthesis.md with reconciled boundaries, unresolved decisions, one bounded pilot and linked acceptance cases | In progress |
+| D — synthesis | RGS2-D-M1 | Deliver Synthesis.md with reconciled boundaries, unresolved decisions, one bounded pilot and linked acceptance cases | Delivered |
 
 A's existing results are reusable now; A-M2 need not re-audit the whole repository
 portfolio. B and C can investigate independent questions after the shared role
@@ -176,9 +176,10 @@ main. CommitPolicy milestone: commit each meaningful study delivery together wit
 its report index, card references and management history. Preserve unrelated work.
 Existing phase-push/PR authorization applies; merging and release remain separate.
 
-Execution is active under the owner instruction of 2026-09-28. KB036–038 are
-active/in-progress and link here via PlanId. Record milestone progress and the
-actual closeout disposition together with their management history. Retain PLAN-SDP-0006 as the completed predecessor;
+Study execution authorized on 2026-09-28 is complete. KB036–038 were active/
+in-progress during execution and now return to backlog for their unimplemented
+capabilities. Their PlanId retains this completed study; select the successor
+plan before activating implementation. Retain PLAN-SDP-0006 as the completed predecessor;
 do not reopen it to track this work. Study completion does not automatically
 implement routines, adopt a process schema or activate BP2/client development.
 
@@ -203,3 +204,18 @@ manufactured by creating their entries above.
   and selected schema extract delivered. No account/model/runtime probe performed.
   Fresh independent review approves report content; final lifecycle reconciliation
   and study closeout remain in phase D.
+- RGS2-D-M1: Synthesis.md reconciles responsibilities, version/transport findings,
+  decisions and the next DesignPlan brief. Independent study review approved the
+  report candidate with no material findings. RGS2-Verification.md records the
+  measured checks and runtime gaps. All selected study outcomes are delivered;
+  capability implementation remains unselected.
+
+## Study closeout
+
+All study milestones are delivered, with report links in the result register.
+There is no deferred required research milestone hidden behind completion. Open
+runtime/compatibility questions are explicit inputs and acceptance probes for the
+next DesignPlan, not claims that a client or routine engine already works.
+KB036–038 return to backlog rather than falsely closing the proposed capabilities
+or retaining in-progress status after their selected study work has ended.
+No owner review, integration or publication approval is manufactured by this closeout.

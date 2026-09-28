@@ -5,10 +5,10 @@
 | id | KB-SDP-038 |
 | project | SDP |
 | type | Proposal |
-| CardState | in-progress |
+| CardState | backlog |
 | created | 2026-09-28T15:10:13.034937+00:00 |
 | source | Owner conversation 2026-09-28: register app-server-based system development and assess SDPTool MCP |
-| next_review | At selection/start of the shared RGS2 StudyPlan; review its result register at study milestones |
+| next_review | Select the bounded successor DesignPlan from the completed RGS2 synthesis |
 | tags | codex, app-server, client, MCP, supervision, blueprints, observability |
 | Systems | SDPTOOL |
 | PlanId | PLAN-SDP-0007 |
@@ -18,7 +18,7 @@
 [PLAN-SDP-0007 — shared StudyPlan](../../02--Requirements/RoutineGovernance/StudyPlan.md)
 now coordinates governance, SDPTool MCP and Codex app-server research. It links
 the existing RGS1 results and owns the result register for subsequent studies.
-The owner has authorized the studies; this card is active/in-progress. Read it before selecting further
+The selected studies are complete; this capability card is back in backlog. Read it before selecting further
 study work or a successor DesignPlan. Earlier RGS1 work remains delivered under
 PLAN-SDP-0006; this link does not reopen that completed plan.
 
@@ -133,3 +133,18 @@ successful MCP connection alone does not complete the capability.
 2026-09-28T21:31:58.382764+00:00: EVT-KB-SDP-000222 — owner starts RGS2 studies; backlog -> active/in-progress, implementation remains unselected.
 
 2026-09-28T21:40:44.055216+00:00: EVT-KB-SDP-000225 — RGS2-C-M1 [app-server study](../../02--Requirements/RoutineGovernance/AppServer-Study.md) delivered with generated-schema evidence; report independently reviewed, synthesis/closeout continues.
+
+## RGS2 study outcome
+
+[PLAN-SDP-0007](../../02--Requirements/RoutineGovernance/StudyPlan.md) is complete.
+Its result register links the governance, MCP, app-server and synthesis reports.
+[Independent review and verification](../../02--Requirements/RoutineGovernance/RGS2-Verification.md)
+support study delivery, not implemented runtime/client behavior. The recommended
+next action is selection of the bounded DesignPlan described in
+[Synthesis.md](../../02--Requirements/RoutineGovernance/Synthesis.md).
+
+This card was active/in-progress during the authorized studies and now returns
+to backlog because its proposed capability is not implemented. The completed
+study plan remains linked as evidence; no implementation plan is activated here.
+
+2026-09-28T21:42:41.640062+00:00: EVT-KB-SDP-000228 — selected RGS2 research complete; active/in-progress -> backlog for unimplemented capability, with concrete study results and next-plan brief.

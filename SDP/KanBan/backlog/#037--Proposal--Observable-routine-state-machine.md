@@ -5,10 +5,10 @@
 | id | KB-SDP-037 |
 | project | SDP |
 | type | Proposal |
-| CardState | in-progress |
+| CardState | backlog |
 | created | 2026-09-28T00:04:17.612149+00:00 |
 | source | Owner conversation 2026-09-28: MCP-connected state machine and live side-by-side process visualization |
-| next_review | At selection/start of the shared RGS2 StudyPlan; review its result register at study milestones |
+| next_review | Select the bounded successor DesignPlan from the completed RGS2 synthesis |
 | tags | workflow, state-machine, MCP, observability, terminal, blueprints |
 | Systems | SDPTOOL, SDL |
 | PlanId | PLAN-SDP-0007 |
@@ -18,7 +18,7 @@
 [PLAN-SDP-0007 — shared StudyPlan](../../02--Requirements/RoutineGovernance/StudyPlan.md)
 now coordinates governance, SDPTool MCP and Codex app-server research. It links
 the existing RGS1 results and owns the result register for subsequent studies.
-The owner has authorized the studies; this card is active/in-progress. Read it before selecting further
+The selected studies are complete; this capability card is back in backlog. Read it before selecting further
 study work or a successor DesignPlan. Earlier RGS1 work remains delivered under
 PLAN-SDP-0006; this link does not reopen that completed plan.
 
@@ -41,7 +41,7 @@ service, MCP adapter or live terminal renderer is implemented by this card.
 
 ## Relationship to current work
 
-[KB-SDP-036](../active/%23036--Proposal--Request-routines-and-process-control.md) owns request
+[KB-SDP-036](../backlog/%23036--Proposal--Request-routines-and-process-control.md) owns request
 classification, existing-routine selection and visible card/plan coverage. This
 card owns executing/observing the selected routine across requests and agents.
 Routine identity, versions and completion rules must be agreed across both.
@@ -214,3 +214,18 @@ implement another process engine. Neither card is activated by registration.
 2026-09-28T21:31:58.382764+00:00: EVT-KB-SDP-000221 — owner starts RGS2 studies; backlog -> active/in-progress, implementation remains unselected.
 
 2026-09-28T21:40:04.917083+00:00: EVT-KB-SDP-000224 — RGS2-B-M1 MCP study delivered with [report and evidence](../../02--Requirements/RoutineGovernance/MCP-Study.md); synthesis/review continues, CardState remains in-progress.
+
+## RGS2 study outcome
+
+[PLAN-SDP-0007](../../02--Requirements/RoutineGovernance/StudyPlan.md) is complete.
+Its result register links the governance, MCP, app-server and synthesis reports.
+[Independent review and verification](../../02--Requirements/RoutineGovernance/RGS2-Verification.md)
+support study delivery, not implemented runtime/client behavior. The recommended
+next action is selection of the bounded DesignPlan described in
+[Synthesis.md](../../02--Requirements/RoutineGovernance/Synthesis.md).
+
+This card was active/in-progress during the authorized studies and now returns
+to backlog because its proposed capability is not implemented. The completed
+study plan remains linked as evidence; no implementation plan is activated here.
+
+2026-09-28T21:42:41.640062+00:00: EVT-KB-SDP-000227 — selected RGS2 research complete; active/in-progress -> backlog for unimplemented capability, with concrete study results and next-plan brief.

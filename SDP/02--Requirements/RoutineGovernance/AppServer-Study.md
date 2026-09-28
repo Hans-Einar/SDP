@@ -4,7 +4,7 @@
 | --- | --- |
 | Milestone | RGS2-C-M1 |
 | Plan | [PLAN-SDP-0007](StudyPlan.md) |
-| Card | [KB-SDP-038](../../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
+| Card | [KB-SDP-038](../../KanBan/backlog/%23038--Proposal--Codex-app-server-development-client.md) |
 | Research date | 2026-09-28 UTC |
 | Status | Research delivery; client implementation and deployment remain unselected |
 | Candidate | Installed codex-cli 0.158.0, Linux x64; generated protocol schemas |
