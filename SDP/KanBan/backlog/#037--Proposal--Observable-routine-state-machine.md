@@ -189,3 +189,13 @@ client alternatives. Skill availability is not skill compliance. This inquiry
 records an observer option; it does not select a Codex fork or implementation.
 
 2026-09-28T15:00:58.823677+00:00: EVT-KB-SDP-000213 — recorded owner clarification and proposed design implications; CardState remains backlog.
+
+## Related client proposal
+
+[KB-SDP-038](%23038--Proposal--Codex-app-server-development-client.md) now owns the
+requested app-server-based development client investigation. This card retains
+the shared routine/MCP/state/observer contract. The client should consume it,
+with explicit links between SDP work identities and Codex threads, rather than
+implement another process engine. Neither card is activated by registration.
+
+2026-09-28T15:10:13.034937+00:00: EVT-KB-SDP-000216 — linked the new client proposal and retained shared-core ownership; backlog unchanged.

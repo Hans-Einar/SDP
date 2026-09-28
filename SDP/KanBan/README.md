@@ -49,6 +49,7 @@
 | KB-SDP-035 | Proposal | backlog | [Community feedback after an understood internal pilot](backlog/%23035--Proposal--Community-feedback-after-internal-pilot.md) |
 | KB-SDP-036 | Proposal | backlog | [Request classification and mandatory routine selection](backlog/%23036--Proposal--Request-routines-and-process-control.md) |
 | KB-SDP-037 | Proposal | backlog | [Observable routine execution and agent work-package progress](backlog/%23037--Proposal--Observable-routine-state-machine.md) |
+| KB-SDP-038 | Proposal | backlog | [SDP development client using Codex app-server](backlog/%23038--Proposal--Codex-app-server-development-client.md) |
 
 ## Purpose and authority
 
