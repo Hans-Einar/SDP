@@ -111,7 +111,7 @@ where this registry belongs during planning; no new directory is assumed here.
 
 The owner also requests an MCP-connected state machine and a live side-by-side
 terminal flowchart, with drill-down into routines, approvals and agent assignment
-checklists. [KB-SDP-037](%23037--Proposal--Observable-routine-state-machine.md)
+checklists. [KB-SDP-037](../active/%23037--Proposal--Observable-routine-state-machine.md)
 now owns that runtime/observer capability. This card retains the entry/routing
 contract and initial skill-process Maintenance scope. Align the routine identity,
 version and evidence contracts; do not grow the initial Maintenance task into a

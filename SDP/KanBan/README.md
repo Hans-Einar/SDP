@@ -48,7 +48,7 @@
 | KB-SDP-034 | Bug | completed | [External KanBan references](completed/%23034--Bug--External-KanBan-references.md) |
 | KB-SDP-035 | Proposal | backlog | [Community feedback after an understood internal pilot](backlog/%23035--Proposal--Community-feedback-after-internal-pilot.md) |
 | KB-SDP-036 | Proposal | backlog | [Request classification and mandatory routine selection](backlog/%23036--Proposal--Request-routines-and-process-control.md) |
-| KB-SDP-037 | Proposal | backlog | [Observable routine execution and agent work-package progress](backlog/%23037--Proposal--Observable-routine-state-machine.md) |
+| KB-SDP-037 | Proposal | active | [Observable routine execution and agent work-package progress](active/%23037--Proposal--Observable-routine-state-machine.md) |
 
 ## Purpose and authority
 

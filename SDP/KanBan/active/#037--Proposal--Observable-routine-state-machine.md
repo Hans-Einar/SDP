@@ -5,12 +5,13 @@
 | id | KB-SDP-037 |
 | project | SDP |
 | type | Proposal |
-| CardState | backlog |
+| CardState | in-progress |
 | created | 2026-09-28T00:04:17.612149+00:00 |
 | source | Owner conversation 2026-09-28: MCP-connected state machine and live side-by-side process visualization |
 | next_review | Together with KB-SDP-036 before selecting routine-engine design work |
 | tags | workflow, state-machine, MCP, observability, terminal, blueprints |
 | Systems | SDPTOOL, SDL |
+| PlanId | PLAN-SDP-0006 |
 
 ## Owner intent
 
@@ -31,7 +32,7 @@ service, MCP adapter or live terminal renderer is implemented by this card.
 
 ## Relationship to current work
 
-[KB-SDP-036](%23036--Proposal--Request-routines-and-process-control.md) owns request
+[KB-SDP-036](../backlog/%23036--Proposal--Request-routines-and-process-control.md) owns request
 classification, existing-routine selection and visible card/plan coverage. This
 card owns executing/observing the selected routine across requests and agents.
 Routine identity, versions and completion rules must be agreed across both.
@@ -141,3 +142,14 @@ an unrequested release. Verify behavior against persisted facts, not animations.
 | Time (RFC3339) | Actor / event | Work, finding or decision | Evidence / remaining work |
 | --- | --- | --- | --- |
 | 2026-09-28T00:04:17.612149+00:00 | codex; EVT-KB-SDP-000208 | Captured the owner's MCP-connected state machine, live drill-down visualization and work-package checklist request | Linked KB-SDP-036 and blueprint design; proposals only, plan selection and implementation remain pending |
+
+## Selected extended study — RGS1
+
+Owner request 2026-09-28 selects an extended study covering the entire project
+workflow, the named repository portfolio, distributed procedures and detection
+of missing routines. [PLAN-SDP-0006](../../02--Requirements/RoutineGovernance/Plan.md)
+authorizes this research only. Production runtime/observer implementation remains
+unselected. Return the card to backlog after delivering the study, with remaining
+capability scope visible.
+
+2026-09-28T00:26:19.580373+00:00: EVT-KB-SDP-000210 — backlog -> active/in-progress for the selected RGS1 study.
