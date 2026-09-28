@@ -42,8 +42,8 @@ Preserve unrelated sourceinput/node files and all historical ledger bytes.
 | Phase | Milestone | Acceptance | State |
 | --- | --- | --- | --- |
 | A — evidence | RGS1-A-M1 | Pin current local/remote project samples, reconcile historical studies, inspect relevant tool boundaries and official MCP/host documentation; distinguish findings from owner reports | Complete |
-| B — proposed contract | RGS1-B-M1 | Cover intent-to-assignment and execution/release/learning; specify candidate categories, procedure gaps, procedure distribution, state/evidence ownership and observation/enforcement limits | In progress |
-| C — challenge and handoff | RGS1-C-M1 | Walk concrete cross-project scenarios and negative cases; deliver testable requirements, alternatives, staged roadmap and explicit decisions/limits; validate links and management history | Planned |
+| B — proposed contract | RGS1-B-M1 | Cover intent-to-assignment and execution/release/learning; specify candidate categories, procedure gaps, procedure distribution, state/evidence ownership and observation/enforcement limits | Complete |
+| C — challenge and handoff | RGS1-C-M1 | Walk concrete cross-project scenarios and negative cases; deliver testable requirements, alternatives, staged roadmap and explicit decisions/limits; validate links and management history | In progress |
 
 ## Verification and closeout
 
@@ -67,3 +67,7 @@ the owner selects a bounded implementation or design plan.
 - RGS1-A-M1: Evidence.md and Source-pins.json record 33 sampled source files,
   current PR observations and official interface boundaries. No product tests,
   independent review or host-hook enforcement are claimed.
+- RGS1-B-M1: Study.md and Routine-Catalog.md specify 16 proposed requirements,
+  16 routine families, gap handling, versioned distribution and separated state/
+  authority/evidence. They propose a small Go SDPTool/MCP pilot; no production
+  policy, engine, schema, host configuration or application changed.
