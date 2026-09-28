@@ -131,3 +131,5 @@ successful MCP connection alone does not complete the capability.
 2026-09-28T15:20:29.600210+00:00: EVT-KB-SDP-000219 — linked the shared StudyPlan and result index; remaining research planned, CardState unchanged.
 
 2026-09-28T21:31:58.382764+00:00: EVT-KB-SDP-000222 — owner starts RGS2 studies; backlog -> active/in-progress, implementation remains unselected.
+
+2026-09-28T21:40:44.055216+00:00: EVT-KB-SDP-000225 — RGS2-C-M1 [app-server study](../../02--Requirements/RoutineGovernance/AppServer-Study.md) delivered with generated-schema evidence; report independently reviewed, synthesis/closeout continues.
