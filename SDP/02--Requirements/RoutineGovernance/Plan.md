@@ -4,7 +4,7 @@
 | --- | --- |
 | id | PLAN-SDP-0006 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | RequirementPlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
@@ -43,7 +43,7 @@ Preserve unrelated sourceinput/node files and all historical ledger bytes.
 | --- | --- | --- | --- |
 | A — evidence | RGS1-A-M1 | Pin current local/remote project samples, reconcile historical studies, inspect relevant tool boundaries and official MCP/host documentation; distinguish findings from owner reports | Complete |
 | B — proposed contract | RGS1-B-M1 | Cover intent-to-assignment and execution/release/learning; specify candidate categories, procedure gaps, procedure distribution, state/evidence ownership and observation/enforcement limits | Complete |
-| C — challenge and handoff | RGS1-C-M1 | Walk concrete cross-project scenarios and negative cases; deliver testable requirements, alternatives, staged roadmap and explicit decisions/limits; validate links and management history | In progress |
+| C — challenge and handoff | RGS1-C-M1 | Walk concrete cross-project scenarios and negative cases; deliver testable requirements, alternatives, staged roadmap and explicit decisions/limits; validate links and management history | Complete |
 
 ## Verification and closeout
 
@@ -57,9 +57,11 @@ capability is delivered or forcing the owner to review everything immediately.
 
 ## Deliverables
 
-Study.md is the main reading entry. Evidence.md identifies inspected sources and
-limits. Routine-Catalog.md describes candidate coverage. Scenarios.md records
-worked cases and future acceptance tests. Recommendations remain proposed until
+[Study.md](Study.md) is the main reading entry. [Evidence.md](Evidence.md) identifies
+inspected sources and limits, with [source pins](Source-pins.json).
+[Routine-Catalog.md](Routine-Catalog.md) describes candidate coverage.
+[Scenarios.md](Scenarios.md) records worked cases and future acceptance tests.
+Recommendations remain proposed until
 the owner selects a bounded implementation or design plan.
 
 ## Delivery log
@@ -71,3 +73,21 @@ the owner selects a bounded implementation or design plan.
   16 routine families, gap handling, versioned distribution and separated state/
   authority/evidence. They propose a small Go SDPTool/MCP pilot; no production
   policy, engine, schema, host configuration or application changed.
+- RGS1-C-M1: Scenarios.md challenges the proposal with 16 portfolio and failure
+  cases. Same-author consistency checks resolve local links, all 16 requirement
+  mappings and 33 acquired-source hashes. These checks prove record consistency,
+  not an implemented engine or prevention of product drift.
+
+## Outcome and remaining work
+
+The selected study is complete. KB-SDP-037 returns to backlog because its engine,
+MCP and observer capability remains unimplemented; KB-SDP-036 retains routing/
+entry scope. The recommendation is a shared bounded DesignPlan, followed by one
+complete maintenance pilot before broader blueprint/project rollout. BP2 remains
+planned. No independent review, product execution, external repository mutation,
+MCP/host setup or new process adoption is claimed.
+
+Source and analysis deliveries: RGS1-A-M1 commit 525f59b; RGS1-B-M1 commit cc211ae.
+RGS1-C-M1 is the closeout commit carrying this final record and the linked board
+transitions. See its Git history for exact identity. Existing ledger bytes are
+preserved; new management events record this research only.

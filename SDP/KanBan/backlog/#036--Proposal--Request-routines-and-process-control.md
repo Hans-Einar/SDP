@@ -111,7 +111,7 @@ where this registry belongs during planning; no new directory is assumed here.
 
 The owner also requests an MCP-connected state machine and a live side-by-side
 terminal flowchart, with drill-down into routines, approvals and agent assignment
-checklists. [KB-SDP-037](../active/%23037--Proposal--Observable-routine-state-machine.md)
+checklists. [KB-SDP-037](%23037--Proposal--Observable-routine-state-machine.md)
 now owns that runtime/observer capability. This card retains the entry/routing
 contract and initial skill-process Maintenance scope. Align the routine identity,
 version and evidence contracts; do not grow the initial Maintenance task into a
@@ -119,9 +119,11 @@ new workflow engine without a separate selected plan.
 
 ## Next action and completion criteria
 
-Select a proportionate MaintenancePlan to inventory current routes and design a
-single request-entry contract, then trial it before changing distributed skills
-and templates. This is proposed next work, not started implementation.
+The completed [RGS1 study](../../02--Requirements/RoutineGovernance/Study.md)
+now recommends selecting a bounded shared DesignPlan with KB-SDP-037 for the
+request/routine contract. Entry-skill Maintenance can then implement its agreed
+portion without silently adopting the whole engine. Trial actual routing before
+changing distributed skills/templates. No implementation has been selected.
 
 Acceptance should demonstrate representative requests from the table, including
 "also remove PowerShell" during release preparation, template restructuring,
@@ -141,3 +143,14 @@ No reopening of completed cards or MCP implementation is implied by this link.
 | --- | --- | --- | --- |
 | 2026-09-27T23:51:37.811184+00:00 | codex; EVT-KB-SDP-000207 | Captured owner direction and proposed routine/category/activation contract during RP3 closeout | Registration only; select the MaintenancePlan before implementation |
 | 2026-09-28T00:04:17.612149+00:00 | codex; EVT-KB-SDP-000209 | Linked owner extension for durable execution state and live visualization to KB-SDP-037 | Entry/routing scope retained; runtime/observer requires separate design and implementation planning |
+| 2026-09-28T00:43:32.046442+00:00 | codex; EVT-KB-SDP-000212 | Linked completed RGS1 research and aligned the next-plan recommendation with KB-SDP-037 | Remains backlog; 16 routine families are proposals, not adopted policy |
+
+## Study findings to retain in the selected scope
+
+RGS1 identifies stale inventory references in the current skill source map and
+SDPTool contract, plus verified stale external PR status in sampled projects.
+See its Evidence.md for exact sources and limits. The selected future work should
+cover authority reconciliation and discovery of missing/incompatible procedures,
+rather than papering over these cases with another generic instruction. These
+findings are captured here; this study has not repaired those sources or authorized
+changes in external projects.

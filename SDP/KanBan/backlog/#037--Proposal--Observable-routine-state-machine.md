@@ -5,10 +5,10 @@
 | id | KB-SDP-037 |
 | project | SDP |
 | type | Proposal |
-| CardState | in-progress |
+| CardState | backlog |
 | created | 2026-09-28T00:04:17.612149+00:00 |
 | source | Owner conversation 2026-09-28: MCP-connected state machine and live side-by-side process visualization |
-| next_review | Together with KB-SDP-036 before selecting routine-engine design work |
+| next_review | Select the shared bounded routine DesignPlan with KB-SDP-036 after RGS1 |
 | tags | workflow, state-machine, MCP, observability, terminal, blueprints |
 | Systems | SDPTOOL, SDL |
 | PlanId | PLAN-SDP-0006 |
@@ -153,3 +153,20 @@ unselected. Return the card to backlog after delivering the study, with remainin
 capability scope visible.
 
 2026-09-28T00:26:19.580373+00:00: EVT-KB-SDP-000210 — backlog -> active/in-progress for the selected RGS1 study.
+
+## Extended study delivered; implementation remains open
+
+[RGS1 study](../../02--Requirements/RoutineGovernance/Study.md) completes the
+selected research under PLAN-SDP-0006. It covers the named project portfolio,
+work before assignment, 16 routine families and requirements, procedure-gap
+discovery, versioned project distribution, evidence/authority boundaries and
+16 analytical challenge cases. Pinned source evidence distinguishes observed
+facts from project assertions; no product audit or runtime trial is claimed.
+
+Recommended next work is a bounded shared DesignPlan with KB-SDP-036, then one
+Go SDPTool/CLI/MCP maintenance workflow and read-only terminal observer pilot.
+BP2 remains the separate assignment/blueprint contract. This card returns to
+backlog because none of the proposed engine/observer capability has been delivered.
+No mandatory owner review of the study is invented as a reason to keep it active.
+
+2026-09-28T00:43:32.046442+00:00: EVT-KB-SDP-000211 — active/in-progress -> backlog; RGS1 study complete, capability implementation unselected.

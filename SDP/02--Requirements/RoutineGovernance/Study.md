@@ -187,6 +187,12 @@ Separate these dimensions instead of inventing another universal “status” fi
 | External observation | Versioned observation with source/time | PR merged; installation receipt present |
 | Agent activity | Session/lease/last observation | Worker connected, disconnected or unknown |
 
+Authority resolution needs explicit precedence and current/superseded markers,
+not a rule that the newest timestamp wins. Host/session constraints still apply.
+Project instructions, adopted decisions, installed process capabilities and the
+selected plan must be reconciled; a proposed study cannot override them. Preserve
+which source justified a decision and expose unresolved contradictions.
+
 A merged PR does not prove owner acceptance. A live worker does not imply useful
 progress. A disconnected worker is not automatically failed. A completed study
 does not complete its capability card. Current management records remain the
@@ -293,6 +299,21 @@ snapshot, refreshed by polling if sufficient. Show project, request, route/versi
 card/plan/milestone, current step, next permitted action, waiting reason and evidence.
 Allow drill-down into nested routines/worker assignments and back via breadcrumbs.
 Separate live mode from historical replay. Keep labels/icons as well as colors.
+
+Illustrative monitor content, **not a running implementation**:
+
+```text
+SDP / request-42 / Maintenance@1 / plan + milestone
+  [completed] Resolve scope       basis: selected plan revision
+  [running] Implement           worker: connected; checkout: identified
+    [pending] Verify candidate    required: current payload + contract checks
+    [waiting] Independent review  reason: verification not yet delivered
+  [unselected] Publish             reason: publication not selected
+  Next: finish the bounded change; unrelated idea retained in backlog
+```
+
+The identifiers and states in this mock are examples. Actual displays should
+use real instance facts and expose their source when opened.
 
 A later stable flowchart may highlight actual nodes and edges, with parallel work
 and stale observations visible. Reuse rendering components when justified; do not
