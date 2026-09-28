@@ -507,3 +507,113 @@ There is no guarantee that a state machine makes an agent understand the whole
 system. Its useful role is narrower and testable: make missing context, authority,
 evidence and procedure coverage explicit before an unsupported transition occurs,
 and retain enough history that tomorrow's session can resume responsibly.
+
+## 10. RGS2-A-M2 — operational responsibility and procedure reconciliation
+
+Follow-up study delivered under [PLAN-SDP-0007](StudyPlan.md), 2026-09-28.
+This refines the owner-selected role model into candidate obligations. It does
+not install a new Project Manager skill or change the released process schema.
+The current [Steering](../../../Skills/sdp-steering/SKILL.md) and
+[Master](../../../Skills/sdp-master/SKILL.md) instructions already distinguish
+project-owner decisions from bounded coordination; a separate PM implementation
+has not been established. Their responsibilities can be applied without inventing
+an extra agent for every small request.
+
+### Responsibility and handoff matrix
+
+| Decision/action | Project-facing Steering/PM | Bounded task Master | Worker / Reviewer / Verifier |
+| --- | --- | --- | --- |
+| Interpret new owner request | Recover project intent, current commitments and applicable routine | Interpret steering within the assigned outcome | Report local ambiguity; do not select new project scope |
+| Select/revise outcome | Record actual owner selection or exercise explicitly delegated scope | Resolve technical choices inside that boundary; escalate changes to it | Return discoveries with impact and proposed disposition |
+| Prepare work | Provide outcome, NOW/TARGET context, authority, invariants and unknown frontier | Check sufficiency before decomposition; reject an inadequate handoff | Check local inputs and owned paths before acting |
+| Execute | Observe and resolve cross-assignment dependencies | Own coordination, integrated candidate and recovery | Implement or examine the assigned artifact; preserve role boundaries |
+| Accept evidence | Assess whether the delivered outcome matches intent; retain owner-reserved decisions | Inspect diffs and results, invalidate stale evidence, return evidence-qualified status | Report actual candidate, method, result and limitations |
+| Close or redirect | Record applicable management disposition and next selected work | Close the bounded execution with unresolved items explicit | Do not declare project acceptance, publication or unrelated work authorized |
+
+This is a responsibility map, not a voting group. A single agent assigned Steering
+and PM responsibilities does not constitute independent review. A fresh Master
+means a new bounded context with a durable assignment reference, not a worker
+stripped of surrounding constraints. Resuming the same assignment after a failure
+can replace a session without creating a new assignment or losing its authority.
+
+The assignment handoff needs project/checkout identity; selected card, plan and
+milestone; context/model revision and supported profile; scoped outcome and owned
+paths; invariants and prohibited effects; required evidence/review; and escalation
+conditions. The return identifies the integrated candidate, actual changes,
+verification and review records, deviations, unresolved uncertainty and proposed
+disposition. Raw chat history is optional supporting material, not the contract.
+
+### Classify a new message relative to current work first
+
+Before creating work, determine whether the message is (a) a factual question,
+(b) clarification within the active outcome, (c) a changed constraint/outcome,
+(d) a new independent proposal or (e) a lifecycle instruction such as resume.
+Then match the relevant routine family. This separates semantic request routing
+from scheduling and avoids one new card per chat message.
+
+A scope change needs a delta: previous outcome, new requested effect, affected
+invariants/consumers, evidence made stale and work that can continue. An agent
+must not call a material change “clarification” solely because the edited file
+is already inside its write scope. Conversely, a routine technical choice inside
+the accepted behavior must not trigger another owner approval prompt.
+
+Routing records should distinguish a proposed classification from a disposition
+actually applied. The service can check identity, compatible versions, references,
+role authorization, revision and required evidence. It cannot establish that the
+semantic classification or model is complete simply because the record validates.
+Persist a concise observable rationale and sources, not hidden reasoning traces.
+
+### Missing-routine lifecycle and authority
+
+Recommended procedure-gap path: observed gap → related-card lookup → triaged
+missing/conflicting/unavailable/incompatible coverage → candidate or no-change
+recommendation → selected trial → reviewed adoption → versioned distribution.
+The last steps are selected work, not automatic consequences of detecting a gap.
+
+Record the catalog and project refinement versions, intended effect, rejected
+candidate routes and the unmet obligation. A recurring unavailable service is
+primarily an operational failure; it does not justify redefining a routine.
+Repeated exceptions may indicate a bad match rule, a genuine domain specialization
+or an unnecessarily strict condition. Analyze those alternatives before creating
+another general rule. Local specializations keep an explicit relationship to their
+base and cannot silently relax a shared mandatory condition.
+
+A supplied role label such as `owner` or `reviewer` cannot grant transition rights.
+The proposed core needs caller/session-to-assignment binding and authority scoped
+to specific effects. A tool-call success is an observation; approval requires the
+appropriate recorded disposition. With unrestricted filesystem access, a local
+agent may still bypass the core. Report that coverage limit instead of claiming
+that an MCP interface makes such bypass impossible.
+
+### Small initial routine set
+
+Implementing all sixteen families would make the first pilot unnecessarily broad.
+Recommend four composed paths, reusing current instructions:
+
+1. **Inspect and triage:** answer/no-work, reuse current work, capture proposal,
+   or identify the precise missing prerequisite. Covers RT01/02/05 selectively.
+2. **Bounded Maintenance:** selected plan → ready handoff → task execution →
+   candidate verification → applicable review → return disposition. Covers the
+   relevant parts of RT07–12; no general-purpose workflow language is required.
+3. **Resume/reconcile:** recover durable identity, refresh observations, reconcile
+   incomplete record updates and invalidate only affected evidence. Covers RT14.
+4. **Procedure gap:** deduplicate and triage unknown/conflicting coverage while
+   continuing independent permitted work. Covers RT15; adoption remains RT16 work.
+
+Release can be represented as an unselected/denied extension in the first pilot.
+A later isolated release rehearsal exercises RT13 without publishing a product.
+The initial catalog is therefore a tested subset with explicit unsupported routes,
+not a claim that every project activity already has executable coverage.
+
+### Evaluation and remaining design choices
+
+Add supervisor-to-fresh-Master handoff, attempted self-approval and clarification
+versus scope-change cases to the existing analytical scenarios. Before runtime
+implementation, select exactly which write/tool surfaces the pilot can guard and
+how approval provenance is verified. Agree on an operation and recovery contract
+shared by MCP and the client rather than inventing different rules per transport.
+
+Measure whether the owner can resume without reconstructing chat, how often they
+must correct routing, and whether cards/plans are duplicated. Record both missed
+scope changes and false blocking. No numeric success threshold is invented from
+historical anecdotes; establish a baseline in the pilot and retain failures.

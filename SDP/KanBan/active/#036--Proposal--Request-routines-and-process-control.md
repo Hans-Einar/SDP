@@ -181,3 +181,5 @@ automatic spawning rule or grant publication/owner-decision authority to agents.
 2026-09-28T15:20:29.600210+00:00: EVT-KB-SDP-000217 — linked the shared StudyPlan and result index; remaining research planned, CardState unchanged.
 
 2026-09-28T21:31:58.382764+00:00: EVT-KB-SDP-000220 — owner starts RGS2 studies; backlog -> active/in-progress, implementation remains unselected.
+
+2026-09-28T21:35:03.525785+00:00: EVT-KB-SDP-000223 — RGS2-A-M2 delivers role/routing reconciliation and focused pilot recommendation; coordinated studies continue, CardState remains in-progress.

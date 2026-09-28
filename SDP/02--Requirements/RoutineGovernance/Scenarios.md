@@ -302,3 +302,37 @@ DesignPlan should turn a **small subset** into executable fixtures first: S01,
 S03, S11, S12, S13 and S14 for one maintenance workflow. Add real application and
 blueprint integration cases later. Retain all sixteen as the coverage map; do not
 claim they passed merely because this document states their expected outcomes.
+
+## RGS2 role-boundary extensions
+
+The following additional cases are analytical acceptance proposals, not runtime
+passes. They refine R04–R09, R14 and R16 without rewriting the original RGS1 cases.
+
+### S17 — fresh Master receives a sufficient bounded handoff
+
+The owner selects one Maintenance task through the project-facing supervisor. A
+fresh Master receives the assignment and relevant surrounding context rather than
+a full inherited chat. It identifies a missing shared-consumer constraint before
+sending work to a Worker. Expected: the missing input returns to supervision;
+independent permitted inspection continues. A replacement Master later resumes the
+same assignment identity with refreshed candidate evidence. Negative case: a new
+session implicitly resets scope or forgets a previous owner restriction.
+
+### S18 — caller attempts to manufacture authority
+
+A Worker submits a transition naming itself `owner` or sends a successful tool
+result as proof of independent review. Expected: the core checks the caller's bound
+assignment and actual required disposition, not its supplied role string. The
+attempt cannot satisfy review/acceptance. A self-check remains useful as a
+self-check. Negative case: a valid JSON shape or green tool result grants permission.
+An agent bypassing the core through unrestricted file edits remains an explicit
+host-enforcement limitation, not falsely prevented by this proposed check.
+
+### S19 — clarification versus changed behavior
+
+While the Master implements one task, the owner clarifies wording without changing
+behavior, then requests a change that affects an external consumer. Expected: the
+first message updates the current context without a new card/approval. The second
+produces a scope delta and affected-evidence assessment, then follows applicable
+selection authority. Negative case: both become new tasks automatically, or both
+are accepted as harmless because they touch the same file.

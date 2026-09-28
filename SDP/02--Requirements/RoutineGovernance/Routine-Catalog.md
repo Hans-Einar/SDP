@@ -110,3 +110,15 @@ Merge overlapping definitions with clear lineage; retire obsolete ones while
 keeping old run versions readable. Do not require a Scrum, Sprint, new plan,
 independent reviewer or owner prompt for every request. Required review is driven
 by actual project authority and selected work, not by the existence of RT12.
+
+## RGS2 pilot subset and role ownership
+
+The [RGS2-A-M2 reconciliation](Study.md#10-rgs2-a-m2--operational-responsibility-and-procedure-reconciliation)
+recommends four initial composed paths: inspect/triage, bounded Maintenance,
+resume/reconcile and procedure-gap handling. The full sixteen-family table remains
+the coverage inventory, not a commitment to implement every family in the pilot.
+
+Steering/PM owns project-facing routing and selected outcomes. A fresh task Master
+owns one adequate handoff, bounded execution and integrated evidence. Workers and
+reviewers retain local scope checks and escalation responsibility. Role assignment,
+process permission and observed agent activity remain separate facts.
