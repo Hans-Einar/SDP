@@ -107,6 +107,16 @@ where this registry belongs during planning; no new directory is assumed here.
   matching active plan should not be recreated, and explicit owner authorization
   should not trigger repeated permission requests.
 
+## Owner extension — observable execution
+
+The owner also requests an MCP-connected state machine and a live side-by-side
+terminal flowchart, with drill-down into routines, approvals and agent assignment
+checklists. [KB-SDP-037](%23037--Proposal--Observable-routine-state-machine.md)
+now owns that runtime/observer capability. This card retains the entry/routing
+contract and initial skill-process Maintenance scope. Align the routine identity,
+version and evidence contracts; do not grow the initial Maintenance task into a
+new workflow engine without a separate selected plan.
+
 ## Next action and completion criteria
 
 Select a proportionate MaintenancePlan to inventory current routes and design a
@@ -130,3 +140,4 @@ No reopening of completed cards or MCP implementation is implied by this link.
 | Time (RFC3339) | Actor / event | Work, finding or decision | Evidence / remaining work |
 | --- | --- | --- | --- |
 | 2026-09-27T23:51:37.811184+00:00 | codex; EVT-KB-SDP-000207 | Captured owner direction and proposed routine/category/activation contract during RP3 closeout | Registration only; select the MaintenancePlan before implementation |
+| 2026-09-28T00:04:17.612149+00:00 | codex; EVT-KB-SDP-000209 | Linked owner extension for durable execution state and live visualization to KB-SDP-037 | Entry/routing scope retained; runtime/observer requires separate design and implementation planning |
