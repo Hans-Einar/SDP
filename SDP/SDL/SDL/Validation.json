@@ -1,0 +1,240 @@
+{
+  "baseline_commit": "ac50d52a322d7d981ee317325343693a21615a0d",
+  "scope": "Uncommitted new SDL ecosystem catalog only; no product changes",
+  "toolchain": "go version go1.27.1 linux/amd64",
+  "toolchain_command": "/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/bin/go",
+  "binary_sha256": "50ef0c77f84b93571842cecd4802be85693fc3733d878d1db70fe3a8114ca8bb",
+  "models": [
+    {
+      "system": "ActionRuntime",
+      "source": "SDP/SDL/SDL/ActionRuntime/System.design",
+      "sha256": "87fc3b9ffde08b91e98b43f727b8dac0f4e59ca18ed69ae1b4af671ec38ef3dc",
+      "checks": [
+        {
+          "args": [
+            "check",
+            "SDP/SDL/SDL/ActionRuntime/System.design"
+          ],
+          "exit": 0
+        },
+        {
+          "args": [
+            "ast",
+            "SDP/SDL/SDL/ActionRuntime/System.design"
+          ],
+          "exit": 0
+        },
+        {
+          "args": [
+            "viewpoints",
+            "SDP/SDL/SDL/ActionRuntime/System.design",
+            "--format",
+            "static",
+            "--output",
+            "/tmp/eco-sdl-validation/ActionRuntime/views"
+          ],
+          "exit": 0
+        }
+      ],
+      "generated_files": 54
+    },
+    {
+      "system": "CodeGeneration",
+      "source": "SDP/SDL/SDL/CodeGeneration/System.design",
+      "sha256": "193bf721b74399a4b53393292fd6fd426ff19083d34120b9069ae699166010ab",
+      "checks": [
+        {
+          "args": [
+            "check",
+            "SDP/SDL/SDL/CodeGeneration/System.design"
+          ],
+          "exit": 0
+        },
+        {
+          "args": [
+            "ast",
+            "SDP/SDL/SDL/CodeGeneration/System.design"
+          ],
+          "exit": 0
+        },
+        {
+          "args": [
+            "viewpoints",
+            "SDP/SDL/SDL/CodeGeneration/System.design",
+            "--format",
+            "static",
+            "--output",
+            "/tmp/eco-sdl-validation/CodeGeneration/views"
+          ],
+          "exit": 0
+        }
+      ],
+      "generated_files": 48
+    },
+    {
+      "system": "DevelopmentHost",
+      "source": "SDP/SDL/SDL/DevelopmentHost/System.design",
+      "sha256": "e974f2d9c15d135e55bd365979007b02d7594526e43401d3c256e80d96f26cc0",
+      "checks": [
+        {
+          "args": [
+            "check",
+            "SDP/SDL/SDL/DevelopmentHost/System.design"
+          ],
+          "exit": 0
+        },
+        {
+          "args": [
+            "ast",
+            "SDP/SDL/SDL/DevelopmentHost/System.design"
+          ],
+          "exit": 0
+        },
+        {
+          "args": [
+            "viewpoints",
+            "SDP/SDL/SDL/DevelopmentHost/System.design",
+            "--format",
+            "static",
+            "--output",
+            "/tmp/eco-sdl-validation/DevelopmentHost/views"
+          ],
+          "exit": 0
+        }
+      ],
+      "generated_files": 48
+    },
+    {
+      "system": "DocumentService",
+      "source": "SDP/SDL/SDL/DocumentService/System.design",
+      "sha256": "b11b4581cbbafa45bf8344aa36ba2429b80666045d037793d3b2114dcafc98a5",
+      "checks": [
+        {
+          "args": [
+            "check",
+            "SDP/SDL/SDL/DocumentService/System.design"
+          ],
+          "exit": 0
+        },
+        {
+          "args": [
+            "ast",
+            "SDP/SDL/SDL/DocumentService/System.design"
+          ],
+          "exit": 0
+        },
+        {
+          "args": [
+            "viewpoints",
+            "SDP/SDL/SDL/DocumentService/System.design",
+            "--format",
+            "static",
+            "--output",
+            "/tmp/eco-sdl-validation/DocumentService/views"
+          ],
+          "exit": 0
+        }
+      ],
+      "generated_files": 58
+    },
+    {
+      "system": "DocumentSnapshot",
+      "source": "SDP/SDL/SDL/DocumentSnapshot/System.design",
+      "sha256": "b09ec5f5d76cd8423683cce743bbc60e8adb1e232931b3f8d99d134e434eb2b6",
+      "checks": [
+        {
+          "args": [
+            "check",
+            "SDP/SDL/SDL/DocumentSnapshot/System.design"
+          ],
+          "exit": 0
+        },
+        {
+          "args": [
+            "ast",
+            "SDP/SDL/SDL/DocumentSnapshot/System.design"
+          ],
+          "exit": 0
+        },
+        {
+          "args": [
+            "viewpoints",
+            "SDP/SDL/SDL/DocumentSnapshot/System.design",
+            "--format",
+            "static",
+            "--output",
+            "/tmp/eco-sdl-validation/DocumentSnapshot/views"
+          ],
+          "exit": 0
+        }
+      ],
+      "generated_files": 48
+    },
+    {
+      "system": "Frontend",
+      "source": "SDP/SDL/SDL/Frontend/System.design",
+      "sha256": "450b5b3d25ff1cec9b4b109cd57ee2b29601fba9a632de087f3e622e1f86d7fc",
+      "checks": [
+        {
+          "args": [
+            "check",
+            "SDP/SDL/SDL/Frontend/System.design"
+          ],
+          "exit": 0
+        },
+        {
+          "args": [
+            "ast",
+            "SDP/SDL/SDL/Frontend/System.design"
+          ],
+          "exit": 0
+        },
+        {
+          "args": [
+            "viewpoints",
+            "SDP/SDL/SDL/Frontend/System.design",
+            "--format",
+            "static",
+            "--output",
+            "/tmp/eco-sdl-validation/Frontend/views"
+          ],
+          "exit": 0
+        }
+      ],
+      "generated_files": 48
+    },
+    {
+      "system": "Viewpoints",
+      "source": "SDP/SDL/SDL/Viewpoints/System.design",
+      "sha256": "9123429545d428b99ef311f5929dbe8fda8a67bbdf7e92c41f520c57aa0a96fe",
+      "checks": [
+        {
+          "args": [
+            "check",
+            "SDP/SDL/SDL/Viewpoints/System.design"
+          ],
+          "exit": 0
+        },
+        {
+          "args": [
+            "ast",
+            "SDP/SDL/SDL/Viewpoints/System.design"
+          ],
+          "exit": 0
+        },
+        {
+          "args": [
+            "viewpoints",
+            "SDP/SDL/SDL/Viewpoints/System.design",
+            "--format",
+            "static",
+            "--output",
+            "/tmp/eco-sdl-validation/Viewpoints/views"
+          ],
+          "exit": 0
+        }
+      ],
+      "generated_files": 48
+    }
+  ]
+}

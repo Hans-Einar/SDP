@@ -1,0 +1,135 @@
+language design-core version 0.5.
+unit AstParser.
+functionality BuildPositionedAst.
+functionality CompileSource.
+scenario CompileUiAccepted.
+channel CompileUiCalls.
+contract CompileUiInput.
+contract CompileUiOutput.
+contract CompileUiProtocol.
+message CompileUiRejected.
+scenario CompileUiRejectedScenario.
+message CompileUiRequest.
+message CompileUiResult.
+field DiagnosticText.
+field EntryName.
+functionality ExpandReusableDefinitions.
+unit Frontend.
+usecase InspectUiDefinition.
+unit Lexer.
+interface LocalProfilePort.
+field ModelProjection.
+unit Normalizer.
+functionality PreserveInstancePaths.
+unit ProfileValidator.
+contract RejectionDiagnostic.
+field RejectionText.
+functionality ReturnSourceDiagnostics.
+container SduiCommand.
+unit SourceCaller.
+mode SourceInspection.
+field SourceText.
+interface SourceTextPort.
+functionality TokenizeSource.
+actor UiAuthor.
+interface UiCompilePort.
+capability UiSourceCompilation.
+functionality ValidateLocalWidgets.
+functionality ValidateRelativeFormatting.
+functionality ValidateSymbolicBindings.
+feature ValidatedUiModels.
+AstParser owns BuildPositionedAst.
+BuildPositionedAst allocated-to SduiCommand in mode SourceInspection.
+BuildPositionedAst contributes-to ValidatedUiModels.
+BuildPositionedAst realizes UiSourceCompilation.
+CompileSource allocated-to SduiCommand in mode SourceInspection.
+CompileSource contributes-to ValidatedUiModels.
+CompileSource realizes UiSourceCompilation.
+CompileUiAccepted exercises InspectUiDefinition.
+CompileUiAccepted has completeness = closed.
+CompileUiAccepted runs-in SourceInspection.
+CompileUiAccepted step 1 sends CompileUiRequest from SourceCaller to Frontend via CompileUiCalls.
+CompileUiAccepted step 2 sends CompileUiResult from Frontend to SourceCaller via CompileUiCalls reply-to 1.
+CompileUiCalls upholds CompileUiProtocol.
+CompileUiInput has completeness = closed.
+CompileUiInput has-field EntryName.
+CompileUiInput has-field SourceText.
+CompileUiOutput has completeness = closed.
+CompileUiOutput has-field DiagnosticText.
+CompileUiOutput has-field ModelProjection.
+CompileUiProtocol has completeness = closed.
+CompileUiProtocol permits CompileUiRejected.
+CompileUiProtocol permits CompileUiRequest.
+CompileUiProtocol permits CompileUiResult.
+CompileUiRejected has message-kind = result.
+CompileUiRejected replies-to CompileUiRequest.
+CompileUiRejected upholds RejectionDiagnostic.
+CompileUiRejectedScenario exercises InspectUiDefinition.
+CompileUiRejectedScenario has completeness = closed.
+CompileUiRejectedScenario runs-in SourceInspection.
+CompileUiRejectedScenario step 1 sends CompileUiRequest from SourceCaller to Frontend via CompileUiCalls.
+CompileUiRejectedScenario step 2 sends CompileUiRejected from Frontend to SourceCaller via CompileUiCalls reply-to 1.
+CompileUiRequest has message-kind = request.
+CompileUiRequest upholds CompileUiInput.
+CompileUiResult has message-kind = result.
+CompileUiResult replies-to CompileUiRequest.
+CompileUiResult upholds CompileUiOutput.
+DiagnosticText has presence = required.
+DiagnosticText has value-type = text.
+EntryName has presence = required.
+EntryName has value-type = text.
+ExpandReusableDefinitions allocated-to SduiCommand in mode SourceInspection.
+ExpandReusableDefinitions contributes-to ValidatedUiModels.
+ExpandReusableDefinitions realizes UiSourceCompilation.
+Frontend consumes SourceTextPort.
+Frontend contains AstParser.
+Frontend contains Lexer.
+Frontend contains Normalizer.
+Frontend contains ProfileValidator.
+Frontend owns CompileSource.
+Frontend owns ReturnSourceDiagnostics.
+Frontend provides UiSourceCompilation.
+Frontend uses CompileUiCalls as receiver of CompileUiRequest in mode SourceInspection.
+Frontend uses CompileUiCalls as sender of CompileUiRejected in mode SourceInspection.
+Frontend uses CompileUiCalls as sender of CompileUiResult in mode SourceInspection.
+Lexer owns TokenizeSource.
+ModelProjection has presence = required.
+ModelProjection has value-type = bytes.
+Normalizer owns ExpandReusableDefinitions.
+Normalizer owns PreserveInstancePaths.
+PreserveInstancePaths allocated-to SduiCommand in mode SourceInspection.
+PreserveInstancePaths contributes-to ValidatedUiModels.
+PreserveInstancePaths realizes UiSourceCompilation.
+ProfileValidator consumes LocalProfilePort.
+ProfileValidator owns ValidateLocalWidgets.
+ProfileValidator owns ValidateRelativeFormatting.
+ProfileValidator owns ValidateSymbolicBindings.
+RejectionDiagnostic has completeness = closed.
+RejectionDiagnostic has-field RejectionText.
+RejectionText has presence = required.
+RejectionText has value-type = text.
+ReturnSourceDiagnostics allocated-to SduiCommand in mode SourceInspection.
+ReturnSourceDiagnostics contributes-to ValidatedUiModels.
+ReturnSourceDiagnostics realizes UiSourceCompilation.
+SduiCommand contains Frontend.
+SourceCaller consumes UiCompilePort.
+SourceCaller uses CompileUiCalls as receiver of CompileUiRejected in mode SourceInspection.
+SourceCaller uses CompileUiCalls as receiver of CompileUiResult in mode SourceInspection.
+SourceCaller uses CompileUiCalls as sender of CompileUiRequest in mode SourceInspection.
+SourceText has presence = required.
+SourceText has value-type = text.
+TokenizeSource allocated-to SduiCommand in mode SourceInspection.
+TokenizeSource contributes-to ValidatedUiModels.
+TokenizeSource realizes UiSourceCompilation.
+UiAuthor pursues InspectUiDefinition.
+UiSourceCompilation requires UiCompilePort in mode SourceInspection.
+ValidateLocalWidgets allocated-to SduiCommand in mode SourceInspection.
+ValidateLocalWidgets contributes-to ValidatedUiModels.
+ValidateLocalWidgets realizes UiSourceCompilation.
+ValidateRelativeFormatting allocated-to SduiCommand in mode SourceInspection.
+ValidateRelativeFormatting contributes-to ValidatedUiModels.
+ValidateRelativeFormatting realizes UiSourceCompilation.
+ValidateSymbolicBindings allocated-to SduiCommand in mode SourceInspection.
+ValidateSymbolicBindings contributes-to ValidatedUiModels.
+ValidateSymbolicBindings realizes UiSourceCompilation.
+ValidatedUiModels supports InspectUiDefinition.

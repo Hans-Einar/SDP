@@ -31,3 +31,5 @@ The card covers this initial catalog, not every future system's implementation.
 - Selected and activated on 2026-09-29; source inventory and modeling begin.
 
 - E1-M1/E2-M1: five ProjectGovernance models and source maps delivered; Go structural checks, AST and viewpoint generation pass. New capabilities remain proposals.
+
+- E2-M2: seven SDL and five SDUI system models delivered, grounded in tracked Go packages/commands. Independent model checks, AST and viewpoint generation pass; packaging is not extracted.

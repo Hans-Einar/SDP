@@ -1,0 +1,59 @@
+language design-core version 0.5.
+interface AcceptedStatePort.
+functionality ApplyAcceptedWidgetState.
+functionality AttachOptionalDesignNavigation.
+unit DesignNavigationAdapter.
+activity ExistingCapability.
+usecase ExportAcceptedUiState.
+mode Exporting.
+activity IndependentPackaging.
+interface OptionalDesignPort.
+actor PrototypeAuthor.
+functionality PublishSnapshotBundle.
+functionality RenderUiSnapshot.
+interface SduiPresentationPort.
+container SnapshotCommandProcess.
+unit SnapshotComposer.
+interface SnapshotOutputPort.
+unit SnapshotPublisher.
+unit SnapshotStateAdapter.
+capability StaticUiEvidence.
+feature UiSnapshotExport.
+ApplyAcceptedWidgetState allocated-to SnapshotCommandProcess in mode Exporting.
+ApplyAcceptedWidgetState contributes-to UiSnapshotExport.
+ApplyAcceptedWidgetState realizes StaticUiEvidence.
+AttachOptionalDesignNavigation allocated-to SnapshotCommandProcess in mode Exporting.
+AttachOptionalDesignNavigation contributes-to UiSnapshotExport.
+AttachOptionalDesignNavigation realizes StaticUiEvidence.
+DesignNavigationAdapter consumes OptionalDesignPort.
+DesignNavigationAdapter owns AttachOptionalDesignNavigation.
+ExistingCapability addresses ApplyAcceptedWidgetState.
+ExistingCapability addresses AttachOptionalDesignNavigation.
+ExistingCapability addresses PublishSnapshotBundle.
+ExistingCapability addresses RenderUiSnapshot.
+ExistingCapability delivers UiSnapshotExport.
+ExistingCapability has implementation-status = implemented.
+IndependentPackaging has implementation-status = planned.
+PrototypeAuthor pursues ExportAcceptedUiState.
+PublishSnapshotBundle allocated-to SnapshotCommandProcess in mode Exporting.
+PublishSnapshotBundle contributes-to UiSnapshotExport.
+PublishSnapshotBundle realizes StaticUiEvidence.
+RenderUiSnapshot allocated-to SnapshotCommandProcess in mode Exporting.
+RenderUiSnapshot contributes-to UiSnapshotExport.
+RenderUiSnapshot realizes StaticUiEvidence.
+SnapshotCommandProcess contains DesignNavigationAdapter.
+SnapshotCommandProcess contains SnapshotComposer.
+SnapshotCommandProcess contains SnapshotPublisher.
+SnapshotCommandProcess contains SnapshotStateAdapter.
+SnapshotCommandProcess provides StaticUiEvidence.
+SnapshotComposer consumes SduiPresentationPort.
+SnapshotComposer owns RenderUiSnapshot.
+SnapshotPublisher consumes SnapshotOutputPort.
+SnapshotPublisher owns PublishSnapshotBundle.
+SnapshotStateAdapter consumes AcceptedStatePort.
+SnapshotStateAdapter owns ApplyAcceptedWidgetState.
+StaticUiEvidence requires AcceptedStatePort in mode Exporting.
+StaticUiEvidence requires OptionalDesignPort in mode Exporting.
+StaticUiEvidence requires SduiPresentationPort in mode Exporting.
+StaticUiEvidence requires SnapshotOutputPort in mode Exporting.
+UiSnapshotExport supports ExportAcceptedUiState.

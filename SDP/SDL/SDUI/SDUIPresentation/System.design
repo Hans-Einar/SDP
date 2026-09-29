@@ -1,0 +1,146 @@
+language design-core version 0.5.
+functionality ClipPaintAndHitRegions.
+interface ConfiguredMermaidPort.
+field DiagnosticText.
+unit ExportCaller.
+functionality ExportConsoleTree.
+functionality ExportMarkdownTree.
+usecase ExportUiPreview.
+field InstanceProjection.
+unit LayoutEngine.
+unit MarkdownProvider.
+functionality MeasureMarkdown.
+functionality MeasureRelativeTracks.
+capability MeasuredUiPresentation.
+interface MeasurementPort.
+interface NormalizedUiPort.
+functionality PrepareDiagramResources.
+functionality PreparePresentation.
+unit PresentationPipeline.
+interface PresentationPort.
+actor PrototypeReviewer.
+functionality PublishStaticExport.
+contract RejectionDiagnostic.
+field RejectionText.
+functionality RenderSharedGeometry.
+scenario RenderUiAccepted.
+channel RenderUiCalls.
+contract RenderUiInput.
+contract RenderUiOutput.
+contract RenderUiProtocol.
+message RenderUiRejected.
+scenario RenderUiRejectedScenario.
+message RenderUiRequest.
+message RenderUiResult.
+functionality ResolveAspectAndScale.
+container SduiExportCommand.
+feature SharedUiGeometry.
+mode StaticExport.
+unit StructuralExporter.
+field SvgDocument.
+unit SvgWriter.
+field ViewportHeight.
+field ViewportWidth.
+ClipPaintAndHitRegions allocated-to SduiExportCommand in mode StaticExport.
+ClipPaintAndHitRegions contributes-to SharedUiGeometry.
+ClipPaintAndHitRegions realizes MeasuredUiPresentation.
+DiagnosticText has presence = required.
+DiagnosticText has value-type = text.
+ExportCaller consumes PresentationPort.
+ExportCaller uses RenderUiCalls as receiver of RenderUiRejected in mode StaticExport.
+ExportCaller uses RenderUiCalls as receiver of RenderUiResult in mode StaticExport.
+ExportCaller uses RenderUiCalls as sender of RenderUiRequest in mode StaticExport.
+ExportConsoleTree allocated-to SduiExportCommand in mode StaticExport.
+ExportConsoleTree contributes-to SharedUiGeometry.
+ExportConsoleTree realizes MeasuredUiPresentation.
+ExportMarkdownTree allocated-to SduiExportCommand in mode StaticExport.
+ExportMarkdownTree contributes-to SharedUiGeometry.
+ExportMarkdownTree realizes MeasuredUiPresentation.
+InstanceProjection has presence = required.
+InstanceProjection has value-type = bytes.
+LayoutEngine consumes MeasurementPort.
+LayoutEngine owns ClipPaintAndHitRegions.
+LayoutEngine owns MeasureRelativeTracks.
+LayoutEngine owns ResolveAspectAndScale.
+MarkdownProvider consumes ConfiguredMermaidPort.
+MarkdownProvider owns MeasureMarkdown.
+MarkdownProvider owns PrepareDiagramResources.
+MeasureMarkdown allocated-to SduiExportCommand in mode StaticExport.
+MeasureMarkdown contributes-to SharedUiGeometry.
+MeasureMarkdown realizes MeasuredUiPresentation.
+MeasureRelativeTracks allocated-to SduiExportCommand in mode StaticExport.
+MeasureRelativeTracks contributes-to SharedUiGeometry.
+MeasureRelativeTracks realizes MeasuredUiPresentation.
+MeasuredUiPresentation requires PresentationPort in mode StaticExport.
+PrepareDiagramResources allocated-to SduiExportCommand in mode StaticExport.
+PrepareDiagramResources contributes-to SharedUiGeometry.
+PrepareDiagramResources realizes MeasuredUiPresentation.
+PreparePresentation allocated-to SduiExportCommand in mode StaticExport.
+PreparePresentation contributes-to SharedUiGeometry.
+PreparePresentation realizes MeasuredUiPresentation.
+PresentationPipeline consumes NormalizedUiPort.
+PresentationPipeline contains LayoutEngine.
+PresentationPipeline contains MarkdownProvider.
+PresentationPipeline contains StructuralExporter.
+PresentationPipeline contains SvgWriter.
+PresentationPipeline owns PreparePresentation.
+PresentationPipeline owns PublishStaticExport.
+PresentationPipeline provides MeasuredUiPresentation.
+PresentationPipeline uses RenderUiCalls as receiver of RenderUiRequest in mode StaticExport.
+PresentationPipeline uses RenderUiCalls as sender of RenderUiRejected in mode StaticExport.
+PresentationPipeline uses RenderUiCalls as sender of RenderUiResult in mode StaticExport.
+PrototypeReviewer pursues ExportUiPreview.
+PublishStaticExport allocated-to SduiExportCommand in mode StaticExport.
+PublishStaticExport contributes-to SharedUiGeometry.
+PublishStaticExport realizes MeasuredUiPresentation.
+RejectionDiagnostic has completeness = closed.
+RejectionDiagnostic has-field RejectionText.
+RejectionText has presence = required.
+RejectionText has value-type = text.
+RenderSharedGeometry allocated-to SduiExportCommand in mode StaticExport.
+RenderSharedGeometry contributes-to SharedUiGeometry.
+RenderSharedGeometry realizes MeasuredUiPresentation.
+RenderUiAccepted exercises ExportUiPreview.
+RenderUiAccepted has completeness = closed.
+RenderUiAccepted runs-in StaticExport.
+RenderUiAccepted step 1 sends RenderUiRequest from ExportCaller to PresentationPipeline via RenderUiCalls.
+RenderUiAccepted step 2 sends RenderUiResult from PresentationPipeline to ExportCaller via RenderUiCalls reply-to 1.
+RenderUiCalls upholds RenderUiProtocol.
+RenderUiInput has completeness = closed.
+RenderUiInput has-field InstanceProjection.
+RenderUiInput has-field ViewportHeight.
+RenderUiInput has-field ViewportWidth.
+RenderUiOutput has completeness = closed.
+RenderUiOutput has-field DiagnosticText.
+RenderUiOutput has-field SvgDocument.
+RenderUiProtocol has completeness = closed.
+RenderUiProtocol permits RenderUiRejected.
+RenderUiProtocol permits RenderUiRequest.
+RenderUiProtocol permits RenderUiResult.
+RenderUiRejected has message-kind = result.
+RenderUiRejected replies-to RenderUiRequest.
+RenderUiRejected upholds RejectionDiagnostic.
+RenderUiRejectedScenario exercises ExportUiPreview.
+RenderUiRejectedScenario has completeness = closed.
+RenderUiRejectedScenario runs-in StaticExport.
+RenderUiRejectedScenario step 1 sends RenderUiRequest from ExportCaller to PresentationPipeline via RenderUiCalls.
+RenderUiRejectedScenario step 2 sends RenderUiRejected from PresentationPipeline to ExportCaller via RenderUiCalls reply-to 1.
+RenderUiRequest has message-kind = request.
+RenderUiRequest upholds RenderUiInput.
+RenderUiResult has message-kind = result.
+RenderUiResult replies-to RenderUiRequest.
+RenderUiResult upholds RenderUiOutput.
+ResolveAspectAndScale allocated-to SduiExportCommand in mode StaticExport.
+ResolveAspectAndScale contributes-to SharedUiGeometry.
+ResolveAspectAndScale realizes MeasuredUiPresentation.
+SduiExportCommand contains PresentationPipeline.
+SharedUiGeometry supports ExportUiPreview.
+StructuralExporter owns ExportConsoleTree.
+StructuralExporter owns ExportMarkdownTree.
+SvgDocument has presence = required.
+SvgDocument has value-type = text.
+SvgWriter owns RenderSharedGeometry.
+ViewportHeight has presence = required.
+ViewportHeight has value-type = decimal.
+ViewportWidth has presence = required.
+ViewportWidth has value-type = decimal.

@@ -1,0 +1,171 @@
+language design-core version 0.5.
+field AcceptedModelRevision.
+functionality CloseSession.
+field DiagnosticText.
+functionality DispatchRegisteredHandler.
+usecase DispatchTypedUiInteraction.
+scenario DispatchUiEventAccepted.
+channel DispatchUiEventCalls.
+contract DispatchUiEventInput.
+contract DispatchUiEventOutput.
+contract DispatchUiEventProtocol.
+message DispatchUiEventRejected.
+scenario DispatchUiEventRejectedScenario.
+message DispatchUiEventRequest.
+message DispatchUiEventResult.
+field DraftRevision.
+unit DraftStore.
+functionality EditLocalDraft.
+container EmbeddingApplication.
+field EventSequence.
+field EventValue.
+field HandleGeneration.
+field HandlePath.
+unit HostEventAdapter.
+field ModelRevision.
+mode OwnedSession.
+unit PropertyPublisher.
+functionality RegisterExplicitHandlers.
+interface RegisteredHandlerPort.
+functionality RejectDirtyValueConflicts.
+functionality RejectStaleCandidates.
+functionality RejectStaleEvents.
+contract RejectionDiagnostic.
+field RejectionText.
+unit ReloadReconciler.
+functionality RetainCompatibleNamedState.
+functionality RevertDraft.
+feature RevisionSafeUiSessions.
+functionality RevokeDeletedWidgets.
+functionality SnapshotPresentationState.
+functionality TrackTypedHandles.
+capability TypedSessionState.
+actor UiHostIntegrator.
+unit UiSession.
+interface UiSessionPort.
+functionality ValidateWholeBatch.
+interface ValidatedCandidatePort.
+unit WidgetStore.
+AcceptedModelRevision has presence = required.
+AcceptedModelRevision has value-type = unsigned.
+CloseSession allocated-to EmbeddingApplication in mode OwnedSession.
+CloseSession contributes-to RevisionSafeUiSessions.
+CloseSession realizes TypedSessionState.
+DiagnosticText has presence = required.
+DiagnosticText has value-type = text.
+DispatchRegisteredHandler allocated-to EmbeddingApplication in mode OwnedSession.
+DispatchRegisteredHandler contributes-to RevisionSafeUiSessions.
+DispatchRegisteredHandler realizes TypedSessionState.
+DispatchUiEventAccepted exercises DispatchTypedUiInteraction.
+DispatchUiEventAccepted has completeness = closed.
+DispatchUiEventAccepted runs-in OwnedSession.
+DispatchUiEventAccepted step 1 sends DispatchUiEventRequest from HostEventAdapter to UiSession via DispatchUiEventCalls.
+DispatchUiEventAccepted step 2 sends DispatchUiEventResult from UiSession to HostEventAdapter via DispatchUiEventCalls reply-to 1.
+DispatchUiEventCalls upholds DispatchUiEventProtocol.
+DispatchUiEventInput has completeness = closed.
+DispatchUiEventInput has-field DraftRevision.
+DispatchUiEventInput has-field EventSequence.
+DispatchUiEventInput has-field EventValue.
+DispatchUiEventInput has-field HandleGeneration.
+DispatchUiEventInput has-field HandlePath.
+DispatchUiEventInput has-field ModelRevision.
+DispatchUiEventOutput has completeness = closed.
+DispatchUiEventOutput has-field AcceptedModelRevision.
+DispatchUiEventOutput has-field DiagnosticText.
+DispatchUiEventProtocol has completeness = closed.
+DispatchUiEventProtocol permits DispatchUiEventRejected.
+DispatchUiEventProtocol permits DispatchUiEventRequest.
+DispatchUiEventProtocol permits DispatchUiEventResult.
+DispatchUiEventRejected has message-kind = result.
+DispatchUiEventRejected replies-to DispatchUiEventRequest.
+DispatchUiEventRejected upholds RejectionDiagnostic.
+DispatchUiEventRejectedScenario exercises DispatchTypedUiInteraction.
+DispatchUiEventRejectedScenario has completeness = closed.
+DispatchUiEventRejectedScenario runs-in OwnedSession.
+DispatchUiEventRejectedScenario step 1 sends DispatchUiEventRequest from HostEventAdapter to UiSession via DispatchUiEventCalls.
+DispatchUiEventRejectedScenario step 2 sends DispatchUiEventRejected from UiSession to HostEventAdapter via DispatchUiEventCalls reply-to 1.
+DispatchUiEventRequest has message-kind = request.
+DispatchUiEventRequest upholds DispatchUiEventInput.
+DispatchUiEventResult has message-kind = result.
+DispatchUiEventResult replies-to DispatchUiEventRequest.
+DispatchUiEventResult upholds DispatchUiEventOutput.
+DraftRevision has presence = required.
+DraftRevision has value-type = unsigned.
+DraftStore owns EditLocalDraft.
+DraftStore owns RevertDraft.
+EditLocalDraft allocated-to EmbeddingApplication in mode OwnedSession.
+EditLocalDraft contributes-to RevisionSafeUiSessions.
+EditLocalDraft realizes TypedSessionState.
+EmbeddingApplication contains UiSession.
+EventSequence has presence = required.
+EventSequence has value-type = unsigned.
+EventValue has presence = required.
+EventValue has value-type = text.
+HandleGeneration has presence = required.
+HandleGeneration has value-type = unsigned.
+HandlePath has presence = required.
+HandlePath has value-type = text.
+HostEventAdapter consumes UiSessionPort.
+HostEventAdapter uses DispatchUiEventCalls as receiver of DispatchUiEventRejected in mode OwnedSession.
+HostEventAdapter uses DispatchUiEventCalls as receiver of DispatchUiEventResult in mode OwnedSession.
+HostEventAdapter uses DispatchUiEventCalls as sender of DispatchUiEventRequest in mode OwnedSession.
+ModelRevision has presence = required.
+ModelRevision has value-type = unsigned.
+PropertyPublisher owns RejectDirtyValueConflicts.
+PropertyPublisher owns ValidateWholeBatch.
+RegisterExplicitHandlers allocated-to EmbeddingApplication in mode OwnedSession.
+RegisterExplicitHandlers contributes-to RevisionSafeUiSessions.
+RegisterExplicitHandlers realizes TypedSessionState.
+RejectDirtyValueConflicts allocated-to EmbeddingApplication in mode OwnedSession.
+RejectDirtyValueConflicts contributes-to RevisionSafeUiSessions.
+RejectDirtyValueConflicts realizes TypedSessionState.
+RejectStaleCandidates allocated-to EmbeddingApplication in mode OwnedSession.
+RejectStaleCandidates contributes-to RevisionSafeUiSessions.
+RejectStaleCandidates realizes TypedSessionState.
+RejectStaleEvents allocated-to EmbeddingApplication in mode OwnedSession.
+RejectStaleEvents contributes-to RevisionSafeUiSessions.
+RejectStaleEvents realizes TypedSessionState.
+RejectionDiagnostic has completeness = closed.
+RejectionDiagnostic has-field RejectionText.
+RejectionText has presence = required.
+RejectionText has value-type = text.
+ReloadReconciler consumes ValidatedCandidatePort.
+ReloadReconciler owns RejectStaleCandidates.
+ReloadReconciler owns RetainCompatibleNamedState.
+RetainCompatibleNamedState allocated-to EmbeddingApplication in mode OwnedSession.
+RetainCompatibleNamedState contributes-to RevisionSafeUiSessions.
+RetainCompatibleNamedState realizes TypedSessionState.
+RevertDraft allocated-to EmbeddingApplication in mode OwnedSession.
+RevertDraft contributes-to RevisionSafeUiSessions.
+RevertDraft realizes TypedSessionState.
+RevisionSafeUiSessions supports DispatchTypedUiInteraction.
+RevokeDeletedWidgets allocated-to EmbeddingApplication in mode OwnedSession.
+RevokeDeletedWidgets contributes-to RevisionSafeUiSessions.
+RevokeDeletedWidgets realizes TypedSessionState.
+SnapshotPresentationState allocated-to EmbeddingApplication in mode OwnedSession.
+SnapshotPresentationState contributes-to RevisionSafeUiSessions.
+SnapshotPresentationState realizes TypedSessionState.
+TrackTypedHandles allocated-to EmbeddingApplication in mode OwnedSession.
+TrackTypedHandles contributes-to RevisionSafeUiSessions.
+TrackTypedHandles realizes TypedSessionState.
+TypedSessionState requires UiSessionPort in mode OwnedSession.
+UiHostIntegrator pursues DispatchTypedUiInteraction.
+UiSession consumes RegisteredHandlerPort.
+UiSession contains DraftStore.
+UiSession contains PropertyPublisher.
+UiSession contains ReloadReconciler.
+UiSession contains WidgetStore.
+UiSession owns CloseSession.
+UiSession owns DispatchRegisteredHandler.
+UiSession owns RegisterExplicitHandlers.
+UiSession owns RejectStaleEvents.
+UiSession owns SnapshotPresentationState.
+UiSession provides TypedSessionState.
+UiSession uses DispatchUiEventCalls as receiver of DispatchUiEventRequest in mode OwnedSession.
+UiSession uses DispatchUiEventCalls as sender of DispatchUiEventRejected in mode OwnedSession.
+UiSession uses DispatchUiEventCalls as sender of DispatchUiEventResult in mode OwnedSession.
+ValidateWholeBatch allocated-to EmbeddingApplication in mode OwnedSession.
+ValidateWholeBatch contributes-to RevisionSafeUiSessions.
+ValidateWholeBatch realizes TypedSessionState.
+WidgetStore owns RevokeDeletedWidgets.
+WidgetStore owns TrackTypedHandles.

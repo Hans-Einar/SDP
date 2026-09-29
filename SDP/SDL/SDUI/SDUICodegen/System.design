@@ -1,0 +1,127 @@
+language design-core version 0.5.
+usecase BuildUiModelConstructors.
+functionality CompileUiSource.
+field DiagnosticText.
+functionality EmitConstructors.
+functionality EncodeDocumentLiteral.
+functionality EncodeInstanceLiteral.
+field EntryName.
+functionality FormatGeneratedGo.
+scenario GenerateUiGoAccepted.
+channel GenerateUiGoCalls.
+contract GenerateUiGoInput.
+contract GenerateUiGoOutput.
+contract GenerateUiGoProtocol.
+message GenerateUiGoRejected.
+scenario GenerateUiGoRejectedScenario.
+message GenerateUiGoRequest.
+message GenerateUiGoResult.
+field GeneratedGoSource.
+feature GeneratedUiModels.
+unit GenerationCaller.
+unit GoFormatter.
+interface GoFormattingPort.
+functionality HashOriginalSource.
+unit LiteralEncoder.
+mode ModelGeneration.
+field PackageName.
+contract RejectionDiagnostic.
+field RejectionText.
+container SdlGenerationCommand.
+unit SourceIdentity.
+field SourceText.
+actor UiApplicationBuilder.
+unit UiCodeGenerator.
+interface UiFrontendPort.
+interface UiGenerationPort.
+capability UiGoGeneration.
+functionality ValidatePackageName.
+CompileUiSource allocated-to SdlGenerationCommand in mode ModelGeneration.
+CompileUiSource contributes-to GeneratedUiModels.
+CompileUiSource realizes UiGoGeneration.
+DiagnosticText has presence = required.
+DiagnosticText has value-type = text.
+EmitConstructors allocated-to SdlGenerationCommand in mode ModelGeneration.
+EmitConstructors contributes-to GeneratedUiModels.
+EmitConstructors realizes UiGoGeneration.
+EncodeDocumentLiteral allocated-to SdlGenerationCommand in mode ModelGeneration.
+EncodeDocumentLiteral contributes-to GeneratedUiModels.
+EncodeDocumentLiteral realizes UiGoGeneration.
+EncodeInstanceLiteral allocated-to SdlGenerationCommand in mode ModelGeneration.
+EncodeInstanceLiteral contributes-to GeneratedUiModels.
+EncodeInstanceLiteral realizes UiGoGeneration.
+EntryName has presence = required.
+EntryName has value-type = text.
+FormatGeneratedGo allocated-to SdlGenerationCommand in mode ModelGeneration.
+FormatGeneratedGo contributes-to GeneratedUiModels.
+FormatGeneratedGo realizes UiGoGeneration.
+GenerateUiGoAccepted exercises BuildUiModelConstructors.
+GenerateUiGoAccepted has completeness = closed.
+GenerateUiGoAccepted runs-in ModelGeneration.
+GenerateUiGoAccepted step 1 sends GenerateUiGoRequest from GenerationCaller to UiCodeGenerator via GenerateUiGoCalls.
+GenerateUiGoAccepted step 2 sends GenerateUiGoResult from UiCodeGenerator to GenerationCaller via GenerateUiGoCalls reply-to 1.
+GenerateUiGoCalls upholds GenerateUiGoProtocol.
+GenerateUiGoInput has completeness = closed.
+GenerateUiGoInput has-field EntryName.
+GenerateUiGoInput has-field PackageName.
+GenerateUiGoInput has-field SourceText.
+GenerateUiGoOutput has completeness = closed.
+GenerateUiGoOutput has-field DiagnosticText.
+GenerateUiGoOutput has-field GeneratedGoSource.
+GenerateUiGoProtocol has completeness = closed.
+GenerateUiGoProtocol permits GenerateUiGoRejected.
+GenerateUiGoProtocol permits GenerateUiGoRequest.
+GenerateUiGoProtocol permits GenerateUiGoResult.
+GenerateUiGoRejected has message-kind = result.
+GenerateUiGoRejected replies-to GenerateUiGoRequest.
+GenerateUiGoRejected upholds RejectionDiagnostic.
+GenerateUiGoRejectedScenario exercises BuildUiModelConstructors.
+GenerateUiGoRejectedScenario has completeness = closed.
+GenerateUiGoRejectedScenario runs-in ModelGeneration.
+GenerateUiGoRejectedScenario step 1 sends GenerateUiGoRequest from GenerationCaller to UiCodeGenerator via GenerateUiGoCalls.
+GenerateUiGoRejectedScenario step 2 sends GenerateUiGoRejected from UiCodeGenerator to GenerationCaller via GenerateUiGoCalls reply-to 1.
+GenerateUiGoRequest has message-kind = request.
+GenerateUiGoRequest upholds GenerateUiGoInput.
+GenerateUiGoResult has message-kind = result.
+GenerateUiGoResult replies-to GenerateUiGoRequest.
+GenerateUiGoResult upholds GenerateUiGoOutput.
+GeneratedGoSource has presence = required.
+GeneratedGoSource has value-type = bytes.
+GeneratedUiModels supports BuildUiModelConstructors.
+GenerationCaller consumes UiGenerationPort.
+GenerationCaller uses GenerateUiGoCalls as receiver of GenerateUiGoRejected in mode ModelGeneration.
+GenerationCaller uses GenerateUiGoCalls as receiver of GenerateUiGoResult in mode ModelGeneration.
+GenerationCaller uses GenerateUiGoCalls as sender of GenerateUiGoRequest in mode ModelGeneration.
+GoFormatter consumes GoFormattingPort.
+GoFormatter owns FormatGeneratedGo.
+HashOriginalSource allocated-to SdlGenerationCommand in mode ModelGeneration.
+HashOriginalSource contributes-to GeneratedUiModels.
+HashOriginalSource realizes UiGoGeneration.
+LiteralEncoder owns EncodeDocumentLiteral.
+LiteralEncoder owns EncodeInstanceLiteral.
+PackageName has presence = required.
+PackageName has value-type = text.
+RejectionDiagnostic has completeness = closed.
+RejectionDiagnostic has-field RejectionText.
+RejectionText has presence = required.
+RejectionText has value-type = text.
+SdlGenerationCommand contains UiCodeGenerator.
+SourceIdentity owns HashOriginalSource.
+SourceText has presence = required.
+SourceText has value-type = text.
+UiApplicationBuilder pursues BuildUiModelConstructors.
+UiCodeGenerator consumes UiFrontendPort.
+UiCodeGenerator contains GoFormatter.
+UiCodeGenerator contains LiteralEncoder.
+UiCodeGenerator contains SourceIdentity.
+UiCodeGenerator owns CompileUiSource.
+UiCodeGenerator owns EmitConstructors.
+UiCodeGenerator owns ValidatePackageName.
+UiCodeGenerator provides UiGoGeneration.
+UiCodeGenerator uses GenerateUiGoCalls as receiver of GenerateUiGoRequest in mode ModelGeneration.
+UiCodeGenerator uses GenerateUiGoCalls as sender of GenerateUiGoRejected in mode ModelGeneration.
+UiCodeGenerator uses GenerateUiGoCalls as sender of GenerateUiGoResult in mode ModelGeneration.
+UiGoGeneration requires UiGenerationPort in mode ModelGeneration.
+ValidatePackageName allocated-to SdlGenerationCommand in mode ModelGeneration.
+ValidatePackageName contributes-to GeneratedUiModels.
+ValidatePackageName realizes UiGoGeneration.
