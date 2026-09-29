@@ -148,3 +148,7 @@ to backlog because its proposed capability is not implemented. The completed
 study plan remains linked as evidence; no implementation plan is activated here.
 
 2026-09-28T21:42:41.640062+00:00: EVT-KB-SDP-000228 — selected RGS2 research complete; active/in-progress -> backlog for unimplemented capability, with concrete study results and next-plan brief.
+
+## Ecosystem modeling outcome — 2026-09-29
+
+[PLAN-SDP-0008](../../03--Architecture/Ecosystems/Plan.md) adds a [bounded CodexClient architecture](../../SDL/ProjectGovernance/CodexClient/README.md) and registered SDL model. It applies RGS2 findings as proposed responsibilities and illustrative contracts. The implementation remains unselected; this backlog card remains open. Select a bounded DesignPlan against the shared catalog rather than creating a rival process engine.

@@ -43,6 +43,7 @@ Reproduction from repository root:
 ```sh
 SDP_GO=/absolute/path/to/go bash SDP/03--Architecture/Ecosystems/verify.sh /tmp/new-empty-ecosystem-review
 python3 SDP/ProjectManagement/validate.py
+python3 Toolkit/scripts/validate_sdp.py --repo .
 git diff --check
 ```
 
@@ -59,7 +60,17 @@ entries through Go/SDPTool, checked 277 local links and all seven SDL worker
 model hashes, and inspected selected runtime, generation, host, Markdown and
 board boundaries against their implementation. Its suggested maturity improvement
 for SDUI was applied as described above and the integrated checks were rerun.
-Final delta and lifecycle consistency are reviewed separately before closeout.
+The same independent reviewer subsequently approved the final delta and lifecycle
+closeout without material findings. It rechecked the five changed SDUI models,
+all 18 final result records, model/navigation/recipe/tool hashes, the 184-file
+tracked implementation fingerprint and exact aggregate counts. It resolved 359
+local links and confirmed both historical ledger prefixes and all old Traceability
+YAML entries remain unchanged, with exactly 18 new model-verification records.
+
+Final management validation passes: 48 cards, 23 management records, three lineage
+operations and 377 events. The Toolkit validator and whitespace checks also pass.
+Review establishes the bounded architecture delivery and record consistency;
+it does not establish runtime behavior, owner acceptance or successor authorization.
 
 ## Limits and retained work
 

@@ -28,3 +28,7 @@ as informational references, as the current contract requires.
 Initial architecture is included in [PLAN-SDP-0008](../../03--Architecture/Ecosystems/Plan.md).
 A bounded DesignPlan should select the first user workflow and interaction
 library after the owner reviews the catalog. Product implementation is unselected.
+
+## Ecosystem modeling outcome — 2026-09-29
+
+The [KanBanTUI model](../../SDL/ProjectGovernance/KanBanTUI/README.md) now parses and generates use case, architecture and sequence views. Its initial read-only workflow consumes SDPTool board services. The existing KanBanCLI model is separate and records the actual Bash helper. No TUI runtime/library choice was made. This proposal remains backlog for a bounded DesignPlan.

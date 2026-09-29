@@ -4,7 +4,7 @@
 | --- | --- |
 | id | PLAN-SDP-0008 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | ArchitecturePlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
@@ -41,7 +41,7 @@ KB-SDP-020 and KB-SDL-005 retain full migration and language support respectivel
 | E2 | E2-M1 | ProjectGovernance models: SDPTool, MCP, client, KanBan CLI and TUI | Delivered |
 | E2 | E2-M2 | SDL and SDUI tool models grounded in current Go packages and commands | Delivered |
 | E3 | E3-M1 | All model entries pass Go parser/semantic check and generate AST/viewpoints; reproducible catalog validation and navigation index | Delivered |
-| E3 | E3-M2 | Review scope/authority, record source hashes and evidence, update cards/traceability and handoff remaining work | Planned |
+| E3 | E3-M2 | Review scope/authority, record source hashes and evidence, update cards/traceability and handoff remaining work | Delivered |
 
 ## Git policy
 
@@ -64,14 +64,15 @@ MCP/app-server run or implementation-drift prevention is claimed by these checks
 
 - [RGS2 study and synthesis](../../02--Requirements/RoutineGovernance/StudyPlan.md)
 - [Source organization](../../SDL/README.md)
-- [KB039](../../KanBan/active/%23039--Change--Ecosystem-and-system-models.md)
+- [KB039](../../KanBan/completed/%23039--Change--Ecosystem-and-system-models.md)
 - [KB020 migration](../../KanBan/backlog/%23020--Change--Shared-design-source-organization.md)
 - [KB-SDL-005 source sets](../../KanBan/backlog/%23005--SDL--Change--System-and-source-sets.md)
 - [KB040 KanBan TUI](../../KanBan/backlog/%23040--Proposal--KanBan-TUI.md)
 
 ## Execution evidence
 
-Evidence and actual milestone outcomes will be linked here as delivered.
+[Evidence](Evidence.md) and its source-pinned JSON record establish the delivered
+milestones below, including final independent delta/closeout review.
 
 - E1-M1/E2-M1: five ProjectGovernance models and source maps delivered; Go structural checks, AST and viewpoint generation pass. New capabilities remain proposals.
 
@@ -80,3 +81,20 @@ Evidence and actual milestone outcomes will be linked here as delivered.
 - E3-M1: [catalog](../../SDL/Catalog.md), 18 registered model entries and
   [reproducible evidence](Evidence.md) delivered. All parse/AST/canonical checks,
   revision-bound navigation selections and selected static exports pass.
+
+- E3-M2: initial independent review approved the models and navigation; its SDUI
+  maturity suggestion was incorporated and all integrated checks passed again.
+  [Evidence](Evidence.md) owns the final review scope. KB039 closes for this
+  architecture delivery; the product and migration cards remain backlog.
+
+## Next bounded work
+
+- KB-SDL-005: System/source-set contract before splitting/migrating detailed models.
+- KB-SDP-020: lossless legacy model migration after that contract is available.
+- KB036–038: bounded routine-core/MCP/client DesignPlan using RGS2 and these models.
+- KB040: KanBanTUI read-only interaction design and library choice.
+- Ecosystem-aware native XFMD navigation remains its own workstream; current
+  SDPTool can already select the registered independent model IDs.
+
+No follow-up plan is activated by this closeout. Independent packaging, template
+adoption and release remain explicit future selections. No merge or release.

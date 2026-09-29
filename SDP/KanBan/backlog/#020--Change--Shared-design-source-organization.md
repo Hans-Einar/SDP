@@ -78,3 +78,7 @@ this card's migration is selected and verified. Parser support and registration
 are not inferred from directory structure. This card remains backlog.
 
 [Source guide](../../SDL/README.md) and [template work](../../Maintenance/TS1/Plan.md).
+
+## Ecosystem modeling outcome — 2026-09-29
+
+[PLAN-SDP-0008](../../03--Architecture/Ecosystems/Plan.md) establishes new tool boundary models under SDP/SDL/<Ecosystem>/<System>/. This refines the earlier three coarse system groups. The [catalog](../../SDL/Catalog.md) preserves old detailed model authority; this card still owns lossless migration, source references and reconciliation after KB-SDL-005. No existing monolithic model was moved or declared obsolete by the new catalog.
