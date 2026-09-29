@@ -93,8 +93,11 @@ sdptool /path/to/project discover
 sdptool /path/to/project view ip --model sdptool --viewer /path/to/xfmd --sdl-tool /path/to/sdl
 ```
 
-The repository registers two SDL model entries and explicitly defaults to sdptool;
-select --model sdl-sdui for the shared language design.
+The repository preserves the two detailed SDL model entries and explicitly defaults
+to sdptool; select --model sdl-sdui for the shared language design. The new
+[ecosystem catalog](../SDP/SDL/Catalog.md) registers separate bounded tool models
+and sdp-landscape. Select their listed IDs for on-demand navigation; current
+registration does not add native ecosystem grouping to the viewer.
 The viewer command waits until that window exits to keep generated navigation
 resources alive. Host options can also use SDP_XFMD, SDP_SDL_TOOL and SDP_MMDR.
 `generate ip` remains later scope and never runs implicitly while viewing.

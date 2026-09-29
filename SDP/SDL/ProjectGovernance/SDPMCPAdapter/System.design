@@ -1,0 +1,169 @@
+language design-core version 0.5.
+activity AdapterDelivery.
+feature AgentProcessAccess.
+interface CompatibleMcpTransport.
+mode Connected.
+message CoreAccepted.
+unit CoreBridge.
+channel CoreCalls.
+contract CoreCallsProtocol.
+scenario CoreOutcomeReturned.
+scenario CoreRefusalPreserved.
+message CoreRefused.
+message EvaluateOperation.
+functionality ExposeContextResource.
+unit ExternalMcpCaller.
+unit ExternalSdpToolCore.
+functionality ForwardBoundOperation.
+actor GovernedAgent.
+message InvokeTool.
+capability McpAccess.
+channel McpToolCalls.
+contract McpToolCallsProtocol.
+functionality PreserveOutcomeProvenance.
+unit ProtocolAdapter.
+unit ResultProjection.
+container SdpMcpHost.
+interface SdpToolApplicationService.
+contract ToolOperation.
+field ToolOperationAction.
+field ToolOperationCheckoutIdentity.
+field ToolOperationEvidenceReferences.
+field ToolOperationExpectedRevision.
+field ToolOperationIdempotencyKey.
+field ToolOperationProjectHandle.
+field ToolOperationRunIdentity.
+contract ToolOutcome.
+field ToolOutcomeCoverage.
+field ToolOutcomeDisposition.
+field ToolOutcomeOperationIdentity.
+field ToolOutcomeRevision.
+field ToolOutcomeSourceReferences.
+message ToolRefused.
+message ToolResult.
+usecase UseGovernedTools.
+functionality ValidateToolEnvelope.
+AdapterDelivery addresses ExposeContextResource.
+AdapterDelivery addresses ForwardBoundOperation.
+AdapterDelivery addresses PreserveOutcomeProvenance.
+AdapterDelivery addresses ValidateToolEnvelope.
+AdapterDelivery delivers AgentProcessAccess.
+AdapterDelivery has implementation-status = planned.
+AgentProcessAccess supports UseGovernedTools.
+CoreAccepted has message-kind = result.
+CoreAccepted replies-to EvaluateOperation.
+CoreAccepted upholds ToolOutcome.
+CoreBridge consumes SdpToolApplicationService.
+CoreBridge owns ForwardBoundOperation.
+CoreBridge uses CoreCalls as receiver of CoreAccepted in mode Connected.
+CoreBridge uses CoreCalls as receiver of CoreRefused in mode Connected.
+CoreBridge uses CoreCalls as sender of EvaluateOperation in mode Connected.
+CoreCalls upholds CoreCallsProtocol.
+CoreCallsProtocol has completeness = closed.
+CoreCallsProtocol permits CoreAccepted.
+CoreCallsProtocol permits CoreRefused.
+CoreCallsProtocol permits EvaluateOperation.
+CoreOutcomeReturned exercises UseGovernedTools.
+CoreOutcomeReturned has completeness = closed.
+CoreOutcomeReturned illustrates AdapterDelivery.
+CoreOutcomeReturned runs-in Connected.
+CoreOutcomeReturned step 1 sends InvokeTool from ExternalMcpCaller to ProtocolAdapter via McpToolCalls.
+CoreOutcomeReturned step 2 sends EvaluateOperation from CoreBridge to ExternalSdpToolCore via CoreCalls.
+CoreOutcomeReturned step 3 sends CoreAccepted from ExternalSdpToolCore to CoreBridge via CoreCalls reply-to 2.
+CoreOutcomeReturned step 4 sends ToolResult from ProtocolAdapter to ExternalMcpCaller via McpToolCalls reply-to 1.
+CoreRefusalPreserved exercises UseGovernedTools.
+CoreRefusalPreserved has completeness = closed.
+CoreRefusalPreserved illustrates AdapterDelivery.
+CoreRefusalPreserved runs-in Connected.
+CoreRefusalPreserved step 1 sends InvokeTool from ExternalMcpCaller to ProtocolAdapter via McpToolCalls.
+CoreRefusalPreserved step 2 sends EvaluateOperation from CoreBridge to ExternalSdpToolCore via CoreCalls.
+CoreRefusalPreserved step 3 sends CoreRefused from ExternalSdpToolCore to CoreBridge via CoreCalls reply-to 2.
+CoreRefusalPreserved step 4 sends ToolRefused from ProtocolAdapter to ExternalMcpCaller via McpToolCalls reply-to 1.
+CoreRefused has message-kind = result.
+CoreRefused replies-to EvaluateOperation.
+CoreRefused upholds ToolOutcome.
+EvaluateOperation has message-kind = request.
+EvaluateOperation upholds ToolOperation.
+ExposeContextResource allocated-to SdpMcpHost in mode Connected.
+ExposeContextResource contributes-to AgentProcessAccess.
+ExposeContextResource realizes McpAccess.
+ExternalMcpCaller uses McpToolCalls as receiver of ToolRefused in mode Connected.
+ExternalMcpCaller uses McpToolCalls as receiver of ToolResult in mode Connected.
+ExternalMcpCaller uses McpToolCalls as sender of InvokeTool in mode Connected.
+ExternalSdpToolCore uses CoreCalls as receiver of EvaluateOperation in mode Connected.
+ExternalSdpToolCore uses CoreCalls as sender of CoreAccepted in mode Connected.
+ExternalSdpToolCore uses CoreCalls as sender of CoreRefused in mode Connected.
+ForwardBoundOperation allocated-to SdpMcpHost in mode Connected.
+ForwardBoundOperation contributes-to AgentProcessAccess.
+ForwardBoundOperation realizes McpAccess.
+GovernedAgent pursues UseGovernedTools.
+InvokeTool has message-kind = request.
+InvokeTool upholds ToolOperation.
+McpAccess requires CompatibleMcpTransport in mode Connected.
+McpAccess requires SdpToolApplicationService in mode Connected.
+McpToolCalls upholds McpToolCallsProtocol.
+McpToolCallsProtocol has completeness = closed.
+McpToolCallsProtocol permits InvokeTool.
+McpToolCallsProtocol permits ToolRefused.
+McpToolCallsProtocol permits ToolResult.
+PreserveOutcomeProvenance allocated-to SdpMcpHost in mode Connected.
+PreserveOutcomeProvenance contributes-to AgentProcessAccess.
+PreserveOutcomeProvenance realizes McpAccess.
+ProtocolAdapter consumes CompatibleMcpTransport.
+ProtocolAdapter owns ExposeContextResource.
+ProtocolAdapter owns ValidateToolEnvelope.
+ProtocolAdapter uses McpToolCalls as receiver of InvokeTool in mode Connected.
+ProtocolAdapter uses McpToolCalls as sender of ToolRefused in mode Connected.
+ProtocolAdapter uses McpToolCalls as sender of ToolResult in mode Connected.
+ResultProjection owns PreserveOutcomeProvenance.
+SdpMcpHost contains CoreBridge.
+SdpMcpHost contains ProtocolAdapter.
+SdpMcpHost contains ResultProjection.
+SdpMcpHost provides McpAccess.
+ToolOperation has completeness = closed.
+ToolOperation has-field ToolOperationAction.
+ToolOperation has-field ToolOperationCheckoutIdentity.
+ToolOperation has-field ToolOperationEvidenceReferences.
+ToolOperation has-field ToolOperationExpectedRevision.
+ToolOperation has-field ToolOperationIdempotencyKey.
+ToolOperation has-field ToolOperationProjectHandle.
+ToolOperation has-field ToolOperationRunIdentity.
+ToolOperationAction has presence = required.
+ToolOperationAction has value-type = text.
+ToolOperationCheckoutIdentity has presence = required.
+ToolOperationCheckoutIdentity has value-type = text.
+ToolOperationEvidenceReferences has presence = required.
+ToolOperationEvidenceReferences has value-type = text.
+ToolOperationExpectedRevision has presence = required.
+ToolOperationExpectedRevision has value-type = text.
+ToolOperationIdempotencyKey has presence = required.
+ToolOperationIdempotencyKey has value-type = text.
+ToolOperationProjectHandle has presence = required.
+ToolOperationProjectHandle has value-type = text.
+ToolOperationRunIdentity has presence = required.
+ToolOperationRunIdentity has value-type = text.
+ToolOutcome has completeness = closed.
+ToolOutcome has-field ToolOutcomeCoverage.
+ToolOutcome has-field ToolOutcomeDisposition.
+ToolOutcome has-field ToolOutcomeOperationIdentity.
+ToolOutcome has-field ToolOutcomeRevision.
+ToolOutcome has-field ToolOutcomeSourceReferences.
+ToolOutcomeCoverage has presence = required.
+ToolOutcomeCoverage has value-type = text.
+ToolOutcomeDisposition has presence = required.
+ToolOutcomeDisposition has value-type = text.
+ToolOutcomeOperationIdentity has presence = required.
+ToolOutcomeOperationIdentity has value-type = text.
+ToolOutcomeRevision has presence = required.
+ToolOutcomeRevision has value-type = text.
+ToolOutcomeSourceReferences has presence = required.
+ToolOutcomeSourceReferences has value-type = text.
+ToolRefused has message-kind = result.
+ToolRefused replies-to InvokeTool.
+ToolRefused upholds ToolOutcome.
+ToolResult has message-kind = result.
+ToolResult replies-to InvokeTool.
+ToolResult upholds ToolOutcome.
+ValidateToolEnvelope allocated-to SdpMcpHost in mode Connected.
+ValidateToolEnvelope contributes-to AgentProcessAccess.
+ValidateToolEnvelope realizes McpAccess.

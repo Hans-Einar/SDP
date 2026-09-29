@@ -1,0 +1,58 @@
+language design-core version 0.5.
+unit ActionCompiler.
+unit CanonicalFormatter.
+functionality CheckClassModel.
+functionality CheckStructuralRelations.
+unit ClassChecker.
+functionality CompileActionModel.
+activity ExistingCapability.
+functionality FormatStructuralSource.
+activity IndependentPackaging.
+mode Inspecting.
+actor ModelAuthor.
+functionality ParseStructuralModel.
+container SdlCommandProcess.
+unit SemanticChecker.
+feature SourceInspection.
+interface SourceTextPort.
+unit StructuralParser.
+capability TypedSourceInspection.
+usecase ValidateSource.
+ActionCompiler owns CompileActionModel.
+CanonicalFormatter owns FormatStructuralSource.
+CheckClassModel allocated-to SdlCommandProcess in mode Inspecting.
+CheckClassModel contributes-to SourceInspection.
+CheckClassModel realizes TypedSourceInspection.
+CheckStructuralRelations allocated-to SdlCommandProcess in mode Inspecting.
+CheckStructuralRelations contributes-to SourceInspection.
+CheckStructuralRelations realizes TypedSourceInspection.
+ClassChecker owns CheckClassModel.
+CompileActionModel allocated-to SdlCommandProcess in mode Inspecting.
+CompileActionModel contributes-to SourceInspection.
+CompileActionModel realizes TypedSourceInspection.
+ExistingCapability addresses CheckClassModel.
+ExistingCapability addresses CheckStructuralRelations.
+ExistingCapability addresses CompileActionModel.
+ExistingCapability addresses FormatStructuralSource.
+ExistingCapability addresses ParseStructuralModel.
+ExistingCapability delivers SourceInspection.
+ExistingCapability has implementation-status = implemented.
+FormatStructuralSource allocated-to SdlCommandProcess in mode Inspecting.
+FormatStructuralSource contributes-to SourceInspection.
+FormatStructuralSource realizes TypedSourceInspection.
+IndependentPackaging has implementation-status = planned.
+ModelAuthor pursues ValidateSource.
+ParseStructuralModel allocated-to SdlCommandProcess in mode Inspecting.
+ParseStructuralModel contributes-to SourceInspection.
+ParseStructuralModel realizes TypedSourceInspection.
+SdlCommandProcess contains ActionCompiler.
+SdlCommandProcess contains CanonicalFormatter.
+SdlCommandProcess contains ClassChecker.
+SdlCommandProcess contains SemanticChecker.
+SdlCommandProcess contains StructuralParser.
+SdlCommandProcess provides TypedSourceInspection.
+SemanticChecker owns CheckStructuralRelations.
+SourceInspection supports ValidateSource.
+StructuralParser consumes SourceTextPort.
+StructuralParser owns ParseStructuralModel.
+TypedSourceInspection requires SourceTextPort in mode Inspecting.

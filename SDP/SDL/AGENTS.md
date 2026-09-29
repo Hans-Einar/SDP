@@ -1,7 +1,9 @@
 # SDL source authoring instructions
 
 Read README.md in this directory and the affected System's README before editing
-models. Keep system sources under their owning System, container details under
+models. Use <Ecosystem>/<System>/ for new system models (owner decision 2026-09-29).
+Ecosystems group products and do not imply deployment or SDL namespaces.
+Keep system sources under their owning System, container details under
 Containers, and declarative screens under SDUI/<UIContainer>. Shared libraries
 are not automatically containers. Do not create a separate SDP process per System.
 

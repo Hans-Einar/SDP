@@ -16,6 +16,114 @@
       "system": "SDL+SDUI",
       "source": "SDUI/design/architecture.design",
       "profile": "design-core/0.5"
+    },
+    {
+      "id": "pg-codex-client",
+      "system": "ProjectGovernance/CodexClient",
+      "source": "SDP/SDL/ProjectGovernance/CodexClient/System.design",
+      "profile": "design-core/0.5"
+    },
+    {
+      "id": "pg-kanban-cli",
+      "system": "ProjectGovernance/KanBanCLI",
+      "source": "SDP/SDL/ProjectGovernance/KanBanCLI/System.design",
+      "profile": "design-core/0.5"
+    },
+    {
+      "id": "pg-kanban-tui",
+      "system": "ProjectGovernance/KanBanTUI",
+      "source": "SDP/SDL/ProjectGovernance/KanBanTUI/System.design",
+      "profile": "design-core/0.5"
+    },
+    {
+      "id": "pg-mcp-adapter",
+      "system": "ProjectGovernance/SDPMCPAdapter",
+      "source": "SDP/SDL/ProjectGovernance/SDPMCPAdapter/System.design",
+      "profile": "design-core/0.5"
+    },
+    {
+      "id": "pg-sdptool",
+      "system": "ProjectGovernance/SDPTool",
+      "source": "SDP/SDL/ProjectGovernance/SDPTool/System.design",
+      "profile": "design-core/0.5"
+    },
+    {
+      "id": "sdl-action-runtime",
+      "system": "SDL/ActionRuntime",
+      "source": "SDP/SDL/SDL/ActionRuntime/System.design",
+      "profile": "design-core/0.5"
+    },
+    {
+      "id": "sdl-code-generation",
+      "system": "SDL/CodeGeneration",
+      "source": "SDP/SDL/SDL/CodeGeneration/System.design",
+      "profile": "design-core/0.5"
+    },
+    {
+      "id": "sdl-development-host",
+      "system": "SDL/DevelopmentHost",
+      "source": "SDP/SDL/SDL/DevelopmentHost/System.design",
+      "profile": "design-core/0.5"
+    },
+    {
+      "id": "sdl-document-service",
+      "system": "SDL/DocumentService",
+      "source": "SDP/SDL/SDL/DocumentService/System.design",
+      "profile": "design-core/0.5"
+    },
+    {
+      "id": "sdl-document-snapshot",
+      "system": "SDL/DocumentSnapshot",
+      "source": "SDP/SDL/SDL/DocumentSnapshot/System.design",
+      "profile": "design-core/0.5"
+    },
+    {
+      "id": "sdl-frontend",
+      "system": "SDL/Frontend",
+      "source": "SDP/SDL/SDL/Frontend/System.design",
+      "profile": "design-core/0.5"
+    },
+    {
+      "id": "sdl-viewpoints",
+      "system": "SDL/Viewpoints",
+      "source": "SDP/SDL/SDL/Viewpoints/System.design",
+      "profile": "design-core/0.5"
+    },
+    {
+      "id": "sdui-codegen",
+      "system": "SDUI/SDUICodegen",
+      "source": "SDP/SDL/SDUI/SDUICodegen/System.design",
+      "profile": "design-core/0.5"
+    },
+    {
+      "id": "sdui-frontend",
+      "system": "SDUI/SDUIFrontend",
+      "source": "SDP/SDL/SDUI/SDUIFrontend/System.design",
+      "profile": "design-core/0.5"
+    },
+    {
+      "id": "sdui-native-host",
+      "system": "SDUI/SDUINativeHost",
+      "source": "SDP/SDL/SDUI/SDUINativeHost/System.design",
+      "profile": "design-core/0.5"
+    },
+    {
+      "id": "sdui-presentation",
+      "system": "SDUI/SDUIPresentation",
+      "source": "SDP/SDL/SDUI/SDUIPresentation/System.design",
+      "profile": "design-core/0.5"
+    },
+    {
+      "id": "sdui-runtime",
+      "system": "SDUI/SDUIRuntime",
+      "source": "SDP/SDL/SDUI/SDUIRuntime/System.design",
+      "profile": "design-core/0.5"
+    },
+    {
+      "id": "sdp-landscape",
+      "system": "SDP landscape",
+      "source": "SDP/SDL/Landscape.design",
+      "profile": "design-core/0.5"
     }
   ],
   "sdui": [

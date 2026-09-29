@@ -1,0 +1,179 @@
+language design-core version 0.5.
+functionality AdoptValidatedCandidate.
+functionality CancelSourceWatch.
+unit CandidateController.
+interface CandidateSourcePort.
+functionality CloseNativeView.
+scenario CommitNativeInputAccepted.
+channel CommitNativeInputCalls.
+contract CommitNativeInputInput.
+contract CommitNativeInputOutput.
+contract CommitNativeInputProtocol.
+message CommitNativeInputRejected.
+scenario CommitNativeInputRejectedScenario.
+message CommitNativeInputRequest.
+message CommitNativeInputResult.
+functionality CommitOnEnter.
+functionality CreateNativeControls.
+field DiagnosticText.
+activity ExistingCapability.
+unit FyneAdapter.
+capability FyneSessionHosting.
+unit HostLifetime.
+activity IndependentPackaging.
+unit InputAdapter.
+field InputText.
+field InstancePath.
+feature InteractiveNativePrototype.
+functionality KeepLastValidUi.
+functionality MarshalCandidateToUiThread.
+field ModelRevision.
+functionality MuteProgrammaticEdits.
+mode NativePreview.
+interface NativeUiPort.
+unit NativeView.
+functionality PresentSessionSnapshot.
+actor PrototypeOperator.
+functionality ReflowFromSharedGeometry.
+functionality RegisterLocalPrototypeHandlers.
+contract RejectionDiagnostic.
+field RejectionText.
+functionality RevertOnEscape.
+usecase RunReloadableUiPrototype.
+container SduiFyneApplication.
+interface SharedGeometryPort.
+functionality TrackNativeFocus.
+interface UiSessionPort.
+unit UserInputSource.
+field VisibleValue.
+AdoptValidatedCandidate allocated-to SduiFyneApplication in mode NativePreview.
+AdoptValidatedCandidate contributes-to InteractiveNativePrototype.
+AdoptValidatedCandidate realizes FyneSessionHosting.
+CancelSourceWatch allocated-to SduiFyneApplication in mode NativePreview.
+CancelSourceWatch contributes-to InteractiveNativePrototype.
+CancelSourceWatch realizes FyneSessionHosting.
+CandidateController consumes CandidateSourcePort.
+CandidateController owns AdoptValidatedCandidate.
+CandidateController owns KeepLastValidUi.
+CandidateController owns MarshalCandidateToUiThread.
+CloseNativeView allocated-to SduiFyneApplication in mode NativePreview.
+CloseNativeView contributes-to InteractiveNativePrototype.
+CloseNativeView realizes FyneSessionHosting.
+CommitNativeInputAccepted exercises RunReloadableUiPrototype.
+CommitNativeInputAccepted has completeness = closed.
+CommitNativeInputAccepted runs-in NativePreview.
+CommitNativeInputAccepted step 1 sends CommitNativeInputRequest from UserInputSource to FyneAdapter via CommitNativeInputCalls.
+CommitNativeInputAccepted step 2 sends CommitNativeInputResult from FyneAdapter to UserInputSource via CommitNativeInputCalls reply-to 1.
+CommitNativeInputCalls upholds CommitNativeInputProtocol.
+CommitNativeInputInput has completeness = closed.
+CommitNativeInputInput has-field InputText.
+CommitNativeInputInput has-field InstancePath.
+CommitNativeInputInput has-field ModelRevision.
+CommitNativeInputOutput has completeness = closed.
+CommitNativeInputOutput has-field DiagnosticText.
+CommitNativeInputOutput has-field VisibleValue.
+CommitNativeInputProtocol has completeness = closed.
+CommitNativeInputProtocol permits CommitNativeInputRejected.
+CommitNativeInputProtocol permits CommitNativeInputRequest.
+CommitNativeInputProtocol permits CommitNativeInputResult.
+CommitNativeInputRejected has message-kind = result.
+CommitNativeInputRejected replies-to CommitNativeInputRequest.
+CommitNativeInputRejected upholds RejectionDiagnostic.
+CommitNativeInputRejectedScenario exercises RunReloadableUiPrototype.
+CommitNativeInputRejectedScenario has completeness = closed.
+CommitNativeInputRejectedScenario runs-in NativePreview.
+CommitNativeInputRejectedScenario step 1 sends CommitNativeInputRequest from UserInputSource to FyneAdapter via CommitNativeInputCalls.
+CommitNativeInputRejectedScenario step 2 sends CommitNativeInputRejected from FyneAdapter to UserInputSource via CommitNativeInputCalls reply-to 1.
+CommitNativeInputRequest has message-kind = request.
+CommitNativeInputRequest upholds CommitNativeInputInput.
+CommitNativeInputResult has message-kind = result.
+CommitNativeInputResult replies-to CommitNativeInputRequest.
+CommitNativeInputResult upholds CommitNativeInputOutput.
+CommitOnEnter allocated-to SduiFyneApplication in mode NativePreview.
+CommitOnEnter contributes-to InteractiveNativePrototype.
+CommitOnEnter realizes FyneSessionHosting.
+CreateNativeControls allocated-to SduiFyneApplication in mode NativePreview.
+CreateNativeControls contributes-to InteractiveNativePrototype.
+CreateNativeControls realizes FyneSessionHosting.
+DiagnosticText has presence = required.
+DiagnosticText has value-type = text.
+ExistingCapability addresses AdoptValidatedCandidate.
+ExistingCapability addresses CancelSourceWatch.
+ExistingCapability addresses CloseNativeView.
+ExistingCapability addresses CommitOnEnter.
+ExistingCapability addresses CreateNativeControls.
+ExistingCapability addresses KeepLastValidUi.
+ExistingCapability addresses MarshalCandidateToUiThread.
+ExistingCapability addresses MuteProgrammaticEdits.
+ExistingCapability addresses PresentSessionSnapshot.
+ExistingCapability addresses ReflowFromSharedGeometry.
+ExistingCapability addresses RegisterLocalPrototypeHandlers.
+ExistingCapability addresses RevertOnEscape.
+ExistingCapability addresses TrackNativeFocus.
+ExistingCapability delivers InteractiveNativePrototype.
+ExistingCapability has implementation-status = implemented.
+FyneAdapter consumes UiSessionPort.
+FyneAdapter contains CandidateController.
+FyneAdapter contains HostLifetime.
+FyneAdapter contains InputAdapter.
+FyneAdapter contains NativeView.
+FyneAdapter owns PresentSessionSnapshot.
+FyneAdapter owns RegisterLocalPrototypeHandlers.
+FyneAdapter provides FyneSessionHosting.
+FyneAdapter uses CommitNativeInputCalls as receiver of CommitNativeInputRequest in mode NativePreview.
+FyneAdapter uses CommitNativeInputCalls as sender of CommitNativeInputRejected in mode NativePreview.
+FyneAdapter uses CommitNativeInputCalls as sender of CommitNativeInputResult in mode NativePreview.
+FyneSessionHosting requires NativeUiPort in mode NativePreview.
+HostLifetime owns CancelSourceWatch.
+HostLifetime owns CloseNativeView.
+IndependentPackaging has implementation-status = planned.
+InputAdapter owns CommitOnEnter.
+InputAdapter owns RevertOnEscape.
+InputAdapter owns TrackNativeFocus.
+InputText has presence = required.
+InputText has value-type = text.
+InstancePath has presence = required.
+InstancePath has value-type = text.
+InteractiveNativePrototype supports RunReloadableUiPrototype.
+KeepLastValidUi allocated-to SduiFyneApplication in mode NativePreview.
+KeepLastValidUi contributes-to InteractiveNativePrototype.
+KeepLastValidUi realizes FyneSessionHosting.
+MarshalCandidateToUiThread allocated-to SduiFyneApplication in mode NativePreview.
+MarshalCandidateToUiThread contributes-to InteractiveNativePrototype.
+MarshalCandidateToUiThread realizes FyneSessionHosting.
+ModelRevision has presence = required.
+ModelRevision has value-type = unsigned.
+MuteProgrammaticEdits allocated-to SduiFyneApplication in mode NativePreview.
+MuteProgrammaticEdits contributes-to InteractiveNativePrototype.
+MuteProgrammaticEdits realizes FyneSessionHosting.
+NativeView consumes SharedGeometryPort.
+NativeView owns CreateNativeControls.
+NativeView owns MuteProgrammaticEdits.
+NativeView owns ReflowFromSharedGeometry.
+PresentSessionSnapshot allocated-to SduiFyneApplication in mode NativePreview.
+PresentSessionSnapshot contributes-to InteractiveNativePrototype.
+PresentSessionSnapshot realizes FyneSessionHosting.
+PrototypeOperator pursues RunReloadableUiPrototype.
+ReflowFromSharedGeometry allocated-to SduiFyneApplication in mode NativePreview.
+ReflowFromSharedGeometry contributes-to InteractiveNativePrototype.
+ReflowFromSharedGeometry realizes FyneSessionHosting.
+RegisterLocalPrototypeHandlers allocated-to SduiFyneApplication in mode NativePreview.
+RegisterLocalPrototypeHandlers contributes-to InteractiveNativePrototype.
+RegisterLocalPrototypeHandlers realizes FyneSessionHosting.
+RejectionDiagnostic has completeness = closed.
+RejectionDiagnostic has-field RejectionText.
+RejectionText has presence = required.
+RejectionText has value-type = text.
+RevertOnEscape allocated-to SduiFyneApplication in mode NativePreview.
+RevertOnEscape contributes-to InteractiveNativePrototype.
+RevertOnEscape realizes FyneSessionHosting.
+SduiFyneApplication contains FyneAdapter.
+TrackNativeFocus allocated-to SduiFyneApplication in mode NativePreview.
+TrackNativeFocus contributes-to InteractiveNativePrototype.
+TrackNativeFocus realizes FyneSessionHosting.
+UserInputSource consumes NativeUiPort.
+UserInputSource uses CommitNativeInputCalls as receiver of CommitNativeInputRejected in mode NativePreview.
+UserInputSource uses CommitNativeInputCalls as receiver of CommitNativeInputResult in mode NativePreview.
+UserInputSource uses CommitNativeInputCalls as sender of CommitNativeInputRequest in mode NativePreview.
+VisibleValue has presence = required.
+VisibleValue has value-type = text.

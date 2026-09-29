@@ -58,3 +58,7 @@ future source-set support still depends on this contract before model migration.
 The owner-authorized MVP1 pilot (PLAN-SDP-0005) now preserves 4,523 statements across 68 explicitly listed files with separate UI containers. Full navigation still requires System/source-set linking AND decisions on the candidate exercise profile; source assembly alone is insufficient. Revisions must cover all inputs. Do not use the inventory auditor as an SDL parser.
 
 [Pilot and navigation handoff](../../../experiments/mvp1_sdl/Navigation.md).
+
+## Ecosystem modeling outcome — 2026-09-29
+
+[PLAN-SDP-0008](../../03--Architecture/Ecosystems/Plan.md) now provides 17 small independent system models and an integration context model using current design-core 0.5. Real System/source-set linking is still absent. This corpus is a useful additional acceptance input: preserve standalone diagnostics/navigation, link declared public boundaries explicitly, and permit coherent per-system file splitting without an ad hoc preprocessor. The untracked sourceinput draft remains untouched and unadopted.
