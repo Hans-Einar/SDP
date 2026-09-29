@@ -16,9 +16,11 @@ message CommitNativeInputResult.
 functionality CommitOnEnter.
 functionality CreateNativeControls.
 field DiagnosticText.
+activity ExistingCapability.
 unit FyneAdapter.
 capability FyneSessionHosting.
 unit HostLifetime.
+activity IndependentPackaging.
 unit InputAdapter.
 field InputText.
 field InstancePath.
@@ -95,6 +97,21 @@ CreateNativeControls contributes-to InteractiveNativePrototype.
 CreateNativeControls realizes FyneSessionHosting.
 DiagnosticText has presence = required.
 DiagnosticText has value-type = text.
+ExistingCapability addresses AdoptValidatedCandidate.
+ExistingCapability addresses CancelSourceWatch.
+ExistingCapability addresses CloseNativeView.
+ExistingCapability addresses CommitOnEnter.
+ExistingCapability addresses CreateNativeControls.
+ExistingCapability addresses KeepLastValidUi.
+ExistingCapability addresses MarshalCandidateToUiThread.
+ExistingCapability addresses MuteProgrammaticEdits.
+ExistingCapability addresses PresentSessionSnapshot.
+ExistingCapability addresses ReflowFromSharedGeometry.
+ExistingCapability addresses RegisterLocalPrototypeHandlers.
+ExistingCapability addresses RevertOnEscape.
+ExistingCapability addresses TrackNativeFocus.
+ExistingCapability delivers InteractiveNativePrototype.
+ExistingCapability has implementation-status = implemented.
 FyneAdapter consumes UiSessionPort.
 FyneAdapter contains CandidateController.
 FyneAdapter contains HostLifetime.
@@ -109,6 +126,7 @@ FyneAdapter uses CommitNativeInputCalls as sender of CommitNativeInputResult in 
 FyneSessionHosting requires NativeUiPort in mode NativePreview.
 HostLifetime owns CancelSourceWatch.
 HostLifetime owns CloseNativeView.
+IndependentPackaging has implementation-status = planned.
 InputAdapter owns CommitOnEnter.
 InputAdapter owns RevertOnEscape.
 InputAdapter owns TrackNativeFocus.

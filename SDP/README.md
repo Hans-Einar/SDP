@@ -25,12 +25,16 @@ mean every consuming project has been upgraded.
 ## Authored system sources
 
 New system models follow [SDL source organization](SDL/README.md), under
-SDP/SDL/<System>/ with Containers, Shared, Contracts, Scenarios, Governance and
+SDP/SDL/<Ecosystem>/<System>/ with Containers, Shared, Contracts, Scenarios, Governance and
 system-owned SDUI screens. Numbered folders remain homes for authored process
 inputs, decisions, plans and generated reader views. Their earlier model links
 above are still authoritative: no existing .design files were moved by this
 convention update. KB-SDP-020 owns the remaining shared-model migration.
 [Template maintenance](Maintenance/TS1/Plan.md) records distribution and limits.
+
+The [ecosystem catalog](SDL/Catalog.md) indexes the new tool boundary models.
+[PLAN-SDP-0008](03--Architecture/Ecosystems/Plan.md) records their scope, current
+implementation evidence and reproducible SDL validation/navigation.
 
 ## Shared project records
 

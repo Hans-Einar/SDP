@@ -13,8 +13,10 @@ message CompileUiRequest.
 message CompileUiResult.
 field DiagnosticText.
 field EntryName.
+activity ExistingCapability.
 functionality ExpandReusableDefinitions.
 unit Frontend.
+activity IndependentPackaging.
 usecase InspectUiDefinition.
 unit Lexer.
 interface LocalProfilePort.
@@ -78,6 +80,17 @@ DiagnosticText has presence = required.
 DiagnosticText has value-type = text.
 EntryName has presence = required.
 EntryName has value-type = text.
+ExistingCapability addresses BuildPositionedAst.
+ExistingCapability addresses CompileSource.
+ExistingCapability addresses ExpandReusableDefinitions.
+ExistingCapability addresses PreserveInstancePaths.
+ExistingCapability addresses ReturnSourceDiagnostics.
+ExistingCapability addresses TokenizeSource.
+ExistingCapability addresses ValidateLocalWidgets.
+ExistingCapability addresses ValidateRelativeFormatting.
+ExistingCapability addresses ValidateSymbolicBindings.
+ExistingCapability delivers ValidatedUiModels.
+ExistingCapability has implementation-status = implemented.
 ExpandReusableDefinitions allocated-to SduiCommand in mode SourceInspection.
 ExpandReusableDefinitions contributes-to ValidatedUiModels.
 ExpandReusableDefinitions realizes UiSourceCompilation.
@@ -92,6 +105,7 @@ Frontend provides UiSourceCompilation.
 Frontend uses CompileUiCalls as receiver of CompileUiRequest in mode SourceInspection.
 Frontend uses CompileUiCalls as sender of CompileUiRejected in mode SourceInspection.
 Frontend uses CompileUiCalls as sender of CompileUiResult in mode SourceInspection.
+IndependentPackaging has implementation-status = planned.
 Lexer owns TokenizeSource.
 ModelProjection has presence = required.
 ModelProjection has value-type = bytes.

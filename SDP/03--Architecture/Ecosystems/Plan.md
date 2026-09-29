@@ -1,4 +1,4 @@
-# Ecosystem architecture and executable SDL model plan
+# Ecosystem architecture and validated SDL model plan
 
 | Field | Value |
 | --- | --- |
@@ -40,7 +40,7 @@ KB-SDP-020 and KB-SDL-005 retain full migration and language support respectivel
 | E1 | E1-M1 | Source inventory, boundary decisions, active card and updated source convention | Delivered |
 | E2 | E2-M1 | ProjectGovernance models: SDPTool, MCP, client, KanBan CLI and TUI | Delivered |
 | E2 | E2-M2 | SDL and SDUI tool models grounded in current Go packages and commands | Delivered |
-| E3 | E3-M1 | All model entries pass Go parser/semantic check and generate AST/viewpoints; reproducible catalog validation and navigation index | Planned |
+| E3 | E3-M1 | All model entries pass Go parser/semantic check and generate AST/viewpoints; reproducible catalog validation and navigation index | Delivered |
 | E3 | E3-M2 | Review scope/authority, record source hashes and evidence, update cards/traceability and handoff remaining work | Planned |
 
 ## Git policy
@@ -76,3 +76,7 @@ Evidence and actual milestone outcomes will be linked here as delivered.
 - E1-M1/E2-M1: five ProjectGovernance models and source maps delivered; Go structural checks, AST and viewpoint generation pass. New capabilities remain proposals.
 
 - E2-M2: seven SDL and five SDUI system models delivered, grounded in tracked Go packages/commands. Independent model checks, AST and viewpoint generation pass; packaging is not extracted.
+
+- E3-M1: [catalog](../../SDL/Catalog.md), 18 registered model entries and
+  [reproducible evidence](Evidence.md) delivered. All parse/AST/canonical checks,
+  revision-bound navigation selections and selected static exports pass.

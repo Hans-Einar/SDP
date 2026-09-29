@@ -2,10 +2,12 @@ language design-core version 0.5.
 functionality ClipPaintAndHitRegions.
 interface ConfiguredMermaidPort.
 field DiagnosticText.
+activity ExistingCapability.
 unit ExportCaller.
 functionality ExportConsoleTree.
 functionality ExportMarkdownTree.
 usecase ExportUiPreview.
+activity IndependentPackaging.
 field InstanceProjection.
 unit LayoutEngine.
 unit MarkdownProvider.
@@ -46,6 +48,18 @@ ClipPaintAndHitRegions contributes-to SharedUiGeometry.
 ClipPaintAndHitRegions realizes MeasuredUiPresentation.
 DiagnosticText has presence = required.
 DiagnosticText has value-type = text.
+ExistingCapability addresses ClipPaintAndHitRegions.
+ExistingCapability addresses ExportConsoleTree.
+ExistingCapability addresses ExportMarkdownTree.
+ExistingCapability addresses MeasureMarkdown.
+ExistingCapability addresses MeasureRelativeTracks.
+ExistingCapability addresses PrepareDiagramResources.
+ExistingCapability addresses PreparePresentation.
+ExistingCapability addresses PublishStaticExport.
+ExistingCapability addresses RenderSharedGeometry.
+ExistingCapability addresses ResolveAspectAndScale.
+ExistingCapability delivers SharedUiGeometry.
+ExistingCapability has implementation-status = implemented.
 ExportCaller consumes PresentationPort.
 ExportCaller uses RenderUiCalls as receiver of RenderUiRejected in mode StaticExport.
 ExportCaller uses RenderUiCalls as receiver of RenderUiResult in mode StaticExport.
@@ -56,6 +70,7 @@ ExportConsoleTree realizes MeasuredUiPresentation.
 ExportMarkdownTree allocated-to SduiExportCommand in mode StaticExport.
 ExportMarkdownTree contributes-to SharedUiGeometry.
 ExportMarkdownTree realizes MeasuredUiPresentation.
+IndependentPackaging has implementation-status = planned.
 InstanceProjection has presence = required.
 InstanceProjection has value-type = bytes.
 LayoutEngine consumes MeasurementPort.

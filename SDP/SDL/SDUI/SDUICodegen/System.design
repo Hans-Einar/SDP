@@ -6,6 +6,7 @@ functionality EmitConstructors.
 functionality EncodeDocumentLiteral.
 functionality EncodeInstanceLiteral.
 field EntryName.
+activity ExistingCapability.
 functionality FormatGeneratedGo.
 scenario GenerateUiGoAccepted.
 channel GenerateUiGoCalls.
@@ -22,6 +23,7 @@ unit GenerationCaller.
 unit GoFormatter.
 interface GoFormattingPort.
 functionality HashOriginalSource.
+activity IndependentPackaging.
 unit LiteralEncoder.
 mode ModelGeneration.
 field PackageName.
@@ -52,6 +54,15 @@ EncodeInstanceLiteral contributes-to GeneratedUiModels.
 EncodeInstanceLiteral realizes UiGoGeneration.
 EntryName has presence = required.
 EntryName has value-type = text.
+ExistingCapability addresses CompileUiSource.
+ExistingCapability addresses EmitConstructors.
+ExistingCapability addresses EncodeDocumentLiteral.
+ExistingCapability addresses EncodeInstanceLiteral.
+ExistingCapability addresses FormatGeneratedGo.
+ExistingCapability addresses HashOriginalSource.
+ExistingCapability addresses ValidatePackageName.
+ExistingCapability delivers GeneratedUiModels.
+ExistingCapability has implementation-status = implemented.
 FormatGeneratedGo allocated-to SdlGenerationCommand in mode ModelGeneration.
 FormatGeneratedGo contributes-to GeneratedUiModels.
 FormatGeneratedGo realizes UiGoGeneration.
@@ -97,6 +108,7 @@ GoFormatter owns FormatGeneratedGo.
 HashOriginalSource allocated-to SdlGenerationCommand in mode ModelGeneration.
 HashOriginalSource contributes-to GeneratedUiModels.
 HashOriginalSource realizes UiGoGeneration.
+IndependentPackaging has implementation-status = planned.
 LiteralEncoder owns EncodeDocumentLiteral.
 LiteralEncoder owns EncodeInstanceLiteral.
 PackageName has presence = required.

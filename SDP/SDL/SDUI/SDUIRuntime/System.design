@@ -19,9 +19,11 @@ functionality EditLocalDraft.
 container EmbeddingApplication.
 field EventSequence.
 field EventValue.
+activity ExistingCapability.
 field HandleGeneration.
 field HandlePath.
 unit HostEventAdapter.
+activity IndependentPackaging.
 field ModelRevision.
 mode OwnedSession.
 unit PropertyPublisher.
@@ -101,6 +103,21 @@ EventSequence has presence = required.
 EventSequence has value-type = unsigned.
 EventValue has presence = required.
 EventValue has value-type = text.
+ExistingCapability addresses CloseSession.
+ExistingCapability addresses DispatchRegisteredHandler.
+ExistingCapability addresses EditLocalDraft.
+ExistingCapability addresses RegisterExplicitHandlers.
+ExistingCapability addresses RejectDirtyValueConflicts.
+ExistingCapability addresses RejectStaleCandidates.
+ExistingCapability addresses RejectStaleEvents.
+ExistingCapability addresses RetainCompatibleNamedState.
+ExistingCapability addresses RevertDraft.
+ExistingCapability addresses RevokeDeletedWidgets.
+ExistingCapability addresses SnapshotPresentationState.
+ExistingCapability addresses TrackTypedHandles.
+ExistingCapability addresses ValidateWholeBatch.
+ExistingCapability delivers RevisionSafeUiSessions.
+ExistingCapability has implementation-status = implemented.
 HandleGeneration has presence = required.
 HandleGeneration has value-type = unsigned.
 HandlePath has presence = required.
@@ -109,6 +126,7 @@ HostEventAdapter consumes UiSessionPort.
 HostEventAdapter uses DispatchUiEventCalls as receiver of DispatchUiEventRejected in mode OwnedSession.
 HostEventAdapter uses DispatchUiEventCalls as receiver of DispatchUiEventResult in mode OwnedSession.
 HostEventAdapter uses DispatchUiEventCalls as sender of DispatchUiEventRequest in mode OwnedSession.
+IndependentPackaging has implementation-status = planned.
 ModelRevision has presence = required.
 ModelRevision has value-type = unsigned.
 PropertyPublisher owns RejectDirtyValueConflicts.
