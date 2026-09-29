@@ -53,3 +53,11 @@ revision references. A tag is a declared mapping, not proof of behavior. Assignm
 bundles must support NOW/baseline tests before work and TARGET/result tests after
 work, retaining unchanged-neighbor obligations. Coordinate PLAN-SDP-0001 and
 KB-SDL-006; no tag grammar or executable mapping is adopted by this clarification.
+
+## XFMD gap study input — 2026-09-29
+
+[Study and proposed acceptance](../../02--Requirements/XFMD-Gaps/Study.md).
+
+SDL-002/003: keep requirement identity, normative amendments, design assertions, implementation and evidence candidate/status distinct. XFMD retains its adopted evidence contract; this is not permission to impose a new local ledger schema.
+
+EVT-KB-SDP-000239: CardState remains backlog; this review selects no implementation.

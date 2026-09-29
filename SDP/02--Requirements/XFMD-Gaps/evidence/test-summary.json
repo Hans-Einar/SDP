@@ -1,0 +1,74 @@
+{
+  "sdl": {
+    "testEvents": {
+      "pass": 173,
+      "fail": 0,
+      "skip": 0
+    },
+    "topLevelTests": {
+      "pass": 13,
+      "fail": 0,
+      "skip": 0
+    },
+    "packages": [
+      {
+        "package": "github.com/Hans-Einar/SDP/SystemDesignLanguage/go/runtime",
+        "result": "pass"
+      },
+      {
+        "package": "github.com/Hans-Einar/SDP/SystemDesignLanguage/go/bridge",
+        "result": "pass"
+      },
+      {
+        "package": "github.com/Hans-Einar/SDP/SystemDesignLanguage/go/reload",
+        "result": "pass"
+      },
+      {
+        "package": "github.com/Hans-Einar/SDP/SystemDesignLanguage/go/parser",
+        "result": "pass"
+      }
+    ],
+    "skips": []
+  },
+  "sdui": {
+    "testEvents": {
+      "pass": 27,
+      "fail": 0,
+      "skip": 1
+    },
+    "topLevelTests": {
+      "pass": 21,
+      "fail": 0,
+      "skip": 1
+    },
+    "packages": [
+      {
+        "package": "github.com/Hans-Einar/SDP/SDUI/go/runtime",
+        "result": "pass"
+      },
+      {
+        "package": "github.com/Hans-Einar/SDP/SDUI/go/reload",
+        "result": "pass"
+      },
+      {
+        "package": "github.com/Hans-Einar/SDP/SDUI/go/markdown",
+        "result": "pass"
+      },
+      {
+        "package": "github.com/Hans-Einar/SDP/SDUI/go/codegen",
+        "result": "pass"
+      },
+      {
+        "package": "github.com/Hans-Einar/SDP/SDUI/go/layout",
+        "result": "pass"
+      },
+      {
+        "package": "github.com/Hans-Einar/SDP/SDUI/go/parser",
+        "result": "pass"
+      }
+    ],
+    "skips": [
+      "TestConfiguredRenderer"
+    ]
+  }
+}

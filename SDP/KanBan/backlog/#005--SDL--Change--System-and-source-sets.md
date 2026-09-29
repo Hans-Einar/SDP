@@ -62,3 +62,11 @@ The owner-authorized MVP1 pilot (PLAN-SDP-0005) now preserves 4,523 statements a
 ## Ecosystem modeling outcome — 2026-09-29
 
 [PLAN-SDP-0008](../../03--Architecture/Ecosystems/Plan.md) now provides 17 small independent system models and an integration context model using current design-core 0.5. Real System/source-set linking is still absent. This corpus is a useful additional acceptance input: preserve standalone diagnostics/navigation, link declared public boundaries explicitly, and permit coherent per-system file splitting without an ad hoc preprocessor. The untracked sourceinput draft remains untouched and unadopted.
+
+## XFMD gap study input — 2026-09-29
+
+[Study and proposed acceptance](../../02--Requirements/XFMD-Gaps/Study.md).
+
+SDL-001: retain explicit membership, original-source diagnostics and all-input revisions; verify both checker and navigation against the same source graph. The untracked draft remains unadopted.
+
+EVT-KB-SDL-000030: CardState remains backlog; this review selects no implementation.
