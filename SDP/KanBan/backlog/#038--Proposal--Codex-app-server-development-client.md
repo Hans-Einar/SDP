@@ -152,3 +152,12 @@ study plan remains linked as evidence; no implementation plan is activated here.
 ## Ecosystem modeling outcome — 2026-09-29
 
 [PLAN-SDP-0008](../../03--Architecture/Ecosystems/Plan.md) adds a [bounded CodexClient architecture](../../SDL/ProjectGovernance/CodexClient/README.md) and registered SDL model. It applies RGS2 findings as proposed responsibilities and illustrative contracts. The implementation remains unselected; this backlog card remains open. Select a bounded DesignPlan against the shared catalog rather than creating a rival process engine.
+
+## Session proposal — 2026-09-30
+
+[KB042](../backlog/%23042--Proposal--Goal-oriented-sessions-and-roadmaps.md) and
+[proposed SDL Session](../../Sessions/session-%230001--SDL_expansion.md).
+
+Client should capture submitted/steered prompts and completed visible final responses with thread/turn/item identity; preserve reconnect deduplication and distinguish observed activity from routine compliance.
+
+EVT-KB-SDP-000245: Existing CardState and execution selection unchanged.

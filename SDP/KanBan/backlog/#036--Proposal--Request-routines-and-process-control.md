@@ -202,3 +202,12 @@ study plan remains linked as evidence; no implementation plan is activated here.
 ## Ecosystem modeling outcome — 2026-09-29
 
 [PLAN-SDP-0008](../../03--Architecture/Ecosystems/Plan.md) adds a [bounded SDPTool architecture](../../SDL/ProjectGovernance/SDPTool/README.md) and registered SDL model. It applies RGS2 findings as proposed responsibilities and illustrative contracts. The implementation remains unselected; this backlog card remains open. Select a bounded DesignPlan against the shared catalog rather than creating a rival process engine.
+
+## Session proposal — 2026-09-30
+
+[KB042](../backlog/%23042--Proposal--Goal-oriented-sessions-and-roadmaps.md) and
+[proposed SDL Session](../../Sessions/session-%230001--SDL_expansion.md).
+
+Session entry/each scope-changing prompt needs request classification and routine selection; preserve existing ownership rather than a second entry workflow.
+
+EVT-KB-SDP-000243: Existing CardState and execution selection unchanged.

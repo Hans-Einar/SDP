@@ -70,3 +70,12 @@ The owner-authorized MVP1 pilot (PLAN-SDP-0005) now preserves 4,523 statements a
 SDL-001: retain explicit membership, original-source diagnostics and all-input revisions; verify both checker and navigation against the same source graph. The untracked draft remains unadopted.
 
 EVT-KB-SDL-000030: CardState remains backlog; this review selects no implementation.
+
+## Session proposal — 2026-09-30
+
+[KB042](../backlog/%23042--Proposal--Goal-oriented-sessions-and-roadmaps.md) and
+[proposed SDL Session](../../Sessions/session-%230001--SDL_expansion.md).
+
+The provisional SDL-expansion Session links this primary card to proposed design, implementation and verification steps. It is a roadmap, not execution authorization.
+
+EVT-KB-SDL-000033: Existing CardState and execution selection unchanged.

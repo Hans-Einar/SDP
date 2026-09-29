@@ -55,6 +55,7 @@
 | KB-SDP-041 | Study | completed | [XFMD-driven SDL and SDUI gaps](completed/%23041--Study--XFMD-driven-SDL-and-SDUI-gaps.md) |
 | KB-SDUI-003 | Proposal | backlog | [Capabilities and a bounded navigation pilot](backlog/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md) |
 | KB-SDUI-004 | Bug | backlog | [Text and Markdown fidelity across SDUI exports](backlog/%23004--SDUI--Bug--Text-and-Markdown-fidelity.md) |
+| KB-SDP-042 | Proposal | backlog | [Goal-oriented Sessions and roadmaps](backlog/%23042--Proposal--Goal-oriented-sessions-and-roadmaps.md) |
 
 ## Purpose and authority
 

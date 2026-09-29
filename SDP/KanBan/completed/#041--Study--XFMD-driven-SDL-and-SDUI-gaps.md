@@ -159,3 +159,12 @@ XFMD navigation responsibilities. Research remains complete. Git access is now
 restored and the owner requested the consolidated study recovery commit.
 
 - 2026-09-29T17:55:11.132172+00:00 — EVT-KB-SDP-000241: Record owner scope clarification and authorized Git recovery after study-time read-only restriction. Research remains completed; distinguish existing producer services from external XFMD integration.
+
+## Session proposal — 2026-09-30
+
+[KB042](../backlog/%23042--Proposal--Goal-oriented-sessions-and-roadmaps.md) and
+[proposed SDL Session](../../Sessions/session-%230001--SDL_expansion.md).
+
+The completed study is context for the provisional SDL-expansion Session, not work retroactively performed within it. Research stays completed.
+
+EVT-KB-SDP-000246: Existing CardState and execution selection unchanged.
