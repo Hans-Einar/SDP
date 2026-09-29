@@ -1,0 +1,132 @@
+language design-core version 0.5.
+message BoardAvailable.
+scenario BoardLoaded.
+capability BoardNavigation.
+unit BoardQuery.
+contract BoardQueryArguments.
+field BoardQueryArgumentsProjectRoot.
+actor BoardReader.
+channel BoardReads.
+contract BoardReadsProtocol.
+contract BoardSnapshotEnvelope.
+field BoardSnapshotEnvelopeCoverage.
+field BoardSnapshotEnvelopeDiagnostic.
+field BoardSnapshotEnvelopeInventoryRevision.
+field BoardSnapshotEnvelopeNodes.
+message BoardUnavailable.
+unit BoardView.
+interface BoundedCardReadPort.
+usecase BrowseWorkWithoutEditing.
+mode Browsing.
+unit CardReader.
+functionality DistinguishUnavailableFromEmpty.
+unit ExternalSdpToolBoardService.
+unit FreshnessDisplay.
+functionality GroupAndSelectCards.
+activity HistoryReadDelivery.
+unit HistoryReader.
+usecase InspectCardHistory.
+functionality InspectRecordedLifecycle.
+feature InteractiveBoardReadout.
+container KanBanTuiHost.
+functionality LoadValidatedBoardSnapshot.
+interface ManagementHistoryReadPort.
+activity ReadOnlyTuiDelivery.
+functionality ReadSelectedCard.
+message RequestBoard.
+interface SdpToolBoardReadService.
+scenario UnavailableBoardShown.
+BoardAvailable has message-kind = result.
+BoardAvailable replies-to RequestBoard.
+BoardAvailable upholds BoardSnapshotEnvelope.
+BoardLoaded exercises BrowseWorkWithoutEditing.
+BoardLoaded has completeness = closed.
+BoardLoaded illustrates ReadOnlyTuiDelivery.
+BoardLoaded runs-in Browsing.
+BoardLoaded step 1 sends RequestBoard from BoardQuery to ExternalSdpToolBoardService via BoardReads.
+BoardLoaded step 2 sends BoardAvailable from ExternalSdpToolBoardService to BoardQuery via BoardReads reply-to 1.
+BoardNavigation requires BoundedCardReadPort in mode Browsing.
+BoardNavigation requires ManagementHistoryReadPort in mode Browsing.
+BoardNavigation requires SdpToolBoardReadService in mode Browsing.
+BoardQuery consumes SdpToolBoardReadService.
+BoardQuery owns LoadValidatedBoardSnapshot.
+BoardQuery uses BoardReads as receiver of BoardAvailable in mode Browsing.
+BoardQuery uses BoardReads as receiver of BoardUnavailable in mode Browsing.
+BoardQuery uses BoardReads as sender of RequestBoard in mode Browsing.
+BoardQueryArguments has completeness = closed.
+BoardQueryArguments has-field BoardQueryArgumentsProjectRoot.
+BoardQueryArgumentsProjectRoot has presence = required.
+BoardQueryArgumentsProjectRoot has value-type = text.
+BoardReader pursues BrowseWorkWithoutEditing.
+BoardReader pursues InspectCardHistory.
+BoardReads upholds BoardReadsProtocol.
+BoardReadsProtocol has completeness = closed.
+BoardReadsProtocol permits BoardAvailable.
+BoardReadsProtocol permits BoardUnavailable.
+BoardReadsProtocol permits RequestBoard.
+BoardSnapshotEnvelope has completeness = closed.
+BoardSnapshotEnvelope has-field BoardSnapshotEnvelopeCoverage.
+BoardSnapshotEnvelope has-field BoardSnapshotEnvelopeDiagnostic.
+BoardSnapshotEnvelope has-field BoardSnapshotEnvelopeInventoryRevision.
+BoardSnapshotEnvelope has-field BoardSnapshotEnvelopeNodes.
+BoardSnapshotEnvelopeCoverage has presence = required.
+BoardSnapshotEnvelopeCoverage has value-type = text.
+BoardSnapshotEnvelopeDiagnostic has presence = required.
+BoardSnapshotEnvelopeDiagnostic has value-type = text.
+BoardSnapshotEnvelopeInventoryRevision has presence = required.
+BoardSnapshotEnvelopeInventoryRevision has value-type = text.
+BoardSnapshotEnvelopeNodes has presence = required.
+BoardSnapshotEnvelopeNodes has value-type = bytes.
+BoardUnavailable has message-kind = result.
+BoardUnavailable replies-to RequestBoard.
+BoardUnavailable upholds BoardSnapshotEnvelope.
+BoardView owns GroupAndSelectCards.
+CardReader consumes BoundedCardReadPort.
+CardReader owns ReadSelectedCard.
+DistinguishUnavailableFromEmpty allocated-to KanBanTuiHost in mode Browsing.
+DistinguishUnavailableFromEmpty contributes-to InteractiveBoardReadout.
+DistinguishUnavailableFromEmpty realizes BoardNavigation.
+ExternalSdpToolBoardService uses BoardReads as receiver of RequestBoard in mode Browsing.
+ExternalSdpToolBoardService uses BoardReads as sender of BoardAvailable in mode Browsing.
+ExternalSdpToolBoardService uses BoardReads as sender of BoardUnavailable in mode Browsing.
+FreshnessDisplay owns DistinguishUnavailableFromEmpty.
+GroupAndSelectCards allocated-to KanBanTuiHost in mode Browsing.
+GroupAndSelectCards contributes-to InteractiveBoardReadout.
+GroupAndSelectCards realizes BoardNavigation.
+HistoryReadDelivery addresses InspectRecordedLifecycle.
+HistoryReadDelivery delivers InteractiveBoardReadout.
+HistoryReadDelivery depends-on ReadOnlyTuiDelivery.
+HistoryReadDelivery has implementation-status = planned.
+HistoryReader consumes ManagementHistoryReadPort.
+HistoryReader owns InspectRecordedLifecycle.
+InspectRecordedLifecycle allocated-to KanBanTuiHost in mode Browsing.
+InspectRecordedLifecycle contributes-to InteractiveBoardReadout.
+InspectRecordedLifecycle realizes BoardNavigation.
+InteractiveBoardReadout supports BrowseWorkWithoutEditing.
+InteractiveBoardReadout supports InspectCardHistory.
+KanBanTuiHost contains BoardQuery.
+KanBanTuiHost contains BoardView.
+KanBanTuiHost contains CardReader.
+KanBanTuiHost contains FreshnessDisplay.
+KanBanTuiHost contains HistoryReader.
+KanBanTuiHost provides BoardNavigation.
+LoadValidatedBoardSnapshot allocated-to KanBanTuiHost in mode Browsing.
+LoadValidatedBoardSnapshot contributes-to InteractiveBoardReadout.
+LoadValidatedBoardSnapshot realizes BoardNavigation.
+ReadOnlyTuiDelivery addresses DistinguishUnavailableFromEmpty.
+ReadOnlyTuiDelivery addresses GroupAndSelectCards.
+ReadOnlyTuiDelivery addresses LoadValidatedBoardSnapshot.
+ReadOnlyTuiDelivery addresses ReadSelectedCard.
+ReadOnlyTuiDelivery delivers InteractiveBoardReadout.
+ReadOnlyTuiDelivery has implementation-status = planned.
+ReadSelectedCard allocated-to KanBanTuiHost in mode Browsing.
+ReadSelectedCard contributes-to InteractiveBoardReadout.
+ReadSelectedCard realizes BoardNavigation.
+RequestBoard has message-kind = request.
+RequestBoard upholds BoardQueryArguments.
+UnavailableBoardShown exercises BrowseWorkWithoutEditing.
+UnavailableBoardShown has completeness = closed.
+UnavailableBoardShown illustrates ReadOnlyTuiDelivery.
+UnavailableBoardShown runs-in Browsing.
+UnavailableBoardShown step 1 sends RequestBoard from BoardQuery to ExternalSdpToolBoardService via BoardReads.
+UnavailableBoardShown step 2 sends BoardUnavailable from ExternalSdpToolBoardService to BoardQuery via BoardReads reply-to 1.

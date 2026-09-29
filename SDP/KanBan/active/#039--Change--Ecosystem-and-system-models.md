@@ -29,3 +29,5 @@ The card covers this initial catalog, not every future system's implementation.
 ## Worklog
 
 - Selected and activated on 2026-09-29; source inventory and modeling begin.
+
+- E1-M1/E2-M1: five ProjectGovernance models and source maps delivered; Go structural checks, AST and viewpoint generation pass. New capabilities remain proposals.

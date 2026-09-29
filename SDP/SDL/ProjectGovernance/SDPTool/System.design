@@ -1,0 +1,185 @@
+language design-core version 0.5.
+usecase BrowseProjectFacts.
+functionality CheckTransitionAuthority.
+unit ContextFacade.
+usecase CoordinateGovernedWork.
+functionality DescribeRegisteredProject.
+activity ExistingInstallFacade.
+unit ExistingInstallationFacade.
+interface ExistingInstallationLibrary.
+unit ExistingNavigationFacade.
+activity ExistingReadFacade.
+interface ExistingSdlProjectionLibrary.
+unit ExternalCommandAdapter.
+feature GovernedProjectOperations.
+usecase InstallReviewedProcess.
+feature InstallationFacade.
+mode InstallationHandling.
+functionality InvokeReviewedInstallation.
+database OperationalRunStore.
+feature ProjectFacade.
+capability ProjectInventory.
+actor ProjectMaintainer.
+actor ProjectReader.
+mode ProjectReading.
+interface ProjectRecords.
+actor ProjectSupervisor.
+functionality ReconcileRunRevision.
+message RequestTransition.
+functionality ResolveApplicableRoutine.
+functionality ResolveCheckoutAuthority.
+capability ReviewedInstallation.
+scenario RoutineAccepted.
+channel RoutineCalls.
+contract RoutineCallsProtocol.
+capability RoutineCoordination.
+unit RoutineCoordinator.
+activity RoutineCoreDelivery.
+mode RoutineHandling.
+contract RoutineOutcome.
+field RoutineOutcomeCoverage.
+field RoutineOutcomeDisposition.
+field RoutineOutcomeEventCursor.
+field RoutineOutcomeRevision.
+contract RoutineRequest.
+field RoutineRequestAction.
+field RoutineRequestCheckoutIdentity.
+field RoutineRequestEvidenceReferences.
+field RoutineRequestExpectedRevision.
+field RoutineRequestOperationIdentity.
+field RoutineRequestProjectRoot.
+field RoutineRequestRunIdentity.
+scenario RoutineStaleOrUnauthorized.
+unit RunRepository.
+dataset RunSnapshots.
+container SdpToolHost.
+message TransitionAccepted.
+message TransitionRefused.
+interface TrustedAssignmentBinding.
+CheckTransitionAuthority allocated-to SdpToolHost in mode RoutineHandling.
+CheckTransitionAuthority contributes-to GovernedProjectOperations.
+CheckTransitionAuthority realizes RoutineCoordination.
+ContextFacade consumes ProjectRecords.
+ContextFacade owns ResolveCheckoutAuthority.
+DescribeRegisteredProject allocated-to SdpToolHost in mode ProjectReading.
+DescribeRegisteredProject contributes-to ProjectFacade.
+DescribeRegisteredProject realizes ProjectInventory.
+ExistingInstallFacade addresses InvokeReviewedInstallation.
+ExistingInstallFacade delivers InstallationFacade.
+ExistingInstallFacade has implementation-status = implemented.
+ExistingInstallationFacade consumes ExistingInstallationLibrary.
+ExistingInstallationFacade owns InvokeReviewedInstallation.
+ExistingNavigationFacade consumes ExistingSdlProjectionLibrary.
+ExistingNavigationFacade owns DescribeRegisteredProject.
+ExistingReadFacade addresses DescribeRegisteredProject.
+ExistingReadFacade delivers ProjectFacade.
+ExistingReadFacade has implementation-status = implemented.
+ExternalCommandAdapter uses RoutineCalls as receiver of TransitionAccepted in mode RoutineHandling.
+ExternalCommandAdapter uses RoutineCalls as receiver of TransitionRefused in mode RoutineHandling.
+ExternalCommandAdapter uses RoutineCalls as sender of RequestTransition in mode RoutineHandling.
+GovernedProjectOperations supports CoordinateGovernedWork.
+InstallationFacade supports InstallReviewedProcess.
+InvokeReviewedInstallation allocated-to SdpToolHost in mode InstallationHandling.
+InvokeReviewedInstallation contributes-to InstallationFacade.
+InvokeReviewedInstallation realizes ReviewedInstallation.
+OperationalRunStore holds RunSnapshots.
+ProjectFacade supports BrowseProjectFacts.
+ProjectInventory requires ExistingSdlProjectionLibrary in mode ProjectReading.
+ProjectMaintainer pursues InstallReviewedProcess.
+ProjectReader pursues BrowseProjectFacts.
+ProjectSupervisor pursues CoordinateGovernedWork.
+ReconcileRunRevision allocated-to SdpToolHost in mode RoutineHandling.
+ReconcileRunRevision contributes-to GovernedProjectOperations.
+ReconcileRunRevision realizes RoutineCoordination.
+RequestTransition has message-kind = request.
+RequestTransition upholds RoutineRequest.
+ResolveApplicableRoutine allocated-to SdpToolHost in mode RoutineHandling.
+ResolveApplicableRoutine contributes-to GovernedProjectOperations.
+ResolveApplicableRoutine realizes RoutineCoordination.
+ResolveCheckoutAuthority allocated-to SdpToolHost in mode RoutineHandling.
+ResolveCheckoutAuthority contributes-to GovernedProjectOperations.
+ResolveCheckoutAuthority realizes RoutineCoordination.
+ReviewedInstallation requires ExistingInstallationLibrary in mode InstallationHandling.
+RoutineAccepted exercises CoordinateGovernedWork.
+RoutineAccepted has completeness = closed.
+RoutineAccepted illustrates RoutineCoreDelivery.
+RoutineAccepted runs-in RoutineHandling.
+RoutineAccepted step 1 sends RequestTransition from ExternalCommandAdapter to RoutineCoordinator via RoutineCalls.
+RoutineAccepted step 2 sends TransitionAccepted from RoutineCoordinator to ExternalCommandAdapter via RoutineCalls reply-to 1.
+RoutineCalls upholds RoutineCallsProtocol.
+RoutineCallsProtocol has completeness = closed.
+RoutineCallsProtocol permits RequestTransition.
+RoutineCallsProtocol permits TransitionAccepted.
+RoutineCallsProtocol permits TransitionRefused.
+RoutineCoordination requires ProjectRecords in mode RoutineHandling.
+RoutineCoordination requires TrustedAssignmentBinding in mode RoutineHandling.
+RoutineCoordinator consumes TrustedAssignmentBinding.
+RoutineCoordinator owns CheckTransitionAuthority.
+RoutineCoordinator owns ResolveApplicableRoutine.
+RoutineCoordinator uses RoutineCalls as receiver of RequestTransition in mode RoutineHandling.
+RoutineCoordinator uses RoutineCalls as sender of TransitionAccepted in mode RoutineHandling.
+RoutineCoordinator uses RoutineCalls as sender of TransitionRefused in mode RoutineHandling.
+RoutineCoreDelivery addresses CheckTransitionAuthority.
+RoutineCoreDelivery addresses ReconcileRunRevision.
+RoutineCoreDelivery addresses ResolveApplicableRoutine.
+RoutineCoreDelivery addresses ResolveCheckoutAuthority.
+RoutineCoreDelivery delivers GovernedProjectOperations.
+RoutineCoreDelivery has implementation-status = planned.
+RoutineOutcome has completeness = closed.
+RoutineOutcome has-field RoutineOutcomeCoverage.
+RoutineOutcome has-field RoutineOutcomeDisposition.
+RoutineOutcome has-field RoutineOutcomeEventCursor.
+RoutineOutcome has-field RoutineOutcomeRevision.
+RoutineOutcomeCoverage has presence = required.
+RoutineOutcomeCoverage has value-type = text.
+RoutineOutcomeDisposition has presence = required.
+RoutineOutcomeDisposition has value-type = text.
+RoutineOutcomeEventCursor has presence = required.
+RoutineOutcomeEventCursor has value-type = text.
+RoutineOutcomeRevision has presence = required.
+RoutineOutcomeRevision has value-type = text.
+RoutineRequest has completeness = closed.
+RoutineRequest has-field RoutineRequestAction.
+RoutineRequest has-field RoutineRequestCheckoutIdentity.
+RoutineRequest has-field RoutineRequestEvidenceReferences.
+RoutineRequest has-field RoutineRequestExpectedRevision.
+RoutineRequest has-field RoutineRequestOperationIdentity.
+RoutineRequest has-field RoutineRequestProjectRoot.
+RoutineRequest has-field RoutineRequestRunIdentity.
+RoutineRequestAction has presence = required.
+RoutineRequestAction has value-type = text.
+RoutineRequestCheckoutIdentity has presence = required.
+RoutineRequestCheckoutIdentity has value-type = text.
+RoutineRequestEvidenceReferences has presence = required.
+RoutineRequestEvidenceReferences has value-type = text.
+RoutineRequestExpectedRevision has presence = required.
+RoutineRequestExpectedRevision has value-type = text.
+RoutineRequestOperationIdentity has presence = required.
+RoutineRequestOperationIdentity has value-type = text.
+RoutineRequestProjectRoot has presence = required.
+RoutineRequestProjectRoot has value-type = text.
+RoutineRequestRunIdentity has presence = required.
+RoutineRequestRunIdentity has value-type = text.
+RoutineStaleOrUnauthorized exercises CoordinateGovernedWork.
+RoutineStaleOrUnauthorized has completeness = closed.
+RoutineStaleOrUnauthorized illustrates RoutineCoreDelivery.
+RoutineStaleOrUnauthorized runs-in RoutineHandling.
+RoutineStaleOrUnauthorized step 1 sends RequestTransition from ExternalCommandAdapter to RoutineCoordinator via RoutineCalls.
+RoutineStaleOrUnauthorized step 2 sends TransitionRefused from RoutineCoordinator to ExternalCommandAdapter via RoutineCalls reply-to 1.
+RunRepository owns OperationalRunStore.
+RunRepository owns ReconcileRunRevision.
+RunSnapshots upholds RoutineOutcome.
+SdpToolHost contains ContextFacade.
+SdpToolHost contains ExistingInstallationFacade.
+SdpToolHost contains ExistingNavigationFacade.
+SdpToolHost contains RoutineCoordinator.
+SdpToolHost contains RunRepository.
+SdpToolHost provides ProjectInventory.
+SdpToolHost provides ReviewedInstallation.
+SdpToolHost provides RoutineCoordination.
+TransitionAccepted has message-kind = result.
+TransitionAccepted replies-to RequestTransition.
+TransitionAccepted upholds RoutineOutcome.
+TransitionRefused has message-kind = result.
+TransitionRefused replies-to RequestTransition.
+TransitionRefused upholds RoutineOutcome.
