@@ -37,3 +37,45 @@ func TestGraphCLI(t *testing.T) {
 		}
 	}
 }
+
+func TestGraphViewConsumers(t *testing.T) {
+	root := t.TempDir()
+	os.Mkdir(filepath.Join(root, "Children"), 0700)
+	entry := filepath.Join(root, "System.design")
+	os.WriteFile(entry, []byte("language design-core version 0.6.\nsystem Demo.\nDemo contains Children/Child.\n"), 0600)
+	child := filepath.Join(root, "Children", "Child.design")
+	os.WriteFile(child, []byte("language design-core version 0.6.\nunit Child.\n"), 0600)
+	var revisions []string
+	for _, cmd := range []string{"viewpoints", "view"} {
+		output := filepath.Join(t.TempDir(), "out")
+		args := []string{cmd, entry, "--output", output}
+		if cmd == "view" {
+			args = append(args, "--uri", "sdl-view://demo/VP02")
+		}
+		var out, errs bytes.Buffer
+		if code := execute(args, bytes.NewReader(nil), &out, &errs); code != 0 {
+			t.Fatal(code, out.String(), errs.String())
+		}
+		b, e := os.ReadFile(filepath.Join(output, "sources.json"))
+		if e != nil {
+			t.Fatal(e)
+		}
+		var p struct {
+			Revision string `json:"revision"`
+		}
+		if e = json.Unmarshal(b, &p); e != nil {
+			t.Fatal(e)
+		}
+		revisions = append(revisions, p.Revision)
+		args[3] = filepath.Join(root, "Children")
+		if code := execute(args, bytes.NewReader(nil), &out, &errs); code == 0 {
+			t.Fatal("source directory overwritten")
+		}
+	}
+	if revisions[0] == "" || revisions[0] != revisions[1] {
+		t.Fatal("consumer revisions differ", revisions)
+	}
+	if _, e := os.Stat(child); e != nil {
+		t.Fatal("dependency lost", e)
+	}
+}

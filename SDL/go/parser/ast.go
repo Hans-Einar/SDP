@@ -54,6 +54,7 @@ type Include struct {
 }
 
 type Model struct {
+	tokenCount   int
 	Includes     []Include
 	Header       Header
 	Declarations []Declaration

@@ -104,7 +104,7 @@ func Parse(text string) (model *Model, err error) {
 		p.fail("UNSUPPORTED_VERSION", "Only design-core versions 0.5 and 0.6 are supported")
 	}
 	p.version = p.take().text
-	m := &Model{Header: Header{"design-core", p.version, p.finish(start)}, Declarations: []Declaration{}, Statements: []Statement{}}
+	m := &Model{tokenCount: len(p.tokens) - 1, Header: Header{"design-core", p.version, p.finish(start)}, Declarations: []Declaration{}, Statements: []Statement{}}
 	for has(kinds, p.current().text) || (p.version == "0.6" && (p.current().text == "system" || p.current().text == "includes")) {
 		if p.current().text == "includes" {
 			start := p.take().span.Start

@@ -13,6 +13,7 @@ import (
 
 	"github.com/Hans-Einar/SDP/SystemDesignLanguage/go/documents"
 	"github.com/Hans-Einar/SDP/SystemDesignLanguage/go/parser"
+	"github.com/Hans-Einar/SDP/SystemDesignLanguage/go/sourcegraph"
 	"github.com/Hans-Einar/SDP/SystemDesignLanguage/go/viewpoint"
 )
 
@@ -40,6 +41,7 @@ type Result struct {
 type PreviewOptions struct {
 	Source, Output, Renderer, Viewpoint, URI, Revision string
 	operation                                          string
+	expectedProfile, expectedSystem                    string
 }
 
 func readSource(name string) ([]byte, error) {
@@ -64,20 +66,19 @@ func readSource(name string) ([]byte, error) {
 	}
 	return b, nil
 }
-func loadModel(name string) (*viewpoint.Views, []byte, error) {
-	b, e := readSource(name)
-	if e != nil {
-		return nil, nil, e
-	}
-	v, e := viewpoint.New(string(b))
+func loadModel(name string) (*viewpoint.Views, *sourcegraph.Loaded, error) {
+	v, input, e := viewpoint.Load(name)
 	if e != nil {
 		f := &Failure{Code: "model", Message: e.Error()}
 		if d, ok := e.(parser.Diagnostic); ok {
 			f.Diagnostic = parser.Data(d)
 		}
+		if ds, ok := e.(sourcegraph.Issues); ok {
+			f.Diagnostic = ds
+		}
 		return nil, nil, f
 	}
-	return v, b, nil
+	return v, input, nil
 }
 
 // physical resolves existing ancestors too, so an absent output under a symlink
@@ -149,9 +150,15 @@ func Preview(ctx context.Context, o PreviewOptions) (Result, error) {
 	if e != nil {
 		return result, failure("source", e)
 	}
-	v, _, e := loadModel(source)
+	v, input, e := loadModel(source)
 	if e != nil {
 		return result, e
+	}
+	if e = input.Outside(o.Output); e != nil {
+		return result, failure("output", e)
+	}
+	if o.expectedProfile != "" && (v.Profile != o.expectedProfile || (v.System != "" && v.System != o.expectedSystem)) {
+		return result, failure("model", fmt.Errorf("registered profile/System does not match source"))
 	}
 	if o.Revision != "" && o.Revision != v.Revision {
 		return result, failure("stale", fmt.Errorf("source revision changed; refresh inventory"))
@@ -211,7 +218,7 @@ func Preview(ctx context.Context, o PreviewOptions) (Result, error) {
 	if operation == "" {
 		operation = "preview"
 	}
-	result = Result{Version, operation, source, "design-core/0.5", v.Revision, filepath.Join(output, "entry.md"), output, "caller-owned; remove directory after consumer release"}
+	result = Result{Version, operation, source, v.Profile, v.Revision, filepath.Join(output, "entry.md"), output, "caller-owned; remove directory after consumer release"}
 	j, _ := json.MarshalIndent(result, "", "  ")
 	b.Files["sdptool.json"] = append(j, '\n')
 	b.Seal()
@@ -225,12 +232,8 @@ func Preview(ctx context.Context, o PreviewOptions) (Result, error) {
 	if e = ctx.Err(); e != nil {
 		return Result{}, failure("canceled", e)
 	}
-	current, e := readSource(source)
-	if e != nil {
-		return Result{}, e
-	}
-	if documents.Hash(current) != v.Revision {
-		return Result{}, failure("stale", fmt.Errorf("source changed during generation"))
+	if e = input.Fresh(); e != nil {
+		return Result{}, failure("stale", e)
 	}
 	if e = b.Publish(output); e != nil {
 		return Result{}, failure("output", e)

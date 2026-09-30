@@ -14,8 +14,9 @@ type File struct {
 	model      *Model
 }
 
-func (f *File) Name() string { return f.name }
-func (f *File) Text() string { return f.text }
+func (f *File) TokenCount() int { return f.model.tokenCount }
+func (f *File) Name() string    { return f.name }
+func (f *File) Text() string    { return f.text }
 func CopyModel(m *Model) *Model {
 	b, _ := json.Marshal(m)
 	var out Model

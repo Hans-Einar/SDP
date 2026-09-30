@@ -52,7 +52,7 @@ func ViewPlan(ctx context.Context, p Project, modelID string, h Host) error {
 	args := []string{plan}
 	var session string
 	if len(p.Registration.Models) > 0 {
-		_, source, err := p.model(modelID, false)
+		m, source, err := p.model(modelID, false)
 		if err != nil {
 			return err
 		}
@@ -73,9 +73,12 @@ func ViewPlan(ctx context.Context, p Project, modelID string, h Host) error {
 		if !strings.Contains(help.String(), "--navigator") || !strings.Contains(help.String(), "--sdl-tool") {
 			return failure("unsupported", fmt.Errorf("viewer lacks SDL navigation arguments"))
 		}
-		v, _, err := loadModel(source)
+		v, input, err := loadModel(source)
 		if err != nil {
 			return err
+		}
+		if v.Profile != m.Profile || (v.System != "" && v.System != m.System) {
+			return failure("registration", fmt.Errorf("registered profile/System does not match validated source"))
 		}
 		parent := os.Getenv("XDG_RUNTIME_DIR")
 		session, err = os.MkdirTemp(parent, "sdptool-")
@@ -88,6 +91,12 @@ func ViewPlan(ctx context.Context, p Project, modelID string, h Host) error {
 			return failure("model", err)
 		}
 		directory := filepath.Join(session, "navigation")
+		if err = input.Outside(directory); err != nil {
+			return failure("output", err)
+		}
+		if err = input.Fresh(); err != nil {
+			return failure("stale", err)
+		}
 		if err = b.Publish(directory); err != nil {
 			return failure("output", err)
 		}

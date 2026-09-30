@@ -143,11 +143,7 @@ func Load(entry string, cache *parser.SyntaxCache, canonical bool) (*Loaded, err
 		m := ast.Model()
 		// Count grammar tokens, not whitespace-delimited words. Limit also bounds work
 		// across files already parsed independently by a syntax cache.
-		count, e := parser.TokenCount(string(b))
-		if e != nil {
-			return e
-		}
-		tokens += count
+		tokens += ast.TokenCount()
 		if tokens > 250000 {
 			return Issue{Code: "TOKEN_LIMIT", Message: "Aggregate token limit", Span: at}
 		}

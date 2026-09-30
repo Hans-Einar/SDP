@@ -64,6 +64,9 @@ func ModelTree(p Project, id string) (Tree, error) {
 	if e != nil {
 		return Tree{}, e
 	}
+	if v.Profile != m.Profile || (v.System != "" && v.System != m.System) {
+		return Tree{}, failure("model", fmt.Errorf("registered profile/System does not match source"))
+	}
 	return modelTree(p, m, v)
 }
 func modelTree(p Project, m Model, v *viewpoint.Views) (Tree, error) {

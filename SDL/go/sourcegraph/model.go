@@ -15,6 +15,8 @@ import (
 
 const Version = "sdl-source-graph/1"
 const MaxFiles = 128
+const MaxDiagnostics = 100
+const MaxRelated = 8
 
 type Issue struct {
 	Code    string        `json:"code"`
@@ -115,7 +117,7 @@ func Compile(entry string, files []*parser.File, canonical bool) (*Snapshot, Iss
 	}
 	snap := &Snapshot{entry: entry, model: &parser.Model{}, sources: []Source{}, edges: []Edge{}}
 	seen := map[string]bool{}
-	total := 0
+	total, tokens := 0, 0
 	var visit func(string, parser.Span)
 	visit = func(name string, at parser.Span) {
 		if seen[name] {
@@ -136,6 +138,11 @@ func Compile(entry string, files []*parser.File, canonical bool) (*Snapshot, Iss
 			issues = append(issues, Issue{Code: "SOURCE_LIMIT", Message: "Aggregate source exceeds 2 MiB", Span: at})
 			return
 		}
+		tokens += f.TokenCount()
+		if tokens > 250000 {
+			issues = append(issues, Issue{Code: "TOKEN_LIMIT", Message: "Aggregate token limit", Span: at})
+			return
+		}
 		m := f.Model()
 		snap.files = append(snap.files, f)
 		if name == entry {
@@ -147,7 +154,7 @@ func Compile(entry string, files []*parser.File, canonical bool) (*Snapshot, Iss
 				continue
 			}
 			snap.edges = append(snap.edges, Edge{name, dep.Path, dep.Span})
-			if seen[dep.Path] {
+			if seen[dep.Path] && len(snap.warnings) < MaxDiagnostics {
 				snap.warnings = append(snap.warnings, Issue{Code: "REUSED_SOURCE", Message: dep.Path, Span: dep.Span})
 			}
 			visit(dep.Path, dep.Span)
@@ -155,7 +162,7 @@ func Compile(entry string, files []*parser.File, canonical bool) (*Snapshot, Iss
 	}
 	visit(entry, parser.Span{Source: entry, Line: 1, Column: 1})
 	if len(issues) > 0 {
-		return nil, issues
+		return nil, ordered(issues)
 	}
 	sort.Slice(snap.files, func(i, j int) bool { return snap.files[i].Name() < snap.files[j].Name() })
 	version := snap.model.Header.Version
@@ -226,14 +233,42 @@ func Compile(entry string, files []*parser.File, canonical bool) (*Snapshot, Iss
 		})
 		sort.Slice(snap.model.Statements, func(i, j int) bool { return snap.model.Statements[i].Sentence() < snap.model.Statements[j].Sentence() })
 	}
+	// Bound diagnostic enrichment independently of malformed input size. Index both
+	// endpoints, including reverse edges in cross-file cycles. Related evidence is
+	// a bounded neighbourhood, not a claim to enumerate every contributing fact.
+	bySpan := map[parser.Span]parser.Statement{}
+	byEndpoint := map[string]map[string][]parser.Span{}
+	for _, fact := range snap.model.Statements {
+		bySpan[fact.Span] = fact
+		for _, name := range []string{fact.Subject.Name, fact.Object.Name} {
+			if name == "" {
+				continue
+			}
+			if byEndpoint[name] == nil {
+				byEndpoint[name] = map[string][]parser.Span{}
+			}
+			group := byEndpoint[name][fact.Span.Source]
+			if len(group) < MaxRelated {
+				byEndpoint[name][fact.Span.Source] = append(group, fact.Span)
+			}
+		}
+	}
 	for _, d := range parser.Validate(snap.model) {
+		if len(issues) == MaxDiagnostics {
+			break
+		}
 		related := []parser.Span{}
-		// Include other facts touching the same subject/object in cross-file failures.
-		for _, s := range snap.model.Statements {
-			if s.Span == d.Span {
-				for _, other := range snap.model.Statements {
-					if other.Span != s.Span && (other.Subject.Name == s.Subject.Name || other.Object.Name == s.Object.Name) && other.Span.Source != s.Span.Source {
-						related = append(related, other.Span)
+		used := map[parser.Span]bool{}
+		fact := bySpan[d.Span]
+		for _, file := range snap.files {
+			if file.Name() == d.Span.Source {
+				continue
+			}
+			for _, name := range []string{fact.Subject.Name, fact.Object.Name} {
+				for _, span := range byEndpoint[name][file.Name()] {
+					if !used[span] && len(related) < MaxRelated {
+						related = append(related, span)
+						used[span] = true
 					}
 				}
 			}
@@ -275,5 +310,13 @@ func ordered(ds Issues) Issues {
 		}
 		return a.Code+a.Message < b.Code+b.Message
 	})
+	if len(ds) > MaxDiagnostics {
+		ds = ds[:MaxDiagnostics]
+	}
+	for i := range ds {
+		if len(ds[i].Related) > MaxRelated {
+			ds[i].Related = ds[i].Related[:MaxRelated]
+		}
+	}
 	return ds
 }

@@ -7,7 +7,7 @@ import (
 )
 
 func SelectProject(ctx context.Context, p Project, id string, o PreviewOptions) (Result, error) {
-	_, source, e := p.model(id, false)
+	m, source, e := p.model(id, false)
 	if e != nil {
 		return Result{}, e
 	}
@@ -21,6 +21,8 @@ func SelectProject(ctx context.Context, p Project, id string, o PreviewOptions) 
 	if selected.Project != p.Registration.ProjectID {
 		return Result{}, failure("selection", fmt.Errorf("URI project does not match selected registration"))
 	}
+	o.expectedProfile = m.Profile
+	o.expectedSystem = m.System
 	o.Source = source
 	o.operation = "select"
 	return Preview(ctx, o)

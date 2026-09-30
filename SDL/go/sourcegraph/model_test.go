@@ -173,3 +173,47 @@ func TestHardlinkMissingAndAggregateLimits(t *testing.T) {
 		t.Fatal(e)
 	}
 }
+
+func TestPureCompileLimitsAndCrossFileDiagnostics(t *testing.T) {
+	c := &parser.SyntaxCache{}
+	parse := func(name, text string) *parser.File {
+		t.Helper()
+		f, e := c.Parse(name, header+text)
+		if e != nil {
+			t.Fatal(e)
+		}
+		return f
+	}
+	a := parse("A.design", "system Demo.\n"+strings.Repeat("includes \"B.design\".\n", 42000))
+	b := parse("B.design", strings.Repeat("includes \"A.design\".\n", 42000))
+	if s, ds := Compile("A.design", []*parser.File{a, b}, false); s != nil || len(ds) == 0 || ds[0].Code != "TOKEN_LIMIT" {
+		t.Fatal("pure API bypassed aggregate token budget", ds)
+	}
+	a = parse("A.design", "unit A.\nunit B.\nsystem Demo.\nincludes \"B.design\".\nA contains B.\n")
+	b = parse("B.design", "B contains A.\n")
+	_, ds := Compile("A.design", []*parser.File{a, b}, false)
+	found := false
+	for _, d := range ds {
+		if d.Code == "STRUCTURE_CYCLE" {
+			for _, r := range d.Related {
+				if r.Source != d.Span.Source {
+					found = true
+				}
+			}
+		}
+	}
+	if !found {
+		t.Fatal("cycle lost cross-file evidence", ds)
+	}
+	a = parse("A.design", "unit A.\nunit B.\nsystem Demo.\nincludes \"B.design\".\n"+strings.Repeat("A contains B.\n", 2000))
+	b = parse("B.design", strings.Repeat("A contains B.\n", 2000))
+	_, ds = Compile("A.design", []*parser.File{a, b}, false)
+	if len(ds) != MaxDiagnostics {
+		t.Fatal("unbounded/missing diagnostics", len(ds))
+	}
+	for _, d := range ds {
+		if len(d.Related) > MaxRelated {
+			t.Fatal("unbounded related evidence")
+		}
+	}
+}
