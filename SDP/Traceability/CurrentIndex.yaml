@@ -3,10 +3,10 @@ project:
   status: active-development
 
 release:
-  previousVersion: "0.2.1"
-  activeReleaseId: REL-1.0.0
-  targetVersion: "1.0.0"
-  state: released
+  previousVersion: "1.0.0"
+  activeReleaseId: REL-2.0.0
+  targetVersion: "2.0.0"
+  state: prerelease
 
 active:
   sprint: null

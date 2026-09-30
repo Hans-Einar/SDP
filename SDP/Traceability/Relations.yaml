@@ -327,6 +327,10 @@ verification:
     modelId: sdp-landscape
     managementId: PLAN-SDP-0008
     card: KB-SDP-039
+  SDPTOOL-VER-DS3:
+    status: passed
+    path: 05--Implementation/SDPTool/Discovery/Evidence.md
+    release: REL-2.0.0
   SDPTOOL-VER-RP3:
     status: passed
     path: Maintenance/RP3/Plan.md
@@ -454,6 +458,17 @@ verification:
     corpusDigest: e346fc230b26c3045305c1ffee22ff43edfc61aa99597005134a314b210b8114
 migrations: {}
 releases:
+  REL-2.0.0:
+    version: "2.0.0"
+    state: prerelease
+    releaseNotes: RELEASE-NOTES.md
+    manifest: SDP.manifest.yaml
+    releaseRecord: Releases/REL-2.0.0.yaml
+    verification: [SDPTOOL-VER-DS3]
+    reviews: []
+    releaseCommit: null
+    gitTag: null
+    githubRelease: null
   REL-1.0.0:
     version: "1.0.0"
     state: released

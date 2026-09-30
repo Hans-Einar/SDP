@@ -4,6 +4,8 @@
 
 Release-Date: unreleased
 
+## [2.0.0] - 2026-10-01
+
 ### Added
 
 - [PLAN-SDP-0012] Go design-core 0.6 supports source-owned System composition, includes/path membership, reusable file ASTs and graph-aware CLI/viewpoints/broker/SDPTool consumers. Existing 0.5, action and class profiles remain separate.
@@ -14,10 +16,19 @@ Release-Date: unreleased
 
 - [PLAN-SDP-0013] Go SDPTool renders readable command output by default, including the navigation tree. --json explicitly preserves machine schemas; compiled-in adapters need no shell formatter. Machine consumers must opt in.
 
+### Removed
+
+- [PLAN-SDP-0014] Authored navigation.json registration and defaultModel bindings are retired. Source files and directories drive discovery; existing project-owned copies remain untouched historical files during upgrade.
+
+### Added
+
+- [PLAN-SDP-0014] Read-only discovery returns source inventory and multi-System navigation in one sdptool/0.2 snapshot. Invalid/unsupported files and context-required fragments remain visible. Viewers own buffering, watching and refresh; detail generation stays on demand.
+
 ### Migration
 
-- [PLAN-SDP-0013] The default CLI output change is incompatible with existing implicit JSON clients. The next combined candidate is proposed as 2.0.0 under the current version contract, superseding the earlier additive 1.1.0 proposal. Update gh-sdp bootstrap and XFMD machine invocations before rollout. No new release is published.
-- [MAINT-SDP-0011] The earlier additive preparation proposed SDP 1.1.0; SDL 0.6 is a language profile. The candidate declares the published 1.0.0 descriptor as an additional supported predecessor. Publication and a gh-sdp default update are not yet performed.
+- [PLAN-SDP-0014] Update gh-sdp to 0.2.0, then preview/apply the project upgrade. Machine consumers must pass --json and accept sdptool/0.2 inventory/navigation instead of registration. Use discovered model IDs and explicit --plan selection for ambiguous plan sets. Native XFMD consumer/watcher integration remains XFMD-owned; updating SDP does not implement it.
+- [PLAN-SDP-0014] Signed upgrades support original 0.2.0, 0.2.1 and 1.0.0 descriptors. Existing Sessions, project content and legacy navigation files are preserved. New installs require no source registration. Linux amd64 is the published binary platform.
+- [MAINT-SDP-0011] Earlier 1.1.0 preparation is included in this combined major release. Product version 2.0.0 is separate from SDL design-core/0.6 and SDUI/0.2.
 
 ## [1.0.0] - 2026-09-28
 

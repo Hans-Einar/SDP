@@ -1,5 +1,21 @@
 # Installer migration
 
+## SDP 2.0.0 source discovery and output migration
+
+Upgrade the gh-sdp extension to 0.2.0 before selecting its new default release.
+Preview and apply remain separate operations. Original signed descriptors for
+0.2.0, 0.2.1 and 1.0.0 are accepted; project-owned documents and historical
+navigation.json are preserved. Discovery ignores that file and enumerates sources.
+
+Machine callers must request --json and support sdptool/0.2: `inventory`, `sources`
+and inline `navigation` replace registration. Model IDs derive from paths; refresh
+and use returned IDs instead of hardcoded registration names. `view ip --plan`
+selects an authored plan when discovery finds more than one. Native viewer
+watching/buffering is consumer work; no daemon or automatic GUI migration ships.
+Manual Sessions guides/templates are seeded only when missing. Normal upgrade
+conflict, journal and recovery guarantees remain unchanged.
+
+
 Use the compiled SDPTool, normally through `gh sdp`. The source-distributed legacy
 installation scripts and profile-artifact builder are removed. Old release assets
 remain historical; the current release does not execute their installation engines.
