@@ -87,7 +87,7 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 		if fs.NArg() != 0 {
 			return report(errs, failure("arguments", fmt.Errorf("unexpected arguments")))
 		}
-		p, e := Discover(selected)
+		p, e := discover(selected, false)
 		if e != nil {
 			return report(errs, e)
 		}
@@ -114,7 +114,7 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 		if fs.NArg() != 0 {
 			return report(errs, failure("arguments", fmt.Errorf("unexpected arguments")))
 		}
-		p, e := Discover(selected)
+		p, e := discover(selected, false)
 		if e != nil {
 			return report(errs, e)
 		}
@@ -138,7 +138,7 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 		if fs.NArg() != 0 {
 			return report(errs, failure("arguments", fmt.Errorf("unexpected arguments")))
 		}
-		p, e := Discover(selected)
+		p, e := discover(selected, false)
 		if e != nil {
 			return report(errs, e)
 		}
@@ -171,7 +171,7 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 		if fs.NArg() != 0 {
 			return report(errs, failure("arguments", fmt.Errorf("unexpected positional arguments")))
 		}
-		p, e := Discover(selected)
+		p, e := discover(selected, false)
 		if e != nil {
 			return report(errs, e)
 		}

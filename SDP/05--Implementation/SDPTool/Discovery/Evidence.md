@@ -19,3 +19,17 @@ written and no generated navigation sidecar is required.
 
 Independent review, installer removal, final packaging and publication remain
 pending. This evidence is not a release-readiness claim.
+
+## DS2-M1 — integration
+
+Installer no longer creates or edits navigation.json; existing project-owned bytes
+remain untouched, including malformed historical files. Root registration and its
+schema are removed. Contract 0.2, consumer examples, installed source guides and
+ecosystem verification now use source-discovered IDs. The SDL model assigns source
+inventory discovery to ProjectContext.
+
+Independent review found header-comment rejection and selected-model operations
+being blocked by aggregate navigation limits. Both are corrected with regression
+tests. Reserved .sdp-backups is excluded with .sdp-operations. Root Go suite and
+Toolkit contract validator pass; full release verification follows in DS3.
+Client 0.2.0 pins pushed bootstrap 247fb7a; exact final package pairing remains.

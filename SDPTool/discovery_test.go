@@ -1,6 +1,8 @@
 package sdptool
 
 import (
+	"bytes"
+	"context"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -118,5 +120,46 @@ func TestDiscoverySourceLimit(t *testing.T) {
 	}
 	if _, e := Discover(root); e == nil || !strings.Contains(e.Error(), "256 source") {
 		t.Fatalf("source limit: %v", e)
+	}
+}
+
+func TestDiscoveryUsesOwningParserForProfile(t *testing.T) {
+	root, _ := projectFixture(t)
+	path := filepath.Join(root, "SDP", "Comments.sdui")
+	data := []byte("sdui # profile follows\n0.2; Page=[];")
+	if e := os.WriteFile(path, data, 0600); e != nil {
+		t.Fatal(e)
+	}
+	p, e := Discover(root)
+	if e != nil {
+		t.Fatal(e)
+	}
+	if len(p.Sources) != 1 || p.Sources[0].State != "validated" || p.Sources[0].Profile != "sdui/0.2" {
+		t.Fatal(p.Sources)
+	}
+}
+
+func TestSelectedModelAvoidsCombinedExpansionLimit(t *testing.T) {
+	root, _ := projectFixture(t)
+	for i := 0; i < 255; i++ {
+		name := fmt.Sprintf("M%03d.design", i)
+		data := "language design-core version 0.5.\n"
+		for j := 0; j < 10; j++ {
+			data += fmt.Sprintf("unit U%d.\n", j)
+		}
+		if e := os.WriteFile(filepath.Join(root, "SDP", name), []byte(data), 0600); e != nil {
+			t.Fatal(e)
+		}
+	}
+	if _, e := Discover(root); e == nil {
+		t.Fatal("expected aggregate limit")
+	}
+	var out, errs bytes.Buffer
+	if code := Run(context.Background(), []string{root, "tree", "--model", sourceID("SDP/M000.design"), "--json"}, &out, &errs); code != 0 {
+		t.Fatal(code, errs.String())
+	}
+	var result Tree
+	if e := json.Unmarshal(out.Bytes(), &result); e != nil || result.Model != sourceID("SDP/M000.design") {
+		t.Fatal(e, result.Model)
 	}
 }

@@ -92,7 +92,7 @@ Each System README records:
 - purpose, boundary, owner and actual containers;
 - authoritative source files and the responsibilities of shared definitions;
 - language/profile and tool version used, supported validation commands and gaps;
-- the actual entry file/source registration and navigation configuration;
+- source-owned entry files, includes and contains references;
 - how to reproduce selected outputs and where generated artifacts belong.
 
 Folder placement does not create namespaces, imports, dependency ordering or
@@ -100,8 +100,8 @@ source-set support. Use only the constructs supported by the selected parser.
 Do not invent a `system` declaration or `#include` preprocessor because this
 layout uses those concepts. Experimental models must identify their profile and
 unsupported constructs explicitly; inventory inspection is not successful parsing.
-Navigation registration is explicit and tool-dependent: an installed empty
-SDP/SDL directory does not automatically register a model with SDPTool.
+SDPTool discovers sources and their directories without a registration file.
+An empty SDL directory has no models. Add sources and refresh discovery.
 
 ## Authored source and documentation
 

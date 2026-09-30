@@ -92,7 +92,7 @@ func previewInput(o Options, root string, r Input) (Plan, error) {
 	return Build(root, o.Operation, r, old, adopt)
 }
 func targetPaths(d Descriptor) []string {
-	p := []string{"AGENTS-project.md", ReceiptPath, "SDP/navigation.json", "SDP/SDP-project.manifest.yaml", "SDP/ProjectManagement/Ledger.ndjson", "SDP/Traceability/Ledger.ndjson", "SDP/KanBan/board.json"}
+	p := []string{"AGENTS-project.md", ReceiptPath, "SDP/SDP-project.manifest.yaml", "SDP/ProjectManagement/Ledger.ndjson", "SDP/Traceability/Ledger.ndjson", "SDP/KanBan/board.json"}
 	for _, f := range d.Files {
 		p = append(p, f.Path)
 	}
@@ -329,19 +329,7 @@ func Build(root, operation string, release Input, previous, adoption *Input) (Pl
 	if _, ok := after["SDP/Traceability/Ledger.ndjson"]; !ok {
 		after["SDP/Traceability/Ledger.ndjson"] = []byte{}
 	}
-	nav := "SDP/navigation.json"
-	if _, ok := after[nav]; !ok {
-		after[nav], _ = Canonical(map[string]any{"schemaVersion": "1.0", "projectId": strings.ToLower(projectID), "processProfile": d.ProcessProfile, "projectManifest": "SDP/SDP-project.manifest.yaml", "kanban": "SDP/KanBan", "models": []any{}, "sdui": []any{}})
-	} else if len(moves) > 0 {
-		var n map[string]any
-		if e = json.Unmarshal(after[nav], &n); e != nil {
-			return p, fail("navigation", 2, "%v", e)
-		}
-		if n["kanban"] == "SDP/Agents/KanBan" {
-			n["kanban"] = "SDP/KanBan"
-			after[nav], _ = Canonical(n)
-		}
-	}
+	// Legacy navigation.json is project-owned historical data, never a discovery registry.
 	manifest := "SDP/SDP-project.manifest.yaml"
 	if _, ok := after[manifest]; !ok {
 		after[manifest] = []byte("schemaVersion: \"1.0\"\ninstalled:\n  manifestPath: Framework/installed-toolkit.manifest.yaml\n")

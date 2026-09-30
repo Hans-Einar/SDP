@@ -1,4 +1,4 @@
-# Producer integration examples — contract 0.1
+# Producer integration examples — contract 0.2
 
 The supported machine boundary is [Contract.md](Contract.md). Native XFMD work
 belongs to its own KB-XFMD-014/015; these examples do not implement its sidebar.
@@ -12,14 +12,14 @@ go build -o /desired/bin/sdptool ./cmd/sdptool
 From any working directory, discover the selected project and fetch its inventory:
 
 ```sh
-sdptool /path/to/project discover
-sdptool /path/to/project tree --model sdptool
+sdptool /path/to/project discover --json
+sdptool /path/to/project tree --model DISCOVERED_ID --json
 ```
 
 Render the selected node using its returned target.uri, target.model and revision:
 
 ```sh
-sdptool /path/to/project select --model sdptool \
+sdptool /path/to/project select --json --model DISCOVERED_ID \
   --uri 'sdl-view://sdp-vnow/VP02?diagram=VP02-roots&target=main&consumer=xfmd' \
   --revision HASH_FROM_TREE --output /private/request-directory \
   --renderer /path/to/prebuilt/mmdr
@@ -38,7 +38,10 @@ SDP_XFMD=/path/to/xfmd SDP_SDL_TOOL=/path/to/sdl SDP_MMDR=/path/to/mmdr \
   sdptool /path/to/project view ip
 ```
 
-The registration's defaultModel chooses the initial model; --model overrides it.
+Select a returned source ID with --model when more than one model is present.
+Use --plan PROJECT_RELATIVE_PATH when multiple ImplementationPlans are present.
+A discovery consumer is responsible for buffering JSON and refreshing on changes
+or user request; native watcher integration is separate XFMD work.
 The bridge opens the authored implementation plan and a temporary, source-derived
 Markdown navigator using existing XFMD flags. It waits for the window's process
 and cleans its temporary files on exit. This is distinct from the planned native

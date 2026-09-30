@@ -83,21 +83,14 @@ Master/client/Steering role split and unverified app-server/MCP behavior.
 
 ## Browse with the existing tools
 
-Registration is explicit in [navigation.json](../navigation.json). Existing
-`sdptool` and `sdl-sdui` IDs/default keep their old detailed models. New IDs select
-bounded tool designs; they do not replace those authorities or grant native
-XFMD ecosystem grouping. No XFMD changes are part of this delivery.
+Run `sdptool . discover --json` to obtain source-derived IDs and navigation.
+The table above documents responsibilities; its short labels are not tool IDs.
+Use a returned ID with `sdptool . tree --model DISCOVERED_ID --json`, or use
+unfiltered `sdptool . tree` for all source models and actual directories.
+No registration file is required. Existing detailed models remain in their
+current source homes. No XFMD application changes are part of this delivery.
 
-From repository root with prebuilt tools:
-
-```sh
-sdptool . discover
-sdptool . tree --model sdp-landscape
-sdptool . tree --model pg-mcp-adapter
-sdptool . view ip --model sdp-landscape --viewer /absolute/xfmd --sdl-tool /absolute/sdl
-```
-
-Use the IDs in the table verbatim. `tree` returns current revisions and selection
+`tree` returns current revisions and selection
 targets for the existing `select` operation. Documents are produced on demand;
 there is no checked-in bulk generated documentation tree.
 

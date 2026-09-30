@@ -83,21 +83,21 @@ sdptool preview ../SDP/03--Architecture/SDPTool.design --output /tmp/design-prev
 
 The local module replacements locate existing SDL/SDUI libraries in this checkout;
 no Python parser or second language implementation is introduced. Tests run with
-`go test -race ./...`. Discovery and view ip use the navigation registration described in the contract;
+`go test -race ./...`. Discovery and view ip use the source-derived snapshot described in the contract;
 direct preview works without project metadata.
 
 ## Project selection and viewer
 
 ```sh
 sdptool /path/to/project discover
-sdptool /path/to/project view ip --model sdptool --viewer /path/to/xfmd --sdl-tool /path/to/sdl
+sdptool /path/to/project view ip --model DISCOVERED_SDL_ID --viewer /path/to/xfmd --sdl-tool /path/to/sdl
 ```
 
-The repository preserves the two detailed SDL model entries and explicitly defaults
-to sdptool; select --model sdl-sdui for the shared language design. The new
-[ecosystem catalog](../SDP/SDL/Catalog.md) registers separate bounded tool models
-and sdp-landscape. Select their listed IDs for on-demand navigation; current
-registration does not add native ecosystem grouping to the viewer.
+`discover --json` lists every discovered source, its path-derived ID and state.
+Use those IDs with `--model`; no registration file or defaultModel is required.
+Unfiltered `tree` includes the actual SDP file tree and all source models.
+The [ecosystem catalog](../SDP/SDL/Catalog.md) documents model responsibilities;
+source files and directories are the navigation authority.
 The viewer command waits until that window exits to keep generated navigation
 resources alive. Host options can also use SDP_XFMD, SDP_SDL_TOOL and SDP_MMDR.
 `generate ip` remains later scope and never runs implicitly while viewing.
@@ -105,9 +105,9 @@ resources alive. Host options can also use SDP_XFMD, SDP_SDL_TOOL and SDP_MMDR.
 ## Navigation services
 
 ```sh
-sdptool /path/to/project tree --model sdptool
-sdptool /path/to/project select --model sdptool --uri 'sdl-view://sdp-vnow/VP02?diagram=VP02-roots&target=main&consumer=xfmd' --revision SOURCE_HASH --output /tmp/selected-view
-sdptool /path/to/project sdui-preview --model concept1 --entry page --output /tmp/ui-document
+sdptool /path/to/project tree --model DISCOVERED_SDL_ID
+sdptool /path/to/project select --model DISCOVERED_SDL_ID --uri 'sdl-view://sdp-vnow/VP02?diagram=VP02-roots&target=main&consumer=xfmd' --revision SOURCE_HASH --output /tmp/selected-view
+sdptool /path/to/project sdui-preview --model DISCOVERED_SDUI_ID --entry page --output /tmp/ui-document
 ```
 
 Use the revision/targets returned by tree, not a hardcoded hash. KanBan nodes carry
@@ -140,14 +140,14 @@ cannot be applied to another project copy. Journals and backups are retained.
 
 ## Source-owned SDL composition
 
-Model registration can select design-core/0.6 with its `.design` entry and declared
+Discovered source headers select design-core/0.6 with its `.design` entry and declared
 System. Tree, select, preview and ViewPlan use SDL's checked graph; dependencies
 are authored as includes/path membership in source, never as a second file list.
 Non-entry edits invalidate the revision and old selection requests. Generated
 bundles include sources.json. Output guards protect every reachable source.
 [Profile and commands](../SDL/docs/profiles/SDL-Source-Composition-Profile.md)
 explain limits, fragment inspection and the Frontend pilot. Existing 0.5
-registrations remain valid; this does not migrate installed projects or change XFMD.
+sources remain supported; this does not migrate authored models or implement XFMD.
 
 ## Release logs
 

@@ -8,6 +8,7 @@ import (
 	"regexp"
 	"strings"
 
+	ui "github.com/Hans-Einar/SDP/SDUI/go/parser"
 	"github.com/Hans-Einar/SDP/SystemDesignLanguage/go/documents"
 	"github.com/Hans-Einar/SDP/SystemDesignLanguage/go/parser"
 )
@@ -47,7 +48,9 @@ func projectID(name string) string {
 
 // Discover observes one SDP area. It does not write an index, watch the filesystem
 // or consult navigation.json. A viewer owns refresh and its in-memory snapshot.
-func Discover(selected string) (Project, error) {
+func Discover(selected string) (Project, error) { return discover(selected, true) }
+
+func discover(selected string, withNavigation bool) (Project, error) {
 	p := Project{Schema: Version, Operation: "discover", Capabilities: map[string]string{}, Installation: map[string]any{"state": "unknown"}, Sources: []SourceInfo{}, Plans: []string{}}
 	bad := func(code string, e error) (Project, error) { p.Status = code; return p, failure(code, e) }
 	if selected == "" {
@@ -141,6 +144,9 @@ func Discover(selected string) (Project, error) {
 		p.Capabilities[entry.name] = state
 	}
 	p.Status = "valid"
+	if !withNavigation {
+		return p, nil
+	}
 	nav, e := Navigation(p, "")
 	if e != nil {
 		return bad("limit", e)
@@ -162,7 +168,7 @@ func (p *Project) scanArea() error {
 			return e
 		}
 		rel = filepath.ToSlash(rel)
-		if d != nil && d.IsDir() && (d.Name() == ".git" || d.Name() == ".sdp-operations") {
+		if d != nil && d.IsDir() && (d.Name() == ".git" || d.Name() == ".sdp-operations" || d.Name() == ".sdp-backups") {
 			return filepath.SkipDir
 		}
 		if len(p.Files) >= 10000 {
@@ -267,13 +273,15 @@ func inspectSource(rel, path string, b []byte, readErr error) SourceInfo {
 		if h := declaredSDUI.FindStringSubmatch(text); h != nil {
 			x.Profile = "sdui/" + h[1]
 		}
-		if x.Profile != "sdui/0.2" {
-			x.State = "unsupported"
-			x.Diagnostic = "unsupported or missing SDUI profile"
-			return x
+		doc, err := ui.Parse(text)
+		if err == nil {
+			x.Profile = doc.Profile
+			_, err = ui.Normalize(doc)
 		}
-		_, _, err := uiRoots(path)
 		if err != nil {
+			if x.Profile != "" && x.Profile != "sdui/0.2" {
+				x.State = "unsupported"
+			}
 			x.Diagnostic = err.Error()
 			return x
 		}
@@ -283,13 +291,11 @@ func inspectSource(rel, path string, b []byte, readErr error) SourceInfo {
 	if h := declaredSDL.FindStringSubmatch(text); h != nil {
 		x.Profile = h[1] + "/" + h[2]
 	}
-	if x.Profile != "design-core/0.5" && x.Profile != "design-core/0.6" {
-		x.State = "unsupported"
-		x.Diagnostic = "unsupported or missing SDL profile"
-		return x
-	}
 	model, err := parser.Parse(text)
 	if err != nil {
+		if x.Profile != "" && x.Profile != "design-core/0.5" && x.Profile != "design-core/0.6" {
+			x.State = "unsupported"
+		}
 		x.Diagnostic = err.Error()
 		return x
 	}
