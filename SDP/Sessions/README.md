@@ -1,11 +1,12 @@
-# Goal-oriented working Sessions — provisional pilot
+# Goal-oriented working Sessions — manual format 1
 
-Owner proposal, 2026-09-30. Tracked by
-[KB-SDP-042](../KanBan/backlog/%23042--Proposal--Goal-oriented-sessions-and-roadmaps.md).
-This directory contains a reviewable document pilot, not an installed management
-profile, new PlanType or implemented app-server recorder. Existing cards/plans
-and ProjectManagement remain authoritative. No template distribution or schema
-migration has been performed.
+Owner request, 2026-09-30: adopt and distribute the bounded manual format under
+[MAINT-SDP-0011](../Maintenance/RL1/Plan.md). The reusable distribution guide is
+[Template/sdp-root/Sessions](../../Template/sdp-root/Sessions/README.md).
+Existing cards/plans and ProjectManagement remain authoritative. No Session ledger
+kind, automatic transcript recorder or event timeline engine is introduced.
+[KB-SDP-042](../KanBan/backlog/%23042--Proposal--Goal-oriented-sessions-and-roadmaps.md)
+retains broader identity/capture integration; KB043 retains generated timelines.
 
 ## The missing overview
 
@@ -117,10 +118,10 @@ Until integration exists, manual entries must distinguish exact quotations from
 summaries and leave unavailable host IDs/timestamps unknown. An agent cannot claim
 it has captured its eventual final response through tools before sending it.
 
-## Adoption work still needed
+## Remaining automation work
 
-KB042 owns a proportionate MaintenancePlan to adopt the manual format and update
-skills/templates; shared DesignPlan work with KB036–038 covers machine ownership,
+MAINT-SDP-0011 adopts/distributes the manual format; shared DesignPlan work
+under KB042 with KB036–038 still covers machine ownership,
 Session IDs, routine-run/turn correlation and capture. Evaluate an extension to
 the existing project-management ledger/schema; do not invent a parallel lifecycle
 ledger or append unsupported Session events today. Transcript items are content,
@@ -129,5 +130,6 @@ not one management event per token. Traceability remains system design/code evid
 The [template](Session-template.md) and
 [first proposed roadmap](session-%230001--SDL_expansion.md) are the pilot artifacts.
 This pilot registers links in card prose, without adding unsupported required
-SessionId metadata to existing schemas. Installation/versioned upgrade support
-must be selected before distributing Sessions to other projects.
+SessionId metadata to existing schemas. Installation inventory now includes only the reusable guide/template, with
+initialize-if-missing ownership; published upgrade availability is recorded in
+MAINT-SDP-0011 rather than inferred from local template presence.

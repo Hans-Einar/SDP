@@ -1,0 +1,57 @@
+{
+  "candidate": "a0aa805 + RL1 working diff",
+  "targetProvenance": "local-development",
+  "productionPublicationVerified": false,
+  "cases": [
+    {
+      "case": "Fresh",
+      "previousSHA256": "767527e0d7f54866bab95f4642ffffb2a344024c1805f44b3d5ea9c024829125",
+      "previousProvenance": "signed",
+      "actions": [
+        {
+          "action": "write",
+          "path": "AGENTS.md"
+        },
+        {
+          "action": "write",
+          "path": "SDP/Framework/ReleaseChecklist.md"
+        },
+        {
+          "action": "write",
+          "path": "SDP/Sessions/README.md"
+        },
+        {
+          "action": "write",
+          "path": "SDP/Sessions/Session-template.md"
+        }
+      ],
+      "applyStatus": "completed",
+      "repeatNoChange": true,
+      "ownerContentPreserved": true,
+      "ledgerPrefixPreserved": true
+    },
+    {
+      "case": "Custom",
+      "previousSHA256": "767527e0d7f54866bab95f4642ffffb2a344024c1805f44b3d5ea9c024829125",
+      "previousProvenance": "signed",
+      "actions": [
+        {
+          "action": "write",
+          "path": "AGENTS.md"
+        },
+        {
+          "action": "write",
+          "path": "SDP/Framework/ReleaseChecklist.md"
+        },
+        {
+          "action": "write",
+          "path": "SDP/Sessions/Session-template.md"
+        }
+      ],
+      "applyStatus": "completed",
+      "repeatNoChange": true,
+      "ownerContentPreserved": true,
+      "ledgerPrefixPreserved": true
+    }
+  ]
+}

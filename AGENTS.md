@@ -119,3 +119,11 @@ Use SDP/SDL/<Ecosystem>/<System>/ as the source home (owner refinement 2026-09-2
 and derived views. Existing models remain in their current authoritative locations
 until an explicit migration. The MVP1 experiment is a reference layout, not proof
 that the released parser supports its experimental profile.
+
+## Sessions and release preparation
+
+For goals spanning turns/plans, read SDP/Sessions/README.md and recover the current
+roadmap. For every release, instantiate Toolkit/docs/ReleaseChecklist.md and record
+actual inventory, descriptor, predecessor-upgrade and publication evidence. Generate
+per-version logs with sdptool release-log from canonical RELEASE-NOTES.md. File
+presence and a local rehearsal do not prove a published release is installable.

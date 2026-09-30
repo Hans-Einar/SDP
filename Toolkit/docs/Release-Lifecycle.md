@@ -1,5 +1,8 @@
 # Release Lifecycle And Gate
 
+For each release, instantiate [ReleaseChecklist](ReleaseChecklist.md) and attach
+actual candidate evidence. Missing inventory/upgrade evidence prevents readiness.
+
 ## Deterministic normal-release gate
 
 A normal release candidate fails unless all of the following are true:

@@ -148,3 +148,11 @@ bundles include sources.json. Output guards protect every reachable source.
 [Profile and commands](../SDL/docs/profiles/SDL-Source-Composition-Profile.md)
 explain limits, fragment inspection and the Frontend pilot. Existing 0.5
 registrations remain valid; this does not migrate installed projects or change XFMD.
+
+## Release logs
+
+`sdptool release-log --all --output Releases` deterministically extracts every
+versioned section of RELEASE-NOTES.md. Use --version X.Y.Z for one release and
+--check to validate existing output without writes. Existing differing logs are
+never overwritten. Unreleased content stays in canonical notes until release
+preparation freezes it. See [ReleaseChecklist](../Toolkit/docs/ReleaseChecklist.md).

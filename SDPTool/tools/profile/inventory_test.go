@@ -1,9 +1,12 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
+	"github.com/Hans-Einar/SDP/SDPTool/install"
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
 )
 
@@ -64,5 +67,57 @@ func TestCurrentDescriptorReproducible(t *testing.T) {
 	}
 	if string(a) != string(b) {
 		t.Fatal("descriptor build is nondeterministic")
+	}
+}
+
+func TestCurrentSessionDistributionAndPreservation(t *testing.T) {
+	t.Setenv("SDP_CACHE_DIR", t.TempDir())
+	artifact := filepath.Join(t.TempDir(), "release.json")
+	if e := build("../../..", artifact, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "development-sessions", ""); e != nil {
+		t.Fatal(e)
+	}
+	b, _ := os.ReadFile(artifact)
+	var d install.Descriptor
+	if e := json.Unmarshal(b, &d); e != nil {
+		t.Fatal(e)
+	}
+	sessions := map[string]bool{}
+	for _, f := range d.Files {
+		if strings.HasPrefix(f.Path, "SDP/Sessions/") {
+			if f.Ownership != "initialize-if-missing" {
+				t.Fatal("Session overwrite policy", f.Path)
+			}
+			sessions[f.Path] = true
+		}
+	}
+	if len(sessions) != 2 || !sessions["SDP/Sessions/README.md"] || !sessions["SDP/Sessions/Session-template.md"] {
+		t.Fatal("project conversation leak or missing templates", sessions)
+	}
+	root := t.TempDir()
+	p, e := install.Preview(install.Options{Root: root, Operation: "install", Artifact: artifact, AllowUnreleased: true})
+	if e != nil || !p.CanApply {
+		t.Fatal(p.Conflicts, e)
+	}
+	if _, e = (install.Executor{}).Apply(context.Background(), root, p); e != nil {
+		t.Fatal(e)
+	}
+	guide := filepath.Join(root, "SDP/Sessions/README.md")
+	os.WriteFile(guide, []byte("project-owned guide"), 0600)
+	doc := filepath.Join(root, "SDP/Sessions/session-#0001--Local.md")
+	os.WriteFile(doc, []byte("owner work"), 0600)
+	p, e = install.Preview(install.Options{Root: root, Operation: "upgrade", Artifact: artifact, AllowUnreleased: true})
+	if e != nil || !p.NoChange {
+		t.Fatal(p.Conflicts, e)
+	}
+	if _, e = (install.Executor{}).Apply(context.Background(), root, p); e != nil {
+		t.Fatal(e)
+	}
+	b, _ = os.ReadFile(guide)
+	if string(b) != "project-owned guide" {
+		t.Fatal("guide overwritten")
+	}
+	b, _ = os.ReadFile(doc)
+	if string(b) != "owner work" {
+		t.Fatal("work overwritten")
 	}
 }

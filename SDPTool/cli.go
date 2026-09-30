@@ -23,7 +23,7 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 	}
 
 	if len(args) == 1 && (args[0] == "--help" || args[0] == "help") {
-		_, e := io.WriteString(out, "Usage: sdptool [PROJECT-OR-SDP-AREA] discover|tree|select|view ip|sdui-preview|install|upgrade [options]\n       sdptool preview FILE --output DIRECTORY [--renderer PROGRAM]\nSee SDPTool/Contract.md for source, model, revision and resource contracts.\n")
+		_, e := io.WriteString(out, "Usage: sdptool [PROJECT-OR-SDP-AREA] discover|tree|select|view ip|sdui-preview|install|upgrade|release-log [options]\n       sdptool preview FILE --output DIRECTORY [--renderer PROGRAM]\nSee SDPTool/Contract.md for source, model, revision and resource contracts.\n")
 		if e != nil {
 			return report(errs, e)
 		}
@@ -33,6 +33,9 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 	if len(args) > 1 && !isCommand(args[0]) {
 		selected = args[0]
 		args = args[1:]
+	}
+	if len(args) > 0 && args[0] == "release-log" {
+		return releaseLog(selected, args[1:], out, errs)
 	}
 	if len(args) > 0 && (args[0] == "install" || args[0] == "upgrade") {
 		return install.Run(ctx, selected, args[0], args[1:], out, errs)
@@ -200,7 +203,7 @@ func report(w io.Writer, e error) int {
 
 func isCommand(s string) bool {
 	switch s {
-	case "install", "upgrade", "preview", "discover", "view", "tree", "select", "sdui-preview":
+	case "release-log", "install", "upgrade", "preview", "discover", "view", "tree", "select", "sdui-preview":
 		return true
 	}
 	return false
