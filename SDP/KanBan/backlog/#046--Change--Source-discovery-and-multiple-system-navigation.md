@@ -39,8 +39,8 @@ system/entry selection, then a unified multi-system navigation inventory. Respec
 source-owned includes/contains, the flat System layout and ecosystem grouping;
 distinguish roots, fragments, shared code, historical fixtures and SDUI entries.
 Report unregistered/incompatible source candidates without claiming they are
-absent or validated. Decide how existing explicit registrations interact with
-convention-based discovery; avoid a new mandatory design-set manifest.
+absent or validated. Replace explicit registrations with source/directory discovery; migrate existing
+non-source project facts without introducing a replacement registration manifest.
 
 Acceptance should cover one and multiple Systems, nested ecosystem groups,
 invalid/ambiguous candidates, source exclusions, stable IDs/revisions, default
@@ -72,24 +72,36 @@ source and profile). Discover currently uses the file itself to recognize the SD
 area. Therefore deleting or overwriting it blindly would lose more than an index.
 The installer currently initializes empty arrays and preserves project edits.
 
-### Recommended design boundary
+### Selected direction — remove navigation.json
 
-Make sources authoritative and navigation a derived result/cache. Discover should
-recognize the SDP area from the supported project installation/structure, inspect
-source headers and use language-owned parsing/validation to produce a deterministic
-inventory for flat System folders and ecosystem/System folders. It may materialize
-a generated navigation index; no user-maintained source list is required. Preserve
-actual project facts in the existing project manifest/established conventions,
-not another required hand-edited registration file.
+Owner correction, 2026-10-01: remove navigation.json as the navigation/discovery
+contract, not merely replace manual editing with a generated version of the same
+required file. Sources and directories define what can be browsed. This supersedes
+the earlier recommendation to materialize a generated project navigation index.
+Current code still uses registration; removal has not been implemented.
 
-Tree and select should use the same discovery service and refresh a missing/stale
-index automatically, so remembering an explicit discover command is not another
-prerequisite. A generated index must carry source/dependency revisions and producer
-identity, be safely replaceable, and never suppress parse diagnostics by serving
-old successful facts as current. In-memory use must remain possible for read-only
-projects; cache location/lifetime and migration from current navigation.json are
-design decisions still to be finalized. Retain installation-in-progress guards,
-path containment, bounded traversal and stable client selections.
+Discover inspects the selected project's SDP/source structure and obtains language
+metadata from source headers and validated ASTs. Tree and select use the same
+service directly. No registry file, registration command, prior discover run,
+manual current-model list or replacement sidecar is required for navigation.
+A file that exists in the browsable source tree must not disappear because it is
+absent from a second list. Report parse/validation errors on affected entries;
+one invalid source must not make unrelated sources invisible.
+
+Directory navigation and semantic navigation are complementary views of the same
+sources: actual files/folders provide the browsing hierarchy; language-owned
+System/includes/contains relations provide semantic structure and entry context.
+Multiple roots can be shown for selection rather than silently electing one.
+Internal, disposable in-memory indexing may avoid repeated work; it is not a new
+project document or authority and must not change fresh discovery results.
+Persistent cache design is not required by this delivery and is not selected.
+
+Actual non-source project facts already captured by installation/project manifests
+retain those owners. Assess old default/plan/board/identity bindings during
+migration; do not retain navigation.json merely to preserve the old arrangement,
+and do not relocate the same manually maintained source list into another file.
+Retain installation-in-progress guards, path containment, bounded traversal,
+source revisions and stable client selections in the new implementation.
 
 ### Language version and compatibility
 
@@ -108,15 +120,21 @@ actually executed checker for the relevant complete input graph, with diagnostic
 scope and tool version. Do not infer 0.5 compliance just because a file declares
 0.6 but contains no new keyword; do not rewrite its header automatically.
 
-### Remaining source-authority question
+### Correction — historical files do not block discovery
 
-XFMD places historical Navigation inputs beside current Desktop inputs. Both can
-parse, so syntax cannot determine which is authoritative. Establish an explicit,
-source-visible convention (for example current source roots versus an archive/
-examples home, or supported source annotations) and report ambiguous candidates.
-No such new annotation is adopted here. A 0.6 System graph can distinguish its
-reachable fragments from roots; old 0.5 models and SDUI examples need a truthful
-policy too. Migration must preserve historical evidence and existing links.
+The earlier recommendation treated distinguishing current versus historical XFMD
+files as a prerequisite for navigation. The owner rejects that prerequisite.
+If Desktop and Navigation sources are present in the same browsable directory,
+show both. Their successful parsing does not establish that either is current,
+but navigation need not establish currentness to expose the files.
+
+Archival organization is an ordinary source-housekeeping decision when appropriate,
+not an additional register/annotation users must maintain for discovery to work.
+Do not hide or move XFMD files from this workstream. Do not invent a required
+current/historical source keyword. When semantic compilation needs a root, use
+source-declared composition and the user's selection; report ambiguity rather
+than inventing a single authoritative project-wide root. Navigation must remain
+available while such a semantic selection is unresolved.
 
 ### Acceptance additions
 
@@ -126,8 +144,12 @@ policy too. Migration must preserve historical evidence and existing links.
   distinguishable; compatibility is never guessed from word presence alone.
 - One project can expose several Systems; entry selection remains deterministic
   without silently choosing an arbitrary file or flattening all Systems together.
+- Discovery/navigation works without navigation.json, and an old copy cannot hide
+  newly added sources or override their declared language profile.
+- Two independently parseable files in one directory are both browsable without
+  current/historical labels, registry entries or an elected default root.
 - Existing project identity/bindings and legacy registration references receive an
-  explicit migration, not silent loss under a generated-file overwrite.
+  explicit migration; no replacement manually maintained source list is introduced.
 
 This is recorded owner direction plus architectural recommendations. Product
 implementation remains unstarted; a bounded plan and new execution Session should

@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded local turn: **T005 — automatic discovery direction**.
+Latest recorded local turn: **T006 — remove navigation.json authority**.
 **Presentation goal completed; S1–S4 are complete.**
 Recommended separately selected next work: KB046, source discovery and
 multi-system navigation. It is registered in backlog, not started.
@@ -223,6 +223,31 @@ recommendations and remaining migration/authority decisions.
 
 No discovery code or live XFMD configuration changed. Final response is not yet
 available for exact capture by this manual writer.
+
+### T006 — source files and directories are the navigation authority
+
+- Local date: 2026-10-01. Capture: exact owner response paragraph below, with the
+  preceding quotation of T005 assistant wording summarized here. Host IDs and
+  timestamps are unknown. Final response is not yet available for exact capture.
+- Category: owner correction to KB046 architecture direction. Existing SDP
+  change-analysis/architect context reused; no enforced routine run claimed.
+- The owner quoted the assistant's claim that current/historical XFMD files
+  required a convention before navigation could work, then replied:
+
+Verbatim owner response paragraph (Norwegian source quotation):
+
+> ja det er dette som er hele poenget mitt og som egentlig gjør at jeg vil vi skal fjerne hele navigation.json. jeg forstår egentlig ikke hvorfor den er der i utgangspunktet. all navigering bør og skal uansett skje ut ifra kilde filer og kataloger og ikke noe ekstra filer som blir utdatert 5 min etterpå
+
+Correction recorded in KB046: remove navigation.json as a required authority,
+not regenerate another compulsory navigation file. Show actual source files and
+folders, with semantic structure from their parsed declarations and relations.
+Desktop and Navigation sources can both be browsable without inferring which is
+current. Root selection and semantic validation do not justify suppressing files
+from navigation. No replacement registry or required current/historical annotation.
+
+Implementation remains unstarted; this refines the successor card, not completed
+presentation PLAN-SDP-0013. No product code, live registration or XFMD source was
+changed. The previous generated-file recommendation is explicitly superseded.
 
 ## Closeout
 
