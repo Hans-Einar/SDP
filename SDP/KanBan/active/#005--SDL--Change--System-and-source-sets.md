@@ -10,8 +10,8 @@
 | source | SCRUM-SDP-0001; owner-conversation-2026-09-25 |
 | ScrumId | SCRUM-SDP-0002 |
 | Systems | SDL |
-| next_review | Session 0001 S2: select ImplementationPlan from SSD1 design |
-| PlanId | PLAN-SDP-0010 |
+| next_review | Session 0001 S2: use SSD2 source-owned composition, not SSD1 manifest |
+| PlanId | PLAN-SDP-0011 |
 
 ## Bounded delivery
 
@@ -104,3 +104,28 @@ with preserved lineage. KB-SDP-020 migration remains deferred.
 CardState ready is the recorded handoff to Session S2 implementation planning.
 This card remains active because its selected delivery is unfinished, not merely
 to point at unrelated future work. EVT-KB-SDL-000035 records this handoff.
+
+## Owner correction — source-owned membership, 2026-09-30
+
+The owner rejects a separate authored design-set manifest: it duplicates maintenance
+and can drift from the SDL source. Source files must control inclusion. The example
+`System NVP1 contains Container/MachineService` should locate
+`Container/MachineService.design`. System membership includes containers, channels,
+contracts and other modeled elements. Exact spelling is a design proposal, not
+implemented grammar. The earlier source-tree study and experimental MVP1 already
+placed inclusion in SDL; SSD1's external manifest was an agent recommendation.
+
+Execute [PLAN-SDP-0011](../../04--Design/SDL/SourceComposition/Plan.md) to replace
+that recommendation, define repeated/cyclic loading and update the Session before
+S2. Keep original SSD1 delivery/evidence as historical records. No parser code is
+selected by this correction. EVT-KB-SDL-000036 records in-progress.
+
+## SSD2-M1 handoff — 2026-09-30
+
+[Current design](../../04--Design/SDL/SourceComposition/Contract.md) replaces the
+external-manifest path with source includes and path-addressed System membership.
+Load-once assembly preserves file ASTs and handles repeated/cyclic source edges;
+semantic duplicate definitions and invalid model cycles still fail. Detailed syntax
+and policies remain recommendations. Original SSD1 evidence is retained, with
+supersession notices on its contract/acceptance. CardState returns to ready at the
+S2 handoff; no parser implementation is claimed. EVT-KB-SDL-000037.

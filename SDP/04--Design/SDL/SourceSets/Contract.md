@@ -1,5 +1,10 @@
 # System and source-set contract — SSD1
 
+> Superseded recommendation: the owner rejected the external design-set file on
+> 2026-09-30. Use [source-owned composition](../SourceComposition/Contract.md).
+> The original body below is historical; its evidence hashes refer to the
+> SSD1 delivery at cfd7085, before this notice. Do not implement its manifest path.
+
 Status: **recommended implementation design**, delivered by PLAN-SDP-0010.
 This is not the released language specification or evidence that new syntax works.
 The current implementation remains design-core/0.5. [Acceptance](Acceptance.md)

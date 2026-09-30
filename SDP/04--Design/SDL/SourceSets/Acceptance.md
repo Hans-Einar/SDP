@@ -1,5 +1,10 @@
 # SSD1 acceptance and implementation handoff
 
+> Superseded recommendation: the owner rejected the external design-set file on
+> 2026-09-30. Use [source-owned composition](../SourceComposition/Contract.md).
+> The original body below is historical; its evidence hashes refer to the
+> SSD1 delivery at cfd7085, before this notice. Do not implement its manifest path.
+
 These are required **future implementation checks**, not passing new-profile tests.
 [Evidence](Evidence.md) distinguishes today's baseline probes from these obligations.
 The contract is [Contract.md](Contract.md); the runnable-input candidate is

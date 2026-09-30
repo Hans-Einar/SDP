@@ -11,9 +11,9 @@ owns the provisional format; [guide](README.md) defines its limits.
 | Status | active |
 | Primary delivery card | KB-SDL-005 |
 | Snapshot date | 2026-09-30 |
-| Current execution step | None — S1 delivered; awaiting S2 selection |
-| Proposed next step | S2 — create the ImplementationPlan from SSD1 |
-| Execution authority | Owner selected S1 on 2026-09-30; product implementation remains a later step |
+| Current execution step | None — S1 correction delivered; awaiting S2 selection |
+| Proposed next step | S2 — create the ImplementationPlan from SSD2 source composition |
+| Execution authority | Owner selected S1 and source-owned correction on 2026-09-30; implementation remains later |
 
 ## Goal
 
@@ -45,7 +45,8 @@ route change adds them. A Session is not a promise to empty the backlog.
 | --- | --- | --- | --- | --- |
 | P0 | [PLAN-SDP-0009, RequirementPlan/study](../02--Requirements/XFMD-Gaps/StudyPlan.md) | completed | completed | Prior input; not performed during this Session |
 | P1 | [PLAN-SDP-0010, DesignPlan](../04--Design/SDL/SourceSets/Plan.md) | completed | completed | System identity, source membership, resolution and consumer contract |
-| P2 | ImplementationPlan — not yet created | planned | Not registered | Depends on selected P1 design |
+| P1R | [PLAN-SDP-0011, source composition correction](../04--Design/SDL/SourceComposition/Plan.md) | completed | completed | Replaces P1 external-manifest recommendation after owner rejection |
+| P2 | ImplementationPlan — not yet created | planned | Not registered | Depends on P1R source-owned design |
 | P3 | VerificationPlan — not yet created; may instead use explicit verification milestones in P2 | planned | Not registered | Candidate and consumer acceptance; avoid a redundant wrapper |
 
 No mandatory separate ArchitecturePlan: create one only if the selected design
@@ -71,7 +72,7 @@ gantt
 
 | State | Step | Work / plan | Prerequisites | Authorization | Completion evidence |
 | --- | --- | --- | --- | --- | --- |
-| completed | S1 | P1: design System and explicit source sets; reuse completed study | KB-SDL-005 and source/projection constraints | Owner selected S1 | [SSD1 contract, fixture, acceptance and evidence](../04--Design/SDL/SourceSets/Plan.md) |
+| completed | S1 | P1: design System and explicit source sets; reuse completed study | KB-SDL-005 and source/projection constraints | Owner selected S1 | [SSD2 current contract and correction](../04--Design/SDL/SourceComposition/Plan.md); SSD1 retained as history |
 | next | S2 | P2: plan runnable increments and checks | Selected S1 result | Unselected | Phases/milestones, explicit branch/commit policy and acceptance |
 | planned | S3 | P2: implement Go frontend/input resolution and producer consumers | S2 and execution authorization | Unselected | Cross-file identity, diagnostics, deterministic model/revision and existing behavior verified |
 | planned | S4 | P3 or P2 verification: check a real model through navigation/generation | S3 candidate | Unselected | Missing/duplicate/cyclic input cases, original spans, stale revision and actual consumer evidence; required independent review |
@@ -110,7 +111,8 @@ transcript. The completed study is linked as an input above.
 
 ## Closeout
 
-S1 completed under PLAN-SDP-0010. S2 ImplementationPlan is next; product
+S1 delivered under PLAN-SDP-0010 and corrected by PLAN-SDP-0011 after owner
+rejection of its manifest recommendation. S2 ImplementationPlan is next; product
 implementation and full Session goal acceptance remain pending.
 
 ## Pilot checks — 2026-09-30
@@ -192,3 +194,22 @@ card. S2 must plan that later scope or explicitly split it before card closure.
 KB-SDP-020 remains backlog until a supported pilot and consumer evidence exist.
 This is the design recommendation delivered under owner-authorized S1, not a
 claim of published syntax or owner acceptance of the eventual implementation.
+
+### T007 — 2026-09-30, source-owned composition correction
+
+- Capture: manual owner-prompt summary, not a verbatim transcript or host turn ID.
+- Owner direction: reject a separate design-set file; inclusion belongs in source;
+  path-addressed System membership should load the corresponding .design file.
+  Explain whether repeated definitions and circular includes can be handled better.
+- Skills: sdp, sdp-planning, sdp-architect; existing plan/document workflow,
+  agent-reported. No runtime routine engine or automatic capture is claimed.
+- Work: recover earlier System/includes intent, record correction in KB-SDL-005,
+  execute successor PLAN-SDP-0011, preserve SSD1 evidence, add supersession notices
+  and update this roadmap. No product parser or external XFMD changes.
+- Assistant work summary: propose a source dependency graph with parse-once files,
+  link-after-discovery and typed path references. Shared/cyclic source inclusion
+  does not duplicate definitions; genuine duplicates/model cycles still fail.
+  System membership includes channels/contracts under the proposed type extension.
+- Decision authority: source-owned inclusion and rejection of authored manifests
+  come from the owner; exact syntax and graph policies are design recommendations.
+- Next: S2 must use P1R. No .design-set.json implementation is authorized by SSD1.
