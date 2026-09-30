@@ -1,5 +1,22 @@
 # Session — <goal title>
 
+## Session roadmap
+
+Show current/latest recorded turn and next step, then a Gantt/timeline projection
+and its step table. Each step lane has one planned task; activity segments and
+events do not silently create additional planned tasks. Label its time basis:
+measured time with turn boundaries, ordinal turns, or synthetic sequence only. The table is authoritative
+for this manual pilot; future SDPTool projection should eliminate duplicate editing.
+
+| State | Step | Work and linked plan milestone | Prerequisites | Authorization | Completion evidence / outcome |
+| --- | --- | --- | --- | --- | --- |
+| next | S1 | Prepare/select the bounded plan | Inputs available | Proposed, or actual instruction | Pending |
+| planned | S2 | Execute the selected plan | S1 | Unselected until authorized | Pending |
+
+Future event-derived rendering is tracked by KB-SDP-043. Mark event/card/document
+activity and current/as-of position only from observed records. Do not fabricate
+turn timestamps, elapsed durations or live state for a manual/static document.
+
 Provisional template from KB-SDP-042; not a new typed-plan schema.
 
 | Field | Value |
@@ -31,17 +48,6 @@ A changed goal needs its own recorded decision, not a silent rewrite.
 
 Do not create broken links or allocate authoritative plan IDs before registration.
 Reuse valid existing plans. Readiness does not replace canonical lifecycle.
-
-## Session roadmap
-
-Insert a Mermaid Gantt projection, followed by the step table. Label its time basis:
-real schedule with estimates, or synthetic sequence only. The table is authoritative
-for this manual pilot; future SDPTool projection should eliminate duplicate editing.
-
-| State | Step | Work and linked plan milestone | Prerequisites | Authorization | Completion evidence / outcome |
-| --- | --- | --- | --- | --- | --- |
-| next | S1 | Prepare/select the bounded plan | Inputs available | Proposed, or actual instruction | Pending |
-| planned | S2 | Execute the selected plan | S1 | Unselected until authorized | Pending |
 
 ## Route changes and decisions
 

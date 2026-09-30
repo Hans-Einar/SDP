@@ -130,3 +130,16 @@ in XFMD with index and ledger. [Handoff pointer](../../02--Requirements/XFMD-Gap
 The external card owns follow-up; no application change selected here.
 
 - 2026-09-29T23:48:33.074200+00:00 — EVT-KB-SDP-000249: Owner restored write access: register external KB-XFMD-020 with its board index and ledger, replace local draft with a handoff pointer; Session proposal remains backlog. No external reference resolution required.
+
+## Timeline refinement and local presentation — 2026-09-30
+
+Owner follow-up is recorded in
+[KB-SDP-043](%23043--Proposal--Event-derived-session-timelines.md): derive charts
+from correlated history, retain one planned task per step, show work segments,
+turn boundaries/seconds, card/document/event cursors and current position.
+KB042 retains format/adoption ownership; KB043 owns projection requirements and
+coordinates with routine/client capture. This is refinement, not a card split.
+
+The manual Session and local template now place roadmap and table immediately
+after the title. The guide reflects this order. No distributed template, ledger
+schema, telemetry recorder or generator changed. Remains backlog; EVT-KB-SDP-000252.

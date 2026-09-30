@@ -61,7 +61,8 @@ own routine selection and runtime enforcement; Sessions must not duplicate them.
 
 ## Roadmap and revisions
 
-Keep a Gantt view followed by a step table. Derive the diagram from the step data
+Owner refinement, 2026-09-30: put the roadmap immediately after the document
+title, before metadata, goal and history. Keep a Gantt view followed by a step table. Derive the diagram from the step data
 when tooling exists; in this pilot both are maintained together. Use text states
 as well as colors. Preserve completed history; added/removed/reordered steps get
 a dated reason and source turn. Keep original intent and revised target distinct.
@@ -72,6 +73,23 @@ promised to the owner. A true calendar schedule requires actual estimates.
 Mermaid is a projection, not the state store. The syntax follows the
 [official Gantt reference](https://mermaid.js.org/syntax/gantt.html); no init directive
 or custom click handler is needed. Diagram source must remain useful as Markdown.
+
+## Event-derived timeline proposal
+
+[KB-SDP-043](../KanBan/backlog/%23043--Proposal--Event-derived-session-timelines.md)
+owns the detailed proposal: one planned task per step lane, turns across time,
+colored work segments, point events and current/as-of position. KB042 continues
+to own Session format/adoption. Distinguish a planned Task from an activity Segment;
+creating a card or document can segment work on the same lane without adding a
+new planned task. Turn markers and event markers have distinct roles.
+
+Use a turn-ordinal overview or a measured seconds view with explicit turn
+boundaries. Unknown timing stays unknown. A static export freezes the cursor at
+its observation point; it does not claim live monitoring. ProjectManagement owns
+card/plan lifecycle; routine/client capture supplies observations through a future
+versioned correlation design. No unsupported Session events or parallel lifecycle
+ledger are introduced by this document update. The current sequence-only diagram
+remains a fallback, not a turn/time measurement or implemented generator.
 
 ## Turn capture and app-server
 

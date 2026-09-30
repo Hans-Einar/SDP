@@ -129,3 +129,12 @@ semantic duplicate definitions and invalid model cycles still fail. Detailed syn
 and policies remain recommendations. Original SSD1 evidence is retained, with
 supersession notices on its contract/acceptance. CardState returns to ready at the
 S2 handoff; no parser implementation is claimed. EVT-KB-SDL-000037.
+
+## Late-root AST refinement — 2026-09-30
+
+[KB-SDL-007](../backlog/%23007--SDL--Proposal--Composable-file-ASTs-and-contextual-analysis.md)
+captures the owner-endorsed AST-forest/contextual-analysis direction and DAST
+explanation from Session T008/T009. S2 must decide its bounded integration with
+this source-composition delivery, including partial diagnostics and root context.
+No implementation is selected merely by registering the proposal. CardState stays
+ready; EVT-KB-SDL-000039. No separate parser or implicit System inference is intended.

@@ -56,6 +56,8 @@
 | KB-SDUI-003 | Proposal | backlog | [Capabilities and a bounded navigation pilot](backlog/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md) |
 | KB-SDUI-004 | Bug | backlog | [Text and Markdown fidelity across SDUI exports](backlog/%23004--SDUI--Bug--Text-and-Markdown-fidelity.md) |
 | KB-SDP-042 | Proposal | backlog | [Goal-oriented Sessions and roadmaps](backlog/%23042--Proposal--Goal-oriented-sessions-and-roadmaps.md) |
+| KB-SDL-007 | Proposal | backlog | [Composable file ASTs and contextual analysis](backlog/%23007--SDL--Proposal--Composable-file-ASTs-and-contextual-analysis.md) |
+| KB-SDP-043 | Proposal | backlog | [Event-derived Session timelines](backlog/%23043--Proposal--Event-derived-session-timelines.md) |
 
 ## Purpose and authority
 

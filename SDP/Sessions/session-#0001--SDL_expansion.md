@@ -1,5 +1,37 @@
 # Session 0001 — SDL expansion
 
+## Session roadmap
+
+Latest recorded local turn: **T009 — capture AST and timeline proposals**.
+Next SDL delivery step: **S2 — ImplementationPlan**, incorporating KB-SDL-007.
+
+**Sequence-only Gantt mockup; not yet an event-derived timeline.** The dates below are synthetic placement slots,
+not working-day estimates, deadlines or authorization. S1 design is delivered; S2 is next.
+The step table below owns the manual projection. No init directive is used.
+[KB-SDP-043](../KanBan/backlog/%23043--Proposal--Event-derived-session-timelines.md)
+records the requested turn/seconds axis, current-position line and activity/event
+markers. The chart below does not measure turns or elapsed time.
+
+```mermaid
+gantt
+    title SDL expansion - sequence only
+    dateFormat YYYY-MM-DD
+    section Proposed route
+    DONE S1 Design :done, s1, 2000-01-01, 1d
+    NEXT S2 Plan :s2, after s1, 1d
+    PLANNED S3 Build :s3, after s2, 1d
+    PLANNED S4 Verify :s4, after s3, 1d
+    PLANNED S5 Close :s5, after s4, 1d
+```
+
+| State | Step | Work / plan | Prerequisites | Authorization | Completion evidence |
+| --- | --- | --- | --- | --- | --- |
+| completed | S1 | P1: design System and explicit source sets; reuse completed study | KB-SDL-005 and source/projection constraints | Owner selected S1 | [SSD2 current contract and correction](../04--Design/SDL/SourceComposition/Plan.md); SSD1 retained as history |
+| next | S2 | P2: plan runnable increments and checks | SSD2 and KB-SDL-007 refinement | Unselected | Phases/milestones, explicit branch/commit policy and acceptance |
+| planned | S3 | P2: implement Go frontend/input resolution and producer consumers | S2 and execution authorization | Unselected | Cross-file identity, diagnostics, deterministic model/revision and existing behavior verified |
+| planned | S4 | P3 or P2 verification: check a real model through navigation/generation | S3 candidate | Unselected | Missing/duplicate/cyclic input cases, original spans, stale revision and actual consumer evidence; required independent review |
+| planned | S5 | Record goal outcome and KB020 migration disposition | S4 evidence | Unselected | KB005 disposition, explicit remaining model migrations and successor; no implied release |
+
 **Manual roadmap pilot**, created from the owner's 2026-09-30 Session proposal.
 S1 is now authorized below; this does not retroactively place prior work in a Session.
 [KB-SDP-042](../KanBan/backlog/%23042--Proposal--Goal-oriented-sessions-and-roadmaps.md)
@@ -35,6 +67,8 @@ Snapshot captured 2026-09-30; lifecycle and CardState agree for these rows.
 | [KB-SDL-005](../KanBan/active/%23005--SDL--Change--System-and-source-sets.md) | Primary delivery | backlog | completed after language/input/consumer acceptance | active / ready | Pending |
 | [KB-SDP-020](../KanBan/backlog/%23020--Change--Shared-design-source-organization.md) | Related migration, separately selected | backlog | Determine after supported source-set design; do not promise entire migration | backlog | Pending |
 | [KB-SDP-041](../KanBan/completed/%23041--Study--XFMD-driven-SDL-and-SDUI-gaps.md) | Completed input, not reopened | completed | Retain completed | completed | Already completed before this pilot |
+| [KB-SDL-007](../KanBan/backlog/%23007--SDL--Proposal--Composable-file-ASTs-and-contextual-analysis.md) | Frontend refinement to review with KB005 during S2 | backlog | Select/consolidate explicit partial-analysis scope in S2; implementation not promised by capture | backlog | Pending |
+| [KB-SDP-043](../KanBan/backlog/%23043--Proposal--Event-derived-session-timelines.md) | Process proposal discovered here; outside SDL delivery | backlog | Separate Session/routine/client plan | backlog | Pending |
 
 Other language extension cards stay outside this bounded goal unless a recorded
 route change adds them. A Session is not a promise to empty the backlog.
@@ -52,31 +86,37 @@ route change adds them. A Session is not a promise to empty the backlog.
 No mandatory separate ArchitecturePlan: create one only if the selected design
 changes a material system boundary beyond the established architecture.
 
-## Session roadmap
+## Recorded frontend direction — T008/T009
 
-**Sequence-only Gantt mockup.** The dates below are synthetic placement slots,
-not working-day estimates, deadlines or authorization. S1 design is delivered; S2 is next.
-The step table below owns the current proposal. No init directive is used.
+The owner endorsed documenting the component-first model in
+[KB-SDL-007](../KanBan/backlog/%23007--SDL--Proposal--Composable-file-ASTs-and-contextual-analysis.md).
+Keep independent file ASTs, a source dependency graph and a context-dependent
+semantic System model. A later parent/root can reuse unchanged syntax; semantic
+bindings and validation must be established in its new context. Decorated AST
+means semantic enrichment (for example resolved declarations and checked kinds),
+which may live in separate tables keyed to syntax nodes/context revisions.
 
-```mermaid
-gantt
-    title SDL expansion - sequence only
-    dateFormat YYYY-MM-DD
-    section Proposed route
-    DONE S1 Design :done, s1, 2000-01-01, 1d
-    NEXT S2 Plan :s2, after s1, 1d
-    PLANNED S3 Build :s3, after s2, 1d
-    PLANNED S4 Verify :s4, after s3, 1d
-    PLANNED S5 Close :s5, after s4, 1d
-```
+No physical reparenting/copying of shared file trees is required. Partial inspection
+must distinguish parsed syntax from unresolved dependencies and fully validated
+System state. Root-relative source paths still require known root context before
+loading. This refines SSD2 for S2 planning; it does not claim implemented caching,
+incremental compilation or native XFMD partial preview.
 
-| State | Step | Work / plan | Prerequisites | Authorization | Completion evidence |
-| --- | --- | --- | --- | --- | --- |
-| completed | S1 | P1: design System and explicit source sets; reuse completed study | KB-SDL-005 and source/projection constraints | Owner selected S1 | [SSD2 current contract and correction](../04--Design/SDL/SourceComposition/Plan.md); SSD1 retained as history |
-| next | S2 | P2: plan runnable increments and checks | Selected S1 result | Unselected | Phases/milestones, explicit branch/commit policy and acceptance |
-| planned | S3 | P2: implement Go frontend/input resolution and producer consumers | S2 and execution authorization | Unselected | Cross-file identity, diagnostics, deterministic model/revision and existing behavior verified |
-| planned | S4 | P3 or P2 verification: check a real model through navigation/generation | S3 candidate | Unselected | Missing/duplicate/cyclic input cases, original spans, stale revision and actual consumer evidence; required independent review |
-| planned | S5 | Record goal outcome and KB020 migration disposition | S4 evidence | Unselected | KB005 disposition, explicit remaining model migrations and successor; no implied release |
+## Requested Session timeline — T009
+
+[KB-SDP-043](../KanBan/backlog/%23043--Proposal--Event-derived-session-timelines.md)
+preserves the detailed visual proposal. Each Step is a lane with one planned Task.
+Work can occupy multiple colored segments within that lane: ordinary work,
+red KanBan activity and green document activity. Turn boundaries, event cursors,
+`#card`, `@document` and segment ends expose what happened without creating a new
+planned task for each activity. Show a vertical current-turn/current-position line.
+
+Generate the roadmap and table from correlated history when implemented. Use turn
+numbers for overview and seconds/turn-relative offsets for detailed timing, with
+clearly marked turns. Preserve unknown historical timings and distinguish active
+work, waiting and wall-clock gaps. ProjectManagement remains lifecycle authority;
+new correlation/telemetry schema needs design. The current journal is manual and
+its Gantt remains sequence-only. This proposal does not expand the SDL delivery goal.
 
 ## Route changes and decisions
 
@@ -85,6 +125,8 @@ gantt
 | 2026-09-30 owner request | Next steps distributed across chat and cards | Propose one persistent goal/roadmap/turn record | Owner proposed Session concept; this is a document pilot | S1–S5 |
 | 2026-09-30 pilot preparation | No time estimates selected | Use synthetic sequence slots; keep execution unselected | Agent recommendation, not an approved schedule | S1–S5 |
 | 2026-09-30 next-step request | S1 proposed | Execute and deliver PLAN-SDP-0010; S2 becomes next | Owner selected S1; implementation remains subsequent | S1–S2 |
+| T008/T009, 2026-09-30 | Root-first source-graph entry in SSD2 | Capture late-root AST composition and context-dependent analysis in KB-SDL-007 for S2 | Owner discussion and capture request; implementation remains unselected | S2–S4 |
+| T009, 2026-09-30 | Roadmap below metadata/plans; manual sequence chart | Move roadmap/table first; register event-derived timeline in KB-SDP-043 | Owner layout/capture request; generator remains proposed | Session presentation; SDL steps unchanged |
 
 ## Turn journal
 
@@ -213,3 +255,52 @@ claim of published syntax or owner acceptance of the eventual implementation.
 - Decision authority: source-owned inclusion and rejection of authored manifests
   come from the owner; exact syntax and graph policies are design recommendations.
 - Next: S2 must use P1R. No .design-set.json implementation is authorized by SSD1.
+
+### T008 — 2026-09-30, AST forest and decorated AST discussion
+
+- Capture mode: manual summary of the preceding visible exchange; not a verbatim
+  transcript. Host IDs, start/end and subturn timestamps are unavailable.
+- Owner prompt summary: support parsing smaller source trees before a later
+  enclosing root, joining the forest into a larger model; explain decorated AST.
+- Procedure: bounded design explanation, local source inspection and a primary
+  compiler-teaching reference; not a new executed DesignPlan or adopted grammar.
+- Assistant summary: file ASTs can be reusable while source and semantic relations
+  form graphs. Late context requires semantic revalidation. Decorations can be
+  separate immutable/context-specific data. Root-relative dependencies await root
+  context. This is useful for component preview and incremental analysis.
+- Outcome: endorsed for capture by the owner's following turn; KB-SDL-007 records
+  it now. No implementation or measured duration is claimed.
+
+### T009 — 2026-09-30, record proposals and put roadmap first
+
+- Capture mode: manual English summary of the owner prompt and this work interval;
+  no automatic transcript capture or available host/timing identifiers.
+- Owner request: document the AST discussion in this Session and cards. Generate
+  a future Gantt/table from ledger/lineage, with one planned task per step lane,
+  segmented activity, turn/second axes, current-turn line and event/card/document
+  cursors. Place the roadmap and table at the very top of the Session document.
+- Skills loaded: sdp, sdp-planning, sdp-traceability; agent-reported. Procedure:
+  existing KanBan capture and manual Session upkeep; no enforced routine claimed.
+- Work: register KB-SDL-007 and KB-SDP-043 in backlog; link KB005/KB042; move the
+  roadmap/table first in this Session and its local template; update the guide.
+- Assistant work summary (not a captured final response): the two proposals and
+  their boundaries are durable. The manual roadmap is now first. Generator,
+  live cursor, event telemetry and new parser behavior remain unimplemented.
+- Next: S2 implementation planning must disposition KB-SDL-007. KB-SDP-043 follows
+  the separate Session/routine/client planning path and does not block SDL work.
+
+Recorded management references for T009 (journal correlation is manual; event
+write timestamps do not reconstruct turn-relative seconds):
+
+| Event | Outcome |
+| --- | --- |
+| EVT-KB-SDL-000038 | Registered KB-SDL-007 in backlog |
+| EVT-KB-SDP-000251 | Registered KB-SDP-043 in backlog |
+| EVT-KB-SDP-000252 | Recorded KB042 refinement and roadmap-first local layout |
+| EVT-KB-SDL-000039 | Linked AST refinement to KB005; ready state retained |
+
+T009 document checks: management validation passes (54 cards, 26 management
+records, 3 lineage operations, 414 events); Toolkit repository validation, local
+file links in eight changed/new Markdown documents, roadmap-first section order,
+preserved ledger prefix and git diff --check pass. No new Gantt rendering or
+live timeline behavior was tested; the existing Mermaid block remains unchanged.
