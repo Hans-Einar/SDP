@@ -1,19 +1,19 @@
 # Session 0001 — SDL expansion
 
-**Proposed manual roadmap**, created from the owner's 2026-09-30 Session proposal.
-This does not activate implementation or claim that prior work ran under a Session.
+**Manual roadmap pilot**, created from the owner's 2026-09-30 Session proposal.
+S1 is now authorized below; this does not retroactively place prior work in a Session.
 [KB-SDP-042](../KanBan/backlog/%23042--Proposal--Goal-oriented-sessions-and-roadmaps.md)
 owns the provisional format; [guide](README.md) defines its limits.
 
 | Field | Value |
 | --- | --- |
 | Session reference | SESSION-SDP-0001 (provisional) |
-| Status | proposed |
+| Status | active |
 | Primary delivery card | KB-SDL-005 |
 | Snapshot date | 2026-09-30 |
-| Current execution step | None |
-| Proposed next step | S1 — prepare and execute the bounded System/source-set DesignPlan when selected |
-| Execution authority | Roadmap preparation only; language implementation unselected |
+| Current execution step | None — S1 delivered; awaiting S2 selection |
+| Proposed next step | S2 — create the ImplementationPlan from SSD1 |
+| Execution authority | Owner selected S1 on 2026-09-30; product implementation remains a later step |
 
 ## Goal
 
@@ -32,7 +32,7 @@ Snapshot captured 2026-09-30; lifecycle and CardState agree for these rows.
 
 | Card | Role | Initial state | Planned final disposition | Current snapshot | Actual final disposition |
 | --- | --- | --- | --- | --- | --- |
-| [KB-SDL-005](../KanBan/backlog/%23005--SDL--Change--System-and-source-sets.md) | Primary delivery | backlog | completed after language/input/consumer acceptance | backlog | Pending |
+| [KB-SDL-005](../KanBan/active/%23005--SDL--Change--System-and-source-sets.md) | Primary delivery | backlog | completed after language/input/consumer acceptance | active / ready | Pending |
 | [KB-SDP-020](../KanBan/backlog/%23020--Change--Shared-design-source-organization.md) | Related migration, separately selected | backlog | Determine after supported source-set design; do not promise entire migration | backlog | Pending |
 | [KB-SDP-041](../KanBan/completed/%23041--Study--XFMD-driven-SDL-and-SDUI-gaps.md) | Completed input, not reopened | completed | Retain completed | completed | Already completed before this pilot |
 
@@ -44,7 +44,7 @@ route change adds them. A Session is not a promise to empty the backlog.
 | Ref | Plan type and document | Document readiness | Canonical lifecycle | Role / dependency |
 | --- | --- | --- | --- | --- |
 | P0 | [PLAN-SDP-0009, RequirementPlan/study](../02--Requirements/XFMD-Gaps/StudyPlan.md) | completed | completed | Prior input; not performed during this Session |
-| P1 | DesignPlan — not yet created | planned | Not registered | System identity, source membership, resolution and consumer contract |
+| P1 | [PLAN-SDP-0010, DesignPlan](../04--Design/SDL/SourceSets/Plan.md) | completed | completed | System identity, source membership, resolution and consumer contract |
 | P2 | ImplementationPlan — not yet created | planned | Not registered | Depends on selected P1 design |
 | P3 | VerificationPlan — not yet created; may instead use explicit verification milestones in P2 | planned | Not registered | Candidate and consumer acceptance; avoid a redundant wrapper |
 
@@ -54,7 +54,7 @@ changes a material system boundary beyond the established architecture.
 ## Session roadmap
 
 **Sequence-only Gantt mockup.** The dates below are synthetic placement slots,
-not working-day estimates, deadlines or authorization. All execution is pending.
+not working-day estimates, deadlines or authorization. S1 design is delivered; S2 is next.
 The step table below owns the current proposal. No init directive is used.
 
 ```mermaid
@@ -62,8 +62,8 @@ gantt
     title SDL expansion - sequence only
     dateFormat YYYY-MM-DD
     section Proposed route
-    NEXT S1 Design :s1, 2000-01-01, 1d
-    PLANNED S2 Plan :s2, after s1, 1d
+    DONE S1 Design :done, s1, 2000-01-01, 1d
+    NEXT S2 Plan :s2, after s1, 1d
     PLANNED S3 Build :s3, after s2, 1d
     PLANNED S4 Verify :s4, after s3, 1d
     PLANNED S5 Close :s5, after s4, 1d
@@ -71,8 +71,8 @@ gantt
 
 | State | Step | Work / plan | Prerequisites | Authorization | Completion evidence |
 | --- | --- | --- | --- | --- | --- |
-| next | S1 | P1: design System and explicit source sets; reuse completed study | KB-SDL-005 and source/projection constraints | Proposed next, not executing | Versioned contract, positive/negative examples and bounded migration decision |
-| planned | S2 | P2: plan runnable increments and checks | Selected S1 result | Unselected | Phases/milestones, explicit branch/commit policy and acceptance |
+| completed | S1 | P1: design System and explicit source sets; reuse completed study | KB-SDL-005 and source/projection constraints | Owner selected S1 | [SSD1 contract, fixture, acceptance and evidence](../04--Design/SDL/SourceSets/Plan.md) |
+| next | S2 | P2: plan runnable increments and checks | Selected S1 result | Unselected | Phases/milestones, explicit branch/commit policy and acceptance |
 | planned | S3 | P2: implement Go frontend/input resolution and producer consumers | S2 and execution authorization | Unselected | Cross-file identity, diagnostics, deterministic model/revision and existing behavior verified |
 | planned | S4 | P3 or P2 verification: check a real model through navigation/generation | S3 candidate | Unselected | Missing/duplicate/cyclic input cases, original spans, stale revision and actual consumer evidence; required independent review |
 | planned | S5 | Record goal outcome and KB020 migration disposition | S4 evidence | Unselected | KB005 disposition, explicit remaining model migrations and successor; no implied release |
@@ -83,6 +83,7 @@ gantt
 | --- | --- | --- | --- | --- |
 | 2026-09-30 owner request | Next steps distributed across chat and cards | Propose one persistent goal/roadmap/turn record | Owner proposed Session concept; this is a document pilot | S1–S5 |
 | 2026-09-30 pilot preparation | No time estimates selected | Use synthetic sequence slots; keep execution unselected | Agent recommendation, not an approved schedule | S1–S5 |
+| 2026-09-30 next-step request | S1 proposed | Execute and deliver PLAN-SDP-0010; S2 becomes next | Owner selected S1; implementation remains subsequent | S1–S2 |
 
 ## Turn journal
 
@@ -109,7 +110,8 @@ transcript. The completed study is linked as an input above.
 
 ## Closeout
 
-Open proposal. No new SDL design, implementation or verification has started.
+S1 completed under PLAN-SDP-0010. S2 ImplementationPlan is next; product
+implementation and full Session goal acceptance remain pending.
 
 ## Pilot checks — 2026-09-30
 
@@ -158,3 +160,35 @@ Exact visible owner prompt for T004:
 > ok you are back in yolo mode so you can do git commits and also add the kb cards in xfmd
 
 No step is marked completed merely because this housekeeping turn ends.
+
+### T005 — manual handoff index, 2026-09-30
+
+Owner asked to leave external KB-XFMD-020 staged for the XFMD agent's next commit.
+The card alone was staged; no XFMD commit was created. Shared index/history changes
+remain with that agent. This is a manual summary, not recovered host turn metadata.
+
+### T006 — 2026-09-30, execute S1
+
+- Exact submitted owner prompt: “ok. continue on next step in our session plan”
+- Category: execute the next bounded design step. Capture mode: manual.
+- Skills loaded: sdp, sdp-planning, sdp-architect, sdp-traceability; agent-reported.
+  Existing plan/document workflow used; no automated routine engine is claimed.
+- Host thread/turn/item IDs: unavailable to this document writer.
+- Work: activate KB-SDL-005, create and execute PLAN-SDP-0010 on the design phase
+  branch, inspect parser and consumers, deliver contract/fixture/26 acceptance
+  cases, verify baseline behavior and record original-source/revision requirements.
+- Assistant work summary, not a captured final chat message: S1 design is complete.
+  A three-file fixture retains all 57 baseline declarations/statements. The current
+  parser correctly rejects proposed 0.6; no implementation is claimed. One closed
+  System is the recommended first increment. Public linking remains explicit
+  later card scope. Authoritative models and unrelated work remain unchanged.
+- Next: S2 ImplementationPlan. KB-SDL-005 is ready at the handoff; it is not complete.
+
+### S1 route disposition
+
+The first implementation increment excludes cross-System imports/exports. This
+keeps source assembly bounded while preserving the historical obligation in the
+card. S2 must plan that later scope or explicitly split it before card closure.
+KB-SDP-020 remains backlog until a supported pilot and consumer evidence exist.
+This is the design recommendation delivered under owner-authorized S1, not a
+claim of published syntax or owner acceptance of the eventual implementation.

@@ -66,7 +66,7 @@ source/profile migration; no architecture decision remains pending on this point
 
 ## Scrum-0001 disposition
 
-Fully split by KBO-SDP-000003 into [KB-SDL-005](../backlog/%23005--SDL--Change--System-and-source-sets.md)
+Fully split by KBO-SDP-000003 into [KB-SDL-005](../active/%23005--SDL--Change--System-and-source-sets.md)
 and [KB-SDP-020](../backlog/%23020--Change--Shared-design-source-organization.md).
 The first owns semantics/tool support; the second owns the model/source migration.
 No unfinished work is closed as implemented. The uncommitted loader draft remains

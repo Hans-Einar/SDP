@@ -30,7 +30,7 @@ remain uncommitted and untested; S1-M1/M2 are not delivered.
 
 ## Scrum-0001 successor planning
 
-The mixed primary was fully split into [KB-SDL-005](../../KanBan/backlog/%23005--SDL--Change--System-and-source-sets.md)
+The mixed primary was fully split into [KB-SDL-005](../../KanBan/active/%23005--SDL--Change--System-and-source-sets.md)
 and [KB-SDP-020](../../KanBan/backlog/%23020--Change--Shared-design-source-organization.md).
 Use those bounded contracts for subsequent phases. The rows above retain S1's
 historical planning state; they do not authorize continuing the abandoned separate

@@ -66,7 +66,7 @@ MCP/app-server run or implementation-drift prevention is claimed by these checks
 - [Source organization](../../SDL/README.md)
 - [KB039](../../KanBan/completed/%23039--Change--Ecosystem-and-system-models.md)
 - [KB020 migration](../../KanBan/backlog/%23020--Change--Shared-design-source-organization.md)
-- [KB-SDL-005 source sets](../../KanBan/backlog/%23005--SDL--Change--System-and-source-sets.md)
+- [KB-SDL-005 source sets](../../KanBan/active/%23005--SDL--Change--System-and-source-sets.md)
 - [KB040 KanBan TUI](../../KanBan/backlog/%23040--Proposal--KanBan-TUI.md)
 
 ## Execution evidence

@@ -30,7 +30,7 @@ viewpoints come from the SDL toolkit, never manual substitute diagrams.
 
 ## Dependency and acceptance
 
-[KB-SDL-005](%23005--SDL--Change--System-and-source-sets.md) owns the supported
+[KB-SDL-005](../active/%23005--SDL--Change--System-and-source-sets.md) owns the supported
 System/source input contract. Do not keep a competing handwritten aggregate model
 or introduce an include preprocessor to bypass it. SDL and SDUI Go modules remain
 source homes; no XFMD code or installer migration is included. Record remaining
@@ -82,3 +82,11 @@ are not inferred from directory structure. This card remains backlog.
 ## Ecosystem modeling outcome — 2026-09-29
 
 [PLAN-SDP-0008](../../03--Architecture/Ecosystems/Plan.md) establishes new tool boundary models under SDP/SDL/<Ecosystem>/<System>/. This refines the earlier three coarse system groups. The [catalog](../../SDL/Catalog.md) preserves old detailed model authority; this card still owns lossless migration, source references and reconciliation after KB-SDL-005. No existing monolithic model was moved or declared obsolete by the new catalog.
+
+## Session S1 migration review — 2026-09-30
+
+[SSD1 design](../../04--Design/SDL/SourceSets/Contract.md) recommends a copied
+Frontend model as the first source-set fixture. Keep authoritative model locations
+and registrations unchanged until the implementation and navigation checks pass.
+The MVP1 experimental language needs more than source assembly. This card remains
+backlog; EVT-KB-SDP-000250 records the review, not migration execution.

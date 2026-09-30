@@ -52,7 +52,7 @@ organization, not evidence that the reported parser/runtime gaps are resolved.
 
 | Source IDs | Study concern | Existing route / distinction |
 | --- | --- | --- |
-| GAP-XFMD-SDL-001 | System identity, explicit multi-file membership, resolution and original-source diagnostics | [KB-SDL-005](../backlog/%23005--SDL--Change--System-and-source-sets.md); reuse its contract work, do not create a second loader |
+| GAP-XFMD-SDL-001 | System identity, explicit multi-file membership, resolution and original-source diagnostics | [KB-SDL-005](../active/%23005--SDL--Change--System-and-source-sets.md); reuse its contract work, do not create a second loader |
 | GAP-XFMD-SDL-002 | Requirement identities, normative narrative, amendments and acceptance/source links | [KB-SDL-001](../backlog/%23001--SDL--Proposal--Requirements-narrative.md); preserve external hyphenated identities without assuming new keyword spelling |
 | GAP-XFMD-SDL-003 | Detailed state, failure/cancellation invariants and source/evidence bindings | [KB-SDL-006](../backlog/%23006--SDL--Study--Executable-channel-tests-and-unit-bindings.md) and [KB-SDP-004](../backlog/%23004--Proposal--Design-traceability.md); first assess existing structural/action/class/scenario profiles |
 | GAP-XFMD-SDUI-001 | Trees, lists, stable item identity and lazy collections | Collection semantics and host interaction, not merely drawing rows |

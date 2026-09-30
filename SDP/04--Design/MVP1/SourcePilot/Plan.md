@@ -58,7 +58,7 @@ interaction and production behavior are outside static-design evidence.
 
 ## Dependencies and follow-up
 
-[KB-SDL-005](../../../KanBan/backlog/%23005--SDL--Change--System-and-source-sets.md)
+[KB-SDL-005](../../../KanBan/active/%23005--SDL--Change--System-and-source-sets.md)
 owns actual Go System/source-set support;
 [KB-SDP-020](../../../KanBan/backlog/%23020--Change--Shared-design-source-organization.md)
 owns broader shared-model migration. This direct-owner pilot informs both without

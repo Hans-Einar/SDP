@@ -1,0 +1,8 @@
+{
+  "profile": "sdl-source-set/0.1",
+  "entry": "System.design",
+  "sources": [
+    "Containers/Frontend.design",
+    "Features.design"
+  ]
+}

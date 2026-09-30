@@ -71,7 +71,7 @@ does not authorize a FOX bridge or replacing native XFMD widgets.
 
 ## Follow-up ownership and traceability
 
-- [KB-SDL-005](../../KanBan/backlog/%23005--SDL--Change--System-and-source-sets.md): SDL-001.
+- [KB-SDL-005](../../KanBan/active/%23005--SDL--Change--System-and-source-sets.md): SDL-001.
 - [KB-SDL-001](../../KanBan/backlog/%23001--SDL--Proposal--Requirements-narrative.md): SDL-002 narrative/identities.
 - [KB-SDL-006](../../KanBan/backlog/%23006--SDL--Study--Executable-channel-tests-and-unit-bindings.md): SDL-003 behavior composition.
 - [KB-SDP-004](../../KanBan/backlog/%23004--Proposal--Design-traceability.md): SDL-002/003 source/evidence relationships.
