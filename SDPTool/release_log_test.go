@@ -52,3 +52,25 @@ func TestReleaseLogCLIImmutableAndCheck(t *testing.T) {
 		t.Fatal("invented release")
 	}
 }
+
+func TestReleaseLogsNestedFences(t *testing.T) {
+	for _, pair := range [][2]string{{"````markdown", "````"}, {"~~~~markdown", "~~~~"}} {
+		nested := "\n" + pair[0] + "\n```text\n## [9.0.0] - 2026-09-30\n### Added\n- Example only\n```\n" + pair[1] + "\n"
+		text := strings.Replace(releaseNotes, "- Sessions.", "- Sessions."+nested, 1)
+		logs, e := ReleaseLogs(text)
+		if e != nil || len(logs) != 2 {
+			t.Fatal(logs, e)
+		}
+		if !bytes.Contains(logs["1.1.0"], []byte("9.0.0")) {
+			t.Fatal("lost example")
+		}
+	}
+	text := strings.Replace(releaseNotes, "- Sessions.", "- Sessions.\n````markdown\n```not a closing fence\n## [9.0.0] - 2026-09-30\n### Added\n- Example\n````", 1)
+	logs, e := ReleaseLogs(text)
+	if e != nil || len(logs) != 2 {
+		t.Fatal(logs, e)
+	}
+	if _, e = ReleaseLogs(releaseNotes + "\n````\n"); e == nil {
+		t.Fatal("unterminated fence accepted")
+	}
+}

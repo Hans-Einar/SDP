@@ -11,7 +11,7 @@ Read this guide when resuming a goal that spans turns or multiple plans.
 The Session owns the goal, roadmap, route changes and turn summaries. Cards own
 CardState; plans own phases, milestones, Git policy and acceptance. Session tables
 are dated projections, not a new lifecycle authority. Use existing
-[KanBan](../KanBan/README.md) and [planning](../ProjectManagement/Plans.md).
+[KanBan](../KanBan/README.md) and [project management and planning](../ProjectManagement/README.md).
 Do not introduce a Session ledger kind or duplicate lifecycle ledger.
 
 Before each turn, recover the goal/current step, check request scope and applicable

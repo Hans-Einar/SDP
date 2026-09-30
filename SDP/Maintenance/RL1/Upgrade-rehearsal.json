@@ -1,57 +1,119 @@
 {
-  "candidate": "a0aa805 + RL1 working diff",
+  "candidate": "6fc662d plus reviewed final Session guide/template; no installer behavior delta",
+  "descriptorSHA256": "4631c124ebe5f8947a1f130d17606b54a6a400b35330173a2fe262ca265d6012",
   "targetProvenance": "local-development",
   "productionPublicationVerified": false,
   "cases": [
     {
-      "case": "Fresh",
-      "previousSHA256": "767527e0d7f54866bab95f4642ffffb2a344024c1805f44b3d5ea9c024829125",
+      "previous": "0.2.0",
+      "customContent": false,
+      "previousSHA256": "edc0c72101a437c6e12c40a081ef59ae41cf0db32bcaedb73824ec48495aaee5",
       "previousProvenance": "signed",
-      "actions": [
-        {
-          "action": "write",
-          "path": "AGENTS.md"
-        },
-        {
-          "action": "write",
-          "path": "SDP/Framework/ReleaseChecklist.md"
-        },
-        {
-          "action": "write",
-          "path": "SDP/Sessions/README.md"
-        },
-        {
-          "action": "write",
-          "path": "SDP/Sessions/Session-template.md"
-        }
+      "actionPaths": [
+        "AGENTS.md",
+        "SDP/Framework/README.md",
+        "SDP/Framework/ReleaseChecklist.md",
+        "SDP/SDL/AGENTS.md",
+        "SDP/SDL/README.md",
+        "SDP/Sessions/README.md",
+        "SDP/Sessions/Session-template.md"
       ],
       "applyStatus": "completed",
       "repeatNoChange": true,
       "ownerContentPreserved": true,
-      "ledgerPrefixPreserved": true
+      "ledgerPrefixPreserved": true,
+      "manualSessionCapability": true
     },
     {
-      "case": "Custom",
-      "previousSHA256": "767527e0d7f54866bab95f4642ffffb2a344024c1805f44b3d5ea9c024829125",
+      "previous": "0.2.0",
+      "customContent": true,
+      "previousSHA256": "edc0c72101a437c6e12c40a081ef59ae41cf0db32bcaedb73824ec48495aaee5",
       "previousProvenance": "signed",
-      "actions": [
-        {
-          "action": "write",
-          "path": "AGENTS.md"
-        },
-        {
-          "action": "write",
-          "path": "SDP/Framework/ReleaseChecklist.md"
-        },
-        {
-          "action": "write",
-          "path": "SDP/Sessions/Session-template.md"
-        }
+      "actionPaths": [
+        "AGENTS.md",
+        "SDP/Framework/README.md",
+        "SDP/Framework/ReleaseChecklist.md",
+        "SDP/SDL/AGENTS.md",
+        "SDP/SDL/README.md",
+        "SDP/Sessions/Session-template.md"
       ],
       "applyStatus": "completed",
       "repeatNoChange": true,
       "ownerContentPreserved": true,
-      "ledgerPrefixPreserved": true
+      "ledgerPrefixPreserved": true,
+      "manualSessionCapability": true
+    },
+    {
+      "previous": "0.2.1",
+      "customContent": false,
+      "previousSHA256": "66590e8e967ede6b36d8fa45cdbee1cd80f69505cca698b0e4a9bd960842735a",
+      "previousProvenance": "signed",
+      "actionPaths": [
+        "AGENTS.md",
+        "SDP/Framework/README.md",
+        "SDP/Framework/ReleaseChecklist.md",
+        "SDP/SDL/AGENTS.md",
+        "SDP/SDL/README.md",
+        "SDP/Sessions/README.md",
+        "SDP/Sessions/Session-template.md"
+      ],
+      "applyStatus": "completed",
+      "repeatNoChange": true,
+      "ownerContentPreserved": true,
+      "ledgerPrefixPreserved": true,
+      "manualSessionCapability": true
+    },
+    {
+      "previous": "0.2.1",
+      "customContent": true,
+      "previousSHA256": "66590e8e967ede6b36d8fa45cdbee1cd80f69505cca698b0e4a9bd960842735a",
+      "previousProvenance": "signed",
+      "actionPaths": [
+        "AGENTS.md",
+        "SDP/Framework/README.md",
+        "SDP/Framework/ReleaseChecklist.md",
+        "SDP/SDL/AGENTS.md",
+        "SDP/SDL/README.md",
+        "SDP/Sessions/Session-template.md"
+      ],
+      "applyStatus": "completed",
+      "repeatNoChange": true,
+      "ownerContentPreserved": true,
+      "ledgerPrefixPreserved": true,
+      "manualSessionCapability": true
+    },
+    {
+      "previous": "1.0.0",
+      "customContent": false,
+      "previousSHA256": "767527e0d7f54866bab95f4642ffffb2a344024c1805f44b3d5ea9c024829125",
+      "previousProvenance": "signed",
+      "actionPaths": [
+        "AGENTS.md",
+        "SDP/Framework/ReleaseChecklist.md",
+        "SDP/Sessions/README.md",
+        "SDP/Sessions/Session-template.md"
+      ],
+      "applyStatus": "completed",
+      "repeatNoChange": true,
+      "ownerContentPreserved": true,
+      "ledgerPrefixPreserved": true,
+      "manualSessionCapability": true
+    },
+    {
+      "previous": "1.0.0",
+      "customContent": true,
+      "previousSHA256": "767527e0d7f54866bab95f4642ffffb2a344024c1805f44b3d5ea9c024829125",
+      "previousProvenance": "signed",
+      "actionPaths": [
+        "AGENTS.md",
+        "SDP/Framework/ReleaseChecklist.md",
+        "SDP/Sessions/Session-template.md"
+      ],
+      "applyStatus": "completed",
+      "repeatNoChange": true,
+      "ownerContentPreserved": true,
+      "ledgerPrefixPreserved": true,
+      "manualSessionCapability": true
     }
   ]
 }

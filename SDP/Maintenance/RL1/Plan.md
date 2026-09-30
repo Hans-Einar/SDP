@@ -4,7 +4,7 @@
 | --- | --- |
 | id | MAINT-SDP-0011 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | MaintenancePlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
@@ -38,7 +38,7 @@ behavior from Git commit subjects. Provide deterministic check mode for CI/gates
 | Milestone | Acceptance | State |
 | --- | --- | --- |
 | RL1-M1 | Session templates/guidance, payload inventory/capability, generated release logs and checklist, tests | completed |
-| RL1-M2 | Real 1.0.0 descriptor upgrade rehearsal, preservation/no-op, candidate docs/evidence and manual handoff | in-progress |
+| RL1-M2 | Real 1.0.0 descriptor upgrade rehearsal, preservation/no-op, candidate docs/evidence and manual handoff | completed |
 
 ## Verification and remaining gates
 
@@ -50,3 +50,12 @@ Production signed assets, exact clean candidate CI/review, merge/release approva
 client selection and downloaded-asset acceptance must precede a real gh-sdp upgrade.
 Record actual results in Evidence.md and ReleaseChecklist.md. Do not call the
 release available merely because the local upgrade rehearsal passes.
+
+## Delivered preparation
+
+Both milestones are complete with [evidence](Evidence.md), independent bounded
+review and [ReleaseChecklist](ReleaseChecklist.md). The proposed release remains
+unpublished: freeze/version records, production signing/exact-candidate gates and
+publication require the next selected release operation. The owner will run the
+actual XFMD upgrade; [handoff](Manual-upgrade.md) distinguishes extension update
+from project upgrade. This completed plan is not reopened for publication.

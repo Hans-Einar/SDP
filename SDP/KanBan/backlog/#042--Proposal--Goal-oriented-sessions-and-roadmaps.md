@@ -143,3 +143,12 @@ coordinates with routine/client capture. This is refinement, not a card split.
 The manual Session and local template now place roadmap and table immediately
 after the title. The guide reflects this order. No distributed template, ledger
 schema, telemetry recorder or generator changed. Remains backlog; EVT-KB-SDP-000252.
+
+## Manual distribution selected — MAINT-SDP-0011
+
+The owner requests Sessions in the next distribution. [RL1](../../Maintenance/RL1/Plan.md)
+adopts the bounded manual format and installs the reusable guide/template with
+initialize-if-missing ownership. The roadmap, card/plan projections and honest turn
+summaries are available; full automatic capture, replay/correlation and event-derived
+timelines are not. This broader card remains backlog for those separate decisions.
+No new Session ledger kind is introduced. Earlier pilot-only notes are historical.

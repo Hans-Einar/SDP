@@ -20,7 +20,8 @@ func ReleaseLogs(notes string) (map[string][]byte, error) {
 	logs := map[string][]byte{}
 	var version string
 	var body []string
-	fence := ""
+	var fence byte
+	fenceLength := 0
 	flush := func() error {
 		if version == "" {
 			return nil
@@ -33,18 +34,23 @@ func ReleaseLogs(notes string) (map[string][]byte, error) {
 		return nil
 	}
 	for _, line := range strings.Split(strings.ReplaceAll(notes, "\r\n", "\n"), "\n") {
-		trim := strings.TrimSpace(line)
-		if strings.HasPrefix(trim, "```") || strings.HasPrefix(trim, "~~~") {
-			marker := trim[:3]
-			if fence == "" {
-				fence = marker
-			} else if fence == marker {
-				fence = ""
+		trim := strings.TrimLeft(line, " ")
+		if len(line)-len(trim) <= 3 && len(trim) >= 3 && (trim[0] == '`' || trim[0] == '~') {
+			n := 1
+			for n < len(trim) && trim[n] == trim[0] {
+				n++
 			}
-			body = append(body, line)
-			continue
+			if n >= 3 {
+				if fenceLength == 0 && (trim[0] != '`' || !strings.ContainsRune(trim[n:], '`')) {
+					fence, fenceLength = trim[0], n
+				} else if trim[0] == fence && n >= fenceLength && strings.TrimSpace(trim[n:]) == "" {
+					fenceLength = 0
+				}
+				body = append(body, line)
+				continue
+			}
 		}
-		if fence == "" && strings.HasPrefix(line, "## ") {
+		if fenceLength == 0 && strings.HasPrefix(line, "## ") {
 			if e := flush(); e != nil {
 				return nil, e
 			}
@@ -68,6 +74,9 @@ func ReleaseLogs(notes string) (map[string][]byte, error) {
 		if version != "" {
 			body = append(body, line)
 		}
+	}
+	if fenceLength != 0 {
+		return nil, fmt.Errorf("unterminated code fence in release notes")
 	}
 	if e := flush(); e != nil {
 		return nil, e

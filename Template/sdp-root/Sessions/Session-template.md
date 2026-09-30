@@ -6,22 +6,34 @@ Show current/latest recorded turn and next step, then a Gantt/timeline projectio
 and its step table. Each step lane has one planned task; activity segments and
 events do not silently create additional planned tasks. Label its time basis:
 measured time with turn boundaries, ordinal turns, or synthetic sequence only. The table is authoritative
-for this manual pilot; future SDPTool projection should eliminate duplicate editing.
+for this manual format; generated event timelines are a separate future capability.
+
+Sequence-only example: synthetic dates are placement slots, not an estimate.
+Replace the labels and keep this projection aligned with the table.
+
+```mermaid
+gantt
+    title Session route - sequence only
+    dateFormat YYYY-MM-DD
+    section Route
+    NEXT S1 Plan :s1, 2000-01-01, 1d
+    PLANNED S2 Work :s2, after s1, 1d
+```
 
 | State | Step | Work and linked plan milestone | Prerequisites | Authorization | Completion evidence / outcome |
 | --- | --- | --- | --- | --- | --- |
 | next | S1 | Prepare/select the bounded plan | Inputs available | Proposed, or actual instruction | Pending |
 | planned | S2 | Execute the selected plan | S1 | Unselected until authorized | Pending |
 
-Future event-derived rendering is tracked by KB-SDP-043. Mark event/card/document
+Event-derived rendering is not supplied by this template. Mark event/card/document
 activity and current/as-of position only from observed records. Do not fabricate
 turn timestamps, elapsed durations or live state for a manual/static document.
 
-Provisional template from KB-SDP-042; not a new typed-plan schema.
+Manual Session format 1; not a new typed-plan or ledger schema.
 
 | Field | Value |
 | --- | --- |
-| Session reference | SESSION-<PROJECT>-NNNN (proposed identity convention) |
+| Session reference | SESSION-<PROJECT>-NNNN (project-local document identity) |
 | Status | proposed / active / paused / completed / canceled |
 | Primary card | Link to the entry card |
 | Snapshot date | Actual observation date |
