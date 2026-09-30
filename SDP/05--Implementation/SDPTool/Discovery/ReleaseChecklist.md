@@ -17,7 +17,7 @@ are recorded after packaging. gh-sdp 0.2.0 is independently versioned.
 - [x] Exact candidate CI and release review passed; candidate tag absent.
 - [x] Annotated tag and public assets verified by download.
 - [x] gh-sdp final pairing, public default, independent review and client release verified.
-- [ ] Truthful publication records and manual extension/project commands handed off.
+- [x] Truthful publication records and manual extension/project commands handed off.
 
 See Evidence.md and Review.md for bounded claims. Checklist completion after
 publication belongs to a reconciliation commit; never pre-claim future artifacts.

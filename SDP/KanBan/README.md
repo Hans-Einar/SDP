@@ -4,9 +4,9 @@
 
 | ID | Type | Status | Document |
 | --- | --- | --- | --- |
-| KB-SDP-046 | Change | active | [Source discovery and systems navigation](active/%23046--Change--Source-discovery-and-multiple-system-navigation.md) |
+| KB-SDP-046 | Change | completed | [Source discovery and systems navigation](completed/%23046--Change--Source-discovery-and-multiple-system-navigation.md) |
 | KB-SDP-045 | Change | completed | [Portable CLI presentation](completed/%23045--Change--Portable-SDPTool-presentation.md) |
-| KB-SDP-044 | Change | active | [Sessions and release preparation](active/%23044--Change--Sessions-and-repeatable-release-preparation.md) |
+| KB-SDP-044 | Change | completed | [Sessions and release preparation](completed/%23044--Change--Sessions-and-repeatable-release-preparation.md) |
 | KB-SDL-001 | Proposal | backlog | [Stakeholders, actors, user stories and readable SDL](backlog/%23001--SDL--Proposal--Requirements-narrative.md) |
 | KB-SDL-002 | Proposal | backlog | [Weak links and visual paths through nodes](backlog/%23002--SDL--Proposal--Links-through.md) |
 | KB-SDL-003 | Ref | completed | [SDP tools as a consumer of SDL](completed/%23003--SDL--Ref--SDP--017--sdptool.md) |

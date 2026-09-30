@@ -5,8 +5,8 @@
 | id | KB-SDP-044 |
 | project | SDP |
 | type | Change |
-| CardState | in-progress |
-| PlanId | MAINT-SDP-0011 |
+| CardState | completed |
+| PlanId | PLAN-SDP-0014 |
 | created | 2026-09-30 |
 | source | Owner request after Session 0001 closeout |
 
@@ -26,7 +26,7 @@ Registered and activated for the explicitly requested Maintenance. SDL 0.6 and
 SDP release numbering are separate; latest product release is 1.0.0, next proposed
 additive release is 1.1.0. No merge, publication or XFMD mutation yet.
 
-## Concrete review handoff
+## Historical preparation review handoff
 
 MAINT-SDP-0011 preparation is completed and independently reviewed. See its
 [checklist](../../Maintenance/RL1/ReleaseChecklist.md) and
@@ -46,3 +46,20 @@ it is not evidence that these new consumer gates have passed.
 
 2026-10-01: owner selects implementation and publication in Session 0003.
 PLAN-SDP-0014 executes the new combined candidate; MAINT-SDP-0011 remains completed.
+
+## Delivery — Session 0003
+
+Completed under PLAN-SDP-0014. SDP 2.0.0 and gh-sdp 0.2.0 are published,
+independently reviewed and verified through actual public downloads/default.
+Discovery derives inventory and navigation from source files/directories without
+registration; invalid sources remain visible. Sessions guides/templates and
+release logs/checklist are distributed. Signed predecessor upgrades preserve
+project documents and inert navigation.json; new installs create no registry.
+
+[Evidence](../../05--Implementation/SDPTool/Discovery/Evidence.md),
+[publication identities](../../05--Implementation/SDPTool/Discovery/Publication.json),
+[manual upgrade](../../05--Implementation/SDPTool/Discovery/Manual-upgrade.md) and
+[Session 0003](../../Sessions/session-%230003--SDP_discovery_and_release.md).
+Native XFMD schema adoption/watching remains its own workstream. Broader automatic
+Session capture stays with KB042; neither is silently claimed implemented here.
+Earlier present-tense entries above record the decision/preparation history.

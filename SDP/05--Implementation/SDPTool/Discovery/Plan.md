@@ -4,7 +4,7 @@
 | --- | --- |
 | id | PLAN-SDP-0014 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | ImplementationPlan |
 | BranchPolicy | phase |
 | CommitPolicy | milestone |
@@ -63,7 +63,7 @@ certification of this candidate. Client SPS-007 owns its separate repository wor
 | DS2 | DS2-M1 | Selection/viewer/installer/docs integration, native client immutable dependency preparation | completed |
 | DS3 | DS3-M1 | Real XFMD read-only discovery, disposable upgrades, full tests and independent review | completed |
 | DS4 | DS4-M1 | Clean production package, exact-candidate CI, signed SDP release and public verified gh-sdp release | completed |
-| DS5 | DS5-M1 | Truthful publication reconciliation and manual upgrade instructions, Session closeout | in-progress |
+| DS5 | DS5-M1 | Truthful publication reconciliation and manual upgrade instructions, Session closeout | completed |
 
 ## Git, versions and evidence
 
@@ -81,3 +81,10 @@ bounds, revision-bound selection, human/JSON parity and installer transitions.
 Independent product/release review uses fresh contexts. Verify original signed
 predecessors, immutable package/descriptor bytes and public downloads before
 claiming release. Record all commands/results/limitations in Evidence.md.
+
+## Closeout
+
+DS1–DS5 delivered in Session 0003. Publication.json and Manual-upgrade.md bind
+actual releases and owner commands. Main is unchanged; phase branches are pushed.
+KB044/046 are completed; KB017 and automatic Session/runtime/native-viewer work
+retain their existing separate scope. No live XFMD or global extension mutation.

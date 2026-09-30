@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Current local turn: **T001 — implement and release**. Current step: S4.
+Current local turn: **T001 — implement and release**. Goal achieved; no remaining step.
 Sequence-only chart: synthetic slots, not elapsed time or deadlines.
 
 ```mermaid
@@ -13,25 +13,25 @@ gantt
     DONE S1 Design :done,s1,2000-01-01,1d
     DONE S2 Implement :done,s2,after s1,1d
     DONE S3 Verify :done,s3,after s2,1d
-    ONGOING S4 Release :active,s4,after s3,1d
-    PLANNED S5 Handoff :s5,after s4,1d
+    DONE S4 Release :done,s4,after s3,1d
+    DONE S5 Handoff :done,s5,after s4,1d
 ```
 
 | State | Step | Work / plan | Prerequisite | Authority | Evidence |
 | --- | --- | --- | --- | --- | --- |
 | completed | S1 | P1 DS1 design/plan registration | KB046 owner decisions | Owner T001 | Plan created |
-| completed | S2 | P1 DS1/DS2 implementation and client | S1 | Owner T001 | Pending |
-| completed | S3 | P1 DS3 regression, real sources, review | S2 | Owner T001 | Pending |
-| on-going | S4 | P1 DS4 SDP and gh-sdp publication | S3 gates | Owner T001 | Pending |
-| planned | S5 | P1 DS5 reconciliation/manual upgrade | S4 public verification | Owner T001 | Pending |
+| completed | S2 | P1 DS1/DS2 implementation and client | S1 | Owner T001 | [Evidence](../05--Implementation/SDPTool/Discovery/Evidence.md) |
+| completed | S3 | P1 DS3 regression, real sources, review | S2 | Owner T001 | [Evidence](../05--Implementation/SDPTool/Discovery/Evidence.md) |
+| completed | S4 | P1 DS4 SDP and gh-sdp publication | S3 gates | Owner T001 | [Evidence](../05--Implementation/SDPTool/Discovery/Evidence.md) |
+| completed | S5 | P1 DS5 reconciliation/manual upgrade | S4 public verification | Owner T001 | [Evidence](../05--Implementation/SDPTool/Discovery/Evidence.md) |
 
 | Field | Value |
 | --- | --- |
 | Session reference | SESSION-SDP-0003 |
-| Status | active |
+| Status | completed |
 | Primary card | KB-SDP-046 |
 | Snapshot date | 2026-10-01 |
-| Current step | S4 |
+| Current step | None |
 | Execution authority | Owner requests plans, implementation and release in one turn |
 
 ## Goal
@@ -44,8 +44,8 @@ No native XFMD application/watch implementation or live XFMD upgrade here.
 
 | Card | Role | Initial lifecycle / CardState | Planned final | Current | Actual final |
 | --- | --- | --- | --- | --- | --- |
-| [KB046](../KanBan/active/%23046--Change--Source-discovery-and-multiple-system-navigation.md) | Primary | backlog / backlog | completed | active / in-progress | Pending |
-| [KB044](../KanBan/active/%23044--Change--Sessions-and-repeatable-release-preparation.md) | Included release | active / gate-review | completed on verified publication | active / in-progress | Pending |
+| [KB046](../KanBan/completed/%23046--Change--Source-discovery-and-multiple-system-navigation.md) | Primary | backlog / backlog | completed | completed | completed |
+| [KB044](../KanBan/completed/%23044--Change--Sessions-and-repeatable-release-preparation.md) | Included release | active / gate-review | completed on verified publication | completed | completed |
 | [KB045](../KanBan/completed/%23045--Change--Portable-SDPTool-presentation.md) | Completed output input | completed | unchanged | completed | Already completed |
 | KB-SDP-017 | Broader SDPTool feature context | active | unchanged broader scope | active | Outside bounded closure |
 
@@ -53,9 +53,9 @@ No native XFMD application/watch implementation or live XFMD upgrade here.
 
 | Ref | Plan | Readiness | Canonical state | Dependency/outcome |
 | --- | --- | --- | --- | --- |
-| P1 | [PLAN-SDP-0014 ImplementationPlan](../05--Implementation/SDPTool/Discovery/Plan.md) | on-going | active | Discovery, integration, verification and release |
+| P1 | [PLAN-SDP-0014 ImplementationPlan](../05--Implementation/SDPTool/Discovery/Plan.md) | completed | completed | Discovery, integration, verification and release |
 | P0 | [MAINT-SDP-0011 release preparation](../Maintenance/RL1/Plan.md) | completed | completed | Historical inputs, not reopened |
-| Client | gh-sdp SPS-007, external repository | on-going | External records | Immutable bootstrap, package and client release; root coordinates |
+| Client | gh-sdp SPS-007, external repository | completed | External records | Immutable bootstrap, package and client release; root coordinates |
 
 ## Route decisions
 
@@ -85,7 +85,7 @@ and final response remain pending; evidence links are added as work completes.
 
 ## Closeout
 
-Pending. Actual extension-update command is `gh extension upgrade sdp`; project
+Goal achieved. Actual extension-update command is `gh extension upgrade sdp`; project
 upgrade is a separate SDPTool preview/apply workflow. Owner performs live XFMD work.
 
 DS1-M1 update: source-owned discovery and snapshot implemented. Root/bootstrap
@@ -96,3 +96,16 @@ DS2/DS3-M1 update: installer/docs/client preparation integrated, all local test
 gates and independent product review pass. Six disposable predecessor upgrade
 cases preserve project content and repeat without actions. DS4 exact production
 package, CI and publication are now in progress.
+
+Final T001 summary: planned, implemented, verified and published SDP2.0.0 plus
+gh-sdp0.2.0. Source discovery replaces manual registration, including multiple
+Systems and SDUI. Two independently found edge cases and one release fixture
+version check were corrected before publication. Exact clean package, CI, signature,
+six signed predecessor upgrades, public assets/default and independent reviews pass.
+KB044/046 are completed. Owner receives manual extension-update and project
+preview/apply commands; native XFMD and global installation were not modified.
+
+[Release evidence](../05--Implementation/SDPTool/Discovery/Publication.json) and
+[manual commands](../05--Implementation/SDPTool/Discovery/Manual-upgrade.md).
+This is a manually maintained final work summary, not an automatically captured
+transcript or a claim that the routine/Session engine exists.

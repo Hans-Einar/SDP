@@ -5,7 +5,7 @@
 | id | KB-SDP-046 |
 | project | SDP |
 | type | Change |
-| CardState | in-progress |
+| CardState | completed |
 | PlanId | PLAN-SDP-0014 |
 | created | 2026-10-01 |
 | source | Owner report in Session 0002: SDL/SDUI absent despite source files in XFMD |
@@ -194,3 +194,20 @@ to its own workstream; SDPTool owns the bounded discovery response and its tests
 Owner selected implementation/release in [Session 0003](../../Sessions/session-%230003--SDP_discovery_and_release.md).
 [PLAN-SDP-0014](../../05--Implementation/SDPTool/Discovery/Plan.md) now owns execution;
 earlier unstarted/backlog statements above describe decision history.
+
+## Delivery — Session 0003
+
+Completed under PLAN-SDP-0014. SDP 2.0.0 and gh-sdp 0.2.0 are published,
+independently reviewed and verified through actual public downloads/default.
+Discovery derives inventory and navigation from source files/directories without
+registration; invalid sources remain visible. Sessions guides/templates and
+release logs/checklist are distributed. Signed predecessor upgrades preserve
+project documents and inert navigation.json; new installs create no registry.
+
+[Evidence](../../05--Implementation/SDPTool/Discovery/Evidence.md),
+[publication identities](../../05--Implementation/SDPTool/Discovery/Publication.json),
+[manual upgrade](../../05--Implementation/SDPTool/Discovery/Manual-upgrade.md) and
+[Session 0003](../../Sessions/session-%230003--SDP_discovery_and_release.md).
+Native XFMD schema adoption/watching remains its own workstream. Broader automatic
+Session capture stays with KB042; neither is silently claimed implemented here.
+Earlier present-tense entries above record the decision/preparation history.
