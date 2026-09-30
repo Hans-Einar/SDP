@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded local turn: **T004 — manual registration instructions**.
+Latest recorded local turn: **T005 — automatic discovery direction**.
 **Presentation goal completed; S1–S4 are complete.**
 Recommended separately selected next work: KB046, source discovery and
 multi-system navigation. It is registered in backlog, not started.
@@ -197,6 +197,32 @@ changing the live file. Existing published 1.0.0 commands still default to JSON;
 future presentation clients must add --json when piping to jq. The owner performs
 the actual project edit and trial; no success for that trial is claimed here.
 This follow-up does not reopen the completed presentation implementation.
+
+### T005 — automatic discovery instead of manual registration
+
+- Local date: 2026-10-01. Capture: exact owner prompt below; work summary is not a
+  captured final response. Host IDs and exact turn times are unavailable.
+- Category: architecture refinement of successor KB046; sdp, change-analysis and
+  architect skills loaded/reused. No routine engine/run is claimed.
+- The completed presentation goal is unchanged. KB046 remains backlog; no new
+  implementation Session or plan has started.
+
+Verbatim owner prompt (Norwegian source quotation):
+
+> ja, jeg tenker jo egentlig at dette burde skje på automatikk. vi burde ikke huske å måtte kjøre en registreringskommando. hva er det egentlig navigation.json brukes til? det virker egentlig som det bare er en "indexering" for navigering? egentlig synes jeg gh sdp . discover burde produsere navigation filen. jeg forstår fordelen med at vi kan ha en ide, en source og en profile som blant annet viser versjonen av språket som design filer og sdui filer er laget med. men jeg synes at det burde kunne skje programatisk ved at man enten parser design filene og inspiserer AST og søker med "ordliste" fra forskjellige versjoner av språket og så kan man si complies_with: "design-core/0.5" hvis man ikke finner noe bruk av ord fra design-core/0.6 for eksempel? eller blir det for enkelt?  jeg er i hvertfall sterkt imot filer som "tilfeldigvis ligger et sted" som vi må passe på å editere, enten med en kommando eller manuelt. men en discover kan jo gjøre det hvis den kan gjøre det automatisk
+
+Findings/recommendation: current navigation.json combines project recognition and
+bindings with the source inventory. Make the inventory derived and refreshable,
+recover real project facts from existing authoritative locations, and let tree/
+select reuse discovery automatically. Source headers already select language
+profiles; parsing/semantic validation establish validity. A keyword dictionary
+cannot establish cross-version compatibility. Retain the distinction between
+current and historical but syntactically valid files; do not invent source
+annotations as implemented syntax. Updated KB046 holds these requirements,
+recommendations and remaining migration/authority decisions.
+
+No discovery code or live XFMD configuration changed. Final response is not yet
+available for exact capture by this manual writer.
 
 ## Closeout
 
