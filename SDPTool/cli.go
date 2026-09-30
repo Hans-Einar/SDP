@@ -104,7 +104,7 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 	if len(args) > 0 && args[0] == "sdui-preview" {
 		fs := flag.NewFlagSet("sdui-preview", flag.ContinueOnError)
 		fs.SetOutput(io.Discard)
-		model := fs.String("model", "", "registered source")
+		model := fs.String("model", "", "discovered source")
 		entry := fs.String("entry", "", "root frame")
 		output := fs.String("output", "", "bundle directory")
 		revision := fs.String("revision", "", "expected revision")
@@ -131,7 +131,7 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 	if len(args) > 0 && args[0] == "tree" {
 		fs := flag.NewFlagSet("tree", flag.ContinueOnError)
 		fs.SetOutput(io.Discard)
-		model := fs.String("model", "", "registered model")
+		model := fs.String("model", "", "discovered model")
 		if e := fs.Parse(args[1:]); e != nil {
 			return report(errs, failure("arguments", e))
 		}
@@ -160,7 +160,8 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 		fs.SetOutput(io.Discard)
 		h := Host{}
 		var model string
-		fs.StringVar(&model, "model", "", "registered model")
+		plan := fs.String("plan", "", "project-relative implementation plan")
+		fs.StringVar(&model, "model", "", "discovered model")
 		fs.StringVar(&h.Viewer, "viewer", os.Getenv("SDP_XFMD"), "prebuilt viewer")
 		fs.StringVar(&h.SDLTool, "sdl-tool", os.Getenv("SDP_SDL_TOOL"), "prebuilt SDL tool")
 		fs.StringVar(&h.Renderer, "renderer", os.Getenv("SDP_MMDR"), "prebuilt renderer")
@@ -173,6 +174,9 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 		p, e := Discover(selected)
 		if e != nil {
 			return report(errs, e)
+		}
+		if *plan != "" {
+			p.Inventory.ImplementationPlan = *plan
 		}
 		if e = ViewPlan(ctx, p, model, h); e != nil {
 			return report(errs, e)

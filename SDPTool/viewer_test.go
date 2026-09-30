@@ -21,7 +21,7 @@ func TestViewPlanArgumentsAndCleanup(t *testing.T) {
 	root, r := projectFixture(t)
 	r.ImplementationPlan = "SDP/plan with spaces.md"
 	r.Models = []Model{{"model", "SDPTOOL", "model.design", "design-core/0.5"}}
-	saveRegistration(t, root, r)
+	saveInventory(t, root, r)
 	os.WriteFile(filepath.Join(root, r.ImplementationPlan), []byte("authored plan"), 0600)
 	os.WriteFile(filepath.Join(root, "model.design"), []byte(sample), 0600)
 	log := filepath.Join(t.TempDir(), "args")
@@ -34,6 +34,7 @@ printf '%s\n' "$@" > "$ARG_LOG"
 `)
 	tool := executable(t, "exit 0\n")
 	p, e := Discover(root)
+	p.Inventory = r
 	if e != nil {
 		t.Fatal(e)
 	}
@@ -60,9 +61,10 @@ printf '%s\n' "$@" > "$ARG_LOG"
 func TestPlanOnlyCancellationAndMissingTools(t *testing.T) {
 	root, r := projectFixture(t)
 	r.ImplementationPlan = "SDP/plan.md"
-	saveRegistration(t, root, r)
+	saveInventory(t, root, r)
 	os.WriteFile(filepath.Join(root, r.ImplementationPlan), []byte("plan"), 0600)
 	p, _ := Discover(root)
+	p.Inventory = r
 	if e := ViewPlan(context.Background(), p, "", Host{Viewer: "/missing/viewer"}); e == nil {
 		t.Fatal("missing viewer accepted")
 	}

@@ -17,7 +17,7 @@ import (
 	"github.com/Hans-Einar/SDP/SystemDesignLanguage/go/viewpoint"
 )
 
-const Version = "sdptool/0.1"
+const Version = "sdptool/0.2"
 
 type Failure struct {
 	Code       string `json:"code"`
@@ -158,7 +158,7 @@ func Preview(ctx context.Context, o PreviewOptions) (Result, error) {
 		return result, failure("output", e)
 	}
 	if o.expectedProfile != "" && (v.Profile != o.expectedProfile || (v.System != "" && v.System != o.expectedSystem)) {
-		return result, failure("model", fmt.Errorf("registered profile/System does not match source"))
+		return result, failure("model", fmt.Errorf("discovered profile/System does not match source"))
 	}
 	if o.Revision != "" && o.Revision != v.Revision {
 		return result, failure("stale", fmt.Errorf("source revision changed; refresh inventory"))

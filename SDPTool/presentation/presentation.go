@@ -20,12 +20,13 @@ type Registry map[Key]Renderer
 func Default() Registry {
 	r := Registry{}
 	for _, op := range []string{"discover", "select", "preview", "sdui-preview", "view"} {
-		r[Key{"sdptool/0.1", op}] = fields
+		r[Key{"sdptool/0.2", op}] = fields
 	}
-	r[Key{"sdptool/0.1", "tree"}] = tree
-	r[Key{"sdptool/0.1", "version"}] = version
-	r[Key{"sdptool/0.1", ""}] = fields // diagnostic envelope
-	r[Key{"sdptool/0.1", "release-log"}] = releaseLog
+	r[Key{"sdptool/0.2", "discover"}] = discovery
+	r[Key{"sdptool/0.2", "tree"}] = tree
+	r[Key{"sdptool/0.2", "version"}] = version
+	r[Key{"sdptool/0.2", ""}] = fields // diagnostic envelope
+	r[Key{"sdptool/0.2", "release-log"}] = releaseLog
 	for _, op := range []string{"install", "upgrade"} {
 		r[Key{"sdp-install-command/1", op}] = installation
 	}
@@ -179,6 +180,34 @@ func installation(w io.Writer, b json.RawMessage) error {
 		}
 	} else if p.Status != "" {
 		fmt.Fprintf(w, "%s: operation %s; report %s\n", safe(p.Status), safe(p.OperationID), safe(p.Report))
+	}
+	return nil
+}
+
+func discovery(w io.Writer, b json.RawMessage) error {
+	var v struct {
+		Root, Area, Status string
+		Inventory          struct{ ProjectID string }
+		Capabilities       map[string]string
+		Sources            []struct{ Source, Profile, State, Diagnostic string }
+		Navigation         struct{ InventoryRevision string }
+	}
+	if err := json.Unmarshal(b, &v); err != nil {
+		return err
+	}
+	fmt.Fprintf(w, "%s [%s]\nProject: %s\nSDP area: %s\n", safe(v.Inventory.ProjectID), safe(v.Status), safe(v.Root), safe(v.Area))
+	for _, name := range []string{"sdl", "sdui", "kanban", "implementation-plan"} {
+		fmt.Fprintf(w, "%s: %s\n", name, safe(v.Capabilities[name]))
+	}
+	fmt.Fprintf(w, "Sources: %d\n", len(v.Sources))
+	for _, s := range v.Sources {
+		fmt.Fprintf(w, "  %s [%s; %s]\n", safe(s.Source), safe(s.Profile), safe(s.State))
+		if s.Diagnostic != "" {
+			fmt.Fprintf(w, "    %s\n", safe(s.Diagnostic))
+		}
+	}
+	if v.Navigation.InventoryRevision != "" {
+		fmt.Fprintf(w, "Snapshot: %s\n", safe(v.Navigation.InventoryRevision))
 	}
 	return nil
 }

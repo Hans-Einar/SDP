@@ -5,7 +5,8 @@
 | id | KB-SDP-046 |
 | project | SDP |
 | type | Change |
-| CardState | backlog |
+| CardState | in-progress |
+| PlanId | PLAN-SDP-0014 |
 | created | 2026-10-01 |
 | source | Owner report in Session 0002: SDL/SDUI absent despite source files in XFMD |
 
@@ -187,3 +188,9 @@ Derived/recommended refresh details for the implementation plan:
 These mechanics are implementation recommendations derived from the selected
 ownership, not claims that watcher behavior exists. Native XFMD integration belongs
 to its own workstream; SDPTool owns the bounded discovery response and its tests.
+
+## Execution selection
+
+Owner selected implementation/release in [Session 0003](../../Sessions/session-%230003--SDP_discovery_and_release.md).
+[PLAN-SDP-0014](../../05--Implementation/SDPTool/Discovery/Plan.md) now owns execution;
+earlier unstarted/backlog statements above describe decision history.

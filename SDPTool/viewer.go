@@ -35,10 +35,10 @@ func (b *boundedOutput) Write(p []byte) (int, error) {
 	return b.Buffer.Write(p)
 }
 func ViewPlan(ctx context.Context, p Project, modelID string, h Host) error {
-	if p.Registration.ImplementationPlan == "" {
-		return failure("unavailable", fmt.Errorf("no implementation plan registered"))
+	if p.Inventory.ImplementationPlan == "" {
+		return failure("unavailable", fmt.Errorf("choose --plan: no unique ImplementationPlan discovered"))
 	}
-	plan, e := resolvePath(p.Root, p.Registration.ImplementationPlan)
+	plan, e := resolvePath(p.Root, p.Inventory.ImplementationPlan)
 	if e != nil {
 		return e
 	}
@@ -51,7 +51,7 @@ func ViewPlan(ctx context.Context, p Project, modelID string, h Host) error {
 	}
 	args := []string{plan}
 	var session string
-	if len(p.Registration.Models) > 0 {
+	if len(p.Inventory.Models) > 0 {
 		m, source, err := p.model(modelID, false)
 		if err != nil {
 			return err
@@ -78,7 +78,7 @@ func ViewPlan(ctx context.Context, p Project, modelID string, h Host) error {
 			return err
 		}
 		if v.Profile != m.Profile || (v.System != "" && v.System != m.System) {
-			return failure("registration", fmt.Errorf("registered profile/System does not match validated source"))
+			return failure("inventory", fmt.Errorf("discovered profile/System does not match validated source"))
 		}
 		parent := os.Getenv("XDG_RUNTIME_DIR")
 		session, err = os.MkdirTemp(parent, "sdptool-")
@@ -86,7 +86,7 @@ func ViewPlan(ctx context.Context, p Project, modelID string, h Host) error {
 			return failure("output", err)
 		}
 		defer os.RemoveAll(session)
-		b, err := documents.Build(ctx, v, documents.Options{Navigator: true, Project: p.Registration.ProjectID})
+		b, err := documents.Build(ctx, v, documents.Options{Navigator: true, Project: p.Inventory.ProjectID})
 		if err != nil {
 			return failure("model", err)
 		}
@@ -100,7 +100,7 @@ func ViewPlan(ctx context.Context, p Project, modelID string, h Host) error {
 		if err = b.Publish(directory); err != nil {
 			return failure("output", err)
 		}
-		args = append(args, "--navigator", filepath.Join(directory, "navigator.md"), "--sdl-tool", sdl, "--sdl-source", source, "--project", p.Registration.ProjectID, "--window-id", filepath.Base(session))
+		args = append(args, "--navigator", filepath.Join(directory, "navigator.md"), "--sdl-tool", sdl, "--sdl-source", source, "--project", p.Inventory.ProjectID, "--window-id", filepath.Base(session))
 		if h.Renderer != "" {
 			r, err := program(h.Renderer, "")
 			if err != nil {

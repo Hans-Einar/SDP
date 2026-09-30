@@ -8,11 +8,11 @@ import (
 	"testing"
 )
 
-func TestComposedNavigationAndRegistration(t *testing.T) {
+func TestComposedNavigationAndInventory(t *testing.T) {
 	root, r := projectFixture(t)
 	r.Models = []Model{{"model", "Demo", "System.design", "design-core/0.6"}}
 	r.ImplementationPlan = "SDP/plan.md"
-	saveRegistration(t, root, r)
+	saveInventory(t, root, r)
 	const header = "language design-core version 0.6.\n"
 	write := func(name, text string) {
 		t.Helper()
@@ -24,6 +24,7 @@ func TestComposedNavigationAndRegistration(t *testing.T) {
 	write("Child.design", header+"unit Child.\n")
 	write(r.ImplementationPlan, "plan")
 	p, e := Discover(root)
+	p.Inventory = r
 	if e != nil {
 		t.Fatal(e)
 	}
@@ -61,15 +62,15 @@ func TestComposedNavigationAndRegistration(t *testing.T) {
 		t.Fatal(e)
 	}
 	for _, bad := range []Model{{"model", "Wrong", "System.design", "design-core/0.6"}, {"model", "Demo", "System.design", "design-core/0.5"}} {
-		p.Registration.Models = []Model{bad}
+		p.Inventory.Models = []Model{bad}
 		if _, e = ModelTree(p, "model"); e == nil {
-			t.Fatal("tree accepted mismatched registration")
+			t.Fatal("tree accepted mismatched inventory")
 		}
 		if _, e = SelectProject(context.Background(), p, "model", o); e == nil {
-			t.Fatal("selection accepted mismatched registration")
+			t.Fatal("selection accepted mismatched inventory")
 		}
 		if e = ViewPlan(context.Background(), p, "model", Host{Viewer: viewer, SDLTool: tool}); e == nil {
-			t.Fatal("viewer accepted mismatched registration")
+			t.Fatal("viewer accepted mismatched inventory")
 		}
 	}
 	// A dependency directory is protected even though the entry is outside it.

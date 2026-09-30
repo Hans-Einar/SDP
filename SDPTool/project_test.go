@@ -3,30 +3,26 @@ package sdptool
 import (
 	"bytes"
 	"context"
-	"encoding/json"
 	"os"
 	"path/filepath"
 	"strings"
 	"testing"
 )
 
-func projectFixture(t *testing.T) (string, Registration) {
+func projectFixture(t *testing.T) (string, Inventory) {
 	t.Helper()
 	root := t.TempDir()
 	os.Mkdir(filepath.Join(root, "SDP"), 0700)
-	r := Registration{SchemaVersion: "1.0", ProjectID: "trial", ProcessProfile: "sdp-five-phase/0.1", Models: []Model{}, SDUI: []Model{}}
-	saveRegistration(t, root, r)
+	r := Inventory{SchemaVersion: "1.0", ProjectID: "trial", ProcessProfile: "sdp-five-phase/0.1", Models: []Model{}, SDUI: []Model{}}
+	saveInventory(t, root, r)
 	return root, r
 }
-func saveRegistration(t *testing.T, root string, r Registration) {
+
+// Unit services may consume an in-memory Inventory. This helper only supplies
+// project identity; source discovery never reads a saved inventory or register.
+func saveInventory(t *testing.T, root string, r Inventory) {
 	t.Helper()
-	b, e := json.Marshal(r)
-	if e != nil {
-		t.Fatal(e)
-	}
-	if e = os.WriteFile(filepath.Join(root, "SDP/navigation.json"), b, 0600); e != nil {
-		t.Fatal(e)
-	}
+	os.WriteFile(filepath.Join(root, "SDP/SDP-project.manifest.yaml"), []byte("schemaVersion: '1.0'\nproject:\n  name: "+r.ProjectID+"\n"), 0600)
 }
 func TestDiscoveryRootsAndNoParentGuess(t *testing.T) {
 	root, _ := projectFixture(t)
@@ -51,64 +47,41 @@ func TestDiscoveryRootsAndNoParentGuess(t *testing.T) {
 		t.Fatal(out.String())
 	}
 }
-func TestDiscoveryInvalidAndUnsupported(t *testing.T) {
-	for _, change := range []string{"unknown", "duplicate", "trailing", "null", "escape", "symlink", "schema", "profile", "id"} {
-		t.Run(change, func(t *testing.T) {
-			root, r := projectFixture(t)
-			file := filepath.Join(root, "SDP/navigation.json")
-			switch change {
-			case "unknown":
-				b, _ := os.ReadFile(file)
-				os.WriteFile(file, append([]byte(`{"command":"evil",`), b[1:]...), 0600)
-			case "duplicate":
-				b, _ := os.ReadFile(file)
-				os.WriteFile(file, append([]byte(`{"projectId":"other",`), b[1:]...), 0600)
-			case "trailing":
-				b, _ := os.ReadFile(file)
-				os.WriteFile(file, append(b, []byte(" {}")...), 0600)
-			case "null":
-				r.Models = nil
-				saveRegistration(t, root, r)
-			case "escape":
-				r.ImplementationPlan = "../secret"
-				saveRegistration(t, root, r)
-			case "symlink":
-				os.Symlink(t.TempDir(), filepath.Join(root, "outside"))
-				r.KanBan = "outside/board"
-				saveRegistration(t, root, r)
-			case "schema":
-				r.SchemaVersion = "2"
-				saveRegistration(t, root, r)
-			case "profile":
-				r.ProcessProfile = "future"
-				saveRegistration(t, root, r)
-			case "id":
-				r.ProjectID = "../bad"
-				saveRegistration(t, root, r)
-			}
-			before, _ := os.ReadFile(file)
-			p, e := Discover(root)
-			if e == nil {
-				t.Fatal("accepted invalid")
-			}
-			want := "invalid"
-			if change == "schema" || change == "profile" {
-				want = "unsupported"
-			}
-			if p.Status != want {
-				t.Fatalf("%s %v", p.Status, e)
-			}
-			after, _ := os.ReadFile(file)
-			if !bytes.Equal(before, after) {
-				t.Fatal("modified metadata")
-			}
-		})
+func TestObsoleteRegistrationCannotControlDiscovery(t *testing.T) {
+	root, _ := projectFixture(t)
+	for _, data := range []string{`{`, `{"schemaVersion":"99","projectId":"malicious","models":[]}`, `{"command":"evil","models":null}`} {
+		f := filepath.Join(root, "SDP/navigation.json")
+		os.WriteFile(f, []byte(data), 0600)
+		p, e := Discover(root)
+		if e != nil || p.Inventory.ProjectID != "trial" {
+			t.Fatalf("obsolete file used: %+v %v", p, e)
+		}
+		after, _ := os.ReadFile(f)
+		if string(after) != data {
+			t.Fatal("rewrote old project data")
+		}
+	}
+}
+func TestDiscoveryPathAndManifestSafety(t *testing.T) {
+	root, _ := projectFixture(t)
+	outside := t.TempDir()
+	os.WriteFile(filepath.Join(outside, "secret.design"), []byte(sample), 0600)
+	os.Symlink(outside, filepath.Join(root, "SDP/outside"))
+	p, e := Discover(root)
+	if e != nil || len(p.Inventory.Models) != 0 {
+		t.Fatalf("followed symlink: %v", e)
+	}
+	for _, data := range []string{"schemaVersion: '99'", "schemaVersion: [", "schemaVersion: '1.0'\ninstalled:\n  manifestPath: ../secret.yaml\n"} {
+		os.WriteFile(filepath.Join(root, "SDP/SDP-project.manifest.yaml"), []byte(data), 0600)
+		if _, e := Discover(root); e == nil {
+			t.Fatal("invalid/escaping manifest accepted")
+		}
 	}
 }
 func TestReferencedInstallationFacts(t *testing.T) {
 	root, r := projectFixture(t)
 	r.ProjectManifest = "SDP/SDP-project.manifest.yaml"
-	saveRegistration(t, root, r)
+	saveInventory(t, root, r)
 	f := filepath.Join(root, r.ProjectManifest)
 	os.WriteFile(f, []byte("schemaVersion: '1.0'\ninstalled:\n  manifestPath: installed.yaml\n"), 0600)
 	installed := filepath.Join(root, "SDP/installed.yaml")
@@ -129,22 +102,21 @@ func TestReferencedInstallationFacts(t *testing.T) {
 	}
 }
 
-func TestExplicitDefaultModel(t *testing.T) {
-	root, r := projectFixture(t)
-	r.Models = []Model{{"first", "SDL", "one.design", "design-core/0.5"}, {"second", "SDL", "two.design", "design-core/0.5"}}
-	r.DefaultModel = "second"
-	saveRegistration(t, root, r)
+func TestMultipleSourcesRequireExplicitSelection(t *testing.T) {
+	root, _ := projectFixture(t)
+	for _, name := range []string{"one", "two"} {
+		os.WriteFile(filepath.Join(root, "SDP", name+".design"), []byte(sample), 0600)
+	}
 	p, e := Discover(root)
 	if e != nil {
 		t.Fatal(e)
 	}
-	m, _, e := p.model("", false)
-	if e != nil || m.ID != "second" {
-		t.Fatalf("default %v %v", m, e)
+	if _, _, e = p.model("", false); e == nil {
+		t.Fatal("arbitrary default chosen")
 	}
-	r.DefaultModel = "missing"
-	saveRegistration(t, root, r)
-	if _, e = Discover(root); e == nil {
-		t.Fatal("unknown default accepted")
+	id := p.Inventory.Models[1].ID
+	m, _, e := p.model(id, false)
+	if e != nil || m.ID != id {
+		t.Fatal(m, e)
 	}
 }

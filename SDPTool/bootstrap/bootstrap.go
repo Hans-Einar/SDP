@@ -27,7 +27,7 @@ const maxDescriptor = 16 << 20
 const maxBinary = 512 << 20
 
 // DefaultRelease is immutable; upgrading the default requires a new client.
-const DefaultRelease = "https://github.com/Hans-Einar/SDP/releases/download/v1.0.0/sdp-release.json"
+const DefaultRelease = "https://github.com/Hans-Einar/SDP/releases/download/v2.0.0/sdp-release.json"
 
 // Publisher trust is compiled into the distribution, never supplied by a descriptor.
 var trustedKeys = map[string]ed25519.PublicKey{

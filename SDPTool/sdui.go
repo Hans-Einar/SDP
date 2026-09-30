@@ -98,22 +98,28 @@ func UINodes(p Project) ([]Node, string, error) {
 	tab := Node{ID: "sdui", Kind: "tab", Label: "SDUI", State: "absent"}
 	nodes := []Node{}
 	all := []byte{}
-	for _, m := range p.Registration.SDUI {
+	for _, m := range p.Inventory.SDUI {
 		key := "sdui/" + m.ID
 		tab.Children = append(tab.Children, key)
 		tab.State = "available"
-		n := Node{ID: key, Kind: "source", Label: m.ID, State: "unsupported"}
+		n := Node{ID: key, Kind: "source", Label: m.Source, State: "unsupported"}
 		if m.Profile == "sdui/0.2" {
 			_, source, e := p.model(m.ID, true)
 			if e != nil {
-				return nil, "", e
+				n.State = "invalid"
+				n.Diagnostic = e.Error()
+				nodes = append(nodes, n)
+				continue
 			}
 			roots, b, e := uiRoots(source)
 			if e != nil {
-				return nil, "", e
+				n.State = "invalid"
+				n.Diagnostic = e.Error()
+				nodes = append(nodes, n)
+				continue
 			}
 			n.State = "validated"
-			n.Target = &Target{Operation: "sdui-preview", Project: p.Registration.ProjectID, Model: m.ID, Path: source, Revision: documents.Hash(b)}
+			n.Target = &Target{Operation: "sdui-preview", Project: p.Inventory.ProjectID, Model: m.ID, Path: source, Revision: documents.Hash(b)}
 			names := []string{}
 			for name, root := range roots {
 				if root.Kind == "frame" {
@@ -124,7 +130,7 @@ func UINodes(p Project) ([]Node, string, error) {
 			for _, name := range names {
 				child := key + "/frame/" + name
 				n.Children = append(n.Children, child)
-				nodes = append(nodes, Node{ID: child, Kind: "frame", Label: name, State: "validated", Target: &Target{Operation: "sdui-preview", Project: p.Registration.ProjectID, Model: m.ID, Entry: name, Path: source, Revision: documents.Hash(b)}})
+				nodes = append(nodes, Node{ID: child, Kind: "frame", Label: name, State: "validated", Target: &Target{Operation: "sdui-preview", Project: p.Inventory.ProjectID, Model: m.ID, Entry: name, Path: source, Revision: documents.Hash(b)}})
 			}
 			all = append(all, []byte(m.ID+"\x00")...)
 			all = append(all, b...)

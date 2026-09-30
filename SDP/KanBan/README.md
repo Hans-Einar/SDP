@@ -4,7 +4,7 @@
 
 | ID | Type | Status | Document |
 | --- | --- | --- | --- |
-| KB-SDP-046 | Change | backlog | [Source discovery and systems navigation](backlog/%23046--Change--Source-discovery-and-multiple-system-navigation.md) |
+| KB-SDP-046 | Change | active | [Source discovery and systems navigation](active/%23046--Change--Source-discovery-and-multiple-system-navigation.md) |
 | KB-SDP-045 | Change | completed | [Portable CLI presentation](completed/%23045--Change--Portable-SDPTool-presentation.md) |
 | KB-SDP-044 | Change | active | [Sessions and release preparation](active/%23044--Change--Sessions-and-repeatable-release-preparation.md) |
 | KB-SDL-001 | Proposal | backlog | [Stakeholders, actors, user stories and readable SDL](backlog/%23001--SDL--Proposal--Requirements-narrative.md) |

@@ -13,7 +13,7 @@ import (
 func TestProcessInstallationFacts(t *testing.T) {
 	root, r := projectFixture(t)
 	r.ProjectManifest = "SDP/SDP-project.manifest.yaml"
-	saveRegistration(t, root, r)
+	saveInventory(t, root, r)
 	os.WriteFile(filepath.Join(root, r.ProjectManifest), []byte("schemaVersion: '1.0'\ninstalled:\n  manifestPath: installed.yaml\n"), 0600)
 	facts := `schemaVersion: "2.0"
 toolkitVersion: "0.2.0"
@@ -111,8 +111,8 @@ func TestEarlyIncompleteInstallation(t *testing.T) {
 		if _, err := Navigation(p, ""); err == nil {
 			t.Fatal("early incomplete project presented as empty navigation")
 		}
-		if p.Registration.ProjectID != "" || len(p.Registration.Models) != 0 {
-			t.Fatal("invented registration")
+		if p.Inventory.ProjectID != "" || len(p.Inventory.Models) != 0 {
+			t.Fatal("invented inventory")
 		}
 	}
 	os.Rename(op, filepath.Join(area, ".sdp-operations", "install-bad"))

@@ -5,7 +5,7 @@
 | id | KB-SDP-044 |
 | project | SDP |
 | type | Change |
-| CardState | gate-review |
+| CardState | in-progress |
 | PlanId | MAINT-SDP-0011 |
 | created | 2026-09-30 |
 | source | Owner request after Session 0001 closeout |
@@ -43,3 +43,6 @@ XFMD remains unchanged and its upgrade remains manual.
 Before publication, update gh-sdp's bootstrap dependency and verify native XFMD
 machine callers use --json. Previous preparation evidence remains historical;
 it is not evidence that these new consumer gates have passed.
+
+2026-10-01: owner selects implementation and publication in Session 0003.
+PLAN-SDP-0014 executes the new combined candidate; MAINT-SDP-0011 remains completed.

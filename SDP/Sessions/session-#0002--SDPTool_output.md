@@ -59,7 +59,7 @@ not invented states at the unrecorded beginning of the conversation.
 | --- | --- | --- | --- | --- | --- |
 | [KB045](../KanBan/completed/%23045--Change--Portable-SDPTool-presentation.md) | Primary delivery | active / in-progress | completed after implementation/review evidence | completed | completed |
 | [KB044](../KanBan/active/%23044--Change--Sessions-and-repeatable-release-preparation.md) | Release preparation context | active / gate-review | Retain concrete preparation review; update version/consumer handoff | active / gate-review | Pending owner publication disposition; outside this delivery |
-| [KB046](../KanBan/backlog/%23046--Change--Source-discovery-and-multiple-system-navigation.md) | Discovered successor | backlog at T003 registration | Separate discovery delivery if selected | backlog | Pending, outside presentation delivery |
+| [KB046](../KanBan/active/%23046--Change--Source-discovery-and-multiple-system-navigation.md) | Discovered successor | backlog at T003 registration | Separate discovery delivery if selected | backlog | Pending, outside presentation delivery |
 | [KB042](../KanBan/backlog/%23042--Proposal--Goal-oriented-sessions-and-roadmaps.md) | Manual Session format and future automation | backlog | Retain automation scope in backlog | backlog | Outside delivery |
 
 ## Plan register
@@ -169,7 +169,7 @@ registered only the current inputs there. Discover declares SDL/SDUI and tree
 returns 2454 nodes: SDL validated, SDUI available, with multiple SDUI frame entries.
 The live project is unchanged. These temporary files are supplementary evidence;
 canonical observations and scope are captured in
-[KB046](../KanBan/backlog/%23046--Change--Source-discovery-and-multiple-system-navigation.md).
+[KB046](../KanBan/active/%23046--Change--Source-discovery-and-multiple-system-navigation.md).
 
 Assistant work summary, not an exact final response: explained the registration
 boundary, distinguished single-System composition from multiple registered models,

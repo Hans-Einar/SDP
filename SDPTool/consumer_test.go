@@ -39,9 +39,9 @@ func TestExecutableConsumerJourney(t *testing.T) {
 		return v, errs.String(), e
 	}
 	root, r := projectFixture(t)
-	r.Models = []Model{{"model", "System", "model with spaces.design", "design-core/0.5"}}
+	r.Models = []Model{{"model", "System", "SDP/model with spaces.design", "design-core/0.5"}}
 	r.ImplementationPlan = "SDP/plan.md"
-	saveRegistration(t, root, r)
+	saveInventory(t, root, r)
 	source := filepath.Join(root, r.Models[0].Source)
 	original, e := os.ReadFile("testdata/consumer.design")
 	if e != nil {
@@ -65,7 +65,8 @@ func TestExecutableConsumerJourney(t *testing.T) {
 	if e != nil || discovered["schema"] != expectations.Schema || discovered["status"] != "valid" {
 		t.Fatalf("discovery %v %s", e, stderr)
 	}
-	tree, stderr, e := run(filepath.Join(root, "SDP"), "tree", "--model", "model")
+	modelID := sourceID(r.Models[0].Source)
+	tree, stderr, e := run(filepath.Join(root, "SDP"), "tree", "--model", modelID)
 	if e != nil {
 		t.Fatalf("tree %v %s", e, stderr)
 	}
@@ -107,7 +108,7 @@ func TestExecutableConsumerJourney(t *testing.T) {
 		}
 	}
 	output := filepath.Join(t.TempDir(), "request")
-	selected, stderr, e := run(root, "select", "--model", "model", "--uri", uri, "--revision", revision, "--output", output)
+	selected, stderr, e := run(root, "select", "--model", modelID, "--uri", uri, "--revision", revision, "--output", output)
 	if e != nil {
 		t.Fatalf("select %v %s", e, stderr)
 	}
@@ -121,7 +122,7 @@ func TestExecutableConsumerJourney(t *testing.T) {
 	}
 	previous, _ := os.ReadFile(filepath.Join(output, "entry.md"))
 	os.WriteFile(source, []byte(strings.ReplaceAll(string(original), "Child", "Edited")), 0600)
-	_, stderr, e = run(root, "select", "--model", "model", "--uri", uri, "--revision", revision, "--output", output)
+	_, stderr, e = run(root, "select", "--model", modelID, "--uri", uri, "--revision", revision, "--output", output)
 	if e == nil || !strings.Contains(stderr, `"code":"`+expectations.Stale+`"`) {
 		t.Fatalf("stale: %v %s", e, stderr)
 	}
@@ -137,24 +138,12 @@ func TestExecutableConsumerJourney(t *testing.T) {
 [ -f "$1" ] && [ -f "$3" ]
 `)
 	sdl := executable(t, "exit 0\n")
-	if _, stderr, e = run(root, "view", "ip", "--model", "model", "--viewer", viewer, "--sdl-tool", sdl); e != nil {
+	if _, stderr, e = run(root, "view", "ip", "--plan", r.ImplementationPlan, "--model", modelID, "--viewer", viewer, "--sdl-tool", sdl); e != nil {
 		t.Fatalf("view %v %s", e, stderr)
 	}
 	for _, args := range [][]string{{root, "generate", "ip"}, {root, "tree", "--model", "missing"}, {"preview", source, "--output", output, "--viewpoint", "VP99"}} {
 		if _, stderr, e = run(args...); e == nil || !json.Valid([]byte(stderr)) {
 			t.Fatalf("error response %v %s", e, stderr)
-		}
-	}
-}
-func TestReviewStrictOptionalMetadata(t *testing.T) {
-	root, _ := projectFixture(t)
-	file := filepath.Join(root, "SDP/navigation.json")
-	base, _ := os.ReadFile(file)
-	for _, value := range []string{"null", `""`, "false"} {
-		v := strings.Replace(string(base), `"models"`, `"implementationPlan":`+value+`,"models"`, 1)
-		os.WriteFile(file, []byte(v), 0600)
-		if _, e := Discover(root); e == nil {
-			t.Fatal("accepted invalid optional path", value)
 		}
 	}
 }
