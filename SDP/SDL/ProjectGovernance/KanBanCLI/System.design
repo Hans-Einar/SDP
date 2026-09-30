@@ -1,0 +1,60 @@
+language design-core version 0.5.
+actor BoardReader.
+feature CardStatusListing.
+functionality FilterAndGroupCards.
+usecase FindSprintOrScrumCards.
+unit Grouping.
+container KanBanShellProcess.
+usecase ListScopedCards.
+mode Listing.
+interface MarkdownCardFiles.
+unit MetadataReader.
+functionality PrintCardFileTargets.
+capability ReadOnlyListing.
+functionality ReadVisibleCardMetadata.
+functionality RejectMalformedCardState.
+unit ScopeSelection.
+functionality SelectBoardOrStatusDirectory.
+activity ShellListingDelivery.
+interface TerminalOrPipe.
+unit TerminalOutput.
+BoardReader pursues FindSprintOrScrumCards.
+BoardReader pursues ListScopedCards.
+CardStatusListing supports FindSprintOrScrumCards.
+CardStatusListing supports ListScopedCards.
+FilterAndGroupCards allocated-to KanBanShellProcess in mode Listing.
+FilterAndGroupCards contributes-to CardStatusListing.
+FilterAndGroupCards realizes ReadOnlyListing.
+Grouping owns FilterAndGroupCards.
+KanBanShellProcess contains Grouping.
+KanBanShellProcess contains MetadataReader.
+KanBanShellProcess contains ScopeSelection.
+KanBanShellProcess contains TerminalOutput.
+KanBanShellProcess provides ReadOnlyListing.
+MetadataReader consumes MarkdownCardFiles.
+MetadataReader owns ReadVisibleCardMetadata.
+MetadataReader owns RejectMalformedCardState.
+PrintCardFileTargets allocated-to KanBanShellProcess in mode Listing.
+PrintCardFileTargets contributes-to CardStatusListing.
+PrintCardFileTargets realizes ReadOnlyListing.
+ReadOnlyListing requires MarkdownCardFiles in mode Listing.
+ReadOnlyListing requires TerminalOrPipe in mode Listing.
+ReadVisibleCardMetadata allocated-to KanBanShellProcess in mode Listing.
+ReadVisibleCardMetadata contributes-to CardStatusListing.
+ReadVisibleCardMetadata realizes ReadOnlyListing.
+RejectMalformedCardState allocated-to KanBanShellProcess in mode Listing.
+RejectMalformedCardState contributes-to CardStatusListing.
+RejectMalformedCardState realizes ReadOnlyListing.
+ScopeSelection owns SelectBoardOrStatusDirectory.
+SelectBoardOrStatusDirectory allocated-to KanBanShellProcess in mode Listing.
+SelectBoardOrStatusDirectory contributes-to CardStatusListing.
+SelectBoardOrStatusDirectory realizes ReadOnlyListing.
+ShellListingDelivery addresses FilterAndGroupCards.
+ShellListingDelivery addresses PrintCardFileTargets.
+ShellListingDelivery addresses ReadVisibleCardMetadata.
+ShellListingDelivery addresses RejectMalformedCardState.
+ShellListingDelivery addresses SelectBoardOrStatusDirectory.
+ShellListingDelivery delivers CardStatusListing.
+ShellListingDelivery has implementation-status = implemented.
+TerminalOutput consumes TerminalOrPipe.
+TerminalOutput owns PrintCardFileTargets.

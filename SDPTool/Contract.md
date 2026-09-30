@@ -1,7 +1,33 @@
-# SDPTool producer contract 0.1
+# SDPTool producer contract 0.2
 
 This is the implemented local facade contract, not a new Toolkit release.
 Go language packages own parsing, validation, projection and presentation.
+
+## Output presentation
+
+All result-producing operations default to human-readable output. Add `--json`
+for the machine contract; output does not switch implicitly when piped. This is
+an intentional CLI compatibility break relative to published SDP 1.0.0. Clients
+must opt in, including version probes. Help remains text.
+
+`presentation.Registry` routes serialized results by schema and operation to
+compiled-in Go adapters. The CLI retains operation/exit/stream ownership. No
+Bash, jq, external formatter, dynamic plugin loader or shell process is required.
+Unknown routes retain JSON bytes; `--json` bypasses adapters. A renderer failure
+is an error, never a partially printed result followed by fallback JSON.
+Tree rendering preserves inventory order, shows state and references, stops at
+cycles/depth bounds, and escapes terminal controls in labels. Registered general
+results render a deterministic field hierarchy. Installation keeps its summary
+and existing error streams. Generated document/image files are unchanged.
+
+Use `sdptool tree --json`, `sdptool --version --json`, or global
+`sdptool --json PROJECT tree`. String option values (including a literal
+`--json`) remain values. Required positionals still precede command flags;
+`preview FILE --json` is valid. `--json=false` selects readable output.
+`release-log --version VERSION` still exports Markdown; with `--json` it emits
+an envelope containing that Markdown. Generation/check mode emits a receipt.
+
+See the [plan and consumer handoff](../SDP/05--Implementation/SDPTool/Output/Plan.md).
 
 ## Saved design preview
 
@@ -12,8 +38,8 @@ sdptool preview model.design --output /tmp/request-detail --viewpoint VP01
 sdptool preview model.design --output /tmp/request-detail --uri 'sdl-view://project/VP02?diagram=VP02-roots&target=main&consumer=xfmd' --revision SOURCE_SHA256
 ```
 
-Source precedes flags. The current input profile is SDL design-core/0.5 with its
-canonical-source validation; unsupported language/profile input returns the
+Source precedes flags. Supported structural profiles are SDL design-core/0.5 and source-composed
+design-core/0.6 with canonical-source validation; unsupported language/profile input returns the
 language diagnostic. Class/action/SDUI inputs are not structural design previews.
 No SDP folder is required. Default selection is one nonempty diagram, preferring
 architecture then use cases/responsibilities; an empty model uses VP11. Explicit
@@ -21,14 +47,14 @@ selections retain SDL's query validation and depth bound (0–8). A request acce
 at most 24 diagrams, 128 files and 32 MiB of generated resources; larger requests
 must select a diagram/focus. No automatic full export occurs.
 
-Stdout is one JSON result with schema sdptool/0.1, operation, source, profile,
+With --json, stdout is one JSON result with schema sdptool/0.2, operation, source, profile,
 revision (SHA-256 of exact source bytes), entry, directory and ownership. The
 bundle reuses SDL entry.md, diagrams/*.mmd, optional diagrams/*.svg, selection.json,
 manifest.json and delivery.txt; sdptool.json records facade provenance. SVG uses
 SDL's symbols and existing Rust renderer geometry. Without a renderer, Markdown
 contains Mermaid fences. Renderers are prebuilt programs supplied by the host.
 
-Errors return nonzero and one JSON error on stderr (schema, error.code/message
+Errors return nonzero; with --json they emit one JSON error on stderr (schema, error.code/message
 and positioned language diagnostic when available). Codes include arguments,
 source, model, selection, tool, render, output, stale, canceled and limit.
 Caller cancellation and stale expected/source-during-generation revisions prevent
@@ -45,62 +71,59 @@ publication, not a daemon or implicit in-memory service. A save occurring after
 the final revision check is observed by the next request; consumers compare
 revision/request identity rather than assuming a permanently current snapshot.
 
-## Project recognition — T1 contract
+## Project recognition and source discovery — DS1
 
-The local `SDP/navigation.json` registration owns **navigation bindings only**.
-Its [schema](navigation.schema.json) is independent of Toolkit release numbering.
-It names a project ID, the adopted local sdp-five-phase/0.1 profile, optional
-implementation-plan/board/project-manifest paths and explicit model/source lists.
-The mixed SDL/SDUI model is registered honestly as a joint source until source-set
-migration; `system` is a display/ownership label, not new SDL syntax. Empty model
-and SDUI lists are valid and expose unavailable tabs, not nonexistent language
-capabilities. IDs are unique across both lists. Unknown language profiles remain
-visible as unsupported and are never dispatched through a different parser.
+Select a project with an immediate real `SDP` directory, or select that directory
+itself. No ancestor search or Git identity guessing occurs. A directory is a
+discovery area, not proof of installed process conformance. Existing project and
+installed manifests supply installation facts; an absent manifest is allowed.
+An active installation journal returns `incomplete` before source enumeration.
 
-All registration paths are relative to the **parent of the SDP area**, including
-when the caller selected the SDP area itself. They must remain inside that root
-also after resolving symlinks. An optional defaultModel selects the initial registered SDL model. Otherwise
-model selection is explicit when multiple models exist. No recursively discovered repositories, implicit parent search, Git-based
-identity, child-directory scanning or executable commands are part of registration.
-Selecting a separate repo explicitly follows the same rule as a monorepo area.
+`discover --json` returns one `sdptool/0.2` snapshot: project identity, installation
+facts, derived `inventory`, `sources`, `plans` and `navigation`. Nothing is written.
+`navigation.json` is neither read nor created. Existing project-owned copies are
+preserved as inert historical files during upgrade, even when malformed.
 
-Recognition checks a navigation.json in the selected directory first, otherwise
-its SDP child. A selected malformed/unsupported registration does not fall through
-to another project. No registration is `missing`, invalid fields/paths are
-`invalid`, an unknown registration schema/process profile is `unsupported`, and
-accepted registration is `valid`. This validates navigation eligibility, **not
-whole-project SDP conformance, installed-tool compatibility or system correctness**.
-An existing SDP folder/legacy installation without registration is reported missing
-with instructions to register it; it is never silently migrated. Declared source
-paths must exist and be readable before the associated operation runs.
+Enumerate the selected SDP area, including old examples and actual directories.
+Do not infer which valid source is "current". Parse `.design` and `.sdui` through
+the owning language packages. Supported standalone models and System roots gain
+semantic navigation; fragments remain visible as `context-required`; invalid and
+unsupported sources carry diagnostics. SDL 0.6 composes files using source-owned
+includes/contains. Different roots are evaluated independently, never concatenated.
+The returned `inventory.models` and `inventory.sdui` are observations, not editable
+registries. A model ID combines its normalized project-relative path with a hash;
+content changes preserve identity, renames change identity. Display names are not IDs.
+Use returned IDs/targets rather than copying old registration names.
 
-| Existing authority | Integration decision |
-| --- | --- |
-| Root SDP.manifest.yaml | Distribution facts; not a consuming-project marker |
-| Toolkit/SDP-install.manifest.json | Inventory/install policy; no discovery rewrite |
-| SDP-project.manifest.yaml | Optional project-owned facts, referenced by registration; product release is not the process version |
-| Its installed.manifestPath | Installed facts relative to that manifest's directory; never copy Toolkit/skill versions into navigation.json |
-| Generated installed-toolkit manifest | Report read facts as declared; full installer/schema conformance stays with its validator |
-| navigation.json | Explicit local navigation eligibility and bindings; no release, install timestamp, executable or runtime/window/lease facts |
+All paths are relative to the parent of SDP, except typed open targets which carry
+absolute paths. Enumeration does not follow symlinks; symlinks remain visible.
+Containment checks also apply when resolving sources and generating outputs.
+Skip `.git`, `.sdp-operations` and `.sdp-backups`. Limits: 10,000 filesystem entries, depth 64,
+256 source files, 2 MiB per source and 64 MiB aggregate source input. The combined
+semantic navigation retains its 20,000-node and 32 MiB result bounds.
 
-T2 reads referenced YAML manifests safely, rejects malformed/unsupported schema
-versions and reports installation facts without asserting full validation. Missing
-manifests are errors when explicitly referenced; omitted manifests yield unknown
-installation facts. The versioned profile installer now creates empty bindings for new projects and
-preserves existing registration under MAINT-SDP-0003. This local descriptor
-does not change strict 1.0 manifest schemas; the versioned installer uses explicit
-2.0 installed facts while preserving this separate navigation binding.
+The viewer stores this snapshot in memory. It watches the SDP filesystem or offers
+manual Refresh, then invokes discovery again. It owns debounce, cancellation and
+request ordering; an older response must not replace a newer one. Generation is
+still on demand and rechecks source revisions. Discovery is not an atomic filesystem
+transaction and does not claim a permanently current view while files are edited.
+
+KanBan follows `SDP/KanBan`. ImplementationPlan documents under
+`05--Implementation` are reported in `plans`. A single plan can be selected
+implicitly; otherwise `view ip --plan PROJECT_RELATIVE_PATH` selects it explicitly.
+A single SDL model can be selected implicitly; multiple models require `--model`
+for operations acting on one model. Unfiltered `tree` shows all discovered models.
 
 ## Commands, host policy and consumer protocol — T1-M2
 
 | Invocation | Result and ownership |
 | --- | --- |
-| sdptool [PROJECT-OR-SDP-AREA] discover | JSON recognition and declared capabilities; read-only |
+| sdptool [PROJECT-OR-SDP-AREA] discover | Source discovery and navigation snapshot; read-only |
 | sdptool preview FILE --output DIR | Standalone saved-file operation above |
-| sdptool [PATH] view ip --model ID | Open the registered authored plan with generated navigation in the configured viewer |
-| sdptool [PATH] tree --model ID | JSON navigation inventory; no detail rendering or writes |
+| sdptool [PATH] view ip --plan PATH --model ID | Open the selected authored plan with generated navigation in the configured viewer |
+| sdptool [PATH] tree --model ID | Navigation inventory; no detail rendering or writes |
 | sdptool [PATH] select --model ID --uri URI --revision HASH --output DIR | Validate project binding/revision, then generate selected current-source detail |
-| sdptool [PATH] sdui-preview --model ID --output DIR | Only the implemented, registered SDUI service selected in T3 |
+| sdptool [PATH] sdui-preview --model ID --output DIR | Only the implemented, discovered SDUI service selected in T3 |
 
 `implementation-plan` is an alias for `ip`. `generate ip` remains unsupported;
 opening a plan must not synthesize, overwrite or imply approval of one. Explicit
@@ -110,8 +133,7 @@ operation's fixed positional arguments. Reject extra arguments and unknown flags
 Host executable precedence: explicit --viewer/--sdl-tool/--renderer options,
 then SDP_XFMD/SDP_SDL_TOOL/SDP_MMDR, then viewer/sdl names on PATH when needed.
 No renderer means Mermaid output, not an automatic build/install. Resolve programs
-before launch, preserve argument boundaries and never invoke a shell. Registration
-files cannot register executables. No startup tool compilation or required daemon.
+before launch, preserve argument boundaries and never invoke a shell. Source and metadata files cannot register executables. No startup tool compilation or required daemon.
 Standalone library calls accept already chosen options and do not read host policy.
 
 The initial bridge opens the actual plan in the main pane and the selected model's
@@ -124,9 +146,9 @@ normal/error/canceled exit. A viewer that detaches must use a future explicit
 lease adapter, not this synchronous bridge. Use XDG_RUNTIME_DIR when available,
 otherwise the normal temporary directory; never hardcode a user ID.
 
-JSON responses identify schema `sdptool/0.1` and operation. Recognition reports
-status, root, area, registration and capabilities; language capabilities remain
-`declared` until the owning parser is run. Tree replies include source revision,
+JSON responses identify schema `sdptool/0.2` and operation. Recognition reports
+status, root, area, inventory, sources and navigation. Capabilities indicate
+`discovered` sources; individual source states distinguish validation from errors. Tree replies include source revision,
 nodes and roots. Each node has stable id, kind, label, state and optional children,
 reference or typed target. A target carries project/model identity, operation and
 an SDL-owned URI or source path; it is not a shell command. Nodes are shared by ID
@@ -159,15 +181,15 @@ also enforces its query depth limit. Relationship IDs hash semantic endpoints;
 fact source positions remain owned by SDL. Inventory only builds data, not SVG.
 
 `select` requires both expected revision and a URI whose project matches the
-selected registration, plus an explicit model when no registered default resolves ambiguity. It delegates to the
+selected project, plus an explicit model when multiple sources make selection ambiguous. It delegates to the
 same guarded preview path. Refresh and retry after a stale error. A foreign URI
 never switches project/source selection implicitly.
 
 ## KanBan and SDUI services — T3-M3
 
-`tree` returns KanBan, SDL and SDUI roots, with unavailable diagnostics rather than
+`tree` returns Files, KanBan, SDL and SDUI roots, with unavailable diagnostics rather than
 hiding failures in optional services. `revision` is the selected SDL source hash;
-`inventoryRevision` also changes with registration, card/ledger data and SDUI
+`inventoryRevision` also changes with source inventory, filesystem entries, card/ledger data and SDUI
 sources. Consumers refresh on either appropriate revision. All targets retain
 source/card-specific hashes. No UI state is persisted by the inventory operation.
 
@@ -196,7 +218,7 @@ pinned profiles, including XFMD's separate board contract, remain explicitly
 unsupported until adapted. Optional SprintId/ScrumId are grouping facts, not proof
 of implemented features. Metadata files/history are bounded to 1 MiB each.
 
-SDUI registrations currently support the existing sdui/0.2 Go parser/normalizer
+Discovered SDUI sources currently support the existing sdui/0.2 Go parser/normalizer
 and structural Markdown export. Frame entry nodes include target.entry for
 explicit selection. `sdui-preview --model ID --entry FRAME --output DIRECTORY
 --revision HASH` returns a caller-owned entry.md/provenance/manifest bundle.
@@ -207,19 +229,18 @@ is not an assertion that every existing SDUI export is exposed by this facade.
 
 Review limits: navigation accepts at most 2,000 model declarations, 10,000 model
 facts, 20,000 combined nodes and 32 MiB of inventory JSON. These are facade limits,
-not new language rules. defaultModel is a registration binding, not a heuristic.
+not new language rules. No authored defaultModel binding exists.
 
 ## Installed profile facts — IU3
 
 Discovery accepts installed manifest schemas 1.0 and 2.0; project manifests remain
 1.0. Version 2.0 adds processProfile, managementProfile and configurationDigest.
 The closed shape and profile identity are checked; the full Toolkit validator
-owns installation conformance. Navigation remains schema 1.0 and does not copy
-those facts or infer models from folders. An active/failed installation journal
+owns installation conformance. Navigation is derived from source files and does not copy installed facts. An active/failed installation journal
 makes installation.state incomplete (including when final facts are not present).
 Before navigation has been published, discovery returns status incomplete with
-operation identities and no invented registration/models. Tree navigation is
-unavailable until the registration exists. A completed journal is a declared
+operation identities and no invented inventory/models. Tree navigation is
+unavailable until the installation is complete. A completed journal is a declared
 status, not independent verification.
 
 Metadata remains limited to 1 MiB per file; operation journals have a separate
@@ -227,14 +248,14 @@ Metadata remains limited to 1 MiB per file; operation journals have a separate
 Unsupported journal states/identities are errors. No discovery call resumes or
 repairs an installation.
 
-sdptool --version returns JSON build version/revision and installedFactSchemas.
+sdptool --version --json returns JSON build version/revision and installedFactSchemas.
 A consumer requiring profile 2.0 should check that array before invoking discovery.
 A source build is marked unknown or dirty when exact committed provenance is
 unavailable; it is never advertised as a published Toolkit release.
 
 package.sh NEW_OUTPUT_DIRECTORY is a maintainer-only native build. It emits a
 prebuilt sdptool, its version/capability manifest and SHA256SUMS. Select a Go
-compiler with SDP_GO when needed. Verify checksums and --version before putting
+compiler with SDP_GO when needed. Verify checksums and --version --json before putting
 the executable on the host's configured PATH. The package does not modify PATH,
 overwrite an existing destination, install a viewer or build during viewing.
 The Go installation engine now owns the new install/upgrade path. The separate
@@ -246,6 +267,5 @@ distribution does not execute a retired engine or reinterpret its journal. No di
 
 Typed-planning update: installed management facts and KanBan descriptors accept
 sdp-project-management/0.2 as well as 0.1. The facade still projects cards; it
-does not claim to render plans or validate every management transition. Layout
-registration remains sdp-five-phase/0.1. sdp.planning.v1 is an installed process
+does not claim to render plans or validate every management transition. The selected process folder convention remains sdp-five-phase/0.1. sdp.planning.v1 is an installed process
 capability, not a new navigation command.

@@ -1,0 +1,72 @@
+[
+  {
+    "case": "local-reuse",
+    "command": [
+      "/tmp/xgs1-study/bin/sdui",
+      "/tmp/xgs1-study/extra/local-reuse.sdui",
+      "--format",
+      "ast",
+      "--entry",
+      "page"
+    ],
+    "exitCode": 0,
+    "diagnostic": null,
+    "placeholder": false
+  },
+  {
+    "case": "component-import",
+    "command": [
+      "/tmp/xgs1-study/bin/sdui",
+      "/tmp/xgs1-study/extra/component-import.sdui",
+      "--format",
+      "ast",
+      "--entry",
+      "page"
+    ],
+    "exitCode": 2,
+    "diagnostic": "{\"error\":{\"code\":\"syntax\",\"message\":\"At least one definition is required\",\"span\":{\"start\":10,\"end\":16,\"line\":1,\"column\":11}}}\n",
+    "placeholder": false
+  },
+  {
+    "case": "image",
+    "command": [
+      "/tmp/xgs1-study/bin/sdui",
+      "/tmp/xgs1-study/extra/image.sdui",
+      "--format",
+      "svg",
+      "--entry",
+      "page"
+    ],
+    "exitCode": 2,
+    "diagnostic": "{\"error\":{\"code\":\"markdown-profile\",\"message\":\"markdown-unsupported: HTML and images require a registered resource provider\",\"span\":{\"start\":16,\"end\":35,\"line\":1,\"column\":17}}}\n",
+    "placeholder": false
+  },
+  {
+    "case": "html",
+    "command": [
+      "/tmp/xgs1-study/bin/sdui",
+      "/tmp/xgs1-study/extra/html.sdui",
+      "--format",
+      "svg",
+      "--entry",
+      "page"
+    ],
+    "exitCode": 2,
+    "diagnostic": "{\"error\":{\"code\":\"markdown-profile\",\"message\":\"markdown-unsupported: HTML and images require a registered resource provider\",\"span\":{\"start\":16,\"end\":30,\"line\":1,\"column\":17}}}\n",
+    "placeholder": false
+  },
+  {
+    "case": "sequence-placeholder",
+    "command": [
+      "/tmp/xgs1-study/bin/sdui",
+      "/tmp/xgs1-study/extra/sequence-placeholder.sdui",
+      "--format",
+      "svg",
+      "--entry",
+      "page"
+    ],
+    "exitCode": 0,
+    "diagnostic": null,
+    "placeholder": true
+  }
+]

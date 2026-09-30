@@ -4,6 +4,9 @@
 
 | ID | Type | Status | Document |
 | --- | --- | --- | --- |
+| KB-SDP-046 | Change | completed | [Source discovery and systems navigation](completed/%23046--Change--Source-discovery-and-multiple-system-navigation.md) |
+| KB-SDP-045 | Change | completed | [Portable CLI presentation](completed/%23045--Change--Portable-SDPTool-presentation.md) |
+| KB-SDP-044 | Change | completed | [Sessions and release preparation](completed/%23044--Change--Sessions-and-repeatable-release-preparation.md) |
 | KB-SDL-001 | Proposal | backlog | [Stakeholders, actors, user stories and readable SDL](backlog/%23001--SDL--Proposal--Requirements-narrative.md) |
 | KB-SDL-002 | Proposal | backlog | [Weak links and visual paths through nodes](backlog/%23002--SDL--Proposal--Links-through.md) |
 | KB-SDL-003 | Ref | completed | [SDP tools as a consumer of SDL](completed/%23003--SDL--Ref--SDP--017--sdptool.md) |
@@ -47,6 +50,17 @@
 | KB-SDP-033 | Study | completed | [Plan XFMD SDP adoption through gh-sdp and a practical SDL design pilot](completed/%23033--Study--XFMD-SDP-adoption-and-SDL-pilot.md) |
 | KB-SDP-034 | Bug | completed | [External KanBan references](completed/%23034--Bug--External-KanBan-references.md) |
 | KB-SDP-035 | Proposal | backlog | [Community feedback after an understood internal pilot](backlog/%23035--Proposal--Community-feedback-after-internal-pilot.md) |
+| KB-SDP-036 | Proposal | backlog | [Request classification and mandatory routine selection](backlog/%23036--Proposal--Request-routines-and-process-control.md) |
+| KB-SDP-037 | Proposal | backlog | [Observable routine execution and agent work-package progress](backlog/%23037--Proposal--Observable-routine-state-machine.md) |
+| KB-SDP-038 | Proposal | backlog | [SDP development client using Codex app-server](backlog/%23038--Proposal--Codex-app-server-development-client.md) |
+| KB-SDP-039 | Change | completed | [Ecosystem and system models](completed/%23039--Change--Ecosystem-and-system-models.md) |
+| KB-SDP-040 | Proposal | backlog | [KanBan terminal navigator](backlog/%23040--Proposal--KanBan-TUI.md) |
+| KB-SDP-041 | Study | completed | [XFMD-driven SDL and SDUI gaps](completed/%23041--Study--XFMD-driven-SDL-and-SDUI-gaps.md) |
+| KB-SDUI-003 | Proposal | backlog | [Capabilities and a bounded navigation pilot](backlog/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md) |
+| KB-SDUI-004 | Bug | backlog | [Text and Markdown fidelity across SDUI exports](backlog/%23004--SDUI--Bug--Text-and-Markdown-fidelity.md) |
+| KB-SDP-042 | Proposal | backlog | [Goal-oriented Sessions and roadmaps](backlog/%23042--Proposal--Goal-oriented-sessions-and-roadmaps.md) |
+| KB-SDL-007 | Proposal | completed | [Composable file ASTs and contextual analysis](completed/%23007--SDL--Proposal--Composable-file-ASTs-and-contextual-analysis.md) |
+| KB-SDP-043 | Proposal | backlog | [Event-derived Session timelines](backlog/%23043--Proposal--Event-derived-session-timelines.md) |
 
 ## Purpose and authority
 

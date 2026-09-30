@@ -46,3 +46,7 @@ Templates initialize missing project-owned files. Upgrades preserve local prose;
 a newer template is not an automatic rewrite of existing documentation. Managed
 Framework/skills and generated installation receipts have different ownership.
 Consult installed facts before migration; preserve project history and decisions.
+
+For work spanning turns/plans, use [Sessions](Sessions/README.md): recover the
+goal, keep the roadmap first, link plans/cards, and record honest turn outcomes.
+Sessions are manual project documents; lifecycle authority remains in cards/plans.

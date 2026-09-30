@@ -78,3 +78,25 @@ this card's migration is selected and verified. Parser support and registration
 are not inferred from directory structure. This card remains backlog.
 
 [Source guide](../../SDL/README.md) and [template work](../../Maintenance/TS1/Plan.md).
+
+## Ecosystem modeling outcome — 2026-09-29
+
+[PLAN-SDP-0008](../../03--Architecture/Ecosystems/Plan.md) establishes new tool boundary models under SDP/SDL/<Ecosystem>/<System>/. This refines the earlier three coarse system groups. The [catalog](../../SDL/Catalog.md) preserves old detailed model authority; this card still owns lossless migration, source references and reconciliation after KB-SDL-005. No existing monolithic model was moved or declared obsolete by the new catalog.
+
+## Session S1 migration review — 2026-09-30
+
+[SSD1 design](../../04--Design/SDL/SourceSets/Contract.md) recommends a copied
+Frontend model as the first source-set fixture. Keep authoritative model locations
+and registrations unchanged until the implementation and navigation checks pass.
+The MVP1 experimental language needs more than source assembly. This card remains
+backlog; EVT-KB-SDP-000250 records the review, not migration execution.
+
+## Session 0001 implementation review — 2026-09-30
+
+[PLAN-SDP-0012](../../05--Implementation/SDL/SourceComposition/Plan.md) verifies
+source composition through all existing producers with a copied Frontend pilot.
+This removes the single-System assembly blocker for a bounded migration pilot.
+Keep this card in backlog: migration of authoritative models/registrations needs
+an explicit plan and fact-preservation checks. The wider MVP1 candidate profile
+and cross-System linking still require separate language work. No actual model
+migration is claimed by this review.

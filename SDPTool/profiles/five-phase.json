@@ -8,10 +8,12 @@
     "sdp-install-command/1",
     "sdp.process.five-phase.v1",
     "sdp.project-management.v1",
-    "sdp.planning.v1"
+    "sdp.planning.v1",
+    "sdp.sessions.manual.v1"
   ],
   "upgradesFrom": [
     "edc0c72101a437c6e12c40a081ef59ae41cf0db32bcaedb73824ec48495aaee5",
-    "66590e8e967ede6b36d8fa45cdbee1cd80f69505cca698b0e4a9bd960842735a"
+    "66590e8e967ede6b36d8fa45cdbee1cd80f69505cca698b0e4a9bd960842735a",
+    "767527e0d7f54866bab95f4642ffffb2a344024c1805f44b3d5ea9c024829125"
   ]
 }

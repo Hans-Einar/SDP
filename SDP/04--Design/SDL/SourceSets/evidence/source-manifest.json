@@ -1,0 +1,80 @@
+{
+  "baselineCommit": "84fbdb34f7b87f2ef23547cc4b1684322916a342",
+  "files": [
+    {
+      "path": "SDL/go/parser/parse.go",
+      "sha256": "9a74626ebab0572cb9283367616e725c7e80ca5c9c7fc339869563fbc6fe87a3",
+      "status": "tracked baseline"
+    },
+    {
+      "path": "SDL/go/parser/ast.go",
+      "sha256": "87cead0cd8dfab253272ec6c96db8073e7a72336f90b411260fd6d800cbe5b9f",
+      "status": "tracked baseline"
+    },
+    {
+      "path": "SDL/go/parser/vocabulary.go",
+      "sha256": "4246a0092ce2d149690654a316f46edd5dcfce8ff83fdf816b9a3625426d0c1a",
+      "status": "tracked baseline"
+    },
+    {
+      "path": "SDL/go/parser/validate.go",
+      "sha256": "5508eed76c3e4a236e3703e7a40e5e21a72e9370b1eecbab94f4d8575fb83508",
+      "status": "tracked baseline"
+    },
+    {
+      "path": "SDL/go/viewpoint/model.go",
+      "sha256": "89b7b277cfb9a69759e5877fe0ba9f11565c7b53c5ccccddcee814215007275e",
+      "status": "tracked baseline"
+    },
+    {
+      "path": "SDL/go/broker/broker.go",
+      "sha256": "ffc0d84d397b8edac08ce35d96acb02a11b08336601f77ee996dd5157d184bb1",
+      "status": "tracked baseline"
+    },
+    {
+      "path": "SDL/go/documents/bundle.go",
+      "sha256": "fb7f3f81935f3f56b14fcbd229d483c7d1ead5d19722651b7f483f9858f8826a",
+      "status": "tracked baseline"
+    },
+    {
+      "path": "SDL/go/snapshot/snapshot.go",
+      "sha256": "53f75690fb6d826e493a360b8b0d6a8e221558e753b452d539083889b95ac626",
+      "status": "tracked baseline"
+    },
+    {
+      "path": "SDL/go/cmd/sdl/main.go",
+      "sha256": "81f10e487a5eaf19b9dc825fb1603d85f95ad00e99d62c54d643e7d97496ab70",
+      "status": "tracked baseline"
+    },
+    {
+      "path": "SDPTool/project.go",
+      "sha256": "4302e1418b761ed0701a0995e462a514a04f79d9b9c7eaba1d4f2d1f33c15a54",
+      "status": "tracked baseline"
+    },
+    {
+      "path": "SDPTool/preview.go",
+      "sha256": "6bb68d7988b5b76b38fa62feddbe9bc99b70d9879582e5c09cc7452d912473b1",
+      "status": "tracked baseline"
+    },
+    {
+      "path": "SDPTool/tree.go",
+      "sha256": "1caeebc990902be35a1e418287148e7f20262678501f25ecd1d1fc22b6b49242",
+      "status": "tracked baseline"
+    },
+    {
+      "path": "SDP/SDL/SDL/Frontend/System.design",
+      "sha256": "450b5b3d25ff1cec9b4b109cd57ee2b29601fba9a632de087f3e622e1f86d7fc",
+      "status": "tracked baseline"
+    },
+    {
+      "path": "SDL/go/sourceinput/input.go",
+      "sha256": "5135e3de831f2648a3127a0004d5f425a0c400b2faf18bb567b04768f4303baf",
+      "status": "untracked input only"
+    },
+    {
+      "path": "SDL/go/sourceinput/positions.go",
+      "sha256": "1e736a87802a1f455fb5cfb53212c35dd7a6e76b9ef56cbe1517a224b8c3ab31",
+      "status": "untracked input only"
+    }
+  ]
+}

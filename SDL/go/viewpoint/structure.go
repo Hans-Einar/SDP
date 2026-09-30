@@ -71,7 +71,7 @@ func (v *Views) architecture() {
 	r := v.Relations
 	children := values(r["contains"], "object")
 	roots := []string{}
-	for _, n := range append(v.names("unit"), v.names("container")...) {
+	for _, n := range append(append(v.names("unit"), v.names("container")...), v.names("system")...) {
 		if !has(children, n) {
 			roots = append(roots, n)
 		}

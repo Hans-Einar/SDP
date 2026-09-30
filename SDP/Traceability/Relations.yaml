@@ -201,6 +201,136 @@ reviews:
       low: 0
       note: 4
 verification:
+  CODEXCLIENT-VER-ECO1:
+    status: passed-structural-model-checks
+    path: 03--Architecture/Ecosystems/Evidence.md
+    model: SDL/ProjectGovernance/CodexClient/System.design
+    modelId: pg-codex-client
+    managementId: PLAN-SDP-0008
+    card: KB-SDP-039
+  KANBANCLI-VER-ECO1:
+    status: passed-structural-model-checks
+    path: 03--Architecture/Ecosystems/Evidence.md
+    model: SDL/ProjectGovernance/KanBanCLI/System.design
+    modelId: pg-kanban-cli
+    managementId: PLAN-SDP-0008
+    card: KB-SDP-039
+  KANBANTUI-VER-ECO1:
+    status: passed-structural-model-checks
+    path: 03--Architecture/Ecosystems/Evidence.md
+    model: SDL/ProjectGovernance/KanBanTUI/System.design
+    modelId: pg-kanban-tui
+    managementId: PLAN-SDP-0008
+    card: KB-SDP-039
+  SDPMCPADAPTER-VER-ECO1:
+    status: passed-structural-model-checks
+    path: 03--Architecture/Ecosystems/Evidence.md
+    model: SDL/ProjectGovernance/SDPMCPAdapter/System.design
+    modelId: pg-mcp-adapter
+    managementId: PLAN-SDP-0008
+    card: KB-SDP-039
+  SDPTOOL-VER-ECO1:
+    status: passed-structural-model-checks
+    path: 03--Architecture/Ecosystems/Evidence.md
+    model: SDL/ProjectGovernance/SDPTool/System.design
+    modelId: pg-sdptool
+    managementId: PLAN-SDP-0008
+    card: KB-SDP-039
+  SDLACTIONRUNTIME-VER-ECO1:
+    status: passed-structural-model-checks
+    path: 03--Architecture/Ecosystems/Evidence.md
+    model: SDL/SDL/ActionRuntime/System.design
+    modelId: sdl-action-runtime
+    managementId: PLAN-SDP-0008
+    card: KB-SDP-039
+  SDLCODEGENERATION-VER-ECO1:
+    status: passed-structural-model-checks
+    path: 03--Architecture/Ecosystems/Evidence.md
+    model: SDL/SDL/CodeGeneration/System.design
+    modelId: sdl-code-generation
+    managementId: PLAN-SDP-0008
+    card: KB-SDP-039
+  SDLDEVELOPMENTHOST-VER-ECO1:
+    status: passed-structural-model-checks
+    path: 03--Architecture/Ecosystems/Evidence.md
+    model: SDL/SDL/DevelopmentHost/System.design
+    modelId: sdl-development-host
+    managementId: PLAN-SDP-0008
+    card: KB-SDP-039
+  SDLDOCUMENTSERVICE-VER-ECO1:
+    status: passed-structural-model-checks
+    path: 03--Architecture/Ecosystems/Evidence.md
+    model: SDL/SDL/DocumentService/System.design
+    modelId: sdl-document-service
+    managementId: PLAN-SDP-0008
+    card: KB-SDP-039
+  SDLDOCUMENTSNAPSHOT-VER-ECO1:
+    status: passed-structural-model-checks
+    path: 03--Architecture/Ecosystems/Evidence.md
+    model: SDL/SDL/DocumentSnapshot/System.design
+    modelId: sdl-document-snapshot
+    managementId: PLAN-SDP-0008
+    card: KB-SDP-039
+  SDLFRONTEND-VER-ECO1:
+    status: passed-structural-model-checks
+    path: 03--Architecture/Ecosystems/Evidence.md
+    model: SDL/SDL/Frontend/System.design
+    modelId: sdl-frontend
+    managementId: PLAN-SDP-0008
+    card: KB-SDP-039
+  SDLVIEWPOINTS-VER-ECO1:
+    status: passed-structural-model-checks
+    path: 03--Architecture/Ecosystems/Evidence.md
+    model: SDL/SDL/Viewpoints/System.design
+    modelId: sdl-viewpoints
+    managementId: PLAN-SDP-0008
+    card: KB-SDP-039
+  SDUICODEGEN-VER-ECO1:
+    status: passed-structural-model-checks
+    path: 03--Architecture/Ecosystems/Evidence.md
+    model: SDL/SDUI/SDUICodegen/System.design
+    modelId: sdui-codegen
+    managementId: PLAN-SDP-0008
+    card: KB-SDP-039
+  SDUIFRONTEND-VER-ECO1:
+    status: passed-structural-model-checks
+    path: 03--Architecture/Ecosystems/Evidence.md
+    model: SDL/SDUI/SDUIFrontend/System.design
+    modelId: sdui-frontend
+    managementId: PLAN-SDP-0008
+    card: KB-SDP-039
+  SDUINATIVEHOST-VER-ECO1:
+    status: passed-structural-model-checks
+    path: 03--Architecture/Ecosystems/Evidence.md
+    model: SDL/SDUI/SDUINativeHost/System.design
+    modelId: sdui-native-host
+    managementId: PLAN-SDP-0008
+    card: KB-SDP-039
+  SDUIPRESENTATION-VER-ECO1:
+    status: passed-structural-model-checks
+    path: 03--Architecture/Ecosystems/Evidence.md
+    model: SDL/SDUI/SDUIPresentation/System.design
+    modelId: sdui-presentation
+    managementId: PLAN-SDP-0008
+    card: KB-SDP-039
+  SDUIRUNTIME-VER-ECO1:
+    status: passed-structural-model-checks
+    path: 03--Architecture/Ecosystems/Evidence.md
+    model: SDL/SDUI/SDUIRuntime/System.design
+    modelId: sdui-runtime
+    managementId: PLAN-SDP-0008
+    card: KB-SDP-039
+  SDP-VER-ECO1:
+    status: passed-structural-model-checks
+    path: 03--Architecture/Ecosystems/Evidence.md
+    model: SDL/Landscape.design
+    modelId: sdp-landscape
+    managementId: PLAN-SDP-0008
+    card: KB-SDP-039
+  SDPTOOL-VER-DS3:
+    status: passed
+    path: 05--Implementation/SDPTool/Discovery/Evidence.md
+    release: REL-2.0.0
   SDPTOOL-VER-RP3:
     status: passed
     path: Maintenance/RP3/Plan.md
@@ -328,6 +458,17 @@ verification:
     corpusDigest: e346fc230b26c3045305c1ffee22ff43edfc61aa99597005134a314b210b8114
 migrations: {}
 releases:
+  REL-2.0.0:
+    version: "2.0.0"
+    state: released
+    releaseNotes: RELEASE-NOTES.md
+    manifest: SDP.manifest.yaml
+    releaseRecord: Releases/REL-2.0.0.yaml
+    verification: [SDPTOOL-VER-DS3]
+    reviews: []
+    releaseCommit: d304261c90066a86b2d8ffcaa2115517ea339b05
+    gitTag: v2.0.0
+    githubRelease: https://github.com/Hans-Einar/SDP/releases/tag/v2.0.0
   REL-1.0.0:
     version: "1.0.0"
     state: released

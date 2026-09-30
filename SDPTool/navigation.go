@@ -13,20 +13,61 @@ func Navigation(p Project, id string) (Tree, error) {
 		return Tree{}, failure("incomplete", fmt.Errorf("installation has not published navigation; resume its recorded operation"))
 	}
 
-	t := Tree{Schema: Version, Operation: "tree", Project: p.Registration.ProjectID, Roots: []string{"sdl", "kanban", "sdui"}, Nodes: []Node{}, ExpansionDepthLimit: 8}
-	if len(p.Registration.Models) > 0 {
-		modelTree, e := ModelTree(p, id)
+	t := Tree{Schema: Version, Operation: "tree", Project: p.Inventory.ProjectID, Roots: []string{"sdl", "kanban", "sdui"}, Nodes: []Node{}, ExpansionDepthLimit: 8}
+	if id != "" {
+		mt, e := ModelTree(p, id)
 		if e != nil {
 			return t, e
 		}
-		t.Model = modelTree.Model
-		t.Revision = modelTree.Revision
-		t.Nodes = modelTree.Nodes
+		t.Model = mt.Model
+		t.Revision = mt.Revision
+		t.Nodes = mt.Nodes
 	} else {
-		t.Nodes = append(t.Nodes, Node{ID: "sdl", Kind: "tab", Label: "SDL", State: "absent"})
+		tab := Node{ID: "sdl", Kind: "tab", Label: "SDL", State: "absent"}
+		for _, m := range p.Inventory.Models {
+			key := "sdl/" + m.ID
+			n := Node{ID: key, Kind: "source", Label: m.Source, State: "available", Target: &Target{Operation: "tree", Project: p.Inventory.ProjectID, Model: m.ID}}
+			tab.Children = append(tab.Children, key)
+			tab.State = "available"
+			var info *SourceInfo
+			for i := range p.Sources {
+				if p.Sources[i].ID == m.ID {
+					info = &p.Sources[i]
+					break
+				}
+			}
+			if info != nil && info.State != "validated" {
+				n.State = info.State
+				n.Diagnostic = info.Diagnostic
+				n.Target = nil
+			} else {
+				mt, e := ModelTree(p, m.ID)
+				if e != nil {
+					n.State = "invalid"
+					n.Diagnostic = e.Error()
+					n.Target = nil
+				} else {
+					n.State = "validated"
+					n.Target.Revision = mt.Revision
+					for _, mn := range mt.Nodes {
+						if mn.ID == "sdl" {
+							n.Children = mn.Children
+						} else {
+							t.Nodes = append(t.Nodes, mn)
+						}
+					}
+				}
+			}
+			t.Nodes = append(t.Nodes, n)
+		}
+		t.Nodes = append(t.Nodes, tab)
+	}
+	if len(p.Files) > 0 {
+		t.Roots = append([]string{"files"}, t.Roots...)
+		t.Nodes = append(t.Nodes, p.Files...)
 	}
 	versions := []string{t.Revision}
-	if p.Registration.KanBan != "" {
+	if p.Inventory.KanBan != "" {
 		nodes, hash, e := BoardNodes(p)
 		if e != nil {
 			t.Nodes = append(t.Nodes, Node{ID: "kanban", Kind: "tab", Label: "KanBan", State: "unavailable", Diagnostic: e.Error()})
@@ -45,10 +86,10 @@ func Navigation(p Project, id string) (Tree, error) {
 		versions = append(versions, hash)
 	}
 	b, _ := json.Marshal(struct {
-		Registration Registration
-		Versions     []string
-		Nodes        []Node
-	}{p.Registration, versions, t.Nodes})
+		Inventory Inventory
+		Versions  []string
+		Nodes     []Node
+	}{p.Inventory, versions, t.Nodes})
 	if len(t.Nodes) > 20000 || len(b) > 32<<20 {
 		return Tree{}, failure("limit", fmt.Errorf("combined inventory exceeds 20000 nodes or 32 MiB"))
 	}

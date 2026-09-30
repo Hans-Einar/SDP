@@ -15,6 +15,8 @@ capability CardRevisionAccess.
 message CheckpointInstallationRequest.
 message CheckpointInstallationResult.
 mode ClientBootstrap.
+capability CommandPresentation.
+mode CommandReporting.
 activity ConsumerValidationSlice.
 functionality CoordinateInstallation.
 message CreateInstallationPlanRequest.
@@ -25,6 +27,7 @@ functionality DescribeNavigationTree.
 actor DesignAuthor.
 capability DesignPreview.
 actor DesignReviewer.
+functionality DiscoverSourceInventory.
 actor DocumentViewer.
 message ExecuteInstallationPlanRequest.
 message ExecuteInstallationPlanResult.
@@ -124,6 +127,8 @@ capability ManualProcessAdoption.
 unit NavigationInventory.
 activity NavigationSlice.
 database OperationStore.
+unit OutputPresentation.
+activity OutputPresentationSlice.
 functionality PersistInstallationJournal.
 capability PlanAssistance.
 activity PlanAssistanceSlice.
@@ -131,6 +136,7 @@ unit PlanCoordinator.
 message PlanInstallationRejected.
 message PlanInstallationRequest.
 message PlanInstallationResult.
+functionality PresentCommandResult.
 unit PreviewCoordinator.
 usecase PreviewDesign.
 activity PreviewSlice.
@@ -144,6 +150,7 @@ actor ProjectMaintainer.
 capability ProjectNavigation.
 functionality ProposeImplementationSlices.
 functionality PublishInstalledProcessFacts.
+usecase ReadCommandOutput.
 message RecordInstallationRequest.
 message RecordInstallationResult.
 message RecoverInstallationRequest.
@@ -249,6 +256,9 @@ DesignPreview requires SdlProjectionPort in mode StandalonePreview.
 DesignReviewer pursues BrowseProject.
 DesignReviewer pursues InspectCardHistory.
 DesignReviewer pursues ReviewImplementationPlan.
+DiscoverSourceInventory allocated-to SdpToolProcess in mode ProjectBrowsing.
+DiscoverSourceInventory contributes-to SdpTool.
+DiscoverSourceInventory realizes ProjectNavigation.
 DocumentViewer pursues BrowseProject.
 DocumentViewer pursues PreviewDesign.
 ExecuteInstallationPlanRequest has message-kind = request.
@@ -585,6 +595,11 @@ NavigationSlice depends-on ProjectDiscoverySlice.
 NavigationSlice has implementation-status = implemented.
 NavigationSlice refines DeliverSdpTool.
 OperationStore holds InstallationOperationRecords.
+OutputPresentation owns PresentCommandResult.
+OutputPresentationSlice addresses PresentCommandResult.
+OutputPresentationSlice delivers SdpTool.
+OutputPresentationSlice has implementation-status = implemented.
+OutputPresentationSlice refines DeliverSdpTool.
 PersistInstallationJournal allocated-to SdpToolProcess in mode InstallationExecution.
 PersistInstallationJournal allocated-to SdpToolProcess in mode InstallationRecoveryMode.
 PersistInstallationJournal contributes-to SdpTool.
@@ -608,6 +623,9 @@ PlanInstallationRequest upholds InstallPlanningArguments.
 PlanInstallationResult has message-kind = result.
 PlanInstallationResult replies-to PlanInstallationRequest.
 PlanInstallationResult upholds InstallOutcome.
+PresentCommandResult allocated-to SdpToolProcess in mode CommandReporting.
+PresentCommandResult contributes-to SdpTool.
+PresentCommandResult realizes CommandPresentation.
 PreviewCoordinator consumes SdlProjectionPort.
 PreviewCoordinator owns AcceptSourceSnapshot.
 PreviewCoordinator owns BuildDesignPreview.
@@ -615,7 +633,9 @@ PreviewSlice delivers SdpTool.
 PreviewSlice has implementation-status = planned.
 PreviewSlice refines DeliverSdpTool.
 ProcessReleaseRecords upholds InstallReleaseRecord.
+ProjectContext owns DiscoverSourceInventory.
 ProjectContext owns ResolveProjectContext.
+ProjectDiscoverySlice addresses DiscoverSourceInventory.
 ProjectDiscoverySlice addresses ResolveProjectContext.
 ProjectDiscoverySlice delivers SdpTool.
 ProjectDiscoverySlice has implementation-status = implemented.
@@ -624,6 +644,7 @@ ProjectInstallation requires InstallationFilesystemPort in mode InstallationExec
 ProjectInstallation requires ReleaseArtifactPort in mode InstallationPlanning.
 ProjectMaintainer pursues AdoptManualProcess.
 ProjectMaintainer pursues InstallProjectProcess.
+ProjectMaintainer pursues ReadCommandOutput.
 ProjectMaintainer pursues RecoverProjectUpgrade.
 ProjectMaintainer pursues UpgradeProjectProcess.
 ProjectNavigation requires SdlProjectionPort in mode ProjectBrowsing.
@@ -698,6 +719,7 @@ SdpTool supports BrowseProject.
 SdpTool supports InspectCardHistory.
 SdpTool supports InstallProjectProcess.
 SdpTool supports PreviewDesign.
+SdpTool supports ReadCommandOutput.
 SdpTool supports RecoverProjectUpgrade.
 SdpTool supports ReviewImplementationPlan.
 SdpTool supports UpgradeProjectProcess.
@@ -722,11 +744,13 @@ SdpToolProcess contains InstallationPlanner.
 SdpToolProcess contains InstallationRecorder.
 SdpToolProcess contains InstallationReleaseResolver.
 SdpToolProcess contains NavigationInventory.
+SdpToolProcess contains OutputPresentation.
 SdpToolProcess contains PlanCoordinator.
 SdpToolProcess contains PreviewCoordinator.
 SdpToolProcess contains ProjectContext.
 SdpToolProcess contains ViewerBridge.
 SdpToolProcess provides CardRevisionAccess.
+SdpToolProcess provides CommandPresentation.
 SdpToolProcess provides DesignPreview.
 SdpToolProcess provides InstallationRecovery.
 SdpToolProcess provides ManualProcessAdoption.

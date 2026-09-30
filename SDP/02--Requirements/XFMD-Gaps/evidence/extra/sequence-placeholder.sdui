@@ -1,0 +1,1 @@
+sdui 0.2; page=["```mermaid\nsequenceDiagram\nA->>B: Hello\n```"];

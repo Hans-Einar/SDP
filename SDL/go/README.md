@@ -6,6 +6,9 @@ in XFMD using prebuilt tools; details are generated when selected.
 
 G4-M1 provides parsing, source-positioned AST, symbol/type checking, data/wire and
 Channel/scenario validation, and canonical formatting for **design-core 0.5**.
+SSI1–SSI3 add [design-core 0.6 source composition](../docs/profiles/SDL-Source-Composition-Profile.md):
+one System, includes/path membership, reusable file ASTs and whole-graph revisions
+through CLI, viewpoints, broker and SDPTool. No authored design-set manifest.
 Structural statements are not executed. Checkpoint candidates and the complete
 MVP1 corpus are outside this profile. G4-M2 adds the explicit
 [action-core 0.1](../docs/profiles/SDL-Executable-Action-Profile.md), with a parser,

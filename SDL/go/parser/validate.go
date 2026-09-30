@@ -13,6 +13,26 @@ type edge struct {
 
 func Validate(m *Model) []Diagnostic {
 	diagnostics := []Diagnostic{}
+	if m.Header.Version == "0.6" {
+		count := 0
+		for _, d := range m.Declarations {
+			if d.Kind == "system" {
+				count++
+			}
+		}
+		if count != 1 {
+			diagnostics = append(diagnostics, Diagnostic{"SYSTEM_CARDINALITY", "Exactly one System is required for complete validation", m.Header.Span})
+		}
+		if len(m.Includes) > 0 {
+			diagnostics = append(diagnostics, Diagnostic{"SOURCE_CONTEXT", "Use sourcegraph compilation for source dependencies", m.Includes[0].Span})
+		}
+		for _, s := range m.Statements {
+			if s.Path != "" {
+				diagnostics = append(diagnostics, Diagnostic{"SOURCE_CONTEXT", "Path references require sourcegraph compilation", s.PathSpan})
+			}
+		}
+	}
+
 	symbols := Symbols(m)
 	declared := map[string]bool{}
 	names := []string{}
@@ -113,6 +133,11 @@ func Validate(m *Model) []Diagnostic {
 				}
 			}
 		case "Relation":
+			if m.Header.Version == "0.6" && s.Verb == "contains" && symbols[s.Subject.Name].Kind == "system" {
+				allowed := check(s.Object, kinds, "OBJECT")
+				_ = allowed
+				continue // System membership is not a runtime containment/ownership parent.
+			}
 			sig := signatures[s.Verb]
 			a := check(s.Subject, sig.subject, "SUBJECT")
 			b := check(s.Object, sig.object, "OBJECT")

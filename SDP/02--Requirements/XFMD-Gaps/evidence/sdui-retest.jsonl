@@ -1,0 +1,88 @@
+{"Time":"2026-09-29T18:45:55.169590315+02:00","Action":"start","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser"}
+{"Time":"2026-09-29T18:45:55.176577778+02:00","Action":"run","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestSourceASTParity"}
+{"Time":"2026-09-29T18:45:55.176641144+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestSourceASTParity","Output":"=== RUN   TestSourceASTParity\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.176668599+02:00","Action":"run","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestSourceASTParity/concept1-bucking.ast.json"}
+{"Time":"2026-09-29T18:45:55.17667654+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestSourceASTParity/concept1-bucking.ast.json","Output":"=== RUN   TestSourceASTParity/concept1-bucking.ast.json\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.177777843+02:00","Action":"start","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout"}
+{"Time":"2026-09-29T18:45:55.181406708+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestSourceASTParity/concept1-bucking.ast.json","Output":"--- PASS: TestSourceASTParity/concept1-bucking.ast.json (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.181514631+02:00","Action":"pass","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestSourceASTParity/concept1-bucking.ast.json","Elapsed":0.01}
+{"Time":"2026-09-29T18:45:55.181541783+02:00","Action":"run","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestSourceASTParity/main-page.ast.json"}
+{"Time":"2026-09-29T18:45:55.18154892+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestSourceASTParity/main-page.ast.json","Output":"=== RUN   TestSourceASTParity/main-page.ast.json\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.181718445+02:00","Action":"run","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Test":"TestWeightsAndAncestor"}
+{"Time":"2026-09-29T18:45:55.181754092+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Test":"TestWeightsAndAncestor","Output":"=== RUN   TestWeightsAndAncestor\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.182027867+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Test":"TestWeightsAndAncestor","Output":"--- PASS: TestWeightsAndAncestor (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.182041453+02:00","Action":"pass","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Test":"TestWeightsAndAncestor","Elapsed":0}
+{"Time":"2026-09-29T18:45:55.182051927+02:00","Action":"run","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Test":"TestRatioFontAndClip"}
+{"Time":"2026-09-29T18:45:55.182059005+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Test":"TestRatioFontAndClip","Output":"=== RUN   TestRatioFontAndClip\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.182280454+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Test":"TestRatioFontAndClip","Output":"--- PASS: TestRatioFontAndClip (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.18229563+02:00","Action":"pass","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Test":"TestRatioFontAndClip","Elapsed":0}
+{"Time":"2026-09-29T18:45:55.18230657+02:00","Action":"run","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Test":"TestRegionsAndDependencies"}
+{"Time":"2026-09-29T18:45:55.182321101+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Test":"TestRegionsAndDependencies","Output":"=== RUN   TestRegionsAndDependencies\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.182635621+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Test":"TestRegionsAndDependencies","Output":"--- PASS: TestRegionsAndDependencies (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.182655659+02:00","Action":"pass","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Test":"TestRegionsAndDependencies","Elapsed":0}
+{"Time":"2026-09-29T18:45:55.18267362+02:00","Action":"run","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Test":"TestConcept1Geometry"}
+{"Time":"2026-09-29T18:45:55.182680334+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Test":"TestConcept1Geometry","Output":"=== RUN   TestConcept1Geometry\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.184194768+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestSourceASTParity/main-page.ast.json","Output":"--- PASS: TestSourceASTParity/main-page.ast.json (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.184241859+02:00","Action":"pass","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestSourceASTParity/main-page.ast.json","Elapsed":0}
+{"Time":"2026-09-29T18:45:55.184254775+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestSourceASTParity","Output":"--- PASS: TestSourceASTParity (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.184266915+02:00","Action":"pass","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestSourceASTParity","Elapsed":0.01}
+{"Time":"2026-09-29T18:45:55.184279413+02:00","Action":"run","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestPositionsAndBoundaries"}
+{"Time":"2026-09-29T18:45:55.184287457+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestPositionsAndBoundaries","Output":"=== RUN   TestPositionsAndBoundaries\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.207502886+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Test":"TestConcept1Geometry","Output":"--- PASS: TestConcept1Geometry (0.02s)\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.207542676+02:00","Action":"pass","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Test":"TestConcept1Geometry","Elapsed":0.02}
+{"Time":"2026-09-29T18:45:55.20755906+02:00","Action":"run","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Test":"TestSaturatedTracks"}
+{"Time":"2026-09-29T18:45:55.207565611+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Test":"TestSaturatedTracks","Output":"=== RUN   TestSaturatedTracks\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.207575321+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Test":"TestSaturatedTracks","Output":"--- PASS: TestSaturatedTracks (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.207581324+02:00","Action":"pass","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Test":"TestSaturatedTracks","Elapsed":0}
+{"Time":"2026-09-29T18:45:55.207602276+02:00","Action":"run","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Test":"TestStretchNeverDeformsRatio"}
+{"Time":"2026-09-29T18:45:55.207608061+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Test":"TestStretchNeverDeformsRatio","Output":"=== RUN   TestStretchNeverDeformsRatio\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.207703124+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Test":"TestStretchNeverDeformsRatio","Output":"--- PASS: TestStretchNeverDeformsRatio (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.207728183+02:00","Action":"pass","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Test":"TestStretchNeverDeformsRatio","Elapsed":0}
+{"Time":"2026-09-29T18:45:55.207735033+02:00","Action":"run","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Test":"TestCollapsedBodyNoNaN"}
+{"Time":"2026-09-29T18:45:55.207740346+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Test":"TestCollapsedBodyNoNaN","Output":"=== RUN   TestCollapsedBodyNoNaN\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.207795933+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Test":"TestCollapsedBodyNoNaN","Output":"--- PASS: TestCollapsedBodyNoNaN (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.207809758+02:00","Action":"pass","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Test":"TestCollapsedBodyNoNaN","Elapsed":0}
+{"Time":"2026-09-29T18:45:55.207838583+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.208675146+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Output":"ok  \tgithub.com/Hans-Einar/SDP/SDUI/go/layout\t0.030s\n"}
+{"Time":"2026-09-29T18:45:55.208699367+02:00","Action":"pass","Package":"github.com/Hans-Einar/SDP/SDUI/go/layout","Elapsed":0.031}
+{"Time":"2026-09-29T18:45:55.23006494+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestPositionsAndBoundaries","Output":"--- PASS: TestPositionsAndBoundaries (0.05s)\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.230150658+02:00","Action":"pass","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestPositionsAndBoundaries","Elapsed":0.05}
+{"Time":"2026-09-29T18:45:55.230181518+02:00","Action":"run","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestTruncations"}
+{"Time":"2026-09-29T18:45:55.230193572+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestTruncations","Output":"=== RUN   TestTruncations\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.230633972+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestTruncations","Output":"--- PASS: TestTruncations (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.230676228+02:00","Action":"pass","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestTruncations","Elapsed":0}
+{"Time":"2026-09-29T18:45:55.230693071+02:00","Action":"run","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestPythonSemanticPort"}
+{"Time":"2026-09-29T18:45:55.230700019+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestPythonSemanticPort","Output":"=== RUN   TestPythonSemanticPort\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.249294791+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestPythonSemanticPort","Output":"--- PASS: TestPythonSemanticPort (0.02s)\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.249331525+02:00","Action":"pass","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestPythonSemanticPort","Elapsed":0.02}
+{"Time":"2026-09-29T18:45:55.249339093+02:00","Action":"run","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestExpansionAndIndependence"}
+{"Time":"2026-09-29T18:45:55.249343586+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestExpansionAndIndependence","Output":"=== RUN   TestExpansionAndIndependence\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.258670845+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestExpansionAndIndependence","Output":"--- PASS: TestExpansionAndIndependence (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.258722603+02:00","Action":"pass","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestExpansionAndIndependence","Elapsed":0.01}
+{"Time":"2026-09-29T18:45:55.258732442+02:00","Action":"run","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestRatioDoesNotAliasAST"}
+{"Time":"2026-09-29T18:45:55.258739122+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestRatioDoesNotAliasAST","Output":"=== RUN   TestRatioDoesNotAliasAST\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.258799944+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestRatioDoesNotAliasAST","Output":"--- PASS: TestRatioDoesNotAliasAST (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.258824343+02:00","Action":"pass","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"TestRatioDoesNotAliasAST","Elapsed":0}
+{"Time":"2026-09-29T18:45:55.25883276+02:00","Action":"run","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"FuzzParser"}
+{"Time":"2026-09-29T18:45:55.258863677+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"FuzzParser","Output":"=== RUN   FuzzParser\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.25935031+02:00","Action":"run","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"FuzzParser/seed#0"}
+{"Time":"2026-09-29T18:45:55.259381517+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"FuzzParser/seed#0","Output":"=== RUN   FuzzParser/seed#0\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.259396243+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"FuzzParser/seed#0","Output":"--- PASS: FuzzParser/seed#0 (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.25940371+02:00","Action":"pass","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"FuzzParser/seed#0","Elapsed":0}
+{"Time":"2026-09-29T18:45:55.259411934+02:00","Action":"run","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"FuzzParser/seed#1"}
+{"Time":"2026-09-29T18:45:55.259417643+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"FuzzParser/seed#1","Output":"=== RUN   FuzzParser/seed#1\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.259425892+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"FuzzParser/seed#1","Output":"--- PASS: FuzzParser/seed#1 (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.259434017+02:00","Action":"pass","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"FuzzParser/seed#1","Elapsed":0}
+{"Time":"2026-09-29T18:45:55.259437838+02:00","Action":"run","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"FuzzParser/seed#2"}
+{"Time":"2026-09-29T18:45:55.25944093+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"FuzzParser/seed#2","Output":"=== RUN   FuzzParser/seed#2\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.25944497+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"FuzzParser/seed#2","Output":"--- PASS: FuzzParser/seed#2 (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.259448405+02:00","Action":"pass","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"FuzzParser/seed#2","Elapsed":0}
+{"Time":"2026-09-29T18:45:55.259451544+02:00","Action":"run","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"FuzzParser/seed#3"}
+{"Time":"2026-09-29T18:45:55.259454478+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"FuzzParser/seed#3","Output":"=== RUN   FuzzParser/seed#3\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.259458244+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"FuzzParser/seed#3","Output":"--- PASS: FuzzParser/seed#3 (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.259461682+02:00","Action":"pass","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"FuzzParser/seed#3","Elapsed":0}
+{"Time":"2026-09-29T18:45:55.259465346+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"FuzzParser","Output":"--- PASS: FuzzParser (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.259468932+02:00","Action":"pass","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Test":"FuzzParser","Elapsed":0}
+{"Time":"2026-09-29T18:45:55.259472069+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-09-29T18:45:55.259827921+02:00","Action":"output","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Output":"ok  \tgithub.com/Hans-Einar/SDP/SDUI/go/parser\t0.090s\n"}
+{"Time":"2026-09-29T18:45:55.259840954+02:00","Action":"pass","Package":"github.com/Hans-Einar/SDP/SDUI/go/parser","Elapsed":0.09}

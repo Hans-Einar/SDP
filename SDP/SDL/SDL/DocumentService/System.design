@@ -1,0 +1,105 @@
+language design-core version 0.5.
+actor DocumentConsumer.
+field EntryPath.
+activity ExistingCapability.
+activity IndependentPackaging.
+field LeaseIdentity.
+unit LeaseStore.
+capability LeasedDocumentDelivery.
+field ModelRevision.
+feature OnDemandDocumentation.
+functionality OpenCapturedReaderTarget.
+interface ProjectRegistryPort.
+unit ProjectionBroker.
+message PublishedViewResult.
+unit ReaderAdapter.
+interface ReaderDeliveryPort.
+usecase RequestDesignView.
+functionality ResolveCurrentView.
+functionality RetainPublishedView.
+message SelectViewRequest.
+field SelectionSequence.
+field SelectionUri.
+mode Serving.
+functionality SubmitViewSelection.
+channel ViewCalls.
+contract ViewCallsProtocol.
+interface ViewProjectionPort.
+contract ViewPublication.
+scenario ViewPublished.
+unit ViewRequestClient.
+container ViewRequestProcess.
+contract ViewSelection.
+container ViewServiceProcess.
+DocumentConsumer pursues RequestDesignView.
+EntryPath has presence = required.
+EntryPath has value-type = text.
+ExistingCapability addresses OpenCapturedReaderTarget.
+ExistingCapability addresses ResolveCurrentView.
+ExistingCapability addresses RetainPublishedView.
+ExistingCapability addresses SubmitViewSelection.
+ExistingCapability delivers OnDemandDocumentation.
+ExistingCapability has implementation-status = implemented.
+IndependentPackaging has implementation-status = planned.
+LeaseIdentity has presence = required.
+LeaseIdentity has value-type = text.
+LeaseStore owns RetainPublishedView.
+LeasedDocumentDelivery requires ProjectRegistryPort in mode Serving.
+LeasedDocumentDelivery requires ReaderDeliveryPort in mode Serving.
+LeasedDocumentDelivery requires ViewProjectionPort in mode Serving.
+ModelRevision has presence = required.
+ModelRevision has value-type = text.
+OnDemandDocumentation supports RequestDesignView.
+OpenCapturedReaderTarget allocated-to ViewServiceProcess in mode Serving.
+OpenCapturedReaderTarget contributes-to OnDemandDocumentation.
+OpenCapturedReaderTarget realizes LeasedDocumentDelivery.
+ProjectionBroker consumes ProjectRegistryPort.
+ProjectionBroker consumes ViewProjectionPort.
+ProjectionBroker owns ResolveCurrentView.
+ProjectionBroker uses ViewCalls as receiver of SelectViewRequest in mode Serving.
+ProjectionBroker uses ViewCalls as sender of PublishedViewResult in mode Serving.
+PublishedViewResult has message-kind = result.
+PublishedViewResult replies-to SelectViewRequest.
+PublishedViewResult upholds ViewPublication.
+ReaderAdapter consumes ReaderDeliveryPort.
+ReaderAdapter owns OpenCapturedReaderTarget.
+ResolveCurrentView allocated-to ViewServiceProcess in mode Serving.
+ResolveCurrentView contributes-to OnDemandDocumentation.
+ResolveCurrentView realizes LeasedDocumentDelivery.
+RetainPublishedView allocated-to ViewServiceProcess in mode Serving.
+RetainPublishedView contributes-to OnDemandDocumentation.
+RetainPublishedView realizes LeasedDocumentDelivery.
+SelectViewRequest has message-kind = request.
+SelectViewRequest upholds ViewSelection.
+SelectionSequence has presence = required.
+SelectionSequence has value-type = unsigned.
+SelectionUri has presence = required.
+SelectionUri has value-type = text.
+SubmitViewSelection allocated-to ViewRequestProcess in mode Serving.
+SubmitViewSelection contributes-to OnDemandDocumentation.
+SubmitViewSelection realizes LeasedDocumentDelivery.
+ViewCalls upholds ViewCallsProtocol.
+ViewCallsProtocol has completeness = closed.
+ViewCallsProtocol permits PublishedViewResult.
+ViewCallsProtocol permits SelectViewRequest.
+ViewPublication has completeness = closed.
+ViewPublication has-field EntryPath.
+ViewPublication has-field LeaseIdentity.
+ViewPublication has-field ModelRevision.
+ViewPublished exercises RequestDesignView.
+ViewPublished has completeness = closed.
+ViewPublished illustrates ExistingCapability.
+ViewPublished runs-in Serving.
+ViewPublished step 1 sends SelectViewRequest from ViewRequestClient to ProjectionBroker via ViewCalls.
+ViewPublished step 2 sends PublishedViewResult from ProjectionBroker to ViewRequestClient via ViewCalls reply-to 1.
+ViewRequestClient owns SubmitViewSelection.
+ViewRequestClient uses ViewCalls as receiver of PublishedViewResult in mode Serving.
+ViewRequestClient uses ViewCalls as sender of SelectViewRequest in mode Serving.
+ViewRequestProcess contains ViewRequestClient.
+ViewSelection has completeness = closed.
+ViewSelection has-field SelectionSequence.
+ViewSelection has-field SelectionUri.
+ViewServiceProcess contains LeaseStore.
+ViewServiceProcess contains ProjectionBroker.
+ViewServiceProcess contains ReaderAdapter.
+ViewServiceProcess provides LeasedDocumentDelivery.

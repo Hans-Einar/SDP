@@ -1,0 +1,179 @@
+language design-core version 0.5.
+unit AssignmentMapping.
+functionality BindExecutionAttempt.
+functionality CheckManagedAuthentication.
+activity ClientDelivery.
+container CodexClientHost.
+mode Controlling.
+channel ExecutionCalls.
+contract ExecutionCallsProtocol.
+capability ExecutionControl.
+unit ExecutionController.
+contract ExecutionOutcome.
+field ExecutionOutcomeAttemptIdentity.
+field ExecutionOutcomeObservedStatus.
+field ExecutionOutcomeSessionIdentity.
+field ExecutionOutcomeThreadIdentity.
+contract ExecutionRequest.
+field ExecutionRequestAssignmentIdentity.
+field ExecutionRequestAssignmentRevision.
+field ExecutionRequestAttemptIdentity.
+field ExecutionRequestCheckoutIdentity.
+field ExecutionRequestRole.
+unit ExternalCodexAppServer.
+unit ExternalSdpToolCore.
+scenario FreshMasterWithDurableContext.
+feature GovernedAgentClient.
+functionality MarkObservationStale.
+unit ObserverProjection.
+interface PinnedAppServerProtocol.
+functionality ProjectObservedActivity.
+actor ProjectOwner.
+message ReadRunSnapshot.
+functionality ReconcileUncertainSubmission.
+mode Reconciling.
+activity RecoveryDelivery.
+contract RunObservation.
+field RunObservationCoverage.
+field RunObservationRevision.
+field RunObservationSourceReferences.
+field RunObservationState.
+contract RunQuery.
+field RunQueryProjectHandle.
+field RunQueryRunIdentity.
+channel RunReads.
+contract RunReadsProtocol.
+message RunSnapshot.
+interface SdpToolRunReadService.
+message StartFreshThread.
+functionality StartSelectedMaster.
+usecase SuperviseBoundedAssignment.
+message ThreadStarted.
+AssignmentMapping consumes SdpToolRunReadService.
+AssignmentMapping owns BindExecutionAttempt.
+AssignmentMapping uses RunReads as receiver of RunSnapshot in mode Controlling.
+AssignmentMapping uses RunReads as sender of ReadRunSnapshot in mode Controlling.
+BindExecutionAttempt allocated-to CodexClientHost in mode Controlling.
+BindExecutionAttempt contributes-to GovernedAgentClient.
+BindExecutionAttempt realizes ExecutionControl.
+CheckManagedAuthentication allocated-to CodexClientHost in mode Controlling.
+CheckManagedAuthentication contributes-to GovernedAgentClient.
+CheckManagedAuthentication realizes ExecutionControl.
+ClientDelivery addresses BindExecutionAttempt.
+ClientDelivery addresses CheckManagedAuthentication.
+ClientDelivery addresses ProjectObservedActivity.
+ClientDelivery addresses StartSelectedMaster.
+ClientDelivery delivers GovernedAgentClient.
+ClientDelivery has implementation-status = planned.
+CodexClientHost contains AssignmentMapping.
+CodexClientHost contains ExecutionController.
+CodexClientHost contains ObserverProjection.
+CodexClientHost provides ExecutionControl.
+ExecutionCalls upholds ExecutionCallsProtocol.
+ExecutionCallsProtocol has completeness = closed.
+ExecutionCallsProtocol permits StartFreshThread.
+ExecutionCallsProtocol permits ThreadStarted.
+ExecutionControl requires PinnedAppServerProtocol in mode Controlling.
+ExecutionControl requires PinnedAppServerProtocol in mode Reconciling.
+ExecutionControl requires SdpToolRunReadService in mode Controlling.
+ExecutionController consumes PinnedAppServerProtocol.
+ExecutionController owns CheckManagedAuthentication.
+ExecutionController owns ReconcileUncertainSubmission.
+ExecutionController owns StartSelectedMaster.
+ExecutionController uses ExecutionCalls as receiver of ThreadStarted in mode Controlling.
+ExecutionController uses ExecutionCalls as sender of StartFreshThread in mode Controlling.
+ExecutionOutcome has completeness = closed.
+ExecutionOutcome has-field ExecutionOutcomeAttemptIdentity.
+ExecutionOutcome has-field ExecutionOutcomeObservedStatus.
+ExecutionOutcome has-field ExecutionOutcomeSessionIdentity.
+ExecutionOutcome has-field ExecutionOutcomeThreadIdentity.
+ExecutionOutcomeAttemptIdentity has presence = required.
+ExecutionOutcomeAttemptIdentity has value-type = text.
+ExecutionOutcomeObservedStatus has presence = required.
+ExecutionOutcomeObservedStatus has value-type = text.
+ExecutionOutcomeSessionIdentity has presence = required.
+ExecutionOutcomeSessionIdentity has value-type = text.
+ExecutionOutcomeThreadIdentity has presence = required.
+ExecutionOutcomeThreadIdentity has value-type = text.
+ExecutionRequest has completeness = closed.
+ExecutionRequest has-field ExecutionRequestAssignmentIdentity.
+ExecutionRequest has-field ExecutionRequestAssignmentRevision.
+ExecutionRequest has-field ExecutionRequestAttemptIdentity.
+ExecutionRequest has-field ExecutionRequestCheckoutIdentity.
+ExecutionRequest has-field ExecutionRequestRole.
+ExecutionRequestAssignmentIdentity has presence = required.
+ExecutionRequestAssignmentIdentity has value-type = text.
+ExecutionRequestAssignmentRevision has presence = required.
+ExecutionRequestAssignmentRevision has value-type = text.
+ExecutionRequestAttemptIdentity has presence = required.
+ExecutionRequestAttemptIdentity has value-type = text.
+ExecutionRequestCheckoutIdentity has presence = required.
+ExecutionRequestCheckoutIdentity has value-type = text.
+ExecutionRequestRole has presence = required.
+ExecutionRequestRole has value-type = text.
+ExternalCodexAppServer uses ExecutionCalls as receiver of StartFreshThread in mode Controlling.
+ExternalCodexAppServer uses ExecutionCalls as sender of ThreadStarted in mode Controlling.
+ExternalSdpToolCore uses RunReads as receiver of ReadRunSnapshot in mode Controlling.
+ExternalSdpToolCore uses RunReads as sender of RunSnapshot in mode Controlling.
+FreshMasterWithDurableContext exercises SuperviseBoundedAssignment.
+FreshMasterWithDurableContext has completeness = closed.
+FreshMasterWithDurableContext illustrates ClientDelivery.
+FreshMasterWithDurableContext runs-in Controlling.
+FreshMasterWithDurableContext step 1 sends ReadRunSnapshot from AssignmentMapping to ExternalSdpToolCore via RunReads.
+FreshMasterWithDurableContext step 2 sends RunSnapshot from ExternalSdpToolCore to AssignmentMapping via RunReads reply-to 1.
+FreshMasterWithDurableContext step 3 sends StartFreshThread from ExecutionController to ExternalCodexAppServer via ExecutionCalls.
+FreshMasterWithDurableContext step 4 sends ThreadStarted from ExternalCodexAppServer to ExecutionController via ExecutionCalls reply-to 3.
+GovernedAgentClient supports SuperviseBoundedAssignment.
+MarkObservationStale allocated-to CodexClientHost in mode Reconciling.
+MarkObservationStale contributes-to GovernedAgentClient.
+MarkObservationStale realizes ExecutionControl.
+ObserverProjection owns MarkObservationStale.
+ObserverProjection owns ProjectObservedActivity.
+ProjectObservedActivity allocated-to CodexClientHost in mode Controlling.
+ProjectObservedActivity contributes-to GovernedAgentClient.
+ProjectObservedActivity realizes ExecutionControl.
+ProjectOwner pursues SuperviseBoundedAssignment.
+ReadRunSnapshot has message-kind = request.
+ReadRunSnapshot upholds RunQuery.
+ReconcileUncertainSubmission allocated-to CodexClientHost in mode Reconciling.
+ReconcileUncertainSubmission contributes-to GovernedAgentClient.
+ReconcileUncertainSubmission realizes ExecutionControl.
+RecoveryDelivery addresses MarkObservationStale.
+RecoveryDelivery addresses ReconcileUncertainSubmission.
+RecoveryDelivery delivers GovernedAgentClient.
+RecoveryDelivery has implementation-status = planned.
+RunObservation has completeness = closed.
+RunObservation has-field RunObservationCoverage.
+RunObservation has-field RunObservationRevision.
+RunObservation has-field RunObservationSourceReferences.
+RunObservation has-field RunObservationState.
+RunObservationCoverage has presence = required.
+RunObservationCoverage has value-type = text.
+RunObservationRevision has presence = required.
+RunObservationRevision has value-type = text.
+RunObservationSourceReferences has presence = required.
+RunObservationSourceReferences has value-type = text.
+RunObservationState has presence = required.
+RunObservationState has value-type = text.
+RunQuery has completeness = closed.
+RunQuery has-field RunQueryProjectHandle.
+RunQuery has-field RunQueryRunIdentity.
+RunQueryProjectHandle has presence = required.
+RunQueryProjectHandle has value-type = text.
+RunQueryRunIdentity has presence = required.
+RunQueryRunIdentity has value-type = text.
+RunReads upholds RunReadsProtocol.
+RunReadsProtocol has completeness = closed.
+RunReadsProtocol permits ReadRunSnapshot.
+RunReadsProtocol permits RunSnapshot.
+RunSnapshot has message-kind = result.
+RunSnapshot replies-to ReadRunSnapshot.
+RunSnapshot upholds RunObservation.
+StartFreshThread has message-kind = request.
+StartFreshThread upholds ExecutionRequest.
+StartSelectedMaster allocated-to CodexClientHost in mode Controlling.
+StartSelectedMaster contributes-to GovernedAgentClient.
+StartSelectedMaster realizes ExecutionControl.
+ThreadStarted has message-kind = result.
+ThreadStarted replies-to StartFreshThread.
+ThreadStarted upholds ExecutionOutcome.

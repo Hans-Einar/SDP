@@ -20,8 +20,7 @@ type Model struct {
 	Source  string `json:"source"`
 	Profile string `json:"profile"`
 }
-type Registration struct {
-	DefaultModel       string  `json:"defaultModel,omitempty"`
+type Inventory struct {
 	SchemaVersion      string  `json:"schemaVersion"`
 	ProjectID          string  `json:"projectId"`
 	ProcessProfile     string  `json:"processProfile"`
@@ -37,9 +36,13 @@ type Project struct {
 	Status       string            `json:"status"`
 	Root         string            `json:"root"`
 	Area         string            `json:"area"`
-	Registration Registration      `json:"registration"`
+	Inventory    Inventory         `json:"inventory"`
 	Capabilities map[string]string `json:"capabilities"`
 	Installation map[string]any    `json:"installation"`
+	Sources      []SourceInfo      `json:"sources"`
+	Files        []Node            `json:"-"`
+	Navigation   *Tree             `json:"navigation,omitempty"`
+	Plans        []string          `json:"plans"`
 }
 
 var identifier = regexp.MustCompile(`^[a-z][a-z0-9-]{0,63}$`)
@@ -125,7 +128,7 @@ func strictJSON(b []byte, v any) error {
 	return d.Decode(v)
 }
 func resolvePath(root, p string) (string, error) {
-	if p == "" || filepath.IsAbs(p) || filepath.Clean(p) != p || strings.ContainsAny(p, "\\:") || strings.IndexFunc(p, unicode.IsControl) >= 0 {
+	if p == "" || filepath.IsAbs(p) || filepath.ToSlash(filepath.Clean(p)) != p || strings.ContainsAny(p, "\\:") || strings.IndexFunc(p, unicode.IsControl) >= 0 {
 		return "", fmt.Errorf("invalid relative path %q", p)
 	}
 	for _, part := range strings.Split(p, "/") {
@@ -178,171 +181,10 @@ func readYAML(path string, schemas ...string) (map[string]any, error) {
 	}
 	return v, nil
 }
-func Discover(selected string) (Project, error) {
-	p := Project{Schema: Version, Operation: "discover", Capabilities: map[string]string{}, Installation: map[string]any{"state": "unknown"}}
-	bad := func(code string, e error) (Project, error) { p.Status = code; return p, failure(code, e) }
-	if selected == "" {
-		selected = "."
-	}
-	dir, e := physical(selected)
-	if e != nil {
-		return bad("invalid", e)
-	}
-	st, e := os.Stat(dir)
-	if e != nil || !st.IsDir() {
-		return bad("missing", fmt.Errorf("selected directory unavailable: %s", dir))
-	}
-	pending, err := pendingInstallations(dir)
-	if err != nil {
-		return bad("invalid", err)
-	}
-	area := dir
-	file := filepath.Join(area, "navigation.json")
-	if _, e = os.Lstat(file); os.IsNotExist(e) && len(pending) == 0 {
-		area = filepath.Join(dir, "SDP")
-		file = filepath.Join(area, "navigation.json")
-		pending, err = pendingInstallations(area)
-		if err != nil {
-			return bad("invalid", err)
-		}
-	}
-	p.Area = area
-	p.Root = filepath.Dir(area)
-	if len(pending) != 0 {
-		p.Installation = map[string]any{"state": "incomplete", "operations": pending}
-	}
-	b, e := boundedFile(file)
-	if os.IsNotExist(e) {
-		if len(pending) != 0 {
-			p.Status = "incomplete"
-			return p, nil
-		}
-		return bad("missing", fmt.Errorf("no navigation.json in selected area or SDP child; register navigation without inferring installation"))
-	}
-	if e != nil {
-		return bad("invalid", e)
-	}
-	var raw map[string]any
-	if e = json.Unmarshal(b, &raw); e != nil {
-		return bad("invalid", e)
-	}
-	if _, ok := raw["schemaVersion"].(string); !ok {
-		return bad("invalid", fmt.Errorf("missing/string schemaVersion required"))
-	}
-	if _, ok := raw["processProfile"].(string); !ok {
-		return bad("invalid", fmt.Errorf("missing/string processProfile required"))
-	}
-	for _, key := range []string{"projectManifest", "implementationPlan", "kanban", "defaultModel"} {
-		if value, exists := raw[key]; exists {
-			if text, ok := value.(string); !ok || text == "" {
-				return bad("invalid", fmt.Errorf("%s must be a nonempty path", key))
-			}
-		}
-	}
-	if raw["schemaVersion"] != "1.0" || raw["processProfile"] != "sdp-five-phase/0.1" {
-		return bad("unsupported", fmt.Errorf("unsupported navigation schema or process profile"))
-	}
-	if e = strictJSON(b, &p.Registration); e != nil {
-		return bad("invalid", e)
-	}
-	r := p.Registration
-	if !identifier.MatchString(r.ProjectID) || r.Models == nil || r.SDUI == nil || len(r.Models) > 32 || len(r.SDUI) > 32 {
-		return bad("invalid", fmt.Errorf("invalid project ID or source lists"))
-	}
-	ids := map[string]bool{}
-	for _, m := range append(append([]Model{}, r.Models...), r.SDUI...) {
-		if !identifier.MatchString(m.ID) || ids[m.ID] || m.System == "" || m.Profile == "" {
-			return bad("invalid", fmt.Errorf("invalid/duplicate model registration %s", m.ID))
-		}
-		ids[m.ID] = true
-		if _, e = resolvePath(p.Root, m.Source); e != nil {
-			return bad("invalid", e)
-		}
-	}
-	if r.DefaultModel != "" {
-		found := false
-		for _, m := range r.Models {
-			if m.ID == r.DefaultModel {
-				found = true
-			}
-		}
-		if !found {
-			return bad("invalid", fmt.Errorf("defaultModel is not a registered SDL model"))
-		}
-	}
-	for _, v := range []string{r.ImplementationPlan, r.KanBan, r.ProjectManifest} {
-		if v != "" {
-			if _, e = resolvePath(p.Root, v); e != nil {
-				return bad("invalid", e)
-			}
-		}
-	}
-	for name, value := range map[string]string{"implementation-plan": r.ImplementationPlan, "kanban": r.KanBan} {
-		state := "absent"
-		if value != "" {
-			state = "declared"
-		}
-		p.Capabilities[name] = state
-	}
-	for name, models := range map[string][]Model{"sdl": r.Models, "sdui": r.SDUI} {
-		state := "absent"
-		if len(models) > 0 {
-			state = "declared"
-		}
-		p.Capabilities[name] = state
-	}
-	if r.ProjectManifest != "" {
-		f, _ := resolvePath(p.Root, r.ProjectManifest)
-		manifest, err := readYAML(f)
-		if err != nil {
-			if x, ok := err.(*Failure); ok {
-				return bad(x.Code, err)
-			}
-			return bad("invalid", err)
-		}
-		installed, ok := manifest["installed"].(map[string]any)
-		if !ok {
-			return bad("invalid", fmt.Errorf("project manifest lacks installed mapping"))
-		}
-		rel, ok := installed["manifestPath"].(string)
-		if !ok {
-			return bad("invalid", fmt.Errorf("missing installed.manifestPath"))
-		}
-		dest, err := resolvePath(filepath.Dir(f), rel)
-		if err != nil {
-			return bad("invalid", err)
-		}
-		facts, err := readYAML(dest, "1.0", "2.0", "3.0")
-		if os.IsNotExist(err) && len(pending) != 0 {
-			p.Status = "valid"
-			return p, nil
-		}
-		if err != nil {
-			if x, ok := err.(*Failure); ok {
-				return bad(x.Code, err)
-			}
-			return bad("invalid", err)
-		}
-		if err = validateProcessFacts(facts); err != nil {
-			return bad("invalid", err)
-		}
-		p.Installation = map[string]any{"state": "declared", "projectManifest": f, "installedManifest": dest, "facts": facts, "validation": "schema version and YAML structure only; use installer validator for full conformance"}
-		if len(pending) != 0 {
-			p.Installation["state"] = "incomplete"
-			p.Installation["operations"] = pending
-		}
-
-	}
-	p.Status = "valid"
-	return p, nil
-}
 func (p Project) model(id string, sdui bool) (Model, string, error) {
-	list := p.Registration.Models
+	list := p.Inventory.Models
 	if sdui {
-		list = p.Registration.SDUI
-	}
-	if id == "" && !sdui {
-		id = p.Registration.DefaultModel
+		list = p.Inventory.SDUI
 	}
 	if id == "" && len(list) == 1 {
 		id = list[0].ID
@@ -353,12 +195,12 @@ func (p Project) model(id string, sdui bool) (Model, string, error) {
 			if sdui {
 				expected = "sdui/0.2"
 			}
-			if m.Profile != expected {
+			if m.Profile != expected && (sdui || m.Profile != "design-core/0.6") {
 				return m, "", failure("unsupported", fmt.Errorf("profile %s", m.Profile))
 			}
 			path, e := resolvePath(p.Root, m.Source)
 			return m, path, e
 		}
 	}
-	return Model{}, "", failure("selection", fmt.Errorf("select a registered model ID (required when several exist)"))
+	return Model{}, "", failure("selection", fmt.Errorf("select a discovered model ID (required when several exist)"))
 }

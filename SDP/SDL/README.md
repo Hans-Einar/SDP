@@ -6,7 +6,10 @@ language grammar, runtime deployment and generated documentation.
 
 ## One source tree, one shared process
 
-Use `SDP/SDL/<System>/` for each software system described by this project.
+Use `SDP/SDL/<Ecosystem>/<System>/` for each software system described by this project.
+This owner-selected refinement (2026-09-29, PLAN-SDP-0008) groups related tools
+without introducing another runtime or language entity. Start at the
+[ecosystem catalog](Catalog.md) and [architecture decisions](../03--Architecture/Ecosystems/Decisions.md).
 Keep one shared KanBan, planning and Traceability area under SDP. A System is a
 modeling boundary; a container is an application/service with a distinct runtime
 responsibility. Shared libraries are not containers merely because they have
@@ -20,27 +23,29 @@ SDP/
   SDL/
     README.md
     AGENTS.md
-    <System>/
+    <Ecosystem>/
       README.md
-      System.design
-      Features.design
-      Ports.design
-      State.design
-      Containers/
-        <Container>/
-          README.md
-          Domain.design
-          Views.design
-      Shared/
+      <System>/
         README.md
-        Libraries/<Library>/
-        UI/
-      Contracts/
-      Scenarios/
-      Governance/
-      SDUI/
-        <UIContainer>/
-          MainPage.sdui
+        System.design
+        Features.design
+        Ports.design
+        State.design
+        Containers/
+          <Container>/
+            README.md
+            Domain.design
+            Views.design
+        Shared/
+          README.md
+          Libraries/<Library>/
+          UI/
+        Contracts/
+        Scenarios/
+        Governance/
+        SDUI/
+          <UIContainer>/
+            MainPage.sdui
 ```
 
 The names below are responsibilities, not required parser entry points:
@@ -87,7 +92,7 @@ Each System README records:
 - purpose, boundary, owner and actual containers;
 - authoritative source files and the responsibilities of shared definitions;
 - language/profile and tool version used, supported validation commands and gaps;
-- the actual entry file/source registration and navigation configuration;
+- source-owned entry files, includes and contains references;
 - how to reproduce selected outputs and where generated artifacts belong.
 
 Folder placement does not create namespaces, imports, dependency ordering or
@@ -95,8 +100,8 @@ source-set support. Use only the constructs supported by the selected parser.
 Do not invent a `system` declaration or `#include` preprocessor because this
 layout uses those concepts. Experimental models must identify their profile and
 unsupported constructs explicitly; inventory inspection is not successful parsing.
-Navigation registration is explicit and tool-dependent: an installed empty
-SDP/SDL directory does not automatically register a model with SDPTool.
+SDPTool discovers sources and their directories without a registration file.
+An empty SDL directory has no models. Add sources and refresh discovery.
 
 ## Authored source and documentation
 
@@ -126,3 +131,28 @@ initialized; upgrades preserve existing project documents. To adopt a newer guid
 in an existing project, review its differences and reconcile local decisions.
 Published release descriptors, not the current source checkout, determine what
 `gh sdp install` or `gh sdp upgrade` installs.
+
+## Initial ecosystem catalog — E1
+
+ProjectGovernance groups project tools; SDL groups language and design services;
+SDUI groups UI language, presentation and execution services. A system has a
+coherent public responsibility and a potential executable/library delivery. An
+existing combined executable may currently host several such responsibilities;
+the catalog must distinguish that observation from a proposed extraction.
+Libraries belong under the owning system and are not separate deployment nodes.
+
+For this first catalog, each System.design is an independently validated,
+bounded architecture model using design-core 0.5. Do not split it into unresolved
+fragments or concatenate files behind the parser. Optional Features/Contracts/
+Containers source files become appropriate when the selected input profile can
+link them, or when each is explicitly a separate complete model. Directory
+nesting alone does not solve that limitation. A future source-set migration must
+preserve identities and diagnostics. The catalog registers entries with current
+SDPTool navigation; it does not add native ecosystem grouping to XFMD.
+
+These new boundary designs are not replacements for the detailed legacy models
+in SDUI/design/architecture.design and SDP/03--Architecture/SDPTool.design.
+The catalog records their different scopes. KB-SDP-020 retains migration work;
+KB-SDL-005 retains System and source-set language/tool work. Existing experimental
+MVP1 source remains unchanged. Installation templates are not migrated by this
+project-specific modeling decision; review template/distribution changes separately.
