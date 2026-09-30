@@ -18,3 +18,14 @@ refresh/stale selections, containment, installer preservation and consumer docs.
 This approval does not establish production package/signature, predecessor
 upgrade/public-download evidence, native XFMD watching or non-Linux execution.
 Release review and exact-candidate evidence are separate gates.
+
+## Independent release review
+
+Candidate d304261c90066a86b2d8ffcaa2115517ea339b05: approved, no unresolved
+findings. Reviewer independently reran 85 Python tests, Toolkit validator and
+four release-log checks; verified production trust/signature, descriptor, all 64
+payloads and four checksums against the clean candidate. Binary reports 2.0.0
+and exact candidate. Reviewed signed-upgrade/archive/packaged-child reports;
+those trials were not independently rerun. Root subsequently verified both CI
+jobs, real tag/release/downloaded checksums and GitHub source archive validation.
+Client review/publication is owned by external SPS-007.

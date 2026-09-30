@@ -12,11 +12,11 @@ are recorded after packaging. gh-sdp 0.2.0 is independently versioned.
 - [x] Original predecessor digests for 0.2.0/0.2.1/1.0.0 retained.
 - [x] Product tests, race/vet, language suites, 85 Toolkit tests and independent review pass.
 - [x] Six disposable development upgrades preserve Sessions, ledger and inert registration; no-op repeat passes.
-- [ ] Exact clean package, source archive, compiled-trust signature and checksums verified.
-- [ ] Repeat predecessor tests with final production-signed descriptor.
-- [ ] Exact candidate CI and release review passed; candidate tag absent.
-- [ ] Annotated tag and public assets verified by download.
-- [ ] gh-sdp final pairing, public default, independent review and client release verified.
+- [x] Exact clean package, source archive, compiled-trust signature and checksums verified.
+- [x] Repeat predecessor tests with final production-signed descriptor.
+- [x] Exact candidate CI and release review passed; candidate tag absent.
+- [x] Annotated tag and public assets verified by download.
+- [x] gh-sdp final pairing, public default, independent review and client release verified.
 - [ ] Truthful publication records and manual extension/project commands handed off.
 
 See Evidence.md and Review.md for bounded claims. Checklist completion after

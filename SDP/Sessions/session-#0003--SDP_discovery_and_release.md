@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Current local turn: **T001 — implement and release**. Current step: S2.
+Current local turn: **T001 — implement and release**. Current step: S4.
 Sequence-only chart: synthetic slots, not elapsed time or deadlines.
 
 ```mermaid
@@ -11,18 +11,18 @@ gantt
     dateFormat YYYY-MM-DD
     section Route
     DONE S1 Design :done,s1,2000-01-01,1d
-    ONGOING S2 Implement :active,s2,after s1,1d
-    PLANNED S3 Verify :s3,after s2,1d
-    PLANNED S4 Release :s4,after s3,1d
+    DONE S2 Implement :done,s2,after s1,1d
+    DONE S3 Verify :done,s3,after s2,1d
+    ONGOING S4 Release :active,s4,after s3,1d
     PLANNED S5 Handoff :s5,after s4,1d
 ```
 
 | State | Step | Work / plan | Prerequisite | Authority | Evidence |
 | --- | --- | --- | --- | --- | --- |
-| completed | S1 | P1 DS1 design/registration | KB046 owner decisions | Owner T001 | Plan created |
-| on-going | S2 | P1 DS1/DS2 implementation and client | S1 | Owner T001 | Pending |
-| planned | S3 | P1 DS3 regression, real sources, review | S2 | Owner T001 | Pending |
-| planned | S4 | P1 DS4 SDP and gh-sdp publication | S3 gates | Owner T001 | Pending |
+| completed | S1 | P1 DS1 design/plan registration | KB046 owner decisions | Owner T001 | Plan created |
+| completed | S2 | P1 DS1/DS2 implementation and client | S1 | Owner T001 | Pending |
+| completed | S3 | P1 DS3 regression, real sources, review | S2 | Owner T001 | Pending |
+| on-going | S4 | P1 DS4 SDP and gh-sdp publication | S3 gates | Owner T001 | Pending |
 | planned | S5 | P1 DS5 reconciliation/manual upgrade | S4 public verification | Owner T001 | Pending |
 
 | Field | Value |
@@ -31,7 +31,7 @@ gantt
 | Status | active |
 | Primary card | KB-SDP-046 |
 | Snapshot date | 2026-10-01 |
-| Current step | S2 |
+| Current step | S4 |
 | Execution authority | Owner requests plans, implementation and release in one turn |
 
 ## Goal
@@ -55,7 +55,7 @@ No native XFMD application/watch implementation or live XFMD upgrade here.
 | --- | --- | --- | --- | --- |
 | P1 | [PLAN-SDP-0014 ImplementationPlan](../05--Implementation/SDPTool/Discovery/Plan.md) | on-going | active | Discovery, integration, verification and release |
 | P0 | [MAINT-SDP-0011 release preparation](../Maintenance/RL1/Plan.md) | completed | completed | Historical inputs, not reopened |
-| Client | gh-sdp SPS-007, external repository | planning | External records | Immutable bootstrap, package and client release; root coordinates |
+| Client | gh-sdp SPS-007, external repository | on-going | External records | Immutable bootstrap, package and client release; root coordinates |
 
 ## Route decisions
 

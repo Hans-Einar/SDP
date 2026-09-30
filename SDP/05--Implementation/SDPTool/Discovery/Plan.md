@@ -62,8 +62,8 @@ certification of this candidate. Client SPS-007 owns its separate repository wor
 | DS1 | DS1-M1 | Plan/Session and discovery snapshot, all source roots and errors, source-owned IDs | completed |
 | DS2 | DS2-M1 | Selection/viewer/installer/docs integration, native client immutable dependency preparation | completed |
 | DS3 | DS3-M1 | Real XFMD read-only discovery, disposable upgrades, full tests and independent review | completed |
-| DS4 | DS4-M1 | Clean production package, exact-candidate CI, signed SDP release and public verified gh-sdp release | in-progress |
-| DS5 | DS5-M1 | Truthful publication reconciliation and manual upgrade instructions, Session closeout | planned |
+| DS4 | DS4-M1 | Clean production package, exact-candidate CI, signed SDP release and public verified gh-sdp release | completed |
+| DS5 | DS5-M1 | Truthful publication reconciliation and manual upgrade instructions, Session closeout | in-progress |
 
 ## Git, versions and evidence
 

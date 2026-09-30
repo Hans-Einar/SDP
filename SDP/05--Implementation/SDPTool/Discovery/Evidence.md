@@ -49,3 +49,34 @@ proof. Sessions, invalid historical navigation.json and ledger prefixes survive;
 repeat upgrade has zero actions. Fresh installation creates no navigation.json.
 Production-signed repetition and exact clean package/CI remain DS4 obligations.
 No live XFMD write occurred.
+
+## DS4-M1 — exact release candidate
+
+Candidate d304261c90066a86b2d8ffcaa2115517ea339b05 is packaged from a clean
+isolated worktree. Product code is unchanged from reviewed b999352. Release
+metadata and one historical fixture test context were corrected after the first
+CI attempt; frozen install-v1 bytes remain unchanged. Python suite again passes
+all 85 tests. The source archive gate now describes the actual Go descriptor
+contract: explicit verified commit, without requiring retired installer execution.
+
+The final production-signed descriptor is tested with the compiled publisher trust.
+Six signed predecessor upgrades (0.2.0/0.2.1/1.0.0, fresh/custom) and clean install
+pass, including Session/ledger/inert navigation preservation and zero-action repeat.
+The exact packaged signed-child test passes. The no-Git archive validates, builds
+a development descriptor with its verified commit, installs successfully and
+records that same commit. This archive trial is not a production signature claim.
+Final hashes, CI, public downloads and client evidence are reconciled after publication.
+
+Publication.json binds the real annotated tag/release, exact successful CI and
+public asset hashes. Downloaded artifacts pass all four checksum checks. The
+actual GitHub source archive also passes Toolkit validation without .git.
+Production release is published; paired client publication remains a separate
+verified operation. Linux amd64 only; native XFMD UI and non-Linux execution
+are not claimed by producer and harness tests.
+
+External SPS-007 published gh-sdp 0.2.0 from exact reviewed source72b4e04.
+Its immutable bootstrap dependency247fb7a selects SDP2.0.0. The exact final
+engine pairing, isolated gh route, fresh-cache public default (production trust),
+human/JSON version and source discovery pass. Independent client review approved;
+downloaded client bytes match the tested package. Publication.json records both
+real release identities and hashes. Global extension and live XFMD remain unchanged.
