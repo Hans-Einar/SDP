@@ -15,6 +15,13 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 	report := func(w io.Writer, e error) int { return reportMode(w, e, jsonMode) }
 	emit := func(v any) error { return presentation.Default().Write(out, v, jsonMode) }
 	if formatErr != nil {
+		selected, rest := ".", args
+		if len(rest) > 1 && !isCommand(rest[0]) {
+			selected, rest = rest[0], rest[1:]
+		}
+		if len(rest) > 0 && (rest[0] == "install" || rest[0] == "upgrade") {
+			return install.ArgumentError(selected, rest[0], jsonMode, out, errs, formatErr)
+		}
 		return report(errs, failure("arguments", formatErr))
 	}
 	if len(args) == 1 && args[0] == "--version" {

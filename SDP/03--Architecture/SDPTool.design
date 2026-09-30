@@ -594,7 +594,7 @@ OperationStore holds InstallationOperationRecords.
 OutputPresentation owns PresentCommandResult.
 OutputPresentationSlice addresses PresentCommandResult.
 OutputPresentationSlice delivers SdpTool.
-OutputPresentationSlice has implementation-status = planned.
+OutputPresentationSlice has implementation-status = implemented.
 OutputPresentationSlice refines DeliverSdpTool.
 PersistInstallationJournal allocated-to SdpToolProcess in mode InstallationExecution.
 PersistInstallationJournal allocated-to SdpToolProcess in mode InstallationRecoveryMode.

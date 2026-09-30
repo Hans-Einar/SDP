@@ -102,3 +102,30 @@ func TestReleaseLogAndInstallOutputModes(t *testing.T) {
 		}
 	}
 }
+
+func TestInstallationFormatErrorContract(t *testing.T) {
+	for _, op := range []string{"install", "upgrade"} {
+		for _, machine := range []bool{false, true} {
+			args := []string{"/project", op}
+			if machine {
+				args = append(args, "--json")
+			}
+			args = append(args, "--json=bad")
+			var out, errs bytes.Buffer
+			if code := Run(context.Background(), args, &out, &errs); code != 2 {
+				t.Fatalf("%v: exit %d", args, code)
+			}
+			if machine {
+				var v struct {
+					Schema string `json:"schemaVersion"`
+					Status string
+				}
+				if e := json.Unmarshal(out.Bytes(), &v); e != nil || v.Schema != "sdp-install-command/1" || v.Status != "error" || errs.Len() != 0 {
+					t.Fatalf("%s %s %v", &out, &errs, e)
+				}
+			} else if out.Len() != 0 || !strings.Contains(errs.String(), "arguments") {
+				t.Fatalf("%s %s", &out, &errs)
+			}
+		}
+	}
+}

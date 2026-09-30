@@ -457,13 +457,24 @@ func Bootstrap(ctx context.Context, c Config) (string, error) {
 	}
 	probe, cancel := context.WithTimeout(ctx, 10*time.Second)
 	defer cancel()
-	cmd := exec.CommandContext(probe, p, "--version")
-	cmd.Dir = dir
 	var stdout limitedBuffer
-	cmd.Stdout = &stdout
-	cmd.Stderr = io.Discard
-	if e = cmd.Run(); e != nil {
-		return "", fmt.Errorf("executable protocol probe: %w", e)
+	probeVersion := func(args ...string) error {
+		stdout.Reset()
+		cmd := exec.CommandContext(probe, p, args...)
+		cmd.Dir = dir
+		cmd.Stdout = &stdout
+		cmd.Stderr = io.Discard
+		return cmd.Run()
+	}
+	// Published legacy engines reject the output flag. Only retry a failed,
+	// read-only version probe; successful but malformed responses stay rejected.
+	if e = probeVersion("--version", "--json"); e != nil {
+		if probe.Err() != nil {
+			return "", fmt.Errorf("executable protocol probe: %w", e)
+		}
+		if e = probeVersion("--version"); e != nil {
+			return "", fmt.Errorf("executable protocol probe: %w", e)
+		}
 	}
 	var version struct {
 		Protocol string `json:"installationProtocol"`

@@ -5,7 +5,7 @@
 | id | KB-SDP-045 |
 | project | SDP |
 | type | Change |
-| CardState | in-progress |
+| CardState | completed |
 | PlanId | PLAN-SDP-0013 |
 | created | 2026-09-30 |
 | source | Owner CLI output proposal and Bash prototype clarification |
@@ -34,3 +34,9 @@ installation output, bootstrap probe and compiled consumer tests.
 [Session 0002](../../Sessions/session-%230002--SDPTool_output.md) records the goal, roadmap, turns and handoff.
 It was registered after implementation began, following the owner correction;
 retrospective entries are explicitly labeled.
+
+2026-10-01: OP1/OP2 delivered and independently reviewed. Native Go tree and
+explicit JSON are verified, including the actual XFMD inventory read-only and
+test-signed executable installation. Session 0002 records late registration,
+review corrections and the separate discovery gap. KB046 retains that new scope;
+KB044 retains publication and client rollout gates. No live install or release.

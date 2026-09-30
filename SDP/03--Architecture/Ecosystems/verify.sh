@@ -18,7 +18,7 @@ mkdir "$output/bin"
 "$go_tool" version > "$output/toolchain.txt"
 git -C "$repo_root" rev-parse HEAD > "$output/source-commit.txt"
 sha256sum "$output/bin/sdl" "$output/bin/sdptool" > "$output/tool-hashes.txt"
-"$output/bin/sdptool" "$repo_root" discover > "$output/discovery.json"
+"$output/bin/sdptool" "$repo_root" discover --json > "$output/discovery.json"
 jq -e '.status == "valid" or .status == "recognized"' "$output/discovery.json" >/dev/null
 registration="$repo_root/SDP/navigation.json"
 jq -e '[.models[].id] | length == (unique | length)' "$registration" >/dev/null
@@ -33,10 +33,10 @@ while IFS=$'\t' read -r model_id model_source; do
   "$output/bin/sdl" ast "$repo_root/$model_source" > "$model_dir/ast.json"
   "$output/bin/sdl" format "$repo_root/$model_source" > "$model_dir/canonical.design"
   "$output/bin/sdl" check "$model_dir/canonical.design" > "$model_dir/canonical-check.json"
-  "$output/bin/sdptool" "$repo_root" tree --model "$model_id" > "$model_dir/tree.json"
+  "$output/bin/sdptool" "$repo_root" tree --json --model "$model_id" > "$model_dir/tree.json"
   selection_uri=$(jq -er '[.nodes[] | select(.kind == "diagram" and .target.operation == "select")][0].target.uri' "$model_dir/tree.json")
   selection_revision=$(jq -er '.revision' "$model_dir/tree.json")
-  "$output/bin/sdptool" "$repo_root" select --model "$model_id" --uri "$selection_uri" --revision "$selection_revision" --output "$model_dir/selected" > "$model_dir/selected.json"
+  "$output/bin/sdptool" "$repo_root" select --json --model "$model_id" --uri "$selection_uri" --revision "$selection_revision" --output "$model_dir/selected" > "$model_dir/selected.json"
   test -s "$model_dir/selected/entry.md"
   "$output/bin/sdl" viewpoints "$repo_root/$model_source" --output "$model_dir/views" --format static --viewpoint "${SDP_VIEWPOINTS:-VP01,VP02,VP06,VP08}" > "$model_dir/export.json"
   source_hash=$(sha256sum "$repo_root/$model_source" | cut -d ' ' -f 1)

@@ -126,3 +126,9 @@ func output(out, errs io.Writer, jsonMode bool, root, op string, result any, e e
 	}
 	return exit
 }
+
+// ArgumentError preserves the installation command's error envelope and exit
+// contract when the outer CLI rejects a shared output-selection option.
+func ArgumentError(root, op string, jsonMode bool, out, errs io.Writer, err error) int {
+	return output(out, errs, jsonMode, root, op, nil, fail("arguments", 2, "%v", err))
+}

@@ -4,7 +4,7 @@
 | --- | --- |
 | id | PLAN-SDP-0013 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | ImplementationPlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
@@ -46,7 +46,7 @@ Published SDP remains 1.0.0; no manifest/tag/publication change is performed her
 | Phase | Milestone | Acceptance | State |
 | --- | --- | --- | --- |
 | OP1 | OP1-M1 | Go render routing, tree, explicit JSON and local machine consumers; command and renderer tests | completed |
-| OP2 | OP2-M1 | Bootstrap compatibility, documentation/model, independent review and truthful handoff | in-progress |
+| OP2 | OP2-M1 | Bootstrap compatibility, documentation/model, independent review and truthful handoff | completed |
 
 ## Git and verification
 
@@ -82,7 +82,7 @@ Go 1.27.1 on Linux amd64; GOMAXPROCS=2 and -p 2. No production release.
   the subsequent Session registration. Revalidate final records at closeout.
 
 OP1-M1 delivers the output layer. Bootstrap changes are staged separately for
-OP2-M1; final combined evidence and independent review remain pending.
+OP2-M1; final combined evidence and independent review are recorded below.
 
 ## Consumer rollout handoff
 
@@ -104,3 +104,31 @@ Release/client rollout remains separate under KB044. The manual release guide's
 [Session 0002](../../../Sessions/session-%230002--SDPTool_output.md) records the goal, roadmap, turns and handoff.
 It was registered after implementation began, following the owner correction;
 retrospective entries are explicitly labeled.
+
+## OP2 review and final verification
+
+Independent Reviewer /root/output_review initially requested two fixes: an
+existing ecosystem verification script still read implicit JSON, and shared
+format-argument failures bypassed installation exit/report ownership. Both were
+fixed. The reviewer's follow-up approved the bounded product changes and focused
+tests. Correction to the initial review: Go's malformed bool parsing reset the
+old JSON flag; this implementation retains the last valid explicit output mode
+while restoring install/upgrade exit 2 and installation-domain reporting.
+
+Final candidate: OP1 commit 61bca4c plus OP2 consumer/probe/error-report repairs
+and closeout records; the OP2 commit binds the exact diff. Validation:
+
+- Root module tests pass after repairs; bootstrap tests and protocol fixtures pass.
+- Rebuilt candidate passes TestPackagedSignedInstall with SDP_TEST_BINARY set:
+  real executable is hash/signature checked, probed, then previews/applies to a
+  temporary project. This uses an ephemeral test signer, not a production release.
+- Ecosystems/verify.sh passes all 18 registered ecosystem models after its three
+  machine invocations gained --json. Evidence: /tmp/sdp-ecosystems.A2jgmc; this
+  is temporary local evidence, not a committed generated-document authority.
+- Existing generated release logs verify unchanged (3 logs).
+- Final model check passes with no diagnostics; management validation passes with
+  57 cards, 29 management records and 437 events at closeout.
+
+Owner discovery report during closeout is separate scope: KB-SDP-046 records
+source-aware discovery/multi-system tree work. No new discovery behavior is
+silently added to this presentation delivery. Session 0002 preserves the route.

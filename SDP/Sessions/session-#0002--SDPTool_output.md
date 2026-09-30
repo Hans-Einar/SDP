@@ -2,8 +2,10 @@
 
 ## Session roadmap
 
-Latest recorded local turn: **T002 — restore Session tracking**.
-Current work: **S3 verification and consumer handoff**. Next: S4 closeout.
+Latest recorded local turn: **T004 — manual registration instructions**.
+**Presentation goal completed; S1–S4 are complete.**
+Recommended separately selected next work: KB046, source discovery and
+multi-system navigation. It is registered in backlog, not started.
 
 **Sequence only.** Dates are synthetic placement slots, not measured turns,
 deadlines or elapsed time. This manual table is authoritative for the projection;
@@ -16,25 +18,25 @@ gantt
     section Route
     DONE S1 Scope and plan :done, s1, 2000-01-01, 1d
     DONE S2 Go presentation :done, s2, after s1, 1d
-    ONGOING S3 Verify and handoff :active, s3, after s2, 1d
-    NEXT S4 Closeout :s4, after s3, 1d
+    DONE S3 Verify and handoff :done, s3, after s2, 1d
+    DONE S4 Closeout :done,s4, after s3, 1d
 ```
 
 | State | Step | Work / plan milestone | Prerequisites | Authority | Evidence / outcome |
 | --- | --- | --- | --- | --- | --- |
 | completed | S1 | P1 scope, design and registration | Owner output proposal and Bash clarification | Owner request | KB045, PLAN-SDP-0013; Session created late with explicit provenance |
 | completed | S2 | P1 OP1-M1: Go registry, human tree, explicit JSON | S1 | Same requested implementation | Root-module tests pass; machine consumers explicitly request JSON |
-| on-going | S3 | P1 OP2-M1: compatibility, review and documentation | S2 | Same bounded implementation | Bootstrap old/new probe tests and SDL model check pass; independent review and platform checks pending |
-| next | S4 | P1 OP2-M1: record evidence, commits and handoff | S3 | Existing milestone commit/phase push authorization | No merge, release, installation or XFMD application changes |
+| completed | S3 | P1 OP2-M1: compatibility, review and documentation | S2 | Same bounded implementation | Bootstrap old/new probe tests and SDL model check pass; independent review approved after two repairs; presentation package cross-compiles for Windows/macOS |
+| completed | S4 | P1 OP2-M1: record evidence, commits and handoff | S3 | Existing milestone commit/phase push authorization | OP1 61bca4c; OP2 commit contains final evidence. No merge, release or live installation |
 
 | Field | Value |
 | --- | --- |
 | Session reference | SESSION-SDP-0002 (manual convention) |
-| Status | active |
-| Primary card | [KB-SDP-045](../KanBan/active/%23045--Change--Portable-SDPTool-presentation.md) |
-| Snapshot date | 2026-09-30 |
-| Current step | S3 |
-| Proposed next step | S4 after review findings and checks are resolved |
+| Status | completed |
+| Primary card | [KB-SDP-045](../KanBan/completed/%23045--Change--Portable-SDPTool-presentation.md) |
+| Snapshot date | 2026-10-01 |
+| Current step | None |
+| Proposed next step | Separate KB046 plan, if selected |
 | Execution authority | Owner request for default readable Go output and explicit --json |
 
 ## Goal
@@ -55,15 +57,16 @@ not invented states at the unrecorded beginning of the conversation.
 
 | Card | Role | Initial lifecycle / CardState | Planned final disposition | Current snapshot | Actual final disposition |
 | --- | --- | --- | --- | --- | --- |
-| [KB045](../KanBan/active/%23045--Change--Portable-SDPTool-presentation.md) | Primary delivery | active / in-progress | completed after implementation/review evidence | active / in-progress | Pending |
+| [KB045](../KanBan/completed/%23045--Change--Portable-SDPTool-presentation.md) | Primary delivery | active / in-progress | completed after implementation/review evidence | completed | completed |
 | [KB044](../KanBan/active/%23044--Change--Sessions-and-repeatable-release-preparation.md) | Release preparation context | active / gate-review | Retain concrete preparation review; update version/consumer handoff | active / gate-review | Pending owner publication disposition; outside this delivery |
+| [KB046](../KanBan/backlog/%23046--Change--Source-discovery-and-multiple-system-navigation.md) | Discovered successor | backlog at T003 registration | Separate discovery delivery if selected | backlog | Pending, outside presentation delivery |
 | [KB042](../KanBan/backlog/%23042--Proposal--Goal-oriented-sessions-and-roadmaps.md) | Manual Session format and future automation | backlog | Retain automation scope in backlog | backlog | Outside delivery |
 
 ## Plan register
 
 | Ref | Plan type and document | Document readiness | Canonical lifecycle | Dependencies | Outcome / evidence |
 | --- | --- | --- | --- | --- | --- |
-| P1 | [PLAN-SDP-0013 — ImplementationPlan](../05--Implementation/SDPTool/Output/Plan.md) | on-going | active | Owner output contract; existing result schemas | OP1 implemented/tested; OP2 verification and handoff continue |
+| P1 | [PLAN-SDP-0013 — ImplementationPlan](../05--Implementation/SDPTool/Output/Plan.md) | completed | completed | Owner output contract; existing result schemas | OP1/OP2 evidence and independent review recorded in P1 |
 | P0 | [MAINT-SDP-0011 — MaintenancePlan](../Maintenance/RL1/Plan.md) | completed | completed | Prior release preparation, not reopened | Historical evidence remains valid for its candidate; new output scope changes release proposal |
 
 ## Route changes and decisions
@@ -73,6 +76,7 @@ not invented states at the unrecorded beginning of the conversation.
 | 2026-09-30 / T001 | JSON by default; shell prototype for tree display | Go output adapter with explicit machine mode | Owner proposal and clarification | S1–S3, KB045 |
 | 2026-09-30 / T001 | Additive release preparation proposed 1.1.0 | Proposed combined 2.0.0 because default stdout is a public breaking change | Existing version contract applied to requested change; publication not authorized here | S3, KB044 |
 | 2026-09-30 / T002 | Card and plan existed without Session | Restore missing overview and record late capture explicitly | Owner correction | All steps; no new implementation scope |
+| 2026-10-01 / T003 | Output rendering in scope | Record source discovery and multi-system tree gap separately as KB046 | Owner symptom report; no discovery implementation selected | S3–S4, KB046 |
 
 ## Turn journal
 
@@ -130,9 +134,84 @@ Verbatim assistant commentary, not a final response:
 Work in progress: created this Session with roadmap first, initial/current/final
 card snapshots, plan register, route changes, retrospective provenance and turn
 journal. Linked it from the card and plan. Continue S3–S4 under the original scope.
-Assistant final response: not yet available for exact capture.
+Assistant final response: none occurred before the next steering message.
+The Session/plan links and ledger update were committed in OP1-M1 (61bca4c).
+Independent review identified a missed machine invocation in the ecosystem
+verification script and an installation argument-error regression. Both were
+fixed and independently rechecked. The reviewer corrected its own initial claim
+about the old malformed-flag output stream; P1 preserves that correction.
+
+### T003 — existing source files absent from navigation
+
+- Capture mode: exact question excerpt below; terminal output summarized explicitly.
+- Host turn/item IDs and exact timestamps: unavailable. Local date: 2026-10-01.
+- Request category: explain reported discovery behavior and analyze capability gap.
+- Routine ID/version/run: unavailable; existing SDP change-analysis workflow reused.
+- Steps touched: S3 diagnosis and S4 successor registration. No discovery implementation.
+
+Verbatim owner question excerpt (Norwegian source quotation):
+
+> vil den nye versjonen av sdptool nå oppdage og forstå SDP/SDL/ med både single og multiple systems?  det ser ikke ut som hverken  discover eller tree finner SDL og SDUI kode i xfmd
+
+The accompanying terminal printout showed published installation 1.0.0, empty
+models/sdui registration arrays, source files under SDP/SDL/XFMD and absent SDL/
+SDUI tree tabs. This paragraph summarizes that supplied output, not a full copy.
+
+Read-only findings: discovery derives capabilities from navigation.json; directory
+presence is not an input. Tree selects one registered SDL model. Unreleased 0.6
+supports one System per composed source graph, not a merged multi-System graph.
+XFMD's README identifies XfmdDesktop.design/Desktop.sdui as current sources and
+the two Navigation files as historical fixtures, which rules out blind promotion
+of all matching file extensions.
+
+Experiment: copied XFMD sources into /tmp/sdp-xfmd-registration-geax5d3s and
+registered only the current inputs there. Discover declares SDL/SDUI and tree
+returns 2454 nodes: SDL validated, SDUI available, with multiple SDUI frame entries.
+The live project is unchanged. These temporary files are supplementary evidence;
+canonical observations and scope are captured in
+[KB046](../KanBan/backlog/%23046--Change--Source-discovery-and-multiple-system-navigation.md).
+
+Assistant work summary, not an exact final response: explained the registration
+boundary, distinguished single-System composition from multiple registered models,
+and registered discovery/aggregate navigation as separate backlog work. The
+presentation implementation is complete, not expanded into discovery by this turn.
+Final assistant response is not yet available to this manual writer.
+
+### T004 — owner requests a manual registration command
+
+- Capture: exact observed prompt; proposed response summarized, not claimed sent.
+- Local date: 2026-10-01; host IDs/timestamps unknown.
+- Category: usage guidance following the discovery diagnosis, no new execution scope.
+- Existing SDP analysis context reused; no enforced routine run claimed.
+
+Verbatim owner prompt (Norwegian source quotation):
+
+> ok hvordan skal de registeres? når de kompileres? gir du meg kommando så kan jeg prøve manuelt
+
+Prepared guidance: registration is currently explicit navigation.json configuration,
+not compiler output; no register command exists. Supply an atomic jq update with
+backup, retaining unrelated fields and other model IDs. Register current XFMD
+0.5 SDL input as xfmd, SDUI 0.2 Desktop.sdui as desktop, and select defaultModel xfmd.
+The jq transformation was tested into /tmp/xfmd-proposed-navigation.json without
+changing the live file. Existing published 1.0.0 commands still default to JSON;
+future presentation clients must add --json when piping to jq. The owner performs
+the actual project edit and trial; no success for that trial is claimed here.
+This follow-up does not reopen the completed presentation implementation.
 
 ## Closeout
 
-Pending S3–S4. Published SDP remains 1.0.0. No claim that the user's installed
-`gh sdp tree` has changed or that release 2.0.0 exists.
+Goal delivered: platform-independent Go presentation, explicit machine JSON,
+registry fallback, tested tree and consumer migration within this repository.
+OP1 commit is 61bca4c; OP2 commit contains remaining repairs and this closeout.
+P1 links root/bootstrap tests, 18-model ecosystem verification, a test-signed real
+child install, cross-compilation and independent review. KB045 is completed.
+KB044 remains gate-review for the preparation package and later publication
+selection, including new client gates. KB042 remains backlog for capture automation.
+
+KB046 starts in backlog and remains backlog: its proposed final outcome is a
+separately selected discovery/navigation delivery, with no final disposition yet.
+It is a discovered successor, not unfinished presentation scope. No new Session
+or execution plan for that successor is selected by this closeout.
+
+Published SDP remains 1.0.0. The installed gh-sdp command has not been changed and
+release 2.0.0 is only a recommendation for the combined breaking change.

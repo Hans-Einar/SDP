@@ -32,7 +32,7 @@ MAINT-SDP-0011 preparation is completed and independently reviewed. See its
 [checklist](../../Maintenance/RL1/ReleaseChecklist.md) and
 [evidence](../../Maintenance/RL1/Evidence.md). Requested decision: review the completed preparation package. The additive
 1.1.0 publication proposal is superseded by the output compatibility change in
-[KB045](%23045--Change--Portable-SDPTool-presentation.md); its plan recommends
+[KB045](../completed/%23045--Change--Portable-SDPTool-presentation.md); its plan recommends
 2.0.0 and requires explicit JSON machine clients before a new release candidate.
 Integration/publication remains separately selected.
 The latest published product is still 1.0.0. This gate-review awaits that concrete
