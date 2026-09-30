@@ -31,7 +31,7 @@ not optimized dependency-selective semantic recompilation or runtime hot reload.
 | Phase | Milestone | Observable acceptance | State |
 | --- | --- | --- | --- |
 | SSI0 | SSI0-M1 (S2) | Plan, scope, original/updated acceptance and card activation | completed |
-| SSI1 | SSI1-M1 (S3) | Go syntax, pure file-AST cache, source graph, validation and CLI with original spans; cycles/late root/negative tests | planned |
+| SSI1 | SSI1-M1 (S3) | Go syntax, pure file-AST cache, source graph, validation and CLI with original spans; cycles/late root/negative tests | completed |
 | SSI2 | SSI2-M1 (S3) | Same checked result in views, broker and SDPTool; aggregate revision, source maps and stale/output guards; consumer tests | planned |
 | SSI3 | SSI3-M1 (S4–S5) | Bounded real-model workflow, regressions, independent review, documentation and truthful Session/card dispositions | planned |
 

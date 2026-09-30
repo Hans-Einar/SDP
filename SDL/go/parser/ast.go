@@ -9,12 +9,13 @@ import (
 )
 
 type Span struct {
-	Start     int `json:"start"`
-	End       int `json:"end"`
-	Line      int `json:"line"`
-	Column    int `json:"column"`
-	EndLine   int `json:"end_line"`
-	EndColumn int `json:"end_column"`
+	Source    string `json:"source,omitempty"`
+	Start     int    `json:"start"`
+	End       int    `json:"end"`
+	Line      int    `json:"line"`
+	Column    int    `json:"column"`
+	EndLine   int    `json:"end_line"`
+	EndColumn int    `json:"end_column"`
 }
 type Identifier struct {
 	Name string
@@ -37,6 +38,8 @@ type Declaration struct {
 // Statement is a closed sum: Kind selects its typed fields. Data emits the
 // original named AST node form, preserving argument source spans.
 type Statement struct {
+	Path                                                                                                      string
+	PathSpan                                                                                                  Span
 	Kind                                                                                                      string
 	Subject, Object, Interface, Mode, Container, Dataset, Datagram, Field, Channel, Message, Sender, Receiver Identifier
 	Verb, Property, Value, Role                                                                               string
@@ -45,7 +48,13 @@ type Statement struct {
 	ReplyTo                                                                                                   *Integer
 	Span                                                                                                      Span
 }
+type Include struct {
+	Path string
+	Span Span
+}
+
 type Model struct {
+	Includes     []Include
 	Header       Header
 	Declarations []Declaration
 	Statements   []Statement
@@ -57,8 +66,15 @@ type Diagnostic struct {
 }
 
 func (d Diagnostic) Error() string {
-	return fmt.Sprintf("%s at %d:%d: %s", d.Code, d.Span.Line, d.Span.Column, d.Message)
+	return fmt.Sprintf("%s at %s%d:%d: %s", d.Code, sourcePrefix(d.Span.Source), d.Span.Line, d.Span.Column, d.Message)
 }
+func sourcePrefix(s string) string {
+	if s != "" {
+		return s + ":"
+	}
+	return ""
+}
+
 func Symbols(m *Model) map[string]Declaration {
 	out := map[string]Declaration{}
 	for _, d := range m.Declarations {
@@ -72,7 +88,11 @@ func (s Statement) Sentence() string {
 	a := s.Subject.Name
 	switch s.Kind {
 	case "Relation":
-		return a + " " + s.Verb + " " + s.Object.Name + "."
+		target := s.Object.Name
+		if s.Path != "" {
+			target = s.Path
+		}
+		return a + " " + s.Verb + " " + target + "."
 	case "Dependency":
 		return a + " requires " + s.Interface.Name + " in mode " + s.Mode.Name + "."
 	case "Allocation":
@@ -103,11 +123,21 @@ func Canonical(m *Model) (string, []Diagnostic) {
 	if len(d) > 0 {
 		return "", d
 	}
+	return FormatFile(m), nil
+}
+
+// FormatFile formats syntax only. Complete-model validation belongs to the caller.
+func FormatFile(m *Model) string {
 	decl := append([]Declaration{}, m.Declarations...)
 	sort.Slice(decl, func(i, j int) bool { return decl[i].Name.Name < decl[j].Name.Name })
-	lines := []string{"language design-core version 0.5."}
+	lines := []string{"language design-core version " + m.Header.Version + "."}
 	for _, d := range decl {
 		lines = append(lines, d.Kind+" "+d.Name.Name+".")
+	}
+	inc := append([]Include{}, m.Includes...)
+	sort.Slice(inc, func(i, j int) bool { return inc[i].Path < inc[j].Path })
+	for _, i := range inc {
+		lines = append(lines, fmt.Sprintf("includes %q.", i.Path))
 	}
 	facts := []string{}
 	for _, s := range m.Statements {
@@ -115,5 +145,5 @@ func Canonical(m *Model) (string, []Diagnostic) {
 	}
 	sort.Strings(facts)
 	lines = append(lines, facts...)
-	return strings.Join(lines, "\n") + "\n", nil
+	return strings.Join(lines, "\n") + "\n"
 }
