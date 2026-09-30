@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded local turn: **T006 — remove navigation.json authority**.
+Latest recorded local turn: **T007 — discovery snapshot and viewer refresh**.
 **Presentation goal completed; S1–S4 are complete.**
 Recommended separately selected next work: KB046, source discovery and
 multi-system navigation. It is registered in backlog, not started.
@@ -248,6 +248,25 @@ from navigation. No replacement registry or required current/historical annotati
 Implementation remains unstarted; this refines the successor card, not completed
 presentation PLAN-SDP-0013. No product code, live registration or XFMD source was
 changed. The previous generated-file recommendation is explicitly superseded.
+
+### T007 — viewer-owned discovery buffer and filesystem refresh
+
+- Local date: 2026-10-01. Capture: exact owner prompt below, manual work summary.
+  Host turn IDs/timestamps are unavailable; no final response is captured yet.
+- Category: owner selection of successor KB046 responsibility boundaries. Existing
+  SDP analysis/architect context reused; no new implementation work selected.
+
+Verbatim owner prompt (Norwegian source quotation):
+
+> discover kommandoen skal da gjøre en discover av SDP folderen og returnere discovered info. da kan en viewer gjøre discover og lagre navigasjons json internt som en buffer og så burde den overvåke filsystemet under SDP og trigge en refresh, altså kjøre gh sdp . discover en gang til når noe endrer seg, eller at vi manuelt trykker en refresh. Det er fornuftig måte å gjøre det på
+
+Selected direction recorded in KB046: discover is a finite SDP-area inspection
+returning information; the viewer owns the in-memory JSON buffer, filesystem
+watcher and automatic/manual refresh. Machine callers use --json under the new
+presentation contract. No required navigation file, producer daemon or producer
+watcher. Request ordering, save-event coalescing and visible stale/error handling
+are recorded as implementation recommendations. Neither SDPTool discovery changes
+nor native XFMD watcher changes are implemented by this documentation update.
 
 ## Closeout
 

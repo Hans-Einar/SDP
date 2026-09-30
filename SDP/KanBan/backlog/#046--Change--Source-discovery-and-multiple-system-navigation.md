@@ -154,3 +154,36 @@ available while such a semantic selection is unresolved.
 This is recorded owner direction plus architectural recommendations. Product
 implementation remains unstarted; a bounded plan and new execution Session should
 own that successor rather than reopening completed presentation PLAN-SDP-0013.
+
+## Selected discovery and viewer ownership — 2026-10-01
+
+Owner decision: discover inspects the SDP area and returns discovered information.
+It is a finite request/response operation, not a watcher or daemon, and does not
+write a project navigation.json. Its scope is the SDP area, including supported
+process/navigation information as well as SDL/SDUI sources; it is not only a source
+file search. Discovery reports observations/diagnostics, not whole-project proof.
+
+A viewer requests `gh sdp . discover --json` (explicit machine mode under the new
+output contract), keeps the returned navigation data in its own memory buffer,
+and presents that result. It owns filesystem watching beneath the selected SDP
+area and issues another discovery request on changes or manual Refresh. No
+persistent sidecar or prior registration command is required. The human command
+without --json uses the existing presentation layer on the same result.
+
+Derived/recommended refresh details for the implementation plan:
+
+- Watch creation, deletion, rename and content changes, including new directories.
+  Coalesce bursts of saves rather than starting a discovery for each event.
+- A change during an in-flight request schedules a subsequent refresh. Track
+  request/project identity so a late response cannot overwrite a newer buffer or
+  a different project's navigation. Buffer replacement is performed as one update.
+- A failed refresh remains visible as an error; a retained prior buffer must be
+  marked stale. Per-entry source diagnostics remain browsable rather than hiding
+  unrelated entries. A filesystem scan is not claimed to be an atomic snapshot.
+- Manual Refresh works independently of watcher availability. Rendering output
+  must not create a self-sustaining refresh loop; select output locations and
+  event filtering deliberately without hiding authored-source changes.
+
+These mechanics are implementation recommendations derived from the selected
+ownership, not claims that watcher behavior exists. Native XFMD integration belongs
+to its own workstream; SDPTool owns the bounded discovery response and its tests.
