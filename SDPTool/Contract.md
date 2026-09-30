@@ -3,6 +3,32 @@
 This is the implemented local facade contract, not a new Toolkit release.
 Go language packages own parsing, validation, projection and presentation.
 
+## Output presentation
+
+All result-producing operations default to human-readable output. Add `--json`
+for the machine contract; output does not switch implicitly when piped. This is
+an intentional CLI compatibility break relative to published SDP 1.0.0. Clients
+must opt in, including version probes. Help remains text.
+
+`presentation.Registry` routes serialized results by schema and operation to
+compiled-in Go adapters. The CLI retains operation/exit/stream ownership. No
+Bash, jq, external formatter, dynamic plugin loader or shell process is required.
+Unknown routes retain JSON bytes; `--json` bypasses adapters. A renderer failure
+is an error, never a partially printed result followed by fallback JSON.
+Tree rendering preserves inventory order, shows state and references, stops at
+cycles/depth bounds, and escapes terminal controls in labels. Registered general
+results render a deterministic field hierarchy. Installation keeps its summary
+and existing error streams. Generated document/image files are unchanged.
+
+Use `sdptool tree --json`, `sdptool --version --json`, or global
+`sdptool --json PROJECT tree`. String option values (including a literal
+`--json`) remain values. Required positionals still precede command flags;
+`preview FILE --json` is valid. `--json=false` selects readable output.
+`release-log --version VERSION` still exports Markdown; with `--json` it emits
+an envelope containing that Markdown. Generation/check mode emits a receipt.
+
+See the [plan and consumer handoff](../SDP/05--Implementation/SDPTool/Output/Plan.md).
+
 ## Saved design preview
 
 ```sh
@@ -12,8 +38,8 @@ sdptool preview model.design --output /tmp/request-detail --viewpoint VP01
 sdptool preview model.design --output /tmp/request-detail --uri 'sdl-view://project/VP02?diagram=VP02-roots&target=main&consumer=xfmd' --revision SOURCE_SHA256
 ```
 
-Source precedes flags. The current input profile is SDL design-core/0.5 with its
-canonical-source validation; unsupported language/profile input returns the
+Source precedes flags. Supported structural profiles are SDL design-core/0.5 and source-composed
+design-core/0.6 with canonical-source validation; unsupported language/profile input returns the
 language diagnostic. Class/action/SDUI inputs are not structural design previews.
 No SDP folder is required. Default selection is one nonempty diagram, preferring
 architecture then use cases/responsibilities; an empty model uses VP11. Explicit
@@ -21,14 +47,14 @@ selections retain SDL's query validation and depth bound (0–8). A request acce
 at most 24 diagrams, 128 files and 32 MiB of generated resources; larger requests
 must select a diagram/focus. No automatic full export occurs.
 
-Stdout is one JSON result with schema sdptool/0.1, operation, source, profile,
+With --json, stdout is one JSON result with schema sdptool/0.1, operation, source, profile,
 revision (SHA-256 of exact source bytes), entry, directory and ownership. The
 bundle reuses SDL entry.md, diagrams/*.mmd, optional diagrams/*.svg, selection.json,
 manifest.json and delivery.txt; sdptool.json records facade provenance. SVG uses
 SDL's symbols and existing Rust renderer geometry. Without a renderer, Markdown
 contains Mermaid fences. Renderers are prebuilt programs supplied by the host.
 
-Errors return nonzero and one JSON error on stderr (schema, error.code/message
+Errors return nonzero; with --json they emit one JSON error on stderr (schema, error.code/message
 and positioned language diagnostic when available). Codes include arguments,
 source, model, selection, tool, render, output, stale, canceled and limit.
 Caller cancellation and stale expected/source-during-generation revisions prevent
@@ -95,10 +121,10 @@ does not change strict 1.0 manifest schemas; the versioned installer uses explic
 
 | Invocation | Result and ownership |
 | --- | --- |
-| sdptool [PROJECT-OR-SDP-AREA] discover | JSON recognition and declared capabilities; read-only |
+| sdptool [PROJECT-OR-SDP-AREA] discover | Recognition and declared capabilities; read-only |
 | sdptool preview FILE --output DIR | Standalone saved-file operation above |
 | sdptool [PATH] view ip --model ID | Open the registered authored plan with generated navigation in the configured viewer |
-| sdptool [PATH] tree --model ID | JSON navigation inventory; no detail rendering or writes |
+| sdptool [PATH] tree --model ID | Navigation inventory; no detail rendering or writes |
 | sdptool [PATH] select --model ID --uri URI --revision HASH --output DIR | Validate project binding/revision, then generate selected current-source detail |
 | sdptool [PATH] sdui-preview --model ID --output DIR | Only the implemented, registered SDUI service selected in T3 |
 
@@ -227,14 +253,14 @@ Metadata remains limited to 1 MiB per file; operation journals have a separate
 Unsupported journal states/identities are errors. No discovery call resumes or
 repairs an installation.
 
-sdptool --version returns JSON build version/revision and installedFactSchemas.
+sdptool --version --json returns JSON build version/revision and installedFactSchemas.
 A consumer requiring profile 2.0 should check that array before invoking discovery.
 A source build is marked unknown or dirty when exact committed provenance is
 unavailable; it is never advertised as a published Toolkit release.
 
 package.sh NEW_OUTPUT_DIRECTORY is a maintainer-only native build. It emits a
 prebuilt sdptool, its version/capability manifest and SHA256SUMS. Select a Go
-compiler with SDP_GO when needed. Verify checksums and --version before putting
+compiler with SDP_GO when needed. Verify checksums and --version --json before putting
 the executable on the host's configured PATH. The package does not modify PATH,
 overwrite an existing destination, install a viewer or build during viewing.
 The Go installation engine now owns the new install/upgrade path. The separate

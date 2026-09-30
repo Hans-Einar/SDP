@@ -156,3 +156,16 @@ versioned section of RELEASE-NOTES.md. Use --version X.Y.Z for one release and
 --check to validate existing output without writes. Existing differing logs are
 never overwritten. Unreleased content stays in canonical notes until release
 preparation freezes it. See [ReleaseChecklist](../Toolkit/docs/ReleaseChecklist.md).
+
+## Portable output
+
+`sdptool tree` prints the navigation tree directly. `gh sdp tree` forwards to
+that renderer when its selected engine includes this change. No json-tree.sh
+filter or shell runtime is needed. `--json` retains machine-readable data for
+XFMD, scripts and other clients. This checkout is not a published engine update.
+
+The `presentation` Go package contains compiled-in adapters keyed by schema and
+operation. Add an adapter to the registry for a new result; unknown routes remain
+JSON. Human presentation does not change generated Markdown/SVG bundles.
+See [output contract](Contract.md#output-presentation) and
+[rollout requirements](../SDP/05--Implementation/SDPTool/Output/Plan.md).

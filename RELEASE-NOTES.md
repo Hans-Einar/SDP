@@ -10,9 +10,14 @@ Release-Date: unreleased
 - [MAINT-SDP-0011] Manual Sessions guide/template are included in installation, with sdp.sessions.manual.v1 capability and preservation of existing project Sessions. Automatic transcript capture and event timelines remain separate work.
 - [MAINT-SDP-0011] sdptool release-log generates immutable per-version Markdown from canonical release notes, with check mode. ReleaseChecklist covers inventories, predecessor descriptors, signed artifacts and consumer readiness.
 
+### Changed
+
+- [PLAN-SDP-0013] Go SDPTool renders readable command output by default, including the navigation tree. --json explicitly preserves machine schemas; compiled-in adapters need no shell formatter. Machine consumers must opt in.
+
 ### Migration
 
-- [MAINT-SDP-0011] Next proposed SDP product version is 1.1.0; SDL 0.6 is a language profile. The candidate declares the published 1.0.0 descriptor as an additional supported predecessor. Publication and a gh-sdp default update are not yet performed.
+- [PLAN-SDP-0013] The default CLI output change is incompatible with existing implicit JSON clients. The next combined candidate is proposed as 2.0.0 under the current version contract, superseding the earlier additive 1.1.0 proposal. Update gh-sdp bootstrap and XFMD machine invocations before rollout. No new release is published.
+- [MAINT-SDP-0011] The earlier additive preparation proposed SDP 1.1.0; SDL 0.6 is a language profile. The candidate declares the published 1.0.0 descriptor as an additional supported predecessor. Publication and a gh-sdp default update are not yet performed.
 
 ## [1.0.0] - 2026-09-28
 

@@ -44,7 +44,7 @@ func TestDiscoveryRootsAndNoParentGuess(t *testing.T) {
 		t.Fatal("guessed parent")
 	}
 	var out, errs bytes.Buffer
-	if Run(context.Background(), []string{root, "discover"}, &out, &errs) != 0 {
+	if Run(context.Background(), []string{root, "discover", "--json"}, &out, &errs) != 0 {
 		t.Fatal(errs.String())
 	}
 	if !strings.Contains(out.String(), `"installation":{"state":"unknown"}`) {

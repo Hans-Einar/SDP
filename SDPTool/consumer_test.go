@@ -25,7 +25,7 @@ func TestExecutableConsumerJourney(t *testing.T) {
 		t.Helper()
 		ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 		defer cancel()
-		c := exec.CommandContext(ctx, binary, args...)
+		c := exec.CommandContext(ctx, binary, append([]string{"--json"}, args...)...)
 		var out, errs bytes.Buffer
 		c.Stdout = &out
 		c.Stderr = &errs

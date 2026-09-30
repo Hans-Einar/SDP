@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"flag"
 	"fmt"
+	"github.com/Hans-Einar/SDP/SDPTool/presentation"
 	"io"
 	"os"
 	"path/filepath"
@@ -87,15 +88,15 @@ func ReleaseLogs(notes string) (map[string][]byte, error) {
 	return logs, nil
 }
 
-func releaseLog(root string, args []string, out, errs io.Writer) int {
+func releaseLog(root string, args []string, out, errs io.Writer, jsonMode bool) int {
 	fs := flag.NewFlagSet("release-log", flag.ContinueOnError)
-	fs.SetOutput(errs)
+	fs.SetOutput(io.Discard)
 	version := fs.String("version", "", "release section, e.g. 1.1.0")
 	notes := fs.String("notes", "RELEASE-NOTES.md", "canonical notes, relative to selected root")
 	output := fs.String("output", "", "output file (or directory with --all)")
 	all := fs.Bool("all", false, "all versioned sections")
 	check := fs.Bool("check", false, "compare existing output without writes")
-	fail := func(e error) int { return report(errs, failure("release-log", e)) }
+	fail := func(e error) int { return reportMode(errs, failure("release-log", e), jsonMode) }
 	if e := fs.Parse(args); e != nil {
 		return fail(e)
 	}
@@ -121,7 +122,7 @@ func releaseLog(root string, args []string, out, errs io.Writer) int {
 		}
 		logs = map[string][]byte{*version: b}
 		if *output == "" {
-			_, e = out.Write(b)
+			e = presentation.Default().Write(out, map[string]any{"schema": Version, "operation": "release-log", "markdown": string(b)}, jsonMode)
 			if e != nil {
 				return fail(e)
 			}
@@ -174,6 +175,8 @@ func releaseLog(root string, args []string, out, errs io.Writer) int {
 			return fail(closeErr)
 		}
 	}
-	fmt.Fprintf(out, "%d release log(s) %s\n", len(paths), map[bool]string{true: "verified", false: "generated"}[*check])
+	if e := presentation.Default().Write(out, map[string]any{"schema": Version, "operation": "release-log", "count": len(paths), "status": map[bool]string{true: "verified", false: "generated"}[*check]}, jsonMode); e != nil {
+		return fail(e)
+	}
 	return 0
 }

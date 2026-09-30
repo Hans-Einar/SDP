@@ -26,7 +26,7 @@ fi
     cd -- "$sdp_package_module"
     GOTOOLCHAIN=local "$sdp_package_go" build -trimpath -mod=readonly         -ldflags "-X github.com/Hans-Einar/SDP/SDPTool.BuildRevision=$sdp_package_revision -X github.com/Hans-Einar/SDP/SDPTool.BuildVersion=$sdp_package_version"         -o "$sdp_package_temp/sdptool" ./cmd/sdptool
 )
-"$sdp_package_temp/sdptool" --version > "$sdp_package_temp/sdptool.manifest.json"
+"$sdp_package_temp/sdptool" --version --json > "$sdp_package_temp/sdptool.manifest.json"
 (
     cd -- "$sdp_package_temp"
     sha256sum sdptool sdptool.manifest.json > SHA256SUMS

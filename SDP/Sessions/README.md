@@ -133,3 +133,6 @@ This pilot registers links in card prose, without adding unsupported required
 SessionId metadata to existing schemas. Installation inventory now includes only the reusable guide/template, with
 initialize-if-missing ownership; published upgrade availability is recorded in
 MAINT-SDP-0011 rather than inferred from local template presence.
+
+[Session 0002](session-%230002--SDPTool_output.md) tracks portable SDPTool output,
+including its explicitly marked late registration.

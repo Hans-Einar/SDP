@@ -2,10 +2,10 @@ package install
 
 import (
 	"context"
-	"encoding/json"
 	"flag"
 	"fmt"
 	"github.com/Hans-Einar/SDP/SDPTool/bootstrap"
+	"github.com/Hans-Einar/SDP/SDPTool/presentation"
 	"io"
 	"os"
 )
@@ -110,34 +110,19 @@ func output(out, errs io.Writer, jsonMode bool, root, op string, result any, e e
 		}
 		exit = problem.Exit
 	}
-	if jsonMode {
-		envelope := map[string]any{"schemaVersion": Protocol, "operation": op, "projectRoot": root, "status": status}
-		if result != nil {
-			envelope["result"] = result
-		}
-		if problem != nil {
-			envelope["error"] = problem
-		}
-		if err := json.NewEncoder(out).Encode(envelope); err != nil {
-			fmt.Fprintln(errs, err)
-			return 4
-		}
-	} else {
-		if p, ok := result.(*Plan); ok {
-			fmt.Fprintf(out, "%s preview: %d changes, %d preserved, %d conflicts; plan %s\n", op, len(p.Actions), len(p.Preserved), len(p.Conflicts), p.PlanDigest)
-			for _, c := range p.Conflicts {
-				fmt.Fprintln(out, "Conflict:", c)
-			}
-			for _, w := range p.Warnings {
-				fmt.Fprintln(out, "Warning:", w)
-			}
-		}
-		if r, ok := result.(Result); ok {
-			fmt.Fprintf(out, "%s: operation %s; report %s\n", r.Status, r.OperationID, r.Report)
-		}
-		if problem != nil {
-			fmt.Fprintln(errs, problem.Error())
-		}
+	envelope := map[string]any{"schemaVersion": Protocol, "operation": op, "projectRoot": root, "status": status}
+	if result != nil {
+		envelope["result"] = result
+	}
+	if problem != nil {
+		envelope["error"] = problem
+	}
+	if err := presentation.Default().Write(out, envelope, jsonMode); err != nil {
+		fmt.Fprintln(errs, err)
+		return 4
+	}
+	if !jsonMode && problem != nil {
+		fmt.Fprintln(errs, problem.Error())
 	}
 	return exit
 }

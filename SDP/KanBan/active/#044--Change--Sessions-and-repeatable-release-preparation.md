@@ -30,8 +30,16 @@ additive release is 1.1.0. No merge, publication or XFMD mutation yet.
 
 MAINT-SDP-0011 preparation is completed and independently reviewed. See its
 [checklist](../../Maintenance/RL1/ReleaseChecklist.md) and
-[evidence](../../Maintenance/RL1/Evidence.md). Requested decision: select proposed
-SDP 1.1.0 integration/publication (including the preceding SDL composition stack).
+[evidence](../../Maintenance/RL1/Evidence.md). Requested decision: review the completed preparation package. The additive
+1.1.0 publication proposal is superseded by the output compatibility change in
+[KB045](%23045--Change--Portable-SDPTool-presentation.md); its plan recommends
+2.0.0 and requires explicit JSON machine clients before a new release candidate.
+Integration/publication remains separately selected.
 The latest published product is still 1.0.0. This gate-review awaits that concrete
 owner disposition; it does not imply production gates or publication already passed.
 XFMD remains unchanged and its upgrade remains manual.
+
+2026-09-30 follow-up: Session 0002 records the owner-selected output change.
+Before publication, update gh-sdp's bootstrap dependency and verify native XFMD
+machine callers use --json. Previous preparation evidence remains historical;
+it is not evidence that these new consumer gates have passed.

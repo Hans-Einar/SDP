@@ -81,7 +81,7 @@ capabilities:
 }
 func TestBuildVersionProtocol(t *testing.T) {
 	var out, errs bytes.Buffer
-	if Run(context.Background(), []string{"--version"}, &out, &errs) != 0 {
+	if Run(context.Background(), []string{"--version", "--json"}, &out, &errs) != 0 {
 		t.Fatal(errs.String())
 	}
 	var result map[string]any

@@ -1,5 +1,11 @@
 # ReleaseChecklist — proposed SDP 1.1.0
 
+Follow-up: [PLAN-SDP-0013](../../05--Implementation/SDPTool/Output/Plan.md)
+adds a breaking CLI default change and supersedes the additive 1.1.0 proposal
+with a 2.0.0 recommendation. This checklist remains historical preparation
+for RL1, not certification of the combined candidate. Machine consumers require
+explicit --json; gh-sdp bootstrap must be updated before rollout.
+
 Status: **preparation complete; NOT PUBLISHED and not ready for a normal gh-sdp
 upgrade yet**. SDL 0.6 is the included language profile. Latest published SDP
 remains 1.0.0. Candidate: 6fc662d plus RL1-M2 corrections/closeout; exact final
