@@ -73,17 +73,18 @@ the released source; the reconciliation commit records the completed transaction
 Before publishing an SDP Toolkit release, verify the candidate from a normally
 extracted GitHub source archive in a temporary path with no `.git` directory.
 The installation manifest and every schema/source reference must resolve from
-the archive root, the deterministic plan must not depend on Windows separators
-or retired-engine interpretation, installation must succeed, and generated installed
-facts must record `sourceCommit: null` when no trustworthy commit is available.
-Conversely, a non-null value from a dirty checkout would identify only its
-available `HEAD`, not attest that the installed bytes equal that commit; release
-archive verification must rely on the clean, exact candidate evidence.
+the archive root. Validate the archive and build/install its Go descriptor using
+the exact commit identifying the verified archive. Go descriptors require an
+explicit exact sourceCommit; extraction without .git must not invent a HEAD or
+silently substitute a null identity. Production signing still requires a clean
+Git checkout at that commit. Verify installed receipt identity against the descriptor.
 
-The source archive remains the legacy installer/source distribution. RP1 selects
-additional signed Go descriptor and prebuilt Linux amd64 binary assets: an archive
-alone cannot supply the compiler-free gh-sdp workflow. The Go descriptor embeds
-hash-pinned payloads and exact sourceCommit; its explicit release identity remains
-valid when downloaded outside Git. Preserve the legacy archive/null-commit test.
-The adopted typed-plan RP1-M1 is the release-preparation work unit for this repo;
-consumers with the earlier Slice contract retain their dedicated Slice requirement.
+The old sourceCommit:null behavior belongs to the retired install-v1 engine;
+its frozen archive fixture is validated as historical contract data, not executed.
+No legacy runtime is required for this gate. RP1's signed Go descriptor and prebuilt
+Linux amd64 assets remain the compiler-free gh-sdp distribution. A source archive
+alone does not provide that workflow. The descriptor embeds hash-pinned payloads
+and its explicit commit remains valid outside Git.
+
+The adopted typed release plan is the preparation work unit for this repository;
+consumers retaining the earlier Slice contract use their dedicated Slice requirement.
