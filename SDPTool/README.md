@@ -137,3 +137,14 @@ The first command only previews. Local unsigned development inputs require
 --release or SDP_RELEASE may select another exact descriptor. Test-key inputs
 record test provenance only. Native Windows/macOS acceptance is outstanding. Root-bound plans
 cannot be applied to another project copy. Journals and backups are retained.
+
+## Source-owned SDL composition
+
+Model registration can select design-core/0.6 with its `.design` entry and declared
+System. Tree, select, preview and ViewPlan use SDL's checked graph; dependencies
+are authored as includes/path membership in source, never as a second file list.
+Non-entry edits invalidate the revision and old selection requests. Generated
+bundles include sources.json. Output guards protect every reachable source.
+[Profile and commands](../SDL/docs/profiles/SDL-Source-Composition-Profile.md)
+explain limits, fragment inspection and the Frontend pilot. Existing 0.5
+registrations remain valid; this does not migrate installed projects or change XFMD.

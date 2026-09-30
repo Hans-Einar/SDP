@@ -83,8 +83,9 @@ Do not create a full parallel
 process tree per language/system. The shared board is SDP/KanBan; earlier SDL/SDUI board histories are frozen
 under SDP/ProjectManagement/History with a byte-preserving import map. Group
 architecture/design sources by system and actual container responsibility;
-shared libraries are not automatically runtime containers. System is a selected
-design concept, not yet implemented syntax in design-core 0.5.
+shared libraries are not automatically runtime containers. System is implemented by the bounded design-core 0.6 source-composition profile;
+0.5 remains single-file. Read SDL/docs/profiles/SDL-Source-Composition-Profile.md
+before authoring composed models; other experimental System syntax is not implied.
 XFMD is a collaborating system with its own SDP area in its repository. Its
 process bootstrap and adoption card do not authorize XFMD application changes
 from this workstream. See SDP/03--Architecture/System-Boundaries-study.md.

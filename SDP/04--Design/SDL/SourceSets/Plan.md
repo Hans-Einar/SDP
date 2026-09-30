@@ -16,7 +16,7 @@
 Execute S1 of [Session 0001](../../../Sessions/session-%230001--SDL_expansion.md):
 design one explicit System across named source files, with file-aware diagnostics
 and one revision consumed by checking, navigation and document generation.
-[KB-SDL-005](../../../KanBan/active/%23005--SDL--Change--System-and-source-sets.md)
+[KB-SDL-005](../../../KanBan/backlog/%23005--SDL--Change--System-and-source-sets.md)
 remains the delivery card; design completion does not complete its implementation.
 The owner authorized the next Session step. Product coding, broad model migration,
 merging and release are outside this DesignPlan.

@@ -59,7 +59,7 @@ an explicit labeled fallback selected by the consumer.
 ## Boundaries and dependencies
 
 [KB-SDUI-004](%23004--SDUI--Bug--Text-and-Markdown-fidelity.md) independently owns
-text fidelity. [KB-SDL-005](../active/%23005--SDL--Change--System-and-source-sets.md) owns SDL
+text fidelity. [KB-SDL-005](%23005--SDL--Change--System-and-source-sets.md) owns SDL
 source sets, not SDUI component imports. The first SDUI fixture-driven pilot need
 not wait for every SDL feature. Real generated-view integration needs a coherent
 producer revision and existing SDPTool delegation.

@@ -5,11 +5,11 @@
 | id | KB-SDL-007 |
 | project | SDL |
 | type | Proposal |
-| CardState | in-progress |
+| CardState | completed |
 | Systems | SDL |
 | created | 2026-09-30T10:36:36.093682+00:00 |
 | source | Owner AST-forest discussion and capture request, 2026-09-30 |
-| next_review | During Session 0001 S2 before selecting frontend implementation |
+| next_review | Closed bounded increment; later optimization requires separately selected work |
 | tags | file-ast, source-graph, semantic-model, partial-analysis, incremental-analysis |
 
 ## Intent and Session
@@ -20,7 +20,7 @@ This supports component-first inspection rather than requiring the root to be
 loaded first. Record the distinction between AST and decorated AST (DAST).
 
 [Session 0001](../../Sessions/session-%230001--SDL_expansion.md) records the
-conversation. [KB-SDL-005](%23005--SDL--Change--System-and-source-sets.md)
+conversation. [KB-SDL-005](../backlog/%23005--SDL--Change--System-and-source-sets.md)
 remains the source-composition delivery owner; this card captures a refinement,
 not a competing parser or automatic split of KB005. Consider consolidation when
 S2 selects its plan. [SSD2](../../04--Design/SDL/SourceComposition/Contract.md)
@@ -86,3 +86,19 @@ Captured with the Session T008 discussion and T009 request. EVT-KB-SDL-000038.
 
 Owner selected PLAN-SDP-0012 for Session S2–S5; syntax reuse and contextual
 semantic rebuilding are selected, not a fully incremental runtime compiler.
+
+## Completed bounded delivery — SSI3-M1
+
+[PLAN-SDP-0012](../../05--Implementation/SDL/SourceComposition/Plan.md) implements
+immutable cached FileASTs, explicit parsed-context-required fragment inspection,
+late-root assembly and full per-context semantic rebuilding. Tests cover all six
+acceptance scenarios above within that boundary: late root/cold equality, shared
+source cycles, invalid partial input, duplicate/new context diagnostics, isolated
+System contexts and exclusion of unreachable cached declarations.
+
+[Evidence](../../05--Implementation/SDL/SourceComposition/Evidence.md) records
+independent review, token/diagnostic bounds, original spans and consumer checks.
+Syntax reuse is delivered; dependency-selective semantic caching, runtime hot reload
+and native XFMD fragment preview remain outside the selected increment. CardState
+is completed because its selected refinement is realized, not because those future
+optimizations are implicitly promised. Session 0001 records the completed work.

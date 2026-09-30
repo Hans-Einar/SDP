@@ -30,7 +30,7 @@ viewpoints come from the SDL toolkit, never manual substitute diagrams.
 
 ## Dependency and acceptance
 
-[KB-SDL-005](../active/%23005--SDL--Change--System-and-source-sets.md) owns the supported
+[KB-SDL-005](%23005--SDL--Change--System-and-source-sets.md) owns the supported
 System/source input contract. Do not keep a competing handwritten aggregate model
 or introduce an include preprocessor to bypass it. SDL and SDUI Go modules remain
 source homes; no XFMD code or installer migration is included. Record remaining
@@ -90,3 +90,13 @@ Frontend model as the first source-set fixture. Keep authoritative model locatio
 and registrations unchanged until the implementation and navigation checks pass.
 The MVP1 experimental language needs more than source assembly. This card remains
 backlog; EVT-KB-SDP-000250 records the review, not migration execution.
+
+## Session 0001 implementation review — 2026-09-30
+
+[PLAN-SDP-0012](../../05--Implementation/SDL/SourceComposition/Plan.md) verifies
+source composition through all existing producers with a copied Frontend pilot.
+This removes the single-System assembly blocker for a bounded migration pilot.
+Keep this card in backlog: migration of authoritative models/registrations needs
+an explicit plan and fact-preservation checks. The wider MVP1 candidate profile
+and cross-System linking still require separate language work. No actual model
+migration is claimed by this review.

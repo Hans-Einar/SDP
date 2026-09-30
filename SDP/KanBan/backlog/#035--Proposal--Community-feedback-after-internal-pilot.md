@@ -72,7 +72,7 @@ links the forum, Discord and showcase.
 
 Use [KB-SDP-032](%23032--Study--Viewpoint-navigation-feedback.md) for internal
 viewpoint feedback and the [MVP1 navigation handoff](../../../experiments/mvp1_sdl/Navigation.md)
-for current capability boundaries. [KB-SDL-005](../active/%23005--SDL--Change--System-and-source-sets.md)
+for current capability boundaries. [KB-SDL-005](%23005--SDL--Change--System-and-source-sets.md)
 owns source-set support. The [blueprint study](../completed/%23031--Study--SDL-assignment-bundles-and-blueprints.md)
 records assignment-context design; it does not deliver an MCP adapter.
 

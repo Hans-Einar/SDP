@@ -5,12 +5,12 @@
 | id | KB-SDL-005 |
 | project | SDL |
 | type | Change |
-| CardState | in-progress |
+| CardState | backlog |
 | created | 2026-09-25T11:42:10Z |
 | source | SCRUM-SDP-0001; owner-conversation-2026-09-25 |
 | ScrumId | SCRUM-SDP-0002 |
 | Systems | SDL |
-| next_review | Session 0001 S2: use SSD2 source-owned composition, not SSD1 manifest |
+| next_review | When selecting cross-System imports/exports or model migration |
 | PlanId | PLAN-SDP-0012 |
 
 ## Bounded delivery
@@ -132,9 +132,26 @@ S2 handoff; no parser implementation is claimed. EVT-KB-SDL-000037.
 
 ## Late-root AST refinement — 2026-09-30
 
-[KB-SDL-007](%23007--SDL--Proposal--Composable-file-ASTs-and-contextual-analysis.md)
+[KB-SDL-007](../completed/%23007--SDL--Proposal--Composable-file-ASTs-and-contextual-analysis.md)
 captures the owner-endorsed AST-forest/contextual-analysis direction and DAST
 explanation from Session T008/T009. S2 must decide its bounded integration with
 this source-composition delivery, including partial diagnostics and root context.
 No implementation is selected merely by registering the proposal. CardState stays
 ready; EVT-KB-SDL-000039. No separate parser or implicit System inference is intended.
+
+## Session 0001 closeout — SSI3-M1
+
+[PLAN-SDP-0012](../../05--Implementation/SDL/SourceComposition/Plan.md) and
+[evidence](../../05--Implementation/SDL/SourceComposition/Evidence.md) deliver
+design-core 0.6 System, source-owned includes/path contains, reusable file syntax,
+context-specific checking and graph-aware CLI/viewpoints/broker/SDPTool consumers.
+Independent review accepted the corrected product scope. The selected Session
+increment is complete; preceding proposal/status notes are historical snapshots.
+
+Remaining card scope: public cross-System imports/exports, visibility and explicit
+landscape references. These need their own selected plan; source assembly does not
+implement them. This is why the card returns to backlog rather than falsely closing
+its broader historical scope or remaining active with no current work.
+[KB-SDP-020](%23020--Change--Shared-design-source-organization.md) owns actual model
+migration; current registrations and authoritative models were preserved. The
+experimental MVP1 language still exceeds this bounded profile.

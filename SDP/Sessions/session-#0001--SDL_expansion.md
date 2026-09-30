@@ -3,10 +3,12 @@
 ## Session roadmap
 
 Latest recorded local turn: **T010 — execute S2–S5**.
-Next SDL delivery step: **S3 — implement the selected PLAN-SDP-0012**.
+**Session goal completed. S1–S5 are complete; no execution step remains active.**
+Recommended separately selected follow-up: KB-SDP-020, a bounded authoritative
+model migration using the new profile.
 
 **Sequence-only Gantt mockup; not yet an event-derived timeline.** The dates below are synthetic placement slots,
-not working-day estimates, deadlines or authorization. S1 design is delivered; S2 is next.
+not working-day estimates, deadlines or authorization. All five steps are delivered.
 The step table below owns the manual projection. No init directive is used.
 [KB-SDP-043](../KanBan/backlog/%23043--Proposal--Event-derived-session-timelines.md)
 records the requested turn/seconds axis, current-position line and activity/event
@@ -19,18 +21,18 @@ gantt
     section Proposed route
     DONE S1 Design :done, s1, 2000-01-01, 1d
     DONE S2 Plan :done, s2, after s1, 1d
-    ACTIVE S3 Build :active, s3, after s2, 1d
-    PLANNED S4 Verify :s4, after s3, 1d
-    PLANNED S5 Close :s5, after s4, 1d
+    DONE S3 Build :done, s3, after s2, 1d
+    DONE S4 Verify :done,s4, after s3, 1d
+    DONE S5 Close :done,s5, after s4, 1d
 ```
 
 | State | Step | Work / plan | Prerequisites | Authorization | Completion evidence |
 | --- | --- | --- | --- | --- | --- |
 | completed | S1 | P1: design System and explicit source sets; reuse completed study | KB-SDL-005 and source/projection constraints | Owner selected S1 | [SSD2 current contract and correction](../04--Design/SDL/SourceComposition/Plan.md); SSD1 retained as history |
 | completed | S2 | P2: plan runnable increments and checks | SSD2 and KB-SDL-007 refinement | Owner selected S2–S5 | Phases/milestones, explicit branch/commit policy and acceptance |
-| on-going | S3 | P2: implement Go frontend/input resolution and producer consumers | S2 and execution authorization | Owner selected S2–S5 | Cross-file identity, diagnostics, deterministic model/revision and existing behavior verified |
-| planned | S4 | P3 or P2 verification: check a real model through navigation/generation | S3 candidate | Owner selected S2–S5 | Missing/duplicate/cyclic input cases, original spans, stale revision and actual consumer evidence; required independent review |
-| planned | S5 | Record goal outcome and KB020 migration disposition | S4 evidence | Owner selected S2–S5 | KB005 disposition, explicit remaining model migrations and successor; no implied release |
+| completed | S3 | P2: implement Go frontend/input resolution and producer consumers | S2 and execution authorization | Owner selected S2–S5 | Cross-file identity, diagnostics, deterministic model/revision and existing behavior verified |
+| completed | S4 | P3 or P2 verification: check a real model through navigation/generation | S3 candidate | Owner selected S2–S5 | Missing/duplicate/cyclic input cases, original spans, stale revision and actual consumer evidence; required independent review |
+| completed | S5 | Record goal outcome and KB020 migration disposition | S4 evidence | Owner selected S2–S5 | KB005 disposition, explicit remaining model migrations and successor; no implied release |
 
 **Manual roadmap pilot**, created from the owner's 2026-09-30 Session proposal.
 S1 is now authorized below; this does not retroactively place prior work in a Session.
@@ -40,12 +42,12 @@ owns the provisional format; [guide](README.md) defines its limits.
 | Field | Value |
 | --- | --- |
 | Session reference | SESSION-SDP-0001 (provisional) |
-| Status | active |
+| Status | completed |
 | Primary delivery card | KB-SDL-005 |
 | Snapshot date | 2026-09-30 |
-| Current execution step | S3 — implementation under PLAN-SDP-0012 |
-| Proposed next step | S2 — create the ImplementationPlan from SSD2 source composition |
-| Execution authority | Owner selected S1 and source-owned correction on 2026-09-30; implementation remains later |
+| Current execution step | None — S2–S5 delivered under PLAN-SDP-0012 |
+| Proposed next step | Separate KB-SDP-020 migration pilot; not started |
+| Execution authority | Owner selected S2–S5 together in T010; no merge/release authorization |
 
 ## Goal
 
@@ -64,11 +66,11 @@ Snapshot captured 2026-09-30; lifecycle and CardState agree for these rows.
 
 | Card | Role | Initial state | Planned final disposition | Current snapshot | Actual final disposition |
 | --- | --- | --- | --- | --- | --- |
-| [KB-SDL-005](../KanBan/active/%23005--SDL--Change--System-and-source-sets.md) | Primary delivery | backlog | completed after language/input/consumer acceptance | active / in-progress | Pending |
-| [KB-SDP-020](../KanBan/backlog/%23020--Change--Shared-design-source-organization.md) | Related migration, separately selected | backlog | Determine after supported source-set design; do not promise entire migration | backlog | Pending |
+| [KB-SDL-005](../KanBan/backlog/%23005--SDL--Change--System-and-source-sets.md) | Primary delivery | backlog | Complete bounded composition; retain broader linking obligation | backlog | Bounded delivery complete; cross-System linking remains in KB005 |
+| [KB-SDP-020](../KanBan/backlog/%23020--Change--Shared-design-source-organization.md) | Related migration, separately selected | backlog | Determine after supported source-set design; do not promise entire migration | backlog | Separately selectable migration; no live model moved |
 | [KB-SDP-041](../KanBan/completed/%23041--Study--XFMD-driven-SDL-and-SDUI-gaps.md) | Completed input, not reopened | completed | Retain completed | completed | Already completed before this pilot |
-| [KB-SDL-007](../KanBan/active/%23007--SDL--Proposal--Composable-file-ASTs-and-contextual-analysis.md) | Frontend refinement to review with KB005 during S2 | backlog | Select/consolidate explicit partial-analysis scope in S2; implementation not promised by capture | backlog | Pending |
-| [KB-SDP-043](../KanBan/backlog/%23043--Proposal--Event-derived-session-timelines.md) | Process proposal discovered here; outside SDL delivery | backlog | Separate Session/routine/client plan | backlog | Pending |
+| [KB-SDL-007](../KanBan/completed/%23007--SDL--Proposal--Composable-file-ASTs-and-contextual-analysis.md) | Selected bounded frontend refinement in S2 | backlog | Complete syntax reuse and context-specific analysis | completed | Completed; full incremental runtime/compiler optimization excluded |
+| [KB-SDP-043](../KanBan/backlog/%23043--Proposal--Event-derived-session-timelines.md) | Process proposal discovered here; outside SDL delivery | backlog | Separate Session/routine/client plan | backlog | Retained backlog; timeline generator not implemented |
 
 Other language extension cards stay outside this bounded goal unless a recorded
 route change adds them. A Session is not a promise to empty the backlog.
@@ -80,8 +82,8 @@ route change adds them. A Session is not a promise to empty the backlog.
 | P0 | [PLAN-SDP-0009, RequirementPlan/study](../02--Requirements/XFMD-Gaps/StudyPlan.md) | completed | completed | Prior input; not performed during this Session |
 | P1 | [PLAN-SDP-0010, DesignPlan](../04--Design/SDL/SourceSets/Plan.md) | completed | completed | System identity, source membership, resolution and consumer contract |
 | P1R | [PLAN-SDP-0011, source composition correction](../04--Design/SDL/SourceComposition/Plan.md) | completed | completed | Replaces P1 external-manifest recommendation after owner rejection |
-| P2 | [PLAN-SDP-0012](../05--Implementation/SDL/SourceComposition/Plan.md) | on-going | active | Depends on P1R source-owned design |
-| P3 | VerificationPlan — not yet created; may instead use explicit verification milestones in P2 | planned | Not registered | Candidate and consumer acceptance; avoid a redundant wrapper |
+| P2 | [PLAN-SDP-0012](../05--Implementation/SDL/SourceComposition/Plan.md) | completed | completed | SSI0–SSI3 implement and verify P1R |
+| P3 | Verification covered by P2 SSI3-M1 and its evidence | completed | Part of completed PLAN-SDP-0012 | Independent review, real pilot and consumer regressions |
 
 No mandatory separate ArchitecturePlan: create one only if the selected design
 changes a material system boundary beyond the established architecture.
@@ -89,7 +91,7 @@ changes a material system boundary beyond the established architecture.
 ## Recorded frontend direction — T008/T009
 
 The owner endorsed documenting the component-first model in
-[KB-SDL-007](../KanBan/active/%23007--SDL--Proposal--Composable-file-ASTs-and-contextual-analysis.md).
+[KB-SDL-007](../KanBan/completed/%23007--SDL--Proposal--Composable-file-ASTs-and-contextual-analysis.md).
 Keep independent file ASTs, a source dependency graph and a context-dependent
 semantic System model. A later parent/root can reuse unchanged syntax; semantic
 bindings and validation must be established in its new context. Decorated AST
@@ -126,6 +128,7 @@ its Gantt remains sequence-only. This proposal does not expand the SDL delivery 
 | 2026-09-30 pilot preparation | No time estimates selected | Use synthetic sequence slots; keep execution unselected | Agent recommendation, not an approved schedule | S1–S5 |
 | 2026-09-30 next-step request | S1 proposed | Execute and deliver PLAN-SDP-0010; S2 becomes next | Owner selected S1; implementation remains subsequent | S1–S2 |
 | T008/T009, 2026-09-30 | Root-first source-graph entry in SSD2 | Capture late-root AST composition and context-dependent analysis in KB-SDL-007 for S2 | Owner discussion and capture request; implementation remains unselected | S2–S4 |
+| T010, 2026-09-30 | S2 next, implementation unselected | Execute S2–S5 under PLAN-SDP-0012, close the bounded goal; retain exports/migration separately | Owner explicitly selected all remaining steps in one turn | S2–S5 |
 | T009, 2026-09-30 | Roadmap below metadata/plans; manual sequence chart | Move roadmap/table first; register event-derived timeline in KB-SDP-043 | Owner layout/capture request; generator remains proposed | Session presentation; SDL steps unchanged |
 
 ## Turn journal
@@ -153,9 +156,13 @@ transcript. The completed study is linked as an input above.
 
 ## Closeout
 
-S1 delivered under PLAN-SDP-0010 and corrected by PLAN-SDP-0011 after owner
-rejection of its manifest recommendation. S2 ImplementationPlan is next; product
-implementation and full Session goal acceptance remain pending.
+S1 delivered under PLAN-SDP-0010 and corrected by PLAN-SDP-0011. S2–S5 now
+complete under [PLAN-SDP-0012](../05--Implementation/SDL/SourceComposition/Plan.md).
+[Evidence](../05--Implementation/SDL/SourceComposition/Evidence.md) records the
+verified Go implementation, independent review and copied Frontend workflow.
+KB-SDL-007 completes; KB-SDL-005 returns to backlog for public cross-System linking;
+KB-SDP-020 retains the actual model migration. The bounded Session goal is met.
+No native XFMD acceptance, automatic timeline generation, merge or release is claimed.
 
 ## Pilot checks — 2026-09-30
 
@@ -304,3 +311,39 @@ records, 3 lineage operations, 414 events); Toolkit repository validation, local
 file links in eight changed/new Markdown documents, roadmap-first section order,
 preserved ledger prefix and git diff --check pass. No new Gantt rendering or
 live timeline behavior was tested; the existing Mermaid block remains unchanged.
+
+### T010 — 2026-09-30, execute S2–S5
+
+- Exact owner prompt (verbatim Norwegian source quotation):
+
+  > ok. skal vi være flinke og fortsette å gjøre ferdig den sessionen vi jobber med nå da. nå har du fått den input du trenger av meg, så du kan egentlig gjøre ferdig step S2 - S5 i en og samme turn.
+
+- Capture: manual turn record; host IDs and turn-relative telemetry unavailable.
+- Category: execute the remaining selected Session goal through plan, implementation,
+  verification and closeout. Existing plan/Git and KanBan procedures used; no
+  request/routine engine or automatic transcript capture is claimed.
+- Skills loaded: SDP entrypoint, Planning, Master, Worker, Verifier, Reviewer and
+  relevant traceability guidance, agent-reported. Independent Reviewer used a fresh
+  context as required by S4/review guidance; it did not edit the repository.
+- S2: PLAN-SDP-0012 selected SSI0–SSI3 and activated KB007. Phase branches and
+  milestone commits preserve the agreed traceability.
+- S3: implement design-core 0.6 System/includes/path membership, immutable cached
+  file syntax, graph resolution and contextual validation. Route CLI, viewpoints,
+  broker and SDPTool through graph revisions, source evidence and freshness guards.
+- S4: Frontend pilot, legacy action/class/structural/runtime regression coverage,
+  race detection and consumer integration checks. Independent review found four
+  defects (diagnostic amplification, pure-API token budget, cycle evidence and
+  viewer registration checking); all corrected and independently accepted. A
+  generated constructor byte comparison required regeneration for empty Source
+  fields; behavior equality and regenerated output tests pass.
+- S5: update profile/API docs, close PLAN-SDP-0012 and KB007, return broader KB005
+  scope to backlog, review KB020, preserve history and reconcile this roadmap.
+- Assistant work summary (not captured final chat output): S2–S5 are complete.
+  Source-owned System models now parse, validate and feed dynamic navigation with
+  original-source provenance. No external source-list manifest. Existing model
+  locations/registrations and unrelated drafts are preserved. Full MVP1 candidate
+  syntax, public cross-System linking, Session telemetry and native XFMD acceptance
+  are separate work. Phase branches are committed/pushed; no merge or release.
+- Management correlation: EVT-PM-SDP-000111–000114; EVT-KB-SDL-000040–000043;
+  EVT-KB-SDP-000253. Event timestamps are lifecycle history, not reconstructed
+  task timing. Product evidence: SDL-VER-SSI3 and SDPTOOL-VER-SSI3.

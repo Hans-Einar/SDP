@@ -1,4 +1,9 @@
-# SDL source-owned composition — current design recommendation
+# SDL source-owned composition — SSD2 design record
+
+Implementation follow-up: [design-core 0.6](../../../../SDL/docs/profiles/SDL-Source-Composition-Profile.md)
+and [PLAN-SDP-0012 evidence](../../../05--Implementation/SDL/SourceComposition/Evidence.md)
+now define delivered scope. The proposal language below records the pre-implementation
+design; compact System declaration-plus-membership was deferred.
 
 Owner direction, 2026-09-30: inclusion belongs in SDL source; no separate authored
 .design-set.json. This document supersedes the external-manifest recommendation

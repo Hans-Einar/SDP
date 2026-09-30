@@ -8,7 +8,7 @@
 | KB-SDL-002 | Proposal | backlog | [Weak links and visual paths through nodes](backlog/%23002--SDL--Proposal--Links-through.md) |
 | KB-SDL-003 | Ref | completed | [SDP tools as a consumer of SDL](completed/%23003--SDL--Ref--SDP--017--sdptool.md) |
 | KB-SDL-004 | Change | superseded | [KB-SDL-004 — Organize language development by process phase](superseded/%23004--SDL--Change--Language-source-organization.md) |
-| KB-SDL-005 | Change | active | [SDL System and explicit source-set contract](active/%23005--SDL--Change--System-and-source-sets.md) |
+| KB-SDL-005 | Change | backlog | [SDL System and explicit source-set contract](backlog/%23005--SDL--Change--System-and-source-sets.md) |
 | KB-SDL-006 | Study | backlog | [Executable Channel tests and real Unit bindings](backlog/%23006--SDL--Study--Executable-channel-tests-and-unit-bindings.md) |
 | KB-SDP-001 | Proposal | completed | [Project structure, Template and studies per phase](completed/%23001--Proposal--Project-structure.md) |
 | KB-SDP-002 | Proposal | superseded | [sdptool: project discovery, implementation plan and viewer](superseded/%23002--Proposal--sdptool.md) |
@@ -56,7 +56,7 @@
 | KB-SDUI-003 | Proposal | backlog | [Capabilities and a bounded navigation pilot](backlog/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md) |
 | KB-SDUI-004 | Bug | backlog | [Text and Markdown fidelity across SDUI exports](backlog/%23004--SDUI--Bug--Text-and-Markdown-fidelity.md) |
 | KB-SDP-042 | Proposal | backlog | [Goal-oriented Sessions and roadmaps](backlog/%23042--Proposal--Goal-oriented-sessions-and-roadmaps.md) |
-| KB-SDL-007 | Proposal | active | [Composable file ASTs and contextual analysis](active/%23007--SDL--Proposal--Composable-file-ASTs-and-contextual-analysis.md) |
+| KB-SDL-007 | Proposal | completed | [Composable file ASTs and contextual analysis](completed/%23007--SDL--Proposal--Composable-file-ASTs-and-contextual-analysis.md) |
 | KB-SDP-043 | Proposal | backlog | [Event-derived Session timelines](backlog/%23043--Proposal--Event-derived-session-timelines.md) |
 
 ## Purpose and authority

@@ -4,7 +4,7 @@
 | --- | --- |
 | id | PLAN-SDP-0012 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | ImplementationPlan |
 | BranchPolicy | phase |
 | CommitPolicy | milestone |
@@ -15,7 +15,7 @@
 
 Deliver source-owned design-core/0.6 composition through check/AST/format,
 viewpoints, broker and SDPTool. Use the [SSD2 contract](../../../04--Design/SDL/SourceComposition/Contract.md)
-and [KB007](../../../KanBan/active/%23007--SDL--Proposal--Composable-file-ASTs-and-contextual-analysis.md).
+and [KB007](../../../KanBan/completed/%23007--SDL--Proposal--Composable-file-ASTs-and-contextual-analysis.md).
 No external manifest, second parser, native XFMD edits, action-runtime extension,
 merge or release. Root-relative includes, path contains, one System per compiled
 context, preserved file ASTs and complete source revisions are required.
@@ -33,7 +33,7 @@ not optimized dependency-selective semantic recompilation or runtime hot reload.
 | SSI0 | SSI0-M1 (S2) | Plan, scope, original/updated acceptance and card activation | completed |
 | SSI1 | SSI1-M1 (S3) | Go syntax, pure file-AST cache, source graph, validation and CLI with original spans; cycles/late root/negative tests | completed |
 | SSI2 | SSI2-M1 (S3) | Same checked result in views, broker and SDPTool; aggregate revision, source maps and stale/output guards; consumer tests | completed |
-| SSI3 | SSI3-M1 (S4–S5) | Bounded real-model workflow, regressions, independent review, documentation and truthful Session/card dispositions | planned |
+| SSI3 | SSI3-M1 (S4–S5) | Bounded real-model workflow, regressions, independent review, documentation and truthful Session/card dispositions | completed |
 
 ## Git and evidence
 
@@ -65,3 +65,14 @@ completed increment and remaining work explicit. KB-SDL-007 may complete when
 its selected late-root/partial-analysis behavior and limits are verified. Session
 can close its bounded goal with these actual dispositions, not fictitious closure
 of the broader language card. KB043 timeline automation remains separate backlog.
+
+## Outcome
+
+SSI0–SSI3 delivered the bounded System/source-composition increment and its
+consumer workflow. Independent product review accepted the corrected candidate.
+Full tracked headless Go regressions (including race detection) and the regenerated
+constructor check passed; see evidence for the initial failures and corrections.
+KB-SDL-007 completes its selected bounded scope; KB-SDL-005 returns to backlog
+for public cross-System linking. KB-SDP-020 remains separately selectable migration.
+Session 0001 S2–S5 are completed; merge/release and native XFMD acceptance are not
+claimed. Further work selects a new plan instead of reopening this delivery.

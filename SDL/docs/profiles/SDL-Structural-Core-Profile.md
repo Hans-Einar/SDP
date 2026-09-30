@@ -7,6 +7,8 @@ The registered [data](SDL-Data-Contract-Profile.md),
 [Channel](SDL-Channel-Scenario-Profile.md) and
 [delivery-plan](SDL-Delivery-Plan-Profile.md) additions complete design-core 0.5.
 Execution and classes use separate action-core/class-core profiles.
+[Source composition 0.6](SDL-Source-Composition-Profile.md) adds System and
+source dependencies; this document retains the 0.5 single-file contract.
 
 This is the active bounded working definition, not approval of all research
 proposals or proof of implemented domain behavior. Open questions and future
