@@ -5,7 +5,7 @@
 | id | KB-SDL-007 |
 | project | SDL |
 | type | Proposal |
-| CardState | backlog |
+| CardState | in-progress |
 | Systems | SDL |
 | created | 2026-09-30T10:36:36.093682+00:00 |
 | source | Owner AST-forest discussion and capture request, 2026-09-30 |
@@ -20,7 +20,7 @@ This supports component-first inspection rather than requiring the root to be
 loaded first. Record the distinction between AST and decorated AST (DAST).
 
 [Session 0001](../../Sessions/session-%230001--SDL_expansion.md) records the
-conversation. [KB-SDL-005](../active/%23005--SDL--Change--System-and-source-sets.md)
+conversation. [KB-SDL-005](%23005--SDL--Change--System-and-source-sets.md)
 remains the source-composition delivery owner; this card captures a refinement,
 not a competing parser or automatic split of KB005. Consider consolidation when
 S2 selects its plan. [SSD2](../../04--Design/SDL/SourceComposition/Contract.md)
@@ -81,3 +81,8 @@ No new executable language semantics or cross-System import capability is adopte
 ## Worklog
 
 Captured with the Session T008 discussion and T009 request. EVT-KB-SDL-000038.
+
+## Execution
+
+Owner selected PLAN-SDP-0012 for Session S2–S5; syntax reuse and contextual
+semantic rebuilding are selected, not a fully incremental runtime compiler.

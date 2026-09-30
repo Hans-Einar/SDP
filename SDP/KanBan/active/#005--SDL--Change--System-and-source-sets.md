@@ -5,13 +5,13 @@
 | id | KB-SDL-005 |
 | project | SDL |
 | type | Change |
-| CardState | ready |
+| CardState | in-progress |
 | created | 2026-09-25T11:42:10Z |
 | source | SCRUM-SDP-0001; owner-conversation-2026-09-25 |
 | ScrumId | SCRUM-SDP-0002 |
 | Systems | SDL |
 | next_review | Session 0001 S2: use SSD2 source-owned composition, not SSD1 manifest |
-| PlanId | PLAN-SDP-0011 |
+| PlanId | PLAN-SDP-0012 |
 
 ## Bounded delivery
 
@@ -132,7 +132,7 @@ S2 handoff; no parser implementation is claimed. EVT-KB-SDL-000037.
 
 ## Late-root AST refinement — 2026-09-30
 
-[KB-SDL-007](../backlog/%23007--SDL--Proposal--Composable-file-ASTs-and-contextual-analysis.md)
+[KB-SDL-007](%23007--SDL--Proposal--Composable-file-ASTs-and-contextual-analysis.md)
 captures the owner-endorsed AST-forest/contextual-analysis direction and DAST
 explanation from Session T008/T009. S2 must decide its bounded integration with
 this source-composition delivery, including partial diagnostics and root context.
