@@ -33,3 +33,19 @@ being blocked by aggregate navigation limits. Both are corrected with regression
 tests. Reserved .sdp-backups is excluded with .sdp-operations. Root Go suite and
 Toolkit contract validator pass; full release verification follows in DS3.
 Client 0.2.0 pins pushed bootstrap 247fb7a; exact final package pairing remains.
+
+## DS3-M1 — verification
+
+Candidate b999352: full SDPTool race tests and vet pass; bootstrap race tests pass;
+SDL and SDUI Go suites pass. Toolkit Python suite: 85 tests pass. Toolkit and
+project-management validators pass. Ecosystem verify.sh checks all 18 models
+with parsing, AST, canonical reparse, source-discovered navigation, revision-bound
+selection and static generation. Independent review is approved in Review.md.
+
+Upgrade-rehearsal.json records six disposable upgrades from original signed
+0.2.0, 0.2.1 and 1.0.0 descriptors, each with fresh/custom project content.
+Target is explicitly unsigned local-development, not production
+proof. Sessions, invalid historical navigation.json and ledger prefixes survive;
+repeat upgrade has zero actions. Fresh installation creates no navigation.json.
+Production-signed repetition and exact clean package/CI remain DS4 obligations.
+No live XFMD write occurred.

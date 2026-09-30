@@ -91,3 +91,8 @@ upgrade is a separate SDPTool preview/apply workflow. Owner performs live XFMD w
 DS1-M1 update: source-owned discovery and snapshot implemented. Root/bootstrap
 tests pass; actual XFMD sources are found read-only without registration. Installer,
 docs, independent review and release gates follow under S2–S4.
+
+DS2/DS3-M1 update: installer/docs/client preparation integrated, all local test
+gates and independent product review pass. Six disposable predecessor upgrade
+cases preserve project content and repeat without actions. DS4 exact production
+package, CI and publication are now in progress.
