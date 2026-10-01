@@ -119,6 +119,12 @@ slices:
     verification: [VER-SDP-005-001, VER-SDP-005-002, VER-SDP-005-003]
 fixes: {}
 reviews:
+  REV-SDPTOOL-SR1:
+    status: approved
+    path: Maintenance/SR1/Review.md
+    release: REL-2.1.0
+    verification: SDPTOOL-VER-SR1
+    commit: 93517ad98cd188c0debeb1d0f3d36d123c6e4a3b
   REV-SPS-001-001:
     status: changes-required
     path: CodeReview/REV-SPS-001-001.md
@@ -201,6 +207,11 @@ reviews:
       low: 0
       note: 4
 verification:
+  SDPTOOL-VER-SR1:
+    status: passed
+    path: Maintenance/SR1/Evidence.md
+    managementId: MAINT-SDP-0012
+    release: REL-2.1.0
   SDPTOOL-VER-SN1:
     status: passed
     path: 05--Implementation/SDPTool/Sessions/Plan.md
@@ -469,9 +480,9 @@ releases:
     releaseNotes: RELEASE-NOTES.md
     manifest: SDP.manifest.yaml
     releaseRecord: Releases/REL-2.1.0.yaml
-    verification: [SDPTOOL-VER-SN1]
-    reviews: []
-    releaseCommit: null
+    verification: [SDPTOOL-VER-SN1, SDPTOOL-VER-SR1]
+    reviews: [REV-SDPTOOL-SR1]
+    releaseCommit: 93517ad98cd188c0debeb1d0f3d36d123c6e4a3b
     gitTag: null
     githubRelease: null
   REL-2.0.0:

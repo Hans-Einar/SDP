@@ -1,0 +1,64 @@
+{
+  "candidate": "93517ad98cd188c0debeb1d0f3d36d123c6e4a3b",
+  "version": "2.1.0",
+  "schema": "sdptool/0.2",
+  "publication": "not-published",
+  "packageDirectory": "/tmp/sdp-21-package",
+  "hashes": {
+    "sdptool": "691c021751cefb35c7f92c902545cd6c5d71ccadfcde07ae507a6ce026c8a823",
+    "sdptool.manifest.json": "06f813ebd70c26bdc3c8bd17a088f8220092895bf93e27e209c55fe1eab01700",
+    "SHA256SUMS": "9e61e971fa08551342105e846eb19634680a572e05b68813188c37312e047cab",
+    "sdp-release.json": "d8436398ff6ed1cf74b7754106792075203dc3745f91d19c56450951b7302dde",
+    "sdp-release.json.sig": "8c4de44bcff1ea22b007b8bf0d9ae536fdfdb64ed9732715aa449015f26445e3"
+  },
+  "originalPredecessors": [
+    "0.2.0",
+    "0.2.1",
+    "1.0.0",
+    "2.0.0"
+  ],
+  "payloadComparison": {
+    "baseline": "v2.0.0",
+    "inventoryUnchanged": true,
+    "all64SourcesUnchanged": true
+  },
+  "bootstrap": {
+    "installationProtocol": "sdp-install-command/1",
+    "installedFactSchemas": [
+      "1.0",
+      "2.0",
+      "3.0"
+    ],
+    "operation": "version",
+    "revision": "93517ad98cd188c0debeb1d0f3d36d123c6e4a3b",
+    "schema": "sdptool/0.2",
+    "version": "2.1.0"
+  },
+  "liveXfmdReadOnly": {
+    "installationFactsUnchanged": true,
+    "sessionsTab": "available",
+    "installedProducer": "2.0.0",
+    "candidateProducer": "2.1.0"
+  },
+  "tests": {
+    "goFull": "pass",
+    "goRace": "pass",
+    "bootstrapRace": "pass",
+    "packagedSignedChild": "pass",
+    "toolkitTests": 85,
+    "toolkitResult": "pass",
+    "validators": "pass"
+  },
+  "ci": {
+    "headSha": "93517ad98cd188c0debeb1d0f3d36d123c6e4a3b",
+    "url": "https://github.com/Hans-Einar/SDP/actions/runs/36842826943",
+    "contracts": "success",
+    "go-installation-linux": "success"
+  },
+  "review": {
+    "id": "REV-SDPTOOL-SR1",
+    "status": "approved-for-preparation",
+    "path": "Review.md",
+    "candidate": "93517ad98cd188c0debeb1d0f3d36d123c6e4a3b"
+  }
+}

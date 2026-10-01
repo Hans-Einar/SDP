@@ -7,8 +7,10 @@ includedCapabilities:
   - sdp.install.v1
 verificationRecords:
   - SDPTOOL-VER-SN1
-reviewRecords: []
+  - SDPTOOL-VER-SR1
+reviewRecords:
+  - REV-SDPTOOL-SR1
 migrationRecord: SDP/Maintenance/SR1/Plan.md
-releasePreparationCommit: null
+releasePreparationCommit: 93517ad98cd188c0debeb1d0f3d36d123c6e4a3b
 gitTag: null
 githubReleaseUrl: null
