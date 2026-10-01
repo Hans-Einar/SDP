@@ -35,3 +35,13 @@ checkout. Report them explicitly as external and unverified; keep local cards
 openable. Do not locate external cards or introduce a cross-project configuration.
 Missing local references and invalid history remain errors. The
 [consumer contract](../../SDPTool/Contract.md) defines the additive representation.
+
+## Sessions browsing — REQ-SDPTOOL-003 clarification
+
+Owner request 2026-10-01 (KB-SDP-047): discovery must expose SDP/Sessions for
+browsing. Provide a directory-derived capability and dedicated navigation root,
+with nested documents and typed open targets. Preserve ordinary Files navigation
+and refresh on additions/edits/moves/removal without registration. Missing, empty
+and unavailable directories are distinguishable; symlinks are not followed.
+This is document navigation, not validation or execution of the Session process.
+PLAN-SDP-0015 and the producer contract define the bounded implementation.

@@ -201,6 +201,11 @@ reviews:
       low: 0
       note: 4
 verification:
+  SDPTOOL-VER-SN1:
+    status: passed
+    path: 05--Implementation/SDPTool/Sessions/Plan.md
+    managementId: PLAN-SDP-0015
+    card: KB-SDP-047
   CODEXCLIENT-VER-ECO1:
     status: passed-structural-model-checks
     path: 03--Architecture/Ecosystems/Evidence.md

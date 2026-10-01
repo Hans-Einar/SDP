@@ -130,13 +130,18 @@ func discover(selected string, withNavigation bool) (Project, error) {
 	if e = p.scanArea(); e != nil {
 		return bad("limit", e)
 	}
+	for _, n := range p.Files {
+		if n.ID == "files/Sessions" && n.Kind == "directory" {
+			p.Inventory.Sessions = "SDP/Sessions"
+		}
+	}
 	if len(p.Plans) == 1 {
 		p.Inventory.ImplementationPlan = p.Plans[0]
 	}
 	for _, entry := range []struct {
 		name    string
 		present bool
-	}{{"sdl", len(p.Inventory.Models) > 0}, {"sdui", len(p.Inventory.SDUI) > 0}, {"kanban", p.Inventory.KanBan != ""}, {"implementation-plan", len(p.Plans) > 0}} {
+	}{{"sdl", len(p.Inventory.Models) > 0}, {"sdui", len(p.Inventory.SDUI) > 0}, {"kanban", p.Inventory.KanBan != ""}, {"sessions", p.Inventory.Sessions != ""}, {"implementation-plan", len(p.Plans) > 0}} {
 		state := "absent"
 		if entry.present {
 			state = "discovered"
@@ -223,6 +228,17 @@ func (p *Project) scanArea() error {
 					p.Inventory.SDUI = append(p.Inventory.SDUI, info.Model)
 				} else {
 					p.Inventory.Models = append(p.Inventory.Models, info.Model)
+				}
+			} else if ext == ".md" && strings.HasPrefix(rel, "Sessions/") {
+				b, err := boundedFile(path)
+				total += int64(len(b))
+				if total > 64<<20 {
+					return fmt.Errorf("SDP discovery exceeds 64 MiB source and Session input")
+				}
+				if err != nil {
+					n.State, n.Diagnostic, n.Target = "unavailable", err.Error(), nil
+				} else {
+					n.Target = copyRevision(n.Target, documents.Hash(b))
 				}
 			} else if ext == ".md" && strings.HasPrefix(rel, "05--Implementation/") {
 				if b, err := boundedFile(path); err == nil && strings.Contains(string(b), "| PlanType | ImplementationPlan |") {

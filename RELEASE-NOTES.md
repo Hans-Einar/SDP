@@ -4,6 +4,10 @@
 
 Release-Date: unreleased
 
+### Added
+
+- [PLAN-SDP-0015] SDPTool discovers SDP/Sessions and exposes a dedicated Sessions navigation root with nested openable documents, diagnostic isolation and content-aware refresh. No registration or Session runtime is required.
+
 ## [2.0.0] - 2026-10-01
 
 ### Added

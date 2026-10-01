@@ -13,7 +13,7 @@ func Navigation(p Project, id string) (Tree, error) {
 		return Tree{}, failure("incomplete", fmt.Errorf("installation has not published navigation; resume its recorded operation"))
 	}
 
-	t := Tree{Schema: Version, Operation: "tree", Project: p.Inventory.ProjectID, Roots: []string{"sdl", "kanban", "sdui"}, Nodes: []Node{}, ExpansionDepthLimit: 8}
+	t := Tree{Schema: Version, Operation: "tree", Project: p.Inventory.ProjectID, Roots: []string{"sdl", "kanban", "sdui", "sessions"}, Nodes: []Node{}, ExpansionDepthLimit: 8}
 	if id != "" {
 		mt, e := ModelTree(p, id)
 		if e != nil {
@@ -66,6 +66,7 @@ func Navigation(p Project, id string) (Tree, error) {
 		t.Roots = append([]string{"files"}, t.Roots...)
 		t.Nodes = append(t.Nodes, p.Files...)
 	}
+	t.Nodes = append(t.Nodes, sessionsNode(p))
 	versions := []string{t.Revision}
 	if p.Inventory.KanBan != "" {
 		nodes, hash, e := BoardNodes(p)
@@ -95,4 +96,27 @@ func Navigation(p Project, id string) (Tree, error) {
 	}
 	t.InventoryRevision = documents.Hash(b)
 	return t, nil
+}
+
+// Sessions is a second entry point into the canonical file tree, not another
+// registry or a claim of validation of the manual Session document format.
+func sessionsNode(p Project) Node {
+	tab := Node{ID: "sessions", Kind: "tab", Label: "Sessions", State: "absent"}
+	for _, n := range p.Files {
+		if n.ID != "files/Sessions" {
+			continue
+		}
+		if n.Kind != "directory" {
+			tab.State = "unavailable"
+			tab.Diagnostic = "SDP/Sessions must be a real directory; symlinks are not followed"
+			return tab
+		}
+		tab.State, tab.Diagnostic = n.State, n.Diagnostic
+		tab.Children = n.Children
+		if tab.State == "available" && len(tab.Children) == 0 {
+			tab.State = "empty"
+		}
+		return tab
+	}
+	return tab
 }

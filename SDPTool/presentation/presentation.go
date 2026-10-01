@@ -196,7 +196,7 @@ func discovery(w io.Writer, b json.RawMessage) error {
 		return err
 	}
 	fmt.Fprintf(w, "%s [%s]\nProject: %s\nSDP area: %s\n", safe(v.Inventory.ProjectID), safe(v.Status), safe(v.Root), safe(v.Area))
-	for _, name := range []string{"sdl", "sdui", "kanban", "implementation-plan"} {
+	for _, name := range []string{"sdl", "sdui", "kanban", "sessions", "implementation-plan"} {
 		fmt.Fprintf(w, "%s: %s\n", name, safe(v.Capabilities[name]))
 	}
 	fmt.Fprintf(w, "Sources: %d\n", len(v.Sources))

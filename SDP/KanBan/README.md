@@ -4,6 +4,7 @@
 
 | ID | Type | Status | Document |
 | --- | --- | --- | --- |
+| KB-SDP-047 | Change | completed | [Discover and browse Sessions](completed/%23047--Change--Discover-and-browse-Sessions.md) |
 | KB-SDP-046 | Change | completed | [Source discovery and systems navigation](completed/%23046--Change--Source-discovery-and-multiple-system-navigation.md) |
 | KB-SDP-045 | Change | completed | [Portable CLI presentation](completed/%23045--Change--Portable-SDPTool-presentation.md) |
 | KB-SDP-044 | Change | completed | [Sessions and release preparation](completed/%23044--Change--Sessions-and-repeatable-release-preparation.md) |

@@ -99,7 +99,7 @@ All paths are relative to the parent of SDP, except typed open targets which car
 absolute paths. Enumeration does not follow symlinks; symlinks remain visible.
 Containment checks also apply when resolving sources and generating outputs.
 Skip `.git`, `.sdp-operations` and `.sdp-backups`. Limits: 10,000 filesystem entries, depth 64,
-256 source files, 2 MiB per source and 64 MiB aggregate source input. The combined
+256 source files, 2 MiB per source and 64 MiB aggregate source/Session input. The combined
 semantic navigation retains its 20,000-node and 32 MiB result bounds.
 
 The viewer stores this snapshot in memory. It watches the SDP filesystem or offers
@@ -108,7 +108,7 @@ request ordering; an older response must not replace a newer one. Generation is
 still on demand and rechecks source revisions. Discovery is not an atomic filesystem
 transaction and does not claim a permanently current view while files are edited.
 
-KanBan follows `SDP/KanBan`. ImplementationPlan documents under
+KanBan follows `SDP/KanBan`. Sessions follows `SDP/Sessions`. ImplementationPlan documents under
 `05--Implementation` are reported in `plans`. A single plan can be selected
 implicitly; otherwise `view ip --plan PROJECT_RELATIVE_PATH` selects it explicitly.
 A single SDL model can be selected implicitly; multiple models require `--model`
@@ -187,7 +187,7 @@ never switches project/source selection implicitly.
 
 ## KanBan and SDUI services — T3-M3
 
-`tree` returns Files, KanBan, SDL and SDUI roots, with unavailable diagnostics rather than
+`tree` returns Files, KanBan, SDL, SDUI and Sessions roots, with unavailable diagnostics rather than
 hiding failures in optional services. `revision` is the selected SDL source hash;
 `inventoryRevision` also changes with source inventory, filesystem entries, card/ledger data and SDUI
 sources. Consumers refresh on either appropriate revision. All targets retain
@@ -269,3 +269,24 @@ Typed-planning update: installed management facts and KanBan descriptors accept
 sdp-project-management/0.2 as well as 0.1. The facade still projects cards; it
 does not claim to render plans or validate every management transition. The selected process folder convention remains sdp-five-phase/0.1. sdp.planning.v1 is an installed process
 capability, not a new navigation command.
+
+## Sessions browsing — SN1
+
+A real SDP/Sessions directory adds `inventory.sessions: "SDP/Sessions"` and
+`capabilities.sessions: "discovered"` to discovery. The Sessions root (`sessions`,
+kind `tab`) reuses canonical Files nodes, with nested directories, filename labels
+and typed `open` targets. Guides/templates and other actual entries remain
+browsable; no filename convention, registry or Session metadata validation is
+required. This is an additive contract 0.2 extension. Existing roots retain their IDs.
+
+The tab reports absent, empty, available or unavailable. A file or symlink at
+SDP/Sessions is unavailable as a Sessions root; the generic Files tree still
+shows it. Enumeration never follows symlinks. Unreadable/oversized Markdown
+remains visible with a diagnostic and no open target. Session Markdown is bounded
+to 1 MiB per file; readable content hashes bind open targets and the inventory
+revision, including when timestamps are preserved. Other files retain normal
+filesystem revisions. Existing combined navigation and scan limits still apply.
+
+Refresh discovers additions, edits, moves and removals. `discover --json` supplies
+this tree to a consumer buffer; `tree` displays it in the console. Viewer-owned
+opening/watching and Session lifecycle/capture/timeline automation are separate.

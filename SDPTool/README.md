@@ -112,7 +112,9 @@ sdptool /path/to/project sdui-preview --model DISCOVERED_SDUI_ID --entry page --
 
 Use the revision/targets returned by tree, not a hardcoded hash. KanBan nodes carry
 current file paths, CardState and optional Scrum/Sprint grouping; SDL tree nodes
-cover every catalog viewpoint and supported kind. SDUI preview currently delegates
+cover every catalog viewpoint and supported kind. Sessions has its own directory-derived navigation root and discovered capability.
+Its nested documents use ordinary open targets; no registration is required.
+SDUI preview currently delegates
 the structural Markdown exporter; it does not imply interactive controls.
 
 [Consumer examples and executable harness](Consumer-Examples.md) document the

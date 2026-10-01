@@ -63,3 +63,12 @@ unverified reference; there is no foreign node to expand or target to open.
 Continue using the card's own `target` to open its local document. Only `reference`
 points to a canonical node in the returned tree. External IDs need not exist and
 are never resolved by SDPTool across checkouts or through a remote service.
+
+## Sessions
+
+Read `capabilities.sessions`, optional `inventory.sessions` and the `sessions`
+root in the discovery snapshot. Its children reuse canonical file-node IDs and
+typed open targets, so a viewer opens the original Markdown with no generation
+step. Follow directory children using the existing visited-set/depth policy.
+Root state distinguishes missing/empty/unavailable/available; document errors
+remain visible. Do not interpret a discovered file as a validated Session state.

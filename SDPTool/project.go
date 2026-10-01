@@ -27,6 +27,7 @@ type Inventory struct {
 	ProjectManifest    string  `json:"projectManifest,omitempty"`
 	ImplementationPlan string  `json:"implementationPlan,omitempty"`
 	KanBan             string  `json:"kanban,omitempty"`
+	Sessions           string  `json:"sessions,omitempty"`
 	Models             []Model `json:"models"`
 	SDUI               []Model `json:"sdui"`
 }

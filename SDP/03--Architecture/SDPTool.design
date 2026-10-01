@@ -27,6 +27,7 @@ functionality DescribeNavigationTree.
 actor DesignAuthor.
 capability DesignPreview.
 actor DesignReviewer.
+functionality DiscoverSessionDocuments.
 functionality DiscoverSourceInventory.
 actor DocumentViewer.
 message ExecuteInstallationPlanRequest.
@@ -256,6 +257,9 @@ DesignPreview requires SdlProjectionPort in mode StandalonePreview.
 DesignReviewer pursues BrowseProject.
 DesignReviewer pursues InspectCardHistory.
 DesignReviewer pursues ReviewImplementationPlan.
+DiscoverSessionDocuments allocated-to SdpToolProcess in mode ProjectBrowsing.
+DiscoverSessionDocuments contributes-to SdpTool.
+DiscoverSessionDocuments realizes ProjectNavigation.
 DiscoverSourceInventory allocated-to SdpToolProcess in mode ProjectBrowsing.
 DiscoverSourceInventory contributes-to SdpTool.
 DiscoverSourceInventory realizes ProjectNavigation.
@@ -633,8 +637,10 @@ PreviewSlice delivers SdpTool.
 PreviewSlice has implementation-status = planned.
 PreviewSlice refines DeliverSdpTool.
 ProcessReleaseRecords upholds InstallReleaseRecord.
+ProjectContext owns DiscoverSessionDocuments.
 ProjectContext owns DiscoverSourceInventory.
 ProjectContext owns ResolveProjectContext.
+ProjectDiscoverySlice addresses DiscoverSessionDocuments.
 ProjectDiscoverySlice addresses DiscoverSourceInventory.
 ProjectDiscoverySlice addresses ResolveProjectContext.
 ProjectDiscoverySlice delivers SdpTool.
