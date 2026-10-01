@@ -82,5 +82,67 @@
     "url": "https://github.com/Hans-Einar/SDP/releases/tag/v2.1.0"
   },
   "assetHashesMatchPreparedCandidate": true,
-  "client": "pending"
+  "client": {
+    "version": "0.2.1",
+    "candidate": "315ec1de9dbe9aee990baae47a1ac2a7a07a0702",
+    "tagObject": "5a93c3b8a51e62c9c3558227b3cf166f6f90f505",
+    "release": {
+      "assets": [
+        {
+          "apiUrl": "https://api.github.com/repos/Hans-Einar/gh-sdp/releases/assets/603337983",
+          "contentType": "text/plain; charset=utf-8",
+          "createdAt": "2026-10-01T13:35:13Z",
+          "digest": "sha256:1f61f4dbc1dff263ec3668fd11d009a44119bc74edd560f2f0fd450ab4afb88e",
+          "downloadCount": 0,
+          "id": "RA_kwDOTW6W0M4j9jT_",
+          "label": "",
+          "name": "checksums.txt",
+          "size": 85,
+          "state": "uploaded",
+          "updatedAt": "2026-10-01T13:35:13Z",
+          "url": "https://github.com/Hans-Einar/gh-sdp/releases/download/v0.2.1/checksums.txt"
+        },
+        {
+          "apiUrl": "https://api.github.com/repos/Hans-Einar/gh-sdp/releases/assets/603337982",
+          "contentType": "application/octet-stream",
+          "createdAt": "2026-10-01T13:35:12Z",
+          "digest": "sha256:230440b0bbeb5af33f98b91bd227b26f78e3deefba9e23dee1e1508e75061dca",
+          "downloadCount": 0,
+          "id": "RA_kwDOTW6W0M4j9jT-",
+          "label": "",
+          "name": "gh-sdp-linux-amd64",
+          "size": 10043233,
+          "state": "uploaded",
+          "updatedAt": "2026-10-01T13:35:15Z",
+          "url": "https://github.com/Hans-Einar/gh-sdp/releases/download/v0.2.1/gh-sdp-linux-amd64"
+        },
+        {
+          "apiUrl": "https://api.github.com/repos/Hans-Einar/gh-sdp/releases/assets/603337978",
+          "contentType": "application/json",
+          "createdAt": "2026-10-01T13:35:12Z",
+          "digest": "sha256:594cdb20e5148be1ff67f470fc8a5ad062dc61c25d82a8ebce7639a2b271c60f",
+          "downloadCount": 0,
+          "id": "RA_kwDOTW6W0M4j9jT6",
+          "label": "",
+          "name": "gh-sdp.manifest.json",
+          "size": 1063,
+          "state": "uploaded",
+          "updatedAt": "2026-10-01T13:35:13Z",
+          "url": "https://github.com/Hans-Einar/gh-sdp/releases/download/v0.2.1/gh-sdp.manifest.json"
+        }
+      ],
+      "isDraft": false,
+      "isPrerelease": false,
+      "publishedAt": "2026-10-01T13:35:16Z",
+      "tagName": "v0.2.1",
+      "url": "https://github.com/Hans-Einar/gh-sdp/releases/tag/v0.2.1"
+    },
+    "allDownloadedAssetsMatchCandidate": true,
+    "binarySHA256": "230440b0bbeb5af33f98b91bd227b26f78e3deefba9e23dee1e1508e75061dca",
+    "independentReview": "REV-SPS-008-001 in external Hans-Einar/gh-sdp repository",
+    "globalExtensionUpdated": false,
+    "independentPublicationReview": "REV-SPS-008-002: approved/pass in external Hans-Einar/gh-sdp repository",
+    "latestRelease": "v0.2.1"
+  },
+  "status": "published-and-verified"
 }

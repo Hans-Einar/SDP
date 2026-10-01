@@ -47,7 +47,7 @@ release log is not proof of publication. The project release contract governs.
   executable and checksums; verify downloaded assets against exact release.
 - [x] Reconcile actual tag/commit/time and append truthful release events only after
   success. Do not rewrite a released log or silently correct released notes.
-- [ ] Verify gh-sdp selection: its compiled default is pinned. Either publish/update
+- [x] Verify gh-sdp selection: its compiled default is pinned. Either publish/update
   the client default or document an explicit SDP_RELEASE selecting this release.
 - [x] Provide preview/apply commands and expected receipt. Owner-requested manual
   project upgrade remains manual; never confuse updating the gh extension with

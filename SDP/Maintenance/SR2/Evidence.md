@@ -23,9 +23,21 @@ Binary SHA-256: `691c021751cefb35c7f92c902545cd6c5d71ccadfcde07ae507a6ce026c8a82
 
 ## Client and notification handoff
 
-Client gh-sdp 0.2.1 is being prepared in its own bounded SPS-008 release with
-immutable bootstrap from the selected source. Its release is recorded separately
-once actual. Main branches, global installed extension and XFMD are unchanged.
+Client gh-sdp 0.2.1 is published under its own bounded SPS-008 release:
+https://github.com/Hans-Einar/gh-sdp/releases/tag/v0.2.1
+Actual publication timestamp: 2026-10-01T13:35:16Z. Annotated tag object
+5a93c3b8a51e62c9c3558227b3cf166f6f90f505 peels to the reviewed candidate
+315ec1de9dbe9aee990baae47a1ac2a7a07a0702. It selects the immutable bootstrap
+v0.0.0-20261001092620-93517ad98cd1. Root downloaded all three assets and checked
+their bytes against the independently reviewed client package. Binary SHA-256:
+230440b0bbeb5af33f98b91bd227b26f78e3deefba9e23dee1e1508e75061dca.
+
+External client evidence: VER-SPS-008 and REV-SPS-008-001 in Hans-Einar/gh-sdp.
+The review independently checks the exact candidate, full packaged race tests,
+isolated gh routing, vet, immutable module and public default from a fresh cache.
+No findings remain. The client has no CI workflow; its native gate passes and no
+client CI result is claimed. Upstream CI is separately successful.
+Main branches, global installed extension and XFMD remain unchanged.
 
 GitHub CLI already checks for an executed extension's updates once per 24 hours
 and writes the notice to stderr. It can be disabled with
@@ -36,7 +48,20 @@ can delay the owner's first notification; it does not mean the release is absent
 We avoid invoking the owner's global gh sdp during publication, preserving their
 opportunity to test. gh checks the client release, not its pinned SDPTool version.
 
-Once the paired client is published, the owner may run `gh sdp --version` to use
+The paired client is now published. The owner may run `gh sdp --version` to use
 the still-installed version and observe any notice, then `gh extension upgrade sdp`
 and `gh sdp --version` to verify SDPTool 2.1.0. Existing Sessions browsing does not
 require `gh sdp . upgrade`; native XFMD dynamic tabs and a refresh are still needed.
+
+## Independent client publication closeout
+
+External REV-SPS-008-002 independently verified the actual annotated tag,
+public release, all downloaded assets, fresh-cache production default and matching
+engine/descriptor. Its disposition is approved/pass with no remediation findings.
+Root inspected that report and independently checked downloaded client bytes and
+latest-release selection. The client coordinator owns linking its report and
+final administrative closeout in Hans-Einar/gh-sdp. Both publications are complete.
+
+The prepared candidate/review files under SR1 retain their historical preparation
+status. This SR2 record is the authority for subsequent actual publication; no
+released note sections, signed descriptors or historical ledger bytes were edited.

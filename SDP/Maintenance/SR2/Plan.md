@@ -4,7 +4,7 @@
 | --- | --- |
 | id | MAINT-SDP-0013 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | MaintenancePlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
@@ -27,7 +27,7 @@ Source: https://cli.github.com/manual/gh_help_environment
 | Phase | Milestone | Acceptance | State |
 | --- | --- | --- | --- |
 | SR2 | SR2-M1 | Revalidate exact prepared bytes; publish annotated SDP tag/assets and verify downloads | completed |
-| SR2 | SR2-M2 | Publish independently reviewed pinned client; reconcile actual identities and owner handoff | in-progress |
+| SR2 | SR2-M2 | Publish independently reviewed pinned client; reconcile actual identities and owner handoff | completed |
 
 Root records use sdp/release-2.1-preparation with milestone commits/pushes. gh-sdp
 owns its bounded release records and separate branch. Preserve unrelated files.
@@ -43,3 +43,12 @@ before tag creation. Compare downloaded assets to prepared SHA256SUMS, bootstrap
 with production trust and isolated cache, and inspect real GitHub identities.
 Paired client requires its own race/vet/package/independent review and remote
 immutable dependency checks. Mark publication facts only after they exist.
+
+## Closeout
+
+Both milestones completed on 2026-10-01. [Evidence](Evidence.md) and
+[Publication identities](Publication.json) record published SDP 2.1.0 and gh-sdp
+0.2.1, downloaded matching assets and independent client publication review.
+The owner retains the installed older extension for manual notification/update
+checks. Framework is unchanged; existing Sessions browsing needs no project
+upgrade. Main integration and native XFMD UI acceptance remain outside this task.
