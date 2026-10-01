@@ -305,6 +305,21 @@
       "source": "Template/sdp-root/SDL/AGENTS.md",
       "destination": "SDP/SDL/AGENTS.md",
       "ownership": "project"
+    },
+    {
+      "source": "Template/sdp-root/Sessions/README.md",
+      "destination": "SDP/Sessions/README.md",
+      "ownership": "project"
+    },
+    {
+      "source": "Template/sdp-root/Sessions/Session-template.md",
+      "destination": "SDP/Sessions/Session-template.md",
+      "ownership": "project"
+    },
+    {
+      "source": "Toolkit/docs/ReleaseChecklist.md",
+      "destination": "SDP/Framework/ReleaseChecklist.md",
+      "ownership": "managed"
     }
   ]
 }

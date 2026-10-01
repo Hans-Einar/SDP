@@ -5,11 +5,15 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"strings"
 
 	"github.com/Hans-Einar/SDP/SystemDesignLanguage/go/parser"
 )
 
 func execute(args []string, stdin io.Reader, stdout, stderr io.Writer) int {
+	if len(args) >= 2 && (args[0] == "fragment" || (args[0] == "format" && len(args) == 3 && args[2] == "--file-map")) {
+		return graphCommand(args, stdin, stdout, stderr)
+	}
 	if len(args) > 0 && (args[0] == "class-check" || args[0] == "class-view") {
 		return classCommand(args, stdout, stderr)
 	}
@@ -37,6 +41,11 @@ func execute(args []string, stdin io.Reader, stdout, stderr io.Writer) int {
 	if e != nil {
 		fmt.Fprintln(stderr, e)
 		return 2
+	}
+	if args[0] != "action-check" {
+		if m, err := parser.Parse(string(source)); err == nil && m.Header.Version == "0.6" {
+			return graphCommand(args, strings.NewReader(string(source)), stdout, stderr)
+		}
 	}
 	if args[0] == "action-check" {
 		_, err := parser.CompileActions(string(source))

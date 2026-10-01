@@ -1749,7 +1749,8 @@ def validate_install_conformance_package(
                     outcome,
                     schema,
                     f"install-v1 {scenario_id} expected plan",
-                    contract,
+                    # Retired fixture bytes remain pinned to their final 1.0.0 baseline.
+                    {**contract, "toolkitVersion": "1.0.0"} if isinstance(contract, dict) else contract,
                 )
             if isinstance(outcome, dict):
                 expected_can_apply = kind == "applicable-plan"

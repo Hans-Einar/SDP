@@ -1,0 +1,194 @@
+language design-core version 0.5.
+capability ActionExecution.
+interface ActionExecutionPort.
+feature AgentGovernance.
+channel BoardCalls.
+contract BoardCallsProtocol.
+feature BoardInspection.
+message BoardSnapshot.
+usecase BrowseArchitecture.
+scenario BrowseArchitecturePath.
+usecase BrowseBoard.
+scenario BrowseBoardPath.
+capability ChangeRebuild.
+usecase ChooseRoutine.
+scenario ChooseRoutinePath.
+unit CodexClient.
+contract CollaborationEnvelope.
+field CorrelationIdentity.
+feature DesignNavigation.
+interface DevelopmentHostPort.
+capability DocumentDelivery.
+interface DocumentDeliveryPort.
+interface DocumentSnapshotPort.
+capability DocumentSnapshots.
+unit ExternalCodexAppServer.
+channel GovernanceCalls.
+contract GovernanceCallsProtocol.
+activity IntegratedGovernancePilot.
+unit KanBanCli.
+unit KanBanTui.
+channel McpCalls.
+contract McpCallsProtocol.
+mode ModelBrowsing.
+capability ModelProjection.
+interface ModelProjectionPort.
+capability ModelValidation.
+interface ModelValidationPort.
+channel NavigationCalls.
+contract NavigationCallsProtocol.
+actor ProjectOwner.
+capability ProjectServices.
+interface ProjectServicesPort.
+message ProjectValidatedModel.
+message ProjectedDocument.
+channel ProjectionCalls.
+contract ProjectionCallsProtocol.
+message ReadBoard.
+message RequestRoutine.
+message RouteDecision.
+message RouteIntent.
+message RoutineResponse.
+mode RoutineSelection.
+unit SdlActionRuntime.
+unit SdlCodeGeneration.
+unit SdlDevelopmentHost.
+unit SdlDocumentService.
+unit SdlDocumentSnapshot.
+unit SdlFrontend.
+unit SdlViewpoints.
+unit SdpMcpAdapter.
+unit SdpTool.
+unit SduiCodegen.
+unit SduiFrontend.
+unit SduiNativeHost.
+unit SduiPresentation.
+unit SduiRuntime.
+message SelectModelView.
+message SelectedDocument.
+mode SourceGeneration.
+capability UiCodeGeneration.
+interface UiCodeGenerationPort.
+capability UiEvents.
+interface UiEventsPort.
+capability UiGeometry.
+interface UiGeometryPort.
+capability UiParsing.
+interface UiParsingPort.
+AgentGovernance supports ChooseRoutine.
+BoardCalls upholds BoardCallsProtocol.
+BoardCallsProtocol has completeness = closed.
+BoardCallsProtocol permits BoardSnapshot.
+BoardCallsProtocol permits ReadBoard.
+BoardInspection supports BrowseBoard.
+BoardSnapshot has message-kind = result.
+BoardSnapshot replies-to ReadBoard.
+BoardSnapshot upholds CollaborationEnvelope.
+BrowseArchitecturePath exercises BrowseArchitecture.
+BrowseArchitecturePath has completeness = closed.
+BrowseArchitecturePath runs-in ModelBrowsing.
+BrowseArchitecturePath step 1 sends SelectModelView from CodexClient to SdpTool via NavigationCalls.
+BrowseArchitecturePath step 2 sends ProjectValidatedModel from SdpTool to SdlViewpoints via ProjectionCalls.
+BrowseArchitecturePath step 3 sends ProjectedDocument from SdlViewpoints to SdpTool via ProjectionCalls reply-to 2.
+BrowseArchitecturePath step 4 sends SelectedDocument from SdpTool to CodexClient via NavigationCalls reply-to 1.
+BrowseBoardPath exercises BrowseBoard.
+BrowseBoardPath has completeness = closed.
+BrowseBoardPath runs-in ModelBrowsing.
+BrowseBoardPath step 1 sends ReadBoard from KanBanTui to SdpTool via BoardCalls.
+BrowseBoardPath step 2 sends BoardSnapshot from SdpTool to KanBanTui via BoardCalls reply-to 1.
+ChooseRoutinePath exercises ChooseRoutine.
+ChooseRoutinePath has completeness = closed.
+ChooseRoutinePath runs-in RoutineSelection.
+ChooseRoutinePath step 1 sends RequestRoutine from ExternalCodexAppServer to SdpMcpAdapter via McpCalls.
+ChooseRoutinePath step 2 sends RouteIntent from SdpMcpAdapter to SdpTool via GovernanceCalls.
+ChooseRoutinePath step 3 sends RouteDecision from SdpTool to SdpMcpAdapter via GovernanceCalls reply-to 2.
+ChooseRoutinePath step 4 sends RoutineResponse from SdpMcpAdapter to ExternalCodexAppServer via McpCalls reply-to 1.
+CodexClient consumes DevelopmentHostPort.
+CodexClient uses NavigationCalls as receiver of SelectedDocument in mode ModelBrowsing.
+CodexClient uses NavigationCalls as sender of SelectModelView in mode ModelBrowsing.
+CollaborationEnvelope has completeness = closed.
+CollaborationEnvelope has-field CorrelationIdentity.
+CorrelationIdentity has presence = required.
+CorrelationIdentity has value-type = text.
+DesignNavigation supports BrowseArchitecture.
+ExternalCodexAppServer uses McpCalls as receiver of RoutineResponse in mode RoutineSelection.
+ExternalCodexAppServer uses McpCalls as sender of RequestRoutine in mode RoutineSelection.
+GovernanceCalls upholds GovernanceCallsProtocol.
+GovernanceCallsProtocol has completeness = closed.
+GovernanceCallsProtocol permits RouteDecision.
+GovernanceCallsProtocol permits RouteIntent.
+IntegratedGovernancePilot has implementation-status = planned.
+KanBanTui uses BoardCalls as receiver of BoardSnapshot in mode ModelBrowsing.
+KanBanTui uses BoardCalls as sender of ReadBoard in mode ModelBrowsing.
+McpCalls upholds McpCallsProtocol.
+McpCallsProtocol has completeness = closed.
+McpCallsProtocol permits RequestRoutine.
+McpCallsProtocol permits RoutineResponse.
+NavigationCalls upholds NavigationCallsProtocol.
+NavigationCallsProtocol has completeness = closed.
+NavigationCallsProtocol permits SelectModelView.
+NavigationCallsProtocol permits SelectedDocument.
+ProjectOwner pursues BrowseArchitecture.
+ProjectOwner pursues BrowseBoard.
+ProjectOwner pursues ChooseRoutine.
+ProjectValidatedModel has message-kind = request.
+ProjectValidatedModel upholds CollaborationEnvelope.
+ProjectedDocument has message-kind = result.
+ProjectedDocument replies-to ProjectValidatedModel.
+ProjectedDocument upholds CollaborationEnvelope.
+ProjectionCalls upholds ProjectionCallsProtocol.
+ProjectionCallsProtocol has completeness = closed.
+ProjectionCallsProtocol permits ProjectValidatedModel.
+ProjectionCallsProtocol permits ProjectedDocument.
+ReadBoard has message-kind = request.
+ReadBoard upholds CollaborationEnvelope.
+RequestRoutine has message-kind = request.
+RequestRoutine upholds CollaborationEnvelope.
+RouteDecision has message-kind = result.
+RouteDecision replies-to RouteIntent.
+RouteDecision upholds CollaborationEnvelope.
+RouteIntent has message-kind = request.
+RouteIntent upholds CollaborationEnvelope.
+RoutineResponse has message-kind = result.
+RoutineResponse replies-to RequestRoutine.
+RoutineResponse upholds CollaborationEnvelope.
+SdlActionRuntime provides ActionExecution.
+SdlCodeGeneration consumes UiCodeGenerationPort.
+SdlDevelopmentHost provides ChangeRebuild.
+SdlDocumentService provides DocumentDelivery.
+SdlDocumentSnapshot provides DocumentSnapshots.
+SdlFrontend provides ModelValidation.
+SdlViewpoints consumes ModelValidationPort.
+SdlViewpoints provides ModelProjection.
+SdlViewpoints uses ProjectionCalls as receiver of ProjectValidatedModel in mode ModelBrowsing.
+SdlViewpoints uses ProjectionCalls as sender of ProjectedDocument in mode ModelBrowsing.
+SdpMcpAdapter consumes ProjectServicesPort.
+SdpMcpAdapter uses GovernanceCalls as receiver of RouteDecision in mode RoutineSelection.
+SdpMcpAdapter uses GovernanceCalls as sender of RouteIntent in mode RoutineSelection.
+SdpMcpAdapter uses McpCalls as receiver of RequestRoutine in mode RoutineSelection.
+SdpMcpAdapter uses McpCalls as sender of RoutineResponse in mode RoutineSelection.
+SdpTool consumes DocumentDeliveryPort.
+SdpTool consumes DocumentSnapshotPort.
+SdpTool consumes ModelProjectionPort.
+SdpTool provides ProjectServices.
+SdpTool uses BoardCalls as receiver of ReadBoard in mode ModelBrowsing.
+SdpTool uses BoardCalls as sender of BoardSnapshot in mode ModelBrowsing.
+SdpTool uses GovernanceCalls as receiver of RouteIntent in mode RoutineSelection.
+SdpTool uses GovernanceCalls as sender of RouteDecision in mode RoutineSelection.
+SdpTool uses NavigationCalls as receiver of SelectModelView in mode ModelBrowsing.
+SdpTool uses NavigationCalls as sender of SelectedDocument in mode ModelBrowsing.
+SdpTool uses ProjectionCalls as receiver of ProjectedDocument in mode ModelBrowsing.
+SdpTool uses ProjectionCalls as sender of ProjectValidatedModel in mode ModelBrowsing.
+SduiCodegen provides UiCodeGeneration.
+SduiFrontend provides UiParsing.
+SduiNativeHost consumes UiEventsPort.
+SduiNativeHost consumes UiGeometryPort.
+SduiPresentation consumes UiParsingPort.
+SduiPresentation provides UiGeometry.
+SduiRuntime consumes ActionExecutionPort.
+SduiRuntime provides UiEvents.
+SelectModelView has message-kind = request.
+SelectModelView upholds CollaborationEnvelope.
+SelectedDocument has message-kind = result.
+SelectedDocument replies-to SelectModelView.
+SelectedDocument upholds CollaborationEnvelope.

@@ -9,3 +9,7 @@ Current release verification uses [SDPTool installation tests](../../../SDPTool/
 for actual signed preview/apply, recovery, preservation and receipt behavior.
 These historical expectations are not evidence that a current Go operation ran.
 Published old assets and their original Git commits retain the prior implementation.
+
+The retained expected-plan toolkitVersion is pinned to the final 1.0.0 baseline.
+Current distribution version changes do not rewrite historical scenario bytes;
+validation retains their schema, ordering, path and baseline-version checks.

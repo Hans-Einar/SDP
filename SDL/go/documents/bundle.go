@@ -6,6 +6,7 @@ import (
 	"crypto/sha256"
 	"encoding/json"
 	"fmt"
+	"github.com/Hans-Einar/SDP/SystemDesignLanguage/go/parser"
 	"github.com/Hans-Einar/SDP/SystemDesignLanguage/go/viewpoint"
 	"net/url"
 	"path"
@@ -65,6 +66,7 @@ func Build(ctx context.Context, v *viewpoint.Views, o Options) (*Bundle, error) 
 		}
 	}
 	b := &Bundle{Files: map[string][]byte{}, Manifest: Manifest{Version: viewpoint.Version, Revision: v.Revision, Diagrams: []viewpoint.Diagram{}, Facts: v.Facts, Gaps: v.Gaps}}
+	b.sourceProvenance(v)
 	if o.Renderer != nil {
 		b.Manifest.Renderer = o.Renderer.Identity()
 	}
@@ -199,4 +201,20 @@ func LocalPath(from, link string) (string, error) {
 		return "", fmt.Errorf("escaping link %s", link)
 	}
 	return p, nil
+}
+
+// sourceProvenance augments only new-profile bundles; legacy facts stay compatible.
+func (b *Bundle) sourceProvenance(v *viewpoint.Views) {
+	if v.Profile != "design-core/0.6" {
+		return
+	}
+	b.Manifest.Version = VersionFor(v)
+	data, _ := json.MarshalIndent(map[string]any{"schema": "sdl-source-provenance/1", "profile": v.Profile, "system": v.System, "revision": v.Revision, "sources": v.Sources, "edges": v.SourceEdges, "declarations": parser.Data(v.Model.Declarations)}, "", "  ")
+	b.Files["sources.json"] = append(data, '\n')
+}
+func VersionFor(v *viewpoint.Views) string {
+	if v.Profile == "design-core/0.6" {
+		return viewpoint.Version + "/source-graph-1"
+	}
+	return viewpoint.Version
 }

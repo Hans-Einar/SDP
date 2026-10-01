@@ -83,18 +83,21 @@ sdptool preview ../SDP/03--Architecture/SDPTool.design --output /tmp/design-prev
 
 The local module replacements locate existing SDL/SDUI libraries in this checkout;
 no Python parser or second language implementation is introduced. Tests run with
-`go test -race ./...`. Discovery and view ip use the navigation registration described in the contract;
+`go test -race ./...`. Discovery and view ip use the source-derived snapshot described in the contract;
 direct preview works without project metadata.
 
 ## Project selection and viewer
 
 ```sh
 sdptool /path/to/project discover
-sdptool /path/to/project view ip --model sdptool --viewer /path/to/xfmd --sdl-tool /path/to/sdl
+sdptool /path/to/project view ip --model DISCOVERED_SDL_ID --viewer /path/to/xfmd --sdl-tool /path/to/sdl
 ```
 
-The repository registers two SDL model entries and explicitly defaults to sdptool;
-select --model sdl-sdui for the shared language design.
+`discover --json` lists every discovered source, its path-derived ID and state.
+Use those IDs with `--model`; no registration file or defaultModel is required.
+Unfiltered `tree` includes the actual SDP file tree and all source models.
+The [ecosystem catalog](../SDP/SDL/Catalog.md) documents model responsibilities;
+source files and directories are the navigation authority.
 The viewer command waits until that window exits to keep generated navigation
 resources alive. Host options can also use SDP_XFMD, SDP_SDL_TOOL and SDP_MMDR.
 `generate ip` remains later scope and never runs implicitly while viewing.
@@ -102,14 +105,16 @@ resources alive. Host options can also use SDP_XFMD, SDP_SDL_TOOL and SDP_MMDR.
 ## Navigation services
 
 ```sh
-sdptool /path/to/project tree --model sdptool
-sdptool /path/to/project select --model sdptool --uri 'sdl-view://sdp-vnow/VP02?diagram=VP02-roots&target=main&consumer=xfmd' --revision SOURCE_HASH --output /tmp/selected-view
-sdptool /path/to/project sdui-preview --model concept1 --entry page --output /tmp/ui-document
+sdptool /path/to/project tree --model DISCOVERED_SDL_ID
+sdptool /path/to/project select --model DISCOVERED_SDL_ID --uri 'sdl-view://sdp-vnow/VP02?diagram=VP02-roots&target=main&consumer=xfmd' --revision SOURCE_HASH --output /tmp/selected-view
+sdptool /path/to/project sdui-preview --model DISCOVERED_SDUI_ID --entry page --output /tmp/ui-document
 ```
 
 Use the revision/targets returned by tree, not a hardcoded hash. KanBan nodes carry
 current file paths, CardState and optional Scrum/Sprint grouping; SDL tree nodes
-cover every catalog viewpoint and supported kind. SDUI preview currently delegates
+cover every catalog viewpoint and supported kind. Sessions has its own directory-derived navigation root and discovered capability.
+Its nested documents use ordinary open targets; no registration is required.
+SDUI preview currently delegates
 the structural Markdown exporter; it does not imply interactive controls.
 
 [Consumer examples and executable harness](Consumer-Examples.md) document the
@@ -134,3 +139,35 @@ The first command only previews. Local unsigned development inputs require
 --release or SDP_RELEASE may select another exact descriptor. Test-key inputs
 record test provenance only. Native Windows/macOS acceptance is outstanding. Root-bound plans
 cannot be applied to another project copy. Journals and backups are retained.
+
+## Source-owned SDL composition
+
+Discovered source headers select design-core/0.6 with its `.design` entry and declared
+System. Tree, select, preview and ViewPlan use SDL's checked graph; dependencies
+are authored as includes/path membership in source, never as a second file list.
+Non-entry edits invalidate the revision and old selection requests. Generated
+bundles include sources.json. Output guards protect every reachable source.
+[Profile and commands](../SDL/docs/profiles/SDL-Source-Composition-Profile.md)
+explain limits, fragment inspection and the Frontend pilot. Existing 0.5
+sources remain supported; this does not migrate authored models or implement XFMD.
+
+## Release logs
+
+`sdptool release-log --all --output Releases` deterministically extracts every
+versioned section of RELEASE-NOTES.md. Use --version X.Y.Z for one release and
+--check to validate existing output without writes. Existing differing logs are
+never overwritten. Unreleased content stays in canonical notes until release
+preparation freezes it. See [ReleaseChecklist](../Toolkit/docs/ReleaseChecklist.md).
+
+## Portable output
+
+`sdptool tree` prints the navigation tree directly. `gh sdp tree` forwards to
+that renderer when its selected engine includes this change. No json-tree.sh
+filter or shell runtime is needed. `--json` retains machine-readable data for
+XFMD, scripts and other clients. This checkout is not a published engine update.
+
+The `presentation` Go package contains compiled-in adapters keyed by schema and
+operation. Add an adapter to the registry for a new result; unknown routes remain
+JSON. Human presentation does not change generated Markdown/SVG bundles.
+See [output contract](Contract.md#output-presentation) and
+[rollout requirements](../SDP/05--Implementation/SDPTool/Output/Plan.md).

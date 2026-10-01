@@ -1,0 +1,46 @@
+[
+  {
+    "path": "Acceptance.md",
+    "sha256": "04bf1a34eb7c6863eb7e1952cc5b0723ff4893be53bf1fd6e5ccab50d3af6c40"
+  },
+  {
+    "path": "Contract.md",
+    "sha256": "12fac405c1a2ba582dd8e57a8683ffa616733df4a53db8203ecd686706881f20"
+  },
+  {
+    "path": "Evidence.md",
+    "sha256": "7bde786ed187af7a362de295fa98d295ea39c14beef4d0fbb2ffe5f800d777e3"
+  },
+  {
+    "path": "Plan.md",
+    "sha256": "2c16f7cec190fa1bb47e7361228386fa1329dedad141bd5797823f746335b5a1"
+  },
+  {
+    "path": "evidence/probes.json",
+    "sha256": "69f3bd9609866873985d38697575f5eba9ba6b1c18eae5cd8015a5180c63d74a"
+  },
+  {
+    "path": "evidence/source-manifest.json",
+    "sha256": "9456ae356a79fa2cb5e5792fc8cda38501434bc6ac8c4c0c63951c31d51a3632"
+  },
+  {
+    "path": "examples/frontend/Containers/Frontend.design",
+    "sha256": "d51c844b98f12c7e5049fbd2e077a6a0b2711205e51ade51052969864627cf57"
+  },
+  {
+    "path": "examples/frontend/Features.design",
+    "sha256": "db4b2ae8e422b3f7860a3b848c2015768678abd11090da02a380d7279ea013e9"
+  },
+  {
+    "path": "examples/frontend/Frontend.design-set.json",
+    "sha256": "4795e53776bc892bdc13f4ab1db6b4fbd0655ce91aeccf17c0b21297092db382"
+  },
+  {
+    "path": "examples/frontend/README.md",
+    "sha256": "a47132919f018fd5613282615534c628e4fc6167f6ada9dbabd642309f6a6b1e"
+  },
+  {
+    "path": "examples/frontend/System.design",
+    "sha256": "64501a82838c17582fe607d089dc2115c13339312f2bbe6188228425abe713c4"
+  }
+]

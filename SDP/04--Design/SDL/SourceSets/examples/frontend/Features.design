@@ -1,0 +1,16 @@
+language design-core version 0.6.
+activity ExistingCapability.
+activity IndependentPackaging.
+actor ModelAuthor.
+feature SourceInspection.
+usecase ValidateSource.
+ExistingCapability addresses CheckClassModel.
+ExistingCapability addresses CheckStructuralRelations.
+ExistingCapability addresses CompileActionModel.
+ExistingCapability addresses FormatStructuralSource.
+ExistingCapability addresses ParseStructuralModel.
+ExistingCapability delivers SourceInspection.
+ExistingCapability has implementation-status = implemented.
+IndependentPackaging has implementation-status = planned.
+ModelAuthor pursues ValidateSource.
+SourceInspection supports ValidateSource.

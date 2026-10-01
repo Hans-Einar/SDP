@@ -64,10 +64,13 @@ func ModelTree(p Project, id string) (Tree, error) {
 	if e != nil {
 		return Tree{}, e
 	}
+	if v.Profile != m.Profile || (v.System != "" && v.System != m.System) {
+		return Tree{}, failure("model", fmt.Errorf("discovered profile/System does not match source"))
+	}
 	return modelTree(p, m, v)
 }
 func modelTree(p Project, m Model, v *viewpoint.Views) (Tree, error) {
-	t := Tree{Schema: Version, Operation: "tree", Project: p.Registration.ProjectID, Model: m.ID, Revision: v.Revision, Roots: []string{"sdl"}, Nodes: []Node{}, ExpansionDepthLimit: 8}
+	t := Tree{Schema: Version, Operation: "tree", Project: p.Inventory.ProjectID, Model: m.ID, Revision: v.Revision, Roots: []string{"sdl"}, Nodes: []Node{}, ExpansionDepthLimit: 8}
 	if len(v.Kinds) > 2000 || len(v.Facts) > 10000 {
 		return Tree{}, failure("limit", fmt.Errorf("navigation model exceeds 2000 declarations or 10000 facts; select a smaller source"))
 	}

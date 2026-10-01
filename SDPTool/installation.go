@@ -10,7 +10,7 @@ import (
 )
 
 // These are producer build facts, not a consuming project's installed version.
-var BuildVersion = "0.1.0-dev"
+var BuildVersion = "2.1.0-dev"
 var BuildRevision = "unknown"
 
 func validateProcessFacts(facts map[string]any) error {

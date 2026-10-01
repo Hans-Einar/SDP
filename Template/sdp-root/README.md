@@ -25,3 +25,7 @@ all documentation in English.
 A card or plan being completed does not prove a system feature implemented.
 Prefix new traceability IDs with their owning System. Use the actual installed
 skills and selected plan; no mandatory Sprint or new wrapper card for every task.
+
+For work spanning turns/plans, use [Sessions](Sessions/README.md): recover the
+goal, keep the roadmap first, link plans/cards, and record honest turn outcomes.
+Sessions are manual project documents; lifecycle authority remains in cards/plans.

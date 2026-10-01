@@ -1,0 +1,339 @@
+{
+  "producerCommit": "a274265",
+  "binaries": {
+    "sdl": {
+      "path": "/tmp/xgs1-study/bin/sdl",
+      "sha256": "13307f1160881e3ab3a908de767b5e2dde143f4b961916d4c167c9732651e1ad"
+    },
+    "sdui": {
+      "path": "/tmp/xgs1-study/bin/sdui",
+      "sha256": "94e0cc7feca6686fab9e6d6e6ba5f7cc940389b7c146343046ccc2680407d56f"
+    }
+  },
+  "cases": [
+    {
+      "case": "sdl-core",
+      "command": [
+        "/tmp/xgs1-study/bin/sdl",
+        "check",
+        "/tmp/xgs1-study/probes/fixtures/sdl-core.design"
+      ],
+      "fixtureSha256": "8c3af91f47a684084eccefae60abb88f31781d9e12dc4889f350e8c89ff0a453",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "expectedDiagnostic": null,
+      "expectationMet": true
+    },
+    {
+      "case": "sdl-system",
+      "command": [
+        "/tmp/xgs1-study/bin/sdl",
+        "check",
+        "/tmp/xgs1-study/probes/fixtures/sdl-system.design"
+      ],
+      "fixtureSha256": "1bca283ad53d256a1127c5be9413f002738f718c4affa0dda19a8cef0643fa5e",
+      "exitCode": 1,
+      "expectedExitCode": 1,
+      "expectedDiagnostic": "UNSUPPORTED_SYNTAX",
+      "expectationMet": true
+    },
+    {
+      "case": "sdl-include",
+      "command": [
+        "/tmp/xgs1-study/bin/sdl",
+        "check",
+        "/tmp/xgs1-study/probes/fixtures/sdl-include.design"
+      ],
+      "fixtureSha256": "0bbb771b1e0905d021a94c3717f8e717139778351ba138cb873ef8c6d578e644",
+      "exitCode": 1,
+      "expectedExitCode": 1,
+      "expectedDiagnostic": "UNSUPPORTED_SYNTAX",
+      "expectationMet": true
+    },
+    {
+      "case": "sdl-requirement",
+      "command": [
+        "/tmp/xgs1-study/bin/sdl",
+        "check",
+        "/tmp/xgs1-study/probes/fixtures/sdl-requirement.design"
+      ],
+      "fixtureSha256": "8896bd47d213c6a2b8278123d0c14dc25b6dd02c735df41dced51739d9ca069f",
+      "exitCode": 1,
+      "expectedExitCode": 1,
+      "expectedDiagnostic": "UNSUPPORTED_SYNTAX",
+      "expectationMet": true
+    },
+    {
+      "case": "sdui-controls",
+      "command": [
+        "/tmp/xgs1-study/bin/sdui",
+        "/tmp/xgs1-study/probes/fixtures/sdui-controls.sdui",
+        "--format",
+        "svg",
+        "--entry",
+        "page"
+      ],
+      "fixtureSha256": "642fd8bb073e6a9beb6a1b6daf5e0242fd66735c74db0f26fa9844ee7938ed40",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "expectedDiagnostic": null,
+      "expectationMet": true
+    },
+    {
+      "case": "sdui-scroll-ast",
+      "command": [
+        "/tmp/xgs1-study/bin/sdui",
+        "/tmp/xgs1-study/probes/fixtures/sdui-scroll-ast.sdui",
+        "--format",
+        "ast",
+        "--entry",
+        "page"
+      ],
+      "fixtureSha256": "3398c846b7a184cc01adbcd79356bc85136881780c2e1fe745d57c2a8b9aa01e",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "expectedDiagnostic": null,
+      "expectationMet": true
+    },
+    {
+      "case": "sdui-scroll-svg",
+      "command": [
+        "/tmp/xgs1-study/bin/sdui",
+        "/tmp/xgs1-study/probes/fixtures/sdui-scroll-svg.sdui",
+        "--format",
+        "svg",
+        "--entry",
+        "page"
+      ],
+      "fixtureSha256": "3398c846b7a184cc01adbcd79356bc85136881780c2e1fe745d57c2a8b9aa01e",
+      "exitCode": 2,
+      "expectedExitCode": 2,
+      "expectedDiagnostic": "unsupported-scroll",
+      "expectationMet": true
+    },
+    {
+      "case": "sdui-missing-binding",
+      "command": [
+        "/tmp/xgs1-study/bin/sdui",
+        "/tmp/xgs1-study/probes/fixtures/sdui-missing-binding.sdui",
+        "--format",
+        "ast",
+        "--entry",
+        "page"
+      ],
+      "fixtureSha256": "8c558c67315e57422dee2f636048db84c529534b34c18f8cd4dd975e651b60a3",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "expectedDiagnostic": null,
+      "expectationMet": true
+    },
+    {
+      "case": "sdui-icon",
+      "command": [
+        "/tmp/xgs1-study/bin/sdui",
+        "/tmp/xgs1-study/probes/fixtures/sdui-icon.sdui",
+        "--format",
+        "ast",
+        "--entry",
+        "page"
+      ],
+      "fixtureSha256": "3cbed931ad86c03bf7c9e7f2d0a3b19bba508143c2436c2aef18902bf0a6029c",
+      "exitCode": 2,
+      "expectedExitCode": 2,
+      "expectedDiagnostic": "widget-property",
+      "expectationMet": true
+    },
+    {
+      "case": "sdui-checked",
+      "command": [
+        "/tmp/xgs1-study/bin/sdui",
+        "/tmp/xgs1-study/probes/fixtures/sdui-checked.sdui",
+        "--format",
+        "ast",
+        "--entry",
+        "page"
+      ],
+      "fixtureSha256": "737ca4337138ba8f86bc84dca88592eaf0f8e9f000d79eea78462d2964364444",
+      "exitCode": 2,
+      "expectedExitCode": 2,
+      "expectedDiagnostic": "widget-property",
+      "expectationMet": true
+    },
+    {
+      "case": "sdui-context-event",
+      "command": [
+        "/tmp/xgs1-study/bin/sdui",
+        "/tmp/xgs1-study/probes/fixtures/sdui-context-event.sdui",
+        "--format",
+        "ast",
+        "--entry",
+        "page"
+      ],
+      "fixtureSha256": "433dc3e5beb4890470fc713b3bb61902ae32fb2a9a99016ed07d4483ca3a0e58",
+      "exitCode": 2,
+      "expectedExitCode": 2,
+      "expectedDiagnostic": "widget-property",
+      "expectationMet": true
+    },
+    {
+      "case": "sdui-widget-tree",
+      "command": [
+        "/tmp/xgs1-study/bin/sdui",
+        "/tmp/xgs1-study/probes/fixtures/sdui-widget-tree.sdui",
+        "--format",
+        "ast",
+        "--entry",
+        "page"
+      ],
+      "fixtureSha256": "c2cd99cfcc28d3cc846cddb39f1539b3c81675e573a1fea6f3b91f3fe6d5f8d8",
+      "exitCode": 2,
+      "expectedExitCode": 2,
+      "expectedDiagnostic": "widget-kind",
+      "expectationMet": true
+    },
+    {
+      "case": "sdui-widget-tabs",
+      "command": [
+        "/tmp/xgs1-study/bin/sdui",
+        "/tmp/xgs1-study/probes/fixtures/sdui-widget-tabs.sdui",
+        "--format",
+        "ast",
+        "--entry",
+        "page"
+      ],
+      "fixtureSha256": "5cab3547138bbdea6e3aa9732dc984945cc1034790d411e64f4403716594e7d8",
+      "exitCode": 2,
+      "expectedExitCode": 2,
+      "expectedDiagnostic": "widget-kind",
+      "expectationMet": true
+    },
+    {
+      "case": "sdui-widget-splitter",
+      "command": [
+        "/tmp/xgs1-study/bin/sdui",
+        "/tmp/xgs1-study/probes/fixtures/sdui-widget-splitter.sdui",
+        "--format",
+        "ast",
+        "--entry",
+        "page"
+      ],
+      "fixtureSha256": "828e140cedae79a93f74306db65e0ffbc0f064e5645614b4f2a120ba721ff3d7",
+      "exitCode": 2,
+      "expectedExitCode": 2,
+      "expectedDiagnostic": "widget-kind",
+      "expectationMet": true
+    },
+    {
+      "case": "sdui-widget-list",
+      "command": [
+        "/tmp/xgs1-study/bin/sdui",
+        "/tmp/xgs1-study/probes/fixtures/sdui-widget-list.sdui",
+        "--format",
+        "ast",
+        "--entry",
+        "page"
+      ],
+      "fixtureSha256": "e233d1e8b283c5f4940739d23af36860657a665528f4dc5bb144041b78c3248f",
+      "exitCode": 2,
+      "expectedExitCode": 2,
+      "expectedDiagnostic": "widget-kind",
+      "expectationMet": true
+    },
+    {
+      "case": "sdui-widget-menu",
+      "command": [
+        "/tmp/xgs1-study/bin/sdui",
+        "/tmp/xgs1-study/probes/fixtures/sdui-widget-menu.sdui",
+        "--format",
+        "ast",
+        "--entry",
+        "page"
+      ],
+      "fixtureSha256": "3f62983e3e4060baf740b82014905406411cefa7836ec914be2e017702852cdc",
+      "exitCode": 2,
+      "expectedExitCode": 2,
+      "expectedDiagnostic": "widget-kind",
+      "expectationMet": true
+    },
+    {
+      "case": "sdui-widget-dialog",
+      "command": [
+        "/tmp/xgs1-study/bin/sdui",
+        "/tmp/xgs1-study/probes/fixtures/sdui-widget-dialog.sdui",
+        "--format",
+        "ast",
+        "--entry",
+        "page"
+      ],
+      "fixtureSha256": "67f647b413a94ddb99b95ab19b4d3370ec311793c2ec9a47620dd4ff4e79bce4",
+      "exitCode": 2,
+      "expectedExitCode": 2,
+      "expectedDiagnostic": "widget-kind",
+      "expectationMet": true
+    },
+    {
+      "case": "sdui-widget-textarea",
+      "command": [
+        "/tmp/xgs1-study/bin/sdui",
+        "/tmp/xgs1-study/probes/fixtures/sdui-widget-textarea.sdui",
+        "--format",
+        "ast",
+        "--entry",
+        "page"
+      ],
+      "fixtureSha256": "cf12b6cb71074f3eb5eb0b6629aa657196a469ed192f2f4d1d76423b38fbc9c1",
+      "exitCode": 2,
+      "expectedExitCode": 2,
+      "expectedDiagnostic": "widget-kind",
+      "expectationMet": true
+    },
+    {
+      "case": "sdui-widget-slider",
+      "command": [
+        "/tmp/xgs1-study/bin/sdui",
+        "/tmp/xgs1-study/probes/fixtures/sdui-widget-slider.sdui",
+        "--format",
+        "ast",
+        "--entry",
+        "page"
+      ],
+      "fixtureSha256": "97e94859eb8f98d852b57f5fc905cfa9fa9e50aaf4ab76e0bfe9147fb4d58a1a",
+      "exitCode": 2,
+      "expectedExitCode": 2,
+      "expectedDiagnostic": "widget-kind",
+      "expectationMet": true
+    },
+    {
+      "case": "sdui-widget-checkbox",
+      "command": [
+        "/tmp/xgs1-study/bin/sdui",
+        "/tmp/xgs1-study/probes/fixtures/sdui-widget-checkbox.sdui",
+        "--format",
+        "ast",
+        "--entry",
+        "page"
+      ],
+      "fixtureSha256": "b27d28d193aaa8b8fff5c140e58fcc5d501bb90bf23cdc0f133b662426e38220",
+      "exitCode": 2,
+      "expectedExitCode": 2,
+      "expectedDiagnostic": "widget-kind",
+      "expectationMet": true
+    },
+    {
+      "case": "sdui-widget-select",
+      "command": [
+        "/tmp/xgs1-study/bin/sdui",
+        "/tmp/xgs1-study/probes/fixtures/sdui-widget-select.sdui",
+        "--format",
+        "ast",
+        "--entry",
+        "page"
+      ],
+      "fixtureSha256": "307d2f379a3594a035ebc25f167777079efd2105b44ab2dda64a7edfd0e40261",
+      "exitCode": 2,
+      "expectedExitCode": 2,
+      "expectedDiagnostic": "widget-kind",
+      "expectationMet": true
+    }
+  ]
+}

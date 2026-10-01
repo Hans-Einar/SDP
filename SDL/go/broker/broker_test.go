@@ -192,3 +192,44 @@ func TestIPCSelectReleaseAndRestart(t *testing.T) {
 		t.Fatal("socket left behind")
 	}
 }
+
+func TestComposedSourceRefreshAndStaleRender(t *testing.T) {
+	b, source, r := setup(t)
+	const h = "language design-core version 0.6.\n"
+	child := filepath.Join(filepath.Dir(source), "Child.design")
+	os.WriteFile(source, []byte(h+"system Demo.\nincludes \"Child.design\".\nDemo contains Child.\n"), 0600)
+	os.WriteFile(child, []byte(h+"unit Child.\n"), 0600)
+	first, e := b.Select(context.Background(), req(1))
+	if e != nil {
+		t.Fatal(e)
+	}
+	cached, e := b.Select(context.Background(), req(2))
+	if e != nil || !cached.Cached {
+		t.Fatal(cached, e)
+	}
+	os.WriteFile(child, []byte(h+"unit Child.\nunit Extra.\n"), 0600)
+	next, e := b.Select(context.Background(), req(3))
+	if e != nil || next.Cached || next.Revision == first.Revision {
+		t.Fatal(next, e)
+	}
+	renderer := &blockingRenderer{entered: make(chan struct{}), release: make(chan struct{})}
+	b.Projects["demo"] = Project{source, renderer}
+	done := make(chan error, 1)
+	go func() { _, e := b.Select(context.Background(), req(4)); done <- e }()
+	select {
+	case <-renderer.entered:
+	case <-time.After(5 * time.Second):
+		t.Fatal("renderer never entered")
+	}
+	os.WriteFile(child, []byte(h+"unit Child.\nunit Later.\n"), 0600)
+	close(renderer.release)
+	if e = <-done; e == nil {
+		t.Fatal("stale dependency delivered")
+	}
+	if len(r.deliveries) != 3 {
+		t.Fatal("stale open", len(r.deliveries))
+	}
+	if _, e = os.Stat(first.Entry); e != nil {
+		t.Fatal("previous lease lost", e)
+	}
+}

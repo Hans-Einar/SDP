@@ -48,7 +48,7 @@ func metadata(b []byte) (map[string]string, error) {
 	return out, nil
 }
 func BoardNodes(p Project) ([]Node, string, error) {
-	root, e := resolvePath(p.Root, p.Registration.KanBan)
+	root, e := resolvePath(p.Root, p.Inventory.KanBan)
 	if e != nil {
 		return nil, "", e
 	}
@@ -178,7 +178,7 @@ func BoardNodes(p Project) ([]Node, string, error) {
 			key := "kanban/card/" + id
 			status.Children = append(status.Children, key)
 			status.State = "available"
-			n := Node{ID: key, Kind: "card", Label: entry.Name(), State: "available", WorkState: m["CardState"], Sprint: m["SprintId"], Scrum: m["ScrumId"], Target: &Target{Operation: "open", Project: p.Registration.ProjectID, Path: file, Revision: documents.Hash(data)}}
+			n := Node{ID: key, Kind: "card", Label: entry.Name(), State: "available", WorkState: m["CardState"], Sprint: m["SprintId"], Scrum: m["ScrumId"], Target: &Target{Operation: "open", Project: p.Inventory.ProjectID, Path: file, Revision: documents.Hash(data)}}
 			if primary := m["primary"]; primary != "" {
 				refs[key] = primary
 			}

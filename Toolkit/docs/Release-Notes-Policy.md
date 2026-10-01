@@ -27,3 +27,12 @@ baseline when one exists.
 
 Toolkit migration impact must be explicit. A project installer never overwrites
 a populated project release-notes file.
+
+## Per-release generated logs
+
+`sdptool release-log --all --output Releases` generates one Markdown file for each
+versioned section. --check compares without writing; differing existing logs are
+rejected. `--version X.Y.Z` selects one section (stdout unless --output is given).
+Unreleased is never emitted as a published-version log. Canonical notes remain the
+authored authority; generation does not imply release approval or publication.
+Commit the generated log and use it as GitHub Release notes after authorization.

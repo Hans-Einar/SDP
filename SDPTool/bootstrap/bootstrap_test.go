@@ -130,3 +130,46 @@ func TestImmutableSelectorAndReadBound(t *testing.T) {
 		t.Fatal("local read bound ignored")
 	}
 }
+
+// The POSIX fixture stands in for old/new signed executables, not a runtime
+// implementation dependency. Production probing uses exec.CommandContext.
+func TestExplicitJSONProbeAndLegacyFallback(t *testing.T) {
+	if runtime.GOOS == "windows" {
+		t.Skip("POSIX executable fixture")
+	}
+	for _, tc := range []struct {
+		name, script string
+		ok           bool
+	}{
+		{"new", `[ "$1" = "--version" ] && [ "$2" = "--json" ] || exit 2
+printf '%s\n' '{"installationProtocol":"sdp-install-command/1"}'`, true},
+		{"legacy", `[ "$#" = 1 ] && [ "$1" = "--version" ] || exit 2
+printf '%s\n' '{"installationProtocol":"sdp-install-command/1"}'`, true},
+		{"successful-invalid-is-not-retried", `if [ "$#" = 2 ]; then printf '%s\n' 'not json'; else printf '%s\n' '{"installationProtocol":"sdp-install-command/1"}'; fi`, false},
+		{"wrong-protocol", `printf '%s\n' '{"installationProtocol":"other/1"}'`, false},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			c, bin := fixture(t)
+			binary := []byte("#!/bin/sh\n" + tc.script + "\n")
+			if e := os.WriteFile(bin, binary, 0700); e != nil {
+				t.Fatal(e)
+			}
+			public, private, e := ed25519.GenerateKey(nil)
+			if e != nil {
+				t.Fatal(e)
+			}
+			d := map[string]any{"schemaVersion": "sdp-release-descriptor/1", "protocol": Protocol, "binaries": []asset{{runtime.GOOS + "/" + runtime.GOARCH, "engine", hash(binary), int64(len(binary))}}}
+			b, _ := json.Marshal(d)
+			sig, _ := json.Marshal(signature{hash(public), ed25519.Sign(private, b)})
+			for p, data := range map[string][]byte{c.Descriptor: b, c.Descriptor + ".sig": sig, c.TestKey: []byte(base64.StdEncoding.EncodeToString(public))} {
+				if e := os.WriteFile(p, data, 0600); e != nil {
+					t.Fatal(e)
+				}
+			}
+			_, e = Bootstrap(context.Background(), c)
+			if (e == nil) != tc.ok {
+				t.Fatalf("expected success=%v: %v", tc.ok, e)
+			}
+		})
+	}
+}

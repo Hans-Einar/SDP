@@ -4,8 +4,9 @@ SDL code now lives in SDL/go. R1 moved documentation by responsibility; this is 
 
 ## Active profiles and boundaries
 
-Design-core 0.5, action-core 0.1 and class-core 0.1 are separate bounded profiles.
+Design-core 0.5/0.6, action-core 0.1 and class-core 0.1 are separate bounded profiles.
 
+- [Source composition 0.6](profiles/SDL-Source-Composition-Profile.md): System, source-owned includes/path membership, reusable file ASTs and checked graph consumers.
 - [Structural core](profiles/SDL-Structural-Core-Profile.md): the active bounded definition and registered additions.
 - [Data/wire contracts](profiles/SDL-Data-Contract-Profile.md).
 - [Channels and scenarios](profiles/SDL-Channel-Scenario-Profile.md).

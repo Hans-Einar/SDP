@@ -1681,7 +1681,7 @@ class InstallConformancePackageTests(unittest.TestCase):
                         plan,
                         self.plan_schema,
                         scenario["id"],
-                        self.contract,
+                        {**self.contract, "toolkitVersion": "1.0.0"},
                     ),
                     [],
                 )

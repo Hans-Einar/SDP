@@ -12,7 +12,7 @@ if [[ -e "$sdp_package_output" ]]; then
     exit 2
 fi
 sdp_package_go=${SDP_GO:-go}
-sdp_package_version=${SDP_VERSION:-1.0.0-dev}
+sdp_package_version=${SDP_VERSION:-2.1.0-dev}
 command -v -- "$sdp_package_go" >/dev/null || { echo "Go build tool unavailable; set SDP_GO" >&2; exit 2; }
 sdp_package_parent=$(dirname -- "$sdp_package_output")
 mkdir -p -- "$sdp_package_parent"
@@ -26,7 +26,7 @@ fi
     cd -- "$sdp_package_module"
     GOTOOLCHAIN=local "$sdp_package_go" build -trimpath -mod=readonly         -ldflags "-X github.com/Hans-Einar/SDP/SDPTool.BuildRevision=$sdp_package_revision -X github.com/Hans-Einar/SDP/SDPTool.BuildVersion=$sdp_package_version"         -o "$sdp_package_temp/sdptool" ./cmd/sdptool
 )
-"$sdp_package_temp/sdptool" --version > "$sdp_package_temp/sdptool.manifest.json"
+"$sdp_package_temp/sdptool" --version --json > "$sdp_package_temp/sdptool.manifest.json"
 (
     cd -- "$sdp_package_temp"
     sha256sum sdptool sdptool.manifest.json > SHA256SUMS

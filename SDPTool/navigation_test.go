@@ -40,7 +40,7 @@ func TestLocalBoardInventory(t *testing.T) {
 func TestMovedCardRefreshAndMalformedBoard(t *testing.T) {
 	root, r := projectFixture(t)
 	r.KanBan = "SDP/KanBan"
-	saveRegistration(t, root, r)
+	saveInventory(t, root, r)
 	board := filepath.Join(root, r.KanBan)
 	for _, folder := range []string{"backlog", "active", "onHold", "completed", "canceled", "superseded", "irrelevant"} {
 		os.MkdirAll(filepath.Join(board, folder), 0700)
@@ -87,14 +87,15 @@ func TestSDUIServiceAndOptionalTabs(t *testing.T) {
 	root, r := projectFixture(t)
 	p, _ := Discover(root)
 	tree, e := Navigation(p, "")
-	if e != nil || len(tree.Roots) != 3 {
+	if e != nil || len(tree.Roots) != 5 {
 		t.Fatalf("optional tabs %v", e)
 	}
 	r.SDUI = []Model{{"ui", "SDUI", "page.sdui", "sdui/0.2"}}
-	saveRegistration(t, root, r)
+	saveInventory(t, root, r)
 	source := filepath.Join(root, "page.sdui")
 	os.WriteFile(source, []byte("sdui 0.2;\npage = [<\"# Hello\", button(\"OK\")>];\n"), 0600)
 	p, _ = Discover(root)
+	p.Inventory = r
 	nodes, revision, e := UINodes(p)
 	if e != nil {
 		t.Fatal(e)
@@ -146,7 +147,7 @@ func TestKanBanReferenceScope(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			root, r := projectFixture(t)
 			r.KanBan = "SDP/KanBan"
-			saveRegistration(t, root, r)
+			saveInventory(t, root, r)
 			board := filepath.Join(root, r.KanBan)
 			write := func(name string, data []byte) {
 				t.Helper()

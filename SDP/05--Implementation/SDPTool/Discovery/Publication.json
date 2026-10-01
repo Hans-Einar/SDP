@@ -1,0 +1,29 @@
+{
+  "schema": "sdp-release-evidence/1",
+  "release": "2.0.0",
+  "sourceCommit": "d304261c90066a86b2d8ffcaa2115517ea339b05",
+  "tag": "v2.0.0",
+  "tagObject": "68b40e3c0d0232da3b428907e41eadd754866c69",
+  "url": "https://github.com/Hans-Einar/SDP/releases/tag/v2.0.0",
+  "publishedAt": "2026-09-30T23:22:05Z",
+  "descriptorSHA256": "f7aac5a703c4d296a3474d90c682be5c96733ba1f46aed94817954cbc864f367",
+  "binarySHA256": "193f5fe8c1c6d15455561c00ce10ab39a3302a4ed320e25e870a73a904a61715",
+  "ci": "https://github.com/Hans-Einar/SDP/actions/runs/36790502323",
+  "ciResult": "both jobs success on exact candidate",
+  "downloadChecksums": "all four match locally reviewed package",
+  "publicSourceArchiveValidation": "passed",
+  "independentReleaseReview": "approved at exact candidate; no unresolved findings",
+  "liveXFMDMutation": false,
+  "platform": "linux/amd64",
+  "client": {
+    "version": "0.2.0",
+    "url": "https://github.com/Hans-Einar/gh-sdp/releases/tag/v0.2.0",
+    "publishedAt": "2026-09-30T23:24:45Z",
+    "sourceCommit": "72b4e048a90841a1994e9846bb4db0d0ad9b922e",
+    "tagObject": "48f41b0e83cdac806db41f66665fe955939ecee6",
+    "binarySHA256": "9c7471817285647e3ca12c7ef0618171bd09021e43a9a8392a3779c85b0ba72b",
+    "publicDefaultFreshCache": "passed with compiled production trust",
+    "independentReview": "approved; exact pair and public default",
+    "downloadChecksums": "passed"
+  }
+}

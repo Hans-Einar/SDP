@@ -1,0 +1,3 @@
+language design-core version 0.6.
+system Frontend.
+Frontend contains SdlCommandProcess.

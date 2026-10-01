@@ -1,0 +1,64 @@
+language design-core version 0.5.
+usecase BrowseDesignFacts.
+functionality BuildNavigationOrStaticBundle.
+functionality BuildValidatedViewFacts.
+unit ClassProjector.
+feature DesignProjection.
+actor DesignReader.
+interface DesignSourcePort.
+unit DiagramAdapter.
+interface DiagramRendererPort.
+unit DocumentProjector.
+activity ExistingCapability.
+activity IndependentPackaging.
+functionality ProjectExplicitClasses.
+mode Projecting.
+container ProjectionCommandProcess.
+interface ProjectionOutputPort.
+functionality RenderSelectedDiagrams.
+functionality SelectBoundedView.
+capability SourceDerivedDocumentation.
+unit ViewSelector.
+unit ViewpointModel.
+BuildNavigationOrStaticBundle allocated-to ProjectionCommandProcess in mode Projecting.
+BuildNavigationOrStaticBundle contributes-to DesignProjection.
+BuildNavigationOrStaticBundle realizes SourceDerivedDocumentation.
+BuildValidatedViewFacts allocated-to ProjectionCommandProcess in mode Projecting.
+BuildValidatedViewFacts contributes-to DesignProjection.
+BuildValidatedViewFacts realizes SourceDerivedDocumentation.
+ClassProjector owns ProjectExplicitClasses.
+DesignProjection supports BrowseDesignFacts.
+DesignReader pursues BrowseDesignFacts.
+DiagramAdapter consumes DiagramRendererPort.
+DiagramAdapter owns RenderSelectedDiagrams.
+DocumentProjector consumes ProjectionOutputPort.
+DocumentProjector owns BuildNavigationOrStaticBundle.
+ExistingCapability addresses BuildNavigationOrStaticBundle.
+ExistingCapability addresses BuildValidatedViewFacts.
+ExistingCapability addresses ProjectExplicitClasses.
+ExistingCapability addresses RenderSelectedDiagrams.
+ExistingCapability addresses SelectBoundedView.
+ExistingCapability delivers DesignProjection.
+ExistingCapability has implementation-status = implemented.
+IndependentPackaging has implementation-status = planned.
+ProjectExplicitClasses allocated-to ProjectionCommandProcess in mode Projecting.
+ProjectExplicitClasses contributes-to DesignProjection.
+ProjectExplicitClasses realizes SourceDerivedDocumentation.
+ProjectionCommandProcess contains ClassProjector.
+ProjectionCommandProcess contains DiagramAdapter.
+ProjectionCommandProcess contains DocumentProjector.
+ProjectionCommandProcess contains ViewSelector.
+ProjectionCommandProcess contains ViewpointModel.
+ProjectionCommandProcess provides SourceDerivedDocumentation.
+RenderSelectedDiagrams allocated-to ProjectionCommandProcess in mode Projecting.
+RenderSelectedDiagrams contributes-to DesignProjection.
+RenderSelectedDiagrams realizes SourceDerivedDocumentation.
+SelectBoundedView allocated-to ProjectionCommandProcess in mode Projecting.
+SelectBoundedView contributes-to DesignProjection.
+SelectBoundedView realizes SourceDerivedDocumentation.
+SourceDerivedDocumentation requires DesignSourcePort in mode Projecting.
+SourceDerivedDocumentation requires DiagramRendererPort in mode Projecting.
+SourceDerivedDocumentation requires ProjectionOutputPort in mode Projecting.
+ViewSelector owns SelectBoundedView.
+ViewpointModel consumes DesignSourcePort.
+ViewpointModel owns BuildValidatedViewFacts.

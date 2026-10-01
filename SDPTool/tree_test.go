@@ -13,10 +13,11 @@ import (
 func TestTreeCatalogCollectionsAndStableIdentity(t *testing.T) {
 	root, r := projectFixture(t)
 	r.Models = []Model{{"model", "System", "model.design", "design-core/0.5"}}
-	saveRegistration(t, root, r)
+	saveInventory(t, root, r)
 	path := filepath.Join(root, "model.design")
 	os.WriteFile(path, []byte(sample), 0600)
 	p, _ := Discover(root)
+	p.Inventory = r
 	tree, e := ModelTree(p, "model")
 	if e != nil {
 		t.Fatal(e)
@@ -69,13 +70,14 @@ func TestTreeCatalogCollectionsAndStableIdentity(t *testing.T) {
 func TestRelationshipReferencesAndSelectionRevision(t *testing.T) {
 	root, r := projectFixture(t)
 	r.Models = []Model{{"model", "System", "model.design", "design-core/0.5"}}
-	saveRegistration(t, root, r)
+	saveInventory(t, root, r)
 	path := filepath.Join(root, "model.design")
 	// Two opposite actor/use-case relationships are not valid SDL. Use a valid
 	// collaboration model, then inspect graph representation with cyclic facts
 	// separately: renderer grouping must never recurse into references.
 	os.WriteFile(path, []byte(sample), 0600)
 	p, _ := Discover(root)
+	p.Inventory = r
 	tree, e := ModelTree(p, "model")
 	if e != nil {
 		t.Fatal(e)
@@ -115,7 +117,7 @@ func TestCyclicReferenceRepresentationIsFinite(t *testing.T) {
 	// Projection-boundary fixture: navigation must safely represent a graph even
 	// when a future legal relation profile admits cycles; no syntax adoption claim.
 	v.Facts = append(v.Facts, viewpoint.Fact{"subject": "Child", "object": "Main", "verb": "contains"})
-	tree, e := modelTree(Project{Registration: Registration{ProjectID: "trial"}}, Model{ID: "model"}, v)
+	tree, e := modelTree(Project{Inventory: Inventory{ProjectID: "trial"}}, Model{ID: "model"}, v)
 	if e != nil {
 		t.Fatal(e)
 	}

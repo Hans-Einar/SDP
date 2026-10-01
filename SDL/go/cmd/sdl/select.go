@@ -6,10 +6,8 @@ import (
 	"flag"
 	"fmt"
 	"github.com/Hans-Einar/SDP/SystemDesignLanguage/go/documents"
-	"github.com/Hans-Einar/SDP/SystemDesignLanguage/go/parser"
 	"github.com/Hans-Einar/SDP/SystemDesignLanguage/go/viewpoint"
 	"io"
-	"os"
 	"path/filepath"
 	"strings"
 )
@@ -41,17 +39,11 @@ func selectView(args []string, out, errs io.Writer) int {
 	if e != nil {
 		return fail(e)
 	}
-	f, e := os.Open(source)
+	v, input, e := viewpoint.Load(source)
 	if e != nil {
 		return fail(e)
 	}
-	defer f.Close()
-	bytes, e := io.ReadAll(io.LimitReader(f, parser.MaxBytes+1))
-	if e != nil {
-		return fail(e)
-	}
-	v, e := viewpoint.New(string(bytes))
-	if e != nil {
+	if e = input.Outside(*output); e != nil {
 		return fail(e)
 	}
 	var r documents.Renderer
@@ -67,6 +59,9 @@ func selectView(args []string, out, errs io.Writer) int {
 	}
 	b.Put("delivery.txt", s.Target+"\n")
 	b.Seal()
+	if e = input.Fresh(); e != nil {
+		return fail(e)
+	}
 	if e = b.Publish(*output); e != nil {
 		return fail(e)
 	}

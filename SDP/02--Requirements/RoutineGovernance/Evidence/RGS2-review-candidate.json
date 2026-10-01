@@ -1,0 +1,20 @@
+{
+  "recordedAt": "2026-09-28T21:41:12.242843+00:00",
+  "reviewer": "independent fresh-context agent /root/rgs2_independent_review",
+  "disposition": "approved for study delivery; no material findings",
+  "scope": "Research adequacy and source/schema evidence; excludes runtime behavior, owner acceptance and subsequent lifecycle closeout",
+  "reportSha256": {
+    "Study.md": "0043ed27fbb97bbf58bfe18f4dc1b6e62742843eb931657e3972621bf9d57a93",
+    "Routine-Catalog.md": "423d506f82e66ef44d542804f31ea49dd086a5bb89b4be4e715c87dfec755059",
+    "Scenarios.md": "af79daf3c24f2ccb81e33f279c6470aa2b02e093261c8a08b0a1913ac5dd636f",
+    "MCP-Study.md": "441ce48668e368755b985745ec407bbcf64a39e631191ff264a03670ccd517c0",
+    "AppServer-Study.md": "064aeb61bf0936ffc0fd12a24e02ef405ba16c8e308b6fdba550fb236d0ce19e",
+    "Synthesis.md": "8993e7cf88fbe321e92acdf230ff4ee5de573630da2c5b5ae7708a88a64de793"
+  },
+  "verified": "19 MCP local hashes; 48 selected app-server schema hashes; 314/440 schema counts; binary and persisted extract hashes; targeted source/official documentation checks; local report links",
+  "notPerformed": [
+    "Runtime protocol trials",
+    "Model turns or account reads",
+    "Installations or product tests"
+  ]
+}
