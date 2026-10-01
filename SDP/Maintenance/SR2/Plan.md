@@ -26,8 +26,8 @@ Source: https://cli.github.com/manual/gh_help_environment
 
 | Phase | Milestone | Acceptance | State |
 | --- | --- | --- | --- |
-| SR2 | SR2-M1 | Revalidate exact prepared bytes; publish annotated SDP tag/assets and verify downloads | in-progress |
-| SR2 | SR2-M2 | Publish independently reviewed pinned client; reconcile actual identities and owner handoff | planned |
+| SR2 | SR2-M1 | Revalidate exact prepared bytes; publish annotated SDP tag/assets and verify downloads | completed |
+| SR2 | SR2-M2 | Publish independently reviewed pinned client; reconcile actual identities and owner handoff | in-progress |
 
 Root records use sdp/release-2.1-preparation with milestone commits/pushes. gh-sdp
 owns its bounded release records and separate branch. Preserve unrelated files.

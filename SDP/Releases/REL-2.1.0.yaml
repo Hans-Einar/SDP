@@ -1,7 +1,7 @@
 schemaVersion: "1.0"
 releaseId: REL-2.1.0
 version: "2.1.0"
-state: prerelease
+state: released
 releaseNotesPath: RELEASE-NOTES.md
 includedCapabilities:
   - sdp.install.v1
@@ -12,5 +12,5 @@ reviewRecords:
   - REV-SDPTOOL-SR1
 migrationRecord: SDP/Maintenance/SR1/Plan.md
 releasePreparationCommit: 93517ad98cd188c0debeb1d0f3d36d123c6e4a3b
-gitTag: null
-githubReleaseUrl: null
+gitTag: v2.1.0
+githubReleaseUrl: https://github.com/Hans-Einar/SDP/releases/tag/v2.1.0

@@ -41,15 +41,15 @@ release log is not proof of publication. The project release contract governs.
 
 ## Publish and consumer readiness
 
-- [ ] Exact candidate CI and required independent review pass; working tree clean;
+- [x] Exact candidate CI and required independent review pass; working tree clean;
   tag absent; merge/publication explicitly authorized.
-- [ ] Publish annotated tag and GitHub Release with generated log, signed descriptor,
+- [x] Publish annotated tag and GitHub Release with generated log, signed descriptor,
   executable and checksums; verify downloaded assets against exact release.
-- [ ] Reconcile actual tag/commit/time and append truthful release events only after
+- [x] Reconcile actual tag/commit/time and append truthful release events only after
   success. Do not rewrite a released log or silently correct released notes.
 - [ ] Verify gh-sdp selection: its compiled default is pinned. Either publish/update
   the client default or document an explicit SDP_RELEASE selecting this release.
-- [ ] Provide preview/apply commands and expected receipt. Owner-requested manual
+- [x] Provide preview/apply commands and expected receipt. Owner-requested manual
   project upgrade remains manual; never confuse updating the gh extension with
   upgrading the project's SDP directory.
 
