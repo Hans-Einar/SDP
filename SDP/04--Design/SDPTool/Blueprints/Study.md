@@ -294,3 +294,15 @@ is claimed. Canonical SDL models, production code, historical ledger prefixes
 and unrelated sourceinput work remain unchanged. KB-SDP-031 closes as a delivered
 Study, and PLAN-SDP-0001 remains planned. The phase is submitted for review against
 main; merging is outside this study authorization.
+
+
+## Owner proposal after release 2.1 — 2026-10-01
+
+[KB-SDP-048](../../../KanBan/backlog/%23048--Proposal--Versioned-design-reviews-and-blueprint-diffs.md)
+records independent local SDL/SDUI revision history, local design-review requests,
+semantic before/after blueprints and verification before advancing the implemented
+baseline. It also analyzes the crucial difference between parent-tracked source
+snapshots and portable model Git history. No nested repository or storage policy
+has been installed. BP2 remains planned; its existing NOW/TARGET and impact-union
+requirements remain applicable. This is new design input, not acceptance or a
+rewrite of the historical BP1 evidence.

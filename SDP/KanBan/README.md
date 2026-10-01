@@ -4,6 +4,7 @@
 
 | ID | Type | Status | Document |
 | --- | --- | --- | --- |
+| KB-SDP-048 | Proposal | backlog | [Versioned design reviews and blueprint differences](backlog/%23048--Proposal--Versioned-design-reviews-and-blueprint-diffs.md) |
 | KB-SDP-047 | Change | completed | [Discover and browse Sessions](completed/%23047--Change--Discover-and-browse-Sessions.md) |
 | KB-SDP-046 | Change | completed | [Source discovery and systems navigation](completed/%23046--Change--Source-discovery-and-multiple-system-navigation.md) |
 | KB-SDP-045 | Change | completed | [Portable CLI presentation](completed/%23045--Change--Portable-SDPTool-presentation.md) |
