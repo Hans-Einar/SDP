@@ -11,9 +11,18 @@ files or globally installed extension were changed.
 
 ## Preparation boundary
 
-Product implementation2419853 is tested under PLAN-SDP-0015. SR1 freezes additive
-2.1.0 notes and generated log, retains Framework2.0.0 and the identical payload
-inventory, adds the original signed2.0.0 descriptor as a supported predecessor,
-and selects the future2.1.0 bootstrap URL. That URL is not yet a published asset.
+Product implementation 2419853 is tested under PLAN-SDP-0015. SR1 freezes additive
+2.1.0 notes and generated log, retains Framework 2.0.0 and the identical payload
+inventory, adds the original signed 2.0.0 descriptor as a supported predecessor,
+and selects the future 2.1.0 bootstrap URL. That URL is not yet a published asset.
 No tag/publication or consumer installation is claimed. Exact candidate evidence
 will be appended after the clean package, independent review and CI checks.
+
+Independent review identified an inherited duplicate-node path when WalkDir
+reports an unreadable directory twice. SR1 corrects that within the accepted
+unavailable/unique-node contract and adds real permission regressions for Sessions
+root/nested directories. The predecessor expectation adds the exact original
+2.0.0 digest; all previous digests remain checked.
+
+The corrected full SDPTool Go suite passes. Candidate packaging and publication
+checks remain separate; this commit establishes the source for those checks.

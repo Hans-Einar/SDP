@@ -176,6 +176,16 @@ func (p *Project) scanArea() error {
 		if d != nil && d.IsDir() && (d.Name() == ".git" || d.Name() == ".sdp-operations" || d.Name() == ".sdp-backups") {
 			return filepath.SkipDir
 		}
+		// WalkDir reports an unreadable directory again after its initial visit.
+		// Amend the canonical node rather than publishing a duplicate identity.
+		if walkErr != nil {
+			if i, exists := positions[rel]; exists {
+				p.Files[i].State = "unavailable"
+				p.Files[i].Diagnostic = walkErr.Error()
+				p.Files[i].Target = nil
+				return filepath.SkipDir
+			}
+		}
 		if len(p.Files) >= 10000 {
 			return fmt.Errorf("SDP discovery exceeds 10000 filesystem entries")
 		}

@@ -196,3 +196,53 @@ func TestSessionDirectoryStatesAndReadLimits(t *testing.T) {
 		t.Fatal(p, e)
 	}
 }
+
+func TestUnreadableSessionDirectoriesRetainUniqueNodes(t *testing.T) {
+	for _, nested := range []bool{false, true} {
+		t.Run(map[bool]string{false: "root", true: "nested"}[nested], func(t *testing.T) {
+			root, _ := projectFixture(t)
+			dir := filepath.Join(root, "SDP", "Sessions")
+			if nested {
+				dir = filepath.Join(dir, "Archive")
+			}
+			if e := os.MkdirAll(dir, 0700); e != nil {
+				t.Fatal(e)
+			}
+			if e := os.Chmod(dir, 0); e != nil {
+				t.Skip("directory permissions unavailable", e)
+			}
+			defer os.Chmod(dir, 0700)
+			if _, e := os.ReadDir(dir); e == nil {
+				t.Skip("environment can still read mode000 directory")
+			}
+			p, e := Discover(root)
+			if e != nil {
+				t.Fatal(e)
+			}
+			seen := map[string]bool{}
+			want := "files/Sessions"
+			if nested {
+				want += "/Archive"
+			}
+			found := false
+			for _, n := range p.Navigation.Nodes {
+				if seen[n.ID] {
+					t.Fatal("duplicate", n.ID)
+				}
+				seen[n.ID] = true
+				if n.ID == want {
+					found = true
+					if n.State != "unavailable" || n.Diagnostic == "" || n.Target != nil {
+						t.Fatal(n)
+					}
+				}
+			}
+			if !found {
+				t.Fatal("unavailable directory hidden")
+			}
+			if !nested && sessionTab(t, p).State != "unavailable" {
+				t.Fatal(sessionTab(t, p))
+			}
+		})
+	}
+}
