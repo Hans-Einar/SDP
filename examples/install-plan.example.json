@@ -3,7 +3,7 @@
   "manifestSchemaVersion": "1.0",
   "orderingPolicy": "migration-first-manifest-order-v1",
   "mode": "plan",
-  "toolkitVersion": "2.0.0",
+  "toolkitVersion": "2.1.0",
   "installedToolkitVersion": "0.1.0",
   "options": {
     "initializeProjectStructure": false,
@@ -25,7 +25,7 @@
       "reason": "backup-before-replace",
       "mutatesTarget": true,
       "oldToolkitVersion": "0.1.0",
-      "newToolkitVersion": "2.0.0"
+      "newToolkitVersion": "2.1.0"
     },
     {
       "sequence": 2,
@@ -41,7 +41,7 @@
       "reason": "refresh-managed-content",
       "mutatesTarget": true,
       "oldToolkitVersion": "0.1.0",
-      "newToolkitVersion": "2.0.0"
+      "newToolkitVersion": "2.1.0"
     },
     {
       "sequence": 3,
@@ -57,7 +57,7 @@
       "reason": "backup-before-replace",
       "mutatesTarget": true,
       "oldToolkitVersion": "0.1.0",
-      "newToolkitVersion": "2.0.0"
+      "newToolkitVersion": "2.1.0"
     },
     {
       "sequence": 4,
@@ -73,7 +73,7 @@
       "reason": "refresh-generated-content",
       "mutatesTarget": true,
       "oldToolkitVersion": "0.1.0",
-      "newToolkitVersion": "2.0.0"
+      "newToolkitVersion": "2.1.0"
     },
     {
       "sequence": 5,
@@ -89,7 +89,7 @@
       "reason": "missing-only-content",
       "mutatesTarget": false,
       "oldToolkitVersion": "0.1.0",
-      "newToolkitVersion": "2.0.0"
+      "newToolkitVersion": "2.1.0"
     }
   ]
 }

@@ -4,9 +4,15 @@
 
 Release-Date: unreleased
 
+## [2.1.0] - 2026-10-01
+
 ### Added
 
 - [PLAN-SDP-0015] SDPTool discovers SDP/Sessions and exposes a dedicated Sessions navigation root with nested openable documents, diagnostic isolation and content-aware refresh. No registration or Session runtime is required.
+
+### Migration
+
+- [MAINT-SDP-0012] Sessions browsing requires the new tool and a consumer that displays its Sessions root. Dynamic tabs can already use sdptool/0.2 roots/node kinds from 2.0.0. No project SDP directory upgrade is required for browsing an existing Sessions folder; installed process receipt and active tool version are independent. A gh-sdp release selecting 2.1.0 is needed for normal extension updates. Templates and Framework 2.0.0 remain unchanged.
 
 ## [2.0.0] - 2026-10-01
 

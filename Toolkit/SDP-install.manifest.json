@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "contractId": "sdp-install",
-  "toolkitVersion": "2.0.0",
+  "toolkitVersion": "2.1.0",
   "orderingPolicy": "migration-first-manifest-order-v1",
   "sources": {
     "repositoryRoot": "..",
@@ -29,10 +29,10 @@
       "format": "yaml",
       "facts": {
         "schemaVersion": "1.0",
-        "toolkitVersion": "2.0.0",
+        "toolkitVersion": "2.1.0",
         "frameworkVersion": "2.0.0",
         "agentsContractVersion": "2.1.0",
-        "installerVersion": "2.0.0",
+        "installerVersion": "2.1.0",
         "skills": {
           "sdp": "1.1.0",
           "sdp-architect": "2.0.0",

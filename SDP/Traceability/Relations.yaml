@@ -463,6 +463,17 @@ verification:
     corpusDigest: e346fc230b26c3045305c1ffee22ff43edfc61aa99597005134a314b210b8114
 migrations: {}
 releases:
+  REL-2.1.0:
+    version: "2.1.0"
+    state: prerelease
+    releaseNotes: RELEASE-NOTES.md
+    manifest: SDP.manifest.yaml
+    releaseRecord: Releases/REL-2.1.0.yaml
+    verification: [SDPTOOL-VER-SN1]
+    reviews: []
+    releaseCommit: null
+    gitTag: null
+    githubRelease: null
   REL-2.0.0:
     version: "2.0.0"
     state: released
