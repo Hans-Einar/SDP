@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn: T004. Earlier discussion is reconstructed below, not a
+Latest recorded turn: T005. Earlier discussion is reconstructed below, not a
 complete transcript. Sequence only; synthetic dates do not measure elapsed time.
 
 ```mermaid
@@ -64,6 +64,8 @@ reviewed targets and distinguish model acceptance from implementation evidence.
 | 2026-10-02 / T003 | No UUID in WORK names; four-character suffix for PROPOSAL/CANDIDATE; full identity in YAML | Owner naming requirement; collision handling still required |
 
 | 2026-10-02 / T004 | Verb-first create commands; default accepted release; multi-source WORK creation and contextual pull considered | Owner preference; merge/pull naming remains open |
+
+| 2026-10-02 / T005 | Typed creation targets; YAML ledger and commit history; snapshot/delta comparison | Owner proposal; storage representation remains open |
 
 ## Turn journal
 
@@ -143,6 +145,25 @@ missing baseline and conflicting heads must be explicit. No implementation.
 
 Next: decide minimal command vocabulary and context rules in S2, then select S3's
 bounded design/proof plan. Card remains backlog; BP2 remains planned.
+
+### T005 — Typed targets, commits and history representation
+
+Owner input summary: use create work:Combination consistently; include a ledger in
+YAML and preserve merged WORK histories as a browsable tree; add a commit message
+command; anchor WORK in a release or explicit empty initial state; consider storing
+successive diffs and ask how Git represents revisions.
+
+Request category: architecture/design discussion. Skills reused: sdp and
+sdp-architect (agent-reported); routine execution and host IDs unknown. Step S2.
+Work summary, not a captured final response: recorded typed-target recommendation,
+commit versus preview distinction, DAG ancestry and deduplicated immutable ledger
+records. Compared cumulative versus incremental patches; recommended full logical
+snapshots first, optional deduplicated content storage later. Consulted official
+Git objects/packfiles references; Git snapshots and pack compression are distinct.
+No backend, command or automatic blueprint generator implemented.
+
+Next: S2 must settle minimal persistent format and ownership before S3 design/pilot
+selection. Ledger placement is a recommendation, not assumed owner acceptance.
 
 ## Closeout
 

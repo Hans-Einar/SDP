@@ -554,3 +554,66 @@ in MAINT-SDP-0014. EVT-KB-SDP-000276; feature remains backlog.
 accepted release for WORK creation; discusses contextual pull and multi-source
 create work. Recorded proposed consistent prepositions, explicit merge direction,
 base/conflict rules and unresolved pull naming. Session0005 T004; event277.
+
+## Typed creation targets and commit lineage — 2026-10-02, T005
+
+Owner proposes using the same kind:name reference when creating and selecting an
+artifact, YAML ledger history, explicit commit messages and reconstructable diffs.
+Recommend the consistent creation grammar:
+
+```text
+sdptool model create work:Combination from work:fix-something work:fix-navigation
+sdptool model create work:First --initial
+sdptool model commit work:Combination --message "Combine navigation and document fixes"
+```
+
+These are proposed commands. Creation reserves a new name and fails if it exists;
+source references resolve existing identities. Names with spaces need shell quotes.
+The owner's invariant is a WORK anchored to a release or explicitly initial/empty;
+combined WORK also records its exact source commit parents. Initial work is a root
+with no release parent, not an implicitly selected missing release. The prior
+latest-release default still applies when neither from nor initial is supplied.
+Inputs based on different releases require explicit base reconciliation, not an
+arbitrary choice of latest. Commit saves content state as well as a message, without
+locking WORK or promoting it to candidate. Preliminary preview still needs no commit.
+
+Recommend history as a directed acyclic graph, displayed as a tree with references
+for shared ancestors. A commit contains unique identity, originating WORK identity,
+parent commit IDs, timestamp/author/message and source snapshot digest. A merge
+commit names both input heads and the resolved resulting snapshot. Copying input
+ledgers together is set union by immutable event/commit ID with equality checks:
+shared ancestors occur once; same ID with different content is an integrity error.
+Do not interleave by timestamp and assume causality or flatten away original WORK
+identity. Imported ancestry records contributions, not automatic acceptance of
+all original code or behavior; resolved content and evidence establish the result.
+
+The model.yaml ledger section can expose heads and references to durable immutable
+records. Recommend one ordinary YAML record per commit/event as authoritative storage,
+with all required content/history included in the portable model store. An inline
+map keyed by IDs is an alternative, but a growing nested ledger in each manifest
+creates duplication and parent-Git edit conflicts. Do not maintain two independently
+editable copies. Exact paths/layout remain undecided; derived tree views are not
+history authority and cannot depend on deleted WORK directories or external caches.
+This model-history ledger is distinct from project-management lifecycle events.
+
+The proposed delta algorithm has two different possible meanings: a cumulative
+patch from release to each commit (no replay chain but repeated data), or incremental
+patches from each preceding reconstructed commit (replay chain). Do not mix the two.
+Both require retained bases, integrity checks and explicit deletion/rename semantics.
+Recommendation: first save full logical snapshots; unchanged file versions can be
+shared by content digest, or initially copied for simplicity. Generate diff on demand.
+Delta compression is a later storage optimization, not a prerequisite for history.
+Atomic commit publication must make content durable before advancing WORK head;
+crash recovery must not leave a visible commit pointing at absent content.
+
+Git comparison verified against official Git Internals documentation: commits point
+to trees representing complete snapshots and parent commits; blobs hold file content.
+Packfiles can delta-compress similar objects independently of logical parent history.
+Thus Git's history is not defined as replaying a patch for every preceding commit.
+Sources: https://git-scm.com/book/en/v2/Git-Internals-Git-Objects and
+https://git-scm.com/book/en/v2/Git-Internals-Packfiles . This is reference analysis,
+not a decision to use a nested Git repository or implement packfiles.
+
+2026-10-02: Recorded typed creation targets, explicit initial WORK, commit content
+and ledger DAG/union semantics, and snapshot-versus-delta alternatives. Session0005
+T005; EVT-KB-SDP-000278. Storage schema and implementation remain unselected.
