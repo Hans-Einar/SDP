@@ -6,7 +6,7 @@ installerVersion: "2.1.0"
 toolkitInstalledAt: "2026-07-12T00:00:00Z"
 sourceCommit: null
 skills:
-  sdp: "1.1.0"
+  sdp: "1.1.1"
   sdp-planning: "1.0.0"
   sdp-architect: "2.0.0"
   sdp-auditor: "2.0.0"

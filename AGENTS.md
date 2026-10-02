@@ -127,3 +127,15 @@ roadmap. For every release, instantiate Toolkit/docs/ReleaseChecklist.md and rec
 actual inventory, descriptor, predecessor-upgrade and publication evidence. Generate
 per-version logs with sdptool release-log from canonical RELEASE-NOTES.md. File
 presence and a local rehearsal do not prove a published release is installable.
+
+### Mandatory Session upkeep — owner decision 2026-10-02
+
+For every substantive turn within a multi-turn SDP goal, recover and update its
+Session file, including discussion-only turns. Before returning, record the owner
+input, decisions/corrections, work outcome, loaded routines/skills, affected steps
+and next step. Keep roadmap and plan/card projections current. A card or study
+update does not replace the Session journal. Reuse the active Session; if none
+exists for the goal, create one and link its primary card. Clearly label late
+registration and reconstructed summaries; never invent exact transcripts, host
+IDs or timestamps. Record the current result as a work summary, not as an already
+captured final response. Trivial unrelated answers do not require a new Session.

@@ -352,3 +352,15 @@ produces a new candidate; releases never receive edits. It also defines proposed
 UUID/hash responsibilities, same-file three-way merge limits, designated integrator
 ownership and reproducible comparison across snapshot roles. These are design inputs,
 not an implemented schema, command or adopted migration. BP2 remains planned.
+
+
+## Owner correction — preliminary preview and optional submission
+
+2026-10-02: Generate a WORK/preliminary blueprint without locking WORK or creating
+an obligatory persistent snapshot. Capture a consistent read and identify its input
+hashes; mutable preview is not approved reproducible assignment evidence unless
+inputs are retained. WORK names have no UUID; optional PROPOSAL and CANDIDATE names
+may use a four-character UUID suffix with explicit collision handling. Full UUID
+stays in tool-owned YAML. Normal route is WORK -> CANDIDATE -> RELEASE; PROPOSAL
+remains optional. These corrections supersede earlier recommendations requiring
+proposal creation/freezing for every preview. Session0005 tracks further discussion.

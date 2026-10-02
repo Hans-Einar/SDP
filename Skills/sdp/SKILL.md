@@ -5,7 +5,7 @@ description: Use the project's System Design Process for SDP-governed study, dev
   the work. Use when explicitly invoked or when the project requires SDP.
 metadata:
   skillId: sdp
-  skillVersion: 1.1.0
+  skillVersion: 1.1.1
   minimumToolkitVersion: 0.2.0
   capabilities: sdp.route
   compatibilityNotes: Initial adopted profile-aware role.
@@ -72,3 +72,15 @@ authorized assignment; route out-of-scope updates with concrete destinations.
 Do not close implementation work while a material document inconsistency is
 hidden behind a completed ledger entry. For read-only work, report proposed
 updates instead of making them.
+
+## Project governance: Session continuity
+
+When the project uses working Sessions, recover the active goal and roadmap at
+the start of every substantive turn, including design discussion without code.
+Before returning, update its journal with owner input, decisions, result, relevant
+skills/routines, affected steps and next step; reconcile roadmap and linked
+plan/card states. Updating a card or Study alone is insufficient. Create a Session
+for an unrecorded multi-turn goal, following the project's Session guide, and mark
+retrospective entries as reconstructed summaries with unknown host IDs/timing.
+Do not claim to capture the eventual final response before sending it; record a
+labeled work summary. Do not start Sessions for trivial unrelated questions.

@@ -11,6 +11,8 @@
 | source | Owner discussion after XFMD dynamic-tab implementation |
 | tags | blueprint, model-history, baseline, design-review, storage |
 
+Session: [SESSION-SDP-0005](../../Sessions/session-%230005--Blueprint_model_history.md).
+
 ## Owner outcome
 
 The XFMD agent changed implementation before updating its SDL/SDUI design. The
@@ -472,3 +474,42 @@ EVT-KB-SDP-000274; proposal only, CardState remains backlog.
 immutable submissions and integrated targets, identity-based browsable directories,
 canonical content hashes, new-candidate merge semantics and designated integration
 ownership. EVT-KB-SDP-000275; implementation remains unselected.
+
+## Latest owner corrections — 2026-10-02
+
+These take precedence over earlier recommendations in this card:
+
+- Generate WORK blueprints directly without locking WORK or creating a persistent
+  proposal/candidate. Mark them WORK / preliminary. Capture consistent bytes in
+  memory or temporary storage and report source digests; detect edits during read
+  and retry/fail rather than mix revisions. Such a preview is not approved assignment
+  evidence. Reproduction requires retained inputs; hashes alone cannot restore them.
+- WORK names have no UUID suffix. PROPOSAL/CANDIDATE names may use the last four
+  alphanumeric characters of their UUID. Full UUID lives in tool-generated YAML.
+  Short suffixes are display only: detect name collisions and regenerate the new
+  UUID before publication or fail explicitly; never overwrite an existing snapshot.
+- Keep optional PROPOSAL for now. Normal flow is WORK -> CANDIDATE -> RELEASE.
+  A mandatory intermediate PROPOSAL is not required to freeze WORK.
+- Final naming and standalone-tool ownership remain design questions, not
+  implemented commands. A proposed common model namespace would expose work,
+  proposal, candidate, merge, release and blueprint; it covers both SDL and SDUI.
+
+Proposed command examples (not executable today):
+
+```text
+sdptool model work create fixing-navigation --from release:0.2.3
+sdptool model blueprint --from release:0.2.3 --to work:fixing-navigation
+sdptool model candidate create --from work:fixing-navigation
+sdptool model merge candidate:alpha candidate:beta --into-work integration
+sdptool model candidate create --from work:integration
+sdptool model release create --from candidate:integrated --version 0.2.4
+```
+
+A future standalone `sdl-model` command could share the implementation library
+with `sdptool model`; naming and ownership are unselected. Current SDPTool imports
+SDL/SDUI Go libraries directly and owns discovery/install/navigation orchestration;
+it is not a generic dynamically discovered external-command plugin host.
+
+2026-10-02: Corrected WORK preview and naming, registered Session0005 after owner
+identified missing journal upkeep, and linked the bounded instruction correction
+in MAINT-SDP-0014. EVT-KB-SDP-000276; feature remains backlog.

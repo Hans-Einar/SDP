@@ -45,7 +45,11 @@ Do not copy detailed milestones into a competing plan. Link to them. When a
 Session projection disagrees with its source, show it as stale and reconcile it;
 never silently change a card to make the overview look consistent.
 
-## Proposed turn routine
+## Mandatory turn routine
+
+Owner decision, 2026-10-02: apply this routine on every substantive turn in an
+active goal, including discussion-only turns. Card/study updates do not substitute
+for the Session journal. Missing earlier entries must be marked retrospective.
 
 Before work: recover goal/current step, classify the prompt, select existing
 routine(s), check scope/authority and identify any missing procedure. During work:
@@ -136,3 +140,6 @@ MAINT-SDP-0011 rather than inferred from local template presence.
 
 [Session 0002](session-%230002--SDPTool_output.md) tracks portable SDPTool output,
 including its explicitly marked late registration.
+
+[Session 0005](session-%230005--Blueprint_model_history.md) tracks independent
+model history and blueprint workflow, with explicitly retrospective registration.
