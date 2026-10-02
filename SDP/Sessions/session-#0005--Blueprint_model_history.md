@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn: T003. Earlier discussion is reconstructed below, not a
+Latest recorded turn: T004. Earlier discussion is reconstructed below, not a
 complete transcript. Sequence only; synthetic dates do not measure elapsed time.
 
 ```mermaid
@@ -62,6 +62,8 @@ reviewed targets and distinguish model acceptance from implementation evidence.
 | 2026-10-02 / T002 | Consider four workflow roles and same-file/candidate merging | Owner proposal; release cannot receive changes |
 | 2026-10-02 / T003 | Optional PROPOSAL; default WORK -> CANDIDATE -> RELEASE; preliminary WORK blueprint without locking | Owner correction supersedes mandatory-freeze recommendation |
 | 2026-10-02 / T003 | No UUID in WORK names; four-character suffix for PROPOSAL/CANDIDATE; full identity in YAML | Owner naming requirement; collision handling still required |
+
+| 2026-10-02 / T004 | Verb-first create commands; default accepted release; multi-source WORK creation and contextual pull considered | Owner preference; merge/pull naming remains open |
 
 ## Turn journal
 
@@ -123,6 +125,24 @@ Additional owner steering in T003: identified SDL/go/cmd as the command location
 Confirmed: these are standalone Go program entrypoints; shared packages implement
 the behavior and SDPTool imports several directly. This does not imply every
 SDPTool operation has a separate standalone executable.
+
+### T004 — Human-readable command grammar and integration
+
+Owner input summary: put create before its noun, default create work to the latest
+release, consider pull into the current WORK and create a new WORK from multiple
+WORK sources. Asked whether create is a verb and blueprint a noun.
+
+Request category: architecture/command design discussion. Skills reused: sdp and
+sdp-architect (agent-reported); routine run ID and host IDs unknown. Steps: S2.
+Work summary, not a captured final response: confirmed verb/direct-object grammar;
+updated KB048 examples to verb-first syntax. Recommended consistent from/to/into
+prepositions, multi-source create work as a non-destructive merge, and explicit
+merge SOURCE into TARGET for existing WORK. Contextual pull remains an optional
+alternative awaiting selection. Default source is an unambiguous accepted release;
+missing baseline and conflicting heads must be explicit. No implementation.
+
+Next: decide minimal command vocabulary and context rules in S2, then select S3's
+bounded design/proof plan. Card remains backlog; BP2 remains planned.
 
 ## Closeout
 

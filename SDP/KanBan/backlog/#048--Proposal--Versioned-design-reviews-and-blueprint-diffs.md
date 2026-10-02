@@ -494,16 +494,52 @@ These take precedence over earlier recommendations in this card:
   implemented commands. A proposed common model namespace would expose work,
   proposal, candidate, merge, release and blueprint; it covers both SDL and SDUI.
 
-Proposed command examples (not executable today):
+Current command discussion (not executable today): prefer verb before object,
+for example `create work`, `create blueprint`, `create candidate`, `create release`.
+The owner is considering plain prepositions instead of flags. Recommended initial
+spelling below uses `from`, `to` and `into` consistently; this spelling remains a
+proposal, not approval of a parser or an additional alias set.
 
 ```text
-sdptool model work create fixing-navigation --from release:0.2.3
-sdptool model blueprint --from release:0.2.3 --to work:fixing-navigation
-sdptool model candidate create --from work:fixing-navigation
-sdptool model merge candidate:alpha candidate:beta --into-work integration
-sdptool model candidate create --from work:integration
-sdptool model release create --from candidate:integrated --version 0.2.4
+sdptool model create work fixing-navigation
+sdptool model create work fixing-navigation from release:0.2.3
+sdptool model create blueprint from release:0.2.3 to work:fixing-navigation
+sdptool model create candidate from work:fixing-navigation
+sdptool model create work Combination from work:fix-something work:fix-navigation
+sdptool model merge work:fix-navigation into work:fix-something
+sdptool model create release from candidate:integrated --version 0.2.4
 ```
+
+Omitted `from` on create work selects the current accepted release in the resolved
+model store, records its exact identity and reports it. Never select by directory
+mtime or silently choose between competing accepted heads. If no release exists,
+report that an explicit initialization path is needed (bootstrap syntax remains
+unselected), rather than inventing an implicit empty baseline.
+
+`create work Combination from A B` means non-destructive three-way integration into
+a new WORK, not directory concatenation or last-writer-wins copy. Source inputs
+remain unchanged. Resolve each WORK consistently without locking/freezing it as a
+published proposal; retain exact integration inputs/ancestry for later merges.
+Require a known unambiguous common base for initial support, preserve source
+provenance, and flag conflicts in the new WORK. Unresolved WORK cannot be promoted
+to a valid candidate. Distinguish no-change, clean integration and unresolved
+conflict in the result; a created folder alone is not merge success.
+
+For existing WORK the owner also considers context-relative pull:
+
+```text
+# Run inside WORK--fix-something
+sdptool model pull ../WORK--fix-navigation
+```
+
+This would integrate changes into the current WORK, preserving local edits and
+recording incorporation so repeated pull does not reapply the same change.
+Recommend `merge SOURCE into TARGET` as the explicit operation for now; whether
+`pull SOURCE` is its context-relative convenience remains pending owner choice.
+No network fetch or remote is implied. Reject inferred mutation when cwd does not
+resolve uniquely to a mutable WORK; never infer a candidate/release as a writable
+target. Record source expansion in provenance; the destination name need not be
+renamed automatically. Plan/card scope changes remain explicit governance decisions.
 
 A future standalone `sdl-model` command could share the implementation library
 with `sdptool model`; naming and ownership are unselected. Current SDPTool imports
@@ -513,3 +549,8 @@ it is not a generic dynamically discovered external-command plugin host.
 2026-10-02: Corrected WORK preview and naming, registered Session0005 after owner
 identified missing journal upkeep, and linked the bounded instruction correction
 in MAINT-SDP-0014. EVT-KB-SDP-000276; feature remains backlog.
+
+2026-10-02: Owner selects human-readable verb/object ordering and default latest
+accepted release for WORK creation; discusses contextual pull and multi-source
+create work. Recorded proposed consistent prepositions, explicit merge direction,
+base/conflict rules and unresolved pull naming. Session0005 T004; event277.
