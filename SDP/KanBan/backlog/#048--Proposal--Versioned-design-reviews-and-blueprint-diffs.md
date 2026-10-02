@@ -9,7 +9,7 @@
 | Systems | SDL, SDUI, SDPTOOL |
 | created | 2026-10-01 |
 | source | Owner discussion after XFMD dynamic-tab implementation |
-| tags | blueprint, model-history, baseline, design-review, Git |
+| tags | blueprint, model-history, baseline, design-review, storage |
 
 ## Owner outcome
 
@@ -17,8 +17,9 @@ The XFMD agent changed implementation before updating its SDL/SDUI design. The
 owner proposes independent local version control for design sources: create a
 model branch, design a change, review its proposed difference, generate a blueprint
 showing the affected system, implement against that blueprint, verify code against
-the target model, then integrate the verified design. Avoid a directory copy for
-every release and avoid requiring a separate GitHub model repository. Preserve
+the target model, then integrate the verified design. The initial preference avoided a directory copy for every release; the owner now
+explicitly proposes full snapshots as a simpler alternative (see below). Avoid
+requiring a separate GitHub model repository. Preserve
 both SDL and SDUI revisions together and let SDPTool manage the workflow.
 
 This card captures a proposal, not approval of a storage backend, new commands,
@@ -36,6 +37,16 @@ between model, code and evidence; no replacement ledger should be created here.
 The source-composition and discovery work delivered after BP1 changes its historical
 single-file assumptions, but does not itself implement semantic model differences,
 assignment generation, local design-review requests or code-conformance proofs.
+
+## Owner constraint — no separately maintained history export
+
+Owner clarification, 2026-10-02 local date: reject git bundle and any workflow
+whose durability depends on SDPTool or an agent remembering a separate export.
+History must be durable in its authoritative native storage after each model
+commit and capable of accompanying the project. The earlier local Git plus bundle
+recommendation is withdrawn. Subversion is an owner-suggested candidate; no backend
+is selected. Ordinary parent Git commits remain necessary to publish project data,
+but a second model-history export must not be a hidden prerequisite.
 
 ## Git facts that constrain the proposal
 
@@ -62,29 +73,136 @@ Primary references:
 
 | Option | What it provides | Consequence |
 | --- | --- | --- |
-| Project Git plus path-scoped model revisions | Existing portable history; straightforward exact model/code links | Model and implementation commits share one repository, contrary to the owner's preferred separation |
-| Local model Git, isolated proposal worktrees, accepted source export into parent | Independent model branches and ordinary readable source files in the parent | History/review recovery needs an explicit durable transport and reconciliation contract |
-| Normal submodule | Independent Git history with parent pin | Does not satisfy local-only history automatically following the parent's push/clone |
+| Project Git plus a separate design workflow | Native branch/PR merging and portable source history without export | Recommended for reconsideration under the parallel-merge requirement; changes the earlier preference for a physically separate repository |
+| Local model Git plus bundle export | Independent history with portable export | Rejected by owner: requires another persistence/export operation |
+| Normal submodule | Independent Git history with parent pin | Local-only objects do not follow the parent's push/clone |
+| Local Subversion repository | Atomic tree revisions and reproducible differences within one repository | Independently changed copies of its repository cannot safely be merged as ordinary Git-tracked backend files |
+| Fossil repository | Native single-file SQLite repository and its own history/merge operations | Git merging divergent database files does not perform a Fossil history merge; no automatic solution to the new requirement |
+| RCS/CVS | Established predecessors supporting revision differences and history | RCS is per-file; coordinated model revisions and modern concurrent workflows need additional assessment |
 
-Recommended direction to prototype: the second option. Keep the local Git database
-outside the visible source tree; do not insert a .git directory/file into the
-tracked SDP/SDL tree or dual-control the same working files with two active indexes.
-Use isolated model proposal worktrees and publish an accepted snapshot into the
-project only through a checked operation. Default discovery sees the accepted source;
-proposal preview must explicitly select its isolated workspace/revision.
+Investigate native authoritative storage, not another dump/export that must be
+remembered. SVN does not intrinsically eliminate the problem: versioning only its
+working copy preserves current source, not the actual repository history. Native
+repository storage could be included separately, but capturing a live repository
+consistently is not equivalent to adding ordinary source files. Its hotcopy/dump
+operations are backup mechanisms, not a selected workaround for the rejected extra
+step.
 
-If full local model history must survive an ordinary parent clone, export a complete,
-verified bundle of required refs/objects plus portable review/baseline records as
-project-owned data. The parent stores ordinary accepted SDL/SDUI files as well.
-This is synchronization to implement, not something Git does implicitly. The bundle
-is opaque to parent text merges and may grow; evaluate deterministic export,
-round-trip restoration, incremental/full choices and concurrent update conflicts
-before selecting its on-disk format or making it an installer default. Merely
-reconstructing a new repository from current source loses proposal history/identities.
+The earlier Fossil suggestion addressed export because its repository itself is a
+single SQLite file rather than an exported snapshot. A parent-tracked native
+repository would not require a bundle step. That alone does not prove our workflow:
+Git cannot text-merge divergent database copies, capture must not race a database
+write/journal, and source/history correspondence must survive a fresh parent clone,
+rollback, parallel Git worktrees and interrupted operations. Fossil repositories
+also contain auxiliary configuration/user data; assess suitability before treating
+that native database as a publishable project artifact. Do not introduce an extra
+scrub/backup export and silently call it compliance with the owner's constraint.
 
-Do not store runtime-only history in a nonportable directory and then claim it is
-backed up by the parent. Separate Git worktrees need isolated work state, correct
-Git common-directory discovery and an explicit synchronization/locking policy.
+The new parallel-parent-merge requirement below supersedes any inference that SVN
+or Fossil native storage alone solves this problem. No storage layout is adopted.
+Keep the semantic blueprint/review contract separate
+from the storage adapter. Known version control supplies revisions and text diffs;
+SDL/SDUI semantic impact and implementation evidence remain our tooling's job.
+
+Additional primary references:
+- https://svnbook.red-bean.com/en/1.7/svn-book.html
+- https://svnbook.red-bean.com/en/1.8/svn.reposadmin.maint.html
+- https://fossil-scm.org/home/doc/trunk/www/quickstart.wiki
+- https://fossil-scm.org/home/doc/trunk/www/index.wiki
+- https://www.gnu.org/s/rcs/manual/html_node/Overview.html
+
+## Parallel parent merges — owner clarification and recommendation
+
+Owner clarification on 2026-10-02: independent design commits on parallel project
+Git branches must survive PR integration with safe merges. Any retained pair of
+design revisions should be usable as reproducible blueprint inputs. A local store
+that works only until two project branches diverge does not meet the requirement.
+
+Analysis: a single local SVN repository can compare committed revisions and a
+working copy. However, copying that repository into Git branches produces two
+independently writable histories with a shared origin. Both can allocate revision
+43 to different transactions. Git merging repository backend files does not reconcile
+SVN revision identity, references and transactions. Similarly, choosing one of two
+Fossil database files loses the other side unless a Fossil-level reconciliation is
+performed. These are architectural deductions from the storage models; no SVN or
+Fossil runtime test was performed in this turn (svn/svnadmin are unavailable).
+Custom Git merge drivers would require installed configuration and actual invocation
+at every merge location, including hosted PR merges, and semantic validation after
+integration. A committed .gitattributes file alone does not install that mechanism.
+They are not an implicit solution to ordinary GitHub PR merging.
+
+Recommended change to the proposal, requiring owner disposition: separate the
+**design lifecycle and view**, while using the project's existing Git object/history
+store. SDL and SDUI remain ordinary versioned sources. SDPTool presents model-only
+history, proposal workspaces and blueprint operations instead of asking users to
+manage a second database. This is a deliberate tradeoff against the earlier
+physical-repository separation preference, not a claim that preference was accepted
+or silently superseded by tooling.
+
+Proposed sequence:
+
+1. Pin the checked implementation/model baseline at project commit B.
+2. Create an ordinary project branch/worktree; commit only the intended model
+   changes as D. Preserve unrelated staged work; the tool needs scoped staging or
+   an isolated worktree/index, not an unrestricted Git commit.
+3. Generate and review the semantic B-to-D blueprint before implementation.
+4. Commit implementation and verification as I on that branch. Model changes after
+   D require a fresh target/blueprint review; do not quietly reuse an old approval.
+5. Integrate through ordinary Git merge. Revalidate the actual combined model and
+   implementation, even if Git reports no textual conflicts. Approval of A and B
+   separately does not prove their combined contracts.
+
+A commit's model input is the complete resolved model source closure at that
+commit, not only its changed lines or the working directory's current sources.
+The root model subtree hash can identify unchanged source content across code-only
+commits, but full revision identity also includes external/pinned inputs, language
+profiles and generator/selection policy. Commit-specific code mappings/evidence
+must remain associated with the corresponding code revision.
+
+For the requirement that every reviewed design commit survive, use normal history-
+preserving merges after review and retain reachable commits. Squash/rebase can
+remove or rewrite intermediate identities. A SHA written in a document does not
+by itself preserve an otherwise unreachable Git object. Define repository policy
+and enforceable checks; no branch-policy configuration has been changed here.
+A merge commit has multiple parents: comparison must select an explicit baseline
+(first-parent integration view or each-parent views), not guess a single previous
+model. A code-only commit can legitimately produce an empty model difference.
+
+If physical storage separation remains non-negotiable, the viable alternative to
+study is an immutable, content-addressed store in ordinary parent-tracked files:
+unique snapshot/commit records, parent links and explicit conflicting branch heads.
+Disjoint records can coexist after a Git merge, but model branch integration and
+validation still need a designed protocol. This amounts to implementing substantial
+version-control machinery and is not a recommended first delivery or a selected
+new format. Raw copied VCS databases are not equivalent to that store.
+
+### Bounded Git experiment — 2026-10-02
+
+A disposable repository outside the project used plain textual .design fixtures;
+no parser, blueprint generator or implementation-conformance test is claimed.
+Git 2.52.0 passed all five checks:
+
+- A design commit followed by a code-only commit retained the exact model subtree.
+- Two branches changing different model files merged and retained both changes.
+- A normal merge retained both parent histories.
+- A fresh non-local-optimized clone retrieved exact baseline/design/code snapshots.
+- Conflicting edits to the same model line stopped with an explicit merge conflict.
+
+Temporary probe: /tmp/sdp-model-history-probe-e5l3okel/Evidence.json.
+Baseline: 34a30bcc5a96579d72c5022f0896c7aac75066e0.
+Design A: 6e7d0b42f762168866c1b8fbaaefd26043dc1a93.
+Implementation A: 0677b697445766602d959d3f9646c6d3bfdc28c5.
+Design B: e57b6632b173fd354ee4fe841cf4e3af792a5acf.
+Merge: 6f0c8c531f12f9915f12efbea6766fc04b6add81.
+These temporary identities demonstrate storage behavior only and are not product
+release or accepted system design revisions. No project Git metadata was modified.
+
+Primary sources for these mechanisms:
+- https://git-scm.com/docs/git-merge
+- https://git-scm.com/docs/git-worktree
+- https://git-scm.com/docs/git-log
+- https://git-scm.com/docs/gitattributes
+- https://svnbook.red-bean.com/en/1.7/svn.basic.in-action.html
 
 ## Baseline and review semantics
 
@@ -111,10 +229,178 @@ rejected/canceled proposal keeps the verified baseline unchanged. Release identi
 records the model/code pair, not a second copy of the sources. Partial implementation
 and incomplete verification remain explicitly scoped, not whole-system verified.
 
-There is no atomic Git commit spanning the two repositories. Define a recoverable
-promotion/export transaction and code/model receipt; concurrent proposals require
+A model-store transaction is not automatically atomic with a parent Git commit.
+Define recoverable promotion and a code/model receipt; concurrent proposals require
 base validation/rebase, conflict resolution and renewed affected review. Never
 silently overwrite changed accepted source or consume an unrelated worktree state.
+
+## Owner refinement — standalone snapshot history, 2026-10-02
+
+The owner identifies a remaining failure in the project-Git recommendation:
+blueprints must work without a Git repository and without a project commit. The
+owner proposes immutable release directories and editable WORK copies, initially
+restricted to work starting from the latest release, with explicit file checkout,
+commit and pull. This supersedes the earlier preference against release copies as
+a constraint on investigation. No backend or command syntax is adopted yet.
+
+**Recommended direction for the next design experiment:** ordinary-file snapshot
+history owned by SDPTool, independently usable without Git. Parent Git transports
+those authoritative files directly when used; no bundle/export/rebuild step owns
+history. Start with full snapshots; deduplication can wait. This is a bounded
+version-control subsystem, not merely a rename command.
+
+### Minimum durable identities and operations
+
+- Each immutable revision has a unique ID, parent revision IDs, a complete SDL/SDUI
+  source snapshot and a manifest of paths/content digests. Include or pin the full
+  source closure and parser/profile inputs needed for blueprint reproduction.
+  UUID-style identifiers plus content verification are a possible implementation,
+  not a chosen schema. A release number is a label, not the revision identity.
+- WORK has its own ID and pinned base. Creating it from the current accepted
+  release is a reasonable initial restriction. An existing WORK remains based on
+  its original revision when a newer release appears; require explicit update and
+  revalidation before release rather than pretending its base changed.
+- A model commit freezes a complete candidate snapshot, even when the selected
+  changes concern only a few files. It does not mean the implementation is verified
+  and must not advance the accepted release implicitly. Blueprint generation can
+  freeze a candidate automatically without making a project Git commit.
+- Pull names an exact source revision. Importing another task's committed changes
+  does not make them accepted or implemented. Record that dependency and invalidate
+  affected earlier review/evidence. A common integration candidate should be
+  explicit; never silently use whichever WORK last wrote a file.
+- Release requires a validated candidate and the applicable implementation evidence.
+  Preserve intermediate revisions and lineage; deleting/renaming the only WORK
+  directory cannot be the history mechanism. Assign the next version only during
+  successful publication, with local exclusive coordination and crash recovery.
+
+### Bounded locking and merging
+
+Local exclusive checkout may simplify the initial workflow. Key a lock by model
+store identity and normalized logical source path, not an absolute path inside a
+release directory. Track base revision/digest, WORK owner and recovery information.
+Treat rename/delete and case-equivalent paths explicitly. Read-only permissions
+are an aid, not enforcement: compare digests and refuse untracked writes or stale
+bases before commit/release. Do not let canceled or crashed work leave unrecoverable
+locks. Local locks do not establish distributed exclusivity across copied stores
+or independent project Git clones; this boundary must be visible.
+
+For v1, automatically combine disjoint file changes, preserve identical changes,
+and stop on divergent changes to the same file (including delete/modify conflicts).
+Three-way merge needs the common base, ours and theirs; a two-file diff/patch alone
+cannot reliably distinguish concurrent edits from already incorporated changes.
+Later text merging can improve convenience, but every combined model still needs
+parsing and semantic validation: disjoint files may violate the same contract.
+Never silently choose a side. The owner's combined merge/release command is a
+possible convenience after these stages and failure behavior are defined.
+
+### Surviving parent Git merges
+
+Store immutable revisions at distinct identity-based paths. Independent additions
+can then coexist after a normal project merge without merging database internals.
+Human names such as SDL--V0.2.3 may be convenient projections, but two branches can
+both allocate that name for different revisions. Retain both unique revisions and
+report the ambiguous label; do not overwrite either or silently pick a latest head.
+Record release claims/acceptance events independently, so semantic conflicts are
+detectable even when Git reports no textual conflict. A changed revision with an
+existing identity is corruption/conflict, never a normal history edit.
+
+Mutable WORK data may conflict during project merges and requires explicit
+resolution. Machine-local lock state cannot become authority in another clone.
+The next SDPTool operation must validate imported history, competing release/head
+claims and hashes before using a baseline. “Survives merge” means history is
+preserved and ambiguity is exposed; it cannot mean every parallel design decision
+is automatically compatible. User-facing discovery must avoid counting historical
+snapshots as multiple live systems; source-root and cache/WORK handling need design.
+
+### Proposed proof before implementation commitment
+
+Exercise a project with no Git: freeze baseline and candidate, regenerate their
+blueprint inputs, commit/pull across two WORK directories, reject stale writes,
+and preserve canceled work history. Then use two project Git clones to create
+independent revisions with the same release label, integrate and confirm both
+histories survive while release ambiguity blocks promotion. Include interrupted
+snapshot publication, changed immutable files, rename/delete, lock recovery and
+cross-file semantic conflict. No such snapshot-store experiment has been run yet;
+the earlier Git-only probe is not evidence for this design. BP2 remains planned.
+
+## Lifecycle refinement — WORK / PROPOSAL / CANDIDATE / RELEASE
+
+Owner discussion, 2026-10-02: consider browsable directories with UUID and content
+SHA in YAML, parallel proposals integrated by one designated candidate/release
+owner, and immutable releases. The owner also asks whether PROPOSAL can be removed.
+The following is architectural advice, not an adopted storage schema.
+
+Recommend retaining four workflow meanings while implementing only two storage
+behaviors: mutable WORK and immutable snapshots. PROPOSAL freezes one contributor's
+submission; CANDIDATE freezes the integrated target; RELEASE records acceptance of
+that exact target. One proposal may form a candidate without merging. These roles
+need not be four incompatible formats or require manual folder movement.
+Removing PROPOSAL is viable if CANDIDATE also means contributor submission, but
+then submission versus integrated acceptance target must still be distinguished.
+A mutable WORK name alone cannot identify a reproducible blueprint input.
+
+Suggested browsable convention (not a migration decision): WORK--<name>--<uuid>,
+PROPOSAL--<name>--<uuid>, CANDIDATE--<name>--<uuid>, and
+RELEASE--V<version>--<uuid>. Each contains model.yaml and a sources/ tree retaining
+relative SDL/SDUI source paths. Directory names are labels; metadata owns identity.
+This location must be designed alongside discovery to avoid treating all historical
+copies as live systems. ZIP is optional transport, not authoritative storage.
+
+A proposed manifest contains schema version, store ID, snapshot UUID, kind, parent
+snapshot references, base release reference, language/profile inputs and a content
+inventory. Define SHA-256 over a canonical sorted inventory of normalized relative
+paths, file kinds and exact byte hashes. Exclude model.yaml itself and generated
+caches from that content hash; separately digest the canonical immutable manifest
+without its own digest field. Define path/case collision, symlink and external-source
+rules before implementation (initially rejecting symlinks/unpinned external inputs
+is simpler). UUID identifies a record; the digest detects changes, not authorship
+or tamper-proof provenance. No mutable status update to a published manifest.
+
+Promotion creates a new immutable record with lineage to its input; a RELEASE may
+have the same source-content digest as its CANDIDATE while having a distinct UUID
+and release metadata. Full copies are acceptable initially. Bind verification to
+the candidate identity/content and relevant code revision or code artifact digest;
+release confirms that exact content. Store later review and rejection decisions
+separately, without rewriting the frozen proposal/candidate. A fix creates another
+WORK and snapshot; an old candidate remains reproducible.
+
+| Requested operation | Proposed meaning |
+| --- | --- |
+| WORK <- WORK | Freeze the source input, merge into the target WORK with a recorded base; preserve unresolved work and do not publish a candidate |
+| CANDIDATE <- WORK | Freeze the WORK input, integrate in temporary WORK, validate and publish a new candidate UUID; old candidate remains unchanged |
+| CANDIDATE <- CANDIDATE | Integrate both frozen inputs in WORK using their common ancestry, resolve and validate, then publish a third candidate with both parents |
+| RELEASE <- anything | Forbidden; derive a new WORK/candidate and publish a new release |
+
+Retain common ancestors. For the first supported multi-input integration, require
+one unambiguous common base; stop for explicit handling of missing or multiple
+merge bases rather than silently choosing one. Record input order and actual
+resolution for multi-proposal integration. Same-file edits can be three-way merged
+when non-overlapping; overlap must produce explicit conflicts. Delete/modify,
+rename and added-path collisions need defined conservative handling. Textual success
+is followed by SDL/SDUI parse, binding and contract checks plus applicable review;
+it does not prove merged behavior. Existing review is stale for affected changed
+content. Git merge-file demonstrates a standalone three-file merge primitive,
+not a selected production dependency or a semantic model merger:
+https://git-scm.com/docs/git-merge-file
+
+The designated integrator is workflow authority, not distributed locking. Locally
+serialize candidate/release publication and check the expected accepted head. After
+Git combines independently produced histories, preserve both identities and reject
+ambiguous release labels/competing accepted heads until explicitly reconciled.
+Independent proposal paths should combine as file additions, not mutate a shared
+central index; indexes may be rebuilt. UUID collision or changed frozen content
+must fail validation. Accepted release is not inferred from highest version alone.
+
+Blueprint comparison supports any two frozen proposals, candidates or releases.
+Comparing WORK first freezes a snapshot; label ad-hoc mutable previews as such.
+A comparison between unrelated proposals is meaningful as A-to-B difference but
+is not automatically the implementation task from the accepted baseline. Pin the
+chosen baseline explicitly and calculate impacted context from both models.
+
+Next experiment should prove same-file disjoint merge, overlapping edit conflict,
+candidate-to-candidate lineage, unchanged reviewed candidate promotion, corrupted
+snapshot rejection and competing release claims after parent Git integration.
+No implementation has been authorized or performed by this refinement.
 
 ## Semantic blueprint algorithm to design
 
@@ -144,8 +430,7 @@ but must not be reported as design approved before implementation. No XFMD edits
 or external card transition is authorized by registering this proposal.
 
 First demonstrate one revision-pinned before/after blueprint and an implementation
-review using existing Git history. Then test the independent local-history backend
-against that same contract; do not require a local PR UI, forks and release server
+review. Test a candidate native model-history store against the no-export constraint; do not require a local PR UI, forks and release server
 before validating that blueprint usefulness. The owner preference for separate
 history is preserved; backend experimentation must not silently make project Git
 permanently authoritative for the separate design lifecycle.
@@ -159,10 +444,31 @@ configuration should be exported into the parent repository.
 ## Next decision
 
 Select BP2 design work with this versioning input and KB-SDP-004's evidence contract.
-Resolve durable-history transport, revision identity/rename policy and the initial
+Resolve native durable history without a separate export, revision identity/rename policy and the initial
 XFMD change before implementation. No product implementation is selected by this card.
 
 ## Worklog
 
 2026-10-01: Recorded owner proposal and bounded architectural analysis; linked BP1,
 planned BP2 and existing Traceability proposal. State remains backlog.
+
+2026-10-02 local date: Owner rejected bundle/export-dependent durability and asked
+about SVN and pre-Git systems. Withdrew that recommendation; recorded SVN/Fossil
+as unselected candidates and the native-storage/parallel-history acceptance gaps.
+EVT-KB-SDP-000272; CardState remains backlog. No backend installed or implemented.
+
+2026-10-02: Captured mandatory parallel parent-Git merge behavior and per-revision
+blueprint reproduction. Corrected the SVN/Fossil direction: native store format
+alone does not make independent histories Git-mergeable. Proposed project-Git-backed
+model history for owner reconsideration; a five-case disposable Git storage probe
+passed. EVT-KB-SDP-000273; no production command/backend or owner adoption claimed.
+
+2026-10-02: Owner proposes standalone release snapshots and locked WORK directories.
+Recorded Git-independent blueprint requirement, unique immutable revision identities,
+local-lock limits, conservative merge rules and competing release-label detection.
+EVT-KB-SDP-000274; proposal only, CardState remains backlog.
+
+2026-10-02: Refined owner WORK/PROPOSAL/CANDIDATE/RELEASE proposal. Recommended
+immutable submissions and integrated targets, identity-based browsable directories,
+canonical content hashes, new-candidate merge semantics and designated integration
+ownership. EVT-KB-SDP-000275; implementation remains unselected.
