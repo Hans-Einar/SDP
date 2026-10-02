@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn: T005. Earlier discussion is reconstructed below, not a
+Latest recorded turn: T006. Earlier discussion is reconstructed below, not a
 complete transcript. Sequence only; synthetic dates do not measure elapsed time.
 
 ```mermaid
@@ -28,7 +28,7 @@ gantt
 | Session reference | SESSION-SDP-0005 |
 | Status | active |
 | Primary card | KB-SDP-048 |
-| Snapshot date | 2026-10-02 |
+| Snapshot date | 2026-10-03 |
 | Current step | S2 |
 | Proposed next step | S3 after settling the minimal lifecycle and tool boundary |
 | Execution authority | Owner authorizes discussion and immediate Session-instruction correction; model-store implementation remains unselected |
@@ -66,6 +66,8 @@ reviewed targets and distinguish model acceptance from implementation evidence.
 | 2026-10-02 / T004 | Verb-first create commands; default accepted release; multi-source WORK creation and contextual pull considered | Owner preference; merge/pull naming remains open |
 
 | 2026-10-02 / T005 | Typed creation targets; YAML ledger and commit history; snapshot/delta comparison | Owner proposal; storage representation remains open |
+
+| 2026-10-03 / T006 | Limit content history to WORK; promotion keeps messages/lineage and final model, not undo payloads | Owner scope reduction supersedes permanent commit archive recommendation |
 
 ## Turn journal
 
@@ -164,6 +166,27 @@ No backend, command or automatic blueprint generator implemented.
 
 Next: S2 must settle minimal persistent format and ownership before S3 design/pilot
 selection. Ledger placement is a recommendation, not assumed owner acceptance.
+
+### T006 — Bounded local undo and nested merge provenance
+
+Owner input summary: avoid a full version-control system or central store. Keep
+changed-file copies in numbered .commits directories inside WORK, preserve source
+and target YAML/.commits/.merge in merge archives, and name YAML after the artifact.
+Promotion can discard undo payloads while retaining messages and lineage. Asked
+whether overlap prevents rollback and whether the proposed structure can work.
+
+Request category: architecture/scope refinement. Skills reused: sdp and
+sdp-architect (agent-reported); routine/host IDs unknown. Step S2.
+Work summary, not a captured final response: accepted the bounded scope as current
+owner direction; documented baseline and deletion requirements for after-image
+reconstruction, metadata-only promotion and whole-state rollback versus selective
+undo. Recommended pre/post merge checkpoints and safe staged archive copying;
+recursive ancestry duplication needs limits/reuse, not a central repository.
+Corrected permanent history expectations in KB048 and the Study. Validation checks
+cover documents only; no storage, restore or merge implementation has been tested.
+
+Next: settle minimal local schema and recovery operations, then select S3's bounded
+plan. Keep permanent VCS features and selective merge undo outside the pilot.
 
 ## Closeout
 

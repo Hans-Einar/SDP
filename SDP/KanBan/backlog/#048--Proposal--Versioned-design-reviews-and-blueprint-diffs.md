@@ -617,3 +617,68 @@ not a decision to use a nested Git repository or implement packfiles.
 2026-10-02: Recorded typed creation targets, explicit initial WORK, commit content
 and ledger DAG/union semantics, and snapshot-versus-delta alternatives. Session0005
 T005; EVT-KB-SDP-000278. Storage schema and implementation remain unselected.
+
+## Owner scope boundary — WORK-local undo, 2026-10-03, T006
+
+This clarification supersedes recommendations for permanently retained full commit
+content in a central model history store. The owner wants a deliberately limited
+WORK-local history: numbered commits with messages and changed-file copies, nested
+merge provenance, and recovery during model development. CANDIDATE/RELEASE retain
+model content, commit messages and lineage but may discard WORK restoration payloads.
+Do not require arbitrary historical WORK blueprint reconstruction after disposal.
+Parent Git can retain checked-in history but cannot recover content never committed.
+Surviving immutable candidates/releases remain valid blueprint inputs.
+
+Owner proposed layout: a YAML file named after the enclosing artifact directory,
+.commits and .merge always present logically, with numbered
+commit directories; .merge archives each source/target YAML and its local histories,
+including prior .merge. New root YAML refers to archived parents. Recommend matching
+the directory stem exactly (WORK--Fix-Navigation/WORK--Fix-Navigation.yaml) instead
+of the accidental single/double-hyphen discrepancy in the example. Full UUID remains
+inside metadata; counters are local and display-oriented, not global identities.
+
+Necessary recovery details for a bounded implementation:
+
+- Changed-file commits store complete after-images at relative paths, plus explicit
+  deleted-path records. A rename may initially be represented as delete plus add.
+  Changes compare with the last saved WORK state, not repeatedly with its release.
+- Reconstruction needs an available full starting state. Recommend .commits/#00000
+  as a local baseline snapshot (empty for initial WORK), followed by numbered
+  changed-file records; this avoids depending on an external release directory
+  continuing to exist. History/metadata/cache directories are excluded from source
+  snapshots. Commit identity is WORK UUID plus counter or another unique record ID.
+- Restore means reconstruct the whole model at a chosen local commit. Preview the
+  change and preserve current uncommitted work before applying. Restoration should
+  append a new recovery record, not erase existing lineage. Selective cross-branch
+  undo/cherry-pick and automatic inverse merge are explicitly outside initial scope.
+- A merge archives both inputs as they stood before integration, resolving unsaved
+  edits by an explicit saved checkpoint or stopping before mutation. Build archives
+  in staging outside the destination traversal; never recursively copy the new
+  destination into itself. Use identity-qualified archive entries if folder names
+  collide; path names alone do not distinguish independent WORKs.
+- Keep complete pre-merge and resolved post-merge checkpoints as bounded recovery
+  anchors. Whole-WORK restoration before/after merge is possible even with overlapping
+  files when those states exist. Restoring only one source's contribution while
+  retaining other changes is not promised. Source-branch commits are provenance,
+  not automatically restore points on the integrated WORK's current line.
+- Recursive archive copying is a workable first representation but can duplicate
+  common ancestry and grow rapidly. Preserve existing archives and references;
+  reuse identical frozen archives by full identity/digest within the WORK when
+  practical. No central history database is required. Missing payload is reported
+  as unavailable restoration, not reconstructed from commit messages.
+- Promotion copies current validated sources and a metadata-only lineage closure,
+  including source/target identities, messages and parent relationships. It excludes
+  .commits file payloads and archived source payloads from .merge. Do not leave
+  provenance depending on soon-deleted WORK paths. Mark retained historic entries
+  as metadata-only where restoration content has been dropped. Candidate/release
+  immutability remains unchanged.
+
+The root YAML may be replaced as the current WORK head description; archived YAML
+records remain immutable and linked by identity. WORK file layout/history schema
+is proposed, not implemented. No global VCS, packfiles, distributed locks, selective
+rollback or permanent every-commit source archive is required by this scope.
+
+2026-10-03: Recorded owner reduction to local undo history with changed-file copies,
+recursive merge provenance and metadata-only promotion. Explained deletion/base
+requirements and whole-state versus selective merge rollback. Session0005 T006;
+EVT-KB-SDP-000279. BP2 remains planned; no implementation started.

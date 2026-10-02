@@ -364,3 +364,16 @@ may use a four-character UUID suffix with explicit collision handling. Full UUID
 stays in tool-owned YAML. Normal route is WORK -> CANDIDATE -> RELEASE; PROPOSAL
 remains optional. These corrections supersede earlier recommendations requiring
 proposal creation/freezing for every preview. Session0005 tracks further discussion.
+
+
+## Owner scope reduction — 2026-10-03
+
+Session0005 T006 and KB048 supersede the recommendation to keep every historical
+commit's source content permanently: WORK-local undo is sufficient. Candidate and
+release promotion may discard restoration payloads while retaining source content
+for the promoted model and metadata-only commit/merge lineage. Historical WORK
+comparisons are possible only while their inputs remain available. No central
+model repository is required. Proposed .commits changed-file copies need a baseline
+and deletion records; .merge archives preserve provenance. Full-state recovery
+around merges can use checkpoints; selective undo of merged contributions is not
+part of the bounded initial design. No backend implementation is claimed.
