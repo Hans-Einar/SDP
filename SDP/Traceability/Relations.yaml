@@ -30,6 +30,12 @@ requirements:
     design: DES-SDPTOOL-001
     note: GIP delivers installation execution; RP1 owns signed publication and live adoption.
 designs:
+  SDPTOOL-DES-0001:
+    status: design-candidate
+    path: 04--Design/SDPTool/ProjectGovernance/Design.md
+    implementationPlan: 05--Implementation/SDPTool/ProjectGovernance/Plan.md
+    kanban: KB-SDP-038
+    note: PGD1 shared routine, Session and client contract; implementation and runtime verification remain planned.
   DES-SDPTOOL-001:
     status: initial-design
     path: 03--Architecture/SDPTool.design

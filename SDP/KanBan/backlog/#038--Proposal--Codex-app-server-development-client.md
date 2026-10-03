@@ -8,10 +8,10 @@
 | CardState | backlog |
 | created | 2026-09-28T15:10:13.034937+00:00 |
 | source | Owner conversation 2026-09-28: register app-server-based system development and assess SDPTool MCP |
-| next_review | Select the bounded successor DesignPlan from the completed RGS2 synthesis |
+| next_review | Start the bounded PGI1-M1 core slice under planned PLAN-SDP-0018; design delivered in PGD1 |
 | tags | codex, app-server, client, MCP, supervision, blueprints, observability |
 | Systems | SDPTOOL |
-| PlanId | PLAN-SDP-0007 |
+| PlanId | PLAN-SDP-0018 |
 
 ## Current study entry point
 
@@ -161,3 +161,46 @@ study plan remains linked as evidence; no implementation plan is activated here.
 Client should capture submitted/steered prompts and completed visible final responses with thread/turn/item identity; preserve reconnect deduplication and distinguish observed activity from routine compliance.
 
 EVT-KB-SDP-000245: Existing CardState and execution selection unchanged.
+
+## ProjectGovernance workstream — 2026-10-03
+
+The owner prioritizes starting this card and asks which capabilities should
+precede it. Owner scope: ProjectGovernance covers method, methodology and tooling
+for collaboration between the owner and Codex agents, including KB036/037/042/043.
+Another agent is progressing ModelGovernance; it retains model artifact, revision,
+checkpoint, merge and promotion ownership. This work references that contract
+without taking over its implementation.
+
+[Session 0007](../../Sessions/session-%230007--Project_governance.md) records the
+assessment, recommended route and per-turn continuity for this goal. Reuse RGS2
+instead of repeating the broad study. Recommendation: first design the minimum
+KB036 routing contract with KB037 durable run/transition state and KB042 Session
+identity; then exercise it through one bounded KB038 client workflow. The client
+supplies the controlled request/capture surface, while SDPTool owns shared process
+rules. Full completion of KB036 is not a prerequisite to starting client work.
+Capture reliable activity identity/timing in the pilot so KB043 can later derive
+its timeline; the complete timeline renderer is not an entry dependency.
+
+The initial pilot can use explicit assignment/context/evidence references without
+waiting for ModelGovernance, KB050 semantic blueprints or KB040's full KanBan TUI.
+The shared DesignPlan is the next proposed bounded step. This turn delivers
+dependency analysis, not a client implementation or activation of all five cards.
+CardState remains backlog; PLAN-SDP-0007 remains completed study evidence until a
+successor plan is actually registered.
+
+2026-10-03T09:19:45.269241+00:00: EVT-KB-SDP-000286 — Record owner ProjectGovernance scope, KB038 priority and Session0007 dependency assessment; backlog state retained during preparation of the shared design.
+
+2026-10-03T21:05:00.519753+00:00: EVT-KB-SDP-000287 — Owner continues Session0007 S2; activate bounded PGD1 design under [PLAN-SDP-0017](../../04--Design/SDPTool/ProjectGovernance/Plan.md). Related capability cards remain backlog.
+
+## PGD1 shared design delivery — 2026-10-03
+
+[Session 0007](../../Sessions/session-%230007--Project_governance.md) T002 records
+the owner-selected design continuation. [PGD1 contract](../../04--Design/SDPTool/ProjectGovernance/Design.md)
+and its acceptance cases now specify the minimum routing/run/Session/client
+boundary. [PLAN-SDP-0018](../../05--Implementation/SDPTool/ProjectGovernance/Plan.md)
+is the planned implementation handoff. Codex 0.160.0 schema export was inspected;
+no live client, routine enforcement or integrated model execution is delivered.
+The shared pilot covers a bounded contribution; broader card acceptance remains
+open. ModelGovernance continues independently.
+
+2026-10-03T21:14:27.153979+00:00: EVT-KB-SDP-000288 — PGD1 design delivered; return KB038 from in-progress to backlog for planned PGI implementation, preserving the completed design and unimplemented capability.

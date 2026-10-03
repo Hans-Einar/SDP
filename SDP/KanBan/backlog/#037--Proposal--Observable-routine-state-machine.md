@@ -242,3 +242,16 @@ study plan remains linked as evidence; no implementation plan is activated here.
 Session roadmap is the enclosing goal context for routine runs; step/turn/assignment IDs remain distinct. Overview and live execution should project the same validated state.
 
 EVT-KB-SDP-000244: Existing CardState and execution selection unchanged.
+
+## PGD1 shared design delivery — 2026-10-03
+
+[Session 0007](../../Sessions/session-%230007--Project_governance.md) T002 records
+the owner-selected design continuation. [PGD1 contract](../../04--Design/SDPTool/ProjectGovernance/Design.md)
+and its acceptance cases now specify the minimum routing/run/Session/client
+boundary. [PLAN-SDP-0018](../../05--Implementation/SDPTool/ProjectGovernance/Plan.md)
+is the planned implementation handoff. Codex 0.160.0 schema export was inspected;
+no live client, routine enforcement or integrated model execution is delivered.
+The shared pilot covers a bounded contribution; broader card acceptance remains
+open. ModelGovernance continues independently.
+
+2026-10-03T21:14:27.153979+00:00: EVT-KB-SDP-000290 — Link PGD1 shared ProjectGovernance contract and Session0007; retain backlog state and this card's remaining capability scope.
