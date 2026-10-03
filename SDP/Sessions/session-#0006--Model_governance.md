@@ -103,6 +103,8 @@ These are design/structural results, not implemented transaction behavior.
 Concurrent Session0007/KB038/management records existed and changed during this
 turn. Preserve those edits; this milestone stages only its own ledger append and
 artifacts. Next MG3 tests the risky storage assumptions before MG4 handoff.
+Staged whitespace checking additionally found generator-produced trailing blank
+lines in Markdown; evidence records this limitation, and outputs remain unedited.
 
 ## Closeout
 

@@ -40,3 +40,12 @@ No runtime operation or complete machine schema is tested by these checks.
 
 Management/Toolkit validators and git diff --check are run at delivery. Concurrent
 ProjectGovernance changes are outside this milestone and must not enter its commit.
+
+## Delivery check note
+
+Management and Toolkit validation passed. After newly generated files were staged,
+`git diff --cached --check` reported extra blank lines at EOF in generated Markdown.
+The unstaged check had not covered those new files. Generated output was retained
+byte-for-byte rather than manually edited; this formatting issue does not invalidate
+the SDL model, but whitespace validation is not reported as fully passing. A future
+projector cleanup must fix its source and regenerate output.
