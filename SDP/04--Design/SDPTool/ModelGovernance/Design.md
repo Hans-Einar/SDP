@@ -1,6 +1,8 @@
 # ModelGovernance — initial design
 
-Status: working design, MG2 in progress; no production schema or CLI implemented.
+Status: MG2 design candidate delivered; no production schema or CLI implemented.
+[Contract](Contract.md) resolves this overview's initial open choices for MG3.
+Where the early overview is less specific, Contract.md owns the proposed v1 behavior.
 [Study](Study.md) identifies owner decisions; recommendations below are not silently
 promoted to accepted language rules. [Plan](Plan.md) owns delivery milestones.
 
@@ -125,8 +127,8 @@ be changed implicitly by merely adding this design document.
 
 ## Design completion and verification cases
 
-MG2 must resolve the schema and recovery decisions above, model the feature using
-supported SDL in the canonical source tree, and produce an ImplementationPlan.
+MG2 defines the contract and validated SDL model; MG3 exercises its risky assumptions.
+MG4 produces the ImplementationPlan, as specified by the delivery plan.
 MG3's proof must cover add/edit/delete/restore, dirty state, two-source integration,
 same-file conflict, candidate promotion without undo payloads, retained lineage,
 interrupted publication, repeated merge, competing release labels and clean-copy

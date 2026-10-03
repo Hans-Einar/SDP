@@ -1,0 +1,6 @@
+flowchart LR
+    n_IntegrateModelChanges["IntegrateModelChanges (usecase)"]
+    n_ModelGovernance["ModelGovernance (feature)"]
+    n_ModelIntegrator["ModelIntegrator (actor)"]
+    n_ModelGovernance -->|supports| n_IntegrateModelChanges
+    n_ModelIntegrator -->|pursues| n_IntegrateModelChanges

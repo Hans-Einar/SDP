@@ -37,8 +37,8 @@ untracked files. Existing general phase-push policy remains separate from public
 | Phase | Milestone | Acceptance | State |
 | --- | --- | --- | --- |
 | MG1 Study | MG1-M1 | Consolidated decisions, explicit scope split, current capability limits, active card/session and initial design | completed |
-| MG2 Contract | MG2-M1 | Resolve minimal YAML/history schema, command grammar, naming, recovery and promotion policy; model supported behavior in SDL | next |
-| MG3 Proof | MG3-M1 | Disposable filesystem experiment validates reconstruction, merge and metadata-only promotion including negative cases | planned |
+| MG2 Contract | MG2-M1 | Resolve minimal YAML/history schema, command grammar, naming, recovery and promotion policy; model supported behavior in SDL | completed |
+| MG3 Proof | MG3-M1 | Disposable filesystem experiment validates reconstruction, merge and metadata-only promotion including negative cases | next |
 | MG4 Handoff | MG4-M1 | ImplementationPlan defines vertical slices, tests, migration/discovery impact and review boundary | planned |
 
 ## Evidence and remaining work
@@ -46,5 +46,11 @@ untracked files. Existing general phase-push policy remains separate from public
 MG1-M1: Study/Design created; KB048 scope split into KB049 ModelGovernance and KB050
 Blueprints; Session0005 handed off, Session0006 active. Management/Toolkit validators
 and diff checks are run for this delivery. These are document consistency checks,
-not proof of the proposed storage/merge design. MG2–MG4 remain undelivered; this
+not proof of the proposed storage/merge design. MG3–MG4 remain undelivered; this
 DesignPlan stays active. No automatic owner acceptance of design recommendations.
+
+MG2-M1: [Contract](Contract.md), [validated SDL evidence](Evidence.md) and
+[generated review](review/index.md) delivered. The candidate schema is specified in
+prose/field contracts; machine schemas and executable fixtures belong to MG3. The
+model is a separate concern entry for the same SDPTool system, not a deployed
+service or migration of the concurrent routine-governance model. Next MG3-M1.

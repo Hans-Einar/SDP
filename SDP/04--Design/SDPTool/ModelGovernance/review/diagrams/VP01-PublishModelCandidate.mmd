@@ -1,0 +1,6 @@
+flowchart LR
+    n_ModelGovernance["ModelGovernance (feature)"]
+    n_ModelIntegrator["ModelIntegrator (actor)"]
+    n_PublishModelCandidate["PublishModelCandidate (usecase)"]
+    n_ModelGovernance -->|supports| n_PublishModelCandidate
+    n_ModelIntegrator -->|pursues| n_PublishModelCandidate

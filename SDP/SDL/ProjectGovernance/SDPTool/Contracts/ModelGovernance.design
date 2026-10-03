@@ -1,0 +1,67 @@
+language design-core version 0.6.
+message ModelChangeAccepted.
+message ModelChangeRefused.
+contract ModelOperationProtocol.
+contract ModelOperationRequest.
+field ModelOperationRequestAction.
+field ModelOperationRequestExpectedHead.
+field ModelOperationRequestInputDigest.
+contract ModelOperationResult.
+field ModelOperationResultDisposition.
+field ModelOperationResultHead.
+field ModelOperationResultSourceDigest.
+channel ModelOperations.
+scenario RejectStaleModelChange.
+message RequestModelChange.
+scenario SaveModelCheckpoint.
+ModelChangeAccepted has message-kind = result.
+ModelChangeAccepted replies-to RequestModelChange.
+ModelChangeAccepted upholds ModelOperationResult.
+ModelChangeRefused has message-kind = result.
+ModelChangeRefused replies-to RequestModelChange.
+ModelChangeRefused upholds ModelOperationResult.
+ModelCommandAdapter uses ModelOperations as receiver of ModelChangeAccepted in mode ModelEditing.
+ModelCommandAdapter uses ModelOperations as receiver of ModelChangeRefused in mode ModelEditing.
+ModelCommandAdapter uses ModelOperations as sender of RequestModelChange in mode ModelEditing.
+ModelCoordinator uses ModelOperations as receiver of RequestModelChange in mode ModelEditing.
+ModelCoordinator uses ModelOperations as sender of ModelChangeAccepted in mode ModelEditing.
+ModelCoordinator uses ModelOperations as sender of ModelChangeRefused in mode ModelEditing.
+ModelOperationProtocol has completeness = closed.
+ModelOperationProtocol permits ModelChangeAccepted.
+ModelOperationProtocol permits ModelChangeRefused.
+ModelOperationProtocol permits RequestModelChange.
+ModelOperationRequest has completeness = closed.
+ModelOperationRequest has-field ModelOperationRequestAction.
+ModelOperationRequest has-field ModelOperationRequestExpectedHead.
+ModelOperationRequest has-field ModelOperationRequestInputDigest.
+ModelOperationRequestAction has presence = required.
+ModelOperationRequestAction has value-type = text.
+ModelOperationRequestExpectedHead has presence = required.
+ModelOperationRequestExpectedHead has value-type = text.
+ModelOperationRequestInputDigest has presence = required.
+ModelOperationRequestInputDigest has value-type = text.
+ModelOperationResult has completeness = closed.
+ModelOperationResult has-field ModelOperationResultDisposition.
+ModelOperationResult has-field ModelOperationResultHead.
+ModelOperationResult has-field ModelOperationResultSourceDigest.
+ModelOperationResultDisposition has presence = required.
+ModelOperationResultDisposition has value-type = text.
+ModelOperationResultHead has presence = required.
+ModelOperationResultHead has value-type = text.
+ModelOperationResultSourceDigest has presence = required.
+ModelOperationResultSourceDigest has value-type = text.
+ModelOperations upholds ModelOperationProtocol.
+RejectStaleModelChange exercises RecoverWorkingModel.
+RejectStaleModelChange has completeness = closed.
+RejectStaleModelChange illustrates ModelGovernanceDelivery.
+RejectStaleModelChange runs-in ModelEditing.
+RejectStaleModelChange step 1 sends RequestModelChange from ModelCommandAdapter to ModelCoordinator via ModelOperations.
+RejectStaleModelChange step 2 sends ModelChangeRefused from ModelCoordinator to ModelCommandAdapter via ModelOperations reply-to 1.
+RequestModelChange has message-kind = request.
+RequestModelChange upholds ModelOperationRequest.
+SaveModelCheckpoint exercises RecoverWorkingModel.
+SaveModelCheckpoint has completeness = closed.
+SaveModelCheckpoint illustrates ModelGovernanceDelivery.
+SaveModelCheckpoint runs-in ModelEditing.
+SaveModelCheckpoint step 1 sends RequestModelChange from ModelCommandAdapter to ModelCoordinator via ModelOperations.
+SaveModelCheckpoint step 2 sends ModelChangeAccepted from ModelCoordinator to ModelCommandAdapter via ModelOperations reply-to 1.

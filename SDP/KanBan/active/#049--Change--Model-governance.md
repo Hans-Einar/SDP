@@ -38,3 +38,9 @@ exercise a bounded filesystem proof and produce the ImplementationPlan.
 Completion requires implemented and verified bounded workflow under that successor
 plan; finishing the study alone does not close this card. Semantic blueprint impact
 selection/diagrams/assignment generation belongs to KB050, not this implementation.
+
+2026-10-03 MG2-M1: [Contract](../../04--Design/SDPTool/ModelGovernance/Contract.md)
+and a four-file SDL concern model delivered; valid design-core/0.6 check with no
+warnings and generated VP01/VP02/VP08 (9 diagrams). Evidence.md distinguishes
+structural validation from runtime proof. Next MG3-M1 filesystem experiment; card
+remains in-progress. No ModelGovernance command is implemented.

@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn T001. Next: MG2-M1 contract and SDL design. Synthetic sequence
+Latest recorded turn T002. Next: MG3-M1 bounded filesystem proof. Synthetic sequence
 only; dates below are slots, not scheduling estimates or measured durations.
 
 ```mermaid
@@ -11,8 +11,8 @@ gantt
     dateFormat YYYY-MM-DD
     section Design
     DONE MG1 Study :done,s1,2000-01-01,1d
-    NEXT MG2 Contract :s2,after s1,1d
-    PLANNED MG3 Proof :s3,after s2,1d
+    DONE MG2 Contract :done,s2,after s1,1d
+    NEXT MG3 Proof :s3,after s2,1d
     PLANNED MG4 Handoff :s4,after s3,1d
     section Delivery
     PLANNED Implementation :s5,after s4,1d
@@ -21,8 +21,8 @@ gantt
 | State | Step | Work | Evidence / prerequisite |
 | --- | --- | --- | --- |
 | completed | S1 | Consolidate study and separate feature | MG1-M1, KB049/KB050 split |
-| next | S2 | Define minimal schema, operations and supported SDL design | MG2-M1; initial Design.md ready for refinement |
-| planned | S3 | Exercise filesystem/recovery/merge proof | MG3-M1, after MG2 |
+| completed | S2 | Define minimal schema, operations and supported SDL design | MG2-M1; initial Design.md ready for refinement |
+| next | S3 | Exercise filesystem/recovery/merge proof | MG3-M1, after MG2 |
 | planned | S4 | Write bounded ImplementationPlan | MG4-M1, informed by proof |
 | planned | S5 | Implement and verify vertical slices | Successor plan not yet authored; no delivery claimed |
 
@@ -32,8 +32,8 @@ gantt
 | Status | active |
 | Primary card | KB-SDP-049 |
 | Snapshot date | 2026-10-03 |
-| Current step | S1 delivered |
-| Proposed next step | S2 / MG2-M1 |
+| Current step | S2 delivered |
+| Proposed next step | S3 / MG3-M1 |
 | Execution authority | Owner requests new feature, active card, study and design preparation |
 
 ## Goal and scope
@@ -89,6 +89,20 @@ Toolkit and whitespace checks validate document consistency only.
 Next: MG2-M1 fixes the minimal YAML/commit format, rollback and merge transaction
 rules, discovery boundary and supported SDL model. Then prove the risky operations
 in temporary directories and prepare implementation slices.
+
+### T002 — Contract and composed SDL model
+
+Owner prompt: "ok fortsett". Manual journal; host/routine IDs unknown.
+Skills reused: sdp, Architect, Planning. Delivered MG2-M1 Contract.md with explicit
+storage, command, recovery, promotion and preview limits. Authored four-file SDL
+concern entry without touching the concurrent routine System.design. Canonicalized
+with the frontend; check passes with no warnings and static VP01/VP02/VP08 generate
+9 diagrams. See Evidence.md for exact revision, commands and parser corrections.
+These are design/structural results, not implemented transaction behavior.
+
+Concurrent Session0007/KB038/management records existed and changed during this
+turn. Preserve those edits; this milestone stages only its own ledger append and
+artifacts. Next MG3 tests the risky storage assumptions before MG4 handoff.
 
 ## Closeout
 

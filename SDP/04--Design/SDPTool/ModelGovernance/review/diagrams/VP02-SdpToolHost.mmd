@@ -1,0 +1,10 @@
+flowchart LR
+    n_LocalHistoryStore["LocalHistoryStore (unit)"]
+    n_ModelCommandAdapter["ModelCommandAdapter (unit)"]
+    n_ModelCoordinator["ModelCoordinator (unit)"]
+    n_ModelValidator["ModelValidator (unit)"]
+    n_SdpToolHost["SdpToolHost (container)"]
+    n_SdpToolHost -->|contains| n_LocalHistoryStore
+    n_SdpToolHost -->|contains| n_ModelCommandAdapter
+    n_SdpToolHost -->|contains| n_ModelCoordinator
+    n_SdpToolHost -->|contains| n_ModelValidator
