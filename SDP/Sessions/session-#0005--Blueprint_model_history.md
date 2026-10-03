@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn: T006. Earlier discussion is reconstructed below, not a
+Latest recorded turn: T007; discussion handed off to Session0006. Earlier discussion is reconstructed below, not a
 complete transcript. Sequence only; synthetic dates do not measure elapsed time.
 
 ```mermaid
@@ -11,26 +11,26 @@ gantt
     dateFormat YYYY-MM-DD
     section Route
     DONE S1 Constraints :done,s1,2000-01-01,1d
-    ACTIVE S2 Lifecycle :active,s2,after s1,1d
-    NEXT S3 Design and experiment plan :s3,after s2,1d
-    PLANNED S4 Implement and verify pilot :s4,after s3,1d
+    DONE S2 Lifecycle :done,s2,after s1,1d
+    TRANSFERRED S3 Design plan :s3,after s2,1d
+    TRANSFERRED S4 Pilot :s4,after s3,1d
 ```
 
 | State | Step | Work | Authority / evidence |
 | --- | --- | --- | --- |
 | completed | S1 | Recover standalone history requirements | KB048; no Git/export prerequisite |
-| on-going | S2 | Refine snapshots, merging, blueprints and command ownership | Owner discussion; KB048 recommendations and corrections |
-| next | S3 | Select/revise bounded design and experiment plan | BP2 remains planned; implementation not selected |
-| planned | S4 | Implement and verify an agreed pilot | Requires selected scope/plan; no backend delivered |
+| completed | S2 | Refine snapshots, merging, blueprints and command ownership | Owner discussion; KB048 recommendations and corrections |
+| superseded | S3 | Select/revise bounded design and experiment plan | BP2 remains planned; implementation not selected |
+| superseded | S4 | Implement and verify an agreed pilot | Requires selected scope/plan; no backend delivered |
 
 | Field | Value |
 | --- | --- |
 | Session reference | SESSION-SDP-0005 |
-| Status | active |
+| Status | completed |
 | Primary card | KB-SDP-048 |
 | Snapshot date | 2026-10-03 |
-| Current step | S2 |
-| Proposed next step | S3 after settling the minimal lifecycle and tool boundary |
+| Current step | None; scope transferred |
+| Proposed next step | Session0006 MG2; separate KB050 for Blueprints |
 | Execution authority | Owner authorizes discussion and immediate Session-instruction correction; model-store implementation remains unselected |
 
 ## Goal
@@ -43,7 +43,7 @@ reviewed targets and distinguish model acceptance from implementation evidence.
 
 | Card | Role | Initial state | Planned final | Current | Actual final |
 | --- | --- | --- | --- | --- | --- |
-| [KB048](../KanBan/backlog/%23048--Proposal--Versioned-design-reviews-and-blueprint-diffs.md) | Primary | backlog at late registration | Bounded design with explicit implementation handoff | backlog | Pending |
+| [KB048](../KanBan/superseded/%23048--Proposal--Versioned-design-reviews-and-blueprint-diffs.md) | Primary | backlog at late registration | Bounded design with explicit implementation handoff | superseded | Transferred to KB049 and KB050 |
 | [KB004](../KanBan/backlog/%23004--Proposal--Design-traceability.md) | Context: evidence mappings | backlog | Not disposed by this discussion | backlog | Pending |
 
 ## Plan register
@@ -188,7 +188,22 @@ cover documents only; no storage, restore or merge implementation has been teste
 Next: settle minimal local schema and recovery operations, then select S3's bounded
 plan. Keep permanent VCS features and selective merge undo outside the pilot.
 
+### T007 — Separate ModelGovernance workstream
+
+Owner input summary: start planning/design, name the bounded feature ModelGovernance,
+create its design directory and study, activate a card and start a new Session.
+Blueprints deserve a separate feature. Skills reused: sdp, sdp-planning,
+sdp-architect; provenance agent-reported, host/routine IDs unknown.
+Work summary: formal split KBO-SDP-000005 creates active KB049 and backlog KB050;
+KB048 superseded. PLAN-SDP-0016 and Session0006 start ModelGovernance. MG1 study
+and initial design delivered; MG2–MG4 and product implementation remain unfinished.
+This closes the discussion by transfer, not by claiming the original feature built.
+
 ## Closeout
 
-Open. Model history/blueprint goal is not achieved. The immediate Session upkeep
-correction is complete separately from the feature discussion.
+Owner-directed handoff 2026-10-03: constraints and scope separation recorded.
+S1/S2 discussion complete; S3/S4 superseded by
+[Session0006](session-%230006--Model_governance.md) and PLAN-SDP-0016.
+KB048 superseded by KB049/KB050. KB004 remains backlog and context-only; BP2 remains
+planned for the separate Blueprint feature. No model-history implementation or
+semantic blueprint generator delivered. Earlier plan/card snapshots are historical.

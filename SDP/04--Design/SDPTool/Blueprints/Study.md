@@ -298,7 +298,7 @@ main; merging is outside this study authorization.
 
 ## Owner proposal after release 2.1 — 2026-10-01
 
-[KB-SDP-048](../../../KanBan/backlog/%23048--Proposal--Versioned-design-reviews-and-blueprint-diffs.md)
+[KB-SDP-048](../../../KanBan/superseded/%23048--Proposal--Versioned-design-reviews-and-blueprint-diffs.md)
 records independent local SDL/SDUI revision history, local design-review requests,
 semantic before/after blueprints and verification before advancing the implemented
 baseline. It also analyzes the crucial difference between parent-tracked source
@@ -377,3 +377,12 @@ model repository is required. Proposed .commits changed-file copies need a basel
 and deletion records; .merge archives preserve provenance. Full-state recovery
 around merges can use checkpoints; selective undo of merged contributions is not
 part of the bounded initial design. No backend implementation is claimed.
+
+
+## Feature separation — 2026-10-03
+
+KB048 is superseded by KB049 ModelGovernance (active) and KB050 semantic Blueprints
+(backlog). Current model lifecycle study/design now lives in
+[ModelGovernance](../ModelGovernance/Study.md), owned by PLAN-SDP-0016 and Session0006.
+This document retains historical analysis; BP2 remains planned for semantic blueprint
+selection and assignment context. ModelGovernance delivery does not deliver that engine.

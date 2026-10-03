@@ -143,3 +143,6 @@ including its explicitly marked late registration.
 
 [Session 0005](session-%230005--Blueprint_model_history.md) tracks independent
 model history and blueprint workflow, with explicitly retrospective registration.
+
+[Session 0006](session-%230006--Model_governance.md) continues ModelGovernance
+from Session0005's discussion; semantic Blueprints is a separate backlog feature.

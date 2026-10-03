@@ -5,13 +5,21 @@
 | id | KB-SDP-048 |
 | project | SDP |
 | type | Proposal |
-| CardState | backlog |
+| CardState | superseded |
 | Systems | SDL, SDUI, SDPTOOL |
 | created | 2026-10-01 |
 | source | Owner discussion after XFMD dynamic-tab implementation |
 | tags | blueprint, model-history, baseline, design-review, storage |
 
 Session: [SESSION-SDP-0005](../../Sessions/session-%230005--Blueprint_model_history.md).
+
+## Scope disposition — 2026-10-03
+
+Owner requested separate ModelGovernance and Blueprint features. KBO-SDP-000005
+fully transfers work to [KB049 ModelGovernance](../active/%23049--Change--Model-governance.md)
+and [KB050 Blueprints](../backlog/%23050--Proposal--Semantic-blueprints.md).
+ModelGovernance is active; Blueprints remains backlog. The discussion below is
+historical input; no implementation was completed by superseding this card.
 
 ## Owner outcome
 
