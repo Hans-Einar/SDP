@@ -1,0 +1,76 @@
+{"Time":"2026-10-04T02:08:24.401615107+02:00","Action":"start","Package":"sdp.local/model-governance-probe"}
+{"Time":"2026-10-04T02:08:24.409124104+02:00","Action":"run","Package":"sdp.local/model-governance-probe","Test":"TestCommitDeleteRenameRestoreAndDirtyPreservation"}
+{"Time":"2026-10-04T02:08:24.409196828+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestCommitDeleteRenameRestoreAndDirtyPreservation","Output":"=== RUN   TestCommitDeleteRenameRestoreAndDirtyPreservation\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.45849859+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestCommitDeleteRenameRestoreAndDirtyPreservation","Output":"--- PASS: TestCommitDeleteRenameRestoreAndDirtyPreservation (0.05s)\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.458533888+02:00","Action":"pass","Package":"sdp.local/model-governance-probe","Test":"TestCommitDeleteRenameRestoreAndDirtyPreservation","Elapsed":0.05}
+{"Time":"2026-10-04T02:08:24.458551163+02:00","Action":"run","Package":"sdp.local/model-governance-probe","Test":"TestCorruptPayloadCannotRestore"}
+{"Time":"2026-10-04T02:08:24.458556262+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestCorruptPayloadCannotRestore","Output":"=== RUN   TestCorruptPayloadCannotRestore\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.464801393+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestCorruptPayloadCannotRestore","Output":"--- PASS: TestCorruptPayloadCannotRestore (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.464830335+02:00","Action":"pass","Package":"sdp.local/model-governance-probe","Test":"TestCorruptPayloadCannotRestore","Elapsed":0.01}
+{"Time":"2026-10-04T02:08:24.464842737+02:00","Action":"run","Package":"sdp.local/model-governance-probe","Test":"TestEmptyInitialAndNoop"}
+{"Time":"2026-10-04T02:08:24.464847342+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestEmptyInitialAndNoop","Output":"=== RUN   TestEmptyInitialAndNoop\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.469407905+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestEmptyInitialAndNoop","Output":"--- PASS: TestEmptyInitialAndNoop (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.469467989+02:00","Action":"pass","Package":"sdp.local/model-governance-probe","Test":"TestEmptyInitialAndNoop","Elapsed":0}
+{"Time":"2026-10-04T02:08:24.469494618+02:00","Action":"run","Package":"sdp.local/model-governance-probe","Test":"TestNoGitCopyReopensHistory"}
+{"Time":"2026-10-04T02:08:24.469502781+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestNoGitCopyReopensHistory","Output":"=== RUN   TestNoGitCopyReopensHistory\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.483966887+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestNoGitCopyReopensHistory","Output":"--- PASS: TestNoGitCopyReopensHistory (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.483994524+02:00","Action":"pass","Package":"sdp.local/model-governance-probe","Test":"TestNoGitCopyReopensHistory","Elapsed":0.01}
+{"Time":"2026-10-04T02:08:24.484003156+02:00","Action":"run","Package":"sdp.local/model-governance-probe","Test":"TestProcessInterruptionAndResume"}
+{"Time":"2026-10-04T02:08:24.484006623+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestProcessInterruptionAndResume","Output":"=== RUN   TestProcessInterruptionAndResume\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.508773728+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestProcessInterruptionAndResume","Output":"--- PASS: TestProcessInterruptionAndResume (0.02s)\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.508807515+02:00","Action":"pass","Package":"sdp.local/model-governance-probe","Test":"TestProcessInterruptionAndResume","Elapsed":0.02}
+{"Time":"2026-10-04T02:08:24.508814585+02:00","Action":"run","Package":"sdp.local/model-governance-probe","Test":"TestInterruptedCorruptCommitNotPublished"}
+{"Time":"2026-10-04T02:08:24.508829448+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestInterruptedCorruptCommitNotPublished","Output":"=== RUN   TestInterruptedCorruptCommitNotPublished\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.521378465+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestInterruptedCorruptCommitNotPublished","Output":"--- PASS: TestInterruptedCorruptCommitNotPublished (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.52142691+02:00","Action":"pass","Package":"sdp.local/model-governance-probe","Test":"TestInterruptedCorruptCommitNotPublished","Elapsed":0.01}
+{"Time":"2026-10-04T02:08:24.52143823+02:00","Action":"run","Package":"sdp.local/model-governance-probe","Test":"TestMergeConflictMatrix"}
+{"Time":"2026-10-04T02:08:24.521443989+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestMergeConflictMatrix","Output":"=== RUN   TestMergeConflictMatrix\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.521537743+02:00","Action":"run","Package":"sdp.local/model-governance-probe","Test":"TestMergeConflictMatrix/disjoint"}
+{"Time":"2026-10-04T02:08:24.521555842+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestMergeConflictMatrix/disjoint","Output":"=== RUN   TestMergeConflictMatrix/disjoint\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.521676018+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestMergeConflictMatrix/disjoint","Output":"--- PASS: TestMergeConflictMatrix/disjoint (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.521693653+02:00","Action":"pass","Package":"sdp.local/model-governance-probe","Test":"TestMergeConflictMatrix/disjoint","Elapsed":0}
+{"Time":"2026-10-04T02:08:24.521715607+02:00","Action":"run","Package":"sdp.local/model-governance-probe","Test":"TestMergeConflictMatrix/identical"}
+{"Time":"2026-10-04T02:08:24.521722497+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestMergeConflictMatrix/identical","Output":"=== RUN   TestMergeConflictMatrix/identical\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.521793159+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestMergeConflictMatrix/identical","Output":"--- PASS: TestMergeConflictMatrix/identical (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.521806743+02:00","Action":"pass","Package":"sdp.local/model-governance-probe","Test":"TestMergeConflictMatrix/identical","Elapsed":0}
+{"Time":"2026-10-04T02:08:24.521847316+02:00","Action":"run","Package":"sdp.local/model-governance-probe","Test":"TestMergeConflictMatrix/delete-modify"}
+{"Time":"2026-10-04T02:08:24.521853715+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestMergeConflictMatrix/delete-modify","Output":"=== RUN   TestMergeConflictMatrix/delete-modify\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.52196318+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestMergeConflictMatrix/delete-modify","Output":"--- PASS: TestMergeConflictMatrix/delete-modify (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.521979689+02:00","Action":"pass","Package":"sdp.local/model-governance-probe","Test":"TestMergeConflictMatrix/delete-modify","Elapsed":0}
+{"Time":"2026-10-04T02:08:24.522014479+02:00","Action":"run","Package":"sdp.local/model-governance-probe","Test":"TestMergeConflictMatrix/same-path-add"}
+{"Time":"2026-10-04T02:08:24.522020533+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestMergeConflictMatrix/same-path-add","Output":"=== RUN   TestMergeConflictMatrix/same-path-add\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.522143157+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestMergeConflictMatrix/same-path-add","Output":"--- PASS: TestMergeConflictMatrix/same-path-add (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.522188449+02:00","Action":"pass","Package":"sdp.local/model-governance-probe","Test":"TestMergeConflictMatrix/same-path-add","Elapsed":0}
+{"Time":"2026-10-04T02:08:24.522195697+02:00","Action":"run","Package":"sdp.local/model-governance-probe","Test":"TestMergeConflictMatrix/overlap"}
+{"Time":"2026-10-04T02:08:24.522199993+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestMergeConflictMatrix/overlap","Output":"=== RUN   TestMergeConflictMatrix/overlap\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.522291158+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestMergeConflictMatrix/overlap","Output":"--- PASS: TestMergeConflictMatrix/overlap (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.522315811+02:00","Action":"pass","Package":"sdp.local/model-governance-probe","Test":"TestMergeConflictMatrix/overlap","Elapsed":0}
+{"Time":"2026-10-04T02:08:24.52234821+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestMergeConflictMatrix","Output":"--- PASS: TestMergeConflictMatrix (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.522370387+02:00","Action":"pass","Package":"sdp.local/model-governance-probe","Test":"TestMergeConflictMatrix","Elapsed":0}
+{"Time":"2026-10-04T02:08:24.52238969+02:00","Action":"run","Package":"sdp.local/model-governance-probe","Test":"TestMergeArchivePromotionAndWholeStateRollback"}
+{"Time":"2026-10-04T02:08:24.522395638+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestMergeArchivePromotionAndWholeStateRollback","Output":"=== RUN   TestMergeArchivePromotionAndWholeStateRollback\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.598009542+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestMergeArchivePromotionAndWholeStateRollback","Output":"--- PASS: TestMergeArchivePromotionAndWholeStateRollback (0.08s)\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.598049254+02:00","Action":"pass","Package":"sdp.local/model-governance-probe","Test":"TestMergeArchivePromotionAndWholeStateRollback","Elapsed":0.08}
+{"Time":"2026-10-04T02:08:24.598063182+02:00","Action":"run","Package":"sdp.local/model-governance-probe","Test":"TestLineageDeduplicatesAndRejectsIdentityConflict"}
+{"Time":"2026-10-04T02:08:24.59806841+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestLineageDeduplicatesAndRejectsIdentityConflict","Output":"=== RUN   TestLineageDeduplicatesAndRejectsIdentityConflict\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.605143312+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestLineageDeduplicatesAndRejectsIdentityConflict","Output":"--- PASS: TestLineageDeduplicatesAndRejectsIdentityConflict (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.605184097+02:00","Action":"pass","Package":"sdp.local/model-governance-probe","Test":"TestLineageDeduplicatesAndRejectsIdentityConflict","Elapsed":0.01}
+{"Time":"2026-10-04T02:08:24.605194168+02:00","Action":"run","Package":"sdp.local/model-governance-probe","Test":"TestYAMLRejectsUnknownAndDuplicateFields"}
+{"Time":"2026-10-04T02:08:24.605199578+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestYAMLRejectsUnknownAndDuplicateFields","Output":"=== RUN   TestYAMLRejectsUnknownAndDuplicateFields\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.6060771+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestYAMLRejectsUnknownAndDuplicateFields","Output":"--- PASS: TestYAMLRejectsUnknownAndDuplicateFields (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.606105694+02:00","Action":"pass","Package":"sdp.local/model-governance-probe","Test":"TestYAMLRejectsUnknownAndDuplicateFields","Elapsed":0}
+{"Time":"2026-10-04T02:08:24.606128985+02:00","Action":"run","Package":"sdp.local/model-governance-probe","Test":"TestSameFileThreeWayPrimitive"}
+{"Time":"2026-10-04T02:08:24.606133464+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestSameFileThreeWayPrimitive","Output":"=== RUN   TestSameFileThreeWayPrimitive\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.61186559+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestSameFileThreeWayPrimitive","Output":"--- PASS: TestSameFileThreeWayPrimitive (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.611895899+02:00","Action":"pass","Package":"sdp.local/model-governance-probe","Test":"TestSameFileThreeWayPrimitive","Elapsed":0.01}
+{"Time":"2026-10-04T02:08:24.611905382+02:00","Action":"run","Package":"sdp.local/model-governance-probe","Test":"TestMissingEmptyFileIsNotAnExistingEmptyFile"}
+{"Time":"2026-10-04T02:08:24.611909487+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestMissingEmptyFileIsNotAnExistingEmptyFile","Output":"=== RUN   TestMissingEmptyFileIsNotAnExistingEmptyFile\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.618561525+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestMissingEmptyFileIsNotAnExistingEmptyFile","Output":"--- PASS: TestMissingEmptyFileIsNotAnExistingEmptyFile (0.01s)\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.618588824+02:00","Action":"pass","Package":"sdp.local/model-governance-probe","Test":"TestMissingEmptyFileIsNotAnExistingEmptyFile","Elapsed":0.01}
+{"Time":"2026-10-04T02:08:24.618599596+02:00","Action":"run","Package":"sdp.local/model-governance-probe","Test":"TestRepeatedFileMergeIsContentIdempotent"}
+{"Time":"2026-10-04T02:08:24.61860315+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestRepeatedFileMergeIsContentIdempotent","Output":"=== RUN   TestRepeatedFileMergeIsContentIdempotent\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.618714083+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Test":"TestRepeatedFileMergeIsContentIdempotent","Output":"--- PASS: TestRepeatedFileMergeIsContentIdempotent (0.00s)\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:24.618725885+02:00","Action":"pass","Package":"sdp.local/model-governance-probe","Test":"TestRepeatedFileMergeIsContentIdempotent","Elapsed":0}
+{"Time":"2026-10-04T02:08:24.618730101+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Output":"PASS\n","OutputType":"frame"}
+{"Time":"2026-10-04T02:08:25.620410399+02:00","Action":"output","Package":"sdp.local/model-governance-probe","Output":"ok  \tsdp.local/model-governance-probe\t1.219s\n"}
+{"Time":"2026-10-04T02:08:25.620445168+02:00","Action":"pass","Package":"sdp.local/model-governance-probe","Elapsed":1.219}

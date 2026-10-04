@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn T002. Next: MG3-M1 bounded filesystem proof. Synthetic sequence
+Latest recorded turn T003. Next: MG4-M1 ImplementationPlan handoff. Synthetic sequence
 only; dates below are slots, not scheduling estimates or measured durations.
 
 ```mermaid
@@ -12,8 +12,8 @@ gantt
     section Design
     DONE MG1 Study :done,s1,2000-01-01,1d
     DONE MG2 Contract :done,s2,after s1,1d
-    NEXT MG3 Proof :s3,after s2,1d
-    PLANNED MG4 Handoff :s4,after s3,1d
+    DONE MG3 Proof :done,s3,after s2,1d
+    NEXT MG4 Handoff :s4,after s3,1d
     section Delivery
     PLANNED Implementation :s5,after s4,1d
 ```
@@ -22,8 +22,8 @@ gantt
 | --- | --- | --- | --- |
 | completed | S1 | Consolidate study and separate feature | MG1-M1, KB049/KB050 split |
 | completed | S2 | Define minimal schema, operations and supported SDL design | MG2-M1; initial Design.md ready for refinement |
-| next | S3 | Exercise filesystem/recovery/merge proof | MG3-M1, after MG2 |
-| planned | S4 | Write bounded ImplementationPlan | MG4-M1, informed by proof |
+| completed | S3 | Exercise filesystem/recovery/merge proof | MG3-M1, after MG2 |
+| next | S4 | Write bounded ImplementationPlan | MG4-M1, informed by proof |
 | planned | S5 | Implement and verify vertical slices | Successor plan not yet authored; no delivery claimed |
 
 | Field | Value |
@@ -31,9 +31,9 @@ gantt
 | Session reference | SESSION-SDP-0006 |
 | Status | active |
 | Primary card | KB-SDP-049 |
-| Snapshot date | 2026-10-03 |
-| Current step | S2 delivered |
-| Proposed next step | S3 / MG3-M1 |
+| Snapshot date | 2026-10-04 |
+| Current step | S3 delivered |
+| Proposed next step | S4 / MG4-M1 |
 | Execution authority | Owner requests new feature, active card, study and design preparation |
 
 ## Goal and scope
@@ -105,6 +105,22 @@ turn. Preserve those edits; this milestone stages only its own ledger append and
 artifacts. Next MG3 tests the risky storage assumptions before MG4 handoff.
 Staged whitespace checking additionally found generator-produced trailing blank
 lines in Markdown; evidence records this limitation, and outputs remain unedited.
+
+### T003 — WORK-local filesystem proof
+
+Owner prompt: "ok fortsett". Manual work summary; host/run IDs unknown.
+Loaded/reused sdp, Worker and Verifier. Implemented a standalone Go design probe
+under experiments/model_governance, not SDPTool product commands. All 13 top-level
+tests passed with race instrumentation (five merge subcases), plus vet. Tests compare
+reconstructed file contents, preserve dirty checkpoints, force a child process to
+exit before head publication, reject corruption and strip restore payloads at
+promotion. One test compares Git's standalone three-file merge primitive; no project
+Git repository needed. Presence check distinguishes a missing empty file from a
+retained empty file. Proof.md and raw result/hash files bound the evidence.
+
+No independent review, full schema, general crash safety, concurrent-writer safety,
+release conflict resolution or application acceptance claimed. Next MG4 converts
+these remaining obligations into implementation milestones and acceptance tests.
 
 ## Closeout
 

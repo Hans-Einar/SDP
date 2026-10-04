@@ -44,3 +44,9 @@ and a four-file SDL concern model delivered; valid design-core/0.6 check with no
 warnings and generated VP01/VP02/VP08 (9 diagrams). Evidence.md distinguishes
 structural validation from runtime proof. Next MG3-M1 filesystem experiment; card
 remains in-progress. No ModelGovernance command is implemented.
+
+2026-10-04 MG3-M1: Bounded Go filesystem experiment passes 13 top-level tests with
+race instrumentation and vet. [Proof](../../04--Design/SDPTool/ModelGovernance/Proof.md)
+records recovery, merge, interrupted publication and promotion limits. No production
+CLI delivered; full schema/concurrency/transaction gates remain. Next MG4-M1
+ImplementationPlan; CardState stays in-progress.

@@ -204,3 +204,12 @@ Do not deploy an installer migration or alter current discovery before its scope
 implementation and compatibility tests. Future blueprint generation is KB050.
 No permanent central object store, nested VCS, remote hosting, automatic distributed
 locking, arbitrary script execution or separate mandatory PROPOSAL stage.
+
+## MG3 evidence refinement — 2026-10-04
+
+[Proof](Proof.md) confirms bounded after-image recovery and metadata-only promotion.
+Presence checks must distinguish missing and empty files. File-level repeated merge
+idempotence does not replace ancestry/event idempotence. The executable YAML subset
+is mg-probe/0.1 only; the full sdp-model/0.1 machine schema remains a production
+acceptance requirement. MG3 establishes one process-interruption boundary, not full
+transaction durability or concurrent-writer safety. No new public command is shipped.
