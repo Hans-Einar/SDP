@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn T003. Next: MG4-M1 ImplementationPlan handoff. Synthetic sequence
+Latest recorded turn T004. Next: MGI1-M1 under PLAN-SDP-0019. Synthetic sequence
 only; dates below are slots, not scheduling estimates or measured durations.
 
 ```mermaid
@@ -13,9 +13,13 @@ gantt
     DONE MG1 Study :done,s1,2000-01-01,1d
     DONE MG2 Contract :done,s2,after s1,1d
     DONE MG3 Proof :done,s3,after s2,1d
-    NEXT MG4 Handoff :s4,after s3,1d
+    DONE MG4 Handoff :done,s4,after s3,1d
     section Delivery
-    PLANNED Implementation :s5,after s4,1d
+    NEXT MGI1 Safe WORK :s5,after s4,1d
+    PLANNED MGI2 Recovery :s6,after s5,1d
+    PLANNED MGI3 Integration :s7,after s6,1d
+    PLANNED MGI4 Frozen delivery :s8,after s7,1d
+    PLANNED MGI5 Closeout :s9,after s8,1d
 ```
 
 | State | Step | Work | Evidence / prerequisite |
@@ -23,17 +27,21 @@ gantt
 | completed | S1 | Consolidate study and separate feature | MG1-M1, KB049/KB050 split |
 | completed | S2 | Define minimal schema, operations and supported SDL design | MG2-M1; initial Design.md ready for refinement |
 | completed | S3 | Exercise filesystem/recovery/merge proof | MG3-M1, after MG2 |
-| next | S4 | Write bounded ImplementationPlan | MG4-M1, informed by proof |
-| planned | S5 | Implement and verify vertical slices | Successor plan not yet authored; no delivery claimed |
+| completed | S4 | Write bounded ImplementationPlan | MG4-M1, informed by proof |
+| next | S5 | Safe WORK creation | PLAN-SDP-0019 MGI1-M1; implementation not started |
+| planned | S6 | Commit and whole-state recovery | MGI2-M1 after MGI1 |
+| planned | S7 | Integrate WORK sources | MGI3-M1 after MGI2 |
+| planned | S8 | Candidate/release lifecycle | MGI4-M1/M2 after MGI3 |
+| planned | S9 | Discovery, full journey and independent review | MGI5-M1/M2 after MGI4 |
 
 | Field | Value |
 | --- | --- |
 | Session reference | SESSION-SDP-0006 |
 | Status | active |
 | Primary card | KB-SDP-049 |
-| Snapshot date | 2026-10-04 |
-| Current step | S3 delivered |
-| Proposed next step | S4 / MG4-M1 |
+| Snapshot date | 2026-10-05 |
+| Current step | S4 delivered |
+| Proposed next step | S5 / MGI1-M1 |
 | Execution authority | Owner requests new feature, active card, study and design preparation |
 
 ## Goal and scope
@@ -48,7 +56,7 @@ undo across branches. Model design, implementation and acceptance remain distinc
 
 | Card | Role | Initial | Planned final | Current | Actual final |
 | --- | --- | --- | --- | --- | --- |
-| [KB049](../KanBan/active/%23049--Change--Model-governance.md) | Primary | New, active/in-progress | completed after verified delivery | active/in-progress | Pending |
+| [KB049](../KanBan/active/%23049--Change--Model-governance.md) | Primary | New, active/in-progress | completed after verified delivery | active/ready | Pending |
 | [KB050](../KanBan/backlog/%23050--Proposal--Semantic-blueprints.md) | Separate consumer | backlog | Outside this Session | backlog | Pending |
 | [KB048](../KanBan/superseded/%23048--Proposal--Versioned-design-reviews-and-blueprint-diffs.md) | Historical source | backlog before split | superseded | superseded | Scope transferred |
 
@@ -56,8 +64,8 @@ undo across branches. Model design, implementation and acceptance remain distinc
 
 | Plan | Readiness | Canonical lifecycle | Outcome |
 | --- | --- | --- | --- |
-| [PLAN-SDP-0016](../04--Design/SDPTool/ModelGovernance/Plan.md) | on-going | active | Study, detailed contract, proof and implementation handoff |
-| Successor ImplementationPlan | planned, not created | Not registered | Production vertical slices after design/proof |
+| [PLAN-SDP-0016](../04--Design/SDPTool/ModelGovernance/Plan.md) | completed | completed | Study, detailed contract, proof and implementation handoff |
+| [PLAN-SDP-0019](../05--Implementation/SDPTool/ModelGovernance/Plan.md) | ready | planned | Five production phases; no milestone started |
 
 ## Design documents
 
@@ -121,6 +129,21 @@ retained empty file. Proof.md and raw result/hash files bound the evidence.
 No independent review, full schema, general crash safety, concurrent-writer safety,
 release conflict resolution or application acceptance claimed. Next MG4 converts
 these remaining obligations into implementation milestones and acceptance tests.
+
+### T004 — MG4 implementation handoff
+
+Owner prompt: "ok fortsett med mg4". Manual work summary; host/run IDs unknown.
+Skill reused: sdp-planning with SDP/architecture context. Created PLAN-SDP-0019:
+five phases, seven milestone deliveries, per-milestone commits on one implementation
+branch, acceptance tests for every recorded MG3 gap, explicit review and platform
+limits. No mandatory Git binary or manual source-registration file. Full blueprint
+analysis and publication remain excluded. Checked actual CLI/discovery routing to
+identify compatibility and concurrent ProjectGovernance integration boundaries.
+
+MG4-M1 delivered; PLAN-SDP-0016 completed. KB049 becomes active/ready, successor plan
+planned. Management/Toolkit validators and diff checks pass. No product execution or
+new runtime tests claimed. Roadmap expanded S5-S9 from the authored plan, not invented
+dates. Next MGI1-M1 safe WORK vertical slice. Session stays active for that goal.
 
 ## Closeout
 

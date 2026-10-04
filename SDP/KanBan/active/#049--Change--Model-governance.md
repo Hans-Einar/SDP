@@ -5,7 +5,7 @@
 | id | KB-SDP-049 |
 | project | SDP |
 | type | Change |
-| CardState | in-progress |
+| CardState | ready |
 | Systems | SDPTOOL, SDL, SDUI |
 | created | 2026-10-03 |
 | source | Owner discussion; KB-SDP-048 split KBO-SDP-000005 |
@@ -50,3 +50,10 @@ race instrumentation and vet. [Proof](../../04--Design/SDPTool/ModelGovernance/P
 records recovery, merge, interrupted publication and promotion limits. No production
 CLI delivered; full schema/concurrency/transaction gates remain. Next MG4-M1
 ImplementationPlan; CardState stays in-progress.
+
+2026-10-05 MG4-M1: DesignPlan PLAN-SDP-0016 completed;
+[ImplementationPlan PLAN-SDP-0019](../../05--Implementation/SDPTool/ModelGovernance/Plan.md)
+is prepared, not started. CardState in-progress -> ready for MGI1-M1. Five phases
+cover creation, recovery, integration, frozen delivery and consumer/closeout. MG3
+proof gaps map to concrete acceptance tests; separate Blueprint scope remains KB050.
+No implementation milestone or installed/released functionality is claimed.
