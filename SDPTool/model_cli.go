@@ -18,6 +18,28 @@ func modelCommand(area string, args []string, out, errs io.Writer, jsonMode bool
 		return bad()
 	}
 	switch args[0] {
+	case "commit":
+		if len(args) != 4 && len(args) != 5 {
+			return bad()
+		}
+		if args[2] != "--message" {
+			return bad()
+		}
+		resolved := len(args) == 5 && args[4] == "--resolved"
+		if len(args) == 5 && !resolved {
+			return bad()
+		}
+		r, e = model.Commit(area, args[1], args[3], resolved)
+	case "restore":
+		if len(args) != 4 || args[2] != "to" || !strings.HasPrefix(args[3], "commit:") {
+			return bad()
+		}
+		r, e = model.Restore(area, args[1], strings.TrimPrefix(args[3], "commit:"))
+	case "recover":
+		if len(args) != 3 {
+			return bad()
+		}
+		r, e = model.Recover(area, args[1], args[2])
 	case "status", "history":
 		if len(args) != 2 {
 			return bad()

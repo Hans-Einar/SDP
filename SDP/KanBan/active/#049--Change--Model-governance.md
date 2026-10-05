@@ -59,3 +59,5 @@ proof gaps map to concrete acceptance tests; separate Blueprint scope remains KB
 No implementation milestone or installed/released functionality is claimed.
 
 2026-10-05T00:16:32.082240+00:00 MGI1-M1: WORK creation/status and strict metadata foundation implemented, with staged area-locked publication. SDL/SDUI validation and recovery library scaffolding included but later CLI operations not yet exposed. Full SDPTool test suite passes.
+
+2026-10-05T00:17:57.226155+00:00 MGI2-M1: Commit/history/whole-state restore and explicit recover resume/abort CLI implemented. Race tests pass, including child-process interruption at prepared/backup/installed boundaries, dirty preservation, corrupt payload and external edit refusal. Backups retained; physical power-loss and non-Linux mutation not claimed.
