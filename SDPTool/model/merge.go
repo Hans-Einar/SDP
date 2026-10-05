@@ -2,6 +2,7 @@ package model
 
 import (
 	"bytes"
+	"encoding/base64"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -103,7 +104,7 @@ func pointer(b []byte, exists bool) *string {
 	if !exists {
 		return nil
 	}
-	s := string(b)
+	s := base64.StdEncoding.EncodeToString(b)
 	return &s
 }
 func mergeFiles(base, a, b Files) (Files, []Conflict) {
@@ -142,7 +143,7 @@ func mergeFiles(base, a, b Files) (Files, []Conflict) {
 			if oa {
 				out[p] = va
 			}
-			conflicts = append(conflicts, Conflict{p, pointer(v0, o0), pointer(va, oa), pointer(vb, ob)})
+			conflicts = append(conflicts, Conflict{Encoding: "base64", Path: p, Base: pointer(v0, o0), Ours: pointer(va, oa), Theirs: pointer(vb, ob)})
 		}
 	}
 	sort.Slice(conflicts, func(i, j int) bool { return conflicts[i].Path < conflicts[j].Path })

@@ -40,10 +40,11 @@ type Record struct {
 	Payload   string            `yaml:"payload,omitempty" json:"payload,omitempty"`
 }
 type Conflict struct {
-	Path   string  `yaml:"path" json:"path"`
-	Base   *string `yaml:"base" json:"base"`
-	Ours   *string `yaml:"ours" json:"ours"`
-	Theirs *string `yaml:"theirs" json:"theirs"`
+	Encoding string  `yaml:"encoding" json:"encoding"`
+	Path     string  `yaml:"path" json:"path"`
+	Base     *string `yaml:"base" json:"base"`
+	Ours     *string `yaml:"ours" json:"ours"`
+	Theirs   *string `yaml:"theirs" json:"theirs"`
 }
 type Artifact struct {
 	Schema         string     `yaml:"schema" json:"schema"`
@@ -328,7 +329,7 @@ func validate(a Artifact) error {
 	}
 	conflictPaths := map[string]bool{}
 	for _, c := range a.Conflicts {
-		if !safePath(c.Path) || conflictPaths[c.Path] {
+		if c.Encoding != "base64" || !safePath(c.Path) || conflictPaths[c.Path] {
 			return fail("schema", "invalid conflict path")
 		}
 		conflictPaths[c.Path] = true
@@ -371,6 +372,13 @@ func saveArtifact(dir string, a Artifact) error {
 	}
 	b, e := yaml.Marshal(a)
 	if e != nil {
+		return e
+	}
+	var roundTrip Artifact
+	if e = strict(b, &roundTrip); e != nil {
+		return e
+	}
+	if e = validate(roundTrip); e != nil {
 		return e
 	}
 	return os.WriteFile(filepath.Join(dir, metadataName(dir)), b, 0600)

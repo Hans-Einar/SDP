@@ -149,3 +149,26 @@ func TestDirtyCaptureDoesNotAliasFutureSourceCommit(t *testing.T) {
 		t.Fatal("silently skipped new source commit")
 	}
 }
+
+func TestBinaryConflictRemainsReadable(t *testing.T) {
+	area := t.TempDir()
+	releaseFixture(t, area)
+	a, e := CreateWork(area, "A", "", false)
+	must(t, e)
+	b, e := CreateWork(area, "B", "", false)
+	must(t, e)
+	must(t, os.WriteFile(filepath.Join(a.Path, "image.bin"), []byte{0xff}, 0600))
+	must(t, os.WriteFile(filepath.Join(b.Path, "image.bin"), []byte{0xfe}, 0600))
+	r, e := Merge(area, "work:B", "work:A", "")
+	must(t, e)
+	if r.Status != "conflicted" {
+		t.Fatal(r)
+	}
+	r, e = Status(area, "work:A")
+	must(t, e)
+	if r.Artifact.Conflicts[0].Theirs == nil || *r.Artifact.Conflicts[0].Theirs != "/g==" {
+		t.Fatal("wrong binary payload")
+	}
+	_, e = Restore(area, "work:A", "00000")
+	must(t, e)
+}

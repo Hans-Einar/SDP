@@ -179,3 +179,28 @@ func TestCrossProcessWriter(t *testing.T) {
 	unlock()
 	initial(t, area, "A")
 }
+
+func TestUnrecordedStageAbort(t *testing.T) {
+	area := t.TempDir()
+	initial(t, area, "A")
+	faultHook = func(s string) {
+		if s == "unrecorded" {
+			panic("interrupted")
+		}
+	}
+	func() { defer func() { _ = recover(); faultHook = nil }(); _, _ = CreateWork(area, "B", "", true) }()
+	ds, e := os.ReadDir(filepath.Join(area, operations))
+	must(t, e)
+	for _, d := range ds {
+		if !d.IsDir() {
+			continue
+		}
+		p := filepath.Join(area, operations, d.Name(), "journal.yaml")
+		if _, e := os.Stat(p); os.IsNotExist(e) {
+			_, e = Recover(area, d.Name(), "abort")
+			must(t, e)
+		}
+	}
+	_, e = CreateWork(area, "B", "", true)
+	must(t, e)
+}

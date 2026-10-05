@@ -2,6 +2,7 @@ package model
 
 import (
 	"os"
+	"os/exec"
 	"path/filepath"
 	"strings"
 	"testing"
@@ -111,5 +112,49 @@ func TestRejectInvalidModelButAllowRecoveryCommit(t *testing.T) {
 	must(t, e)
 	if _, e = Freeze(area, "candidate", "Bad", "work:Bad", ""); e == nil {
 		t.Fatal("invalid model frozen")
+	}
+}
+
+func TestTwoGitClonesTransportCompetingReleases(t *testing.T) {
+	if _, e := exec.LookPath("git"); e != nil {
+		t.Skip("Git transport test requires git; model runtime does not")
+	}
+	git := func(dir string, args ...string) {
+		t.Helper()
+		cmd := exec.Command("git", args...)
+		cmd.Dir = dir
+		cmd.Env = append(os.Environ(), "GIT_AUTHOR_NAME=Test", "GIT_AUTHOR_EMAIL=test@example.invalid", "GIT_COMMITTER_NAME=Test", "GIT_COMMITTER_EMAIL=test@example.invalid")
+		if b, e := cmd.CombinedOutput(); e != nil {
+			t.Fatalf("git %v: %v %s", args, e, b)
+		}
+	}
+	origin := t.TempDir()
+	releaseFixture(t, origin)
+	git(origin, "init", "-b", "main")
+	git(origin, "add", "RELEASE--V0.1.0")
+	git(origin, "commit", "-m", "baseline")
+	a := filepath.Join(t.TempDir(), "a")
+	b := filepath.Join(t.TempDir(), "b")
+	git(origin, "clone", origin, a)
+	git(origin, "clone", origin, b)
+	for i, dir := range []string{a, b} {
+		_, e := CreateWork(dir, "Next", "", false)
+		must(t, e)
+		_, e = Freeze(dir, "candidate", "Next", "work:Next", "")
+		must(t, e)
+		version := []string{"0.2.0", "0.3.0"}[i]
+		_, e = Freeze(dir, "release", version, "candidate:Next", "model-only")
+		must(t, e)
+		git(dir, "add", "RELEASE--V"+version)
+		git(dir, "commit", "-m", "independent release")
+	}
+	git(a, "fetch", b, "main")
+	git(a, "merge", "--no-edit", "FETCH_HEAD")
+	for _, ref := range []string{"release:0.2.0", "release:0.3.0"} {
+		_, e := Status(a, ref)
+		must(t, e)
+	}
+	if _, e := CreateWork(a, "Ambiguous", "", false); e == nil {
+		t.Fatal("silently chose competing head")
 	}
 }

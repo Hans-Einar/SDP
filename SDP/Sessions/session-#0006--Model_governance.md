@@ -159,6 +159,8 @@ MGI3-M1: Native bounded Go three-way merge, combined WORK creation, persistent c
 
 MGI4-M1: Frozen candidate/proposal CLI now validates real SDL source graphs and SDUI using existing parsers, preserves metadata lineage and drops undo payloads. Model tests pass. Independent review found dirty-capture identity and file/directory restore defects; regression fixes and stricter domain validation are included, with final re-review pending.
 
+MGI4-M2: Release promotion requires candidate validation and explicit model-only or verified evidence attribution. Default WORK resolves the unique accepted head; stale and competing releases fail closed. Model tests pass including actual two-clone Git transport. Review fixes add abort of unjournaled staging and base64 conflict values with bounded YAML round-trip validation before publication.
+
 ## Closeout
 
 Open. Feature is not implemented. No merge to main, release or XFMD change performed.

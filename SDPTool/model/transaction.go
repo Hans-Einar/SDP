@@ -147,6 +147,9 @@ func journals(area string) ([]transaction, error) {
 		if !d.IsDir() {
 			continue
 		}
+		if strings.HasPrefix(d.Name(), "aborted-") && uuidRE.MatchString(strings.TrimPrefix(d.Name(), "aborted-")) {
+			continue
+		}
 		if !uuidRE.MatchString(d.Name()) {
 			return nil, fail("recovery", "unknown operation directory")
 		}
@@ -212,6 +215,7 @@ func publish(area, target, source, expected string, build func(string) error) (s
 	if e := os.MkdirAll(stage, 0700); e != nil {
 		return "", e
 	}
+	fault("unrecorded")
 	t := transaction{ID: id, Target: target, Expected: expected, State: "building"}
 	jp := filepath.Join(op, "journal.yaml")
 	if e := writeY(jp, t); e != nil {
@@ -311,6 +315,19 @@ func Recover(area, id, action string) (Result, error) {
 		return Result{}, e
 	}
 	defer unlock()
+	// An interrupted initial journal write has not touched any published target.
+	op := filepath.Join(area, operations, id)
+	if st, err := os.Lstat(op); err == nil && st.IsDir() {
+		if _, err = os.Lstat(filepath.Join(op, "journal.yaml")); os.IsNotExist(err) {
+			if action != "abort" {
+				return Result{}, fail("recovery", "unrecorded staging can only be aborted")
+			}
+			if e = os.Rename(op, filepath.Join(area, operations, "aborted-"+id)); e != nil {
+				return Result{}, e
+			}
+			return Result{Schema: Schema, Operation: "recover", Status: "abort", Recovery: id}, nil
+		}
+	}
 	ts, e := journals(area)
 	if e != nil {
 		return Result{}, e
