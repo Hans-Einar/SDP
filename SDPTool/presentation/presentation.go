@@ -19,6 +19,9 @@ type Registry map[Key]Renderer
 
 func Default() Registry {
 	r := Registry{}
+	for _, op := range []string{"create", "status", "history", "commit", "restore", "merge", "recover", "snapshot"} {
+		r[Key{"sdp-model/0.1", op}] = fields
+	}
 	for _, op := range []string{"discover", "select", "preview", "sdui-preview", "view"} {
 		r[Key{"sdptool/0.2", op}] = fields
 	}

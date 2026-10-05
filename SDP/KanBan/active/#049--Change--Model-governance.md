@@ -5,7 +5,7 @@
 | id | KB-SDP-049 |
 | project | SDP |
 | type | Change |
-| CardState | ready |
+| CardState | in-progress |
 | Systems | SDPTOOL, SDL, SDUI |
 | created | 2026-10-03 |
 | source | Owner discussion; KB-SDP-048 split KBO-SDP-000005 |
@@ -57,3 +57,5 @@ is prepared, not started. CardState in-progress -> ready for MGI1-M1. Five phase
 cover creation, recovery, integration, frozen delivery and consumer/closeout. MG3
 proof gaps map to concrete acceptance tests; separate Blueprint scope remains KB050.
 No implementation milestone or installed/released functionality is claimed.
+
+2026-10-05T00:16:32.082240+00:00 MGI1-M1: WORK creation/status and strict metadata foundation implemented, with staged area-locked publication. SDL/SDUI validation and recovery library scaffolding included but later CLI operations not yet exposed. Full SDPTool test suite passes.

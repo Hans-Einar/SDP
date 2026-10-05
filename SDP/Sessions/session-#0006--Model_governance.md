@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn T004. Next: MGI1-M1 under PLAN-SDP-0019. Synthetic sequence
+Latest recorded turn T005. Implementation underway under PLAN-SDP-0019. Synthetic sequence
 only; dates below are slots, not scheduling estimates or measured durations.
 
 ```mermaid
@@ -65,7 +65,7 @@ undo across branches. Model design, implementation and acceptance remain distinc
 | Plan | Readiness | Canonical lifecycle | Outcome |
 | --- | --- | --- | --- |
 | [PLAN-SDP-0016](../04--Design/SDPTool/ModelGovernance/Plan.md) | completed | completed | Study, detailed contract, proof and implementation handoff |
-| [PLAN-SDP-0019](../05--Implementation/SDPTool/ModelGovernance/Plan.md) | ready | planned | Five production phases; no milestone started |
+| [PLAN-SDP-0019](../05--Implementation/SDPTool/ModelGovernance/Plan.md) | on-going | active | Five production phases; evidence recorded below |
 
 ## Design documents
 
@@ -144,6 +144,14 @@ MG4-M1 delivered; PLAN-SDP-0016 completed. KB049 becomes active/ready, successor
 planned. Management/Toolkit validators and diff checks pass. No product execution or
 new runtime tests claimed. Roadmap expanded S5-S9 from the authored plan, not invented
 dates. Next MGI1-M1 safe WORK vertical slice. Session stays active for that goal.
+
+### T005 — Execute all five implementation phases
+
+Owner requests all phases overnight. Skills: sdp/master/worker/verifier/planning;
+manual journal, no host IDs or automated routine claim. Implementation authorized;
+main merge/release remain outside scope.
+
+MGI1-M1: WORK creation/status and strict metadata foundation implemented, with staged area-locked publication. SDL/SDUI validation and recovery library scaffolding included but later CLI operations not yet exposed. Full SDPTool test suite passes.
 
 ## Closeout
 
