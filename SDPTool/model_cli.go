@@ -18,6 +18,11 @@ func modelCommand(area string, args []string, out, errs io.Writer, jsonMode bool
 		return bad()
 	}
 	switch args[0] {
+	case "merge":
+		if len(args) != 4 || args[2] != "into" {
+			return bad()
+		}
+		r, e = model.Merge(area, args[1], args[3], "")
 	case "commit":
 		if len(args) != 4 && len(args) != 5 {
 			return bad()
@@ -63,12 +68,17 @@ func modelCommand(area string, args []string, out, errs io.Writer, jsonMode bool
 		case len(args) == 2:
 		case len(args) == 3 && args[2] == "--initial":
 			initial = true
+		case len(args) == 5 && args[2] == "from":
+			r, e = model.Merge(area, args[4], args[3], target[1])
+			break
 		case len(args) == 4 && args[2] == "from":
 			from = args[3]
 		default:
 			return bad()
 		}
-		r, e = model.CreateWork(area, target[1], from, initial)
+		if len(args) != 5 {
+			r, e = model.CreateWork(area, target[1], from, initial)
+		}
 	default:
 		return bad()
 	}

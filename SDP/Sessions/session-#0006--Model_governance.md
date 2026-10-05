@@ -155,6 +155,8 @@ MGI1-M1: WORK creation/status and strict metadata foundation implemented, with s
 
 MGI2-M1: Commit/history/whole-state restore and explicit recover resume/abort CLI implemented. Race tests pass, including child-process interruption at prepared/backup/installed boundaries, dirty preservation, corrupt payload and external edit refusal. Backups retained; physical power-loss and non-Linux mutation not claimed.
 
+MGI3-M1: Native bounded Go three-way merge, combined WORK creation, persistent conflict inventory and resolved commits implemented. Tests cover disjoint and overlapping same-file edits, unrelated bases, dirty inputs, repeat integration without extra events, three archive generations and whole-state rollback. No external Git merge dependency.
+
 ## Closeout
 
 Open. Feature is not implemented. No merge to main, release or XFMD change performed.

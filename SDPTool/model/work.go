@@ -136,6 +136,7 @@ func reconstruct(dir string, a Artifact, id string) (Files, error) {
 		if e = strict(b, &stored); e != nil {
 			return nil, e
 		}
+		stored.Payload = r.Payload
 		if !recordEqual(stored, r) {
 			return nil, fail("integrity", "commit record changed")
 		}

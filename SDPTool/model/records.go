@@ -236,7 +236,7 @@ func validate(a Artifact) error {
 				return fail("schema", "invalid deleted path")
 			}
 		}
-		if r.Payload != "" && (!safePath(r.Payload) || !strings.HasPrefix(r.Payload, ".commits/")) {
+		if r.Payload != "" && (!safePath(r.Payload) || !(strings.HasPrefix(r.Payload, ".commits/") || strings.HasPrefix(r.Payload, ".merge/"))) {
 			return fail("schema", "invalid payload path")
 		}
 		if a.Kind != "work" && r.Payload != "" {
