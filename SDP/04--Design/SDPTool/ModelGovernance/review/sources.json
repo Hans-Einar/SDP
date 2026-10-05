@@ -1135,7 +1135,7 @@
     }
   ],
   "profile": "design-core/0.6",
-  "revision": "ddeddf6050239ebbde41bf0a74d149bd3a98948983e4c83e16d8fdae81f2d707",
+  "revision": "a4844c717e9ef27849ddda5efe01a27664359a07b910568f89ad3e6c73c99ae6",
   "schema": "sdl-source-provenance/1",
   "sources": [
     {
@@ -1148,7 +1148,7 @@
     },
     {
       "path": "Features/ModelGovernance.design",
-      "sha256": "bb9e8a7549304169c521ad8ee15a82cf8924a713e1eeb99199943d9e25808aac"
+      "sha256": "17f941eedcaced8c5c9bbcaffbf1f9dae2512d84112ca7fda79ce8938573e1a5"
     },
     {
       "path": "ModelGovernance.design",

@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn T005. Implementation underway under PLAN-SDP-0019. Synthetic sequence
+Latest recorded turn T005. All five implementation phases completed under PLAN-SDP-0019. Synthetic sequence
 only; dates below are slots, not scheduling estimates or measured durations.
 
 ```mermaid
@@ -15,11 +15,11 @@ gantt
     DONE MG3 Proof :done,s3,after s2,1d
     DONE MG4 Handoff :done,s4,after s3,1d
     section Delivery
-    NEXT MGI1 Safe WORK :s5,after s4,1d
-    PLANNED MGI2 Recovery :s6,after s5,1d
-    PLANNED MGI3 Integration :s7,after s6,1d
-    PLANNED MGI4 Frozen delivery :s8,after s7,1d
-    PLANNED MGI5 Closeout :s9,after s8,1d
+    DONE MGI1 Safe WORK :done,s5,after s4,1d
+    DONE MGI2 Recovery :done,s6,after s5,1d
+    DONE MGI3 Integration :done,s7,after s6,1d
+    DONE MGI4 Frozen delivery :done,s8,after s7,1d
+    DONE MGI5 Closeout :done,s9,after s8,1d
 ```
 
 | State | Step | Work | Evidence / prerequisite |
@@ -28,21 +28,21 @@ gantt
 | completed | S2 | Define minimal schema, operations and supported SDL design | MG2-M1; initial Design.md ready for refinement |
 | completed | S3 | Exercise filesystem/recovery/merge proof | MG3-M1, after MG2 |
 | completed | S4 | Write bounded ImplementationPlan | MG4-M1, informed by proof |
-| next | S5 | Safe WORK creation | PLAN-SDP-0019 MGI1-M1; implementation not started |
-| planned | S6 | Commit and whole-state recovery | MGI2-M1 after MGI1 |
-| planned | S7 | Integrate WORK sources | MGI3-M1 after MGI2 |
-| planned | S8 | Candidate/release lifecycle | MGI4-M1/M2 after MGI3 |
-| planned | S9 | Discovery, full journey and independent review | MGI5-M1/M2 after MGI4 |
+| completed | S5 | Safe WORK creation | PLAN-SDP-0019 MGI1-M1; delivered |
+| completed | S6 | Commit and whole-state recovery | MGI2-M1 after MGI1 |
+| completed | S7 | Integrate WORK sources | MGI3-M1 after MGI2 |
+| completed | S8 | Candidate/release lifecycle | MGI4-M1/M2 after MGI3 |
+| completed | S9 | Discovery, full journey and independent review | MGI5-M1/M2 after MGI4 |
 
 | Field | Value |
 | --- | --- |
 | Session reference | SESSION-SDP-0006 |
-| Status | active |
+| Status | goal achieved |
 | Primary card | KB-SDP-049 |
 | Snapshot date | 2026-10-05 |
-| Current step | S4 delivered |
-| Proposed next step | S5 / MGI1-M1 |
-| Execution authority | Owner requests new feature, active card, study and design preparation |
+| Current step | S9 delivered |
+| Proposed next step | Owner selects next feature or release preparation |
+| Execution authority | Owner authorized all five implementation phases |
 
 ## Goal and scope
 
@@ -56,7 +56,7 @@ undo across branches. Model design, implementation and acceptance remain distinc
 
 | Card | Role | Initial | Planned final | Current | Actual final |
 | --- | --- | --- | --- | --- | --- |
-| [KB049](../KanBan/active/%23049--Change--Model-governance.md) | Primary | New, active/in-progress | completed after verified delivery | active/ready | Pending |
+| [KB049](../KanBan/completed/%23049--Change--Model-governance.md) | Primary | New, active/in-progress | completed after verified delivery | completed | completed |
 | [KB050](../KanBan/backlog/%23050--Proposal--Semantic-blueprints.md) | Separate consumer | backlog | Outside this Session | backlog | Pending |
 | [KB048](../KanBan/superseded/%23048--Proposal--Versioned-design-reviews-and-blueprint-diffs.md) | Historical source | backlog before split | superseded | superseded | Scope transferred |
 
@@ -65,7 +65,7 @@ undo across branches. Model design, implementation and acceptance remain distinc
 | Plan | Readiness | Canonical lifecycle | Outcome |
 | --- | --- | --- | --- |
 | [PLAN-SDP-0016](../04--Design/SDPTool/ModelGovernance/Plan.md) | completed | completed | Study, detailed contract, proof and implementation handoff |
-| [PLAN-SDP-0019](../05--Implementation/SDPTool/ModelGovernance/Plan.md) | on-going | active | Five production phases; evidence recorded below |
+| [PLAN-SDP-0019](../05--Implementation/SDPTool/ModelGovernance/Plan.md) | completed | completed | All five production phases; evidence and independent review recorded |
 
 ## Design documents
 
@@ -163,6 +163,18 @@ MGI4-M2: Release promotion requires candidate validation and explicit model-only
 
 MGI5-M1: Artifact-aware discovery exposes kind, UUID and preliminary role, prunes only owned histories and transaction staging, and preserves ordinary projects. Read-only snapshot returns captured bytes/digest without a commit. Full SDPTool tests pass, including compiled no-Git CLI lifecycle with real SDL/SDUI validation and copied-area inspection. Provenance now includes local author/acceptor attribution, original names and merge/restore references.
 
+MGI5-M2: Integrated candidate fd7033b passes SDPTool race suite and vet, SDL parser/sourcegraph and SDUI parser tests, compiled CLI lifecycle, and Windows amd64/macOS arm64 cross-builds. Independent fresh-context review approves bounded Linux implementation after regression fixes. Child-process recovery covers dirty restore at six boundaries. Canonical SDL activity is implemented and nine viewpoint diagrams were regenerated; product release/main merge remain excluded.
+
+T005 work summary (manual, not a captured final response): all milestones delivered.
+Independent review identified and verified fixes for dirty capture IDs, file/directory
+restore, unreadable binary conflicts and unrecorded staging recovery. Source-derived
+viewpoints rebuilt after marking delivery implemented. Backlog review retains KB050
+for semantic blueprints; no scope transfer into this implementation.
+
 ## Closeout
 
-Open. Feature is not implemented. No merge to main, release or XFMD change performed.
+Goal achieved for bounded ModelGovernance. All steps S1–S9 completed; KB049
+completed, KB048 superseded, KB050 retained in backlog as separate scope.
+See the ImplementationPlan Evidence.md and Review.md. No main merge, product
+release, installer migration or XFMD change performed. Further feature/release
+work requires its own selected plan.

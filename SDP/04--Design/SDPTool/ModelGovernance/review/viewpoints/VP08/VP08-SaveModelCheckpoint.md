@@ -2,7 +2,7 @@
 
 [Viewpoint](index.md) · [Navigator](../../navigator.md)
 
-Revision: `ddeddf6050239ebbde41bf0a74d149bd3a98948983e4c83e16d8fdae81f2d707`.
+Revision: `a4844c717e9ef27849ddda5efe01a27664359a07b910568f89ad3e6c73c99ae6`.
 
 ## Scenario: SaveModelCheckpoint — mode ModelEditing
 

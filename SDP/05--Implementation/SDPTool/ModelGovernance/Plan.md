@@ -4,7 +4,7 @@
 | --- | --- |
 | id | PLAN-SDP-0019 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | ImplementationPlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
@@ -19,9 +19,9 @@ and publish accepted model releases with retained metadata lineage. Work without
 project Git and without a separate export operation. Session0006 continues across
 this plan; completing its predecessor DesignPlan does not complete the feature.
 
-The owner selected MG4 planning on 2026-10-05. This ImplementationPlan is prepared,
-not started. At execution start record the selected milestone and an active plan
-event; do not interpret this document as merge/publication authorization.
+The owner selected MG4 planning and then authorized all five implementation phases
+on 2026-10-05. Execution and milestone evidence are recorded below. This authority
+does not include merge to main or product publication.
 
 ## Governing inputs and implementation boundary
 
@@ -253,3 +253,12 @@ MGI4-M1: Frozen candidate/proposal CLI now validates real SDL source graphs and 
 MGI4-M2: Release promotion requires candidate validation and explicit model-only or verified evidence attribution. Default WORK resolves the unique accepted head; stale and competing releases fail closed. Model tests pass including actual two-clone Git transport. Review fixes add abort of unjournaled staging and base64 conflict values with bounded YAML round-trip validation before publication.
 
 MGI5-M1: Artifact-aware discovery exposes kind, UUID and preliminary role, prunes only owned histories and transaction staging, and preserves ordinary projects. Read-only snapshot returns captured bytes/digest without a commit. Full SDPTool tests pass, including compiled no-Git CLI lifecycle with real SDL/SDUI validation and copied-area inspection. Provenance now includes local author/acceptor attribution, original names and merge/restore references.
+
+MGI5-M2: Integrated candidate fd7033b passes SDPTool race suite and vet, SDL parser/sourcegraph and SDUI parser tests, compiled CLI lifecycle, and Windows amd64/macOS arm64 cross-builds. Independent fresh-context review approves bounded Linux implementation after regression fixes. Child-process recovery covers dirty restore at six boundaries. Canonical SDL activity is implemented and nine viewpoint diagrams were regenerated; product release/main merge remain excluded.
+
+## Completion
+
+All seven milestones across MGI1–MGI5 delivered. See Evidence.md and Review.md.
+Bounded v1 is Linux mutation with portable Go/read APIs, WORK-input merges and
+explicit model-only/attributed verified release evidence. Semantic blueprints,
+physical power-loss and native non-Linux mutation remain outside scope.

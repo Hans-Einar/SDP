@@ -16,7 +16,7 @@ Session: [SESSION-SDP-0005](../../Sessions/session-%230005--Blueprint_model_hist
 ## Scope disposition — 2026-10-03
 
 Owner requested separate ModelGovernance and Blueprint features. KBO-SDP-000005
-fully transfers work to [KB049 ModelGovernance](../active/%23049--Change--Model-governance.md)
+fully transfers work to [KB049 ModelGovernance](../completed/%23049--Change--Model-governance.md)
 and [KB050 Blueprints](../backlog/%23050--Proposal--Semantic-blueprints.md).
 ModelGovernance is active; Blueprints remains backlog. The discussion below is
 historical input; no implementation was completed by superseding this card.

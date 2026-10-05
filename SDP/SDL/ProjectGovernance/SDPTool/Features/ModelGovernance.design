@@ -29,7 +29,7 @@ ModelGovernanceDelivery addresses IntegrateSources.
 ModelGovernanceDelivery addresses RestoreCheckpoint.
 ModelGovernanceDelivery addresses SaveCheckpoint.
 ModelGovernanceDelivery delivers ModelGovernance.
-ModelGovernanceDelivery has implementation-status = planned.
+ModelGovernanceDelivery has implementation-status = implemented.
 ModelIntegrator pursues IntegrateModelChanges.
 ModelIntegrator pursues PublishModelCandidate.
 RestoreCheckpoint allocated-to SdpToolHost in mode ModelEditing.

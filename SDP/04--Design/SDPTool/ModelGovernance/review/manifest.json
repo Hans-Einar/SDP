@@ -1,6 +1,6 @@
 {
   "version": "sdl-viewpoints-go-1.3/source-graph-1",
-  "revision": "ddeddf6050239ebbde41bf0a74d149bd3a98948983e4c83e16d8fdae81f2d707",
+  "revision": "a4844c717e9ef27849ddda5efe01a27664359a07b910568f89ad3e6c73c99ae6",
   "renderer": "",
   "diagrams": [
     {
@@ -1357,14 +1357,14 @@
       "verb": "delivers"
     },
     {
-      "id": "fa93946076f6e1171b9dfe1e872605183bf7e06ea8066f23870b731b6e179f23a",
+      "id": "f3736f39382237a72dea701126c35e0ee3c1686f345a3f86c48e4fba4e492c41f",
       "line": 32,
       "node": "PropertyAssignment",
       "property": "implementation-status",
       "span": {
         "column": 1,
-        "end": 1256,
-        "end_column": 61,
+        "end": 1260,
+        "end_column": 65,
         "end_line": 32,
         "line": 32,
         "node": "Span",
@@ -1373,8 +1373,8 @@
       },
       "subject": "ModelGovernanceDelivery",
       "system": "SDPTool",
-      "text": "ModelGovernanceDelivery has implementation-status = planned.",
-      "value": "planned",
+      "text": "ModelGovernanceDelivery has implementation-status = implemented.",
+      "value": "implemented",
       "verb": "has"
     },
     {
@@ -1384,13 +1384,13 @@
       "object": "IntegrateModelChanges",
       "span": {
         "column": 1,
-        "end": 1303,
+        "end": 1307,
         "end_column": 47,
         "end_line": 33,
         "line": 33,
         "node": "Span",
         "source": "Features/ModelGovernance.design",
-        "start": 1257
+        "start": 1261
       },
       "subject": "ModelIntegrator",
       "system": "SDPTool",
@@ -1404,13 +1404,13 @@
       "object": "PublishModelCandidate",
       "span": {
         "column": 1,
-        "end": 1350,
+        "end": 1354,
         "end_column": 47,
         "end_line": 34,
         "line": 34,
         "node": "Span",
         "source": "Features/ModelGovernance.design",
-        "start": 1304
+        "start": 1308
       },
       "subject": "ModelIntegrator",
       "system": "SDPTool",
@@ -2154,13 +2154,13 @@
       "object": "SdpToolHost",
       "span": {
         "column": 1,
-        "end": 1415,
+        "end": 1419,
         "end_column": 65,
         "end_line": 35,
         "line": 35,
         "node": "Span",
         "source": "Features/ModelGovernance.design",
-        "start": 1351
+        "start": 1355
       },
       "subject": "RestoreCheckpoint",
       "system": "SDPTool",
@@ -2174,13 +2174,13 @@
       "object": "ModelGovernance",
       "span": {
         "column": 1,
-        "end": 1465,
+        "end": 1469,
         "end_column": 50,
         "end_line": 36,
         "line": 36,
         "node": "Span",
         "source": "Features/ModelGovernance.design",
-        "start": 1416
+        "start": 1420
       },
       "subject": "RestoreCheckpoint",
       "system": "SDPTool",
@@ -2194,13 +2194,13 @@
       "object": "LocalModelRecovery",
       "span": {
         "column": 1,
-        "end": 1512,
+        "end": 1516,
         "end_column": 47,
         "end_line": 37,
         "line": 37,
         "node": "Span",
         "source": "Features/ModelGovernance.design",
-        "start": 1466
+        "start": 1470
       },
       "subject": "RestoreCheckpoint",
       "system": "SDPTool",
@@ -2235,13 +2235,13 @@
       "object": "SdpToolHost",
       "span": {
         "column": 1,
-        "end": 1574,
+        "end": 1578,
         "end_column": 62,
         "end_line": 38,
         "line": 38,
         "node": "Span",
         "source": "Features/ModelGovernance.design",
-        "start": 1513
+        "start": 1517
       },
       "subject": "SaveCheckpoint",
       "system": "SDPTool",
@@ -2255,13 +2255,13 @@
       "object": "ModelGovernance",
       "span": {
         "column": 1,
-        "end": 1621,
+        "end": 1625,
         "end_column": 47,
         "end_line": 39,
         "line": 39,
         "node": "Span",
         "source": "Features/ModelGovernance.design",
-        "start": 1575
+        "start": 1579
       },
       "subject": "SaveCheckpoint",
       "system": "SDPTool",
@@ -2275,13 +2275,13 @@
       "object": "LocalModelRecovery",
       "span": {
         "column": 1,
-        "end": 1665,
+        "end": 1669,
         "end_column": 44,
         "end_line": 40,
         "line": 40,
         "node": "Span",
         "source": "Features/ModelGovernance.design",
-        "start": 1622
+        "start": 1626
       },
       "subject": "SaveCheckpoint",
       "system": "SDPTool",
@@ -2600,19 +2600,19 @@
     "diagrams/VP08-SaveModelCheckpoint.mmd": "3829754cc149f4422c02f9c4958b96e3f2d20e5e6e7a49c0d670b3112820ee84",
     "index.md": "297ffb67f305fd24b7cfb5ada5bc9304bd30c0d0d25a055f9d131b69f2d29bc5",
     "message-sets.json": "02896970cf288386e7f450918215525e35a5f25a0d7486387e568c81791ec731",
-    "navigator.md": "265b3324e6b89c697cc13aa8fe9cbad696a1312ed3415883574dc5f594b0da4b",
-    "sources.json": "0a52a341f98886dea8cc34681b10dadffddeb9752fc03166f2a0b54866bdecdc",
-    "viewpoints/VP01/VP01-IntegrateModelChanges.md": "8a384398e1d527b6d4e5f2e30ee6cd2951cc58dd990228cf70b51b7acbf953cc",
-    "viewpoints/VP01/VP01-PublishModelCandidate.md": "7aa74360455db6ee107ba445d10c85966f6152bf962e99fcf82d49a66c000801",
-    "viewpoints/VP01/VP01-RecoverWorkingModel.md": "de8cd44e385358b1c0e59ecf418e2707cdb4cd04eb8aa706604185ed38787ed9",
-    "viewpoints/VP01/VP01-feature-ModelGovernance.md": "f042136c9f34dbf4103f85fd0844f1e64961877ec8d3d4d974f6c3dd15c950eb",
+    "navigator.md": "18dad6044a70db73118a4ddf1918318ef36b27851d1cd497ed883128b6b0ae1e",
+    "sources.json": "9a8bbfe93d6d06e20ed574f110dee790de5aaade1317b1b1b61e90ff897ad8b9",
+    "viewpoints/VP01/VP01-IntegrateModelChanges.md": "b7c09d5223b06641f9af3c96625d928098fbb94b9a29ee0f0735317ab82a872c",
+    "viewpoints/VP01/VP01-PublishModelCandidate.md": "c1a8912e121f7b1a7ab0b69b1955aca5d7726ddcaf1c577473a4082cca3ddbde",
+    "viewpoints/VP01/VP01-RecoverWorkingModel.md": "43a8d53f14f2019bf9a972033a47e09607f7d11eb88f43557e6b153d7be40428",
+    "viewpoints/VP01/VP01-feature-ModelGovernance.md": "306dc4c13775dbe7311ff08ae3c61c2cbe465ec50d98c187b5c4925a8372457f",
     "viewpoints/VP01/index.md": "922abd453d1f6977a6e99e5c910844cd7d11a66ba5f8900e5b5ac5103e40b62f",
-    "viewpoints/VP02/VP02-SDPTool.md": "0571532aca3a14fbf1629349ff13b30c2c4b5280875b7caee94dba21f89e2b74",
-    "viewpoints/VP02/VP02-SdpToolHost.md": "2695380e1b335b41750d7531b7f8577a102c5c6c7f29f91ef2c88b1794759670",
-    "viewpoints/VP02/VP02-roots.md": "42dd208cbba2503352fb075bb6b94eda255d864639f03bfc19414396e7f9d4b9",
+    "viewpoints/VP02/VP02-SDPTool.md": "707d4bdceae81676589156d9aab3394dabb236802864b0553ecef38de2185c44",
+    "viewpoints/VP02/VP02-SdpToolHost.md": "43730de36a4ae748af5f0566d2602bef32df41b4cc2f6b91145f8ccd3e46aee6",
+    "viewpoints/VP02/VP02-roots.md": "6eb59332113e7d237fbdb4b335267e71e16ce8af2b9693f44f4066e61f891431",
     "viewpoints/VP02/index.md": "2b5b7a059e29efd744e022df58d01f8b38bb830fd5a0a8f61694101a250cec8f",
-    "viewpoints/VP08/VP08-RejectStaleModelChange.md": "6006edb8f3f71839fc0247138cff6fee2fb5948a88ab6a7e575f2d7b7d0816fc",
-    "viewpoints/VP08/VP08-SaveModelCheckpoint.md": "7cce3b7855caab6e794d4bd0fae89bc7846cfd33091e316e084ffb4b0e03c365",
+    "viewpoints/VP08/VP08-RejectStaleModelChange.md": "0cd0d5dc9eed7d469414bda2d1910a755c21240886a2743f0d10d1cf6fb1fb37",
+    "viewpoints/VP08/VP08-SaveModelCheckpoint.md": "b25f46c75efd8edc4a714936601f986d5d62a73698be6a37f3a71206056a40be",
     "viewpoints/VP08/index.md": "834ceec402d2d7889e26d57215caaa508c9ad7e7aaceb829e45d9cfda07848da"
   }
 }

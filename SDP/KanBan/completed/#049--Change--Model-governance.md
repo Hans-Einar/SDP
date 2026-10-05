@@ -5,7 +5,7 @@
 | id | KB-SDP-049 |
 | project | SDP |
 | type | Change |
-| CardState | in-progress |
+| CardState | completed |
 | Systems | SDPTOOL, SDL, SDUI |
 | created | 2026-10-03 |
 | source | Owner discussion; KB-SDP-048 split KBO-SDP-000005 |
@@ -69,3 +69,13 @@ No implementation milestone or installed/released functionality is claimed.
 2026-10-05T00:30:41.202655+00:00 MGI4-M2: Release promotion requires candidate validation and explicit model-only or verified evidence attribution. Default WORK resolves the unique accepted head; stale and competing releases fail closed. Model tests pass including actual two-clone Git transport. Review fixes add abort of unjournaled staging and base64 conflict values with bounded YAML round-trip validation before publication.
 
 2026-10-05T00:36:50.759403+00:00 MGI5-M1: Artifact-aware discovery exposes kind, UUID and preliminary role, prunes only owned histories and transaction staging, and preserves ordinary projects. Read-only snapshot returns captured bytes/digest without a commit. Full SDPTool tests pass, including compiled no-Git CLI lifecycle with real SDL/SDUI validation and copied-area inspection. Provenance now includes local author/acceptor attribution, original names and merge/restore references.
+
+2026-10-05T00:39:38.822402+00:00 MGI5-M2: Integrated candidate fd7033b passes SDPTool race suite and vet, SDL parser/sourcegraph and SDUI parser tests, compiled CLI lifecycle, and Windows amd64/macOS arm64 cross-builds. Independent fresh-context review approves bounded Linux implementation after regression fixes. Child-process recovery covers dirty restore at six boundaries. Canonical SDL activity is implemented and nine viewpoint diagrams were regenerated; product release/main merge remain excluded.
+
+## Completion — MGI5-M2
+
+All five PLAN-SDP-0019 phases delivered with independent review and integrated
+verification. [Evidence](../../05--Implementation/SDPTool/ModelGovernance/Evidence.md)
+and [review](../../05--Implementation/SDPTool/ModelGovernance/Review.md) identify
+claims and limits. Session0006 closes; KB050 remains separate semantic blueprint
+work. No main merge, SDP release, installation migration or XFMD change performed.
