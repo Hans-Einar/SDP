@@ -180,7 +180,10 @@ func Freeze(area, kind, name, ref, evidence string) (Result, error) {
 	a := Artifact{Schema: Schema, ID: uuid(), Kind: kind, Name: name, BaseRelease: source.BaseRelease, Ledger: strip(source.Ledger), Digest: Digest(f), Validation: targets, Evidence: evidence}
 	if kind == "release" {
 		if evidence != "model-only" {
-			return Result{}, fail("evidence", "v1 accepts --evidence model-only; verified implementation evidence is not yet authenticated")
+			parts := strings.SplitN(evidence, ":", 3)
+			if len(parts) != 3 || parts[0] != "verified" || !hashRE.MatchString(parts[1]) || strings.TrimSpace(parts[2]) == "" {
+				return Result{}, fail("evidence", "provide model-only or verified with code digest and checks reference; attribution is not authentication")
+			}
 		}
 		rs, e := releases(area)
 		if e != nil {

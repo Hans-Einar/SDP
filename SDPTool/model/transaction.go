@@ -1,10 +1,15 @@
 package model
 
 import (
+	"crypto/sha256"
+	"encoding/binary"
+	"encoding/hex"
 	"fmt"
 	"gopkg.in/yaml.v3"
+	"io"
 	"os"
 	"path/filepath"
+	"sort"
 	"strings"
 )
 
@@ -49,12 +54,85 @@ func writeY(path string, v any) error {
 	}
 	return os.Rename(tmp, path)
 }
+
+// Source limits are independent of retained history. Hash history as streams.
 func treeDigest(p string) (string, error) {
-	f, e := scan(p, false)
+	st, e := os.Lstat(p)
 	if e != nil {
 		return "", e
 	}
-	return Digest(f), nil
+	if !st.IsDir() {
+		return "", fail("path", "not a real tree")
+	}
+	entries := map[string]string{}
+	seen := map[string]bool{}
+	var total int64
+	e = filepath.WalkDir(p, func(name string, d os.DirEntry, err error) error {
+		if err != nil {
+			return err
+		}
+		if name == p {
+			return nil
+		}
+		rel, _ := filepath.Rel(p, name)
+		rel = filepath.ToSlash(rel)
+		if !safePath(rel) || d.Type()&os.ModeSymlink != 0 {
+			return fail("path", "unsafe tree entry")
+		}
+		key := strings.ToLower(rel)
+		if seen[key] {
+			return fail("path", "case collision")
+		}
+		seen[key] = true
+		if len(seen) > 100000 {
+			return fail("limit", "history tree exceeds 100000 entries")
+		}
+		if d.IsDir() {
+			return nil
+		}
+		st, err := d.Info()
+		if err != nil {
+			return err
+		}
+		if !st.Mode().IsRegular() {
+			return fail("path", "nonregular tree entry")
+		}
+		total += st.Size()
+		if total > 1<<30 {
+			return fail("limit", "retained artifact exceeds 1 GiB")
+		}
+		f, err := os.Open(name)
+		if err != nil {
+			return err
+		}
+		h := sha256.New()
+		_, err = io.Copy(h, io.LimitReader(f, (1<<30)+1))
+		f.Close()
+		if err != nil {
+			return err
+		}
+		entries[rel] = hex.EncodeToString(h.Sum(nil))
+		return nil
+	})
+	if e != nil {
+		return "", e
+	}
+	keys := make([]string, 0, len(entries))
+	for k := range entries {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+	h := sha256.New()
+	h.Write([]byte("SDP-model-sources/1\x00"))
+	for _, k := range keys {
+		var n [8]byte
+		binary.BigEndian.PutUint64(n[:], uint64(len(k)))
+		h.Write(n[:])
+		h.Write([]byte(k))
+		v, _ := hex.DecodeString(entries[k])
+		h.Write(v)
+	}
+	return hex.EncodeToString(h.Sum(nil)), nil
 }
 func journals(area string) ([]transaction, error) {
 	entries, e := os.ReadDir(filepath.Join(area, operations))
@@ -73,7 +151,7 @@ func journals(area string) ([]transaction, error) {
 			return nil, fail("recovery", "unknown operation directory")
 		}
 		var t transaction
-		b, e := os.ReadFile(filepath.Join(area, operations, d.Name(), "journal.yaml"))
+		b, e := readMetadata(filepath.Join(area, operations, d.Name(), "journal.yaml"))
 		if os.IsNotExist(e) {
 			return nil, fail("recovery", "incomplete staging operation "+d.Name())
 		}
@@ -85,6 +163,14 @@ func journals(area string) ([]transaction, error) {
 		}
 		if t.ID != d.Name() || !safePath(t.Target) || strings.Contains(t.Target, "/") || (!strings.HasPrefix(t.Target, "WORK--") && !strings.HasPrefix(t.Target, "CANDIDATE--") && !strings.HasPrefix(t.Target, "PROPOSAL--") && !strings.HasPrefix(t.Target, "RELEASE--")) {
 			return nil, fail("recovery", "invalid journal target")
+		}
+		switch t.State {
+		case "building", "prepared", "done", "aborted":
+		default:
+			return nil, fail("recovery", "unknown transaction state")
+		}
+		if (t.Expected != "" && !hashRE.MatchString(t.Expected)) || (t.State == "prepared" && !hashRE.MatchString(t.NewDigest)) {
+			return nil, fail("recovery", "invalid transaction hash")
 		}
 		if t.State != "done" && t.State != "aborted" {
 			out = append(out, t)
@@ -132,6 +218,7 @@ func publish(area, target, source, expected string, build func(string) error) (s
 		return "", e
 	}
 	abandon := func(e error) (string, error) { t.State = "aborted"; _ = writeY(jp, t); return "", e }
+	fault("building")
 	if source != "" {
 		if e := os.CopyFS(stage, os.DirFS(source)); e != nil {
 			return abandon(e)

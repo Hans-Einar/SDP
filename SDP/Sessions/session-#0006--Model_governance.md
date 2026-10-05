@@ -157,6 +157,8 @@ MGI2-M1: Commit/history/whole-state restore and explicit recover resume/abort CL
 
 MGI3-M1: Native bounded Go three-way merge, combined WORK creation, persistent conflict inventory and resolved commits implemented. Tests cover disjoint and overlapping same-file edits, unrelated bases, dirty inputs, repeat integration without extra events, three archive generations and whole-state rollback. No external Git merge dependency.
 
+MGI4-M1: Frozen candidate/proposal CLI now validates real SDL source graphs and SDUI using existing parsers, preserves metadata lineage and drops undo payloads. Model tests pass. Independent review found dirty-capture identity and file/directory restore defects; regression fixes and stricter domain validation are included, with final re-review pending.
+
 ## Closeout
 
 Open. Feature is not implemented. No merge to main, release or XFMD change performed.

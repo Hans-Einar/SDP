@@ -15,3 +15,7 @@ Windows/macOS mutation and physical power-loss acceptance are not claimed.
 
 2026-10-05T00:20:56.033163+00:00: Native bounded Go three-way merge, combined WORK creation, persistent conflict inventory and resolved commits implemented. Tests cover disjoint and overlapping same-file edits, unrelated bases, dirty inputs, repeat integration without extra events, three archive generations and whole-state rollback. No external Git merge dependency.
 
+## MGI4-M1
+
+2026-10-05T00:28:20.994585+00:00: Frozen candidate/proposal CLI now validates real SDL source graphs and SDUI using existing parsers, preserves metadata lineage and drops undo payloads. Model tests pass. Independent review found dirty-capture identity and file/directory restore defects; regression fixes and stricter domain validation are included, with final re-review pending.
+

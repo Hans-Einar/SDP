@@ -275,6 +275,32 @@ func replaceSources(stage string, f Files) error {
 			return e
 		}
 	}
+	// Remove only empty source directories, deepest first. Reserved history is untouched.
+	dirs := []string{}
+	e = filepath.WalkDir(stage, func(p string, d os.DirEntry, err error) error {
+		if err != nil {
+			return err
+		}
+		if p == stage {
+			return nil
+		}
+		rel, _ := filepath.Rel(stage, p)
+		if rel == ".commits" || rel == ".merge" {
+			return filepath.SkipDir
+		}
+		if d.IsDir() {
+			dirs = append(dirs, p)
+		}
+		return nil
+	})
+	if e != nil {
+		return e
+	}
+	for i := len(dirs) - 1; i >= 0; i-- {
+		if e := os.Remove(dirs[i]); e != nil {
+			return e
+		}
+	}
 	return writeFiles(stage, f)
 }
 func Restore(area, ref, commit string) (Result, error) {

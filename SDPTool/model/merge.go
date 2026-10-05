@@ -236,8 +236,28 @@ func Merge(area, source, target, newName string) (Result, error) {
 	if len(ta.Conflicts) > 0 || len(sa.Conflicts) > 0 {
 		return Result{}, fail("conflict", "resolve existing conflicts first")
 	}
+	// Validate shared identities before any ancestry-based fast path.
+	knownInput := map[string]Record{}
+	for _, r := range ta.Ledger {
+		r.Payload = ""
+		knownInput[r.ID] = r
+	}
+	for _, r := range sa.Ledger {
+		r.Payload = ""
+		if old, ok := knownInput[r.ID]; ok && !recordEqual(old, r) {
+			return Result{}, fail("integrity", "shared identity changed")
+		}
+	}
 	if ancestors(ta, ta.Head)[sa.Head] && Digest(sf) == sa.Digest && newName == "" {
 		return result("merge", tp, ta, tf), nil
+	}
+	if newName == "" && Digest(sf) != sa.Digest {
+		reachable := ancestors(ta, ta.Head)
+		for _, r := range ta.Ledger {
+			if r.Origin == sa.ID && r.Digest == Digest(sf) && reachable[r.ID] {
+				return result("merge", tp, ta, tf), nil
+			}
+		}
 	}
 	base, e := mergeBase(tp, ta, sp, sa)
 	if e != nil {
@@ -304,9 +324,22 @@ func Merge(area, source, target, newName string) (Result, error) {
 			return e
 		}
 		if Digest(sf) != sa.Digest {
-			if e := addCommit(ad, &sa, sf, "captured merge input", "checkpoint", nil); e != nil {
+			captureID := uuid()
+			payload := ".commits/capture-" + captureID
+			r := newRecord(captureID+":00000", "checkpoint", "captured merge input", []string{sa.Head}, sf, payload)
+			r.Origin = sa.ID
+			if e := os.MkdirAll(filepath.Join(ad, payload, "files"), 0700); e != nil {
 				return e
 			}
+			if e := writeFiles(filepath.Join(ad, payload, "files"), sf); e != nil {
+				return e
+			}
+			if e := writeY(filepath.Join(ad, payload, "commit.yaml"), r); e != nil {
+				return e
+			}
+			sa.Ledger = append(sa.Ledger, r)
+			sa.Head = r.ID
+			sa.Digest = r.Digest
 		}
 		known := map[string]Record{}
 		for _, r := range ta.Ledger {

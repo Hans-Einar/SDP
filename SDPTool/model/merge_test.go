@@ -122,3 +122,30 @@ func TestMergeThreeGenerations(t *testing.T) {
 		}
 	}
 }
+
+func TestDirtyCaptureDoesNotAliasFutureSourceCommit(t *testing.T) {
+	area := t.TempDir()
+	releaseFixture(t, area)
+	a, e := CreateWork(area, "A", "", false)
+	must(t, e)
+	b, e := CreateWork(area, "B", "", false)
+	must(t, e)
+	must(t, os.WriteFile(filepath.Join(b.Path, "b.txt"), []byte("B"), 0600))
+	first, e := Merge(area, "work:B", "work:A", "")
+	must(t, e)
+	again, e := Merge(area, "work:B", "work:A", "")
+	must(t, e)
+	if again.Artifact.Head != first.Artifact.Head {
+		t.Fatal("duplicate dirty integration")
+	}
+	must(t, os.WriteFile(filepath.Join(b.Path, "b.txt"), []byte("NEW"), 0600))
+	_, e = Commit(area, "work:B", "real source commit", false)
+	must(t, e)
+	r, e := Merge(area, "work:B", "work:A", "")
+	must(t, e)
+	data, e := os.ReadFile(filepath.Join(a.Path, "b.txt"))
+	must(t, e)
+	if r.Status != "conflicted" && string(data) != "NEW" {
+		t.Fatal("silently skipped new source commit")
+	}
+}

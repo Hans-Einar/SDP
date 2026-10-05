@@ -8,7 +8,6 @@ import (
 	"encoding/binary"
 	"encoding/hex"
 	"encoding/json"
-	"errors"
 	"fmt"
 	"gopkg.in/yaml.v3"
 	"io"
@@ -29,6 +28,7 @@ const operations = ".model-operations"
 
 type Files map[string][]byte
 type Record struct {
+	Origin    string            `yaml:"origin,omitempty" json:"origin,omitempty"`
 	ID        string            `yaml:"id" json:"id"`
 	Parents   []string          `yaml:"parents" json:"parents"`
 	Kind      string            `yaml:"kind" json:"kind"`
@@ -92,6 +92,7 @@ func uuid() string {
 var uuidRE = regexp.MustCompile(`^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$`)
 var hashRE = regexp.MustCompile(`^[0-9a-f]{64}$`)
 var nameRE = regexp.MustCompile(`^[A-Za-z0-9][A-Za-z0-9_-]{0,79}$`)
+var recordRE = regexp.MustCompile(`^([0-9a-f-]{36}):([0-9]{5,})$`)
 var versionRE = regexp.MustCompile(`^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$`)
 
 func validName(s string) bool {
@@ -220,8 +221,29 @@ func validate(a Artifact) error {
 		if _, ok := records[r.ID]; ok {
 			return fail("integrity", "duplicate ledger ID")
 		}
-		if !hashRE.MatchString(r.Digest) || r.ID == "" {
+		parts := recordRE.FindStringSubmatch(r.ID)
+		if !hashRE.MatchString(r.Digest) || len(parts) != 3 || !uuidRE.MatchString(parts[1]) {
 			return fail("integrity", "invalid commit")
+		}
+		switch r.Kind {
+		case "baseline", "checkpoint", "restore", "commit", "merge", "proposal", "candidate", "release":
+		default:
+			return fail("schema", "invalid record kind")
+		}
+		if strings.TrimSpace(r.Message) == "" {
+			return fail("schema", "empty record message")
+		}
+		if r.Origin != "" && (!uuidRE.MatchString(r.Origin) || r.Kind != "checkpoint" || parts[2] != "00000") {
+			return fail("schema", "invalid capture origin")
+		}
+		if (r.Kind == "commit" || r.Kind == "restore" || r.Kind == "checkpoint" || r.Kind == "proposal" || r.Kind == "candidate" || r.Kind == "release") && len(r.Parents) != 1 {
+			return fail("schema", "record requires one parent")
+		}
+		if r.Kind == "merge" && len(r.Parents) < 2 {
+			return fail("schema", "merge requires parents")
+		}
+		if r.Kind == "baseline" && (len(r.Parents) > 1 || parts[2] != "00000") {
+			return fail("schema", "invalid baseline")
 		}
 		if _, e := time.Parse(time.RFC3339Nano, r.At); e != nil {
 			return fail("schema", "invalid time")
@@ -274,8 +296,45 @@ func validate(a Artifact) error {
 			return e
 		}
 	}
+	if a.Sequence < 0 || a.Sequence >= maxFiles || a.Head != fmt.Sprintf("%s:%05d", a.ID, a.Sequence) {
+		return fail("schema", "head/counter mismatch")
+	}
+	for i := 0; i <= a.Sequence; i++ {
+		if _, ok := records[fmt.Sprintf("%s:%05d", a.ID, i)]; !ok {
+			return fail("schema", "missing local sequence")
+		}
+	}
+	for _, id := range []string{a.BaseRelease, a.Predecessor} {
+		if id != "" {
+			r, ok := records[id+":00000"]
+			if !uuidRE.MatchString(id) || !ok || r.Kind != "release" {
+				return fail("schema", "invalid release ancestry")
+			}
+		}
+	}
+	if a.Predecessor != "" && (a.Kind != "release" || a.Predecessor != a.BaseRelease) {
+		return fail("schema", "invalid predecessor")
+	}
+	if a.Kind != "work" && (a.Sequence != 0 || len(a.Conflicts) != 0 || len(a.PendingParents) != 0 || len(a.Validation) == 0) {
+		return fail("schema", "invalid frozen state")
+	}
+	if (len(a.Conflicts) == 0) != (len(a.PendingParents) == 0) {
+		return fail("schema", "incomplete conflict state")
+	}
+	for _, id := range a.PendingParents {
+		if _, ok := records[id]; !ok {
+			return fail("schema", "missing pending parent")
+		}
+	}
+	conflictPaths := map[string]bool{}
+	for _, c := range a.Conflicts {
+		if !safePath(c.Path) || conflictPaths[c.Path] {
+			return fail("schema", "invalid conflict path")
+		}
+		conflictPaths[c.Path] = true
+	}
 	r, ok := records[a.Head]
-	if !ok || r.Digest != a.Digest {
+	if !ok || r.Digest != a.Digest || (a.Kind != "work" && r.Kind != a.Kind) {
 		return fail("integrity", "head mismatch")
 	}
 	return nil
@@ -290,12 +349,18 @@ func readArtifact(dir string) (Artifact, error) {
 	if !st.IsDir() || st.Mode()&os.ModeSymlink != 0 {
 		return a, fail("path", "artifact must be a real directory")
 	}
-	b, e := os.ReadFile(filepath.Join(dir, metadataName(dir)))
+	b, e := readMetadata(filepath.Join(dir, metadataName(dir)))
 	if e != nil {
 		return a, e
 	}
 	if e = strict(b, &a); e != nil {
 		return a, e
+	}
+	if !uuidRE.MatchString(a.ID) {
+		return a, fail("schema", "invalid ID")
+	}
+	if artifactDir(a) != filepath.Base(dir) {
+		return a, fail("schema", "artifact directory/identity mismatch")
 	}
 	return a, validate(a)
 }
@@ -464,4 +529,13 @@ func newRecord(id, kind, message string, parents []string, f Files, payload stri
 }
 func textual(b []byte) bool { return utf8.Valid(b) && !bytes.ContainsRune(b, 0) }
 
-var _ = errors.New
+func readMetadata(p string) ([]byte, error) {
+	st, e := os.Lstat(p)
+	if e != nil {
+		return nil, e
+	}
+	if !st.Mode().IsRegular() || st.Size() > maxMetadata {
+		return nil, fail("path", "metadata must be a bounded regular file")
+	}
+	return os.ReadFile(p)
+}

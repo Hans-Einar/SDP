@@ -45,13 +45,18 @@ func TestInterruptedProcesses(t *testing.T) {
 				os.Exit(71)
 			}
 		}
-		_, e := Commit(root, "work:A", "child", false)
+		var e error
+		if os.Getenv("MGI_TEST_RESTORE") == "1" {
+			_, e = Restore(root, "work:A", "00000")
+		} else {
+			_, e = Commit(root, "work:A", "child", false)
+		}
 		if e != nil {
 			os.Exit(72)
 		}
 		os.Exit(73)
 	}
-	for _, phase := range []string{"prepared", "backup", "installed"} {
+	for _, phase := range []string{"building", "prepared", "backup", "installed"} {
 		t.Run(phase, func(t *testing.T) {
 			area := t.TempDir()
 			p := initial(t, area, "A")
@@ -70,11 +75,15 @@ func TestInterruptedProcesses(t *testing.T) {
 			if _, e = CreateWork(area, "Blocked", "", true); e == nil {
 				t.Fatal("pending ignored")
 			}
-			_, e = Recover(area, ts[0].ID, "resume")
+			action := "resume"
+			if phase == "building" {
+				action = "abort"
+			}
+			_, e = Recover(area, ts[0].ID, action)
 			must(t, e)
 			r, e := Status(area, "work:A")
 			must(t, e)
-			if r.Artifact.Sequence != 1 || r.Status != "clean" {
+			if phase != "building" && (r.Artifact.Sequence != 1 || r.Status != "clean") {
 				t.Fatal(r)
 			}
 			b, e := os.ReadFile(filepath.Join(p, "change"))
@@ -129,4 +138,44 @@ func TestRestoreMissingPayload(t *testing.T) {
 	if _, e = reconstruct(p, *r.Artifact, r.Artifact.Head); e == nil {
 		t.Fatal("missing empty file accepted")
 	}
+}
+
+func TestRestoreFileDirectoryTransitions(t *testing.T) {
+	area := t.TempDir()
+	p := initial(t, area, "A")
+	must(t, os.WriteFile(filepath.Join(p, "x"), []byte("file"), 0600))
+	_, e := Commit(area, "work:A", "file", false)
+	must(t, e)
+	must(t, os.Remove(filepath.Join(p, "x")))
+	must(t, os.Mkdir(filepath.Join(p, "x"), 0700))
+	must(t, os.WriteFile(filepath.Join(p, "x/y"), []byte("child"), 0600))
+	_, e = Commit(area, "work:A", "directory", false)
+	must(t, e)
+	_, e = Restore(area, "work:A", "00001")
+	must(t, e)
+	_, e = Restore(area, "work:A", "00002")
+	must(t, e)
+	b, e := os.ReadFile(filepath.Join(p, "x/y"))
+	must(t, e)
+	if string(b) != "child" {
+		t.Fatal("wrong restore")
+	}
+}
+
+func TestCrossProcessWriter(t *testing.T) {
+	if root := os.Getenv("MGI_LOCK_TEST"); root != "" {
+		_, e := CreateWork(root, "A", "", true)
+		if e == nil {
+			os.Exit(9)
+		}
+		os.Exit(0)
+	}
+	area := t.TempDir()
+	unlock, e := lockArea(area)
+	must(t, e)
+	cmd := exec.Command(os.Args[0], "-test.run=^TestCrossProcessWriter$")
+	cmd.Env = append(os.Environ(), "MGI_LOCK_TEST="+area)
+	must(t, cmd.Run())
+	unlock()
+	initial(t, area, "A")
 }

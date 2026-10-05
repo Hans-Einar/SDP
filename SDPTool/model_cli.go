@@ -60,7 +60,42 @@ func modelCommand(area string, args []string, out, errs io.Writer, jsonMode bool
 			return bad()
 		}
 		if target[0] != "work" {
-			return bad()
+			if len(args) < 4 || args[2] != "from" {
+				return bad()
+			}
+			evidence := ""
+			code := ""
+			checks := ""
+			if (len(args)-4)%2 != 0 {
+				return bad()
+			}
+			seen := map[string]bool{}
+			for i := 4; i < len(args); i += 2 {
+				if seen[args[i]] {
+					return bad()
+				}
+				seen[args[i]] = true
+				switch args[i] {
+				case "--evidence":
+					evidence = args[i+1]
+				case "--code-digest":
+					code = args[i+1]
+				case "--checks":
+					checks = args[i+1]
+				default:
+					return bad()
+				}
+			}
+			if evidence == "verified" {
+				if code == "" || checks == "" {
+					return bad()
+				}
+				evidence = "verified:" + code + ":" + checks
+			} else if code != "" || checks != "" {
+				return bad()
+			}
+			r, e = model.Freeze(area, target[0], target[1], args[3], evidence)
+			break
 		}
 		initial := false
 		from := ""
