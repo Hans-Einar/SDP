@@ -56,7 +56,7 @@ func TestInterruptedProcesses(t *testing.T) {
 		}
 		os.Exit(73)
 	}
-	for _, phase := range []string{"building", "prepared", "backup", "installed"} {
+	for _, phase := range []string{"building", "payload", "prepared", "backup", "installed"} {
 		t.Run(phase, func(t *testing.T) {
 			area := t.TempDir()
 			p := initial(t, area, "A")
@@ -76,14 +76,14 @@ func TestInterruptedProcesses(t *testing.T) {
 				t.Fatal("pending ignored")
 			}
 			action := "resume"
-			if phase == "building" {
+			if phase == "building" || phase == "payload" {
 				action = "abort"
 			}
 			_, e = Recover(area, ts[0].ID, action)
 			must(t, e)
 			r, e := Status(area, "work:A")
 			must(t, e)
-			if phase != "building" && (r.Artifact.Sequence != 1 || r.Status != "clean") {
+			if phase != "building" && phase != "payload" && (r.Artifact.Sequence != 1 || r.Status != "clean") {
 				t.Fatal(r)
 			}
 			b, e := os.ReadFile(filepath.Join(p, "change"))
@@ -203,4 +203,64 @@ func TestUnrecordedStageAbort(t *testing.T) {
 	}
 	_, e = CreateWork(area, "B", "", true)
 	must(t, e)
+}
+
+func TestDirtyRestoreInterruptedProcesses(t *testing.T) {
+	for _, phase := range []string{"unrecorded", "building", "payload", "prepared", "backup", "installed"} {
+		t.Run(phase, func(t *testing.T) {
+			area := t.TempDir()
+			p := initial(t, area, "A")
+			must(t, os.WriteFile(filepath.Join(p, "dirty.txt"), []byte("keep me"), 0600))
+			cmd := exec.Command(os.Args[0], "-test.run=^TestInterruptedProcesses$")
+			cmd.Env = append(os.Environ(), "MGI_TEST_AREA="+area, "MGI_TEST_PHASE="+phase, "MGI_TEST_RESTORE=1")
+			err := cmd.Run()
+			if x, ok := err.(*exec.ExitError); !ok || x.ExitCode() != 71 {
+				t.Fatalf("child %v", err)
+			}
+			id := ""
+			action := "resume"
+			if phase == "unrecorded" {
+				ds, e := os.ReadDir(filepath.Join(area, operations))
+				must(t, e)
+				for _, d := range ds {
+					if d.IsDir() {
+						if _, e = os.Stat(filepath.Join(area, operations, d.Name(), "journal.yaml")); os.IsNotExist(e) {
+							id = d.Name()
+						}
+					}
+				}
+				action = "abort"
+			} else {
+				ts, e := journals(area)
+				must(t, e)
+				if len(ts) != 1 {
+					t.Fatal(ts)
+				}
+				id = ts[0].ID
+				if phase == "building" || phase == "payload" {
+					action = "abort"
+				}
+			}
+			_, e := Recover(area, id, action)
+			must(t, e)
+			r, e := Status(area, "work:A")
+			must(t, e)
+			if action == "abort" {
+				b, e := os.ReadFile(filepath.Join(p, "dirty.txt"))
+				must(t, e)
+				if string(b) != "keep me" {
+					t.Fatal("dirty lost")
+				}
+			} else {
+				if r.Artifact.Sequence != 2 || r.Status != "clean" {
+					t.Fatal(r)
+				}
+				f, e := reconstruct(p, *r.Artifact, r.Artifact.ID+":00001")
+				must(t, e)
+				if string(f["dirty.txt"]) != "keep me" {
+					t.Fatal("checkpoint lost")
+				}
+			}
+		})
+	}
 }

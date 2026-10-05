@@ -168,7 +168,7 @@ func ancestors(a Artifact, head string) map[string]bool {
 	walk(head)
 	return seen
 }
-func mergeBase(ap string, a Artifact, bp string, b Artifact) (Files, error) {
+func mergeBase(ap string, a Artifact, bp string, b Artifact) (Files, string, error) {
 	aa := ancestors(a, a.Head)
 	bb := ancestors(b, b.Head)
 	candidates := []Record{}
@@ -191,7 +191,7 @@ func mergeBase(ap string, a Artifact, bp string, b Artifact) (Files, error) {
 		}
 	}
 	if len(best) != 1 {
-		return nil, fail("merge-base", fmt.Sprintf("expected one common ancestor, got %d", len(best)))
+		return nil, "", fail("merge-base", fmt.Sprintf("expected one common ancestor, got %d", len(best)))
 	}
 	for i, art := range []Artifact{a, b} {
 		dir := []string{ap, bp}[i]
@@ -199,12 +199,12 @@ func mergeBase(ap string, a Artifact, bp string, b Artifact) (Files, error) {
 			if r.Digest == best[0].Digest && r.Payload != "" {
 				f, e := reconstruct(dir, art, r.ID)
 				if e == nil {
-					return f, nil
+					return f, best[0].ID, nil
 				}
 			}
 		}
 	}
-	return nil, fail("history", "common ancestor payload unavailable")
+	return nil, "", fail("history", "common ancestor payload unavailable")
 }
 func Merge(area, source, target, newName string) (Result, error) {
 	unlock, e := begin(area)
@@ -223,11 +223,11 @@ func Merge(area, source, target, newName string) (Result, error) {
 	if sp == tp {
 		return Result{}, fail("arguments", "cannot merge artifact into itself")
 	}
-	sa, sf, e := capture(sp)
+	sa, sf, sourceExpected, e := captureForWrite(sp)
 	if e != nil {
 		return Result{}, e
 	}
-	ta, tf, e := capture(tp)
+	ta, tf, expected, e := captureForWrite(tp)
 	if e != nil {
 		return Result{}, e
 	}
@@ -260,19 +260,11 @@ func Merge(area, source, target, newName string) (Result, error) {
 			}
 		}
 	}
-	base, e := mergeBase(tp, ta, sp, sa)
+	base, baseID, e := mergeBase(tp, ta, sp, sa)
 	if e != nil {
 		return Result{}, e
 	}
 	merged, conflicts := mergeFiles(base, tf, sf)
-	expected, e := treeDigest(tp)
-	if e != nil {
-		return Result{}, e
-	}
-	sourceExpected, e := treeDigest(sp)
-	if e != nil {
-		return Result{}, e
-	}
 	dest := filepath.Base(tp)
 	if newName != "" {
 		if !validName(newName) {
@@ -329,6 +321,7 @@ func Merge(area, source, target, newName string) (Result, error) {
 			payload := ".commits/capture-" + captureID
 			r := newRecord(captureID+":00000", "checkpoint", "captured merge input", []string{sa.Head}, sf, payload)
 			r.Origin = sa.ID
+			r.ArtifactName = sa.Name
 			if e := os.MkdirAll(filepath.Join(ad, payload, "files"), 0700); e != nil {
 				return e
 			}
@@ -372,11 +365,12 @@ func Merge(area, source, target, newName string) (Result, error) {
 		if len(conflicts) > 0 {
 			ta.Conflicts = conflicts
 			ta.PendingParents = []string{sa.Head}
+			ta.PendingBase = baseID
 			if e := saveArtifact(stage, ta); e != nil {
 				return e
 			}
 		} else {
-			if e := addCommit(stage, &ta, merged, "merge "+source, "merge", []string{sa.Head}); e != nil {
+			if e := addCommit(stage, &ta, merged, "merge "+source, "merge", []string{sa.Head}, baseID); e != nil {
 				return e
 			}
 		}

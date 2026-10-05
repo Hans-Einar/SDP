@@ -12,6 +12,7 @@ import (
 	"gopkg.in/yaml.v3"
 	"io"
 	"os"
+	"os/user"
 	"path/filepath"
 	"regexp"
 	"sort"
@@ -28,16 +29,20 @@ const operations = ".model-operations"
 
 type Files map[string][]byte
 type Record struct {
-	Origin    string            `yaml:"origin,omitempty" json:"origin,omitempty"`
-	ID        string            `yaml:"id" json:"id"`
-	Parents   []string          `yaml:"parents" json:"parents"`
-	Kind      string            `yaml:"kind" json:"kind"`
-	Message   string            `yaml:"message" json:"message"`
-	At        string            `yaml:"recordedAt" json:"recordedAt"`
-	Digest    string            `yaml:"sourceDigest" json:"sourceDigest"`
-	Inventory map[string]string `yaml:"inventory" json:"inventory"`
-	Deleted   []string          `yaml:"deleted" json:"deleted"`
-	Payload   string            `yaml:"payload,omitempty" json:"payload,omitempty"`
+	Author       string            `yaml:"author" json:"author"`
+	ArtifactName string            `yaml:"artifactName" json:"artifactName"`
+	MergeBase    string            `yaml:"mergeBase,omitempty" json:"mergeBase,omitempty"`
+	RestoredFrom string            `yaml:"restoredFrom,omitempty" json:"restoredFrom,omitempty"`
+	Origin       string            `yaml:"origin,omitempty" json:"origin,omitempty"`
+	ID           string            `yaml:"id" json:"id"`
+	Parents      []string          `yaml:"parents" json:"parents"`
+	Kind         string            `yaml:"kind" json:"kind"`
+	Message      string            `yaml:"message" json:"message"`
+	At           string            `yaml:"recordedAt" json:"recordedAt"`
+	Digest       string            `yaml:"sourceDigest" json:"sourceDigest"`
+	Inventory    map[string]string `yaml:"inventory" json:"inventory"`
+	Deleted      []string          `yaml:"deleted" json:"deleted"`
+	Payload      string            `yaml:"payload,omitempty" json:"payload,omitempty"`
 }
 type Conflict struct {
 	Encoding string  `yaml:"encoding" json:"encoding"`
@@ -47,6 +52,8 @@ type Conflict struct {
 	Theirs   *string `yaml:"theirs" json:"theirs"`
 }
 type Artifact struct {
+	AcceptedBy     string     `yaml:"acceptedBy,omitempty" json:"acceptedBy,omitempty"`
+	PendingBase    string     `yaml:"pendingBase,omitempty" json:"pendingBase,omitempty"`
 	Schema         string     `yaml:"schema" json:"schema"`
 	ID             string     `yaml:"id" json:"id"`
 	Kind           string     `yaml:"kind" json:"kind"`
@@ -231,7 +238,7 @@ func validate(a Artifact) error {
 		default:
 			return fail("schema", "invalid record kind")
 		}
-		if strings.TrimSpace(r.Message) == "" {
+		if strings.TrimSpace(r.Author) == "" || strings.TrimSpace(r.ArtifactName) == "" || strings.TrimSpace(r.Message) == "" {
 			return fail("schema", "empty record message")
 		}
 		if r.Origin != "" && (!uuidRE.MatchString(r.Origin) || r.Kind != "checkpoint" || parts[2] != "00000") {
@@ -292,6 +299,15 @@ func validate(a Artifact) error {
 		state[id] = 2
 		return nil
 	}
+	for _, r := range records {
+		for _, id := range []string{r.MergeBase, r.RestoredFrom} {
+			if id != "" {
+				if _, ok := records[id]; !ok {
+					return fail("schema", "missing provenance reference")
+				}
+			}
+		}
+	}
 	for id := range records {
 		if e := visit(id, 0); e != nil {
 			return e
@@ -312,6 +328,9 @@ func validate(a Artifact) error {
 				return fail("schema", "invalid release ancestry")
 			}
 		}
+	}
+	if a.Kind == "release" && strings.TrimSpace(a.AcceptedBy) == "" {
+		return fail("schema", "release lacks acceptance attribution")
 	}
 	if a.Predecessor != "" && (a.Kind != "release" || a.Predecessor != a.BaseRelease) {
 		return fail("schema", "invalid predecessor")
@@ -402,6 +421,16 @@ func scan(dir string, exclude bool) (Files, error) {
 		if d.Type()&os.ModeSymlink != 0 {
 			return fail("path", "symlink: "+rel)
 		}
+		if exclude {
+			for _, reserved := range []string{".commits", ".merge", metadataName(dir)} {
+				if strings.EqualFold(rel, reserved) && rel != reserved {
+					return fail("path", "reserved name case collision")
+				}
+			}
+			if strings.EqualFold(rel, operations) || strings.EqualFold(rel, ".git") {
+				return fail("path", "reserved source directory")
+			}
+		}
 		if exclude && (rel == ".commits" || rel == ".merge") {
 			if !d.IsDir() {
 				return fail("path", "history must be directory")
@@ -477,6 +506,13 @@ func capture(dir string) (Artifact, Files, error) {
 	if Digest(f) != Digest(g) || a.MetadataDigest != again.MetadataDigest {
 		return a, nil, fail("stale", "source changed during capture")
 	}
+	if a.Kind != "work" {
+		for _, reserved := range []string{".commits", ".merge"} {
+			if _, err := os.Lstat(filepath.Join(dir, reserved)); !os.IsNotExist(err) {
+				return a, nil, fail("integrity", "frozen artifact contains history")
+			}
+		}
+	}
 	if a.Kind != "work" && Digest(f) != a.Digest {
 		return a, nil, fail("integrity", "frozen content changed")
 	}
@@ -533,7 +569,7 @@ func Status(area, ref string) (Result, error) {
 }
 func now() string { return time.Now().UTC().Format(time.RFC3339Nano) }
 func newRecord(id, kind, message string, parents []string, f Files, payload string) Record {
-	return Record{ID: id, Kind: kind, Message: message, Parents: parents, At: now(), Digest: Digest(f), Inventory: inventory(f), Payload: payload}
+	return Record{Author: actor(), ID: id, Kind: kind, Message: message, Parents: parents, At: now(), Digest: Digest(f), Inventory: inventory(f), Payload: payload}
 }
 func textual(b []byte) bool { return utf8.Valid(b) && !bytes.ContainsRune(b, 0) }
 
@@ -546,4 +582,31 @@ func readMetadata(p string) ([]byte, error) {
 		return nil, fail("path", "metadata must be a bounded regular file")
 	}
 	return os.ReadFile(p)
+}
+
+// Bind the optimistic publication precondition to the same bytes that were read.
+func captureForWrite(dir string) (Artifact, Files, string, error) {
+	before, e := treeDigest(dir)
+	if e != nil {
+		return Artifact{}, nil, "", e
+	}
+	a, f, e := capture(dir)
+	if e != nil {
+		return a, nil, "", e
+	}
+	after, e := treeDigest(dir)
+	if e != nil {
+		return a, nil, "", e
+	}
+	if before != after {
+		return a, nil, "", fail("stale", "artifact changed during read")
+	}
+	return a, f, before, nil
+}
+
+func actor() string {
+	if u, e := user.Current(); e == nil && u.Username != "" {
+		return u.Username
+	}
+	return "unknown-local-user"
 }

@@ -160,7 +160,7 @@ func Freeze(area, kind, name, ref, evidence string) (Result, error) {
 	if e != nil {
 		return Result{}, e
 	}
-	source, f, e := capture(p)
+	source, f, expected, e := captureForWrite(p)
 	if e != nil {
 		return Result{}, e
 	}
@@ -179,6 +179,7 @@ func Freeze(area, kind, name, ref, evidence string) (Result, error) {
 	}
 	a := Artifact{Schema: Schema, ID: uuid(), Kind: kind, Name: name, BaseRelease: source.BaseRelease, Ledger: strip(source.Ledger), Digest: Digest(f), Validation: targets, Evidence: evidence}
 	if kind == "release" {
+		a.AcceptedBy = actor()
 		if evidence != "model-only" {
 			parts := strings.SplitN(evidence, ":", 3)
 			if len(parts) != 3 || parts[0] != "verified" || !hashRE.MatchString(parts[1]) || strings.TrimSpace(parts[2]) == "" {
@@ -211,12 +212,9 @@ func Freeze(area, kind, name, ref, evidence string) (Result, error) {
 		}
 	}
 	r := newRecord(a.ID+":00000", kind, "create "+kind, []string{source.Head}, f, "")
+	r.ArtifactName = a.Name
 	a.Head = r.ID
 	a.Ledger = append(a.Ledger, r)
-	expected, e := treeDigest(p)
-	if e != nil {
-		return Result{}, e
-	}
 	target := artifactDir(a)
 	_, e = publish(area, target, "", "", func(stage string) error {
 		if e := writeFiles(stage, f); e != nil {

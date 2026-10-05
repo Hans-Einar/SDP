@@ -171,3 +171,11 @@ operation. Add an adapter to the registry for a new result; unknown routes remai
 JSON. Human presentation does not change generated Markdown/SVG bundles.
 See [output contract](Contract.md#output-presentation) and
 [rollout requirements](../SDP/05--Implementation/SDPTool/Output/Plan.md).
+
+## Bounded model governance
+
+`sdptool [MODEL-AREA] model help` exposes local WORK, commit/restore, integration,
+proposal/candidate/release and preliminary snapshots. No Git repository or SDP
+installation is required. Read the [model workflow and limits](model/README.md).
+Model releases are distinct from SDP tool releases; this does not generate semantic
+blueprints or authenticate implementation acceptance.

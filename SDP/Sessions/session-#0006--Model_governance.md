@@ -161,6 +161,8 @@ MGI4-M1: Frozen candidate/proposal CLI now validates real SDL source graphs and 
 
 MGI4-M2: Release promotion requires candidate validation and explicit model-only or verified evidence attribution. Default WORK resolves the unique accepted head; stale and competing releases fail closed. Model tests pass including actual two-clone Git transport. Review fixes add abort of unjournaled staging and base64 conflict values with bounded YAML round-trip validation before publication.
 
+MGI5-M1: Artifact-aware discovery exposes kind, UUID and preliminary role, prunes only owned histories and transaction staging, and preserves ordinary projects. Read-only snapshot returns captured bytes/digest without a commit. Full SDPTool tests pass, including compiled no-Git CLI lifecycle with real SDL/SDUI validation and copied-area inspection. Provenance now includes local author/acceptor attribution, original names and merge/restore references.
+
 ## Closeout
 
 Open. Feature is not implemented. No merge to main, release or XFMD change performed.

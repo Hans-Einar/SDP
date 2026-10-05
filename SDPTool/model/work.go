@@ -47,6 +47,7 @@ func strip(ledger []Record) []Record {
 func saveBaseline(dir string, a *Artifact, f Files, message string, parents []string) error {
 	payload := fmt.Sprintf(".commits/#%05d", a.Sequence)
 	r := newRecord(fmt.Sprintf("%s:%05d", a.ID, a.Sequence), "baseline", message, parents, f, payload)
+	r.ArtifactName = a.Name
 	if e := writeFiles(filepath.Join(dir, payload, "files"), f); e != nil {
 		return e
 	}
@@ -174,7 +175,7 @@ func reconstruct(dir string, a Artifact, id string) (Files, error) {
 	}
 	return rec(id, 0)
 }
-func addCommit(stage string, a *Artifact, f Files, message, kind string, extra []string) error {
+func addCommit(stage string, a *Artifact, f Files, message, kind string, extra []string, provenance ...string) error {
 	old, e := reconstruct(stage, *a, a.Head)
 	if e != nil {
 		return e
@@ -182,6 +183,14 @@ func addCommit(stage string, a *Artifact, f Files, message, kind string, extra [
 	a.Sequence++
 	payload := fmt.Sprintf(".commits/#%05d", a.Sequence)
 	r := newRecord(fmt.Sprintf("%s:%05d", a.ID, a.Sequence), kind, message, append([]string{a.Head}, extra...), f, payload)
+	r.ArtifactName = a.Name
+	if len(provenance) > 0 {
+		if kind == "restore" {
+			r.RestoredFrom = provenance[0]
+		} else if kind == "merge" {
+			r.MergeBase = provenance[0]
+		}
+	}
 	changed := Files{}
 	for p, b := range f {
 		if kind == "checkpoint" || kind == "restore" || hash(b) != hash(old[p]) || old[p] == nil {
@@ -200,6 +209,7 @@ func addCommit(stage string, a *Artifact, f Files, message, kind string, extra [
 	if e = writeFiles(filepath.Join(stage, payload, "files"), changed); e != nil {
 		return e
 	}
+	fault("payload")
 	if e = writeY(filepath.Join(stage, payload, "commit.yaml"), r); e != nil {
 		return e
 	}
@@ -221,7 +231,7 @@ func Commit(area, ref, message string, resolved bool) (Result, error) {
 	if e != nil {
 		return Result{}, e
 	}
-	a, f, e := capture(p)
+	a, f, expected, e := captureForWrite(p)
 	if e != nil {
 		return Result{}, e
 	}
@@ -244,19 +254,17 @@ func Commit(area, ref, message string, resolved bool) (Result, error) {
 	if Digest(f) == a.Digest && len(a.PendingParents) == 0 {
 		return result("commit", p, a, f), nil
 	}
-	expected, e := treeDigest(p)
-	if e != nil {
-		return Result{}, e
-	}
 	_, e = publish(area, filepath.Base(p), p, expected, func(stage string) error {
 		extra := a.PendingParents
+		base := a.PendingBase
+		a.PendingBase = ""
 		a.PendingParents = nil
 		a.Conflicts = nil
 		kind := "commit"
 		if len(extra) > 0 {
 			kind = "merge"
 		}
-		return addCommit(stage, &a, f, message, kind, extra)
+		return addCommit(stage, &a, f, message, kind, extra, base)
 	})
 	if e != nil {
 		return Result{}, e
@@ -313,7 +321,7 @@ func Restore(area, ref, commit string) (Result, error) {
 	if e != nil {
 		return Result{}, e
 	}
-	a, dirty, e := capture(p)
+	a, dirty, expected, e := captureForWrite(p)
 	if e != nil {
 		return Result{}, e
 	}
@@ -328,10 +336,6 @@ func Restore(area, ref, commit string) (Result, error) {
 	if e != nil {
 		return Result{}, e
 	}
-	expected, e := treeDigest(p)
-	if e != nil {
-		return Result{}, e
-	}
 	_, e = publish(area, filepath.Base(p), p, expected, func(stage string) error {
 		if Digest(dirty) != a.Digest {
 			if e := addCommit(stage, &a, dirty, "preserve dirty state before restore", "checkpoint", nil); e != nil {
@@ -340,10 +344,11 @@ func Restore(area, ref, commit string) (Result, error) {
 		}
 		a.Conflicts = nil
 		a.PendingParents = nil
+		a.PendingBase = ""
 		if e := replaceSources(stage, target); e != nil {
 			return e
 		}
-		return addCommit(stage, &a, target, "restore "+id, "restore", nil)
+		return addCommit(stage, &a, target, "restore "+id, "restore", nil, id)
 	})
 	if e != nil {
 		return Result{}, e

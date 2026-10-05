@@ -2,6 +2,7 @@ package sdptool
 
 import (
 	"fmt"
+	"github.com/Hans-Einar/SDP/SDPTool/model"
 	"io/fs"
 	"os"
 	"path/filepath"
@@ -15,10 +16,13 @@ import (
 
 type SourceInfo struct {
 	Model
-	Kind       string `json:"kind"`
-	State      string `json:"state"`
-	Revision   string `json:"revision,omitempty"`
-	Diagnostic string `json:"diagnostic,omitempty"`
+	Kind         string `json:"kind"`
+	ArtifactKind string `json:"artifactKind,omitempty"`
+	ArtifactID   string `json:"artifactId,omitempty"`
+	Preliminary  bool   `json:"preliminary,omitempty"`
+	State        string `json:"state"`
+	Revision     string `json:"revision,omitempty"`
+	Diagnostic   string `json:"diagnostic,omitempty"`
 }
 
 // Path identity is stable across edits and distinct for equal basenames.
@@ -164,6 +168,7 @@ func (p *Project) scanArea() error {
 	p.Files = []Node{{ID: "files", Kind: "directory", Label: "SDP", State: "available"}}
 	positions := map[string]int{".": 0}
 	sources, total := 0, int64(0)
+	artifacts := map[string]*model.Artifact{}
 	return filepath.WalkDir(p.Area, func(path string, d fs.DirEntry, walkErr error) error {
 		if path == p.Area {
 			return walkErr
@@ -175,6 +180,14 @@ func (p *Project) scanArea() error {
 		rel = filepath.ToSlash(rel)
 		if d != nil && d.IsDir() && (d.Name() == ".git" || d.Name() == ".sdp-operations" || d.Name() == ".sdp-backups") {
 			return filepath.SkipDir
+		}
+		if d != nil && d.IsDir() {
+			if model.OperationArea(path) {
+				return filepath.SkipDir
+			}
+			if artifacts[filepath.Dir(path)] != nil && (d.Name() == ".commits" || d.Name() == ".merge") {
+				return filepath.SkipDir
+			}
 		}
 		// WalkDir reports an unreadable directory again after its initial visit.
 		// Amend the canonical node rather than publishing a duplicate identity.
@@ -203,6 +216,21 @@ func (p *Project) scanArea() error {
 		if d != nil && d.IsDir() {
 			n.Kind = "directory"
 			positions[rel] = len(p.Files)
+			artifact, err := model.Inspect(path)
+			if err != nil {
+				n.State = "invalid"
+				n.Diagnostic = err.Error()
+				n.Target = nil
+				p.Files[pos].Children = append(p.Files[pos].Children, id)
+				p.Files = append(p.Files, n)
+				return filepath.SkipDir
+			}
+			if artifact != nil {
+				artifacts[path] = artifact
+				n.ArtifactKind = artifact.Kind
+				n.ArtifactID = artifact.ID
+				n.Preliminary = artifact.Kind == "work"
+			}
 		}
 		if d != nil && d.Type()&os.ModeSymlink != 0 {
 			n.Kind = "symlink"
@@ -230,6 +258,17 @@ func (p *Project) scanArea() error {
 				}
 				sourceRel := "SDP/" + rel
 				info := inspectSource(sourceRel, path, b, err)
+				for parent := filepath.Dir(path); parent != p.Area && parent != filepath.Dir(parent); parent = filepath.Dir(parent) {
+					if a := artifacts[parent]; a != nil {
+						info.ArtifactKind = a.Kind
+						info.ArtifactID = a.ID
+						info.Preliminary = a.Kind == "work"
+						n.ArtifactKind = a.Kind
+						n.ArtifactID = a.ID
+						n.Preliminary = info.Preliminary
+						break
+					}
+				}
 				p.Sources = append(p.Sources, info)
 				n.State = info.State
 				n.Diagnostic = info.Diagnostic

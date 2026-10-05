@@ -75,3 +75,32 @@ func TestArtifactTamper(t *testing.T) {
 		t.Fatal("metadata tamper accepted")
 	}
 }
+
+func TestDomainSchemaRejectsMalformedLineage(t *testing.T) {
+	area := t.TempDir()
+	p := initial(t, area, "A")
+	original, e := readArtifact(p)
+	must(t, e)
+	cases := map[string]func(*Artifact){
+		"counter":          func(a *Artifact) { a.Sequence = 1000000000 },
+		"kind":             func(a *Artifact) { a.Ledger[0].Kind = "anything" },
+		"id":               func(a *Artifact) { a.Ledger[0].ID = "not-an-id" },
+		"cycle":            func(a *Artifact) { a.Ledger[0].Parents = []string{a.Head} },
+		"missing parent":   func(a *Artifact) { a.Ledger[0].Parents = []string{uuid() + ":00000"} },
+		"release ancestry": func(a *Artifact) { a.BaseRelease = uuid() },
+		"conflict state":   func(a *Artifact) { a.PendingParents = []string{a.Head} },
+		"author":           func(a *Artifact) { a.Ledger[0].Author = "" },
+		"path":             func(a *Artifact) { a.Ledger[0].Inventory = map[string]string{"../escape": hash(nil)} },
+	}
+	for name, modify := range cases {
+		t.Run(name, func(t *testing.T) {
+			a := original
+			a.Ledger = append([]Record(nil), original.Ledger...)
+			modify(&a)
+			a.MetadataDigest = metadataHash(a)
+			if e := validate(a); e == nil {
+				t.Fatal("malformed schema accepted")
+			}
+		})
+	}
+}

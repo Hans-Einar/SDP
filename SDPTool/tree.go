@@ -20,6 +20,9 @@ type Target struct {
 	Revision  string `json:"revision,omitempty"`
 }
 type Node struct {
+	ArtifactKind      string   `json:"artifactKind,omitempty"`
+	ArtifactID        string   `json:"artifactId,omitempty"`
+	Preliminary       bool     `json:"preliminary,omitempty"`
 	Diagnostic        string   `json:"diagnostic,omitempty"`
 	ID                string   `json:"id"`
 	Kind              string   `json:"kind"`

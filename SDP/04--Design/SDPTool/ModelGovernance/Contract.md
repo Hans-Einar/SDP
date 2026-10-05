@@ -1,8 +1,9 @@
 # MG2 — bounded model artifact contract
 
-Design candidate 0.1, 2026-10-03. This specifies the first implementation target;
-it is not an installed/public schema. Owner-selected scope is in [Study](Study.md).
-MG3 will challenge storage assumptions before the ImplementationPlan is finalized.
+Implemented contract 0.1, reconciled 2026-10-05 under PLAN-SDP-0019.
+Owner-selected scope is in [Study](Study.md). See the [runtime contract](../../../../SDPTool/model/README.md)
+for exact schema, limits, recovery commands and platform boundaries. This branch
+delivery does not imply a published SDP release.
 
 ## 1. Commands and context
 
@@ -15,12 +16,14 @@ sdptool model restore work:NAME to commit:00003
 sdptool model merge work:A into work:B
 sdptool model create proposal:NAME from work:A
 sdptool model create candidate:NAME from work:A
-sdptool model create release:VERSION from candidate:NAME
+sdptool model create release:VERSION from candidate:NAME --evidence model-only
+sdptool model snapshot work:NAME
+sdptool model recover OPERATION-UUID resume|abort
 sdptool model status work:NAME
 sdptool model history work:NAME
 ```
 
-These are not available commands. Proposed v1 exposes one explicit merge spelling;
+The implementation exposes one explicit merge spelling;
 context-relative pull is deferred, not an alias with different behavior. The release
 version in the typed target avoids two competing version arguments. Existing
 SDPTool project selection remains unchanged. Explicit paths may select an artifact
@@ -44,8 +47,7 @@ MAJOR.MINOR.PATCH in v1; automatic increment is deferred.
 
 WORK--NAME contains WORK--NAME.yaml, model sources, .commits and .merge.
 PROPOSAL/CANDIDATE directory names append the final four UUID hex characters;
-metadata holds the full UUID and human name. Generate another UUID if a new display
-path collides before publication. RELEASE--Vx.y.z is unique within the model area.
+metadata holds the full UUID and human name. Fail without overwriting if a display path collides before publication. RELEASE--Vx.y.z is unique within the model area.
 Its full UUID is metadata, not an extra name suffix. No existing artifact is replaced.
 The metadata file stem always matches its enclosing directory stem.
 
@@ -66,35 +68,21 @@ keys. Reject unknown fields for schema 0.1. Read limits and inventory limits mus
 explicit in implementation (proposed 128 MiB sources, 10000 source files, 16 MiB per
 metadata file); no partial success on overflow. No timestamps from filesystem mtime.
 
-Illustrative WORK root (identities/digests abbreviated here, not a valid fixture):
-
-```yaml
-schema: sdp-model/0.1
-id: <uuid>
-kind: work
-name: Fix-Navigation
-baseRelease: null
-initial: true
-head: <work-uuid>:00001
-sourceDigest: <sha256-of-last-committed-sources>
-validationTargets: []
-ledger:
-  commits:
-    - id: <work-uuid>:00000
-      record: .commits/#00000/commit.yaml
-    - id: <work-uuid>:00001
-      record: .commits/#00001/commit.yaml
-  origins: []
-```
+The executable schema is the typed Go structures and domain validator in
+SDPTool/model/records.go. WORK metadata has schema, UUID, kind, name, sequence,
+head, sourceDigest, metadataDigest, optional baseRelease, and an embedded ledger
+of complete records. Frozen artifacts add source-derived validationTargets;
+release adds evidence, acceptedBy and optional predecessor. Test-created artifacts
+are valid examples; there is no parallel hand-maintained registration schema.
 
 `sourceDigest` is committed state, not a promise that mutable WORK is clean. status
-reports liveDigest and dirty separately. Every commit record has schema, id, kind
-(baseline/commit/checkpoint/merge/restore), UTC recordedAt, recorded author identity,
-message, parents[], sourceDigest, files (path -> SHA-256), deleted[], and optional
+reports liveDigest and dirty separately. Every commit record has id, kind
+(baseline/commit/checkpoint/merge/restore), UTC recordedAt, recorded local author identity and original artifact name,
+message, parents[], sourceDigest, inventory (path -> SHA-256), deleted[], and optional
 restoredFrom/mergeBase. A commit ID uses the artifact UUID and a monotonically
 increasing local counter; restore never reuses sequence numbers. files contains
 full after-images stored under files/<relative-path>; baseline/checkpoint inventories
-are complete. Other commit inventories are changes from their first parent.
+are complete. Other commit payloads are changes from their first parent.
 Retain a full path/hash inventory for the resulting state as well for verification.
 
 Digest algorithm: SHA-256 over UTF-8 domain `SDP-model-sources/1` then NUL, followed
@@ -103,12 +91,12 @@ UTF-8 path bytes and its 32-byte SHA-256 content digest. Paths use forward slash
 are relative and preserve case; source bytes are exact (no newline normalization).
 Folders/modes/timestamps are not source content. Enforce portable normalized names;
 no alternate Unicode-normalization aliases in schema 0.1. Hash manifests separately
-from a deterministic sorted-key JSON encoding of their YAML data, omitting only
-metadataDigest itself. Parent links bind identity and metadata digest. Hashes detect
+from a deterministic sorted-key JSON encoding of their YAML data, setting
+metadataDigest to an empty string. Parent links bind IDs to full embedded records; shared IDs with unequal records are rejected. Hashes detect
 inconsistency; they do not authenticate an author or reviewer.
 
 Frozen metadata replaces live commit references with a retained metadata-only
-lineage graph and marks restorePayloadAvailable false. Each origin includes identity,
+lineage graph and removes all payload references. Each origin includes identity,
 original display name and source digest, not merely an absolute WORK path. Persist
 all transitive metadata needed to browse origins, once per identity. Duplicate ID
 with different immutable content is an error; lineage must be acyclic. Root schema
@@ -166,13 +154,12 @@ Record both merge parents, chosen base and input digests. Revalidate combined so
 
 ## 6. Validation, promotion and acceptance
 
-WORK tracks explicit validation targets (path + selected language profile), derived
-initially from supplied model entrypoints or source headers and reviewed at creation.
-They are validation inputs, not a navigation registry. Avoid treating included SDL
-fragments as independent complete models. A target change is recorded in metadata
-history. A nonempty candidate must have at least one target and no unresolved
-sources/validation errors. Empty initial WORK is allowed; frozen empty models are
-not a useful accepted release. v1 supports the current Go SDL/SDUI profiles only.
+Validation targets are derived from captured source headers and dependencies at
+promotion. The persisted list is a receipt, not a manually maintained registry.
+Included SDL fragments must be reachable from a source-defined root; independent
+roots are all checked. At least one supported SDL/SDUI entrypoint is required for
+a frozen artifact. Empty initial WORK is allowed. Invalid intermediate WORK can
+be committed for recovery but cannot be frozen.
 
 Create candidate/proposal from a consistent read; do not silently include uncommitted
 edits without reporting the captured digest. A frozen submission may retain captured
@@ -213,3 +200,13 @@ idempotence does not replace ancestry/event idempotence. The executable YAML sub
 is mg-probe/0.1 only; the full sdp-model/0.1 machine schema remains a production
 acceptance requirement. MG3 establishes one process-interruption boundary, not full
 transaction durability or concurrent-writer safety. No new public command is shipped.
+
+## MGI implementation refinement — 2026-10-05
+
+Use `commit --resolved` to finalize a conflict after editing its live sources.
+Conflict versions use base64 encoding so binary data remains readable under the
+restricted YAML profile. Oversized metadata is rejected before publication.
+Dirty-source capture IDs are operation-qualified, never future source commit IDs.
+WORK-to-WORK merge is the bounded v1 surface; direct frozen-input integration and
+semantic blueprints remain excluded. Full process recovery evidence and independent
+review are in the [implementation evidence](../../../05--Implementation/SDPTool/ModelGovernance/Evidence.md).
