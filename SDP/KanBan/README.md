@@ -66,6 +66,8 @@
 | KB-SDL-007 | Proposal | completed | [Composable file ASTs and contextual analysis](completed/%23007--SDL--Proposal--Composable-file-ASTs-and-contextual-analysis.md) |
 | KB-SDP-043 | Proposal | backlog | [Event-derived Session timelines](backlog/%23043--Proposal--Event-derived-session-timelines.md) |
 
+| KB-SDL-008 | Study | completed | [SDL Go familiarization and test baseline](completed/%23008--SDL--Study--Go-code-familiarization.md) |
+
 ## Purpose and authority
 
 Capture ideas, questions and requested changes from conversations as cards, even
