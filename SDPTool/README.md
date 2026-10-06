@@ -179,3 +179,11 @@ proposal/candidate/release and preliminary snapshots. No Git repository or SDP
 installation is required. Read the [model workflow and limits](model/README.md).
 Model releases are distinct from SDP tool releases; this does not generate semantic
 blueprints or authenticate implementation acceptance.
+
+## ProjectGovernance pilot core
+
+`sdptool governance` provides read-only context/routing and a guarded local
+Maintenance run through the [PGI1 core](governance/README.md). Its explicit
+binding, durable receipts and revision checks support interruption/retry without
+changing canonical project records. The app-server client, MCP adapter and
+candidate-evidence publication remain later milestones in PLAN-SDP-0018.

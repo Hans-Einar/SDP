@@ -4,7 +4,7 @@
 | --- | --- |
 | id | PLAN-SDP-0018 |
 | project | SDP |
-| state | planned |
+| state | active |
 | PlanType | ImplementationPlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
@@ -16,8 +16,8 @@
 Deliver one useful owner-to-agent Maintenance workflow through a local Codex client,
 shared SDPTool process core and agent adapter. Restore the same Session after an
 interrupted attempt and return candidate-bound evidence with a truthful disposition.
-This is the implementation handoff from the owner-selected PGD1 design. It is planned,
-not started; the 2026-10-03 continuation selected preparation of this handoff.
+The owner continuation on 2026-10-06 selects PGI1-M1 from this handoff. The plan
+is active for that bounded implementation; PGI2–PGI5 remain planned.
 
 The [design](../../../04--Design/SDPTool/ProjectGovernance/Design.md),
 [acceptance cases](../../../04--Design/SDPTool/ProjectGovernance/Acceptance.md) and
@@ -53,7 +53,7 @@ do not turn a self-check into an independent review by changing its label.
 
 | Phase / milestone | Delivered behavior | Required evidence | State |
 | --- | --- | --- | --- |
-| PGI1-M1 Core and inspection | Selected project + status request yields context/route without creating work; authorized fixture Maintenance creates a pinned durable run visible through a small CLI read/transition path | PG-A01/02/03/08/10/18; exact JSON schemas; core restart and stale-input tests | planned |
+| PGI1-M1 Core and inspection | Selected project + status request yields context/route without creating work; authorized fixture Maintenance creates a pinned durable run visible through a small CLI read/transition path | PG-A01/02/03/08/10/18; exact JSON schemas; core restart and stale-input tests | delivered; bounded core/CLI verified |
 | PGI2-M1 Adapters and protocol | Thin local MCP adapter and controller protocol adapter use the core; inspect compatible schemas, negotiate the selected SDK/host, capture bounded recorded events and reconcile mapped attempts | PG-A10/11/12/15/18; actual protocol negotiation and failure outputs; no simulated-as-live claims | planned |
 | PGI3-M1 Owner workflow | Minimal terminal client recovers Session, submits/steers work, presents route/status and launches the authorized fresh Master with bounded context; applicable child/review mapping is observed | PG-A02/04/05/11/12/13/15; managed account mode and one useful bounded task | planned |
 | PGI4-M1 Evidence and reconciliation | Candidate-bound evidence, review/rework and checked publication produce one durable Session outcome and correct card/plan disposition | PG-A06/07/09/13/16/17; crash and concurrent-change fixtures | planned |
@@ -98,6 +98,33 @@ in backlog. No card is closed merely because this plan is complete.
 
 ## Current result
 
-Planned handoff only. No milestone has started and no production implementation or
-integrated pilot result is claimed. PGD1 compatibility evidence is an input, not
-PGI2/PGI3 acceptance.
+PGI1-M1 is delivered in an isolated local clone based on 043c59c, which includes
+the completed ModelGovernance delivery. [Evidence-PGI1](Evidence-PGI1.md) and its
+[candidate manifest](candidate-PGI1.json) identify the tested core/CLI subset.
+Go 1.27.1 full SDPTool race tests, vet and 21 observed wire-schema cases pass.
+PGI2–PGI5 remain unstarted; real host execution and independent review are still
+required for the complete pilot. KB038 hands off as active/ready for PGI2.
+
+The current host makes the original worktree Git metadata read-only. Implementation
+and milestone commit use an independent clone under /tmp on
+`sdp/project-governance-pilot`; verified source/document changes are returned to the
+original worktree without modifying its branch or Git metadata.
+
+
+## PGI1 implementation refinements and next handoff
+
+The state directory is located by canonical-root SHA-256 and contains the separate
+checkout UUID binding. This makes read-only lookup possible before explicit bind;
+no discovery read registers a checkout. Selected canonical management records are
+checked without publishing them; the full ledger hash conservatively invalidates
+advancement after any append. Fine-grained authority/event reconciliation belongs
+to the adapter/evidence phases. The pilot ships one compiled routine definition,
+not the complete method catalog. Requests and results use the exact PGI1 schema.
+
+PGI2 should start from this delivered core, preserve CLI behavior, inspect the
+current installed protocol/SDK and implement thin adapters with equivalent core
+results and measured negotiation. Do not promote local Caller capability from
+agent-provided role strings. Resume here proves core persistence only; PGI2/PGI3
+must establish actual host-attempt mapping before claiming controller recovery.
+Reviewed backlog dependencies KB036/037/042/043 remain separate and unchanged;
+ModelGovernance, semantic blueprints and full KanBan TUI are not entry prerequisites.

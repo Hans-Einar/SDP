@@ -41,7 +41,7 @@ from authoritative data; this first pilot is manually maintained and labeled.
 KB042 owns the Session format, identity, roadmap/plan relationships and adoption.
 [KB036](%23036--Proposal--Request-routines-and-process-control.md) still owns
 request classification and routine selection; [KB037](%23037--Proposal--Observable-routine-state-machine.md)
-owns execution state/monitoring; [KB038](%23038--Proposal--Codex-app-server-development-client.md)
+owns execution state/monitoring; [KB038](../active/%23038--Proposal--Codex-app-server-development-client.md)
 owns app-server capture/client integration. Do not create a second routine engine
 or a new client project here.
 

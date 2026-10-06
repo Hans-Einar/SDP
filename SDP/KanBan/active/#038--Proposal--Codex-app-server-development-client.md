@@ -5,10 +5,10 @@
 | id | KB-SDP-038 |
 | project | SDP |
 | type | Proposal |
-| CardState | backlog |
+| CardState | ready |
 | created | 2026-09-28T15:10:13.034937+00:00 |
 | source | Owner conversation 2026-09-28: register app-server-based system development and assess SDPTool MCP |
-| next_review | Start the bounded PGI1-M1 core slice under planned PLAN-SDP-0018; design delivered in PGD1 |
+| next_review | PGI2 adapters and actual protocol negotiation; PGI1 core/CLI delivered |
 | tags | codex, app-server, client, MCP, supervision, blueprints, observability |
 | Systems | SDPTOOL |
 | PlanId | PLAN-SDP-0018 |
@@ -18,8 +18,9 @@
 [PLAN-SDP-0007 — shared StudyPlan](../../02--Requirements/RoutineGovernance/StudyPlan.md)
 now coordinates governance, SDPTool MCP and Codex app-server research. It links
 the existing RGS1 results and owns the result register for subsequent studies.
-The selected studies are complete; this capability card is back in backlog. Read it before selecting further
-study work or a successor DesignPlan. Earlier RGS1 work remains delivered under
+The selected studies and PGD1 design are complete. PLAN-SDP-0018 now owns the
+selected PGI1 core increment; the full client capability remains open. Reuse the
+existing study results before selecting additional study work. Earlier RGS1 work remains delivered under
 PLAN-SDP-0006; this link does not reopen that completed plan.
 
 ## Owner intent
@@ -36,8 +37,9 @@ children. Carry forward the role clarification in the
 [RGS1 study](../../02--Requirements/RoutineGovernance/Study.md); do not make the
 project-facing conversation responsible for remembering every execution detail.
 
-This request authorizes backlog registration, not a Codex fork, client
-implementation, host configuration or automatic agent delegation.
+The initial request authorized backlog registration. The later PGD1 and PGI1
+selections are recorded below; they do not authorize a Codex fork, account
+configuration or automatic agent delegation.
 
 ## Proposed responsibility split
 
@@ -101,9 +103,9 @@ must not be described as existing functionality.
 
 ## Relationships and next action
 
-- [KB-SDP-036](%23036--Proposal--Request-routines-and-process-control.md) owns request
+- [KB-SDP-036](../backlog/%23036--Proposal--Request-routines-and-process-control.md) owns request
   routing, routine selection and entry guidance.
-- [KB-SDP-037](%23037--Proposal--Observable-routine-state-machine.md) owns durable
+- [KB-SDP-037](../backlog/%23037--Proposal--Observable-routine-state-machine.md) owns durable
   routine execution, MCP-facing process operations and observation contracts.
   This card owns the Codex client/integration experience and consumes those
   contracts; it does not create a second workflow engine or duplicate MCP project.
@@ -204,3 +206,23 @@ The shared pilot covers a bounded contribution; broader card acceptance remains
 open. ModelGovernance continues independently.
 
 2026-10-03T21:14:27.153979+00:00: EVT-KB-SDP-000288 — PGD1 design delivered; return KB038 from in-progress to backlog for planned PGI implementation, preserving the completed design and unimplemented capability.
+
+2026-10-06T01:27:08.375276+00:00: EVT-KB-SDP-000304 — PGI1-M1 core implementation started; Session0007 T003 records scope.
+
+## PGI1 core and CLI delivery — 2026-10-06
+
+[PGI1 evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI1.md)
+records read-only context/routing, explicit checkout binding, pinned Maintenance
+runs, guarded transitions, durable receipts and restart tests through the compiled
+CLI. Full SDPTool race tests and vet pass; the application schema matches 21
+observed request/result captures. Project records and unrelated fixture edits are
+preserved. No live Codex/MCP client, automatic Session capture, evidence completion
+or independent product review is claimed.
+
+Handoff: PGI1 is delivered; active/ready now refers to the next PGI2 adapter
+increment in the active plan. The complete capability card remains open. Related
+KB036/037/042/043 retain their broader backlog scope; no ModelGovernance work is
+absorbed. Session0007 T003/T004 records the interrupted/resumed implementation and
+the host's Git restriction.
+
+2026-10-06T01:55:03.342761+00:00: EVT-KB-SDP-000305 — in-progress -> ready at PGI1 delivery/handoff; PGI2 adapters are next, broader client scope remains open.

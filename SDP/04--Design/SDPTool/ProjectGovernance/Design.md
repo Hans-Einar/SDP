@@ -1,9 +1,16 @@
 # ProjectGovernance — first workflow contract
 
 Design candidate PGD1, owned by [PLAN-SDP-0017](Plan.md). This specifies the bounded
-implementation handoff; no new runtime or installed process schema exists yet.
+implementation handoff. PGI1 now implements its bounded core/CLI subset; the
+complete client workflow and installed process integration remain future work.
 Owner-selected scope and role responsibilities are retained. Storage locations,
 operation names and implementation choices below are the recommended pilot design.
+
+Current implementation details and limits are in the
+[core contract](../../../../SDPTool/governance/README.md) and
+[PGI plan](../../../05--Implementation/SDPTool/ProjectGovernance/Plan.md).
+The application wire schema is local to PGI1; it is not a published Toolkit profile.
+PGD1's original evidence remains historical design/schema-inspection evidence.
 
 ## 1. Outcome and first user journey
 
