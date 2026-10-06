@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-T001, 2026-10-06. Sequence only; dates are display slots, not duration estimates.
+T002, 2026-10-07. Sequence only; dates are display slots, not duration estimates.
 
 ```mermaid
 gantt
@@ -10,22 +10,22 @@ gantt
     dateFormat YYYY-MM-DD
     section Design
     ACTIVE BP2-A Contract and pilot :active,a,2000-01-01,1d
-    NEXT BP2-B Selection and evidence :b,after a,1d
-    PLANNED BP2-C Executable handoff :c,after b,1d
+    DONE BP2-B Selection and evidence :done,b,after a,1d
+    NEXT BP2-C Executable handoff :c,after b,1d
 ```
 
 | State | Step | Outcome | Evidence / remaining work |
 | --- | --- | --- | --- |
 | on-going | S1 / BP2-A | Contract and real-model pilot | Contract candidate and validated reduced MVP1 specimen delivered; owner feedback on pilot pending |
-| next | S2 / BP2-B | Deterministic impact selection and negative cases | NOW/TARGET union, removed neighbors, unknown frontier, stale/overflow/cycle cases |
-| planned | S3 / BP2-C | API and implementation handoff | Bounded implementation plan and permitted worker/reviewer trial |
+| completed | S2 / BP2-B | Deterministic impact selection and negative cases | NOW/TARGET union, removed neighbors, unknown frontier, stale/overflow/cycle cases |
+| next | S3 / BP2-C | API and implementation handoff | Bounded implementation plan and permitted worker/reviewer trial |
 
 | Field | Value |
 | --- | --- |
 | Session reference | SESSION-SDP-0008 |
 | Status | active |
 | Primary card | KB-SDP-050 |
-| Snapshot date | 2026-10-06 |
+| Snapshot date | 2026-10-07 |
 | Execution authority | Owner says continue after the proposed KB050 pilot route |
 
 ## Goal
@@ -78,3 +78,25 @@ the current branch without a shared checkout switch, with isolated staging.
 Next: BP2-B impact-selection/evidence design and negative cases. BP2-A awaits
 feedback on its specific pilot; this does not block independent selection design.
 Main merge, publication and XFMD/Ponsse application changes are not selected.
+
+### T002 — Impact selection and evidence (2026-10-07)
+
+Owner input: continue. Skills reused: sdp, Planning and Architect. Manual work
+summary, not a host transcript. Delivered BP2-B-M1 selection/evidence contract
+and an experimental selector consuming the actual toolkit AST, without product
+parser/CLI changes. Eight tests pass: NOW/TARGET union and deleted ownership,
+atomic channel/payload closure, authored context/frontier, cycles, overflow,
+stale identity, missing endpoint and valid-SDL ownership drift (formatting/source
+positions are also separated from semantic facts).
+
+The first missing-endpoint expectation failed: the real parser permits that model.
+The experiment now reports a separate unknown-peer diagnostic. This evidence
+strengthens the design requirement; no parser behavior was silently changed.
+Prose distinguishes complete proposed production obligations from the smaller
+experiment, whose cycles include a labeled synthetic normalized graph fixture.
+Concurrent ProjectGovernance changes remain untouched and excluded from this commit.
+
+[Selection contract](../04--Design/SDPTool/Blueprints/Selection-and-Evidence.md)
+and [evidence](../04--Design/SDPTool/Blueprints/Selection-evidence.json) capture
+results. BP2-B is delivered; BP2-C is next. BP2-A's particular pilot still awaits
+explicit owner feedback, with no main merge, release or product generator claimed.

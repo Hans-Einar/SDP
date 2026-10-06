@@ -39,3 +39,14 @@ freezes a candidate and compares source digests. It invokes SDL viewpoint genera
 for both models. These are ordinary source-generated views, not a blueprint diff or
 an annotation renderer. The retained evidence records binaries, source hashes and
 actual artifact identities; repeat runs get new UUIDs/timestamps.
+
+## BP2-B selection experiment
+
+```sh
+BP2_SDL=/path/to/sdl PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s experiments/blueprint_mvp1 -p 'test_selection_probe.py' -v
+python3 experiments/blueprint_mvp1/selection_probe.py --sdl /path/to/sdl --output /tmp/selection.json
+```
+
+The Python probe consumes real toolkit AST JSON; it is design evidence only.
+Production belongs in Go. Selection-and-Evidence.md defines the proposed complete
+contract and explicitly distinguishes it from the experiment's smaller coverage.

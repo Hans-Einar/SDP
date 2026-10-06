@@ -43,3 +43,9 @@ capture/promotion pass; this is neither a full experimental-profile migration no
 an implemented blueprint producer. The specific pilot awaits owner feedback.
 Next BP2-B: impact selection and explicit unknown/negative cases. BP2-C and a
 production ImplementationPlan remain open.
+
+2026-10-07 BP2-B-M1: Selection-and-Evidence.md and eight passing experimental
+selection tests delivered. Actual parser acceptance of a missing channel endpoint
+is recorded as a separate blueprint completeness gap. NOW/TARGET union, contract
+closure, scope/frontier and code/evidence-reference rules are specified. Next BP2-C;
+card remains in-progress, with no production generator or owner-approved pilot claim.

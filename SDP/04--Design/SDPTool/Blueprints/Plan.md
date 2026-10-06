@@ -15,9 +15,9 @@
 
 Turn the [BP1 findings](Study.md) into a reviewable contract for a small generated
 assignment bundle. [Worked example](Pilot.md) provides the initial real model and
-behavior boundary. This is the explicit successor to the Study; it is planned,
-not selected for execution by the request to perform BP1. Recommendations remain
-proposed until the owner selects the intended delivery and dispositions below.
+behavior boundary. This successor to the Study was selected on 2026-10-06.
+Contract recommendations remain proposed where specific owner disposition is
+not yet recorded; execution authority is distinct from approving every design choice.
 
 The output is a detailed design and a proportionate ImplementationPlan, not a
 production command, SDL grammar change or mandatory new project structure. Keep
@@ -37,8 +37,8 @@ Do not create a parallel ledger or mandatory per-Issue assignment hierarchy.
 
 | Phase | Milestone | Observable acceptance | State |
 | --- | --- | --- | --- |
-| BP2-A — contract | BP2-A-M1 | Specify authored intent versus generated/observed facts; freeze identity, required inputs, gaps, NOW/TARGET and pinned before/after test baselines; define box/edge constraint marks; choose one owner-reviewed pilot with explicit invariants | Planned |
-| BP2-B — selection and evidence | BP2-B-M1 | Define complete modeled impact context, explicit unknown frontier, typed inclusion/exclusion and atomic contracts; demonstrate current/target union, removed-edge neighbor, cycle, missing provider, size overflow and stale inputs; specify SDL code-tag mappings and evidence references with KB-SDP-004 without claiming its full delivery | Planned |
+| BP2-A — contract | BP2-A-M1 | Specify authored intent versus generated/observed facts; freeze identity, required inputs, gaps, NOW/TARGET and pinned before/after test baselines; define box/edge constraint marks; choose one owner-reviewed pilot with explicit invariants | Partial: specimen ready; explicit pilot disposition pending |
+| BP2-B — selection and evidence | BP2-B-M1 | Define complete modeled impact context, explicit unknown frontier, typed inclusion/exclusion and atomic contracts; demonstrate current/target union, removed-edge neighbor, cycle, missing provider, size overflow and stale inputs; specify SDL code-tag mappings and evidence references with KB-SDP-004 without claiming its full delivery | Delivered BP2-B-M1 |
 | BP2-C — executable handoff design | BP2-C-M1 | Specify Go library/SDPTool boundary, before/after verification, failure/publication behavior and annotated output; walk one authorized worker/reviewer through the bundle and a scope-violating change, recording observed results; write implementation slices with measurable acceptance | Planned |
 
 Use the study probe as evidence input, not the production selector. Define any new
@@ -106,3 +106,15 @@ owner-reviewed pilot or production blueprint generator is claimed. BP2-A accepta
 is therefore partial (contract/pilot ready, owner pilot disposition pending).
 Next executable design work: BP2-B selection/evidence rules and negative specimens;
 BP2-C and production implementation remain open.
+
+## BP2-B-M1 — 2026-10-07
+
+Delivered Selection-and-Evidence.md with versioned relation closure, NOW/TARGET
+union, atomic contract groups, exclusions/unknown frontier, PRESERVE checks and
+code/evidence references coordinated with KB004. Eight experiment tests pass over
+actual toolkit ASTs plus a labeled synthetic cycle fixture. The real parser accepts
+a missing channel receiver; selection reports that gap explicitly. Parser success
+also does not prevent the tested ownership drift. See Selection-evidence.json and
+Selection-tests.txt. No production producer or code-conformance claim.
+Next BP2-C API/publisher design and implementation slices; BP2-A pilot feedback
+remains pending rather than being inferred from the owner's continue instruction.
