@@ -5,7 +5,7 @@
 | id | KB-SDP-050 |
 | project | SDP |
 | type | Proposal |
-| CardState | backlog |
+| CardState | in-progress |
 | Systems | SDPTOOL, SDL, SDUI |
 | created | 2026-10-03 |
 | source | Owner discussion; KB-SDP-048 split KBO-SDP-000005 |
@@ -32,3 +32,14 @@ KB049 owns ModelGovernance source views/identities; it does not implement bluepr
 2026-10-03: Scope separated from KB048. No new Session or implementation activated
 for this card. BP2 remains planned. Session0005 discussion closes by explicit
 handoff; blueprint planning will be selected separately.
+
+## BP2 activation — 2026-10-06
+
+Owner selects continuation. [Session0008](../../Sessions/session-%230008--Semantic_blueprints.md)
+executes the existing [BP2 DesignPlan](../../04--Design/SDPTool/Blueprints/Plan.md).
+The [contract candidate](../../04--Design/SDPTool/Blueprints/Contract.md) uses a
+reduced MVP1 calibration-ownership pilot. Real NOW/TARGET parsing and model-governance
+capture/promotion pass; this is neither a full experimental-profile migration nor
+an implemented blueprint producer. The specific pilot awaits owner feedback.
+Next BP2-B: impact selection and explicit unknown/negative cases. BP2-C and a
+production ImplementationPlan remain open.

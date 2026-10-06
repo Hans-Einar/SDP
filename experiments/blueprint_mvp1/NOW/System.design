@@ -1,0 +1,7 @@
+language design-core version 0.6.
+system MVP1InspectionPilot.
+includes "Contracts/Machine.design".
+includes "Features.design".
+MVP1InspectionPilot contains Containers/BuckingUI.
+MVP1InspectionPilot contains Containers/BuckingWeb.
+MVP1InspectionPilot contains Containers/MachineService.

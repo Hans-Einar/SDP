@@ -4,7 +4,7 @@
 
 | ID | Type | Status | Document |
 | --- | --- | --- | --- |
-| KB-SDP-050 | Proposal | backlog | [Semantic blueprints](backlog/%23050--Proposal--Semantic-blueprints.md) |
+| KB-SDP-050 | Proposal | active | [Semantic blueprints](active/%23050--Proposal--Semantic-blueprints.md) |
 | KB-SDP-049 | Change | completed | [ModelGovernance](completed/%23049--Change--Model-governance.md) |
 | KB-SDP-048 | Proposal | superseded | [Versioned design reviews and blueprint differences](superseded/%23048--Proposal--Versioned-design-reviews-and-blueprint-diffs.md) |
 | KB-SDP-047 | Change | completed | [Discover and browse Sessions](completed/%23047--Change--Discover-and-browse-Sessions.md) |

@@ -1,0 +1,6 @@
+language design-core version 0.6.
+container MachineService.
+MachineService owns CalibrateMeasurement.
+MachineService owns PublishMachineBaseline.
+MachineService owns ReduceMachineState.
+MachineService provides AuthoritativeMachineState.

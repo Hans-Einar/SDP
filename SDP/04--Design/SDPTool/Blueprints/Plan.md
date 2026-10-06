@@ -4,12 +4,12 @@
 | --- | --- |
 | id | PLAN-SDP-0001 |
 | project | SDP |
-| state | planned |
+| state | active |
 | PlanType | DesignPlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
 | Systems | SDL, SDPTOOL |
-| source | KB-SDP-031 / BP1 study recommendations |
+| source | KB-SDP-050 / KB-SDP-031 / BP1 study recommendations |
 
 ## Outcome and authority
 
@@ -25,8 +25,10 @@ one authored task authority and existing management/Traceability ownership.
 
 ## Git and scope
 
-If selected, start one working branch from then-current main; preserve the BP1
-study branch. Use milestone commits and the existing phase-push/PR authorization.
+2026-10-06 reconciliation: use the current ModelGovernance implementation branch
+for this bounded design milestone because its APIs are not yet on main. This revises
+the unexecuted main-based branch proposal; preserve the BP1 study history and
+concurrent ProjectGovernance edits. No shared branch switch is made. Use milestone commits and the existing phase-push/PR authorization.
 No merge or release is implied. No XFMD application change, Issue #7 adoption,
 source-set implementation, scheduling agent or automatic Go call-graph proof.
 Do not create a parallel ledger or mandatory per-Issue assignment hierarchy.
@@ -49,7 +51,7 @@ if unavailable, report that evidence gap rather than simulating independent revi
 
 These are candidate vertical increments, not activated implementation phases.
 
-1. **One reproducible bundle:** one registered structural model, one authored task,
+1. **One reproducible bundle:** one source-discovered structural model, one authored task,
    existing contract documents, current/target identity, deterministic Markdown and
    manifest, validation failures and provenance. A headless consumer can inspect it.
 2. **Preserved context and change checks:** typed boundary rules, removed/added fact
@@ -67,8 +69,8 @@ SDL owns model semantics, and existing document publishers/renderers are reused.
 ## Dependencies, verification and completion
 
 KB-SDP-004 owns the general design/code/evidence contract. BP2 can represent unknown
-or directly cited evidence without inventing a replacement ledger. KB-SDL-005 owns
-multi-file source identity; the first pilot can remain single-file. KB-SDP-032/033
+or directly cited evidence without inventing a replacement ledger. Source composition is now implemented in design-core/0.6; this pilot exercises
+a composed model and ModelGovernance snapshots without registering source files. KB-SDP-032/033
 supply future navigation feedback/adoption experience rather than hard prerequisites.
 
 Completion requires a concrete reviewed design with explicit remaining decisions,
@@ -91,3 +93,16 @@ Executable Channel tests and companion-language choices belong to
 Coordinate its eventual test/Unit binding contract; do not silently expand this
 DesignPlan into runtime implementation. The first blueprint can cite named tests
 and report missing executable mappings without claiming general SDL execution.
+
+## Execution — 2026-10-06
+
+Owner selects continuing KB050 in Session0008. BP2-A contract candidate and a
+reproducible reduced MVP1 pilot are delivered in Contract.md and
+experiments/blueprint_mvp1. Pilot-MVP1-evidence.json records real parser checks,
+model-only release -> dirty WORK -> candidate and ordinary generated viewpoints.
+The baseline/target distinction does not claim implemented Ponsse conformance.
+The specific extraction is agent-selected and still awaits owner feedback; no
+owner-reviewed pilot or production blueprint generator is claimed. BP2-A acceptance
+is therefore partial (contract/pilot ready, owner pilot disposition pending).
+Next executable design work: BP2-B selection/evidence rules and negative specimens;
+BP2-C and production implementation remain open.
