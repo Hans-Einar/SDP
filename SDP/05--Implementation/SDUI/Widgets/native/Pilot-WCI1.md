@@ -75,3 +75,57 @@ command bypassed Fyne's OS CloseIntercept; the fixture owner is unifying teardow
 logs, action/check journal, binary identity and OS captures. Its creation is test
 tooling, not a product acceptance pass. Final nested and complete-slice evidence
 remains pending.
+
+## Reproducible pilot checks and new findings
+
+The basic actual-input harness passed ten checks on the second pilot binary.
+The old binary failed empty-root first-Tab ordering (preview was focused before
+the tree). The next fixture build fixed ordering: empty-root Escape, late delivery,
+R restart and paused reload passed, but R after reload produced no native event.
+The native stderr reported failure to focus an object not yet in the canvas;
+forwarding-wrapper identity and focus preparation are being corrected.
+
+The nested third pilot passed inner-to-outer wheel chaining and reverse scrolling
+to zero. Its thumb assertion failed because the outer frame thumb occupied the
+same screen strip as the inner list thumb: dragging at (993,100) changed outer
+Y to 112 rather than inner offset. The input route worked; the thumbs were not
+separately reachable. A bounded shared-gutter geometry correction is required;
+the acceptance expectation is retained. Native teardown now reported a closed
+Session and no pending provider barriers. All these results remain pilot feedback
+and must be repeated against the final integrated candidate.
+
+## Fourth pilot corrections
+
+The rebuilt pre-gutter candidate passed the seven empty-root checks, including
+actual R after compatible reload and old-completion rejection. The expanded basic
+native run passed sixteen checks: prior selection/action/load/reload checks plus
+Alt-Right without selection/action changes, tree parent navigation, selectable
+branch R recovery, pointer Retry and complete teardown. OS inspection confirms
+negative-X labels now remain partially visible instead of disappearing.
+
+One launch failed because the separate Xvfb process had ended; GLFW reported no
+available platform. Restarting the test display with -noreset corrected the test
+environment. It is not recorded as a product defect. Final gutter/native candidate
+verification still supersedes these evolving-source pilot results.
+
+## Gutter and visible-height pilot
+
+The `fc42424fcfc537f2a82a224ce2b41390d73e9d5376ecae34a3d0be16d3a9a4da`
+binary passed all twenty expanded nested checks in
+`/tmp/sdui-wci1-native-gutter-paced`. Separate inner and outer scrollbar drags,
+visible-height PageDown, background wheel routing, stable-ID reorder, shrink
+clamping, seven failed candidate stages and valid recovery passed. OS inspection
+confirmed separate gutter strips and the fixed sibling.
+
+An earlier background-wheel run used an instantaneous pointer move and wheel;
+Fyne consumed its cached previous pointer position. The harness now moves first
+and permits 100 ms native input delivery before wheel/drag gestures. This is
+input pacing, not a provider/race synchronization assumption. The corrected
+run passed. Final evidence will use this explicit pacing.
+
+Independent review reproduced a remaining recovery defect: a long provider
+diagnostic could violate the default horizontal error policy and prevent its
+own error state from publishing. The host correction must fit only status
+presentation, retain the full bounded runtime error and keep the R recovery
+hint visible even at the admitted minimum width. Final acceptance awaits this
+correction and final-candidate checks.

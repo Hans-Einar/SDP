@@ -14,7 +14,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--display', required=True)
     parser.add_argument('--title', required=True)
-    parser.add_argument('action', choices=('locate', 'click', 'double-click', 'wheel', 'drag', 'key', 'chord'))
+    parser.add_argument('action', choices=('locate', 'click', 'double-click', 'wheel', 'drag', 'move', 'key', 'chord'))
     parser.add_argument('values', nargs='*')
     args = parser.parse_args()
     x = c.CDLL(ctypes.util.find_library('X11'))
@@ -78,12 +78,14 @@ def main():
         def button(number):
             xt.XTestFakeButtonEvent(display, number, 1, 0)
             xt.XTestFakeButtonEvent(display, number, 0, 40)
-        if args.action in ('click', 'double-click', 'wheel', 'drag'):
+        if args.action in ('click', 'double-click', 'wheel', 'drag', 'move'):
             if len(args.values) < 2:
                 raise SystemExit('Pointer action requires x y')
             px, py = (int(v) for v in args.values[:2])
             xt.XTestFakeMotionEvent(display, -1, left.value + px, top.value + py, 0)
-            if args.action == 'drag':
+            if args.action == 'move':
+                pass
+            elif args.action == 'drag':
                 if len(args.values) != 4:
                     raise SystemExit('Drag requires x1 y1 x2 y2')
                 end_x, end_y = (int(v) for v in args.values[2:])

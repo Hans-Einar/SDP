@@ -1,0 +1,38 @@
+{"kind": "candidate", "value": {"binary": "/tmp/sdui-wci1-native-final", "sha256": "d97eac538dbb80816da863e07e3ec4aa4bb6ef0416b62c2e37211591a8badbd8", "display": ":189", "variant": "lifecycle"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "disable tree"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "disable cancels pending root and clears focus", "passed": true}}
+{"kind": "fixture-command", "value": "complete page/body/nav:1:1 success"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "disabled late completion cannot publish data", "passed": true}}
+{"kind": "fixture-command", "value": "enable tree"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["click", 80, 62]}
+{"kind": "check", "value": {"name": "enable requires one explicit new Load", "passed": true}}
+{"kind": "fixture-command", "value": "hide tree"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "hide cancels pending root and clears active focus", "passed": true}}
+{"kind": "screenshot", "value": "hidden-pending-root.png"}
+{"kind": "fixture-command", "value": "complete page/body/nav:1:2 error"}
+{"kind": "fixture-command", "value": "show tree"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["click", 80, 62]}
+{"kind": "check", "value": {"name": "show leaves stale error behind and explicitly restarts", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "resize 40 40"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "too-small resize rejects while retaining request and presentation", "passed": true}}
+{"kind": "fixture-command", "value": "complete page/body/nav:1:3 empty"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "completion remains usable after failed resize", "passed": true}}
+{"kind": "fixture-command", "value": "resize 1000 650"}
+{"kind": "fixture-command", "value": "shrink list 2"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "short list has zero vertical range", "passed": true}}
+{"kind": "x11-input", "value": ["wheel", 585, 130, 5]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "zero-range wheel cannot invent offset or domain action", "passed": true}}
+{"kind": "screenshot", "value": "lifecycle-recovered.png"}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

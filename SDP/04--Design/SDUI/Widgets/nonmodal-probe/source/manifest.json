@@ -1,0 +1,30 @@
+{
+  "purpose": "WCI2 nonmodal adapter source inspection and standalone compile; no native run",
+  "fyne": "v2.8.1",
+  "fyne_sum": "h1:EztGuE2W3Qhd0cWVmU+h5rkzNezUD1To6UqsoLQYUIM=",
+  "go": "go1.27.1 linux/amd64",
+  "build": {
+    "command": "go build -mod=readonly -o surface-probe .",
+    "cwd": "/tmp/wci2-surface-probe",
+    "result": "pass"
+  },
+  "native": "not run",
+  "sources": {
+    "/home/warloc/go/pkg/mod/fyne.io/fyne/v2@v2.8.1/app/app.go": "3b3d2b9e11301b7a0513b6de7b8873e0b02c6d3c9fa3b3f87d2348c7e385fc26",
+    "/home/warloc/go/pkg/mod/fyne.io/fyne/v2@v2.8.1/window.go": "bf35fb7a73b35ff3a5e81c2f7e76e18d35203a31e182d1ad92e9b5dc66da6688",
+    "/home/warloc/go/pkg/mod/fyne.io/fyne/v2@v2.8.1/canvas.go": "34630279eb437e647557841045a905f6bc48f82c2ac14feb343c807f98a0d2eb",
+    "/home/warloc/go/pkg/mod/fyne.io/fyne/v2@v2.8.1/widget/popup.go": "d165a6b1643151734119ccf1aa37dfc4dec6ea521bb4c861519d20e893d13e0f",
+    "/home/warloc/go/pkg/mod/fyne.io/fyne/v2@v2.8.1/internal/widget/overlay_container.go": "a5ca383e3a803ff9c33d43305cfbd9e4c896ab8f0d08b7055cbd191bbe514132",
+    "/home/warloc/go/pkg/mod/fyne.io/fyne/v2@v2.8.1/internal/driver/util.go": "3276365ba39ebee4f45b12388b634cf196a91d4671cfc3791e15705c1206c174",
+    "/home/warloc/go/pkg/mod/fyne.io/fyne/v2@v2.8.1/internal/driver/glfw/window.go": "174c9ace6932f906cf4fdd946ee5c87bdf853605360fdee4107fcea63f140095",
+    "/home/warloc/go/pkg/mod/fyne.io/fyne/v2@v2.8.1/internal/driver/glfw/window_desktop.go": "38f4d35860bbc8aeb3c6457fb1f67ee98836b084012b955506dcc7a73adc1402",
+    "/home/warloc/go/pkg/mod/fyne.io/fyne/v2@v2.8.1/internal/driver/common/canvas.go": "b7f6fb4aa2e9c2ec384d66154e9ffe8f41d172c106215e79bedafbf6399c5628"
+  },
+  "artifacts": {
+    "main.go": "6271055879e1c90a99b2cce0a2aef9293d704c64e53ef82a74b9ee6d95c49df5",
+    "go.mod": "ddd3953906cc3588e3076cd1ea54acb0a4be606af2b7a0e497b5bd5fcc0336cb",
+    "go.sum": "9e7232670a61b52037b532583d32eb9518e671e4c9fe0140d2c99c7001c55f0e",
+    "surface-probe": "a5694a15611793b7ed7af819bb1c176543f11e9b32935ca70ea1ac1214026fc0",
+    "README.md": "305c74243a1bf26993a95d7660d1ac3f80eb2c41c1149e78659b172458e28e41"
+  }
+}

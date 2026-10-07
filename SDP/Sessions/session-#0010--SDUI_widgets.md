@@ -2,8 +2,8 @@
 
 ## Session roadmap
 
-Latest recorded turn: T002. Current work: S2. Next: review the WCI1 collection/viewport
-implementation and native acceptance after completed WCD1 and WCI0. Diagram is **sequence only**, using synthetic equal
+Latest recorded turn: T002. Current work: S3 panes and commands.
+WCI1 is implemented, verified and independently reviewed; WCI2-M1 is selected after final stage reconciliation. Diagram is **sequence only**, using synthetic equal
 slots; it is not a delivery schedule or measured timeline.
 
 ```mermaid
@@ -13,8 +13,8 @@ gantt
     axisFormat %d
     section Route
     S1 Capability and interaction design :done, s1, 2000-01-01, 1d
-    S2 Collections and viewports :active, s2, after s1, 1d
-    S3 Panes and commands :s3, after s2, 1d
+    S2 Collections and viewports :done, s2, after s1, 1d
+    S3 Panes and commands :active, s3, after s2, 1d
     S4 Typed values and text :s4, after s3, 1d
     S5 Consumer integration and review :s5, after s4, 1d
 ```
@@ -22,8 +22,8 @@ gantt
 | State | Step | Work and linked plan milestone | Prerequisites | Authorization | Completion evidence / outcome |
 | --- | --- | --- | --- | --- | --- |
 | completed | S1 | PLAN-SDP-0021 WCD1 and PLAN-SDP-0022 WCI0 | Existing gap study and inventory | Owner T001 | WCD1 independently reviewed and complete; WCI0 verified and independently reviewed |
-| on-going | S2 | PLAN-SDP-0022 WCI1 | S1 | Owner T001 full card | pending |
-| planned | S3 | PLAN-SDP-0022 WCI2 | S2 pilot evidence | Owner T001 full card | pending |
+| completed | S2 | PLAN-SDP-0022 WCI1 | S1 | Owner T001 full card | c39b330; Evidence-WCI1; 54 native checks; independent approval |
+| on-going | S3 | PLAN-SDP-0022 WCI2 | S2 pilot evidence | Owner T001 full card | pending |
 | planned | S4 | PLAN-SDP-0022 WCI3 | Shared contracts from S1–S3 | Owner T001 full card | pending |
 | planned | S5 | PLAN-SDP-0022 WCI4 | S2–S4 | Owner T001; publication unselected | pending |
 
@@ -33,8 +33,8 @@ gantt
 | Status | active |
 | Primary card | [KB-SDUI-003](../KanBan/active/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md) |
 | Snapshot date | 2026-10-07 owner request; actual ledger timestamps recorded separately |
-| Current step | S2 |
-| Proposed next step | S2 WCI1 integration, native evidence and independent review |
+| Current step | S3 |
+| Proposed next step | S3 WCI2 final stage reconciliation and implementation |
 | Execution authority | Owner T001 requests taking the card's work |
 
 ## Goal
@@ -58,7 +58,7 @@ XM-M2 evidence. Rich optional research retains its existing disposition.
 | Local ref | Plan type and document | Document readiness | Canonical plan lifecycle | Depends on | Outcome / evidence |
 | --- | --- | --- | --- | --- | --- |
 | P1 | [PLAN-SDP-0021 DesignPlan](../04--Design/SDUI/Widgets/Plan.md) | completed | completed | PLAN-SDP-0009 research | Independently reviewed design and per-family acceptance |
-| P2 | [PLAN-SDP-0022 ImplementationPlan](../05--Implementation/SDUI/Widgets/Plan.md) | on-going | active | P1, staged elaboration | WCI0 delivered; WCI1 stage design active |
+| P2 | [PLAN-SDP-0022 ImplementationPlan](../05--Implementation/SDUI/Widgets/Plan.md) | on-going | active | P1, staged elaboration | WCI0/WCI1 delivered; WCI2-M1 in progress |
 
 ## Route changes and decisions
 
@@ -171,8 +171,50 @@ implementation obligations.
 - WCI1 adjacent consumer corrections: Dalton owns profile-aware helper/SDPTool
   metadata and SDL bundle generator provenance in the clone. Exact 0.3 support
   must never be mislabeled 0.2 or imply unavailable native providers.
-- Work summary, not captured final response: WCI1 code, integration and native
-  verification are ongoing; full inventory and no release/merge authority retained.
+- Host lifecycle handoff: Noether explicitly transferred document.go and a new
+  lifecycle regression file to James. Reentrant error reconciliation, failed-resize
+  recovery, clamped resource snapshots and focus restoration now pass scoped race
+  checks. Actual empty-root native tests pass, including R after compatible reload.
+- Native nested scrollbar overlap led to a bounded shared measurement refinement:
+  optional frame/group viewport insets and explicit gutter rectangles. Independent
+  reviewer approved before code; Gibbs owns layout and Noether owns adapters.
+  Separate thumb reachability and final integrated evidence remain pending.
+- WCI2 draft review resolved tab activation, dialog results and split minima. The
+  next review prunes an unnecessary reconciliation API and separates future WCI3
+  obligations. No WCI2 implementation is started from draft approval alone.
+- Selected WCI2 nonmodal adapter has bounded standalone native experiment evidence
+  in Widgets/nonmodal-probe: main drove XTest input and inspected OS captures.
+  Parent interaction, draft revert, opener keyboard focus and five exactly-once
+  terminal results passed. No WM decoration, SDL or SDUI product acceptance is
+  claimed; WCI2 remains future work pending stage readiness and WCI1 completion.
+- WCI1 gutter layout regressions and race checks passed; native adapter integration
+  and separate thumb input are next. Expanded basic native pilot checks include
+  horizontal Alt-arrow scrolling and keyboard/pointer retry on a selectable branch.
+- Integrated working-candidate checks: coordinator ran the full SDUI race suite
+  successfully, plus SDL bridge/runtime/codegen/collection fixture tests. The
+  remaining visible-height PageUp/PageDown correction and final native candidate
+  rerun are explicit; these passes do not yet close WCI1.
+- Expanded nested native pilot passed all twenty checks, including independent
+  scrollbar reachability and visible-height paging. Input-delivery pacing was
+  corrected explicitly; provider synchronization still uses controlled barriers.
+- Independent review found long diagnostic text could reject its own error-state
+  layout. Host recovery fitting and visible compact R hint are being corrected;
+  final candidate approval remains pending. Added native lifecycle verification
+  for hide/disable, failed resize recovery and zero scroll ranges.
+- WCI1-M1 delivered as phase commit c39b330. Independent reviewer verified all
+  88 hashes, rebuilt the native binary identically and approved 54 native checks.
+  Integrated original full SDUI race, affected SDL race and full SDPTool tests pass.
+  Only SDPTool/sdui.go needed explicit KB005 Combined/source-bundle reconciliation;
+  other candidate bytes match, unrelated work preserved. S2 is complete.
+- Milestone backlog review retains KB004 glyph fidelity separately and KB005
+  gate-review; no onHold item changes the selected full inventory route.
+- Reviewer confirmed final WCI2 contract cf93dea6 with no design blockers.
+  Coordinator starts S3/WCI2-M1 on sdui/widgets-wci2 using existing owner scope.
+  Five exclusive lanes cover frontend, runtime, layout, host/preparation and SDL
+  bridge/fixture. Shared identity/API memo precedes dependent changes.
+- Next: integrate runnable tabs/split milestone and native acceptance before M2.
+  Work summary, not captured final response; full inventory remains incomplete,
+  and no release/merge authority is inferred.
 
 ## Closeout
 

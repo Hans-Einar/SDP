@@ -862,3 +862,45 @@ root request retains AutoLoadPending=false and changes Loading to Unloaded.
 The root-only explicit Load/R path accepts this paused state; branch retry rules
 and automatic loading are unchanged. A successor/recovery regression and native
 recovery evidence are required; this is a contract clarification, not a pass claim.
+
+## Native pilot refinement — independently review before implementation
+
+The nested native pilot exposed overlapping outer frame and inner collection
+scrollbar hit areas. Z-order changes merely exchange which thumb is unreachable;
+host-only child shifts would violate the shared geometry contract. Reserve native
+frame/group scroll gutters in shared measurement, with this bounded interface:
+
+```go
+type ViewportInsets struct { Right, Bottom float64 }
+type ViewportMeasurer interface {
+    MeasureViewport(*parser.Instance, float64) (ViewportInsets, error)
+}
+```
+
+For 0.3 scrolling frames/groups only, an optional adjunct on Engine.Measure returns
+pure native right/bottom insets. Native Fyne reserves its vertical/horizontal
+gutter for each declared axis even when the current range is zero, avoiding a
+range-dependent sizing loop. Other measurers default to zero; 0.2 behavior stays
+unchanged. Values must be finite, nonnegative and bounded; a consumed viewport
+rejects before publication. Collections retain their existing CollectionMeasurer.
+
+Subtract insets after source padding and before child contents in both desired
+measurement and arrangement. Relative/fr children reference the remaining finite
+body. Content-sized non-scroll axes include the owning gutter once. Viewport.Rect
+and Clip describe content; add HorizontalGutter/VerticalGutter screen rectangles
+clipped by ancestors/window rather than by the content clip. Fyne paints and hits
+thumbs in these declared strips without recomputing source padding. Track travel
+uses the content viewport length, and runtime offsets remain authoritative.
+
+This is a bounded native metric extension, not new source syntax or a scene model.
+Add geometry tests for independent nested strips, relative allocation, shrink,
+invalid metrics, padding and zero ranges; rerun actual native inner/outer drag and
+wheel tests with both thumbs separately reachable. No acceptance is inferred from
+this proposal. Coordinator-selected refinement stays inside WCI1 scope; independent
+stage review approved this bounded implementation. Both track strips exclude
+the corner intersection; ancestor clipping means the ancestors' content clips,
+not their outer boxes. Reserve right only for declared vertical scrolling and
+bottom only for declared horizontal scrolling. Wheel routing includes the owner's
+effective gutter strips; child hit/paint clips exclude the parent gutters.
+Reviewer 01a11854-523d-7c11-adf4-f622b19b68c6 reported no blocking design findings.
+Native acceptance and full WCI1 completion remain pending.

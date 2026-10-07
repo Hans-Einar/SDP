@@ -51,14 +51,14 @@ Owner clarification, 2026-09-20: R15 permits no source pixel width/height. Root 
 
 ## Selected widget inventory — KB-SDUI-003, Session0010
 
-**SDUI-R27 (specified, not delivered):** deliver the card's tree/list and scroll
+**SDUI-R27 (partially delivered):** deliver the card's tree/list and scroll
 viewports, tabs/splits, button/toggle commands, menu/context/dialog, checkbox,
 slider/select/numeric input, extended single-line and basic multiline input, plus
 explicit SVG/Markdown provider and fallback contracts. Preserve typed identity,
 draft atomicity, programmatic/user-event distinction and reload/disposal guards.
 Full editors, component source sets and native XFMD parity are outside this scope.
 
-**SDUI-R28 (specified, not delivered):** separate source/profile, layout, provider
+**SDUI-R28 (partially delivered):** separate source/profile, layout, provider
 and native capabilities; prepare all required bindings before connected activation.
 An unbound prototype is not connected readiness. Unsupported exports reject or use
 an explicitly selected labelled static fallback. Parser success is insufficient.
@@ -69,3 +69,7 @@ The [reviewed design](../../SDP/04--Design/SDUI/Widgets/Design.md),
 staged delivery. Source 0.3 is selected for new syntax; current implemented 0.2
 and frozen historical fixtures retain their meaning. Native behavior and matching
 consumer package evidence are required before declaring the inventory delivered.
+
+WCI1 delivers the bounded tree/list/scroll portion of R27 and guarded native
+publication for R28; see [WCI1 evidence](../../SDP/05--Implementation/SDUI/Widgets/Evidence-WCI1.md).
+Remaining widget families and consumer packaging stay open under PLAN-SDP-0022.
