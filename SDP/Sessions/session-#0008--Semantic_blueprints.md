@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-T003, 2026-10-07. Sequence only; dates are display slots, not duration estimates.
+T006, 2026-10-07. Sequence only; dates are display slots, not duration estimates.
 
 ```mermaid
 gantt
@@ -20,8 +20,8 @@ gantt
 | completed | S2 / BP2-B | Deterministic impact selection and negative cases | NOW/TARGET union, removed neighbors, unknown frontier, stale/overflow/cycle cases |
 | completed | S3 / BP2-C | API and implementation handoff | Authored model Worker/Reviewer trial; A approved, violating B rejected |
 | next | S4 / BPI1 | Production Go analysis | PLAN-SDP-0020 planned; no implementation started |
-| planned | S5 / BPI2 | Bundle publication | Deterministic documents and facade |
-| planned | S6 / BPI3 | Assignment evidence | Generated-bundle trial and readiness |
+| planned | S5 / BPI2 | Publication and catalogue | M1 deterministic bundle; M2 retained revisions and discovery tab |
+| planned | S6 / BPI3 | Evidence and lifecycle | M1 generated-bundle trial; M2 revision-bound state transitions and navigation |
 
 | Field | Value |
 | --- | --- |
@@ -128,3 +128,46 @@ whitespace check passes. Only this milestone and its own appended ledger events
 are staged.
 Next: select BPI1 Go analyzer implementation, preserving the explicit pilot gate
 and leaving full code/evidence mapping in its owning workstream.
+
+### T004 — Catalogue and assignment progress (2026-10-07)
+
+Owner asks whether XFMD can already visualize a blueprint and requests an SDP
+Blueprint sub-tab listing assigned, in-progress and implemented work. Manual
+discussion summary, not exact transcript. Skills: sdp and Architect.
+
+Confirmed the current blueprint delivery is design/experiments, not a production
+generator or catalogue. Recorded the requested consumer workflow and a proposed
+source-discovered SDP/Blueprints catalogue in Producer-and-Handoff.md. Recommend
+stable task/blueprint and revision identities, work-state projection from canonical
+management records, and separate freshness/readiness/evidence badges. Parent-card
+state cannot establish individual blueprint implementation. The detailed lifecycle
+and retention convention remain recommendations, not owner-approved contracts.
+
+Affected steps: S5/BPI2 publication and S6/BPI3 assignment evidence need catalogue
+design refinement before execution. S4/BPI1 remains next for the pure analyzer;
+no implementation, XFMD edits, merge or publication occurred this turn.
+
+
+### T005 — Catalogue scope selected and plan revised (2026-10-07)
+
+Owner asks to extend the existing card and update plans to implement the catalogue.
+Skills: sdp, Planning and reused Architect context. Manual work summary.
+Extended KB050 and PLAN-SDP-0020 with BPI2-M2 catalogue/discovery and BPI3-M2
+assignment lifecycle, observable acceptance and failure cases. Updated producer
+design status to distinguish selected scope from remaining detailed schema design.
+
+Retained revisions, source-derived discovery and canonical management history
+replace a manual index or mutable status in generated documents. Added explicit
+multiple-assignment, stale-input, reviewed-completion and missing-reference cases.
+Native XFMD changes remain externally owned. No new card/plan or production code
+was needed. BPI1 remains next; the implementation plan remains planned.
+
+
+### T006 — Commit selected catalogue plan (2026-10-07)
+
+Owner reports restored Git access. Reused SDP planning and Session routines.
+Recovered the pending T004/T005 design, card and plan changes; scoped staging
+excludes concurrent ProjectGovernance and SDUI work, including their ledger events.
+This turn records the catalogue planning delivery, not BPI2/BPI3 implementation.
+Project-management and Toolkit validation passed during T005; recheck before commit.
+Next remains BPI1 implementation. No main merge or release is selected.

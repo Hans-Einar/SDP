@@ -140,3 +140,47 @@ publication and assignment evidence integration. BP2-A's explicit owner disposit
 of the proposed calibration extraction remains open; plan/document availability does
 not fabricate that approval. Generic analyzer implementation need not authorize an
 actual Ponsse refactor. KB050 stays active until its implemented outcome is verified.
+
+## Blueprint catalogue — owner input, 2026-10-07
+
+The owner requests an XFMD Blueprint sub-tab under SDP, with a tree grouped by
+assignment/implementation progress. This is a new consumer-workflow requirement;
+the producer design above did not yet define a persistent catalogue or its state
+projection. No implementation or XFMD capability is claimed.
+
+Owner selected the catalogue scope for KB050 / PLAN-SDP-0020 on 2026-10-07
+(Session0008 T005). The following is the implementation direction; detailed
+transition/schema design remains a required milestone activity:
+
+- Retain reviewable generated bundles under SDP/Blueprints/<blueprint-id>/<revision>/.
+  A blueprint ID identifies a scoped task; immutable published revisions pin exact
+  source/task/policy/evidence identities. Scratch previews need not be retained.
+  Do not confuse these revisions with ModelGovernance RELEASE identities.
+- Discovery derives the catalogue from actual bundle metadata and linked canonical
+  project-management records. No manually maintained navigation.json or central
+  duplicate catalogue is required. Missing/malformed bundles or references remain
+  visible as diagnostics, never guessed states. Discovery does not generate bundles.
+- Work state belongs to an identified assignment or plan milestone in the existing
+  project-management history, not a mutable status field in generated Markdown.
+  A single KanBan card may span several blueprints; its state alone cannot establish
+  each blueprint's assignment or implementation status. Multiple assignments/revisions
+  must retain distinct identities.
+- Suggested work states: draft, ready, assigned, in-progress, review, completed;
+  on-hold, canceled and superseded are exceptional dispositions. Assigned requires
+  an explicit assignee bound to a revision. Ready incorporates producer readiness
+  plus required workflow disposition. Completed needs reviewed implementation evidence;
+  source validity, a model release or a completed parent card is insufficient.
+  Exact transition schema and authority remain to be designed.
+- Show freshness (current/stale), structural validity, evidence status and preliminary
+  input independently of work state. New source/task bytes make comparisons stale
+  relative to live inputs; they do not rewrite or erase a completed historical result.
+- Proposed discovery projection: a Blueprints root of kind tab, virtual work-state
+  groups, task/blueprint nodes, revision/assignment children and typed document targets.
+  Refresh recalculates it from sources and records. XFMD consumes this projection
+  and opens generated Markdown/Mermaid. It does not infer implementation or own
+  semantic analysis.
+
+Before executing BPI2/BPI3, refine their plan/contract to include the selected
+retention location, discovery schema, state-record owner and stale/missing-reference
+tests. Native XFMD changes require their own XFMD card/agent. PLAN-SDP-0020 now includes BPI2-M2 catalogue/discovery and BPI3-M2 lifecycle
+projection. Native XFMD implementation is not activated by this scope selection.

@@ -20,7 +20,9 @@ by the split.
 ## Outcome and scope
 
 Generate semantic before/after differences, impacted system context, preserved
-contracts and assignment boundaries from SDL/SDUI models. Distinguish preliminary
+contracts and assignment boundaries from SDL/SDUI models. Include a retained
+blueprint catalogue discoverable by SDPTool, with revision-bound assignments and
+evidence-backed work-state grouping for an XFMD Blueprint sub-tab. Distinguish preliminary
 WORK views from retained reviewed targets; connect code evidence without claiming
 that tags alone prove behavior. Keep analysis independent of storage backend.
 
@@ -57,3 +59,22 @@ despite parser success. [PLAN-SDP-0020](../../05--Implementation/SDPTool/Bluepri
 is planned for Go analysis, publication and generated-bundle verification.
 Next BPI1; BP2-A owner pilot disposition remains pending. No production generator
 or implemented Ponsse change is claimed.
+
+
+2026-10-07 Session0008 T004: owner requests an XFMD Blueprint sub-tab with
+assignment/implementation progress. Catalogue requirements and proposed lifecycle
+are recorded in Producer-and-Handoff.md. Extend BPI2/BPI3 design before execution;
+no duplicate manual navigation registry or inference of implementation from
+parent-card status. Native XFMD integration remains separately owned.
+
+
+## Catalogue delivery — selected 2026-10-07
+
+Owner authorizes extending this existing card and plan rather than creating a
+parallel feature card. PLAN-SDP-0020 owns the detailed milestone acceptance:
+BPI2-M2 delivers retained revisions and discovery; BPI3-M2 delivers assignment
+lifecycle and status projection. A manual navigation registry is excluded.
+Blueprint freshness/readiness and assignment progress remain separate.
+The producer must support a headless consumer; native XFMD changes remain with
+the XFMD agent and are not claimed by this card's producer acceptance.
+Session0008 T005 records the plan revision; production execution has not started.
