@@ -48,3 +48,24 @@ Owner clarification, 2026-09-20: R15 permits no source pixel width/height. Root 
 **SDUI-R25:** parse/validate/publish source changes without closing UI windows. Retain last valid model on errors and compatible value/focus on reload; reject stale events. SDL state needs migration/reset rules. Go-function changes rebuild/restart. Implemented/verified G3/G4.
 
 **SDUI-R26:** Go generation shares development models/runtime and separates generated code from handwritten domain functions. Unknown/incomplete SDL execution semantics produce diagnostics. Implemented/verified G5.
+
+## Selected widget inventory — KB-SDUI-003, Session0010
+
+**SDUI-R27 (specified, not delivered):** deliver the card's tree/list and scroll
+viewports, tabs/splits, button/toggle commands, menu/context/dialog, checkbox,
+slider/select/numeric input, extended single-line and basic multiline input, plus
+explicit SVG/Markdown provider and fallback contracts. Preserve typed identity,
+draft atomicity, programmatic/user-event distinction and reload/disposal guards.
+Full editors, component source sets and native XFMD parity are outside this scope.
+
+**SDUI-R28 (specified, not delivered):** separate source/profile, layout, provider
+and native capabilities; prepare all required bindings before connected activation.
+An unbound prototype is not connected readiness. Unsupported exports reject or use
+an explicitly selected labelled static fallback. Parser success is insufficient.
+
+The [reviewed design](../../SDP/04--Design/SDUI/Widgets/Design.md),
+[acceptance matrix](../../SDP/04--Design/SDUI/Widgets/Acceptance.md) and
+[implementation plan](../../SDP/05--Implementation/SDUI/Widgets/Plan.md) define
+staged delivery. Source 0.3 is selected for new syntax; current implemented 0.2
+and frozen historical fixtures retain their meaning. Native behavior and matching
+consumer package evidence are required before declaring the inventory delivered.

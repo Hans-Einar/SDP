@@ -60,7 +60,7 @@
 | KB-SDP-039 | Change | completed | [Ecosystem and system models](completed/%23039--Change--Ecosystem-and-system-models.md) |
 | KB-SDP-040 | Proposal | backlog | [KanBan terminal navigator](backlog/%23040--Proposal--KanBan-TUI.md) |
 | KB-SDP-041 | Study | completed | [XFMD-driven SDL and SDUI gaps](completed/%23041--Study--XFMD-driven-SDL-and-SDUI-gaps.md) |
-| KB-SDUI-003 | Proposal | backlog | [Capabilities and a bounded navigation pilot](backlog/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md) |
+| KB-SDUI-003 | Proposal | active | [Capabilities and a bounded navigation pilot](active/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md) |
 | KB-SDUI-004 | Bug | backlog | [Text and Markdown fidelity across SDUI exports](backlog/%23004--SDUI--Bug--Text-and-Markdown-fidelity.md) |
 | KB-SDP-042 | Proposal | backlog | [Goal-oriented Sessions and roadmaps](backlog/%23042--Proposal--Goal-oriented-sessions-and-roadmaps.md) |
 | KB-SDL-007 | Proposal | completed | [Composable file ASTs and contextual analysis](completed/%23007--SDL--Proposal--Composable-file-ASTs-and-contextual-analysis.md) |
