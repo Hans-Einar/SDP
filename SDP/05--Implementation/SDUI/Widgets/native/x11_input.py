@@ -1,0 +1,125 @@
+#!/usr/bin/env python3
+"""Send actual X11 test input to an isolated native acceptance display.
+
+Only the explicitly supplied display is opened. This is test tooling, not SDUI
+runtime code. Coordinates are logical X11 window-relative pixels.
+"""
+import argparse
+import ctypes as c
+import ctypes.util
+import json
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--display', required=True)
+    parser.add_argument('--title', required=True)
+    parser.add_argument('action', choices=('locate', 'click', 'double-click', 'wheel', 'drag', 'move', 'key', 'chord'))
+    parser.add_argument('values', nargs='*')
+    args = parser.parse_args()
+    x = c.CDLL(ctypes.util.find_library('X11'))
+    xt = c.CDLL(ctypes.util.find_library('Xtst'))
+    dpy, win, atom = c.c_void_p, c.c_ulong, c.c_ulong
+    def signature(lib, name, result, *parameters):
+        fn = getattr(lib, name)
+        fn.restype = result
+        fn.argtypes = parameters
+        return fn
+    signature(x, 'XOpenDisplay', dpy, c.c_char_p)
+    signature(x, 'XCloseDisplay', c.c_int, dpy)
+    signature(x, 'XDefaultRootWindow', win, dpy)
+    signature(x, 'XQueryTree', c.c_int, dpy, win, c.POINTER(win), c.POINTER(win), c.POINTER(c.POINTER(win)), c.POINTER(c.c_uint))
+    signature(x, 'XFetchName', c.c_int, dpy, win, c.POINTER(c.c_void_p))
+    signature(x, 'XFree', c.c_int, c.c_void_p)
+    signature(x, 'XTranslateCoordinates', c.c_int, dpy, win, win, c.c_int, c.c_int, c.POINTER(c.c_int), c.POINTER(c.c_int), c.POINTER(win))
+    signature(x, 'XSetInputFocus', c.c_int, dpy, win, c.c_int, c.c_ulong)
+    signature(x, 'XStringToKeysym', atom, c.c_char_p)
+    signature(x, 'XKeysymToKeycode', c.c_ubyte, dpy, atom)
+    signature(x, 'XSync', c.c_int, dpy, c.c_int)
+    signature(xt, 'XTestFakeMotionEvent', c.c_int, dpy, c.c_int, c.c_int, c.c_int, c.c_ulong)
+    signature(xt, 'XTestFakeButtonEvent', c.c_int, dpy, c.c_uint, c.c_int, c.c_ulong)
+    signature(xt, 'XTestFakeKeyEvent', c.c_int, dpy, c.c_uint, c.c_int, c.c_ulong)
+    display = x.XOpenDisplay(args.display.encode())
+    if not display:
+        raise SystemExit('Cannot open explicit test display')
+    try:
+        root = x.XDefaultRootWindow(display)
+        def find(window, depth=0):
+            if depth > 32:
+                return None
+            name = c.c_void_p()
+            if x.XFetchName(display, window, c.byref(name)) and name.value:
+                text = c.string_at(name.value).decode(errors='replace')
+                x.XFree(name)
+                if text == args.title:
+                    return window
+            returned_root, parent, children, count = win(), win(), c.POINTER(win)(), c.c_uint()
+            if not x.XQueryTree(display, window, c.byref(returned_root), c.byref(parent), c.byref(children), c.byref(count)):
+                return None
+            try:
+                for i in range(count.value):
+                    result = find(children[i], depth + 1)
+                    if result:
+                        return result
+            finally:
+                if children:
+                    x.XFree(c.cast(children, c.c_void_p))
+            return None
+        target = find(root)
+        if target is None:
+            raise SystemExit('Named test window not found')
+        left, top, child = c.c_int(), c.c_int(), win()
+        if not x.XTranslateCoordinates(display, target, root, 0, 0, c.byref(left), c.byref(top), c.byref(child)):
+            raise SystemExit('Cannot resolve test window position')
+        if args.action == 'locate':
+            print(json.dumps(dict(window=target, x=left.value, y=top.value)))
+            return
+        x.XSetInputFocus(display, target, 1, 0)
+        def button(number):
+            xt.XTestFakeButtonEvent(display, number, 1, 0)
+            xt.XTestFakeButtonEvent(display, number, 0, 40)
+        if args.action in ('click', 'double-click', 'wheel', 'drag', 'move'):
+            if len(args.values) < 2:
+                raise SystemExit('Pointer action requires x y')
+            px, py = (int(v) for v in args.values[:2])
+            xt.XTestFakeMotionEvent(display, -1, left.value + px, top.value + py, 0)
+            if args.action == 'move':
+                pass
+            elif args.action == 'drag':
+                if len(args.values) != 4:
+                    raise SystemExit('Drag requires x1 y1 x2 y2')
+                end_x, end_y = (int(v) for v in args.values[2:])
+                xt.XTestFakeButtonEvent(display, 1, 1, 0)
+                for step in range(1, 13):
+                    move_x = round(px + (end_x - px) * step / 12)
+                    move_y = round(py + (end_y - py) * step / 12)
+                    xt.XTestFakeMotionEvent(display, -1, left.value + move_x, top.value + move_y, 20)
+                xt.XTestFakeButtonEvent(display, 1, 0, 40)
+            elif args.action == 'wheel':
+                delta = int(args.values[2]) if len(args.values) > 2 else 1
+                for _ in range(min(abs(delta), 100)):
+                    button(5 if delta > 0 else 4)
+            else:
+                button(1)
+                if args.action == 'double-click':
+                    button(1)
+        else:
+            pressed = []
+            for key in args.values:
+                code = x.XKeysymToKeycode(display, x.XStringToKeysym(key.encode()))
+                if not code:
+                    raise SystemExit('Unknown key: ' + key)
+                xt.XTestFakeKeyEvent(display, code, 1, 0)
+                if args.action == 'chord':
+                    pressed.append(code)
+                else:
+                    xt.XTestFakeKeyEvent(display, code, 0, 40)
+            for code in reversed(pressed):
+                xt.XTestFakeKeyEvent(display, code, 0, 40)
+        x.XSync(display, 0)
+    finally:
+        x.XCloseDisplay(display)
+
+
+if __name__ == '__main__':
+    main()

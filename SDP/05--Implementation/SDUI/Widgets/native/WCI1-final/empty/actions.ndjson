@@ -1,0 +1,29 @@
+{"kind": "candidate", "value": {"binary": "/tmp/sdui-wci1-native-final", "sha256": "d97eac538dbb80816da863e07e3ec4aa4bb6ef0416b62c2e37211591a8badbd8", "display": ":189", "variant": "empty"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["key", "Tab"]}
+{"kind": "x11-input", "value": ["key", "Escape"]}
+{"kind": "fixture-command", "value": "complete page/body/nav:1:1 success"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "empty root stays paused after Escape and late delivery", "passed": true}}
+{"kind": "screenshot", "value": "root-paused.png"}
+{"kind": "x11-input", "value": ["key", "r"]}
+{"kind": "check", "value": {"name": "R restarts paused root with a fresh request", "passed": true}}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "reload pauses root without automatic request", "passed": true}}
+{"kind": "x11-input", "value": ["key", "r"]}
+{"kind": "check", "value": {"name": "R recovers root after compatible reload", "passed": true}}
+{"kind": "fixture-command", "value": "complete page/body/nav:1:2 success"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "pre-reload completion cannot replace current root request", "passed": true}}
+{"kind": "x11-input", "value": ["key", "Escape"]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["click", 80, 62]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "pointer Load restarts canceled empty root once", "passed": true}}
+{"kind": "fixture-command", "value": "complete page/body/nav:2:3 error"}
+{"kind": "fixture-command", "value": "complete page/body/nav:2:4 empty"}
+{"kind": "check", "value": {"name": "empty success is loaded content, not a new request", "passed": true}}
+{"kind": "screenshot", "value": "root-empty-success.png"}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}
