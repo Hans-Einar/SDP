@@ -73,7 +73,7 @@ func (s *Service) RecordInput(c Caller, q InputRequest) (Result, error) {
 		return Result{}, fail("invalid_request", "invalid receive timestamp")
 	}
 	switch v.Kind {
-	case "launch", "steer", "interrupt", "scope-change":
+	case "launch", "steer", "interrupt", "scope-change", "approval":
 	default:
 		return Result{}, fail("invalid_request", "unsupported owner input kind")
 	}
@@ -158,6 +158,14 @@ func (s *Service) RecordInput(c Caller, q InputRequest) (Result, error) {
 				return Result{}, fail("conflict", "steering needs observed active work")
 			}
 		}
+		if v.Kind == "approval" {
+			if e := checkApprovalInput(r, v); e != nil {
+				return Result{}, e
+			}
+			if context.Revision != r.InputRevision || len(context.Conditions) > 0 {
+				return Result{}, fail("stale_revision", "approval coverage changed")
+			}
+		}
 		v.State = "prepared"
 		r.Inputs = append(r.Inputs, v)
 	} else {
@@ -174,6 +182,14 @@ func (s *Service) RecordInput(c Caller, q InputRequest) (Result, error) {
 		}
 		switch q.Action {
 		case "claim":
+			if v.Kind == "approval" {
+				if e := checkApprovalInput(r, v); e != nil {
+					return Result{}, e
+				}
+				if context.Revision != r.InputRevision || len(context.Conditions) > 0 {
+					return Result{}, fail("stale_revision", "approval coverage changed")
+				}
+			}
 			if v.Kind == "launch" && r.State != "ready" || v.Kind == "steer" && r.State != "running" {
 				return Result{}, fail("conflict", "routine state changed before send")
 			}
@@ -193,6 +209,9 @@ func (s *Service) RecordInput(c Caller, q InputRequest) (Result, error) {
 			}
 			v.State = "sending"
 		case "ack":
+			if v.Kind == "approval" {
+				return Result{}, fail("reconciliation_required", "approval response needs observed closure")
+			}
 			if len(r.Attempts) == 0 {
 				return Result{}, fail("missing_coverage", "acknowledgment needs a mapped attempt")
 			}
@@ -205,6 +224,28 @@ func (s *Service) RecordInput(c Caller, q InputRequest) (Result, error) {
 			}
 			v.State = "acknowledged"
 		case "resolve":
+			if old.Kind == "approval" {
+				var reply ApprovalReply
+				if Decode([]byte(old.Payload), &reply) != nil || (old.State != "sending" && old.State != "uncertain") {
+					return Result{}, fail("conflict", "approval not awaiting resolution")
+				}
+				found := false
+				for _, a := range r.Attempts {
+					if a.ID != old.AttemptID || a.Epoch != old.Epoch {
+						continue
+					}
+					for _, o := range a.Events {
+						if o.Kind == "approval.resolved" && o.ItemID == reply.RequestID && o.Epoch == old.Epoch && o.TurnID == old.TurnID {
+							found = true
+						}
+					}
+				}
+				if !found {
+					return Result{}, fail("reconciliation_required", "approval closure not observed")
+				}
+				v.State = "acknowledged"
+				break
+			}
 			if old.Kind != "launch" && old.Kind != "steer" {
 				return Result{}, fail("reconciliation_required", "interrupt outcomes need their own observed resolution")
 			}

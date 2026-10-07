@@ -55,7 +55,7 @@ do not turn a self-check into an independent review by changing its label.
 | --- | --- | --- | --- |
 | PGI1-M1 Core and inspection | Selected project + status request yields context/route without creating work; authorized fixture Maintenance creates a pinned durable run visible through a small CLI read/transition path | PG-A01/02/03/08/10/18; exact JSON schemas; core restart and stale-input tests | delivered; bounded core/CLI verified |
 | PGI2-M1 Adapters and protocol | Thin local MCP adapter and controller protocol adapter use the core; inspect compatible schemas, negotiate the selected SDK/host, capture bounded recorded events and reconcile mapped attempts | PG-A10/11/12/15/18; actual protocol negotiation and failure outputs; no simulated-as-live claims | delivered; bounded adapters and real idle protocol probe verified |
-| PGI3-M1 Owner workflow | Minimal terminal client recovers Session, submits/steers work, presents route/status and launches the authorized fresh Master with bounded context; applicable child/review mapping is observed | PG-A02/04/05/11/12/13/15; managed account mode and one useful bounded task | in-progress; live C2 checkpoint verified, approval interaction and provenance gaps remain |
+| PGI3-M1 Owner workflow | Minimal terminal client recovers Session, submits/steers work, presents route/status and launches the authorized fresh Master with bounded context; applicable child/review mapping is observed | PG-A02/04/05/11/12/13/15; managed account mode and one useful bounded task | in-progress; live C3 approval/report checkpoint verified; reattachment/provenance gaps remain |
 | PGI4-M1 Evidence and reconciliation | Candidate-bound evidence, review/rework and checked publication produce one durable Session outcome and correct card/plan disposition | PG-A06/07/09/13/16/17; crash and concurrent-change fixtures | planned |
 | PGI5-M1 Integrated verification | The same isolated task survives observer close, interruption/recovery and scope correction with unrelated work preserved | All PG-A01–18 at their stated level; independent review and exact-candidate evidence | planned |
 
@@ -106,13 +106,13 @@ PGI2-M1 is also delivered: [adapter evidence](Evidence-PGI2.md),
 [candidate manifest](candidate-PGI2.json) and [protocol pin](protocol-PGI2.json)
 record shared-core MCP parity, bounded observation/recovery fixtures and actual
 Codex 0.160.1 / MCP 2025-11-25 negotiation with SDK v1.8.0. No model turn is sent.
-PGI3-C2 now verifies real managed-account execution, steering, observer closure,
-interruption, continuation in a new attempt and mapped lost-acknowledgment recovery.
-[Live checkpoint evidence](Evidence-PGI3-C2.md) distinguishes tested behavior from
-remaining acceptance. Full Go race tests, vet and protocol/application schema
-checks pass. The actual MCP report requires approval under the current never
-policy; no bypass or automatic grant is selected. PGI3 remains in progress for
-owner interaction, executing-turn reattachment and applicable provenance evidence.
+PGI3-C3 now adds explicit per-request MCP approval to C2's real workflow and
+correlated recovery. [C3 evidence](Evidence-PGI3-C3.md) records the actual observed
+prompt, exact test-driver response, host closure and successful assignment-bound
+report to verifying. Final affected race tests, compiled core CLI, vet and schema
+checks pass. Default never remains; explicit ask uses the stable owner-reviewed
+policy. No permanent grant or work acceptance is inferred. Executing-turn
+reattachment and applicable role/provenance evidence keep PGI3 in progress.
 PGI4/PGI5 publication and independent review remain planned.
 
 The milestone history now resides in the original repository on
@@ -208,3 +208,17 @@ PGI4 and PGI5 retain evidence publication and independent integrated verificatio
 [PGI3-C2 evidence](Evidence-PGI3-C2.md) distinguishes these results from C1 fixtures.
 
 2026-10-07T22:07:07.491506+00:00: EVT-PM-SDP-000153 — PGI3-C2 real workflow and correlated lost-response recovery verified; approval interaction and remaining provenance/recovery obligations keep PGI3 active. Persistent worktree replaces historical Git restriction.
+
+
+## PGI3-C3 selection and result — 2026-10-08
+
+The owner continued after C2's recommendation, selecting the explicit interaction
+and disposable verification. This does not authorize arbitrary future requests.
+C3 implements and verifies the request/response path, exact approved-call revision
+handling and bounded contention recovery. Initial policy and lock failures are
+retained in evidence, not relabeled as passing workflows. The final actual report
+reached verifying and all excluded fixture files were preserved. Next: remaining
+PGI3 executing-turn reattachment and applicable provenance evidence, then PGI4/PGI5.
+The same branch/commit policy applies; no merge, push or release is selected.
+
+2026-10-07T23:07:29.127244+00:00: EVT-PM-SDP-000156 — PGI3-C3 selected and verified: explicit per-request MCP approval/report and bounded contention recovery. PGI3 remains active for executing-turn reattachment and applicable provenance.

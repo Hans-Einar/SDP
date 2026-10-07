@@ -105,6 +105,11 @@ func validObservation(o Observation) bool {
 		return opaque(o.TurnID) && o.ItemID == "" && o.Text == "" && o.Phase == "" && o.Status == "running"
 	case "turn.completed":
 		return opaque(o.TurnID) && o.ItemID == "" && o.Text == "" && o.Phase == "" && (o.Status == "completed" || o.Status == "failed" || o.Status == "interrupted")
+	case "approval.requested":
+		var p ApprovalPrompt
+		return opaque(o.TurnID) && opaque(o.ItemID) && o.Phase == "" && o.Status == "" && Decode([]byte(o.Text), &p) == nil && p.Valid() && p.RequestID == o.ItemID && p.Epoch == o.Epoch && p.TurnID == o.TurnID
+	case "approval.resolved":
+		return opaque(o.TurnID) && opaque(o.ItemID) && o.Text == "" && o.Phase == "" && o.Status == ""
 	case "userMessage":
 		return opaque(o.TurnID) && opaque(o.ItemID) && o.Phase == "" && o.Status == ""
 	case "agentMessage":
@@ -207,6 +212,12 @@ func (s *Service) RecordHost(caller Caller, q HostRequest) (Result, error) {
 	at := &r.Attempts[a]
 	if at.ThreadID != q.ThreadID || at.HostVersion != q.HostVersion {
 		return Result{}, fail("unauthorized", "observed host identity mismatch")
+	}
+	if o.Kind == "approval.requested" {
+		var p ApprovalPrompt
+		if Decode([]byte(o.Text), &p) != nil || p.ThreadID != q.ThreadID || p.Request.RunID != r.ID || p.Request.ProjectRef != s.project || p.Request.CheckoutID != state.CheckoutID || p.Request.InputRevision != r.InputRevision || at.Status != "running" || r.State != "running" {
+			return Result{}, fail("unauthorized", "approval request is outside current running assignment")
+		}
 	}
 	if q.Action == "observe" && at.Status == "unknown" {
 		return Result{}, fail("reconciliation_required", "disconnected attempt requires observed history")

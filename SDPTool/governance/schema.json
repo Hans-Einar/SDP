@@ -653,7 +653,9 @@
             "turn.completed",
             "userMessage",
             "agentMessage",
-            "tool.completed"
+            "tool.completed",
+            "approval.requested",
+            "approval.resolved"
           ]
         },
         "turnId": {
@@ -928,7 +930,8 @@
             "launch",
             "steer",
             "interrupt",
-            "scope-change"
+            "scope-change",
+            "approval"
           ]
         },
         "text": {

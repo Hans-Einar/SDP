@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn: T008 — live PGI3 checkpoint verified; milestone remains open. S3 is active
+Latest recorded turn: T009 — explicit MCP approval/report verified; PGI3 remains open. S3 is active
 under PLAN-SDP-0018; PGI1 core/CLI and PGI2 adapters are verified at their bounded levels.
 The app-server client and complete participating capabilities remain unfinished.
 Sequence only; synthetic dates represent order, not estimates or elapsed time.
@@ -23,7 +23,7 @@ gantt
 | --- | --- | --- | --- | --- |
 | completed | S1 | Recover skills, studies, card dependencies and ownership | Owner request, 2026-10-03 | Assessment below; RGS2 reused |
 | completed | S2 | Design the smallest common routing, run, Session and client contract | Owner continuation, T002 | [PGD1 / PLAN-SDP-0017](../04--Design/SDPTool/ProjectGovernance/Plan.md), contract, acceptance cases and protocol inspection |
-| active | S3 | Deliver one end-to-end workflow through SDPTool and the Codex client | S2 complete; [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) active | PGI1/PGI2 delivered; PGI3-C2 live checkpoint verified; owner interaction and remaining recovery/provenance gaps open |
+| active | S3 | Deliver one end-to-end workflow through SDPTool and the Codex client | S2 complete; [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) active | PGI1/PGI2 delivered; PGI3-C3 live approval/report verified; reattachment/provenance gaps open |
 | planned | S4 | Verify interruption, resume, scope change and evidence disposition | S3 candidate | Evidence required before wider use |
 | planned | S5 | Project recorded activity into the KB043 timeline | Reliable S3/S4 capture and selected rendering scope | Full timeline remains deferred |
 
@@ -34,8 +34,8 @@ gantt
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
 | Snapshot date | 2026-10-08 |
 | Current step | S3 / PGI1-M1 and PGI2-M1 delivered; PGI3 in progress |
-| Proposed next step | Resolve the measured MCP approval interaction, then remaining PGI3 recovery/provenance obligations |
-| Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access |
+| Proposed next step | PGI3 executing-turn reattachment and applicable role/provenance evidence |
+| Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction |
 
 ## Goal and ownership
 
@@ -408,9 +408,52 @@ and applicable role/provenance evidence; PGI4/PGI5 remain planned. This is a man
 work summary, not a captured final response. Current conversation host IDs and
 exact owner input timing are unknown.
 
+### T009 — 2026-10-08: continue explicit approval interaction
+
+Owner input summary: continue after C2 and its explicit per-request approval
+recommendation. Selected PGI3-C3 within PLAN-SDP-0018; this selects implementation
+and disposable verification, not acceptance of arbitrary runtime requests.
+Recovered clean commit 37a09a6 in the persistent worktree. Skills reused: SDP,
+Master, Architect, Worker, Planning, Verifier, document workflow and OpenAI Docs.
+Measured the installed host's actual MCP form request before implementation;
+recorded the bounded interaction and revision consequence in the design.
+Architect recorded the bounded request binding, no permanent grant and exact
+approved-call revision rule before Worker implementation. Verifier distinguishes
+fixture tests, real protocol inspection and actual model execution; Traceability
+is reused for the checkpoint links. No independent review is claimed.
+
+Work summary: C3 implements opt-in per-request accept/decline/cancel with exact
+stdin capture and observed closure. The real host rejected granular policy without
+experimental API; the final path uses stable on-request with user review and rejects
+unsupported requests. An initial live report reached verifying but its controller
+failed on competing core writes. Bounded pre-mutation contention retries fixed this
+without repeating any host send. Both failed trials remain explicit evidence.
+
+The final actual trial completed one bounded Maintenance task, presented the exact
+MCP report, recorded the test-driver acceptance, observed request closure and
+advanced the routine to verifying. Excluded fixture files stayed identical and the
+driver reran Go tests successfully. The test-driver decision is not a verbatim
+owner reply or completed-work acceptance. Final affected package race tests,
+compiled core CLI, vet and application/protocol schemas pass. Broad regression
+started before the final policy/contention corrections; its historical boundary is
+kept distinct from final affected-code verification. It also passes. Final
+management/Toolkit, source identity, ledger-prefix and Markdown-link checks pass.
+The actual mapped host history confirms one successful run_transition with no
+error. The checkpoint is committed on the persistent branch; no shared integration
+is claimed. See
+[C3 evidence](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-C3.md).
+
+S3 and KB038 remain in progress for executing-turn reattachment and applicable
+role/provenance evidence. Lost approval closure remains uncertain rather than
+being resent. PGI4/PGI5 remain planned. The persistent worktree keeps all records
+and the checkpoint together; shared work, historical ledger bytes and earlier
+unintegrated event-ID collisions are preserved. No merge/push/release is selected.
+This is a manual work summary, not a captured final answer.
+Manual summary; current conversation host IDs/timestamps are not available.
+
 ## Closeout
 
 The Session remains active. S1/S2 are complete; S3 includes delivered PGI1 core/CLI
-and PGI2 adapters. PGI3-C2 verifies the live workflow subset and mapped lost-response
-recovery; approval interaction and remaining recovery/provenance obligations keep
-PGI3 open. PGI4/PGI5 and wider capability closure remain planned.
+and PGI2 adapters. PGI3-C3 verifies explicit approval/reporting alongside C2 live workflow and mapped
+lost-response recovery. Executing-turn reattachment and applicable provenance
+obligations keep PGI3 open. PGI4/PGI5 and wider capability closure remain planned.

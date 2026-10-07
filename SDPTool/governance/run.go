@@ -182,7 +182,7 @@ func (s *Service) Transition(caller Caller, q TransitionRequest) (Result, error)
 	if !ok {
 		return out, fail("missing_coverage", "run not found")
 	}
-	if q.ExpectedRevision != r.Revision {
+	if q.ExpectedRevision != r.Revision && !approvedRevision(state, r, caller, q) {
 		return out, &Error{Code: "stale_revision", Message: "run revision changed", CurrentRevision: r.Revision}
 	}
 	c, e := s.Context(r.Selection)

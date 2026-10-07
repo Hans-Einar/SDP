@@ -7,14 +7,24 @@ import (
 
 // StartWorkThread creates a fresh persistent thread with explicitly selected
 // permissions. The controller does not infer permission to widen its sandbox.
-func (c *Client) StartWorkThread(ctx context.Context, cwd, sandbox, instructions string, config map[string]any) (Thread, error) {
+func (c *Client) StartWorkThread(ctx context.Context, cwd, sandbox, instructions, approvals string, config map[string]any) (Thread, error) {
 	if sandbox != "read-only" && sandbox != "workspace-write" {
 		return Thread{}, fmt.Errorf("unsupported pilot sandbox")
+	}
+	var policy any = "never"
+	if approvals != "" && approvals != "never" && approvals != "ask" {
+		return Thread{}, fmt.Errorf("unsupported approval mode")
+	}
+	c.approvalMu.Lock()
+	c.ask = approvals == "ask"
+	c.approvalMu.Unlock()
+	if approvals == "ask" {
+		policy = "on-request" // Stable API; the adapter still refuses every unsupported request.
 	}
 	var out struct {
 		Thread Thread `json:"thread"`
 	}
-	e := c.call(ctx, "thread/start", map[string]any{"cwd": cwd, "ephemeral": false, "sandbox": sandbox, "approvalPolicy": "never", "developerInstructions": instructions, "config": map[string]any{"mcp_servers": config}}, &out)
+	e := c.call(ctx, "thread/start", map[string]any{"cwd": cwd, "ephemeral": false, "sandbox": sandbox, "approvalPolicy": policy, "approvalsReviewer": "user", "developerInstructions": instructions, "config": map[string]any{"mcp_servers": config}}, &out)
 	if e == nil && (out.Thread.ID == "" || out.Thread.Status.Type != "idle") {
 		e = fmt.Errorf("thread is not observed idle")
 	}

@@ -40,6 +40,11 @@ func TestMain(m *testing.M) {
 			if q.ID == nil {
 				continue
 			}
+			if q.Method == "" && os.Getenv("SDP_PGI3_APPROVAL") != "" {
+				encoder.Encode(map[string]any{"method": "serverRequest/resolved", "params": map[string]any{"threadId": "thread", "requestId": 901}})
+				encoder.Encode(map[string]any{"method": "turn/completed", "params": map[string]any{"threadId": "thread", "turn": map[string]any{"id": "turn", "status": "completed"}}})
+				continue
+			}
 			var result any
 			switch q.Method {
 			case "initialize":
@@ -60,6 +65,25 @@ func TestMain(m *testing.M) {
 			}
 			encoder.Encode(map[string]any{"id": q.ID, "result": result})
 			if q.Method == "turn/start" {
+				if root := os.Getenv("SDP_PGI3_APPROVAL"); root != "" {
+					var wire struct {
+						Params struct {
+							Input []struct {
+								Text string `json:"text"`
+							} `json:"input"`
+						} `json:"params"`
+					}
+					json.Unmarshal(scanner.Bytes(), &wire)
+					var payload struct {
+						RunID string `json:"runId"`
+					}
+					json.Unmarshal([]byte(wire.Params.Input[0].Text), &payload)
+					service, _ := governance.New(root, filepath.Join(root, "SDP"), "trial", filepath.Join(filepath.Dir(root), "state"))
+					r, _ := service.Read(payload.RunID)
+					request := governance.TransitionRequest{Schema: governance.Schema, ProjectRef: r.ProjectRef, CheckoutID: r.CheckoutID, RunID: r.Run.ID, InputRevision: r.Run.InputRevision, OperationID: governancehost.UUID(), ExpectedRevision: r.Run.Revision, Action: "report", Reason: "compiled fixture"}
+					encoder.Encode(map[string]any{"id": 901, "method": "mcpServer/elicitation/request", "params": map[string]any{"threadId": "thread", "turnId": "turn", "serverName": "sdp_governance", "mode": "form", "message": `Allow the sdp_governance MCP server to run tool "run_transition"?`, "requestedSchema": map[string]any{"type": "object", "properties": map[string]any{}}, "_meta": map[string]any{"codex_approval_kind": "mcp_tool_call", "tool_params": request}}})
+					continue
+				}
 				encoder.Encode(map[string]any{"method": "item/completed", "params": map[string]any{"threadId": "thread", "turnId": "turn", "item": item}})
 				encoder.Encode(map[string]any{"method": "turn/completed", "params": map[string]any{"threadId": "thread", "turn": map[string]any{"id": "turn", "status": "completed"}}})
 			}
@@ -186,5 +210,73 @@ func TestCompiledOwnerCommandAndRecovery(t *testing.T) {
 		if e != nil || !bytes.Equal(b, current) {
 			t.Fatal("project fixture changed", path, e)
 		}
+	}
+}
+
+func TestCompiledApprovalInteraction(t *testing.T) {
+	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
+	defer cancel()
+	binary := filepath.Join(t.TempDir(), "sdp-controller")
+	if b, e := exec.CommandContext(ctx, filepath.Join(runtime.GOROOT(), "bin", "go"), "build", "-o", binary, "../cmd/sdp-controller").CombinedOutput(); e != nil {
+		t.Fatal(e, string(b))
+	}
+	host, _ := os.Executable()
+	for _, decision := range []string{"accept", "decline"} {
+		t.Run(decision, func(t *testing.T) {
+			s, sel, q := fixture(t)
+			bind(t, s, &q)
+			r, e := s.Start(governance.LocalController(), q)
+			if e != nil {
+				t.Fatal(e)
+			}
+			coverage, _ := s.Context(sel)
+			state := filepath.Join(filepath.Dir(coverage.Root), "state")
+			message := filepath.Join(t.TempDir(), "owner.txt")
+			os.WriteFile(message, []byte("Fix the selected fixture"), 0600)
+			cmd := exec.CommandContext(ctx, binary, "run", "--project", coverage.Root, "--state", state, "--run", r.Run.ID, "--codex", host, "--message", message, "--mcp-binary", "/fixture/mcp", "--approvals", "ask")
+			cmd.Env = append(os.Environ(), "SDP_PGI3_FAKE_HOST=1", "SDP_PGI3_APPROVAL="+coverage.Root)
+			in, _ := cmd.StdinPipe()
+			out, _ := cmd.StdoutPipe()
+			var stderr bytes.Buffer
+			cmd.Stderr = &stderr
+			if e = cmd.Start(); e != nil {
+				t.Fatal(e)
+			}
+			scanner := bufio.NewScanner(out)
+			scanner.Buffer(make([]byte, 4096), 1<<20)
+			answered := false
+			for scanner.Scan() {
+				var envelope struct {
+					Approval *governance.ApprovalPrompt `json:"approval"`
+				}
+				json.Unmarshal(scanner.Bytes(), &envelope)
+				if envelope.Approval == nil {
+					continue
+				}
+				p := envelope.Approval
+				// A separate observer can inspect the pending decision without taking a lease.
+				status, e := exec.CommandContext(ctx, binary, "status", "--project", coverage.Root, "--state", state, "--run", r.Run.ID).CombinedOutput()
+				if e != nil || !bytes.Contains(status, []byte("pendingApprovals")) {
+					t.Fatal(string(status), e)
+				}
+				json.NewEncoder(in).Encode(map[string]any{"action": "approval", "approval": governance.ApprovalReply{RequestID: p.RequestID, Epoch: p.Epoch, ThreadID: p.ThreadID, TurnID: p.TurnID, Decision: decision}})
+				answered = true
+			}
+			in.Close()
+			if e = cmd.Wait(); e != nil {
+				t.Fatal(e, stderr.String())
+			}
+			if !answered {
+				t.Fatal("no observed prompt")
+			}
+			r, e = s.Read(r.Run.ID)
+			if e != nil || len(r.Run.Inputs) != 2 || r.Run.Inputs[1].State != "acknowledged" || r.Run.State != "running" {
+				t.Fatal(r, e)
+			}
+			input, e := s.OwnerInput(governance.LocalController(), r.Run.ID, r.Run.Inputs[1].ID)
+			if e != nil || !bytes.Contains([]byte(input.Text), []byte(decision)) {
+				t.Fatal(input, e)
+			}
+		})
 	}
 }

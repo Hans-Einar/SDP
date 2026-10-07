@@ -16,24 +16,43 @@ import (
 type Host interface {
 	AccountMode(context.Context) (string, error)
 	MCPTools(context.Context, string, string) ([]string, string, error)
-	StartWorkThread(context.Context, string, string, string, map[string]any) (governancehost.Thread, error)
+	StartWorkThread(context.Context, string, string, string, string, map[string]any) (governancehost.Thread, error)
 	StartTurn(context.Context, string, string, string) (governancehost.Turn, error)
 	SteerTurn(context.Context, string, string, string, string) error
 	InterruptTurn(context.Context, string, string) error
 }
 
 type Controller struct {
-	Service                                   *governance.Service
-	Host                                      Host
-	Root, StateDir, MCPBinary, Epoch, Sandbox string
+	Service                                              *governance.Service
+	Host                                                 Host
+	Root, StateDir, MCPBinary, Epoch, Sandbox, Approvals string
 }
 
-func (c *Controller) input(runID, action string, v governance.OwnerInput) (governance.Result, error) {
-	r, e := c.Service.Read(runID)
-	if e != nil {
-		return r, e
+// Retry only bookkeeping rejected before mutation. Never retry a host effect.
+func retryRecord(f func() (governance.Result, error)) (r governance.Result, e error) {
+	for i := 0; i < 100; i++ {
+		r, e = f()
+		if e == nil {
+			return r, nil
+		}
+		ge, ok := e.(*governance.Error)
+		if !ok || (ge.Code != "busy" && ge.Code != "stale_revision") {
+			return r, e
+		}
+		if i < 99 {
+			time.Sleep(20 * time.Millisecond)
+		}
 	}
-	return c.Service.RecordInput(governance.LocalController(), governance.InputRequest{Schema: governance.Schema, ProjectRef: r.ProjectRef, CheckoutID: r.CheckoutID, RunID: runID, OperationID: governancehost.UUID(), ExpectedRevision: r.Run.Revision, InputRevision: r.Run.InputRevision, Action: action, Input: v})
+	return r, e
+}
+func (c *Controller) input(runID, action string, v governance.OwnerInput) (governance.Result, error) {
+	return retryRecord(func() (governance.Result, error) {
+		r, e := c.Service.Read(runID)
+		if e != nil {
+			return r, e
+		}
+		return c.Service.RecordInput(governance.LocalController(), governance.InputRequest{Schema: governance.Schema, ProjectRef: r.ProjectRef, CheckoutID: r.CheckoutID, RunID: runID, OperationID: governancehost.UUID(), ExpectedRevision: r.Run.Revision, InputRevision: r.Run.InputRevision, Action: action, Input: v})
+	})
 }
 func (c *Controller) transition(runID, action, reason string) (governance.Result, error) {
 	r, e := c.Service.Read(runID)
@@ -43,11 +62,13 @@ func (c *Controller) transition(runID, action, reason string) (governance.Result
 	return c.Service.Transition(governance.LocalController(), governance.TransitionRequest{Schema: governance.Schema, ProjectRef: r.ProjectRef, CheckoutID: r.CheckoutID, RunID: runID, OperationID: governancehost.UUID(), ExpectedRevision: r.Run.Revision, InputRevision: r.Run.InputRevision, Action: action, Reason: reason})
 }
 func (c *Controller) record(runID, attemptID, threadID, action string, o governance.Observation) (governance.Result, error) {
-	r, e := c.Service.Read(runID)
-	if e != nil {
-		return r, e
-	}
-	return c.Service.RecordHost(governance.LocalController(), governance.HostRequest{Schema: governance.Schema, ProjectRef: r.ProjectRef, CheckoutID: r.CheckoutID, RunID: runID, OperationID: governancehost.UUID(), ExpectedRevision: r.Run.Revision, InputRevision: r.Run.InputRevision, Action: action, AttemptID: attemptID, HostVersion: governancehost.HostVersion, ThreadID: threadID, Observation: o})
+	return retryRecord(func() (governance.Result, error) {
+		r, e := c.Service.Read(runID)
+		if e != nil {
+			return r, e
+		}
+		return c.Service.RecordHost(governance.LocalController(), governance.HostRequest{Schema: governance.Schema, ProjectRef: r.ProjectRef, CheckoutID: r.CheckoutID, RunID: runID, OperationID: governancehost.UUID(), ExpectedRevision: r.Run.Revision, InputRevision: r.Run.InputRevision, Action: action, AttemptID: attemptID, HostVersion: governancehost.HostVersion, ThreadID: threadID, Observation: o})
+	})
 }
 func now() string { return time.Now().UTC().Format(time.RFC3339Nano) }
 
@@ -78,7 +99,7 @@ func (c *Controller) Launch(ctx context.Context, runID, text string) (result gov
 		return r, e
 	}
 	instructions := "You are the fresh Master for one explicitly authorized SDP Maintenance assignment. Read the selected Session, authority, plan, card, AGENTS and relevant SDP skills before acting. Preserve writable/excluded boundaries and unrelated work. Native delegation is not granted by this launch; do not spawn children. Report candidate, tests, remaining gaps and observed outcome. Agent claims do not grant owner approval or independent review. Do not publish canonical management/Session records or mark the work complete; evidence publication is a later controller capability. Use assignment-bound MCP reads and report/fail/scope-change only."
-	payload, e := json.Marshal(map[string]any{"ownerInput": text, "assignment": r.Run.Assignment, "context": coverage, "runId": runID, "instructions": instructions, "sandbox": c.Sandbox, "approvalPolicy": "never"})
+	payload, e := json.Marshal(map[string]any{"ownerInput": text, "assignment": r.Run.Assignment, "context": coverage, "runId": runID, "instructions": instructions, "sandbox": c.Sandbox, "approvalMode": c.Approvals})
 	if e != nil {
 		return r, e
 	}
@@ -97,7 +118,7 @@ func (c *Controller) Launch(ctx context.Context, runID, text string) (result gov
 		}
 	}()
 	config := map[string]any{"sdp_governance": map[string]any{"command": c.MCPBinary, "args": []string{"--project", c.Root, "--state", c.StateDir, "--run", runID, "--attempt", v.AttemptID, "--epoch", c.Epoch}}}
-	thread, e := c.Host.StartWorkThread(ctx, c.Root, c.Sandbox, instructions, config)
+	thread, e := c.Host.StartWorkThread(ctx, c.Root, c.Sandbox, instructions, c.Approvals, config)
 	if e != nil {
 		return r, e
 	}

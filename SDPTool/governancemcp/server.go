@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"time"
 
 	"github.com/Hans-Einar/SDP/SDPTool/governance"
 	"github.com/modelcontextprotocol/go-sdk/mcp"
@@ -46,6 +47,20 @@ func New(service *governance.Service, runID, attemptID, epoch string) (*mcp.Serv
 					return nil, e
 				}
 				value, e := f(req.Params.Arguments)
+				// Core busy means no mutation occurred. Retain exact tool arguments
+				// and operation ID, and wait only for short local bookkeeping contention.
+				for attempt := 0; attempt < 99; attempt++ {
+					var busy *governance.Error
+					if !errors.As(e, &busy) || busy.Code != "busy" {
+						break
+					}
+					select {
+					case <-ctx.Done():
+						return nil, ctx.Err()
+					case <-time.After(20 * time.Millisecond):
+					}
+					value, e = f(req.Params.Arguments)
+				}
 				if e != nil {
 					var d *governance.Error
 					if !errors.As(e, &d) {

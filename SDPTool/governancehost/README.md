@@ -35,7 +35,9 @@ bounded capture profile, not full attachment transport.
 
 The queue holds at most 256 observations. Overflow or malformed captured events
 close the connection with an observation gap; they are never silently truncated.
-Host requests are refused by this PGI2 adapter, not automatically approved.
+Host requests default to refusal. Explicit PGI3 ask mode exposes only the measured
+SDP MCP approval form and accepts a correlated owner answer; it never grants
+approval automatically.
 ReceivedAt is a local receive timestamp; no host occurrence time or active effort
 is inferred. Epoch changes retain a gap even when history establishes current state.
 
@@ -80,3 +82,13 @@ submission. Host approval refusals are preserved; the live run_transition call
 required approval under the selected never policy. This is still not independent
 review or evidence acceptance. Historical 0.160.1 stores remain readable, but a
 new 0.161.0 connection cannot silently relabel an old bound attempt's host version.
+
+
+PGI3-C3 supports the measured mcpServer/elicitation/request form for the assignment's
+run_transition tool, retaining a bounded message and exact transition arguments.
+Transport-owned request IDs distinguish JSON integers and strings. Pending IDs are
+single-use, bound to thread/turn/epoch, and invalidated on resolution or turn end.
+Up to 16 pending requests share the existing bounded observation queue. Replies
+omit persistence metadata. Only serverRequest/resolved establishes observed closure.
+Actual schema export includes granular approval policy, but the host gates it on
+experimentalApi; explicit ask uses the stable on-request/user path instead.

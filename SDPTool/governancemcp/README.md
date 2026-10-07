@@ -46,3 +46,9 @@ created by this adapter.
 Tests cover core/MCP result parity, retry receipts, cross-assignment and controller
 action refusal, strict inputs, and a compiled stdio server negotiated by the SDK
 client. The live controller probe separately verifies Codex tool discovery.
+
+PGI3-C3 keeps this authority unchanged while the controller handles explicit host
+approval. Brief checkout-lock contention retries the unchanged tool request and
+operation ID (at most 100 attempts, 20 ms delays), respecting MCP cancellation.
+Stale revisions, changed arguments and semantic refusals are not automatically
+retried. Host approval never grants controller-only actions.

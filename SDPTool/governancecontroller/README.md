@@ -4,8 +4,8 @@ This package coordinates the shared governance core and the pinned app-server
 adapter for an **existing authorized Maintenance run**. It adds durable exact owner
 input, one fresh Master turn, in-turn steering, interruption, scope-change stop and
 read-only status. The PGI3 live-workflow milestone remains **in progress**: real task/steering/interruption and correlated recovery now have
-evidence, while interactive host approvals and native role/reviewer mapping remain
-open. The implemented controller executes directly without spawning children.
+evidence. Explicit per-request SDP MCP approval is implemented; executing-turn
+reattachment and native role/reviewer mapping remain open. The implemented controller executes directly without spawning children.
 
 Build from SDPTool:
 
@@ -26,7 +26,8 @@ Then invoke:
 The message file supplies exact owner text. The default sandbox is read-only.
 `--sandbox workspace-write` is an explicit launcher choice for an already authorized
 write assignment; inherited enclosing host restrictions still apply. The pilot
-uses approvalPolicy=never and refuses host approval requests. It does not enable
+defaults to `--approvals never` and refuses host approval requests. An explicit
+`--approvals ask` enables the bounded interaction below. It does not enable
 network access, change account mode, sign in, choose a model or grant delegation.
 Only observed ChatGPT account mode permits submission. This is not a claim that
 account inspection proves model entitlement.
@@ -57,7 +58,9 @@ loss records uncertainty; a separate observer can inspect the durable state:
 /tmp/sdp-controller recover --project /absolute/project --state /private/state --run RUN_UUID
 ```
 
-Status is read-only and starts no host. It reports the last recorded observation,
+Status is read-only and starts no host. When observed unanswered prompts exist,
+it emits an additional `pendingApprovals` JSON object after the run summary. Treat
+output as a JSON stream, including status. It reports the last recorded observation,
 including lastObservedAt, not an asserted live process state. Recover reads mapped
 host history, records the new connection epoch/gap and replays completed items
 without duplicates. It never resumes or resends a model turn. For launch/steer with a lost acknowledgment, recovery requires a unique observed
@@ -120,8 +123,45 @@ A local transport proxy dropped the actual turn/start response after submission;
 recovery matched the recorded clientId/text and acknowledged the one existing turn.
 The proxy did not replace model execution with a fixture or resubmit the request.
 
-The real MCP run_transition call returned an approval-required error under never.
-Do not change host policy automatically or route around the refusal. A completed
-model turn still leaves the routine unaccepted. The proposed next client behavior
-is explicit per-request owner interaction; it remains a separate selection until
-recorded. See the PGI3-C2 evidence for the exact tested boundaries and remaining work.
+The C2 MCP run_transition call returned an approval-required error under never.
+C3 adds the explicitly selected interaction below. A model turn or tool grant still
+does not complete the SDP routine or establish independent review.
+
+## Explicit per-request approval
+
+Add `--approvals ask` to a new `run` command. This selects stable host
+`approvalPolicy=on-request` with `approvalsReviewer=user`, while the sandbox stays
+as explicitly selected. The adapter supports only the measured SDP MCP
+run_transition form; other servers/tools, URL/secret forms, command/file permission
+requests and persistent grants are unsupported and refused. No experimental API,
+auto-review child, account configuration or global policy is enabled.
+
+A pending request produces an `approval` object containing requestId, epoch,
+threadId, turnId, message and the exact transition arguments. Review those arguments
+and copy its identities into one stdin response:
+
+```json
+{"action":"approval","approval":{"requestId":"0","epoch":"COPIED_EPOCH_UUID","threadId":"COPIED_THREAD","turnId":"COPIED_TURN","decision":"accept"}}
+```
+
+Choose `accept`, `decline` or `cancel`. Each answer applies once to that request;
+there is no session/always choice. Input is recorded exactly before sending. No
+answer, EOF or elapsed time grants anything. The input pipe must remain connected
+to answer; an independent status reader cannot take over the controller lease.
+Duplicate, cross-attempt, resolved and old-epoch replies refuse. Closing stdout
+still does not kill execution, but work can naturally wait for an unanswered prompt.
+
+A successful response write remains uncertain until serverRequest/resolved is
+observed. That establishes closure, not tool success: the tool may still refuse
+its arguments or state. Report succeeds only through the assignment-bound core.
+Approval bookkeeping can advance revisions; only the exact accepted call can cross
+exclusively observational/approval revisions with its decision state and coverage
+intact. Steering, replanning, argument changes and external coverage changes still
+refuse. Controller transitions retain strict CAS. Local observation/input bookkeeping
+waits briefly for busy/stale pre-mutation conflicts (up to 100 attempts, 20 ms
+delays). The MCP adapter retries busy only with its unchanged operation ID and
+arguments. Host effects are never retried by this contention handling.
+
+Transport loss never resends approval. History recovery does not reconstruct an
+unobserved resolved notification; such a decision stays explicitly uncertain.
+No owner acceptance or canonical Session/card publication follows from an approval.

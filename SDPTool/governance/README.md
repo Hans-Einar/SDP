@@ -182,3 +182,20 @@ and requires a recorded exact clientId/payload/turn match in the bound attempt;
 it acknowledges an uncertain launch/steer without sending it again. Conflicting
 correlation refuses, and acknowledgment never advances the SDP routine. Older
 observations without clientId are not retroactively promoted to correlation proof.
+
+
+## Observed approval decisions — PGI3-C3
+
+Controller-only approval.requested/resolved observations retain the bounded SDP MCP
+request and its closure. Approval owner inputs preserve exact stdin text separately
+from the typed outbound decision, use the existing prepare/claim/uncertain sequence,
+and resolve only after observed closure. No new agent mutation or management ledger
+is introduced. Approval does not imply tool execution, evidence acceptance or work
+completion; the default launch still refuses host approval requests.
+
+For an exact accepted agent transition, the core can retain the original operation
+ID/digest while crossing only recorded host observations and that reply's bookkeeping.
+Every intervening revision and unchanged decision/attempt/coverage state is checked.
+Changed arguments, steering, lifecycle mutations, reconnect and controller requests
+retain normal stale-revision refusal. This prevents the approval record itself
+from invalidating the queued call without weakening the normal CAS contract.

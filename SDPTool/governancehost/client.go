@@ -44,6 +44,9 @@ type response struct {
 	err error
 }
 type Client struct {
+	approvalMu    sync.Mutex
+	ask           bool
+	approvals     map[string]pendingApproval
 	cmd           *exec.Cmd
 	in            io.WriteCloser
 	out           io.ReadCloser
@@ -109,7 +112,7 @@ func Open(ctx context.Context, binary, cwd string) (*Client, error) {
 	return c, nil
 }
 func newClient(in io.WriteCloser, out io.ReadCloser) *Client {
-	c := &Client{in: in, out: out, responses: make(chan response, 1), Notifications: make(chan Event, 256), done: make(chan struct{}), Epoch: UUID()}
+	c := &Client{approvals: map[string]pendingApproval{}, in: in, out: out, responses: make(chan response, 1), Notifications: make(chan Event, 256), done: make(chan struct{}), Epoch: UUID()}
 	go func() {
 		defer out.Close()
 		defer close(c.Notifications)
@@ -127,14 +130,28 @@ func newClient(in io.WriteCloser, out io.ReadCloser) *Client {
 				return
 			}
 			if f.Method != "" {
-				if len(f.ID) > 0 { // PGI2 never approves a host request or fabricates input.
-					if e := c.send(map[string]any{"id": f.ID, "error": map[string]any{"code": -32601, "message": "unsupported PGI2 controller request"}}); e != nil {
-						c.stop(e)
-						return
+				var event Event
+				var keep bool
+				var e error
+				if len(f.ID) > 0 {
+					event, keep, e = c.approvalRequest(f)
+					if e == nil && !keep {
+						e = c.send(map[string]any{"id": f.ID, "error": map[string]any{"code": -32601, "message": "unsupported controller request"}})
 					}
-					continue
+				} else if f.Method == "serverRequest/resolved" {
+					event, keep, e = c.resolveApproval(f.Params)
+				} else {
+					event, keep, e = Visible(f.Method, f.Params, c.Epoch, time.Now().UTC())
+					if keep && event.Observation.Kind == "turn.completed" {
+						c.approvalMu.Lock()
+						for key, p := range c.approvals {
+							if p.prompt.ThreadID == event.ThreadID {
+								delete(c.approvals, key)
+							}
+						}
+						c.approvalMu.Unlock()
+					}
 				}
-				event, keep, e := Visible(f.Method, f.Params, c.Epoch, time.Now().UTC())
 				if e != nil {
 					c.stop(e)
 					return

@@ -368,3 +368,52 @@ approval under the selected never policy. Do not change that policy or claim
 routine acceptance from a host-completed turn. PGI3 must surface the limitation;
 a future explicit owner-interaction path can handle requested approvals, while
 PGI4 continues to own evidence and publication. No automatic approval is selected.
+
+## PGI3-C3 refinement — explicit MCP approval, 2026-10-08
+
+Owner continuation after C2's recommendation selects implementation of the explicit
+request/response interaction. This authorizes building and testing that flow, not
+blanket acceptance of future tool calls. Keep the default refusal mode; an explicit
+`--approvals ask` opts a new client launch into owner-reviewed MCP requests.
+
+The installed 0.161.0 host was measured before implementation: run_transition uses
+mcpServer/elicitation/request, mode form, an empty object form, and metadata
+codex_approval_kind=mcp_tool_call with exact tool_params. Support only that bounded
+SDP server/tool shape, with exact thread, turn, transport epoch and typed request ID.
+Present its message and full transition arguments as data; never execute display
+text. Accept, decline and cancel are per request; omit persistent/session grants.
+Unrelated permission, URL and secret-input requests remain unsupported. No account
+or global configuration changes, native delegation or automatic approval review.
+
+Persist observed requests and exact owner decisions before sending. Duplicate,
+resolved, cross-attempt and old-epoch replies refuse. A written response alone is
+not host acceptance: keep its outcome uncertain until serverRequest/resolved is
+observed; that notification proves closure only, not successful tool execution or
+SDP acceptance. Loss of transport never resends a response automatically.
+
+Approval capture itself advances the run observation revision. A queued MCP call
+therefore needs a narrow revision rule: only the exact observed and explicitly
+accepted agent transition may cross revisions consisting exclusively of host
+observations and this approval's input bookkeeping, with the same live attempt,
+coverage and routine decision state. Any intervening steering, lifecycle mutation,
+changed arguments or external coverage change refuses. Controller calls retain
+strict revision matching. This is required to avoid invalidating every approved
+call merely by recording its approval; it does not grant new agent actions.
+
+Verification: reject unsupported shapes and stale/mismatched/duplicate answers;
+exercise accept/decline and transport loss through the compiled controller; measure
+an actual managed-account MCP report through the final binary. Driver approvals in
+disposable tests are scenarios, not attributed owner conversation. PGI3's other
+reconnection/provenance obligations and PGI4/PGI5 remain separate.
+
+Compatibility refinement: actual initialization rejects the exported granular
+approval shape without experimentalApi. Use the measured stable on-request policy
+with approvalsReviewer=user for explicit ask mode; the adapter rejects all request
+types outside the bounded SDP MCP form. Do not enable experimental API or silently
+fall back. Default never remains unchanged; sandbox selection is independent.
+
+The first actual response also exposed concurrent core lock contention between
+MCP execution and approval observation. Retry only busy/stale local bookkeeping
+that refused before mutation, bounded to 100 attempts with 20 ms delays. The MCP
+adapter retries busy only, retaining exact arguments and operation ID. It does not
+retry stale semantic operations or host sends. Persistent contention stays explicit.

@@ -28,6 +28,7 @@ func ownerCommand(args []string) error {
 	binary := f.String("codex", "codex", "pinned Codex executable")
 	mcp := f.String("mcp-binary", "", "sdp-mcp executable")
 	message := f.String("message", "", "file with exact owner input for launch")
+	approvals := f.String("approvals", "never", "never or ask for per-request SDP MCP approval")
 	sandbox := f.String("sandbox", "read-only", "read-only or explicitly authorized workspace-write")
 	timeout := f.Duration("timeout", 30*time.Minute, "maximum controller lifetime")
 	if e := f.Parse(args[1:]); e != nil {
@@ -35,6 +36,9 @@ func ownerCommand(args []string) error {
 	}
 	if *root == "" || *state == "" || *run == "" || f.NArg() != 0 || *timeout <= 0 {
 		return fmt.Errorf("require --project ROOT --state DIR --run UUID")
+	}
+	if *approvals != "never" && *approvals != "ask" {
+		return fmt.Errorf("unsupported approval mode")
 	}
 	p, e := sdptool.Discover(*root)
 	if e != nil {
@@ -53,6 +57,13 @@ func ownerCommand(args []string) error {
 		r, e := service.Read(*run)
 		if e == nil {
 			emit(r)
+			prompts, err := service.PendingApprovals(*run)
+			if err != nil {
+				return err
+			}
+			if len(prompts) > 0 {
+				emit(map[string]any{"pendingApprovals": prompts})
+			}
 		}
 		return e
 	}
@@ -89,7 +100,7 @@ func ownerCommand(args []string) error {
 		return e
 	}
 	defer client.Close()
-	ctl := &governancecontroller.Controller{Service: service, Host: client, Root: p.Root, StateDir: dir, MCPBinary: *mcp, Epoch: client.Epoch, Sandbox: *sandbox}
+	ctl := &governancecontroller.Controller{Service: service, Host: client, Root: p.Root, StateDir: dir, MCPBinary: *mcp, Epoch: client.Epoch, Sandbox: *sandbox, Approvals: *approvals}
 	if args[0] == "recover" {
 		r, e := service.Read(*run)
 		if e != nil {
@@ -131,12 +142,14 @@ func ownerCommand(args []string) error {
 	}
 	emit(r)
 	type command struct {
-		Action string `json:"action"`
-		Text   string `json:"text"`
+		Action   string                    `json:"action"`
+		Text     string                    `json:"text"`
+		Approval *governance.ApprovalReply `json:"approval,omitempty"`
 	}
 	type input struct {
 		value command
 		err   error
+		exact string
 	}
 	commands := make(chan input, 1)
 	go func() {
@@ -147,7 +160,7 @@ func ownerCommand(args []string) error {
 			var v command
 			e := governance.Decode(scanner.Bytes(), &v)
 			select {
-			case commands <- input{v, e}:
+			case commands <- input{value: v, err: e, exact: string(scanner.Bytes())}:
 			case <-ctx.Done():
 				return
 			}
@@ -175,6 +188,8 @@ func ownerCommand(args []string) error {
 			}
 			if in.value.Action == "status" {
 				r, e = service.Read(*run)
+			} else if in.value.Action == "approval" && in.value.Approval != nil {
+				r, e = ctl.Approve(*run, *in.value.Approval, in.exact)
 			} else {
 				r, e = ctl.Control(ctx, *run, in.value.Action, in.value.Text)
 			}
@@ -188,12 +203,23 @@ func ownerCommand(args []string) error {
 				_, _ = ctl.Disconnect(*run)
 				return fmt.Errorf("host transport ended; reconciliation required: %v", client.Err())
 			}
-			r, e = ctl.Observe(*run, event)
+			if event.Observation.Kind == "approval.resolved" {
+				r, e = ctl.ResolveApproval(*run, event)
+			} else {
+				r, e = ctl.Observe(*run, event)
+			}
 			if e != nil {
 				_, _ = ctl.Disconnect(*run)
 				return e
 			}
 			emit(event)
+			if event.Observation.Kind == "approval.requested" {
+				var prompt governance.ApprovalPrompt
+				if e := json.Unmarshal([]byte(event.Observation.Text), &prompt); e != nil {
+					return e
+				}
+				emit(map[string]any{"approval": prompt})
+			}
 			if event.Observation.Kind == "turn.completed" {
 				emit(r)
 				return nil

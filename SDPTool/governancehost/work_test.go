@@ -42,7 +42,7 @@ func TestWorkProtocolRequests(t *testing.T) {
 		}
 		captured <- cases
 	}()
-	if _, e := c.StartWorkThread(ctx, "/fixture", "read-only", "bounded Master", map[string]any{}); e != nil {
+	if _, e := c.StartWorkThread(ctx, "/fixture", "read-only", "bounded Master", "never", map[string]any{}); e != nil {
 		t.Fatal(e)
 	}
 	id := UUID()
@@ -102,5 +102,40 @@ func TestCorrelationRequiresExactUniqueRecordedInput(t *testing.T) {
 				t.Fatal("ambiguous correlation accepted")
 			}
 		})
+	}
+}
+
+func TestExplicitApprovalModeUsesStableOwnerPolicy(t *testing.T) {
+	left, right := net.Pipe()
+	c := newClient(left, left)
+	defer c.Close()
+	defer right.Close()
+	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
+	defer cancel()
+	captured := make(chan frame, 1)
+	go func() {
+		scanner := bufio.NewScanner(right)
+		if !scanner.Scan() {
+			return
+		}
+		var f frame
+		json.Unmarshal(scanner.Bytes(), &f)
+		json.NewEncoder(right).Encode(map[string]any{"id": f.ID, "result": map[string]any{"thread": map[string]any{"id": "thread", "status": map[string]string{"type": "idle"}}}})
+		captured <- f
+	}()
+	if _, e := c.StartWorkThread(ctx, "/fixture", "read-only", "bounded", "ask", map[string]any{}); e != nil {
+		t.Fatal(e)
+	}
+	f := <-captured
+	var params map[string]any
+	json.Unmarshal(f.Params, &params)
+	if params["approvalPolicy"] != "on-request" || params["approvalsReviewer"] != "user" || params["sandbox"] != "read-only" {
+		t.Fatal(params)
+	}
+	if dir := os.Getenv("PGI_SCHEMA_EVIDENCE"); dir != "" {
+		b, _ := json.MarshalIndent([]map[string]any{{"definition": "ThreadStartParams", "value": f.Params}}, "", "  ")
+		if e := os.WriteFile(filepath.Join(dir, "approval-start-cases.json"), b, 0600); e != nil {
+			t.Fatal(e)
+		}
 	}
 }

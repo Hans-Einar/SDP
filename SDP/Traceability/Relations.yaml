@@ -213,6 +213,13 @@ reviews:
       low: 0
       note: 4
 verification:
+  SDPTOOL-VER-PGI3-C3:
+    status: passed-live-approval-subset
+    path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-C3.md
+    managementId: PLAN-SDP-0018
+    card: KB-SDP-038
+    design: SDPTOOL-DES-0001
+    note: Actual per-request approval/report and final affected-code checks pass; executing-turn reattachment, applicable provenance and independent review remain open.
   SDPTOOL-VER-PGI3-C2:
     status: passed-live-subset
     path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-C2.md
