@@ -18,7 +18,7 @@ import (
 	"github.com/Hans-Einar/SDP/SDPTool/governance"
 )
 
-const HostVersion = "0.160.1"
+const HostVersion = "0.161.0"
 
 func UUID() string {
 	var b [16]byte

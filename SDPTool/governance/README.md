@@ -135,7 +135,7 @@ stdout/exit 0. Human output is default and `--json` selects machine output.
 
 Only the controller can bind an observed idle thread, record completed visible
 items, mark a disconnect unknown, or reconcile a mapped attempt from host history.
-The pin is Codex 0.160.1; a connection epoch change requires reconciliation and
+New connections pin Codex 0.161.0; historical 0.160.1 attempts remain readable; a connection epoch change requires reconciliation and
 preserves an observation gap. A host turn completing never completes SDP work.
 AssignedAgent is a launch-supplied run/attempt/epoch capability: only report,
 fail and scope-change are allowed, and a stale/disconnected binding refuses.
@@ -175,3 +175,10 @@ PGI3 candidate state also adds optional owner inputs and last-observation timest
 The controller-only dispatch contract and recovery limits are documented in the
 [owner controller](../governancecontroller/README.md). Old strict readers cannot
 read stores updated with these unpublished fields.
+
+
+PGI3-C2 persists an optional user-message clientId. `input.resolve` is controller-only
+and requires a recorded exact clientId/payload/turn match in the bound attempt;
+it acknowledges an uncertain launch/steer without sending it again. Conflicting
+correlation refuses, and acknowledgment never advances the SDP routine. Older
+observations without clientId are not retroactively promoted to correlation proof.

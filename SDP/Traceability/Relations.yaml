@@ -213,6 +213,13 @@ reviews:
       low: 0
       note: 4
 verification:
+  SDPTOOL-VER-PGI3-C2:
+    status: passed-live-subset
+    path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-C2.md
+    managementId: PLAN-SDP-0018
+    card: KB-SDP-038
+    design: SDPTOOL-DES-0001
+    note: Actual workflow and mapped response-loss recovery pass; MCP approval interaction and remaining recovery/provenance obligations stay open. No independent review or full PGI3 delivery.
   SDPTOOL-VER-PGI3-C1:
     status: passed-fixtures-live-unverified
     path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-C1.md

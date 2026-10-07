@@ -8,7 +8,7 @@
 | CardState | in-progress |
 | created | 2026-09-28T15:10:13.034937+00:00 |
 | source | Owner conversation 2026-09-28: register app-server-based system development and assess SDPTool MCP |
-| next_review | PGI3 live workflow/recovery evidence; terminal candidate implemented, PGI1/PGI2 delivered |
+| next_review | PGI3-C2 live evidence; decide MCP approval interaction and complete remaining recovery/provenance evidence |
 | tags | codex, app-server, client, MCP, supervision, blueprints, observability |
 | Systems | SDPTOOL |
 | PlanId | PLAN-SDP-0018 |
@@ -258,3 +258,19 @@ for those remaining PGI3 obligations. All changes and T007 Session upkeep are in
 the isolated clone; the shared worktree has not been updated under current permissions.
 
 2026-10-07T21:09:17.833653+00:00: EVT-PM-SDP-000149 — PGI3 candidate checkpoint recorded; CardState stays in-progress. No delivery/acceptance transition.
+
+
+## PGI3-C2 live checkpoint — 2026-10-08
+
+[Live evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-C2.md)
+records actual managed-account execution and steering, observer closure,
+interruption/recovery, a replacement attempt and exact lost-response correlation
+without resubmission. Full Go race/vet and schema checks pass. Actual MCP reporting
+requires approval under the unchanged never policy; the requested owner interaction
+choice is unanswered. PGI3 remains in-progress for that runtime gap and executing-turn
+reattachment/provenance obligations, with PGI4/PGI5 planned. Session0007 T008 and the
+persistent ProjectGovernance worktree contain this checkpoint. Shared-history
+integration must reconcile the recorded C1 event-ID collisions; no merge is claimed.
+Broader KB036/037/042/043 remain separate; no ModelGovernance prerequisite is added.
+
+2026-10-07T22:07:07.491506+00:00: EVT-KB-SDP-000315 — PGI3-C2 live checkpoint recorded; in-progress retained for actual approval interaction and remaining recovery/provenance work. PGI3 is not delivered; broader card remains open.

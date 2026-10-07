@@ -350,3 +350,21 @@ child/reviewer attribution remains unavailable and no independent review is clai
 The live probe currently ends with EOF before initialization, so fixture success
 does not deliver PGI3. History recovery records observed state only and cannot infer
 or retry an unmapped ambiguous turn. See the [controller contract](../../../../SDPTool/governancecontroller/README.md).
+
+
+## PGI3 measured refinement — 2026-10-07
+
+The installed 0.161.0 host successfully executes the scoped Maintenance fixture
+and receives steering. History includes a userMessage.clientId correlation value.
+For a lost outbound acknowledgment, the selected recovery refinement is to bind
+only a unique recorded user message whose clientId and exact payload match the
+persisted input, within the already mapped thread/attempt. Persist that observed
+message before resolving the input. Missing, conflicting or unmapped history stays
+uncertain; never infer acceptance from text similarity or resubmit to discover it.
+This derives from PG-A08/11/12 and the existing no-duplicate-dispatch contract.
+
+Host approval refusals remain refusals. The live fixture's MCP report required
+approval under the selected never policy. Do not change that policy or claim
+routine acceptance from a host-completed turn. PGI3 must surface the limitation;
+a future explicit owner-interaction path can handle requested approvals, while
+PGI4 continues to own evidence and publication. No automatic approval is selected.

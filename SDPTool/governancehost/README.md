@@ -1,7 +1,7 @@
 # ProjectGovernance app-server adapter — PGI2
 
 The package owns a local stdio app-server process, selected cwd and bounded JSON
-transport. Only **codex-cli 0.160.1** is accepted. Typed request/result projections
+transport. New connections require **codex-cli 0.161.0** (measured in PGI3-C2). Typed request/result projections
 were derived from that executable's generated default schemas; unknown optional
 host fields are not persisted. Malformed JSON, duplicate keys, invalid UTF-8 and
 frames over 1 MiB refuse. The PGI3 [owner controller candidate](../governancecontroller/README.md) adds
@@ -51,7 +51,11 @@ PrepareRecovery reads the already mapped thread and projects its recorded turn;
 missing/uncertain history refuses. ReconcileRequest records observed state and the
 new epoch. Replay allowlisted completed items with fresh receipt operations,
 refreshing Binding.Result after each accepted operation. In-progress history is
-not treated as completed item content. No recovery path resends a model request,
+not treated as completed item content. Recovery can resolve a lost launch/steer acknowledgment only when exactly one
+recorded userMessage.clientId and its exact text match the durable outbound input
+in the already bound thread. Persisted correlated observations precede resolution.
+Missing, duplicate, changed or unmapped input stays uncertain. An in-progress
+turn cannot supply completed-message evidence. No recovery path resends a model request,
 changes a Session identity or treats turn completion as SDP acceptance.
 
 ## Evidence boundaries
@@ -67,3 +71,12 @@ Protocol references: [OpenAI app-server](https://learn.chatgpt.com/docs/app-serv
 [MCP SDK v1.8.0](https://github.com/modelcontextprotocol/go-sdk/tree/v1.8.0).
 Local generated schema identities and actual probe output are retained in PGI2
 implementation evidence; online documentation does not override that measured pin.
+
+
+PGI3-C2 adds real managed-account execution, steering, observer closure,
+interruption, replacement-attempt continuation and a deliberately dropped
+turn/start response. The last case resolves from recorded history without a second
+submission. Host approval refusals are preserved; the live run_transition call
+required approval under the selected never policy. This is still not independent
+review or evidence acceptance. Historical 0.160.1 stores remain readable, but a
+new 0.161.0 connection cannot silently relabel an old bound attempt's host version.

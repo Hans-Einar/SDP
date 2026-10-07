@@ -112,3 +112,75 @@ func TestPreparedInputCannotAdvanceAfterDrift(t *testing.T) {
 		t.Fatal(v)
 	}
 }
+
+func TestInputResolutionNeedsRecordedCorrelation(t *testing.T) {
+	s, _, q := fixture(t)
+	bind(t, s, &q)
+	r, e := s.Start(LocalController(), q)
+	if e != nil {
+		t.Fatal(e)
+	}
+	id, _ := identifier()
+	at, _ := identifier()
+	epoch, _ := identifier()
+	v := OwnerInput{ID: id, Kind: "launch", Text: "exact owner input", Payload: "exact payload", AttemptID: at, Epoch: epoch, ReceivedAt: time.Now().UTC().Format(time.RFC3339Nano)}
+	input := func(action string) (Result, error) {
+		op, _ := identifier()
+		return s.RecordInput(LocalController(), InputRequest{Schema: Schema, ProjectRef: r.ProjectRef, CheckoutID: r.CheckoutID, RunID: r.Run.ID, OperationID: op, ExpectedRevision: r.Run.Revision, InputRevision: r.Run.InputRevision, Action: action, Input: v})
+	}
+	r, e = input("prepare")
+	if e != nil {
+		t.Fatal(e)
+	}
+	v.State = "prepared"
+	r, e = input("claim")
+	if e != nil {
+		t.Fatal(e)
+	}
+	v.State = "sending"
+	host := func(action string, o Observation) (Result, error) {
+		op, _ := identifier()
+		o.Epoch = epoch
+		o.ReceivedAt = v.ReceivedAt
+		return s.RecordHost(LocalController(), HostRequest{Schema: Schema, ProjectRef: r.ProjectRef, CheckoutID: r.CheckoutID, RunID: r.Run.ID, OperationID: op, ExpectedRevision: r.Run.Revision, InputRevision: r.Run.InputRevision, Action: action, AttemptID: at, HostVersion: "0.161.0", ThreadID: "thread", Observation: o})
+	}
+	r, e = host("bind", Observation{Kind: "bound", Status: "idle"})
+	if e != nil {
+		t.Fatal(e)
+	}
+	v.ThreadID = "thread"
+	r, e = input("uncertain")
+	if e != nil {
+		t.Fatal(e)
+	}
+	v.State = "uncertain"
+	v.TurnID = "turn"
+	r, e = host("reconcile", Observation{Kind: "reconciled", TurnID: "turn", Status: "completed"})
+	if e != nil {
+		t.Fatal(e)
+	}
+	_, e = input("resolve")
+	code(t, e, "reconciliation_required")
+	other, _ := identifier()
+	r, e = host("observe", Observation{Kind: "userMessage", TurnID: "turn", ItemID: "wrong-client", ClientID: other, Text: v.Payload})
+	if e != nil {
+		t.Fatal(e)
+	}
+	_, e = input("resolve")
+	code(t, e, "reconciliation_required")
+	r, e = host("observe", Observation{Kind: "userMessage", TurnID: "turn", ItemID: "right-client", ClientID: id, Text: v.Payload})
+	if e != nil {
+		t.Fatal(e)
+	}
+	r, e = input("resolve")
+	if e != nil {
+		t.Fatal(e)
+	}
+	recovered, e := s.OwnerInput(LocalController(), r.Run.ID, id)
+	if e != nil || recovered.State != "acknowledged" || recovered.Text != v.Text || recovered.TurnID != "turn" {
+		t.Fatal(recovered, e)
+	}
+	if r.Run.State != "ready" {
+		t.Fatal("host acknowledgment advanced routine", r.Run.State)
+	}
+}

@@ -492,7 +492,8 @@
             "input.prepare",
             "input.claim",
             "input.ack",
-            "input.uncertain"
+            "input.uncertain",
+            "input.resolve"
           ]
         },
         "projectRef": {
@@ -701,6 +702,10 @@
           "items": {
             "$ref": "#/$defs/Attachment"
           }
+        },
+        "clientId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
         }
       },
       "required": [
@@ -723,7 +728,10 @@
           "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
         },
         "hostVersion": {
-          "const": "0.160.1"
+          "enum": [
+            "0.160.1",
+            "0.161.0"
+          ]
         },
         "threadId": {
           "type": "string",
@@ -826,7 +834,10 @@
           "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
         },
         "hostVersion": {
-          "const": "0.160.1"
+          "enum": [
+            "0.160.1",
+            "0.161.0"
+          ]
         },
         "threadId": {
           "type": "string",
@@ -1003,7 +1014,8 @@
             "prepare",
             "claim",
             "ack",
-            "uncertain"
+            "uncertain",
+            "resolve"
           ]
         },
         "input": {

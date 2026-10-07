@@ -18,6 +18,7 @@ type Attachment struct {
 }
 
 type Observation struct {
+	ClientID    string       `json:"clientId,omitempty"`
 	Attachments []Attachment `json:"attachments,omitempty"`
 	Kind        string       `json:"kind"`
 	TurnID      string       `json:"turnId"`
@@ -67,6 +68,9 @@ func hostStatus(s string) bool {
 func validObservation(o Observation) bool {
 	encoded, err := json.Marshal(o)
 	if err != nil || len(encoded) > 240<<10 {
+		return false
+	}
+	if o.ClientID != "" && (o.Kind != "userMessage" || !uuidPattern.MatchString(o.ClientID)) {
 		return false
 	}
 	if len(o.Attachments) > 64 || (len(o.Attachments) > 0 && o.Kind != "userMessage") {
@@ -120,8 +124,8 @@ func (s *Service) RecordHost(caller Caller, q HostRequest) (Result, error) {
 	if !uuidPattern.MatchString(q.RunID) || !uuidPattern.MatchString(q.AttemptID) || !digestPattern.MatchString(q.InputRevision) || q.ExpectedRevision == 0 || !opaque(q.ThreadID) || !validObservation(q.Observation) {
 		return Result{}, fail("invalid_request", "invalid bounded host observation")
 	}
-	if q.HostVersion != "0.160.1" {
-		return Result{}, fail("incompatible_profile", "only measured Codex 0.160.1 is supported")
+	if q.HostVersion != "0.160.1" && q.HostVersion != "0.161.0" {
+		return Result{}, fail("incompatible_profile", "only measured Codex 0.160.1 and 0.161.0 are supported")
 	}
 	o := q.Observation
 	if q.Action == "bind" && o.Kind != "bound" || q.Action == "disconnect" && o.Kind != "disconnected" || q.Action == "reconcile" && o.Kind != "reconciled" {
@@ -234,7 +238,7 @@ func (s *Service) RecordHost(caller Caller, q HostRequest) (Result, error) {
 	if q.Action == "observe" {
 		for _, old := range at.Events {
 			if old.Kind == o.Kind && old.TurnID == o.TurnID && old.ItemID == o.ItemID {
-				if old.Phase != o.Phase || old.Text != o.Text || old.Status != o.Status || requestDigest(old.Attachments) != requestDigest(o.Attachments) {
+				if (old.ClientID != "" && old.ClientID != o.ClientID) || old.Phase != o.Phase || old.Text != o.Text || old.Status != o.Status || requestDigest(old.Attachments) != requestDigest(o.Attachments) {
 					return Result{}, fail("observation_gap", "conflicting repeated completed item")
 				}
 				duplicate = true

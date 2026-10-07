@@ -204,6 +204,28 @@ func (s *Service) RecordInput(c Caller, q InputRequest) (Result, error) {
 				return Result{}, fail("reconciliation_required", "acknowledgment requires an observed response")
 			}
 			v.State = "acknowledged"
+		case "resolve":
+			if old.Kind != "launch" && old.Kind != "steer" {
+				return Result{}, fail("reconciliation_required", "interrupt outcomes need their own observed resolution")
+			}
+			if old.State != "sending" && old.State != "uncertain" {
+				return Result{}, fail("conflict", "input is not awaiting acknowledgment")
+			}
+			found := false
+			for _, a := range r.Attempts {
+				if a.ID != old.AttemptID || a.ThreadID != v.ThreadID || a.TurnID != v.TurnID || a.Status == "unknown" {
+					continue
+				}
+				for _, event := range a.Events {
+					if event.Kind == "userMessage" && event.ClientID == old.ID && event.TurnID == v.TurnID && event.Text == old.Payload && len(event.Attachments) == 0 {
+						found = true
+					}
+				}
+			}
+			if !found {
+				return Result{}, fail("reconciliation_required", "no exact correlated host message proves acceptance")
+			}
+			v.State = "acknowledged"
 		case "uncertain":
 			if old.State != "sending" {
 				return Result{}, fail("conflict", "input not in flight")

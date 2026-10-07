@@ -112,6 +112,12 @@ func ownerCommand(args []string) error {
 				return e
 			}
 		}
+		for _, input := range recovery.Inputs {
+			r, e = service.RecordInput(governance.LocalController(), governance.InputRequest{Schema: governance.Schema, ProjectRef: r.ProjectRef, CheckoutID: r.CheckoutID, RunID: r.Run.ID, OperationID: governancehost.UUID(), ExpectedRevision: r.Run.Revision, InputRevision: r.Run.InputRevision, Action: "resolve", Input: input})
+			if e != nil {
+				return e
+			}
+		}
 		emit(r)
 		return nil // History reconciliation only; never resume/resend a model turn.
 	}

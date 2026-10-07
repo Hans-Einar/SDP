@@ -3,8 +3,9 @@
 This package coordinates the shared governance core and the pinned app-server
 adapter for an **existing authorized Maintenance run**. It adds durable exact owner
 input, one fresh Master turn, in-turn steering, interruption, scope-change stop and
-read-only status. The PGI3 live-workflow milestone remains **in progress**: recorded
-fixtures establish behavior, not a successful real model task or native role mapping.
+read-only status. The PGI3 live-workflow milestone remains **in progress**: real task/steering/interruption and correlated recovery now have
+evidence, while interactive host approvals and native role/reviewer mapping remain
+open. The implemented controller executes directly without spawning children.
 
 Build from SDPTool:
 
@@ -59,8 +60,10 @@ loss records uncertainty; a separate observer can inspect the durable state:
 Status is read-only and starts no host. It reports the last recorded observation,
 including lastObservedAt, not an asserted live process state. Recover reads mapped
 host history, records the new connection epoch/gap and replays completed items
-without duplicates. It never resumes or resends a model turn. Missing history or an
-unmapped ambiguous turn remains unresolved. Full executing-turn reconnection and
+without duplicates. It never resumes or resends a model turn. For launch/steer with a lost acknowledgment, recovery requires a unique observed
+userMessage.clientId and exact payload match inside the mapped thread. It records
+the observed message before acknowledging the durable input. Missing/ambiguous or
+unmapped history remains unresolved; no input is resent. Full executing-turn reconnection and
 native child/reviewer attribution are required live PGI3/PGI5 evidence, not delivered
 by this command. The default controller lifetime is 30 minutes (`--timeout`).
 
@@ -105,3 +108,20 @@ A compiled terminal test uses a **recorded fake app-server subprocess**, exercis
 status/history recovery and a closed output observer, and preserves every fixture
 project file. Protocol requests are captured and checked against the installed
 0.160.1 default schemas. None of these invokes Codex or constitutes live execution.
+
+
+## Measured PGI3-C2 boundary
+
+Codex 0.161.0 executed the isolated Unicode-normalization Maintenance task, accepted
+in-scope steering and left all excluded files unchanged. An actual output observer
+closed without terminating execution; interrupt and new-process recovery preserved
+the same run/Session. A later fresh attempt continues the same assignment.
+A local transport proxy dropped the actual turn/start response after submission;
+recovery matched the recorded clientId/text and acknowledged the one existing turn.
+The proxy did not replace model execution with a fixture or resubmit the request.
+
+The real MCP run_transition call returned an approval-required error under never.
+Do not change host policy automatically or route around the refusal. A completed
+model turn still leaves the routine unaccepted. The proposed next client behavior
+is explicit per-request owner interaction; it remains a separate selection until
+recorded. See the PGI3-C2 evidence for the exact tested boundaries and remaining work.

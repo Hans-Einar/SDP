@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"context"
 	"encoding/json"
+	"github.com/Hans-Einar/SDP/SDPTool/governance"
 	"net"
 	"os"
 	"path/filepath"
@@ -68,5 +69,38 @@ func TestWorkProtocolRequests(t *testing.T) {
 		if e := os.WriteFile(filepath.Join(dir, "work-rpc-cases.json"), b, 0600); e != nil {
 			t.Fatal(e)
 		}
+	}
+}
+
+func TestCorrelationRequiresExactUniqueRecordedInput(t *testing.T) {
+	id := UUID()
+	input := governance.OwnerInput{ID: id, Payload: "exact"}
+	item := func(client, text string) json.RawMessage {
+		b, _ := json.Marshal(map[string]any{"type": "userMessage", "id": "item", "clientId": client, "content": []any{map[string]string{"type": "text", "text": text}}})
+		return b
+	}
+	for _, tc := range []struct {
+		name   string
+		items  []json.RawMessage
+		mapped string
+		good   bool
+	}{
+		{"match", []json.RawMessage{item(id, "exact")}, "", true},
+		{"text-only", []json.RawMessage{item("", "exact")}, "", false},
+		{"changed", []json.RawMessage{item(id, "different")}, "", false},
+		{"duplicate", []json.RawMessage{item(id, "exact"), item(id, "exact")}, "", false},
+		{"other-turn", []json.RawMessage{item(id, "exact")}, "other", false},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			thread := Thread{ID: "thread", Turns: []Turn{{ID: "turn", Status: "completed", Items: tc.items}}}
+			turn, inputs, e := correlatedInputs(thread, tc.mapped, []governance.OwnerInput{input})
+			if tc.good {
+				if e != nil || turn != "turn" || len(inputs) != 1 || inputs[0].ThreadID != "thread" {
+					t.Fatal(turn, inputs, e)
+				}
+			} else if e == nil {
+				t.Fatal("ambiguous correlation accepted")
+			}
+		})
 	}
 }

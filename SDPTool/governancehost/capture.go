@@ -54,12 +54,13 @@ func Visible(method string, params []byte, epoch string, received time.Time) (Ev
 		return Event{p.ThreadID, o}, true, nil
 	}
 	var item struct {
-		ID      string  `json:"id"`
-		Type    string  `json:"type"`
-		Phase   *string `json:"phase"`
-		Text    string  `json:"text"`
-		Status  string  `json:"status"`
-		Content []struct {
+		ClientID string  `json:"clientId"`
+		ID       string  `json:"id"`
+		Type     string  `json:"type"`
+		Phase    *string `json:"phase"`
+		Text     string  `json:"text"`
+		Status   string  `json:"status"`
+		Content  []struct {
 			Type string `json:"type"`
 			Text string `json:"text"`
 			Path string `json:"path"`
@@ -83,6 +84,7 @@ func Visible(method string, params []byte, epoch string, received time.Time) (Ev
 		}
 	case "userMessage":
 		o.Kind = item.Type
+		o.ClientID = item.ClientID
 		parts := []string{}
 		for _, v := range item.Content {
 			if v.Type == "text" {

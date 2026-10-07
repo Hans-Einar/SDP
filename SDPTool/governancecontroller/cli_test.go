@@ -14,6 +14,7 @@ import (
 	"time"
 
 	"github.com/Hans-Einar/SDP/SDPTool/governance"
+	"github.com/Hans-Einar/SDP/SDPTool/governancehost"
 )
 
 // TestMain supplies a recorded fake app-server subprocess only for this test.
@@ -21,7 +22,7 @@ import (
 func TestMain(m *testing.M) {
 	if os.Getenv("SDP_PGI3_FAKE_HOST") == "1" {
 		if len(os.Args) > 1 && os.Args[1] == "--version" {
-			fmt.Println("codex-cli 0.160.1")
+			fmt.Println("codex-cli " + governancehost.HostVersion)
 			return
 		}
 		encoder := json.NewEncoder(os.Stdout)

@@ -55,7 +55,7 @@ do not turn a self-check into an independent review by changing its label.
 | --- | --- | --- | --- |
 | PGI1-M1 Core and inspection | Selected project + status request yields context/route without creating work; authorized fixture Maintenance creates a pinned durable run visible through a small CLI read/transition path | PG-A01/02/03/08/10/18; exact JSON schemas; core restart and stale-input tests | delivered; bounded core/CLI verified |
 | PGI2-M1 Adapters and protocol | Thin local MCP adapter and controller protocol adapter use the core; inspect compatible schemas, negotiate the selected SDK/host, capture bounded recorded events and reconcile mapped attempts | PG-A10/11/12/15/18; actual protocol negotiation and failure outputs; no simulated-as-live claims | delivered; bounded adapters and real idle protocol probe verified |
-| PGI3-M1 Owner workflow | Minimal terminal client recovers Session, submits/steers work, presents route/status and launches the authorized fresh Master with bounded context; applicable child/review mapping is observed | PG-A02/04/05/11/12/13/15; managed account mode and one useful bounded task | in-progress; live workflow evidence required |
+| PGI3-M1 Owner workflow | Minimal terminal client recovers Session, submits/steers work, presents route/status and launches the authorized fresh Master with bounded context; applicable child/review mapping is observed | PG-A02/04/05/11/12/13/15; managed account mode and one useful bounded task | in-progress; live C2 checkpoint verified, approval interaction and provenance gaps remain |
 | PGI4-M1 Evidence and reconciliation | Candidate-bound evidence, review/rework and checked publication produce one durable Session outcome and correct card/plan disposition | PG-A06/07/09/13/16/17; crash and concurrent-change fixtures | planned |
 | PGI5-M1 Integrated verification | The same isolated task survives observer close, interruption/recovery and scope correction with unrelated work preserved | All PG-A01–18 at their stated level; independent review and exact-candidate evidence | planned |
 
@@ -106,16 +106,21 @@ PGI2-M1 is also delivered: [adapter evidence](Evidence-PGI2.md),
 [candidate manifest](candidate-PGI2.json) and [protocol pin](protocol-PGI2.json)
 record shared-core MCP parity, bounded observation/recovery fixtures and actual
 Codex 0.160.1 / MCP 2025-11-25 negotiation with SDK v1.8.0. No model turn is sent.
-PGI3 is in progress: its terminal controller candidate has fixture and compiled
-command coverage, but the real host currently exits before initialization.
-[Checkpoint evidence](Evidence-PGI3-C1.md) records the exact limits. PGI4/PGI5 remain
-planned; host execution, publication and independent review are still required.
-KB038 remains active/in-progress for the unfinished PGI3 milestone.
+PGI3-C2 now verifies real managed-account execution, steering, observer closure,
+interruption, continuation in a new attempt and mapped lost-acknowledgment recovery.
+[Live checkpoint evidence](Evidence-PGI3-C2.md) distinguishes tested behavior from
+remaining acceptance. Full Go race tests, vet and protocol/application schema
+checks pass. The actual MCP report requires approval under the current never
+policy; no bypass or automatic grant is selected. PGI3 remains in progress for
+owner interaction, executing-turn reattachment and applicable provenance evidence.
+PGI4/PGI5 publication and independent review remain planned.
 
-The isolated clone on `sdp/project-governance-pilot` retains milestone commits.
-Current isolation preserves concurrent shared work; the earlier host's read-only
-Git restriction is historical. Verified changes return to the shared worktree
-without switching its branch or including unrelated work in the milestone commit.
+The milestone history now resides in the original repository on
+`sdp/project-governance-pilot`, using the persistent worktree
+`/home/warloc/git/SDP-project-governance`. The shared worktree's concurrent changes
+remain untouched. Earlier filesystem restrictions are historical. Shared-history
+integration is separate and must resolve the recorded private C1 event-ID
+collisions without overwriting either history. No merge, push or release is claimed.
 
 
 ## PGI1 implementation refinements and next handoff
@@ -181,3 +186,25 @@ children or pretend to measure a hierarchy. The next work is to restore a permit
 host connection and establish the required live evidence, then resolve remaining
 recovery gaps. PGI4/PGI5 acceptance is unchanged. The shared checkout is read-only
 outside SDL; this checkpoint and its Session records are retained only in the clone.
+
+
+## PGI3-C2 — live workflow and correlation recovery, 2026-10-07
+
+The owner confirms restored Git access and requests continued plan execution.
+PGI1, PGI2 and PGI3-C1 commits are now imported into this repository's
+sdp/project-governance-pilot branch. Development uses the persistent worktree
+/home/warloc/git/SDP-project-governance; concurrent changes in SDP-vNow stay intact.
+The earlier filesystem restriction is historical. No merge, push or release is
+selected. Shared-history integration must reconcile private C1 event-ID collisions
+with later blueprint/SDUI records before merging; neither history is overwritten.
+
+PGI3-C2 measures Codex 0.161.0, actual Maintenance execution and steering,
+observer closure, interruption/recovery and response-loss correlation. Core recovery
+uses a unique observed clientId plus exact payload; it never automatically resends.
+The live MCP report was refused because approval was required under the current
+never policy. PGI3 stays in progress pending a deliberate owner-interaction path,
+remaining executing-turn reattachment and applicable role/provenance evidence.
+PGI4 and PGI5 retain evidence publication and independent integrated verification.
+[PGI3-C2 evidence](Evidence-PGI3-C2.md) distinguishes these results from C1 fixtures.
+
+2026-10-07T22:07:07.491506+00:00: EVT-PM-SDP-000153 — PGI3-C2 real workflow and correlated lost-response recovery verified; approval interaction and remaining provenance/recovery obligations keep PGI3 active. Persistent worktree replaces historical Git restriction.

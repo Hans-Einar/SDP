@@ -2,6 +2,7 @@ package governancehost
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"time"
 
@@ -14,6 +15,8 @@ import (
 type Recovery struct {
 	Binding    Binding
 	Events     []Event
+	Inputs     []governance.OwnerInput
+	TurnID     string
 	Status     string
 	ReceivedAt time.Time
 }
@@ -32,11 +35,26 @@ func (c *Client) PrepareRecovery(ctx context.Context, service *governance.Servic
 			return Recovery{}, e
 		}
 		now := time.Now().UTC()
-		events, status, e := History(t, a.TurnID, c.Epoch, now)
+		pending := []governance.OwnerInput{}
+		for _, summary := range r.Run.Inputs {
+			if summary.AttemptID != a.ID || (summary.State != "sending" && summary.State != "uncertain") || (summary.Kind != "launch" && summary.Kind != "steer") {
+				continue
+			}
+			input, err := service.OwnerInput(governance.LocalController(), runID, summary.ID)
+			if err != nil {
+				return Recovery{}, err
+			}
+			pending = append(pending, input)
+		}
+		turnID, inputs, e := correlatedInputs(t, a.TurnID, pending)
 		if e != nil {
 			return Recovery{}, e
 		}
-		return Recovery{Binding: Binding{Result: r, AttemptID: a.ID, ThreadID: a.ThreadID, Epoch: c.Epoch}, Events: events, Status: status, ReceivedAt: now}, nil
+		events, status, e := History(t, turnID, c.Epoch, now)
+		if e != nil {
+			return Recovery{}, e
+		}
+		return Recovery{Binding: Binding{Result: r, AttemptID: a.ID, ThreadID: a.ThreadID, Epoch: c.Epoch}, Events: events, Inputs: inputs, TurnID: turnID, Status: status, ReceivedAt: now}, nil
 	}
 	return Recovery{}, fmt.Errorf("missing_coverage: mapped attempt absent")
 }
@@ -45,11 +63,50 @@ func (c *Client) PrepareRecovery(ctx context.Context, service *governance.Servic
 // Replay each allowlisted completed item using Binding.Request("observe", event),
 // refreshing Binding.Result after each receipt. Conflicting replay refuses.
 func (r Recovery) ReconcileRequest() governance.HostRequest {
-	turnID := ""
+	turnID := r.TurnID
 	for _, a := range r.Binding.Result.Run.Attempts {
-		if a.ID == r.Binding.AttemptID {
+		if a.ID == r.Binding.AttemptID && turnID == "" {
 			turnID = a.TurnID
 		}
 	}
 	return r.Binding.Request("reconcile", governance.Observation{Kind: "reconciled", TurnID: turnID, Epoch: r.Binding.Epoch, ReceivedAt: r.ReceivedAt.Format(time.RFC3339Nano), Status: r.Status})
+}
+
+// Exact unique correlation is required; payload similarity or an idle thread is
+// not proof that a particular send was accepted.
+func correlatedInputs(t Thread, turnID string, pending []governance.OwnerInput) (string, []governance.OwnerInput, error) {
+	inputs := []governance.OwnerInput{}
+	for _, input := range pending {
+		matches := 0
+		for _, turn := range t.Turns {
+			for _, raw := range turn.Items {
+				var item struct {
+					Type     string `json:"type"`
+					ClientID string `json:"clientId"`
+					Content  []struct {
+						Type string `json:"type"`
+						Text string `json:"text"`
+					} `json:"content"`
+				}
+				if err := json.Unmarshal(raw, &item); err != nil {
+					return "", nil, err
+				}
+				if item.Type != "userMessage" || item.ClientID != input.ID {
+					continue
+				}
+				if len(item.Content) != 1 || item.Content[0].Type != "text" || item.Content[0].Text != input.Payload || (turnID != "" && turnID != turn.ID) {
+					return "", nil, fmt.Errorf("reconciliation_required: conflicting correlated owner input")
+				}
+				matches++
+				input.ThreadID = t.ID
+				input.TurnID = turn.ID
+			}
+		}
+		if matches != 1 {
+			return "", nil, fmt.Errorf("reconciliation_required: owner input lacks unique recorded acceptance")
+		}
+		turnID = input.TurnID
+		inputs = append(inputs, input)
+	}
+	return turnID, inputs, nil
 }
