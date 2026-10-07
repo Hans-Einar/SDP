@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-T006, 2026-10-07. Sequence only; dates are display slots, not duration estimates.
+T007, 2026-10-07. Sequence only; dates are display slots, not duration estimates.
 
 ```mermaid
 gantt
@@ -19,8 +19,8 @@ gantt
 | on-going | S1 / BP2-A | Contract and real-model pilot | Contract candidate and validated reduced MVP1 specimen delivered; owner feedback on pilot pending |
 | completed | S2 / BP2-B | Deterministic impact selection and negative cases | NOW/TARGET union, removed neighbors, unknown frontier, stale/overflow/cycle cases |
 | completed | S3 / BP2-C | API and implementation handoff | Authored model Worker/Reviewer trial; A approved, violating B rejected |
-| next | S4 / BPI1 | Production Go analysis | PLAN-SDP-0020 planned; no implementation started |
-| planned | S5 / BPI2 | Publication and catalogue | M1 deterministic bundle; M2 retained revisions and discovery tab |
+| completed | S4 / BPI1 | Production Go analysis | Go analyzer delivered; independent review approves bounded BPI1 |
+| next | S5 / BPI2 | Publication and catalogue | M1 deterministic bundle; M2 retained revisions and discovery tab |
 | planned | S6 / BPI3 | Evidence and lifecycle | M1 generated-bundle trial; M2 revision-bound state transitions and navigation |
 
 | Field | Value |
@@ -48,7 +48,7 @@ implementation is claimed by producing model specimens.
 | Plan | Readiness | Lifecycle | Outcome |
 | --- | --- | --- | --- |
 | [PLAN-SDP-0001](../04--Design/SDPTool/Blueprints/Plan.md) | on-going | active | Contract, selection and executable handoff design |
-| [PLAN-SDP-0020](../05--Implementation/SDPTool/Blueprints/Plan.md) | planned | planned | BPI1 analysis, BPI2 publication, BPI3 assignment evidence |
+| [PLAN-SDP-0020](../05--Implementation/SDPTool/Blueprints/Plan.md) | on-going | active | BPI1 analysis, BPI2 publication, BPI3 assignment evidence |
 
 ## Turn journal
 
@@ -171,3 +171,28 @@ excludes concurrent ProjectGovernance and SDUI work, including their ledger even
 This turn records the catalogue planning delivery, not BPI2/BPI3 implementation.
 Project-management and Toolkit validation passed during T005; recheck before commit.
 Next remains BPI1 implementation. No main merge or release is selected.
+
+
+### T007 — BPI1 implementation (2026-10-07)
+
+Owner asks to continue following the plan. Loaded/reused sdp, Master, Worker,
+Planning, and independent Reviewer. Work proceeds on sdp/blueprint-implementation
+in /tmp/sdp-blueprint-implementation from 3d265d1. The original shared worktree
+remains on its branch with concurrent ProjectGovernance/SDUI changes untouched.
+
+Implemented an I/O-free Go analyzer using checked sourcegraph snapshots, typed
+semantic facts, union closure, task constraints and source provenance. Initial
+tests exposed fixture mistakes (pilot System name, a parser-forbidden directed
+cycle and source-path naming); fixtures were corrected to supported inputs.
+Independent review requested changes for missing zero-participant diagnostics,
+change permissions/protection scope, typed output and coverage. Those findings
+were addressed and regression tests added; final independent review approves the bounded analyzer with exact source hashes
+retained in Evidence-BPI1.md.
+
+Parser/sourcegraph/blueprint race suites and blueprint vet pass after fixes.
+This is component evidence only. BPI2 publication/catalogue and BPI3 lifecycle
+remain planned; no production CLI, GUI, model-to-code proof or release claimed.
+
+BPI1-M1 is delivered. Next is BPI2-M1 document publication, followed by the
+BPI2-M2 catalogue. Worktree-local plan and Session are authoritative for this
+implementation branch; the original concurrent worktree is preserved.

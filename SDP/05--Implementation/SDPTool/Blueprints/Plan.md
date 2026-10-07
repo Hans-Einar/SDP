@@ -4,7 +4,7 @@
 | --- | --- |
 | id | PLAN-SDP-0020 |
 | project | SDP |
-| state | planned |
+| state | active |
 | PlanType | ImplementationPlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
@@ -20,7 +20,7 @@ a retained blueprint catalogue, assignment progress and source-derived discovery
 for a consumer Blueprint tab. Owner selected this scope extension on 2026-10-07
 in Session0008 T005. Inputs and
 ready-state authority must remain distinct from implementation-conformance proof.
-This plan is prepared by the authorized BP2 design work, not yet executing.
+This plan is prepared by the authorized BP2 design work, BPI1 execution selected by the owner on 2026-10-07.
 
 Governing design: ../../../04--Design/SDPTool/Blueprints/Contract.md,
 Selection-and-Evidence.md and Producer-and-Handoff.md. Use the reduced MVP1 fixtures
@@ -29,8 +29,8 @@ No production Ponsse/XFMD changes, mandatory Git, grammar expansion, new rendere
 automatic code execution or release packaging. SDUI bytes are retained with explicit
 coverage gaps; a semantic SDUI analyzer is not silently bundled into this increment.
 
-Use a dedicated working branch based on the integrated dependencies when execution
-starts; do not switch a concurrently used worktree. Per-milestone commits and phase
+Execution uses branch sdp/blueprint-implementation in the isolated worktree
+/tmp/sdp-blueprint-implementation based on 3d265d1; do not switch a concurrently used worktree. Per-milestone commits and phase
 pushes; no main merge or publication without owner authorization. ModelGovernance
 and sourcegraph APIs are prerequisites, not dependencies on their future product release.
 
@@ -169,4 +169,11 @@ that generates two revisions, assigns one, records review/closure and refreshes
 the discovery tree without altering the retained bundles.
 Session0008 continues through implementation; its roadmap must show design gates
 and production milestones separately. Installer manifests, releases and integration
-into XFMD require their own authorized work. No milestone has started here.
+into XFMD require their own authorized work. BPI1-M1 is delivered and independently reviewed; BPI2 is next. See
+[Evidence-BPI1.md](Evidence-BPI1.md). Later milestones have not started.
+
+## BPI1-M1 delivery — 2026-10-07
+
+Pure Go analyzer and regression tests delivered; independent review approves the
+bounded diagnostic library after four findings were fixed. No public CLI or
+assignment readiness is claimed. BPI2-M1 publication is the next milestone.

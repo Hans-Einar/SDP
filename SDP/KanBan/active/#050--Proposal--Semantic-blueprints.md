@@ -78,3 +78,10 @@ Blueprint freshness/readiness and assignment progress remain separate.
 The producer must support a headless consumer; native XFMD changes remain with
 the XFMD agent and are not claimed by this card's producer acceptance.
 Session0008 T005 records the plan revision; production execution has not started.
+
+
+2026-10-07 BPI1-M1: pure Go blueprint analyzer delivered on
+sdp/blueprint-implementation, with explicit permissions/protection, typed facts,
+coverage and negative cases. Independent review approves after fixes.
+Evidence: 05--Implementation/SDPTool/Blueprints/Evidence-BPI1.md.
+BPI2-M1 is next; producer CLI, catalogue and lifecycle remain unimplemented.
