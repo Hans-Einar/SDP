@@ -49,3 +49,11 @@ selection tests delivered. Actual parser acceptance of a missing channel endpoin
 is recorded as a separate blueprint completeness gap. NOW/TARGET union, contract
 closure, scope/frontier and code/evidence-reference rules are specified. Next BP2-C;
 card remains in-progress, with no production generator or owner-approved pilot claim.
+
+
+2026-10-07 BP2-C-M1: Producer-and-Handoff.md and independent Trial-review.md
+delivered. A meets the authored assignment; deliberately violating B is rejected
+despite parser success. [PLAN-SDP-0020](../../05--Implementation/SDPTool/Blueprints/Plan.md)
+is planned for Go analysis, publication and generated-bundle verification.
+Next BPI1; BP2-A owner pilot disposition remains pending. No production generator
+or implemented Ponsse change is claimed.

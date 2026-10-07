@@ -50,3 +50,15 @@ python3 experiments/blueprint_mvp1/selection_probe.py --sdl /path/to/sdl --outpu
 The Python probe consumes real toolkit AST JSON; it is design evidence only.
 Production belongs in Go. Selection-and-Evidence.md defines the proposed complete
 contract and explicitly distinguishes it from the experiment's smaller coverage.
+
+## BP2-C handoff trial
+
+```sh
+python3 experiments/blueprint_mvp1/handoff_trial.py --sdl /path/to/sdl --output /tmp/bp2c-new-trial
+```
+
+Use the pinned 043c59c SDL binary. CandidateA extracts calibration ownership;
+CandidateB is a deliberately injected ownership-drift control. Both parse, while
+only A satisfies Trial-Assignment.md. A fresh-context Reviewer evaluates the actual
+candidates independently. This tests an authored model-edit assignment, not a
+production-generated work package or Ponsse implementation.

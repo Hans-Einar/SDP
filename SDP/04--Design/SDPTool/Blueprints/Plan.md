@@ -39,7 +39,7 @@ Do not create a parallel ledger or mandatory per-Issue assignment hierarchy.
 | --- | --- | --- | --- |
 | BP2-A — contract | BP2-A-M1 | Specify authored intent versus generated/observed facts; freeze identity, required inputs, gaps, NOW/TARGET and pinned before/after test baselines; define box/edge constraint marks; choose one owner-reviewed pilot with explicit invariants | Partial: specimen ready; explicit pilot disposition pending |
 | BP2-B — selection and evidence | BP2-B-M1 | Define complete modeled impact context, explicit unknown frontier, typed inclusion/exclusion and atomic contracts; demonstrate current/target union, removed-edge neighbor, cycle, missing provider, size overflow and stale inputs; specify SDL code-tag mappings and evidence references with KB-SDP-004 without claiming its full delivery | Delivered BP2-B-M1 |
-| BP2-C — executable handoff design | BP2-C-M1 | Specify Go library/SDPTool boundary, before/after verification, failure/publication behavior and annotated output; walk one authorized worker/reviewer through the bundle and a scope-violating change, recording observed results; write implementation slices with measurable acceptance | Planned |
+| BP2-C — executable handoff design | BP2-C-M1 | Specify Go library/SDPTool boundary, before/after verification, failure/publication behavior and annotated output; walk one authorized worker/reviewer through the bundle and a scope-violating change, recording observed results; write implementation slices with measurable acceptance | Delivered BP2-C-M1; authored model trial only |
 
 Use the study probe as evidence input, not the production selector. Define any new
 fixture or API as proposed until selected. Do not require a live XFMD viewer to
@@ -85,8 +85,8 @@ The [owner clarification](Study.md#owner-clarification-after-bp1--2026-09-26)
 requires the impacted environment, explicit box/connection marks, complete NOW
 and TARGET SDL snapshots, reproducible before/after code checks and SDL code tags.
 Study recommendations have not received a detailed owner review. TARGET is a
-working term; final naming and annotation syntax remain open. This plan stays
-planned and the producer contract/model remain unchanged.
+working term; final naming and annotation syntax remain open. At that historical checkpoint the plan remained planned. The later execution
+entries below supersede that lifecycle status; owner acceptance is still separate.
 
 Executable Channel tests and companion-language choices belong to
 [KB-SDL-006](../../../KanBan/backlog/%23006--SDL--Study--Executable-channel-tests-and-unit-bindings.md).
@@ -118,3 +118,18 @@ also does not prevent the tested ownership drift. See Selection-evidence.json an
 Selection-tests.txt. No production producer or code-conformance claim.
 Next BP2-C API/publisher design and implementation slices; BP2-A pilot feedback
 remains pending rather than being inferred from the owner's continue instruction.
+
+## BP2-C execution — 2026-10-07
+
+Producer-and-Handoff.md specifies the pure SDL analysis API, ModelGovernance input
+capture, document publisher reuse, typed output, stale/failure behavior and separate
+preview/readiness/authorization states. Successor PLAN-SDP-0020 is planned under
+05--Implementation/SDPTool/Blueprints. No production API or CLI is implemented.
+The coordinator acted as Worker on temporary model copies from Trial-Assignment.md;
+both resulting candidates parse and their exact source hashes are retained in
+Trial-evidence.json. A separate negative control deliberately moves protected
+ownership. Reproduction through handoff_trial.py yields identical retained evidence.
+Independent review in Trial-review.md approves Candidate A, rejects the deliberate
+Candidate B ownership violation, and accepts the proposed handoff/implementation
+design. Production generated-bundle trials remain BPI3. BP2-A owner disposition
+is still open; the DesignPlan is not declared fully completed.

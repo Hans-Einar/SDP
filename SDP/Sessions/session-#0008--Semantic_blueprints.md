@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-T002, 2026-10-07. Sequence only; dates are display slots, not duration estimates.
+T003, 2026-10-07. Sequence only; dates are display slots, not duration estimates.
 
 ```mermaid
 gantt
@@ -11,14 +11,17 @@ gantt
     section Design
     ACTIVE BP2-A Contract and pilot :active,a,2000-01-01,1d
     DONE BP2-B Selection and evidence :done,b,after a,1d
-    NEXT BP2-C Executable handoff :c,after b,1d
+    DONE BP2-C Executable handoff :done,c,after b,1d
 ```
 
 | State | Step | Outcome | Evidence / remaining work |
 | --- | --- | --- | --- |
 | on-going | S1 / BP2-A | Contract and real-model pilot | Contract candidate and validated reduced MVP1 specimen delivered; owner feedback on pilot pending |
 | completed | S2 / BP2-B | Deterministic impact selection and negative cases | NOW/TARGET union, removed neighbors, unknown frontier, stale/overflow/cycle cases |
-| next | S3 / BP2-C | API and implementation handoff | Bounded implementation plan and permitted worker/reviewer trial |
+| completed | S3 / BP2-C | API and implementation handoff | Authored model Worker/Reviewer trial; A approved, violating B rejected |
+| next | S4 / BPI1 | Production Go analysis | PLAN-SDP-0020 planned; no implementation started |
+| planned | S5 / BPI2 | Bundle publication | Deterministic documents and facade |
+| planned | S6 / BPI3 | Assignment evidence | Generated-bundle trial and readiness |
 
 | Field | Value |
 | --- | --- |
@@ -45,7 +48,7 @@ implementation is claimed by producing model specimens.
 | Plan | Readiness | Lifecycle | Outcome |
 | --- | --- | --- | --- |
 | [PLAN-SDP-0001](../04--Design/SDPTool/Blueprints/Plan.md) | on-going | active | Contract, selection and executable handoff design |
-| Successor ImplementationPlan | planned | not created | Generated blueprint delivery after BP2-C |
+| [PLAN-SDP-0020](../05--Implementation/SDPTool/Blueprints/Plan.md) | planned | planned | BPI1 analysis, BPI2 publication, BPI3 assignment evidence |
 
 ## Turn journal
 
@@ -100,3 +103,28 @@ Concurrent ProjectGovernance changes remain untouched and excluded from this com
 and [evidence](../04--Design/SDPTool/Blueprints/Selection-evidence.json) capture
 results. BP2-B is delivered; BP2-C is next. BP2-A's particular pilot still awaits
 explicit owner feedback, with no main merge, release or product generator claimed.
+
+### T003 — Producer and handoff (2026-10-07)
+
+Owner input: continue with next. Manual work summary, not exact host transcript.
+Skills loaded/reused: sdp, Planning, Architect, Master, Worker and Reviewer.
+BP2-C defines the SDL analysis / SDPTool capture and publication boundaries,
+deterministic bundle identity, separate readiness/authority and failure semantics.
+PLAN-SDP-0020 is created as a planned three-phase implementation successor.
+
+The coordinator performed the bounded Worker model-edit trial on temporary copies.
+A fresh independent Reviewer approved A and rejected the deliberately injected
+protected-ownership violation in B, although both pass the actual parser.
+Reproduction produces byte-identical evidence. The reviewer found no material
+contradiction in the proposed design and successor plan. This is an authored
+assignment trial; it does not prove generated-bundle or production-code behavior.
+
+See [review](../04--Design/SDPTool/Blueprints/Trial-review.md).
+BP2-C is delivered; BP2-A still awaits specific owner pilot disposition.
+KB050 remains in-progress; production implementation, main merge and publication
+are not claimed. Concurrent governance/SDUI changes are excluded from this milestone.
+Verification: project-management validator and Toolkit validator pass; staged
+whitespace check passes. Only this milestone and its own appended ledger events
+are staged.
+Next: select BPI1 Go analyzer implementation, preserving the explicit pilot gate
+and leaving full code/evidence mapping in its owning workstream.
