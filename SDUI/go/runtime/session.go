@@ -205,3 +205,12 @@ func (s *Session) InvalidateEvents() error {
 }
 
 func (s *Session) Closed() bool { return s.closed }
+
+// HasBinding reports an installed handler for this exact live widget identity.
+// It does not execute the handler or attest to an external module signature.
+func (s *Session) HasBinding(handle Handle) bool {
+	if _, err := s.lookup(handle); err != nil {
+		return false
+	}
+	return s.handlers[handle.Path] != nil
+}

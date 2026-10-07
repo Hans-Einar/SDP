@@ -3,9 +3,11 @@ package prototype
 
 import (
 	"fmt"
+	"github.com/Hans-Einar/SDP/SDUI/go/host/fynehost/admission"
 	"github.com/Hans-Einar/SDP/SDUI/go/layout"
+	"github.com/Hans-Einar/SDP/SDUI/go/parser"
+	"github.com/Hans-Einar/SDP/SDUI/go/preparation"
 	"github.com/Hans-Einar/SDP/SDUI/go/reload"
-	uiruntime "github.com/Hans-Einar/SDP/SDUI/go/runtime"
 )
 
 type Report struct {
@@ -27,26 +29,16 @@ func Check(path, entry, revision string) (reload.Candidate, Report, error) {
 	if revision != "" && c.Hash != revision {
 		return c, r, fmt.Errorf("stale: SDUI source changed; regenerate the preview")
 	}
-	_, err := (&layout.Engine{}).Layout(c.Root, layout.Size{W: 1280, H: 800})
+	prepared, err := preparation.Prepare(preparation.Request{
+		Document: c.Document, Entry: entry, SessionID: "preflight", SourceRevision: c.Hash,
+		Mode: preparation.Prototype, Capabilities: admission.Capabilities(),
+		ValidateLayout: func(root *parser.Instance) error { return admission.Layout(root, layout.Size{W: 1280, H: 800}) },
+	})
 	if err != nil {
 		return c, r, err
 	}
-	s, err := uiruntime.New("preflight", c.Root)
-	if err != nil {
-		return c, r, err
-	}
-	defer s.Close()
-	unbound := 0
-	for _, connection := range c.Document.Connections {
-		if connection.Definition == entry {
-			unbound++
-		}
-	}
-	for _, w := range s.Widgets() {
-		if w.Binding.Module != "" {
-			unbound++
-		}
-	}
+	defer prepared.Close()
+	unbound := prepared.Unbound
 	r.Status = "prototype"
 	r.Diagnostic = "Local Fyne prototype; no SDL runtime"
 	if unbound > 0 {

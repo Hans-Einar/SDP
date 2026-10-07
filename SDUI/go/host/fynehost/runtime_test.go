@@ -85,3 +85,34 @@ func TestRuntimeReloadNativeDraftFocusAndNoReplay(t *testing.T) {
 		t.Fatal("callback after closed session")
 	}
 }
+
+func TestAdmissionRejectsBeforeNativeConstruction(t *testing.T) {
+	for _, kind := range []string{"widget", "hidden-node", "scroll", "closed"} {
+		t.Run(kind, func(t *testing.T) {
+			c := candidate(t, `page=[ok=button("OK")];`, 1)
+			n := c.Root.Rows[0][0]
+			switch kind {
+			case "widget":
+				n.Widget = "tree"
+			case "hidden-node":
+				n.Kind = "tabs"
+				n.Layout["visible"] = false
+			case "scroll":
+				n.Layout["overflow-y"] = "scroll"
+			}
+			s, e := uiruntime.New("admission", c.Root)
+			if e != nil {
+				t.Fatal(e)
+			}
+			defer s.Close()
+			if kind == "closed" {
+				s.Close()
+			}
+			revision := s.Revision
+			v, e := NewRuntime(s, nil)
+			if e == nil || v != nil || s.Revision != revision {
+				t.Fatal("invalid native admission", v, e)
+			}
+		})
+	}
+}
