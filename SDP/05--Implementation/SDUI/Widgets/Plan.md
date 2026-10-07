@@ -34,7 +34,7 @@ Current preview files are not this assignment's original implementation.
 | Phase / milestone | Runnable outcome and acceptance | Dependency | State |
 | --- | --- | --- | --- |
 | WCI0-M1 | Capability/preparation boundary with legacy fixtures, missing capability/module/signature rejection and no partial activation | WCD1 reviewed design | completed |
-| WCI1-M1 | 0.3 tree/list/scroll from source through runtime, Fyne, exports and typed SDL fixture; inspect pointer/keyboard/reload behavior | WCI0; collection EBNF/AST and events elaborated | planned |
+| WCI1-M1 | 0.3 tree/list/scroll from source through runtime, Fyne, exports and typed SDL fixture; inspect pointer/keyboard/reload behavior | WCI0; reviewed [collection contract](../../../04--Design/SDUI/Widgets/Collections.md) | in-progress |
 | WCI2-M1 | Tabs/splits preserve page state, relative geometry and focus | WCI1 evidence and pilot findings | planned |
 | WCI2-M2 | Button/toggle shared commands, menu/context/dialog with cancel/lifetime proof | WCI2-M1; typed command/surface grammar | planned |
 | WCI3-M1 | Checkbox/slider/select/numeric input and atomic typed drafts | WCI2; shared typed value/property contract | planned |

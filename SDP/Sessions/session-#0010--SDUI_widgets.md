@@ -3,7 +3,7 @@
 ## Session roadmap
 
 Latest recorded turn: T002. Current work: S2. Next: review the WCI1 collection/viewport
-contract after completed WCD1 and WCI0. Diagram is **sequence only**, using synthetic equal
+implementation and native acceptance after completed WCD1 and WCI0. Diagram is **sequence only**, using synthetic equal
 slots; it is not a delivery schedule or measured timeline.
 
 ```mermaid
@@ -34,7 +34,7 @@ gantt
 | Primary card | [KB-SDUI-003](../KanBan/active/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md) |
 | Snapshot date | 2026-10-07 owner request; actual ledger timestamps recorded separately |
 | Current step | S2 |
-| Proposed next step | S2 reviewed collection/viewport contract, then WCI1 execution |
+| Proposed next step | S2 WCI1 integration, native evidence and independent review |
 | Execution authority | Owner T001 requests taking the card's work |
 
 ## Goal
@@ -135,8 +135,18 @@ implementation obligations.
   SDL codegen/bridge and SDUI codegen pass. Phase branch `sdui/widgets-wci1`
   starts with prerequisite commit `d1c5c88`; exact files integrated after baseline
   comparison. No frozen fixture or historical evidence was altered.
-- Work summary, not captured final response: continue WCI1 contract review and
-  implementation, preserving full inventory and no release/merge authority.
+- WCI1 stage contract independently approved after correcting canceled/failed-load
+  keyboard recovery and pruning mandatory SVG snapshots/general scene/custom row
+  drawing. Export rejection remains explicit; all required interaction stays in scope.
+- WCI1 implementation lanes in the isolated clone: frontend/export Dalton,
+  runtime James (`01a11887-3b3f-7d11-9501-8c00902b9bdf`), layout Gibbs
+  (`01a11887-8d55-74f3-bd58-7c6ea563b28e`), native/preparation/bridge Noether.
+  Exclusive file ownership and an early shared API memo govern integration.
+- Native tooling smoke: actual X11 click and Tab+space each reached the Fyne
+  desktop driver, using separate Xvfb :189 and XDG area. This proves the input
+  route only, not collection acceptance; see native/README in WCI1 evidence area.
+- Work summary, not captured final response: WCI1 code, integration and native
+  verification are ongoing; full inventory and no release/merge authority retained.
 
 ## Closeout
 
