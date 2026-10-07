@@ -65,9 +65,8 @@ Selected alternatives:
   span and instance path. No collection SVG snapshot renderer is required.
   Text/composition remain explicitly static structural descriptions.
 
-This bounded revision supersedes the custom BaseWidget/shared-row-painting choice
-in §5's implementation paragraph. Its observable interaction, identity and event
-rules remain required; §6 defines the permitted native adapter and geometry boundary.
+Section 5 defines observable interaction and event rules; section 6 defines the
+permitted native adapter and geometry boundary.
 
 ## 2. Exact source profile and AST contract
 
@@ -349,7 +348,8 @@ Retain explicit per-parent/root error or canceled status independently of whethe
 the branch is expanded. The root also has a one-shot `AutoLoadPending` flag: true
 only for a fresh binding's unloaded root, cleared on the first request, and never
 reset by cancellation, visibility changes or compatible reload. Thus an initially
-visible unloaded root loads once; an unloaded root after cancellation stays paused.
+visible unloaded root loads once; an unloaded root after cancellation or a
+compatible reload of an outstanding root request stays paused.
 Show a visible `Load — R` control in that root state and `Retry — R` for an error.
 An errored or canceled-unloaded branch shows the corresponding recovery control
 with its branch status when expanded. These are existing runtime Retry operations,
@@ -364,7 +364,7 @@ not new source syntax, item IDs or SDL callbacks.
 | Escape while collection has a load | Cancel request; retain loaded data and selection, record canceled status and show Load recovery; do not immediately auto-reload or invoke a domain action |
 | Matching successful completion | Validate prospective subtree and geometry, replace atomically, mark loaded, consume request; empty success is empty content |
 | Matching provider/data/layout failure | Consume request; preserve prior data, selection and offsets; show escaped error and an explicit Retry affordance at that parent/root |
-| Retry via visible recovery control or R while collection focused | Target errored or canceled-unloaded parent/root; require loader, expand branch if needed, allocate fresh RequestID, clear error/canceled status, show loading and run Load once. A second Retry while that target is loading does nothing and starts no request. |
+| Retry via visible recovery control or R while collection focused | Target errored or canceled-unloaded parent/root, or an unloaded root with RootLoaded=false and AutoLoadPending=false after compatible reload; require loader, expand branch if needed, allocate fresh RequestID, clear error/canceled status, show loading and run Load once. A second Retry while that target is loading does nothing and starts no request. |
 | Collapse/re-expand an errored branch | Preserve its error and show Retry again; no provider request or SDL action until explicit Retry |
 | Stale/canceled completion | Discard without data, status, selection, geometry or domain changes |
 
@@ -403,9 +403,10 @@ discriminated collection target. A button Activate still requires no payload.
 Before consuming an event or running callbacks, validate handle/kind, revision,
 nonzero increasing Session sequence, enabled/visible ancestry, collection
 generation, item existence, kind and current expanded-row visibility. Retry alone
-may target empty ItemID for root error or canceled-unloaded recovery. Select/Activate
+may target empty ItemID for root error, canceled-unloaded recovery, or a paused
+unloaded root with RootLoaded=false and AutoLoadPending=false. Select/Activate
 require a row; Expand/Collapse require a branch; Retry requires the matching
-error or canceled-unloaded state and loader. Repeated Retry for a currently loading
+error/canceled-unloaded state or that root-only paused state, and a loader. Repeated Retry for a currently loading
 target is a no-op after identity/sequence checks, never a second request.
 Reject extra/mismatched payloads. A focused group is not a selected item. A
 collection has at most one selected row; activation does not depend on a display
@@ -455,14 +456,14 @@ cannot activate while hidden. Deleting a focused item clears its row focus and
 selection if selected; next navigation chooses a surviving row without synthesizing
 an activation. Programmatic state sync never simulates native user events.
 
-Implement a bounded collection adapter using Fyne BaseWidget and its focus,
-tap/double-tap/key/scroll interfaces. Existing button/Input controls remain native
-Fyne controls. Each collection draws the measured rows, disclosure, selection,
-focus and status indicators supplied by layout. Use one host event route through
-the shared clip-aware hit test; clipped or disabled rows never dispatch. Build
-native closures with the bundle identity, handle, model revision and current
-collection generation, refreshing them after data changes. A double click's two
-tap notifications must still produce at most one Activate.
+Prefer Fyne collection controls with a bounded adapter. Use custom BaseWidget
+behavior only where a demonstrated native limitation prevents the required
+semantics. Existing button/Input controls remain native Fyne controls. The adapter
+keeps rendering and hit testing consistent with shared outer geometry and the
+authoritative runtime offsets; clipped or disabled rows never dispatch. Build
+native closures with bundle identity, handle, model revision and current collection
+generation, refreshing them after data changes. A double click must produce at
+most one Activate regardless of native tap notifications.
 
 The visible title supplies the accessible label; focused/selected, expanded,
 loading, empty and error states must be distinguishable without color alone.
@@ -692,7 +693,9 @@ The transaction is:
    validate/initialize the new provider's initial data. Carry compatible viewport
    offsets, then clamp using new geometry. An expanded branch that was loading
    before successful reload may start a fresh request after publication; error or
-   canceled recovery remains explicit and cannot be restarted by the reload.
+   canceled recovery remains explicit and cannot be restarted by the reload. A
+   root that was loading becomes paused unloaded with AutoLoadPending=false;
+   expose Load/R and accept root Retry to allocate one fresh request.
 4. Check the entire selected entry's profile/capabilities/providers and actual
    loaded SDL registration/signatures/connections. Bind only the detached Session.
    Its model revision and binding epoch must be fixed before closures are built.
@@ -853,3 +856,9 @@ SVG snapshots/general scene/custom row rendering. Revised Load/Retry click and R
 paths, A06/A08 and explicit export rejection satisfy those findings. The reviewer
 approved bounded WCI1 implementation with no remaining blocking design findings.
 This is design readiness, not native behavior or widget completion evidence.
+
+Implementation clarification, same turn: a compatible reload of an outstanding
+root request retains AutoLoadPending=false and changes Loading to Unloaded.
+The root-only explicit Load/R path accepts this paused state; branch retry rules
+and automatic loading are unchanged. A successor/recovery regression and native
+recovery evidence are required; this is a contract clarification, not a pass claim.

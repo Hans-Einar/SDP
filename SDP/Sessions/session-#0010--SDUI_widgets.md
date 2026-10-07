@@ -145,6 +145,32 @@ implementation obligations.
 - Native tooling smoke: actual X11 click and Tab+space each reached the Fyne
   desktop driver, using separate Xvfb :189 and XDG area. This proves the input
   route only, not collection acceptance; see native/README in WCI1 evidence area.
+- Milestone backlog review: KB-SDUI-004 remains independently owned text fidelity
+  backlog; KB-SDUI-005 remains gate-review with delivered producer evidence. No
+  onHold work displaced the selected widget route. The isolated clone lacks the
+  uncommitted KB005 card; the canonical board review used the original workspace.
+- WCI2 draft-only architecture lane: Lorentz
+  (`01a11888-c963-7663-af5e-cd5a107a6715`) prepares Panes-and-commands.md in the
+  original workspace. Execution still requires WCI1 pilot feedback and stage review.
+- Main reused ProjectManagement and Toolkit validators; both pass after stage
+  registration. No widget completion is inferred from record validation.
+- WCI1 lane results: frontend/export and layout implementations have passed their
+  scoped race checks; actual native integration/acceptance remains pending.
+  Runtime/host recovery clarifies that a previously loading root paused by a
+  compatible reload offers explicit Load/R, without automatic restart.
+- WCI3 draft-only architecture lane: Dalton prepares Values-and-text.md after
+  completing frontend code. Future-stage code remains gated by preceding pilot
+  evidence and reviewed contracts.
+- Native pilot build passed, but its first launch rejected the fixture SDL action
+  declaration as noncanonical before window creation. No product native pass is
+  claimed. Host geometry/input findings are being corrected; see Pilot-WCI1.md.
+- Second native pilot reached real SDL activation, controlled retry/cancel/late
+  completion and two compatible reloads. It is development feedback on an evolving
+  candidate, not final acceptance. OS captures replace black Canvas.Capture output.
+  A repeatable XTest harness is being established; host integration fixes remain.
+- WCI1 adjacent consumer corrections: Dalton owns profile-aware helper/SDPTool
+  metadata and SDL bundle generator provenance in the clone. Exact 0.3 support
+  must never be mislabeled 0.2 or imply unavailable native providers.
 - Work summary, not captured final response: WCI1 code, integration and native
   verification are ongoing; full inventory and no release/merge authority retained.
 
