@@ -37,6 +37,11 @@ func safe(n string) bool {
 // Publish validates everything before replacing the directory. Unmanaged notes
 // are copied unchanged; conflicting edits to generated files are rejected.
 func (b *Bundle) Publish(output string) error {
+	return b.publish(output, os.Rename)
+}
+
+// The injected rename operation is a package-private failure test seam.
+func (b *Bundle) publish(output string, rename func(string, string) error) error {
 	abs, e := filepath.Abs(output)
 	if e != nil {
 		return e
@@ -111,15 +116,17 @@ func (b *Bundle) Publish(output string) error {
 	exists := false
 	if _, e = os.Lstat(abs); e == nil {
 		exists = true
-		if e = os.Rename(abs, backup); e != nil {
+		if e = rename(abs, backup); e != nil {
 			return e
 		}
 	} else if !os.IsNotExist(e) {
 		return e
 	}
-	if e = os.Rename(stage, abs); e != nil {
+	if e = rename(stage, abs); e != nil {
 		if exists {
-			os.Rename(backup, abs)
+			if restoreErr := rename(backup, abs); restoreErr != nil {
+				return fmt.Errorf("publication failed: %v; restore failed: %v; prior output retained at %s", e, restoreErr, backup)
+			}
 		}
 		return e
 	}

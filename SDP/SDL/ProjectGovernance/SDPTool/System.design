@@ -1,9 +1,13 @@
 language design-core version 0.5.
+unit BlueprintFacade.
+feature BlueprintPreview.
+activity BlueprintPreviewDelivery.
 usecase BrowseProjectFacts.
 functionality CheckTransitionAuthority.
 unit ContextFacade.
 usecase CoordinateGovernedWork.
 functionality DescribeRegisteredProject.
+capability DiagnosticBlueprint.
 activity ExistingInstallFacade.
 unit ExistingInstallationFacade.
 interface ExistingInstallationLibrary.
@@ -11,11 +15,14 @@ unit ExistingNavigationFacade.
 activity ExistingReadFacade.
 interface ExistingSdlProjectionLibrary.
 unit ExternalCommandAdapter.
+functionality GenerateBlueprintPreview.
 feature GovernedProjectOperations.
+usecase InspectProposedModelChange.
 usecase InstallReviewedProcess.
 feature InstallationFacade.
 mode InstallationHandling.
 functionality InvokeReviewedInstallation.
+interface ModelSnapshotLibrary.
 database OperationalRunStore.
 feature ProjectFacade.
 capability ProjectInventory.
@@ -56,6 +63,13 @@ container SdpToolHost.
 message TransitionAccepted.
 message TransitionRefused.
 interface TrustedAssignmentBinding.
+BlueprintFacade consumes ExistingSdlProjectionLibrary.
+BlueprintFacade consumes ModelSnapshotLibrary.
+BlueprintFacade owns GenerateBlueprintPreview.
+BlueprintPreview supports InspectProposedModelChange.
+BlueprintPreviewDelivery addresses GenerateBlueprintPreview.
+BlueprintPreviewDelivery delivers BlueprintPreview.
+BlueprintPreviewDelivery has implementation-status = implemented.
 CheckTransitionAuthority allocated-to SdpToolHost in mode RoutineHandling.
 CheckTransitionAuthority contributes-to GovernedProjectOperations.
 CheckTransitionAuthority realizes RoutineCoordination.
@@ -64,6 +78,8 @@ ContextFacade owns ResolveCheckoutAuthority.
 DescribeRegisteredProject allocated-to SdpToolHost in mode ProjectReading.
 DescribeRegisteredProject contributes-to ProjectFacade.
 DescribeRegisteredProject realizes ProjectInventory.
+DiagnosticBlueprint requires ExistingSdlProjectionLibrary in mode ProjectReading.
+DiagnosticBlueprint requires ModelSnapshotLibrary in mode ProjectReading.
 ExistingInstallFacade addresses InvokeReviewedInstallation.
 ExistingInstallFacade delivers InstallationFacade.
 ExistingInstallFacade has implementation-status = implemented.
@@ -77,6 +93,9 @@ ExistingReadFacade has implementation-status = implemented.
 ExternalCommandAdapter uses RoutineCalls as receiver of TransitionAccepted in mode RoutineHandling.
 ExternalCommandAdapter uses RoutineCalls as receiver of TransitionRefused in mode RoutineHandling.
 ExternalCommandAdapter uses RoutineCalls as sender of RequestTransition in mode RoutineHandling.
+GenerateBlueprintPreview allocated-to SdpToolHost in mode ProjectReading.
+GenerateBlueprintPreview contributes-to BlueprintPreview.
+GenerateBlueprintPreview realizes DiagnosticBlueprint.
 GovernedProjectOperations supports CoordinateGovernedWork.
 InstallationFacade supports InstallReviewedProcess.
 InvokeReviewedInstallation allocated-to SdpToolHost in mode InstallationHandling.
@@ -87,6 +106,7 @@ ProjectFacade supports BrowseProjectFacts.
 ProjectInventory requires ExistingSdlProjectionLibrary in mode ProjectReading.
 ProjectMaintainer pursues InstallReviewedProcess.
 ProjectReader pursues BrowseProjectFacts.
+ProjectReader pursues InspectProposedModelChange.
 ProjectSupervisor pursues CoordinateGovernedWork.
 ReconcileRunRevision allocated-to SdpToolHost in mode RoutineHandling.
 ReconcileRunRevision contributes-to GovernedProjectOperations.
@@ -169,11 +189,13 @@ RoutineStaleOrUnauthorized step 2 sends TransitionRefused from RoutineCoordinato
 RunRepository owns OperationalRunStore.
 RunRepository owns ReconcileRunRevision.
 RunSnapshots upholds RoutineOutcome.
+SdpToolHost contains BlueprintFacade.
 SdpToolHost contains ContextFacade.
 SdpToolHost contains ExistingInstallationFacade.
 SdpToolHost contains ExistingNavigationFacade.
 SdpToolHost contains RoutineCoordinator.
 SdpToolHost contains RunRepository.
+SdpToolHost provides DiagnosticBlueprint.
 SdpToolHost provides ProjectInventory.
 SdpToolHost provides ReviewedInstallation.
 SdpToolHost provides RoutineCoordination.

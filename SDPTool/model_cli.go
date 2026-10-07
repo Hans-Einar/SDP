@@ -1,7 +1,9 @@
 package sdptool
 
 import (
+	"context"
 	"fmt"
+	"github.com/Hans-Einar/SDP/SDPTool/blueprints"
 	"github.com/Hans-Einar/SDP/SDPTool/model"
 	"github.com/Hans-Einar/SDP/SDPTool/presentation"
 	"io"
@@ -71,6 +73,29 @@ func modelCommand(area string, args []string, out, errs io.Writer, jsonMode bool
 		r, e = model.Status(area, args[1])
 		r.Operation = args[0]
 	case "create":
+		if len(args) > 1 && args[1] == "blueprint" {
+			if len(args) != 12 || args[2] != "from" || args[4] != "to" {
+				return bad()
+			}
+			opts := map[string]string{}
+			for i := 6; i < len(args); i += 2 {
+				if args[i] != "--entry" && args[i] != "--task" && args[i] != "--output" {
+					return bad()
+				}
+				if _, ok := opts[args[i]]; ok {
+					return bad()
+				}
+				opts[args[i]] = args[i+1]
+			}
+			b, err := blueprints.Generate(context.Background(), blueprints.Options{Area: area, From: args[3], To: args[5], Entry: opts["--entry"], Task: opts["--task"], Output: opts["--output"]})
+			if err != nil {
+				return reportMode(errs, failure("blueprint", err), jsonMode)
+			}
+			if err = presentation.Default().Write(out, b, jsonMode); err != nil {
+				return reportMode(errs, err, jsonMode)
+			}
+			return 0
+		}
 		if len(args) < 2 {
 			return bad()
 		}
@@ -158,8 +183,9 @@ const modelHelp = `Usage: sdptool [MODEL-AREA] model ACTION [--json]
   create proposal:NAME from work:NAME
   create release:VERSION from candidate:NAME --evidence model-only
     or --evidence verified --code-digest SHA256 --checks REFERENCE
+  create blueprint from kind:NAME to kind:NAME --entry System.design --task TASK.json --output DIRECTORY
   status|history|snapshot kind:NAME
   recover OPERATION-UUID resume|abort
 MODEL-AREA is the directory containing artifact folders; no Git or SDP install required.
-WORK snapshots are preliminary. Blueprint generation is not implemented.
+WORK snapshots are preliminary. Blueprints are diagnostic previews, not executable assignments.
 `

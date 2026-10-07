@@ -184,3 +184,14 @@ Before executing BPI2/BPI3, refine their plan/contract to include the selected
 retention location, discovery schema, state-record owner and stale/missing-reference
 tests. Native XFMD changes require their own XFMD card/agent. PLAN-SDP-0020 now includes BPI2-M2 catalogue/discovery and BPI3-M2 lifecycle
 projection. Native XFMD implementation is not activated by this scope selection.
+
+
+## BPI2-M1 concrete adapter contract — 2026-10-07
+
+The first adapter finalizes task input as strict JSON, retained as assignment.json,
+rather than the earlier proposed assignment.yaml. CLI spelling is
+model create blueprint from REF to REF --entry FILE --task FILE --output DIRECTORY.
+This is a diagnostic preview only. The implemented contract and source identity /
+publication limits are in SDPTool/blueprints/README.md. The earlier catalogue
+design remains BPI2-M2; no immutable retention or discovery root is inferred from
+the preview publisher. Canonical task and analysis fields remain typed Go contracts.

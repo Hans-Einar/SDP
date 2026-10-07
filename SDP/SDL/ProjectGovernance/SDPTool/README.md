@@ -74,5 +74,16 @@ The authoring verification used the repository CLI with Go 1.27.1; the enclosing
 candidate hashes and export evidence. Generated output belongs in temporary or
 explicitly marked derived directories, never in this authored source folder.
 The [ecosystem index](../README.md) identifies cross-system dependencies.
-Navigation registration must select this entry explicitly; folder placement alone
-does not make it available to a viewer.
+Current discovery derives navigation from supported source files; no manual
+navigation registry is required. Viewer support remains a separate consumer contract.
+
+
+## Blueprint preview delivery — BPI2-M1
+
+BlueprintFacade captures ModelGovernance source views and delegates structural
+analysis/rendering to SDL/go/blueprint, then uses the shared document publisher.
+GenerateBlueprintPreview is a diagnostic operation; BlueprintPreviewDelivery does
+not claim catalogue discovery, assignment states or code conformance. The libraries
+are dependencies of SdpToolHost, not new deployed containers. Source:
+SDPTool/blueprints/generate.go and SDL/go/blueprint. Evidence:
+05--Implementation/SDPTool/Blueprints/Evidence-BPI2-M1.md.

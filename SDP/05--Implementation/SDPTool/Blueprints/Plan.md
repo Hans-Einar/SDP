@@ -169,7 +169,7 @@ that generates two revisions, assigns one, records review/closure and refreshes
 the discovery tree without altering the retained bundles.
 Session0008 continues through implementation; its roadmap must show design gates
 and production milestones separately. Installer manifests, releases and integration
-into XFMD require their own authorized work. BPI1-M1 is delivered and independently reviewed; BPI2 is next. See
+into XFMD require their own authorized work. BPI1-M1 is delivered and independently reviewed; BPI2-M1 is delivered; BPI2-M2 catalogue/discovery is next. See
 [Evidence-BPI1.md](Evidence-BPI1.md). Later milestones have not started.
 
 ## BPI1-M1 delivery — 2026-10-07
@@ -177,3 +177,14 @@ into XFMD require their own authorized work. BPI1-M1 is delivered and independen
 Pure Go analyzer and regression tests delivered; independent review approves the
 bounded diagnostic library after four findings were fixed. No public CLI or
 assignment readiness is claimed. BPI2-M1 publication is the next milestone.
+
+
+## BPI2-M1 execution — 2026-10-07/08
+
+Implemented the explicit diagnostic generation command, captured source compilation,
+deterministic typed metadata, source-linked Markdown and Mermaid, and shared owned-file
+publication. Task format is finalized as strict JSON rather than the earlier proposed
+YAML. BPI2-M2 catalogue and BPI3 remain unstarted. Independent review found and then
+approved fixes for symlinked-source overlap, explicit compiler/entry identity and
+PRESERVE labels for protection IDs containing slashes. See Evidence-BPI2-M1.md. Final integration must resolve the recorded installer
+race-test timeout; focused producer verification and independent review passed.

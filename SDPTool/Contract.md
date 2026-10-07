@@ -290,3 +290,14 @@ filesystem revisions. Existing combined navigation and scan limits still apply.
 Refresh discovers additions, edits, moves and removals. `discover --json` supplies
 this tree to a consumer buffer; `tree` displays it in the console. Viewer-owned
 opening/watching and Session lifecycle/capture/timeline automation are separate.
+
+
+## Blueprint diagnostic producer — BPI2-M1
+
+The model create blueprint command takes from/to refs, --entry, --task TASK.json
+and --output DIR. It uses owned ModelGovernance captures and the pure SDL analyzer.
+The result schema is sdp-blueprint/1, operation create-blueprint, status
+diagnostic-preview; human output is default, --json selects the machine envelope.
+See blueprints/README.md for pinned identity, source links, strict JSON task input
+and optimistic publication freshness. Preview success does not imply assignment
+readiness or implementation conformance. Catalogue discovery is a later milestone.

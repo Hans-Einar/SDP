@@ -179,3 +179,9 @@ proposal/candidate/release and preliminary snapshots. No Git repository or SDP
 installation is required. Read the [model workflow and limits](model/README.md).
 Model releases are distinct from SDP tool releases; this does not generate semantic
 blueprints or authenticate implementation acceptance.
+
+
+Blueprint diagnostic generation is available through model create blueprint
+with from/to refs, --entry, --task TASK.json and --output DIR.
+See [producer contract](blueprints/README.md). Catalogue browsing and assignment
+lifecycle are separate planned milestones.

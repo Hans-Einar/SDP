@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-T007, 2026-10-07. Sequence only; dates are display slots, not duration estimates.
+T008, 2026-10-08. Sequence only; dates are display slots, not duration estimates.
 
 ```mermaid
 gantt
@@ -20,7 +20,7 @@ gantt
 | completed | S2 / BP2-B | Deterministic impact selection and negative cases | NOW/TARGET union, removed neighbors, unknown frontier, stale/overflow/cycle cases |
 | completed | S3 / BP2-C | API and implementation handoff | Authored model Worker/Reviewer trial; A approved, violating B rejected |
 | completed | S4 / BPI1 | Production Go analysis | Go analyzer delivered; independent review approves bounded BPI1 |
-| next | S5 / BPI2 | Publication and catalogue | M1 deterministic bundle; M2 retained revisions and discovery tab |
+| on-going | S5 / BPI2 | Publication and catalogue | M1 delivered; M2 next: retained revisions and discovery tab |
 | planned | S6 / BPI3 | Evidence and lifecycle | M1 generated-bundle trial; M2 revision-bound state transitions and navigation |
 
 | Field | Value |
@@ -196,3 +196,32 @@ remain planned; no production CLI, GUI, model-to-code proof or release claimed.
 BPI1-M1 is delivered. Next is BPI2-M1 document publication, followed by the
 BPI2-M2 catalogue. Worktree-local plan and Session are authoritative for this
 implementation branch; the original concurrent worktree is preserved.
+
+
+### T008 — Blueprint document production (2026-10-07/08)
+
+Owner asks to continue. Reused SDP Master/Worker and independent Reviewer routines.
+BPI2-M1 runs on the same isolated branch/worktree. Implemented source capture,
+reachable SDL compilation, diagnostic bundle generation, shared publication and
+human/JSON CLI output. No catalogue discovery is claimed yet.
+
+Independent review confirmed an output/source overlap bug through a symlinked model
+area; fixed by rejecting input ancestry symlinks, with a no-source-write regression.
+Added identity-bound entrypoint and compiler/executable provenance. A second review
+found protection IDs containing slashes lost visual PRESERVE marks; fixed using
+exact task prefixes with a regression. Final focused review approves the diagnostic
+publication scope. The generated SDPTool source model passes the existing checker.
+
+A real compiled command generated the reduced MVP1 blueprint. Full context rendering
+was terminated after several minutes under concurrent load, so it is not recorded as
+a successful visual check. Added a source-derived small delta diagram as the first
+view while retaining the complete context. Selected-diagram rendering and broad test
+completion are recorded separately in milestone evidence. No GUI acceptance,
+readiness, assignment lifecycle or release is inferred.
+
+
+T008 result: BPI2-M1 delivered and independently approved. Selected delta SVG
+rendering and visual inspection succeeded. Broad race run passed all reported
+SDPTool packages except installer, which timed out in an unchanged recovery test;
+raw evidence preserves the incomplete check. It remains outstanding for final
+integration. Next BPI2-M2 catalogue/discovery; no native XFMD tab yet.

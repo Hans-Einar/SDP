@@ -1,0 +1,19 @@
+{
+  "baseline": "84497bf",
+  "toolchain": "Go 1.27.1",
+  "candidateFiles": {
+    "SDL/go/blueprint/render.go": "bf5e1b9a99122e432c733abfb07ee7731d2da4ca4f32fab60fadfaee5022697a",
+    "SDL/go/blueprint/render_test.go": "bec91be0ddc3bc460f85b6195fc3be914c700acafe3e73597b427ddabb1faa7b",
+    "SDL/go/documents/publish.go": "3f45cdbdbfe00d331281422b3588f39de6b38e1e55de11f72c58560bbf6a7c96",
+    "SDPTool/blueprints/generate.go": "07c3ea0d00eac10aa20640b0366ff9ae5879574cf349f49482a835afea263815",
+    "SDPTool/model_cli.go": "385e0682b742e0a1009e4648d5e38477aa6c8bd4f658137240bf49c2389f60a0",
+    "SDP/SDL/ProjectGovernance/SDPTool/System.design": "714680380586c97316a21bf7cce0caac7df3844467ee4402607cabd907643606"
+  },
+  "compiledToolSHA256": "a4f218714960ec5d1a2d6bdfd702374c299f985e9f52ee24a64284730c8f0b0c",
+  "rendererSHA256": "b7522b912ba53959d605a6dc99a84f33a0b8ad63f1a215a8f68751f3204eb9f9",
+  "bundleRevision": "072e1e7af959325df76012665ab042263797c0831f14a1cef5f1713a216312f1",
+  "deltaSVG_SHA256": "8220c5b79119b59dad8e189e2b0fce6ba7cb54ecdf2f431c6b4ac66e641fb830",
+  "fullContextRendering": "terminated after several minutes under concurrent load; not accepted as rendered",
+  "sampleOutput": "/tmp/bpi2-preview-pilot/output",
+  "scope": "BPI2-M1 diagnostic publication; no catalogue or assignment readiness"
+}
