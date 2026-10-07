@@ -40,7 +40,32 @@ The existing document publisher stages output, rejects edits to generated files,
 and preserves unmanaged notes. Rename/write failure tests verify the prior output
 remains available; if rollback itself fails, the error identifies the retained
 backup. There is no power-loss durability claim. Preview directories may be
-regenerated; immutable retained catalogue revisions belong to BPI2-M2.
+regenerated; immutable catalogue mode is described below.
 
-This increment does not advertise a Blueprints discovery tab, persist assignment
-states or claim code conformance. Those are later milestones.
+The producer does not persist assignment states or claim code conformance.
+Those remain BPI3.
+
+## Immutable retention and browsing — BPI2-M2
+
+Replace --output with --catalogue /project/SDP/Blueprints to retain a revision.
+No registration or manual copying is needed. The result path identifies
+<catalogue>/<hash-of-System-and-task-ID>/<retainedRevision>/.
+Folder names are safe full digests; human labels remain in metadata.
+revision identifies blueprint inputs/analysis; retainedRevision binds every exact
+retained file, including manifest bytes, using the ModelGovernance Digest framing.
+Both identities are returned. Equal input/tool/task bytes are idempotent; new bytes
+add a sibling. Logical immutability does not prevent manual edits; discovery
+diagnoses them, including edits accompanied by a rewritten manifest.
+
+Discovery verifies both captured source digests, metadata identities, complete
+file inventory/digests, retainedRevision and links. It returns a Blueprints tab
+with task/revision nodes and Markdown/Mermaid open targets. Retained source copies
+are not added to the current SDL/SDUI inventory. No index or ledger is written.
+Each revision has workState unknown until BPI3; integrity does not establish
+assignment, implementation or live-source freshness. Preliminary is separate.
+
+Malformed, missing, modified, unsupported or wrongly placed revisions stay visible
+without a trusted open target. Duplicate copies outside their canonical path are
+invalid. No status-folder moves occur. Scanning is bounded to 256 task/revision
+candidates, 10,000 verified files/directory entries and 64 MiB of verified bytes.
+Metadata has an 8 MiB per-file limit. Symlinks are rejected.

@@ -13,7 +13,7 @@ func Navigation(p Project, id string) (Tree, error) {
 		return Tree{}, failure("incomplete", fmt.Errorf("installation has not published navigation; resume its recorded operation"))
 	}
 
-	t := Tree{Schema: Version, Operation: "tree", Project: p.Inventory.ProjectID, Roots: []string{"sdl", "kanban", "sdui", "sessions"}, Nodes: []Node{}, ExpansionDepthLimit: 8}
+	t := Tree{Schema: Version, Operation: "tree", Project: p.Inventory.ProjectID, Roots: []string{"sdl", "kanban", "sdui", "sessions", "blueprints"}, Nodes: []Node{}, ExpansionDepthLimit: 8}
 	if id != "" {
 		mt, e := ModelTree(p, id)
 		if e != nil {
@@ -67,6 +67,7 @@ func Navigation(p Project, id string) (Tree, error) {
 		t.Nodes = append(t.Nodes, p.Files...)
 	}
 	t.Nodes = append(t.Nodes, sessionsNode(p))
+	t.Nodes = append(t.Nodes, blueprintNodes(p)...)
 	versions := []string{t.Revision}
 	if p.Inventory.KanBan != "" {
 		nodes, hash, e := BoardNodes(p)

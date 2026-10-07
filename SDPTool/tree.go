@@ -20,6 +20,10 @@ type Target struct {
 	Revision  string `json:"revision,omitempty"`
 }
 type Node struct {
+	RetainedRevision  string   `json:"retainedRevision,omitempty"`
+	BlueprintID       string   `json:"blueprintId,omitempty"`
+	BlueprintRevision string   `json:"blueprintRevision,omitempty"`
+	AssignmentState   string   `json:"workState,omitempty"`
 	ArtifactKind      string   `json:"artifactKind,omitempty"`
 	ArtifactID        string   `json:"artifactId,omitempty"`
 	Preliminary       bool     `json:"preliminary,omitempty"`

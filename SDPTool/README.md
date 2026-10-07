@@ -177,11 +177,13 @@ See [output contract](Contract.md#output-presentation) and
 `sdptool [MODEL-AREA] model help` exposes local WORK, commit/restore, integration,
 proposal/candidate/release and preliminary snapshots. No Git repository or SDP
 installation is required. Read the [model workflow and limits](model/README.md).
-Model releases are distinct from SDP tool releases; this does not generate semantic
-blueprints or authenticate implementation acceptance.
+Model releases are distinct from SDP tool releases and do not authenticate
+implementation acceptance. Blueprint generation is a separate operation below.
 
 
 Blueprint diagnostic generation is available through model create blueprint
-with from/to refs, --entry, --task TASK.json and --output DIR.
-See [producer contract](blueprints/README.md). Catalogue browsing and assignment
-lifecycle are separate planned milestones.
+with from/to refs, --entry, --task TASK.json and either --output DIR for a preview
+or --catalogue SDP/Blueprints for immutable retention. Discover/tree automatically
+expose the retained catalogue and its generated document targets.
+See [producer contract](blueprints/README.md). Assignment lifecycle remains BPI3;
+catalogue entries report workState=unknown.

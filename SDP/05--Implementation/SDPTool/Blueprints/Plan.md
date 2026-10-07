@@ -169,8 +169,8 @@ that generates two revisions, assigns one, records review/closure and refreshes
 the discovery tree without altering the retained bundles.
 Session0008 continues through implementation; its roadmap must show design gates
 and production milestones separately. Installer manifests, releases and integration
-into XFMD require their own authorized work. BPI1-M1 is delivered and independently reviewed; BPI2-M1 is delivered; BPI2-M2 catalogue/discovery is next. See
-[Evidence-BPI1.md](Evidence-BPI1.md). Later milestones have not started.
+into XFMD require their own authorized work. BPI1-M1 is delivered and independently reviewed; BPI2-M1/M2 are delivered; BPI3-M1 readiness/evidence is next. See
+[Evidence-BPI1.md](Evidence-BPI1.md). BPI3 has not started.
 
 ## BPI1-M1 delivery — 2026-10-07
 
@@ -184,7 +184,18 @@ assignment readiness is claimed. BPI2-M1 publication is the next milestone.
 Implemented the explicit diagnostic generation command, captured source compilation,
 deterministic typed metadata, source-linked Markdown and Mermaid, and shared owned-file
 publication. Task format is finalized as strict JSON rather than the earlier proposed
-YAML. BPI2-M2 catalogue and BPI3 remain unstarted. Independent review found and then
+YAML. At M1 closeout, BPI2-M2 and BPI3 were unstarted. Independent review found and then
 approved fixes for symlinked-source overlap, explicit compiler/entry identity and
 PRESERVE labels for protection IDs containing slashes. See Evidence-BPI2-M1.md. Final integration must resolve the recorded installer
 race-test timeout; focused producer verification and independent review passed.
+
+
+## BPI2-M2 delivery — 2026-10-08
+
+Retained revision publication, bounded integrity verification and source-derived
+Blueprint discovery/tree are delivered. A separate retainedRevision binds all bytes;
+the prior blueprint revision remains unchanged in meaning. Consumer targets include
+both Markdown and Mermaid; workState remains unknown. See
+[Evidence-BPI2-M2.md](Evidence-BPI2-M2.md) and the generated consumer fixture.
+Independent review and final targeted verification govern milestone acceptance.
+BPI3-M1 is next; native XFMD, assignment lifecycle and release remain separate.

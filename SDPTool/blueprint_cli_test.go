@@ -51,6 +51,35 @@ func TestCompiledBlueprint(t *testing.T) {
 			t.Fatal(name, e)
 		}
 	}
+	project := t.TempDir()
+	catalogue := filepath.Join(project, "SDP", "Blueprints")
+	retainedArgs := append([]string{}, args...)
+	retainedArgs[len(retainedArgs)-2] = "--catalogue"
+	retainedArgs[len(retainedArgs)-1] = catalogue
+	b, e = exec.Command(binary, append(retainedArgs, "--json")...).CombinedOutput()
+	if e != nil {
+		t.Fatal(e, string(b))
+	}
+	if e = json.Unmarshal(b, &r); e != nil || r["retainedRevision"] == nil {
+		t.Fatal(e, string(b))
+	}
+	b, e = exec.Command(binary, project, "discover", "--json").CombinedOutput()
+	if e != nil {
+		t.Fatal(e, string(b))
+	}
+	var discovery Project
+	if e = json.Unmarshal(b, &discovery); e != nil {
+		t.Fatal(e)
+	}
+	found := false
+	for _, n := range discovery.Navigation.Nodes {
+		if n.ID == "blueprints" && n.Kind == "tab" && n.State == "available" {
+			found = true
+		}
+	}
+	if !found {
+		t.Fatal("compiled discovery missing tab")
+	}
 	if _, e = os.Stat(filepath.Join(area, ".git")); !os.IsNotExist(e) {
 		t.Fatal("Git required")
 	}

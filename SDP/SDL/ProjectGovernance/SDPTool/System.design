@@ -1,8 +1,11 @@
 language design-core version 0.5.
+unit BlueprintCatalogue.
+activity BlueprintCatalogueDelivery.
 unit BlueprintFacade.
 feature BlueprintPreview.
 activity BlueprintPreviewDelivery.
 usecase BrowseProjectFacts.
+functionality BrowseRetainedBlueprints.
 functionality CheckTransitionAuthority.
 unit ContextFacade.
 usecase CoordinateGovernedWork.
@@ -35,6 +38,7 @@ functionality ReconcileRunRevision.
 message RequestTransition.
 functionality ResolveApplicableRoutine.
 functionality ResolveCheckoutAuthority.
+feature RetainedBlueprintNavigation.
 capability ReviewedInstallation.
 scenario RoutineAccepted.
 channel RoutineCalls.
@@ -63,6 +67,13 @@ container SdpToolHost.
 message TransitionAccepted.
 message TransitionRefused.
 interface TrustedAssignmentBinding.
+functionality VerifyRetainedBlueprints.
+BlueprintCatalogue owns BrowseRetainedBlueprints.
+BlueprintCatalogue owns VerifyRetainedBlueprints.
+BlueprintCatalogueDelivery addresses BrowseRetainedBlueprints.
+BlueprintCatalogueDelivery addresses VerifyRetainedBlueprints.
+BlueprintCatalogueDelivery delivers RetainedBlueprintNavigation.
+BlueprintCatalogueDelivery has implementation-status = implemented.
 BlueprintFacade consumes ExistingSdlProjectionLibrary.
 BlueprintFacade consumes ModelSnapshotLibrary.
 BlueprintFacade owns GenerateBlueprintPreview.
@@ -70,6 +81,9 @@ BlueprintPreview supports InspectProposedModelChange.
 BlueprintPreviewDelivery addresses GenerateBlueprintPreview.
 BlueprintPreviewDelivery delivers BlueprintPreview.
 BlueprintPreviewDelivery has implementation-status = implemented.
+BrowseRetainedBlueprints allocated-to SdpToolHost in mode ProjectReading.
+BrowseRetainedBlueprints contributes-to RetainedBlueprintNavigation.
+BrowseRetainedBlueprints realizes DiagnosticBlueprint.
 CheckTransitionAuthority allocated-to SdpToolHost in mode RoutineHandling.
 CheckTransitionAuthority contributes-to GovernedProjectOperations.
 CheckTransitionAuthority realizes RoutineCoordination.
@@ -119,6 +133,7 @@ ResolveApplicableRoutine realizes RoutineCoordination.
 ResolveCheckoutAuthority allocated-to SdpToolHost in mode RoutineHandling.
 ResolveCheckoutAuthority contributes-to GovernedProjectOperations.
 ResolveCheckoutAuthority realizes RoutineCoordination.
+RetainedBlueprintNavigation supports InspectProposedModelChange.
 ReviewedInstallation requires ExistingInstallationLibrary in mode InstallationHandling.
 RoutineAccepted exercises CoordinateGovernedWork.
 RoutineAccepted has completeness = closed.
@@ -189,6 +204,7 @@ RoutineStaleOrUnauthorized step 2 sends TransitionRefused from RoutineCoordinato
 RunRepository owns OperationalRunStore.
 RunRepository owns ReconcileRunRevision.
 RunSnapshots upholds RoutineOutcome.
+SdpToolHost contains BlueprintCatalogue.
 SdpToolHost contains BlueprintFacade.
 SdpToolHost contains ContextFacade.
 SdpToolHost contains ExistingInstallationFacade.
@@ -205,3 +221,6 @@ TransitionAccepted upholds RoutineOutcome.
 TransitionRefused has message-kind = result.
 TransitionRefused replies-to RequestTransition.
 TransitionRefused upholds RoutineOutcome.
+VerifyRetainedBlueprints allocated-to SdpToolHost in mode ProjectReading.
+VerifyRetainedBlueprints contributes-to RetainedBlueprintNavigation.
+VerifyRetainedBlueprints realizes DiagnosticBlueprint.

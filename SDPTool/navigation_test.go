@@ -87,7 +87,7 @@ func TestSDUIServiceAndOptionalTabs(t *testing.T) {
 	root, r := projectFixture(t)
 	p, _ := Discover(root)
 	tree, e := Navigation(p, "")
-	if e != nil || len(tree.Roots) != 5 {
+	if e != nil || len(tree.Roots) != 6 {
 		t.Fatalf("optional tabs %v", e)
 	}
 	r.SDUI = []Model{{"ui", "SDUI", "page.sdui", "sdui/0.2"}}

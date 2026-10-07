@@ -300,4 +300,24 @@ The result schema is sdp-blueprint/1, operation create-blueprint, status
 diagnostic-preview; human output is default, --json selects the machine envelope.
 See blueprints/README.md for pinned identity, source links, strict JSON task input
 and optimistic publication freshness. Preview success does not imply assignment
-readiness or implementation conformance. Catalogue discovery is a later milestone.
+readiness or implementation conformance. Retained catalogue discovery is specified below.
+
+## Retained blueprint discovery — BPI2-M2
+
+inventory.blueprints is SDP/Blueprints when a real directory exists;
+capabilities.blueprints is discovered or absent. navigation.roots includes
+blueprints, with kind tab and label Blueprints. Catalogue states include absent,
+empty, available and unavailable. Children group blueprint tasks then revisions.
+
+Revision nodes expose blueprintId, blueprintRevision, retainedRevision, preliminary
+and workState. workState is unknown in this milestone. validated means recorded
+inventory/identity integrity only. No lifecycle, code conformance or live-source
+freshness is inferred. Generated Markdown/Mermaid targets use operation open,
+absolute path and file-content hash. Invalid entries have diagnostics and no target.
+Tree uses the same projection as discover; refresh is consumer-owned. Retained
+source copies are not treated as current-model declarations.
+
+Creation chooses --output for a replaceable preview or --catalogue for immutable
+retention. The existing result revision identifies blueprint metadata; optional
+retainedRevision binds the entire stored bundle and names its revision directory.
+See blueprints/README.md. No manual index or automatic XFMD update is required.

@@ -87,3 +87,13 @@ not claim catalogue discovery, assignment states or code conformance. The librar
 are dependencies of SdpToolHost, not new deployed containers. Source:
 SDPTool/blueprints/generate.go and SDL/go/blueprint. Evidence:
 05--Implementation/SDPTool/Blueprints/Evidence-BPI2-M1.md.
+
+
+## Retained blueprint catalogue — BPI2-M2
+
+BlueprintCatalogue verifies retained revision integrity and projects discoverable
+documents into the shared navigation tree. It does not infer work progress or
+compare against live sources. Assignment status remains unknown until BPI3.
+Implementation: SDPTool/blueprints/catalogue.go and blueprint_navigation.go.
+The generic Files scan does not register retained SDL/SDUI as current project
+sources. Native XFMD rendering remains a separate consumer concern.

@@ -195,3 +195,37 @@ This is a diagnostic preview only. The implemented contract and source identity 
 publication limits are in SDPTool/blueprints/README.md. The earlier catalogue
 design remains BPI2-M2; no immutable retention or discovery root is inferred from
 the preview publisher. Canonical task and analysis fields remain typed Go contracts.
+
+## BPI2-M2 selected catalogue contract — 2026-10-08
+
+The create blueprint command accepts either --output for a mutable diagnostic
+preview or --catalogue for immutable retention. Catalogue mode generates/captures
+once, checks freshness, and retains under <catalogue>/<blueprint-key>/<revision>/.
+The conventional discoverable catalogue is SDP/Blueprints. The blueprint key hashes
+System plus authored Task ID, so arbitrary labels never become filesystem paths.
+The blueprint revision remains the identity-bound digest from blueprint.json.
+A separate retainedRevision hashes the exact full file map using model.Digest
+(sorted paths, length framing and content digests); it names the revision directory. Existing identical
+managed bytes are idempotent; any mismatch is rejected. No retention registry exists.
+
+Retained publication verifies the manifest's entire output inventory, document
+identity and required files; stage then rename under an exclusive destination lock.
+Unmanaged preview notes are not silently copied into retained revisions. Extra
+files in a retained revision are integrity errors. Retention is logical immutability,
+not filesystem write protection or authenticated authorship.
+
+Discovery reads at most 256 task/revision candidates, 10,000 files and 64 MiB across
+verification reads; oversized entries become diagnostic and receive no open target.
+Paths and symlinks are checked without following external content. Valid entries
+expose System/task/revision identity, separate preliminary and validation facts,
+and workState=unknown until BPI3. Folder shape or source validity cannot imply
+assignment, completion or freshness against live sources.
+
+The additive navigation root has ID blueprints, kind tab, label Blueprints.
+Children are task nodes then revision nodes and generated document targets.
+Revision nodes carry blueprintId, blueprintRevision, retainedRevision and workState; targets use
+operation open with exact file-content hashes. Discovery/tree share the projection.
+Malformed/missing/modified metadata stays visible with diagnostics and no target.
+The ordinary Files scan does not classify retained sources as current SDL/SDUI.
+Refresh rescans real content; no manual index, generation, mutation or external
+reference lookup occurs. Native XFMD consumption remains separately owned.

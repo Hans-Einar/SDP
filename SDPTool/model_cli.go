@@ -79,7 +79,7 @@ func modelCommand(area string, args []string, out, errs io.Writer, jsonMode bool
 			}
 			opts := map[string]string{}
 			for i := 6; i < len(args); i += 2 {
-				if args[i] != "--entry" && args[i] != "--task" && args[i] != "--output" {
+				if args[i] != "--entry" && args[i] != "--task" && args[i] != "--output" && args[i] != "--catalogue" {
 					return bad()
 				}
 				if _, ok := opts[args[i]]; ok {
@@ -87,7 +87,14 @@ func modelCommand(area string, args []string, out, errs io.Writer, jsonMode bool
 				}
 				opts[args[i]] = args[i+1]
 			}
-			b, err := blueprints.Generate(context.Background(), blueprints.Options{Area: area, From: args[3], To: args[5], Entry: opts["--entry"], Task: opts["--task"], Output: opts["--output"]})
+			o := blueprints.Options{Area: area, From: args[3], To: args[5], Entry: opts["--entry"], Task: opts["--task"], Output: opts["--output"]}
+			var b blueprints.Result
+			var err error
+			if catalogue := opts["--catalogue"]; catalogue != "" {
+				b, err = blueprints.GenerateRetained(context.Background(), o, catalogue)
+			} else {
+				b, err = blueprints.Generate(context.Background(), o)
+			}
 			if err != nil {
 				return reportMode(errs, failure("blueprint", err), jsonMode)
 			}
@@ -183,7 +190,7 @@ const modelHelp = `Usage: sdptool [MODEL-AREA] model ACTION [--json]
   create proposal:NAME from work:NAME
   create release:VERSION from candidate:NAME --evidence model-only
     or --evidence verified --code-digest SHA256 --checks REFERENCE
-  create blueprint from kind:NAME to kind:NAME --entry System.design --task TASK.json --output DIRECTORY
+  create blueprint from kind:NAME to kind:NAME --entry System.design --task TASK.json --output DIRECTORY (or --catalogue SDP/Blueprints)
   status|history|snapshot kind:NAME
   recover OPERATION-UUID resume|abort
 MODEL-AREA is the directory containing artifact folders; no Git or SDP install required.

@@ -1,0 +1,8 @@
+Relevant full package race run (before final enumeration-budget correction):
+ok  	github.com/Hans-Einar/SDP/SDPTool	301.229s
+ok  	github.com/Hans-Einar/SDP/SDPTool/blueprints	337.432s
+ok  	github.com/Hans-Einar/SDP/SDPTool/presentation	1.045s
+
+Final candidate focused race run, including both budget corrections and compiled consumer:
+ok  	github.com/Hans-Einar/SDP/SDPTool	23.791s
+ok  	github.com/Hans-Einar/SDP/SDPTool/blueprints	255.279s

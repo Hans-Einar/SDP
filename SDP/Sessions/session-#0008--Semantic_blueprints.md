@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-T008, 2026-10-08. Sequence only; dates are display slots, not duration estimates.
+T009, 2026-10-08. Sequence only; dates are display slots, not duration estimates.
 
 ```mermaid
 gantt
@@ -12,6 +12,10 @@ gantt
     ACTIVE BP2-A Contract and pilot :active,a,2000-01-01,1d
     DONE BP2-B Selection and evidence :done,b,after a,1d
     DONE BP2-C Executable handoff :done,c,after b,1d
+    section Implementation
+    DONE BPI1 Analysis :done,d,after c,1d
+    DONE BPI2 Publication and catalogue :done,e,after d,1d
+    NEXT BPI3 Evidence and lifecycle :f,after e,1d
 ```
 
 | State | Step | Outcome | Evidence / remaining work |
@@ -20,8 +24,8 @@ gantt
 | completed | S2 / BP2-B | Deterministic impact selection and negative cases | NOW/TARGET union, removed neighbors, unknown frontier, stale/overflow/cycle cases |
 | completed | S3 / BP2-C | API and implementation handoff | Authored model Worker/Reviewer trial; A approved, violating B rejected |
 | completed | S4 / BPI1 | Production Go analysis | Go analyzer delivered; independent review approves bounded BPI1 |
-| on-going | S5 / BPI2 | Publication and catalogue | M1 delivered; M2 next: retained revisions and discovery tab |
-| planned | S6 / BPI3 | Evidence and lifecycle | M1 generated-bundle trial; M2 revision-bound state transitions and navigation |
+| completed | S5 / BPI2 | Publication and catalogue | M1/M2 delivered; diagnostic bundles and retained discovery |
+| next | S6 / BPI3 | Evidence and lifecycle | M1 readiness/receipts and generated-bundle trial; M2 revision-bound lifecycle |
 
 | Field | Value |
 | --- | --- |
@@ -36,8 +40,9 @@ gantt
 Design the first useful semantic blueprint around a small real-model change,
 then hand off measurable implementation slices. The eventual generator must show
 NOW/TARGET differences, affected surroundings, preserved obligations and unknowns.
-This Session's active plan is a DesignPlan; no production generator or Ponsse
-implementation is claimed by producing model specimens.
+The DesignPlan led to active ImplementationPlan PLAN-SDP-0020. Diagnostic generation
+and catalogue discovery are implemented; assignment lifecycle and code-conformance
+evidence remain separate milestones. The Ponsse pilot is not an implemented change.
 
 ## Cards and plans
 
@@ -225,3 +230,31 @@ rendering and visual inspection succeeded. Broad race run passed all reported
 SDPTool packages except installer, which timed out in an unchanged recovery test;
 raw evidence preserves the incomplete check. It remains outstanding for final
 integration. Next BPI2-M2 catalogue/discovery; no native XFMD tab yet.
+
+
+### T009 — Retained catalogue and discovery (2026-10-08)
+
+Owner input: continue. Manual work summary, not an exact transcript. Loaded/reused
+SDP, Master, Worker, Planning, Verifier and Traceability, plus independent Reviewer;
+existing Architect decisions govern scope. The isolated implementation worktree
+remains authoritative for this milestone; unrelated root-worktree changes are preserved.
+
+BPI2-M2 adds --catalogue retention and source-derived Blueprint navigation. No
+registration file is required. The existing blueprint revision binds analysis/inputs;
+a distinct retainedRevision binds the exact stored file map, including its manifest.
+Task/revision nodes expose seven generated Markdown/Mermaid open targets. Retained
+source copies do not become current SDL/SDUI models. Work state stays unknown until
+BPI3; validated bytes do not prove assignment progress or live-source freshness.
+
+Independent review found source digest verification missing, an enumeration-budget
+bypass and missing Mermaid targets. Fixed all three, including overflow-budget
+accounting across nested scans, and added regression tests. Evidence-BPI2-M2.md
+records final review, commands, candidate hashes and a real compiled discover/tree
+consumer fixture. This is headless consumer evidence, not native XFMD acceptance.
+
+Related backlog KB004 and KB-SDL-006 were reviewed: general code mapping and runtime
+channel execution remain their scope. No additional activation or scope expansion.
+S5/BPI2 is delivered; next S6/BPI3-M1 readiness/dispositions, pinned receipts and a
+generated-bundle Worker/Reviewer trial. KB050 and the implementation plan stay active.
+The earlier installer race timeout remains a final-integration gap. No release,
+main merge, owner pilot acceptance or native XFMD modification is claimed.

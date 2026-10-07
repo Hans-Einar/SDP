@@ -46,12 +46,13 @@ type Document struct {
 	Compiler    CompilerIdentity    `json:"compiler"`
 }
 type Result struct {
-	Schema      string `json:"schema"`
-	Operation   string `json:"operation"`
-	Status      string `json:"status"`
-	Revision    string `json:"revision"`
-	Path        string `json:"path"`
-	Preliminary bool   `json:"preliminary"`
+	RetainedRevision string `json:"retainedRevision,omitempty"`
+	Schema           string `json:"schema"`
+	Operation        string `json:"operation"`
+	Status           string `json:"status"`
+	Revision         string `json:"revision"`
+	Path             string `json:"path"`
+	Preliminary      bool   `json:"preliminary"`
 }
 
 func capture(v model.SourceView) Capture {
@@ -305,5 +306,5 @@ func generate(ctx context.Context, o Options, beforePublish func()) (Result, err
 		return result, e
 	}
 	abs, _ := filepath.Abs(o.Output)
-	return Result{Schema, "create-blueprint", "diagnostic-preview", doc.Revision, abs, now.Preliminary || target.Preliminary}, nil
+	return Result{Schema: Schema, Operation: "create-blueprint", Status: "diagnostic-preview", Revision: doc.Revision, Path: abs, Preliminary: now.Preliminary || target.Preliminary}, nil
 }

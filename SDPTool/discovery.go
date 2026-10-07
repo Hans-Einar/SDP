@@ -135,6 +135,9 @@ func discover(selected string, withNavigation bool) (Project, error) {
 		return bad("limit", e)
 	}
 	for _, n := range p.Files {
+		if n.ID == "files/Blueprints" && n.Kind == "directory" {
+			p.Inventory.Blueprints = "SDP/Blueprints"
+		}
 		if n.ID == "files/Sessions" && n.Kind == "directory" {
 			p.Inventory.Sessions = "SDP/Sessions"
 		}
@@ -145,7 +148,7 @@ func discover(selected string, withNavigation bool) (Project, error) {
 	for _, entry := range []struct {
 		name    string
 		present bool
-	}{{"sdl", len(p.Inventory.Models) > 0}, {"sdui", len(p.Inventory.SDUI) > 0}, {"kanban", p.Inventory.KanBan != ""}, {"sessions", p.Inventory.Sessions != ""}, {"implementation-plan", len(p.Plans) > 0}} {
+	}{{"sdl", len(p.Inventory.Models) > 0}, {"sdui", len(p.Inventory.SDUI) > 0}, {"kanban", p.Inventory.KanBan != ""}, {"sessions", p.Inventory.Sessions != ""}, {"blueprints", p.Inventory.Blueprints != ""}, {"implementation-plan", len(p.Plans) > 0}} {
 		state := "absent"
 		if entry.present {
 			state = "discovered"
@@ -297,6 +300,9 @@ func (p *Project) scanArea() error {
 		}
 		p.Files[pos].Children = append(p.Files[pos].Children, id)
 		p.Files = append(p.Files, n)
+		if rel == "Blueprints" && d != nil && d.IsDir() {
+			return filepath.SkipDir
+		}
 		if strings.Count(rel, "/") >= 64 && d != nil && d.IsDir() {
 			p.Files[len(p.Files)-1].State = "unavailable"
 			p.Files[len(p.Files)-1].Diagnostic = "directory depth limit"
