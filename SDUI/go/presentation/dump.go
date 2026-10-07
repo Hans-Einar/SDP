@@ -76,17 +76,23 @@ func widgetText(n *parser.Instance) string {
 		return "[ " + n.Argument("label") + " ]"
 	case "input":
 		return n.Argument("text") + ": [" + n.Argument("value") + "]"
-	default:
+	case "tree", "list":
+		return "[Static " + n.Widget + ": " + n.Argument("label") + " | " + n.Path + " | provider data not supplied]"
+	case "svg":
 		label := n.Argument("label")
 		if label == "" {
 			label = n.Path
 		}
 		return "[SVG plassholder: " + label + "]"
 	}
+	return "" // check rejects unknown kinds before rendering.
 }
 
 // Dump produces a bounded terminal-cell structural preview, not measured GUI geometry.
 func Dump(root *parser.Instance, columns int) (string, error) {
+	if err := check(root); err != nil {
+		return "", err
+	}
 	if columns < 20 || columns > 400 {
 		return "", diagnostic("dump-width", "Columns must be between 20 and 400", root)
 	}

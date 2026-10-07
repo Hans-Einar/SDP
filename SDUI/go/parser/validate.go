@@ -14,19 +14,28 @@ var widgets = map[string]widgetSchema{
 	"svg":    {"source", map[string]string{"source": "reference", "label": "string"}, "source"},
 }
 
-func widgetArguments(n *Node) map[string]any {
+func schemaFor(profile, kind string) (widgetSchema, bool) {
+	if profile == "sdui/0.3" && (kind == "tree" || kind == "list") {
+		return widgetSchema{"label", map[string]string{"label": "string", "callback": "reference"}, "label"}, true
+	}
+	s, ok := widgets[kind]
+	return s, ok
+}
+
+func widgetArguments(n *Node, profile string) map[string]any {
+	schema, _ := schemaFor(profile, val(n.Widget))
 	out := map[string]any{}
 	for _, a := range n.Arguments {
 		k := val(a.Name)
 		if a.Name == nil {
-			k = widgets[val(n.Widget)].position
+			k = schema.position
 		}
 		out[k] = a.Value
 	}
 	return out
 }
-func validateWidget(n *Node, modules map[string]bool) {
-	schema, ok := widgets[val(n.Widget)]
+func validateWidget(n *Node, modules map[string]bool, profile string) {
+	schema, ok := schemaFor(profile, val(n.Widget))
 	if !ok {
 		fail("widget-kind", "Unsupported widget "+val(n.Widget), n.Span)
 	}
@@ -58,6 +67,12 @@ func validateWidget(n *Node, modules map[string]bool) {
 			if v.Kind != expected {
 				fail("argument-type", "Expected "+expected, a.Span)
 			}
+			if val(n.Widget) == "tree" || val(n.Widget) == "list" {
+				label, ok := v.Value.(string)
+				if !ok || strings.TrimSpace(label) == "" {
+					fail("collection-label", "Collection requires a nonempty accessible label", a.Span)
+				}
+			}
 		default:
 			fail("argument-type", "Invalid argument", a.Span)
 		}
@@ -73,6 +88,9 @@ func validateWidget(n *Node, modules map[string]bool) {
 func validateLocal(d *Document) {
 	if d == nil {
 		fail("document", "Nil document", Span{})
+	}
+	if _, err := ASTFormat(d.Profile); err != nil {
+		fail("profile", "Unsupported document profile "+d.Profile, d.Span)
 	}
 	modules := map[string]bool{}
 	definitions := map[string]Definition{}
@@ -122,7 +140,7 @@ func validateLocal(d *Document) {
 				fail("variant", "Only frame variants box/b supported", n.Span)
 			}
 			if n.Kind == "widget" {
-				validateWidget(n, modules)
+				validateWidget(n, modules, d.Profile)
 			}
 			roles := map[string]bool{}
 			body := false

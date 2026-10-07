@@ -32,4 +32,24 @@ func Layout(root *parser.Instance, size layout.Size) error {
 	_, err = (&layout.Engine{Measure: provider}).Layout(root, size)
 	return err
 }
-func Check(root *parser.Instance) error { return preparation.Check("sdui/0.2", root, Capabilities()) }
+func Check(root *parser.Instance) error {
+	profile, err := parser.EffectiveProfile(root)
+	if err != nil {
+		return err
+	}
+	return preparation.Check(profile, root, Capabilities())
+}
+
+// CollectionCapabilities is advertised only by the document-based bundle host,
+// which supplies actual provider bindings, state-aware geometry and publication.
+func CollectionCapabilities() preparation.Capabilities {
+	return append(Capabilities(), preparation.Capabilities{
+		{Dimension: preparation.Frontend, ID: "sdui/0.3", Major: 1},
+		{Dimension: preparation.Layout, ID: "collections", Major: 1},
+		{Dimension: preparation.Widget, ID: "tree", Major: 1}, {Dimension: preparation.Widget, ID: "list", Major: 1},
+		{Dimension: preparation.Provider, ID: "collection-data", Major: 1}, {Dimension: preparation.Provider, ID: "collection-load", Major: 1},
+		{Dimension: preparation.Host, ID: "tree", Major: 1}, {Dimension: preparation.Host, ID: "list", Major: 1},
+		{Dimension: preparation.Host, ID: "viewport", Major: 1}, {Dimension: preparation.Host, ID: "atomic-publication", Major: 1},
+		{Dimension: preparation.Viewport, ID: "scroll-x", Major: 1}, {Dimension: preparation.Viewport, ID: "scroll-y", Major: 1},
+	}...)
+}

@@ -8,6 +8,11 @@ import (
 
 type Session struct {
 	check                   func(*parser.Instance) error
+	stateCheck              StateGate
+	StateRevision           uint64
+	collections             map[string]*collection
+	viewports               map[string]ViewportState
+	viewportHandles         map[string]Handle
 	ID                      string
 	Revision, BatchRevision uint64
 	root                    *parser.Instance
@@ -22,7 +27,10 @@ func New(id string, root *parser.Instance) (*Session, error) {
 	if id == "" || root == nil || root.Kind != "frame" {
 		return nil, fault("session", "Session ID and frame root are required")
 	}
-	s := &Session{ID: id, Revision: 1, root: clone(root), widgets: map[string]*Widget{}, handlers: map[string]Handler{}}
+	if _, err := parser.EffectiveProfile(root); err != nil {
+		return nil, err
+	}
+	s := &Session{ID: id, Revision: 1, StateRevision: 1, collections: map[string]*collection{}, viewports: map[string]ViewportState{}, viewportHandles: map[string]Handle{}, root: clone(root), widgets: map[string]*Widget{}, handlers: map[string]Handler{}}
 	if err := s.register(s.root, true, true); err != nil {
 		return nil, err
 	}
@@ -30,6 +38,11 @@ func New(id string, root *parser.Instance) (*Session, error) {
 }
 func (s *Session) register(n *parser.Instance, enabled, visible bool) error {
 	parentEnabled, parentVisible := enabled, visible
+	if n.Layout["overflow-x"] == "scroll" || n.Layout["overflow-y"] == "scroll" {
+		s.generation++
+		s.viewportHandles[n.Path] = Handle{s.ID, n.Path, s.generation, "viewport:" + n.Kind + ":" + n.Widget}
+		s.viewports[n.Path] = ViewportState{}
+	}
 	enabled = enabled && n.Layout["enabled"] != false
 	visible = visible && n.Layout["visible"] != false
 	if n.Kind == "widget" {
@@ -88,6 +101,7 @@ func (s *Session) Bind(handle Handle, handler Handler) error {
 		return fault("binding", "Nil callback")
 	}
 	s.handlers[handle.Path] = handler
+	s.StateRevision++
 	return nil
 }
 func (s *Session) Draft(handle Handle, value string) error {
@@ -101,10 +115,12 @@ func (s *Session) Draft(handle Handle, value string) error {
 	if len(value) > 32768 {
 		return fault("value-limit", "Draft exceeds 32768 bytes")
 	}
+	n := s.copyState()
+	w = n.widgets[handle.Path]
 	w.Draft = value
 	w.DraftRevision++
 	w.Dirty = w.Draft != w.Value
-	return nil
+	return s.publish(n)
 }
 func (s *Session) Revert(handle Handle) error {
 	w, e := s.lookup(handle)
@@ -114,10 +130,12 @@ func (s *Session) Revert(handle Handle) error {
 	if w.Handle.Kind != "input" {
 		return fault("widget-type", "Revert requires input")
 	}
+	n := s.copyState()
+	w = n.widgets[handle.Path]
 	w.Draft = w.Value
 	w.Dirty = false
 	w.DraftRevision++
-	return nil
+	return s.publish(n)
 }
 func (s *Session) Focus(handle Handle) error {
 	w, e := s.lookup(handle)
@@ -127,56 +145,20 @@ func (s *Session) Focus(handle Handle) error {
 	if !w.Enabled || !w.Visible {
 		return fault("focus", "Widget is not focusable")
 	}
-	s.focused = handle.Path
-	return nil
+	n := s.copyState()
+	n.focused = handle.Path
+	return s.publish(n)
 }
 func (s *Session) Focused() string { return s.focused }
-func (s *Session) Dispatch(event Event) error {
-	w, err := s.lookup(event.Handle)
-	if err != nil {
-		return err
-	}
-	if event.ModelRevision != s.Revision {
-		return fault("stale-event", "Event belongs to another model revision")
-	}
-	if event.Sequence == 0 || event.Sequence <= s.sequence {
-		return fault("duplicate-event", "Event sequence already consumed")
-	}
-	if !w.Enabled || !w.Visible {
-		return fault("inactive-widget", w.Handle.Path)
-	}
-	switch event.Kind {
-	case Activate:
-		if w.Handle.Kind != "button" || event.Value != (Value{}) {
-			return fault("event-type", "Activate requires a button and no payload")
-		}
-	case Commit:
-		if w.Handle.Kind != "input" || event.DraftRevision != w.DraftRevision || !validValue(event.Value, String) || event.Value.Text != w.Draft {
-			return fault("event-type", "Commit requires the current input draft")
-		}
-	default:
-		return fault("event-type", string(event.Kind))
-	}
-	s.sequence = event.Sequence
-	handler := s.handlers[w.Handle.Path]
-	if handler == nil {
-		return fault("unbound", w.Handle.Path)
-	}
-	revision := s.Revision
-	updates, err := handler(event)
-	if err != nil {
-		return err
-	}
-	if s.closed || s.Revision != revision {
-		return fault("stale-result", "Session changed while callback executed")
-	}
-	return s.Apply(revision, s.BatchRevision+1, updates)
-}
 func (s *Session) Close() {
 	if s.closed {
 		return
 	}
+	for _, c := range s.collections {
+		c.cancel()
+	}
 	s.closed = true
+	s.StateRevision++
 	s.handlers = map[string]Handler{}
 	s.focused = ""
 	s.Revision++
@@ -185,12 +167,16 @@ func (s *Session) Close() {
 // CheckWith installs a pure presentation gate. Failed geometry never publishes
 // partial state; callbacks are never invoked by the gate.
 func (s *Session) CheckWith(check func(*parser.Instance) error) error {
+	if s.closed {
+		return fault("closed", "Session is closed")
+	}
 	if check != nil {
 		if err := check(s.SnapshotRoot()); err != nil {
 			return err
 		}
 	}
 	s.check = check
+	s.StateRevision++
 	return nil
 }
 
@@ -200,8 +186,12 @@ func (s *Session) InvalidateEvents() error {
 	if s.closed {
 		return fault("closed", "Session is closed")
 	}
-	s.Revision++
-	return nil
+	n := s.copyState()
+	for _, c := range n.collections {
+		c.cancel()
+	}
+	n.Revision++
+	return s.publish(n)
 }
 
 func (s *Session) Closed() bool { return s.closed }

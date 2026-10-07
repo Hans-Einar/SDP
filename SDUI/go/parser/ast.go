@@ -1,4 +1,4 @@
-// Package parser implements SDUI 0.2 without I/O, GUI dependencies or callback execution.
+// Package parser implements SDUI 0.2 and 0.3 without I/O, GUI dependencies or callback execution.
 package parser
 
 import (
@@ -87,7 +87,7 @@ type Document struct {
 	Span        Span         `json:"span"`
 }
 
-// Data returns the stable tagged sdui-ast/0.2 JSON representation.
+// Data returns the stable tagged AST representation. ASTFormat selects its envelope.
 func Data(x any) any { return data(reflect.ValueOf(x)) }
 func data(v reflect.Value) any {
 	if !v.IsValid() {
@@ -103,6 +103,10 @@ func data(v reflect.Value) any {
 	case reflect.Struct:
 		out := map[string]any{"type": v.Type().Name()}
 		for i := 0; i < v.NumField(); i++ {
+			// Omit only the new legacy sentinel, preserving all older field rules.
+			if v.Type() == reflect.TypeOf(Instance{}) && v.Type().Field(i).Name == "Profile" && v.Field(i).String() == "" {
+				continue
+			}
 			name := strings.Split(v.Type().Field(i).Tag.Get("json"), ",")[0]
 			if name == "" {
 				name = v.Type().Field(i).Name

@@ -30,6 +30,7 @@ type Diagnostic struct {
 	Capability Capability
 	Path       string
 	Span       parser.Span
+	Uses       []parser.UseSite
 }
 
 func (d *Diagnostic) Error() string {
@@ -49,12 +50,16 @@ func Check(profile string, root *parser.Instance, supported Capabilities) error 
 	require := func(n *parser.Instance, dimension Dimension, id string) error {
 		c := Capability{dimension, id, 1}
 		if !has[c] {
-			return &Diagnostic{c, n.Path, n.Span}
+			return &Diagnostic{Capability: c, Path: n.Path, Span: n.Span, Uses: append([]parser.UseSite(nil), n.Uses...)}
 		}
 		return nil
 	}
-	if profile != "sdui/0.2" {
-		return &Diagnostic{Capability{Frontend, profile, 1}, root.Path, root.Span}
+	effective, err := parser.EffectiveProfile(root)
+	if err != nil {
+		return err
+	}
+	if profile != effective {
+		return fmt.Errorf("profile-mismatch: document %s, root %s", profile, effective)
 	}
 	if err := require(root, Frontend, profile); err != nil {
 		return err
@@ -79,10 +84,20 @@ func Check(profile string, root *parser.Instance, supported Capabilities) error 
 			id := n.Widget
 			switch id {
 			case "button", "input":
+			case "tree", "list":
+				if profile != "sdui/0.3" {
+					return &Diagnostic{Capability: Capability{Widget, id, 1}, Path: n.Path, Span: n.Span, Uses: n.Uses}
+				}
+				if err := require(n, Layout, "collections"); err != nil {
+					return err
+				}
+				if err := require(n, Provider, "collection-data"); err != nil {
+					return err
+				}
 			case "svg":
 				id = "svg-placeholder"
 			default:
-				return &Diagnostic{Capability{Widget, id, 1}, n.Path, n.Span}
+				return &Diagnostic{Capability: Capability{Widget, id, 1}, Path: n.Path, Span: n.Span, Uses: n.Uses}
 			}
 			if err := require(n, Widget, id); err != nil {
 				return err
@@ -95,10 +110,16 @@ func Check(profile string, root *parser.Instance, supported Capabilities) error 
 				return err
 			}
 		default:
-			return &Diagnostic{Capability{Layout, "node:" + n.Kind, 1}, n.Path, n.Span}
+			return &Diagnostic{Capability: Capability{Layout, "node:" + n.Kind, 1}, Path: n.Path, Span: n.Span, Uses: n.Uses}
 		}
 		for _, axis := range []string{"x", "y"} {
 			if n.Layout["overflow-"+axis] == "scroll" {
+				if profile != "sdui/0.3" || !(n.Kind == "frame" || n.Kind == "group" || n.Kind == "widget" && (n.Widget == "tree" || n.Widget == "list")) {
+					return &Diagnostic{Capability: Capability{Viewport, "scroll-" + axis, 1}, Path: n.Path, Span: n.Span, Uses: n.Uses}
+				}
+				if err := require(n, Host, "viewport"); err != nil {
+					return err
+				}
 				if err := require(n, Viewport, "scroll-"+axis); err != nil {
 					return err
 				}

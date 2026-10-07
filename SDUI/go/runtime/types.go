@@ -36,9 +36,14 @@ type EventKind string
 const (
 	Activate EventKind = "activate"
 	Commit   EventKind = "commit"
+	Select   EventKind = "select"
+	Expand   EventKind = "expand"
+	Collapse EventKind = "collapse"
+	Retry    EventKind = "retry"
 )
 
 type Event struct {
+	Collection                             *CollectionTarget
 	Handle                                 Handle
 	ModelRevision, Sequence, DraftRevision uint64
 	Kind                                   EventKind
@@ -92,6 +97,7 @@ func clone(n *parser.Instance) *parser.Instance {
 		return nil
 	}
 	v := *n
+	v.Uses = append([]parser.UseSite(nil), n.Uses...)
 	v.Layout = map[string]any{}
 	for k, x := range n.Layout {
 		if a, ok := x.([]float64); ok {

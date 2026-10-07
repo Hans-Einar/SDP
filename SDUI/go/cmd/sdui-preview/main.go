@@ -10,23 +10,31 @@ import (
 	"github.com/Hans-Einar/SDP/SDUI/go/presentation"
 	"github.com/Hans-Einar/SDP/SDUI/go/prototype"
 	"github.com/Hans-Einar/SDP/SDUI/go/sourcewatch"
+	"io"
 	"os"
 	"path/filepath"
 )
 
 func run() error {
-	source := flag.String("source", "", "Original SDUI source")
-	entry := flag.String("entry", "", "Root frame")
-	revision := flag.String("revision", "", "Required SHA256")
-	output := flag.String("output", "", "Caller-owned empty bundle directory")
-	check := flag.Bool("check", false, "Return local prototype readiness only")
-	flag.Parse()
+	return execute(os.Args[1:], os.Stdout)
+}
+
+func execute(args []string, stdout io.Writer) error {
+	flags := flag.NewFlagSet("sdui-preview", flag.ContinueOnError)
+	source := flags.String("source", "", "Original SDUI source")
+	entry := flags.String("entry", "", "Root frame")
+	revision := flags.String("revision", "", "Required SHA256")
+	output := flags.String("output", "", "Caller-owned empty bundle directory")
+	check := flags.Bool("check", false, "Return local prototype readiness only")
+	if err := flags.Parse(args); err != nil {
+		return err
+	}
 	if *check {
 		_, r, e := prototype.Check(*source, *entry, *revision)
 		if e != nil {
 			return e
 		}
-		return json.NewEncoder(os.Stdout).Encode(r)
+		return json.NewEncoder(stdout).Encode(r)
 	}
 	c := sourcewatch.Read(*source, parser.MaxBytes)
 	if c.Err != nil {
@@ -89,11 +97,19 @@ func run() error {
 		}
 		hashes[name] = fmt.Sprintf("%x", sha256.Sum256(data))
 	}
-	manifest, _ := json.MarshalIndent(map[string]any{"schema": "sdui-combined/1", "revision": c.Hash, "source": *source, "frame": *entry, "spanUnits": "UTF-8 bytes; end exclusive", "outputs": hashes}, "", "  ")
+	metadata := map[string]any{"schema": "sdui-combined/1", "revision": c.Hash, "source": *source, "frame": *entry, "spanUnits": "UTF-8 bytes; end exclusive", "outputs": hashes}
+	result := map[string]string{"schema": "sdptool/0.2", "operation": "sdui-preview", "entry": filepath.Join(out, "entry.md"), "directory": out, "revision": c.Hash}
+	// Keep the legacy 0.2 protocol bytes; identify the development profile when
+	// serving 0.3. These are static artifacts, never connected readiness claims.
+	if document.Profile == "sdui/0.3" {
+		metadata["profile"] = document.Profile
+		result["profile"] = document.Profile
+	}
+	manifest, _ := json.MarshalIndent(metadata, "", "  ")
 	if e = os.WriteFile(filepath.Join(out, "sdui.json"), manifest, 0600); e != nil {
 		return e
 	}
-	return json.NewEncoder(os.Stdout).Encode(map[string]string{"schema": "sdptool/0.2", "operation": "sdui-preview", "entry": filepath.Join(out, "entry.md"), "directory": out, "revision": c.Hash})
+	return json.NewEncoder(stdout).Encode(result)
 }
 func main() {
 	if e := run(); e != nil {

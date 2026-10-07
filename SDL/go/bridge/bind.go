@@ -14,11 +14,17 @@ import (
 	sdl "github.com/Hans-Einar/SDP/SystemDesignLanguage/go/runtime"
 )
 
+type EventField string
+
+// CollectionItemID extracts only the validated collection Activate item identity.
+const CollectionItemID EventField = "collection.item-id"
+
 type Source struct {
-	Widget  string
-	Event   bool
-	Literal *sdl.Value
-	Context string
+	EventField EventField
+	Widget     string
+	Event      bool
+	Literal    *sdl.Value
+	Context    string
 }
 type Plan struct {
 	Inputs                         map[string]Source

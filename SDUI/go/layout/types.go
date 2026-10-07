@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"github.com/Hans-Einar/SDP/SDUI/go/parser"
+	"github.com/Hans-Einar/SDP/SDUI/go/runtime"
 )
 
 type Size struct{ W, H float64 }
@@ -57,6 +58,10 @@ type Measurer interface {
 type Engine struct {
 	Measure    Measurer
 	operations int
+	profile    string
+	viewports  map[string]Viewport
+	requested  map[string]runtime.ViewportState
+	insets     map[*parser.Instance]ViewportInsets
 }
 
 func number(n *parser.Instance, key string, fallback float64) float64 {

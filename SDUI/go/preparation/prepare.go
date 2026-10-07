@@ -23,6 +23,9 @@ type Binder func(*ui.Session, *parser.Document) error
 // treat their document and layout inputs as read-only.
 type Request struct {
 	Document                         *parser.Document
+	Previous                         *ui.Session
+	Providers                        map[string]ui.CollectionProvider
+	ValidateState                    ui.StateGate
 	Entry, SessionID, SourceRevision string
 	Capabilities                     Capabilities
 	ValidateLayout                   func(*parser.Instance) error
@@ -33,10 +36,13 @@ type Request struct {
 // Candidate owns an unmounted session. The caller must Close abandoned candidates.
 // Admission is only a final synchronous revision check, not a native publication.
 type Candidate struct {
-	Session        *ui.Session
-	Unbound        int
-	sourceRevision string
-	modelRevision  uint64
+	Session                      *ui.Session
+	Unbound                      int
+	sourceRevision               string
+	modelRevision                uint64
+	stateRevision                uint64
+	previous                     *ui.Session
+	previousState, previousModel uint64
 }
 
 func (c *Candidate) Close() {
@@ -48,7 +54,10 @@ func (c *Candidate) Admit(sourceRevision string) error {
 	if c == nil || c.Session == nil || c.Session.Closed() {
 		return fmt.Errorf("closed: preparation candidate")
 	}
-	if sourceRevision != c.sourceRevision || c.Session.Revision != c.modelRevision {
+	if c.previous != nil && (c.previous.Closed() || c.previous.StateRevision != c.previousState || c.previous.Revision != c.previousModel) {
+		return fmt.Errorf("stale: published state changed during preparation")
+	}
+	if sourceRevision != c.sourceRevision || c.Session.Revision != c.modelRevision || c.Session.StateRevision != c.stateRevision {
 		return fmt.Errorf("stale: preparation candidate")
 	}
 	return nil
@@ -75,23 +84,57 @@ func Prepare(r Request) (*Candidate, error) {
 	if err = Check(r.Document.Profile, root, r.Capabilities); err != nil {
 		return nil, err
 	}
-	if r.ValidateLayout == nil {
+	if r.ValidateLayout == nil && r.ValidateState == nil {
 		return nil, fmt.Errorf("preparation: layout validator required")
 	}
-	if err = r.ValidateLayout(root); err != nil {
-		return nil, err
+	var s *ui.Session
+	var oldState, oldModel uint64
+	if r.Previous != nil {
+		oldState, oldModel = r.Previous.StateRevision, r.Previous.Revision
+		s, err = r.Previous.Successor(root, r.Providers)
+	} else {
+		s, err = ui.New(r.SessionID, root)
+		if err == nil {
+			err = s.BindProviders(r.Providers)
+		}
 	}
-	s, err := ui.New(r.SessionID, root)
 	if err != nil {
+		if s != nil {
+			s.Close()
+		}
 		return nil, err
 	}
-	c := &Candidate{Session: s, sourceRevision: r.SourceRevision, modelRevision: s.Revision}
+	c := &Candidate{Session: s, sourceRevision: r.SourceRevision, modelRevision: s.Revision, previous: r.Previous, previousState: oldState, previousModel: oldModel}
 	success := false
 	defer func() {
 		if !success {
 			c.Close()
 		}
 	}()
+	if r.ValidateLayout != nil {
+		if err = r.ValidateLayout(s.SnapshotRoot()); err != nil {
+			return nil, err
+		}
+	}
+	if r.ValidateState != nil {
+		if err = s.CheckStateWith(r.ValidateState); err != nil {
+			return nil, err
+		}
+	}
+	for path, p := range r.Providers {
+		if p.Load != nil {
+			found := false
+			for _, cap := range r.Capabilities {
+				if cap == (Capability{Provider, "collection-load", 1}) {
+					found = true
+				}
+			}
+			if !found {
+				return nil, fmt.Errorf("capability: provider collection-load/1 at %s", path)
+			}
+		}
+	}
+	c.stateRevision = s.StateRevision
 	selected := *r.Document
 	selected.Connections = nil
 	for _, con := range r.Document.Connections {
@@ -112,6 +155,7 @@ func Prepare(r Request) (*Candidate, error) {
 		if err = r.Bind(s, &selected); err != nil {
 			return nil, err
 		}
+		c.stateRevision = s.StateRevision // Installing the prepared handlers advances state.
 		if err = c.Admit(r.SourceRevision); err != nil {
 			return nil, err
 		}

@@ -15,11 +15,28 @@ type placement struct {
 }
 
 func (e *Engine) Layout(root *parser.Instance, viewport Size) (*Box, error) {
+	// Each measurement has its own state; a prior snapshot's offsets never leak
+	// into this legacy entry point.
+	run := &Engine{Measure: e.Measure}
+	return run.layout(root, viewport)
+}
+
+func (e *Engine) layout(root *parser.Instance, viewport Size) (*Box, error) {
 	if root == nil {
 		return nil, &parser.Diagnostic{Code: "layout-root", Message: "Missing root"}
 	}
 	if viewport.W <= 0 || viewport.H <= 0 || viewport.W > 32768 || viewport.H > 32768 || math.IsNaN(viewport.W) || math.IsNaN(viewport.H) {
 		return nil, diag(root, "viewport", "Viewport must be finite and in (0,32768]")
+	}
+	profile, err := parser.EffectiveProfile(root)
+	if err != nil {
+		return nil, err
+	}
+	e.profile = profile
+	if profile == "sdui/0.3" {
+		if err := validateScrollOwners(root); err != nil {
+			return nil, err
+		}
 	}
 	if e.Measure == nil {
 		e.Measure = TextMetrics{}
@@ -34,7 +51,7 @@ func (e *Engine) Layout(root *parser.Instance, viewport Size) (*Box, error) {
 	if err = overflow(root, rect, clip); err != nil {
 		return nil, err
 	}
-	return e.arrange(root, rect, viewport, clip, 14, true)
+	return e.arrange(root, rect, viewport, clip, 14, true, "")
 }
 func (e *Engine) desired(n *parser.Instance, ref, slot Size, force assigned, inherited float64) (Size, error) {
 	if err := e.step(n); err != nil {
@@ -81,16 +98,21 @@ func (e *Engine) desired(n *parser.Instance, ref, slot Size, force assigned, inh
 		}
 		knownW, knownH = true, true
 	}
+	if e.profile == "sdui/0.3" {
+		if scrolls(n, "x") && !knownW || scrolls(n, "y") && !knownH {
+			return Size{}, diag(n, "scroll-layout", "Scroll axes require a definite assigned size")
+		}
+	}
 	if n.Kind == "markdown" || n.Kind == "widget" {
 		limit := slot.W
 		if knownW {
 			limit = w
 		}
-		s, err := e.Measure.Measure(n, font, limit)
+		s, minimum, err := e.measureWidget(n, font, limit, Size{w, h}, slot, assigned{knownW, knownH})
 		if err != nil {
 			return Size{}, err
 		}
-		if n.Kind == "widget" && (knownW && w < s.W-.01 || knownH && h < s.H-.01) {
+		if n.Kind == "widget" && (knownW && w < minimum.W-.01 || knownH && h < minimum.H-.01) {
 			return Size{}, diag(n, "native-minimum", "Assigned size is below widget minimum")
 		}
 		if !knownW {
@@ -100,6 +122,10 @@ func (e *Engine) desired(n *parser.Instance, ref, slot Size, force assigned, inh
 			h = s.H
 		}
 	} else {
+		insets, err := e.containerInsets(n, font)
+		if err != nil {
+			return Size{}, err
+		}
 		p := padding(n, ref)
 		inner := Size{math.Max(0, slot.W-p[1]-p[3]), math.Max(0, slot.H-p[0]-p[2])}
 		if knownW {
@@ -107,6 +133,10 @@ func (e *Engine) desired(n *parser.Instance, ref, slot Size, force assigned, inh
 		}
 		if knownH {
 			inner.H = math.Max(0, h-p[0]-p[2])
+		}
+		inner, err = insetSize(n, inner, insets)
+		if err != nil {
+			return Size{}, err
 		}
 		for _, row := range allRows(n) {
 			for _, c := range row {
@@ -126,10 +156,10 @@ func (e *Engine) desired(n *parser.Instance, ref, slot Size, force assigned, inh
 			return Size{}, err
 		}
 		if !knownW {
-			w = extent.W + p[1] + p[3]
+			w = extent.W + p[1] + p[3] + insets.Right
 		}
 		if !knownH {
-			h = extent.H + p[0] + p[2]
+			h = extent.H + p[0] + p[2] + insets.Bottom
 		}
 	}
 	loW, hiW := bounds(n, "x", ref.W)
@@ -164,7 +194,7 @@ func allRows(n *parser.Instance) [][]*parser.Instance {
 	return r
 }
 
-func (e *Engine) arrange(n *parser.Instance, r Rect, ref Size, clip Rect, font float64, enabled bool) (*Box, error) {
+func (e *Engine) arrange(n *parser.Instance, r Rect, ref Size, clip Rect, font float64, enabled bool, ancestor string) (*Box, error) {
 	font = number(n, "font", font)
 	enabled = enabled && n.Layout["enabled"] != false
 	b := &Box{Instance: n, Path: n.Path, Rect: r, Clip: clip.Intersect(r), Font: font, Enabled: enabled}
@@ -174,13 +204,36 @@ func (e *Engine) arrange(n *parser.Instance, r Rect, ref Size, clip Rect, font f
 		return b, nil
 	}
 	if n.Kind == "widget" || n.Kind == "markdown" {
+		if e.profile == "sdui/0.3" && collection(n) {
+			if err := e.arrangeCollection(n, r, clip, font, ancestor); err != nil {
+				return nil, err
+			}
+		}
 		return b, nil
+	}
+	insets, err := e.containerInsets(n, font)
+	if err != nil {
+		return nil, err
 	}
 	p := padding(n, ref)
 	inner := Rect{r.X + p[3], r.Y + p[0], math.Max(0, r.W-p[1]-p[3]), math.Max(0, r.H-p[0]-p[2])}
-	places, _, err := e.contents(n, Size{inner.W, inner.H}, ref, font, true)
+	allocation := inner
+	size, err := insetSize(n, Size{inner.W, inner.H}, insets)
 	if err != nil {
 		return nil, err
+	}
+	inner.W, inner.H = size.W, size.H
+	places, extent, err := e.contents(n, Size{inner.W, inner.H}, ref, font, true)
+	if err != nil {
+		return nil, err
+	}
+	offset, err := e.viewport(n, inner, clip.Intersect(inner), extent, ancestor)
+	if err != nil {
+		return nil, err
+	}
+	if e.profile == "sdui/0.3" && (scrolls(n, "x") || scrolls(n, "y")) {
+		e.gutters(n, allocation, inner, clip)
+		ancestor = n.Path
 	}
 	for _, pos := range places {
 		child := pos.rect
@@ -189,7 +242,9 @@ func (e *Engine) arrange(n *parser.Instance, r Rect, ref Size, clip Rect, font f
 		if err := overflow(n, child, inner); err != nil {
 			return nil, err
 		}
-		c, err := e.arrange(pos.node, child, pos.ref, clip.Intersect(inner), font, enabled)
+		child.X -= offset.X
+		child.Y -= offset.Y
+		c, err := e.arrange(pos.node, child, pos.ref, clip.Intersect(inner), font, enabled, ancestor)
 		if err != nil {
 			return nil, err
 		}
@@ -203,7 +258,7 @@ func overflow(owner *parser.Instance, r, area Rect) error {
 		start, end, lo, hi float64
 	}{{"x", r.X, r.X + r.W, area.X, area.X + area.W}, {"y", r.Y, r.Y + r.H, area.Y, area.Y + area.H}} {
 		policy := choice(owner, "overflow-"+a.axis, "error")
-		if policy == "scroll" {
+		if policy == "scroll" && owner.Profile != "sdui/0.3" {
 			return diag(owner, "unsupported-scroll", "Scrolling requires a viewport host and is not enabled in this layout profile")
 		}
 		if policy == "error" && (a.start < a.lo-.01 || a.end > a.hi+.01) {

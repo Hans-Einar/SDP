@@ -11,6 +11,12 @@ import (
 
 func (b *Bridge) validateSource(source Source, widget ui.Widget, kind parser.ScalarType) error {
 	count := 0
+	if source.EventField != "" {
+		count++
+		if source.EventField != CollectionItemID || (widget.Handle.Kind != "tree" && widget.Handle.Kind != "list") || kind != parser.TextType {
+			return fmt.Errorf("event-field: collection.item-id requires a collection Activate and text destination")
+		}
+	}
 	if source.Widget != "" {
 		count++
 		w, ok := b.UI.Widget(source.Widget)
@@ -46,6 +52,15 @@ func (b *Bridge) validateSource(source Source, widget ui.Widget, kind parser.Sca
 	return nil
 }
 func (b *Bridge) value(source Source, event ui.Event, kind parser.ScalarType) (sdl.Value, error) {
+	if source.EventField != "" {
+		if source.EventField != CollectionItemID || kind != parser.TextType || event.Kind != ui.Activate || event.Collection == nil {
+			return sdl.Value{}, fmt.Errorf("event-field: invalid collection activation")
+		}
+		if err := b.UI.ValidateCollectionTarget(*event.Collection); err != nil {
+			return sdl.Value{}, err
+		}
+		return sdl.Text(string(event.Collection.ItemID)), nil
+	}
 	if source.Literal != nil {
 		return *source.Literal, nil
 	}
@@ -83,6 +98,10 @@ func (b *Bridge) value(source Source, event ui.Event, kind parser.ScalarType) (s
 func (b *Bridge) handler(engine *sdl.Engine, action string, plan Plan, target string) ui.Handler {
 	boundRevision := engine.Revision()
 	return func(event ui.Event) ([]ui.Update, error) {
+		receiver, ok := b.UI.Widget(target)
+		if !ok {
+			return nil, fmt.Errorf("stale-result-target: %s", target)
+		}
 		inputType, _, err := engine.Signature(action)
 		if err != nil {
 			return nil, err
@@ -100,8 +119,16 @@ func (b *Bridge) handler(engine *sdl.Engine, action string, plan Plan, target st
 			return nil, err
 		}
 		widget, ok := b.UI.Widget(target)
-		if !ok {
-			return nil, fmt.Errorf("stale-result-target: %s", target)
+		if !ok || widget.Handle != receiver.Handle || widget.ValueRevision != receiver.ValueRevision || widget.DraftRevision != receiver.DraftRevision {
+			return nil, fmt.Errorf("stale-result-target: %s changed during action", target)
+		}
+		if engine.Revision() != boundRevision {
+			return nil, fmt.Errorf("stale-result: SDL revision changed")
+		}
+		if event.Collection != nil {
+			if err := b.UI.ValidateCollectionTarget(*event.Collection); err != nil {
+				return nil, err
+			}
 		}
 		if plan.RevisionField != "" {
 			b.Context[plan.RevisionContext] = result.Output[plan.RevisionField]

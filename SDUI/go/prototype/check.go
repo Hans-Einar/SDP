@@ -18,6 +18,7 @@ type Report struct {
 	Entry      string `json:"entry"`
 	Source     string `json:"source"`
 	Diagnostic string `json:"diagnostic"`
+	Profile    string `json:"profile,omitempty"`
 }
 
 func Check(path, entry, revision string) (reload.Candidate, Report, error) {
@@ -28,6 +29,24 @@ func Check(path, entry, revision string) (reload.Candidate, Report, error) {
 	}
 	if revision != "" && c.Hash != revision {
 		return c, r, fmt.Errorf("stale: SDUI source changed; regenerate the preview")
+	}
+	// The standalone adapter has no application-owned collection provider. Check
+	// hidden descendants as well, before generic frontend/native admission, so a
+	// static 0.3 preview is not confused with a ready interactive collection.
+	if c.Document.Profile == "sdui/0.3" {
+		r.Profile = c.Document.Profile
+		var unavailable error
+		c.Root.Walk(func(n *parser.Instance) {
+			if unavailable == nil && n.Kind == "widget" && (n.Widget == "tree" || n.Widget == "list") {
+				unavailable = fmt.Errorf("unsupported-provider: standalone prototype requires an application-supplied collection provider: %w", &preparation.Diagnostic{
+					Capability: preparation.Capability{Dimension: preparation.Provider, ID: "collection-data", Major: 1},
+					Path:       n.Path, Span: n.Span, Uses: append([]parser.UseSite(nil), n.Uses...),
+				})
+			}
+		})
+		if unavailable != nil {
+			return c, r, unavailable
+		}
 	}
 	prepared, err := preparation.Prepare(preparation.Request{
 		Document: c.Document, Entry: entry, SessionID: "preflight", SourceRevision: c.Hash,

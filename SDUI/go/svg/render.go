@@ -17,9 +17,18 @@ type Options struct {
 	Width, Height float64
 	Content       ContentRenderer
 	SkipControls  bool
+	// Exact instance path -> kind for controls actually prepared by the host.
+	// Required for each omitted control when SkipControls is true.
+	NativeControls map[string]string
 }
 
 func Render(root *layout.Box, options Options) (string, error) {
+	if root == nil {
+		return "", fmt.Errorf("SVG export requires measured geometry")
+	}
+	if err := Check(root.Instance, options); err != nil {
+		return "", err
+	}
 	var out strings.Builder
 	fmt.Fprintf(&out, `<svg xmlns="http://www.w3.org/2000/svg" width="%g" height="%g" viewBox="0 0 %g %g" role="img"><title>SDUI layout</title>`+"\n", options.Width, options.Height, options.Width, options.Height)
 	out.WriteString(`<rect width="100%" height="100%" fill="#f1f5f9"/>` + "\n")

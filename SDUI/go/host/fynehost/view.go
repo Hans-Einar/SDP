@@ -19,7 +19,7 @@ type Action func(path, value string) error
 type control struct {
 	widget fyne.CanvasObject
 	theme  *container.ThemeOverride
-	clip   *container.Scroll
+	clip   *routedClip
 	fixed  *fixedLayout
 }
 type View struct {
@@ -33,6 +33,7 @@ type View struct {
 	Content   svg.ContentRenderer
 	controls  map[string]*control
 	image     *canvas.Image
+	prepared  bool
 	reflowing bool
 	closed    bool
 }
@@ -63,7 +64,7 @@ func New(root *parser.Instance) *View {
 		th := container.NewThemeOverride(obj, componentTheme{14})
 		fixed := &fixedLayout{}
 		holder := container.New(fixed, th)
-		clip := container.NewScroll(holder)
+		clip := newRoutedClip(holder)
 		clip.Direction = container.ScrollNone
 		v.Controls[n.Path] = obj
 		v.controls[n.Path] = &control{obj, th, clip, fixed}
@@ -89,7 +90,7 @@ func (v *View) invoke(path, value string) {
 func (v *View) Close()                                { v.closed = true; v.Actions = map[string]Action{} }
 func (v *View) MinSize([]fyne.CanvasObject) fyne.Size { return fyne.NewSize(1, 1) }
 func (v *View) Layout(_ []fyne.CanvasObject, size fyne.Size) {
-	if v.reflowing || size.Width <= 0 || size.Height <= 0 {
+	if v.prepared || v.reflowing || size.Width <= 0 || size.Height <= 0 {
 		return
 	}
 	v.reflowing = true
@@ -103,7 +104,7 @@ func (v *View) Reflow(size layout.Size) error {
 	if err != nil {
 		return err
 	}
-	background, err := svg.Render(tree, svg.Options{Width: size.W, Height: size.H, SkipControls: true, Content: v.Content})
+	background, err := svg.Render(tree, svg.Options{Width: size.W, Height: size.H, SkipControls: true, NativeControls: v.nativeControls(), Content: v.Content})
 	if err != nil {
 		return err
 	}
@@ -111,8 +112,12 @@ func (v *View) Reflow(size layout.Size) error {
 	v.image.Resource = fyne.NewStaticResource("sdui.svg", []byte(background))
 	v.image.Resize(fyne.NewSize(float32(size.W), float32(size.H)))
 	v.image.Refresh()
-	for _, c := range v.controls {
-		c.clip.Hide()
+	active := map[string]bool{}
+	tree.Walk(func(b *layout.Box) { active[b.Path] = b.Rect.W > 0 && b.Rect.H > 0 && b.Clip.W > 0 && b.Clip.H > 0 })
+	for path, c := range v.controls {
+		if !active[path] {
+			c.clip.Hide()
+		}
 	}
 	tree.Walk(func(b *layout.Box) {
 		c := v.controls[b.Path]
@@ -152,4 +157,33 @@ func (f *fixedLayout) Layout(objects []fyne.CanvasObject, _ fyne.Size) {
 		o.Move(fyne.NewPos(0, 0))
 		o.Resize(f.size)
 	}
+}
+
+func (v *View) nativeControls() map[string]string {
+	kinds := map[string]string{}
+	for path, obj := range v.Controls {
+		switch obj.(type) {
+		case *widget.Button:
+			kinds[path] = "button"
+		case *Input:
+			kinds[path] = "input"
+		case *CollectionControl:
+			v.Root.Walk(func(n *parser.Instance) {
+				if n.Path == path {
+					kinds[path] = n.Widget
+				}
+			})
+		}
+	}
+	return kinds
+}
+func (v *View) addCollection(path string, obj *CollectionControl) {
+	th := container.NewThemeOverride(obj, componentTheme{14})
+	fixed := &fixedLayout{}
+	holder := container.New(fixed, th)
+	clip := newRoutedClip(holder)
+	clip.Direction = container.ScrollNone
+	v.Controls[path] = obj
+	v.controls[path] = &control{obj, th, clip, fixed}
+	v.Container.Add(clip)
 }

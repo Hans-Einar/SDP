@@ -74,28 +74,22 @@ func (s *Session) Apply(revision, batch uint64, updates []Update) error {
 		}
 	}
 
-	if s.check != nil {
-		candidate := *s
-		candidate.widgets = map[string]*Widget{}
-		for path, w := range s.widgets {
-			candidate.widgets[path] = w
-		}
-		for path, w := range next {
-			candidate.widgets[path] = w
-		}
-		if err := s.check(candidate.SnapshotRoot()); err != nil {
-			return err
-		}
-	}
+	candidate := s.copyState()
 	for path, w := range next {
-		s.widgets[path] = w
-		if s.focused == path && (!w.Enabled || !w.Visible) {
-			s.focused = ""
+		candidate.widgets[path] = w
+		if !w.Enabled || !w.Visible {
+			if candidate.focused == path {
+				candidate.focused = ""
+			}
+			if c := candidate.collections[path]; c != nil {
+				c.cancel()
+			}
 		}
 	}
-	s.BatchRevision = batch
-	return nil
+	candidate.BatchRevision = batch
+	return s.publish(candidate)
 }
+
 func (s *Session) SnapshotRoot() *parser.Instance {
 	root := clone(s.root)
 	root.Walk(func(n *parser.Instance) {

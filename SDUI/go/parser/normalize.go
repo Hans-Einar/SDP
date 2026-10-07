@@ -14,6 +14,7 @@ type UseSite struct {
 	Span       Span   `json:"span"`
 }
 type Instance struct {
+	Profile     string         `json:"profile,omitempty"`
 	Declaration string         `json:"declaration,omitempty"`
 	Uses        []UseSite      `json:"uses,omitempty"`
 	Kind        string         `json:"kind"`
@@ -100,6 +101,9 @@ func Normalize(d *Document) (roots map[string]*Instance, err error) {
 		}
 		props := formatting(n, n.Kind, len(n.Rows))
 		i := &Instance{Kind: n.Kind, Path: path, Widget: val(n.Widget), Layout: props, Arguments: map[string]any{}, Rows: [][]*Instance{}, Regions: []Region{}, Span: n.Span}
+		if d.Profile == "sdui/0.3" {
+			i.Profile = d.Profile
+		}
 		if n.Variant != nil {
 			i.Variant = "box"
 		}
@@ -107,7 +111,7 @@ func Normalize(d *Document) (roots map[string]*Instance, err error) {
 			i.Text = n.Text.Value.(string)
 		}
 		if n.Kind == "widget" {
-			i.Arguments = widgetArguments(n)
+			i.Arguments = widgetArguments(n, d.Profile)
 		}
 		for r, row := range n.Rows {
 			items := []*Instance{}

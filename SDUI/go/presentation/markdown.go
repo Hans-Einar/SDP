@@ -39,7 +39,12 @@ func Markdown(root *parser.Instance, columns int) (string, error) {
 				text = "**Button:** " + codeSpan(n.Argument("label"))
 			case "input":
 				text = "**Input:** " + codeSpan(n.Argument("text")) + " — " + codeSpan(n.Argument("value"))
-			default:
+			case "tree", "list":
+				text = "**Static " + n.Widget + ":** " + codeSpan(n.Argument("label")) + " — " + codeSpan(n.Path) + "; provider data not supplied."
+				if ref, ok := n.Arguments["callback"].(parser.Reference); ok {
+					text += " Activate callback: " + codeSpan(ref.Module+"."+ref.Object+".@"+ref.Member) + " (not executed)."
+				}
+			case "svg":
 				label := n.Argument("label")
 				if label == "" {
 					label = n.Path

@@ -46,11 +46,12 @@ func Parse(source string) (doc *Document, err error) {
 func (p *reader) document() *Document {
 	start := p.take("ID", "sdui").span
 	v := p.take("NUMBER")
-	if p.source[v.span.Start:v.span.End] != "0.2" {
-		fail("version", "Only exact sdui 0.2 is supported", v.span)
+	version := p.source[v.span.Start:v.span.End]
+	if version != "0.2" && version != "0.3" {
+		fail("version", "Only exact sdui 0.2 and 0.3 are supported", v.span)
 	}
 	p.take(";")
-	d := &Document{Profile: "sdui/0.2"}
+	d := &Document{Profile: "sdui/" + version}
 	for p.t().value == "ref" {
 		s := p.take("ID").span
 		p.take(":")
