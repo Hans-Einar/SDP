@@ -46,3 +46,11 @@ line 33 on unchanged baseline inputs. Worker and reviewer both observed it; the
 complete SDL suite is therefore not claimed passing. Root cause and a bounded
 prerequisite repair are being investigated under this card before WCI1 generation
 acceptance. Frozen fixtures and historical evidence remain unchanged.
+
+## Subsequent prerequisite correction
+
+[WCI1-P0](WCI1-prerequisite.md) diagnosed the mismatch as an active generated
+constructor predating KB005 provenance fields. Regeneration through sdl-gen and
+an executable reuse/provenance regression resolve it; SDL codegen/bridge and
+SDUI codegen checks pass. This later repair does not rewrite the earlier observed
+failure or imply a full SDL suite run. Phase commit: `d1c5c88`.

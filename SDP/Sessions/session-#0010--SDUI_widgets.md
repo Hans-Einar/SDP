@@ -130,8 +130,13 @@ implementation obligations.
 - Steps: S1 complete at its bounded level; S2 stage design started. Architect agent
   `01a11878-3e2d-7c32-98fb-69bee87297a4` owns only Collections.md. Worker investigates
   constructor mismatch read-only. All widget families remain pending.
+- WCI1-P0 correction: worker identified stale generated constructors after KB005,
+  regenerated through sdl-gen and added a compiled reuse/provenance regression.
+  SDL codegen/bridge and SDUI codegen pass. Phase branch `sdui/widgets-wci1`
+  starts with prerequisite commit `d1c5c88`; exact files integrated after baseline
+  comparison. No frozen fixture or historical evidence was altered.
 - Work summary, not captured final response: continue WCI1 contract review and
-  prerequisite repair, preserving full inventory and no release/merge authority.
+  implementation, preserving full inventory and no release/merge authority.
 
 ## Closeout
 

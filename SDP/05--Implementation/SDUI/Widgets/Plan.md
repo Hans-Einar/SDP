@@ -76,3 +76,7 @@ native, packaging or review evidence stays explicit and keeps completion pending
 and independent review. Atomic native publication remains WCI1. The SDL generated
 constructor baseline mismatch is a tracked prerequisite investigation before WCI1;
 no all-SDL-suite pass is claimed.
+
+WCI1-P0 prerequisite delivered: regenerate active model provenance with the existing
+generator, retain frozen fixtures, compile/run reused-instance constructor checks.
+See [report](WCI1-prerequisite.md); stage feature implementation remains pending.
