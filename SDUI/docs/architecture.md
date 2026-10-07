@@ -24,3 +24,19 @@ Layout receives the host's available area; source has no pixel width/height. Chi
 The SDL adapter lives in SDL/go/bridge. Parser ref/callback/setHandle are data; composition registers SDL modules, Go functions and typed bridge.Plan. Action-core 0.1 provides explicitly bounded execution. An accepted Go domain transaction cannot roll back if later UI publication fails; there is no automatic replay. See the [runtime contract](runtime-contract.md).
 
 Limits and actual trials: [G1](../go/evidence/G1.md), [G2](../go/evidence/G2.md), [G3](../go/evidence/G3.md), [G4](../../SDL/go/evidence/G4.md), [G5](../../SDL/go/evidence/G5.md). No alternative SVG/Fyne/XFMD parser, extracted Rust crate or mandatory C ABI.
+
+## XFMD combined preview integration — 2026-10-07
+
+presentation.Combined adds per-container composition mindmaps and a provenance/binding
+table to the existing Markdown export. Normalize preserves declaration and use
+sites on instances; UTF-8 byte spans remain half-open. Region and ordered-row branches preserve source composition; nested containers
+have detail maps to avoid dense, overlapping containment rectangles. Hidden nodes remain in
+source composition even when the text prototype omits them. Source links require
+the consuming client's matching snapshot; no filesystem access is added to parser.
+
+cmd/sdui-preview owns bounded source I/O, revision checks, caller-owned bundles
+and prototype check JSON. prototype.Check validates the selected frame, layout
+and runtime model, and reports unbound symbolic callbacks/connections. It executes
+none. The standalone Fyne command accepts an initial revision requirement,
+retains explicit local input/button handlers and does not auto-load SDL modules.
+The binaries are bundled privately by XFMD 0.7; SDPTool UIPreview reuses Combined.

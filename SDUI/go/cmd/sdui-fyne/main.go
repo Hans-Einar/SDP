@@ -14,21 +14,23 @@ import (
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
 	"github.com/Hans-Einar/SDP/SDUI/go/host/fynehost"
+	"github.com/Hans-Einar/SDP/SDUI/go/prototype"
 	"github.com/Hans-Einar/SDP/SDUI/go/reload"
 	uiruntime "github.com/Hans-Einar/SDP/SDUI/go/runtime"
 )
 
 func main() {
 	entry := flag.String("entry", "page", "Root frame")
+	revision := flag.String("revision", "", "Required initial source SHA256")
 	watch := flag.Bool("watch", true, "Reload changed SDUI source")
 	flag.Parse()
 	if flag.NArg() != 1 {
 		fmt.Fprintln(os.Stderr, "Usage: sdui-fyne [-entry page] [-watch=true] source.sdui")
 		os.Exit(2)
 	}
-	initial := reload.Read(flag.Arg(0), *entry, 1, nil)
-	if initial.Err != nil {
-		fmt.Fprintln(os.Stderr, initial.Err)
+	initial, report, checkErr := prototype.Check(flag.Arg(0), *entry, *revision)
+	if checkErr != nil {
+		fmt.Fprintln(os.Stderr, checkErr)
 		os.Exit(2)
 	}
 	session, err := uiruntime.New(fmt.Sprintf("ui-%d", time.Now().UnixNano()), initial.Root)
@@ -36,8 +38,8 @@ func main() {
 		panic(err)
 	}
 	a := app.NewWithID("no.sdp.sdui.prototype")
-	w := a.NewWindow("SDUI · native prototype")
-	status := widget.NewLabel("Lokal prototype · ingen SDL-runtime")
+	w := a.NewWindow("SDUI · " + *entry + " · native prototype")
+	status := widget.NewLabel(report.Diagnostic)
 	view, err := fynehost.NewRuntime(session, w.Canvas())
 	if err != nil {
 		panic(err)
@@ -46,7 +48,7 @@ func main() {
 		if err != nil {
 			status.SetText(err.Error())
 		} else {
-			status.SetText("OK · modellrevisjon " + fmt.Sprint(session.Revision))
+			status.SetText("Local prototype · no SDL runtime · model revision " + fmt.Sprint(session.Revision))
 		}
 	}
 	registerPrototype(session, *entry)
@@ -83,7 +85,7 @@ func registerPrototype(s *uiruntime.Session, entry string) {
 				current, _ := s.Widget(e.Handle.Path)
 				return []uiruntime.Update{{Handle: e.Handle, Property: uiruntime.AcceptedValue, Value: e.Value, ExpectedValueRevision: current.ValueRevision, AcceptDraft: true}}, nil
 			})
-		case w.Handle.Path == entry+"/ok":
+		case w.Handle.Kind == "button":
 			_ = s.Bind(w.Handle, func(e uiruntime.Event) ([]uiruntime.Update, error) {
 				fmt.Println("local callback:", e.Handle.Path)
 				return nil, nil

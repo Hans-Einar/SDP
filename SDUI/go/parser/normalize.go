@@ -9,17 +9,23 @@ type Region struct {
 	Role string    `json:"role"`
 	Node *Instance `json:"node"`
 }
+type UseSite struct {
+	Definition string `json:"definition"`
+	Span       Span   `json:"span"`
+}
 type Instance struct {
-	Kind      string         `json:"kind"`
-	Path      string         `json:"path"`
-	Variant   string         `json:"variant,omitempty"`
-	Widget    string         `json:"widget,omitempty"`
-	Text      string         `json:"text,omitempty"`
-	Arguments map[string]any `json:"arguments"`
-	Layout    map[string]any `json:"layout"`
-	Rows      [][]*Instance  `json:"rows"`
-	Regions   []Region       `json:"regions"`
-	Span      Span           `json:"span"`
+	Declaration string         `json:"declaration,omitempty"`
+	Uses        []UseSite      `json:"uses,omitempty"`
+	Kind        string         `json:"kind"`
+	Path        string         `json:"path"`
+	Variant     string         `json:"variant,omitempty"`
+	Widget      string         `json:"widget,omitempty"`
+	Text        string         `json:"text,omitempty"`
+	Arguments   map[string]any `json:"arguments"`
+	Layout      map[string]any `json:"layout"`
+	Rows        [][]*Instance  `json:"rows"`
+	Regions     []Region       `json:"regions"`
+	Span        Span           `json:"span"`
 }
 
 func (i *Instance) Region(role string) *Instance {
@@ -82,6 +88,8 @@ func Normalize(d *Document) (roots map[string]*Instance, err error) {
 		}
 		if n.Kind == "use" {
 			i := expand(defs[val(n.Target)], path, depth+1)
+			i.Declaration = val(n.Target)
+			i.Uses = append(i.Uses, UseSite{val(n.Target), n.Span})
 			overlay := formatting(n, i.Kind, len(i.Rows))
 			for k, v := range overlay {
 				i.Layout[k] = v
@@ -134,6 +142,7 @@ func Normalize(d *Document) (roots map[string]*Instance, err error) {
 	roots = map[string]*Instance{}
 	for _, def := range d.Definitions {
 		roots[def.Name] = expand(def.Root, def.Name, 1)
+		roots[def.Name].Declaration = def.Name
 	}
 	validateConnections(d, roots)
 	return roots, nil

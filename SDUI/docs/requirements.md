@@ -48,3 +48,11 @@ Owner clarification, 2026-09-20: R15 permits no source pixel width/height. Root 
 **SDUI-R25:** parse/validate/publish source changes without closing UI windows. Retain last valid model on errors and compatible value/focus on reload; reject stale events. SDL state needs migration/reset rules. Go-function changes rebuild/restart. Implemented/verified G3/G4.
 
 **SDUI-R26:** Go generation shares development models/runtime and separates generated code from handwritten domain functions. Unknown/incomplete SDL execution semantics produce diagnostics. Implemented/verified G5.
+
+## XFMD combined-preview refinement — KB-SDUI-005, 2026-10-07
+
+Generate a structural composition diagram and provenance table beside the existing
+static text render. Retain hidden/reused instance identity, effective layout,
+symbolic bindings and exact declaration/use spans. Host preflight must distinguish
+local prototype readiness from SDL connectivity and reject stale source revisions.
+A consumer may bundle the SDUI-owned tools; parser/runtime remain host-independent.
