@@ -35,7 +35,7 @@ designs:
     path: 04--Design/SDPTool/ProjectGovernance/Design.md
     implementationPlan: 05--Implementation/SDPTool/ProjectGovernance/Plan.md
     kanban: KB-SDP-038
-    note: PGD1 shared routine, Session and client contract; PGI1 core/CLI and PGI2 adapters delivered; PGI3-PGI5 remain planned.
+    note: PGD1 shared routine, Session and client contract; PGI1/PGI2 delivered; PGI3 controller candidate implemented with live evidence open; PGI4/PGI5 planned.
   DES-SDPTOOL-001:
     status: initial-design
     path: 03--Architecture/SDPTool.design
@@ -213,6 +213,13 @@ reviews:
       low: 0
       note: 4
 verification:
+  SDPTOOL-VER-PGI3-C1:
+    status: passed-fixtures-live-unverified
+    path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-C1.md
+    managementId: PLAN-SDP-0018
+    card: KB-SDP-038
+    design: SDPTOOL-DES-0001
+    note: Compiled fake-host workflow and regression checks pass; actual host exits before initialization. PGI3 is not delivered.
   SDPTOOL-VER-PGI2:
     status: passed-bounded-adapters
     path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI2.md

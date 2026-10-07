@@ -4,8 +4,9 @@ The package owns a local stdio app-server process, selected cwd and bounded JSON
 transport. Only **codex-cli 0.160.1** is accepted. Typed request/result projections
 were derived from that executable's generated default schemas; unknown optional
 host fields are not persisted. Malformed JSON, duplicate keys, invalid UTF-8 and
-frames over 1 MiB refuse. No model submission, sign-in or account mode fallback is
-implemented. A new connection has a new epoch.
+frames over 1 MiB refuse. The PGI3 [owner controller candidate](../governancecontroller/README.md) adds
+explicit work-thread/start/steer/interrupt requests. Sign-in and account-mode
+fallback remain unsupported. A new connection has a new epoch.
 
 Build from SDPTool: `go build -o /tmp/sdp-controller ./cmd/sdp-controller`.
 
@@ -44,7 +45,7 @@ Persist each request intent before submission and retry that exact request after
 an uncertain write. The core preserves immutable receipts, attempt mappings,
 completed-item deduplication, conflicting replay refusals and paginated reads.
 Read-only observer closure does not mutate execution state. Lost transport must be
-recorded as disconnected/unknown by the owning controller. PGI3 will own that loop.
+recorded as disconnected/unknown by the owning controller. The PGI3 controller candidate owns that loop; live workflow verification is open.
 
 PrepareRecovery reads the already mapped thread and projects its recorded turn;
 missing/uncertain history refuses. ReconcileRequest records observed state and the

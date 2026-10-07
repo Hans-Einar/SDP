@@ -6,7 +6,8 @@ read-only work inspection, one pinned Maintenance routine and durable local run
 transitions. Linux supports mutation; other platforms explicitly refuse writes.
 The CLI and [MCP adapter](../governancemcp/README.md) use the same core.
 The [app-server adapter](../governancehost/README.md) supplies protocol inspection
-and bounded observed attempt recovery. Model submission, automatic Session
+and bounded observed attempt recovery. The [owner controller candidate](../governancecontroller/README.md) adds durable
+input and bounded submission; live PGI3 verification remains open. Automatic Session
 journaling and the delivery gate remain later increments.
 
 ## Inspect and select work
@@ -169,3 +170,8 @@ validate them with `python3 governance/check_schema.py PATH/cli-wire-cases.json`
 canonical record conflicts, lock contention, corruption, and injected interruption
 before/after HEAD publication. They do not simulate physical power loss or prove
 host execution, independent review or the full owner workflow.
+
+PGI3 candidate state also adds optional owner inputs and last-observation timestamps.
+The controller-only dispatch contract and recovery limits are documented in the
+[owner controller](../governancecontroller/README.md). Old strict readers cannot
+read stores updated with these unpublished fields.

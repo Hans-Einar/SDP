@@ -29,16 +29,17 @@ type Observation struct {
 	ReceivedAt  string       `json:"receivedAt"`
 }
 type Attempt struct {
-	EventCount    int           `json:"eventCount,omitempty"`
-	ID            string        `json:"id"`
-	HostVersion   string        `json:"hostVersion"`
-	ThreadID      string        `json:"threadId"`
-	TurnID        string        `json:"turnId"`
-	InputRevision string        `json:"inputRevision"`
-	Epoch         string        `json:"epoch"`
-	Status        string        `json:"status"`
-	Gap           bool          `json:"gap"`
-	Events        []Observation `json:"events"`
+	LastObservedAt string        `json:"lastObservedAt,omitempty"`
+	EventCount     int           `json:"eventCount,omitempty"`
+	ID             string        `json:"id"`
+	HostVersion    string        `json:"hostVersion"`
+	ThreadID       string        `json:"threadId"`
+	TurnID         string        `json:"turnId"`
+	InputRevision  string        `json:"inputRevision"`
+	Epoch          string        `json:"epoch"`
+	Status         string        `json:"status"`
+	Gap            bool          `json:"gap"`
+	Events         []Observation `json:"events"`
 }
 type HostRequest struct {
 	Schema           string      `json:"schema"`
@@ -351,9 +352,18 @@ func CheckWire(b []byte) error {
 // Routine snapshots expose attempt metadata/counts. Message content is available
 // only through byte- and count-bounded Events pages, including in receipts.
 func summarizeRun(r Run) Run {
+	r.Inputs = append([]OwnerInput(nil), r.Inputs...)
+	for i := range r.Inputs {
+		r.Inputs[i].ContentOmitted = true
+		r.Inputs[i].Text = ""
+		r.Inputs[i].Payload = ""
+	}
 	r.Attempts = append([]Attempt(nil), r.Attempts...)
 	for i := range r.Attempts {
 		r.Attempts[i].EventCount = len(r.Attempts[i].Events)
+		if n := len(r.Attempts[i].Events); n > 0 {
+			r.Attempts[i].LastObservedAt = r.Attempts[i].Events[n-1].ReceivedAt
+		}
 		r.Attempts[i].Events = []Observation{}
 	}
 	return r

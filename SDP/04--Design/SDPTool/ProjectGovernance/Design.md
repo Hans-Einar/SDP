@@ -2,7 +2,8 @@
 
 Design candidate PGD1, owned by [PLAN-SDP-0017](Plan.md). This specifies the bounded
 implementation handoff. PGI1/PGI2 implement the bounded core/CLI and protocol adapters; the
-complete client workflow and installed process integration remain future work.
+PGI3 controller candidate adds explicit covered-run submission and steering, while
+its live workflow verification and installed process integration remain open.
 Owner-selected scope and role responsibilities are retained. Storage locations,
 operation names and implementation choices below are the recommended pilot design.
 
@@ -332,3 +333,20 @@ the implementation handoff sequences the checks before wider execution.
 This design does not introduce a workflow editor, distributed scheduler, all routines,
 model-store backend, semantic blueprint engine, full timeline UI, remote controller,
 Codex fork, release automation or repository-wide write interception.
+
+
+## PGI3 implementation refinement — 2026-10-07
+
+The first controller surface operates an existing covered Maintenance run; it does
+not claim the complete Steering/PM conversation or automatic classification. Durable
+owner input records exact text and the bounded assignment payload before sending,
+using prepared/sending/acknowledged/uncertain states. Unresolved sends block new
+launch/steer requests. A prior nonterminal host attempt requires reconciliation.
+This is the no-blind-resend obligation above, not a server exactly-once claim.
+
+The current host prohibits agent delegation and restricts network/filesystem access.
+The candidate launches a fresh Master assignment without granting native delegation;
+child/reviewer attribution remains unavailable and no independent review is claimed.
+The live probe currently ends with EOF before initialization, so fixture success
+does not deliver PGI3. History recovery records observed state only and cannot infer
+or retry an unmapped ambiguous turn. See the [controller contract](../../../../SDPTool/governancecontroller/README.md).

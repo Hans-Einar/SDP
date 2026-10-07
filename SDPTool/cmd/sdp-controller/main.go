@@ -1,5 +1,5 @@
-// sdp-controller currently supplies PGI2 protocol inspection only. It cannot
-// submit model turns, approve host requests or complete SDP work.
+// sdp-controller supplies bounded owner control and protocol inspection.
+// Host completion never accepts SDP work or publishes project records.
 package main
 
 import (
@@ -15,8 +15,15 @@ import (
 )
 
 func main() {
+	if len(os.Args) > 1 && (os.Args[1] == "run" || os.Args[1] == "status" || os.Args[1] == "recover") {
+		if e := ownerCommand(os.Args[1:]); e != nil {
+			fmt.Fprintln(os.Stderr, e)
+			os.Exit(2)
+		}
+		return
+	}
 	if len(os.Args) < 2 || os.Args[1] != "probe" {
-		fmt.Fprintln(os.Stderr, "usage: sdp-controller probe --project ROOT [--codex BINARY] [--mcp-binary BINARY --state DIR]")
+		fmt.Fprintln(os.Stderr, "usage: sdp-controller probe|run|status|recover --project ROOT [options]; each command accepts --help")
 		os.Exit(2)
 	}
 	f := flag.NewFlagSet("probe", flag.ExitOnError)

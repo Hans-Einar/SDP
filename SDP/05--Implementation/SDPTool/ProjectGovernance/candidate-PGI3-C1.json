@@ -1,0 +1,299 @@
+{
+  "schemaVersion": "1.0",
+  "checkpoint": "PGI3-M1-C1",
+  "disposition": "passed-fixtures-live-unverified",
+  "baseCommit": "12542b22587d337c1f930ad9af24743a5162ecfb",
+  "files": [
+    {
+      "path": "SDPTool/README.md",
+      "sha256": "ffcfa7f2d5c8675994c36d0a8da458d1761017420c0e790a379221a88b7690a3"
+    },
+    {
+      "path": "SDPTool/cmd/sdp-controller/main.go",
+      "sha256": "df86db36fa05769bb0799732a557bccce8c8403ebbd87edc13561db2e7b9cfe7"
+    },
+    {
+      "path": "SDPTool/cmd/sdp-controller/session.go",
+      "sha256": "cdf7d1defc31460255884cb40437a0173dd866795ed7b293976a34e17d3d5e97"
+    },
+    {
+      "path": "SDPTool/governance/README.md",
+      "sha256": "0d01fdedd6e6f4c661424534fa7acbc38f563ae9ffca5c8ff0f0a84808cc0e0d"
+    },
+    {
+      "path": "SDPTool/governance/dispatch.go",
+      "sha256": "3e57f9ec6fd03cfce6df05b19e4925337dd473a9f43946e27e513936a9886844"
+    },
+    {
+      "path": "SDPTool/governance/dispatch_test.go",
+      "sha256": "69328726a1b04c32f01622e1d6203ab639a321c5216b9517e1923154fec59cbc"
+    },
+    {
+      "path": "SDPTool/governance/host.go",
+      "sha256": "bffc3fbd066e8f687b7cbb82c933f9c0c01d816f8153b4752fd1dba1a5134442"
+    },
+    {
+      "path": "SDPTool/governance/host_test.go",
+      "sha256": "541b8267925716e17483b817a94bcf7bb21f6b38aa982c617e212d58afea449a"
+    },
+    {
+      "path": "SDPTool/governance/schema.json",
+      "sha256": "b0ef8cd1775efb2339cfe674f20fc9e0b175a5989ea7788428ece1f8478169ca"
+    },
+    {
+      "path": "SDPTool/governance/types.go",
+      "sha256": "01373174846d76811e8986515d51898654c2eeedc1344a78911f7bc820a8350c"
+    },
+    {
+      "path": "SDPTool/governancecontroller/README.md",
+      "sha256": "c5a56f0a6886129ba0d5061b8fabd4d3851cf54d0880eb1200bb04f380b63d82"
+    },
+    {
+      "path": "SDPTool/governancecontroller/cli_test.go",
+      "sha256": "f9c2d20c8d75f3c98695b42ac2d94b34cd28390130161bd6f6fabf03c825965a"
+    },
+    {
+      "path": "SDPTool/governancecontroller/controller.go",
+      "sha256": "0f861c5afc73ce04aa00b0423daf388a062f68e84919cbec2e2bb2d8917860b5"
+    },
+    {
+      "path": "SDPTool/governancecontroller/controller_test.go",
+      "sha256": "32624549a98965ffda458dce625f5e45adbe0c341786af953666e12c153d7647"
+    },
+    {
+      "path": "SDPTool/governancecontroller/fixture_test.go",
+      "sha256": "6a3f4f9b691090bbd21d704734127fee23fd1118167fe16b48c2d59dcd9c8de3"
+    },
+    {
+      "path": "SDPTool/governancehost/README.md",
+      "sha256": "02e65be773bb2da12ece336089ef2065c2b31cdb23d8b17d8badc2649e94ab56"
+    },
+    {
+      "path": "SDPTool/governancehost/work.go",
+      "sha256": "498d3aeaae980e109eeb702029f3f08fbb7ddbd2854b47fa045841922d196ae6"
+    },
+    {
+      "path": "SDPTool/governancehost/work_test.go",
+      "sha256": "b7182500593902e77227f640ce529889bbc0fe82bdb6e15e9e967d84c5b85e9b"
+    }
+  ],
+  "fileSetDigest": "015e84ca593a756f19203f02dd62226f2fff0cabfce72d31c42603dee18ab480",
+  "fileSetDigestEncoding": "SHA-256 of UTF-8 json.dumps(files,sort_keys=True,separators=(comma,colon))",
+  "environment": {
+    "toolchain": "go version go1.27.1 linux/amd64",
+    "GOCACHE": "/tmp/sdp-pgi3-cache",
+    "GOMAXPROCS": "2",
+    "XDG_RUNTIME_DIR": "/tmp/sdp-pgi3-evidence/runtime",
+    "XDG_CACHE_HOME": "/tmp/sdp-pgi3-evidence/cache",
+    "PGI_SCHEMA_EVIDENCE": "/tmp/sdp-pgi3-evidence",
+    "GOTOOLCHAIN": "local",
+    "GOPROXY": "off",
+    "filesystem": "Only SDL and /tmp writable; shared SDP/SDPTool unchanged",
+    "network": "restricted"
+  },
+  "checks": [
+    {
+      "name": "race",
+      "command": "go -C SDPTool test -race -count=1 -p 2 ./...",
+      "exitCode": 0,
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool\t45.115s\n?   \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller\t[no test files]\n?   \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-mcp\t[no test files]\n?   \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdptool\t[no test files]\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t3.547s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancecontroller\t7.117s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancehost\t1.077s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancemcp\t4.971s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/install\t68.329s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/model\t29.214s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/presentation\t1.019s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/tools/profile\t41.012s\n",
+      "sha256": "ec76d55fb36e539b3de7009eb891e94961164c9d6f86815eb3fe85ddf163372a"
+    },
+    {
+      "name": "vet",
+      "command": "go -C SDPTool vet ./...",
+      "exitCode": 0,
+      "output": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "actual-idle-probe",
+      "command": "go -C SDPTool build -o /tmp/sdp-pgi3-controller ./cmd/sdp-controller && /tmp/sdp-pgi3-controller probe --project /tmp/sdp-pgi1-8SeezS/repo",
+      "exitCode": 2,
+      "output": "reconciliation_required: connection ended: EOF\n",
+      "sha256": "bef5c2164997e160048a033fffab2e2c9d63b48736a1cbf54639b1467b8cb050"
+    }
+  ],
+  "schemaChecks": [
+    {
+      "capture": "cli-wire-cases.json",
+      "output": "PASS: 21 observed requests/results conform to the governance schema\n",
+      "sha256": "69c93020ada78ba219982ad5ccb00fc44b1f1d0e69c6f944a2118f4593e2805f"
+    },
+    {
+      "capture": "host-wire-cases.json",
+      "output": "PASS: 4 observed requests/results conform to the governance schema\n",
+      "sha256": "4e99b6efbd67359cc3af7571a9c322face6cea7016a07683a7ed3345e58a4a7e"
+    },
+    {
+      "capture": "dispatch-wire-cases.json",
+      "output": "PASS: 3 observed requests/results conform to the governance schema\n",
+      "sha256": "afe36ad0c9894a0755bda5c128e32d45b2fdd48121e562608bd39c4b9f83e2a8"
+    },
+    {
+      "capture": "work-rpc-cases.json",
+      "output": "PASS: four captured request payloads conform to installed default app-server 0.160.1 schemas",
+      "sha256": "b9ac0cf0ff0852def4638cb40a3439e6a837b51cfe3990e1c477fbc1737c120d"
+    }
+  ],
+  "protocolSources": [
+    {
+      "hostVersion": "0.160.1",
+      "path": "v2/ThreadStartParams.json",
+      "sha256": "e9c6d3cc18d049bfbc0249add3808fb8e5a27e1a0b5a423767aafbc3859a9428"
+    },
+    {
+      "hostVersion": "0.160.1",
+      "path": "v2/TurnStartParams.json",
+      "sha256": "2dfcf68705896fadc344ccfeb2e9fe5a6bcbbb8b9a90cf449ce232b636daf05a"
+    },
+    {
+      "hostVersion": "0.160.1",
+      "path": "v2/TurnSteerParams.json",
+      "sha256": "857e7a2b061ae46ed6aedea6a5fddd3a6ce14f0334bf7eafaf10d4cbe68ec78b"
+    },
+    {
+      "hostVersion": "0.160.1",
+      "path": "v2/TurnInterruptParams.json",
+      "sha256": "6dff382dae73d1dbc58406ed045605f647e7a49660e2540fbd2c6c24d60c5f2b"
+    }
+  ],
+  "returnPreimages": [
+    {
+      "path": "SDPTool/README.md",
+      "baseSha256": "f9af7df6e7ad5137fbf191007831648ca7b4cf54b6c75a5ad8d3b35816fe5489",
+      "observedSharedSha256": "f9af7df6e7ad5137fbf191007831648ca7b4cf54b6c75a5ad8d3b35816fe5489",
+      "sharedMatchesBase": true
+    },
+    {
+      "path": "SDPTool/cmd/sdp-controller/main.go",
+      "baseSha256": "3d60aada23bb968904adf8ff1dff11a8731f7112d2c50c9ae8320e0d89b1a797",
+      "observedSharedSha256": "3d60aada23bb968904adf8ff1dff11a8731f7112d2c50c9ae8320e0d89b1a797",
+      "sharedMatchesBase": true
+    },
+    {
+      "path": "SDPTool/cmd/sdp-controller/session.go",
+      "baseSha256": null,
+      "observedSharedSha256": null,
+      "sharedMatchesBase": true
+    },
+    {
+      "path": "SDPTool/governance/README.md",
+      "baseSha256": "f50b7ac804d07b4dbb0e317f1f6ff6f140bb703eca8e9f3fd1eb77464354f3a8",
+      "observedSharedSha256": "f50b7ac804d07b4dbb0e317f1f6ff6f140bb703eca8e9f3fd1eb77464354f3a8",
+      "sharedMatchesBase": true
+    },
+    {
+      "path": "SDPTool/governance/dispatch.go",
+      "baseSha256": null,
+      "observedSharedSha256": null,
+      "sharedMatchesBase": true
+    },
+    {
+      "path": "SDPTool/governance/dispatch_test.go",
+      "baseSha256": null,
+      "observedSharedSha256": null,
+      "sharedMatchesBase": true
+    },
+    {
+      "path": "SDPTool/governance/host.go",
+      "baseSha256": "51dc16232f929cd08799d24c6c8b2166433efa55ddfd4c9036897490dc9fe49e",
+      "observedSharedSha256": "51dc16232f929cd08799d24c6c8b2166433efa55ddfd4c9036897490dc9fe49e",
+      "sharedMatchesBase": true
+    },
+    {
+      "path": "SDPTool/governance/host_test.go",
+      "baseSha256": "aae0fe6b8bb614a023ed5c0fa928b75b9c7d4ad58f1852628d522816ae02dd53",
+      "observedSharedSha256": "aae0fe6b8bb614a023ed5c0fa928b75b9c7d4ad58f1852628d522816ae02dd53",
+      "sharedMatchesBase": true
+    },
+    {
+      "path": "SDPTool/governance/schema.json",
+      "baseSha256": "a8dd8fdb60ac283104bf8bd348371574c09cce245a328b7cb13f7c4660f75ad7",
+      "observedSharedSha256": "a8dd8fdb60ac283104bf8bd348371574c09cce245a328b7cb13f7c4660f75ad7",
+      "sharedMatchesBase": true
+    },
+    {
+      "path": "SDPTool/governance/types.go",
+      "baseSha256": "3af9ffe8ddf4f89eb91141e22f0dfaaf43943cb8e0f8538949e2db2271f151ef",
+      "observedSharedSha256": "3af9ffe8ddf4f89eb91141e22f0dfaaf43943cb8e0f8538949e2db2271f151ef",
+      "sharedMatchesBase": true
+    },
+    {
+      "path": "SDPTool/governancecontroller/README.md",
+      "baseSha256": null,
+      "observedSharedSha256": null,
+      "sharedMatchesBase": true
+    },
+    {
+      "path": "SDPTool/governancecontroller/cli_test.go",
+      "baseSha256": null,
+      "observedSharedSha256": null,
+      "sharedMatchesBase": true
+    },
+    {
+      "path": "SDPTool/governancecontroller/controller.go",
+      "baseSha256": null,
+      "observedSharedSha256": null,
+      "sharedMatchesBase": true
+    },
+    {
+      "path": "SDPTool/governancecontroller/controller_test.go",
+      "baseSha256": null,
+      "observedSharedSha256": null,
+      "sharedMatchesBase": true
+    },
+    {
+      "path": "SDPTool/governancecontroller/fixture_test.go",
+      "baseSha256": null,
+      "observedSharedSha256": null,
+      "sharedMatchesBase": true
+    },
+    {
+      "path": "SDPTool/governancehost/README.md",
+      "baseSha256": "1e4682fe29436af76b20004b35c749f8ce60c3feeff0fbc81fb31e2bf35d01dd",
+      "observedSharedSha256": "1e4682fe29436af76b20004b35c749f8ce60c3feeff0fbc81fb31e2bf35d01dd",
+      "sharedMatchesBase": true
+    },
+    {
+      "path": "SDPTool/governancehost/work.go",
+      "baseSha256": null,
+      "observedSharedSha256": null,
+      "sharedMatchesBase": true
+    },
+    {
+      "path": "SDPTool/governancehost/work_test.go",
+      "baseSha256": null,
+      "observedSharedSha256": null,
+      "sharedMatchesBase": true
+    }
+  ],
+  "limitations": [
+    "No live model task, executing-turn reconnect or native child/reviewer provenance.",
+    "Actual host probe ends with EOF before initialization; model not submitted.",
+    "All PGI3 code and lifecycle records are isolated; no shared-workspace return, merge, push or release.",
+    "History recovery cannot resolve or resubmit an unmapped ambiguous turn; such inputs remain uncertain."
+  ],
+  "startupDiagnostic": {
+    "exitCode": 1,
+    "stdoutBytes": 0,
+    "stderrBytes": 237,
+    "diagnosticMatches": {
+      "readOnlyFilesystem": true,
+      "permissionDenied": false,
+      "operationNotPermitted": false,
+      "networkUnreachable": false,
+      "addressInUse": false
+    },
+    "rawHostOutputRetained": false,
+    "modelSubmitted": false
+  },
+  "recordChecks": {
+    "management": "PASS: 61 cards, 38 management records, four lineage operations, 509 events",
+    "toolkit": "SDP Toolkit validation passed",
+    "newDocumentLinks": "pass",
+    "originalLedgerPrefixes": "preserved",
+    "candidateHashes": "18 files match",
+    "whitespace": "git diff --check passed"
+  }
+}

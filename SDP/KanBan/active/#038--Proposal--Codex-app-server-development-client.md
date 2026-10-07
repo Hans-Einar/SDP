@@ -5,10 +5,10 @@
 | id | KB-SDP-038 |
 | project | SDP |
 | type | Proposal |
-| CardState | ready |
+| CardState | in-progress |
 | created | 2026-09-28T15:10:13.034937+00:00 |
 | source | Owner conversation 2026-09-28: register app-server-based system development and assess SDPTool MCP |
-| next_review | PGI3 owner workflow; PGI1 core/CLI and PGI2 adapters delivered |
+| next_review | PGI3 live workflow/recovery evidence; terminal candidate implemented, PGI1/PGI2 delivered |
 | tags | codex, app-server, client, MCP, supervision, blueprints, observability |
 | Systems | SDPTOOL |
 | PlanId | PLAN-SDP-0018 |
@@ -242,3 +242,19 @@ integrated review is claimed. KB038 is ready for PGI3; the complete capability
 remains open. Session0007 T006 records owner input, outcome and remaining gaps.
 
 2026-10-07T07:24:37.995561+00:00: EVT-KB-SDP-000312 — PGI2-M1 delivered; in-progress -> ready for PGI3, broader client scope remains open.
+
+2026-10-07T20:52:13.773912+00:00: EVT-KB-SDP-000313 — PGI3 selected by owner continuation; in-progress in isolated clone. Shared-workspace publication is unavailable under current filesystem permissions.
+
+
+## PGI3 implementation checkpoint — 2026-10-07
+
+[PGI3-M1-C1](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-C1.md)
+implements durable dispatch and terminal control for existing covered Maintenance.
+Final full race/vet, 28 application wire and four host RPC schema cases pass;
+compiled owner workflow and recovery use a recorded fake host. The real probe exits
+with EOF before initialization. Live task/steering/recovery and native role evidence
+remain unavailable; ambiguous unmapped input cannot be resubmitted. Keep in-progress
+for those remaining PGI3 obligations. All changes and T007 Session upkeep are in
+the isolated clone; the shared worktree has not been updated under current permissions.
+
+2026-10-07T21:09:17.833653+00:00: EVT-PM-SDP-000149 — PGI3 candidate checkpoint recorded; CardState stays in-progress. No delivery/acceptance transition.

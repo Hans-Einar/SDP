@@ -144,18 +144,19 @@ type TransitionRequest struct {
 	Reason           string `json:"reason"`
 }
 type Run struct {
-	Attempts      []Attempt  `json:"attempts,omitempty"`
-	ID            string     `json:"id"`
-	Revision      uint64     `json:"revision"`
-	RequestID     string     `json:"requestId"`
-	State         string     `json:"state"`
-	Step          string     `json:"step"`
-	InputRevision string     `json:"inputRevision"`
-	Selection     Selection  `json:"selection"`
-	Assignment    Assignment `json:"assignment"`
-	Routine       Routine    `json:"routine"`
-	RoutineDigest string     `json:"routineDigest"`
-	Reason        string     `json:"reason"`
+	Inputs        []OwnerInput `json:"inputs,omitempty"`
+	Attempts      []Attempt    `json:"attempts,omitempty"`
+	ID            string       `json:"id"`
+	Revision      uint64       `json:"revision"`
+	RequestID     string       `json:"requestId"`
+	State         string       `json:"state"`
+	Step          string       `json:"step"`
+	InputRevision string       `json:"inputRevision"`
+	Selection     Selection    `json:"selection"`
+	Assignment    Assignment   `json:"assignment"`
+	Routine       Routine      `json:"routine"`
+	RoutineDigest string       `json:"routineDigest"`
+	Reason        string       `json:"reason"`
 }
 type Result struct {
 	Schema      string `json:"schema"`

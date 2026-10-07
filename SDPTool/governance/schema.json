@@ -449,6 +449,13 @@
           "items": {
             "$ref": "#/$defs/Attempt"
           }
+        },
+        "inputs": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {
+            "$ref": "#/$defs/OwnerInput"
+          }
         }
       },
       "required": [
@@ -477,7 +484,15 @@
           "enum": [
             "start",
             "read",
-            "transition"
+            "transition",
+            "host.bind",
+            "host.observe",
+            "host.disconnect",
+            "host.reconcile",
+            "input.prepare",
+            "input.claim",
+            "input.ack",
+            "input.uncertain"
           ]
         },
         "projectRef": {
@@ -750,6 +765,9 @@
           "type": "integer",
           "minimum": 0,
           "maximum": 1024
+        },
+        "lastObservedAt": {
+          "type": "string"
         }
       },
       "required": [
@@ -873,6 +891,125 @@
         "nextCursor",
         "gap"
       ]
+    },
+    "OwnerInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "text",
+        "payload",
+        "attemptId",
+        "epoch",
+        "threadId",
+        "turnId",
+        "state",
+        "receivedAt"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "launch",
+            "steer",
+            "interrupt",
+            "scope-change"
+          ]
+        },
+        "text": {
+          "type": "string"
+        },
+        "payload": {
+          "type": "string"
+        },
+        "attemptId": {
+          "type": "string"
+        },
+        "epoch": {
+          "type": "string"
+        },
+        "threadId": {
+          "type": "string"
+        },
+        "turnId": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "",
+            "prepared",
+            "sending",
+            "acknowledged",
+            "uncertain"
+          ]
+        },
+        "receivedAt": {
+          "type": "string"
+        },
+        "contentOmitted": {
+          "type": "boolean"
+        }
+      }
+    },
+    "InputRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "projectRef",
+        "checkoutId",
+        "operationId",
+        "runId",
+        "expectedRevision",
+        "inputRevision",
+        "action",
+        "input"
+      ],
+      "properties": {
+        "schema": {
+          "const": "sdp-project-governance/0.1"
+        },
+        "projectRef": {
+          "type": "string"
+        },
+        "checkoutId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "operationId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "runId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 18446744073709551615
+        },
+        "inputRevision": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "action": {
+          "enum": [
+            "prepare",
+            "claim",
+            "ack",
+            "uncertain"
+          ]
+        },
+        "input": {
+          "$ref": "#/$defs/OwnerInput"
+        }
+      }
     }
   }
 }

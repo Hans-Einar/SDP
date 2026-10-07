@@ -187,6 +187,7 @@ Maintenance run through the [shared core](governance/README.md). Its explicit
 binding, durable receipts and revision checks support interruption/retry without
 changing canonical project records. PGI2 adds a local
 [MCP adapter](governancemcp/README.md) and [app-server protocol adapter](governancehost/README.md),
-with separately built sdp-mcp and sdp-controller probe commands. Model submission,
-the owner workflow and candidate-evidence publication remain later milestones in
+with separately built sdp-mcp and sdp-controller probe commands. The [owner controller candidate](governancecontroller/README.md) adds explicit
+run/status/recover commands, durable input and bounded steering. PGI3 live execution
+remains unverified; candidate-evidence publication remains later work in
 PLAN-SDP-0018. These commands are not yet part of a published installer.

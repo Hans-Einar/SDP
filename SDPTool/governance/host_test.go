@@ -43,6 +43,7 @@ func TestAssignmentAuthorityAndHostReplay(t *testing.T) {
 	if e != nil {
 		t.Fatal(e)
 	}
+	hostResult := r
 	again, e := s.RecordHost(LocalController(), h)
 	if e != nil || again.Run.Revision != r.Run.Revision {
 		t.Fatal(e, again)
@@ -128,7 +129,7 @@ func TestAssignmentAuthorityAndHostReplay(t *testing.T) {
 		t.Fatal(e)
 	}
 	if dir := os.Getenv("PGI_SCHEMA_EVIDENCE"); dir != "" {
-		cases := []map[string]any{{"definition": "HostRequest", "value": h}, {"definition": "Result", "value": r}, {"definition": "EventPage", "value": page}}
+		cases := []map[string]any{{"definition": "Result", "value": hostResult}, {"definition": "HostRequest", "value": h}, {"definition": "Result", "value": r}, {"definition": "EventPage", "value": page}}
 		b, e := json.MarshalIndent(cases, "", "  ")
 		if e != nil {
 			t.Fatal(e)
