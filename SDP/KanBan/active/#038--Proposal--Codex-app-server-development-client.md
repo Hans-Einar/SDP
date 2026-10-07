@@ -8,7 +8,7 @@
 | CardState | ready |
 | created | 2026-09-28T15:10:13.034937+00:00 |
 | source | Owner conversation 2026-09-28: register app-server-based system development and assess SDPTool MCP |
-| next_review | PGI2 adapters and actual protocol negotiation; PGI1 core/CLI delivered |
+| next_review | PGI3 owner workflow; PGI1 core/CLI and PGI2 adapters delivered |
 | tags | codex, app-server, client, MCP, supervision, blueprints, observability |
 | Systems | SDPTOOL |
 | PlanId | PLAN-SDP-0018 |
@@ -19,7 +19,7 @@
 now coordinates governance, SDPTool MCP and Codex app-server research. It links
 the existing RGS1 results and owns the result register for subsequent studies.
 The selected studies and PGD1 design are complete. PLAN-SDP-0018 now owns the
-selected PGI1 core increment; the full client capability remains open. Reuse the
+delivered PGI1/PGI2 increments and remaining PGI3–PGI5; the full client capability remains open. Reuse the
 existing study results before selecting additional study work. Earlier RGS1 work remains delivered under
 PLAN-SDP-0006; this link does not reopen that completed plan.
 
@@ -219,10 +219,26 @@ observed request/result captures. Project records and unrelated fixture edits ar
 preserved. No live Codex/MCP client, automatic Session capture, evidence completion
 or independent product review is claimed.
 
-Handoff: PGI1 is delivered; active/ready now refers to the next PGI2 adapter
+At the PGI1 handoff, active/ready referred to the next PGI2 adapter
 increment in the active plan. The complete capability card remains open. Related
 KB036/037/042/043 retain their broader backlog scope; no ModelGovernance work is
 absorbed. Session0007 T003/T004 records the interrupted/resumed implementation and
 the host's Git restriction.
 
 2026-10-06T01:55:03.342761+00:00: EVT-KB-SDP-000305 — in-progress -> ready at PGI1 delivery/handoff; PGI2 adapters are next, broader client scope remains open.
+
+2026-10-07T06:52:01.769803+00:00: EVT-KB-SDP-000310 — Owner resumes Session0007; PGI2-M1 adapters and protocol negotiation selected, ready -> in-progress. PGI3–PGI5 remain planned.
+
+
+## PGI2 adapter delivery — 2026-10-07
+
+[PGI2 evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI2.md)
+records thin MCP/controller adapters, launch-bound authority, durable observed
+attempts and bounded capture/reconciliation. Full isolated SDPTool race/vet and
+24 observed wire-schema cases pass. Real Codex 0.160.1 initializes with ChatGPT
+mode and discovers MCP tools through SDK v1.8.0 / protocol 2025-11-25 in an idle
+ephemeral thread. No model turn, automatic journal publication or independent
+integrated review is claimed. KB038 is ready for PGI3; the complete capability
+remains open. Session0007 T006 records owner input, outcome and remaining gaps.
+
+2026-10-07T07:24:37.995561+00:00: EVT-KB-SDP-000312 — PGI2-M1 delivered; in-progress -> ready for PGI3, broader client scope remains open.

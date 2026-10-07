@@ -41,9 +41,24 @@ func identifier() (string, error) {
 
 // Caller is supplied by a trusted local adapter, never decoded from a request.
 // Same-user shell access is outside this API's authority boundary.
-type Caller struct{ controller bool }
+type Caller struct {
+	controller bool
+	runID      string
+	attemptID  string
+	epoch      string
+}
 
 func LocalController() Caller { return Caller{controller: true} }
+
+// AssignedAgent is a launch-time capability supplied by a trusted local adapter.
+// Never construct it from model/tool arguments. It grants only report, fail and
+// scope-change on the selected run, not controller or owner authority.
+func AssignedAgent(runID, attemptID, epoch string) (Caller, error) {
+	if !uuidPattern.MatchString(runID) || !uuidPattern.MatchString(attemptID) || !uuidPattern.MatchString(epoch) {
+		return Caller{}, fail("invalid_request", "invalid assigned run")
+	}
+	return Caller{runID: runID, attemptID: attemptID, epoch: epoch}, nil
+}
 
 type Selection struct {
 	Card      string `json:"card"`
@@ -129,6 +144,7 @@ type TransitionRequest struct {
 	Reason           string `json:"reason"`
 }
 type Run struct {
+	Attempts      []Attempt  `json:"attempts,omitempty"`
 	ID            string     `json:"id"`
 	Revision      uint64     `json:"revision"`
 	RequestID     string     `json:"requestId"`

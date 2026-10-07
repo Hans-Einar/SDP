@@ -442,6 +442,13 @@
         },
         "reason": {
           "type": "string"
+        },
+        "attempts": {
+          "type": "array",
+          "maxItems": 16,
+          "items": {
+            "$ref": "#/$defs/Attempt"
+          }
         }
       },
       "required": [
@@ -584,6 +591,287 @@
         "operation",
         "status",
         "error"
+      ]
+    },
+    "Attachment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "image",
+            "localImage",
+            "audio",
+            "localAudio",
+            "skill",
+            "mention"
+          ]
+        },
+        "reference": {
+          "type": "string",
+          "maxLength": 4096
+        },
+        "availability": {
+          "enum": [
+            "unknown",
+            "unavailable"
+          ]
+        }
+      },
+      "required": [
+        "kind",
+        "reference",
+        "availability"
+      ]
+    },
+    "Observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "bound",
+            "disconnected",
+            "reconciled",
+            "turn.started",
+            "turn.completed",
+            "userMessage",
+            "agentMessage",
+            "tool.completed"
+          ]
+        },
+        "turnId": {
+          "type": "string",
+          "maxLength": 256
+        },
+        "itemId": {
+          "type": "string",
+          "maxLength": 256
+        },
+        "phase": {
+          "enum": [
+            "",
+            "unknown",
+            "commentary",
+            "final_answer"
+          ]
+        },
+        "text": {
+          "type": "string",
+          "maxLength": 65536
+        },
+        "status": {
+          "enum": [
+            "",
+            "idle",
+            "running",
+            "completed",
+            "failed",
+            "interrupted",
+            "unknown",
+            "declined"
+          ]
+        },
+        "epoch": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "receivedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "attachments": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {
+            "$ref": "#/$defs/Attachment"
+          }
+        }
+      },
+      "required": [
+        "kind",
+        "turnId",
+        "itemId",
+        "phase",
+        "text",
+        "status",
+        "epoch",
+        "receivedAt"
+      ]
+    },
+    "Attempt": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "hostVersion": {
+          "const": "0.160.1"
+        },
+        "threadId": {
+          "type": "string",
+          "maxLength": 256
+        },
+        "turnId": {
+          "type": "string",
+          "maxLength": 256
+        },
+        "inputRevision": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "epoch": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "status": {
+          "enum": [
+            "idle",
+            "running",
+            "completed",
+            "failed",
+            "interrupted",
+            "unknown"
+          ]
+        },
+        "gap": {
+          "type": "boolean"
+        },
+        "events": {
+          "type": "array",
+          "maxItems": 1024,
+          "items": {
+            "$ref": "#/$defs/Observation"
+          }
+        },
+        "eventCount": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1024
+        }
+      },
+      "required": [
+        "id",
+        "hostVersion",
+        "threadId",
+        "turnId",
+        "inputRevision",
+        "epoch",
+        "status",
+        "gap",
+        "events"
+      ]
+    },
+    "HostRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "sdp-project-governance/0.1"
+        },
+        "projectRef": {
+          "type": "string"
+        },
+        "checkoutId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "operationId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "runId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "expectedRevision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 18446744073709551615
+        },
+        "inputRevision": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "action": {
+          "enum": [
+            "bind",
+            "observe",
+            "disconnect",
+            "reconcile"
+          ]
+        },
+        "attemptId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "hostVersion": {
+          "const": "0.160.1"
+        },
+        "threadId": {
+          "type": "string",
+          "maxLength": 256
+        },
+        "observation": {
+          "$ref": "#/$defs/Observation"
+        }
+      },
+      "required": [
+        "schema",
+        "projectRef",
+        "checkoutId",
+        "operationId",
+        "runId",
+        "expectedRevision",
+        "inputRevision",
+        "action",
+        "attemptId",
+        "hostVersion",
+        "threadId",
+        "observation"
+      ]
+    },
+    "EventPage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "runId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "attemptId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 18446744073709551615
+        },
+        "events": {
+          "type": "array",
+          "maxItems": 256,
+          "items": {
+            "$ref": "#/$defs/Observation"
+          }
+        },
+        "nextCursor": {
+          "type": "string",
+          "maxLength": 1024
+        },
+        "gap": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "runId",
+        "attemptId",
+        "revision",
+        "events",
+        "nextCursor",
+        "gap"
       ]
     }
   }

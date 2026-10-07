@@ -35,7 +35,7 @@ designs:
     path: 04--Design/SDPTool/ProjectGovernance/Design.md
     implementationPlan: 05--Implementation/SDPTool/ProjectGovernance/Plan.md
     kanban: KB-SDP-038
-    note: PGD1 shared routine, Session and client contract; PGI1 core/CLI delivered, PGI2-PGI5 remain planned.
+    note: PGD1 shared routine, Session and client contract; PGI1 core/CLI and PGI2 adapters delivered; PGI3-PGI5 remain planned.
   DES-SDPTOOL-001:
     status: initial-design
     path: 03--Architecture/SDPTool.design
@@ -213,6 +213,13 @@ reviews:
       low: 0
       note: 4
 verification:
+  SDPTOOL-VER-PGI2:
+    status: passed-bounded-adapters
+    path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI2.md
+    managementId: PLAN-SDP-0018
+    card: KB-SDP-038
+    design: SDPTOOL-DES-0001
+    note: Actual idle protocol probe plus fixture recovery; live workflow and independent review remain unverified.
   SDPTOOL-VER-PGI1:
     status: passed-core-cli
     path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI1.md

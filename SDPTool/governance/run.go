@@ -5,7 +5,7 @@ import (
 )
 
 func (s *Service) authorize(c Caller, schema, project, checkout, operation string, state snapshot) error {
-	if !c.controller {
+	if !c.controller && c.runID == "" {
 		return fail("unauthorized", "trusted controller invocation required")
 	}
 	if schema != Schema {
@@ -87,7 +87,7 @@ func (s *Service) Start(caller Caller, q StartRequest) (Result, error) {
 		return out, e
 	}
 	r := Run{ID: id, Revision: 1, RequestID: q.RequestID, State: "ready", Step: "implement", InputRevision: c.Revision, Selection: q.Selection, Assignment: q.Assignment, Routine: routine, RoutineDigest: routine.Digest(), Reason: "coverage resolved; trusted local controller selected bounded work"}
-	out = Result{Schema: Schema, Operation: "start", ProjectRef: s.project, CheckoutID: state.CheckoutID, OperationID: q.OperationID, Run: r, Coverage: "known"}
+	out = Result{Schema: Schema, Operation: "start", ProjectRef: s.project, CheckoutID: state.CheckoutID, OperationID: q.OperationID, Run: summarizeRun(r), Coverage: "known"}
 	state.Runs[id] = r
 	state.Receipts[q.OperationID] = receipt{digest, out}
 	// Recheck source revision immediately before publishing the new state.
@@ -137,12 +137,13 @@ func (s *Service) Read(runID string) (Result, error) {
 	if c.Revision != r.InputRevision || len(c.Conditions) > 0 {
 		coverage = "stale"
 	}
-	return Result{Schema: Schema, Operation: "read", ProjectRef: s.project, CheckoutID: state.CheckoutID, Run: r, Coverage: coverage}, nil
+	return Result{Schema: Schema, Operation: "read", ProjectRef: s.project, CheckoutID: state.CheckoutID, Run: summarizeRun(r), Coverage: coverage}, nil
 }
 func (s *Service) Transition(caller Caller, q TransitionRequest) (Result, error) {
 	var out Result
-	if !caller.controller {
-		return out, fail("unauthorized", "controller invocation required")
+	if !caller.controller && (caller.runID == "" || caller.runID != q.RunID ||
+		(q.Action != "report" && q.Action != "fail" && q.Action != "scope-change")) {
+		return out, fail("unauthorized", "action requires controller or matching assignment capability")
 	}
 	if !uuidPattern.MatchString(q.RunID) || !digestPattern.MatchString(q.InputRevision) || q.ExpectedRevision == 0 || strings.TrimSpace(q.Reason) == "" || len(q.Reason) > 64<<10 {
 		return out, fail("invalid_request", "run, revision and bounded reason required")
@@ -158,6 +159,17 @@ func (s *Service) Transition(caller Caller, q TransitionRequest) (Result, error)
 	}
 	if e = s.authorize(caller, q.Schema, q.ProjectRef, q.CheckoutID, q.OperationID, state); e != nil {
 		return out, e
+	}
+	if !caller.controller {
+		bound := false
+		r, ok := state.Runs[q.RunID]
+		if ok && len(r.Attempts) > 0 {
+			at := r.Attempts[len(r.Attempts)-1]
+			bound = at.ID == caller.attemptID && at.Epoch == caller.epoch && at.InputRevision == r.InputRevision && at.Status != "unknown"
+		}
+		if !bound {
+			return out, fail("unauthorized", "agent attempt is absent, superseded or disconnected")
+		}
 	}
 	digest := requestDigest(q)
 	if r, ok, e := retry(state, q.OperationID, digest); ok {
@@ -234,7 +246,7 @@ func (s *Service) Transition(caller Caller, q TransitionRequest) (Result, error)
 	r.State = next
 	r.Revision++
 	r.Reason = q.Reason
-	out = Result{Schema: Schema, Operation: "transition", ProjectRef: s.project, CheckoutID: state.CheckoutID, OperationID: q.OperationID, Run: r, Coverage: "known"}
+	out = Result{Schema: Schema, Operation: "transition", ProjectRef: s.project, CheckoutID: state.CheckoutID, OperationID: q.OperationID, Run: summarizeRun(r), Coverage: "known"}
 	if c.Revision != r.InputRevision {
 		out.Coverage = "stale"
 	}

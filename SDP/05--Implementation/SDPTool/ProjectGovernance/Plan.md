@@ -17,7 +17,7 @@ Deliver one useful owner-to-agent Maintenance workflow through a local Codex cli
 shared SDPTool process core and agent adapter. Restore the same Session after an
 interrupted attempt and return candidate-bound evidence with a truthful disposition.
 The owner continuation on 2026-10-06 selects PGI1-M1 from this handoff. The plan
-is active for that bounded implementation; PGI2–PGI5 remain planned.
+is active. The owner continuation on 2026-10-07 selects PGI2-M1; PGI3–PGI5 remain planned.
 
 The [design](../../../04--Design/SDPTool/ProjectGovernance/Design.md),
 [acceptance cases](../../../04--Design/SDPTool/ProjectGovernance/Acceptance.md) and
@@ -54,7 +54,7 @@ do not turn a self-check into an independent review by changing its label.
 | Phase / milestone | Delivered behavior | Required evidence | State |
 | --- | --- | --- | --- |
 | PGI1-M1 Core and inspection | Selected project + status request yields context/route without creating work; authorized fixture Maintenance creates a pinned durable run visible through a small CLI read/transition path | PG-A01/02/03/08/10/18; exact JSON schemas; core restart and stale-input tests | delivered; bounded core/CLI verified |
-| PGI2-M1 Adapters and protocol | Thin local MCP adapter and controller protocol adapter use the core; inspect compatible schemas, negotiate the selected SDK/host, capture bounded recorded events and reconcile mapped attempts | PG-A10/11/12/15/18; actual protocol negotiation and failure outputs; no simulated-as-live claims | planned |
+| PGI2-M1 Adapters and protocol | Thin local MCP adapter and controller protocol adapter use the core; inspect compatible schemas, negotiate the selected SDK/host, capture bounded recorded events and reconcile mapped attempts | PG-A10/11/12/15/18; actual protocol negotiation and failure outputs; no simulated-as-live claims | delivered; bounded adapters and real idle protocol probe verified |
 | PGI3-M1 Owner workflow | Minimal terminal client recovers Session, submits/steers work, presents route/status and launches the authorized fresh Master with bounded context; applicable child/review mapping is observed | PG-A02/04/05/11/12/13/15; managed account mode and one useful bounded task | planned |
 | PGI4-M1 Evidence and reconciliation | Candidate-bound evidence, review/rework and checked publication produce one durable Session outcome and correct card/plan disposition | PG-A06/07/09/13/16/17; crash and concurrent-change fixtures | planned |
 | PGI5-M1 Integrated verification | The same isolated task survives observer close, interruption/recovery and scope correction with unrelated work preserved | All PG-A01–18 at their stated level; independent review and exact-candidate evidence | planned |
@@ -102,13 +102,17 @@ PGI1-M1 is delivered in an isolated local clone based on 043c59c, which includes
 the completed ModelGovernance delivery. [Evidence-PGI1](Evidence-PGI1.md) and its
 [candidate manifest](candidate-PGI1.json) identify the tested core/CLI subset.
 Go 1.27.1 full SDPTool race tests, vet and 21 observed wire-schema cases pass.
-PGI2–PGI5 remain unstarted; real host execution and independent review are still
-required for the complete pilot. KB038 hands off as active/ready for PGI2.
+PGI2-M1 is also delivered: [adapter evidence](Evidence-PGI2.md),
+[candidate manifest](candidate-PGI2.json) and [protocol pin](protocol-PGI2.json)
+record shared-core MCP parity, bounded observation/recovery fixtures and actual
+Codex 0.160.1 / MCP 2025-11-25 negotiation with SDK v1.8.0. No model turn is sent.
+PGI3–PGI5 remain planned; actual host execution, evidence publication and independent
+review are required for the complete pilot. KB038 is active/ready for PGI3.
 
-The current host makes the original worktree Git metadata read-only. Implementation
-and milestone commit use an independent clone under /tmp on
-`sdp/project-governance-pilot`; verified source/document changes are returned to the
-original worktree without modifying its branch or Git metadata.
+The isolated clone on `sdp/project-governance-pilot` retains milestone commits.
+Current isolation preserves concurrent shared work; the earlier host's read-only
+Git restriction is historical. Verified changes return to the shared worktree
+without switching its branch or including unrelated work in the milestone commit.
 
 
 ## PGI1 implementation refinements and next handoff
@@ -128,3 +132,24 @@ agent-provided role strings. Resume here proves core persistence only; PGI2/PGI3
 must establish actual host-attempt mapping before claiming controller recovery.
 Reviewed backlog dependencies KB036/037/042/043 remain separate and unchanged;
 ModelGovernance, semantic blueprints and full KanBan TUI are not entry prerequisites.
+
+## PGI2 selection — 2026-10-07
+
+EVT-PM-SDP-000145: owner resumes Session0007. Reuse the clean isolated PGI1 clone on
+`sdp/project-governance-pilot`. Original read-only Git limitations were historical;
+continued isolation now preserves concurrent shared work. Implement thin adapters,
+scoped agent authority and bounded observed attempt recovery; no model execution
+is needed for protocol negotiation. Live owner/agent workflow remains PGI3.
+
+
+## PGI2 delivery and next handoff — 2026-10-07
+
+The live probe observes managed ChatGPT mode, initialization and MCP discovery in
+an idle ephemeral thread. The core stores observed thread/attempt/epoch identities
+and paged completed content; a disconnect requires explicit reconciliation.
+Fixtures establish replay/authority guards, not recovery of an executing model.
+The next bounded assignment is PGI3: the terminal owner workflow, durable outbound
+intent and controller loop, fresh Master launch and actual host role mapping.
+Keep PGI4 publication and PGI5 independent integrated verification distinct.
+Backlog review leaves KB036/037/042/043 unchanged; no new prerequisite from
+ModelGovernance, semantic blueprints or KanBan TUI is introduced.

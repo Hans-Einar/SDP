@@ -1,12 +1,13 @@
-# ProjectGovernance core — PGI1
+# ProjectGovernance core — PGI1/PGI2
 
 This package implements the first slice of
 [PLAN-SDP-0018](../../SDP/05--Implementation/SDPTool/ProjectGovernance/Plan.md):
 read-only work inspection, one pinned Maintenance routine and durable local run
 transitions. Linux supports mutation; other platforms explicitly refuse writes.
-The CLI uses the same core that future adapters will call. No agent execution,
-MCP server, app-server connection, automatic Session journal or delivery gate is
-implemented in this slice.
+The CLI and [MCP adapter](../governancemcp/README.md) use the same core.
+The [app-server adapter](../governancehost/README.md) supplies protocol inspection
+and bounded observed attempt recovery. Model submission, automatic Session
+journaling and the delivery gate remain later increments.
 
 ## Inspect and select work
 
@@ -95,7 +96,7 @@ adapter-supplied Caller capability; requests cannot provide role/owner approval.
 A referenced authority document is pinned input, not parsed proof of approval.
 The host adapter remains responsible for deciding whether an invocation is
 actually authorized. This boundary does not defend against arbitrary same-user
-shell access. Future agent adapters must not grant LocalController from model text.
+shell access. The MCP adapter never grants LocalController from model text.
 
 A checkout-wide nonblocking Linux flock serializes mutations. A transition checks
 its run revision and pinned source revision before publication. Selected records,
@@ -121,12 +122,34 @@ Limits: 1 MiB UTF-8 request/selected Markdown, 16 MiB management ledger or snaps
 without removing historical receipts. Explicit null, duplicate/unknown fields
 (including case aliases), trailing JSON, non-integer revision tokens, hidden or
 escaping reference paths and symlinked source/state paths refuse. These limits
-are a pilot boundary, not a pagination API. No cursors/events API exists yet.
+are a pilot boundary. PGI2 Events pages add revision-pinned cursors and count/byte
+limits for observed attempt content.
 
 [Schema definitions](schema.json) describe each CLI request and response. Select
 the corresponding `$defs` entry; semantic coverage, byte limits and duplicate-key
 rejection additionally run in Go. Errors go to stderr with exit 2; success uses
 stdout/exit 0. Human output is default and `--json` selects machine output.
+
+## Observed attempts (PGI2)
+
+Only the controller can bind an observed idle thread, record completed visible
+items, mark a disconnect unknown, or reconcile a mapped attempt from host history.
+The pin is Codex 0.160.1; a connection epoch change requires reconciliation and
+preserves an observation gap. A host turn completing never completes SDP work.
+AssignedAgent is a launch-supplied run/attempt/epoch capability: only report,
+fail and scope-change are allowed, and a stale/disconnected binding refuses.
+
+Run results and immutable receipts include attempt metadata and eventCount, with
+empty events arrays. Read content through Events: at most 256 observations and
+240 KiB of encoded observations per page, with a cursor pinned to run revision.
+A single encoded observation exceeding 240 KiB refuses admission. Text is at most
+64 KiB; there are at most 64 bounded attachment references, 16 attempts per run and
+1,024 observations per attempt, also subject to the checkout receipt/state limits.
+Oversize input refuses rather than truncating visible messages.
+
+The unpublished sdp-project-governance/0.1 pilot schema adds optional attempts
+and eventCount. PGI2 reads PGI1 state; downgrading an updated store to the older
+strict PGI1 reader is unsupported. This is not a released profile migration.
 
 ## Verification
 
