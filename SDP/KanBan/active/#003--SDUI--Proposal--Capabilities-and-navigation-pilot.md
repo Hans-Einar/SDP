@@ -9,7 +9,7 @@
 | Systems | SDUI |
 | created | 2026-09-29T16:53:54.251554+00:00 |
 | source | PLAN-SDP-0009; KB-SDP-041; external XFMD gap register |
-| next_review | WCD1 design review and WCI0 capability/preparation boundary |
+| next_review | WCI1 collection/viewport stage contract and generation prerequisite |
 | PlanId | PLAN-SDP-0022 |
 
 ## Current assignment — Session0010 T001
@@ -211,3 +211,5 @@ file:///home/warloc/git/xfmd-sdl-navigation/SDP/Sessions/session-%230004--SDUI-w
 - 2026-10-07T21:49:33.950733+00:00 — EVT-KB-SDUI-000019: Owner requests the KB-SDUI-003 job; backlog -> active/in-progress. Start WCD1 design, retain every family, link staged implementation and Session0010. No implementation completion claimed.
 
 - 2026-10-07T21:54:14.780622+00:00 — EVT-KB-SDUI-000020: WCD1 independently reviewed and complete at design level. Start PLAN-SDP-0022 WCI0 detached preparation/admission in isolated clone; every widget family remains pending.
+
+- 2026-10-07T22:26:58.777242+00:00 — EVT-KB-SDUI-000021: WCI0 independently reviewed at detached preparation/admission boundary; WCI1 contract next. Track existing SDL constructor/frontend mismatch as prerequisite within this card before generation claims.

@@ -24,3 +24,15 @@ Layout receives the host's available area; source has no pixel width/height. Chi
 The SDL adapter lives in SDL/go/bridge. Parser ref/callback/setHandle are data; composition registers SDL modules, Go functions and typed bridge.Plan. Action-core 0.1 provides explicitly bounded execution. An accepted Go domain transaction cannot roll back if later UI publication fails; there is no automatic replay. See the [runtime contract](runtime-contract.md).
 
 Limits and actual trials: [G1](../go/evidence/G1.md), [G2](../go/evidence/G2.md), [G3](../go/evidence/G3.md), [G4](../../SDL/go/evidence/G4.md), [G5](../../SDL/go/evidence/G5.md). No alternative SVG/Fyne/XFMD parser, extracted Rust crate or mandatory C ABI.
+
+## WCI0 detached preparation — KB-SDUI-003
+
+`go/preparation` checks exact profile/layout/widget/provider/host capabilities,
+normalizes the selected document and builds a detached runtime Session. It imports
+no GUI or SDL and performs no I/O. `host/fynehost/admission` supplies concrete
+legacy host facts and measured provider checks without a Fyne dependency. Prototype
+check uses this shared path; native runtime checks admission before construction
+and on model checks. Connected preparation takes an explicit SDL adapter; actual
+module/signature validation stays in SDL bridge. Candidate preparation executes
+no domain actions and does not itself publish a native model. WCI1 owns full
+publication and new controls.

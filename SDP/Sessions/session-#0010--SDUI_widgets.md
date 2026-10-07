@@ -2,8 +2,8 @@
 
 ## Session roadmap
 
-Latest recorded turn: T001. Current work: S1. Next: verify the WCI0 preparation boundary after
-completed independent WCD1 design review. Diagram is **sequence only**, using synthetic equal
+Latest recorded turn: T002. Current work: S2. Next: review the WCI1 collection/viewport
+contract after completed WCD1 and WCI0. Diagram is **sequence only**, using synthetic equal
 slots; it is not a delivery schedule or measured timeline.
 
 ```mermaid
@@ -12,8 +12,8 @@ gantt
     dateFormat YYYY-MM-DD
     axisFormat %d
     section Route
-    S1 Capability and interaction design :active, s1, 2000-01-01, 1d
-    S2 Collections and viewports :s2, after s1, 1d
+    S1 Capability and interaction design :done, s1, 2000-01-01, 1d
+    S2 Collections and viewports :active, s2, after s1, 1d
     S3 Panes and commands :s3, after s2, 1d
     S4 Typed values and text :s4, after s3, 1d
     S5 Consumer integration and review :s5, after s4, 1d
@@ -21,8 +21,8 @@ gantt
 
 | State | Step | Work and linked plan milestone | Prerequisites | Authorization | Completion evidence / outcome |
 | --- | --- | --- | --- | --- | --- |
-| on-going | S1 | PLAN-SDP-0021 WCD1 and PLAN-SDP-0022 WCI0 | Existing gap study and inventory | Owner T001 | WCD1 independently reviewed and complete; WCI0 implementation active |
-| planned | S2 | PLAN-SDP-0022 WCI1 | S1 | Owner T001 full card | pending |
+| completed | S1 | PLAN-SDP-0021 WCD1 and PLAN-SDP-0022 WCI0 | Existing gap study and inventory | Owner T001 | WCD1 independently reviewed and complete; WCI0 verified and independently reviewed |
+| on-going | S2 | PLAN-SDP-0022 WCI1 | S1 | Owner T001 full card | pending |
 | planned | S3 | PLAN-SDP-0022 WCI2 | S2 pilot evidence | Owner T001 full card | pending |
 | planned | S4 | PLAN-SDP-0022 WCI3 | Shared contracts from S1–S3 | Owner T001 full card | pending |
 | planned | S5 | PLAN-SDP-0022 WCI4 | S2–S4 | Owner T001; publication unselected | pending |
@@ -33,8 +33,8 @@ gantt
 | Status | active |
 | Primary card | [KB-SDUI-003](../KanBan/active/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md) |
 | Snapshot date | 2026-10-07 owner request; actual ledger timestamps recorded separately |
-| Current step | S1 |
-| Proposed next step | S1 WCI0 verification; preflight precedes new interactive controls |
+| Current step | S2 |
+| Proposed next step | S2 reviewed collection/viewport contract, then WCI1 execution |
 | Execution authority | Owner T001 requests taking the card's work |
 
 ## Goal
@@ -58,7 +58,7 @@ XM-M2 evidence. Rich optional research retains its existing disposition.
 | Local ref | Plan type and document | Document readiness | Canonical plan lifecycle | Depends on | Outcome / evidence |
 | --- | --- | --- | --- | --- | --- |
 | P1 | [PLAN-SDP-0021 DesignPlan](../04--Design/SDUI/Widgets/Plan.md) | completed | completed | PLAN-SDP-0009 research | Independently reviewed design and per-family acceptance |
-| P2 | [PLAN-SDP-0022 ImplementationPlan](../05--Implementation/SDUI/Widgets/Plan.md) | on-going | active | P1, staged elaboration | WCI0 implementation in isolated clone |
+| P2 | [PLAN-SDP-0022 ImplementationPlan](../05--Implementation/SDUI/Widgets/Plan.md) | on-going | active | P1, staged elaboration | WCI0 delivered; WCI1 stage design active |
 
 ## Route changes and decisions
 
@@ -108,6 +108,30 @@ branch switch or unrelated governance change is part of this work.
 Remaining work and next step: inspect and verify the WCI0 candidate, then obtain
 independent implementation review. Later grammar/native slices remain explicit
 implementation obligations.
+
+### T002 — 2026-10-08, continuation after permission interruption
+
+- Owner prompt, verbatim: “ok fortsett”. The preceding access question was answered
+  from the observed unrestricted environment; it did not change product scope.
+- Capture: manually recorded work summary. Host thread/turn/item IDs and exact
+  prompt times remain unknown. Routine run ID unavailable.
+- Recovered Session0010 and reused sdp/master, planning, architect, worker,
+  traceability and verifier routines loaded in T001; re-read sdp/master entries.
+- T001 interruption correction: the scoped design patch reached the index, but
+  its commit permission request was interrupted. Verified HEAD and index before
+  continuing; committed WCD1 as `eae0149` without unrelated staged changes.
+- WCI0 independent reviewer approved the exact inventoried candidate and reran
+  targeted race/bridge tests. Coordinator inspected actual diffs, compared target
+  baselines and copied ten reviewed implementation/test files into the shared tree.
+  Phase commit `fac09f2` on `sdui/widgets-wci0` retains dependency `00b105a`.
+- Full SDUI race tests and bounded SDL bridge/runtime checks pass. An unchanged SDL
+  generated-constructor baseline mismatch is explicitly registered as a WCI1
+  prerequisite investigation; no all-SDL-suite pass is claimed.
+- Steps: S1 complete at its bounded level; S2 stage design started. Architect agent
+  `01a11878-3e2d-7c32-98fb-69bee87297a4` owns only Collections.md. Worker investigates
+  constructor mismatch read-only. All widget families remain pending.
+- Work summary, not captured final response: continue WCI1 contract review and
+  prerequisite repair, preserving full inventory and no release/merge authority.
 
 ## Closeout
 

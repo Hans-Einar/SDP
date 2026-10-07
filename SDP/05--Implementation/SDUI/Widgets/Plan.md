@@ -33,7 +33,7 @@ Current preview files are not this assignment's original implementation.
 
 | Phase / milestone | Runnable outcome and acceptance | Dependency | State |
 | --- | --- | --- | --- |
-| WCI0-M1 | Capability/preparation boundary with legacy fixtures, missing capability/module/signature rejection and no partial activation | WCD1 reviewed design | in-progress |
+| WCI0-M1 | Capability/preparation boundary with legacy fixtures, missing capability/module/signature rejection and no partial activation | WCD1 reviewed design | completed |
 | WCI1-M1 | 0.3 tree/list/scroll from source through runtime, Fyne, exports and typed SDL fixture; inspect pointer/keyboard/reload behavior | WCI0; collection EBNF/AST and events elaborated | planned |
 | WCI2-M1 | Tabs/splits preserve page state, relative geometry and focus | WCI1 evidence and pilot findings | planned |
 | WCI2-M2 | Button/toggle shared commands, menu/context/dialog with cancel/lifetime proof | WCI2-M1; typed command/surface grammar | planned |
@@ -69,3 +69,10 @@ helpers. Actual publication is separate from package preparation.
 Independent review must challenge the integrated user workflow and all-family
 completion matrix. An implemented slice does not complete the card. Outstanding
 native, packaging or review evidence stays explicit and keeps completion pending.
+
+## WCI0 delivery
+
+[WCI0 evidence](Evidence-WCI0.md) records verified detached preparation/admission
+and independent review. Atomic native publication remains WCI1. The SDL generated
+constructor baseline mismatch is a tracked prerequisite investigation before WCI1;
+no all-SDL-suite pass is claimed.

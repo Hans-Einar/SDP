@@ -6,7 +6,7 @@ candidate identity, reproduction command, actual result and independent review.
 
 | Family | Milestone | Frontend / normalized identity | Runtime / native acceptance | Export / integration | Status |
 | --- | --- | --- | --- | --- | --- |
-| Shared capability/preflight | WCI0-M1 | Separate profile, layout, provider and host facts; source spans | Missing capability/module/signature rejects before activation; last valid UI retained | Local prototype distinguished from connected readiness | pending |
+| Shared capability/preflight | WCI0-M1 | Separate profile, layout, provider and host facts; source spans | Missing capability/module/signature rejects before activation; last valid UI retained | Local prototype distinguished from connected readiness | WCI0 detached preparation delivered; full native publication remains WCI1 |
 | Tree | WCI1-M1 | 0.3 schema, reused instances, stable IDs | Expand/select/activate separate; loading/error/retry; stale/deleted/canceled requests | Composition/text, explicit SVG policy, generated constructors, SDL navigation fixture | pending |
 | List | WCI1-M1 | Typed ordered rows and nonselectable groups/separators | Keyboard/pointer, bounded incremental data, removal and refresh races | Mixed folder/file fixture, same identity across exports | pending |
 | Scroll viewports | WCI1-M1 | Existing overflow intent, source spans | Wheel/keyboard, clipping/hit tests, nested focus visibility, resize/clamp, reload | Snapshot offset/extent or explicit fallback; inspect output | pending |
