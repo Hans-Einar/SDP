@@ -45,6 +45,8 @@ const (
 )
 
 type Event struct {
+	Command                                *CommandInvocation
+	Dialog                                 *DialogRequest
 	StateRevision                          uint64
 	Page                                   *PageActivation
 	Split                                  *SplitChange
@@ -147,6 +149,12 @@ func (s *Session) lookup(h Handle) (*Widget, error) {
 }
 
 func (s *Session) lookupControl(h Handle) (*Widget, error) {
+	if w := s.aux[h.Path]; w != nil {
+		if !s.closed && w.Handle == h {
+			return w, nil
+		}
+		return nil, fault("stale-handle", h.Path)
+	}
 	if s.panes[h.Path] != nil {
 		return s.pane(h)
 	}

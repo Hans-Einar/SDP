@@ -26,6 +26,7 @@ type DocumentRequest struct {
 	Mode                             preparation.Mode
 	Bind                             preparation.Binder
 	Guard                            func() error
+	Icons                            map[string]fyne.Resource
 	// PrepareResources validates/prepares resources using read-only prospective state.
 	// Its viewport offsets are the measured effective values, not raw requests.
 	PrepareResources func(ui.Snapshot) error
@@ -35,6 +36,7 @@ type nativePresentation struct {
 	snapshot   ui.Snapshot
 	geometry   *layout.SnapshotLayout
 	background fyne.Resource
+	canvases   map[string]*canvasPresentation
 }
 type providerFlight struct {
 	request ui.LoadRequest
@@ -54,9 +56,19 @@ type Bundle struct {
 	size                     layout.Size
 	view                     *View
 	presentation, pending    *nativePresentation
+	retiredPresentations     []*nativePresentation
 	children                 []fyne.CanvasObject
 	flights                  map[string]providerFlight
 	closed, published, muted bool
+	icons                    map[string]fyne.Resource
+	keys                     []commandKey
+	keyCanvases              map[fyne.Canvas]bool
+	canvasInputs             map[fyne.Canvas]*commandCanvasInput
+	surfaces                 map[string]*nativeSurface
+	menus                    map[string]*documentMenu
+	surfaceSizes             map[string]layout.Size
+	tip                      *fyne.Container
+	tipParent                *fyne.Container
 }
 
 // DocumentHost owns exactly one published bundle. All methods except provider
@@ -71,6 +83,7 @@ type DocumentHost struct {
 	closed, resizing bool
 	OnChange         func(*Bundle)
 	OnStatus         func(error)
+	OnDialogResult   func(ui.DialogResult)
 	// Post marshals provider completion to the owner goroutine; defaults to fyne.Do.
 	Post func(func())
 }
@@ -109,9 +122,20 @@ func (h *DocumentHost) Prepare(r DocumentRequest) (*Bundle, error) {
 	if !validDocumentSize(h.size) {
 		return nil, fmt.Errorf("viewport: intended native size required")
 	}
+	// Own resource bytes: application mutation after preparation cannot replace
+	// resources that were admitted for this bundle.
+	if r.Icons != nil {
+		icons := make(map[string]fyne.Resource, len(r.Icons))
+		for id, resource := range r.Icons {
+			if resource != nil {
+				icons[id] = frozenIcon(resource, resource.Name(), resource.Content())
+			}
+		}
+		r.Icons = icons
+	}
 	h.latest, h.latestSource = r.Sequence, r.SourceRevision
-	b := &Bundle{owner: h, request: r, old: h.current, size: h.size, Document: r.Document, SourceRevision: r.SourceRevision, Sequence: r.Sequence, flights: map[string]providerFlight{}}
-	req := preparation.Request{Document: r.Document, Entry: r.Entry, SessionID: r.SessionID, SourceRevision: r.SourceRevision, Mode: r.Mode, Bind: r.Bind, Providers: r.Providers, Capabilities: admission.PaneCapabilities(), ValidatePresentation: b.stage, PreparePresentation: b.preparePresentation}
+	b := &Bundle{owner: h, request: r, old: h.current, size: h.size, Document: r.Document, SourceRevision: r.SourceRevision, Sequence: r.Sequence, flights: map[string]providerFlight{}, surfaces: map[string]*nativeSurface{}, menus: map[string]*documentMenu{}, surfaceSizes: map[string]layout.Size{}}
+	req := preparation.Request{Document: r.Document, Entry: r.Entry, SessionID: r.SessionID, SourceRevision: r.SourceRevision, Mode: r.Mode, Bind: r.Bind, Providers: r.Providers, Capabilities: b.capabilities(), ValidatePresentation: b.stage, PreparePresentation: b.preparePresentation}
 	if h.current != nil {
 		req.Previous = h.current.Session
 	}
@@ -138,47 +162,81 @@ func (h *DocumentHost) Prepare(r DocumentRequest) (*Bundle, error) {
 
 // stage is a pure prospective geometry probe. It cannot promote native state.
 func (b *Bundle) stage(snapshot ui.Snapshot) (ui.PresentationState, error) {
-	measured, _, err := b.measure(snapshot)
+	measured, _, _, err := b.measureCanvases(snapshot)
 	if err != nil {
 		return ui.PresentationState{}, err
 	}
 	return measured.PresentationState(), nil
 }
-func (b *Bundle) measure(snapshot ui.Snapshot) (*layout.SnapshotLayout, *markdown.Provider, error) {
-	if b.closed {
-		return nil, nil, fmt.Errorf("closed: bundle")
+func (b *Bundle) capabilities() preparation.Capabilities {
+	caps := admission.CommandCapabilities()
+	if len(b.request.Icons) > 0 {
+		caps = append(caps, preparation.Capability{Dimension: preparation.Provider, ID: "icon", Major: 1})
 	}
-	if err := preparation.Check(b.Document.Profile, snapshot.Root, admission.PaneCapabilities()); err != nil {
-		return nil, nil, err
+	return caps
+}
+func (b *Bundle) measureCanvases(snapshot ui.Snapshot) (*layout.CanvasLayout, *markdown.Provider, map[string]layout.Size, error) {
+	if b.closed {
+		return nil, nil, nil, fmt.Errorf("closed: bundle")
+	}
+	if err := preparation.Check(b.Document.Profile, snapshot.Root, b.capabilities()); err != nil {
+		return nil, nil, nil, err
+	}
+	icons, err := prepareIcons(snapshot.Root, b.request.Icons)
+	if err != nil {
+		return nil, nil, nil, err
+	}
+	if _, err = prepareKeys(snapshot.Root); err != nil {
+		return nil, nil, nil, err
 	}
 	provider, err := markdown.Prepare(snapshot.Root, nil)
 	if err != nil {
-		return nil, nil, err
+		return nil, nil, nil, err
 	}
-	metrics := &collectionMeasure{snapshot: snapshot, markdown: provider}
-	measured, err := (&layout.Engine{Measure: metrics}).LayoutSnapshot(snapshot, b.size)
-	return measured, provider, err
+	metrics := &collectionMeasure{snapshot: snapshot, markdown: provider, icons: icons}
+	engine := &layout.Engine{Measure: metrics}
+	sizes, err := b.canvasSizes(snapshot, engine)
+	if err != nil {
+		return nil, nil, nil, err
+	}
+	measured, err := engine.LayoutCanvases(snapshot, b.size, sizes)
+	return measured, provider, sizes, err
 }
 
 // preparePresentation owns one private ticket. Runtime alone promotes it after
 // final state publication; sequence consumption and failed probes cannot do so.
 func (b *Bundle) preparePresentation(snapshot ui.Snapshot) (ui.PresentationTicket, error) {
-	measured, provider, err := b.measure(snapshot)
+	canvases, provider, sizes, err := b.measureCanvases(snapshot)
 	if err != nil {
 		return ui.PresentationTicket{}, err
 	}
 	size, source := b.size, b.SourceRevision
+	measured := canvases.Main
 	if b.view == nil {
 		b.view = New(snapshot.Root)
 		b.view.prepared = true
+		b.icons, err = prepareIcons(snapshot.Root, b.request.Icons)
+		if err != nil {
+			return ui.PresentationTicket{}, err
+		}
+		b.keys, err = prepareKeys(snapshot.Root)
+		if err != nil {
+			return ui.PresentationTicket{}, err
+		}
 		snapshot.Root.Walk(func(n *parser.Instance) {
 			switch {
+			case n.Widget == "svg" && snapshot.Root.Profile == "sdui/0.3":
+				b.view.addPane(n.Path, newContextControl())
 			case n.Widget == "tree" || n.Widget == "list":
 				b.view.addCollection(n.Path, newCollectionControl(b.owner, b, n.Path))
 			case n.Kind == "composition" && n.Widget == "tabs":
 				b.view.addPane(n.Path, newPaneHeader())
 			case n.Kind == "composition" && n.Widget == "split":
 				b.view.addPane(n.Path, newPaneDivider())
+			case n.Widget == "button" && (snapshot.Root.Profile == "sdui/0.3" || parser.IsCommandButton(n) || n.Argument("icon") != "" || n.Argument("tooltip") != ""):
+				b.view.addCommandButton(n.Path, newCommandButton(n.Argument("label"), func() { b.view.invoke(n.Path, "") }))
+			case n.Widget == "menu" && n.Argument("mode") != "context" && n.Argument("mode") != "submenu":
+				b.view.addPane(n.Path, newCommandButton(n.Argument("label"), func() { b.openMenu(n.Path, ui.ContextTarget{}, fyne.Position{}) }))
 			}
 		})
 	}
@@ -187,7 +245,7 @@ func (b *Bundle) preparePresentation(snapshot ui.Snapshot) (ui.PresentationTicke
 			return ui.PresentationTicket{}, err
 		}
 	}
-	background, err := svg.Render(measured.Root, svg.Options{Width: size.W, Height: size.H, SkipControls: true, NativeControls: b.view.nativeControls(), Content: provider})
+	background, err := svg.Render(measured.Root, svg.Options{Width: size.W, Height: size.H, SkipControls: true, NativeControls: b.nativeInventory(snapshot.Root), InteractionRoot: snapshot.Root, Content: provider})
 	if err != nil {
 		return ui.PresentationTicket{}, err
 	}
@@ -195,16 +253,24 @@ func (b *Bundle) preparePresentation(snapshot ui.Snapshot) (ui.PresentationTicke
 	objects := []fyne.CanvasObject{b.view.image}
 	objects = append(objects, backs...)
 	readingOrder(snapshot.Root, func(n *parser.Instance) {
-		if c := b.view.controls[n.Path]; c != nil {
+		if c := b.view.controls[n.Path]; c != nil && surfacePath(snapshot, n.Path) == "" {
 			objects = append(objects, c.clip)
 		}
 	})
 	objects = append(objects, thumbs...)
 	prepared := &nativePresentation{snapshot: snapshot, geometry: measured, background: fyne.NewStaticResource("sdui.svg", []byte(background)), objects: objects}
+	if err = b.prepareCanvases(prepared, canvases, sizes, provider); err != nil {
+		return ui.PresentationTicket{}, err
+	}
 	if b.closed || b.size != size || b.SourceRevision != source || b.published && b.owner.current != b {
+		b.discardCanvases(prepared)
 		return ui.PresentationTicket{}, fmt.Errorf("stale: prepared native bundle")
 	}
-	return ui.PresentationTicket{Publish: func() { b.pending = prepared }, Discard: func() { prepared = nil }}, nil
+	retired := append([]*nativePresentation(nil), b.retiredPresentations...)
+	if b.pending != nil {
+		retired = append(retired, b.pending)
+	}
+	return ui.PresentationTicket{Publish: func() { b.pending = prepared; b.retiredPresentations = retired }, Discard: func() { b.discardCanvases(prepared); prepared = nil }}, nil
 }
 func (h *DocumentHost) Commit(b *Bundle) error {
 	if h.closed || b == nil || b.closed || b.published || b.owner != h {
@@ -232,8 +298,9 @@ func (h *DocumentHost) Commit(b *Bundle) error {
 	h.Container.Refresh()
 	b.muted = false
 	if old != nil {
-		old.Close()
+		old.closeReason("reload")
 	}
+	b.installKeys(h.canvas, "")
 	// Establish native focus before after() exposes the new bundle to observers.
 	// Recheck after its final local loading presentation as well; this is a no-op
 	// when the prepared focused control was preserved by native synchronization.
@@ -261,8 +328,22 @@ func (h *DocumentHost) restoreFocus(b *Bundle) {
 			path = p
 		}
 	}
+	if path == "" {
+		if active := b.Session.Snapshot().ActiveSurface; active != nil {
+			for _, native := range b.surfaces {
+				if native.target == *active && native.anchor != nil {
+					muted := b.muted
+					b.muted = true
+					native.canvas.Focus(native.anchor)
+					b.muted = muted
+					return
+				}
+			}
+		}
+	}
 	obj, ok := b.view.Controls[path].(fyne.Focusable)
-	if !ok || h.canvas.Focused() == obj {
+	canvas := b.canvasFor(path)
+	if !ok || canvas == nil || canvas.Focused() == obj {
 		return
 	}
 	// The new control and wrapper renderers were prepared before publication.
@@ -270,7 +351,10 @@ func (h *DocumentHost) restoreFocus(b *Bundle) {
 	muted := b.muted
 	b.muted = true
 	defer func() { b.muted = muted }()
-	h.canvas.Focus(obj)
+	if state := b.canvasInputs[canvas]; state != nil {
+		state.shift = false
+	}
+	canvas.Focus(obj)
 }
 
 func (h *DocumentHost) Adopt(r DocumentRequest) error {
@@ -281,13 +365,31 @@ func (h *DocumentHost) Adopt(r DocumentRequest) error {
 	return h.Commit(b)
 }
 func (b *Bundle) Close() {
+	b.closeReason("dispose")
+}
+func (b *Bundle) closeReason(reason string) {
 	if b == nil || b.closed {
 		return
 	}
+	b.hideTooltip()
 	b.closed = true
 	if b.Session != nil {
+		b.owner.status(b.Session.RevokeSurfaces(ui.Handle{}, reason))
+		for _, menu := range b.menus {
+			menu.native.close()
+		}
+		for path, surface := range b.surfaces {
+			b.removeKeys(surface.canvas, path)
+			surface.destroy()
+		}
+		b.removeKeys(b.owner.canvas, "")
 		b.Session.Close()
+		b.drainDialogResults()
 	} // revoke token acceptance before cancellation
+	b.discardCanvases(b.pending)
+	for _, p := range b.retiredPresentations {
+		b.discardCanvases(p)
+	}
 	for _, f := range b.flights {
 		f.cancel()
 	}

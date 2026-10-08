@@ -16,6 +16,9 @@ var widgets = map[string]widgetSchema{
 
 func schemaFor(profile, kind string) (widgetSchema, bool) {
 	if profile == "sdui/0.3" {
+		if schema, ok := interactions[kind]; ok {
+			return schema, true
+		}
 		if schema, ok := panes[kind]; ok {
 			return schema, true
 		}
@@ -98,7 +101,7 @@ func validateWidget(n *Node, modules map[string]bool, profile string) {
 	if seen["callback"] && n.Name == nil {
 		fail("widget-name", "A callback requires a named widget", n.Span)
 	}
-	if !seen[schema.required] {
+	if schema.required != "" && !seen[schema.required] {
 		fail("missing-argument", "Missing "+schema.required, n.Span)
 	}
 }
@@ -157,8 +160,15 @@ func validateLocal(d *Document) {
 				fail("variant", "Only frame variants box/b supported", n.Span)
 			}
 			if n.Kind == "widget" || n.Kind == "composition" {
-				validateWidget(n, modules, d.Profile)
+				decl := n
+				if d.Profile == "sdui/0.3" && n == def.Root && isInteractionNode(&Instance{Profile: d.Profile, Kind: n.Kind, Widget: val(n.Widget), Arguments: widgetArguments(n, d.Profile)}) {
+					copy := *n
+					copy.Name = str(def.Name)
+					decl = &copy
+				}
+				validateWidget(decl, modules, d.Profile)
 				validatePaneSource(n, d.Profile)
+				validateInteractionSource(decl, d.Profile)
 			}
 			roles := map[string]bool{}
 			body := false

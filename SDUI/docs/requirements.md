@@ -56,3 +56,37 @@ static text render. Retain hidden/reused instance identity, effective layout,
 symbolic bindings and exact declaration/use spans. Host preflight must distinguish
 local prototype readiness from SDL connectivity and reject stale source revisions.
 A consumer may bundle the SDUI-owned tools; parser/runtime remain host-independent.
+
+## Selected widget inventory — KB-SDUI-003, Session0010
+
+**SDUI-R27 (partially delivered):** deliver the card's tree/list and scroll
+viewports, tabs/splits, button/toggle commands, menu/context/dialog, checkbox,
+slider/select/numeric input, extended single-line and basic multiline input, plus
+explicit SVG/Markdown provider and fallback contracts. Preserve typed identity,
+draft atomicity, programmatic/user-event distinction and reload/disposal guards.
+Full editors, component source sets and native XFMD parity are outside this scope.
+
+**SDUI-R28 (partially delivered):** separate source/profile, layout, provider
+and native capabilities; prepare all required bindings before connected activation.
+An unbound prototype is not connected readiness. Unsupported exports reject or use
+an explicitly selected labelled static fallback. Parser success is insufficient.
+
+The [reviewed design](../../SDP/04--Design/SDUI/Widgets/Design.md),
+[acceptance matrix](../../SDP/04--Design/SDUI/Widgets/Acceptance.md) and
+[implementation plan](../../SDP/05--Implementation/SDUI/Widgets/Plan.md) define
+staged delivery. Source 0.3 is selected for new syntax; current implemented 0.2
+and frozen historical fixtures retain their meaning. Native behavior and matching
+consumer package evidence are required before declaring the inventory delivered.
+
+WCI1 delivers the bounded tree/list/scroll portion of R27 and guarded native
+publication for R28; see [WCI1 evidence](../../SDP/05--Implementation/SDUI/Widgets/Evidence-WCI1.md).
+Remaining widget families and consumer packaging stay open under PLAN-SDP-0022.
+
+
+WCI2-M1 delivers tabs/splits with retained drafts, focus and measured geometry;
+see [pane evidence](../../SDP/05--Implementation/SDUI/Widgets/Evidence-WCI2-M1.md).
+WCI2-M2 delivers shared commands, menus and composed modal/nonmodal surfaces;
+[verified evidence](../../SDP/05--Implementation/SDUI/Widgets/Evidence-WCI2-M2.md)
+records 118 native checks and independent approval: exactly-once dispatch,
+stale-context refusal, truthful domain outcomes, draft-preserving rejection and
+one terminal result for each of 26 published openings. WCI3/WCI4 remain pending.

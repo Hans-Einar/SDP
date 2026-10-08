@@ -1,7 +1,7 @@
 package runtime
 
 func (s *Session) Dispatch(event Event) error {
-	if event.Page != nil || event.Split != nil || event.StateRevision != 0 {
+	if event.Command != nil || event.Dialog != nil || event.Page != nil || event.Split != nil || event.StateRevision != 0 {
 		return fault("event-type", "Unexpected interaction payload")
 	}
 	w, err := s.lookup(event.Handle)
@@ -14,7 +14,10 @@ func (s *Session) Dispatch(event Event) error {
 	if event.Sequence == 0 || event.Sequence <= s.sequence {
 		return fault("duplicate-event", "Event sequence already consumed")
 	}
-	if !w.Enabled || !w.Visible {
+	if s.presentations[w.Handle.Path] != nil {
+		return fault("event-type", "Command button requires InvokeCommand")
+	}
+	if !s.inputAllowed(w) {
 		return fault("inactive-widget", w.Handle.Path)
 	}
 	var target CollectionTarget

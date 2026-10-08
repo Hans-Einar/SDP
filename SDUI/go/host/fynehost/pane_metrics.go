@@ -10,11 +10,11 @@ import (
 	ui "github.com/Hans-Einar/SDP/SDUI/go/runtime"
 )
 
-func headerPages(state ui.TabsState, label string) []headerPage {
+func headerPages(state ui.TabsState, label string, icons map[string]fyne.Resource) []headerPage {
 	out := []headerPage{}
 	for _, p := range state.Pages {
 		if p.Visible {
-			out = append(out, headerPage{id: p.ID, label: p.Label, enabled: p.Enabled})
+			out = append(out, headerPage{id: p.ID, label: p.Label, enabled: p.Enabled, icon: icons[p.Icon]})
 		}
 	}
 	if len(out) == 0 {
@@ -29,7 +29,7 @@ func (m *collectionMeasure) MeasureTabs(n *parser.Instance, font float64, _ layo
 	}
 	h := newPaneHeader()
 	th := container.NewThemeOverride(h, componentTheme{float32(font)})
-	h.sync(headerPages(state, n.Argument("label")), state.Selected)
+	h.sync(headerPages(state, n.Argument("label"), m.icons), state.Selected)
 	minimum := th.MinSize()
 	// Measure all native headers at once so a popup overflow menu is not required
 	// for the M1 header keyboard and stable-ID hit rectangle contract.

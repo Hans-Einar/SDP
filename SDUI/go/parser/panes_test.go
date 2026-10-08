@@ -83,7 +83,7 @@ func TestPaneSchemaAndPlacementRejection(t *testing.T) {
 		`split("horizontal",minFirst=0.5,minSecond=0.5)[left=[];right=[]]`,
 		`split("horizontal",minFirst=0.6)[left=[];right=[]]`,
 		`split("horizontal",collapsible=1)[left=[];right=[]]`,
-		`button("OK")[]`, `tree("Navigation")[]`, `menu("File")[]`,
+		`button("OK")[]`, `tree("Navigation")[]`, `menu("File")`,
 		`dialog("Dialog")[]`, `command("Future")`,
 	} {
 		if _, _, err := Compile(`sdui 0.3; Main=[` + body + `];`); err == nil {

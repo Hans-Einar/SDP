@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/Hans-Einar/SDP/SDUI/go/layout"
+	"github.com/Hans-Einar/SDP/SDUI/go/parser"
 )
 
 // ContentRenderer can replace raw Markdown rendering without changing geometry.
@@ -22,6 +23,9 @@ type Options struct {
 	// Includes tabs/split composition chrome; pages belong to their tabs adapter.
 	// Inventory never licenses omission of a pane's descendant controls/content.
 	NativeControls map[string]string
+	// Full selected snapshot tree for a native dialog canvas. The rendered root
+	// must be the identical node within this tree; only valid with SkipControls.
+	InteractionRoot *parser.Instance
 }
 
 func Render(root *layout.Box, options Options) (string, error) {

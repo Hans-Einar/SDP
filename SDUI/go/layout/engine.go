@@ -57,7 +57,7 @@ func (e *Engine) desired(n *parser.Instance, ref, slot Size, force assigned, inh
 	if err := e.step(n); err != nil {
 		return Size{}, err
 	}
-	if !visible(n) {
+	if !visible(n) || auxiliary(n) && n != e.surfaceRoot {
 		return Size{}, nil
 	}
 	font := number(n, "font", inherited)
@@ -103,7 +103,21 @@ func (e *Engine) desired(n *parser.Instance, ref, slot Size, force assigned, inh
 			return Size{}, diag(n, "scroll-layout", "Scroll axes require a definite assigned size")
 		}
 	}
-	if pane(n) && n.Widget != "page" {
+	if menuBar(n) {
+		minimum, err := e.menuMinimum(n, font)
+		if err != nil {
+			return Size{}, err
+		}
+		if knownW && w < minimum.W-.01 || knownH && h < minimum.H-.01 {
+			return Size{}, diag(n, "native-minimum", "Assigned menu size is below native minimum")
+		}
+		if !knownW {
+			w = minimum.W
+		}
+		if !knownH {
+			h = minimum.H
+		}
+	} else if pane(n) && n.Widget != "page" {
 		minimum, err := e.minimum(n, ref, font)
 		if err != nil {
 			return Size{}, err
@@ -154,7 +168,7 @@ func (e *Engine) desired(n *parser.Instance, ref, slot Size, force assigned, inh
 		}
 		for _, row := range allRows(n) {
 			for _, c := range row {
-				if !visible(c) {
+				if !inFlow(c) {
 					continue
 				}
 				if !knownW && relative(c, "x") {
@@ -212,9 +226,19 @@ func (e *Engine) arrange(n *parser.Instance, r Rect, ref Size, clip Rect, font f
 	font = number(n, "font", font)
 	enabled = enabled && n.Layout["enabled"] != false
 	b := &Box{Instance: n, Path: n.Path, Rect: r, Clip: clip.Intersect(r), Font: font, Enabled: enabled}
-	if !visible(n) {
+	if !visible(n) || auxiliary(n) && n != e.surfaceRoot {
 		b.Rect.W = 0
 		b.Rect.H = 0
+		return b, nil
+	}
+	if menuBar(n) {
+		minimum, err := e.menuMinimum(n, font)
+		if err != nil {
+			return nil, err
+		}
+		if r.W < minimum.W-.01 || r.H < minimum.H-.01 {
+			return nil, diag(n, "native-minimum", "Assigned menu size is below native minimum")
+		}
 		return b, nil
 	}
 	if pane(n) && n.Widget != "page" {

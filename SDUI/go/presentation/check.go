@@ -8,6 +8,9 @@ func check(root *parser.Instance) error {
 	if err != nil {
 		return err
 	}
+	if _, err := parser.ResolveInteractions(root); err != nil {
+		return err
+	}
 	root.Walk(func(n *parser.Instance) {
 		if err != nil {
 			return
@@ -16,9 +19,9 @@ func check(root *parser.Instance) error {
 		case "frame", "group", "markdown":
 			return
 		case "composition":
-			if profile != "sdui/0.3" || (n.Widget != "tabs" && n.Widget != "page" && n.Widget != "split") {
+			if profile != "sdui/0.3" || (n.Widget != "tabs" && n.Widget != "page" && n.Widget != "split" && n.Widget != "menu" && n.Widget != "menuGroup" && n.Widget != "dialog") {
 				err = diagnostic("export-kind", n.Path+": unsupported composition "+n.Widget, n)
-			} else if n.Widget != "page" {
+			} else if n.Widget == "tabs" || n.Widget == "split" {
 				_, err = parser.PaneChildren(n)
 			}
 			return
@@ -29,7 +32,7 @@ func check(root *parser.Instance) error {
 		}
 		switch n.Widget {
 		case "button", "input", "svg":
-		case "tree", "list":
+		case "tree", "list", "command", "item", "separator":
 			if profile != "sdui/0.3" {
 				err = diagnostic("widget-kind", n.Path+": collection requires sdui/0.3", n)
 			}

@@ -7,6 +7,20 @@ import (
 )
 
 type Session struct {
+	commands                map[string]*CommandState
+	presentations           map[string]*CommandPresentation
+	menus                   map[string]*MenuState
+	surfaces                map[string]*SurfaceState
+	aux                     map[string]*Widget
+	ownerSurface, menuOwner map[string]string
+	menuTargets             map[string]Handle
+	rootOwner               Handle
+	surfaceEpoch            uint64
+	publishedSurfaces       map[SurfaceTarget]bool
+	dialogResults           []DialogResult
+	activeSurface           *SurfaceTarget
+	mainFocus               string
+	accepting               *SurfaceTarget
 	check                   func(*parser.Instance) error
 	stateCheck              StateGate
 	presentationCheck       PresentationGate
@@ -46,6 +60,9 @@ func New(id string, root *parser.Instance) (*Session, error) {
 	if err := s.initPanes(); err != nil {
 		return nil, err
 	}
+	if err := s.initCommands(); err != nil {
+		return nil, err
+	}
 	return s, nil
 }
 func (s *Session) register(n *parser.Instance, enabled, visible bool) error {
@@ -57,7 +74,7 @@ func (s *Session) register(n *parser.Instance, enabled, visible bool) error {
 	}
 	enabled = enabled && n.Layout["enabled"] != false
 	visible = visible && n.Layout["visible"] != false
-	if n.Kind == "widget" {
+	if n.Kind == "widget" && n.Widget != "command" && n.Widget != "item" && n.Widget != "separator" {
 		path := public(n.Path)
 		if s.widgets[path] != nil {
 			return fault("ambiguous-instance", path)
@@ -109,6 +126,9 @@ func (s *Session) Bind(handle Handle, handler Handler) error {
 	if _, e := s.lookup(handle); e != nil {
 		return e
 	}
+	if s.presentations[handle.Path] != nil {
+		return fault("binding", "Command buttons use BindInteraction")
+	}
 	if handler == nil {
 		return fault("binding", "Nil callback")
 	}
@@ -121,7 +141,7 @@ func (s *Session) Draft(handle Handle, value string) error {
 	if e != nil {
 		return e
 	}
-	if w.Handle.Kind != "input" || !w.Enabled || !w.Visible {
+	if w.Handle.Kind != "input" || !s.inputAllowed(w) {
 		return fault("draft", "Input is not editable")
 	}
 	if len(value) > 32768 {
@@ -154,10 +174,10 @@ func (s *Session) Focus(handle Handle) error {
 	if e != nil {
 		return e
 	}
-	if w.Handle.Kind == "page" {
+	if w.Handle.Kind == "page" || s.aux[handle.Path] != nil {
 		return fault("focus", "Page content has no independent focus stop")
 	}
-	if !w.Enabled || !w.Visible {
+	if !s.inputAllowed(w) {
 		return fault("focus", "Widget is not focusable")
 	}
 	n := s.copyState()
@@ -170,6 +190,7 @@ func (s *Session) Close() {
 	if s.closed {
 		return
 	}
+	_ = s.RevokeSurfaces(Handle{}, "dispose")
 	for _, c := range s.collections {
 		c.cancel()
 	}

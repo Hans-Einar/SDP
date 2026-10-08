@@ -8,7 +8,9 @@ definition     = identifier, "=", component, ";" ;
 component      = [ identifier, "=" ], primary, [ "*", identifier ], [ formatting ] ;
 primary        = frame | group | string | call-primary | identifier ;
 call-primary   = widget-call, [ "[", [ rows ], "]" ] ;
-(* M1: bodies required and permitted only for tabs/page/split. *)
+(* Bodies required and permitted only for tabs/page/split/menu/menuGroup/dialog.
+   command/item/separator are leaves. M2 command references and context/open
+   targets are strings, resolved strictly for the selected expanded entry. *)
 frame          = "[", [ rows ], "]" ;
 group          = "<", [ rows ], ">" ;
 rows           = row, { ";", row }, [ ";" ] ;

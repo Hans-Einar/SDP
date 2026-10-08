@@ -53,7 +53,7 @@ func (v *viewportSurface) live() bool {
 }
 func (v *viewportSurface) Scrolled(e *fyne.ScrollEvent) {
 	if v.live() {
-		v.bundle.owner.scroll(float64(v.Position().X+e.Position.X), float64(v.Position().Y+e.Position.Y), -float64(e.Scrolled.DX), -float64(e.Scrolled.DY))
+		v.bundle.owner.scrollIn(v.viewport.Path, float64(v.Position().X+e.Position.X), float64(v.Position().Y+e.Position.Y), -float64(e.Scrolled.DX), -float64(e.Scrolled.DY))
 	}
 }
 func (v *viewportSurface) Dragged(e *fyne.DragEvent) {

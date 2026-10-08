@@ -23,6 +23,9 @@ func Generate(source, entry, pkg string) ([]byte, error) {
 	if root == nil {
 		return nil, fmt.Errorf("unknown SDUI entry %q", entry)
 	}
+	if _, e := parser.ResolveInteractions(root); e != nil {
+		return nil, e
+	}
 	aliases := map[string]string{ParserPackage: "ui"}
 	d, e := Literal(doc, aliases)
 	if e != nil {

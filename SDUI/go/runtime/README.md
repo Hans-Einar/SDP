@@ -6,10 +6,11 @@ and never invokes a collection provider. The host marshals background completion
 back to that goroutine. SDL execution is connected through an explicit handler
 installed by the [bridge](../../../SDL/go/bridge); runtime itself does not load SDL.
 
-The WCI2-M1 implementation adds source-profile 0.3 tabs/pages/splits to WCI1
-collections and viewports, retaining the 0.2 button/input APIs and normalized
-empty-profile encoding.
-`New` checks the bounded, uniform normalized profile and clones the supplied frame.
+The WCI2 implementation adds source-profile 0.3 tabs/pages/splits, shared commands,
+button toggles, menus and dialog state to WCI1 collections and viewports, retaining
+the 0.2 button/input APIs and normalized empty-profile encoding.
+`New` checks the bounded, uniform normalized profile, clones the supplied frame
+and strictly resolves the selected root with `parser.ResolveInteractions`.
 Collection/provider and native readiness require the additional steps below;
 constructing a Session alone is not connected admission. See the shared
 [runtime boundary](../../docs/runtime-contract.md) and the governing
@@ -126,7 +127,8 @@ hide/disable, reload or Close therefore cannot publish a stale action result.
 
 `SnapshotRoot()` returns the detached presentation model, including current
 widget properties. `Snapshot()` also contains model/state revisions, consumed
-sequence, collection states, viewport offsets/handles, Tabs/Splits maps and
+sequence, collection states, viewport offsets/handles, Tabs/Splits, Commands,
+Presentations, Menus and Surfaces maps, ActiveSurface and
 Focused public handle path. All maps,
 item slices, request pointers and model provenance (`Uses`) are copied.
 
@@ -160,8 +162,8 @@ belong to [layout](../layout), not runtime.
 
 `Successor(root, providers)` creates an unmounted candidate with the same logical
 Session ID, next model revision and preserved consumed sequence/generation
-watermarks. Compatible named widgets retain handle, accepted value, draft and
-focus. Matching collection kind/handle/provider ID/epoch retains data and local
+watermarks. Compatible named main/page widgets retain handle, accepted value, draft and
+focus. Dialog inputs retain accepted values but discard unaccepted drafts. Matching collection kind/handle/provider ID/epoch retains data and local
 state, advances collection generation and removes all request tokens. Loading
 becomes unloaded; stable errors/canceled/loaded states and AutoLoadPending persist.
 Changed providers start from their validated seed.
@@ -190,7 +192,7 @@ intent; Tabs Enabled/Visible includes ancestor and containing-page activity. Thu
 unselected page can be eligible while its content is inactive. Snapshot.Root and
 leaf Widgets expose derived effective activity for layout/input/provider admission.
 `Widgets()` still enumerates legacy leaf controls; `CallbackOwners()` enumerates
-composition tabs with symbolic callbacks for bridge/preparation discovery.
+tabs, canonical commands and dialogs with symbolic callbacks for discovery.
 
 `SelectPage(handle,id)` changes selection silently. `Apply` supports pane
 Enabled/Visible and tabs/page Label (nonempty UTF-8), with the existing 256-update
@@ -214,23 +216,26 @@ geometry; disabled affects input rather than painting.
 
 ## Typed pane interactions and presentation tickets
 
-`DispatchInteraction(Event)` handles only ActivatePage and AdjustSplit in M1.
+`DispatchInteraction(Event)` handles ActivatePage and AdjustSplit plus the M2
+command/dialog interactions described below.
 Event carries exact Handle, ModelRevision, expected StateRevision, nonzero increasing
-Sequence and exactly one `Page *PageActivation` or `Split *SplitChange`. Legacy
+Sequence and exactly one kind-specific payload: panes use `Page *PageActivation` or
+`Split *SplitChange`. Legacy
 Value/Collection/DraftRevision are empty; legacy Dispatch rejects pane payloads.
 PageActivation carries PreviousID, PageID and exact direct Page handle. SplitChange
 Operation is ratio/collapse-first/collapse-second/restore; only ratio carries
 Proportion. Same-page activation is a no-op. Native page activation keeps focus on
 the tabs header; silent selection, fallback and reload never invoke the callback.
 
-`BindInteraction(handle, InteractionHandler)` installs one tabs callback;
+For pane interactions, `BindInteraction(handle, InteractionHandler)` installs one tabs callback;
 `HasInteractionBinding` checks it. Omitted callback permits local navigation; a
 declared unbound callback rejects activation. The handler returns
 `InteractionReply{Updates, Domain}`; InteractionResult reports Sequence, Status
 (committed/rejected/ui-conflict) and Domain (not-called/succeeded/rejected/unknown).
 Domain annotations survive adapter errors; an unspecified/invalid called-handler
 outcome is unknown. Consumed sequence survives callback failure; no automatic replay.
-No command/menu/dialog/Accept payloads are implemented in this milestone.
+Pane events reject command/dialog payloads and non-nil reply Accept; M2 events
+use their separate kind-specific path below.
 
 Dispatch validates prospective geometry without preparing or publishing native
 resources, then consumes one sequence before calling the synchronous handler once.
@@ -287,3 +292,106 @@ unit/race tests cover typed data/events, cancellation, copied state, viewport gu
 and successors. M1 tests add pane lifecycle, measured bounds, callback/reentrant
 conflicts and ticket publication. They do not establish native input, application-wide publication
 or installed-consumer acceptance; those remain separate stage evidence.
+
+## Shared commands and captured menus
+
+`Command(publicPath)` and `CommandState(handle)` expose the canonical owner.
+Snapshot `Commands` holds its checked state, symbolic binding, context/effect,
+resolved target and definition-instance exclusive scope. `Presentations` maps
+actual button/item handles to one command and their effective label/icon/tooltip
+and local restrictions. Frontend resolution supplies exact identities; runtime
+never resolves source references by guessing lexical scope from public paths.
+
+Basic 0.2 and existing 0.3 buttons remain `Activate`/`Bind` controls. Explicit
+command/toggle/checked/exclusive/key/context/target/effect arguments opt in;
+icon/tooltip alone do not. Promoted buttons remain in `Widgets()` with their
+legacy Binding cleared. Canonical symbolic owners appear once in CallbackOwners.
+Use `BindInteraction` for commands and dialogs; local effects reject handlers.
+
+`CaptureCommand(origin, via, context)` returns a detached Event with the next
+sequence, exact state/model identity and `CommandInvocation`. Via is button/menu/key;
+a key uses the canonical owner. Capture consumes no sequence and publishes nothing.
+Dispatch validates the complete capture, computes toggle/exclusive changes and
+publishes them atomically with handler Updates. Selecting an already checked
+exclusive command is a no-op. Apply supports Boolean `Checked` only for toggle
+commands and validates the final exclusive group; callers include peer clearing
+in their silent programmatic batch. Reply updates cannot overlap reserved toggles.
+
+Button/key item context captures the current selected row. Menu item context
+captures the clicked row without changing selection. Empty selection disables
+item-context buttons. Context carries the widget/model identity and full WCI1 item
+target; replacement, hidden rows or state changes cannot retarget an old action.
+Modal routing blocks outside native events, drafts, focus and checked viewport
+operations while preserving the underlying visible geometry/provider state.
+
+`OpenMenu(menu, context)` publishes a root opening and returns `MenuScope`:
+Handle, ModelRevision and captured StateRevision. `CloseMenu(scope)` compares the
+stored opening, independently of the current global revision, so even stale menus
+can be dismissed. Old cleanup cannot close a replacement. Dispatch separately
+requires the current revision. Submenu navigation does not restamp runtime capture.
+The host owns the synchronous native selection scope: hide/remove the old native
+wrapper before Action, retain the runtime capture once, and close an unclaimed
+opening on scope exit. Successful InvokeCommand stages root dismissal in its own
+publication; any failure dismisses only that opening without action replay.
+Escape/outside dismissal revokes immediately. Runtime stores no GUI scope object.
+
+## Dialog opening, acceptance and lifetime
+
+`Surface(publicPath)` and `SurfaceState(handle)` expose each declaration.
+`OpenSurfaceFrom(dialog, opener, context)` publishes a new monotonically generated
+`SurfaceTarget` and records the actual opener and parent surface. `OpenSurface`
+uses current logical focus/root as a programmatic convenience. Reopening focuses
+the same live token without clearing drafts. `FocusSurface(nil)` selects main;
+a target selects its active canvas. Native OS focus remains a host responsibility.
+
+`DialogFields(dialog)` returns owned input Widgets in source order, including
+hidden pages and excluding nested dialogs. `DialogField(dialog, fieldPath)` uses
+the frontend's strict named relative field resolver, including anonymous wrappers.
+Both work for closed declarations so bridge admission executes no action.
+`CaptureDialog(target, kind)` captures Accept/Cancel/Close. Accept includes exact
+owned handles, raw String drafts and value/draft revisions, valid UTF-8 and at most
+32768 bytes per field. External payloads must match exactly. Cancel/Close uses only
+the opening token, never obsolete Accept field revisions.
+
+Accept invokes only the dialog handler; accept/cancel/close command effects derive
+that dialog event with the same sequence. A successful Accept requires
+`Reply.Accept`; false requires rejected outcome and no Updates. Local unbound-free
+acceptance uses committed/not-called. A declared but unbound callback rejects.
+Captured fields plus Updates share the 256-write bound; captured-field overlap
+rejects. Oversized known captures reject before execution. Oversized custom replies
+reject after execution, retaining the truthful domain outcome without replay.
+
+True acceptance commits drafts and Updates, closes the surface and queues one
+result only after publication. False/error leaves it open. Succeeded with failed UI
+publication, or unknown execution, records AcceptSequence/Domain/AcceptBlocked on
+that opening without preparing a ticket. Further Accept rejects; edit/Revert and
+token-based Cancel/Close remain available. No reconciliation or ResolveAccept API
+exists. Reentrant legacy changes remain accepted and invalidate the outer reply.
+A reentrant close retains the attempt on its queued result until the handler unwinds.
+
+`CloseSurface(target, "cancel"|"close")` discards unaccepted drafts to current
+accepted values. `ConfirmSurfacePublication(target)` is the host acknowledgment
+following actual native publication; it changes neither geometry nor state revision.
+`DrainDialogResults()` returns detached terminal results once, and holds unfinished
+synchronous Accept receipts. A declaration cannot reopen before its queued result
+is drained. Unmounted candidates never emit terminal results. Only Accept results
+contain fields; automatic lifetime results have Sequence zero and retain the last
+AcceptSequence/Domain. Reasons are user/programmatic/parent-closed/parent-hidden/
+reload/dispose. Observers run after native synchronization, outside runtime mutation.
+
+Parent hide/page/split transitions stage closure, draft discard, request revocation
+and receipts on the candidate; rejected geometry/resources preserve the live state.
+For an actual native owner loss, `RevokeSurfaces(parent, reason)` bypasses fallible
+geometry. Zero parent means the entire Session. `RevokeSurface(target, reason)`
+includes the exact lost opening itself (for native OnClosed bypass), using the same
+lifecycle reasons and rejecting stale callbacks against a replacement opening.
+Repeated exact-token cleanup emits no second result. Close performs dispose revocation.
+For successful replacement, the host revokes the predecessor with reason reload,
+closes it and drains receipts. Successor starts all surfaces/menus closed, carries
+opening/handle/sequence watermarks and compatible checked state, resets unaccepted
+dialog drafts, and retains ordinary main/page drafts. Failed successor preparation
+changes none of the predecessor's surfaces, requests or focus.
+
+M2 runtime tests cover these captures, outcomes, budgets, lifetime and ticket
+contracts. Unit/race success does not establish native menu, window or OS keyboard
+acceptance; those are separate host/integration evidence.

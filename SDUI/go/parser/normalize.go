@@ -78,8 +78,8 @@ func Normalize(d *Document) (roots map[string]*Instance, err error) {
 		defs[def.Name] = def.Root
 	}
 	count := 0
-	var expand func(*Node, string, int) *Instance
-	expand = func(n *Node, path string, depth int) *Instance {
+	var expand func(*Node, string, string, int) *Instance
+	expand = func(n *Node, path, scope string, depth int) *Instance {
 		count++
 		if count > 8192 {
 			fail("expansion-limit", "More than 8192 expanded components", n.Span)
@@ -88,7 +88,7 @@ func Normalize(d *Document) (roots map[string]*Instance, err error) {
 			fail("depth-limit", "Expanded depth exceeds 64", n.Span)
 		}
 		if n.Kind == "use" {
-			i := expand(defs[val(n.Target)], path, depth+1)
+			i := expand(defs[val(n.Target)], path, path, depth+1)
 			i.Declaration = val(n.Target)
 			i.Uses = append(i.Uses, UseSite{val(n.Target), n.Span})
 			overlay := formatting(n, i.Kind, len(i.Rows))
@@ -97,6 +97,7 @@ func Normalize(d *Document) (roots map[string]*Instance, err error) {
 			}
 			checkCombination(i.Layout, i.Kind, len(i.Rows), n.Span)
 			checkWrap(i.Layout, i.Rows, n.Span)
+			validateInteractionLayout(i)
 			return i
 		}
 		props := formatting(n, n.Kind, len(n.Rows))
@@ -113,6 +114,10 @@ func Normalize(d *Document) (roots map[string]*Instance, err error) {
 		if n.Kind == "widget" || n.Kind == "composition" {
 			i.Arguments = widgetArguments(n, d.Profile)
 		}
+		if isInteractionNode(i) {
+			i.Arguments["$scope"] = Literal{Kind: "string", Value: scope, Span: n.Span}
+		}
+		validateInteractionLayout(i)
 		for r, row := range n.Rows {
 			items := []*Instance{}
 			for c, child := range row.Items {
@@ -129,7 +134,7 @@ func Normalize(d *Document) (roots map[string]*Instance, err error) {
 				if name == "" {
 					name = fmt.Sprintf("$r%dc%d", r, c)
 				}
-				instance := expand(child, path+"/"+name, depth+1)
+				instance := expand(child, path+"/"+name, scope, depth+1)
 				if n.Kind == "group" && instance.Kind == "frame" {
 					fail("group-content", "Frame reference in widget group", child.Span)
 				}
@@ -148,9 +153,10 @@ func Normalize(d *Document) (roots map[string]*Instance, err error) {
 	}
 	roots = map[string]*Instance{}
 	for _, def := range d.Definitions {
-		roots[def.Name] = expand(def.Root, def.Name, 1)
+		roots[def.Name] = expand(def.Root, def.Name, def.Name, 1)
 		roots[def.Name].Declaration = def.Name
 		validatePanePlacement(roots[def.Name], nil)
+		validateInteractionPlacement(roots[def.Name], nil)
 	}
 	validateConnections(d, roots)
 	return roots, nil

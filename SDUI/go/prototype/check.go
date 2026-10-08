@@ -35,8 +35,18 @@ func Check(path, entry, revision string) (reload.Candidate, Report, error) {
 	// static 0.3 support cannot be confused with interactive readiness.
 	if c.Document.Profile == "sdui/0.3" {
 		r.Profile = c.Document.Profile
+		if _, err := parser.ResolveInteractions(c.Root); err != nil {
+			return c, r, err
+		}
 		var unavailable error
 		c.Root.Walk(func(n *parser.Instance) {
+			m2 := n.Kind == "composition" && (n.Widget == "menu" || n.Widget == "menuGroup" || n.Widget == "dialog") || n.Kind == "widget" && (n.Widget == "command" || n.Widget == "item" || n.Widget == "separator") || parser.IsCommandButton(n)
+			if unavailable == nil && m2 {
+				unavailable = fmt.Errorf("unsupported-interaction: standalone prototype has no command/menu/dialog adapter: %w", &preparation.Diagnostic{
+					Capability: preparation.Capability{Dimension: preparation.Host, ID: n.Widget, Major: 1},
+					Path:       n.Path, Span: n.Span, Uses: append([]parser.UseSite(nil), n.Uses...),
+				})
+			}
 			if unavailable == nil && n.Kind == "composition" {
 				unavailable = fmt.Errorf("unsupported-pane: standalone prototype has no native pane adapter: %w", &preparation.Diagnostic{
 					Capability: preparation.Capability{Dimension: preparation.Host, ID: n.Widget, Major: 1},

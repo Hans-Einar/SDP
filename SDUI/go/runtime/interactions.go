@@ -18,6 +18,7 @@ const (
 )
 
 type InteractionReply struct {
+	Accept  *AcceptDecision
 	Updates []Update
 	Domain  DomainOutcome
 }
@@ -29,19 +30,22 @@ type InteractionResult struct {
 }
 
 func (s *Session) BindInteraction(h Handle, handler InteractionHandler) error {
-	w, err := s.pane(h)
+	w, err := s.lookupControl(h)
 	if err != nil {
 		return err
 	}
-	if w.Handle.Kind != "tabs" || handler == nil {
+	if (w.Handle.Kind != "tabs" && s.commands[h.Path] == nil && s.surfaces[h.Path] == nil) || handler == nil {
 		return fault("binding", "Interaction handler requires tabs")
+	}
+	if c := s.commands[h.Path]; c != nil && c.Effect != "" {
+		return fault("binding", "Local effects do not own handlers")
 	}
 	s.interactions[h.Path] = handler
 	s.StateRevision++
 	return nil
 }
 func (s *Session) HasInteractionBinding(h Handle) bool {
-	if _, err := s.pane(h); err != nil {
+	if _, err := s.lookupControl(h); err != nil {
 		return false
 	}
 	return s.interactions[h.Path] != nil
@@ -51,7 +55,7 @@ func (s *Session) interactionCandidate(e Event) (*Session, bool, error) {
 	if err != nil {
 		return nil, false, err
 	}
-	if !w.Enabled || !w.Visible {
+	if !s.inputAllowed(w) {
 		return nil, false, fault("inactive-widget", w.Handle.Path)
 	}
 	if e.ModelRevision != s.Revision || e.StateRevision != s.StateRevision {
@@ -60,7 +64,7 @@ func (s *Session) interactionCandidate(e Event) (*Session, bool, error) {
 	if e.Sequence == 0 || e.Sequence <= s.sequence {
 		return nil, false, fault("duplicate-event", "Event sequence already consumed")
 	}
-	if e.Collection != nil || e.Value != (Value{}) || e.DraftRevision != 0 {
+	if e.Command != nil || e.Dialog != nil || e.Collection != nil || e.Value != (Value{}) || e.DraftRevision != 0 {
 		return nil, false, fault("event-type", "Unexpected legacy payload")
 	}
 	n := s.copyState()
@@ -103,6 +107,9 @@ func (s *Session) interactionCandidate(e Event) (*Session, bool, error) {
 // DispatchInteraction stages pane state and callback updates as one publication.
 // Its geometry probe never prepares or promotes a native presentation ticket.
 func (s *Session) DispatchInteraction(e Event) (result InteractionResult, err error) {
+	if e.Kind == InvokeCommand || e.Kind == Accept || e.Kind == Cancel || e.Kind == Close {
+		return s.dispatchCommand(e)
+	}
 	result = InteractionResult{Sequence: e.Sequence, Status: "rejected", Domain: DomainNotCalled}
 	if s.interacting {
 		return result, fault("reentrant-interaction", "Interaction dispatch is already active")
@@ -137,7 +144,7 @@ func (s *Session) DispatchInteraction(e Event) (result InteractionResult, err er
 	if s.closed || s.Revision != e.ModelRevision || s.StateRevision != e.StateRevision {
 		return result, fault("stale-event", "State changed during interaction probe")
 	}
-	captured := s.Widgets()
+	captured := s.captureControls()
 	s.sequence = e.Sequence
 	s.StateRevision++
 	baseline := s.StateRevision
@@ -162,6 +169,9 @@ func (s *Session) DispatchInteraction(e Event) (result InteractionResult, err er
 		}
 		return result, err
 	}
+	if reply.Accept != nil {
+		return fail(fault("interaction-reply", "Accept is only valid for dialog acceptance"))
+	}
 	if callErr != nil {
 		return fail(callErr)
 	}
@@ -171,14 +181,21 @@ func (s *Session) DispatchInteraction(e Event) (result InteractionResult, err er
 	if s.closed || s.Revision != e.ModelRevision || s.StateRevision != baseline {
 		return fail(fault("stale-result", "State changed while callback executed"))
 	}
-	targets := map[Handle]Widget{}
-	for _, w := range captured {
-		targets[w.Handle] = w
-	}
+
 	for _, u := range reply.Updates {
-		old, ok := targets[u.Handle]
-		live, valid := s.Widget(u.Handle.Path)
-		if !ok || !valid || live.Handle != old.Handle || live.ValueRevision != old.ValueRevision || live.DraftRevision != old.DraftRevision {
+		if u.Handle == e.Handle {
+			return fail(fault("reserved-update", "Reply overlaps pane owner"))
+		}
+		if tabs := s.tabs[e.Handle.Path]; tabs != nil {
+			for _, page := range tabs.Pages {
+				if u.Handle == page.Handle {
+					return fail(fault("reserved-update", "Reply overlaps activation pages"))
+				}
+			}
+		}
+		old, ok := captured[u.Handle]
+		live := s.currentControl(u.Handle.Path)
+		if !ok || live == nil || live.Handle != old.Handle || live.ValueRevision != old.ValueRevision || live.DraftRevision != old.DraftRevision {
 			return fail(fault("stale-result", "Update target was not captured or changed"))
 		}
 	}

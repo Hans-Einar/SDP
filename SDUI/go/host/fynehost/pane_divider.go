@@ -12,6 +12,7 @@ import (
 // Fyne Split to reclamp minima or mutate its own independent proportion.
 type paneDivider struct {
 	widget.BaseWidget
+	shift                            bool
 	axis                             string
 	proportion, lower, upper, usable float64
 	collapsed                        bool
@@ -19,6 +20,8 @@ type paneDivider struct {
 	request                          func(string, float64)
 	focus                            func()
 	focusCanvas                      func()
+	shortcut                         func(fyne.Shortcut)
+	escape                           func()
 }
 
 func newPaneDivider() *paneDivider { d := &paneDivider{}; d.ExtendBaseWidget(d); return d }
@@ -35,7 +38,7 @@ func (d *paneDivider) FocusGained() {
 	}
 	d.Refresh()
 }
-func (d *paneDivider) FocusLost()     { d.focused = false; d.Refresh() }
+func (d *paneDivider) FocusLost()     { d.shift = false; d.focused = false; d.Refresh() }
 func (d *paneDivider) TypedRune(rune) {}
 func (d *paneDivider) Tapped(*fyne.PointEvent) {
 	if !d.disabled && d.focusCanvas != nil {
@@ -44,6 +47,13 @@ func (d *paneDivider) Tapped(*fyne.PointEvent) {
 }
 func (d *paneDivider) TypedKey(e *fyne.KeyEvent) {
 	if d.disabled || d.request == nil {
+		return
+	}
+	if commandKeyEvent(e, d.shift, false, d.shortcut) {
+		return
+	}
+	if e.Name == fyne.KeyEscape && d.escape != nil {
+		d.escape()
 		return
 	}
 	switch e.Name {
@@ -72,14 +82,21 @@ func (d *paneDivider) TypedKey(e *fyne.KeyEvent) {
 	}
 }
 func (d *paneDivider) TypedShortcut(s fyne.Shortcut) {
-	key, ok := s.(*desktop.CustomShortcut)
-	if !ok || key.Modifier != fyne.KeyModifierControl || d.disabled || d.request == nil {
+	if d.disabled {
 		return
 	}
-	if key.KeyName == fyne.KeyHome {
-		d.request("collapse-first", 0)
-	} else if key.KeyName == fyne.KeyEnd {
-		d.request("collapse-second", 0)
+	if key, ok := s.(*desktop.CustomShortcut); ok && key.Modifier == fyne.KeyModifierControl && d.request != nil {
+		if key.KeyName == fyne.KeyHome {
+			d.request("collapse-first", 0)
+			return
+		}
+		if key.KeyName == fyne.KeyEnd {
+			d.request("collapse-second", 0)
+			return
+		}
+	}
+	if d.shortcut != nil {
+		d.shortcut(s)
 	}
 }
 func (d *paneDivider) Dragged(e *fyne.DragEvent) {
@@ -118,4 +135,15 @@ func (r *dividerRenderer) Refresh() {
 		r.rect.FillColor = color.NRGBA{30, 100, 220, 255}
 	}
 	r.rect.Refresh()
+}
+
+func (d *paneDivider) KeyDown(e *fyne.KeyEvent) {
+	if shiftKey(e) {
+		d.shift = true
+	}
+}
+func (d *paneDivider) KeyUp(e *fyne.KeyEvent) {
+	if shiftKey(e) {
+		d.shift = false
+	}
 }

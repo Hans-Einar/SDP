@@ -18,6 +18,7 @@ import (
 // scroll state is authoritative: all input goes to the published bundle owner.
 type CollectionControl struct {
 	disabled         bool
+	shift            bool
 	scrollX, scrollY bool
 	dragAxis         string
 	dragGrab         float64
@@ -63,7 +64,7 @@ func (c *CollectionControl) FocusGained() {
 	c.owner.focusCollection(c)
 	c.Refresh()
 }
-func (c *CollectionControl) FocusLost() { c.focused = false; c.Refresh() }
+func (c *CollectionControl) FocusLost() { c.shift = false; c.focused = false; c.Refresh() }
 func (c *CollectionControl) TypedRune(r rune) {
 	if (r == 'r' || r == 'R') && c.live() {
 		c.owner.recoverCollection(c)
@@ -71,12 +72,19 @@ func (c *CollectionControl) TypedRune(r rune) {
 }
 func (c *CollectionControl) TypedKey(e *fyne.KeyEvent) {
 	if c.live() {
+		if commandKeyEvent(e, c.shift, e.Name == fyne.KeyR, func(s fyne.Shortcut) { c.bundle.routeShortcut(c.bundle.canvasFor(c.path), s) }) {
+			return
+		}
+		if e.Name == fyne.KeyName("Menu") {
+			c.bundle.openContext(c.path, c.state.Focused, fyne.CurrentApp().Driver().AbsolutePositionForObject(c))
+			return
+		}
 		c.owner.collectionKey(c, e.Name)
 	}
 }
 func (c *CollectionControl) Scrolled(e *fyne.ScrollEvent) {
 	if c.live() {
-		c.owner.scroll(c.viewport.Rect.X+float64(e.Position.X), c.viewport.Rect.Y-rowHeight(c.font)+float64(e.Position.Y), -float64(e.Scrolled.DX), -float64(e.Scrolled.DY))
+		c.owner.scrollIn(c.path, c.viewport.Rect.X+float64(e.Position.X), c.viewport.Rect.Y-rowHeight(c.font)+float64(e.Position.Y), -float64(e.Scrolled.DX), -float64(e.Scrolled.DY))
 	}
 }
 func (c *CollectionControl) rowAt(p fyne.Position) (collectionRow, bool) {
@@ -99,7 +107,20 @@ func (c *CollectionControl) rowAt(p fyne.Position) (collectionRow, bool) {
 	}
 	return collectionRow{}, false
 }
-func (c *CollectionControl) Tapped(e *fyne.PointEvent)       { c.tap(e, false) }
+func (c *CollectionControl) Tapped(e *fyne.PointEvent) { c.tap(e, false) }
+func (c *CollectionControl) TappedSecondary(e *fyne.PointEvent) {
+	if !c.live() {
+		return
+	}
+	id := ui.ItemID("")
+	if row, ok := c.rowAt(e.Position); ok {
+		if row.Status || row.Item.Kind != ui.Row {
+			return
+		}
+		id = row.Item.ID
+	}
+	c.bundle.openContext(c.path, id, e.AbsolutePosition)
+}
 func (c *CollectionControl) DoubleTapped(e *fyne.PointEvent) { c.tap(e, true) }
 func (c *CollectionControl) tap(e *fyne.PointEvent, double bool) {
 	if !c.live() {
@@ -109,7 +130,9 @@ func (c *CollectionControl) tap(e *fyne.PointEvent, double bool) {
 	if !ok {
 		return
 	}
-	c.owner.canvas.Focus(c)
+	if canvas := c.bundle.canvasFor(c.path); canvas != nil {
+		canvas.Focus(c)
+	}
 	if r.Status {
 		if r.Recovery {
 			c.owner.collectionEvent(c, r.Parent, ui.Retry)
@@ -178,7 +201,11 @@ func (c *CollectionControl) Disable()       { c.disabled = true }
 func (c *CollectionControl) Enable()        { c.disabled = false }
 func (c *CollectionControl) TypedShortcut(s fyne.Shortcut) {
 	key, ok := s.(*desktop.CustomShortcut)
-	if !ok || key.Modifier != fyne.KeyModifierAlt || !c.live() {
+	if !c.live() {
+		return
+	}
+	if !ok || key.Modifier != fyne.KeyModifierAlt {
+		c.bundle.routeShortcut(c.bundle.canvasFor(c.path), s)
 		return
 	}
 	dx, dy := 0.0, 0.0
@@ -193,9 +220,10 @@ func (c *CollectionControl) TypedShortcut(s fyne.Shortcut) {
 	case fyne.KeyDown:
 		dy = step
 	default:
+		c.bundle.routeShortcut(c.bundle.canvasFor(c.path), s)
 		return
 	}
-	c.owner.scroll(c.viewport.Clip.X+c.viewport.Clip.W/2, c.viewport.Clip.Y+c.viewport.Clip.H/2, dx, dy)
+	c.owner.scrollIn(c.path, c.viewport.Clip.X+c.viewport.Clip.W/2, c.viewport.Clip.Y+c.viewport.Clip.H/2, dx, dy)
 }
 func thumbLength(view, content float64) float64 {
 	return math.Min(view, math.Max(15, view*view/math.Max(1, content)))
@@ -281,4 +309,15 @@ func (r *collectionRenderer) Refresh() {
 	}
 	r.box.Objects = objects
 	r.box.Refresh()
+}
+
+func (c *CollectionControl) KeyDown(e *fyne.KeyEvent) {
+	if shiftKey(e) {
+		c.shift = true
+	}
+}
+func (c *CollectionControl) KeyUp(e *fyne.KeyEvent) {
+	if shiftKey(e) {
+		c.shift = false
+	}
 }

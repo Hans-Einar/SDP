@@ -14,7 +14,7 @@ func (e *Engine) contents(n *parser.Instance, inner, ancestor Size, font float64
 	top, bottom, maxW := 0., 0., 0.
 	for _, role := range []string{"header", "footer"} {
 		c := n.Region(role)
-		if c == nil || !visible(c) {
+		if c == nil || !inFlow(c) {
 			continue
 		}
 		s, err := e.desired(c, inner, inner, assigned{x: !explicit(c, "x")}, font)
@@ -44,7 +44,7 @@ func (e *Engine) contents(n *parser.Instance, inner, ancestor Size, font float64
 	for _, row := range rows {
 		v := []*parser.Instance{}
 		for _, c := range row {
-			if visible(c) {
+			if inFlow(c) {
 				v = append(v, c)
 			}
 		}

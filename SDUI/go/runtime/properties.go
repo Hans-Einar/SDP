@@ -43,9 +43,22 @@ func (s *Session) applyCandidate(revision, batch uint64, updates []Update) (*Ses
 			next[u.Handle.Path] = w
 		}
 		switch u.Property {
+		case Checked:
+			c := s.commands[u.Handle.Path]
+			if c == nil || !c.Toggle || !validValue(u.Value, Boolean) {
+				return nil, fault("property-type", "Checked requires toggle command and Boolean")
+			}
 		case Label:
+			if u.Handle.Kind == "item" || u.Handle.Kind == "separator" {
+				return nil, fault("property", "Menu structural item has no label property")
+			}
 			if !validValue(u.Value, String) {
 				return nil, fault("property-type", "Label requires string")
+			}
+			if s.commands[u.Handle.Path] != nil || s.presentations[u.Handle.Path] != nil || s.aux[u.Handle.Path] != nil {
+				if !utf8.ValidString(u.Value.Text) || strings.TrimSpace(u.Value.Text) == "" {
+					return nil, fault("property-type", "Interaction label must be nonempty UTF-8")
+				}
 			}
 			if s.panes[u.Handle.Path] != nil {
 				if u.Handle.Kind == "split" {
@@ -78,7 +91,7 @@ func (s *Session) applyCandidate(revision, batch uint64, updates []Update) (*Ses
 			if !validValue(u.Value, Boolean) {
 				return nil, fault("property-type", "Boolean property required")
 			}
-			if len(s.panes) == 0 && u.Value.Bool && (u.Property == Enabled && !w.ancestorEnabled || u.Property == Visible && !w.ancestorVisible) {
+			if len(s.panes) == 0 && len(s.commands) == 0 && len(s.aux) == 0 && u.Value.Bool && (u.Property == Enabled && !w.ancestorEnabled || u.Property == Visible && !w.ancestorVisible) {
 				return nil, fault("inactive-ancestor", w.Handle.Path)
 			}
 			if u.Property == Enabled {
@@ -95,10 +108,12 @@ func (s *Session) applyCandidate(revision, batch uint64, updates []Update) (*Ses
 	for path, w := range next {
 		if candidate.panes[path] != nil {
 			candidate.panes[path] = w
+		} else if candidate.aux[path] != nil {
+			candidate.aux[path] = w
 		} else {
 			candidate.widgets[path] = w
 		}
-		if len(candidate.panes) > 0 {
+		if len(candidate.panes) > 0 || len(candidate.commands) > 0 || len(candidate.aux) > 0 {
 			a := candidate.intent[w.InstancePath]
 			if seen[path+"/"+string(Enabled)] {
 				a.enabled = w.Enabled
@@ -117,6 +132,14 @@ func (s *Session) applyCandidate(revision, batch uint64, updates []Update) (*Ses
 			}
 		}
 	}
+	for _, u := range updates {
+		if u.Property == Checked {
+			candidate.commands[u.Handle.Path].Checked = u.Value.Bool
+		}
+	}
+	if err := candidate.validateExclusive(); err != nil {
+		return nil, err
+	}
 	candidate.BatchRevision = batch
 	return candidate, nil
 }
@@ -124,7 +147,10 @@ func (s *Session) applyCandidate(revision, batch uint64, updates []Update) (*Ses
 func (s *Session) SnapshotRoot() *parser.Instance {
 	root := clone(s.root)
 	root.Walk(func(n *parser.Instance) {
-		if len(s.panes) > 0 {
+		if n.Widget == "separator" {
+			return
+		}
+		if len(s.panes) > 0 || len(s.aux) > 0 || len(s.commands) > 0 {
 			if a, ok := s.active[n.Path]; ok {
 				n.Layout["enabled"] = a.enabled
 				n.Layout["visible"] = a.visible
@@ -144,7 +170,10 @@ func (s *Session) SnapshotRoot() *parser.Instance {
 			key = "text"
 			n.Arguments["value"] = parser.Literal{Kind: "string", Value: w.Draft, Span: n.Span}
 		}
-		if w.Handle.Kind != "split" {
+		if w.Handle.Kind != "split" && w.Handle.Kind != "item" && w.Handle.Kind != "separator" {
+			if w.Handle.Kind == "button" && s.presentations[w.Handle.Path] != nil && s.presentations[w.Handle.Path].Command != w.Handle {
+				return
+			}
 			n.Arguments[key] = parser.Literal{Kind: "string", Value: w.Label, Span: n.Span}
 		}
 	})

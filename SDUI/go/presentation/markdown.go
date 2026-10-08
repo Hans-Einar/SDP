@@ -51,6 +51,9 @@ func Markdown(root *parser.Instance, columns int) (string, error) {
 				}
 				text = "**SVG placeholder:** " + codeSpan(label)
 			}
+			if interactionDescription(n) {
+				text = "**Declaration:** " + codeSpan(interactionText(n))
+			}
 			lines = []string{text}
 		} else {
 			kind := "Group"
@@ -63,6 +66,9 @@ func Markdown(root *parser.Instance, columns int) (string, error) {
 			lines = []string{"**" + kind + ":** " + codeSpan(n.Path), ""}
 			if n.Kind == "composition" {
 				lines = []string{"**Pane declaration:** " + codeSpan(paneText(n)), ""}
+				if interactionDescription(n) {
+					lines = []string{"**Declaration:** " + codeSpan(interactionText(n)), ""}
+				}
 			}
 			region := func(role string) error {
 				if r := n.Region(role); visible(r) {

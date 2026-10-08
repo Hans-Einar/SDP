@@ -73,7 +73,7 @@ func (b *Bundle) connectPanes() {
 			}
 			c.backward = func() {
 				if b.livePane() && b.owner.canvas != nil {
-					b.owner.canvas.FocusPrevious()
+					b.canvasFor(path).FocusPrevious()
 				}
 			}
 		case *paneDivider:
@@ -104,7 +104,7 @@ func (b *Bundle) connectPanes() {
 			}
 			c.focusCanvas = func() {
 				if b.livePane() && b.owner.canvas != nil {
-					b.owner.canvas.Focus(c)
+					b.canvasFor(path).Focus(c)
 				}
 			}
 		}

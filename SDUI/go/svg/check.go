@@ -14,11 +14,34 @@ func Check(root *parser.Instance, options Options) error {
 	if err != nil {
 		return err
 	}
+	entry := root
+	if options.InteractionRoot != nil {
+		if !options.SkipControls {
+			return &parser.Diagnostic{Code: "native-controls", Message: "InteractionRoot requires native SkipControls", Span: root.Span}
+		}
+		entry = options.InteractionRoot
+		if _, err := parser.EffectiveProfile(entry); err != nil {
+			return err
+		}
+		found := false
+		entry.Walk(func(n *parser.Instance) {
+			if n == root {
+				found = true
+			}
+		})
+		if !found {
+			return &parser.Diagnostic{Code: "native-controls", Message: "Canvas root is not part of selected snapshot", Span: root.Span}
+		}
+	}
+	if _, err := parser.ResolveInteractions(entry); err != nil {
+		return err
+	}
 	if !options.SkipControls && len(options.NativeControls) > 0 {
 		return &parser.Diagnostic{Code: "native-controls", Message: "Native control inventory requires SkipControls", Span: root.Span}
 	}
 	used := map[string]bool{}
 	pages := map[*parser.Instance]bool{}
+	menuChildren := map[*parser.Instance]bool{}
 	var invalid error
 	root.Walk(func(n *parser.Instance) {
 		if invalid != nil {
@@ -26,6 +49,52 @@ func Check(root *parser.Instance, options Options) error {
 		}
 		fail := func(code, msg string) {
 			invalid = &parser.Diagnostic{Code: code, Message: n.Path + ": " + msg, Span: n.Span}
+		}
+		if !options.SkipControls && profile == "sdui/0.3" && n.Kind == "widget" && n.Widget == "button" && (n.Argument("icon") != "" || n.Argument("tooltip") != "") {
+			fail("unsupported-interaction-export", "SVG export does not render button icon/tooltip decorations")
+			return
+		}
+		m2 := n.Kind == "composition" && (n.Widget == "menu" || n.Widget == "menuGroup" || n.Widget == "dialog") || n.Kind == "widget" && (n.Widget == "command" || n.Widget == "item" || n.Widget == "separator") || parser.IsCommandButton(n)
+		if m2 {
+			if profile != "sdui/0.3" {
+				fail("export-kind", "M2 requires sdui/0.3")
+				return
+			}
+			if !options.SkipControls {
+				fail("unsupported-interaction-export", "SVG export does not support "+n.Widget)
+				return
+			}
+			switch n.Widget {
+			case "command":
+				return // Nonvisual declaration; strict entry resolution already succeeded.
+			case "item", "separator", "menuGroup":
+				if !menuChildren[n] {
+					fail("native-controls", "Menu child requires enclosing prepared menu adapter")
+					return
+				}
+				if n.Widget == "menuGroup" {
+					for _, row := range n.Rows {
+						for _, child := range row {
+							menuChildren[child] = true
+						}
+					}
+				}
+				return
+			case "menu", "dialog":
+				if options.NativeControls[n.Path] != n.Widget {
+					fail("native-controls", "Missing matching prepared native adapter for "+n.Widget)
+					return
+				}
+				used[n.Path] = true
+				if n.Widget == "menu" {
+					for _, row := range n.Rows {
+						for _, child := range row {
+							menuChildren[child] = true
+						}
+					}
+				}
+				return
+			}
 		}
 		switch n.Kind {
 		case "frame", "group", "markdown":

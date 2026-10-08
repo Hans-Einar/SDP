@@ -100,11 +100,11 @@ See the [runnable real SDL collection fixture](../../../../SDL/go/examples/colle
 
 ## M1 panes and accepted preparation
 
-DocumentHost admits tabs/page/split using `PaneCapabilities`; legacy RuntimeView
-and standalone prototype callers retain their narrower capabilities. Symbolic page
-icons currently reject with the missing `provider icon/1` diagnostic, including
-hidden declarations. No implicit text-only fallback or M2 menu/dialog/command support
-is advertised.
+DocumentHost admits tabs/page/split and the selected M2 controls using
+`CommandCapabilities`; legacy RuntimeView and standalone prototype callers retain
+their narrower capabilities. Symbolic icons require `DocumentRequest.Icons`,
+including icons in hidden/closed declarations. Missing or unsupported resources
+reject preparation. Prepared bytes retain the native theme-color contract.
 
 The runtime presentation gate probes geometry only. Finalized snapshots then enter
 `PresentationPrepare`; its private ticket owns the native background/object list.
@@ -135,3 +135,66 @@ These are inspection projections, not another model mutation API.
 See the [real SDL panes fixture](../../../../SDL/go/examples/panes/README.md),
 [shared pane layout API](../../../../SDUI/docs/wci2-layout-api.md) and
 [reviewed pane contract](../../../../SDP/04--Design/SDUI/Widgets/Panes-and-commands.md).
+
+
+## M2 commands and auxiliary surfaces
+
+Use `DocumentRequest.Icons` for symbolic resources and `Bind` for typed command
+and dialog interaction handlers. Connected admission rejects ordinary commands
+without a handler. Prototype mode reports unbound declarations; toggle-only and
+built-in effects remain local runtime operations. Plain buttons retain legacy
+Activate dispatch, including icon/tooltip-only decoration. Explicit command fields
+select exactly one `DispatchInteraction` route shared by button/menu/key.
+
+Native buttons project accepted checked/exclusive state; tooltips use the current
+canvas content without adding an input-stealing overlay. Resource bytes are owned
+by the bundle. Native key normalization rejects duplicate/reserved keys before
+publication, including hidden declarations. Fyne sends shortcuts directly to
+focused Shortcutable controls and sends Shift-only/function keys through TypedKey;
+the bounded adapters forward unhandled declared keys to the same runtime command
+capture. Entry editing and collection/divider navigation take precedence.
+
+Menus retain Fyne Menu/PopUpMenu items and their native hover/scroll tree. A public
+pointer/keyboard wrapper authorizes only the current synchronous selection input.
+Dismiss hides/removes that opening before Action, which may claim its capture once.
+Escape/outside revoke immediately; late dismiss cannot remove a newer overlay.
+Caller menu models are cloned before decorating Actions. Context capture preserves
+selection and rejects stale item/widget/state revisions through runtime validation.
+
+Modal surfaces use CustomWithoutButtons with ordinary composed controls and a
+bounded, visible status line. Shared geometry describes the content; native chrome
+is measured separately, including prospective parent resize. Empty dialogs have
+one native focus stop for the dialog itself. Nonmodal surfaces use `app.NewWindow`
+and independent canvases; the first outer size includes actual measured chrome,
+then accepted content resize is authoritative. No OS transient/always-on-top claim
+is made. RequestFocus is used for explicit opening/child gestures and remains
+platform-dependent (Wayland may ignore it).
+
+The application composition root must call `NativeParentHidden()` before hiding
+its owner and `NativeParentClosed()` before closing it. Both return errors and
+revoke published descendant generations before native teardown. Host Close/reload
+also revoke children. WM/decoration close is native owner loss: its Close interceptor calls exact
+`RevokeSurface(target, "parent-closed")` before teardown, including modal descendants.
+Its receipts have reason `parent-closed` and sequence zero, preserve any prior domain
+outcome and never invoke Accept. A child modal or failing presentation gate cannot
+veto this owner teardown. The idempotent OnClosed fallback uses the same classification
+for direct Window.Close. Source Close/Cancel remain user interactions with the
+triggering sequence and modal guards; they are not relabeled as native teardown. Publication is acknowledged only after native Show;
+abandoned preparation emits no terminal result. `OnDialogResult` observes each
+published opening's terminal outcome once; observer panic is isolated, and an
+observer may reenter without replaying a drained result. It is not an Accept handler.
+
+`InteractionError` wraps the original error with status/domain/sequence and preserves
+errors.Is/As. Failed or blocked dialog acceptance keeps drafts and a visible compact
+status; full outcome/message remains in runtime. Cancel/Close remain usable.
+
+Inspect adds actual canvas-local controls, visible menu rows and surface geometry.
+A control's `canvas` is the literal `"main"` for the main canvas. A nonmodal
+dialog path identifies its independent canvas; a modal uses its actual parent
+canvas ID. Consult visibility/clip and actual window title before native
+input. Inspect reports geometry; it is not a paint-completion acknowledgement.
+
+See the [real SDL commands fixture](../../../../SDL/go/examples/commands/README.md),
+[layout canvas contract](../../../docs/wci2-m2-layout-api.md) and
+[runtime M2 contract](../../runtime/README.md). Coordinator-owned native acceptance
+and independent review remain separate from these implementation tests.

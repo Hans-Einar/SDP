@@ -13,8 +13,8 @@ var panes = map[string]widgetSchema{
 
 func validatePaneSource(n *Node, profile string) {
 	_, pane := panes[val(n.Widget)]
-	if n.Kind == "composition" && (profile != "sdui/0.3" || !pane) {
-		fail("composition-kind", "Only 0.3 tabs/page/split accept bodies", n.Span)
+	if n.Kind == "composition" && (profile != "sdui/0.3" || !pane && !member(val(n.Widget), "menu menuGroup dialog")) {
+		fail("composition-kind", "Unsupported composition body", n.Span)
 	}
 	if !pane {
 		return
@@ -99,6 +99,9 @@ func PaneChildren(owner *Instance) ([]PaneChild, error) {
 		}
 		if owner.Widget == "tabs" && (child.Kind != "composition" || child.Widget != "page") {
 			return bad(child.Path + ": tabs accepts only page children")
+		}
+		if owner.Widget == "split" && IsAuxiliary(child) {
+			return bad(child.Path + ": split children must be visual")
 		}
 		seen[id] = true
 		children = append(children, PaneChild{ID: id, Node: child})

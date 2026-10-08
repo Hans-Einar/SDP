@@ -63,3 +63,16 @@ func PaneCapabilities() preparation.Capabilities {
 		{Dimension: preparation.Host, ID: "tab-activate", Major: 1},
 	}...)
 }
+
+// CommandCapabilities is used only by the document host with M2 native adapters.
+// An actual supplied icon resolver adds provider icon separately.
+func CommandCapabilities() preparation.Capabilities {
+	caps := PaneCapabilities()
+	for _, id := range []string{"command", "menu", "dialog", "button-toggle"} {
+		caps = append(caps, preparation.Capability{Dimension: preparation.Widget, ID: id, Major: 1}, preparation.Capability{Dimension: preparation.Host, ID: id, Major: 1})
+	}
+	for _, id := range []string{"command-key", "context-target", "tooltip", "dialog-modal", "dialog-nonmodal", "dialog-result"} {
+		caps = append(caps, preparation.Capability{Dimension: preparation.Host, ID: id, Major: 1})
+	}
+	return caps
+}

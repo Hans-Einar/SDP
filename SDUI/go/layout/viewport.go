@@ -32,17 +32,15 @@ type SnapshotLayout struct {
 // measurer must capture that same snapshot, rather than read a live Session.
 // No state or native resource is published by this method.
 func (e *Engine) LayoutSnapshot(snapshot runtime.Snapshot, size Size) (*SnapshotLayout, error) {
-	run := &Engine{Measure: e.Measure, requested: snapshot.Viewports, viewports: map[string]Viewport{}, tabState: snapshot.Tabs, splitState: snapshot.Splits}
-	for _, offset := range snapshot.Viewports {
-		if !validOffset(offset) {
-			return nil, &parser.Diagnostic{Code: "viewport-offset", Message: "Viewport offsets must be finite and nonnegative"}
-		}
+	run := e.snapshotRun(snapshot)
+	if err := checkOffsets(snapshot); err != nil {
+		return nil, err
 	}
 	root, err := run.layout(snapshot.Root, size)
 	if err != nil {
 		return nil, err
 	}
-	return &SnapshotLayout{Root: root, Viewports: run.viewports, Tabs: run.tabs, Splits: run.splits}, nil
+	return snapshotResult(run, root), nil
 }
 
 // PresentationState returns detached active geometry for the one runtime gate.
@@ -86,12 +84,12 @@ func validateScrollOwners(n *parser.Instance) error {
 	switch n.Kind {
 	case "frame", "group", "markdown":
 	case "composition":
-		if n.Widget != "tabs" && n.Widget != "page" && n.Widget != "split" {
+		if n.Widget != "tabs" && n.Widget != "page" && n.Widget != "split" && n.Widget != "menu" && n.Widget != "menuGroup" && n.Widget != "dialog" {
 			return diag(n, "unsupported-kind", "Unsupported pane composition")
 		}
 	case "widget":
 		switch n.Widget {
-		case "button", "input", "svg", "tree", "list":
+		case "button", "input", "svg", "tree", "list", "command", "item", "separator":
 		default:
 			return diag(n, "unsupported-widget", "Unsupported widget kind "+n.Widget)
 		}

@@ -116,6 +116,9 @@ func (h *DocumentHost) collectionKey(c *CollectionControl, key fyne.KeyName) {
 	}
 	switch key {
 	case fyne.KeyEscape:
+		if c.state.Request == nil && c.bundle.escapeSurface(c.path) {
+			return
+		}
 		h.status(h.Mutate(func(s *ui.Session) error { return s.CancelLoad(c.state.Handle) }))
 	case fyne.KeyDown:
 		if idx < len(rows)-1 {
@@ -130,9 +133,9 @@ func (h *DocumentHost) collectionKey(c *CollectionControl, key fyne.KeyName) {
 	case fyne.KeyEnd:
 		move(len(rows) - 1)
 	case fyne.KeyPageDown:
-		h.scroll(c.viewport.Clip.X+c.viewport.Clip.W/2, c.viewport.Clip.Y+c.viewport.Clip.H/2, 0, c.viewport.Clip.H*.9)
+		h.scrollIn(c.path, c.viewport.Clip.X+c.viewport.Clip.W/2, c.viewport.Clip.Y+c.viewport.Clip.H/2, 0, c.viewport.Clip.H*.9)
 	case fyne.KeyPageUp:
-		h.scroll(c.viewport.Clip.X+c.viewport.Clip.W/2, c.viewport.Clip.Y+c.viewport.Clip.H/2, 0, -c.viewport.Clip.H*.9)
+		h.scrollIn(c.path, c.viewport.Clip.X+c.viewport.Clip.W/2, c.viewport.Clip.Y+c.viewport.Clip.H/2, 0, -c.viewport.Clip.H*.9)
 	case fyne.KeySpace:
 		if idx >= 0 && rows[idx].Item.Kind == ui.Row {
 			h.collectionEvent(c, rows[idx].Item.ID, ui.Select)
@@ -189,12 +192,13 @@ func (h *DocumentHost) setViewport(path string, offset ui.ViewportState) {
 	revision := b.Session.Revision
 	h.status(h.Mutate(func(s *ui.Session) error { return s.SetViewport(handle, revision, offset) }))
 }
-func (h *DocumentHost) scroll(x, y, dx, dy float64) {
+func (h *DocumentHost) scroll(x, y, dx, dy float64) { h.scrollIn("", x, y, dx, dy) }
+func (h *DocumentHost) scrollIn(path string, x, y, dx, dy float64) {
 	b := h.current
 	if b == nil || b.Geometry() == nil {
 		return
 	}
-	offsets, _, e := b.Geometry().RouteScroll(x, y, dx, dy)
+	offsets, _, e := b.geometryFor(path).RouteScroll(x, y, dx, dy)
 	if e != nil {
 		h.status(e)
 		return
@@ -216,7 +220,7 @@ func (h *DocumentHost) ensureWidget(path string) {
 	if b == nil || b.Geometry() == nil {
 		return
 	}
-	b.Geometry().Root.Walk(func(box *layout.Box) {
+	b.geometryFor(path).Root.Walk(func(box *layout.Box) {
 		if box.Path == path {
 			h.ensure(path, box.Rect)
 		}
@@ -227,7 +231,7 @@ func (h *DocumentHost) ensure(path string, rect layout.Rect) {
 	if b == nil {
 		return
 	}
-	offsets, e := b.Geometry().EnsureVisible(path, rect)
+	offsets, e := b.geometryFor(path).EnsureVisible(path, rect)
 	if e != nil {
 		h.status(e)
 		return

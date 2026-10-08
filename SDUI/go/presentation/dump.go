@@ -71,6 +71,9 @@ func widths(items []*parser.Instance, available int) ([]int, error) {
 	return sizes, nil
 }
 func widgetText(n *parser.Instance) string {
+	if interactionDescription(n) {
+		return "[" + interactionText(n) + "]"
+	}
 	switch n.Widget {
 	case "button":
 		return "[ " + n.Argument("label") + " ]"
@@ -200,8 +203,12 @@ func Dump(root *parser.Instance, columns int) (string, error) {
 	panes := []string{}
 	var paneErr error
 	root.Walk(func(n *parser.Instance) {
-		if paneErr == nil && n.Kind == "composition" {
-			for _, line := range wrapLine(paneText(n), columns) {
+		if paneErr == nil && (n.Kind == "composition" || interactionDescription(n)) {
+			description := paneText(n)
+			if interactionDescription(n) {
+				description = interactionText(n)
+			}
+			for _, line := range wrapLine(description, columns) {
 				budget += CellWidth(line)
 				if budget > MaxCells {
 					paneErr = diagnostic("dump-limit", "Pane description exceeds cell budget", n)

@@ -2,7 +2,8 @@
 
 The shared `go/layout` package owns measured outer geometry. Its original G2
 behavior remains the SDUI 0.2 path; WCI1 adds bounded SDUI 0.3 snapshot/viewports,
-and WCI2-M1 adds measured tabs/page/split geometry. The [0.3 source profile](profile-0.3.md) and
+WCI2-M1 adds measured tabs/page/split geometry; WCI2-M2 adds native bar-menu
+measurement and independent surface canvases. The [0.3 source profile](profile-0.3.md) and
 [WCI1 collection contract](../../SDP/04--Design/SDUI/Widgets/Collections.md) distinguish
 source acceptance, runtime state, native integration and their acceptance evidence.
 
@@ -218,6 +219,13 @@ revelation and no native chrome fallback. Real runtime PresentationGate tests co
 retained inactive offsets/clamp on reveal, strict ratio rejection, collapsed
 resize, failed restore preserving state/focus and successful restore clamps.
 
+M2 tests add auxiliary-flow exclusion, native bar-menu minima, separate canvas
+coordinates/ancestry, aggregate viewport/split results, retained nonmodal size on
+parent resize and invalid-canvas rejection before final-ticket preparation or
+publication. Native SVG background checks require the exact full snapshot context
+for out-of-subtree references; missing/foreign context and missing closed adapters
+reject before producing any artifact.
+
 These tests use synthetic collection adapter metrics. They do not prove native
 Fyne painting, row metrics, thumb dragging, external keyboard/pointer input or
 atomic native resource publication. Those WCI1 acceptance obligations remain
@@ -329,5 +337,50 @@ must use that same accepted state through the runtime preparation-ticket boundar
 
 The `Layout` entry point derives initial selection/proportion from normalized source
 when no runtime snapshot is supplied. Live presentation uses `LayoutSnapshot`.
-M1 geometry does not establish native keyboard/drag/focus acceptance or add M2
-command/menu/dialog support. Public pane SVG export remains explicitly unsupported.
+M1 geometry does not establish native keyboard/drag/focus acceptance. Public pane
+SVG export remains explicitly unsupported; M2 geometry is described below.
+
+## WCI2-M2 auxiliary declarations and canvases
+
+The [M2 canvas API](wci2-m2-layout-api.md) specifies the additive signatures.
+Layout uses frontend `parser.IsAuxiliary` to exclude nonvisual commands,
+items/separators/groups, context/submenu menus and dialog declarations from parent
+tracks, gaps, minima and relative-dependency checks. This includes open dialogs:
+they have their own canvas. Source declarations remain intact for full-tree
+capability, resource and interaction preflight. A bar menu stays at its source
+position as a leaf; the optional `MenuMeasurer.MeasureMenu(instance,font)` supplies
+its actual positive finite native minimum. Missing/invalid metrics and assigned
+sizes below that minimum reject, including after source max bounds are applied.
+Popup rows remain native-adapter geometry and are not duplicated as ordinary boxes.
+
+`SurfaceSize(snapshot,path,reference)` resolves initial dialog scale/fill/ratio and
+min/max policies against the host-supplied parent content reference (modal) or
+parent host reference (initial nonmodal). It returns natural content-canvas size;
+an empty dimension may be zero. Host combines that result with its concrete content
+adapter minimum and separately accounts for native title/window chrome.
+
+`LayoutCanvases(snapshot,mainSize,surfaceSizes)` requires positive finite accepted
+sizes up to 32768 per axis for every open surface. Unknown size/state paths reject;
+cached sizes for closed declarations are ignored. It returns `CanvasLayout` with
+separate `Main` and `Surfaces` geometry. Each surface root fills its accepted local
+canvas at (0,0); opening size policies are not reapplied during native resize.
+Root padding references the accepted local size, descendants their ordinary finite
+bodies. Source fonts inherit across the declaration tree, while coordinate clips
+and scrolling ancestry restart per canvas. Nested dialogs are excluded from the
+parent surface's body. Existing nonmodal accepted size is independent of main or
+other canvas resize. No root/snapshot/state is rewritten to achieve this separation.
+
+`CanvasLayout.PresentationState()` returns fresh aggregate runtime offset/split
+maps from every active canvas. Normalized paths remain globally unique and the
+whole call retains the layout operation budget. Any failed canvas returns no
+aggregate result. Runtime owns retained closed/inactive offsets, modal input rules
+and publication; the host's final ticket prepares all canvases from the same
+finalized snapshot. Measurement never allocates GUI objects or executes callbacks.
+
+Native background rendering uses each canvas's measured root and a subtree-scoped
+prepared native inventory. `svg.Options.InteractionRoot` must be the exact snapshot
+root consumed by layout; each returned canvas root retains pointer membership in
+that tree. Resolving a dialog subtree as an independent selected entry would lose
+shared-command references outside it. Public M2 SVG remains unsupported. Layout
+tests do not establish actual menu ordering, SDL execution, native window focus,
+modal behavior or lifecycle receipts; those require integrated native evidence.

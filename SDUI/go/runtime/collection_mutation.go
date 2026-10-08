@@ -133,6 +133,9 @@ func (s *Session) SelectItem(t CollectionTarget) error {
 	return s.publish(n)
 }
 func (s *Session) FocusItem(t CollectionTarget) error {
+	if !s.inputAllowed(s.widgets[t.Handle.Path]) {
+		return fault("focus", "Collection is not focusable")
+	}
 	_, x, err := s.interactive(t)
 	if err != nil {
 		return err

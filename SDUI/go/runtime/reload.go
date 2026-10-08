@@ -39,6 +39,19 @@ func (s *Session) Reload(root *parser.Instance) error {
 			n.interactions[path] = s.interactions[path]
 		}
 	}
+	for path, c := range n.commands {
+		if old := s.commands[path]; old != nil && old.Handle == c.Handle && old.Binding == c.Binding {
+			n.interactions[path] = s.interactions[path]
+		}
+	}
+	for path := range n.surfaces {
+		if old := s.aux[path]; old != nil && old.Handle == n.aux[path].Handle && old.Binding == n.aux[path].Binding {
+			n.interactions[path] = s.interactions[path]
+		}
+	}
+	old := s.copyState()
+	_ = old.RevokeSurfaces(Handle{}, "reload")
+	n.dialogResults = copyResults(old.dialogResults)
 	n.presentationCheck = s.presentationCheck
 	n.presentationPrepare = s.presentationPrepare
 	n.check = s.check

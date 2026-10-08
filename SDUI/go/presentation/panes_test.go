@@ -34,7 +34,7 @@ right=[]]];`
 	}
 	// Unsupported future kinds must reject even inside hidden page content.
 	roots["Main"].Rows[0][0].Rows[0][0].Rows[1][0].Rows[0][0].Kind = "composition"
-	roots["Main"].Rows[0][0].Rows[0][0].Rows[1][0].Rows[0][0].Widget = "dialog"
+	roots["Main"].Rows[0][0].Rows[0][0].Rows[1][0].Rows[0][0].Widget = "futurePane"
 	if out, err := Combined(roots["Main"], 160, doc); err == nil || out != "" {
 		t.Fatal("hidden future composition silently accepted", err)
 	}

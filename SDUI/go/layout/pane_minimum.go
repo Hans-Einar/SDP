@@ -20,7 +20,7 @@ func (e *Engine) minimum(n *parser.Instance, ref Size, font float64) (Size, erro
 	if err := e.step(n); err != nil {
 		return Size{}, err
 	}
-	if !visible(n) {
+	if !visible(n) || auxiliary(n) && n != e.surfaceRoot {
 		return Size{}, nil
 	}
 	font = number(n, "font", font)
@@ -76,6 +76,9 @@ func acceleratedMinimum(value, delta, previous, floor float64) float64 {
 }
 
 func (e *Engine) minimumAt(n *parser.Instance, ref, available Size, font float64) (Size, error) {
+	if menuBar(n) {
+		return e.menuMinimum(n, font)
+	}
 	if n.Kind == "widget" || n.Kind == "markdown" {
 		if collection(n) {
 			adapter, ok := e.Measure.(CollectionMeasurer)
@@ -180,7 +183,7 @@ func (e *Engine) rowsMinimum(n *parser.Instance, inner, ancestor Size, font floa
 		mins := make([]Size, 0, len(row))
 		nodes := make([]*parser.Instance, 0, len(row))
 		for _, c := range row {
-			if !visible(c) {
+			if !inFlow(c) {
 				continue
 			}
 			m, err := e.minimum(c, inner, font)
@@ -258,7 +261,7 @@ func (e *Engine) rowsMinimum(n *parser.Instance, inner, ancestor Size, font floa
 	}
 	for _, role := range []string{"header", "footer"} {
 		c := n.Region(role)
-		if c == nil || !visible(c) {
+		if c == nil || !inFlow(c) {
 			continue
 		}
 		m, err := e.minimum(c, inner, font)

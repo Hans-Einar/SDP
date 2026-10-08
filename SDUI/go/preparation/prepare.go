@@ -163,6 +163,11 @@ func Prepare(r Request) (*Candidate, error) {
 			c.Unbound++
 		}
 	}
+	for _, command := range s.Snapshot().Commands {
+		if command.Effect == "" && !command.Toggle && command.Binding.Module == "" {
+			c.Unbound++
+		}
+	}
 	if r.Mode == Connected {
 		if r.Bind == nil {
 			return nil, fmt.Errorf("preparation: connected binding adapter required")
@@ -177,7 +182,7 @@ func Prepare(r Request) (*Candidate, error) {
 		symbols := map[string]bool{}
 		for _, w := range append(s.Widgets(), s.CallbackOwners()...) {
 			if w.Binding.Module != "" {
-				if !(s.HasBinding(w.Handle) || w.Handle.Kind == "tabs" && s.HasInteractionBinding(w.Handle)) {
+				if !(s.HasBinding(w.Handle) || s.HasInteractionBinding(w.Handle)) {
 					return nil, fmt.Errorf("unbound: %s", w.Handle.Path)
 				}
 				symbols[w.Binding.Module+"."+w.Binding.Object] = true
@@ -188,6 +193,11 @@ func Prepare(r Request) (*Candidate, error) {
 			w, ok := s.Widget(target)
 			if !ok || w.Handle.Kind != "input" || !symbols[con.Module+"."+con.Object] {
 				return nil, fmt.Errorf("unbound-handle: %s", target)
+			}
+		}
+		for _, command := range s.Snapshot().Commands {
+			if command.Effect == "" && !command.Toggle && !s.HasInteractionBinding(command.Handle) {
+				return nil, fmt.Errorf("unbound-command: %s", command.Handle.Path)
 			}
 		}
 		c.Unbound = 0

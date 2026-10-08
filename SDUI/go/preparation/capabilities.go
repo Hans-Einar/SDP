@@ -81,7 +81,7 @@ func Check(profile string, root *parser.Instance, supported Capabilities) error 
 				return &Diagnostic{Capability: Capability{Widget, n.Widget, 1}, Path: n.Path, Span: n.Span, Uses: n.Uses}
 			}
 			switch n.Widget {
-			case "tabs", "split":
+			case "tabs", "split", "menu", "dialog":
 				if err := require(n, Widget, n.Widget); err != nil {
 					return err
 				}
@@ -90,6 +90,28 @@ func Check(profile string, root *parser.Instance, supported Capabilities) error 
 				}
 				if n.Widget == "tabs" {
 					if err := require(n, Host, "tab-activate"); err != nil {
+						return err
+					}
+				}
+				if n.Widget == "dialog" {
+					mode := "dialog-modal"
+					if !argumentBool(n, "modal", true) {
+						mode = "dialog-nonmodal"
+					}
+					for _, id := range []string{mode, "dialog-result"} {
+						if err := require(n, Host, id); err != nil {
+							return err
+						}
+					}
+				}
+				if n.Widget == "menu" && n.Argument("mode") == "context" {
+					if err := require(n, Host, "context-target"); err != nil {
+						return err
+					}
+				}
+			case "menuGroup":
+				for _, d := range []Dimension{Widget, Host} {
+					if err := require(n, d, "menu"); err != nil {
 						return err
 					}
 				}
@@ -110,6 +132,13 @@ func Check(profile string, root *parser.Instance, supported Capabilities) error 
 			id := n.Widget
 			switch id {
 			case "button", "input":
+			case "command", "item", "separator":
+				if profile != "sdui/0.3" {
+					return &Diagnostic{Capability: Capability{Widget, id, 1}, Path: n.Path, Span: n.Span, Uses: n.Uses}
+				}
+				if id != "command" {
+					id = "menu"
+				}
 			case "tree", "list":
 				if profile != "sdui/0.3" {
 					return &Diagnostic{Capability: Capability{Widget, id, 1}, Path: n.Path, Span: n.Span, Uses: n.Uses}
@@ -137,6 +166,39 @@ func Check(profile string, root *parser.Instance, supported Capabilities) error 
 			}
 		default:
 			return &Diagnostic{Capability: Capability{Layout, "node:" + n.Kind, 1}, Path: n.Path, Span: n.Span, Uses: n.Uses}
+		}
+		if profile == "sdui/0.3" {
+			if n.Widget == "button" && parser.IsCommandButton(n) {
+				for _, d := range []Dimension{Widget, Host} {
+					if err := require(n, d, "command"); err != nil {
+						return err
+					}
+				}
+			}
+			if argumentBool(n, "toggle", false) {
+				for _, d := range []Dimension{Widget, Host} {
+					if err := require(n, d, "button-toggle"); err != nil {
+						return err
+					}
+				}
+			}
+			for _, requirement := range [][2]string{{"key", "command-key"}, {"tooltip", "tooltip"}} {
+				if n.Argument(requirement[0]) != "" {
+					if err := require(n, Host, requirement[1]); err != nil {
+						return err
+					}
+				}
+			}
+			if context := n.Argument("context"); context != "" && context != "none" {
+				if err := require(n, Host, "context-target"); err != nil {
+					return err
+				}
+			}
+			if n.Argument("icon") != "" {
+				if err := require(n, Provider, "icon"); err != nil {
+					return err
+				}
+			}
 		}
 		for _, axis := range []string{"x", "y"} {
 			if n.Layout["overflow-"+axis] == "scroll" {
@@ -166,4 +228,13 @@ func Check(profile string, root *parser.Instance, supported Capabilities) error 
 		return nil
 	}
 	return walk(root)
+}
+
+func argumentBool(n *parser.Instance, name string, fallback bool) bool {
+	if literal, ok := n.Arguments[name].(parser.Literal); ok {
+		if value, ok := literal.Value.(bool); ok {
+			return value
+		}
+	}
+	return fallback
 }

@@ -23,11 +23,14 @@ type paneHeader struct {
 	focus                    func()
 	enter                    func()
 	backward                 func()
+	escape                   func()
 	shift                    bool
+	shortcut                 func(fyne.Shortcut)
 }
 type headerPage struct {
 	id, label string
 	enabled   bool
+	icon      fyne.Resource
 }
 
 func newPaneHeader() *paneHeader {
@@ -77,7 +80,7 @@ func (h *paneHeader) sync(pages []headerPage, selected string) {
 		h.pages = append([]headerPage(nil), pages...)
 		items := make([]*container.TabItem, len(pages))
 		for i, p := range pages {
-			items[i] = container.NewTabItem(p.label, container.NewWithoutLayout())
+			items[i] = container.NewTabItemWithIcon(p.label, p.icon, container.NewWithoutLayout())
 		}
 		h.tabs.SetItems(items)
 		for i, p := range pages {
@@ -112,10 +115,17 @@ func (h *paneHeader) FocusGained() {
 	}
 	h.Refresh()
 }
-func (h *paneHeader) FocusLost()     { h.focused = false; h.Refresh() }
+func (h *paneHeader) FocusLost()     { h.shift = false; h.focused = false; h.Refresh() }
 func (h *paneHeader) TypedRune(rune) {}
 func (h *paneHeader) TypedKey(e *fyne.KeyEvent) {
 	if h.disabled || h.muted {
+		return
+	}
+	if commandKeyEvent(e, h.shift, false, h.shortcut) {
+		return
+	}
+	if e.Name == fyne.KeyEscape && h.escape != nil {
+		h.escape()
 		return
 	}
 	if e.Name == fyne.KeyTab {

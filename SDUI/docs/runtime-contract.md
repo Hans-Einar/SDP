@@ -1,12 +1,13 @@
 # SDUI ↔ SDL — implemented runtime boundary
 
-Updated 2026-10-08 for the WCI2-M1 implementation candidate. SDUI 0.2 and 0.3 share
+Updated 2026-10-08 for the WCI2-M2 implementation candidate. SDUI 0.2 and 0.3 share
 one Go runtime; SDL action-core 0.1 remains the bounded execution profile. WCI1
 adds typed tree/list identity and collection/provider/viewport state without
 changing 0.2 input values, button activation or the text result port. Native
 integration acceptance is separate from the runtime package's unit/race evidence.
-M1 adds tabs/page/split state and typed page activation while preserving WCI1;
-command/menu/dialog and WCI3 typed-value families are not implemented here.
+M1 adds tabs/page/split state and typed page activation; M2 adds shared commands,
+toggles, menus and modal/nonmodal dialog state. WCI3 typed-value families remain
+outside this implementation.
 
 | Responsibility | Contract / implementation | Evidence boundary |
 | --- | --- | --- |
@@ -114,7 +115,7 @@ Widgets(). CallbackOwners() and BindInteraction expose callback-owning tabs to t
 bridge; page headers do not acquire separate domain bindings. TabPageID and
 TabPreviousPageID require a valid ActivatePage owner/payload and SDL text input.
 The existing explicit text OutputField/setHandle receiver remains unchanged.
-No command selectors, dialog result mode or implicit persistence are introduced.
+M2 selectors/result mode extend this boundary below; no implicit persistence is introduced.
 
 DispatchInteraction validates exact model/state/handle/page identity and sequence.
 ActivatePage carries previous/new stable IDs and the new page handle. Same-page
@@ -200,7 +201,8 @@ protect a user edit made during preparation.
 
 Successor creates a detached Session with the same logical ID, next model revision,
 monotonic generation/request watermarks and the consumed event sequence. Named
-compatible widgets retain values/drafts/focus. Collections with the same compatible
+compatible main/page widgets retain values/drafts/focus. Dialog inputs retain
+accepted values but discard unaccepted drafts; every successor surface starts closed. Collections with the same compatible
 handle/kind/provider ID/epoch retain data, selection, focus, expansion and stable
 status; collection generation advances and no request token survives. Loading
 becomes unloaded without resetting the root auto flag. Other bindings use validated
@@ -231,8 +233,8 @@ second execution implementation.
 ## Bounds and earlier proposals
 
 WCI1 covers bounded tree/list data, navigation, lazy recovery and viewports;
-WCI2-M1 adds tabs/pages/splits and typed page activation. This boundary makes
-no claim for command/transient families, typed numeric controls, multiline input,
+WCI2 adds tabs/pages/splits, typed page activation, commands/toggles, menus and
+dialog acceptance/lifetime. This boundary makes no claim for typed numeric controls, multiline input,
 a general collection query language, collection results in SDL or an installed
 external consumer upgrade. Existing text/composition exports remain structural;
 collection SVG export explicitly rejects unsupported interactive collection output.
@@ -243,3 +245,68 @@ simulation, not a machine/Ponsse runtime, distributed transport or exactly-once
 guarantee. There is no C ABI, FOX pointer or automatic SDL loader. The historical
 SDUI-RUNTIME-001 proposal remains in Git before R2-M2; these current package/profile
 contracts supersede its proposed payloads and methods.
+
+## M2 command and dialog bridge
+
+Basic legacy buttons keep Activate/Handler. Explicit behavioral M2 fields opt in
+to a canonical command and InvokeCommand/InteractionHandler; icon/tooltip alone
+keep legacy behavior. Shared button/menu/key presentations use one canonical
+binding. Widgets retains real controls; CallbackOwners adds commands and dialogs,
+with promoted buttons' legacy Binding cleared to avoid double installation.
+The strict selected-root frontend resolver supplies command/target/dialog/scope
+identities. Runtime DialogField/DialogFields permit closed-dialog preflight.
+
+| Additional bridge selector | Captured source | SDL destination |
+| --- | --- | --- |
+| CommandContextItemID | CommandInvocation.Context.Item.ItemID | text |
+| CommandChecked | Proposed CommandInvocation.Checked | boolean |
+| DialogFieldValue plus FieldPath | Exact field in DialogRequest.Fields | text |
+
+FieldPath is a named relative input owned by the callback dialog, including hidden
+page fields and excluding nested dialogs. Accept extraction never reads live drafts
+after capture. Existing CollectionItemID, TabPageID, TabPreviousPageID and legacy
+Event sources retain their behavior. Unknown selectors and mixed sources reject.
+
+Plan.ResultMode defaults to TextResult, preserving OutputField/setHandle delivery.
+DialogAcceptResult instead requires a boolean AcceptField and text MessageField;
+it forbids OutputField/setHandle/RevisionField/RevisionContext. It returns the typed
+AcceptDecision and zero widget Updates. Admission validates the actual registered
+Go signature and field paths without execution. Runtime checks returned decisions,
+UTF-8/32768-byte message limits, capture identity and the combined 256-field/update
+budget. A known excessive capture rejects before calling; unknowable oversized Go
+reply Updates reject afterwards without erasing the executed domain outcome.
+
+Reply.Domain is read even on error. Succeeded remains succeeded through later
+engine/receiver/revision/geometry/resource conflicts; empty/malformed called
+outcomes are unknown. False Accept is rejected/rejected, local true acceptance is
+committed/not-called, called true acceptance requires succeeded. Succeeded UI
+conflict and unknown execution block Accept for the same opening. Editing/Revert
+and token-based Cancel/Close remain available; no automatic retry or ResolveAccept.
+Cancel/Close never call the acceptance adapter or undo a child's prior Commit.
+
+Snapshot adds detached Commands, Presentations, Menus, Surfaces and ActiveSurface.
+MenuScope identifies an exact root opening; CloseMenu compares that stored opening,
+not current StateRevision. InvokeCommand separately requires current state and the
+original item target. The host retains capture only within its synchronous native
+selection scope, removes the native wrapper before Action, and immediately revokes
+Escape/outside dismissal. Success closes the root with command publication;
+failure dismisses without replay/restamping and preserves Domain.
+
+OpenSurfaceFrom records the actual opener/parent. SurfaceTarget includes handle,
+model and monotonic opening generation. New surfaces pass the existing pure gate
+and final ticket; sequence/outcome changes never promote pending. Host acknowledges
+actual mounting with ConfirmSurfacePublication and drains DialogResult receipts
+after synchronization/teardown. Unpublished candidates emit none. Reentrant closure
+holds its receipt until synchronous Accept outcome finalization, and reopening waits
+until the queued result drains. Only Accept results contain committed fields.
+
+Prospective parent hide/collapse/page/reload stages child closure and provider
+revocation until accepted publication. Actual native hide/close/dispose uses
+RevokeSurfaces without a fallible gate. RevokeSurface targets one exact lost native
+opening, including itself and children, with stale replacement protection; it is
+the native OnClosed-bypass fallback. Successful replacement closes predecessor
+openings with reload reason; successor surfaces start closed, retain compatible
+checked/accepted values and discard unaccepted dialog drafts. Main/page drafts
+retain existing behavior. Failed preparation preserves live openings and requests.
+Runtime remains independent of layout/GUI; multiple canvases, actual modal/nonmodal
+windows, focus and completion observers belong to the host and native evidence.

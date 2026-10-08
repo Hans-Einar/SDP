@@ -55,8 +55,8 @@ func TestPaneSVGRejectionAndExactNativeInventory(t *testing.T) {
 		t.Fatal("wrong pane inventory kind accepted")
 	}
 	opts.NativeControls["Main/s"] = "split"
-	root.Rows[0][0].Rows[0][0].Widget = "dialog"
+	root.Rows[0][0].Rows[0][0].Widget = "futurePane"
 	if err := Check(root, opts); err == nil {
-		t.Fatal("inventory licensed M2 composition")
+		t.Fatal("inventory licensed unknown composition")
 	}
 }

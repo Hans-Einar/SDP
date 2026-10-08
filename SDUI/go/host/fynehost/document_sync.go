@@ -60,14 +60,16 @@ func (b *Bundle) connect() {
 		}
 	}
 	b.connectPanes()
+	b.connectCommands()
 	b.view.OnStatus = b.owner.status
-	for _, control := range b.view.controls {
+	for path, control := range b.view.controls {
+		path := path
 		control := control
 		control.clip.onScroll = func(e *fyne.ScrollEvent) {
 			if b.owner.current != b || b.closed {
 				return
 			}
-			b.owner.scroll(float64(control.clip.Position().X+e.Position.X), float64(control.clip.Position().Y+e.Position.Y), -float64(e.Scrolled.DX), -float64(e.Scrolled.DY))
+			b.owner.scrollIn(path, float64(control.clip.Position().X+e.Position.X), float64(control.clip.Position().Y+e.Position.Y), -float64(e.Scrolled.DX), -float64(e.Scrolled.DY))
 		}
 	}
 }
@@ -76,6 +78,7 @@ func (b *Bundle) apply() {
 	if p == nil {
 		return
 	}
+	b.hideTooltip()
 	b.presentation = p
 	b.pending = nil
 	b.muted = true
@@ -88,7 +91,7 @@ func (b *Bundle) apply() {
 	v.image.Resize(fyne.NewSize(float32(b.size.W), float32(b.size.H)))
 	v.image.Refresh()
 	active := map[string]bool{}
-	p.geometry.Root.Walk(func(box *layout.Box) {
+	walkPresentation(p, func(box *layout.Box, _ *layout.SnapshotLayout) {
 		if box.Rect.W > 0 && box.Rect.H > 0 && box.Clip.W > 0 && box.Clip.H > 0 {
 			active[box.Path] = true
 		}
@@ -98,7 +101,7 @@ func (b *Bundle) apply() {
 			c.clip.Hide()
 		}
 	}
-	p.geometry.Root.Walk(func(box *layout.Box) {
+	walkPresentation(p, func(box *layout.Box, geometry *layout.SnapshotLayout) {
 		c := v.controls[box.Path]
 		if c == nil {
 			return
@@ -109,15 +112,15 @@ func (b *Bundle) apply() {
 		}
 		switch obj := c.widget.(type) {
 		case *paneHeader:
-			pane, ok := p.geometry.Tabs[box.Path]
+			pane, ok := geometry.Tabs[box.Path]
 			if !ok {
 				return
 			}
 			rect, clip = pane.Header, pane.HeaderClip
 			state := p.snapshot.Tabs[box.Path]
-			obj.sync(headerPages(state, box.Instance.Argument("label")), state.Selected)
+			obj.sync(headerPages(state, box.Instance.Argument("label"), b.icons), state.Selected)
 		case *paneDivider:
-			pane, ok := p.geometry.Splits[box.Path]
+			pane, ok := geometry.Splits[box.Path]
 			if !ok {
 				return
 			}
@@ -143,7 +146,7 @@ func (b *Bundle) apply() {
 			obj.rows = collectionRows(obj.state, box.Font)
 			obj.font = box.Font
 			obj.title = box.Instance.Argument("label")
-			if viewport, ok := p.geometry.Viewports[box.Path]; ok {
+			if viewport, ok := geometry.Viewports[box.Path]; ok {
 				obj.viewport = viewport
 			} else {
 				height := rowHeight(box.Font)
@@ -158,6 +161,20 @@ func (b *Bundle) apply() {
 			}
 		case *widget.Button:
 			obj.SetText(box.Instance.Argument("label"))
+		case *commandButton:
+			label, icon, tooltip := box.Instance.Argument("label"), box.Instance.Argument("icon"), box.Instance.Argument("tooltip")
+			if presentation, ok := p.snapshot.Presentations[box.Path]; ok {
+				label, icon, tooltip = presentation.Label, presentation.Icon, presentation.Tooltip
+				for _, command := range p.snapshot.Commands {
+					if command.Handle == presentation.Command {
+						label = commandLabel(label, command)
+						break
+					}
+				}
+			}
+			obj.SetText(label)
+			obj.SetIcon(b.icons[icon])
+			obj.tooltip = tooltip
 		}
 		c.theme.Theme = componentTheme{float32(box.Font)}
 		c.theme.Refresh()
@@ -177,12 +194,26 @@ func (b *Bundle) apply() {
 		}
 	})
 	v.Container.Resize(fyne.NewSize(float32(b.size.W), float32(b.size.H)))
+	b.syncSurfaces()
+	for _, retired := range b.retiredPresentations {
+		b.discardCanvases(retired)
+	}
+	b.retiredPresentations = nil
+}
+func walkPresentation(p *nativePresentation, visit func(*layout.Box, *layout.SnapshotLayout)) {
+	p.geometry.Root.Walk(func(box *layout.Box) { visit(box, p.geometry) })
+	for _, path := range surfacePaths(p.snapshot) {
+		if frame := p.canvases[path]; frame != nil {
+			frame.geometry.Root.Walk(func(box *layout.Box) { visit(box, frame.geometry) })
+		}
+	}
 }
 func (h *DocumentHost) after() {
 	b := h.current
 	if b == nil || b.closed || h.closed {
 		return
 	}
+	b.apply()
 	snapshot := b.Session.Snapshot()
 	paths := make([]string, 0, len(snapshot.Collections))
 	for p := range snapshot.Collections {
@@ -205,8 +236,14 @@ func (h *DocumentHost) after() {
 	}
 
 	b.apply()
+	b.syncSurfaces()
 	h.reconcileLoads(b)
 	h.restoreFocus(b)
+	b.syncMenus()
+	b.drainDialogResults()
+	if h.current != b || b.closed || h.closed {
+		return
+	}
 	if h.OnChange != nil {
 		h.OnChange(b)
 	}

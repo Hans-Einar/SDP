@@ -28,6 +28,7 @@ type collectionRow struct {
 type collectionMeasure struct {
 	snapshot ui.Snapshot
 	markdown *markdown.Provider
+	icons    map[string]fyne.Resource
 }
 
 func rowHeight(font float64) float64 {
@@ -87,6 +88,9 @@ func collectionRows(state ui.CollectionState, font float64) []collectionRow {
 	return rows
 }
 func (m *collectionMeasure) Measure(n *parser.Instance, font, width float64) (layout.Size, error) {
+	if n.Widget == "button" && (parser.IsCommandButton(n) || n.Argument("icon") != "" || n.Argument("tooltip") != "") {
+		return m.measureButton(n, font), nil
+	}
 	if n.Widget == "tree" || n.Widget == "list" {
 		x, e := m.MeasureCollection(n, font, layout.Size{W: width, H: rowHeight(font) * 4})
 		if e != nil {

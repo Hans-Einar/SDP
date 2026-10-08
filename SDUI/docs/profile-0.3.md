@@ -1,4 +1,4 @@
-# SDUI 0.3 — development collections and panes profile
+# SDUI 0.3 — development widgets profile
 
 The WCI1 frontend adds exact `sdui 0.3;` alongside the preserved
 [0.2 profile](language.md). Source acceptance, static export and native connected
@@ -7,15 +7,16 @@ the [WCI1 contract](../../SDP/04--Design/SDUI/Widgets/Collections.md) governs
 provider, runtime, layout, native interaction and activation acceptance. WCI2-M1
 adds the tabs/page/split source contract below within this same unreleased profile;
 its [reviewed stage contract](../../SDP/04--Design/SDUI/Widgets/Panes-and-commands.md)
-governs runtime, geometry and native acceptance. M2 commands/menus/dialogs are not
-part of the implemented source vocabulary.
+governs runtime, geometry and native acceptance. M2 extends the same development
+profile with commands, menus and dialogs below; frontend support is not native proof.
 
 ## Grammar and calls
 
 The [0.3 EBNF](../grammar/sdui-0.3.ebnf) retains the 0.2 lexical, composition,
 reuse, formatting, resource-limit and symbolic-reference productions, adding
 bounded pane call bodies below. Reject alternative
-spellings such as `0.30` and `3e-1`. Existing button/input/svg call schemas remain.
+spellings such as `0.30` and `3e-1`. Input/svg schemas remain unchanged; the 0.3
+button extension below preserves legacy dispatch unless explicitly opted in.
 
 ```text
 sdui 0.3;
@@ -40,8 +41,8 @@ expresses intent; parsing it does not prove layout or host support.
 
 ## M1 pane bodies and identity
 
-Only `tabs`, `page` and `split` require and accept a bracketed body after their
-call. Formatting follows the body. Body `header/body/footer` assignments are
+`tabs`, `page` and `split` require a bracketed body after their call; M2 also
+allows the menu/menuGroup/dialog bodies below. Formatting follows the body. Body `header/body/footer` assignments are
 ordinary named children; use a nested frame to declare frame regions.
 
 ```text
@@ -85,8 +86,69 @@ typed Arguments and Rows. No new AST format or family version. All source/reuse
 spans, paths and Profile propagate through expansion and generated constructors.
 `parser.PaneChildren(owner)` returns ordered `PaneChild{ID,Node}` for normalized
 tabs/split, validating direct named shape. ID is local to its owner; Node.Path is
-the exact instance identity. M1 adds no command reference resolver or lexical-scope
-fields. Existing setHandle paths still resolve ordinary widget receivers.
+the exact instance identity. M2 supplies the command reference resolver below. Existing setHandle paths still
+resolve ordinary widget receivers.
+
+## M2 commands, menus and dialogs
+
+| Form | Arguments and structure |
+| --- | --- |
+| command | Named declaration, required nonblank label. Optional icon/tooltip strings, toggle/checked booleans, exclusive/key/context/target/effect strings and callback reference. No body or geometry; enabled/visible formatting only. |
+| button | Label required unless command string supplied. Same behavior fields as command, or command reference with only label/icon/tooltip overrides. No body. |
+| menu | Required nonblank label; mode defaults to bar, or context/submenu. Context requires target; other modes forbid it. Body contains one item/separator/menuGroup/submenu per row. Nested menus explicitly use mode=submenu. Context accepts enabled/visible formatting only. |
+| menuGroup | Nonblank label and menu-child body; non-invokable heading. |
+| item | Required named command string argument; no positional argument or body. |
+| separator | No arguments, body, formatting, action or state. |
+| dialog | Named declaration, nonblank label, modal boolean defaults true, optional callback. Ordinary composed body; initially closed auxiliary surface. |
+
+One positional label precedes named arguments. Unknown/duplicate/wrong-type fields
+reject. Icon is a symbolic resource, never a fetched URL. Definitions can supply
+stable names to reused command/dialog roots. Direct split children must be visual;
+commands, dialogs and context menus cannot serve as the two split panes.
+
+checked/exclusive require toggle=true. Exclusive groups use the innermost definition
+instance and permit at most one initially checked member. Context defaults none;
+widget/item require target, and item requires a tree/list. A context menu's captured
+control must match each contextual command's target. Ordinary no-callback commands
+are unbound; pure toggles are local. Effects are open/accept/cancel/close, forbid
+callback/toggle, and require context none. Open needs a dialog target; other effects
+forbid target and require an enclosing dialog. M2 callbacks use symbolic @invoke.
+No parser operation opens SDL modules or executes an action.
+
+A basic button (including callback/icon/tooltip) retains legacy Activate/Handler.
+Presence of command/toggle/checked/exclusive/key/context/target/effect opts into
+InvokeCommand/InteractionHandler; even toggle=false or context="none" is explicit.
+A referring button has one canonical command owner; it cannot override behavior.
+Key syntax is ordered Primary/Ctrl/Alt/Shift plus A–Z/0–9/F1–F12; letters/digits
+require a modifier. Reject duplicate/unordered modifiers and Primary+Ctrl. Exact
+same-surface duplicates reject; platform key normalization/reservations belong to
+preparation. Native focus, captures, dismissal and dialog results remain runtime
+and host responsibilities under the reviewed stage contract.
+
+Normalization preserves source arguments and adds only the closed `$scope` string
+Literal on M2 interaction nodes, recording the innermost expanded definition
+instance. Entering reuse resets that scope; inline containers do not. Source cannot
+spell the derived key. Node/Instance fields and AST/version tags remain unchanged;
+legacy and M1 nodes acquire no derived fields.
+
+`parser.ResolveInteractions(root)` strictly validates the selected expanded tree,
+including hidden declarations. It returns `map[string]InteractionIdentity`, keyed
+by exact Instance.Path, with Scope/Command/Target/Dialog strings. Command is the
+canonical declaration or implicit button path; Target is a context/open target;
+Dialog is nearest lexical enclosing dialog (empty means entry canvas). A dialog
+record names its parent dialog. Owned inputs carry Dialog for acceptance mapping.
+Source references resolve named paths relative to Scope, or leading `/` from the
+selected entry. Anonymous container segments are skipped for name lookup, but
+results retain exact paths. Reject parent/index/anonymous segments, missing,
+ambiguous or wrong-kind targets. No parent-scope fallback or runtime resolver.
+
+Normalize returns all definitions, including reusable templates whose absolute
+entry references are unresolved in isolation. This is not selected-entry validity:
+runtime, preparation, generation and exports must call ResolveInteractions before
+claiming it. Static AST `local-profile` reports schema/placement validation only.
+`ResolveDialogField(root, dialogPath, fieldPath)` resolves a named relative owned
+input, rejecting nested-dialog fields; bridge uses its exact Path. `IsCommandButton`
+exposes opt-in, and `IsAuxiliary` exposes non-flow declarations without state guesses.
 
 ## Profile identity and compatibility
 
@@ -143,3 +205,21 @@ inventory entry: its header/shell belongs to the enclosing prepared tabs adapter
 Omitting native pane chrome never skips descendant validation or supported content
 painting. Missing, extra or wrong-kind entries reject; unknown compositions cannot
 be licensed by inventing an inventory key.
+
+M2 structural text describes every command/menu/dialog declaration, source path,
+initial checked/exclusive intent, symbolic callbacks/icons and closed surfaces,
+including hidden declarations. It does not simulate live menus or acceptance.
+Public M2 SVG rejects with `unsupported-interaction-export`, even with supplied
+geometry. Basic button icon/tooltip decorations also reject in public SVG rather
+than silently disappearing; that does not promote their dispatch. Standalone
+prototype preflight rejects unavailable M2 adapters with
+`unsupported-interaction`; parsing cannot claim connected readiness.
+
+Native background inventory additionally includes each prepared menu and dialog
+adapter (including context/submenu and initially closed declarations). Menu-owned
+items/groups/separators have no separate inventory entry; command declarations
+have no native control and require strict entry resolution before omission.
+Buttons still use exact button entries. `Options.InteractionRoot` supplies the
+full selected snapshot for a native dialog canvas; the rendered root must be the
+identical node within that tree. It is valid only with SkipControls and never
+relaxes public export. Inventory remains scoped to that canvas's source subtree.

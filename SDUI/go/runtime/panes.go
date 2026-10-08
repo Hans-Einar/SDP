@@ -55,6 +55,9 @@ func (s *Session) initPanes() error {
 			return
 		}
 		if n.Widget != "tabs" && n.Widget != "page" && n.Widget != "split" {
+			if n.Widget == "dialog" || n.Widget == "menu" || n.Widget == "menuGroup" {
+				return
+			}
 			first = fault("pane-kind", "Unsupported composition: "+n.Widget)
 			return
 		}
@@ -194,16 +197,33 @@ func (s *Session) Split(h Handle) (SplitState, bool) {
 	return *p, true
 }
 func (s *Session) CallbackOwners() []Widget {
-	keys := []string{}
+	owners := map[string]Widget{}
 	for path, w := range s.panes {
 		if w.Handle.Kind == "tabs" && w.Binding.Module != "" {
-			keys = append(keys, path)
+			owners[path] = *w
 		}
 	}
+	for path, c := range s.commands {
+		if c.Binding.Module != "" {
+			w := *s.currentControl(path)
+			w.Binding = c.Binding
+			owners[path] = w
+		}
+	}
+	for path := range s.surfaces {
+		w := s.aux[path]
+		if w.Binding.Module != "" {
+			owners[path] = *w
+		}
+	}
+	keys := []string{}
+	for k := range owners {
+		keys = append(keys, k)
+	}
 	sort.Strings(keys)
-	out := make([]Widget, 0, len(keys))
+	out := []Widget{}
 	for _, k := range keys {
-		out = append(out, *s.panes[k])
+		out = append(out, owners[k])
 	}
 	return out
 }
@@ -211,6 +231,9 @@ func (s *Session) currentControl(path string) *Widget {
 	if w := s.widgets[path]; w != nil {
 		return w
 	}
-	return s.panes[path]
+	if w := s.panes[path]; w != nil {
+		return w
+	}
+	return s.aux[path]
 }
 func within(path, parent string) bool { return path == parent || strings.HasPrefix(path, parent+"/") }

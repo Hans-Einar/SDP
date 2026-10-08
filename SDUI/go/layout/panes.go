@@ -28,7 +28,9 @@ type SplitLayout struct {
 	Collapsed                           runtime.SplitSide
 }
 
-func pane(n *parser.Instance) bool { return n.Kind == "composition" }
+func pane(n *parser.Instance) bool {
+	return n.Kind == "composition" && (n.Widget == "tabs" || n.Widget == "page" || n.Widget == "split")
+}
 func argumentNumber(n *parser.Instance, key string, fallback float64) float64 {
 	if v, ok := n.Arguments[key].(parser.Literal); ok {
 		if x, ok := v.Value.(float64); ok {

@@ -21,18 +21,33 @@ const CollectionItemID EventField = "collection.item-id"
 
 // Tab selectors extract stable direct-page IDs from a validated ActivatePage.
 const (
-	TabPageID         EventField = "tab.page-id"
-	TabPreviousPageID EventField = "tab.previous-page-id"
+	TabPageID            EventField = "tab.page-id"
+	TabPreviousPageID    EventField = "tab.previous-page-id"
+	CommandContextItemID EventField = "command.context-item-id"
+	CommandChecked       EventField = "command.checked"
+	DialogFieldValue     EventField = "dialog.field-value"
+)
+
+// ResultMode is closed. TextResult is the zero/default legacy text receiver mode.
+type ResultMode string
+
+const (
+	TextResult         ResultMode = ""
+	DialogAcceptResult ResultMode = "dialog-accept"
 )
 
 type Source struct {
-	EventField EventField
-	Widget     string
-	Event      bool
-	Literal    *sdl.Value
-	Context    string
+	EventField    EventField
+	FieldPath     string
+	resolvedField ui.Handle
+	Widget        string
+	Event         bool
+	Literal       *sdl.Value
+	Context       string
 }
 type Plan struct {
+	ResultMode                     ResultMode
+	AcceptField, MessageField      string
 	Inputs                         map[string]Source
 	OutputField                    string
 	RevisionField, RevisionContext string
@@ -58,16 +73,7 @@ func Bind(ctx context.Context, session *ui.Session, document *uiparser.Document,
 	}
 	copiedPlans := map[string]Plan{}
 	for k, p := range plans {
-		inputs := map[string]Source{}
-		for name, source := range p.Inputs {
-			if source.Literal != nil {
-				v := *source.Literal
-				source.Literal = &v
-			}
-			inputs[name] = source
-		}
-		p.Inputs = inputs
-		copiedPlans[k] = p
+		copiedPlans[k] = copyPlan(p)
 	}
 	copiedState := map[string]sdl.Value{}
 	for k, v := range state {
@@ -105,11 +111,16 @@ func (b *Bridge) Rebind(document *uiparser.Document) error {
 	links := []Link{}
 	used := map[string]bool{}
 	owners := append(b.UI.Widgets(), b.UI.CallbackOwners()...)
+	seen := map[ui.Handle]bool{}
 	for _, widget := range owners {
 		ref := widget.Binding
 		if ref.Module == "" {
 			continue
 		}
+		if seen[widget.Handle] {
+			continue
+		}
+		seen[widget.Handle] = true
 		symbol := ref.Module + "." + ref.Object
 		engine := b.Modules[ref.Module]
 		if !refs[ref.Module] || engine == nil {
@@ -122,6 +133,7 @@ func (b *Bridge) Rebind(document *uiparser.Document) error {
 		if !ok {
 			return fmt.Errorf("missing-binding-plan: %s", symbol)
 		}
+		plan = copyPlan(plan) // Resolve owned captures separately for each reused callback owner.
 		input, output, err := engine.Signature(ref.Object)
 		if err != nil {
 			return err
@@ -137,26 +149,24 @@ func (b *Bridge) Rebind(document *uiparser.Document) error {
 			if err = b.validateSource(source, widget, kind); err != nil {
 				return fmt.Errorf("binding-field %s.%s: %w", symbol, field, err)
 			}
+			if source.EventField == DialogFieldValue {
+				source.resolvedField, err = b.UI.DialogField(widget.Handle, source.FieldPath)
+				if err != nil {
+					return fmt.Errorf("binding-field %s.%s: %w", symbol, field, err)
+				}
+				plan.Inputs[field] = source
+			}
 		}
 		target := targets[symbol]
-		if target == "" || plan.OutputField == "" || output[plan.OutputField] != parser.TextType {
-			return fmt.Errorf("result-handle: %s needs a text result and explicit setHandle", symbol)
+		if err = b.validateResult(plan, widget, target, output); err != nil {
+			return fmt.Errorf("binding-result %s: %w", symbol, err)
 		}
-		resultWidget, ok := b.UI.Widget(target)
-		if !ok || resultWidget.Handle.Kind != "input" {
-			return fmt.Errorf("result-widget: %s is not an input", target)
-		}
-		if plan.RevisionField != "" {
-			if output[plan.RevisionField] != parser.IntegerType || plan.RevisionContext == "" {
-				return fmt.Errorf("revision-binding: %s", symbol)
-			}
-		} else if plan.RevisionContext != "" {
-			return fmt.Errorf("revision-binding: missing result field")
-		}
+
 		action, _ := engine.Action(ref.Object)
 		links = append(links, Link{widget.Handle.Path, symbol, target, spans[widget.InstancePath], action.Span})
 		used[symbol] = true
-		if widget.Handle.Kind == "tabs" {
+		_, command := b.UI.CommandState(widget.Handle)
+		if widget.Handle.Kind == "tabs" || widget.Handle.Kind == "dialog" || command {
 			interactions[widget.Handle] = b.interactionHandler(engine, ref.Object, plan, target)
 		} else {
 			pending[widget.Handle] = b.handler(engine, ref.Object, plan, target)
@@ -191,4 +201,18 @@ func (b *Bridge) Rebind(document *uiparser.Document) error {
 	}
 	b.Links = links
 	return nil
+}
+
+func copyPlan(p Plan) Plan {
+	inputs := make(map[string]Source, len(p.Inputs))
+	for name, source := range p.Inputs {
+		source.resolvedField = ui.Handle{}
+		if source.Literal != nil {
+			v := *source.Literal
+			source.Literal = &v
+		}
+		inputs[name] = source
+	}
+	p.Inputs = inputs
+	return p
 }

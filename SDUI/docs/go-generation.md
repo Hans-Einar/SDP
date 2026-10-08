@@ -56,3 +56,14 @@ provenance round-trip without a new generator version. Constructors contain no l
 selected page, measured divider/header geometry, focus or collapse state. Hosts
 must prepare real pane controls and state-aware geometry before native publication;
 static generation/export is not that readiness check.
+
+WCI2-M2 likewise retains `Version03`, `UIProfile`, `UIASTFormat` and existing AST
+fields. Original command/context/open strings, source spans and reuse chains are
+preserved; the closed `$scope` argument carries definition-instance ownership.
+Generation strictly calls `parser.ResolveInteractions` on the selected root before
+emitting constructors. A reusable template with an unresolved absolute entry
+reference can normalize, but cannot be generated as a valid standalone entry.
+Resolving the emitted Root returns the same canonical command, target, dialog and
+exclusive-group scope identities as resolving the source-derived selected root.
+There are no generated handlers, menu captures, native dialogs or live checked
+states. Host preparation must validate actual adapters/bindings before activation.

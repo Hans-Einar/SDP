@@ -4,7 +4,7 @@ import "github.com/Hans-Einar/SDP/SDUI/go/parser"
 
 // refreshActivity never changes declaration intent. It runs on detached candidates.
 func (s *Session) refreshActivity() {
-	if len(s.panes) == 0 {
+	if len(s.panes) == 0 && len(s.aux) == 0 && len(s.commands) == 0 {
 		return
 	}
 	for _, t := range s.tabs {
@@ -57,6 +57,9 @@ func (s *Session) refreshActivity() {
 		if p != nil {
 			p.Enabled, p.Visible = en, vis
 		}
+		if d := s.surfaces[public(n.Path)]; d != nil && !d.Open {
+			vis = false
+		}
 		for _, r := range n.Regions {
 			walk(r.Node, en, vis)
 		}
@@ -76,6 +79,7 @@ func (s *Session) refreshActivity() {
 		}
 	}
 	walk(s.root, true, true)
+	s.refreshCommands()
 	if w := s.currentControl(s.focused); w != nil && w.Enabled && w.Visible && w.Handle.Kind != "page" {
 		return
 	}
@@ -96,6 +100,13 @@ func (s *Session) rememberFocus(path string) {
 	w := s.currentControl(path)
 	if w == nil {
 		return
+	}
+	if d := s.surfaceFor(w); d != nil && d.Open {
+		d.Focused = path
+		s.activeSurface = copySurface(&d.Target)
+	} else {
+		s.mainFocus = path
+		s.activeSurface = nil
 	}
 	for _, t := range s.tabs {
 		for i := range t.Pages {
@@ -133,6 +144,9 @@ func (s *Session) EnterPage(h Handle) error {
 	return s.Focus(h)
 }
 func (s *Session) inactivePaneViewport(path string) bool {
+	if d := s.surfaces[s.ownerSurface[path]]; d != nil && !d.Open {
+		return true
+	}
 	for _, t := range s.tabs {
 		for _, p := range t.Pages {
 			if within(path, p.InstancePath) && !s.active[path].visible {

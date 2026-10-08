@@ -36,6 +36,7 @@ func (s *Session) Successor(root *parser.Instance, providers map[string]Collecti
 		}
 	}
 	n.inheritPanes(s)
+	n.inheritCommands(s)
 	// Source order makes generation allocation deterministic.
 	n.root.Walk(func(node *parser.Instance) {
 		h, ok := n.viewportHandles[node.Path]

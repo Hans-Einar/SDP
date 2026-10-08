@@ -7,6 +7,11 @@ import (
 
 type ViewportState struct{ X, Y float64 }
 type Snapshot struct {
+	Commands                               map[string]CommandState
+	Presentations                          map[string]CommandPresentation
+	Menus                                  map[string]MenuState
+	Surfaces                               map[string]SurfaceState
+	ActiveSurface                          *SurfaceTarget
 	Tabs                                   map[string]TabsState
 	Splits                                 map[string]SplitState
 	Focused                                string
@@ -30,6 +35,7 @@ func copyViewports(in map[string]ViewportState) map[string]ViewportState {
 }
 func (s *Session) Snapshot() Snapshot {
 	v := Snapshot{Tabs: map[string]TabsState{}, Splits: map[string]SplitState{}, Focused: s.focused, Root: s.SnapshotRoot(), ModelRevision: s.Revision, StateRevision: s.StateRevision, Sequence: s.sequence, Collections: map[string]CollectionState{}, Viewports: copyViewports(s.viewports), ViewportHandles: map[string]Handle{}}
+	s.snapshotCommands(&v)
 	for _, t := range s.tabs {
 		v.Tabs[t.InstancePath] = copyTabs(t)
 	}
@@ -57,6 +63,7 @@ func (s *Session) copyState() *Session {
 	}
 	n.viewports = copyViewports(s.viewports)
 	s.copyPanes(&n)
+	s.copyCommands(&n)
 	return &n
 }
 func (s *Session) validateViewports(offsets map[string]ViewportState) error {
@@ -112,6 +119,8 @@ func (s *Session) publish(n *Session) error {
 	revision, state := s.Revision, s.StateRevision
 	n.StateRevision = state + 1
 	n.refreshActivity()
+	n.closeHiddenSurfaces()
+	n.refreshActivity()
 	if err := n.gate(); err != nil {
 		return err
 	}
@@ -134,6 +143,7 @@ func (s *Session) publish(n *Session) error {
 	}
 	n.strictSplit = ""
 	n.interacting = s.interacting
+	n.accepting = copySurface(s.accepting)
 	*s = *n
 	if ticket.Publish != nil {
 		ticket.Publish()
@@ -186,9 +196,14 @@ func (s *Session) SetViewport(h Handle, modelRevision uint64, offset ViewportSta
 	if current, ok := s.viewportHandles[h.Path]; !ok || current != h {
 		return fault("stale-handle", "Viewport owner is no longer current")
 	}
-	if len(s.panes) > 0 {
+	if len(s.panes) > 0 || len(s.aux) > 0 || len(s.commands) > 0 {
 		if a := s.active[h.Path]; !a.visible || !a.enabled {
 			return fault("inactive-widget", "Viewport is inactive")
+		}
+	}
+	for _, d := range s.surfaces {
+		if d.Open && d.Modal && !s.surfaceDescends(s.surfaces[s.ownerSurface[h.Path]], d.Target) {
+			return fault("modal", "Viewport is blocked")
 		}
 	}
 	return s.SetViewports(map[string]ViewportState{h.Path: offset})

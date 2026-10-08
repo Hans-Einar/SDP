@@ -165,6 +165,8 @@ func (v *View) nativeControls() map[string]string {
 		switch obj.(type) {
 		case *widget.Button:
 			kinds[path] = "button"
+		case *commandButton:
+			kinds[path] = "button"
 		case *Input:
 			kinds[path] = "input"
 		case *paneHeader:
@@ -180,6 +182,13 @@ func (v *View) nativeControls() map[string]string {
 		}
 	}
 	return kinds
+}
+
+func (v *View) addCommandButton(path string, obj *commandButton) {
+	if old := v.controls[path]; old != nil {
+		v.Container.Remove(old.clip)
+	}
+	v.addPane(path, obj)
 }
 func (v *View) addCollection(path string, obj *CollectionControl) {
 	th := container.NewThemeOverride(obj, componentTheme{14})

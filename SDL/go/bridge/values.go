@@ -10,6 +10,9 @@ import (
 )
 
 func (b *Bridge) validateSource(source Source, widget ui.Widget, kind parser.ScalarType) error {
+	if source.FieldPath != "" && source.EventField != DialogFieldValue {
+		return fmt.Errorf("FieldPath is only valid with DialogFieldValue")
+	}
 	count := 0
 	if source.EventField != "" {
 		count++
@@ -22,11 +25,28 @@ func (b *Bridge) validateSource(source Source, widget ui.Widget, kind parser.Sca
 			if widget.Handle.Kind != "tabs" || kind != parser.TextType {
 				return fmt.Errorf("event-field: tab identity requires a tabs ActivatePage and text destination")
 			}
+		case CommandContextItemID:
+			command, ok := b.UI.CommandState(widget.Handle)
+			if !ok || command.Context != "item" || kind != parser.TextType {
+				return fmt.Errorf("event-field: context item ID requires an item-context command and text")
+			}
+		case CommandChecked:
+			command, ok := b.UI.CommandState(widget.Handle)
+			if !ok || !command.Toggle || kind != parser.BooleanType {
+				return fmt.Errorf("event-field: checked requires a toggle command and boolean")
+			}
+		case DialogFieldValue:
+			if widget.Handle.Kind != "dialog" || kind != parser.TextType || source.FieldPath == "" {
+				return fmt.Errorf("event-field: dialog field requires an Accept owner, named FieldPath and text")
+			}
 		default:
 			return fmt.Errorf("event-field: unknown selector %q", source.EventField)
 		}
 	}
 	if source.Widget != "" {
+		if widget.Handle.Kind == "dialog" {
+			return fmt.Errorf("dialog input requires captured DialogFieldValue, not a live Widget source")
+		}
 		count++
 		w, ok := b.UI.Widget(source.Widget)
 		if !ok || w.Handle.Kind != "input" {
@@ -62,6 +82,34 @@ func (b *Bridge) validateSource(source Source, widget ui.Widget, kind parser.Sca
 }
 func (b *Bridge) value(source Source, event ui.Event, kind parser.ScalarType) (sdl.Value, error) {
 	if source.EventField != "" {
+		switch source.EventField {
+		case CommandContextItemID:
+			if kind != parser.TextType || event.Kind != ui.InvokeCommand || event.Command == nil || event.Command.Context == nil || event.Command.Context.Item == nil {
+				return sdl.Value{}, fmt.Errorf("event-field: missing command item context")
+			}
+			if err := b.UI.ValidateCollectionTarget(*event.Command.Context.Item); err != nil {
+				return sdl.Value{}, err
+			}
+			return sdl.Text(string(event.Command.Context.Item.ItemID)), nil
+		case CommandChecked:
+			if kind != parser.BooleanType || event.Kind != ui.InvokeCommand || event.Command == nil || event.Command.Checked == nil {
+				return sdl.Value{}, fmt.Errorf("event-field: missing proposed checked value")
+			}
+			return sdl.Boolean(*event.Command.Checked), nil
+		case DialogFieldValue:
+			if kind != parser.TextType || event.Kind != ui.Accept || event.Dialog == nil {
+				return sdl.Value{}, fmt.Errorf("event-field: missing captured dialog request")
+			}
+			for _, field := range event.Dialog.Fields {
+				if field.Handle == source.resolvedField {
+					if field.Value.Kind != ui.String {
+						return sdl.Value{}, fmt.Errorf("event-field: captured dialog field is not String")
+					}
+					return sdl.Text(field.Value.Text), nil
+				}
+			}
+			return sdl.Value{}, fmt.Errorf("event-field: owned field absent from captured request")
+		}
 		if source.EventField == TabPageID || source.EventField == TabPreviousPageID {
 			if kind != parser.TextType {
 				return sdl.Value{}, fmt.Errorf("event-field: tab identity requires text")

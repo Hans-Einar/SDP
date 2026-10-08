@@ -4,6 +4,8 @@ go 1.26.0
 
 require golang.org/x/text v0.42.0
 
+require github.com/FyshOS/fancyfs v0.0.1 // indirect
+
 require (
 	fyne.io/fyne/v2 v2.8.1
 	fyne.io/systray v1.12.3-0.20260810170012-af4e8e793ec4 // indirect
