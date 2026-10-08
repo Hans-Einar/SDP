@@ -1,0 +1,57 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci2-m2-wm-final-native", "sha256": "2c1db6d173c67ff873da4a7fdadb2a32722d3153705523622328e0d509be7806", "display": ":190", "variant": "wci2-m2-commands"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "preparation executes no SDL action", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [32, 56], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "toolbar invokes shared Run once", "passed": true}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "chord", "values": ["Control_L", "r"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "key invokes same Run once", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [32, 16], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [35, 50], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "menu invokes same Run once after native dismissal", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [104, 56], "keep_focus": false}}
+{"kind": "check", "value": {"name": "pointer toggle publishes typed checked state", "passed": true}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "chord", "values": ["Control_L", "k"], "keep_focus": false}}
+{"kind": "check", "value": {"name": "key toggles canonical state once", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [414, 56], "keep_focus": false}}
+{"kind": "check", "value": {"name": "exclusive selection clears its peer atomically", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [412, 56], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "already checked exclusive command emits no domain call", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [32, 16], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "move", "values": [35, 172], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [111, 172], "keep_focus": false}}
+{"kind": "check", "value": {"name": "nested pointer menu updates shared exclusive state", "passed": true}}
+{"kind": "fixture-command", "value": "disable Run"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [32, 56], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "chord", "values": ["Control_L", "r"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "chord", "values": ["Control_L", "k"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "disabled toolbar and key cannot invoke Run", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [32, 16], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "key", "values": ["Home", "Return"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "disabled native menu keyboard activation cannot invoke Run", "passed": true}}
+{"kind": "fixture-command", "value": "enable Run"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "chord", "values": ["Control_L", "r"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "re-enabled shared command remains usable", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "move", "values": [32, 56], "keep_focus": false}}
+{"kind": "screenshot", "value": "shared-commands.png"}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

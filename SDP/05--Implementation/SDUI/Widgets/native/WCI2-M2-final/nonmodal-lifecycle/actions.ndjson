@@ -1,0 +1,46 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci2-m2-wm-final-native", "sha256": "2c1db6d173c67ff873da4a7fdadb2a32722d3153705523622328e0d509be7806", "display": ":190", "variant": "wci2-m2-lifecycle"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [178, 56], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "click", "values": [177, 80], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "key", "values": ["u", "n", "s", "a", "v", "e", "d"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "fail profile"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "failed profile reload preserves open surface and draft", "passed": true}}
+{"kind": "fixture-command", "value": "fail binding"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "failed binding reload preserves open surface and draft", "passed": true}}
+{"kind": "fixture-command", "value": "fail resource"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "failed resource reload preserves open surface and draft", "passed": true}}
+{"kind": "fixture-command", "value": "fail guard"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "failed guard reload preserves open surface and draft", "passed": true}}
+{"kind": "fixture-command", "value": "fail stale"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "failed stale reload preserves open surface and draft", "passed": true}}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "successful reload closes old opening once without Save", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [178, 56], "keep_focus": false}}
+{"kind": "check", "value": {"name": "reopened successor has no unaccepted old form draft", "passed": true}}
+{"kind": "fixture-command", "value": "parent-hide"}
+{"kind": "check", "value": {"name": "parent hide closes published child once", "passed": true}}
+{"kind": "fixture-command", "value": "parent-show"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "parent show does not revive child opening", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [178, 56], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "close-window", "values": [], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "native child close protocol produces one lifecycle Close", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [178, 56], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "close-window", "values": [], "keep_focus": false}}
+{"kind": "check", "value": {"name": "native parent close drains child result before teardown", "passed": true}}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

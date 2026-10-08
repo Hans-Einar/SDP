@@ -1,9 +1,9 @@
-# WCI3 values and text — provisional stage draft
+# WCI3 values and text — reviewed stage contract
 
 | Field | Value |
 | --- | --- |
-| Assignment | SDP Architect, DRAFT ONLY; PLAN-SDP-0022 WCI3-M1/M2 |
-| Status | Provisional pending WCI1 + WCI2 pilot and independent stage review; no implementation authorization |
+| Assignment | SDP Architect; PLAN-SDP-0022 WCI3-M1/M2 |
+| Status | Independent design review approved; WCI3-M1 selected after WCI2 delivery; WCI3-M2 remains subsequent |
 | Authority | KB-SDUI-003 full inventory; bounded owner design assignment, 2026-10-08 |
 | Parents | [Design](Design.md), [Acceptance](Acceptance.md), [Collections](Collections.md), [Panes/commands draft](Panes-and-commands.md), [Plan](../../../05--Implementation/SDUI/Widgets/Plan.md) |
 | Obligations | SDUI-R05/R12/R16–R18/R23/R26–R28; GAP-XFMD-SDUI-005/006/008; Session0010 S4 |
@@ -105,8 +105,25 @@ NaN/infinity/overflow. Bounds/step/value are checked before activation and on pr
 Use one exact decimal grid from the retained min/max/step lexemes. Source initial
 values and numeric text Commit must satisfy exact rational range and integer
 `k=(value-min)/step` membership; never round an off-grid source or draft. This also
-avoids cancellation in `(value-min)` at a large origin. Standard math/big parsing
-is bounded by existing source/text lengths; no decimal expression language.
+avoids cancellation in `(value-min)` at a large origin. Before arbitrary-precision
+conversion, scan the decimal lexeme with overflow-safe bounded arithmetic. Permit
+at most 32768 mantissa digits (all digits on both sides of the decimal point,
+before trimming). For a nonzero coefficient, remove leading zeros and strip its
+t trailing zeros; define effective decimal exponent as explicit exponent (zero
+when omitted) minus fractional digit count plus t. Require its absolute value
+<=4096. Scan explicit exponent with a saturating bound derived from 4096 plus
+fractional digit count plus t; never parse an unbounded integer exponent or
+construct its power before checking. An all-zero coefficient becomes exact zero
+with effective exponent zero, without constructing any exponent power. Existing
+whole-text/source limits still apply, including exponent spelling length.
+
+Reject inadmissible source constraints during preparation; an inadmissible raw
+draft stays visible with validation and cannot Commit. Source/text length alone
+does not bound compact exponent expansion. Derive intermediate rational bounds
+from these admitted coefficients/exponents, finite binary64 operands and bounded
+legal ticks; operate directly on rationals rather than reparsing expanded decimal
+strings. Reconstructed grid points do not acquire the lexical digit/exponent
+limits again. No decimal expression language or unbounded arbitrary-precision input.
 
 For a typed Go Number (which has no decimal lexeme), find the nearest integer tick
 using the exact rational representation of its binary64 value and the exact grid.
@@ -118,7 +135,8 @@ off-grid value cannot pass through an expanding quotient tolerance. Raw text sti
 requires exact grid membership, even if an off-grid decimal would round to a legal
 binary64 Number. No membership tolerance and no silent text normalization.
 
-For fractional Go-only grids, define N=floor((max-min)/step) and legal ticks
+For all Go grids outside the exact safe53 integer exception below (including
+fractional grids and integral constraints beyond safe53), define N=floor((max-min)/step) and legal ticks
 0 <= k <= N <= 2^26. Require step strictly greater than the largest binary64
 adjacent spacing at either rounded endpoint, comparing exact rationals (check
 both directions, finite differences). Equality is insufficient: midpoint ties
@@ -126,8 +144,10 @@ can make adjacent legal ticks round to the same even significand. Reject an endp
 representations or bounded range cannot be established. This prevents distinct
 legal ticks collapsing to the same representable value; reject constraints at
 preparation with a source diagnostic, never discover ambiguous increments during
-editing. Connected integer grids retain exact integer arithmetic and the explicit
-±(2^53-1) constraints below; they do not inherit the fractional-grid interval cap.
+editing. The no-cap exception applies only when min/max/step are exact integers within
+±(2^53-1). These grids retain exact integer arithmetic and uint64 tick indexes;
+all other Go grids use the bounded N/spacing policy above. Connected SDL grids
+always require the explicit safe53 integer constraints below.
 Pointer/step-key movement deliberately chooses a legal tick and clamps to the
 last legal tick <= max. Native raw-Commit validation does not substitute that tick.
 
@@ -233,7 +253,10 @@ from this native editing surface. Typing/navigation reveals the caret internally
 focus navigation also uses WCI1 EnsureVisible for the control in its ancestors.
 Resize/reflow clamps the native scroll without changing text or emitting Commit.
 Successful compatible document reload may recreate Entry, reset caret/selection,
-internal scroll and undo history while retaining accepted/draft text and field focus;
+internal scroll and undo history while retaining compatible main/page accepted/draft
+text and field focus, including inactive pages. Successfully closed dialog successors
+reset unaccepted proposals to current accepted values, preserving explicit earlier
+child commits, as required by WCI2;
 failed reload retains all of them. No duplicate runtime text-scroll authority or
 private-field reflection/unsafe access is required. Native evidence covers long
 wrapped text, caret at both ends, wheel/scrollbar, outer-gutter access, page hiding,
@@ -244,7 +267,11 @@ Undo/redo changes drafts only; expose native Primary+Z and Primary+Shift+Z/redo 
 active IME composition, then an editing draft; only an already clean field lets WCI2 surface Cancel handle
 Escape. Preedit is not accepted text and never Commit; Enter consumed by IME must not dispatch SDL.
 
-Successor retains compatible named same-kind value/draft/selection/focus, revalidating new constraints;
+Successor retains compatible named same-kind main/page value/draft/selection/focus,
+including inactive pages, revalidating new constraints. The WCI2 closed-dialog rule
+overrides this general retention: successful reload resets unaccepted dialog proposals
+to current accepted values, preserving explicit child commits; failed reload preserves
+the original open form and all its proposals. For surviving main/page fields,
 invalid retained drafts stay visible, not silently clamped. Retained accepted values violating new constraints
 make reload fail, preserving the old bundle. Multiline/readOnly changes preserve valid text; single-line
 conversion with newlines rejects. Keep native undo history across ordinary sync; explicit programmatic
@@ -289,7 +316,20 @@ Independent review required explicit scalar result mode, atomic-form proposal
 policy, multiline edit-scroll ownership and bounded numeric precision. The revised
 sections above resolve those design omissions without a generic form or mapping
 framework. WCI3 owns OptionTarget; WCI2 PresentationGate and accepted-ticket
-publication are the current foundation. Independent re-review remains pending.
+publication are the current foundation. Independent reviewer approved substantive candidate `497031bb1132865b037721620ebaeb864cffd07d1deee8443a3fcbd962a4fbf8`, including the bounded numeric scan. WCI3-M1 is now selected after WCI2 delivery and the reconciliation below; WCI3-M2 remains subsequent.
 [IME boundary experiment](ime-probe/README.md) records a concrete pinned-stack
-Submit-before-composition result; bounded dependency correction is under trial,
-not yet selected as product implementation or accepted IME evidence.
+Submit-before-composition result and successful bounded filter trial. The reviewed
+architecture selects the documented exact pinned, licensed GLFW source plus its
+one-condition X11 patch for WCI3 implementation. Each maintained native build
+root needs an explicit replacement; external consumers cannot inherit it through
+a Go import. Product dependency edits await stage selection, and actual SDUI/SDL
+IME acceptance remains mandatory.
+
+## WCI3 preimplementation reconciliation — Session0010 T003
+
+Coordinator and independent reviewer reconciled the concrete frontend/runtime API
+memos with delivered WCI2 semantics. Both approved the closed-dialog successor
+exception (including retained explicit child commits and inactive-page drafts) and
+the bounded Go-only integer-grid regime outside exact safe53 constraints. These
+are design clarifications within the existing inventory, not owner quotations or
+new product evidence. M1 scalar fields and M2 extended native text remain separate.

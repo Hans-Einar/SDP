@@ -1,0 +1,17 @@
+PASS fresh error opening has a new token
+PASS error preserves outcome and blocks replay
+PASS blocked error remains editable without another Save
+PASS Cancel after error retains attempt and does not roll back domain
+PASS fresh malformed opening has a new token
+PASS malformed preserves outcome and blocks replay
+PASS blocked malformed remains editable without another Save
+PASS Cancel after malformed retains attempt and does not roll back domain
+PASS fresh draft-conflict opening has a new token
+PASS draft-conflict preserves outcome and blocks replay
+PASS blocked draft-conflict remains editable without another Save
+PASS Cancel after draft-conflict retains attempt and does not roll back domain
+PASS fresh resource-conflict opening has a new token
+PASS resource-conflict preserves outcome and blocks replay
+PASS blocked resource-conflict remains editable without another Save
+PASS Cancel after resource-conflict retains attempt and does not roll back domain
+PASS native teardown closes session and clears provider barriers

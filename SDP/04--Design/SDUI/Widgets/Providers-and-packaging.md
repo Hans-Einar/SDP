@@ -1,9 +1,9 @@
-# WCI4 providers and package preparation — provisional stage contract
+# WCI4 providers and package preparation — reviewed future stage contract
 
 | Field | Value |
 | --- | --- |
 | Assignment | SDP Architect; draft only, 2026-10-08 |
-| Status | Provisional; requires WCI1–WCI3 pilot reconciliation and independent review before code |
+| Status | Independent design review approved; requires WCI1–WCI3 pilot reconciliation and stage selection before code |
 | Authority | KB-SDUI-003 full inventory; PLAN-SDP-0022 WCI4-M1/M2; Session0010 |
 | Parents | [Design](Design.md), [Acceptance](Acceptance.md), [Preparation](Preparation.md), [Collections](Collections.md), [Panes](Panes-and-commands.md), [Values](Values-and-text.md) |
 | Outcome | Truthful SVG/Markdown previews, explicit provider/resource ownership and matching all-family producer/helper package preparation |
@@ -233,3 +233,10 @@ dependency selection, package production, external checkout mutation, publicatio
 Review handoff: corrected independent review of ab4b1ed with explicit per-instance Markdown renderer inputs and
 immutable prepared outcomes, plus identity-first fatal failures versus per-node content fallback. Architect context
 reused; only this draft revised. Main owns Session0010 and requests re-review; no implementation approval inferred.
+
+
+Independent reviewer approved substantive candidate
+`909851e31decf7d728fecd602f404df0573365f6c544b3667b6276e2c626c831`.
+This records design readiness only. WCI3 product dependency selection/evidence,
+all-family reconciliation and WCI4 implementation/package verification remain
+required before delivery. The original draft handoff above is historical.

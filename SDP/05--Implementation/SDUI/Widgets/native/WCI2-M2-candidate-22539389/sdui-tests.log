@@ -1,0 +1,15 @@
+ok  	github.com/Hans-Einar/SDP/SDUI/go/cmd/sdui	(cached)
+ok  	github.com/Hans-Einar/SDP/SDUI/go/cmd/sdui-preview	1.083s
+ok  	github.com/Hans-Einar/SDP/SDUI/go/codegen	(cached)
+ok  	github.com/Hans-Einar/SDP/SDUI/go/host/fynehost	168.460s
+?   	github.com/Hans-Einar/SDP/SDUI/go/host/fynehost/admission	[no test files]
+ok  	github.com/Hans-Einar/SDP/SDUI/go/layout	(cached)
+ok  	github.com/Hans-Einar/SDP/SDUI/go/markdown	1.166s
+ok  	github.com/Hans-Einar/SDP/SDUI/go/parser	(cached)
+ok  	github.com/Hans-Einar/SDP/SDUI/go/preparation	(cached)
+ok  	github.com/Hans-Einar/SDP/SDUI/go/presentation	(cached)
+ok  	github.com/Hans-Einar/SDP/SDUI/go/prototype	1.245s
+ok  	github.com/Hans-Einar/SDP/SDUI/go/reload	1.110s
+ok  	github.com/Hans-Einar/SDP/SDUI/go/runtime	(cached)
+?   	github.com/Hans-Einar/SDP/SDUI/go/sourcewatch	[no test files]
+ok  	github.com/Hans-Einar/SDP/SDUI/go/svg	(cached)

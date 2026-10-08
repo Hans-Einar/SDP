@@ -9,7 +9,7 @@
 | Systems | SDUI |
 | created | 2026-09-29T16:53:54.251554+00:00 |
 | source | PLAN-SDP-0009; KB-SDP-041; external XFMD gap register |
-| next_review | WCI2 panes/commands implementation and native acceptance |
+| next_review | WCI3 typed values/text implementation and native acceptance |
 | PlanId | PLAN-SDP-0022 |
 
 ## Current assignment — Session0010 T001
@@ -217,3 +217,5 @@ file:///home/warloc/git/xfmd-sdl-navigation/SDP/Sessions/session-%230004--SDUI-w
 - 2026-10-07T23:43:13.186726+00:00 — EVT-KB-SDUI-000022: WCI1-M1 tree/list/scroll and guarded native publication implemented, verified and independently reviewed (c39b330; 54 native checks). Keep in-progress for WCI2–WCI4. Evidence: ../../05--Implementation/SDUI/Widgets/Evidence-WCI1.md.
 
 - 2026-10-08T08:07:43.894416+00:00 — EVT-KB-SDUI-000023: WCI2-M1 tabs/split delivered and reviewed at 403c540; remain in-progress for commands/surfaces, values/text and providers/package preparation. Evidence: ../../05--Implementation/SDUI/Widgets/Evidence-WCI2-M1.md.
+
+- 2026-10-08T09:45:51.265777+00:00 — EVT-KB-SDUI-000024: WCI2-M2 delivered at 0fc15c8; 118 native checks, 26 exactly-once results and independent approval. WCI3-M1 selected; retain in-progress for values/text/providers/package preparation. Evidence: ../../05--Implementation/SDUI/Widgets/Evidence-WCI2-M2.md. Backlog review preserves separate KB004 and KB005 dispositions.

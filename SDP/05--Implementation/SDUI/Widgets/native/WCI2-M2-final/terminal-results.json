@@ -1,0 +1,62 @@
+{
+  "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/WCI2-M2-final/commands/events.ndjson.gz": {
+    "publishedOpenings": 0,
+    "terminalResults": 0,
+    "exactlyOnce": true
+  },
+  "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/WCI2-M2-final/context/events.ndjson.gz": {
+    "publishedOpenings": 0,
+    "terminalResults": 0,
+    "exactlyOnce": true
+  },
+  "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/WCI2-M2-final/keyboard/events.ndjson.gz": {
+    "publishedOpenings": 0,
+    "terminalResults": 0,
+    "exactlyOnce": true
+  },
+  "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/WCI2-M2-final/dialog/events.ndjson.gz": {
+    "publishedOpenings": 3,
+    "terminalResults": 3,
+    "exactlyOnce": true
+  },
+  "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/WCI2-M2-final/nonmodal-dialog/events.ndjson.gz": {
+    "publishedOpenings": 3,
+    "terminalResults": 3,
+    "exactlyOnce": true
+  },
+  "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/WCI2-M2-final/focus/events.ndjson.gz": {
+    "publishedOpenings": 2,
+    "terminalResults": 2,
+    "exactlyOnce": true
+  },
+  "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/WCI2-M2-final/nonmodal-focus/events.ndjson.gz": {
+    "publishedOpenings": 3,
+    "terminalResults": 3,
+    "exactlyOnce": true
+  },
+  "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/WCI2-M2-final/command-failures/events.ndjson.gz": {
+    "publishedOpenings": 0,
+    "terminalResults": 0,
+    "exactlyOnce": true
+  },
+  "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/WCI2-M2-final/accept-failures/events.ndjson.gz": {
+    "publishedOpenings": 4,
+    "terminalResults": 4,
+    "exactlyOnce": true
+  },
+  "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/WCI2-M2-final/lifecycle/events.ndjson.gz": {
+    "publishedOpenings": 3,
+    "terminalResults": 3,
+    "exactlyOnce": true
+  },
+  "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/WCI2-M2-final/nonmodal-lifecycle/events.ndjson.gz": {
+    "publishedOpenings": 4,
+    "terminalResults": 4,
+    "exactlyOnce": true
+  },
+  "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/WCI2-M2-final/nested/events.ndjson.gz": {
+    "publishedOpenings": 4,
+    "terminalResults": 4,
+    "exactlyOnce": true
+  }
+}

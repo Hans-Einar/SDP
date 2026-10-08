@@ -1,0 +1,50 @@
+{
+  "commands": {
+    "stderr": "",
+    "diagnostics": []
+  },
+  "context": {
+    "stderr": "",
+    "diagnostics": []
+  },
+  "keyboard": {
+    "stderr": "",
+    "diagnostics": []
+  },
+  "dialog": {
+    "stderr": "",
+    "diagnostics": []
+  },
+  "nonmodal-dialog": {
+    "stderr": "",
+    "diagnostics": []
+  },
+  "focus": {
+    "stderr": "",
+    "diagnostics": []
+  },
+  "nonmodal-focus": {
+    "stderr": "",
+    "diagnostics": []
+  },
+  "command-failures": {
+    "stderr": "",
+    "diagnostics": []
+  },
+  "accept-failures": {
+    "stderr": "",
+    "diagnostics": []
+  },
+  "lifecycle": {
+    "stderr": "",
+    "diagnostics": []
+  },
+  "nonmodal-lifecycle": {
+    "stderr": "",
+    "diagnostics": []
+  },
+  "nested": {
+    "stderr": "",
+    "diagnostics": []
+  }
+}

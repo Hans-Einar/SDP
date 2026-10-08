@@ -2,8 +2,8 @@
 
 ## Session roadmap
 
-Latest recorded turn: T003. Current work: S3 panes and commands.
-WCI1 is implemented, verified and independently reviewed; WCI2-M1 is delivered; M2 commands/menus/dialogs is selected. Diagram is **sequence only**, using synthetic equal
+Latest recorded turn: T003. Current work: S4 typed values and text.
+WCI1/WCI2 are implemented, verified and independently reviewed; WCI3-M1 scalar fields is selected. Diagram is **sequence only**, using synthetic equal
 slots; it is not a delivery schedule or measured timeline.
 
 ```mermaid
@@ -14,8 +14,8 @@ gantt
     section Route
     S1 Capability and interaction design :done, s1, 2000-01-01, 1d
     S2 Collections and viewports :done, s2, after s1, 1d
-    S3 Panes and commands :active, s3, after s2, 1d
-    S4 Typed values and text :s4, after s3, 1d
+    S3 Panes and commands :done, s3, after s2, 1d
+    S4 Typed values and text :active, s4, after s3, 1d
     S5 Consumer integration and review :s5, after s4, 1d
 ```
 
@@ -23,8 +23,8 @@ gantt
 | --- | --- | --- | --- | --- | --- |
 | completed | S1 | PLAN-SDP-0021 WCD1 and PLAN-SDP-0022 WCI0 | Existing gap study and inventory | Owner T001 | WCD1 independently reviewed and complete; WCI0 verified and independently reviewed |
 | completed | S2 | PLAN-SDP-0022 WCI1 | S1 | Owner T001 full card | c39b330; Evidence-WCI1; 54 native checks; independent approval |
-| on-going | S3 | PLAN-SDP-0022 WCI2 | S2 pilot evidence | Owner T001 full card | pending |
-| planned | S4 | PLAN-SDP-0022 WCI3 | Shared contracts from S1–S3 | Owner T001 full card | pending |
+| completed | S3 | PLAN-SDP-0022 WCI2 | S2 pilot evidence | Owner T001 full card | 403c540 / 0fc15c8; 58 pane + 118 command native checks; independent approval |
+| on-going | S4 | PLAN-SDP-0022 WCI3 | Shared contracts from S1–S3 | Owner T001 full card | pending |
 | planned | S5 | PLAN-SDP-0022 WCI4 | S2–S4 | Owner T001; publication unselected | pending |
 
 | Field | Value |
@@ -33,8 +33,8 @@ gantt
 | Status | active |
 | Primary card | [KB-SDUI-003](../KanBan/active/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md) |
 | Snapshot date | 2026-10-07 owner request; actual ledger timestamps recorded separately |
-| Current step | S3 |
-| Proposed next step | S3 WCI2-M2 commands, menus and dialogs |
+| Current step | S4 |
+| Proposed next step | S4 WCI3-M1 typed scalar fields |
 | Execution authority | Owner T001 requests taking the card's work |
 
 ## Goal
@@ -284,6 +284,97 @@ implementation obligations.
   Phase validation passes with 526 events; original canonical history remains
   unchanged and passes with 538. Unrelated governance history is not imported.
 
-## Closeout
+- M2 seams are frozen for selected-root frontend identities, aggregate per-canvas
+  layout, runtime MenuScope and native inspection. First native-menu adapter
+  regressions pass; independent review found reused-model callback wrapping and
+  disabled keyboard invocation defects, both assigned to host before integration.
+- Native harness preparation adds real secondary click, WM close protocol and
+  focus observation without forced focus. The WM close helper was exercised on
+  the delivered pane fixture (clean close/teardown); this is tooling proof, not
+  M2 acceptance. Separate :190 display has space for nonmodal windows.
+- Next: finish the five M2 lanes, integrate the actual SDL command/dialog fixture,
+  and run native command/context/modal/nonmodal/error/lifetime acceptance.
 
+- Independent WCI4 draft review approved path-keyed immutable Markdown outcomes
+  and explicit fatal-versus-fallback resource handling for future stage entry.
+  WCI3 exact-number design now bounds coefficient digits and effective decimal
+  exponents before arbitrary-precision conversion, including precise zero/trailing
+  zero handling; compact exponents cannot bypass memory bounds. Product stages
+  remain subsequent to M2 and still require actual native evidence.
+
+- M2 frontend and layout lanes passed scoped race checks and froze their files.
+  Independent runtime review found opener/remembered-focus fallback and inactive
+  nonmodal key routing gaps; assigned corrections retain the reviewed behavior.
+  Actual SDL fixture exposed the existing one-receiver connection invariant:
+  distinct visible receivers are being used rather than weakening the parser.
+- Native dialog imports require Fyne's already pinned fancyfs v0.0.1. Coordinator
+  added only that indirect requirement and its two checksums to SDL/SDUI module
+  roots; no dependency version upgrade or product patch. Host inspection alone
+  transfers to the finished layout worker; core host ownership stays unchanged.
+
+- Superseding independent M2 runtime/bridge checkpoint: focus/key routing,
+  cross-pane command updates with reserved-owner protection, and strict snapshot
+  schema projection corrections pass the five reviewer regressions. Independent
+  runtime race passes (1.737s); corrected real SDL bridge race passes (2.198s).
+  This is scoped approval; native host/frozen integrated acceptance remains open.
+  Surface inspection tests found a scoped SVG inventory mismatch assigned to host.
+
+- Continuation recovery reused sdp/master/verifier and preserved exclusive lanes.
+  Actual pilot2 binary 3b5efbcc passes context (4 checks), modal and nonmodal
+  dialog (7 each), failed acceptance (17), and nonmodal lifecycle (12). The
+  focused-tree shortcut loss is corrected; hidden surface SVG inventory and
+  button runtime focus corrections pass the inspector/full host race checks.
+  These evolving-candidate results do not establish final M2 acceptance.
+- Runtime adds exact-token forced RevokeSurface for a genuinely lost native
+  owner, preserving stale replacement protection and bypassing fallible geometry.
+  Independent review and final host freeze remain pending. Next: keyboard,
+  focus and visible native proof, then exact-candidate verification/integration.
+
+- Further M2 native pilots prove modal/nonmodal Tab order, parent modality and
+  restored real keyboard focus (10 checks each), plus nine failed-command checks
+  with truthful outcomes and retained accepted reentrant drafts. A late keyboard
+  edge exposed GLFW's Shift-only dispatch; corrected pilot3 passes Shift+F10 and
+  Entry shortcuts. Inspected OS captures confirm visible themed icon and actual
+  dialog/context menu. The new A06 fixture proves three separate Escape levels.
+- Main reconciled prior widget architecture/requirements documentation missing
+  only from the isolated phase copy, with original baselines retained for safe
+  integration. Future WCI3/WCI4 documents now truthfully record their existing
+  independent design approvals while keeping product implementation unselected.
+  Host's final keyboard edge corrections and exact-candidate freeze/review remain
+  next; all later families and whole-card completion remain open.
+
+- Candidate 22539389 passed all 110 command/surface native checks, 58 pane
+  regressions, full phase/original suites, and an audit of 22 exactly-once
+  published openings. Its 112 files were safely integrated with prior bytes
+  backed up. Independent review then found a missing dynamic-parent case:
+  root-sibling dialog source order selected the wrong native parent/size.
+  M2 stays in progress; only host surface ordering and the bounded regression
+  fixture are unfrozen. Prior evidence is retained as candidate-22539389,
+  not final acceptance. A new actual nested-window workflow is required.
+- One prior keyboard run emitted an upstream Fyne preference-load EOF while
+  all behavior assertions passed; one fresh-configuration repeat passed without
+  stderr. Both records are retained. A preferences watcher/write race is a
+  plausible source-based explanation, not proven causality or a product patch.
+
+- Recovery work summary: final candidate 2c1db6d1 passes 118 native checks, including
+  actual dynamic-parent geometry and modal-child lifetime. Exactly 26 published
+  openings have one terminal result each; all completed-run stderr is empty. Final
+  SDUI/SDL race and original SDPTool suites exit zero. A runner interruption (143)
+  is retained separately; remaining scenarios were rerun and passed. Source remains
+  frozen pending final independent archive approval. WM native-owner closure is
+  explicitly parent-closed/sequence zero; source Close/Cancel remains user-sequenced.
+- Reused sdp/master/planning/verifier/architect/traceability. Independent reviewer
+  approved WCI3 preimplementation refinements: closed-dialog draft discard overrides
+  general successor retention, and only exact safe53 integer grids use uncapped
+  uint64 ticks. No WCI3 implementation selected yet. Next: M2 reviewed delivery,
+  then WCI3 scalar stage under existing whole-card authority.
+
+- M2 delivery work summary: independent reviewer approved all 113 files, 70 archive
+  entries and final native/suite evidence. Phase commit 0fc15c8 records product
+  delivery; only two documentation status paragraphs changed after tested freeze.
+  S3 is complete. WCI3-M1 selected under original full-card authority; bounded
+  numeric/runtime, frontend, layout, host and SDL lanes continue on a new phase
+  branch. No whole-card, merge or release completion is claimed.
+
+## Closeout
 Open. No widget, plan, card or Session completion is inferred from intake/design.

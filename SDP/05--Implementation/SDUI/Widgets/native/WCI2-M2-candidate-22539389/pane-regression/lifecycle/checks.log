@@ -1,0 +1,7 @@
+PASS leaving page revokes its pending provider request
+PASS returning page retains cancellation and rejects late load
+PASS revealed page R starts exactly one fresh provider request
+PASS fresh revealed-page completion publishes without extra SDL call
+PASS hide current page picks eligible sibling without callback
+PASS show restores eligible page state with fresh explicit activation
+PASS native teardown closes session and clears provider barriers
