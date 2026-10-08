@@ -1,0 +1,9 @@
+{
+  "status": "cancelled for explicit Main takeover; not a suite result",
+  "utc": "2026-10-08T11:48:01Z",
+  "ownedProcessTree": {
+    "210122": "/tmp/go-build1978431102/b374/values.test -test.paniconexit0 -test.timeout=10m0s -test.count=1",
+    "209945": "go test -race ./bridge ./examples/values/... ./examples/commands/... ./examples/panes/... -count=1"
+  },
+  "mainReceiptDirectory": "/tmp/wci3-m2-current-group"
+}

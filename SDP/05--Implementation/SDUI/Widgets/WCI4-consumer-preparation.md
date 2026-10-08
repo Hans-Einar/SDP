@@ -55,3 +55,18 @@ not claim XFMD Launch or the legacy standalone helper exposes the new families.
 The selected inventory does not require migrating every launcher to DocumentHost;
 no such route change is silently added during packaging. A matching helper payload
 and successful protocol test establish compatibility, not expanded launcher support.
+
+## Native helper IME recipe proof planned for WCI4
+
+The actual SDL/go extended-text fixture proves typed actions and composition at
+that build root. The SDUI/go sdui-fyne helper retains its legacy RuntimeView route;
+its separate actual IME recipe proof must use a basic 0.2 input without implying
+new-family support. Independent review identified the required discriminator:
+start with accepted A, type a distinct unaccepted B suffix, then compose 中. After
+composition Return, plain Escape must restore A; an erroneous premature Submit
+would have accepted AB. Starting from clean text could falsely pass this test.
+Also test dirty AB plus active composition Escape retains AB, followed by plain
+Escape restoring A; ordinary Return then Escape must retain composed accepted text.
+Use actual configured XIM, captured clipboard/screens, exact source/binary hashes,
+module replacement build information and actual helper-build recipe. This remains
+planned proof, not completed IME or expanded XFMD launcher acceptance.

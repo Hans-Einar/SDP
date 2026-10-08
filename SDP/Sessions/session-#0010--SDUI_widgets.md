@@ -2,8 +2,8 @@
 
 ## Session roadmap
 
-Latest recorded turn: T003. Current work: S4 typed values and text.
-WCI1/WCI2 are implemented, verified and independently reviewed; WCI3-M1 scalar fields is delivered; WCI3-M2 extended text is selected. Diagram is **sequence only**, using synthetic equal
+Latest recorded turn: T003. Current work: S5 consumer integration and review.
+WCI1/WCI2 are implemented, verified and independently reviewed; WCI3 scalar fields and extended text are delivered and independently reviewed; WCI4 is selected. Diagram is **sequence only**, using synthetic equal
 slots; it is not a delivery schedule or measured timeline.
 
 ```mermaid
@@ -15,8 +15,8 @@ gantt
     S1 Capability and interaction design :done, s1, 2000-01-01, 1d
     S2 Collections and viewports :done, s2, after s1, 1d
     S3 Panes and commands :done, s3, after s2, 1d
-    S4 Typed values and text :active, s4, after s3, 1d
-    S5 Consumer integration and review :s5, after s4, 1d
+    S4 Typed values and text :done, s4, after s3, 1d
+    S5 Consumer integration and review :active, s5, after s4, 1d
 ```
 
 | State | Step | Work and linked plan milestone | Prerequisites | Authorization | Completion evidence / outcome |
@@ -24,8 +24,8 @@ gantt
 | completed | S1 | PLAN-SDP-0021 WCD1 and PLAN-SDP-0022 WCI0 | Existing gap study and inventory | Owner T001 | WCD1 independently reviewed and complete; WCI0 verified and independently reviewed |
 | completed | S2 | PLAN-SDP-0022 WCI1 | S1 | Owner T001 full card | c39b330; Evidence-WCI1; 54 native checks; independent approval |
 | completed | S3 | PLAN-SDP-0022 WCI2 | S2 pilot evidence | Owner T001 full card | 403c540 / 0fc15c8; 58 pane + 118 command native checks; independent approval |
-| on-going | S4 | PLAN-SDP-0022 WCI3 | Shared contracts from S1–S3 | Owner T001 full card | pending |
-| planned | S5 | PLAN-SDP-0022 WCI4 | S2–S4 | Owner T001; publication unselected | pending |
+| completed | S4 | PLAN-SDP-0022 WCI3 | Shared contracts from S1–S3 | Owner T001 full card | ea49991f / 69d0a332; Evidence-WCI3-M1/M2; independent approval |
+| on-going | S5 | PLAN-SDP-0022 WCI4 | S2–S4 | Owner T001; publication unselected | pending |
 
 | Field | Value |
 | --- | --- |
@@ -33,8 +33,8 @@ gantt
 | Status | active |
 | Primary card | [KB-SDUI-003](../KanBan/active/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md) |
 | Snapshot date | 2026-10-07 owner request; actual ledger timestamps recorded separately |
-| Current step | S4 |
-| Proposed next step | S4 WCI3-M2 extended text/IME |
+| Current step | S5 |
+| Proposed next step | S5 WCI4-M1 previews and consumer preparation |
 | Execution authority | Owner T001 requests taking the card's work |
 
 ## Goal
@@ -58,7 +58,7 @@ XM-M2 evidence. Rich optional research retains its existing disposition.
 | Local ref | Plan type and document | Document readiness | Canonical plan lifecycle | Depends on | Outcome / evidence |
 | --- | --- | --- | --- | --- | --- |
 | P1 | [PLAN-SDP-0021 DesignPlan](../04--Design/SDUI/Widgets/Plan.md) | completed | completed | PLAN-SDP-0009 research | Independently reviewed design and per-family acceptance |
-| P2 | [PLAN-SDP-0022 ImplementationPlan](../05--Implementation/SDUI/Widgets/Plan.md) | on-going | active | P1, staged elaboration | WCI0/WCI1 delivered; WCI2-M1 delivered; M2 in progress |
+| P2 | [PLAN-SDP-0022 ImplementationPlan](../05--Implementation/SDUI/Widgets/Plan.md) | on-going | active | P1, staged elaboration | WCI0–WCI3 delivered; WCI4-M1 in progress |
 
 ## Route changes and decisions
 
@@ -443,6 +443,99 @@ implementation obligations.
   Commit/reload/probe retain history. CR/LF paste is refused before delegation from
   the same captured clipboard bytes, including context menus. This is a reviewed
   design choice within basic editing scope, not a new owner quotation.
+
+- WCI3-M2 implementation work summary: five bounded lanes are active after
+  ea49991/d674274 (original handoff 277c3eb). The frontend opt-in helper and runtime
+  projection API are on disk with initial component checks; no final freeze yet.
+  Main added the pinned 145-file GLFW source with one X11 conditional change and
+  explicit replacements in both native build roots. Independent provenance review
+  and exact reverse-patch verification pass; real product IME evidence remains
+  pending. No module-cache or external consumer source was changed.
+
+- M2 checkpoints: independent frontend/runtime/layout reviews approve their frozen
+  scoped candidates and legacy byte compatibility. Actual single-line Unicode
+  workflow passes six checks. Multiline OS input exposed missing Ctrl+Shift+Z Redo
+  mapping despite component tests; host fixed the exact custom-shortcut route, with
+  native rerun pending. Cold native startup exceeded the initial 15-second test
+  bound during parallel race tests; a bounded 45-second startup retry is underway,
+  without treating the transient minimum diagnostic as a proven cause.
+
+- M2 actual configured IBus/XIM pilot passes seven checks: preedit emits no draft
+  or SDL action, consumed Return commits composition without Save, consumed Escape
+  retains the prior draft, ordinary Return and explicit multiline Primary+Return
+  save once. Fixture stderr is empty; isolated D-Bus/portal environment warnings
+  remain explicit. Native history, paste guards, scrolling, retention, required
+  text and dialog pilots also pass; final candidate audit remains open.
+- WCI4 read-only API reconciliation found the existing composite SVG image route
+  drops nested diagram images in pinned Fyne/oksvg. Coordinator/reviewer select
+  truthful per-diagram label/reject before outcome freeze, retaining prose and
+  requiring actual direct-SVG proof. Fyne Accessible adapter labels are selected;
+  Linux screen-reader bridge delivery is explicitly unsupported/unverified. This
+  fits the card’s preview-placeholder boundary and does not start WCI4 code.
+
+- Interruption recovery work summary: owner noted an apparent interruption;
+  continued the authorized card from the preserved checkpoint. M2 all five scoped
+  lanes are independently approved, including the final text fixture race suite
+  (508.408 seconds within its unchanged limit). Main and worker native binaries
+  match SHA256 `0078f72eec7fe61bd41a1b090bb7ca2f26ba48c3a1e54c4eff6bd240c010f001`.
+  Guarded integration copied 222 frozen source paths into the original workspace,
+  retaining backups and unrelated work. Strengthened actual wrap/scrollbar pilot
+  passes nine checks. Fresh final native matrix and aggregate suites are running.
+  Reused SDP/master/verifier/traceability; S4/M2 stays active. WCI4 final geometry
+  API is independently approved and recorded, with implementation still pending.
+
+- Final M2 native work summary: all 13 fresh workflows pass 86 checks, with
+  five published openings/five exactly-once terminal results and clean fixture
+  teardown. Full SDUI race and original SDPTool pass. Final evidence inspection
+  distinguishes the earlier SDL values/commands/panes passes on an older host
+  from the current source; a bounded current-candidate rerun is now required and
+  running. Text (508.408s), collections (18.031s) and non-Fyne current evidence
+  remain valid. No product defect or code change is inferred from this evidence
+  gap. S4 stays active until the final suite/archive review completes.
+
+- Independent final raw audit verifies all 13 binary-bound runs, 86 checks, five
+  exact receipts, actual nonmodal ownership and clean session teardown; inspected
+  OS captures have no visual blocker. All 222 source hashes still match both roots.
+  Overall acceptance waits for the current SDL group and faithful archive. A crossed
+  asynchronous handoff briefly launched duplicate current-group tests; coordinator
+  stopped only its own later invocation, retained its explicit aborted diagnostic
+  record and continued the earlier worker run. No product failure is inferred.
+
+- Late M2 integration finding: independent overlay reproduces accepted command
+  and tab TextResult bindings to an extended read-only receiver executing SDL
+  once, then rejecting UI publication with `field-conflict`/domain succeeded.
+  interactionHandler omitted the captured draft revision required by extended
+  fields. Earlier aggregate approval is suspended. The complete 0078 candidate
+  archive is retained as `WCI3-M2-before-interaction-fix`; it proves its exercised
+  paths but does not close this new cross-family failure. A bounded bridge guard
+  correction, command/tab regressions and actual command-load native proof are
+  assigned. No existing supported receiver route is silently replaced by a basic
+  fixture workaround. S4 remains in progress; WCI4 implementation remains pending.
+
+- Guard correction work summary: coordinator took the bounded Worker delta after
+  closing the integration worker context. Exactly three paths change: captured
+  draft guard, actual SDL integration regressions and a false-default command-load
+  native CLI variant. The 224-file candidate matches both roots; independent
+  rebuild matches binary 2579df7a. Targeted tests and fresh affected SDL race group
+  pass (values 131.457s), with unchanged-source receipts. Independent same-event
+  replay evidence supplements the committed no-automatic-replay assertion.
+- A fresh context-menu paste run exposed an input readiness assumption: immediate
+  navigation reached the Entry and triggered Save. The failed raw run is retained.
+  Harness now observes Entry losing focus to the popup, captures the actual menu
+  and preserves focus for its keys; same-binary corrected run passes with zero
+  SDL calls and intact Undo. Reviewer accepts the bounded harness correction;
+  the precise delay-versus-forced-focus cause is not claimed. Remaining native
+  variants are running; no further product change or M2 completion yet.
+
+- M2 delivery work summary: `69d0a332` records 224 exact paths, 92 native
+  checks, 5 exactly-once results and independent integrated approval. Full
+  SDUI race, affected SDL packages/fixtures and original SDPTool pass; actual XIM
+  composition and history/scroll/dialog workflows are archived with earlier failed
+  pilots and environment diagnostics. S4 is complete; S5/WCI4-M1 is selected under
+  the existing full-card request. Reused SDP/master/planning/architect/verifier/
+  traceability. The reviewed four-lane APIs and canonical backend/geometry matrix
+  govern previews; main owns consumer packaging. Next: implement bounded prepared
+  content and native previews, verify matching packages, then integrated closeout.
 
 ## Closeout
 Open. No widget, plan, card or Session completion is inferred from intake/design.

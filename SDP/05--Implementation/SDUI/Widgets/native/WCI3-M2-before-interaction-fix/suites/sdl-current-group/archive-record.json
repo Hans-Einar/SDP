@@ -1,0 +1,19 @@
+{
+  "name": "sdl-current-group",
+  "status": "passed",
+  "exit": 0,
+  "command": "go test -race ./bridge ./examples/values/... ./examples/commands/... ./examples/panes/... -count=1",
+  "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+  "receipt_origin": "Coordinator final subprocess captured result.json and exit, actual session44261 completion; both source manifests match",
+  "log": "/tmp/wci3-m2-current-group-final/test.log",
+  "receipt": "/tmp/wci3-m2-current-group-final/result.json",
+  "source_before": "/tmp/wci3-m2-current-group-final/source-before.json",
+  "source_after": "/tmp/wci3-m2-current-group-final/source-after.json",
+  "artifacts": [
+    "/tmp/wci3-m2-current-group-final/command.json",
+    "/tmp/wci3-m2-current-group-final/source-before.json",
+    "/tmp/wci3-m2-current-group-final/source-after.json",
+    "/tmp/wci3-m2-current-group-final/exit"
+  ],
+  "notes": "Sole coordinator final run; earlier crossed coordinator/worker runs were deliberately aborted and excluded."
+}

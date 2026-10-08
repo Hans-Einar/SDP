@@ -1,9 +1,9 @@
-# WCI4 providers and package preparation — reviewed future stage contract
+# WCI4 providers and package preparation — reviewed selected stage contract
 
 | Field | Value |
 | --- | --- |
-| Assignment | SDP Architect; draft only, 2026-10-08 |
-| Status | Independent design review approved; requires WCI1–WCI3 pilot reconciliation and stage selection before code |
+| Assignment | SDP Architect; reviewed design, selected after WCI3-M2 |
+| Status | Independent design/API review approved; WCI4-M1 selected after WCI3-M2 acceptance |
 | Authority | KB-SDUI-003 full inventory; PLAN-SDP-0022 WCI4-M1/M2; Session0010 |
 | Parents | [Design](Design.md), [Acceptance](Acceptance.md), [Preparation](Preparation.md), [Collections](Collections.md), [Panes](Panes-and-commands.md), [Values](Values-and-text.md) |
 | Outcome | Truthful SVG/Markdown previews, explicit provider/resource ownership and matching all-family producer/helper package preparation |
@@ -29,8 +29,14 @@ Observed in the original workspace, including its existing uncommitted integrati
 | `SDPTool/package.sh` | Builds only sdptool, its build manifest and checksums into a new directory. It does not package Fyne helpers. |
 | `Toolkit` | Process/template installation and shell CLI distribution; its CLI installer copies scripts without compilation. This is not an SDUI native dependency manager. |
 
-The KB005 producer plan describes privately bundled XFMD helpers. No external XFMD checkout/build was inspected;
-that historical arrangement proves neither its current module versions nor 0.3/native capability.
+The initial draft had not inspected an external XFMD checkout. Subsequent read-only
+[consumer preparation](../../../05--Implementation/SDUI/Widgets/WCI4-consumer-preparation.md)
+records the supplied checkout and actual helper build/install/protocol contracts.
+It does not prove a rebuilt package or 0.3 standalone native capability. The legacy
+standalone RuntimeView lacks the new-family adapters even when no provider is needed;
+report this separately from missing collection providers or SDL bindings. The selected
+runnable 0.3 route is the staged connected DocumentHost fixtures. No legacy launcher
+migration or expanded XFMD Launch claim is selected.
 
 ## 2. Small opt-in source contract
 
@@ -240,3 +246,82 @@ Independent reviewer approved substantive candidate
 This records design readiness only. WCI3 product dependency selection/evidence,
 all-family reconciliation and WCI4 implementation/package verification remain
 required before delivery. The original draft handoff above is historical.
+
+## WCI4 preimplementation reconciliation — Session0010 T003
+
+Coordinator and independent reviewer approve the following concrete backend matrix
+within the card's expressly permitted labelled-preview boundary. The prior general
+provider contract does not promise every backend renders Mermaid diagrams.
+
+| Actual selected native route | Outcome and required proof |
+| --- | --- |
+| Supplied closed-subset resource SVG, direct native image | Render real validated content with aspect fit/shared clip; inspect positive OS output. |
+| Explicit bounded Markdown prose | Render the existing pure background/text path; inspect positive OS output. |
+| Explicit Markdown diagram in the existing composite SVG background | Unsupported natively: resolve each diagram to its declared label/reject policy before outcome/capability freeze. Retain ordinary prose; never advertise rendered Mermaid for this route. |
+| Legacy bare Markdown/provider APIs | Preserve existing behavior and records; do not relabel old placeholders or silently tighten old APIs. |
+
+Independent reproduction with pinned Fyne/oksvg shows a direct SVG rectangle
+decodes to one path, while the same bytes nested in the current Markdown data-URI
+image decode to zero paths without an error in default mode; strict mode rejects
+the image element. Resource validation alone therefore cannot certify the actual
+composed native representation. A backend check must cover that representation,
+not merely the inner resource. No per-diagram native scene, general renderer or
+full Mermaid backend is required to close the expressly bounded preview inventory.
+
+All binding identities are checked before any fallback, including on this known
+unsupported diagram route. Missing/failed/unsupported outcomes follow declared
+policy and freeze before the first gate. Provider copy/revision guards, aggregate
+budgets and zero rerenders during measurement/publication remain mandatory. This
+refinement does not waive actual positive supplied-SVG and Markdown-prose evidence.
+An earlier reviewer suggestion that positive native Mermaid was mandatory was
+withdrawn after re-reading the owner's explicit placeholder allowance.
+
+The actual mounted SVG and explicit-Markdown preview wrappers implement Fyne's
+public Accessible interface with exact description and outcome status, independent
+of an optional caption. Inspector evidence queries that actual interface rather
+than reconstructing expected labels from runtime metadata. Visible labelled
+fallback remains mandatory. Pinned Fyne's Linux accessibility backend is a no-op
+even with its build tag; this stage claims the adapter contract and visible labels,
+not Linux OS screen-reader delivery. Other platform bridges require their own
+selected build/evidence. No accessibility backend expansion is selected here.
+
+These are reviewed coordinator decisions, not additional owner quotations or
+completed WCI4 implementation. Concrete frozen-outcome, caption/fit and preparation
+API handoffs still precede product code, after WCI3-M2 acceptance.
+
+
+### Final bounded preview text geometry seam
+
+Coordinator and independent reviewer select the reconciled provider/layout/host
+API: immutable per-path outcomes expose `MeasurePreview`, fixed image/caption/status
+`SVGRects`, and pure `RenderSVGText(builder, *Box) error`. Caption and status use
+the same band/line plan, existing layout text metrics and GoRegular glyph paths.
+The host mounts a direct resource image and separate text-only SVG overlay under
+the shared box clip; no nested images, native font callback or general scene is
+introduced. One measured caption row may ellipsize. The full bounded fallback
+status wraps, with a minimum that admits all status text or rejects preparation.
+Glyph painting errors reject explicitly; existing glyph coverage is not expanded
+and arbitrary Unicode fidelity is not claimed. The actual Accessible wrapper
+retains the full description and outcome status independently of visible caption.
+
+Frozen outcomes and representation checks precede the first gate. Later geometry
+work may render pure text paths but cannot invoke the content renderer, reopen
+fallback policy or mutate outcomes. Final host API memo `480949744f3fe11e7e40f00467dc4333792e3c57f6e1435e8a3b30bbcf5f26a7`
+and provider memo `efc728fa706b8a755c39fb4a335aa049013537feb8430ef03f126628cec2eacf`
+record the reconciled seam; tentative earlier metrics callback alternatives are
+superseded. This closes design readiness only; WCI4 selection and proof remain.
+
+The final handoff copies are retained under the implementation Widgets directory,
+with the [all-family assignment audit](../../../05--Implementation/SDUI/Widgets/WCI4-assignment-audit.md).
+The host memo subsequently added the already selected caption/status policy and
+M2-suite provenance; its final hash is c8851582390a0c0bcae084b78d21f93df92c13aaf487239dc585d7d37e868c0f.
+The earlier host hash above identifies its independent design review, not the final
+copy. Provider/frontend/layout interfaces retain their reviewed responsibilities.
+
+WCI4-M1 is now selected after WCI3-M2 acceptance under existing full-card authority.
+The final reconciled [frontend](../../../05--Implementation/SDUI/Widgets/WCI4-frontend-API.md),
+[provider](../../../05--Implementation/SDUI/Widgets/WCI4-provider-API.md),
+[layout](../../../05--Implementation/SDUI/Widgets/WCI4-layout-API.md) and
+[host](../../../05--Implementation/SDUI/Widgets/WCI4-host-API.md) handoffs apply with
+the final canonical geometry/backend decisions above. Their earlier unselected
+status is historical preparation provenance; no WCI4 delivery is yet claimed.

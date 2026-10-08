@@ -1,0 +1,7 @@
+PASS new required constraint rejects accepted blank baseline
+PASS programmatic multiline text preserves CRLF bytes
+PASS single-line conversion rejects accepted CRLF without replacement
+PASS single-line conversion rejects surviving multiline draft
+PASS rejected conversion preserves native undo history
+PASS closed-form successor discards unaccepted multiline draft before single-line conversion
+PASS native teardown closes session and clears provider barriers

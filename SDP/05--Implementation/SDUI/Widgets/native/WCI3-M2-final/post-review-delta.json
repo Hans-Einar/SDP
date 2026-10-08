@@ -1,0 +1,12 @@
+{
+  "previousInventorySHA256": "f551e2e3a7f652b93fce8bce076750c768d4a448577c19476e0bac6c1d06c3c6",
+  "currentInventorySHA256": "19bc6aa20386470ab6a0b0ef2246db59fea6409ba13f8709fa777e5c998b6d6e",
+  "changedPaths": [
+    "SDL/go/bridge/interaction.go",
+    "SDL/go/bridge/text_interaction_test.go",
+    "SDL/go/examples/text/cmd/native/main.go"
+  ],
+  "unchangedPaths": 221,
+  "applicability": "SDUI/go and all dependency bytes unchanged, so full SDUI/profile evidence retained. Text default library/source, typed Commit, legacy Load, DialogAccept branches unchanged; text508 and collections/non-Fyne suites retained. Interaction TextResult change freshly covers command/tab receivers, with bridge/values/commands/panes race and fourteen native runs. Original SDPTool does not use runtime bridge paths. New native CLI flag only selects shared-command Load; defaults unchanged. Independent reviewer approved this bounded evidence plan.",
+  "nativeHarnessApplicability": "The first five passed final-binary workflows are retained. Only the unexecuted pasteguard method then gained an observable native popup-focus barrier and preserved-focus key delivery after its failed attempt. Failed attempt/pilot retained separately; remaining workflows resumed on the same frozen binary. No assertions were relaxed."
+}

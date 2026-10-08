@@ -1,0 +1,12 @@
+{
+  "name": "sdptool-original",
+  "status": "passed",
+  "exit": 0,
+  "command": "go test ./...",
+  "cwd": "/home/warloc/git/SDP-vNow/SDPTool",
+  "receipt_origin": "Coordinator recorded actual exec session 2743 exit 0; not archive-script captured",
+  "log": "/tmp/wci3-m2-original-sdptool-test.log",
+  "receipt": "/tmp/wci3-m2-original-sdptool-receipt.json",
+  "artifacts": [],
+  "notes": "Default inherited environment; concurrent unrelated work and cached unchanged packages."
+}

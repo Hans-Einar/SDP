@@ -1,0 +1,6 @@
+PASS page hiding preserves native text undo
+PASS collapse and restore preserve native text undo
+PASS accepted resize preserves native text undo
+PASS successful reload retains main draft and accepted value
+PASS successful reload restores field focus
+PASS native teardown closes session and clears provider barriers

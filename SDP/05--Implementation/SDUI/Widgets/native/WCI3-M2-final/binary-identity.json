@@ -1,0 +1,6 @@
+{
+  "sha256": "2579df7a405f18396c34a62498d4bfd6461a6a60176f39864e6cf36c9dcbb352",
+  "coordinatorBinary": "/tmp/wci3-m2-guard-final-native",
+  "reviewerBinary": "/tmp/wci3-m2-reviewer-guard-final-native",
+  "sameBytes": true
+}

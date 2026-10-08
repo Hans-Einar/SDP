@@ -19,6 +19,7 @@ class Trial(base.Trial):
         self.held_keys = {}
         self.held_buttons = {}
         args.binary_args = ['--nonmodal'] if args.nonmodal else []
+        args.binary_args.extend(getattr(args, 'extra_binary_args', []))
         if args.variant=='required_empty':
             args.binary_args.append('--required-empty')
         variant = args.variant

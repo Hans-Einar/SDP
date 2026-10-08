@@ -38,8 +38,8 @@ Current preview files are not this assignment's original implementation.
 | WCI2-M1 | Tabs/splits preserve page state, relative geometry and focus | WCI1 evidence and pilot findings; reviewed Panes-and-commands contract | completed |
 | WCI2-M2 | Button/toggle shared commands, menu/context/dialog with cancel/lifetime proof | WCI2-M1; typed command/surface grammar | completed |
 | WCI3-M1 | Checkbox/slider/select/numeric input and atomic typed drafts | WCI2; reviewed Values-and-text contract and API reconciliation | completed |
-| WCI3-M2 | Extended single-line and basic multiline text with native editing/IME/undo evidence | WCI3-M1; reviewed explicit opt-in/native editing/IME contract | in-progress |
-| WCI4-M1 | All-family producer discovery/composition/text/codegen/provider integration and matching consumer package preparation | WCI1–WCI3 | planned |
+| WCI3-M2 | Extended single-line and basic multiline text with native editing/IME/undo evidence | WCI3-M1; reviewed explicit opt-in/native editing/IME contract | completed |
+| WCI4-M1 | All-family producer discovery/composition/text/codegen/provider integration and matching consumer package preparation | WCI1–WCI3; reviewed Providers-and-packaging contract and four API handoffs | in-progress |
 | WCI4-M2 | Exact-candidate compatibility tests, native workflow evidence and independent integrated review; explicit disposition of all gaps | WCI4-M1 | planned |
 
 Each stage updates the matrix and relevant requirements/language/architecture/runtime
@@ -115,3 +115,14 @@ required-empty successor semantics govern implementation. Five disjoint lanes
 extend frontend, runtime, layout, host and SDL fixtures. Main owns the bounded
 pinned X11 GLFW filter dependency, native IME evidence and canonical integration.
 No further widget family is deferred; WCI4 remains required after text acceptance.
+
+## WCI3-M2 delivery and final integration selection
+
+[Text evidence](Evidence-WCI3-M2.md) records `69d0a332`, 224 paths, 92 native
+checks, 5 exact results and independent approval. WCI4-M1 is selected under
+existing full-card authority on `sdui/widgets-wci4`. The reviewed provider contract,
+backend matrix, public Accessible boundary and final frontend/provider/layout/host
+API handoffs govern implementation. Direct supplied SVG and bounded Markdown prose
+need actual native proof; unsupported diagrams resolve to declared label/reject
+before outcome freeze. Main owns matching package preparation and consumer evidence.
+WCI4-M2 retains integrated all-family verification and independent closeout.

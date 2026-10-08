@@ -1,0 +1,32 @@
+{
+  "argv": [
+    "go",
+    "test",
+    "-race",
+    "-count=1",
+    "-p",
+    "1",
+    "./broker",
+    "./cmd/sdl",
+    "./cmd/sdl-compiled",
+    "./cmd/sdl-dev",
+    "./cmd/sdl-document",
+    "./cmd/sdl-gen",
+    "./cmd/sdl-simulate",
+    "./cmd/sdl-view-request",
+    "./cmd/sdl-viewsd",
+    "./devhost",
+    "./documents",
+    "./examples/application",
+    "./examples/generatedmodel",
+    "./examples/simulation",
+    "./parser",
+    "./reader",
+    "./reload",
+    "./snapshot",
+    "./sourcegraph",
+    "./viewpoint"
+  ],
+  "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+  "GOFLAGS": "-mod=readonly"
+}

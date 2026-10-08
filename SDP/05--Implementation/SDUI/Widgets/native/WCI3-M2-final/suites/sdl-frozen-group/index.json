@@ -1,0 +1,121 @@
+[
+  {
+    "name": "old-broad",
+    "command": [
+      "go",
+      "test",
+      "-race",
+      "./bridge",
+      "./examples/text",
+      "./examples/values",
+      "./examples/commands",
+      "./examples/panes"
+    ],
+    "exit": 1,
+    "log": "/tmp/wci3-m2-sdl-test-evidence/old-broad-result.txt",
+    "provenance": "Retained tool-output result and stack excerpt, retranscribed; not original stdout file",
+    "results": {
+      "bridge": "PASS 3.612s",
+      "text": "TIMEOUT/FAIL 600.275s",
+      "values": "PASS 204.330s",
+      "commands": "PASS 51.342s",
+      "panes": "PASS 88.445s"
+    },
+    "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+    "logSHA256": "f88dff44b45757395d29f2e07b4fd0e6e3ab90f17a48ac53afe99e60d657306e"
+  },
+  {
+    "name": "final-text",
+    "command": [
+      "go",
+      "test",
+      "-race",
+      "./examples/text",
+      "-count=1",
+      "-v"
+    ],
+    "exit": 0,
+    "log": "/tmp/wci3-m2-text-race-final.log",
+    "provenance": "Original tee stdout/stderr transcript; shell pipefail exit 0 retained in tool result",
+    "results": {
+      "text": "PASS 508.408s"
+    },
+    "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+    "logSHA256": "4b07ef369d24ec2c0ca1c99f04bb92e664e13929b54e291e3856a61bacc2c162"
+  },
+  {
+    "name": "runtime-codegen",
+    "command": [
+      "go",
+      "test",
+      "-race",
+      "-count=1",
+      "-p",
+      "1",
+      "./runtime",
+      "./codegen"
+    ],
+    "exit": 0,
+    "log": "/tmp/wci3-m2-sdl-nonfyne-regressions/runtime-codegen.log",
+    "resultFile": "/tmp/wci3-m2-sdl-nonfyne-regressions/results.json",
+    "provenance": "Direct captured combined stdout/stderr; process exit persisted",
+    "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+    "logSHA256": "e42980db4758f8fef9df8dee8807dbc3f1ea582c366589089fe37452fbd7ecdc"
+  },
+  {
+    "name": "remaining-nonfyne",
+    "command": [
+      "go",
+      "test",
+      "-race",
+      "-count=1",
+      "-p",
+      "1",
+      "./broker",
+      "./cmd/sdl",
+      "./cmd/sdl-compiled",
+      "./cmd/sdl-dev",
+      "./cmd/sdl-document",
+      "./cmd/sdl-gen",
+      "./cmd/sdl-simulate",
+      "./cmd/sdl-view-request",
+      "./cmd/sdl-viewsd",
+      "./devhost",
+      "./documents",
+      "./examples/application",
+      "./examples/generatedmodel",
+      "./examples/simulation",
+      "./parser",
+      "./reader",
+      "./reload",
+      "./snapshot",
+      "./sourcegraph",
+      "./viewpoint"
+    ],
+    "exit": 0,
+    "log": "/tmp/wci3-m2-sdl-nonfyne-regressions/remaining-nonfyne.log",
+    "resultFile": "/tmp/wci3-m2-sdl-nonfyne-regressions/results.json",
+    "provenance": "Direct captured combined stdout/stderr; process exit persisted",
+    "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+    "logSHA256": "932fbbf0a5d440efaf252efc1dbafdfdaf23d26efce1e0e319404388f3e4177a"
+  },
+  {
+    "name": "collections",
+    "command": [
+      "go",
+      "test",
+      "-race",
+      "./examples/collections/...",
+      "-count=1"
+    ],
+    "exit": 0,
+    "log": "/tmp/wci3-m2-collections-regression/test.log",
+    "resultFile": "/tmp/wci3-m2-collections-regression/result.json",
+    "provenance": "Direct captured combined stdout/stderr; process exit persisted",
+    "results": {
+      "collections": "PASS 18.031s"
+    },
+    "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+    "logSHA256": "b74c15003aa164f7655cc95f289dcb608ad1bb27f4711f446c541b3c0c716e9e"
+  }
+]
