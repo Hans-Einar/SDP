@@ -1,4 +1,7 @@
 language design-core version 0.5.
+functionality AssessBlueprintEvidence.
+unit BlueprintAssessment.
+activity BlueprintAssessmentDelivery.
 unit BlueprintCatalogue.
 activity BlueprintCatalogueDelivery.
 unit BlueprintFacade.
@@ -63,11 +66,19 @@ field RoutineRequestRunIdentity.
 scenario RoutineStaleOrUnauthorized.
 unit RunRepository.
 dataset RunSnapshots.
+feature ScopedBlueprintReadiness.
 container SdpToolHost.
 message TransitionAccepted.
 message TransitionRefused.
 interface TrustedAssignmentBinding.
 functionality VerifyRetainedBlueprints.
+AssessBlueprintEvidence allocated-to SdpToolHost in mode ProjectReading.
+AssessBlueprintEvidence contributes-to ScopedBlueprintReadiness.
+AssessBlueprintEvidence realizes DiagnosticBlueprint.
+BlueprintAssessment owns AssessBlueprintEvidence.
+BlueprintAssessmentDelivery addresses AssessBlueprintEvidence.
+BlueprintAssessmentDelivery delivers ScopedBlueprintReadiness.
+BlueprintAssessmentDelivery has implementation-status = implemented.
 BlueprintCatalogue owns BrowseRetainedBlueprints.
 BlueprintCatalogue owns VerifyRetainedBlueprints.
 BlueprintCatalogueDelivery addresses BrowseRetainedBlueprints.
@@ -204,6 +215,8 @@ RoutineStaleOrUnauthorized step 2 sends TransitionRefused from RoutineCoordinato
 RunRepository owns OperationalRunStore.
 RunRepository owns ReconcileRunRevision.
 RunSnapshots upholds RoutineOutcome.
+ScopedBlueprintReadiness supports InspectProposedModelChange.
+SdpToolHost contains BlueprintAssessment.
 SdpToolHost contains BlueprintCatalogue.
 SdpToolHost contains BlueprintFacade.
 SdpToolHost contains ContextFacade.

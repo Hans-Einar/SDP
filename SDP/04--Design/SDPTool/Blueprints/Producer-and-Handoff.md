@@ -229,3 +229,53 @@ Malformed/missing/modified metadata stays visible with diagnostics and no target
 The ordinary Files scan does not classify retained sources as current SDL/SDUI.
 Refresh rescans real content; no manual index, generation, mutation or external
 reference lookup occurs. Native XFMD consumption remains separately owned.
+
+## BPI3-M1 assessment contract — 2026-10-08
+
+Selected implementation refinement of PLAN-SDP-0020: assess an existing verified
+retained bundle through `model assess blueprint --bundle DIR --evidence FILE`.
+The strict versioned evidence JSON is authored verification input; it references
+existing Traceability records, not a second assignment ledger. Output is a pure
+assessment on stdout (human default, --json machine), never a mutation of the
+bundle or workflow. BPI3-M2 owns assignment events and readiness adoption.
+This separation preserves immutable catalogue revisions and permits repeated
+assessment with new evidence without rewriting diagnostic documents.
+
+Evidence binds blueprint revision, retained revision, task digest and explicit
+scope. Each side optionally declares a code revision, a relative-path inventory
+of code file hashes and its content digest. Paths resolve beneath the evidence
+file's directory; symlinks/escape and nonregular files are rejected. These are
+bounded scoped code captures, not proof that every repository file was declared.
+Code mapping locators bind side, selected element, role, path, symbol and file
+hash; missing, ambiguous or stale locators remain UNKNOWN. Mapping completeness
+is reported over selected nodes only; tags and symbol names are not executed or
+interpreted as behavior proof.
+
+Check receipts identify side (NOW or TARGET), obligation, source digest, task
+digest, code digest, opaque command, environment, fixture/config digest, result,
+Traceability reference and a relative evidence artifact with SHA-256. Required
+checks are explicitly enumerated in the evidence scope. Results retain pass,
+fail, not-run, unavailable and stale; stale or absent receipts cannot silently
+satisfy required checks. A reported pass is attributed evidence, not authenticated
+execution. No receipt command, SDL action, mapping symbol or link is executed.
+
+Readiness requires passing structural constraints and obligations, no failed
+required checks, and one explicit owner/reviewer disposition per remaining
+UNKNOWN (scope, actor, rationale and Traceability reference). Disposition permits
+bounded deferral; it never changes not-run/unavailable/stale to pass. Overall code
+conformance and runtime/SDUI coverage remain separate unknowns even when supplied
+checks pass. Reject duplicate/unknown identifiers and wrong input binding.
+Assessment identity hashes the verified bundle identity, exact evidence input and
+observed scoped code/evidence hashes. Changed bytes yield a new assessment or an
+error; they cannot retain a previous ready result. Source freshness against current
+WORK is not evaluated by a historical retained-bundle assessment.
+
+This milestone does not authenticate owner identity, prove complete code mapping,
+execute verification, append lifecycle events or authorize work. Its bounded trial
+uses temporary code/model copies, generated documents and deliberately violating
+controls; no Ponsse implementation or pending pilot approval is implied.
+
+Evidence input requires exact struct-key spelling; differently cased duplicate
+fields cannot override a reported failure. Captures are cached and optimistically
+rechecked before returning, without claiming arbitrary-editor atomicity. The
+assessment schema must change when readiness-policy semantics change.

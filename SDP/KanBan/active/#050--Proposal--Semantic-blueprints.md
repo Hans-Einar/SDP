@@ -100,3 +100,11 @@ exposes Markdown/Mermaid targets; workState is explicitly unknown. Session0008 T
 and Evidence-BPI2-M2.md retain review, candidate and headless consumer evidence.
 Next BPI3-M1 readiness/check receipts and generated-bundle trial, then BPI3-M2
 assignment lifecycle. CardState remains in-progress; no native XFMD/release claim.
+
+
+2026-10-08 BPI3-M1: scoped evidence/readiness assessment and the generated-bundle
+Worker/Reviewer trial are delivered and independently reviewed. A approved within
+synthetic scope; protected-ownership B and code-only C rejected. Scoped reviewer
+unknown deferral does not imply production authority or code conformance. See
+Evidence-BPI3-M1.md and Session0008 T010. Next BPI3-M2 canonical assignment lifecycle
+and grouped navigation; CardState remains in-progress.

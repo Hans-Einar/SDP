@@ -1,0 +1,23 @@
+[
+  {
+    "command": "/tmp/bp2-sdl check /tmp/bpi3-trial/worker/model/System.design",
+    "cwd": "/tmp/bpi3-trial/worker/model",
+    "exit_code": 0,
+    "stdout": "{\n  \"profile\": \"design-core/0.6\",\n  \"revision\": \"29a5bfd5bacbb4ccb78054a62637a245572e2a8a043bac24c8e62080eb1f20b1\",\n  \"sources\": [\n    {\n      \"path\": \"Containers/BuckingUI.design\",\n      \"sha256\": \"736133f6bd8e76bb76af6b558884cbdd9e4818a9ca41c158aee421651bd39c50\"\n    },\n    {\n      \"path\": \"Containers/BuckingWeb.design\",\n      \"sha256\": \"61b2741856d08b95fb38eedcd708ae207f8a494a4cbf3d37953edac9c0997ddf\"\n    },\n    {\n      \"path\": \"Containers/MachineService.design\",\n      \"sha256\": \"2a12eac2257c8058fcd2328fda25a15546789b31593050a4b34a7814a1b8a1bd\"\n    },\n    {\n      \"path\": \"Contracts/Machine.design\",\n      \"sha256\": \"ea134e09aa9ea7bfdc7de9aa051d1cceb82cf9e9c726b46cab6e5d088ea06c96\"\n    },\n    {\n      \"path\": \"Features.design\",\n      \"sha256\": \"ab8f4487fd2c937481a7081bca4a7815f0d318d7e281a473c072ab8b3651b8bd\"\n    },\n    {\n      \"path\": \"System.design\",\n      \"sha256\": \"3f4393c57a50ef9bcb58641d991bb5c16f04c3c94ab0d0e298585819525260fe\"\n    }\n  ],\n  \"system\": \"MVP1InspectionPilot\",\n  \"valid\": true,\n  \"warnings\": []\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": "/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/bin/go test ./...",
+    "cwd": "/tmp/bpi3-trial/worker/code",
+    "exit_code": 0,
+    "stdout": "ok  \texample.com/blueprint-trial\t0.002s\n",
+    "stderr": ""
+  },
+  {
+    "command": "/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/bin/go version",
+    "cwd": "/tmp/bpi3-trial/worker/code",
+    "exit_code": 0,
+    "stdout": "go version go1.27.1 linux/amd64\n",
+    "stderr": ""
+  }
+]

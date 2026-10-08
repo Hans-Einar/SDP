@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-T009, 2026-10-08. Sequence only; dates are display slots, not duration estimates.
+T010, 2026-10-08. Sequence only; dates are display slots, not duration estimates.
 
 ```mermaid
 gantt
@@ -15,7 +15,7 @@ gantt
     section Implementation
     DONE BPI1 Analysis :done,d,after c,1d
     DONE BPI2 Publication and catalogue :done,e,after d,1d
-    NEXT BPI3 Evidence and lifecycle :f,after e,1d
+    ACTIVE BPI3 Evidence and lifecycle :active,f,after e,1d
 ```
 
 | State | Step | Outcome | Evidence / remaining work |
@@ -25,7 +25,7 @@ gantt
 | completed | S3 / BP2-C | API and implementation handoff | Authored model Worker/Reviewer trial; A approved, violating B rejected |
 | completed | S4 / BPI1 | Production Go analysis | Go analyzer delivered; independent review approves bounded BPI1 |
 | completed | S5 / BPI2 | Publication and catalogue | M1/M2 delivered; diagnostic bundles and retained discovery |
-| next | S6 / BPI3 | Evidence and lifecycle | M1 readiness/receipts and generated-bundle trial; M2 revision-bound lifecycle |
+| on-going | S6 / BPI3 | Evidence and lifecycle | M1 delivered; M2 next: revision-bound lifecycle and navigation |
 
 | Field | Value |
 | --- | --- |
@@ -258,3 +258,35 @@ S5/BPI2 is delivered; next S6/BPI3-M1 readiness/dispositions, pinned receipts an
 generated-bundle Worker/Reviewer trial. KB050 and the implementation plan stay active.
 The earlier installer race timeout remains a final-integration gap. No release,
 main merge, owner pilot acceptance or native XFMD modification is claimed.
+
+
+### T010 — Assignment evidence assessment (2026-10-08)
+
+Owner input: continue. SDP Master/Worker routines and Architect refinement select
+BPI3-M1 from PLAN-SDP-0020. Work remains in the isolated implementation worktree.
+Readiness is a separate assessment of a retained bundle and pinned evidence, not
+a mutable field in the bundle or a parallel assignment ledger. Existing governance
+work is preserved; lifecycle adoption is BPI3-M2. Execution and evidence follow below.
+
+
+T010 outcome: BPI3-M1 delivered. Loaded/reused SDP, Master, Worker, Architect,
+Planning, Verifier, Traceability and independent Reviewer with the shared document
+workflow. Read-only scoped assessment is separate from workflow state and retained
+bundle data. Exact JSON field names prevent a conflicting case-aliased result
+from overriding a failure; cached captures and final optimistic rechecks reject
+observed mid-assessment edits. Tests, reviewer findings and candidate hashes are
+retained in Evidence-BPI3-M1.md.
+
+The explicitly delegated Worker recognized the generated bundle as diagnostic and
+used only the separate trial authorization. It changed the two permitted files.
+The independent reviewer approved A, rejected parser-valid ownership violation B,
+and rejected code-only regression C despite unchanged SDL. B initially failed only
+canonical formatting; the actual formatter corrected that before the meaningful
+negative control. NOW/A behavior passes, C deliberately fails. The reviewer deferred
+35 exact unknown IDs only for the original synthetic trial, never for B/C or future
+inputs; the tool then emitted scoped-ready. Unknown coverage remains unknown.
+
+Session/Card/ImplementationPlan remain active. Next BPI3-M2 lifecycle/adoption and
+state-group projection. Related KB004/KB-SDL-006 remain separate for general code
+mapping/runtime execution. BP2-A owner pilot disposition and the prior installer
+race timeout remain open. No main merge, publication or native XFMD work occurred.

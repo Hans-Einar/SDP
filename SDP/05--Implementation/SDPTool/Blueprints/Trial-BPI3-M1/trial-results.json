@@ -1,0 +1,25 @@
+{
+  "NOW": {
+    "exit": 0,
+    "log": "NOW-test.log"
+  },
+  "A": {
+    "exit": 0,
+    "log": "A-test.log"
+  },
+  "C": {
+    "exit": 1,
+    "log": "C-test.log"
+  },
+  "A-model": {
+    "exit": 0
+  },
+  "B-model": {
+    "exit": 0,
+    "initialExit": 1,
+    "correction": "Canonical formatting applied with SDL formatter; structural ownership violation retained."
+  },
+  "C-model": {
+    "exit": 0
+  }
+}

@@ -8,6 +8,7 @@ import (
 	"runtime"
 	"testing"
 
+	"github.com/Hans-Einar/SDP/SDPTool/blueprints"
 	"github.com/Hans-Einar/SDP/SDPTool/model"
 	"github.com/Hans-Einar/SDP/SystemDesignLanguage/go/blueprint"
 )
@@ -62,6 +63,34 @@ func TestCompiledBlueprint(t *testing.T) {
 	}
 	if e = json.Unmarshal(b, &r); e != nil || r["retainedRevision"] == nil {
 		t.Fatal(e, string(b))
+	}
+
+	retainedPath := r["path"].(string)
+	raw, err := os.ReadFile(filepath.Join(retainedPath, "blueprint.json"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	var doc blueprints.Document
+	if err = json.Unmarshal(raw, &doc); err != nil {
+		t.Fatal(err)
+	}
+	evidence := blueprints.Evidence{Schema: blueprints.EvidenceSchema, BlueprintRevision: doc.Revision, RetainedRevision: r["retainedRevision"].(string), TaskDigest: doc.TaskDigest, Scope: "compiled diagnostic fixture"}
+	raw, _ = json.Marshal(evidence)
+	evidencePath := filepath.Join(t.TempDir(), "evidence.json")
+	os.WriteFile(evidencePath, raw, 0600)
+	assessArgs := []string{"model", "assess", "blueprint", "--bundle", retainedPath, "--evidence", evidencePath}
+	assessed, err := exec.Command(binary, append(assessArgs, "--json")...).CombinedOutput()
+	exit, ok := err.(*exec.ExitError)
+	if !ok || exit.ExitCode() != 3 {
+		t.Fatal("blocked exit", err, string(assessed))
+	}
+	var assessment blueprints.Assessment
+	if err = json.Unmarshal(assessed, &assessment); err != nil || assessment.Status != "blocked" {
+		t.Fatal(err, string(assessed))
+	}
+	human, err := exec.Command(binary, assessArgs...).CombinedOutput()
+	if err == nil || json.Valid(human) {
+		t.Fatal("human assessment output", err, string(human))
 	}
 	b, e = exec.Command(binary, project, "discover", "--json").CombinedOutput()
 	if e != nil {

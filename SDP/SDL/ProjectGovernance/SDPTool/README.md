@@ -97,3 +97,9 @@ compare against live sources. Assignment status remains unknown until BPI3.
 Implementation: SDPTool/blueprints/catalogue.go and blueprint_navigation.go.
 The generic Files scan does not register retained SDL/SDUI as current project
 sources. Native XFMD rendering remains a separate consumer concern.
+
+BPI3-M1 adds BlueprintAssessment inside SdpToolHost: verify scoped code/evidence
+captures and assess explicit unknown dispositions/receipts against an immutable
+blueprint. It emits an assessment without executing checks or adopting lifecycle
+state. SDPTool/blueprints/assessment.go owns that adapter, using the existing
+catalogue verifier and model content digest. BPI3-M2 owns workflow projection.

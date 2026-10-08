@@ -1,0 +1,5 @@
+--- FAIL: TestPreservedBehavior (0.00s)
+    behavior_test.go:10: reduce = 7; want 13
+FAIL
+FAIL	example.com/blueprint-trial	0.002s
+FAIL

@@ -1,0 +1,8 @@
+Relevant package race suite, before final capture/freshness refinement:
+ok  	github.com/Hans-Einar/SDP/SDPTool	47.127s
+ok  	github.com/Hans-Einar/SDP/SDPTool/blueprints	62.182s
+ok  	github.com/Hans-Einar/SDP/SDPTool/presentation	1.027s
+
+Final candidate focused race suite (assessment and compiled CLI):
+ok  	github.com/Hans-Einar/SDP/SDPTool	2.457s
+ok  	github.com/Hans-Einar/SDP/SDPTool/blueprints	10.580s

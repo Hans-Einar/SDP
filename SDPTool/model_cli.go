@@ -27,6 +27,21 @@ func modelCommand(area string, args []string, out, errs io.Writer, jsonMode bool
 		return bad()
 	}
 	switch args[0] {
+	case "assess":
+		if len(args) != 6 || args[1] != "blueprint" || args[2] != "--bundle" || args[4] != "--evidence" {
+			return bad()
+		}
+		assessment, err := blueprints.Assess(args[3], args[5])
+		if err != nil {
+			return reportMode(errs, failure("blueprint-evidence", err), jsonMode)
+		}
+		if err = presentation.Default().Write(out, assessment, jsonMode); err != nil {
+			return reportMode(errs, err, jsonMode)
+		}
+		if assessment.Status != "ready" {
+			return 3
+		}
+		return 0
 	case "snapshot":
 		if len(args) != 2 {
 			return bad()
@@ -191,6 +206,7 @@ const modelHelp = `Usage: sdptool [MODEL-AREA] model ACTION [--json]
   create release:VERSION from candidate:NAME --evidence model-only
     or --evidence verified --code-digest SHA256 --checks REFERENCE
   create blueprint from kind:NAME to kind:NAME --entry System.design --task TASK.json --output DIRECTORY (or --catalogue SDP/Blueprints)
+  assess blueprint --bundle RETAINED-DIR --evidence EVIDENCE.json
   status|history|snapshot kind:NAME
   recover OPERATION-UUID resume|abort
 MODEL-AREA is the directory containing artifact folders; no Git or SDP install required.

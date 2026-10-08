@@ -321,3 +321,18 @@ Creation chooses --output for a replaceable preview or --catalogue for immutable
 retention. The existing result revision identifies blueprint metadata; optional
 retainedRevision binds the entire stored bundle and names its revision directory.
 See blueprints/README.md. No manual index or automatic XFMD update is required.
+
+## Blueprint evidence assessment — BPI3-M1
+
+model assess blueprint --bundle RETAINED-DIR --evidence FILE evaluates a verified
+retained revision against strict sdp-blueprint-evidence/1 input. The response schema
+sdp-blueprint-assessment/1 has operation assess-blueprint, status ready/blocked,
+identity, exact blueprint/retained/evidence digests, scope, independent unknowns,
+reported/effective check states, blockers and observed file hashes. Human rendering
+uses the existing presenter; --json emits the envelope. A blocked assessment exits
+3 after emitting the result. Malformed or unpinned inputs fail with diagnostics.
+
+No commands execute and no retained bundle or canonical workflow event changes.
+Ready applies only to the attributed scope/dispositions; source freshness is
+not-evaluated and authority is attributed-only. Blueprint workState in discovery
+is unchanged. See blueprints/README.md for input fields, budgets and limitations.
