@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn: T003. S1–S5 are completed on the selected baseline.
+Latest recorded turn: T006. S1–S5 are completed; combined main integration is owner-authorized.
 WCI1/WCI2 are implemented, verified and independently reviewed; WCI3 scalar fields and extended text are delivered and independently reviewed; WCI4 is delivered and independently reviewed. Diagram is **sequence only**, using synthetic equal
 slots; it is not a delivery schedule or measured timeline.
 
@@ -34,7 +34,7 @@ gantt
 | Primary card | [KB-SDUI-003](../KanBan/completed/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md) |
 | Snapshot date | 2026-10-07 owner request; actual ledger timestamps recorded separately |
 | Current step | S5 completed |
-| Proposed next step | Owner integration decision for [draft PR #52](https://github.com/Hans-Einar/SDP/pull/52); no widget implementation remains |
+| Proposed next step | Execute owner-authorized combined merge of PR #52 to main; PR merge receipt records actual completion |
 | Execution authority | Owner T001 requests taking the card's work |
 
 ## Goal
@@ -653,9 +653,91 @@ implementation obligations.
   its exact process/cleanup receipt is retained. S1–S5 remain completed. No merge,
   release or further widget work was performed; next disposition belongs to owner.
 
+### T004 — clarify the inherited PR history
+
+Owner prompt, verbatim:
+
+> ok, hva vil det si? bygger 73 tidligere commits som må integreres først? jeg forstår ikke settningen.. PR 52 er avhengig av at 73 andre commits blir committed til main før PR #52?  hva menes med integreres først i denne sammenhengen
+
+Capture mode: exact supplied prompt and coordinator work summary; host turn ID
+and exact prompt timestamp unavailable. Discussion-only clarification, reusing
+SDP entrypoint 1.1.1 and the manual Session routine; no new implementation scope.
+
+Work summary: Git ancestry and the live PR confirm 91 commits absent from main:
+73 inherited before baseline 3d265d1 and 18 subsequent widget/dependency/handoff
+commits. The 73 are already committed and included in PR #52; they do not need
+committing again. Earlier wording that they "must be integrated first" was too
+strong: Git does not require a separate earlier merge. Merging the current PR
+would bring both the earlier work and widgets into main together. Alternatively,
+accept the earlier work through a separate integration first, leaving a narrower
+widget PR comparison. The reason for draft status is the broader review/acceptance
+scope; ancestry alone does not prove that widget code technically requires every
+one of the 73 commits. No merge, rebase, PR edit or new integration decision is
+performed or authorized by this clarification. S1–S5/card/plan remain completed;
+next step is the owner's choice of integration scope.
+
+### T005 — verify that the stopped FOX direction was not revived
+
+Owner prompt, verbatim:
+
+> aha. kan det være at du bygget det på de commits som vi egentlig hadde valgt å la være å bruke videre? altså at widgets skulle lages i FOX? for nå er målet å lage det i fyne. fox sporet ble stoppet
+
+Capture mode: exact supplied prompt and coordinator work summary; exact host turn
+ID/timestamp unavailable. Owner confirms Fyne is the selected goal and FOX is
+stopped. Reused SDP entrypoint/Session workflow and loaded sdp-change-analysis
+1.0.0 plus shared document workflow for a bounded source/history investigation.
+
+Work summary: checked the stopped-direction hypothesis against governing decisions,
+the selected baseline, refreshed origin/main and actual PR implementation. Main
+9e4c173 and baseline 3d265d1 have the identical SDUI/go tree
+57b6974fc3d1c267b0d8fa5d2fb6c23ea773d346. Their FOX handoff and Go implementation
+plan are also byte-identical: the September 21–22 decision replaces Rust/C-ABI/FOX
+with Go/Fyne, and that decision is already in main. SDUI-PLAN-003 explicitly
+supersedes the old track. Current WCI design/plan excludes a new FOX host.
+
+The PR changes 54 paths under SDUI/go/host/fynehost. Actual connected preview entry
+constructs a Fyne application/window and fynehost.DocumentHost; both module roots
+pin Fyne 2.8.1. No FOX identifiers were found in the searched SDUI Go source or
+connected widget Go fixtures, and no FOX-named product paths changed in the WCI
+range. The earlier 73-commit log instead contains routine-governance studies,
+ecosystem models, SDL source composition, discovery/releases/Sessions, model
+governance and blueprint work. This is not a technical endorsement of every prior
+commit, but it rejects the hypothesis that widget implementation revived the
+stopped FOX backend. XFMD consumer compatibility remains a separate existing-app
+boundary, not a FOX widget implementation.
+
+No code, branch history or PR content changed and no new tests were needed for
+this source/history check. S1–S5/card/plan remain completed. The broader PR inclusion
+scope still requires an integration disposition; no merge or earlier-work acceptance
+is inferred from verifying the correct Fyne host choice.
+
+### T006 — owner authorizes the complete PR into main
+
+Owner prompt, verbatim:
+
+> ta med alt du og få det til main
+
+Capture mode: exact supplied prompt and coordinator work summary; exact prompt
+clock/host IDs unavailable. Reused SDP/master and Session/document workflow.
+
+Decision: include the entire PR #52 history, including the 73 inherited commits,
+and merge it into main. This supersedes the earlier draft-only/separate-integration
+boundary for this PR. It does not select unrelated uncommitted workspace work,
+a release or publication of binary artifacts. Preserve the Fyne implementation
+and phase history; use a merge commit rather than squash/rebase.
+
+Pre-merge work summary: actual PR head236c539 is mergeable/CLEAN; both GitHub
+checks (contracts and go-installation-linux) pass. Existing product/native evidence
+remains applicable; only this discussion/authorization handoff is added. The
+original worktree contains concurrent dirty work, so integration uses the isolated
+phase checkout and GitHub PR. Recheck checks on the final exact head before merge.
+The GitHub PR merge receipt is authoritative for the actual merged SHA/time;
+authorization alone is not recorded as an already completed merge.
+
 ## Closeout
 
 WCI0–WCI4 and the full bounded KB-SDUI-003 inventory are implemented, verified and
 independently reviewed on the selected baseline. PLAN-SDP-0022 and the primary card
-are completed. Draft combined [PR #52](https://github.com/Hans-Einar/SDP/pull/52) is created under existing authorization;
-merge, inherited-baseline integration and release remain separate owner decisions.
+are completed. Combined [PR #52](https://github.com/Hans-Einar/SDP/pull/52) is authorized for merge
+including its inherited baseline by owner T006. The PR receipt records actual
+integration status; a release remains unselected.

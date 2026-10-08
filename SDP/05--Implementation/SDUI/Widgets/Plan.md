@@ -150,3 +150,12 @@ actual IME recipes and independent acceptance. WCI0–WCI4 are complete on the
 selected baseline. The completed matrix names all bounded support/fallback limits.
 Earlier pending statements above are historical checkpoints. [PR #52](https://github.com/Hans-Einar/SDP/pull/52) is draft until its inherited baseline is integrated;
 no merge or publication.
+
+## Owner integration decision — Session0010 T006
+
+The owner explicitly selects the entire PR #52, including its 73 inherited
+commits, for main integration. This supersedes the earlier draft/dependency
+restriction for this PR. Preserve history with a merge commit; the PR merge
+receipt records actual status and identity. Existing widget verification remains
+bounded as documented; inclusion of earlier work does not invent new test results.
+Unrelated dirty work and binary-release publication remain outside this action.

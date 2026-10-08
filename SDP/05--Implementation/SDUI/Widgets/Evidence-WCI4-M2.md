@@ -125,3 +125,12 @@ size. The older a026a5d archive is explicitly superseded.
 
 [Independent integrated review](Review-WCI4-M2.md) approves the complete bounded
 assignment; the plan/card/Session record its delivery.
+
+## Owner integration decision — Session0010 T006
+
+The owner explicitly selects the entire PR #52, including its 73 inherited
+commits, for main integration. This supersedes the earlier draft/dependency
+restriction for this PR. Preserve history with a merge commit; the PR merge
+receipt records actual status and identity. Existing widget verification remains
+bounded as documented; inclusion of earlier work does not invent new test results.
+Unrelated dirty work and binary-release publication remain outside this action.
