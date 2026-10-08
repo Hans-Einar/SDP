@@ -82,7 +82,7 @@ that barrier obtains the actual settled inspection. No command simulates a gestu
 | Command | Condition only |
 | --- | --- |
 | `state` | Live host inspection plus application counters. |
-| `resource Hero\|ReportSVG\|DetailSVG SLOT` | Stage good/alternate/wide/tall/negative-origin/missing/malformed/unsupported/bad-dimensions. |
+| `resource Hero\|ReportSVG\|DetailSVG SLOT` | Stage good/alternate/wide/tall/negative-origin/positive-origin/mixed-origin/root-transform/missing/malformed/unsupported/bad-dimensions. |
 | `renderer ReportA\|ReportB MODE` | Stage good/error/malformed/unsafe/missing. |
 | `renderer-revision ReportA\|ReportB r1\|r2` | Change application identity, independent of source text. |
 | `policy PREVIEW label\|reject` | Stage that source declaration's policy. |
@@ -126,3 +126,22 @@ mounted Accessible label/role when present. Closed declarations have prepared
 outcomes but no invented window or mounted accessibility. Linux OS screen-reader
 delivery and immediate GPU cache disposal are not claimed. Negative Box positions
 come from real outer scrolling; negative viewBox is a separate resource variant.
+
+
+## SVG origin regression resources
+
+The existing condition command accepts `positive-origin`, `mixed-origin` and
+`root-transform` in addition to unchanged `negative-origin`. All use 400×200
+intrinsic dimensions and solid green `#238248` (RGB 35,130,72), without strokes.
+For example, `resource Hero root-transform` then `reload` prepares actual supplied
+bytes; neither command simulates input or changes SDL semantics.
+
+[SVG-origin-bounds.md](SVG-origin-bounds.md) specifies the exact expected painted
+bounds at scales below, equal to and above one. Native input, screenshots and
+pixel assertions belong to Main. The resource-only component test validates the
+real closed subset, identities and existing condition-command admission without
+creating a host/window, rasterizing images or claiming native correctness:
+
+```sh
+GOWORK=off go test -mod=readonly -race ./examples/previews -run '^TestOriginResourceSlots$' -count=1 -v
+```

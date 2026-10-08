@@ -134,3 +134,10 @@ reviewed corrected component boundaries, matching ten-binary preparation, 50 pro
 commands and 24 modal/nonmodal native checks. WCI4-M1 is complete. WCI4-M2 is active
 for the full current native matrix, aggregate suites, both actual IME recipes and
 independent integrated review; the card remains in-progress.
+
+M2 correction candidate: actual screenshot pixels exposed nonzero SVG viewBox
+origin drift, and actual raster tests exposed the pinned decoder's `scale(s)`
+Y=0 behavior. Preparation derives validated native bytes while preserving original
+source identity, guards and budgets. The eight-path correction is recorded in
+[candidate delta](candidate-WCI4-M2-delta.json); fresh package/native and integrated
+verification remain required. Prior aspect-only assertions do not prove fidelity.

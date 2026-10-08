@@ -65,8 +65,20 @@ func (b *Bundle) preparePreviews() error {
 		}
 	}
 	// These checks certify the actual direct image / background representation.
+	resources := map[string]fyne.Resource{}
 	backend := markdown.PreviewBackend{
-		SVG:      func(r markdown.Resource) error { return checkPreviewSVG(r.SVG) },
+		SVG: func(r markdown.Resource) error {
+			identity := fmt.Sprintf("%x", sha256.Sum256(r.SVG))
+			if resources[identity] != nil {
+				return nil
+			}
+			data, err := nativePreviewSVG(r)
+			if err != nil {
+				return err
+			}
+			resources[identity] = newPreviewResource(data)
+			return nil
+		},
 		Markdown: previewTextBackend,
 		Mermaid:  func(markdown.Resource) error { return fmt.Errorf("native Markdown diagram images are unsupported") },
 	}
@@ -77,19 +89,13 @@ func (b *Bundle) preparePreviews() error {
 	}
 	b.previewResources = map[string]fyne.Resource{}
 	b.previewOutcomes = map[string]markdown.PreviewOutcome{}
-	resources := map[string]fyne.Resource{}
 	root.Walk(func(n *parser.Instance) {
 		o, ok := b.previews.Outcome(n.Path)
 		if !ok {
 			return
 		}
 		if o.Resource != nil {
-			r := resources[o.SHA256]
-			if r == nil {
-				r = newPreviewResource(o.Resource.SVG)
-				resources[o.SHA256] = r
-			}
-			b.previewResources[n.Path] = r
+			b.previewResources[n.Path] = resources[o.SHA256]
 		}
 		// Diagnostics need identity/status, not another retained document/byte tree.
 		o.Resource, o.Document = nil, nil

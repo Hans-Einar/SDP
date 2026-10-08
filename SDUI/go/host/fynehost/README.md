@@ -356,6 +356,21 @@ the visible fragment. Markdown remains background-painted with a transparent
 native accessibility adapter, not an invented native export inventory kind.
 Serialization/backend failure rejects the ticket without blanking current content.
 
+For nonzero SVG viewBox origins, detached preparation caches a native derivative
+with viewBox `0 0 width height`. The original root presentation and transform are
+on the outer group; an inner group translates by the negative original origin.
+This preserves `displayScale * rootTransform * originTranslation * child` and
+avoids the pinned native decoder's unscaled-origin offset. The actual derivative
+is validated before freezing the outcome. Source bytes/digest remain the provider
+identity; the native cache name hashes the derived bytes. The same preparation
+expands single-argument `scale(s)` to `scale(s s)` in root and descendant transform
+attributes, including zero-origin resources, to avoid the pinned decoder's zero
+Y-scale bug. Bytes needing neither correction are preserved. Measurement, resize
+and painting do not derive resources again. The original resource admission budget
+is unchanged; the actual derivative also has a 4 MiB backend bound. Added wrapper
+or scale-expansion bytes can therefore produce the declared label/reject outcome
+before freezing, rather than advertise a resource that cannot be displayed.
+
 Provider rendering occurs only in detached preparation. Measurement, resize,
 runtime gates and accepted presentation tickets use frozen outcomes without
 renderer calls or reconsidering policy. The application Guard must recheck current

@@ -27,6 +27,14 @@ func ResourceSlot(slot string) (markdown.Resource, error) {
 		w, h = 100, 400
 	case "negative-origin":
 		s = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -20 400 200"><rect x="-40" y="-20" width="400" height="200" fill="#238248"/></svg>`
+	case "positive-origin":
+		s = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="40 20 400 200"><rect x="40" y="20" width="400" height="200" fill="#238248"/></svg>`
+	case "mixed-origin":
+		s = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 20 400 200"><rect x="-40" y="20" width="400" height="200" fill="#238248"/></svg>`
+	case "root-transform":
+		// Rroot * Torigin maps (120,60)-(280,140) to (40,20)-(120,60).
+		// Reversing those noncommuting transforms gives a different rectangle.
+		s = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="40 20 400 200" transform="scale(0.5)"><rect x="120" y="60" width="160" height="80" fill="#238248"/></svg>`
 	case "malformed":
 		s = `<svg viewBox="0 0 400 200"><rect>`
 	case "unsupported":
