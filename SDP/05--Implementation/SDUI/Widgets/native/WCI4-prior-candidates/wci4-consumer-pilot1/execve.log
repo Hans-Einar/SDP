@@ -1,0 +1,375 @@
+258978 execve("/usr/bin/python3", ["python3", "/home/warloc/git/xfmd-sdl-navigation/tools/run_with_xvfb.py", "/tmp/wci4-package-candidate1/bin/SduiWorkflowGuiTest"], 0x7ffdca3092b8 /* 60 vars */) = 0
+258979 execve("/home/warloc/.codex/packages/app-server-daemon/releases/0.161.0-x86_64-unknown-linux-musl/codex-path/Xvfb", ["Xvfb", "-displayfd", "5", "-screen", "0", "1280x900x24", "-nolisten", "tcp"], 0x7ffe1216c128 /* 60 vars */) = -1 ENOENT (No such file or directory)
+258979 execve("/home/warloc/.codex/tmp/arg0/codex-arg0GkHPPl/Xvfb", ["Xvfb", "-displayfd", "5", "-screen", "0", "1280x900x24", "-nolisten", "tcp"], 0x7ffe1216c128 /* 60 vars */) = -1 ENOENT (No such file or directory)
+258979 execve("/home/warloc/.codex/packages/app-server-daemon/releases/0.161.0-x86_64-unknown-linux-musl/codex-path/Xvfb", ["Xvfb", "-displayfd", "5", "-screen", "0", "1280x900x24", "-nolisten", "tcp"], 0x7ffe1216c128 /* 60 vars */) = -1 ENOENT (No such file or directory)
+258979 execve("/home/warloc/.codex/tmp/arg0/codex-arg03JDJ7i/Xvfb", ["Xvfb", "-displayfd", "5", "-screen", "0", "1280x900x24", "-nolisten", "tcp"], 0x7ffe1216c128 /* 60 vars */) = -1 ENOENT (No such file or directory)
+258979 execve("/usr/local/lib/node_modules/@openai/codex/node_modules/@openai/codex-linux-x64/vendor/x86_64-unknown-linux-musl/codex-path/Xvfb", ["Xvfb", "-displayfd", "5", "-screen", "0", "1280x900x24", "-nolisten", "tcp"], 0x7ffe1216c128 /* 60 vars */) = -1 ENOENT (No such file or directory)
+258979 execve("/home/warloc/.local/bin/Xvfb", ["Xvfb", "-displayfd", "5", "-screen", "0", "1280x900x24", "-nolisten", "tcp"], 0x7ffe1216c128 /* 60 vars */) = -1 ENOENT (No such file or directory)
+258979 execve("/home/warloc/bin/Xvfb", ["Xvfb", "-displayfd", "5", "-screen", "0", "1280x900x24", "-nolisten", "tcp"], 0x7ffe1216c128 /* 60 vars */) = -1 ENOENT (No such file or directory)
+258979 execve("/home/warloc/bin/Xvfb", ["Xvfb", "-displayfd", "5", "-screen", "0", "1280x900x24", "-nolisten", "tcp"], 0x7ffe1216c128 /* 60 vars */) = -1 ENOENT (No such file or directory)
+258979 execve("/home/warloc/.local/bin/Xvfb", ["Xvfb", "-displayfd", "5", "-screen", "0", "1280x900x24", "-nolisten", "tcp"], 0x7ffe1216c128 /* 60 vars */) = -1 ENOENT (No such file or directory)
+258979 execve("/usr/local/bin/Xvfb", ["Xvfb", "-displayfd", "5", "-screen", "0", "1280x900x24", "-nolisten", "tcp"], 0x7ffe1216c128 /* 60 vars */) = -1 ENOENT (No such file or directory)
+258979 execve("/usr/bin/Xvfb", ["Xvfb", "-displayfd", "5", "-screen", "0", "1280x900x24", "-nolisten", "tcp"], 0x7ffe1216c128 /* 60 vars */) = 0
+258981 +++ exited with 0 +++
+258980 +++ exited with 0 +++
+258982 execve("/bin/sh", ["sh", "-c", "\"/usr/bin/xkbcomp\" -w 1 \"-R/usr/share/X11/xkb\" -xkm \"-\" -em1 \"The XKEYBOARD keymap compiler (xkbcomp) reports:\" -emp \"> \" -eml \"Errors from xkbcomp are not fatal to the X server\" \"/tmp/server-1.xkm\""], 0x7ffc68a4b740 /* 60 vars */) = 0
+258982 execve("/usr/bin/xkbcomp", ["/usr/bin/xkbcomp", "-w", "1", "-R/usr/share/X11/xkb", "-xkm", "-", "-em1", "The XKEYBOARD keymap compiler (xkbcomp) reports:", "-emp", "> ", "-eml", "Errors from xkbcomp are not fatal to the X server", "/tmp/server-1.xkm"], 0x561071c7b390 /* 60 vars */) = 0
+258982 +++ exited with 0 +++
+258979 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=258982, si_uid=1000, si_status=0, si_utime=3 /* 0.03 s */, si_stime=0} ---
+258983 execve("/tmp/wci4-package-candidate1/bin/SduiWorkflowGuiTest", ["/tmp/wci4-package-candidate1/bin/SduiWorkflowGuiTest"], 0x7f19c97d9960 /* 61 vars */) = 0
+258984 +++ exited with 0 +++
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258988 +++ exited with 0 +++
+258991 +++ exited with 0 +++
+258989 +++ exited with 0 +++
+258995 execve("/tmp/wci4-package-candidate1/bin/sdptool", ["/tmp/wci4-package-candidate1/bin/sdptool", "/tmp/xfmd-gui-home-e926b6c9/SDUI project", "discover", "--json"], 0x7ffc7fdae7f8 /* 61 vars */ <unfinished ...>
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258995 <... execve resumed>)            = 0
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258995 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=258995, si_uid=1000} ---
+258995 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=258995, si_uid=1000} ---
+258995 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=258995, si_uid=1000} ---
+259001 +++ exited with 0 +++
+259000 +++ exited with 0 +++
+258996 +++ exited with 0 +++
+258999 +++ exited with 0 +++
+258998 +++ exited with 0 +++
+258997 +++ exited with 0 +++
+258995 +++ exited with 0 +++
+258994 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=258995, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+258994 +++ exited with 0 +++
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+259006 execve("/tmp/wci4-package-candidate1/bin/sdptool", ["/tmp/wci4-package-candidate1/bin/sdptool", "/tmp/xfmd-gui-home-e926b6c9/SDUI project", "discover", "--json"], 0x7ffc7fdae7f8 /* 61 vars */) = 0
+259012 +++ exited with 0 +++
+259010 +++ exited with 0 +++
+259011 +++ exited with 0 +++
+259009 +++ exited with 0 +++
+259008 +++ exited with 0 +++
+259007 +++ exited with 0 +++
+259006 +++ exited with 0 +++
+259005 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=259006, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+259005 +++ exited with 0 +++
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+259024 execve("/tmp/wci4-package-candidate1/libexec/xfmd/sdui-preview", ["/tmp/wci4-package-candidate1/libexec/xfmd/sdui-preview", "-source", "/tmp/xfmd-gui-home-e926b6c9/SDUI project/SDP/SDL/Prototype.sdui", "-entry", "page", "-revision", "8c09f2ce71a57fd568ef32b558b19f267c3d3b28377edfa9a0c2fa75d1a782e7", "-output", "/tmp/xfmd-gui-home-e926b6c9/runtime/xfmd/xfmd-sdp-x0tpzx/1"], 0x7ffc7fdae7f8 /* 61 vars */) = 0
+259024 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259024, si_uid=1000} ---
+259029 +++ exited with 0 +++
+259028 +++ exited with 0 +++
+259027 +++ exited with 0 +++
+259026 +++ exited with 0 +++
+259025 +++ exited with 0 +++
+259024 +++ exited with 0 +++
+258983 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=259024, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+259023 +++ exited with 0 +++
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+259031 execve("/tmp/wci4-package-candidate1/libexec/xfmd/sdui-preview", ["/tmp/wci4-package-candidate1/libexec/xfmd/sdui-preview", "-check", "-source", "/tmp/xfmd-gui-home-e926b6c9/SDUI project/SDP/SDL/Prototype.sdui", "-entry", "page", "-revision", "8c09f2ce71a57fd568ef32b558b19f267c3d3b28377edfa9a0c2fa75d1a782e7"], 0x7ffc7fdae7f8 /* 61 vars */) = 0
+259034 +++ exited with 0 +++
+259036 +++ exited with 0 +++
+259032 +++ exited with 0 +++
+259033 +++ exited with 0 +++
+259035 +++ exited with 0 +++
+259031 +++ exited with 0 +++
+258986 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=259031, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+259030 +++ exited with 0 +++
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+259041 +++ exited with 0 +++
+259042 +++ exited with 0 +++
+259044 execve("/tmp/wci4-package-candidate1/libexec/xfmd/sdui-preview", ["/tmp/wci4-package-candidate1/libexec/xfmd/sdui-preview", "-check", "-source", "/tmp/xfmd-gui-home-e926b6c9/SDUI project/SDP/SDL/Prototype.sdui", "-entry", "page", "-revision", "8c09f2ce71a57fd568ef32b558b19f267c3d3b28377edfa9a0c2fa75d1a782e7"], 0x1cddd270 /* 61 vars */) = 0
+259044 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259044, si_uid=1000} ---
+259049 +++ exited with 0 +++
+259046 +++ exited with 0 +++
+259050 +++ exited with 0 +++
+259048 +++ exited with 0 +++
+259047 +++ exited with 0 +++
+259045 +++ exited with 0 +++
+259044 +++ exited with 0 +++
+259043 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=259044, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+259043 +++ exited with 0 +++
+259054 execve("/tmp/wci4-package-candidate1/libexec/xfmd/sdui-fyne", ["/tmp/wci4-package-candidate1/libexec/xfmd/sdui-fyne", "-entry", "page", "-revision", "8c09f2ce71a57fd568ef32b558b19f267c3d3b28377edfa9a0c2fa75d1a782e7", "-watch=true", "/tmp/xfmd-gui-home-e926b6c9/SDUI project/SDP/SDL/Prototype.sdui"], 0x1cddd270 /* 61 vars */) = 0
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259057 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259060 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259060 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259059 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+259056 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+259059 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+259059 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259061 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259061 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259057 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+259061 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+259059 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+259074 +++ exited with 0 +++
+259076 +++ exited with 0 +++
+259075 +++ exited with 0 +++
+259073 +++ exited with 0 +++
+259069 +++ exited with 0 +++
+259071 +++ exited with 0 +++
+259070 +++ exited with 0 +++
+259072 +++ exited with 0 +++
+259080 +++ exited with 0 +++
+259079 +++ exited with 0 +++
+259078 +++ exited with 0 +++
+259077 +++ exited with 0 +++
+259054 --- SIGURG {si_signo=SIGURG, si_code=SI_TKILL, si_pid=259054, si_uid=1000} ---
+259061 +++ exited with 0 +++
+259087 +++ exited with 0 +++
+259057 +++ exited with 0 +++
+259056 +++ exited with 0 +++
+259058 +++ exited with 0 +++
+259060 +++ exited with 0 +++
+259055 +++ exited with 0 +++
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+259059 +++ exited with 0 +++
+259054 +++ exited with 0 +++
+258983 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=259054, si_uid=1000, si_status=0, si_utime=115 /* 1.15 s */, si_stime=37 /* 0.37 s */} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+259099 execve("/tmp/wci4-package-candidate1/libexec/xfmd/sdui-preview", ["/tmp/wci4-package-candidate1/libexec/xfmd/sdui-preview", "-check", "-source", "/tmp/xfmd-gui-home-e926b6c9/SDUI project/SDP/SDL/Prototype.sdui", "-entry", "page", "-revision", "8c09f2ce71a57fd568ef32b558b19f267c3d3b28377edfa9a0c2fa75d1a782e7"], 0x1cddd270 /* 62 vars */) = 0
+259100 +++ exited with 0 +++
+259102 +++ exited with 0 +++
+259103 +++ exited with 0 +++
+259101 +++ exited with 0 +++
+259099 +++ exited with 0 +++
+259098 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=259099, si_uid=1000, si_status=0, si_utime=0, si_stime=0} ---
+259098 +++ exited with 0 +++
+259104 execve("/tmp/xfmd-gui-home-e926b6c9/failing host", ["/tmp/xfmd-gui-home-e926b6c9/failing host", "-entry", "page", "-revision", "8c09f2ce71a57fd568ef32b558b19f267c3d3b28377edfa9a0c2fa75d1a782e7", "-watch=true", "/tmp/xfmd-gui-home-e926b6c9/SDUI project/SDP/SDL/Prototype.sdui"], 0x1cddd270 /* 62 vars */) = 0
+259104 +++ exited with 7 +++
+258983 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=259104, si_uid=1000, si_status=7, si_utime=0, si_stime=0} ---
+258993 +++ exited with 0 +++
+258987 +++ exited with 0 +++
+258986 +++ exited with 0 +++
+258992 +++ exited with 0 +++
+258990 +++ exited with 0 +++
+258985 +++ exited with 0 +++
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+258979 --- SIGALRM {si_signo=SIGALRM, si_code=SI_KERNEL} ---
+259040 +++ exited with 0 +++
+258983 +++ exited with 0 +++
+258978 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=258983, si_uid=1000, si_status=0, si_utime=65 /* 0.65 s */, si_stime=58 /* 0.58 s */} ---
+258979 --- SIGTERM {si_signo=SIGTERM, si_code=SI_USER, si_pid=258978, si_uid=1000} ---
+259106 +++ exited with 0 +++
+259105 +++ exited with 0 +++
+259107 execve("/bin/sh", ["sh", "-c", "\"/usr/bin/xkbcomp\" -w 1 \"-R/usr/share/X11/xkb\" -xkm \"-\" -em1 \"The XKEYBOARD keymap compiler (xkbcomp) reports:\" -emp \"> \" -eml \"Errors from xkbcomp are not fatal to the X server\" \"/tmp/server-1.xkm\""], 0x7ffc68a4b740 /* 60 vars */) = 0
+259107 execve("/usr/bin/xkbcomp", ["/usr/bin/xkbcomp", "-w", "1", "-R/usr/share/X11/xkb", "-xkm", "-", "-em1", "The XKEYBOARD keymap compiler (xkbcomp) reports:", "-emp", "> ", "-eml", "Errors from xkbcomp are not fatal to the X server", "/tmp/server-1.xkm"], 0x563ee224d390 /* 60 vars */) = 0
+259107 +++ exited with 0 +++
+258979 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=259107, si_uid=1000, si_status=0, si_utime=2 /* 0.02 s */, si_stime=0} ---
+258979 +++ exited with 0 +++
+258978 --- SIGCHLD {si_signo=SIGCHLD, si_code=CLD_EXITED, si_pid=258979, si_uid=1000, si_status=0, si_utime=18 /* 0.18 s */, si_stime=34 /* 0.34 s */} ---
+258978 +++ exited with 0 +++

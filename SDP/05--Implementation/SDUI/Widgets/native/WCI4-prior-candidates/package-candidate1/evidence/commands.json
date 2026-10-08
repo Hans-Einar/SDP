@@ -1,0 +1,674 @@
+[
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets",
+    "elapsedSeconds": 0.003,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/source-head.log.gz",
+    "name": "source-head",
+    "rawLogSHA256": "28967d1b0af04e7fabe8390289ac6f15d4fd74d78c095b7b14146de565ca1d0a"
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets",
+    "elapsedSeconds": 0.016,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/source-status.log.gz",
+    "name": "source-status",
+    "rawLogSHA256": "c87202758a6abd7f74bb3828a7bb3c8e395726c583332d4ff4a90f875a9164f8"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/home/warloc/git/xfmd-sdl-navigation",
+    "elapsedSeconds": 0.003,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/consumer-head.log.gz",
+    "name": "consumer-head",
+    "rawLogSHA256": "a6bc7bd211e883d26d24686792e366ee1ec7c97769d517524f627a3584415001"
+  },
+  {
+    "argv": [
+      "go",
+      "version"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets",
+    "elapsedSeconds": 0.004,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/compiler.log.gz",
+    "name": "compiler",
+    "rawLogSHA256": "f554cfdb85411c2bb1d503df3f53dfbad1f753eb8271938833166a5d26a7547c"
+  },
+  {
+    "argv": [
+      "go",
+      "env",
+      "GOOS",
+      "GOARCH",
+      "CGO_ENABLED",
+      "CC",
+      "GOVERSION"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets",
+    "elapsedSeconds": 0.005,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/compiler-environment.log.gz",
+    "name": "compiler-environment",
+    "rawLogSHA256": "02f2480eb54f84626fb46aa083c24b670ff51f5ac92191c032616a43d8dbba68"
+  },
+  {
+    "argv": [
+      "python3",
+      "/tmp/sdp-sdui-widgets/SDUI/third_party/glfw-policy/verify.py"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets",
+    "elapsedSeconds": 0.134,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/glfw-patch-verification.log.gz",
+    "name": "glfw-patch-verification",
+    "rawLogSHA256": "83c96be13d804cde803a800fcee9f668198cbd940434ea4640c09d40930de420"
+  },
+  {
+    "argv": [
+      "bash",
+      "/tmp/sdp-sdui-widgets/SDPTool/package.sh",
+      "/tmp/wci4-package-candidate1/producer"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets",
+    "elapsedSeconds": 42.217,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/sdptool-package.log.gz",
+    "name": "sdptool-package",
+    "rawLogSHA256": "8b5f740ea04e4ffb53f424b7c600c82f6221e7f42275d6eb39c580a66f3c14c4"
+  },
+  {
+    "argv": [
+      "python3",
+      "/home/warloc/git/xfmd-sdl-navigation/tools/build_sdui_tools.py",
+      "--source",
+      "/tmp/sdp-sdui-widgets/SDUI/go",
+      "--output",
+      "/tmp/wci4-package-candidate1/libexec/xfmd"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets",
+    "elapsedSeconds": 6.972,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/consumer-helper-recipe.log.gz",
+    "name": "consumer-helper-recipe",
+    "rawLogSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "go",
+      "build",
+      "-o",
+      "/tmp/wci4-package-candidate1/bin/sdui",
+      "./cmd/sdui"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets/SDUI/go",
+    "elapsedSeconds": 0.743,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/sdui-cli.log.gz",
+    "name": "sdui-cli",
+    "rawLogSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "go",
+      "build",
+      "-tags",
+      "desktop",
+      "-o",
+      "/tmp/wci4-package-candidate1/libexec/sdui/collections",
+      "./examples/collections/cmd/native"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+    "elapsedSeconds": 4.174,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/fixture-collections.log.gz",
+    "name": "fixture-collections",
+    "rawLogSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "go",
+      "build",
+      "-tags",
+      "desktop",
+      "-o",
+      "/tmp/wci4-package-candidate1/libexec/sdui/panes",
+      "./examples/panes/cmd/native"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+    "elapsedSeconds": 4.101,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/fixture-panes.log.gz",
+    "name": "fixture-panes",
+    "rawLogSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "go",
+      "build",
+      "-tags",
+      "desktop",
+      "-o",
+      "/tmp/wci4-package-candidate1/libexec/sdui/commands",
+      "./examples/commands/cmd/native"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+    "elapsedSeconds": 4.197,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/fixture-commands.log.gz",
+    "name": "fixture-commands",
+    "rawLogSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "go",
+      "build",
+      "-tags",
+      "desktop",
+      "-o",
+      "/tmp/wci4-package-candidate1/libexec/sdui/values",
+      "./examples/values/cmd/native"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+    "elapsedSeconds": 5.264,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/fixture-values.log.gz",
+    "name": "fixture-values",
+    "rawLogSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "go",
+      "build",
+      "-tags",
+      "desktop",
+      "-o",
+      "/tmp/wci4-package-candidate1/libexec/sdui/text",
+      "./examples/text/cmd/native"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+    "elapsedSeconds": 5.133,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/fixture-text.log.gz",
+    "name": "fixture-text",
+    "rawLogSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "go",
+      "build",
+      "-tags",
+      "desktop",
+      "-o",
+      "/tmp/wci4-package-candidate1/libexec/sdui/previews",
+      "./examples/previews/cmd/native"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+    "elapsedSeconds": 4.483,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/fixture-previews.log.gz",
+    "name": "fixture-previews",
+    "rawLogSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "argv": [
+      "go",
+      "list",
+      "-m",
+      "-json",
+      "all"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets/SDPTool",
+    "elapsedSeconds": 0.608,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/module-graph-sdptool.log.gz",
+    "name": "module-graph-sdptool",
+    "rawLogSHA256": "c9135f1765a27a8303db77e79aa777cfa93dc5b2b63aa289dcecdde90702146f"
+  },
+  {
+    "argv": [
+      "go",
+      "list",
+      "-deps",
+      "-json",
+      "./cmd/sdptool"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets/SDPTool",
+    "elapsedSeconds": 0.554,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/compiled-dependencies-sdptool.log.gz",
+    "name": "compiled-dependencies-sdptool",
+    "rawLogSHA256": "b8eab346381ad4a40690008c63364e5b824fc6e6e97baf2768d05599f46dd771"
+  },
+  {
+    "argv": [
+      "go",
+      "list",
+      "-m",
+      "-json",
+      "all"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets/SDUI/go",
+    "elapsedSeconds": 0.221,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/module-graph-helpers.log.gz",
+    "name": "module-graph-helpers",
+    "rawLogSHA256": "6edf0b000d10547f26801e2e4f3d3e398e1e33ea9548749f523e94148064824f"
+  },
+  {
+    "argv": [
+      "go",
+      "list",
+      "-deps",
+      "-json",
+      "-tags",
+      "desktop",
+      "./cmd/sdui",
+      "./cmd/sdui-preview",
+      "./cmd/sdui-fyne"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets/SDUI/go",
+    "elapsedSeconds": 0.568,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/compiled-dependencies-helpers.log.gz",
+    "name": "compiled-dependencies-helpers",
+    "rawLogSHA256": "d1b45db019ff89d105222e8088053941d95397ee5642588cd4101242f1dadb11"
+  },
+  {
+    "argv": [
+      "go",
+      "list",
+      "-m",
+      "-json",
+      "all"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+    "elapsedSeconds": 0.02,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/module-graph-fixtures.log.gz",
+    "name": "module-graph-fixtures",
+    "rawLogSHA256": "459fe3fd478b3d6ecc6bf29e36251d5ec890b7d0d3a54364cb135c46066b7ed1"
+  },
+  {
+    "argv": [
+      "go",
+      "list",
+      "-deps",
+      "-json",
+      "-tags",
+      "desktop",
+      "./examples/collections/cmd/native",
+      "./examples/panes/cmd/native",
+      "./examples/commands/cmd/native",
+      "./examples/values/cmd/native",
+      "./examples/text/cmd/native",
+      "./examples/previews/cmd/native"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+    "elapsedSeconds": 0.584,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/compiled-dependencies-fixtures.log.gz",
+    "name": "compiled-dependencies-fixtures",
+    "rawLogSHA256": "7645b159d6494e8770ca1259043bced5a4162f5c2ac4154db4d9116f218172f4"
+  },
+  {
+    "argv": [
+      "go",
+      "env",
+      "GOROOT"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets",
+    "elapsedSeconds": 0.006,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/goroot.log.gz",
+    "name": "goroot",
+    "rawLogSHA256": "52c8efa964eca4f6d6c34781a8fcf82125a40193d6f3f502612a151f49ae54e4"
+  },
+  {
+    "argv": [
+      "go",
+      "version",
+      "-m",
+      "/tmp/wci4-package-candidate1/bin/sdptool"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets",
+    "elapsedSeconds": 0.008,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/bin-sdptool-build-info.log.gz",
+    "name": "bin-sdptool-build-info",
+    "rawLogSHA256": "b95134705229bf3dd6342cdf930dd5fa9887e06269176ef7a6199faa90e92e8e"
+  },
+  {
+    "argv": [
+      "go",
+      "version",
+      "-m",
+      "/tmp/wci4-package-candidate1/bin/sdui"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets",
+    "elapsedSeconds": 0.007,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/bin-sdui-build-info.log.gz",
+    "name": "bin-sdui-build-info",
+    "rawLogSHA256": "199025e3ce3f03946bc0207b5d7e865bc2a29576db350a5d6b70a689a7c3b878"
+  },
+  {
+    "argv": [
+      "go",
+      "version",
+      "-m",
+      "/tmp/wci4-package-candidate1/libexec/xfmd/sdui-preview"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets",
+    "elapsedSeconds": 0.007,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/libexec-xfmd-sdui-preview-build-info.log.gz",
+    "name": "libexec-xfmd-sdui-preview-build-info",
+    "rawLogSHA256": "e200148db53c0542c172595a8b0e5b2a61319a3a7f160888e70c0b530a2245d9"
+  },
+  {
+    "argv": [
+      "go",
+      "version",
+      "-m",
+      "/tmp/wci4-package-candidate1/libexec/xfmd/sdui-fyne"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets",
+    "elapsedSeconds": 0.005,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/libexec-xfmd-sdui-fyne-build-info.log.gz",
+    "name": "libexec-xfmd-sdui-fyne-build-info",
+    "rawLogSHA256": "5b73155e9737cc8f56f3f991eee3397c4e049d0f567d52f303ae96cea9f72852"
+  },
+  {
+    "argv": [
+      "go",
+      "version",
+      "-m",
+      "/tmp/wci4-package-candidate1/libexec/sdui/collections"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets",
+    "elapsedSeconds": 0.008,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/libexec-sdui-collections-build-info.log.gz",
+    "name": "libexec-sdui-collections-build-info",
+    "rawLogSHA256": "539fdfb26a6317ce4da2edf0d56386f808ac6c811331490b38b2ed542b163a16"
+  },
+  {
+    "argv": [
+      "go",
+      "version",
+      "-m",
+      "/tmp/wci4-package-candidate1/libexec/sdui/panes"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets",
+    "elapsedSeconds": 0.007,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/libexec-sdui-panes-build-info.log.gz",
+    "name": "libexec-sdui-panes-build-info",
+    "rawLogSHA256": "6574f8f0a40aef15189da682236caf2a24a052e1106f490b9c6afccf520ec712"
+  },
+  {
+    "argv": [
+      "go",
+      "version",
+      "-m",
+      "/tmp/wci4-package-candidate1/libexec/sdui/commands"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets",
+    "elapsedSeconds": 0.005,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/libexec-sdui-commands-build-info.log.gz",
+    "name": "libexec-sdui-commands-build-info",
+    "rawLogSHA256": "01d8b7267a8fceec7859ac88a52eb2dec2e8f45fb61f58ae76efb9f7bd382893"
+  },
+  {
+    "argv": [
+      "go",
+      "version",
+      "-m",
+      "/tmp/wci4-package-candidate1/libexec/sdui/values"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets",
+    "elapsedSeconds": 0.005,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/libexec-sdui-values-build-info.log.gz",
+    "name": "libexec-sdui-values-build-info",
+    "rawLogSHA256": "5c38d029c6d9585ef702763ba4ec7cfcce69896490df7d6b1b97db15277d2190"
+  },
+  {
+    "argv": [
+      "go",
+      "version",
+      "-m",
+      "/tmp/wci4-package-candidate1/libexec/sdui/text"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets",
+    "elapsedSeconds": 0.007,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/libexec-sdui-text-build-info.log.gz",
+    "name": "libexec-sdui-text-build-info",
+    "rawLogSHA256": "4aa42841287761218b90db6836d10fdd0f95486bbb485dd934efa7976d58ea1b"
+  },
+  {
+    "argv": [
+      "go",
+      "version",
+      "-m",
+      "/tmp/wci4-package-candidate1/libexec/sdui/previews"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets",
+    "elapsedSeconds": 0.005,
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOTOOLCHAIN": "local",
+      "GOWORK": "off"
+    },
+    "exitCode": 0,
+    "log": "evidence/libexec-sdui-previews-build-info.log.gz",
+    "name": "libexec-sdui-previews-build-info",
+    "rawLogSHA256": "51c0429df4dcdb6b0c02a590f95853c117e305d2dfa6a069a8d2874a1c7b118c"
+  }
+]

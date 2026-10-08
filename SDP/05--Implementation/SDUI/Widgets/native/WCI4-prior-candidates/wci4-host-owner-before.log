@@ -1,0 +1,32 @@
+--- FAIL: TestPreparedPreviewNativeOwnerLoss (0.82s)
+    --- FAIL: TestPreparedPreviewNativeOwnerLoss/modal=true/parent-hidden (0.22s)
+        preview_owner_test.go:81: retired preview still reported mounted: page/detail/image map[accessibleLabel:Detail artwork (rendered) accessibleRole:text canvas:main caption:{X:0 Y:293.188 W:560 H:19.599999999999998} clip:{X:0 Y:0 W:560 H:312.7879943847656} description:Detail artwork diagnostic: image:{X:0 Y:6.593999999999994 W:560 H:280} kind:svg mounted:true providerID:fixture-art rect:{X:0 Y:0 W:560 H:312.788} revision: sha256:4d840ce11400ef1be40f0ea4c48ef1edadbb7ce70f8860fdb3a531e719c192df status:rendered statusRect:{X:0 Y:0 W:0 H:0} title:lifecycle regression visible:true]
+        preview_owner_test.go:86: retired preview retained native content: page/detail/image
+        preview_owner_test.go:89: retired preview geometry retained: page/detail/image
+        preview_owner_test.go:81: retired preview still reported mounted: page/detail/prose map[accessibleLabel:Detail summary (rendered) accessibleRole:text canvas:main caption:{X:0 Y:0 W:0 H:0} clip:{X:0 Y:0 W:130.28125 H:33.71200180053711} description:Detail summary diagnostic: image:{X:0 Y:0 W:0 H:0} kind:markdown mounted:true providerID: rect:{X:0 Y:316.288 W:130.28125 H:33.711999999999996} revision: sha256: status:rendered statusRect:{X:0 Y:0 W:0 H:0} title:lifecycle regression visible:true]
+        preview_owner_test.go:86: retired preview retained native content: page/detail/prose
+        preview_owner_test.go:89: retired preview geometry retained: page/detail/prose
+    --- FAIL: TestPreparedPreviewNativeOwnerLoss/modal=true/parent-closed (0.19s)
+        preview_owner_test.go:81: retired preview still reported mounted: page/detail/image map[accessibleLabel:Detail artwork (rendered) accessibleRole:text canvas:main caption:{X:0 Y:293.188 W:560 H:19.599999999999998} clip:{X:0 Y:0 W:560 H:312.7879943847656} description:Detail artwork diagnostic: image:{X:0 Y:6.593999999999994 W:560 H:280} kind:svg mounted:true providerID:fixture-art rect:{X:0 Y:0 W:560 H:312.788} revision: sha256:4d840ce11400ef1be40f0ea4c48ef1edadbb7ce70f8860fdb3a531e719c192df status:rendered statusRect:{X:0 Y:0 W:0 H:0} title:lifecycle regression visible:true]
+        preview_owner_test.go:86: retired preview retained native content: page/detail/image
+        preview_owner_test.go:89: retired preview geometry retained: page/detail/image
+        preview_owner_test.go:81: retired preview still reported mounted: page/detail/prose map[accessibleLabel:Detail summary (rendered) accessibleRole:text canvas:main caption:{X:0 Y:0 W:0 H:0} clip:{X:0 Y:0 W:130.28125 H:33.71200180053711} description:Detail summary diagnostic: image:{X:0 Y:0 W:0 H:0} kind:markdown mounted:true providerID: rect:{X:0 Y:316.288 W:130.28125 H:33.711999999999996} revision: sha256: status:rendered statusRect:{X:0 Y:0 W:0 H:0} title:lifecycle regression visible:true]
+        preview_owner_test.go:86: retired preview retained native content: page/detail/prose
+        preview_owner_test.go:89: retired preview geometry retained: page/detail/prose
+    --- FAIL: TestPreparedPreviewNativeOwnerLoss/modal=false/parent-hidden (0.21s)
+        preview_owner_test.go:81: retired preview still reported mounted: page/detail/image map[accessibleLabel:Detail artwork (rendered) accessibleRole:text canvas:main caption:{X:0 Y:293.188 W:560 H:19.599999999999998} clip:{X:0 Y:0 W:560 H:312.7879943847656} description:Detail artwork diagnostic: image:{X:0 Y:6.593999999999994 W:560 H:280} kind:svg mounted:true providerID:fixture-art rect:{X:0 Y:0 W:560 H:312.788} revision: sha256:4d840ce11400ef1be40f0ea4c48ef1edadbb7ce70f8860fdb3a531e719c192df status:rendered statusRect:{X:0 Y:0 W:0 H:0} title:lifecycle regression visible:true]
+        preview_owner_test.go:86: retired preview retained native content: page/detail/image
+        preview_owner_test.go:89: retired preview geometry retained: page/detail/image
+        preview_owner_test.go:81: retired preview still reported mounted: page/detail/prose map[accessibleLabel:Detail summary (rendered) accessibleRole:text canvas:main caption:{X:0 Y:0 W:0 H:0} clip:{X:0 Y:0 W:130.28125 H:33.71200180053711} description:Detail summary diagnostic: image:{X:0 Y:0 W:0 H:0} kind:markdown mounted:true providerID: rect:{X:0 Y:316.288 W:130.28125 H:33.711999999999996} revision: sha256: status:rendered statusRect:{X:0 Y:0 W:0 H:0} title:lifecycle regression visible:true]
+        preview_owner_test.go:86: retired preview retained native content: page/detail/prose
+        preview_owner_test.go:89: retired preview geometry retained: page/detail/prose
+    --- FAIL: TestPreparedPreviewNativeOwnerLoss/modal=false/parent-closed (0.20s)
+        preview_owner_test.go:81: retired preview still reported mounted: page/detail/image map[accessibleLabel:Detail artwork (rendered) accessibleRole:text canvas:main caption:{X:0 Y:293.188 W:560 H:19.599999999999998} clip:{X:0 Y:0 W:560 H:312.7879943847656} description:Detail artwork diagnostic: image:{X:0 Y:6.593999999999994 W:560 H:280} kind:svg mounted:true providerID:fixture-art rect:{X:0 Y:0 W:560 H:312.788} revision: sha256:4d840ce11400ef1be40f0ea4c48ef1edadbb7ce70f8860fdb3a531e719c192df status:rendered statusRect:{X:0 Y:0 W:0 H:0} title:lifecycle regression visible:true]
+        preview_owner_test.go:86: retired preview retained native content: page/detail/image
+        preview_owner_test.go:89: retired preview geometry retained: page/detail/image
+        preview_owner_test.go:81: retired preview still reported mounted: page/detail/prose map[accessibleLabel:Detail summary (rendered) accessibleRole:text canvas:main caption:{X:0 Y:0 W:0 H:0} clip:{X:0 Y:0 W:130.28125 H:33.71200180053711} description:Detail summary diagnostic: image:{X:0 Y:0 W:0 H:0} kind:markdown mounted:true providerID: rect:{X:0 Y:316.288 W:130.28125 H:33.711999999999996} revision: sha256: status:rendered statusRect:{X:0 Y:0 W:0 H:0} title:lifecycle regression visible:true]
+        preview_owner_test.go:86: retired preview retained native content: page/detail/prose
+        preview_owner_test.go:89: retired preview geometry retained: page/detail/prose
+FAIL
+FAIL	github.com/Hans-Einar/SDP/SDUI/go/host/fynehost	0.830s
+FAIL

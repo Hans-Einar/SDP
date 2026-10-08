@@ -1,0 +1,25 @@
+{
+  "name": "markdown-atomic-export",
+  "argv": [
+    "/tmp/wci4-package-candidate2/bin/sdui",
+    "/tmp/wci4-final-protocol2/static rejection markdown project with spaces/Page å with spaces.sdui",
+    "--entry",
+    "Main",
+    "--format",
+    "svg",
+    "-o",
+    "/tmp/wci4-final-protocol2/markdown prior output.svg"
+  ],
+  "cwd": "/tmp/wci4-final-protocol2",
+  "binarySha256": "ff60cbed816cf4e27ffe41f07c04f5f1a8fa58da55c93709edd64ebe2d1bf505",
+  "displayEnvironment": "DISPLAY/WAYLAND_DISPLAY removed",
+  "expected": "nonzero with unsupported-resource-export",
+  "exit": 2,
+  "timeout": false,
+  "seconds": 0.08807730674743652,
+  "stdout": "commands/050-markdown-atomic-export.stdout",
+  "stderr": "commands/050-markdown-atomic-export.stderr",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "285f96733e1f97f6321f798a4082d276afdb5a0401dd1d656227bf1addd04615",
+  "binaryUnchanged": true
+}

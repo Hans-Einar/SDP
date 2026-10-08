@@ -1,0 +1,82 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci4-previews-worker-pilot1", "sha256": "7defa0ae7446bdc1a625718120f00f1b8c3a8e697a61e90b6ad7452ad603185c", "display": ":190", "variant": "wci3-fallback"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "resource Hero wide"}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "wide SVG is rendered at its actual intrinsic aspect", "passed": true}}
+{"kind": "screenshot", "value": "resource-wide.png"}
+{"kind": "fixture-command", "value": "resource Hero tall"}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "tall SVG is rendered at its actual intrinsic aspect", "passed": true}}
+{"kind": "screenshot", "value": "resource-tall.png"}
+{"kind": "fixture-command", "value": "resource Hero negative-origin"}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "negative-origin SVG is rendered at its actual intrinsic aspect", "passed": true}}
+{"kind": "screenshot", "value": "resource-negative-origin.png"}
+{"kind": "fixture-command", "value": "policy Hero label"}
+{"kind": "fixture-command", "value": "resource Hero malformed"}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "malformed content becomes a visible explicit accessible fallback", "passed": true}}
+{"kind": "screenshot", "value": "visible-svg-fallback.png"}
+{"kind": "fixture-command", "value": "resource Hero unsupported"}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "unsupported obeys declared label", "passed": true}}
+{"kind": "fixture-command", "value": "resource Hero missing"}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "missing obeys declared label", "passed": true}}
+{"kind": "fixture-command", "value": "resource Hero bad-dimensions"}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "bad-dimensions obeys declared label", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "binding Hero digest"}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "digest identity failure remains fatal under label and retains old bundle", "passed": true}}
+{"kind": "fixture-command", "value": "resource Hero good"}
+{"kind": "fixture-command", "value": "policy Hero reject"}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "resource Hero malformed"}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "reject on Hero retains actual published bundle", "passed": true}}
+{"kind": "fixture-command", "value": "resource Hero good"}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "resource DetailSVG missing"}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "reject on DetailSVG retains actual published bundle", "passed": true}}
+{"kind": "fixture-command", "value": "resource DetailSVG good"}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "policy ReportB reject"}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "hidden same-text reject path cannot borrow another path label policy", "passed": true}}
+{"kind": "fixture-command", "value": "policy ReportB label"}
+{"kind": "fixture-command", "value": "renderer ReportA error"}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI4 Previews", "action": "click", "values": [71, 98], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "failed diagram renderer keeps surrounding Markdown as partial", "passed": true}}
+{"kind": "screenshot", "value": "renderer-error-keeps-prose.png"}
+{"kind": "fixture-command", "value": "document ReportA html"}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "unsupported whole document replaces only its own path with label", "passed": true}}
+{"kind": "screenshot", "value": "whole-document-fallback-independent-path.png"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "binding ReportB revision"}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "renderer identity failure retains independent published outcomes", "passed": true}}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

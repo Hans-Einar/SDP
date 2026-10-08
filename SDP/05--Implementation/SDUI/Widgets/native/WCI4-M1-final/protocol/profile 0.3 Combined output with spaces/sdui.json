@@ -1,0 +1,12 @@
+{
+  "frame": "Main",
+  "outputs": {
+    "entry.md": "bf45ea103952e34268ad4c635219b7327f245e4d8d8023eccfea18b410a8f801",
+    "source.sdui": "01ee11b69863835ce62d7727ca2c84af22edabe4b76d37c411ad4de95afcf74e"
+  },
+  "profile": "sdui/0.3",
+  "revision": "01ee11b69863835ce62d7727ca2c84af22edabe4b76d37c411ad4de95afcf74e",
+  "schema": "sdui-combined/1",
+  "source": "/tmp/wci4-final-protocol2/profile 0.3 project with spaces/Page å with spaces.sdui",
+  "spanUnits": "UTF-8 bytes; end exclusive"
+}

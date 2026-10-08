@@ -1,0 +1,3 @@
+2026/10/08 14:41:57 Fyne error:  Preferences load error:
+2026/10/08 14:41:57   Cause: EOF
+2026/10/08 14:41:57   At: /home/warloc/go/pkg/mod/fyne.io/fyne/v2@v2.8.1/app/preferences.go:105

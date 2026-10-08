@@ -39,8 +39,8 @@ Current preview files are not this assignment's original implementation.
 | WCI2-M2 | Button/toggle shared commands, menu/context/dialog with cancel/lifetime proof | WCI2-M1; typed command/surface grammar | completed |
 | WCI3-M1 | Checkbox/slider/select/numeric input and atomic typed drafts | WCI2; reviewed Values-and-text contract and API reconciliation | completed |
 | WCI3-M2 | Extended single-line and basic multiline text with native editing/IME/undo evidence | WCI3-M1; reviewed explicit opt-in/native editing/IME contract | completed |
-| WCI4-M1 | All-family producer discovery/composition/text/codegen/provider integration and matching consumer package preparation | WCI1–WCI3; reviewed Providers-and-packaging contract and four API handoffs | in-progress |
-| WCI4-M2 | Exact-candidate compatibility tests, native workflow evidence and independent integrated review; explicit disposition of all gaps | WCI4-M1 | planned |
+| WCI4-M1 | All-family producer discovery/composition/text/codegen/provider integration and matching consumer package preparation | WCI1–WCI3; reviewed Providers-and-packaging contract and four API handoffs | completed |
+| WCI4-M2 | Exact-candidate compatibility tests, native workflow evidence and independent integrated review; explicit disposition of all gaps | WCI4-M1 | in-progress |
 
 Each stage updates the matrix and relevant requirements/language/architecture/runtime
 documents. Do not merely extend parser tables. Static exports must reject unsupported
@@ -126,3 +126,11 @@ API handoffs govern implementation. Direct supplied SVG and bounded Markdown pro
 need actual native proof; unsupported diagrams resolve to declared label/reject
 before outcome freeze. Main owns matching package preparation and consumer evidence.
 WCI4-M2 retains integrated all-family verification and independent closeout.
+
+## WCI4-M1 delivery and final verification
+
+[Provider/package evidence](Evidence-WCI4-M1.md) records `a026a5d1`, 74 paths,
+reviewed corrected component boundaries, matching ten-binary preparation, 50 protocol
+commands and 24 modal/nonmodal native checks. WCI4-M1 is complete. WCI4-M2 is active
+for the full current native matrix, aggregate suites, both actual IME recipes and
+independent integrated review; the card remains in-progress.

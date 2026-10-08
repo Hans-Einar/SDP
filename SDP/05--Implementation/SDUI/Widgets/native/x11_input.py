@@ -54,7 +54,12 @@ def main():
                 return None
             name = c.c_void_p()
             if x.XFetchName(display, window, c.byref(name)) and name.value:
-                text = c.string_at(name.value).decode(errors='replace')
+                raw_name = c.string_at(name.value)
+                try:
+                    text = raw_name.decode('utf-8')
+                except UnicodeDecodeError:
+                    # Legacy WM_NAME may use STRING/Latin-1 (e.g. middle dot).
+                    text = raw_name.decode('latin-1')
                 x.XFree(name)
                 if text == args.title:
                     return window

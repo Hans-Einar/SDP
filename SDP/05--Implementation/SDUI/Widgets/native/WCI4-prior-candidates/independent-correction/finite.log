@@ -1,0 +1,7 @@
+source=<g transform="matrix(1e308 0 -1e308 1 0 0)"><line x1="1" y1="-1" x2="0" y2="0"/></g>
+provider=<nil> backend=<nil>
+source=<rect x="1e308" y="0" width="1e308" height="1"/>
+provider=<nil> backend=<nil>
+source=<path d="M0 0 Q-1e308 0 1e308 0 T0 0"/>
+provider=<nil> backend=<nil>
+actual transformed line endpoint x=+Inf infinite=true

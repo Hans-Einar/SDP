@@ -1,0 +1,34 @@
+sdui 0.3;
+ref: app "unopened.sdl";
+ref: art "unopened-resources.sdl";
+Reading=markdown("# Reading\nPlain prose",description="Reading document",fallback="label");
+Main=[
+ grouped=<button("Grouped"),input("Grouped")>;
+ cmd=command("Run",callback=app.Run.@invoke);
+ legacyButton=button("Legacy",callback=app.Run.@invoke);
+ decorated=button("Decorated",icon="document",tooltip="Information");
+ toggle=button("Toggle",toggle=true);
+ bound=button(command="cmd");
+ navigation=tree("Navigation",callback=app.Run.@invoke);
+ entries=list("Entries");
+ panes=tabs("Pages")[one=page("One")["First"];two=page("Two")["Second"]];
+ pair=split("horizontal")[left=["Left"];right=["Right"]];
+ actions=menu("Actions")[item(command="cmd");separator();group=menuGroup("More")[item(command="cmd")]];
+ context=menu("Context",mode="context",target="legacyButton")[item(command="cmd")];
+ modal=dialog("Modal")[draft=input("Draft");accept=button("OK",effect="accept")];
+ palette=dialog("Palette",modal=false)["Nonmodal"];
+ open=button("Open",effect="open",target="modal");
+ flag=checkbox("Enabled",value=true);
+ slider=slider("Scale",min=0,max=10,step=1,value=5);
+ choice=select("Choice",required=true);
+ amount=number("Amount",min=-10,max=10,step=0.5,value=1.5);
+ basic=input("Basic",value="Unchanged");
+ single=input("Single",placeholder="",required=false);
+ multi=input("Notes",multiline=true,readOnly=false,value="å\n🙂");
+ legacySVG=svg(art.Old.@draw,label="Legacy image");
+ image=svg(art.Figure.@resource,label="Caption",description="Figure",fallback="reject");
+ plain="Legacy Markdown";
+ reading=Reading;
+ hiddenReading=Reading {visible=false}
+] {overflow-y=scroll};
+app.Run.setHandle(Main.basic);

@@ -1,0 +1,23 @@
+{
+  "name": "legacy 0.2-legacy-svg",
+  "argv": [
+    "/tmp/wci4-package-candidate1/bin/sdui",
+    "/tmp/wci4-package-protocol-candidate1-pilot-1/legacy export 0.2 project with spaces/Page å with spaces.sdui",
+    "--entry",
+    "Main",
+    "--format",
+    "svg"
+  ],
+  "cwd": "/tmp/wci4-package-protocol-candidate1-pilot-1",
+  "binarySha256": "7789ef39c0e5b484fe569b0e7f42066871eeec1ef73a9e0c29012c8726e944ad",
+  "displayEnvironment": "DISPLAY/WAYLAND_DISPLAY removed",
+  "expected": "success",
+  "exit": 0,
+  "timeout": false,
+  "seconds": 0.06676173210144043,
+  "stdout": "commands/010-legacy 0.2-legacy-svg.stdout",
+  "stderr": "commands/010-legacy 0.2-legacy-svg.stderr",
+  "stdoutSha256": "7c84f25a8de73b284abd899f852f4df28df06e954394ee54ed24e5cdd6b031d7",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "binaryUnchanged": true
+}
