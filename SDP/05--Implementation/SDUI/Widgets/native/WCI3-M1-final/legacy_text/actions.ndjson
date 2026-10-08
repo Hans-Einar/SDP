@@ -1,0 +1,31 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci3-m1-value-final", "sha256": "3c1abba76adca3cdaf9d710302ebc6a16575150acfb1e6effcd85bb9b18b2ef6", "display": ":190", "variant": "wci3-legacy_text"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [550, 429], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "key", "values": ["s", "a", "v", "e", "d"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "key", "values": ["Return"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "basic text Commit retains typed text bridge behavior", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [28, 16], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "explicit Load returns text to existing receiver", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [209, 16], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [550, 285], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "key", "values": ["f", "o", "r", "m", "t", "e", "x", "t"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [222, 322], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "text-only SDL Accept remains compatible beside mixed Go forms", "passed": true}}
+{"kind": "screenshot", "value": "legacy-text-integration.png"}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

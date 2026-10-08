@@ -1,0 +1,47 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci3-m1-value-final", "sha256": "3c1abba76adca3cdaf9d710302ebc6a16575150acfb1e6effcd85bb9b18b2ef6", "display": ":190", "variant": "wci3-failures"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "action AcceptCount error"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [550, 359], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "key", "values": ["1", "1"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "key", "values": ["Return"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "error reply cannot overwrite accepted number", "passed": true}}
+{"kind": "check", "value": {"name": "error leaves proposed raw draft visible", "passed": true}}
+{"kind": "fixture-command", "value": "action AcceptCount malformed"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [550, 359], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "key", "values": ["1", "2"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "key", "values": ["Return"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "malformed reply cannot overwrite accepted number", "passed": true}}
+{"kind": "check", "value": {"name": "malformed leaves proposed raw draft visible", "passed": true}}
+{"kind": "fixture-command", "value": "action AcceptCount draft-conflict"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [550, 359], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "key", "values": ["1", "3"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "key", "values": ["Return"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "draft-conflict reply cannot overwrite accepted number", "passed": true}}
+{"kind": "check", "value": {"name": "post-domain newer numeric draft survives stale delivery", "passed": true}}
+{"kind": "screenshot", "value": "numeric-post-domain-conflict.png"}
+{"kind": "fixture-command", "value": "action AcceptMode options-conflict"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [550, 259], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [53, 330], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "post-domain option replacement rejects captured delivery", "passed": true}}
+{"kind": "screenshot", "value": "choice-post-domain-conflict.png"}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

@@ -37,8 +37,8 @@ Current preview files are not this assignment's original implementation.
 | WCI1-M1 | 0.3 tree/list/scroll from source through runtime, Fyne, exports and typed SDL fixture; inspect pointer/keyboard/reload behavior | WCI0; reviewed [collection contract](../../../04--Design/SDUI/Widgets/Collections.md) | completed |
 | WCI2-M1 | Tabs/splits preserve page state, relative geometry and focus | WCI1 evidence and pilot findings; reviewed Panes-and-commands contract | completed |
 | WCI2-M2 | Button/toggle shared commands, menu/context/dialog with cancel/lifetime proof | WCI2-M1; typed command/surface grammar | completed |
-| WCI3-M1 | Checkbox/slider/select/numeric input and atomic typed drafts | WCI2; reviewed Values-and-text contract and API reconciliation | in-progress |
-| WCI3-M2 | Extended single-line and basic multiline text with native editing/IME/undo evidence | WCI3-M1 | planned |
+| WCI3-M1 | Checkbox/slider/select/numeric input and atomic typed drafts | WCI2; reviewed Values-and-text contract and API reconciliation | completed |
+| WCI3-M2 | Extended single-line and basic multiline text with native editing/IME/undo evidence | WCI3-M1; reviewed explicit opt-in/native editing/IME contract | in-progress |
 | WCI4-M1 | All-family producer discovery/composition/text/codegen/provider integration and matching consumer package preparation | WCI1–WCI3 | planned |
 | WCI4-M2 | Exact-candidate compatibility tests, native workflow evidence and independent integrated review; explicit disposition of all gaps | WCI4-M1 | planned |
 
@@ -104,3 +104,14 @@ The reviewed Values-and-text contract and concrete API handoffs preserve WCI2
 closed-dialog successor semantics and bounded Go numeric admission. Five exclusive
 implementation lanes cover frontend, runtime/numeric, layout, host and SDL bridge.
 Extended text/IME remains WCI3-M2. KB004/KB005 retain separate existing dispositions.
+
+## WCI3-M1 delivery and extended text selection
+
+[Scalar evidence](Evidence-WCI3-M1.md) records `ea49991f`, 88 paths,
+113 native checks, 12 exactly-once results and independent approval. WCI3-M2 is
+selected on the same phase branch under existing full-card authority. Reviewed
+explicit source opt-in, single text authority, exact Commit/self-echo, CR/LF and
+required-empty successor semantics govern implementation. Five disjoint lanes
+extend frontend, runtime, layout, host and SDL fixtures. Main owns the bounded
+pinned X11 GLFW filter dependency, native IME evidence and canonical integration.
+No further widget family is deferred; WCI4 remains required after text acceptance.
