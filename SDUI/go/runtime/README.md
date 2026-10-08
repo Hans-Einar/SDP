@@ -6,8 +6,9 @@ and never invokes a collection provider. The host marshals background completion
 back to that goroutine. SDL execution is connected through an explicit handler
 installed by the [bridge](../../../SDL/go/bridge); runtime itself does not load SDL.
 
-The current WCI1 implementation adds source-profile 0.3 collections and viewports
-while retaining the 0.2 button/input APIs and normalized empty-profile encoding.
+The WCI2-M1 implementation adds source-profile 0.3 tabs/pages/splits to WCI1
+collections and viewports, retaining the 0.2 button/input APIs and normalized
+empty-profile encoding.
 `New` checks the bounded, uniform normalized profile and clones the supplied frame.
 Collection/provider and native readiness require the additional steps below;
 constructing a Session alone is not connected admission. See the shared
@@ -125,7 +126,8 @@ hide/disable, reload or Close therefore cannot publish a stale action result.
 
 `SnapshotRoot()` returns the detached presentation model, including current
 widget properties. `Snapshot()` also contains model/state revisions, consumed
-sequence, collection states, viewport offsets and viewport handles. All maps,
+sequence, collection states, viewport offsets/handles, Tabs/Splits maps and
+Focused public handle path. All maps,
 item slices, request pointers and model provenance (`Uses`) are copied.
 
 `CheckWith(func(*parser.Instance) error)` remains the legacy pure root gate.
@@ -136,8 +138,10 @@ type ViewportState struct { X, Y float64 }
 type StateGate func(Snapshot) (map[string]ViewportState, error)
 ```
 
-A gate receives prospective detached state before publication and returns **all**
-clamped effective offsets keyed by normalized owner path. It must not change live
+A state gate receives prospective detached state before publication and returns
+clamped effective offsets keyed by normalized owner path. Inactive pane descendants
+retain their stored offsets until they are measured again; ordinary legacy hidden
+viewport omission retains its previous meaning. It must not change live
 state, execute callbacks or invoke providers. Geometry and native resource owners
 may prepare detached results, then publish them only after runtime accepts the
 operation. Runtime validates returned finite/nonnegative offsets and scroll-owner
@@ -176,7 +180,110 @@ they close the predecessor and cancel its provider contexts. Retained SDL engine
 receive the continuing event sequence; creating a fresh New session instead would
 reset it and is not the connected reload protocol.
 
+## Tabs, pages and split state
+
+`Pane(publicPath)` returns the exact owner/page handle; `Tabs(handle)` and
+`Split(handle)` return copied state. Snapshot maps use normalized InstancePath.
+Tabs contains ordered PageState records with stable direct IDs, page handles,
+labels/icons and remembered focus. Page Enabled/Visible expresses direct declaration
+intent; Tabs Enabled/Visible includes ancestor and containing-page activity. Thus an
+unselected page can be eligible while its content is inactive. Snapshot.Root and
+leaf Widgets expose derived effective activity for layout/input/provider admission.
+`Widgets()` still enumerates legacy leaf controls; `CallbackOwners()` enumerates
+composition tabs with symbolic callbacks for bridge/preparation discovery.
+
+`SelectPage(handle,id)` changes selection silently. `Apply` supports pane
+Enabled/Visible and tabs/page Label (nonempty UTF-8), with the existing 256-update
+atomic bound. Disabling/hiding/removing the selected page picks the first eligible
+page or an empty body. Hidden drafts, data and scroll offsets survive; request
+tokens are revoked only when hiding successfully publishes. Reveal never resets
+AutoLoadPending or revives a canceled request. Focus accepts tabs header and split
+divider handles; `EnterPage(tabsHandle)` enters remembered valid or first content
+focus. Invalid content focus returns to a surviving pane affordance. Collection
+focus participates in page memory without changing selection semantics.
+
+Split state stores axis, Proportion, declared minima, explicit Collapsed side
+(`SplitNone`, `SplitFirst`, `SplitSecond`), Collapsible and SavedProportion.
+`SetSplitProportion(handle,p)` rejects invalid or out-of-measured-range programmatic
+values. `CollapseSplit(handle,side)` and `RestoreSplit(handle)` preserve the last
+expanded proportion. User movement/resize/restore clamps against layout's measured
+bounds. Collapsed hidden children preserve their state and offsets; both expanded
+minima are suspended while the visible child's minimum still must fit. Failed
+restore leaves collapsed state/focus unchanged. Disabled visible splits still need
+geometry; disabled affects input rather than painting.
+
+## Typed pane interactions and presentation tickets
+
+`DispatchInteraction(Event)` handles only ActivatePage and AdjustSplit in M1.
+Event carries exact Handle, ModelRevision, expected StateRevision, nonzero increasing
+Sequence and exactly one `Page *PageActivation` or `Split *SplitChange`. Legacy
+Value/Collection/DraftRevision are empty; legacy Dispatch rejects pane payloads.
+PageActivation carries PreviousID, PageID and exact direct Page handle. SplitChange
+Operation is ratio/collapse-first/collapse-second/restore; only ratio carries
+Proportion. Same-page activation is a no-op. Native page activation keeps focus on
+the tabs header; silent selection, fallback and reload never invoke the callback.
+
+`BindInteraction(handle, InteractionHandler)` installs one tabs callback;
+`HasInteractionBinding` checks it. Omitted callback permits local navigation; a
+declared unbound callback rejects activation. The handler returns
+`InteractionReply{Updates, Domain}`; InteractionResult reports Sequence, Status
+(committed/rejected/ui-conflict) and Domain (not-called/succeeded/rejected/unknown).
+Domain annotations survive adapter errors; an unspecified/invalid called-handler
+outcome is unknown. Consumed sequence survives callback failure; no automatic replay.
+No command/menu/dialog/Accept payloads are implemented in this milestone.
+
+Dispatch validates prospective geometry without preparing or publishing native
+resources, then consumes one sequence before calling the synchronous handler once.
+Widget identities and value/draft revisions plus the internal post-consumption
+StateRevision are captured. Reentrant interaction dispatch rejects. Accepted legacy
+mutations, including Reload, remain accepted and invalidate the outer reply rather
+than being rolled back. Returned updates cannot replace reserved pane state.
+Final local state and accepted updates publish atomically; the speculative gate's
+clamps are discarded and final geometry is computed against the final candidate.
+
+```go
+type SplitGeometry struct { Lower, Upper, Effective float64 }
+type PresentationState struct {
+    Viewports map[string]ViewportState
+    Splits map[string]SplitGeometry
+}
+type PresentationGate func(Snapshot) (PresentationState, error)
+type PresentationTicket struct { Publish func(); Discard func() }
+type PresentationPrepare func(Snapshot) (PresentationTicket, error)
+```
+
+`CheckPresentationWith` installs the pure typed geometry authority. Split-bearing
+models require this gate; legacy CheckStateWith keeps its signature for other
+models and replaces the typed gate, never adds a competing authority. Layout must
+return exactly one finite legal bounds/effective-ratio entry for every visible
+expanded split, including disabled ones; no collapsed/inactive/unknown entries.
+Runtime validates the clamp, enforces strict programmatic bounds, retains inactive
+pane offsets and accepts the effective state. No layout/GUI package is imported.
+
+`PreparePresentationWith` installs a separate final resource preparer. It receives
+only the finalized detached snapshot after geometry and runtime validation. Failed
+preparation or changed live model/state calls that ticket's Discard. On success the
+runtime swaps its state and synchronously calls the non-failing, non-reentrant
+Publish, which only promotes prepared resources to accepted host pending. No live
+mutation/domain callback belongs in Prepare; Publish performs no fallible work or
+allocation. The host owns source/bundle/size checks and native synchronization.
+Installing either hook publishes a validated current candidate, so failure retains
+the old hooks/state. A speculative probe never calls Prepare or writes pending;
+consuming Sequence/StateRevision alone never grants publication authority.
+A separately accepted reentrant legacy change retains its own accepted ticket.
+
+Successor retains compatible named pane identity, selection, hidden drafts/offsets,
+remembered focus and split state. Removed/ineligible pages fall back silently;
+axis/kind changes reset split state. Changing collapsible to false stages expansion
+and must pass preparation. New pane generations continue the global watermark;
+removed/recreated pages do not regain old handles. No old interaction handler,
+presentation gate or presentation preparer is copied. Reload keeps compatible
+handlers/hooks for its existing synchronous use. The governing
+[pane stage contract](../../../SDP/04--Design/SDUI/Widgets/Panes-and-commands.md)
+and host integration cover native acceptance separately.
+
 Original 0.2 regression evidence remains in [G3](../evidence/G3.md). WCI1 runtime
 unit/race tests cover typed data/events, cancellation, copied state, viewport guards
-and successors. They do not establish native input, application-wide publication
+and successors. M1 tests add pane lifecycle, measured bounds, callback/reentrant
+conflicts and ticket publication. They do not establish native input, application-wide publication
 or installed-consumer acceptance; those remain separate stage evidence.

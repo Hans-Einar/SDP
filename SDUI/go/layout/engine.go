@@ -103,7 +103,21 @@ func (e *Engine) desired(n *parser.Instance, ref, slot Size, force assigned, inh
 			return Size{}, diag(n, "scroll-layout", "Scroll axes require a definite assigned size")
 		}
 	}
-	if n.Kind == "markdown" || n.Kind == "widget" {
+	if pane(n) && n.Widget != "page" {
+		minimum, err := e.minimum(n, ref, font)
+		if err != nil {
+			return Size{}, err
+		}
+		if knownW && w < minimum.W-.01 || knownH && h < minimum.H-.01 {
+			return Size{}, diag(n, "pane-minimum", "Assigned pane size is below measured minimum")
+		}
+		if !knownW {
+			w = minimum.W
+		}
+		if !knownH {
+			h = minimum.H
+		}
+	} else if n.Kind == "markdown" || n.Kind == "widget" {
 		limit := slot.W
 		if knownW {
 			limit = w
@@ -202,6 +216,9 @@ func (e *Engine) arrange(n *parser.Instance, r Rect, ref Size, clip Rect, font f
 		b.Rect.W = 0
 		b.Rect.H = 0
 		return b, nil
+	}
+	if pane(n) && n.Widget != "page" {
+		return e.arrangePane(n, r, ref, clip, font, enabled, ancestor)
 	}
 	if n.Kind == "widget" || n.Kind == "markdown" {
 		if e.profile == "sdui/0.3" && collection(n) {

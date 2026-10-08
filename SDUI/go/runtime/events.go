@@ -1,6 +1,9 @@
 package runtime
 
 func (s *Session) Dispatch(event Event) error {
+	if event.Page != nil || event.Split != nil || event.StateRevision != 0 {
+		return fault("event-type", "Unexpected interaction payload")
+	}
 	w, err := s.lookup(event.Handle)
 	if err != nil {
 		return err
@@ -60,6 +63,8 @@ func (s *Session) Dispatch(event Event) error {
 		// Gate once, with local semantics and consumed sequence in one candidate.
 		n.check = nil
 		n.stateCheck = nil
+		n.presentationCheck = nil
+		n.presentationPrepare = nil
 		switch event.Kind {
 		case Select:
 			err = n.SelectItem(target)
@@ -75,6 +80,8 @@ func (s *Session) Dispatch(event Event) error {
 		}
 		n.check = s.check
 		n.stateCheck = s.stateCheck
+		n.presentationCheck = s.presentationCheck
+		n.presentationPrepare = s.presentationPrepare
 		n.sequence = event.Sequence
 		return s.publish(n)
 	}

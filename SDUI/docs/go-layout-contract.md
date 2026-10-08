@@ -1,8 +1,8 @@
 # Go measurement contract
 
 The shared `go/layout` package owns measured outer geometry. Its original G2
-behavior remains the SDUI 0.2 path; WCI1 adds the bounded SDUI 0.3 snapshot and
-viewport APIs described here. The [0.3 source profile](profile-0.3.md) and
+behavior remains the SDUI 0.2 path; WCI1 adds bounded SDUI 0.3 snapshot/viewports,
+and WCI2-M1 adds measured tabs/page/split geometry. The [0.3 source profile](profile-0.3.md) and
 [WCI1 collection contract](../../SDP/04--Design/SDUI/Widgets/Collections.md) distinguish
 source acceptance, runtime state, native integration and their acceptance evidence.
 
@@ -81,6 +81,8 @@ func (*Engine) LayoutSnapshot(runtime.Snapshot, Size) (*SnapshotLayout, error)
 type SnapshotLayout struct {
     Root      *Box
     Viewports map[string]Viewport
+    Tabs      map[string]TabsLayout
+    Splits    map[string]SplitLayout
 }
 
 type Viewport struct {
@@ -93,6 +95,7 @@ type Viewport struct {
 }
 
 func (*SnapshotLayout) EffectiveOffsets() map[string]runtime.ViewportState
+func (*SnapshotLayout) PresentationState() runtime.PresentationState
 ```
 
 Maps are keyed by normalized instance path. `Parent` is the nearest scroll-owner
@@ -104,15 +107,18 @@ layout introduces no competing runtime state model or collection row scene.
 For each scroll axis, `Maximum = max(0, Content - viewport size)` and
 `Offset = clamp(requested, 0, Maximum)`. Negative/NaN/infinite requests reject;
 requests beyond a new maximum clamp. A non-scroll axis has effective offset zero.
-The result includes visible scroll owners and omits removed/hidden ones.
+The result includes visible scroll owners and omits removed/hidden/inactive ones.
 `EffectiveOffsets` returns a fresh complete map suitable for `runtime.StateGate`.
+Pane-bearing presentations use `PresentationState` and the typed gate below.
 
 The calculation is pure with respect to Session: it consumes detached prospective
 state and returns geometry plus matching offsets. A collection measurer must
 capture that same snapshot. A host can stage these results in `CheckStateWith`,
 then publish them only when the runtime operation succeeds. Failure leaves the
 live state and last valid presentation intact; candidate construction must not
-publish, start a provider load or invoke a domain callback.
+publish, start a provider load or invoke a domain callback. M1 host preparation
+uses runtime's separate final preparation ticket: pure geometry preflight cannot
+promote native pending resources, even when an event sequence has been consumed.
 
 Runtime owns accepted offsets. The host submits changes through its checked
 viewport operations or an identity-guarded complete-map update. A routed operation
@@ -206,6 +212,12 @@ references, content sizing, resize, zero ranges, collection chrome, rejected nat
 metrics and exhausted-space state-gate preservation. The 0.2 regression checks
 ensure the native inset adjunct is never invoked on that profile.
 
+M1 pane tests add exact measured header/body/divider rectangles, recursive native
+and relative split minima, active-body-only measurement, chrome clipping, nested
+revelation and no native chrome fallback. Real runtime PresentationGate tests cover
+retained inactive offsets/clamp on reveal, strict ratio rejection, collapsed
+resize, failed restore preserving state/focus and successful restore clamps.
+
 These tests use synthetic collection adapter metrics. They do not prove native
 Fyne painting, row metrics, thumb dragging, external keyboard/pointer input or
 atomic native resource publication. Those WCI1 acceptance obligations remain
@@ -273,3 +285,49 @@ the title. This does not add another native inset call or reserve collection
 chrome twice. The collection measurer defines any chrome already inside that
 allocation; only declared scroll axes produce corresponding gutter strips.
 Runtime offset/state types, source syntax and row rendering remain unchanged.
+
+## WCI2-M1 panes and typed presentation gate
+
+The [pane API memo](wci2-layout-api.md) gives exact adapter signatures and rectangle
+semantics. `Engine.Measure` must implement the optional `PaneMeasurer` when tabs
+or split compositions are measured. It supplies actual native tabs-header minimum
+width/fixed height and split-divider thickness. Missing, nonfinite, negative or
+exhausted metrics reject; shared layout does not invent chrome sizes. Pages use
+ordinary content rows and need no separate native measurer. Direct scrolling on
+pane compositions remains unsupported; use a scrolling frame/group in the body.
+
+Source padding precedes chrome. The selected page fills the tabs body; inactive
+pages have no measured boxes or viewport entries. Header eligibility comes from
+runtime PageState intent, separately from inactive-body visibility. Split children
+fill the cross-axis and divide the usable axis after measured divider subtraction.
+Their finite references exclude the divider; descendants use their own allocated
+body for relative tracks. Header/divider clips include ancestor content clips and
+the window; child clips exclude that chrome. Disabled visible panes still measure
+and paint, while hit testing remains disabled.
+
+For an expanded split, shared layout computes
+`a=max(minFirst*U,measuredFirst)` and `b=max(minSecond*U,measuredSecond)`, rejects
+`a+b>U`, and returns `{Lower:a/U, Upper:1-b/U, Effective:clamp(p,Lower,Upper)}`.
+Recursive measured minima include only active bodies, native control minima,
+padding/gap, header/divider chrome, and source bounds. A collection's loaded row
+extent does not become its pane minimum. Relative intrinsic calculations use each
+subtree's own finite body, a per-run cache and a bounded 128-step refinement within
+the existing operation budget; invalid/nonconvergent metrics reject. Collapse is explicit runtime state: the
+hidden side has zero extent and leaves measurement/layout/hit testing; both
+relative split minima are suspended, and the visible side must fit its own minimum.
+Layout never changes a snapshot's proportion, saved proportion, selection or focus.
+
+`SnapshotLayout.Tabs` and `.Splits` expose active pane geometry for native adapters.
+`PresentationState()` returns fresh maps using runtime's existing types: active
+viewport offsets and one SplitGeometry per visible expanded split. It omits
+collapsed/inactive split bounds. Runtime validates this single authority, rejects
+strict programmatic ratios requiring clamping, and accepts clamps for user motion,
+resize and restore. A failed restore retains the collapsed state. Runtime retains
+still-existing inactive pane scroll offsets, overlays measured active offsets and
+clamps on reveal; ordinary WCI1 hide behavior remains intact. Final native resources
+must use that same accepted state through the runtime preparation-ticket boundary.
+
+The `Layout` entry point derives initial selection/proportion from normalized source
+when no runtime snapshot is supplied. Live presentation uses `LayoutSnapshot`.
+M1 geometry does not establish native keyboard/drag/focus acceptance or add M2
+command/menu/dialog support. Public pane SVG export remains explicitly unsupported.

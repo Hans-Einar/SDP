@@ -143,6 +143,7 @@ func (s *Session) FocusItem(t CollectionTarget) error {
 	n := s.copyState()
 	n.collections[t.Handle.Path].Focused = t.ItemID
 	n.focused = t.Handle.Path
+	n.rememberFocus(t.Handle.Path)
 	return s.publish(n)
 }
 func (s *Session) ExpandItem(t CollectionTarget) error {

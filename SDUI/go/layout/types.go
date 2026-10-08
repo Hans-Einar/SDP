@@ -62,6 +62,11 @@ type Engine struct {
 	viewports  map[string]Viewport
 	requested  map[string]runtime.ViewportState
 	insets     map[*parser.Instance]ViewportInsets
+	tabState   map[string]runtime.TabsState
+	splitState map[string]runtime.SplitState
+	tabs       map[string]TabsLayout
+	splits     map[string]SplitLayout
+	minima     map[minimumKey]Size
 }
 
 func number(n *parser.Instance, key string, fallback float64) float64 {

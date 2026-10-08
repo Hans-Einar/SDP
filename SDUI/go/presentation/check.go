@@ -15,6 +15,13 @@ func check(root *parser.Instance) error {
 		switch n.Kind {
 		case "frame", "group", "markdown":
 			return
+		case "composition":
+			if profile != "sdui/0.3" || (n.Widget != "tabs" && n.Widget != "page" && n.Widget != "split") {
+				err = diagnostic("export-kind", n.Path+": unsupported composition "+n.Widget, n)
+			} else if n.Widget != "page" {
+				_, err = parser.PaneChildren(n)
+			}
+			return
 		case "widget":
 		default:
 			err = diagnostic("export-kind", n.Path+": unsupported node "+n.Kind, n)

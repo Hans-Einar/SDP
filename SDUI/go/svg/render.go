@@ -19,6 +19,8 @@ type Options struct {
 	SkipControls  bool
 	// Exact instance path -> kind for controls actually prepared by the host.
 	// Required for each omitted control when SkipControls is true.
+	// Includes tabs/split composition chrome; pages belong to their tabs adapter.
+	// Inventory never licenses omission of a pane's descendant controls/content.
 	NativeControls map[string]string
 }
 

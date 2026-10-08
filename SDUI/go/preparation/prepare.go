@@ -19,13 +19,15 @@ const (
 // plans, install handlers on the detached session, and never execute an action.
 type Binder func(*ui.Session, *parser.Document) error
 
-// Request accepts a validated 0.2 document; adapters are synchronous and must
+// Request accepts a bounded profile document; adapters are synchronous and must
 // treat their document and layout inputs as read-only.
 type Request struct {
 	Document                         *parser.Document
 	Previous                         *ui.Session
 	Providers                        map[string]ui.CollectionProvider
 	ValidateState                    ui.StateGate
+	ValidatePresentation             ui.PresentationGate
+	PreparePresentation              ui.PresentationPrepare
 	Entry, SessionID, SourceRevision string
 	Capabilities                     Capabilities
 	ValidateLayout                   func(*parser.Instance) error
@@ -84,7 +86,10 @@ func Prepare(r Request) (*Candidate, error) {
 	if err = Check(r.Document.Profile, root, r.Capabilities); err != nil {
 		return nil, err
 	}
-	if r.ValidateLayout == nil && r.ValidateState == nil {
+	if r.ValidateState != nil && r.ValidatePresentation != nil {
+		return nil, fmt.Errorf("preparation: choose one presentation gate")
+	}
+	if r.ValidateLayout == nil && r.ValidateState == nil && r.ValidatePresentation == nil {
 		return nil, fmt.Errorf("preparation: layout validator required")
 	}
 	var s *ui.Session
@@ -121,6 +126,16 @@ func Prepare(r Request) (*Candidate, error) {
 			return nil, err
 		}
 	}
+	if r.ValidatePresentation != nil {
+		if err = s.CheckPresentationWith(r.ValidatePresentation); err != nil {
+			return nil, err
+		}
+	}
+	if r.PreparePresentation != nil {
+		if err = s.PreparePresentationWith(r.PreparePresentation); err != nil {
+			return nil, err
+		}
+	}
 	for path, p := range r.Providers {
 		if p.Load != nil {
 			found := false
@@ -143,7 +158,7 @@ func Prepare(r Request) (*Candidate, error) {
 		}
 	}
 	c.Unbound = len(selected.Connections)
-	for _, w := range s.Widgets() {
+	for _, w := range append(s.Widgets(), s.CallbackOwners()...) {
 		if w.Binding.Module != "" {
 			c.Unbound++
 		}
@@ -160,9 +175,9 @@ func Prepare(r Request) (*Candidate, error) {
 			return nil, err
 		}
 		symbols := map[string]bool{}
-		for _, w := range s.Widgets() {
+		for _, w := range append(s.Widgets(), s.CallbackOwners()...) {
 			if w.Binding.Module != "" {
-				if !s.HasBinding(w.Handle) {
+				if !(s.HasBinding(w.Handle) || w.Handle.Kind == "tabs" && s.HasInteractionBinding(w.Handle)) {
 					return nil, fmt.Errorf("unbound: %s", w.Handle.Path)
 				}
 				symbols[w.Binding.Module+"."+w.Binding.Object] = true

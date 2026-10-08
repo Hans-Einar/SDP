@@ -19,6 +19,12 @@ type EventField string
 // CollectionItemID extracts only the validated collection Activate item identity.
 const CollectionItemID EventField = "collection.item-id"
 
+// Tab selectors extract stable direct-page IDs from a validated ActivatePage.
+const (
+	TabPageID         EventField = "tab.page-id"
+	TabPreviousPageID EventField = "tab.previous-page-id"
+)
+
 type Source struct {
 	EventField EventField
 	Widget     string
@@ -95,9 +101,11 @@ func (b *Bridge) Rebind(document *uiparser.Document) error {
 	spans := map[string]uiparser.Span{}
 	b.UI.SnapshotRoot().Walk(func(n *uiparser.Instance) { spans[n.Path] = n.Span })
 	pending := map[ui.Handle]ui.Handler{}
+	interactions := map[ui.Handle]ui.InteractionHandler{}
 	links := []Link{}
 	used := map[string]bool{}
-	for _, widget := range b.UI.Widgets() {
+	owners := append(b.UI.Widgets(), b.UI.CallbackOwners()...)
+	for _, widget := range owners {
 		ref := widget.Binding
 		if ref.Module == "" {
 			continue
@@ -148,7 +156,11 @@ func (b *Bridge) Rebind(document *uiparser.Document) error {
 		action, _ := engine.Action(ref.Object)
 		links = append(links, Link{widget.Handle.Path, symbol, target, spans[widget.InstancePath], action.Span})
 		used[symbol] = true
-		pending[widget.Handle] = b.handler(engine, ref.Object, plan, target)
+		if widget.Handle.Kind == "tabs" {
+			interactions[widget.Handle] = b.interactionHandler(engine, ref.Object, plan, target)
+		} else {
+			pending[widget.Handle] = b.handler(engine, ref.Object, plan, target)
+		}
 	}
 	for symbol := range targets {
 		if !used[symbol] {
@@ -164,9 +176,16 @@ func (b *Bridge) Rebind(document *uiparser.Document) error {
 	for h := range pending {
 		handles = append(handles, h)
 	}
+	for h := range interactions {
+		handles = append(handles, h)
+	}
 	sort.Slice(handles, func(i, j int) bool { return handles[i].Path < handles[j].Path })
 	for _, h := range handles {
-		if err := b.UI.Bind(h, pending[h]); err != nil {
+		if handler, ok := interactions[h]; ok {
+			if err := b.UI.BindInteraction(h, handler); err != nil {
+				return err
+			}
+		} else if err := b.UI.Bind(h, pending[h]); err != nil {
 			return err
 		}
 	}

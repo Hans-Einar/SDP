@@ -197,5 +197,27 @@ func Dump(root *parser.Instance, columns int) (string, error) {
 	for i := range lines {
 		lines[i] = strings.TrimRight(lines[i], " \t\r\n")
 	}
+	panes := []string{}
+	var paneErr error
+	root.Walk(func(n *parser.Instance) {
+		if paneErr == nil && n.Kind == "composition" {
+			for _, line := range wrapLine(paneText(n), columns) {
+				budget += CellWidth(line)
+				if budget > MaxCells {
+					paneErr = diagnostic("dump-limit", "Pane description exceeds cell budget", n)
+					return
+				}
+				panes = append(panes, line)
+			}
+		}
+	})
+	if paneErr != nil {
+		return "", paneErr
+	}
+	// Include inactive/hidden declarations as static facts, without changing the
+	// existing content renderer's visibility policy or any 0.2 output bytes.
+	if len(panes) > 0 {
+		lines = append(append(panes, ""), lines...)
+	}
 	return fmt.Sprintf("SDUI GUI dump | %s | %d columns | structural preview\n", Safe(root.Path), columns) + strings.Join(lines, "\n") + "\n", nil
 }

@@ -18,6 +18,7 @@ func Check(root *parser.Instance, options Options) error {
 		return &parser.Diagnostic{Code: "native-controls", Message: "Native control inventory requires SkipControls", Span: root.Span}
 	}
 	used := map[string]bool{}
+	pages := map[*parser.Instance]bool{}
 	var invalid error
 	root.Walk(func(n *parser.Instance) {
 		if invalid != nil {
@@ -28,6 +29,37 @@ func Check(root *parser.Instance, options Options) error {
 		}
 		switch n.Kind {
 		case "frame", "group", "markdown":
+			return
+		case "composition":
+			if profile != "sdui/0.3" || (n.Widget != "tabs" && n.Widget != "page" && n.Widget != "split") {
+				fail("export-kind", "Unsupported composition "+n.Widget)
+				return
+			}
+			if !options.SkipControls {
+				fail("unsupported-pane-export", "SVG export does not support "+n.Widget)
+				return
+			}
+			if n.Widget == "page" {
+				if !pages[n] {
+					fail("native-controls", "Page requires an enclosing prepared tabs adapter")
+				}
+				return
+			}
+			children, err := parser.PaneChildren(n)
+			if err != nil {
+				invalid = err
+				return
+			}
+			if options.NativeControls[n.Path] != n.Widget {
+				fail("native-controls", "Missing matching prepared native pane for "+n.Widget)
+				return
+			}
+			used[n.Path] = true
+			if n.Widget == "tabs" {
+				for _, child := range children {
+					pages[child.Node] = true
+				}
+			}
 			return
 		case "widget":
 		default:

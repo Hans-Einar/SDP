@@ -34,6 +34,13 @@ func (s *Session) Reload(root *parser.Instance) error {
 			n.handlers[path] = s.handlers[path]
 		}
 	}
+	for path, w := range n.panes {
+		if old := s.panes[path]; old != nil && old.Handle == w.Handle && old.Binding == w.Binding {
+			n.interactions[path] = s.interactions[path]
+		}
+	}
+	n.presentationCheck = s.presentationCheck
+	n.presentationPrepare = s.presentationPrepare
 	n.check = s.check
 	n.stateCheck = s.stateCheck
 	return s.publish(n)

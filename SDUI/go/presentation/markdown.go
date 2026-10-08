@@ -61,6 +61,9 @@ func Markdown(root *parser.Instance, columns int) (string, error) {
 				kind = "BoxUI-frame"
 			}
 			lines = []string{"**" + kind + ":** " + codeSpan(n.Path), ""}
+			if n.Kind == "composition" {
+				lines = []string{"**Pane declaration:** " + codeSpan(paneText(n)), ""}
+			}
 			region := func(role string) error {
 				if r := n.Region(role); visible(r) {
 					block, e := render(r)

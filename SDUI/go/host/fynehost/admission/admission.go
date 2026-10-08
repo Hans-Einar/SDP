@@ -53,3 +53,13 @@ func CollectionCapabilities() preparation.Capabilities {
 		{Dimension: preparation.Viewport, ID: "scroll-x", Major: 1}, {Dimension: preparation.Viewport, ID: "scroll-y", Major: 1},
 	}...)
 }
+
+// PaneCapabilities belongs only to the M1 document host; legacy RuntimeView and
+// standalone prototype callers do not acquire native pane readiness.
+func PaneCapabilities() preparation.Capabilities {
+	return append(CollectionCapabilities(), preparation.Capabilities{
+		{Dimension: preparation.Widget, ID: "tabs", Major: 1}, {Dimension: preparation.Widget, ID: "split", Major: 1},
+		{Dimension: preparation.Host, ID: "tabs", Major: 1}, {Dimension: preparation.Host, ID: "split", Major: 1},
+		{Dimension: preparation.Host, ID: "tab-activate", Major: 1},
+	}...)
+}

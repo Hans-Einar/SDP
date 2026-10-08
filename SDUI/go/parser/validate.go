@@ -15,6 +15,11 @@ var widgets = map[string]widgetSchema{
 }
 
 func schemaFor(profile, kind string) (widgetSchema, bool) {
+	if profile == "sdui/0.3" {
+		if schema, ok := panes[kind]; ok {
+			return schema, true
+		}
+	}
 	if profile == "sdui/0.3" && (kind == "tree" || kind == "list") {
 		return widgetSchema{"label", map[string]string{"label": "string", "callback": "reference"}, "label"}, true
 	}
@@ -31,6 +36,18 @@ func widgetArguments(n *Node, profile string) map[string]any {
 			k = schema.position
 		}
 		out[k] = a.Value
+	}
+	if profile == "sdui/0.3" && val(n.Widget) == "split" {
+		for key, value := range map[string]Literal{
+			"proportion":  {Kind: "number", Value: float64(.5), Span: n.Span},
+			"minFirst":    {Kind: "number", Value: float64(0), Span: n.Span},
+			"minSecond":   {Kind: "number", Value: float64(0), Span: n.Span},
+			"collapsible": {Kind: "boolean", Value: true, Span: n.Span},
+		} {
+			if _, exists := out[key]; !exists {
+				out[key] = value
+			}
+		}
 	}
 	return out
 }
@@ -139,8 +156,9 @@ func validateLocal(d *Document) {
 			if n.Variant != nil && (n.Kind != "frame" || !member(*n.Variant, "b box")) {
 				fail("variant", "Only frame variants box/b supported", n.Span)
 			}
-			if n.Kind == "widget" {
+			if n.Kind == "widget" || n.Kind == "composition" {
 				validateWidget(n, modules, d.Profile)
+				validatePaneSource(n, d.Profile)
 			}
 			roles := map[string]bool{}
 			body := false

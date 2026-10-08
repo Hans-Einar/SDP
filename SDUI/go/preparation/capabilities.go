@@ -76,6 +76,32 @@ func Check(profile string, root *parser.Instance, supported Capabilities) error 
 		seen[n] = true
 		switch n.Kind {
 		case "frame", "group":
+		case "composition":
+			if profile != "sdui/0.3" {
+				return &Diagnostic{Capability: Capability{Widget, n.Widget, 1}, Path: n.Path, Span: n.Span, Uses: n.Uses}
+			}
+			switch n.Widget {
+			case "tabs", "split":
+				if err := require(n, Widget, n.Widget); err != nil {
+					return err
+				}
+				if err := require(n, Host, n.Widget); err != nil {
+					return err
+				}
+				if n.Widget == "tabs" {
+					if err := require(n, Host, "tab-activate"); err != nil {
+						return err
+					}
+				}
+			case "page":
+				if n.Argument("icon") != "" {
+					if err := require(n, Provider, "icon"); err != nil {
+						return err
+					}
+				}
+			default:
+				return &Diagnostic{Capability: Capability{Widget, n.Widget, 1}, Path: n.Path, Span: n.Span, Uses: n.Uses}
+			}
 		case "markdown":
 			if err := require(n, Provider, "markdown"); err != nil {
 				return err

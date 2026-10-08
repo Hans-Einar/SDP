@@ -167,6 +167,10 @@ func (v *View) nativeControls() map[string]string {
 			kinds[path] = "button"
 		case *Input:
 			kinds[path] = "input"
+		case *paneHeader:
+			kinds[path] = "tabs"
+		case *paneDivider:
+			kinds[path] = "split"
 		case *CollectionControl:
 			v.Root.Walk(func(n *parser.Instance) {
 				if n.Path == path {
@@ -183,6 +187,15 @@ func (v *View) addCollection(path string, obj *CollectionControl) {
 	holder := container.New(fixed, th)
 	clip := newRoutedClip(holder)
 	clip.Direction = container.ScrollNone
+	v.Controls[path] = obj
+	v.controls[path] = &control{obj, th, clip, fixed}
+	v.Container.Add(clip)
+}
+
+func (v *View) addPane(path string, obj fyne.CanvasObject) {
+	th := container.NewThemeOverride(obj, componentTheme{14})
+	fixed := &fixedLayout{}
+	clip := newRoutedClip(container.New(fixed, th))
 	v.Controls[path] = obj
 	v.controls[path] = &control{obj, th, clip, fixed}
 	v.Container.Add(clip)

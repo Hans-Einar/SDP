@@ -5,6 +5,7 @@ import "strings"
 type reader struct {
 	tokens       []token
 	source       string
+	profile      string
 	index, nodes int
 }
 
@@ -52,6 +53,7 @@ func (p *reader) document() *Document {
 	}
 	p.take(";")
 	d := &Document{Profile: "sdui/" + version}
+	p.profile = d.Profile
 	for p.t().value == "ref" {
 		s := p.take("ID").span
 		p.take(":")
@@ -137,6 +139,11 @@ func (p *reader) node(depth int, parent string) *Node {
 			n.Widget = str(name)
 			n.Arguments = p.arguments()
 			p.take(")")
+			if p.profile == "sdui/0.3" && p.accept("[") {
+				n.Kind = "composition"
+				n.Rows = p.rows("]", depth, n.Kind)
+				p.take("]")
+			}
 		} else {
 			n.Kind = "use"
 			n.Target = str(name)

@@ -24,13 +24,15 @@ type Viewport struct {
 type SnapshotLayout struct {
 	Root      *Box
 	Viewports map[string]Viewport
+	Tabs      map[string]TabsLayout
+	Splits    map[string]SplitLayout
 }
 
 // LayoutSnapshot measures a detached prospective runtime state. A collection
 // measurer must capture that same snapshot, rather than read a live Session.
 // No state or native resource is published by this method.
 func (e *Engine) LayoutSnapshot(snapshot runtime.Snapshot, size Size) (*SnapshotLayout, error) {
-	run := &Engine{Measure: e.Measure, requested: snapshot.Viewports, viewports: map[string]Viewport{}}
+	run := &Engine{Measure: e.Measure, requested: snapshot.Viewports, viewports: map[string]Viewport{}, tabState: snapshot.Tabs, splitState: snapshot.Splits}
 	for _, offset := range snapshot.Viewports {
 		if !validOffset(offset) {
 			return nil, &parser.Diagnostic{Code: "viewport-offset", Message: "Viewport offsets must be finite and nonnegative"}
@@ -40,7 +42,20 @@ func (e *Engine) LayoutSnapshot(snapshot runtime.Snapshot, size Size) (*Snapshot
 	if err != nil {
 		return nil, err
 	}
-	return &SnapshotLayout{Root: root, Viewports: run.viewports}, nil
+	return &SnapshotLayout{Root: root, Viewports: run.viewports, Tabs: run.tabs, Splits: run.splits}, nil
+}
+
+// PresentationState returns detached active geometry for the one runtime gate.
+// Runtime retains inactive pane offsets and decides strict versus clamped ratio
+// operations. Collapsed and inactive splits never contribute expanded bounds.
+func (g *SnapshotLayout) PresentationState() runtime.PresentationState {
+	out := runtime.PresentationState{Viewports: g.EffectiveOffsets(), Splits: map[string]runtime.SplitGeometry{}}
+	for path, s := range g.Splits {
+		if s.Collapsed == runtime.SplitNone {
+			out.Splits[path] = s.Geometry
+		}
+	}
+	return out
 }
 
 // EffectiveOffsets returns a fresh map suitable for runtime.StateGate. Removed
@@ -70,6 +85,10 @@ func finiteExtent(s Size) bool {
 func validateScrollOwners(n *parser.Instance) error {
 	switch n.Kind {
 	case "frame", "group", "markdown":
+	case "composition":
+		if n.Widget != "tabs" && n.Widget != "page" && n.Widget != "split" {
+			return diag(n, "unsupported-kind", "Unsupported pane composition")
+		}
 	case "widget":
 		switch n.Widget {
 		case "button", "input", "svg", "tree", "list":

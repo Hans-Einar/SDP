@@ -110,12 +110,15 @@ func Normalize(d *Document) (roots map[string]*Instance, err error) {
 		if n.Text != nil {
 			i.Text = n.Text.Value.(string)
 		}
-		if n.Kind == "widget" {
+		if n.Kind == "widget" || n.Kind == "composition" {
 			i.Arguments = widgetArguments(n, d.Profile)
 		}
 		for r, row := range n.Rows {
 			items := []*Instance{}
 			for c, child := range row.Items {
+				if n.Kind == "composition" && (i.Widget == "tabs" || i.Widget == "split") && child.Name == nil && child.Target == nil {
+					fail("pane-name", "Pane children require stable names", child.Span)
+				}
 				name := val(child.Role)
 				if name == "" {
 					name = val(child.Name)
@@ -147,6 +150,7 @@ func Normalize(d *Document) (roots map[string]*Instance, err error) {
 	for _, def := range d.Definitions {
 		roots[def.Name] = expand(def.Root, def.Name, 1)
 		roots[def.Name].Declaration = def.Name
+		validatePanePlacement(roots[def.Name], nil)
 	}
 	validateConnections(d, roots)
 	return roots, nil

@@ -59,6 +59,7 @@ func (b *Bundle) connect() {
 			}
 		}
 	}
+	b.connectPanes()
 	b.view.OnStatus = b.owner.status
 	for _, control := range b.view.controls {
 		control := control
@@ -104,6 +105,36 @@ func (b *Bundle) apply() {
 		}
 		rect, clip := box.Rect, box.Clip
 		if rect.W <= 0 || rect.H <= 0 || clip.W <= 0 || clip.H <= 0 {
+			return
+		}
+		switch obj := c.widget.(type) {
+		case *paneHeader:
+			pane, ok := p.geometry.Tabs[box.Path]
+			if !ok {
+				return
+			}
+			rect, clip = pane.Header, pane.HeaderClip
+			state := p.snapshot.Tabs[box.Path]
+			obj.sync(headerPages(state, box.Instance.Argument("label")), state.Selected)
+		case *paneDivider:
+			pane, ok := p.geometry.Splits[box.Path]
+			if !ok {
+				return
+			}
+			rect, clip = pane.Divider, pane.DividerClip
+			state := p.snapshot.Splits[box.Path]
+			obj.axis = state.Axis
+			obj.proportion = state.Proportion
+			obj.collapsed = state.Collapsed != ui.SplitNone
+			obj.lower, obj.upper = pane.Geometry.Lower, pane.Geometry.Upper
+			obj.usable = pane.First.W + pane.Second.W
+			if state.Axis == "vertical" {
+				obj.usable = pane.First.H + pane.Second.H
+			}
+			obj.Refresh()
+		}
+		if rect.W <= 0 || rect.H <= 0 || clip.W <= 0 || clip.H <= 0 {
+			c.clip.Hide()
 			return
 		}
 		switch obj := c.widget.(type) {
@@ -175,6 +206,7 @@ func (h *DocumentHost) after() {
 
 	b.apply()
 	h.reconcileLoads(b)
+	h.restoreFocus(b)
 	if h.OnChange != nil {
 		h.OnChange(b)
 	}

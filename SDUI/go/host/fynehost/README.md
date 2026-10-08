@@ -86,10 +86,9 @@ behavior, and validates Markdown/native admission. It does not provide the docum
 bundle transaction, typed collection provider lifecycle or 0.3 collection admission.
 Existing callers are not silently migrated to DocumentHost.
 
-The document host and real SDL fixture are implemented and have targeted/race test
-evidence. Full WCI1 native acceptance is still pending. Nested frame/group gutters are now reserved through shared layout metrics,
-with separately measured thumb strips; final actual-input verification of nested
-thumbs remains pending. Headless focus/drag tests do not prove OS input or painting.
+WCI1 collection/viewport behavior was delivered and reviewed before WCI2-M1.
+M1 tabs/page/split code has targeted integration tests; its native acceptance is
+separate and remains coordinator-owned. Headless tests do not prove OS input or painting.
 The fixture's Canvas.Capture helper has produced black images in native pilots; use
 actual OS screenshots for visual acceptance.
 
@@ -98,3 +97,41 @@ See the [runnable real SDL collection fixture](../../../../SDL/go/examples/colle
 [detached preparation API](../../preparation/prepare.go),
 [preparation design](../../../../SDP/04--Design/SDUI/Widgets/Preparation.md) and
 [collection design](../../../../SDP/04--Design/SDUI/Widgets/Collections.md).
+
+## M1 panes and accepted preparation
+
+DocumentHost admits tabs/page/split using `PaneCapabilities`; legacy RuntimeView
+and standalone prototype callers retain their narrower capabilities. Symbolic page
+icons currently reject with the missing `provider icon/1` diagnostic, including
+hidden declarations. No implicit text-only fallback or M2 menu/dialog/command support
+is advertised.
+
+The runtime presentation gate probes geometry only. Finalized snapshots then enter
+`PresentationPrepare`; its private ticket owns the native background/object list.
+Only runtime's successful ticket Publish promotes accepted pending presentation.
+Callback failure or sequence consumption alone cannot expose the speculative page.
+An independently accepted reentrant draft retains its own ticket and is synchronized
+even when the outer interaction fails. Application `Guard` remains a Prepare/Commit
+identity check: it is not called from state preparation inside an executing domain
+handler. The bridge owns its domain-result checks; resource hooks must remain pure.
+
+The bounded header wrapper reuses AppTabs rendering and actual header rectangles,
+adds one focus stop and arrows/Home/End, and sends selection through
+DispatchInteraction before displaying accepted state. Tab enters remembered/first
+eligible page content; Shift+Tab leaves the header. Inactive page bodies retain
+runtime drafts/scroll and have no active native input. A bounded divider supplies
+pointer drag and focused arrows/Home/End, Ctrl+Home/End collapse and Space restore.
+Its thickness is measured from a native empty Fyne Split, but shared pane geometry
+owns child extents and ratio clamps; native Split state cannot override them.
+
+`Bundle.Inspect()` retains snapshot/rows/widgets/viewports and adds diagnostic maps:
+`tabs[path]` contains header/clip/body/selected and per-page id/label/enabled/rect/clip;
+`splits[path]` contains shared Divider/DividerClip/First/Second and split geometry;
+`controls[path]` contains mounted rect/clip/visible for inputs, widgets, headers and
+dividers. Rectangles use logical screen coordinates. Hidden control rectangles can
+be retained from their last mount; consult visible before using them as input targets.
+These are inspection projections, not another model mutation API.
+
+See the [real SDL panes fixture](../../../../SDL/go/examples/panes/README.md),
+[shared pane layout API](../../../../SDUI/docs/wci2-layout-api.md) and
+[reviewed pane contract](../../../../SDP/04--Design/SDUI/Widgets/Panes-and-commands.md).

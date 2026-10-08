@@ -13,8 +13,17 @@ func (b *Bridge) validateSource(source Source, widget ui.Widget, kind parser.Sca
 	count := 0
 	if source.EventField != "" {
 		count++
-		if source.EventField != CollectionItemID || (widget.Handle.Kind != "tree" && widget.Handle.Kind != "list") || kind != parser.TextType {
-			return fmt.Errorf("event-field: collection.item-id requires a collection Activate and text destination")
+		switch source.EventField {
+		case CollectionItemID:
+			if (widget.Handle.Kind != "tree" && widget.Handle.Kind != "list") || kind != parser.TextType {
+				return fmt.Errorf("event-field: collection.item-id requires a collection Activate and text destination")
+			}
+		case TabPageID, TabPreviousPageID:
+			if widget.Handle.Kind != "tabs" || kind != parser.TextType {
+				return fmt.Errorf("event-field: tab identity requires a tabs ActivatePage and text destination")
+			}
+		default:
+			return fmt.Errorf("event-field: unknown selector %q", source.EventField)
 		}
 	}
 	if source.Widget != "" {
@@ -53,6 +62,18 @@ func (b *Bridge) validateSource(source Source, widget ui.Widget, kind parser.Sca
 }
 func (b *Bridge) value(source Source, event ui.Event, kind parser.ScalarType) (sdl.Value, error) {
 	if source.EventField != "" {
+		if source.EventField == TabPageID || source.EventField == TabPreviousPageID {
+			if kind != parser.TextType {
+				return sdl.Value{}, fmt.Errorf("event-field: tab identity requires text")
+			}
+			if err := b.validatePageEvent(event); err != nil {
+				return sdl.Value{}, err
+			}
+			if source.EventField == TabPreviousPageID {
+				return sdl.Text(event.Page.PreviousID), nil
+			}
+			return sdl.Text(event.Page.PageID), nil
+		}
 		if source.EventField != CollectionItemID || kind != parser.TextType || event.Kind != ui.Activate || event.Collection == nil {
 			return sdl.Value{}, fmt.Errorf("event-field: invalid collection activation")
 		}

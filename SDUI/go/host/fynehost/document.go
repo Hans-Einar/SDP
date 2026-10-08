@@ -111,7 +111,7 @@ func (h *DocumentHost) Prepare(r DocumentRequest) (*Bundle, error) {
 	}
 	h.latest, h.latestSource = r.Sequence, r.SourceRevision
 	b := &Bundle{owner: h, request: r, old: h.current, size: h.size, Document: r.Document, SourceRevision: r.SourceRevision, Sequence: r.Sequence, flights: map[string]providerFlight{}}
-	req := preparation.Request{Document: r.Document, Entry: r.Entry, SessionID: r.SessionID, SourceRevision: r.SourceRevision, Mode: r.Mode, Bind: r.Bind, Providers: r.Providers, Capabilities: admission.CollectionCapabilities(), ValidateState: b.stage}
+	req := preparation.Request{Document: r.Document, Entry: r.Entry, SessionID: r.SessionID, SourceRevision: r.SourceRevision, Mode: r.Mode, Bind: r.Bind, Providers: r.Providers, Capabilities: admission.PaneCapabilities(), ValidatePresentation: b.stage, PreparePresentation: b.preparePresentation}
 	if h.current != nil {
 		req.Previous = h.current.Session
 	}
@@ -135,42 +135,61 @@ func (h *DocumentHost) Prepare(r DocumentRequest) (*Bundle, error) {
 	b.children = []fyne.CanvasObject{b.view.Container}
 	return b, nil
 }
-func (b *Bundle) stage(snapshot ui.Snapshot) (map[string]ui.ViewportState, error) {
-	if b.closed {
-		return nil, fmt.Errorf("closed: bundle")
+
+// stage is a pure prospective geometry probe. It cannot promote native state.
+func (b *Bundle) stage(snapshot ui.Snapshot) (ui.PresentationState, error) {
+	measured, _, err := b.measure(snapshot)
+	if err != nil {
+		return ui.PresentationState{}, err
 	}
-	if err := preparation.Check(b.Document.Profile, snapshot.Root, admission.CollectionCapabilities()); err != nil {
-		return nil, err
+	return measured.PresentationState(), nil
+}
+func (b *Bundle) measure(snapshot ui.Snapshot) (*layout.SnapshotLayout, *markdown.Provider, error) {
+	if b.closed {
+		return nil, nil, fmt.Errorf("closed: bundle")
+	}
+	if err := preparation.Check(b.Document.Profile, snapshot.Root, admission.PaneCapabilities()); err != nil {
+		return nil, nil, err
 	}
 	provider, err := markdown.Prepare(snapshot.Root, nil)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
+	metrics := &collectionMeasure{snapshot: snapshot, markdown: provider}
+	measured, err := (&layout.Engine{Measure: metrics}).LayoutSnapshot(snapshot, b.size)
+	return measured, provider, err
+}
+
+// preparePresentation owns one private ticket. Runtime alone promotes it after
+// final state publication; sequence consumption and failed probes cannot do so.
+func (b *Bundle) preparePresentation(snapshot ui.Snapshot) (ui.PresentationTicket, error) {
+	measured, provider, err := b.measure(snapshot)
+	if err != nil {
+		return ui.PresentationTicket{}, err
+	}
+	size, source := b.size, b.SourceRevision
 	if b.view == nil {
 		b.view = New(snapshot.Root)
 		b.view.prepared = true
 		snapshot.Root.Walk(func(n *parser.Instance) {
-			if n.Widget == "tree" || n.Widget == "list" {
+			switch {
+			case n.Widget == "tree" || n.Widget == "list":
 				b.view.addCollection(n.Path, newCollectionControl(b.owner, b, n.Path))
+			case n.Kind == "composition" && n.Widget == "tabs":
+				b.view.addPane(n.Path, newPaneHeader())
+			case n.Kind == "composition" && n.Widget == "split":
+				b.view.addPane(n.Path, newPaneDivider())
 			}
 		})
 	}
-	metrics := &collectionMeasure{snapshot: snapshot, markdown: provider}
-	measured, err := (&layout.Engine{Measure: metrics}).LayoutSnapshot(snapshot, b.size)
-	if err != nil {
-		return nil, err
-	}
-	// Resource preparation and native state must see the offsets that runtime
-	// will publish with this geometry, including clamping after resize/deletion.
-	snapshot.Viewports = measured.EffectiveOffsets()
 	if b.request.PrepareResources != nil {
 		if err = b.request.PrepareResources(snapshot); err != nil {
-			return nil, err
+			return ui.PresentationTicket{}, err
 		}
 	}
-	background, err := svg.Render(measured.Root, svg.Options{Width: b.size.W, Height: b.size.H, SkipControls: true, NativeControls: b.view.nativeControls(), Content: provider})
+	background, err := svg.Render(measured.Root, svg.Options{Width: size.W, Height: size.H, SkipControls: true, NativeControls: b.view.nativeControls(), Content: provider})
 	if err != nil {
-		return nil, err
+		return ui.PresentationTicket{}, err
 	}
 	backs, thumbs := b.viewportObjects(snapshot, measured)
 	objects := []fyne.CanvasObject{b.view.image}
@@ -181,8 +200,11 @@ func (b *Bundle) stage(snapshot ui.Snapshot) (map[string]ui.ViewportState, error
 		}
 	})
 	objects = append(objects, thumbs...)
-	b.pending = &nativePresentation{snapshot: snapshot, geometry: measured, background: fyne.NewStaticResource("sdui.svg", []byte(background)), objects: objects}
-	return measured.EffectiveOffsets(), nil
+	prepared := &nativePresentation{snapshot: snapshot, geometry: measured, background: fyne.NewStaticResource("sdui.svg", []byte(background)), objects: objects}
+	if b.closed || b.size != size || b.SourceRevision != source || b.published && b.owner.current != b {
+		return ui.PresentationTicket{}, fmt.Errorf("stale: prepared native bundle")
+	}
+	return ui.PresentationTicket{Publish: func() { b.pending = prepared }, Discard: func() { prepared = nil }}, nil
 }
 func (h *DocumentHost) Commit(b *Bundle) error {
 	if h.closed || b == nil || b.closed || b.published || b.owner != h {
@@ -225,11 +247,21 @@ func (h *DocumentHost) restoreFocus(b *Bundle) {
 	if h.current != b || b.closed || h.closed || h.canvas == nil {
 		return
 	}
-	w, ok := b.Session.Widget(b.Session.Focused())
-	if !ok || !w.Enabled || !w.Visible {
-		return
+	path := ""
+	if w, ok := b.Session.Widget(b.Session.Focused()); ok && w.Enabled && w.Visible {
+		path = w.InstancePath
 	}
-	obj, ok := b.view.Controls[w.InstancePath].(fyne.Focusable)
+	for p, t := range b.Session.Snapshot().Tabs {
+		if t.Handle.Path == b.Session.Focused() && t.Enabled && t.Visible {
+			path = p
+		}
+	}
+	for p, t := range b.Session.Snapshot().Splits {
+		if t.Handle.Path == b.Session.Focused() && t.Enabled && t.Visible {
+			path = p
+		}
+	}
+	obj, ok := b.view.Controls[path].(fyne.Focusable)
 	if !ok || h.canvas.Focused() == obj {
 		return
 	}

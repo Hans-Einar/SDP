@@ -6,7 +6,9 @@ document       = "sdui", "0.3", ";", { module-ref }, definition,
 module-ref     = "ref", ":", identifier, string, ";" ;
 definition     = identifier, "=", component, ";" ;
 component      = [ identifier, "=" ], primary, [ "*", identifier ], [ formatting ] ;
-primary        = frame | group | string | widget-call | identifier ;
+primary        = frame | group | string | call-primary | identifier ;
+call-primary   = widget-call, [ "[", [ rows ], "]" ] ;
+(* M1: bodies required and permitted only for tabs/page/split. *)
 frame          = "[", [ rows ], "]" ;
 group          = "<", [ rows ], ">" ;
 rows           = row, { ";", row }, [ ";" ] ;

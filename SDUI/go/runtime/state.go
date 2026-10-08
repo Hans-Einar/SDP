@@ -7,6 +7,9 @@ import (
 
 type ViewportState struct{ X, Y float64 }
 type Snapshot struct {
+	Tabs                                   map[string]TabsState
+	Splits                                 map[string]SplitState
+	Focused                                string
 	Root                                   *parser.Instance
 	ModelRevision, StateRevision, Sequence uint64
 	Collections                            map[string]CollectionState
@@ -26,7 +29,13 @@ func copyViewports(in map[string]ViewportState) map[string]ViewportState {
 	return out
 }
 func (s *Session) Snapshot() Snapshot {
-	v := Snapshot{Root: s.SnapshotRoot(), ModelRevision: s.Revision, StateRevision: s.StateRevision, Sequence: s.sequence, Collections: map[string]CollectionState{}, Viewports: copyViewports(s.viewports), ViewportHandles: map[string]Handle{}}
+	v := Snapshot{Tabs: map[string]TabsState{}, Splits: map[string]SplitState{}, Focused: s.focused, Root: s.SnapshotRoot(), ModelRevision: s.Revision, StateRevision: s.StateRevision, Sequence: s.sequence, Collections: map[string]CollectionState{}, Viewports: copyViewports(s.viewports), ViewportHandles: map[string]Handle{}}
+	for _, t := range s.tabs {
+		v.Tabs[t.InstancePath] = copyTabs(t)
+	}
+	for _, p := range s.splits {
+		v.Splits[p.InstancePath] = *p
+	}
 	for k, h := range s.viewportHandles {
 		v.ViewportHandles[k] = h
 	}
@@ -47,6 +56,7 @@ func (s *Session) copyState() *Session {
 		n.collections[k] = copyCollection(v)
 	}
 	n.viewports = copyViewports(s.viewports)
+	s.copyPanes(&n)
 	return &n
 }
 func (s *Session) validateViewports(offsets map[string]ViewportState) error {
@@ -76,6 +86,13 @@ func (s *Session) gate() error {
 			return err
 		}
 	}
+	if s.presentationCheck != nil {
+		p, err := s.presentationCheck(s.Snapshot())
+		if err != nil {
+			return err
+		}
+		return s.measuredState(p)
+	}
 	if s.stateCheck != nil {
 		offsets, err := s.stateCheck(s.Snapshot())
 		if err != nil {
@@ -84,7 +101,7 @@ func (s *Session) gate() error {
 		if err = s.validateViewports(offsets); err != nil {
 			return err
 		}
-		s.viewports = copyViewports(offsets)
+		return s.measuredState(PresentationState{Viewports: offsets})
 	}
 	return nil
 }
@@ -92,15 +109,43 @@ func (s *Session) publish(n *Session) error {
 	if s.closed {
 		return fault("closed", "Session is closed")
 	}
-	n.StateRevision = s.StateRevision + 1
+	revision, state := s.Revision, s.StateRevision
+	n.StateRevision = state + 1
+	n.refreshActivity()
 	if err := n.gate(); err != nil {
 		return err
 	}
+	var ticket PresentationTicket
+	if n.presentationPrepare != nil {
+		var err error
+		ticket, err = n.presentationPrepare(n.Snapshot())
+		if err != nil {
+			if ticket.Discard != nil {
+				ticket.Discard()
+			}
+			return err
+		}
+	}
+	if s.closed || s.Revision != revision || s.StateRevision != state {
+		if ticket.Discard != nil {
+			ticket.Discard()
+		}
+		return fault("stale-presentation", "State changed during presentation preparation")
+	}
+	n.strictSplit = ""
+	n.interacting = s.interacting
 	*s = *n
+	if ticket.Publish != nil {
+		ticket.Publish()
+	}
 	return nil
 }
 func (s *Session) CheckStateWith(check StateGate) error {
+	if len(s.splits) > 0 {
+		return fault("presentation-gate", "Splits require a typed presentation gate")
+	}
 	n := s.copyState()
+	n.presentationCheck = nil
 	n.stateCheck = check
 	return s.publish(n)
 }
@@ -110,7 +155,7 @@ func (s *Session) SetViewports(offsets map[string]ViewportState) error {
 	if err := s.validateViewports(offsets); err != nil {
 		return err
 	}
-	if s.stateCheck == nil && len(offsets) > 0 {
+	if s.stateCheck == nil && s.presentationCheck == nil && len(offsets) > 0 {
 		return fault("viewport", "Viewport updates require a state-aware geometry gate")
 	}
 	n := s.copyState()
@@ -140,6 +185,11 @@ func (s *Session) SetViewport(h Handle, modelRevision uint64, offset ViewportSta
 	}
 	if current, ok := s.viewportHandles[h.Path]; !ok || current != h {
 		return fault("stale-handle", "Viewport owner is no longer current")
+	}
+	if len(s.panes) > 0 {
+		if a := s.active[h.Path]; !a.visible || !a.enabled {
+			return fault("inactive-widget", "Viewport is inactive")
+		}
 	}
 	return s.SetViewports(map[string]ViewportState{h.Path: offset})
 }

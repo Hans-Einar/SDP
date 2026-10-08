@@ -49,3 +49,10 @@ profile stays action-core 0.1. Existing 0.2 bundle bytes remain unchanged.
 Publication preserves user-owned files and rejects modified generated files through
 the existing manifest-managed atomic publisher. Build against matching Go modules;
 language-model hot reload and Go rebuild/restart remain distinct mechanisms.
+
+WCI2-M1 pane bodies use the same 0.3 identities and constructors: composition
+Rows/Arguments, stable direct page IDs, normalized split defaults and callback/use
+provenance round-trip without a new generator version. Constructors contain no live
+selected page, measured divider/header geometry, focus or collapse state. Hosts
+must prepare real pane controls and state-aware geometry before native publication;
+static generation/export is not that readiness check.

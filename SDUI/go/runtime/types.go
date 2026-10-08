@@ -34,15 +34,20 @@ func Bool(v bool) Value   { return Value{Kind: Boolean, Bool: v} }
 type EventKind string
 
 const (
-	Activate EventKind = "activate"
-	Commit   EventKind = "commit"
-	Select   EventKind = "select"
-	Expand   EventKind = "expand"
-	Collapse EventKind = "collapse"
-	Retry    EventKind = "retry"
+	Activate     EventKind = "activate"
+	Commit       EventKind = "commit"
+	Select       EventKind = "select"
+	Expand       EventKind = "expand"
+	Collapse     EventKind = "collapse"
+	Retry        EventKind = "retry"
+	ActivatePage EventKind = "activate-page"
+	AdjustSplit  EventKind = "adjust-split"
 )
 
 type Event struct {
+	StateRevision                          uint64
+	Page                                   *PageActivation
+	Split                                  *SplitChange
 	Collection                             *CollectionTarget
 	Handle                                 Handle
 	ModelRevision, Sequence, DraftRevision uint64
@@ -139,4 +144,11 @@ func (s *Session) lookup(h Handle) (*Widget, error) {
 		return nil, fault("stale-handle", fmt.Sprintf("Handle %s is no longer valid", h.Path))
 	}
 	return w, nil
+}
+
+func (s *Session) lookupControl(h Handle) (*Widget, error) {
+	if s.panes[h.Path] != nil {
+		return s.pane(h)
+	}
+	return s.lookup(h)
 }

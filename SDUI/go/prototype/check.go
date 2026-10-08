@@ -30,13 +30,19 @@ func Check(path, entry, revision string) (reload.Candidate, Report, error) {
 	if revision != "" && c.Hash != revision {
 		return c, r, fmt.Errorf("stale: SDUI source changed; regenerate the preview")
 	}
-	// The standalone adapter has no application-owned collection provider. Check
-	// hidden descendants as well, before generic frontend/native admission, so a
-	// static 0.3 preview is not confused with a ready interactive collection.
+	// The standalone adapter has neither native panes nor application-owned
+	// collection providers. Check hidden descendants before generic admission so
+	// static 0.3 support cannot be confused with interactive readiness.
 	if c.Document.Profile == "sdui/0.3" {
 		r.Profile = c.Document.Profile
 		var unavailable error
 		c.Root.Walk(func(n *parser.Instance) {
+			if unavailable == nil && n.Kind == "composition" {
+				unavailable = fmt.Errorf("unsupported-pane: standalone prototype has no native pane adapter: %w", &preparation.Diagnostic{
+					Capability: preparation.Capability{Dimension: preparation.Host, ID: n.Widget, Major: 1},
+					Path:       n.Path, Span: n.Span, Uses: append([]parser.UseSite(nil), n.Uses...),
+				})
+			}
 			if unavailable == nil && n.Kind == "widget" && (n.Widget == "tree" || n.Widget == "list") {
 				unavailable = fmt.Errorf("unsupported-provider: standalone prototype requires an application-supplied collection provider: %w", &preparation.Diagnostic{
 					Capability: preparation.Capability{Dimension: preparation.Provider, ID: "collection-data", Major: 1},

@@ -9,6 +9,15 @@ import (
 type Session struct {
 	check                   func(*parser.Instance) error
 	stateCheck              StateGate
+	presentationCheck       PresentationGate
+	presentationPrepare     PresentationPrepare
+	panes                   map[string]*Widget
+	tabs                    map[string]*TabsState
+	splits                  map[string]*SplitState
+	intent, active          map[string]activity
+	interactions            map[string]InteractionHandler
+	interacting             bool
+	strictSplit             string
 	StateRevision           uint64
 	collections             map[string]*collection
 	viewports               map[string]ViewportState
@@ -32,6 +41,9 @@ func New(id string, root *parser.Instance) (*Session, error) {
 	}
 	s := &Session{ID: id, Revision: 1, StateRevision: 1, collections: map[string]*collection{}, viewports: map[string]ViewportState{}, viewportHandles: map[string]Handle{}, root: clone(root), widgets: map[string]*Widget{}, handlers: map[string]Handler{}}
 	if err := s.register(s.root, true, true); err != nil {
+		return nil, err
+	}
+	if err := s.initPanes(); err != nil {
 		return nil, err
 	}
 	return s, nil
@@ -138,15 +150,19 @@ func (s *Session) Revert(handle Handle) error {
 	return s.publish(n)
 }
 func (s *Session) Focus(handle Handle) error {
-	w, e := s.lookup(handle)
+	w, e := s.lookupControl(handle)
 	if e != nil {
 		return e
+	}
+	if w.Handle.Kind == "page" {
+		return fault("focus", "Page content has no independent focus stop")
 	}
 	if !w.Enabled || !w.Visible {
 		return fault("focus", "Widget is not focusable")
 	}
 	n := s.copyState()
 	n.focused = handle.Path
+	n.rememberFocus(handle.Path)
 	return s.publish(n)
 }
 func (s *Session) Focused() string { return s.focused }
@@ -160,6 +176,8 @@ func (s *Session) Close() {
 	s.closed = true
 	s.StateRevision++
 	s.handlers = map[string]Handler{}
+	s.interactions = map[string]InteractionHandler{}
+	s.presentationPrepare = nil
 	s.focused = ""
 	s.Revision++
 }

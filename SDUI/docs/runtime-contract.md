@@ -1,16 +1,19 @@
 # SDUI ↔ SDL — implemented runtime boundary
 
-Updated 2026-10-08 for the WCI1 implementation candidate. SDUI 0.2 and 0.3 share
+Updated 2026-10-08 for the WCI2-M1 implementation candidate. SDUI 0.2 and 0.3 share
 one Go runtime; SDL action-core 0.1 remains the bounded execution profile. WCI1
 adds typed tree/list identity and collection/provider/viewport state without
 changing 0.2 input values, button activation or the text result port. Native
 integration acceptance is separate from the runtime package's unit/race evidence.
+M1 adds tabs/page/split state and typed page activation while preserving WCI1;
+command/menu/dialog and WCI3 typed-value families are not implemented here.
 
 | Responsibility | Contract / implementation | Evidence boundary |
 | --- | --- | --- |
-| UI session, drafts, collections, requests, snapshots and successors | [Runtime API](../go/runtime/README.md) | Runtime tests; historical [G3](../go/evidence/G3.md) covers 0.2 |
+| UI session, drafts, panes, collections, requests, snapshots and successors | [Runtime API](../go/runtime/README.md) | Runtime tests; historical [G3](../go/evidence/G3.md) covers 0.2 |
 | Source profiles and normalized models | [0.3 profile](profile-0.3.md), [language](language.md) | Parser/generator tests; 0.2 encoding retained |
 | Collection interaction and atomic publication obligations | [WCI1 stage contract](../../SDP/04--Design/SDUI/Widgets/Collections.md) | Stage acceptance, including native input, is separate |
+| Pane interaction and measured publication obligations | [WCI2 stage contract](../../SDP/04--Design/SDUI/Widgets/Panes-and-commands.md) | M1 runtime/bridge tests; native pane acceptance remains separate |
 | SDL actions, records and Go registration | [action-core 0.1](../../SDL/docs/profiles/SDL-Executable-Action-Profile.md) | [G4](../../SDL/go/evidence/G4.md) |
 | Field bindings and result receiver | [Bridge](../../SDL/go/bridge/bind.go), [value extraction](../../SDL/go/bridge/values.go) | Actual loaded engine/registration and bridge tests |
 | Generated models using the same runtime | [Go generation](go-generation.md) | Generator equivalence tests; historical [G5](../../SDL/go/evidence/G5.md) |
@@ -33,6 +36,8 @@ Each bridge input field must select exactly one source:
 | `Literal` | Typed SDL scalar value |
 | `Context` | Named application-supplied typed context value |
 | `EventField: bridge.CollectionItemID` | Stable item ID from a validated tree/list Activate event, mapped to SDL text |
+| `EventField: bridge.TabPageID` | New stable direct page ID from ActivatePage, mapped to SDL text |
+| `EventField: bridge.TabPreviousPageID` | Previous stable direct page ID from ActivatePage, mapped to SDL text |
 
 `CollectionItemID` has wire/debug spelling `collection.item-id`. It is the only
 collection event-field selector in this boundary. It rejects button/input sources,
@@ -101,6 +106,50 @@ The WCI1 action fixture executes synchronously on the owner goroutine. Lazy prov
 loading alone runs asynchronously under host control. This contract is not a general
 asynchronous action executor or a responsiveness guarantee for arbitrary blocking
 Go handlers.
+
+## M1 pane interaction and publication
+
+Runtime registers tabs/page/split composition owners separately from legacy
+Widgets(). CallbackOwners() and BindInteraction expose callback-owning tabs to the
+bridge; page headers do not acquire separate domain bindings. TabPageID and
+TabPreviousPageID require a valid ActivatePage owner/payload and SDL text input.
+The existing explicit text OutputField/setHandle receiver remains unchanged.
+No command selectors, dialog result mode or implicit persistence are introduced.
+
+DispatchInteraction validates exact model/state/handle/page identity and sequence.
+ActivatePage carries previous/new stable IDs and the new page handle. Same-page
+activation, programmatic SelectPage, removal fallback and reload execute no action.
+Prospective geometry is checked before the synchronous handler. Selection/focus
+and returned updates publish together or remain unchanged. Domain annotations
+survive post-Execute adapter conflicts: ui-conflict/succeeded does not mean rollback.
+A called handler with no outcome annotation is unknown. No automatic action replay.
+Captured receiver value/draft revisions and the post-consumption runtime baseline
+are checked before publication. Accepted legacy reentrant work remains accepted;
+the stale outer result cannot overwrite it. Nested interaction dispatch rejects.
+
+Snapshot adds detached Tabs/Splits maps and Focused. Runtime retains page intent
+separately from content activity, preserves hidden drafts/data/offsets, cancels loads
+only with accepted hiding, and never auto-restarts a canceled root on reveal.
+Split state includes explicit collapse and saved expanded ratio. Layout supplies
+measured minima/divider geometry and effective proportions. Strict programmatic
+ratios reject out-of-bounds values; user/resize/restore paths clamp. Failed restore
+or candidate preparation preserves prior state. Disabled visible panes still paint.
+
+CheckPresentationWith installs a pure PresentationGate returning effective viewport
+offsets and SplitGeometry bounds/ratios. Runtime validates the result, retains
+inactive pane offsets and constructs the finalized state. PreparePresentationWith
+then prepares a private PresentationTicket from that finalized detached snapshot.
+Only the runtime's successful state swap permits ticket.Publish to promote native
+pending; failure discards only that ticket. Publish is non-failing/non-reentrant.
+Speculative geometry never prepares a ticket or changes pending; sequence/outcome
+revision changes are not publication. Host synchronization may therefore retain an
+independently accepted reentrant presentation after an outer callback error.
+
+Compatible successors preserve named pane identities/selection/focus and relative
+split state; axis/kind changes reset splits, and collapsible=false requires a valid
+expanded candidate. Successors inherit no interaction handlers or presentation
+hooks. Runtime imports no layout or GUI packages; all native resource/focus work
+belongs to the host. See [runtime API](../go/runtime/README.md) for concrete calls.
 
 ## Provider requests and presentation state
 
@@ -181,9 +230,10 @@ second execution implementation.
 
 ## Bounds and earlier proposals
 
-WCI1 covers bounded tree/list data, navigation, lazy recovery and viewports. It makes
-no claim for tabs/splits, command/transient families, typed numeric controls, multiline
-input, a general collection query language, collection results in SDL or an installed
+WCI1 covers bounded tree/list data, navigation, lazy recovery and viewports;
+WCI2-M1 adds tabs/pages/splits and typed page activation. This boundary makes
+no claim for command/transient families, typed numeric controls, multiline input,
+a general collection query language, collection results in SDL or an installed
 external consumer upgrade. Existing text/composition exports remain structural;
 collection SVG export explicitly rejects unsupported interactive collection output.
 The SVG widget remains a placeholder.
