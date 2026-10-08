@@ -1,0 +1,26 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci3-m2-noether-text-fast", "sha256": "0078f72eec7fe61bd41a1b090bb7ca2f26ba48c3a1e54c4eff6bd240c010f001", "display": ":190", "variant": "wci3-history"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "set Single empty"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "click", "values": [383, 125], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-clipboard-set", "value": "one"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "v"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "key", "values": ["End"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "key", "values": ["a", "b"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "click", "values": [383, 125], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "key", "values": ["Return"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "z"], "keep_focus": false}}
+{"kind": "result", "value": {"failed": "Expected fixture event not observed"}}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

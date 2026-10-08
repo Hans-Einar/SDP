@@ -1,0 +1,266 @@
+[
+  {
+    "variant": "command_load",
+    "argv": [
+      "python3",
+      "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_text.py",
+      "--binary",
+      "/tmp/wci3-m2-guard-final-native",
+      "--display",
+      ":190",
+      "--out",
+      "/tmp/wci3-m2-guard-final-evidence/command_load",
+      "--variant",
+      "command_load"
+    ],
+    "exit": 0,
+    "seconds": 20.312,
+    "FYNE_THEME": "light"
+  },
+  {
+    "variant": "single",
+    "argv": [
+      "python3",
+      "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_text.py",
+      "--binary",
+      "/tmp/wci3-m2-guard-final-native",
+      "--display",
+      ":190",
+      "--out",
+      "/tmp/wci3-m2-guard-final-evidence/single",
+      "--variant",
+      "single"
+    ],
+    "exit": 0,
+    "seconds": 23.278,
+    "FYNE_THEME": "light"
+  },
+  {
+    "variant": "multiline",
+    "argv": [
+      "python3",
+      "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_text.py",
+      "--binary",
+      "/tmp/wci3-m2-guard-final-native",
+      "--display",
+      ":190",
+      "--out",
+      "/tmp/wci3-m2-guard-final-evidence/multiline",
+      "--variant",
+      "multiline"
+    ],
+    "exit": 0,
+    "seconds": 21.899,
+    "FYNE_THEME": "light"
+  },
+  {
+    "variant": "history",
+    "argv": [
+      "python3",
+      "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_text.py",
+      "--binary",
+      "/tmp/wci3-m2-guard-final-native",
+      "--display",
+      ":190",
+      "--out",
+      "/tmp/wci3-m2-guard-final-evidence/history",
+      "--variant",
+      "history"
+    ],
+    "exit": 0,
+    "seconds": 20.777,
+    "FYNE_THEME": "light"
+  },
+  {
+    "variant": "readonly",
+    "argv": [
+      "python3",
+      "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_text.py",
+      "--binary",
+      "/tmp/wci3-m2-guard-final-native",
+      "--display",
+      ":190",
+      "--out",
+      "/tmp/wci3-m2-guard-final-evidence/readonly",
+      "--variant",
+      "readonly"
+    ],
+    "exit": 0,
+    "seconds": 12.308,
+    "FYNE_THEME": "light"
+  },
+  {
+    "variant": "pasteguard",
+    "argv": [
+      "python3",
+      "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_text.py",
+      "--binary",
+      "/tmp/wci3-m2-guard-final-native",
+      "--display",
+      ":190",
+      "--out",
+      "/tmp/wci3-m2-guard-final-evidence/pasteguard",
+      "--variant",
+      "pasteguard"
+    ],
+    "exit": 0,
+    "seconds": 14.176,
+    "FYNE_THEME": "light"
+  },
+  {
+    "variant": "failures",
+    "argv": [
+      "python3",
+      "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_text.py",
+      "--binary",
+      "/tmp/wci3-m2-guard-final-native",
+      "--display",
+      ":190",
+      "--out",
+      "/tmp/wci3-m2-guard-final-evidence/failures",
+      "--variant",
+      "failures"
+    ],
+    "exit": 0,
+    "seconds": 32.207,
+    "FYNE_THEME": "light"
+  },
+  {
+    "variant": "retention",
+    "argv": [
+      "python3",
+      "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_text.py",
+      "--binary",
+      "/tmp/wci3-m2-guard-final-native",
+      "--display",
+      ":190",
+      "--out",
+      "/tmp/wci3-m2-guard-final-evidence/retention",
+      "--variant",
+      "retention"
+    ],
+    "exit": 0,
+    "seconds": 21.747,
+    "FYNE_THEME": "light"
+  },
+  {
+    "variant": "forms",
+    "argv": [
+      "python3",
+      "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_text.py",
+      "--binary",
+      "/tmp/wci3-m2-guard-final-native",
+      "--display",
+      ":190",
+      "--out",
+      "/tmp/wci3-m2-guard-final-evidence/forms",
+      "--variant",
+      "forms"
+    ],
+    "exit": 0,
+    "seconds": 26.052,
+    "FYNE_THEME": "light"
+  },
+  {
+    "variant": "required_empty",
+    "argv": [
+      "python3",
+      "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_text.py",
+      "--binary",
+      "/tmp/wci3-m2-guard-final-native",
+      "--display",
+      ":190",
+      "--out",
+      "/tmp/wci3-m2-guard-final-evidence/required_empty",
+      "--variant",
+      "required_empty"
+    ],
+    "exit": 0,
+    "seconds": 14.058,
+    "FYNE_THEME": "light"
+  },
+  {
+    "variant": "constraints",
+    "argv": [
+      "python3",
+      "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_text.py",
+      "--binary",
+      "/tmp/wci3-m2-guard-final-native",
+      "--display",
+      ":190",
+      "--out",
+      "/tmp/wci3-m2-guard-final-evidence/constraints",
+      "--variant",
+      "constraints"
+    ],
+    "exit": 0,
+    "seconds": 19.083,
+    "FYNE_THEME": "light"
+  },
+  {
+    "variant": "scroll",
+    "argv": [
+      "python3",
+      "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_text.py",
+      "--binary",
+      "/tmp/wci3-m2-guard-final-native",
+      "--display",
+      ":190",
+      "--out",
+      "/tmp/wci3-m2-guard-final-evidence/scroll",
+      "--variant",
+      "scroll"
+    ],
+    "exit": 0,
+    "seconds": 24.411,
+    "FYNE_THEME": "light"
+  },
+  {
+    "variant": "ime",
+    "argv": [
+      "python3",
+      "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/with_ibus.py",
+      "--display",
+      ":190",
+      "--installation",
+      "/tmp/sdui-ime-probe/root",
+      "--components",
+      "/tmp/sdui-ime-probe/components",
+      "--out",
+      "/tmp/wci3-m2-guard-final-evidence/ime-environment",
+      "--",
+      "python3",
+      "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_text.py",
+      "--binary",
+      "/tmp/wci3-m2-guard-final-native",
+      "--display",
+      ":190",
+      "--out",
+      "/tmp/wci3-m2-guard-final-evidence/ime",
+      "--variant",
+      "ime"
+    ],
+    "exit": 0,
+    "seconds": 21.013,
+    "FYNE_THEME": "light"
+  },
+  {
+    "variant": "nonmodal-forms",
+    "argv": [
+      "python3",
+      "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_text.py",
+      "--binary",
+      "/tmp/wci3-m2-guard-final-native",
+      "--display",
+      ":190",
+      "--out",
+      "/tmp/wci3-m2-guard-final-evidence/nonmodal-forms",
+      "--variant",
+      "forms",
+      "--nonmodal"
+    ],
+    "exit": 0,
+    "seconds": 29.284,
+    "FYNE_THEME": "light"
+  }
+]

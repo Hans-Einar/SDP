@@ -1,0 +1,30 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci3-m2-noether-text-fast", "sha256": "0078f72eec7fe61bd41a1b090bb7ca2f26ba48c3a1e54c4eff6bd240c010f001", "display": ":190", "variant": "wci3-readonly"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "load unicode"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "click", "values": [28, 16], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "explicit SDL Load fills read-only preview", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "click", "values": [936, 76], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "c"], "keep_focus": false}}
+{"kind": "check", "value": {"name": "read-only native text remains selectable and copyable", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-clipboard-set", "value": "replacement"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "x"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "v"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "key", "values": ["BackSpace", "a", "Return"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "read-only cut paste typing deletion and Return do not mutate or invoke", "passed": true}}
+{"kind": "fixture-command", "value": "set Preview lines"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "checked programmatic read-only update is silent", "passed": true}}
+{"kind": "screenshot", "value": "readonly-multiline-preview.png"}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

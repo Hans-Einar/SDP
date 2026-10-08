@@ -19,8 +19,8 @@ candidate identity, reproduction command, actual result and independent review.
 | Slider | WCI3-M1 | Finite min/max/step | Invalid bounds, increments, changing/commit, draft rollback | Typed numeric binding and labelled snapshot | WCI3-M1 delivered; Evidence-WCI3-M1 |
 | Select | WCI3-M1 | Stable option IDs, empty/disabled options | Changed options cannot silently change accepted domain identity | Option IDs retained through generation and reload | WCI3-M1 delivered; Evidence-WCI3-M1 |
 | Numeric input | WCI3-M1 | Typed number with editable draft | Invalid intermediate text distinct from accepted value; increment/decrement | Same numeric binding/range contract as slider | WCI3-M1 delivered; Evidence-WCI3-M1 |
-| Single-line input | WCI3-M2 | Shared read-only/placeholder/validation | Preserve draft/revert/revision behavior; focus, Unicode, programmatic mute | Existing input baseline plus new properties | pending extensions; basic input exists |
-| Multiline input | WCI3-M2 | input multiline property | Edit/select/copy/paste, undo/redo, line breaks, scroll, read-only, UTF-8/IME, explicit commit | SDL Load/Save fixture without widget/parser I/O | pending |
+| Single-line input | WCI3-M2 | Shared read-only/placeholder/validation | Preserve draft/revert/revision behavior; focus, Unicode, programmatic mute | Existing input baseline plus new properties | WCI3-M2 delivered; Evidence-WCI3-M2 |
+| Multiline input | WCI3-M2 | input multiline property | Edit/select/copy/paste, undo/redo, line breaks, scroll, read-only, UTF-8/IME, explicit commit | SDL Load/Save fixture without widget/parser I/O | WCI3-M2 delivered; Evidence-WCI3-M2 |
 | SVG/Markdown preview | WCI4-M1 | Provider/resource identity and accessible description | Disposal, missing provider and explicit fallback | Inspect actual previews; no unsupported richness claim | pending refinement; bounded baseline exists |
 
 Every new family includes positive/negative profile tests, original-source spans,

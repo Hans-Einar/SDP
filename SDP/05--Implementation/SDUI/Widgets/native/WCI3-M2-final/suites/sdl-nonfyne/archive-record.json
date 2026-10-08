@@ -1,0 +1,30 @@
+{
+  "name": "sdl-nonfyne",
+  "status": "passed",
+  "exit": 0,
+  "command": "go test -race -count=1 -p 1 ./runtime ./codegen ; go test -race -count=1 -p 1 ./broker ./cmd/sdl ./cmd/sdl-compiled ./cmd/sdl-dev ./cmd/sdl-document ./cmd/sdl-gen ./cmd/sdl-simulate ./cmd/sdl-view-request ./cmd/sdl-viewsd ./devhost ./documents ./examples/application ./examples/generatedmodel ./examples/simulation ./parser ./reader ./reload ./snapshot ./sourcegraph ./viewpoint",
+  "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+  "receipt_origin": "captured results.json and exit files",
+  "log": "/tmp/wci3-m2-sdl-nonfyne-regressions/remaining-nonfyne.log",
+  "receipt": "/tmp/wci3-m2-sdl-nonfyne-regressions/results.json",
+  "artifacts": [
+    "/tmp/wci3-m2-sdl-nonfyne-regressions/README.md",
+    "/tmp/wci3-m2-sdl-nonfyne-regressions/SHA256SUMS",
+    "/tmp/wci3-m2-sdl-nonfyne-regressions/desktop-inventory.exit",
+    "/tmp/wci3-m2-sdl-nonfyne-regressions/desktop-only.json",
+    "/tmp/wci3-m2-sdl-nonfyne-regressions/desktop-packages.log",
+    "/tmp/wci3-m2-sdl-nonfyne-regressions/inventory.exit",
+    "/tmp/wci3-m2-sdl-nonfyne-regressions/inventory.stderr.log",
+    "/tmp/wci3-m2-sdl-nonfyne-regressions/packages.json",
+    "/tmp/wci3-m2-sdl-nonfyne-regressions/remaining-nonfyne.command.json",
+    "/tmp/wci3-m2-sdl-nonfyne-regressions/remaining-nonfyne.exit",
+    "/tmp/wci3-m2-sdl-nonfyne-regressions/remaining-nonfyne.log",
+    "/tmp/wci3-m2-sdl-nonfyne-regressions/results.json",
+    "/tmp/wci3-m2-sdl-nonfyne-regressions/run.py",
+    "/tmp/wci3-m2-sdl-nonfyne-regressions/runtime-codegen.command.json",
+    "/tmp/wci3-m2-sdl-nonfyne-regressions/runtime-codegen.exit",
+    "/tmp/wci3-m2-sdl-nonfyne-regressions/runtime-codegen.log",
+    "/tmp/wci3-m2-sdl-nonfyne-regressions/source-after.json",
+    "/tmp/wci3-m2-sdl-nonfyne-regressions/source-before.json"
+  ]
+}

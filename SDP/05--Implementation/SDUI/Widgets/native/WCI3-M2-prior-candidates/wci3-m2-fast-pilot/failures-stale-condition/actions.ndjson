@@ -1,0 +1,154 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci3-m2-noether-text-fast", "sha256": "0078f72eec7fe61bd41a1b090bb7ca2f26ba48c3a1e54c4eff6bd240c010f001", "display": ":190", "variant": "wci3-failures"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "set Single empty"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "click", "values": [383, 125], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-clipboard-set", "value": "pending error"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "v"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "action SaveSingle error"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "click", "values": [383, 125], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "key", "values": ["Return"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "error result cannot accept or rewrite native text", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "z"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "error failed Commit preserves native undo", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "Shift_L", "z"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "fail profile"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "failed profile reload preserves text and field revisions", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "z"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "Shift_L", "z"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "fail binding"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "failed binding reload preserves text and field revisions", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "z"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "Shift_L", "z"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "fail resource"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "failed resource reload preserves text and field revisions", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "z"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "Shift_L", "z"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "fail guard"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "failed guard reload preserves text and field revisions", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "z"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "Shift_L", "z"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "fail stale"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "failed stale reload preserves text and field revisions", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "z"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "Shift_L", "z"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "key", "values": ["Escape"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "click", "values": [383, 125], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-clipboard-set", "value": "pending malformed"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "v"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "action SaveSingle malformed"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "click", "values": [383, 125], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "key", "values": ["Return"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "malformed result cannot accept or rewrite native text", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "z"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "malformed failed Commit preserves native undo", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "Shift_L", "z"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "key", "values": ["Escape"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "click", "values": [383, 125], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-clipboard-set", "value": "pending non-echo"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "v"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "action SaveSingle non-echo"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "click", "values": [383, 125], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "key", "values": ["Return"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "non-echo result cannot accept or rewrite native text", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "z"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "non-echo failed Commit preserves native undo", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "Shift_L", "z"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "key", "values": ["Escape"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "click", "values": [383, 125], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-clipboard-set", "value": "newer conflict"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "v"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "action SaveSingle draft-conflict"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "click", "values": [383, 125], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "key", "values": ["Return"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "post-domain newer draft survives rejected delivery", "passed": true}}
+{"kind": "screenshot", "value": "text-stale-result-recovery.png"}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

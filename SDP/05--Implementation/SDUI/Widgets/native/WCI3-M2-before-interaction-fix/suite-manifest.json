@@ -1,0 +1,129 @@
+{
+  "runs": [
+    {
+      "name": "sdui-full",
+      "status": "passed",
+      "exit": 0,
+      "command": "GOWORK=off GOCACHE=/tmp/sdp-wci0-gocache GOFLAGS=-mod=readonly go test -race ./... -count=1",
+      "cwd": "/tmp/sdp-sdui-widgets/SDUI/go",
+      "receipt_origin": "captured result.json",
+      "log": "/tmp/wci3-m2-final-sdui-race-fs2q_77h/test.log",
+      "receipt": "/tmp/wci3-m2-final-sdui-race-fs2q_77h/result.json",
+      "artifacts": [
+        "/tmp/wci3-m2-final-sdui-race-fs2q_77h/metadata.json",
+        "/tmp/wci3-m2-final-sdui-race-fs2q_77h/result.json",
+        "/tmp/wci3-m2-final-sdui-race-fs2q_77h/source-after.sha256",
+        "/tmp/wci3-m2-final-sdui-race-fs2q_77h/source-before.sha256",
+        "/tmp/wci3-m2-final-sdui-race-fs2q_77h/test.log"
+      ]
+    },
+    {
+      "name": "sdl-frozen-group",
+      "status": "superseded-timeout",
+      "exit": 1,
+      "command": "go test -race ./bridge ./examples/text ./examples/values ./examples/commands ./examples/panes",
+      "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+      "receipt_origin": "Retained tool-output result and stack excerpt, retranscribed; not original stdout file",
+      "log": "/tmp/wci3-m2-sdl-test-evidence/old-broad-result.txt",
+      "artifacts": [
+        "/tmp/wci3-m2-sdl-test-evidence/README.md",
+        "/tmp/wci3-m2-sdl-test-evidence/SHA256SUMS",
+        "/tmp/wci3-m2-sdl-test-evidence/final-text.exit",
+        "/tmp/wci3-m2-sdl-test-evidence/index.json",
+        "/tmp/wci3-m2-sdl-test-evidence/old-broad-result.txt",
+        "/tmp/wci3-m2-sdl-test-evidence/old-broad.exit"
+      ],
+      "notes": "Older host candidate; four passes are not current regression proof."
+    },
+    {
+      "name": "sdl-text-final",
+      "status": "passed",
+      "exit": 0,
+      "command": "go test -race ./examples/text -count=1 -v",
+      "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+      "receipt_origin": "Original tee stdout/stderr transcript; shell pipefail exit 0 retained in tool result",
+      "log": "/tmp/wci3-m2-text-race-final.log",
+      "artifacts": [
+        "/tmp/wci3-m2-sdl-test-evidence/final-text.exit"
+      ]
+    },
+    {
+      "name": "sdl-nonfyne",
+      "status": "passed",
+      "exit": 0,
+      "command": "go test -race -count=1 -p 1 ./runtime ./codegen ; go test -race -count=1 -p 1 ./broker ./cmd/sdl ./cmd/sdl-compiled ./cmd/sdl-dev ./cmd/sdl-document ./cmd/sdl-gen ./cmd/sdl-simulate ./cmd/sdl-view-request ./cmd/sdl-viewsd ./devhost ./documents ./examples/application ./examples/generatedmodel ./examples/simulation ./parser ./reader ./reload ./snapshot ./sourcegraph ./viewpoint",
+      "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+      "receipt_origin": "captured results.json and exit files",
+      "log": "/tmp/wci3-m2-sdl-nonfyne-regressions/remaining-nonfyne.log",
+      "receipt": "/tmp/wci3-m2-sdl-nonfyne-regressions/results.json",
+      "artifacts": [
+        "/tmp/wci3-m2-sdl-nonfyne-regressions/README.md",
+        "/tmp/wci3-m2-sdl-nonfyne-regressions/SHA256SUMS",
+        "/tmp/wci3-m2-sdl-nonfyne-regressions/desktop-inventory.exit",
+        "/tmp/wci3-m2-sdl-nonfyne-regressions/desktop-only.json",
+        "/tmp/wci3-m2-sdl-nonfyne-regressions/desktop-packages.log",
+        "/tmp/wci3-m2-sdl-nonfyne-regressions/inventory.exit",
+        "/tmp/wci3-m2-sdl-nonfyne-regressions/inventory.stderr.log",
+        "/tmp/wci3-m2-sdl-nonfyne-regressions/packages.json",
+        "/tmp/wci3-m2-sdl-nonfyne-regressions/remaining-nonfyne.command.json",
+        "/tmp/wci3-m2-sdl-nonfyne-regressions/remaining-nonfyne.exit",
+        "/tmp/wci3-m2-sdl-nonfyne-regressions/remaining-nonfyne.log",
+        "/tmp/wci3-m2-sdl-nonfyne-regressions/results.json",
+        "/tmp/wci3-m2-sdl-nonfyne-regressions/run.py",
+        "/tmp/wci3-m2-sdl-nonfyne-regressions/runtime-codegen.command.json",
+        "/tmp/wci3-m2-sdl-nonfyne-regressions/runtime-codegen.exit",
+        "/tmp/wci3-m2-sdl-nonfyne-regressions/runtime-codegen.log",
+        "/tmp/wci3-m2-sdl-nonfyne-regressions/source-after.json",
+        "/tmp/wci3-m2-sdl-nonfyne-regressions/source-before.json"
+      ]
+    },
+    {
+      "name": "sdl-collections",
+      "status": "passed",
+      "exit": 0,
+      "command": "go test -race ./examples/collections/... -count=1",
+      "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+      "receipt_origin": "captured result.json and exit",
+      "log": "/tmp/wci3-m2-collections-regression/test.log",
+      "receipt": "/tmp/wci3-m2-collections-regression/result.json",
+      "artifacts": [
+        "/tmp/wci3-m2-collections-regression/SHA256SUMS",
+        "/tmp/wci3-m2-collections-regression/command.json",
+        "/tmp/wci3-m2-collections-regression/exit",
+        "/tmp/wci3-m2-collections-regression/result.json",
+        "/tmp/wci3-m2-collections-regression/test.log"
+      ]
+    },
+    {
+      "name": "sdptool-original",
+      "status": "passed",
+      "exit": 0,
+      "command": "go test ./...",
+      "cwd": "/home/warloc/git/SDP-vNow/SDPTool",
+      "receipt_origin": "Coordinator recorded actual exec session 2743 exit 0; not archive-script captured",
+      "log": "/tmp/wci3-m2-original-sdptool-test.log",
+      "receipt": "/tmp/wci3-m2-original-sdptool-receipt.json",
+      "artifacts": [],
+      "notes": "Default inherited environment; concurrent unrelated work and cached unchanged packages."
+    },
+    {
+      "name": "sdl-current-group",
+      "status": "passed",
+      "exit": 0,
+      "command": "go test -race ./bridge ./examples/values/... ./examples/commands/... ./examples/panes/... -count=1",
+      "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+      "receipt_origin": "Coordinator final subprocess captured result.json and exit, actual session44261 completion; both source manifests match",
+      "log": "/tmp/wci3-m2-current-group-final/test.log",
+      "receipt": "/tmp/wci3-m2-current-group-final/result.json",
+      "source_before": "/tmp/wci3-m2-current-group-final/source-before.json",
+      "source_after": "/tmp/wci3-m2-current-group-final/source-after.json",
+      "artifacts": [
+        "/tmp/wci3-m2-current-group-final/command.json",
+        "/tmp/wci3-m2-current-group-final/source-before.json",
+        "/tmp/wci3-m2-current-group-final/source-after.json",
+        "/tmp/wci3-m2-current-group-final/exit"
+      ],
+      "notes": "Sole coordinator final run; earlier crossed coordinator/worker runs were deliberately aborted and excluded."
+    }
+  ]
+}

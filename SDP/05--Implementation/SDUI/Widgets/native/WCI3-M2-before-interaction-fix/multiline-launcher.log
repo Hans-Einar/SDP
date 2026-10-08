@@ -1,0 +1,8 @@
+PASS multiline clipboard preserves Unicode and line breaks
+PASS ordinary multiline Return inserts a line without Save
+PASS Primary Return commits exact multiline text once
+PASS native copy round trips exact Unicode and newlines
+PASS native Cut changes draft only
+PASS Undo restores exact cut text
+PASS Redo reapplies cut without Save
+PASS native teardown closes session and clears provider barriers

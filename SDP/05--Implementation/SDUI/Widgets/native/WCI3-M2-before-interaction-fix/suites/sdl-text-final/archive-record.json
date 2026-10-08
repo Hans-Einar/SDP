@@ -1,0 +1,12 @@
+{
+  "name": "sdl-text-final",
+  "status": "passed",
+  "exit": 0,
+  "command": "go test -race ./examples/text -count=1 -v",
+  "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+  "receipt_origin": "Original tee stdout/stderr transcript; shell pipefail exit 0 retained in tool result",
+  "log": "/tmp/wci3-m2-text-race-final.log",
+  "artifacts": [
+    "/tmp/wci3-m2-sdl-test-evidence/final-text.exit"
+  ]
+}

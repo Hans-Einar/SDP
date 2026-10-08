@@ -1,0 +1,5 @@
+PASS explicit SDL Load fills read-only preview
+PASS read-only native text remains selectable and copyable
+PASS read-only cut paste typing deletion and Return do not mutate or invoke
+PASS checked programmatic read-only update is silent
+PASS native teardown closes session and clears provider barriers

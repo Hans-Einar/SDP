@@ -1,0 +1,3 @@
+Display: :190
+Engine: xkb:us::eng
+Command argv: ['python3', '/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_text.py', '--binary', '/tmp/wci3-m2-guard-final-native', '--display', ':190', '--out', '/tmp/wci3-m2-guard-final-evidence/ime', '--variant', 'ime']

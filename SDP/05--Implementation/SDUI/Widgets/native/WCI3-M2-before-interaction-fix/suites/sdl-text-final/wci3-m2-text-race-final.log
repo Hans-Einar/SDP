@@ -1,0 +1,28 @@
+=== RUN   TestActualRequestPathsAndTrustedConditions
+=== RUN   TestActualRequestPathsAndTrustedConditions/modal
+=== RUN   TestActualRequestPathsAndTrustedConditions/nonmodal
+--- PASS: TestActualRequestPathsAndTrustedConditions (210.08s)
+    --- PASS: TestActualRequestPathsAndTrustedConditions/modal (100.50s)
+    --- PASS: TestActualRequestPathsAndTrustedConditions/nonmodal (109.58s)
+=== RUN   TestEchoFailuresPreserveTruthfulDomain
+=== RUN   TestEchoFailuresPreserveTruthfulDomain/success
+=== RUN   TestEchoFailuresPreserveTruthfulDomain/error
+=== RUN   TestEchoFailuresPreserveTruthfulDomain/malformed
+=== RUN   TestEchoFailuresPreserveTruthfulDomain/non-echo
+=== RUN   TestEchoFailuresPreserveTruthfulDomain/draft-conflict
+--- PASS: TestEchoFailuresPreserveTruthfulDomain (102.75s)
+    --- PASS: TestEchoFailuresPreserveTruthfulDomain/success (22.51s)
+    --- PASS: TestEchoFailuresPreserveTruthfulDomain/error (18.71s)
+    --- PASS: TestEchoFailuresPreserveTruthfulDomain/malformed (19.76s)
+    --- PASS: TestEchoFailuresPreserveTruthfulDomain/non-echo (20.34s)
+    --- PASS: TestEchoFailuresPreserveTruthfulDomain/draft-conflict (21.45s)
+=== RUN   TestPublicationDiagnosticOneShotAndFailedReload
+--- PASS: TestPublicationDiagnosticOneShotAndFailedReload (55.11s)
+=== RUN   TestTextDialogCancelRetainsChildCommitAndAcceptCaptures
+--- PASS: TestTextDialogCancelRetainsChildCommitAndAcceptCaptures (81.30s)
+=== RUN   TestSourceTighteningLeavesFailedCandidateAndDraftIntact
+--- PASS: TestSourceTighteningLeavesFailedCandidateAndDraftIntact (24.16s)
+=== RUN   TestRequiredEmptyStartupAndReload
+--- PASS: TestRequiredEmptyStartupAndReload (33.84s)
+PASS
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/text	508.408s

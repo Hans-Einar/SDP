@@ -1,0 +1,6 @@
+PASS explicit false opts into typed single-line input
+PASS Unicode paste is an exact typed draft without SDL
+PASS blur retains text draft without Commit
+PASS single-line Return saves exact Unicode once
+PASS Escape restores accepted single-line text without Save
+PASS native teardown closes session and clears provider barriers

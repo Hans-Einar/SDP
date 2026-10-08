@@ -1,0 +1,142 @@
+[
+  {
+    "package": "./bridge",
+    "fyneTestClosure": true,
+    "tests": 7
+  },
+  {
+    "package": "./broker",
+    "fyneTestClosure": false,
+    "tests": 1
+  },
+  {
+    "package": "./cmd/sdl",
+    "fyneTestClosure": false,
+    "tests": 2
+  },
+  {
+    "package": "./cmd/sdl-compiled",
+    "fyneTestClosure": false,
+    "tests": 0
+  },
+  {
+    "package": "./cmd/sdl-dev",
+    "fyneTestClosure": false,
+    "tests": 0
+  },
+  {
+    "package": "./cmd/sdl-document",
+    "fyneTestClosure": false,
+    "tests": 0
+  },
+  {
+    "package": "./cmd/sdl-gen",
+    "fyneTestClosure": false,
+    "tests": 0
+  },
+  {
+    "package": "./cmd/sdl-simulate",
+    "fyneTestClosure": false,
+    "tests": 0
+  },
+  {
+    "package": "./cmd/sdl-view-request",
+    "fyneTestClosure": false,
+    "tests": 0
+  },
+  {
+    "package": "./cmd/sdl-viewsd",
+    "fyneTestClosure": false,
+    "tests": 0
+  },
+  {
+    "package": "./codegen",
+    "fyneTestClosure": false,
+    "tests": 3
+  },
+  {
+    "package": "./devhost",
+    "fyneTestClosure": false,
+    "tests": 1
+  },
+  {
+    "package": "./documents",
+    "fyneTestClosure": false,
+    "tests": 5
+  },
+  {
+    "package": "./examples/application",
+    "fyneTestClosure": false,
+    "tests": 1
+  },
+  {
+    "package": "./examples/collections",
+    "fyneTestClosure": true,
+    "tests": 2
+  },
+  {
+    "package": "./examples/commands",
+    "fyneTestClosure": true,
+    "tests": 1
+  },
+  {
+    "package": "./examples/generatedmodel",
+    "fyneTestClosure": false,
+    "tests": 0
+  },
+  {
+    "package": "./examples/panes",
+    "fyneTestClosure": true,
+    "tests": 1
+  },
+  {
+    "package": "./examples/simulation",
+    "fyneTestClosure": false,
+    "tests": 0
+  },
+  {
+    "package": "./examples/text",
+    "fyneTestClosure": true,
+    "tests": 1
+  },
+  {
+    "package": "./examples/values",
+    "fyneTestClosure": true,
+    "tests": 1
+  },
+  {
+    "package": "./parser",
+    "fyneTestClosure": false,
+    "tests": 3
+  },
+  {
+    "package": "./reader",
+    "fyneTestClosure": false,
+    "tests": 1
+  },
+  {
+    "package": "./reload",
+    "fyneTestClosure": false,
+    "tests": 1
+  },
+  {
+    "package": "./runtime",
+    "fyneTestClosure": false,
+    "tests": 2
+  },
+  {
+    "package": "./snapshot",
+    "fyneTestClosure": false,
+    "tests": 1
+  },
+  {
+    "package": "./sourcegraph",
+    "fyneTestClosure": false,
+    "tests": 1
+  },
+  {
+    "package": "./viewpoint",
+    "fyneTestClosure": false,
+    "tests": 2
+  }
+]

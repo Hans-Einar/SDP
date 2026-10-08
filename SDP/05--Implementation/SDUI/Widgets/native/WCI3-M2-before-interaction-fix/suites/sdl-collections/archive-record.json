@@ -1,0 +1,17 @@
+{
+  "name": "sdl-collections",
+  "status": "passed",
+  "exit": 0,
+  "command": "go test -race ./examples/collections/... -count=1",
+  "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+  "receipt_origin": "captured result.json and exit",
+  "log": "/tmp/wci3-m2-collections-regression/test.log",
+  "receipt": "/tmp/wci3-m2-collections-regression/result.json",
+  "artifacts": [
+    "/tmp/wci3-m2-collections-regression/SHA256SUMS",
+    "/tmp/wci3-m2-collections-regression/command.json",
+    "/tmp/wci3-m2-collections-regression/exit",
+    "/tmp/wci3-m2-collections-regression/result.json",
+    "/tmp/wci3-m2-collections-regression/test.log"
+  ]
+}

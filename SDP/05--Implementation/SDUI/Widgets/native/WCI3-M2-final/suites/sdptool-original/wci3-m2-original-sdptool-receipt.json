@@ -1,0 +1,13 @@
+{
+  "command": [
+    "go",
+    "test",
+    "./..."
+  ],
+  "cwd": "/home/warloc/git/SDP-vNow/SDPTool",
+  "exit": 0,
+  "capture": "Coordinator recorded actual exec session 2743 completion with exit_code 0; log captured by shell redirection.",
+  "environment": "Default inherited environment; no explicit GOWORK, GOFLAGS, readonly or race override asserted.",
+  "scope": "Original workspace including concurrent governance changes; cached unchanged packages retained.",
+  "logSHA256": "8ab9ebec1421b7296efd3c7d3e8ae063334405f2c0663cd06a4f5e4c82d3d509"
+}

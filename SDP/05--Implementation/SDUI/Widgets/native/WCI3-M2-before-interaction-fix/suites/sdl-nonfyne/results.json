@@ -1,0 +1,116 @@
+{
+  "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+  "head": "d6742742f0968661d15698518df688ffb1d28946",
+  "goVersion": "go version go1.27.1 linux/amd64",
+  "GOFLAGS": "-mod=readonly",
+  "selected": [
+    "./broker",
+    "./cmd/sdl",
+    "./cmd/sdl-compiled",
+    "./cmd/sdl-dev",
+    "./cmd/sdl-document",
+    "./cmd/sdl-gen",
+    "./cmd/sdl-simulate",
+    "./cmd/sdl-view-request",
+    "./cmd/sdl-viewsd",
+    "./codegen",
+    "./devhost",
+    "./documents",
+    "./examples/application",
+    "./examples/generatedmodel",
+    "./examples/simulation",
+    "./parser",
+    "./reader",
+    "./reload",
+    "./runtime",
+    "./snapshot",
+    "./sourcegraph",
+    "./viewpoint"
+  ],
+  "excluded": [
+    {
+      "package": "./bridge",
+      "fyneTestClosure": true,
+      "tests": 7
+    },
+    {
+      "package": "./examples/collections",
+      "fyneTestClosure": true,
+      "tests": 2
+    },
+    {
+      "package": "./examples/commands",
+      "fyneTestClosure": true,
+      "tests": 1
+    },
+    {
+      "package": "./examples/panes",
+      "fyneTestClosure": true,
+      "tests": 1
+    },
+    {
+      "package": "./examples/text",
+      "fyneTestClosure": true,
+      "tests": 1
+    },
+    {
+      "package": "./examples/values",
+      "fyneTestClosure": true,
+      "tests": 1
+    }
+  ],
+  "runs": [
+    {
+      "name": "runtime-codegen",
+      "command": [
+        "go",
+        "test",
+        "-race",
+        "-count=1",
+        "-p",
+        "1",
+        "./runtime",
+        "./codegen"
+      ],
+      "exit": 0,
+      "seconds": 5.91,
+      "logSHA256": "e42980db4758f8fef9df8dee8807dbc3f1ea582c366589089fe37452fbd7ecdc"
+    },
+    {
+      "name": "remaining-nonfyne",
+      "command": [
+        "go",
+        "test",
+        "-race",
+        "-count=1",
+        "-p",
+        "1",
+        "./broker",
+        "./cmd/sdl",
+        "./cmd/sdl-compiled",
+        "./cmd/sdl-dev",
+        "./cmd/sdl-document",
+        "./cmd/sdl-gen",
+        "./cmd/sdl-simulate",
+        "./cmd/sdl-view-request",
+        "./cmd/sdl-viewsd",
+        "./devhost",
+        "./documents",
+        "./examples/application",
+        "./examples/generatedmodel",
+        "./examples/simulation",
+        "./parser",
+        "./reader",
+        "./reload",
+        "./snapshot",
+        "./sourcegraph",
+        "./viewpoint"
+      ],
+      "exit": 0,
+      "seconds": 68.087,
+      "logSHA256": "932fbbf0a5d440efaf252efc1dbafdfdaf23d26efce1e0e319404388f3e4177a"
+    }
+  ],
+  "sourceBytesUnchanged": true,
+  "changedSourcePaths": []
+}

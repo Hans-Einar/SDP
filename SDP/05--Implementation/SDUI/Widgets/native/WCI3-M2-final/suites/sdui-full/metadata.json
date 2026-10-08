@@ -1,0 +1,9 @@
+{
+  "cwd": "/tmp/sdp-sdui-widgets/SDUI/go",
+  "command": "GOWORK=off GOCACHE=/tmp/sdp-wci0-gocache GOFLAGS=-mod=readonly go test -race ./... -count=1",
+  "head": "d6742742f0968661d15698518df688ffb1d28946",
+  "source_manifest_sha256": "3d26aabc71c1f40e128c28e3b1e3c07a76d7979820b47b9e91cb88f10295981c",
+  "source_files": 380,
+  "start_utc": "2026-10-08T11:34:38.688158+00:00",
+  "go_version": "go version go1.27.1 linux/amd64"
+}

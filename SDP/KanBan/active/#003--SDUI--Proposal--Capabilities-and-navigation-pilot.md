@@ -9,7 +9,7 @@
 | Systems | SDUI |
 | created | 2026-09-29T16:53:54.251554+00:00 |
 | source | PLAN-SDP-0009; KB-SDP-041; external XFMD gap register |
-| next_review | WCI3-M2 extended text/IME and WCI4 provider/package acceptance |
+| next_review | WCI4 provider/package acceptance and integrated review |
 | PlanId | PLAN-SDP-0022 |
 
 ## Current assignment — Session0010 T001
@@ -228,3 +228,5 @@ actual native edit rejected by runtime/publication. Identical displayed bytes ke
 history; different programmatic replacement resets it. Failed Commit/reload/probe
 and validation-invalid admitted drafts retain history. No Fyne fork or parallel
 editor is selected; native acceptance must prove these boundaries.
+
+- 2026-10-08T12:14:43.708648+00:00 — EVT-KB-SDUI-000026: WCI3-M2 delivered at 69d0a332; 92 native checks, 5 exactly-once results and independent approval. WCI4 selected; remain in-progress for previews, consumer packages and integrated review. Evidence: ../../05--Implementation/SDUI/Widgets/Evidence-WCI3-M2.md. Backlog review retains separate KB004/KB005 dispositions.

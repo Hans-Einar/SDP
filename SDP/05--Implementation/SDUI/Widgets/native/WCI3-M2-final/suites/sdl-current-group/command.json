@@ -1,0 +1,16 @@
+{
+  "command": [
+    "go",
+    "test",
+    "-race",
+    "./bridge",
+    "./examples/values/...",
+    "./examples/commands/...",
+    "./examples/panes/...",
+    "-count=1"
+  ],
+  "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+  "GOWORK": "off",
+  "GOFLAGS": "-mod=readonly",
+  "GOCACHE": "/tmp/sdp-wci0-gocache"
+}

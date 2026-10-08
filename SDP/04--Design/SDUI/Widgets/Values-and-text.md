@@ -3,7 +3,7 @@
 | Field | Value |
 | --- | --- |
 | Assignment | SDP Architect; PLAN-SDP-0022 WCI3-M1/M2 |
-| Status | Independent design review approved; WCI3-M1 delivered and reviewed; WCI3-M2 selected after scalar acceptance |
+| Status | Independent design review approved; WCI3-M1/M2 delivered and independently reviewed; WCI4 remains separate |
 | Authority | KB-SDUI-003 full inventory; bounded owner design assignment, 2026-10-08 |
 | Parents | [Design](Design.md), [Acceptance](Acceptance.md), [Collections](Collections.md), [Panes/commands draft](Panes-and-commands.md), [Plan](../../../05--Implementation/SDUI/Widgets/Plan.md) |
 | Obligations | SDUI-R05/R12/R16–R18/R23/R26–R28; GAP-XFMD-SDUI-005/006/008; Session0010 S4 |
@@ -418,3 +418,7 @@ WCI3-M2 is selected after independently reviewed WCI3-M1 delivery. The bounded
 explicit opt-in/native editing contract and pinned X11 filter dependency are now
 implementation authority. Earlier preparation-only statements remain historical;
 no extended-text delivery or all-platform IME acceptance is inferred.
+
+WCI3-M2 is delivered and independently reviewed at `69d0a332`; see
+[exact text evidence](../../../05--Implementation/SDUI/Widgets/Evidence-WCI3-M2.md).
+Earlier pending implementation statements describe historical checkpoints.
