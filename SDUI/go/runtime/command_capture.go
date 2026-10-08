@@ -220,7 +220,7 @@ func (s *Session) CaptureDialog(t SurfaceTarget, kind EventKind) (Event, error) 
 				return e, fault("dialog-field", "Draft exceeds valid UTF-8 bound")
 			}
 			d := DraftField{Handle: f.Target.Handle, Value: f.Proposed, ValueRevision: f.Target.ValueRevision, DraftRevision: f.Target.DraftRevision}
-			if scalar(d.Handle.Kind) {
+			if scalar(d.Handle.Kind) || f.Input != nil {
 				d.RawDraft = copyString(f.RawDraft)
 				d.FieldValidation = f.Validation
 				if d.Handle.Kind == "select" {

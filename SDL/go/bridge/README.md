@@ -54,8 +54,8 @@ mapping remains. TextResult is never inferred from a scalar widget or repurposed
 ControlBoolean reads checkbox Boolean, ControlNumber reads slider/number Number
 into SDL integer, and ChoiceOptionID reads a captured select ID into text. The
 closed ControlText selector supports the existing basic input String Commit with
-TextResult; extended input/IME capture belongs to WCI3-M2. Legacy Event/Widget
-conversions are unchanged. No scalar selector stringifies/coerces arbitrary input.
+TextResult. Explicit extended input uses the WCI3-M2 typed capture below. Legacy
+Event/Widget conversions are unchanged. No scalar selector stringifies/coerces arbitrary input.
 
 Numeric preflight uses frontend NumericArguments and the shared numeric package:
 original min/max/step/value lexemes must be exact safe53 integers with round trips.
@@ -73,3 +73,34 @@ Select uses dedicated OptionTarget validation, never a collection/index/label lo
 DialogAcceptResult remains text-only, including hidden owned fields. A mixed form
 requires explicit Go InteractionHandler; no automatic heterogeneous SDL Accept
 record mapping is introduced. Existing text-only M2 dialogs remain supported.
+
+## WCI3-M2 extended text Commit
+
+Only source-explicit multiline/readOnly/placeholder/required presence opts into
+extended input, including false or empty arguments. The bridge consumes the
+runtime FieldState.Input projection; it does not infer policy from profile,
+selector, handler, or the presence of a Control envelope.
+
+TextResult on an extended callback owner requires a self setHandle at complete
+preflight, regardless of the selected request source (ControlText, Event, Widget,
+Literal, or Context). ControlText consumes exact String plus Control.ValueRevision;
+RawDraft and Option must be absent from that event. Basic input retains its legacy
+String event with no Control envelope and may still target another input.
+
+After Execute, extended Commit rechecks the full source FieldTarget and exact
+text bytes returned by SDL. Non-echo, stale, malformed and failed results never
+accept the proposal or replay domain work. Its single update checks both value
+and draft revisions and explicitly accepts the captured draft. Unicode and CR/LF
+are never normalized by the bridge. Runtime owns validation and line policy.
+
+Legacy Load and other non-input owners can still write extended readOnly inputs
+using checked value/draft revisions. Programmatic updates remain muted. Existing
+legacy Handler results do not claim domain-outcome reporting or rollback. The text
+fixture exposes independent domain counters so a successful domain write followed
+by a UI conflict remains observable.
+
+DialogAcceptResult continues to capture only text inputs, now including extended
+single/multiline fields; mixed scalar forms still require Go Accept. Native Entry
+history, clipboard, IME, wheel routing and focus belong to the host and require
+separate actual OS evidence. See `../examples/text/README.md` for the real SDL
+fixture and condition-only protocol.

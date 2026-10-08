@@ -117,6 +117,9 @@ func (p scalarPartsLayout) Layout(_ []fyne.CanvasObject, _ fyne.Size) {
 // The composite's children participate in native Tab order exactly once. Only
 // the entry, not its pointer step affordances, is a number's keyboard focus stop.
 func controlFocusable(o fyne.CanvasObject) (fyne.Focusable, bool) {
+	if c, ok := o.(*textControl); ok {
+		return c.entry, true
+	}
 	if c, ok := o.(*scalarControl); ok {
 		f, ok := c.body.(fyne.Focusable)
 		return f, ok
@@ -385,6 +388,9 @@ func sliderLabelMinimum(font float64) float64 {
 // Use native themed minima and one fixed feedback row. Diagnostic width never
 // changes admission or the grid; full validation remains in Snapshot.Fields.
 func (m *collectionMeasure) MeasureField(n *parser.Instance, f ui.FieldState, font float64, outer layout.Size) (layout.FieldMetrics, error) {
+	if extendedInput(n) {
+		return measureTextField(n, f, font, outer)
+	}
 	c := newScalarControl(nil, n)
 	// Measure the original label, never current proposal/dirty text. Truncation
 	// is a rendering policy, not permission to shrink source-label admission.

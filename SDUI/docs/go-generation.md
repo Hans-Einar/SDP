@@ -83,3 +83,16 @@ extracts retained lexical facts; numeric.NewGrid/Parse provide shared exact sour
 validation. Native scalar controls and their actual capabilities must be prepared
 before background omission/publication. No generated model implies M1 native or
 M2 extended text/IME readiness.
+
+WCI3-M2 input retains those same 0.3 identities and AST field shapes. Constructors
+preserve multiline/readOnly/placeholder/required argument presence, boolean/string
+payloads, Unicode/newlines and original spans through reuse. Explicit false or empty
+opts in; omission stays legacy. No defaults, validators, caret/undo history or live
+text state are generated. `parser.InputOptions` derives the effective options from
+Root without mutation; selected-root validation rejects malformed typed arguments.
+Existing .2 constructors remain byte-for-byte unchanged.
+
+Use the document-based prepared host for extended native text, with actual text
+capabilities and checked ControlText/TextResult bindings for connected execution.
+The standalone legacy prototype explicitly rejects extended text. Generation does
+not migrate that launcher, provide an IME implementation or establish native proof.

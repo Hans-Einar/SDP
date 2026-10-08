@@ -76,7 +76,11 @@ func acceleratedMinimum(value, delta, previous, floor float64) float64 {
 }
 
 func (e *Engine) minimumAt(n *parser.Instance, ref, available Size, font float64) (Size, error) {
-	if scalarField(n) {
+	field, err := measuredField(n)
+	if err != nil {
+		return Size{}, err
+	}
+	if field {
 		m, err := e.fieldMetrics(n, font, ref)
 		return m.Minimum, err
 	}

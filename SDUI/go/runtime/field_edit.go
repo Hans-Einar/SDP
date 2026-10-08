@@ -20,6 +20,11 @@ func (s *Session) editField(h Handle, revision uint64, value Value, tick *uint64
 	f = n.fields[h.Path]
 	f.feedback = FieldValidation{}
 	switch h.Kind {
+	case "input":
+		if tick != nil || option != nil || !validValue(value, String) || !validDraft(value.Text) {
+			return FieldChange{}, fault("field-type", "Input edit requires bounded UTF-8 String")
+		}
+		n.widgets[h.Path].Draft = value.Text
 	case "number":
 		if tick != nil {
 			if f.Validation.Code != "" {
@@ -67,10 +72,15 @@ func (s *Session) editField(h Handle, revision uint64, value Value, tick *uint64
 	}
 	nw := n.widgets[h.Path]
 	nw.DraftRevision++
+	if h.Kind == "input" {
+		nw.Dirty = nw.Draft != nw.Value
+	}
 	if err = n.validateField(h.Path); err != nil {
 		return FieldChange{}, err
 	}
-	nw.Dirty = f.Proposed != f.Accepted || f.RawDraft != nil && *f.RawDraft != f.acceptedRaw
+	if h.Kind != "input" {
+		nw.Dirty = f.Proposed != f.Accepted || f.RawDraft != nil && *f.RawDraft != f.acceptedRaw
+	}
 	if s.StateRevision != baseline {
 		return FieldChange{}, fault("stale-validation", "State changed in validator")
 	}

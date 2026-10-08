@@ -265,3 +265,63 @@ See the [real SDL values fixture](../../../../SDL/go/examples/values/README.md),
 [scalar layout API](../../../docs/wci3-m1-layout-api.md),
 [runtime contract](../../runtime/README.md), and
 [values/text design](../../../../SDP/04--Design/SDUI/Widgets/Values-and-text.md).
+
+## WCI3-M2 extended native text
+
+`DocumentHost` uses `TextCapabilities` and a retained native Entry for inputs
+that explicitly supply any of `multiline`, `readOnly`, `placeholder` or `required`.
+Explicit false/empty values opt in too. Inputs without those arguments keep
+legacy `.2`/basic `.3` behavior. The frontend `InputOptions` helper selects this
+policy; `FieldState.Input` supplies copied runtime metadata. Runtime Widget
+Value/Draft remain the sole accepted/proposed text store.
+
+Multiline Entry uses native word wrapping with three visible minimum rows.
+Shared `FieldMeasurer` assigns the whole Entry, including native scroll chrome,
+plus a separate optional label and fixed feedback row. Empty labels allocate no
+label region. Detached probes use an empty, identically configured Entry: its
+native scrolling minimum depends on themed character metrics and visible rows,
+not draft extent. Equivalence tests compare real short/long Unicode editors at
+multiple fonts, avoiding repeated full-text shaping during preparation. Live
+editors still receive their exact text. Long text stays inside the assigned finite editor; Entry owns its
+caret, selection, undo and internal scroll. Ordinary publication preserves the
+observed native scroll offset using public `ScrollToOffset`, which clamps after
+resize. Text-area wheel input uses the native subtree and consumes at its limits;
+outer gutters/background retain their separate WCI1 routing. No Entry offset is
+stored in runtime Viewports.
+
+Native OnChanged calls checked `EditField` once. Enter commits single-line text;
+multiline Enter/Shift+Enter inserts a newline and exact Primary+Enter commits.
+Tab/Shift+Tab follow source/surface order; blur never commits. Native undo/redo
+changes the draft only. Readonly remains focusable/selectable/copyable, with
+typing, cut/paste, deletion, undo/redo and Commit blocked. A guarded editing menu
+keeps late actions subject to current eligibility; declared context menus retain
+the existing WCI2 route. Single-line keyboard/context Paste rejects CR or LF
+before native mutation. Clipboard content is read once and that exact validated
+snapshot is delegated, preventing Fyne's single-line LF-to-space conversion.
+
+Identical displayed bytes preserve history, including self-echo acceptance and
+explicit Apply. Different programmatic text uses one muted SetText and resets
+history. Page hide/show, collapse and failed reload retain the Entry. Successful
+compatible reload may recreate it under the runtime retention rules.
+
+Fyne edits text/history before OnChanged. Under the reviewed exception, an actual
+native edit rejected by EditField or publication restores the **current** runtime
+draft muted on the same Entry and clears undo/redo; caret/selection/scroll may
+reset. Reentrant accepted work is never overwritten with an older draft. This
+exception does not apply to invalid-but-retained drafts, failed Commit/reload/probe
+or pre-delegation refusal. Those paths preserve their existing history.
+
+For extended inputs, `Inspect().fields[path]` includes actual Entry `text`,
+`placeholder`, `readOnly`, `focused`, `cursorRow`, `cursorColumn`, `selectedText`
+and `multiline`, alongside existing canvas/title/control/entry/label/feedback
+rectangles. When its public renderer exposes a native Scroll, `scrollRect` and
+`scrollOffset` report that object; offset uses Size W=X/H=Y. These are diagnostic
+observations, not another state model. Consult control visibility and clip.
+
+IME preedit and consumed Return/Escape belong to the selected pinned GLFW driver
+filter, maintained by the coordinator. Host adds no composition timer or guessed
+preedit state. Component tests cover editing, history, lifecycle and native object
+routing; actual configured OS IME, SDL and visual acceptance require the main
+native harness on the exact integrated candidate. See the
+[text layout API](../../../docs/wci3-m2-layout-api.md) and
+[real SDL text fixture](../../../../SDL/go/examples/text/README.md).

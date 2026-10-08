@@ -86,3 +86,8 @@ func FieldCapabilities() preparation.Capabilities {
 	}
 	return append(caps, preparation.Capability{Dimension: preparation.Host, ID: "read-only", Major: 1})
 }
+
+// TextCapabilities belongs only to the document host's retained native Entry adapters.
+func TextCapabilities() preparation.Capabilities {
+	return append(FieldCapabilities(), preparation.Capability{Dimension: preparation.Host, ID: "input-multiline", Major: 1})
+}

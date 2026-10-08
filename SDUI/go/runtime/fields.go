@@ -10,9 +10,10 @@ const ReadOnly Property = "read-only"
 
 type field struct {
 	FieldState
-	grid        *numeric.Grid
-	acceptedRaw string
-	feedback    FieldValidation
+	grid           *numeric.Grid
+	acceptedRaw    string
+	feedback       FieldValidation
+	placeholderSet bool
 }
 
 func scalar(kind string) bool {
@@ -31,6 +32,10 @@ func copyFieldState(f FieldState) FieldState {
 		x := *f.Numeric
 		f.Numeric = &x
 	}
+	if f.Input != nil {
+		x := *f.Input
+		f.Input = &x
+	}
 	f.Options = append([]ChoiceOption(nil), f.Options...)
 	return f
 }
@@ -40,7 +45,11 @@ func (s *Session) initFields() error {
 	s.changes = map[string]ChangeHandler{}
 	var first error
 	s.root.Walk(func(n *parser.Instance) {
-		if first != nil || n.Kind != "widget" || !scalar(n.Widget) {
+		if first != nil || n.Kind != "widget" || (!scalar(n.Widget) && n.Widget != "input") {
+			return
+		}
+		if n.Widget == "input" {
+			first = s.initInput(n)
 			return
 		}
 		if n.Profile != "sdui/0.3" {
@@ -94,10 +103,16 @@ func (s *Session) Field(h Handle) (FieldState, bool) {
 	var out FieldState
 	if f != nil {
 		out = copyFieldState(f.FieldState)
-	} else if h.Kind == "input" {
-		out = FieldState{InstancePath: w.InstancePath, Accepted: Text(w.Value), Proposed: Text(w.Draft), RawDraft: copyString(&w.Draft)}
-	} else {
+	} else if h.Kind != "input" {
 		return FieldState{}, false
+	}
+	if h.Kind == "input" {
+		out.InstancePath = w.InstancePath
+		out.Accepted, out.Proposed = Text(w.Value), Text(w.Draft)
+		out.RawDraft = copyString(&w.Draft)
+		if out.Input != nil && !f.placeholderSet {
+			out.Input.Placeholder = w.Label
+		}
 	}
 	out.Target = FieldTarget{h, s.Revision, s.StateRevision, w.ValueRevision, w.DraftRevision, out.Target.OptionGeneration}
 	out.Dirty = w.Dirty
@@ -133,6 +148,10 @@ func validValidation(v FieldValidation) bool {
 func validation(code string) FieldValidation { return FieldValidation{code, code} }
 func (s *Session) fieldValidation(f *field, kind string) FieldValidation {
 	switch kind {
+	case "input":
+		if v := inputValidation(f, s.widgets[public(f.InstancePath)].Draft); v.Code != "" {
+			return v
+		}
 	case "checkbox":
 		if !validValue(f.Proposed, Boolean) {
 			return validation("field-type")
@@ -249,7 +268,11 @@ func (s *Session) resetField(path string) {
 	if w.Dirty {
 		w.DraftRevision++
 	}
-	f.Proposed = f.Accepted
+	if w.Handle.Kind == "input" {
+		w.Draft = w.Value
+	} else {
+		f.Proposed = f.Accepted
+	}
 	if w.Handle.Kind == "number" {
 		f.RawDraft = copyString(&f.acceptedRaw)
 	}

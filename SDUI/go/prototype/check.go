@@ -40,6 +40,17 @@ func Check(path, entry, revision string) (reload.Candidate, Report, error) {
 		}
 		var unavailable error
 		c.Root.Walk(func(n *parser.Instance) {
+			if unavailable == nil && n.Kind == "widget" && n.Widget == "input" {
+				policy, err := parser.InputOptions(n)
+				if err != nil {
+					unavailable = err
+				} else if policy.Extended {
+					unavailable = fmt.Errorf("unsupported-text: standalone prototype has no extended document-host input adapter: %w", &preparation.Diagnostic{
+						Capability: preparation.Capability{Dimension: preparation.Host, ID: "input", Major: 1},
+						Path:       n.Path, Span: n.Span, Uses: append([]parser.UseSite(nil), n.Uses...),
+					})
+				}
+			}
 			if unavailable == nil && n.Kind == "widget" && (n.Widget == "checkbox" || n.Widget == "slider" || n.Widget == "number" || n.Widget == "select") {
 				capability := preparation.Capability{Dimension: preparation.Host, ID: n.Widget, Major: 1}
 				message := "unsupported-value: standalone prototype has no native scalar adapter"

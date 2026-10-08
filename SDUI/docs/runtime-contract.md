@@ -360,10 +360,50 @@ OutputField and matching actual signature/result. ControlBoolean maps Boolean,
 ChoiceOptionID maps the stable ID to text, and ControlNumber maps only checked safe53
 integer grids/values. Original numeric source/raw lexemes are checked exactly before
 conversion; fractional Go values never travel as SDL text. ControlText/TextResult
-continues existing basic input behavior; extended input is subsequent WCI3-M2.
+continues existing basic input behavior; the opt-in extended policy below is WCI3-M2.
 
 The shared stdlib-only numeric package performs bounded exact decimal admission,
 raw range/grid checks and typed binary64 reconstructed-point round trips. It exposes
 immutable Grid operations, including exact Text(tick); only native gestures may snap.
 See [numeric bounds](../go/numeric/README.md). This implementation description is
 not native/whole-stage acceptance; final evidence is recorded by PLAN-SDP-0022.
+
+## WCI3-M2 extended input — development 0.3
+
+parser.InputOptions selects policy only through explicit new argument presence.
+FieldState.Input is nonnil only for that source policy; Multiline and effective
+Placeholder are defensively copied. Accepted/Proposed/RawDraft for input project
+Widget.Value/Draft without a second text store. Required/ReadOnly/Validation reuse
+the typed field contract. Extended text is valid UTF-8, at most 32768 bytes; required
+checks TrimSpace without changing supplied bytes. Single-line line breaks mean
+exactly CR or LF. Invalid bounded user drafts remain visible with blocked Commit,
+while invalid programmatic acceptance rejects atomically.
+
+EditField keeps its ModelRevision argument and returns the original FieldTarget.
+Draft delegates once for extended input; legacy input remains unchanged. Revert
+restores accepted text silently. Observers/validators and Apply use the established
+copy/reentrance/original-batch guards. CaptureCommit carries String plus
+Control.ValueRevision, with nil Control.RawDraft/Option: String already preserves
+the exact text. Legacy nil-Control events cannot bypass the new source policy.
+
+Every extended Commit with SDL TextResult requires an explicit self receiver at
+preflight, regardless of the request selector, and exact returned echo after
+Execute. A malformed/non-echo/newer-draft reply never accepts stale source text or
+replays domain work. Legacy nonself text bindings and Load into read-only receivers
+remain valid. DialogFields stays text-only; mixed DialogControls projects extended
+input under the same 256-write/capture/outcome/replay rules.
+
+Compatible main/inactive-page text drafts survive reload. Exact accepted empty
+text under an unchanged required policy retains its invalid editable baseline;
+newly required blank accepted values reject, and whitespace-only values are not
+covered by the exact-empty exception. CR/LF in accepted or surviving draft text
+rejects multiline-to-single-line conversion. Successful closed-dialog replacement
+first discards unaccepted drafts to current accepted values, retaining prior child
+commits. Failed replacement preserves the old form and all its proposals.
+
+Native editing history is outside runtime. Identical displayed bytes preserve it;
+changed programmatic text resets it. Actual post-mutation native edit rejection
+restores current authoritative Draft muted on the same Entry, with the declared
+history/caret/selection/scroll reset exception. Invalid-but-admitted drafts and
+failed Commit/reload/probe retain history. Entry editing/clipboard/scroll/IME proof
+is separate from these state guarantees and remains pending final M2 acceptance.

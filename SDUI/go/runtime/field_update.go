@@ -25,10 +25,22 @@ func (s *Session) applyFieldUpdate(u Update) error {
 		if w.Dirty && !u.AcceptDraft {
 			return fault("draft-conflict", w.Handle.Path)
 		}
-		if u.AcceptDraft && (f.Validation.Code != "" || u.Value != f.Proposed) {
+		proposed := f.Proposed
+		if w.Handle.Kind == "input" {
+			proposed = Text(w.Draft)
+		}
+		if u.AcceptDraft && (f.Validation.Code != "" || u.Value != proposed) {
 			return fault("draft-conflict", "Value differs from valid captured proposal")
 		}
 		switch w.Handle.Kind {
+		case "input":
+			if !validValue(u.Value, String) {
+				return fault("property-type", "Input requires String")
+			}
+			if v := inputValidation(f, u.Value.Text); v.Code != "" {
+				return fault("field-validation", v.Message)
+			}
+			w.Value, w.Draft = u.Value.Text, u.Value.Text
 		case "checkbox":
 			if !validValue(u.Value, Boolean) {
 				return fault("property-type", "Checkbox requires Boolean")
@@ -54,8 +66,10 @@ func (s *Session) applyFieldUpdate(u Update) error {
 				return fault("choice-ineligible", "Invalid accepted option")
 			}
 		}
-		f.Accepted = u.Value
-		f.Proposed = u.Value
+		if w.Handle.Kind != "input" {
+			f.Accepted = u.Value
+			f.Proposed = u.Value
+		}
 		f.feedback = FieldValidation{}
 		w.Dirty = false
 		w.ValueRevision++

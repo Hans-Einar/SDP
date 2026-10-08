@@ -45,3 +45,5 @@ require (
 )
 
 replace github.com/Hans-Einar/SDP/SDUI/go => ../../SDUI/go
+
+replace github.com/go-gl/glfw/v3.4/glfw => ../../SDUI/third_party/glfw

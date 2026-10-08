@@ -245,7 +245,11 @@ func (e *Engine) arrange(n *parser.Instance, r Rect, ref Size, clip Rect, font f
 		return e.arrangePane(n, r, ref, clip, font, enabled, ancestor)
 	}
 	if n.Kind == "widget" || n.Kind == "markdown" {
-		if scalarField(n) {
+		field, err := measuredField(n)
+		if err != nil {
+			return nil, err
+		}
+		if field {
 			if err := e.arrangeField(n, b); err != nil {
 				return nil, err
 			}

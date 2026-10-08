@@ -152,3 +152,31 @@ WCI3-M1 is verified and independently reviewed in [scalar evidence](../../SDP/05
 has no new scalar adapters; its explicit rejection is distinct from DocumentHost's
 runnable application route. WCI3-M2 extended input/IME and WCI4 providers/packages
 remain subsequent milestones.
+
+## Extended native text — WCI3-M2 delivered
+
+Presence of multiline/readOnly/placeholder/required selects extended input; false
+or empty values still opt in. Basic 0.2/0.3 inputs retain their old route. Parser
+InputOptions owns source policy, runtime FieldState.Input is a copied projection,
+and Widget.Value/Draft remain the only authoritative text store. No native caret,
+selection, history or internal scroll state is serialized into runtime.
+
+The DocumentHost adapter retains a Fyne Entry, with three measured visible rows
+and word wrapping for multiline text, inside existing field/viewport geometry.
+Entry consumes its own wheel input; ancestor gutters keep their independent route.
+Pure candidate probes measure detached controls. Accepted publication preserves
+identical-text editing history and actual native scroll through ordinary sync,
+page hiding and collapse. Different programmatic text resets that Entry history.
+An actual rejected native edit restores the latest authoritative draft muted on
+the same focused Entry and may reset history/caret/selection/scroll; failed Commit,
+reload and pure probe do not use this exception.
+
+Single-line Return commits; multiline Return inserts a line and Primary+Return
+commits. Native undo/redo, selection and clipboard remain Entry responsibilities.
+Read-only blocks mutation while retaining focus/copy; CR/LF single-line paste is
+refused before native normalization. The pinned local GLFW X11 filter patch keeps
+IME-consumed Return/Escape out of control dispatch; other platform sources remain
+upstream bytes. Both maintained native build roots explicitly select that copy.
+See [dependency policy](../third_party/glfw-policy/README.md).
+
+M2 is verified and independently reviewed in [text evidence](../../SDP/05--Implementation/SDUI/Widgets/Evidence-WCI3-M2.md): 92 native checks, actual configured XIM and five exact terminal results. Shared command/tab text receivers retain captured draft guards. Legacy standalone RuntimeView rejects these adapters explicitly. Provider and package preparation remain WCI4 obligations.

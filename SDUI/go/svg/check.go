@@ -136,7 +136,20 @@ func Check(root *parser.Instance, options Options) error {
 			return
 		}
 		switch n.Widget {
-		case "button", "input", "svg":
+		case "input":
+			if profile != "sdui/0.3" {
+				break // Preserve the legacy static-export path.
+			}
+			policy, err := parser.InputOptions(n)
+			if err != nil {
+				invalid = err
+				return
+			}
+			if policy.Extended && !options.SkipControls {
+				fail("unsupported-text-export", "SVG export does not support extended input properties")
+				return
+			}
+		case "button", "svg":
 		case "checkbox", "slider", "select", "number":
 			if profile != "sdui/0.3" {
 				fail("widget-kind", "Scalar control requires sdui/0.3")

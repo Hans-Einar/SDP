@@ -145,7 +145,24 @@ func Check(profile string, root *parser.Instance, supported Capabilities) error 
 						return err
 					}
 				}
-			case "button", "input":
+			case "input":
+				policy, err := parser.InputOptions(n)
+				if err != nil {
+					return err
+				}
+				if policy.Extended {
+					if policy.Multiline {
+						if err := require(n, Host, "input-multiline"); err != nil {
+							return err
+						}
+					}
+					if policy.ReadOnly {
+						if err := require(n, Host, "read-only"); err != nil {
+							return err
+						}
+					}
+				}
+			case "button":
 			case "command", "item", "separator":
 				if profile != "sdui/0.3" {
 					return &Diagnostic{Capability: Capability{Widget, id, 1}, Path: n.Path, Span: n.Span, Uses: n.Uses}

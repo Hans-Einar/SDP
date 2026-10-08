@@ -45,3 +45,5 @@ require (
 	golang.org/x/image v0.46.0
 	golang.org/x/sys v0.48.0 // indirect
 )
+
+replace github.com/go-gl/glfw/v3.4/glfw => ../third_party/glfw

@@ -4,7 +4,8 @@ The shared `go/layout` package owns measured outer geometry. Its original G2
 behavior remains the SDUI 0.2 path; WCI1 adds bounded SDUI 0.3 snapshot/viewports,
 WCI2-M1 adds measured tabs/page/split geometry; WCI2-M2 adds native bar-menu
 measurement and independent surface canvases. WCI3-M1 adds native measured scalar
-control parts from typed field snapshots. The [0.3 source profile](profile-0.3.md) and
+control parts from typed field snapshots; WCI3-M2 reuses those parts for explicitly
+extended text inputs. The [0.3 source profile](profile-0.3.md) and
 [WCI1 collection contract](../../SDP/04--Design/SDUI/Widgets/Collections.md) distinguish
 source acceptance, runtime state, native integration and their acceptance evidence.
 
@@ -231,7 +232,8 @@ reject before producing any artifact.
 These tests use synthetic collection adapter metrics. They do not prove native
 Fyne painting, row metrics, thumb dragging, external keyboard/pointer input or
 atomic native resource publication. Native acceptance belongs to the corresponding phase evidence; synthetic layout
-checks alone do not establish it. No WCI3-M2 text/IME support is claimed here.
+checks alone do not establish it. WCI3-M2 tests below establish shared text-field
+geometry, not native editing or IME acceptance.
 
 ## Native frame/group gutters
 
@@ -443,3 +445,61 @@ before draft/observer/ticket publication, invalid raw-number feedback and failed
 child-canvas resize retaining the current draft and presentation. These use
 synthetic metrics; native painting, accessibility, gestures and SDL execution
 remain separate integration evidence.
+
+
+## WCI3-M2 extended text fields
+
+Only explicit presence of multiline/readOnly/placeholder/required selects the
+extended input path, including false or an empty string. Layout calls the sole
+`parser.InputOptions` helper; a basic 0.3 input remains on the legacy `Measure`
+path even if Snapshot.Fields contains an input projection. Profile 0.2 geometry
+and its unsupported-scroll behavior are unchanged. New input arguments remain
+invalid in 0.2. The [text API](wci3-m2-layout-api.md) describes the reused seam.
+
+Extended input uses the same `FieldMeasurer`, `FieldMetrics` and `FieldLayout`.
+The active field must match its normalized InstancePath/runtime kind and supply
+`FieldState.Input`; Multiline, effective Placeholder and Required must agree with
+source policy. Mutable ReadOnly comes from the snapshot. An omitted placeholder
+tracks the current input text label in SnapshotRoot and runtime's projection;
+explicit empty placeholder remains empty. Adapter input copies Input metadata
+and RawDraft, so retained adapter references cannot mutate the snapshot.
+
+Control is the whole native Entry, including native padding/border and internal
+scroll chrome. Label may be absent (exact zero rectangle) only when the extended
+input's text label is empty; nonempty labels, including whitespace, still require
+a measured region. An input label cannot overlap its Entry. Validation feedback
+is separate, positive whenever validation is active, and uses the native adapter's
+fixed feedback row. Numeric button rectangles must remain absent. All existing
+finite native minima, source max bounds and final part-allocation checks apply.
+
+The selected native adapter policy is a detached identically themed Entry with
+three visible rows and word wrapping for multiline input. Layout does not impose
+pixel dimensions or measure the complete text document. Intrinsic probes consume
+only Minimum; final Control allocation is bounded. The adapter includes label and
+feedback once. Ordinary source-relative dimensions, pane minima, ancestor clips,
+open-surface coordinates and independent nonmodal resize continue to apply.
+
+Native Entry owns its editing viewport, caret, selection and undo. There is no
+input entry in shared Viewports or additional PresentationState field. Entry
+consumes its text-area wheel even at a limit; the host must not additionally call
+outer RouteScroll for that gesture. Ancestor gutters and exposed background retain
+outer routing. EnsureVisible reveals the measured Entry through ancestor content
+clips; it does not set native text offsets. These routing statements are host
+obligations, not proof supplied by synthetic geometry tests.
+
+Inactive pages, hidden controls, collapsed panes and closed dialogs contribute no
+active field geometry. Their input source schema is still validated; their native
+objects are retained by the host under the reviewed lifecycle contract. Geometry
+probes are pure and must not resize or replace live Entry text. Failed probes,
+Commit or reload preserve the existing presentation. The reviewed exceptional
+recovery for an already-delegated native edit rejected by runtime belongs to the
+host: restore the latest authoritative draft muted, with the permitted native
+history reset. Layout neither implements nor widens that exception.
+
+Scoped tests cover false/empty opt-in, unchanged basic input geometry, detached
+metadata, empty labels, live label/readonly projection, malformed policy/metrics,
+fixed feedback, exact nested translation/clips/gutters and ancestor reveal. Real
+runtime gates cover failed draft publication before observers/tickets, invalid
+editable text, retained inactive offsets/drafts, failed split restore and failed
+nonmodal resize. Native row measurement, wrapping, selection/clipboard/history,
+wheel delivery, SDL Commit and actual OS IME remain host/integration evidence.

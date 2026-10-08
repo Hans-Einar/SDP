@@ -6,7 +6,8 @@ import (
 )
 
 // FieldMetrics contains actual native measurements local to the outer control.
-// Control is the number Entry excluding its two buttons. A checkbox's native
+// Control is the whole text Entry, or the number Entry excluding its buttons.
+// Text Entry scrolling is native, not a shared layout viewport. A checkbox's native
 // label can overlap Control. Zero rectangles identify absent optional parts.
 // Intrinsic probes consume only Minimum; final allocation checks every part.
 type FieldMetrics struct {
@@ -14,7 +15,7 @@ type FieldMetrics struct {
 	Label, Control, Feedback, Decrement, Increment Rect
 }
 
-// FieldMeasurer is required for WCI3-M1 scalar controls. The supplied field is a
+// FieldMeasurer is required for scalar controls and opted-in .3 inputs. The field is a
 // detached prospective snapshot projection, not permission to modify live state.
 // Methods must be pure; they must not parse numeric values or publish resources.
 type FieldMeasurer interface {
@@ -30,15 +31,18 @@ type FieldLayout struct {
 	Enabled, ReadOnly                                                  bool
 }
 
-func scalarField(n *parser.Instance) bool {
+func measuredField(n *parser.Instance) (bool, error) {
 	if n.Profile != "sdui/0.3" || n.Kind != "widget" {
-		return false
+		return false, nil
 	}
 	switch n.Widget {
 	case "checkbox", "slider", "select", "number":
-		return true
+		return true, nil
+	case "input":
+		policy, err := parser.InputOptions(n)
+		return policy.Extended, err
 	}
-	return false
+	return false, nil
 }
 
 func (e *Engine) fieldFor(n *parser.Instance) (runtime.FieldState, error) {
@@ -46,9 +50,22 @@ func (e *Engine) fieldFor(n *parser.Instance) (runtime.FieldState, error) {
 	// InstancePath, not a second path resolver, joins geometry to the snapshot.
 	f, ok := e.fieldState[n.Path]
 	if !ok || f.InstancePath != n.Path || f.Target.Handle.Path == "" || f.Target.Handle.Kind != n.Widget {
-		return runtime.FieldState{}, diag(n, "field-snapshot", "Scalar layout requires its matching typed snapshot field")
+		return runtime.FieldState{}, diag(n, "field-snapshot", "Field layout requires its matching typed snapshot field")
+	}
+	if n.Widget == "input" {
+		policy, err := parser.InputOptions(n)
+		if err != nil {
+			return runtime.FieldState{}, err
+		}
+		if !policy.Extended || f.Input == nil || f.Input.Multiline != policy.Multiline || f.Input.Placeholder != policy.Placeholder || f.Required != policy.Required {
+			return runtime.FieldState{}, diag(n, "field-snapshot", "Extended input requires matching snapshot policy")
+		}
 	}
 	// An adapter may retain its measurement input; it must not alias snapshot data.
+	if f.Input != nil {
+		input := *f.Input
+		f.Input = &input
+	}
 	if f.RawDraft != nil {
 		raw := *f.RawDraft
 		f.RawDraft = &raw
@@ -73,7 +90,7 @@ func (e *Engine) fieldMetrics(n *parser.Instance, font float64, outer Size) (Fie
 	}
 	adapter, ok := e.Measure.(FieldMeasurer)
 	if !ok {
-		return FieldMetrics{}, diag(n, "field-measurement", "Scalar layout requires native field metrics")
+		return FieldMetrics{}, diag(n, "field-measurement", "Field layout requires native field metrics")
 	}
 	m, err := adapter.MeasureField(n, f, font, outer)
 	if err != nil {
@@ -106,8 +123,12 @@ func (e *Engine) arrangeField(n *parser.Instance, b *Box) error {
 		}
 	}
 	f := e.fieldState[n.Path]
-	if !positiveFieldRect(m.Label) || !positiveFieldRect(m.Control) || (f.Validation.Code != "" || f.Validation.Message != "") && !positiveFieldRect(m.Feedback) {
+	labelRequired := n.Widget != "input" || n.Argument("text") != ""
+	if labelRequired && !positiveFieldRect(m.Label) || !positiveFieldRect(m.Control) || (f.Validation.Code != "" || f.Validation.Message != "") && !positiveFieldRect(m.Feedback) {
 		return diag(n, "field-measurement", "Field label, control and active validation feedback require measured regions")
+	}
+	if n.Widget == "input" && fieldOverlap(m.Label, m.Control) {
+		return diag(n, "field-measurement", "Input label must not overlap its Entry")
 	}
 	if n.Widget == "number" {
 		if !positiveFieldRect(m.Decrement) || !positiveFieldRect(m.Increment) || fieldOverlap(m.Decrement, m.Increment) || fieldOverlap(m.Control, m.Decrement) || fieldOverlap(m.Control, m.Increment) {

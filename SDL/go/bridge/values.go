@@ -177,6 +177,17 @@ func (b *Bridge) handler(engine *sdl.Engine, action string, plan Plan, target st
 		if !ok {
 			return nil, fmt.Errorf("stale-result-target: %s", target)
 		}
+		var capture *ui.FieldTarget
+		if b.extendedInput(event.Handle) {
+			field, err := b.controlCapture(event)
+			if err != nil {
+				return nil, err
+			}
+			if receiver.Handle != event.Handle || event.Value != ui.Text(event.Value.Text) {
+				return nil, fmt.Errorf("text-result: invalid self text capture")
+			}
+			capture = &field.Target
+		}
 		inputType, _, err := engine.Signature(action)
 		if err != nil {
 			return nil, err
@@ -205,10 +216,29 @@ func (b *Bridge) handler(engine *sdl.Engine, action string, plan Plan, target st
 				return nil, err
 			}
 		}
+		value := result.Output[plan.OutputField].Text
+		if capture != nil {
+			after, err := b.controlCapture(event)
+			if err != nil {
+				return nil, err
+			}
+			if after.Target != *capture || value != event.Value.Text {
+				return nil, fmt.Errorf("text-result: result does not accept unchanged captured proposal")
+			}
+		}
 		if plan.RevisionField != "" {
 			b.Context[plan.RevisionContext] = result.Output[plan.RevisionField]
 		}
-		value := result.Output[plan.OutputField].Text
-		return []ui.Update{{Handle: widget.Handle, Property: ui.AcceptedValue, Value: ui.Text(value), ExpectedValueRevision: widget.ValueRevision, AcceptDraft: value == widget.Draft}}, nil
+		update := ui.Update{Handle: widget.Handle, Property: ui.AcceptedValue, Value: ui.Text(value), ExpectedValueRevision: widget.ValueRevision, AcceptDraft: value == widget.Draft}
+		if b.extendedInput(widget.Handle) {
+			update.ExpectedDraftRevision = receiver.DraftRevision
+		}
+		return []ui.Update{update}, nil
 	}
+}
+
+// Runtime policy is present only for source-explicit extended inputs.
+func (b *Bridge) extendedInput(h ui.Handle) bool {
+	field, ok := b.UI.Field(h)
+	return ok && h.Kind == "input" && field.Input != nil
 }

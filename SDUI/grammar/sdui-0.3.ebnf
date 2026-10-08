@@ -73,5 +73,11 @@ hex            = digit | "a" .. "f" | "A" .. "F" ;
    in slider/number must be numeric tokens: parser preserves their exact spelling
    as number-lexeme Literals; quoted strings reject. Other numeric literals keep
    their existing representation. Scalar controls accept no body. No source
-   options/provider/validator/onChange expressions. Input extensions belong to
-   subsequent WCI3-M2 and are not accepted by this grammar's current schema. *)
+   options/provider/validator/onChange expressions. *)
+
+(* WCI3-M2 input remains a leaf: input(text, value?:string, multiline?:boolean,
+   readOnly?:boolean, placeholder?:string, required?:boolean, callback?). Only
+   text is positional. New argument presence (even false/empty) opts into extended
+   input behavior; omission preserves legacy input. Booleans default false;
+   omitted placeholder uses text. Defaults are not inserted into AST/instances.
+   The 0.2 input schema remains text/value/callback only. No new literal kind. *)

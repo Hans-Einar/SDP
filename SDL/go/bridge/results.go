@@ -30,6 +30,9 @@ func (b *Bridge) validateResult(plan Plan, owner ui.Widget, target string, outpu
 		if !ok || receiver.Handle.Kind != "input" {
 			return fmt.Errorf("result-widget: %s is not an input", target)
 		}
+		if b.extendedInput(owner.Handle) && receiver.Handle != owner.Handle {
+			return fmt.Errorf("extended TextResult requires explicit self setHandle to accept captured source")
+		}
 		if plan.RevisionField != "" {
 			if output[plan.RevisionField] != parser.IntegerType || plan.RevisionContext == "" {
 				return fmt.Errorf("revision-binding: invalid output/context")

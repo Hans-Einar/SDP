@@ -69,6 +69,7 @@ func (c *scalarControl) openChoices() {
 	}
 }
 func (b *Bundle) syncChoices() {
+	b.syncTextMenus()
 	for _, obj := range b.view.Controls {
 		c, ok := obj.(*scalarControl)
 		if !ok || c.popup == nil {
@@ -88,6 +89,7 @@ func (b *Bundle) syncChoices() {
 	}
 }
 func (b *Bundle) closeChoices() {
+	b.closeTextMenus()
 	if b.view == nil {
 		return
 	}
@@ -149,5 +151,6 @@ func (b *Bundle) inspectFields() (map[string]map[string]any, map[string]map[stri
 			choices[path] = map[string]any{"canvas": id, "title": title, "generation": popup.target.OptionGeneration, "items": items}
 		}
 	}
+	b.inspectTextFields(fields)
 	return fields, choices
 }

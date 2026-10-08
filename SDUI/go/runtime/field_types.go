@@ -11,6 +11,13 @@ func Choice(v ItemID) Value   { return Value{Kind: OptionID, OptionID: v} }
 
 type FieldValidation struct{ Code, Message string }
 type NumericConstraints struct{ Min, Max, Step string }
+
+// InputState contains extended input presentation facts. Widget.Value/Draft
+// remain the sole text storage; nil FieldState.Input denotes legacy input.
+type InputState struct {
+	Multiline   bool
+	Placeholder string
+}
 type OptionTarget struct {
 	Handle                          Handle
 	ModelRevision, OptionGeneration uint64
@@ -34,6 +41,7 @@ type FieldState struct {
 	Dirty, ReadOnly, Required bool
 	Validation                FieldValidation
 	Numeric                   *NumericConstraints
+	Input                     *InputState
 	Options                   []ChoiceOption
 }
 type FieldChange struct {

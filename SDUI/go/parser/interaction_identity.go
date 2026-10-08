@@ -115,6 +115,11 @@ func ResolveInteractions(root *Instance) (out map[string]InteractionIdentity, er
 	root.Walk(func(n *Instance) {
 		validateNormalizedInteraction(n)
 		validateScalar(n)
+		if n.Widget == "input" {
+			if _, err := InputOptions(n); err != nil {
+				panic(err)
+			}
+		}
 		relevant := isInteractionNode(n) || n.Kind == "widget" && (n.Widget == "input" || scalarKind(n.Widget)) && index.dialogs[n.Path] != ""
 		if !relevant {
 			return

@@ -169,6 +169,8 @@ func (v *View) nativeControls() map[string]string {
 			kinds[path] = "button"
 		case *commandButton:
 			kinds[path] = "button"
+		case *textControl:
+			kinds[path] = "input"
 		case *Input:
 			kinds[path] = "input"
 		case *paneHeader:

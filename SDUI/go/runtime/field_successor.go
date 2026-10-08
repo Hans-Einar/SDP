@@ -10,6 +10,12 @@ func (n *Session) inheritFields(s *Session, choices map[string][]ChoiceOption, e
 	for path, f := range n.fields {
 		w := n.widgets[path]
 		old := s.fields[path]
+		if w.Handle.Kind == "input" {
+			if err := n.inheritInput(s, path); err != nil {
+				return err
+			}
+			continue
+		}
 		compatible := old != nil && s.widgets[path] != nil && s.widgets[path].Handle == w.Handle
 		if w.Handle.Kind == "select" {
 			count++

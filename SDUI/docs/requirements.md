@@ -98,3 +98,11 @@ proves pointer/keyboard Change versus Commit, visible slider proposal feedback,
 readonly/programmatic behavior, invalid-draft refusal, stale-result rejection,
 child Commit versus form Cancel and truthful post-domain failure through 113 native
 checks and passing suites. Extended text/IME remains WCI3-M2.
+
+WCI3-M2 implements opt-in extended single-line and basic multiline input for R27:
+explicit Change/Commit, required validation, read-only selection/copy, placeholder,
+Unicode clipboard, native undo/redo and internal scrolling under R28 publication
+guards. Native typing/IME, failed edits, reload and same/different-byte history
+policies require exact-candidate evidence. A rejected native edit may reset that
+Entry editing history while restoring authoritative text; failed Commit/reload
+retain history. [Reviewed M2 evidence](../../SDP/05--Implementation/SDUI/Widgets/Evidence-WCI3-M2.md) closes the bounded text inventory with 92 native checks, actual IME, shared-command receiver correction and affected suites. WCI4 consumer/provider preparation remains open.

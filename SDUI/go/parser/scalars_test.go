@@ -63,7 +63,7 @@ func TestScalarClosedSchemasAndTextBoundary(t *testing.T) {
 		`slider("S",min=0,max=1,step=0.1)`, `slider("S",min="0",max=1,step=0.1,value=0)`,
 		`number("N",min=0,max=1,step=0.1,value="0.3")`, `number("N",min=0,max=1,step=0.1,value=0,placeholder=false)`,
 		`slider("S",min=0,max=1,step=0.1,value=0,placeholder="no")`,
-		`input("I",readOnly=true)`, `input("I",multiline=false)`, `input("I",required=true)`, `input("I",placeholder="")`, `textarea("I")`,
+		`textarea("I")`,
 	}
 	for _, body := range bad {
 		t.Run(body, func(t *testing.T) {

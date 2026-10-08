@@ -37,7 +37,11 @@ func (e *Engine) collectionMetrics(n *parser.Instance, font float64, outer Size)
 }
 
 func (e *Engine) measureWidget(n *parser.Instance, font, limit float64, size, slot Size, known assigned) (Size, Size, error) {
-	if scalarField(n) {
+	field, err := measuredField(n)
+	if err != nil {
+		return Size{}, Size{}, err
+	}
+	if field {
 		outer := slot
 		if known.x {
 			outer.W = size.W

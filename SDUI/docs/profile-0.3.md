@@ -152,8 +152,8 @@ exposes opt-in, and `IsAuxiliary` exposes non-flow declarations without state gu
 
 ## WCI3-M1 scalar fields
 
-The same development profile adds four leaf controls. Extended input properties
-remain WCI3-M2 work and are rejected by the current input schema.
+The same development profile adds four leaf controls. WCI3-M2 extends input
+separately, as described below.
 
 | Call | Arguments/defaults |
 | --- | --- |
@@ -233,6 +233,50 @@ entry for every omitted field; InteractionRoot still validates dialog canvases.
 Standalone prototype preflight reports unsupported-value for unavailable scalar
 adapters, or unsupported-provider / choice-options for select. Source acceptance
 and static descriptions do not prove native/provider/SDL readiness.
+
+## WCI3-M2 extended input
+
+`input(text, value="", multiline=false, readOnly=false, placeholder?, required=false,
+callback?)` remains a leaf. text/value/placeholder are strings; multiline/readOnly/
+required are booleans; callback is the existing symbolic Commit reference. Only text
+may be positional, first. Unknown, duplicate and wrong-type arguments reject.
+Callbacks require a named widget (an extended-input definition root is named by its
+definition); connected execution requires @invoke. No textarea, source onChange,
+validator, file I/O, wrap or scrolling arguments are introduced.
+
+Presence of any new argument opts into extended behavior, even explicit false or
+empty placeholder. Basic .3 inputs without these arguments retain legacy semantics;
+.2 rejects every new argument. No profile migration is required. Omitted placeholder
+uses text; explicit empty suppresses it. Empty text remains legal. Source defaults
+are never inserted into Arguments, and boolean/string literals retain existing AST
+shapes and spans. Reuse and generated constructors preserve argument presence.
+
+`parser.InputOptions(*Instance) (InputPolicy, error)` is the shared source facts
+helper. InputPolicy contains Extended, Multiline, ReadOnly, Required, Placeholder
+and PlaceholderSet. It checks the profile, leaf shape and closed typed arguments;
+it does not validate live text, mutate source or establish native/SDL readiness.
+Selected-root ResolveInteractions also validates input schemas, including hidden
+nodes and input dialog ownership. Widget.Value/Draft remain the runtime text store;
+Snapshot.Fields projects text with validation/metadata, not new source arguments.
+
+Extended text Commit uses typed String capture; Change is a local Go notification.
+ControlText maps exact text to SDL; TextResult remains text/input. Extended Commit
+requires a self receiver and exact returned echo, with revision guards. Basic input
+and legacy nonself TextResult remain unchanged; Load may target readOnly input.
+Validation, draft retention and native editing belong to runtime/document-host
+adapters, not parser normalization. required-empty is an editable invalid state,
+not a grammar error. The single-line newline predicate is exactly CR or LF;
+text is not normalized or silently trimmed. Actual IME behavior needs native proof.
+
+Structural descriptions show explicit/default properties, initial text, source
+path/span and unverified symbolic binding. Public SVG rejects any extended input
+with unsupported-text-export, including false/empty opt-in, hidden input or supplied
+geometry/state. Native background omission requires an exact prepared `input`
+inventory entry; there is no new widget kind. Standalone prototype reports
+unsupported-text for extended input: it has no document-host text adapter. This
+does not require migration of the legacy launcher. The connected document-host
+route must be explicitly prepared and tested with its actual capabilities/binder;
+static support or generated constructors alone cannot claim that readiness.
 
 ## Profile identity and compatibility
 

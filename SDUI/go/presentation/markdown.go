@@ -57,6 +57,9 @@ func Markdown(root *parser.Instance, columns int) (string, error) {
 			if scalarDescription(n) {
 				text = "**Declaration:** " + codeSpan(scalarText(n))
 			}
+			if inputDescription(n) {
+				text = "**Declaration:** " + codeSpan(inputText(n))
+			}
 			lines = []string{text}
 		} else {
 			kind := "Group"

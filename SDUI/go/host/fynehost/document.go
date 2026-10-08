@@ -170,7 +170,7 @@ func (b *Bundle) stage(snapshot ui.Snapshot) (ui.PresentationState, error) {
 	return measured.PresentationState(), nil
 }
 func (b *Bundle) capabilities() preparation.Capabilities {
-	caps := admission.FieldCapabilities()
+	caps := admission.TextCapabilities()
 	if b.request.Choices != nil {
 		caps = append(caps, preparation.Capability{Dimension: preparation.Provider, ID: "choice-options", Major: 1})
 	}
@@ -229,6 +229,11 @@ func (b *Bundle) preparePresentation(snapshot ui.Snapshot) (ui.PresentationTicke
 		}
 		snapshot.Root.Walk(func(n *parser.Instance) {
 			switch {
+			case extendedInput(n):
+				if old := b.view.controls[n.Path]; old != nil {
+					b.view.Container.Remove(old.clip)
+				}
+				b.view.addPane(n.Path, newTextControl(b, n))
 			case isScalar(n.Widget):
 				b.view.addPane(n.Path, newScalarControl(b, n))
 			case n.Widget == "svg" && snapshot.Root.Profile == "sdui/0.3":
@@ -352,6 +357,9 @@ func (h *DocumentHost) restoreFocus(b *Bundle) {
 	// A live choice opening owns keyboard focus until selection/dismissal. Its
 	// original option generation stays captured even across unrelated rendering.
 	if c, scalar := b.view.Controls[path].(*scalarControl); scalar && c.popup != nil && !c.popup.native.closed && !c.popup.native.dismissed {
+		return
+	}
+	if c, text := b.view.Controls[path].(*textControl); text && c.editMenu != nil && !c.editMenu.closed && !c.editMenu.dismissed {
 		return
 	}
 	if !ok || canvas == nil || canvas.Focused() == obj {

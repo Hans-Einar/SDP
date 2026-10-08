@@ -314,8 +314,11 @@ func (b *Bundle) routeShortcut(c fyne.Canvas, shortcut fyne.Shortcut) {
 		if key.surface != surface || key.shortcut.ShortcutName() != shortcut.ShortcutName() {
 			continue
 		}
-		if _, editing := c.Focused().(*Input); editing && nativeEditing {
-			return
+		if nativeEditing {
+			switch c.Focused().(type) {
+			case *Input, *textEntry:
+				return
+			}
 		}
 		if handle, ok := b.Session.Command(key.path); ok {
 			b.invokeCommand(handle, "key")

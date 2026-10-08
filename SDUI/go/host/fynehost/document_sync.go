@@ -78,6 +78,8 @@ func (b *Bundle) apply() {
 	if p == nil {
 		return
 	}
+	restoreTextScroll := b.retainTextScroll(p.snapshot)
+	defer restoreTextScroll()
 	b.hideTooltip()
 	b.presentation = p
 	b.pending = nil
@@ -141,6 +143,8 @@ func (b *Bundle) apply() {
 			return
 		}
 		switch obj := c.widget.(type) {
+		case *textControl:
+			obj.sync(p.snapshot.Fields[box.Path], geometry.Fields[box.Path], box)
 		case *scalarControl:
 			obj.sync(p.snapshot.Fields[box.Path], geometry.Fields[box.Path], box)
 		case *CollectionControl:

@@ -159,6 +159,15 @@ func (b *Bridge) controlCapture(event ui.Event) (ui.FieldState, error) {
 }
 func (b *Bridge) controlValue(selector EventField, event ui.Event, kind parser.ScalarType) (sdl.Value, error) {
 	if selector == ControlText {
+		if b.extendedInput(event.Handle) {
+			if _, err := b.controlCapture(event); err != nil {
+				return sdl.Value{}, err
+			}
+			if kind != parser.TextType || event.Value != ui.Text(event.Value.Text) {
+				return sdl.Value{}, fmt.Errorf("control-text: invalid extended text payload")
+			}
+			return sdl.Text(event.Value.Text), nil
+		}
 		w, ok := b.UI.Widget(event.Handle.Path)
 		if !ok || w.Handle.Kind != "input" || event.Kind != ui.Commit || kind != parser.TextType || event.ModelRevision != b.UI.Revision || event.DraftRevision != w.DraftRevision || event.Value != ui.Text(w.Draft) || event.Control != nil || event.Command != nil || event.Dialog != nil || event.Page != nil || event.Split != nil || event.Collection != nil {
 			return sdl.Value{}, fmt.Errorf("control-text: invalid basic input Commit")

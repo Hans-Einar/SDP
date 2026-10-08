@@ -143,6 +143,10 @@ func (s *Session) Bind(handle Handle, handler Handler) error {
 	return nil
 }
 func (s *Session) Draft(handle Handle, value string) error {
+	if f := s.fields[handle.Path]; f != nil && f.Input != nil {
+		_, err := s.EditField(handle, s.Revision, Text(value))
+		return err
+	}
 	w, e := s.lookup(handle)
 	if e != nil {
 		return e
@@ -167,6 +171,9 @@ func (s *Session) Revert(handle Handle) error {
 	}
 	if w.Handle.Kind != "input" {
 		return fault("widget-type", "Revert requires input")
+	}
+	if f := s.fields[handle.Path]; f != nil && f.Input != nil {
+		return s.revertInput(w)
 	}
 	n := s.copyState()
 	w = n.widgets[handle.Path]

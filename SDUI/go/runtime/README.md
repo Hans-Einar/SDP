@@ -21,7 +21,9 @@ constructing a Session alone is not connected admission. See the shared
 `Bind` installs an explicit Go handler. `Dispatch` validates handle/model revision,
 nonzero increasing sequence, payload and enabled/visible state. Button `Activate`
 has no payload; input `Commit` carries the current `Value` and `DraftRevision`.
-`Draft`, `Revert`, `Focus` and `Apply` update UI state without simulating user events.
+For legacy inputs, `Draft`, `Revert`, `Focus` and `Apply` update UI state without
+simulating user events. Extended inputs notify local Change on Draft/EditField as
+described below; they never implicitly invoke a Commit handler.
 `Apply` validates the complete property batch before publishing. External accepted
 values conflict with dirty drafts; explicit draft acceptance must match that draft.
 `Close` revokes the Session and any pending collection requests.
@@ -399,8 +401,8 @@ acceptance; those are separate host/integration evidence.
 ## WCI3-M1 typed scalar fields
 
 M1 adds checkbox, slider, number and select within source profile 0.3. Existing
-0.2 and basic 0.3 input Draft/Commit remain unchanged; extended input, multiline,
-IME and undo are later work. Runtime imports the standard-library-only numeric
+0.2 and basic 0.3 input Draft/Commit remain unchanged. Extended input is covered
+by WCI3-M2 below; native IME and undo remain host responsibilities. Runtime imports the standard-library-only numeric
 helper; it still imports no GUI/layout package or application file loader.
 
 `Value` adds finite `Number` and stable `OptionID`, constructed with `Numeric` and
@@ -436,7 +438,8 @@ controls outside dialogs may accept locally. Automatic unbound Commit inside an
 open dialog keeps the proposal dirty for owner Accept. Explicit child Commit effects
 persist through later Cancel. ReadOnly blocks user edits/Commit while allowing
 focus and checked programmatic changes. RevertField silently restores accepted
-state; input delegates to the unchanged Revert operation.
+state; input delegates to Revert, which applies the selected legacy or extended
+input policy.
 
 Typed AcceptedValue, `ReadOnly` and `ValidationState` updates require the captured
 ExpectedValueRevision and ExpectedDraftRevision; select additionally requires
@@ -485,3 +488,77 @@ trip. Gesture snapping is explicit; text and typed Apply never use a tolerance.
 See [numeric API](../numeric/README.md) for bounded arithmetic and SDL conversion.
 Runtime tests prove state and publication semantics; native gestures/SDL bindings
 and whole-stage delivery require their separate integration evidence.
+
+
+## WCI3-M2 extended text inputs
+
+Presence of any new source input argument (`multiline`, `readOnly`, `placeholder`,
+`required`) opts into extended behavior, including explicit false or empty strings.
+Absent all four preserves legacy .2/basic .3 behavior and event envelopes. Profile
+or handler registration alone never opts in. Runtime consumes parser.InputOptions;
+there are no inserted AST defaults or source value normalization.
+
+`FieldState.Input *InputState` is nonnil only for opted-in inputs. It contains
+Multiline and the effective Placeholder. ReadOnly/Required/Validation reuse existing
+field properties. Omitted placeholder follows the current Widget.Label; an explicit
+placeholder, including empty, remains fixed. Input metadata and every returned
+RawDraft are detached copies. Widget.Value/Draft and their revisions remain the only
+accepted/draft text store; Field.Accepted/Proposed are String projections. Runtime
+owns no caret, selection, history, preedit, native scroll or acceptance-origin flag.
+
+`EditField(handle, modelRevision, Text(value))` checks identity, current model,
+activity and readOnly, admits bounded UTF-8, stores one draft, validates and publishes
+once, then emits one copied Change. Extended `Draft(handle,text)` delegates to that
+path at the current model revision; native callbacks use EditField's explicit model
+capture. Invalid required or single-line drafts remain visible with feedback;
+malformed UTF-8 and text over 32768 bytes reject without storing or truncating.
+Required checks non-whitespace without trimming. Single-line checks exactly CR/LF;
+other Unicode separators are not silently normalized or reclassified. Extended
+source initial text must satisfy UTF-8/size/single-line admission with a source-linked
+diagnostic; required-empty may initialize as editable invalid state.
+
+ObserveChanges and ValidateFieldWith support opted-in inputs using copied field
+projections. Built-ins precede the optional bounded pure validator. Reentrant
+validation invalidates the outer operation without overwriting newer accepted work.
+Revert/RevertField silently restore accepted text and recompute validation; user
+revert checks activity/readOnly. Internal dialog cancellation can discard unaccepted
+drafts even when hidden/readOnly. Native undo/redo uses the editing path, not Revert.
+
+CaptureCommit validates the exact FieldTarget and returns String text with
+`Control.ValueRevision`; `Control.RawDraft` and `Control.Option` must be nil. The
+String itself is exact provenance. Extended Dispatch requires that typed envelope;
+legacy nil-Control cannot bypass its rules, and legacy input cannot accept a typed
+envelope. Existing callback bindings remain. A successful typed handler must return
+an exact source AcceptedValue/AcceptDraft update, with captured value/draft revisions.
+Non-echo, missing acceptance, validation, reentrance or final preparation failure
+rejects delivery without automatic replay. Unbound open-dialog Commit keeps the
+proposal dirty for owner Accept; intentional child Commit persists through Cancel.
+
+Apply updates Widget strings directly for extended receivers, validating the final
+proposal and both original batch revision guards. ReadOnly permits checked Apply,
+including explicit Load results. Dirty/newer drafts reject unrelated replacement.
+Mixed batches are atomic and distinct property order is independent. Programmatic
+Apply, initialization, reload and lifecycle reset emit neither Change nor Commit.
+DialogControls includes extended input metadata/raw text in mixed Go captures;
+DialogFields/DialogField and SDL DialogFieldValue stay text-only. Existing combined
+256-write budget, Domain outcomes, replay blocks and published receipts still apply.
+
+Compatible successors retain main/page accepted/draft text, including invalid drafts
+on inactive pages, and discard unaccepted closed-dialog drafts. Retained accepted
+text violating new constraints rejects. The narrow already-required exact-empty
+baseline stays invalid/editable with unchanged accepted revision; newly-required
+blank and other invalid accepted text, including whitespace-only required text,
+still reject. Multiline-to-single-line conversion rejects CR/LF in accepted text or
+a surviving main/page draft; closed-dialog draft reset precedes that check. Existing
+single-line invalid drafts can remain invalid through unchanged-policy reload.
+No callbacks/validators/observers are copied into detached successors. Compatibility
+Reload retains eligible closures and revalidates with reentrance protection.
+
+Native host synchronization follows the reviewed byte-based policy: identical
+visible text preserves Entry/history, including self-echo and identical Apply;
+different programmatic text replaces it muted and resets history. A rejected actual
+native edit restores the latest authoritative runtime draft on the same Entry and
+may reset caret/selection/scroll/history. Runtime rejection itself remains atomic.
+Failed Commit/reload/probe and ordinary sync/page hiding retain native history;
+these are host obligations, not evidence established by runtime tests. OS clipboard,
+undo, scrolling and actual IME proof belong to the host/integration lane.

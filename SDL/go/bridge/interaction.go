@@ -149,7 +149,11 @@ func (b *Bridge) interactionHandler(engine *sdl.Engine, action string, plan Plan
 			b.Context[plan.RevisionContext] = result.Output[plan.RevisionField]
 		}
 		value := result.Output[plan.OutputField].Text
-		reply.Updates = []ui.Update{{Handle: widget.Handle, Property: ui.AcceptedValue, Value: ui.Text(value), ExpectedValueRevision: widget.ValueRevision, AcceptDraft: value == widget.Draft}}
+		update := ui.Update{Handle: widget.Handle, Property: ui.AcceptedValue, Value: ui.Text(value), ExpectedValueRevision: widget.ValueRevision, AcceptDraft: value == widget.Draft}
+		if b.extendedInput(widget.Handle) {
+			update.ExpectedDraftRevision = receiver.DraftRevision
+		}
+		reply.Updates = []ui.Update{update}
 		return reply, nil
 	}
 }
