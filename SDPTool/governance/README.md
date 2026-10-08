@@ -199,3 +199,14 @@ Every intervening revision and unchanged decision/attempt/coverage state is chec
 Changed arguments, steering, lifecycle mutations, reconnect and controller requests
 retain normal stale-revision refusal. This prevents the approval record itself
 from invalidating the queued call without weakening the normal CAS contract.
+
+PGI3-C4 separates optional `agentEpoch` from the observation `epoch` on attempts.
+Legacy state falls back to the existing epoch. New binds initialize both; ordinary
+history reconciliation still changes the active capability epoch. Only trusted
+`host.reattach` with the originally bound nonempty `hostIdentity`, current latest
+attempt/turn, source coverage and resolved outbound work preserves that capability
+while replacing the observation epoch. Approval identities remain connection-bound.
+Same request IDs in different epochs are distinct approval observations. A gap is
+never erased by reattachment. These additive fields are development-profile state;
+older strict-decoding pilot binaries cannot read the new state and no published
+upgrade compatibility is claimed.

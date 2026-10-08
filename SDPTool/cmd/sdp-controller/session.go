@@ -25,6 +25,7 @@ func ownerCommand(args []string) error {
 	root := f.String("project", "", "explicit project root")
 	state := f.String("state", "", "private operational state directory")
 	run := f.String("run", "", "existing authorized Maintenance run UUID")
+	socket := f.String("host-socket", "", "private local socket of separately running pinned host")
 	binary := f.String("codex", "codex", "pinned Codex executable")
 	mcp := f.String("mcp-binary", "", "sdp-mcp executable")
 	message := f.String("message", "", "file with exact owner input for launch")
@@ -95,12 +96,20 @@ func ownerCommand(args []string) error {
 	defer stop()
 	ctx, cancel := context.WithTimeout(signalCtx, *timeout)
 	defer cancel()
-	client, e := governancehost.Open(ctx, *binary, p.Root)
+	var client *governancehost.Client
+	if args[0] == "attach" && *socket == "" {
+		return fmt.Errorf("attach requires --host-socket")
+	}
+	if *socket != "" {
+		client, e = governancehost.OpenSocket(ctx, *socket)
+	} else {
+		client, e = governancehost.Open(ctx, *binary, p.Root)
+	}
 	if e != nil {
 		return e
 	}
 	defer client.Close()
-	ctl := &governancecontroller.Controller{Service: service, Host: client, Root: p.Root, StateDir: dir, MCPBinary: *mcp, Epoch: client.Epoch, Sandbox: *sandbox, Approvals: *approvals}
+	ctl := &governancecontroller.Controller{Service: service, Host: client, Root: p.Root, StateDir: dir, MCPBinary: *mcp, HostIdentity: client.HostIdentity, Epoch: client.Epoch, Sandbox: *sandbox, Approvals: *approvals}
 	if args[0] == "recover" {
 		r, e := service.Read(*run)
 		if e != nil {
@@ -132,10 +141,19 @@ func ownerCommand(args []string) error {
 		emit(r)
 		return nil // History reconciliation only; never resume/resend a model turn.
 	}
-	if args[0] != "run" {
+	if args[0] != "run" && args[0] != "attach" {
 		return fmt.Errorf("unknown owner command")
 	}
-	r, e := ctl.Launch(ctx, *run, text)
+	var r governance.Result
+	if args[0] == "attach" {
+		recovery, err := client.PrepareAttachment(ctx, service, *run, p.Root, *approvals)
+		if err != nil {
+			return err
+		}
+		r, e = service.RecordHost(governance.LocalController(), recovery.ReattachRequest(client.HostIdentity))
+	} else {
+		r, e = ctl.Launch(ctx, *run, text)
+	}
 	if e != nil {
 		_, _ = ctl.Disconnect(*run)
 		return e
@@ -186,7 +204,18 @@ func ownerCommand(args []string) error {
 				emit(map[string]any{"error": in.err.Error()})
 				continue
 			}
-			if in.value.Action == "status" {
+			if in.value.Action == "detach" {
+				if client.HostIdentity == "" {
+					emit(map[string]any{"error": "detach requires a separately running socket host"})
+					continue
+				}
+				r, e = ctl.Disconnect(*run)
+				if e != nil {
+					return e
+				}
+				emit(r)
+				return nil
+			} else if in.value.Action == "status" {
 				r, e = service.Read(*run)
 			} else if in.value.Action == "approval" && in.value.Approval != nil {
 				r, e = ctl.Approve(*run, *in.value.Approval, in.exact)
@@ -221,6 +250,20 @@ func ownerCommand(args []string) error {
 				emit(map[string]any{"approval": prompt})
 			}
 			if event.Observation.Kind == "turn.completed" {
+				// A reconnect gap remains explicit. Fetch only terminal history to recover
+				// completed messages omitted by the conservative active snapshot.
+				if args[0] == "attach" {
+					recovery, err := client.PrepareRecovery(ctx, service, *run, r.Run.Attempts[len(r.Run.Attempts)-1].ID)
+					if err != nil {
+						return err
+					}
+					for _, replay := range recovery.Events {
+						r, e = ctl.Observe(*run, replay)
+						if e != nil {
+							return e
+						}
+					}
+				}
 				emit(r)
 				return nil
 			}

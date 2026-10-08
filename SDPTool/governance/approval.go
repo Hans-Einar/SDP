@@ -113,7 +113,7 @@ func approvedRevision(state snapshot, r Run, caller Caller, q TransitionRequest)
 		return false
 	}
 	a := r.Attempts[len(r.Attempts)-1]
-	if a.ID != caller.attemptID || a.Epoch != caller.epoch || a.Status != "running" {
+	if a.ID != caller.attemptID || a.CapabilityEpoch() != caller.epoch || a.Status != "running" {
 		return false
 	}
 	inputID := ""

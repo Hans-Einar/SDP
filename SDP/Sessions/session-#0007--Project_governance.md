@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn: T009 — explicit MCP approval/report verified; PGI3 remains open. S3 is active
+Latest recorded turn: T010 — executing-turn reattachment verified; PGI3 remains open. S3 is active
 under PLAN-SDP-0018; PGI1 core/CLI and PGI2 adapters are verified at their bounded levels.
 The app-server client and complete participating capabilities remain unfinished.
 Sequence only; synthetic dates represent order, not estimates or elapsed time.
@@ -23,7 +23,7 @@ gantt
 | --- | --- | --- | --- | --- |
 | completed | S1 | Recover skills, studies, card dependencies and ownership | Owner request, 2026-10-03 | Assessment below; RGS2 reused |
 | completed | S2 | Design the smallest common routing, run, Session and client contract | Owner continuation, T002 | [PGD1 / PLAN-SDP-0017](../04--Design/SDPTool/ProjectGovernance/Plan.md), contract, acceptance cases and protocol inspection |
-| active | S3 | Deliver one end-to-end workflow through SDPTool and the Codex client | S2 complete; [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) active | PGI1/PGI2 delivered; PGI3-C3 live approval/report verified; reattachment/provenance gaps open |
+| active | S3 | Deliver one end-to-end workflow through SDPTool and the Codex client | S2 complete; [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) active | PGI1/PGI2 delivered; PGI3-C4 live reattachment verified; applicable provenance remains open |
 | planned | S4 | Verify interruption, resume, scope change and evidence disposition | S3 candidate | Evidence required before wider use |
 | planned | S5 | Project recorded activity into the KB043 timeline | Reliable S3/S4 capture and selected rendering scope | Full timeline remains deferred |
 
@@ -34,8 +34,8 @@ gantt
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
 | Snapshot date | 2026-10-08 |
 | Current step | S3 / PGI1-M1 and PGI2-M1 delivered; PGI3 in progress |
-| Proposed next step | PGI3 executing-turn reattachment and applicable role/provenance evidence |
-| Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction |
+| Proposed next step | PGI3 applicable role/skill/context provenance within current delegation rules |
+| Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment |
 
 ## Goal and ownership
 
@@ -451,9 +451,40 @@ unintegrated event-ID collisions are preserved. No merge/push/release is selecte
 This is a manual work summary, not a captured final answer.
 Manual summary; current conversation host IDs/timestamps are not available.
 
+### T010 — 2026-10-08: continue executing-turn reattachment
+
+Owner input summary: continue the selected plan after C3. Recovered clean 95f821f
+in the persistent ProjectGovernance worktree. Reused SDP, Master, Architect,
+Worker, Planning, Verifier, Traceability, document workflow and OpenAI Docs.
+Architect measured the actual local Unix WebSocket transport before selecting
+same-host reattachment with distinct observation and agent capability epochs.
+An isolated command survived connection closure and completed on the same turn
+after subscription from a new connection. The raw proxy and idle-thread resume
+limitations are recorded; neither was treated as passing integration evidence.
+
+Work summary: C4 implements private same-host reattachment with preserved launch
+capability and a new observation epoch. Initial controller trials refused the
+host's socket alias before submission; the measured direct alias is now checked
+alongside private parent/socket ownership and peer process lifetime. Two final
+actual Maintenance journeys passed, one after explicit detach and one after abrupt
+SIGKILL of the controller. Both kept one run/attempt/thread/turn, accepted steering,
+reported through the original MCP capability and preserved excluded files. The
+routine reached verifying, not completed. Gaps remain visible. Affected race,
+compiled CLI, vet and schema checks pass; management/Toolkit and final integrity
+checks accompany the checkpoint. See [C4 evidence](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-C4.md).
+
+S3 stays active. Next: applicable native role/skill/context provenance; the actual
+fixture explicitly lacks installed SDP skills and does not prove skill compliance.
+No delegation or independent review is claimed. PGI4/PGI5 remain planned; broader
+backlog scopes and concurrent shared work are preserved. Historical private event-ID
+collisions still need deliberate integration reconciliation. No merge/push/release
+is selected. This is a manual work summary, not an already captured final response.
+Current conversation host IDs and exact owner timing are unknown.
+
 ## Closeout
 
 The Session remains active. S1/S2 are complete; S3 includes delivered PGI1 core/CLI
-and PGI2 adapters. PGI3-C3 verifies explicit approval/reporting alongside C2 live workflow and mapped
-lost-response recovery. Executing-turn reattachment and applicable provenance
-obligations keep PGI3 open. PGI4/PGI5 and wider capability closure remain planned.
+and PGI2 adapters. PGI3-C4 verifies executing-turn reattachment after graceful and
+abrupt controller loss, alongside C3 approval/reporting and C2 mapped recovery.
+Applicable role/skill/context provenance keeps PGI3 open. PGI4/PGI5 and wider
+capability closure remain planned.

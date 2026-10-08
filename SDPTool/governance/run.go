@@ -165,7 +165,7 @@ func (s *Service) Transition(caller Caller, q TransitionRequest) (Result, error)
 		r, ok := state.Runs[q.RunID]
 		if ok && len(r.Attempts) > 0 {
 			at := r.Attempts[len(r.Attempts)-1]
-			bound = at.ID == caller.attemptID && at.Epoch == caller.epoch && at.InputRevision == r.InputRevision && at.Status != "unknown"
+			bound = at.ID == caller.attemptID && at.CapabilityEpoch() == caller.epoch && at.InputRevision == r.InputRevision && at.Status != "unknown"
 		}
 		if !bound {
 			return out, fail("unauthorized", "agent attempt is absent, superseded or disconnected")

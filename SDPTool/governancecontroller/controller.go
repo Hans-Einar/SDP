@@ -23,9 +23,9 @@ type Host interface {
 }
 
 type Controller struct {
-	Service                                              *governance.Service
-	Host                                                 Host
-	Root, StateDir, MCPBinary, Epoch, Sandbox, Approvals string
+	Service                                                            *governance.Service
+	Host                                                               Host
+	Root, StateDir, MCPBinary, Epoch, Sandbox, Approvals, HostIdentity string
 }
 
 // Retry only bookkeeping rejected before mutation. Never retry a host effect.
@@ -67,7 +67,7 @@ func (c *Controller) record(runID, attemptID, threadID, action string, o governa
 		if e != nil {
 			return r, e
 		}
-		return c.Service.RecordHost(governance.LocalController(), governance.HostRequest{Schema: governance.Schema, ProjectRef: r.ProjectRef, CheckoutID: r.CheckoutID, RunID: runID, OperationID: governancehost.UUID(), ExpectedRevision: r.Run.Revision, InputRevision: r.Run.InputRevision, Action: action, AttemptID: attemptID, HostVersion: governancehost.HostVersion, ThreadID: threadID, Observation: o})
+		return c.Service.RecordHost(governance.LocalController(), governance.HostRequest{HostIdentity: c.HostIdentity, Schema: governance.Schema, ProjectRef: r.ProjectRef, CheckoutID: r.CheckoutID, RunID: runID, OperationID: governancehost.UUID(), ExpectedRevision: r.Run.Revision, InputRevision: r.Run.InputRevision, Action: action, AttemptID: attemptID, HostVersion: governancehost.HostVersion, ThreadID: threadID, Observation: o})
 	})
 }
 func now() string { return time.Now().UTC().Format(time.RFC3339Nano) }

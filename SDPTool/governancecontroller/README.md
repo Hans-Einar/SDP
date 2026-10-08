@@ -165,3 +165,54 @@ arguments. Host effects are never retried by this contention handling.
 Transport loss never resends approval. History recovery does not reconstruct an
 unobserved resolved notification; such a decision stays explicitly uncertain.
 No owner acceptance or canonical Session/card publication follows from an approval.
+
+## Reattach to an executing turn (Linux private socket profile)
+
+The default stdio host is owned by the controller and ends with that process. For
+work that must survive controller loss, explicitly run pinned Codex 0.161.0 in a
+separate terminal, using a private directory owned by your user:
+
+```sh
+mkdir -m 700 /absolute/private-host
+codex app-server --listen unix:///absolute/private-host/host.sock
+```
+
+Start the existing covered run with its normal arguments plus
+`--host-socket /absolute/private-host/host.sock`. The controller connects to that
+server and verifies its reported version; it does not start or stop the server.
+The measured host may create a direct alias into its private runtime directory.
+The alias and target are checked, including private parent ownership, socket type,
+peer credentials and process lifetime. TCP endpoints, indirect aliases, public
+parents and replacement servers are refused. A same-user arbitrary process remains
+outside the local API trust boundary.
+
+Send `{"action":"detach"}` on stdin to record an observation gap and exit while
+the server continues. Unexpected client loss can leave the last snapshot marked
+running; it does not prove continued activity. A new terminal can rejoin the mapped
+turn without submitting a new task:
+
+```sh
+sdp-controller attach --project /absolute/project --state /absolute/private-state \
+  --run RUN_UUID --host-socket /absolute/private-host/host.sock --approvals ask
+```
+
+`attach` verifies the same server, current source coverage and mapped executing
+turn, then subscribes using thread/resume with no configuration overrides. It
+preserves the launch-time agent capability and creates a new observation epoch.
+Owner steering, interruption and new per-request approval replies use that new
+connection. No stale reply or uncertain send is replayed. `--approvals ask` opts
+this connection into presenting supported requests; it does not change the thread's
+host policy or inherit a grant. Select it explicitly again when needed.
+
+Prepared/sending/uncertain inputs or an observed approval with unresolved closure
+prevent attachment. Completed, unloaded or missing work requires `recover` for
+history inspection; it is not silently restarted. A host process restart is a new
+identity and cannot claim to preserve live execution. Recover retains its earlier
+capability-revocation behavior. An attempt originally launched through stdio has no
+socket identity and cannot be retrofitted into this path.
+
+Running snapshots do not finalize incomplete items. Terminal history is replayed
+for completed content, with conflicts refused and duplicates suppressed; the gap
+stays visible. A late terminal transition during attachment is an explicit
+reconciliation condition. The live profile demonstrates immediate reattachment,
+not indefinite unattended execution, approval replay or survival of server failure.

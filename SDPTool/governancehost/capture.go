@@ -148,6 +148,9 @@ func History(t Thread, turnID, epoch string, received time.Time) ([]Event, strin
 		if turn.ID != turnID {
 			continue
 		}
+		if turn.ItemsView != "" && turn.ItemsView != "full" {
+			return nil, "unknown", fmt.Errorf("observation_gap: full mapped-turn history unavailable")
+		}
 		if turn.Status == "inProgress" {
 			return nil, "running", nil
 		} // History can contain incomplete items; do not finalize them.

@@ -493,7 +493,8 @@
             "input.claim",
             "input.ack",
             "input.uncertain",
-            "input.resolve"
+            "input.resolve",
+            "host.reattach"
           ]
         },
         "projectRef": {
@@ -778,6 +779,14 @@
         },
         "lastObservedAt": {
           "type": "string"
+        },
+        "hostIdentity": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "agentEpoch": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
         }
       },
       "required": [
@@ -828,7 +837,8 @@
             "bind",
             "observe",
             "disconnect",
-            "reconcile"
+            "reconcile",
+            "reattach"
           ]
         },
         "attemptId": {
@@ -847,6 +857,10 @@
         },
         "observation": {
           "$ref": "#/$defs/Observation"
+        },
+        "hostIdentity": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
         }
       },
       "required": [

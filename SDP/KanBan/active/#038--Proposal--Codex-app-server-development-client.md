@@ -8,7 +8,7 @@
 | CardState | in-progress |
 | created | 2026-09-28T15:10:13.034937+00:00 |
 | source | Owner conversation 2026-09-28: register app-server-based system development and assess SDPTool MCP |
-| next_review | PGI3-C3 approval/report verified; complete executing-turn reattachment and applicable role/provenance evidence |
+| next_review | PGI3-C4 executing-turn reattachment verified; establish applicable role/skill/context provenance |
 | tags | codex, app-server, client, MCP, supervision, blueprints, observability |
 | Systems | SDPTOOL |
 | PlanId | PLAN-SDP-0018 |
@@ -288,3 +288,11 @@ are planned. Broader KB036/037/042/043 remain separate and unchanged. Session000
 T009 records the continuation and preserves the separate ModelGovernance workstream.
 
 2026-10-07T23:07:29.127244+00:00: EVT-KB-SDP-000316 — PGI3-C3 actual approval/report checkpoint verified; in-progress retained for remaining PGI3 runtime obligations. No full milestone acceptance.
+
+### 2026-10-08 — PGI3-C4 executing-turn checkpoint
+
+EVT-KB-SDP-000318: PGI3-C4 checkpoint verified with original agent capability and same turn; next is applicable role/skill/context provenance. No full PGI3 acceptance.
+[Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-C4.md)
+records graceful and abrupt loss, same-host/turn reattachment, steering, approved
+report and preserved exclusions. CardState remains in-progress. Skill/native role
+provenance, PGI4 publication and PGI5 independent verification remain unfinished.

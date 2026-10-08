@@ -67,6 +67,11 @@ func TestVisibleCaptureAndHistory(t *testing.T) {
 	if e != nil || len(events) != 0 || status != "running" {
 		t.Fatal("partial history finalized", events, status, e)
 	}
+	thread.Turns[0].ItemsView = "summary"
+	if _, _, err := History(thread, "u", epoch, now); err == nil {
+		t.Fatal("summary treated as full turn")
+	}
+	thread.Turns[0].ItemsView = "full"
 	thread.Turns[0].Status = "interrupted"
 	thread.Turns[0].Items = nil
 	events, status, e = History(thread, "u", epoch, now)

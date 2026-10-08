@@ -417,3 +417,50 @@ MCP execution and approval observation. Retry only busy/stale local bookkeeping
 that refused before mutation, bounded to 100 attempts with 20 ms delays. The MCP
 adapter retries busy only, retaining exact arguments and operation ID. It does not
 retry stale semantic operations or host sends. Persistent contention stays explicit.
+
+## PGI3-C4 refinement — executing-turn reattachment, 2026-10-08
+
+PG-A11 requires rejoining execution, not merely reading its eventual history. The
+installed 0.161.0 host was measured with an isolated Unix WebSocket listener:
+a command continued after client closure, and thread/resume subscribed a fresh
+connection to the same in-progress turn and its eventual completion. The raw
+app-server proxy does not translate JSONL into WebSocket frames. An idle thread
+without a persisted turn could not be resumed; do not infer recoverability from
+thread/start alone. Official transport reference:
+https://learn.chatgpt.com/docs/app-server
+
+Select an opt-in private local Unix socket, with an explicitly separate foreground
+Codex server. Keep owned stdio as the default. Use coder/websocket v1.8.15 for
+framing rather than adding a custom execution supervisor. No shared daemon, TCP
+listener, global configuration, experimental API or automatic server restart is
+selected. Losing this client closes only its connection. Server shutdown remains
+an explicit execution boundary.
+
+Bind new socket attempts to the local socket/peer process identity and measured
+host version. Reject another endpoint, replacement server, mismatched thread/turn,
+source drift or unresolved outbound input before reattachment. Subscribe using
+thread/resume with only the mapped thread ID; never send turn/start or overrides.
+A running snapshot establishes status only: incomplete historical items are not
+completed messages. Retain the observation gap and replay completed history when
+available; do not claim uninterrupted coverage.
+
+Separate connection epoch from agent capability epoch for this measured path.
+Only explicit same-host reattachment preserves the launch capability; ordinary
+history recovery retains its existing revocation semantics. Existing attempts
+without a host identity cannot use reattachment. The original agent remains scoped
+to the same latest attempt, assignment and source revision. Old client observations
+and approval replies remain fenced. Unresolved decisions require reconciliation;
+never resend them on reconnect. New approval requests need fresh explicit replies.
+
+Verify a real disposable Maintenance task through final binaries, disconnect while
+executing, attach with a new process, exercise owner steering and a subsequent MCP
+report, and establish one run/attempt/thread/turn with preserved excluded files.
+Negative service/transport tests cover identity substitution and capability fencing.
+This checkpoint does not establish child provenance or independent review.
+
+Actual controller trials revealed that this host creates an absolute socket alias
+in the requested directory, pointing into a private per-user runtime directory.
+Both initial trials refused before any thread submission. The selected refinement
+permits that direct canonical alias only when both parent directories and the
+socket are private and user-owned; indirect aliases and symlink parents refuse.
+Peer process lifetime and socket identity remain bound. No default daemon is used.

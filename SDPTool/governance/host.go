@@ -30,6 +30,8 @@ type Observation struct {
 	ReceivedAt  string       `json:"receivedAt"`
 }
 type Attempt struct {
+	HostIdentity   string        `json:"hostIdentity,omitempty"`
+	AgentEpoch     string        `json:"agentEpoch,omitempty"`
 	LastObservedAt string        `json:"lastObservedAt,omitempty"`
 	EventCount     int           `json:"eventCount,omitempty"`
 	ID             string        `json:"id"`
@@ -43,6 +45,7 @@ type Attempt struct {
 	Events         []Observation `json:"events"`
 }
 type HostRequest struct {
+	HostIdentity     string      `json:"hostIdentity,omitempty"`
 	Schema           string      `json:"schema"`
 	ProjectRef       string      `json:"projectRef"`
 	CheckoutID       string      `json:"checkoutId"`
@@ -55,6 +58,14 @@ type HostRequest struct {
 	HostVersion      string      `json:"hostVersion"`
 	ThreadID         string      `json:"threadId"`
 	Observation      Observation `json:"observation"`
+}
+
+// CapabilityEpoch preserves legacy state decoding; only trusted host operations change it.
+func (a Attempt) CapabilityEpoch() string {
+	if a.AgentEpoch != "" {
+		return a.AgentEpoch
+	}
+	return a.Epoch
 }
 
 func opaque(s string) bool { return s != "" && len(s) <= 256 && !strings.ContainsAny(s, "\x00\r\n") }
@@ -132,14 +143,17 @@ func (s *Service) RecordHost(caller Caller, q HostRequest) (Result, error) {
 	if q.HostVersion != "0.160.1" && q.HostVersion != "0.161.0" {
 		return Result{}, fail("incompatible_profile", "only measured Codex 0.160.1 and 0.161.0 are supported")
 	}
+	if q.HostIdentity != "" && !digestPattern.MatchString(q.HostIdentity) {
+		return Result{}, fail("invalid_request", "invalid host identity")
+	}
 	o := q.Observation
-	if q.Action == "bind" && o.Kind != "bound" || q.Action == "disconnect" && o.Kind != "disconnected" || q.Action == "reconcile" && o.Kind != "reconciled" {
+	if q.Action == "bind" && o.Kind != "bound" || q.Action == "disconnect" && o.Kind != "disconnected" || (q.Action == "reconcile" || q.Action == "reattach") && o.Kind != "reconciled" {
 		return Result{}, fail("invalid_request", "action/observation mismatch")
 	}
 	if q.Action == "observe" && (o.Kind == "bound" || o.Kind == "disconnected" || o.Kind == "reconciled") {
 		return Result{}, fail("invalid_request", "use the matching host operation")
 	}
-	if q.Action != "bind" && q.Action != "observe" && q.Action != "disconnect" && q.Action != "reconcile" {
+	if q.Action != "bind" && q.Action != "observe" && q.Action != "disconnect" && q.Action != "reconcile" && q.Action != "reattach" {
 		return Result{}, fail("invalid_request", "unsupported host operation")
 	}
 	unlock, e := lock(s.state)
@@ -204,7 +218,7 @@ func (s *Service) RecordHost(caller Caller, q HostRequest) (Result, error) {
 				}
 			}
 		}
-		r.Attempts = append(r.Attempts, Attempt{ID: q.AttemptID, HostVersion: q.HostVersion, ThreadID: q.ThreadID, InputRevision: r.InputRevision, Epoch: o.Epoch, Status: "idle", Events: []Observation{}})
+		r.Attempts = append(r.Attempts, Attempt{HostIdentity: q.HostIdentity, AgentEpoch: o.Epoch, ID: q.AttemptID, HostVersion: q.HostVersion, ThreadID: q.ThreadID, InputRevision: r.InputRevision, Epoch: o.Epoch, Status: "idle", Events: []Observation{}})
 		a = len(r.Attempts) - 1
 	} else if a < 0 {
 		return Result{}, fail("missing_coverage", "attempt not bound")
@@ -222,12 +236,50 @@ func (s *Service) RecordHost(caller Caller, q HostRequest) (Result, error) {
 	if q.Action == "observe" && at.Status == "unknown" {
 		return Result{}, fail("reconciliation_required", "disconnected attempt requires observed history")
 	}
-	if q.Action == "reconcile" {
+	if q.Action == "reattach" {
+		if a != len(r.Attempts)-1 || r.State != "running" || at.HostIdentity == "" || at.HostIdentity != q.HostIdentity || at.TurnID == "" || at.TurnID != o.TurnID || o.Status != "running" || (at.Status != "running" && at.Status != "unknown") {
+			return Result{}, fail("unauthorized", "reattachment requires the same active host, attempt and turn")
+		}
+		for _, input := range r.Inputs {
+			if input.State != "acknowledged" {
+				return Result{}, fail("reconciliation_required", "outbound input remains unresolved")
+			}
+		}
+		// A disconnected attempt may still have an unresolved prompt. Do not hide it
+		// by changing epoch, even when no answer was prepared.
+		pending := map[string]bool{}
+		for _, event := range at.Events {
+			if event.Epoch != at.Epoch {
+				continue
+			}
+			if event.Kind == "approval.requested" {
+				pending[event.ItemID] = true
+			}
+			if event.Kind == "approval.resolved" {
+				delete(pending, event.ItemID)
+			}
+		}
+		if len(pending) > 0 {
+			return Result{}, fail("reconciliation_required", "approval closure remains unresolved")
+		}
+		coverage, err := s.Context(r.Selection)
+		if err != nil {
+			return Result{}, err
+		}
+		if coverage.Revision != r.InputRevision || len(coverage.Conditions) > 0 {
+			return Result{}, fail("stale_revision", "reattachment coverage changed")
+		}
+		at.AgentEpoch = at.CapabilityEpoch()
+	}
+	if q.Action == "reconcile" || q.Action == "reattach" {
 		if o.Status == "unknown" {
 			return Result{}, fail("observation_gap", "history does not establish host state")
 		}
 		if at.Epoch != o.Epoch {
 			at.Gap = true
+		}
+		if q.Action == "reconcile" {
+			at.AgentEpoch = o.Epoch
 		}
 		at.Epoch = o.Epoch
 	} else if at.Epoch != o.Epoch {
@@ -248,7 +300,7 @@ func (s *Service) RecordHost(caller Caller, q HostRequest) (Result, error) {
 	duplicate := false
 	if q.Action == "observe" {
 		for _, old := range at.Events {
-			if old.Kind == o.Kind && old.TurnID == o.TurnID && old.ItemID == o.ItemID {
+			if old.Kind == o.Kind && old.TurnID == o.TurnID && old.ItemID == o.ItemID && (!strings.HasPrefix(o.Kind, "approval.") || old.Epoch == o.Epoch) {
 				if (old.ClientID != "" && old.ClientID != o.ClientID) || old.Phase != o.Phase || old.Text != o.Text || old.Status != o.Status || requestDigest(old.Attachments) != requestDigest(o.Attachments) {
 					return Result{}, fail("observation_gap", "conflicting repeated completed item")
 				}

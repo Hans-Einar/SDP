@@ -1,7 +1,7 @@
 # ProjectGovernance app-server adapter — PGI2
 
-The package owns a local stdio app-server process, selected cwd and bounded JSON
-transport. New connections require **codex-cli 0.161.0** (measured in PGI3-C2). Typed request/result projections
+The default transport owns a local stdio app-server process, selected cwd and bounded JSON
+transport. PGI3-C4 optionally connects to a separately running private socket host. New connections require **codex-cli 0.161.0** (measured in PGI3-C2). Typed request/result projections
 were derived from that executable's generated default schemas; unknown optional
 host fields are not persisted. Malformed JSON, duplicate keys, invalid UTF-8 and
 frames over 1 MiB refuse. The PGI3 [owner controller candidate](../governancecontroller/README.md) adds
@@ -46,8 +46,9 @@ governance.RecordHost, then uses Binding.Request to prepare durable operation ID
 Persist each request intent before submission and retry that exact request after
 an uncertain write. The core preserves immutable receipts, attempt mappings,
 completed-item deduplication, conflicting replay refusals and paginated reads.
-Read-only observer closure does not mutate execution state. Lost transport must be
-recorded as disconnected/unknown by the owning controller. The PGI3 controller candidate owns that loop; live workflow verification is open.
+Read-only observer closure does not mutate execution state. Detected transport loss is recorded as disconnected/unknown by the owning controller.
+An abrupt controller kill can leave an as-of running snapshot; reattachment must
+measure the actual mapped turn before continuing observation.
 
 PrepareRecovery reads the already mapped thread and projects its recorded turn;
 missing/uncertain history refuses. ReconcileRequest records observed state and the
@@ -64,9 +65,9 @@ changes a Session identity or treats turn completion as SDP acceptance.
 
 Real negotiation proves initialization, account-mode inspection and MCP tool
 discovery. Recorded fixtures prove capture, loss, replay, bounded input and recovery
-guards. They do not prove reconnect to an executing model turn, native child
-provenance, full controller-loop recovery or the complete owner workflow. Those
-remain PGI3–PGI5. Automatic project-journal publication remains PGI4. These commands
+guards. PGI3-C4 separately verifies actual executing-turn reattachment after graceful
+detach and abrupt controller loss. Native child/skill provenance, independent
+review and the complete owner-to-evidence workflow remain PGI3–PGI5. Automatic project-journal publication remains PGI4. These commands
 are repository build targets, not a published installer/release inventory.
 
 Protocol references: [OpenAI app-server](https://learn.chatgpt.com/docs/app-server),
@@ -92,3 +93,17 @@ Up to 16 pending requests share the existing bounded observation queue. Replies
 omit persistence metadata. Only serverRequest/resolved establishes observed closure.
 Actual schema export includes granular approval policy, but the host gates it on
 experimentalApi; explicit ask uses the stable on-request/user path instead.
+
+PGI3-C4 adds an optional Linux private Unix WebSocket connection using
+coder/websocket v1.8.15. It keeps JSON frame limits, strict wire validation and
+visible-event filtering. The initialize user agent must report the measured host
+version. Socket identity combines requested path, socket inode/creation metadata,
+peer user/process/start time and boot identity; it is a same-host continuity check,
+not a credential against arbitrary same-user processes. Close only closes the
+connection. The separately launched server remains explicitly owned by its caller.
+
+PrepareAttachment preflights the covered run and unresolved inputs/approvals before
+reading and resubscribing to the one mapped active thread. thread/resume receives
+only threadId. No turn/start, permission override or lost-request replay is sent.
+Missing/full-history coverage and a completion race refuse explicitly. A new
+connection epoch retains a visible gap even after terminal-history replay.

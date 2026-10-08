@@ -1,0 +1,2594 @@
+{
+  "schemaVersion": "1.0",
+  "milestone": "PGI3-M1-C4",
+  "localDate": "2026-10-08",
+  "recordedAt": "2026-10-08T15:46:29.121589+00:00",
+  "baseCommit": "95f821fcf8c7f3327fe627c5ccc69f436b8f3dac",
+  "files": [
+    {
+      "path": "SDPTool/cmd/sdp-controller/main.go",
+      "sha256": "c97aca223a0035fd5a86261caf7449f0866922b6ed783dd58f8d82cfe52ac45b"
+    },
+    {
+      "path": "SDPTool/cmd/sdp-controller/session.go",
+      "sha256": "4c0af387180e3ed3e6d668cf15510cd7ae4adb3383d6697145c8f318b3e1897b"
+    },
+    {
+      "path": "SDPTool/go.mod",
+      "sha256": "e1e434779c9b8ed69d61626ee66103762b0692ff145dd1f5cb580a4c5d7ecf2e"
+    },
+    {
+      "path": "SDPTool/go.sum",
+      "sha256": "b17de8bdf2c18ab40477b743c15ef494795aaebe18bc9eef3948ffed4cdb74e4"
+    },
+    {
+      "path": "SDPTool/governance/README.md",
+      "sha256": "b7fa41fd6ad299fa38fefc752a74e42a499e010d3ac48ed43b4c4eea689fb879"
+    },
+    {
+      "path": "SDPTool/governance/approval.go",
+      "sha256": "e9a661e1ce49e687e15d12d6ffb07fb8c54f5e821fc575f77b5793c60ddd7678"
+    },
+    {
+      "path": "SDPTool/governance/host.go",
+      "sha256": "198399ff1d1506585610f03bfec2daa4261a1e10acefbfd63ef243cbb8d33597"
+    },
+    {
+      "path": "SDPTool/governance/reattach_test.go",
+      "sha256": "8774a590200d84060b8085473e792a4451053918c71839da7bed2b5eedc3c6b5"
+    },
+    {
+      "path": "SDPTool/governance/run.go",
+      "sha256": "66ea103380e5e23729165f44a3a07d668a596539ed11ffdffc80f73069fe958f"
+    },
+    {
+      "path": "SDPTool/governance/schema.json",
+      "sha256": "64bb0b8cd31e65362a863f707cec8fd20de876b9c717829b03d8119f0813deb5"
+    },
+    {
+      "path": "SDPTool/governancecontroller/README.md",
+      "sha256": "78d8dbf32718dc4ae10f294877ad2f3fb371dc18fad1183a59ef1593757e10fd"
+    },
+    {
+      "path": "SDPTool/governancecontroller/attach_linux_test.go",
+      "sha256": "5fd70dec9c1123b60a4b435747afc702a8080d3ed95550e51326af7eed9b527d"
+    },
+    {
+      "path": "SDPTool/governancecontroller/controller.go",
+      "sha256": "09fb288084e7358cb0937616f33e90d749b2ec81ef9f3ae68570a1452a8e103e"
+    },
+    {
+      "path": "SDPTool/governancehost/README.md",
+      "sha256": "2e31253112088bf2222ad1e9a6c4a9b57871560faf8b59f9376316fe54abf301"
+    },
+    {
+      "path": "SDPTool/governancehost/attach.go",
+      "sha256": "1345d570c117a68d71d1596777aebfc9321afcab5769410231ae552e49c10082"
+    },
+    {
+      "path": "SDPTool/governancehost/capture.go",
+      "sha256": "9fbfbcf8f38a7c77dc77c88b7dce870da9cef251646b59e9f43dc6551935df68"
+    },
+    {
+      "path": "SDPTool/governancehost/capture_test.go",
+      "sha256": "00854eb6c7f8d0c4c39a8cab155a89d0aa950f44d58a238c029b78bda6bb04bd"
+    },
+    {
+      "path": "SDPTool/governancehost/client.go",
+      "sha256": "5aa6954fe94d44a07bf3fc9ad59eeb6b8f199039f0c137a242f357638907f6d0"
+    },
+    {
+      "path": "SDPTool/governancehost/socket_linux.go",
+      "sha256": "50eed0a7013f3cba7ca30cddcb162c5843c7db47630f7174ac4f4df8512eac20"
+    },
+    {
+      "path": "SDPTool/governancehost/socket_linux_test.go",
+      "sha256": "12c28c14f1d017be1a164b5788209369d19bfea9b911092c0af27366659ed111"
+    },
+    {
+      "path": "SDPTool/governancehost/socket_other.go",
+      "sha256": "11ba0b36a34b17f5ee3c66dedc07e9b56b839c2687bdb85a879c7b0081084ac4"
+    }
+  ],
+  "fileSetDigest": "b4cb4cc97cd3227a16c56bb29d82ec36f1b183a6a033a8da0a6555e5f7aa69b4",
+  "fileSetDigestFormat": "SHA-256 of compact sorted-key JSON files array",
+  "environment": {
+    "go": "go version go1.27.1 linux/amd64",
+    "host": "codex-cli 0.161.0",
+    "websocket": "github.com/coder/websocket v1.8.15",
+    "platform": "Linux; private local Unix WebSocket socket; existing managed ChatGPT account",
+    "nativeDelegation": false,
+    "independentReview": false
+  },
+  "binaries": {
+    "sdp-controller": "2e0c26732dce6437ab8667a201e6a862167766a1a9f6ff2db70f3196343e4bdc",
+    "sdp-mcp": "9bd964dabe770e18d9c85b2bae71cc4817ca79ea3a22db12d26e75dd0686ec7d",
+    "sdptool": "e9d62ff22f85238f090fcce1ba49304263cd13fa2d6bf42c965b52e9a2d6dc34"
+  },
+  "initialFailures": [
+    {
+      "trial": "trial1",
+      "modelSubmitted": false,
+      "error": "host socket must not traverse symlinks",
+      "cause": "Pinned host creates direct private socket alias; initial overly strict alias refusal"
+    },
+    {
+      "trial": "trial2",
+      "modelSubmitted": false,
+      "error": "host socket must not traverse symlinks",
+      "cause": "Pinned host creates direct private socket alias; initial overly strict alias refusal"
+    }
+  ],
+  "trials": [
+    {
+      "mode": "explicit-detach",
+      "runId": "11278174-9624-44a2-984e-1b4d5199db63",
+      "finalStatus": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "read",
+        "projectRef": "pgi3-live",
+        "checkoutId": "297c5a38-a0f1-4beb-a9db-b4c84d88fe6f",
+        "operationId": "",
+        "run": {
+          "inputs": [
+            {
+              "contentOmitted": true,
+              "id": "80f89025-e4ff-4d3c-81cb-03a40c123d85",
+              "kind": "launch",
+              "text": "",
+              "payload": "",
+              "attemptId": "6205bd47-f0da-415b-861f-f34154a743f2",
+              "epoch": "26dd0f49-4f3e-456e-b5b7-5af26295a6af",
+              "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+              "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+              "state": "acknowledged",
+              "receivedAt": "2026-10-08T15:38:00.808499138Z"
+            },
+            {
+              "contentOmitted": true,
+              "id": "dacc5b4f-6c77-49c4-aed2-1b44714b9182",
+              "kind": "steer",
+              "text": "",
+              "payload": "",
+              "attemptId": "6205bd47-f0da-415b-861f-f34154a743f2",
+              "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+              "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+              "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+              "state": "acknowledged",
+              "receivedAt": "2026-10-08T15:38:08.914466719Z"
+            },
+            {
+              "contentOmitted": true,
+              "id": "46bfde62-fc1d-4a53-a9cd-8fdc64211e40",
+              "kind": "approval",
+              "text": "",
+              "payload": "",
+              "attemptId": "6205bd47-f0da-415b-861f-f34154a743f2",
+              "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+              "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+              "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+              "state": "acknowledged",
+              "receivedAt": "2026-10-08T15:39:22.390950961Z"
+            }
+          ],
+          "attempts": [
+            {
+              "hostIdentity": "0b08f198ce2a4c4c5953aa0b020d327b5756569dc0d95277f8c4f5351a0123e7",
+              "agentEpoch": "26dd0f49-4f3e-456e-b5b7-5af26295a6af",
+              "lastObservedAt": "2026-10-08T15:39:27.683356859Z",
+              "eventCount": 25,
+              "id": "6205bd47-f0da-415b-861f-f34154a743f2",
+              "hostVersion": "0.161.0",
+              "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+              "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+              "inputRevision": "24cd5f98db668b3a78d97b118cdfb073c35da45a58d3c7b52fbaef17c5f1a517",
+              "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+              "status": "completed",
+              "gap": true,
+              "events": []
+            }
+          ],
+          "id": "11278174-9624-44a2-984e-1b4d5199db63",
+          "revision": 57,
+          "requestId": "1a0efb71-a3cf-4547-b571-81489a0aadf7",
+          "state": "verifying",
+          "step": "implement",
+          "inputRevision": "24cd5f98db668b3a78d97b118cdfb073c35da45a58d3c7b52fbaef17c5f1a517",
+          "selection": {
+            "card": "SDP/KanBan/active/card.md",
+            "plan": "SDP/Maintenance/Plan.md",
+            "session": "SDP/Sessions/session.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Fix NormalizeLabel Unicode boundary whitespace while preserving interior content; verify with Go tests",
+            "writablePaths": [
+              "normalize.go",
+              "normalize_test.go"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "AGENTS.md",
+              "go.mod",
+              "unrelated.txt"
+            ]
+          },
+          "routine": {
+            "id": "maintenance",
+            "version": "0.1",
+            "steps": [
+              "implement",
+              "verify",
+              "review",
+              "record"
+            ],
+            "completion": "candidate evidence, applicable independent review and checked publication required"
+          },
+          "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+          "reason": "Unicode normalization verified after PGI3-C4 reattachment."
+        },
+        "coverage": "known"
+      },
+      "beforeDisconnect": {
+        "id": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+        "status": {
+          "type": "active",
+          "activeFlags": []
+        },
+        "turns": [
+          {
+            "id": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+            "status": "inProgress",
+            "items": [
+              {
+                "id": "01a11c2a-1b1a-7db0-9520-5cfc209cf8bd",
+                "type": "userMessage",
+                "status": null,
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "msg_0736ad832d9bdb88016ac7b8de9bd081919d333ec61c13d26d",
+                "type": "agentMessage",
+                "status": null,
+                "server": null,
+                "tool": null,
+                "error": null
+              }
+            ]
+          }
+        ]
+      },
+      "hostSummary": {
+        "id": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+        "status": {
+          "type": "idle"
+        },
+        "turns": [
+          {
+            "id": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+            "status": "completed",
+            "items": [
+              {
+                "id": "01a11c2a-1b1a-7db0-9520-5cfc209cf8bd",
+                "type": "userMessage",
+                "status": null,
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "msg_0736ad832d9bdb88016ac7b8de9bd081919d333ec61c13d26d",
+                "type": "agentMessage",
+                "status": null,
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "01a11c2a-3077-78c2-b776-20123e56ec56",
+                "type": "userMessage",
+                "status": null,
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "exec-b24c0985-d18f-4127-be2e-66c00b14f825",
+                "type": "mcpToolCall",
+                "status": "completed",
+                "server": "sdp_governance",
+                "tool": "run_read",
+                "error": null
+              },
+              {
+                "id": "exec-6d84ef63-7e32-4c84-b0f2-0d6238ae3432",
+                "type": "commandExecution",
+                "status": "completed",
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "exec-81f0f3bd-15ae-4bc1-b8ab-a28e4b7edfaa",
+                "type": "commandExecution",
+                "status": "completed",
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "exec-1e58f167-04e6-4cd7-9438-d736754e3bdc",
+                "type": "commandExecution",
+                "status": "completed",
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "rs_0736ad832d9bdb88016ac7b903a3cc819197dc442e95a02e4c",
+                "type": "reasoning",
+                "status": null,
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "msg_0736ad832d9bdb88016ac7b903d0808191a5b475c9e7876fd0",
+                "type": "agentMessage",
+                "status": null,
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "exec-4c4812e4-f365-43cf-8445-2297ab78e2e5",
+                "type": "commandExecution",
+                "status": "failed",
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "exec-41ac7af8-d310-438e-9d62-99600c50d214",
+                "type": "commandExecution",
+                "status": "completed",
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "rs_0736ad832d9bdb88016ac7b90a3e7c8191a8dd6df7fb977d95",
+                "type": "reasoning",
+                "status": null,
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "exec-4a88d0bf-d865-4c3a-a3c6-ad3bb6aeb061",
+                "type": "commandExecution",
+                "status": "failed",
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "rs_0736ad832d9bdb88016ac7b91135e4819183a28ea8002c7502",
+                "type": "reasoning",
+                "status": null,
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "exec-40fecb42-73e8-46ba-b72f-0686d7744532",
+                "type": "fileChange",
+                "status": "completed",
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "exec-b904be6f-bcf3-4b92-85a8-82b0fed4a9ac",
+                "type": "commandExecution",
+                "status": "failed",
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "exec-c4a118e0-31d6-43f6-900b-12bc0067332f",
+                "type": "fileChange",
+                "status": "completed",
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "exec-926e99e1-6862-4db4-8af5-de700b1c04d8",
+                "type": "commandExecution",
+                "status": "completed",
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "exec-41081f18-0e7d-4254-9585-25f4fc250b3d",
+                "type": "commandExecution",
+                "status": "completed",
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "rs_0736ad832d9bdb88016ac7b9246d7c81918b34c59d5be97d0a",
+                "type": "reasoning",
+                "status": null,
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "msg_0736ad832d9bdb88016ac7b92487a881919cd8a5aa6f006d84",
+                "type": "agentMessage",
+                "status": null,
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "exec-902be0fc-85cc-42c4-9949-e4b198d8c17e",
+                "type": "mcpToolCall",
+                "status": "completed",
+                "server": "sdp_governance",
+                "tool": "run_read",
+                "error": null
+              },
+              {
+                "id": "exec-d8b04fc9-ed03-4e77-b5d0-ae94f56c9fff",
+                "type": "mcpToolCall",
+                "status": "completed",
+                "server": "sdp_governance",
+                "tool": "run_transition",
+                "error": null
+              },
+              {
+                "id": "msg_0736ad832d9bdb88016ac7b92cb3dc8191bf35104c6f2aebe4",
+                "type": "agentMessage",
+                "status": null,
+                "server": null,
+                "tool": null,
+                "error": null
+              }
+            ]
+          }
+        ]
+      },
+      "driverDecision": {
+        "action": "approval",
+        "approval": {
+          "requestId": "0",
+          "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+          "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+          "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+          "decision": "accept"
+        }
+      },
+      "events": {
+        "launch-events.ndjson": [
+          {
+            "schema": "sdp-project-governance/0.1",
+            "operation": "input.ack",
+            "projectRef": "pgi3-live",
+            "checkoutId": "297c5a38-a0f1-4beb-a9db-b4c84d88fe6f",
+            "operationId": "8be88a5b-2223-4baa-a59f-fa6b1a627d96",
+            "run": {
+              "inputs": [
+                {
+                  "contentOmitted": true,
+                  "id": "80f89025-e4ff-4d3c-81cb-03a40c123d85",
+                  "kind": "launch",
+                  "text": "",
+                  "payload": "",
+                  "attemptId": "6205bd47-f0da-415b-861f-f34154a743f2",
+                  "epoch": "26dd0f49-4f3e-456e-b5b7-5af26295a6af",
+                  "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+                  "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+                  "state": "acknowledged",
+                  "receivedAt": "2026-10-08T15:38:00.808499138Z"
+                }
+              ],
+              "attempts": [
+                {
+                  "hostIdentity": "0b08f198ce2a4c4c5953aa0b020d327b5756569dc0d95277f8c4f5351a0123e7",
+                  "agentEpoch": "26dd0f49-4f3e-456e-b5b7-5af26295a6af",
+                  "lastObservedAt": "2026-10-08T15:38:01.082153859Z",
+                  "eventCount": 2,
+                  "id": "6205bd47-f0da-415b-861f-f34154a743f2",
+                  "hostVersion": "0.161.0",
+                  "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+                  "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+                  "inputRevision": "24cd5f98db668b3a78d97b118cdfb073c35da45a58d3c7b52fbaef17c5f1a517",
+                  "epoch": "26dd0f49-4f3e-456e-b5b7-5af26295a6af",
+                  "status": "running",
+                  "gap": false,
+                  "events": []
+                }
+              ],
+              "id": "11278174-9624-44a2-984e-1b4d5199db63",
+              "revision": 7,
+              "requestId": "1a0efb71-a3cf-4547-b571-81489a0aadf7",
+              "state": "running",
+              "step": "implement",
+              "inputRevision": "24cd5f98db668b3a78d97b118cdfb073c35da45a58d3c7b52fbaef17c5f1a517",
+              "selection": {
+                "card": "SDP/KanBan/active/card.md",
+                "plan": "SDP/Maintenance/Plan.md",
+                "session": "SDP/Sessions/session.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Fix NormalizeLabel Unicode boundary whitespace while preserving interior content; verify with Go tests",
+                "writablePaths": [
+                  "normalize.go",
+                  "normalize_test.go"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "AGENTS.md",
+                  "go.mod",
+                  "unrelated.txt"
+                ]
+              },
+              "routine": {
+                "id": "maintenance",
+                "version": "0.1",
+                "steps": [
+                  "implement",
+                  "verify",
+                  "review",
+                  "record"
+                ],
+                "completion": "candidate evidence, applicable independent review and checked publication required"
+              },
+              "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+              "reason": "owner selected fresh bounded Master attempt"
+            },
+            "coverage": "known"
+          },
+          {
+            "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+            "observation": {
+              "kind": "turn.started",
+              "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+              "itemId": "",
+              "phase": "",
+              "text": "",
+              "status": "running",
+              "epoch": "26dd0f49-4f3e-456e-b5b7-5af26295a6af",
+              "receivedAt": "2026-10-08T15:38:01.319653633Z"
+            }
+          },
+          {
+            "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+            "observation": {
+              "clientId": "80f89025-e4ff-4d3c-81cb-03a40c123d85",
+              "kind": "userMessage",
+              "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+              "itemId": "01a11c2a-1b1a-7db0-9520-5cfc209cf8bd",
+              "phase": "",
+              "text": "{\"approvalMode\":\"ask\",\"assignment\":{\"outcome\":\"Fix NormalizeLabel Unicode boundary whitespace while preserving interior content; verify with Go tests\",\"writablePaths\":[\"normalize.go\",\"normalize_test.go\"],\"excludedPaths\":[\"SDP\",\"AGENTS.md\",\"go.mod\",\"unrelated.txt\"]},\"context\":{\"schema\":\"sdp-project-governance/0.1\",\"operation\":\"context\",\"projectRef\":\"pgi3-live\",\"root\":\"/tmp/sdp-pgi3-c4/trial3/project\",\"checkoutId\":\"297c5a38-a0f1-4beb-a9db-b4c84d88fe6f\",\"revision\":\"24cd5f98db668b3a78d97b118cdfb073c35da45a58d3c7b52fbaef17c5f1a517\",\"selection\":{\"card\":\"SDP/KanBan/active/card.md\",\"plan\":\"SDP/Maintenance/Plan.md\",\"session\":\"SDP/Sessions/session.md\",\"authority\":\"SDP/authority.md\",\"step\":\"S1\"},\"sources\":[{\"path\":\"AGENTS.md\",\"sha256\":\"08215fd6800033dc25c64adfc98a15513934a606620a6bf131df0419b30924db\"},{\"path\":\"SDP/KanBan/active/card.md\",\"sha256\":\"68dfb40e92a4562d8797727ca8398cf2132cce31cf7ee395ab0ebb844caf8072\"},{\"path\":\"SDP/Maintenance/Plan.md\",\"sha256\":\"ece9873bd0c32d327954ba4c7d82cd5c00d6c6e5c53130d48d0ca61b88bf0b51\"},{\"path\":\"SDP/ProjectManagement/Ledger.ndjson\",\"sha256\":\"23273b4c57db04b637df7162d6706281d3d62a02a401ffe748f472c5e9f67541\"},{\"path\":\"SDP/SDP-project.manifest.yaml\",\"sha256\":\"79bc6ab712a7ebce35a8bc92cb9517a1ec7e7df1c94bde0557e80449add64023\"},{\"path\":\"SDP/Sessions/session.md\",\"sha256\":\"7831e5b1a79e20fe5acec68fa28349ebfa874cfb597c2b8498dee07eb93a00b6\"},{\"path\":\"SDP/authority.md\",\"sha256\":\"58aa3112c402b0631d769783f64922ae440e192feaa3e00608846779d0864076\"}],\"coverage\":\"known\",\"conditions\":[],\"cardId\":\"KB-PILOT-001\",\"planId\":\"MAINT-PILOT-0001\",\"sessionId\":\"SESSION-PILOT-0001\"},\"instructions\":\"You are the fresh Master for one explicitly authorized SDP Maintenance assignment. Read the selected Session, authority, plan, card, AGENTS and relevant SDP skills before acting. Preserve writable/excluded boundaries and unrelated work. Native delegation is not granted by this launch; do not spawn children. Report candidate, tests, remaining gaps and observed outcome. Agent claims do not grant owner approval or independent review. Do not publish canonical management/Session records or mark the work complete; evidence publication is a later controller capability. Use assignment-bound MCP reads and report/fail/scope-change only.\",\"ownerInput\":\"First send commentary REATTACH_WINDOW, then run sleep 25 as a transport-test synchronization command before inspecting or editing code. After that, fix the covered NormalizeLabel defect and its tests. Preserve interior whitespace and case. First read the governing records and inspect the current code. Use assignment-bound MCP run_read to inspect your run. Work only within the stored assignment. Run go test ./... and return exact observed results and any gaps. Do not spawn agents, publish records, commit or mark the work completed.\\n\\nAfter testing, call run_read immediately before one run_transition action report. Use exact current checkoutId, projectRef, inputRevision, runId and expectedRevision from run_read. Use operationId 009824d7-8eca-40ab-9276-d5582cdcc525. Reason: Unicode normalization verified after PGI3-C4 reattachment. Wait for the tool result. Do not retry a refused report. This is a disposable test-driver scenario, not owner acceptance.\\n\",\"runId\":\"11278174-9624-44a2-984e-1b4d5199db63\",\"sandbox\":\"workspace-write\"}",
+              "status": "",
+              "epoch": "26dd0f49-4f3e-456e-b5b7-5af26295a6af",
+              "receivedAt": "2026-10-08T15:38:03.95934404Z"
+            }
+          },
+          {
+            "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+            "observation": {
+              "kind": "agentMessage",
+              "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+              "itemId": "msg_0736ad832d9bdb88016ac7b8de9bd081919d333ec61c13d26d",
+              "phase": "commentary",
+              "text": "REATTACH_WINDOW\n",
+              "status": "",
+              "epoch": "26dd0f49-4f3e-456e-b5b7-5af26295a6af",
+              "receivedAt": "2026-10-08T15:38:06.759878665Z"
+            }
+          },
+          {
+            "schema": "sdp-project-governance/0.1",
+            "operation": "host.disconnect",
+            "projectRef": "pgi3-live",
+            "checkoutId": "297c5a38-a0f1-4beb-a9db-b4c84d88fe6f",
+            "operationId": "23e97aab-af6b-46df-bd67-0fad29431244",
+            "run": {
+              "inputs": [
+                {
+                  "contentOmitted": true,
+                  "id": "80f89025-e4ff-4d3c-81cb-03a40c123d85",
+                  "kind": "launch",
+                  "text": "",
+                  "payload": "",
+                  "attemptId": "6205bd47-f0da-415b-861f-f34154a743f2",
+                  "epoch": "26dd0f49-4f3e-456e-b5b7-5af26295a6af",
+                  "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+                  "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+                  "state": "acknowledged",
+                  "receivedAt": "2026-10-08T15:38:00.808499138Z"
+                }
+              ],
+              "attempts": [
+                {
+                  "hostIdentity": "0b08f198ce2a4c4c5953aa0b020d327b5756569dc0d95277f8c4f5351a0123e7",
+                  "agentEpoch": "26dd0f49-4f3e-456e-b5b7-5af26295a6af",
+                  "lastObservedAt": "2026-10-08T15:38:08.848087164Z",
+                  "eventCount": 5,
+                  "id": "6205bd47-f0da-415b-861f-f34154a743f2",
+                  "hostVersion": "0.161.0",
+                  "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+                  "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+                  "inputRevision": "24cd5f98db668b3a78d97b118cdfb073c35da45a58d3c7b52fbaef17c5f1a517",
+                  "epoch": "26dd0f49-4f3e-456e-b5b7-5af26295a6af",
+                  "status": "unknown",
+                  "gap": true,
+                  "events": []
+                }
+              ],
+              "id": "11278174-9624-44a2-984e-1b4d5199db63",
+              "revision": 11,
+              "requestId": "1a0efb71-a3cf-4547-b571-81489a0aadf7",
+              "state": "running",
+              "step": "implement",
+              "inputRevision": "24cd5f98db668b3a78d97b118cdfb073c35da45a58d3c7b52fbaef17c5f1a517",
+              "selection": {
+                "card": "SDP/KanBan/active/card.md",
+                "plan": "SDP/Maintenance/Plan.md",
+                "session": "SDP/Sessions/session.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Fix NormalizeLabel Unicode boundary whitespace while preserving interior content; verify with Go tests",
+                "writablePaths": [
+                  "normalize.go",
+                  "normalize_test.go"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "AGENTS.md",
+                  "go.mod",
+                  "unrelated.txt"
+                ]
+              },
+              "routine": {
+                "id": "maintenance",
+                "version": "0.1",
+                "steps": [
+                  "implement",
+                  "verify",
+                  "review",
+                  "record"
+                ],
+                "completion": "candidate evidence, applicable independent review and checked publication required"
+              },
+              "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+              "reason": "owner selected fresh bounded Master attempt"
+            },
+            "coverage": "known"
+          }
+        ],
+        "attach-events.ndjson": [
+          {
+            "schema": "sdp-project-governance/0.1",
+            "operation": "host.reattach",
+            "projectRef": "pgi3-live",
+            "checkoutId": "297c5a38-a0f1-4beb-a9db-b4c84d88fe6f",
+            "operationId": "d80252f8-b42f-4c63-8593-ced3d5e49a06",
+            "run": {
+              "inputs": [
+                {
+                  "contentOmitted": true,
+                  "id": "80f89025-e4ff-4d3c-81cb-03a40c123d85",
+                  "kind": "launch",
+                  "text": "",
+                  "payload": "",
+                  "attemptId": "6205bd47-f0da-415b-861f-f34154a743f2",
+                  "epoch": "26dd0f49-4f3e-456e-b5b7-5af26295a6af",
+                  "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+                  "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+                  "state": "acknowledged",
+                  "receivedAt": "2026-10-08T15:38:00.808499138Z"
+                }
+              ],
+              "attempts": [
+                {
+                  "hostIdentity": "0b08f198ce2a4c4c5953aa0b020d327b5756569dc0d95277f8c4f5351a0123e7",
+                  "agentEpoch": "26dd0f49-4f3e-456e-b5b7-5af26295a6af",
+                  "lastObservedAt": "2026-10-08T15:38:08.897573732Z",
+                  "eventCount": 6,
+                  "id": "6205bd47-f0da-415b-861f-f34154a743f2",
+                  "hostVersion": "0.161.0",
+                  "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+                  "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+                  "inputRevision": "24cd5f98db668b3a78d97b118cdfb073c35da45a58d3c7b52fbaef17c5f1a517",
+                  "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+                  "status": "running",
+                  "gap": true,
+                  "events": []
+                }
+              ],
+              "id": "11278174-9624-44a2-984e-1b4d5199db63",
+              "revision": 12,
+              "requestId": "1a0efb71-a3cf-4547-b571-81489a0aadf7",
+              "state": "running",
+              "step": "implement",
+              "inputRevision": "24cd5f98db668b3a78d97b118cdfb073c35da45a58d3c7b52fbaef17c5f1a517",
+              "selection": {
+                "card": "SDP/KanBan/active/card.md",
+                "plan": "SDP/Maintenance/Plan.md",
+                "session": "SDP/Sessions/session.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Fix NormalizeLabel Unicode boundary whitespace while preserving interior content; verify with Go tests",
+                "writablePaths": [
+                  "normalize.go",
+                  "normalize_test.go"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "AGENTS.md",
+                  "go.mod",
+                  "unrelated.txt"
+                ]
+              },
+              "routine": {
+                "id": "maintenance",
+                "version": "0.1",
+                "steps": [
+                  "implement",
+                  "verify",
+                  "review",
+                  "record"
+                ],
+                "completion": "candidate evidence, applicable independent review and checked publication required"
+              },
+              "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+              "reason": "owner selected fresh bounded Master attempt"
+            },
+            "coverage": "known"
+          },
+          {
+            "schema": "sdp-project-governance/0.1",
+            "operation": "input.ack",
+            "projectRef": "pgi3-live",
+            "checkoutId": "297c5a38-a0f1-4beb-a9db-b4c84d88fe6f",
+            "operationId": "9f9716c4-a64a-484e-9b44-9e6addd82228",
+            "run": {
+              "inputs": [
+                {
+                  "contentOmitted": true,
+                  "id": "80f89025-e4ff-4d3c-81cb-03a40c123d85",
+                  "kind": "launch",
+                  "text": "",
+                  "payload": "",
+                  "attemptId": "6205bd47-f0da-415b-861f-f34154a743f2",
+                  "epoch": "26dd0f49-4f3e-456e-b5b7-5af26295a6af",
+                  "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+                  "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+                  "state": "acknowledged",
+                  "receivedAt": "2026-10-08T15:38:00.808499138Z"
+                },
+                {
+                  "contentOmitted": true,
+                  "id": "dacc5b4f-6c77-49c4-aed2-1b44714b9182",
+                  "kind": "steer",
+                  "text": "",
+                  "payload": "",
+                  "attemptId": "6205bd47-f0da-415b-861f-f34154a743f2",
+                  "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+                  "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+                  "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+                  "state": "acknowledged",
+                  "receivedAt": "2026-10-08T15:38:08.914466719Z"
+                }
+              ],
+              "attempts": [
+                {
+                  "hostIdentity": "0b08f198ce2a4c4c5953aa0b020d327b5756569dc0d95277f8c4f5351a0123e7",
+                  "agentEpoch": "26dd0f49-4f3e-456e-b5b7-5af26295a6af",
+                  "lastObservedAt": "2026-10-08T15:38:08.897573732Z",
+                  "eventCount": 6,
+                  "id": "6205bd47-f0da-415b-861f-f34154a743f2",
+                  "hostVersion": "0.161.0",
+                  "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+                  "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+                  "inputRevision": "24cd5f98db668b3a78d97b118cdfb073c35da45a58d3c7b52fbaef17c5f1a517",
+                  "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+                  "status": "running",
+                  "gap": true,
+                  "events": []
+                }
+              ],
+              "id": "11278174-9624-44a2-984e-1b4d5199db63",
+              "revision": 15,
+              "requestId": "1a0efb71-a3cf-4547-b571-81489a0aadf7",
+              "state": "running",
+              "step": "implement",
+              "inputRevision": "24cd5f98db668b3a78d97b118cdfb073c35da45a58d3c7b52fbaef17c5f1a517",
+              "selection": {
+                "card": "SDP/KanBan/active/card.md",
+                "plan": "SDP/Maintenance/Plan.md",
+                "session": "SDP/Sessions/session.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Fix NormalizeLabel Unicode boundary whitespace while preserving interior content; verify with Go tests",
+                "writablePaths": [
+                  "normalize.go",
+                  "normalize_test.go"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "AGENTS.md",
+                  "go.mod",
+                  "unrelated.txt"
+                ]
+              },
+              "routine": {
+                "id": "maintenance",
+                "version": "0.1",
+                "steps": [
+                  "implement",
+                  "verify",
+                  "review",
+                  "record"
+                ],
+                "completion": "candidate evidence, applicable independent review and checked publication required"
+              },
+              "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+              "reason": "owner selected fresh bounded Master attempt"
+            },
+            "coverage": "known"
+          },
+          {
+            "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+            "observation": {
+              "clientId": "dacc5b4f-6c77-49c4-aed2-1b44714b9182",
+              "kind": "userMessage",
+              "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+              "itemId": "01a11c2a-3077-78c2-b776-20123e56ec56",
+              "phase": "",
+              "text": "Continue the same covered Unicode normalization assignment. Preserve interior tabs and case. Use the previously specified report operation ID after testing; do not start another task.",
+              "status": "",
+              "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+              "receivedAt": "2026-10-08T15:38:09.409513305Z"
+            }
+          },
+          {
+            "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+            "observation": {
+              "kind": "tool.completed",
+              "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+              "itemId": "exec-b24c0985-d18f-4127-be2e-66c00b14f825",
+              "phase": "",
+              "text": "",
+              "status": "completed",
+              "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+              "receivedAt": "2026-10-08T15:38:29.499726537Z"
+            }
+          },
+          {
+            "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+            "observation": {
+              "kind": "tool.completed",
+              "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+              "itemId": "exec-6d84ef63-7e32-4c84-b0f2-0d6238ae3432",
+              "phase": "",
+              "text": "",
+              "status": "completed",
+              "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+              "receivedAt": "2026-10-08T15:38:33.299680251Z"
+            }
+          },
+          {
+            "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+            "observation": {
+              "kind": "tool.completed",
+              "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+              "itemId": "exec-81f0f3bd-15ae-4bc1-b8ab-a28e4b7edfaa",
+              "phase": "",
+              "text": "",
+              "status": "completed",
+              "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+              "receivedAt": "2026-10-08T15:38:39.580764041Z"
+            }
+          },
+          {
+            "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+            "observation": {
+              "kind": "tool.completed",
+              "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+              "itemId": "exec-1e58f167-04e6-4cd7-9438-d736754e3bdc",
+              "phase": "",
+              "text": "",
+              "status": "completed",
+              "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+              "receivedAt": "2026-10-08T15:38:39.594901348Z"
+            }
+          },
+          {
+            "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+            "observation": {
+              "kind": "agentMessage",
+              "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+              "itemId": "msg_0736ad832d9bdb88016ac7b903d0808191a5b475c9e7876fd0",
+              "phase": "commentary",
+              "text": "The assignment permits changes only to the normalization function and its tests. The current function trims ordinary spaces only; I\u2019ll add Unicode boundary cases and preservation checks for interior tabs and case. The run reports a transport observation gap, and this fixture has no Git repository.\n",
+              "status": "",
+              "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+              "receivedAt": "2026-10-08T15:38:44.859749012Z"
+            }
+          },
+          {
+            "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+            "observation": {
+              "kind": "tool.completed",
+              "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+              "itemId": "exec-4c4812e4-f365-43cf-8445-2297ab78e2e5",
+              "phase": "",
+              "text": "",
+              "status": "failed",
+              "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+              "receivedAt": "2026-10-08T15:38:48.271992202Z"
+            }
+          },
+          {
+            "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+            "observation": {
+              "kind": "tool.completed",
+              "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+              "itemId": "exec-41ac7af8-d310-438e-9d62-99600c50d214",
+              "phase": "",
+              "text": "",
+              "status": "completed",
+              "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+              "receivedAt": "2026-10-08T15:38:48.317873857Z"
+            }
+          },
+          {
+            "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+            "observation": {
+              "kind": "tool.completed",
+              "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+              "itemId": "exec-4a88d0bf-d865-4c3a-a3c6-ad3bb6aeb061",
+              "phase": "",
+              "text": "",
+              "status": "failed",
+              "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+              "receivedAt": "2026-10-08T15:38:51.513650348Z"
+            }
+          },
+          {
+            "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+            "observation": {
+              "kind": "tool.completed",
+              "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+              "itemId": "exec-b904be6f-bcf3-4b92-85a8-82b0fed4a9ac",
+              "phase": "",
+              "text": "",
+              "status": "failed",
+              "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+              "receivedAt": "2026-10-08T15:39:07.080917919Z"
+            }
+          },
+          {
+            "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+            "observation": {
+              "kind": "tool.completed",
+              "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+              "itemId": "exec-926e99e1-6862-4db4-8af5-de700b1c04d8",
+              "phase": "",
+              "text": "",
+              "status": "completed",
+              "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+              "receivedAt": "2026-10-08T15:39:14.656433249Z"
+            }
+          },
+          {
+            "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+            "observation": {
+              "kind": "tool.completed",
+              "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+              "itemId": "exec-41081f18-0e7d-4254-9585-25f4fc250b3d",
+              "phase": "",
+              "text": "",
+              "status": "completed",
+              "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+              "receivedAt": "2026-10-08T15:39:14.815559073Z"
+            }
+          },
+          {
+            "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+            "observation": {
+              "kind": "agentMessage",
+              "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+              "itemId": "msg_0736ad832d9bdb88016ac7b92487a881919cd8a5aa6f006d84",
+              "phase": "commentary",
+              "text": "The candidate uses `strings.TrimSpace`. All 10 test cases pass, including preservation of interior tabs, Unicode content, and case; six cases failed before the fix. Hash checks confirm only the two permitted files changed. I\u2019ll now read the current run and submit the single authorized report.\n",
+              "status": "",
+              "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+              "receivedAt": "2026-10-08T15:39:17.843370577Z"
+            }
+          },
+          {
+            "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+            "observation": {
+              "kind": "tool.completed",
+              "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+              "itemId": "exec-902be0fc-85cc-42c4-9949-e4b198d8c17e",
+              "phase": "",
+              "text": "",
+              "status": "completed",
+              "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+              "receivedAt": "2026-10-08T15:39:18.70637652Z"
+            }
+          },
+          {
+            "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+            "observation": {
+              "kind": "approval.requested",
+              "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+              "itemId": "0",
+              "phase": "",
+              "text": "{\"requestId\":\"0\",\"epoch\":\"1fce205c-6576-49b4-b4f9-8ddb0c04285a\",\"threadId\":\"01a11c2a-0f18-7012-be6e-5e5922fd74e3\",\"turnId\":\"01a11c2a-0fea-7901-9bf2-76d4df12bc27\",\"message\":\"Allow the sdp_governance MCP server to run tool \\\"run_transition\\\"?\",\"request\":{\"schema\":\"sdp-project-governance/0.1\",\"projectRef\":\"pgi3-live\",\"checkoutId\":\"297c5a38-a0f1-4beb-a9db-b4c84d88fe6f\",\"operationId\":\"009824d7-8eca-40ab-9276-d5582cdcc525\",\"runId\":\"11278174-9624-44a2-984e-1b4d5199db63\",\"expectedRevision\":28,\"inputRevision\":\"24cd5f98db668b3a78d97b118cdfb073c35da45a58d3c7b52fbaef17c5f1a517\",\"action\":\"report\",\"reason\":\"Unicode normalization verified after PGI3-C4 reattachment.\"}}",
+              "status": "",
+              "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+              "receivedAt": "2026-10-08T15:39:22.364816639Z"
+            }
+          },
+          {
+            "approval": {
+              "requestId": "0",
+              "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+              "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+              "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+              "message": "Allow the sdp_governance MCP server to run tool \"run_transition\"?",
+              "request": {
+                "schema": "sdp-project-governance/0.1",
+                "projectRef": "pgi3-live",
+                "checkoutId": "297c5a38-a0f1-4beb-a9db-b4c84d88fe6f",
+                "operationId": "009824d7-8eca-40ab-9276-d5582cdcc525",
+                "runId": "11278174-9624-44a2-984e-1b4d5199db63",
+                "expectedRevision": 28,
+                "inputRevision": "24cd5f98db668b3a78d97b118cdfb073c35da45a58d3c7b52fbaef17c5f1a517",
+                "action": "report",
+                "reason": "Unicode normalization verified after PGI3-C4 reattachment."
+              }
+            }
+          },
+          {
+            "schema": "sdp-project-governance/0.1",
+            "operation": "input.uncertain",
+            "projectRef": "pgi3-live",
+            "checkoutId": "297c5a38-a0f1-4beb-a9db-b4c84d88fe6f",
+            "operationId": "5c6056ef-b9bb-4ed1-894f-cc5890431cd7",
+            "run": {
+              "inputs": [
+                {
+                  "contentOmitted": true,
+                  "id": "80f89025-e4ff-4d3c-81cb-03a40c123d85",
+                  "kind": "launch",
+                  "text": "",
+                  "payload": "",
+                  "attemptId": "6205bd47-f0da-415b-861f-f34154a743f2",
+                  "epoch": "26dd0f49-4f3e-456e-b5b7-5af26295a6af",
+                  "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+                  "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+                  "state": "acknowledged",
+                  "receivedAt": "2026-10-08T15:38:00.808499138Z"
+                },
+                {
+                  "contentOmitted": true,
+                  "id": "dacc5b4f-6c77-49c4-aed2-1b44714b9182",
+                  "kind": "steer",
+                  "text": "",
+                  "payload": "",
+                  "attemptId": "6205bd47-f0da-415b-861f-f34154a743f2",
+                  "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+                  "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+                  "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+                  "state": "acknowledged",
+                  "receivedAt": "2026-10-08T15:38:08.914466719Z"
+                },
+                {
+                  "contentOmitted": true,
+                  "id": "46bfde62-fc1d-4a53-a9cd-8fdc64211e40",
+                  "kind": "approval",
+                  "text": "",
+                  "payload": "",
+                  "attemptId": "6205bd47-f0da-415b-861f-f34154a743f2",
+                  "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+                  "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+                  "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+                  "state": "uncertain",
+                  "receivedAt": "2026-10-08T15:39:22.390950961Z"
+                }
+              ],
+              "attempts": [
+                {
+                  "hostIdentity": "0b08f198ce2a4c4c5953aa0b020d327b5756569dc0d95277f8c4f5351a0123e7",
+                  "agentEpoch": "26dd0f49-4f3e-456e-b5b7-5af26295a6af",
+                  "lastObservedAt": "2026-10-08T15:39:22.364816639Z",
+                  "eventCount": 21,
+                  "id": "6205bd47-f0da-415b-861f-f34154a743f2",
+                  "hostVersion": "0.161.0",
+                  "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+                  "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+                  "inputRevision": "24cd5f98db668b3a78d97b118cdfb073c35da45a58d3c7b52fbaef17c5f1a517",
+                  "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+                  "status": "running",
+                  "gap": true,
+                  "events": []
+                }
+              ],
+              "id": "11278174-9624-44a2-984e-1b4d5199db63",
+              "revision": 34,
+              "requestId": "1a0efb71-a3cf-4547-b571-81489a0aadf7",
+              "state": "verifying",
+              "step": "implement",
+              "inputRevision": "24cd5f98db668b3a78d97b118cdfb073c35da45a58d3c7b52fbaef17c5f1a517",
+              "selection": {
+                "card": "SDP/KanBan/active/card.md",
+                "plan": "SDP/Maintenance/Plan.md",
+                "session": "SDP/Sessions/session.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Fix NormalizeLabel Unicode boundary whitespace while preserving interior content; verify with Go tests",
+                "writablePaths": [
+                  "normalize.go",
+                  "normalize_test.go"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "AGENTS.md",
+                  "go.mod",
+                  "unrelated.txt"
+                ]
+              },
+              "routine": {
+                "id": "maintenance",
+                "version": "0.1",
+                "steps": [
+                  "implement",
+                  "verify",
+                  "review",
+                  "record"
+                ],
+                "completion": "candidate evidence, applicable independent review and checked publication required"
+              },
+              "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+              "reason": "Unicode normalization verified after PGI3-C4 reattachment."
+            },
+            "coverage": "known"
+          },
+          {
+            "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+            "observation": {
+              "kind": "approval.resolved",
+              "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+              "itemId": "0",
+              "phase": "",
+              "text": "",
+              "status": "",
+              "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+              "receivedAt": "2026-10-08T15:39:22.428609901Z"
+            }
+          },
+          {
+            "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+            "observation": {
+              "kind": "tool.completed",
+              "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+              "itemId": "exec-d8b04fc9-ed03-4e77-b5d0-ae94f56c9fff",
+              "phase": "",
+              "text": "",
+              "status": "completed",
+              "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+              "receivedAt": "2026-10-08T15:39:22.45329771Z"
+            }
+          },
+          {
+            "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+            "observation": {
+              "kind": "agentMessage",
+              "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+              "itemId": "msg_0736ad832d9bdb88016ac7b92cb3dc8191bf35104c6f2aebe4",
+              "phase": "final_answer",
+              "text": "Candidate fixes Unicode boundary whitespace using `strings.TrimSpace`, preserving interior tabs, whitespace, and case. Ten test cases pass; six reproduced the defect before the fix.\n\n`go test ./...` exited 0:\n```text\nok  \tpgi3pilot\t0.002s\n```\n\nOnly the two permitted files changed; excluded files remain byte-identical.\n\nReport operation `009824d7-8eca-40ab-9276-d5582cdcc525` succeeded: run state `verifying`, revision 33.\n\nRemaining gaps: transport observation `gap: true`; no SDP skill was found. Independent review, owner acceptance, and evidence publication remain pending. No commit, canonical record publication, or completion marking occurred.",
+              "status": "",
+              "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+              "receivedAt": "2026-10-08T15:39:27.644835226Z"
+            }
+          },
+          {
+            "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+            "observation": {
+              "kind": "turn.completed",
+              "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+              "itemId": "",
+              "phase": "",
+              "text": "",
+              "status": "completed",
+              "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+              "receivedAt": "2026-10-08T15:39:27.683356859Z"
+            }
+          },
+          {
+            "schema": "sdp-project-governance/0.1",
+            "operation": "host.observe",
+            "projectRef": "pgi3-live",
+            "checkoutId": "297c5a38-a0f1-4beb-a9db-b4c84d88fe6f",
+            "operationId": "a26c36f5-2ecb-4fb7-a1b4-957ad7c70210",
+            "run": {
+              "inputs": [
+                {
+                  "contentOmitted": true,
+                  "id": "80f89025-e4ff-4d3c-81cb-03a40c123d85",
+                  "kind": "launch",
+                  "text": "",
+                  "payload": "",
+                  "attemptId": "6205bd47-f0da-415b-861f-f34154a743f2",
+                  "epoch": "26dd0f49-4f3e-456e-b5b7-5af26295a6af",
+                  "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+                  "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+                  "state": "acknowledged",
+                  "receivedAt": "2026-10-08T15:38:00.808499138Z"
+                },
+                {
+                  "contentOmitted": true,
+                  "id": "dacc5b4f-6c77-49c4-aed2-1b44714b9182",
+                  "kind": "steer",
+                  "text": "",
+                  "payload": "",
+                  "attemptId": "6205bd47-f0da-415b-861f-f34154a743f2",
+                  "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+                  "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+                  "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+                  "state": "acknowledged",
+                  "receivedAt": "2026-10-08T15:38:08.914466719Z"
+                },
+                {
+                  "contentOmitted": true,
+                  "id": "46bfde62-fc1d-4a53-a9cd-8fdc64211e40",
+                  "kind": "approval",
+                  "text": "",
+                  "payload": "",
+                  "attemptId": "6205bd47-f0da-415b-861f-f34154a743f2",
+                  "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+                  "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+                  "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+                  "state": "acknowledged",
+                  "receivedAt": "2026-10-08T15:39:22.390950961Z"
+                }
+              ],
+              "attempts": [
+                {
+                  "hostIdentity": "0b08f198ce2a4c4c5953aa0b020d327b5756569dc0d95277f8c4f5351a0123e7",
+                  "agentEpoch": "26dd0f49-4f3e-456e-b5b7-5af26295a6af",
+                  "lastObservedAt": "2026-10-08T15:39:27.683356859Z",
+                  "eventCount": 25,
+                  "id": "6205bd47-f0da-415b-861f-f34154a743f2",
+                  "hostVersion": "0.161.0",
+                  "threadId": "01a11c2a-0f18-7012-be6e-5e5922fd74e3",
+                  "turnId": "01a11c2a-0fea-7901-9bf2-76d4df12bc27",
+                  "inputRevision": "24cd5f98db668b3a78d97b118cdfb073c35da45a58d3c7b52fbaef17c5f1a517",
+                  "epoch": "1fce205c-6576-49b4-b4f9-8ddb0c04285a",
+                  "status": "completed",
+                  "gap": true,
+                  "events": []
+                }
+              ],
+              "id": "11278174-9624-44a2-984e-1b4d5199db63",
+              "revision": 57,
+              "requestId": "1a0efb71-a3cf-4547-b571-81489a0aadf7",
+              "state": "verifying",
+              "step": "implement",
+              "inputRevision": "24cd5f98db668b3a78d97b118cdfb073c35da45a58d3c7b52fbaef17c5f1a517",
+              "selection": {
+                "card": "SDP/KanBan/active/card.md",
+                "plan": "SDP/Maintenance/Plan.md",
+                "session": "SDP/Sessions/session.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Fix NormalizeLabel Unicode boundary whitespace while preserving interior content; verify with Go tests",
+                "writablePaths": [
+                  "normalize.go",
+                  "normalize_test.go"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "AGENTS.md",
+                  "go.mod",
+                  "unrelated.txt"
+                ]
+              },
+              "routine": {
+                "id": "maintenance",
+                "version": "0.1",
+                "steps": [
+                  "implement",
+                  "verify",
+                  "review",
+                  "record"
+                ],
+                "completion": "candidate evidence, applicable independent review and checked publication required"
+              },
+              "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+              "reason": "Unicode normalization verified after PGI3-C4 reattachment."
+            },
+            "coverage": "known"
+          }
+        ]
+      },
+      "preimages": {
+        "AGENTS.md": "08215fd6800033dc25c64adfc98a15513934a606620a6bf131df0419b30924db",
+        "SDP/SDP-project.manifest.yaml": "79bc6ab712a7ebce35a8bc92cb9517a1ec7e7df1c94bde0557e80449add64023",
+        "SDP/KanBan/active/card.md": "68dfb40e92a4562d8797727ca8398cf2132cce31cf7ee395ab0ebb844caf8072",
+        "SDP/Maintenance/Plan.md": "ece9873bd0c32d327954ba4c7d82cd5c00d6c6e5c53130d48d0ca61b88bf0b51",
+        "SDP/Sessions/session.md": "7831e5b1a79e20fe5acec68fa28349ebfa874cfb597c2b8498dee07eb93a00b6",
+        "SDP/authority.md": "58aa3112c402b0631d769783f64922ae440e192feaa3e00608846779d0864076",
+        "SDP/ProjectManagement/Ledger.ndjson": "23273b4c57db04b637df7162d6706281d3d62a02a401ffe748f472c5e9f67541",
+        "go.mod": "9a9f71735472a740633fd8b7eea4c820ef23a62e82203bce7c8291b80824c885",
+        "normalize.go": "25a6c8c3d87a3054604a3b52561a0e6b266f9e0b7a3e85ea53405fdfc88e2827",
+        "normalize_test.go": "2c68aa7113a6d4bc83e932b1c0e94619b36c919bb42f40b2ef85af3fcd8a68e3",
+        "unrelated.txt": "543a1a908a7869f50819ce1c9b46282fc182ccb862cf6ae41e97b7bc99939a53"
+      },
+      "postimages": {
+        "AGENTS.md": "08215fd6800033dc25c64adfc98a15513934a606620a6bf131df0419b30924db",
+        "SDP/SDP-project.manifest.yaml": "79bc6ab712a7ebce35a8bc92cb9517a1ec7e7df1c94bde0557e80449add64023",
+        "SDP/KanBan/active/card.md": "68dfb40e92a4562d8797727ca8398cf2132cce31cf7ee395ab0ebb844caf8072",
+        "SDP/Maintenance/Plan.md": "ece9873bd0c32d327954ba4c7d82cd5c00d6c6e5c53130d48d0ca61b88bf0b51",
+        "SDP/Sessions/session.md": "7831e5b1a79e20fe5acec68fa28349ebfa874cfb597c2b8498dee07eb93a00b6",
+        "SDP/authority.md": "58aa3112c402b0631d769783f64922ae440e192feaa3e00608846779d0864076",
+        "SDP/ProjectManagement/Ledger.ndjson": "23273b4c57db04b637df7162d6706281d3d62a02a401ffe748f472c5e9f67541",
+        "go.mod": "9a9f71735472a740633fd8b7eea4c820ef23a62e82203bce7c8291b80824c885",
+        "normalize.go": "6cd9379fdc90e80e1d45f871ca0cb7a4612fc7172fee86a4ebfb38b245b5b1a0",
+        "normalize_test.go": "6938b34c29700913497e4823a0cbf0a2c872a32a8fa145c6465c4d0e07462efb",
+        "unrelated.txt": "543a1a908a7869f50819ce1c9b46282fc182ccb862cf6ae41e97b7bc99939a53"
+      },
+      "verification": "ok  \tpgi3pilot\t0.002s\n",
+      "finalSource": {
+        "normalize.go": "package pgi3pilot\n\nimport \"strings\"\n\nfunc NormalizeLabel(s string) string { return strings.TrimSpace(s) }\n",
+        "normalize_test.go": "package pgi3pilot\n\nimport \"testing\"\n\nfunc TestNormalizeLabel(t *testing.T) {\n\ttests := []struct {\n\t\tname  string\n\t\tinput string\n\t\twant  string\n\t}{\n\t\t{\"empty\", \"\", \"\"},\n\t\t{\"unchanged\", \"Keep  CaSe\", \"Keep  CaSe\"},\n\t\t{\"spaces\", \"  Keep  Case  \", \"Keep  Case\"},\n\t\t{\"ASCII whitespace\", \"\\t\\n\\r\\v\\f Keep\\tCaSe \\r\\n\\t\", \"Keep\\tCaSe\"},\n\t\t{\"Unicode boundaries\", \"\\u00a0\\u2003Keep\\t\\tCaSe\\u202f\\u3000\", \"Keep\\t\\tCaSe\"},\n\t\t{\"leading Unicode\", \"\\u0085\\u1680Keep\", \"Keep\"},\n\t\t{\"trailing Unicode\", \"CaSe\\u2028\\u2029\", \"CaSe\"},\n\t\t{\"interior content\", \"\\u2003\u00c9lan\\t \\u00a0\\u2003CaSe\\n\u4e16\u754c\\u3000\", \"\u00c9lan\\t \\u00a0\\u2003CaSe\\n\u4e16\u754c\"},\n\t\t{\"whitespace only\", \" \\t\\n\\u0085\\u00a0\\u1680\\u2003\\u2028\\u2029\\u202f\\u3000\", \"\"},\n\t\t{\"non-whitespace boundaries\", \"\\u200bKeep\\tCaSe\\ufeff\", \"\\u200bKeep\\tCaSe\\ufeff\"},\n\t}\n\tfor _, tt := range tests {\n\t\tt.Run(tt.name, func(t *testing.T) {\n\t\t\tif got := NormalizeLabel(tt.input); got != tt.want {\n\t\t\t\tt.Errorf(\"NormalizeLabel(%q) = %q, want %q\", tt.input, got, tt.want)\n\t\t\t}\n\t\t})\n\t}\n}\n"
+      }
+    },
+    {
+      "mode": "SIGKILL-controller",
+      "runId": "8ae8ddd6-1c23-4ee3-8113-a3819c052fdb",
+      "finalStatus": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "read",
+        "projectRef": "pgi3-live",
+        "checkoutId": "6c852845-e147-4a46-89a5-68004dd06ff9",
+        "operationId": "",
+        "run": {
+          "inputs": [
+            {
+              "contentOmitted": true,
+              "id": "78356d97-579d-49f1-9585-bf258e2270ae",
+              "kind": "launch",
+              "text": "",
+              "payload": "",
+              "attemptId": "57fc7c17-492f-4b1f-acb8-eef742d3a733",
+              "epoch": "250e4178-d7bc-4e95-8032-16e536da35bc",
+              "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+              "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+              "state": "acknowledged",
+              "receivedAt": "2026-10-08T15:41:00.396652427Z"
+            },
+            {
+              "contentOmitted": true,
+              "id": "f9eb088b-a023-4fd8-8b47-80e6d9780216",
+              "kind": "steer",
+              "text": "",
+              "payload": "",
+              "attemptId": "57fc7c17-492f-4b1f-acb8-eef742d3a733",
+              "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+              "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+              "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+              "state": "acknowledged",
+              "receivedAt": "2026-10-08T15:41:06.505017525Z"
+            },
+            {
+              "contentOmitted": true,
+              "id": "62922fa1-d159-4eeb-9d31-8cedf7180d67",
+              "kind": "approval",
+              "text": "",
+              "payload": "",
+              "attemptId": "57fc7c17-492f-4b1f-acb8-eef742d3a733",
+              "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+              "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+              "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+              "state": "acknowledged",
+              "receivedAt": "2026-10-08T15:42:23.932472291Z"
+            }
+          ],
+          "attempts": [
+            {
+              "hostIdentity": "af28ffd5495e2ba3c4961672bb3b31a06b10e8f6361c5c2f93065e95ceb5d6e1",
+              "agentEpoch": "250e4178-d7bc-4e95-8032-16e536da35bc",
+              "lastObservedAt": "2026-10-08T15:42:30.471721668Z",
+              "eventCount": 23,
+              "id": "57fc7c17-492f-4b1f-acb8-eef742d3a733",
+              "hostVersion": "0.161.0",
+              "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+              "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+              "inputRevision": "d6d94c3cf8d079c41e9d8f659a1cb89653116629609079faf790f19e4801e9c7",
+              "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+              "status": "completed",
+              "gap": true,
+              "events": []
+            }
+          ],
+          "id": "8ae8ddd6-1c23-4ee3-8113-a3819c052fdb",
+          "revision": 54,
+          "requestId": "e23bffc9-b484-405f-8888-5c961fb67659",
+          "state": "verifying",
+          "step": "implement",
+          "inputRevision": "d6d94c3cf8d079c41e9d8f659a1cb89653116629609079faf790f19e4801e9c7",
+          "selection": {
+            "card": "SDP/KanBan/active/card.md",
+            "plan": "SDP/Maintenance/Plan.md",
+            "session": "SDP/Sessions/session.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Fix NormalizeLabel Unicode boundary whitespace while preserving interior content; verify with Go tests",
+            "writablePaths": [
+              "normalize.go",
+              "normalize_test.go"
+            ],
+            "excludedPaths": [
+              "SDP",
+              "AGENTS.md",
+              "go.mod",
+              "unrelated.txt"
+            ]
+          },
+          "routine": {
+            "id": "maintenance",
+            "version": "0.1",
+            "steps": [
+              "implement",
+              "verify",
+              "review",
+              "record"
+            ],
+            "completion": "candidate evidence, applicable independent review and checked publication required"
+          },
+          "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+          "reason": "Unicode normalization verified after PGI3-C4 reattachment."
+        },
+        "coverage": "known"
+      },
+      "beforeDisconnect": {
+        "id": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+        "status": {
+          "type": "active",
+          "activeFlags": []
+        },
+        "turns": [
+          {
+            "id": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+            "status": "inProgress",
+            "items": [
+              {
+                "id": "01a11c2c-d402-7f90-b141-af000d8ef3cf",
+                "type": "userMessage",
+                "status": null,
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "msg_001562b0fb15ebc3016ac7b9900bac8191a4769e6894580aab",
+                "type": "agentMessage",
+                "status": null,
+                "server": null,
+                "tool": null,
+                "error": null
+              }
+            ]
+          }
+        ]
+      },
+      "hostSummary": {
+        "id": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+        "status": {
+          "type": "idle"
+        },
+        "turns": [
+          {
+            "id": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+            "status": "completed",
+            "items": [
+              {
+                "id": "01a11c2c-d402-7f90-b141-af000d8ef3cf",
+                "type": "userMessage",
+                "status": null,
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "msg_001562b0fb15ebc3016ac7b9900bac8191a4769e6894580aab",
+                "type": "agentMessage",
+                "status": null,
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "01a11c2c-e70c-7810-b37f-141de0f0a719",
+                "type": "userMessage",
+                "status": null,
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "rs_001562b0fb15ebc3016ac7b99ea0508191904cd1fe4efe0256",
+                "type": "reasoning",
+                "status": null,
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "rs_001562b0fb15ebc3016ac7b9a7cf0c8191b44c68dc287e6606",
+                "type": "reasoning",
+                "status": null,
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "exec-e9cb6fea-c6d7-4f9b-92d7-c7a221884cb1",
+                "type": "commandExecution",
+                "status": "completed",
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "exec-bbb9cc4b-a43e-450d-ba88-53b2ce700b7b",
+                "type": "mcpToolCall",
+                "status": "completed",
+                "server": "sdp_governance",
+                "tool": "run_read",
+                "error": null
+              },
+              {
+                "id": "exec-7a6ac68b-fc60-412a-94c2-e932fdc7f9ab",
+                "type": "commandExecution",
+                "status": "completed",
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "exec-fc2d9650-b8ef-40ec-b000-185ba19c38f9",
+                "type": "commandExecution",
+                "status": "completed",
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "exec-16a5d086-9021-430a-b727-fd3c7896a099",
+                "type": "commandExecution",
+                "status": "completed",
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "rs_001562b0fb15ebc3016ac7b9bc4ea48191a1712a9aeaf186d4",
+                "type": "reasoning",
+                "status": null,
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "msg_001562b0fb15ebc3016ac7b9bc7a608191a1edf4320d9cfe54",
+                "type": "agentMessage",
+                "status": null,
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "exec-baed17c4-5ebc-4227-9cc1-9ec66a3a9ad3",
+                "type": "fileChange",
+                "status": "completed",
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "exec-969c9cfb-5789-4bb4-bac7-d2bef7fac409",
+                "type": "commandExecution",
+                "status": "failed",
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "exec-7c8cd865-5347-4ac1-ade6-ee7df0426f70",
+                "type": "fileChange",
+                "status": "completed",
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "exec-a6795bc7-fe25-4f96-8476-365db356e6be",
+                "type": "commandExecution",
+                "status": "completed",
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "exec-df40ce49-c2e4-47b4-b07a-25dce1271975",
+                "type": "commandExecution",
+                "status": "completed",
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "exec-52792cdd-1a09-49b6-b1d4-736d8251aca7",
+                "type": "commandExecution",
+                "status": "completed",
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "rs_001562b0fb15ebc3016ac7b9d7860c8191b45c8c853cfc0285",
+                "type": "reasoning",
+                "status": null,
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "msg_001562b0fb15ebc3016ac7b9d7b28c8191a5857680bcb70381",
+                "type": "agentMessage",
+                "status": null,
+                "server": null,
+                "tool": null,
+                "error": null
+              },
+              {
+                "id": "exec-e09a7bc4-6ca2-4487-8aa0-236680d88702",
+                "type": "mcpToolCall",
+                "status": "completed",
+                "server": "sdp_governance",
+                "tool": "run_read",
+                "error": null
+              },
+              {
+                "id": "exec-330b40b9-1520-42cf-ba4c-dea9305e4cb2",
+                "type": "mcpToolCall",
+                "status": "completed",
+                "server": "sdp_governance",
+                "tool": "run_transition",
+                "error": null
+              },
+              {
+                "id": "msg_001562b0fb15ebc3016ac7b9e254b88191bb29aabef49ffbfe",
+                "type": "agentMessage",
+                "status": null,
+                "server": null,
+                "tool": null,
+                "error": null
+              }
+            ]
+          }
+        ]
+      },
+      "driverDecision": {
+        "action": "approval",
+        "approval": {
+          "requestId": "0",
+          "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+          "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+          "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+          "decision": "accept"
+        }
+      },
+      "events": {
+        "launch-events.ndjson": [
+          {
+            "schema": "sdp-project-governance/0.1",
+            "operation": "input.ack",
+            "projectRef": "pgi3-live",
+            "checkoutId": "6c852845-e147-4a46-89a5-68004dd06ff9",
+            "operationId": "20f5b6a0-bbc8-4e63-8b50-c5b624f6721d",
+            "run": {
+              "inputs": [
+                {
+                  "contentOmitted": true,
+                  "id": "78356d97-579d-49f1-9585-bf258e2270ae",
+                  "kind": "launch",
+                  "text": "",
+                  "payload": "",
+                  "attemptId": "57fc7c17-492f-4b1f-acb8-eef742d3a733",
+                  "epoch": "250e4178-d7bc-4e95-8032-16e536da35bc",
+                  "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+                  "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+                  "state": "acknowledged",
+                  "receivedAt": "2026-10-08T15:41:00.396652427Z"
+                }
+              ],
+              "attempts": [
+                {
+                  "hostIdentity": "af28ffd5495e2ba3c4961672bb3b31a06b10e8f6361c5c2f93065e95ceb5d6e1",
+                  "agentEpoch": "250e4178-d7bc-4e95-8032-16e536da35bc",
+                  "lastObservedAt": "2026-10-08T15:41:00.671719636Z",
+                  "eventCount": 2,
+                  "id": "57fc7c17-492f-4b1f-acb8-eef742d3a733",
+                  "hostVersion": "0.161.0",
+                  "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+                  "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+                  "inputRevision": "d6d94c3cf8d079c41e9d8f659a1cb89653116629609079faf790f19e4801e9c7",
+                  "epoch": "250e4178-d7bc-4e95-8032-16e536da35bc",
+                  "status": "running",
+                  "gap": false,
+                  "events": []
+                }
+              ],
+              "id": "8ae8ddd6-1c23-4ee3-8113-a3819c052fdb",
+              "revision": 7,
+              "requestId": "e23bffc9-b484-405f-8888-5c961fb67659",
+              "state": "running",
+              "step": "implement",
+              "inputRevision": "d6d94c3cf8d079c41e9d8f659a1cb89653116629609079faf790f19e4801e9c7",
+              "selection": {
+                "card": "SDP/KanBan/active/card.md",
+                "plan": "SDP/Maintenance/Plan.md",
+                "session": "SDP/Sessions/session.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Fix NormalizeLabel Unicode boundary whitespace while preserving interior content; verify with Go tests",
+                "writablePaths": [
+                  "normalize.go",
+                  "normalize_test.go"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "AGENTS.md",
+                  "go.mod",
+                  "unrelated.txt"
+                ]
+              },
+              "routine": {
+                "id": "maintenance",
+                "version": "0.1",
+                "steps": [
+                  "implement",
+                  "verify",
+                  "review",
+                  "record"
+                ],
+                "completion": "candidate evidence, applicable independent review and checked publication required"
+              },
+              "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+              "reason": "owner selected fresh bounded Master attempt"
+            },
+            "coverage": "known"
+          },
+          {
+            "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+            "observation": {
+              "kind": "turn.started",
+              "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+              "itemId": "",
+              "phase": "",
+              "text": "",
+              "status": "running",
+              "epoch": "250e4178-d7bc-4e95-8032-16e536da35bc",
+              "receivedAt": "2026-10-08T15:41:00.939850706Z"
+            }
+          },
+          {
+            "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+            "observation": {
+              "clientId": "78356d97-579d-49f1-9585-bf258e2270ae",
+              "kind": "userMessage",
+              "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+              "itemId": "01a11c2c-d402-7f90-b141-af000d8ef3cf",
+              "phase": "",
+              "text": "{\"approvalMode\":\"ask\",\"assignment\":{\"outcome\":\"Fix NormalizeLabel Unicode boundary whitespace while preserving interior content; verify with Go tests\",\"writablePaths\":[\"normalize.go\",\"normalize_test.go\"],\"excludedPaths\":[\"SDP\",\"AGENTS.md\",\"go.mod\",\"unrelated.txt\"]},\"context\":{\"schema\":\"sdp-project-governance/0.1\",\"operation\":\"context\",\"projectRef\":\"pgi3-live\",\"root\":\"/tmp/sdp-pgi3-c4/trial4/project\",\"checkoutId\":\"6c852845-e147-4a46-89a5-68004dd06ff9\",\"revision\":\"d6d94c3cf8d079c41e9d8f659a1cb89653116629609079faf790f19e4801e9c7\",\"selection\":{\"card\":\"SDP/KanBan/active/card.md\",\"plan\":\"SDP/Maintenance/Plan.md\",\"session\":\"SDP/Sessions/session.md\",\"authority\":\"SDP/authority.md\",\"step\":\"S1\"},\"sources\":[{\"path\":\"AGENTS.md\",\"sha256\":\"08215fd6800033dc25c64adfc98a15513934a606620a6bf131df0419b30924db\"},{\"path\":\"SDP/KanBan/active/card.md\",\"sha256\":\"68dfb40e92a4562d8797727ca8398cf2132cce31cf7ee395ab0ebb844caf8072\"},{\"path\":\"SDP/Maintenance/Plan.md\",\"sha256\":\"ece9873bd0c32d327954ba4c7d82cd5c00d6c6e5c53130d48d0ca61b88bf0b51\"},{\"path\":\"SDP/ProjectManagement/Ledger.ndjson\",\"sha256\":\"23273b4c57db04b637df7162d6706281d3d62a02a401ffe748f472c5e9f67541\"},{\"path\":\"SDP/SDP-project.manifest.yaml\",\"sha256\":\"79bc6ab712a7ebce35a8bc92cb9517a1ec7e7df1c94bde0557e80449add64023\"},{\"path\":\"SDP/Sessions/session.md\",\"sha256\":\"7831e5b1a79e20fe5acec68fa28349ebfa874cfb597c2b8498dee07eb93a00b6\"},{\"path\":\"SDP/authority.md\",\"sha256\":\"58aa3112c402b0631d769783f64922ae440e192feaa3e00608846779d0864076\"}],\"coverage\":\"known\",\"conditions\":[],\"cardId\":\"KB-PILOT-001\",\"planId\":\"MAINT-PILOT-0001\",\"sessionId\":\"SESSION-PILOT-0001\"},\"instructions\":\"You are the fresh Master for one explicitly authorized SDP Maintenance assignment. Read the selected Session, authority, plan, card, AGENTS and relevant SDP skills before acting. Preserve writable/excluded boundaries and unrelated work. Native delegation is not granted by this launch; do not spawn children. Report candidate, tests, remaining gaps and observed outcome. Agent claims do not grant owner approval or independent review. Do not publish canonical management/Session records or mark the work complete; evidence publication is a later controller capability. Use assignment-bound MCP reads and report/fail/scope-change only.\",\"ownerInput\":\"First send commentary REATTACH_WINDOW, then run sleep 25 as a transport-test synchronization command before inspecting or editing code. After that, fix the covered NormalizeLabel defect and its tests. Preserve interior whitespace and case. First read the governing records and inspect the current code. Use assignment-bound MCP run_read to inspect your run. Work only within the stored assignment. Run go test ./... and return exact observed results and any gaps. Do not spawn agents, publish records, commit or mark the work completed.\\n\\nAfter testing, call run_read immediately before one run_transition action report. Use exact current checkoutId, projectRef, inputRevision, runId and expectedRevision from run_read. Use operationId bbfe7109-ebac-4218-b88e-1f0769999b26. Reason: Unicode normalization verified after PGI3-C4 reattachment. Wait for the tool result. Do not retry a refused report. This is a disposable test-driver scenario, not owner acceptance.\\n\",\"runId\":\"8ae8ddd6-1c23-4ee3-8113-a3819c052fdb\",\"sandbox\":\"workspace-write\"}",
+              "status": "",
+              "epoch": "250e4178-d7bc-4e95-8032-16e536da35bc",
+              "receivedAt": "2026-10-08T15:41:02.343339845Z"
+            }
+          },
+          {
+            "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+            "observation": {
+              "kind": "agentMessage",
+              "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+              "itemId": "msg_001562b0fb15ebc3016ac7b9900bac8191a4769e6894580aab",
+              "phase": "commentary",
+              "text": "REATTACH_WINDOW\n",
+              "status": "",
+              "epoch": "250e4178-d7bc-4e95-8032-16e536da35bc",
+              "receivedAt": "2026-10-08T15:41:04.39802818Z"
+            }
+          }
+        ],
+        "attach-events.ndjson": [
+          {
+            "schema": "sdp-project-governance/0.1",
+            "operation": "host.reattach",
+            "projectRef": "pgi3-live",
+            "checkoutId": "6c852845-e147-4a46-89a5-68004dd06ff9",
+            "operationId": "bdcdd417-12e9-4f05-bfd4-910b136f5606",
+            "run": {
+              "inputs": [
+                {
+                  "contentOmitted": true,
+                  "id": "78356d97-579d-49f1-9585-bf258e2270ae",
+                  "kind": "launch",
+                  "text": "",
+                  "payload": "",
+                  "attemptId": "57fc7c17-492f-4b1f-acb8-eef742d3a733",
+                  "epoch": "250e4178-d7bc-4e95-8032-16e536da35bc",
+                  "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+                  "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+                  "state": "acknowledged",
+                  "receivedAt": "2026-10-08T15:41:00.396652427Z"
+                }
+              ],
+              "attempts": [
+                {
+                  "hostIdentity": "af28ffd5495e2ba3c4961672bb3b31a06b10e8f6361c5c2f93065e95ceb5d6e1",
+                  "agentEpoch": "250e4178-d7bc-4e95-8032-16e536da35bc",
+                  "lastObservedAt": "2026-10-08T15:41:06.487823616Z",
+                  "eventCount": 5,
+                  "id": "57fc7c17-492f-4b1f-acb8-eef742d3a733",
+                  "hostVersion": "0.161.0",
+                  "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+                  "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+                  "inputRevision": "d6d94c3cf8d079c41e9d8f659a1cb89653116629609079faf790f19e4801e9c7",
+                  "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+                  "status": "running",
+                  "gap": true,
+                  "events": []
+                }
+              ],
+              "id": "8ae8ddd6-1c23-4ee3-8113-a3819c052fdb",
+              "revision": 11,
+              "requestId": "e23bffc9-b484-405f-8888-5c961fb67659",
+              "state": "running",
+              "step": "implement",
+              "inputRevision": "d6d94c3cf8d079c41e9d8f659a1cb89653116629609079faf790f19e4801e9c7",
+              "selection": {
+                "card": "SDP/KanBan/active/card.md",
+                "plan": "SDP/Maintenance/Plan.md",
+                "session": "SDP/Sessions/session.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Fix NormalizeLabel Unicode boundary whitespace while preserving interior content; verify with Go tests",
+                "writablePaths": [
+                  "normalize.go",
+                  "normalize_test.go"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "AGENTS.md",
+                  "go.mod",
+                  "unrelated.txt"
+                ]
+              },
+              "routine": {
+                "id": "maintenance",
+                "version": "0.1",
+                "steps": [
+                  "implement",
+                  "verify",
+                  "review",
+                  "record"
+                ],
+                "completion": "candidate evidence, applicable independent review and checked publication required"
+              },
+              "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+              "reason": "owner selected fresh bounded Master attempt"
+            },
+            "coverage": "known"
+          },
+          {
+            "schema": "sdp-project-governance/0.1",
+            "operation": "input.ack",
+            "projectRef": "pgi3-live",
+            "checkoutId": "6c852845-e147-4a46-89a5-68004dd06ff9",
+            "operationId": "102eee80-4fcb-42b0-abee-8e2c5470372d",
+            "run": {
+              "inputs": [
+                {
+                  "contentOmitted": true,
+                  "id": "78356d97-579d-49f1-9585-bf258e2270ae",
+                  "kind": "launch",
+                  "text": "",
+                  "payload": "",
+                  "attemptId": "57fc7c17-492f-4b1f-acb8-eef742d3a733",
+                  "epoch": "250e4178-d7bc-4e95-8032-16e536da35bc",
+                  "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+                  "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+                  "state": "acknowledged",
+                  "receivedAt": "2026-10-08T15:41:00.396652427Z"
+                },
+                {
+                  "contentOmitted": true,
+                  "id": "f9eb088b-a023-4fd8-8b47-80e6d9780216",
+                  "kind": "steer",
+                  "text": "",
+                  "payload": "",
+                  "attemptId": "57fc7c17-492f-4b1f-acb8-eef742d3a733",
+                  "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+                  "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+                  "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+                  "state": "acknowledged",
+                  "receivedAt": "2026-10-08T15:41:06.505017525Z"
+                }
+              ],
+              "attempts": [
+                {
+                  "hostIdentity": "af28ffd5495e2ba3c4961672bb3b31a06b10e8f6361c5c2f93065e95ceb5d6e1",
+                  "agentEpoch": "250e4178-d7bc-4e95-8032-16e536da35bc",
+                  "lastObservedAt": "2026-10-08T15:41:06.487823616Z",
+                  "eventCount": 5,
+                  "id": "57fc7c17-492f-4b1f-acb8-eef742d3a733",
+                  "hostVersion": "0.161.0",
+                  "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+                  "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+                  "inputRevision": "d6d94c3cf8d079c41e9d8f659a1cb89653116629609079faf790f19e4801e9c7",
+                  "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+                  "status": "running",
+                  "gap": true,
+                  "events": []
+                }
+              ],
+              "id": "8ae8ddd6-1c23-4ee3-8113-a3819c052fdb",
+              "revision": 14,
+              "requestId": "e23bffc9-b484-405f-8888-5c961fb67659",
+              "state": "running",
+              "step": "implement",
+              "inputRevision": "d6d94c3cf8d079c41e9d8f659a1cb89653116629609079faf790f19e4801e9c7",
+              "selection": {
+                "card": "SDP/KanBan/active/card.md",
+                "plan": "SDP/Maintenance/Plan.md",
+                "session": "SDP/Sessions/session.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Fix NormalizeLabel Unicode boundary whitespace while preserving interior content; verify with Go tests",
+                "writablePaths": [
+                  "normalize.go",
+                  "normalize_test.go"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "AGENTS.md",
+                  "go.mod",
+                  "unrelated.txt"
+                ]
+              },
+              "routine": {
+                "id": "maintenance",
+                "version": "0.1",
+                "steps": [
+                  "implement",
+                  "verify",
+                  "review",
+                  "record"
+                ],
+                "completion": "candidate evidence, applicable independent review and checked publication required"
+              },
+              "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+              "reason": "owner selected fresh bounded Master attempt"
+            },
+            "coverage": "known"
+          },
+          {
+            "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+            "observation": {
+              "clientId": "f9eb088b-a023-4fd8-8b47-80e6d9780216",
+              "kind": "userMessage",
+              "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+              "itemId": "01a11c2c-e70c-7810-b37f-141de0f0a719",
+              "phase": "",
+              "text": "Continue the same covered Unicode normalization assignment. Preserve interior tabs and case. Use the previously specified report operation ID after testing; do not start another task.",
+              "status": "",
+              "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+              "receivedAt": "2026-10-08T15:41:07.217158357Z"
+            }
+          },
+          {
+            "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+            "observation": {
+              "kind": "tool.completed",
+              "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+              "itemId": "exec-e9cb6fea-c6d7-4f9b-92d7-c7a221884cb1",
+              "phase": "",
+              "text": "",
+              "status": "completed",
+              "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+              "receivedAt": "2026-10-08T15:41:31.113220307Z"
+            }
+          },
+          {
+            "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+            "observation": {
+              "kind": "tool.completed",
+              "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+              "itemId": "exec-bbb9cc4b-a43e-450d-ba88-53b2ce700b7b",
+              "phase": "",
+              "text": "",
+              "status": "completed",
+              "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+              "receivedAt": "2026-10-08T15:41:37.684245645Z"
+            }
+          },
+          {
+            "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+            "observation": {
+              "kind": "tool.completed",
+              "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+              "itemId": "exec-7a6ac68b-fc60-412a-94c2-e932fdc7f9ab",
+              "phase": "",
+              "text": "",
+              "status": "completed",
+              "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+              "receivedAt": "2026-10-08T15:41:37.756828729Z"
+            }
+          },
+          {
+            "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+            "observation": {
+              "kind": "tool.completed",
+              "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+              "itemId": "exec-fc2d9650-b8ef-40ec-b000-185ba19c38f9",
+              "phase": "",
+              "text": "",
+              "status": "completed",
+              "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+              "receivedAt": "2026-10-08T15:41:37.777802543Z"
+            }
+          },
+          {
+            "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+            "observation": {
+              "kind": "tool.completed",
+              "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+              "itemId": "exec-16a5d086-9021-430a-b727-fd3c7896a099",
+              "phase": "",
+              "text": "",
+              "status": "completed",
+              "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+              "receivedAt": "2026-10-08T15:41:45.327070273Z"
+            }
+          },
+          {
+            "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+            "observation": {
+              "kind": "agentMessage",
+              "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+              "itemId": "msg_001562b0fb15ebc3016ac7b9bc7a608191a1edf4320d9cfe54",
+              "phase": "commentary",
+              "text": "The governing records confirm the two-file scope. The current implementation trims only ASCII spaces; I\u2019ll use Unicode-aware trimming and add regression cases for interior tabs, whitespace, and case. No SDP skill was found in the available skill locations. The run also reports a transport observation gap, which I\u2019ll retain in the report.\n",
+              "status": "",
+              "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+              "receivedAt": "2026-10-08T15:41:50.254410174Z"
+            }
+          },
+          {
+            "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+            "observation": {
+              "kind": "tool.completed",
+              "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+              "itemId": "exec-969c9cfb-5789-4bb4-bac7-d2bef7fac409",
+              "phase": "",
+              "text": "",
+              "status": "failed",
+              "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+              "receivedAt": "2026-10-08T15:42:05.085764437Z"
+            }
+          },
+          {
+            "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+            "observation": {
+              "kind": "tool.completed",
+              "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+              "itemId": "exec-a6795bc7-fe25-4f96-8476-365db356e6be",
+              "phase": "",
+              "text": "",
+              "status": "completed",
+              "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+              "receivedAt": "2026-10-08T15:42:11.830781309Z"
+            }
+          },
+          {
+            "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+            "observation": {
+              "kind": "tool.completed",
+              "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+              "itemId": "exec-df40ce49-c2e4-47b4-b07a-25dce1271975",
+              "phase": "",
+              "text": "",
+              "status": "completed",
+              "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+              "receivedAt": "2026-10-08T15:42:12.145219105Z"
+            }
+          },
+          {
+            "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+            "observation": {
+              "kind": "tool.completed",
+              "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+              "itemId": "exec-52792cdd-1a09-49b6-b1d4-736d8251aca7",
+              "phase": "",
+              "text": "",
+              "status": "completed",
+              "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+              "receivedAt": "2026-10-08T15:42:12.222576683Z"
+            }
+          },
+          {
+            "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+            "observation": {
+              "kind": "agentMessage",
+              "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+              "itemId": "msg_001562b0fb15ebc3016ac7b9d7b28c8191a5857680bcb70381",
+              "phase": "commentary",
+              "text": "The regression tests reproduced four failures before the fix. After switching to `strings.TrimSpace`, `go test ./...` passed with `ok pgi3pilot 0.002s`. The protected files\u2019 hashes are unchanged. I\u2019ll now refresh the run and submit the single requested report action.\n",
+              "status": "",
+              "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+              "receivedAt": "2026-10-08T15:42:17.458009319Z"
+            }
+          },
+          {
+            "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+            "observation": {
+              "kind": "tool.completed",
+              "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+              "itemId": "exec-e09a7bc4-6ca2-4487-8aa0-236680d88702",
+              "phase": "",
+              "text": "",
+              "status": "completed",
+              "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+              "receivedAt": "2026-10-08T15:42:18.995896204Z"
+            }
+          },
+          {
+            "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+            "observation": {
+              "kind": "approval.requested",
+              "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+              "itemId": "0",
+              "phase": "",
+              "text": "{\"requestId\":\"0\",\"epoch\":\"ddb8b246-e5f4-426e-9250-7ec9b568ae3d\",\"threadId\":\"01a11c2c-cc83-78e3-ac1a-78396575db06\",\"turnId\":\"01a11c2c-cd6c-7681-ac64-19a4e83c0aa4\",\"message\":\"Allow the sdp_governance MCP server to run tool \\\"run_transition\\\"?\",\"request\":{\"schema\":\"sdp-project-governance/0.1\",\"projectRef\":\"pgi3-live\",\"checkoutId\":\"6c852845-e147-4a46-89a5-68004dd06ff9\",\"operationId\":\"bbfe7109-ebac-4218-b88e-1f0769999b26\",\"runId\":\"8ae8ddd6-1c23-4ee3-8113-a3819c052fdb\",\"expectedRevision\":26,\"inputRevision\":\"d6d94c3cf8d079c41e9d8f659a1cb89653116629609079faf790f19e4801e9c7\",\"action\":\"report\",\"reason\":\"Unicode normalization verified after PGI3-C4 reattachment.\"}}",
+              "status": "",
+              "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+              "receivedAt": "2026-10-08T15:42:23.878756758Z"
+            }
+          },
+          {
+            "approval": {
+              "requestId": "0",
+              "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+              "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+              "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+              "message": "Allow the sdp_governance MCP server to run tool \"run_transition\"?",
+              "request": {
+                "schema": "sdp-project-governance/0.1",
+                "projectRef": "pgi3-live",
+                "checkoutId": "6c852845-e147-4a46-89a5-68004dd06ff9",
+                "operationId": "bbfe7109-ebac-4218-b88e-1f0769999b26",
+                "runId": "8ae8ddd6-1c23-4ee3-8113-a3819c052fdb",
+                "expectedRevision": 26,
+                "inputRevision": "d6d94c3cf8d079c41e9d8f659a1cb89653116629609079faf790f19e4801e9c7",
+                "action": "report",
+                "reason": "Unicode normalization verified after PGI3-C4 reattachment."
+              }
+            }
+          },
+          {
+            "schema": "sdp-project-governance/0.1",
+            "operation": "input.uncertain",
+            "projectRef": "pgi3-live",
+            "checkoutId": "6c852845-e147-4a46-89a5-68004dd06ff9",
+            "operationId": "997fef74-ee2a-4028-b650-9a51bffb0bb5",
+            "run": {
+              "inputs": [
+                {
+                  "contentOmitted": true,
+                  "id": "78356d97-579d-49f1-9585-bf258e2270ae",
+                  "kind": "launch",
+                  "text": "",
+                  "payload": "",
+                  "attemptId": "57fc7c17-492f-4b1f-acb8-eef742d3a733",
+                  "epoch": "250e4178-d7bc-4e95-8032-16e536da35bc",
+                  "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+                  "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+                  "state": "acknowledged",
+                  "receivedAt": "2026-10-08T15:41:00.396652427Z"
+                },
+                {
+                  "contentOmitted": true,
+                  "id": "f9eb088b-a023-4fd8-8b47-80e6d9780216",
+                  "kind": "steer",
+                  "text": "",
+                  "payload": "",
+                  "attemptId": "57fc7c17-492f-4b1f-acb8-eef742d3a733",
+                  "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+                  "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+                  "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+                  "state": "acknowledged",
+                  "receivedAt": "2026-10-08T15:41:06.505017525Z"
+                },
+                {
+                  "contentOmitted": true,
+                  "id": "62922fa1-d159-4eeb-9d31-8cedf7180d67",
+                  "kind": "approval",
+                  "text": "",
+                  "payload": "",
+                  "attemptId": "57fc7c17-492f-4b1f-acb8-eef742d3a733",
+                  "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+                  "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+                  "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+                  "state": "uncertain",
+                  "receivedAt": "2026-10-08T15:42:23.932472291Z"
+                }
+              ],
+              "attempts": [
+                {
+                  "hostIdentity": "af28ffd5495e2ba3c4961672bb3b31a06b10e8f6361c5c2f93065e95ceb5d6e1",
+                  "agentEpoch": "250e4178-d7bc-4e95-8032-16e536da35bc",
+                  "lastObservedAt": "2026-10-08T15:42:23.878756758Z",
+                  "eventCount": 19,
+                  "id": "57fc7c17-492f-4b1f-acb8-eef742d3a733",
+                  "hostVersion": "0.161.0",
+                  "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+                  "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+                  "inputRevision": "d6d94c3cf8d079c41e9d8f659a1cb89653116629609079faf790f19e4801e9c7",
+                  "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+                  "status": "running",
+                  "gap": true,
+                  "events": []
+                }
+              ],
+              "id": "8ae8ddd6-1c23-4ee3-8113-a3819c052fdb",
+              "revision": 32,
+              "requestId": "e23bffc9-b484-405f-8888-5c961fb67659",
+              "state": "verifying",
+              "step": "implement",
+              "inputRevision": "d6d94c3cf8d079c41e9d8f659a1cb89653116629609079faf790f19e4801e9c7",
+              "selection": {
+                "card": "SDP/KanBan/active/card.md",
+                "plan": "SDP/Maintenance/Plan.md",
+                "session": "SDP/Sessions/session.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Fix NormalizeLabel Unicode boundary whitespace while preserving interior content; verify with Go tests",
+                "writablePaths": [
+                  "normalize.go",
+                  "normalize_test.go"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "AGENTS.md",
+                  "go.mod",
+                  "unrelated.txt"
+                ]
+              },
+              "routine": {
+                "id": "maintenance",
+                "version": "0.1",
+                "steps": [
+                  "implement",
+                  "verify",
+                  "review",
+                  "record"
+                ],
+                "completion": "candidate evidence, applicable independent review and checked publication required"
+              },
+              "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+              "reason": "Unicode normalization verified after PGI3-C4 reattachment."
+            },
+            "coverage": "known"
+          },
+          {
+            "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+            "observation": {
+              "kind": "approval.resolved",
+              "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+              "itemId": "0",
+              "phase": "",
+              "text": "",
+              "status": "",
+              "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+              "receivedAt": "2026-10-08T15:42:23.993091055Z"
+            }
+          },
+          {
+            "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+            "observation": {
+              "kind": "tool.completed",
+              "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+              "itemId": "exec-330b40b9-1520-42cf-ba4c-dea9305e4cb2",
+              "phase": "",
+              "text": "",
+              "status": "completed",
+              "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+              "receivedAt": "2026-10-08T15:42:24.058302734Z"
+            }
+          },
+          {
+            "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+            "observation": {
+              "kind": "agentMessage",
+              "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+              "itemId": "msg_001562b0fb15ebc3016ac7b9e254b88191bb29aabef49ffbfe",
+              "phase": "final_answer",
+              "text": "Candidate uses `strings.TrimSpace` to trim Unicode boundary whitespace while preserving interior tabs, whitespace, and case. Added eight regression cases; four failed before the fix.\n\n`go test ./...` exited 0:\n```text\nok  \tpgi3pilot\t0.002s\n```\n\nProtected file hashes remain unchanged. The single report action succeeded using the specified operation ID; run state is `verifying`, revision 31.\n\nRemaining gaps: transport observation `gap: true`; no available SDP skill found; independent review and owner acceptance remain outstanding. No commits, canonical publication, or completion marking occurred.",
+              "status": "",
+              "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+              "receivedAt": "2026-10-08T15:42:30.444532317Z"
+            }
+          },
+          {
+            "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+            "observation": {
+              "kind": "turn.completed",
+              "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+              "itemId": "",
+              "phase": "",
+              "text": "",
+              "status": "completed",
+              "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+              "receivedAt": "2026-10-08T15:42:30.471721668Z"
+            }
+          },
+          {
+            "schema": "sdp-project-governance/0.1",
+            "operation": "host.observe",
+            "projectRef": "pgi3-live",
+            "checkoutId": "6c852845-e147-4a46-89a5-68004dd06ff9",
+            "operationId": "2cd37963-a0e0-4640-8d19-c6ebc0c5e660",
+            "run": {
+              "inputs": [
+                {
+                  "contentOmitted": true,
+                  "id": "78356d97-579d-49f1-9585-bf258e2270ae",
+                  "kind": "launch",
+                  "text": "",
+                  "payload": "",
+                  "attemptId": "57fc7c17-492f-4b1f-acb8-eef742d3a733",
+                  "epoch": "250e4178-d7bc-4e95-8032-16e536da35bc",
+                  "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+                  "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+                  "state": "acknowledged",
+                  "receivedAt": "2026-10-08T15:41:00.396652427Z"
+                },
+                {
+                  "contentOmitted": true,
+                  "id": "f9eb088b-a023-4fd8-8b47-80e6d9780216",
+                  "kind": "steer",
+                  "text": "",
+                  "payload": "",
+                  "attemptId": "57fc7c17-492f-4b1f-acb8-eef742d3a733",
+                  "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+                  "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+                  "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+                  "state": "acknowledged",
+                  "receivedAt": "2026-10-08T15:41:06.505017525Z"
+                },
+                {
+                  "contentOmitted": true,
+                  "id": "62922fa1-d159-4eeb-9d31-8cedf7180d67",
+                  "kind": "approval",
+                  "text": "",
+                  "payload": "",
+                  "attemptId": "57fc7c17-492f-4b1f-acb8-eef742d3a733",
+                  "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+                  "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+                  "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+                  "state": "acknowledged",
+                  "receivedAt": "2026-10-08T15:42:23.932472291Z"
+                }
+              ],
+              "attempts": [
+                {
+                  "hostIdentity": "af28ffd5495e2ba3c4961672bb3b31a06b10e8f6361c5c2f93065e95ceb5d6e1",
+                  "agentEpoch": "250e4178-d7bc-4e95-8032-16e536da35bc",
+                  "lastObservedAt": "2026-10-08T15:42:30.471721668Z",
+                  "eventCount": 23,
+                  "id": "57fc7c17-492f-4b1f-acb8-eef742d3a733",
+                  "hostVersion": "0.161.0",
+                  "threadId": "01a11c2c-cc83-78e3-ac1a-78396575db06",
+                  "turnId": "01a11c2c-cd6c-7681-ac64-19a4e83c0aa4",
+                  "inputRevision": "d6d94c3cf8d079c41e9d8f659a1cb89653116629609079faf790f19e4801e9c7",
+                  "epoch": "ddb8b246-e5f4-426e-9250-7ec9b568ae3d",
+                  "status": "completed",
+                  "gap": true,
+                  "events": []
+                }
+              ],
+              "id": "8ae8ddd6-1c23-4ee3-8113-a3819c052fdb",
+              "revision": 54,
+              "requestId": "e23bffc9-b484-405f-8888-5c961fb67659",
+              "state": "verifying",
+              "step": "implement",
+              "inputRevision": "d6d94c3cf8d079c41e9d8f659a1cb89653116629609079faf790f19e4801e9c7",
+              "selection": {
+                "card": "SDP/KanBan/active/card.md",
+                "plan": "SDP/Maintenance/Plan.md",
+                "session": "SDP/Sessions/session.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Fix NormalizeLabel Unicode boundary whitespace while preserving interior content; verify with Go tests",
+                "writablePaths": [
+                  "normalize.go",
+                  "normalize_test.go"
+                ],
+                "excludedPaths": [
+                  "SDP",
+                  "AGENTS.md",
+                  "go.mod",
+                  "unrelated.txt"
+                ]
+              },
+              "routine": {
+                "id": "maintenance",
+                "version": "0.1",
+                "steps": [
+                  "implement",
+                  "verify",
+                  "review",
+                  "record"
+                ],
+                "completion": "candidate evidence, applicable independent review and checked publication required"
+              },
+              "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+              "reason": "Unicode normalization verified after PGI3-C4 reattachment."
+            },
+            "coverage": "known"
+          }
+        ]
+      },
+      "preimages": {
+        "AGENTS.md": "08215fd6800033dc25c64adfc98a15513934a606620a6bf131df0419b30924db",
+        "SDP/SDP-project.manifest.yaml": "79bc6ab712a7ebce35a8bc92cb9517a1ec7e7df1c94bde0557e80449add64023",
+        "SDP/KanBan/active/card.md": "68dfb40e92a4562d8797727ca8398cf2132cce31cf7ee395ab0ebb844caf8072",
+        "SDP/Maintenance/Plan.md": "ece9873bd0c32d327954ba4c7d82cd5c00d6c6e5c53130d48d0ca61b88bf0b51",
+        "SDP/Sessions/session.md": "7831e5b1a79e20fe5acec68fa28349ebfa874cfb597c2b8498dee07eb93a00b6",
+        "SDP/authority.md": "58aa3112c402b0631d769783f64922ae440e192feaa3e00608846779d0864076",
+        "SDP/ProjectManagement/Ledger.ndjson": "23273b4c57db04b637df7162d6706281d3d62a02a401ffe748f472c5e9f67541",
+        "go.mod": "9a9f71735472a740633fd8b7eea4c820ef23a62e82203bce7c8291b80824c885",
+        "normalize.go": "25a6c8c3d87a3054604a3b52561a0e6b266f9e0b7a3e85ea53405fdfc88e2827",
+        "normalize_test.go": "2c68aa7113a6d4bc83e932b1c0e94619b36c919bb42f40b2ef85af3fcd8a68e3",
+        "unrelated.txt": "543a1a908a7869f50819ce1c9b46282fc182ccb862cf6ae41e97b7bc99939a53"
+      },
+      "postimages": {
+        "AGENTS.md": "08215fd6800033dc25c64adfc98a15513934a606620a6bf131df0419b30924db",
+        "SDP/SDP-project.manifest.yaml": "79bc6ab712a7ebce35a8bc92cb9517a1ec7e7df1c94bde0557e80449add64023",
+        "SDP/KanBan/active/card.md": "68dfb40e92a4562d8797727ca8398cf2132cce31cf7ee395ab0ebb844caf8072",
+        "SDP/Maintenance/Plan.md": "ece9873bd0c32d327954ba4c7d82cd5c00d6c6e5c53130d48d0ca61b88bf0b51",
+        "SDP/Sessions/session.md": "7831e5b1a79e20fe5acec68fa28349ebfa874cfb597c2b8498dee07eb93a00b6",
+        "SDP/authority.md": "58aa3112c402b0631d769783f64922ae440e192feaa3e00608846779d0864076",
+        "SDP/ProjectManagement/Ledger.ndjson": "23273b4c57db04b637df7162d6706281d3d62a02a401ffe748f472c5e9f67541",
+        "go.mod": "9a9f71735472a740633fd8b7eea4c820ef23a62e82203bce7c8291b80824c885",
+        "normalize.go": "6cd9379fdc90e80e1d45f871ca0cb7a4612fc7172fee86a4ebfb38b245b5b1a0",
+        "normalize_test.go": "8aa4019233090bdc885810bcd8f4e2c4746ee18785d2063a0b0d4e37f86080e0",
+        "unrelated.txt": "543a1a908a7869f50819ce1c9b46282fc182ccb862cf6ae41e97b7bc99939a53"
+      },
+      "verification": "ok  \tpgi3pilot\t0.003s\n",
+      "finalSource": {
+        "normalize.go": "package pgi3pilot\n\nimport \"strings\"\n\nfunc NormalizeLabel(s string) string { return strings.TrimSpace(s) }\n",
+        "normalize_test.go": "package pgi3pilot\n\nimport \"testing\"\n\nfunc TestNormalizeLabel(t *testing.T) {\n\ttests := []struct {\n\t\tname  string\n\t\tinput string\n\t\twant  string\n\t}{\n\t\t{name: \"ASCII spaces\", input: \"  Keep  Case  \", want: \"Keep  Case\"},\n\t\t{name: \"Unicode boundaries\", input: \"\\u00a0\\u2003Keep Case\\u202f\\u3000\", want: \"Keep Case\"},\n\t\t{name: \"ASCII whitespace\", input: \"\\t\\r\\n Keep Case \\v\\f\", want: \"Keep Case\"},\n\t\t{name: \"interior content\", input: \"\\u2003MiXeD\\t\\t  CaSe\\u00a0Label\\u3000\", want: \"MiXeD\\t\\t  CaSe\\u00a0Label\"},\n\t\t{name: \"unchanged\", input: \"MiXeD\\t Label\", want: \"MiXeD\\t Label\"},\n\t\t{name: \"empty\", input: \"\", want: \"\"},\n\t\t{name: \"only whitespace\", input: \" \\t\\n\\u0085\\u00a0\\u2003\\u2028\\u2029\\u202f\\u3000\", want: \"\"},\n\t\t{name: \"non-whitespace boundaries\", input: \"\\u200bKeep Case\\u200b\", want: \"\\u200bKeep Case\\u200b\"},\n\t}\n\tfor _, tt := range tests {\n\t\tt.Run(tt.name, func(t *testing.T) {\n\t\t\tif got := NormalizeLabel(tt.input); got != tt.want {\n\t\t\t\tt.Errorf(\"NormalizeLabel(%q) = %q, want %q\", tt.input, got, tt.want)\n\t\t\t}\n\t\t})\n\t}\n}\n"
+      }
+    }
+  ],
+  "verification": {
+    "race": {
+      "command": "go -C SDPTool test -race -count=1 ./governance ./governancehost ./governancecontroller ./governancemcp",
+      "exitCode": 0,
+      "sha256": "c14d6bc5fb4b5dbf488486722639e6864d9738f3e2635b62bb057cbd594f29d4",
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t4.277s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancehost\t1.117s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancecontroller\t24.772s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancemcp\t4.535s\n"
+    },
+    "compiledCLI": {
+      "command": "go -C SDPTool test -race -count=1 -run ^TestCompiledGovernanceJourney$ .",
+      "exitCode": 0,
+      "sha256": "5c49f98d75c3a83732b2d48aef6aebe4580f1693894392084a398b08aea9d2ad",
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool\t1.774s\n"
+    },
+    "vet": {
+      "command": "go -C SDPTool vet ./governance ./governancehost ./governancecontroller ./governancemcp ./cmd/sdp-controller",
+      "exitCode": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output": ""
+    },
+    "schemas": {
+      "command": "Captured core, installed 0.161.0 protocol and both actual live journeys validated",
+      "exitCode": 0,
+      "sha256": "0f649b5680178995be88c98633aace0a0b506d073252b807c0b0dcb76319cc18",
+      "output": "PASS: 9 captured core request/result records\nPASS: 12 installed 0.161.0 host protocol cases including thread/resume\nPASS: 54 actual live Result/Observation records across graceful and abrupt reconnect trials\n"
+    },
+    "management": {
+      "command": "python3 SDP/ProjectManagement/validate.py",
+      "exitCode": 0,
+      "sha256": "9dbc47f3d92e8df6fb7f1e1f472030bc201925d4089cbf4f15ea0f5144ba9b82",
+      "output": "PASS: 61 cards, 38 management records, 4 lineage operations, 515 events; schema/history/metadata/placement/grouping\n"
+    },
+    "toolkit": {
+      "command": "python3 Toolkit/scripts/validate_sdp.py",
+      "exitCode": 0,
+      "sha256": "5e9d1353c22f090c8b066ba39da56ff229fbc1b07a7e12e21bb8ac9ffbb9e3ad",
+      "output": "SDP Toolkit validation passed\n"
+    },
+    "integrity": {
+      "outcome": "pass",
+      "checks": [
+        "Product/test file hashes match",
+        "Management and traceability ledger prefixes preserved",
+        "Private event IDs unique",
+        "Changed Markdown links resolve",
+        "Rebuilt controller identical to both successful live trials",
+        "One host turn and approval/report in each live journey",
+        "git diff --check"
+      ]
+    }
+  },
+  "reproduction": {
+    "artifactRoot": "/tmp/sdp-pgi3-c4",
+    "setup": "import json,subprocess,uuid,hashlib\nfrom pathlib import Path\nbase=Path('/tmp/sdp-pgi3-c4/trial4');root=base/'project';root.mkdir(parents=True,exist_ok=True)\nfiles={\n'AGENTS.md':'# Pilot assignment\\nRead SDP/authority.md and selected work. No delegation. Only normalize.go and normalize_test.go may change. Never edit SDP records, go.mod or unrelated.txt. This is a disposable live workflow test authorized by PLAN-SDP-0018 PGI3. Use the available Go toolchain.\\n',\n'SDP/SDP-project.manifest.yaml':\"schemaVersion: '1.0'\\nproject:\\n  name: pgi3-live\\n\",\n'SDP/KanBan/active/card.md':'| Field | Value |\\n| --- | --- |\\n| id | KB-PILOT-001 |\\n| PlanId | MAINT-PILOT-0001 |\\n| CardState | in-progress |\\n',\n'SDP/Maintenance/Plan.md':'# Bounded label-normalization fix\\n\\n| Field | Value |\\n| --- | --- |\\n| id | MAINT-PILOT-0001 |\\n| PlanType | MaintenancePlan |\\n| state | active |\\n\\nM1: NormalizeLabel must trim surrounding Unicode whitespace while preserving interior whitespace and case. Fix only normalize.go and normalize_test.go. Verify go test ./...; retain the unrelated file. No delegation, publication or records editing.\\n',\n'SDP/Sessions/session.md':'# Live pilot goal\\n\\n| State | Step | Work |\\n| --- | --- | --- |\\n| active | S1 | Fix normalization and verify preservation |\\n\\n| Field | Value |\\n| --- | --- |\\n| Session reference | SESSION-PILOT-0001 |\\n| Status | active |\\n',\n'SDP/authority.md':'Owner continuation on 2026-10-08 authorizes PLAN-SDP-0018 PGI3-C4 live reattachment and bounded Maintenance verification. This disposable fixture exercises that selected scope. Fix Unicode boundary whitespace normalization; do not expand scope or invoke child agents. Canonical SDP documents must remain byte-identical.\\n',\n'SDP/ProjectManagement/Ledger.ndjson':json.dumps({'schemaVersion':'1.0','eventId':'EVT-KB-PILOT-000001','eventType':'x-kanban:created','subjectId':'KB-PILOT-001','payload':{'schemaVersion':'0.2','previousEventId':None,'to':'active','toPath':'active/card.md'}})+'\\n'+json.dumps({'schemaVersion':'1.0','eventId':'EVT-PM-PILOT-000001','eventType':'x-management:started','subjectId':'MAINT-PILOT-0001','payload':{'schemaVersion':'0.2','previousEventId':None,'to':'active','toPath':'Maintenance/Plan.md'}})+'\\n',\n'go.mod':'module pgi3pilot\\n\\ngo 1.26.0\\n',\n'normalize.go':'package pgi3pilot\\n\\nimport \"strings\"\\n\\nfunc NormalizeLabel(s string) string { return strings.Trim(s, \" \") }\\n',\n'normalize_test.go':'package pgi3pilot\\n\\nimport \"testing\"\\n\\nfunc TestNormalizeLabel(t *testing.T) { if got := NormalizeLabel(\"  Keep  Case  \"); got != \"Keep  Case\" { t.Fatal(got) } }\\n',\n'unrelated.txt':'User-owned dirty fixture; preserve these exact bytes.\\n'\n}\nfor name,content in files.items():\n p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(content)\nsel={'card':'SDP/KanBan/active/card.md','plan':'SDP/Maintenance/Plan.md','session':'SDP/Sessions/session.md','authority':'SDP/authority.md','step':'S1'}\nstate=base/'state';binary='/tmp/sdp-pgi3-c4/bin/sdptool'\ndef call(op,q=None):\n args=[binary,str(root),'governance',op,'--state',str(state),'--json']\n if q is not None:\n  f=base/(op+'.json');f.write_text(json.dumps(q));args+=['--input',str(f)]\n return json.loads(subprocess.check_output(args))\nc=call('context',sel);assert c['conditions']==[],c\nr=call('route',{'schema':'sdp-project-governance/0.1','categories':['maintenance'],'selection':sel,'routineId':'maintenance','routineVersion':'0.1'});assert r['disposition']=='matched',r\nb=call('bind')\nrun=call('start',{'schema':'sdp-project-governance/0.1','projectRef':b['projectRef'],'checkoutId':b['checkoutId'],'operationId':str(uuid.uuid4()),'requestId':str(uuid.uuid4()),'inputRevision':c['revision'],'routineDigest':r['routineDigest'],'selection':sel,'assignment':{'outcome':'Fix NormalizeLabel Unicode boundary whitespace while preserving interior content; verify with Go tests','writablePaths':['normalize.go','normalize_test.go'],'excludedPaths':['SDP','AGENTS.md','go.mod','unrelated.txt']}})\n(base/'run.json').write_text(json.dumps(run,indent=2)+'\\n')\n(base/'preimages.json').write_text(json.dumps({name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in files},indent=2)+'\\n')\n(base/'owner.txt').write_text('First send commentary REATTACH_WINDOW, then run sleep 25 as a transport-test synchronization command before inspecting or editing code. After that, fix the covered NormalizeLabel defect and its tests. Preserve interior whitespace and case. First read the governing records and inspect the current code. Use assignment-bound MCP run_read to inspect your run. Work only within the stored assignment. Run go test ./... and return exact observed results and any gaps. Do not spawn agents, publish records, commit or mark the work completed.\\n')\nprint('Prepared authorized disposable fixture; run',run['run']['id'])\n",
+    "driver": "import json,subprocess,uuid,hashlib,os,time,socket,websocket,queue,threading\nfrom pathlib import Path\nbase=Path('/tmp/sdp-pgi3-c4');trial=base/'trial4';root=trial/'project';state=trial/'state';binary=base/'bin/sdp-controller';sock=str(base/'live4.sock')\nrun=json.loads((trial/'run.json').read_text());rid=run['run']['id'];op=str(uuid.uuid4())\nwith (trial/'owner.txt').open('a') as f:f.write('\\nAfter testing, call run_read immediately before one run_transition action report. Use exact current checkoutId, projectRef, inputRevision, runId and expectedRevision from run_read. Use operationId '+op+'. Reason: Unicode normalization verified after PGI3-C4 reattachment. Wait for the tool result. Do not retry a refused report. This is a disposable test-driver scenario, not owner acceptance.\\n')\nserver=subprocess.Popen(['codex','app-server','--listen','unix://'+sock],cwd=root,stdin=subprocess.DEVNULL,stdout=subprocess.DEVNULL,stderr=open(trial/'host.err','w'))\nclients=[]\ndef launch(action):\n args=[str(binary),action,'--project',str(root),'--state',str(state),'--run',rid,'--host-socket',sock,'--approvals','ask','--timeout','5m']\n if action=='run':args+=['--mcp-binary',str(base/'bin/sdp-mcp'),'--message',str(trial/'owner.txt'),'--sandbox','workspace-write']\n p=subprocess.Popen(args,stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=open(trial/(action+'.err'),'w'),text=True,bufsize=1);clients.append(p);return p\n\ndef inspect(tid):\n conn=socket.socket(socket.AF_UNIX,socket.SOCK_STREAM);conn.connect(sock)\n ws=websocket.create_connection('ws://localhost',socket=conn,timeout=15)\n def call(i,m,params):\n  ws.send(json.dumps(dict(id=i,method=m,params=params)))\n  while True:\n   r=json.loads(ws.recv())\n   if r.get('id')==i:\n    assert 'error' not in r,r.get('error');return r['result']\n try:\n  call(1,'initialize',{'clientInfo':{'name':'sdp_c4_observer','version':'1'},'capabilities':{'experimentalApi':False}})\n  ws.send('{\"method\":\"initialized\",\"params\":{}}')\n  t=call(2,'thread/read',{'threadId':tid,'includeTurns':True})['thread']\n  return {'id':t['id'],'status':t['status'],'turns':[{'id':v['id'],'status':v['status'],'items':[{'id':i['id'],'type':i['type'],'status':i.get('status'),'server':i.get('server'),'tool':i.get('tool'),'error':i.get('error')} for i in v['items']]} for v in t['turns']]}\n finally:ws.close()\ntry:\n for _ in range(200):\n  if os.path.exists(sock):break\n  time.sleep(.05)\n print('socket ready',sock,os.path.exists(sock),'server',server.poll(),flush=True)\n p=launch('run');detached=False\n with (trial/'launch-events.ndjson').open('w') as events:\n  for line in p.stdout:\n   events.write(line);events.flush();v=json.loads(line)\n   if 'run' in v and not detached:\n    a=v['run']['attempts'][-1];original=a;tid=a['threadId'];turn=a['turnId']\n   if v.get('observation',{}).get('kind')=='agentMessage' and not detached:\n    time.sleep(2)\n    before=inspect(tid);(trial/'before-detach.json').write_text(json.dumps(before,indent=2)+'\\n')\n    assert before['status']['type']=='active' and any(t['id']==turn and t['status']=='inProgress' for t in before['turns']),before\n    p.kill();detached=True\n assert detached and p.wait(timeout=20)==-9,(detached,(trial/'run.err').read_text())\n assert server.poll() is None,'disconnect killed server'\n print('Killed controller during executing mapped turn; separate server survives',flush=True)\n p=launch('attach');attached=None;prompts=[]\n with (trial/'attach-events.ndjson').open('w') as events:\n  for line in p.stdout:\n   events.write(line);events.flush();v=json.loads(line)\n   if 'run' in v and attached is None:\n    attached=v['run']['attempts'][-1]\n    assert len(v['run']['attempts'])==1 and attached['id']==original['id'] and attached['threadId']==tid and attached['turnId']==turn\n    assert attached['epoch']!=original['epoch'] and attached['agentEpoch']==original['agentEpoch'] and attached['gap']\n    p.stdin.write(json.dumps({'action':'steer','text':'Continue the same covered Unicode normalization assignment. Preserve interior tabs and case. Use the previously specified report operation ID after testing; do not start another task.'})+'\\n');p.stdin.flush()\n    print('New controller attached to same attempt/turn and submitted steering',flush=True)\n   if 'approval' in v:\n    prompt=v['approval'];q=prompt['request'];assert q['runId']==rid and q['operationId']==op and q['action']=='report',prompt\n    reply={k:prompt[k] for k in ['requestId','threadId','turnId','epoch']};reply['decision']='accept'\n    cmd={'action':'approval','approval':reply};(trial/'driver-decision.json').write_text(json.dumps(cmd,indent=2)+'\\n');p.stdin.write(json.dumps(cmd)+'\\n');p.stdin.flush();prompts.append(prompt)\n    print('Explicitly answered new-connection report request',flush=True)\n assert p.wait(timeout=20)==0,(trial/'attach.err').read_text()\n assert attached is not None and len(prompts)==1,prompts\n status=json.loads(subprocess.check_output([str(binary),'status','--project',str(root),'--state',str(state),'--run',rid],text=True));(trial/'final-status.json').write_text(json.dumps(status,indent=2)+'\\n')\n assert status['run']['state']=='verifying',status['run']['state']\n assert len(status['run']['attempts'])==1 and status['run']['attempts'][0]['status']=='completed'\n assert all(i['state']=='acknowledged' for i in status['run']['inputs'])\n history=inspect(tid);(trial/'host-summary.json').write_text(json.dumps(history,indent=2)+'\\n')\n assert len(history['turns'])==1\n reports=[i for i in history['turns'][0]['items'] if i['type']=='mcpToolCall' and i['tool']=='run_transition']\n assert len(reports)==1 and reports[0]['status']=='completed' and reports[0]['error'] is None,reports\n pre=json.loads((trial/'preimages.json').read_text());changed=[name for name,digest in pre.items() if hashlib.sha256((root/name).read_bytes()).hexdigest()!=digest]\n assert sorted(changed)==['normalize.go','normalize_test.go'],changed\n verification=subprocess.run(['/home/warloc/.local/bin/go','test','./...'],cwd=root,capture_output=True,text=True);(trial/'verify.txt').write_text(verification.stdout+verification.stderr);assert verification.returncode==0\n print('PASS: one live run/attempt/thread/turn; new observer epoch, original agent capability, steering, approved report, terminal history, tests and exclusions preserved',flush=True)\nfinally:\n for p in clients:\n  if p.poll() is None:p.terminate();p.wait(timeout=10)\n server.terminate();server.wait(timeout=10)\n",
+    "note": "Disposable workflow driver; requires built binaries, websocket-client in a temporary environment and existing managed authentication. Driver acceptance is a test scenario, never owner acceptance. Change trial/socket paths to fresh directories for another run."
+  },
+  "limits": [
+    "PGI3 applicable native role and actual skill/context provenance remain open",
+    "The disposable projects omit an installed SDP skill collection; model declarations do not establish skill execution",
+    "Independent review, checked evidence acceptance/publication and full pilot closure remain open",
+    "Immediate same-process reattachment only; no indefinite disconnected execution or host-restart guarantee",
+    "Unresolved inputs/approval closure block attachment; no resend",
+    "Private historical event-ID collisions require deliberate integration reconciliation"
+  ]
+}

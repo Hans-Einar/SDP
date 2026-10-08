@@ -60,6 +60,7 @@ type Client struct {
 	errMu         sync.Mutex
 	err           error
 	Epoch         string
+	HostIdentity  string
 	UserAgent     string
 }
 
@@ -91,15 +92,22 @@ func Open(ctx context.Context, binary, cwd string) (*Client, error) {
 	}
 	c := newClient(in, out)
 	c.cmd = cmd
+	return c.initialize(ctx)
+}
+
+func (c *Client) initialize(ctx context.Context) (*Client, error) {
 	var init struct {
 		UserAgent      string `json:"userAgent"`
 		PlatformOs     string `json:"platformOs"`
 		PlatformFamily string `json:"platformFamily"`
 		CodexHome      string `json:"codexHome"`
 	}
-	e = c.call(ctx, "initialize", map[string]any{"clientInfo": map[string]string{"name": "sdp_governance", "title": "SDP ProjectGovernance", "version": "PGI2"}, "capabilities": map[string]any{"experimentalApi": false}}, &init)
+	e := c.call(ctx, "initialize", map[string]any{"clientInfo": map[string]string{"name": "sdp_governance", "title": "SDP ProjectGovernance", "version": "PGI2"}, "capabilities": map[string]any{"experimentalApi": false}}, &init)
 	if e == nil && (init.UserAgent == "" || init.PlatformOs == "") {
 		e = fmt.Errorf("incompatible_profile: missing initialize capabilities")
+	}
+	if e == nil && c.HostIdentity != "" && !strings.HasPrefix(init.UserAgent, "sdp_governance/"+HostVersion+" ") {
+		e = fmt.Errorf("incompatible_profile: socket server version mismatch")
 	}
 	if e == nil {
 		e = c.send(map[string]any{"method": "initialized", "params": map[string]any{}})
@@ -272,16 +280,19 @@ func (c *Client) AccountMode(ctx context.Context) (string, error) {
 }
 
 type Thread struct {
-	ID     string `json:"id"`
-	Status struct {
+	Cwd        string `json:"cwd"`
+	CLIVersion string `json:"cliVersion"`
+	ID         string `json:"id"`
+	Status     struct {
 		Type string `json:"type"`
 	} `json:"status"`
 	Turns []Turn `json:"turns"`
 }
 type Turn struct {
-	ID     string            `json:"id"`
-	Status string            `json:"status"`
-	Items  []json.RawMessage `json:"items"`
+	ItemsView string            `json:"itemsView"`
+	ID        string            `json:"id"`
+	Status    string            `json:"status"`
+	Items     []json.RawMessage `json:"items"`
 }
 
 // StartProbeThread creates an ephemeral, idle, read-only thread. It does not
