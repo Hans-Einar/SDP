@@ -1,0 +1,9 @@
+PASS divider drag changes shared proportion without SDL
+PASS focused divider arrow changes relative proportion
+PASS positive-minimum first child collapses to zero
+PASS collapsed resize retains saved proportion and zero extent
+PASS Space restores legal measured proportion
+PASS programmatic ratio below minimum rejects
+PASS compatible reload retains collapse and focus
+PASS divider remains operable after reload
+PASS native teardown closes session and clears provider barriers

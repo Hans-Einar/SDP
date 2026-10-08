@@ -1,0 +1,457 @@
+{
+  "base": "a4f2c22435d91fe07935b8b9d5fcf46fafc6e36b",
+  "files": [
+    {
+      "path": "SDL/go/bridge/README.md",
+      "sha256": "37b05beaea2e6ae9cafc67ac3c3708d0395d14ddea3a659849cde8efa3b870aa"
+    },
+    {
+      "path": "SDL/go/bridge/bind.go",
+      "sha256": "44259d5e8e51868f3dd63d09b52b83257bf3523db9e87479371feaaeab9378ae"
+    },
+    {
+      "path": "SDL/go/bridge/commands_test.go",
+      "sha256": "42ac49b26fabe730de8f4238ad2088b888f275f76e62092f679e7294e05f0533"
+    },
+    {
+      "path": "SDL/go/bridge/interaction.go",
+      "sha256": "7ff0fdbe268062ff00cc6d03f097563a314d5135b6f777573f9502860db39d6b"
+    },
+    {
+      "path": "SDL/go/bridge/results.go",
+      "sha256": "09162e9e4d33e17dbb6390653fb9dbebc1da2f21909f744ba6494448e5f8d018"
+    },
+    {
+      "path": "SDL/go/bridge/values.go",
+      "sha256": "33ce0c15614ce5979b5aea9be07d4c599a4bfe54557355b466a72c27ebe48539"
+    },
+    {
+      "path": "SDL/go/examples/commands/README.md",
+      "sha256": "9b9fe0e83cfb729cf7e1ef322063c76bb650262108a2d119b159026433dfa4ff"
+    },
+    {
+      "path": "SDL/go/examples/commands/cmd/native/main.go",
+      "sha256": "e1ce093c53397d1ae2df85c2c8afe64e55ecb74f7def97365a0765358f8a303b"
+    },
+    {
+      "path": "SDL/go/examples/commands/controls.go",
+      "sha256": "27278fa57c0e019dbf520a1f763cc6fdb2b504282b3a84ea0b8e179330bf07ba"
+    },
+    {
+      "path": "SDL/go/examples/commands/fixture.go",
+      "sha256": "98768ceaa295e8b93c80e758391e70790d3257288a1a2be2bcba93d6576b440a"
+    },
+    {
+      "path": "SDL/go/examples/commands/fixture_test.go",
+      "sha256": "3007da6f8ce3deaa5a12208ed38b6582b773e10ceeae971a2aa647cd62c46fb6"
+    },
+    {
+      "path": "SDL/go/examples/commands/providers.go",
+      "sha256": "14a0b4444c3b3342eed50cb5d0733164af6a1c30cd08b48ddff9ebb6ce10fc4c"
+    },
+    {
+      "path": "SDL/go/examples/commands/source.go",
+      "sha256": "d23b373149de45b082603673a9e975e72ed01a0d846fa4c4b055266b18883fb2"
+    },
+    {
+      "path": "SDL/go/go.mod",
+      "sha256": "f5d9614ac243e3f78b2018de20b1d1d93a5a6be01f2d8cd182694415bb638efe"
+    },
+    {
+      "path": "SDL/go/go.sum",
+      "sha256": "14d7a86d1e9f33e231efa435eebe7e1e219a007ae1b014cf0a072761bc4955ec"
+    },
+    {
+      "path": "SDUI/docs/architecture.md",
+      "sha256": "c46b4e0ff1a82d8df62638061c03c23e6b7b97c6a2fa82f2643ad2cbf68fc9ae"
+    },
+    {
+      "path": "SDUI/docs/go-generation.md",
+      "sha256": "1dab1017e3237d01f8057705df439989c2d1a8875b4cbcafd3964f3224d74ffd"
+    },
+    {
+      "path": "SDUI/docs/go-layout-contract.md",
+      "sha256": "4f0039719bd7755611574c96472b9416ebfcf04061ff0a7da54247db1f99dccf"
+    },
+    {
+      "path": "SDUI/docs/profile-0.3.md",
+      "sha256": "b8d452c37eee26bbbf0b6c5eb34c83ccd8be67d8768b0f1072c50e96f1b0ee2b"
+    },
+    {
+      "path": "SDUI/docs/requirements.md",
+      "sha256": "8d913b712c958510f3c6ead4abdc6c5139232d2a590ae97013ff931c784a57e5"
+    },
+    {
+      "path": "SDUI/docs/runtime-contract.md",
+      "sha256": "cd18db2f684869123fafe2d2cfeedc78e21f27b04a1086a4325830521c9a8eb6"
+    },
+    {
+      "path": "SDUI/docs/wci2-m2-layout-api.md",
+      "sha256": "15d8b348c6369543dce36f64a471e133302d16469a5e1d9c0aeeaed5d738411a"
+    },
+    {
+      "path": "SDUI/go/cmd/sdui/interactions_test.go",
+      "sha256": "0b222d8731c1f0997fd33f4881e4feb6a68c10a1cd211d058431d70f9fabd8cc"
+    },
+    {
+      "path": "SDUI/go/codegen/generate.go",
+      "sha256": "8b356af69ac312168540791374e3ac9bd3ad3b5d662b8e23614c7934022d4f3a"
+    },
+    {
+      "path": "SDUI/go/codegen/interactions_test.go",
+      "sha256": "861dd3617cc4fb46979ab42abde88c8b08645fcdf80ae02cd336d8514410ad87"
+    },
+    {
+      "path": "SDUI/go/go.mod",
+      "sha256": "2f53db6c9468fff06241702575129788424366a05d07ef3646f47cdab5e24969"
+    },
+    {
+      "path": "SDUI/go/go.sum",
+      "sha256": "692c019a4d399a0183f9f02a291aac808886af2be7df9de42ceea8367acaefaf"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/README.md",
+      "sha256": "a52ac229bf1d6e3ea509b322cf9763162add5a33ac0c6990c61d772aba84a4ad"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/admission/admission.go",
+      "sha256": "33f856cde1a6e2ff844305f40e3561da7061eb752ba206820abba171e78f46b4"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/collection_control.go",
+      "sha256": "1718b2ae8b2990d22ea0f0c285b5ff433d9f2b4f7c964bbed3c4ec5773334601"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/collection_metrics.go",
+      "sha256": "d686f3fe8cb6b0d411cf9b5fcd79bf38639eb646a8ee054774faf5b2f76f5fb3"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/command_admission_test.go",
+      "sha256": "7bba53d95efbba2d7744075153c76d63a1c76b62c989449a8e4bfe9e67cbb797"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/command_button.go",
+      "sha256": "f34a9f2253bd77a1fdf892e4b8e43471385549f399c0acd6ffb54b560ea36aa9"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/command_keys.go",
+      "sha256": "eed66cac075232dc8bb8af906eb323d7948acdae76ace2cf4195770a14ff1053"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/command_resources.go",
+      "sha256": "f3a517fcf6c5732b4097bbd1e522f458772e9ab1fb6f3611819ee3f4e9d5a639"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/commands_test.go",
+      "sha256": "84ecb5d72644a2da8086a40fb795aa1dd43546e2d707ac31e256e7bf368eea3e"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/context_control.go",
+      "sha256": "f2130d8457f1162fcbde05f5672fbb22bd7bf1315bb26de08b213ad4197e9f58"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/document.go",
+      "sha256": "0c8512ea78580bb0870ecdaaded5627c2423c3c7aef13be12a92c46bf2a52a89"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/document_commands.go",
+      "sha256": "06cabe3e1c926621f4d5ea03282581e957585ef3cb6274445bfa9a5391cd9a5a"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/document_events.go",
+      "sha256": "5e76dc828b4e06d5606c484961fc54ababd8e6df0042f73cc56821039c507472"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/document_surfaces.go",
+      "sha256": "9a96857577e8b58848d7eef31c19735b9f142b80141bd08c68c063ad896c20a8"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/document_sync.go",
+      "sha256": "7ec9418051fdbcf1024af30d6a0dac52f82d3f5c612ea84aaa7c9c508bdeee15"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/input.go",
+      "sha256": "c337660906f214d3ee5b36093ce27a639c5e919f2b719d64581df55acfa55623"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/inspection.go",
+      "sha256": "8eaaecbea8876c893c64db9cfa08c011abcd0f8f4588f7bb71d1f9554ef8881b"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/inspection_m2_test.go",
+      "sha256": "981c958994820e2c8a05117136c77cdd0b79e017d3c39a22b1b656753a416547"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/native_menu.go",
+      "sha256": "4189927bc6d80eef4bddca749f7ffb408b7d02e20d6547ec7609b7ade72223dd"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/native_menu_test.go",
+      "sha256": "8b1f1673aaaf44feb1c0530806d772a1c87ad4b9b6c2998918490f459f10bd17"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/pane_divider.go",
+      "sha256": "74de6201bcbac84ae79c45d15f551c0d9454236dbc829f9480e88dbd0fa08276"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/pane_events.go",
+      "sha256": "256724db93264f3c57fae76f92c448585600a2ebab95348aab8529097678a644"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/pane_header.go",
+      "sha256": "7f81085d4cb9ae572bc592d3e366e7c84a12c501aa9ef18d3b7f0ab2d4b83417"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/pane_metrics.go",
+      "sha256": "2e631c1854776730f5b3a8e9441904682ec7b5b86e85618ea7d4a0b41cf9e0ab"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/surface_focus.go",
+      "sha256": "3b8f2cf391a69d307358513f2649e7536ec1f07c39364c39fc5265fc4b352ec8"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/surface_parent_test.go",
+      "sha256": "33c36f03af4139432ba4cc02999923f28b3d995f565a6865587be9847b4c21b9"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/tooltip.go",
+      "sha256": "28c0b218bf363b63c5cd5dfcf2c9551660787100c32e19403477caaef194642c"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/view.go",
+      "sha256": "105d863e7856823d4982182dbbfb0dba37077db9228a993098d544fce9a5eba2"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/viewport_control.go",
+      "sha256": "103162ec62036104ef4ca95ff815933876cb225a6f81164d8052dedf7b7d5888"
+    },
+    {
+      "path": "SDUI/go/layout/auxiliary.go",
+      "sha256": "3839c558816db40928bbc3fef75c69e170e21af118a4d131f97447abe9030ed0"
+    },
+    {
+      "path": "SDUI/go/layout/canvas_background_test.go",
+      "sha256": "9e7aec18bc69f51e55230243e916b7c598992923e5979d1cb4b6df160d9af5e8"
+    },
+    {
+      "path": "SDUI/go/layout/canvas_gate_test.go",
+      "sha256": "ee53c6eb821426a84ece91db78ad6cced196ed44860b36ccde98763655e3b80d"
+    },
+    {
+      "path": "SDUI/go/layout/canvases.go",
+      "sha256": "47a6ce48122125ff6492308689f7405553199d83027ee03b1873a99178ee7db9"
+    },
+    {
+      "path": "SDUI/go/layout/canvases_test.go",
+      "sha256": "7d2c3ac356675c2892445e1b6a993b56cea2fe1eaab08a5028d099521b333f96"
+    },
+    {
+      "path": "SDUI/go/layout/contents.go",
+      "sha256": "1b0a1be2434e0c8574ee1191e916a2ba8f2b1f1c76b5b7415cf5808bc106a8ef"
+    },
+    {
+      "path": "SDUI/go/layout/engine.go",
+      "sha256": "5522bcb38fa08ca53257739d5d1cfb0ea89411bd0762ba8f216752beb4720384"
+    },
+    {
+      "path": "SDUI/go/layout/pane_minimum.go",
+      "sha256": "44a0723a58d34b0599947d8766997be5f1433e55904f30c0bee41ac361f1c212"
+    },
+    {
+      "path": "SDUI/go/layout/panes.go",
+      "sha256": "d233d9501aa0266de349265f4ffaf02ad48a55f4ca93a4a753bfa6163efe48c5"
+    },
+    {
+      "path": "SDUI/go/layout/types.go",
+      "sha256": "4f03529f75d341a29e00d9a97e31b39f3d380a0a8d0b1dcc39e0b9a8c11123b7"
+    },
+    {
+      "path": "SDUI/go/layout/viewport.go",
+      "sha256": "dac32c82826b94a1e2c19d8f8d7398556e21c3d09a73613b200bb79d3dda7192"
+    },
+    {
+      "path": "SDUI/go/parser/interaction_identity.go",
+      "sha256": "af9a45028b5630da8e19c7b4276b219ea57aead0d0a29817fdbd261003f64ecd"
+    },
+    {
+      "path": "SDUI/go/parser/interaction_schema.go",
+      "sha256": "c088ae962a25cb002abcc78b90dc5f59ca8ba371a8793c8fa77aed103fd41439"
+    },
+    {
+      "path": "SDUI/go/parser/interaction_validation.go",
+      "sha256": "4ecd7827cc57566ad6056b901797d908d65ed1b876dab3f7c8db13720d7e2661"
+    },
+    {
+      "path": "SDUI/go/parser/interactions_test.go",
+      "sha256": "c545442e6c004d6a5d6f67c4e94b06373e8d44dabbe189e57d7205aad19be45a"
+    },
+    {
+      "path": "SDUI/go/parser/normalize.go",
+      "sha256": "b4d7fcb5a56e1ff8c382b57f90fd51d540cefb609791828052dca3a0f18b35b6"
+    },
+    {
+      "path": "SDUI/go/parser/panes.go",
+      "sha256": "d5903901dc9d40df91b88704451f1b7541bdbe30b4ebe2b35aa64440256b86c4"
+    },
+    {
+      "path": "SDUI/go/parser/panes_test.go",
+      "sha256": "975f1d03eab4002c65cac869fac52f3baea292ed2c05a8513d88c8e34ebefd8d"
+    },
+    {
+      "path": "SDUI/go/parser/validate.go",
+      "sha256": "83a1ae196e4844eabf58f99aa065c94b9eefaff6b47da561f4c317d60fa0b134"
+    },
+    {
+      "path": "SDUI/go/preparation/capabilities.go",
+      "sha256": "5da51d9c77502627582a8e521c1ddce459c94fdfe755f7bcc4867bdb9baaf867"
+    },
+    {
+      "path": "SDUI/go/preparation/prepare.go",
+      "sha256": "78f3a4719512bf9b12070df62409e21dd145d4e30416483c9f1d22e55f05d03f"
+    },
+    {
+      "path": "SDUI/go/presentation/check.go",
+      "sha256": "04e2db01a9b0bb54aaafa847935d84ade7ac2c50770b4d1920a760b67b6d9a56"
+    },
+    {
+      "path": "SDUI/go/presentation/dump.go",
+      "sha256": "ad8414aaa97b3512f6c4b2f4bab1f11043903afe3f22060afaa47314146aa480"
+    },
+    {
+      "path": "SDUI/go/presentation/interactions.go",
+      "sha256": "25ec5623f43dc58c685499e230d2d086126ae570380be7e6fca000a53cae196f"
+    },
+    {
+      "path": "SDUI/go/presentation/interactions_test.go",
+      "sha256": "10796e09b18865941ef9cb10a2803373f330142aaef6f7b2771d2b609e49d89d"
+    },
+    {
+      "path": "SDUI/go/presentation/markdown.go",
+      "sha256": "4f5da65a6011b6444de86257956640b92f8133c9a9fe72d4417acdc347958cc9"
+    },
+    {
+      "path": "SDUI/go/presentation/panes_test.go",
+      "sha256": "8eceb1c0ab24139eb907536c7e06519bae15cfcc30230fa8491a3069d1350d8f"
+    },
+    {
+      "path": "SDUI/go/prototype/check.go",
+      "sha256": "c57b4e4c0cf6049abc4fe3f158090f7ae7316e0798cfa8d10f57e36e5c4d2aa4"
+    },
+    {
+      "path": "SDUI/go/prototype/interactions_test.go",
+      "sha256": "49a83080b32f1a20cbb63f91d970823eadc020c1a773d66bb10f5d25c5ed471e"
+    },
+    {
+      "path": "SDUI/go/runtime/README.md",
+      "sha256": "105331f975d114f91b6c23beceeb499368541c6b11751c49225c635d541343c8"
+    },
+    {
+      "path": "SDUI/go/runtime/collection_mutation.go",
+      "sha256": "38a99715e2d06ee73911d5d51450341cf3065e6baf0004677cf7cc2f78f91988"
+    },
+    {
+      "path": "SDUI/go/runtime/command_capture.go",
+      "sha256": "ba177e5752e6c1e9f80284555b190a80d23f3ebd75d4972ff05b3ea1fc85d6f3"
+    },
+    {
+      "path": "SDUI/go/runtime/command_context_test.go",
+      "sha256": "f211ebe0bd3d667a5fe5c23b2a5420983520a5ecd9d915604b490af0e147ea17"
+    },
+    {
+      "path": "SDUI/go/runtime/command_dispatch.go",
+      "sha256": "3ec820279918c34e9a89d941afb3b849a2f6f68fe6d47e805cca720ec993b020"
+    },
+    {
+      "path": "SDUI/go/runtime/command_init.go",
+      "sha256": "95ddcaa429f24d19ed3a4f8efc77c6e790ab746c895807639ab3a6782aef39ee"
+    },
+    {
+      "path": "SDUI/go/runtime/command_state.go",
+      "sha256": "d378b6ed25c15a25a9caa85f3f8bae97084a04473b6d74937c186f19dfdd0493"
+    },
+    {
+      "path": "SDUI/go/runtime/command_successor.go",
+      "sha256": "5dafe4ae075c6249f77ef616fb0f8f6887cf3b5d574b081bf401d1cbc8726e29"
+    },
+    {
+      "path": "SDUI/go/runtime/command_types.go",
+      "sha256": "8c4fc527e09c4862c5a71a6933383f0a2a172c2f702be2113c38a7c2ff3d9877"
+    },
+    {
+      "path": "SDUI/go/runtime/commands_test.go",
+      "sha256": "6bfe7e52d32e0fdca54d48ed94f2295cdfa398893dd5039a35066dfabe6c03df"
+    },
+    {
+      "path": "SDUI/go/runtime/dialogs_test.go",
+      "sha256": "2aa860e5eb750fbed9c1d4cf501f5e6c98830c84956b0dca017785655fe19e2a"
+    },
+    {
+      "path": "SDUI/go/runtime/events.go",
+      "sha256": "0494d3322a5c0e68ddbfa886bbeb400cd1ac66e303eff3106f75a354ad25ff14"
+    },
+    {
+      "path": "SDUI/go/runtime/interactions.go",
+      "sha256": "0a8d9ab719c5dde028d0e5e3ff597ecbc422df9b84f9b81a419a64ecd4f6647c"
+    },
+    {
+      "path": "SDUI/go/runtime/pane_activity.go",
+      "sha256": "c2c14c799970f3f10feacb58a9f465f79a502b9df4450dbd195de557a7d02fd9"
+    },
+    {
+      "path": "SDUI/go/runtime/panes.go",
+      "sha256": "49de3192892ae4489ad4156a9845ff9528ebfb453fd2eaacf83f7b36c321d267"
+    },
+    {
+      "path": "SDUI/go/runtime/properties.go",
+      "sha256": "86c41d03e30d4fe76d6c177d9ab26fe5827cdca6eb9ce02d0cbf367f55bb8b48"
+    },
+    {
+      "path": "SDUI/go/runtime/reload.go",
+      "sha256": "4754d5284ecf65c47987765545634c5897bcb73d63e58166f350f02df1af6b5f"
+    },
+    {
+      "path": "SDUI/go/runtime/session.go",
+      "sha256": "7839c530cd33f3b870b0db9e966f7eb60125937d53e8815be469a9847eecaadd"
+    },
+    {
+      "path": "SDUI/go/runtime/state.go",
+      "sha256": "843bb05e0b1f77a59683308ebd8848bc268e668a1697814f1e755feacd13024d"
+    },
+    {
+      "path": "SDUI/go/runtime/successor.go",
+      "sha256": "13524cb02a4dbd0160b0eaf1ca41576749a73a44c1353398fca2cedcec6550b1"
+    },
+    {
+      "path": "SDUI/go/runtime/surface_lifecycle_test.go",
+      "sha256": "d0532aabfa490d745e58a81f4493fdb55dd2f6fab59b148d05a7fc175ec3e263"
+    },
+    {
+      "path": "SDUI/go/runtime/surfaces.go",
+      "sha256": "f3fd9b8ce69c78f69bec7a884bb67ce5ca8874f70d724f196ae36d3503b79c51"
+    },
+    {
+      "path": "SDUI/go/runtime/types.go",
+      "sha256": "c3503d705525326b65fd07972bb16ed96446c85dcaae52a39b4d616da79e8ca7"
+    },
+    {
+      "path": "SDUI/go/svg/check.go",
+      "sha256": "9005d46a487db7afb8f0523f6276329284b4c3b339206cc489a85f8ee3353eb0"
+    },
+    {
+      "path": "SDUI/go/svg/interactions_test.go",
+      "sha256": "908e18cb4fb64df2684788da997fa04a8585f67f8a6e717d10b45ec50e480573"
+    },
+    {
+      "path": "SDUI/go/svg/panes_test.go",
+      "sha256": "f33764c87e49738185e243b7222f136eda3f29aaa9ebd20ca002d4673ffe4aa0"
+    },
+    {
+      "path": "SDUI/go/svg/render.go",
+      "sha256": "7fb8e908085bb6c28593a4eb6572b9532177a4041e14bd1e42847cfbd35f5e8a"
+    },
+    {
+      "path": "SDUI/grammar/sdui-0.3.ebnf",
+      "sha256": "5d1bf10b1d1cc5cb787333e1dfd32b63886e6430baa658f6b79a87358f71d26d"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci2-m2-wm-final-native", "sha256": "2c1db6d173c67ff873da4a7fdadb2a32722d3153705523622328e0d509be7806", "display": ":190", "variant": "wci2-m2-accept_failures"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [178, 56], "keep_focus": false}}
+{"kind": "check", "value": {"name": "fresh error opening has a new token", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [369, 207], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "key", "values": ["p", "e", "n", "d", "i", "n", "g"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "accept error"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [222, 638], "keep_focus": false}}
+{"kind": "check", "value": {"name": "error preserves outcome and blocks replay", "passed": true}}
+{"kind": "screenshot", "value": "accept-error.png"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [222, 638], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [369, 207], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "key", "values": ["r", "e", "c", "o", "v", "e", "r", "y"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "blocked error remains editable without another Save", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [288, 638], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "Cancel after error retains attempt and does not roll back domain", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [178, 56], "keep_focus": false}}
+{"kind": "check", "value": {"name": "fresh malformed opening has a new token", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [369, 207], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "key", "values": ["p", "e", "n", "d", "i", "n", "g"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "accept malformed"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [222, 638], "keep_focus": false}}
+{"kind": "check", "value": {"name": "malformed preserves outcome and blocks replay", "passed": true}}
+{"kind": "screenshot", "value": "accept-malformed.png"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [222, 638], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [369, 207], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "key", "values": ["r", "e", "c", "o", "v", "e", "r", "y"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "blocked malformed remains editable without another Save", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [288, 638], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "Cancel after malformed retains attempt and does not roll back domain", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [178, 56], "keep_focus": false}}
+{"kind": "check", "value": {"name": "fresh draft-conflict opening has a new token", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [369, 207], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "key", "values": ["p", "e", "n", "d", "i", "n", "g"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "accept draft-conflict"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [222, 638], "keep_focus": false}}
+{"kind": "check", "value": {"name": "draft-conflict preserves outcome and blocks replay", "passed": true}}
+{"kind": "screenshot", "value": "accept-draft-conflict.png"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [222, 638], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [369, 207], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "key", "values": ["r", "e", "c", "o", "v", "e", "r", "y"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}

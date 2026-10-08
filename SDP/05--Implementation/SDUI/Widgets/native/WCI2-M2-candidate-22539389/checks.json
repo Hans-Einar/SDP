@@ -1,0 +1,17 @@
+{
+  "commands/accept-failures": 17,
+  "commands/command-failures": 9,
+  "commands/commands": 13,
+  "commands/context": 4,
+  "commands/dialog": 8,
+  "commands/focus": 10,
+  "commands/keyboard": 6,
+  "commands/lifecycle": 11,
+  "commands/nonmodal-dialog": 8,
+  "commands/nonmodal-focus": 12,
+  "commands/nonmodal-lifecycle": 12,
+  "pane-regression/lifecycle": 7,
+  "pane-regression/panes": 31,
+  "pane-regression/split": 11,
+  "pane-regression/vertical": 9
+}

@@ -14,7 +14,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--display', required=True)
     parser.add_argument('--title', required=True)
-    parser.add_argument('action', choices=('locate', 'click', 'double-click', 'wheel', 'drag', 'move', 'key', 'chord'))
+    parser.add_argument('--keep-focus', action='store_true', help='Do not force keyboard focus before input')
+    parser.add_argument('action', choices=('locate', 'focus-state', 'move-window', 'close-window', 'click', 'right-click', 'double-click', 'wheel', 'drag', 'move', 'key', 'chord'))
     parser.add_argument('values', nargs='*')
     args = parser.parse_args()
     x = c.CDLL(ctypes.util.find_library('X11'))
@@ -33,6 +34,10 @@ def main():
     signature(x, 'XFree', c.c_int, c.c_void_p)
     signature(x, 'XTranslateCoordinates', c.c_int, dpy, win, win, c.c_int, c.c_int, c.POINTER(c.c_int), c.POINTER(c.c_int), c.POINTER(win))
     signature(x, 'XSetInputFocus', c.c_int, dpy, win, c.c_int, c.c_ulong)
+    signature(x, 'XGetInputFocus', c.c_int, dpy, c.POINTER(win), c.POINTER(c.c_int))
+    signature(x, 'XMoveWindow', c.c_int, dpy, win, c.c_int, c.c_int)
+    signature(x, 'XInternAtom', atom, dpy, c.c_char_p, c.c_int)
+    signature(x, 'XSendEvent', c.c_int, dpy, win, c.c_int, c.c_long, c.c_void_p)
     signature(x, 'XStringToKeysym', atom, c.c_char_p)
     signature(x, 'XKeysymToKeycode', c.c_ubyte, dpy, atom)
     signature(x, 'XSync', c.c_int, dpy, c.c_int)
@@ -74,11 +79,47 @@ def main():
         if args.action == 'locate':
             print(json.dumps(dict(window=target, x=left.value, y=top.value)))
             return
-        x.XSetInputFocus(display, target, 1, 0)
+        if args.action == 'focus-state':
+            focused, revert = win(), c.c_int()
+            x.XGetInputFocus(display, c.byref(focused), c.byref(revert))
+            print(json.dumps(dict(window=target, focused=focused.value, matches=focused.value == target)))
+            return
+        if args.action == 'move-window':
+            # Arrange isolated undecorated windows so both remain reachable;
+            # this does not simulate any product command or focus decision.
+            if len(args.values) != 2:
+                raise SystemExit('Window move requires x y')
+            x.XMoveWindow(display, target, int(args.values[0]), int(args.values[1]))
+            x.XSync(display, 0)
+            return
+        if args.action == 'close-window':
+            # Send the native WM protocol, without claiming a decoration click
+            # or requiring a window manager on the isolated acceptance display.
+            class ClientMessage(c.Structure):
+                _fields_ = [('type', c.c_int), ('serial', c.c_ulong),
+                            ('send_event', c.c_int), ('display', dpy),
+                            ('window', win), ('message_type', atom),
+                            ('format', c.c_int), ('data', c.c_long * 5)]
+            class Event(c.Union):
+                _fields_ = [('client', ClientMessage), ('pad', c.c_long * 24)]
+            event = Event()
+            event.client.type = 33  # ClientMessage
+            event.client.send_event = 1
+            event.client.display = display
+            event.client.window = target
+            event.client.message_type = x.XInternAtom(display, b'WM_PROTOCOLS', 0)
+            event.client.format = 32
+            event.client.data[0] = x.XInternAtom(display, b'WM_DELETE_WINDOW', 0)
+            if not x.XSendEvent(display, target, 0, 0, c.byref(event)):
+                raise SystemExit('Native close protocol could not be sent')
+            x.XSync(display, 0)
+            return
+        if not args.keep_focus:
+            x.XSetInputFocus(display, target, 1, 0)
         def button(number):
             xt.XTestFakeButtonEvent(display, number, 1, 0)
             xt.XTestFakeButtonEvent(display, number, 0, 40)
-        if args.action in ('click', 'double-click', 'wheel', 'drag', 'move'):
+        if args.action in ('click', 'right-click', 'double-click', 'wheel', 'drag', 'move'):
             if len(args.values) < 2:
                 raise SystemExit('Pointer action requires x y')
             px, py = (int(v) for v in args.values[:2])
@@ -100,7 +141,7 @@ def main():
                 for _ in range(min(abs(delta), 100)):
                     button(5 if delta > 0 else 4)
             else:
-                button(1)
+                button(3 if args.action == 'right-click' else 1)
                 if args.action == 'double-click':
                     button(1)
         else:

@@ -1,0 +1,45 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci2-m2-final-native", "sha256": "2253938916e1a31dfa4ec6d6095daf9f82a7522abcd444833cb64977e69b1c33", "display": ":190", "variant": "wci2-m2-focus"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [178, 56], "keep_focus": false}}
+{"kind": "check", "value": {"name": "opening focuses first eligible form control", "passed": true}}
+{"kind": "screenshot", "value": "surface-open.png"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "key", "values": ["Tab"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "surface Tab reaches note", "passed": true}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "key", "values": ["Tab"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "surface Tab reaches acceptButton", "passed": true}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "key", "values": ["Tab"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "surface Tab reaches cancelButton", "passed": true}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "key", "values": ["Tab"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "surface Tab reaches closeButton", "passed": true}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "key", "values": ["Tab"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "surface Tab reaches name", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [369, 207], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "key", "values": ["r", "e", "t", "a", "i", "n", "e", "d"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [32, 56], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [369, 207], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "key", "values": ["r", "e", "t", "a", "i", "n", "e", "d", "x"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "modal prevents parent action and retains child editing", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [288, 638], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "Cancel restores surviving opener focus", "passed": true}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "key", "values": ["space"], "keep_focus": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "restored opener receives actual keyboard input", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [288, 638], "keep_focus": false}}
+{"kind": "screenshot", "value": "focus-restored.png"}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

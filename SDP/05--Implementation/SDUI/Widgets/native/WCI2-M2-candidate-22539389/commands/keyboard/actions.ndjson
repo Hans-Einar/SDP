@@ -1,0 +1,30 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci2-m2-final-native", "sha256": "2253938916e1a31dfa4ec6d6095daf9f82a7522abcd444833cb64977e69b1c33", "display": ":190", "variant": "wci2-m2-keyboard"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [32, 16], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "key", "values": ["Home", "Return"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "native menu Home Enter invokes once", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [32, 16], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "key", "values": ["End", "Right", "End", "space"], "keep_focus": false}}
+{"kind": "check", "value": {"name": "nested keyboard End Space selects exclusive peer", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [32, 16], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "key", "values": ["Escape"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "menu Escape dismisses without action", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [100, 115], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "chord", "values": ["Shift_L", "F10"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "key", "values": ["Home", "Return"], "keep_focus": false}}
+{"kind": "check", "value": {"name": "Shift F10 captures focused item for keyboard action", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [828, 96], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "key", "values": ["k", "e", "e", "p"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "chord", "values": ["Control_L", "r"], "keep_focus": false}}
+{"kind": "check", "value": {"name": "declared shortcut works from Entry without committing its draft", "passed": true}}
+{"kind": "screenshot", "value": "keyboard-commands.png"}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

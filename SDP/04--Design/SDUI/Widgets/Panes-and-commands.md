@@ -85,8 +85,16 @@ infer profile from spelling.
 Command/target paths are relative to the innermost definition instance, or leading `/` to selected entry. Reject `..`, indexes and
 anonymous `$` segments; resolve named segments to one typed target after expansion. Reuse has independent local state; absolute
 references share deliberately. Preserve scope/span/use chain in generated constructors rather than guessing scope from parent paths.
-Frontend resolves these identities during normalization; runtime/bridge consume them rather than inventing separate lexical-scope
-resolvers.
+Normalization records the innermost definition-instance scope in a closed derived
+`$scope` argument for M2 declarations, preserving original references. Frontend
+`ResolveInteractions(root)` strictly resolves the selected expanded root before
+entry validity/readiness; runtime/bridge consume its typed identity map instead
+of inventing lexical resolvers. Normalize also returns standalone reusable
+templates: their absolute entry references may be unresolved until instantiated
+inside the selected entry. Structural/schema failures still reject normalization.
+Codegen, preparation and selected-root consumers verify the same frontend closure;
+source/AST structural output alone makes no readiness claim. Legacy instances
+receive no derived argument and retain their exact output.
 
 ## 3. Commands, buttons, keys and context
 
@@ -368,6 +376,14 @@ overlay/event-routing framework is justified. This choice introduces no OS trans
 
 The composition owner records parent/surface tokens, creates the child on the UI goroutine and never marks it master. Route native
 close through SetCloseIntercept; revoke the token before Close and use idempotent SetOnClosed fallback without recursively closing.
+WM/decoration closure is a native-owner lifecycle request, distinct from a source
+Close button or Cancel gesture. Revoke that exact surface and descendants using
+reason parent-closed and sequence zero before destroying its window, including
+when a modal child is open or geometry cannot be prepared. The native window is
+the disappearing owner; this is not a synthetic source interaction or SDL call.
+Source Close/Cancel keep user reason, triggering sequence and modal guards.
+This bounded clarification follows the actual nested-window regression and
+independent review in Session0010 T003; it does not relax ordinary modal input.
 In pinned GLFW `window.go`, Close bypasses the interceptor and invokes OnClosed before marking closing; Hide invokes neither. Thus
 all parent hide/reload/close paths explicitly dispose owned children and emit one Close result; no reliance on Fyne ownership
 propagation. Keep prepared opening/publication under existing gates. Restore the valid opener in its canvas; request OS focus only

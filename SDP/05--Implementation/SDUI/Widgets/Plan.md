@@ -36,8 +36,8 @@ Current preview files are not this assignment's original implementation.
 | WCI0-M1 | Capability/preparation boundary with legacy fixtures, missing capability/module/signature rejection and no partial activation | WCD1 reviewed design | completed |
 | WCI1-M1 | 0.3 tree/list/scroll from source through runtime, Fyne, exports and typed SDL fixture; inspect pointer/keyboard/reload behavior | WCI0; reviewed [collection contract](../../../04--Design/SDUI/Widgets/Collections.md) | completed |
 | WCI2-M1 | Tabs/splits preserve page state, relative geometry and focus | WCI1 evidence and pilot findings; reviewed Panes-and-commands contract | completed |
-| WCI2-M2 | Button/toggle shared commands, menu/context/dialog with cancel/lifetime proof | WCI2-M1; typed command/surface grammar | in-progress |
-| WCI3-M1 | Checkbox/slider/select/numeric input and atomic typed drafts | WCI2; shared typed value/property contract | planned |
+| WCI2-M2 | Button/toggle shared commands, menu/context/dialog with cancel/lifetime proof | WCI2-M1; typed command/surface grammar | completed |
+| WCI3-M1 | Checkbox/slider/select/numeric input and atomic typed drafts | WCI2; reviewed Values-and-text contract and API reconciliation | in-progress |
 | WCI3-M2 | Extended single-line and basic multiline text with native editing/IME/undo evidence | WCI3-M1 | planned |
 | WCI4-M1 | All-family producer discovery/composition/text/codegen/provider integration and matching consumer package preparation | WCI1–WCI3 | planned |
 | WCI4-M2 | Exact-candidate compatibility tests, native workflow evidence and independent integrated review; explicit disposition of all gaps | WCI4-M1 | planned |
@@ -94,3 +94,13 @@ contract level. WCI2–WCI4 remain required; no whole-card completion is implied
 files, 58 native checks, passing suites and independent approval. M2 is selected after independent contract review (hash 9a9c8710): preserve basic
 button dispatch, explicit opener identity and synchronous native menu selection
 scope. Five exclusive implementation lanes continue on the same phase branch.
+
+## WCI2-M2 delivery and WCI3 selection
+
+[Commands/surface evidence](Evidence-WCI2-M2.md) records `0fc15c8`, 113 files,
+118 native checks, 26 exactly-once opening results and independent approval.
+WCI3-M1 is selected on `sdui/widgets-wci3` under existing owner full-card authority.
+The reviewed Values-and-text contract and concrete API handoffs preserve WCI2
+closed-dialog successor semantics and bounded Go numeric admission. Five exclusive
+implementation lanes cover frontend, runtime/numeric, layout, host and SDL bridge.
+Extended text/IME remains WCI3-M2. KB004/KB005 retain separate existing dispositions.

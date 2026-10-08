@@ -1,0 +1,31 @@
+PASS initial panes preparation invokes zero SDL actions
+PASS pointer tab dispatch carries stable IDs through SDL once
+PASS same-page pointer invokes no callback
+PASS header Left changes page once with previous ID
+PASS native editing keeps accepted value until explicit commit
+PASS clicking selected tab focuses its header without action
+PASS tab round trip preserves draft and inactive scroll
+PASS programmatic selection is silent
+PASS disabled selected page falls back silently
+PASS zero eligible pages produces empty selection
+PASS eligibility restoration does not invoke SDL
+PASS disabled tabs reject pointer selection in runtime and native header
+PASS failed error callback retains accepted page without replay
+PASS native error error retains domain unknown
+PASS failed invalid callback retains accepted page without replay
+PASS native invalid error retains domain unknown
+PASS failed draft-conflict callback retains accepted page without replay
+PASS native draft-conflict error retains domain succeeded
+PASS independently accepted newer draft survives outer conflict
+PASS conflicting receiver remains reachable for user recovery
+PASS final resource failure cannot publish speculative selection
+PASS native resource failure reports successful domain outcome
+PASS fresh page gesture recovers after failures
+PASS failed profile reload preserves published pane bundle
+PASS failed binding reload preserves published pane bundle
+PASS failed layout reload preserves published pane bundle
+PASS failed resource reload preserves published pane bundle
+PASS failed guard reload preserves published pane bundle
+PASS failed stale reload preserves published pane bundle
+PASS compatible reload preserves selected page and sequence silently
+PASS native teardown closes session and clears provider barriers

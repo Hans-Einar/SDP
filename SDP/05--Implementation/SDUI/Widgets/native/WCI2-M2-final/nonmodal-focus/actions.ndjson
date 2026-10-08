@@ -1,0 +1,52 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci2-m2-wm-final-native", "sha256": "2c1db6d173c67ff873da4a7fdadb2a32722d3153705523622328e0d509be7806", "display": ":190", "variant": "wci2-m2-focus"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [178, 56], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "move-window", "values": [880, 180], "keep_focus": true}}
+{"kind": "check", "value": {"name": "opening focuses first eligible form control", "passed": true}}
+{"kind": "screenshot", "value": "surface-open.png"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "key", "values": ["Tab"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "surface Tab reaches note", "passed": true}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "key", "values": ["Tab"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "surface Tab reaches acceptButton", "passed": true}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "key", "values": ["Tab"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "surface Tab reaches cancelButton", "passed": true}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "key", "values": ["Tab"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "surface Tab reaches closeButton", "passed": true}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "key", "values": ["Tab"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "surface Tab reaches name", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "click", "values": [177, 80], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "key", "values": ["r", "e", "t", "a", "i", "n", "e", "d"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [32, 56], "keep_focus": false}}
+{"kind": "check", "value": {"name": "nonmodal allows parent action and preserves child draft", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "click", "values": [96, 511], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "Cancel restores surviving opener focus", "passed": true}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "key", "values": ["space"], "keep_focus": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "restored opener receives actual keyboard input", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "click", "values": [96, 511], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [178, 56], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "move-window", "values": [880, 180], "keep_focus": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [32, 56], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "close-window", "values": [], "keep_focus": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "closing unfocused nonmodal preserves active parent control", "passed": true}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "key", "values": ["space"], "keep_focus": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "closing unfocused child does not steal OS keyboard focus", "passed": true}}
+{"kind": "screenshot", "value": "focus-restored.png"}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}
