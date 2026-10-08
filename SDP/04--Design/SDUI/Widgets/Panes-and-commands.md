@@ -3,7 +3,7 @@
 | Field | Value |
 | --- | --- |
 | Assignment | SDP Architect; future WCI2-M1/M2 under PLAN-SDP-0022 |
-| Status | Reviewed; WCI1 completed; WCI2-M1 implementation selected by coordinator under owner full-card authority |
+| Status | Reviewed; WCI1 completed; WCI2-M1 delivered; M2 selected after independent revised contract review |
 | Authority | KB-SDUI-003 full inventory; owner’s bounded design assignment, 2026-10-08 |
 | Parents | [Design](Design.md), [Acceptance](Acceptance.md), reviewed [Collections](Collections.md), [Plan](../../../05--Implementation/SDUI/Widgets/Plan.md) |
 | Obligations | SDUI-R05/R12/R15–R18/R23/R26–R28; GAP-XFMD-SDUI-002/004/007/008 |
@@ -101,6 +101,13 @@ A button owns an implicit command or references a shared command. Referring butt
 behavior/callback/key overrides reject. Local enabled/visible gates can restrict, never enable, the command. Reject read-only on
 commands; programmatic changes never emit user actions.
 
+Compatibility boundary: existing basic buttons retain Activate/Handler dispatch,
+including existing 0.3 sources. Explicit M2 behavioral arguments (`command`,
+`toggle`, `checked`, `exclusive`, `key`, `context`, `target`, `effect`) select one
+implicit/shared command and InvokeCommand/InteractionHandler instead. Icon or
+tooltip alone does not promote dispatch. Never register or invoke both routes
+for one button; frontend preserves the distinction through normalization/codegen.
+
 `effect` is a closed local enum open/accept/cancel/close. Open requires a dialog target; the other effects require a button/command
 belonging to an enclosing dialog and forbid target. Effect and callback are mutually exclusive; effects forbid toggle and require
 context none. Without either, a toggle changes local state; an ordinary command is explicitly unbound and cannot establish connected
@@ -125,6 +132,24 @@ stale/hidden/disabled/group/separator targets; revalidate at invoke/result, neve
 arrows/Home/End/Enter/Space/Escape; dismissal executes nothing, submenus restore parent focus. Capture expected
 Event.StateRevision with the context after menu-opening publication; never restamp saved context at invocation. Any
 intervening accepted state change makes it stale: dismiss without callback, including hide/reveal with unchanged handles.
+
+Selection-triggered dismissal retains the original root-menu capture until its
+single command dispatch validates it. Native menu hiding must not publish a
+CloseMenu before that dispatch or restamp its context. Successful dispatch stages
+root dismissal with the accepted command update. After any rejected/stale/failed
+invocation, dismiss and revoke that opening without retry or additional action;
+retain any reported domain outcome. Escape/outside dismissal revokes immediately
+without invoking a command. Duplicate native dismissal callbacks are harmless.
+Pinned Fyne menuItem.trigger calls parent.Dismiss before Item.Action. Its adapter
+must therefore distinguish the synchronous selected-item callback from dismissal
+cleanup using a bounded per-opening input scope around native pointer activation
+and Enter/Space forwarding. OnDismiss hides immediately; only within that scope
+does it retain capture for one synchronous Item.Action. Scope exit revokes any
+unclaimed dismissed opening before forwarding returns. Escape/outside dismissal
+outside this scope revokes immediately. Exact-opening checks prevent duplicate
+cleanup from closing a replacement. No queue/timer heuristic, revision restamping,
+second invocation or general receipt registry. The native adapter must prove this
+ordering for nested pointer and keyboard selection before product acceptance.
 
 ## 4. Pane, surface and draft state
 
@@ -277,6 +302,11 @@ transaction framework.
 
 OpenSurface(Handle,ContextTarget) (SurfaceTarget,error) uses zero context for none; CloseSurface(SurfaceTarget,kind) accepts only
 Cancel/Close, independent of captured field revisions. Session owns state; host owns native objects; application owns persistence.
+OpenSurfaceFrom(dialog Handle, opener Handle, context ContextTarget) is the bounded
+explicit-origin operation used by native command effects: derive the parent canvas
+and restoration target from that actual opener, without a synthetic Focus mutation.
+OpenSurface is the programmatic convenience using current valid focus or root;
+it must not guess a native button origin from another nonmodal canvas's focus.
 Mark an opening published only at successful owner publication. For prospective runtime parent hide/page selection/
 split collapse/reload, stage child closure and request revocation with that parent transition; publish them only if the
 transition commits. Failed geometry/callback preserves live children/requests and emits no result. Once committed,
@@ -395,3 +425,13 @@ Coordinator selects WCI2-M1 now under existing full-card owner authorization.
 M1 delivers panes first; M2 command/surface implementation follows M1 evidence.
 Earlier draft observations above retain their provenance and are not current
 implementation results. All WCI2 product acceptance remains pending.
+
+## M2 transition — Session0010 T003
+
+M1 commit 403c540 is independently approved with 58 native checks. The revised
+contract (pre-transition hash 9a9c8710a4245a28a27029af5cb636ae60b5d39e3c794c5ea8aea56c50e73187)
+is approved for M2 entry, including basic-button compatibility, explicit opener
+and synchronous menu dismissal handling. Coordinator selects bounded M2 code under
+existing full-card owner authorization. Native adapter conformance remains an
+implementation proof obligation; private-field access, dependency patches or
+broader routing machinery require concrete design reconciliation.

@@ -35,6 +35,7 @@ class Trial:
                    XDG_CONFIG_HOME=str(self.out / 'config'),
                    XDG_CACHE_HOME=str(self.out / 'cache'))
         command = [str(Path(args.binary).resolve())]
+        command.extend(getattr(args, 'binary_args', []))
         if args.variant in ('empty', 'lifecycle'):
             command.append('--empty')
         if args.variant == 'nested':

@@ -215,3 +215,5 @@ file:///home/warloc/git/xfmd-sdl-navigation/SDP/Sessions/session-%230004--SDUI-w
 - 2026-10-07T22:26:58.777242+00:00 — EVT-KB-SDUI-000021: WCI0 independently reviewed at detached preparation/admission boundary; WCI1 contract next. Track existing SDL constructor/frontend mismatch as prerequisite within this card before generation claims.
 
 - 2026-10-07T23:43:13.186726+00:00 — EVT-KB-SDUI-000022: WCI1-M1 tree/list/scroll and guarded native publication implemented, verified and independently reviewed (c39b330; 54 native checks). Keep in-progress for WCI2–WCI4. Evidence: ../../05--Implementation/SDUI/Widgets/Evidence-WCI1.md.
+
+- 2026-10-08T08:07:43.894416+00:00 — EVT-KB-SDUI-000023: WCI2-M1 tabs/split delivered and reviewed at 403c540; remain in-progress for commands/surfaces, values/text and providers/package preparation. Evidence: ../../05--Implementation/SDUI/Widgets/Evidence-WCI2-M1.md.

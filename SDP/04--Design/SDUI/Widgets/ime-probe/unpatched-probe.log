@@ -1,0 +1,17 @@
+{"data":true,"event":"ready"}
+{"data":"LeftControl","event":"typed-key"}
+{"data":"LeftShift","event":"typed-key"}
+{"data":"4","event":"typed-key"}
+{"data":"E","event":"typed-key"}
+{"data":"2","event":"typed-key"}
+{"data":"D","event":"typed-key"}
+{"data":"Return","event":"typed-key"}
+{"data":"","event":"submit"}
+{"data":"中","event":"change"}
+{"data":"LeftControl","event":"typed-key"}
+{"data":"LeftShift","event":"typed-key"}
+{"data":"4","event":"typed-key"}
+{"data":"E","event":"typed-key"}
+{"data":"2","event":"typed-key"}
+{"data":"D","event":"typed-key"}
+{"data":"Escape","event":"typed-key"}

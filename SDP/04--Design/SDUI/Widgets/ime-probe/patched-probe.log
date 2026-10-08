@@ -1,0 +1,13 @@
+{"data":true,"event":"ready"}
+{"data":"LeftControl","event":"typed-key"}
+{"data":"LeftShift","event":"typed-key"}
+{"data":"中","event":"change"}
+{"data":"LeftControl","event":"typed-key"}
+{"data":"LeftShift","event":"typed-key"}
+{"data":"Return","event":"typed-key"}
+{"data":"中","event":"submit"}
+{"data":"A","event":"typed-key"}
+{"data":"中a","event":"change"}
+{"data":"Left","event":"typed-key"}
+{"data":"BackSpace","event":"typed-key"}
+{"data":"a","event":"change"}

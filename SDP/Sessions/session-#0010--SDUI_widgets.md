@@ -2,8 +2,8 @@
 
 ## Session roadmap
 
-Latest recorded turn: T002. Current work: S3 panes and commands.
-WCI1 is implemented, verified and independently reviewed; WCI2-M1 is selected after final stage reconciliation. Diagram is **sequence only**, using synthetic equal
+Latest recorded turn: T003. Current work: S3 panes and commands.
+WCI1 is implemented, verified and independently reviewed; WCI2-M1 is delivered; M2 commands/menus/dialogs is selected. Diagram is **sequence only**, using synthetic equal
 slots; it is not a delivery schedule or measured timeline.
 
 ```mermaid
@@ -34,7 +34,7 @@ gantt
 | Primary card | [KB-SDUI-003](../KanBan/active/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md) |
 | Snapshot date | 2026-10-07 owner request; actual ledger timestamps recorded separately |
 | Current step | S3 |
-| Proposed next step | S3 WCI2 final stage reconciliation and implementation |
+| Proposed next step | S3 WCI2-M2 commands, menus and dialogs |
 | Execution authority | Owner T001 requests taking the card's work |
 
 ## Goal
@@ -58,7 +58,7 @@ XM-M2 evidence. Rich optional research retains its existing disposition.
 | Local ref | Plan type and document | Document readiness | Canonical plan lifecycle | Depends on | Outcome / evidence |
 | --- | --- | --- | --- | --- | --- |
 | P1 | [PLAN-SDP-0021 DesignPlan](../04--Design/SDUI/Widgets/Plan.md) | completed | completed | PLAN-SDP-0009 research | Independently reviewed design and per-family acceptance |
-| P2 | [PLAN-SDP-0022 ImplementationPlan](../05--Implementation/SDUI/Widgets/Plan.md) | on-going | active | P1, staged elaboration | WCI0/WCI1 delivered; WCI2-M1 in progress |
+| P2 | [PLAN-SDP-0022 ImplementationPlan](../05--Implementation/SDUI/Widgets/Plan.md) | on-going | active | P1, staged elaboration | WCI0/WCI1 delivered; WCI2-M1 delivered; M2 in progress |
 
 ## Route changes and decisions
 
@@ -215,6 +215,68 @@ implementation obligations.
 - Next: integrate runnable tabs/split milestone and native acceptance before M2.
   Work summary, not captured final response; full inventory remains incomplete,
   and no release/merge authority is inferred.
+
+### T003 — continuation after owner interruption notice
+
+- Owner prompt, verbatim: “det ser ut som jeg avbrøt deg”. This steers continuity,
+  not scope or authorization. Exact prompt time/host IDs unavailable.
+- Recovered the existing Session and WCI2 lane/API records. Reused SDP Master,
+  Worker, Architect and Verifier context. WCI1 remains delivered/reviewed; WCI2-M1
+  changes are preserved in the isolated phase branch, but not yet verified.
+- The interrupted call had updated the isolated IME probe launcher; native test
+  processes and agent handles were no longer live on recovery. Restoring task
+  workers/display explicitly; no product work or historical evidence discarded.
+- Current work summary: resume the five exclusive WCI2-M1 lanes and native input
+  preparation. IME investigation is provisional WCI3 design evidence only.
+- WCI3 independent draft review identified typed result mode, atomic-form local
+  Commit behavior, multiline scroll ownership and numeric tolerance omissions.
+  Coordinator revised the provisional draft; re-review remains pending, no WCI3
+  product implementation selected.
+- Actual isolated IBus XIM probe reproduced pinned GLFW key leakage: composition
+  Return submitted the old empty Entry before inserting the composed character.
+  A one-condition filter trial prevented consumed Return/Escape delivery while
+  preserving ordinary Enter/navigation. Durable Widgets/ime-probe retains source,
+  patch, raw logs and hashes. Local dependency disposition awaits design review;
+  no product dependency or desktop configuration was changed.
+- WCI2-M1 native evolving-candidate pilots passed 25 panes, 11 horizontal split
+  and 7 page/provider lifecycle checks. Captures confirm retained drafts/scroll,
+  collapsed geometry and real SDL preview updates. Harness corrections preserve
+  failure expectations; final source freeze/rerun and independent approval remain.
+- WCI4 Architect draft Providers-and-packaging.md now records explicit provider
+  and labelled fallback boundaries, exact module/private-helper package inventory,
+  and conditional IME dependency packaging; draft-only and not product delivery.
+  Current WCI3 numeric/form refinements remain under independent review.
+- Next: complete runnable panes integration and verify/review before WCI2-M2.
+- Further native checks passed the vertical split variant (nine checks). Final
+  candidate testing found two bounded host omissions: native errors lost the
+  interaction's domain outcome, and clicking the selected tab from an input did
+  not focus the header. Both remain M1 corrections, with explicit native
+  regressions; no milestone completion is claimed before correction/review.
+- Full SDUI, affected SDL and SDPTool suites are running on the integrated phase
+  candidate. Runtime prepares only a read-only M2 API handoff while M1 is frozen
+  outside the host correction lane. Next remains final M1 evidence and review.
+- Those suites passed, including SDUI host race (53.472s), actual SDL panes race
+  (54.071s), bridge/runtime/codegen/collections and full phase SDPTool tests.
+  Independent review additionally reproduced native selection divergence while
+  the tabs owner is disabled. Host correction and actual-input regression are
+  included before final acceptance; original integration target audit found no
+  conflicting bytes among the 72 M1 files.
+- WCI3 architecture review accepted exact-decimal membership, proposal-only
+  number-step Commit in atomic dialog forms, and the bounded licensed GLFW IME
+  patch route. Its final numeric correction requires step strictly greater than
+  endpoint binary64 spacing to prevent midpoint ties collapsing ticks. Draft
+  updated; WCI3 code remains subsequent to WCI2, with product IME proof pending.
+
+- WCI2-M1 delivered at 403c540: 72 exact original-integration files, 58 native
+  checks, full phase/original suites and independent approval. Backlog review
+  retains KB004 and KB005 ownership. M2 final menu dismissal ordering is being
+  reconciled with pinned Fyne before implementation; no main merge or release.
+
+- Reviewer approved the final M2 contract 9a9c8710 after correcting the pinned
+  Fyne dismissal order and replacing queued cleanup with synchronous per-opening
+  selection scope. No additional probe is required for stage entry; native proof
+  remains mandatory. Coordinator starts M2 on the existing phase branch with
+  exclusive frontend/runtime/layout/host/bridge lanes; no duplicate SDL dispatch.
 
 ## Closeout
 
