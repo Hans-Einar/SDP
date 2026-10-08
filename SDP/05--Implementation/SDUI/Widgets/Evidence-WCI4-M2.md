@@ -89,7 +89,7 @@ KB-SDUI-004. No rich editor, source-set expansion, other IMEs/platforms, GPU-cac
 purge, installation, release or external XFMD gap-register closure is claimed.
 
 The selected baseline `3d265d1` already contains 73 commits ahead of observed
-origin/main `9e4c173`. The authorized combined PR will preserve that history and remain draft
+origin/main `9e4c173`. [PR #52](https://github.com/Hans-Einar/SDP/pull/52) preserves that history and remains draft
 pending predecessor integration. Widget evidence verifies the bounded WCI work
 on that baseline, not all earlier commits. No merge or publication is authorized.
 
