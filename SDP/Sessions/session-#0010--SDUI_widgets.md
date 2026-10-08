@@ -34,7 +34,7 @@ gantt
 | Primary card | [KB-SDUI-003](../KanBan/active/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md) |
 | Snapshot date | 2026-10-07 owner request; actual ledger timestamps recorded separately |
 | Current step | S5 |
-| Proposed next step | S5 WCI4-M1 previews and consumer preparation |
+| Proposed next step | S5 WCI4-M2 all-family verification and integrated closeout |
 | Execution authority | Owner T001 requests taking the card's work |
 
 ## Goal
@@ -58,7 +58,7 @@ XM-M2 evidence. Rich optional research retains its existing disposition.
 | Local ref | Plan type and document | Document readiness | Canonical plan lifecycle | Depends on | Outcome / evidence |
 | --- | --- | --- | --- | --- | --- |
 | P1 | [PLAN-SDP-0021 DesignPlan](../04--Design/SDUI/Widgets/Plan.md) | completed | completed | PLAN-SDP-0009 research | Independently reviewed design and per-family acceptance |
-| P2 | [PLAN-SDP-0022 ImplementationPlan](../05--Implementation/SDUI/Widgets/Plan.md) | on-going | active | P1, staged elaboration | WCI0–WCI3 delivered; WCI4-M1 in progress |
+| P2 | [PLAN-SDP-0022 ImplementationPlan](../05--Implementation/SDUI/Widgets/Plan.md) | on-going | active | P1, staged elaboration | WCI0–WCI3 delivered; WCI4-M1 delivered; WCI4-M2 in progress |
 
 ## Route changes and decisions
 
@@ -536,6 +536,76 @@ implementation obligations.
   traceability. The reviewed four-lane APIs and canonical backend/geometry matrix
   govern previews; main owns consumer packaging. Next: implement bounded prepared
   content and native previews, verify matching packages, then integrated closeout.
+
+- WCI4 implementation work summary: phase sdui/widgets-wci4 starts from 90a94b5;
+  M2 source/evidence is durable on origin/sdui/widgets-wci3. Five disjoint lanes
+  implement frontend, immutable providers, shared layout, native host/preparation
+  and a new actual SDL preview fixture. Main retains packaging/native evidence.
+  The reviewed aggregate budget counts distinct copied/validated bytes before
+  backend classification, with no label-policy refund; failed bytes need not stay
+  resident. Same bytes across paths count once. Canonical/API wording is aligned.
+- The unmodified external XFMD helper build recipe succeeds from clean 90a94b5
+  in a detached worktree. A separate SDUI-root legacy-helper IME pilot passes eight
+  checks using accepted A plus a dirty B suffix to detect premature submission.
+  Latin-1 WM_NAME exposed a title-lookup harness issue; corrected lookup and all
+  prior attempts are retained. This is preparation only: final WCI4 source/package
+  must be rebuilt and retested. External checkout and installed helpers unchanged.
+  Reused SDP/master/worker/architect/verifier; S5 remains in progress.
+
+
+- WCI4 integration work summary: frontend, layout and host/preparation lanes are
+  frozen and independently approved; their meaningful race suites pass. The actual
+  SDL preview fixture compiles and its targeted race suite passes (244.019s).
+  Native light-profile geometry pilot passes 13 checks, including supplied shapes,
+  prose, actual Accessible labels, copied resource ownership, scroll translation,
+  tabs and split restoration without renderer calls. A prior pilot failed only an
+  exact float64/float32 clip comparison; retained raw evidence supports the 0.01px
+  tolerance correction. Default dark rendering exposes the inherited fixed-glyph
+  contrast limitation; reviewer accepts bounded light-profile proof and requires
+  truthful documentation. Provider final-allocation fallback guard is still being
+  tightened before freeze. Packaging and protocol harnesses are prepared; final
+  exact-candidate package and all-family verification remain pending. Reused
+  SDP/master/worker/verifier; S5 remains active, with no delivery inferred.
+
+
+- Candidate-one work summary: guarded integration copied 67 scoped paths into the
+  original workspace without changing unrelated work. Matching package preparation
+  succeeds from 1,403 inventoried source paths; ten binaries, 34 compiled modules
+  and 42 third-party notices are recorded, with full pinned GLFW source/policy and
+  connected fixture sources. The supplied XFMD GUI test passes using all three
+  staged executable paths verified by exec trace; its exact C++ build source is
+  unknown, so this proves supplied-binary compatibility only. Packaged protocols
+  pass 50 real commands/eight cases. These remain prior-candidate evidence.
+- Native parent-hide exposed retained preview frame/resources and a phantom mounted
+  inspector entry after real surface closure. Independent provider review also
+  reproduces nonfinite transformed/extreme SVG geometry passing admission. Host and
+  provider owners are correcting these bounded defects; their approvals are
+  suspended. Main explicitly aborted its own SDUI aggregate run before source edits
+  and retained logs/receipt. Earlier forms pilot failures include a corrected test
+  field lookup and loss of the old X server; both are recorded separately. A fresh
+  owned display is :191. Final packages/suites/native matrix will use the corrected
+  frozen candidate. Theme observation is registered on separate backlog KB-SDUI-004
+  as EVT-KB-SDUI-000027; no fidelity implementation selected. S5 remains active.
+
+- Corrected candidate work summary: independent review approves the 16-path host
+  freeze (including exact stale-opening protection) and 17-path provider freeze
+  (actual coordinate/extents/reflected-control/arc finite checks). Main reconciled
+  README/architecture/requirements with the implemented boundaries; those prose
+  deltas are independently reviewed. Guarded integration now matches 74 scoped
+  product/test/document paths in both roots, inventory 938ff22c. Matching candidate
+  two packaging and fresh aggregate suites are running; 27 current native workflows
+  are queued against its binaries. Prior failed/aborted/passed pilots, superseded
+  source bytes and corrections are archived explicitly. Reused SDP/master/verifier/
+  traceability; S5 still active until actual final results and integrated approval.
+
+- M1 delivery work summary: `a026a5d1` records all 74 exact source/test/doc
+  paths; matching candidate-two payload and 50 protocol commands pass independent
+  review. Fresh modal/nonmodal native runs pass 24 checks and ten exact receipts,
+  including corrected parent-hide/reload/close lifetimes. Source build metadata
+  remains 90a94b5 plus the inventoried dirty bytes, now committed unchanged. M1
+  is complete; M2 is active for the remaining current native matrix, aggregate
+  suites and final integrated evidence review. Reused SDP/master/planning/verifier/
+  traceability. S5/card/Session remain active; merge and publication unselected.
 
 ## Closeout
 Open. No widget, plan, card or Session completion is inferred from intake/design.

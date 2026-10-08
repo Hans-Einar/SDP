@@ -1,0 +1,25 @@
+{
+  "name": "pane-preview-unsupported",
+  "argv": [
+    "/tmp/wci4-helpers-pilot/libexec/xfmd/sdui-preview",
+    "-source",
+    "/tmp/wci4-package-protocol-helper-pilot-2/unsupported pane project with spaces/Page å with spaces.sdui",
+    "-entry",
+    "Main",
+    "-revision",
+    "53a55f82a5e311b68b2094d728098a83dd9f5f2f737676f76ea8324282fc3816",
+    "-check"
+  ],
+  "cwd": "/tmp/wci4-package-protocol-helper-pilot-2",
+  "binarySha256": "fa1a3bac44e0a13e76ff1229ccfa1b931075e00be281dc38b2b1f38262930d28",
+  "displayEnvironment": "DISPLAY/WAYLAND_DISPLAY removed",
+  "expected": "nonzero with unsupported-pane",
+  "exit": 2,
+  "timeout": false,
+  "seconds": 0.05459141731262207,
+  "stdout": "commands/011-pane-preview-unsupported.stdout",
+  "stderr": "commands/011-pane-preview-unsupported.stderr",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "f4cb24f06ecfa988e674230cb4ba85e7c8c213f307b85b443fb5e587f83a7e5e",
+  "binaryUnchanged": true
+}

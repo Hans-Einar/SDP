@@ -1,0 +1,24 @@
+{
+  "name": "pane-native-unsupported",
+  "argv": [
+    "/tmp/wci4-package-candidate1/libexec/xfmd/sdui-fyne",
+    "-entry",
+    "Main",
+    "-watch=false",
+    "-revision",
+    "53a55f82a5e311b68b2094d728098a83dd9f5f2f737676f76ea8324282fc3816",
+    "/tmp/wci4-package-protocol-candidate1-pilot-1/unsupported pane project with spaces/Page å with spaces.sdui"
+  ],
+  "cwd": "/tmp/wci4-package-protocol-candidate1-pilot-1",
+  "binarySha256": "a1a101d9502c2442d064d1b779bb8c1e5828f5ac7f38dd8f74e450fcc315ca51",
+  "displayEnvironment": "DISPLAY/WAYLAND_DISPLAY removed",
+  "expected": "nonzero with unsupported-pane",
+  "exit": 2,
+  "timeout": false,
+  "seconds": 0.23392295837402344,
+  "stdout": "commands/029-pane-native-unsupported.stdout",
+  "stderr": "commands/029-pane-native-unsupported.stderr",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "f4cb24f06ecfa988e674230cb4ba85e7c8c213f307b85b443fb5e587f83a7e5e",
+  "binaryUnchanged": true
+}

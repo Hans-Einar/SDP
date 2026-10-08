@@ -223,7 +223,7 @@ registered renderer behavior and records remain unchanged.
 Native image/backend preflight is preparation-only; later native image decoding can
 consume only frozen admitted bytes, never invoke the source renderer.
 
-Count distinct retained validated resource bytes by full SHA256, <=32 MiB for the
+Count distinct copied and validated resource bytes admitted during preparation (before backend classification; no fallback refund) by full SHA256, <=32 MiB for the
 whole candidate across supplied SVG and rendered diagrams/all surfaces. Deduplicate
 storage/budget by full digest after validation, not source text/truncated diagram ID,
 provider ID, or fallback policy. Equal bytes can share storage, while per-instance

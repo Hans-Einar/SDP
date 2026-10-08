@@ -3,7 +3,7 @@
 | Field | Value |
 | --- | --- |
 | Assignment | SDP Architect; reviewed design, selected after WCI3-M2 |
-| Status | Independent design/API review approved; WCI4-M1 selected after WCI3-M2 acceptance |
+| Status | WCI4-M1 implemented and independently reviewed; WCI4-M2 integrated verification active |
 | Authority | KB-SDUI-003 full inventory; PLAN-SDP-0022 WCI4-M1/M2; Session0010 |
 | Parents | [Design](Design.md), [Acceptance](Acceptance.md), [Preparation](Preparation.md), [Collections](Collections.md), [Panes](Panes-and-commands.md), [Values](Values-and-text.md) |
 | Outcome | Truthful SVG/Markdown previews, explicit provider/resource ownership and matching all-family producer/helper package preparation |
@@ -325,3 +325,17 @@ The final reconciled [frontend](../../../05--Implementation/SDUI/Widgets/WCI4-fr
 [host](../../../05--Implementation/SDUI/Widgets/WCI4-host-API.md) handoffs apply with
 the final canonical geometry/backend decisions above. Their earlier unselected
 status is historical preparation provenance; no WCI4 delivery is yet claimed.
+
+### Aggregate preparation budget interpretation
+
+The coordinator selects a per-preparation sum of distinct copied, validated SVG
+payload bytes, deduplicated by full SHA256, before backend outcome classification.
+Valid bytes later replaced by a declared backend-unavailable label still count;
+fallback does not waive the global 32 MiB budget. Reused identical bytes count
+once. Malformed/invalid payloads do not become validated aggregate entries, while
+the per-resource 4 MiB bound is checked first. Failed-backend bytes may be released
+after classification: this accounting does not assert they remain resident in the
+immutable candidate. It bounds preparation independently of label policy without
+introducing a new runtime budget or readiness dimension.
+
+WCI4-M1 delivery is recorded at `a026a5d1` in [provider/package evidence](../../../05--Implementation/SDUI/Widgets/Evidence-WCI4-M1.md). Earlier unselected/draft statements are historical checkpoints. WCI4-M2 remains the final all-family acceptance boundary; no publication is inferred.

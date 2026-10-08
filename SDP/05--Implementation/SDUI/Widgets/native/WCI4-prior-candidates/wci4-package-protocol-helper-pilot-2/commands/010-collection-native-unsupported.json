@@ -1,0 +1,24 @@
+{
+  "name": "collection-native-unsupported",
+  "argv": [
+    "/tmp/wci4-helpers-pilot/libexec/xfmd/sdui-fyne",
+    "-entry",
+    "Main",
+    "-watch=false",
+    "-revision",
+    "6225fa29c459f90ca655908abc9c32640661ccd80f3ae0cfeab238caa94a10b9",
+    "/tmp/wci4-package-protocol-helper-pilot-2/unsupported collection project with spaces/Page å with spaces.sdui"
+  ],
+  "cwd": "/tmp/wci4-package-protocol-helper-pilot-2",
+  "binarySha256": "bb0027e5b0cd935f6dfeaf2df5ffbd66f46051603377a0469a34159249c76cc4",
+  "displayEnvironment": "DISPLAY/WAYLAND_DISPLAY removed",
+  "expected": "nonzero with unsupported-provider",
+  "exit": 2,
+  "timeout": false,
+  "seconds": 0.27350759506225586,
+  "stdout": "commands/010-collection-native-unsupported.stdout",
+  "stderr": "commands/010-collection-native-unsupported.stderr",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "25c7eafcecd3b46915b3e8fa89ebd0556ec114cc4a06166617fae14298480d34",
+  "binaryUnchanged": true
+}

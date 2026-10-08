@@ -21,7 +21,7 @@ candidate identity, reproduction command, actual result and independent review.
 | Numeric input | WCI3-M1 | Typed number with editable draft | Invalid intermediate text distinct from accepted value; increment/decrement | Same numeric binding/range contract as slider | WCI3-M1 delivered; Evidence-WCI3-M1 |
 | Single-line input | WCI3-M2 | Shared read-only/placeholder/validation | Preserve draft/revert/revision behavior; focus, Unicode, programmatic mute | Existing input baseline plus new properties | WCI3-M2 delivered; Evidence-WCI3-M2 |
 | Multiline input | WCI3-M2 | input multiline property | Edit/select/copy/paste, undo/redo, line breaks, scroll, read-only, UTF-8/IME, explicit commit | SDL Load/Save fixture without widget/parser I/O | WCI3-M2 delivered; Evidence-WCI3-M2 |
-| SVG/Markdown preview | WCI4-M1 | Provider/resource identity and accessible description | Disposal, missing provider and explicit fallback | Inspect actual previews; no unsupported richness claim | pending refinement; bounded baseline exists |
+| SVG/Markdown preview | WCI4-M1 | Provider/resource identity and accessible description | Disposal, missing provider and explicit fallback | Inspect actual previews; no unsupported richness claim | WCI4-M1 delivered; full WCI4-M2 integrated acceptance remains pending |
 
 Every new family includes positive/negative profile tests, original-source spans,
 definition reuse, normalization, layout, composition, static text, declared SVG

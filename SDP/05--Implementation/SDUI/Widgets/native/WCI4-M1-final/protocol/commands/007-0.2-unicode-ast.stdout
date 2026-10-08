@@ -1,0 +1,257 @@
+{
+  "astFormat": "sdui-ast/0.2",
+  "document": {
+    "connections": [],
+    "definitions": [
+      {
+        "name": "Leaf",
+        "root": {
+          "arguments": [],
+          "kind": "group",
+          "layout": [],
+          "name": null,
+          "role": null,
+          "rows": [
+            {
+              "items": [
+                {
+                  "arguments": [
+                    {
+                      "name": null,
+                      "span": {
+                        "column": 29,
+                        "end": 34,
+                        "line": 1,
+                        "start": 28,
+                        "type": "Span"
+                      },
+                      "type": "Argument",
+                      "value": {
+                        "kind": "string",
+                        "span": {
+                          "column": 29,
+                          "end": 34,
+                          "line": 1,
+                          "start": 28,
+                          "type": "Span"
+                        },
+                        "type": "Literal",
+                        "value": "Blå"
+                      }
+                    },
+                    {
+                      "name": "value",
+                      "span": {
+                        "column": 35,
+                        "end": 49,
+                        "line": 1,
+                        "start": 35,
+                        "type": "Span"
+                      },
+                      "type": "Argument",
+                      "value": {
+                        "kind": "string",
+                        "span": {
+                          "column": 41,
+                          "end": 49,
+                          "line": 1,
+                          "start": 41,
+                          "type": "Span"
+                        },
+                        "type": "Literal",
+                        "value": "å🙂"
+                      }
+                    }
+                  ],
+                  "kind": "widget",
+                  "layout": [],
+                  "name": "field",
+                  "role": null,
+                  "rows": [],
+                  "span": {
+                    "column": 17,
+                    "end": 50,
+                    "line": 1,
+                    "start": 16,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": null,
+                  "type": "Node",
+                  "variant": null,
+                  "widget": "input"
+                },
+                {
+                  "arguments": [],
+                  "kind": "markdown",
+                  "layout": [],
+                  "name": null,
+                  "role": null,
+                  "rows": [],
+                  "span": {
+                    "column": 47,
+                    "end": 61,
+                    "line": 1,
+                    "start": 51,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": {
+                    "kind": "string",
+                    "span": {
+                      "column": 47,
+                      "end": 61,
+                      "line": 1,
+                      "start": 51,
+                      "type": "Span"
+                    },
+                    "type": "Literal",
+                    "value": "π prose"
+                  },
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                }
+              ],
+              "span": {
+                "column": 17,
+                "end": 61,
+                "line": 1,
+                "start": 16,
+                "type": "Span"
+              },
+              "type": "Row"
+            }
+          ],
+          "span": {
+            "column": 16,
+            "end": 62,
+            "line": 1,
+            "start": 15,
+            "type": "Span"
+          },
+          "target": null,
+          "text": null,
+          "type": "Node",
+          "variant": null,
+          "widget": null
+        },
+        "span": {
+          "column": 11,
+          "end": 63,
+          "line": 1,
+          "start": 10,
+          "type": "Span"
+        },
+        "type": "Definition"
+      },
+      {
+        "name": "Main",
+        "root": {
+          "arguments": [],
+          "kind": "frame",
+          "layout": [],
+          "name": null,
+          "role": null,
+          "rows": [
+            {
+              "items": [
+                {
+                  "arguments": [],
+                  "kind": "use",
+                  "layout": [],
+                  "name": "a",
+                  "role": null,
+                  "rows": [],
+                  "span": {
+                    "column": 65,
+                    "end": 76,
+                    "line": 1,
+                    "start": 70,
+                    "type": "Span"
+                  },
+                  "target": "Leaf",
+                  "text": null,
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                }
+              ],
+              "span": {
+                "column": 65,
+                "end": 76,
+                "line": 1,
+                "start": 70,
+                "type": "Span"
+              },
+              "type": "Row"
+            },
+            {
+              "items": [
+                {
+                  "arguments": [],
+                  "kind": "use",
+                  "layout": [],
+                  "name": "b",
+                  "role": null,
+                  "rows": [],
+                  "span": {
+                    "column": 72,
+                    "end": 83,
+                    "line": 1,
+                    "start": 77,
+                    "type": "Span"
+                  },
+                  "target": "Leaf",
+                  "text": null,
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                }
+              ],
+              "span": {
+                "column": 72,
+                "end": 83,
+                "line": 1,
+                "start": 77,
+                "type": "Span"
+              },
+              "type": "Row"
+            }
+          ],
+          "span": {
+            "column": 64,
+            "end": 84,
+            "line": 1,
+            "start": 69,
+            "type": "Span"
+          },
+          "target": null,
+          "text": null,
+          "type": "Node",
+          "variant": null,
+          "widget": null
+        },
+        "span": {
+          "column": 59,
+          "end": 85,
+          "line": 1,
+          "start": 64,
+          "type": "Span"
+        },
+        "type": "Definition"
+      }
+    ],
+    "profile": "sdui/0.2",
+    "references": [],
+    "span": {
+      "column": 1,
+      "end": 85,
+      "line": 1,
+      "start": 0,
+      "type": "Span"
+    },
+    "type": "Document"
+  },
+  "validation": "local-profile"
+}

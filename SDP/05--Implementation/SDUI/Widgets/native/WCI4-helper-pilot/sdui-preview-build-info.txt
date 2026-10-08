@@ -1,0 +1,22 @@
+/tmp/wci4-helpers-pilot/libexec/xfmd/sdui-preview: go1.27.1
+	path	github.com/Hans-Einar/SDP/SDUI/go/cmd/sdui-preview
+	mod	github.com/Hans-Einar/SDP/SDUI/go	(devel)	
+	dep	github.com/yuin/goldmark	v1.8.2	h1:kEGpgqJXdgbkhcOgBxkC0X0PmoPG1ZyoZ117rDVp4zE=
+	dep	golang.org/x/image	v0.46.0	h1:b1+oYj0Jbp6K5MDT4i4/eZpYlk3V8SJhhDKh6LBHAyQ=
+	dep	golang.org/x/sys	v0.48.0	h1:bbX/i/6MgT9BVLM9RT1thmxL04yeTAhbEz4SyadbXoo=
+	dep	golang.org/x/text	v0.42.0	h1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=
+	build	-buildmode=exe
+	build	-compiler=gc
+	build	DefaultGODEBUG=tracebacklabels=0,x509sslcertoverrideplatform=0
+	build	CGO_ENABLED=1
+	build	CGO_CFLAGS=
+	build	CGO_CPPFLAGS=
+	build	CGO_CXXFLAGS=
+	build	CGO_LDFLAGS=
+	build	GOARCH=amd64
+	build	GOOS=linux
+	build	GOAMD64=v1
+	build	vcs=git
+	build	vcs.revision=90a94b5daa4b36635be102858b2ce4a8012150c6
+	build	vcs.time=2026-10-08T12:16:12Z
+	build	vcs.modified=false

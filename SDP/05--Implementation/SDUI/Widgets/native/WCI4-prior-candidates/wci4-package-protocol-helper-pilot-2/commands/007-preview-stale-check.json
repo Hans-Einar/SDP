@@ -1,0 +1,25 @@
+{
+  "name": "preview-stale-check",
+  "argv": [
+    "/tmp/wci4-helpers-pilot/libexec/xfmd/sdui-preview",
+    "-source",
+    "/tmp/wci4-package-protocol-helper-pilot-2/native legacy project with spaces/Page å with spaces.sdui",
+    "-entry",
+    "Main",
+    "-revision",
+    "0000000000000000000000000000000000000000000000000000000000000000",
+    "-check"
+  ],
+  "cwd": "/tmp/wci4-package-protocol-helper-pilot-2",
+  "binarySha256": "fa1a3bac44e0a13e76ff1229ccfa1b931075e00be281dc38b2b1f38262930d28",
+  "displayEnvironment": "DISPLAY/WAYLAND_DISPLAY removed",
+  "expected": "nonzero with stale",
+  "exit": 2,
+  "timeout": false,
+  "seconds": 0.07504606246948242,
+  "stdout": "commands/007-preview-stale-check.stdout",
+  "stderr": "commands/007-preview-stale-check.stderr",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "ca2fecf9ed24c40ca4c4cc802bd4d0f4de079fae7420a414073d0816a0ec7562",
+  "binaryUnchanged": true
+}

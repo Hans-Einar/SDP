@@ -1,0 +1,12 @@
+{
+  "version": "sdptool-sdui-markdown/0.1",
+  "revision": "9262fa7c9f7b84edd679528dc9d08450d699e2c4f1a02c24b3eaef5ccb28e591",
+  "renderer": "",
+  "diagrams": null,
+  "facts": null,
+  "model_gaps": null,
+  "outputs": {
+    "entry.md": "0443a6cb2d04bd2f95cbf944f2bb796de544b95c83ebc88a738140d72b354ded",
+    "sdptool.json": "19a6359885be0576803665817c78e27052e07febba35fb6701aa17c9bd306325"
+  }
+}

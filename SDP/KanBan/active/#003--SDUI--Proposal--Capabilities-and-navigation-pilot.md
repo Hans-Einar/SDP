@@ -230,3 +230,7 @@ and validation-invalid admitted drafts retain history. No Fyne fork or parallel
 editor is selected; native acceptance must prove these boundaries.
 
 - 2026-10-08T12:14:43.708648+00:00 — EVT-KB-SDUI-000026: WCI3-M2 delivered at 69d0a332; 92 native checks, 5 exactly-once results and independent approval. WCI4 selected; remain in-progress for previews, consumer packages and integrated review. Evidence: ../../05--Implementation/SDUI/Widgets/Evidence-WCI3-M2.md. Backlog review retains separate KB004/KB005 dispositions.
+
+- 2026-10-08T12:56:13.294018+00:00 — EVT-KB-SDUI-000028: WCI4 implementation and candidate-one package/protocol pilots are recorded. Native owner-loss preview cleanup and independent finite-SVG geometry findings require correction before final aggregate acceptance; remain in-progress. Matching package has ten binaries; supplied consumer GUI test and 50 protocol commands pass on that prior candidate. Final corrected-source native/all-family suites and independent review remain required. Dark-theme contrast observation is registered separately on KB-SDUI-004.
+
+- 2026-10-08T13:07:30.392770+00:00 — EVT-KB-SDUI-000029: WCI4-M1 delivered at a026a5d1; reviewed 74-path provider/native candidate, matching ten-binary payload, 50 protocol commands, 24 native checks and ten exact receipts. WCI4-M2 stays active for all-family integrated acceptance. Backlog review retains KB-SDUI-004 fidelity and separate KB-SDUI-005 disposition.

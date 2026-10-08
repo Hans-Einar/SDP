@@ -1,0 +1,2 @@
+sdui 0.2;
+page=[field=input("Text",value="A") {x=fill}] {x=fill,y=fill};

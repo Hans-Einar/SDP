@@ -1,0 +1,25 @@
+{
+  "name": "svg-atomic-export",
+  "argv": [
+    "/tmp/wci4-package-candidate1/bin/sdui",
+    "/tmp/wci4-package-protocol-candidate1-pilot-1/static rejection svg project with spaces/Page å with spaces.sdui",
+    "--entry",
+    "Main",
+    "--format",
+    "svg",
+    "-o",
+    "/tmp/wci4-package-protocol-candidate1-pilot-1/svg prior output.svg"
+  ],
+  "cwd": "/tmp/wci4-package-protocol-candidate1-pilot-1",
+  "binarySha256": "7789ef39c0e5b484fe569b0e7f42066871eeec1ef73a9e0c29012c8726e944ad",
+  "displayEnvironment": "DISPLAY/WAYLAND_DISPLAY removed",
+  "expected": "nonzero with unsupported-resource-export",
+  "exit": 2,
+  "timeout": false,
+  "seconds": 0.05263519287109375,
+  "stdout": "commands/049-svg-atomic-export.stdout",
+  "stderr": "commands/049-svg-atomic-export.stderr",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "3bf9a9508c4c08e62a4e121f8ed4cfec08816a3f553ff9b3fe2d4aa3bbf52841",
+  "binaryUnchanged": true
+}

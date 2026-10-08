@@ -1,0 +1,25 @@
+{
+  "name": "all-families-atomic-export",
+  "argv": [
+    "/tmp/wci4-package-candidate1/bin/sdui",
+    "/tmp/wci4-package-protocol-candidate1-pilot-1/static rejection all-families project with spaces/Page å with spaces.sdui",
+    "--entry",
+    "Main",
+    "--format",
+    "svg",
+    "-o",
+    "/tmp/wci4-package-protocol-candidate1-pilot-1/all-families prior output.svg"
+  ],
+  "cwd": "/tmp/wci4-package-protocol-candidate1-pilot-1",
+  "binarySha256": "7789ef39c0e5b484fe569b0e7f42066871eeec1ef73a9e0c29012c8726e944ad",
+  "displayEnvironment": "DISPLAY/WAYLAND_DISPLAY removed",
+  "expected": "nonzero with unsupported-interaction-export",
+  "exit": 2,
+  "timeout": false,
+  "seconds": 0.08429598808288574,
+  "stdout": "commands/048-all-families-atomic-export.stdout",
+  "stderr": "commands/048-all-families-atomic-export.stderr",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "ba46c597851d09189ca712dbbf9736d3a9cd4c12e793fe13598a19f300cc111b",
+  "binaryUnchanged": true
+}

@@ -1,0 +1,25 @@
+{
+  "name": "svg-preview-unsupported",
+  "argv": [
+    "/tmp/wci4-helpers-pilot/libexec/xfmd/sdui-preview",
+    "-source",
+    "/tmp/wci4-package-protocol-helper-pilot-1/unsupported svg project with spaces/Page å with spaces.sdui",
+    "-entry",
+    "Main",
+    "-revision",
+    "3ca6e7d4528dca39edcc9c7a5ce97868f4aa76d23f5b4f536ce4d6b6942771ac",
+    "-check"
+  ],
+  "cwd": "/tmp/wci4-package-protocol-helper-pilot-1",
+  "binarySha256": "fa1a3bac44e0a13e76ff1229ccfa1b931075e00be281dc38b2b1f38262930d28",
+  "displayEnvironment": "DISPLAY/WAYLAND_DISPLAY removed",
+  "expected": "nonzero with unsupported-preview",
+  "exit": 2,
+  "timeout": false,
+  "seconds": 0.025829792022705078,
+  "stdout": "commands/021-svg-preview-unsupported.stdout",
+  "stderr": "commands/021-svg-preview-unsupported.stderr",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "f38681c542e0feff92e2c1f17b55901bc70ac8990eda5617d23fd3c3254037a6",
+  "binaryUnchanged": true
+}

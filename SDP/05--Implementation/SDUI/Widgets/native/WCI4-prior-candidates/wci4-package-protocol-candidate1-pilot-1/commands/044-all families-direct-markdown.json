@@ -1,0 +1,23 @@
+{
+  "name": "all families-direct-markdown",
+  "argv": [
+    "/tmp/wci4-package-candidate1/bin/sdui",
+    "/tmp/wci4-package-protocol-candidate1-pilot-1/all families project with spaces/SDP/Page å with spaces.sdui",
+    "--format",
+    "markdown",
+    "--entry",
+    "Main"
+  ],
+  "cwd": "/tmp/wci4-package-protocol-candidate1-pilot-1",
+  "binarySha256": "7789ef39c0e5b484fe569b0e7f42066871eeec1ef73a9e0c29012c8726e944ad",
+  "displayEnvironment": "DISPLAY/WAYLAND_DISPLAY removed",
+  "expected": "success",
+  "exit": 0,
+  "timeout": false,
+  "seconds": 0.04957771301269531,
+  "stdout": "commands/044-all families-direct-markdown.stdout",
+  "stderr": "commands/044-all families-direct-markdown.stderr",
+  "stdoutSha256": "7725b5669e4af04a88a3dd8e852fb5757cfc36b772ee13553d22ed850f83bf63",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "binaryUnchanged": true
+}

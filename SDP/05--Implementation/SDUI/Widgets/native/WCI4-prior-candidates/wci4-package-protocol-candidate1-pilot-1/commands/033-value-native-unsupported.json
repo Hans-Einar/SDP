@@ -1,0 +1,24 @@
+{
+  "name": "value-native-unsupported",
+  "argv": [
+    "/tmp/wci4-package-candidate1/libexec/xfmd/sdui-fyne",
+    "-entry",
+    "Main",
+    "-watch=false",
+    "-revision",
+    "c579692f68ab2898c3d75d56e358efbfb4b1560dcdbbbc4c574c6b68ecf97f22",
+    "/tmp/wci4-package-protocol-candidate1-pilot-1/unsupported value project with spaces/Page å with spaces.sdui"
+  ],
+  "cwd": "/tmp/wci4-package-protocol-candidate1-pilot-1",
+  "binarySha256": "a1a101d9502c2442d064d1b779bb8c1e5828f5ac7f38dd8f74e450fcc315ca51",
+  "displayEnvironment": "DISPLAY/WAYLAND_DISPLAY removed",
+  "expected": "nonzero with unsupported-value",
+  "exit": 2,
+  "timeout": false,
+  "seconds": 0.2434084415435791,
+  "stdout": "commands/033-value-native-unsupported.stdout",
+  "stderr": "commands/033-value-native-unsupported.stderr",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "c3c08cbb653b2c0c80cd2c2cc6774067ed7d674cc196c3b3ce6fef302c5f41c6",
+  "binaryUnchanged": true
+}

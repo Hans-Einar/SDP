@@ -1,0 +1,25 @@
+{
+  "name": "choice-preview-unsupported",
+  "argv": [
+    "/tmp/wci4-helpers-pilot/libexec/xfmd/sdui-preview",
+    "-source",
+    "/tmp/wci4-package-protocol-helper-pilot-1/unsupported choice project with spaces/Page å with spaces.sdui",
+    "-entry",
+    "Main",
+    "-revision",
+    "8260539f2d418bae5f1a19de4b76837e1dea492ff2ce71a028b5896b2b642199",
+    "-check"
+  ],
+  "cwd": "/tmp/wci4-package-protocol-helper-pilot-1",
+  "binarySha256": "fa1a3bac44e0a13e76ff1229ccfa1b931075e00be281dc38b2b1f38262930d28",
+  "displayEnvironment": "DISPLAY/WAYLAND_DISPLAY removed",
+  "expected": "nonzero with unsupported-provider",
+  "exit": 2,
+  "timeout": false,
+  "seconds": 0.02562689781188965,
+  "stdout": "commands/017-choice-preview-unsupported.stdout",
+  "stderr": "commands/017-choice-preview-unsupported.stderr",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "38d9f98fe8d1e942bd0d5f76f840524c7f85da62366cb22ec6c9062cd0ee2b3f",
+  "binaryUnchanged": true
+}

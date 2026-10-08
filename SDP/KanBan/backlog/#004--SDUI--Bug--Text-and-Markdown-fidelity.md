@@ -46,7 +46,7 @@ explained contract change. No pixel-based UI dimension rule is introduced.
 ## Scope and authority
 
 SDUIPresentation owns the implementation; use SDUIRuntime/NativeHost only if a
-selected shared text contract requires them. [KB-SDUI-003](%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md)
+selected shared text contract requires them. [KB-SDUI-003](../active/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md)
 owns new interaction/resource capabilities. No XFMD changes or legacy parser
 fallback. Registration records observed limitations and recommended work;
 implementation, merge and release remain unselected.
@@ -54,3 +54,18 @@ implementation, merge and release remain unselected.
 ## Worklog
 
 - 2026-09-29T16:53:54.251554+00:00 — EVT-KB-SDUI-000013: Registered from completed producer research; remains backlog.
+
+## Native fixed-glyph contrast observation — WCI4
+
+The actual WCI4 preview pilot under the default dark native theme renders supplied
+shape images correctly but fixed dark text/glyph colors give poor contrast on the
+dark background, including existing field captions and Markdown. The same bounded
+workflow is legible under explicit `FYNE_THEME=light`. KB-SDUI-003 verifies that
+declared light profile and does not claim dark/system-theme contrast coverage.
+Retain the observed dark capture and the independently reviewed scope disposition
+in the WCI4 native evidence. Consider theme-aware shared glyph/caption colors when
+this fidelity card is selected; no theme framework or implementation is authorized
+by registration. Linux OS screen-reader delivery remains a separate unverified
+backend boundary; mounted Accessible labels do not establish visual contrast.
+
+- 2026-10-08T12:49:02.574043+00:00 — EVT-KB-SDUI-000027: Recorded inherited native dark-theme contrast limitation from WCI4; remains backlog, implementation unselected.
