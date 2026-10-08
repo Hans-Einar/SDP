@@ -148,5 +148,5 @@ verification remain required. Prior aspect-only assertions do not prove fidelity
 native SVG pixels, matching ten-binary package, all-family evidence applicability,
 actual IME recipes and independent acceptance. WCI0–WCI4 are complete on the
 selected baseline. The completed matrix names all bounded support/fallback limits.
-Earlier pending statements above are historical checkpoints. The combined PR will
-remain draft until its inherited baseline is integrated; no merge or publication.
+Earlier pending statements above are historical checkpoints. [PR #52](https://github.com/Hans-Einar/SDP/pull/52) is draft until its inherited baseline is integrated;
+no merge or publication.

@@ -34,7 +34,7 @@ gantt
 | Primary card | [KB-SDUI-003](../KanBan/completed/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md) |
 | Snapshot date | 2026-10-07 owner request; actual ledger timestamps recorded separately |
 | Current step | S5 completed |
-| Proposed next step | Draft combined PR handoff; owner integration decision is separate |
+| Proposed next step | Owner integration decision for [draft PR #52](https://github.com/Hans-Einar/SDP/pull/52); no widget implementation remains |
 | Execution authority | Owner T001 requests taking the card's work |
 
 ## Goal
@@ -646,9 +646,16 @@ implementation obligations.
   and optional/source-set proposals unselected. Next: finish authorized draft PR
   handoff with the inherited 73-commit dependency explicit; no merge/publication.
 
+- Final handoff work summary: [draft PR #52](https://github.com/Hans-Einar/SDP/pull/52) targets main and
+  preserves the selected phase history, with the 73-commit inherited-baseline
+  dependency explicit. Both local integration and GitHub phase pushes succeeded.
+  The owned Xvfb :191 process was stopped after every native workflow completed;
+  its exact process/cleanup receipt is retained. S1–S5 remain completed. No merge,
+  release or further widget work was performed; next disposition belongs to owner.
+
 ## Closeout
 
 WCI0–WCI4 and the full bounded KB-SDUI-003 inventory are implemented, verified and
 independently reviewed on the selected baseline. PLAN-SDP-0022 and the primary card
-are completed. Draft combined PR handoff follows under existing authorization;
+are completed. Draft combined [PR #52](https://github.com/Hans-Einar/SDP/pull/52) is created under existing authorization;
 merge, inherited-baseline integration and release remain separate owner decisions.
