@@ -1,0 +1,28 @@
+{"kind": "candidate", "value": {"binary": "/tmp/sdui-wci2-native-noether-check", "sha256": "f1de87cefd039f84321c145d02f4b79bbd219916a30b76dfaa3a2007600239cc", "display": ":189", "variant": "wci2-lifecycle"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["click", 7, 138]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["click", 109, 42]}
+{"kind": "check", "value": {"name": "leaving page revokes its pending provider request", "passed": true}}
+{"kind": "fixture-command", "value": "complete page/body/workspace/overview/nav:1:1 success"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["click", 39, 42]}
+{"kind": "check", "value": {"name": "returning page retains cancellation and rejects late load", "passed": true}}
+{"kind": "x11-input", "value": ["key", "Tab"]}
+{"kind": "x11-input", "value": ["key", "r"]}
+{"kind": "check", "value": {"name": "revealed page R starts exactly one fresh provider request", "passed": true}}
+{"kind": "fixture-command", "value": "complete page/body/workspace/overview/nav:1:2 success"}
+{"kind": "check", "value": {"name": "fresh revealed-page completion publishes without extra SDL call", "passed": true}}
+{"kind": "x11-input", "value": ["key", "End"]}
+{"kind": "fixture-command", "value": "hide overview"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "hide current page picks eligible sibling without callback", "passed": true}}
+{"kind": "fixture-command", "value": "show overview"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["click", 39, 42]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "show restores eligible page state with fresh explicit activation", "passed": true}}
+{"kind": "screenshot", "value": "page-provider-recovery.png"}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

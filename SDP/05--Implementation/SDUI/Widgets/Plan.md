@@ -35,8 +35,8 @@ Current preview files are not this assignment's original implementation.
 | --- | --- | --- | --- |
 | WCI0-M1 | Capability/preparation boundary with legacy fixtures, missing capability/module/signature rejection and no partial activation | WCD1 reviewed design | completed |
 | WCI1-M1 | 0.3 tree/list/scroll from source through runtime, Fyne, exports and typed SDL fixture; inspect pointer/keyboard/reload behavior | WCI0; reviewed [collection contract](../../../04--Design/SDUI/Widgets/Collections.md) | completed |
-| WCI2-M1 | Tabs/splits preserve page state, relative geometry and focus | WCI1 evidence and pilot findings; reviewed Panes-and-commands contract | in-progress |
-| WCI2-M2 | Button/toggle shared commands, menu/context/dialog with cancel/lifetime proof | WCI2-M1; typed command/surface grammar | planned |
+| WCI2-M1 | Tabs/splits preserve page state, relative geometry and focus | WCI1 evidence and pilot findings; reviewed Panes-and-commands contract | completed |
+| WCI2-M2 | Button/toggle shared commands, menu/context/dialog with cancel/lifetime proof | WCI2-M1; typed command/surface grammar | in-progress |
 | WCI3-M1 | Checkbox/slider/select/numeric input and atomic typed drafts | WCI2; shared typed value/property contract | planned |
 | WCI3-M2 | Extended single-line and basic multiline text with native editing/IME/undo evidence | WCI3-M1 | planned |
 | WCI4-M1 | All-family producer discovery/composition/text/codegen/provider integration and matching consumer package preparation | WCI1–WCI3 | planned |
@@ -87,3 +87,10 @@ See [report](WCI1-prerequisite.md); stage feature implementation remains pending
 files, 54 passing native checks and passing integrated original-workspace suites.
 Tree/list/scroll and guarded native publication are delivered at the bounded
 contract level. WCI2–WCI4 remain required; no whole-card completion is implied.
+
+## WCI2-M1 delivery
+
+[Pane evidence](Evidence-WCI2-M1.md) records commit `403c540`, 72 exact integrated
+files, 58 native checks, passing suites and independent approval. M2 is selected after independent contract review (hash 9a9c8710): preserve basic
+button dispatch, explicit opener identity and synchronous native menu selection
+scope. Five exclusive implementation lanes continue on the same phase branch.
