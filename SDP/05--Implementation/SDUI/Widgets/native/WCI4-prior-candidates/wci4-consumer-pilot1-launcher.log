@@ -1,0 +1,9 @@
+{
+  "exit": 0,
+  "seconds": 8.758,
+  "executedStagedPaths": {
+    "/tmp/wci4-package-candidate1/bin/sdptool": true,
+    "/tmp/wci4-package-candidate1/libexec/xfmd/sdui-preview": true,
+    "/tmp/wci4-package-candidate1/libexec/xfmd/sdui-fyne": true
+  }
+}

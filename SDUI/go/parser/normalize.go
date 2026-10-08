@@ -9,17 +9,24 @@ type Region struct {
 	Role string    `json:"role"`
 	Node *Instance `json:"node"`
 }
+type UseSite struct {
+	Definition string `json:"definition"`
+	Span       Span   `json:"span"`
+}
 type Instance struct {
-	Kind      string         `json:"kind"`
-	Path      string         `json:"path"`
-	Variant   string         `json:"variant,omitempty"`
-	Widget    string         `json:"widget,omitempty"`
-	Text      string         `json:"text,omitempty"`
-	Arguments map[string]any `json:"arguments"`
-	Layout    map[string]any `json:"layout"`
-	Rows      [][]*Instance  `json:"rows"`
-	Regions   []Region       `json:"regions"`
-	Span      Span           `json:"span"`
+	Profile     string         `json:"profile,omitempty"`
+	Declaration string         `json:"declaration,omitempty"`
+	Uses        []UseSite      `json:"uses,omitempty"`
+	Kind        string         `json:"kind"`
+	Path        string         `json:"path"`
+	Variant     string         `json:"variant,omitempty"`
+	Widget      string         `json:"widget,omitempty"`
+	Text        string         `json:"text,omitempty"`
+	Arguments   map[string]any `json:"arguments"`
+	Layout      map[string]any `json:"layout"`
+	Rows        [][]*Instance  `json:"rows"`
+	Regions     []Region       `json:"regions"`
+	Span        Span           `json:"span"`
 }
 
 func (i *Instance) Region(role string) *Instance {
@@ -71,8 +78,8 @@ func Normalize(d *Document) (roots map[string]*Instance, err error) {
 		defs[def.Name] = def.Root
 	}
 	count := 0
-	var expand func(*Node, string, int) *Instance
-	expand = func(n *Node, path string, depth int) *Instance {
+	var expand func(*Node, string, string, int) *Instance
+	expand = func(n *Node, path, scope string, depth int) *Instance {
 		count++
 		if count > 8192 {
 			fail("expansion-limit", "More than 8192 expanded components", n.Span)
@@ -81,29 +88,45 @@ func Normalize(d *Document) (roots map[string]*Instance, err error) {
 			fail("depth-limit", "Expanded depth exceeds 64", n.Span)
 		}
 		if n.Kind == "use" {
-			i := expand(defs[val(n.Target)], path, depth+1)
+			i := expand(defs[val(n.Target)], path, path, depth+1)
+			i.Declaration = val(n.Target)
+			i.Uses = append(i.Uses, UseSite{val(n.Target), n.Span})
 			overlay := formatting(n, i.Kind, len(i.Rows))
 			for k, v := range overlay {
 				i.Layout[k] = v
 			}
 			checkCombination(i.Layout, i.Kind, len(i.Rows), n.Span)
 			checkWrap(i.Layout, i.Rows, n.Span)
+			validateInteractionLayout(i)
 			return i
 		}
-		props := formatting(n, n.Kind, len(n.Rows))
+		props := formatting(n, sourceKind(n, d.Profile), len(n.Rows))
 		i := &Instance{Kind: n.Kind, Path: path, Widget: val(n.Widget), Layout: props, Arguments: map[string]any{}, Rows: [][]*Instance{}, Regions: []Region{}, Span: n.Span}
+		if d.Profile == "sdui/0.3" {
+			i.Profile = d.Profile
+		}
 		if n.Variant != nil {
 			i.Variant = "box"
 		}
 		if n.Text != nil {
 			i.Text = n.Text.Value.(string)
 		}
-		if n.Kind == "widget" {
-			i.Arguments = widgetArguments(n)
+		if n.Kind == "widget" || n.Kind == "composition" {
+			i.Arguments = widgetArguments(n, d.Profile)
 		}
+		if sourceKind(n, d.Profile) == "markdown" && n.Kind == "widget" {
+			i.Kind, i.Widget, i.Text = "markdown", "", i.Argument("text")
+		}
+		if isInteractionNode(i) {
+			i.Arguments["$scope"] = Literal{Kind: "string", Value: scope, Span: n.Span}
+		}
+		validateInteractionLayout(i)
 		for r, row := range n.Rows {
 			items := []*Instance{}
 			for c, child := range row.Items {
+				if n.Kind == "composition" && (i.Widget == "tabs" || i.Widget == "split") && child.Name == nil && child.Target == nil {
+					fail("pane-name", "Pane children require stable names", child.Span)
+				}
 				name := val(child.Role)
 				if name == "" {
 					name = val(child.Name)
@@ -114,7 +137,7 @@ func Normalize(d *Document) (roots map[string]*Instance, err error) {
 				if name == "" {
 					name = fmt.Sprintf("$r%dc%d", r, c)
 				}
-				instance := expand(child, path+"/"+name, depth+1)
+				instance := expand(child, path+"/"+name, scope, depth+1)
 				if n.Kind == "group" && instance.Kind == "frame" {
 					fail("group-content", "Frame reference in widget group", child.Span)
 				}
@@ -133,7 +156,10 @@ func Normalize(d *Document) (roots map[string]*Instance, err error) {
 	}
 	roots = map[string]*Instance{}
 	for _, def := range d.Definitions {
-		roots[def.Name] = expand(def.Root, def.Name, 1)
+		roots[def.Name] = expand(def.Root, def.Name, def.Name, 1)
+		roots[def.Name].Declaration = def.Name
+		validatePanePlacement(roots[def.Name], nil)
+		validateInteractionPlacement(roots[def.Name], nil)
 	}
 	validateConnections(d, roots)
 	return roots, nil

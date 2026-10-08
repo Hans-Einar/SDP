@@ -1,0 +1,83 @@
+[
+  {
+    "name": "previews-origins",
+    "argv": [
+      "python3",
+      "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_origins.py",
+      "--binary",
+      "/tmp/wci4-package-candidate3/libexec/sdui/previews",
+      "--display",
+      ":191",
+      "--out",
+      "/tmp/wci4-final-native3-supplement/previews-origins"
+    ],
+    "cwd": "/home/warloc/git/SDP-vNow",
+    "exit": 0,
+    "seconds": 60.608,
+    "FYNE_THEME": "light",
+    "binarySHA256": "200679febaebddaf13edfdc477ed9eac3feed66f082aef18bace0b2ebc266a85",
+    "harnessSHA256": "061ca96fe1873b1844e90028087bf428a925aa65348f0acbffa02a8975f1cf40"
+  },
+  {
+    "name": "text-ime",
+    "argv": [
+      "python3",
+      "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/with_ibus.py",
+      "--display",
+      ":191",
+      "--installation",
+      "/tmp/sdui-ime-probe/root",
+      "--components",
+      "/tmp/sdui-ime-probe/components",
+      "--out",
+      "/tmp/wci4-final-native3-supplement/text-ime-environment",
+      "--",
+      "python3",
+      "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_text.py",
+      "--binary",
+      "/tmp/wci4-package-candidate3/libexec/sdui/text",
+      "--display",
+      ":191",
+      "--out",
+      "/tmp/wci4-final-native3-supplement/text-ime",
+      "--variant",
+      "ime"
+    ],
+    "cwd": "/home/warloc/git/SDP-vNow",
+    "exit": 0,
+    "seconds": 20.698,
+    "FYNE_THEME": "light",
+    "binarySHA256": "53ef12810b9e9464c1fd4f040fc95fd213f9e466ddb561d919082ed114729ddc",
+    "harnessSHA256": "3bdd107e639ad6a3448ce54aaba4229030f31ea0b95a6f4d2767e173db4f1e55"
+  },
+  {
+    "name": "helper-ime",
+    "argv": [
+      "python3",
+      "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/with_ibus.py",
+      "--display",
+      ":191",
+      "--installation",
+      "/tmp/sdui-ime-probe/root",
+      "--components",
+      "/tmp/sdui-ime-probe/components",
+      "--out",
+      "/tmp/wci4-final-native3-supplement/helper-ime-environment",
+      "--",
+      "python3",
+      "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_helper_ime.py",
+      "--binary",
+      "/tmp/wci4-package-candidate3/libexec/xfmd/sdui-fyne",
+      "--display",
+      ":191",
+      "--out",
+      "/tmp/wci4-final-native3-supplement/helper-ime"
+    ],
+    "cwd": "/home/warloc/git/SDP-vNow",
+    "exit": 0,
+    "seconds": 8.7,
+    "FYNE_THEME": "light",
+    "binarySHA256": "69574e8dec94564fef8b6d475147e1273e3ce13caa226707d5d72ced1bf5d61c",
+    "harnessSHA256": "2be6b912dcc3fde73775e954d052f79a78301ca662c06ffef39d28c2eb752d26"
+  }
+]

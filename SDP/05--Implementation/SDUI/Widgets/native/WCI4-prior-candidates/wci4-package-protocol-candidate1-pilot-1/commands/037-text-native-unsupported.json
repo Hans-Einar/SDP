@@ -1,0 +1,24 @@
+{
+  "name": "text-native-unsupported",
+  "argv": [
+    "/tmp/wci4-package-candidate1/libexec/xfmd/sdui-fyne",
+    "-entry",
+    "Main",
+    "-watch=false",
+    "-revision",
+    "8d7616ef169ebcc6fd2e120b3cdb26ead0603f7a102dff1321b948937106fc67",
+    "/tmp/wci4-package-protocol-candidate1-pilot-1/unsupported text project with spaces/Page å with spaces.sdui"
+  ],
+  "cwd": "/tmp/wci4-package-protocol-candidate1-pilot-1",
+  "binarySha256": "a1a101d9502c2442d064d1b779bb8c1e5828f5ac7f38dd8f74e450fcc315ca51",
+  "displayEnvironment": "DISPLAY/WAYLAND_DISPLAY removed",
+  "expected": "nonzero with unsupported-text",
+  "exit": 2,
+  "timeout": false,
+  "seconds": 0.2265779972076416,
+  "stdout": "commands/037-text-native-unsupported.stdout",
+  "stderr": "commands/037-text-native-unsupported.stderr",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "ea791ce8e41260eb9298bd4968b2d8f97277bdc00adc9a5245a2d271eae25862",
+  "binaryUnchanged": true
+}

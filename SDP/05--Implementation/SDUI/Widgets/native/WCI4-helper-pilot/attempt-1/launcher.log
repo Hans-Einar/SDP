@@ -1,0 +1,10 @@
+dbus[225806]: Unable to set up transient service directory: XDG_RUNTIME_DIR "/tmp/wci4-helper-ime-environment/runtime" not available: Permission denied
+dbus-daemon[225806]: Cannot setup inotify for '/tmp/wci4-helper-ime-environment/data/dbus-1/services'; error 'Permission denied'
+Traceback (most recent call last):
+  File "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_helper_ime.py", line 68, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_helper_ime.py", line 51, in main
+    assert process.poll() is None,'Helper exited before its native window';assert time.monotonic()<deadline,'Helper window did not appear';time.sleep(.1)
+                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Helper window did not appear

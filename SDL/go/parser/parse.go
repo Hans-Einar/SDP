@@ -11,7 +11,7 @@ import (
 
 const MaxBytes = 2 << 20
 
-var tokenPattern = regexp.MustCompile(`^[A-Za-z][A-Za-z0-9-]*|^[0-9]+(?:\.[0-9]+)*|^[.=]`)
+var tokenPattern = regexp.MustCompile(`^[A-Za-z][A-Za-z0-9-]*|^[0-9]+(?:\.[0-9]+)*|^[.=/]|^"[^"\r\n]*"`)
 var namePattern = regexp.MustCompile(`^[A-Z][A-Za-z0-9]*$`)
 var integerPattern = regexp.MustCompile(`^(0|[1-9][0-9]{0,5})$`)
 
@@ -32,7 +32,7 @@ func newSource(text string) *source {
 func (s *source) span(start, end int) Span {
 	a := sort.Search(len(s.lines), func(i int) bool { return s.lines[i] > start }) - 1
 	b := sort.Search(len(s.lines), func(i int) bool { return s.lines[i] > end }) - 1
-	return Span{start, end, a + 1, start - s.lines[a] + 1, b + 1, end - s.lines[b] + 1}
+	return Span{Start: start, End: end, Line: a + 1, Column: start - s.lines[a] + 1, EndLine: b + 1, EndColumn: end - s.lines[b] + 1}
 }
 
 type token struct {
@@ -40,9 +40,10 @@ type token struct {
 	span Span
 }
 type reader struct {
-	source *source
-	tokens []token
-	index  int
+	version string
+	source  *source
+	tokens  []token
+	index   int
 }
 
 func (p *reader) current() token            { return p.tokens[p.index] }
@@ -99,12 +100,21 @@ func Parse(text string) (model *Model, err error) {
 	start := p.expect("language").span.Start
 	p.expect("design-core")
 	p.expect("version")
-	if p.current().text != "0.5" {
-		p.fail("UNSUPPORTED_VERSION", "Only design-core version 0.5 is supported")
+	if p.current().text != "0.5" && p.current().text != "0.6" {
+		p.fail("UNSUPPORTED_VERSION", "Only design-core versions 0.5 and 0.6 are supported")
 	}
-	p.take()
-	m := &Model{Header: Header{"design-core", "0.5", p.finish(start)}, Declarations: []Declaration{}, Statements: []Statement{}}
-	for has(kinds, p.current().text) {
+	p.version = p.take().text
+	m := &Model{tokenCount: len(p.tokens) - 1, Header: Header{"design-core", p.version, p.finish(start)}, Declarations: []Declaration{}, Statements: []Statement{}}
+	for has(kinds, p.current().text) || (p.version == "0.6" && (p.current().text == "system" || p.current().text == "includes")) {
+		if p.current().text == "includes" {
+			start := p.take().span.Start
+			t := p.take()
+			if !strings.HasPrefix(t.text, `"`) {
+				p.fail("UNSUPPORTED_SYNTAX", "includes requires a quoted source path")
+			}
+			m.Includes = append(m.Includes, Include{strings.Trim(t.text, `"`), p.finish(start)})
+			continue
+		}
 		kind := p.take()
 		name := p.identifier()
 		m.Declarations = append(m.Declarations, Declaration{kind.text, name, p.finish(kind.span.Start)})
@@ -122,7 +132,23 @@ func (p *reader) statement() Statement {
 		p.take()
 		s.Kind = "Relation"
 		s.Verb = verb
+
 		s.Object = p.identifier()
+		if p.current().text == "/" {
+			if p.version != "0.6" || verb != "contains" {
+				p.fail("UNSUPPORTED_SYNTAX", "Path operands require design-core 0.6 contains")
+			}
+			start := s.Object.Span.Start
+			parts := []string{s.Object.Name}
+			for p.current().text == "/" {
+				p.take()
+				id := p.identifier()
+				parts = append(parts, id.Name)
+				s.Object = id
+			}
+			s.Path = strings.Join(parts, "/")
+			s.PathSpan = p.source.span(start, s.Object.Span.End)
+		}
 	} else {
 		switch verb {
 		case "has":
@@ -260,4 +286,13 @@ func newReader(text string) (*reader, error) {
 	p.tokens = append(p.tokens, token{"", s.span(len(text), len(text))})
 
 	return p, nil
+}
+
+// TokenCount applies the same bounded lexer as parsing; it performs no I/O.
+func TokenCount(text string) (int, error) {
+	r, e := newReader(text)
+	if e != nil {
+		return 0, e
+	}
+	return len(r.tokens) - 1, nil
 }

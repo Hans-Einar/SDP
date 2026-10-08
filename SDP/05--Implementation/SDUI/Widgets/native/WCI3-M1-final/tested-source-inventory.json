@@ -1,0 +1,357 @@
+{
+  "base": "a28b3ccc72b1ecc44300d4aa7c3cd679f4bc9625",
+  "files": [
+    {
+      "path": "SDL/go/bridge/README.md",
+      "sha256": "00246c51e9230f4f12204bf9b88f983e115af4a56745f69e4bc49a9deecf80c7"
+    },
+    {
+      "path": "SDL/go/bridge/bind.go",
+      "sha256": "aa91e2dd55cfab4ad9fb120f2fc7c774f2ceb29eb41ecff694aca9d9c7752362"
+    },
+    {
+      "path": "SDL/go/bridge/interaction.go",
+      "sha256": "1695292b99951770d4507ce4a6ee5b15eaff97f4c1ea173325f1371bf550a6bb"
+    },
+    {
+      "path": "SDL/go/bridge/results.go",
+      "sha256": "4d9559305f272f6887eedc4ef3ee82f0ddcd9a08606b0638f94ba5964ce1fd24"
+    },
+    {
+      "path": "SDL/go/bridge/scalars.go",
+      "sha256": "ac890c9376e3acd34ec61164df0a70b00f1e189b19683c9b32e3ae4176481d80"
+    },
+    {
+      "path": "SDL/go/bridge/scalars_test.go",
+      "sha256": "4fdc0b2484c2c73b18b652046c4bb69571c747913eb849c01fc81d58b7108bc3"
+    },
+    {
+      "path": "SDL/go/bridge/values.go",
+      "sha256": "3de306696660d107d66fabb5b3b43319df4c43cfabb8c7a22f6509b26bf4eef5"
+    },
+    {
+      "path": "SDL/go/examples/values/README.md",
+      "sha256": "33074da0a4ae8372c2929f0e606c13776d9ceb873aa6b0fe4b457f2ee7a0775f"
+    },
+    {
+      "path": "SDL/go/examples/values/choices.go",
+      "sha256": "32fc49db97b05d642a9db4e2b51286ba16a495b2539012a423712bc8d09a4966"
+    },
+    {
+      "path": "SDL/go/examples/values/cmd/native/main.go",
+      "sha256": "fc99208b3da5791227cc51f817e76c7563beccb69135c3ab1379b18a631b99b3"
+    },
+    {
+      "path": "SDL/go/examples/values/controls.go",
+      "sha256": "addaa856cca08bc925a39aa7e3ebe47f31ab35b7e38b1991d1e1fa45eeaeedbd"
+    },
+    {
+      "path": "SDL/go/examples/values/fixture.go",
+      "sha256": "819e8f91ecefaa90794cdd01f58614e2d322fb15b14d60adda3f7f0baba37326"
+    },
+    {
+      "path": "SDL/go/examples/values/fixture_test.go",
+      "sha256": "cc9b9805c8844ffdb834925b80691b5fe424bcac06a327de786797fea8b9dfc5"
+    },
+    {
+      "path": "SDL/go/examples/values/source.go",
+      "sha256": "5a36e51129fb5b49d8e6bf02e4c94a153dc1c5da270eeba962bffcb9547660de"
+    },
+    {
+      "path": "SDUI/docs/architecture.md",
+      "sha256": "dc44eff05b2c134a617a378958c4299976a281f2b3c44addf45d410826ba8c33"
+    },
+    {
+      "path": "SDUI/docs/go-generation.md",
+      "sha256": "4fd86792c205a959d91c23cf2454edb0feff4978b1c79f1ff1edf77337cd16b9"
+    },
+    {
+      "path": "SDUI/docs/go-layout-contract.md",
+      "sha256": "8790400cbdcfb903178b21d16499c7b84379bcd89bd3cdd3a5bf9e6ab6b60154"
+    },
+    {
+      "path": "SDUI/docs/profile-0.3.md",
+      "sha256": "1a3dcb6a777f583b5371275e6f34472f79f117e2c2d301f50cc9c2bb4e91742c"
+    },
+    {
+      "path": "SDUI/docs/requirements.md",
+      "sha256": "6c8d1e51b1c035aca67aae802e013b2c0b6460bdfde6aa35090ee520443ebf93"
+    },
+    {
+      "path": "SDUI/docs/runtime-contract.md",
+      "sha256": "b960981c951f17fb2f29ec10cfaefedd0098ebf67ceb541f2698e10820148c10"
+    },
+    {
+      "path": "SDUI/docs/wci3-m1-layout-api.md",
+      "sha256": "a28633188d683f4fc8a331b2ecfc1df4e51613061f340b6ecc699dc723433846"
+    },
+    {
+      "path": "SDUI/go/cmd/sdui/scalars_test.go",
+      "sha256": "e24dab2038ea3988e35fa88cce63d989378d10bca4a1e91dbe3b0d1815f4c210"
+    },
+    {
+      "path": "SDUI/go/codegen/scalars_test.go",
+      "sha256": "dfc4b363833127119bb009744e1f1e3bb2071d84f04b52f498cf17ab7c46c675"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/README.md",
+      "sha256": "12d892ab3d1e26c32603eae7add6a17929f6bc1395b35d148e2fce1a4374758b"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/admission/admission.go",
+      "sha256": "ddafedeba66fdf48fc483eebfe4be968a4fa77494deead9e69e01576fb5d83aa"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/document.go",
+      "sha256": "2b2370242904e16efc9007db3b0705c61614a4d984105e4bd6637e8df718b469"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/document_commands.go",
+      "sha256": "25802189906d15acf87dbfe085eb8df4415debf3461706474c32bb37cd60cab6"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/document_sync.go",
+      "sha256": "0daba7ec0a627586fc183a6b8f46ce4fcb9da2274adda42124a4627112754e0c"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/inspection.go",
+      "sha256": "b2c604cec83433675ae03747832d7b00f5f45984422740d5e34f368186ab1e8e"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/scalar_choices.go",
+      "sha256": "7fbe95923eef796490d8f6a87b43aa97b3b420b3deb68b643c4fb44dd5e7bb01"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/scalar_control.go",
+      "sha256": "19049aa6b53560eabd0cb695ab85f2515a0f1fbda61328a0150ae9278cc29244"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/scalar_control_test.go",
+      "sha256": "6367c744db1165f32b46f16cf3cd972123b87b4ec49442196bb255b10178f57d"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/view.go",
+      "sha256": "0414e7b6baeb623d65f20fe82a19e97fabea143759d4bd23f013d11fd1973779"
+    },
+    {
+      "path": "SDUI/go/layout/canvases.go",
+      "sha256": "bba40ccfb1301f9c2facc2de45fedc14719f89d9bab717271a035eeaff074ed1"
+    },
+    {
+      "path": "SDUI/go/layout/collection.go",
+      "sha256": "4baa4a4d74f0a22fb479877c1fc2d8b98bb7881518c4c02fa3ea0b688770b718"
+    },
+    {
+      "path": "SDUI/go/layout/engine.go",
+      "sha256": "8104b67f26cee049ff6bb6421e4dd0b11c61e552fab34713df77e3a1737b4d35"
+    },
+    {
+      "path": "SDUI/go/layout/field_gate_test.go",
+      "sha256": "0df6f2557126b1f03bcdaf18ef7f3db05764f7e7409d6a5084e4fdd1813353bb"
+    },
+    {
+      "path": "SDUI/go/layout/field_validation_test.go",
+      "sha256": "131cd1614a61f0cfe940103296e4d801a6a2027ffbc59b34eaf877e7000b4458"
+    },
+    {
+      "path": "SDUI/go/layout/fields.go",
+      "sha256": "889f8f3b78ab28515b40ad51ff73b8dd185bd81f34321349cced413f8e827d61"
+    },
+    {
+      "path": "SDUI/go/layout/fields_test.go",
+      "sha256": "48a2c9153b99571e52a39f582b83234d75fd973d91e1c29937a83dc8ca45cc48"
+    },
+    {
+      "path": "SDUI/go/layout/pane_minimum.go",
+      "sha256": "c0eda4bee8b71daaae98455bc1dbeba6e65f1a81be1c06feb138e73286d14b82"
+    },
+    {
+      "path": "SDUI/go/layout/types.go",
+      "sha256": "3e0d078d8547583ed2c87442df244b95439b53f616041760f54cf0d010a0c99c"
+    },
+    {
+      "path": "SDUI/go/layout/viewport.go",
+      "sha256": "6b5d4a8b60410a0112bcabf52163e91f1ee59b4c9eaea5c31ff674e0b68a440d"
+    },
+    {
+      "path": "SDUI/go/numeric/README.md",
+      "sha256": "a4b33de5da1f39470d3df1958fa095f0ab438f8d0308e63b823bf1731e2dcc3a"
+    },
+    {
+      "path": "SDUI/go/numeric/decimal.go",
+      "sha256": "403a410451b84fa14e806cdacfa661ca3f152f03be9e3fbe764ab52f859c7f2d"
+    },
+    {
+      "path": "SDUI/go/numeric/grid.go",
+      "sha256": "b322ef66b985a3528a5fcbed89110940dc197d7355cb01b29586b531e9fc56d2"
+    },
+    {
+      "path": "SDUI/go/numeric/grid_test.go",
+      "sha256": "5c5f70c967a00f3f735245d17505309c45b0bbf6899b4a4e8aeef79e689281fa"
+    },
+    {
+      "path": "SDUI/go/parser/interaction_identity.go",
+      "sha256": "d4cfcaa05fb586dd2f880943ff9b662ba824951e01e63f42242b0eb36904fccd"
+    },
+    {
+      "path": "SDUI/go/parser/parser.go",
+      "sha256": "b29258d14de454d2a978d9d6b20bb78d9ef3820850fb5e84c5224c6320c1872e"
+    },
+    {
+      "path": "SDUI/go/parser/scalars.go",
+      "sha256": "87ea2cdd1725be9f39ef50a98e475aeb26c552a4c419bd65d308e25a952ca342"
+    },
+    {
+      "path": "SDUI/go/parser/scalars_test.go",
+      "sha256": "880fad100c3d5c3bf94f81df5e9fff34bb84a4b4006d95dcf4a9e4dbf27951a5"
+    },
+    {
+      "path": "SDUI/go/parser/validate.go",
+      "sha256": "d708e98b37b889e92d6fee2a552a7408a02ada6118c89c0af7ba7b2669cd2191"
+    },
+    {
+      "path": "SDUI/go/preparation/capabilities.go",
+      "sha256": "2ec88ca9e781f06c4b600f981a5e4fe87a94689398151a37f298a432ae829d42"
+    },
+    {
+      "path": "SDUI/go/preparation/prepare.go",
+      "sha256": "fbd200d3d38837021ca9d762b9769796f3321e465696a24d8faa76dc3d106771"
+    },
+    {
+      "path": "SDUI/go/preparation/prepare_test.go",
+      "sha256": "2b540e46a3546748ecb458c062e3bf3c02392653aa4d08baada9ef480d680a0c"
+    },
+    {
+      "path": "SDUI/go/presentation/check.go",
+      "sha256": "f0b903e4f89a4f7ab443fb6394e058f7cfb27e25e89212e8246d98e08b92825b"
+    },
+    {
+      "path": "SDUI/go/presentation/dump.go",
+      "sha256": "4575b16a6e2ea263301146f7a93a29caa1565407368f3e095cbaa27d89cb0d05"
+    },
+    {
+      "path": "SDUI/go/presentation/markdown.go",
+      "sha256": "69df8765bf785ea4a478c74e370c6303c9908d82d3b0c2896769d90d8b3c4940"
+    },
+    {
+      "path": "SDUI/go/presentation/scalars.go",
+      "sha256": "7def441a67ed6625d20958bc82a2f054e5a32a9c284d903fdda0c40314736611"
+    },
+    {
+      "path": "SDUI/go/presentation/scalars_test.go",
+      "sha256": "84777ae59fa0edd06013e397d5a364390458d23dc4c103ef933a7b793839489c"
+    },
+    {
+      "path": "SDUI/go/prototype/check.go",
+      "sha256": "9ea8e824bdccc5acd7a5783cc88e771b6305f849eab0be36850b5c359f612fdd"
+    },
+    {
+      "path": "SDUI/go/prototype/scalars_test.go",
+      "sha256": "e28df113499e02ba2cf2c8ff5c3b4430dbb8133f3052826df023105bf648d6fc"
+    },
+    {
+      "path": "SDUI/go/runtime/README.md",
+      "sha256": "114ec56cf672458580922c30c08dd0d6aa48412a690c5eaa7d972f5098688696"
+    },
+    {
+      "path": "SDUI/go/runtime/choices.go",
+      "sha256": "6df86b0891c8170ccfd11be6313bfa35fd1b3ce5900550f683b6e20707cd1c61"
+    },
+    {
+      "path": "SDUI/go/runtime/command_capture.go",
+      "sha256": "3f9e3376c6e28bf5905c9b49b48960e25aef56ccfa32a2d3fcaac3214b9cab7a"
+    },
+    {
+      "path": "SDUI/go/runtime/command_dispatch.go",
+      "sha256": "aec860cb928a5bc219c104f69d85195da1157c25617af60923bce62eb2869eaf"
+    },
+    {
+      "path": "SDUI/go/runtime/command_state.go",
+      "sha256": "92ed544626997d1727e3d676723127617621c45547d15ce89704bc486336391c"
+    },
+    {
+      "path": "SDUI/go/runtime/command_types.go",
+      "sha256": "63bfa2a3673cddb1c8c3866b4f8b05c41c357d0a335d0809e849650186a446ee"
+    },
+    {
+      "path": "SDUI/go/runtime/events.go",
+      "sha256": "eb46696cdcbdce04f97cfb5df4a0c9689815b17c63cd2cd3f4866f77016c04f8"
+    },
+    {
+      "path": "SDUI/go/runtime/field_commit.go",
+      "sha256": "d68ccd9bfc05a26e14b1f6b88720a9d70c4763d875ad05c623f52d33dd492f63"
+    },
+    {
+      "path": "SDUI/go/runtime/field_edit.go",
+      "sha256": "d584d16554bff61f3fd4a10e615a94d320c3304884dabbb6f733b19dbd4bec18"
+    },
+    {
+      "path": "SDUI/go/runtime/field_lifecycle_test.go",
+      "sha256": "753aa3b47dacac7e818b3d65c54ebc655b6e81b7f6f406cc81f5d69149f5a87e"
+    },
+    {
+      "path": "SDUI/go/runtime/field_successor.go",
+      "sha256": "d2a79882efbcaa706d487bcfb5f811f73910d8fe12a00b5881365459add087dc"
+    },
+    {
+      "path": "SDUI/go/runtime/field_types.go",
+      "sha256": "88a91fa823e2272f17d5cb34bb2dff9aabb5ab34ab35b790a93545e92bb670c6"
+    },
+    {
+      "path": "SDUI/go/runtime/field_update.go",
+      "sha256": "637265c5c96c9f919f751487a8d9f3c4783a0e5f55830e421644e3316cb0420f"
+    },
+    {
+      "path": "SDUI/go/runtime/fields.go",
+      "sha256": "417b88501efcc3e19d07d7239fec4c64473ee7ba2834845c4e6f3f7762ace525"
+    },
+    {
+      "path": "SDUI/go/runtime/fields_test.go",
+      "sha256": "eea4b384e8b674744f9c3202cddfb790e5b15c07d05d36238264186c0701da65"
+    },
+    {
+      "path": "SDUI/go/runtime/interactions.go",
+      "sha256": "7b70e3d6bc6044f15dbdc0efa09d0a65865323c0abdd9a791e598c314fe16bf5"
+    },
+    {
+      "path": "SDUI/go/runtime/properties.go",
+      "sha256": "193d0f5366706a9b2d5a7815c1a943c5d324dee296c1d5093bf76cfb3b95f46d"
+    },
+    {
+      "path": "SDUI/go/runtime/reload.go",
+      "sha256": "ec670327fdb27800e97cc579a4649d035853ec8d0449e9023683cf033d7018eb"
+    },
+    {
+      "path": "SDUI/go/runtime/session.go",
+      "sha256": "f19c8014dbb31b270956dedb930d25ac7e5295a96b6d6b5f49e385369d82d1c9"
+    },
+    {
+      "path": "SDUI/go/runtime/state.go",
+      "sha256": "e2b74972e2632c9c91f300e470f9fa40ea63a988f22534de4a106363e6fe99ce"
+    },
+    {
+      "path": "SDUI/go/runtime/successor.go",
+      "sha256": "b980001006c9756d89d2380959c13d0365de8201378c74c689c16f659e067465"
+    },
+    {
+      "path": "SDUI/go/runtime/surfaces.go",
+      "sha256": "2e9f52d3c8eb3a878781a6cfb70e79d69e41c1910c80c33a581ad70091f706b2"
+    },
+    {
+      "path": "SDUI/go/runtime/types.go",
+      "sha256": "12aeb597dd7b3d7476b2bc18515d050cbd0db531a2c85f59fbd0fe1f5a59d363"
+    },
+    {
+      "path": "SDUI/go/svg/check.go",
+      "sha256": "076ea4fdfc544dc8be3489e58909a38e8186553a964264a59358f61b94e4ec65"
+    },
+    {
+      "path": "SDUI/go/svg/scalars_test.go",
+      "sha256": "5aff46abedd37ddf5c3c96cf980356c2df6fb760d7673dd85d81b46043dcb6bc"
+    },
+    {
+      "path": "SDUI/grammar/sdui-0.3.ebnf",
+      "sha256": "e52c085e3efceafb7bfa69357e5a04245f97c333a089f9db9e94e5ace40355b0"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+language design-core version 0.6.
+unit ActionCompiler.
+unit CanonicalFormatter.
+functionality CheckClassModel.
+functionality CheckStructuralRelations.
+unit ClassChecker.
+functionality CompileActionModel.
+functionality FormatStructuralSource.
+mode Inspecting.
+functionality ParseStructuralModel.
+container SdlCommandProcess.
+unit SemanticChecker.
+interface SourceTextPort.
+unit StructuralParser.
+capability TypedSourceInspection.
+ActionCompiler owns CompileActionModel.
+CanonicalFormatter owns FormatStructuralSource.
+CheckClassModel allocated-to SdlCommandProcess in mode Inspecting.
+CheckClassModel contributes-to SourceInspection.
+CheckClassModel realizes TypedSourceInspection.
+CheckStructuralRelations allocated-to SdlCommandProcess in mode Inspecting.
+CheckStructuralRelations contributes-to SourceInspection.
+CheckStructuralRelations realizes TypedSourceInspection.
+ClassChecker owns CheckClassModel.
+CompileActionModel allocated-to SdlCommandProcess in mode Inspecting.
+CompileActionModel contributes-to SourceInspection.
+CompileActionModel realizes TypedSourceInspection.
+FormatStructuralSource allocated-to SdlCommandProcess in mode Inspecting.
+FormatStructuralSource contributes-to SourceInspection.
+FormatStructuralSource realizes TypedSourceInspection.
+ParseStructuralModel allocated-to SdlCommandProcess in mode Inspecting.
+ParseStructuralModel contributes-to SourceInspection.
+ParseStructuralModel realizes TypedSourceInspection.
+SdlCommandProcess contains ActionCompiler.
+SdlCommandProcess contains CanonicalFormatter.
+SdlCommandProcess contains ClassChecker.
+SdlCommandProcess contains SemanticChecker.
+SdlCommandProcess contains StructuralParser.
+SdlCommandProcess provides TypedSourceInspection.
+SemanticChecker owns CheckStructuralRelations.
+StructuralParser consumes SourceTextPort.
+StructuralParser owns ParseStructuralModel.
+TypedSourceInspection requires SourceTextPort in mode Inspecting.

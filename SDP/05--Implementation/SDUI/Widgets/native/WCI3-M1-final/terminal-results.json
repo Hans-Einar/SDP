@@ -1,0 +1,82 @@
+{
+  "boolean": {
+    "publishedOpenings": 0,
+    "terminalResults": 0,
+    "exactlyOnce": true
+  },
+  "numeric": {
+    "publishedOpenings": 0,
+    "terminalResults": 0,
+    "exactlyOnce": true
+  },
+  "slider": {
+    "publishedOpenings": 0,
+    "terminalResults": 0,
+    "exactlyOnce": true
+  },
+  "choice": {
+    "publishedOpenings": 0,
+    "terminalResults": 0,
+    "exactlyOnce": true
+  },
+  "forms": {
+    "publishedOpenings": 3,
+    "terminalResults": 3,
+    "exactlyOnce": true
+  },
+  "failures": {
+    "publishedOpenings": 0,
+    "terminalResults": 0,
+    "exactlyOnce": true
+  },
+  "form_failures": {
+    "publishedOpenings": 3,
+    "terminalResults": 3,
+    "exactlyOnce": true
+  },
+  "lifecycle": {
+    "publishedOpenings": 2,
+    "terminalResults": 2,
+    "exactlyOnce": true
+  },
+  "observer": {
+    "publishedOpenings": 0,
+    "terminalResults": 0,
+    "exactlyOnce": true
+  },
+  "legacy_text": {
+    "publishedOpenings": 1,
+    "terminalResults": 1,
+    "exactlyOnce": true
+  },
+  "keyboard": {
+    "publishedOpenings": 0,
+    "terminalResults": 0,
+    "exactlyOnce": true
+  },
+  "readonly": {
+    "publishedOpenings": 0,
+    "terminalResults": 0,
+    "exactlyOnce": true
+  },
+  "slider_reentry": {
+    "publishedOpenings": 0,
+    "terminalResults": 0,
+    "exactlyOnce": true
+  },
+  "slider_focus": {
+    "publishedOpenings": 0,
+    "terminalResults": 0,
+    "exactlyOnce": true
+  },
+  "required_empty": {
+    "publishedOpenings": 0,
+    "terminalResults": 0,
+    "exactlyOnce": true
+  },
+  "nonmodal-forms": {
+    "publishedOpenings": 3,
+    "terminalResults": 3,
+    "exactlyOnce": true
+  }
+}

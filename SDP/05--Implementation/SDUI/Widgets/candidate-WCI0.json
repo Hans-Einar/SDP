@@ -1,0 +1,17 @@
+{
+  "baseline": "00b105ab4f7c4b7150750d69990564a04c30b035",
+  "sourceHead": "3d265d1",
+  "dependencyManifest": "kb005-dependency-manifest.json",
+  "files": {
+    "SDUI/go/preparation/capabilities.go": "2e5628efc4227021c8fbcf43e92378be018a8417aad785cf660e77fb6e4379df",
+    "SDUI/go/preparation/prepare.go": "c66360269397ac2be14798726f66617633157e9e687823f807bbba22a10a9415",
+    "SDUI/go/preparation/prepare_test.go": "51c20982dae64cc91dfb8bdaf9fb7508f0c7d96a50fe966d22f2c4da3a8ea9ae",
+    "SDUI/go/host/fynehost/admission/admission.go": "545daf06a476882df7aa9e5f46fe635e0a2e49a29bd1af066fee81ed13278997",
+    "SDUI/go/host/fynehost/runtime.go": "0dcf6db2f750d1eec2288edba2c1bdef19c406eadf66184dbbef6ee19f5cc3bc",
+    "SDUI/go/host/fynehost/runtime_test.go": "04bd46453b60e37a57a6eae6c137a66402aba8ed2309c76d8454ccc312ad99b8",
+    "SDUI/go/prototype/check.go": "8d362a2e69cda1bf6225aad2c069b0582af215faad72adfb1efe6866259aa919",
+    "SDUI/go/prototype/check_test.go": "3428a2bda630194bfbdf32aa53110667012c4dca5b6345e250f635fcc6d3f8c1",
+    "SDUI/go/runtime/session.go": "905b2b9e9bace48cded2ff36d79dfe6dfac646703279d6347d1e651506b5c76a",
+    "SDL/go/bridge/preparation_test.go": "4bea3be4ead0af041fab7224ce82bd58d6a0be27a7731cc2e39ed420cbf6dd78"
+  }
+}

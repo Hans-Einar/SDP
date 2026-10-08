@@ -1,0 +1,59 @@
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/bridge	3.504s
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/runtime	1.060s
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/codegen	3.796s
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/collections	30.329s
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/panes	78.067s
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/commands	43.527s
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/values	193.129s
+panic: test timed out after 10m0s
+	running tests:
+		TestTextDialogCancelRetainsChildCommitAndAcceptCaptures (38s)
+
+goroutine 53 [running]:
+testing.(*M).startAlarm.func1()
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2959 +0x605
+created by time.goFunc
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/time/sleep.go:182 +0x45
+
+goroutine 1 [chan receive]:
+testing.(*T).Run(0xc0001abb08, {0x101b517, 0x37}, 0x17a1d98)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2266 +0xb3e
+testing.runTests.func1(0xc0001abb08)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2742 +0x85
+testing.tRunner(0xc0001abb08, 0xc00033fa40)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2193 +0x21d
+testing.runTests({0x101688c, 0x31}, {0x101fde1, 0x3f}, 0xc000137158, {0x1f200a8, 0x6, 0x6}, {0xc2aa03cc03f69be8, 0x8bb5dc5135, ...})
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2740 +0x9ea
+testing.(*M).Run(0xc000255860)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2600 +0xf45
+main.main()
+	_testmain.go:56 +0x165
+
+goroutine 26 [runnable]:
+github.com/fyne-io/oksvg.ReadReplacingCurrentColor({0x7f5165b5e7d8, 0xc018735380}, {0xfed901, 0x7}, {0x0, 0x0, 0x0})
+	/home/warloc/go/pkg/mod/github.com/fyne-io/oksvg@v0.2.0/public.go:118 +0xc5
+fyne.io/fyne/v2/internal/svg.NewDecoder({0x7f5165b5e7d8, 0xc018735380})
+	/home/warloc/go/pkg/mod/fyne.io/fyne/v2@v2.8.1/internal/svg/svg.go:52 +0x49
+fyne.io/fyne/v2/canvas.(*Image).imageDetailsFromReader(0xc016ac2080, {0x7f5165b5e7d8, 0xc018735380})
+	/home/warloc/go/pkg/mod/fyne.io/fyne/v2@v2.8.1/canvas/image.go:365 +0x8c
+fyne.io/fyne/v2/canvas.(*Image).updateAspectAndMinSize(0xc016ac2080, {0x7f5165b5e7d8, 0xc018735380})
+	/home/warloc/go/pkg/mod/fyne.io/fyne/v2@v2.8.1/canvas/image.go:336 +0x65
+fyne.io/fyne/v2/canvas.(*Image).Refresh(0xc016ac2080)
+	/home/warloc/go/pkg/mod/fyne.io/fyne/v2@v2.8.1/canvas/image.go:145 +0x21b
+github.com/Hans-Einar/SDP/SDUI/go/host/fynehost.(*Bundle).apply(0xc01b564380)
+	/tmp/sdp-sdui-widgets/SDUI/go/host/fynehost/document_sync.go:94 +0x605
+github.com/Hans-Einar/SDP/SDUI/go/host/fynehost.(*DocumentHost).after(0xc0075df570)
+	/tmp/sdp-sdui-widgets/SDUI/go/host/fynehost/document_sync.go:227 +0xc8
+github.com/Hans-Einar/SDP/SDUI/go/host/fynehost.(*DocumentHost).Mutate(0xc0075df570, 0xc003835da8)
+	/tmp/sdp-sdui-widgets/SDUI/go/host/fynehost/document.go:490 +0x234
+github.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/text.terminal(...)
+	/tmp/sdp-sdui-widgets/SDL/go/examples/text/fixture_test.go:78
+github.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/text.TestTextDialogCancelRetainsChildCommitAndAcceptCaptures(0xc00ad54008)
+	/tmp/sdp-sdui-widgets/SDL/go/examples/text/fixture_test.go:208 +0x554
+testing.tRunner(0xc00ad54008, 0x17a1d98)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2193 +0x21d
+created by testing.(*T).Run in goroutine 1
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2258 +0xb13
+FAIL	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/text	600.167s
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/previews	299.161s
+FAIL

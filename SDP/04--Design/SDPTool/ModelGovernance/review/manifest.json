@@ -1,0 +1,2618 @@
+{
+  "version": "sdl-viewpoints-go-1.3/source-graph-1",
+  "revision": "a4844c717e9ef27849ddda5efe01a27664359a07b910568f89ad3e6c73c99ae6",
+  "renderer": "",
+  "diagrams": [
+    {
+      "id": "VP01-IntegrateModelChanges",
+      "title": "Use case: IntegrateModelChanges",
+      "kind": "flowchart",
+      "nodes": {
+        "n_IntegrateModelChanges": {
+          "kind": "usecase",
+          "model_id": "IntegrateModelChanges",
+          "span": {
+            "column": 1,
+            "end": 123,
+            "end_column": 31,
+            "end_line": 4,
+            "line": 4,
+            "node": "Span",
+            "source": "Features/ModelGovernance.design",
+            "start": 93
+          }
+        },
+        "n_ModelGovernance": {
+          "kind": "feature",
+          "model_id": "ModelGovernance",
+          "span": {
+            "column": 1,
+            "end": 249,
+            "end_column": 25,
+            "end_line": 9,
+            "line": 9,
+            "node": "Span",
+            "source": "Features/ModelGovernance.design",
+            "start": 225
+          }
+        },
+        "n_ModelIntegrator": {
+          "kind": "actor",
+          "model_id": "ModelIntegrator",
+          "span": {
+            "column": 1,
+            "end": 335,
+            "end_column": 23,
+            "end_line": 12,
+            "line": 12,
+            "node": "Span",
+            "source": "Features/ModelGovernance.design",
+            "start": 313
+          }
+        }
+      },
+      "edges": [
+        {
+          "source": "n_ModelGovernance",
+          "relation": "supports",
+          "target": "n_IntegrateModelChanges",
+          "fact": "fa024785a01f4965d9623edcb9c356c0ada52bf2fe6f58ee76db097136a9571eb"
+        },
+        {
+          "source": "n_ModelIntegrator",
+          "relation": "pursues",
+          "target": "n_IntegrateModelChanges",
+          "fact": "fe2a9640a86a935571ebefd6a1e6e566546173a86153d6a8f3fb67caeb363f8c9"
+        }
+      ],
+      "source_facts": [
+        "fa024785a01f4965d9623edcb9c356c0ada52bf2fe6f58ee76db097136a9571eb",
+        "fe2a9640a86a935571ebefd6a1e6e566546173a86153d6a8f3fb67caeb363f8c9"
+      ],
+      "elements": []
+    },
+    {
+      "id": "VP01-PublishModelCandidate",
+      "title": "Use case: PublishModelCandidate",
+      "kind": "flowchart",
+      "nodes": {
+        "n_ModelGovernance": {
+          "kind": "feature",
+          "model_id": "ModelGovernance",
+          "span": {
+            "column": 1,
+            "end": 249,
+            "end_column": 25,
+            "end_line": 9,
+            "line": 9,
+            "node": "Span",
+            "source": "Features/ModelGovernance.design",
+            "start": 225
+          }
+        },
+        "n_ModelIntegrator": {
+          "kind": "actor",
+          "model_id": "ModelIntegrator",
+          "span": {
+            "column": 1,
+            "end": 335,
+            "end_column": 23,
+            "end_line": 12,
+            "line": 12,
+            "node": "Span",
+            "source": "Features/ModelGovernance.design",
+            "start": 313
+          }
+        },
+        "n_PublishModelCandidate": {
+          "kind": "usecase",
+          "model_id": "PublishModelCandidate",
+          "span": {
+            "column": 1,
+            "end": 366,
+            "end_column": 31,
+            "end_line": 13,
+            "line": 13,
+            "node": "Span",
+            "source": "Features/ModelGovernance.design",
+            "start": 336
+          }
+        }
+      },
+      "edges": [
+        {
+          "source": "n_ModelGovernance",
+          "relation": "supports",
+          "target": "n_PublishModelCandidate",
+          "fact": "fc3268b2f440a25030d7071bb999d7665e3e85ffb08968c5fd90d1603452faf3f"
+        },
+        {
+          "source": "n_ModelIntegrator",
+          "relation": "pursues",
+          "target": "n_PublishModelCandidate",
+          "fact": "fcab23cc1a3c90d55d838015af6304af7b16f82915ff27542a12acd8d9364a47c"
+        }
+      ],
+      "source_facts": [
+        "fc3268b2f440a25030d7071bb999d7665e3e85ffb08968c5fd90d1603452faf3f",
+        "fcab23cc1a3c90d55d838015af6304af7b16f82915ff27542a12acd8d9364a47c"
+      ],
+      "elements": []
+    },
+    {
+      "id": "VP01-RecoverWorkingModel",
+      "title": "Use case: RecoverWorkingModel",
+      "kind": "flowchart",
+      "nodes": {
+        "n_ModelAuthor": {
+          "kind": "actor",
+          "model_id": "ModelAuthor",
+          "span": {
+            "column": 1,
+            "end": 205,
+            "end_column": 19,
+            "end_line": 7,
+            "line": 7,
+            "node": "Span",
+            "source": "Features/ModelGovernance.design",
+            "start": 187
+          }
+        },
+        "n_ModelGovernance": {
+          "kind": "feature",
+          "model_id": "ModelGovernance",
+          "span": {
+            "column": 1,
+            "end": 249,
+            "end_column": 25,
+            "end_line": 9,
+            "line": 9,
+            "node": "Span",
+            "source": "Features/ModelGovernance.design",
+            "start": 225
+          }
+        },
+        "n_RecoverWorkingModel": {
+          "kind": "usecase",
+          "model_id": "RecoverWorkingModel",
+          "span": {
+            "column": 1,
+            "end": 395,
+            "end_column": 29,
+            "end_line": 14,
+            "line": 14,
+            "node": "Span",
+            "source": "Features/ModelGovernance.design",
+            "start": 367
+          }
+        }
+      },
+      "edges": [
+        {
+          "source": "n_ModelAuthor",
+          "relation": "pursues",
+          "target": "n_RecoverWorkingModel",
+          "fact": "fcd16a82dcba1f700134516608b86213c6239b6e86ec9428cfb41bb8ec0906aca"
+        },
+        {
+          "source": "n_ModelGovernance",
+          "relation": "supports",
+          "target": "n_RecoverWorkingModel",
+          "fact": "fe0147bb88c974ff571abdc7a521c2c7e65b50488c6b3619b7db2bccd5af02ac4"
+        }
+      ],
+      "source_facts": [
+        "fcd16a82dcba1f700134516608b86213c6239b6e86ec9428cfb41bb8ec0906aca",
+        "fe0147bb88c974ff571abdc7a521c2c7e65b50488c6b3619b7db2bccd5af02ac4"
+      ],
+      "elements": []
+    },
+    {
+      "id": "VP01-feature-ModelGovernance",
+      "title": "Functionality contributions to Feature: ModelGovernance",
+      "kind": "flowchart",
+      "nodes": {
+        "n_FreezeModel": {
+          "kind": "functionality",
+          "model_id": "FreezeModel",
+          "span": {
+            "column": 1,
+            "end": 60,
+            "end_column": 27,
+            "end_line": 2,
+            "line": 2,
+            "node": "Span",
+            "source": "Features/ModelGovernance.design",
+            "start": 34
+          }
+        },
+        "n_IntegrateSources": {
+          "kind": "functionality",
+          "model_id": "IntegrateSources",
+          "span": {
+            "column": 1,
+            "end": 155,
+            "end_column": 32,
+            "end_line": 5,
+            "line": 5,
+            "node": "Span",
+            "source": "Features/ModelGovernance.design",
+            "start": 124
+          }
+        },
+        "n_ModelGovernance": {
+          "kind": "feature",
+          "model_id": "ModelGovernance",
+          "span": {
+            "column": 1,
+            "end": 249,
+            "end_column": 25,
+            "end_line": 9,
+            "line": 9,
+            "node": "Span",
+            "source": "Features/ModelGovernance.design",
+            "start": 225
+          }
+        },
+        "n_RestoreCheckpoint": {
+          "kind": "functionality",
+          "model_id": "RestoreCheckpoint",
+          "span": {
+            "column": 1,
+            "end": 428,
+            "end_column": 33,
+            "end_line": 15,
+            "line": 15,
+            "node": "Span",
+            "source": "Features/ModelGovernance.design",
+            "start": 396
+          }
+        },
+        "n_SaveCheckpoint": {
+          "kind": "functionality",
+          "model_id": "SaveCheckpoint",
+          "span": {
+            "column": 1,
+            "end": 458,
+            "end_column": 30,
+            "end_line": 16,
+            "line": 16,
+            "node": "Span",
+            "source": "Features/ModelGovernance.design",
+            "start": 429
+          }
+        }
+      },
+      "edges": [
+        {
+          "source": "n_FreezeModel",
+          "relation": "contributes-to",
+          "target": "n_ModelGovernance",
+          "fact": "f11c7f37f4b76f8501b8ed2df95b148ccaf8a1282589209a6bcfd3bf2ef1c1b6c"
+        },
+        {
+          "source": "n_IntegrateSources",
+          "relation": "contributes-to",
+          "target": "n_ModelGovernance",
+          "fact": "feae3d2190f35f78e3fac4624a773a3bd4d5dd7d276f9f954eb7bee40197f2626"
+        },
+        {
+          "source": "n_RestoreCheckpoint",
+          "relation": "contributes-to",
+          "target": "n_ModelGovernance",
+          "fact": "ff5d2a2bcbdec9d991b194219129b83d31d136b87c336618f54a73578c7949698"
+        },
+        {
+          "source": "n_SaveCheckpoint",
+          "relation": "contributes-to",
+          "target": "n_ModelGovernance",
+          "fact": "fff4741702ccb973680b49c0be936f858bd44d30e801591f5910ce60326231b96"
+        }
+      ],
+      "source_facts": [
+        "f11c7f37f4b76f8501b8ed2df95b148ccaf8a1282589209a6bcfd3bf2ef1c1b6c",
+        "feae3d2190f35f78e3fac4624a773a3bd4d5dd7d276f9f954eb7bee40197f2626",
+        "ff5d2a2bcbdec9d991b194219129b83d31d136b87c336618f54a73578c7949698",
+        "fff4741702ccb973680b49c0be936f858bd44d30e801591f5910ce60326231b96"
+      ],
+      "elements": []
+    },
+    {
+      "id": "VP02-roots",
+      "title": "Architecture roots — no connection/allocation is inferred",
+      "kind": "flowchart",
+      "nodes": {
+        "n_SDPTool": {
+          "kind": "system",
+          "model_id": "SDPTool",
+          "span": {
+            "column": 1,
+            "end": 49,
+            "end_column": 16,
+            "end_line": 2,
+            "line": 2,
+            "node": "Span",
+            "source": "ModelGovernance.design",
+            "start": 34
+          }
+        }
+      },
+      "edges": [],
+      "source_facts": [],
+      "elements": []
+    },
+    {
+      "id": "VP02-SDPTool",
+      "title": "Logical decomposition: SDPTool",
+      "kind": "flowchart",
+      "nodes": {
+        "n_SDPTool": {
+          "kind": "system",
+          "model_id": "SDPTool",
+          "span": {
+            "column": 1,
+            "end": 49,
+            "end_column": 16,
+            "end_line": 2,
+            "line": 2,
+            "node": "Span",
+            "source": "ModelGovernance.design",
+            "start": 34
+          }
+        },
+        "n_SdpToolHost": {
+          "kind": "container",
+          "model_id": "SdpToolHost",
+          "span": {
+            "column": 1,
+            "end": 208,
+            "end_column": 23,
+            "end_line": 8,
+            "line": 8,
+            "node": "Span",
+            "source": "Containers/SdpToolHost/ModelGovernance.design",
+            "start": 186
+          }
+        }
+      },
+      "edges": [
+        {
+          "source": "n_SDPTool",
+          "relation": "contains",
+          "target": "n_SdpToolHost",
+          "fact": "ff6392d40f4992ed36f406a7d276923815d52743da7ed6483b8714d0d2d7b6b61"
+        }
+      ],
+      "source_facts": [
+        "ff6392d40f4992ed36f406a7d276923815d52743da7ed6483b8714d0d2d7b6b61"
+      ],
+      "elements": []
+    },
+    {
+      "id": "VP02-SdpToolHost",
+      "title": "Logical decomposition: SdpToolHost",
+      "kind": "flowchart",
+      "nodes": {
+        "n_LocalHistoryStore": {
+          "kind": "unit",
+          "model_id": "LocalHistoryStore",
+          "span": {
+            "column": 1,
+            "end": 57,
+            "end_column": 24,
+            "end_line": 2,
+            "line": 2,
+            "node": "Span",
+            "source": "Containers/SdpToolHost/ModelGovernance.design",
+            "start": 34
+          }
+        },
+        "n_ModelCommandAdapter": {
+          "kind": "unit",
+          "model_id": "ModelCommandAdapter",
+          "span": {
+            "column": 1,
+            "end": 109,
+            "end_column": 26,
+            "end_line": 4,
+            "line": 4,
+            "node": "Span",
+            "source": "Containers/SdpToolHost/ModelGovernance.design",
+            "start": 84
+          }
+        },
+        "n_ModelCoordinator": {
+          "kind": "unit",
+          "model_id": "ModelCoordinator",
+          "span": {
+            "column": 1,
+            "end": 132,
+            "end_column": 23,
+            "end_line": 5,
+            "line": 5,
+            "node": "Span",
+            "source": "Containers/SdpToolHost/ModelGovernance.design",
+            "start": 110
+          }
+        },
+        "n_ModelValidator": {
+          "kind": "unit",
+          "model_id": "ModelValidator",
+          "span": {
+            "column": 1,
+            "end": 153,
+            "end_column": 21,
+            "end_line": 6,
+            "line": 6,
+            "node": "Span",
+            "source": "Containers/SdpToolHost/ModelGovernance.design",
+            "start": 133
+          }
+        },
+        "n_SdpToolHost": {
+          "kind": "container",
+          "model_id": "SdpToolHost",
+          "span": {
+            "column": 1,
+            "end": 208,
+            "end_column": 23,
+            "end_line": 8,
+            "line": 8,
+            "node": "Span",
+            "source": "Containers/SdpToolHost/ModelGovernance.design",
+            "start": 186
+          }
+        }
+      },
+      "edges": [
+        {
+          "source": "n_SdpToolHost",
+          "relation": "contains",
+          "target": "n_LocalHistoryStore",
+          "fact": "f5eeb7518593672612e29c8bc4c456b26a01f1337b0aee7e694b26de3da0f6795"
+        },
+        {
+          "source": "n_SdpToolHost",
+          "relation": "contains",
+          "target": "n_ModelCommandAdapter",
+          "fact": "fe67998c78a81d247dc6aae6f000a833d359c7514986b87e50006535a076c8881"
+        },
+        {
+          "source": "n_SdpToolHost",
+          "relation": "contains",
+          "target": "n_ModelCoordinator",
+          "fact": "fccd422b34ea49e941229b368103bb393a37e10f8ae1b5f6ea4eb7ba05f14550c"
+        },
+        {
+          "source": "n_SdpToolHost",
+          "relation": "contains",
+          "target": "n_ModelValidator",
+          "fact": "fe3251841f34b8ae18553220c9d9367cdd8bd6fae5ba8aa3aafd80fbc9c7d7bc4"
+        }
+      ],
+      "source_facts": [
+        "f5eeb7518593672612e29c8bc4c456b26a01f1337b0aee7e694b26de3da0f6795",
+        "fccd422b34ea49e941229b368103bb393a37e10f8ae1b5f6ea4eb7ba05f14550c",
+        "fe3251841f34b8ae18553220c9d9367cdd8bd6fae5ba8aa3aafd80fbc9c7d7bc4",
+        "fe67998c78a81d247dc6aae6f000a833d359c7514986b87e50006535a076c8881"
+      ],
+      "elements": []
+    },
+    {
+      "id": "VP08-RejectStaleModelChange",
+      "title": "Scenario: RejectStaleModelChange — mode ModelEditing",
+      "kind": "sequence",
+      "nodes": {
+        "n_ModelCommandAdapter": {
+          "kind": "unit",
+          "model_id": "ModelCommandAdapter",
+          "span": {
+            "column": 1,
+            "end": 109,
+            "end_column": 26,
+            "end_line": 4,
+            "line": 4,
+            "node": "Span",
+            "source": "Containers/SdpToolHost/ModelGovernance.design",
+            "start": 84
+          }
+        },
+        "n_ModelCoordinator": {
+          "kind": "unit",
+          "model_id": "ModelCoordinator",
+          "span": {
+            "column": 1,
+            "end": 132,
+            "end_column": 23,
+            "end_line": 5,
+            "line": 5,
+            "node": "Span",
+            "source": "Containers/SdpToolHost/ModelGovernance.design",
+            "start": 110
+          }
+        }
+      },
+      "edges": [],
+      "source_facts": [
+        "f0f097ff6e76c388b1ba0bd6a5456ce5ad518895cfe426866bb805b64c5e62b1f",
+        "f180798f519b29a3beccc356e74304d2f64dadbea3634b1d80ac204db40bbc794",
+        "f189a7cf5723fd0838e988c1c862db39a6b1d9b910dbde44f0b952a351f6bbb83",
+        "f1d62ef1bf7cd116de1b05e51581ac2ecf0233780e8eca7f3843eb8398fbb5b52",
+        "f32fa47ddea9582fa6bd3ffae1cff47233e747bd79ca7b22d0be3c72b6ec66548",
+        "f359c15d28aa9dd771ec69ac9e8a3fd9317931d1c4a9708a7bc09085105c7cb91",
+        "f3b24a65b9a1aab492877b6c2d126e06ec4ba8334f40d805800213e75dd8afad1",
+        "f56b4fc46ebd6d142e1b05e046dbf5d791bcb419958b9305383869c99619632f6",
+        "f5c4c6e7fd517ea9a5da31901ad3dd48de628fdee0e929bf7fe74bb4da13e899b",
+        "f6ba015e57387acae03d6f08fe0c5d1678811936997fb454bddf4f90d2460835f",
+        "f7d40c3a3a8dcb5f3903e1ba111acdec6588118d8a175b64e4301d5293d0a14da",
+        "f8709f91b32bfd58f11d2f1bc0faa8492527615469708856d306030f492d054fb",
+        "fdf82a111b71a746f6bb7e3150079861962859b86df658c60173b2aff00c3504e",
+        "fe6a5444122dab0959f0765dd5dadb4903538882fb6b809c531f26b5a17790004",
+        "feebda698bf3fdce5ba263880da99dc691e3bdb4f1ef156177ea30e4227eb48ef",
+        "fef5d29092e55a95ab9432118e149dafb08e62d75d409b298d4e02bc68538163d",
+        "ff028ab7115ca60b8873c0594cdd69217a42384665b8c7031e8cffa737c6f23d9",
+        "ff1ed6ce9a02cfb72a17ed9c78a19982a44ca4f9b2a7050f7c943ea46e0a8adc0"
+      ],
+      "elements": [
+        {
+          "channel": "ModelOperations",
+          "fact": "f8709f91b32bfd58f11d2f1bc0faa8492527615469708856d306030f492d054fb",
+          "message": "RequestModelChange",
+          "ordinal": 1,
+          "proof": [
+            "f180798f519b29a3beccc356e74304d2f64dadbea3634b1d80ac204db40bbc794",
+            "f1d62ef1bf7cd116de1b05e51581ac2ecf0233780e8eca7f3843eb8398fbb5b52",
+            "f359c15d28aa9dd771ec69ac9e8a3fd9317931d1c4a9708a7bc09085105c7cb91",
+            "f3b24a65b9a1aab492877b6c2d126e06ec4ba8334f40d805800213e75dd8afad1",
+            "f7d40c3a3a8dcb5f3903e1ba111acdec6588118d8a175b64e4301d5293d0a14da",
+            "f8709f91b32bfd58f11d2f1bc0faa8492527615469708856d306030f492d054fb",
+            "fef5d29092e55a95ab9432118e149dafb08e62d75d409b298d4e02bc68538163d"
+          ],
+          "receiver": "ModelCoordinator",
+          "reply_to": null,
+          "sender": "ModelCommandAdapter",
+          "variant": null
+        },
+        {
+          "channel": "ModelOperations",
+          "fact": "f32fa47ddea9582fa6bd3ffae1cff47233e747bd79ca7b22d0be3c72b6ec66548",
+          "message": "ModelChangeRefused",
+          "ordinal": 2,
+          "proof": [
+            "f32fa47ddea9582fa6bd3ffae1cff47233e747bd79ca7b22d0be3c72b6ec66548",
+            "f56b4fc46ebd6d142e1b05e046dbf5d791bcb419958b9305383869c99619632f6",
+            "f5c4c6e7fd517ea9a5da31901ad3dd48de628fdee0e929bf7fe74bb4da13e899b",
+            "f6ba015e57387acae03d6f08fe0c5d1678811936997fb454bddf4f90d2460835f",
+            "f7d40c3a3a8dcb5f3903e1ba111acdec6588118d8a175b64e4301d5293d0a14da",
+            "fdf82a111b71a746f6bb7e3150079861962859b86df658c60173b2aff00c3504e",
+            "feebda698bf3fdce5ba263880da99dc691e3bdb4f1ef156177ea30e4227eb48ef",
+            "ff1ed6ce9a02cfb72a17ed9c78a19982a44ca4f9b2a7050f7c943ea46e0a8adc0"
+          ],
+          "receiver": "ModelCommandAdapter",
+          "reply_to": 1,
+          "sender": "ModelCoordinator",
+          "variant": null
+        }
+      ]
+    },
+    {
+      "id": "VP08-SaveModelCheckpoint",
+      "title": "Scenario: SaveModelCheckpoint — mode ModelEditing",
+      "kind": "sequence",
+      "nodes": {
+        "n_ModelCommandAdapter": {
+          "kind": "unit",
+          "model_id": "ModelCommandAdapter",
+          "span": {
+            "column": 1,
+            "end": 109,
+            "end_column": 26,
+            "end_line": 4,
+            "line": 4,
+            "node": "Span",
+            "source": "Containers/SdpToolHost/ModelGovernance.design",
+            "start": 84
+          }
+        },
+        "n_ModelCoordinator": {
+          "kind": "unit",
+          "model_id": "ModelCoordinator",
+          "span": {
+            "column": 1,
+            "end": 132,
+            "end_column": 23,
+            "end_line": 5,
+            "line": 5,
+            "node": "Span",
+            "source": "Containers/SdpToolHost/ModelGovernance.design",
+            "start": 110
+          }
+        }
+      },
+      "edges": [],
+      "source_facts": [
+        "f10b4620ce074b23725ca6281bdf3665c10982af15afa52e77b25c9a212fcc9ed",
+        "f180798f519b29a3beccc356e74304d2f64dadbea3634b1d80ac204db40bbc794",
+        "f1d62ef1bf7cd116de1b05e51581ac2ecf0233780e8eca7f3843eb8398fbb5b52",
+        "f2e1caa154fbdb18a3ddc5cbb6cf257b13c8bfd8c85bf831ecac718e8fde9195a",
+        "f359c15d28aa9dd771ec69ac9e8a3fd9317931d1c4a9708a7bc09085105c7cb91",
+        "f3b24a65b9a1aab492877b6c2d126e06ec4ba8334f40d805800213e75dd8afad1",
+        "f5b64393f9f0a981496920beb60d85f42a6db8ae2bad2f4e97507343e5e49b90f",
+        "f78831350cfcee50be79fe4508d1e86157df9e94caad8ba13b37bfd0e76e83a21",
+        "f7d40c3a3a8dcb5f3903e1ba111acdec6588118d8a175b64e4301d5293d0a14da",
+        "f853e845e0389da58240cf30f35226c6e933d1508e74a47292075ee9d540c4d05",
+        "f8fb83d53452fd723fb26c2b99e36e64903eda23576454e5a78fdd488e0fed4ed",
+        "f9a370d8df6475de7eebcaa7ec646c1511cbafdcabd997770af8a982484f8626f",
+        "fb0c7aff767d5432aa2bd00f1ce0d261173c01a08c03cfbfa68cd193b960d7c11",
+        "fdafaad3bea854b0c6ef30d41ac9d3bff0d3d3370909b5840ae0fc1a26703c6c7",
+        "fe18ef94cac20e293dceaba162af72221217b1851075c68d2fa31c20e7350362a",
+        "fe774d1c7618d94b2bb627011b35413562d6de39d9bb73fc4a87e79ee28ce9d52",
+        "fe89c5cb41c395a842396715ed75c73f9f0c0d89aba606185028dab47119e7f03",
+        "fef5d29092e55a95ab9432118e149dafb08e62d75d409b298d4e02bc68538163d"
+      ],
+      "elements": [
+        {
+          "channel": "ModelOperations",
+          "fact": "fb0c7aff767d5432aa2bd00f1ce0d261173c01a08c03cfbfa68cd193b960d7c11",
+          "message": "RequestModelChange",
+          "ordinal": 1,
+          "proof": [
+            "f180798f519b29a3beccc356e74304d2f64dadbea3634b1d80ac204db40bbc794",
+            "f1d62ef1bf7cd116de1b05e51581ac2ecf0233780e8eca7f3843eb8398fbb5b52",
+            "f359c15d28aa9dd771ec69ac9e8a3fd9317931d1c4a9708a7bc09085105c7cb91",
+            "f3b24a65b9a1aab492877b6c2d126e06ec4ba8334f40d805800213e75dd8afad1",
+            "f7d40c3a3a8dcb5f3903e1ba111acdec6588118d8a175b64e4301d5293d0a14da",
+            "fb0c7aff767d5432aa2bd00f1ce0d261173c01a08c03cfbfa68cd193b960d7c11",
+            "fef5d29092e55a95ab9432118e149dafb08e62d75d409b298d4e02bc68538163d"
+          ],
+          "receiver": "ModelCoordinator",
+          "reply_to": null,
+          "sender": "ModelCommandAdapter",
+          "variant": null
+        },
+        {
+          "channel": "ModelOperations",
+          "fact": "f8fb83d53452fd723fb26c2b99e36e64903eda23576454e5a78fdd488e0fed4ed",
+          "message": "ModelChangeAccepted",
+          "ordinal": 2,
+          "proof": [
+            "f2e1caa154fbdb18a3ddc5cbb6cf257b13c8bfd8c85bf831ecac718e8fde9195a",
+            "f5b64393f9f0a981496920beb60d85f42a6db8ae2bad2f4e97507343e5e49b90f",
+            "f78831350cfcee50be79fe4508d1e86157df9e94caad8ba13b37bfd0e76e83a21",
+            "f7d40c3a3a8dcb5f3903e1ba111acdec6588118d8a175b64e4301d5293d0a14da",
+            "f8fb83d53452fd723fb26c2b99e36e64903eda23576454e5a78fdd488e0fed4ed",
+            "f9a370d8df6475de7eebcaa7ec646c1511cbafdcabd997770af8a982484f8626f",
+            "fe18ef94cac20e293dceaba162af72221217b1851075c68d2fa31c20e7350362a",
+            "fe89c5cb41c395a842396715ed75c73f9f0c0d89aba606185028dab47119e7f03"
+          ],
+          "receiver": "ModelCommandAdapter",
+          "reply_to": 1,
+          "sender": "ModelCoordinator",
+          "variant": null
+        }
+      ]
+    }
+  ],
+  "facts": [
+    {
+      "id": "f0e0f7b7dcfd39585c313778f3093d31378726d8ef1acb68fa004dfb080c82c67",
+      "line": 17,
+      "mode": "ModelEditing",
+      "node": "Allocation",
+      "object": "SdpToolHost",
+      "span": {
+        "column": 1,
+        "end": 517,
+        "end_column": 59,
+        "end_line": 17,
+        "line": 17,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 459
+      },
+      "subject": "FreezeModel",
+      "system": "SDPTool",
+      "text": "FreezeModel allocated-to SdpToolHost in mode ModelEditing.",
+      "verb": "allocated-to"
+    },
+    {
+      "id": "f11c7f37f4b76f8501b8ed2df95b148ccaf8a1282589209a6bcfd3bf2ef1c1b6c",
+      "line": 18,
+      "node": "Relation",
+      "object": "ModelGovernance",
+      "span": {
+        "column": 1,
+        "end": 561,
+        "end_column": 44,
+        "end_line": 18,
+        "line": 18,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 518
+      },
+      "subject": "FreezeModel",
+      "system": "SDPTool",
+      "text": "FreezeModel contributes-to ModelGovernance.",
+      "verb": "contributes-to"
+    },
+    {
+      "id": "f68af9e6d63c334485a0154a442dffb71932fae70b1ad5eec7ecf8ab7cc4aa70d",
+      "line": 19,
+      "node": "Relation",
+      "object": "FrozenModelDelivery",
+      "span": {
+        "column": 1,
+        "end": 603,
+        "end_column": 42,
+        "end_line": 19,
+        "line": 19,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 562
+      },
+      "subject": "FreezeModel",
+      "system": "SDPTool",
+      "text": "FreezeModel realizes FrozenModelDelivery.",
+      "verb": "realizes"
+    },
+    {
+      "id": "f9fe010a1691307c904f1a201c3656864d53072e878dd3821218d20d543c0cf97",
+      "line": 20,
+      "mode": "ModelEditing",
+      "node": "Allocation",
+      "object": "SdpToolHost",
+      "span": {
+        "column": 1,
+        "end": 667,
+        "end_column": 64,
+        "end_line": 20,
+        "line": 20,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 604
+      },
+      "subject": "IntegrateSources",
+      "system": "SDPTool",
+      "text": "IntegrateSources allocated-to SdpToolHost in mode ModelEditing.",
+      "verb": "allocated-to"
+    },
+    {
+      "id": "feae3d2190f35f78e3fac4624a773a3bd4d5dd7d276f9f954eb7bee40197f2626",
+      "line": 21,
+      "node": "Relation",
+      "object": "ModelGovernance",
+      "span": {
+        "column": 1,
+        "end": 716,
+        "end_column": 49,
+        "end_line": 21,
+        "line": 21,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 668
+      },
+      "subject": "IntegrateSources",
+      "system": "SDPTool",
+      "text": "IntegrateSources contributes-to ModelGovernance.",
+      "verb": "contributes-to"
+    },
+    {
+      "id": "f78b238e863b37ceb21ca93e2a5355853d466fa0885b62924cd50b617a850752c",
+      "line": 22,
+      "node": "Relation",
+      "object": "ModelIntegration",
+      "span": {
+        "column": 1,
+        "end": 760,
+        "end_column": 44,
+        "end_line": 22,
+        "line": 22,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 717
+      },
+      "subject": "IntegrateSources",
+      "system": "SDPTool",
+      "text": "IntegrateSources realizes ModelIntegration.",
+      "verb": "realizes"
+    },
+    {
+      "id": "f5e2bec3d4faa5586a94ff6737f197151f9b1e5de53327d26dc5f9c9c45f8bd7e",
+      "line": 10,
+      "node": "Relation",
+      "object": "LocalModelFiles",
+      "span": {
+        "column": 1,
+        "end": 281,
+        "end_column": 40,
+        "end_line": 10,
+        "line": 10,
+        "node": "Span",
+        "source": "Containers/SdpToolHost/ModelGovernance.design",
+        "start": 242
+      },
+      "subject": "LocalHistoryStore",
+      "system": "SDPTool",
+      "text": "LocalHistoryStore owns LocalModelFiles.",
+      "verb": "owns"
+    },
+    {
+      "id": "fcd16a82dcba1f700134516608b86213c6239b6e86ec9428cfb41bb8ec0906aca",
+      "line": 23,
+      "node": "Relation",
+      "object": "RecoverWorkingModel",
+      "span": {
+        "column": 1,
+        "end": 801,
+        "end_column": 41,
+        "end_line": 23,
+        "line": 23,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 761
+      },
+      "subject": "ModelAuthor",
+      "system": "SDPTool",
+      "text": "ModelAuthor pursues RecoverWorkingModel.",
+      "verb": "pursues"
+    },
+    {
+      "id": "fe89c5cb41c395a842396715ed75c73f9f0c0d89aba606185028dab47119e7f03",
+      "line": 17,
+      "node": "PropertyAssignment",
+      "property": "message-kind",
+      "span": {
+        "column": 1,
+        "end": 576,
+        "end_column": 47,
+        "end_line": 17,
+        "line": 17,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 530
+      },
+      "subject": "ModelChangeAccepted",
+      "system": "SDPTool",
+      "text": "ModelChangeAccepted has message-kind = result.",
+      "value": "result",
+      "verb": "has"
+    },
+    {
+      "id": "f78831350cfcee50be79fe4508d1e86157df9e94caad8ba13b37bfd0e76e83a21",
+      "line": 18,
+      "node": "Relation",
+      "object": "RequestModelChange",
+      "span": {
+        "column": 1,
+        "end": 627,
+        "end_column": 51,
+        "end_line": 18,
+        "line": 18,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 577
+      },
+      "subject": "ModelChangeAccepted",
+      "system": "SDPTool",
+      "text": "ModelChangeAccepted replies-to RequestModelChange.",
+      "verb": "replies-to"
+    },
+    {
+      "id": "f9a370d8df6475de7eebcaa7ec646c1511cbafdcabd997770af8a982484f8626f",
+      "line": 19,
+      "node": "Relation",
+      "object": "ModelOperationResult",
+      "span": {
+        "column": 1,
+        "end": 677,
+        "end_column": 50,
+        "end_line": 19,
+        "line": 19,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 628
+      },
+      "subject": "ModelChangeAccepted",
+      "system": "SDPTool",
+      "text": "ModelChangeAccepted upholds ModelOperationResult.",
+      "verb": "upholds"
+    },
+    {
+      "id": "fdf82a111b71a746f6bb7e3150079861962859b86df658c60173b2aff00c3504e",
+      "line": 20,
+      "node": "PropertyAssignment",
+      "property": "message-kind",
+      "span": {
+        "column": 1,
+        "end": 723,
+        "end_column": 46,
+        "end_line": 20,
+        "line": 20,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 678
+      },
+      "subject": "ModelChangeRefused",
+      "system": "SDPTool",
+      "text": "ModelChangeRefused has message-kind = result.",
+      "value": "result",
+      "verb": "has"
+    },
+    {
+      "id": "ff1ed6ce9a02cfb72a17ed9c78a19982a44ca4f9b2a7050f7c943ea46e0a8adc0",
+      "line": 21,
+      "node": "Relation",
+      "object": "RequestModelChange",
+      "span": {
+        "column": 1,
+        "end": 773,
+        "end_column": 50,
+        "end_line": 21,
+        "line": 21,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 724
+      },
+      "subject": "ModelChangeRefused",
+      "system": "SDPTool",
+      "text": "ModelChangeRefused replies-to RequestModelChange.",
+      "verb": "replies-to"
+    },
+    {
+      "id": "f6ba015e57387acae03d6f08fe0c5d1678811936997fb454bddf4f90d2460835f",
+      "line": 22,
+      "node": "Relation",
+      "object": "ModelOperationResult",
+      "span": {
+        "column": 1,
+        "end": 822,
+        "end_column": 49,
+        "end_line": 22,
+        "line": 22,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 774
+      },
+      "subject": "ModelChangeRefused",
+      "system": "SDPTool",
+      "text": "ModelChangeRefused upholds ModelOperationResult.",
+      "verb": "upholds"
+    },
+    {
+      "channel": "ModelOperations",
+      "id": "f5b64393f9f0a981496920beb60d85f42a6db8ae2bad2f4e97507343e5e49b90f",
+      "line": 23,
+      "message": "ModelChangeAccepted",
+      "mode": "ModelEditing",
+      "node": "Participation",
+      "role": "receiver",
+      "span": {
+        "column": 1,
+        "end": 920,
+        "end_column": 98,
+        "end_line": 23,
+        "line": 23,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 823
+      },
+      "subject": "ModelCommandAdapter",
+      "system": "SDPTool",
+      "text": "ModelCommandAdapter uses ModelOperations as receiver of ModelChangeAccepted in mode ModelEditing.",
+      "verb": "uses"
+    },
+    {
+      "channel": "ModelOperations",
+      "id": "feebda698bf3fdce5ba263880da99dc691e3bdb4f1ef156177ea30e4227eb48ef",
+      "line": 24,
+      "message": "ModelChangeRefused",
+      "mode": "ModelEditing",
+      "node": "Participation",
+      "role": "receiver",
+      "span": {
+        "column": 1,
+        "end": 1017,
+        "end_column": 97,
+        "end_line": 24,
+        "line": 24,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 921
+      },
+      "subject": "ModelCommandAdapter",
+      "system": "SDPTool",
+      "text": "ModelCommandAdapter uses ModelOperations as receiver of ModelChangeRefused in mode ModelEditing.",
+      "verb": "uses"
+    },
+    {
+      "channel": "ModelOperations",
+      "id": "f180798f519b29a3beccc356e74304d2f64dadbea3634b1d80ac204db40bbc794",
+      "line": 25,
+      "message": "RequestModelChange",
+      "mode": "ModelEditing",
+      "node": "Participation",
+      "role": "sender",
+      "span": {
+        "column": 1,
+        "end": 1112,
+        "end_column": 95,
+        "end_line": 25,
+        "line": 25,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 1018
+      },
+      "subject": "ModelCommandAdapter",
+      "system": "SDPTool",
+      "text": "ModelCommandAdapter uses ModelOperations as sender of RequestModelChange in mode ModelEditing.",
+      "verb": "uses"
+    },
+    {
+      "id": "f5fe27b49ae784f43a3e27a537859934bbf4e07511b5d0eefc97c03c1674efbe4",
+      "line": 11,
+      "node": "Relation",
+      "object": "FreezeModel",
+      "span": {
+        "column": 1,
+        "end": 316,
+        "end_column": 35,
+        "end_line": 11,
+        "line": 11,
+        "node": "Span",
+        "source": "Containers/SdpToolHost/ModelGovernance.design",
+        "start": 282
+      },
+      "subject": "ModelCoordinator",
+      "system": "SDPTool",
+      "text": "ModelCoordinator owns FreezeModel.",
+      "verb": "owns"
+    },
+    {
+      "id": "fad4a57082ade1edc3310937489016e82602c9e1c5ba19755c1a595f150c667eb",
+      "line": 12,
+      "node": "Relation",
+      "object": "IntegrateSources",
+      "span": {
+        "column": 1,
+        "end": 356,
+        "end_column": 40,
+        "end_line": 12,
+        "line": 12,
+        "node": "Span",
+        "source": "Containers/SdpToolHost/ModelGovernance.design",
+        "start": 317
+      },
+      "subject": "ModelCoordinator",
+      "system": "SDPTool",
+      "text": "ModelCoordinator owns IntegrateSources.",
+      "verb": "owns"
+    },
+    {
+      "id": "f4ba8aa70b657d86b7a86f4a202b46f4acd09d6e37bf178c1616979e3af33ec1f",
+      "line": 13,
+      "node": "Relation",
+      "object": "RestoreCheckpoint",
+      "span": {
+        "column": 1,
+        "end": 397,
+        "end_column": 41,
+        "end_line": 13,
+        "line": 13,
+        "node": "Span",
+        "source": "Containers/SdpToolHost/ModelGovernance.design",
+        "start": 357
+      },
+      "subject": "ModelCoordinator",
+      "system": "SDPTool",
+      "text": "ModelCoordinator owns RestoreCheckpoint.",
+      "verb": "owns"
+    },
+    {
+      "id": "f078a259de7e27976759f4e38e714e064f1bdd292c55232b1d603d479ee5c7c0f",
+      "line": 14,
+      "node": "Relation",
+      "object": "SaveCheckpoint",
+      "span": {
+        "column": 1,
+        "end": 435,
+        "end_column": 38,
+        "end_line": 14,
+        "line": 14,
+        "node": "Span",
+        "source": "Containers/SdpToolHost/ModelGovernance.design",
+        "start": 398
+      },
+      "subject": "ModelCoordinator",
+      "system": "SDPTool",
+      "text": "ModelCoordinator owns SaveCheckpoint.",
+      "verb": "owns"
+    },
+    {
+      "channel": "ModelOperations",
+      "id": "f3b24a65b9a1aab492877b6c2d126e06ec4ba8334f40d805800213e75dd8afad1",
+      "line": 26,
+      "message": "RequestModelChange",
+      "mode": "ModelEditing",
+      "node": "Participation",
+      "role": "receiver",
+      "span": {
+        "column": 1,
+        "end": 1206,
+        "end_column": 94,
+        "end_line": 26,
+        "line": 26,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 1113
+      },
+      "subject": "ModelCoordinator",
+      "system": "SDPTool",
+      "text": "ModelCoordinator uses ModelOperations as receiver of RequestModelChange in mode ModelEditing.",
+      "verb": "uses"
+    },
+    {
+      "channel": "ModelOperations",
+      "id": "fe18ef94cac20e293dceaba162af72221217b1851075c68d2fa31c20e7350362a",
+      "line": 27,
+      "message": "ModelChangeAccepted",
+      "mode": "ModelEditing",
+      "node": "Participation",
+      "role": "sender",
+      "span": {
+        "column": 1,
+        "end": 1299,
+        "end_column": 93,
+        "end_line": 27,
+        "line": 27,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 1207
+      },
+      "subject": "ModelCoordinator",
+      "system": "SDPTool",
+      "text": "ModelCoordinator uses ModelOperations as sender of ModelChangeAccepted in mode ModelEditing.",
+      "verb": "uses"
+    },
+    {
+      "channel": "ModelOperations",
+      "id": "f5c4c6e7fd517ea9a5da31901ad3dd48de628fdee0e929bf7fe74bb4da13e899b",
+      "line": 28,
+      "message": "ModelChangeRefused",
+      "mode": "ModelEditing",
+      "node": "Participation",
+      "role": "sender",
+      "span": {
+        "column": 1,
+        "end": 1391,
+        "end_column": 92,
+        "end_line": 28,
+        "line": 28,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 1300
+      },
+      "subject": "ModelCoordinator",
+      "system": "SDPTool",
+      "text": "ModelCoordinator uses ModelOperations as sender of ModelChangeRefused in mode ModelEditing.",
+      "verb": "uses"
+    },
+    {
+      "id": "fa024785a01f4965d9623edcb9c356c0ada52bf2fe6f58ee76db097136a9571eb",
+      "line": 24,
+      "node": "Relation",
+      "object": "IntegrateModelChanges",
+      "span": {
+        "column": 1,
+        "end": 849,
+        "end_column": 48,
+        "end_line": 24,
+        "line": 24,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 802
+      },
+      "subject": "ModelGovernance",
+      "system": "SDPTool",
+      "text": "ModelGovernance supports IntegrateModelChanges.",
+      "verb": "supports"
+    },
+    {
+      "id": "fc3268b2f440a25030d7071bb999d7665e3e85ffb08968c5fd90d1603452faf3f",
+      "line": 25,
+      "node": "Relation",
+      "object": "PublishModelCandidate",
+      "span": {
+        "column": 1,
+        "end": 897,
+        "end_column": 48,
+        "end_line": 25,
+        "line": 25,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 850
+      },
+      "subject": "ModelGovernance",
+      "system": "SDPTool",
+      "text": "ModelGovernance supports PublishModelCandidate.",
+      "verb": "supports"
+    },
+    {
+      "id": "fe0147bb88c974ff571abdc7a521c2c7e65b50488c6b3619b7db2bccd5af02ac4",
+      "line": 26,
+      "node": "Relation",
+      "object": "RecoverWorkingModel",
+      "span": {
+        "column": 1,
+        "end": 943,
+        "end_column": 46,
+        "end_line": 26,
+        "line": 26,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 898
+      },
+      "subject": "ModelGovernance",
+      "system": "SDPTool",
+      "text": "ModelGovernance supports RecoverWorkingModel.",
+      "verb": "supports"
+    },
+    {
+      "id": "f2525e237d7ad3d888dc5bdb994edae4223c60b86c20df1780e87cfda9e3cfdc3",
+      "line": 27,
+      "node": "Relation",
+      "object": "FreezeModel",
+      "span": {
+        "column": 1,
+        "end": 990,
+        "end_column": 47,
+        "end_line": 27,
+        "line": 27,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 944
+      },
+      "subject": "ModelGovernanceDelivery",
+      "system": "SDPTool",
+      "text": "ModelGovernanceDelivery addresses FreezeModel.",
+      "verb": "addresses"
+    },
+    {
+      "id": "fcd219a4ed7f266fc7fd5c0a6dcbaf8428672f44f5c22d927f802c42cd1ed2412",
+      "line": 28,
+      "node": "Relation",
+      "object": "IntegrateSources",
+      "span": {
+        "column": 1,
+        "end": 1042,
+        "end_column": 52,
+        "end_line": 28,
+        "line": 28,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 991
+      },
+      "subject": "ModelGovernanceDelivery",
+      "system": "SDPTool",
+      "text": "ModelGovernanceDelivery addresses IntegrateSources.",
+      "verb": "addresses"
+    },
+    {
+      "id": "fbb802015a6cb5b606fb7d185aa0d459ac3b228fa4f8d7e40efd7b015a3690650",
+      "line": 29,
+      "node": "Relation",
+      "object": "RestoreCheckpoint",
+      "span": {
+        "column": 1,
+        "end": 1095,
+        "end_column": 53,
+        "end_line": 29,
+        "line": 29,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 1043
+      },
+      "subject": "ModelGovernanceDelivery",
+      "system": "SDPTool",
+      "text": "ModelGovernanceDelivery addresses RestoreCheckpoint.",
+      "verb": "addresses"
+    },
+    {
+      "id": "f817978b8aa5663e625c2e7af95771ea92408a30d816c2e46a700fc25df689342",
+      "line": 30,
+      "node": "Relation",
+      "object": "SaveCheckpoint",
+      "span": {
+        "column": 1,
+        "end": 1145,
+        "end_column": 50,
+        "end_line": 30,
+        "line": 30,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 1096
+      },
+      "subject": "ModelGovernanceDelivery",
+      "system": "SDPTool",
+      "text": "ModelGovernanceDelivery addresses SaveCheckpoint.",
+      "verb": "addresses"
+    },
+    {
+      "id": "fbb514bc2a277663da0bea405fd96ae410b586925f10ef0cca46ebdbab60efbbe",
+      "line": 31,
+      "node": "Relation",
+      "object": "ModelGovernance",
+      "span": {
+        "column": 1,
+        "end": 1195,
+        "end_column": 50,
+        "end_line": 31,
+        "line": 31,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 1146
+      },
+      "subject": "ModelGovernanceDelivery",
+      "system": "SDPTool",
+      "text": "ModelGovernanceDelivery delivers ModelGovernance.",
+      "verb": "delivers"
+    },
+    {
+      "id": "f3736f39382237a72dea701126c35e0ee3c1686f345a3f86c48e4fba4e492c41f",
+      "line": 32,
+      "node": "PropertyAssignment",
+      "property": "implementation-status",
+      "span": {
+        "column": 1,
+        "end": 1260,
+        "end_column": 65,
+        "end_line": 32,
+        "line": 32,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 1196
+      },
+      "subject": "ModelGovernanceDelivery",
+      "system": "SDPTool",
+      "text": "ModelGovernanceDelivery has implementation-status = implemented.",
+      "value": "implemented",
+      "verb": "has"
+    },
+    {
+      "id": "fe2a9640a86a935571ebefd6a1e6e566546173a86153d6a8f3fb67caeb363f8c9",
+      "line": 33,
+      "node": "Relation",
+      "object": "IntegrateModelChanges",
+      "span": {
+        "column": 1,
+        "end": 1307,
+        "end_column": 47,
+        "end_line": 33,
+        "line": 33,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 1261
+      },
+      "subject": "ModelIntegrator",
+      "system": "SDPTool",
+      "text": "ModelIntegrator pursues IntegrateModelChanges.",
+      "verb": "pursues"
+    },
+    {
+      "id": "fcab23cc1a3c90d55d838015af6304af7b16f82915ff27542a12acd8d9364a47c",
+      "line": 34,
+      "node": "Relation",
+      "object": "PublishModelCandidate",
+      "span": {
+        "column": 1,
+        "end": 1354,
+        "end_column": 47,
+        "end_line": 34,
+        "line": 34,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 1308
+      },
+      "subject": "ModelIntegrator",
+      "system": "SDPTool",
+      "text": "ModelIntegrator pursues PublishModelCandidate.",
+      "verb": "pursues"
+    },
+    {
+      "id": "f048def7f9453e1e985bd3b8d2bc6ef710c370cc46b31e729f8184d4728873cbe",
+      "line": 29,
+      "node": "PropertyAssignment",
+      "property": "completeness",
+      "span": {
+        "column": 1,
+        "end": 1441,
+        "end_column": 50,
+        "end_line": 29,
+        "line": 29,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 1392
+      },
+      "subject": "ModelOperationProtocol",
+      "system": "SDPTool",
+      "text": "ModelOperationProtocol has completeness = closed.",
+      "value": "closed",
+      "verb": "has"
+    },
+    {
+      "id": "f2e1caa154fbdb18a3ddc5cbb6cf257b13c8bfd8c85bf831ecac718e8fde9195a",
+      "line": 30,
+      "node": "Relation",
+      "object": "ModelChangeAccepted",
+      "span": {
+        "column": 1,
+        "end": 1493,
+        "end_column": 52,
+        "end_line": 30,
+        "line": 30,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 1442
+      },
+      "subject": "ModelOperationProtocol",
+      "system": "SDPTool",
+      "text": "ModelOperationProtocol permits ModelChangeAccepted.",
+      "verb": "permits"
+    },
+    {
+      "id": "f56b4fc46ebd6d142e1b05e046dbf5d791bcb419958b9305383869c99619632f6",
+      "line": 31,
+      "node": "Relation",
+      "object": "ModelChangeRefused",
+      "span": {
+        "column": 1,
+        "end": 1544,
+        "end_column": 51,
+        "end_line": 31,
+        "line": 31,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 1494
+      },
+      "subject": "ModelOperationProtocol",
+      "system": "SDPTool",
+      "text": "ModelOperationProtocol permits ModelChangeRefused.",
+      "verb": "permits"
+    },
+    {
+      "id": "fef5d29092e55a95ab9432118e149dafb08e62d75d409b298d4e02bc68538163d",
+      "line": 32,
+      "node": "Relation",
+      "object": "RequestModelChange",
+      "span": {
+        "column": 1,
+        "end": 1595,
+        "end_column": 51,
+        "end_line": 32,
+        "line": 32,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 1545
+      },
+      "subject": "ModelOperationProtocol",
+      "system": "SDPTool",
+      "text": "ModelOperationProtocol permits RequestModelChange.",
+      "verb": "permits"
+    },
+    {
+      "id": "ffcd351f237bb1a3ed8493c873669e0da78487caae58df9012be7cbf6cde13e25",
+      "line": 33,
+      "node": "PropertyAssignment",
+      "property": "completeness",
+      "span": {
+        "column": 1,
+        "end": 1644,
+        "end_column": 49,
+        "end_line": 33,
+        "line": 33,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 1596
+      },
+      "subject": "ModelOperationRequest",
+      "system": "SDPTool",
+      "text": "ModelOperationRequest has completeness = closed.",
+      "value": "closed",
+      "verb": "has"
+    },
+    {
+      "id": "f941d383245cc717871ce975332b51bed03bf9eac44f64772270d1797ef93001d",
+      "line": 34,
+      "node": "Relation",
+      "object": "ModelOperationRequestAction",
+      "span": {
+        "column": 1,
+        "end": 1705,
+        "end_column": 61,
+        "end_line": 34,
+        "line": 34,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 1645
+      },
+      "subject": "ModelOperationRequest",
+      "system": "SDPTool",
+      "text": "ModelOperationRequest has-field ModelOperationRequestAction.",
+      "verb": "has-field"
+    },
+    {
+      "id": "f670e74374a5b2c96eb5d52caab628864fbac3b17c85b0402862dfd538cdd988d",
+      "line": 35,
+      "node": "Relation",
+      "object": "ModelOperationRequestExpectedHead",
+      "span": {
+        "column": 1,
+        "end": 1772,
+        "end_column": 67,
+        "end_line": 35,
+        "line": 35,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 1706
+      },
+      "subject": "ModelOperationRequest",
+      "system": "SDPTool",
+      "text": "ModelOperationRequest has-field ModelOperationRequestExpectedHead.",
+      "verb": "has-field"
+    },
+    {
+      "id": "fba314064c27244af79e7be3daecb022e7f657e4d0034adeaea72c7936445ecaf",
+      "line": 36,
+      "node": "Relation",
+      "object": "ModelOperationRequestInputDigest",
+      "span": {
+        "column": 1,
+        "end": 1838,
+        "end_column": 66,
+        "end_line": 36,
+        "line": 36,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 1773
+      },
+      "subject": "ModelOperationRequest",
+      "system": "SDPTool",
+      "text": "ModelOperationRequest has-field ModelOperationRequestInputDigest.",
+      "verb": "has-field"
+    },
+    {
+      "id": "f7a1ae8a26b897cbda6c0aa37f75127b0c14be1acadb0504cdc256659377bbea3",
+      "line": 37,
+      "node": "PropertyAssignment",
+      "property": "presence",
+      "span": {
+        "column": 1,
+        "end": 1891,
+        "end_column": 53,
+        "end_line": 37,
+        "line": 37,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 1839
+      },
+      "subject": "ModelOperationRequestAction",
+      "system": "SDPTool",
+      "text": "ModelOperationRequestAction has presence = required.",
+      "value": "required",
+      "verb": "has"
+    },
+    {
+      "id": "fea55269802c9ebd1dfe71df2933e94cda8f5703cd0e08b14280f0446209d106c",
+      "line": 38,
+      "node": "PropertyAssignment",
+      "property": "value-type",
+      "span": {
+        "column": 1,
+        "end": 1942,
+        "end_column": 51,
+        "end_line": 38,
+        "line": 38,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 1892
+      },
+      "subject": "ModelOperationRequestAction",
+      "system": "SDPTool",
+      "text": "ModelOperationRequestAction has value-type = text.",
+      "value": "text",
+      "verb": "has"
+    },
+    {
+      "id": "fb30f7849e576583a16343641cd37a926292beb0d6abbe6810045d547e4f2e4a3",
+      "line": 39,
+      "node": "PropertyAssignment",
+      "property": "presence",
+      "span": {
+        "column": 1,
+        "end": 2001,
+        "end_column": 59,
+        "end_line": 39,
+        "line": 39,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 1943
+      },
+      "subject": "ModelOperationRequestExpectedHead",
+      "system": "SDPTool",
+      "text": "ModelOperationRequestExpectedHead has presence = required.",
+      "value": "required",
+      "verb": "has"
+    },
+    {
+      "id": "fef4fb8215d328463a2433414ee3a9aff4eb60b1ca8473fec69860eb047d7497b",
+      "line": 40,
+      "node": "PropertyAssignment",
+      "property": "value-type",
+      "span": {
+        "column": 1,
+        "end": 2058,
+        "end_column": 57,
+        "end_line": 40,
+        "line": 40,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 2002
+      },
+      "subject": "ModelOperationRequestExpectedHead",
+      "system": "SDPTool",
+      "text": "ModelOperationRequestExpectedHead has value-type = text.",
+      "value": "text",
+      "verb": "has"
+    },
+    {
+      "id": "fab7451a2dc76772e288eb7823f9ae0e8ec00f3c200d6953b96363eaf7cb4805a",
+      "line": 41,
+      "node": "PropertyAssignment",
+      "property": "presence",
+      "span": {
+        "column": 1,
+        "end": 2116,
+        "end_column": 58,
+        "end_line": 41,
+        "line": 41,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 2059
+      },
+      "subject": "ModelOperationRequestInputDigest",
+      "system": "SDPTool",
+      "text": "ModelOperationRequestInputDigest has presence = required.",
+      "value": "required",
+      "verb": "has"
+    },
+    {
+      "id": "f8b5eb1241c90ae539efc1e12613d009db576249c3c115902d786d32a26e37109",
+      "line": 42,
+      "node": "PropertyAssignment",
+      "property": "value-type",
+      "span": {
+        "column": 1,
+        "end": 2172,
+        "end_column": 56,
+        "end_line": 42,
+        "line": 42,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 2117
+      },
+      "subject": "ModelOperationRequestInputDigest",
+      "system": "SDPTool",
+      "text": "ModelOperationRequestInputDigest has value-type = text.",
+      "value": "text",
+      "verb": "has"
+    },
+    {
+      "id": "f1014c3cc02e641948cb4f3b7c081eff84d6e7504b55c3681adab4f281249d47d",
+      "line": 43,
+      "node": "PropertyAssignment",
+      "property": "completeness",
+      "span": {
+        "column": 1,
+        "end": 2220,
+        "end_column": 48,
+        "end_line": 43,
+        "line": 43,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 2173
+      },
+      "subject": "ModelOperationResult",
+      "system": "SDPTool",
+      "text": "ModelOperationResult has completeness = closed.",
+      "value": "closed",
+      "verb": "has"
+    },
+    {
+      "id": "f0923451afafd29a4ea853335395b90ae0d164e518fbdd41490da2aff8c8a07c6",
+      "line": 44,
+      "node": "Relation",
+      "object": "ModelOperationResultDisposition",
+      "span": {
+        "column": 1,
+        "end": 2284,
+        "end_column": 64,
+        "end_line": 44,
+        "line": 44,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 2221
+      },
+      "subject": "ModelOperationResult",
+      "system": "SDPTool",
+      "text": "ModelOperationResult has-field ModelOperationResultDisposition.",
+      "verb": "has-field"
+    },
+    {
+      "id": "f52f4bc2075e282cfefd43146b523bc7ee603c5e138d5608bce2e56b1c95ccc9e",
+      "line": 45,
+      "node": "Relation",
+      "object": "ModelOperationResultHead",
+      "span": {
+        "column": 1,
+        "end": 2341,
+        "end_column": 57,
+        "end_line": 45,
+        "line": 45,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 2285
+      },
+      "subject": "ModelOperationResult",
+      "system": "SDPTool",
+      "text": "ModelOperationResult has-field ModelOperationResultHead.",
+      "verb": "has-field"
+    },
+    {
+      "id": "f8ea69ad3713d18bc769f52a5f22ba754ab479a19e91ae78e61fb616fa7e1eb4c",
+      "line": 46,
+      "node": "Relation",
+      "object": "ModelOperationResultSourceDigest",
+      "span": {
+        "column": 1,
+        "end": 2406,
+        "end_column": 65,
+        "end_line": 46,
+        "line": 46,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 2342
+      },
+      "subject": "ModelOperationResult",
+      "system": "SDPTool",
+      "text": "ModelOperationResult has-field ModelOperationResultSourceDigest.",
+      "verb": "has-field"
+    },
+    {
+      "id": "f7f32e1fd1333c05742a3d2c1035a2f93a45346ce66523f8e42ca7df122dbc7cb",
+      "line": 47,
+      "node": "PropertyAssignment",
+      "property": "presence",
+      "span": {
+        "column": 1,
+        "end": 2463,
+        "end_column": 57,
+        "end_line": 47,
+        "line": 47,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 2407
+      },
+      "subject": "ModelOperationResultDisposition",
+      "system": "SDPTool",
+      "text": "ModelOperationResultDisposition has presence = required.",
+      "value": "required",
+      "verb": "has"
+    },
+    {
+      "id": "fda92b01e342cac0abbd501541a95adfb522fbc71fbbffee7b94464dccd518c11",
+      "line": 48,
+      "node": "PropertyAssignment",
+      "property": "value-type",
+      "span": {
+        "column": 1,
+        "end": 2518,
+        "end_column": 55,
+        "end_line": 48,
+        "line": 48,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 2464
+      },
+      "subject": "ModelOperationResultDisposition",
+      "system": "SDPTool",
+      "text": "ModelOperationResultDisposition has value-type = text.",
+      "value": "text",
+      "verb": "has"
+    },
+    {
+      "id": "fef0d5570058d6a18b497a8d8e55d1317e582046c801af3c8b2521cfa4fc0cb32",
+      "line": 49,
+      "node": "PropertyAssignment",
+      "property": "presence",
+      "span": {
+        "column": 1,
+        "end": 2568,
+        "end_column": 50,
+        "end_line": 49,
+        "line": 49,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 2519
+      },
+      "subject": "ModelOperationResultHead",
+      "system": "SDPTool",
+      "text": "ModelOperationResultHead has presence = required.",
+      "value": "required",
+      "verb": "has"
+    },
+    {
+      "id": "faf0edba8ec2161eb6eeeec420575694c62bc06ac56afdfc561c6501b34b5b32f",
+      "line": 50,
+      "node": "PropertyAssignment",
+      "property": "value-type",
+      "span": {
+        "column": 1,
+        "end": 2616,
+        "end_column": 48,
+        "end_line": 50,
+        "line": 50,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 2569
+      },
+      "subject": "ModelOperationResultHead",
+      "system": "SDPTool",
+      "text": "ModelOperationResultHead has value-type = text.",
+      "value": "text",
+      "verb": "has"
+    },
+    {
+      "id": "f52c45e56100b4f0981711ee6f97bf74e6775ab0437a551edfbef9ce6487fbeed",
+      "line": 51,
+      "node": "PropertyAssignment",
+      "property": "presence",
+      "span": {
+        "column": 1,
+        "end": 2674,
+        "end_column": 58,
+        "end_line": 51,
+        "line": 51,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 2617
+      },
+      "subject": "ModelOperationResultSourceDigest",
+      "system": "SDPTool",
+      "text": "ModelOperationResultSourceDigest has presence = required.",
+      "value": "required",
+      "verb": "has"
+    },
+    {
+      "id": "f623073519c65cdb252912350aafc2ffd83b3712ef76c26f39994fa853dc2fc05",
+      "line": 52,
+      "node": "PropertyAssignment",
+      "property": "value-type",
+      "span": {
+        "column": 1,
+        "end": 2730,
+        "end_column": 56,
+        "end_line": 52,
+        "line": 52,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 2675
+      },
+      "subject": "ModelOperationResultSourceDigest",
+      "system": "SDPTool",
+      "text": "ModelOperationResultSourceDigest has value-type = text.",
+      "value": "text",
+      "verb": "has"
+    },
+    {
+      "id": "f7d40c3a3a8dcb5f3903e1ba111acdec6588118d8a175b64e4301d5293d0a14da",
+      "line": 53,
+      "node": "Relation",
+      "object": "ModelOperationProtocol",
+      "span": {
+        "column": 1,
+        "end": 2778,
+        "end_column": 48,
+        "end_line": 53,
+        "line": 53,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 2731
+      },
+      "subject": "ModelOperations",
+      "system": "SDPTool",
+      "text": "ModelOperations upholds ModelOperationProtocol.",
+      "verb": "upholds"
+    },
+    {
+      "id": "f91d1a193b16fbc99433eae18acaa1610408cab1111703e76cfcb773fba0c1ca1",
+      "line": 15,
+      "node": "Relation",
+      "object": "SdlValidationLibrary",
+      "span": {
+        "column": 1,
+        "end": 481,
+        "end_column": 46,
+        "end_line": 15,
+        "line": 15,
+        "node": "Span",
+        "source": "Containers/SdpToolHost/ModelGovernance.design",
+        "start": 436
+      },
+      "subject": "ModelValidator",
+      "system": "SDPTool",
+      "text": "ModelValidator consumes SdlValidationLibrary.",
+      "verb": "consumes"
+    },
+    {
+      "id": "ffc1643426c9cd9a4a963ca289396a6da1fa77099bd7490322e4e785d8702fd84",
+      "line": 16,
+      "node": "Relation",
+      "object": "SduiValidationLibrary",
+      "span": {
+        "column": 1,
+        "end": 528,
+        "end_column": 47,
+        "end_line": 16,
+        "line": 16,
+        "node": "Span",
+        "source": "Containers/SdpToolHost/ModelGovernance.design",
+        "start": 482
+      },
+      "subject": "ModelValidator",
+      "system": "SDPTool",
+      "text": "ModelValidator consumes SduiValidationLibrary.",
+      "verb": "consumes"
+    },
+    {
+      "id": "f189a7cf5723fd0838e988c1c862db39a6b1d9b910dbde44f0b952a351f6bbb83",
+      "line": 54,
+      "node": "Relation",
+      "object": "RecoverWorkingModel",
+      "span": {
+        "column": 1,
+        "end": 2832,
+        "end_column": 54,
+        "end_line": 54,
+        "line": 54,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 2779
+      },
+      "subject": "RejectStaleModelChange",
+      "system": "SDPTool",
+      "text": "RejectStaleModelChange exercises RecoverWorkingModel.",
+      "verb": "exercises"
+    },
+    {
+      "id": "f0f097ff6e76c388b1ba0bd6a5456ce5ad518895cfe426866bb805b64c5e62b1f",
+      "line": 55,
+      "node": "PropertyAssignment",
+      "property": "completeness",
+      "span": {
+        "column": 1,
+        "end": 2882,
+        "end_column": 50,
+        "end_line": 55,
+        "line": 55,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 2833
+      },
+      "subject": "RejectStaleModelChange",
+      "system": "SDPTool",
+      "text": "RejectStaleModelChange has completeness = closed.",
+      "value": "closed",
+      "verb": "has"
+    },
+    {
+      "id": "fe6a5444122dab0959f0765dd5dadb4903538882fb6b809c531f26b5a17790004",
+      "line": 56,
+      "node": "Relation",
+      "object": "ModelGovernanceDelivery",
+      "span": {
+        "column": 1,
+        "end": 2942,
+        "end_column": 60,
+        "end_line": 56,
+        "line": 56,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 2883
+      },
+      "subject": "RejectStaleModelChange",
+      "system": "SDPTool",
+      "text": "RejectStaleModelChange illustrates ModelGovernanceDelivery.",
+      "verb": "illustrates"
+    },
+    {
+      "id": "ff028ab7115ca60b8873c0594cdd69217a42384665b8c7031e8cffa737c6f23d9",
+      "line": 57,
+      "node": "Relation",
+      "object": "ModelEditing",
+      "span": {
+        "column": 1,
+        "end": 2987,
+        "end_column": 45,
+        "end_line": 57,
+        "line": 57,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 2943
+      },
+      "subject": "RejectStaleModelChange",
+      "system": "SDPTool",
+      "text": "RejectStaleModelChange runs-in ModelEditing.",
+      "verb": "runs-in"
+    },
+    {
+      "channel": "ModelOperations",
+      "id": "f8709f91b32bfd58f11d2f1bc0faa8492527615469708856d306030f492d054fb",
+      "line": 58,
+      "message": "RequestModelChange",
+      "node": "Step",
+      "ordinal": 1,
+      "receiver": "ModelCoordinator",
+      "reply_to": null,
+      "sender": "ModelCommandAdapter",
+      "span": {
+        "column": 1,
+        "end": 3108,
+        "end_column": 121,
+        "end_line": 58,
+        "line": 58,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 2988
+      },
+      "subject": "RejectStaleModelChange",
+      "system": "SDPTool",
+      "text": "RejectStaleModelChange step 1 sends RequestModelChange from ModelCommandAdapter to ModelCoordinator via ModelOperations.",
+      "variant": null,
+      "verb": "step"
+    },
+    {
+      "channel": "ModelOperations",
+      "id": "f32fa47ddea9582fa6bd3ffae1cff47233e747bd79ca7b22d0be3c72b6ec66548",
+      "line": 59,
+      "message": "ModelChangeRefused",
+      "node": "Step",
+      "ordinal": 2,
+      "receiver": "ModelCommandAdapter",
+      "reply_to": 1,
+      "sender": "ModelCoordinator",
+      "span": {
+        "column": 1,
+        "end": 3240,
+        "end_column": 132,
+        "end_line": 59,
+        "line": 59,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 3109
+      },
+      "subject": "RejectStaleModelChange",
+      "system": "SDPTool",
+      "text": "RejectStaleModelChange step 2 sends ModelChangeRefused from ModelCoordinator to ModelCommandAdapter via ModelOperations reply-to 1.",
+      "variant": null,
+      "verb": "step"
+    },
+    {
+      "id": "f1d62ef1bf7cd116de1b05e51581ac2ecf0233780e8eca7f3843eb8398fbb5b52",
+      "line": 60,
+      "node": "PropertyAssignment",
+      "property": "message-kind",
+      "span": {
+        "column": 1,
+        "end": 3287,
+        "end_column": 47,
+        "end_line": 60,
+        "line": 60,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 3241
+      },
+      "subject": "RequestModelChange",
+      "system": "SDPTool",
+      "text": "RequestModelChange has message-kind = request.",
+      "value": "request",
+      "verb": "has"
+    },
+    {
+      "id": "f359c15d28aa9dd771ec69ac9e8a3fd9317931d1c4a9708a7bc09085105c7cb91",
+      "line": 61,
+      "node": "Relation",
+      "object": "ModelOperationRequest",
+      "span": {
+        "column": 1,
+        "end": 3337,
+        "end_column": 50,
+        "end_line": 61,
+        "line": 61,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 3288
+      },
+      "subject": "RequestModelChange",
+      "system": "SDPTool",
+      "text": "RequestModelChange upholds ModelOperationRequest.",
+      "verb": "upholds"
+    },
+    {
+      "id": "f16117e0c16c9f281dbf8ef406c1a4133b1e6fdd4830774d0c9f02c0da47f2628",
+      "line": 35,
+      "mode": "ModelEditing",
+      "node": "Allocation",
+      "object": "SdpToolHost",
+      "span": {
+        "column": 1,
+        "end": 1419,
+        "end_column": 65,
+        "end_line": 35,
+        "line": 35,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 1355
+      },
+      "subject": "RestoreCheckpoint",
+      "system": "SDPTool",
+      "text": "RestoreCheckpoint allocated-to SdpToolHost in mode ModelEditing.",
+      "verb": "allocated-to"
+    },
+    {
+      "id": "ff5d2a2bcbdec9d991b194219129b83d31d136b87c336618f54a73578c7949698",
+      "line": 36,
+      "node": "Relation",
+      "object": "ModelGovernance",
+      "span": {
+        "column": 1,
+        "end": 1469,
+        "end_column": 50,
+        "end_line": 36,
+        "line": 36,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 1420
+      },
+      "subject": "RestoreCheckpoint",
+      "system": "SDPTool",
+      "text": "RestoreCheckpoint contributes-to ModelGovernance.",
+      "verb": "contributes-to"
+    },
+    {
+      "id": "f4f588ae8ffe16c7a4c7f17c497fbdebacb14adb0b23834b3533575aea642bc25",
+      "line": 37,
+      "node": "Relation",
+      "object": "LocalModelRecovery",
+      "span": {
+        "column": 1,
+        "end": 1516,
+        "end_column": 47,
+        "end_line": 37,
+        "line": 37,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 1470
+      },
+      "subject": "RestoreCheckpoint",
+      "system": "SDPTool",
+      "text": "RestoreCheckpoint realizes LocalModelRecovery.",
+      "verb": "realizes"
+    },
+    {
+      "id": "ff6392d40f4992ed36f406a7d276923815d52743da7ed6483b8714d0d2d7b6b61",
+      "line": 6,
+      "node": "Relation",
+      "object": "SdpToolHost",
+      "span": {
+        "column": 1,
+        "end": 226,
+        "end_column": 30,
+        "end_line": 6,
+        "line": 6,
+        "node": "Span",
+        "source": "ModelGovernance.design",
+        "start": 197
+      },
+      "subject": "SDPTool",
+      "system": "SDPTool",
+      "text": "SDPTool contains SdpToolHost.",
+      "verb": "contains"
+    },
+    {
+      "id": "f2c26ca619804372e1386d131d7ae53b2fbed3bfd78e71c0def37c53df4a70bfb",
+      "line": 38,
+      "mode": "ModelEditing",
+      "node": "Allocation",
+      "object": "SdpToolHost",
+      "span": {
+        "column": 1,
+        "end": 1578,
+        "end_column": 62,
+        "end_line": 38,
+        "line": 38,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 1517
+      },
+      "subject": "SaveCheckpoint",
+      "system": "SDPTool",
+      "text": "SaveCheckpoint allocated-to SdpToolHost in mode ModelEditing.",
+      "verb": "allocated-to"
+    },
+    {
+      "id": "fff4741702ccb973680b49c0be936f858bd44d30e801591f5910ce60326231b96",
+      "line": 39,
+      "node": "Relation",
+      "object": "ModelGovernance",
+      "span": {
+        "column": 1,
+        "end": 1625,
+        "end_column": 47,
+        "end_line": 39,
+        "line": 39,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 1579
+      },
+      "subject": "SaveCheckpoint",
+      "system": "SDPTool",
+      "text": "SaveCheckpoint contributes-to ModelGovernance.",
+      "verb": "contributes-to"
+    },
+    {
+      "id": "f79e0f4452819e24b35494d0be384dbc8e14661f4edea5da86bf72025f748f916",
+      "line": 40,
+      "node": "Relation",
+      "object": "LocalModelRecovery",
+      "span": {
+        "column": 1,
+        "end": 1669,
+        "end_column": 44,
+        "end_line": 40,
+        "line": 40,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 1626
+      },
+      "subject": "SaveCheckpoint",
+      "system": "SDPTool",
+      "text": "SaveCheckpoint realizes LocalModelRecovery.",
+      "verb": "realizes"
+    },
+    {
+      "id": "fe774d1c7618d94b2bb627011b35413562d6de39d9bb73fc4a87e79ee28ce9d52",
+      "line": 62,
+      "node": "Relation",
+      "object": "RecoverWorkingModel",
+      "span": {
+        "column": 1,
+        "end": 3388,
+        "end_column": 51,
+        "end_line": 62,
+        "line": 62,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 3338
+      },
+      "subject": "SaveModelCheckpoint",
+      "system": "SDPTool",
+      "text": "SaveModelCheckpoint exercises RecoverWorkingModel.",
+      "verb": "exercises"
+    },
+    {
+      "id": "fdafaad3bea854b0c6ef30d41ac9d3bff0d3d3370909b5840ae0fc1a26703c6c7",
+      "line": 63,
+      "node": "PropertyAssignment",
+      "property": "completeness",
+      "span": {
+        "column": 1,
+        "end": 3435,
+        "end_column": 47,
+        "end_line": 63,
+        "line": 63,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 3389
+      },
+      "subject": "SaveModelCheckpoint",
+      "system": "SDPTool",
+      "text": "SaveModelCheckpoint has completeness = closed.",
+      "value": "closed",
+      "verb": "has"
+    },
+    {
+      "id": "f853e845e0389da58240cf30f35226c6e933d1508e74a47292075ee9d540c4d05",
+      "line": 64,
+      "node": "Relation",
+      "object": "ModelGovernanceDelivery",
+      "span": {
+        "column": 1,
+        "end": 3492,
+        "end_column": 57,
+        "end_line": 64,
+        "line": 64,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 3436
+      },
+      "subject": "SaveModelCheckpoint",
+      "system": "SDPTool",
+      "text": "SaveModelCheckpoint illustrates ModelGovernanceDelivery.",
+      "verb": "illustrates"
+    },
+    {
+      "id": "f10b4620ce074b23725ca6281bdf3665c10982af15afa52e77b25c9a212fcc9ed",
+      "line": 65,
+      "node": "Relation",
+      "object": "ModelEditing",
+      "span": {
+        "column": 1,
+        "end": 3534,
+        "end_column": 42,
+        "end_line": 65,
+        "line": 65,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 3493
+      },
+      "subject": "SaveModelCheckpoint",
+      "system": "SDPTool",
+      "text": "SaveModelCheckpoint runs-in ModelEditing.",
+      "verb": "runs-in"
+    },
+    {
+      "channel": "ModelOperations",
+      "id": "fb0c7aff767d5432aa2bd00f1ce0d261173c01a08c03cfbfa68cd193b960d7c11",
+      "line": 66,
+      "message": "RequestModelChange",
+      "node": "Step",
+      "ordinal": 1,
+      "receiver": "ModelCoordinator",
+      "reply_to": null,
+      "sender": "ModelCommandAdapter",
+      "span": {
+        "column": 1,
+        "end": 3652,
+        "end_column": 118,
+        "end_line": 66,
+        "line": 66,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 3535
+      },
+      "subject": "SaveModelCheckpoint",
+      "system": "SDPTool",
+      "text": "SaveModelCheckpoint step 1 sends RequestModelChange from ModelCommandAdapter to ModelCoordinator via ModelOperations.",
+      "variant": null,
+      "verb": "step"
+    },
+    {
+      "channel": "ModelOperations",
+      "id": "f8fb83d53452fd723fb26c2b99e36e64903eda23576454e5a78fdd488e0fed4ed",
+      "line": 67,
+      "message": "ModelChangeAccepted",
+      "node": "Step",
+      "ordinal": 2,
+      "receiver": "ModelCommandAdapter",
+      "reply_to": 1,
+      "sender": "ModelCoordinator",
+      "span": {
+        "column": 1,
+        "end": 3782,
+        "end_column": 130,
+        "end_line": 67,
+        "line": 67,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 3653
+      },
+      "subject": "SaveModelCheckpoint",
+      "system": "SDPTool",
+      "text": "SaveModelCheckpoint step 2 sends ModelChangeAccepted from ModelCoordinator to ModelCommandAdapter via ModelOperations reply-to 1.",
+      "variant": null,
+      "verb": "step"
+    },
+    {
+      "id": "f5eeb7518593672612e29c8bc4c456b26a01f1337b0aee7e694b26de3da0f6795",
+      "line": 17,
+      "node": "Relation",
+      "object": "LocalHistoryStore",
+      "span": {
+        "column": 1,
+        "end": 568,
+        "end_column": 40,
+        "end_line": 17,
+        "line": 17,
+        "node": "Span",
+        "source": "Containers/SdpToolHost/ModelGovernance.design",
+        "start": 529
+      },
+      "subject": "SdpToolHost",
+      "system": "SDPTool",
+      "text": "SdpToolHost contains LocalHistoryStore.",
+      "verb": "contains"
+    },
+    {
+      "id": "fe67998c78a81d247dc6aae6f000a833d359c7514986b87e50006535a076c8881",
+      "line": 18,
+      "node": "Relation",
+      "object": "ModelCommandAdapter",
+      "span": {
+        "column": 1,
+        "end": 610,
+        "end_column": 42,
+        "end_line": 18,
+        "line": 18,
+        "node": "Span",
+        "source": "Containers/SdpToolHost/ModelGovernance.design",
+        "start": 569
+      },
+      "subject": "SdpToolHost",
+      "system": "SDPTool",
+      "text": "SdpToolHost contains ModelCommandAdapter.",
+      "verb": "contains"
+    },
+    {
+      "id": "fccd422b34ea49e941229b368103bb393a37e10f8ae1b5f6ea4eb7ba05f14550c",
+      "line": 19,
+      "node": "Relation",
+      "object": "ModelCoordinator",
+      "span": {
+        "column": 1,
+        "end": 649,
+        "end_column": 39,
+        "end_line": 19,
+        "line": 19,
+        "node": "Span",
+        "source": "Containers/SdpToolHost/ModelGovernance.design",
+        "start": 611
+      },
+      "subject": "SdpToolHost",
+      "system": "SDPTool",
+      "text": "SdpToolHost contains ModelCoordinator.",
+      "verb": "contains"
+    },
+    {
+      "id": "fe3251841f34b8ae18553220c9d9367cdd8bd6fae5ba8aa3aafd80fbc9c7d7bc4",
+      "line": 20,
+      "node": "Relation",
+      "object": "ModelValidator",
+      "span": {
+        "column": 1,
+        "end": 686,
+        "end_column": 37,
+        "end_line": 20,
+        "line": 20,
+        "node": "Span",
+        "source": "Containers/SdpToolHost/ModelGovernance.design",
+        "start": 650
+      },
+      "subject": "SdpToolHost",
+      "system": "SDPTool",
+      "text": "SdpToolHost contains ModelValidator.",
+      "verb": "contains"
+    },
+    {
+      "id": "fa02308cfb8e917c0cceb70d773bfab0c5f6643c498ea6ea84e4a3f37c0154082",
+      "line": 21,
+      "node": "Relation",
+      "object": "FrozenModelDelivery",
+      "span": {
+        "column": 1,
+        "end": 728,
+        "end_column": 42,
+        "end_line": 21,
+        "line": 21,
+        "node": "Span",
+        "source": "Containers/SdpToolHost/ModelGovernance.design",
+        "start": 687
+      },
+      "subject": "SdpToolHost",
+      "system": "SDPTool",
+      "text": "SdpToolHost provides FrozenModelDelivery.",
+      "verb": "provides"
+    },
+    {
+      "id": "f7dc671000fd8a47d166a25f48390fcd4176d73c352ec27cac1bb743467f2eb60",
+      "line": 22,
+      "node": "Relation",
+      "object": "LocalModelRecovery",
+      "span": {
+        "column": 1,
+        "end": 769,
+        "end_column": 41,
+        "end_line": 22,
+        "line": 22,
+        "node": "Span",
+        "source": "Containers/SdpToolHost/ModelGovernance.design",
+        "start": 729
+      },
+      "subject": "SdpToolHost",
+      "system": "SDPTool",
+      "text": "SdpToolHost provides LocalModelRecovery.",
+      "verb": "provides"
+    },
+    {
+      "id": "f6a0f39b5010735506475594a751892805b15a250d6a982007c8718bebc73e4d1",
+      "line": 23,
+      "node": "Relation",
+      "object": "ModelIntegration",
+      "span": {
+        "column": 1,
+        "end": 808,
+        "end_column": 39,
+        "end_line": 23,
+        "line": 23,
+        "node": "Span",
+        "source": "Containers/SdpToolHost/ModelGovernance.design",
+        "start": 770
+      },
+      "subject": "SdpToolHost",
+      "system": "SDPTool",
+      "text": "SdpToolHost provides ModelIntegration.",
+      "verb": "provides"
+    }
+  ],
+  "model_gaps": [
+    {
+      "code": "NO_DATASETS",
+      "message": "No Dataset declared.",
+      "model_id": "—",
+      "viewpoint": "VP09"
+    },
+    {
+      "code": "NO_ENCODINGS",
+      "message": "No Encoding declared.",
+      "model_id": "—",
+      "viewpoint": "VP10"
+    }
+  ],
+  "outputs": {
+    "A0/index.md": "cf30b9082b44038f424e60e93b808fcd543a07d0b33c25a60cb0d3a70bf79e75",
+    "A0/inventory.md": "06f6589221db84d1496ed51b552d491ed38c17a7e113aecb1c6589b0cdc005d9",
+    "A1/index.md": "ec622aae83dd43b63d7cadcbf2b4aa330b9464fd0dbda00d76349155c26c0d7c",
+    "A1/inventory.md": "3bfb77714e5607337b2bd6c244aee8d2f45d13f9b9c16725b3ff0869e96b4fd4",
+    "A2/index.md": "90554a3a76fd65ff535dbeb67c0cbb5a35bcbc2f2d752d7d5aabaed5bb96cadf",
+    "A2/inventory.md": "0ffec65bfce776a7090cd8607bffb8cd03b06b3f9f131c8848c3456efe2c681d",
+    "A3/index.md": "0f9c611eea13068ab1217ce8dfdfb32e2e43810e4e060724236405ff0af8f89d",
+    "A3/inventory.md": "3743822d22876610f95ff36ecc82cc6d491a74cd2fd5e344e5011f80d9a30cce",
+    "A4/index.md": "5307776b34a15edd15c55e1b212913a9d2cf6b6633ce09e7a4995986888af6a1",
+    "A4/inventory.md": "b78c27430f923c44251bceca150a908a8ebe1531df4bcb04bc4902a6e57dee2e",
+    "A5/index.md": "3ddb326ea6dae1125db900cff3f8eae4aad0b6dd6373d528be21a7b82c4a43c8",
+    "A5/inventory.md": "edd90ee49ed4c52c1d336109435abee942920d4bca439031dc1afc534b40ffaf",
+    "diagrams/VP01-IntegrateModelChanges.mmd": "947610b7c4c5441ac935c180d41da2bbcf4b81ceb46475b047fc77a7e1fa29b5",
+    "diagrams/VP01-PublishModelCandidate.mmd": "b75a8a89a076e3c9121b5098edd87b925f1b913896e5f25ff7242e62f3390155",
+    "diagrams/VP01-RecoverWorkingModel.mmd": "648a923d2b17a5bb4e6f1b4309046fbb7a880b76c81d7e686af6ca09bfd79372",
+    "diagrams/VP01-feature-ModelGovernance.mmd": "5041a9b585dee4cdcd9b0472556948bfc8f4cb2d1257689f22a50e1ef1316a63",
+    "diagrams/VP02-SDPTool.mmd": "6e0aef3b3556631ae1c556218f89989bbaa9d8d62b34f9ffdd4c1df9a08ec4dd",
+    "diagrams/VP02-SdpToolHost.mmd": "4f803e306da993a539cba134801b09ea5244817103addde3caafb182cbca7955",
+    "diagrams/VP02-roots.mmd": "c86986ba114a7f8ccbe67fa1c5ea0cfe19070cbd0af4a38ac2e892f69ebd9a53",
+    "diagrams/VP08-RejectStaleModelChange.mmd": "381debf74734d696676059ce1731f93e3db3764a624c30f60d3c5b972ca9d12f",
+    "diagrams/VP08-SaveModelCheckpoint.mmd": "3829754cc149f4422c02f9c4958b96e3f2d20e5e6e7a49c0d670b3112820ee84",
+    "index.md": "297ffb67f305fd24b7cfb5ada5bc9304bd30c0d0d25a055f9d131b69f2d29bc5",
+    "message-sets.json": "02896970cf288386e7f450918215525e35a5f25a0d7486387e568c81791ec731",
+    "navigator.md": "18dad6044a70db73118a4ddf1918318ef36b27851d1cd497ed883128b6b0ae1e",
+    "sources.json": "9a8bbfe93d6d06e20ed574f110dee790de5aaade1317b1b1b61e90ff897ad8b9",
+    "viewpoints/VP01/VP01-IntegrateModelChanges.md": "b7c09d5223b06641f9af3c96625d928098fbb94b9a29ee0f0735317ab82a872c",
+    "viewpoints/VP01/VP01-PublishModelCandidate.md": "c1a8912e121f7b1a7ab0b69b1955aca5d7726ddcaf1c577473a4082cca3ddbde",
+    "viewpoints/VP01/VP01-RecoverWorkingModel.md": "43a8d53f14f2019bf9a972033a47e09607f7d11eb88f43557e6b153d7be40428",
+    "viewpoints/VP01/VP01-feature-ModelGovernance.md": "306dc4c13775dbe7311ff08ae3c61c2cbe465ec50d98c187b5c4925a8372457f",
+    "viewpoints/VP01/index.md": "922abd453d1f6977a6e99e5c910844cd7d11a66ba5f8900e5b5ac5103e40b62f",
+    "viewpoints/VP02/VP02-SDPTool.md": "707d4bdceae81676589156d9aab3394dabb236802864b0553ecef38de2185c44",
+    "viewpoints/VP02/VP02-SdpToolHost.md": "43730de36a4ae748af5f0566d2602bef32df41b4cc2f6b91145f8ccd3e46aee6",
+    "viewpoints/VP02/VP02-roots.md": "6eb59332113e7d237fbdb4b335267e71e16ce8af2b9693f44f4066e61f891431",
+    "viewpoints/VP02/index.md": "2b5b7a059e29efd744e022df58d01f8b38bb830fd5a0a8f61694101a250cec8f",
+    "viewpoints/VP08/VP08-RejectStaleModelChange.md": "0cd0d5dc9eed7d469414bda2d1910a755c21240886a2743f0d10d1cf6fb1fb37",
+    "viewpoints/VP08/VP08-SaveModelCheckpoint.md": "b25f46c75efd8edc4a714936601f986d5d62a73698be6a37f3a71206056a40be",
+    "viewpoints/VP08/index.md": "834ceec402d2d7889e26d57215caaa508c9ad7e7aaceb829e45d9cfda07848da"
+  }
+}

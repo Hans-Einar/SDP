@@ -1,0 +1,58 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci4-package-candidate2/libexec/sdui/text", "sha256": "f26a5ec9e24e4718a0691ce5381a633a6ad9f4376f6ef34ed3667a89d3d05162", "display": ":191", "variant": "wci3-scroll"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "click", "values": [377, 346], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "key", "values": ["Left"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "move", "values": [377, 346], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "wheel", "values": [377, 346, 8], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "native Entry consumes wheel without outer scrolling or Save", "passed": true}}
+{"kind": "screenshot", "value": "entry-inner-scroll.png"}
+{"kind": "fixture-command", "value": "readonly Single"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "unrelated publication preserves native Entry viewport", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "click", "values": [85, 58], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "click", "values": [27, 58], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "page hiding preserves native Entry viewport", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "click", "values": [377, 346], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "key", "values": ["Right"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "native caret navigation reveals the end of long wrapped text", "passed": true}}
+{"kind": "screenshot", "value": "entry-caret-end.png"}
+{"kind": "fixture-command", "value": "resize 900 750"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "key", "values": ["Right"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "narrow resize reflows native wrapped lines without changing text", "passed": true}}
+{"kind": "screenshot", "value": "entry-wrap-after-resize.png"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "move", "values": [307, 343], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "wheel", "values": [307, 343, 12], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "Entry at scroll limit does not chain wheel to ancestor", "passed": true}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "move", "values": [610, 372], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "drag", "values": [610, 372, 610, 314], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "actual native scrollbar drag moves only the Entry viewport", "passed": true}}
+{"kind": "screenshot", "value": "entry-scrollbar-drag.png"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "move", "values": [619, 514], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "wheel", "values": [619, 514, 6], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "separate outer gutter remains independently scrollable", "passed": true}}
+{"kind": "screenshot", "value": "entry-outer-scroll-clipping.png"}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

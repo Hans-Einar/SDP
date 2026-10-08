@@ -1,0 +1,303 @@
+{
+  "recordedAt": "2026-09-28T21:33:30.781685+00:00",
+  "launcher": "/usr/local/bin/codex",
+  "launcherRealPath": "/usr/local/lib/node_modules/@openai/codex/bin/codex.js",
+  "launcherSha256": "61b0194f3bb6534439c8d26a3ed57d0805f84b884588b761795323eeb92fcf70",
+  "commands": [
+    {
+      "command": [
+        "codex",
+        "--version"
+      ],
+      "exitCode": 0,
+      "stdout": "codex-cli 0.158.0\n",
+      "stderr": "WARNING: proceeding, even though we could not create PATH aliases: CODEX_HOME points to \"/tmp/rgs2-appserver-study/isolated-home/codex\", but that path does not exist\n"
+    },
+    {
+      "command": [
+        "codex",
+        "app-server",
+        "--help"
+      ],
+      "exitCode": 0,
+      "stdout": "[experimental] Run the app server or related tooling\n\nUsage: codex app-server [OPTIONS] [COMMAND]\n\nCommands:\n  daemon                Manage the local app-server daemon\n  proxy                 Proxy stdio bytes to the running app-server control socket\n  generate-ts           [experimental] Generate TypeScript bindings for the app server protocol\n  generate-json-schema  [experimental] Generate JSON Schema for the app server protocol\n  help                  Print this message or the help of the given subcommand(s)\n\nOptions:\n  -c, --config <key=value>\n          Override a configuration value that would otherwise be loaded from `~/.codex/config.toml`.\n          Use a dotted path (`foo.bar.baz`) to override nested values. The `value` portion is parsed\n          as TOML. If it fails to parse as TOML, the raw string is used as a literal.\n          \n          Examples: - `-c model=\"o3\"` - `-c 'sandbox_permissions=[\"disk-full-read-access\"]'` - `-c\n          shell_environment_policy.inherit=all`\n\n      --enable <FEATURE>\n          Enable a feature (repeatable). Equivalent to `-c features.<name>=true`\n\n      --disable <FEATURE>\n          Disable a feature (repeatable). Equivalent to `-c features.<name>=false`\n\n      --code-mode-host <URL>\n          Connect to a remote code-mode host instead of starting a local host\n\n      --strict-config\n          Error out when config.toml contains fields that are not recognized by this version of\n          Codex\n\n      --listen <URL>\n          Transport endpoint URL. Supported values: `stdio://` (default), `unix://`, `unix://PATH`,\n          `ws://IP:PORT`, `off`\n          \n          [default: stdio://]\n\n      --stdio\n          Use stdio as the transport (equivalent to `--listen stdio://`)\n\n      --analytics-default-enabled\n          Controls whether analytics are enabled by default.\n          \n          Analytics are disabled by default for app-server. Users have to explicitly opt in via the\n          `analytics` section in the config.toml file.\n          \n          However, for first-party use cases like the VSCode IDE extension, we default analytics to\n          be enabled by default by setting this flag. Users can still opt out by setting this in\n          their config.toml:\n          \n          ```toml [analytics] enabled = false ```\n          \n          See https://developers.openai.com/codex/config-advanced/#metrics for more details.\n\n      --ws-auth <MODE>\n          Authentication mode for incoming WebSocket connections\n          \n          [possible values: capability-token, signed-bearer-token]\n\n      --ws-token-file <PATH>\n          Absolute path to the capability-token file\n\n      --ws-token-sha256 <HEX>\n          Hex-encoded SHA-256 digest of the capability token\n\n      --ws-shared-secret-file <PATH>\n          Absolute path to the shared secret file for signed JWT bearer tokens\n\n      --ws-issuer <ISSUER>\n          Expected issuer for signed JWT bearer tokens\n\n      --ws-audience <AUDIENCE>\n          Expected audience for signed JWT bearer tokens\n\n      --ws-max-clock-skew-seconds <SECONDS>\n          Maximum clock skew when validating signed JWT bearer tokens\n\n  -h, --help\n          Print help (see a summary with '-h')\n",
+      "stderr": "WARNING: proceeding, even though we could not create PATH aliases: CODEX_HOME points to \"/tmp/rgs2-appserver-study/isolated-home/codex\", but that path does not exist\n"
+    },
+    {
+      "command": [
+        "codex",
+        "app-server",
+        "generate-json-schema",
+        "--out",
+        "/tmp/rgs2-appserver-study/schema"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "WARNING: proceeding, even though we could not create PATH aliases: CODEX_HOME points to \"/tmp/rgs2-appserver-study/isolated-home/codex\", but that path does not exist\n"
+    },
+    {
+      "command": [
+        "codex",
+        "app-server",
+        "generate-json-schema",
+        "--experimental",
+        "--out",
+        "/tmp/rgs2-appserver-study/schema-experimental"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "WARNING: proceeding, even though we could not create PATH aliases: CODEX_HOME points to \"/tmp/rgs2-appserver-study/isolated-home/codex\", but that path does not exist\n"
+    }
+  ],
+  "nativeBinary": {
+    "path": "/usr/local/lib/node_modules/@openai/codex/node_modules/@openai/codex-linux-x64/vendor/x86_64-unknown-linux-musl/bin/codex",
+    "sha256": "167c0148a849d2444f1b5a7fb5f8bb2de1de5ae13a2a504b833fc765980f5cd9"
+  },
+  "repositoryHead": "ccda05d76cb2ad427a7ce542f6fa4fba2a43cb89",
+  "coverage": "CLI help and generated schema inspection only; no runtime, model turn, account read, current-session attachment or configuration change.",
+  "sourceDocuments": [
+    {
+      "url": "https://learn.chatgpt.com/docs/app-server",
+      "retrievedDate": "2026-09-28",
+      "localMarkdownSha256": "33aa2afe286ff2095c33e7cc7984e18fa8738345e3f1bc48fcfbb2a3543fb3c8",
+      "bytes": 99663
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/developer-commands",
+      "retrievedDate": "2026-09-28",
+      "localMarkdownSha256": "0fe8139b56e67afa96c15539b964be987b6256e971eddbd42e3b52f917f9d90f",
+      "bytes": 54672
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/agent-configuration/subagents",
+      "retrievedDate": "2026-09-28",
+      "localMarkdownSha256": "966d32437448762ff38e7b37fff41186841fe6ca39e55a28466b69a73c417152",
+      "bytes": 21989
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/config-file/config-reference",
+      "retrievedDate": "2026-09-28",
+      "localMarkdownSha256": "0512de2624e4a441a4a557b810e724393bee8022682d0ec7cc4f04b21d2642f9",
+      "bytes": 116308
+    },
+    {
+      "url": "https://learn.chatgpt.com/docs/pricing",
+      "retrievedDate": "2026-09-28",
+      "localMarkdownSha256": "b6eaea46e960daf82a9ff498ceaaf61b12b42c2e2966bbf68e83568ed42e5fca",
+      "bytes": 46524
+    }
+  ],
+  "schema": {
+    "fileCount": 314,
+    "manifestSha256": "c6e6f234fbd6a8cbb5d017440304416a846640dab78aab59bfb8e8c177eea218",
+    "selectedFiles": [
+      {
+        "path": "v2/ThreadStartParams.json",
+        "sha256": "e9c6d3cc18d049bfbc0249add3808fb8e5a27e1a0b5a423767aafbc3859a9428"
+      },
+      {
+        "path": "v2/ThreadForkParams.json",
+        "sha256": "60540b97d453ddbc5e12bfaa007a3718f31847d18dec0da59a5e4b89be4717ad"
+      },
+      {
+        "path": "v2/ThreadResumeParams.json",
+        "sha256": "c818e26d830ac4430791eab7d4a872d2384fa6006b14c505d8caf46e7e093527"
+      },
+      {
+        "path": "v2/ThreadReadParams.json",
+        "sha256": "dfe040c6ac71d30795b8be3f3ff232e66f362a37f883b491e5d1ea367f470db4"
+      },
+      {
+        "path": "v2/ThreadTurnsListParams.json",
+        "sha256": "2a8b93d7d4437cc25e16a1dde16d8db3c338d39e16c5eece2a56e943a21577d7"
+      },
+      {
+        "path": "v2/ThreadItemsListParams.json",
+        "sha256": "ff56040c327ecdd30ef02affac9bc71fab64031e8980f2b4fea9fd8a888160b4"
+      },
+      {
+        "path": "v2/TurnStartParams.json",
+        "sha256": "2dfcf68705896fadc344ccfeb2e9fe5a6bcbbb8b9a90cf449ce232b636daf05a"
+      },
+      {
+        "path": "v2/TurnSteerParams.json",
+        "sha256": "857e7a2b061ae46ed6aedea6a5fddd3a6ce14f0334bf7eafaf10d4cbe68ec78b"
+      },
+      {
+        "path": "v2/TurnInterruptParams.json",
+        "sha256": "6dff382dae73d1dbc58406ed045605f647e7a49660e2540fbd2c6c24d60c5f2b"
+      },
+      {
+        "path": "v2/ReviewStartParams.json",
+        "sha256": "31f826890392eb5cdc9995c94884d3a5ca6af84c66283f2f981e792a1419769f"
+      },
+      {
+        "path": "v1/InitializeParams.json",
+        "sha256": "b55124e7c0f36a1789396daa5578217a92be67f053903696236686e59f6f212e"
+      },
+      {
+        "path": "v1/InitializeResponse.json",
+        "sha256": "62ad689c2cb6379913c1d72749cfd8de5089d35760214123518eb92eef11acc9"
+      },
+      {
+        "path": "v2/LoginAccountParams.json",
+        "sha256": "48fb9bea54d7e0890052653ac06737efb3200ba2261515b2c4014027f36bea3d"
+      },
+      {
+        "path": "v2/GetAccountResponse.json",
+        "sha256": "c3092dd8e52c2933c5ba5f0bf92377174f65bed627ff4ef5d7c04a189dd34fd1"
+      },
+      {
+        "path": "v2/GetAccountRateLimitsResponse.json",
+        "sha256": "cb9655e68130116f634ed9353e45b336492e6069a6628f424d1cd52e54eda0e0"
+      },
+      {
+        "path": "v2/SkillsListParams.json",
+        "sha256": "1d245374e64c5acc9739dfc68a4fe5114c6c9147af04c480886f1846d2ca6239"
+      },
+      {
+        "path": "v2/SkillsListResponse.json",
+        "sha256": "230f125d6c36ec1b1514018a0bb6d0627f7308ea82f1ef04cad85490de482bae"
+      },
+      {
+        "path": "v2/ItemStartedNotification.json",
+        "sha256": "7574788d2a352747f50d44be3ef649011cb8de8069da4c655faff14d0aee32c4"
+      },
+      {
+        "path": "v2/ItemCompletedNotification.json",
+        "sha256": "d04b9153de38cd8302a2a418a44a65e8265d4c7586d46ea2cc801b594c6acf5b"
+      },
+      {
+        "path": "v2/TurnPlanUpdatedNotification.json",
+        "sha256": "2522f743be0a1e9666dec5ad4f18d8ecba3c4f16e66d510b1491d4117d1dd0ba"
+      },
+      {
+        "path": "v2/ThreadResumeResponse.json",
+        "sha256": "b37dc7eeb3606efb2f8140c5209b2bb3ec594d041ff30b9b09dd11fa721a7a78"
+      },
+      {
+        "path": "v2/ThreadStartResponse.json",
+        "sha256": "185324ac7860327db6ceeff644d16ee6e7d7c60a899925007b23553ef69eb125"
+      },
+      {
+        "path": "ClientRequest.json",
+        "sha256": "2ababf80956ae311d1dcee4b595dcd3ef86b29a764d31529d7bbf5c4b2f0f2b8"
+      },
+      {
+        "path": "ServerNotification.json",
+        "sha256": "a132b7abca4a45a874e8b267a654cfa9ba5cc415443b6aec65ad275f100587c1"
+      },
+      {
+        "path": "ServerRequest.json",
+        "sha256": "f339be472737a0003efa25fba2e6e6c9237e621cd065b6d6995c51256e9dc1fb"
+      }
+    ]
+  },
+  "schema-experimental": {
+    "fileCount": 440,
+    "manifestSha256": "755c43e05d48fa6e4acd0f10ab577e41ed2f532a8fe4891f3adabe20e48ecd6d",
+    "selectedFiles": [
+      {
+        "path": "v2/ThreadStartParams.json",
+        "sha256": "80a40a7fac15b4bf70efb7f893fb353acc0a0d30c68f54aee4f01923deca85de"
+      },
+      {
+        "path": "v2/ThreadForkParams.json",
+        "sha256": "674134467796c011068b9dd5efc912de4560fa31f65c0fb2163f14e352be7a61"
+      },
+      {
+        "path": "v2/ThreadResumeParams.json",
+        "sha256": "cc5bb3b25f82073d24af5b6c09e4804ac307467f8400ba5f263fa86f9f0349e6"
+      },
+      {
+        "path": "v2/ThreadReadParams.json",
+        "sha256": "dfe040c6ac71d30795b8be3f3ff232e66f362a37f883b491e5d1ea367f470db4"
+      },
+      {
+        "path": "v2/ThreadTurnsListParams.json",
+        "sha256": "2a8b93d7d4437cc25e16a1dde16d8db3c338d39e16c5eece2a56e943a21577d7"
+      },
+      {
+        "path": "v2/ThreadItemsListParams.json",
+        "sha256": "ff56040c327ecdd30ef02affac9bc71fab64031e8980f2b4fea9fd8a888160b4"
+      },
+      {
+        "path": "v2/TurnStartParams.json",
+        "sha256": "07771223642e1b61bd9aac0069fc0f98143a1c047724ca02c7ceb13653442738"
+      },
+      {
+        "path": "v2/TurnSteerParams.json",
+        "sha256": "99f7fdff8b090065b68f36420b70870b5eafed048c024b308230aaa02f15d891"
+      },
+      {
+        "path": "v2/TurnInterruptParams.json",
+        "sha256": "6dff382dae73d1dbc58406ed045605f647e7a49660e2540fbd2c6c24d60c5f2b"
+      },
+      {
+        "path": "v2/ReviewStartParams.json",
+        "sha256": "31f826890392eb5cdc9995c94884d3a5ca6af84c66283f2f981e792a1419769f"
+      },
+      {
+        "path": "v1/InitializeParams.json",
+        "sha256": "b55124e7c0f36a1789396daa5578217a92be67f053903696236686e59f6f212e"
+      },
+      {
+        "path": "v1/InitializeResponse.json",
+        "sha256": "62ad689c2cb6379913c1d72749cfd8de5089d35760214123518eb92eef11acc9"
+      },
+      {
+        "path": "v2/LoginAccountParams.json",
+        "sha256": "48fb9bea54d7e0890052653ac06737efb3200ba2261515b2c4014027f36bea3d"
+      },
+      {
+        "path": "v2/GetAccountResponse.json",
+        "sha256": "67ac3095b058a7d3c1627ff4dd9e52c8ee3c55f961cb1b980959ac15336d6827"
+      },
+      {
+        "path": "v2/GetAccountRateLimitsResponse.json",
+        "sha256": "cb9655e68130116f634ed9353e45b336492e6069a6628f424d1cd52e54eda0e0"
+      },
+      {
+        "path": "v2/SkillsListParams.json",
+        "sha256": "1d245374e64c5acc9739dfc68a4fe5114c6c9147af04c480886f1846d2ca6239"
+      },
+      {
+        "path": "v2/SkillsListResponse.json",
+        "sha256": "230f125d6c36ec1b1514018a0bb6d0627f7308ea82f1ef04cad85490de482bae"
+      },
+      {
+        "path": "v2/ItemStartedNotification.json",
+        "sha256": "7574788d2a352747f50d44be3ef649011cb8de8069da4c655faff14d0aee32c4"
+      },
+      {
+        "path": "v2/ItemCompletedNotification.json",
+        "sha256": "d04b9153de38cd8302a2a418a44a65e8265d4c7586d46ea2cc801b594c6acf5b"
+      },
+      {
+        "path": "v2/TurnPlanUpdatedNotification.json",
+        "sha256": "2522f743be0a1e9666dec5ad4f18d8ecba3c4f16e66d510b1491d4117d1dd0ba"
+      },
+      {
+        "path": "v2/ThreadResumeResponse.json",
+        "sha256": "91388015e642c6aa54572c19e6cd1c356a32d747f9641f8c1efaf1fdcdec361c"
+      },
+      {
+        "path": "v2/ThreadStartResponse.json",
+        "sha256": "42eceac78f0ce0091788c2575302a4190b04001ca65032e3d006888cb351cde0"
+      },
+      {
+        "path": "ClientRequest.json",
+        "sha256": "6d4d787ce2aae0e5bcd2376206b483504706d4a4a32e8b2aec6dacb4b790fac6"
+      },
+      {
+        "path": "ServerNotification.json",
+        "sha256": "b3ad3fb161cfbb5d54e0f7c413466c2eae171a3ec887906bf3b07a1cecb0ca8e"
+      },
+      {
+        "path": "ServerRequest.json",
+        "sha256": "3d7bc481f84dc042984a74420e65c5a8d3c423f37a91b7d5df2365c903a12ac6"
+      }
+    ]
+  },
+  "schemaExtractSha256": "1667e4021e090fc7d09cb6e1cbc5d8626f75409aa221bbc4b8463575ca2f6fb6"
+}

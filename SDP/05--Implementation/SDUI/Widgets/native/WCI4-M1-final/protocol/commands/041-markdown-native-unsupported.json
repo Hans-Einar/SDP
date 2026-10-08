@@ -1,0 +1,24 @@
+{
+  "name": "markdown-native-unsupported",
+  "argv": [
+    "/tmp/wci4-package-candidate2/libexec/xfmd/sdui-fyne",
+    "-entry",
+    "Main",
+    "-watch=false",
+    "-revision",
+    "860e5bf0b9cdbd645d0ff4ac98f84cbca645b899a0b0c69df2fb74ba33541770",
+    "/tmp/wci4-final-protocol2/unsupported markdown project with spaces/Page å with spaces.sdui"
+  ],
+  "cwd": "/tmp/wci4-final-protocol2",
+  "binarySha256": "d6f91b2e92ebfe38502839f233346200b7baf30c460643c5e6a97eac327861c2",
+  "displayEnvironment": "DISPLAY/WAYLAND_DISPLAY removed",
+  "expected": "nonzero with unsupported-preview",
+  "exit": 2,
+  "timeout": false,
+  "seconds": 0.3819155693054199,
+  "stdout": "commands/041-markdown-native-unsupported.stdout",
+  "stderr": "commands/041-markdown-native-unsupported.stderr",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "301a01be909cd9a82cd03cefbd4632e037cc1e526d26b6a2a4d5350da4838880",
+  "binaryUnchanged": true
+}

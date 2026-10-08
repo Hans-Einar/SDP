@@ -1,0 +1,7 @@
+PASS native Entry consumes wheel without outer scrolling or Save
+PASS unrelated publication preserves native Entry viewport
+PASS page hiding preserves native Entry viewport
+PASS native caret navigation reveals the end of long wrapped text
+PASS Entry at scroll limit does not chain wheel to ancestor
+PASS separate outer gutter remains independently scrollable
+PASS native teardown closes session and clears provider barriers

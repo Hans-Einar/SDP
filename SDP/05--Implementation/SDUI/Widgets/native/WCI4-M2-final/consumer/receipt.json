@@ -1,0 +1,54 @@
+{
+  "consumerRoot": "/home/warloc/git/xfmd-sdl-navigation",
+  "consumerHEAD": "41fa4948c5377edd792ba3f503e6b92b0fd4717a",
+  "originalBinary": "/home/warloc/git/xfmd-sdl-navigation/build-ui/SduiWorkflowGuiTest",
+  "binarySHA256": "cd60b3d40acfff3a67870556b7ebd3ddfbce40f39ed077288e0f6252c957fb93",
+  "binaryBuildSource": "Unknown exact C++ build source. This verifies the actual supplied binary, not current consumer source or release.",
+  "sourceBefore": {
+    "tools/build_sdui_tools.py": "e46559afedc1bbe683675f461972d659810e0d24bc9ab551fddd8e15e4c23c67",
+    "tools/run_with_xvfb.py": "f050289c48f37736330bad97a79d183716ad4770c6354149c04e4e31bff655f1",
+    "cmake/Sdp.cmake": "2edc126b511b38dcde0da3fe0d3f9f9f1a2efa41e97e7f1618089e056f0399c4",
+    "cmake/Tests.cmake": "773074be9e6abbdff20e4616cd9b91772e70cc2f6bb1bfb1db85e6674edac4c7",
+    "src/application/sdp/SduiTools.cpp": "2b0331b398bede4d9968b66be669f3b424cb6371cbbfe691e98925e63af9ecbf",
+    "src/application/sdp/SduiWorkflow.cpp": "9b0e77f5b3ae82548eb0026743a863fb091a2a0e24b883ca8a5de209f628b762",
+    "src/application/sdp/SdpProtocol.cpp": "8c5fa2b7370384f2a481070fbc8ad8159563bd0f9fd24590bec65f3e089fe89c",
+    "tests/gui/SduiWorkflowGuiTest.cpp": "652fc03e8d1d74c3807c0da44760deb297c518c5541c5d349b7997722755d378"
+  },
+  "argv": [
+    "strace",
+    "-f",
+    "-e",
+    "trace=execve",
+    "-s",
+    "8192",
+    "-o",
+    "/tmp/wci4-final-consumer3/execve.log",
+    "python3",
+    "/home/warloc/git/xfmd-sdl-navigation/tools/run_with_xvfb.py",
+    "/tmp/wci4-package-candidate3/bin/SduiWorkflowGuiTest"
+  ],
+  "exit": 0,
+  "seconds": 6.863,
+  "environment": {
+    "FYNE_THEME": "light",
+    "XFMD_SDP_TOOL": "/tmp/wci4-package-candidate3/bin/sdptool",
+    "XFMD_UI_EVIDENCE": "/tmp/wci4-final-consumer3"
+  },
+  "helperOverrides": "Both absent; executable-relative discovery required.",
+  "sourceAfter": {
+    "tools/build_sdui_tools.py": "e46559afedc1bbe683675f461972d659810e0d24bc9ab551fddd8e15e4c23c67",
+    "tools/run_with_xvfb.py": "f050289c48f37736330bad97a79d183716ad4770c6354149c04e4e31bff655f1",
+    "cmake/Sdp.cmake": "2edc126b511b38dcde0da3fe0d3f9f9f1a2efa41e97e7f1618089e056f0399c4",
+    "cmake/Tests.cmake": "773074be9e6abbdff20e4616cd9b91772e70cc2f6bb1bfb1db85e6674edac4c7",
+    "src/application/sdp/SduiTools.cpp": "2b0331b398bede4d9968b66be669f3b424cb6371cbbfe691e98925e63af9ecbf",
+    "src/application/sdp/SduiWorkflow.cpp": "9b0e77f5b3ae82548eb0026743a863fb091a2a0e24b883ca8a5de209f628b762",
+    "src/application/sdp/SdpProtocol.cpp": "8c5fa2b7370384f2a481070fbc8ad8159563bd0f9fd24590bec65f3e089fe89c",
+    "tests/gui/SduiWorkflowGuiTest.cpp": "652fc03e8d1d74c3807c0da44760deb297c518c5541c5d349b7997722755d378"
+  },
+  "binaryAfterSHA256": "cd60b3d40acfff3a67870556b7ebd3ddfbce40f39ed077288e0f6252c957fb93",
+  "executedStagedPaths": {
+    "/tmp/wci4-package-candidate3/bin/sdptool": true,
+    "/tmp/wci4-package-candidate3/libexec/xfmd/sdui-preview": true,
+    "/tmp/wci4-package-candidate3/libexec/xfmd/sdui-fyne": true
+  }
+}

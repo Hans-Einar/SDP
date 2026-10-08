@@ -1,0 +1,23 @@
+{
+  "name": "legacy 0.2-dump",
+  "argv": [
+    "/tmp/wci4-package-candidate2/bin/sdui",
+    "/tmp/wci4-final-protocol2/legacy export 0.2 project with spaces/Page å with spaces.sdui",
+    "--entry",
+    "Main",
+    "--format",
+    "dump"
+  ],
+  "cwd": "/tmp/wci4-final-protocol2",
+  "binarySha256": "ff60cbed816cf4e27ffe41f07c04f5f1a8fa58da55c93709edd64ebe2d1bf505",
+  "displayEnvironment": "DISPLAY/WAYLAND_DISPLAY removed",
+  "expected": "success",
+  "exit": 0,
+  "timeout": false,
+  "seconds": 0.05683159828186035,
+  "stdout": "commands/009-legacy 0.2-dump.stdout",
+  "stderr": "commands/009-legacy 0.2-dump.stderr",
+  "stdoutSha256": "8cac8eebd22fc0c49611ee122a70e459a4dac6f656f18daa5a2bb68c08c9b0f8",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "binaryUnchanged": true
+}

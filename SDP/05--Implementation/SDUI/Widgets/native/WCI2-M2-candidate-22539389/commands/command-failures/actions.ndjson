@@ -1,0 +1,34 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci2-m2-final-native", "sha256": "2253938916e1a31dfa4ec6d6095daf9f82a7522abcd444833cb64977e69b1c33", "display": ":190", "variant": "wci2-m2-command_failures"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "action Toggle error"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [32, 16], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [35, 133], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "menu error invokes once and reports domain outcome", "passed": true}}
+{"kind": "check", "value": {"name": "menu error dismisses without speculative checked state", "passed": true}}
+{"kind": "fixture-command", "value": "action Toggle malformed"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [32, 16], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [35, 133], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "menu malformed invokes once and reports domain outcome", "passed": true}}
+{"kind": "check", "value": {"name": "menu malformed dismisses without speculative checked state", "passed": true}}
+{"kind": "fixture-command", "value": "action Toggle draft-conflict"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [32, 16], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [35, 133], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "menu draft-conflict invokes once and reports domain outcome", "passed": true}}
+{"kind": "check", "value": {"name": "menu draft-conflict dismisses without speculative checked state", "passed": true}}
+{"kind": "check", "value": {"name": "accepted reentrant receiver draft survives failed publication", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [32, 56], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "later unrelated action cannot replay failed toggle", "passed": true}}
+{"kind": "screenshot", "value": "command-failures.png"}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

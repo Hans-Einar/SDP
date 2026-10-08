@@ -1,0 +1,40 @@
+language design-core version 0.6.
+functionality FreezeModel.
+capability FrozenModelDelivery.
+usecase IntegrateModelChanges.
+functionality IntegrateSources.
+capability LocalModelRecovery.
+actor ModelAuthor.
+mode ModelEditing.
+feature ModelGovernance.
+activity ModelGovernanceDelivery.
+capability ModelIntegration.
+actor ModelIntegrator.
+usecase PublishModelCandidate.
+usecase RecoverWorkingModel.
+functionality RestoreCheckpoint.
+functionality SaveCheckpoint.
+FreezeModel allocated-to SdpToolHost in mode ModelEditing.
+FreezeModel contributes-to ModelGovernance.
+FreezeModel realizes FrozenModelDelivery.
+IntegrateSources allocated-to SdpToolHost in mode ModelEditing.
+IntegrateSources contributes-to ModelGovernance.
+IntegrateSources realizes ModelIntegration.
+ModelAuthor pursues RecoverWorkingModel.
+ModelGovernance supports IntegrateModelChanges.
+ModelGovernance supports PublishModelCandidate.
+ModelGovernance supports RecoverWorkingModel.
+ModelGovernanceDelivery addresses FreezeModel.
+ModelGovernanceDelivery addresses IntegrateSources.
+ModelGovernanceDelivery addresses RestoreCheckpoint.
+ModelGovernanceDelivery addresses SaveCheckpoint.
+ModelGovernanceDelivery delivers ModelGovernance.
+ModelGovernanceDelivery has implementation-status = implemented.
+ModelIntegrator pursues IntegrateModelChanges.
+ModelIntegrator pursues PublishModelCandidate.
+RestoreCheckpoint allocated-to SdpToolHost in mode ModelEditing.
+RestoreCheckpoint contributes-to ModelGovernance.
+RestoreCheckpoint realizes LocalModelRecovery.
+SaveCheckpoint allocated-to SdpToolHost in mode ModelEditing.
+SaveCheckpoint contributes-to ModelGovernance.
+SaveCheckpoint realizes LocalModelRecovery.

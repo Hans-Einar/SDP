@@ -1,0 +1,25 @@
+{
+  "profile": "design-core/0.6",
+  "revision": "a4844c717e9ef27849ddda5efe01a27664359a07b910568f89ad3e6c73c99ae6",
+  "sources": [
+    {
+      "path": "Containers/SdpToolHost/ModelGovernance.design",
+      "sha256": "3cc79f9f53c56b4ff8d3593ade087c3b8ed49d5fafd63f697055cc761382dd62"
+    },
+    {
+      "path": "Contracts/ModelGovernance.design",
+      "sha256": "6aadfafeb634f8a1eb3e839ae751f1a6cef0bfd86491901dd3295db32501f5f1"
+    },
+    {
+      "path": "Features/ModelGovernance.design",
+      "sha256": "17f941eedcaced8c5c9bbcaffbf1f9dae2512d84112ca7fda79ce8938573e1a5"
+    },
+    {
+      "path": "ModelGovernance.design",
+      "sha256": "417c31b12307a0eeee771fcc813d20f059013f6b596d9f89efd7b1d080e121a2"
+    }
+  ],
+  "system": "SDPTool",
+  "valid": true,
+  "warnings": []
+}

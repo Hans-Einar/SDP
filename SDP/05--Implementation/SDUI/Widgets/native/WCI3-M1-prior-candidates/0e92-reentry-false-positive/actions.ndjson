@@ -1,0 +1,9 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci3-m1-final-native", "sha256": "0e92fdf7c1085b2a865d8d3a08e82f6f227860bb127c7d4f7aec0b6f87b0f305", "display": ":190", "variant": "wci3-slider_reentry"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "observe Level draft-conflict"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [819, 158], "keep_focus": false}}
+{"kind": "check", "value": {"name": "slider tap cannot recapture after reentrant Change", "passed": true}}
+{"kind": "screenshot", "value": "slider-reentrant-tap.png"}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

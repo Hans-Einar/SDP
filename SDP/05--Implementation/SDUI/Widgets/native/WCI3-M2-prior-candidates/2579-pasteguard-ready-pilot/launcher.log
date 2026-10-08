@@ -1,0 +1,5 @@
+PASS keyboard single-line paste rejects 'left\nright' without normalization
+PASS keyboard single-line paste rejects 'left\rright' without normalization
+PASS context single-line paste rejects 'left\r\nright' without normalization
+PASS pre-delegation paste refusal preserves earlier undo history
+PASS native teardown closes session and clears provider barriers

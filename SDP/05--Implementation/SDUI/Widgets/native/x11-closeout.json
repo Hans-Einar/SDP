@@ -1,0 +1,16 @@
+{
+  "pid": 253657,
+  "argv": [
+    "Xvfb",
+    ":191",
+    "-screen",
+    "0",
+    "1600x1200x24",
+    "-nolisten",
+    "tcp"
+  ],
+  "owner": "KB-SDUI-003 WCI4 main native verification",
+  "closedAt": "2026-10-08T13:54:03.146657+00:00",
+  "signal": "SIGTERM after all native workflows completed",
+  "processCommandAfter": null
+}

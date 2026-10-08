@@ -1,0 +1,409 @@
+{
+  "NOW": {
+    "check": {
+      "profile": "design-core/0.6",
+      "revision": "2d35641c933162be2eba76da28481f967a2050ffc3f2d32b8fd2dd4d1e665388",
+      "sources": [
+        {
+          "path": "Containers/BuckingUI.design",
+          "sha256": "736133f6bd8e76bb76af6b558884cbdd9e4818a9ca41c158aee421651bd39c50"
+        },
+        {
+          "path": "Containers/BuckingWeb.design",
+          "sha256": "61b2741856d08b95fb38eedcd708ae207f8a494a4cbf3d37953edac9c0997ddf"
+        },
+        {
+          "path": "Containers/MachineService.design",
+          "sha256": "e3990ea1f79910787fff31da9a5a35638d386597fe7576aaf36cbe3a000f29aa"
+        },
+        {
+          "path": "Contracts/Machine.design",
+          "sha256": "ea134e09aa9ea7bfdc7de9aa051d1cceb82cf9e9c726b46cab6e5d088ea06c96"
+        },
+        {
+          "path": "Features.design",
+          "sha256": "ab8f4487fd2c937481a7081bca4a7815f0d318d7e281a473c072ab8b3651b8bd"
+        },
+        {
+          "path": "System.design",
+          "sha256": "3f4393c57a50ef9bcb58641d991bb5c16f04c3c94ab0d0e298585819525260fe"
+        }
+      ],
+      "system": "MVP1InspectionPilot",
+      "valid": true,
+      "warnings": []
+    },
+    "sourceHashes": {
+      "Containers/BuckingUI.design": "736133f6bd8e76bb76af6b558884cbdd9e4818a9ca41c158aee421651bd39c50",
+      "Containers/BuckingWeb.design": "61b2741856d08b95fb38eedcd708ae207f8a494a4cbf3d37953edac9c0997ddf",
+      "Containers/MachineService.design": "e3990ea1f79910787fff31da9a5a35638d386597fe7576aaf36cbe3a000f29aa",
+      "Contracts/Machine.design": "ea134e09aa9ea7bfdc7de9aa051d1cceb82cf9e9c726b46cab6e5d088ea06c96",
+      "Features.design": "ab8f4487fd2c937481a7081bca4a7815f0d318d7e281a473c072ab8b3651b8bd",
+      "System.design": "3f4393c57a50ef9bcb58641d991bb5c16f04c3c94ab0d0e298585819525260fe"
+    },
+    "viewpoints": {
+      "diagrams": 4,
+      "files": 26,
+      "format": "static",
+      "revision": "2d35641c933162be2eba76da28481f967a2050ffc3f2d32b8fd2dd4d1e665388"
+    }
+  },
+  "TARGET": {
+    "check": {
+      "profile": "design-core/0.6",
+      "revision": "29a5bfd5bacbb4ccb78054a62637a245572e2a8a043bac24c8e62080eb1f20b1",
+      "sources": [
+        {
+          "path": "Containers/BuckingUI.design",
+          "sha256": "736133f6bd8e76bb76af6b558884cbdd9e4818a9ca41c158aee421651bd39c50"
+        },
+        {
+          "path": "Containers/BuckingWeb.design",
+          "sha256": "61b2741856d08b95fb38eedcd708ae207f8a494a4cbf3d37953edac9c0997ddf"
+        },
+        {
+          "path": "Containers/MachineService.design",
+          "sha256": "2a12eac2257c8058fcd2328fda25a15546789b31593050a4b34a7814a1b8a1bd"
+        },
+        {
+          "path": "Contracts/Machine.design",
+          "sha256": "ea134e09aa9ea7bfdc7de9aa051d1cceb82cf9e9c726b46cab6e5d088ea06c96"
+        },
+        {
+          "path": "Features.design",
+          "sha256": "ab8f4487fd2c937481a7081bca4a7815f0d318d7e281a473c072ab8b3651b8bd"
+        },
+        {
+          "path": "System.design",
+          "sha256": "3f4393c57a50ef9bcb58641d991bb5c16f04c3c94ab0d0e298585819525260fe"
+        }
+      ],
+      "system": "MVP1InspectionPilot",
+      "valid": true,
+      "warnings": []
+    },
+    "sourceHashes": {
+      "Containers/BuckingUI.design": "736133f6bd8e76bb76af6b558884cbdd9e4818a9ca41c158aee421651bd39c50",
+      "Containers/BuckingWeb.design": "61b2741856d08b95fb38eedcd708ae207f8a494a4cbf3d37953edac9c0997ddf",
+      "Containers/MachineService.design": "2a12eac2257c8058fcd2328fda25a15546789b31593050a4b34a7814a1b8a1bd",
+      "Contracts/Machine.design": "ea134e09aa9ea7bfdc7de9aa051d1cceb82cf9e9c726b46cab6e5d088ea06c96",
+      "Features.design": "ab8f4487fd2c937481a7081bca4a7815f0d318d7e281a473c072ab8b3651b8bd",
+      "System.design": "3f4393c57a50ef9bcb58641d991bb5c16f04c3c94ab0d0e298585819525260fe"
+    },
+    "viewpoints": {
+      "diagrams": 5,
+      "files": 28,
+      "format": "static",
+      "revision": "29a5bfd5bacbb4ccb78054a62637a245572e2a8a043bac24c8e62080eb1f20b1"
+    }
+  },
+  "release": {
+    "schema": "sdp-model/0.1",
+    "operation": "create",
+    "status": "clean",
+    "path": "/tmp/bp2-mvp1-first/models/RELEASE--V0.1.0",
+    "artifact": {
+      "acceptedBy": "warloc",
+      "schema": "sdp-model/0.1",
+      "id": "5af236d1-7935-4bb0-94b0-43816d627ba8",
+      "kind": "release",
+      "name": "0.1.0",
+      "head": "5af236d1-7935-4bb0-94b0-43816d627ba8:00000",
+      "sequence": 0,
+      "sourceDigest": "9b43ba159621c8b1722464ab9643d61e5684de18cd1f29bf5cda751dad8062a4",
+      "metadataDigest": "81d81ca3f0c1a2c49c94be9789cc9b1ebcf5d9dffb381c931afca1eeabd296ac",
+      "ledger": [
+        {
+          "author": "warloc",
+          "artifactName": "Baseline",
+          "id": "6653d916-00f0-41f4-bdc4-660595c1cdd6:00000",
+          "parents": [],
+          "kind": "baseline",
+          "message": "WORK baseline",
+          "recordedAt": "2026-10-06T21:55:36.900855836Z",
+          "sourceDigest": "4585f3ebe7e43550a374592cb06f5148d1d09a27601439b90a8daf263120561c",
+          "inventory": {},
+          "deleted": []
+        },
+        {
+          "author": "warloc",
+          "artifactName": "Baseline",
+          "id": "42679153-ef98-4890-8a7c-b4cf6336bd8e:00000",
+          "parents": [
+            "6653d916-00f0-41f4-bdc4-660595c1cdd6:00000"
+          ],
+          "kind": "candidate",
+          "message": "create candidate",
+          "recordedAt": "2026-10-06T21:55:36.929008723Z",
+          "sourceDigest": "9b43ba159621c8b1722464ab9643d61e5684de18cd1f29bf5cda751dad8062a4",
+          "inventory": {
+            "Containers/BuckingUI.design": "736133f6bd8e76bb76af6b558884cbdd9e4818a9ca41c158aee421651bd39c50",
+            "Containers/BuckingWeb.design": "61b2741856d08b95fb38eedcd708ae207f8a494a4cbf3d37953edac9c0997ddf",
+            "Containers/MachineService.design": "e3990ea1f79910787fff31da9a5a35638d386597fe7576aaf36cbe3a000f29aa",
+            "Contracts/Machine.design": "ea134e09aa9ea7bfdc7de9aa051d1cceb82cf9e9c726b46cab6e5d088ea06c96",
+            "Features.design": "ab8f4487fd2c937481a7081bca4a7815f0d318d7e281a473c072ab8b3651b8bd",
+            "System.design": "3f4393c57a50ef9bcb58641d991bb5c16f04c3c94ab0d0e298585819525260fe"
+          },
+          "deleted": []
+        },
+        {
+          "author": "warloc",
+          "artifactName": "0.1.0",
+          "id": "5af236d1-7935-4bb0-94b0-43816d627ba8:00000",
+          "parents": [
+            "42679153-ef98-4890-8a7c-b4cf6336bd8e:00000"
+          ],
+          "kind": "release",
+          "message": "create release",
+          "recordedAt": "2026-10-06T21:55:36.965798846Z",
+          "sourceDigest": "9b43ba159621c8b1722464ab9643d61e5684de18cd1f29bf5cda751dad8062a4",
+          "inventory": {
+            "Containers/BuckingUI.design": "736133f6bd8e76bb76af6b558884cbdd9e4818a9ca41c158aee421651bd39c50",
+            "Containers/BuckingWeb.design": "61b2741856d08b95fb38eedcd708ae207f8a494a4cbf3d37953edac9c0997ddf",
+            "Containers/MachineService.design": "e3990ea1f79910787fff31da9a5a35638d386597fe7576aaf36cbe3a000f29aa",
+            "Contracts/Machine.design": "ea134e09aa9ea7bfdc7de9aa051d1cceb82cf9e9c726b46cab6e5d088ea06c96",
+            "Features.design": "ab8f4487fd2c937481a7081bca4a7815f0d318d7e281a473c072ab8b3651b8bd",
+            "System.design": "3f4393c57a50ef9bcb58641d991bb5c16f04c3c94ab0d0e298585819525260fe"
+          },
+          "deleted": []
+        }
+      ],
+      "validationTargets": [
+        "System.design"
+      ],
+      "evidence": "model-only"
+    },
+    "liveDigest": "9b43ba159621c8b1722464ab9643d61e5684de18cd1f29bf5cda751dad8062a4"
+  },
+  "preliminary": {
+    "schema": "sdp-model/0.1",
+    "operation": "snapshot",
+    "status": "dirty",
+    "path": "/tmp/bp2-mvp1-first/models/WORK--ExtractCalibration",
+    "artifact": {
+      "schema": "sdp-model/0.1",
+      "id": "73167c00-c070-4374-9467-a8a67a134ecf",
+      "kind": "work",
+      "name": "ExtractCalibration",
+      "head": "73167c00-c070-4374-9467-a8a67a134ecf:00000",
+      "sequence": 0,
+      "baseRelease": "5af236d1-7935-4bb0-94b0-43816d627ba8",
+      "sourceDigest": "9b43ba159621c8b1722464ab9643d61e5684de18cd1f29bf5cda751dad8062a4",
+      "metadataDigest": "326e4d27e07175ebb97295c9305ac13b1ef4b921247f585162afae9c28064468",
+      "ledger": [
+        {
+          "author": "warloc",
+          "artifactName": "Baseline",
+          "id": "6653d916-00f0-41f4-bdc4-660595c1cdd6:00000",
+          "parents": [],
+          "kind": "baseline",
+          "message": "WORK baseline",
+          "recordedAt": "2026-10-06T21:55:36.900855836Z",
+          "sourceDigest": "4585f3ebe7e43550a374592cb06f5148d1d09a27601439b90a8daf263120561c",
+          "inventory": {},
+          "deleted": []
+        },
+        {
+          "author": "warloc",
+          "artifactName": "Baseline",
+          "id": "42679153-ef98-4890-8a7c-b4cf6336bd8e:00000",
+          "parents": [
+            "6653d916-00f0-41f4-bdc4-660595c1cdd6:00000"
+          ],
+          "kind": "candidate",
+          "message": "create candidate",
+          "recordedAt": "2026-10-06T21:55:36.929008723Z",
+          "sourceDigest": "9b43ba159621c8b1722464ab9643d61e5684de18cd1f29bf5cda751dad8062a4",
+          "inventory": {
+            "Containers/BuckingUI.design": "736133f6bd8e76bb76af6b558884cbdd9e4818a9ca41c158aee421651bd39c50",
+            "Containers/BuckingWeb.design": "61b2741856d08b95fb38eedcd708ae207f8a494a4cbf3d37953edac9c0997ddf",
+            "Containers/MachineService.design": "e3990ea1f79910787fff31da9a5a35638d386597fe7576aaf36cbe3a000f29aa",
+            "Contracts/Machine.design": "ea134e09aa9ea7bfdc7de9aa051d1cceb82cf9e9c726b46cab6e5d088ea06c96",
+            "Features.design": "ab8f4487fd2c937481a7081bca4a7815f0d318d7e281a473c072ab8b3651b8bd",
+            "System.design": "3f4393c57a50ef9bcb58641d991bb5c16f04c3c94ab0d0e298585819525260fe"
+          },
+          "deleted": []
+        },
+        {
+          "author": "warloc",
+          "artifactName": "0.1.0",
+          "id": "5af236d1-7935-4bb0-94b0-43816d627ba8:00000",
+          "parents": [
+            "42679153-ef98-4890-8a7c-b4cf6336bd8e:00000"
+          ],
+          "kind": "release",
+          "message": "create release",
+          "recordedAt": "2026-10-06T21:55:36.965798846Z",
+          "sourceDigest": "9b43ba159621c8b1722464ab9643d61e5684de18cd1f29bf5cda751dad8062a4",
+          "inventory": {
+            "Containers/BuckingUI.design": "736133f6bd8e76bb76af6b558884cbdd9e4818a9ca41c158aee421651bd39c50",
+            "Containers/BuckingWeb.design": "61b2741856d08b95fb38eedcd708ae207f8a494a4cbf3d37953edac9c0997ddf",
+            "Containers/MachineService.design": "e3990ea1f79910787fff31da9a5a35638d386597fe7576aaf36cbe3a000f29aa",
+            "Contracts/Machine.design": "ea134e09aa9ea7bfdc7de9aa051d1cceb82cf9e9c726b46cab6e5d088ea06c96",
+            "Features.design": "ab8f4487fd2c937481a7081bca4a7815f0d318d7e281a473c072ab8b3651b8bd",
+            "System.design": "3f4393c57a50ef9bcb58641d991bb5c16f04c3c94ab0d0e298585819525260fe"
+          },
+          "deleted": []
+        },
+        {
+          "author": "warloc",
+          "artifactName": "ExtractCalibration",
+          "id": "73167c00-c070-4374-9467-a8a67a134ecf:00000",
+          "parents": [
+            "5af236d1-7935-4bb0-94b0-43816d627ba8:00000"
+          ],
+          "kind": "baseline",
+          "message": "WORK baseline",
+          "recordedAt": "2026-10-06T21:55:37.007029675Z",
+          "sourceDigest": "9b43ba159621c8b1722464ab9643d61e5684de18cd1f29bf5cda751dad8062a4",
+          "inventory": {
+            "Containers/BuckingUI.design": "736133f6bd8e76bb76af6b558884cbdd9e4818a9ca41c158aee421651bd39c50",
+            "Containers/BuckingWeb.design": "61b2741856d08b95fb38eedcd708ae207f8a494a4cbf3d37953edac9c0997ddf",
+            "Containers/MachineService.design": "e3990ea1f79910787fff31da9a5a35638d386597fe7576aaf36cbe3a000f29aa",
+            "Contracts/Machine.design": "ea134e09aa9ea7bfdc7de9aa051d1cceb82cf9e9c726b46cab6e5d088ea06c96",
+            "Features.design": "ab8f4487fd2c937481a7081bca4a7815f0d318d7e281a473c072ab8b3651b8bd",
+            "System.design": "3f4393c57a50ef9bcb58641d991bb5c16f04c3c94ab0d0e298585819525260fe"
+          },
+          "deleted": [],
+          "payload": ".commits/#00000"
+        }
+      ]
+    },
+    "liveDigest": "c0670c5be817fdb18ae676e67dcbbd00875f8a98b236d5896bba80fb2a296510",
+    "preliminary": true
+  },
+  "candidate": {
+    "schema": "sdp-model/0.1",
+    "operation": "create",
+    "status": "clean",
+    "path": "/tmp/bp2-mvp1-first/models/CANDIDATE--ExtractCalibration--1589",
+    "artifact": {
+      "schema": "sdp-model/0.1",
+      "id": "0e4156f9-9650-45a4-bdcd-f29b47a71589",
+      "kind": "candidate",
+      "name": "ExtractCalibration",
+      "head": "0e4156f9-9650-45a4-bdcd-f29b47a71589:00000",
+      "sequence": 0,
+      "baseRelease": "5af236d1-7935-4bb0-94b0-43816d627ba8",
+      "sourceDigest": "c0670c5be817fdb18ae676e67dcbbd00875f8a98b236d5896bba80fb2a296510",
+      "metadataDigest": "f31a15f0b578c96dc5109a28670c8694da743291ba5089bed697d774ff64af75",
+      "ledger": [
+        {
+          "author": "warloc",
+          "artifactName": "Baseline",
+          "id": "6653d916-00f0-41f4-bdc4-660595c1cdd6:00000",
+          "parents": [],
+          "kind": "baseline",
+          "message": "WORK baseline",
+          "recordedAt": "2026-10-06T21:55:36.900855836Z",
+          "sourceDigest": "4585f3ebe7e43550a374592cb06f5148d1d09a27601439b90a8daf263120561c",
+          "inventory": {},
+          "deleted": []
+        },
+        {
+          "author": "warloc",
+          "artifactName": "Baseline",
+          "id": "42679153-ef98-4890-8a7c-b4cf6336bd8e:00000",
+          "parents": [
+            "6653d916-00f0-41f4-bdc4-660595c1cdd6:00000"
+          ],
+          "kind": "candidate",
+          "message": "create candidate",
+          "recordedAt": "2026-10-06T21:55:36.929008723Z",
+          "sourceDigest": "9b43ba159621c8b1722464ab9643d61e5684de18cd1f29bf5cda751dad8062a4",
+          "inventory": {
+            "Containers/BuckingUI.design": "736133f6bd8e76bb76af6b558884cbdd9e4818a9ca41c158aee421651bd39c50",
+            "Containers/BuckingWeb.design": "61b2741856d08b95fb38eedcd708ae207f8a494a4cbf3d37953edac9c0997ddf",
+            "Containers/MachineService.design": "e3990ea1f79910787fff31da9a5a35638d386597fe7576aaf36cbe3a000f29aa",
+            "Contracts/Machine.design": "ea134e09aa9ea7bfdc7de9aa051d1cceb82cf9e9c726b46cab6e5d088ea06c96",
+            "Features.design": "ab8f4487fd2c937481a7081bca4a7815f0d318d7e281a473c072ab8b3651b8bd",
+            "System.design": "3f4393c57a50ef9bcb58641d991bb5c16f04c3c94ab0d0e298585819525260fe"
+          },
+          "deleted": []
+        },
+        {
+          "author": "warloc",
+          "artifactName": "0.1.0",
+          "id": "5af236d1-7935-4bb0-94b0-43816d627ba8:00000",
+          "parents": [
+            "42679153-ef98-4890-8a7c-b4cf6336bd8e:00000"
+          ],
+          "kind": "release",
+          "message": "create release",
+          "recordedAt": "2026-10-06T21:55:36.965798846Z",
+          "sourceDigest": "9b43ba159621c8b1722464ab9643d61e5684de18cd1f29bf5cda751dad8062a4",
+          "inventory": {
+            "Containers/BuckingUI.design": "736133f6bd8e76bb76af6b558884cbdd9e4818a9ca41c158aee421651bd39c50",
+            "Containers/BuckingWeb.design": "61b2741856d08b95fb38eedcd708ae207f8a494a4cbf3d37953edac9c0997ddf",
+            "Containers/MachineService.design": "e3990ea1f79910787fff31da9a5a35638d386597fe7576aaf36cbe3a000f29aa",
+            "Contracts/Machine.design": "ea134e09aa9ea7bfdc7de9aa051d1cceb82cf9e9c726b46cab6e5d088ea06c96",
+            "Features.design": "ab8f4487fd2c937481a7081bca4a7815f0d318d7e281a473c072ab8b3651b8bd",
+            "System.design": "3f4393c57a50ef9bcb58641d991bb5c16f04c3c94ab0d0e298585819525260fe"
+          },
+          "deleted": []
+        },
+        {
+          "author": "warloc",
+          "artifactName": "ExtractCalibration",
+          "id": "73167c00-c070-4374-9467-a8a67a134ecf:00000",
+          "parents": [
+            "5af236d1-7935-4bb0-94b0-43816d627ba8:00000"
+          ],
+          "kind": "baseline",
+          "message": "WORK baseline",
+          "recordedAt": "2026-10-06T21:55:37.007029675Z",
+          "sourceDigest": "9b43ba159621c8b1722464ab9643d61e5684de18cd1f29bf5cda751dad8062a4",
+          "inventory": {
+            "Containers/BuckingUI.design": "736133f6bd8e76bb76af6b558884cbdd9e4818a9ca41c158aee421651bd39c50",
+            "Containers/BuckingWeb.design": "61b2741856d08b95fb38eedcd708ae207f8a494a4cbf3d37953edac9c0997ddf",
+            "Containers/MachineService.design": "e3990ea1f79910787fff31da9a5a35638d386597fe7576aaf36cbe3a000f29aa",
+            "Contracts/Machine.design": "ea134e09aa9ea7bfdc7de9aa051d1cceb82cf9e9c726b46cab6e5d088ea06c96",
+            "Features.design": "ab8f4487fd2c937481a7081bca4a7815f0d318d7e281a473c072ab8b3651b8bd",
+            "System.design": "3f4393c57a50ef9bcb58641d991bb5c16f04c3c94ab0d0e298585819525260fe"
+          },
+          "deleted": []
+        },
+        {
+          "author": "warloc",
+          "artifactName": "ExtractCalibration",
+          "id": "0e4156f9-9650-45a4-bdcd-f29b47a71589:00000",
+          "parents": [
+            "73167c00-c070-4374-9467-a8a67a134ecf:00000"
+          ],
+          "kind": "candidate",
+          "message": "create candidate",
+          "recordedAt": "2026-10-06T21:55:37.080539708Z",
+          "sourceDigest": "c0670c5be817fdb18ae676e67dcbbd00875f8a98b236d5896bba80fb2a296510",
+          "inventory": {
+            "Containers/BuckingUI.design": "736133f6bd8e76bb76af6b558884cbdd9e4818a9ca41c158aee421651bd39c50",
+            "Containers/BuckingWeb.design": "61b2741856d08b95fb38eedcd708ae207f8a494a4cbf3d37953edac9c0997ddf",
+            "Containers/MachineService.design": "2a12eac2257c8058fcd2328fda25a15546789b31593050a4b34a7814a1b8a1bd",
+            "Contracts/Machine.design": "ea134e09aa9ea7bfdc7de9aa051d1cceb82cf9e9c726b46cab6e5d088ea06c96",
+            "Features.design": "ab8f4487fd2c937481a7081bca4a7815f0d318d7e281a473c072ab8b3651b8bd",
+            "System.design": "3f4393c57a50ef9bcb58641d991bb5c16f04c3c94ab0d0e298585819525260fe"
+          },
+          "deleted": []
+        }
+      ],
+      "validationTargets": [
+        "System.design"
+      ]
+    },
+    "liveDigest": "c0670c5be817fdb18ae676e67dcbbd00875f8a98b236d5896bba80fb2a296510"
+  },
+  "toolHashes": {
+    "/tmp/bp2-sdptool": "04b92bf00f27de9da83088a778c8937a571675ed4ca352a60e062052a1512337",
+    "/tmp/bp2-sdl": "7f09900590011f78a0faffaa9b810cc599b721c8253c15758c95b305a2019fb6"
+  },
+  "limitations": [
+    "Authored reduced MVP1 fixture, not a port of the experimental model",
+    "Ordinary toolkit viewpoints, not semantic diff or generated blueprint annotations",
+    "Model-only release; no Ponsse code conformance or owner acceptance implied"
+  ],
+  "producerCommit": "043c59cc50c33d9f2a4e8ba48340984ab5c1bff3",
+  "experimentalSourceHashes": {
+    "experiments/mvp1_sdl/SDL/MVP1/Containers/MachineService/Domain.design": "f1dbc92698dd95048c669bd3e915cf32d96a9bc11f967c007c958ec010ce70e8",
+    "experiments/mvp1_sdl/SDL/MVP1/Scenarios/InspectMachine.design": "f7c9c5be33afa72f3c2587cb6786b7870e03ee25add6463e53186c73f08d6bc8",
+    "experiments/mvp1_sdl/SDL/MVP1/Contracts/Machine.design": "bb4bbec511644ef4426e08b04a0af424bad6d5410eb749e0ddc7d1136a3d2e3e"
+  }
+}

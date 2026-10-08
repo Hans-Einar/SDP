@@ -1,0 +1,12 @@
+{
+  "consumerHEAD": "41fa4948c5377edd792ba3f503e6b92b0fd4717a",
+  "consumerRecipe": "/home/warloc/git/xfmd-sdl-navigation/tools/build_sdui_tools.py",
+  "consumerRecipeSHA256": "e46559afedc1bbe683675f461972d659810e0d24bc9ab551fddd8e15e4c23c67",
+  "consumerRoot": "/home/warloc/git/xfmd-sdl-navigation",
+  "harnessSHA256": "ff32644b92b167a969788d970ed8e077a9beae8247bc648691230b8562135d9e",
+  "packageRecipeSHA256": "f205627fece89702cd8269314ba75c6ff65d3542f87851eb05f85e7738e1daca",
+  "scope": "Local candidate preparation; no installation, publication or licensing grant.",
+  "sourceHEAD": "dcf2a7415ba20559c1babd891c0b65140c2ab934",
+  "sourceRoot": "/tmp/sdp-sdui-widgets",
+  "sourceStatus": "?? WCI1-frontend-worker.md\n?? WCI1-integration-worker.md\n?? WCI1-layout-worker.md\n?? WCI1-runtime-API.md\n?? WCI1-runtime-worker.md\n?? WCI2-M2-bridge-worker.md\n?? WCI2-M2-fixture-API.md\n?? WCI2-M2-frontend-API.md\n?? WCI2-M2-frontend-worker.md\n?? WCI2-M2-integration-worker.md\n?? WCI2-M2-layout-worker.md\n?? WCI2-M2-runtime-API.md\n?? WCI2-M2-runtime-worker.md\n?? WCI2-bridge-worker.md\n?? WCI2-frontend-API.md\n?? WCI2-frontend-worker.md\n?? WCI2-integration-worker.md\n?? WCI2-layout-worker.md\n?? WCI2-runtime-API.md\n?? WCI2-runtime-worker.md\n?? WCI3-M1-bridge-worker.md\n?? WCI3-M1-fixture-API.md\n?? WCI3-M1-frontend-worker.md\n?? WCI3-M1-integration-worker.md\n?? WCI3-M1-layout-worker.md\n?? WCI3-M1-runtime-worker.md\n?? WCI3-M2-bridge-worker.md\n?? WCI3-M2-fixture-API.md\n?? WCI3-M2-frontend-API.md\n?? WCI3-M2-frontend-worker.md\n?? WCI3-M2-host-API.md\n?? WCI3-M2-integration-worker.md\n?? WCI3-M2-layout-API.md\n?? WCI3-M2-layout-worker.md\n?? WCI3-M2-runtime-API.md\n?? WCI3-M2-runtime-worker.md\n?? WCI3-frontend-API.md\n?? WCI3-runtime-API.md\n?? WCI4-all-family-closeout-map.md\n?? WCI4-fixture-API.md\n?? WCI4-fixture-worker.md\n?? WCI4-frontend-API.md\n?? WCI4-frontend-worker.md\n?? WCI4-host-API.md\n?? WCI4-layout-API.md\n?? WCI4-layout-worker.md\n?? WCI4-package-protocol-worker.md\n?? WCI4-package-protocol.py\n?? WCI4-provider-API.md\n?? WCI4-provider-worker.md\n?? wci1-fixture-native\n?? wci1-native\n"
+}

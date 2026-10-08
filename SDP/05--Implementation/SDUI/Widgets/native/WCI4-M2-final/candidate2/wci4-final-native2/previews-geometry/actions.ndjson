@@ -1,0 +1,43 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci4-package-candidate2/libexec/sdui/previews", "sha256": "86c5d5cf3d4b5bb8044c328ed8376b116c687d11ebd6382b1dca76b74c6bd8e3", "display": ":191", "variant": "wci3-geometry"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "observed-preparation-renderer-baseline", "value": {"page/view/body/workspace/reports/reportViewport/reportA": 1, "page/view/body/workspace/reports/reportViewport/reportB": 1}}
+{"kind": "check", "value": {"name": "direct SVG and bounded prose are rendered with no SDL action", "passed": true}}
+{"kind": "check", "value": {"name": "actual mounted Accessible describes rendered image separately from caption", "passed": true}}
+{"kind": "check", "value": {"name": "full image preserves 2:1 aspect and ends before caption", "passed": true}}
+{"kind": "check", "value": {"name": "inactive and closed content is prepared without fabricated mounted objects", "passed": true}}
+{"kind": "screenshot", "value": "native-shape-montage-and-prose.png"}
+{"kind": "fixture-command", "value": "mutate-input Hero"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "mutating caller loan leaves live image digest and geometry unchanged", "passed": true}}
+{"kind": "fixture-command", "value": "caption Hero long"}
+{"kind": "fixture-command", "value": "resize 900 780"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "caption resize retains full accessibility and frozen renderer baseline", "passed": true}}
+{"kind": "screenshot", "value": "long-caption-relative-fit.png"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI4 Previews", "action": "move", "values": [307, 449], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI4 Previews", "action": "wheel", "values": [307, 449, 8], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "outer scroll translates full image without refitting visible fragment", "passed": true}}
+{"kind": "check", "value": {"name": "preview never overlaps outer scrollbar gutter", "passed": true}}
+{"kind": "screenshot", "value": "negative-box-under-shared-clip.png"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI4 Previews", "action": "click", "values": [71, 97], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "equal Markdown paths keep independent descriptions and partial outcomes", "passed": true}}
+{"kind": "screenshot", "value": "per-diagram-fallback-with-surrounding-prose.png"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI4 Previews", "action": "click", "values": [17, 97], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "tab reveal preserves outer offset and renderer baseline", "passed": true}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI4 Previews", "action": "click", "values": [629, 430], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI4 Previews", "action": "chord", "values": ["Control_L", "Home"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "split collapse detaches visible preview geometry", "passed": true}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI4 Previews", "action": "key", "values": ["space"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "split restore preserves content and invokes no renderer or domain action", "passed": true}}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "go",
+    "test",
+    "-race",
+    "./bridge",
+    "./examples/values/...",
+    "./examples/commands/...",
+    "./examples/panes/...",
+    "-count=1"
+  ],
+  "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+  "head": "d6742742f0968661d15698518df688ffb1d28946",
+  "goVersion": "go version go1.27.1 linux/amd64",
+  "GOFLAGS": "-mod=readonly",
+  "startedUTC": "2026-10-08T11:48:39Z",
+  "exit": -15,
+  "seconds": 58.76,
+  "endedUTC": "2026-10-08T11:49:38Z",
+  "sourceBytesUnchanged": true,
+  "changedSourcePaths": [],
+  "logSHA256": "6bc6ee5e9831c21710fa5165d76d68b889014f199c124b97867f1a83a67a6d08"
+}

@@ -1,0 +1,6 @@
+ok  	github.com/Hans-Einar/SDP/SDPTool	11.235s
+?   	github.com/Hans-Einar/SDP/SDPTool/cmd/sdptool	[no test files]
+ok  	github.com/Hans-Einar/SDP/SDPTool/install	18.735s
+ok  	github.com/Hans-Einar/SDP/SDPTool/model	9.469s
+ok  	github.com/Hans-Einar/SDP/SDPTool/presentation	0.009s
+ok  	github.com/Hans-Einar/SDP/SDPTool/tools/profile	6.672s

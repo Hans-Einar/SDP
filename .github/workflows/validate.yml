@@ -29,6 +29,7 @@ jobs:
           go-version: "1.27.1"
       - run: go -C SDPTool/bootstrap test -race -count=1 ./...
       - run: go -C SDPTool test -race -count=1 ./...
+      - run: go -C SDPTool run ./cmd/sdptool .. release-log --all --output Releases --check
       - run: SDPTool/package.sh build/go-installer
       - name: Signed test descriptor and actual packaged child
         env:

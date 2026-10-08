@@ -14,7 +14,7 @@ func (e *Engine) contents(n *parser.Instance, inner, ancestor Size, font float64
 	top, bottom, maxW := 0., 0., 0.
 	for _, role := range []string{"header", "footer"} {
 		c := n.Region(role)
-		if c == nil || !visible(c) {
+		if c == nil || !inFlow(c) {
 			continue
 		}
 		s, err := e.desired(c, inner, inner, assigned{x: !explicit(c, "x")}, font)
@@ -27,8 +27,11 @@ func (e *Engine) contents(n *parser.Instance, inner, ancestor Size, font float64
 		} else {
 			bottom = s.H + gy
 			y = inner.H - s.H
+			if e.profile == "sdui/0.3" && scrolls(n, "y") {
+				y = math.Max(0, y)
+			}
 		}
-		x := alignment(inner.W, s.W, choice(c, "align-x", "start"))
+		x := contentAlignment(n, "x", inner.W, s.W, choice(c, "align-x", "start"))
 		placements = append(placements, placement{c, Rect{x, y, s.W, s.H}, inner, assigned{}})
 		maxW = math.Max(maxW, s.W)
 	}
@@ -41,7 +44,7 @@ func (e *Engine) contents(n *parser.Instance, inner, ancestor Size, font float64
 	for _, row := range rows {
 		v := []*parser.Instance{}
 		for _, c := range row {
-			if visible(c) {
+			if inFlow(c) {
 				v = append(v, c)
 			}
 		}
@@ -136,6 +139,17 @@ func (e *Engine) contents(n *parser.Instance, inner, ancestor Size, font float64
 			}
 		}
 	}
+	if e.profile == "sdui/0.3" {
+		// Only direct child rectangles contribute. A nested viewport's hidden
+		// content never enlarges its parent's scroll plane.
+		for _, p := range placements {
+			maxW = math.Max(maxW, p.rect.X+p.rect.W)
+			naturalH = math.Max(naturalH, p.rect.Y+p.rect.H)
+		}
+		if !finiteExtent(Size{maxW, naturalH}) {
+			return nil, Size{}, diag(n, "layout-range", "Content extent exceeds layout bounds")
+		}
+	}
 	return placements, Size{maxW, naturalH}, nil
 }
 func (e *Engine) row(owner *parser.Instance, row []*parser.Instance, ref Size, gap, font, height float64, forceH bool) ([]placement, float64, float64, error) {
@@ -186,7 +200,7 @@ func (e *Engine) row(owner *parser.Instance, row []*parser.Instance, ref Size, g
 		if align == "stretch" && !hasRatio && !explicit(c, "y") {
 			s.H = rowH
 		}
-		y := alignment(rowH, s.H, align)
+		y := contentAlignment(owner, "y", rowH, s.H, align)
 		out = append(out, placement{c, Rect{x, y, s.W, s.H}, ref, assigned{x: tracks[i].weight > 0, y: forceH}})
 		x += s.W + gap
 	}

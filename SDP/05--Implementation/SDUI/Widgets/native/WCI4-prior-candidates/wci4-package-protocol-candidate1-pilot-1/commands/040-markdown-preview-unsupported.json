@@ -1,0 +1,25 @@
+{
+  "name": "markdown-preview-unsupported",
+  "argv": [
+    "/tmp/wci4-package-candidate1/libexec/xfmd/sdui-preview",
+    "-source",
+    "/tmp/wci4-package-protocol-candidate1-pilot-1/unsupported markdown project with spaces/Page å with spaces.sdui",
+    "-entry",
+    "Main",
+    "-revision",
+    "860e5bf0b9cdbd645d0ff4ac98f84cbca645b899a0b0c69df2fb74ba33541770",
+    "-check"
+  ],
+  "cwd": "/tmp/wci4-package-protocol-candidate1-pilot-1",
+  "binarySha256": "b0e11827124f52c5f6b384d615a2d2bbbd72e151b23cceabbcfa1ff93c422ae7",
+  "displayEnvironment": "DISPLAY/WAYLAND_DISPLAY removed",
+  "expected": "nonzero with unsupported-preview",
+  "exit": 2,
+  "timeout": false,
+  "seconds": 0.04675102233886719,
+  "stdout": "commands/040-markdown-preview-unsupported.stdout",
+  "stderr": "commands/040-markdown-preview-unsupported.stderr",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "301a01be909cd9a82cd03cefbd4632e037cc1e526d26b6a2a4d5350da4838880",
+  "binaryUnchanged": true
+}

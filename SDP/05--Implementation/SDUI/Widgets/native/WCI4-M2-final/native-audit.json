@@ -1,0 +1,1471 @@
+{
+  "workflows": 28,
+  "freshWorkflows": 8,
+  "applicablePredecessorWorkflows": 20,
+  "checks": 321,
+  "publishedOpenings": 25,
+  "terminalResults": 25,
+  "rows": [
+    {
+      "name": "collections-basic",
+      "evidence": "/tmp/wci4-final-native2/collections-basic",
+      "candidate": "unchanged-mechanism2",
+      "checks": 16,
+      "invocation": {
+        "name": "collections-basic",
+        "argv": [
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci1.py",
+          "--binary",
+          "/tmp/wci4-package-candidate2/libexec/sdui/collections",
+          "--display",
+          ":191",
+          "--out",
+          "/tmp/wci4-final-native2/collections-basic",
+          "--variant",
+          "basic"
+        ],
+        "cwd": "/home/warloc/git/SDP-vNow",
+        "exit": 0,
+        "seconds": 12.912,
+        "FYNE_THEME": "light",
+        "binarySHA256": "c2ce17b72da8c97e5a149a3bb805c9c043ce6c8dd5903dfc7e411b606986bdfa",
+        "harnessSHA256": "36605d4ca37fe86773859c21a4ba3a3d08cfea2acc5b02446b80649d3f3e291d"
+      },
+      "publishedOpenings": 0,
+      "uniqueTerminalResults": 0,
+      "closed": {
+        "actionCalls": 4,
+        "pending": [],
+        "sessionClosed": true
+      },
+      "stderr": "2026/10/08 15:07:22 Fyne error:  Preferences load error:\n2026/10/08 15:07:22   Cause: EOF\n2026/10/08 15:07:22   At: /home/warloc/go/pkg/mod/fyne.io/fyne/v2@v2.8.1/app/preferences.go:105\n"
+    },
+    {
+      "name": "collections-nested",
+      "evidence": "/tmp/wci4-final-native2/collections-nested",
+      "candidate": "unchanged-mechanism2",
+      "checks": 20,
+      "invocation": {
+        "name": "collections-nested",
+        "argv": [
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci1.py",
+          "--binary",
+          "/tmp/wci4-package-candidate2/libexec/sdui/collections",
+          "--display",
+          ":191",
+          "--out",
+          "/tmp/wci4-final-native2/collections-nested",
+          "--variant",
+          "nested"
+        ],
+        "cwd": "/home/warloc/git/SDP-vNow",
+        "exit": 0,
+        "seconds": 21.887,
+        "FYNE_THEME": "light",
+        "binarySHA256": "c2ce17b72da8c97e5a149a3bb805c9c043ce6c8dd5903dfc7e411b606986bdfa",
+        "harnessSHA256": "36605d4ca37fe86773859c21a4ba3a3d08cfea2acc5b02446b80649d3f3e291d"
+      },
+      "publishedOpenings": 0,
+      "uniqueTerminalResults": 0,
+      "closed": {
+        "actionCalls": 0,
+        "pending": [],
+        "sessionClosed": true
+      },
+      "stderr": ""
+    },
+    {
+      "name": "panes-panes",
+      "evidence": "/tmp/wci4-final-native2/panes-panes",
+      "candidate": "unchanged-mechanism2",
+      "checks": 31,
+      "invocation": {
+        "name": "panes-panes",
+        "argv": [
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci2.py",
+          "--binary",
+          "/tmp/wci4-package-candidate2/libexec/sdui/panes",
+          "--display",
+          ":191",
+          "--out",
+          "/tmp/wci4-final-native2/panes-panes",
+          "--variant",
+          "panes"
+        ],
+        "cwd": "/home/warloc/git/SDP-vNow",
+        "exit": 0,
+        "seconds": 19.44,
+        "FYNE_THEME": "light",
+        "binarySHA256": "b6dd5f71d98df8eb903fee6a074f459f082b5d6bb787a209c4b24200af8329fc",
+        "harnessSHA256": "5d395db4d9df0b98fe1da200b7e72caee813fa3455908f4ab4a7972316c094a3"
+      },
+      "publishedOpenings": 0,
+      "uniqueTerminalResults": 0,
+      "closed": {
+        "actionCalls": 9,
+        "pending": [],
+        "sessionClosed": true
+      },
+      "stderr": ""
+    },
+    {
+      "name": "panes-split",
+      "evidence": "/tmp/wci4-final-native2/panes-split",
+      "candidate": "unchanged-mechanism2",
+      "checks": 11,
+      "invocation": {
+        "name": "panes-split",
+        "argv": [
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci2.py",
+          "--binary",
+          "/tmp/wci4-package-candidate2/libexec/sdui/panes",
+          "--display",
+          ":191",
+          "--out",
+          "/tmp/wci4-final-native2/panes-split",
+          "--variant",
+          "split"
+        ],
+        "cwd": "/home/warloc/git/SDP-vNow",
+        "exit": 0,
+        "seconds": 6.35,
+        "FYNE_THEME": "light",
+        "binarySHA256": "b6dd5f71d98df8eb903fee6a074f459f082b5d6bb787a209c4b24200af8329fc",
+        "harnessSHA256": "5d395db4d9df0b98fe1da200b7e72caee813fa3455908f4ab4a7972316c094a3"
+      },
+      "publishedOpenings": 0,
+      "uniqueTerminalResults": 0,
+      "closed": {
+        "actionCalls": 0,
+        "pending": [],
+        "sessionClosed": true
+      },
+      "stderr": "2026/10/08 15:08:10 Fyne error:  Preferences load error:\n2026/10/08 15:08:10   Cause: EOF\n2026/10/08 15:08:10   At: /home/warloc/go/pkg/mod/fyne.io/fyne/v2@v2.8.1/app/preferences.go:105\n"
+    },
+    {
+      "name": "commands-commands",
+      "evidence": "/tmp/wci4-final-native2/commands-commands",
+      "candidate": "unchanged-mechanism2",
+      "checks": 13,
+      "invocation": {
+        "name": "commands-commands",
+        "argv": [
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci2_commands.py",
+          "--binary",
+          "/tmp/wci4-package-candidate2/libexec/sdui/commands",
+          "--display",
+          ":191",
+          "--out",
+          "/tmp/wci4-final-native2/commands-commands",
+          "--variant",
+          "commands"
+        ],
+        "cwd": "/home/warloc/git/SDP-vNow",
+        "exit": 0,
+        "seconds": 9.107,
+        "FYNE_THEME": "light",
+        "binarySHA256": "3864064671f89afe6a8180a331a0a96fcf5d2b6dd6b5361ab32c1bd9381c0f7b",
+        "harnessSHA256": "d2f2fd20d439eb7c13f3a7f3440f2e73d01a6c4744fcafa4fddc8196d036bf2b"
+      },
+      "publishedOpenings": 0,
+      "uniqueTerminalResults": 0,
+      "closed": {
+        "actionCalls": {
+          "Run": 4,
+          "Toggle": 3
+        },
+        "pending": [],
+        "sessionClosed": true
+      },
+      "stderr": ""
+    },
+    {
+      "name": "commands-context",
+      "evidence": "/tmp/wci4-final-native2/commands-context",
+      "candidate": "unchanged-mechanism2",
+      "checks": 4,
+      "invocation": {
+        "name": "commands-context",
+        "argv": [
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci2_commands.py",
+          "--binary",
+          "/tmp/wci4-package-candidate2/libexec/sdui/commands",
+          "--display",
+          ":191",
+          "--out",
+          "/tmp/wci4-final-native2/commands-context",
+          "--variant",
+          "context"
+        ],
+        "cwd": "/home/warloc/git/SDP-vNow",
+        "exit": 0,
+        "seconds": 6.355,
+        "FYNE_THEME": "light",
+        "binarySHA256": "3864064671f89afe6a8180a331a0a96fcf5d2b6dd6b5361ab32c1bd9381c0f7b",
+        "harnessSHA256": "d2f2fd20d439eb7c13f3a7f3440f2e73d01a6c4744fcafa4fddc8196d036bf2b"
+      },
+      "publishedOpenings": 0,
+      "uniqueTerminalResults": 0,
+      "closed": {
+        "actionCalls": {
+          "Inspect": 1,
+          "Run": 1
+        },
+        "pending": [],
+        "sessionClosed": true
+      },
+      "stderr": ""
+    },
+    {
+      "name": "commands-dialog",
+      "evidence": "/tmp/wci4-final-native2/commands-dialog",
+      "candidate": "unchanged-mechanism2",
+      "checks": 8,
+      "invocation": {
+        "name": "commands-dialog",
+        "argv": [
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci2_commands.py",
+          "--binary",
+          "/tmp/wci4-package-candidate2/libexec/sdui/commands",
+          "--display",
+          ":191",
+          "--out",
+          "/tmp/wci4-final-native2/commands-dialog",
+          "--variant",
+          "dialog"
+        ],
+        "cwd": "/home/warloc/git/SDP-vNow",
+        "exit": 0,
+        "seconds": 17.899,
+        "FYNE_THEME": "light",
+        "binarySHA256": "3864064671f89afe6a8180a331a0a96fcf5d2b6dd6b5361ab32c1bd9381c0f7b",
+        "harnessSHA256": "d2f2fd20d439eb7c13f3a7f3440f2e73d01a6c4744fcafa4fddc8196d036bf2b"
+      },
+      "publishedOpenings": 3,
+      "uniqueTerminalResults": 3,
+      "closed": {
+        "actionCalls": {
+          "Save": 2
+        },
+        "pending": [],
+        "sessionClosed": true
+      },
+      "stderr": ""
+    },
+    {
+      "name": "commands-nonmodal-nested",
+      "evidence": "/tmp/wci4-final-native2/commands-nonmodal-nested",
+      "candidate": "unchanged-mechanism2",
+      "checks": 8,
+      "invocation": {
+        "name": "commands-nonmodal-nested",
+        "argv": [
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci2_commands.py",
+          "--binary",
+          "/tmp/wci4-package-candidate2/libexec/sdui/commands",
+          "--display",
+          ":191",
+          "--out",
+          "/tmp/wci4-final-native2/commands-nonmodal-nested",
+          "--variant",
+          "nested",
+          "--nonmodal"
+        ],
+        "cwd": "/home/warloc/git/SDP-vNow",
+        "exit": 0,
+        "seconds": 15.699,
+        "FYNE_THEME": "light",
+        "binarySHA256": "3864064671f89afe6a8180a331a0a96fcf5d2b6dd6b5361ab32c1bd9381c0f7b",
+        "harnessSHA256": "d2f2fd20d439eb7c13f3a7f3440f2e73d01a6c4744fcafa4fddc8196d036bf2b"
+      },
+      "publishedOpenings": 4,
+      "uniqueTerminalResults": 4,
+      "closed": {
+        "actionCalls": {},
+        "pending": [],
+        "sessionClosed": true
+      },
+      "stderr": "2026/10/08 15:09:00 Fyne error:  Preferences load error:\n2026/10/08 15:09:00   Cause: EOF\n2026/10/08 15:09:00   At: /home/warloc/go/pkg/mod/fyne.io/fyne/v2@v2.8.1/app/preferences.go:105\n"
+    },
+    {
+      "name": "commands-lifecycle",
+      "evidence": "/tmp/wci4-final-native2/commands-lifecycle",
+      "candidate": "unchanged-mechanism2",
+      "checks": 11,
+      "invocation": {
+        "name": "commands-lifecycle",
+        "argv": [
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci2_commands.py",
+          "--binary",
+          "/tmp/wci4-package-candidate2/libexec/sdui/commands",
+          "--display",
+          ":191",
+          "--out",
+          "/tmp/wci4-final-native2/commands-lifecycle",
+          "--variant",
+          "lifecycle"
+        ],
+        "cwd": "/home/warloc/git/SDP-vNow",
+        "exit": 0,
+        "seconds": 9.13,
+        "FYNE_THEME": "light",
+        "binarySHA256": "3864064671f89afe6a8180a331a0a96fcf5d2b6dd6b5361ab32c1bd9381c0f7b",
+        "harnessSHA256": "d2f2fd20d439eb7c13f3a7f3440f2e73d01a6c4744fcafa4fddc8196d036bf2b"
+      },
+      "publishedOpenings": 3,
+      "uniqueTerminalResults": 3,
+      "closed": {
+        "actionCalls": {},
+        "pending": [],
+        "sessionClosed": true
+      },
+      "stderr": ""
+    },
+    {
+      "name": "values-boolean",
+      "evidence": "/tmp/wci4-final-native2/values-boolean",
+      "candidate": "unchanged-mechanism2",
+      "checks": 8,
+      "invocation": {
+        "name": "values-boolean",
+        "argv": [
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_values.py",
+          "--binary",
+          "/tmp/wci4-package-candidate2/libexec/sdui/values",
+          "--display",
+          ":191",
+          "--out",
+          "/tmp/wci4-final-native2/values-boolean",
+          "--variant",
+          "boolean"
+        ],
+        "cwd": "/home/warloc/git/SDP-vNow",
+        "exit": 0,
+        "seconds": 7.07,
+        "FYNE_THEME": "light",
+        "binarySHA256": "78ee0a70631003365121a6f25211dcad851ff90fd4e0d9ec96da9122a08477e5",
+        "harnessSHA256": "17aea30765464456bb79849a0676827156af1fb8f0af9e2714504ff6bae175c5"
+      },
+      "publishedOpenings": 0,
+      "uniqueTerminalResults": 0,
+      "closed": {
+        "actionCalls": {
+          "AcceptCount": 0,
+          "AcceptFlag": 2,
+          "AcceptLevel": 0,
+          "AcceptMode": 0,
+          "ChildCount": 0,
+          "Load": 0,
+          "SaveText": 0,
+          "TextSave": 0,
+          "mixed": 0
+        },
+        "domain": {
+          "scalars": {
+            "AcceptFlag": {
+              "type": "boolean"
+            }
+          },
+          "scalarCommits": {
+            "AcceptFlag": 2
+          },
+          "mixed": {},
+          "mixedCommits": 0,
+          "text": "",
+          "textCommits": 0
+        },
+        "pending": [],
+        "sessionClosed": true
+      },
+      "stderr": ""
+    },
+    {
+      "name": "values-numeric",
+      "evidence": "/tmp/wci4-final-native2/values-numeric",
+      "candidate": "unchanged-mechanism2",
+      "checks": 11,
+      "invocation": {
+        "name": "values-numeric",
+        "argv": [
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_values.py",
+          "--binary",
+          "/tmp/wci4-package-candidate2/libexec/sdui/values",
+          "--display",
+          ":191",
+          "--out",
+          "/tmp/wci4-final-native2/values-numeric",
+          "--variant",
+          "numeric"
+        ],
+        "cwd": "/home/warloc/git/SDP-vNow",
+        "exit": 0,
+        "seconds": 14.354,
+        "FYNE_THEME": "light",
+        "binarySHA256": "78ee0a70631003365121a6f25211dcad851ff90fd4e0d9ec96da9122a08477e5",
+        "harnessSHA256": "17aea30765464456bb79849a0676827156af1fb8f0af9e2714504ff6bae175c5"
+      },
+      "publishedOpenings": 0,
+      "uniqueTerminalResults": 0,
+      "closed": {
+        "actionCalls": {
+          "AcceptCount": 2,
+          "AcceptFlag": 0,
+          "AcceptLevel": 0,
+          "AcceptMode": 0,
+          "ChildCount": 0,
+          "Load": 0,
+          "SaveText": 0,
+          "TextSave": 0,
+          "mixed": 0
+        },
+        "domain": {
+          "scalars": {
+            "AcceptCount": {
+              "type": "integer",
+              "integer": 43
+            }
+          },
+          "scalarCommits": {
+            "AcceptCount": 2
+          },
+          "mixed": {},
+          "mixedCommits": 0,
+          "text": "",
+          "textCommits": 0
+        },
+        "pending": [],
+        "sessionClosed": true
+      },
+      "stderr": ""
+    },
+    {
+      "name": "values-slider",
+      "evidence": "/tmp/wci4-final-native2/values-slider",
+      "candidate": "unchanged-mechanism2",
+      "checks": 11,
+      "invocation": {
+        "name": "values-slider",
+        "argv": [
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_values.py",
+          "--binary",
+          "/tmp/wci4-package-candidate2/libexec/sdui/values",
+          "--display",
+          ":191",
+          "--out",
+          "/tmp/wci4-final-native2/values-slider",
+          "--variant",
+          "slider"
+        ],
+        "cwd": "/home/warloc/git/SDP-vNow",
+        "exit": 0,
+        "seconds": 7.565,
+        "FYNE_THEME": "light",
+        "binarySHA256": "78ee0a70631003365121a6f25211dcad851ff90fd4e0d9ec96da9122a08477e5",
+        "harnessSHA256": "17aea30765464456bb79849a0676827156af1fb8f0af9e2714504ff6bae175c5"
+      },
+      "publishedOpenings": 0,
+      "uniqueTerminalResults": 0,
+      "closed": {
+        "actionCalls": {
+          "AcceptCount": 0,
+          "AcceptFlag": 0,
+          "AcceptLevel": 2,
+          "AcceptMode": 0,
+          "ChildCount": 0,
+          "Load": 0,
+          "SaveText": 0,
+          "TextSave": 0,
+          "mixed": 0
+        },
+        "domain": {
+          "scalars": {
+            "AcceptLevel": {
+              "type": "integer",
+              "integer": 30
+            }
+          },
+          "scalarCommits": {
+            "AcceptLevel": 2
+          },
+          "mixed": {},
+          "mixedCommits": 0,
+          "text": "",
+          "textCommits": 0
+        },
+        "pending": [],
+        "sessionClosed": true
+      },
+      "stderr": ""
+    },
+    {
+      "name": "values-choice",
+      "evidence": "/tmp/wci4-final-native2/values-choice",
+      "candidate": "unchanged-mechanism2",
+      "checks": 7,
+      "invocation": {
+        "name": "values-choice",
+        "argv": [
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_values.py",
+          "--binary",
+          "/tmp/wci4-package-candidate2/libexec/sdui/values",
+          "--display",
+          ":191",
+          "--out",
+          "/tmp/wci4-final-native2/values-choice",
+          "--variant",
+          "choice"
+        ],
+        "cwd": "/home/warloc/git/SDP-vNow",
+        "exit": 0,
+        "seconds": 8.023,
+        "FYNE_THEME": "light",
+        "binarySHA256": "78ee0a70631003365121a6f25211dcad851ff90fd4e0d9ec96da9122a08477e5",
+        "harnessSHA256": "17aea30765464456bb79849a0676827156af1fb8f0af9e2714504ff6bae175c5"
+      },
+      "publishedOpenings": 0,
+      "uniqueTerminalResults": 0,
+      "closed": {
+        "actionCalls": {
+          "AcceptCount": 0,
+          "AcceptFlag": 0,
+          "AcceptLevel": 0,
+          "AcceptMode": 2,
+          "ChildCount": 0,
+          "Load": 0,
+          "SaveText": 0,
+          "TextSave": 0,
+          "mixed": 0
+        },
+        "domain": {
+          "scalars": {
+            "AcceptMode": {
+              "type": "text",
+              "text": "beta"
+            }
+          },
+          "scalarCommits": {
+            "AcceptMode": 2
+          },
+          "mixed": {},
+          "mixedCommits": 0,
+          "text": "",
+          "textCommits": 0
+        },
+        "pending": [],
+        "sessionClosed": true
+      },
+      "stderr": ""
+    },
+    {
+      "name": "values-forms",
+      "evidence": "/tmp/wci4-final-native2/values-forms",
+      "candidate": "unchanged-mechanism2",
+      "checks": 8,
+      "invocation": {
+        "name": "values-forms",
+        "argv": [
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_values.py",
+          "--binary",
+          "/tmp/wci4-package-candidate2/libexec/sdui/values",
+          "--display",
+          ":191",
+          "--out",
+          "/tmp/wci4-final-native2/values-forms",
+          "--variant",
+          "forms"
+        ],
+        "cwd": "/home/warloc/git/SDP-vNow",
+        "exit": 0,
+        "seconds": 32.785,
+        "FYNE_THEME": "light",
+        "binarySHA256": "78ee0a70631003365121a6f25211dcad851ff90fd4e0d9ec96da9122a08477e5",
+        "harnessSHA256": "17aea30765464456bb79849a0676827156af1fb8f0af9e2714504ff6bae175c5"
+      },
+      "publishedOpenings": 3,
+      "uniqueTerminalResults": 3,
+      "closed": {
+        "actionCalls": {
+          "AcceptCount": 0,
+          "AcceptFlag": 0,
+          "AcceptLevel": 0,
+          "AcceptMode": 0,
+          "ChildCount": 1,
+          "Load": 0,
+          "SaveText": 0,
+          "TextSave": 0,
+          "mixed": 2
+        },
+        "domain": {
+          "scalars": {
+            "ChildCount": {
+              "type": "integer",
+              "integer": 3
+            }
+          },
+          "scalarCommits": {
+            "ChildCount": 1
+          },
+          "mixed": {
+            "page/mixed/form/body/childCount": {
+              "Kind": "number",
+              "Text": "",
+              "Bool": false,
+              "Number": 3,
+              "OptionID": ""
+            },
+            "page/mixed/form/body/formCount": {
+              "Kind": "number",
+              "Text": "",
+              "Bool": false,
+              "Number": 12,
+              "OptionID": ""
+            },
+            "page/mixed/form/body/formFlag": {
+              "Kind": "boolean",
+              "Text": "",
+              "Bool": true,
+              "Number": 0,
+              "OptionID": ""
+            },
+            "page/mixed/form/body/formLevel": {
+              "Kind": "number",
+              "Text": "",
+              "Bool": false,
+              "Number": 25,
+              "OptionID": ""
+            },
+            "page/mixed/form/body/formMode": {
+              "Kind": "option-id",
+              "Text": "",
+              "Bool": false,
+              "Number": 0,
+              "OptionID": "beta"
+            },
+            "page/mixed/form/body/formNote": {
+              "Kind": "string",
+              "Text": "Initial note",
+              "Bool": false,
+              "Number": 0,
+              "OptionID": ""
+            }
+          },
+          "mixedCommits": 1,
+          "text": "",
+          "textCommits": 0
+        },
+        "pending": [],
+        "sessionClosed": true
+      },
+      "stderr": ""
+    },
+    {
+      "name": "text-single",
+      "evidence": "/tmp/wci4-final-native2/text-single",
+      "candidate": "unchanged-mechanism2",
+      "checks": 6,
+      "invocation": {
+        "name": "text-single",
+        "argv": [
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_text.py",
+          "--binary",
+          "/tmp/wci4-package-candidate2/libexec/sdui/text",
+          "--display",
+          ":191",
+          "--out",
+          "/tmp/wci4-final-native2/text-single",
+          "--variant",
+          "single"
+        ],
+        "cwd": "/home/warloc/git/SDP-vNow",
+        "exit": 0,
+        "seconds": 23.889,
+        "FYNE_THEME": "light",
+        "binarySHA256": "f26a5ec9e24e4718a0691ce5381a633a6ad9f4376f6ef34ed3667a89d3d05162",
+        "harnessSHA256": "3bdd107e639ad6a3448ce54aaba4229030f31ea0b95a6f4d2767e173db4f1e55"
+      },
+      "publishedOpenings": 0,
+      "uniqueTerminalResults": 0,
+      "closed": {
+        "actionCalls": {
+          "Load": 0,
+          "SaveChild": 0,
+          "SaveMulti": 0,
+          "SaveOther": 0,
+          "SaveRequired": 0,
+          "SaveSingle": 1,
+          "TextSave": 0
+        },
+        "domain": {
+          "commits": {
+            "Load": 0,
+            "SaveChild": 0,
+            "SaveMulti": 0,
+            "SaveOther": 0,
+            "SaveRequired": 0,
+            "SaveSingle": 1,
+            "TextSave": 0
+          },
+          "values": {
+            "SaveSingle": "Bl\u00e5b\u00e6r \u65e5\u672c\u8a9e \ud83d\ude42 e\u0301"
+          },
+          "textCommits": 0,
+          "textValues": {}
+        },
+        "pending": [],
+        "sessionClosed": true
+      },
+      "stderr": ""
+    },
+    {
+      "name": "text-multiline",
+      "evidence": "/tmp/wci4-final-native2/text-multiline",
+      "candidate": "unchanged-mechanism2",
+      "checks": 8,
+      "invocation": {
+        "name": "text-multiline",
+        "argv": [
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_text.py",
+          "--binary",
+          "/tmp/wci4-package-candidate2/libexec/sdui/text",
+          "--display",
+          ":191",
+          "--out",
+          "/tmp/wci4-final-native2/text-multiline",
+          "--variant",
+          "multiline"
+        ],
+        "cwd": "/home/warloc/git/SDP-vNow",
+        "exit": 0,
+        "seconds": 23.39,
+        "FYNE_THEME": "light",
+        "binarySHA256": "f26a5ec9e24e4718a0691ce5381a633a6ad9f4376f6ef34ed3667a89d3d05162",
+        "harnessSHA256": "3bdd107e639ad6a3448ce54aaba4229030f31ea0b95a6f4d2767e173db4f1e55"
+      },
+      "publishedOpenings": 0,
+      "uniqueTerminalResults": 0,
+      "closed": {
+        "actionCalls": {
+          "Load": 0,
+          "SaveChild": 0,
+          "SaveMulti": 1,
+          "SaveOther": 0,
+          "SaveRequired": 0,
+          "SaveSingle": 0,
+          "TextSave": 0
+        },
+        "domain": {
+          "commits": {
+            "Load": 0,
+            "SaveChild": 0,
+            "SaveMulti": 1,
+            "SaveOther": 0,
+            "SaveRequired": 0,
+            "SaveSingle": 0,
+            "TextSave": 0
+          },
+          "values": {
+            "SaveMulti": "alpha\nBl\u00e5b\u00e6r \u65e5\u672c\u8a9e \ud83d\ude42 e\u0301\nomega\nx"
+          },
+          "textCommits": 0,
+          "textValues": {}
+        },
+        "pending": [],
+        "sessionClosed": true
+      },
+      "stderr": ""
+    },
+    {
+      "name": "text-history",
+      "evidence": "/tmp/wci4-final-native2/text-history",
+      "candidate": "unchanged-mechanism2",
+      "checks": 7,
+      "invocation": {
+        "name": "text-history",
+        "argv": [
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_text.py",
+          "--binary",
+          "/tmp/wci4-package-candidate2/libexec/sdui/text",
+          "--display",
+          ":191",
+          "--out",
+          "/tmp/wci4-final-native2/text-history",
+          "--variant",
+          "history"
+        ],
+        "cwd": "/home/warloc/git/SDP-vNow",
+        "exit": 0,
+        "seconds": 30.953,
+        "FYNE_THEME": "light",
+        "binarySHA256": "f26a5ec9e24e4718a0691ce5381a633a6ad9f4376f6ef34ed3667a89d3d05162",
+        "harnessSHA256": "3bdd107e639ad6a3448ce54aaba4229030f31ea0b95a6f4d2767e173db4f1e55"
+      },
+      "publishedOpenings": 0,
+      "uniqueTerminalResults": 0,
+      "closed": {
+        "actionCalls": {
+          "Load": 0,
+          "SaveChild": 0,
+          "SaveMulti": 0,
+          "SaveOther": 0,
+          "SaveRequired": 0,
+          "SaveSingle": 1,
+          "TextSave": 0
+        },
+        "domain": {
+          "commits": {
+            "Load": 0,
+            "SaveChild": 0,
+            "SaveMulti": 0,
+            "SaveOther": 0,
+            "SaveRequired": 0,
+            "SaveSingle": 1,
+            "TextSave": 0
+          },
+          "values": {
+            "SaveSingle": "oneab"
+          },
+          "textCommits": 0,
+          "textValues": {}
+        },
+        "pending": [],
+        "sessionClosed": true
+      },
+      "stderr": ""
+    },
+    {
+      "name": "text-scroll",
+      "evidence": "/tmp/wci4-final-native2/text-scroll",
+      "candidate": "unchanged-mechanism2",
+      "checks": 9,
+      "invocation": {
+        "name": "text-scroll",
+        "argv": [
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_text.py",
+          "--binary",
+          "/tmp/wci4-package-candidate2/libexec/sdui/text",
+          "--display",
+          ":191",
+          "--out",
+          "/tmp/wci4-final-native2/text-scroll",
+          "--variant",
+          "scroll"
+        ],
+        "cwd": "/home/warloc/git/SDP-vNow",
+        "exit": 0,
+        "seconds": 35.718,
+        "FYNE_THEME": "light",
+        "binarySHA256": "f26a5ec9e24e4718a0691ce5381a633a6ad9f4376f6ef34ed3667a89d3d05162",
+        "harnessSHA256": "3bdd107e639ad6a3448ce54aaba4229030f31ea0b95a6f4d2767e173db4f1e55"
+      },
+      "publishedOpenings": 0,
+      "uniqueTerminalResults": 0,
+      "closed": {
+        "actionCalls": {
+          "Load": 0,
+          "SaveChild": 0,
+          "SaveMulti": 0,
+          "SaveOther": 0,
+          "SaveRequired": 0,
+          "SaveSingle": 0,
+          "TextSave": 0
+        },
+        "domain": {
+          "commits": {
+            "Load": 0,
+            "SaveChild": 0,
+            "SaveMulti": 0,
+            "SaveOther": 0,
+            "SaveRequired": 0,
+            "SaveSingle": 0,
+            "TextSave": 0
+          },
+          "values": {},
+          "textCommits": 0,
+          "textValues": {}
+        },
+        "pending": [],
+        "sessionClosed": true
+      },
+      "stderr": ""
+    },
+    {
+      "name": "text-command_load",
+      "evidence": "/tmp/wci4-final-native2/text-command_load",
+      "candidate": "unchanged-mechanism2",
+      "checks": 6,
+      "invocation": {
+        "name": "text-command_load",
+        "argv": [
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_text.py",
+          "--binary",
+          "/tmp/wci4-package-candidate2/libexec/sdui/text",
+          "--display",
+          ":191",
+          "--out",
+          "/tmp/wci4-final-native2/text-command_load",
+          "--variant",
+          "command_load"
+        ],
+        "cwd": "/home/warloc/git/SDP-vNow",
+        "exit": 0,
+        "seconds": 17.94,
+        "FYNE_THEME": "light",
+        "binarySHA256": "f26a5ec9e24e4718a0691ce5381a633a6ad9f4376f6ef34ed3667a89d3d05162",
+        "harnessSHA256": "3bdd107e639ad6a3448ce54aaba4229030f31ea0b95a6f4d2767e173db4f1e55"
+      },
+      "publishedOpenings": 0,
+      "uniqueTerminalResults": 0,
+      "closed": {
+        "actionCalls": {
+          "Load": 1,
+          "SaveChild": 0,
+          "SaveMulti": 0,
+          "SaveOther": 0,
+          "SaveRequired": 0,
+          "SaveSingle": 0,
+          "TextSave": 0
+        },
+        "domain": {
+          "commits": {
+            "Load": 0,
+            "SaveChild": 0,
+            "SaveMulti": 0,
+            "SaveOther": 0,
+            "SaveRequired": 0,
+            "SaveSingle": 0,
+            "TextSave": 0
+          },
+          "values": {},
+          "textCommits": 0,
+          "textValues": {}
+        },
+        "pending": [],
+        "sessionClosed": true
+      },
+      "stderr": ""
+    },
+    {
+      "name": "text-nonmodal-forms",
+      "evidence": "/tmp/wci4-final-native2/text-nonmodal-forms",
+      "candidate": "unchanged-mechanism2",
+      "checks": 4,
+      "invocation": {
+        "name": "text-nonmodal-forms",
+        "argv": [
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_text.py",
+          "--binary",
+          "/tmp/wci4-package-candidate2/libexec/sdui/text",
+          "--display",
+          ":191",
+          "--out",
+          "/tmp/wci4-final-native2/text-nonmodal-forms",
+          "--variant",
+          "forms",
+          "--nonmodal"
+        ],
+        "cwd": "/home/warloc/git/SDP-vNow",
+        "exit": 0,
+        "seconds": 56.613,
+        "FYNE_THEME": "light",
+        "binarySHA256": "f26a5ec9e24e4718a0691ce5381a633a6ad9f4376f6ef34ed3667a89d3d05162",
+        "harnessSHA256": "3bdd107e639ad6a3448ce54aaba4229030f31ea0b95a6f4d2767e173db4f1e55"
+      },
+      "publishedOpenings": 2,
+      "uniqueTerminalResults": 2,
+      "closed": {
+        "actionCalls": {
+          "Load": 0,
+          "SaveChild": 1,
+          "SaveMulti": 0,
+          "SaveOther": 0,
+          "SaveRequired": 0,
+          "SaveSingle": 0,
+          "TextSave": 2
+        },
+        "domain": {
+          "commits": {
+            "Load": 0,
+            "SaveChild": 1,
+            "SaveMulti": 0,
+            "SaveOther": 0,
+            "SaveRequired": 0,
+            "SaveSingle": 0,
+            "TextSave": 0
+          },
+          "values": {
+            "SaveChild": "child accepted"
+          },
+          "textCommits": 1,
+          "textValues": {
+            "Body": "alpha\nBl\u00e5b\u00e6r \u65e5\u672c\u8a9e \ud83d\ude42 e\u0301\nomega",
+            "Name": "saved name"
+          }
+        },
+        "pending": [],
+        "sessionClosed": true
+      },
+      "stderr": ""
+    },
+    {
+      "name": "previews-forms",
+      "evidence": "/tmp/wci4-final-native3/previews-forms",
+      "candidate": "corrected3",
+      "checks": 12,
+      "invocation": {
+        "name": "previews-forms",
+        "argv": [
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_previews.py",
+          "--binary",
+          "/tmp/wci4-package-candidate3/libexec/sdui/previews",
+          "--display",
+          ":191",
+          "--out",
+          "/tmp/wci4-final-native3/previews-forms",
+          "--variant",
+          "forms"
+        ],
+        "cwd": "/home/warloc/git/SDP-vNow",
+        "exit": 0,
+        "seconds": 62.78,
+        "FYNE_THEME": "light",
+        "binarySHA256": "200679febaebddaf13edfdc477ed9eac3feed66f082aef18bace0b2ebc266a85",
+        "harnessSHA256": "a55b61b7c6d4c97c1d0ced256356dfd29d0c49dbccd5ba1cd81b0674a676aef9"
+      },
+      "publishedOpenings": 5,
+      "uniqueTerminalResults": 5,
+      "closed": {
+        "actionCalls": {
+          "AcceptDetail": 2,
+          "Load": 1,
+          "Mark": 2,
+          "SaveDetail": 1,
+          "SaveNote": 1
+        },
+        "domain": {
+          "commits": {
+            "AcceptDetail": 1,
+            "Load": 0,
+            "Mark": 2,
+            "SaveDetail": 1,
+            "SaveNote": 1
+          },
+          "values": {
+            "AcceptDetail": "",
+            "Mark": "Marked: false",
+            "SaveDetail": "Committed child",
+            "SaveNote": "Saved from preview"
+          },
+          "marked": false,
+          "detailCommits": 1,
+          "detailNote": "Accepted detail"
+        },
+        "pending": [],
+        "sessionClosed": true
+      },
+      "stderr": ""
+    },
+    {
+      "name": "previews-nonmodal-forms",
+      "evidence": "/tmp/wci4-final-native3/previews-nonmodal-forms",
+      "candidate": "corrected3",
+      "checks": 12,
+      "invocation": {
+        "name": "previews-nonmodal-forms",
+        "argv": [
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_previews.py",
+          "--binary",
+          "/tmp/wci4-package-candidate3/libexec/sdui/previews",
+          "--display",
+          ":191",
+          "--out",
+          "/tmp/wci4-final-native3/previews-nonmodal-forms",
+          "--variant",
+          "forms",
+          "--nonmodal"
+        ],
+        "cwd": "/home/warloc/git/SDP-vNow",
+        "exit": 0,
+        "seconds": 69.408,
+        "FYNE_THEME": "light",
+        "binarySHA256": "200679febaebddaf13edfdc477ed9eac3feed66f082aef18bace0b2ebc266a85",
+        "harnessSHA256": "a55b61b7c6d4c97c1d0ced256356dfd29d0c49dbccd5ba1cd81b0674a676aef9"
+      },
+      "publishedOpenings": 5,
+      "uniqueTerminalResults": 5,
+      "closed": {
+        "actionCalls": {
+          "AcceptDetail": 2,
+          "Load": 1,
+          "Mark": 2,
+          "SaveDetail": 1,
+          "SaveNote": 1
+        },
+        "domain": {
+          "commits": {
+            "AcceptDetail": 1,
+            "Load": 0,
+            "Mark": 2,
+            "SaveDetail": 1,
+            "SaveNote": 1
+          },
+          "values": {
+            "AcceptDetail": "",
+            "Mark": "Marked: false",
+            "SaveDetail": "Committed child",
+            "SaveNote": "Saved from preview"
+          },
+          "marked": false,
+          "detailCommits": 1,
+          "detailNote": "Accepted detail"
+        },
+        "pending": [],
+        "sessionClosed": true
+      },
+      "stderr": ""
+    },
+    {
+      "name": "previews-geometry",
+      "evidence": "/tmp/wci4-final-native3/previews-geometry",
+      "candidate": "corrected3",
+      "checks": 13,
+      "invocation": {
+        "name": "previews-geometry",
+        "argv": [
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_previews.py",
+          "--binary",
+          "/tmp/wci4-package-candidate3/libexec/sdui/previews",
+          "--display",
+          ":191",
+          "--out",
+          "/tmp/wci4-final-native3/previews-geometry",
+          "--variant",
+          "geometry"
+        ],
+        "cwd": "/home/warloc/git/SDP-vNow",
+        "exit": 0,
+        "seconds": 27.314,
+        "FYNE_THEME": "light",
+        "binarySHA256": "200679febaebddaf13edfdc477ed9eac3feed66f082aef18bace0b2ebc266a85",
+        "harnessSHA256": "a55b61b7c6d4c97c1d0ced256356dfd29d0c49dbccd5ba1cd81b0674a676aef9"
+      },
+      "publishedOpenings": 0,
+      "uniqueTerminalResults": 0,
+      "closed": {
+        "actionCalls": {
+          "AcceptDetail": 0,
+          "Load": 0,
+          "Mark": 0,
+          "SaveDetail": 0,
+          "SaveNote": 0
+        },
+        "domain": {
+          "commits": {
+            "AcceptDetail": 0,
+            "Load": 0,
+            "Mark": 0,
+            "SaveDetail": 0,
+            "SaveNote": 0
+          },
+          "values": {},
+          "marked": false,
+          "detailCommits": 0,
+          "detailNote": ""
+        },
+        "pending": [],
+        "sessionClosed": true
+      },
+      "stderr": ""
+    },
+    {
+      "name": "previews-fallback",
+      "evidence": "/tmp/wci4-final-native3/previews-fallback",
+      "candidate": "corrected3",
+      "checks": 15,
+      "invocation": {
+        "name": "previews-fallback",
+        "argv": [
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_previews.py",
+          "--binary",
+          "/tmp/wci4-package-candidate3/libexec/sdui/previews",
+          "--display",
+          ":191",
+          "--out",
+          "/tmp/wci4-final-native3/previews-fallback",
+          "--variant",
+          "fallback"
+        ],
+        "cwd": "/home/warloc/git/SDP-vNow",
+        "exit": 0,
+        "seconds": 75.223,
+        "FYNE_THEME": "light",
+        "binarySHA256": "200679febaebddaf13edfdc477ed9eac3feed66f082aef18bace0b2ebc266a85",
+        "harnessSHA256": "a55b61b7c6d4c97c1d0ced256356dfd29d0c49dbccd5ba1cd81b0674a676aef9"
+      },
+      "publishedOpenings": 0,
+      "uniqueTerminalResults": 0,
+      "closed": {
+        "actionCalls": {
+          "AcceptDetail": 0,
+          "Load": 0,
+          "Mark": 0,
+          "SaveDetail": 0,
+          "SaveNote": 0
+        },
+        "domain": {
+          "commits": {
+            "AcceptDetail": 0,
+            "Load": 0,
+            "Mark": 0,
+            "SaveDetail": 0,
+            "SaveNote": 0
+          },
+          "values": {},
+          "marked": false,
+          "detailCommits": 0,
+          "detailNote": ""
+        },
+        "pending": [],
+        "sessionClosed": true
+      },
+      "stderr": ""
+    },
+    {
+      "name": "previews-lifetime",
+      "evidence": "/tmp/wci4-final-native3/previews-lifetime",
+      "candidate": "corrected3",
+      "checks": 8,
+      "invocation": {
+        "name": "previews-lifetime",
+        "argv": [
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_previews.py",
+          "--binary",
+          "/tmp/wci4-package-candidate3/libexec/sdui/previews",
+          "--display",
+          ":191",
+          "--out",
+          "/tmp/wci4-final-native3/previews-lifetime",
+          "--variant",
+          "lifetime"
+        ],
+        "cwd": "/home/warloc/git/SDP-vNow",
+        "exit": 0,
+        "seconds": 31.845,
+        "FYNE_THEME": "light",
+        "binarySHA256": "200679febaebddaf13edfdc477ed9eac3feed66f082aef18bace0b2ebc266a85",
+        "harnessSHA256": "a55b61b7c6d4c97c1d0ced256356dfd29d0c49dbccd5ba1cd81b0674a676aef9"
+      },
+      "publishedOpenings": 0,
+      "uniqueTerminalResults": 0,
+      "closed": {
+        "actionCalls": {
+          "AcceptDetail": 0,
+          "Load": 0,
+          "Mark": 0,
+          "SaveDetail": 0,
+          "SaveNote": 0
+        },
+        "domain": {
+          "commits": {
+            "AcceptDetail": 0,
+            "Load": 0,
+            "Mark": 0,
+            "SaveDetail": 0,
+            "SaveNote": 0
+          },
+          "values": {},
+          "marked": false,
+          "detailCommits": 0,
+          "detailNote": ""
+        },
+        "pending": [],
+        "sessionClosed": true
+      },
+      "stderr": ""
+    },
+    {
+      "name": "previews-origins",
+      "evidence": "/tmp/wci4-final-native3-supplement/previews-origins",
+      "candidate": "corrected3",
+      "checks": 39,
+      "invocation": {
+        "name": "previews-origins",
+        "argv": [
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_origins.py",
+          "--binary",
+          "/tmp/wci4-package-candidate3/libexec/sdui/previews",
+          "--display",
+          ":191",
+          "--out",
+          "/tmp/wci4-final-native3-supplement/previews-origins"
+        ],
+        "cwd": "/home/warloc/git/SDP-vNow",
+        "exit": 0,
+        "seconds": 60.608,
+        "FYNE_THEME": "light",
+        "binarySHA256": "200679febaebddaf13edfdc477ed9eac3feed66f082aef18bace0b2ebc266a85",
+        "harnessSHA256": "061ca96fe1873b1844e90028087bf428a925aa65348f0acbffa02a8975f1cf40"
+      },
+      "publishedOpenings": 0,
+      "uniqueTerminalResults": 0,
+      "closed": {
+        "actionCalls": {
+          "AcceptDetail": 0,
+          "Load": 0,
+          "Mark": 0,
+          "SaveDetail": 0,
+          "SaveNote": 0
+        },
+        "domain": {
+          "commits": {
+            "AcceptDetail": 0,
+            "Load": 0,
+            "Mark": 0,
+            "SaveDetail": 0,
+            "SaveNote": 0
+          },
+          "values": {},
+          "marked": false,
+          "detailCommits": 0,
+          "detailNote": ""
+        },
+        "pending": [],
+        "sessionClosed": true
+      },
+      "stderr": ""
+    },
+    {
+      "name": "text-ime",
+      "evidence": "/tmp/wci4-final-native3-supplement/text-ime",
+      "candidate": "corrected3",
+      "checks": 7,
+      "invocation": {
+        "name": "text-ime",
+        "argv": [
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/with_ibus.py",
+          "--display",
+          ":191",
+          "--installation",
+          "/tmp/sdui-ime-probe/root",
+          "--components",
+          "/tmp/sdui-ime-probe/components",
+          "--out",
+          "/tmp/wci4-final-native3-supplement/text-ime-environment",
+          "--",
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_text.py",
+          "--binary",
+          "/tmp/wci4-package-candidate3/libexec/sdui/text",
+          "--display",
+          ":191",
+          "--out",
+          "/tmp/wci4-final-native3-supplement/text-ime",
+          "--variant",
+          "ime"
+        ],
+        "cwd": "/home/warloc/git/SDP-vNow",
+        "exit": 0,
+        "seconds": 20.698,
+        "FYNE_THEME": "light",
+        "binarySHA256": "53ef12810b9e9464c1fd4f040fc95fd213f9e466ddb561d919082ed114729ddc",
+        "harnessSHA256": "3bdd107e639ad6a3448ce54aaba4229030f31ea0b95a6f4d2767e173db4f1e55"
+      },
+      "publishedOpenings": 0,
+      "uniqueTerminalResults": 0,
+      "closed": {
+        "actionCalls": {
+          "Load": 0,
+          "SaveChild": 0,
+          "SaveMulti": 1,
+          "SaveOther": 0,
+          "SaveRequired": 0,
+          "SaveSingle": 1,
+          "TextSave": 0
+        },
+        "domain": {
+          "commits": {
+            "Load": 0,
+            "SaveChild": 0,
+            "SaveMulti": 1,
+            "SaveOther": 0,
+            "SaveRequired": 0,
+            "SaveSingle": 1,
+            "TextSave": 0
+          },
+          "values": {
+            "SaveMulti": "\u4e2d",
+            "SaveSingle": "\u4e2d"
+          },
+          "textCommits": 0,
+          "textValues": {}
+        },
+        "pending": [],
+        "sessionClosed": true
+      },
+      "stderr": ""
+    },
+    {
+      "name": "helper-ime",
+      "evidence": "/tmp/wci4-final-native3-supplement/helper-ime",
+      "candidate": "corrected3",
+      "checks": 8,
+      "invocation": {
+        "name": "helper-ime",
+        "argv": [
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/with_ibus.py",
+          "--display",
+          ":191",
+          "--installation",
+          "/tmp/sdui-ime-probe/root",
+          "--components",
+          "/tmp/sdui-ime-probe/components",
+          "--out",
+          "/tmp/wci4-final-native3-supplement/helper-ime-environment",
+          "--",
+          "python3",
+          "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_helper_ime.py",
+          "--binary",
+          "/tmp/wci4-package-candidate3/libexec/xfmd/sdui-fyne",
+          "--display",
+          ":191",
+          "--out",
+          "/tmp/wci4-final-native3-supplement/helper-ime"
+        ],
+        "cwd": "/home/warloc/git/SDP-vNow",
+        "exit": 0,
+        "seconds": 8.7,
+        "FYNE_THEME": "light",
+        "binarySHA256": "69574e8dec94564fef8b6d475147e1273e3ce13caa226707d5d72ced1bf5d61c",
+        "harnessSHA256": "2be6b912dcc3fde73775e954d052f79a78301ca662c06ffef39d28c2eb752d26"
+      },
+      "stderr": ""
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "producerCommit": "043c59cc50c33d9f2a4e8ba48340984ab5c1bff3",
+  "toolHash": "7f09900590011f78a0faffaa9b810cc599b721c8253c15758c95b305a2019fb6",
+  "revisions": [
+    "2d35641c933162be2eba76da28481f967a2050ffc3f2d32b8fd2dd4d1e665388",
+    "29a5bfd5bacbb4ccb78054a62637a245572e2a8a043bac24c8e62080eb1f20b1"
+  ],
+  "selectedNodes": [
+    "AdaptBrowserState",
+    "AuthoritativeMachineState",
+    "BaselinePayload",
+    "BaselineRequest",
+    "BuckingUI",
+    "BuckingWeb",
+    "CalibrateMeasurement",
+    "CalibrationProcessor",
+    "CalibrationState",
+    "Inspection",
+    "MVP1InspectionPilot",
+    "MachineBaseline",
+    "MachineProtocol",
+    "MachineService",
+    "MachineServiceUpstream",
+    "ProjectOperatorDomain",
+    "PublishMachineBaseline",
+    "ReadBaseline",
+    "ReduceMachineState",
+    "Subscriber"
+  ],
+  "addedFacts": [
+    "{\"node\":\"Relation\",\"object\":{\"name\":\"CalibrateMeasurement\",\"node\":\"Identifier\"},\"subject\":{\"name\":\"CalibrationProcessor\",\"node\":\"Identifier\"},\"verb\":\"owns\"}",
+    "{\"node\":\"Relation\",\"object\":{\"name\":\"CalibrationProcessor\",\"node\":\"Identifier\"},\"subject\":{\"name\":\"MachineService\",\"node\":\"Identifier\"},\"verb\":\"contains\"}"
+  ],
+  "removedFacts": [
+    "{\"node\":\"Relation\",\"object\":{\"name\":\"CalibrateMeasurement\",\"node\":\"Identifier\"},\"subject\":{\"name\":\"MachineService\",\"node\":\"Identifier\"},\"verb\":\"owns\"}"
+  ],
+  "excludedNodes": [],
+  "cutFactCount": 0,
+  "unknowns": [
+    "No complete runtime dependency or code-to-model mapping is available"
+  ],
+  "testCount": 8,
+  "result": "pass",
+  "limits": "Experimental graph selection, not production blueprint/assignment acceptance",
+  "experimentHashes": {
+    "experiments/blueprint_mvp1/selection_probe.py": "b0855a496cfa5ffccd6637c186e478966bdaf3f6d5623785042af3ffda8e4229",
+    "experiments/blueprint_mvp1/test_selection_probe.py": "f6937195e0a3199c7a8f17091f3524c55bcc813236f8e37506cb6876dcc8eb15"
+  }
+}

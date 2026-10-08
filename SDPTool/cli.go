@@ -2,17 +2,30 @@ package sdptool
 
 import (
 	"context"
-	"encoding/json"
 	"flag"
 	"fmt"
 	"github.com/Hans-Einar/SDP/SDPTool/install"
+	"github.com/Hans-Einar/SDP/SDPTool/presentation"
 	"io"
 	"os"
 )
 
 func Run(ctx context.Context, args []string, out, errs io.Writer) int {
+	args, jsonMode, formatErr := outputArguments(args)
+	report := func(w io.Writer, e error) int { return reportMode(w, e, jsonMode) }
+	emit := func(v any) error { return presentation.Default().Write(out, v, jsonMode) }
+	if formatErr != nil {
+		selected, rest := ".", args
+		if len(rest) > 1 && !isCommand(rest[0]) {
+			selected, rest = rest[0], rest[1:]
+		}
+		if len(rest) > 0 && (rest[0] == "install" || rest[0] == "upgrade") {
+			return install.ArgumentError(selected, rest[0], jsonMode, out, errs, formatErr)
+		}
+		return report(errs, failure("arguments", formatErr))
+	}
 	if len(args) == 1 && args[0] == "--version" {
-		e := json.NewEncoder(out).Encode(map[string]any{
+		e := emit(map[string]any{
 			"schema": Version, "operation": "version", "version": BuildVersion,
 			"revision": BuildRevision, "installedFactSchemas": []string{"1.0", "2.0", "3.0"}, "installationProtocol": install.Protocol,
 		})
@@ -23,7 +36,7 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 	}
 
 	if len(args) == 1 && (args[0] == "--help" || args[0] == "help") {
-		_, e := io.WriteString(out, "Usage: sdptool [PROJECT-OR-SDP-AREA] discover|tree|select|view ip|sdui-preview|install|upgrade [options]\n       sdptool preview FILE --output DIRECTORY [--renderer PROGRAM]\nSee SDPTool/Contract.md for source, model, revision and resource contracts.\n")
+		_, e := io.WriteString(out, "Usage: sdptool [PROJECT-OR-SDP-AREA] model|discover|tree|select|view ip|sdui-preview|install|upgrade|release-log [options]\n       sdptool preview FILE --output DIRECTORY [--renderer PROGRAM]\nDefault output is human-readable; add --json for machine clients.\nSee SDPTool/Contract.md for source, model, revision and resource contracts.\n")
 		if e != nil {
 			return report(errs, e)
 		}
@@ -34,8 +47,18 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 		selected = args[0]
 		args = args[1:]
 	}
+	if len(args) > 0 && args[0] == "model" {
+		return modelCommand(selected, args[1:], out, errs, jsonMode)
+	}
+	if len(args) > 0 && args[0] == "release-log" {
+		return releaseLog(selected, args[1:], out, errs, jsonMode)
+	}
 	if len(args) > 0 && (args[0] == "install" || args[0] == "upgrade") {
-		return install.Run(ctx, selected, args[0], args[1:], out, errs)
+		installArgs := args[1:]
+		if jsonMode {
+			installArgs = append([]string{"--json"}, installArgs...)
+		}
+		return install.Run(ctx, selected, args[0], installArgs, out, errs)
 	}
 	if len(args) > 0 && args[0] == "discover" {
 		if len(args) != 1 {
@@ -45,7 +68,7 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 		if e != nil {
 			return report(errs, e)
 		}
-		if e = json.NewEncoder(out).Encode(p); e != nil {
+		if e = emit(p); e != nil {
 			return report(errs, e)
 		}
 		return 0
@@ -67,7 +90,7 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 		if fs.NArg() != 0 {
 			return report(errs, failure("arguments", fmt.Errorf("unexpected arguments")))
 		}
-		p, e := Discover(selected)
+		p, e := discover(selected, false)
 		if e != nil {
 			return report(errs, e)
 		}
@@ -75,7 +98,7 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 		if e != nil {
 			return report(errs, e)
 		}
-		if e = json.NewEncoder(out).Encode(r); e != nil {
+		if e = emit(r); e != nil {
 			return report(errs, e)
 		}
 		return 0
@@ -84,7 +107,7 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 	if len(args) > 0 && args[0] == "sdui-preview" {
 		fs := flag.NewFlagSet("sdui-preview", flag.ContinueOnError)
 		fs.SetOutput(io.Discard)
-		model := fs.String("model", "", "registered source")
+		model := fs.String("model", "", "discovered source")
 		entry := fs.String("entry", "", "root frame")
 		output := fs.String("output", "", "bundle directory")
 		revision := fs.String("revision", "", "expected revision")
@@ -94,7 +117,7 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 		if fs.NArg() != 0 {
 			return report(errs, failure("arguments", fmt.Errorf("unexpected arguments")))
 		}
-		p, e := Discover(selected)
+		p, e := discover(selected, false)
 		if e != nil {
 			return report(errs, e)
 		}
@@ -102,7 +125,7 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 		if e != nil {
 			return report(errs, e)
 		}
-		if e = json.NewEncoder(out).Encode(r); e != nil {
+		if e = emit(r); e != nil {
 			return report(errs, e)
 		}
 		return 0
@@ -111,14 +134,14 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 	if len(args) > 0 && args[0] == "tree" {
 		fs := flag.NewFlagSet("tree", flag.ContinueOnError)
 		fs.SetOutput(io.Discard)
-		model := fs.String("model", "", "registered model")
+		model := fs.String("model", "", "discovered model")
 		if e := fs.Parse(args[1:]); e != nil {
 			return report(errs, failure("arguments", e))
 		}
 		if fs.NArg() != 0 {
 			return report(errs, failure("arguments", fmt.Errorf("unexpected arguments")))
 		}
-		p, e := Discover(selected)
+		p, e := discover(selected, false)
 		if e != nil {
 			return report(errs, e)
 		}
@@ -126,7 +149,7 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 		if e != nil {
 			return report(errs, e)
 		}
-		if e = json.NewEncoder(out).Encode(t); e != nil {
+		if e = emit(t); e != nil {
 			return report(errs, e)
 		}
 		return 0
@@ -140,7 +163,8 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 		fs.SetOutput(io.Discard)
 		h := Host{}
 		var model string
-		fs.StringVar(&model, "model", "", "registered model")
+		plan := fs.String("plan", "", "project-relative implementation plan")
+		fs.StringVar(&model, "model", "", "discovered model")
 		fs.StringVar(&h.Viewer, "viewer", os.Getenv("SDP_XFMD"), "prebuilt viewer")
 		fs.StringVar(&h.SDLTool, "sdl-tool", os.Getenv("SDP_SDL_TOOL"), "prebuilt SDL tool")
 		fs.StringVar(&h.Renderer, "renderer", os.Getenv("SDP_MMDR"), "prebuilt renderer")
@@ -150,14 +174,17 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 		if fs.NArg() != 0 {
 			return report(errs, failure("arguments", fmt.Errorf("unexpected positional arguments")))
 		}
-		p, e := Discover(selected)
+		p, e := discover(selected, false)
 		if e != nil {
 			return report(errs, e)
+		}
+		if *plan != "" {
+			p.Inventory.ImplementationPlan = *plan
 		}
 		if e = ViewPlan(ctx, p, model, h); e != nil {
 			return report(errs, e)
 		}
-		if e = json.NewEncoder(out).Encode(map[string]any{"schema": Version, "operation": "view", "status": "viewer-exited"}); e != nil {
+		if e = emit(map[string]any{"schema": Version, "operation": "view", "status": "viewer-exited"}); e != nil {
 			return report(errs, e)
 		}
 		return 0
@@ -184,23 +211,23 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 	if e != nil {
 		return report(errs, e)
 	}
-	if e = json.NewEncoder(out).Encode(r); e != nil {
+	if e = emit(r); e != nil {
 		return report(errs, e)
 	}
 	return 0
 }
-func report(w io.Writer, e error) int {
+func reportMode(w io.Writer, e error, jsonMode bool) int {
 	f, ok := e.(*Failure)
 	if !ok {
 		f = &Failure{Code: "io", Message: e.Error()}
 	}
-	_ = json.NewEncoder(w).Encode(map[string]any{"schema": Version, "error": f})
+	_ = presentation.Default().Write(w, map[string]any{"schema": Version, "error": f}, jsonMode)
 	return 1
 }
 
 func isCommand(s string) bool {
 	switch s {
-	case "install", "upgrade", "preview", "discover", "view", "tree", "select", "sdui-preview":
+	case "model", "release-log", "install", "upgrade", "preview", "discover", "view", "tree", "select", "sdui-preview":
 		return true
 	}
 	return false

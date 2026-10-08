@@ -14,6 +14,7 @@ func Selected(ctx context.Context, v *viewpoint.Views, q viewpoint.Query, r Rend
 	}
 	spec, _ := viewpoint.SpecFor(q.Viewpoint)
 	b := &Bundle{Files: map[string][]byte{}, Manifest: Manifest{Version: viewpoint.Version, Revision: v.Revision, Facts: s.Facts, Gaps: s.Gaps, Diagrams: s.Diagrams}}
+	b.sourceProvenance(v)
 	if r != nil {
 		b.Manifest.Renderer = r.Identity()
 	}

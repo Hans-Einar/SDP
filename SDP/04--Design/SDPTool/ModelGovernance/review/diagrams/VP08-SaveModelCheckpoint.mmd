@@ -1,0 +1,5 @@
+sequenceDiagram
+    participant n_ModelCommandAdapter as Model Command Adapter
+    participant n_ModelCoordinator as Model Coordinator
+    n_ModelCommandAdapter->>n_ModelCoordinator: 1: Request Model Change (Model Operations)
+    n_ModelCoordinator-->>n_ModelCommandAdapter: 2: Model Change Accepted (Model Operations) reply-to 1

@@ -1,0 +1,45 @@
+[
+  {
+    "name": "previews-forms",
+    "argv": [
+      "python3",
+      "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_previews.py",
+      "--binary",
+      "/tmp/wci4-package-candidate2/libexec/sdui/previews",
+      "--display",
+      ":191",
+      "--out",
+      "/tmp/wci4-final-native2/previews-forms",
+      "--variant",
+      "forms"
+    ],
+    "cwd": "/home/warloc/git/SDP-vNow",
+    "exit": 0,
+    "seconds": 92.775,
+    "FYNE_THEME": "light",
+    "binarySHA256": "86c5d5cf3d4b5bb8044c328ed8376b116c687d11ebd6382b1dca76b74c6bd8e3",
+    "harnessSHA256": "a55b61b7c6d4c97c1d0ced256356dfd29d0c49dbccd5ba1cd81b0674a676aef9"
+  },
+  {
+    "name": "previews-nonmodal-forms",
+    "argv": [
+      "python3",
+      "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_previews.py",
+      "--binary",
+      "/tmp/wci4-package-candidate2/libexec/sdui/previews",
+      "--display",
+      ":191",
+      "--out",
+      "/tmp/wci4-final-native2/previews-nonmodal-forms",
+      "--variant",
+      "forms",
+      "--nonmodal"
+    ],
+    "cwd": "/home/warloc/git/SDP-vNow",
+    "exit": 0,
+    "seconds": 92.966,
+    "FYNE_THEME": "light",
+    "binarySHA256": "86c5d5cf3d4b5bb8044c328ed8376b116c687d11ebd6382b1dca76b74c6bd8e3",
+    "harnessSHA256": "a55b61b7c6d4c97c1d0ced256356dfd29d0c49dbccd5ba1cd81b0674a676aef9"
+  }
+]

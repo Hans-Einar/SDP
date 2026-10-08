@@ -6,11 +6,12 @@ import (
 	"crypto/sha256"
 	"fmt"
 	"github.com/Hans-Einar/SDP/SystemDesignLanguage/go/parser"
+	"github.com/Hans-Einar/SDP/SystemDesignLanguage/go/sourcegraph"
 	"sort"
 	"strings"
 )
 
-const Version = "sdl-viewpoints-go-1.2"
+const Version = "sdl-viewpoints-go-1.3"
 
 type Fact map[string]any
 
@@ -34,27 +35,69 @@ type Diagram struct {
 	Syntax      string         `json:"-"`
 }
 type Views struct {
-	Model       *parser.Model
-	Revision    string
-	Kinds       map[string]string
-	Facts       []Fact
-	Relations   map[string][]Fact
-	Diagrams    []Diagram
-	Gaps        []Fact
-	MessageSets []Fact
+	Profile, System string
+	Sources         []sourcegraph.Source
+	SourceEdges     []sourcegraph.Edge
+	Model           *parser.Model
+	Revision        string
+	Kinds           map[string]string
+	Facts           []Fact
+	Relations       map[string][]Fact
+	Diagrams        []Diagram
+	Gaps            []Fact
+	MessageSets     []Fact
 }
 
 func New(source string) (*Views, error) {
+	cache := &parser.SyntaxCache{}
+	file, e := cache.Parse("System.design", source)
+	if e != nil {
+		return nil, e
+	}
+	if file.Model().Header.Version == "0.6" {
+		checked, ds := sourcegraph.Compile("System.design", []*parser.File{file}, true)
+		if len(ds) > 0 {
+			return nil, ds
+		}
+		return FromSnapshot(checked)
+	}
 	m, ds := parser.Check(source)
 	if len(ds) > 0 {
 		return nil, ds[0]
 	}
-	v := &Views{Model: m, Revision: fmt.Sprintf("%x", sha256.Sum256([]byte(source))), Kinds: map[string]string{}, Relations: map[string][]Fact{}, Facts: []Fact{}, Diagrams: []Diagram{}, Gaps: []Fact{}, MessageSets: []Fact{}}
+	return projectModel(m, fmt.Sprintf("%x", sha256.Sum256([]byte(source))), "", nil, nil)
+}
+
+// FromSnapshot consumes an immutable, completely checked source graph; no reparse.
+func FromSnapshot(s *sourcegraph.Snapshot) (*Views, error) {
+	if s == nil {
+		return nil, fmt.Errorf("missing checked source snapshot")
+	}
+	return projectModel(s.Model(), s.Revision(), s.System(), s.Sources(), s.Edges())
+}
+func Load(name string) (*Views, *sourcegraph.Loaded, error) {
+	l, e := sourcegraph.Load(name, nil, true)
+	if e != nil {
+		return nil, nil, e
+	}
+	v, e := FromSnapshot(l.Snapshot)
+	return v, l, e
+}
+func projectModel(m *parser.Model, revision, system string, sources []sourcegraph.Source, edges []sourcegraph.Edge) (*Views, error) {
+	v := &Views{Model: m, Revision: revision, Kinds: map[string]string{}, Relations: map[string][]Fact{}, Facts: []Fact{}, Diagrams: []Diagram{}, Gaps: []Fact{}, MessageSets: []Fact{}}
+	v.Profile = "design-core/" + m.Header.Version
+	v.System = system
+	v.Sources = sources
+	v.SourceEdges = edges
 	for _, d := range m.Declarations {
 		v.Kinds[d.Name.Name] = d.Kind
 	}
 	for i, s := range m.Statements {
 		f := Fact{"id": fmt.Sprintf("f%04d", i), "node": s.Kind, "line": s.Span.Line, "span": parser.Data(s.Span), "text": s.Sentence(), "subject": s.Subject.Name}
+		if m.Header.Version == "0.6" {
+			f["id"] = fmt.Sprintf("f%x", sha256.Sum256([]byte(system+"\x00"+s.Sentence())))
+			f["system"] = system
+		}
 		switch s.Kind {
 		case "Relation":
 			f["verb"] = s.Verb

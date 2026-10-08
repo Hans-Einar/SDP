@@ -1,0 +1,1159 @@
+{
+  "declarations": [
+    {
+      "kind": "functionality",
+      "name": {
+        "name": "FreezeModel",
+        "node": "Identifier",
+        "span": {
+          "column": 15,
+          "end": 59,
+          "end_column": 26,
+          "end_line": 2,
+          "line": 2,
+          "node": "Span",
+          "source": "Features/ModelGovernance.design",
+          "start": 48
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 60,
+        "end_column": 27,
+        "end_line": 2,
+        "line": 2,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 34
+      }
+    },
+    {
+      "kind": "capability",
+      "name": {
+        "name": "FrozenModelDelivery",
+        "node": "Identifier",
+        "span": {
+          "column": 12,
+          "end": 91,
+          "end_column": 31,
+          "end_line": 3,
+          "line": 3,
+          "node": "Span",
+          "source": "Features/ModelGovernance.design",
+          "start": 72
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 92,
+        "end_column": 32,
+        "end_line": 3,
+        "line": 3,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 61
+      }
+    },
+    {
+      "kind": "usecase",
+      "name": {
+        "name": "IntegrateModelChanges",
+        "node": "Identifier",
+        "span": {
+          "column": 9,
+          "end": 122,
+          "end_column": 30,
+          "end_line": 4,
+          "line": 4,
+          "node": "Span",
+          "source": "Features/ModelGovernance.design",
+          "start": 101
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 123,
+        "end_column": 31,
+        "end_line": 4,
+        "line": 4,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 93
+      }
+    },
+    {
+      "kind": "functionality",
+      "name": {
+        "name": "IntegrateSources",
+        "node": "Identifier",
+        "span": {
+          "column": 15,
+          "end": 154,
+          "end_column": 31,
+          "end_line": 5,
+          "line": 5,
+          "node": "Span",
+          "source": "Features/ModelGovernance.design",
+          "start": 138
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 155,
+        "end_column": 32,
+        "end_line": 5,
+        "line": 5,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 124
+      }
+    },
+    {
+      "kind": "unit",
+      "name": {
+        "name": "LocalHistoryStore",
+        "node": "Identifier",
+        "span": {
+          "column": 6,
+          "end": 56,
+          "end_column": 23,
+          "end_line": 2,
+          "line": 2,
+          "node": "Span",
+          "source": "Containers/SdpToolHost/ModelGovernance.design",
+          "start": 39
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 57,
+        "end_column": 24,
+        "end_line": 2,
+        "line": 2,
+        "node": "Span",
+        "source": "Containers/SdpToolHost/ModelGovernance.design",
+        "start": 34
+      }
+    },
+    {
+      "kind": "database",
+      "name": {
+        "name": "LocalModelFiles",
+        "node": "Identifier",
+        "span": {
+          "column": 10,
+          "end": 82,
+          "end_column": 25,
+          "end_line": 3,
+          "line": 3,
+          "node": "Span",
+          "source": "Containers/SdpToolHost/ModelGovernance.design",
+          "start": 67
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 83,
+        "end_column": 26,
+        "end_line": 3,
+        "line": 3,
+        "node": "Span",
+        "source": "Containers/SdpToolHost/ModelGovernance.design",
+        "start": 58
+      }
+    },
+    {
+      "kind": "capability",
+      "name": {
+        "name": "LocalModelRecovery",
+        "node": "Identifier",
+        "span": {
+          "column": 12,
+          "end": 185,
+          "end_column": 30,
+          "end_line": 6,
+          "line": 6,
+          "node": "Span",
+          "source": "Features/ModelGovernance.design",
+          "start": 167
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 186,
+        "end_column": 31,
+        "end_line": 6,
+        "line": 6,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 156
+      }
+    },
+    {
+      "kind": "actor",
+      "name": {
+        "name": "ModelAuthor",
+        "node": "Identifier",
+        "span": {
+          "column": 7,
+          "end": 204,
+          "end_column": 18,
+          "end_line": 7,
+          "line": 7,
+          "node": "Span",
+          "source": "Features/ModelGovernance.design",
+          "start": 193
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 205,
+        "end_column": 19,
+        "end_line": 7,
+        "line": 7,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 187
+      }
+    },
+    {
+      "kind": "message",
+      "name": {
+        "name": "ModelChangeAccepted",
+        "node": "Identifier",
+        "span": {
+          "column": 9,
+          "end": 61,
+          "end_column": 28,
+          "end_line": 2,
+          "line": 2,
+          "node": "Span",
+          "source": "Contracts/ModelGovernance.design",
+          "start": 42
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 62,
+        "end_column": 29,
+        "end_line": 2,
+        "line": 2,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 34
+      }
+    },
+    {
+      "kind": "message",
+      "name": {
+        "name": "ModelChangeRefused",
+        "node": "Identifier",
+        "span": {
+          "column": 9,
+          "end": 89,
+          "end_column": 27,
+          "end_line": 3,
+          "line": 3,
+          "node": "Span",
+          "source": "Contracts/ModelGovernance.design",
+          "start": 71
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 90,
+        "end_column": 28,
+        "end_line": 3,
+        "line": 3,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 63
+      }
+    },
+    {
+      "kind": "unit",
+      "name": {
+        "name": "ModelCommandAdapter",
+        "node": "Identifier",
+        "span": {
+          "column": 6,
+          "end": 108,
+          "end_column": 25,
+          "end_line": 4,
+          "line": 4,
+          "node": "Span",
+          "source": "Containers/SdpToolHost/ModelGovernance.design",
+          "start": 89
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 109,
+        "end_column": 26,
+        "end_line": 4,
+        "line": 4,
+        "node": "Span",
+        "source": "Containers/SdpToolHost/ModelGovernance.design",
+        "start": 84
+      }
+    },
+    {
+      "kind": "unit",
+      "name": {
+        "name": "ModelCoordinator",
+        "node": "Identifier",
+        "span": {
+          "column": 6,
+          "end": 131,
+          "end_column": 22,
+          "end_line": 5,
+          "line": 5,
+          "node": "Span",
+          "source": "Containers/SdpToolHost/ModelGovernance.design",
+          "start": 115
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 132,
+        "end_column": 23,
+        "end_line": 5,
+        "line": 5,
+        "node": "Span",
+        "source": "Containers/SdpToolHost/ModelGovernance.design",
+        "start": 110
+      }
+    },
+    {
+      "kind": "mode",
+      "name": {
+        "name": "ModelEditing",
+        "node": "Identifier",
+        "span": {
+          "column": 6,
+          "end": 223,
+          "end_column": 18,
+          "end_line": 8,
+          "line": 8,
+          "node": "Span",
+          "source": "Features/ModelGovernance.design",
+          "start": 211
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 224,
+        "end_column": 19,
+        "end_line": 8,
+        "line": 8,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 206
+      }
+    },
+    {
+      "kind": "feature",
+      "name": {
+        "name": "ModelGovernance",
+        "node": "Identifier",
+        "span": {
+          "column": 9,
+          "end": 248,
+          "end_column": 24,
+          "end_line": 9,
+          "line": 9,
+          "node": "Span",
+          "source": "Features/ModelGovernance.design",
+          "start": 233
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 249,
+        "end_column": 25,
+        "end_line": 9,
+        "line": 9,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 225
+      }
+    },
+    {
+      "kind": "activity",
+      "name": {
+        "name": "ModelGovernanceDelivery",
+        "node": "Identifier",
+        "span": {
+          "column": 10,
+          "end": 282,
+          "end_column": 33,
+          "end_line": 10,
+          "line": 10,
+          "node": "Span",
+          "source": "Features/ModelGovernance.design",
+          "start": 259
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 283,
+        "end_column": 34,
+        "end_line": 10,
+        "line": 10,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 250
+      }
+    },
+    {
+      "kind": "capability",
+      "name": {
+        "name": "ModelIntegration",
+        "node": "Identifier",
+        "span": {
+          "column": 12,
+          "end": 311,
+          "end_column": 28,
+          "end_line": 11,
+          "line": 11,
+          "node": "Span",
+          "source": "Features/ModelGovernance.design",
+          "start": 295
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 312,
+        "end_column": 29,
+        "end_line": 11,
+        "line": 11,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 284
+      }
+    },
+    {
+      "kind": "actor",
+      "name": {
+        "name": "ModelIntegrator",
+        "node": "Identifier",
+        "span": {
+          "column": 7,
+          "end": 334,
+          "end_column": 22,
+          "end_line": 12,
+          "line": 12,
+          "node": "Span",
+          "source": "Features/ModelGovernance.design",
+          "start": 319
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 335,
+        "end_column": 23,
+        "end_line": 12,
+        "line": 12,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 313
+      }
+    },
+    {
+      "kind": "contract",
+      "name": {
+        "name": "ModelOperationProtocol",
+        "node": "Identifier",
+        "span": {
+          "column": 10,
+          "end": 122,
+          "end_column": 32,
+          "end_line": 4,
+          "line": 4,
+          "node": "Span",
+          "source": "Contracts/ModelGovernance.design",
+          "start": 100
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 123,
+        "end_column": 33,
+        "end_line": 4,
+        "line": 4,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 91
+      }
+    },
+    {
+      "kind": "contract",
+      "name": {
+        "name": "ModelOperationRequest",
+        "node": "Identifier",
+        "span": {
+          "column": 10,
+          "end": 154,
+          "end_column": 31,
+          "end_line": 5,
+          "line": 5,
+          "node": "Span",
+          "source": "Contracts/ModelGovernance.design",
+          "start": 133
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 155,
+        "end_column": 32,
+        "end_line": 5,
+        "line": 5,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 124
+      }
+    },
+    {
+      "kind": "field",
+      "name": {
+        "name": "ModelOperationRequestAction",
+        "node": "Identifier",
+        "span": {
+          "column": 7,
+          "end": 189,
+          "end_column": 34,
+          "end_line": 6,
+          "line": 6,
+          "node": "Span",
+          "source": "Contracts/ModelGovernance.design",
+          "start": 162
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 190,
+        "end_column": 35,
+        "end_line": 6,
+        "line": 6,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 156
+      }
+    },
+    {
+      "kind": "field",
+      "name": {
+        "name": "ModelOperationRequestExpectedHead",
+        "node": "Identifier",
+        "span": {
+          "column": 7,
+          "end": 230,
+          "end_column": 40,
+          "end_line": 7,
+          "line": 7,
+          "node": "Span",
+          "source": "Contracts/ModelGovernance.design",
+          "start": 197
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 231,
+        "end_column": 41,
+        "end_line": 7,
+        "line": 7,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 191
+      }
+    },
+    {
+      "kind": "field",
+      "name": {
+        "name": "ModelOperationRequestInputDigest",
+        "node": "Identifier",
+        "span": {
+          "column": 7,
+          "end": 270,
+          "end_column": 39,
+          "end_line": 8,
+          "line": 8,
+          "node": "Span",
+          "source": "Contracts/ModelGovernance.design",
+          "start": 238
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 271,
+        "end_column": 40,
+        "end_line": 8,
+        "line": 8,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 232
+      }
+    },
+    {
+      "kind": "contract",
+      "name": {
+        "name": "ModelOperationResult",
+        "node": "Identifier",
+        "span": {
+          "column": 10,
+          "end": 301,
+          "end_column": 30,
+          "end_line": 9,
+          "line": 9,
+          "node": "Span",
+          "source": "Contracts/ModelGovernance.design",
+          "start": 281
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 302,
+        "end_column": 31,
+        "end_line": 9,
+        "line": 9,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 272
+      }
+    },
+    {
+      "kind": "field",
+      "name": {
+        "name": "ModelOperationResultDisposition",
+        "node": "Identifier",
+        "span": {
+          "column": 7,
+          "end": 340,
+          "end_column": 38,
+          "end_line": 10,
+          "line": 10,
+          "node": "Span",
+          "source": "Contracts/ModelGovernance.design",
+          "start": 309
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 341,
+        "end_column": 39,
+        "end_line": 10,
+        "line": 10,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 303
+      }
+    },
+    {
+      "kind": "field",
+      "name": {
+        "name": "ModelOperationResultHead",
+        "node": "Identifier",
+        "span": {
+          "column": 7,
+          "end": 372,
+          "end_column": 31,
+          "end_line": 11,
+          "line": 11,
+          "node": "Span",
+          "source": "Contracts/ModelGovernance.design",
+          "start": 348
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 373,
+        "end_column": 32,
+        "end_line": 11,
+        "line": 11,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 342
+      }
+    },
+    {
+      "kind": "field",
+      "name": {
+        "name": "ModelOperationResultSourceDigest",
+        "node": "Identifier",
+        "span": {
+          "column": 7,
+          "end": 412,
+          "end_column": 39,
+          "end_line": 12,
+          "line": 12,
+          "node": "Span",
+          "source": "Contracts/ModelGovernance.design",
+          "start": 380
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 413,
+        "end_column": 40,
+        "end_line": 12,
+        "line": 12,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 374
+      }
+    },
+    {
+      "kind": "channel",
+      "name": {
+        "name": "ModelOperations",
+        "node": "Identifier",
+        "span": {
+          "column": 9,
+          "end": 437,
+          "end_column": 24,
+          "end_line": 13,
+          "line": 13,
+          "node": "Span",
+          "source": "Contracts/ModelGovernance.design",
+          "start": 422
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 438,
+        "end_column": 25,
+        "end_line": 13,
+        "line": 13,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 414
+      }
+    },
+    {
+      "kind": "unit",
+      "name": {
+        "name": "ModelValidator",
+        "node": "Identifier",
+        "span": {
+          "column": 6,
+          "end": 152,
+          "end_column": 20,
+          "end_line": 6,
+          "line": 6,
+          "node": "Span",
+          "source": "Containers/SdpToolHost/ModelGovernance.design",
+          "start": 138
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 153,
+        "end_column": 21,
+        "end_line": 6,
+        "line": 6,
+        "node": "Span",
+        "source": "Containers/SdpToolHost/ModelGovernance.design",
+        "start": 133
+      }
+    },
+    {
+      "kind": "usecase",
+      "name": {
+        "name": "PublishModelCandidate",
+        "node": "Identifier",
+        "span": {
+          "column": 9,
+          "end": 365,
+          "end_column": 30,
+          "end_line": 13,
+          "line": 13,
+          "node": "Span",
+          "source": "Features/ModelGovernance.design",
+          "start": 344
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 366,
+        "end_column": 31,
+        "end_line": 13,
+        "line": 13,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 336
+      }
+    },
+    {
+      "kind": "usecase",
+      "name": {
+        "name": "RecoverWorkingModel",
+        "node": "Identifier",
+        "span": {
+          "column": 9,
+          "end": 394,
+          "end_column": 28,
+          "end_line": 14,
+          "line": 14,
+          "node": "Span",
+          "source": "Features/ModelGovernance.design",
+          "start": 375
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 395,
+        "end_column": 29,
+        "end_line": 14,
+        "line": 14,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 367
+      }
+    },
+    {
+      "kind": "scenario",
+      "name": {
+        "name": "RejectStaleModelChange",
+        "node": "Identifier",
+        "span": {
+          "column": 10,
+          "end": 470,
+          "end_column": 32,
+          "end_line": 14,
+          "line": 14,
+          "node": "Span",
+          "source": "Contracts/ModelGovernance.design",
+          "start": 448
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 471,
+        "end_column": 33,
+        "end_line": 14,
+        "line": 14,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 439
+      }
+    },
+    {
+      "kind": "message",
+      "name": {
+        "name": "RequestModelChange",
+        "node": "Identifier",
+        "span": {
+          "column": 9,
+          "end": 498,
+          "end_column": 27,
+          "end_line": 15,
+          "line": 15,
+          "node": "Span",
+          "source": "Contracts/ModelGovernance.design",
+          "start": 480
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 499,
+        "end_column": 28,
+        "end_line": 15,
+        "line": 15,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 472
+      }
+    },
+    {
+      "kind": "functionality",
+      "name": {
+        "name": "RestoreCheckpoint",
+        "node": "Identifier",
+        "span": {
+          "column": 15,
+          "end": 427,
+          "end_column": 32,
+          "end_line": 15,
+          "line": 15,
+          "node": "Span",
+          "source": "Features/ModelGovernance.design",
+          "start": 410
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 428,
+        "end_column": 33,
+        "end_line": 15,
+        "line": 15,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 396
+      }
+    },
+    {
+      "kind": "system",
+      "name": {
+        "name": "SDPTool",
+        "node": "Identifier",
+        "span": {
+          "column": 8,
+          "end": 48,
+          "end_column": 15,
+          "end_line": 2,
+          "line": 2,
+          "node": "Span",
+          "source": "ModelGovernance.design",
+          "start": 41
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 49,
+        "end_column": 16,
+        "end_line": 2,
+        "line": 2,
+        "node": "Span",
+        "source": "ModelGovernance.design",
+        "start": 34
+      }
+    },
+    {
+      "kind": "functionality",
+      "name": {
+        "name": "SaveCheckpoint",
+        "node": "Identifier",
+        "span": {
+          "column": 15,
+          "end": 457,
+          "end_column": 29,
+          "end_line": 16,
+          "line": 16,
+          "node": "Span",
+          "source": "Features/ModelGovernance.design",
+          "start": 443
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 458,
+        "end_column": 30,
+        "end_line": 16,
+        "line": 16,
+        "node": "Span",
+        "source": "Features/ModelGovernance.design",
+        "start": 429
+      }
+    },
+    {
+      "kind": "scenario",
+      "name": {
+        "name": "SaveModelCheckpoint",
+        "node": "Identifier",
+        "span": {
+          "column": 10,
+          "end": 528,
+          "end_column": 29,
+          "end_line": 16,
+          "line": 16,
+          "node": "Span",
+          "source": "Contracts/ModelGovernance.design",
+          "start": 509
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 529,
+        "end_column": 30,
+        "end_line": 16,
+        "line": 16,
+        "node": "Span",
+        "source": "Contracts/ModelGovernance.design",
+        "start": 500
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SdlValidationLibrary",
+        "node": "Identifier",
+        "span": {
+          "column": 11,
+          "end": 184,
+          "end_column": 31,
+          "end_line": 7,
+          "line": 7,
+          "node": "Span",
+          "source": "Containers/SdpToolHost/ModelGovernance.design",
+          "start": 164
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 185,
+        "end_column": 32,
+        "end_line": 7,
+        "line": 7,
+        "node": "Span",
+        "source": "Containers/SdpToolHost/ModelGovernance.design",
+        "start": 154
+      }
+    },
+    {
+      "kind": "container",
+      "name": {
+        "name": "SdpToolHost",
+        "node": "Identifier",
+        "span": {
+          "column": 11,
+          "end": 207,
+          "end_column": 22,
+          "end_line": 8,
+          "line": 8,
+          "node": "Span",
+          "source": "Containers/SdpToolHost/ModelGovernance.design",
+          "start": 196
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 208,
+        "end_column": 23,
+        "end_line": 8,
+        "line": 8,
+        "node": "Span",
+        "source": "Containers/SdpToolHost/ModelGovernance.design",
+        "start": 186
+      }
+    },
+    {
+      "kind": "interface",
+      "name": {
+        "name": "SduiValidationLibrary",
+        "node": "Identifier",
+        "span": {
+          "column": 11,
+          "end": 240,
+          "end_column": 32,
+          "end_line": 9,
+          "line": 9,
+          "node": "Span",
+          "source": "Containers/SdpToolHost/ModelGovernance.design",
+          "start": 219
+        }
+      },
+      "node": "Declaration",
+      "span": {
+        "column": 1,
+        "end": 241,
+        "end_column": 33,
+        "end_line": 9,
+        "line": 9,
+        "node": "Span",
+        "source": "Containers/SdpToolHost/ModelGovernance.design",
+        "start": 209
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "ModelGovernance.design",
+      "to": "Containers/SdpToolHost/ModelGovernance.design",
+      "span": {
+        "source": "ModelGovernance.design",
+        "start": 50,
+        "end": 107,
+        "line": 3,
+        "column": 1,
+        "end_line": 3,
+        "end_column": 58
+      }
+    },
+    {
+      "from": "ModelGovernance.design",
+      "to": "Contracts/ModelGovernance.design",
+      "span": {
+        "source": "ModelGovernance.design",
+        "start": 108,
+        "end": 152,
+        "line": 4,
+        "column": 1,
+        "end_line": 4,
+        "end_column": 45
+      }
+    },
+    {
+      "from": "ModelGovernance.design",
+      "to": "Features/ModelGovernance.design",
+      "span": {
+        "source": "ModelGovernance.design",
+        "start": 153,
+        "end": 196,
+        "line": 5,
+        "column": 1,
+        "end_line": 5,
+        "end_column": 44
+      }
+    }
+  ],
+  "profile": "design-core/0.6",
+  "revision": "a4844c717e9ef27849ddda5efe01a27664359a07b910568f89ad3e6c73c99ae6",
+  "schema": "sdl-source-provenance/1",
+  "sources": [
+    {
+      "path": "Containers/SdpToolHost/ModelGovernance.design",
+      "sha256": "3cc79f9f53c56b4ff8d3593ade087c3b8ed49d5fafd63f697055cc761382dd62"
+    },
+    {
+      "path": "Contracts/ModelGovernance.design",
+      "sha256": "6aadfafeb634f8a1eb3e839ae751f1a6cef0bfd86491901dd3295db32501f5f1"
+    },
+    {
+      "path": "Features/ModelGovernance.design",
+      "sha256": "17f941eedcaced8c5c9bbcaffbf1f9dae2512d84112ca7fda79ce8938573e1a5"
+    },
+    {
+      "path": "ModelGovernance.design",
+      "sha256": "417c31b12307a0eeee771fcc813d20f059013f6b596d9f89efd7b1d080e121a2"
+    }
+  ],
+  "system": "SDPTool"
+}

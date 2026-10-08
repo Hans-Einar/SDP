@@ -19,9 +19,19 @@ func Data(value any) any {
 		for _, x := range v.Statements {
 			s = append(s, Data(x))
 		}
-		return map[string]any{"node": "Model", "header": Data(v.Header), "declarations": d, "statements": s, "span": Data(v.Span)}
+		out := map[string]any{"node": "Model", "header": Data(v.Header), "declarations": d, "statements": s, "span": Data(v.Span)}
+		if v.Header.Version == "0.6" {
+			out["includes"] = Data(v.Includes)
+		}
+		return out
+	case Include:
+		return map[string]any{"path": v.Path, "span": Data(v.Span)}
 	case Span:
-		return map[string]any{"node": "Span", "start": v.Start, "end": v.End, "line": v.Line, "column": v.Column, "end_line": v.EndLine, "end_column": v.EndColumn}
+		out := map[string]any{"node": "Span", "start": v.Start, "end": v.End, "line": v.Line, "column": v.Column, "end_line": v.EndLine, "end_column": v.EndColumn}
+		if v.Source != "" {
+			out["source"] = v.Source
+		}
+		return out
 	case Identifier:
 		return map[string]any{"node": "Identifier", "name": v.Name, "span": Data(v.Span)}
 	case Integer:
@@ -52,6 +62,10 @@ func Data(value any) any {
 			fields = map[string]any{"channel": v.Channel, "role": v.Role, "message": v.Message, "mode": v.Mode}
 		case "Step":
 			fields = map[string]any{"ordinal": v.Ordinal, "message": v.Message, "variant": v.Variant, "sender": v.Sender, "receiver": v.Receiver, "channel": v.Channel, "reply_to": v.ReplyTo}
+		}
+		if v.Path != "" {
+			m["path"] = v.Path
+			m["path_span"] = Data(v.PathSpan)
 		}
 		for key, x := range fields {
 			m[key] = Data(x)

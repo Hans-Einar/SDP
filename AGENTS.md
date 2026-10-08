@@ -75,12 +75,17 @@ to future work. Use kanban status/state for listing; there is no separate gate f
 ## Systems and shared process ownership
 
 Owner decision of 2026-09-25: SDL, SDUI and SDPTool are three separate software
-systems documented in the shared root SDP area. Do not create a full parallel
+systems documented in the shared root SDP area. The owner refinement of
+2026-09-29 treats SDL and SDUI as ecosystems of separately modeled tools, alongside
+ProjectGovernance. See SDP/03--Architecture/Ecosystems/Decisions.md for current
+boundaries and existing binary versus proposed extraction distinctions.
+Do not create a full parallel
 process tree per language/system. The shared board is SDP/KanBan; earlier SDL/SDUI board histories are frozen
 under SDP/ProjectManagement/History with a byte-preserving import map. Group
 architecture/design sources by system and actual container responsibility;
-shared libraries are not automatically runtime containers. System is a selected
-design concept, not yet implemented syntax in design-core 0.5.
+shared libraries are not automatically runtime containers. System is implemented by the bounded design-core 0.6 source-composition profile;
+0.5 remains single-file. Read SDL/docs/profiles/SDL-Source-Composition-Profile.md
+before authoring composed models; other experimental System syntax is not implied.
 XFMD is a collaborating system with its own SDP area in its repository. Its
 process bootstrap and adoption card do not authorize XFMD application changes
 from this workstream. See SDP/03--Architecture/System-Boundaries-study.md.
@@ -110,7 +115,27 @@ create a second collection or imply that discovery proves actual loading.
 ## SDL source convention
 
 For new system model work, read SDP/SDL/README.md and SDP/SDL/AGENTS.md.
-Use SDP/SDL/<System>/ as the source home; numbered folders hold process documents
+Use SDP/SDL/<Ecosystem>/<System>/ as the source home (owner refinement 2026-09-29); numbered folders hold process documents
 and derived views. Existing models remain in their current authoritative locations
 until an explicit migration. The MVP1 experiment is a reference layout, not proof
 that the released parser supports its experimental profile.
+
+## Sessions and release preparation
+
+For goals spanning turns/plans, read SDP/Sessions/README.md and recover the current
+roadmap. For every release, instantiate Toolkit/docs/ReleaseChecklist.md and record
+actual inventory, descriptor, predecessor-upgrade and publication evidence. Generate
+per-version logs with sdptool release-log from canonical RELEASE-NOTES.md. File
+presence and a local rehearsal do not prove a published release is installable.
+
+### Mandatory Session upkeep — owner decision 2026-10-02
+
+For every substantive turn within a multi-turn SDP goal, recover and update its
+Session file, including discussion-only turns. Before returning, record the owner
+input, decisions/corrections, work outcome, loaded routines/skills, affected steps
+and next step. Keep roadmap and plan/card projections current. A card or study
+update does not replace the Session journal. Reuse the active Session; if none
+exists for the goal, create one and link its primary card. Clearly label late
+registration and reconstructed summaries; never invent exact transcripts, host
+IDs or timestamps. Record the current result as a work summary, not as an already
+captured final response. Trivial unrelated answers do not require a new Session.

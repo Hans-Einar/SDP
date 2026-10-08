@@ -1,0 +1,3 @@
+Display: :190
+Engine: xkb:us::eng
+Command argv: ['python3', 'SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_helper_ime.py', '--binary', '/tmp/wci4-helpers-pilot/libexec/xfmd/sdui-fyne', '--display', ':190', '--out', '/tmp/wci4-helper-ime-pilot3']

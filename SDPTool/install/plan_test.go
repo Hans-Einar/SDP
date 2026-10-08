@@ -245,3 +245,34 @@ func TestAdoptionNestedMarkdownAncestorsStable(t *testing.T) {
 		t.Fatal(p.Conflicts, e)
 	}
 }
+
+func TestInstallDoesNotCreateOrEditLegacyNavigation(t *testing.T) {
+	for _, legacy := range []bool{false, true} {
+		root := t.TempDir()
+		original := []byte("historical, not valid JSON")
+		if legacy {
+			put(t, root, "SDP/navigation.json", original)
+		}
+		a := artifact(t, fixture())
+		var p Plan
+		var e error
+		if legacy {
+			in, _ := LocalInput(a, true)
+			m := adoption(t, root, in, []Move{}, []string{})
+			p, e = Preview(Options{root, "upgrade", a, "", m, true})
+		} else {
+			p, e = Preview(Options{root, "install", a, "", "", true})
+		}
+		if e != nil {
+			t.Fatal(e)
+		}
+		if !p.CanApply {
+			t.Fatal(p.Conflicts)
+		}
+		for _, action := range p.Actions {
+			if action.Path == "SDP/navigation.json" {
+				t.Fatal("legacy index must be untouched", action)
+			}
+		}
+	}
+}

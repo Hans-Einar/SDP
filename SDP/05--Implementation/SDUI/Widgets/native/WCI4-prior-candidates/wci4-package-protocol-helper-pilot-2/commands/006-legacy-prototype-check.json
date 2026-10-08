@@ -1,0 +1,25 @@
+{
+  "name": "legacy-prototype-check",
+  "argv": [
+    "/tmp/wci4-helpers-pilot/libexec/xfmd/sdui-preview",
+    "-source",
+    "/tmp/wci4-package-protocol-helper-pilot-2/native legacy project with spaces/Page å with spaces.sdui",
+    "-entry",
+    "Main",
+    "-revision",
+    "d4dfa11001a97903f2757055440ec7730caffdb4090e78cef4bbbf8f65a8e33b",
+    "-check"
+  ],
+  "cwd": "/tmp/wci4-package-protocol-helper-pilot-2",
+  "binarySha256": "fa1a3bac44e0a13e76ff1229ccfa1b931075e00be281dc38b2b1f38262930d28",
+  "displayEnvironment": "DISPLAY/WAYLAND_DISPLAY removed",
+  "expected": "success",
+  "exit": 0,
+  "timeout": false,
+  "seconds": 0.06710696220397949,
+  "stdout": "commands/006-legacy-prototype-check.stdout",
+  "stderr": "commands/006-legacy-prototype-check.stderr",
+  "stdoutSha256": "a80c3ca64d7c9882cdaabafa0df9a63103aabdb1f4bd09568b684c3fc55f24a6",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "binaryUnchanged": true
+}

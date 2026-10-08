@@ -10,7 +10,8 @@
 | source | SCRUM-SDP-0001; owner-conversation-2026-09-25 |
 | ScrumId | SCRUM-SDP-0002 |
 | Systems | SDL |
-| next_review | After MAINT-SDP-0001, before selecting the next implementation |
+| next_review | When selecting cross-System imports/exports or model migration |
+| PlanId | PLAN-SDP-0012 |
 
 ## Bounded delivery
 
@@ -37,7 +38,7 @@ contract checked against existing Go consumers. No sprint is selected by this Sc
 ## Lineage
 
 KBO-SDP-000003 splits [KB-SDL-004](../superseded/%23004--SDL--Change--Language-source-organization.md).
-This card owns language/input/tool behavior; [KB-SDP-020](%23020--Change--Shared-design-source-organization.md)
+This card owns language/input/tool behavior; [KB-SDP-020](../backlog/%23020--Change--Shared-design-source-organization.md)
 owns the subsequent document/model migration. Nothing from the original scope is
 claimed implemented by this split. Work in a phase branch with milestone evidence.
 
@@ -58,3 +59,99 @@ future source-set support still depends on this contract before model migration.
 The owner-authorized MVP1 pilot (PLAN-SDP-0005) now preserves 4,523 statements across 68 explicitly listed files with separate UI containers. Full navigation still requires System/source-set linking AND decisions on the candidate exercise profile; source assembly alone is insufficient. Revisions must cover all inputs. Do not use the inventory auditor as an SDL parser.
 
 [Pilot and navigation handoff](../../../experiments/mvp1_sdl/Navigation.md).
+
+## Ecosystem modeling outcome — 2026-09-29
+
+[PLAN-SDP-0008](../../03--Architecture/Ecosystems/Plan.md) now provides 17 small independent system models and an integration context model using current design-core 0.5. Real System/source-set linking is still absent. This corpus is a useful additional acceptance input: preserve standalone diagnostics/navigation, link declared public boundaries explicitly, and permit coherent per-system file splitting without an ad hoc preprocessor. The untracked sourceinput draft remains untouched and unadopted.
+
+## XFMD gap study input — 2026-09-29
+
+[Study and proposed acceptance](../../02--Requirements/XFMD-Gaps/Study.md).
+
+SDL-001: retain explicit membership, original-source diagnostics and all-input revisions; verify both checker and navigation against the same source graph. The untracked draft remains unadopted.
+
+EVT-KB-SDL-000030: CardState remains backlog; this review selects no implementation.
+
+## Session proposal — 2026-09-30
+
+[KB042](../backlog/%23042--Proposal--Goal-oriented-sessions-and-roadmaps.md) and
+[proposed SDL Session](../../Sessions/session-%230001--SDL_expansion.md).
+
+The provisional SDL-expansion Session links this primary card to proposed design, implementation and verification steps. It is a roadmap, not execution authorization.
+
+EVT-KB-SDL-000033: Existing CardState and execution selection unchanged.
+
+## Session S1 execution — 2026-09-30
+
+The owner selected the next Session step. Execute
+[PLAN-SDP-0010](../../04--Design/SDL/SourceSets/Plan.md) on the design phase branch.
+CardState is in-progress while defining the bounded System/source-set contract.
+Language implementation and model migration remain later steps, not delivered.
+
+EVT-KB-SDL-000034 records activation; the previous proposal notes are history.
+
+## SSD1-M1 handoff — 2026-09-30
+
+[Contract](../../04--Design/SDL/SourceSets/Contract.md),
+[acceptance cases](../../04--Design/SDL/SourceSets/Acceptance.md) and
+[evidence](../../04--Design/SDL/SourceSets/Evidence.md) complete Session S1.
+Recommended initial delivery: design-core/0.6 System scope and explicit
+sdl-source-set/0.1 inputs; preserve current standalone 0.5. No implementation exists
+yet. Public cross-System linking/exports are deliberately not smuggled into file
+assembly; they remain this card's obligation until implemented or explicitly split
+with preserved lineage. KB-SDP-020 migration remains deferred.
+
+CardState ready is the recorded handoff to Session S2 implementation planning.
+This card remains active because its selected delivery is unfinished, not merely
+to point at unrelated future work. EVT-KB-SDL-000035 records this handoff.
+
+## Owner correction — source-owned membership, 2026-09-30
+
+The owner rejects a separate authored design-set manifest: it duplicates maintenance
+and can drift from the SDL source. Source files must control inclusion. The example
+`System NVP1 contains Container/MachineService` should locate
+`Container/MachineService.design`. System membership includes containers, channels,
+contracts and other modeled elements. Exact spelling is a design proposal, not
+implemented grammar. The earlier source-tree study and experimental MVP1 already
+placed inclusion in SDL; SSD1's external manifest was an agent recommendation.
+
+Execute [PLAN-SDP-0011](../../04--Design/SDL/SourceComposition/Plan.md) to replace
+that recommendation, define repeated/cyclic loading and update the Session before
+S2. Keep original SSD1 delivery/evidence as historical records. No parser code is
+selected by this correction. EVT-KB-SDL-000036 records in-progress.
+
+## SSD2-M1 handoff — 2026-09-30
+
+[Current design](../../04--Design/SDL/SourceComposition/Contract.md) replaces the
+external-manifest path with source includes and path-addressed System membership.
+Load-once assembly preserves file ASTs and handles repeated/cyclic source edges;
+semantic duplicate definitions and invalid model cycles still fail. Detailed syntax
+and policies remain recommendations. Original SSD1 evidence is retained, with
+supersession notices on its contract/acceptance. CardState returns to ready at the
+S2 handoff; no parser implementation is claimed. EVT-KB-SDL-000037.
+
+## Late-root AST refinement — 2026-09-30
+
+[KB-SDL-007](../completed/%23007--SDL--Proposal--Composable-file-ASTs-and-contextual-analysis.md)
+captures the owner-endorsed AST-forest/contextual-analysis direction and DAST
+explanation from Session T008/T009. S2 must decide its bounded integration with
+this source-composition delivery, including partial diagnostics and root context.
+No implementation is selected merely by registering the proposal. CardState stays
+ready; EVT-KB-SDL-000039. No separate parser or implicit System inference is intended.
+
+## Session 0001 closeout — SSI3-M1
+
+[PLAN-SDP-0012](../../05--Implementation/SDL/SourceComposition/Plan.md) and
+[evidence](../../05--Implementation/SDL/SourceComposition/Evidence.md) deliver
+design-core 0.6 System, source-owned includes/path contains, reusable file syntax,
+context-specific checking and graph-aware CLI/viewpoints/broker/SDPTool consumers.
+Independent review accepted the corrected product scope. The selected Session
+increment is complete; preceding proposal/status notes are historical snapshots.
+
+Remaining card scope: public cross-System imports/exports, visibility and explicit
+landscape references. These need their own selected plan; source assembly does not
+implement them. This is why the card returns to backlog rather than falsely closing
+its broader historical scope or remaining active with no current work.
+[KB-SDP-020](%23020--Change--Shared-design-source-organization.md) owns actual model
+migration; current registrations and authoritative models were preserved. The
+experimental MVP1 language still exceeds this bounded profile.

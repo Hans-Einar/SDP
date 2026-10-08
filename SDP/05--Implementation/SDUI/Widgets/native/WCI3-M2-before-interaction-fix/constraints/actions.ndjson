@@ -1,0 +1,49 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci3-m2-final-native", "sha256": "0078f72eec7fe61bd41a1b090bb7ca2f26ba48c3a1e54c4eff6bd240c010f001", "display": ":190", "variant": "wci3-constraints"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "set Single empty"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "constraint Single required"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "new required constraint rejects accepted blank baseline", "passed": true}}
+{"kind": "fixture-command", "value": "set Multi crlf"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "programmatic multiline text preserves CRLF bytes", "passed": true}}
+{"kind": "fixture-command", "value": "constraint Multi single"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "single-line conversion rejects accepted CRLF without replacement", "passed": true}}
+{"kind": "fixture-command", "value": "set Multi empty"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "click", "values": [377, 346], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-clipboard-set", "value": "alpha\nBl\u00e5b\u00e6r \u65e5\u672c\u8a9e \ud83d\ude42 e\u0301\nomega"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "v"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "constraint Multi single"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "single-line conversion rejects surviving multiline draft", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "z"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "rejected conversion preserves native undo history", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "click", "values": [106, 16], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "click", "values": [550, 286], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-clipboard-set", "value": "alpha\nBl\u00e5b\u00e6r \u65e5\u672c\u8a9e \ud83d\ude42 e\u0301\nomega"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "v"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "constraint FormMulti single"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "closed-form successor discards unaccepted multiline draft before single-line conversion", "passed": true}}
+{"kind": "screenshot", "value": "text-constraint-recovery.png"}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

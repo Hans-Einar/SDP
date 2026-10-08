@@ -4,20 +4,20 @@
 | --- | --- |
 | id | PLAN-SDP-0001 |
 | project | SDP |
-| state | planned |
+| state | active |
 | PlanType | DesignPlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
 | Systems | SDL, SDPTOOL |
-| source | KB-SDP-031 / BP1 study recommendations |
+| source | KB-SDP-050 / KB-SDP-031 / BP1 study recommendations |
 
 ## Outcome and authority
 
 Turn the [BP1 findings](Study.md) into a reviewable contract for a small generated
 assignment bundle. [Worked example](Pilot.md) provides the initial real model and
-behavior boundary. This is the explicit successor to the Study; it is planned,
-not selected for execution by the request to perform BP1. Recommendations remain
-proposed until the owner selects the intended delivery and dispositions below.
+behavior boundary. This successor to the Study was selected on 2026-10-06.
+Contract recommendations remain proposed where specific owner disposition is
+not yet recorded; execution authority is distinct from approving every design choice.
 
 The output is a detailed design and a proportionate ImplementationPlan, not a
 production command, SDL grammar change or mandatory new project structure. Keep
@@ -25,8 +25,10 @@ one authored task authority and existing management/Traceability ownership.
 
 ## Git and scope
 
-If selected, start one working branch from then-current main; preserve the BP1
-study branch. Use milestone commits and the existing phase-push/PR authorization.
+2026-10-06 reconciliation: use the current ModelGovernance implementation branch
+for this bounded design milestone because its APIs are not yet on main. This revises
+the unexecuted main-based branch proposal; preserve the BP1 study history and
+concurrent ProjectGovernance edits. No shared branch switch is made. Use milestone commits and the existing phase-push/PR authorization.
 No merge or release is implied. No XFMD application change, Issue #7 adoption,
 source-set implementation, scheduling agent or automatic Go call-graph proof.
 Do not create a parallel ledger or mandatory per-Issue assignment hierarchy.
@@ -35,9 +37,9 @@ Do not create a parallel ledger or mandatory per-Issue assignment hierarchy.
 
 | Phase | Milestone | Observable acceptance | State |
 | --- | --- | --- | --- |
-| BP2-A — contract | BP2-A-M1 | Specify authored intent versus generated/observed facts; freeze identity, required inputs, gaps, NOW/TARGET and pinned before/after test baselines; define box/edge constraint marks; choose one owner-reviewed pilot with explicit invariants | Planned |
-| BP2-B — selection and evidence | BP2-B-M1 | Define complete modeled impact context, explicit unknown frontier, typed inclusion/exclusion and atomic contracts; demonstrate current/target union, removed-edge neighbor, cycle, missing provider, size overflow and stale inputs; specify SDL code-tag mappings and evidence references with KB-SDP-004 without claiming its full delivery | Planned |
-| BP2-C — executable handoff design | BP2-C-M1 | Specify Go library/SDPTool boundary, before/after verification, failure/publication behavior and annotated output; walk one authorized worker/reviewer through the bundle and a scope-violating change, recording observed results; write implementation slices with measurable acceptance | Planned |
+| BP2-A — contract | BP2-A-M1 | Specify authored intent versus generated/observed facts; freeze identity, required inputs, gaps, NOW/TARGET and pinned before/after test baselines; define box/edge constraint marks; choose one owner-reviewed pilot with explicit invariants | Partial: specimen ready; explicit pilot disposition pending |
+| BP2-B — selection and evidence | BP2-B-M1 | Define complete modeled impact context, explicit unknown frontier, typed inclusion/exclusion and atomic contracts; demonstrate current/target union, removed-edge neighbor, cycle, missing provider, size overflow and stale inputs; specify SDL code-tag mappings and evidence references with KB-SDP-004 without claiming its full delivery | Delivered BP2-B-M1 |
+| BP2-C — executable handoff design | BP2-C-M1 | Specify Go library/SDPTool boundary, before/after verification, failure/publication behavior and annotated output; walk one authorized worker/reviewer through the bundle and a scope-violating change, recording observed results; write implementation slices with measurable acceptance | Delivered BP2-C-M1; authored model trial only |
 
 Use the study probe as evidence input, not the production selector. Define any new
 fixture or API as proposed until selected. Do not require a live XFMD viewer to
@@ -49,7 +51,7 @@ if unavailable, report that evidence gap rather than simulating independent revi
 
 These are candidate vertical increments, not activated implementation phases.
 
-1. **One reproducible bundle:** one registered structural model, one authored task,
+1. **One reproducible bundle:** one source-discovered structural model, one authored task,
    existing contract documents, current/target identity, deterministic Markdown and
    manifest, validation failures and provenance. A headless consumer can inspect it.
 2. **Preserved context and change checks:** typed boundary rules, removed/added fact
@@ -67,8 +69,8 @@ SDL owns model semantics, and existing document publishers/renderers are reused.
 ## Dependencies, verification and completion
 
 KB-SDP-004 owns the general design/code/evidence contract. BP2 can represent unknown
-or directly cited evidence without inventing a replacement ledger. KB-SDL-005 owns
-multi-file source identity; the first pilot can remain single-file. KB-SDP-032/033
+or directly cited evidence without inventing a replacement ledger. Source composition is now implemented in design-core/0.6; this pilot exercises
+a composed model and ModelGovernance snapshots without registering source files. KB-SDP-032/033
 supply future navigation feedback/adoption experience rather than hard prerequisites.
 
 Completion requires a concrete reviewed design with explicit remaining decisions,
@@ -83,11 +85,51 @@ The [owner clarification](Study.md#owner-clarification-after-bp1--2026-09-26)
 requires the impacted environment, explicit box/connection marks, complete NOW
 and TARGET SDL snapshots, reproducible before/after code checks and SDL code tags.
 Study recommendations have not received a detailed owner review. TARGET is a
-working term; final naming and annotation syntax remain open. This plan stays
-planned and the producer contract/model remain unchanged.
+working term; final naming and annotation syntax remain open. At that historical checkpoint the plan remained planned. The later execution
+entries below supersede that lifecycle status; owner acceptance is still separate.
 
 Executable Channel tests and companion-language choices belong to
 [KB-SDL-006](../../../KanBan/backlog/%23006--SDL--Study--Executable-channel-tests-and-unit-bindings.md).
 Coordinate its eventual test/Unit binding contract; do not silently expand this
 DesignPlan into runtime implementation. The first blueprint can cite named tests
 and report missing executable mappings without claiming general SDL execution.
+
+## Execution — 2026-10-06
+
+Owner selects continuing KB050 in Session0008. BP2-A contract candidate and a
+reproducible reduced MVP1 pilot are delivered in Contract.md and
+experiments/blueprint_mvp1. Pilot-MVP1-evidence.json records real parser checks,
+model-only release -> dirty WORK -> candidate and ordinary generated viewpoints.
+The baseline/target distinction does not claim implemented Ponsse conformance.
+The specific extraction is agent-selected and still awaits owner feedback; no
+owner-reviewed pilot or production blueprint generator is claimed. BP2-A acceptance
+is therefore partial (contract/pilot ready, owner pilot disposition pending).
+Next executable design work: BP2-B selection/evidence rules and negative specimens;
+BP2-C and production implementation remain open.
+
+## BP2-B-M1 — 2026-10-07
+
+Delivered Selection-and-Evidence.md with versioned relation closure, NOW/TARGET
+union, atomic contract groups, exclusions/unknown frontier, PRESERVE checks and
+code/evidence references coordinated with KB004. Eight experiment tests pass over
+actual toolkit ASTs plus a labeled synthetic cycle fixture. The real parser accepts
+a missing channel receiver; selection reports that gap explicitly. Parser success
+also does not prevent the tested ownership drift. See Selection-evidence.json and
+Selection-tests.txt. No production producer or code-conformance claim.
+Next BP2-C API/publisher design and implementation slices; BP2-A pilot feedback
+remains pending rather than being inferred from the owner's continue instruction.
+
+## BP2-C execution — 2026-10-07
+
+Producer-and-Handoff.md specifies the pure SDL analysis API, ModelGovernance input
+capture, document publisher reuse, typed output, stale/failure behavior and separate
+preview/readiness/authorization states. Successor PLAN-SDP-0020 is planned under
+05--Implementation/SDPTool/Blueprints. No production API or CLI is implemented.
+The coordinator acted as Worker on temporary model copies from Trial-Assignment.md;
+both resulting candidates parse and their exact source hashes are retained in
+Trial-evidence.json. A separate negative control deliberately moves protected
+ownership. Reproduction through handoff_trial.py yields identical retained evidence.
+Independent review in Trial-review.md approves Candidate A, rejects the deliberate
+Candidate B ownership violation, and accepts the proposed handoff/implementation
+design. Production generated-bundle trials remain BPI3. BP2-A owner disposition
+is still open; the DesignPlan is not declared fully completed.

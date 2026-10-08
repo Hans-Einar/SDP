@@ -1,0 +1,40 @@
+[
+  {
+    "argv": [
+      "go",
+      "test",
+      "-race",
+      "./...",
+      "-count=1"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets/SDUI/go",
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOWORK": "off"
+    },
+    "exit": 0,
+    "name": "sdui",
+    "seconds": 248.335,
+    "sourceUnchanged": true
+  },
+  {
+    "argv": [
+      "go",
+      "test",
+      "-race",
+      "./examples/previews/...",
+      "-count=1"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOWORK": "off"
+    },
+    "exit": 0,
+    "name": "sdl-previews",
+    "seconds": 212.731,
+    "sourceUnchanged": true
+  }
+]

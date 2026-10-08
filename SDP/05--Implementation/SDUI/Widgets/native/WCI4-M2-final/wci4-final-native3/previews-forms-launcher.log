@@ -1,0 +1,12 @@
+PASS actual SDL Load publishes into extended readonly receiver
+PASS shared command publishes extended readonly result exactly once
+PASS shared shortcut invokes one SDL action with no automatic replay
+PASS ordinary text commit coexists with frozen previews
+PASS dialog mounts its own visible accessible artwork
+PASS Cancel detaches dialog preview and preserves prior child domain commit
+PASS rejected SDL Accept retains dialog draft and image
+PASS successful SDL Accept closes artwork with exactly two explicit calls
+PASS parent hide closes child preview without rerender
+PASS accepted reload closes old dialog and publishes a fresh main preview
+PASS five dialog openings each yield exactly one terminal receipt
+PASS native teardown closes session and clears provider barriers

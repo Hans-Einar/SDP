@@ -1,0 +1,14 @@
+{
+  "kind": "architecture-experiment-not-product-acceptance",
+  "upstreamModule": "github.com/go-gl/glfw/v3.4/glfw@v0.1.0-pre.1.0.20260707082822-2a407d02d01a",
+  "binaries": {
+    "probe-unpatched": "aac3594400cf3b953b2c5773f36fe2dfa9676a76fd90a096c6dc83918c9880c9",
+    "probe-patched": "93a08439aa1bb84cf28eee2926e65329376af9535920a1ad8d8a45b00b2ab8ff"
+  },
+  "rpmSHA256": {
+    "ibus-1.5.32-1.el10.x86_64.rpm": "6701f4bda07c78f0a2746c6545c93eae3290610c69ca0cd536f53ac9b1c98f1c",
+    "ibus-libs-1.5.32-1.el10.x86_64.rpm": "1941a173266ef27f568ed5adc353f0ccac545ab2c72316cb82ab831f26065429",
+    "ibus-libpinyin-1.15.7-3.el10.x86_64.rpm": "301b69def462d5bc1869f6d4c2c0a0a37b48678d5e87e172d54d2dda4edc2a86"
+  },
+  "patchedSourceSHA256": "6abb78832a233629e17c374088703b9c6266fb7f0bb935568098948f2bebde3a"
+}

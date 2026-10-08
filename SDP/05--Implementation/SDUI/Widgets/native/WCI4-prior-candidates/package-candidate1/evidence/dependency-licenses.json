@@ -1,0 +1,640 @@
+{
+  "goLicenseSHA256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+  "missing": [],
+  "modules": [
+    {
+      "buildRoots": [
+        "SDUI/go",
+        "SDL/go"
+      ],
+      "directory": "/home/warloc/go/pkg/mod/fyne.io/fyne/v2@v2.8.1",
+      "licenses": [
+        {
+          "path": "licenses/00/LICENSE",
+          "sha256": "68a1eafb90581708e62e1d269e7f6e92e6b0b5cdae93f45ede832d42912c7014",
+          "source": "/home/warloc/go/pkg/mod/fyne.io/fyne/v2@v2.8.1/LICENSE"
+        },
+        {
+          "path": "licenses/00/theme/font/LICENSE.txt",
+          "sha256": "c4910f5c1bcf2f7326f9fc3d33b7fc4eed7bf294374e3a17aaee64ceff0fb85b",
+          "source": "/home/warloc/go/pkg/mod/fyne.io/fyne/v2@v2.8.1/theme/font/LICENSE.txt"
+        },
+        {
+          "path": "licenses/00/theme/font/LICENSE_DejaVu-Powerline.txt",
+          "sha256": "a30f2466a95cd1eaeff6041692f43469edcca052d002e877015a819c6e31c194",
+          "source": "/home/warloc/go/pkg/mod/fyne.io/fyne/v2@v2.8.1/theme/font/LICENSE_DejaVu-Powerline.txt"
+        },
+        {
+          "path": "licenses/00/theme/font/LICENSE_EmojiOneColor.txt",
+          "sha256": "a79e11d824be724d362c8c143b4130889c66cf2ef47f16e5ad83bd796dd18183",
+          "source": "/home/warloc/go/pkg/mod/fyne.io/fyne/v2@v2.8.1/theme/font/LICENSE_EmojiOneColor.txt"
+        },
+        {
+          "path": "licenses/00/theme/font/LICENSE_Inter.txt",
+          "sha256": "4d7d9c95e7d7f2f0ebf76d5e0b344826b74e903a34028ee18ab54bb639e45906",
+          "source": "/home/warloc/go/pkg/mod/fyne.io/fyne/v2@v2.8.1/theme/font/LICENSE_Inter.txt"
+        }
+      ],
+      "module": "fyne.io/fyne/v2",
+      "replacement": null,
+      "version": "v2.8.1"
+    },
+    {
+      "buildRoots": [
+        "SDUI/go",
+        "SDL/go"
+      ],
+      "directory": "/home/warloc/go/pkg/mod/fyne.io/systray@v1.12.3-0.20260810170012-af4e8e793ec4",
+      "licenses": [
+        {
+          "path": "licenses/01/LICENSE",
+          "sha256": "a106bc9f4d5d7d91d5173e86d0864fcf061c33a30cc237710b8f4a05cf127021",
+          "source": "/home/warloc/go/pkg/mod/fyne.io/systray@v1.12.3-0.20260810170012-af4e8e793ec4/LICENSE"
+        }
+      ],
+      "module": "fyne.io/systray",
+      "replacement": null,
+      "version": "v1.12.3-0.20260810170012-af4e8e793ec4"
+    },
+    {
+      "buildRoots": [
+        "SDUI/go",
+        "SDL/go"
+      ],
+      "directory": "/home/warloc/go/pkg/mod/github.com/!burnt!sushi/toml@v1.6.0",
+      "licenses": [
+        {
+          "path": "licenses/02/COPYING",
+          "sha256": "d21cb1c60785d6d3a84a7059323ccafc45c645b1bbda281c76a62d66ad2d7dc3",
+          "source": "/home/warloc/go/pkg/mod/github.com/!burnt!sushi/toml@v1.6.0/COPYING"
+        },
+        {
+          "path": "licenses/02/cmd/toml-test-decoder/COPYING",
+          "sha256": "d21cb1c60785d6d3a84a7059323ccafc45c645b1bbda281c76a62d66ad2d7dc3",
+          "source": "/home/warloc/go/pkg/mod/github.com/!burnt!sushi/toml@v1.6.0/cmd/toml-test-decoder/COPYING"
+        },
+        {
+          "path": "licenses/02/cmd/toml-test-encoder/COPYING",
+          "sha256": "d21cb1c60785d6d3a84a7059323ccafc45c645b1bbda281c76a62d66ad2d7dc3",
+          "source": "/home/warloc/go/pkg/mod/github.com/!burnt!sushi/toml@v1.6.0/cmd/toml-test-encoder/COPYING"
+        },
+        {
+          "path": "licenses/02/cmd/tomlv/COPYING",
+          "sha256": "d21cb1c60785d6d3a84a7059323ccafc45c645b1bbda281c76a62d66ad2d7dc3",
+          "source": "/home/warloc/go/pkg/mod/github.com/!burnt!sushi/toml@v1.6.0/cmd/tomlv/COPYING"
+        }
+      ],
+      "module": "github.com/BurntSushi/toml",
+      "replacement": null,
+      "version": "v1.6.0"
+    },
+    {
+      "buildRoots": [
+        "SDUI/go",
+        "SDL/go"
+      ],
+      "directory": "/home/warloc/go/pkg/mod/github.com/!fysh!o!s/fancyfs@v0.0.1",
+      "licenses": [
+        {
+          "path": "licenses/03/LICENSE",
+          "sha256": "6df86a72d288d232476070e4534f35fcec1dd830ad303d76c7f577e271a369d2",
+          "source": "/home/warloc/go/pkg/mod/github.com/!fysh!o!s/fancyfs@v0.0.1/LICENSE"
+        }
+      ],
+      "module": "github.com/FyshOS/fancyfs",
+      "replacement": null,
+      "version": "v0.0.1"
+    },
+    {
+      "buildRoots": [
+        "SDPTool"
+      ],
+      "directory": "/tmp/sdp-sdui-widgets/SDPTool",
+      "licenseScope": "Project source; no repository-wide license grant asserted by this preparation.",
+      "licenses": [],
+      "module": "github.com/Hans-Einar/SDP/SDPTool",
+      "replacement": null,
+      "version": ""
+    },
+    {
+      "buildRoots": [
+        "SDPTool"
+      ],
+      "directory": "/tmp/sdp-sdui-widgets/SDPTool/bootstrap",
+      "licenseScope": "Project source; no repository-wide license grant asserted by this preparation.",
+      "licenses": [],
+      "module": "github.com/Hans-Einar/SDP/SDPTool/bootstrap",
+      "replacement": {
+        "Dir": "/tmp/sdp-sdui-widgets/SDPTool/bootstrap",
+        "GoMod": "/tmp/sdp-sdui-widgets/SDPTool/bootstrap/go.mod",
+        "GoVersion": "1.26.0",
+        "Path": "./bootstrap"
+      },
+      "version": "v0.0.0"
+    },
+    {
+      "buildRoots": [
+        "SDPTool",
+        "SDL/go"
+      ],
+      "directory": "/tmp/sdp-sdui-widgets/SDUI/go",
+      "licenseScope": "Project source; no repository-wide license grant asserted by this preparation.",
+      "licenses": [],
+      "module": "github.com/Hans-Einar/SDP/SDUI/go",
+      "replacement": {
+        "Dir": "/tmp/sdp-sdui-widgets/SDUI/go",
+        "GoMod": "/tmp/sdp-sdui-widgets/SDUI/go/go.mod",
+        "GoVersion": "1.26.0",
+        "Path": "../SDUI/go"
+      },
+      "version": "v0.0.0"
+    },
+    {
+      "buildRoots": [
+        "SDUI/go"
+      ],
+      "directory": "/tmp/sdp-sdui-widgets/SDUI/go",
+      "licenseScope": "Project source; no repository-wide license grant asserted by this preparation.",
+      "licenses": [],
+      "module": "github.com/Hans-Einar/SDP/SDUI/go",
+      "replacement": null,
+      "version": ""
+    },
+    {
+      "buildRoots": [
+        "SDPTool"
+      ],
+      "directory": "/tmp/sdp-sdui-widgets/SDL/go",
+      "licenseScope": "Project source; no repository-wide license grant asserted by this preparation.",
+      "licenses": [],
+      "module": "github.com/Hans-Einar/SDP/SystemDesignLanguage/go",
+      "replacement": {
+        "Dir": "/tmp/sdp-sdui-widgets/SDL/go",
+        "GoMod": "/tmp/sdp-sdui-widgets/SDL/go/go.mod",
+        "GoVersion": "1.26.0",
+        "Path": "../SDL/go"
+      },
+      "version": "v0.0.0"
+    },
+    {
+      "buildRoots": [
+        "SDL/go"
+      ],
+      "directory": "/tmp/sdp-sdui-widgets/SDL/go",
+      "licenseScope": "Project source; no repository-wide license grant asserted by this preparation.",
+      "licenses": [],
+      "module": "github.com/Hans-Einar/SDP/SystemDesignLanguage/go",
+      "replacement": null,
+      "version": ""
+    },
+    {
+      "buildRoots": [
+        "SDUI/go",
+        "SDL/go"
+      ],
+      "directory": "/home/warloc/go/pkg/mod/github.com/anthonynsimon/bild@v0.14.0",
+      "licenses": [
+        {
+          "path": "licenses/10/LICENSE",
+          "sha256": "637516cf71f2b3eda480c6cb39ee62297d8748acc95d8b4c63200d04e18793ea",
+          "source": "/home/warloc/go/pkg/mod/github.com/anthonynsimon/bild@v0.14.0/LICENSE"
+        }
+      ],
+      "module": "github.com/anthonynsimon/bild",
+      "replacement": null,
+      "version": "v0.14.0"
+    },
+    {
+      "buildRoots": [
+        "SDUI/go",
+        "SDL/go"
+      ],
+      "directory": "/home/warloc/go/pkg/mod/github.com/clipperhouse/uax29/v2@v2.2.0",
+      "licenses": [
+        {
+          "path": "licenses/11/LICENSE",
+          "sha256": "07e9e3daaccc707c9b7d535ed1405a65d37919fdd42197fe55e68820e974688c",
+          "source": "/home/warloc/go/pkg/mod/github.com/clipperhouse/uax29/v2@v2.2.0/LICENSE"
+        }
+      ],
+      "module": "github.com/clipperhouse/uax29/v2",
+      "replacement": null,
+      "version": "v2.2.0"
+    },
+    {
+      "buildRoots": [
+        "SDUI/go",
+        "SDL/go"
+      ],
+      "directory": "/home/warloc/go/pkg/mod/github.com/fsnotify/fsnotify@v1.9.0",
+      "licenses": [
+        {
+          "path": "licenses/12/LICENSE",
+          "sha256": "2dfbe6d2b5eb18b55148f3805d88648a09e0d17e38428123259afb08c8996e37",
+          "source": "/home/warloc/go/pkg/mod/github.com/fsnotify/fsnotify@v1.9.0/LICENSE"
+        }
+      ],
+      "module": "github.com/fsnotify/fsnotify",
+      "replacement": null,
+      "version": "v1.9.0"
+    },
+    {
+      "buildRoots": [
+        "SDUI/go",
+        "SDL/go"
+      ],
+      "directory": "/home/warloc/go/pkg/mod/github.com/fyne-io/image@v0.1.1",
+      "licenses": [
+        {
+          "path": "licenses/13/LICENSE",
+          "sha256": "b9c31d8f1a43d7260789099ef59cc17a8b72aa3fccd1479bd516ec1b924637c3",
+          "source": "/home/warloc/go/pkg/mod/github.com/fyne-io/image@v0.1.1/LICENSE"
+        },
+        {
+          "path": "licenses/13/ico/LICENSE-reader",
+          "sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+          "source": "/home/warloc/go/pkg/mod/github.com/fyne-io/image@v0.1.1/ico/LICENSE-reader"
+        },
+        {
+          "path": "licenses/13/ico/LICENSE-writer",
+          "sha256": "dd26a7abddd02e2d0aba97805b31f248ef7835d9e10da289b22e3b8ab78b324d",
+          "source": "/home/warloc/go/pkg/mod/github.com/fyne-io/image@v0.1.1/ico/LICENSE-writer"
+        }
+      ],
+      "module": "github.com/fyne-io/image",
+      "replacement": null,
+      "version": "v0.1.1"
+    },
+    {
+      "buildRoots": [
+        "SDUI/go",
+        "SDL/go"
+      ],
+      "directory": "/home/warloc/go/pkg/mod/github.com/fyne-io/oksvg@v0.2.0",
+      "licenses": [
+        {
+          "path": "licenses/14/LICENSE",
+          "sha256": "cda28abc46a25d34ad876ec119ad3c29edbb8634d5fef46ccf2e1d63acd9ca34",
+          "source": "/home/warloc/go/pkg/mod/github.com/fyne-io/oksvg@v0.2.0/LICENSE"
+        },
+        {
+          "path": "licenses/14/testdata/LICENSE",
+          "sha256": "c654732ce4d4761102c29a97006abf63f2c2294c1558dd73d6acca5a327840f8",
+          "source": "/home/warloc/go/pkg/mod/github.com/fyne-io/oksvg@v0.2.0/testdata/LICENSE"
+        }
+      ],
+      "module": "github.com/fyne-io/oksvg",
+      "replacement": null,
+      "version": "v0.2.0"
+    },
+    {
+      "buildRoots": [
+        "SDUI/go",
+        "SDL/go"
+      ],
+      "directory": "/home/warloc/go/pkg/mod/github.com/go-gl/gl@v0.0.0-20260331235117-4566fea9a276",
+      "licenses": [
+        {
+          "path": "licenses/15/LICENSE",
+          "sha256": "035b8c4d5796e3465c668aa0d6df233f644a7aecdeeb9016dcec1b2875f70c6b",
+          "source": "/home/warloc/go/pkg/mod/github.com/go-gl/gl@v0.0.0-20260331235117-4566fea9a276/LICENSE"
+        }
+      ],
+      "module": "github.com/go-gl/gl",
+      "replacement": null,
+      "version": "v0.0.0-20260331235117-4566fea9a276"
+    },
+    {
+      "buildRoots": [
+        "SDUI/go",
+        "SDL/go"
+      ],
+      "directory": "/tmp/sdp-sdui-widgets/SDUI/third_party/glfw",
+      "licenses": [
+        {
+          "path": "licenses/16/LICENSE",
+          "sha256": "72f474049924563f43e5a5cc8e7e228a4fc8eb58e3dd7383bd3552c0725f566c",
+          "source": "/tmp/sdp-sdui-widgets/SDUI/third_party/glfw/LICENSE"
+        },
+        {
+          "path": "licenses/16/glfw/LICENSE.md",
+          "sha256": "149704059b5d0bf551637e50042dd4de9c2cae921021f6636298911e3a5f9462",
+          "source": "/tmp/sdp-sdui-widgets/SDUI/third_party/glfw/glfw/LICENSE.md"
+        }
+      ],
+      "module": "github.com/go-gl/glfw/v3.4/glfw",
+      "replacement": {
+        "Dir": "/tmp/sdp-sdui-widgets/SDUI/third_party/glfw",
+        "GoMod": "/tmp/sdp-sdui-widgets/SDUI/third_party/glfw/go.mod",
+        "GoVersion": "1.19",
+        "Path": "../third_party/glfw"
+      },
+      "version": "v0.1.0-pre.1.0.20260707082822-2a407d02d01a"
+    },
+    {
+      "buildRoots": [
+        "SDUI/go",
+        "SDL/go"
+      ],
+      "directory": "/home/warloc/go/pkg/mod/github.com/go-text/render@v0.2.1",
+      "licenses": [
+        {
+          "path": "licenses/17/LICENSE",
+          "sha256": "6b1bf94c77d7faa0ce94f8745595bfaf4c404f8b3873f5c2ce55ca15f8e44eca",
+          "source": "/home/warloc/go/pkg/mod/github.com/go-text/render@v0.2.1/LICENSE"
+        }
+      ],
+      "module": "github.com/go-text/render",
+      "replacement": null,
+      "version": "v0.2.1"
+    },
+    {
+      "buildRoots": [
+        "SDUI/go",
+        "SDL/go"
+      ],
+      "directory": "/home/warloc/go/pkg/mod/github.com/go-text/typesetting@v0.3.4",
+      "licenses": [
+        {
+          "path": "licenses/18/LICENSE",
+          "sha256": "6b1bf94c77d7faa0ce94f8745595bfaf4c404f8b3873f5c2ce55ca15f8e44eca",
+          "source": "/home/warloc/go/pkg/mod/github.com/go-text/typesetting@v0.3.4/LICENSE"
+        },
+        {
+          "path": "licenses/18/harfbuzz/LICENSE",
+          "sha256": "e45d96558ba3d406f95dffed6f22c3be07093475ef617bcfddf88444d6b66788",
+          "source": "/home/warloc/go/pkg/mod/github.com/go-text/typesetting@v0.3.4/harfbuzz/LICENSE"
+        }
+      ],
+      "module": "github.com/go-text/typesetting",
+      "replacement": null,
+      "version": "v0.3.4"
+    },
+    {
+      "buildRoots": [
+        "SDUI/go",
+        "SDL/go"
+      ],
+      "directory": "/home/warloc/go/pkg/mod/github.com/godbus/dbus/v5@v5.2.2",
+      "licenses": [
+        {
+          "path": "licenses/19/LICENSE",
+          "sha256": "e4646a82a976369d7ae8f6ed5c11d35dc0af18433a8ccc24c85b459ad8b95128",
+          "source": "/home/warloc/go/pkg/mod/github.com/godbus/dbus/v5@v5.2.2/LICENSE"
+        }
+      ],
+      "module": "github.com/godbus/dbus/v5",
+      "replacement": null,
+      "version": "v5.2.2"
+    },
+    {
+      "buildRoots": [
+        "SDUI/go",
+        "SDL/go"
+      ],
+      "directory": "/home/warloc/go/pkg/mod/github.com/jeandeaual/go-locale@v0.0.0-20250612000132-0ef82f21eade",
+      "licenses": [
+        {
+          "path": "licenses/20/LICENSE",
+          "sha256": "f5a169b17b7b5bc97a3909f190089256dc62adb86eefc65454b0fdca37861c20",
+          "source": "/home/warloc/go/pkg/mod/github.com/jeandeaual/go-locale@v0.0.0-20250612000132-0ef82f21eade/LICENSE"
+        }
+      ],
+      "module": "github.com/jeandeaual/go-locale",
+      "replacement": null,
+      "version": "v0.0.0-20250612000132-0ef82f21eade"
+    },
+    {
+      "buildRoots": [
+        "SDUI/go",
+        "SDL/go"
+      ],
+      "directory": "/home/warloc/go/pkg/mod/github.com/jsummers/gobmp@v0.0.0-20230614200233-a9de23ed2e25",
+      "licenses": [
+        {
+          "path": "licenses/21/COPYING.txt",
+          "sha256": "027529c1f33b6ef9280c5b9569e120734dbbee0e5e37436fb9a1bc7a0153b0ae",
+          "source": "/home/warloc/go/pkg/mod/github.com/jsummers/gobmp@v0.0.0-20230614200233-a9de23ed2e25/COPYING.txt"
+        }
+      ],
+      "module": "github.com/jsummers/gobmp",
+      "replacement": null,
+      "version": "v0.0.0-20230614200233-a9de23ed2e25"
+    },
+    {
+      "buildRoots": [
+        "SDUI/go",
+        "SDL/go"
+      ],
+      "directory": "/home/warloc/go/pkg/mod/github.com/mattn/go-runewidth@v0.0.24",
+      "licenses": [
+        {
+          "path": "licenses/22/LICENSE",
+          "sha256": "88a2379b3ca34bf5c57127aff9dcb802bbb60ece0805cdbda65b3bd115f971d9",
+          "source": "/home/warloc/go/pkg/mod/github.com/mattn/go-runewidth@v0.0.24/LICENSE"
+        }
+      ],
+      "module": "github.com/mattn/go-runewidth",
+      "replacement": null,
+      "version": "v0.0.24"
+    },
+    {
+      "buildRoots": [
+        "SDUI/go",
+        "SDL/go"
+      ],
+      "directory": "/home/warloc/go/pkg/mod/github.com/nfnt/resize@v0.0.0-20180221191011-83c6a9932646",
+      "licenses": [
+        {
+          "path": "licenses/23/LICENSE",
+          "sha256": "7b850692b15c71706bc6906b51d6375c1404c2d26233078335b6aaa7def8b3f4",
+          "source": "/home/warloc/go/pkg/mod/github.com/nfnt/resize@v0.0.0-20180221191011-83c6a9932646/LICENSE"
+        }
+      ],
+      "module": "github.com/nfnt/resize",
+      "replacement": null,
+      "version": "v0.0.0-20180221191011-83c6a9932646"
+    },
+    {
+      "buildRoots": [
+        "SDUI/go",
+        "SDL/go"
+      ],
+      "directory": "/home/warloc/go/pkg/mod/github.com/nicksnyder/go-i18n/v2@v2.5.1",
+      "licenses": [
+        {
+          "path": "licenses/24/LICENSE",
+          "sha256": "8fb3aead091abd1579670cd4d805c7923b66ee97b771148f4ef928a65c259328",
+          "source": "/home/warloc/go/pkg/mod/github.com/nicksnyder/go-i18n/v2@v2.5.1/LICENSE"
+        }
+      ],
+      "module": "github.com/nicksnyder/go-i18n/v2",
+      "replacement": null,
+      "version": "v2.5.1"
+    },
+    {
+      "buildRoots": [
+        "SDUI/go",
+        "SDL/go"
+      ],
+      "directory": "/home/warloc/go/pkg/mod/github.com/rymdport/portal@v0.4.2",
+      "licenses": [
+        {
+          "path": "licenses/25/LICENSE",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "source": "/home/warloc/go/pkg/mod/github.com/rymdport/portal@v0.4.2/LICENSE"
+        }
+      ],
+      "module": "github.com/rymdport/portal",
+      "replacement": null,
+      "version": "v0.4.2"
+    },
+    {
+      "buildRoots": [
+        "SDUI/go",
+        "SDL/go"
+      ],
+      "directory": "/home/warloc/go/pkg/mod/github.com/srwiley/oksvg@v0.0.0-20221011165216-be6e8873101c",
+      "licenses": [
+        {
+          "path": "licenses/26/LICENSE",
+          "sha256": "cda28abc46a25d34ad876ec119ad3c29edbb8634d5fef46ccf2e1d63acd9ca34",
+          "source": "/home/warloc/go/pkg/mod/github.com/srwiley/oksvg@v0.0.0-20221011165216-be6e8873101c/LICENSE"
+        },
+        {
+          "path": "licenses/26/testdata/LICENSE",
+          "sha256": "c654732ce4d4761102c29a97006abf63f2c2294c1558dd73d6acca5a327840f8",
+          "source": "/home/warloc/go/pkg/mod/github.com/srwiley/oksvg@v0.0.0-20221011165216-be6e8873101c/testdata/LICENSE"
+        }
+      ],
+      "module": "github.com/srwiley/oksvg",
+      "replacement": null,
+      "version": "v0.0.0-20221011165216-be6e8873101c"
+    },
+    {
+      "buildRoots": [
+        "SDUI/go",
+        "SDL/go"
+      ],
+      "directory": "/home/warloc/go/pkg/mod/github.com/srwiley/rasterx@v0.0.0-20220730225603-2ab79fcdd4ef",
+      "licenses": [
+        {
+          "path": "licenses/27/LICENSE",
+          "sha256": "cda28abc46a25d34ad876ec119ad3c29edbb8634d5fef46ccf2e1d63acd9ca34",
+          "source": "/home/warloc/go/pkg/mod/github.com/srwiley/rasterx@v0.0.0-20220730225603-2ab79fcdd4ef/LICENSE"
+        }
+      ],
+      "module": "github.com/srwiley/rasterx",
+      "replacement": null,
+      "version": "v0.0.0-20220730225603-2ab79fcdd4ef"
+    },
+    {
+      "buildRoots": [
+        "SDUI/go",
+        "SDL/go"
+      ],
+      "directory": "/home/warloc/go/pkg/mod/github.com/yuin/goldmark@v1.8.2",
+      "licenses": [
+        {
+          "path": "licenses/28/LICENSE",
+          "sha256": "c1d6f653c38c80294dc7994647ba0dcc508ce64a86996303c804efa2f7982bff",
+          "source": "/home/warloc/go/pkg/mod/github.com/yuin/goldmark@v1.8.2/LICENSE"
+        }
+      ],
+      "module": "github.com/yuin/goldmark",
+      "replacement": null,
+      "version": "v1.8.2"
+    },
+    {
+      "buildRoots": [
+        "SDUI/go",
+        "SDL/go"
+      ],
+      "directory": "/home/warloc/go/pkg/mod/golang.org/x/image@v0.46.0",
+      "licenses": [
+        {
+          "path": "licenses/29/LICENSE",
+          "sha256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+          "source": "/home/warloc/go/pkg/mod/golang.org/x/image@v0.46.0/LICENSE"
+        }
+      ],
+      "module": "golang.org/x/image",
+      "replacement": null,
+      "version": "v0.46.0"
+    },
+    {
+      "buildRoots": [
+        "SDUI/go",
+        "SDL/go"
+      ],
+      "directory": "/home/warloc/go/pkg/mod/golang.org/x/net@v0.35.0",
+      "licenses": [
+        {
+          "path": "licenses/30/LICENSE",
+          "sha256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+          "source": "/home/warloc/go/pkg/mod/golang.org/x/net@v0.35.0/LICENSE"
+        }
+      ],
+      "module": "golang.org/x/net",
+      "replacement": null,
+      "version": "v0.35.0"
+    },
+    {
+      "buildRoots": [
+        "SDUI/go",
+        "SDL/go"
+      ],
+      "directory": "/home/warloc/go/pkg/mod/golang.org/x/sys@v0.48.0",
+      "licenses": [
+        {
+          "path": "licenses/31/LICENSE",
+          "sha256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+          "source": "/home/warloc/go/pkg/mod/golang.org/x/sys@v0.48.0/LICENSE"
+        }
+      ],
+      "module": "golang.org/x/sys",
+      "replacement": null,
+      "version": "v0.48.0"
+    },
+    {
+      "buildRoots": [
+        "SDPTool",
+        "SDUI/go",
+        "SDL/go"
+      ],
+      "directory": "/home/warloc/go/pkg/mod/golang.org/x/text@v0.42.0",
+      "licenses": [
+        {
+          "path": "licenses/32/LICENSE",
+          "sha256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+          "source": "/home/warloc/go/pkg/mod/golang.org/x/text@v0.42.0/LICENSE"
+        }
+      ],
+      "module": "golang.org/x/text",
+      "replacement": null,
+      "version": "v0.42.0"
+    },
+    {
+      "buildRoots": [
+        "SDPTool"
+      ],
+      "directory": "/home/warloc/go/pkg/mod/gopkg.in/yaml.v3@v3.0.1",
+      "licenses": [
+        {
+          "path": "licenses/33/LICENSE",
+          "sha256": "d18f6323b71b0b768bb5e9616e36da390fbd39369a81807cca352de4e4e6aa0b",
+          "source": "/home/warloc/go/pkg/mod/gopkg.in/yaml.v3@v3.0.1/LICENSE"
+        },
+        {
+          "path": "licenses/33/NOTICE",
+          "sha256": "f6c2dd3a67b576eafb89b80200b8b1627230bf3821a0c14cb99a22ac19107d00",
+          "source": "/home/warloc/go/pkg/mod/gopkg.in/yaml.v3@v3.0.1/NOTICE"
+        }
+      ],
+      "module": "gopkg.in/yaml.v3",
+      "replacement": null,
+      "version": "v3.0.1"
+    }
+  ],
+  "nativeLibraries": "Recorded as system dependencies; their binaries are not bundled."
+}

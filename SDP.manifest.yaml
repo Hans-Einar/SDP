@@ -1,19 +1,19 @@
 schemaVersion: "1.0"
 toolkit:
-  version: "1.0.0"
+  version: "2.1.0"
   releaseState: released
-  releaseTargetVersion: "1.0.0"
-  releaseDate: "2026-09-28"
+  releaseTargetVersion: "2.1.0"
+  releaseDate: "2026-10-01"
   minimumInstallerVersion: "0.2.0"
-  compatibilityRange: ">=0.2.0 <2.0.0"
-  gitTag: v1.0.0
-  releaseCommit: fede327d6f3af35fe7aad323e2c485a27134d20d
+  compatibilityRange: ">=0.2.0 <3.0.0"
+  gitTag: v2.1.0
+  releaseCommit: 93517ad98cd188c0debeb1d0f3d36d123c6e4a3b
 framework:
-  version: "1.0.0"
+  version: "2.0.0"
 agentsContract:
   version: "2.1.0"
 skills:
-  sdp: "1.1.0"
+  sdp: "1.1.1"
   sdp-planning: "1.0.0"
   sdp-architect: "2.0.0"
   sdp-auditor: "2.0.0"

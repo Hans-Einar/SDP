@@ -1,0 +1,35 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci4-package-candidate2/libexec/sdui/values", "sha256": "78ee0a70631003365121a6f25211dcad851ff90fd4e0d9ec96da9122a08477e5", "display": ":191", "variant": "wci3-boolean"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "preparation invokes no domain action", "passed": true}}
+{"kind": "check", "value": {"name": "Boolean is typed and initially false", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [550, 57], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "pointer checkbox commits one typed true value", "passed": true}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "key", "values": ["space"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "Space commits exactly once and toggles false", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "set Flag true"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "programmatic Boolean update is silent", "passed": true}}
+{"kind": "fixture-command", "value": "readonly Flag"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [550, 57], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "key", "values": ["space"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "readonly checkbox refuses pointer and keyboard mutation", "passed": true}}
+{"kind": "fixture-command", "value": "writable Flag"}
+{"kind": "fixture-command", "value": "disable Flag"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [550, 57], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "key", "values": ["space"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "disable checkbox refuses pointer and keyboard mutation", "passed": true}}
+{"kind": "fixture-command", "value": "enable Flag"}
+{"kind": "screenshot", "value": "typed-checkbox.png"}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

@@ -1,0 +1,7 @@
+PASS echoing Commit preserves native undo history
+PASS identical displayed programmatic text preserves undo history
+PASS different programmatic replacement resets history silently
+PASS rejected native edit restores current authoritative draft without Change or Save
+PASS declared rejected-edit recovery resets prior history
+PASS typing and Undo work after rejected-edit recovery
+PASS native teardown closes session and clears provider barriers

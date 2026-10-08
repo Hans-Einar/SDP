@@ -1,0 +1,6 @@
+flowchart LR
+    n_ModelAuthor["ModelAuthor (actor)"]
+    n_ModelGovernance["ModelGovernance (feature)"]
+    n_RecoverWorkingModel["RecoverWorkingModel (usecase)"]
+    n_ModelAuthor -->|pursues| n_RecoverWorkingModel
+    n_ModelGovernance -->|supports| n_RecoverWorkingModel

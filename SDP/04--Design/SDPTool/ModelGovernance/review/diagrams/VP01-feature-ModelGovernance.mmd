@@ -1,0 +1,10 @@
+flowchart LR
+    n_FreezeModel["FreezeModel (functionality)"]
+    n_IntegrateSources["IntegrateSources (functionality)"]
+    n_ModelGovernance["ModelGovernance (feature)"]
+    n_RestoreCheckpoint["RestoreCheckpoint (functionality)"]
+    n_SaveCheckpoint["SaveCheckpoint (functionality)"]
+    n_FreezeModel -->|contributes-to| n_ModelGovernance
+    n_IntegrateSources -->|contributes-to| n_ModelGovernance
+    n_RestoreCheckpoint -->|contributes-to| n_ModelGovernance
+    n_SaveCheckpoint -->|contributes-to| n_ModelGovernance

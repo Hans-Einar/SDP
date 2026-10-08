@@ -1,0 +1,4 @@
+PASS text form Cancel discards unaccepted drafts and retains child Commit
+PASS rejected text Accept retains exact proposals
+PASS SDL text Accept persists multiline and single-line atomically
+PASS native teardown closes session and clears provider barriers

@@ -30,7 +30,9 @@ func Markdown(root *parser.Instance, columns int) (string, error) {
 			return nil, nil
 		}
 		lines := []string{}
-		if n.Kind == "markdown" {
+		if previewDescription(n) {
+			lines = []string{"**Declaration:** " + codeSpan(previewText(n))}
+		} else if n.Kind == "markdown" {
 			lines = quoted(contentLines(n.Text))
 		} else if n.Kind == "widget" {
 			text := ""
@@ -39,12 +41,26 @@ func Markdown(root *parser.Instance, columns int) (string, error) {
 				text = "**Button:** " + codeSpan(n.Argument("label"))
 			case "input":
 				text = "**Input:** " + codeSpan(n.Argument("text")) + " — " + codeSpan(n.Argument("value"))
-			default:
+			case "tree", "list":
+				text = "**Static " + n.Widget + ":** " + codeSpan(n.Argument("label")) + " — " + codeSpan(n.Path) + "; provider data not supplied."
+				if ref, ok := n.Arguments["callback"].(parser.Reference); ok {
+					text += " Activate callback: " + codeSpan(ref.Module+"."+ref.Object+".@"+ref.Member) + " (not executed)."
+				}
+			case "svg":
 				label := n.Argument("label")
 				if label == "" {
 					label = n.Path
 				}
 				text = "**SVG placeholder:** " + codeSpan(label)
+			}
+			if interactionDescription(n) {
+				text = "**Declaration:** " + codeSpan(interactionText(n))
+			}
+			if scalarDescription(n) {
+				text = "**Declaration:** " + codeSpan(scalarText(n))
+			}
+			if inputDescription(n) {
+				text = "**Declaration:** " + codeSpan(inputText(n))
 			}
 			lines = []string{text}
 		} else {
@@ -56,6 +72,12 @@ func Markdown(root *parser.Instance, columns int) (string, error) {
 				kind = "BoxUI-frame"
 			}
 			lines = []string{"**" + kind + ":** " + codeSpan(n.Path), ""}
+			if n.Kind == "composition" {
+				lines = []string{"**Pane declaration:** " + codeSpan(paneText(n)), ""}
+				if interactionDescription(n) {
+					lines = []string{"**Declaration:** " + codeSpan(interactionText(n)), ""}
+				}
+			}
 			region := func(role string) error {
 				if r := n.Region(role); visible(r) {
 					block, e := render(r)

@@ -1,0 +1,30 @@
+{
+  "recordedAt": "2026-10-04T00:16:40.399925+00:00",
+  "baselineCommit": "22beaee05157616b8fced3fc820304ca4163858c",
+  "go": "go1.27.1 linux/amd64",
+  "scope": "MG3 disposable filesystem experiment; not production acceptance",
+  "files": {
+    "experiments/model_governance/README.md": "98c6deb67794159a72a78af99869420ab74541eceb3e748263d8da25c438e3de",
+    "experiments/model_governance/go.mod": "87b136cfa7b5aea56262cd7a83fadf603f3be52ebd5a0452183d6e222341b5a6",
+    "experiments/model_governance/go.sum": "3f8f6a8ac1048ed9b6cb66a4e2795ff956d52fd447239c67eed83943fa91ac35",
+    "experiments/model_governance/store.go": "b4e1b1a18768f1e5ea75091900bb73cc00c1220982e7a65cfd5fcb9c774333c6",
+    "experiments/model_governance/store_test.go": "04d5d7bc313697857b3e48b3210a94c7acbc98145d894c4ca391df274ccb20fa"
+  },
+  "tests": [
+    "TestCommitDeleteRenameRestoreAndDirtyPreservation",
+    "TestCorruptPayloadCannotRestore",
+    "TestEmptyInitialAndNoop",
+    "TestNoGitCopyReopensHistory",
+    "TestProcessInterruptionAndResume",
+    "TestInterruptedCorruptCommitNotPublished",
+    "TestMergeConflictMatrix",
+    "TestMergeArchivePromotionAndWholeStateRollback",
+    "TestLineageDeduplicatesAndRejectsIdentityConflict",
+    "TestYAMLRejectsUnknownAndDuplicateFields",
+    "TestSameFileThreeWayPrimitive",
+    "TestMissingEmptyFileIsNotAnExistingEmptyFile",
+    "TestRepeatedFileMergeIsContentIdempotent"
+  ],
+  "vet": "passed",
+  "limitations": "Proof.md"
+}

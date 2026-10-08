@@ -1,0 +1,27 @@
+Evidence provenance: retranscribed from retained exec/write_stdin tool outputs.
+This is a result/stack excerpt, NOT an original filesystem stdout capture.
+Command cwd: /tmp/sdp-sdui-widgets/SDL/go
+Command: go test -race ./bridge ./examples/text ./examples/values ./examples/commands ./examples/panes
+Actual process exit: 1
+
+ok  github.com/Hans-Einar/SDP/SystemDesignLanguage/go/bridge 3.612s
+panic: test timed out after 10m0s
+    running tests:
+        TestPublicationDiagnosticOneShotAndFailedReload (13s)
+
+The retained timeout stack was in image.(*NRGBA).SetRGBA64 → image/draw.DrawMask
+→ fyne.io/fyne/v2/internal/svg.(*Decoder).Draw → canvas.(*Image).renderSVG
+→ canvas.(*Image).Refresh → canvas.(*Image).Resize
+→ fynehost.(*Bundle).apply (document_sync.go:93)
+→ fynehost.(*DocumentHost).Prepare (document.go:159)
+→ fynehost.(*DocumentHost).Adopt (document.go:380)
+→ text.newHostSource (fixture_test.go:34)
+→ text.newHost (fixture_test.go:14)
+→ TestPublicationDiagnosticOneShotAndFailedReload (fixture_test.go:164).
+This stack describes the older test binary, not necessarily current file line numbers.
+
+FAIL github.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/text 600.275s
+ok   github.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/values 204.330s
+ok   github.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/commands 51.342s
+ok   github.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/panes 88.445s
+FAIL

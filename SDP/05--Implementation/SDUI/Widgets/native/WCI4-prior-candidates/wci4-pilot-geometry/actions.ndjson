@@ -1,0 +1,25 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci4-previews-worker-pilot1", "sha256": "7defa0ae7446bdc1a625718120f00f1b8c3a8e697a61e90b6ad7452ad603185c", "display": ":190", "variant": "wci3-geometry"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "observed-preparation-renderer-baseline", "value": {"page/view/body/workspace/reports/reportViewport/reportA": 1, "page/view/body/workspace/reports/reportViewport/reportB": 1}}
+{"kind": "check", "value": {"name": "direct SVG and bounded prose are rendered with no SDL action", "passed": true}}
+{"kind": "check", "value": {"name": "actual mounted Accessible describes rendered image separately from caption", "passed": true}}
+{"kind": "check", "value": {"name": "full image preserves 2:1 aspect and ends before caption", "passed": true}}
+{"kind": "check", "value": {"name": "inactive and closed content is prepared without fabricated mounted objects", "passed": true}}
+{"kind": "screenshot", "value": "native-shape-montage-and-prose.png"}
+{"kind": "fixture-command", "value": "mutate-input Hero"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "mutating caller loan leaves live image digest and geometry unchanged", "passed": true}}
+{"kind": "fixture-command", "value": "caption Hero long"}
+{"kind": "fixture-command", "value": "resize 900 780"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "caption resize retains full accessibility and frozen renderer baseline", "passed": true}}
+{"kind": "screenshot", "value": "long-caption-relative-fit.png"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI4 Previews", "action": "move", "values": [307, 449], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI4 Previews", "action": "wheel", "values": [307, 449, 8], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "outer scroll translates full image without refitting visible fragment", "passed": false}}
+{"kind": "result", "value": {"failed": "outer scroll translates full image without refitting visible fragment"}}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

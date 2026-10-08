@@ -1,0 +1,7 @@
+{
+  "sha256": "0078f72eec7fe61bd41a1b090bb7ca2f26ba48c3a1e54c4eff6bd240c010f001",
+  "binary": "/tmp/wci3-m2-final-native",
+  "reviewerBinary": "/tmp/wci3-m2-reviewer-final-native",
+  "sameBytes": true,
+  "note": "Byte identity verified; this script did not build either binary."
+}

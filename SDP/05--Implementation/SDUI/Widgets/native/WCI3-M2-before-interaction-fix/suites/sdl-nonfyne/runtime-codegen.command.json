@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "go",
+    "test",
+    "-race",
+    "-count=1",
+    "-p",
+    "1",
+    "./runtime",
+    "./codegen"
+  ],
+  "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+  "GOFLAGS": "-mod=readonly"
+}

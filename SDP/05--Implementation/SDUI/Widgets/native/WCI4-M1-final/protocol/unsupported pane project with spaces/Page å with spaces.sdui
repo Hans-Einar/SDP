@@ -1,0 +1,1 @@
+sdui 0.3; ref: art "unopened"; Main=[p=tabs("Tabs")[one=page("One")[]] {visible=false}];

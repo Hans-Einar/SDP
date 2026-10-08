@@ -1,0 +1,8 @@
+PASS preparation holds detached candidate without publication
+PASS stale resource guard rejects publication without replay or live replacement
+PASS explicit fresh preparation publishes changed digest
+PASS stale renderer revision rejects held candidate and retains current bundle
+PASS abandon disposes only detached candidate without altering live content
+PASS resource ticket failure preserves published image and zero renderer calls
+PASS successful presentation ticket uses frozen resources without rerender
+PASS native teardown closes session and clears provider barriers

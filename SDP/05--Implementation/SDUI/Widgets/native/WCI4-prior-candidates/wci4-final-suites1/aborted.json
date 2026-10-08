@@ -1,0 +1,16 @@
+{
+  "status": "aborted by coordinator before source correction; no aggregate test result",
+  "reason": "Native parent-hide preview lifetime defect found on same frozen host; stop current suite before correcting source, then rebuild/retest corrected candidate.",
+  "runnerPID": 254637,
+  "terminatedDescendants": [
+    [
+      256404,
+      "/tmp/go-build1536135678/b190/fynehost.test -test.paniconexit0 -test.timeout=10m0s -test.count=1"
+    ],
+    [
+      254801,
+      "go test -race ./... -count=1"
+    ]
+  ],
+  "completedPackage": "/tmp/wci4-package-candidate1; source unchanged; prior-candidate only"
+}

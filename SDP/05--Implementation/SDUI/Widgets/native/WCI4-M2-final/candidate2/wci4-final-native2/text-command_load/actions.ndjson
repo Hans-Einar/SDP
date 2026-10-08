@@ -1,0 +1,32 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci4-package-candidate2/libexec/sdui/text", "sha256": "f26a5ec9e24e4718a0691ce5381a633a6ad9f4376f6ef34ed3667a89d3d05162", "display": ":191", "variant": "wci3-command_load"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "Load uses an actual shared command and extended receiver", "passed": true}}
+{"kind": "fixture-command", "value": "load unicode"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "click", "values": [23, 16], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "explicit SDL Load fills read-only preview", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "click", "values": [936, 75], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "c"], "keep_focus": false}}
+{"kind": "check", "value": {"name": "read-only native text remains selectable and copyable", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-clipboard-set", "value": "replacement"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "x"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "chord", "values": ["Control_L", "v"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "key", "values": ["BackSpace", "a", "Return"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "read-only cut paste typing deletion and Return do not mutate or invoke", "passed": true}}
+{"kind": "fixture-command", "value": "set Preview lines"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "checked programmatic read-only update is silent", "passed": true}}
+{"kind": "screenshot", "value": "readonly-multiline-preview.png"}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

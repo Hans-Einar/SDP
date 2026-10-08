@@ -1,0 +1,10 @@
+{
+  "status": "cancelled per FINAL Main ownership; not suite acceptance",
+  "utc": "2026-10-08T11:49:38Z",
+  "ownedProcessTree": {
+    "211067": "/tmp/go-build1373329646/b374/values.test -test.paniconexit0 -test.timeout=10m0s -test.count=1",
+    "211079": "/tmp/go-build1373329646/b378/panes.test -test.paniconexit0 -test.timeout=10m0s -test.count=1",
+    "210973": "go test -race ./bridge ./examples/values/... ./examples/commands/... ./examples/panes/... -count=1"
+  },
+  "authoritativeMainDirectory": "/tmp/wci3-m2-current-group-final"
+}

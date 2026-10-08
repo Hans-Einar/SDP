@@ -1,0 +1,18 @@
+=== RUN   TestCommandTextResultExtendedReceiver
+=== RUN   TestCommandTextResultExtendedReceiver/#00
+=== RUN   TestCommandTextResultExtendedReceiver/,readOnly=true
+=== RUN   TestCommandTextResultExtendedReceiver/,multiline=false
+--- PASS: TestCommandTextResultExtendedReceiver (0.08s)
+    --- PASS: TestCommandTextResultExtendedReceiver/#00 (0.03s)
+    --- PASS: TestCommandTextResultExtendedReceiver/,readOnly=true (0.02s)
+    --- PASS: TestCommandTextResultExtendedReceiver/,multiline=false (0.03s)
+=== RUN   TestTabTextResultExtendedReceiver
+=== RUN   TestTabTextResultExtendedReceiver/readonly-success
+=== RUN   TestTabTextResultExtendedReceiver/writable-draft-conflict
+--- PASS: TestTabTextResultExtendedReceiver (0.01s)
+    --- PASS: TestTabTextResultExtendedReceiver/readonly-success (0.00s)
+    --- PASS: TestTabTextResultExtendedReceiver/writable-draft-conflict (0.00s)
+=== RUN   TestCommandExtendedReceiverConflictIsNotReplayed
+--- PASS: TestCommandExtendedReceiverConflictIsNotReplayed (0.03s)
+PASS
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/bridge	1.148s

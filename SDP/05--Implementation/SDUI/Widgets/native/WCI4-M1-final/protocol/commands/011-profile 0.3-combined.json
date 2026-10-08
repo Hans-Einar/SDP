@@ -1,0 +1,26 @@
+{
+  "name": "profile 0.3-combined",
+  "argv": [
+    "/tmp/wci4-package-candidate2/libexec/xfmd/sdui-preview",
+    "-source",
+    "/tmp/wci4-final-protocol2/profile 0.3 project with spaces/Page å with spaces.sdui",
+    "-entry",
+    "Main",
+    "-revision",
+    "01ee11b69863835ce62d7727ca2c84af22edabe4b76d37c411ad4de95afcf74e",
+    "-output",
+    "/tmp/wci4-final-protocol2/profile 0.3 Combined output with spaces"
+  ],
+  "cwd": "/tmp/wci4-final-protocol2",
+  "binarySha256": "50f507b9787d46524d98a28f80ed1c63b89ab5271e6ddbdbba8305c49d4a8e8c",
+  "displayEnvironment": "DISPLAY/WAYLAND_DISPLAY removed",
+  "expected": "success",
+  "exit": 0,
+  "timeout": false,
+  "seconds": 0.06874465942382812,
+  "stdout": "commands/011-profile 0.3-combined.stdout",
+  "stderr": "commands/011-profile 0.3-combined.stderr",
+  "stdoutSha256": "3e0fbfcf68b43303df44d703b90cedda7e7917d30537ff11501ff4bfd0785629",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "binaryUnchanged": true
+}

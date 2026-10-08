@@ -81,12 +81,11 @@ func (b *Broker) Select(ctx context.Context, req Request) (Result, error) {
 	default:
 		return Result{}, fmt.Errorf("projection busy")
 	}
-	source, e := read(project.Source)
+	v, input, e := viewpoint.Load(project.Source)
 	if e != nil {
 		return Result{}, e
 	}
-	v, e := viewpoint.New(string(source))
-	if e != nil {
+	if e = input.Outside(b.Store.root); e != nil {
 		return Result{}, e
 	}
 	if e = s.Query.Validate(v); e != nil {
@@ -110,12 +109,8 @@ func (b *Broker) Select(ctx context.Context, req Request) (Result, error) {
 		}
 	}
 	// Source may have changed while a renderer was working; never open a stale revision.
-	current, e := read(project.Source)
-	if e != nil {
+	if e = input.Fresh(); e != nil {
 		return Result{}, e
-	}
-	if documents.Hash(current) != v.Revision {
-		return Result{}, fmt.Errorf("source changed during projection")
 	}
 	if e = ctx.Err(); e != nil {
 		return Result{}, e

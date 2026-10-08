@@ -1,0 +1,122 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci4-package-candidate2/libexec/sdui/panes", "sha256": "b6dd5f71d98df8eb903fee6a074f459f082b5d6bb787a209c4b24200af8329fc", "display": ":191", "variant": "wci2-panes"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "initial panes preparation invokes zero SDL actions", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["click", 109, 42]}
+{"kind": "check", "value": {"name": "pointer tab dispatch carries stable IDs through SDL once", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["click", 109, 42]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "same-page pointer invokes no callback", "passed": true}}
+{"kind": "x11-input", "value": ["key", "Left"]}
+{"kind": "check", "value": {"name": "header Left changes page once with previous ID", "passed": true}}
+{"kind": "screenshot", "value": "tabs-keyboard.png"}
+{"kind": "x11-input", "value": ["key", "Tab"]}
+{"kind": "x11-input", "value": ["chord", "Control_L", "a"]}
+{"kind": "x11-input", "value": ["key", "d", "r", "a", "f", "t"]}
+{"kind": "check", "value": {"name": "native editing keeps accepted value until explicit commit", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["click", 39, 42]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "clicking selected tab focuses its header without action", "passed": true}}
+{"kind": "x11-input", "value": ["key", "Tab"]}
+{"kind": "x11-input", "value": ["key", "Tab"]}
+{"kind": "x11-input", "value": ["key", "End"]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["click", 109, 42]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["click", 39, 42]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "tab round trip preserves draft and inactive scroll", "passed": true}}
+{"kind": "fixture-command", "value": "select notes"}
+{"kind": "fixture-command", "value": "select overview"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "programmatic selection is silent", "passed": true}}
+{"kind": "fixture-command", "value": "disable overview"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "disabled selected page falls back silently", "passed": true}}
+{"kind": "fixture-command", "value": "disable notes"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "zero eligible pages produces empty selection", "passed": true}}
+{"kind": "fixture-command", "value": "enable overview"}
+{"kind": "fixture-command", "value": "enable notes"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "eligibility restoration does not invoke SDL", "passed": true}}
+{"kind": "fixture-command", "value": "disable workspace"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["click", 109, 42]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "disabled tabs reject pointer selection in runtime and native header", "passed": true}}
+{"kind": "screenshot", "value": "disabled-tabs.png"}
+{"kind": "fixture-command", "value": "enable workspace"}
+{"kind": "fixture-command", "value": "action error"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["click", 109, 42]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "failed error callback retains accepted page without replay", "passed": true}}
+{"kind": "check", "value": {"name": "native error error retains domain unknown", "passed": true}}
+{"kind": "fixture-command", "value": "action invalid"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["click", 109, 42]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "failed invalid callback retains accepted page without replay", "passed": true}}
+{"kind": "check", "value": {"name": "native invalid error retains domain unknown", "passed": true}}
+{"kind": "fixture-command", "value": "action draft-conflict"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["click", 109, 42]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "failed draft-conflict callback retains accepted page without replay", "passed": true}}
+{"kind": "check", "value": {"name": "native draft-conflict error retains domain succeeded", "passed": true}}
+{"kind": "check", "value": {"name": "independently accepted newer draft survives outer conflict", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["key", "Tab"]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["key", "Tab"]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["key", "Tab"]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["key", "Tab"]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "conflicting receiver remains reachable for user recovery", "passed": true}}
+{"kind": "x11-input", "value": ["key", "Escape"]}
+{"kind": "fixture-command", "value": "resource-error"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["click", 109, 42]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "final resource failure cannot publish speculative selection", "passed": true}}
+{"kind": "check", "value": {"name": "native resource failure reports successful domain outcome", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["click", 109, 42]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "fresh page gesture recovers after failures", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "fail profile"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "failed profile reload preserves published pane bundle", "passed": true}}
+{"kind": "fixture-command", "value": "fail binding"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "failed binding reload preserves published pane bundle", "passed": true}}
+{"kind": "fixture-command", "value": "fail layout"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "failed layout reload preserves published pane bundle", "passed": true}}
+{"kind": "fixture-command", "value": "fail resource"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "failed resource reload preserves published pane bundle", "passed": true}}
+{"kind": "fixture-command", "value": "fail guard"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "failed guard reload preserves published pane bundle", "passed": true}}
+{"kind": "fixture-command", "value": "fail stale"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "failed stale reload preserves published pane bundle", "passed": true}}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "compatible reload preserves selected page and sequence silently", "passed": true}}
+{"kind": "screenshot", "value": "panes-after-reload.png"}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

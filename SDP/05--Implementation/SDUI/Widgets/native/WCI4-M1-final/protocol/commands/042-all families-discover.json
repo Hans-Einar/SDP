@@ -1,0 +1,21 @@
+{
+  "name": "all families-discover",
+  "argv": [
+    "/tmp/wci4-package-candidate2/bin/sdptool",
+    "--json",
+    "/tmp/wci4-final-protocol2/all families project with spaces",
+    "discover"
+  ],
+  "cwd": "/tmp/wci4-final-protocol2",
+  "binarySha256": "6537cf23381394bca2c2c2de10180cdda6406698ee74efbef005d72d221e8756",
+  "displayEnvironment": "DISPLAY/WAYLAND_DISPLAY removed",
+  "expected": "success",
+  "exit": 0,
+  "timeout": false,
+  "seconds": 0.13006973266601562,
+  "stdout": "commands/042-all families-discover.stdout",
+  "stderr": "commands/042-all families-discover.stderr",
+  "stdoutSha256": "8e29d6f5a71434e36558683fd39254838dd3ddb8a6f7a87ce8bf193e47dea38d",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "binaryUnchanged": true
+}

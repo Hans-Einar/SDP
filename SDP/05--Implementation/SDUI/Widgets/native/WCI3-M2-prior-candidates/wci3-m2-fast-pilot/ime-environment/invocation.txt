@@ -1,0 +1,3 @@
+Display: :190
+Engine: xkb:us::eng
+Command argv: ['python', 'SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_text.py', '--binary', '/tmp/wci3-m2-noether-text-fast', '--display', ':190', '--out', '/tmp/wci3-m2-fast-pilot/ime', '--variant', 'ime']

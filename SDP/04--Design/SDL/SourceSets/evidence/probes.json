@@ -1,0 +1,63 @@
+{
+  "candidate": "84fbdb34f7b87f2ef23547cc4b1684322916a342",
+  "binarySHA256": "1714ef58480f87c50529d1efe1582d969e9cb40058e2aaac1c2d432333e10976",
+  "results": [
+    {
+      "case": "baseline-check",
+      "command": [
+        "/tmp/sdl-ssd1",
+        "check",
+        "SDP/SDL/SDL/Frontend/System.design"
+      ],
+      "exit": 0,
+      "output": {
+        "diagnostics": [],
+        "valid": true
+      },
+      "result": "expected"
+    },
+    {
+      "case": "proposed-version-rejection",
+      "command": [
+        "/tmp/sdl-ssd1",
+        "check",
+        "SDP/04--Design/SDL/SourceSets/examples/frontend/System.design"
+      ],
+      "exit": 1,
+      "output": {
+        "diagnostics": [
+          {
+            "code": "UNSUPPORTED_VERSION",
+            "message": "Only design-core version 0.5 is supported",
+            "node": "Diagnostic",
+            "span": {
+              "column": 30,
+              "end": 32,
+              "end_column": 33,
+              "end_line": 1,
+              "line": 1,
+              "node": "Span",
+              "start": 29
+            }
+          }
+        ],
+        "valid": false
+      },
+      "result": "expected"
+    },
+    {
+      "case": "partition-inventory",
+      "baselineStatements": 57,
+      "copiedStatements": 57,
+      "result": "exact multiset equality; inventory comparison, not new-profile parsing"
+    },
+    {
+      "case": "baseline-canonical",
+      "result": "byte-identical current formatter output"
+    },
+    {
+      "case": "source-pins",
+      "result": "15 hashes match; draft inspected only"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+language design-core version 0.5.
+actor ApplicationDeveloper.
+interface ApplicationProcessPort.
+functionality BuildCandidateApplication.
+unit BuildCoordinator.
+capability ControlledApplicationRestart.
+mode Developing.
+container DevelopmentHostProcess.
+feature DevelopmentIteration.
+activity ExistingCapability.
+interface GoToolchainPort.
+activity IndependentPackaging.
+unit ProcessManager.
+usecase RebuildLocalApplication.
+functionality RestartBuiltApplication.
+unit SourceWatcher.
+functionality WatchGoSourceChanges.
+ApplicationDeveloper pursues RebuildLocalApplication.
+BuildCandidateApplication allocated-to DevelopmentHostProcess in mode Developing.
+BuildCandidateApplication contributes-to DevelopmentIteration.
+BuildCandidateApplication realizes ControlledApplicationRestart.
+BuildCoordinator consumes GoToolchainPort.
+BuildCoordinator owns BuildCandidateApplication.
+ControlledApplicationRestart requires ApplicationProcessPort in mode Developing.
+ControlledApplicationRestart requires GoToolchainPort in mode Developing.
+DevelopmentHostProcess contains BuildCoordinator.
+DevelopmentHostProcess contains ProcessManager.
+DevelopmentHostProcess contains SourceWatcher.
+DevelopmentHostProcess provides ControlledApplicationRestart.
+DevelopmentIteration supports RebuildLocalApplication.
+ExistingCapability addresses BuildCandidateApplication.
+ExistingCapability addresses RestartBuiltApplication.
+ExistingCapability addresses WatchGoSourceChanges.
+ExistingCapability delivers DevelopmentIteration.
+ExistingCapability has implementation-status = implemented.
+IndependentPackaging has implementation-status = planned.
+ProcessManager consumes ApplicationProcessPort.
+ProcessManager owns RestartBuiltApplication.
+RestartBuiltApplication allocated-to DevelopmentHostProcess in mode Developing.
+RestartBuiltApplication contributes-to DevelopmentIteration.
+RestartBuiltApplication realizes ControlledApplicationRestart.
+SourceWatcher owns WatchGoSourceChanges.
+WatchGoSourceChanges allocated-to DevelopmentHostProcess in mode Developing.
+WatchGoSourceChanges contributes-to DevelopmentIteration.
+WatchGoSourceChanges realizes ControlledApplicationRestart.

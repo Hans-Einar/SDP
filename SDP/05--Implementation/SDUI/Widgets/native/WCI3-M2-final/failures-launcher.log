@@ -1,0 +1,13 @@
+PASS error result cannot accept or rewrite native text
+PASS error failed Commit preserves native undo
+PASS failed profile reload preserves text and field revisions
+PASS failed binding reload preserves text and field revisions
+PASS failed resource reload preserves text and field revisions
+PASS failed guard reload preserves text and field revisions
+PASS failed stale reload preserves text and field revisions
+PASS malformed result cannot accept or rewrite native text
+PASS malformed failed Commit preserves native undo
+PASS non-echo result cannot accept or rewrite native text
+PASS non-echo failed Commit preserves native undo
+PASS post-domain newer draft survives rejected delivery
+PASS native teardown closes session and clears provider barriers

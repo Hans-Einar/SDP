@@ -1,0 +1,47 @@
+{
+  "observedAt": "2026-09-29T16:50:43.881391+00:00",
+  "producerCommit": "a274265f9e3333291edc9da3db9047c8add7c37f",
+  "archiveScope": [
+    "SDL/go",
+    "SDUI/go",
+    "SDUI/examples",
+    "SDUI/design",
+    "SDUI/evidence"
+  ],
+  "externalHead": "41fa4948c5377edd792ba3f503e6b92b0fd4717a",
+  "externalGapReportState": "untracked; HEAD does not identify report bytes",
+  "producerSourceSha256": {
+    "SDL/go/bridge/bind.go": "bb6e72d383cdf1b219ce0652e61bef4df19b0ae7adee9918cda1930a28b70246",
+    "SDL/go/bridge/bind_test.go": "adb9aac6ded58097112d199f5859c69d3e9539b533bfee10b48186f26607b2b8",
+    "SDL/go/runtime/engine.go": "ca395df96e5896d23d8708f20e868b0517c40c07af443d17ebc6c006533fa978",
+    "SDL/go/runtime/engine_test.go": "879dde8ae7898f8bbb4f10b57e2433e468330816ec24ce6bdc9485c37d7ca0d7",
+    "SDL/go/runtime/reload_test.go": "d02cb247ae0bf0a6f7dbc8d6e49c450316bc4e5b4ec20f7e1d433cd227c089be",
+    "SDL/go/cmd/sdl/main.go": "81f10e487a5eaf19b9dc825fb1603d85f95ad00e99d62c54d643e7d97496ab70",
+    "SDL/docs/profiles/SDL-Executable-Action-Profile.md": "32318abfb2db0ed39c66749443692adcdf276a601cd5145792c9cc87d078bb3e",
+    "SDL/docs/profiles/SDL-Class-Profile.md": "4a1bd5b5466c5dbfee0c443f890d9d244042d7ab6a91ad1b8882af3482246e19",
+    "SDUI/go/parser/validate.go": "82f9318dc30c62c2747f4c0a5cc8877856f30db47811112d05a3af2c154600c5",
+    "SDUI/go/runtime/README.md": "f0e1e7d55412997b96094a4f9c751ee2ca4747d7437ac74662fa4ba75fe7de1b",
+    "SDUI/go/runtime/session_test.go": "66dd49250795873934bee0d5f8c64acad22db29bf9e17500c7b48b026b8f22fa",
+    "SDUI/go/runtime/reload_test.go": "c8431a3ad724b56818926515262947aeb0a57b31ae9a01e554be9b1925fa02ac",
+    "SDUI/go/layout/engine.go": "87e521158c29ccd3bc07d9feb43e7d445def30ada305748bb3c2b26fc57cbbee",
+    "SDUI/go/layout/font.go": "aa1d1bba96123abde4e624598643fe863f92e67c9f7eacb081a3dd65e5b48182",
+    "SDUI/go/svg/text.go": "4032bdbb773a49d4711a6bab72d8c6a9a6ccf1b66da90936e76f05966a178336",
+    "SDUI/go/markdown/document.go": "7359732245e33d010cde39b9392da794d57cf1dbc582d9201acd034b5443c73a",
+    "SDUI/go/markdown/provider.go": "0166418cd0a1c6f67a93a530e08692562617bc361e788df1610d68ed3e1ac55e",
+    "SDUI/go/markdown/mermaid.go": "4c09f5152ced885b08b53fbc4dc2c4f98a34070e8d05a9eb80b933b718218efe",
+    "SDUI/go/markdown/provider_test.go": "f2ae3003b20e34cc82ec78e09d072fb282227b72edb5af2418a303cb166d1c71",
+    "SDUI/go/host/fynehost/view.go": "05ca964e09a91ebe6dd4cda6224b0e4c375000e5ac56bb63546af22546fdad76",
+    "SDUI/docs/markdown-provider.md": "ab0ed253f60b4c3e61a89a5008fe2f7c13701ec2111c66928cb6b57559d2002f",
+    "SDUI/docs/go-layout-contract.md": "c201fd9db1df4a34cfda27a68251e18a906af7078cb951ac5a136f426e891c0c"
+  },
+  "externalSourceSha256": {
+    "SDP/02--Requirements/XFMD-Modeling/Gaps.md": "6bb59190e2a35ccd8034137009e2fbf044c3793680eab2fbf24ea754ba169f6b",
+    "SDP/02--Requirements/XFMD-Modeling/Baseline.md": "64d1395d8286cee2984c3665c6e6f8f5d72a0ba5127896c629f68df9b0745eed",
+    "SDP/05--Implementation/XFMD-Modeling/evidence/XM-M2/run_probes.py": "63e896ce46163520e47175b711a075fe2059a0bf5089fcbfbc99669569627277",
+    "src/application/navigation/DocumentViews.cpp": "112015760c9f6fb05634e121e85429324af634b633b453994ebd4aaf49b9524b",
+    "src/application/document/DocumentCoordinator.cpp": "a1d3ecbc6fe3e88009a760d727086e6609ba1870983975dbe56204d30525d238",
+    "src/application/document/DocumentSession.cpp": "0a3efd395d2082ca8134029218e959966e578651b4a9088dce35772be2556cc0"
+  },
+  "goVersion": "go version go1.27.1 linux/amd64",
+  "rsvgVersion": "rsvg-convert version 2.57.1"
+}

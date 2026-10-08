@@ -1,0 +1,96 @@
+language design-core version 0.5.
+channel ActionCalls.
+contract ActionCallsProtocol.
+scenario ActionCompleted.
+contract ActionCompletion.
+unit ActionEngine.
+contract ActionInvocation.
+field ActionName.
+unit ActionReloader.
+message ActionRequest.
+message ActionResult.
+field ActionRevision.
+field ActionSequence.
+unit ActionSourceWatcher.
+actor ApplicationDeveloper.
+functionality BindUiEventsToActions.
+field CompletedAction.
+field CompletedRevision.
+field CompletedSequence.
+usecase ExecuteTypedAction.
+mode Executing.
+activity ExistingCapability.
+activity IndependentPackaging.
+functionality InstallCompatibleActionModel.
+functionality InvokeRegisteredHandler.
+functionality ObserveActionCandidates.
+capability RegisteredDomainExecution.
+interface RegisteredGoHandlerPort.
+interface SduiSessionPort.
+feature TypedActionExecution.
+unit UiBindingBridge.
+ActionCalls upholds ActionCallsProtocol.
+ActionCallsProtocol has completeness = closed.
+ActionCallsProtocol permits ActionRequest.
+ActionCallsProtocol permits ActionResult.
+ActionCompleted exercises ExecuteTypedAction.
+ActionCompleted has completeness = closed.
+ActionCompleted illustrates ExistingCapability.
+ActionCompleted runs-in Executing.
+ActionCompleted step 1 sends ActionRequest from UiBindingBridge to ActionEngine via ActionCalls.
+ActionCompleted step 2 sends ActionResult from ActionEngine to UiBindingBridge via ActionCalls reply-to 1.
+ActionCompletion has completeness = closed.
+ActionCompletion has-field CompletedAction.
+ActionCompletion has-field CompletedRevision.
+ActionCompletion has-field CompletedSequence.
+ActionEngine consumes RegisteredGoHandlerPort.
+ActionEngine owns InvokeRegisteredHandler.
+ActionEngine provides RegisteredDomainExecution.
+ActionEngine uses ActionCalls as receiver of ActionRequest in mode Executing.
+ActionEngine uses ActionCalls as sender of ActionResult in mode Executing.
+ActionInvocation has completeness = closed.
+ActionInvocation has-field ActionName.
+ActionInvocation has-field ActionRevision.
+ActionInvocation has-field ActionSequence.
+ActionName has presence = required.
+ActionName has value-type = text.
+ActionReloader owns InstallCompatibleActionModel.
+ActionRequest has message-kind = request.
+ActionRequest upholds ActionInvocation.
+ActionResult has message-kind = result.
+ActionResult replies-to ActionRequest.
+ActionResult upholds ActionCompletion.
+ActionRevision has presence = required.
+ActionRevision has value-type = unsigned.
+ActionSequence has presence = required.
+ActionSequence has value-type = unsigned.
+ActionSourceWatcher owns ObserveActionCandidates.
+ApplicationDeveloper pursues ExecuteTypedAction.
+BindUiEventsToActions contributes-to TypedActionExecution.
+BindUiEventsToActions realizes RegisteredDomainExecution.
+CompletedAction has presence = required.
+CompletedAction has value-type = text.
+CompletedRevision has presence = required.
+CompletedRevision has value-type = unsigned.
+CompletedSequence has presence = required.
+CompletedSequence has value-type = unsigned.
+ExistingCapability addresses BindUiEventsToActions.
+ExistingCapability addresses InstallCompatibleActionModel.
+ExistingCapability addresses InvokeRegisteredHandler.
+ExistingCapability addresses ObserveActionCandidates.
+ExistingCapability delivers TypedActionExecution.
+ExistingCapability has implementation-status = implemented.
+IndependentPackaging has implementation-status = planned.
+InstallCompatibleActionModel contributes-to TypedActionExecution.
+InstallCompatibleActionModel realizes RegisteredDomainExecution.
+InvokeRegisteredHandler contributes-to TypedActionExecution.
+InvokeRegisteredHandler realizes RegisteredDomainExecution.
+ObserveActionCandidates contributes-to TypedActionExecution.
+ObserveActionCandidates realizes RegisteredDomainExecution.
+RegisteredDomainExecution requires RegisteredGoHandlerPort in mode Executing.
+RegisteredDomainExecution requires SduiSessionPort in mode Executing.
+TypedActionExecution supports ExecuteTypedAction.
+UiBindingBridge consumes SduiSessionPort.
+UiBindingBridge owns BindUiEventsToActions.
+UiBindingBridge uses ActionCalls as receiver of ActionResult in mode Executing.
+UiBindingBridge uses ActionCalls as sender of ActionRequest in mode Executing.

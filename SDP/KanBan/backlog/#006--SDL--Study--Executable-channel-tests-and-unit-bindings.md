@@ -71,3 +71,11 @@ is the primary source for the combined direction.
 ## Worklog
 
 2026-09-26T10:12:02Z: Registered in backlog; EVT-KB-SDL-000027.
+
+## XFMD gap study input — 2026-09-29
+
+[Study and proposed acceptance](../../02--Requirements/XFMD-Gaps/Study.md).
+
+SDL-003: first map navigation success, cancel, stale generation, dirty admission and disposal to existing profiles and actual code evidence. Typed action calls already exist; cooperative cancellation is not transaction rollback.
+
+EVT-KB-SDL-000032: CardState remains backlog; this review selects no implementation.

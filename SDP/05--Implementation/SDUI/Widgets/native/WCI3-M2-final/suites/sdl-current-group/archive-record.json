@@ -1,0 +1,19 @@
+{
+  "name": "sdl-current-group",
+  "status": "passed",
+  "exit": 0,
+  "command": "go test -race ./bridge ./examples/values/... ./examples/commands/... ./examples/panes/... -count=1",
+  "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+  "receipt_origin": "Coordinator subprocess captured result.json and exit; actual session27893 completion, exact224sourcebefore/after",
+  "log": "/tmp/wci3-m2-guard-current-group/test.log",
+  "receipt": "/tmp/wci3-m2-guard-current-group/result.json",
+  "source_before": "/tmp/wci3-m2-guard-current-group/source-before.json",
+  "source_after": "/tmp/wci3-m2-guard-current-group/source-after.json",
+  "artifacts": [
+    "/tmp/wci3-m2-guard-current-group/command.json",
+    "/tmp/wci3-m2-guard-current-group/source-before.json",
+    "/tmp/wci3-m2-guard-current-group/source-after.json",
+    "/tmp/wci3-m2-guard-current-group/exit"
+  ],
+  "notes": "Fresh post-correction bridge/values/commands/panes candidate regression; source224before/after verified."
+}

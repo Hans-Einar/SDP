@@ -1,0 +1,16 @@
+PASS pointer selection invokes no SDL action
+PASS Enter sends stable ID through real SDL to preview
+PASS double-click activates exactly once
+PASS End skips separator and reveals final row
+PASS Retry allocates a fresh request
+PASS late canceled success has no state or domain effect
+PASS current completion publishes children without domain action
+PASS compatible reload 2 retains selection and sequence
+PASS compatible reload 3 retains selection and sequence
+PASS activation after two reloads executes once with increasing sequence
+PASS Alt-Right scrolls horizontally without selection or action
+PASS tree parent navigation retains selected descendant without activation
+PASS selectable branch R retries without activation
+PASS selectable branch retry control can be revealed
+PASS pointer Retry starts one fresh request without activation
+PASS native teardown closes session and clears provider barriers

@@ -1,0 +1,98 @@
+{
+  "toolCommit": "043c59c",
+  "trial": "authored temporary model assignment, not generated production bundle",
+  "candidates": {
+    "CandidateA": {
+      "check": {
+        "profile": "design-core/0.6",
+        "revision": "29a5bfd5bacbb4ccb78054a62637a245572e2a8a043bac24c8e62080eb1f20b1",
+        "sources": [
+          {
+            "path": "Containers/BuckingUI.design",
+            "sha256": "736133f6bd8e76bb76af6b558884cbdd9e4818a9ca41c158aee421651bd39c50"
+          },
+          {
+            "path": "Containers/BuckingWeb.design",
+            "sha256": "61b2741856d08b95fb38eedcd708ae207f8a494a4cbf3d37953edac9c0997ddf"
+          },
+          {
+            "path": "Containers/MachineService.design",
+            "sha256": "2a12eac2257c8058fcd2328fda25a15546789b31593050a4b34a7814a1b8a1bd"
+          },
+          {
+            "path": "Contracts/Machine.design",
+            "sha256": "ea134e09aa9ea7bfdc7de9aa051d1cceb82cf9e9c726b46cab6e5d088ea06c96"
+          },
+          {
+            "path": "Features.design",
+            "sha256": "ab8f4487fd2c937481a7081bca4a7815f0d318d7e281a473c072ab8b3651b8bd"
+          },
+          {
+            "path": "System.design",
+            "sha256": "3f4393c57a50ef9bcb58641d991bb5c16f04c3c94ab0d0e298585819525260fe"
+          }
+        ],
+        "system": "MVP1InspectionPilot",
+        "valid": true,
+        "warnings": []
+      },
+      "files": {
+        "Containers/BuckingUI.design": "736133f6bd8e76bb76af6b558884cbdd9e4818a9ca41c158aee421651bd39c50",
+        "Containers/BuckingWeb.design": "61b2741856d08b95fb38eedcd708ae207f8a494a4cbf3d37953edac9c0997ddf",
+        "Containers/MachineService.design": "2a12eac2257c8058fcd2328fda25a15546789b31593050a4b34a7814a1b8a1bd",
+        "Contracts/Machine.design": "ea134e09aa9ea7bfdc7de9aa051d1cceb82cf9e9c726b46cab6e5d088ea06c96",
+        "Features.design": "ab8f4487fd2c937481a7081bca4a7815f0d318d7e281a473c072ab8b3651b8bd",
+        "System.design": "3f4393c57a50ef9bcb58641d991bb5c16f04c3c94ab0d0e298585819525260fe"
+      },
+      "changedFiles": [
+        "Containers/MachineService.design"
+      ]
+    },
+    "CandidateB": {
+      "check": {
+        "profile": "design-core/0.6",
+        "revision": "e2b9a3ebfc1e74c466482456cd97b12591aec5435eb0c50463b272e62441edd6",
+        "sources": [
+          {
+            "path": "Containers/BuckingUI.design",
+            "sha256": "736133f6bd8e76bb76af6b558884cbdd9e4818a9ca41c158aee421651bd39c50"
+          },
+          {
+            "path": "Containers/BuckingWeb.design",
+            "sha256": "61b2741856d08b95fb38eedcd708ae207f8a494a4cbf3d37953edac9c0997ddf"
+          },
+          {
+            "path": "Containers/MachineService.design",
+            "sha256": "02fdfd4f868cf82c3cb3d7babac9424fe0e4adaae39fa81de229c84952ec2c4a"
+          },
+          {
+            "path": "Contracts/Machine.design",
+            "sha256": "ea134e09aa9ea7bfdc7de9aa051d1cceb82cf9e9c726b46cab6e5d088ea06c96"
+          },
+          {
+            "path": "Features.design",
+            "sha256": "ab8f4487fd2c937481a7081bca4a7815f0d318d7e281a473c072ab8b3651b8bd"
+          },
+          {
+            "path": "System.design",
+            "sha256": "3f4393c57a50ef9bcb58641d991bb5c16f04c3c94ab0d0e298585819525260fe"
+          }
+        ],
+        "system": "MVP1InspectionPilot",
+        "valid": true,
+        "warnings": []
+      },
+      "files": {
+        "Containers/BuckingUI.design": "736133f6bd8e76bb76af6b558884cbdd9e4818a9ca41c158aee421651bd39c50",
+        "Containers/BuckingWeb.design": "61b2741856d08b95fb38eedcd708ae207f8a494a4cbf3d37953edac9c0997ddf",
+        "Containers/MachineService.design": "02fdfd4f868cf82c3cb3d7babac9424fe0e4adaae39fa81de229c84952ec2c4a",
+        "Contracts/Machine.design": "ea134e09aa9ea7bfdc7de9aa051d1cceb82cf9e9c726b46cab6e5d088ea06c96",
+        "Features.design": "ab8f4487fd2c937481a7081bca4a7815f0d318d7e281a473c072ab8b3651b8bd",
+        "System.design": "3f4393c57a50ef9bcb58641d991bb5c16f04c3c94ab0d0e298585819525260fe"
+      },
+      "changedFiles": [
+        "Containers/MachineService.design"
+      ]
+    }
+  }
+}

@@ -1,0 +1,23 @@
+PASS native teardown closes session and clears provider barriers
+Traceback (most recent call last):
+  File "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_text.py", line 474, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_text.py", line 465, in main
+    getattr(trial,args.variant)()
+  File "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_text.py", line 176, in history
+    self.undo(SINGLE,'one')
+  File "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_text.py", line 126, in undo
+    return self.changed(lambda d:self.draft(d,path)==text,cursor)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_values.py", line 76, in changed
+    super().changed(predicate,after)
+  File "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci1.py", line 95, in changed
+    return self.wait(lambda e: e['event'] == 'state' and predicate(e['data']), after)['data']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci3_text.py", line 33, in wait
+    return super().wait(predicate,after,45 if self.initializing else timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci1.py", line 79, in wait
+    raise AssertionError('Expected fixture event not observed')
+AssertionError: Expected fixture event not observed

@@ -1,0 +1,6 @@
+language design-core version 0.6.
+system SDPTool.
+includes "Containers/SdpToolHost/ModelGovernance.design".
+includes "Contracts/ModelGovernance.design".
+includes "Features/ModelGovernance.design".
+SDPTool contains SdpToolHost.

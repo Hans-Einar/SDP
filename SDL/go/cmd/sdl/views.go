@@ -6,10 +6,8 @@ import (
 	"flag"
 	"fmt"
 	"github.com/Hans-Einar/SDP/SystemDesignLanguage/go/documents"
-	"github.com/Hans-Einar/SDP/SystemDesignLanguage/go/parser"
 	"github.com/Hans-Einar/SDP/SystemDesignLanguage/go/viewpoint"
 	"io"
-	"os"
 	"path/filepath"
 	"strings"
 )
@@ -41,17 +39,11 @@ func exportViews(args []string, out, errs io.Writer) int {
 	if rel != ".." && !strings.HasPrefix(rel, ".."+string(filepath.Separator)) {
 		return fail(fmt.Errorf("keep source outside output"))
 	}
-	f, e := os.Open(source)
+	v, input, e := viewpoint.Load(source)
 	if e != nil {
 		return fail(e)
 	}
-	defer f.Close()
-	data, e := io.ReadAll(io.LimitReader(f, parser.MaxBytes+1))
-	if e != nil {
-		return fail(e)
-	}
-	v, e := viewpoint.New(string(data))
-	if e != nil {
+	if e = input.Outside(*output); e != nil {
 		return fail(e)
 	}
 	o := documents.Options{Navigator: *form == "navigator", Monolithic: *mono, Project: *project}
@@ -66,6 +58,9 @@ func exportViews(args []string, out, errs io.Writer) int {
 	}
 	b, e := documents.Build(context.Background(), v, o)
 	if e != nil {
+		return fail(e)
+	}
+	if e = input.Fresh(); e != nil {
 		return fail(e)
 	}
 	if e = b.Publish(*output); e != nil {

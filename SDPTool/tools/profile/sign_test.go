@@ -53,6 +53,8 @@ func TestProfileRetainsExplicitReleasePredecessor(t *testing.T) {
 	want := []string{
 		"edc0c72101a437c6e12c40a081ef59ae41cf0db32bcaedb73824ec48495aaee5", // published 0.2.0
 		"66590e8e967ede6b36d8fa45cdbee1cd80f69505cca698b0e4a9bd960842735a", // published 0.2.1
+		"767527e0d7f54866bab95f4642ffffb2a344024c1805f44b3d5ea9c024829125", // published 1.0.0
+		"f7aac5a703c4d296a3474d90c682be5c96733ba1f46aed94817954cbc864f367", // published 2.0.0
 	}
 	if len(descriptor.UpgradesFrom) != len(want) {
 		t.Fatalf("unexpected predecessor inventory: %v", descriptor.UpgradesFrom)

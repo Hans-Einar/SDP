@@ -61,3 +61,11 @@ lives on the shared board. Product acceptance remains with this primary.
 Keep narrative text/actors/stakeholders separate from weak-path geometry. Coordinate shared relationship grammar with KB-SDL-002 after System/input work.
 
 EVT-KB-SDL-000023; next review at the next selection or relevant dependency delivery.
+
+## XFMD gap study input — 2026-09-29
+
+[Study and proposed acceptance](../../02--Requirements/XFMD-Gaps/Study.md).
+
+SDL-002: preserve external requirement IDs, normative text, amendments and current/future/reserved status. Existing actor/story scope must not silently become an adopted Requirement keyword; select the precise profile during design.
+
+EVT-KB-SDL-000031: CardState remains backlog; this review selects no implementation.

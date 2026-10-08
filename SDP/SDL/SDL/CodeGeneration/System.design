@@ -1,0 +1,48 @@
+language design-core version 0.5.
+unit ActionEmitter.
+interface ActionSourcePort.
+actor ApplicationDeveloper.
+functionality EmitActionConstructors.
+activity ExistingCapability.
+usecase GenerateModelConstructors.
+mode Generating.
+container GenerationCommandProcess.
+unit GenerationPublisher.
+activity IndependentPackaging.
+feature ModelGeneration.
+interface OwnedOutputPort.
+functionality PublishOwnedGeneration.
+capability ReproducibleGoConstructors.
+functionality RequestUiConstructors.
+interface SduiCodeGenerationPort.
+unit UiGenerationAdapter.
+ActionEmitter consumes ActionSourcePort.
+ActionEmitter owns EmitActionConstructors.
+ApplicationDeveloper pursues GenerateModelConstructors.
+EmitActionConstructors allocated-to GenerationCommandProcess in mode Generating.
+EmitActionConstructors contributes-to ModelGeneration.
+EmitActionConstructors realizes ReproducibleGoConstructors.
+ExistingCapability addresses EmitActionConstructors.
+ExistingCapability addresses PublishOwnedGeneration.
+ExistingCapability addresses RequestUiConstructors.
+ExistingCapability delivers ModelGeneration.
+ExistingCapability has implementation-status = implemented.
+GenerationCommandProcess contains ActionEmitter.
+GenerationCommandProcess contains GenerationPublisher.
+GenerationCommandProcess contains UiGenerationAdapter.
+GenerationCommandProcess provides ReproducibleGoConstructors.
+GenerationPublisher consumes OwnedOutputPort.
+GenerationPublisher owns PublishOwnedGeneration.
+IndependentPackaging has implementation-status = planned.
+ModelGeneration supports GenerateModelConstructors.
+PublishOwnedGeneration allocated-to GenerationCommandProcess in mode Generating.
+PublishOwnedGeneration contributes-to ModelGeneration.
+PublishOwnedGeneration realizes ReproducibleGoConstructors.
+ReproducibleGoConstructors requires ActionSourcePort in mode Generating.
+ReproducibleGoConstructors requires OwnedOutputPort in mode Generating.
+ReproducibleGoConstructors requires SduiCodeGenerationPort in mode Generating.
+RequestUiConstructors allocated-to GenerationCommandProcess in mode Generating.
+RequestUiConstructors contributes-to ModelGeneration.
+RequestUiConstructors realizes ReproducibleGoConstructors.
+UiGenerationAdapter consumes SduiCodeGenerationPort.
+UiGenerationAdapter owns RequestUiConstructors.

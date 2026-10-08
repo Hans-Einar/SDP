@@ -294,3 +294,95 @@ is claimed. Canonical SDL models, production code, historical ledger prefixes
 and unrelated sourceinput work remain unchanged. KB-SDP-031 closes as a delivered
 Study, and PLAN-SDP-0001 remains planned. The phase is submitted for review against
 main; merging is outside this study authorization.
+
+
+## Owner proposal after release 2.1 — 2026-10-01
+
+[KB-SDP-048](../../../KanBan/superseded/%23048--Proposal--Versioned-design-reviews-and-blueprint-diffs.md)
+records independent local SDL/SDUI revision history, local design-review requests,
+semantic before/after blueprints and verification before advancing the implemented
+baseline. It also analyzes the crucial difference between parent-tracked source
+snapshots and portable model Git history. No nested repository or storage policy
+has been installed. BP2 remains planned; its existing NOW/TARGET and impact-union
+requirements remain applicable. This is new design input, not acceptance or a
+rewrite of the historical BP1 evidence.
+
+
+## Owner constraint on history durability — 2026-10-02
+
+KB-SDP-048 now explicitly rejects git bundle and a separate export that an agent
+or SDPTool must remember. The earlier local Git plus export recommendation is
+withdrawn. Native durable version storage is required; SVN and Fossil are candidates
+for investigation, not selected integrations. Semantic NOW/TARGET comparison and
+honest implementation evidence remain independent of the storage choice.
+
+
+## Parallel merge requirement — 2026-10-02
+
+KB-SDP-048 now requires model history to survive parallel project branches and
+ordinary PR integration. Native SVN/Fossil database storage alone does not satisfy
+that requirement. The proposed simpler alternative is a separate model workflow
+backed by the project's Git history, with explicit design/code baselines and
+history-preserving merges. This tradeoff needs owner disposition because physical
+repository separation was preferred earlier. A disposable five-case probe confirms
+Git storage/merge/clone behavior only; it does not implement blueprint generation
+or establish semantic code conformance. BP2 remains planned.
+
+
+## Standalone snapshot refinement — 2026-10-02
+
+The owner requires blueprint inputs without project Git or project commits, and
+now proposes full release snapshots plus editable WORK directories. KB-SDP-048
+records this refinement and recommends investigating ordinary-file immutable
+revision history, with unique identities independent of release labels, pinned
+bases, local checkout coordination and initially conservative file merging.
+Parent Git may carry that history, but is optional for model operations. Parallel
+release-label claims require explicit resolution even after a clean textual merge.
+This supersedes project-Git storage as the recommended direction for the next
+experiment; no snapshot backend has been implemented or adopted. BP2 remains
+planned, and existing semantic comparison/evidence requirements are preserved.
+
+
+## Snapshot lifecycle refinement — 2026-10-02
+
+KB-SDP-048 now examines WORK, PROPOSAL, CANDIDATE and RELEASE as workflow roles
+with shared immutable-snapshot storage. The recommendation retains PROPOSAL to
+freeze contributor intent separately from an integrated candidate. Merging candidates
+produces a new candidate; releases never receive edits. It also defines proposed
+UUID/hash responsibilities, same-file three-way merge limits, designated integrator
+ownership and reproducible comparison across snapshot roles. These are design inputs,
+not an implemented schema, command or adopted migration. BP2 remains planned.
+
+
+## Owner correction — preliminary preview and optional submission
+
+2026-10-02: Generate a WORK/preliminary blueprint without locking WORK or creating
+an obligatory persistent snapshot. Capture a consistent read and identify its input
+hashes; mutable preview is not approved reproducible assignment evidence unless
+inputs are retained. WORK names have no UUID; optional PROPOSAL and CANDIDATE names
+may use a four-character UUID suffix with explicit collision handling. Full UUID
+stays in tool-owned YAML. Normal route is WORK -> CANDIDATE -> RELEASE; PROPOSAL
+remains optional. These corrections supersede earlier recommendations requiring
+proposal creation/freezing for every preview. Session0005 tracks further discussion.
+
+
+## Owner scope reduction — 2026-10-03
+
+Session0005 T006 and KB048 supersede the recommendation to keep every historical
+commit's source content permanently: WORK-local undo is sufficient. Candidate and
+release promotion may discard restoration payloads while retaining source content
+for the promoted model and metadata-only commit/merge lineage. Historical WORK
+comparisons are possible only while their inputs remain available. No central
+model repository is required. Proposed .commits changed-file copies need a baseline
+and deletion records; .merge archives preserve provenance. Full-state recovery
+around merges can use checkpoints; selective undo of merged contributions is not
+part of the bounded initial design. No backend implementation is claimed.
+
+
+## Feature separation — 2026-10-03
+
+KB048 is superseded by KB049 ModelGovernance (active) and KB050 semantic Blueprints
+(backlog). Current model lifecycle study/design now lives in
+[ModelGovernance](../ModelGovernance/Study.md), owned by PLAN-SDP-0016 and Session0006.
+This document retains historical analysis; BP2 remains planned for semantic blueprint
+selection and assignment context. ModelGovernance delivery does not deliver that engine.

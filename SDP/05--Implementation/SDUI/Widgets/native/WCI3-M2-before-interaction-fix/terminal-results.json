@@ -1,0 +1,67 @@
+{
+  "single": {
+    "publishedOpenings": 0,
+    "terminalResults": 0,
+    "exactlyOnce": true
+  },
+  "multiline": {
+    "publishedOpenings": 0,
+    "terminalResults": 0,
+    "exactlyOnce": true
+  },
+  "history": {
+    "publishedOpenings": 0,
+    "terminalResults": 0,
+    "exactlyOnce": true
+  },
+  "readonly": {
+    "publishedOpenings": 0,
+    "terminalResults": 0,
+    "exactlyOnce": true
+  },
+  "pasteguard": {
+    "publishedOpenings": 0,
+    "terminalResults": 0,
+    "exactlyOnce": true
+  },
+  "failures": {
+    "publishedOpenings": 0,
+    "terminalResults": 0,
+    "exactlyOnce": true
+  },
+  "retention": {
+    "publishedOpenings": 0,
+    "terminalResults": 0,
+    "exactlyOnce": true
+  },
+  "forms": {
+    "publishedOpenings": 2,
+    "terminalResults": 2,
+    "exactlyOnce": true
+  },
+  "required_empty": {
+    "publishedOpenings": 0,
+    "terminalResults": 0,
+    "exactlyOnce": true
+  },
+  "constraints": {
+    "publishedOpenings": 1,
+    "terminalResults": 1,
+    "exactlyOnce": true
+  },
+  "scroll": {
+    "publishedOpenings": 0,
+    "terminalResults": 0,
+    "exactlyOnce": true
+  },
+  "ime": {
+    "publishedOpenings": 0,
+    "terminalResults": 0,
+    "exactlyOnce": true
+  },
+  "nonmodal-forms": {
+    "publishedOpenings": 2,
+    "terminalResults": 2,
+    "exactlyOnce": true
+  }
+}

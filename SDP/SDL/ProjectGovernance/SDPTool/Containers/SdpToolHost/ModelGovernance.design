@@ -1,0 +1,23 @@
+language design-core version 0.6.
+unit LocalHistoryStore.
+database LocalModelFiles.
+unit ModelCommandAdapter.
+unit ModelCoordinator.
+unit ModelValidator.
+interface SdlValidationLibrary.
+container SdpToolHost.
+interface SduiValidationLibrary.
+LocalHistoryStore owns LocalModelFiles.
+ModelCoordinator owns FreezeModel.
+ModelCoordinator owns IntegrateSources.
+ModelCoordinator owns RestoreCheckpoint.
+ModelCoordinator owns SaveCheckpoint.
+ModelValidator consumes SdlValidationLibrary.
+ModelValidator consumes SduiValidationLibrary.
+SdpToolHost contains LocalHistoryStore.
+SdpToolHost contains ModelCommandAdapter.
+SdpToolHost contains ModelCoordinator.
+SdpToolHost contains ModelValidator.
+SdpToolHost provides FrozenModelDelivery.
+SdpToolHost provides LocalModelRecovery.
+SdpToolHost provides ModelIntegration.
