@@ -15,8 +15,8 @@ profile with commands, menus and dialogs below; frontend support is not native p
 The [0.3 EBNF](../grammar/sdui-0.3.ebnf) retains the 0.2 lexical, composition,
 reuse, formatting, resource-limit and symbolic-reference productions, adding
 bounded pane call bodies below. Reject alternative
-spellings such as `0.30` and `3e-1`. Input/svg schemas remain unchanged; the 0.3
-button extension below preserves legacy dispatch unless explicitly opted in.
+spellings such as `0.30` and `3e-1`. Legacy input/SVG forms remain unchanged;
+the explicit input, button and preview extensions below opt into new behavior.
 
 ```text
 sdui 0.3;
@@ -351,3 +351,70 @@ Buttons still use exact button entries. `Options.InteractionRoot` supplies the
 full selected snapshot for a native dialog canvas; the rendered root must be the
 identical node within that tree. It is valid only with SkipControls and never
 relaxes public export. Inventory remains scoped to that canvas's source subtree.
+
+## WCI4 explicit resource previews
+
+The [providers contract](../../SDP/04--Design/SDUI/Widgets/Providers-and-packaging.md)
+adds two closed leaf forms within the same development profile:
+
+```text
+sdui 0.3;
+ref: art "resources.sdl";
+Main=[
+  figure=svg(art.Overview.@resource, label="Overview",
+             description="System connections", fallback="label");
+  reading=markdown("# Overview\nOrdinary prose",
+                   description="Overview document", fallback="reject")
+];
+```
+
+Only source/text may be positional, first. SVG requires a reference and accepts
+optional string label; presence of description OR fallback opts in and requires
+both. An opt-in reference must use a declared module alias and member resource.
+Legacy references retain their old member rules; @resource or label alone does
+not opt in. Markdown calls require text, description and fallback strings. Reject
+unknown/duplicate fields, wrong payload types, bodies and callbacks. Description
+is nonblank UTF-8 of at most 4096 bytes; preserve its exact bytes. Explicit Markdown
+text is UTF-8 of at most 32768 bytes, including empty text. Fallback is exactly
+"label" or "reject". Unsupported HTML/images are provider content decisions, not
+source syntax errors. Parsing opens no reference or resource file.
+
+Source Markdown calls remain Node Kind widget/Widget markdown with their three
+Arguments. Normalization produces Kind markdown, empty Widget and Text equal to
+the text argument, retaining all Arguments, original spans and reuse provenance.
+Bare strings retain their old representation. Calls use the same Markdown
+formatting rules, including reuse overlays, and cannot be interactive callback,
+command-context or setHandle targets. No provider bytes, outcome or readiness
+fields enter the AST. AST/version tags remain unchanged.
+
+`parser.PreviewOptions(n) (PreviewPolicy, error)` validates these normalized facts;
+`PreviewPolicy` contains Explicit bool and Description/Fallback strings. It accepts
+normalized SVG or Markdown leaves, validates typed arguments/profile, and returns
+Explicit=false for legacy content. It checks reference shape; module declaration
+validation belongs to compilation. `ResolveInteractions` applies the strict check
+to the entire selected root, including hidden and closed descendants.
+
+Dump/Markdown/Combined exports describe each explicit preview's normalized path,
+source reference or quoted text, caption, description, policy and original span.
+They explicitly report "resources not supplied; source intent only". These are
+structural declarations, not prepared/rendered results. Public SVG rejects every
+explicit preview with source-linked unsupported-resource-export, including label
+policy, hidden nodes and caller-supplied Content/geometry. Rejection precedes
+output publication. No supplied-resource public SVG renderer is selected.
+
+Native background SkipControls may omit an explicit SVG only for the exact
+`NativeControls[path] == "svg"` prepared control. Legacy SVG retains its placeholder
+and cannot acquire an omission entry. Explicit Markdown stays background content:
+Content must implement `svg.PreparedPreviewRenderer`, embedding ContentRenderer and
+`CheckPreview(*parser.Instance) error`. CheckPreview is a pure assertion of a
+matching frozen per-path source/policy/text outcome, including labelled outcomes;
+it performs no preparation or rendering. Missing/mismatched/extra inventory or
+unprepared Markdown rejects even under label policy. No Markdown inventory kind
+is added. These are trusted prepared-host assertions, not public export support.
+
+The standalone prototype/check launcher explicitly rejects governed preview
+adapters with unsupported-preview, Host svg-resource/1 or markdown/1 and source
+provenance. Static source-preview/discovery support does not establish native or
+provider readiness. The connected document-host route must prepare immutable
+per-instance outcomes, actual capabilities and bindings before publication;
+package/native acceptance is separate from these frontend checks.

@@ -14,6 +14,13 @@ import (
 type ContentRenderer interface {
 	Render(*strings.Builder, *layout.Box) error
 }
+
+// PreparedPreviewRenderer proves a native explicit Markdown node has a matching
+// frozen outcome. CheckPreview is pure and must never prepare or resolve content.
+type PreparedPreviewRenderer interface {
+	ContentRenderer
+	CheckPreview(*parser.Instance) error
+}
 type Options struct {
 	Width, Height float64
 	Content       ContentRenderer
@@ -53,7 +60,7 @@ func Render(root *layout.Box, options Options) (string, error) {
 		case n.Variant == "box":
 			rect(&out, r, "#ffffff", "#94a3b8", 4)
 		case n.Kind == "widget":
-			if options.SkipControls && n.Widget != "svg" {
+			if options.SkipControls && (n.Widget != "svg" || options.NativeControls[n.Path] == "svg") {
 				break
 			}
 			fill, stroke, color := "#e2e8f0", "#94a3b8", "#0f172a"

@@ -19,6 +19,10 @@ func (b *Bundle) connectCommands() {
 	for path, obj := range b.view.Controls {
 		path := path
 		switch c := obj.(type) {
+		case *previewControl:
+			if b.hasContext(path) {
+				c.context = func(pos fyne.Position) { b.openContext(path, "", pos) }
+			}
 		case *contextControl:
 			if b.hasContext(path) {
 				c.context = func(pos fyne.Position) { b.openContext(path, "", pos) }

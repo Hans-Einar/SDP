@@ -503,3 +503,49 @@ runtime gates cover failed draft publication before observers/tickets, invalid
 editable text, retained inactive offsets/drafts, failed split restore and failed
 nonmodal resize. Native row measurement, wrapping, selection/clipboard/history,
 wheel delivery, SDL Commit and actual OS IME remain host/integration evidence.
+
+## WCI4 prepared preview geometry
+
+Explicit 0.3 resource SVG uses the optional `PreviewMeasurer` adjunct on
+`Engine.Measure`. The sole `parser.PreviewOptions` helper determines source
+opt-in. Bare SVG and bare Markdown retain their existing measurement path;
+0.2 behavior, including unsupported scrolling, is unchanged. Explicit Markdown
+continues through `Measurer.Measure` with its immutable per-instance provider.
+No resource bytes, provider outcomes or renderer objects are stored in layout.
+
+`MeasurePreview(node, font, availableWidth)` returns separate natural and minimum
+sizes. Both must be finite, nonnegative and at most 1e7 logical units per axis.
+Available width may be zero during a bounded layout probe. The image itself can
+have zero minimum; required caption/status text has the provider's measured
+minimum. Natural size need not exceed minimum on every axis during constrained
+measurement. Missing preview metrics or a provider error rejects active explicit
+SVG geometry. These checks do not resolve resources or select fallback.
+
+Desired-size allocation uses the natural size on unassigned axes and checks the
+minimum on assigned axes. Pane minimum calculation uses only the measured minimum,
+then applies existing source-relative minima. Final arrangement checks the minimum
+again at the final width, after source bounds and track allocation. Thus source
+maximums cannot silently remove required text. Inactive pages, collapsed children,
+hidden nodes and closed surfaces have no active preview geometry; their source
+policy remains validated. Provider preparation separately checks all declarations.
+
+`FitPreview(content Rect, intrinsic Size) (Rect, error)` centers an aspect-preserving
+image within the full allocation, including upscaling. Zero-area allocation returns
+exact `Rect{}`. Intrinsic dimensions must be positive; sizes must satisfy layout's
+finite 1e7 bound, while positions may be signed and must be finite. Unrepresentable
+positive fits reject. Resource-byte and 32768 resource-dimension validation belongs
+to preparation, not this arithmetic helper. For allocation `(10,20,100,20)` and
+intrinsic `(400,200)`, the result is `(40,20,40,20)`.
+
+Fit uses canvas coordinates already translated by shared scrolling. Intersect its
+result with `Box.Clip` afterward; never refit the visible fragment. Ancestor content
+clips exclude native gutters. Outer boxes retain their existing hit/reveal/scroll
+roles, with no preview viewport or additional offset authority. Main and separate
+open-surface canvases use the same calculation and existing pure presentation gate.
+
+The immutable provider owns the fixed image/caption/status bands through `SVGRects`
+and text serialization through `RenderSVGText`. These share its measured band plan;
+layout adds no Markdown import, native font callback or second scene. The host
+consumes the already fitted image rectangle and applies the shared clip. Geometry
+unit tests prove allocation, minima, clipping and failed-gate purity; provider/native
+painting, accessibility and actual SDL interaction require their separate evidence.

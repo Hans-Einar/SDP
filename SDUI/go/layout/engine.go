@@ -245,6 +245,19 @@ func (e *Engine) arrange(n *parser.Instance, r Rect, ref Size, clip Rect, font f
 		return e.arrangePane(n, r, ref, clip, font, enabled, ancestor)
 	}
 	if n.Kind == "widget" || n.Kind == "markdown" {
+		preview, err := e.explicitPreview(n)
+		if err != nil {
+			return nil, err
+		}
+		if preview {
+			_, minimum, err := e.previewMetrics(n, font, r.W)
+			if err != nil {
+				return nil, err
+			}
+			if r.W < minimum.W-.01 || r.H < minimum.H-.01 {
+				return nil, diag(n, "native-minimum", "Assigned preview size is below measured minimum")
+			}
+		}
 		field, err := measuredField(n)
 		if err != nil {
 			return nil, err

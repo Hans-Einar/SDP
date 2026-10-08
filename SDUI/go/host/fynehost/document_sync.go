@@ -101,6 +101,9 @@ func (b *Bundle) apply() {
 	for path, c := range v.controls {
 		if !active[path] {
 			c.clip.Hide()
+			if preview, ok := c.widget.(*previewControl); ok {
+				preview.apply(previewFrame{})
+			}
 		}
 	}
 	walkPresentation(p, func(box *layout.Box, geometry *layout.SnapshotLayout) {
@@ -143,6 +146,8 @@ func (b *Bundle) apply() {
 			return
 		}
 		switch obj := c.widget.(type) {
+		case *previewControl:
+			obj.apply(p.previews[box.Path])
 		case *textControl:
 			obj.sync(p.snapshot.Fields[box.Path], geometry.Fields[box.Path], box)
 		case *scalarControl:

@@ -82,6 +82,11 @@ func finiteExtent(s Size) bool {
 }
 
 func validateScrollOwners(n *parser.Instance) error {
+	if n.Kind == "markdown" || n.Kind == "widget" && n.Widget == "svg" {
+		if _, err := parser.PreviewOptions(n); err != nil {
+			return err
+		}
+	}
 	// Validate input policy even on inactive/closed branches. Only active fields
 	// require metrics; source opt-in cannot hide malformed arguments from admission.
 	if n.Kind == "widget" && n.Widget == "input" {

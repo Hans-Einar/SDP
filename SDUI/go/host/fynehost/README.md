@@ -325,3 +325,63 @@ routing; actual configured OS IME, SDL and visual acceptance require the main
 native harness on the exact integrated candidate. See the
 [text layout API](../../../docs/wci3-m2-layout-api.md) and
 [real SDL text fixture](../../../../SDL/go/examples/text/README.md).
+
+## Explicit prepared previews (WCI4)
+
+Only explicit `.3` SVG description/fallback arguments and the explicit Markdown
+call opt in. Bare Markdown, legacy SVG placeholders and the standalone `.2`
+RuntimeView retain their existing contract. Supply document-host request maps
+`SVGResources map[string]markdown.PreparedSVG` and
+`MarkdownRenderers map[string]markdown.MarkdownRenderer`, keyed by exact normalized
+instance path. Resource references remain symbolic; the application acquires bytes
+and supplies provider identity/digest or renderer identity/revision.
+
+DocumentHost prepares immutable per-instance outcomes once, including hidden pages
+and closed dialogs, before creating runtime gates. All binding identity failures
+are fatal before content fallback. `preparation.Request.Previews` checks its exact
+source inventory against the root normalized internally, before capabilities or
+session construction. Capabilities follow actual frozen outcomes: labelled SVG
+does not advertise resource rendering, and native Markdown diagrams advertise no
+rendered Mermaid fact. Missing/malformed/unsupported content follows the explicit
+label/reject policy. The current native backend displays direct closed-subset SVG
+and bounded Markdown prose; diagrams embedded in Markdown's composite SVG are
+unsupported and become declared labelled blocks or reject, preserving other prose.
+
+SVG uses an ordinary native image at the provider's shared fitted rectangle plus
+a separate text-only glyph SVG overlay. Caption is one measured ellipsized row;
+the full bounded unavailable status wraps independently and must fit admission.
+The provider uses one text-band calculation for measure, placement and glyph paint.
+Both images receive the shared ancestor clip after fitting; scrolling never refits
+the visible fragment. Markdown remains background-painted with a transparent
+native accessibility adapter, not an invented native export inventory kind.
+Serialization/backend failure rejects the ticket without blanking current content.
+
+Provider rendering occurs only in detached preparation. Measurement, resize,
+runtime gates and accepted presentation tickets use frozen outcomes without
+renderer calls or reconsidering policy. The application Guard must recheck current
+source/model, provider digest and renderer revision before Commit. Failed/stale
+candidates preserve the published bundle. Application maps and buffers may be
+released after Prepare; host resource accessors do not expose authoritative bytes.
+Surface close clears its mounted preview images while retaining bundle resources
+for reopening. Bundle.Close drops its own preview references. Fyne/driver cache
+reclamation is not a public per-image GPU disposal guarantee.
+
+`Inspect().previews[path]` reports frozen identity/status, `mounted`/`visible`,
+actual canvas/title and shared rect/clip/image/caption/statusRect. Accessibility
+label/role are queried from the actual mounted `fyne.Accessible` adapter, including
+explicit Markdown. Closed/hidden declarations are distinguished from mounted
+content. The full prepared description/status is independent of optional caption.
+Pinned Linux Fyne accessibility is a no-op at the OS bridge: these APIs and visible
+labels do not claim Linux screen-reader delivery or expanded Unicode font coverage.
+Headless component evidence is distinct from the coordinator's actual native/SDL
+and screenshot acceptance.
+
+The declared native acceptance profile is `FYNE_THEME=light`. Inherited fixed
+glyph/caption colors have poor contrast under the default dark theme. Dark and
+system-theme contrast are not verified by this delivery. The fidelity limitation
+remains in KB-SDUI-004 (coordinator registration EVT27); this bounded light-profile
+acceptance does not implement broader theme support.
+
+The selected contract and ownership are in
+[Providers and packaging](../../../../SDP/04--Design/SDUI/Widgets/Providers-and-packaging.md)
+and the [host API handoff](../../../../SDP/05--Implementation/SDUI/Widgets/WCI4-host-API.md).

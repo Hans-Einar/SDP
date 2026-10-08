@@ -100,7 +100,7 @@ func Normalize(d *Document) (roots map[string]*Instance, err error) {
 			validateInteractionLayout(i)
 			return i
 		}
-		props := formatting(n, n.Kind, len(n.Rows))
+		props := formatting(n, sourceKind(n, d.Profile), len(n.Rows))
 		i := &Instance{Kind: n.Kind, Path: path, Widget: val(n.Widget), Layout: props, Arguments: map[string]any{}, Rows: [][]*Instance{}, Regions: []Region{}, Span: n.Span}
 		if d.Profile == "sdui/0.3" {
 			i.Profile = d.Profile
@@ -113,6 +113,9 @@ func Normalize(d *Document) (roots map[string]*Instance, err error) {
 		}
 		if n.Kind == "widget" || n.Kind == "composition" {
 			i.Arguments = widgetArguments(n, d.Profile)
+		}
+		if sourceKind(n, d.Profile) == "markdown" && n.Kind == "widget" {
+			i.Kind, i.Widget, i.Text = "markdown", "", i.Argument("text")
 		}
 		if isInteractionNode(i) {
 			i.Arguments["$scope"] = Literal{Kind: "string", Value: scope, Span: n.Span}

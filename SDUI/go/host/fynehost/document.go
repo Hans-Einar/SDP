@@ -28,6 +28,8 @@ type DocumentRequest struct {
 	Bind                             preparation.Binder
 	Guard                            func() error
 	Icons                            map[string]fyne.Resource
+	SVGResources                     map[string]markdown.PreparedSVG
+	MarkdownRenderers                map[string]markdown.MarkdownRenderer
 	// PrepareResources validates/prepares resources using read-only prospective state.
 	// Its viewport offsets are the measured effective values, not raw requests.
 	PrepareResources func(ui.Snapshot) error
@@ -38,6 +40,7 @@ type nativePresentation struct {
 	geometry   *layout.SnapshotLayout
 	background fyne.Resource
 	canvases   map[string]*canvasPresentation
+	previews   map[string]previewFrame
 }
 type providerFlight struct {
 	request ui.LoadRequest
@@ -70,6 +73,9 @@ type Bundle struct {
 	surfaceSizes             map[string]layout.Size
 	tip                      *fyne.Container
 	tipParent                *fyne.Container
+	previews                 *markdown.Previews
+	previewResources         map[string]fyne.Resource
+	previewOutcomes          map[string]markdown.PreviewOutcome
 }
 
 // DocumentHost owns exactly one published bundle. All methods except provider
@@ -136,7 +142,11 @@ func (h *DocumentHost) Prepare(r DocumentRequest) (*Bundle, error) {
 	}
 	h.latest, h.latestSource = r.Sequence, r.SourceRevision
 	b := &Bundle{owner: h, request: r, old: h.current, size: h.size, Document: r.Document, SourceRevision: r.SourceRevision, Sequence: r.Sequence, flights: map[string]providerFlight{}, surfaces: map[string]*nativeSurface{}, menus: map[string]*documentMenu{}, surfaceSizes: map[string]layout.Size{}}
-	req := preparation.Request{Document: r.Document, Entry: r.Entry, SessionID: r.SessionID, SourceRevision: r.SourceRevision, Mode: r.Mode, Bind: r.Bind, Providers: r.Providers, Choices: r.Choices, Capabilities: b.capabilities(), ValidatePresentation: b.stage, PreparePresentation: b.preparePresentation}
+	if err := b.preparePreviews(); err != nil {
+		b.Close()
+		return nil, err
+	}
+	req := preparation.Request{Document: r.Document, Entry: r.Entry, SessionID: r.SessionID, SourceRevision: r.SourceRevision, Mode: r.Mode, Bind: r.Bind, Providers: r.Providers, Choices: r.Choices, Previews: b.previews, Capabilities: b.capabilities(), ValidatePresentation: b.stage, PreparePresentation: b.preparePresentation}
 	if h.current != nil {
 		req.Previous = h.current.Session
 	}
@@ -171,6 +181,7 @@ func (b *Bundle) stage(snapshot ui.Snapshot) (ui.PresentationState, error) {
 }
 func (b *Bundle) capabilities() preparation.Capabilities {
 	caps := admission.TextCapabilities()
+	caps = append(caps, previewCapabilities(b.previewOutcomes)...)
 	if b.request.Choices != nil {
 		caps = append(caps, preparation.Capability{Dimension: preparation.Provider, ID: "choice-options", Major: 1})
 	}
@@ -179,11 +190,11 @@ func (b *Bundle) capabilities() preparation.Capabilities {
 	}
 	return caps
 }
-func (b *Bundle) measureCanvases(snapshot ui.Snapshot) (*layout.CanvasLayout, *markdown.Provider, map[string]layout.Size, error) {
+func (b *Bundle) measureCanvases(snapshot ui.Snapshot) (*layout.CanvasLayout, *markdown.Previews, map[string]layout.Size, error) {
 	if b.closed {
 		return nil, nil, nil, fmt.Errorf("closed: bundle")
 	}
-	if err := preparation.Check(b.Document.Profile, snapshot.Root, b.capabilities()); err != nil {
+	if err := preparation.CheckWithPreviews(b.Document.Profile, snapshot.Root, b.capabilities(), b.previews); err != nil {
 		return nil, nil, nil, err
 	}
 	icons, err := prepareIcons(snapshot.Root, b.request.Icons)
@@ -193,10 +204,7 @@ func (b *Bundle) measureCanvases(snapshot ui.Snapshot) (*layout.CanvasLayout, *m
 	if _, err = prepareKeys(snapshot.Root); err != nil {
 		return nil, nil, nil, err
 	}
-	provider, err := markdown.Prepare(snapshot.Root, nil)
-	if err != nil {
-		return nil, nil, nil, err
-	}
+	provider := b.previews
 	metrics := &collectionMeasure{snapshot: snapshot, markdown: provider, icons: icons}
 	engine := &layout.Engine{Measure: metrics}
 	sizes, err := b.canvasSizes(snapshot, engine)
@@ -229,6 +237,8 @@ func (b *Bundle) preparePresentation(snapshot ui.Snapshot) (ui.PresentationTicke
 		}
 		snapshot.Root.Walk(func(n *parser.Instance) {
 			switch {
+			case b.hasPreview(n.Path):
+				b.view.addPane(n.Path, newPreviewControl(b.previews, n.Path))
 			case extendedInput(n):
 				if old := b.view.controls[n.Path]; old != nil {
 					b.view.Container.Remove(old.clip)
@@ -271,6 +281,10 @@ func (b *Bundle) preparePresentation(snapshot ui.Snapshot) (ui.PresentationTicke
 	objects = append(objects, thumbs...)
 	prepared := &nativePresentation{snapshot: snapshot, geometry: measured, background: fyne.NewStaticResource("sdui.svg", []byte(background)), objects: objects}
 	if err = b.prepareCanvases(prepared, canvases, sizes, provider); err != nil {
+		return ui.PresentationTicket{}, err
+	}
+	if err = b.preparePreviewFrames(prepared); err != nil {
+		b.discardCanvases(prepared)
 		return ui.PresentationTicket{}, err
 	}
 	if b.closed || b.size != size || b.SourceRevision != source || b.published && b.owner.current != b {
@@ -420,6 +434,7 @@ func (b *Bundle) closeReason(reason string) {
 	if b.prepared != nil {
 		b.prepared.Close()
 	}
+	b.closePreviews()
 }
 func (h *DocumentHost) Close() {
 	if h.closed {

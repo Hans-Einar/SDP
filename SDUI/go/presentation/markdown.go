@@ -30,7 +30,9 @@ func Markdown(root *parser.Instance, columns int) (string, error) {
 			return nil, nil
 		}
 		lines := []string{}
-		if n.Kind == "markdown" {
+		if previewDescription(n) {
+			lines = []string{"**Declaration:** " + codeSpan(previewText(n))}
+		} else if n.Kind == "markdown" {
 			lines = quoted(contentLines(n.Text))
 		} else if n.Kind == "widget" {
 			text := ""

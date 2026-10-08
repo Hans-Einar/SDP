@@ -163,6 +163,10 @@ func (v *View) nativeControls() map[string]string {
 	kinds := map[string]string{}
 	for path, obj := range v.Controls {
 		switch obj := obj.(type) {
+		case *previewControl:
+			if obj.kind == "svg" {
+				kinds[path] = "svg"
+			}
 		case *scalarControl:
 			kinds[path] = obj.kind
 		case *widget.Button:

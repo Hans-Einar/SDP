@@ -1,6 +1,6 @@
 # SDUI — implemented Go architecture
 
-Updated for the WCI3-M1 development candidate, 2026-10-08. One active frontend
+Updated for the WCI4 development candidate, 2026-10-08. One active frontend
 preserves SDUI 0.2 and adds the bounded development 0.3 profile. Executable modules/commands are in the [Go area](../go/README.md); the shared design is [described in SDL](../design/README.md).
 
 | Package | Responsibility |
@@ -180,3 +180,30 @@ upstream bytes. Both maintained native build roots explicitly select that copy.
 See [dependency policy](../third_party/glfw-policy/README.md).
 
 M2 is verified and independently reviewed in [text evidence](../../SDP/05--Implementation/SDUI/Widgets/Evidence-WCI3-M2.md): 92 native checks, actual configured XIM and five exact terminal results. Shared command/tab text receivers retain captured draft guards. Legacy standalone RuntimeView rejects these adapters explicitly. Provider and package preparation remain WCI4 obligations.
+
+## Immutable provider previews and matching helpers — WCI4
+
+Explicit description/fallback syntax selects prepared SVG or Markdown outcomes;
+legacy declarations retain their prior route. The existing Markdown package owns
+per-instance preparation, copied resource bytes, full source fingerprints, renderer
+identity and admission budgets. Global binding identity is validated before content
+policy. Every declaration, including hidden/closed content, is prepared before
+capability checks or live runtime gates. Only actual outcomes grant capabilities.
+The backend checks the real destination representation, so unavailable nested native
+diagram images receive a declared fallback instead of a rendered capability.
+
+Layout shares SVG aspect fitting and separate caption/status bands; clipping applies
+after full allocation. Native SVG images and glyph overlays have per-canvas lifetime,
+while explicit Markdown uses background glyph painting and a mounted Accessible
+adapter. Forced owner loss releases retired preview references without running
+preparation or a gate; exact opening guards protect a successor from stale teardown.
+Bundle resources remain available for a later valid reopening. No immediate driver
+cache purge or Linux OS screen-reader delivery is claimed.
+
+The producer package, SDUI-root private helpers and SDL-root connected examples are
+built from one inventoried candidate. Standalone RuntimeView and DocumentHost retain
+distinct adapter capabilities; matching helpers do not expand XFMD Launch support.
+Source profiles remain independent of the sdptool/0.2 protocol. Actual packaging,
+configured XIM and all-family native/independent acceptance are recorded in the
+[implementation plan](../../SDP/05--Implementation/SDUI/Widgets/Plan.md); source
+presence is not evidence of completion, installation or publication.

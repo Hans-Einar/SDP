@@ -8,7 +8,6 @@ import (
 	"fyne.io/fyne/v2/dialog"
 	"fyne.io/fyne/v2/widget"
 	"github.com/Hans-Einar/SDP/SDUI/go/layout"
-	"github.com/Hans-Einar/SDP/SDUI/go/markdown"
 	"github.com/Hans-Einar/SDP/SDUI/go/parser"
 	ui "github.com/Hans-Einar/SDP/SDUI/go/runtime"
 	"github.com/Hans-Einar/SDP/SDUI/go/svg"
@@ -203,7 +202,7 @@ func (b *Bundle) nativeInventory(root *parser.Instance) map[string]string {
 	})
 	return out
 }
-func (b *Bundle) prepareCanvases(p *nativePresentation, all *layout.CanvasLayout, sizes map[string]layout.Size, provider *markdown.Provider) error {
+func (b *Bundle) prepareCanvases(p *nativePresentation, all *layout.CanvasLayout, sizes map[string]layout.Size, provider svg.ContentRenderer) error {
 	p.canvases = map[string]*canvasPresentation{}
 	paths, err := orderedSurfacePaths(p.snapshot)
 	if err != nil {
@@ -329,6 +328,7 @@ func (b *Bundle) syncSurfaces() {
 				b.removeKeys(native.canvas, path)
 			}
 			native.destroy()
+			b.retireSurfacePreviews(native)
 			delete(b.surfaces, path)
 			delete(b.surfaceSizes, path)
 		}

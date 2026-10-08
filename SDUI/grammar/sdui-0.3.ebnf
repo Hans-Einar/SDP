@@ -81,3 +81,13 @@ hex            = digit | "a" .. "f" | "A" .. "F" ;
    input behavior; omission preserves legacy input. Booleans default false;
    omitted placeholder uses text. Defaults are not inserted into AST/instances.
    The 0.2 input schema remains text/value/callback only. No new literal kind. *)
+
+(* WCI4 preview leaves: svg(source, label?:string, description:string,
+   fallback:string) opts in by description/fallback presence; both then required.
+   Explicit source must be a declared module.object.@resource reference.
+   markdown(text, description:string, fallback:string) requires all three strings.
+   Only source/text is positional. Description is nonblank UTF-8 <=4096 bytes;
+   Markdown text <=32768 bytes; fallback exactly "label" or "reject".
+   Markdown call source AST remains widget/Arguments; normalized Kind=markdown,
+   Widget empty, Text=text argument, Arguments retained. Bare Markdown strings
+   and old svg(source,label?) retain their existing representations/behavior. *)

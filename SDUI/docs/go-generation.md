@@ -96,3 +96,23 @@ Use the document-based prepared host for extended native text, with actual text
 capabilities and checked ControlText/TextResult bindings for connected execution.
 The standalone legacy prototype explicitly rejects extended text. Generation does
 not migrate that launcher, provide an IME implementation or establish native proof.
+
+
+WCI4 explicit SVG and Markdown previews retain Version03, UIProfile and UIASTFormat.
+Source Markdown calls remain widget/Arguments in Document; Root reconstructs
+normalized Kind markdown, empty Widget and matching Text, retaining all three
+Arguments and their spans. Reused instances have independent paths, argument maps
+and UseSites. `PreviewOptions` validates policy facts, and generation checks the
+entire selected root before emitting. Legacy .2 and non-opted .3 SVG/bare Markdown
+constructors retain their prior bytes; no defaults or new AST fields are inserted.
+
+Constructors contain symbolic source references and descriptions/policies only.
+They neither resolve resource files nor embed resource bytes, digests, prepared
+outcomes or renderer closures. The application supplies resource identities/bytes
+and any per-path Markdown renderer through document-host preparation, which owns
+immutable per-path outcomes. Equal text at two paths does not merge policy or
+identity. Reuse the prepared outcomes for layout and state validation; generated
+constructors alone establish no provider/native capability. Static source helpers
+report resources not supplied, public SVG explicitly rejects opt-in previews,
+and the standalone launcher rejects unsupported preview adapters. Build/package
+proof must name the actual connected document-host route separately.

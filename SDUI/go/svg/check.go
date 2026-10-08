@@ -50,6 +50,36 @@ func Check(root *parser.Instance, options Options) error {
 		fail := func(code, msg string) {
 			invalid = &parser.Diagnostic{Code: code, Message: n.Path + ": " + msg, Span: n.Span}
 		}
+		if profile == "sdui/0.3" && (n.Kind == "markdown" || n.Kind == "widget" && n.Widget == "svg") {
+			policy, err := parser.PreviewOptions(n)
+			if err != nil {
+				invalid = err
+				return
+			}
+			if policy.Explicit {
+				if !options.SkipControls {
+					fail("unsupported-resource-export", "Public SVG does not support explicit resource previews")
+					return
+				}
+				if n.Kind == "markdown" {
+					prepared, ok := options.Content.(PreparedPreviewRenderer)
+					if !ok {
+						fail("preview-unprepared", "Explicit Markdown requires matching prepared content")
+						return
+					}
+					if err := prepared.CheckPreview(n); err != nil {
+						invalid = err
+					}
+					return
+				}
+				if options.NativeControls[n.Path] != "svg" {
+					fail("native-controls", "Missing matching prepared native SVG preview")
+					return
+				}
+				used[n.Path] = true
+				return
+			}
+		}
 		if !options.SkipControls && profile == "sdui/0.3" && n.Kind == "widget" && n.Widget == "button" && (n.Argument("icon") != "" || n.Argument("tooltip") != "") {
 			fail("unsupported-interaction-export", "SVG export does not render button icon/tooltip decorations")
 			return

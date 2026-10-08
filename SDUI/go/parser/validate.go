@@ -16,6 +16,9 @@ var widgets = map[string]widgetSchema{
 
 func schemaFor(profile, kind string) (widgetSchema, bool) {
 	if profile == "sdui/0.3" {
+		if schema, ok := previews[kind]; ok {
+			return schema, true
+		}
 		if kind == "input" {
 			return input03, true
 		}
@@ -160,7 +163,7 @@ func validateLocal(d *Document) {
 				}
 				deps[def.Name] = append(deps[def.Name], val(n.Target))
 			} else {
-				formatting(n, n.Kind, len(n.Rows))
+				formatting(n, sourceKind(n, d.Profile), len(n.Rows))
 			}
 			if n.Variant != nil && (n.Kind != "frame" || !member(*n.Variant, "b box")) {
 				fail("variant", "Only frame variants box/b supported", n.Span)
@@ -175,6 +178,7 @@ func validateLocal(d *Document) {
 				validateWidget(decl, modules, d.Profile)
 				validatePaneSource(n, d.Profile)
 				validateInteractionSource(decl, d.Profile)
+				validatePreviewSource(n, d.Profile)
 				if d.Profile == "sdui/0.3" && val(n.Widget) == "input" {
 					if len(n.Rows) != 0 {
 						fail("input-argument", "Input controls are leaves", n.Span)

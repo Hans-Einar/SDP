@@ -37,6 +37,13 @@ func (e *Engine) collectionMetrics(n *parser.Instance, font float64, outer Size)
 }
 
 func (e *Engine) measureWidget(n *parser.Instance, font, limit float64, size, slot Size, known assigned) (Size, Size, error) {
+	preview, err := e.explicitPreview(n)
+	if err != nil {
+		return Size{}, Size{}, err
+	}
+	if preview {
+		return e.previewMetrics(n, font, limit)
+	}
 	field, err := measuredField(n)
 	if err != nil {
 		return Size{}, Size{}, err

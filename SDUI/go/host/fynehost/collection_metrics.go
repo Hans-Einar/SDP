@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"fyne.io/fyne/v2"
 	"github.com/Hans-Einar/SDP/SDUI/go/layout"
-	"github.com/Hans-Einar/SDP/SDUI/go/markdown"
 	"github.com/Hans-Einar/SDP/SDUI/go/parser"
 	ui "github.com/Hans-Einar/SDP/SDUI/go/runtime"
 	"math"
@@ -27,8 +26,15 @@ type collectionRow struct {
 }
 type collectionMeasure struct {
 	snapshot ui.Snapshot
-	markdown *markdown.Provider
+	markdown layout.Measurer
 	icons    map[string]fyne.Resource
+}
+
+func (m *collectionMeasure) MeasurePreview(n *parser.Instance, font, width float64) (layout.Size, layout.Size, error) {
+	if p, ok := m.markdown.(layout.PreviewMeasurer); ok {
+		return p.MeasurePreview(n, font, width)
+	}
+	return layout.Size{}, layout.Size{}, fmt.Errorf("preview-unprepared: %s", n.Path)
 }
 
 func rowHeight(font float64) float64 {

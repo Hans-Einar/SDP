@@ -115,6 +115,11 @@ func ResolveInteractions(root *Instance) (out map[string]InteractionIdentity, er
 	root.Walk(func(n *Instance) {
 		validateNormalizedInteraction(n)
 		validateScalar(n)
+		if n.Kind == "markdown" || n.Widget == "svg" || n.Widget == "markdown" {
+			if _, err := PreviewOptions(n); err != nil {
+				panic(err)
+			}
+		}
 		if n.Widget == "input" {
 			if _, err := InputOptions(n); err != nil {
 				panic(err)

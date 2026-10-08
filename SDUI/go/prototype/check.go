@@ -40,6 +40,21 @@ func Check(path, entry, revision string) (reload.Candidate, Report, error) {
 		}
 		var unavailable error
 		c.Root.Walk(func(n *parser.Instance) {
+			if unavailable == nil && (n.Kind == "markdown" || n.Widget == "svg") {
+				policy, err := parser.PreviewOptions(n)
+				if err != nil {
+					unavailable = err
+				} else if policy.Explicit {
+					id := "svg-resource"
+					if n.Kind == "markdown" {
+						id = "markdown"
+					}
+					unavailable = fmt.Errorf("unsupported-preview: standalone prototype has no prepared document-host preview adapter: %w", &preparation.Diagnostic{
+						Capability: preparation.Capability{Dimension: preparation.Host, ID: id, Major: 1},
+						Path:       n.Path, Span: n.Span, Uses: append([]parser.UseSite(nil), n.Uses...),
+					})
+				}
+			}
 			if unavailable == nil && n.Kind == "widget" && n.Widget == "input" {
 				policy, err := parser.InputOptions(n)
 				if err != nil {

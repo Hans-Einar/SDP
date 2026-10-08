@@ -71,6 +71,9 @@ func widths(items []*parser.Instance, available int) ([]int, error) {
 	return sizes, nil
 }
 func widgetText(n *parser.Instance) string {
+	if previewDescription(n) {
+		return "[" + previewText(n) + "]"
+	}
 	if inputDescription(n) {
 		return "[" + inputText(n) + "]"
 	}
@@ -115,7 +118,9 @@ func Dump(root *parser.Instance, columns int) (string, error) {
 			return nil, diagnostic("dump-space", "Not enough columns", n)
 		}
 		lines := []string{}
-		if n.Kind == "markdown" {
+		if previewDescription(n) {
+			lines = wrapLine(widgetText(n), w)
+		} else if n.Kind == "markdown" {
 			for _, line := range MarkdownLines(n.Text) {
 				lines = append(lines, wrapLine(line, w)...)
 			}
@@ -209,8 +214,11 @@ func Dump(root *parser.Instance, columns int) (string, error) {
 	panes := []string{}
 	var paneErr error
 	root.Walk(func(n *parser.Instance) {
-		if paneErr == nil && (n.Kind == "composition" || interactionDescription(n) || scalarDescription(n) || inputDescription(n)) {
+		if paneErr == nil && (n.Kind == "composition" || interactionDescription(n) || scalarDescription(n) || inputDescription(n) || previewDescription(n)) {
 			description := paneText(n)
+			if previewDescription(n) {
+				description = previewText(n)
+			}
 			if inputDescription(n) {
 				description = inputText(n)
 			}

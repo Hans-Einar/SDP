@@ -59,14 +59,14 @@ A consumer may bundle the SDUI-owned tools; parser/runtime remain host-independe
 
 ## Selected widget inventory — KB-SDUI-003, Session0010
 
-**SDUI-R27 (partially delivered):** deliver the card's tree/list and scroll
+**SDUI-R27:** deliver the card's tree/list and scroll
 viewports, tabs/splits, button/toggle commands, menu/context/dialog, checkbox,
 slider/select/numeric input, extended single-line and basic multiline input, plus
 explicit SVG/Markdown provider and fallback contracts. Preserve typed identity,
 draft atomicity, programmatic/user-event distinction and reload/disposal guards.
 Full editors, component source sets and native XFMD parity are outside this scope.
 
-**SDUI-R28 (partially delivered):** separate source/profile, layout, provider
+**SDUI-R28:** separate source/profile, layout, provider
 and native capabilities; prepare all required bindings before connected activation.
 An unbound prototype is not connected readiness. Unsupported exports reject or use
 an explicitly selected labelled static fallback. Parser success is insufficient.
@@ -106,3 +106,14 @@ guards. Native typing/IME, failed edits, reload and same/different-byte history
 policies require exact-candidate evidence. A rejected native edit may reset that
 Entry editing history while restoring authoritative text; failed Commit/reload
 retain history. [Reviewed M2 evidence](../../SDP/05--Implementation/SDUI/Widgets/Evidence-WCI3-M2.md) closes the bounded text inventory with 92 native checks, actual IME, shared-command receiver correction and affected suites. WCI4 consumer/provider preparation remains open.
+
+WCI4 implements explicit per-instance SVG/Markdown preview identity, immutable
+preparation and truthful supported/fallback/unsupported outcomes for R27/R28.
+Required evidence includes finite closed-subset resource admission, independent
+policies for identical Markdown, copied buffers, no renderer calls after preparation,
+shared fit/clip/caption/status geometry and exact native owner teardown. Public
+unsupported exports must preserve the previous artifact. Matching producer/private
+helpers and connected application examples need actual protocol/native/IME evidence.
+The linked plan and acceptance matrix own current delivery status; no release,
+installed-consumer upgrade, dark-theme contrast or OS screen-reader support is
+inferred from the implementation. Separate fidelity work remains KB-SDUI-004.

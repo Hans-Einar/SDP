@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/Hans-Einar/SDP/SDUI/go/markdown"
 	"github.com/Hans-Einar/SDP/SDUI/go/parser"
 	ui "github.com/Hans-Einar/SDP/SDUI/go/runtime"
 )
@@ -26,6 +27,7 @@ type Request struct {
 	Previous                         *ui.Session
 	Providers                        map[string]ui.CollectionProvider
 	Choices                          map[string][]ui.ChoiceOption
+	Previews                         *markdown.Previews
 	ValidateState                    ui.StateGate
 	ValidatePresentation             ui.PresentationGate
 	PreparePresentation              ui.PresentationPrepare
@@ -84,7 +86,7 @@ func Prepare(r Request) (*Candidate, error) {
 	if root == nil || root.Kind != "frame" {
 		return nil, fmt.Errorf("preparation: entry %q must be a frame", r.Entry)
 	}
-	if err = Check(r.Document.Profile, root, r.Capabilities); err != nil {
+	if err = CheckWithPreviews(r.Document.Profile, root, r.Capabilities, r.Previews); err != nil {
 		return nil, err
 	}
 	if r.ValidateState != nil && r.ValidatePresentation != nil {

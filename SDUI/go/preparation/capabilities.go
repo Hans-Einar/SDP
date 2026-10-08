@@ -4,6 +4,7 @@ package preparation
 import (
 	"fmt"
 
+	"github.com/Hans-Einar/SDP/SDUI/go/markdown"
 	"github.com/Hans-Einar/SDP/SDUI/go/parser"
 )
 
@@ -40,12 +41,25 @@ func (d *Diagnostic) Error() string {
 // Check inspects hidden descendants too. Unknown normalized kinds cannot be
 // enabled just by advertising a capability for an unknown rendering contract.
 func Check(profile string, root *parser.Instance, supported Capabilities) error {
+	return CheckWithPreviews(profile, root, supported, nil)
+}
+
+// CheckWithPreviews verifies immutable content against the actual normalized root
+// before checking capabilities. It performs no provider work or fallback selection.
+func CheckWithPreviews(profile string, root *parser.Instance, supported Capabilities, previews *markdown.Previews) error {
 	if root == nil {
 		return fmt.Errorf("preparation: missing root")
 	}
+	if previews != nil {
+		if err := previews.Check(root); err != nil {
+			return err
+		}
+	}
 	has := map[Capability]bool{}
+	native := false
 	for _, c := range supported {
 		has[c] = true
+		native = native || c.Dimension == Host
 	}
 	require := func(n *parser.Instance, dimension Dimension, id string) error {
 		c := Capability{dimension, id, 1}
@@ -74,6 +88,27 @@ func Check(profile string, root *parser.Instance, supported Capabilities) error 
 			return fmt.Errorf("preparation: nil or repeated normalized node")
 		}
 		seen[n] = true
+		var policy parser.PreviewPolicy
+		_, description := n.Arguments["description"]
+		_, fallback := n.Arguments["fallback"]
+		if n.Kind == "markdown" && len(n.Arguments) > 0 || n.Kind == "widget" && n.Widget == "svg" && (description || fallback) {
+			var err error
+			policy, err = parser.PreviewOptions(n)
+			if err != nil {
+				return err
+			}
+		}
+		var preview markdown.PreviewOutcome
+		if policy.Explicit {
+			if previews == nil {
+				return fmt.Errorf("preview-unprepared: %s", n.Path)
+			}
+			var ok bool
+			preview, ok = previews.Outcome(n.Path)
+			if !ok {
+				return fmt.Errorf("preview-unprepared: %s", n.Path)
+			}
+		}
 		switch n.Kind {
 		case "frame", "group":
 		case "composition":
@@ -127,6 +162,20 @@ func Check(profile string, root *parser.Instance, supported Capabilities) error 
 		case "markdown":
 			if err := require(n, Provider, "markdown"); err != nil {
 				return err
+			}
+			if policy.Explicit {
+				if native {
+					if err := require(n, Host, "markdown"); err != nil {
+						return err
+					}
+				}
+				for _, diagram := range preview.Diagrams {
+					if diagram.Resource != nil {
+						if err := require(n, Provider, "mermaid-flowchart"); err != nil {
+							return err
+						}
+					}
+				}
 			}
 		case "widget":
 			id := n.Widget
@@ -182,6 +231,19 @@ func Check(profile string, root *parser.Instance, supported Capabilities) error 
 				}
 			case "svg":
 				id = "svg-placeholder"
+				if policy.Explicit && preview.Status == "rendered" {
+					id = "svg"
+					for _, fact := range []Capability{{Provider, "svg-resource", 1}, {Layout, "preview-resource", 1}} {
+						if err := require(n, fact.Dimension, fact.ID); err != nil {
+							return err
+						}
+					}
+					if native {
+						if err := require(n, Host, "svg-resource"); err != nil {
+							return err
+						}
+					}
+				}
 			default:
 				return &Diagnostic{Capability: Capability{Widget, id, 1}, Path: n.Path, Span: n.Span, Uses: n.Uses}
 			}
@@ -192,8 +254,10 @@ func Check(profile string, root *parser.Instance, supported Capabilities) error 
 			if n.Widget == "svg" {
 				dimension = Provider
 			}
-			if err := require(n, dimension, id); err != nil {
-				return err
+			if !(n.Widget == "svg" && id == "svg") {
+				if err := require(n, dimension, id); err != nil {
+					return err
+				}
 			}
 		default:
 			return &Diagnostic{Capability: Capability{Layout, "node:" + n.Kind, 1}, Path: n.Path, Span: n.Span, Uses: n.Uses}
