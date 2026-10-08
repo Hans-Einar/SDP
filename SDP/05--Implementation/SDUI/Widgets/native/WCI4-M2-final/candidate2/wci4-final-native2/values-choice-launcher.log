@@ -1,0 +1,7 @@
+PASS equal labels expose distinct stable option identities
+PASS second equal label commits beta rather than alpha
+PASS disabled choice and popup Escape invoke no action
+PASS option replacement revokes popup and retains stable selection silently
+PASS removed accepted ID is diagnosed without index substitution
+PASS explicit choice repairs removed identity
+PASS native teardown closes session and clears provider barriers

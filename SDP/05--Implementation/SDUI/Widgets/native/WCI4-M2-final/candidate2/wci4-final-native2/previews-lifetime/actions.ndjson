@@ -1,0 +1,36 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci4-package-candidate2/libexec/sdui/previews", "sha256": "86c5d5cf3d4b5bb8044c328ed8376b116c687d11ebd6382b1dca76b74c6bd8e3", "display": ":191", "variant": "wci3-lifetime"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "prepare"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "preparation holds detached candidate without publication", "passed": true}}
+{"kind": "fixture-command", "value": "resource Hero alternate"}
+{"kind": "fixture-command", "value": "publish"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "stale resource guard rejects publication without replay or live replacement", "passed": true}}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "explicit fresh preparation publishes changed digest", "passed": true}}
+{"kind": "fixture-command", "value": "prepare"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "renderer-revision ReportA r2"}
+{"kind": "fixture-command", "value": "publish"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "stale renderer revision rejects held candidate and retains current bundle", "passed": true}}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "prepare"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "abandon"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "abandon disposes only detached candidate without altering live content", "passed": true}}
+{"kind": "fixture-command", "value": "fail resource-ticket"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "caption Hero short"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "resource ticket failure preserves published image and zero renderer calls", "passed": true}}
+{"kind": "fixture-command", "value": "caption Hero short"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "successful presentation ticket uses frozen resources without rerender", "passed": true}}
+{"kind": "screenshot", "value": "replacement-after-guard-recovery.png"}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

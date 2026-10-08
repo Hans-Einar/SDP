@@ -1,0 +1,12 @@
+=== RUN   TestOriginResourceSlots
+=== RUN   TestOriginResourceSlots/negative-origin
+=== RUN   TestOriginResourceSlots/positive-origin
+=== RUN   TestOriginResourceSlots/mixed-origin
+=== RUN   TestOriginResourceSlots/root-transform
+--- PASS: TestOriginResourceSlots (0.01s)
+    --- PASS: TestOriginResourceSlots/negative-origin (0.00s)
+    --- PASS: TestOriginResourceSlots/positive-origin (0.00s)
+    --- PASS: TestOriginResourceSlots/mixed-origin (0.00s)
+    --- PASS: TestOriginResourceSlots/root-transform (0.00s)
+PASS
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/previews	1.054s

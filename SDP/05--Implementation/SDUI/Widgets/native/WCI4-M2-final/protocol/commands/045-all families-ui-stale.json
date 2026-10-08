@@ -1,0 +1,29 @@
+{
+  "name": "all families-ui-stale",
+  "argv": [
+    "/tmp/wci4-package-candidate3/bin/sdptool",
+    "--json",
+    "/tmp/wci4-final-protocol3-verified/all families project with spaces",
+    "sdui-preview",
+    "--model",
+    "page-with-spaces-0c574aa72c57ec59",
+    "--entry",
+    "Main",
+    "--revision",
+    "1681e0610e41df77917740052b81b5b1630a8c36baad9388e1ab33fc2b1c87e0",
+    "--output",
+    "/tmp/wci4-final-protocol3-verified/all families UIPreview output with spaces"
+  ],
+  "cwd": "/tmp/wci4-final-protocol3-verified",
+  "binarySha256": "e64f112c01e2b019cdc6235a45e0c324b68e2c7e72c9138dccb6e3bc2e4edf87",
+  "displayEnvironment": "DISPLAY/WAYLAND_DISPLAY removed",
+  "expected": "nonzero with stale",
+  "exit": 1,
+  "timeout": false,
+  "seconds": 0.08953356742858887,
+  "stdout": "commands/045-all families-ui-stale.stdout",
+  "stderr": "commands/045-all families-ui-stale.stderr",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "376df9f8413562d124287edb5359702031120598987ff1eb9c7c79aad540daf3",
+  "binaryUnchanged": true
+}

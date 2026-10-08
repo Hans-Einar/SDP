@@ -1,0 +1,206 @@
+{
+  "astFormat": "sdui-ast/0.2",
+  "document": {
+    "connections": [],
+    "definitions": [
+      {
+        "name": "Main",
+        "root": {
+          "arguments": [],
+          "kind": "frame",
+          "layout": [],
+          "name": null,
+          "role": null,
+          "rows": [
+            {
+              "items": [
+                {
+                  "arguments": [
+                    {
+                      "name": null,
+                      "span": {
+                        "column": 23,
+                        "end": 28,
+                        "line": 1,
+                        "start": 22,
+                        "type": "Span"
+                      },
+                      "type": "Argument",
+                      "value": {
+                        "kind": "string",
+                        "span": {
+                          "column": 23,
+                          "end": 28,
+                          "line": 1,
+                          "start": 22,
+                          "type": "Span"
+                        },
+                        "type": "Literal",
+                        "value": "Text"
+                      }
+                    }
+                  ],
+                  "kind": "widget",
+                  "layout": [],
+                  "name": null,
+                  "role": null,
+                  "rows": [],
+                  "span": {
+                    "column": 17,
+                    "end": 29,
+                    "line": 1,
+                    "start": 16,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": null,
+                  "type": "Node",
+                  "variant": null,
+                  "widget": "input"
+                }
+              ],
+              "span": {
+                "column": 17,
+                "end": 29,
+                "line": 1,
+                "start": 16,
+                "type": "Span"
+              },
+              "type": "Row"
+            },
+            {
+              "items": [
+                {
+                  "arguments": [
+                    {
+                      "name": null,
+                      "span": {
+                        "column": 38,
+                        "end": 41,
+                        "line": 1,
+                        "start": 37,
+                        "type": "Span"
+                      },
+                      "type": "Argument",
+                      "value": {
+                        "kind": "string",
+                        "span": {
+                          "column": 38,
+                          "end": 41,
+                          "line": 1,
+                          "start": 37,
+                          "type": "Span"
+                        },
+                        "type": "Literal",
+                        "value": "OK"
+                      }
+                    }
+                  ],
+                  "kind": "widget",
+                  "layout": [],
+                  "name": null,
+                  "role": null,
+                  "rows": [],
+                  "span": {
+                    "column": 31,
+                    "end": 42,
+                    "line": 1,
+                    "start": 30,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": null,
+                  "type": "Node",
+                  "variant": null,
+                  "widget": "button"
+                }
+              ],
+              "span": {
+                "column": 31,
+                "end": 42,
+                "line": 1,
+                "start": 30,
+                "type": "Span"
+              },
+              "type": "Row"
+            },
+            {
+              "items": [
+                {
+                  "arguments": [],
+                  "kind": "markdown",
+                  "layout": [],
+                  "name": null,
+                  "role": null,
+                  "rows": [],
+                  "span": {
+                    "column": 44,
+                    "end": 50,
+                    "line": 1,
+                    "start": 43,
+                    "type": "Span"
+                  },
+                  "target": null,
+                  "text": {
+                    "kind": "string",
+                    "span": {
+                      "column": 44,
+                      "end": 50,
+                      "line": 1,
+                      "start": 43,
+                      "type": "Span"
+                    },
+                    "type": "Literal",
+                    "value": "Plain"
+                  },
+                  "type": "Node",
+                  "variant": null,
+                  "widget": null
+                }
+              ],
+              "span": {
+                "column": 44,
+                "end": 50,
+                "line": 1,
+                "start": 43,
+                "type": "Span"
+              },
+              "type": "Row"
+            }
+          ],
+          "span": {
+            "column": 16,
+            "end": 51,
+            "line": 1,
+            "start": 15,
+            "type": "Span"
+          },
+          "target": null,
+          "text": null,
+          "type": "Node",
+          "variant": null,
+          "widget": null
+        },
+        "span": {
+          "column": 11,
+          "end": 52,
+          "line": 1,
+          "start": 10,
+          "type": "Span"
+        },
+        "type": "Definition"
+      }
+    ],
+    "profile": "sdui/0.2",
+    "references": [],
+    "span": {
+      "column": 1,
+      "end": 52,
+      "line": 1,
+      "start": 0,
+      "type": "Span"
+    },
+    "type": "Document"
+  },
+  "validation": "local-profile"
+}

@@ -1,0 +1,24 @@
+{
+  "name": "choice-native-unsupported",
+  "argv": [
+    "/tmp/wci4-package-candidate3/libexec/xfmd/sdui-fyne",
+    "-entry",
+    "Main",
+    "-watch=false",
+    "-revision",
+    "8260539f2d418bae5f1a19de4b76837e1dea492ff2ce71a028b5896b2b642199",
+    "/tmp/wci4-final-protocol3-verified/unsupported choice project with spaces/Page å with spaces.sdui"
+  ],
+  "cwd": "/tmp/wci4-final-protocol3-verified",
+  "binarySha256": "69574e8dec94564fef8b6d475147e1273e3ce13caa226707d5d72ced1bf5d61c",
+  "displayEnvironment": "DISPLAY/WAYLAND_DISPLAY removed",
+  "expected": "nonzero with unsupported-provider",
+  "exit": 2,
+  "timeout": false,
+  "seconds": 0.20125937461853027,
+  "stdout": "commands/035-choice-native-unsupported.stdout",
+  "stderr": "commands/035-choice-native-unsupported.stderr",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "38d9f98fe8d1e942bd0d5f76f840524c7f85da62366cb22ec6c9062cd0ee2b3f",
+  "binaryUnchanged": true
+}

@@ -1,0 +1,47 @@
+{
+  "base": "af422b1b1e26bc3d62107f13e74f3c03e00b0a8b",
+  "files": [
+    {
+      "path": "SDL/go/examples/previews/README.md",
+      "priorSHA256": "306e67bcd2287d526a813c105e8bfdcf327d32671bf243ffad3198583515327a",
+      "sha256": "9819c82651dd1c6e34de0788d0582ecb032aeb73e6225599aac45356176c9c67"
+    },
+    {
+      "path": "SDL/go/examples/previews/SVG-origin-bounds.md",
+      "priorSHA256": null,
+      "sha256": "21cd02ac99dab47c98bed5e48cba5c01daa61c4f1b1eb4d8bbba2431fa87e199"
+    },
+    {
+      "path": "SDL/go/examples/previews/origin_resources_test.go",
+      "priorSHA256": null,
+      "sha256": "2580359cc45ad7ec47c9885287e7cfc9c0b2ef825cfb3c8f1935ba5b3a0caed2"
+    },
+    {
+      "path": "SDL/go/examples/previews/resources.go",
+      "priorSHA256": "55dc69bf7dabfc107a8ad12ffe231b7a2471a5fb774082d7e3a2b459f919bd51",
+      "sha256": "ddda535931b6d64f328bd3cf34203604a37d91d855a03d4a64fc979a5fb92efb"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/README.md",
+      "priorSHA256": "5197c39a6f29d2e0c8d231904d6d78c26245f85b6fe900697d8eebfc5cd2f5af",
+      "sha256": "413719c6f98cb05f9e62fb49c9c3429858b5728435df9c110447c900ca26e15a"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/document_previews.go",
+      "priorSHA256": "3c6a7e08e4e75f308ccf066a2ce4ff942d756011898e56b5831915a1c8bd2fb7",
+      "sha256": "5fe69cf9dc5b9c3637e6358c43b009e090d5da1d8024af41f606924e60ae2f5f"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/preview_native_svg.go",
+      "priorSHA256": null,
+      "sha256": "8f0f9578fddb31c13a22b3366ac132c63c34c352723ff70f55819840f71d5130"
+    },
+    {
+      "path": "SDUI/go/host/fynehost/preview_origin_test.go",
+      "priorSHA256": null,
+      "sha256": "d94eda0c1a62cc111a81b0d2a17dfcc416ea0db808f25d047e5aaa3c1f9cbc80"
+    }
+  ],
+  "state": "verification-in-progress",
+  "scope": "WCI4-M2 native SVG origin and uniform-scale fidelity correction; no whole-card completion"
+}

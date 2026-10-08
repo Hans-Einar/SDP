@@ -77,7 +77,7 @@ does not authorize a FOX bridge or replacing native XFMD widgets.
 - [KB-SDL-001](../../KanBan/backlog/%23001--SDL--Proposal--Requirements-narrative.md): SDL-002 narrative/identities.
 - [KB-SDL-006](../../KanBan/backlog/%23006--SDL--Study--Executable-channel-tests-and-unit-bindings.md): SDL-003 behavior composition.
 - [KB-SDP-004](../../KanBan/backlog/%23004--Proposal--Design-traceability.md): SDL-002/003 source/evidence relationships.
-- [KB-SDUI-003](../../KanBan/active/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md): SDUI-001–010, staged rather than ten separate cards.
+- [KB-SDUI-003](../../KanBan/completed/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md): SDUI-001–010, staged rather than ten separate cards.
 - [KB-SDUI-004](../../KanBan/backlog/%23004--SDUI--Bug--Text-and-Markdown-fidelity.md): SDUI-011.
 - External XFMD register and MAINT-XFMD-0004: DOC-001–004 and EVID-001–002; no local resolution guarantee for external IDs.
 

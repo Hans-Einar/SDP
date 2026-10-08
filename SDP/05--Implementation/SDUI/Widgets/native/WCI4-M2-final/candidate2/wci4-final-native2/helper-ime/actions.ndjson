@@ -1,0 +1,5 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci4-package-candidate2/libexec/xfmd/sdui-fyne", "binarySHA256": "d6f91b2e92ebfe38502839f233346200b7baf30c460643c5e6a97eac327861c2", "sourceSHA256": "f56e55bcb7ff9d6732cf96ae4ad02eb90f14e7f0e2514d0709b6c5a4156dc833", "argv": ["/tmp/wci4-package-candidate2/libexec/xfmd/sdui-fyne", "-watch=false", "-entry", "page", "-revision", "f56e55bcb7ff9d6732cf96ae4ad02eb90f14e7f0e2514d0709b6c5a4156dc833", "/tmp/wci4-final-native2/helper-ime/input.sdui"], "display": ":191", "XMODIFIERS": "@im=ibus", "IBUS_ENABLE_CTRL_SHIFT_U": "1"}}
+{"kind": "x11-input", "value": {"action": "locate", "values": []}}
+{"kind": "x11-input", "value": {"action": "locate", "values": []}}
+{"kind": "x11-input", "value": {"action": "key", "values": ["Tab"]}}
+{"kind": "result", "value": {"failed": "X Error of failed request:  BadMatch (invalid parameter attributes)\n  Major opcode of failed request:  42 (X_SetInputFocus)\n  Serial number of failed request:  23\n  Current serial number in output stream:  24\n"}}

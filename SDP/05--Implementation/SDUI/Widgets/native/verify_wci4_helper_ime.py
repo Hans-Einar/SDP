@@ -47,8 +47,10 @@ def main():
   env=dict(os.environ,DISPLAY=args.display,XDG_CONFIG_HOME=str(out/'config'),XDG_CACHE_HOME=str(out/'cache'),FYNE_THEME='light')
   process=subprocess.Popen(argv,env=env,stdout=log,stderr=errors)
   deadline=time.monotonic()+45
-  while native('locate').returncode:
-   assert process.poll() is None,'Helper exited before its native window';assert time.monotonic()<deadline,'Helper window did not appear';time.sleep(.1)
+  while True:
+   located=native('locate')
+   if located.returncode==0 and json.loads(located.stdout)['viewable']:break
+   assert process.poll() is None,'Helper exited before its native window';assert time.monotonic()<deadline,'Helper window did not become viewable';time.sleep(.1)
   key('key','Tab');check('actual staged helper starts with accepted A',copy('A'));screen('helper-initial')
   dirty();compose('4e2d');screen('helper-composition');key('key','Return')
   check('real IME Return inserts composition after the dirty suffix',copy('AB中'))

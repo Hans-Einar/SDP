@@ -35,7 +35,7 @@ designs:
     path: 04--Design/SDUI/Widgets/Design.md
     implementationPlan: 05--Implementation/SDUI/Widgets/Plan.md
     kanban: KB-SDUI-003
-    note: WCD1 through WCI4-M1 reviewed and delivered; WCI4-M2 all-family integrated verification remains active.
+    note: WCD1 and WCI0–WCI4 reviewed and delivered; full bounded inventory verified in Evidence-WCI4-M2 on the selected baseline. Merge and publication remain separate.
   SDPTOOL-DES-0001:
     status: design-candidate
     path: 04--Design/SDPTool/ProjectGovernance/Design.md

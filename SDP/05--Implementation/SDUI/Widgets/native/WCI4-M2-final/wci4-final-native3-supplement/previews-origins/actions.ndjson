@@ -1,0 +1,101 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci4-package-candidate3/libexec/sdui/previews", "sha256": "200679febaebddaf13edfdc477ed9eac3feed66f082aef18bace0b2ebc266a85", "display": ":191", "variant": "wci3-origins"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "resource Hero negative-origin"}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "resize 500 850"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "negative-origin-500 mounted rendered image", "passed": true}}
+{"kind": "check", "value": {"name": "negative-origin-500 mapped native window", "passed": true}}
+{"kind": "screenshot", "value": "negative-origin-500.png"}
+{"kind": "pixel-oracle", "value": {"name": "negative-origin-500", "slot": "negative-origin", "window": {"window": 2097184, "x": 0, "y": 0, "mapState": 2, "viewable": true}, "profile": {"FYNE_SCALE": "1", "FYNE_THEME": "light"}, "image": {"X": 0, "Y": 223.209375, "W": 348.0625, "H": 174.03125}, "clip": {"X": 0, "Y": 119, "W": 348.0625, "H": 402.04998779296875}, "expected": [0, 223.209375, 348.0625, 397.240625], "observed": [0, 223, 348, 397], "halfCoveragePixels": 60552, "coverageThreshold": 0.5, "interiorSolid": true}}
+{"kind": "check", "value": {"name": "negative-origin-500 actual half-coverage green bounds within one physical pixel", "passed": true}}
+{"kind": "check", "value": {"name": "negative-origin-500 solid interior and no green outside expected bounds", "passed": true}}
+{"kind": "fixture-command", "value": "resize 1100 850"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "negative-origin-1100 mounted rendered image", "passed": true}}
+{"kind": "check", "value": {"name": "negative-origin-1100 mapped native window", "passed": true}}
+{"kind": "screenshot", "value": "negative-origin-1100.png"}
+{"kind": "pixel-oracle", "value": {"name": "negative-origin-1100", "slot": "negative-origin", "window": {"window": 2097184, "x": 0, "y": 0, "mapState": 2, "viewable": true}, "profile": {"FYNE_SCALE": "1", "FYNE_THEME": "light"}, "image": {"X": 10.686219574036443, "Y": 119, "W": 764.9, "H": 382.45}, "clip": {"X": 0, "Y": 119, "W": 786.2724609375, "H": 402.04998779296875}, "expected": [10.686219574036443, 119, 775.5862195740365, 501.45], "observed": [11, 119, 776, 501], "halfCoveragePixels": 292230, "coverageThreshold": 0.5, "interiorSolid": true}}
+{"kind": "check", "value": {"name": "negative-origin-1100 actual half-coverage green bounds within one physical pixel", "passed": true}}
+{"kind": "check", "value": {"name": "negative-origin-1100 solid interior and no green outside expected bounds", "passed": true}}
+{"kind": "fixture-command", "value": "resource Hero positive-origin"}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "resize 500 850"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "positive-origin-500 mounted rendered image", "passed": true}}
+{"kind": "check", "value": {"name": "positive-origin-500 mapped native window", "passed": true}}
+{"kind": "screenshot", "value": "positive-origin-500.png"}
+{"kind": "pixel-oracle", "value": {"name": "positive-origin-500", "slot": "positive-origin", "window": {"window": 2097184, "x": 0, "y": 0, "mapState": 2, "viewable": true}, "profile": {"FYNE_SCALE": "1", "FYNE_THEME": "light"}, "image": {"X": 0, "Y": 223.209375, "W": 348.0625, "H": 174.03125}, "clip": {"X": 0, "Y": 119, "W": 348.0625, "H": 402.04998779296875}, "expected": [0, 223.209375, 348.0625, 397.240625], "observed": [0, 223, 348, 397], "halfCoveragePixels": 60552, "coverageThreshold": 0.5, "interiorSolid": true}}
+{"kind": "check", "value": {"name": "positive-origin-500 actual half-coverage green bounds within one physical pixel", "passed": true}}
+{"kind": "check", "value": {"name": "positive-origin-500 solid interior and no green outside expected bounds", "passed": true}}
+{"kind": "fixture-command", "value": "resize 1100 850"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "positive-origin-1100 mounted rendered image", "passed": true}}
+{"kind": "check", "value": {"name": "positive-origin-1100 mapped native window", "passed": true}}
+{"kind": "screenshot", "value": "positive-origin-1100.png"}
+{"kind": "pixel-oracle", "value": {"name": "positive-origin-1100", "slot": "positive-origin", "window": {"window": 2097184, "x": 0, "y": 0, "mapState": 2, "viewable": true}, "profile": {"FYNE_SCALE": "1", "FYNE_THEME": "light"}, "image": {"X": 10.686219574036443, "Y": 119, "W": 764.9, "H": 382.45}, "clip": {"X": 0, "Y": 119, "W": 786.2724609375, "H": 402.04998779296875}, "expected": [10.686219574036443, 119, 775.5862195740365, 501.45], "observed": [11, 119, 776, 501], "halfCoveragePixels": 292230, "coverageThreshold": 0.5, "interiorSolid": true}}
+{"kind": "check", "value": {"name": "positive-origin-1100 actual half-coverage green bounds within one physical pixel", "passed": true}}
+{"kind": "check", "value": {"name": "positive-origin-1100 solid interior and no green outside expected bounds", "passed": true}}
+{"kind": "fixture-command", "value": "resource Hero mixed-origin"}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "resize 500 850"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "mixed-origin-500 mounted rendered image", "passed": true}}
+{"kind": "check", "value": {"name": "mixed-origin-500 mapped native window", "passed": true}}
+{"kind": "screenshot", "value": "mixed-origin-500.png"}
+{"kind": "pixel-oracle", "value": {"name": "mixed-origin-500", "slot": "mixed-origin", "window": {"window": 2097184, "x": 0, "y": 0, "mapState": 2, "viewable": true}, "profile": {"FYNE_SCALE": "1", "FYNE_THEME": "light"}, "image": {"X": 0, "Y": 223.209375, "W": 348.0625, "H": 174.03125}, "clip": {"X": 0, "Y": 119, "W": 348.0625, "H": 402.04998779296875}, "expected": [0, 223.209375, 348.0625, 397.240625], "observed": [0, 223, 348, 397], "halfCoveragePixels": 60552, "coverageThreshold": 0.5, "interiorSolid": true}}
+{"kind": "check", "value": {"name": "mixed-origin-500 actual half-coverage green bounds within one physical pixel", "passed": true}}
+{"kind": "check", "value": {"name": "mixed-origin-500 solid interior and no green outside expected bounds", "passed": true}}
+{"kind": "fixture-command", "value": "resize 1100 850"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "mixed-origin-1100 mounted rendered image", "passed": true}}
+{"kind": "check", "value": {"name": "mixed-origin-1100 mapped native window", "passed": true}}
+{"kind": "screenshot", "value": "mixed-origin-1100.png"}
+{"kind": "pixel-oracle", "value": {"name": "mixed-origin-1100", "slot": "mixed-origin", "window": {"window": 2097184, "x": 0, "y": 0, "mapState": 2, "viewable": true}, "profile": {"FYNE_SCALE": "1", "FYNE_THEME": "light"}, "image": {"X": 10.686219574036443, "Y": 119, "W": 764.9, "H": 382.45}, "clip": {"X": 0, "Y": 119, "W": 786.2724609375, "H": 402.04998779296875}, "expected": [10.686219574036443, 119, 775.5862195740365, 501.45], "observed": [11, 119, 776, 501], "halfCoveragePixels": 292230, "coverageThreshold": 0.5, "interiorSolid": true}}
+{"kind": "check", "value": {"name": "mixed-origin-1100 actual half-coverage green bounds within one physical pixel", "passed": true}}
+{"kind": "check", "value": {"name": "mixed-origin-1100 solid interior and no green outside expected bounds", "passed": true}}
+{"kind": "fixture-command", "value": "resource Hero root-transform"}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "resize 500 850"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "root-transform-500 mounted rendered image", "passed": true}}
+{"kind": "check", "value": {"name": "root-transform-500 mapped native window", "passed": true}}
+{"kind": "screenshot", "value": "root-transform-500.png"}
+{"kind": "pixel-oracle", "value": {"name": "root-transform-500", "slot": "root-transform", "window": {"window": 2097184, "x": 0, "y": 0, "mapState": 2, "viewable": true}, "profile": {"FYNE_SCALE": "1", "FYNE_THEME": "light"}, "image": {"X": 0, "Y": 223.209375, "W": 348.0625, "H": 174.03125}, "clip": {"X": 0, "Y": 119, "W": 348.0625, "H": 402.04998779296875}, "expected": [34.80625, 240.61249999999998, 104.41875, 275.41875], "observed": [35, 240, 104, 275], "halfCoveragePixels": 2415, "coverageThreshold": 0.5, "interiorSolid": true}}
+{"kind": "check", "value": {"name": "root-transform-500 actual half-coverage green bounds within one physical pixel", "passed": true}}
+{"kind": "check", "value": {"name": "root-transform-500 solid interior and no green outside expected bounds", "passed": true}}
+{"kind": "fixture-command", "value": "resize 1100 850"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "root-transform-1100 mounted rendered image", "passed": true}}
+{"kind": "check", "value": {"name": "root-transform-1100 mapped native window", "passed": true}}
+{"kind": "screenshot", "value": "root-transform-1100.png"}
+{"kind": "pixel-oracle", "value": {"name": "root-transform-1100", "slot": "root-transform", "window": {"window": 2097184, "x": 0, "y": 0, "mapState": 2, "viewable": true}, "profile": {"FYNE_SCALE": "1", "FYNE_THEME": "light"}, "image": {"X": 10.686219574036443, "Y": 119, "W": 764.9, "H": 382.45}, "clip": {"X": 0, "Y": 119, "W": 786.2724609375, "H": 402.04998779296875}, "expected": [87.17621957403644, 157.245, 240.15621957403644, 233.735], "observed": [87, 157, 240, 234], "halfCoveragePixels": 11779, "coverageThreshold": 0.5, "interiorSolid": true}}
+{"kind": "check", "value": {"name": "root-transform-1100 actual half-coverage green bounds within one physical pixel", "passed": true}}
+{"kind": "check", "value": {"name": "root-transform-1100 solid interior and no green outside expected bounds", "passed": true}}
+{"kind": "check", "value": {"name": "actual native fit includes below and above intrinsic scale", "passed": true}}
+{"kind": "fixture-command", "value": "resource Hero negative-origin"}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI4 Previews", "action": "move", "values": [393, 484], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI4 Previews", "action": "wheel", "values": [393, 484, 8], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "shared clip translates image without refitting", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "negative-origin-shared-clip mounted rendered image", "passed": true}}
+{"kind": "check", "value": {"name": "negative-origin-shared-clip mapped native window", "passed": true}}
+{"kind": "screenshot", "value": "negative-origin-shared-clip.png"}
+{"kind": "pixel-oracle", "value": {"name": "negative-origin-shared-clip", "slot": "negative-origin", "window": {"window": 2097184, "x": 0, "y": 0, "mapState": 2, "viewable": true}, "profile": {"FYNE_SCALE": "1", "FYNE_THEME": "light"}, "image": {"X": 10.686219574036443, "Y": -81, "W": 764.9, "H": 382.45}, "clip": {"X": 0, "Y": 119, "W": 786.2724609375, "H": 202.0500030517578}, "expected": [10.686219574036443, 119, 775.5862195740365, 301.45], "observed": [11, 119, 776, 301], "halfCoveragePixels": 139230, "coverageThreshold": 0.5, "interiorSolid": true}}
+{"kind": "check", "value": {"name": "negative-origin-shared-clip actual half-coverage green bounds within one physical pixel", "passed": true}}
+{"kind": "check", "value": {"name": "negative-origin-shared-clip solid interior and no green outside expected bounds", "passed": true}}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

@@ -1,0 +1,8 @@
+PASS shorter source sibling uses actual nonmodal parent canvas
+PASS child body scales against actual parent body
+PASS child opening focuses its own first field
+PASS child Escape reverts only its own draft
+PASS clean child Escape preserves parent and restores its focus
+PASS explicit child Close preserves parent draft without Save
+PASS native parent close revokes dynamic child before teardown
+PASS native teardown closes session and clears provider barriers

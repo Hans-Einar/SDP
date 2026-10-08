@@ -1,0 +1,68 @@
+[
+  {
+    "argv": [
+      "go",
+      "test",
+      "-race",
+      "./...",
+      "-count=1"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets/SDUI/go",
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOWORK": "off"
+    },
+    "exit": 0,
+    "name": "sdui",
+    "seconds": 320.52,
+    "sourceUnchanged": true
+  },
+  {
+    "argv": [
+      "go",
+      "test",
+      "./...",
+      "-count=1"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets/SDPTool",
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOWORK": "off"
+    },
+    "exit": 0,
+    "name": "sdptool",
+    "seconds": 22.295,
+    "sourceUnchanged": true
+  },
+  {
+    "argv": [
+      "go",
+      "test",
+      "-race",
+      "-p",
+      "2",
+      "./bridge",
+      "./runtime",
+      "./codegen",
+      "./examples/collections/...",
+      "./examples/panes/...",
+      "./examples/commands/...",
+      "./examples/values/...",
+      "./examples/text/...",
+      "./examples/previews/...",
+      "-count=1"
+    ],
+    "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+    "environment": {
+      "GOCACHE": "/tmp/sdp-wci0-gocache",
+      "GOFLAGS": "-mod=readonly",
+      "GOWORK": "off"
+    },
+    "exit": 1,
+    "name": "sdl",
+    "seconds": 694.618,
+    "sourceUnchanged": true
+  }
+]

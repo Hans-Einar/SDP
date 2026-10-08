@@ -1,0 +1,46 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci4-package-candidate2/libexec/sdui/commands", "sha256": "3864064671f89afe6a8180a331a0a96fcf5d2b6dd6b5361ab32c1bd9381c0f7b", "display": ":191", "variant": "wci2-m2-nested"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [178, 56], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "move-window", "values": [880, 180], "keep_focus": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "click", "values": [177, 80], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "key", "values": ["p", "a", "r", "e", "n", "t", "d", "r", "a", "f", "t"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "right-click", "values": [177, 80], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "click", "values": [220, 137], "keep_focus": false}}
+{"kind": "check", "value": {"name": "shorter source sibling uses actual nonmodal parent canvas", "passed": true}}
+{"kind": "check", "value": {"name": "child body scales against actual parent body", "passed": true}}
+{"kind": "check", "value": {"name": "child opening focuses its own first field", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "click", "values": [274, 218], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "key", "values": ["c", "h", "i", "l", "d", "d", "r", "a", "f", "t"], "keep_focus": false}}
+{"kind": "screenshot", "value": "nested-modal-parent.png"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "key", "values": ["Escape"], "keep_focus": false}}
+{"kind": "check", "value": {"name": "child Escape reverts only its own draft", "passed": true}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "key", "values": ["Escape"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "clean child Escape preserves parent and restores its focus", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "right-click", "values": [177, 80], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "click", "values": [220, 137], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "click", "values": [239, 252], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "explicit child Close preserves parent draft without Save", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "right-click", "values": [177, 80], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "click", "values": [220, 137], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "close-window", "values": [], "keep_focus": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "native parent close revokes dynamic child before teardown", "passed": true}}
+{"kind": "screenshot", "value": "nested-parent-closed.png"}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

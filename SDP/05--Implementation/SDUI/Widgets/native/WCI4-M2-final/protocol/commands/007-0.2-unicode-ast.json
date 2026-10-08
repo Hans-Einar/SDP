@@ -1,0 +1,21 @@
+{
+  "name": "0.2-unicode-ast",
+  "argv": [
+    "/tmp/wci4-package-candidate3/bin/sdui",
+    "/tmp/wci4-final-protocol3-verified/profile 0.2 project with spaces/SDP/Page å with spaces.sdui",
+    "--format",
+    "ast"
+  ],
+  "cwd": "/tmp/wci4-final-protocol3-verified",
+  "binarySha256": "bdee43563bcf0190c1756990e86afadb3287ca92f1f1a03727fc580e8d217ecf",
+  "displayEnvironment": "DISPLAY/WAYLAND_DISPLAY removed",
+  "expected": "success",
+  "exit": 0,
+  "timeout": false,
+  "seconds": 0.04349255561828613,
+  "stdout": "commands/007-0.2-unicode-ast.stdout",
+  "stderr": "commands/007-0.2-unicode-ast.stderr",
+  "stdoutSha256": "3cf6b618e057ed5b15fe5372edc4f87b176aeb7cc88d6355c1966dc83afcff88",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "binaryUnchanged": true
+}

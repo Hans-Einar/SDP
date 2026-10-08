@@ -21,6 +21,14 @@ def main():
     x = c.CDLL(ctypes.util.find_library('X11'))
     xt = c.CDLL(ctypes.util.find_library('Xtst'))
     dpy, win, atom = c.c_void_p, c.c_ulong, c.c_ulong
+    class WindowAttributes(c.Structure):
+        _fields_ = [(name,c.c_int) for name in ('x','y','width','height','border_width','depth')] + [
+            ('visual',c.c_void_p),('root',win),('window_class',c.c_int),
+            ('bit_gravity',c.c_int),('win_gravity',c.c_int),('backing_store',c.c_int),
+            ('backing_planes',c.c_ulong),('backing_pixel',c.c_ulong),('save_under',c.c_int),
+            ('colormap',c.c_ulong),('map_installed',c.c_int),('map_state',c.c_int),
+            ('all_event_masks',c.c_long),('your_event_mask',c.c_long),
+            ('do_not_propagate_mask',c.c_long),('override_redirect',c.c_int),('screen',c.c_void_p)]
     def signature(lib, name, result, *parameters):
         fn = getattr(lib, name)
         fn.restype = result
@@ -30,6 +38,7 @@ def main():
     signature(x, 'XCloseDisplay', c.c_int, dpy)
     signature(x, 'XDefaultRootWindow', win, dpy)
     signature(x, 'XQueryTree', c.c_int, dpy, win, c.POINTER(win), c.POINTER(win), c.POINTER(c.POINTER(win)), c.POINTER(c.c_uint))
+    signature(x, 'XGetWindowAttributes', c.c_int, dpy, win, c.POINTER(WindowAttributes))
     signature(x, 'XFetchName', c.c_int, dpy, win, c.POINTER(c.c_void_p))
     signature(x, 'XFree', c.c_int, c.c_void_p)
     signature(x, 'XTranslateCoordinates', c.c_int, dpy, win, win, c.c_int, c.c_int, c.POINTER(c.c_int), c.POINTER(c.c_int), c.POINTER(win))
@@ -82,7 +91,10 @@ def main():
         if not x.XTranslateCoordinates(display, target, root, 0, 0, c.byref(left), c.byref(top), c.byref(child)):
             raise SystemExit('Cannot resolve test window position')
         if args.action == 'locate':
-            print(json.dumps(dict(window=target, x=left.value, y=top.value)))
+            attributes = WindowAttributes()
+            if not x.XGetWindowAttributes(display,target,c.byref(attributes)):
+                raise SystemExit('Cannot inspect test window mapping')
+            print(json.dumps(dict(window=target, x=left.value, y=top.value, mapState=attributes.map_state, viewable=attributes.map_state==2)))
             return
         if args.action == 'focus-state':
             focused, revert = win(), c.c_int()

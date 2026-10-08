@@ -1,0 +1,62 @@
+PASS negative-origin-500 mounted rendered image
+PASS negative-origin-500 mapped native window
+WARNING: The convert command is deprecated in IMv7, use "magick" instead of "convert" or "magick convert"
+
+PASS negative-origin-500 actual green bounds within one physical pixel
+PASS negative-origin-500 solid interior and no green outside expected bounds
+PASS negative-origin-1100 mounted rendered image
+PASS negative-origin-1100 mapped native window
+WARNING: The convert command is deprecated in IMv7, use "magick" instead of "convert" or "magick convert"
+
+PASS negative-origin-1100 actual green bounds within one physical pixel
+PASS negative-origin-1100 solid interior and no green outside expected bounds
+PASS positive-origin-500 mounted rendered image
+PASS positive-origin-500 mapped native window
+WARNING: The convert command is deprecated in IMv7, use "magick" instead of "convert" or "magick convert"
+
+PASS positive-origin-500 actual green bounds within one physical pixel
+PASS positive-origin-500 solid interior and no green outside expected bounds
+PASS positive-origin-1100 mounted rendered image
+PASS positive-origin-1100 mapped native window
+WARNING: The convert command is deprecated in IMv7, use "magick" instead of "convert" or "magick convert"
+
+PASS positive-origin-1100 actual green bounds within one physical pixel
+PASS positive-origin-1100 solid interior and no green outside expected bounds
+PASS mixed-origin-500 mounted rendered image
+PASS mixed-origin-500 mapped native window
+WARNING: The convert command is deprecated in IMv7, use "magick" instead of "convert" or "magick convert"
+
+PASS mixed-origin-500 actual green bounds within one physical pixel
+PASS mixed-origin-500 solid interior and no green outside expected bounds
+PASS mixed-origin-1100 mounted rendered image
+PASS mixed-origin-1100 mapped native window
+WARNING: The convert command is deprecated in IMv7, use "magick" instead of "convert" or "magick convert"
+
+PASS mixed-origin-1100 actual green bounds within one physical pixel
+PASS mixed-origin-1100 solid interior and no green outside expected bounds
+PASS root-transform-500 mounted rendered image
+PASS root-transform-500 mapped native window
+WARNING: The convert command is deprecated in IMv7, use "magick" instead of "convert" or "magick convert"
+
+PASS root-transform-500 actual green bounds within one physical pixel
+PASS root-transform-500 solid interior and no green outside expected bounds
+PASS root-transform-1100 mounted rendered image
+PASS root-transform-1100 mapped native window
+WARNING: The convert command is deprecated in IMv7, use "magick" instead of "convert" or "magick convert"
+
+PASS native teardown closes session and clears provider barriers
+Traceback (most recent call last):
+  File "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_origins.py", line 86, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_origins.py", line 78, in main
+    else:t.origins()
+         ^^^^^^^^^^^
+  File "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_origins.py", line 53, in origins
+    scales.append(self.pixels(slot+'-'+str(size),slot))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_origins.py", line 41, in pixels
+    self.check(name + ' actual green bounds within one physical pixel', bbox is not None and all(abs(a-b)<=1.01 for a,b in zip(bbox,expected)))
+  File "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci1.py", line 115, in check
+    raise AssertionError(name)
+AssertionError: root-transform-1100 actual green bounds within one physical pixel

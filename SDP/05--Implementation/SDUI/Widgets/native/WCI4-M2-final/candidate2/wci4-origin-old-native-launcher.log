@@ -1,0 +1,16 @@
+PASS negative-origin-old mounted rendered image
+PASS negative-origin-old mapped native window
+WARNING: The convert command is deprecated in IMv7, use "magick" instead of "convert" or "magick convert"
+
+PASS native teardown closes session and clears provider barriers
+Traceback (most recent call last):
+  File "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_origins.py", line 84, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_origins.py", line 75, in main
+    t.pixels('negative-origin-old','negative-origin')
+  File "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_origins.py", line 39, in pixels
+    self.check(name + ' actual green bounds within one physical pixel', bbox is not None and all(abs(a-b)<=1.01 for a,b in zip(bbox,expected)))
+  File "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci1.py", line 115, in check
+    raise AssertionError(name)
+AssertionError: negative-origin-old actual green bounds within one physical pixel

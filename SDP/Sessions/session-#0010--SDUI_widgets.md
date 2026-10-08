@@ -2,8 +2,8 @@
 
 ## Session roadmap
 
-Latest recorded turn: T003. Current work: S5 consumer integration and review.
-WCI1/WCI2 are implemented, verified and independently reviewed; WCI3 scalar fields and extended text are delivered and independently reviewed; WCI4 is selected. Diagram is **sequence only**, using synthetic equal
+Latest recorded turn: T003. S1–S5 are completed on the selected baseline.
+WCI1/WCI2 are implemented, verified and independently reviewed; WCI3 scalar fields and extended text are delivered and independently reviewed; WCI4 is delivered and independently reviewed. Diagram is **sequence only**, using synthetic equal
 slots; it is not a delivery schedule or measured timeline.
 
 ```mermaid
@@ -16,7 +16,7 @@ gantt
     S2 Collections and viewports :done, s2, after s1, 1d
     S3 Panes and commands :done, s3, after s2, 1d
     S4 Typed values and text :done, s4, after s3, 1d
-    S5 Consumer integration and review :active, s5, after s4, 1d
+    S5 Consumer integration and review :done, s5, after s4, 1d
 ```
 
 | State | Step | Work and linked plan milestone | Prerequisites | Authorization | Completion evidence / outcome |
@@ -25,16 +25,16 @@ gantt
 | completed | S2 | PLAN-SDP-0022 WCI1 | S1 | Owner T001 full card | c39b330; Evidence-WCI1; 54 native checks; independent approval |
 | completed | S3 | PLAN-SDP-0022 WCI2 | S2 pilot evidence | Owner T001 full card | 403c540 / 0fc15c8; 58 pane + 118 command native checks; independent approval |
 | completed | S4 | PLAN-SDP-0022 WCI3 | Shared contracts from S1–S3 | Owner T001 full card | ea49991f / 69d0a332; Evidence-WCI3-M1/M2; independent approval |
-| on-going | S5 | PLAN-SDP-0022 WCI4 | S2–S4 | Owner T001; publication unselected | pending |
+| completed | S5 | PLAN-SDP-0022 WCI4 | S2–S4 | Owner T001; publication unselected | dcf2a74; Evidence-WCI4-M2; independent integrated acceptance |
 
 | Field | Value |
 | --- | --- |
 | Session reference | SESSION-SDP-0010 |
-| Status | active |
-| Primary card | [KB-SDUI-003](../KanBan/active/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md) |
+| Status | completed |
+| Primary card | [KB-SDUI-003](../KanBan/completed/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md) |
 | Snapshot date | 2026-10-07 owner request; actual ledger timestamps recorded separately |
-| Current step | S5 |
-| Proposed next step | S5 WCI4-M2 all-family verification and integrated closeout |
+| Current step | S5 completed |
+| Proposed next step | Draft combined PR handoff; owner integration decision is separate |
 | Execution authority | Owner T001 requests taking the card's work |
 
 ## Goal
@@ -49,7 +49,7 @@ XM-M2 evidence. Rich optional research retains its existing disposition.
 
 | Card | Role | Initial lifecycle / CardState | Planned final disposition | Current snapshot | Actual final disposition |
 | --- | --- | --- | --- | --- | --- |
-| KB-SDUI-003 | Primary | backlog / backlog at T001 | All inventory delivered, verified and reviewed | active / in-progress | pending |
+| KB-SDUI-003 | Primary | backlog / backlog at T001 | All inventory delivered, verified and reviewed | completed | completed |
 | KB-SDUI-005 | Context-only dependency | active / gate-review in producer record | Retain separate preview ownership | Existing dirty producer changes preserved | Not disposed here |
 | KB-SDUI-004 | Context-only | backlog | Separate glyph/wrapping fidelity work | backlog | Not disposed here |
 
@@ -58,7 +58,7 @@ XM-M2 evidence. Rich optional research retains its existing disposition.
 | Local ref | Plan type and document | Document readiness | Canonical plan lifecycle | Depends on | Outcome / evidence |
 | --- | --- | --- | --- | --- | --- |
 | P1 | [PLAN-SDP-0021 DesignPlan](../04--Design/SDUI/Widgets/Plan.md) | completed | completed | PLAN-SDP-0009 research | Independently reviewed design and per-family acceptance |
-| P2 | [PLAN-SDP-0022 ImplementationPlan](../05--Implementation/SDUI/Widgets/Plan.md) | on-going | active | P1, staged elaboration | WCI0–WCI3 delivered; WCI4-M1 delivered; WCI4-M2 in progress |
+| P2 | [PLAN-SDP-0022 ImplementationPlan](../05--Implementation/SDUI/Widgets/Plan.md) | completed | completed | P1, staged elaboration | WCI0–WCI4 delivered; Evidence-WCI4-M2; independent integrated acceptance |
 
 ## Route changes and decisions
 
@@ -607,5 +607,48 @@ implementation obligations.
   suites and final integrated evidence review. Reused SDP/master/planning/verifier/
   traceability. S5/card/Session remain active; merge and publication unselected.
 
+- M2 verification work summary: candidate two passes 26 native workflow
+  assertion sets, packaged protocol and the supplied XFMD consumer binary. The
+  helper IME job initially found an unmapped X window; waiting for actual
+  IsViewable within the existing startup deadline passes all eight checks on the
+  same binary. SDUI race and SDPTool suites pass. The combined SDL run times out
+  in text after 600 seconds; an isolated unchanged-source retry is in progress,
+  with the original failure retained and no increased timeout.
+- Independent screenshot review finds negative-origin SVG pixels disagree with
+  the fitted image despite passing aspect assertions. M2 remains open. Host
+  preparation now receives a bounded correction in a detached worktree, retaining
+  original identity and using a validated zero-origin native derivative. SVG2
+  root-transform order is S × Rroot × Torigin × Cchildren. Actual raster tests
+  also expose the pinned decoder's one-argument scale error; preparation-time
+  normalization is authorized within the same admitted SVG contract. Added
+  positive/mixed-origin and noncommuting root-transform fixtures are independently
+  reviewed; actual OS pixel proof is being added. Candidate-two local archive is
+  prior evidence, not the final deliverable. Reused SDP/master/worker/architect/
+  verifier/traceability; S5/M2 remain active.
+- Final integration boundary: the selected baseline already contains 73 prior
+  unmerged commits. Preserve the selected branch history and create a draft
+  combined PR with this dependency explicit after WCI acceptance. Do not claim
+  review of the earlier baseline from widget evidence, merge, or publish.
+
+- Final T003 work summary: completed corrected dcf2a74 verification and independent
+  review. 28 applicable native workflows contain 321 checks and
+  25 unique terminal results for 25 published openings; eight workflows
+  use rebuilt package three and twenty retain explicitly applicable predecessor
+  binaries. Full SDUI race passes 248.335s and SDL previews race 212.731s;
+  unchanged SDL text isolated pass and earlier unaffected suites remain associated.
+  Actual pixel coverage, both native IME recipes, 50 packaged protocol commands
+  and supplied XFMD consumer compatibility pass. Prior timeout, unmapped-window
+  failure and exact-RGB edge-oracle correction are retained. Only two historical
+  status qualifiers changed after tested product source; no runtime rebuild claim.
+  Reused SDP/master/worker/architect/planning/verifier/traceability; reviewer used
+  independent SDP Reviewer context. S5/P2/card completed; no further widget work.
+  Milestone backlog/onHold review retains KB004 backlog, KB005 separate gate-review,
+  and optional/source-set proposals unselected. Next: finish authorized draft PR
+  handoff with the inherited 73-commit dependency explicit; no merge/publication.
+
 ## Closeout
-Open. No widget, plan, card or Session completion is inferred from intake/design.
+
+WCI0–WCI4 and the full bounded KB-SDUI-003 inventory are implemented, verified and
+independently reviewed on the selected baseline. PLAN-SDP-0022 and the primary card
+are completed. Draft combined PR handoff follows under existing authorization;
+merge, inherited-baseline integration and release remain separate owner decisions.

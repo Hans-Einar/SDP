@@ -5,14 +5,14 @@
 | id | KB-SDUI-003 |
 | project | SDUI |
 | type | Proposal |
-| CardState | in-progress |
+| CardState | completed |
 | Systems | SDUI |
 | created | 2026-09-29T16:53:54.251554+00:00 |
 | source | PLAN-SDP-0009; KB-SDP-041; external XFMD gap register |
-| next_review | WCI4 provider/package acceptance and integrated review |
+| next_review | None for this delivered scope; integration and publication are separate |
 | PlanId | PLAN-SDP-0022 |
 
-## Current assignment — Session0010 T001
+## Delivered assignment — Session0010 T001–T003
 
 The owner now requests execution of the work described in this card. Codex takes
 coordination responsibility for the complete inventory, beginning with
@@ -20,7 +20,7 @@ coordination responsibility for the complete inventory, beginning with
 [PLAN-SDP-0022](../../05--Implementation/SDUI/Widgets/Plan.md). Earlier authorization
 limits below describe the previous card-editing request, not this assignment.
 The [Session](../../Sessions/session-%230010--SDUI_widgets.md) owns continuity.
-No widget is delivered by this selection; publication and merge remain unselected.
+The bounded inventory is now implemented, verified and independently reviewed; publication and merge remain unselected.
 
 ## Historical owner scope clarification — 2026-09-29
 
@@ -234,3 +234,16 @@ editor is selected; native acceptance must prove these boundaries.
 - 2026-10-08T12:56:13.294018+00:00 — EVT-KB-SDUI-000028: WCI4 implementation and candidate-one package/protocol pilots are recorded. Native owner-loss preview cleanup and independent finite-SVG geometry findings require correction before final aggregate acceptance; remain in-progress. Matching package has ten binaries; supplied consumer GUI test and 50 protocol commands pass on that prior candidate. Final corrected-source native/all-family suites and independent review remain required. Dark-theme contrast observation is registered separately on KB-SDUI-004.
 
 - 2026-10-08T13:07:30.392770+00:00 — EVT-KB-SDUI-000029: WCI4-M1 delivered at a026a5d1; reviewed 74-path provider/native candidate, matching ten-binary payload, 50 protocol commands, 24 native checks and ten exact receipts. WCI4-M2 stays active for all-family integrated acceptance. Backlog review retains KB-SDUI-004 fidelity and separate KB-SDUI-005 disposition.
+
+## Final delivery — WCI4-M2
+
+The complete selected widget inventory is delivered through WCI0–WCI4.
+[Final evidence](../../05--Implementation/SDUI/Widgets/Evidence-WCI4-M2.md) records
+corrected native SVG geometry, explicit supported/fallback boundaries, matching
+packages, native receipts, suites and independent review. No selected family remains
+open. This closes the local card on its selected baseline; it does not close the
+external XFMD gap register, merge earlier dependency commits or publish a release.
+Milestone backlog/onHold review retains KB-SDUI-004 backlog, KB-SDUI-005 separate
+gate-review and optional source sets/rich-editor proposals unselected. No new scope.
+
+- 2026-10-08T13:50:20.709403+00:00 — EVT-KB-SDUI-000030: active/in-progress -> completed. WCI4-M2 and full bounded widget inventory verified and independently reviewed at dcf2a741; 28 applicable native workflows, 321 checks, 25 exact terminal results, matching package/protocol/consumer and passing affected suites. No merge/publication.

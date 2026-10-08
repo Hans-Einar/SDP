@@ -21,7 +21,7 @@ candidate identity, reproduction command, actual result and independent review.
 | Numeric input | WCI3-M1 | Typed number with editable draft | Invalid intermediate text distinct from accepted value; increment/decrement | Same numeric binding/range contract as slider | WCI3-M1 delivered; Evidence-WCI3-M1 |
 | Single-line input | WCI3-M2 | Shared read-only/placeholder/validation | Preserve draft/revert/revision behavior; focus, Unicode, programmatic mute | Existing input baseline plus new properties | WCI3-M2 delivered; Evidence-WCI3-M2 |
 | Multiline input | WCI3-M2 | input multiline property | Edit/select/copy/paste, undo/redo, line breaks, scroll, read-only, UTF-8/IME, explicit commit | SDL Load/Save fixture without widget/parser I/O | WCI3-M2 delivered; Evidence-WCI3-M2 |
-| SVG/Markdown preview | WCI4-M1 | Provider/resource identity and accessible description | Disposal, missing provider and explicit fallback | Inspect actual previews; no unsupported richness claim | WCI4-M1 delivered; full WCI4-M2 integrated acceptance remains pending |
+| SVG/Markdown preview | WCI4-M1 | Provider/resource identity and accessible description | Disposal, missing provider and explicit fallback | Inspect actual previews; no unsupported richness claim | WCI4-M1/M2 delivered; final Evidence-WCI4-M2 and all-family map |
 
 Every new family includes positive/negative profile tests, original-source spans,
 definition reuse, normalization, layout, composition, static text, declared SVG
@@ -45,4 +45,12 @@ for native tests, and capture source/binary identities. Preserve all frozen fixt
 | 010 | WCI4 truthful provider/preview boundary required; broader rich content optional/unselected |
 
 SDUI-011 remains KB-SDUI-004. These are delivery destinations, not closure claims
-for the external XFMD register. Native consumer distribution remains WCI4 work.
+for the external XFMD register. Matching native consumer package preparation is verified in WCI4-M2; installation and publication are separate.
+
+## Final integrated disposition
+
+All sixteen family rows and the required bounded portions of GAP001–010 are
+implemented, verified and independently reviewed. Optional full editors/source
+sets/rich content remain unselected as stated above. [WCI4-M2 evidence](../../../05--Implementation/SDUI/Widgets/Evidence-WCI4-M2.md)
+identifies corrected source, actual pixels/native receipts, package proof and
+explicitly applicable predecessor runs. No external gap-register closure inferred.

@@ -1,0 +1,13 @@
+PASS direct SVG and bounded prose are rendered with no SDL action
+PASS actual mounted Accessible describes rendered image separately from caption
+PASS full image preserves 2:1 aspect and ends before caption
+PASS inactive and closed content is prepared without fabricated mounted objects
+PASS mutating caller loan leaves live image digest and geometry unchanged
+PASS caption resize retains full accessibility and frozen renderer baseline
+PASS outer scroll translates full image without refitting visible fragment
+PASS preview never overlaps outer scrollbar gutter
+PASS equal Markdown paths keep independent descriptions and partial outcomes
+PASS tab reveal preserves outer offset and renderer baseline
+PASS split collapse detaches visible preview geometry
+PASS split restore preserves content and invokes no renderer or domain action
+PASS native teardown closes session and clears provider barriers

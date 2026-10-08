@@ -1,0 +1,17 @@
+dbus[281551]: Unable to set up transient service directory: XDG_RUNTIME_DIR "/tmp/wci4-final-native2/helper-ime-environment/runtime" not available: Permission denied
+dbus-daemon[281551]: Cannot setup inotify for '/tmp/wci4-final-native2/helper-ime-environment/data/dbus-1/services'; error 'Permission denied'
+Traceback (most recent call last):
+  File "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_helper_ime.py", line 68, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_helper_ime.py", line 52, in main
+    key('key','Tab');check('actual staged helper starts with accepted A',copy('A'));screen('helper-initial')
+    ^^^^^^^^^^^^^^^^
+  File "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_helper_ime.py", line 20, in key
+    r=native(action,*values);assert r.returncode==0,r.stderr
+                                    ^^^^^^^^^^^^^^^
+AssertionError: X Error of failed request:  BadMatch (invalid parameter attributes)
+  Major opcode of failed request:  42 (X_SetInputFocus)
+  Serial number of failed request:  23
+  Current serial number in output stream:  24
+

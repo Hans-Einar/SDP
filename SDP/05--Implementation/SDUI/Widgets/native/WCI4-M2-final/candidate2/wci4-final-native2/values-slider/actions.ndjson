@@ -1,0 +1,35 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci4-package-candidate2/libexec/sdui/values", "sha256": "78ee0a70631003365121a6f25211dcad851ff90fd4e0d9ec96da9122a08477e5", "display": ":191", "variant": "wci3-slider"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "slider visibly labels its initial numeric value", "passed": true}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "button-down", "values": [281, 158], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "move", "values": [819, 158], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "held slider changes proposal without domain Commit", "passed": true}}
+{"kind": "check", "value": {"name": "native label shows held proposed numeric value", "passed": true}}
+{"kind": "screenshot", "value": "slider-held-proposal.png"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "button-up", "values": [819, 158], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "slider release commits once through SDL", "passed": true}}
+{"kind": "check", "value": {"name": "native accepted value remains visible after release", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "button-down", "values": [819, 158], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "move", "values": [281, 158], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "key", "values": ["Escape"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "button-up", "values": [281, 158], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "Escape cancels held drag and release cannot commit it", "passed": true}}
+{"kind": "check", "value": {"name": "Escape restores displayed accepted slider value", "passed": true}}
+{"kind": "fixture-command", "value": "set Level 25"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "silent programmatic slider value is visible", "passed": true}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "key-down", "values": ["Right"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "held slider key changes draft without Commit", "passed": true}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "key-up", "values": ["Right"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "slider key-up commits once", "passed": true}}
+{"kind": "screenshot", "value": "slider-key-accepted.png"}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

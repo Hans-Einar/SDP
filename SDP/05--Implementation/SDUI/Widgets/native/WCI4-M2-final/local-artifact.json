@@ -1,0 +1,9 @@
+{
+  "archive": "/home/warloc/artifacts/KB-SDUI-003/wci4-linux-amd64-candidate-dcf2a74.tar.gz",
+  "sha256": "87f480418a2eead424f07cfb9e51afe45a651862993a38f8ec7fc1503d307777",
+  "bytes": 165045733,
+  "sourceCommit": "dcf2a7415ba20559c1babd891c0b65140c2ab934",
+  "scope": "Local corrected candidate; final integrated acceptance pending; no installation/publication",
+  "packageBuild": "dcf2a74 with vcs.modified=true; 1411 unchanged inventoried source paths; untracked worker artifacts retained",
+  "payloadFiles": 297
+}

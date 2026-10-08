@@ -1,0 +1,68 @@
+[
+  {
+    "argv": [
+      "libexec/sdui/collections"
+    ],
+    "environment": {
+      "FYNE_THEME": "light"
+    },
+    "family": "collections",
+    "scope": "Connected acceptance application with explicit SDL bindings/providers. Use an isolated display/configuration.",
+    "source": "sources/fixtures/collections"
+  },
+  {
+    "argv": [
+      "libexec/sdui/panes"
+    ],
+    "environment": {
+      "FYNE_THEME": "light"
+    },
+    "family": "panes",
+    "scope": "Connected acceptance application with explicit SDL bindings/providers. Use an isolated display/configuration.",
+    "source": "sources/fixtures/panes"
+  },
+  {
+    "argv": [
+      "libexec/sdui/commands"
+    ],
+    "environment": {
+      "FYNE_THEME": "light"
+    },
+    "family": "commands",
+    "scope": "Connected acceptance application with explicit SDL bindings/providers. Use an isolated display/configuration.",
+    "source": "sources/fixtures/commands"
+  },
+  {
+    "argv": [
+      "libexec/sdui/values"
+    ],
+    "environment": {
+      "FYNE_THEME": "light"
+    },
+    "family": "values",
+    "scope": "Connected acceptance application with explicit SDL bindings/providers. Use an isolated display/configuration.",
+    "source": "sources/fixtures/values"
+  },
+  {
+    "argv": [
+      "libexec/sdui/text"
+    ],
+    "environment": {
+      "FYNE_THEME": "light"
+    },
+    "family": "text",
+    "scope": "Connected acceptance application with explicit SDL bindings/providers. Use an isolated display/configuration.",
+    "source": "sources/fixtures/text"
+  },
+  {
+    "argv": [
+      "libexec/sdui/previews"
+    ],
+    "environment": {
+      "FYNE_THEME": "light"
+    },
+    "family": "previews",
+    "scope": "Connected acceptance application with explicit SDL bindings/providers. Use an isolated display/configuration.",
+    "source": "sources/fixtures/previews"
+  }
+]
