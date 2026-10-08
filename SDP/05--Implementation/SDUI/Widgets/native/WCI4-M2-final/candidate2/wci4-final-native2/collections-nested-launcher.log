@@ -1,0 +1,20 @@
+PASS fixture contains nested collection and fixed sibling
+PASS wheel consumes inner extent before passing remainder to ancestor
+PASS nested wheel preserves selection and fixed sibling value
+PASS reverse wheel returns both offsets to zero
+PASS PageDown uses visible height and preserves selection
+PASS wheel on frame background routes only to that owner
+PASS thumb drag preserves grab offset and uses measured travel
+PASS inner thumb drag leaves outer offset unchanged
+PASS outer thumb is separately reachable without moving inner offset
+PASS reorder preserves selected stable ID
+PASS shrink clears removed selection and clamps collection offset
+PASS failed profile preparation preserves published bundle
+PASS failed provider preparation preserves published bundle
+PASS failed binding preparation preserves published bundle
+PASS failed layout preparation preserves published bundle
+PASS failed resource preparation preserves published bundle
+PASS failed guard preparation preserves published bundle
+PASS failed stale preparation preserves published bundle
+PASS valid reload works after all failed candidates
+PASS native teardown closes session and clears provider barriers

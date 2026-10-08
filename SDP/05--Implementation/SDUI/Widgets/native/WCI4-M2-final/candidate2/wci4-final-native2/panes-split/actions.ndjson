@@ -1,0 +1,33 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci4-package-candidate2/libexec/sdui/panes", "sha256": "b6dd5f71d98df8eb903fee6a074f459f082b5d6bb787a209c4b24200af8329fc", "display": ":191", "variant": "wci2-split"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["drag", 649, 318, 579, 318]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "divider drag changes shared proportion without SDL", "passed": true}}
+{"kind": "x11-input", "value": ["key", "Right"]}
+{"kind": "check", "value": {"name": "focused divider arrow changes relative proportion", "passed": true}}
+{"kind": "x11-input", "value": ["chord", "Control_L", "Home"]}
+{"kind": "check", "value": {"name": "positive-minimum first child collapses to zero", "passed": true}}
+{"kind": "fixture-command", "value": "resize 850 600"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "collapsed resize retains saved proportion and zero extent", "passed": true}}
+{"kind": "fixture-command", "value": "resize 220 600"}
+{"kind": "check", "value": {"name": "small collapsed presentation admits visible child", "passed": true}}
+{"kind": "x11-input", "value": ["key", "space"]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "impossible expanded minima retain collapsed state", "passed": true}}
+{"kind": "fixture-command", "value": "resize 850 600"}
+{"kind": "x11-input", "value": ["key", "space"]}
+{"kind": "check", "value": {"name": "Space restores legal measured proportion", "passed": true}}
+{"kind": "fixture-command", "value": "ratio 0.01"}
+{"kind": "check", "value": {"name": "programmatic ratio below minimum rejects", "passed": true}}
+{"kind": "x11-input", "value": ["chord", "Control_L", "End"]}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "compatible reload retains collapse and focus", "passed": true}}
+{"kind": "x11-input", "value": ["key", "space"]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "divider remains operable after reload", "passed": true}}
+{"kind": "screenshot", "value": "split-restored.png"}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

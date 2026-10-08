@@ -1,0 +1,21 @@
+--- FAIL: TestPreparedPreviewOriginNativePixels (0.93s)
+    --- FAIL: TestPreparedPreviewOriginNativePixels/negative (0.16s)
+        preview_origin_test.go:55: width 200: 2000 native pixels differ from zero-origin geometry
+        preview_origin_test.go:55: width 754: 13572 native pixels differ from zero-origin geometry
+    --- FAIL: TestPreparedPreviewOriginNativePixels/positive (0.18s)
+        preview_origin_test.go:55: width 200: 3800 native pixels differ from zero-origin geometry
+        preview_origin_test.go:55: width 754: 26496 native pixels differ from zero-origin geometry
+    --- FAIL: TestPreparedPreviewOriginNativePixels/mixed (0.16s)
+        preview_origin_test.go:55: width 200: 3800 native pixels differ from zero-origin geometry
+        preview_origin_test.go:55: width 754: 26496 native pixels differ from zero-origin geometry
+    --- FAIL: TestPreparedPreviewOriginNativePixels/root-transform (0.14s)
+        preview_origin_test.go:55: width 200: 200 native pixels differ from zero-origin geometry
+        preview_origin_test.go:55: width 400: 800 native pixels differ from zero-origin geometry
+        preview_origin_test.go:55: width 754: 3003 native pixels differ from zero-origin geometry
+    --- FAIL: TestPreparedPreviewOriginNativePixels/negative-root-child-transform (0.16s)
+        preview_origin_test.go:55: width 200: 220 native pixels differ from zero-origin geometry
+        preview_origin_test.go:55: width 400: 800 native pixels differ from zero-origin geometry
+        preview_origin_test.go:55: width 754: 2964 native pixels differ from zero-origin geometry
+FAIL
+FAIL	github.com/Hans-Einar/SDP/SDUI/go/host/fynehost	0.940s
+FAIL

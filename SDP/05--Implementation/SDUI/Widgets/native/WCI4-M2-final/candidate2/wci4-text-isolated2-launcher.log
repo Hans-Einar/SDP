@@ -1,0 +1,1 @@
+{'argv': ['go', 'test', '-race', './examples/text', '-count=1'], 'cwd': '/tmp/sdp-sdui-widgets/SDL/go', 'environment': {'GOWORK': 'off', 'GOFLAGS': '-mod=readonly', 'GOCACHE': '/tmp/sdp-wci0-gocache'}, 'exit': 0, 'seconds': 488.94826024800204, 'sourceUnchanged': True}

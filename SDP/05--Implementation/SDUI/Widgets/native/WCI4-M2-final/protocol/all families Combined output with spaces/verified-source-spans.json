@@ -1,0 +1,359 @@
+[
+  {
+    "start": 167,
+    "end": 1647,
+    "line": 5,
+    "column": 6,
+    "text": "[\n grouped=<button(\"Grouped\"),input(\"Grouped\")>;\n cmd=command(\"Run\",callback=app.Run.@invoke);\n legacyButton=button(\"Legacy\",callback=app.Run.@invoke);\n decorated=button(\"Decorated\",icon=\"document\",tooltip=\"Information\");\n toggle=button(\"Toggle\",toggle=true);\n bound=button(command=\"cmd\");\n navigation=tree(\"Navigation\",callback=app.Run.@invoke);\n entries=list(\"Entries\");\n panes=tabs(\"Pages\")[one=page(\"One\")[\"First\"];two=page(\"Two\")[\"Second\"]];\n pair=split(\"horizontal\")[left=[\"Left\"];right=[\"Right\"]];\n actions=menu(\"Actions\")[item(command=\"cmd\");separator();group=menuGroup(\"More\")[item(command=\"cmd\")]];\n context=menu(\"Context\",mode=\"context\",target=\"legacyButton\")[item(command=\"cmd\")];\n modal=dialog(\"Modal\")[draft=input(\"Draft\");accept=button(\"OK\",effect=\"accept\")];\n palette=dialog(\"Palette\",modal=false)[\"Nonmodal\"];\n open=button(\"Open\",effect=\"open\",target=\"modal\");\n flag=checkbox(\"Enabled\",value=true);\n slider=slider(\"Scale\",min=0,max=10,step=1,value=5);\n choice=select(\"Choice\",required=true);\n amount=number(\"Amount\",min=-10,max=10,step=0.5,value=1.5);\n basic=input(\"Basic\",value=\"Unchanged\");\n single=input(\"Single\",placeholder=\"\",required=false);\n multi=input(\"Notes\",multiline=true,readOnly=false,value=\"å\\n🙂\");\n legacySVG=svg(art.Old.@draw,label=\"Legacy image\");\n image=svg(art.Figure.@resource,label=\"Caption\",description=\"Figure\",fallback=\"reject\");\n plain=\"Legacy Markdown\";\n reading=Reading;\n hiddenReading=Reading {visible=false}\n] {overflow-y=scroll}"
+  },
+  {
+    "start": 170,
+    "end": 214,
+    "line": 6,
+    "column": 2,
+    "text": "grouped=<button(\"Grouped\"),input(\"Grouped\")>"
+  },
+  {
+    "start": 179,
+    "end": 196,
+    "line": 6,
+    "column": 11,
+    "text": "button(\"Grouped\")"
+  },
+  {
+    "start": 197,
+    "end": 213,
+    "line": 6,
+    "column": 29,
+    "text": "input(\"Grouped\")"
+  },
+  {
+    "start": 217,
+    "end": 260,
+    "line": 7,
+    "column": 2,
+    "text": "cmd=command(\"Run\",callback=app.Run.@invoke)"
+  },
+  {
+    "start": 263,
+    "end": 317,
+    "line": 8,
+    "column": 2,
+    "text": "legacyButton=button(\"Legacy\",callback=app.Run.@invoke)"
+  },
+  {
+    "start": 320,
+    "end": 387,
+    "line": 9,
+    "column": 2,
+    "text": "decorated=button(\"Decorated\",icon=\"document\",tooltip=\"Information\")"
+  },
+  {
+    "start": 390,
+    "end": 425,
+    "line": 10,
+    "column": 2,
+    "text": "toggle=button(\"Toggle\",toggle=true)"
+  },
+  {
+    "start": 428,
+    "end": 455,
+    "line": 11,
+    "column": 2,
+    "text": "bound=button(command=\"cmd\")"
+  },
+  {
+    "start": 458,
+    "end": 512,
+    "line": 12,
+    "column": 2,
+    "text": "navigation=tree(\"Navigation\",callback=app.Run.@invoke)"
+  },
+  {
+    "start": 515,
+    "end": 538,
+    "line": 13,
+    "column": 2,
+    "text": "entries=list(\"Entries\")"
+  },
+  {
+    "start": 541,
+    "end": 612,
+    "line": 14,
+    "column": 2,
+    "text": "panes=tabs(\"Pages\")[one=page(\"One\")[\"First\"];two=page(\"Two\")[\"Second\"]]"
+  },
+  {
+    "start": 561,
+    "end": 585,
+    "line": 14,
+    "column": 22,
+    "text": "one=page(\"One\")[\"First\"]"
+  },
+  {
+    "start": 577,
+    "end": 584,
+    "line": 14,
+    "column": 38,
+    "text": "\"First\""
+  },
+  {
+    "start": 586,
+    "end": 611,
+    "line": 14,
+    "column": 47,
+    "text": "two=page(\"Two\")[\"Second\"]"
+  },
+  {
+    "start": 602,
+    "end": 610,
+    "line": 14,
+    "column": 63,
+    "text": "\"Second\""
+  },
+  {
+    "start": 615,
+    "end": 670,
+    "line": 15,
+    "column": 2,
+    "text": "pair=split(\"horizontal\")[left=[\"Left\"];right=[\"Right\"]]"
+  },
+  {
+    "start": 640,
+    "end": 653,
+    "line": 15,
+    "column": 27,
+    "text": "left=[\"Left\"]"
+  },
+  {
+    "start": 646,
+    "end": 652,
+    "line": 15,
+    "column": 33,
+    "text": "\"Left\""
+  },
+  {
+    "start": 654,
+    "end": 669,
+    "line": 15,
+    "column": 41,
+    "text": "right=[\"Right\"]"
+  },
+  {
+    "start": 661,
+    "end": 668,
+    "line": 15,
+    "column": 48,
+    "text": "\"Right\""
+  },
+  {
+    "start": 673,
+    "end": 774,
+    "line": 16,
+    "column": 2,
+    "text": "actions=menu(\"Actions\")[item(command=\"cmd\");separator();group=menuGroup(\"More\")[item(command=\"cmd\")]]"
+  },
+  {
+    "start": 697,
+    "end": 716,
+    "line": 16,
+    "column": 26,
+    "text": "item(command=\"cmd\")"
+  },
+  {
+    "start": 717,
+    "end": 728,
+    "line": 16,
+    "column": 46,
+    "text": "separator()"
+  },
+  {
+    "start": 729,
+    "end": 773,
+    "line": 16,
+    "column": 58,
+    "text": "group=menuGroup(\"More\")[item(command=\"cmd\")]"
+  },
+  {
+    "start": 753,
+    "end": 772,
+    "line": 16,
+    "column": 82,
+    "text": "item(command=\"cmd\")"
+  },
+  {
+    "start": 777,
+    "end": 858,
+    "line": 17,
+    "column": 2,
+    "text": "context=menu(\"Context\",mode=\"context\",target=\"legacyButton\")[item(command=\"cmd\")]"
+  },
+  {
+    "start": 838,
+    "end": 857,
+    "line": 17,
+    "column": 63,
+    "text": "item(command=\"cmd\")"
+  },
+  {
+    "start": 861,
+    "end": 940,
+    "line": 18,
+    "column": 2,
+    "text": "modal=dialog(\"Modal\")[draft=input(\"Draft\");accept=button(\"OK\",effect=\"accept\")]"
+  },
+  {
+    "start": 883,
+    "end": 903,
+    "line": 18,
+    "column": 24,
+    "text": "draft=input(\"Draft\")"
+  },
+  {
+    "start": 904,
+    "end": 939,
+    "line": 18,
+    "column": 45,
+    "text": "accept=button(\"OK\",effect=\"accept\")"
+  },
+  {
+    "start": 943,
+    "end": 992,
+    "line": 19,
+    "column": 2,
+    "text": "palette=dialog(\"Palette\",modal=false)[\"Nonmodal\"]"
+  },
+  {
+    "start": 981,
+    "end": 991,
+    "line": 19,
+    "column": 40,
+    "text": "\"Nonmodal\""
+  },
+  {
+    "start": 995,
+    "end": 1043,
+    "line": 20,
+    "column": 2,
+    "text": "open=button(\"Open\",effect=\"open\",target=\"modal\")"
+  },
+  {
+    "start": 1046,
+    "end": 1081,
+    "line": 21,
+    "column": 2,
+    "text": "flag=checkbox(\"Enabled\",value=true)"
+  },
+  {
+    "start": 1084,
+    "end": 1134,
+    "line": 22,
+    "column": 2,
+    "text": "slider=slider(\"Scale\",min=0,max=10,step=1,value=5)"
+  },
+  {
+    "start": 1137,
+    "end": 1174,
+    "line": 23,
+    "column": 2,
+    "text": "choice=select(\"Choice\",required=true)"
+  },
+  {
+    "start": 1177,
+    "end": 1234,
+    "line": 24,
+    "column": 2,
+    "text": "amount=number(\"Amount\",min=-10,max=10,step=0.5,value=1.5)"
+  },
+  {
+    "start": 1237,
+    "end": 1275,
+    "line": 25,
+    "column": 2,
+    "text": "basic=input(\"Basic\",value=\"Unchanged\")"
+  },
+  {
+    "start": 1278,
+    "end": 1330,
+    "line": 26,
+    "column": 2,
+    "text": "single=input(\"Single\",placeholder=\"\",required=false)"
+  },
+  {
+    "start": 1333,
+    "end": 1400,
+    "line": 27,
+    "column": 2,
+    "text": "multi=input(\"Notes\",multiline=true,readOnly=false,value=\"å\\n🙂\")"
+  },
+  {
+    "start": 1403,
+    "end": 1452,
+    "line": 28,
+    "column": 2,
+    "text": "legacySVG=svg(art.Old.@draw,label=\"Legacy image\")"
+  },
+  {
+    "start": 1455,
+    "end": 1541,
+    "line": 29,
+    "column": 2,
+    "text": "image=svg(art.Figure.@resource,label=\"Caption\",description=\"Figure\",fallback=\"reject\")"
+  },
+  {
+    "start": 1544,
+    "end": 1567,
+    "line": 30,
+    "column": 2,
+    "text": "plain=\"Legacy Markdown\""
+  },
+  {
+    "start": 78,
+    "end": 160,
+    "line": 4,
+    "column": 9,
+    "text": "markdown(\"# Reading\\nPlain prose\",description=\"Reading document\",fallback=\"label\")"
+  },
+  {
+    "start": 1570,
+    "end": 1585,
+    "line": 31,
+    "column": 2,
+    "text": "reading=Reading"
+  },
+  {
+    "start": 78,
+    "end": 160,
+    "line": 4,
+    "column": 9,
+    "text": "markdown(\"# Reading\\nPlain prose\",description=\"Reading document\",fallback=\"label\")"
+  },
+  {
+    "start": 1588,
+    "end": 1625,
+    "line": 32,
+    "column": 2,
+    "text": "hiddenReading=Reading {visible=false}"
+  },
+  {
+    "start": 10,
+    "end": 34,
+    "line": 2,
+    "column": 1,
+    "text": "ref: app \"unopened.sdl\";"
+  },
+  {
+    "start": 35,
+    "end": 69,
+    "line": 3,
+    "column": 1,
+    "text": "ref: art \"unopened-resources.sdl\";"
+  },
+  {
+    "start": 1649,
+    "end": 1679,
+    "line": 34,
+    "column": 1,
+    "text": "app.Run.setHandle(Main.basic);"
+  }
+]

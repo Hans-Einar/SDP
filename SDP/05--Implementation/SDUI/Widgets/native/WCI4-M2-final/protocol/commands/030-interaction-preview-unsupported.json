@@ -1,0 +1,25 @@
+{
+  "name": "interaction-preview-unsupported",
+  "argv": [
+    "/tmp/wci4-package-candidate3/libexec/xfmd/sdui-preview",
+    "-source",
+    "/tmp/wci4-final-protocol3-verified/unsupported interaction project with spaces/Page å with spaces.sdui",
+    "-entry",
+    "Main",
+    "-revision",
+    "1434b24d9180ac48260339cea8ad648db54e3d2edcc1777298f8830e285a8221",
+    "-check"
+  ],
+  "cwd": "/tmp/wci4-final-protocol3-verified",
+  "binarySha256": "eb0bde6bf9fb06d42afc23d5933636e4ca77d740d6d0c54922ab3a36c8c7fc33",
+  "displayEnvironment": "DISPLAY/WAYLAND_DISPLAY removed",
+  "expected": "nonzero with unsupported-interaction",
+  "exit": 2,
+  "timeout": false,
+  "seconds": 0.041539907455444336,
+  "stdout": "commands/030-interaction-preview-unsupported.stdout",
+  "stderr": "commands/030-interaction-preview-unsupported.stderr",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "91276c5d2a020fd5bcca62e677e35027bd6c73fd0ff569533455597253909f6f",
+  "binaryUnchanged": true
+}

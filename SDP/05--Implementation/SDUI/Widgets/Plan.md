@@ -4,7 +4,7 @@
 | --- | --- |
 | id | PLAN-SDP-0022 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | ImplementationPlan |
 | BranchPolicy | phase |
 | CommitPolicy | milestone |
@@ -40,7 +40,7 @@ Current preview files are not this assignment's original implementation.
 | WCI3-M1 | Checkbox/slider/select/numeric input and atomic typed drafts | WCI2; reviewed Values-and-text contract and API reconciliation | completed |
 | WCI3-M2 | Extended single-line and basic multiline text with native editing/IME/undo evidence | WCI3-M1; reviewed explicit opt-in/native editing/IME contract | completed |
 | WCI4-M1 | All-family producer discovery/composition/text/codegen/provider integration and matching consumer package preparation | WCI1–WCI3; reviewed Providers-and-packaging contract and four API handoffs | completed |
-| WCI4-M2 | Exact-candidate compatibility tests, native workflow evidence and independent integrated review; explicit disposition of all gaps | WCI4-M1 | in-progress |
+| WCI4-M2 | Exact-candidate compatibility tests, native workflow evidence and independent integrated review; explicit disposition of all gaps | WCI4-M1 | completed |
 
 Each stage updates the matrix and relevant requirements/language/architecture/runtime
 documents. Do not merely extend parser tables. Static exports must reject unsupported
@@ -141,3 +141,12 @@ Y=0 behavior. Preparation derives validated native bytes while preserving origin
 source identity, guards and budgets. The eight-path correction is recorded in
 [candidate delta](candidate-WCI4-M2-delta.json); fresh package/native and integrated
 verification remain required. Prior aspect-only assertions do not prove fidelity.
+
+## WCI4-M2 delivery and implementation closeout
+
+[Final integrated evidence](Evidence-WCI4-M2.md) records dcf2a74, the corrected
+native SVG pixels, matching ten-binary package, all-family evidence applicability,
+actual IME recipes and independent acceptance. WCI0–WCI4 are complete on the
+selected baseline. The completed matrix names all bounded support/fallback limits.
+Earlier pending statements above are historical checkpoints. The combined PR will
+remain draft until its inherited baseline is integrated; no merge or publication.

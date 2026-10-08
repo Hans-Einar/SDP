@@ -1,0 +1,63 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci4-package-candidate2/libexec/sdui/collections", "sha256": "c2ce17b72da8c97e5a149a3bb805c9c043ce6c8dd5903dfc7e411b606986bdfa", "display": ":191", "variant": "basic"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["click", 605, 87]}
+{"kind": "check", "value": {"name": "pointer selection invokes no SDL action", "passed": true}}
+{"kind": "x11-input", "value": ["key", "Return"]}
+{"kind": "check", "value": {"name": "Enter sends stable ID through real SDL to preview", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["double-click", 605, 111]}
+{"kind": "check", "value": {"name": "double-click activates exactly once", "passed": true}}
+{"kind": "x11-input", "value": ["key", "End"]}
+{"kind": "check", "value": {"name": "End skips separator and reveals final row", "passed": true}}
+{"kind": "screenshot", "value": "list-end.png"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["click", 7, 62]}
+{"kind": "fixture-command", "value": "complete page/body/nav:1:1 error"}
+{"kind": "screenshot", "value": "provider-error.png"}
+{"kind": "x11-input", "value": ["key", "r"]}
+{"kind": "check", "value": {"name": "Retry allocates a fresh request", "passed": true}}
+{"kind": "x11-input", "value": ["key", "Escape"]}
+{"kind": "fixture-command", "value": "complete page/body/nav:1:2 success"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "late canceled success has no state or domain effect", "passed": true}}
+{"kind": "x11-input", "value": ["key", "r"]}
+{"kind": "fixture-command", "value": "complete page/body/nav:1:3 success"}
+{"kind": "check", "value": {"name": "current completion publishes children without domain action", "passed": true}}
+{"kind": "x11-input", "value": ["key", "Down"]}
+{"kind": "x11-input", "value": ["key", "Return"]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "compatible reload 2 retains selection and sequence", "passed": true}}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "compatible reload 3 retains selection and sequence", "passed": true}}
+{"kind": "x11-input", "value": ["key", "Return"]}
+{"kind": "check", "value": {"name": "activation after two reloads executes once with increasing sequence", "passed": true}}
+{"kind": "screenshot", "value": "loaded-after-reloads.png"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["chord", "Alt_L", "Right"]}
+{"kind": "check", "value": {"name": "Alt-Right scrolls horizontally without selection or action", "passed": true}}
+{"kind": "screenshot", "value": "horizontal-partial-text.png"}
+{"kind": "x11-input", "value": ["chord", "Alt_L", "Left"]}
+{"kind": "x11-input", "value": ["key", "Left"]}
+{"kind": "check", "value": {"name": "tree parent navigation retains selected descendant without activation", "passed": true}}
+{"kind": "x11-input", "value": ["key", "Left"]}
+{"kind": "x11-input", "value": ["key", "Right"]}
+{"kind": "x11-input", "value": ["key", "End", "Up"]}
+{"kind": "x11-input", "value": ["key", "Right"]}
+{"kind": "fixture-command", "value": "complete page/body/nav:3:4 error"}
+{"kind": "x11-input", "value": ["key", "r"]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "selectable branch R retries without activation", "passed": true}}
+{"kind": "fixture-command", "value": "complete page/body/nav:3:5 error"}
+{"kind": "x11-input", "value": ["key", "End"]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "selectable branch retry control can be revealed", "passed": true}}
+{"kind": "x11-input", "value": ["click", 80, 562]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "pointer Retry starts one fresh request without activation", "passed": true}}
+{"kind": "fixture-command", "value": "complete page/body/nav:3:6 empty"}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

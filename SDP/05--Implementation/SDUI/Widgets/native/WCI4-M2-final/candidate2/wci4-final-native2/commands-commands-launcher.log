@@ -1,0 +1,13 @@
+PASS preparation executes no SDL action
+PASS toolbar invokes shared Run once
+PASS key invokes same Run once
+PASS menu invokes same Run once after native dismissal
+PASS pointer toggle publishes typed checked state
+PASS key toggles canonical state once
+PASS exclusive selection clears its peer atomically
+PASS already checked exclusive command emits no domain call
+PASS nested pointer menu updates shared exclusive state
+PASS disabled toolbar and key cannot invoke Run
+PASS disabled native menu keyboard activation cannot invoke Run
+PASS re-enabled shared command remains usable
+PASS native teardown closes session and clears provider barriers

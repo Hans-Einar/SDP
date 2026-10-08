@@ -35,7 +35,9 @@ Do not wait for full XFMD UI parity to try SDL on a real project.
 | XGP5 / M2 | Selected provider/host: bounded rich-content acceptance | Individually verified diagram/image/math/text families, hit testing and anchors as selected; measured/painted agreement, lifecycle and explicit fallback. No claim of “full Markdown” from a single picture. |
 | XGP6 / M1 | SDL requirements/behavior/evidence work, KB-SDL-001/006 and KB-SDP-004 | Map one real workflow and four requirement identity states; distinguish model assertion, registered action and actual product evidence. May proceed alongside earlier phases; it is not a prerequisite for every UI fix. |
 
-Only XGP1, XGP2 and XGP3-M1 are recommended near-term selections. XGP4–5
+Historical recommendation, superseded for the widget inventory by the
+2026-10-07 refinement and execution request in KB-SDUI-003 / Session0010:
+Only XGP1, XGP2 and XGP3-M1 were recommended near-term selections. XGP4–5
 are optional extension candidates, not required SDUI completion scope. XGP6
 retains separately owned SDL research; it is not a prerequisite for basic UI
 prototyping. The tree pilot is a candidate, not a selected product commitment.
@@ -75,11 +77,15 @@ does not authorize a FOX bridge or replacing native XFMD widgets.
 - [KB-SDL-001](../../KanBan/backlog/%23001--SDL--Proposal--Requirements-narrative.md): SDL-002 narrative/identities.
 - [KB-SDL-006](../../KanBan/backlog/%23006--SDL--Study--Executable-channel-tests-and-unit-bindings.md): SDL-003 behavior composition.
 - [KB-SDP-004](../../KanBan/backlog/%23004--Proposal--Design-traceability.md): SDL-002/003 source/evidence relationships.
-- [KB-SDUI-003](../../KanBan/backlog/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md): SDUI-001–010, staged rather than ten separate cards.
+- [KB-SDUI-003](../../KanBan/completed/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md): SDUI-001–010, staged rather than ten separate cards.
 - [KB-SDUI-004](../../KanBan/backlog/%23004--SDUI--Bug--Text-and-Markdown-fidelity.md): SDUI-011.
 - External XFMD register and MAINT-XFMD-0004: DOC-001–004 and EVID-001–002; no local resolution guarantee for external IDs.
 
-The backlog remains unselected. Completing PLAN-SDP-0009 means these study
+At study completion the backlog remained unselected. KB-SDUI-003 is now selected
+under [PLAN-SDP-0021](../../04--Design/SDUI/Widgets/Plan.md), with all listed
+panes, commands, typed controls and basic multiline input required. Only component
+source sets, full editors and broader rich-content research remain optional.
+Completing PLAN-SDP-0009 means these study
 results and follow-ups exist; it does not close the product gaps. Actual future
 design/code evidence belongs in system-prefixed Traceability linked to its
 selected plan. Management-only study events remain in ProjectManagement.

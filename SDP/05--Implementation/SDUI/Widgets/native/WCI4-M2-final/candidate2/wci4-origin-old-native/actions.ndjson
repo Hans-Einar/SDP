@@ -1,0 +1,13 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci4-package-candidate2/libexec/sdui/previews", "sha256": "86c5d5cf3d4b5bb8044c328ed8376b116c687d11ebd6382b1dca76b74c6bd8e3", "display": ":191", "variant": "wci3-origins"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "resource Hero negative-origin"}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "negative-origin-old mounted rendered image", "passed": true}}
+{"kind": "check", "value": {"name": "negative-origin-old mapped native window", "passed": true}}
+{"kind": "screenshot", "value": "negative-origin-old.png"}
+{"kind": "pixel-oracle", "value": {"name": "negative-origin-old", "slot": "negative-origin", "window": {"window": 2097184, "x": 0, "y": 0, "mapState": 2, "viewable": true}, "profile": {"FYNE_SCALE": "1", "FYNE_THEME": "light"}, "image": {"X": 0, "Y": 121.95000000000002, "W": 753.0999999999999, "H": 376.54999999999995}, "clip": {"X": 0, "Y": 119, "W": 753.0999755859375, "H": 402.04998779296875}, "expected": [0, 121.95000000000002, 753.0999755859375, 498.5], "observed": [0, 122, 717, 499], "greenPixels": 270309, "interiorSolid": false}}
+{"kind": "check", "value": {"name": "negative-origin-old actual green bounds within one physical pixel", "passed": false}}
+{"kind": "result", "value": {"failed": "negative-origin-old actual green bounds within one physical pixel"}}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

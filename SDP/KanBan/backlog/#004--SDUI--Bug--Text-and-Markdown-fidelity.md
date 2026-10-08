@@ -46,7 +46,7 @@ explained contract change. No pixel-based UI dimension rule is introduced.
 ## Scope and authority
 
 SDUIPresentation owns the implementation; use SDUIRuntime/NativeHost only if a
-selected shared text contract requires them. [KB-SDUI-003](../active/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md)
+selected shared text contract requires them. [KB-SDUI-003](../completed/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md)
 owns new interaction/resource capabilities. No XFMD changes or legacy parser
 fallback. Registration records observed limitations and recommended work;
 implementation, merge and release remain unselected.

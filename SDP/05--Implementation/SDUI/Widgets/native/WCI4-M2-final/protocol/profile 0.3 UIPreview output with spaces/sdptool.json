@@ -1,0 +1,10 @@
+{
+  "schema": "sdptool/0.2",
+  "operation": "sdui-preview",
+  "source": "/tmp/wci4-final-protocol3-verified/profile 0.3 project with spaces/SDP/Page å with spaces.sdui",
+  "profile": "sdui/0.3",
+  "revision": "01ee11b69863835ce62d7727ca2c84af22edabe4b76d37c411ad4de95afcf74e",
+  "entry": "/tmp/wci4-final-protocol3-verified/profile 0.3 UIPreview output with spaces/entry.md",
+  "directory": "/tmp/wci4-final-protocol3-verified/profile 0.3 UIPreview output with spaces",
+  "ownership": "caller-owned; release after consumer"
+}

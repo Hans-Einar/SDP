@@ -1,0 +1,8 @@
+PASS unbound checkbox in form remains unaccepted proposal
+PASS explicit child SDL Commit accepts independently
+PASS Cancel discards proposals while retaining earlier child Commit
+PASS invalid typed form cannot invoke Go Accept
+PASS application rejection retains all typed proposals
+PASS one Go Accept persists captured mixed typed values atomically
+PASS reopened form retains accepted mixed values
+PASS native teardown closes session and clears provider barriers

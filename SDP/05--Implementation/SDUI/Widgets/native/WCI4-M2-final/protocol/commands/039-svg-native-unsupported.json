@@ -1,0 +1,24 @@
+{
+  "name": "svg-native-unsupported",
+  "argv": [
+    "/tmp/wci4-package-candidate3/libexec/xfmd/sdui-fyne",
+    "-entry",
+    "Main",
+    "-watch=false",
+    "-revision",
+    "3ca6e7d4528dca39edcc9c7a5ce97868f4aa76d23f5b4f536ce4d6b6942771ac",
+    "/tmp/wci4-final-protocol3-verified/unsupported svg project with spaces/Page å with spaces.sdui"
+  ],
+  "cwd": "/tmp/wci4-final-protocol3-verified",
+  "binarySha256": "69574e8dec94564fef8b6d475147e1273e3ce13caa226707d5d72ced1bf5d61c",
+  "displayEnvironment": "DISPLAY/WAYLAND_DISPLAY removed",
+  "expected": "nonzero with unsupported-preview",
+  "exit": 2,
+  "timeout": false,
+  "seconds": 0.27526354789733887,
+  "stdout": "commands/039-svg-native-unsupported.stdout",
+  "stderr": "commands/039-svg-native-unsupported.stderr",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "bf41124a69973418092d47dd635ad104283bc2296b45e9d956a1daa05225fbf1",
+  "binaryUnchanged": true
+}

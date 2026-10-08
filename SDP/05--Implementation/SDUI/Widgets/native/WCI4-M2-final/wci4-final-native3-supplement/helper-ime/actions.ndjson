@@ -1,0 +1,59 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci4-package-candidate3/libexec/xfmd/sdui-fyne", "binarySHA256": "69574e8dec94564fef8b6d475147e1273e3ce13caa226707d5d72ced1bf5d61c", "sourceSHA256": "f56e55bcb7ff9d6732cf96ae4ad02eb90f14e7f0e2514d0709b6c5a4156dc833", "argv": ["/tmp/wci4-package-candidate3/libexec/xfmd/sdui-fyne", "-watch=false", "-entry", "page", "-revision", "f56e55bcb7ff9d6732cf96ae4ad02eb90f14e7f0e2514d0709b6c5a4156dc833", "/tmp/wci4-final-native3-supplement/helper-ime/input.sdui"], "display": ":191", "XMODIFIERS": "@im=ibus", "IBUS_ENABLE_CTRL_SHIFT_U": "1"}}
+{"kind": "x11-input", "value": {"action": "locate", "values": []}}
+{"kind": "x11-input", "value": {"action": "locate", "values": []}}
+{"kind": "x11-input", "value": {"action": "locate", "values": []}}
+{"kind": "x11-input", "value": {"action": "key", "values": ["Tab"]}}
+{"kind": "x11-input", "value": {"action": "chord", "values": ["Control_L", "a"]}}
+{"kind": "x11-input", "value": {"action": "chord", "values": ["Control_L", "c"]}}
+{"kind": "clipboard-observed", "value": "A"}
+{"kind": "check", "value": {"name": "actual staged helper starts with accepted A", "passed": true}}
+{"kind": "screenshot", "value": "helper-initial.png"}
+{"kind": "x11-input", "value": {"action": "key", "values": ["End"]}}
+{"kind": "x11-input", "value": {"action": "chord", "values": ["Shift_L", "b"]}}
+{"kind": "x11-input", "value": {"action": "chord", "values": ["Control_L", "Shift_L", "u"]}}
+{"kind": "x11-input", "value": {"action": "key", "values": ["4", "e", "2", "d"]}}
+{"kind": "screenshot", "value": "helper-composition.png"}
+{"kind": "x11-input", "value": {"action": "key", "values": ["Return"]}}
+{"kind": "x11-input", "value": {"action": "chord", "values": ["Control_L", "a"]}}
+{"kind": "x11-input", "value": {"action": "chord", "values": ["Control_L", "c"]}}
+{"kind": "clipboard-observed", "value": "AB中"}
+{"kind": "check", "value": {"name": "real IME Return inserts composition after the dirty suffix", "passed": true}}
+{"kind": "x11-input", "value": {"action": "key", "values": ["Escape"]}}
+{"kind": "x11-input", "value": {"action": "chord", "values": ["Control_L", "a"]}}
+{"kind": "x11-input", "value": {"action": "chord", "values": ["Control_L", "c"]}}
+{"kind": "clipboard-observed", "value": "A"}
+{"kind": "check", "value": {"name": "composition Return did not prematurely accept the dirty suffix", "passed": true}}
+{"kind": "x11-input", "value": {"action": "key", "values": ["End"]}}
+{"kind": "x11-input", "value": {"action": "chord", "values": ["Shift_L", "b"]}}
+{"kind": "x11-input", "value": {"action": "chord", "values": ["Control_L", "Shift_L", "u"]}}
+{"kind": "x11-input", "value": {"action": "key", "values": ["6", "5", "b", "0"]}}
+{"kind": "x11-input", "value": {"action": "key", "values": ["Escape"]}}
+{"kind": "x11-input", "value": {"action": "chord", "values": ["Control_L", "a"]}}
+{"kind": "x11-input", "value": {"action": "chord", "values": ["Control_L", "c"]}}
+{"kind": "clipboard-observed", "value": "AB"}
+{"kind": "check", "value": {"name": "IME-consumed Escape preserves the prior dirty suffix", "passed": true}}
+{"kind": "x11-input", "value": {"action": "key", "values": ["Escape"]}}
+{"kind": "x11-input", "value": {"action": "chord", "values": ["Control_L", "a"]}}
+{"kind": "x11-input", "value": {"action": "chord", "values": ["Control_L", "c"]}}
+{"kind": "clipboard-observed", "value": "A"}
+{"kind": "check", "value": {"name": "ordinary Escape restores the accepted baseline", "passed": true}}
+{"kind": "x11-input", "value": {"action": "key", "values": ["End"]}}
+{"kind": "x11-input", "value": {"action": "chord", "values": ["Shift_L", "b"]}}
+{"kind": "x11-input", "value": {"action": "chord", "values": ["Control_L", "Shift_L", "u"]}}
+{"kind": "x11-input", "value": {"action": "key", "values": ["4", "e", "2", "d"]}}
+{"kind": "x11-input", "value": {"action": "key", "values": ["Return"]}}
+{"kind": "x11-input", "value": {"action": "chord", "values": ["Control_L", "a"]}}
+{"kind": "x11-input", "value": {"action": "chord", "values": ["Control_L", "c"]}}
+{"kind": "clipboard-observed", "value": "AB中"}
+{"kind": "check", "value": {"name": "second real composition produces the expected text", "passed": true}}
+{"kind": "x11-input", "value": {"action": "key", "values": ["Return"]}}
+{"kind": "x11-input", "value": {"action": "key", "values": ["x"]}}
+{"kind": "x11-input", "value": {"action": "key", "values": ["Escape"]}}
+{"kind": "x11-input", "value": {"action": "chord", "values": ["Control_L", "a"]}}
+{"kind": "x11-input", "value": {"action": "chord", "values": ["Control_L", "c"]}}
+{"kind": "clipboard-observed", "value": "AB中"}
+{"kind": "check", "value": {"name": "ordinary Return subsequently accepts composed text", "passed": true}}
+{"kind": "screenshot", "value": "helper-composed-accepted.png"}
+{"kind": "x11-input", "value": {"action": "close-window", "values": []}}
+{"kind": "check", "value": {"name": "helper closes cleanly through the native window protocol", "passed": true}}
+{"kind": "result", "value": "passed"}

@@ -1,0 +1,10 @@
+{
+  "cmake/Sdp.cmake": "2edc126b511b38dcde0da3fe0d3f9f9f1a2efa41e97e7f1618089e056f0399c4",
+  "cmake/Tests.cmake": "773074be9e6abbdff20e4616cd9b91772e70cc2f6bb1bfb1db85e6674edac4c7",
+  "src/application/sdp/SdpProtocol.cpp": "8c5fa2b7370384f2a481070fbc8ad8159563bd0f9fd24590bec65f3e089fe89c",
+  "src/application/sdp/SduiTools.cpp": "2b0331b398bede4d9968b66be669f3b424cb6371cbbfe691e98925e63af9ecbf",
+  "src/application/sdp/SduiWorkflow.cpp": "9b0e77f5b3ae82548eb0026743a863fb091a2a0e24b883ca8a5de209f628b762",
+  "tests/gui/SduiWorkflowGuiTest.cpp": "652fc03e8d1d74c3807c0da44760deb297c518c5541c5d349b7997722755d378",
+  "tools/build_sdui_tools.py": "e46559afedc1bbe683675f461972d659810e0d24bc9ab551fddd8e15e4c23c67",
+  "tools/run_with_xvfb.py": "f050289c48f37736330bad97a79d183716ad4770c6354149c04e4e31bff655f1"
+}

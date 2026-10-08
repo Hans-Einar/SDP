@@ -1,0 +1,11 @@
+ddda535931b6d64f328bd3cf34203604a37d91d855a03d4a64fc979a5fb92efb  SDL/go/examples/previews/resources.go
+2580359cc45ad7ec47c9885287e7cfc9c0b2ef825cfb3c8f1935ba5b3a0caed2  SDL/go/examples/previews/origin_resources_test.go
+9819c82651dd1c6e34de0788d0582ecb032aeb73e6225599aac45356176c9c67  SDL/go/examples/previews/README.md
+21cd02ac99dab47c98bed5e48cba5c01daa61c4f1b1eb4d8bbba2431fa87e199  SDL/go/examples/previews/SVG-origin-bounds.md
+fc181fdeb46fe7acbdb26ae9e323cd77cd9c9fdf479b64beb58f9aca59276fc5  SDL/go/examples/previews/origin-test-evidence/README.md
+4bdf1699682bb2073092b24643c3e96e48dfc40b8adf603992fb77fd3b01ef01  SDL/go/examples/previews/origin-test-evidence/after.json
+4bdf1699682bb2073092b24643c3e96e48dfc40b8adf603992fb77fd3b01ef01  SDL/go/examples/previews/origin-test-evidence/before.json
+50338b749c5dbd34a7cb1ae41df675cada163871c695039c8b8a6c412f31439e  SDL/go/examples/previews/origin-test-evidence/command.json
+87f9f3febb5a0c713a8e23455385edef849219fbf0aaa50fd8e9513d260bd010  SDL/go/examples/previews/origin-test-evidence/elapsed.txt
+9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  SDL/go/examples/previews/origin-test-evidence/exit.txt
+4209ad18ee58becfcc7e111ffa37e28046e073b62f0648afd802566e4c613494  SDL/go/examples/previews/origin-test-evidence/test.log

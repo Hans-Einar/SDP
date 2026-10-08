@@ -1,5 +1,9 @@
 # WCI4 all-family closeout map — bounded M2 evidence plan
 
+Current disposition: WCI4-M2 is independently approved; see the executed final
+reconciliation below and Review-WCI4-M2.md. The preparation tables retain their
+historical candidate/readiness identities and are not relabelled current runs.
+
 Date: 2026-10-08. SDP Worker implementation assistance, not independent review.
 Only this root memo is written. No tests, builds, native processes, package runs,
 product/canonical/management changes or earlier evidence edits were performed.
@@ -37,7 +41,7 @@ No new widget family or mandatory rich/native Mermaid renderer is implied here.
 | F | [Frontend report](WCI4-frontend-worker.md) | Parser/schema/reuse/source spans, actual generated constructor execution, structural/public export/native inventory, .2/.3 legacy hash comparisons against baseline, helper and SDPTool source-consumer tests pass. No native/package-final claim. |
 | P | [Provider report](WCI4-provider-worker.md) | Immutable identity-first preparation, copies/budgets, zero-callback projections, caption/status/fallback minimums; initial markdown race 71.709s and bounded fuzz; corrected finite-geometry candidate has targeted race 1.278s, full markdown 4.192s and vet passes. Current 17-file component correction independently approved per Mendel handoff. |
 | L | [Layout report](WCI4-layout-worker.md) | Nine new fit/minimum/scroll/hidden/pure-gate tests; layout/SVG/prototype race passes and unchanged nine-file freeze; scoped independent layout approval separately reported to main. No OS paint claim. |
-| H | [Host/preparation report](SDP/05--Implementation/SDUI/Widgets/WCI4-integration-worker.md) | Real provider/native adapters, exact inventory, fingerprints/capabilities, resource copying/tickets, shared clipping, mounted Accessible methods; owner-loss regression now covers modal/nonmodal hide/close and resource/background detachment. Current 16-file delta independently approved; final native/full-suite association still needed. |
+| H | [Host/preparation report](WCI4-integration-worker.md) | Real provider/native adapters, exact inventory, fingerprints/capabilities, resource copying/tickets, shared clipping, mounted Accessible methods; owner-loss regression now covers modal/nonmodal hide/close and resource/background detachment. Current 16-file delta independently approved; final native/full-suite association still needed. |
 | X | [Connected fixture report](WCI4-fixture-worker.md) | Actual SDL/DocumentHost/provider fixture, six-test race PASS 244.019s, desktop build only; source/resource/revision guards, typed read-only receivers, child Commit/Cancel/Accept and rejected native tickets. Shared dependencies evolved; fixture-only hash stability is not whole-candidate stability. |
 | K | [Package-protocol report](WCI4-package-protocol-worker.md) | Eight-case/50-invocation candidate1 pilot PASS; source snapshots/revisions/UTF-8 links, all-family discovery/structural output, legacy static, unsupported readiness and atomic export. Explicitly prior-candidate; final package rerun required. No GUI or package-build proof. |
 
@@ -49,12 +53,12 @@ Prior independently accepted foundations under `SDP/05--Implementation/SDUI/Widg
 
 | Record | Retained scope |
 | --- | --- |
-| [Evidence-WCI0](SDP/05--Implementation/SDUI/Widgets/Evidence-WCI0.md) | Detached preflight at fac09f2; constructor prerequisite separately repaired at d1c5c88. No native widget acceptance in WCI0 alone. |
-| [Evidence-WCI1](SDP/05--Implementation/SDUI/Widgets/Evidence-WCI1.md) | c39b330; tree/list/scroll/publication, 54 native checks. |
-| [Evidence-WCI2-M1](SDP/05--Implementation/SDUI/Widgets/Evidence-WCI2-M1.md) | 403c540; tabs/both split axes, 58 native checks. |
-| [Evidence-WCI2-M2](SDP/05--Implementation/SDUI/Widgets/Evidence-WCI2-M2.md) | 0fc15c8; shared commands/menu/context/surfaces, 118 checks and 26 receipts. |
-| [Evidence-WCI3-M1](SDP/05--Implementation/SDUI/Widgets/Evidence-WCI3-M1.md) | ea49991f; typed fields/forms, 113 checks and 12 receipts. |
-| [Evidence-WCI3-M2](SDP/05--Implementation/SDUI/Widgets/Evidence-WCI3-M2.md) | 69d0a33 delivery after interaction guard correction; **14 workflows/92 checks**, five receipts, binary 2579df7a… . The earlier 0078 13-run/86-check archive is superseded, not the retained final foundation. |
+| [Evidence-WCI0](Evidence-WCI0.md) | Detached preflight at fac09f2; constructor prerequisite separately repaired at d1c5c88. No native widget acceptance in WCI0 alone. |
+| [Evidence-WCI1](Evidence-WCI1.md) | c39b330; tree/list/scroll/publication, 54 native checks. |
+| [Evidence-WCI2-M1](Evidence-WCI2-M1.md) | 403c540; tabs/both split axes, 58 native checks. |
+| [Evidence-WCI2-M2](Evidence-WCI2-M2.md) | 0fc15c8; shared commands/menu/context/surfaces, 118 checks and 26 receipts. |
+| [Evidence-WCI3-M1](Evidence-WCI3-M1.md) | ea49991f; typed fields/forms, 113 checks and 12 receipts. |
+| [Evidence-WCI3-M2](Evidence-WCI3-M2.md) | 69d0a33 delivery after interaction guard correction; **14 workflows/92 checks**, five receipts, binary 2579df7a… . The earlier 0078 13-run/86-check archive is superseded, not the retained final foundation. |
 
 ## Acceptance family → current workflow and retained detail
 
@@ -195,3 +199,31 @@ family in the planned runner, identified explicit predecessor reuse and the five
 remaining association/proof gaps above, and preserved the corrected-component/final-candidate
 boundary. Main owns Session/Acceptance/PM projection and independent final approval.
 Only `WCI4-all-family-closeout-map.md` is produced by this task.
+
+## Executed final reconciliation — WCI4-M2
+
+The planned 27-workflow matrix is now covered by 28 distinct applicable workflows:
+five rebuilt preview cases, a new actual-pixel origins/clip case, rebuilt SDL-root
+IME and private-helper IME, and twenty unchanged-mechanism predecessor runs.
+[Final evidence](Evidence-WCI4-M2.md) and its native-audit.json establish 321 checks,
+25 published openings/25 exact terminals and clean fixture teardown. This is not
+28 executions of one binary generation; each actual binary identity is retained.
+The existing finer predecessor mapping above remains applicable because the final
+delta changes only explicit native SVG preparation and its fixture/tests/docs.
+
+A01/A05 associate existing frontend/codegen/legacy-profile component proof with
+fresh full SDUI race and packaged protocol. A02 adds actual origin/root-transform/
+scale/clip pixels to inspected SVG/prose/fallback screenshots. A03/A04 retain the
+host/provider failure and immutable-lifetime regressions plus fresh fallback,
+lifetime and modal/nonmodal execution. A06/A07 bind matching package3/protocol/
+consumer and both native IME recipes. A08 associates fresh full SDUI and SDL-preview
+race, applicable unchanged SDL/SDPTool suites, terminal audit and final independent
+review. No selected family or required bounded GAP001–010 portion is omitted.
+Unsupported richness/theme/OS-accessibility boundaries above remain unchanged.
+
+Prior failures remain: candidate2 SVG displacement and helper pre-map focus,
+combined SDL text timeout with unchanged isolated pass, and the initial exact-RGB
+edge oracle. Final pixel geometry uses the reviewed >=50% green coverage contour
+with exact solid interiors and exterior clip checks. Candidate2 aspect-only PASS
+is not fidelity proof. Later documentation-only historical qualifiers have their
+own hash delta; they do not change executable source or retrospectively alter builds.

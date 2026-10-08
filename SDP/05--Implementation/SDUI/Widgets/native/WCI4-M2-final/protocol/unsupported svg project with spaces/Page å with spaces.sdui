@@ -1,0 +1,1 @@
+sdui 0.3; ref: art "unopened"; Main=[p=svg(art.Image.@resource,description="Figure",fallback="label") {visible=false}];

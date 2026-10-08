@@ -1,0 +1,26 @@
+{
+  "name": "all families-combined",
+  "argv": [
+    "/tmp/wci4-package-candidate3/libexec/xfmd/sdui-preview",
+    "-source",
+    "/tmp/wci4-final-protocol3-verified/all families project with spaces/Page å with spaces.sdui",
+    "-entry",
+    "Main",
+    "-revision",
+    "1681e0610e41df77917740052b81b5b1630a8c36baad9388e1ab33fc2b1c87e0",
+    "-output",
+    "/tmp/wci4-final-protocol3-verified/all families Combined output with spaces"
+  ],
+  "cwd": "/tmp/wci4-final-protocol3-verified",
+  "binarySha256": "eb0bde6bf9fb06d42afc23d5933636e4ca77d740d6d0c54922ab3a36c8c7fc33",
+  "displayEnvironment": "DISPLAY/WAYLAND_DISPLAY removed",
+  "expected": "success",
+  "exit": 0,
+  "timeout": false,
+  "seconds": 0.03533315658569336,
+  "stdout": "commands/021-all families-combined.stdout",
+  "stderr": "commands/021-all families-combined.stderr",
+  "stdoutSha256": "69b5beb04693feb915552714bbeba78d1a750688d1bc367e95bd2e3ba5b8e64c",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "binaryUnchanged": true
+}

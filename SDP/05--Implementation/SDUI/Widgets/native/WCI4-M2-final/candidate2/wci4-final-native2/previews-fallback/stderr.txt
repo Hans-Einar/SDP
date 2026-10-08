@@ -1,0 +1,1 @@
+2026/10/08 15:06:16 Fyne error:  Preferences load error:

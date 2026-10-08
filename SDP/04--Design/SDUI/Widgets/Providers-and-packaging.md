@@ -3,7 +3,7 @@
 | Field | Value |
 | --- | --- |
 | Assignment | SDP Architect; reviewed design, selected after WCI3-M2 |
-| Status | WCI4-M1 implemented and independently reviewed; WCI4-M2 integrated verification active |
+| Status | WCI4-M1/M2 implemented, verified and independently reviewed |
 | Authority | KB-SDUI-003 full inventory; PLAN-SDP-0022 WCI4-M1/M2; Session0010 |
 | Parents | [Design](Design.md), [Acceptance](Acceptance.md), [Preparation](Preparation.md), [Collections](Collections.md), [Panes](Panes-and-commands.md), [Values](Values-and-text.md) |
 | Outcome | Truthful SVG/Markdown previews, explicit provider/resource ownership and matching all-family producer/helper package preparation |
@@ -339,3 +339,12 @@ immutable candidate. It bounds preparation independently of label policy without
 introducing a new runtime budget or readiness dimension.
 
 WCI4-M1 delivery is recorded at `a026a5d1` in [provider/package evidence](../../../05--Implementation/SDUI/Widgets/Evidence-WCI4-M1.md). Earlier unselected/draft statements are historical checkpoints. WCI4-M2 remains the final all-family acceptance boundary; no publication is inferred.
+
+## Final implementation disposition
+
+[WCI4-M2](../../../05--Implementation/SDUI/Widgets/Evidence-WCI4-M2.md) closes A01–A08
+within the declared support matrix. Native preparation derives validated zero-origin
+SVG and expands scale(s) for the pinned decoder, preserving original resource identity
+and guards. The native derivative has its own immutable cache identity and bounded
+validation before outcome freeze. Final actual pixels and package/IME recipes are
+verified; prior design/readiness prose above remains historical. No release inferred.

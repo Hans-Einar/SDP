@@ -150,8 +150,8 @@ accepted presentation tickets own publication and resource rollback.
 
 WCI3-M1 is verified and independently reviewed in [scalar evidence](../../SDP/05--Implementation/SDUI/Widgets/Evidence-WCI3-M1.md), with 113 native checks and 12 exact opening results. Legacy standalone RuntimeView
 has no new scalar adapters; its explicit rejection is distinct from DocumentHost's
-runnable application route. WCI3-M2 extended input/IME and WCI4 providers/packages
-remain subsequent milestones.
+runnable application route. At that scalar milestone, WCI3-M2 extended input/IME
+and WCI4 providers/packages were subsequent milestones; their delivery follows below.
 
 ## Extended native text — WCI3-M2 delivered
 
@@ -179,7 +179,7 @@ IME-consumed Return/Escape out of control dispatch; other platform sources remai
 upstream bytes. Both maintained native build roots explicitly select that copy.
 See [dependency policy](../third_party/glfw-policy/README.md).
 
-M2 is verified and independently reviewed in [text evidence](../../SDP/05--Implementation/SDUI/Widgets/Evidence-WCI3-M2.md): 92 native checks, actual configured XIM and five exact terminal results. Shared command/tab text receivers retain captured draft guards. Legacy standalone RuntimeView rejects these adapters explicitly. Provider and package preparation remain WCI4 obligations.
+M2 is verified and independently reviewed in [text evidence](../../SDP/05--Implementation/SDUI/Widgets/Evidence-WCI3-M2.md): 92 native checks, actual configured XIM and five exact terminal results. Shared command/tab text receivers retain captured draft guards. Legacy standalone RuntimeView rejects these adapters explicitly. At that text milestone, provider and package preparation remained WCI4 obligations; their current status follows below.
 
 ## Immutable provider previews and matching helpers — WCI4
 

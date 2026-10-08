@@ -89,7 +89,7 @@ WCI2-M2 delivers shared commands, menus and composed modal/nonmodal surfaces;
 [verified evidence](../../SDP/05--Implementation/SDUI/Widgets/Evidence-WCI2-M2.md)
 records 118 native checks and independent approval: exactly-once dispatch,
 stale-context refusal, truthful domain outcomes, draft-preserving rejection and
-one terminal result for each of 26 published openings. WCI3/WCI4 remain pending.
+one terminal result for each of 26 published openings. At that command milestone, WCI3/WCI4 were still pending; their delivery follows below.
 
 WCI3-M1 implements the checkbox/slider/select/number portion of R27 with exact typed
 values, invalid-draft feedback, stable option identity and atomic mixed forms under
@@ -97,7 +97,7 @@ R28 publication guards. [Reviewed scalar evidence](../../SDP/05--Implementation/
 proves pointer/keyboard Change versus Commit, visible slider proposal feedback,
 readonly/programmatic behavior, invalid-draft refusal, stale-result rejection,
 child Commit versus form Cancel and truthful post-domain failure through 113 native
-checks and passing suites. Extended text/IME remains WCI3-M2.
+checks and passing suites. At that scalar milestone, extended text/IME remained WCI3-M2 work.
 
 WCI3-M2 implements opt-in extended single-line and basic multiline input for R27:
 explicit Change/Commit, required validation, read-only selection/copy, placeholder,
@@ -105,7 +105,7 @@ Unicode clipboard, native undo/redo and internal scrolling under R28 publication
 guards. Native typing/IME, failed edits, reload and same/different-byte history
 policies require exact-candidate evidence. A rejected native edit may reset that
 Entry editing history while restoring authoritative text; failed Commit/reload
-retain history. [Reviewed M2 evidence](../../SDP/05--Implementation/SDUI/Widgets/Evidence-WCI3-M2.md) closes the bounded text inventory with 92 native checks, actual IME, shared-command receiver correction and affected suites. WCI4 consumer/provider preparation remains open.
+retain history. [Reviewed M2 evidence](../../SDP/05--Implementation/SDUI/Widgets/Evidence-WCI3-M2.md) closes the bounded text inventory with 92 native checks, actual IME, shared-command receiver correction and affected suites. At that text milestone, WCI4 consumer/provider preparation remained open; its current status follows below.
 
 WCI4 implements explicit per-instance SVG/Markdown preview identity, immutable
 preparation and truthful supported/fallback/unsupported outcomes for R27/R28.
