@@ -68,6 +68,8 @@ type Engine struct {
 	splits      map[string]SplitLayout
 	minima      map[minimumKey]Size
 	surfaceRoot *parser.Instance
+	fieldState  map[string]runtime.FieldState
+	fields      map[string]FieldLayout
 }
 
 func number(n *parser.Instance, key string, fallback float64) float64 {

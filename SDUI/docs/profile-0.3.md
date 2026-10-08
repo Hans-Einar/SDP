@@ -150,6 +150,90 @@ claiming it. Static AST `local-profile` reports schema/placement validation only
 input, rejecting nested-dialog fields; bridge uses its exact Path. `IsCommandButton`
 exposes opt-in, and `IsAuxiliary` exposes non-flow declarations without state guesses.
 
+## WCI3-M1 scalar fields
+
+The same development profile adds four leaf controls. Extended input properties
+remain WCI3-M2 work and are rejected by the current input schema.
+
+| Call | Arguments/defaults |
+| --- | --- |
+| checkbox(label) | Nonblank string label; optional boolean value=false and readOnly=false; callback reference. |
+| slider(label,min,max,step,value) | Label and all four numeric tokens required; optional readOnly=false and callback. |
+| number(label,min,max,step,value) | Same numeric contract; optional readOnly=false, placeholder string="" and callback. |
+| select(label) | Nonblank label; optional option-ID string value="", required=false, readOnly=false and callback. |
+
+Only label may be positional; all other arguments must be named. Duplicate,
+unknown and wrong-type arguments reject. No bodies, inline options, expressions,
+source onChange or file/provider I/O. Callbacks require named widgets and declared
+module aliases; connected Commit preflight requires @invoke. enabled/visible stay
+formatting properties. A named definition can supply a reused scalar root's name.
+No source/normalized default arguments are inserted. Consumers apply these closed
+defaults; codegen preserves whether an optional argument was present.
+
+```text
+sdui 0.3;
+ref: settings "settings.sdl";
+Main=[
+  enabledFlag=checkbox("Active", value=false);
+  level=slider("Level", min=0, max=100, step=1, value=50);
+  count=number("Count", min=-0, max=1e1, step=1.00e-1, value=0.30);
+  mode=select("Mode", value="compact", callback=settings.AcceptMode.@invoke)
+];
+settings.AcceptMode.setHandle(Main.mode);
+```
+
+Scalar calls use Kind widget and existing Arguments/spans/reuse representation.
+Only slider/number min/max/step/value numeric tokens become
+`Literal{Kind:"number-lexeme", Value:<exact token string>, Span:<original span>}`.
+Quoted numeric strings reject. Existing .2, split and formatting numeric literals
+remain Kind number with float64 values. No lexer, AST field/tag or format-version
+migration occurs. Generated constructors retain the exact spelling, including
+signed zero, exponent syntax and significant digits; activation needs no source file.
+
+`parser.NumericArguments(n)` returns `(min,max,step,value string,err error)` and
+checks the closed .3 numeric-widget literal representation. It does not format
+binary64 values back to source or validate a user's text draft. The stdlib-only
+`numeric` package owns exact decimal/grid arithmetic; parser and runtime can both
+import it without a dependency cycle. Parser validation uses NewGrid and Parse for
+source initial admission, reporting errors at the relevant numeric token span.
+
+Constraints require finite operands, min<max, step>0, initial range membership and
+exact rational `(value-min)/step` integrality. Text/source admission never snaps
+or uses a tolerance. Source decimal 0.3 on step 0.1 is valid; an off-grid decimal
+that rounds to the same binary64 is still invalid. The reviewed bounded decimal
+scan admits at most 32768 mantissa digits and effective exponent magnitude 4096
+for nonzero coefficients before constructing powers. Exact safe53 integral
+min/max/step grids use uint64 ticks without the fractional interval cap. All other
+Go grids require at most 2^26 intervals and step strictly larger than adjacent
+binary64 spacing at the rounded endpoints, checking both directions. Connected
+SDL separately requires exact integers within ±9007199254740991; parser does not
+infer transport compatibility from a symbolic callback. See the
+[reviewed values contract](../../SDP/04--Design/SDUI/Widgets/Values-and-text.md)
+for the complete arithmetic/state boundary.
+
+Choice options are supplied by exact normalized instance path, outside the AST:
+unique stable IDs, duplicate labels allowed, <=4096 options. Static source can
+preserve an initial ID but cannot establish its existence/eligibility without the
+provider. Required empty choice is an invalid editable state; no implicit first
+option. Codegen contains no options, live generations or provider closures.
+
+ResolveInteractions includes nearest-dialog ownership for these scalar fields,
+without adding command identities or $scope arguments to them. Context widget
+targets may reference scalars; item contexts remain tree/list-only.
+ResolveDialogField remains input-only for WCI2 text mappings. Mixed Go Accept uses
+runtime typed field capture; scalar data never enters legacy Widget.Value/Draft
+strings or overwrites retained numeric lexemes in projected source Arguments.
+
+Static descriptions identify every scalar, label/path/span, initial values,
+constraints and symbolic Commit binding; select reports unsupplied options.
+Public SVG rejects all four with unsupported-value-export, including hidden fields
+and supplied measured state. The CLI preserves an existing artifact on failure.
+Native SkipControls requires a matching prepared checkbox/slider/select/number
+entry for every omitted field; InteractionRoot still validates dialog canvases.
+Standalone prototype preflight reports unsupported-value for unavailable scalar
+adapters, or unsupported-provider / choice-options for select. Source acceptance
+and static descriptions do not prove native/provider/SDL readiness.
+
 ## Profile identity and compatibility
 
 Document.Profile remains explicit: `sdui/0.2` or `sdui/0.3`. AST JSON keeps the

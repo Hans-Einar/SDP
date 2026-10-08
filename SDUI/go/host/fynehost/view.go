@@ -162,7 +162,9 @@ func (f *fixedLayout) Layout(objects []fyne.CanvasObject, _ fyne.Size) {
 func (v *View) nativeControls() map[string]string {
 	kinds := map[string]string{}
 	for path, obj := range v.Controls {
-		switch obj.(type) {
+		switch obj := obj.(type) {
+		case *scalarControl:
+			kinds[path] = obj.kind
 		case *widget.Button:
 			kinds[path] = "button"
 		case *commandButton:

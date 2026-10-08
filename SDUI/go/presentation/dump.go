@@ -71,6 +71,9 @@ func widths(items []*parser.Instance, available int) ([]int, error) {
 	return sizes, nil
 }
 func widgetText(n *parser.Instance) string {
+	if scalarDescription(n) {
+		return "[" + scalarText(n) + "]"
+	}
 	if interactionDescription(n) {
 		return "[" + interactionText(n) + "]"
 	}
@@ -203,8 +206,11 @@ func Dump(root *parser.Instance, columns int) (string, error) {
 	panes := []string{}
 	var paneErr error
 	root.Walk(func(n *parser.Instance) {
-		if paneErr == nil && (n.Kind == "composition" || interactionDescription(n)) {
+		if paneErr == nil && (n.Kind == "composition" || interactionDescription(n) || scalarDescription(n)) {
 			description := paneText(n)
+			if scalarDescription(n) {
+				description = scalarText(n)
+			}
 			if interactionDescription(n) {
 				description = interactionText(n)
 			}

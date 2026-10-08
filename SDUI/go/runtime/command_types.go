@@ -18,6 +18,9 @@ type MenuScope struct {
 	ModelRevision, StateRevision uint64
 }
 type DraftField struct {
+	RawDraft                     *string
+	FieldValidation              FieldValidation
+	OptionTarget                 *OptionTarget
 	Handle                       Handle
 	Value                        Value
 	ValueRevision, DraftRevision uint64

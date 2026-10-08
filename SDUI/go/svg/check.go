@@ -137,6 +137,15 @@ func Check(root *parser.Instance, options Options) error {
 		}
 		switch n.Widget {
 		case "button", "input", "svg":
+		case "checkbox", "slider", "select", "number":
+			if profile != "sdui/0.3" {
+				fail("widget-kind", "Scalar control requires sdui/0.3")
+				return
+			}
+			if !options.SkipControls {
+				fail("unsupported-value-export", "SVG export does not support "+n.Widget)
+				return
+			}
 		case "tree", "list":
 			if profile != "sdui/0.3" {
 				fail("widget-kind", "Collection requires sdui/0.3")

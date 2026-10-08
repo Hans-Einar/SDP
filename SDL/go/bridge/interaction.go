@@ -10,7 +10,7 @@ import (
 // The runtime owns normalized page identities and validates dispatch. The bridge
 // only consumes that state; it never reconstructs definition scope from paths.
 func (b *Bridge) validatePageEvent(event ui.Event) error {
-	if event.Kind != ui.ActivatePage || event.Page == nil || event.Collection != nil || event.Split != nil || event.Command != nil || event.Dialog != nil || event.ModelRevision != b.UI.Revision {
+	if event.Kind != ui.ActivatePage || event.Page == nil || event.Collection != nil || event.Split != nil || event.Command != nil || event.Dialog != nil || event.ModelRevision != b.UI.Revision || event.Control != nil {
 		return fmt.Errorf("event-field: invalid tab activation")
 	}
 	tabs, ok := b.UI.Tabs(event.Handle)
@@ -28,7 +28,7 @@ func (b *Bridge) validatePageEvent(event ui.Event) error {
 // Only the dispatcher supplies these envelopes. Recheck the concrete source
 // identities before and after Execute; never recapture context or dialog drafts.
 func (b *Bridge) validateInteractionEvent(event ui.Event, mode ResultMode) error {
-	if event.ModelRevision != b.UI.Revision {
+	if event.ModelRevision != b.UI.Revision || event.Control != nil {
 		return fmt.Errorf("stale-event: model changed")
 	}
 	switch event.Kind {

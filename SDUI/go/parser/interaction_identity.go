@@ -93,7 +93,7 @@ func (index *interactionIndex) resolve(root, owner *Instance, key, scope string)
 	return targets[0]
 }
 func contextControl(n *Instance) bool {
-	return n.Kind == "widget" && member(n.Widget, "button input svg tree list")
+	return n.Kind == "widget" && (member(n.Widget, "button input svg tree list") || scalarKind(n.Widget))
 }
 
 // ResolveInteractions strictly resolves one selected tree, including hidden content.
@@ -114,7 +114,8 @@ func ResolveInteractions(root *Instance) (out map[string]InteractionIdentity, er
 	keys := map[string]string{}
 	root.Walk(func(n *Instance) {
 		validateNormalizedInteraction(n)
-		relevant := isInteractionNode(n) || n.Kind == "widget" && n.Widget == "input" && index.dialogs[n.Path] != ""
+		validateScalar(n)
+		relevant := isInteractionNode(n) || n.Kind == "widget" && (n.Widget == "input" || scalarKind(n.Widget)) && index.dialogs[n.Path] != ""
 		if !relevant {
 			return
 		}

@@ -11,6 +11,7 @@ func (s *Session) Reload(root *parser.Instance) error {
 	if _, err := parser.EffectiveProfile(root); err != nil {
 		return err
 	}
+	baseline := s.StateRevision
 	providers := map[string]CollectionProvider{}
 	rootPaths := map[string]bool{}
 	if root != nil {
@@ -52,6 +53,20 @@ func (s *Session) Reload(root *parser.Instance) error {
 	old := s.copyState()
 	_ = old.RevokeSurfaces(Handle{}, "reload")
 	n.dialogResults = copyResults(old.dialogResults)
+	for path := range n.fields {
+		old := s.widgets[path]
+		current := n.widgets[path]
+		if old != nil && old.Handle == current.Handle {
+			n.validators[path] = s.validators[path]
+			n.changes[path] = s.changes[path]
+			if err := n.validateField(path); err != nil {
+				return err
+			}
+		}
+	}
+	if s.closed || s.StateRevision != baseline {
+		return fault("stale-validation", "State changed while preparing reload")
+	}
 	n.presentationCheck = s.presentationCheck
 	n.presentationPrepare = s.presentationPrepare
 	n.check = s.check

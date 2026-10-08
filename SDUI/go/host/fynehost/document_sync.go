@@ -141,6 +141,8 @@ func (b *Bundle) apply() {
 			return
 		}
 		switch obj := c.widget.(type) {
+		case *scalarControl:
+			obj.sync(p.snapshot.Fields[box.Path], geometry.Fields[box.Path], box)
 		case *CollectionControl:
 			obj.state = p.snapshot.Collections[box.Path]
 			obj.rows = collectionRows(obj.state, box.Font)
@@ -240,6 +242,7 @@ func (h *DocumentHost) after() {
 	h.reconcileLoads(b)
 	h.restoreFocus(b)
 	b.syncMenus()
+	b.syncChoices()
 	b.drainDialogResults()
 	if h.current != b || b.closed || h.closed {
 		return

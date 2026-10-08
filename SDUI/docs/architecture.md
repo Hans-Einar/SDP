@@ -1,10 +1,11 @@
 # SDUI — implemented Go architecture
 
-Updated for the WCI2 development candidate, 2026-10-08. One active frontend
+Updated for the WCI3-M1 development candidate, 2026-10-08. One active frontend
 preserves SDUI 0.2 and adds the bounded development 0.3 profile. Executable modules/commands are in the [Go area](../go/README.md); the shared design is [described in SDL](../design/README.md).
 
 | Package | Responsibility |
 | --- | --- |
+| go/numeric | Immutable bounded exact decimal grids shared by frontend/runtime/bridge |
 | go/parser | Lexer, recursive descent, AST/spans, local rules and normalization |
 | go/layout | One measured geometry; relative dimensions, rows, wrap, ratio and clipping |
 | go/markdown | Bounded Goldmark content; measurement and registered Mermaid provider |
@@ -130,3 +131,24 @@ per-canvas control inventory and selected interaction root.
 M1 is verified in [pane evidence](../../SDP/05--Implementation/SDUI/Widgets/Evidence-WCI2-M1.md).
 M2 is verified and independently reviewed in [command/surface evidence](../../SDP/05--Implementation/SDUI/Widgets/Evidence-WCI2-M2.md), including 118 native checks and exact dynamic-parent lifecycle. These
 boundaries do not imply WCI3 values/text or WCI4 provider/package completion.
+
+## Typed scalar fields — WCI3-M1
+
+The new stdlib-only numeric package is shared by frontend, runtime and SDL bridge;
+it imports none of them and no GUI. Original decimal lexemes survive generation.
+Runtime owns typed accepted/proposed values, raw numeric drafts, validation and
+option generations. Existing input strings keep their original storage. Shared
+layout consumes copied Fields and native FieldMeasurer results; labels, controls,
+feedback and number steps use the same measured/clipped rectangles on every canvas.
+
+The document host retains native Check/Slider/Select/Entry adapters across ordinary
+synchronization. Gestures publish Change and one guarded Commit at their declared
+boundary; no native widget is a second accepted-value authority. Supplied option
+sets and actual SDL signatures are checked before resources become live. Mixed
+forms use explicit Go Accept; text-only SDL mapping remains separate. Existing
+accepted presentation tickets own publication and resource rollback.
+
+WCI3-M1 is verified and independently reviewed in [scalar evidence](../../SDP/05--Implementation/SDUI/Widgets/Evidence-WCI3-M1.md), with 113 native checks and 12 exact opening results. Legacy standalone RuntimeView
+has no new scalar adapters; its explicit rejection is distinct from DocumentHost's
+runnable application route. WCI3-M2 extended input/IME and WCI4 providers/packages
+remain subsequent milestones.

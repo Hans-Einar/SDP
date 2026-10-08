@@ -64,7 +64,7 @@ func (s *Session) interactionCandidate(e Event) (*Session, bool, error) {
 	if e.Sequence == 0 || e.Sequence <= s.sequence {
 		return nil, false, fault("duplicate-event", "Event sequence already consumed")
 	}
-	if e.Command != nil || e.Dialog != nil || e.Collection != nil || e.Value != (Value{}) || e.DraftRevision != 0 {
+	if e.Control != nil || e.Command != nil || e.Dialog != nil || e.Collection != nil || e.Value != (Value{}) || e.DraftRevision != 0 {
 		return nil, false, fault("event-type", "Unexpected legacy payload")
 	}
 	n := s.copyState()
@@ -204,6 +204,9 @@ func (s *Session) DispatchInteraction(e Event) (result InteractionResult, err er
 	next, err := n.applyCandidate(s.Revision, s.BatchRevision+1, reply.Updates)
 	if err != nil {
 		return fail(err)
+	}
+	if s.closed || s.Revision != e.ModelRevision || s.StateRevision != baseline {
+		return fail(fault("stale-result", "State changed during field validation"))
 	}
 	if err = s.publish(next); err != nil {
 		return fail(err)

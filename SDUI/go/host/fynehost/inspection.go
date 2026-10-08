@@ -85,8 +85,9 @@ func (b *Bundle) Inspect() map[string]any {
 			"visible": live && c.clip.Visible() && c.widget.Visible() && clip.W > 0 && clip.H > 0,
 		}
 	}
+	fields, choices := b.inspectFields()
 	widgets := b.Session.Widgets()
-	return map[string]any{"controls": controls, "tabs": tabs, "splits": b.Geometry().Splits, "source": b.SourceRevision, "snapshot": snapshot, "surfaces": b.inspectSurfaces(), "menus": b.inspectMenus(), "viewports": b.Geometry().Viewports, "rows": rows, "widgets": widgets, "focused": b.Session.Focused()}
+	return map[string]any{"fields": fields, "choices": choices, "controls": controls, "tabs": tabs, "splits": b.Geometry().Splits, "source": b.SourceRevision, "snapshot": snapshot, "surfaces": b.inspectSurfaces(), "menus": b.inspectMenus(), "viewports": b.Geometry().Viewports, "rows": rows, "widgets": widgets, "focused": b.Session.Focused()}
 }
 
 // inspectionCanvas identifies actual windows, including a modal's parent window.

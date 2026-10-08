@@ -7,6 +7,9 @@ import (
 )
 
 type Session struct {
+	fields                  map[string]*field
+	validators              map[string]FieldValidator
+	changes                 map[string]ChangeHandler
 	commands                map[string]*CommandState
 	presentations           map[string]*CommandPresentation
 	menus                   map[string]*MenuState
@@ -61,6 +64,9 @@ func New(id string, root *parser.Instance) (*Session, error) {
 		return nil, err
 	}
 	if err := s.initCommands(); err != nil {
+		return nil, err
+	}
+	if err := s.initFields(); err != nil {
 		return nil, err
 	}
 	return s, nil
@@ -196,6 +202,8 @@ func (s *Session) Close() {
 	}
 	s.closed = true
 	s.StateRevision++
+	s.changes = map[string]ChangeHandler{}
+	s.validators = map[string]FieldValidator{}
 	s.handlers = map[string]Handler{}
 	s.interactions = map[string]InteractionHandler{}
 	s.presentationPrepare = nil

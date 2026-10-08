@@ -395,3 +395,93 @@ changes none of the predecessor's surfaces, requests or focus.
 M2 runtime tests cover these captures, outcomes, budgets, lifetime and ticket
 contracts. Unit/race success does not establish native menu, window or OS keyboard
 acceptance; those are separate host/integration evidence.
+
+## WCI3-M1 typed scalar fields
+
+M1 adds checkbox, slider, number and select within source profile 0.3. Existing
+0.2 and basic 0.3 input Draft/Commit remain unchanged; extended input, multiline,
+IME and undo are later work. Runtime imports the standard-library-only numeric
+helper; it still imports no GUI/layout package or application file loader.
+
+`Value` adds finite `Number` and stable `OptionID`, constructed with `Numeric` and
+`Choice`. Only the selected payload may be nonzero. Widget.Value/Draft retain
+legacy input strings; new controls never serialize their typed values there.
+`Field(handle)` and `Snapshot.Fields` expose copied accepted/proposed values,
+RawDraft for number/input, Dirty, ReadOnly, Required, bounded Validation, numeric
+source constraints and options. The FieldTarget contains exact handle/model/state,
+value/draft revisions and option generation. Inputs are a read projection only in
+M1; they do not acquire the new editing policy.
+
+`EditField(handle, modelRevision, value)` edits checkbox Boolean, slider Number or
+number raw String. Invalid numeric intermediate text remains visible with validation
+and no proposed Number. `EditTick` constructs one exact numeric grid point; invalid
+number drafts cannot step. `ChooseOption` requires an exact OptionTarget. Accepted
+edits publish through the existing gate/ticket, then call an optional ObserveChanges
+observer once with copied FieldChange: Value is raw String for number, the typed
+proposal for other controls, and Option carries the select token. Change never
+calls the Commit binding. Initialization, Apply, revalidation and reload stay silent.
+
+`CaptureCommit(fieldTarget)` creates a typed Commit envelope without consuming a
+sequence. Automatic gestures use the Target returned in `change.Field`, so observer
+reentrance cannot restamp an older edit. Explicit Enter/release captures a current
+Field.Target. Event.Control includes captured ValueRevision, numeric RawDraft and
+select OptionTarget. All identity, state and proposal fields must match exactly.
+Existing Bind/Handler and Dispatch signatures remain; typed dispatch captures all
+receivers before execution and rejects returned updates after reentrant mutation.
+A successful typed callback must explicitly accept its source proposal with a
+checked AcceptedValue update; otherwise the entire reply rejects. No domain replay.
+
+A declared unbound callback rejects. With no source or Go Commit binding, valid
+controls outside dialogs may accept locally. Automatic unbound Commit inside an
+open dialog keeps the proposal dirty for owner Accept. Explicit child Commit effects
+persist through later Cancel. ReadOnly blocks user edits/Commit while allowing
+focus and checked programmatic changes. RevertField silently restores accepted
+state; input delegates to the unchanged Revert operation.
+
+Typed AcceptedValue, `ReadOnly` and `ValidationState` updates require the captured
+ExpectedValueRevision and ExpectedDraftRevision; select additionally requires
+ExpectedOptionGeneration. Every property compares those guards against the same
+pre-batch baseline. Distinct property order cannot make already advanced candidate
+revisions reject another property. Validation metadata stages last; mixed invalid
+batches publish nothing. AcceptDraft must equal a valid captured proposal. Built-in
+numeric/choice errors cannot be bypassed by clearing application feedback.
+`ValidateFieldWith` installs an optional pure bounded validator; its code/message
+are each at most 4096 UTF-8 bytes. Reentrant accepted work invalidates its outer
+result instead of being overwritten.
+
+`BindChoices(map[exactInstancePath][]ChoiceOption)` requires the exact select
+inventory. Option generation zero means unsupplied; supplied-empty has a positive
+generation. Sets contain at most 4096 unique nonempty WCI1-bounded IDs and plain
+single-line labels; duplicate labels are valid. Initial explicit selection must
+exist and be enabled. Required-empty remains invalid editable state. ReplaceChoices
+checks owner/generation and the whole set, advances generation and invalidates old
+popup results even if IDs reappear. Removed/disabled accepted IDs remain diagnostic;
+the proposal clears and requires a new choice. There is no first-option/index
+fallback, hidden collection or loader. Option/ValidateOptionTarget are dedicated
+choice identity APIs, separate from collection targets.
+
+`DialogFields`/`DialogField` stay text-input-only. `DialogControls` enumerates copied
+input and typed fields for mixed Go Accept, including inactive pages and excluding
+nested dialogs. CaptureDialog validates every proposal; DraftField now also carries
+RawDraft, FieldValidation and OptionTarget. Mixed acceptance keeps the existing
+256 combined writes, exact token/revisions, reserved targets, Domain/replay barriers,
+published-only receipts and accepted-ticket protocol. Go InteractionHandler handles
+mixed persistence; the SDL DialogFieldValue mapping stays text-only.
+
+`SuccessorWithChoices(root, providers, choices)` supplies complete option data before
+retained-value checks. The existing Successor signature can carry compatible supplied
+sets. Neither copies observers/validators/handlers. The synchronous compatibility
+Reload retains compatible Commit handlers, validators and Change observers, checks
+validator reentrance and publishes them with the candidate. Compatible main/page drafts,
+including invalid numeric intermediates, survive. Accepted values violating new
+constraints reject the candidate. Successful closed-dialog successors reset dirty
+proposals to current accepted values, retaining prior explicit child commits. Failed
+reload preserves the live session. Option generations advance; old tokens cannot
+move or accept replacement choices.
+
+The numeric package preserves original decimal lexemes for exact source/text grid
+membership and separately checks typed binary64 values by reconstructed-point round
+trip. Gesture snapping is explicit; text and typed Apply never use a tolerance.
+See [numeric API](../numeric/README.md) for bounded arithmetic and SDL conversion.
+Runtime tests prove state and publication semantics; native gestures/SDL bindings
+and whole-stage delivery require their separate integration evidence.

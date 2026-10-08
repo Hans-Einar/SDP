@@ -11,7 +11,12 @@ import (
 
 func (b *Bridge) validateResult(plan Plan, owner ui.Widget, target string, output parser.RecordType) error {
 	switch plan.ResultMode {
+	case ScalarResult:
+		return b.validateScalarResult(plan, owner, target, output)
 	case TextResult:
+		if scalarKind(owner.Handle.Kind) {
+			return fmt.Errorf("typed Commit requires explicit ScalarResult")
+		}
 		if owner.Handle.Kind == "dialog" {
 			return fmt.Errorf("dialog callback requires DialogAcceptResult")
 		}
@@ -33,9 +38,14 @@ func (b *Bridge) validateResult(plan Plan, owner ui.Widget, target string, outpu
 			return fmt.Errorf("revision-binding: missing result field")
 		}
 	case DialogAcceptResult:
-		fields, err := b.UI.DialogFields(owner.Handle)
+		fields, err := b.UI.DialogControls(owner.Handle)
 		if err != nil {
 			return err
+		}
+		for _, field := range fields {
+			if field.Target.Handle.Kind != "input" {
+				return fmt.Errorf("DialogAcceptResult is text-only; mixed typed forms require explicit Go Accept")
+			}
 		}
 		if len(fields) > 256 {
 			return fmt.Errorf("dialog-fields: capture exceeds 256-write limit")

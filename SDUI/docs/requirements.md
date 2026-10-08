@@ -90,3 +90,11 @@ WCI2-M2 delivers shared commands, menus and composed modal/nonmodal surfaces;
 records 118 native checks and independent approval: exactly-once dispatch,
 stale-context refusal, truthful domain outcomes, draft-preserving rejection and
 one terminal result for each of 26 published openings. WCI3/WCI4 remain pending.
+
+WCI3-M1 implements the checkbox/slider/select/number portion of R27 with exact typed
+values, invalid-draft feedback, stable option identity and atomic mixed forms under
+R28 publication guards. [Reviewed scalar evidence](../../SDP/05--Implementation/SDUI/Widgets/Evidence-WCI3-M1.md)
+proves pointer/keyboard Change versus Commit, visible slider proposal feedback,
+readonly/programmatic behavior, invalid-draft refusal, stale-result rejection,
+child Commit versus form Cancel and truthful post-domain failure through 113 native
+checks and passing suites. Extended text/IME remains WCI3-M2.

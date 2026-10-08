@@ -26,6 +26,10 @@ const (
 	CommandContextItemID EventField = "command.context-item-id"
 	CommandChecked       EventField = "command.checked"
 	DialogFieldValue     EventField = "dialog.field-value"
+	ControlBoolean       EventField = "control.boolean"
+	ControlNumber        EventField = "control.number"
+	ControlText          EventField = "control.text"
+	ChoiceOptionID       EventField = "choice.option-id"
 )
 
 // ResultMode is closed. TextResult is the zero/default legacy text receiver mode.
@@ -34,6 +38,7 @@ type ResultMode string
 const (
 	TextResult         ResultMode = ""
 	DialogAcceptResult ResultMode = "dialog-accept"
+	ScalarResult       ResultMode = "scalar"
 )
 
 type Source struct {
@@ -168,6 +173,8 @@ func (b *Bridge) Rebind(document *uiparser.Document) error {
 		_, command := b.UI.CommandState(widget.Handle)
 		if widget.Handle.Kind == "tabs" || widget.Handle.Kind == "dialog" || command {
 			interactions[widget.Handle] = b.interactionHandler(engine, ref.Object, plan, target)
+		} else if plan.ResultMode == ScalarResult {
+			pending[widget.Handle] = b.scalarHandler(engine, ref.Object, plan, target)
 		} else {
 			pending[widget.Handle] = b.handler(engine, ref.Object, plan, target)
 		}

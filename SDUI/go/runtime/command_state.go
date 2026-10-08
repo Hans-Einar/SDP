@@ -37,7 +37,7 @@ func copySurfaceState(t *SurfaceState) SurfaceState {
 func copyResults(in []DialogResult) []DialogResult {
 	out := append([]DialogResult(nil), in...)
 	for i := range out {
-		out[i].Fields = append([]DraftField(nil), out[i].Fields...)
+		out[i].Fields = copyDraftFields(out[i].Fields)
 	}
 	return out
 }
@@ -184,4 +184,22 @@ func (s *Session) inputAllowed(w *Widget) bool {
 		}
 	}
 	return true
+}
+
+func copyDraftFields(fields []DraftField) []DraftField {
+	out := append([]DraftField(nil), fields...)
+	for i := range out {
+		out[i].RawDraft = copyString(out[i].RawDraft)
+		if out[i].OptionTarget != nil {
+			v := *out[i].OptionTarget
+			out[i].OptionTarget = &v
+		}
+	}
+	return out
+}
+func optionGeneration(t *OptionTarget) uint64 {
+	if t == nil {
+		return 0
+	}
+	return t.OptionGeneration
 }

@@ -40,6 +40,15 @@ func Check(path, entry, revision string) (reload.Candidate, Report, error) {
 		}
 		var unavailable error
 		c.Root.Walk(func(n *parser.Instance) {
+			if unavailable == nil && n.Kind == "widget" && (n.Widget == "checkbox" || n.Widget == "slider" || n.Widget == "number" || n.Widget == "select") {
+				capability := preparation.Capability{Dimension: preparation.Host, ID: n.Widget, Major: 1}
+				message := "unsupported-value: standalone prototype has no native scalar adapter"
+				if n.Widget == "select" {
+					capability = preparation.Capability{Dimension: preparation.Provider, ID: "choice-options", Major: 1}
+					message = "unsupported-provider: standalone prototype requires application-supplied choice options"
+				}
+				unavailable = fmt.Errorf("%s: %w", message, &preparation.Diagnostic{Capability: capability, Path: n.Path, Span: n.Span, Uses: append([]parser.UseSite(nil), n.Uses...)})
+			}
 			m2 := n.Kind == "composition" && (n.Widget == "menu" || n.Widget == "menuGroup" || n.Widget == "dialog") || n.Kind == "widget" && (n.Widget == "command" || n.Widget == "item" || n.Widget == "separator") || parser.IsCommandButton(n)
 			if unavailable == nil && m2 {
 				unavailable = fmt.Errorf("unsupported-interaction: standalone prototype has no command/menu/dialog adapter: %w", &preparation.Diagnostic{

@@ -17,6 +17,10 @@ func (b *Bridge) validateSource(source Source, widget ui.Widget, kind parser.Sca
 	if source.EventField != "" {
 		count++
 		switch source.EventField {
+		case ControlBoolean, ControlNumber, ControlText, ChoiceOptionID:
+			if err := b.validateControlSource(source.EventField, widget, kind); err != nil {
+				return err
+			}
 		case CollectionItemID:
 			if (widget.Handle.Kind != "tree" && widget.Handle.Kind != "list") || kind != parser.TextType {
 				return fmt.Errorf("event-field: collection.item-id requires a collection Activate and text destination")
@@ -83,6 +87,8 @@ func (b *Bridge) validateSource(source Source, widget ui.Widget, kind parser.Sca
 func (b *Bridge) value(source Source, event ui.Event, kind parser.ScalarType) (sdl.Value, error) {
 	if source.EventField != "" {
 		switch source.EventField {
+		case ControlBoolean, ControlNumber, ControlText, ChoiceOptionID:
+			return b.controlValue(source.EventField, event, kind)
 		case CommandContextItemID:
 			if kind != parser.TextType || event.Kind != ui.InvokeCommand || event.Command == nil || event.Command.Context == nil || event.Command.Context.Item == nil {
 				return sdl.Value{}, fmt.Errorf("event-field: missing command item context")

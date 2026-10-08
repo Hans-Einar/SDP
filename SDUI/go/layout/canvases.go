@@ -77,14 +77,14 @@ func validCanvas(size Size) bool {
 	return finite(size.W) && finite(size.H) && size.W > 0 && size.H > 0 && size.W <= 32768 && size.H <= 32768
 }
 func (e *Engine) snapshotRun(snapshot runtime.Snapshot) *Engine {
-	run := &Engine{Measure: e.Measure, requested: snapshot.Viewports, viewports: map[string]Viewport{}, tabState: snapshot.Tabs, splitState: snapshot.Splits}
+	run := &Engine{Measure: e.Measure, fieldState: snapshot.Fields, requested: snapshot.Viewports, viewports: map[string]Viewport{}, tabState: snapshot.Tabs, splitState: snapshot.Splits}
 	if run.Measure == nil {
 		run.Measure = TextMetrics{}
 	}
 	return run
 }
 func snapshotResult(run *Engine, root *Box) *SnapshotLayout {
-	return &SnapshotLayout{Root: root, Viewports: run.viewports, Tabs: run.tabs, Splits: run.splits}
+	return &SnapshotLayout{Root: root, Fields: run.fields, Viewports: run.viewports, Tabs: run.tabs, Splits: run.splits}
 }
 func checkOffsets(snapshot runtime.Snapshot) error {
 	for _, offset := range snapshot.Viewports {

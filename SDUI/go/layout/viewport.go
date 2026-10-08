@@ -22,6 +22,7 @@ type Viewport struct {
 // SnapshotLayout joins existing outer Box geometry with measured viewports.
 // Collection rows remain owned by the native adapter, not this geometry tree.
 type SnapshotLayout struct {
+	Fields    map[string]FieldLayout `json:",omitempty"`
 	Root      *Box
 	Viewports map[string]Viewport
 	Tabs      map[string]TabsLayout
@@ -89,7 +90,7 @@ func validateScrollOwners(n *parser.Instance) error {
 		}
 	case "widget":
 		switch n.Widget {
-		case "button", "input", "svg", "tree", "list", "command", "item", "separator":
+		case "button", "input", "svg", "tree", "list", "command", "item", "separator", "checkbox", "slider", "select", "number":
 		default:
 			return diag(n, "unsupported-widget", "Unsupported widget kind "+n.Widget)
 		}

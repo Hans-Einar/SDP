@@ -131,6 +131,20 @@ func Check(profile string, root *parser.Instance, supported Capabilities) error 
 		case "widget":
 			id := n.Widget
 			switch id {
+			case "checkbox", "slider", "select", "number":
+				if profile != "sdui/0.3" {
+					return &Diagnostic{Capability: Capability{Widget, id, 1}, Path: n.Path, Span: n.Span, Uses: n.Uses}
+				}
+				if id == "select" {
+					if err := require(n, Provider, "choice-options"); err != nil {
+						return err
+					}
+				}
+				if argumentBool(n, "readOnly", false) {
+					if err := require(n, Host, "read-only"); err != nil {
+						return err
+					}
+				}
 			case "button", "input":
 			case "command", "item", "separator":
 				if profile != "sdui/0.3" {

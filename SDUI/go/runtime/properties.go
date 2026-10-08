@@ -3,14 +3,19 @@ package runtime
 import (
 	"fmt"
 	"github.com/Hans-Einar/SDP/SDUI/go/parser"
+	"sort"
 	"strings"
 	"unicode/utf8"
 )
 
 func (s *Session) Apply(revision, batch uint64, updates []Update) error {
+	state := s.StateRevision
 	n, err := s.applyCandidate(revision, batch, updates)
 	if err != nil {
 		return err
+	}
+	if s.StateRevision != state {
+		return fault("stale-validation", "State changed while validating batch")
 	}
 	return s.publish(n)
 }
@@ -24,10 +29,18 @@ func (s *Session) applyCandidate(revision, batch uint64, updates []Update) (*Ses
 	if len(updates) > 256 {
 		return nil, fault("update-limit", "Batch exceeds 256 updates")
 	}
+	// Each property observes the pre-batch revisions. Validation metadata is staged
+	// last so distinct-property order never changes the final field feedback.
+	updates = append([]Update(nil), updates...)
+	sort.SliceStable(updates, func(i, j int) bool {
+		return updates[i].Property != ValidationState && updates[j].Property == ValidationState
+	})
+	candidate := s.copyState()
+	touched := map[string]bool{}
 	next := map[string]*Widget{}
 	seen := map[string]bool{}
 	for _, u := range updates {
-		original, e := s.lookupControl(u.Handle)
+		original, e := candidate.lookupControl(u.Handle)
 		if e != nil {
 			return nil, e
 		}
@@ -36,6 +49,23 @@ func (s *Session) applyCandidate(revision, batch uint64, updates []Update) (*Ses
 			return nil, fault("duplicate-property", key)
 		}
 		seen[key] = true
+		if candidate.fields[u.Handle.Path] != nil && (u.Property == AcceptedValue || u.Property == ReadOnly || u.Property == ValidationState) {
+			if err := s.checkFieldUpdate(u); err != nil {
+				return nil, err
+			}
+			if previous := next[u.Handle.Path]; previous != nil {
+				candidate.widgets[u.Handle.Path] = previous
+			}
+			if err := candidate.applyFieldUpdate(u); err != nil {
+				return nil, err
+			}
+			next[u.Handle.Path] = candidate.widgets[u.Handle.Path]
+			touched[u.Handle.Path] = true
+			continue
+		}
+		if u.Validation != nil || u.ExpectedOptionGeneration != 0 {
+			return nil, fault("property-type", "Unexpected field metadata")
+		}
 		w := next[u.Handle.Path]
 		if w == nil {
 			copy := *original
@@ -104,7 +134,6 @@ func (s *Session) applyCandidate(revision, batch uint64, updates []Update) (*Ses
 		}
 	}
 
-	candidate := s.copyState()
 	for path, w := range next {
 		if candidate.panes[path] != nil {
 			candidate.panes[path] = w
@@ -139,6 +168,14 @@ func (s *Session) applyCandidate(revision, batch uint64, updates []Update) (*Ses
 	}
 	if err := candidate.validateExclusive(); err != nil {
 		return nil, err
+	}
+	for path := range touched {
+		if err := candidate.validateField(path); err != nil {
+			return nil, err
+		}
+		if seen[path+"/"+string(AcceptedValue)] && candidate.fields[path].Validation.Code != "" {
+			return nil, fault("field-validation", candidate.fields[path].Validation.Message)
+		}
 	}
 	candidate.BatchRevision = batch
 	return candidate, nil

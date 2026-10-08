@@ -4,6 +4,7 @@ package runtime
 
 import (
 	"fmt"
+	"math"
 	"strings"
 
 	"github.com/Hans-Einar/SDP/SDUI/go/parser"
@@ -23,9 +24,11 @@ const (
 )
 
 type Value struct {
-	Kind ValueKind
-	Text string
-	Bool bool
+	Kind     ValueKind
+	Text     string
+	Bool     bool
+	Number   float64
+	OptionID ItemID
 }
 
 func Text(v string) Value { return Value{Kind: String, Text: v} }
@@ -45,6 +48,7 @@ const (
 )
 
 type Event struct {
+	Control                                *ControlCommit
 	Command                                *CommandInvocation
 	Dialog                                 *DialogRequest
 	StateRevision                          uint64
@@ -66,11 +70,13 @@ const (
 )
 
 type Update struct {
-	Handle                Handle
-	Property              Property
-	Value                 Value
-	ExpectedValueRevision uint64
-	AcceptDraft           bool
+	ExpectedDraftRevision, ExpectedOptionGeneration uint64
+	Validation                                      *FieldValidation
+	Handle                                          Handle
+	Property                                        Property
+	Value                                           Value
+	ExpectedValueRevision                           uint64
+	AcceptDraft                                     bool
 }
 type Handler func(Event) ([]Update, error)
 type Widget struct {
@@ -132,11 +138,19 @@ func validValue(v Value, kind ValueKind) bool {
 	if v.Kind != kind {
 		return false
 	}
-	if kind == String {
-		return !v.Bool && len(v.Text) <= 32768
+	switch kind {
+	case String:
+		return !v.Bool && v.Number == 0 && v.OptionID == "" && len(v.Text) <= 32768
+	case Boolean:
+		return v.Text == "" && v.Number == 0 && v.OptionID == ""
+	case Number:
+		return v.Text == "" && !v.Bool && v.OptionID == "" && !math.IsNaN(v.Number) && !math.IsInf(v.Number, 0)
+	case OptionID:
+		return v.Text == "" && !v.Bool && v.Number == 0
 	}
-	return v.Text == ""
+	return false
 }
+
 func (s *Session) lookup(h Handle) (*Widget, error) {
 	if s.closed {
 		return nil, fault("closed", "Session is closed")

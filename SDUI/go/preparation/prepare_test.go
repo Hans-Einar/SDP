@@ -213,3 +213,75 @@ func TestSelectedConnectionsAndUnboundHandle(t *testing.T) {
 		t.Fatal("unmatched connection passed readiness")
 	}
 }
+
+func TestBindingReadinessPrecedesNativeResourcePreparation(t *testing.T) {
+	r := request(t)
+	r.Mode = preparation.Connected
+	allocations := 0
+	r.PreparePresentation = func(ui.Snapshot) (ui.PresentationTicket, error) { allocations++; return ui.PresentationTicket{}, nil }
+	r.Bind = func(*ui.Session, *parser.Document) error { return errors.New("typed binding unavailable") }
+	if _, err := preparation.Prepare(r); err == nil || allocations != 0 {
+		t.Fatal("failed binder allocated native candidate", err, allocations)
+	}
+	r.Bind = func(*ui.Session, *parser.Document) error { return nil }
+	if _, err := preparation.Prepare(r); err == nil || allocations != 0 {
+		t.Fatal("no-op binder allocated native candidate", err, allocations)
+	}
+}
+
+func TestChoiceProviderAndHostCapabilitiesRemainDistinct(t *testing.T) {
+	doc, err := parser.Parse(`sdui 0.3; page=[choice=select("Choice",readOnly=true){visible=false}];`)
+	if err != nil {
+		t.Fatal(err)
+	}
+	caps := append(admission.FieldCapabilities(), preparation.Capability{Dimension: preparation.Provider, ID: "choice-options", Major: 1})
+	r := preparation.Request{Document: doc, Entry: "page", SessionID: "choices", SourceRevision: "v1", Mode: preparation.Prototype, Capabilities: caps, Choices: map[string][]ui.ChoiceOption{"page/choice": {}}, ValidateLayout: func(*parser.Instance) error { return nil }}
+	c, err := preparation.Prepare(r)
+	if err != nil {
+		t.Fatal("supplied empty choices", err)
+	}
+	c.Close()
+	for _, missing := range []preparation.Capability{{Dimension: preparation.Provider, ID: "choice-options", Major: 1}, {Dimension: preparation.Host, ID: "select", Major: 1}, {Dimension: preparation.Host, ID: "read-only", Major: 1}, {Dimension: preparation.Widget, ID: "select", Major: 1}} {
+		r.Capabilities = nil
+		for _, cap := range caps {
+			if cap != missing {
+				r.Capabilities = append(r.Capabilities, cap)
+			}
+		}
+		_, err = preparation.Prepare(r)
+		var d *preparation.Diagnostic
+		if !errors.As(err, &d) || d.Capability != missing || d.Path != "page/choice" {
+			t.Fatal("hidden scalar lost capability distinction", missing, err)
+		}
+	}
+	r.Capabilities = caps
+	r.Choices = nil
+	if _, err = preparation.Prepare(r); err == nil {
+		t.Fatal("unsupplied choices treated as empty")
+	}
+}
+
+func TestLegacyPreparationAddsNoChoicePublication(t *testing.T) {
+	r := request(t)
+	r.ValidateLayout = func(*parser.Instance) error { return nil }
+	roots, err := parser.Normalize(r.Document)
+	if err != nil {
+		t.Fatal(err)
+	}
+	baseline, err := ui.New(r.SessionID, roots[r.Entry])
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer baseline.Close()
+	if err = baseline.BindProviders(nil); err != nil {
+		t.Fatal(err)
+	}
+	c, err := preparation.Prepare(r)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer c.Close()
+	if c.Session.StateRevision != baseline.StateRevision {
+		t.Fatal("legacy preparation gained unrelated choices publication", c.Session.StateRevision, baseline.StateRevision)
+	}
+}

@@ -37,6 +37,17 @@ func (e *Engine) collectionMetrics(n *parser.Instance, font float64, outer Size)
 }
 
 func (e *Engine) measureWidget(n *parser.Instance, font, limit float64, size, slot Size, known assigned) (Size, Size, error) {
+	if scalarField(n) {
+		outer := slot
+		if known.x {
+			outer.W = size.W
+		}
+		if known.y {
+			outer.H = size.H
+		}
+		m, err := e.fieldMetrics(n, font, outer)
+		return m.Minimum, m.Minimum, err
+	}
 	if !collection(n) || e.profile != "sdui/0.3" {
 		s, err := e.Measure.Measure(n, font, limit)
 		if err == nil && e.profile == "sdui/0.3" && !finiteExtent(s) {

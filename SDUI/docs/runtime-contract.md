@@ -310,3 +310,60 @@ checked/accepted values and discard unaccepted dialog drafts. Main/page drafts
 retain existing behavior. Failed preparation preserves live openings and requests.
 Runtime remains independent of layout/GUI; multiple canvases, actual modal/nonmodal
 windows, focus and completion observers belong to the host and native evidence.
+
+## WCI3-M1 typed scalar fields — development 0.3
+
+Checkbox, slider, select and number use detached `Snapshot.Fields` keyed by exact
+instance path. Number and OptionID are typed Value payloads; legacy input's string
+Value/Draft remains its single authority. Invalid numeric raw drafts remain visible
+with bounded validation feedback and cannot become accepted Number or SDL calls.
+ReadOnly rejects user mutation/Commit but permits focus, copying and checked Apply.
+
+EditField/EditTick validate the current ModelRevision; ChooseOption carries an exact
+OptionTarget. Accepted edits publish before one copied Change notification. Automatic
+Commit must use the returned FieldTarget, including its original state/value/draft
+revisions and option generation. An observer's newer accepted edit invalidates that
+capture; hosts may not recapture it to make the old gesture current. CaptureCommit
+and existing Dispatch/Handler perform the checked typed Commit. A successful callback
+must explicitly accept that exact source proposal; an unrelated update alone is not
+an accepted Commit. No automatic domain replay follows rejected UI delivery.
+
+AcceptedValue, ReadOnly and ValidationState compare required revision guards against
+the same original batch baseline. Distinct-property order is irrelevant; invalid
+mixed batches publish nothing. Validator output is bounded, detached and pure;
+accepted reentrant work invalidates the outer result. Programmatic changes, initial
+binding, reload and RevertField are silent. An unbound automatic Commit outside a
+dialog may accept locally; inside an open dialog it keeps the proposal for owner
+Accept. An explicitly bound child Commit persists through later Cancel.
+
+BindChoices requires the exact select inventory and at most 4096 unique nonempty
+stable IDs per field. Duplicate labels are valid. Unsupplied generation zero differs
+from supplied-empty. ReplaceChoices advances generation, revokes old popup tokens
+and retains removed/disabled accepted IDs for diagnosis while clearing the proposal.
+There is no index-based substitution, hidden collection or implicit first choice.
+SuccessorWithChoices validates supplied sets before retaining compatible values;
+main/inactive-page drafts survive. A compatible already-required accepted-empty
+select retains its invalid editable initialization baseline without revision advance
+or invented selection; newly-required blank and nonempty ineligible accepted IDs
+still reject. Closed-dialog unaccepted proposals reset to current
+accepted values, and earlier child commits survive. Detached successors copy no
+closures; compatibility Reload retains compatible handlers/validators/observers and
+checks reentrance. Failed replacement preserves the live bundle.
+
+DialogControls captures mixed typed fields under the existing exact opening, 256
+combined-write, validation and domain-outcome protocol. DialogFields/DialogField
+and SDL DialogFieldValue remain text-only. Explicit Go InteractionHandler owns mixed
+form persistence; SDUI does not invent heterogeneous SDL record mappings.
+
+SDL ScalarResult is closed typed Commit delivery with one explicit self setHandle,
+OutputField and matching actual signature/result. ControlBoolean maps Boolean,
+ChoiceOptionID maps the stable ID to text, and ControlNumber maps only checked safe53
+integer grids/values. Original numeric source/raw lexemes are checked exactly before
+conversion; fractional Go values never travel as SDL text. ControlText/TextResult
+continues existing basic input behavior; extended input is subsequent WCI3-M2.
+
+The shared stdlib-only numeric package performs bounded exact decimal admission,
+raw range/grid checks and typed binary64 reconstructed-point round trips. It exposes
+immutable Grid operations, including exact Text(tick); only native gestures may snap.
+See [numeric bounds](../go/numeric/README.md). This implementation description is
+not native/whole-stage acceptance; final evidence is recorded by PLAN-SDP-0022.

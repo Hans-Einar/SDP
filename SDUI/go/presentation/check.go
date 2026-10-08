@@ -32,9 +32,9 @@ func check(root *parser.Instance) error {
 		}
 		switch n.Widget {
 		case "button", "input", "svg":
-		case "tree", "list", "command", "item", "separator":
+		case "tree", "list", "command", "item", "separator", "checkbox", "slider", "select", "number":
 			if profile != "sdui/0.3" {
-				err = diagnostic("widget-kind", n.Path+": collection requires sdui/0.3", n)
+				err = diagnostic("widget-kind", n.Path+": widget requires sdui/0.3", n)
 			}
 		default:
 			err = diagnostic("widget-kind", n.Path+": unsupported widget "+n.Widget, n)

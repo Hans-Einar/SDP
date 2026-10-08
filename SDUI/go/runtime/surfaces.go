@@ -107,7 +107,7 @@ func (s *Session) firstSurfaceFocus(path string) string {
 			return
 		}
 		w := s.currentControl(public(n.Path))
-		if w != nil && s.inputAllowed(w) && (w.Handle.Kind == "input" || w.Handle.Kind == "button" || w.Handle.Kind == "tree" || w.Handle.Kind == "list" || w.Handle.Kind == "tabs" || w.Handle.Kind == "split") {
+		if w != nil && s.inputAllowed(w) && (w.Handle.Kind == "input" || w.Handle.Kind == "button" || w.Handle.Kind == "tree" || w.Handle.Kind == "list" || w.Handle.Kind == "tabs" || w.Handle.Kind == "split" || scalar(w.Handle.Kind)) {
 			first = w.Handle.Path
 		}
 	})
@@ -199,6 +199,11 @@ func (s *Session) closeSurface(t SurfaceTarget, kind, reason string, seq uint64,
 			s.closeSurface(child.Target, "close", childReason, 0, nil)
 		}
 	}
+	for path, w := range s.widgets {
+		if s.ownerSurface[w.InstancePath] == d.Handle.Path && s.fields[path] != nil {
+			s.resetField(path)
+		}
+	}
 	owned, _ := s.DialogFields(d.Handle)
 	for _, field := range owned {
 		w := s.widgets[field.Handle.Path]
@@ -220,7 +225,7 @@ func (s *Session) closeSurface(t SurfaceTarget, kind, reason string, seq uint64,
 		}
 	}
 	if s.publishedSurfaces[t] {
-		s.dialogResults = append(s.dialogResults, DialogResult{Surface: t, Sequence: seq, AcceptSequence: d.AcceptSequence, Kind: kind, Reason: reason, Domain: d.Domain, Fields: append([]DraftField(nil), fields...)})
+		s.dialogResults = append(s.dialogResults, DialogResult{Surface: t, Sequence: seq, AcceptSequence: d.AcceptSequence, Kind: kind, Reason: reason, Domain: d.Domain, Fields: copyDraftFields(fields)})
 		delete(s.publishedSurfaces, t)
 	}
 	d.Open = false

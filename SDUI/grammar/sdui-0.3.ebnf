@@ -64,3 +64,14 @@ hex            = digit | "a" .. "f" | "A" .. "F" ;
 (* Profile 0.3 additionally validates tree/list calls: required nonblank string
    label (positional first or named), optional symbolic callback. Callbacks
    require named widgets. No provider/data literals or new callback syntax. *)
+
+(* WCI3-M1 leaves: checkbox(label, value?:boolean, readOnly?:boolean, callback?),
+   slider(label,min,max,step,value,readOnly?,callback?),
+   number(label,min,max,step,value,readOnly?,placeholder?:string,callback?),
+   select(label,value?:string,required?:boolean,readOnly?:boolean,callback?).
+   Only label is positional; each following argument is named. min/max/step/value
+   in slider/number must be numeric tokens: parser preserves their exact spelling
+   as number-lexeme Literals; quoted strings reject. Other numeric literals keep
+   their existing representation. Scalar controls accept no body. No source
+   options/provider/validator/onChange expressions. Input extensions belong to
+   subsequent WCI3-M2 and are not accepted by this grammar's current schema. *)

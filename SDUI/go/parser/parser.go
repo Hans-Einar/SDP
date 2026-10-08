@@ -138,6 +138,17 @@ func (p *reader) node(depth int, parent string) *Node {
 			n.Kind = "widget"
 			n.Widget = str(name)
 			n.Arguments = p.arguments()
+			if p.profile == "sdui/0.3" && (name == "slider" || name == "number") {
+				for i := range n.Arguments {
+					a := &n.Arguments[i]
+					if a.Name != nil && member(*a.Name, "min max step value") {
+						if v, ok := a.Value.(Literal); ok && v.Kind == "number" {
+							v.Kind, v.Value = "number-lexeme", p.source[v.Span.Start:v.Span.End]
+							a.Value = v
+						}
+					}
+				}
+			}
 			p.take(")")
 			if p.profile == "sdui/0.3" && p.accept("[") {
 				n.Kind = "composition"

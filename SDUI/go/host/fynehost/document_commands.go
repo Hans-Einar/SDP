@@ -289,7 +289,7 @@ func (b *Bundle) routeShortcut(c fyne.Canvas, shortcut fyne.Shortcut) {
 	context := &desktop.CustomShortcut{KeyName: fyne.KeyF10, Modifier: fyne.KeyModifierShift}
 	if shortcut.ShortcutName() == context.ShortcutName() {
 		for path, control := range b.view.Controls {
-			if focused, ok := control.(fyne.Focusable); ok && focused == c.Focused() {
+			if focused, ok := controlFocusable(control); ok && focused == c.Focused() {
 				item := ui.ItemID("")
 				if collection, ok := control.(*CollectionControl); ok {
 					item = collection.state.Focused

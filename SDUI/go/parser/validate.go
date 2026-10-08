@@ -16,6 +16,9 @@ var widgets = map[string]widgetSchema{
 
 func schemaFor(profile, kind string) (widgetSchema, bool) {
 	if profile == "sdui/0.3" {
+		if schema, ok := scalars[kind]; ok {
+			return schema, true
+		}
 		if schema, ok := interactions[kind]; ok {
 			return schema, true
 		}
@@ -161,7 +164,7 @@ func validateLocal(d *Document) {
 			}
 			if n.Kind == "widget" || n.Kind == "composition" {
 				decl := n
-				if d.Profile == "sdui/0.3" && n == def.Root && isInteractionNode(&Instance{Profile: d.Profile, Kind: n.Kind, Widget: val(n.Widget), Arguments: widgetArguments(n, d.Profile)}) {
+				if d.Profile == "sdui/0.3" && n == def.Root && (scalarKind(val(n.Widget)) || isInteractionNode(&Instance{Profile: d.Profile, Kind: n.Kind, Widget: val(n.Widget), Arguments: widgetArguments(n, d.Profile)})) {
 					copy := *n
 					copy.Name = str(def.Name)
 					decl = &copy
@@ -169,6 +172,12 @@ func validateLocal(d *Document) {
 				validateWidget(decl, modules, d.Profile)
 				validatePaneSource(n, d.Profile)
 				validateInteractionSource(decl, d.Profile)
+				if d.Profile == "sdui/0.3" && scalarKind(val(n.Widget)) {
+					if len(n.Rows) != 0 {
+						fail("value-body", "Scalar controls are leaves", n.Span)
+					}
+					validateScalar(&Instance{Profile: d.Profile, Kind: n.Kind, Widget: val(n.Widget), Arguments: widgetArguments(n, d.Profile), Span: n.Span})
+				}
 			}
 			roles := map[string]bool{}
 			body := false

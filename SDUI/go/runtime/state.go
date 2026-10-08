@@ -7,6 +7,7 @@ import (
 
 type ViewportState struct{ X, Y float64 }
 type Snapshot struct {
+	Fields                                 map[string]FieldState
 	Commands                               map[string]CommandState
 	Presentations                          map[string]CommandPresentation
 	Menus                                  map[string]MenuState
@@ -36,6 +37,7 @@ func copyViewports(in map[string]ViewportState) map[string]ViewportState {
 func (s *Session) Snapshot() Snapshot {
 	v := Snapshot{Tabs: map[string]TabsState{}, Splits: map[string]SplitState{}, Focused: s.focused, Root: s.SnapshotRoot(), ModelRevision: s.Revision, StateRevision: s.StateRevision, Sequence: s.sequence, Collections: map[string]CollectionState{}, Viewports: copyViewports(s.viewports), ViewportHandles: map[string]Handle{}}
 	s.snapshotCommands(&v)
+	s.snapshotFields(&v)
 	for _, t := range s.tabs {
 		v.Tabs[t.InstancePath] = copyTabs(t)
 	}
@@ -64,6 +66,7 @@ func (s *Session) copyState() *Session {
 	n.viewports = copyViewports(s.viewports)
 	s.copyPanes(&n)
 	s.copyCommands(&n)
+	s.copyFields(&n)
 	return &n
 }
 func (s *Session) validateViewports(offsets map[string]ViewportState) error {

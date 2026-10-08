@@ -8,6 +8,9 @@ import (
 // Successor creates a detached candidate without handlers or presentation gates.
 // It never cancels old requests, executes providers or mutates the live Session.
 func (s *Session) Successor(root *parser.Instance, providers map[string]CollectionProvider) (*Session, error) {
+	return s.successor(root, providers, nil, false)
+}
+func (s *Session) successor(root *parser.Instance, providers map[string]CollectionProvider, choices map[string][]ChoiceOption, explicitChoices bool) (*Session, error) {
 	if s.closed {
 		return nil, fault("closed", "Session is closed")
 	}
@@ -37,6 +40,9 @@ func (s *Session) Successor(root *parser.Instance, providers map[string]Collecti
 	}
 	n.inheritPanes(s)
 	n.inheritCommands(s)
+	if err = n.inheritFields(s, choices, explicitChoices); err != nil {
+		return nil, err
+	}
 	// Source order makes generation allocation deterministic.
 	n.root.Walk(func(node *parser.Instance) {
 		h, ok := n.viewportHandles[node.Path]

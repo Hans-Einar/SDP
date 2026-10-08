@@ -3,7 +3,8 @@
 The shared `go/layout` package owns measured outer geometry. Its original G2
 behavior remains the SDUI 0.2 path; WCI1 adds bounded SDUI 0.3 snapshot/viewports,
 WCI2-M1 adds measured tabs/page/split geometry; WCI2-M2 adds native bar-menu
-measurement and independent surface canvases. The [0.3 source profile](profile-0.3.md) and
+measurement and independent surface canvases. WCI3-M1 adds native measured scalar
+control parts from typed field snapshots. The [0.3 source profile](profile-0.3.md) and
 [WCI1 collection contract](../../SDP/04--Design/SDUI/Widgets/Collections.md) distinguish
 source acceptance, runtime state, native integration and their acceptance evidence.
 
@@ -53,7 +54,7 @@ WCI1 does not reinterpret 0.2 scroll as supported clipping or scrolling. Ordinar
 supported 0.2 static SVG behavior remains covered by regression tests.
 
 For 0.3, supported scroll owners are frames, groups, trees and lists. Direct scroll
-on button/input/svg/Markdown rejects. Every scroll axis needs an explicit fill/fr,
+on button/input/svg/Markdown and scalar controls rejects. Every scroll axis needs an explicit fill/fr,
 scale or resolved frame-ratio dimension; a content-dependent viewport rejects with
 `scroll-layout`. A scroll owner requires `justify=start`. Owner/axis/justification
 checks include hidden branches. Unknown 0.3 instance/widget kinds also reject.
@@ -84,6 +85,7 @@ type SnapshotLayout struct {
     Viewports map[string]Viewport
     Tabs      map[string]TabsLayout
     Splits    map[string]SplitLayout
+    Fields    map[string]FieldLayout // omitted from JSON when empty
 }
 
 type Viewport struct {
@@ -228,9 +230,8 @@ reject before producing any artifact.
 
 These tests use synthetic collection adapter metrics. They do not prove native
 Fyne painting, row metrics, thumb dragging, external keyboard/pointer input or
-atomic native resource publication. Those WCI1 acceptance obligations remain
-pending integrated native verification. This contract adds no later widget-family
-or future-stage support claim.
+atomic native resource publication. Native acceptance belongs to the corresponding phase evidence; synthetic layout
+checks alone do not establish it. No WCI3-M2 text/IME support is claimed here.
 
 ## Native frame/group gutters
 
@@ -384,3 +385,61 @@ that tree. Resolving a dialog subtree as an independent selected entry would los
 shared-command references outside it. Public M2 SVG remains unsupported. Layout
 tests do not establish actual menu ordering, SDL execution, native window focus,
 modal behavior or lifecycle receipts; those require integrated native evidence.
+
+
+## WCI3-M1 scalar fields
+
+Checkbox, slider, select and number are ordinary leaf boxes with native measured
+parts. They require the existing snapshot entry points and an optional native
+`FieldMeasurer` adjunct. The full signatures and coordinate rules are in the
+[scalar API](wci3-m1-layout-api.md). Layout never parses numbers, chooses an option,
+accepts a value, or replaces source `number-lexeme` arguments with native display
+values. Legacy input measurement and all 0.2 geometry remain unchanged.
+
+`MeasureField(instance, field, font, outer)` receives a detached copy of the exact
+prospective `runtime.FieldState`. `Snapshot.Fields` and `InstancePath` use normalized
+paths; public runtime handle paths can differ for anonymous/reused nodes and are
+not normalized again by layout. Missing or mismatched active field data rejects
+with `field-snapshot`. The source-only `Layout` method therefore cannot supply
+scalar geometry. Choice/provider readiness and numeric validation remain runtime
+and preparation responsibilities, including hidden or closed declarations.
+
+`FieldMetrics.Minimum` is positive, finite native outer size including label,
+control, step buttons and feedback chrome once. Native host measurement reserves a
+fixed feedback row. Intrinsic/minimum probes consume only `Minimum`, including
+when a probe is smaller than native chrome. At final allocation all parts must
+fit the assigned outer rectangle; source maxima cannot bypass the native minimum.
+Missing/malformed metrics reject with `field-measurement`; insufficient assigned
+space rejects with `native-minimum`. Relative sizes and recursive pane minimums
+continue to use finite content references and the existing operation budget.
+
+`SnapshotLayout.Fields[path]` returns label, control, feedback and optional
+number decrement/increment rectangles with individual effective clips. These use
+their owning canvas's coordinates, translated by ancestor offsets once. A number's
+`Control` is its editable entry, excluding both step buttons; the buttons must not
+overlap it or each other. A native checkbox may include its label in its combined
+control rectangle. Active validation needs a nonempty feedback region that does
+not overlap labels or controls. Absent optional parts are zero rectangles.
+
+`Enabled` includes disabled ancestors. `ReadOnly` projects runtime field metadata
+without disabling focus or readable hit geometry. Native/runtime adapters enforce
+mutation eligibility. Existing `Box.Hit`, viewport routing and `EnsureVisible`
+remain applicable, including using an exact number-button rectangle as the reveal
+target. No scalar-specific scroll state or event authority is introduced.
+
+Fields in hidden/inactive branches and closed surfaces contribute no geometry.
+Open dialogs use their accepted local canvas allocation. Parent resize does not
+rescale an existing nonmodal field canvas. `PresentationState` still supplies only
+viewport offsets and split bounds; the same final preparation ticket publishes
+scalar parts with the rest of the presentation. A failed geometry candidate
+returns no result and does not publish typed drafts, observers or partial canvases.
+
+Scoped scalar tests cover the four kinds, fixed validation feedback and exact
+source preservation, detached metric arguments, anonymous/reused identities,
+relative nested translation/clipping, readonly/disabled hits, exact step-button
+revelation, split minima, hidden/page/surface exclusion, malformed metrics and
+0.2 byte-compatible geometry. Real runtime tests exercise geometry rejection
+before draft/observer/ticket publication, invalid raw-number feedback and failed
+child-canvas resize retaining the current draft and presentation. These use
+synthetic metrics; native painting, accessibility, gestures and SDL execution
+remain separate integration evidence.

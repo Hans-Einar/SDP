@@ -25,6 +25,7 @@ type Request struct {
 	Document                         *parser.Document
 	Previous                         *ui.Session
 	Providers                        map[string]ui.CollectionProvider
+	Choices                          map[string][]ui.ChoiceOption
 	ValidateState                    ui.StateGate
 	ValidatePresentation             ui.PresentationGate
 	PreparePresentation              ui.PresentationPrepare
@@ -92,15 +93,28 @@ func Prepare(r Request) (*Candidate, error) {
 	if r.ValidateLayout == nil && r.ValidateState == nil && r.ValidatePresentation == nil {
 		return nil, fmt.Errorf("preparation: layout validator required")
 	}
+	needsChoices := len(r.Choices) > 0
+	root.Walk(func(n *parser.Instance) {
+		if n.Widget == "select" {
+			needsChoices = true
+		}
+	})
 	var s *ui.Session
 	var oldState, oldModel uint64
 	if r.Previous != nil {
 		oldState, oldModel = r.Previous.StateRevision, r.Previous.Revision
-		s, err = r.Previous.Successor(root, r.Providers)
+		if needsChoices {
+			s, err = r.Previous.SuccessorWithChoices(root, r.Providers, r.Choices)
+		} else {
+			s, err = r.Previous.Successor(root, r.Providers)
+		}
 	} else {
 		s, err = ui.New(r.SessionID, root)
 		if err == nil {
 			err = s.BindProviders(r.Providers)
+			if err == nil && needsChoices {
+				err = s.BindChoices(r.Choices)
+			}
 		}
 	}
 	if err != nil {
@@ -116,6 +130,13 @@ func Prepare(r Request) (*Candidate, error) {
 			c.Close()
 		}
 	}()
+	// Options must be supplied even for hidden/closed controls. Positive generation
+	// distinguishes an admitted empty inventory from an absent provider.
+	for path, field := range s.Snapshot().Fields {
+		if field.Target.Handle.Kind == "select" && field.Target.OptionGeneration == 0 {
+			return nil, fmt.Errorf("choice-options: missing %s", path)
+		}
+	}
 	if r.ValidateLayout != nil {
 		if err = r.ValidateLayout(s.SnapshotRoot()); err != nil {
 			return nil, err
@@ -128,11 +149,6 @@ func Prepare(r Request) (*Candidate, error) {
 	}
 	if r.ValidatePresentation != nil {
 		if err = s.CheckPresentationWith(r.ValidatePresentation); err != nil {
-			return nil, err
-		}
-	}
-	if r.PreparePresentation != nil {
-		if err = s.PreparePresentationWith(r.PreparePresentation); err != nil {
 			return nil, err
 		}
 	}
@@ -191,7 +207,7 @@ func Prepare(r Request) (*Candidate, error) {
 		for _, con := range selected.Connections {
 			target := con.Definition + "/" + strings.Join(con.Path, "/")
 			w, ok := s.Widget(target)
-			if !ok || w.Handle.Kind != "input" || !symbols[con.Module+"."+con.Object] {
+			if !ok || !fieldReceiver(w.Handle.Kind) || !symbols[con.Module+"."+con.Object] {
 				return nil, fmt.Errorf("unbound-handle: %s", target)
 			}
 		}
@@ -202,6 +218,25 @@ func Prepare(r Request) (*Candidate, error) {
 		}
 		c.Unbound = 0
 	}
+	// The binder and all readiness postchecks precede native candidate resources.
+	// Pure layout/presentation validation still precedes application binding.
+	if r.PreparePresentation != nil {
+		if err = s.PreparePresentationWith(r.PreparePresentation); err != nil {
+			return nil, err
+		}
+	}
+	c.stateRevision = s.StateRevision
+	if err = c.Admit(r.SourceRevision); err != nil {
+		return nil, err
+	}
 	success = true
 	return c, nil
+}
+
+func fieldReceiver(kind string) bool {
+	switch kind {
+	case "input", "checkbox", "slider", "select", "number":
+		return true
+	}
+	return false
 }

@@ -101,7 +101,7 @@ See the [runnable real SDL collection fixture](../../../../SDL/go/examples/colle
 ## M1 panes and accepted preparation
 
 DocumentHost admits tabs/page/split and the selected M2 controls using
-`CommandCapabilities`; legacy RuntimeView and standalone prototype callers retain
+`CommandCapabilities` (extended by WCI3 `FieldCapabilities`); legacy RuntimeView and standalone prototype callers retain
 their narrower capabilities. Symbolic icons require `DocumentRequest.Icons`,
 including icons in hidden/closed declarations. Missing or unsupported resources
 reject preparation. Prepared bytes retain the native theme-color contract.
@@ -198,3 +198,70 @@ See the [real SDL commands fixture](../../../../SDL/go/examples/commands/README.
 [layout canvas contract](../../../docs/wci2-m2-layout-api.md) and
 [runtime M2 contract](../../runtime/README.md). Coordinator-owned native acceptance
 and independent review remain separate from these implementation tests.
+
+## WCI3-M1 typed scalar controls
+
+The document host adds `checkbox`, `slider`, `select` and `number` through
+`FieldCapabilities`. Legacy `.2` RuntimeView, public SVG and standalone prototype
+admission retain their narrower contracts. Extended input/text/IME is not part of
+this milestone.
+
+Supply `DocumentRequest.Choices` as `map[string][]runtime.ChoiceOption`, keyed by
+exact normalized select paths, including hidden and closed-dialog declarations.
+Every select needs an entry; an explicitly empty slice differs from an absent
+provider. IDs identify options; duplicate display labels remain distinct. Runtime
+owns the copied inventory, accepted/proposed values, validation, revisions and
+option generations. `BindChoices`/`SuccessorWithChoices` establish readiness before
+native resources, and connected binding validation/postchecks also precede the
+final native preparation hook. Widget, host and choice-provider capabilities are
+separate requirements.
+
+Use the runtime `ObserveChanges`/`ValidateFieldWith` and typed handler APIs from the
+application binding adapter. A user Change publishes a proposal before Commit.
+Checkbox and choice gestures commit their original returned `FieldChange.Field.Target`;
+a reentrant observer cannot cause the host to recapture and authorize a different
+automatic Commit. Slider release/key-up and number Enter explicitly capture the
+current field. Ordinary synchronization and checked application `Apply` emit no user
+Change/Commit. Failed native preparation preserves the previous presentation and
+restores the native number entry's raw projection. Runtime's existing private
+accepted-preparation ticket remains the sole resource publication authority.
+
+The bounded adapters retain Fyne Check/Slider/Select/Entry painting and selection.
+Fyne Select identifies choices by display label and keeps its popup private, so the
+host uses the existing native menu adapter with exact captured `OptionTarget`s.
+Disabled entries cannot activate; replacing the option generation retires its popup,
+including an empty opening. Escape/outside dismissal does not propose a choice.
+The popup retains keyboard focus through ordinary synchronization.
+
+Fyne Slider's native numeric step rounding uses a zero origin and floating-point
+arithmetic. The adapter uses its normalized visual track only; shared `numeric.Grid`
+and runtime `EditTick` determine each legal value. Arrow/Home/End input changes a
+proposal while held and commits once on key-up. Pointer movement behaves similarly
+until release; Escape reverts and suppresses the remaining drag. Sync retains the
+same native object and gesture. Read-only controls remain focusable and refuse user
+mutation. The number Entry retains selection/copy; typing, paste/cut, stepping and
+Commit are blocked when read-only. Invalid raw numbers remain visible with fixed,
+ellipsized feedback and cannot be stepped. Full feedback remains in runtime state.
+Number step affordances reuse Button chrome without additional Tab stops; their
+native renderer owner receives the actual allocated size. Tab/blur never commits.
+
+`Bundle.Inspect()` adds `fields[path]`: `kind`, `canvas`, `title`, `visible`, `clip`,
+`label`, `control`, `feedback`, `entry`, `decrement`, `increment`, `slidertrack` and
+`sliderthumb`. Parts are actual native rectangles in the named canvas's logical
+coordinates; absent parts are zero rectangles. Consult visibility and clip before
+sending input. An open `choices[path]` contains its canvas/title/generation and
+`items[]` with `id`, `label`, `enabled`, `rect`, `clip`, and exact captured `target`.
+`Snapshot.Fields` is the authoritative typed state; these diagnostics add no model
+or command API. The main canvas ID is `main`; modal controls share their actual
+parent canvas and nonmodal controls identify their own window.
+
+The targeted host tests cover rejected resource tickets, reentrant Change, held
+slider gestures, exact large-origin stepping, invalid raw numbers, read-only copy,
+option identity/generation, empty inventory, native step hit rectangles and fixed
+feedback at several fonts. Native OS input/painting and whole-stage acceptance are
+coordinator-owned; the integration worker report records the tested candidate.
+
+See the [real SDL values fixture](../../../../SDL/go/examples/values/README.md),
+[scalar layout API](../../../docs/wci3-m1-layout-api.md),
+[runtime contract](../../runtime/README.md), and
+[values/text design](../../../../SDP/04--Design/SDUI/Widgets/Values-and-text.md).

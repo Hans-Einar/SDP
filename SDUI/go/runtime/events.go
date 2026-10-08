@@ -1,6 +1,9 @@
 package runtime
 
 func (s *Session) Dispatch(event Event) error {
+	if s.fields[event.Handle.Path] != nil || event.Control != nil {
+		return s.dispatchField(event)
+	}
 	if event.Command != nil || event.Dialog != nil || event.Page != nil || event.Split != nil || event.StateRevision != 0 {
 		return fault("event-type", "Unexpected interaction payload")
 	}

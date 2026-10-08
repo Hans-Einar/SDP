@@ -23,6 +23,7 @@ type DocumentRequest struct {
 	Entry, SessionID, SourceRevision string
 	Sequence                         uint64
 	Providers                        map[string]ui.CollectionProvider
+	Choices                          map[string][]ui.ChoiceOption
 	Mode                             preparation.Mode
 	Bind                             preparation.Binder
 	Guard                            func() error
@@ -135,7 +136,7 @@ func (h *DocumentHost) Prepare(r DocumentRequest) (*Bundle, error) {
 	}
 	h.latest, h.latestSource = r.Sequence, r.SourceRevision
 	b := &Bundle{owner: h, request: r, old: h.current, size: h.size, Document: r.Document, SourceRevision: r.SourceRevision, Sequence: r.Sequence, flights: map[string]providerFlight{}, surfaces: map[string]*nativeSurface{}, menus: map[string]*documentMenu{}, surfaceSizes: map[string]layout.Size{}}
-	req := preparation.Request{Document: r.Document, Entry: r.Entry, SessionID: r.SessionID, SourceRevision: r.SourceRevision, Mode: r.Mode, Bind: r.Bind, Providers: r.Providers, Capabilities: b.capabilities(), ValidatePresentation: b.stage, PreparePresentation: b.preparePresentation}
+	req := preparation.Request{Document: r.Document, Entry: r.Entry, SessionID: r.SessionID, SourceRevision: r.SourceRevision, Mode: r.Mode, Bind: r.Bind, Providers: r.Providers, Choices: r.Choices, Capabilities: b.capabilities(), ValidatePresentation: b.stage, PreparePresentation: b.preparePresentation}
 	if h.current != nil {
 		req.Previous = h.current.Session
 	}
@@ -169,7 +170,10 @@ func (b *Bundle) stage(snapshot ui.Snapshot) (ui.PresentationState, error) {
 	return measured.PresentationState(), nil
 }
 func (b *Bundle) capabilities() preparation.Capabilities {
-	caps := admission.CommandCapabilities()
+	caps := admission.FieldCapabilities()
+	if b.request.Choices != nil {
+		caps = append(caps, preparation.Capability{Dimension: preparation.Provider, ID: "choice-options", Major: 1})
+	}
 	if len(b.request.Icons) > 0 {
 		caps = append(caps, preparation.Capability{Dimension: preparation.Provider, ID: "icon", Major: 1})
 	}
@@ -225,6 +229,8 @@ func (b *Bundle) preparePresentation(snapshot ui.Snapshot) (ui.PresentationTicke
 		}
 		snapshot.Root.Walk(func(n *parser.Instance) {
 			switch {
+			case isScalar(n.Widget):
+				b.view.addPane(n.Path, newScalarControl(b, n))
 			case n.Widget == "svg" && snapshot.Root.Profile == "sdui/0.3":
 				b.view.addPane(n.Path, newContextControl())
 			case n.Widget == "tree" || n.Widget == "list":
@@ -341,8 +347,13 @@ func (h *DocumentHost) restoreFocus(b *Bundle) {
 			}
 		}
 	}
-	obj, ok := b.view.Controls[path].(fyne.Focusable)
+	obj, ok := controlFocusable(b.view.Controls[path])
 	canvas := b.canvasFor(path)
+	// A live choice opening owns keyboard focus until selection/dismissal. Its
+	// original option generation stays captured even across unrelated rendering.
+	if c, scalar := b.view.Controls[path].(*scalarControl); scalar && c.popup != nil && !c.popup.native.closed && !c.popup.native.dismissed {
+		return
+	}
 	if !ok || canvas == nil || canvas.Focused() == obj {
 		return
 	}
@@ -373,6 +384,7 @@ func (b *Bundle) closeReason(reason string) {
 	}
 	b.hideTooltip()
 	b.closed = true
+	b.closeChoices()
 	if b.Session != nil {
 		b.owner.status(b.Session.RevokeSurfaces(ui.Handle{}, reason))
 		for _, menu := range b.menus {

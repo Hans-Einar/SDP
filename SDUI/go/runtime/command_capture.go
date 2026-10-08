@@ -208,15 +208,30 @@ func (s *Session) CaptureDialog(t SurfaceTarget, kind EventKind) (Event, error) 
 		if d.AcceptBlocked {
 			return e, fault("accept-blocked", "Previous attempt cannot be replayed")
 		}
-		fields, _ := s.DialogFields(t.Handle)
+		fields, _ := s.DialogControls(t.Handle)
 		if len(fields) > 256 {
 			return e, fault("update-limit", "Captured fields exceed 256 writes")
 		}
-		for _, w := range fields {
-			if !validDraft(w.Draft) {
+		for _, f := range fields {
+			if f.Validation.Code != "" {
+				return e, fault("field-validation", f.Validation.Message)
+			}
+			if f.RawDraft != nil && !validDraft(*f.RawDraft) {
 				return e, fault("dialog-field", "Draft exceeds valid UTF-8 bound")
 			}
-			e.Dialog.Fields = append(e.Dialog.Fields, DraftField{w.Handle, Text(w.Draft), w.ValueRevision, w.DraftRevision})
+			d := DraftField{Handle: f.Target.Handle, Value: f.Proposed, ValueRevision: f.Target.ValueRevision, DraftRevision: f.Target.DraftRevision}
+			if scalar(d.Handle.Kind) {
+				d.RawDraft = copyString(f.RawDraft)
+				d.FieldValidation = f.Validation
+				if d.Handle.Kind == "select" {
+					option, err := s.Option(d.Handle, f.Proposed.OptionID)
+					if err != nil {
+						return e, err
+					}
+					d.OptionTarget = &option
+				}
+			}
+			e.Dialog.Fields = append(e.Dialog.Fields, d)
 		}
 	}
 	return e, nil

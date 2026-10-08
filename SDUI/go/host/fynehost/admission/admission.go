@@ -76,3 +76,13 @@ func CommandCapabilities() preparation.Capabilities {
 	}
 	return caps
 }
+
+// FieldCapabilities belongs to the document host's typed scalar adapters.
+// Choice data readiness is separately established from the supplied exact paths.
+func FieldCapabilities() preparation.Capabilities {
+	caps := CommandCapabilities()
+	for _, id := range []string{"checkbox", "slider", "select", "number"} {
+		caps = append(caps, preparation.Capability{Dimension: preparation.Widget, ID: id, Major: 1}, preparation.Capability{Dimension: preparation.Host, ID: id, Major: 1})
+	}
+	return append(caps, preparation.Capability{Dimension: preparation.Host, ID: "read-only", Major: 1})
+}

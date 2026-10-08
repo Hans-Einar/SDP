@@ -28,7 +28,7 @@ func cloneInteraction(e Event) Event {
 	}
 	if e.Dialog != nil {
 		v := *e.Dialog
-		v.Fields = append([]DraftField(nil), v.Fields...)
+		v.Fields = copyDraftFields(v.Fields)
 		e.Dialog = &v
 	}
 	return e
@@ -43,7 +43,7 @@ func (s *Session) commandEnvelope(e Event) error {
 	if e.Sequence == 0 || e.Sequence <= s.sequence {
 		return fault("duplicate-event", "Event sequence consumed")
 	}
-	if e.Page != nil || e.Split != nil || e.Collection != nil || e.Value != (Value{}) || e.DraftRevision != 0 {
+	if e.Control != nil || e.Page != nil || e.Split != nil || e.Collection != nil || e.Value != (Value{}) || e.DraftRevision != 0 {
 		return fault("event-type", "Unexpected payload")
 	}
 	var expected Event
@@ -250,7 +250,7 @@ func (s *Session) dispatchCommand(e Event) (result InteractionResult, err error)
 	updates := append([]Update(nil), reply.Updates...)
 	if accept != nil {
 		for _, f := range handlerEvent.Dialog.Fields {
-			updates = append(updates, Update{Handle: f.Handle, Property: AcceptedValue, Value: f.Value, ExpectedValueRevision: f.ValueRevision, AcceptDraft: true})
+			updates = append(updates, Update{Handle: f.Handle, Property: AcceptedValue, Value: f.Value, ExpectedValueRevision: f.ValueRevision, ExpectedDraftRevision: f.DraftRevision, ExpectedOptionGeneration: optionGeneration(f.OptionTarget), AcceptDraft: true})
 		}
 	}
 	if len(updates) > 256 {
@@ -267,6 +267,9 @@ func (s *Session) dispatchCommand(e Event) (result InteractionResult, err error)
 	if accept != nil {
 		n.noteAccept(*accept, e.Sequence, result.Domain, false, reply.Accept.Message)
 		n.closeSurface(*accept, "accept", "user", e.Sequence, handlerEvent.Dialog.Fields)
+	}
+	if s.closed || s.Revision != e.ModelRevision || s.StateRevision != baseline {
+		return fail(fault("stale-result", "State changed during field validation"))
 	}
 	if err = s.publish(n); err != nil {
 		return fail(err)
