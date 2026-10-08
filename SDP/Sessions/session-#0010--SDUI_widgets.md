@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn: T006. S1–S5 are completed; combined main integration is owner-authorized.
+Latest recorded turn: T006. S1–S5 and owner-authorized combined main integration are completed.
 WCI1/WCI2 are implemented, verified and independently reviewed; WCI3 scalar fields and extended text are delivered and independently reviewed; WCI4 is delivered and independently reviewed. Diagram is **sequence only**, using synthetic equal
 slots; it is not a delivery schedule or measured timeline.
 
@@ -34,7 +34,7 @@ gantt
 | Primary card | [KB-SDUI-003](../KanBan/completed/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md) |
 | Snapshot date | 2026-10-07 owner request; actual ledger timestamps recorded separately |
 | Current step | S5 completed |
-| Proposed next step | Execute owner-authorized combined merge of PR #52 to main; PR merge receipt records actual completion |
+| Proposed next step | None for this assignment; PR #52 is merged into main; release remains unselected |
 | Execution authority | Owner T001 requests taking the card's work |
 
 ## Goal
@@ -734,10 +734,19 @@ phase checkout and GitHub PR. Recheck checks on the final exact head before merg
 The GitHub PR merge receipt is authoritative for the actual merged SHA/time;
 authorization alone is not recorded as an already completed merge.
 
+T006 final work summary: [PR #52](https://github.com/Hans-Einar/SDP/pull/52) merged at
+2026-10-08T15:19:04Z as `04f88ff918e7c25c9fa1883f061ef20b8c3923a2`. Both exact-head GitHub checks passed
+(contracts and go-installation-linux). Refreshed origin/main equals that merge;
+the authorized head ea03e8b and inherited baseline 3d265d1 are ancestors, and
+main's file tree exactly equals the checked PR head. All inherited 73 commits and
+the widget/decision commits are included with history preserved. The shared dirty
+worktree was not switched, reset or swept into the PR. No release was published.
+S1–S5 and the requested integration are complete; no next action is outstanding.
+
 ## Closeout
 
 WCI0–WCI4 and the full bounded KB-SDUI-003 inventory are implemented, verified and
 independently reviewed on the selected baseline. PLAN-SDP-0022 and the primary card
-are completed. Combined [PR #52](https://github.com/Hans-Einar/SDP/pull/52) is authorized for merge
-including its inherited baseline by owner T006. The PR receipt records actual
-integration status; a release remains unselected.
+are completed. Combined [PR #52](https://github.com/Hans-Einar/SDP/pull/52) was merged into main at
+`04f88ff918e7c25c9fa1883f061ef20b8c3923a2`, including the inherited baseline authorized in T006.
+A binary release remains unselected.
