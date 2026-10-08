@@ -3,7 +3,7 @@
 | Field | Value |
 | --- | --- |
 | Assignment | SDP Architect; PLAN-SDP-0022 WCI3-M1/M2 |
-| Status | Independent design review approved; WCI3-M1 selected after WCI2 delivery; WCI3-M2 remains subsequent |
+| Status | Independent design review approved; WCI3-M1 delivered and reviewed; WCI3-M2 selected after scalar acceptance |
 | Authority | KB-SDUI-003 full inventory; bounded owner design assignment, 2026-10-08 |
 | Parents | [Design](Design.md), [Acceptance](Acceptance.md), [Collections](Collections.md), [Panes/commands draft](Panes-and-commands.md), [Plan](../../../05--Implementation/SDUI/Widgets/Plan.md) |
 | Obligations | SDUI-R05/R12/R16–R18/R23/R26–R28; GAP-XFMD-SDUI-005/006/008; Session0010 S4 |
@@ -38,6 +38,11 @@ Callbacks require named widgets. `enabled`/`visible` remain existing formatting 
 them as call arguments. No `textarea`, `onCommit`, source onChange hook or source validator expression.
 Change is a typed local notification through Go (§3); it cannot implicitly call the Commit SDL binding.
 New fields/widgets are invalid under 0.2. Existing input("...") sources retain their previous behavior.
+For input, presence of any new argument (multiline/readOnly/placeholder/required)
+selects extended typed behavior, including explicit false or empty placeholder.
+Absent new arguments preserves legacy input under both 0.2 and 0.3; profile, callback
+or Go handler presence alone cannot opt in. Effective defaults are read-only facts,
+never injected source/AST arguments. All new arguments remain invalid under 0.2.
 
 ```text
 sdui 0.3;
@@ -155,7 +160,12 @@ last legal tick <= max. Native raw-Commit validation does not substitute that ti
 Supply `ChoiceOption{ID ItemID, Label string, Enabled bool}` slices by normalized instance path; at most
 4096 options, unique nonempty IDs and label/ID limits reused from WCI1. Duplicate labels are allowed.
 Initial explicit selection must exist and be enabled. Empty optional choice is valid; required empty choice
-is an invalid editable state with Commit blocked. No parser I/O or automatic first-option selection.
+is an invalid editable state with Commit blocked.
+A compatible already-required field whose accepted value is the empty absence may
+retain that same invalid editable baseline across successful reload, including a
+closed form. Keep validation invalid, retain its accepted revision and choose nothing
+automatically. This narrow exception does not admit newly-required blank accepted
+values or removed/disabled nonempty accepted IDs; those reject replacement. No parser I/O or automatic first-option selection.
 Runtime owns an option-set generation: WCI3 introduces `OptionTarget{Handle, ModelRevision, OptionGeneration,
 OptionID}` for selection events. Reuse WCI1 identity principles, but validate through a dedicated option-set
 validator; `ValidateCollectionTarget` requires a collection and cannot validate a select. No hidden list or
@@ -190,6 +200,14 @@ result type must match the receiver (boolean, checked integer, or text option ID
 It forbids AcceptField/MessageField and retains existing revision guards. Legacy
 TextResult still means text/input; it is never reinterpreted by widget guessing.
 Text Commit/Load continue using TextResult. Unknown modes reject preflight.
+An extended input Commit using TextResult must have one explicit self receiver,
+regardless of which input selector populates the SDL request. Reject a different
+receiver during detached preflight; neither legacy Source.Event nor Widget selectors
+may bypass this rule. The actual returned text must exactly echo the captured draft
+to accept it. Non-echo output is knowable only after Execute: reject delivery without
+accepting the source or automatically replaying domain work. Preserve legacy input
+nonself bindings and explicit Load-to-input receivers, including readOnly. Explicit
+Go handlers may accept the captured source and return other checked updates.
 No generic multi-result mapper. Fixture actions AcceptFlag/AcceptCount/AcceptMode/AcceptText each take and return a
 record with one Value field, respectively boolean/integer/text/text, registered with real matching Go
 signatures and a call log. Each uses the selector above and OutputField="Value" with the self receiver in
@@ -245,8 +263,9 @@ scroll area inside the assigned shared-layout control rectangle. No additional
 source wrap/axis syntax in WCI3. Single-line text retains native horizontal caret
 reveal. The native Entry owns its internal editing viewport, caret/selection and
 undo history; this is distinct from WCI1 outer frame/group/tree/list offsets.
-Ordinary sync, page switches, collapse and failed publication retain that native
-object and its internal edit state. Entry scroll consumes wheel events inside its
+Ordinary sync, page switches, collapse, failed Commit and failed reload retain that
+native object and its internal edit state. Rejected native edit handling is subject
+to the explicit bounded exception below. Entry scroll consumes wheel events inside its
 text area (including at its limit); outer viewports remain reachable through their
 own gutter/background. Do not route one gesture twice or promise remainder chaining
 from this native editing surface. Typing/navigation reveals the caret internally;
@@ -273,9 +292,17 @@ overrides this general retention: successful reload resets unaccepted dialog pro
 to current accepted values, preserving explicit child commits; failed reload preserves
 the original open form and all its proposals. For surviving main/page fields,
 invalid retained drafts stay visible, not silently clamped. Retained accepted values violating new constraints
-make reload fail, preserving the old bundle. Multiline/readOnly changes preserve valid text; single-line
+make reload fail, preserving the old bundle.
+The already-required accepted-empty initialization exception above also applies to
+extended input: unchanged required emptiness stays invalid/editable across reload.
+Newly required blank accepted text rejects. For multiline-to-single-line conversion,
+CR or LF in retained accepted text or a surviving main/page draft rejects; these
+are the line-break characters checked by the bounded single-line policy. Discard a
+closed dialog's unaccepted draft before checking that discarded text. This is not
+a general exception for invalid accepted values or incompatible text constraints. Multiline/readOnly changes preserve valid text; single-line
 conversion with newlines rejects. Keep native undo history across ordinary sync; explicit programmatic
-replacement resets that field's history. Successful reload may reset undo history, retaining content/draft;
+replacement with different displayed bytes resets that field's history; identical
+bytes preserve it regardless of explicit Apply or an echoing Commit. Successful reload may reset undo history, retaining content/draft;
 failed reload preserves it. Removal/type change/Close revokes events and native callbacks. Extend existing
 WCI2 PresentationGate/accepted-ticket publication for typed state and resources; do not invent another swap mechanism.
 
@@ -333,3 +360,61 @@ exception (including retained explicit child commits and inactive-page drafts) a
 the bounded Go-only integer-grid regime outside exact safe53 constraints. These
 are design clarifications within the existing inventory, not owner quotations or
 new product evidence. M1 scalar fields and M2 extended native text remain separate.
+
+## WCI3-M2 preimplementation reconciliation — Session0010 T003
+
+Independent reviewer approved explicit-new-argument opt-in for extended input and
+the TextResult self-receiver/exact-echo constraint above. These preserve old inputs
+and prevent a new typed Commit from claiming source acceptance without it. Exact
+output echo remains a post-execution check, not a false preflight guarantee.
+EditField keeps its existing ModelRevision argument; draft/value/state guards belong
+to captured FieldTarget. This records future design readiness only; M1 delivery
+still precedes M2 product/dependency selection and actual text/IME evidence.
+
+Coordinator and independent reviewer additionally approve the narrow already-required
+accepted-empty reload exception. This refines the previous broad invalid-accepted
+rule rather than retroactively labeling its literal implementation a defect. M1
+select and M2 extended input share the rule; newly tightened constraints remain guarded.
+
+## Native text editing refinement — reviewed before WCI3-M2 code
+
+The coordinator inspected pinned Fyne 2.8.1 Entry: TypedRune merges private undo
+state before OnChanged; SetText resets that history, and public Undo can include
+earlier merged accepted keystrokes. Runtime snapshots also cannot distinguish an
+identical-byte explicit Apply from exact Commit acceptance. These are observed
+public-API constraints, not evidence of delivered text behavior.
+
+Coordinator selection, independently reviewed: retain Entry and
+history when displayed bytes are identical, including explicit programmatic Apply.
+For different programmatic text, replace once muted and reset history. For an actual
+native edit rejected by EditField or its publication gate, restore the latest
+authoritative runtime Draft muted on the same focused Entry; this exceptional rollback may
+reset native caret/selection/internal scroll and clears undo/redo history. Preserve
+accepted text, runtime draft/revisions, existing publication and zero Commit. Use
+the latest authoritative draft so callback reentrance cannot restore stale text.
+This is a deliberate narrowing of the draft's earlier broad failed-publication
+history promise, not an owner quotation or logically unavoidable product behavior.
+
+Rejected alternatives are guessing callback provenance, invoking Undo on merged
+actions, private reflection, a second editor/history store, or extending/forking
+Fyne with a new editing-transaction API. They add ambiguity or maintenance beyond
+the card's basic native editing scope. Normal valid edits, invalid-but-retained
+validation drafts, self-echo Commit, failed Commit/reload/probe, page hiding and
+ordinary synchronization retain their stated history behavior. Pre-delegation
+refusal preserves history because Entry has not edited yet; do not apply the
+exception to unrelated failures. Reject CR/LF single-line paste before Fyne's
+normal LF-to-space conversion, preserving the no-normalization rule. Apply this to
+keyboard and context-menu Paste, delegating exactly the validated clipboard snapshot
+without a second content read.
+
+Required evidence: real typed/pasted Unicode, ordinary undo/redo and retention,
+identical and changed programmatic text, one forced rejected native edit with
+authoritative text restoration and declared history reset, no extra Change/Commit,
+and failed reload/Commit history retention. This resolves native adapter policy
+without a runtime provenance API or an additional dependency patch. Independent reviewer approved this bounded refinement. Main retains Session/card
+traceability; implementation still requires the recorded M2 stage selection.
+
+WCI3-M2 is selected after independently reviewed WCI3-M1 delivery. The bounded
+explicit opt-in/native editing contract and pinned X11 filter dependency are now
+implementation authority. Earlier preparation-only statements remain historical;
+no extended-text delivery or all-platform IME acceptance is inferred.

@@ -15,7 +15,7 @@ def main():
     parser.add_argument('--display', required=True)
     parser.add_argument('--title', required=True)
     parser.add_argument('--keep-focus', action='store_true', help='Do not force keyboard focus before input')
-    parser.add_argument('action', choices=('locate', 'focus-state', 'move-window', 'close-window', 'click', 'right-click', 'double-click', 'wheel', 'drag', 'move', 'key', 'chord'))
+    parser.add_argument('action', choices=('locate', 'focus-state', 'move-window', 'close-window', 'click', 'right-click', 'double-click', 'wheel', 'drag', 'move', 'button-down', 'button-up', 'key', 'chord', 'key-down', 'key-up'))
     parser.add_argument('values', nargs='*')
     args = parser.parse_args()
     x = c.CDLL(ctypes.util.find_library('X11'))
@@ -119,13 +119,18 @@ def main():
         def button(number):
             xt.XTestFakeButtonEvent(display, number, 1, 0)
             xt.XTestFakeButtonEvent(display, number, 0, 40)
-        if args.action in ('click', 'right-click', 'double-click', 'wheel', 'drag', 'move'):
+        if args.action in ('click', 'right-click', 'double-click', 'wheel', 'drag', 'move', 'button-down', 'button-up'):
             if len(args.values) < 2:
                 raise SystemExit('Pointer action requires x y')
             px, py = (int(v) for v in args.values[:2])
             xt.XTestFakeMotionEvent(display, -1, left.value + px, top.value + py, 0)
             if args.action == 'move':
                 pass
+            elif args.action in ('button-down', 'button-up'):
+                number = int(args.values[2]) if len(args.values) > 2 else 1
+                if number not in (1, 2, 3):
+                    raise SystemExit('Held pointer button must be 1, 2 or 3')
+                xt.XTestFakeButtonEvent(display, number, args.action == 'button-down', 0)
             elif args.action == 'drag':
                 if len(args.values) != 4:
                     raise SystemExit('Drag requires x1 y1 x2 y2')
@@ -150,8 +155,10 @@ def main():
                 code = x.XKeysymToKeycode(display, x.XStringToKeysym(key.encode()))
                 if not code:
                     raise SystemExit('Unknown key: ' + key)
-                xt.XTestFakeKeyEvent(display, code, 1, 0)
-                if args.action == 'chord':
+                xt.XTestFakeKeyEvent(display, code, args.action != 'key-up', 0)
+                if args.action in ('key-down', 'key-up'):
+                    pass
+                elif args.action == 'chord':
                     pressed.append(code)
                 else:
                     xt.XTestFakeKeyEvent(display, code, 0, 40)

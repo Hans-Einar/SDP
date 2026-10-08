@@ -1,0 +1,18 @@
+{
+  "boolean": 8,
+  "numeric": 11,
+  "slider": 11,
+  "choice": 7,
+  "forms": 8,
+  "failures": 8,
+  "form_failures": 13,
+  "lifecycle": 9,
+  "observer": 2,
+  "legacy_text": 4,
+  "keyboard": 7,
+  "readonly": 7,
+  "slider_reentry": 2,
+  "slider_focus": 4,
+  "required_empty": 4,
+  "nonmodal-forms": 8
+}

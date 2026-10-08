@@ -3,7 +3,7 @@
 ## Session roadmap
 
 Latest recorded turn: T003. Current work: S4 typed values and text.
-WCI1/WCI2 are implemented, verified and independently reviewed; WCI3-M1 scalar fields is selected. Diagram is **sequence only**, using synthetic equal
+WCI1/WCI2 are implemented, verified and independently reviewed; WCI3-M1 scalar fields is delivered; WCI3-M2 extended text is selected. Diagram is **sequence only**, using synthetic equal
 slots; it is not a delivery schedule or measured timeline.
 
 ```mermaid
@@ -34,7 +34,7 @@ gantt
 | Primary card | [KB-SDUI-003](../KanBan/active/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md) |
 | Snapshot date | 2026-10-07 owner request; actual ledger timestamps recorded separately |
 | Current step | S4 |
-| Proposed next step | S4 WCI3-M1 typed scalar fields |
+| Proposed next step | S4 WCI3-M2 extended text/IME |
 | Execution authority | Owner T001 requests taking the card's work |
 
 ## Goal
@@ -375,6 +375,74 @@ implementation obligations.
   S3 is complete. WCI3-M1 selected under original full-card authority; bounded
   numeric/runtime, frontend, layout, host and SDL lanes continue on a new phase
   branch. No whole-card, merge or release completion is claimed.
+
+- WCI3-M1 implementation is active in five disjoint lanes on sdui/widgets-wci3
+  after evidence handoff a28b3cc (original cea7015); original/phase management
+  validators pass 541/529 events. Main added held XTest pointer/key primitives
+  and started scalar native workflows; these are unrun harness work, not evidence.
+- Read-only consumer reconnaissance located actual XFMD helper build/install and
+  protocol contracts. WCI4-consumer-preparation.md and its hashed inventory record
+  the supplied external root without changing its dirty work. Final matching helper
+  builds, licenses, protocol/native tests and packaging remain subsequent WCI4 work.
+
+- Independent numeric checkpoint passed bounded-exponent, 445-grid rational-oracle
+  and safe53 boundary checks. Typed runtime review found a real Apply batch-order
+  issue for same-field value/readOnly writes; assigned to runtime owner, not waived.
+- WCI4 launcher boundary reviewed: staged connected DocumentHost fixtures are the
+  runnable 0.3 route; legacy standalone helper remains explicitly unsupported for
+  those host adapters. Package matrix must distinguish this from absent providers
+  and cannot claim XFMD Launch gains the new widgets. No launcher migration selected.
+- Isolated IBus launcher preparation selects the real Simple engine successfully.
+  D-Bus reports filesystem-watch permission diagnostics in this host environment;
+  this is environment setup only, not clean-stderr or SDUI IME acceptance. Temporary
+  display :191 was stopped; no owner desktop or package installation changed.
+
+- M1 native pilot 78344a92 passes Boolean, choice, held-slider, action failures,
+  reentrant observer, legacy text and mixed Go Accept failure workflows. Numeric
+  typing/Enter passes, but actual step-button click failed. Host traced delegated
+  Button renderer size to zero despite positive wrapper geometry and corrected
+  Resize synchronization; pilot2 OS verification remains required. Fixture now
+  uses explicit fill widths for meaningful native presentation. M1 stays active.
+
+- Pre-review 0e92 candidate full SDUI/SDL/original SDPTool suites passed, but
+  independent review found slider automatic-tap recapture and stranded held-key
+  state after focus loss. Both bounded fixes pass independent regressions; actual
+  native tap now confirms zero SDL calls. Harness completion barriers were hardened
+  after detecting an intermediate-snapshot false positive; that run is excluded.
+- Coordinator/reviewer approved already-required accepted-empty reload retention
+  as a narrow contract refinement, with new-constraint/nonempty-invalid guards.
+  Runtime and actual fixture corrections are scoped and reviewed. Reviewer also
+  identified missing visible slider numeric value feedback required by the card;
+  host correction is active. M1 stays in progress, final inventory/build/evidence
+  pending. M2 opt-in/self-echo design is reviewed but product work remains unselected.
+
+- Continuation work summary after interruption recovery: the visible slider numeric
+  feedback delta is frozen and independently approved. Final binary 3c1abba7 is
+  byte-identical across worker and coordinator builds. All 88 candidate paths
+  match the original workspace after guarded integration of 11 changed files;
+  unrelated work is preserved. The final slider native workflow passes 11 checks,
+  including held proposal feedback, accepted value, Escape and silent programmatic
+  replacement. Fresh full suites and the remaining native workflows are running.
+  Reused SDP/master/verifier/traceability; S4 remains active, M2 still unselected.
+
+- M1 delivery work summary: `ea49991f` records 88 exact files, 113 native
+  assertions and 12 exactly-once results, with clean full suites and independent
+  approval. One additional passing forms run emitted a preserved Preferences EOF;
+  its same-binary isolated repeat is clean. No causal correction is claimed.
+  WCI3-M2 is now selected under existing whole-card authorization, reusing the
+  reviewed frontend/runtime/layout handoffs and bounded host preparation. Main
+  owns the pinned X11 filter dependency and actual IME evidence. Reused
+  SDP/master/planning/architect/verifier/traceability; S4 remains active.
+  Next: implement and verify extended text, then WCI4 providers/package preparation.
+
+- M2 native editing decision: coordinator and independent reviewer explicitly
+  narrow the earlier draft history promise. Identical displayed bytes retain
+  history; different programmatic text resets it. An actual rejected native edit
+  restores the latest authoritative draft muted on the same focused Entry and may
+  reset native history/caret/selection/scroll. Invalid-but-admitted drafts and failed
+  Commit/reload/probe retain history. CR/LF paste is refused before delegation from
+  the same captured clipboard bytes, including context menus. This is a reviewed
+  design choice within basic editing scope, not a new owner quotation.
 
 ## Closeout
 Open. No widget, plan, card or Session completion is inferred from intake/design.
