@@ -193,6 +193,8 @@ func discovery(w io.Writer, b json.RawMessage) error {
 		Inventory          struct{ ProjectID string }
 		Capabilities       map[string]string
 		Sources            []struct{ Source, Profile, State, Diagnostic string }
+		Programs           []struct{ ID, Label, Source, Entry, State, Diagnostic string }
+		ProgramDiscovery   struct{ State, Diagnostic string }
 		Navigation         struct{ InventoryRevision string }
 	}
 	if err := json.Unmarshal(b, &v); err != nil {
@@ -211,6 +213,18 @@ func discovery(w io.Writer, b json.RawMessage) error {
 	}
 	if v.Navigation.InventoryRevision != "" {
 		fmt.Fprintf(w, "Snapshot: %s\n", safe(v.Navigation.InventoryRevision))
+	}
+	fmt.Fprintf(w, "SDUI programs: %d [%s]\n", len(v.Programs), safe(v.ProgramDiscovery.State))
+	if v.ProgramDiscovery.Diagnostic != "" {
+		fmt.Fprintf(w, "  %s\n", safe(v.ProgramDiscovery.Diagnostic))
+	}
+	for _, p := range v.Programs {
+		fmt.Fprintf(w, "  %s — %s [%s]\n    %s :: %s\n", safe(p.ID), safe(p.Label), safe(p.State), safe(p.Source), safe(p.Entry))
+		if p.Diagnostic != "" {
+			fmt.Fprintf(w, "    %s\n", safe(p.Diagnostic))
+		} else {
+			fmt.Fprintf(w, "    run --program %s\n", safe(p.ID))
+		}
 	}
 	return nil
 }
