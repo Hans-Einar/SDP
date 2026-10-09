@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn: T006. S1–S5 and owner-authorized combined main integration are completed.
+Latest recorded turn: T007. S1–S5 and owner-authorized combined main integration are completed.
 WCI1/WCI2 are implemented, verified and independently reviewed; WCI3 scalar fields and extended text are delivered and independently reviewed; WCI4 is delivered and independently reviewed. Diagram is **sequence only**, using synthetic equal
 slots; it is not a delivery schedule or measured timeline.
 
@@ -34,7 +34,7 @@ gantt
 | Primary card | [KB-SDUI-003](../KanBan/completed/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md) |
 | Snapshot date | 2026-10-07 owner request; actual ledger timestamps recorded separately |
 | Current step | S5 completed |
-| Proposed next step | None for this assignment; PR #52 is merged into main; release remains unselected |
+| Proposed next step | Review KB-SDUI-006 runnable widget test project before release selection; S1–S5 remain completed |
 | Execution authority | Owner T001 requests taking the card's work |
 
 ## Goal
@@ -742,6 +742,39 @@ main's file tree exactly equals the checked PR head. All inherited 73 commits an
 the widget/decision commits are included with history preserved. The shared dirty
 worktree was not switched, reset or swept into the PR. No release was published.
 S1–S5 and the requested integration are complete; no next action is outstanding.
+
+### T007 — assess release readiness and a complete widget test project
+
+Owner prompt, verbatim:
+
+> ok. skal vi release en ny versjon av SDPTool og med andre ord gh sdp nå? finnes det et test prosjekt med SDP katalog som inneholder SDL og SDUI hvor alle widgets kan testes? kanskje det burde vært et sånn test prosjekt under experiments/ ?
+
+Capture mode: exact supplied prompt and coordinator work summary; exact host IDs
+and prompt timestamp unavailable. Assessment and proposal registration, not a
+publication decision. Reused SDP entrypoint/Session/document workflow and loaded
+sdp-release 2.0.0 and sdp-versioning 2.0.0 for release assessment.
+
+Work summary: inspected actual GitHub releases (SDP v2.1.0 and gh-sdp v0.2.1),
+release notes/checklist/package recipe, connected widget examples and experiments.
+Six real Fyne applications cover the families; no unified SDP-bearing runnable
+all-widget project was found. The MVP1 experiment is a design corpus, not such a
+system. The new connected DocumentHost route requires application providers and
+bindings, while standalone RuntimeView still rejects the new 0.3 families.
+SDPTool's package recipe does not itself ship the native fixture applications.
+Releasing the tool alone would therefore not prove the owner's manual workflow.
+
+Recommendation: select experiments/sdui_widget_lab/ with its own SDP, discoverable
+SDL/SDUI sources, one documented Fyne start command and a family/scenario checklist,
+then verify the actual installed release candidate and coordinate gh-sdp's pinned
+SDP version. Registered [KB-SDUI-006](../KanBan/backlog/%23006--SDUI--Proposal--Runnable-widget-test-project.md)
+in backlog with its creation event and board entry. Generic launcher migration,
+release version and publication remain unselected. The concurrent shared-tree
+preview/facade test mismatch noted on KB-SDUI-003 is preserved and is a candidate
+integration concern, not a reversal of the reviewed widget evidence.
+
+Affected steps: S1–S5, P1/P2 and KB-SDUI-003 remain completed. Proposed next action:
+select the test-project launch contract and bounded plan before a release intended
+to demonstrate all widgets. No product changes or release publication performed.
 
 ## Closeout
 
