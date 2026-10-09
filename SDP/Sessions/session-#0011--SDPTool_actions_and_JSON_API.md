@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-T002, 2026-10-09. Active Session; RED preflight blocks implementation.
+T003, 2026-10-09. Active Session; RED preflight still blocks implementation.
 Next: coordinate shared SDPTool work and identity collision, then return to S1. Sequence only: dates below are display
 slots, not estimates or measured time. The table is the authoritative roadmap.
 
@@ -135,3 +135,45 @@ identity reconciliation, followed by fresh inspection. The earlier scoped Go/CLI
 proposal does not authorize bypassing this owner gate. Next: coordinate a safe
 combined/sequenced baseline; then resume S1. Session0008 remains paused. This is a
 manual work summary, not an exact transcript or claimed live-agent observation.
+
+
+### T003 — Project-leader agent and choice of client (2026-10-09)
+
+Owner input (summary): establish a Steering/Project Leader agent responsible for
+cross-workstream coordination; ask whether Codex suits this or ChatGPT can run
+in a Linux CLI and may be better. Read OpenAI Docs and SDP Steering guidance;
+reused local governance design and the red concurrency evidence. No permanent role
+appointment or new agent was inferred from this exploratory comparison.
+
+Recommendation: use a dedicated Codex operational coordinator with repository and
+worktree access, separate from task Masters/Workers. The owner retains product
+Steering/acceptance authority; the coordinator prepares decisions, controls work
+allocation within delegated authority and checks evidence. ChatGPT can remain a
+strategy/design discussion surface if the owner prefers its interaction; no measured
+claim that one product is intrinsically a better project manager is established.
+
+The official Codex CLI documents Linux operation, local tools and ChatGPT sign-in.
+The official OpenAI CLI exposes API requests with API-key authentication; it is not
+the full ChatGPT application transplanted into a terminal. App-server supports a
+programmatic conversation/event interface and fits existing KB038 work; no new
+client or daemon is needed simply to assign the coordinator role.
+
+A coordinator prompt alone cannot prevent races. All workers must consult shared
+coordination state and register work scope before changes. Branch-local copies of
+a registry are insufficient for globally unique card allocation or reservations.
+Initially select one coordination authority and explicit assignment/integration
+sequence; future SDPTool/MCP operations should enforce atomic allocation and scope
+claims with explicit release/recovery rules. These are recommendations, not newly
+implemented guarantees. A Codex session does not automatically observe all other
+chats or independently running terminals.
+
+Work summary: recorded the comparison and recommended role boundary in this Session,
+without duplicating the in-progress governance work. Proposed first coordinator
+assignment: reconcile KB051 identity, select shared-file ownership and integration
+baseline, then rerun the preflight. S0 remains red and S1 waiting; Session0008 remains
+paused. No API call, agent launch, code change or role/merge authority was granted.
+
+Official sources inspected (2026-10-09):
+- [Codex CLI](https://learn.chatgpt.com/docs/codex/cli)
+- [OpenAI CLI](https://developers.openai.com/api/docs/libraries/openai-cli)
+- [Codex app-server](https://learn.chatgpt.com/docs/app-server)
