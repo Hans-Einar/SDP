@@ -54,3 +54,39 @@ Coordinate eventual MCP exposure with existing governance work, without duplicat
 
 2026-10-09: registered from owner request; no implementation selected. Blueprint
 pilot KB050 remains gate-review independently of this proposal.
+
+## T014 — JSON request direction (2026-10-09)
+
+Owner confirms subprocess JSON responses are sufficient and proposes JSON inputs
+as the programmatic API. Recommendation: retain readable CLI commands and add one
+versioned JSON invocation adapter over the same typed services/operation registry.
+This is a design proposal, not a delivered command or implementation selection.
+
+Illustrative syntax: `sdptool invoke --request -` (one JSON object on stdin), with
+`--request FILE` for reproducible saved requests. `gh sdp` forwards the invocation
+and stdin. Prefer stdin over a large inline JSON argument: no shell quoting or
+argument-length dependency. Start with one request/response per process; a daemon,
+HTTP server, batch protocol or persistent JSON-RPC stream is not needed for this
+bounded outcome. Revisit transports only for measured needs.
+
+A proposed envelope separates protocol version, correlation ID, stable action ID,
+context (such as project path) and typed parameters. The action catalogue describes
+those exact inputs. JSON mode returns one structured success/error envelope on
+stdout; diagnostics go to stderr, and exit codes remain meaningful. Require explicit
+rules for unsupported versions/actions, duplicate/unknown fields, bounded input,
+path resolution, cancellation and output errors. A correlation ID is not automatic
+mutation deduplication; preserve existing operation IDs, expected revisions and
+trusted authority boundaries. Request data must not grant caller authority.
+
+Existing blueprint assignment apply already reads a JSON request file, but general
+Run currently accepts only argv and output writers; there is no generic JSON input
+adapter yet. XFMD currently opens child stdin from /dev/null and rejects nonzero
+exit status before decoding stdout. External KB-XFMD-030 must therefore cover a
+bounded stdin writer and preservation of structured failure results, rather than
+assuming JSON input works unchanged. gh-sdp already forwards os.Stdin.
+
+Use this shared invocation/catalogue boundary for eventual MCP mapping without
+claiming that a JSON subprocess protocol itself implements MCP. The first complete
+slice should exercise catalogue, one read action and one revision-bound mutation
+through both human CLI and JSON input, with equivalent validation and results.
+CardState remains backlog; next is the bounded design/implementation plan.

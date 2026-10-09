@@ -87,6 +87,23 @@ An advertised action temporarily unavailable in the current context remains disa
 with a reason, preserving XFMD's existing #029 interaction contract. Never infer
 commands by scraping help or execute catalogue-provided shell snippets.
 
+## Proposed JSON request adapter — T014, not implemented
+
+The owner proposes JSON input as well as JSON output. KB-SDP-051 recommends
+`sdptool invoke --request -` with one request on stdin and one JSON result/error on
+stdout; `--request FILE` would support saved inputs. These are illustrative command
+names, not current CLI support. Human commands and the JSON adapter should dispatch
+the same typed operations. A versioned envelope would carry correlation ID, action,
+context and parameters matching the catalogue. Diagnostics stay on stderr.
+
+Existing assignment apply accepts a JSON file, but there is no general invocation
+adapter. gh-sdp forwards stdin already. XFMD's current SdpToolJob opens /dev/null as
+child stdin and drops stdout on nonzero exit: integration must add bounded input
+transport and decode structured error/blocked results while retaining exit status.
+A request correlation ID does not replace mutation idempotency or expected revisions.
+One process per request is sufficient initially; this does not require a daemon and
+is not by itself an MCP server.
+
 ## Testing before main or release
 
 For immediate consumer development, build this branch and select its executable

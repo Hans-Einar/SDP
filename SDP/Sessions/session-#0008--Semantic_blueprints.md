@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-T013, 2026-10-09. Sequence only; dates are display slots, not duration estimates.
+T014, 2026-10-09. Sequence only; dates are display slots, not duration estimates.
 
 ```mermaid
 gantt
@@ -391,3 +391,24 @@ T013 validation: management validator passes (63 cards, 39 management records,
 4 lineage operations, 518 events). New local document links resolve; both new cards
 have unique creation events and matching backlog/CardState placement. Git whitespace
 check passes. No product code changed and no new GUI execution evidence is claimed.
+
+
+### T014 — JSON input as the programmatic invocation boundary (2026-10-09)
+
+Owner input (summary): subprocess JSON replies are sufficient; could SDPTool accept
+JSON arguments to provide a programmatic API? Loaded SDP and Architect, reusing
+current change analysis and document workflow. Inspected Run/modelCommand and the
+XFMD job transport. Existing assignment apply supports a JSON request file; there
+is no generic request dispatcher. Recommended one JSON request via stdin/file and
+one structured response, sharing typed operations with readable CLI commands and
+the proposed action catalogue. No daemon or new RPC infrastructure is required.
+
+Work summary: refined KB051 and the integration handoff, explicitly marking command
+syntax/schema as proposed. Consumer follow-up is bounded stdin support and decoding
+structured failures on nonzero exits; current XFMD opens /dev/null as stdin. Existing
+revision/idempotency/authority checks must survive the adapter. No product code or
+external worktree changed. This records a work summary, not a captured final reply.
+
+KB051 remains backlog; blueprint S1 is still awaiting owner pilot disposition and
+S2-S6 stay completed. Next for the new capability is a bounded plan selecting the
+catalogue and JSON invocation contract, followed by a vertical consumer test.
