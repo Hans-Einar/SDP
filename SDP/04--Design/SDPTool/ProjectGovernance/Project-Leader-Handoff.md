@@ -7,6 +7,9 @@ Design.md and ImplementationPlan remain untouched in this branch; reconcile this
 handoff into them before implementation. No second controller implementation is
 selected here. [Shared role contract](../../../../Skills/sdp/references/roles.md).
 
+Tracked by [KB-SDP-052](../../../KanBan/backlog/%23052--Change--Project-Leader-and-SAD-orchestration.md),
+linked to the owning KB038 workstream. Registration does not activate runtime work.
+
 ## Owner-selected operating model
 
 The owner primarily talks with **Project Leader**. Steering is strategic support,

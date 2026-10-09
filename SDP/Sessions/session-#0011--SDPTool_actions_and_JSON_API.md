@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-T004, 2026-10-09. Active Session; RED preflight still blocks implementation.
+T005, 2026-10-09. Active Session; RED preflight still blocks implementation.
 Next: coordinate shared SDPTool work and identity collision, then return to S1. Sequence only: dates below are display
 slots, not estimates or measured time. The table is the authoritative roadmap.
 
@@ -58,6 +58,7 @@ outside this Session's product scope. A future adapter can reuse the same servic
 | --- | --- | --- | --- | --- | --- |
 | [KB051](../KanBan/backlog/%23051--Proposal--Discoverable-SDPTool-actions.md) | Primary | backlog | completed after scoped delivery/evidence | queued for S1 | pending |
 | [KB050](../KanBan/active/%23050--Proposal--Semantic-blueprints.md) | Context only | gate-review | unchanged by this Session | gate-review; Session0008 paused | not disposed here |
+| [KB052](../KanBan/backlog/%23052--Change--Project-Leader-and-SAD-orchestration.md) | Handoff to ProjectGovernance | absent | backlog registration; owning Session0007 selects delivery | backlog | registered T005 |
 | external:KB-XFMD-030 | Consumer handoff | reported backlog at creation | XFMD agent selects native work | external, not locally authoritative | external |
 
 ## Plan register
@@ -219,3 +220,17 @@ Same-context scenario inspection is recorded in the MaintenancePlan; no independ
 live-agent behavior is claimed. New skill discovery applies to this working branch,
 not an unmodified parallel checkout or online account. Next is reconciliation with
 the ProjectGovernance owner; KB051 product work remains behind S0's red gate.
+
+
+### T005 — Register the ProjectGovernance handoff as a card (2026-10-09)
+
+Owner input (summary): the handoff should be in a KanBan card. Reused SDP,
+Traceability and document workflow. Checked card IDs across nine known local
+worktrees; allocated KB-SDP-052, preserving the already identified KB051 collision.
+
+Work summary: created backlog Change KB052 with scope, owning KB038/Session0007,
+links to the complete handoff and delivered role maintenance, and acceptance/next
+planning action. Updated board index, reciprocal links and append-only creation/
+review events. No new runtime plan or execution phase is activated. Next is owning
+ProjectGovernance planning reconciliation; our S0 gate remains red and Session0008
+paused. This is a manual work summary, not a captured final response.

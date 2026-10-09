@@ -215,3 +215,7 @@ direct owner feedback, revision-bound design approval and durable leader notific
 MAINT-SDP-0015 delivers local skills; runtime work remains owned by Session0007.
 This branch's backlog state is a historical projection: the governance worktree has
 KB038 active. Reconcile this additive handoff there without resetting its lifecycle.
+
+Session0011 T005: [KB-SDP-052](%23052--Change--Project-Leader-and-SAD-orchestration.md)
+now tracks this runtime/UI handoff explicitly. Review it during the owning
+ProjectGovernance planning reconciliation; no current phase or card state is reset.

@@ -4,6 +4,7 @@
 
 | ID | Type | Status | Document |
 | --- | --- | --- | --- |
+| KB-SDP-052 | Change | backlog | [Project Leader and SAD orchestration](backlog/%23052--Change--Project-Leader-and-SAD-orchestration.md) |
 | KB-SDP-051 | Proposal | backlog | [Discoverable SDPTool actions](backlog/%23051--Proposal--Discoverable-SDPTool-actions.md) |
 | KB-SDP-050 | Proposal | active | [Semantic blueprints](active/%23050--Proposal--Semantic-blueprints.md) |
 | KB-SDP-049 | Change | completed | [ModelGovernance](completed/%23049--Change--Model-governance.md) |
