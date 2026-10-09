@@ -2,7 +2,8 @@
 
 ## Session roadmap
 
-Latest recorded turn: T007. S1–S5 and owner-authorized combined main integration are completed.
+Latest recorded turn: T008. S1–S6, the combined main integration and the independent
+installed consumer widget lab are completed.
 WCI1/WCI2 are implemented, verified and independently reviewed; WCI3 scalar fields and extended text are delivered and independently reviewed; WCI4 is delivered and independently reviewed. Diagram is **sequence only**, using synthetic equal
 slots; it is not a delivery schedule or measured timeline.
 
@@ -17,6 +18,7 @@ gantt
     S3 Panes and commands :done, s3, after s2, 1d
     S4 Typed values and text :done, s4, after s3, 1d
     S5 Consumer integration and review :done, s5, after s4, 1d
+    S6 Installed widget lab :done, s6, after s5, 1d
 ```
 
 | State | Step | Work and linked plan milestone | Prerequisites | Authorization | Completion evidence / outcome |
@@ -26,6 +28,7 @@ gantt
 | completed | S3 | PLAN-SDP-0022 WCI2 | S2 pilot evidence | Owner T001 full card | 403c540 / 0fc15c8; 58 pane + 118 command native checks; independent approval |
 | completed | S4 | PLAN-SDP-0022 WCI3 | Shared contracts from S1–S3 | Owner T001 full card | ea49991f / 69d0a332; Evidence-WCI3-M1/M2; independent approval |
 | completed | S5 | PLAN-SDP-0022 WCI4 | S2–S4 | Owner T001; publication unselected | dcf2a74; Evidence-WCI4-M2; independent integrated acceptance |
+| completed | S6 | KB-SDUI-006 / external PLAN-LAB-0001 LAB1 | Completed widget delivery | Owner T008 and full SDL/SDUI steering | Consumer 0946342; exact runtime db206bc; WIDGETLAB-VER-001, race suite and 26 native checks passed |
 
 | Field | Value |
 | --- | --- |
@@ -33,16 +36,18 @@ gantt
 | Status | completed |
 | Primary card | [KB-SDUI-003](../KanBan/completed/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md) |
 | Snapshot date | 2026-10-07 owner request; actual ledger timestamps recorded separately |
-| Current step | S5 completed |
-| Proposed next step | Review KB-SDUI-006 runnable widget test project before release selection; S1–S5 remain completed |
-| Execution authority | Owner T001 requests taking the card's work |
+| Current step | S6 completed |
+| Proposed next step | Owner may explore lab with make run; future release selection remains separate |
+| Execution authority | Owner T001 widget work, T006 combined main integration, T008 independent source-defined lab |
 
 ## Goal
 
 Deliver the complete KB-SDUI-003 widget inventory in staged runnable slices,
 with truthful profile/capability checks, native Fyne behavior, typed SDL binding,
 exports and consumer distribution preparation. No full XFMD rewrite, FOX bridge,
-rich editor, upstream publication or merge is selected. Preserve original 0.2 and
+rich editor or binary publication is selected. T006 separately authorized the
+combined main merge; T008 extends the outcome with an independent installed lab
+containing complete SDL/SDUI source and interpreted Go calls. Preserve original 0.2 and
 XM-M2 evidence. Rich optional research retains its existing disposition.
 
 ## Affected cards
@@ -52,6 +57,7 @@ XM-M2 evidence. Rich optional research retains its existing disposition.
 | KB-SDUI-003 | Primary | backlog / backlog at T001 | All inventory delivered, verified and reviewed | completed | completed |
 | KB-SDUI-005 | Context-only dependency | active / gate-review in producer record | Retain separate preview ownership | Existing dirty producer changes preserved | Not disposed here |
 | KB-SDUI-004 | Context-only | backlog | Separate glyph/wrapping fidelity work | backlog | Not disposed here |
+| KB-SDUI-006 | Successor lab | backlog at T007 | Bounded independent consumer delivered | completed | completed through external PLAN-LAB-0001 |
 
 ## Plan register
 
@@ -59,12 +65,17 @@ XM-M2 evidence. Rich optional research retains its existing disposition.
 | --- | --- | --- | --- | --- | --- |
 | P1 | [PLAN-SDP-0021 DesignPlan](../04--Design/SDUI/Widgets/Plan.md) | completed | completed | PLAN-SDP-0009 research | Independently reviewed design and per-family acceptance |
 | P2 | [PLAN-SDP-0022 ImplementationPlan](../05--Implementation/SDUI/Widgets/Plan.md) | completed | completed | P1, staged elaboration | WCI0–WCI4 delivered; Evidence-WCI4-M2; independent integrated acceptance |
+| P3 | External PLAN-LAB-0001 ImplementationPlan in sdui_widget_lab | completed | completed | P2/main widget libraries | LAB1-M1/M2/M3; WIDGETLAB-VER-001; bounded source/race/native evidence, no independent review claim |
+
+External plan:
+file:///home/warloc/git/sdui_widget_lab/SDP/05--Implementation/WidgetLab/Plan.md
 
 ## Route changes and decisions
 
 | Date / turn | Previous route | Change and reason | Authority | Affected steps/cards |
 | --- | --- | --- | --- | --- |
 | T001 | Inventory only, execution unselected | Activate prerequisite design and staged full-card execution | Owner prompt below | S1–S5, KB-SDUI-003 |
+| T008 | Completed widget delivery and proposed consumer | Select independent local installed repo; require full SDL/SDUI source and interpreted named Go functions | Owner placement reply and steering below | S6, KB-SDUI-006, external P3 |
 
 ## Turn journal
 
@@ -766,7 +777,7 @@ Releasing the tool alone would therefore not prove the owner's manual workflow.
 Recommendation: select experiments/sdui_widget_lab/ with its own SDP, discoverable
 SDL/SDUI sources, one documented Fyne start command and a family/scenario checklist,
 then verify the actual installed release candidate and coordinate gh-sdp's pinned
-SDP version. Registered [KB-SDUI-006](../KanBan/backlog/%23006--SDUI--Proposal--Runnable-widget-test-project.md)
+SDP version. Registered [KB-SDUI-006](../KanBan/completed/%23006--SDUI--Proposal--Runnable-widget-test-project.md)
 in backlog with its creation event and board entry. Generic launcher migration,
 release version and publication remain unselected. The concurrent shared-tree
 preview/facade test mismatch noted on KB-SDUI-003 is preserved and is a candidate
@@ -776,10 +787,68 @@ Affected steps: S1–S5, P1/P2 and KB-SDUI-003 remain completed. Proposed next a
 select the test-project launch contract and bounded plan before a release intended
 to demonstrate all widgets. No product changes or release publication performed.
 
+### T008 — create an installed consumer widget lab
+
+Owner prompt, verbatim:
+
+> ok. la oss lage sdui_widget_lab/ med "gyldig" SDP folder som installeres via gh sdp. men er det da bedre at vi har et helt eget repo med sdui_widget_lab, eller fungerer det fint å ha det i SDP-vNow/experiments/ ?
+
+Manual work summary; host IDs and exact prompt time unavailable. Reused SDP entry,
+Session/document workflow; loaded change-analysis, architect, planning, master and
+worker for the new consumer assignment. Read installed consumer entrypoint 1.1.0
+and local instructions after actual installation; producer entrypoint is 1.1.1.
+
+Verified explicit nested-root install preview: 67 actions, no conflicts, no parent
+root promotion. Recommended independent local Git history to exercise consumer
+installation and exact dependencies; asked optional location preference and
+proceeded with the recommendation. Initialized lab/initial at
+/home/warloc/git/sdui_widget_lab. Actual gh sdp v0.2.1 route installed signed SDP
+2.1.0 (operation install-50692ebb25138bb2c4cd2ab1). No remote or publication.
+
+Owner follow-up selects "Eget lokalt repo (anbefalt)". Placement is now explicitly
+confirmed, superseding the provisional coordinator selection.
+
+S6 added; KB-SDUI-006 active/in-progress. PLAN-LAB-0001 and KB-LAB-001 track local
+implementation. Original S1–S5/P1/P2 remain completed. Application/evidence pending.
+
+T008 owner steering, verbatim:
+
+> jeg vil gjerne at du designer den widget lab'en med full SDL og SDUI design kode så kan vi også teste interpreter og at SDUI kan kalle SDL rutiner som igjen kan kalle GO funksjoner
+
+Revised S6/PLAN-LAB-0001 before dependent implementation: use an entirely
+source-defined lab application with own executable SDL action contracts and named
+Go handlers. Supersede the uncommitted fixture launcher prototype. Retain product
+libraries, signed installation and exact dependency pin. Full design-core model
+and native interpreted invocation evidence are now explicit acceptance.
+
+T008 final work summary (not an already captured final response): delivered the
+independent consumer on lab/initial, foundation 6818c57, implementation 97aa16e,
+final runtime db206bc and evidence closeout 0946342. Complete canonical composed
+SDL model, 17 action-core routines, own typed Go domain functions and full SDUI UI
+are read from project source. Tests prove changed invokes and ref paths affect
+actual interpretation without rebuilding and reject invalid bindings. Final race
+suite passed in 230.432s; source validation passed; clean native build passed 26
+actual X11 input checks. Inspected native screenshots and saved hashes/state/logs.
+Earlier harness failures and the stopped competing race run remain explicit in
+the evidence; no success was inferred from them.
+
+Actual gh sdp installation/discovery and current-release no-change upgrade preview
+are recorded. Released SDPTool 2.1.0 discovers/validates SDL but does not parse SDUI
+0.3; the lab deliberately uses clean exact pinned post-release libraries. No
+release, future-candidate upgrade, generic launcher migration, every-combination
+native regression or independent lab review is claimed. Loaded routines remain
+those listed at T008 entry; source/schema/native checks do not impersonate a
+separate reviewer. All LAB1 milestones/local Ref and KB-SDUI-006 are completed;
+S1–S5 remain completed. Shared unrelated work is preserved. The next optional
+owner activity is manual lab exploration, then separately selecting release scope.
+
+file:///home/warloc/git/sdui_widget_lab/SDP/05--Implementation/WidgetLab/Evidence.md
+
 ## Closeout
 
 WCI0–WCI4 and the full bounded KB-SDUI-003 inventory are implemented, verified and
 independently reviewed on the selected baseline. PLAN-SDP-0022 and the primary card
 are completed. Combined [PR #52](https://github.com/Hans-Einar/SDP/pull/52) was merged into main at
 `04f88ff918e7c25c9fa1883f061ef20b8c3923a2`, including the inherited baseline authorized in T006.
-A binary release remains unselected.
+A binary release remains unselected. T008 also completed the independent installed
+widget lab and KB-SDUI-006; no selected implementation remains.
