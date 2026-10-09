@@ -21,6 +21,8 @@ func Default() Registry {
 	r := Registry{}
 	r[Key{"sdp-blueprint/1", "create-blueprint"}] = fields
 	r[Key{"sdp-blueprint-assessment/1", "assess-blueprint"}] = fields
+	r[Key{"sdp-blueprint-assignment/1", "assignment"}] = fields
+	r[Key{"sdp-blueprint-assignment/1", "assignment-list"}] = fields
 	for _, op := range []string{"create", "status", "history", "commit", "restore", "merge", "recover", "snapshot"} {
 		r[Key{"sdp-model/0.1", op}] = fields
 	}

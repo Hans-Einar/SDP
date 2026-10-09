@@ -3,8 +3,8 @@
 This package provides a shared persistence primitive for
 SDP/ProjectManagement/Ledger.ndjson. It implements no KanBan/assignment state machine,
 actor authorization or counter allocation. The calling domain must validate its
-payload, transition, authority and references before calling Append. No installed
-CLI consumes this package yet; BPI3-M2b owns integration and validator extensions.
+payload, transition, authority and references before calling Append. The source CLI now consumes this package through BPI3-M2b assignment operations;
+release/installation packaging is separate. Domain validators live in blueprintstate.
 
 ```go
 snapshot, err := projecthistory.Read(ledgerPath)

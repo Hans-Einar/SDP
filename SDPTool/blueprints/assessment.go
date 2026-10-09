@@ -107,8 +107,11 @@ func Assess(bundlePath, evidencePath string) (Assessment, error) {
 }
 
 func assess(bundlePath, evidencePath string, beforeFinalize func()) (Assessment, error) {
+	return assessBudget(bundlePath, evidencePath, beforeFinalize, &budget{})
+}
+func assessBudget(bundlePath, evidencePath string, beforeFinalize func(), b *budget) (Assessment, error) {
 	var out Assessment
-	d, bundle, err := verify(bundlePath, &budget{})
+	d, bundle, err := verify(bundlePath, b)
 	if err != nil {
 		return out, err
 	}
@@ -116,7 +119,6 @@ func assess(bundlePath, evidencePath string, beforeFinalize func()) (Assessment,
 	if filepath.Base(bundlePath) != retained || filepath.Base(filepath.Dir(bundlePath)) != key(d) {
 		return out, fmt.Errorf("assessment requires an intact retained revision")
 	}
-	b := &budget{}
 	raw, err := b.read(evidencePath, 1<<20)
 	if err != nil {
 		return out, err

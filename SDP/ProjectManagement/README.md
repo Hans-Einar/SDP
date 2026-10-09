@@ -119,3 +119,15 @@ retains members for direct cards and adds plans for plan IDs; both snapshots
 are required; creation/start requires selected work. Later explicit removals may
 leave an empty Sprint for truthful closure. Document Plans and each plan's
 SprintId must agree with history. No new ledger or CardState is introduced.
+
+
+## Blueprint assignments
+
+Versioned x-blueprint events share this canonical ledger. Their pure replay
+contract lives in SDPTool/blueprintstate; blueprint-assignment.schema.json and
+blueprint_history.py support repository validation. Assignment IDs (BPA-) are not
+KanBan cards or Plans, and do not require mutable companion status documents.
+Traceability stores scoped implementation receipts; management events refer to
+their exact identity and digest. See
+[Assignment lifecycle](../04--Design/SDPTool/Blueprints/Assignment-Lifecycle.md).
+Existing x-kanban and x-management histories retain their original meanings.

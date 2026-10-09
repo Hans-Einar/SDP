@@ -121,3 +121,51 @@ func TestBlueprintDiscoveryProjection(t *testing.T) {
 		t.Fatal(e)
 	}
 }
+
+func TestBlueprintAssignmentGroupsWithoutBundles(t *testing.T) {
+	root := t.TempDir()
+	area := filepath.Join(root, "SDP")
+	os.MkdirAll(filepath.Join(area, "ProjectManagement"), 0700)
+	raw, e := os.ReadFile("blueprintstate/testdata/lifecycle.ndjson")
+	if e != nil {
+		t.Fatal(e)
+	}
+	history := filepath.Join(area, "ProjectManagement/Ledger.ndjson")
+	os.WriteFile(history, raw, 0600)
+	p, e := Discover(root)
+	if e != nil {
+		t.Fatal(e)
+	}
+	found := false
+	for _, n := range p.Navigation.Nodes {
+		if n.ID == "blueprints" && n.State != "available" {
+			t.Fatal("assignments hidden by absent bundle catalogue", n)
+		}
+		if n.AssignmentID == "BPA-one" {
+			found = true
+			if n.AssignmentState != "completed" || n.Target != nil || n.ReadinessStatus != "changed-or-unavailable" || n.EvidenceStatus != "changed-or-unavailable" {
+				t.Fatal(n)
+			}
+		}
+	}
+	if !found {
+		t.Fatal("missing completed assignment")
+	}
+	os.WriteFile(history, append(raw, []byte("{incomplete")...), 0600)
+	p, e = Discover(root)
+	if e != nil {
+		t.Fatal(e)
+	}
+	found = false
+	for _, n := range p.Navigation.Nodes {
+		if n.ID == "blueprints" {
+			found = true
+			if n.State != "unavailable" || n.Diagnostic == "" {
+				t.Fatal(n)
+			}
+		}
+	}
+	if !found {
+		t.Fatal("missing unavailable tab")
+	}
+}

@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/Hans-Einar/SDP/SDPTool/blueprints"
+	"github.com/Hans-Einar/SDP/SDPTool/blueprintstate"
 	"github.com/Hans-Einar/SDP/SDPTool/model"
 	"github.com/Hans-Einar/SDP/SDPTool/presentation"
 	"io"
@@ -27,6 +28,32 @@ func modelCommand(area string, args []string, out, errs io.Writer, jsonMode bool
 		return bad()
 	}
 	switch args[0] {
+	case "assignment":
+		if len(args) == 2 && args[1] == "list" {
+			views, err := blueprints.AssignmentViews(area)
+			if err != nil {
+				return reportMode(errs, failure("assignment", err), jsonMode)
+			}
+			if err = presentation.Default().Write(out, map[string]any{"schema": blueprintstate.Schema, "operation": "assignment-list", "assignments": views}, jsonMode); err != nil {
+				return reportMode(errs, err, jsonMode)
+			}
+			return 0
+		}
+		if len(args) != 8 || args[1] != "apply" || args[2] != "--request" || args[4] != "--as" || args[6] != "--authority" {
+			return bad()
+		}
+		req, err := blueprints.LoadAssignmentRequest(args[3])
+		if err != nil {
+			return reportMode(errs, failure("assignment", err), jsonMode)
+		}
+		result, err := blueprints.ApplyAssignment(area, blueprintstate.Principal{Actor: args[5], Authority: args[7]}, req)
+		if err != nil {
+			return reportMode(errs, failure("assignment", err), jsonMode)
+		}
+		if err = presentation.Default().Write(out, result, jsonMode); err != nil {
+			return reportMode(errs, err, jsonMode)
+		}
+		return 0
 	case "assess":
 		if len(args) != 6 || args[1] != "blueprint" || args[2] != "--bundle" || args[4] != "--evidence" {
 			return bad()
@@ -207,8 +234,12 @@ const modelHelp = `Usage: sdptool [MODEL-AREA] model ACTION [--json]
     or --evidence verified --code-digest SHA256 --checks REFERENCE
   create blueprint from kind:NAME to kind:NAME --entry System.design --task TASK.json --output DIRECTORY (or --catalogue SDP/Blueprints)
   assess blueprint --bundle RETAINED-DIR --evidence EVIDENCE.json
+  assignment list
+  assignment apply --request REQUEST.json --as ACTOR --authority controller|assignee|reviewer
   status|history|snapshot kind:NAME
   recover OPERATION-UUID resume|abort
 MODEL-AREA is the directory containing artifact folders; no Git or SDP install required.
+Assignment commands take the SDP area, with canonical ProjectManagement/Traceability records.
+The local CLI is a trusted controller boundary; --as is attribution, not authentication.
 WORK snapshots are preliminary. Blueprints are diagnostic previews, not executable assignments.
 `

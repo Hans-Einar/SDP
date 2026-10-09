@@ -4,7 +4,7 @@
 | --- | --- |
 | id | PLAN-SDP-0020 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | ImplementationPlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
@@ -182,8 +182,8 @@ that generates two revisions, assigns one, records review/closure and refreshes
 the discovery tree without altering the retained bundles.
 Session0008 continues through implementation; its roadmap must show design gates
 and production milestones separately. Installer manifests, releases and integration
-into XFMD require their own authorized work. BPI1-M1 is delivered and independently reviewed; BPI2-M1/M2 are delivered; BPI3-M1 readiness/evidence is delivered; BPI3-M2a history foundation is delivered; M2b lifecycle integration is next. See
-[Evidence-BPI1.md](Evidence-BPI1.md). BPI3-M2a is delivered; M2b integration is next.
+into XFMD require their own authorized work. BPI1-M1 is delivered and independently reviewed; BPI2-M1/M2 are delivered; BPI3-M1 readiness/evidence is delivered; BPI3-M2a history and M2b lifecycle integration are delivered. See
+[Evidence-BPI1.md](Evidence-BPI1.md). BPI3-M2a/M2b are delivered and independently reviewed.
 
 ## BPI1-M1 delivery — 2026-10-07
 
@@ -241,3 +241,41 @@ M2b remains next: lifecycle commands, domain validators, authority/evidence chec
 and navigation groups. No assignment transition is delivered by M2a. Existing
 manual writers do not participate in its lock; cross-writer integration remains
 explicit work. The prior installer race timeout remains open for final integration.
+
+
+## BPI3-M2b execution — 2026-10-09
+
+The compiled CLI now applies explicit canonical assignment events and lists their
+read-only projections. Pure replay is shared with installer validation; Python
+process validation supports the same versioned payload and transition constraints.
+Discovery keeps retained task/revision navigation and adds per-assignment state
+groups with separate validation, source freshness, readiness and evidence fields.
+
+The non-Git fixture exercises readiness adoption, assignment, start, hold/resume,
+submission, rejection/rework, independent acceptance and closure. It generates two
+retained revisions of one task, exercises multiple assignments and exceptional
+dispositions, and verifies unchanged retained bundle contents. Negative controls
+cover wrong/stale authority, evidence/code/trace mismatches, malformed history and
+missing bundles. A subprocess exits after append but before response; retry applies
+no duplicate transition. Concurrent cancellations have one winner.
+
+Final verification and independent review are recorded in Evidence-BPI3-M2b.md.
+The earlier installer race timeout is not silently waived; final broad-suite
+results determine whether the implementation plan can be closed. Native XFMD,
+release/installer packaging and BP2-A owner pilot disposition remain separate.
+
+
+## Implementation closeout — 2026-10-09
+
+BPI1, BPI2 and BPI3 are delivered for the bounded source-tool contract. Independent
+M2b review approves local lifecycle/history/discovery after corrections. Relevant
+full SDPTool package race tests pass with the longer time budget; final-delta race
+tests and go vet pass. The previous installer race verification gap is resolved by
+the independent full installer package run. The 180-second broad attempt remains
+a recorded timeout, including unchanged model code; it is not a release gate pass.
+No unrelated grammar/runtime behavior is newly claimed.
+
+PLAN-SDP-0020 is completed. KB050 is gate-review for the still-open BP2-A owner
+review of the concrete reduced MVP1 model/blueprint pilot; PLAN-SDP-0001 and
+Session0008 retain that work. Release packaging, parallel-branch integration and
+native XFMD consumer implementation are not implied by this closeout.

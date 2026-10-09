@@ -5,7 +5,7 @@
 | id | KB-SDP-050 |
 | project | SDP |
 | type | Proposal |
-| CardState | in-progress |
+| CardState | gate-review |
 | Systems | SDPTOOL, SDL, SDUI |
 | created | 2026-10-03 |
 | source | Owner discussion; KB-SDP-048 split KBO-SDP-000005 |
@@ -115,3 +115,20 @@ independently reviewed after envelope-integrity corrections. Concurrent append,
 retry and forced process-exit checks pass. See Evidence-BPI3-M2a.md and Session0008
 T011. M2b remains next: assignment operations and state-group navigation. This
 submilestone does not complete the lifecycle or change CardState (in-progress).
+
+
+2026-10-09 BPI3-M2b: canonical revision-bound assignment operations, scoped
+implementation/review gates, compatible replay/installer validators and grouped
+discovery are delivered. Compiled non-Git two-revision trial, independent review
+and relevant race/vet verification pass. See Evidence-BPI3-M2b.md and Session0008
+T012. PLAN-SDP-0020 is completed; previous installer race evidence gap resolved.
+The short broad-suite attempt remains recorded as a timeout, not a release pass.
+
+## Gate review
+
+The concrete remaining owner review is BP2-A's reduced MVP1 NOW/TARGET blueprint
+pilot and its context/obligation presentation. The generated implementation trial
+is available under 05--Implementation/SDPTool/Blueprints/Trial-BPI3-M2b. This card
+stays active/gate-review for that disposition; it is not waiting merely to point
+to later work. Native XFMD integration, release packaging and general model/code
+conformance remain outside the delivered bounded implementation.

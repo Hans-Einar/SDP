@@ -1,0 +1,117 @@
+{
+  "baseline": "295b048",
+  "scope": "BPI3-M2b source lifecycle, no release/native XFMD",
+  "toolchain": "Go 1.27.1 linux/amd64",
+  "candidateFiles": {
+    "SDP/ProjectManagement/blueprint-assignment.schema.json": "c4987a44a3e16ecfb7553982b527599b1ea938d5085ac49590296ffc346c128d",
+    "SDP/ProjectManagement/blueprint_history.py": "d534876453ee30364257163492e679dae262899c0e5eee6aaa144259a817edec",
+    "SDP/ProjectManagement/validate.py": "092313f25a4987ad9e3f98aef193a3b17475e6ec5cd45bd9c61333dfadde9e02",
+    "SDP/SDL/ProjectGovernance/SDPTool/README.md": "8cab641b64284eca380c6e1e0fe4c3ba869fffb890f3e1c48ca8f6e51c06f3ba",
+    "SDP/SDL/ProjectGovernance/SDPTool/System.design": "89f3503653f1ff69510487d2846b22e6123b8dcfc3820058664659a7f2023867",
+    "SDPTool/Contract.md": "2c847669a5fad83f51da090050fdfa46a02cad7fa3b8aec56b6d80ee3689b91d",
+    "SDPTool/blueprint_navigation.go": "6bfa1301adc36029514be912b8c21973cdd01680581222a9de9c7893458e98bd",
+    "SDPTool/blueprint_navigation_test.go": "eafbdf8008dc51dae00a04b6491d1efb6b56d19e548c8283826b86af1ec38ccf",
+    "SDPTool/blueprints/README.md": "183e6d736c3b9d5c347e9f21f4e1f497feb9a04d929c5eed18069d987aeb5c4c",
+    "SDPTool/blueprints/assessment.go": "343bd234a76452849648f91264a12b8331589a811e5a3046c1e52f33f3b0c3c7",
+    "SDPTool/blueprints/lifecycle.go": "919a9f7023b0a1400322e993f727eb756e935c04e65a26e5c82947778eed090a",
+    "SDPTool/blueprints/lifecycle_test.go": "b97d39090f9c2fa7de627bc8be8d3f964bef0fd31e4c85315f4b4faec36d0828",
+    "SDPTool/blueprintstate/state.go": "a6842758b3a15d5b8721b4a5af65cb96e12427c4aebed9c2da2f4e1be2213893",
+    "SDPTool/blueprintstate/state_test.go": "21120736ba37279c2d4d97403a04ff1a281e5ad92697762c66269897d796d4f8",
+    "SDPTool/blueprintstate/testdata/README.md": "4f7650129d1e5b5d7c37b7e896d42ff8577db9a15a1561aae56fbf63dec827a1",
+    "SDPTool/blueprintstate/testdata/lifecycle.ndjson": "ea00b46e62da475269880538bfaf6a7617625114cb2056d10f460e85f4d9d2e7",
+    "SDPTool/install/blueprint_history_test.go": "1afbda3ecb92c6c2943da06164cc40fd387a0d5f0831d4b1e17b769322ccbfa1",
+    "SDPTool/install/history.go": "accdf27ee8ff6702a138df0356857a1d8a20bfac9807e8990bcba243ded62601",
+    "SDPTool/model_cli.go": "7db34824b729313a9ee04ced1f9dc416bc1e9e90cf4799002904dc28cf6612d5",
+    "SDPTool/output_arguments.go": "ed8fe899f7f684c98761d2ac678eca9146034fd219be2f5dd6229ae5a4b14596",
+    "SDPTool/presentation/presentation.go": "5be65c95fcebd30bd3a8f575156cdc5f8d9290f4b8218eb55ad2f05f331488a6",
+    "SDPTool/projecthistory/README.md": "82dbe2e19a9c7598f47fb3f37b4fe653cf2df6f7c4aad9237ce1d70ebd288301",
+    "SDPTool/projecthistory/history.go": "9d239e5dff87071ecc9eab239b05a8427ef350c48459997cfbe7c56d27d0c260",
+    "SDPTool/tree.go": "e75d0c74342337fbf92c7c07adad646215a4fe32695ed205d299dc5200d425c6"
+  },
+  "compiledCLI": {
+    "path": "/tmp/bpi3-m2b-sdptool",
+    "sha256": "4698c87ed0206f37178347f0109a122e8be12dab3192574db97a1e3689e5372c"
+  },
+  "checks": [
+    {
+      "command": "go test ./blueprints -run TestAssignment -count=1 -v",
+      "result": "pass",
+      "seconds": 10.453,
+      "scope": "compiled non-Git lifecycle, two revisions and code/source/trace controls before final added regressions"
+    },
+    {
+      "command": "go test ./blueprintstate ./blueprints ./install -run TestCanonicalReplay|TestNanosecond|TestAssignment|TestInstallerPreservesBlueprint -count=1",
+      "result": "pass",
+      "secondsByPackage": {
+        "blueprintstate": 20.851,
+        "blueprints": 54.611,
+        "install": 0.016
+      },
+      "scope": "candidate before final added concurrent/navigation regressions"
+    },
+    {
+      "command": "go test -race -p 1 ./blueprints . -run TestAssignmentConcurrentCancellation|TestAssignmentFreshnessAndPlanCleanup|TestBlueprintAssignmentGroupsWithoutBundles -timeout 120s",
+      "result": "pass",
+      "secondsByPackage": {
+        "blueprints": 61.593,
+        "sdptool": 1.444
+      },
+      "scope": "final delta"
+    },
+    {
+      "command": "go vet ./...",
+      "result": "pass"
+    },
+    {
+      "command": "go test -race ./... -timeout 180s",
+      "result": "time-limit-exceeded; remaining run terminated",
+      "scope": "not a passing full-suite result; root/blueprints/install/model timed out under host contention"
+    },
+    {
+      "command": "sdl check SDP/SDL/ProjectGovernance/SDPTool/System.design",
+      "result": "pass"
+    },
+    {
+      "command": "python3 SDP/ProjectManagement/validate.py",
+      "result": "pass final closeout: 62 cards,39 management records,4 lineage operations,517 events"
+    },
+    {
+      "command": "python3 Toolkit/scripts/validate_sdp.py",
+      "result": "pass final closeout"
+    }
+  ],
+  "review": {
+    "agent": "/root/bpi3_m2b_review",
+    "codeFindings": "none remaining after fixes",
+    "finalRaceRun": {
+      "result": "pass",
+      "secondsByPackage": {
+        "blueprintstate": 37.789,
+        "blueprints": 546.027,
+        "projecthistory": 7.085,
+        "install": 494.87,
+        "sdptool": 343.673
+      },
+      "scope": "Independent full affected packages; final navigation/stale delta additionally verified by parent race run"
+    },
+    "verdict": "approved for bounded BPI3-M2b code delivery; no material findings"
+  },
+  "trial": {
+    "directory": "/tmp/bpi3-m2b-consumer/SDP",
+    "states": {
+      "BPA-one": "completed",
+      "BPA-two": "superseded",
+      "BPA-three": "canceled",
+      "BPA-four": "draft"
+    },
+    "gitRequired": false,
+    "artifacts": {
+      "SDP/05--Implementation/SDPTool/Blueprints/Trial-BPI3-M2b/assignments.json": "0fc75e9813a57566441c99357cdfe42f266daddc4ab758b7f8887d440a03731f",
+      "SDP/05--Implementation/SDPTool/Blueprints/Trial-BPI3-M2b/discovery.json": "1b6db6988d09496c931de6029883f2c8882eccbd03646b7786b538d76a9b65a7"
+    }
+  },
+  "managementEvents": [
+    "EVT-PM-SDP-000172",
+    "EVT-KB-SDP-000321"
+  ]
+}

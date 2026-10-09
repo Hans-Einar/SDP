@@ -1,0 +1,245 @@
+panic: test timed out after 3m0s
+	running tests:
+		TestLocalBoardInventory (39s)
+
+goroutine 64 [running]:
+testing.(*M).startAlarm.func1()
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2959 +0x605
+created by time.goFunc
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/time/sleep.go:182 +0x45
+
+goroutine 1 [chan receive]:
+testing.(*T).Run(0xc0000fc6c8, {0xc416cd, 0x17}, 0x11954a8)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2266 +0xb3e
+testing.runTests.func1(0xc0000fc6c8)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2742 +0x85
+testing.tRunner(0xc0000fc6c8, 0xc0002bfa40)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2193 +0x21d
+testing.runTests({0xc4a968, 0x21}, {0xc4a968, 0x21}, 0xc0000b01b0, {0x1206468, 0x29, 0x29}, {0xc2aa33ae6037d9c4, 0x29ef2528ca, ...})
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2740 +0x9ea
+testing.(*M).Run(0xc00024a820)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2600 +0xf45
+main.main()
+	_testmain.go:126 +0x165
+
+goroutine 84 [running]:
+	goroutine running on other thread; stack unavailable
+created by testing.(*T).Run in goroutine 1
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2258 +0xb13
+FAIL	github.com/Hans-Einar/SDP/SDPTool	180.649s
+panic: test timed out after 3m0s
+	running tests:
+		TestRetainedRevisionsAndTampering (1m0s)
+
+goroutine 55 [running]:
+testing.(*M).startAlarm.func1()
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2959 +0x605
+created by time.goFunc
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/time/sleep.go:182 +0x45
+
+goroutine 1 [chan receive, 1 minutes]:
+testing.(*T).Run(0xc00023c488, {0x99fc51, 0x21}, 0xd60648)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2266 +0xb3e
+testing.runTests.func1(0xc00023c488)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2742 +0x85
+testing.tRunner(0xc00023c488, 0xc0002dfa40)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2193 +0x21d
+testing.runTests({0x99fc72, 0x21}, {0x9a4e7c, 0x2c}, 0xc0000a0168, {0xdbb848, 0x14, 0x14}, {0xc2aa33ae71762327, 0x29fd4c43cf, ...})
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2740 +0x9ea
+testing.(*M).Run(0xc00009edc0)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2600 +0xf45
+main.main()
+	_testmain.go:84 +0x165
+
+goroutine 21 [runnable]:
+encoding/json.(*Decoder).Token(0xc000482030)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/encoding/json/v2_stream.go:220 +0x955
+github.com/Hans-Einar/SDP/SDPTool/blueprints.decodeRecord.func1()
+	/tmp/sdp-blueprint-implementation/SDPTool/blueprints/catalogue.go:98 +0x265
+github.com/Hans-Einar/SDP/SDPTool/blueprints.decodeRecord.func1()
+	/tmp/sdp-blueprint-implementation/SDPTool/blueprints/catalogue.go:113 +0x4ae
+github.com/Hans-Einar/SDP/SDPTool/blueprints.decodeRecord.func1()
+	/tmp/sdp-blueprint-implementation/SDPTool/blueprints/catalogue.go:107 +0x32d
+github.com/Hans-Einar/SDP/SDPTool/blueprints.decodeRecord.func1()
+	/tmp/sdp-blueprint-implementation/SDPTool/blueprints/catalogue.go:107 +0x32d
+github.com/Hans-Einar/SDP/SDPTool/blueprints.decodeRecord({0xc0002a0000, 0x34679, 0x36000}, {0xccfe90, 0xc0000cc180})
+	/tmp/sdp-blueprint-implementation/SDPTool/blueprints/catalogue.go:125 +0x171
+github.com/Hans-Einar/SDP/SDPTool/blueprints.verify({_, _}, _)
+	/tmp/sdp-blueprint-implementation/SDPTool/blueprints/catalogue.go:174 +0x1999
+github.com/Hans-Einar/SDP/SDPTool/blueprints.Scan({0xc000027f40, 0x3e})
+	/tmp/sdp-blueprint-implementation/SDPTool/blueprints/catalogue.go:304 +0xea5
+github.com/Hans-Einar/SDP/SDPTool/blueprints.TestRetainedRevisionsAndTampering(0xc0001f0908)
+	/tmp/sdp-blueprint-implementation/SDPTool/blueprints/catalogue_test.go:44 +0x113a
+testing.tRunner(0xc0001f0908, 0xd60648)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2193 +0x21d
+created by testing.(*T).Run in goroutine 1
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2258 +0xb13
+FAIL	github.com/Hans-Einar/SDP/SDPTool/blueprints	180.772s
+ok  	github.com/Hans-Einar/SDP/SDPTool/blueprintstate	33.925s
+?   	github.com/Hans-Einar/SDP/SDPTool/cmd/sdptool	[no test files]
+panic: test timed out after 3m0s
+	running tests:
+		TestProcessExitRecoveryMatrix (2m41s)
+		TestProcessExitRecoveryMatrix/known (50s)
+		TestProcessExitRecoveryMatrix/known/write-1 (2s)
+
+goroutine 119 [running]:
+testing.(*M).startAlarm.func1()
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2959 +0x605
+created by time.goFunc
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/time/sleep.go:182 +0x45
+
+goroutine 1 [chan receive, 2 minutes]:
+testing.(*T).Run(0xc0000e8488, {0xaa526a, 0x1d}, 0xeead10)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2266 +0xb3e
+testing.runTests.func1(0xc0000e8488)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2742 +0x85
+testing.tRunner(0xc0000e8488, 0xc00025fa40)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2193 +0x21d
+testing.runTests({0xaa8284, 0x21}, {0xaad62a, 0x29}, 0xc0000a2108, {0xf49e20, 0x19, 0x19}, {0xc2aa33ae70f6d322, 0x29f5e6e13e, ...})
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2740 +0x9ea
+testing.(*M).Run(0xc0000a0820)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2600 +0xf45
+main.main()
+	_testmain.go:94 +0x165
+
+goroutine 92 [runnable]:
+encoding/json/jsontext.Value.Kind({0xc0001cd71c, 0x556, 0x556})
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/encoding/json/jsontext/value.go:255 +0x1ac
+encoding/json/v2.makeStringArshaler.func2(0xc0004b4140, {{0xe91cd8?, 0xc0000a79a0?, 0x5613f7?}, 0x7?}, 0xc0004b4200)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/encoding/json/v2/arshal_default.go:274 +0x213
+encoding/json/v2.makeInterfaceArshaler.func2(0xc0004b4140, {{0xe98348?, 0xc0000a7910?, 0xe91cd8?}, 0x0?}, 0xc0004b4200)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/encoding/json/v2/arshal_default.go:1954 +0xc8f
+encoding/json/v2.makeMapArshaler.func3(0xc0004b4140, {{0xe6c7d8?, 0xc000274130?, 0x4c16bd?}, 0xb0?}, 0xc0004b4200)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/encoding/json/v2/arshal_default.go:1059 +0xe03
+encoding/json/v2.makeInterfaceArshaler.func2(0xc0004b4140, {{0xe98348?, 0xc0004b01e0?, 0x6?}, 0xb0?}, 0xc0004b4200)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/encoding/json/v2/arshal_default.go:1954 +0xc8f
+encoding/json/v2.makeSliceArshaler.func3(0xc0004b4140, {{0xe607c8?, 0xc000016408?, 0x5613f7?}, 0x7?}, 0xc0004b4200)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/encoding/json/v2/arshal_default.go:1586 +0x85d
+encoding/json/v2.makeInterfaceArshaler.func2(0xc0004b4140, {{0xe98348?, 0xc0000a6d70?, 0xe91cd8?}, 0x60?}, 0xc0004b4200)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/encoding/json/v2/arshal_default.go:1954 +0xc8f
+encoding/json/v2.makeMapArshaler.func3(0xc0004b4140, {{0xe6c7d8?, 0xc000274078?, 0xc00010194f?}, 0x90?}, 0xc0004b4200)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/encoding/json/v2/arshal_default.go:1059 +0xe03
+encoding/json/v2.makeInterfaceArshaler.func2(0xc0004b4140, {{0xe98348?, 0xc0000a6d50?, 0x1?}, 0x5d?}, 0xc0004b4200)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/encoding/json/v2/arshal_default.go:1954 +0xc8f
+encoding/json/v2.unmarshalDecode(0xc0004b4140, {0xe3f5b8, 0xc0000a6d50}, 0xc0004b4200, 0x1)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/encoding/json/v2/arshal.go:471 +0x4a3
+encoding/json/v2.Unmarshal({0xc0001cc000, 0x1fd7, 0x1fd7}, {0xe3f5b8, 0xc0000a6d50}, {0xc000179a20, 0x1, 0x1})
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/encoding/json/v2/arshal.go:390 +0x138
+encoding/json.(*Decoder).Decode(0xc00032c3c0, {0xe3f5b8, 0xc0000a6d50})
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/encoding/json/v2_stream.go:90 +0x2c7
+github.com/Hans-Einar/SDP/SDPTool/install.Canonical({0xe3f2a8, 0xc000254000})
+	/tmp/sdp-blueprint-implementation/SDPTool/install/records.go:167 +0x1a7
+github.com/Hans-Einar/SDP/SDPTool/install.saveJournal({0xc0004a7700, 0x3b}, 0xc000254000)
+	/tmp/sdp-blueprint-implementation/SDPTool/install/execute.go:313 +0x1a7
+github.com/Hans-Einar/SDP/SDPTool/install.Executor.run({0x8?}, {0xee98f8, 0xf72840}, {0xc0004a7700, 0x3b}, 0xc000254000)
+	/tmp/sdp-blueprint-implementation/SDPTool/install/execute.go:524 +0x1016
+github.com/Hans-Einar/SDP/SDPTool/install.Executor.Apply({_}, {_, _}, {_, _}, {{0xa9dcb3, 0x12}, {0xc0004a6440, 0x40}, {0xa98077, ...}, ...})
+	/tmp/sdp-blueprint-implementation/SDPTool/install/execute.go:79 +0x1097
+github.com/Hans-Einar/SDP/SDPTool/install.recoveryFixture(_, {_, _})
+	/tmp/sdp-blueprint-implementation/SDPTool/install/recovery_test.go:41 +0x346
+github.com/Hans-Einar/SDP/SDPTool/install.TestProcessExitRecoveryMatrix.func1.1(0xc0001ec6c8)
+	/tmp/sdp-blueprint-implementation/SDPTool/install/recovery_test.go:93 +0xcf
+testing.tRunner(0xc0001ec6c8, 0xc00051e040)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2193 +0x21d
+created by testing.(*T).Run in goroutine 115
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2258 +0xb13
+
+goroutine 62 [chan receive]:
+testing.(*T).Run(0xc0000e9688, {0xa97764, 0x5}, 0xc0000163c0)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2266 +0xb3e
+github.com/Hans-Einar/SDP/SDPTool/install.TestProcessExitRecoveryMatrix(0xc0000e9688)
+	/tmp/sdp-blueprint-implementation/SDPTool/install/recovery_test.go:73 +0xb4
+testing.tRunner(0xc0000e9688, 0xeead10)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2193 +0x21d
+created by testing.(*T).Run in goroutine 1
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2258 +0xb13
+
+goroutine 115 [chan receive]:
+testing.(*T).Run(0xc000108908, {0xc0003bd339, 0x7}, 0xc00051e040)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2266 +0xb3e
+github.com/Hans-Einar/SDP/SDPTool/install.TestProcessExitRecoveryMatrix.func1(0xc000108908)
+	/tmp/sdp-blueprint-implementation/SDPTool/install/recovery_test.go:92 +0x77d
+testing.tRunner(0xc000108908, 0xc0000163c0)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2193 +0x21d
+created by testing.(*T).Run in goroutine 62
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2258 +0xb13
+FAIL	github.com/Hans-Einar/SDP/SDPTool/install	180.776s
+panic: test timed out after 3m0s
+	running tests:
+		TestBinaryConflictRemainsReadable (3s)
+
+goroutine 47 [running]:
+testing.(*M).startAlarm.func1()
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2959 +0x605
+created by time.goFunc
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/time/sleep.go:182 +0x45
+
+goroutine 1 [chan receive]:
+testing.(*T).Run(0xc0000fe488, {0x7fe71f, 0x21}, 0xaa18d0)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2266 +0xb3e
+testing.runTests.func1(0xc0000fe488)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2742 +0x85
+testing.tRunner(0xc0000fe488, 0xc00021fa40)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2193 +0x21d
+testing.runTests({0x7fe740, 0x21}, {0x801022, 0x27}, 0xc0000a20d8, {0xac9980, 0x1b, 0x1b}, {0xc2aa33b6ccbb6c66, 0x29e99bc5b5, ...})
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2740 +0x9ea
+testing.(*M).Run(0xc0000a1040)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2600 +0xf45
+main.main()
+	_testmain.go:98 +0x165
+
+goroutine 59 [runnable]:
+gopkg.in/yaml%2ev3.resolve({0x0, 0x0}, {0xc0003acbe9, 0x7})
+	/home/warloc/go/pkg/mod/gopkg.in/yaml.v3@v3.0.1/resolve.go:264 +0x1065
+gopkg.in/yaml%2ev3.(*parser).node(0xc00001c808, 0x8, {0x0, 0x0}, {0x0, 0x0}, {0xc0003acbe9, 0x7})
+	/home/warloc/go/pkg/mod/gopkg.in/yaml.v3@v3.0.1/decode.go:178 +0xd0
+gopkg.in/yaml%2ev3.(*parser).scalar(0xc00001c808)
+	/home/warloc/go/pkg/mod/gopkg.in/yaml.v3@v3.0.1/decode.go:247 +0x166
+gopkg.in/yaml%2ev3.(*parser).parse(0xc00001c808)
+	/home/warloc/go/pkg/mod/gopkg.in/yaml.v3@v3.0.1/decode.go:151 +0x139
+gopkg.in/yaml%2ev3.(*parser).parseChild(...)
+	/home/warloc/go/pkg/mod/gopkg.in/yaml.v3@v3.0.1/decode.go:197
+gopkg.in/yaml%2ev3.(*parser).mapping(0xc00001c808)
+	/home/warloc/go/pkg/mod/gopkg.in/yaml.v3@v3.0.1/decode.go:280 +0x27b
+gopkg.in/yaml%2ev3.(*parser).parse(0xc00001c808)
+	/home/warloc/go/pkg/mod/gopkg.in/yaml.v3@v3.0.1/decode.go:155 +0x17e
+gopkg.in/yaml%2ev3.(*parser).parseChild(...)
+	/home/warloc/go/pkg/mod/gopkg.in/yaml.v3@v3.0.1/decode.go:197
+gopkg.in/yaml%2ev3.(*parser).sequence(0xc00001c808)
+	/home/warloc/go/pkg/mod/gopkg.in/yaml.v3@v3.0.1/decode.go:262 +0x276
+gopkg.in/yaml%2ev3.(*parser).parse(0xc00001c808)
+	/home/warloc/go/pkg/mod/gopkg.in/yaml.v3@v3.0.1/decode.go:157 +0x15a
+gopkg.in/yaml%2ev3.(*parser).parseChild(...)
+	/home/warloc/go/pkg/mod/gopkg.in/yaml.v3@v3.0.1/decode.go:197
+gopkg.in/yaml%2ev3.(*parser).mapping(0xc00001c808)
+	/home/warloc/go/pkg/mod/gopkg.in/yaml.v3@v3.0.1/decode.go:288 +0x535
+gopkg.in/yaml%2ev3.(*parser).parse(0xc00001c808)
+	/home/warloc/go/pkg/mod/gopkg.in/yaml.v3@v3.0.1/decode.go:155 +0x17e
+gopkg.in/yaml%2ev3.(*parser).parseChild(...)
+	/home/warloc/go/pkg/mod/gopkg.in/yaml.v3@v3.0.1/decode.go:197
+gopkg.in/yaml%2ev3.(*parser).document(0xc00001c808)
+	/home/warloc/go/pkg/mod/gopkg.in/yaml.v3@v3.0.1/decode.go:206 +0xc5
+gopkg.in/yaml%2ev3.(*parser).parse(0xc00001c808)
+	/home/warloc/go/pkg/mod/gopkg.in/yaml.v3@v3.0.1/decode.go:159 +0x105
+gopkg.in/yaml%2ev3.(*Decoder).Decode(0xc00021c6d0, {0xa51200, 0xc00040f400})
+	/home/warloc/go/pkg/mod/gopkg.in/yaml.v3@v3.0.1/yaml.go:123 +0x2da
+github.com/Hans-Einar/SDP/SDPTool/model.strict({0xc00014e000, 0x872, 0x873}, {0xa431d0, 0xc00034b540})
+	/tmp/sdp-blueprint-implementation/SDPTool/model/records.go:178 +0x4d5
+github.com/Hans-Einar/SDP/SDPTool/model.readArtifact({_, _})
+	/tmp/sdp-blueprint-implementation/SDPTool/model/records.go:376 +0x33d
+github.com/Hans-Einar/SDP/SDPTool/model.resolve({0xc0002c0240, 0x34}, {0xc00009fafa, 0x6})
+	/tmp/sdp-blueprint-implementation/SDPTool/model/records.go:536 +0x3d1
+github.com/Hans-Einar/SDP/SDPTool/model.Status({0xc0002c0240, 0x34}, {0xc00009fafa, 0x6})
+	/tmp/sdp-blueprint-implementation/SDPTool/model/records.go:560 +0x99
+github.com/Hans-Einar/SDP/SDPTool/model.CreateWork({0xc0002c0240, 0x34}, {0x8088a8, 0x1}, {0x0, 0x0}, 0x0)
+	/tmp/sdp-blueprint-implementation/SDPTool/model/work.go:116 +0xed2
+github.com/Hans-Einar/SDP/SDPTool/model.TestBinaryConflictRemainsReadable(0xc0000fe908)
+	/tmp/sdp-blueprint-implementation/SDPTool/model/merge_test.go:158 +0x1bc
+testing.tRunner(0xc0000fe908, 0xaa18d0)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2193 +0x21d
+created by testing.(*T).Run in goroutine 1
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2258 +0xb13
+FAIL	github.com/Hans-Einar/SDP/SDPTool/model	180.100s
+ok  	github.com/Hans-Einar/SDP/SDPTool/presentation	1.316s
+ok  	github.com/Hans-Einar/SDP/SDPTool/projecthistory	7.261s

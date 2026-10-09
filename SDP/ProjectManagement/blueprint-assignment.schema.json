@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Canonical blueprint assignment payload",
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "sdp-blueprint-assignment/1"
+    },
+    "authority": {
+      "enum": [
+        "controller",
+        "assignee",
+        "reviewer"
+      ]
+    },
+    "request": {
+      "type": "object",
+      "properties": {
+        "schema": {
+          "const": "sdp-blueprint-assignment/1"
+        },
+        "eventId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "occurredAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "assignmentId": {
+          "type": "string",
+          "pattern": "^BPA-[A-Za-z0-9][A-Za-z0-9.-]{0,95}$"
+        },
+        "action": {
+          "enum": [
+            "create",
+            "adopt-readiness",
+            "assign",
+            "start",
+            "submit",
+            "reject",
+            "accept-review",
+            "complete",
+            "hold",
+            "resume",
+            "cancel",
+            "supersede"
+          ]
+        },
+        "expectedEvent": {
+          "type": "string"
+        },
+        "binding": {
+          "type": "object",
+          "properties": {
+            "bundle": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "task": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "system": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "milestone": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "modelArea": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "from": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "to": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "revision": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "retained": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "plan": {
+              "type": "string",
+              "pattern": "^PLAN-[A-Z][A-Z0-9]*-[0-9]{4,}$"
+            }
+          },
+          "required": [
+            "bundle",
+            "task",
+            "system",
+            "milestone",
+            "modelArea",
+            "from",
+            "to",
+            "revision",
+            "retained",
+            "plan"
+          ],
+          "additionalProperties": false
+        },
+        "evidence": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "traceEvent": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "assignee": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "successor": {
+          "type": "string",
+          "pattern": "^BPA-[A-Za-z0-9][A-Za-z0-9.-]{0,95}$"
+        }
+      },
+      "required": [
+        "schema",
+        "eventId",
+        "occurredAt",
+        "assignmentId",
+        "action",
+        "expectedEvent",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    "proof": {
+      "type": "object",
+      "properties": {
+        "assessment": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "evidenceDigest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "codeDigest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "traceEvent": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "traceDigest": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "assessment",
+        "evidenceDigest"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema",
+    "authority",
+    "request"
+  ],
+  "additionalProperties": false
+}

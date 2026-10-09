@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-T011, 2026-10-09. Sequence only; dates are display slots, not duration estimates.
+T012, 2026-10-09. Sequence only; dates are display slots, not duration estimates.
 
 ```mermaid
 gantt
@@ -15,7 +15,7 @@ gantt
     section Implementation
     DONE BPI1 Analysis :done,d,after c,1d
     DONE BPI2 Publication and catalogue :done,e,after d,1d
-    ACTIVE BPI3 Evidence and lifecycle :active,f,after e,1d
+    DONE BPI3 Evidence and lifecycle :done,f,after e,1d
 ```
 
 | State | Step | Outcome | Evidence / remaining work |
@@ -25,7 +25,7 @@ gantt
 | completed | S3 / BP2-C | API and implementation handoff | Authored model Worker/Reviewer trial; A approved, violating B rejected |
 | completed | S4 / BPI1 | Production Go analysis | Go analyzer delivered; independent review approves bounded BPI1 |
 | completed | S5 / BPI2 | Publication and catalogue | M1/M2 delivered; diagnostic bundles and retained discovery |
-| on-going | S6 / BPI3 | Evidence and lifecycle | M1/M2a delivered; M2b next: revision-bound lifecycle and navigation |
+| completed | S6 / BPI3 | Evidence and lifecycle | M1/M2a/M2b delivered and independently reviewed; relevant race/vet evidence passed |
 
 | Field | Value |
 | --- | --- |
@@ -40,20 +40,20 @@ gantt
 Design the first useful semantic blueprint around a small real-model change,
 then hand off measurable implementation slices. The eventual generator must show
 NOW/TARGET differences, affected surroundings, preserved obligations and unknowns.
-The DesignPlan led to active ImplementationPlan PLAN-SDP-0020. Diagnostic generation
-and catalogue discovery are implemented; assignment lifecycle and code-conformance
-evidence remain separate milestones. The Ponsse pilot is not an implemented change.
+The DesignPlan led to completed ImplementationPlan PLAN-SDP-0020. Diagnostic
+generation, catalogue discovery and bounded assignment lifecycle/evidence are
+implemented; general code-conformance proof remains explicitly outside this scope. The Ponsse pilot is not an implemented change.
 
 ## Cards and plans
 
 | Card | Initial | Planned final | Current | Actual final |
 | --- | --- | --- | --- | --- |
-| [KB050](../KanBan/active/%23050--Proposal--Semantic-blueprints.md) | backlog | completed after implemented/verified blueprint feature | in-progress | pending |
+| [KB050](../KanBan/active/%23050--Proposal--Semantic-blueprints.md) | backlog | completed after implemented/verified blueprint feature | gate-review | pending |
 
 | Plan | Readiness | Lifecycle | Outcome |
 | --- | --- | --- | --- |
 | [PLAN-SDP-0001](../04--Design/SDPTool/Blueprints/Plan.md) | on-going | active | Contract, selection and executable handoff design |
-| [PLAN-SDP-0020](../05--Implementation/SDPTool/Blueprints/Plan.md) | on-going | active | BPI1 analysis, BPI2 publication, BPI3 assignment evidence |
+| [PLAN-SDP-0020](../05--Implementation/SDPTool/Blueprints/Plan.md) | completed | completed | BPI1 analysis, BPI2 publication, BPI3 evidence/lifecycle delivered |
 
 ## Turn journal
 
@@ -317,3 +317,42 @@ real blueprint lifecycle events were emitted. Card050, Plan0020 and S6 remain
 in-progress. Next: M2b assignment transitions, compatible canonical validators and
 grouped discovery. BP2-A owner pilot review and the prior installer integration
 timeout remain open. No merge to main, release or native XFMD changes occurred.
+
+
+### T012 — Assignment lifecycle and navigation (2026-10-09)
+
+Owner input: continue. Recovered M2b after committed M2a (295b048); working in
+the isolated sdp/blueprint-implementation checkout. Loaded SDP, Master, Worker,
+Verifier, Traceability and shared document workflow, reusing approved lifecycle
+design and selected plan. Independent Reviewer was delegated as required by the
+plan. No merge, release or XFMD implementation is selected.
+
+Implementation uses canonical x-blueprint events, separate assignment identities,
+trusted local adapter principals, explicit readiness adoption, scoped implementation
+receipts in Traceability and independent review before closure. CLI and discovery
+share the reducer; generated bundle contents never carry mutable work state.
+Reviewer findings cover unavailable-bundle historical facts, cleanup after parent
+plan closure, target digests, shared read budgets and Go/Python replay consistency.
+Corrections and final evidence follow below.
+
+
+T012 work summary: M2b delivered and independently reviewed; implementation
+Plan0020 completed. Compiled CLI lifecycle uses the canonical project ledger with
+separate assignment identities and retained revisions. Generated discover/list
+outputs agree after relocation of a non-Git fixture. Negative controls cover
+authority, stale updates, source/code/trace changes, malformed history and missing
+bundles; rejected requests preserve ledger bytes. Concurrent cancellation has one
+winner, lost-response retry creates no duplicate, and the whole retained bundle
+remains unchanged. Go/Python replay parity and installer compatibility pass.
+
+The short broad race attempt timed out under host contention; it was stopped
+after failures rather than treated as evidence of success. The longer independent
+race suite passed for all affected packages, including installer, resolving that
+prior evidence gap. Final-delta race and full vet passed. Reviewer fixes, source
+hashes and exact limitations are in Evidence-BPI3-M2b.md/Pilot-BPI3-M2b.json.
+
+Card050 is gate-review for the actual BP2-A reduced MVP1 blueprint pilot. S6 is
+completed; S1/DesignPlan0001 remain for owner disposition. Next step: owner review
+of that concrete blueprint/context presentation. Publication, parallel-branch
+integration, native XFMD and general model/code verification are separate. No
+main merge or release occurred. This is the work summary, not a captured final reply.

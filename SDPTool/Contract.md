@@ -336,3 +336,27 @@ No commands execute and no retained bundle or canonical workflow event changes.
 Ready applies only to the attributed scope/dispositions; source freshness is
 not-evaluated and authority is attributed-only. Blueprint workState in discovery
 is unchanged. See blueprints/README.md for input fields, budgets and limitations.
+
+
+## Blueprint assignment lifecycle — BPI3-M2b
+
+`sdptool SDP model assignment apply --request REQUEST.json --as ACTOR --authority
+controller|assignee|reviewer` records one revision-bound transition in canonical
+ProjectManagement history. `sdptool SDP model assignment list` is read-only. Both
+use sdp-blueprint-assignment/1, human presentation by default and --json for clients.
+The trusted local CLI attributes callers; it is not remote authentication. Unknown
+request keys cannot override authority. Stable operation IDs and expectedEvent
+enforce idempotence and optimistic concurrency. See
+[the lifecycle contract](../SDP/04--Design/SDPTool/Blueprints/Assignment-Lifecycle.md)
+for the exact request, evidence, authority, resource and transition rules.
+
+The Blueprints tab adds assignment-state groups without removing retained task and
+revision nodes. Assignment nodes carry assignmentId, assignmentRevision (last event),
+workState, assignee, sourceFreshness, readinessStatus and evidenceStatus separately.
+They never aggregate multiple assignments into a guessed task status. The older
+revision nodes retain workState=unknown. Broken history is a diagnostic, never an
+empty successful assignment list; damaged bundles remain visible without targets.
+Retained output bytes remain immutable and no manual navigation index is introduced.
+
+Writes currently require Linux. Release packaging/installable capabilities and
+native XFMD integration are separate from this source implementation.

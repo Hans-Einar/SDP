@@ -3,6 +3,7 @@ package install
 import (
 	"bytes"
 	"fmt"
+	"github.com/Hans-Einar/SDP/SDPTool/blueprintstate"
 	"github.com/Hans-Einar/SDP/SDPTool/bootstrap"
 	"regexp"
 	"strings"
@@ -12,6 +13,9 @@ import (
 // Validate history before planning any relocation. History bytes remain immutable;
 // validation checks both predecessor chains and the documents they identify.
 func validateHistory(history []byte, files map[string][]byte) error {
+	if _, _, err := blueprintstate.Replay(history); err != nil {
+		return err
+	}
 	latest := map[string]map[string]any{}
 	ids := map[string]bool{}
 	for _, line := range bytes.Split(history, []byte{'\n'}) {
@@ -35,6 +39,9 @@ func validateHistory(history []byte, files map[string][]byte) error {
 			return e
 		}
 		ids[id] = true
+		if strings.HasPrefix(typ, "x-blueprint:") {
+			continue
+		}
 		if payload["schemaVersion"] != "0.1" && payload["schemaVersion"] != "0.2" {
 			return fmt.Errorf("unsupported history payload")
 		}

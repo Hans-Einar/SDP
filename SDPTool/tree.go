@@ -20,25 +20,31 @@ type Target struct {
 	Revision  string `json:"revision,omitempty"`
 }
 type Node struct {
-	RetainedRevision  string   `json:"retainedRevision,omitempty"`
-	BlueprintID       string   `json:"blueprintId,omitempty"`
-	BlueprintRevision string   `json:"blueprintRevision,omitempty"`
-	AssignmentState   string   `json:"workState,omitempty"`
-	ArtifactKind      string   `json:"artifactKind,omitempty"`
-	ArtifactID        string   `json:"artifactId,omitempty"`
-	Preliminary       bool     `json:"preliminary,omitempty"`
-	Diagnostic        string   `json:"diagnostic,omitempty"`
-	ID                string   `json:"id"`
-	Kind              string   `json:"kind"`
-	Label             string   `json:"label"`
-	State             string   `json:"state"`
-	Children          []string `json:"children,omitempty"`
-	Reference         string   `json:"reference,omitempty"`
-	ExternalReference string   `json:"externalReference,omitempty"`
-	Target            *Target  `json:"target,omitempty"`
-	WorkState         string   `json:"cardState,omitempty"`
-	Sprint            string   `json:"sprintId,omitempty"`
-	Scrum             string   `json:"scrumId,omitempty"`
+	AssignmentID       string   `json:"assignmentId,omitempty"`
+	AssignmentRevision string   `json:"assignmentRevision,omitempty"`
+	SourceFreshness    string   `json:"sourceFreshness,omitempty"`
+	ReadinessStatus    string   `json:"readinessStatus,omitempty"`
+	EvidenceStatus     string   `json:"evidenceStatus,omitempty"`
+	Assignee           string   `json:"assignee,omitempty"`
+	RetainedRevision   string   `json:"retainedRevision,omitempty"`
+	BlueprintID        string   `json:"blueprintId,omitempty"`
+	BlueprintRevision  string   `json:"blueprintRevision,omitempty"`
+	AssignmentState    string   `json:"workState,omitempty"`
+	ArtifactKind       string   `json:"artifactKind,omitempty"`
+	ArtifactID         string   `json:"artifactId,omitempty"`
+	Preliminary        bool     `json:"preliminary,omitempty"`
+	Diagnostic         string   `json:"diagnostic,omitempty"`
+	ID                 string   `json:"id"`
+	Kind               string   `json:"kind"`
+	Label              string   `json:"label"`
+	State              string   `json:"state"`
+	Children           []string `json:"children,omitempty"`
+	Reference          string   `json:"reference,omitempty"`
+	ExternalReference  string   `json:"externalReference,omitempty"`
+	Target             *Target  `json:"target,omitempty"`
+	WorkState          string   `json:"cardState,omitempty"`
+	Sprint             string   `json:"sprintId,omitempty"`
+	Scrum              string   `json:"scrumId,omitempty"`
 }
 type Tree struct {
 	InventoryRevision   string   `json:"inventoryRevision,omitempty"`

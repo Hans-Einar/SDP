@@ -47,12 +47,15 @@ def metadata(path):
 
 
 def history(events):
+    runpy.run_path(str(AREA / "blueprint_history.py"))["validate"](events)
     seen, last_numbers, management = set(), {}, {}
     for e in events:
         ENVELOPE.validate(e)
         ident = e['eventId']
         require(ident not in seen, 'duplicate event ID')
         seen.add(ident)
+        if e["eventType"].startswith("x-blueprint:"):
+            continue
         prefix, number = ident.rsplit('-', 1)
         number = int(number)
         require(number > last_numbers.get(prefix, -1), 'non-increasing namespace event ID')

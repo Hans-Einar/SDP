@@ -122,3 +122,29 @@ Each relative input is captured once and cached; the evidence JSON and observed
 files are rechecked before returning. This detects observed concurrent edits; it
 is optimistic freshness, not atomic exclusion of arbitrary editors. The assessment
 schema versions readiness policy: bump it when readiness semantics change.
+
+
+## Revision-bound assignments
+
+The local command `sdptool SDP model assignment apply --request REQUEST.json
+--as ACTOR --authority controller|assignee|reviewer` accepts one checked request;
+`model assignment list` returns a read-only projection. Add --json for consumers.
+Apply uses the canonical ProjectManagement ledger, never a mutable blueprint file.
+A caller keeps eventId/occurredAt/request bytes stable when retrying and uses the
+last assignment event as expectedEvent for a new operation. Different assignments
+may share one retained revision. The CLI is trusted local attribution, not remote
+authentication; an adapter must bind its Principal independently of request data.
+
+The lifecycle contract and schema are linked from
+[Assignment-Lifecycle.md](../../SDP/04--Design/SDPTool/Blueprints/Assignment-Lifecycle.md).
+The pure reducer is blueprintstate; lifecycle.go owns bundle/source/evidence checks.
+Submission requires scoped TARGET code and passing check receipts tied to a pinned
+Traceability record. Acceptance requires a different attributed actor from the
+assignee; completion needs controller disposition and unchanged accepted evidence.
+Neither a parser pass nor a model release completes an assignment.
+
+Discovery adds assignment-state groups while retaining immutable task/revision
+navigation. Historical work state survives missing or stale inputs, with separate
+validation, freshness, readiness and evidence diagnostics. Catalogue and lifecycle
+read budgets are separate and documented; exhausted live checks remain unknown.
+No checks execute from receipts and no native XFMD widgets are implemented here.

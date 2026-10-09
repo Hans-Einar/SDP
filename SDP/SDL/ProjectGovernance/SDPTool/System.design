@@ -2,9 +2,13 @@ language design-core version 0.5.
 functionality AssessBlueprintEvidence.
 unit BlueprintAssessment.
 activity BlueprintAssessmentDelivery.
+capability BlueprintAssignmentControl.
+feature BlueprintAssignments.
 unit BlueprintCatalogue.
 activity BlueprintCatalogueDelivery.
 unit BlueprintFacade.
+unit BlueprintLifecycle.
+activity BlueprintLifecycleDelivery.
 feature BlueprintPreview.
 activity BlueprintPreviewDelivery.
 usecase BrowseProjectFacts.
@@ -23,6 +27,7 @@ activity ExistingReadFacade.
 interface ExistingSdlProjectionLibrary.
 unit ExternalCommandAdapter.
 functionality GenerateBlueprintPreview.
+functionality GovernBlueprintAssignment.
 feature GovernedProjectOperations.
 usecase InspectProposedModelChange.
 usecase InstallReviewedProcess.
@@ -80,6 +85,9 @@ BlueprintAssessment owns AssessBlueprintEvidence.
 BlueprintAssessmentDelivery addresses AssessBlueprintEvidence.
 BlueprintAssessmentDelivery delivers ScopedBlueprintReadiness.
 BlueprintAssessmentDelivery has implementation-status = implemented.
+BlueprintAssignmentControl requires CanonicalProjectHistoryLibrary in mode RoutineHandling.
+BlueprintAssignmentControl requires TrustedAssignmentBinding in mode RoutineHandling.
+BlueprintAssignments supports CoordinateGovernedWork.
 BlueprintCatalogue owns BrowseRetainedBlueprints.
 BlueprintCatalogue owns VerifyRetainedBlueprints.
 BlueprintCatalogueDelivery addresses BrowseRetainedBlueprints.
@@ -89,6 +97,12 @@ BlueprintCatalogueDelivery has implementation-status = implemented.
 BlueprintFacade consumes ExistingSdlProjectionLibrary.
 BlueprintFacade consumes ModelSnapshotLibrary.
 BlueprintFacade owns GenerateBlueprintPreview.
+BlueprintLifecycle consumes CanonicalProjectHistoryLibrary.
+BlueprintLifecycle consumes TrustedAssignmentBinding.
+BlueprintLifecycle owns GovernBlueprintAssignment.
+BlueprintLifecycleDelivery addresses GovernBlueprintAssignment.
+BlueprintLifecycleDelivery delivers BlueprintAssignments.
+BlueprintLifecycleDelivery has implementation-status = implemented.
 BlueprintPreview supports InspectProposedModelChange.
 BlueprintPreviewDelivery addresses GenerateBlueprintPreview.
 BlueprintPreviewDelivery delivers BlueprintPreview.
@@ -122,6 +136,9 @@ ExternalCommandAdapter uses RoutineCalls as sender of RequestTransition in mode 
 GenerateBlueprintPreview allocated-to SdpToolHost in mode ProjectReading.
 GenerateBlueprintPreview contributes-to BlueprintPreview.
 GenerateBlueprintPreview realizes DiagnosticBlueprint.
+GovernBlueprintAssignment allocated-to SdpToolHost in mode RoutineHandling.
+GovernBlueprintAssignment contributes-to BlueprintAssignments.
+GovernBlueprintAssignment realizes BlueprintAssignmentControl.
 GovernedProjectOperations supports CoordinateGovernedWork.
 InstallationFacade supports InstallReviewedProcess.
 InvokeReviewedInstallation allocated-to SdpToolHost in mode InstallationHandling.
@@ -220,11 +237,13 @@ ScopedBlueprintReadiness supports InspectProposedModelChange.
 SdpToolHost contains BlueprintAssessment.
 SdpToolHost contains BlueprintCatalogue.
 SdpToolHost contains BlueprintFacade.
+SdpToolHost contains BlueprintLifecycle.
 SdpToolHost contains ContextFacade.
 SdpToolHost contains ExistingInstallationFacade.
 SdpToolHost contains ExistingNavigationFacade.
 SdpToolHost contains RoutineCoordinator.
 SdpToolHost contains RunRepository.
+SdpToolHost provides BlueprintAssignmentControl.
 SdpToolHost provides DiagnosticBlueprint.
 SdpToolHost provides ProjectInventory.
 SdpToolHost provides ReviewedInstallation.

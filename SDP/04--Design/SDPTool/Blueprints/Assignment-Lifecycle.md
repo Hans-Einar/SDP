@@ -3,7 +3,8 @@
 Implementation refinement, 2026-10-09, PLAN-SDP-0020 / KB050 / Session0008.
 The owner-selected outcome remains assignment progress and evidence-backed discovery.
 This document separates the persistence prerequisite M2a from integrated M2b.
-It is a design contract, not a claim that lifecycle commands are implemented.
+This design governs the M2b command and replay implementation; delivery evidence
+is separate from owner acceptance and release.
 
 ## Existing authority and persistence
 
@@ -14,8 +15,7 @@ outside the project, with Linux locking and atomic snapshots. Its ledgerCoverage
 reader inspects selected card/plan subjects; it does not write canonical history.
 Its operational HEAD/generations must not become blueprint assignment authority.
 
-No compatible canonical writer exists in the current implementation branch.
-M2a adds a reusable SDPTool/projecthistory append primitive, preserving all prior
+At M2 planning, no compatible canonical writer existed. Delivered M2a adds a reusable SDPTool/projecthistory append primitive, preserving all prior
 bytes. This follows existing lock/stage/sync/rename patterns, but does not copy or
 integrate the separately owned governance subsystem. M2b will use this primitive
 for versioned x-blueprint assignment events in the canonical ledger. It must extend
@@ -109,3 +109,74 @@ M2b acceptance remains PLAN-SDP-0020's complete non-Git lifecycle trial, includi
 two retained revisions, concurrent/stale requests, expected negative controls,
 consumer refresh and unchanged retained bytes. Native XFMD integration and release
 remain separately owned. M2a alone does not deliver any assignment command or group.
+
+
+## M2b transport and replay contract
+
+Use `sdptool SDP model assignment apply --request REQUEST.json --as ACTOR
+--authority controller|assignee|reviewer`, or `model assignment list`. The explicit
+area is the project SDP directory, not the model-artifact area used by snapshot
+commands. The local CLI trusts its invoker; flags attribute a local action and
+are not authentication. An MCP adapter must bind a Principal independently;
+request JSON cannot supply a principal or role.
+
+The request schema is sdp-blueprint-assignment/1. Required fields are schema,
+eventId, occurredAt, assignmentId, action, expectedEvent and reason. A create
+request includes binding (bundle, task, system, revision, retained, plan, milestone,
+modelArea, from, to). All paths are relative to the SDP area without traversal;
+modelArea alone may be `.`. Bundle identifiers are checked against retained bytes.
+Assignment IDs start BPA-; operation IDs follow generic EVT- rules and must be
+kept stable across retry. expectedEvent is empty only for creation. Timestamps
+use RFC3339 with at most nine fractional digits; replay compares nanoseconds.
+
+Only adopt-readiness and submit take evidence; only submit takes traceEvent; only
+assign takes assignee; only supersede takes successor. Unknown/case-aliased,
+duplicate, missing required and null fields are rejected. JSON Schema and pure Go
+replay constrain the canonical payload; the Python process validator matches the
+transition contract. Installer validation reuses the Go reducer. Existing generic
+management readers filter their event namespaces and never infer assignment state.
+
+An active canonical Plan is required for create/adopt/assign. The milestone is an
+explicit scoped identifier, not a parsed Markdown task. Later cleanup remains
+possible after plan closure. hold/cancel/supersede/reject can operate when source
+or evidence is damaged; resume rechecks the relevant readiness/submission gates.
+Successors must already exist and belong to the same System.
+
+Submission requires an actual scoped TARGET code capture and at least one passing
+TARGET receipt. A stale code capture cannot be waived by unknown dispositions.
+Each TARGET receipt references the selected Traceability event. Its generic
+envelope uses x-verification:recorded and the assignment subject; its payload
+schema is sdp-blueprint-implementation/1 with assignmentId, retained, evidenceDigest,
+codeDigest and the exact set of passing TARGET check IDs. Submission, independent
+accept-review and controller complete recompute these pinned inputs. This tool
+validates attributed evidence; it does not execute commands or claim complete
+model-to-code proof.
+
+A persisted x-blueprint event records the exact request, adapter authority and
+computed proof pins. Replay enforces per-assignment predecessors, transitions and
+independent attributed reviewer identity. Retrying an identical operation returns
+current assignment state without repeating the transition, even after inputs change.
+Different request/principal content under that ID fails. Source/evidence captures
+are rechecked immediately before canonical CAS append; external arbitrary writers
+are not covered by a cross-file transaction.
+
+## Discovery resource and status policy
+
+The Blueprints tab keeps its task/revision tree and adds nonempty assignment-state
+groups. Multiple assignments remain distinct. Each assignment exposes its last
+event, assignee, immutable revision, workState, sourceFreshness, readinessStatus
+and evidenceStatus. Missing bundles preserve historical state/adoption/submission
+and suppress open targets. Valid targets carry the verified index.md content hash.
+A new retained revision starts unassigned and never inherits an older completion.
+
+Catalogue verification retains its 64 MiB / 10,000-file scan budget. Assignment
+projection is a separate bounded pass: at most 256 assignments, with one shared
+64 MiB / 10,000-file budget for bundles, assessment inputs and Traceability reads.
+Read exhaustion produces unknown/unavailable diagnostics, not fabricated validity.
+Live ModelGovernance comparisons are separately limited to two distinct assignment
+bindings per refresh, with cached results for repeated bindings. Each comparison
+uses two model snapshots, each using the existing 128 MiB source/two-pass and
+16 MiB metadata bounds. Further live freshness stays unknown with a budget
+diagnostic. This is a conservative first projection budget, not the old catalogue
+budget applied to unlimited live-source reads. Explicit transitions still validate
+the selected assignment fully.

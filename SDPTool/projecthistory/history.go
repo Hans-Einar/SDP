@@ -179,6 +179,16 @@ func validate(data []byte) (map[string][]byte, error) {
 	}
 	return events, nil
 }
+
+// Validate checks a captured generic history stream without filesystem I/O.
+func Validate(data []byte) error {
+	if len(data) > MaxBytes {
+		return fmt.Errorf("history capacity exceeded")
+	}
+	_, err := validate(data)
+	return err
+}
+
 func Read(path string) (Snapshot, error) {
 	data, err := readBytes(path)
 	if err != nil {

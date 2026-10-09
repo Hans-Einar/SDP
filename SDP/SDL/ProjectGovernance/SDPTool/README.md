@@ -110,8 +110,18 @@ catalogue verifier and model content digest. BPI3-M2 owns workflow projection.
 CanonicalProjectHistoryLibrary identifies the shared persistence interface now
 implemented by SDPTool/projecthistory. It reads and conditionally appends generic
 events to the existing ProjectManagement ledger. It is a library, not a container.
-No consuming unit edge is declared yet: lifecycle commands and domain validation
-remain M2b. The assignment transition design is recorded in
+M2b adds the BlueprintLifecycle consumer inside SdpToolHost. The assignment transition design is recorded in
 [Assignment-Lifecycle.md](../../../04--Design/SDPTool/Blueprints/Assignment-Lifecycle.md);
 [Evidence-BPI3-M2a.md](../../../05--Implementation/SDPTool/Blueprints/Evidence-BPI3-M2a.md)
 limits delivery to the independently verified persistence primitive.
+
+
+## Blueprint assignment control — BPI3-M2b
+
+BlueprintLifecycle owns GovernBlueprintAssignment, adapting trusted local principals
+and pinned evidence to the pure blueprintstate reducer and canonical history
+writer. BlueprintAssignments exposes revision-bound workflow and discovery groups.
+The source implementation delivers bounded local assignment control, not the
+separate general RoutineCoordinator, authenticated MCP callers or automatic code
+execution. See SDPTool/blueprints/lifecycle.go, blueprintstate/state.go and
+blueprint_navigation.go. Native XFMD rendering and release packaging remain separate.
