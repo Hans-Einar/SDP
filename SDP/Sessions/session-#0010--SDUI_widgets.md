@@ -912,6 +912,12 @@ remain unchanged. No independent review, XFMD UI acceptance, main merge or relea
 was claimed. S7/card/plan are completed; S1–S6 remain complete. Next optional work
 is selecting merge/release and having XFMD consume this SDPTool contract.
 
+T010 handoff: pushed the isolated implementation/evidence branch and opened
+[draft PR #53](https://github.com/Hans-Einar/SDP/pull/53) against main under the
+existing phase-push/PR authority. No merge or release performed. Runtime candidate
+9963159 and evidence closeout 95dd6aa remain the tested boundary; later handoff
+text does not change product code. GitHub checks are not inferred from local tests.
+
 ## Closeout
 
 WCI0–WCI4 and the full bounded KB-SDUI-003 inventory are implemented, verified and
