@@ -204,3 +204,14 @@ The shared pilot covers a bounded contribution; broader card acceptance remains
 open. ModelGovernance continues independently.
 
 2026-10-03T21:14:27.153979+00:00: EVT-KB-SDP-000288 — PGD1 design delivered; return KB038 from in-progress to backlog for planned PGI implementation, preserving the completed design and unimplemented capability.
+
+## Session0011 T004 — Project Leader / SAD handoff
+
+The owner refines normal dialogue ownership to Project Leader, with separate
+strategic Steering, SAD model design and implementation Masters. Read the
+[role and runtime handoff](../../04--Design/SDPTool/ProjectGovernance/Project-Leader-Handoff.md).
+It records current controller/MCP limits, multiple idle/resumable assignments,
+direct owner feedback, revision-bound design approval and durable leader notification.
+MAINT-SDP-0015 delivers local skills; runtime work remains owned by Session0007.
+This branch's backlog state is a historical projection: the governance worktree has
+KB038 active. Reconcile this additive handoff there without resetting its lifecycle.

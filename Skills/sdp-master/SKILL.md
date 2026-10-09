@@ -5,7 +5,7 @@ description: Coordinate an authorized SDP assignment, including deciding whether
   or Reviewer role.
 metadata:
   skillId: sdp-master
-  skillVersion: 2.0.0
+  skillVersion: 2.1.0
   minimumToolkitVersion: 0.2.0
   capabilities: sdp.coordinate,sdp.release.coordinate,sdp.traceability.coordinate
   compatibilityNotes: Profile-aware workflow; native skill metadata. Supersedes the legacy procedure.
@@ -66,3 +66,18 @@ Return changed files, decisions, evidence, residual uncertainty and applicable
 safety implications. Distinguish implementation-ready, implemented, verified,
 reviewed and owner-accepted states. Stop at the authorized boundary; do not
 publish, merge or begin another assignment without the relevant authorization.
+
+## Relationship to Project Leader and SAD
+
+Read [role boundaries](../sdp/references/roles.md). Master owns one assigned delivery
+Session and its proportionate ImplementationPlan with phases/milestones. Project
+Leader coordinates across Masters and remains the normal owner contact; SAD owns
+the authored SDL/SDUI design. Do not silently rewrite approved TARGET to accommodate
+implementation drift. Return material contradictions with evidence for design rework.
+
+At each phase, return candidate identity, changes, checks/review, unresolved findings
+and the proposed next phase to Project Leader through the supported channel. Stay
+idle when outside granted continuation scope; retain durable resume context. Existing
+permission for subsequent phases need not be requested again. Direct owner messages
+are valid, but material changes must be recorded and reconciled with the shared
+assignment before dependent work. Host-idle does not mean assignment accepted.

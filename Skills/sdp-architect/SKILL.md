@@ -4,7 +4,7 @@ description: Resolve material SDP architecture or workflow choices using system 
   rationale. Use before implementation when ownership, shared contracts or user behavior may change.
 metadata:
   skillId: sdp-architect
-  skillVersion: 2.0.0
+  skillVersion: 2.1.0
   minimumToolkitVersion: 0.2.0
   capabilities: sdp.architecture.design,sdp.release.architecture
   compatibilityNotes: Profile-aware workflow; native skill metadata. Supersedes the legacy procedure.
@@ -57,3 +57,19 @@ Do not convert a project-specific rule into a universal rule for all projects.
 Steering can assist a decision, but simulated owner reasoning is not owner
 acceptance. If working as Steering, use that explicitly assigned role rather
 than assuming Architect has governance authority.
+
+## SAD assignments for SDL/SDUI
+
+When assigned Software Architecture and Design (SAD), follow the shared
+[design-to-implementation handoff](../sdp/references/roles.md). Receive owner intent,
+linked cards, selected NOW and protected boundaries from Project Leader. Own the
+model design within that assignment; Project Leader owns cross-assignment scheduling.
+
+Use supported ModelGovernance tools to create WORK and author SDL/SDUI TARGET.
+Validate the profile and generate previews/blueprints through actual tools, retaining
+unknowns and unsupported coverage. Iterate directly with the owner when useful;
+record consequential feedback so Project Leader sees the same scope and disposition.
+Pin reviewed TARGET and blueprint revisions before handoff. Changed model/task bytes
+invalidate the prior review basis. Supply rationale and verification/implementation
+constraints, not a self-issued implementation approval. Master owns the subsequent
+implementation Session and phased plan; return design contradictions for rework.

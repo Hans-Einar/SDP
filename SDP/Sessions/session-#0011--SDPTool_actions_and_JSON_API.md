@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-T003, 2026-10-09. Active Session; RED preflight still blocks implementation.
+T004, 2026-10-09. Active Session; RED preflight still blocks implementation.
 Next: coordinate shared SDPTool work and identity collision, then return to S1. Sequence only: dates below are display
 slots, not estimates or measured time. The table is the authoritative roadmap.
 
@@ -64,6 +64,7 @@ outside this Session's product scope. A future adapter can reuse the same servic
 
 | Local ref | Plan document/type | Readiness | Lifecycle | Outcome |
 | --- | --- | --- | --- | --- |
+| M1 | [MaintenancePlan MAINT-SDP-0015](../Maintenance/PLR1/Plan.md) — role/skill prerequisite only | completed | completed | Scoped guidance and ProjectGovernance handoff |
 | P1 | ImplementationPlan — create after contract refinement in S1; no ID allocated yet | planned | not registered | Phased catalogue/JSON and blueprint delivery with verification |
 
 Keep detailed milestone status in P1 once registered; the Session tracks the route.
@@ -177,3 +178,44 @@ Official sources inspected (2026-10-09):
 - [Codex CLI](https://learn.chatgpt.com/docs/codex/cli)
 - [OpenAI CLI](https://developers.openai.com/api/docs/libraries/openai-cli)
 - [Codex app-server](https://learn.chatgpt.com/docs/app-server)
+
+
+### T004 — Explicit Project Leader, Steering, SAD and Master roles (2026-10-09)
+
+Owner input (summary): Project Leader is the normal contact and supervises several
+Master agents using ProjectGovernance; Steering supplies strategic input. A SAD
+agent authors SDL/SDUI TARGET and blueprints through ModelGovernance, with direct
+owner dialogue/preview and revision-bound approval before implementation. Master
+owns its Session/ImplementationPlan and reports phase outcomes; leader stays available.
+A UI should expose agents, tools, children and idle/progress status. Owner asks whether
+MCP delivers completion notifications to the leader.
+
+Loaded skill-creator, SDP, Architect and reused Planning/Steering/document workflow;
+checked official OpenAI plugin/skill docs and the actual governance worktree. Existing
+Steering/Master/Architect skills lacked a dedicated operational Project Leader role.
+MAINT-SDP-0015 delivers a new sdp-project-leader skill and clarifies the existing roles;
+Architect is SAD rather than a duplicate skill. Canonical discovery/distribution
+metadata are maintained together; no online installation is claimed.
+
+Scoped preflight found no current competing Skills/inventory edits, permitting this
+explicit maintenance only. The product implementation gate remains red. The active
+ProjectGovernance branch was inspected read-only: its MCP worker surface cannot
+launch/resume agents and its controller currently drives one bounded Master without
+native children. A handoff captures the new privileged adapter, durable notification
+and multi-assignment UI requirements without overwriting that workstream's design.
+
+Work summary and verification follow in MAINT-SDP-0015. No Master/SAD was launched,
+no controller authority widened and no ChatGPT plugin installed. The model cannot
+be its own continuously running event loop; controller persistence and host wake-up
+must be implemented/tested separately. Scope and identity collisions remain the next
+coordination issue for S0. Session0008 stays paused. Manual summary, not a transcript.
+
+
+T004 verification/closeout: MAINT-SDP-0015 completed for local role guidance,
+portable skill inventory and the ProjectGovernance handoff. Five skills pass format
+validation; two metadata/distribution tests and Toolkit/management/link checks pass.
+Draft metadata errors were corrected without rewriting pre-existing ledger bytes.
+Same-context scenario inspection is recorded in the MaintenancePlan; no independent
+live-agent behavior is claimed. New skill discovery applies to this working branch,
+not an unmodified parallel checkout or online account. Next is reconciliation with
+the ProjectGovernance owner; KB051 product work remains behind S0's red gate.

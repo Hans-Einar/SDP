@@ -1,7 +1,7 @@
 # SDP skills — canonical source
 
 Root Skills/ is the sole authored collection for the System Design Process.
-Fourteen skills provide one method entrypoint, coordination/implementation/review
+Fifteen skills provide one method entrypoint, coordination/implementation/review
 roles, [Planning](sdp-planning/SKILL.md) and focused analysis, architecture, evidence and release work. Start with
 [sdp](sdp/SKILL.md); load only relevant roles. This replaces the former
 Toolkit/skills and Toolkit/skills_v2 maintained collections.
@@ -18,3 +18,13 @@ does not prove loading or compliant behavior.
 versions, tests and host limitations. Earlier draft evaluations are historical and
 do not certify this collection. [Metadata contract](../Toolkit/docs/Skill-Versioning.md)
 defines native fields and distribution facts. The Toolkit remains unreleased.
+
+## Operational and strategic roles
+
+[Project Leader](sdp-project-leader/SKILL.md) is the operational owner contact across
+assignments; [Steering](sdp-steering/SKILL.md) assists strategic decisions.
+[Architect](sdp-architect/SKILL.md) handles SAD model/blueprint work and
+[Master](sdp-master/SKILL.md) owns a bounded implementation Session. Read the shared
+[role contract](sdp/references/roles.md) for authority, direct owner feedback and
+event-delivery limits. New role metadata is an unreleased development change; local
+discovery links do not prove loading or online ChatGPT installation.

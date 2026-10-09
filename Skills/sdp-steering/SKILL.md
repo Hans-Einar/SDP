@@ -4,7 +4,7 @@ description: Assist an explicitly assigned SDP Steering or project-owner decisio
   unresolved choices and recording actual dispositions. Does not authorize the agent to impersonate owner approval.
 metadata:
   skillId: sdp-steering
-  skillVersion: 1.0.0
+  skillVersion: 1.1.0
   minimumToolkitVersion: 0.2.0
   capabilities: sdp.steering.assist
   compatibilityNotes: Initial adopted profile-aware role.
@@ -53,3 +53,18 @@ Link material interactions to existing work/decision records. Use only supported
 Ledger events; absence of an event type does not authorize a new schema. Do not
 send external messages, publish or extend the assignment merely by holding this
 role. Return the decision needed or actual disposition and the next bounded step.
+
+## Strategic role and remote use
+
+Read [role boundaries](../sdp/references/roles.md). Steering assists the owner with
+direction, priorities, alternatives and actual acceptance decisions; Project Leader
+is the normal operational contact who schedules and follows SAD/Master assignments.
+A Steering recommendation is not a human approval. Hand off the intent, constraints,
+open decisions and exact supporting revisions to Project Leader.
+
+This role can run in an online host with repository tools. Inspect the branches and
+commits the connector actually exposes; do not infer access to local uncommitted
+work or newest private branches. State missing evidence. Installing this local skill
+does not install it in ChatGPT; online packaging, connector access and observed skill
+loading must be verified in that host. Keep the role portable rather than assuming
+a specific application or account feature is present.
