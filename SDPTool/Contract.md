@@ -80,7 +80,9 @@ installed manifests supply installation facts; an absent manifest is allowed.
 An active installation journal returns `incomplete` before source enumeration.
 
 `discover --json` returns one `sdptool/0.2` snapshot: project identity, installation
-facts, derived `inventory`, `sources`, `plans` and `navigation`. Nothing is written.
+facts, derived `inventory`, `sources`, `programs`, `programDiscovery`, `plans` and
+`navigation`. Nothing is written. Programs use the explicit contract below;
+ordinary source discovery does not make every SDUI file runnable.
 `navigation.json` is neither read nor created. Existing project-owned copies are
 preserved as inert historical files during upgrade, even when malformed.
 
@@ -133,7 +135,10 @@ operation's fixed positional arguments. Reject extra arguments and unknown flags
 Host executable precedence: explicit --viewer/--sdl-tool/--renderer options,
 then SDP_XFMD/SDP_SDL_TOOL/SDP_MMDR, then viewer/sdl names on PATH when needed.
 No renderer means Mermaid output, not an automatic build/install. Resolve programs
-before launch, preserve argument boundaries and never invoke a shell. Source and metadata files cannot register executables. No startup tool compilation or required daemon.
+before launch, preserve argument boundaries and never invoke a shell. Ordinary
+source and preview metadata cannot register executables. The owner-selected
+`SDP/programs.json` application contract below is the explicit exception: only
+`run` executes its command. No preview-time compilation or required daemon.
 Standalone library calls accept already chosen options and do not read host policy.
 
 The initial bridge opens the actual plan in the main pane and the selected model's
@@ -290,3 +295,10 @@ filesystem revisions. Existing combined navigation and scan limits still apply.
 Refresh discovers additions, edits, moves and removals. `discover --json` supplies
 this tree to a consumer buffer; `tree` displays it in the console. Viewer-owned
 opening/watching and Session lifecycle/capture/timeline automation are separate.
+
+## Runnable SDUI programs — RSP1
+
+[Programs.md](Programs.md) defines sdp-programs/1 declarations, additive program
+discovery and `run --program ID [--revision HASH]`. Discovery stays read-only;
+only explicit Run executes project code. This is separate from generic prototype
+readiness and supplies a consumer contract for XFMD without modifying that client.

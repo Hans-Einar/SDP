@@ -153,6 +153,7 @@ func discover(selected string, withNavigation bool) (Project, error) {
 		p.Capabilities[entry.name] = state
 	}
 	p.Status = "valid"
+	p.discoverPrograms()
 	if !withNavigation {
 		return p, nil
 	}
