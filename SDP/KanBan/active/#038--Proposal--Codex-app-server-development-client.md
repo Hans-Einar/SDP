@@ -8,7 +8,7 @@
 | CardState | in-progress |
 | created | 2026-09-28T15:10:13.034937+00:00 |
 | source | Owner conversation 2026-09-28: register app-server-based system development and assess SDPTool MCP |
-| next_review | PGI3-C5 launch provenance verified; establish explicit skill invocation/correlation and applicable native role mapping |
+| next_review | PGI3-C6 skill invocation/correlation verified; resolve native mapping boundary and prepare PGI4 evidence/publication handoff |
 | tags | codex, app-server, client, MCP, supervision, blueprints, observability |
 | Systems | SDPTOOL |
 | PlanId | PLAN-SDP-0018 |
@@ -307,3 +307,14 @@ hierarchy and independent review remain unverified. An initial fixture exclusion
 refused dot-prefixed paths; the fixture preserves discovery links separately without
 changing the assignment contract. Any wider hidden-path contract change remains
 outside this increment. CardState remains in-progress; no full pilot acceptance.
+
+### 2026-10-09 — PGI3-C6 explicit skill checkpoint
+
+EVT-KB-SDP-000320: PGI3-C6 actual explicit skill Maintenance and response-loss recovery pass; procedural compliance is not inferred. PGI3 native mapping and PGI4/PGI5 remain open.
+[Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-C6.md)
+retains final-binary Maintenance and deliberately lost response scenarios. Explicit
+project-local selection and host-message identity are verified, with local hashes
+and exact correlation. No native child/reviewer or procedural compliance is claimed.
+CardState remains in-progress. Next: resolve applicable native mapping under current
+host rules, then PGI4 candidate-bound evidence and checked publication; PGI5 still
+owns independent integrated verification.

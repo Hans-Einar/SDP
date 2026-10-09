@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn: T011 — bounded launch provenance verified; PGI3 remains open. S3 is active
+Latest recorded turn: T012 — explicit skill invocation and correlation verified; PGI3 remains open. S3 is active
 under PLAN-SDP-0018; PGI1 core/CLI and PGI2 adapters are verified at their bounded levels.
 The app-server client and complete participating capabilities remain unfinished.
 Sequence only; synthetic dates represent order, not estimates or elapsed time.
@@ -23,7 +23,7 @@ gantt
 | --- | --- | --- | --- | --- |
 | completed | S1 | Recover skills, studies, card dependencies and ownership | Owner request, 2026-10-03 | Assessment below; RGS2 reused |
 | completed | S2 | Design the smallest common routing, run, Session and client contract | Owner continuation, T002 | [PGD1 / PLAN-SDP-0017](../04--Design/SDPTool/ProjectGovernance/Plan.md), contract, acceptance cases and protocol inspection |
-| active | S3 | Deliver one end-to-end workflow through SDPTool and the Codex client | S2 complete; [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) active | PGI1/PGI2 delivered; PGI3-C5 launch provenance verified; skill invocation and native mapping remain open |
+| active | S3 | Deliver one end-to-end workflow through SDPTool and the Codex client | S2 complete; [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) active | PGI1/PGI2 delivered; PGI3-C6 explicit skill input/correlation verified; native mapping remains unverified |
 | planned | S4 | Verify interruption, resume, scope change and evidence disposition | S3 candidate | Evidence required before wider use |
 | planned | S5 | Project recorded activity into the KB043 timeline | Reliable S3/S4 capture and selected rendering scope | Full timeline remains deferred |
 
@@ -34,8 +34,8 @@ gantt
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
 | Snapshot date | 2026-10-09 |
 | Current step | S3 / PGI1-M1 and PGI2-M1 delivered; PGI3 in progress |
-| Proposed next step | PGI3 explicit skill invocation/correlation and applicable native role mapping under current delegation rules |
-| Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance |
+| Proposed next step | Resolve PGI3 native mapping boundary; prepare PGI4 candidate/evidence/publication handoff |
+| Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation |
 
 ## Goal and ownership
 
@@ -516,10 +516,45 @@ No independent review, shared integration, push, merge or release is claimed.
 Historical private event collisions remain for deliberate integration reconciliation.
 This is a manual work summary, not an already captured final response.
 
+### T012 — 2026-10-09: continue explicit skill invocation
+
+Owner input summary: continue after PGI3-C5. Recovered clean milestone 922aff9 in
+the persistent ProjectGovernance worktree. Loaded/reused SDP, document workflow,
+Master, Architect, Worker, Verifier, Planning and OpenAI Docs; Traceability applies
+to delivery. Selected the existing next PGI3 obligation: explicit project skill
+input and exact lost-response correlation. Inspect the installed host before
+changing the text-only contract. No delegation or independent review is selected.
+Current conversation host IDs and exact owner timing are unknown.
+
+Work summary: C6 adds explicit project-local skill selection, immutable input
+identity/local digests and a bounded offline invocation projection. An actual probe
+confirmed recorded name/path/order and client ID. Full-input correlation preserves
+lost-response recovery without treating discovery or agent statements as compliance.
+Initial setup/assertion/capture mistakes were corrected; runtime requirements were
+not weakened. Trial1 passed, then final binaries repeated Maintenance after explicit
+attempt identity and complete-history refusal refinements.
+
+The final Maintenance trial fixed only the two permitted Go files, preserved other
+preimages/discovery links, passed driver tests and reached verifying after one
+explicit report approval scenario. The final response-loss trial retained uncertain
+input, recovered its exact text and both skill identities on one mapped attempt/turn,
+and kept a visible epoch gap. No resubmission or routine acceptance occurred; that
+read-only scenario preserved every fixture file. Final affected race/compiled CLI,
+vet and application/protocol/live schema checks pass. Management/Toolkit and final
+source/ledger/link checks accompany [C6 evidence](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-C6.md).
+
+S3/PGI3 and KB038 stay active/in-progress. Native child/review mapping remains
+unverified under current delegation restrictions. Next: resolve that applicability
+boundary and prepare PGI4 candidate/evidence/publication handoff. PGI4/PGI5 remain
+planned. Backlog review retains broader governance and separate concurrent scope.
+No independent review, shared integration, push, merge or release is claimed.
+Known historical private event collisions remain for integration reconciliation.
+This is a manual work summary, not an already captured final response.
+
 ## Closeout
 
 The Session remains active. S1/S2 are complete; S3 includes delivered PGI1 core/CLI
-and PGI2 adapters. PGI3-C5 verifies bounded launch provenance and offline inspection,
-alongside C4 reattachment, C3 approval/reporting and C2 mapped recovery. Explicit
-skill invocation/correlation and applicable native role mapping keep PGI3 open.
-PGI4/PGI5 and wider capability closure remain planned.
+and PGI2 adapters. PGI3-C6 verifies explicit skill input and exact lost-response
+correlation, alongside C5 provenance, C4 reattachment, C3 approval/reporting and C2
+mapped recovery. Native child/review mapping remains unverified under current host
+rules. PGI4/PGI5 and wider capability closure remain planned.

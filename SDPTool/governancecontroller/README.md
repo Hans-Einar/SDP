@@ -240,11 +240,47 @@ It records enabled state and readable source-file hashes, with external entries
 counted without reading their bodies. Unavailable metadata and discovery errors
 remain explicit. The fixed `useEvidence: not-observed` must not be relabeled as
 activation or compliance because a skill was discovered or the model said it used it.
-Agent claims remain the captured messages. No new skill invocation is added to the
-existing text-only launch protocol.
+Agent claims remain captured messages. Explicit skill inputs are an opt-in extension
+described below; the availability snapshot retains its original meaning.
 
 The view is an as-of snapshot, not a live cursor. After reconciliation/reattachment
 it is labeled `historical-epoch`; historical attempts without a context observation
 return unavailable. Reads do not change the run. Metadata does not permit an agent
 to grant itself authority, publish records or satisfy independent review. Native
-child provenance and measured skill invocation remain outside this checkpoint.
+child provenance and procedural compliance remain unverified.
+
+
+## Explicit project skill invocation
+
+Select each project-local skill explicitly when launching an authorized run:
+
+```sh
+sdp-controller run --project /absolute/project --state /absolute/private-state --run RUN_UUID --mcp-binary /absolute/sdp-mcp --message /absolute/owner.txt --skill Skills/sdp/SKILL.md --skill Skills/sdp-master/SKILL.md
+```
+
+`--skill` is repeatable (maximum eight) and accepted only by `run`. Canonical source
+paths and project-local discovery symlinks resolve through fresh host discovery.
+Missing, disabled, unreadable, ambiguous, duplicate or external skills refuse before
+an intent or thread is created. No skill is automatically selected from the role or
+message text. Existing launches without the option retain their text-only behavior.
+
+The durable input retains exact owner text separately from the outbound assignment,
+which includes explicit skill-name markers. Selected names, absolute canonical
+paths and local SHA-256 snapshots are recorded before submission. The controller
+rechecks file bytes before claiming and immediately before turn/start; this is not
+an atomic attestation of the bytes consumed by the host. A failure after claim stays
+uncertain and is never resent automatically, even when the controller has not yet
+submitted the turn. Ordinary recovery boundaries still apply.
+
+`provenance.invocation` shows the latest explicit selection and input state.
+Acceptance is unconfirmed, response-acknowledged or host-message-observed. The last
+requires a unique client ID and an exact ordered content fingerprint. None proves
+procedural compliance, which remains not-observed. The inventory's useEvidence field
+continues to describe discovery only. Local changes after dispatch cannot rewrite
+historical acceptance or establish current byte usage.
+
+Recovery compares full input content, including each skill name/path and order;
+matching text alone is insufficient. Missing/extra/reordered skills, unknown content
+metadata, duplicate client messages and partial history refuse. The measured empty
+text_elements field is normalized; nonempty values are not dropped. Steering remains
+text-only. No native delegation, role authority or independent review is added.

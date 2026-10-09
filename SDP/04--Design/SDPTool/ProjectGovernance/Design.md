@@ -504,3 +504,44 @@ receipt and unchanged exclusions. Negative tests cover forged roles/agent writes
 oversized records, unknown/missing metadata, invalid paths and inventory limits.
 Read-only provenance must work without connecting to Codex. No independent review
 or full role hierarchy is claimed.
+
+## PGI3-C6 refinement — explicit skill input and correlation, 2026-10-09
+
+Owner continuation selects the next C5 obligation under PG-A04/10/11/12/15/18.
+An actual read-only Codex 0.161.0 probe returned the same ordered text and skill
+name/path content with clientId in both completed notifications and full history.
+The host adds empty text_elements to text. No loading/compliance telemetry was
+observed; this is accepted input evidence, not consumed-byte attestation.
+
+Select repeatable `run --skill PROJECT_RELATIVE_SKILL_MD` for an explicit bounded
+list (at most eight) of enabled, uniquely named project skills. Resolve through
+fresh skills/list, require a readable local digest and refuse missing, disabled,
+ambiguous, duplicate or external selections before creating an intent/thread.
+Default launches stay text-only; do not infer selected skills from prose, role
+names or all enabled skills. The controller adds explicit name markers to the
+outbound text while preserving the owner's exact text separately, and persists
+selected name, canonical absolute path and local digest before host dispatch.
+Recheck local bytes before claiming and immediately before turn/start. There is
+no atomic host-consumed digest guarantee; later changes cannot invalidate history
+of a previously accepted input or retroactively establish compliance.
+
+Persist a fingerprint of the exact ordered input content on observed user messages.
+Canonicalization supports one text followed by selected skills; absent or empty
+text_elements are equivalent, nonempty/unknown content is not silently dropped.
+Resolve an uncertain skill send only with unique clientId, exact ordered content
+fingerprint and mapped/full history. Do not accept matching text with changed,
+missing, reordered or additional skills. Preserve legacy text-only observations
+and refuse uncertain resends. Skill content is immutable across input transitions;
+read-only provenance projects selection and response acknowledgment/observed host
+message separately from the availability snapshot. No agent claim establishes use.
+
+A text-only marker was rejected as insufficient explicit skill identity. Parsing
+model statements or shell reads as compliance remains rejected. Arbitrary external
+skill loading and skill steering are outside this bounded increment. Existing
+sandbox, permissions, scoped MCP tools, recovery gaps and no-delegation instructions
+stay intact; native hierarchy and independent review remain unverified.
+
+Verify malformed/missing selections, drift, duplicate/changed content and exact
+lost-response recovery; test real skill-equipped Maintenance with explicit report
+approval and preserved fixture files. Retain actual protocol and workflow evidence,
+including a deliberate response-loss trial without resubmission.

@@ -1,25 +1,27 @@
 package governance
 
 import (
+	"slices"
 	"strings"
 	"time"
 	"unicode/utf8"
 )
 
-// OwnerInput is controller-observed input and exact outbound text. A sending or
+// OwnerInput retains exact owner/outbound text and explicit skill selections. A sending or
 // uncertain record must never be retransmitted automatically after a crash.
 type OwnerInput struct {
-	ContentOmitted bool   `json:"contentOmitted,omitempty"`
-	ID             string `json:"id"`
-	Kind           string `json:"kind"`
-	Text           string `json:"text"`
-	Payload        string `json:"payload"`
-	AttemptID      string `json:"attemptId"`
-	Epoch          string `json:"epoch"`
-	ThreadID       string `json:"threadId"`
-	TurnID         string `json:"turnId"`
-	State          string `json:"state"`
-	ReceivedAt     string `json:"receivedAt"`
+	Skills         []SkillInput `json:"skills,omitempty"`
+	ContentOmitted bool         `json:"contentOmitted,omitempty"`
+	ID             string       `json:"id"`
+	Kind           string       `json:"kind"`
+	Text           string       `json:"text"`
+	Payload        string       `json:"payload"`
+	AttemptID      string       `json:"attemptId"`
+	Epoch          string       `json:"epoch"`
+	ThreadID       string       `json:"threadId"`
+	TurnID         string       `json:"turnId"`
+	State          string       `json:"state"`
+	ReceivedAt     string       `json:"receivedAt"`
 }
 type InputRequest struct {
 	Schema           string     `json:"schema"`
@@ -63,6 +65,9 @@ func (s *Service) RecordInput(c Caller, q InputRequest) (Result, error) {
 		return Result{}, fail("unauthorized", "owner input requires controller provenance")
 	}
 	v := q.Input
+	if !ValidSkillInputs(v.Skills) || (len(v.Skills) > 0 && v.Kind != "launch") {
+		return Result{}, fail("invalid_request", "skills require a bounded launch")
+	}
 	if !uuidPattern.MatchString(q.RunID) || !uuidPattern.MatchString(v.ID) || !uuidPattern.MatchString(v.AttemptID) || !uuidPattern.MatchString(v.Epoch) || q.ExpectedRevision == 0 || !digestPattern.MatchString(q.InputRevision) {
 		return Result{}, fail("invalid_request", "invalid input identity")
 	}
@@ -166,6 +171,9 @@ func (s *Service) RecordInput(c Caller, q InputRequest) (Result, error) {
 				return Result{}, fail("stale_revision", "approval coverage changed")
 			}
 		}
+		if e := CheckSkillSnapshots(s.root, v.Skills); e != nil {
+			return Result{}, e
+		}
 		v.State = "prepared"
 		r.Inputs = append(r.Inputs, v)
 	} else {
@@ -174,7 +182,7 @@ func (s *Service) RecordInput(c Caller, q InputRequest) (Result, error) {
 		}
 		old := r.Inputs[index]
 		// Acknowledgment adds observed host identity; content and source provenance stay immutable.
-		if old.Kind != v.Kind || old.Text != v.Text || old.Payload != v.Payload || old.AttemptID != v.AttemptID || old.Epoch != v.Epoch || old.ReceivedAt != v.ReceivedAt || old.State != v.State {
+		if !slices.Equal(old.Skills, v.Skills) || old.Kind != v.Kind || old.Text != v.Text || old.Payload != v.Payload || old.AttemptID != v.AttemptID || old.Epoch != v.Epoch || old.ReceivedAt != v.ReceivedAt || old.State != v.State {
 			return Result{}, fail("conflict", "input content or state changed")
 		}
 		if old.ThreadID != "" && old.ThreadID != v.ThreadID || old.TurnID != "" && old.TurnID != v.TurnID {
@@ -182,6 +190,9 @@ func (s *Service) RecordInput(c Caller, q InputRequest) (Result, error) {
 		}
 		switch q.Action {
 		case "claim":
+			if e := CheckSkillSnapshots(s.root, v.Skills); e != nil {
+				return Result{}, e
+			}
 			if v.Kind == "approval" {
 				if e := checkApprovalInput(r, v); e != nil {
 					return Result{}, e
@@ -257,11 +268,7 @@ func (s *Service) RecordInput(c Caller, q InputRequest) (Result, error) {
 				if a.ID != old.AttemptID || a.ThreadID != v.ThreadID || a.TurnID != v.TurnID || a.Status == "unknown" {
 					continue
 				}
-				for _, event := range a.Events {
-					if event.Kind == "userMessage" && event.ClientID == old.ID && event.TurnID == v.TurnID && event.Text == old.Payload && len(event.Attachments) == 0 {
-						found = true
-					}
-				}
+				found = inputObserved(a, old, v.TurnID)
 			}
 			if !found {
 				return Result{}, fail("reconciliation_required", "no exact correlated host message proves acceptance")

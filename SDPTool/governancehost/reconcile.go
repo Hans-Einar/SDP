@@ -76,17 +76,21 @@ func (r Recovery) ReconcileRequest() governance.HostRequest {
 // not proof that a particular send was accepted.
 func correlatedInputs(t Thread, turnID string, pending []governance.OwnerInput) (string, []governance.OwnerInput, error) {
 	inputs := []governance.OwnerInput{}
+	if len(pending) > 0 {
+		for _, turn := range t.Turns {
+			if turn.ItemsView != "" && turn.ItemsView != "full" {
+				return "", nil, fmt.Errorf("observation_gap: full correlation history unavailable")
+			}
+		}
+	}
 	for _, input := range pending {
 		matches := 0
 		for _, turn := range t.Turns {
 			for _, raw := range turn.Items {
 				var item struct {
-					Type     string `json:"type"`
-					ClientID string `json:"clientId"`
-					Content  []struct {
-						Type string `json:"type"`
-						Text string `json:"text"`
-					} `json:"content"`
+					Type     string          `json:"type"`
+					ClientID string          `json:"clientId"`
+					Content  json.RawMessage `json:"content"`
 				}
 				if err := json.Unmarshal(raw, &item); err != nil {
 					return "", nil, err
@@ -94,7 +98,7 @@ func correlatedInputs(t Thread, turnID string, pending []governance.OwnerInput) 
 				if item.Type != "userMessage" || item.ClientID != input.ID {
 					continue
 				}
-				if len(item.Content) != 1 || item.Content[0].Type != "text" || item.Content[0].Text != input.Payload || (turnID != "" && turnID != turn.ID) {
+				if governance.ObservedInputDigest(item.Content) != input.WireDigest() || (turn.ItemsView != "" && turn.ItemsView != "full") || (turnID != "" && turnID != turn.ID) {
 					return "", nil, fmt.Errorf("reconciliation_required: conflicting correlated owner input")
 				}
 				matches++

@@ -115,3 +115,11 @@ It snapshots at most 64 project-local skills, hashes readable files up to 64 KiB
 through a confined project-root open, and counts external entries without reading
 their contents. Invalid, ambiguous or excessive inventory is reported unavailable
 by the controller. A discovery result never establishes skill activation.
+
+
+Explicit skill dispatch uses the measured 0.161.0 text-plus-skill input array and
+stable clientUserMessageId. Completed notifications and full thread history preserve
+skill name/path/order. The adapter fingerprints only the lossless supported subset,
+normalizing absent/empty text_elements. Unknown fields/content and nonempty elements
+cannot prove correlation. Exact acceptance establishes input identity, not consumed
+skill bytes or procedural compliance. No native child dispatch is introduced.

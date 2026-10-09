@@ -50,10 +50,17 @@ func (c *Client) StartWorkThread(ctx context.Context, cwd, sandbox, instructions
 	return out.Thread, e
 }
 func (c *Client) StartTurn(ctx context.Context, threadID, messageID, text string) (Turn, error) {
+	return c.StartSkillTurn(ctx, threadID, messageID, text, nil)
+}
+
+func (c *Client) StartSkillTurn(ctx context.Context, threadID, messageID, text string, skills []governance.SkillInput) (Turn, error) {
+	if !governance.ValidSkillInputs(skills) {
+		return Turn{}, fmt.Errorf("invalid skill input")
+	}
 	var out struct {
 		Turn Turn `json:"turn"`
 	}
-	e := c.call(ctx, "turn/start", map[string]any{"threadId": threadID, "clientUserMessageId": messageID, "input": []any{map[string]any{"type": "text", "text": text}}}, &out)
+	e := c.call(ctx, "turn/start", map[string]any{"threadId": threadID, "clientUserMessageId": messageID, "input": governance.TurnInputs(text, skills)}, &out)
 	if e == nil && (out.Turn.ID == "" || out.Turn.Status != "inProgress") {
 		e = fmt.Errorf("turn start not observed active")
 	}

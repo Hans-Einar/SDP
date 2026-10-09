@@ -219,3 +219,13 @@ historical. Missing prior captures stay unavailable. Host reports, controller
 source hashes and skill availability have separate meanings; actual skill use is
 not observed by this profile. New context records require this development
 candidate's strict schema; no published downgrade/upgrade contract is implied.
+
+
+Explicit launch skill inputs are controller-owned immutable content, stored with
+local source digests and omitted from ordinary run summaries. Snapshot drift blocks
+prepare/claim; history resolution does not recheck later bytes. User-message input
+fingerprints preserve ordered text/skill identity, with unsupported content marked
+unavailable. Legacy text-only observations remain readable. Provenance exposes a
+bounded invocation projection and distinguishes acknowledgment from observed host
+messages; compliance remains unobserved. These additive preview fields do not imply
+backward writer compatibility or a new published distribution.

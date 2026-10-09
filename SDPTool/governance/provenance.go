@@ -80,18 +80,30 @@ func (p ContextProvenance) Valid() bool {
 	return true
 }
 
+type SkillInvocationView struct {
+	AttemptID  string       `json:"attemptId"`
+	InputID    string       `json:"inputId"`
+	InputState string       `json:"inputState"`
+	InputEpoch string       `json:"inputEpoch"`
+	TurnID     string       `json:"turnId"`
+	Acceptance string       `json:"acceptance"`
+	Compliance string       `json:"compliance"`
+	Skills     []SkillInput `json:"skills"`
+}
+
 type ProvenanceView struct {
-	ThreadID     string             `json:"threadId"`
-	HostVersion  string             `json:"hostVersion"`
-	Schema       string             `json:"schema"`
-	Operation    string             `json:"operation"`
-	RunID        string             `json:"runId"`
-	AttemptID    string             `json:"attemptId"`
-	CaptureEpoch string             `json:"captureEpoch"`
-	CurrentEpoch string             `json:"currentEpoch"`
-	ReceivedAt   string             `json:"receivedAt"`
-	Status       string             `json:"status"`
-	Context      *ContextProvenance `json:"context,omitempty"`
+	Invocation   *SkillInvocationView `json:"invocation,omitempty"`
+	ThreadID     string               `json:"threadId"`
+	HostVersion  string               `json:"hostVersion"`
+	Schema       string               `json:"schema"`
+	Operation    string               `json:"operation"`
+	RunID        string               `json:"runId"`
+	AttemptID    string               `json:"attemptId"`
+	CaptureEpoch string               `json:"captureEpoch"`
+	CurrentEpoch string               `json:"currentEpoch"`
+	ReceivedAt   string               `json:"receivedAt"`
+	Status       string               `json:"status"`
+	Context      *ContextProvenance   `json:"context,omitempty"`
 }
 
 func (s *Service) Provenance(runID string) (ProvenanceView, error) {
@@ -106,6 +118,25 @@ func (s *Service) Provenance(runID string) (ProvenanceView, error) {
 	r, ok := state.Runs[runID]
 	if !ok {
 		return out, fail("missing_coverage", "run not found")
+	}
+	for i := len(r.Inputs) - 1; i >= 0; i-- {
+		v := r.Inputs[i]
+		if v.Kind != "launch" {
+			continue
+		}
+		if len(v.Skills) > 0 {
+			acceptance := "unconfirmed"
+			if v.State == "acknowledged" {
+				acceptance = "response-acknowledged"
+			}
+			for _, a := range r.Attempts {
+				if a.ID == v.AttemptID && inputObserved(a, v, a.TurnID) {
+					acceptance = "host-message-observed"
+				}
+			}
+			out.Invocation = &SkillInvocationView{AttemptID: v.AttemptID, InputID: v.ID, InputState: v.State, InputEpoch: v.Epoch, TurnID: v.TurnID, Acceptance: acceptance, Compliance: "not-observed", Skills: v.Skills}
+		}
+		break
 	}
 	if len(r.Attempts) == 0 {
 		return out, nil

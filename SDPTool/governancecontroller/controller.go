@@ -23,6 +23,7 @@ type Host interface {
 }
 
 type Controller struct {
+	SkillPaths                                                         []string
 	Service                                                            *governance.Service
 	Host                                                               Host
 	Root, StateDir, MCPBinary, Epoch, Sandbox, Approvals, HostIdentity string
@@ -98,12 +99,24 @@ func (c *Controller) Launch(ctx context.Context, runID, text string) (result gov
 	if e != nil {
 		return r, e
 	}
+	inventory, selected, e := c.selectSkills(ctx)
+	if e != nil {
+		return r, e
+	}
 	instructions := "You are the fresh Master for one explicitly authorized SDP Maintenance assignment. Read the selected Session, authority, plan, card, AGENTS and relevant SDP skills before acting. Preserve writable/excluded boundaries and unrelated work. Native delegation is not granted by this launch; do not spawn children. Report candidate, tests, remaining gaps and observed outcome. Agent claims do not grant owner approval or independent review. Do not publish canonical management/Session records or mark the work complete; evidence publication is a later controller capability. Use assignment-bound MCP reads and report/fail/scope-change only."
 	payload, e := json.Marshal(map[string]any{"ownerInput": text, "assignment": r.Run.Assignment, "context": coverage, "runId": runID, "instructions": instructions, "sandbox": c.Sandbox, "approvalMode": c.Approvals})
 	if e != nil {
 		return r, e
 	}
-	v := governance.OwnerInput{ID: governancehost.UUID(), Kind: "launch", Text: text, Payload: string(payload), AttemptID: governancehost.UUID(), Epoch: c.Epoch, ReceivedAt: now()}
+	wireText := string(payload)
+	if len(selected) > 0 {
+		markers := ""
+		for _, skill := range selected {
+			markers += "$" + skill.Name + " "
+		}
+		wireText = markers + "\n" + wireText
+	}
+	v := governance.OwnerInput{Skills: selected, ID: governancehost.UUID(), Kind: "launch", Text: text, Payload: wireText, AttemptID: governancehost.UUID(), Epoch: c.Epoch, ReceivedAt: now()}
 	if _, e = c.input(runID, "prepare", v); e != nil {
 		return r, e
 	}
@@ -133,14 +146,7 @@ func (c *Controller) Launch(ctx context.Context, runID, text string) (result gov
 	if provenance.Host.Status == "" {
 		provenance.Host = governance.HostContext{Status: "unavailable", InstructionStatus: "unavailable", InstructionSources: []string{}}
 	}
-	if inspector, ok := c.Host.(interface {
-		InspectSkills(context.Context, string) (governance.SkillInventory, error)
-	}); ok {
-		inventory, err := inspector.InspectSkills(ctx, c.Root)
-		if err == nil {
-			provenance.Skills = inventory
-		}
-	}
+	provenance.Skills = inventory
 	encoded, err := json.Marshal(provenance)
 	if err != nil {
 		return r, err
@@ -160,7 +166,15 @@ func (c *Controller) Launch(ctx context.Context, runID, text string) (result gov
 	if e != nil {
 		return r, e
 	}
-	turn, e := c.Host.StartTurn(ctx, thread.ID, v.ID, v.Payload)
+	if e = governance.CheckSkillSnapshots(c.Root, v.Skills); e != nil {
+		return r, e
+	}
+	var turn governancehost.Turn
+	if len(v.Skills) > 0 {
+		turn, e = c.Host.(skillHost).StartSkillTurn(ctx, thread.ID, v.ID, v.Payload, v.Skills)
+	} else {
+		turn, e = c.Host.StartTurn(ctx, thread.ID, v.ID, v.Payload)
+	}
 	if e != nil {
 		return r, e
 	}

@@ -18,6 +18,7 @@ type Attachment struct {
 }
 
 type Observation struct {
+	InputDigest string       `json:"inputDigest,omitempty"`
 	ClientID    string       `json:"clientId,omitempty"`
 	Attachments []Attachment `json:"attachments,omitempty"`
 	Kind        string       `json:"kind"`
@@ -79,6 +80,9 @@ func hostStatus(s string) bool {
 func validObservation(o Observation) bool {
 	encoded, err := json.Marshal(o)
 	if err != nil || len(encoded) > 240<<10 {
+		return false
+	}
+	if o.InputDigest != "" && (o.Kind != "userMessage" || (o.InputDigest != "unavailable" && !digestPattern.MatchString(o.InputDigest))) {
 		return false
 	}
 	if o.ClientID != "" && (o.Kind != "userMessage" || !uuidPattern.MatchString(o.ClientID)) {
@@ -310,7 +314,7 @@ func (s *Service) RecordHost(caller Caller, q HostRequest) (Result, error) {
 	if q.Action == "observe" {
 		for _, old := range at.Events {
 			if old.Kind == o.Kind && old.TurnID == o.TurnID && old.ItemID == o.ItemID && (!strings.HasPrefix(o.Kind, "approval.") || old.Epoch == o.Epoch) {
-				if (old.ClientID != "" && old.ClientID != o.ClientID) || old.Phase != o.Phase || old.Text != o.Text || old.Status != o.Status || requestDigest(old.Attachments) != requestDigest(o.Attachments) {
+				if (old.ClientID != "" && old.ClientID != o.ClientID) || (old.InputDigest != "" && old.InputDigest != o.InputDigest) || old.Phase != o.Phase || old.Text != o.Text || old.Status != o.Status || requestDigest(old.Attachments) != requestDigest(o.Attachments) {
 					return Result{}, fail("observation_gap", "conflicting repeated completed item")
 				}
 				duplicate = true
@@ -433,6 +437,7 @@ func summarizeRun(r Run) Run {
 		r.Inputs[i].ContentOmitted = true
 		r.Inputs[i].Text = ""
 		r.Inputs[i].Payload = ""
+		r.Inputs[i].Skills = nil
 	}
 	r.Attempts = append([]Attempt(nil), r.Attempts...)
 	for i := range r.Attempts {

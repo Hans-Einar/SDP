@@ -55,7 +55,7 @@ do not turn a self-check into an independent review by changing its label.
 | --- | --- | --- | --- |
 | PGI1-M1 Core and inspection | Selected project + status request yields context/route without creating work; authorized fixture Maintenance creates a pinned durable run visible through a small CLI read/transition path | PG-A01/02/03/08/10/18; exact JSON schemas; core restart and stale-input tests | delivered; bounded core/CLI verified |
 | PGI2-M1 Adapters and protocol | Thin local MCP adapter and controller protocol adapter use the core; inspect compatible schemas, negotiate the selected SDK/host, capture bounded recorded events and reconcile mapped attempts | PG-A10/11/12/15/18; actual protocol negotiation and failure outputs; no simulated-as-live claims | delivered; bounded adapters and real idle protocol probe verified |
-| PGI3-M1 Owner workflow | Minimal terminal client recovers Session, submits/steers work, presents route/status and launches the authorized fresh Master with bounded context; applicable child/review mapping is observed | PG-A02/04/05/11/12/13/15; managed account mode and one useful bounded task | in-progress; C5 launch provenance verified; skill invocation and applicable native mapping remain |
+| PGI3-M1 Owner workflow | Minimal terminal client recovers Session, submits/steers work, presents route/status and launches the authorized fresh Master with bounded context; applicable child/review mapping is observed | PG-A02/04/05/11/12/13/15; managed account mode and one useful bounded task | in-progress; C6 explicit skill input/correlation verified; native child/review mapping remains unverified |
 | PGI4-M1 Evidence and reconciliation | Candidate-bound evidence, review/rework and checked publication produce one durable Session outcome and correct card/plan disposition | PG-A06/07/09/13/16/17; crash and concurrent-change fixtures | planned |
 | PGI5-M1 Integrated verification | The same isolated task survives observer close, interruption/recovery and scope correction with unrelated work preserved | All PG-A01–18 at their stated level; independent review and exact-candidate evidence | planned |
 
@@ -112,8 +112,11 @@ and offline inspection through an actual Maintenance trial. Assigned role,
 host-reported context, local source digests and skill availability remain distinct;
 skill use is explicitly unobserved. Final affected race/compiled CLI and schema
 checks pass, with the post-live schema-only correction stated in the evidence.
-Explicit skill invocation/correlation and applicable native role mapping keep PGI3
-in progress. PGI4/PGI5 publication and independent review remain planned.
+[C6 evidence](Evidence-PGI3-C6.md) verifies explicit project skill inputs and exact
+lost-response recovery through final binaries. Invocation/acceptance is distinct
+from unobserved procedural compliance. Native child/review mapping keeps PGI3 open
+under current delegation rules. PGI4/PGI5 publication and independent review remain
+planned.
 
 The milestone history now resides in the original repository on
 `sdp/project-governance-pilot`, using the persistent worktree
@@ -250,3 +253,17 @@ scope and separate ModelGovernance, SDUI and blueprint workstreams. No push, mer
 or release is selected.
 
 2026-10-09T02:32:53.879846+00:00: EVT-PM-SDP-000170 — PGI3-C5 bounded launch provenance verified; explicit skill invocation/correlation and applicable native role mapping keep PGI3 active.
+
+## PGI3-C6 selection and result — 2026-10-09
+
+Owner continuation selects explicit skill invocation/correlation. Final binaries
+complete a skill-equipped Maintenance workflow and a deliberately dropped-response
+recovery with exact ordered skill identities and one attempt/turn. Offline projection
+reports observed input acceptance, never compliance. See [C6 evidence](Evidence-PGI3-C6.md).
+Native child/review mapping remains unverified under current no-delegation rules;
+retain that boundary before full PGI3 acceptance. Next: resolve its applicability
+and prepare the PGI4 candidate/evidence/publication handoff. PGI4/PGI5 remain planned.
+Backlog/onHold review preserves broader KB036/037/042/043 and separate ModelGovernance,
+SDUI and blueprint scope. No push, merge or release is selected.
+
+2026-10-09T02:49:51.131951+00:00: EVT-PM-SDP-000171 — PGI3-C6 explicit skill input and exact lost-response correlation verified on final binaries; native child/review mapping remains unverified.

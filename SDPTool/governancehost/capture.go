@@ -85,6 +85,16 @@ func Visible(method string, params []byte, epoch string, received time.Time) (Ev
 	case "userMessage":
 		o.Kind = item.Type
 		o.ClientID = item.ClientID
+		var raw struct {
+			Content json.RawMessage `json:"content"`
+		}
+		if e := json.Unmarshal(p.Item, &raw); e != nil {
+			return Event{}, false, e
+		}
+		o.InputDigest = governance.ObservedInputDigest(raw.Content)
+		if o.InputDigest == "" {
+			o.InputDigest = "unavailable"
+		}
 		parts := []string{}
 		for _, v := range item.Content {
 			if v.Type == "text" {

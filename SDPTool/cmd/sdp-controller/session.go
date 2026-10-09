@@ -31,12 +31,17 @@ func ownerCommand(args []string) error {
 	message := f.String("message", "", "file with exact owner input for launch")
 	approvals := f.String("approvals", "never", "never or ask for per-request SDP MCP approval")
 	sandbox := f.String("sandbox", "read-only", "read-only or explicitly authorized workspace-write")
+	var skillPaths []string
+	f.Func("skill", "project-relative enabled SKILL.md to invoke (repeatable; run only)", func(v string) error { skillPaths = append(skillPaths, v); return nil })
 	timeout := f.Duration("timeout", 30*time.Minute, "maximum controller lifetime")
 	if e := f.Parse(args[1:]); e != nil {
 		return e
 	}
 	if *root == "" || *state == "" || *run == "" || f.NArg() != 0 || *timeout <= 0 {
 		return fmt.Errorf("require --project ROOT --state DIR --run UUID")
+	}
+	if len(skillPaths) > 0 && args[0] != "run" {
+		return fmt.Errorf("--skill is only supported by run")
 	}
 	if *approvals != "never" && *approvals != "ask" {
 		return fmt.Errorf("unsupported approval mode")
@@ -116,7 +121,7 @@ func ownerCommand(args []string) error {
 		return e
 	}
 	defer client.Close()
-	ctl := &governancecontroller.Controller{Service: service, Host: client, Root: p.Root, StateDir: dir, MCPBinary: *mcp, HostIdentity: client.HostIdentity, Epoch: client.Epoch, Sandbox: *sandbox, Approvals: *approvals}
+	ctl := &governancecontroller.Controller{SkillPaths: skillPaths, Service: service, Host: client, Root: p.Root, StateDir: dir, MCPBinary: *mcp, HostIdentity: client.HostIdentity, Epoch: client.Epoch, Sandbox: *sandbox, Approvals: *approvals}
 	if args[0] == "recover" {
 		r, e := service.Read(*run)
 		if e != nil {

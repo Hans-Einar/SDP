@@ -213,6 +213,13 @@ reviews:
       low: 0
       note: 4
 verification:
+  SDPTOOL-VER-PGI3-C6:
+    status: passed-live-skill-input-correlation-subset
+    path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-C6.md
+    managementId: PLAN-SDP-0018
+    card: KB-SDP-038
+    design: SDPTOOL-DES-0001
+    note: Final-binary Maintenance and skill-input response-loss recovery pass; native mapping, procedural compliance, publication and independent review remain unverified.
   SDPTOOL-VER-PGI3-C5:
     status: passed-live-context-provenance-subset
     path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-C5.md
