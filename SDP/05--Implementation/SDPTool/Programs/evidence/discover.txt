@@ -1,0 +1,19 @@
+sdui-widget-lab [valid]
+Project: /home/warloc/git/sdui_widget_lab
+SDP area: /home/warloc/git/sdui_widget_lab/SDP
+sdl: discovered
+sdui: discovered
+kanban: discovered
+sessions: discovered
+implementation-plan: discovered
+Sources: 5
+  SDP/SDL/WidgetLab/Containers/Desktop.design [design-core/0.6; context-required]
+  SDP/SDL/WidgetLab/Features.design [design-core/0.6; context-required]
+  SDP/SDL/WidgetLab/SDUI/Desktop/Lab.sdui [sdui/0.3; validated]
+  SDP/SDL/WidgetLab/Scenarios.design [design-core/0.6; context-required]
+  SDP/SDL/WidgetLab/System.design [design-core/0.6; validated]
+Snapshot: 7cef20ae2af2ce1a1dcf0fa033573823c87096448b65982543826db9c6d7cb42
+SDUI programs: 1 [valid]
+  widget-lab — SDUI Widget Lab [runnable]
+    SDP/SDL/WidgetLab/SDUI/Desktop/Lab.sdui :: page
+    run --program widget-lab

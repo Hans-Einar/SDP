@@ -4,7 +4,7 @@
 | --- | --- |
 | id | PLAN-SDP-0023 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | ImplementationPlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
@@ -46,8 +46,8 @@ Commits per milestone; no merge or published release is inferred.
 
 | Milestone | Acceptance | State |
 | --- | --- | --- |
-| RSP1-M1 | Explicit declaration, source-preserving discovery and foreground program run with invalid/stale/exit/cancellation tests | in-progress |
-| RSP1-M2 | Widget lab declaration and actual gh-sdp development-candidate discover/run through real Fyne window; documentation and exact evidence | planned |
+| RSP1-M1 | Explicit declaration, source-preserving discovery and foreground program run with invalid/stale/exit/cancellation tests | completed |
+| RSP1-M2 | Widget lab declaration and actual gh-sdp development-candidate discover/run through real Fyne window; documentation and exact evidence | completed |
 
 ## Verification
 
@@ -57,4 +57,6 @@ read-only discovery, exact argv/cwd, error/exit propagation and stale selection.
 Verify actual gh extension routing with a locally signed development descriptor;
 keep released bootstrap defaults unchanged. A local candidate is not a release.
 Record real native launch/interaction, including SDL -> Go result, and limitations.
-Same-context inspection is not independent review. Evidence remains pending.
+Same-context inspection is not independent review. [Evidence](Evidence.md) records
+passing full race suites and actual gh-sdp/native discovery/run on 9963159.
+All selected milestones are complete; merge/release and XFMD UI remain separate.
