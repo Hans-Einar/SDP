@@ -9,6 +9,7 @@ feature BlueprintPreview.
 activity BlueprintPreviewDelivery.
 usecase BrowseProjectFacts.
 functionality BrowseRetainedBlueprints.
+interface CanonicalProjectHistoryLibrary.
 functionality CheckTransitionAuthority.
 unit ContextFacade.
 usecase CoordinateGovernedWork.

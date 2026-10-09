@@ -123,6 +123,19 @@ must be recorded before claiming owner acceptance of that particular Ponsse chan
 
 ### BPI3-M2 — assignment lifecycle and grouped navigation
 
+Execution refinement (2026-10-09): repository inspection found no existing canonical
+history writer. Deliver two bounded submilestones on the same branch:
+
+- **BPI3-M2a:** canonical history append with CAS, idempotence, stable lock and
+  interrupted-write evidence; finalize Assignment-Lifecycle.md before payload writers.
+- **BPI3-M2b:** integrate versioned assignment events, all affected validators,
+  authority/evidence gates and grouped discovery; run the full lifecycle acceptance.
+
+M2a is persistence infrastructure, not an implemented assignment workflow. M2 remains
+open until M2b passes all acceptance below. Per-submilestone commits preserve the
+existing milestone policy; no new phase, parallel ledger or release is introduced.
+
+
 Finalize the transition table, actor/authority requirements and versioned records
 before implementation. Use canonical ProjectManagement history for assignment
 events and existing Traceability for implementation evidence. Reuse compatible
@@ -169,8 +182,8 @@ that generates two revisions, assigns one, records review/closure and refreshes
 the discovery tree without altering the retained bundles.
 Session0008 continues through implementation; its roadmap must show design gates
 and production milestones separately. Installer manifests, releases and integration
-into XFMD require their own authorized work. BPI1-M1 is delivered and independently reviewed; BPI2-M1/M2 are delivered; BPI3-M1 readiness/evidence is delivered; BPI3-M2 lifecycle is next. See
-[Evidence-BPI1.md](Evidence-BPI1.md). BPI3-M2 has not started.
+into XFMD require their own authorized work. BPI1-M1 is delivered and independently reviewed; BPI2-M1/M2 are delivered; BPI3-M1 readiness/evidence is delivered; BPI3-M2a history foundation is delivered; M2b lifecycle integration is next. See
+[Evidence-BPI1.md](Evidence-BPI1.md). BPI3-M2a is delivered; M2b integration is next.
 
 ## BPI1-M1 delivery — 2026-10-07
 
@@ -214,3 +227,17 @@ synthetic trial, producing a ready assessment without production authority.
 See [Evidence-BPI3-M1.md](Evidence-BPI3-M1.md) and frozen Trial-BPI3-M1 records.
 Next BPI3-M2: coordinate canonical workflow records with current governance work,
 implement assignment transitions and project evidence-backed navigation groups.
+
+
+## BPI3-M2a delivery — 2026-10-09
+
+Shared canonical history append is delivered as SDPTool/projecthistory, with exact
+prior-byte preservation, revision comparison, duplicate retry/conflict detection,
+Linux process locking and atomic replacement. Independent review approved after
+optional envelope-field and UTF-8 validation fixes. Process-exit and concurrent
+writer tests pass. See [Evidence-BPI3-M2a.md](Evidence-BPI3-M2a.md).
+
+M2b remains next: lifecycle commands, domain validators, authority/evidence checks
+and navigation groups. No assignment transition is delivered by M2a. Existing
+manual writers do not participate in its lock; cross-writer integration remains
+explicit work. The prior installer race timeout remains open for final integration.

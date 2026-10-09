@@ -108,3 +108,10 @@ synthetic scope; protected-ownership B and code-only C rejected. Scoped reviewer
 unknown deferral does not imply production authority or code conformance. See
 Evidence-BPI3-M1.md and Session0008 T010. Next BPI3-M2 canonical assignment lifecycle
 and grouped navigation; CardState remains in-progress.
+
+
+2026-10-09 BPI3-M2a: shared canonical-history append foundation delivered and
+independently reviewed after envelope-integrity corrections. Concurrent append,
+retry and forced process-exit checks pass. See Evidence-BPI3-M2a.md and Session0008
+T011. M2b remains next: assignment operations and state-group navigation. This
+submilestone does not complete the lifecycle or change CardState (in-progress).

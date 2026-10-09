@@ -103,3 +103,15 @@ captures and assess explicit unknown dispositions/receipts against an immutable
 blueprint. It emits an assessment without executing checks or adopting lifecycle
 state. SDPTool/blueprints/assessment.go owns that adapter, using the existing
 catalogue verifier and model content digest. BPI3-M2 owns workflow projection.
+
+
+## Canonical history library — BPI3-M2a
+
+CanonicalProjectHistoryLibrary identifies the shared persistence interface now
+implemented by SDPTool/projecthistory. It reads and conditionally appends generic
+events to the existing ProjectManagement ledger. It is a library, not a container.
+No consuming unit edge is declared yet: lifecycle commands and domain validation
+remain M2b. The assignment transition design is recorded in
+[Assignment-Lifecycle.md](../../../04--Design/SDPTool/Blueprints/Assignment-Lifecycle.md);
+[Evidence-BPI3-M2a.md](../../../05--Implementation/SDPTool/Blueprints/Evidence-BPI3-M2a.md)
+limits delivery to the independently verified persistence primitive.

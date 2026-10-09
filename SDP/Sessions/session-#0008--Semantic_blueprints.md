@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-T010, 2026-10-08. Sequence only; dates are display slots, not duration estimates.
+T011, 2026-10-09. Sequence only; dates are display slots, not duration estimates.
 
 ```mermaid
 gantt
@@ -25,7 +25,7 @@ gantt
 | completed | S3 / BP2-C | API and implementation handoff | Authored model Worker/Reviewer trial; A approved, violating B rejected |
 | completed | S4 / BPI1 | Production Go analysis | Go analyzer delivered; independent review approves bounded BPI1 |
 | completed | S5 / BPI2 | Publication and catalogue | M1/M2 delivered; diagnostic bundles and retained discovery |
-| on-going | S6 / BPI3 | Evidence and lifecycle | M1 delivered; M2 next: revision-bound lifecycle and navigation |
+| on-going | S6 / BPI3 | Evidence and lifecycle | M1/M2a delivered; M2b next: revision-bound lifecycle and navigation |
 
 | Field | Value |
 | --- | --- |
@@ -290,3 +290,30 @@ Session/Card/ImplementationPlan remain active. Next BPI3-M2 lifecycle/adoption a
 state-group projection. Related KB004/KB-SDL-006 remain separate for general code
 mapping/runtime execution. BP2-A owner pilot disposition and the prior installer
 race timeout remain open. No main merge, publication or native XFMD work occurred.
+
+
+### T011 — Canonical assignment-history foundation (2026-10-09)
+
+Owner input: continue. SDP Master/Architect/Planning/Worker routines recover M2.
+Inspected the separate governance worktree at 4044f37: its private operational store
+and selected-subject ledger reader are not a canonical project-history writer.
+Assignment-Lifecycle.md defines the persistence/authority/transition boundaries.
+M2 is refined into M2a safe canonical append and M2b integrated assignment commands,
+validator support and grouped discovery. No separate mutable assignment history or
+native XFMD change is introduced. Execution/evidence follows below.
+
+
+T011 work summary: BPI3-M2a delivered and independently reviewed. The shared
+projecthistory library preserves existing ledger bytes and supports revision-bound
+append, conflict refusal and exact retry after process termination. The reviewer
+found missing optional envelope constraints and UTF-8 validation; these were fixed
+and the corrected source independently approved. Race tests and vet passed.
+Evidence-BPI3-M2a.md and Pilot-BPI3-M2a.json identify the tested candidate and limits.
+
+Loaded/reused SDP, Master, Architect, Planning, Worker, Verifier and Traceability
+routines; independent Reviewer checked the actual new implementation. The SDL
+source names the library without claiming an integrated lifecycle consumer. No
+real blueprint lifecycle events were emitted. Card050, Plan0020 and S6 remain
+in-progress. Next: M2b assignment transitions, compatible canonical validators and
+grouped discovery. BP2-A owner pilot review and the prior installer integration
+timeout remain open. No merge to main, release or native XFMD changes occurred.
