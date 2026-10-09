@@ -54,6 +54,13 @@ func ownerCommand(args []string) error {
 		return e
 	}
 	emit := func(v any) { _ = json.NewEncoder(os.Stdout).Encode(v) } // Observers do not own execution.
+	if args[0] == "provenance" {
+		p, err := service.Provenance(*run)
+		if err == nil {
+			emit(p)
+		}
+		return err
+	}
 	if args[0] == "status" {
 		r, e := service.Read(*run)
 		if e == nil {

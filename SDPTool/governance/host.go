@@ -116,6 +116,9 @@ func validObservation(o Observation) bool {
 		return opaque(o.TurnID) && o.ItemID == "" && o.Text == "" && o.Phase == "" && o.Status == "running"
 	case "turn.completed":
 		return opaque(o.TurnID) && o.ItemID == "" && o.Text == "" && o.Phase == "" && (o.Status == "completed" || o.Status == "failed" || o.Status == "interrupted")
+	case "context.observed":
+		var p ContextProvenance
+		return o.TurnID == "" && o.ItemID == "launch" && o.Status == "" && o.Phase == "" && Decode([]byte(o.Text), &p) == nil && p.Valid()
 	case "approval.requested":
 		var p ApprovalPrompt
 		return opaque(o.TurnID) && opaque(o.ItemID) && o.Phase == "" && o.Status == "" && Decode([]byte(o.Text), &p) == nil && p.Valid() && p.RequestID == o.ItemID && p.Epoch == o.Epoch && p.TurnID == o.TurnID
@@ -226,6 +229,12 @@ func (s *Service) RecordHost(caller Caller, q HostRequest) (Result, error) {
 	at := &r.Attempts[a]
 	if at.ThreadID != q.ThreadID || at.HostVersion != q.HostVersion {
 		return Result{}, fail("unauthorized", "observed host identity mismatch")
+	}
+	if o.Kind == "context.observed" {
+		var p ContextProvenance
+		if Decode([]byte(o.Text), &p) != nil || p.InputRevision != r.InputRevision || a != len(r.Attempts)-1 || at.Status != "idle" || at.TurnID != "" {
+			return Result{}, fail("unauthorized", "context observation requires current launch binding")
+		}
 	}
 	if o.Kind == "approval.requested" {
 		var p ApprovalPrompt

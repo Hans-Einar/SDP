@@ -55,7 +55,7 @@ do not turn a self-check into an independent review by changing its label.
 | --- | --- | --- | --- |
 | PGI1-M1 Core and inspection | Selected project + status request yields context/route without creating work; authorized fixture Maintenance creates a pinned durable run visible through a small CLI read/transition path | PG-A01/02/03/08/10/18; exact JSON schemas; core restart and stale-input tests | delivered; bounded core/CLI verified |
 | PGI2-M1 Adapters and protocol | Thin local MCP adapter and controller protocol adapter use the core; inspect compatible schemas, negotiate the selected SDK/host, capture bounded recorded events and reconcile mapped attempts | PG-A10/11/12/15/18; actual protocol negotiation and failure outputs; no simulated-as-live claims | delivered; bounded adapters and real idle protocol probe verified |
-| PGI3-M1 Owner workflow | Minimal terminal client recovers Session, submits/steers work, presents route/status and launches the authorized fresh Master with bounded context; applicable child/review mapping is observed | PG-A02/04/05/11/12/13/15; managed account mode and one useful bounded task | in-progress; live C4 executing-turn reattachment verified; applicable provenance remains |
+| PGI3-M1 Owner workflow | Minimal terminal client recovers Session, submits/steers work, presents route/status and launches the authorized fresh Master with bounded context; applicable child/review mapping is observed | PG-A02/04/05/11/12/13/15; managed account mode and one useful bounded task | in-progress; C5 launch provenance verified; skill invocation and applicable native mapping remain |
 | PGI4-M1 Evidence and reconciliation | Candidate-bound evidence, review/rework and checked publication produce one durable Session outcome and correct card/plan disposition | PG-A06/07/09/13/16/17; crash and concurrent-change fixtures | planned |
 | PGI5-M1 Integrated verification | The same isolated task survives observer close, interruption/recovery and scope correction with unrelated work preserved | All PG-A01–18 at their stated level; independent review and exact-candidate evidence | planned |
 
@@ -106,14 +106,14 @@ PGI2-M1 is also delivered: [adapter evidence](Evidence-PGI2.md),
 [candidate manifest](candidate-PGI2.json) and [protocol pin](protocol-PGI2.json)
 record shared-core MCP parity, bounded observation/recovery fixtures and actual
 Codex 0.160.1 / MCP 2025-11-25 negotiation with SDK v1.8.0. No model turn is sent.
-PGI3-C3 now adds explicit per-request MCP approval to C2's real workflow and
-correlated recovery. [C3 evidence](Evidence-PGI3-C3.md) records the actual observed
-prompt, exact test-driver response, host closure and successful assignment-bound
-report to verifying. Final affected race tests, compiled core CLI, vet and schema
-checks pass. Default never remains; explicit ask uses the stable owner-reviewed
-policy. No permanent grant or work acceptance is inferred. Executing-turn
-reattachment and applicable role/provenance evidence keep PGI3 in progress.
-PGI4/PGI5 publication and independent review remain planned.
+PGI3-C3 verifies explicit approval/reporting; C4 verifies same-host executing-turn
+reattachment. [C5 evidence](Evidence-PGI3-C5.md) verifies bounded launch provenance
+and offline inspection through an actual Maintenance trial. Assigned role,
+host-reported context, local source digests and skill availability remain distinct;
+skill use is explicitly unobserved. Final affected race/compiled CLI and schema
+checks pass, with the post-live schema-only correction stated in the evidence.
+Explicit skill invocation/correlation and applicable native role mapping keep PGI3
+in progress. PGI4/PGI5 publication and independent review remain planned.
 
 The milestone history now resides in the original repository on
 `sdp/project-governance-pilot`, using the persistent worktree
@@ -236,3 +236,17 @@ planned. Backlog/onHold review leaves KB036/037/042/043 and the separate ModelGo
 SDUI and blueprint workstreams unchanged. No merge, push or release is selected.
 
 2026-10-08T15:46:29.121589+00:00: EVT-PM-SDP-000169 — PGI3-C4 actual executing-turn reattachment verified after graceful detach and abrupt controller loss; applicable provenance keeps PGI3 in progress.
+
+## PGI3-C5 selection and result — 2026-10-09
+
+Owner continuation selects bounded provenance. Controller-only context capture
+and offline inspection now distinguish assigned role, reported context and skill
+availability. The actual fixture includes maintained SDP skills; discovery and local
+hashes pass without treating agent declarations as invocation. See [C5 evidence](Evidence-PGI3-C5.md)
+for the live/runtime and later schema-only correction boundary. Next: explicit skill
+invocation/correlation and applicable native role mapping under current delegation
+rules. PGI4/PGI5 remain planned. Backlog/onHold review retains broader KB036/037/042/043
+scope and separate ModelGovernance, SDUI and blueprint workstreams. No push, merge
+or release is selected.
+
+2026-10-09T02:32:53.879846+00:00: EVT-PM-SDP-000170 — PGI3-C5 bounded launch provenance verified; explicit skill invocation/correlation and applicable native role mapping keep PGI3 active.

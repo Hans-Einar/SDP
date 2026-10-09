@@ -464,3 +464,43 @@ Both initial trials refused before any thread submission. The selected refinemen
 permits that direct canonical alias only when both parent directories and the
 socket are private and user-owned; indirect aliases and symlink parents refuse.
 Peer process lifetime and socket identity remain bound. No default daemon is used.
+
+
+## PGI3-C5 refinement — bounded launch provenance, 2026-10-09
+
+Owner continuation selects applicable role/skill/context evidence under PG-A04,
+PG-A10/12/15. The installed 0.161.0 protocol exposes thread identity/source/native
+role fields, thread/start instructionSources, and skills/list availability. These
+are different evidence levels: controller-assigned Master is not a host-native
+role, a host-reported instruction path is not a digest of bytes demonstrably used,
+and a discovered enabled skill is not evidence of invocation or compliance.
+
+Select a durable controller-owned context observation and a read-only provenance
+projection. Capture the fresh thread's reported identity and instruction paths,
+current governing source references and digests, and bounded project-local skill
+availability from skills/list with forceReload. Hash readable project-local skill
+files as a local snapshot; do not read external skill contents or infer activation.
+Keep unavailable metadata, host discovery errors, external inventory counts and
+unobserved skill use explicit. Observations confer no authority or review rights.
+
+Preserve existing launch text, input correlation, retry and recovery semantics.
+This increment does not add skill inputs, automatic skill selection, new MCP tools,
+role switching, child dispatch or review acceptance. A snapshot remains as-of its
+capture epoch after reconnection; do not relabel it as current runtime context.
+Use actual project skills in the disposable trial and retain returned claims as
+agent statements. Full skill invocation/activation telemetry remains unknown when
+not exposed by the measured adapter. Native child execution remains unavailable
+under the current no-delegation assignment; it must not be simulated as proof.
+
+The alternative of parsing shell commands or model prose as proof of skill loading
+is rejected: neither establishes exact consumed context or compliance. The explicit
+skill-input protocol is available for a later selected invocation workflow, which
+must also preserve lost-response correlation for non-text inputs. C5 does not
+silently change the existing text-only dispatch contract to get stronger claims.
+
+Verification: actual fresh managed-account Maintenance execution with installed SDP
+skills, observed instruction sources and project-local inventory, bound context
+receipt and unchanged exclusions. Negative tests cover forged roles/agent writes,
+oversized records, unknown/missing metadata, invalid paths and inventory limits.
+Read-only provenance must work without connecting to Codex. No independent review
+or full role hierarchy is claimed.

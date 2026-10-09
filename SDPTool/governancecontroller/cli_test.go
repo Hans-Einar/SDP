@@ -163,6 +163,11 @@ func TestCompiledOwnerCommandAndRecovery(t *testing.T) {
 	}
 	// An observer read does not change revision or start a host.
 	invoke("status")
+	out = invoke("provenance", "--codex", "/missing-codex-binary")
+	var provenance governance.ProvenanceView
+	if e = json.Unmarshal(out, &provenance); e != nil || provenance.Status != "observed" || provenance.Context == nil || provenance.Context.Skills.Status != "unavailable" || provenance.Context.Skills.UseEvidence != "not-observed" {
+		t.Fatal(string(out), e)
+	}
 	after, e := s.Read(r.Run.ID)
 	if e != nil || after.Run.Revision != r.Run.Revision {
 		t.Fatal(after, e)

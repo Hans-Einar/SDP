@@ -656,7 +656,8 @@
             "agentMessage",
             "tool.completed",
             "approval.requested",
-            "approval.resolved"
+            "approval.resolved",
+            "context.observed"
           ]
         },
         "turnId": {
@@ -1039,6 +1040,228 @@
           "$ref": "#/$defs/OwnerInput"
         }
       }
+    },
+    "HostContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "observed",
+            "unavailable"
+          ]
+        },
+        "sessionId": {
+          "type": "string"
+        },
+        "parentThreadId": {
+          "type": "string"
+        },
+        "nativeRole": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "instructionStatus": {
+          "enum": [
+            "observed",
+            "unavailable"
+          ]
+        },
+        "instructionSources": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "status",
+        "sessionId",
+        "parentThreadId",
+        "nativeRole",
+        "source",
+        "instructionStatus",
+        "instructionSources"
+      ]
+    },
+    "SkillAvailability": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "digest": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "path",
+        "enabled",
+        "digest"
+      ]
+    },
+    "SkillInventory": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "observed",
+            "unavailable"
+          ]
+        },
+        "useEvidence": {
+          "const": "not-observed"
+        },
+        "externalCount": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4096
+        },
+        "errorCount": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4096
+        },
+        "project": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {
+            "$ref": "#/$defs/SkillAvailability"
+          }
+        }
+      },
+      "required": [
+        "status",
+        "useEvidence",
+        "externalCount",
+        "errorCount",
+        "project"
+      ]
+    },
+    "ContextProvenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "assignedRole": {
+          "const": "Master"
+        },
+        "roleBasis": {
+          "const": "controller-launch"
+        },
+        "inputRevision": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "sources": {
+          "type": "array",
+          "maxItems": 64,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "sha256": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  {
+                    "const": "absent"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ]
+          }
+        },
+        "host": {
+          "$ref": "#/$defs/HostContext"
+        },
+        "skills": {
+          "$ref": "#/$defs/SkillInventory"
+        }
+      },
+      "required": [
+        "assignedRole",
+        "roleBasis",
+        "inputRevision",
+        "sources",
+        "host",
+        "skills"
+      ]
+    },
+    "ProvenanceView": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "sdp-project-governance/0.1"
+        },
+        "operation": {
+          "const": "provenance"
+        },
+        "runId": {
+          "type": "string"
+        },
+        "attemptId": {
+          "type": "string"
+        },
+        "captureEpoch": {
+          "type": "string"
+        },
+        "currentEpoch": {
+          "type": "string"
+        },
+        "receivedAt": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "observed",
+            "unavailable",
+            "historical-epoch"
+          ]
+        },
+        "context": {
+          "$ref": "#/$defs/ContextProvenance"
+        },
+        "threadId": {
+          "type": "string"
+        },
+        "hostVersion": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema",
+        "operation",
+        "runId",
+        "attemptId",
+        "captureEpoch",
+        "currentEpoch",
+        "receivedAt",
+        "status",
+        "threadId",
+        "hostVersion"
+      ]
     }
   }
 }

@@ -280,10 +280,15 @@ func (c *Client) AccountMode(ctx context.Context) (string, error) {
 }
 
 type Thread struct {
-	Cwd        string `json:"cwd"`
-	CLIVersion string `json:"cliVersion"`
-	ID         string `json:"id"`
-	Status     struct {
+	Context        governance.HostContext `json:"-"`
+	SessionID      string                 `json:"sessionId"`
+	ParentThreadID string                 `json:"parentThreadId"`
+	AgentRole      string                 `json:"agentRole"`
+	Source         json.RawMessage        `json:"source"`
+	Cwd            string                 `json:"cwd"`
+	CLIVersion     string                 `json:"cliVersion"`
+	ID             string                 `json:"id"`
+	Status         struct {
 		Type string `json:"type"`
 	} `json:"status"`
 	Turns []Turn `json:"turns"`

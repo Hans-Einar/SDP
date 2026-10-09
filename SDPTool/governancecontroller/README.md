@@ -216,3 +216,35 @@ for completed content, with conflicts refused and duplicates suppressed; the gap
 stays visible. A late terminal transition during attachment is an explicit
 reconciliation condition. The live profile demonstrates immediate reattachment,
 not indefinite unattended execution, approval replay or survival of server failure.
+
+## Launch provenance
+
+Read a persisted launch snapshot without starting or connecting to Codex:
+
+```sh
+sdp-controller provenance --project /absolute/project --state /absolute/private-state --run RUN_UUID
+```
+
+The view identifies the run, attempt, thread, host version, capture/current epochs
+and receive timestamp. It separates controller-assigned `Master` from the native
+role/session/source fields actually returned by the host. Empty native values mean
+no value was reported; they are not inferred from the assigned role. The host source
+is retained as compact JSON data. In the measured app-server trial it is `"vscode"`;
+that value alone does not prove a particular user interface or role hierarchy.
+
+`instructionSources` contains paths the host reports as loaded at thread/start.
+The governing sources/digests are the controller's separate local context snapshot;
+they do not prove the exact instruction bytes the model consumed. Skill inventory
+comes from `skills/list` with forceReload, resolved within the selected project.
+It records enabled state and readable source-file hashes, with external entries
+counted without reading their bodies. Unavailable metadata and discovery errors
+remain explicit. The fixed `useEvidence: not-observed` must not be relabeled as
+activation or compliance because a skill was discovered or the model said it used it.
+Agent claims remain the captured messages. No new skill invocation is added to the
+existing text-only launch protocol.
+
+The view is an as-of snapshot, not a live cursor. After reconciliation/reattachment
+it is labeled `historical-epoch`; historical attempts without a context observation
+return unavailable. Reads do not change the run. Metadata does not permit an agent
+to grant itself authority, publish records or satisfy independent review. Native
+child provenance and measured skill invocation remain outside this checkpoint.

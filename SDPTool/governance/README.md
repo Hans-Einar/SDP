@@ -210,3 +210,12 @@ Same request IDs in different epochs are distinct approval observations. A gap i
 never erased by reattachment. These additive fields are development-profile state;
 older strict-decoding pilot binaries cannot read the new state and no published
 upgrade compatibility is claimed.
+
+PGI3-C5 adds `context.observed`, a controller-only launch observation containing
+bounded ContextProvenance. It is accepted only for the latest idle, unmapped-turn
+attempt and matching assignment revision. It does not create role authority.
+Provenance returns a read-only as-of projection; a changed epoch is explicitly
+historical. Missing prior captures stay unavailable. Host reports, controller
+source hashes and skill availability have separate meanings; actual skill use is
+not observed by this profile. New context records require this development
+candidate's strict schema; no published downgrade/upgrade contract is implied.

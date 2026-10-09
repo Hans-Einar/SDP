@@ -24,7 +24,7 @@ func TestWorkProtocolRequests(t *testing.T) {
 		var cases []map[string]any
 		s := bufio.NewScanner(right)
 		definitions := []string{"ThreadStartParams", "TurnStartParams", "TurnSteerParams", "TurnInterruptParams"}
-		results := []string{`{"thread":{"id":"thread","status":{"type":"idle"}}}`, `{"turn":{"id":"turn","status":"inProgress"}}`, `{"turnId":"turn"}`, `{}`}
+		results := []string{`{"thread":{"id":"thread","status":{"type":"idle"},"sessionId":"host-session","source":"vscode","agentRole":null,"parentThreadId":null},"instructionSources":["/fixture/AGENTS.md"]}`, `{"turn":{"id":"turn","status":"inProgress"}}`, `{"turnId":"turn"}`, `{}`}
 		for i, definition := range definitions {
 			if !s.Scan() {
 				return
@@ -42,8 +42,12 @@ func TestWorkProtocolRequests(t *testing.T) {
 		}
 		captured <- cases
 	}()
-	if _, e := c.StartWorkThread(ctx, "/fixture", "read-only", "bounded Master", "never", map[string]any{}); e != nil {
+	thread, e := c.StartWorkThread(ctx, "/fixture", "read-only", "bounded Master", "never", map[string]any{})
+	if e != nil {
 		t.Fatal(e)
+	}
+	if thread.Context.SessionID != "host-session" || thread.Context.InstructionStatus != "observed" || len(thread.Context.InstructionSources) != 1 || thread.Context.NativeRole != "" {
+		t.Fatal(thread.Context)
 	}
 	id := UUID()
 	if _, e := c.StartTurn(ctx, "thread", id, "exact input"); e != nil {

@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn: T010 — executing-turn reattachment verified; PGI3 remains open. S3 is active
+Latest recorded turn: T011 — bounded launch provenance verified; PGI3 remains open. S3 is active
 under PLAN-SDP-0018; PGI1 core/CLI and PGI2 adapters are verified at their bounded levels.
 The app-server client and complete participating capabilities remain unfinished.
 Sequence only; synthetic dates represent order, not estimates or elapsed time.
@@ -23,7 +23,7 @@ gantt
 | --- | --- | --- | --- | --- |
 | completed | S1 | Recover skills, studies, card dependencies and ownership | Owner request, 2026-10-03 | Assessment below; RGS2 reused |
 | completed | S2 | Design the smallest common routing, run, Session and client contract | Owner continuation, T002 | [PGD1 / PLAN-SDP-0017](../04--Design/SDPTool/ProjectGovernance/Plan.md), contract, acceptance cases and protocol inspection |
-| active | S3 | Deliver one end-to-end workflow through SDPTool and the Codex client | S2 complete; [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) active | PGI1/PGI2 delivered; PGI3-C4 live reattachment verified; applicable provenance remains open |
+| active | S3 | Deliver one end-to-end workflow through SDPTool and the Codex client | S2 complete; [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) active | PGI1/PGI2 delivered; PGI3-C5 launch provenance verified; skill invocation and native mapping remain open |
 | planned | S4 | Verify interruption, resume, scope change and evidence disposition | S3 candidate | Evidence required before wider use |
 | planned | S5 | Project recorded activity into the KB043 timeline | Reliable S3/S4 capture and selected rendering scope | Full timeline remains deferred |
 
@@ -32,10 +32,10 @@ gantt
 | Session reference | SESSION-SDP-0007 |
 | Status | active |
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
-| Snapshot date | 2026-10-08 |
+| Snapshot date | 2026-10-09 |
 | Current step | S3 / PGI1-M1 and PGI2-M1 delivered; PGI3 in progress |
-| Proposed next step | PGI3 applicable role/skill/context provenance within current delegation rules |
-| Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment |
+| Proposed next step | PGI3 explicit skill invocation/correlation and applicable native role mapping under current delegation rules |
+| Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance |
 
 ## Goal and ownership
 
@@ -56,7 +56,7 @@ No ModelGovernance files or contracts are changed by this turn.
 
 ## Affected cards
 
-Snapshot: 2026-10-08. Only KB038 is active for the selected increment; other
+Snapshot: 2026-10-09. Only KB038 is active for the selected increment; other
 capability cards retain their broader backlog scope.
 No card is merged, split or closed merely to group this workstream.
 
@@ -481,10 +481,45 @@ collisions still need deliberate integration reconciliation. No merge/push/relea
 is selected. This is a manual work summary, not an already captured final response.
 Current conversation host IDs and exact owner timing are unknown.
 
+### T011 — 2026-10-09: continue applicable provenance
+
+Owner input summary: continue after PGI3-C4. Recovered clean 4044f37 in the
+persistent worktree. Loaded/reused SDP, document workflow, Master, Architect,
+Worker, Verifier, Planning, Traceability and OpenAI Docs. The installed host remains
+0.161.0. Architect distinguishes controller role assignment, host-reported loaded
+instruction paths, locally hashed source bytes, discovered skills and agent claims.
+Selected a bounded provenance observation/projection; existing text dispatch and
+recovery stay unchanged. No delegation is selected or performed. Exact conversation host IDs and owner timing
+are unknown.
+
+Work summary: C5 persists controller-only context observations and adds offline
+provenance inspection. The actual disposable fixture contains maintained SDP skills
+and discovery links. It reports 14 enabled local skills with matching hashes, 60
+external skills and two instruction paths; native role/parent fields remain empty.
+The agent completed the bounded Go fix, accepted one explicit test-driver report
+request and reached verifying. All excluded bytes/links were preserved. No actual
+skill invocation or compliance is inferred from discovery or model claims.
+
+Initial setup refused a dot-prefixed assignment exclusion before model launch;
+the fixture was corrected without widening the product contract. After the final
+runtime-source trial, schema validation caught an unresolved reference. The schema
+and checker were corrected, captured records revalidated and final affected race
+and compiled CLI checks passed. The rebuilt offline view equals the live view;
+no final rebuilt-binary model run is claimed. Vet passes on final Go sources.
+Management/Toolkit and final source/ledger/link checks accompany the checkpoint.
+See [C5 evidence](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-C5.md).
+
+S3/PGI3 and KB038 stay active/in-progress. Next: explicit skill invocation/correlation
+and applicable native role mapping under current delegation rules; PGI4/PGI5 remain
+planned. Backlog review retains broader governance and separate concurrent scopes.
+No independent review, shared integration, push, merge or release is claimed.
+Historical private event collisions remain for deliberate integration reconciliation.
+This is a manual work summary, not an already captured final response.
+
 ## Closeout
 
 The Session remains active. S1/S2 are complete; S3 includes delivered PGI1 core/CLI
-and PGI2 adapters. PGI3-C4 verifies executing-turn reattachment after graceful and
-abrupt controller loss, alongside C3 approval/reporting and C2 mapped recovery.
-Applicable role/skill/context provenance keeps PGI3 open. PGI4/PGI5 and wider
-capability closure remain planned.
+and PGI2 adapters. PGI3-C5 verifies bounded launch provenance and offline inspection,
+alongside C4 reattachment, C3 approval/reporting and C2 mapped recovery. Explicit
+skill invocation/correlation and applicable native role mapping keep PGI3 open.
+PGI4/PGI5 and wider capability closure remain planned.

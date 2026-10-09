@@ -107,3 +107,11 @@ reading and resubscribing to the one mapped active thread. thread/resume receive
 only threadId. No turn/start, permission override or lost-request replay is sent.
 Missing/full-history coverage and a completion race refuse explicitly. A new
 connection epoch retains a visible gap even after terminal-history replay.
+
+PGI3-C5 preserves the optional thread/start instructionSources and native
+session/parent/role/source values, separately from the controller-assigned role.
+InspectSkills uses the pinned stable skills/list shape (`cwds`, `forceReload`).
+It snapshots at most 64 project-local skills, hashes readable files up to 64 KiB
+through a confined project-root open, and counts external entries without reading
+their contents. Invalid, ambiguous or excessive inventory is reported unavailable
+by the controller. A discovery result never establishes skill activation.

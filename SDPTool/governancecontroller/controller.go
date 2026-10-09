@@ -127,6 +127,28 @@ func (c *Controller) Launch(ctx context.Context, runID, text string) (result gov
 	if e != nil {
 		return r, e
 	}
+	// Record exactly what the controller and host can substantiate. A discovery
+	// result is not skill activation, and an assigned role is not a native role.
+	provenance := governance.ContextProvenance{AssignedRole: "Master", RoleBasis: "controller-launch", InputRevision: r.Run.InputRevision, Sources: coverage.Sources, Host: thread.Context, Skills: governance.SkillInventory{Status: "unavailable", UseEvidence: "not-observed", Project: []governance.SkillAvailability{}}}
+	if provenance.Host.Status == "" {
+		provenance.Host = governance.HostContext{Status: "unavailable", InstructionStatus: "unavailable", InstructionSources: []string{}}
+	}
+	if inspector, ok := c.Host.(interface {
+		InspectSkills(context.Context, string) (governance.SkillInventory, error)
+	}); ok {
+		inventory, err := inspector.InspectSkills(ctx, c.Root)
+		if err == nil {
+			provenance.Skills = inventory
+		}
+	}
+	encoded, err := json.Marshal(provenance)
+	if err != nil {
+		return r, err
+	}
+	r, e = c.record(runID, v.AttemptID, thread.ID, "observe", governance.Observation{Kind: "context.observed", ItemID: "launch", Text: string(encoded), Epoch: c.Epoch, ReceivedAt: now()})
+	if e != nil {
+		return r, e
+	}
 	names, _, e := c.Host.MCPTools(ctx, "sdp_governance", thread.ID)
 	if e != nil {
 		return r, e

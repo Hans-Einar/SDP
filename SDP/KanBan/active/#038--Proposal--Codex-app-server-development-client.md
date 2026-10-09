@@ -8,7 +8,7 @@
 | CardState | in-progress |
 | created | 2026-09-28T15:10:13.034937+00:00 |
 | source | Owner conversation 2026-09-28: register app-server-based system development and assess SDPTool MCP |
-| next_review | PGI3-C4 executing-turn reattachment verified; establish applicable role/skill/context provenance |
+| next_review | PGI3-C5 launch provenance verified; establish explicit skill invocation/correlation and applicable native role mapping |
 | tags | codex, app-server, client, MCP, supervision, blueprints, observability |
 | Systems | SDPTOOL |
 | PlanId | PLAN-SDP-0018 |
@@ -296,3 +296,14 @@ EVT-KB-SDP-000318: PGI3-C4 checkpoint verified with original agent capability an
 records graceful and abrupt loss, same-host/turn reattachment, steering, approved
 report and preserved exclusions. CardState remains in-progress. Skill/native role
 provenance, PGI4 publication and PGI5 independent verification remain unfinished.
+
+### 2026-10-09 — PGI3-C5 launch provenance checkpoint
+
+EVT-KB-SDP-000319: PGI3-C5 actual context and skill availability snapshot verified; use remains unobserved. Card stays in-progress for remaining PGI3 and PGI4/PGI5.
+[Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-C5.md)
+records the actual skill-enabled fixture, host context, matching local digests and
+offline projection. Skill availability is not invocation or compliance. Native
+hierarchy and independent review remain unverified. An initial fixture exclusion
+refused dot-prefixed paths; the fixture preserves discovery links separately without
+changing the assignment contract. Any wider hidden-path contract change remains
+outside this increment. CardState remains in-progress; no full pilot acceptance.

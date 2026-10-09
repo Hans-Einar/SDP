@@ -2,7 +2,9 @@ package governancehost
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
+	"github.com/Hans-Einar/SDP/SDPTool/governance"
 )
 
 // StartWorkThread creates a fresh persistent thread with explicitly selected
@@ -22,11 +24,28 @@ func (c *Client) StartWorkThread(ctx context.Context, cwd, sandbox, instructions
 		policy = "on-request" // Stable API; the adapter still refuses every unsupported request.
 	}
 	var out struct {
-		Thread Thread `json:"thread"`
+		Thread             Thread    `json:"thread"`
+		InstructionSources *[]string `json:"instructionSources"`
 	}
 	e := c.call(ctx, "thread/start", map[string]any{"cwd": cwd, "ephemeral": false, "sandbox": sandbox, "approvalPolicy": policy, "approvalsReviewer": "user", "developerInstructions": instructions, "config": map[string]any{"mcp_servers": config}}, &out)
 	if e == nil && (out.Thread.ID == "" || out.Thread.Status.Type != "idle") {
 		e = fmt.Errorf("thread is not observed idle")
+	}
+	if e == nil {
+		source := ""
+		if len(out.Thread.Source) > 0 && string(out.Thread.Source) != "null" {
+			var value any
+			if err := json.Unmarshal(out.Thread.Source, &value); err != nil {
+				return out.Thread, err
+			}
+			b, _ := json.Marshal(value)
+			source = string(b)
+		}
+		out.Thread.Context = governance.HostContext{Status: "observed", SessionID: out.Thread.SessionID, ParentThreadID: out.Thread.ParentThreadID, NativeRole: out.Thread.AgentRole, Source: source, InstructionStatus: "unavailable", InstructionSources: []string{}}
+		if out.InstructionSources != nil {
+			out.Thread.Context.InstructionStatus = "observed"
+			out.Thread.Context.InstructionSources = *out.InstructionSources
+		}
 	}
 	return out.Thread, e
 }
