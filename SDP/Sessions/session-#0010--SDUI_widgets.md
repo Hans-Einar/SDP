@@ -2,8 +2,8 @@
 
 ## Session roadmap
 
-Latest recorded turn: T009. S1–S6, the combined main integration and the independent
-installed consumer widget lab are completed.
+Latest recorded turn: T010. S1–S7, the combined main integration, independent installed lab and SDPTool
+program discovery/launch are completed.
 WCI1/WCI2 are implemented, verified and independently reviewed; WCI3 scalar fields and extended text are delivered and independently reviewed; WCI4 is delivered and independently reviewed. Diagram is **sequence only**, using synthetic equal
 slots; it is not a delivery schedule or measured timeline.
 
@@ -19,6 +19,7 @@ gantt
     S4 Typed values and text :done, s4, after s3, 1d
     S5 Consumer integration and review :done, s5, after s4, 1d
     S6 Installed widget lab :done, s6, after s5, 1d
+    S7 SDPTool runnable programs :done, s7, after s6, 1d
 ```
 
 | State | Step | Work and linked plan milestone | Prerequisites | Authorization | Completion evidence / outcome |
@@ -29,6 +30,7 @@ gantt
 | completed | S4 | PLAN-SDP-0022 WCI3 | Shared contracts from S1–S3 | Owner T001 full card | ea49991f / 69d0a332; Evidence-WCI3-M1/M2; independent approval |
 | completed | S5 | PLAN-SDP-0022 WCI4 | S2–S4 | Owner T001; publication unselected | dcf2a74; Evidence-WCI4-M2; independent integrated acceptance |
 | completed | S6 | KB-SDUI-006 / external PLAN-LAB-0001 LAB1 | Completed widget delivery | Owner T008 and full SDL/SDUI steering | Consumer 0946342; exact runtime db206bc; WIDGETLAB-VER-001, race suite and 26 native checks passed |
+| completed | S7 | PLAN-SDP-0023 RSP1 / KB-SDP-051 | S6 installed lab | Owner T010 | 9963159; full race suite and actual gh-sdp/native SDL-Go route passed |
 
 | Field | Value |
 | --- | --- |
@@ -36,8 +38,8 @@ gantt
 | Status | completed |
 | Primary card | [KB-SDUI-003](../KanBan/completed/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md) |
 | Snapshot date | 2026-10-07 owner request; actual ledger timestamps recorded separately |
-| Current step | S6 completed |
-| Proposed next step | Lab runs through make run; XFMD Run parity requires a separately selected application launch contract |
+| Current step | S7 completed |
+| Proposed next step | Use local development engine; merge/release selection and XFMD UI adoption remain separate |
 | Execution authority | Owner T001 widget work, T006 combined main integration, T008 independent source-defined lab |
 
 ## Goal
@@ -57,6 +59,7 @@ XM-M2 evidence. Rich optional research retains its existing disposition.
 | KB-SDUI-003 | Primary | backlog / backlog at T001 | All inventory delivered, verified and reviewed | completed | completed |
 | KB-SDUI-005 | Context-only dependency | active / gate-review in producer record | Retain separate preview ownership | Existing dirty producer changes preserved | Not disposed here |
 | KB-SDUI-004 | Context-only | backlog | Separate glyph/wrapping fidelity work | backlog | Not disposed here |
+| KB-SDP-051 | Successor program workflow | active at T010 | SDPTool discovers and starts the lab | completed | completed through PLAN-SDP-0023 |
 | KB-SDUI-006 | Successor lab | backlog at T007 | Bounded independent consumer delivered | completed | completed through external PLAN-LAB-0001 |
 
 ## Plan register
@@ -66,6 +69,7 @@ XM-M2 evidence. Rich optional research retains its existing disposition.
 | P1 | [PLAN-SDP-0021 DesignPlan](../04--Design/SDUI/Widgets/Plan.md) | completed | completed | PLAN-SDP-0009 research | Independently reviewed design and per-family acceptance |
 | P2 | [PLAN-SDP-0022 ImplementationPlan](../05--Implementation/SDUI/Widgets/Plan.md) | completed | completed | P1, staged elaboration | WCI0–WCI4 delivered; Evidence-WCI4-M2; independent integrated acceptance |
 | P3 | External PLAN-LAB-0001 ImplementationPlan in sdui_widget_lab | completed | completed | P2/main widget libraries | LAB1-M1/M2/M3; WIDGETLAB-VER-001; bounded source/race/native evidence, no independent review claim |
+| P4 | [PLAN-SDP-0023](../05--Implementation/SDPTool/Programs/Plan.md) | completed | completed | P3 consumer | RSP1 discovery/run; final full race and native gh-sdp evidence |
 
 External plan:
 file:///home/warloc/git/sdui_widget_lab/SDP/05--Implementation/WidgetLab/Plan.md
@@ -877,6 +881,42 @@ no XFMD code, helper configuration, lab code, release or lifecycle state changed
 Next optional scope is selecting that launch integration; current supported lab
 startup remains make run. No new runtime test was needed for this source-contract
 comparison. This entry records a work summary, not an already captured response.
+
+### T010 — SDPTool owns runnable program discovery and launch
+
+Owner prompt, verbatim:
+
+> ok. egentlig er det sdptool som skal finne og kunne starte dette. så i sdui_widget_lab så skal gh sdp . discover kunne returnere "kjørbare" sdui "programmer" i tillegg til å finne SDUI kode som før.
+
+Manual work summary; exact prompt time/host IDs unavailable. Owner corrects the
+suggested XFMD ownership: SDPTool discovers and starts applications, with existing
+source discovery preserved. Loaded sdp/change-analysis/architect/master/planning/
+worker and shared document/plan contracts. PLAN-SDP-0023 and KB-SDP-051 select RSP1;
+S7 added, S1–S6 remain complete. Work uses isolated sdp/runnable-programs from
+04f88ff to preserve concurrent dirty code in the shared checkout. Explicit program
+declarations replace only the former blanket no-executable-metadata rule for
+this owner-selected Run workflow. Discovery never executes commands. Actual
+implementation and gh-sdp/native verification remain pending. No XFMD code change,
+main merge or release selected.
+
+T010 final work summary: RSP1-M1/M2 completed on 99631595eb2ccf5d1e8cc52be5ce30a02b492341; full final
+SDPTool race suite passed. Actual installed gh-sdp v0.2.1 selected the explicit
+locally test-signed development engine, returned both validated SDUI source and
+widget-lab program, then ran the declared make run from the project root. Native
+X11 input produced the visible SDL Run -> GoRun -> SDUI result; native close
+returned 0 through the process chain. Consumer declaration/evidence commit 75b6dca.
+No application runtime source changed. Requirement/design/contract and exact
+evidence accompany PLAN-SDP-0023. The locally sourced environment selects the dev
+engine only for that shell; signed SDP installation and released bootstrap defaults
+remain unchanged. No independent review, XFMD UI acceptance, main merge or release
+was claimed. S7/card/plan are completed; S1–S6 remain complete. Next optional work
+is selecting merge/release and having XFMD consume this SDPTool contract.
+
+T010 handoff: pushed the isolated implementation/evidence branch and opened
+[draft PR #53](https://github.com/Hans-Einar/SDP/pull/53) against main under the
+existing phase-push/PR authority. No merge or release performed. Runtime candidate
+9963159 and evidence closeout 95dd6aa remain the tested boundary; later handoff
+text does not change product code. GitHub checks are not inferred from local tests.
 
 ## Closeout
 

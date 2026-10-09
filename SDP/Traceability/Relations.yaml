@@ -1,4 +1,9 @@
 requirements:
+  SDPTOOL-REQ-RSP1:
+    status: verified
+    path: 02--Requirements/SDPTool-Programs.md
+    design: SDPTOOL-DES-RSP1
+    verification: SDPTOOL-VER-RSP1
   REQ-SDPTOOL-001:
     status: specified
     path: 02--Requirements/SDPTool.md
@@ -30,6 +35,12 @@ requirements:
     design: DES-SDPTOOL-001
     note: GIP delivers installation execution; RP1 owns signed publication and live adoption.
 designs:
+  SDPTOOL-DES-RSP1:
+    status: verified
+    path: 04--Design/SDPTool/Programs.md
+    implementationPlan: 05--Implementation/SDPTool/Programs/Plan.md
+    kanban: KB-SDP-051
+    verification: SDPTOOL-VER-RSP1
   SDUI-DES-0001:
     status: design-reviewed
     path: 04--Design/SDUI/Widgets/Design.md
@@ -219,6 +230,11 @@ reviews:
       low: 0
       note: 4
 verification:
+  SDPTOOL-VER-RSP1:
+    status: passed
+    path: 05--Implementation/SDPTool/Programs/Evidence.md
+    design: SDPTOOL-DES-RSP1
+    requirement: SDPTOOL-REQ-RSP1
   SDPTOOL-VER-SR1:
     status: passed
     path: Maintenance/SR1/Evidence.md

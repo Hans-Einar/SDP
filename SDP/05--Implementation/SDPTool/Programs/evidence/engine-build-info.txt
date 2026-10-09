@@ -1,0 +1,30 @@
+/home/warloc/git/sdui_widget_lab/.build/sdptool-programs/sdptool: go1.27.1
+	path	github.com/Hans-Einar/SDP/SDPTool/cmd/sdptool
+	mod	github.com/Hans-Einar/SDP/SDPTool	(devel)	
+	dep	github.com/Hans-Einar/SDP/SDPTool/bootstrap	v0.0.0
+	=>	./bootstrap	(devel)	
+	
+	dep	github.com/Hans-Einar/SDP/SDUI/go	v0.0.0
+	=>	../SDUI/go	(devel)	
+	
+	dep	github.com/Hans-Einar/SDP/SystemDesignLanguage/go	v0.0.0
+	=>	../SDL/go	(devel)	
+	
+	dep	golang.org/x/text	v0.42.0	h1:JbOZXgfeCPU9gacVtYliJqOhD+zhrEqK4LfdpmlUZqI=
+	dep	gopkg.in/yaml.v3	v3.0.1	h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=
+	build	-buildmode=exe
+	build	-compiler=gc
+	build	-ldflags="-X github.com/Hans-Einar/SDP/SDPTool.BuildVersion=2.1.0-dev.rsp1 -X github.com/Hans-Einar/SDP/SDPTool.BuildRevision=9963159"
+	build	DefaultGODEBUG=tracebacklabels=0,x509sslcertoverrideplatform=0
+	build	CGO_ENABLED=1
+	build	CGO_CFLAGS=
+	build	CGO_CPPFLAGS=
+	build	CGO_CXXFLAGS=
+	build	CGO_LDFLAGS=
+	build	GOARCH=amd64
+	build	GOOS=linux
+	build	GOAMD64=v1
+	build	vcs=git
+	build	vcs.revision=99631595eb2ccf5d1e8cc52be5ce30a02b492341
+	build	vcs.time=2026-10-09T10:13:20Z
+	build	vcs.modified=false

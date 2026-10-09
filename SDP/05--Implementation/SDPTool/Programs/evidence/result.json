@@ -1,0 +1,18 @@
+{
+  "recordedAt": "2026-10-09T10:17:11.031582+00:00",
+  "status": "passed",
+  "engineCommit": "99631595eb2ccf5d1e8cc52be5ce30a02b492341",
+  "engineVersion": "2.1.0-dev.rsp1",
+  "engineSHA256": "ab0425c379ea5860062200597d54d078f00f4410ca7e3c0295c56eb65e2da928",
+  "programManifestSHA256": "6dae6654731a9dd92bf9124e966cc415d004575ea51c05642bdb9dacad411fb5",
+  "labBaselineCommit": "0946342",
+  "labRuntimeSourceCommit": "db206bc91615b6a37474c80a1306a53bde80d502",
+  "checks": [
+    "Actual gh sdp discovery retained validated SDUI source and returned widget-lab runnable",
+    "Actual gh sdp run invoked declared make run from project root",
+    "Real Fyne window mapped on isolated Xvfb :193",
+    "Real X11 Run click displayed SDL Run -> GoRun -> SDUI result",
+    "Native window close returned exit 0 through make, SDPTool and gh-sdp"
+  ],
+  "scope": "Application code unchanged from LAB1; new program catalog and README. Same-context verification, no independent review, released default update or XFMD UI acceptance."
+}
