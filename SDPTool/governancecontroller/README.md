@@ -4,8 +4,8 @@ This package coordinates the shared governance core and the pinned app-server
 adapter for an **existing authorized Maintenance run**. It adds durable exact owner
 input, one fresh Master turn, in-turn steering, interruption, scope-change stop and
 read-only status. The PGI3 live-workflow milestone remains **in progress**: real task/steering/interruption and correlated recovery now have
-evidence. Explicit per-request SDP MCP approval is implemented; executing-turn
-reattachment and native role/reviewer mapping remain open. The implemented controller executes directly without spawning children.
+evidence. Explicit per-request SDP MCP approval, executing-turn reattachment and explicit
+skill-input correlation are implemented; native role/reviewer mapping remains open. The implemented controller executes directly without spawning children.
 
 Build from SDPTool:
 
@@ -66,9 +66,9 @@ host history, records the new connection epoch/gap and replays completed items
 without duplicates. It never resumes or resends a model turn. For launch/steer with a lost acknowledgment, recovery requires a unique observed
 userMessage.clientId and exact payload match inside the mapped thread. It records
 the observed message before acknowledging the durable input. Missing/ambiguous or
-unmapped history remains unresolved; no input is resent. Full executing-turn reconnection and
-native child/reviewer attribution are required live PGI3/PGI5 evidence, not delivered
-by this command. The default controller lifetime is 30 minutes (`--timeout`).
+unmapped history remains unresolved; no input is resent. Executing-turn reconnection
+uses the separate attach path below. Native child/reviewer attribution remains
+unverified. The default controller lifetime is 30 minutes (`--timeout`).
 
 ## Durable dispatch contract
 
@@ -284,3 +284,5 @@ matching text alone is insufficient. Missing/extra/reordered skills, unknown con
 metadata, duplicate client messages and partial history refuse. The measured empty
 text_elements field is normalized; nonempty values are not dropped. Steering remains
 text-only. No native delegation, role authority or independent review is added.
+
+For release-independent owner use, see the [PG lab](../labs/project-governance/README.md).

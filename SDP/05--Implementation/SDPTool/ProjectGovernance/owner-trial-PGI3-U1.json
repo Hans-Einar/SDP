@@ -1,0 +1,114 @@
+{
+  "milestone": "PGI3-U1",
+  "recordedAt": "2026-10-09T10:02:29.063036+00:00",
+  "engine": {
+    "sourceCommit": "34b345e592d46b6e8d72e0ce7aaf7b6728787368",
+    "sourceRepository": "/home/warloc/git/SDP-project-governance",
+    "archiveSHA256": "205db51ea66afa50d40a1255fb3f09afd1b6a6492cc11770174530011b3ed899",
+    "go": "go version go1.27.1 linux/amd64",
+    "hostRequirement": "codex-cli 0.161.0",
+    "releasedInstallation": false,
+    "binaries": {
+      "sdptool": "d6173e68874404883d5d86e3bf22b2987742deeec6841802b3adf02dd3923cb1",
+      "sdp-controller": "c72a2785b2dcb99c04f1066a06a1842b7a3cba477aefd580ae3e7faf0eb3621b",
+      "sdp-mcp": "b5892c8c242c9e7b4a467cfb4cd8185ae4e82288419238c99b68c067ab68fc28"
+    },
+    "harness": {
+      "console.py": "d531588228e623175d40af24e11428b5754e6c8182affb84a65e8d942c1f7019",
+      "seed.py": "5bece2888cad3a34589816fa5cc5502ade2dc7fc878e0c584ea7b6fb69b3399f",
+      "README.md": "7a7464471b7779754e78352b75ac9f9f793b18200d68a4c09671e8bddb22016b"
+    },
+    "harnessRevisionNote": "PGI3-U1 development harness, exact copied file hashes; engine remains pinned to 34b345e"
+  },
+  "labHome": "/home/warloc/git/pg_lab",
+  "harnessFiles": [
+    {
+      "path": "SDPTool/labs/project-governance/README.md",
+      "sha256": "7a7464471b7779754e78352b75ac9f9f793b18200d68a4c09671e8bddb22016b"
+    },
+    {
+      "path": "SDPTool/labs/project-governance/console.py",
+      "sha256": "d531588228e623175d40af24e11428b5754e6c8182affb84a65e8d942c1f7019"
+    },
+    {
+      "path": "SDPTool/labs/project-governance/prepare.py",
+      "sha256": "a306c25a48648d3997ffa3bceb58829136fb0d974ce7c77a22d056f9ac28ae8d"
+    },
+    {
+      "path": "SDPTool/labs/project-governance/seed.py",
+      "sha256": "5bece2888cad3a34589816fa5cc5502ade2dc7fc878e0c584ea7b6fb69b3399f"
+    }
+  ],
+  "harnessDigest": "80af0a352ca5d81aa0ac7de5bd2047ed151ae3043d8fb67bbe1d37e7beabf918",
+  "runAtPreparation": {
+    "schema": "sdp-project-governance/0.1",
+    "operation": "read",
+    "projectRef": "pg-owner-lab",
+    "checkoutId": "c471d41e-adb7-4e00-91f5-7a203da4719b",
+    "operationId": "",
+    "run": {
+      "id": "06a3e736-bbc5-44bf-a10d-5e57c4235130",
+      "revision": 1,
+      "requestId": "5b8ae073-69b8-4d7a-a947-5e64d40186bb",
+      "state": "ready",
+      "step": "implement",
+      "inputRevision": "e8c1c569433c71217f7256ffa89b2d84f06aa28cfa1172e731ad3792d33ff1b7",
+      "selection": {
+        "card": "SDP/KanBan/active/card.md",
+        "plan": "SDP/Maintenance/Plan.md",
+        "session": "SDP/Sessions/session.md",
+        "authority": "SDP/authority.md",
+        "step": "S1"
+      },
+      "assignment": {
+        "outcome": "Fix NormalizeLabel Unicode boundary whitespace while preserving interior content; verify with Go tests",
+        "writablePaths": [
+          "normalize.go",
+          "normalize_test.go"
+        ],
+        "excludedPaths": [
+          "SDP",
+          "Skills",
+          "AGENTS.md",
+          "go.mod",
+          "unrelated.txt",
+          "cmd"
+        ]
+      },
+      "routine": {
+        "id": "maintenance",
+        "version": "0.1",
+        "steps": [
+          "implement",
+          "verify",
+          "review",
+          "record"
+        ],
+        "completion": "candidate evidence, applicable independent review and checked publication required"
+      },
+      "routineDigest": "af3916dbb5da33b22964918d7c78bb73bc2a730c7c7ecde34c7719f334a706fa",
+      "reason": "coverage resolved; trusted local controller selected bounded work"
+    },
+    "coverage": "known"
+  },
+  "ownerTrial": "not-run",
+  "modelLaunched": false,
+  "checks": {
+    "preparation": "Prepared owner trial; run 06a3e736-bbc5-44bf-a10d-5e57c4235130\nReady. Inspect with: /home/warloc/git/pg_lab/lab status\nNo model task has been started. Read README.md before running the trial.\n",
+    "overview": "ProjectGovernance owner lab \u2014 an unreleased workflow trial\nCandidate: 34b345e592d46b6e8d72e0ce7aaf7b6728787368\nProject: /home/warloc/git/pg_lab/project\nGoal: make the label command trim boundary Unicode whitespace without changing interior text or case.\n\nSelected work (actual stored references):\n  session: SDP/Sessions/session.md\n  step: S1\n  card: SDP/KanBan/active/card.md\n  plan: SDP/Maintenance/Plan.md\n  authority: SDP/authority.md\nWritable: normalize.go, normalize_test.go\nExcluded: SDP, Skills, AGENTS.md, go.mod, unrelated.txt, cmd\n\nRoadmap: inspect assignment \u2192 start \u2192 observe/steer \u2192 report \u2192 inspect diff/tests \u2192 record feedback\nRun: 06a3e736-bbc5-44bf-a10d-5e57c4235130\nState: ready \u2014 Ready to launch\nRevision: 1\n\nRoles: you select/steer; one fresh Master performs the bounded task. No child agents or independent review in this candidate.\nAutomatic card/Session publication and work acceptance are not implemented. The report stops at verifying.\n\nCommands: ./lab overview | run | status | provenance | result | recover | feedback\nRead README.md for the trial and controls. Edit owner.txt before first launch to refine wording within the stored scope.\n",
+    "baselineResult": "Run: 06a3e736-bbc5-44bf-a10d-5e57c4235130\nState: ready \u2014 Ready to launch\nRevision: 1\n\nActual working diff:\n\nProject tests (local checking, not independent review):\nok  \tpgi3pilot\t0.002s\n?   \tpgi3pilot/cmd/label\t[no test files]\n\nChanged baseline files: \nUnexpected baseline/link changes: []\nAlso inspect newly created files:\nRecord your experience in FEEDBACK.md; tests do not decide whether this is the workflow you want.\n",
+    "adapter": "PASS: exact pending decision identities, explicit choices only, no implicit/blank acceptance, literal steering text, terminal-control filtering\nBoundary: adapter function checks only; no owner interaction or real model turn claimed\n",
+    "management": "PASS: 61 cards, 38 management records, 4 lineage operations, 521 events; schema/history/metadata/placement/grouping\n",
+    "toolkit": "SDP Toolkit validation passed\n",
+    "labelBefore": "\"\\t  Keep  Case\\u00a0\"\n",
+    "integrity": "PASS: ledger prefix and private event uniqueness: SDP/ProjectManagement/Ledger.ndjson\nPASS: ledger prefix and private event uniqueness: SDP/Traceability/Ledger.ndjson\nPASS: 75 changed-document local links resolve\nPASS: exact source harness, copied harness and engine binary identities\nPASS: prepared project baseline is clean; no model turn started\nPASS: git diff --check\n"
+  },
+  "limits": [
+    "Minimal pilot coverage records, not a full SDP installation",
+    "First real owner interactive experience remains unverified",
+    "Read-only smoke and adapter function checks do not prove the live console interaction",
+    "Existing engine live behavior is evidenced at C6; this turn launches no model",
+    "No native hierarchy, independent review or canonical publication gate",
+    "Known private historical event-ID collisions still require deliberate integration reconciliation"
+  ]
+}

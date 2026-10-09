@@ -213,6 +213,13 @@ reviews:
       low: 0
       note: 4
 verification:
+  SDPTOOL-VER-PGI3-U1:
+    status: passed-preparation-owner-trial-pending
+    path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-U1.md
+    managementId: PLAN-SDP-0018
+    card: KB-SDP-038
+    design: SDPTOOL-DES-0001
+    note: Source-identified local engine and readable owner lab prepared; offline/function checks pass. Actual owner interaction and feedback remain pending.
   SDPTOOL-VER-PGI3-C6:
     status: passed-live-skill-input-correlation-subset
     path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-C6.md

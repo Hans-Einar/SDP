@@ -8,7 +8,7 @@
 | CardState | in-progress |
 | created | 2026-09-28T15:10:13.034937+00:00 |
 | source | Owner conversation 2026-09-28: register app-server-based system development and assess SDPTool MCP |
-| next_review | PGI3-C6 skill invocation/correlation verified; resolve native mapping boundary and prepare PGI4 evidence/publication handoff |
+| next_review | PGI3-U1 owner trial prepared; obtain overview/interaction feedback and reconcile workflow before more features |
 | tags | codex, app-server, client, MCP, supervision, blueprints, observability |
 | Systems | SDPTOOL |
 | PlanId | PLAN-SDP-0018 |
@@ -318,3 +318,33 @@ and exact correlation. No native child/reviewer or procedural compliance is clai
 CardState remains in-progress. Next: resolve applicable native mapping under current
 host rules, then PGI4 candidate-bound evidence and checked publication; PGI5 still
 owns independent integrated verification.
+
+### 2026-10-09 — owner usability and development-trial correction
+
+The owner reports that documents and agent-run verification do not provide enough
+understanding of the emerging PG workflow to judge whether it fits their intent.
+Prioritize a locally runnable owner trial and feedback loop before further feature
+expansion. This is a concrete product-learning need, not a claim that the existing
+technical evidence is invalid or that the owner has accepted the current workflow.
+
+Prepare a release-independent candidate with explicit source/binary identity,
+isolated project/state, readable controls and retained raw results. A dedicated
+PG lab is recommended first; the existing sdui_widget_lab is a later real-consumer
+trial after selecting a bounded task with its current owner. Reuse current PG
+commands; do not introduce another governance core or assume a GUI exists.
+
+KB-SDP-051 in the separate blueprint workstream owns the proposed shared action
+catalogue/invoke contract and general consumer development testing. Coordinate by
+contract reference; this PG trial does not implement that proposal, modify XFMD or
+change installed gh-sdp/SDPTool. Owner observations must distinguish implementation
+bugs, unsuitable workflow choices and newly clarified requirements, and drive a
+plan/design correction before the next larger increment.
+
+Owner disposition: dedicated PG lab first; test both work overview and actual
+collaboration. Prepared at `/home/warloc/git/pg_lab` using pinned C6 engine sources
+and a separate readable trial adapter. [Procedure](../../05--Implementation/SDPTool/ProjectGovernance/Owner-Trials.md)
+and [evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-U1.md)
+distinguish preparation checks from the still-pending owner/model trial. CardState
+remains in-progress; this is a concrete feedback checkpoint, not completed PG scope.
+
+2026-10-09T10:02:29.063036+00:00: EVT-KB-SDP-000326 — Owner prioritizes local PG overview/interaction trial and feedback before feature expansion; dedicated lab prepared with pinned C6 engine. Owner experience remains pending.

@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn: T012 — explicit skill invocation and correlation verified; PGI3 remains open. S3 is active
+Latest recorded turn: T013 — owner lab prepared; owner overview/interaction feedback pending; PGI3 remains open. S3 is active
 under PLAN-SDP-0018; PGI1 core/CLI and PGI2 adapters are verified at their bounded levels.
 The app-server client and complete participating capabilities remain unfinished.
 Sequence only; synthetic dates represent order, not estimates or elapsed time.
@@ -23,7 +23,7 @@ gantt
 | --- | --- | --- | --- | --- |
 | completed | S1 | Recover skills, studies, card dependencies and ownership | Owner request, 2026-10-03 | Assessment below; RGS2 reused |
 | completed | S2 | Design the smallest common routing, run, Session and client contract | Owner continuation, T002 | [PGD1 / PLAN-SDP-0017](../04--Design/SDPTool/ProjectGovernance/Plan.md), contract, acceptance cases and protocol inspection |
-| active | S3 | Deliver one end-to-end workflow through SDPTool and the Codex client | S2 complete; [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) active | PGI1/PGI2 delivered; PGI3-C6 explicit skill input/correlation verified; native mapping remains unverified |
+| active | S3 | Deliver one end-to-end workflow through SDPTool and the Codex client | S2 complete; [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) active | PGI1/PGI2 delivered; PGI3-C6 verified; PGI3-U1 owner lab prepared, feedback pending; native mapping remains unverified |
 | planned | S4 | Verify interruption, resume, scope change and evidence disposition | S3 candidate | Evidence required before wider use |
 | planned | S5 | Project recorded activity into the KB043 timeline | Reliable S3/S4 capture and selected rendering scope | Full timeline remains deferred |
 
@@ -34,8 +34,8 @@ gantt
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
 | Snapshot date | 2026-10-09 |
 | Current step | S3 / PGI1-M1 and PGI2-M1 delivered; PGI3 in progress |
-| Proposed next step | Resolve PGI3 native mapping boundary; prepare PGI4 candidate/evidence/publication handoff |
-| Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation |
+| Proposed next step | Owner tries PG lab overview and interaction; reconcile feedback before further feature expansion |
+| Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials |
 
 ## Goal and ownership
 
@@ -551,10 +551,53 @@ No independent review, shared integration, push, merge or release is claimed.
 Known historical private event collisions remain for integration reconciliation.
 This is a manual work summary, not an already captured final response.
 
+### T013 — 2026-10-09: owner development trial and shared understanding
+
+Owner input summary: technical implementation has progressed farther than the
+owner can assess from documentation. They want to test PG in a real project before
+release, perhaps in sdui_widget_lab or a dedicated project, and use experience to
+clarify both workflow intent and the agent's interpretation. They supply the other
+agent's KB051/XFMD integration handoff and proposed JSON invocation contract.
+
+Recovered clean 34b345e. Loaded/reused SDP, Change Analysis, Planning, Architect,
+Master/Worker/Verifier and Traceability as applicable. Inspected actual PG CLI,
+controller and MCP boundaries, widget-lab instructions, and the supplied blueprint
+handoff. The core already has CLI JSON request files/responses; generic invoke,
+action catalogue and XFMD integration remain separate proposed work. Current PG is
+a bounded terminal workflow, not a finished project-facing UI or Steering dialogue.
+
+Priority correction: make owner experimentation and feedback concrete before more
+feature expansion. Prepare a source-identified local candidate and trial instructions;
+keep technical checks separate from owner experience/acceptance. The owner selected a dedicated PG lab first and explicitly wants both overview
+and collaboration during a task. Exact conversation host IDs/timing are unknown.
+
+Work summary: prepared `/home/warloc/git/pg_lab` with exported C6 engine commit
+34b345e, three locally built binaries, separate harness/source hashes and private
+state. The readable console exposes current work/assignment, observed execution,
+explicit per-request decisions, steering/interruption, provenance, Git diff/tests
+and feedback. It reuses the existing engine without adding a second state machine.
+A small Go command gives a visible before/after task. Minimal process records are
+explicitly distinguished from a full installed consumer. Widget-lab files and
+stable installations remain unchanged. No model turn was launched.
+
+Build/preparation, Python compile, actual read-only CLI inspection, baseline project
+tests/preservation and focused adapter checks pass. No live owner console experience
+or acceptance is claimed. [U1 evidence](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGI3-U1.md)
+records identities and limits; [trial procedure](../05--Implementation/SDPTool/ProjectGovernance/Owner-Trials.md)
+records the repeated owner/agent feedback loop. Management/Toolkit and integrity
+checks accompany delivery. Changes remain on the current milestone branch.
+
+Next: owner tries both views, reports expected versus experienced behavior in chat
+or FEEDBACK.md, and reconciles design/plan with the agent before larger expansion.
+A later selected widget-lab task tests transfer to a real existing consumer. Native
+mapping and PGI4/PGI5 remain open. No independent review, shared integration, push,
+merge or release is claimed. This is a manual work summary, not final-response capture.
+
 ## Closeout
 
 The Session remains active. S1/S2 are complete; S3 includes delivered PGI1 core/CLI
 and PGI2 adapters. PGI3-C6 verifies explicit skill input and exact lost-response
 correlation, alongside C5 provenance, C4 reattachment, C3 approval/reporting and C2
 mapped recovery. Native child/review mapping remains unverified under current host
-rules. PGI4/PGI5 and wider capability closure remain planned.
+rules. PGI3-U1 makes owner trial feedback the immediate next step before more
+feature expansion. PGI4/PGI5 and wider capability closure remain planned.

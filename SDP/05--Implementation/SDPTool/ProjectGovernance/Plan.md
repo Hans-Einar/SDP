@@ -56,6 +56,7 @@ do not turn a self-check into an independent review by changing its label.
 | PGI1-M1 Core and inspection | Selected project + status request yields context/route without creating work; authorized fixture Maintenance creates a pinned durable run visible through a small CLI read/transition path | PG-A01/02/03/08/10/18; exact JSON schemas; core restart and stale-input tests | delivered; bounded core/CLI verified |
 | PGI2-M1 Adapters and protocol | Thin local MCP adapter and controller protocol adapter use the core; inspect compatible schemas, negotiate the selected SDK/host, capture bounded recorded events and reconcile mapped attempts | PG-A10/11/12/15/18; actual protocol negotiation and failure outputs; no simulated-as-live claims | delivered; bounded adapters and real idle protocol probe verified |
 | PGI3-M1 Owner workflow | Minimal terminal client recovers Session, submits/steers work, presents route/status and launches the authorized fresh Master with bounded context; applicable child/review mapping is observed | PG-A02/04/05/11/12/13/15; managed account mode and one useful bounded task | in-progress; C6 explicit skill input/correlation verified; native child/review mapping remains unverified |
+| PGI3-U1 Owner development trial | Owner can inspect current work and exercise the candidate before further feature expansion | Identified local engine, runnable trial, actual owner feedback and expectation/design reconciliation | prepared; owner trial and feedback pending |
 | PGI4-M1 Evidence and reconciliation | Candidate-bound evidence, review/rework and checked publication produce one durable Session outcome and correct card/plan disposition | PG-A06/07/09/13/16/17; crash and concurrent-change fixtures | planned |
 | PGI5-M1 Integrated verification | The same isolated task survives observer close, interruption/recovery and scope correction with unrelated work preserved | All PG-A01–18 at their stated level; independent review and exact-candidate evidence | planned |
 
@@ -267,3 +268,20 @@ Backlog/onHold review preserves broader KB036/037/042/043 and separate ModelGove
 SDUI and blueprint scope. No push, merge or release is selected.
 
 2026-10-09T02:49:51.131951+00:00: EVT-PM-SDP-000171 — PGI3-C6 explicit skill input and exact lost-response correlation verified on final binaries; native child/review mapping remains unverified.
+
+## PGI3-U1 priority correction — owner direction, 2026-10-09
+
+The owner cannot yet assess the workflow from documents and agent-run tests.
+Prepare a separate local PG lab first; include both project/work overview and
+interaction during an actual task. This replaces native mapping/PGI4 handoff as
+the immediate next step. Further feature expansion follows the first owner feedback
+and design reconciliation; bounded trial preparation/fixes can proceed now.
+
+[Owner trial procedure](Owner-Trials.md) and [preparation evidence](Evidence-PGI3-U1.md)
+record the runnable candidate and honest boundary. Preparation is delivered; owner
+use and acceptance are pending. This does not finish PGI3 or waive independent review.
+KB051 retains generic action/invoke and shared consumer-test contract ownership.
+Backlog review retains KB036/037/042/043 and separate blueprint/ModelGovernance/SDUI
+scope. No release, shared installation replacement, push or merge is selected.
+
+2026-10-09T10:02:29.063036+00:00: EVT-PM-SDP-000173 — Owner prioritizes local PG overview/interaction trial and feedback before feature expansion; dedicated lab prepared with pinned C6 engine. Owner experience remains pending.
