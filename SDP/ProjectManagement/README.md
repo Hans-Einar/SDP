@@ -131,3 +131,9 @@ Traceability stores scoped implementation receipts; management events refer to
 their exact identity and digest. See
 [Assignment lifecycle](../04--Design/SDPTool/Blueprints/Assignment-Lifecycle.md).
 Existing x-kanban and x-management histories retain their original meanings.
+
+## Concurrent implementation prerequisite
+
+Before implementation, apply [Concurrent-work preflight](Concurrent-Work-Preflight.md)
+and retain its verdict/evidence in the active Session. Local adoption is recorded
+in Session0011 T002; this is not a distributed locking implementation.

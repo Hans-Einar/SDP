@@ -99,3 +99,13 @@ next is contract refinement and a bounded ImplementationPlan, before execution
 activation. Existing CLI/API evidence and the consumer handoff are available; no
 new daemon, native XFMD implementation or release is selected by this transition.
 Session0008 resumes at BP2-A owner pilot review after this goal or owner redirection.
+
+## Queue prerequisite — Session0011 T002
+
+Owner requires green concurrent-work preflight before implementation. The
+[check is RED](../../Sessions/evidence/0011-concurrent-work/README.md): governance
+and runnable-program work overlap shared SDPTool files/contracts, and a distinct
+runnable-program card in the primary worktree also declares KB-SDP-051. Refer to
+this card by subject/path plus branch until identities are reconciled. Remain queued;
+no unilateral renumbering or execution activation. Next: coordinate ownership and
+baseline/identity reconciliation, then repeat the preflight before S1 execution.

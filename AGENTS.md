@@ -11,6 +11,11 @@ Owner decisions of 2026-09-22 and 2026-09-25 (KB-SDP-029):
   sdp-vNow and the earlier phase branches now preserve development history.
 - Include the phase/milestone ID and concrete delivery in commits. Update plan
   and evidence at each delivery; never label unfinished work delivered.
+- Before starting/resuming implementation or expanding its scope, follow
+  [Concurrent-work preflight](SDP/ProjectManagement/Concurrent-Work-Preflight.md).
+  Check active cards/Sessions and committed plus dirty work across relevant worktrees;
+  record overlap, identity collisions and a scoped verdict in the active Session.
+  Resolve red/yellow findings before affected product edits.
 - Check Git status before branching/staging. Preserve unrelated changes and
   exclude caches. Generated SDL viewpoints must come from validated model facts.
 - Existing owner authorization permits phase pushes to origin and a combined

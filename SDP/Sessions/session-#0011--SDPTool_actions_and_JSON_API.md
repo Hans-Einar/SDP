@@ -2,7 +2,8 @@
 
 ## Session roadmap
 
-T001, 2026-10-09. Active Session; next S1. Sequence only: dates below are display
+T002, 2026-10-09. Active Session; RED preflight blocks implementation.
+Next: coordinate shared SDPTool work and identity collision, then return to S1. Sequence only: dates below are display
 slots, not estimates or measured time. The table is the authoritative roadmap.
 
 ```mermaid
@@ -10,7 +11,7 @@ gantt
     title SDPTool actions and JSON API - sequence only
     dateFormat YYYY-MM-DD
     section Contract
-    NEXT S1 Contract and plan :a,2000-01-01,1d
+    WAITING S1 Contract and plan :a,2000-01-01,1d
     section Delivery
     PLANNED S2 Catalogue and read invocation :b,after a,1d
     PLANNED S3 Blueprint actions :c,after b,1d
@@ -20,7 +21,8 @@ gantt
 
 | State | Step | Outcome / linked milestone | Prerequisites | Completion evidence |
 | --- | --- | --- | --- | --- |
-| next | S1 | Define action catalogue and JSON invocation contract; register bounded ImplementationPlan | KB051, current Go APIs/CLI, XFMD handoff | Selected schemas, scope, failure/authority rules, milestones and Git policy; pending |
+| waiting | S0 | Concurrent-work preflight and coordination | Owner T002 requires green before implementation | [RED: concrete overlap and ID collision](evidence/0011-concurrent-work/README.md) |
+| waiting | S1 | Define action catalogue and JSON invocation contract; register bounded ImplementationPlan | KB051, current Go APIs/CLI, XFMD handoff | Selected schemas, scope, failure/authority rules, milestones and Git policy; pending |
 | planned | S2 | One shared action registry, catalogue and JSON read operation | S1 | CLI/API equivalence, deterministic metadata and strict request/error tests; pending |
 | planned | S3 | Blueprint generation/retention, assessment and revision-bound assignment actions | S2 | Real success/failure workflows preserve source, bundle and ledger contracts; pending |
 | planned | S4 | Test actual consumer protocol and gh-sdp forwarding on development candidate | S3 | Subprocess input/output, structured failures, compatibility and exact binary identity; pending |
@@ -32,8 +34,8 @@ gantt
 | Status | active |
 | Primary card | [KB-SDP-051](../KanBan/backlog/%23051--Proposal--Discoverable-SDPTool-actions.md) |
 | Snapshot date | 2026-10-09 |
-| Current step | S1 — next |
-| Proposed next step | Contract and bounded execution plan before product edits |
+| Current step | S0 concurrency gate — red; S1 waiting |
+| Proposed next step | Resolve overlapping SDPTool work and duplicate KB051, then rerun preflight |
 | Execution authority | Owner selects a new Session for KB051 implementation; this turn establishes the Session and handoff |
 | Predecessor | [Session0008 — paused](session-%230008--Semantic_blueprints.md) |
 
@@ -110,3 +112,26 @@ registers the implementation milestones. This is not a captured final response.
 Pending. On closeout, record actual delivery and remaining consumer/publication
 work. Return to Session0008's Resume here block and S1/BP2-A owner pilot disposition.
 Do not close KB050 or approve its pilot merely because KB051 is delivered.
+
+
+### T002 — Mandatory concurrency check before starting (2026-10-09)
+
+Owner input (summary): establish a procedure checking active cards/Sessions for
+parallel work on SDPTool and possible merge conflicts; proceed only on green.
+Loaded/reused SDP, Master, Planning and shared document workflow. Ran the local
+preflight over nine known Git worktrees, including committed divergence and dirty
+files; inspected active Session/card projections and shared command-routing changes.
+
+Work summary: established Concurrent-Work-Preflight.md and linked it from AGENTS.md
+and ProjectManagement. The [observed result](evidence/0011-concurrent-work/README.md)
+is RED. Governance and runnable-program branches change the same dispatch/output
+interfaces; committed forecasts have actual conflicts. The primary worktree also
+has a new runnable-program card declaring our KB-SDP-051 identity. No unilateral
+renumbering, product code edits, branch merges or owner messages were performed.
+
+Session remains active for coordination, S1 waits, and KB051 stays queued with the
+new prerequisite. Green requires current ownership/integration sequencing and
+identity reconciliation, followed by fresh inspection. The earlier scoped Go/CLI
+proposal does not authorize bypassing this owner gate. Next: coordinate a safe
+combined/sequenced baseline; then resume S1. Session0008 remains paused. This is a
+manual work summary, not an exact transcript or claimed live-agent observation.
