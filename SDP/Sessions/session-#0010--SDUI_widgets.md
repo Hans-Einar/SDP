@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn: T008. S1–S6, the combined main integration and the independent
+Latest recorded turn: T009. S1–S6, the combined main integration and the independent
 installed consumer widget lab are completed.
 WCI1/WCI2 are implemented, verified and independently reviewed; WCI3 scalar fields and extended text are delivered and independently reviewed; WCI4 is delivered and independently reviewed. Diagram is **sequence only**, using synthetic equal
 slots; it is not a delivery schedule or measured timeline.
@@ -37,7 +37,7 @@ gantt
 | Primary card | [KB-SDUI-003](../KanBan/completed/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md) |
 | Snapshot date | 2026-10-07 owner request; actual ledger timestamps recorded separately |
 | Current step | S6 completed |
-| Proposed next step | Owner may explore lab with make run; future release selection remains separate |
+| Proposed next step | Lab runs through make run; XFMD Run parity requires a separately selected application launch contract |
 | Execution authority | Owner T001 widget work, T006 combined main integration, T008 independent source-defined lab |
 
 ## Goal
@@ -843,6 +843,40 @@ S1–S5 remain completed. Shared unrelated work is preserved. The next optional
 owner activity is manual lab exploration, then separately selecting release scope.
 
 file:///home/warloc/git/sdui_widget_lab/SDP/05--Implementation/WidgetLab/Evidence.md
+
+### T009 — clarify XFMD Run versus the connected lab
+
+Owner prompt, verbatim:
+
+> ok. det vil også si at XFMD skal kunne kjøre run på SDUI koden der også og det starter det samme som make run?
+
+Manual work summary; exact prompt timestamp and host IDs unavailable. Recovered
+Session0010 and read sdp 1.1.1 plus its document workflow; bounded existing-contract
+clarification, not a new implementation assignment or independent verification.
+
+Inspected the actual consumer at /home/warloc/git/xfmd-sdl-navigation, specifically
+src/application/sdp/SduiWorkflow.cpp and SduiTools.cpp. XFMD probes sdui-preview
+with -check/-source/-entry/-revision, then launches sdui-fyne with entry, revision,
+watch and source arguments. It does not discover or execute the lab's Makefile,
+application binary, Go registry or providers. This matches the previously recorded
+WCI4 consumer/launcher boundary. The older /home/warloc/git/xfmd checkout was not
+used as evidence for current SDUI integration.
+
+The lab's Makefile builds cmd/widget-lab and launches its own native application.
+internal/lab/application.go reads SDUI and its SDL reference, creates the SDL engine
+with domain.Registry(), supplies providers/resources/typed bridge plans, and adopts
+a connected DocumentHost. Those application services are not supplied by a SDUI
+file alone. Consequently current XFMD Run is not equivalent to make run and the
+lab's 26 native checks do not establish XFMD end-to-end acceptance. Supporting
+new widgets in a generic prototype would still not automatically provide the
+lab's Go functions. Actual parity needs an explicit project application launch
+contract and verification from XFMD through the same connected application.
+
+S1–S6, KB-SDUI-006 and PLAN-LAB-0001 remain completed at their recorded scope;
+no XFMD code, helper configuration, lab code, release or lifecycle state changed.
+Next optional scope is selecting that launch integration; current supported lab
+startup remains make run. No new runtime test was needed for this source-contract
+comparison. This entry records a work summary, not an already captured response.
 
 ## Closeout
 
