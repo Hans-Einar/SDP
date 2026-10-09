@@ -187,3 +187,8 @@ or --catalogue SDP/Blueprints for immutable retention. Discover/tree automatical
 expose the retained catalogue and its generated document targets.
 See [producer contract](blueprints/README.md). Assignment lifecycle remains BPI3;
 catalogue entries report workState=unknown.
+
+## Blueprint consumer handoff
+
+See [XFMD blueprint integration](XFMD-Blueprint-Integration.md) for current CLI/API
+boundaries, lifecycle documentation and development-version testing.

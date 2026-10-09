@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-T012, 2026-10-09. Sequence only; dates are display slots, not duration estimates.
+T013, 2026-10-09. Sequence only; dates are display slots, not duration estimates.
 
 ```mermaid
 gantt
@@ -49,6 +49,7 @@ implemented; general code-conformance proof remains explicitly outside this scop
 | Card | Initial | Planned final | Current | Actual final |
 | --- | --- | --- | --- | --- |
 | [KB050](../KanBan/active/%23050--Proposal--Semantic-blueprints.md) | backlog | completed after implemented/verified blueprint feature | gate-review | pending |
+| [KB051](../KanBan/backlog/%23051--Proposal--Discoverable-SDPTool-actions.md) | absent | backlog registration only | backlog | registered T013 |
 
 | Plan | Readiness | Lifecycle | Outcome |
 | --- | --- | --- | --- |
@@ -356,3 +357,37 @@ completed; S1/DesignPlan0001 remain for owner disposition. Next step: owner revi
 of that concrete blueprint/context presentation. Publication, parallel-branch
 integration, native XFMD and general model/code verification are separate. No
 main merge or release occurred. This is the work summary, not a captured final reply.
+
+
+### T013 — XFMD integration handoff and discoverable actions (2026-10-09)
+
+Owner input (summary): locate blueprint API/CLI documentation for XFMD; expose
+SDPTool operations dynamically for a menu and personal configurable toolbar with
+icon fallback and older-version handling; register cards in both projects; explain
+alpha/beta testing before main/release.
+
+Loaded SDP, Change Analysis, Traceability and document workflow; inspected XFMD's
+installed SDP entrypoint and applicable instructions. Read current consumer source,
+producer CLI/contracts and gh-sdp bootstrap, plus official gh extension documentation.
+XFMD invokes subprocess JSON (gh sdp by default, XFMD_SDP_TOOL override), not a direct
+Go API. Root kind=tab supports generic discovery tabs; live installed-build behavior
+was not tested. A generic action catalogue is a new producer capability, separate
+from content navigation. Created KB-SDP-051 and external KB-XFMD-030 as backlog;
+no new implementation selected. Existing #029 visible-but-disabled contextual tools
+remain compatible with hiding actions absent from an older producer.
+
+Work summary: added SDPTool/XFMD-Blueprint-Integration.md with authoritative links,
+commands, lifecycle boundaries and direct branch/signed-wrapper test routes. Updated
+both board indexes and appended creation events; staged only the new XFMD card,
+preserving unrelated shared changes. No installed tool replaced, signed test release
+published or native XFMD code modified. Source/ledger/link checks are recorded with
+the handoff commit. This is a work summary, not an exact transcript/final reply.
+
+S1 remains awaiting BP2-A owner pilot disposition; S2-S6 stay completed. New action
+catalogue/menu scope is tracked separately by KB051/KB-XFMD-030. Next blueprint step:
+review the existing pilot, or explicitly select consumer integration/action planning.
+
+T013 validation: management validator passes (63 cards, 39 management records,
+4 lineage operations, 518 events). New local document links resolve; both new cards
+have unique creation events and matching backlog/CardState placement. Git whitespace
+check passes. No product code changed and no new GUI execution evidence is claimed.
