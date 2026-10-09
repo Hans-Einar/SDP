@@ -2,14 +2,14 @@
 
 ## Session roadmap
 
-T014, 2026-10-09. Sequence only; dates are display slots, not duration estimates.
+T015, 2026-10-09. Session paused by owner; resume at S1 / BP2-A. Sequence only; dates are display slots, not duration estimates.
 
 ```mermaid
 gantt
     title Semantic blueprints - sequence only
     dateFormat YYYY-MM-DD
     section Design
-    ACTIVE BP2-A Contract and pilot :active,a,2000-01-01,1d
+    PAUSED BP2-A Owner pilot review :a,2000-01-01,1d
     DONE BP2-B Selection and evidence :done,b,after a,1d
     DONE BP2-C Executable handoff :done,c,after b,1d
     section Implementation
@@ -20,7 +20,7 @@ gantt
 
 | State | Step | Outcome | Evidence / remaining work |
 | --- | --- | --- | --- |
-| on-going | S1 / BP2-A | Contract and real-model pilot | Contract candidate and validated reduced MVP1 specimen delivered; owner feedback on pilot pending |
+| waiting | S1 / BP2-A | Contract and real-model pilot | Contract candidate and validated reduced MVP1 specimen delivered; owner feedback on pilot pending |
 | completed | S2 / BP2-B | Deterministic impact selection and negative cases | NOW/TARGET union, removed neighbors, unknown frontier, stale/overflow/cycle cases |
 | completed | S3 / BP2-C | API and implementation handoff | Authored model Worker/Reviewer trial; A approved, violating B rejected |
 | completed | S4 / BPI1 | Production Go analysis | Go analyzer delivered; independent review approves bounded BPI1 |
@@ -30,9 +30,9 @@ gantt
 | Field | Value |
 | --- | --- |
 | Session reference | SESSION-SDP-0008 |
-| Status | active |
+| Status | paused |
 | Primary card | KB-SDP-050 |
-| Snapshot date | 2026-10-07 |
+| Snapshot date | 2026-10-09 |
 | Execution authority | Owner says continue after the proposed KB050 pilot route |
 
 ## Goal
@@ -49,12 +49,46 @@ implemented; general code-conformance proof remains explicitly outside this scop
 | Card | Initial | Planned final | Current | Actual final |
 | --- | --- | --- | --- | --- |
 | [KB050](../KanBan/active/%23050--Proposal--Semantic-blueprints.md) | backlog | completed after implemented/verified blueprint feature | gate-review | pending |
-| [KB051](../KanBan/backlog/%23051--Proposal--Discoverable-SDPTool-actions.md) | absent | backlog registration only | backlog | registered T013 |
+| [KB051](../KanBan/backlog/%23051--Proposal--Discoverable-SDPTool-actions.md) | absent | transfer to Session0011 for delivery | queued | transferred T015 |
 
 | Plan | Readiness | Lifecycle | Outcome |
 | --- | --- | --- | --- |
 | [PLAN-SDP-0001](../04--Design/SDPTool/Blueprints/Plan.md) | on-going | active | Contract, selection and executable handoff design |
 | [PLAN-SDP-0020](../05--Implementation/SDPTool/Blueprints/Plan.md) | completed | completed | BPI1 analysis, BPI2 publication, BPI3 evidence/lifecycle delivered |
+
+## Resume here — owner pause, T015 (2026-10-09)
+
+This Session is paused, not completed. Active focus moves to
+[Session0011 — SDPTool actions and JSON API](session-%230011--SDPTool_actions_and_JSON_API.md).
+Resume this Session after that work, or on an explicit owner request. Do not infer
+pilot approval from the pause or from completion of the new Session.
+
+**First resume action:** recover this roadmap, inspect current Git status and the
+latest implementation evidence, then return to **S1 / BP2-A-M1: owner disposition
+of the reduced MVP1 blueprint/context presentation**. Start with
+[the pilot](../04--Design/SDPTool/Blueprints/Pilot.md) and
+[the design plan](../04--Design/SDPTool/Blueprints/Plan.md). Ask for/recover the actual
+pilot feedback; record acceptance or bounded corrections before closing that gate.
+
+**Delivered:** S2-S6; PLAN-SDP-0020; source generation, immutable catalogue,
+assessment and revision-bound assignment lifecycle/discovery. The latest code
+baseline is d2cc760; handoff/proposal documentation continues through a4a81f8 on
+sdp/blueprint-implementation in /tmp/sdp-blueprint-implementation. These coordinates
+are recovery hints, not a requirement to overwrite newer work. Relevant race/vet
+checks passed; see [M2b evidence](../05--Implementation/SDPTool/Blueprints/Evidence-BPI3-M2b.md).
+Do not reimplement or rerun completed phases without a new reason.
+
+**Open:** KB-SDP-050 stays gate-review for that concrete owner decision.
+PLAN-SDP-0001 remains active in the plan schema (which has no paused lifecycle);
+its remaining execution is suspended with this Session. ImplementationPlan0020
+remains completed. No main merge, release, installed XFMD integration or general
+model-to-code conformance proof is claimed. Those are separate scopes/authorities.
+
+**Transferred:** KB-SDP-051 and its action catalogue/JSON request work belong to
+Session0011. External KB-XFMD-030 owns native menu/toolbar integration. Return with
+their actual outcomes and runtime compatibility evidence, without treating them
+as approval of the blueprint pilot. [The integration handoff](../../SDPTool/XFMD-Blueprint-Integration.md)
+contains the current consumer boundary and testing routes.
 
 ## Turn journal
 
@@ -412,3 +446,20 @@ external worktree changed. This records a work summary, not a captured final rep
 KB051 remains backlog; blueprint S1 is still awaiting owner pilot disposition and
 S2-S6 stay completed. Next for the new capability is a bounded plan selecting the
 catalogue and JSON invocation contract, followed by a vertical consumer test.
+
+
+### T015 — Pause and transfer active focus (2026-10-09)
+
+Owner input (summary): create a new Session to implement KB-SDP-051, pause this
+Session, and record an explicit handover/resumption note confirming the roadmap.
+Loaded/reused SDP, Planning and document workflow. Checked Session numbers in the
+primary and parallel worktrees; 0010 is already allocated to SDUI, so selected 0011.
+
+Work summary: paused this Session and marked S1 waiting; added the resume block
+above with delivered baseline, exact remaining pilot decision and scope boundaries.
+Created active Session0011 with its own roadmap and planned plan register; KB051 is
+queued for its planning step. KB050 remains gate-review, not accepted or completed.
+Plan0020 remains completed; no product code, release or XFMD work was performed.
+Next active step is Session0011 S1: define the catalogue/JSON invocation contract
+and bounded execution plan. Resume here at S1/BP2-A after that separate goal or
+owner redirection. This is a manual work summary, not an exact transcript.

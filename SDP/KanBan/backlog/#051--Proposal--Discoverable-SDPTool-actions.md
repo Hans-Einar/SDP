@@ -5,10 +5,10 @@
 | id | KB-SDP-051 |
 | project | SDP |
 | type | Proposal |
-| CardState | backlog |
+| CardState | queued |
 | created | 2026-10-09T09:44:29.345109+00:00 |
 | source | Owner Session0008 T013, 2026-10-09 |
-| next_review | Before selecting the XFMD dynamic-action integration plan |
+| next_review | Session0011 S1 contract and implementation-plan selection |
 
 ## Outcome and current evidence
 
@@ -90,3 +90,12 @@ claiming that a JSON subprocess protocol itself implements MCP. The first comple
 slice should exercise catalogue, one read action and one revision-bound mutation
 through both human CLI and JSON input, with equivalent validation and results.
 CardState remains backlog; next is the bounded design/implementation plan.
+
+## Queue — Session0011 selected (2026-10-09)
+
+Owner selects [Session0011](../../Sessions/session-%230011--SDPTool_actions_and_JSON_API.md)
+for focused delivery, pausing predecessor Session0008. CardState backlog → queued:
+next is contract refinement and a bounded ImplementationPlan, before execution
+activation. Existing CLI/API evidence and the consumer handoff are available; no
+new daemon, native XFMD implementation or release is selected by this transition.
+Session0008 resumes at BP2-A owner pilot review after this goal or owner redirection.

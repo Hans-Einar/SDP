@@ -132,3 +132,11 @@ is available under 05--Implementation/SDPTool/Blueprints/Trial-BPI3-M2b. This ca
 stays active/gate-review for that disposition; it is not waiting merely to point
 to later work. Native XFMD integration, release packaging and general model/code
 conformance remain outside the delivered bounded implementation.
+
+## Owner pause — Session0008 T015 (2026-10-09)
+
+Session0008 is paused while [Session0011](../../Sessions/session-%230011--SDPTool_actions_and_JSON_API.md)
+handles KB051. CardState remains gate-review for the concrete BP2-A pilot; no
+acceptance is implied. ImplementationPlan0020 is completed. Resume via the explicit
+Resume here block in Session0008, then record owner pilot disposition or bounded
+corrections against DesignPlan0001. Do not restart completed implementation phases.
