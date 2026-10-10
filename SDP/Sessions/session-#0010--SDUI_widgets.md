@@ -2,8 +2,8 @@
 
 ## Session roadmap
 
-Latest recorded turn: T011. S1–S7, the combined main integration, independent installed lab and SDPTool
-program discovery/launch are completed.
+Latest recorded turn: T012. S1–S8, the combined main integration, independent installed lab and SDPTool
+program discovery/launch, paired release and extension upgrade are completed.
 WCI1/WCI2 are implemented, verified and independently reviewed; WCI3 scalar fields and extended text are delivered and independently reviewed; WCI4 is delivered and independently reviewed. Diagram is **sequence only**, using synthetic equal
 slots; it is not a delivery schedule or measured timeline.
 
@@ -20,7 +20,7 @@ gantt
     S5 Consumer integration and review :done, s5, after s4, 1d
     S6 Installed widget lab :done, s6, after s5, 1d
     S7 SDPTool runnable programs :done, s7, after s6, 1d
-    S8 Paired release and extension upgrade :active, s8, after s7, 1d
+    S8 Paired release and extension upgrade :done, s8, after s7, 1d
 ```
 
 | State | Step | Work and linked plan milestone | Prerequisites | Authorization | Completion evidence / outcome |
@@ -32,24 +32,25 @@ gantt
 | completed | S5 | PLAN-SDP-0022 WCI4 | S2–S4 | Owner T001; publication unselected | dcf2a74; Evidence-WCI4-M2; independent integrated acceptance |
 | completed | S6 | KB-SDUI-006 / external PLAN-LAB-0001 LAB1 | Completed widget delivery | Owner T008 and full SDL/SDUI steering | Consumer 0946342; exact runtime db206bc; WIDGETLAB-VER-001, race suite and 26 native checks passed |
 | completed | S7 | PLAN-SDP-0023 RSP1 / KB-SDP-051 | S6 installed lab | Owner T010 | 9963159; full race suite and actual gh-sdp/native SDL-Go route passed |
-| on-going | S8 | MAINT-SDP-0015 / gh-sdp SPS-009 | S7 program delivery | Owner T011 | Release gate and independent review pending |
+| completed | S8 | MAINT-SDP-0015 / gh-sdp SPS-009 | S7 program delivery | Owner T011 | SDP2.2.0/gh-sdp0.2.2 published and independently reconciled; local upgrade and native Run passed |
 
 | Field | Value |
 | --- | --- |
 | Session reference | SESSION-SDP-0010 |
-| Status | active |
+| Status | completed |
 | Primary card | [KB-SDUI-003](../KanBan/completed/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md) |
 | Snapshot date | 2026-10-07 owner request; actual ledger timestamps recorded separately |
-| Current step | S8 release and extension upgrade |
-| Proposed next step | Complete MAINT-SDP-0015 release gates, publish paired versions and upgrade gh-sdp |
-| Execution authority | Owner T001 widget work, T006 combined main integration, T008 independent source-defined lab |
+| Current step | S8 completed |
+| Proposed next step | Owner manual XFMD test; any UI adoption is separate work |
+| Execution authority | Owner T001 widgets, T006 main integration, T008 lab, T010 programs, T011 paired release and local upgrade |
 
 ## Goal
 
 Deliver the complete KB-SDUI-003 widget inventory in staged runnable slices,
 with truthful profile/capability checks, native Fyne behavior, typed SDL binding,
 exports and consumer distribution preparation. No full XFMD rewrite, FOX bridge,
-rich editor or binary publication is selected. T006 separately authorized the
+rich editor is selected. T011 separately authorizes paired binary publication and
+local extension upgrade. T006 separately authorized the
 combined main merge; T008 extends the outcome with an independent installed lab
 containing complete SDL/SDUI source and interpreted Go calls. Preserve original 0.2 and
 XM-M2 evidence. Rich optional research retains its existing disposition.
@@ -954,11 +955,41 @@ publication or global extension change has yet occurred.
 T011 final source gate: fresh independent release review APPROVED exact ef8741c
 and its signed package. RSP2-M1 completed; authorized publication begins next.
 
+T011 completed work summary: published SDP2.2.0 at ef8741c and gh-sdp0.2.2 at
+9776f8a, with exact production signatures/assets, successful predecessor/archive
+trials and independent source and publication approval. Final client review also
+corrected its provenance checksum, historical verification wording and stale
+links; rejected reports remain intact. Actual gh extension upgrade moved0.2.1 to
+0.2.2. The normal default reports SDPTool2.2.0 and discovers widget-lab. Its returned
+revision-bound Run starts make run; real Fyne/X11 Run input returns through SDL and
+Go, then normal close exits0. Lab b7e15d5 holds consumer evidence and current usage.
+All development overrides were removed from final tests; the lab receipt remains
+unchanged. RSP2-M1/M2 and SPS009 complete. Independent reviews were separate Codex
+contexts applying the actual reviewer/release roles, not coordinator self-review.
+Release records remain on the dedicated published branches; the canonical shared
+workspace receives Session/maintenance/verification records only, preserving all
+unrelated dirty product work. No main merge or XFMD UI integration was performed.
+Next: owner tests latest XFMD; its Run-button adoption is separately verified or
+selected if needed. No selected release/upgrade work remains.
+
+### T012 — resume final record closeout
+
+Owner prompt, verbatim:
+
+> det ser ut som jeg avbrøt deg. beklager, fortsett der du var
+
+The owner asks to continue the existing task; no scope or authority changes.
+Recovered the completed T011 release/upgrade/native evidence and independent
+publication approval. Reused the loaded SDP release/versioning and record routines.
+Product publication and local upgrade were already complete; the remaining work
+is committing/pushing owned reconciliation records and preserving unrelated work
+in the shared checkout. S8 remains completed. Next owner step is manual XFMD testing.
+
 ## Closeout
 
 WCI0–WCI4 and the full bounded KB-SDUI-003 inventory are implemented, verified and
 independently reviewed on the selected baseline. PLAN-SDP-0022 and the primary card
 are completed. Combined [PR #52](https://github.com/Hans-Einar/SDP/pull/52) was merged into main at
 `04f88ff918e7c25c9fa1883f061ef20b8c3923a2`, including the inherited baseline authorized in T006.
-Binary publication is now selected in T011; actual publication is pending. T008 also completed the independent installed
+T011 published SDP2.2.0 and gh-sdp0.2.2 and upgraded the local extension. T008 also completed the independent installed
 widget lab and KB-SDUI-006; no selected implementation remains.

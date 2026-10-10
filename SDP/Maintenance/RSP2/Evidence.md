@@ -45,3 +45,33 @@ release-log checks, actual gh bootstrap/install and CI. Earlier rejected reviews
 are retained with their dispositions. No unresolved blocking findings remain.
 RSP2-M1 is complete; RSP2-M2 publication, public default and extension upgrade are
 still pending. No change to the reviewed product is made by this evidence commit.
+
+## Actual upstream publication
+
+Annotated v2.2.0 points to ef8741c433c7fde67e689f94a74e7afdf938f24f; tag object
+95349944f1ab43cd334342f92d36677b4cc8c425. GitHub published at
+2026-10-10T01:40:16Z: https://github.com/Hans-Einar/SDP/releases/tag/v2.2.0.
+All five assets were downloaded from the published release; descriptor, signature,
+executable and manifest match Candidate.json and SHA256SUMS. The first immediate
+public-default probe saw transient HTTP404; a new empty-cache attempt with the
+final client succeeded with production trust and no test-key/release override.
+The packaged final client discovers all five lab sources plus runnable widget-lab.
+Client publication/global upgrade and native final default remain pending.
+
+## Completed paired transaction
+
+Client v0.2.2 is published at 9776f8a6b26247383b25e12317e69f06ddd1f4e2;
+Publication-client.json records its real tag and release metadata. gh extension
+upgrade sdp updated the global extension from0.2.1 to0.2.2. Installed-engine.json
+confirms default SDPTool2.2.0/ef8741c. Native-result.json and Native-run-result.png
+record actual revision-bound discovery/run, make run, real Fyne window and X11 Run
+input, visible SDUI→SDL Run→GoRun→SDUI result and normal closeexit0. The installed
+lab receipt is byte-preserved. Lab evidence is committed at b7e15d5; no app code or
+project installation was changed.
+
+Review-publication.md independently approves remote annotated tags/releases,
+all asset hashes, production trust, installed client/default, immutable history,
+schema consistency and the bounded native observations. RSP2-M2/MAINT-SDP-0015 are
+complete. No main merge or XFMD UI acceptance is claimed. The inspected XFMD
+source still has its generic prototype launcher; owner manual testing or a later
+explicit UI integration uses the new SDPTool program contract.

@@ -1,0 +1,13 @@
+SDP PASS live tag, metadata and all downloaded/package/remote hashes {"sdp-release.json": "d47ce2be184c680422958f6c161e1e4ed19dff06cfd471c0ed0872d1445ec61b", "sdp-release.json.sig": "99d631ff201339ff7eeabef41dd0c087858d3209ec5eacec1f7ec6b3be1580e9", "sdptool": "4b6eca0a6db7953efa037db846f6ac34370847fa695c2de49f35af8eb15c0ef9", "sdptool.manifest.json": "a27bedd0059528aacd858eac913bdb6c630178ba01af92b73e91665195dd8162", "SHA256SUMS": "a850abf966e86b6ad3e64ecf407e694a805612f39da40095ccabf73c6ffd2696"}
+SDP PASS older records/logs/notes immutable; ledger prefix preserved 11
+SDP PASS manifest/release schemas and 142 ledger envelopes/events; upstream index/relations also validated where applicable
+SDP PASS consistent published identity
+gh-sdp PASS live tag, metadata and all downloaded/package/remote hashes {"checksums.txt": "10bd297c6e5d57bd6db56fcabb88d6d042502a27303338a3b1f2621c8263e5d3", "gh-sdp-linux-amd64": "f863d847185a7fecee01c724f6e3e54750ae09ffb3d30d0319efe6b079b33ee4", "gh-sdp.manifest.json": "94377efba894ad7dacdce13a9e0d8315c97cbcec6d67bd24ae9129b92d3ffe48"}
+gh-sdp PASS older records/logs/notes immutable; ledger prefix preserved 6
+NOTE client full legacy index/relations require separate differential validation; not claimed schema-clean
+gh-sdp PASS manifest/release schemas and 38 ledger envelopes/events; upstream index/relations also validated where applicable
+gh-sdp PASS consistent published identity
+PASS globally installed binary sha256 f863d847185a7fecee01c724f6e3e54750ae09ffb3d30d0319efe6b079b33ee4
+PASS production Ed25519 signature
+PASS all native evidence equals b7e15d5; installed lab receipt preserved
+EVIDENCE /tmp/rsp2-publication-independent-wej_ixzo

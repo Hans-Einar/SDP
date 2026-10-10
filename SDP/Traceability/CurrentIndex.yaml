@@ -6,7 +6,7 @@ release:
   previousVersion: "2.1.0"
   activeReleaseId: REL-2.2.0
   targetVersion: "2.2.0"
-  state: prerelease
+  state: released
 
 active:
   sprint: null

@@ -512,7 +512,7 @@ migrations: {}
 releases:
   REL-2.2.0:
     version: 2.2.0
-    state: prerelease
+    state: released
     releaseNotes: RELEASE-NOTES.md
     manifest: SDP.manifest.yaml
     releaseRecord: SDP/Releases/REL-2.2.0.yaml
@@ -521,8 +521,8 @@ releases:
     reviews:
     - REV-SDPTOOL-RSP2
     releaseCommit: ef8741c433c7fde67e689f94a74e7afdf938f24f
-    gitTag: null
-    githubRelease: null
+    gitTag: v2.2.0
+    githubRelease: https://github.com/Hans-Einar/SDP/releases/tag/v2.2.0
   REL-2.1.0:
     version: "2.1.0"
     state: released

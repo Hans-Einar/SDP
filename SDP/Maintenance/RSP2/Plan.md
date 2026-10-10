@@ -4,7 +4,7 @@
 | --- | --- |
 | id | MAINT-SDP-0015 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | MaintenancePlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
@@ -34,7 +34,7 @@ work joins the clean release. gh-sdp uses its installed SPS-009 lifecycle.
 | Milestone | Acceptance | State |
 | --- | --- | --- |
 | RSP2-M1 | Version/notes/inventory, exact signed clean SDP package, predecessor/archive tests, CI and fresh independent review | completed |
-| RSP2-M2 | Publish verified SDP 2.2.0 and client 0.2.2, verify downloads/default and local gh extension upgrade | in-progress |
+| RSP2-M2 | Publish verified SDP 2.2.0 and client 0.2.2, verify downloads/default and local gh extension upgrade | completed |
 
 ## Gates and evidence
 
@@ -44,3 +44,7 @@ real tag/release exist. Verify every supported predecessor descriptor, including
 no-op. Release, client package, production default and native Run evidence must
 identify exact candidates. Independent fresh-context reviewers report actual
 findings and disposition; no self-review substitution. Publication waits for gates.
+
+Completed: exact source and actual paired publication independently approved;
+local extension upgraded and native lab route verified. See Evidence.md and
+Review-publication.md. No selected work remains.

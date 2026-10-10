@@ -52,3 +52,9 @@ Pending review/evidence/checklist/release scaffolds truthfully represent the pre
 - /tmp/sdp22-final-independent-child.log
 - /tmp/sdp22-final-independent-ci.json
 - /tmp/sdp22-final-independent-rebuild/
+
+## Publication reconciliation
+
+Review-publication.md independently approves both actual releases, asset identity,
+global extension/default and the bounded native lab evidence. This completes the
+release review; original source-candidate dispositions above remain intact.

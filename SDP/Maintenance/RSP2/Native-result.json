@@ -1,0 +1,48 @@
+{
+  "status": "passed",
+  "engineVersion": "2.2.0",
+  "clientVersion": "0.2.2",
+  "labCommit": "7d28312b6c07461e966a306bffa22874b757c6b4",
+  "program": {
+    "id": "widget-lab",
+    "label": "SDUI Widget Lab",
+    "source": "SDP/SDL/WidgetLab/SDUI/Desktop/Lab.sdui",
+    "entry": "page",
+    "command": [
+      "make",
+      "run"
+    ],
+    "model": "lab-0a641d4322946d91",
+    "state": "runnable",
+    "revision": "7309b647dd6d802bf6736c3d2948cfe6ca8b852c2fc1974e975e9d68e4d86a54",
+    "directory": "/home/warloc/git/sdui_widget_lab",
+    "run": [
+      "run",
+      "--program",
+      "widget-lab",
+      "--revision",
+      "7309b647dd6d802bf6736c3d2948cfe6ca8b852c2fc1974e975e9d68e4d86a54"
+    ]
+  },
+  "command": [
+    "gh",
+    "sdp",
+    ".",
+    "run",
+    "--program",
+    "widget-lab",
+    "--revision",
+    "7309b647dd6d802bf6736c3d2948cfe6ca8b852c2fc1974e975e9d68e4d86a54"
+  ],
+  "defaultOverrides": false,
+  "nativeWindow": {
+    "window": 2097184,
+    "x": 0,
+    "y": 0,
+    "mapState": 2,
+    "viewable": true
+  },
+  "exitCode": 0,
+  "installedReceiptUnchanged": "8785318a5195415ddea81a3233f0812c40c2d771d2a9c1bfbf43f5f75964f737",
+  "visualRunResult": "Actual window screenshot inspected: SDUI \u2192 SDL Run \u2192 GoRun \u2192 SDUI: widget lab"
+}
