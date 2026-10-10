@@ -938,6 +938,22 @@ product review; final release review remains pending. Local XFMD source still
 uses sdui-fyne prototype launch, so no XFMD UI parity is promised from an extension
 upgrade alone. S8 active; all preceding deliveries remain completed.
 
+
+T011 gate progress: the fresh reviewer found and RSP2 fixed two process-lifecycle
+issues (terminal foreground input and SIGTERM cleanup). Independent focused
+re-review approved their exact hashes and separate real-PTY probes. Initial
+6251621 package failed generated-log/CI consistency; final candidate ef8741c
+corrects the ModelGovernance reference and has passing exact-head contracts and
+Linux installation CI. Full SDPTool race/bootstrap, SDL, SDUI and 85 Toolkit tests
+passed. Final production-signed and archive ten-case predecessor upgrades preserve
+owner Sessions, program declarations, SDUI source and ledger prefixes; repeat is
+no-op. Client 636db3e packages immutable ef8741c bootstrap; full packaged race suite
+through isolated gh passes. Final independent release reviews are active; no
+publication or global extension change has yet occurred.
+
+T011 final source gate: fresh independent release review APPROVED exact ef8741c
+and its signed package. RSP2-M1 completed; authorized publication begins next.
+
 ## Closeout
 
 WCI0–WCI4 and the full bounded KB-SDUI-003 inventory are implemented, verified and

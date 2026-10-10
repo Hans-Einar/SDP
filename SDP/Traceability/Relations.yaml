@@ -143,7 +143,7 @@ slices:
 fixes: {}
 reviews:
   REV-SDPTOOL-RSP2:
-    status: pending
+    status: approved
     path: Maintenance/RSP2/Review.md
     release: REL-2.2.0
   REV-SDPTOOL-SR1:
@@ -235,7 +235,7 @@ reviews:
       note: 4
 verification:
   SDPTOOL-VER-RSP2:
-    status: pending
+    status: passed
     path: Maintenance/RSP2/Evidence.md
     release: REL-2.2.0
   SDPTOOL-VER-RSP1:
@@ -520,7 +520,7 @@ releases:
     - SDPTOOL-VER-RSP2
     reviews:
     - REV-SDPTOOL-RSP2
-    releaseCommit: null
+    releaseCommit: ef8741c433c7fde67e689f94a74e7afdf938f24f
     gitTag: null
     githubRelease: null
   REL-2.1.0:

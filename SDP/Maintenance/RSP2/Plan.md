@@ -33,8 +33,8 @@ work joins the clean release. gh-sdp uses its installed SPS-009 lifecycle.
 
 | Milestone | Acceptance | State |
 | --- | --- | --- |
-| RSP2-M1 | Version/notes/inventory, exact signed clean SDP package, predecessor/archive tests, CI and fresh independent review | in-progress |
-| RSP2-M2 | Publish verified SDP 2.2.0 and client 0.2.2, verify downloads/default and local gh extension upgrade | planned |
+| RSP2-M1 | Version/notes/inventory, exact signed clean SDP package, predecessor/archive tests, CI and fresh independent review | completed |
+| RSP2-M2 | Publish verified SDP 2.2.0 and client 0.2.2, verify downloads/default and local gh extension upgrade | in-progress |
 
 ## Gates and evidence
 

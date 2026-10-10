@@ -1,0 +1,22 @@
+{
+  "sourceCommit": "ef8741c433c7fde67e689f94a74e7afdf938f24f",
+  "platform": "linux/amd64",
+  "files": {
+    "sdp-release.json": "d47ce2be184c680422958f6c161e1e4ed19dff06cfd471c0ed0872d1445ec61b",
+    "sdp-release.json.sig": "99d631ff201339ff7eeabef41dd0c087858d3209ec5eacec1f7ec6b3be1580e9",
+    "sdptool": "4b6eca0a6db7953efa037db846f6ac34370847fa695c2de49f35af8eb15c0ef9",
+    "sdptool.manifest.json": "a27bedd0059528aacd858eac913bdb6c630178ba01af92b73e91665195dd8162"
+  },
+  "identity": {
+    "installationProtocol": "sdp-install-command/1",
+    "installedFactSchemas": [
+      "1.0",
+      "2.0",
+      "3.0"
+    ],
+    "operation": "version",
+    "revision": "ef8741c433c7fde67e689f94a74e7afdf938f24f",
+    "schema": "sdptool/0.2",
+    "version": "2.2.0"
+  }
+}
