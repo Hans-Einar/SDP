@@ -1,4 +1,9 @@
 requirements:
+  SDPTOOL-REQ-RSP1:
+    status: verified
+    path: 02--Requirements/SDPTool-Programs.md
+    design: SDPTOOL-DES-RSP1
+    verification: SDPTOOL-VER-RSP1
   REQ-SDPTOOL-001:
     status: specified
     path: 02--Requirements/SDPTool.md
@@ -30,6 +35,12 @@ requirements:
     design: DES-SDPTOOL-001
     note: GIP delivers installation execution; RP1 owns signed publication and live adoption.
 designs:
+  SDPTOOL-DES-RSP1:
+    status: verified
+    path: 04--Design/SDPTool/Programs.md
+    implementationPlan: 05--Implementation/SDPTool/Programs/Plan.md
+    kanban: KB-SDP-051
+    verification: SDPTOOL-VER-RSP1
   SDUI-DES-0001:
     status: design-reviewed
     path: 04--Design/SDUI/Widgets/Design.md
@@ -131,6 +142,10 @@ slices:
     verification: [VER-SDP-005-001, VER-SDP-005-002, VER-SDP-005-003]
 fixes: {}
 reviews:
+  REV-SDPTOOL-RSP2:
+    status: approved
+    path: Maintenance/RSP2/Review.md
+    release: REL-2.2.0
   REV-SDPTOOL-SR1:
     status: approved
     path: Maintenance/SR1/Review.md
@@ -219,6 +234,15 @@ reviews:
       low: 0
       note: 4
 verification:
+  SDPTOOL-VER-RSP2:
+    status: passed
+    path: Maintenance/RSP2/Evidence.md
+    release: REL-2.2.0
+  SDPTOOL-VER-RSP1:
+    status: passed
+    path: 05--Implementation/SDPTool/Programs/Evidence.md
+    design: SDPTOOL-DES-RSP1
+    requirement: SDPTOOL-REQ-RSP1
   SDPTOOL-VER-SR1:
     status: passed
     path: Maintenance/SR1/Evidence.md
@@ -486,6 +510,19 @@ verification:
     corpusDigest: e346fc230b26c3045305c1ffee22ff43edfc61aa99597005134a314b210b8114
 migrations: {}
 releases:
+  REL-2.2.0:
+    version: 2.2.0
+    state: released
+    releaseNotes: RELEASE-NOTES.md
+    manifest: SDP.manifest.yaml
+    releaseRecord: SDP/Releases/REL-2.2.0.yaml
+    verification:
+    - SDPTOOL-VER-RSP2
+    reviews:
+    - REV-SDPTOOL-RSP2
+    releaseCommit: ef8741c433c7fde67e689f94a74e7afdf938f24f
+    gitTag: v2.2.0
+    githubRelease: https://github.com/Hans-Einar/SDP/releases/tag/v2.2.0
   REL-2.1.0:
     version: "2.1.0"
     state: released

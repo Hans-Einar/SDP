@@ -1,0 +1,4 @@
+PASS production Ed25519 trust, candidate hashes, all 64 payload identities, all five original signed predecessor digests
+PASS signed trial identity and ten complete cases
+PASS archive trial identity and ten complete cases
+PASS archive bytes 5222 tracked files

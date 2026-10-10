@@ -1,0 +1,3 @@
+{"mode": "normal", "before": 536147, "during": 536156, "after": 536147, "exit": 7, "restored": true, "input": "terminal value"}
+{"mode": "sigterm", "before": 536157, "during": 536166, "after": 536157, "exit": 1, "restored": true, "descendant_leaked": false}
+{"mode": "start-failure", "before": 536232, "during": null, "after": 536232, "exit": 1, "restored": true}

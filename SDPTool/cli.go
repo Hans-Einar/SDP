@@ -36,7 +36,7 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 	}
 
 	if len(args) == 1 && (args[0] == "--help" || args[0] == "help") {
-		_, e := io.WriteString(out, "Usage: sdptool [PROJECT-OR-SDP-AREA] model|discover|tree|select|view ip|sdui-preview|install|upgrade|release-log [options]\n       sdptool preview FILE --output DIRECTORY [--renderer PROGRAM]\nDefault output is human-readable; add --json for machine clients.\nSee SDPTool/Contract.md for source, model, revision and resource contracts.\n")
+		_, e := io.WriteString(out, "Usage: sdptool [PROJECT-OR-SDP-AREA] model|discover|run|tree|select|view ip|sdui-preview|install|upgrade|release-log [options]\n       sdptool preview FILE --output DIRECTORY [--renderer PROGRAM]\nDefault output is human-readable; add --json for machine clients.\nSee SDPTool/Contract.md for source, model, revision and resource contracts.\n")
 		if e != nil {
 			return report(errs, e)
 		}
@@ -49,6 +49,9 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 	}
 	if len(args) > 0 && args[0] == "model" {
 		return modelCommand(selected, args[1:], out, errs, jsonMode)
+	}
+	if len(args) > 0 && args[0] == "run" {
+		return runProgramCommand(ctx, selected, args[1:], out, errs, jsonMode)
 	}
 	if len(args) > 0 && args[0] == "release-log" {
 		return releaseLog(selected, args[1:], out, errs, jsonMode)
@@ -227,7 +230,7 @@ func reportMode(w io.Writer, e error, jsonMode bool) int {
 
 func isCommand(s string) bool {
 	switch s {
-	case "model", "release-log", "install", "upgrade", "preview", "discover", "view", "tree", "select", "sdui-preview":
+	case "run", "model", "release-log", "install", "upgrade", "preview", "discover", "view", "tree", "select", "sdui-preview":
 		return true
 	}
 	return false
