@@ -2,8 +2,8 @@
 
 ## Session roadmap
 
-T005, 2026-10-09. Active Session; RED preflight still blocks implementation.
-Next: coordinate shared SDPTool work and identity collision, then return to S1. Sequence only: dates below are display
+T006, 2026-10-10. Active Session; the last preflight was RED and needs refreshing.
+Next: refresh shared-work status, reconcile ownership and the identity collision, then return to S1. Sequence only: dates below are display
 slots, not estimates or measured time. The table is the authoritative roadmap.
 
 ```mermaid
@@ -33,9 +33,9 @@ gantt
 | Session reference | SESSION-SDP-0011 |
 | Status | active |
 | Primary card | [KB-SDP-051](../KanBan/backlog/%23051--Proposal--Discoverable-SDPTool-actions.md) |
-| Snapshot date | 2026-10-09 |
-| Current step | S0 concurrency gate — red; S1 waiting |
-| Proposed next step | Resolve overlapping SDPTool work and duplicate KB051, then rerun preflight |
+| Snapshot date | 2026-10-10 |
+| Current step | S0 concurrency gate — last result red; refresh required; S1 waiting |
+| Proposed next step | Refresh preflight against changed worktree heads; resolve remaining overlap and duplicate KB051 before S1 |
 | Execution authority | Owner selects a new Session for KB051 implementation; this turn establishes the Session and handoff |
 | Predecessor | [Session0008 — paused](session-%230008--Semantic_blueprints.md) |
 
@@ -234,3 +234,33 @@ planning action. Updated board index, reciprocal links and append-only creation/
 review events. No new runtime plan or execution phase is activated. Next is owning
 ProjectGovernance planning reconciliation; our S0 gate remains red and Session0008
 paused. This is a manual work summary, not a captured final response.
+
+
+### T006 — Confirm workstream ownership after PG handoff (2026-10-10)
+
+Owner input (summary): asks which Session this agent will continue and reports
+having told the ProjectGovernance Codex agent to work on KB-SDP-052. Loaded SDP,
+Traceability and the shared document workflow; recovered this Session and the
+paused blueprint Session. This is a status and handoff turn, not a new execution
+plan or implementation milestone.
+
+Work summary: this agent continues Session0011, whose primary deliverable is the
+discoverable SDPTool action catalogue and JSON invocation interface (the
+discoverable-actions KB051). KB052 belongs to the ProjectGovernance workstream;
+the owner's reported handoff is recorded here without claiming that its agent has
+already activated, implemented or completed the card. Its owning workstream must
+maintain the canonical card lifecycle. Session0008 remains paused with BP2-A owner
+pilot disposition pending; this handoff does not approve that pilot.
+
+The implementation checkout is clean at edfac18 before this journal update.
+Observed worktree heads have changed since the recorded concurrency check:
+SDP-vNow is e38298c and the runnable-program checkout is ef8741c on
+sdp/release-2.2.0; ProjectGovernance remains 0b0e82c. The previous RED evidence
+is historical, not a fresh conflict forecast. No green result is claimed.
+
+Next: refresh S0 against current active work, resolve any remaining shared-file
+ownership and KB051 identity collision, then deliver S1's contract and bounded
+ImplementationPlan. S2–S5 retain their catalogue/read invocation, blueprint
+actions, consumer verification and handoff sequence. No product code, card
+lifecycle, release or other worktree was changed in this turn. Manual work
+summary; no exact transcript or live-agent observation is claimed.
