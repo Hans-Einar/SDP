@@ -20,6 +20,9 @@ func (s *Service) authorize(c Caller, schema, project, checkout, operation strin
 	return nil
 }
 func retry(state snapshot, id, digest string) (Result, bool, error) {
+	if _, ok := state.PreparationReceipts[id]; ok {
+		return Result{}, true, fail("idempotency_conflict", "operationId belongs to assignment preparation")
+	}
 	old, ok := state.Receipts[id]
 	if !ok {
 		return Result{}, false, nil
@@ -81,6 +84,17 @@ func (s *Service) Start(caller Caller, q StartRequest) (Result, error) {
 		if r.RequestID == q.RequestID {
 			return out, fail("conflict", "request already has a run; retry the original operation or inspect it")
 		}
+	}
+	if len(state.Prepared) > 0 {
+		for _, p := range q.Assignment.WritablePaths {
+			if strings.ContainsAny(p, "*?[]") {
+				return out, fail("conflict", "nonliteral legacy scope requires reconciliation with prepared work")
+			}
+		}
+	}
+	preparedOnly := snapshot{Prepared: state.Prepared}
+	if why := scopeConflict(q.Assignment.WritablePaths, preparedOnly); why != "" {
+		return out, fail("conflict", why)
 	}
 	id, e := identifier()
 	if e != nil {

@@ -310,3 +310,29 @@ Tool counts cover only retained events of the latest attempt and include failed 
 declined completions; the last item's status is shown. No transcript or owner-input
 content is included. Terminal output quotes text to neutralize control characters.
 Multi-assignment launch, SAD and Project Leader turns remain later KB052 increments.
+
+## Prepare SAD/Master work — PGL2-C1
+
+```sh
+sdp-controller assignment context --project ROOT --state DIR --input selection.json
+sdp-controller assignment prepare --project ROOT --state DIR --input preparation.json
+sdp-controller assignment inspect --project ROOT --state DIR
+sdp-controller assignment inspect --project ROOT --state DIR --assignment UUID
+```
+
+`selection.json` contains role (`SAD` or `Master`) and the existing Selection fields.
+Use explicit `sdptool ROOT governance bind --state DIR --json` to create the initial
+binding, then context supplies coverage/input revision and expected generation.
+The [preparation schema](../governance/preparation.schema.json) defines request and
+single-object response shapes. Preparation changes operational state only; no host
+is opened, no worker MCP privilege is added, no task is launched or accepted.
+
+The operation ID must remain stable for an uncertain retry with identical content.
+A successful retry returns the original immutable receipt; inspect to assess current
+source freshness. Updated state requires a fresh context before a new operation.
+Conflicting local scope or stale source bytes fail explicitly. Shared-worktree claims,
+provider validation and actual design approval are separate unfinished gates.
+
+The [separate preparation trial](../labs/project-governance/README.md#assignment-preparation-trial--pgl2-c1)
+exercises these commands, including old-reader refusal after the explicit store
+profile upgrade. It does not replace the original one-Master owner experiment.

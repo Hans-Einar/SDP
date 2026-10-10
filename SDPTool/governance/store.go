@@ -11,13 +11,15 @@ type receipt struct {
 	Result Result `json:"result"`
 }
 type snapshot struct {
-	Schema     string             `json:"schema"`
-	Root       string             `json:"root"`
-	Project    string             `json:"project"`
-	CheckoutID string             `json:"checkoutId"`
-	Previous   string             `json:"previous"`
-	Runs       map[string]Run     `json:"runs"`
-	Receipts   map[string]receipt `json:"receipts"`
+	Prepared            map[string]PreparedAssignment `json:"prepared,omitempty"`
+	PreparationReceipts map[string]preparationReceipt `json:"preparationReceipts,omitempty"`
+	Schema              string                        `json:"schema"`
+	Root                string                        `json:"root"`
+	Project             string                        `json:"project"`
+	CheckoutID          string                        `json:"checkoutId"`
+	Previous            string                        `json:"previous"`
+	Runs                map[string]Run                `json:"runs"`
+	Receipts            map[string]receipt            `json:"receipts"`
 }
 
 func (s *Service) load() (snapshot, string, error) {
@@ -44,8 +46,11 @@ func (s *Service) load() (snapshot, string, error) {
 	if e = decode(b, &state); e != nil {
 		return empty, "", fail("reconciliation_required", e.Error())
 	}
-	if state.Schema != Schema {
+	if state.Schema != Schema && state.Schema != preparationStateSchema {
 		return empty, "", fail("incompatible_profile", "unsupported persisted state")
+	}
+	if (state.Schema == Schema && (state.Prepared != nil || state.PreparationReceipts != nil)) || (state.Schema == preparationStateSchema && (state.Prepared == nil || state.PreparationReceipts == nil)) {
+		return empty, "", fail("incompatible_profile", "assignment preparation requires operational profile 0.2")
 	}
 	if state.Root != s.root || state.Project != s.project {
 		return empty, "", fail("unauthorized", "state belongs to another checkout")

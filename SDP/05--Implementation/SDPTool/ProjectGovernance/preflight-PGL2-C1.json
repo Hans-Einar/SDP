@@ -1,0 +1,208 @@
+{
+  "observedAt": "2026-10-10T07:53:47.317742+00:00",
+  "scope": [
+    "SDPTool/governance",
+    "SDPTool/cmd/sdp-controller"
+  ],
+  "worktrees": [
+    {
+      "root": "/home/warloc/git/SDP",
+      "head": "2cb49c02145621b099c47d05786716598e414e75",
+      "committedScopeChanges": [],
+      "workingScopeChanges": []
+    },
+    {
+      "root": "/home/warloc/git/SDP-codex-issue-7-provisional-vnext-",
+      "head": "ea9fcf1cdd3198aeac515b89b55398282c463838",
+      "committedScopeChanges": [],
+      "workingScopeChanges": []
+    },
+    {
+      "root": "/home/warloc/git/SDP-coordination",
+      "head": "684b1f8952f2f5ff2dc9fb32c7592340d8aff60f",
+      "committedScopeChanges": [],
+      "workingScopeChanges": []
+    },
+    {
+      "root": "/home/warloc/git/SDP-project-governance",
+      "head": "02e8c9dc4fbac768d649fd70335d63fd8988752f",
+      "committedScopeChanges": [],
+      "workingScopeChanges": []
+    },
+    {
+      "root": "/home/warloc/git/SDP-vNow",
+      "head": "48c919fda7cf18568df1397753fc10f0696bb6ca",
+      "committedScopeChanges": [],
+      "workingScopeChanges": [
+        "?? SDPTool/cmd/sdp-controller/",
+        "?? SDPTool/governance/"
+      ]
+    },
+    {
+      "root": "/tmp/sdp-21-source",
+      "head": "93517ad98cd188c0debeb1d0f3d36d123c6e4a3b",
+      "committedScopeChanges": [],
+      "workingScopeChanges": []
+    },
+    {
+      "root": "/tmp/sdp-blueprint-implementation",
+      "head": "732e85cbb6250296b7d2c81813903c943bd17a25",
+      "committedScopeChanges": [],
+      "workingScopeChanges": []
+    },
+    {
+      "root": "/tmp/sdp-rp3-candidate",
+      "head": "fede327d6f3af35fe7aad323e2c485a27134d20d",
+      "committedScopeChanges": [],
+      "workingScopeChanges": []
+    },
+    {
+      "root": "/tmp/sdp-runnable-programs",
+      "head": "3475367490804504d6bfd4459a48ffc85a33ee91",
+      "committedScopeChanges": [],
+      "workingScopeChanges": []
+    },
+    {
+      "root": "/tmp/sdp-session3-release-source",
+      "head": "d304261c90066a86b2d8ffcaa2115517ea339b05",
+      "committedScopeChanges": [],
+      "workingScopeChanges": []
+    }
+  ],
+  "verdict": "Scoped PGL2-C1 preparation may proceed in owning PG checkout; shared integration remains separate.",
+  "authority": "Owner continuation of KB052; coordination overview 684b1f8 permits independently bounded PGL2 preparation, not shared integration.",
+  "excluded": [
+    "shared dispatcher/output/presentation/dependencies",
+    "ModelGovernance/Blueprint services",
+    "skill distribution manifests",
+    "other worktrees",
+    "original PG lab runtime"
+  ],
+  "limitations": [
+    "No distributed exclusion; local worktrees only",
+    "Shared untracked PG copies are preserved; verify provenance before affected edits",
+    "MAINT-SDP-0015 is PLR1 at blueprint 5141da7 and RSP2 on release lineage; qualify identity by source and path"
+  ],
+  "sharedUntrackedRefresh": [
+    {
+      "path": "SDPTool/governance/README.md",
+      "matchesPriorPGI2Bytes": true
+    },
+    {
+      "path": "SDPTool/governance/check_schema.py",
+      "matchesPriorPGI2Bytes": true
+    },
+    {
+      "path": "SDPTool/governance/context.go",
+      "matchesPriorPGI2Bytes": true
+    },
+    {
+      "path": "SDPTool/governance/core_test.go",
+      "matchesPriorPGI2Bytes": true
+    },
+    {
+      "path": "SDPTool/governance/coverage.go",
+      "matchesPriorPGI2Bytes": true
+    },
+    {
+      "path": "SDPTool/governance/input.go",
+      "matchesPriorPGI2Bytes": true
+    },
+    {
+      "path": "SDPTool/governance/lock_linux.go",
+      "matchesPriorPGI2Bytes": true
+    },
+    {
+      "path": "SDPTool/governance/lock_other.go",
+      "matchesPriorPGI2Bytes": true
+    },
+    {
+      "path": "SDPTool/governance/paths.go",
+      "matchesPriorPGI2Bytes": true
+    },
+    {
+      "path": "SDPTool/governance/run.go",
+      "matchesPriorPGI2Bytes": true
+    },
+    {
+      "path": "SDPTool/governance/schema.json",
+      "matchesPriorPGI2Bytes": true
+    },
+    {
+      "path": "SDPTool/governance/store.go",
+      "matchesPriorPGI2Bytes": true
+    },
+    {
+      "path": "SDPTool/governance/types.go",
+      "matchesPriorPGI2Bytes": true
+    },
+    {
+      "path": "SDPTool/governance/host.go",
+      "matchesPriorPGI2Bytes": true
+    },
+    {
+      "path": "SDPTool/governance/host_test.go",
+      "matchesPriorPGI2Bytes": true
+    },
+    {
+      "path": "SDPTool/governance/wire.go",
+      "matchesPriorPGI2Bytes": true
+    },
+    {
+      "path": "SDPTool/cmd/sdp-controller/main.go",
+      "matchesPriorPGI2Bytes": true
+    }
+  ],
+  "closeoutInventory": {
+    "heads": [
+      {
+        "root": "/home/warloc/git/SDP",
+        "head": "2cb49c02145621b099c47d05786716598e414e75"
+      },
+      {
+        "root": "/home/warloc/git/SDP-codex-issue-7-provisional-vnext-",
+        "head": "ea9fcf1cdd3198aeac515b89b55398282c463838"
+      },
+      {
+        "root": "/home/warloc/git/SDP-coordination",
+        "head": "684b1f8952f2f5ff2dc9fb32c7592340d8aff60f"
+      },
+      {
+        "root": "/home/warloc/git/SDP-project-governance",
+        "head": "02e8c9dc4fbac768d649fd70335d63fd8988752f"
+      },
+      {
+        "root": "/home/warloc/git/SDP-vNow",
+        "head": "48c919fda7cf18568df1397753fc10f0696bb6ca"
+      },
+      {
+        "root": "/tmp/sdp-21-source",
+        "head": "93517ad98cd188c0debeb1d0f3d36d123c6e4a3b"
+      },
+      {
+        "root": "/tmp/sdp-blueprint-implementation",
+        "head": "732e85cbb6250296b7d2c81813903c943bd17a25"
+      },
+      {
+        "root": "/tmp/sdp-rp3-candidate",
+        "head": "fede327d6f3af35fe7aad323e2c485a27134d20d"
+      },
+      {
+        "root": "/tmp/sdp-runnable-programs",
+        "head": "3475367490804504d6bfd4459a48ffc85a33ee91"
+      },
+      {
+        "root": "/tmp/sdp-session3-release-source",
+        "head": "d304261c90066a86b2d8ffcaa2115517ea339b05"
+      }
+    ],
+    "maxima": {
+      "EVT-KB-SDP-": 336,
+      "EVT-PM-SDP-": 177
+    }
+  },
+  "newEvents": [
+    "EVT-PM-SDP-000178",
+    "EVT-KB-SDP-000337"
+  ]
+}

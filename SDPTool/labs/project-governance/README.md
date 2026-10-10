@@ -130,3 +130,22 @@ The general future action catalogue and JSON invoke adapter belong to KB-SDP-051
 This lab exercises today's commands and does not require that proposal or an XFMD
 change. A long-running owner conversation still needs streaming events and control;
 a one-request JSON adapter alone is not that interaction surface.
+
+## Assignment preparation trial — PGL2-C1
+
+Build the development controller from SDPTool, then use a fresh destination and a
+pre-PGL2 SDPTool executable to exercise compatibility refusal:
+
+```sh
+python3 preparation_trial.py create --destination /absolute/new-trial --controller /absolute/new-sdp-controller --sdptool /absolute/pre-PGL2-sdptool
+python3 preparation_trial.py inspect --destination /absolute/new-trial
+```
+
+The script refuses an existing destination. It creates synthetic canonical coverage
+and file artifacts, binds a separate store, prepares disjoint SAD/Master assignments,
+repeats requests through fresh subprocesses, refuses overlapping scope, then changes
+TARGET and verifies Master inspection becomes stale. Finally it checks that the old
+binary refuses the upgraded store without changing HEAD. Actual requests/results
+are in evidence.json; no model task is submitted and no design acceptance is inferred.
+The source artifacts are fixtures, not ModelGovernance or Blueprint API evidence.
+Existing owner-lab project/runtime and candidate remain untouched.

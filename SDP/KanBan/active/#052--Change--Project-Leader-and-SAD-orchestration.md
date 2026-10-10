@@ -9,7 +9,7 @@
 | created | 2026-10-09T12:08:50.581137+00:00 |
 | source | Owner Session0011 T004 role definition and T005 KanBan handoff request |
 | Systems | SDPTOOL |
-| next_review | PGL1 delivery and PGL2 assignment design |
+| next_review | PGL2-C2 disposition, provider and assignment revision gates |
 | PlanId | PLAN-SDP-0018 |
 | tags | project-leader, steering, SAD, master, MCP, app-server, coordination |
 
@@ -92,3 +92,9 @@ verified on existing owner lab state without mutation. See [evidence](../../05--
 PGL2 assignment preparation/revision guards are next. The card stays in-progress:
 Project Leader dialogue, multi-assignment execution, durable inbox, SAD integration,
 phase continuation, full dashboard and online Steering evidence remain outstanding.
+
+2026-10-10 / T015: Owner continues. PGL2-C1 delivers immutable SAD/Master preparation,
+exact source/generation checks, local scope refusal, retry recovery and stale
+inspection. [Evidence](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL2-C1.md)
+is CLI/service-level with fixture artifacts. PGL2 remains in-progress for actual
+disposition/provider/revision/retirement gates; PGL3–5 and owner acceptance remain.

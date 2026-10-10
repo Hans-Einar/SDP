@@ -1,0 +1,24 @@
+{
+  "base": "02e8c9dc4fbac768d649fd70335d63fd8988752f",
+  "observedAt": "2026-10-10T08:04:24.822523+00:00",
+  "go": "go version go1.27.1 linux/amd64",
+  "files": {
+    "SDPTool/governance/preparation.go": "81d913f77ef54461d70d2b1ef75eff51349b41d1453f4034109b0b73c69ebf4b",
+    "SDPTool/governance/preparation_test.go": "186561f088c90970f24cef7b7108c96401829e9f77e910c42f0dabbfc679f4cf",
+    "SDPTool/governance/preparation.schema.json": "0ff8b3d160ac73f7fb96809ff4e443bb8ec3c3897f53550f0cdc0408d98782ca",
+    "SDPTool/governance/context.go": "6db191d0756b31dbc9dc36969f85a78f9bcbe637e75ca19f6bae0de27df7d86b",
+    "SDPTool/governance/store.go": "42a575f5fb336db2f1471f15eb2c8c635713e90219fa3a1772418e622417df63",
+    "SDPTool/governance/run.go": "b8b2db2fd951713de91160eb8d9b93a1f503e248f0f5cea55a3aa576b931da85",
+    "SDPTool/cmd/sdp-controller/main.go": "f57880082671c336d2835d89fcc50aaf7f0617df10cbcc8bed1b5cfc6b31b4c7",
+    "SDPTool/cmd/sdp-controller/assignment.go": "3d27fb3acd1694f63cf9801a6aa774535f3ec83de998267f7bbcd5c4af090546",
+    "SDPTool/cmd/sdp-controller/assignment_test.go": "cc6bf279218fc7802a5f73213c5351d879d718fb824e2ef5e18a6738e4587401",
+    "SDPTool/labs/project-governance/preparation_trial.py": "ad392fb70bde90fca54665f1fcd5f112c0bfadd574d66ee243855bb256e3950f"
+  },
+  "binarySHA256": "512ff7161afb10d1c38295b29d1be876a7b92dcec808e57d428a563d475a2b26",
+  "trialEvidenceSHA256": "4a334373fb2d9ea44a9e76825f6817055b0980849faee80e688825199cdd0b2b",
+  "trialRoot": "/home/warloc/git/pg_lab/previews/pgl2-c1",
+  "scope": "PGL2-C1 preparation only; no host dispatch or design acceptance",
+  "fileSetDigest": "8c5c7ccea1f7c99c6aa9fff6d8bf9109efda2bd4eb8e25435e7773d59991a47e",
+  "originalLabPreservedEntries": 176,
+  "originalLabInventoryDigest": "8bb8db159f4450d9607907ca9fb03d93d4a068ec5c0c32ec55fa6b91d13c48e3"
+}

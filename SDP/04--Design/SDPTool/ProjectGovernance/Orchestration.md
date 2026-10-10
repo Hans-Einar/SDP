@@ -100,3 +100,65 @@ revision gates, persisted identity, explicit capabilities and an executable
 prepare/inspect/refuse path. Then dispatch/inbox/continuation and direct conversation
 follow, with the six handoff scenarios retained in the plan. Online Steering needs
 separate selected-host evidence and cannot be proved by local skill files.
+
+## PGL2-C1 preparation contract — 2026-10-10
+
+Owner T015 continues KB052. Select one runnable preparation increment before adding
+launch authority: trusted local controller prepares a SAD or Master assignment,
+inspects its pinned inputs, and refuses stale inputs or overlapping local scope.
+Prepared assignments are not runs, attempts or host threads. They share the existing
+checkout store, lock and atomic generation publisher; no second management ledger
+or model/blueprint database is created.
+
+SAD requires an active DesignPlan or ArchitecturePlan; Master requires an active
+ImplementationPlan. Reuse canonical card/plan/Session/authority source checks and
+management lineage. Keep the older Maintenance route unchanged. The API pins the
+complete coverage revision and references a controller-selected authority source;
+it does not interpret natural-language authorization or prove an owner disposition.
+Worker capabilities cannot prepare assignments. A caller-supplied role is only the
+assignment label; the trusted adapter determines the caller capability.
+
+A SAD package pins NOW. A Master package pins NOW, TARGET, task, blueprint and a
+design-disposition record. Each is an existing regular project file with SHA-256,
+read through the core's confined/symlink-refusing file reader. These are exact file
+references, not new ModelGovernance identities or an assertion that those services
+validated or approved them. Provider-aware revision resolution and authenticated
+owner design disposition remain PGL2-C2 prerequisites; inspection explicitly says
+`dispatch: unavailable` and `designAcceptance: not-assessed`. A payload saying
+approved cannot grant launch. The prepared package also retains bounded outcome,
+writable/excluded paths and return criteria.
+
+Prepare requires explicit checkout binding, expected current generation, a fresh
+operation UUID and matching coverage/file digests. Under the existing store lock,
+reject parent/child/equal writable-path overlaps with any prepared assignment or
+nonterminal legacy run in this checkout. Paths are literal, not globs; excluded
+subpaths do not subtract from this conservative overlap check. No global worktree
+reservation is claimed. Other checkout preflight/claims remain external prerequisites.
+Validate sources again before publishing; files are not locked against outside
+writers, so inspection and future dispatch must always recheck them.
+
+Persist immutable prepared identity/revision 1 plus the idempotency receipt in the
+same generation. Same operation/content retry returns the original prepared record,
+including after an uncertain committed save; conflicting content refuses. It does
+not return a fresh eligibility claim. Recheck through inspect. The operation-ID
+namespace is shared with legacy receipts; collisions refuse in both directions.
+Inspect lists assignments in stable ID order and reports changed/missing sources.
+No TTL expires a scope claim. Retirement/revision/continuation belongs to PGL2-C2;
+this first increment never releases scope merely because a source is stale.
+
+The first preparation explicitly upgrades that store to operational profile
+`sdp-project-governance-state/0.2`. New readers retain 0.1 support. Old binaries must
+refuse the new generation rather than drop prepared records; use a separate PGL2
+trial store and never upgrade the owner's original C6 lab implicitly. Application
+Maintenance wire profile and worker MCP stay unchanged. No stable distribution or
+online host is installed. Role skill adoption from PLR1 is deliberately sequenced
+with the integrator-owned distribution boundary before role launch, not copied over
+release manifests during this preparation slice.
+
+Commands: `sdp-controller assignment context|prepare|inspect --project ROOT --state
+DIR`, JSON input via `--input FILE` for context/prepare, optional `--assignment UUID`
+for inspect. Context reports canonical coverage plus the operational generation;
+prepare persists only after the checks above. All responses identify their narrow
+preparation boundary. No model/account access occurs. A reproducible separate
+local trial must show SAD and Master preparation, retry after restart, conflicting
+scope refusal and a changed TARGET producing stale inspection.

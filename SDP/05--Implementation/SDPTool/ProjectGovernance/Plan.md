@@ -301,7 +301,7 @@ sequenced with those workstreams rather than copied into a second engine.
 | Milestone | Runnable outcome | Required evidence / handoff scenarios | State |
 | --- | --- | --- | --- |
 | PGL1 | Readable/JSON overview of all registered work from existing operational state; lab inspection without launching work | Scenario 5 subset; empty store, multiple runs, stale records, historical host/skill/tool facts, no writes | delivered; [bounded evidence](Evidence-PGL1.md) |
-| PGL2 | Prepare and inspect distinct SAD/implementation assignments; stale design or conflicting scope refuses dispatch eligibility | Scenario 2 guards; current authority, exact bundle revisions, explicit cross-worktree claim boundary, retry/CAS tests | planned |
+| PGL2 | Prepare and inspect distinct SAD/implementation assignments; stale design or conflicting scope refuses dispatch eligibility | Scenario 2 guards; current authority, exact bundle revisions, explicit cross-worktree claim boundary, retry/CAS tests | in-progress; [C1 preparation delivered](Evidence-PGL2-C1.md), C2 authority/provider integration pending |
 | PGL3 | Responsive Project Leader plus two bounded Masters through the trusted controller; durable report inbox and same-Session phase continuation | Scenarios 1, 3, 4; real host execution, no duplicate launch after uncertain reply, delayed report versus new steering | planned |
 | PGL4 | Direct SAD/Master conversation and project panel; revision-bound ModelGovernance/Blueprint handoff | Scenarios 2, 5; real TARGET change stales dependent implementation; roles/tools/children/freshness evidence; owner development trial | planned |
 | PGL5 | Integrated recovery/evidence review and revision-bound remote Steering package | All six scenarios; independent review and selected online-host evidence; PGI4/5 obligations retained | planned |
@@ -321,3 +321,19 @@ Actual owner-trial state is preserved; controller/MCP and final core/command che
 pass at the stated levels. Next: PGL2 assignment preparation, current authority and
 revision gates. Native role-skill adoption and shared integration remain explicit
 prerequisites to the affected later changes. No full KB052 acceptance is claimed.
+
+## PGL2 selection — Session0007 T015
+
+Owner continues KB052. PGL2-C1 selects the runnable preparation/inspection/refusal
+contract in Orchestration.md; PGL2 remains in progress until C2 supplies disposition,
+provider-aware revision, revision/retirement and dispatch-boundary integration.
+Existing Maintenance behavior and worker MCP privileges are preserved. Scoped
+preflight reads the new coordination overview at 684b1f8; shared integration is
+separate and its proposed worker allocation is not assumed delivered. Skill
+adoption is sequenced with the shared distribution baseline before role launch.
+C1 writes only the PG core, standalone controller and owning PG records; it uses a
+new trial state and preserves the owner's C6 lab. No agents are launched.
+
+2026-10-10: PGL2-C1 delivers the bounded preparation CLI/core and separate fixture
+preview. [Evidence](Evidence-PGL2-C1.md) and [handoff](Handoff-PGL2-C1.md) retain
+C2/provider/disposition/revision/retirement gates. No general scheduler is delivered.

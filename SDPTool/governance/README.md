@@ -239,3 +239,30 @@ state. The standalone controller exposes readable and JSON output; see
 and [wire schema](overview.schema.json). This is the first KB052 inspection slice,
 not a new assignment registry or multi-agent scheduler. Operational state and
 canonical Session/plan/card authority keep their existing owners.
+
+## SAD and implementation preparation — PGL2-C1
+
+The trusted controller can prepare an immutable assignment independently of an
+execution run. `PreparationContext` reuses canonical coverage for SAD
+DesignPlan/ArchitecturePlan and Master ImplementationPlan; legacy `Context` and
+Maintenance routing retain their plan restrictions. `PrepareAssignment` requires
+binding, exact generation/source digests, literal bounded paths and return criteria.
+SAD pins NOW; Master pins NOW/TARGET/task/blueprint/design-disposition files. These
+references are not provider validation or a decision made by the owner.
+
+Prepared work shares the same atomic generation store and operation-ID namespace.
+Overlapping local writable scopes are refused in both directions with nonterminal
+legacy runs. Nonliteral legacy scopes require reconciliation when preparing new
+work. No automatic expiry, cross-checkout reservation or external-shell exclusion
+is claimed. Repeated operation/content returns the immutable original receipt;
+`InspectAssignments` rechecks current inputs and reports stale records separately.
+Changing the source never silently updates a pin or grants continuation.
+
+First preparation upgrades only the selected store to operational
+`sdp-project-governance-state/0.2`. This version can still read 0.1; old binaries
+refuse the new generation. Use a separate preview store with consistent binary
+versions. Existing owner-lab state is not upgraded by inspection.
+[Application schema](preparation.schema.json) describes the preparation wire;
+Maintenance/MCP wire stays unchanged. All prepared results explicitly report
+`dispatch: unavailable` and `designAcceptance: not-assessed`. C2 owns authenticated
+disposition, provider-aware revisions and retirement/revision; PGL3 owns execution.

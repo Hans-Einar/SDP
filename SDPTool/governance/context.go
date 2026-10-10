@@ -87,6 +87,10 @@ func metadata(b []byte) (map[string]string, error) {
 	return m, nil
 }
 func (s *Service) Context(sel Selection) (Context, error) {
+	return s.contextFor(sel, []string{"MaintenancePlan"}, "MAINT-")
+}
+
+func (s *Service) contextFor(sel Selection, planTypes []string, idPrefix string) (Context, error) {
 	c := Context{Schema: Schema, Operation: "context", Root: s.root, ProjectRef: s.project, Selection: sel, Sources: []Source{}, Conditions: []string{}, Coverage: "known"}
 	state, _, e := s.load()
 	if e != nil {
@@ -164,8 +168,8 @@ func (s *Service) Context(sel Selection) (Context, error) {
 	if !strings.HasPrefix(c.CardID, "KB-") {
 		add("card identity missing")
 	}
-	if !strings.HasPrefix(c.PlanID, "MAINT-") {
-		add("pilot requires a Maintenance plan identity")
+	if !strings.HasPrefix(c.PlanID, idPrefix) {
+		add("required plan identity prefix: " + idPrefix)
 	}
 	if !strings.HasPrefix(c.SessionID, "SESSION-") {
 		add("Session identity missing")
@@ -179,8 +183,14 @@ func (s *Service) Context(sel Selection) (Context, error) {
 	if card["PlanId"] != c.PlanID {
 		add("card and plan identities disagree")
 	}
-	if plan["PlanType"] != "MaintenancePlan" || plan["state"] != "active" {
-		add("active MaintenancePlan required")
+	matchedPlan := false
+	for _, typ := range planTypes {
+		if plan["PlanType"] == typ {
+			matchedPlan = true
+		}
+	}
+	if !matchedPlan || plan["state"] != "active" {
+		add("active " + strings.Join(planTypes, " or ") + " required")
 	}
 	if session["Status"] != "active" {
 		add("active Session required")

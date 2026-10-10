@@ -213,6 +213,13 @@ reviews:
       low: 0
       note: 4
 verification:
+  SDPTOOL-VER-PGL2-C1:
+    status: passed-preparation-subset
+    path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL2-C1.md
+    managementId: PLAN-SDP-0018
+    card: KB-SDP-052
+    design: SDPTOOL-DES-0001
+    note: Durable preparation/retry/scope/source checks verified with real CLI fixture commands; provider resolution, design disposition and actual dispatch remain pending.
   SDPTOOL-VER-PGL1:
     status: passed-bounded-read-only-inspection
     path: 05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL1.md
