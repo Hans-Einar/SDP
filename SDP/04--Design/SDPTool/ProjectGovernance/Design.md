@@ -13,6 +13,13 @@ Current implementation details and limits are in the
 The application wire schema is local to the PGI pilot; it is not a published Toolkit profile.
 PGD1's original evidence remains historical design/schema-inspection evidence.
 
+## Current owner-facing role refinement
+
+Owner Session0007 T014 selects [KB052 orchestration](Orchestration.md).
+Project Leader replaces the earlier combined Steering/PM label for normal owner
+dialogue; Steering remains strategic. The original single-Maintenance journey below
+is retained as a foundation, not the complete new operating model.
+
 ## 1. Outcome and first user journey
 
 The owner opens an explicitly selected project and its existing Session, submits
@@ -27,7 +34,7 @@ The sixteen-family [catalog](../../../02--Requirements/RoutineGovernance/Routine
 remains a coverage map; this pilot does not claim to implement all families.
 
 1. Select a physical project/checkout and recover current records and Session.
-2. Submit a request to the project-facing Steering/PM conversation. Record the
+2. Submit a request to the project-facing Project Leader conversation. Record the
    actual owner input and a pending routing result; an agent proposes its category
    and basis. Context reads are allowed while selection remains unresolved.
 3. Resolve existing card, plan, milestone and authorization. The core checks the

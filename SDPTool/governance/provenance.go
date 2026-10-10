@@ -119,6 +119,12 @@ func (s *Service) Provenance(runID string) (ProvenanceView, error) {
 	if !ok {
 		return out, fail("missing_coverage", "run not found")
 	}
+	return runProvenance(r)
+}
+
+// Project one already loaded run, keeping multi-run views on one generation.
+func runProvenance(r Run) (ProvenanceView, error) {
+	out := ProvenanceView{Schema: Schema, Operation: "provenance", RunID: r.ID, Status: "unavailable"}
 	for i := len(r.Inputs) - 1; i >= 0; i-- {
 		v := r.Inputs[i]
 		if v.Kind != "launch" {
@@ -151,7 +157,7 @@ func (s *Service) Provenance(runID string) (ProvenanceView, error) {
 			continue
 		}
 		var p ContextProvenance
-		if err = Decode([]byte(o.Text), &p); err != nil || !p.Valid() {
+		if err := Decode([]byte(o.Text), &p); err != nil || !p.Valid() {
 			return out, fail("conflict", "invalid stored provenance")
 		}
 		out.Context = &p

@@ -46,7 +46,7 @@ assignment or override its governing instructions. Scope-change records the new
 input, changes the routine to replan-required and asks the host to interrupt.
 An interrupt request is not proof that external effects have stopped. Observe the
 host's outcome and reconcile committed effects before replanning. Natural-language
-scope classification and the broader Steering/PM conversation remain future work.
+scope classification and the broader Project Leader conversation remain future work.
 
 Output is newline-delimited JSON: bounded run summaries, completed visible messages
 and explicit errors. Input EOF becomes observation-only; output closure cannot kill
@@ -286,3 +286,27 @@ text_elements field is normalized; nonempty values are not dropped. Steering rem
 text-only. No native delegation, role authority or independent review is added.
 
 For release-independent owner use, see the [PG lab](../labs/project-governance/README.md).
+
+## Registered project work overview — PGL1
+
+```sh
+sdp-controller overview --project /absolute/project --state /private/state
+sdp-controller overview --project /absolute/project --state /private/state --json
+```
+
+This read-only command starts no host and requires no run ID. It lists the runs
+registered in the selected checkout store, including selected Session/step/card/plan,
+task, coverage, routine state and last observed execution. It does not discover
+other stores, unregistered tasks, all project cards or an active Project Leader.
+Readable output is the default; JSON emits one
+[`sdp-governance-overview/1` object](../governance/overview.schema.json).
+
+The generation identifies one operational snapshot. Source coverage is checked
+per run during inspection; it is not an atomic snapshot of project files. No state
+is created for an unbound checkout. Invalid persisted state fails inspection.
+Observed role, tool completions and explicit skill acceptance are historical facts;
+current liveness, mapped children, compliance and owner acceptance are not observed.
+Tool counts cover only retained events of the latest attempt and include failed or
+declined completions; the last item's status is shown. No transcript or owner-input
+content is included. Terminal output quotes text to neutralize control characters.
+Multi-assignment launch, SAD and Project Leader turns remain later KB052 increments.

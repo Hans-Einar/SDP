@@ -229,3 +229,13 @@ unavailable. Legacy text-only observations remain readable. Provenance exposes a
 bounded invocation projection and distinguishes acknowledgment from observed host
 messages; compliance remains unobserved. These additive preview fields do not imply
 backward writer compatibility or a new published distribution.
+
+## Registered work projection
+
+`Service.Overview` reads one persisted generation and projects registered runs in
+stable ID order. It reuses context/coverage and provenance checks and creates no
+state. The standalone controller exposes readable and JSON output; see
+[overview usage](../governancecontroller/README.md#registered-project-work-overview--pgl1)
+and [wire schema](overview.schema.json). This is the first KB052 inspection slice,
+not a new assignment registry or multi-agent scheduler. Operational state and
+canonical Session/plan/card authority keep their existing owners.

@@ -1,0 +1,221 @@
+{
+  "worktrees": [
+    {
+      "root": "/home/warloc/git/SDP",
+      "head": "2cb49c02145621b099c47d05786716598e414e75",
+      "scoped_changes": [],
+      "scoped_status": []
+    },
+    {
+      "root": "/home/warloc/git/SDP-codex-issue-7-provisional-vnext-",
+      "head": "ea9fcf1cdd3198aeac515b89b55398282c463838",
+      "scoped_changes": [],
+      "scoped_status": []
+    },
+    {
+      "root": "/home/warloc/git/SDP-project-governance",
+      "head": "0b0e82cc0f90a4b774c0e7b964fb08b8cbd29e9e",
+      "scoped_changes": [],
+      "scoped_status": []
+    },
+    {
+      "root": "/home/warloc/git/SDP-vNow",
+      "head": "e38298c9b0de1518d676070bbf30cc430ad8e0fc",
+      "scoped_changes": [],
+      "scoped_status": [
+        "?? SDPTool/cmd/sdp-controller/",
+        "?? SDPTool/governance/"
+      ]
+    },
+    {
+      "root": "/tmp/sdp-21-source",
+      "head": "93517ad98cd188c0debeb1d0f3d36d123c6e4a3b",
+      "scoped_changes": [],
+      "scoped_status": []
+    },
+    {
+      "root": "/tmp/sdp-blueprint-implementation",
+      "head": "edfac185bb11b06ae9c6dd39a1809d166ad9541f",
+      "scoped_changes": [],
+      "scoped_status": []
+    },
+    {
+      "root": "/tmp/sdp-rp3-candidate",
+      "head": "fede327d6f3af35fe7aad323e2c485a27134d20d",
+      "scoped_changes": [],
+      "scoped_status": []
+    },
+    {
+      "root": "/tmp/sdp-runnable-programs",
+      "head": "ef8741c433c7fde67e689f94a74e7afdf938f24f",
+      "scoped_changes": [],
+      "scoped_status": []
+    },
+    {
+      "root": "/tmp/sdp-session3-release-source",
+      "head": "d304261c90066a86b2d8ffcaa2115517ea339b05",
+      "scoped_changes": [],
+      "scoped_status": []
+    }
+  ],
+  "maxima": {
+    "EVT-KB-SDP-": 330,
+    "EVT-PM-SDP-": 175,
+    "PLAN-SDP-": 23
+  },
+  "sharedUntrackedProvenance": [
+    {
+      "path": "SDPTool/governance/README.md",
+      "sha256": "f50b7ac804d07b4dbb0e317f1f6ff6f140bb703eca8e9f3fd1eb77464354f3a8",
+      "matches": [
+        "12542b2"
+      ]
+    },
+    {
+      "path": "SDPTool/governance/check_schema.py",
+      "sha256": "95cfc47bc7e6ddf7e16261d832e155b89213bebb0383f9484032c1643b756044",
+      "matches": [
+        "12542b2"
+      ]
+    },
+    {
+      "path": "SDPTool/governance/context.go",
+      "sha256": "c38dd93adeb081bb66a09b5b0349166959c0b3b04fdae7b3b900e3d8982386ec",
+      "matches": [
+        "d3e457b",
+        "12542b2",
+        "0b0e82c"
+      ]
+    },
+    {
+      "path": "SDPTool/governance/core_test.go",
+      "sha256": "95214d4645b3d7013c40a64be26ab9cbd3cf5ff4b5be0f3a3056165cc23e0b9e",
+      "matches": [
+        "d3e457b",
+        "12542b2",
+        "0b0e82c"
+      ]
+    },
+    {
+      "path": "SDPTool/governance/coverage.go",
+      "sha256": "0740d7d7e143a375badde56d6025121d0694d3efc33537a56d3fa50086873fda",
+      "matches": [
+        "d3e457b",
+        "12542b2",
+        "0b0e82c"
+      ]
+    },
+    {
+      "path": "SDPTool/governance/input.go",
+      "sha256": "7619b16531b7413c556fc23adb0938fb8c95d6a2aec7b15a1cbaefefa1fcf13c",
+      "matches": [
+        "d3e457b",
+        "12542b2",
+        "0b0e82c"
+      ]
+    },
+    {
+      "path": "SDPTool/governance/lock_linux.go",
+      "sha256": "4d8f10fff319d43c9799991f4b6441a04c79d574bc023c776c9b554acade500d",
+      "matches": [
+        "d3e457b",
+        "12542b2",
+        "0b0e82c"
+      ]
+    },
+    {
+      "path": "SDPTool/governance/lock_other.go",
+      "sha256": "59c5feafc9b8c6378c8dd510a3ebeb5b9b232b01349b44b13acfb1d9e6b9a503",
+      "matches": [
+        "d3e457b",
+        "12542b2",
+        "0b0e82c"
+      ]
+    },
+    {
+      "path": "SDPTool/governance/paths.go",
+      "sha256": "b61641dff128a4fc89a3a91fa969770a1e3cddc82bc0adff13eaf0f1a27ffd63",
+      "matches": [
+        "d3e457b",
+        "12542b2",
+        "0b0e82c"
+      ]
+    },
+    {
+      "path": "SDPTool/governance/run.go",
+      "sha256": "180b2b74cc5531e35cdcfedf7b95a452374c5b735e002a393de6cc1724a3de5c",
+      "matches": [
+        "12542b2"
+      ]
+    },
+    {
+      "path": "SDPTool/governance/schema.json",
+      "sha256": "a8dd8fdb60ac283104bf8bd348371574c09cce245a328b7cb13f7c4660f75ad7",
+      "matches": [
+        "12542b2"
+      ]
+    },
+    {
+      "path": "SDPTool/governance/store.go",
+      "sha256": "4a05d5b09267b03b68551ccf790c61193cd67a912fff379d94f8ec76f6f03934",
+      "matches": [
+        "d3e457b",
+        "12542b2",
+        "0b0e82c"
+      ]
+    },
+    {
+      "path": "SDPTool/governance/types.go",
+      "sha256": "3af9ffe8ddf4f89eb91141e22f0dfaaf43943cb8e0f8538949e2db2271f151ef",
+      "matches": [
+        "12542b2"
+      ]
+    },
+    {
+      "path": "SDPTool/governance/host.go",
+      "sha256": "51dc16232f929cd08799d24c6c8b2166433efa55ddfd4c9036897490dc9fe49e",
+      "matches": [
+        "12542b2"
+      ]
+    },
+    {
+      "path": "SDPTool/governance/host_test.go",
+      "sha256": "aae0fe6b8bb614a023ed5c0fa928b75b9c7d4ad58f1852628d522816ae02dd53",
+      "matches": [
+        "12542b2"
+      ]
+    },
+    {
+      "path": "SDPTool/governance/wire.go",
+      "sha256": "8aae6e0cb810d414b4d7eac05f2fad507cb99f27e05190c46a43b37ca1ff1dab",
+      "matches": [
+        "12542b2",
+        "0b0e82c"
+      ]
+    },
+    {
+      "path": "SDPTool/cmd/sdp-controller/main.go",
+      "sha256": "3d60aada23bb968904adf8ff1dff11a8731f7112d2c50c9ae8320e0d89b1a797",
+      "matches": [
+        "12542b2"
+      ]
+    }
+  ],
+  "observedAt": "2026-10-10T01:38:45.897073+00:00",
+  "sourceHandoff": "edfac185bb11b06ae9c6dd39a1809d166ad9541f",
+  "scope": "governance read-only overview and sdp-controller overview; owning PG records only",
+  "verdict": "green for bounded PG overview; shared integration remains unresolved",
+  "limitations": [
+    "Known local worktrees only; remote and live-agent state unknown.",
+    "Shared untracked PG files exactly match PGI2 or earlier committed own files; preserve them.",
+    "KB051 duplicate and private C1 event collisions remain deferred to explicitly scoped integration.",
+    "Import only original MAINT-SDP-0015 and KB052 event bytes; never reset KB038 from the stale branch copy."
+  ],
+  "closeoutRefresh": {
+    "observedAt": "2026-10-10T01:46:12.936894+00:00",
+    "blueprintHead": "a9edf2817e38ad6ee403c65f517ce134b3229e27",
+    "changes": "Actions contract/plan and coordination records only; no competing governance product changes. Its refreshed preflight explicitly recognizes PG ownership and this isolated PGL1 boundary.",
+    "draftEventCorrection": "Concurrent blueprint committed PM176 and KB333 while our closeout was being drafted. Before first commit, moved our own draft IDs to PM177 and KB335/336, including traceability links. No imported or committed event bytes changed.",
+    "sharedIntegration": "Still deferred; source Session0011 has a pending owner integration-coordination question. No disposition inferred."
+  }
+}

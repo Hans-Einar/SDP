@@ -1,0 +1,214 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Read-only registered governance work overview",
+  "type": "object",
+  "properties": {
+    "projectRef": {
+      "type": "string"
+    },
+    "root": {
+      "type": "string"
+    },
+    "checkoutId": {
+      "type": "string"
+    },
+    "generation": {
+      "type": "string"
+    },
+    "inspectedAt": {
+      "type": "string"
+    },
+    "schema": {
+      "const": "sdp-governance-overview/1"
+    },
+    "scope": {
+      "const": "registered-runs-in-selected-checkout"
+    },
+    "runs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/work"
+      }
+    }
+  },
+  "required": [
+    "projectRef",
+    "root",
+    "checkoutId",
+    "generation",
+    "inspectedAt",
+    "schema",
+    "scope",
+    "runs"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "work": {
+      "type": "object",
+      "properties": {
+        "runId": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "inputRevision": {
+          "type": "string"
+        },
+        "routineState": {
+          "type": "string"
+        },
+        "routineStep": {
+          "type": "string"
+        },
+        "assignedRole": {
+          "type": "string"
+        },
+        "attemptId": {
+          "type": "string"
+        },
+        "threadId": {
+          "type": "string"
+        },
+        "turnId": {
+          "type": "string"
+        },
+        "lastHostStatus": {
+          "type": "string"
+        },
+        "lastObservedAt": {
+          "type": "string"
+        },
+        "lastToolItemId": {
+          "type": "string"
+        },
+        "lastToolStatus": {
+          "type": "string"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "toolCompletions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "requestedSkills": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "selection": {
+          "$ref": "#/$defs/selection"
+        },
+        "coverage": {
+          "enum": [
+            "known",
+            "stale",
+            "unavailable"
+          ]
+        },
+        "roleEvidence": {
+          "enum": [
+            "observed",
+            "historical-epoch",
+            "unavailable"
+          ]
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "observationGap": {
+          "type": "boolean"
+        },
+        "liveState": {
+          "const": "unknown"
+        },
+        "childMapping": {
+          "const": "not-observed"
+        },
+        "skillAcceptance": {
+          "enum": [
+            "not-observed",
+            "unconfirmed",
+            "response-acknowledged",
+            "host-message-observed"
+          ]
+        },
+        "skillCompliance": {
+          "const": "not-observed"
+        },
+        "ownerAcceptance": {
+          "const": "not-observed"
+        },
+        "skillAttemptId": {
+          "type": "string"
+        },
+        "skillInputId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "runId",
+        "outcome",
+        "inputRevision",
+        "routineState",
+        "routineStep",
+        "assignedRole",
+        "attemptId",
+        "threadId",
+        "turnId",
+        "lastHostStatus",
+        "lastObservedAt",
+        "lastToolItemId",
+        "lastToolStatus",
+        "revision",
+        "toolCompletions",
+        "requestedSkills",
+        "selection",
+        "coverage",
+        "roleEvidence",
+        "conditions",
+        "observationGap",
+        "liveState",
+        "childMapping",
+        "skillAcceptance",
+        "skillCompliance",
+        "ownerAcceptance",
+        "skillAttemptId",
+        "skillInputId"
+      ],
+      "additionalProperties": false
+    },
+    "selection": {
+      "type": "object",
+      "properties": {
+        "card": {
+          "type": "string"
+        },
+        "plan": {
+          "type": "string"
+        },
+        "session": {
+          "type": "string"
+        },
+        "authority": {
+          "type": "string"
+        },
+        "step": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "card",
+        "plan",
+        "session",
+        "authority",
+        "step"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

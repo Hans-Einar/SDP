@@ -4,6 +4,7 @@
 
 | ID | Type | Status | Document |
 | --- | --- | --- | --- |
+| KB-SDP-052 | Change | active | [Project Leader and SAD orchestration](active/%23052--Change--Project-Leader-and-SAD-orchestration.md) |
 | KB-SDP-050 | Proposal | backlog | [Semantic blueprints](backlog/%23050--Proposal--Semantic-blueprints.md) |
 | KB-SDP-049 | Change | completed | [ModelGovernance](completed/%23049--Change--Model-governance.md) |
 | KB-SDP-048 | Proposal | superseded | [Versioned design reviews and blueprint differences](superseded/%23048--Proposal--Versioned-design-reviews-and-blueprint-diffs.md) |

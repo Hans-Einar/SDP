@@ -1,4 +1,4 @@
-# PGI — One governed Maintenance workflow
+# PGI / PGL — Governed work and project leadership
 
 | Field | Value |
 | --- | --- |
@@ -9,7 +9,7 @@
 | BranchPolicy | current |
 | CommitPolicy | milestone |
 | Systems | SDPTOOL |
-| source | PLAN-SDP-0017; KB-SDP-038 with KB036/037/042 contributions |
+| source | PLAN-SDP-0017; KB-SDP-038 and KB-SDP-052 with KB036/037/042 contributions |
 
 ## Outcome and authority
 
@@ -56,7 +56,7 @@ do not turn a self-check into an independent review by changing its label.
 | PGI1-M1 Core and inspection | Selected project + status request yields context/route without creating work; authorized fixture Maintenance creates a pinned durable run visible through a small CLI read/transition path | PG-A01/02/03/08/10/18; exact JSON schemas; core restart and stale-input tests | delivered; bounded core/CLI verified |
 | PGI2-M1 Adapters and protocol | Thin local MCP adapter and controller protocol adapter use the core; inspect compatible schemas, negotiate the selected SDK/host, capture bounded recorded events and reconcile mapped attempts | PG-A10/11/12/15/18; actual protocol negotiation and failure outputs; no simulated-as-live claims | delivered; bounded adapters and real idle protocol probe verified |
 | PGI3-M1 Owner workflow | Minimal terminal client recovers Session, submits/steers work, presents route/status and launches the authorized fresh Master with bounded context; applicable child/review mapping is observed | PG-A02/04/05/11/12/13/15; managed account mode and one useful bounded task | in-progress; C6 explicit skill input/correlation verified; native child/review mapping remains unverified |
-| PGI3-U1 Owner development trial | Owner can inspect current work and exercise the candidate before further feature expansion | Identified local engine, runnable trial, actual owner feedback and expectation/design reconciliation | prepared; owner trial and feedback pending |
+| PGI3-U1 Owner development trial | Owner can inspect current work and exercise the candidate before further feature expansion | Identified local engine, runnable trial, actual owner feedback and expectation/design reconciliation | owner reports trial performed; detailed acceptance unrecorded; KB052 now selected |
 | PGI4-M1 Evidence and reconciliation | Candidate-bound evidence, review/rework and checked publication produce one durable Session outcome and correct card/plan disposition | PG-A06/07/09/13/16/17; crash and concurrent-change fixtures | planned |
 | PGI5-M1 Integrated verification | The same isolated task survives observer close, interruption/recovery and scope correction with unrelated work preserved | All PG-A01–18 at their stated level; independent review and exact-candidate evidence | planned |
 
@@ -285,3 +285,39 @@ Backlog review retains KB036/037/042/043 and separate blueprint/ModelGovernance/
 scope. No release, shared installation replacement, push or merge is selected.
 
 2026-10-09T10:02:29.063036+00:00: EVT-PM-SDP-000173 — Owner prioritizes local PG overview/interaction trial and feedback before feature expansion; dedicated lab prepared with pinned C6 engine. Owner experience remains pending.
+
+## KB052 reconciliation — Session0007 T014, 2026-10-10
+
+Owner explicitly prioritizes KB052 after trying the PG lab. Extend this active plan
+with the [orchestration design](../../../04--Design/SDPTool/ProjectGovernance/Orchestration.md).
+Preserve delivered PGI history and unfulfilled PGI3/4/5 gates; KB052 does not imply
+acceptance, native delegation evidence or publication. PGL is now the primary route.
+The previous demand for owner trial before feature expansion is satisfied by the
+reported use and superseded by this explicit scope selection; no new permission is
+required to begin bounded work. Role-skill changes in upstream PLR1 are guidance
+inputs, not yet installed into this candidate. Model/blueprint integration remains
+sequenced with those workstreams rather than copied into a second engine.
+
+| Milestone | Runnable outcome | Required evidence / handoff scenarios | State |
+| --- | --- | --- | --- |
+| PGL1 | Readable/JSON overview of all registered work from existing operational state; lab inspection without launching work | Scenario 5 subset; empty store, multiple runs, stale records, historical host/skill/tool facts, no writes | delivered; [bounded evidence](Evidence-PGL1.md) |
+| PGL2 | Prepare and inspect distinct SAD/implementation assignments; stale design or conflicting scope refuses dispatch eligibility | Scenario 2 guards; current authority, exact bundle revisions, explicit cross-worktree claim boundary, retry/CAS tests | planned |
+| PGL3 | Responsive Project Leader plus two bounded Masters through the trusted controller; durable report inbox and same-Session phase continuation | Scenarios 1, 3, 4; real host execution, no duplicate launch after uncertain reply, delayed report versus new steering | planned |
+| PGL4 | Direct SAD/Master conversation and project panel; revision-bound ModelGovernance/Blueprint handoff | Scenarios 2, 5; real TARGET change stales dependent implementation; roles/tools/children/freshness evidence; owner development trial | planned |
+| PGL5 | Integrated recovery/evidence review and revision-bound remote Steering package | All six scenarios; independent review and selected online-host evidence; PGI4/5 obligations retained | planned |
+
+PGL1 owns governance read projection, the standalone controller command and owning
+PG records. It does not edit shared sdptool dispatch/output/dependencies, ModelGovernance,
+Blueprints or XFMD. [Preflight](preflight-PGL1.json) identifies nine local worktrees;
+shared untracked PG files match our prior committed PGI2 bytes. Leave them untouched.
+Known KB051/private event collisions remain explicit integration prerequisites;
+new events are allocated after scanning all known local ledgers. This is scoped
+sequencing, not a distributed reservation guarantee. Before PGL2, refresh preflight,
+adopt the canonical role delivery deliberately and finish its concrete mutation
+contract. Git BranchPolicy current / CommitPolicy milestone remains unchanged.
+
+2026-10-10: PGL1 delivers read-only human/JSON inspection and a separate lab preview.
+Actual owner-trial state is preserved; controller/MCP and final core/command checks
+pass at the stated levels. Next: PGL2 assignment preparation, current authority and
+revision gates. Native role-skill adoption and shared integration remain explicit
+prerequisites to the affected later changes. No full KB052 acceptance is claimed.
