@@ -142,6 +142,10 @@ slices:
     verification: [VER-SDP-005-001, VER-SDP-005-002, VER-SDP-005-003]
 fixes: {}
 reviews:
+  REV-SDPTOOL-RSP2:
+    status: approved
+    path: Maintenance/RSP2/Review.md
+    verification: SDPTOOL-VER-RSP2
   REV-SDPTOOL-SR1:
     status: approved
     path: Maintenance/SR1/Review.md
@@ -230,6 +234,10 @@ reviews:
       low: 0
       note: 4
 verification:
+  SDPTOOL-VER-RSP2:
+    status: passed
+    path: Maintenance/RSP2/Evidence.md
+    managementId: MAINT-SDP-0015
   SDPTOOL-VER-RSP1:
     status: passed
     path: 05--Implementation/SDPTool/Programs/Evidence.md
