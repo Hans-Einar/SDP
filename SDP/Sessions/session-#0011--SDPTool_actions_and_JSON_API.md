@@ -2,9 +2,10 @@
 
 ## Session roadmap
 
-T006, 2026-10-10. Active Session; the last preflight was RED and needs refreshing.
-Next: refresh shared-work status, reconcile ownership and the identity collision, then return to S1. Sequence only: dates below are display
-slots, not estimates or measured time. The table is the authoritative roadmap.
+T007, 2026-10-10. Active Session; refreshed product preflight is RED.
+S1 contract proposal and PLAN-SDP-0024 are prepared. Next: resolve S0 integration
+ownership/identity and finalize S1 schemas/SDL on the selected baseline.
+Sequence only: dates below are display slots, not estimates or measured time. The table is the authoritative roadmap.
 
 ```mermaid
 gantt
@@ -21,8 +22,8 @@ gantt
 
 | State | Step | Outcome / linked milestone | Prerequisites | Completion evidence |
 | --- | --- | --- | --- | --- |
-| waiting | S0 | Concurrent-work preflight and coordination | Owner T002 requires green before implementation | [RED: concrete overlap and ID collision](evidence/0011-concurrent-work/README.md) |
-| waiting | S1 | Define action catalogue and JSON invocation contract; register bounded ImplementationPlan | KB051, current Go APIs/CLI, XFMD handoff | Selected schemas, scope, failure/authority rules, milestones and Git policy; pending |
+| waiting | S0 | Concurrent-work preflight and coordination | Owner T002 requires green before implementation | [RED refreshed T007](evidence/0011-concurrent-work/refresh-T007.md) |
+| waiting | S1 | Define action catalogue and JSON invocation contract; register bounded ImplementationPlan | KB051, current Go APIs/CLI, XFMD handoff | [Contract proposal](../04--Design/SDPTool/Actions/Contract.md) and PLAN-SDP-0024 prepared; executable schemas/SDL wait for S0 |
 | planned | S2 | One shared action registry, catalogue and JSON read operation | S1 | CLI/API equivalence, deterministic metadata and strict request/error tests; pending |
 | planned | S3 | Blueprint generation/retention, assessment and revision-bound assignment actions | S2 | Real success/failure workflows preserve source, bundle and ledger contracts; pending |
 | planned | S4 | Test actual consumer protocol and gh-sdp forwarding on development candidate | S3 | Subprocess input/output, structured failures, compatibility and exact binary identity; pending |
@@ -34,9 +35,9 @@ gantt
 | Status | active |
 | Primary card | [KB-SDP-051](../KanBan/backlog/%23051--Proposal--Discoverable-SDPTool-actions.md) |
 | Snapshot date | 2026-10-10 |
-| Current step | S0 concurrency gate — last result red; refresh required; S1 waiting |
-| Proposed next step | Refresh preflight against changed worktree heads; resolve remaining overlap and duplicate KB051 before S1 |
-| Execution authority | Owner selects a new Session for KB051 implementation; this turn establishes the Session and handoff |
+| Current step | S0 refreshed red; S1 prose/plan ready, schemas/SDL waiting |
+| Proposed next step | Select integration ownership/order and reconcile KB051; fresh green baseline before ACT1 product/model changes |
+| Execution authority | Owner resumes delivery in T007; earlier green preflight prerequisite remains |
 | Predecessor | [Session0008 — paused](session-%230008--Semantic_blueprints.md) |
 
 ## Goal
@@ -58,7 +59,7 @@ outside this Session's product scope. A future adapter can reuse the same servic
 | --- | --- | --- | --- | --- | --- |
 | [KB051](../KanBan/backlog/%23051--Proposal--Discoverable-SDPTool-actions.md) | Primary | backlog | completed after scoped delivery/evidence | queued for S1 | pending |
 | [KB050](../KanBan/active/%23050--Proposal--Semantic-blueprints.md) | Context only | gate-review | unchanged by this Session | gate-review; Session0008 paused | not disposed here |
-| [KB052](../KanBan/backlog/%23052--Change--Project-Leader-and-SAD-orchestration.md) | Handoff to ProjectGovernance | absent | backlog registration; owning Session0007 selects delivery | backlog | registered T005 |
+| [KB052](../KanBan/backlog/%23052--Change--Project-Leader-and-SAD-orchestration.md) | Handoff to ProjectGovernance | absent | backlog registration; owning Session0007 selects delivery | owning PG worktree active, observed T007; local copy remains historical backlog | registered T005; transferred to PG |
 | external:KB-XFMD-030 | Consumer handoff | reported backlog at creation | XFMD agent selects native work | external, not locally authoritative | external |
 
 ## Plan register
@@ -66,9 +67,9 @@ outside this Session's product scope. A future adapter can reuse the same servic
 | Local ref | Plan document/type | Readiness | Lifecycle | Outcome |
 | --- | --- | --- | --- | --- |
 | M1 | [MaintenancePlan MAINT-SDP-0015](../Maintenance/PLR1/Plan.md) — role/skill prerequisite only | completed | completed | Scoped guidance and ProjectGovernance handoff |
-| P1 | ImplementationPlan — create after contract refinement in S1; no ID allocated yet | planned | not registered | Phased catalogue/JSON and blueprint delivery with verification |
+| P1 | [ImplementationPlan PLAN-SDP-0024](../05--Implementation/SDPTool/Actions/Plan.md) | ready for coordination; execution blocked | planned | ACT0–ACT5 catalogue/JSON and blueprint delivery |
 
-Keep detailed milestone status in P1 once registered; the Session tracks the route.
+Keep detailed milestone status in P1; the Session tracks the route.
 Contract decisions can live in one feature document without mandatory separate
 Requirement/Architecture/Design plans. Follow adopted plan rules and update SDL
 sources for material responsibility/contract changes before product implementation.
@@ -78,9 +79,10 @@ sources for material responsibility/contract changes before product implementati
 Source checkout: /tmp/sdp-blueprint-implementation, sdp/blueprint-implementation;
 code baseline d2cc760, documentation baseline a4a81f8. Inspect Git status at resume.
 The primary SDP-vNow and other worktrees contain unrelated work; preserve it.
-S1 should select a dedicated stacked working branch from this verified baseline,
-with milestone commits, unless integration facts justify a different explicit plan
-policy. This Session does not authorize main merge or publication. Test distribution
+PLAN-SDP-0024 selects one dedicated actions branch after the combined baseline is
+agreed, with milestone commits; planning remains on this branch. This refines the
+initial provisional stacked-branch suggestion without changing prior commitments.
+This Session does not authorize main merge or publication. Test distribution
 preparation is distinct from publishing alpha/beta assets or replacing installations.
 
 [Current integration handoff](../../SDPTool/XFMD-Blueprint-Integration.md) distinguishes
@@ -93,6 +95,7 @@ That native consumer change belongs to external KB-XFMD-030, not this repository
 | Turn | Change | Authority | Impact |
 | --- | --- | --- | --- |
 | T001 | Separate KB051 delivery from blueprint pilot review | Owner request | Session0008 paused; this Session active; no implicit pilot acceptance |
+| T007 | Prepare bounded ACT plan while integration gate remains red | Owner continuation and existing preflight prerequisite | One actions working branch after combined baseline; PG owns KB052; no product activation |
 
 ## Turn journal
 
@@ -264,3 +267,39 @@ ImplementationPlan. S2–S5 retain their catalogue/read invocation, blueprint
 actions, consumer verification and handoff sequence. No product code, card
 lifecycle, release or other worktree was changed in this turn. Manual work
 summary; no exact transcript or live-agent observation is claimed.
+
+
+### T007 — Resume actions contract and implementation planning (2026-10-10)
+
+Owner input (summary): confirms Session0011 and asks this agent to continue. Loaded
+SDP, Planning, Architect and reused Traceability/document workflow. Refreshed known
+worktree status and merge forecasts, including current PG's PGL1 ownership record.
+PG's active KB052 is now observed locally, not merely owner-reported. That does not
+resolve shared product integration: both merge forecasts return concrete conflicts
+and the two different KB051 cards still collide. Preserved all other worktrees.
+
+Work summary: wrote a scoped Actions contract proposal and registered planned
+PLAN-SDP-0024. They specify one compiled metadata/handler registry, a bounded
+stdin/file JSON request protocol, human CLI compatibility, five initial actions,
+separate caller principal, structured nonzero responses and revision/retry rules.
+Recorded current context.Background generation routing as an implementation concern;
+no cancellation fix, schema or product command is claimed delivered. SDL model
+updates wait for the selected combined baseline instead of editing shared authority.
+The plan selects meaningful milestone commits on one actions branch after ACT0.
+
+Asynchronously requested the owner's coordination preference: PG selects shared-file
+integration/identity reconciliation, or this agent takes a separate coordinated
+integration assignment. No response is inferred from elapsed time. S0 remains red;
+S1's prose and plan are ready, executable schemas/SDL pending. KB051 remains queued,
+PLAN-SDP-0024 planned; Session0008 stays paused for BP2-A owner disposition. Next is
+integration ownership/order, preserved identity/history reconciliation and refreshed
+green evidence. Only documentation/registration changed. Verification below records
+actual document checks; it is not implementation or independent review evidence.
+
+
+T007 verification: project-management validator passes with 64 cards, 41 management
+records, 4 lineage operations and 529 events. Toolkit validation, local Markdown
+links and git diff --check pass. Existing ledger bytes are preserved, with one plan
+creation and one card review appended. No product tests were needed/run for this
+document-only delivery. The asynchronous integration choice is still pending at
+this recorded closeout; no answer or authority is inferred.

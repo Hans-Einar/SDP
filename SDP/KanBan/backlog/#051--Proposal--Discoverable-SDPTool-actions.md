@@ -109,3 +109,18 @@ runnable-program card in the primary worktree also declares KB-SDP-051. Refer to
 this card by subject/path plus branch until identities are reconciled. Remain queued;
 no unilateral renumbering or execution activation. Next: coordinate ownership and
 baseline/identity reconciliation, then repeat the preflight before S1 execution.
+
+
+## T007 — bounded contract and implementation route (2026-10-10)
+
+Owner resumes Session0011 and has handed KB052 to PG Codex. Its owning worktree
+now has that card active. The [refreshed preflight](../../Sessions/evidence/0011-concurrent-work/refresh-T007.md)
+remains RED for shared product changes. This card stays queued; registration is not
+execution activation and its colliding identity is not silently renamed.
+
+[Contract proposal](../../04--Design/SDPTool/Actions/Contract.md) defines catalogue,
+strict JSON invocation, service ownership, local principal attribution, errors,
+paths and retry/cancellation boundaries. [PLAN-SDP-0024](../../05--Implementation/SDPTool/Actions/Plan.md)
+is planned: ACT0 integration, ACT1 schema/SDL contract, ACT2 read workflow, ACT3
+blueprint operations, ACT4 actual consumer/wrapper tests and ACT5 handoff. Existing
+CLI operations remain compatible. No new command is implemented by these documents.
