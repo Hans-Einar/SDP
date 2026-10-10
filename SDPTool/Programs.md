@@ -87,7 +87,11 @@ by its declared runner. Opening a project or discovering it does not. No extra
 approval mechanism or silent build/install is added to discovery. On Unix the
 runner has its own process group, and cancellation kills that group so a build
 runner does not leave the launched GUI behind. This is forced cancellation,
-distinct from the application's normal window-close lifecycle. Other platforms
+distinct from the application's normal window-close lifecycle. SIGINT and SIGTERM
+received by SDPTool cancel execution. With terminal stdin, Run transfers foreground
+ownership to the runner and restores it after exit, so interactive input works.
+A caller already in the terminal background gets an explicit diagnostic instead
+of stealing the foreground or leaving a stopped runner. Other platforms
 use Go's direct-child cancellation; descendant cleanup is not claimed there.
 
 ## Compatibility and distribution

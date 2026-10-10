@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn: T010. S1–S7, the combined main integration, independent installed lab and SDPTool
+Latest recorded turn: T011. S1–S7, the combined main integration, independent installed lab and SDPTool
 program discovery/launch are completed.
 WCI1/WCI2 are implemented, verified and independently reviewed; WCI3 scalar fields and extended text are delivered and independently reviewed; WCI4 is delivered and independently reviewed. Diagram is **sequence only**, using synthetic equal
 slots; it is not a delivery schedule or measured timeline.
@@ -20,6 +20,7 @@ gantt
     S5 Consumer integration and review :done, s5, after s4, 1d
     S6 Installed widget lab :done, s6, after s5, 1d
     S7 SDPTool runnable programs :done, s7, after s6, 1d
+    S8 Paired release and extension upgrade :active, s8, after s7, 1d
 ```
 
 | State | Step | Work and linked plan milestone | Prerequisites | Authorization | Completion evidence / outcome |
@@ -31,15 +32,16 @@ gantt
 | completed | S5 | PLAN-SDP-0022 WCI4 | S2–S4 | Owner T001; publication unselected | dcf2a74; Evidence-WCI4-M2; independent integrated acceptance |
 | completed | S6 | KB-SDUI-006 / external PLAN-LAB-0001 LAB1 | Completed widget delivery | Owner T008 and full SDL/SDUI steering | Consumer 0946342; exact runtime db206bc; WIDGETLAB-VER-001, race suite and 26 native checks passed |
 | completed | S7 | PLAN-SDP-0023 RSP1 / KB-SDP-051 | S6 installed lab | Owner T010 | 9963159; full race suite and actual gh-sdp/native SDL-Go route passed |
+| on-going | S8 | MAINT-SDP-0015 / gh-sdp SPS-009 | S7 program delivery | Owner T011 | Release gate and independent review pending |
 
 | Field | Value |
 | --- | --- |
 | Session reference | SESSION-SDP-0010 |
-| Status | completed |
+| Status | active |
 | Primary card | [KB-SDUI-003](../KanBan/completed/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md) |
 | Snapshot date | 2026-10-07 owner request; actual ledger timestamps recorded separately |
-| Current step | S7 completed |
-| Proposed next step | Use local development engine; merge/release selection and XFMD UI adoption remain separate |
+| Current step | S8 release and extension upgrade |
+| Proposed next step | Complete MAINT-SDP-0015 release gates, publish paired versions and upgrade gh-sdp |
 | Execution authority | Owner T001 widget work, T006 combined main integration, T008 independent source-defined lab |
 
 ## Goal
@@ -918,11 +920,29 @@ existing phase-push/PR authority. No merge or release performed. Runtime candida
 9963159 and evidence closeout 95dd6aa remain the tested boundary; later handoff
 text does not change product code. GitHub checks are not inferred from local tests.
 
+### T011 — publish and upgrade gh-sdp
+
+Owner prompt, verbatim:
+
+> ok, kan du gjøre en release av gh sdp, og så kan du gjøre en gh extension upgrade så skal jeg prøve å starte sdui fra nyeste xfmd
+
+Manual work summary; exact host IDs/prompt time unavailable. Loaded sdp-release
+2.0.0 and sdp-versioning 2.0.0, release contracts/checklist; read the client's
+installed release/master/versioning/reviewer routines and current Slice history.
+Explicit publication and local extension-upgrade authority selects MAINT-SDP-0015
+and client SPS-009. SDP 2.2.0 adds program discovery/run, accepted ModelGovernance
+and the widget delivery since 2.1.0; gh-sdp 0.2.2 updates its immutable default.
+Clean release branches preserve all concurrent dirty work. No main merge or live
+project migration selected. Fresh read-only Codex context performs independent
+product review; final release review remains pending. Local XFMD source still
+uses sdui-fyne prototype launch, so no XFMD UI parity is promised from an extension
+upgrade alone. S8 active; all preceding deliveries remain completed.
+
 ## Closeout
 
 WCI0–WCI4 and the full bounded KB-SDUI-003 inventory are implemented, verified and
 independently reviewed on the selected baseline. PLAN-SDP-0022 and the primary card
 are completed. Combined [PR #52](https://github.com/Hans-Einar/SDP/pull/52) was merged into main at
 `04f88ff918e7c25c9fa1883f061ef20b8c3923a2`, including the inherited baseline authorized in T006.
-A binary release remains unselected. T008 also completed the independent installed
+Binary publication is now selected in T011; actual publication is pending. T008 also completed the independent installed
 widget lab and KB-SDUI-006; no selected implementation remains.

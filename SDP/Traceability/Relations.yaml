@@ -142,6 +142,10 @@ slices:
     verification: [VER-SDP-005-001, VER-SDP-005-002, VER-SDP-005-003]
 fixes: {}
 reviews:
+  REV-SDPTOOL-RSP2:
+    status: pending
+    path: Maintenance/RSP2/Review.md
+    release: REL-2.2.0
   REV-SDPTOOL-SR1:
     status: approved
     path: Maintenance/SR1/Review.md
@@ -230,6 +234,10 @@ reviews:
       low: 0
       note: 4
 verification:
+  SDPTOOL-VER-RSP2:
+    status: pending
+    path: Maintenance/RSP2/Evidence.md
+    release: REL-2.2.0
   SDPTOOL-VER-RSP1:
     status: passed
     path: 05--Implementation/SDPTool/Programs/Evidence.md
@@ -502,6 +510,19 @@ verification:
     corpusDigest: e346fc230b26c3045305c1ffee22ff43edfc61aa99597005134a314b210b8114
 migrations: {}
 releases:
+  REL-2.2.0:
+    version: 2.2.0
+    state: prerelease
+    releaseNotes: RELEASE-NOTES.md
+    manifest: SDP.manifest.yaml
+    releaseRecord: SDP/Releases/REL-2.2.0.yaml
+    verification:
+    - SDPTOOL-VER-RSP2
+    reviews:
+    - REV-SDPTOOL-RSP2
+    releaseCommit: null
+    gitTag: null
+    githubRelease: null
   REL-2.1.0:
     version: "2.1.0"
     state: released

@@ -45,8 +45,15 @@ func runProgramCommand(ctx context.Context, selected string, args []string, out,
 		}
 		cmd := exec.CommandContext(ctx, binary, program.Command[1:]...)
 		cmd.Dir, cmd.Stdin, cmd.Stdout, cmd.Stderr = p.Root, os.Stdin, out, errs
-		configureProgramProcess(cmd)
-		if err = cmd.Run(); err != nil {
+		restore, err := configureProgramProcess(cmd)
+		if err != nil {
+			return fail("program", err)
+		}
+		err = cmd.Run()
+		if restoreErr := restore(); restoreErr != nil {
+			return fail("program", errors.Join(err, restoreErr))
+		}
+		if err != nil {
 			var child *exec.ExitError
 			if errors.As(err, &child) && child.ExitCode() >= 0 {
 				return child.ExitCode()

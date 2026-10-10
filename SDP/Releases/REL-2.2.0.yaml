@@ -1,0 +1,15 @@
+schemaVersion: '1.0'
+releaseId: REL-2.2.0
+version: 2.2.0
+state: prerelease
+releaseNotesPath: RELEASE-NOTES.md
+includedCapabilities:
+- sdp.install.v1
+verificationRecords:
+- SDPTOOL-VER-RSP2
+reviewRecords:
+- REV-SDPTOOL-RSP2
+migrationRecord: SDP/Maintenance/RSP2/Plan.md
+releasePreparationCommit: null
+gitTag: null
+githubReleaseUrl: null

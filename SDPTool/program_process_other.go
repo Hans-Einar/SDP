@@ -7,4 +7,7 @@ import (
 	"time"
 )
 
-func configureProgramProcess(cmd *exec.Cmd) { cmd.WaitDelay = 2 * time.Second }
+func configureProgramProcess(cmd *exec.Cmd) (func() error, error) {
+	cmd.WaitDelay = 2 * time.Second
+	return func() error { return nil }, nil
+}
