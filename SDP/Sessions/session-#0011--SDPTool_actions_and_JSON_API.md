@@ -2,7 +2,8 @@
 
 ## Session roadmap
 
-T007, 2026-10-10. Active Session; refreshed product preflight is RED.
+T008, 2026-10-10. Active Session; product integration remains unresolved.
+T007 RED forecast is historical again because upstream heads advanced.
 S1 contract proposal and PLAN-SDP-0024 are prepared. Next: resolve S0 integration
 ownership/identity and finalize S1 schemas/SDL on the selected baseline.
 Sequence only: dates below are display slots, not estimates or measured time. The table is the authoritative roadmap.
@@ -303,3 +304,33 @@ links and git diff --check pass. Existing ledger bytes are preserved, with one p
 creation and one card review appended. No product tests were needed/run for this
 document-only delivery. The asynchronous integration choice is still pending at
 this recorded closeout; no answer or authority is inferred.
+
+
+### T008 — Information needed to resolve integration conflicts (2026-10-10)
+
+Owner input (summary): asks whether this agent has enough information to resolve
+the merge conflict. Reused SDP/document workflow and current ACT plan. Read-only
+refresh finds PG at 02e8c9d, clean, with PGL1 delivered and PGL2 next; runnable/release
+work is at 4f0a6d9 with dirty publication/validation records. No publication state is
+inferred from filenames. Our checkout remains clean at a9edf28 before this entry.
+
+Work summary: source, parent history, current contracts and workstream plans provide
+enough technical information to undertake a bounded integration. The conflicts
+reported so far are merge-tree forecasts, not an unfinished merge in a worktree.
+No additional owner explanation of the code is currently needed. Integration must
+preserve blueprint assignment behavior, governance behavior and runnable-program
+behavior, combine shared dispatch/presentation contracts and reconcile duplicate
+card/event identities with explicit provenance rather than selecting one side.
+
+Recommended next execution is a dedicated integration branch/checkout using pinned
+committed inputs, excluding ongoing dirty release records and all primary-worktree
+changes. Refresh actual release/main state before choosing the baseline; coordinate
+shared-file ownership and later PG deltas explicitly. Validate all three workflows
+on the combined candidate before beginning ACT implementation. Main merge and release
+remain separate authority. This information question is not recorded as authorization
+to merge branches or rewrite identities. No product or other-worktree edits occurred.
+
+The earlier asynchronous integration-owner choice remains unresolved; do not infer
+an answer from this question. Next remains ACT0 integration scope/ownership selection,
+then a fresh forecast and reviewable conflict resolution. Session0008 stays paused.
+This is a manual work summary, not an exact transcript or completed implementation.
