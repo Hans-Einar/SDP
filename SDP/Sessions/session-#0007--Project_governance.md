@@ -2,10 +2,10 @@
 
 ## Session roadmap
 
-Latest recorded turn: T016 — clarify Session ownership and the separate integration
-workstream. This implementation remains Session0007; Session0012 owns interim
-coordination. PGL2-C1 is delivered and PGL2-C2 remains next; design acceptance and
-actual multi-agent dispatch are not delivered.
+Latest recorded turn: T017 — remote main contains PGL2-C1; PG branch refreshed
+without conflicts. Continue within the PG boundary, checking shared integration
+before affected writes. PGL2-C2 remains next; design acceptance and actual
+multi-agent dispatch are not delivered.
 Sequence only; synthetic dates represent order, not estimates or elapsed time.
 
 ```mermaid
@@ -736,3 +736,37 @@ records its scope, evidence and integration invariants. No automatic handoff
 delivery is claimed. S6 remains active; the next implementation step is PGL2-C2
 assignment revision/retirement, actual disposition and provider-aware prerequisites,
 with shared integration kept in the other workstream.
+
+## T017 — Refresh the integrated baseline and bound continuation
+
+Date: 2026-10-18. Manual work summary; exact host IDs/timing unavailable. Owner asks
+whether PG can continue without conflicts, has a clean route to main, or should
+wait for the integration agent. Reused SDP 1.1.1 and Session upkeep; read document
+workflow, Planning 1.0.0, typed-plan contract and main's concurrent-work preflight.
+
+Fetched origin/main at 8aa16c2ba531569fad77eafd5225e4b3d504549a and verified that
+de4b795 is its ancestor: ACT0 has integrated PGL2-C1. ACT0's Integration.md records
+combined tests and history reconciliation. Actions now continues at 598f483 with
+dirty registry/CLI/model dispatch and a new blueprint action adapter. Waiting for
+all Actions phases is unnecessary. No completion of that ongoing work is inferred.
+
+Merged main into the clean owning PG branch, producing c3877ae without conflicts
+and preserving history. The remaining tree delta was only our T016 Session note.
+No other checkout or remote ref was modified. Retain the imported canonical ledger
+and identity mapping; never replay the obsolete pre-integration ledger. Focused
+Go tests pass for governance, governancecontroller, governancemcp and cmd/sdp-controller.
+Merge-tree against committed Actions 598f483 passes; dirty/future edits are excluded.
+
+Preflight also inspected the dirty primary checkout and clean viewpoint branch
+cc7b52f, including committed and working changes. The primary retains old PG and
+other-system copies; do not replay them into this owning branch. Actions owns its
+generic API, shared CLI and records; PG retains its core/controller and own records.
+Unreported remote work is outside coverage. Verdict is green for branch sync and
+owning coordination records. PG-local revision/retirement can continue after a
+fresh scoped check; provider/shared-contract work and new event identities require
+reinspection before writes. This is not a blanket conflict-free verdict for C2.
+
+The plan now records the Git continuation boundary. S6 remains active, C2 next.
+Before delivery, refresh main, check concurrent committed/dirty changes, verify the
+combined candidate and prepare a PR of only new PG changes. No product implementation,
+delegation, push, main merge, release or independent review occurred this turn.

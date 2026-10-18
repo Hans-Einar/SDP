@@ -337,3 +337,20 @@ new trial state and preserves the owner's C6 lab. No agents are launched.
 2026-10-10: PGL2-C1 delivers the bounded preparation CLI/core and separate fixture
 preview. [Evidence](Evidence-PGL2-C1.md) and [handoff](Handoff-PGL2-C1.md) retain
 C2/provider/disposition/revision/retirement gates. No general scheduler is delivered.
+
+## Integrated continuation — Session0007 T017, 2026-10-18
+
+Remote main 8aa16c2 includes PGL2-C1 de4b795 and the ACT0 history/identity
+reconciliation. The owning branch incorporated it without conflicts at c3877ae;
+BranchPolicy current and CommitPolicy milestone remain unchanged. Preserve this
+integrated ancestry and canonical records instead of replaying the old PG history.
+
+Continue with PG-local assignment revision/retirement in governance and the standalone
+controller after a fresh scoped preflight. Actions Session0011 owns generic action
+dispatch, shared CLI/model dispatch and its own records. Provider integration,
+shared contracts/dependencies and new event allocations require refreshed coordination
+before affected writes. Main's concurrent-work procedure governs these checks.
+Before delivery, incorporate current main, inspect concurrent committed and dirty
+changes, test the combined candidate and prepare a PR limited to the new PG delta.
+This is a clean integration route, not a guarantee about future conflicts or authority
+to merge main. No C2 implementation or acceptance is claimed by this synchronization.
