@@ -1,0 +1,32 @@
+{
+  "parent": "ecd9dcd5cd95fb2b1f323cea96da1776659b2513",
+  "branch": "sdp/xfmd-viewpoint-overviews-main",
+  "files": {
+    "SDL/go/documents/selection.go": "3fd4eca17c244a788dc47ca39bc21348341314c5710977d4350081bd65c0e2d3",
+    "SDL/go/go.mod": "83de817575ddce7cc8fcc13154cd42f5552a43feaa77b12edff4e522e9acb97b",
+    "SDL/go/go.sum": "14d7a86d1e9f33e231efa435eebe7e1e219a007ae1b014cf0a072761bc4955ec",
+    "SDL/go/viewpoint/documents.go": "a43dba69727dd53ea84b2634a68d15ef22cfdfd81203f6a3fa9722f9757d2c91",
+    "SDL/go/viewpoint/feature_overview.go": "1be05251649aab2f1ef2f8c3dd5277c202c13ad5f065434ff76ab064ea4364fe",
+    "SDL/go/viewpoint/model.go": "9dafc9353cb7b7bc91751440dc389d12b65d0981333eb53347868b08af2ebf33",
+    "SDL/go/viewpoint/overview.go": "c2abd07162b21d085cbb34294d33cb342465274f4c6106edb583babf70cf4580",
+    "SDL/go/viewpoint/overview_test.go": "236803831f551d60be25b30ec590df1317022b8cd277d99ac87676b824eff47e",
+    "SDL/go/viewpoint/query.go": "95f1d0dc12ed65b7f431c86b5ca292a36718cd8c1fd457c4f27b344d5a7c94f5",
+    "SDL/go/viewpoint/query_test.go": "f41f212384ebd3514cf6dcc2d19bc61ce7fa5fb57fc8991e02e9c312ca8600eb",
+    "SDL/go/viewpoint/source_links.go": "3ca8203a1a29007a2a3aba6b14e3cd40b8eccd71b340e14b1e5e15397a737cbd",
+    "SDL/go/viewpoint/usecase_detail.go": "26ccd0da01b2142477cd0d802a0c17dbcf6e9d88262599b74bc65f034372594c",
+    "SDPTool/Contract.md": "9284f289590e5084a3a0a3692d4c79b8ed88b1c15555cfd7a353cd31f35649e0",
+    "SDPTool/go.mod": "e1e434779c9b8ed69d61626ee66103762b0692ff145dd1f5cb580a4c5d7ecf2e",
+    "SDPTool/go.sum": "b17de8bdf2c18ab40477b743c15ef494795aaebe18bc9eef3948ffed4cdb74e4",
+    "SDPTool/preview.go": "5903b45f61bb040f171278033511d2fbfc9e523b7a11b1765c742a999484a3bf",
+    "SDPTool/sdui.go": "f1c7784b07e43d6a201b5bc6271c3b7f7d379e016ad1b5fe6038361f7707e1e5",
+    "SDPTool/sdui_test.go": "663d74b2aa32c237ca90f9cd363df9dc866bfdee456409ce6f1146243a0a0ffe",
+    "SDPTool/source_links.go": "84ef7896fd842ea08c05a95b8dd7adfcebf58eee3112b17050ab60aae710852c",
+    "SDPTool/source_links_test.go": "2a6eb55d89a314df23effce88260d8a31f7d6ed3dbc49256168d2ec65d549324",
+    "SDUI/go/go.mod": "a77b6ca6bc693215cb39bd76a0c1faa5cd086512a3984edc4bef3574f650657f",
+    "SDUI/go/go.sum": "692c019a4d399a0183f9f02a291aac808886af2be7df9de42ceea8367acaefaf"
+  },
+  "binary": {
+    "path": "/tmp/xfmd-n4-sdptool",
+    "sha256": "8af02fa62390eb99c119817ee05820d7e183d4395a7c979d7ea1a78e2c751772"
+  }
+}

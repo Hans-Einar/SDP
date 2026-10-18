@@ -148,7 +148,7 @@ func (v *Views) FeatureOverviewContext(mode string) string {
 			proof := []string{c.S("id")}
 			proof = append(proof, values(eq(v.Relations["owns"], "object", fn), "id")...)
 			proof = append(proof, values(eq(v.Relations["allocated-to"], "subject", fn), "id")...)
-			fmt.Fprintf(&b, "| %s | %s | %s | %s | %s |\n", feature, fn, owners, placed, strings.Join(proof, ", "))
+			fmt.Fprintf(&b, "| %s | %s | %s | %s | %s |\n", feature, fn, owners, placed, v.FactReferences(proof))
 		}
 	}
 	return b.String() + "\n"

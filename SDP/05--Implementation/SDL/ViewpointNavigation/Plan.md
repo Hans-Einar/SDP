@@ -189,3 +189,20 @@ XFMD diagrams retain identical bytes. [N3j](N3j.md) and N3j-candidate.json recor
 the exact checked boundary. Commit this main-based milestone; retain the original
 branch as history. Shared board/ledger reconciliation and remaining viewpoint
 scope are unchanged. No release or main mutation is selected.
+
+## N4 execution — XFMD Session0005 T021, 2026-10-19
+
+Owner requests completion of remaining Session work. Continue the main-based
+successor branch with milestone commits. Select focused VP01 native notation,
+explicit exercises-linked VP08 companions and source-bound provenance transport.
+The adopted result/source link contract is in SDPTool/Contract.md; exact source
+selection remains XFMD's responsibility. Preserve PG/controller, Actions registry,
+blueprint lifecycle and production .design sources. Verify single/composed inputs,
+stale included files, full affected modules and actual native consumer behavior.
+No merge, publication or install follows from this implementation selection.
+
+### N4 implementation outcome
+
+[N4](N4.md) records completed selected detail/source transport, full producer and
+native verification, recovered diagram-count behavior and explicit residuals.
+This milestone does not close broader KB032 or integrate/release the producer.

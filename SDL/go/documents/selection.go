@@ -48,6 +48,9 @@ func Selected(ctx context.Context, v *viewpoint.Views, q viewpoint.Query, r Rend
 			text += s.OverviewContext()
 		}
 	}
+	if q.Viewpoint == "VP01" && q.Projection == "" {
+		text += s.UseCaseContext()
+	}
 	text += s.Tables(q.Viewpoint)
 	b.Put("entry.md", text)
 	b.Seal()

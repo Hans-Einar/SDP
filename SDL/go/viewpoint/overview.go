@@ -68,7 +68,7 @@ func (v *Views) OverviewContext() string {
 	count := 0
 	for _, f := range v.Facts {
 		if has([]string{"supports", "contributes-to"}, f.S("verb")) {
-			fmt.Fprintf(&b, "| %s | %s | %s | %s |\n", f.S("subject"), f.S("verb"), f.S("object"), f.S("id"))
+			fmt.Fprintf(&b, "| %s | %s | %s | %s |\n", f.S("subject"), f.S("verb"), f.S("object"), v.FactReference(f.S("id")))
 			count++
 		}
 	}

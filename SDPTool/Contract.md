@@ -43,9 +43,9 @@ design-core/0.6 with canonical-source validation; unsupported language/profile i
 language diagnostic. Class/action/SDUI inputs are not structural design previews.
 No SDP folder is required. Default selection is one nonempty diagram, preferring
 architecture then use cases/responsibilities; an empty model uses VP11. Explicit
-selections retain SDL's query validation and depth bound (0–8). A request accepts
-at most 24 diagrams, 128 files and 32 MiB of generated resources; larger requests
-must select a diagram/focus. No automatic full export occurs.
+selections retain SDL's query validation and depth bound (0–8). There is no fixed diagram-count cap. Publication is bounded by 128 files and
+32 MiB of generated resources, including retained source snapshots; larger
+requests must select a diagram/focus. No automatic full export occurs.
 
 With --json, stdout is one JSON result with schema sdptool/0.2, operation, source, profile,
 revision (SHA-256 of exact source bytes), entry, directory and ownership. The
@@ -418,3 +418,24 @@ capability without generating output. Renderers must support the emitted notatio
 this contract does not claim compatibility with every external Mermaid executable.
 
 Implementation/integration record: [ViewpointNavigation](../SDP/05--Implementation/SDL/ViewpointNavigation/Plan.md).
+
+## Generated SDL source links — N4
+
+Saved-source select/preview results may add sourceLinks, an array of unique
+bundle-local {id,path,snapshot,revision} records. Path is the absolute original
+.design file; snapshot is a safe relative path inside the returned bundle;
+revision is SHA-256 of that file's exact bytes, not the composed model revision.
+Generated Markdown uses sdl-source://ID/START/END with zero-based UTF-8 bytes and
+an exclusive end. Every checked source is retained so clients can reject an
+outdated composed graph even when the clicked file itself did not change.
+Source snapshots and full graph freshness are checked before publication.
+
+Clients validate their retained project/bundle context, containment, identities,
+byte bounds and unchanged original bytes before selecting text through normal
+editor transactions. Missing metadata means no exact-link capability. No source
+parser, blueprint lifecycle or owner-decision behavior is delegated to the viewer.
+Pure language output without filesystem binding retains text provenance.
+
+VP01 focused use cases use actor/ellipse notation with separate realization.
+Only explicit exercises relations attach ordered VP08 scenarios. Missing scenario
+associations and pre/postconditions remain unspecified, never inferred.

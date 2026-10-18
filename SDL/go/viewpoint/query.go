@@ -242,7 +242,7 @@ func (v *Views) Select(q Query) (*Views, error) {
 			d.Edges = edges
 			d.SourceFacts = unique(proof)
 		}
-		if len(d.Nodes) > 160 || len(d.Edges) > 320 || len(out.Diagrams) >= 48 {
+		if len(d.Nodes) > 160 || len(d.Edges) > 320 {
 			return nil, fmt.Errorf("selection-limit: narrow focus, relation or diagram")
 		}
 		out.Diagrams = append(out.Diagrams, d)
@@ -268,6 +268,7 @@ func (v *Views) Select(q Query) (*Views, error) {
 			out.MessageSets = append(out.MessageSets, m)
 		}
 	}
+	v.useCaseDetails(&out, q)
 	return &out, nil
 }
 func (q Query) Canonical() Query {

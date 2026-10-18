@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"os"
 	"path/filepath"
+	"reflect"
 	"strings"
 	"testing"
 )
@@ -48,7 +49,7 @@ func TestSDUIProfileDiscoveryAndPreview(t *testing.T) {
 				t.Fatal(err)
 			}
 			var recorded Result
-			if err := json.Unmarshal(metadata, &recorded); err != nil || recorded != result {
+			if err := json.Unmarshal(metadata, &recorded); err != nil || !reflect.DeepEqual(recorded, result) {
 				t.Fatal("returned and published identities differ", err)
 			}
 			text, err := os.ReadFile(result.Entry)

@@ -29,14 +29,15 @@ func (f *Failure) Error() string         { return f.Code + ": " + f.Message }
 func failure(code string, e error) error { return &Failure{Code: code, Message: e.Error()} }
 
 type Result struct {
-	Schema    string `json:"schema"`
-	Operation string `json:"operation"`
-	Source    string `json:"source"`
-	Profile   string `json:"profile"`
-	Revision  string `json:"revision"`
-	Entry     string `json:"entry"`
-	Directory string `json:"directory"`
-	Ownership string `json:"ownership"`
+	SourceLinks []SourceLink `json:"sourceLinks,omitempty"`
+	Schema      string       `json:"schema"`
+	Operation   string       `json:"operation"`
+	Source      string       `json:"source"`
+	Profile     string       `json:"profile"`
+	Revision    string       `json:"revision"`
+	Entry       string       `json:"entry"`
+	Directory   string       `json:"directory"`
+	Ownership   string       `json:"ownership"`
 }
 type PreviewOptions struct {
 	Source, Output, Renderer, Viewpoint, URI, Revision string
@@ -194,20 +195,25 @@ func Preview(ctx context.Context, o PreviewOptions) (Result, error) {
 			q.Viewpoint = "VP11"
 		}
 	}
-	selected, e := v.Select(q)
+	_, e = v.Select(q)
 	if e != nil {
 		return result, failure("selection", e)
 	}
-	if len(selected.Diagrams) > 24 {
-		return result, failure("limit", fmt.Errorf("selection exceeds 24 diagrams; select a diagram or focus"))
-	}
+
 	r, e := renderer(o.Renderer)
+	if e != nil {
+		return result, e
+	}
+	links, snapshots, e := bindSourceLinks(v, source)
 	if e != nil {
 		return result, e
 	}
 	b, e := documents.Selected(ctx, v, q, r)
 	if e != nil {
 		return result, failure("render", e)
+	}
+	for name, data := range snapshots {
+		b.Files[name] = data
 	}
 	b.Put("delivery.txt", target+"\n")
 	output, e := filepath.Abs(o.Output)
@@ -218,7 +224,7 @@ func Preview(ctx context.Context, o PreviewOptions) (Result, error) {
 	if operation == "" {
 		operation = "preview"
 	}
-	result = Result{Version, operation, source, v.Profile, v.Revision, filepath.Join(output, "entry.md"), output, "caller-owned; remove directory after consumer release"}
+	result = Result{SourceLinks: links, Schema: Version, Operation: operation, Source: source, Profile: v.Profile, Revision: v.Revision, Entry: filepath.Join(output, "entry.md"), Directory: output, Ownership: "caller-owned; remove directory after consumer release"}
 	j, _ := json.MarshalIndent(result, "", "  ")
 	b.Files["sdptool.json"] = append(j, '\n')
 	b.Seal()

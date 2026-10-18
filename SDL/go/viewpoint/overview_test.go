@@ -62,7 +62,7 @@ func TestVP01OverviewCompleteAndSeparate(t *testing.T) {
 	}
 	// Existing diagram identity is not captured by the new projection query.
 	existing, e := v.Select(Query{Viewpoint: "VP01", Diagram: "VP01-Goal0"})
-	if e != nil || len(existing.Diagrams) != 1 || existing.Diagrams[0].Kind != "flowchart" {
+	if e != nil || len(existing.Diagrams) != 1 || existing.Diagrams[0].Kind != "usecase" {
 		t.Fatal(e)
 	}
 }
