@@ -35,6 +35,13 @@ func invocationCommand(ctx context.Context, args []string, in io.Reader, out, er
 		in = strings.NewReader("")
 	}
 	if *file != "-" {
+		info, err := os.Lstat(*file)
+		if err != nil {
+			return bad(err)
+		}
+		if !info.Mode().IsRegular() {
+			return bad(fmt.Errorf("request file must be a regular file; use - for stdin"))
+		}
 		f, err := os.Open(*file)
 		if err != nil {
 			return bad(err)

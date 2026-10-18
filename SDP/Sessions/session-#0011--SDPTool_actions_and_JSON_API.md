@@ -402,3 +402,9 @@ T010 ACT3-M1/M2: complete five-action registry and shared CLI service routing te
 Retained generation is repeatable; assessment preserves blocked JSON; assignment
 retry is idempotent and stale/forged writes refuse without mutation. Local attribution
 is explicit, not authentication. ACT4 compiled consumer/wrapper verification next.
+
+T010 ACT4-C1: actual gh-extension trial passes all five operations, structured
+nonzero results, retry and process cancellation after fixing blocked stdin handling.
+PG has adopted main and records the Actions/shared CLI exclusion at 5c4bb8b; its
+new uncommitted governance/controller work is outside this candidate and preserved.
+Final checks use a committed source candidate; no independent/native GUI claim.

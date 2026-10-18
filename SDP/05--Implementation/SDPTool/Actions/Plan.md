@@ -138,3 +138,9 @@ trial pass; invalid requests and broken output fail with meaningful exit codes.
 tests cover retention identity, blocked assessment, assignment create/cancel,
 missing/forged authority, expected-event refusal, read/list and retry after response
 loss. Refusals/retries preserve ledger bytes; assignment does not alter bundles.
+
+2026-10-18 ACT4-C1: compiled consumer and actual isolated gh-extension trial exercise
+all five actions. Initial trial setup errors (local install spelling, unseeded offline
+cache and existing uppercase analysis.System) were corrected. A real incomplete-pipe
+SIGINT test exposed a blocked OS read; executable-owned cancellation adapter fixes
+it. Final candidate-pinned trial and regression run follow; no release changes.

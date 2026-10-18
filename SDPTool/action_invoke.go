@@ -70,7 +70,13 @@ func Invoke(ctx context.Context, in io.Reader, caller ActionCaller) InvokeRespon
 	}
 	data, err := io.ReadAll(io.LimitReader(in, MaxInvokeBytes+1))
 	if err != nil {
+		if canceled := ctx.Err(); canceled != nil {
+			return invokeFailure(r, 130, "canceled", canceled)
+		}
 		return invokeFailure(r, 2, "invalid-request", err)
+	}
+	if canceled := ctx.Err(); canceled != nil {
+		return invokeFailure(r, 130, "canceled", canceled)
 	}
 	if len(data) > MaxInvokeBytes {
 		return invokeFailure(r, 2, "invalid-request", fmt.Errorf("request exceeds %d bytes", MaxInvokeBytes))
