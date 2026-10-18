@@ -362,3 +362,23 @@ pause or merge authorization is inferred. No external Session/card state changed
 Next remains a pinned, coordinated ACT0 integration and current-baseline verification.
 Session0012's integration guidance is now a known input; preserve its coordinator
 ownership. Manual work summary only; session-only diff checked before commit.
+
+
+### T010 — Authorized integration and complete Actions delivery (2026-10-18)
+
+Owner authorizes resolving conflicts, merging the combined work to main, completing
+Session0011 and merging that delivery to main as well. Use isolated integration
+and actions branches with milestone commits; no publication or install replacement
+is selected. Loaded SDP/Master/Worker/Verifier and reused Planning/Architect.
+
+Pinned inputs: remote main 04f88ff, release lineage 3475367, blueprint/actions
+f64a5ba and PG de4b795. Other worktrees, coordinator records and uncommitted
+producer/viewpoint changes remain untouched. The coordinator's proposed ordering
+is adopted; its earlier no-merge limit is superseded by this direct owner request.
+
+ACT0 integration is in progress in /tmp/sdp-session11-integration on
+sdp/session11-integration. Source release history is kept; separate branch ledgers
+are archived exactly with hash/line mappings. Actions becomes KB-SDP-053; PLR1
+becomes MAINT-SDP-0016. Imported projections retain original provenance and
+canonical current-state continuity. No historical source bytes are silently changed.
+PG owns active KB038/052; Session0008 stays paused. Checks follow below.
