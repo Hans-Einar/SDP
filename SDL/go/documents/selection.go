@@ -20,7 +20,9 @@ func Selected(ctx context.Context, v *viewpoint.Views, q viewpoint.Query, r Rend
 	}
 	text := "# " + q.Viewpoint + " — " + spec.Title + "\n\nRevision: `" + v.Revision + "`.\n\n" + spec.Note + "\n\n"
 	j, _ := json.Marshal(q.Canonical())
-	text += "Selection: `" + string(j) + "`.\n\n"
+	if q.Projection != "overview" {
+		text += "Selection: `" + string(j) + "`.\n\n"
+	}
 	b.Files["selection.json"] = append(j, '\n')
 	if len(s.Diagrams) == 0 {
 		text += "No diagrams match this selection. This does not imply the concept is impossible or absent from the system.\n\n"
@@ -38,6 +40,16 @@ func Selected(ctx context.Context, v *viewpoint.Views, q viewpoint.Query, r Rend
 	}
 	if r != nil {
 		text += "\nSymbol profile: SDL 1. Actor/ellipse use UML shapes; labeled SDL relations retain their language semantics. consumes is a dashed dependency; realizes is a contribution.\n\n"
+	}
+	if q.Projection == "overview" {
+		if q.Viewpoint == "VP07" {
+			text += s.FeatureOverviewContext(q.Mode)
+		} else {
+			text += s.OverviewContext()
+		}
+	}
+	if q.Viewpoint == "VP01" && q.Projection == "" {
+		text += s.UseCaseContext()
 	}
 	text += s.Tables(q.Viewpoint)
 	b.Put("entry.md", text)

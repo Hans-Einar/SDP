@@ -35,6 +35,7 @@ type Diagram struct {
 	Syntax      string         `json:"-"`
 }
 type Views struct {
+	SourceBindings  map[string]string
 	Profile, System string
 	Sources         []sourcegraph.Source
 	SourceEdges     []sourcegraph.Edge

@@ -1,0 +1,41 @@
+[
+  {
+    "label": "vp01",
+    "target": {
+      "operation": "select",
+      "project": "xfmd",
+      "model": "xfmddesktop-47e40bf52e14c5d8",
+      "uri": "sdl-view://xfmd/VP01?consumer=xfmd&target=main&projection=overview",
+      "revision": "e2a2f39e5c78476bb1bba08e406114367eb59953f02a63e952e435c880d24007"
+    },
+    "nodes": 12,
+    "edges": 11,
+    "facts": 11
+  },
+  {
+    "label": "vp07-logical",
+    "target": {
+      "operation": "select",
+      "project": "xfmd",
+      "model": "xfmddesktop-47e40bf52e14c5d8",
+      "uri": "sdl-view://xfmd/VP07?consumer=xfmd&target=main&projection=overview",
+      "revision": "e2a2f39e5c78476bb1bba08e406114367eb59953f02a63e952e435c880d24007"
+    },
+    "nodes": 23,
+    "edges": 19,
+    "facts": 113
+  },
+  {
+    "label": "vp07-mode",
+    "target": {
+      "operation": "select",
+      "project": "xfmd",
+      "model": "xfmddesktop-47e40bf52e14c5d8",
+      "uri": "sdl-view://xfmd/VP07?consumer=xfmd&target=main&projection=overview&mode=NormalDesktop",
+      "revision": "e2a2f39e5c78476bb1bba08e406114367eb59953f02a63e952e435c880d24007"
+    },
+    "nodes": 23,
+    "edges": 19,
+    "facts": 137
+  }
+]

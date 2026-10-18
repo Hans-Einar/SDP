@@ -90,7 +90,7 @@ func UIPreview(ctx context.Context, p Project, id, entry, output, revision strin
 	if e != nil {
 		return Result{}, e
 	}
-	result := Result{Version, "sdui-preview", source, profile, hash, filepath.Join(out, "entry.md"), out, "caller-owned; release after consumer"}
+	result := Result{Schema: Version, Operation: "sdui-preview", Source: source, Profile: profile, Revision: hash, Entry: filepath.Join(out, "entry.md"), Directory: out, Ownership: "caller-owned; release after consumer"}
 	bundle := &documents.Bundle{Files: map[string][]byte{}, Manifest: documents.Manifest{Version: "sdptool-sdui-markdown/0.1", Revision: hash}}
 	bundle.Put("entry.md", text)
 	j, _ := json.MarshalIndent(result, "", "  ")

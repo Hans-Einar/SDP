@@ -1,0 +1,2 @@
+PASS: 64 cards, 43 management records, 4 lineage operations, 551 events; schema/history/metadata/placement/grouping
+PASS: full/partial merge and split; historical 0.1; 15 negative cases

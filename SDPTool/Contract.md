@@ -43,9 +43,9 @@ design-core/0.6 with canonical-source validation; unsupported language/profile i
 language diagnostic. Class/action/SDUI inputs are not structural design previews.
 No SDP folder is required. Default selection is one nonempty diagram, preferring
 architecture then use cases/responsibilities; an empty model uses VP11. Explicit
-selections retain SDL's query validation and depth bound (0–8). A request accepts
-at most 24 diagrams, 128 files and 32 MiB of generated resources; larger requests
-must select a diagram/focus. No automatic full export occurs.
+selections retain SDL's query validation and depth bound (0–8). There is no fixed diagram-count cap. Publication is bounded by 128 files and
+32 MiB of generated resources, including retained source snapshots; larger
+requests must select a diagram/focus. No automatic full export occurs.
 
 With --json, stdout is one JSON result with schema sdptool/0.2, operation, source, profile,
 revision (SHA-256 of exact source bytes), entry, directory and ownership. The
@@ -381,3 +381,61 @@ envelope, preserving domain results and meaningful nonzero exits. The same typed
 handlers serve included human commands. [Actions.md](Actions.md) owns the public
 protocol detail and first five supported operations. This is an additive local
 subprocess/Go interface, not an HTTP/MCP endpoint or new caller authentication.
+
+## Viewpoint overview targets — VP01 and VP07
+
+A viewpoint node may carry `overviewTarget` with the same Target shape as `target`.
+Its presence advertises an implemented aggregate projection, not bulk detail
+selection. VP01 and VP07 provide select targets whose producer-owned URI contains
+`projection=overview`, with the existing exact project/model/revision. Consumers
+pass that URI unchanged. Expansion never selects or renders it. Absence means
+overview unavailable; older consumers may ignore the optional field. Existing
+viewpoint and detail targets retain their original semantics.
+
+VP01 emits the complete declared actor/use-case inventory, including isolated
+declarations, as usecase-beta notation. Associations mean modeled `pursues`.
+Functionality/Feature realization stays in a companion table; no System boundary,
+UML include/extend, scenario order or pre/postcondition is inferred.
+
+VP07 retains every declared System/container/unit and structural contains edge.
+Feature keys annotate actual owners and selected-mode containers through explicit
+Functionality contributions. The legend covers every Feature, and the companion
+table and Diagram.Elements retain contribution/proof IDs. Features without a
+represented placement remain standalone rounded nodes. Annotations are derived
+views of source facts, not invented direct SDL relations.
+
+The VP07 parent target is logical and excludes allocations. Discovery adds a lazy
+child target for each declared mode; only its explicit allocated-to facts appear
+in that mode's projection. Missing allocation is reported as a gap. Never combine
+modes or infer allocation from ownership. Feature keys are local to the snapshot.
+
+SDL rejects unsupported projections/viewpoints and combinations with focus,
+diagram, relations, level or non-default traversal filters. Only VP07 accepts a
+mode, and that mode must be declared. Snapshot freshness, cancellation, publication
+and resource ownership rules still apply. Native-profile limits reject a complete
+oversized projection explicitly rather than truncating it. Discovery advertises
+capability without generating output. Renderers must support the emitted notation;
+this contract does not claim compatibility with every external Mermaid executable.
+
+Implementation/integration record: [ViewpointNavigation](../SDP/05--Implementation/SDL/ViewpointNavigation/Plan.md).
+
+## Generated SDL source links — N4
+
+Saved-source select/preview results may add sourceLinks, an array of unique
+bundle-local {id,path,snapshot,revision} records. Path is the absolute original
+.design file; snapshot is a safe relative path inside the returned bundle;
+revision is SHA-256 of that file's exact bytes, not the composed model revision.
+Generated Markdown uses sdl-source://ID/START/END with zero-based UTF-8 bytes and
+an exclusive end. Every checked source is retained so clients can reject an
+outdated composed graph even when the clicked file itself did not change.
+Source snapshots and full graph freshness are checked before publication.
+
+Clients validate their retained project/bundle context, containment, identities,
+byte bounds and unchanged original bytes before selecting text through normal
+editor transactions. Missing metadata means no exact-link capability. No source
+parser, blueprint lifecycle or owner-decision behavior is delegated to the viewer.
+Pure language output without filesystem binding retains text provenance.
+
+VP01 focused use cases use actor/ellipse notation with separate realization.
+Only explicit exercises relations attach ordered VP08 scenarios. Missing scenario
+associations and pre/postconditions remain unspecified, never inferred.

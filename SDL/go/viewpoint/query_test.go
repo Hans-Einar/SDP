@@ -3,6 +3,7 @@ package viewpoint
 import (
 	"os"
 	"reflect"
+	"strings"
 	"testing"
 )
 
@@ -24,6 +25,14 @@ func TestSelectionParityAndLimits(t *testing.T) {
 		s, e := v.Select(q)
 		if e != nil {
 			t.Fatal(d.ID, e)
+		}
+		// N4 deliberately upgrades VP01 detail notation and adds only exercises-linked
+		// sequence companions. Unchanged viewpoint projections retain strict parity.
+		if v.Kinds[strings.TrimPrefix(d.ID, "VP01-")] == "usecase" {
+			if len(s.Diagrams) == 0 || s.Diagrams[0].ID != d.ID || s.Diagrams[0].Kind != "usecase" {
+				t.Fatal("lost use-case identity", d.ID)
+			}
+			continue
 		}
 		if len(s.Diagrams) != 1 || !reflect.DeepEqual(s.Diagrams[0], d) {
 			t.Fatal("full/subset mismatch", d.ID)

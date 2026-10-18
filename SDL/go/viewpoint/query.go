@@ -9,14 +9,15 @@ import (
 )
 
 type Query struct {
-	Viewpoint string   `json:"viewpoint"`
-	Focus     string   `json:"focus,omitempty"`
-	Relations []string `json:"relations,omitempty"`
-	Direction string   `json:"direction,omitempty"`
-	Depth     int      `json:"depth,omitempty"`
-	Level     string   `json:"level,omitempty"`
-	Mode      string   `json:"mode,omitempty"`
-	Diagram   string   `json:"diagram,omitempty"`
+	Projection string   `json:"projection,omitempty"`
+	Viewpoint  string   `json:"viewpoint"`
+	Focus      string   `json:"focus,omitempty"`
+	Relations  []string `json:"relations,omitempty"`
+	Direction  string   `json:"direction,omitempty"`
+	Depth      int      `json:"depth,omitempty"`
+	Level      string   `json:"level,omitempty"`
+	Mode       string   `json:"mode,omitempty"`
+	Diagram    string   `json:"diagram,omitempty"`
 }
 type Selection struct {
 	Project          string
@@ -43,6 +44,8 @@ func ParseURI(raw string) (Selection, error) {
 		}
 		value := vs[0]
 		switch k {
+		case "projection":
+			s.Query.Projection = value
 		case "focus":
 			s.Query.Focus = value
 		case "relations":
@@ -70,12 +73,19 @@ func ParseURI(raw string) (Selection, error) {
 			return s, fmt.Errorf("unknown query parameter %s", k)
 		}
 	}
+	if s.Query.Projection != "" && q.Has("depth") && s.Query.Depth != 2 {
+		return s, fmt.Errorf("unsupported-overview-depth")
+	}
 	if (s.Target != "main" && s.Target != "navigation") || s.Consumer != "xfmd" {
 		return s, fmt.Errorf("unregistered target or consumer")
 	}
 	return s, nil
 }
 func (q Query) Validate(v *Views) error {
+	if q.Projection != "" && (q.Projection != "overview" || !HasOverview(q.Viewpoint) || q.Focus != "" || q.Diagram != "" || (q.Mode != "" && q.Viewpoint != "VP07") || q.Level != "" || len(q.Relations) > 0 || (q.Direction != "" && q.Direction != "both") || (q.Depth != 0 && q.Depth != 2)) {
+		return fmt.Errorf("unsupported-overview-selection")
+	}
+
 	s, ok := SpecFor(q.Viewpoint)
 	if !ok {
 		return fmt.Errorf("unknown-viewpoint: %s", q.Viewpoint)
@@ -120,6 +130,9 @@ func (q Query) Validate(v *Views) error {
 func (v *Views) Select(q Query) (*Views, error) {
 	if e := q.Validate(v); e != nil {
 		return nil, e
+	}
+	if q.Projection == "overview" {
+		return v.overview(q)
 	}
 	out := *v
 	out.Diagrams = []Diagram{}
@@ -229,7 +242,7 @@ func (v *Views) Select(q Query) (*Views, error) {
 			d.Edges = edges
 			d.SourceFacts = unique(proof)
 		}
-		if len(d.Nodes) > 160 || len(d.Edges) > 320 || len(out.Diagrams) >= 48 {
+		if len(d.Nodes) > 160 || len(d.Edges) > 320 {
 			return nil, fmt.Errorf("selection-limit: narrow focus, relation or diagram")
 		}
 		out.Diagrams = append(out.Diagrams, d)
@@ -255,6 +268,7 @@ func (v *Views) Select(q Query) (*Views, error) {
 			out.MessageSets = append(out.MessageSets, m)
 		}
 	}
+	v.useCaseDetails(&out, q)
 	return &out, nil
 }
 func (q Query) Canonical() Query {
