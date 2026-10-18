@@ -462,3 +462,21 @@ C1 lease boundary with service/protocol tests, process-exit recovery and unchang
 legacy exclusion. The full SDPTool suite, affected race tests and vet pass. This
 is not native parallel-agent or leader evidence. PM203 / KB375 record the delivery;
 report interaction remains a pending owner choice, not an assumed authorization.
+
+## T025 — Reporting decision and remote extension
+
+Owner selects automatic status/result reporting and continued work within granted
+mandates, with attention requests for actual questions/decisions. This resolves the
+T024 pending preference; it does not waive host restrictions or accept unfinished
+work. Next PGL3 increment must establish the supported automatic report path, durable
+local inbox and revision-bound attention/reply behavior, then the responsive leader
+and parallel native evidence. A waiting item blocks its dependencies, not all projects.
+
+[KB054](../../../KanBan/backlog/%23054--Proposal--PG-attention-and-remote-coordination.md)
+registers a self-hosted multi-machine hub and responsive/installable web client.
+Its [architecture proposal](../../../03--Architecture/ProjectGovernance/Attention-and-Remote-Coordination.md)
+recommends a local runtime plus hub plus PWA and an optional separately verified
+ChatGPT MCP Events adapter. Follow-on runtime/hosting needs its own bounded plan;
+registration does not silently enlarge PLAN-SDP-0018's completion criteria or revive
+SDP_Analyzer. Existing branch/commit policy, remaining PGL/PGI gates and no-merge/
+no-release boundaries remain. PM204 records the plan refinement, not implementation.

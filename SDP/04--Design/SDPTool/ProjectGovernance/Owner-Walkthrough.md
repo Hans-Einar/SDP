@@ -1,6 +1,6 @@
 # ProjectGovernance — owner walkthrough and feedback
 
-Snapshot: 2026-10-19, Session0007 T024. The development branch now includes
+Snapshot: 2026-10-19, Session0007 T025. The development branch now includes
 activation of an approved implementation package and a real isolated code trial; this is not a released feature set. This guide explains the existing
 [orchestration design](Orchestration.md) and its delivered boundaries. It does not
 introduce new approval requirements or record owner acceptance.
@@ -121,6 +121,24 @@ separate rejected fixture; this trial does not overwrite your inputs there.
 [Execution evidence](../../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL2-C2d.md)
 retains that distinction. The helper starts no work. Leader/report delivery, direct
 SAD conversation and the full project panel are still subsequent plan work.
+
+## Automatic work and calling for attention
+
+Owner direction in T025 is now explicit: status/result reporting and work within an
+existing mandate should proceed automatically. A report is not acceptance of the
+reported result. A genuine missing decision should appear as an attention item with
+context, options/free text and a clear statement of what is waiting. Independent
+authorized work should continue; absence of a reply is not a decision.
+
+The requested next extension is a shared inbox/overview for projects on multiple
+PCs, accessible through a self-hosted web service and an installable mobile/desktop
+client. [KB054](../../../KanBan/backlog/%23054--Proposal--PG-attention-and-remote-coordination.md)
+and its [architecture proposal](../../../03--Architecture/ProjectGovernance/Attention-and-Remote-Coordination.md)
+describe local execution, a proposed hub and a responsive PWA. ChatGPT MCP Events
+is an optional documented possibility requiring an actual integration trial. These
+are design directions, not features of the current lab. SDP_Analyzer is not reused.
+The local report/inbox path comes first under KB052; the broader hub/client has a
+separate follow-on scope. Existing evidence/review gates remain.
 
 ## Where your feedback is useful now
 

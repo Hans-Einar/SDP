@@ -366,3 +366,28 @@ of either. Verify same-run and legacy/new exclusion in both orders, independent-
 leases, process-exit release, no stale global lock after partial acquisition, and
 controller integration. Keep automatic report-policy design separate: the actual
 native refusal is retained and the owner's interaction preference is pending.
+
+## T025 — Automatic reporting and attention, 2026-10-19
+
+The owner resolves the T024 reporting question: maximize automatic operation and
+status/result submission within authorized work, targeting projects that run for
+hours. Routine reporting must not require an owner decision on every submission.
+A genuine question, changed scope or reserved decision uses a durable attention
+request. Independent work continues where its authority and dependencies allow it.
+No response or timeout is permission. Host restrictions still need a supported,
+measured integration; this decision does not rewrite the earlier native report refusal.
+
+Continue PGL3 with automatic local reports, correlated inbox and structured attention/
+reply semantics. Retain assigned capabilities, source/revision checks, receipt
+identity, evidence-versus-acceptance distinction and explicit continuation scope.
+Do not implement blanket acceptance of host tool requests as a substitute for the
+bounded report contract.
+
+The owner also requests multi-machine oversight/control and an installable desktop/
+mobile web client. [KB054](../../../KanBan/backlog/%23054--Proposal--PG-attention-and-remote-coordination.md)
+and the [architecture proposal](../../../03--Architecture/ProjectGovernance/Attention-and-Remote-Coordination.md)
+register that extension. Local runtime, proposed self-hosted hub and responsive PWA
+share one message identity and answer disposition. This is proposed architecture,
+not an implemented remote product or revival of obsolete SDP_Analyzer. Select its
+own bounded execution plan after the local contract; retain this plan's existing
+completion boundaries. No production deployment or account changes occur here.

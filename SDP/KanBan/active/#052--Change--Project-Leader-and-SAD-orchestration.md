@@ -9,7 +9,7 @@
 | created | 2026-10-09T12:08:50.581137+00:00 |
 | source | Owner Session0011 T004 role definition and T005 KanBan handoff request |
 | Systems | SDPTOOL |
-| next_review | PGL3 responsive coordination and durable reporting; retain PGL2 closure/SAD restrictions |
+| next_review | PGL3 automatic local reporting/inbox and attention replies; remote extension registered in KB054 |
 | PlanId | PLAN-SDP-0018 |
 | tags | project-leader, steering, SAD, master, MCP, app-server, coordination |
 
@@ -132,3 +132,12 @@ delivers per-run controller isolation with legacy exclusion and process-exit rec
 Tests demonstrate independent progress with protocol hosts, not native parallel agents
 or the responsive leader. Report interaction preference is pending; host policy is
 unchanged. CardState remains in-progress. EVT-KB-SDP-000375 records this milestone.
+
+2026-10-19 / T025: Owner chooses automatic reporting and sustained execution within
+authorized assignments, with durable attention requests when input is needed. This
+resolves the reporting preference from T024; it does not bypass a host refusal or
+accept implementation. Local report/inbox/attention contracts continue under this
+card. [KB054](../backlog/%23054--Proposal--PG-attention-and-remote-coordination.md)
+registers the proposed self-hosted multi-machine hub and web/PWA client separately.
+See the [architecture proposal](../../03--Architecture/ProjectGovernance/Attention-and-Remote-Coordination.md).
+CardState stays in-progress; runtime completion/evidence remain unfulfilled.

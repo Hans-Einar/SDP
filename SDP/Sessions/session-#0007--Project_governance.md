@@ -2,11 +2,10 @@
 
 ## Session roadmap
 
-Latest recorded turn: T024 — owner asks to continue toward Session completion.
-PGL2-C2d activates approved implementation and verifies a real bounded Go task.
-Native report submission was refused under never; host completion is not assignment
-completion. PGL3-C1 per-run isolation is also delivered at service/protocol level.
-Leader/report coordination and the retained verification gates remain.
+Latest recorded turn: T025 — owner selects automatic reporting and unattended work
+within mandate, with attention requests for decisions. Register KB054 for a proposed
+self-hosted multi-machine mailbox/overview and responsive installable web client.
+Next remains local PGL3 reporting/inbox; no hub/app implementation is claimed.
 Sequence only; synthetic dates represent order, not estimates or elapsed time.
 
 ```mermaid
@@ -38,8 +37,8 @@ gantt
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
 | Snapshot date | 2026-10-19 |
 | Current step | S6 / KB052; C2d activation/native code and PGL3-C1 per-run isolation delivered; leader/report integration pending |
-| Proposed next step | PGL3 responsive coordination, per-run isolation and durable report delivery; preserve actual approval boundaries |
-| Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues provider-backed review checks; T022 continues implementation while owner reads the walkthrough; T024 continues the plan toward Session completion |
+| Proposed next step | PGL3 supported automatic reporting, durable local inbox and revision-bound attention/replies; KB054 follow-on hub/client remains backlog |
+| Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues provider-backed review checks; T022 continues implementation while owner reads the walkthrough; T024 continues the plan toward Session completion; T025 selects automatic reporting and requests a multi-machine attention/control extension |
 
 ## Goal and ownership
 
@@ -1091,3 +1090,56 @@ PM203 / KB375 record this second milestone in T024. C2d was committed and pushed
 with explicit report-policy disposition. Direct SAD interaction, scope closure,
 evidence publication and independent integrated review remain in the completion
 route. Owner feedback is not fabricated and the Session is not marked complete.
+
+## T025 — Automatic collaboration and a shared attention mailbox
+
+Date: 2026-10-19. Manual work summary; exact root host IDs/timing unavailable. Owner
+answers the reporting question: automate as much as possible, so large projects can
+run unattended for hours. Also requests a call-attention mechanism similar to follow-up
+questions, shared across PG instances on different PCs; a self-hosted service should
+support overview/control from desktop, mobile and an installable notification app.
+Owner explicitly treats the old SDP_Analyzer as obsolete and irrelevant.
+
+Loaded/reused SDP 1.2.0, document workflow, Change Analysis 1.0.0, Architect 2.1.0 and
+Planning 1.0.0; OpenAI Docs for the ChatGPT integration question. Recovered local
+runtime/design and read current board/lifecycle records. No delegation, code change,
+app installation, host-policy change or network deployment occurred. Inspected thirteen
+worktrees for ID allocation; KB054 and PM204/KB376–377 were unused before registration.
+Owning branch starts clean at 39bf5c3, following pushed C2d 368d705 and C1 delivery.
+
+Automatic status/result reporting is now the selected product behavior within granted
+capabilities. Questions/decisions use durable attention; only dependent work should
+wait. Record reports separately from acceptance, enforce current scope/revision and
+preserve actual host restrictions. The previous native MCP rejection remains failed
+evidence; no rejected call was replayed and no blanket approval policy was enabled.
+
+[KB054](../KanBan/backlog/%23054--Proposal--PG-attention-and-remote-coordination.md)
+and the [architecture proposal](../03--Architecture/ProjectGovernance/Attention-and-Remote-Coordination.md)
+record local execution authority, a proposed self-hosted coordination hub and responsive
+PWA. The shared inbox retains messages/replies even when notifications are missed.
+Remote actions need authenticated project/device binding, expected revisions and actual
+application receipts; offline control must not be shown as executed. Local authorized
+work continues through hub outages where dependencies allow. Browser/mobile app is an
+observation/control surface, not the long-running executor. No legacy Analyzer files
+or existing SDL/SDUI model ownership are changed.
+
+Official sources establish PWA installation/Web Push possibilities and MCP Events
+subscriptions for specified ChatGPT Work surfaces. MCP Events requires protocol 2.0/
+2026-07-28 and is not validated on the owner's account/client. It may support a future
+adapter; custom OS push and durable answer return are not assumed. Keep the PG inbox
+independent and test actual devices before choosing a native wrapper. Platform push
+infrastructure remains external even with a self-hosted backend. Sources are linked
+in the proposal; no compatibility or production-delivery claim is inferred.
+
+Updated Orchestration, owner walkthrough, PLAN-SDP-0018 and KB052 with the resolved
+reporting preference. KB054 remains backlog for its own bounded hub/client plan; it
+does not silently expand the local completion gate. Next: supported automatic local
+report/inbox and attention/reply implementation, followed by the already-selected
+leader/parallel evidence. S3/S4/S6 and Session remain active/unfinished as previously
+recorded. This is a design/work summary, not owner acceptance or a captured final reply.
+
+Validation: management replay passes with 67 cards, 45 records and 617 events;
+Toolkit validation, 224 relative document links and preserved canonical ledger byte
+prefixes pass. This turn changes documentation/authority records only; no new product
+test or independent review is claimed. Event references: KB376 (new KB054), KB377
+(KB052 refinement), PM204 (plan) and the distinct design record in Traceability.
