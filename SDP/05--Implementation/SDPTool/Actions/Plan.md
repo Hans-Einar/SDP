@@ -4,7 +4,7 @@
 | --- | --- |
 | id | PLAN-SDP-0024 |
 | project | SDP |
-| state | active |
+| state | completed |
 | PlanType | ImplementationPlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
@@ -13,28 +13,24 @@
 
 ## Outcome, authority and baseline
 
-Deliver the [proposed action contract](../../../04--Design/SDPTool/Actions/Contract.md)
+Deliver the [implemented action contract](../../../04--Design/SDPTool/Actions/Contract.md)
 so XFMD can discover and invoke a bounded blueprint workflow through JSON without
 shell construction or help scraping. Owner selected Session0011 and continued it
 in T007, retaining the earlier green concurrent-work prerequisite. ACT0 is now complete on the integrated candidate; see Integration.md. Owner T010
 authorizes integration to main and completion of the remaining phases.
 
-This plan starts from e2caa22 on sdp/blueprint-implementation. It is not a release
-or a selected combined code baseline. Preserve the separate runnable-program and
-ProjectGovernance deliveries. KB051 here means the discoverable-actions card at
-backlog/#053--Proposal--Discoverable-SDPTool-actions.md on this branch, not the
-runnable-program card with the same ID. Resolve that collision before execution.
-PG owns KB052 and multi-agent orchestration. Native XFMD work is external KB-XFMD-030.
+The initial planning baseline was e2caa22. ACT0 reconciled the selected release,
+Blueprint and PG inputs at 8aa16c2. Actions is KB-SDP-053; runnable programs retains
+KB-SDP-051. Original records are archived with explicit identity mappings.
+PG owns KB052; native XFMD integration is external:KB-XFMD-030.
 
 ## Git policy
 
-Planning stays on the current branch in the isolated blueprint checkout. After an
-explicit integration sequence and green preflight, create sdp/actions-json-api from
-the selected baseline in an isolated checkout. That becomes this plan's current
-working branch for all phases, with one commit per meaningful milestone and phase
-pushes. This refines Session0011's provisional branch suggestion; no code branch is
-created while the baseline is unresolved. Owner T010 authorizes the integration and final delivery main merges. Publication,
-installation replacement and editing other worktrees remain outside scope.
+BranchPolicy current, CommitPolicy milestone: delivery uses sdp/actions-json-api
+in an isolated checkout, based on 8aa16c2. Owner T010 explicitly authorizes both
+the initial integration and the final delivery to main. Milestone commits and
+phase pushes preserve the selected history. Publication, installation replacement
+and edits to other agents' worktrees remain outside scope.
 
 ## Phases and milestones
 
@@ -46,7 +42,7 @@ installation replacement and editing other worktrees remain outside scope.
 | ACT3 Blueprint workflow | ACT3-M1 | Generate/retain, assess and list typed actions; preserve preliminary sources, immutable bundles, blocked results and domain diagnostics | completed; ACT3 tests |
 | ACT3 Blueprint workflow | ACT3-M2 | Embedded assignment request, separately supplied principal, shared human/JSON handler, exact revision checks and safe retry reconciliation | completed; ACT3 tests |
 | ACT4 Consumer verification | ACT4-M1 | Compiled-process tests, headless consumer and actual gh-sdp transport with isolated signed development distribution; review and regressions | completed; Evidence.md |
-| ACT5 Handoff | ACT5-M1 | Usage/examples, API/CLI contract, evidence and external XFMD handoff; reconcile card/Session and paused blueprint resume pointer | planned |
+| ACT5 Handoff | ACT5-M1 | Usage/examples, API/CLI contract, evidence and external XFMD handoff; reconcile card/Session and paused blueprint resume pointer | completed; Evidence.md and Session0011 T010 |
 
 ### ACT0 — coordination before product edits
 
@@ -144,3 +140,12 @@ all five actions. Initial trial setup errors (local install spelling, unseeded o
 cache and existing uppercase analysis.System) were corrected. A real incomplete-pipe
 SIGINT test exposed a blocked OS read; executable-owned cancellation adapter fixes
 it. Final candidate-pinned trial and regression run follow; no release changes.
+
+2026-10-18 ACT4-M1/ACT5-M1: compiled producer and actual isolated gh-sdp workflow
+pass on final Go source 0b85a11; verification/docs recorded by dd7b974.
+Evidence.md pins source/tests, generated SDL views and same-context review limits.
+Actions.md and the XFMD guide document complete use and consumer requirements.
+Backlog/onHold reviewed: broader routine/session automation remains KB036/042/043;
+PG owns KB038/052, native consumer is external KB-XFMD-030. None is silently closed.
+KB053 and this bounded plan complete; Session0008 stays paused for owner pilot review.
+Main integration follows under T010 and is recorded with actual hashes in Session0011.
