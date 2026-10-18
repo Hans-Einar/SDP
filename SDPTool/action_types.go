@@ -65,9 +65,10 @@ type ActionDescriptor struct {
 	Availability ActionAvailability `json:"availability"`
 }
 type ActionCatalogue struct {
-	Schema    string `json:"schema"`
-	Operation string `json:"operation"`
-	Producer  struct {
+	Diagnostics []InvokeError `json:"diagnostics,omitempty"`
+	Schema      string        `json:"schema"`
+	Operation   string        `json:"operation"`
+	Producer    struct {
 		Version  string `json:"version"`
 		Revision string `json:"revision"`
 	} `json:"producer"`

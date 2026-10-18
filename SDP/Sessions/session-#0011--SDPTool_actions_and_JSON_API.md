@@ -393,3 +393,7 @@ under T010 authorization. Broader SDL/SDUI suites remain separately in progress.
 T010 ACT1-M1: typed invocation/catalogue boundary and canonical parser-validated SDL
 model are delivered. Model authoring initially failed ordering checks; formatter
 corrected ordering and final validation passes. No transport is advertised yet.
+
+T010 ACT2-M1: catalogue and discovery invocation delivered; strict parsing, CLI
+parity, cancellation/output failure tests and compiled stdin trial pass. Broader
+SDL/SDUI integration suites also completed successfully. ACT3 blueprint handlers next.

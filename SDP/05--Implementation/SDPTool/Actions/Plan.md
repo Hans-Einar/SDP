@@ -42,7 +42,7 @@ installation replacement and editing other worktrees remain outside scope.
 | --- | --- | --- | --- |
 | ACT0 Preparation | ACT0-M1 | Reconcile shared-file ownership, KB051 identity and event provenance; record combined baseline and fresh green preflight | completed; Integration.md |
 | ACT1 Contract | ACT1-M1 | Finalize machine schemas/typed operation boundary and update validated SDL design sources on selected baseline; agree bounded consumer vocabulary | completed; typed wire contract and parser-validated SDL boundary |
-| ACT2 Read workflow | ACT2-M1 | Registry-derived actions catalogue, strict invoke stdin/file transport and project.discover through shared CLI service | planned |
+| ACT2 Read workflow | ACT2-M1 | Registry-derived actions catalogue, strict invoke stdin/file transport and project.discover through shared CLI service | completed; ACT2 evidence below |
 | ACT3 Blueprint workflow | ACT3-M1 | Generate/retain, assess and list typed actions; preserve preliminary sources, immutable bundles, blocked results and domain diagnostics | planned |
 | ACT3 Blueprint workflow | ACT3-M2 | Embedded assignment request, separately supplied principal, shared human/JSON handler, exact revision checks and safe retry reconciliation | planned |
 | ACT4 Consumer verification | ACT4-M1 | Compiled-process tests, headless consumer and actual gh-sdp transport with isolated signed development distribution; review and regressions | planned |
@@ -129,3 +129,7 @@ Concurrency preflight still RED for integration; isolated planning records only.
 units to authoritative SDL model; canonical formatting and Go parser validation pass.
 Full transport/schema enforcement is ACT2. Current implementation branch is
 sdp/actions-json-api in /tmp/sdp-session11-integration.
+
+2026-10-18 ACT2-M1: shared registry, bounded strict stdin/file invocation, contextual
+catalogue and discovery delivered. Targeted Go tests and compiled stdin/catalogue
+trial pass; invalid requests and broken output fail with meaningful exit codes.

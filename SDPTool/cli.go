@@ -8,9 +8,17 @@ import (
 	"github.com/Hans-Einar/SDP/SDPTool/presentation"
 	"io"
 	"os"
+	"strings"
 )
 
+// Run retains the legacy argv/output API; stdin is explicit in RunWithInput.
 func Run(ctx context.Context, args []string, out, errs io.Writer) int {
+	return RunWithInput(ctx, args, strings.NewReader(""), out, errs)
+}
+func RunWithInput(ctx context.Context, args []string, in io.Reader, out, errs io.Writer) int {
+	if len(args) > 0 && args[0] == "invoke" {
+		return invocationCommand(ctx, args[1:], in, out, errs)
+	}
 	args, jsonMode, formatErr := outputArguments(args)
 	report := func(w io.Writer, e error) int { return reportMode(w, e, jsonMode) }
 	emit := func(v any) error { return presentation.Default().Write(out, v, jsonMode) }
@@ -36,19 +44,44 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 	}
 
 	if len(args) == 1 && (args[0] == "--help" || args[0] == "help") {
-		_, e := io.WriteString(out, "Usage: sdptool [PROJECT-OR-SDP-AREA] governance|model|discover|run|tree|select|view ip|sdui-preview|install|upgrade|release-log [options]\n       sdptool preview FILE --output DIRECTORY [--renderer PROGRAM]\nDefault output is human-readable; add --json for machine clients.\nSee SDPTool/Contract.md for source, model, revision and resource contracts.\n")
+		_, e := io.WriteString(out, "Usage: sdptool [PROJECT-OR-SDP-AREA] actions|invoke|governance|model|discover|run|tree|select|view ip|sdui-preview|install|upgrade|release-log [options]\n       sdptool preview FILE --output DIRECTORY [--renderer PROGRAM]\nDefault output is human-readable; add --json for machine clients.\nSee SDPTool/Contract.md for source, model, revision and resource contracts.\n")
 		if e != nil {
 			return report(errs, e)
 		}
 		return 0
 	}
 	selected := "."
+	explicitProject := false
 	if len(args) > 1 && !isCommand(args[0]) {
 		selected = args[0]
+		explicitProject = true
 		args = args[1:]
 	}
 	if len(args) > 0 && args[0] == "governance" {
 		return governanceCommand(selected, args[1:], out, errs, jsonMode)
+	}
+	if len(args) > 0 && args[0] == "invoke" {
+		return writeInvocation(out, errs, invokeFailure(InvokeResponse{Schema: InvokeSchema}, 2, "invalid-request", fmt.Errorf("invoke must be the first argument; project belongs in request context")))
+	}
+	if len(args) > 0 && args[0] == "actions" {
+		if len(args) != 1 {
+			return report(errs, failure("arguments", fmt.Errorf("actions takes only a project selection and --json")))
+		}
+		catalogueContext := ""
+		if explicitProject {
+			catalogueContext = selected
+		}
+		result, e := Actions(ctx, catalogueContext)
+		if e != nil {
+			return report(errs, e)
+		}
+		if e = writeActions(out, result, jsonMode); e != nil {
+			return report(errs, e)
+		}
+		if len(result.Diagnostics) > 0 {
+			return 1
+		}
+		return 0
 	}
 	if len(args) > 0 && args[0] == "model" {
 		return modelCommand(selected, args[1:], out, errs, jsonMode)
@@ -70,7 +103,8 @@ func Run(ctx context.Context, args []string, out, errs io.Writer) int {
 		if len(args) != 1 {
 			return report(errs, failure("arguments", fmt.Errorf("discover takes no positional arguments")))
 		}
-		p, e := Discover(selected)
+		value, _, e := performDiscover(ctx, actionContext{Root: selected}, noActionParameters{})
+		p, _ := value.(Project)
 		if e != nil {
 			return report(errs, e)
 		}
@@ -233,7 +267,7 @@ func reportMode(w io.Writer, e error, jsonMode bool) int {
 
 func isCommand(s string) bool {
 	switch s {
-	case "governance", "run", "model", "release-log", "install", "upgrade", "preview", "discover", "view", "tree", "select", "sdui-preview":
+	case "actions", "invoke", "governance", "run", "model", "release-log", "install", "upgrade", "preview", "discover", "view", "tree", "select", "sdui-preview":
 		return true
 	}
 	return false
