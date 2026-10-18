@@ -4,7 +4,7 @@
 | --- | --- |
 | id | PLAN-SDP-0024 |
 | project | SDP |
-| state | planned |
+| state | active |
 | PlanType | ImplementationPlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
@@ -41,7 +41,7 @@ installation replacement and editing other worktrees remain outside scope.
 | Phase | Milestone | Complete delivery and acceptance | State |
 | --- | --- | --- | --- |
 | ACT0 Preparation | ACT0-M1 | Reconcile shared-file ownership, KB051 identity and event provenance; record combined baseline and fresh green preflight | completed; Integration.md |
-| ACT1 Contract | ACT1-M1 | Finalize machine schemas/typed operation boundary and update validated SDL design sources on selected baseline; agree bounded consumer vocabulary | planned; prose proposal ready |
+| ACT1 Contract | ACT1-M1 | Finalize machine schemas/typed operation boundary and update validated SDL design sources on selected baseline; agree bounded consumer vocabulary | completed; typed wire contract and parser-validated SDL boundary |
 | ACT2 Read workflow | ACT2-M1 | Registry-derived actions catalogue, strict invoke stdin/file transport and project.discover through shared CLI service | planned |
 | ACT3 Blueprint workflow | ACT3-M1 | Generate/retain, assess and list typed actions; preserve preliminary sources, immutable bundles, blocked results and domain diagnostics | planned |
 | ACT3 Blueprint workflow | ACT3-M2 | Embedded assignment request, separately supplied principal, shared human/JSON handler, exact revision checks and safe retry reconciliation | planned |
@@ -124,3 +124,8 @@ owner resumes its BP2-A pilot review; this delivery cannot approve the pilot.
 2026-10-10, Session0011 T007: plan registered as planned with contract proposal.
 No product code, SDL source, executable schema or test was changed/run for ACT delivery.
 Concurrency preflight still RED for integration; isolated planning records only.
+
+2026-10-18 ACT1-M1: added typed wire/catalogue contract and ActionRegistry/JsonInvocationAdapter
+units to authoritative SDL model; canonical formatting and Go parser validation pass.
+Full transport/schema enforcement is ACT2. Current implementation branch is
+sdp/actions-json-api in /tmp/sdp-session11-integration.

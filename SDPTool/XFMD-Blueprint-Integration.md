@@ -73,7 +73,7 @@ Linux; parsing or blueprint generation does not prove implementation conformance
 
 Content discovery is not a command catalogue. The current producer has no generic
 metadata contract sufficient to build arbitrary command menus/forms automatically.
-[KB-SDP-053](../SDP/KanBan/backlog/%23053--Proposal--Discoverable-SDPTool-actions.md)
+[KB-SDP-053](../SDP/KanBan/active/%23053--Proposal--Discoverable-SDPTool-actions.md)
 registers that producer work. External KB-XFMD-030 owns its consumer and preferences.
 
 Use stable action IDs, labels/groups, descriptions, icon keys, typed inputs/outputs,

@@ -1,4 +1,6 @@
 language design-core version 0.5.
+unit ActionRegistry.
+activity ActionsDelivery.
 functionality AssessBlueprintEvidence.
 unit BlueprintAssessment.
 activity BlueprintAssessmentDelivery.
@@ -18,7 +20,9 @@ functionality CheckTransitionAuthority.
 unit ContextFacade.
 usecase CoordinateGovernedWork.
 functionality DescribeRegisteredProject.
+functionality DescribeSupportedActions.
 capability DiagnosticBlueprint.
+feature DiscoverableActions.
 activity ExistingInstallFacade.
 unit ExistingInstallationFacade.
 interface ExistingInstallationLibrary.
@@ -34,6 +38,8 @@ usecase InstallReviewedProcess.
 feature InstallationFacade.
 mode InstallationHandling.
 functionality InvokeReviewedInstallation.
+functionality InvokeTypedAction.
+unit JsonInvocationAdapter.
 interface ModelSnapshotLibrary.
 database OperationalRunStore.
 feature ProjectFacade.
@@ -77,7 +83,13 @@ container SdpToolHost.
 message TransitionAccepted.
 message TransitionRefused.
 interface TrustedAssignmentBinding.
+capability TypedLocalInvocation.
 functionality VerifyRetainedBlueprints.
+ActionRegistry owns DescribeSupportedActions.
+ActionsDelivery addresses DescribeSupportedActions.
+ActionsDelivery addresses InvokeTypedAction.
+ActionsDelivery delivers DiscoverableActions.
+ActionsDelivery has implementation-status = planned.
 AssessBlueprintEvidence allocated-to SdpToolHost in mode ProjectReading.
 AssessBlueprintEvidence contributes-to ScopedBlueprintReadiness.
 AssessBlueprintEvidence realizes DiagnosticBlueprint.
@@ -118,8 +130,12 @@ ContextFacade owns ResolveCheckoutAuthority.
 DescribeRegisteredProject allocated-to SdpToolHost in mode ProjectReading.
 DescribeRegisteredProject contributes-to ProjectFacade.
 DescribeRegisteredProject realizes ProjectInventory.
+DescribeSupportedActions allocated-to SdpToolHost in mode ProjectReading.
+DescribeSupportedActions contributes-to DiscoverableActions.
+DescribeSupportedActions realizes TypedLocalInvocation.
 DiagnosticBlueprint requires ExistingSdlProjectionLibrary in mode ProjectReading.
 DiagnosticBlueprint requires ModelSnapshotLibrary in mode ProjectReading.
+DiscoverableActions supports CoordinateGovernedWork.
 ExistingInstallFacade addresses InvokeReviewedInstallation.
 ExistingInstallFacade delivers InstallationFacade.
 ExistingInstallFacade has implementation-status = implemented.
@@ -144,6 +160,10 @@ InstallationFacade supports InstallReviewedProcess.
 InvokeReviewedInstallation allocated-to SdpToolHost in mode InstallationHandling.
 InvokeReviewedInstallation contributes-to InstallationFacade.
 InvokeReviewedInstallation realizes ReviewedInstallation.
+InvokeTypedAction allocated-to SdpToolHost in mode RoutineHandling.
+InvokeTypedAction contributes-to DiscoverableActions.
+InvokeTypedAction realizes TypedLocalInvocation.
+JsonInvocationAdapter owns InvokeTypedAction.
 OperationalRunStore holds RunSnapshots.
 ProjectFacade supports BrowseProjectFacts.
 ProjectInventory requires ExistingSdlProjectionLibrary in mode ProjectReading.
@@ -234,6 +254,7 @@ RunRepository owns OperationalRunStore.
 RunRepository owns ReconcileRunRevision.
 RunSnapshots upholds RoutineOutcome.
 ScopedBlueprintReadiness supports InspectProposedModelChange.
+SdpToolHost contains ActionRegistry.
 SdpToolHost contains BlueprintAssessment.
 SdpToolHost contains BlueprintCatalogue.
 SdpToolHost contains BlueprintFacade.
@@ -241,6 +262,7 @@ SdpToolHost contains BlueprintLifecycle.
 SdpToolHost contains ContextFacade.
 SdpToolHost contains ExistingInstallationFacade.
 SdpToolHost contains ExistingNavigationFacade.
+SdpToolHost contains JsonInvocationAdapter.
 SdpToolHost contains RoutineCoordinator.
 SdpToolHost contains RunRepository.
 SdpToolHost provides BlueprintAssignmentControl.
@@ -248,12 +270,14 @@ SdpToolHost provides DiagnosticBlueprint.
 SdpToolHost provides ProjectInventory.
 SdpToolHost provides ReviewedInstallation.
 SdpToolHost provides RoutineCoordination.
+SdpToolHost provides TypedLocalInvocation.
 TransitionAccepted has message-kind = result.
 TransitionAccepted replies-to RequestTransition.
 TransitionAccepted upholds RoutineOutcome.
 TransitionRefused has message-kind = result.
 TransitionRefused replies-to RequestTransition.
 TransitionRefused upholds RoutineOutcome.
+TypedLocalInvocation requires TrustedAssignmentBinding in mode RoutineHandling.
 VerifyRetainedBlueprints allocated-to SdpToolHost in mode ProjectReading.
 VerifyRetainedBlueprints contributes-to RetainedBlueprintNavigation.
 VerifyRetainedBlueprints realizes DiagnosticBlueprint.

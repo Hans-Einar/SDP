@@ -38,7 +38,7 @@ gantt
 | --- | --- |
 | Session reference | SESSION-SDP-0011 |
 | Status | active |
-| Primary card | [KB-SDP-051](../KanBan/backlog/%23053--Proposal--Discoverable-SDPTool-actions.md) |
+| Primary card | [KB-SDP-051](../KanBan/active/%23053--Proposal--Discoverable-SDPTool-actions.md) |
 | Snapshot date | 2026-10-18 |
 | Current step | S0 refreshed red; S1 prose/plan ready, schemas/SDL waiting |
 | Proposed next step | Select integration ownership/order and reconcile KB051; fresh green baseline before ACT1 product/model changes |
@@ -62,7 +62,7 @@ outside this Session's product scope. A future adapter can reuse the same servic
 
 | Card | Role | Initial | Planned final | Current | Actual final |
 | --- | --- | --- | --- | --- | --- |
-| [KB051](../KanBan/backlog/%23053--Proposal--Discoverable-SDPTool-actions.md) | Primary | backlog | completed after scoped delivery/evidence | queued for S1 | pending |
+| [KB051](../KanBan/active/%23053--Proposal--Discoverable-SDPTool-actions.md) | Primary | backlog | completed after scoped delivery/evidence | queued for S1 | pending |
 | [KB050](../KanBan/active/%23050--Proposal--Semantic-blueprints.md) | Context only | gate-review | unchanged by this Session | gate-review; Session0008 paused | not disposed here |
 | [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md) | Handoff to ProjectGovernance | absent | backlog registration; owning Session0007 selects delivery | owning PG worktree active, observed T007; local copy remains historical backlog | registered T005; transferred to PG |
 | external:KB-XFMD-030 | Consumer handoff | reported backlog at creation | XFMD agent selects native work | external, not locally authoritative | external |
@@ -389,3 +389,7 @@ management/Toolkit/import checks. Integration.md records scope and preserved inp
 The owner's explicit integration assignment resolves the earlier ownership gate;
 ACT0 is green for bounded Actions work on this candidate. Main integration proceeds
 under T010 authorization. Broader SDL/SDUI suites remain separately in progress.
+
+T010 ACT1-M1: typed invocation/catalogue boundary and canonical parser-validated SDL
+model are delivered. Model authoring initially failed ordering checks; formatter
+corrected ordering and final validation passes. No transport is advertised yet.

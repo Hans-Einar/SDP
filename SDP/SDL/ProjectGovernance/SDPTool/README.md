@@ -125,3 +125,11 @@ The source implementation delivers bounded local assignment control, not the
 separate general RoutineCoordinator, authenticated MCP callers or automatic code
 execution. See SDPTool/blueprints/lifecycle.go, blueprintstate/state.go and
 blueprint_navigation.go. Native XFMD rendering and release packaging remain separate.
+
+## Actions/JSON boundary — ACT1
+
+ActionRegistry describes supported typed operations; JsonInvocationAdapter frames
+one bounded local request and one response. They are units in SdpToolHost, not
+new runtime containers. CLI and invocation reuse the same domain handlers. Trusted
+assignment principal remains outside JSON input. The [Actions contract](../../../04--Design/SDPTool/Actions/Contract.md)
+selects the bounded protocol and leaves host scheduling/MCP to their own systems.

@@ -5,7 +5,7 @@
 | id | KB-SDP-053 |
 | project | SDP |
 | type | Proposal |
-| CardState | queued |
+| CardState | in-progress |
 | created | 2026-10-09T09:44:29.345109+00:00 |
 | source | Owner Session0008 T013, 2026-10-09 |
 | next_review | Session0011 S1 contract and implementation-plan selection |
@@ -124,3 +124,7 @@ paths and retry/cancellation boundaries. [PLAN-SDP-0024](../../05--Implementatio
 is planned: ACT0 integration, ACT1 schema/SDL contract, ACT2 read workflow, ACT3
 blueprint operations, ACT4 actual consumer/wrapper tests and ACT5 handoff. Existing
 CLI operations remain compatible. No new command is implemented by these documents.
+
+
+2026-10-18: ACT0 integrated to main at 8aa16c2; owner authorizes completing
+Session0011. PLAN-SDP-0024 execution starts on sdp/actions-json-api.
