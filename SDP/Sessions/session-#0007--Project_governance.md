@@ -2,10 +2,10 @@
 
 ## Session roadmap
 
-Latest recorded turn: T022 — PGL2-C2c delivers explicit local controller decision
-capture, revision-bound history and current applicability checks. The owner reads
-the walkthrough while work continues; final interaction remains open to feedback.
-Dispatch prerequisites are next; no actual owner approval or agent launch is claimed.
+Latest recorded turn: T023 — owner reports the design-review fixture output.
+Explain the current technical basis versus the scripted rejected decision, and the
+optional local decision interaction. C2c remains delivered; dispatch prerequisites
+remain next. This report is not owner acceptance or rejection of PG.
 Sequence only; synthetic dates represent order, not estimates or elapsed time.
 
 ```mermaid
@@ -995,3 +995,23 @@ stands. No main merge, release, production owner approval or completed PGL2 is c
 
 Closeout records: EVT-PM-SDP-000201 / EVT-KB-SDP-000373; system evidence in Traceability.
 This is a work summary, not a captured final response or owner acceptance.
+
+## T023 — Interpret the owner's reported lab status
+
+Date: 2026-10-18. Manual work summary; exact host IDs/timing unavailable. Owner
+pastes the output of ./design-review: current technical check, rejected decision,
+fixture-owner attribution, synthetic superseding comment and dispatch unavailable.
+This is evidence that the owner ran the read-only helper, not an owner decision
+on the fixture or acceptance of the PG workflow.
+
+Reused SDP 1.2.0 and mandatory Session upkeep. Inspected the installed helper and
+recovered T022; no product code or lab state was changed. Explain that the automated
+trial intentionally ends with a rejection after earlier decisions, despite current
+source checks. The status display does not itself present a complete design review.
+The optional --decide --owner warloc interaction shows the fixture package and reads
+an explicit choice/comment; it affects only the isolated test and launches no agent.
+Do not execute that interaction or supply a decision on the owner's behalf.
+
+S6, the plan and KB052 retain their current states. Next remains dispatch prerequisites
+and incorporation of actual interaction feedback. No new scope, gate, approval or
+management lifecycle transition is inferred from the pasted output.
