@@ -15,7 +15,7 @@ func (c *Controller) Approve(runID string, reply governance.ApprovalReply, exact
 	if !ok || c.Approvals != "ask" || reply.Epoch != c.Epoch {
 		return result, fmt.Errorf("explicit approval mode and current epoch required")
 	}
-	unlock, e := c.Service.ControllerLease(governance.LocalController())
+	unlock, e := c.Service.RunControllerLease(governance.LocalController(), runID)
 	if e != nil {
 		return result, e
 	}

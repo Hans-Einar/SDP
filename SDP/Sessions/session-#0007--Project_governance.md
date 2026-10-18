@@ -5,7 +5,8 @@
 Latest recorded turn: T024 — owner asks to continue toward Session completion.
 PGL2-C2d activates approved implementation and verifies a real bounded Go task.
 Native report submission was refused under never; host completion is not assignment
-completion. Responsive coordination/reporting and the retained verification gates remain.
+completion. PGL3-C1 per-run isolation is also delivered at service/protocol level.
+Leader/report coordination and the retained verification gates remain.
 Sequence only; synthetic dates represent order, not estimates or elapsed time.
 
 ```mermaid
@@ -36,7 +37,7 @@ gantt
 | Status | active |
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
 | Snapshot date | 2026-10-19 |
-| Current step | S6 / KB052; PGL2-C2d activation/native code verified; report integration pending |
+| Current step | S6 / KB052; C2d activation/native code and PGL3-C1 per-run isolation delivered; leader/report integration pending |
 | Proposed next step | PGL3 responsive coordination, per-run isolation and durable report delivery; preserve actual approval boundaries |
 | Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues provider-backed review checks; T022 continues implementation while owner reads the walkthrough; T024 continues the plan toward Session completion |
 
@@ -1039,16 +1040,16 @@ skills/distribution or user host configuration is changed.
 records activation of the exact currently approved Master package into one durable
 implementation run. The existing controller and five MCP operations consume live
 ImplementationPlan/design authority. Source or decision drift blocks advancement;
-stop bookkeeping remains possible. Immutable retry and one-run identity, profile0.5
+stop bookkeeping remains possible. Immutable retry and one-run identity, profile 0.5
 compatibility, preparation freeze and conservative retained scope are verified.
 Explicit run closure/replanning and parallel controllers remain later work.
 
 Affected race/vet and full SDPTool tests pass. Real provider/compiled protocol tests
 and 36 wire objects pass schema checks. The first native trial ended without any
 implementation because its isolated standalone host lacked the execution helper;
-that failure is retained. A fresh trial with the verified complete official0.161.0
+that failure is retained. A fresh trial with the verified complete official 0.161.0
 package performed the bounded Go task, passed external before/after behavioral checks
-and project tests, and changed only the two authorized code files. Installed0.162.1,
+and project tests, and changed only the two authorized code files. Installed 0.162.1,
 existing managed account/model/config and 176 original lab entries remain unchanged.
 
 The native report call was rejected by automatic approval review under never. Do
@@ -1063,3 +1064,30 @@ leader/per-run control and durable reports, then direct SAD interaction and inte
 evidence/review/Steering gates. No new owner permission gate is inferred for already
 authorized development. PM202 / KB374 record this milestone; system evidence remains
 in Traceability. This is a work summary, not a captured final answer.
+
+### T024 continuation — Per-run ownership prerequisite
+
+Continued unaffected PGL3 work after asking the owner whether status/result reports
+within an authorized assignment should be automatic or individually confirmed. No
+answer has been recorded. The actual native rejection remains authoritative; this
+question selects future product interaction and does not override the refused call.
+
+[Preflight](../05--Implementation/SDPTool/ProjectGovernance/preflight-PGL3-C1.json)
+rechecks thirteen worktrees from C2d commit 368d705; same scoped isolation applies.
+Reused Architect for compatibility/ownership, then Worker for the bounded change.
+New shared compatibility locks plus exclusive run locks let disjoint controllers
+progress while preserving old/new and same-run exclusion. Global mutation locking
+and host policy are unchanged; no new schema or worker capability is introduced.
+
+[C1 evidence](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL3-C1.md)
+records service/protocol parallel progress, process-exit lock release, refusal/no-write
+and the full test/race/vet checks. An initial fake-host duplicate thread ID was fixed
+in the fixture after the existing ownership guard correctly refused it. No native
+parallel execution, responsive leader, automatic inbox or independent review is
+claimed. The original owner lab stays on its separately pinned C2d preview.
+
+PM203 / KB375 record this second milestone in T024. C2d was committed and pushed as
+368d705. Session remains active; next dependent work is leader/report coordination
+with explicit report-policy disposition. Direct SAD interaction, scope closure,
+evidence publication and independent integrated review remain in the completion
+route. Owner feedback is not fabricated and the Session is not marked complete.

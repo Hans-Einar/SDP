@@ -126,3 +126,9 @@ implementation trial. External behavioral tests pass and protected files remain 
 Native report submission was refused under never; no complete reporting, acceptance
 or independent review is claimed. Scope closure/replanning, SAD dispatch and PGL3–5
 remain open. CardState stays in-progress. EVT-KB-SDP-000374 records this boundary.
+
+2026-10-19 / continued T024: [PGL3-C1](../../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL3-C1.md)
+delivers per-run controller isolation with legacy exclusion and process-exit recovery.
+Tests demonstrate independent progress with protocol hosts, not native parallel agents
+or the responsive leader. Report interaction preference is pending; host policy is
+unchanged. CardState remains in-progress. EVT-KB-SDP-000375 records this milestone.

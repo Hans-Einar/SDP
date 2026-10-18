@@ -1,0 +1,56 @@
+{
+  "baseline": "368d7056c6ebcccb7bcc3050c4c5b433e6bad213",
+  "integratedMain": "e8760d331933361ab631ef0d52c20e87268a22b3",
+  "scope": "PGL3-C1 delivers per-run control/live leases preserving legacy exclusion, same-run guards and process-exit release. Controller protocol, affected race/vet and full tests pass. Leader/inbox/native parallel work and owner report-interaction choice remain; no host approval policy change.",
+  "candidateKind": "baseline plus exact source hashes; evidence precedes milestone commit",
+  "goVersion": "go version go1.27.1 linux/amd64",
+  "sourceFiles": {
+    "SDPTool/cmd/sdp-controller/session.go": "7fa8485e9ff2008f0b7e744465e69a2cb6e9b0c4510e7baa4d5c8c46bad67800",
+    "SDPTool/governance/controller_lease.go": "6913df871207d38a25d5b753c7b4947c06e6bdcda0f748d34c548e2325108802",
+    "SDPTool/governance/controller_lease_linux_test.go": "7f101426e860c7f8cdc19452ac4933a74d035fd3be6bcaca2bae1d5923448091",
+    "SDPTool/governance/lock_linux.go": "9e53daba2fbe348166992e7e0809adc7e3ed9d104f7adb3a731dbb01ad41d05c",
+    "SDPTool/governance/lock_other.go": "6da665e4f9c54ad108fa044b963739b4001ae951f2559ca7dca23d33b5beb088",
+    "SDPTool/governancecontroller/README.md": "27f1a71a0165401be11e5354f1d5e19d62ec1a6a9b82533a9a5cf2709e2961df",
+    "SDPTool/governancecontroller/approval.go": "b5223beb4528189ae99177c77e7c114cf00e3d7f878bf0f22b9c5bb10b3fa31a",
+    "SDPTool/governancecontroller/controller.go": "3287e725bcd935c7aef3350dcba4cb19af544fd9e1d01cf1c7df916f0917d8ee",
+    "SDPTool/governancecontroller/parallel_test.go": "e0dbb59f46126c4c7040ea822cfb585c9eb10b4951baffa80aa33e19413ae18d"
+  },
+  "fileSetDigest": "1d31bf3ddcd0c528c5e43bbc447e65fa762565636958049524b6bd7856591c9e",
+  "checks": {
+    "race.log": {
+      "result": "passed",
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t74.823s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancecontroller\t46.975s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancemcp\t6.425s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller\t1.050s\n",
+      "sha256": "eb59e6bc38e6da7096d45614a304b27023b858c0c826559354464f41b9b01eeb"
+    },
+    "vet.log": {
+      "result": "passed",
+      "output": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "sdptool-tests.log": {
+      "result": "passed",
+      "output": "ok  \tgithub.com/Hans-Einar/SDP/SDPTool\t26.099s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/blueprints\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/blueprintstate\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller\t(cached)\n?   \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdp-mcp\t[no test files]\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/cmd/sdptool\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governance\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancecontroller\t15.586s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancehost\t0.135s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/governancemcp\t7.909s\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/install\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/model\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/presentation\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/projecthistory\t(cached)\nok  \tgithub.com/Hans-Einar/SDP/SDPTool/tools/profile\t(cached)\n",
+      "sha256": "724a80a04ca23fbb1ebccb907e092a21cdd86cf89d683abfd8dbe315cfd4cece"
+    },
+    "management.log": {
+      "result": "passed",
+      "output": "PASS: 66 cards, 45 management records, 4 lineage operations, 614 events; schema/history/metadata/placement/grouping\n",
+      "sha256": "7224f9f434c1779550b8b24353837d214444176b7eb127bc3e0d681f202cad6c"
+    },
+    "toolkit.log": {
+      "result": "passed",
+      "output": "SDP Toolkit validation passed\n",
+      "sha256": "5e9d1353c22f090c8b066ba39da56ff229fbc1b07a7e12e21bb8ac9ffbb9e3ad"
+    },
+    "integrity": {
+      "result": "passed",
+      "localMarkdownLinks": 129,
+      "canonicalLedgerPrefixesPreserved": true
+    }
+  },
+  "nativeParallelModels": false,
+  "independentReview": false,
+  "actualOwnerApprovalRecorded": false,
+  "hostPolicyChanged": false,
+  "published": false
+}

@@ -302,7 +302,7 @@ sequenced with those workstreams rather than copied into a second engine.
 | --- | --- | --- | --- |
 | PGL1 | Readable/JSON overview of all registered work from existing operational state; lab inspection without launching work | Scenario 5 subset; empty store, multiple runs, stale records, historical host/skill/tool facts, no writes | delivered; [bounded evidence](Evidence-PGL1.md) |
 | PGL2 | Prepare and inspect distinct SAD/implementation assignments; stale design or conflicting scope refuses dispatch eligibility | Scenario 2 guards; current authority, exact bundle revisions, explicit cross-worktree claim boundary, retry/CAS tests | in-progress; [C1 preparation delivered](Evidence-PGL2-C1.md), [C2a revision/retirement delivered](Evidence-PGL2-C2a.md), [C2b provider checks delivered](Evidence-PGL2-C2b.md), [C2c local decision adapter delivered](Evidence-PGL2-C2c.md), [C2d activation and native code trial delivered](Evidence-PGL2-C2d.md); reporting/coordination remain PGL3 |
-| PGL3 | Responsive Project Leader plus two bounded Masters through the trusted controller; durable report inbox and same-Session phase continuation | Scenarios 1, 3, 4; real host execution, no duplicate launch after uncertain reply, delayed report versus new steering | planned |
+| PGL3 | Responsive Project Leader plus two bounded Masters through the trusted controller; durable report inbox and same-Session phase continuation | Scenarios 1, 3, 4; real host execution, no duplicate launch after uncertain reply, delayed report versus new steering | in-progress; [C1 per-run isolation delivered](Evidence-PGL3-C1.md); leader/inbox/native parallel evidence pending |
 | PGL4 | Direct SAD/Master conversation and project panel; revision-bound ModelGovernance/Blueprint handoff | Scenarios 2, 5; real TARGET change stales dependent implementation; roles/tools/children/freshness evidence; owner development trial | planned |
 | PGL5 | Integrated recovery/evidence review and revision-bound remote Steering package | All six scenarios; independent review and selected online-host evidence; PGI4/5 obligations retained | planned |
 
@@ -446,3 +446,19 @@ replanning, report integration and SAD dispatch are not silently declared comple
 Next is PGL3's responsive coordination/durable report contract and per-run controller
 isolation, retaining the actual native report-policy limitation. PGL4/5 and retained
 PGI gates still apply. EVT-PM-SDP-000202 / EVT-KB-SDP-000374 record this delivery.
+
+## PGL3-C1 selection — continued T024
+
+Continue with per-run control isolation as the first prerequisite for two disjoint
+Masters and a responsive leader. The [contract](../../../04--Design/SDPTool/ProjectGovernance/Orchestration.md#pgl3-c1--per-run-controller-isolation-2026-10-19)
+and [preflight](preflight-PGL3-C1.json) preserve old/new exclusion and all authorization
+checks. This does not select automatic answers to host approval requests. A focused
+owner interaction question is pending: automatic status/result delivery within an
+already-authorized assignment versus a decision for each submission. Existing never
+policy remains intact while unaffected control isolation proceeds.
+
+[Evidence](Evidence-PGL3-C1.md) and [candidate](candidate-PGL3-C1.json) establish the
+C1 lease boundary with service/protocol tests, process-exit recovery and unchanged
+legacy exclusion. The full SDPTool suite, affected race tests and vet pass. This
+is not native parallel-agent or leader evidence. PM203 / KB375 record the delivery;
+report interaction remains a pending owner choice, not an assumed authorization.

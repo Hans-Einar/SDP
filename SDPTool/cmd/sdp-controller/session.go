@@ -99,7 +99,7 @@ func ownerCommand(args []string) error {
 		}
 		text = string(b)
 	}
-	unlock, e := service.LiveControllerLease(governance.LocalController())
+	unlock, e := service.RunLiveControllerLease(governance.LocalController(), *run)
 	if e != nil {
 		return e
 	}

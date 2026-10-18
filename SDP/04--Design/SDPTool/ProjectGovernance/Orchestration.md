@@ -342,3 +342,27 @@ Verify real provider-created approval through activation and the built controlle
 with a protocol fixture, current/stale worker context, drift before launch/steer,
 one-run retry/CAS and uncertain launch recovery. Record actual host trials separately
 from protocol fixtures; fixture-owner decisions are not actual owner acceptance.
+
+## PGL3-C1 — Per-run controller isolation, 2026-10-19
+
+Continue the selected PGL3 execution path by removing the checkout-wide lifetime
+bottleneck without weakening exclusion with existing controllers. New controllers
+hold a shared lock on the existing controller/live-controller lock files, then an
+exclusive per-run lock underneath them. Two disjoint runs can own different hosts;
+two controllers for one run still refuse. Legacy exclusive checkout leases conflict
+with every new shared lease in both acquisition orders. Preserve the short exclusive
+store mutation lock and all source/scope/retry checks. No new operational schema is
+needed because lease layout does not alter stored run meaning or allow old writers
+to race a new active controller.
+
+Use validated existing run IDs before creating per-run directories. A worker caller,
+invalid ID or missing run cannot acquire a lease. If the second lock fails, release
+the shared compatibility lock. Process exit releases both OS locks; directories are
+not liveness records. Read-only observers still acquire no control lease. Distinct
+runs do not share a host connection; the existing host client remains serialized.
+
+This is a prerequisite for the responsive leader and two-Master scenario, not proof
+of either. Verify same-run and legacy/new exclusion in both orders, independent-run
+leases, process-exit release, no stale global lock after partial acquisition, and
+controller integration. Keep automatic report-policy design separate: the actual
+native refusal is retained and the owner's interaction preference is pending.

@@ -88,9 +88,11 @@ input remains unresolved. Prepared records can be inspected, but this CLI does n
 yet expose a deliberate discard/reconciliation action. Do not edit the state store
 or create duplicate runs to bypass uncertainty.
 
-A controller lease serializes dispatch and a second lease covers the whole terminal
-session, preventing takeover by another terminal. Core mutation locks remain short
-so assignment-bound MCP calls can proceed. The launch pins source references,
+A controller lease serializes operations on one run and a second lease covers that
+run's terminal session, preventing takeover by another terminal. Distinct runs can
+progress independently with distinct host connections. New per-run leases also hold
+a shared lock on the legacy checkout lease, so an older exclusive controller cannot
+race them. The short exclusive store mutation lock remains shared with MCP. The launch pins source references,
 Session, assignment and sandbox in its payload; after thread binding it requires
 the five assignment-bound MCP tools before starting a turn. The fresh Master is
 instructed to read governing documents and preserve bounds. No native child or
@@ -336,3 +338,17 @@ provider validation and actual design approval are separate unfinished gates.
 The [separate preparation trial](../labs/project-governance/README.md#assignment-preparation-trial--pgl2-c1)
 exercises these commands, including old-reader refusal after the explicit store
 profile upgrade. It does not replace the original one-Master owner experiment.
+
+## PGL3-C1 per-run isolation boundary
+
+The control and terminal-session leases now have validated run scope while retaining
+mutual exclusion with legacy checkout-wide controllers. A blocked host call for one
+run no longer holds the other run's control lease. The same-run exclusion, immutable
+input/retry checks and source/scope guards remain. File existence does not indicate
+liveness; process exit releases OS ownership. Read-only observers take no lease.
+
+Service/protocol tests exercise two disjoint runs while one host response waits,
+legacy/new exclusion in both directions, failed-acquisition cleanup and subprocess
+exit. These are not evidence of two real native agents, a responsive Project Leader,
+a report inbox or phase continuation. Existing native reporting under never remains
+refused; this change does not alter host policies or answer approval prompts.

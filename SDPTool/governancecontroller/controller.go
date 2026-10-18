@@ -77,7 +77,7 @@ func now() string { return time.Now().UTC().Format(time.RFC3339Nano) }
 // Launch consumes a new intent once while holding the controller lease. Failures
 // after claim remain uncertain, even if an RPC may have succeeded. No retry sends.
 func (c *Controller) Launch(ctx context.Context, runID, text string) (result governance.Result, err error) {
-	unlock, e := c.Service.ControllerLease(governance.LocalController())
+	unlock, e := c.Service.RunControllerLease(governance.LocalController(), runID)
 	if e != nil {
 		return result, e
 	}
@@ -202,7 +202,7 @@ func (c *Controller) Launch(ctx context.Context, runID, text string) (result gov
 // change stops the routine before attempting a host interrupt; it never expands
 // the existing assignment. Uncertain requests remain visible and are not resent.
 func (c *Controller) Control(ctx context.Context, runID, kind, text string) (result governance.Result, err error) {
-	unlock, e := c.Service.ControllerLease(governance.LocalController())
+	unlock, e := c.Service.RunControllerLease(governance.LocalController(), runID)
 	if e != nil {
 		return result, e
 	}
