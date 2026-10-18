@@ -908,3 +908,10 @@ implementation/verification evidence is in Traceability. Refreshed main remains
 e8760d3. XFMD viewpoint branch ecd9dcd has no scoped PG overlap. Prepare a combined
 PG PR on this ancestry; future ledger appends still require ordinary reconciliation.
 No main merge or release is authorized by this continuation.
+
+T020 delivery: a7f52ad commits PGL2-C2b and is pushed on the owning branch. Combined
+[draft PR 56](https://github.com/Hans-Einar/SDP/pull/56) includes C2a/C2b against main.
+The merge-tree check against pinned main e8760d3 passes; the branch worktree is clean
+at that delivery. Management validation reports 608 events; Toolkit validation,
+92 local document links, source hashes and canonical ledger prefixes pass. The PR
+remains draft for review; main is unchanged. No future conflict guarantee is implied.
