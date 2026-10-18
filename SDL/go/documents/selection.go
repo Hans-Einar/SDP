@@ -42,7 +42,9 @@ func Selected(ctx context.Context, v *viewpoint.Views, q viewpoint.Query, r Rend
 		text += "\nSymbol profile: SDL 1. Actor/ellipse use UML shapes; labeled SDL relations retain their language semantics. consumes is a dashed dependency; realizes is a contribution.\n\n"
 	}
 	if q.Projection == "overview" {
-		if q.Viewpoint == "VP07" {
+		if q.Viewpoint == "VP02" {
+			text += s.ArchitectureOverviewContext()
+		} else if q.Viewpoint == "VP07" {
 			text += s.FeatureOverviewContext(q.Mode)
 		} else {
 			text += s.OverviewContext()

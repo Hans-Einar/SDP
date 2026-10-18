@@ -439,3 +439,14 @@ Pure language output without filesystem binding retains text provenance.
 VP01 focused use cases use actor/ellipse notation with separate realization.
 Only explicit exercises relations attach ordered VP08 scenarios. Missing scenario
 associations and pre/postconditions remain unspecified, never inferred.
+
+## VP02 architecture overview — N5
+
+VP02 additionally advertises the same optional overviewTarget with
+projection=overview. It selects all declared Systems, Containers and Units plus
+all explicit contains facts from the complete checked source graph, including
+isolated roots. A source-linked structural register accompanies the flowchart.
+Empty architecture is explicit. No allocation/ownership/deployment inference;
+no new schema or fixed diagram-count cap. Original VP02 roots/parent detail targets
+remain unchanged. Like VP01, no mode/focus/relation/diagram/traversal filters are
+accepted for this complete overview. Existing sourceLinks/freshness rules apply.

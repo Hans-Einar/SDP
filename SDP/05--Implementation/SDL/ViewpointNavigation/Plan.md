@@ -206,3 +206,24 @@ No merge, publication or install follows from this implementation selection.
 [N4](N4.md) records completed selected detail/source transport, full producer and
 native verification, recovered diagram-count behavior and explicit residuals.
 This milestone does not close broader KB032 or integrate/release the producer.
+
+## N5 execution — XFMD Session0007 T001, 2026-10-19
+
+Owner authorizes integrating the existing delivery and continuing to the next
+viewpoint. N3j/N4 merge 5ca0e90 is pushed to main; its tree equals tested fde2239.
+BranchPolicy: sdp/xfmd-vp02-overview from 5ca0e90. CommitPolicy: scoped milestone.
+Select VP02 complete logical structure (System/Container/Unit plus contains),
+including isolated declarations; no allocation/ownership inference. Advertise
+through existing overviewTarget and preserve old roots/parent detail identities.
+Keep a source-linked structural register, explicit empty behavior and query
+filter rejection. No new count-only cap or guessed parent. Production model hold
+remains. Verify full inventory/proofs, composed freshness, Actions/discovery and
+native XFMD/PDF. See N5.md for the design and final evidence. No N5 merge/release
+or installation is selected by the existing-delivery integration authorization.
+
+### N5 outcome
+
+VP02's complete logical overview and source-linked register are implemented and
+verified through producer and native XFMD. See [N5](N5.md) and its candidate record.
+N3j/N4 is on main 5ca0e90; N5 remains its own milestone for later integration.
+Other viewpoints and previously recorded publication/resource obligations remain.

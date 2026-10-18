@@ -1,0 +1,23 @@
+{
+  "base": "5ca0e90f82c5da449d529906b4f753f39a907cb4",
+  "branch": "sdp/xfmd-vp02-overview",
+  "files": {
+    "SDL/go/documents/selection.go": "06725ca1563150b5c34218dba7d35c999c0d19fd66df8154b5391b0cb3b5738d",
+    "SDL/go/viewpoint/architecture_overview.go": "c21c942f8ed1b41b5c5453cfc01c6ec499b20e215ad7232541460211dd427c4a",
+    "SDL/go/viewpoint/architecture_overview_test.go": "31e1cbe13b96910d97760271d4135fb004088169d440a60dc1dd8ecdb8e09a4c",
+    "SDL/go/viewpoint/overview.go": "a81e94a12138fbebf73b1a919bbfac68950c04f2f626a6b5985e1ca97ebedb5d",
+    "SDL/go/viewpoint/overview_test.go": "497ef4555abf80c6ef03d485d93b157b57c757bc26259960e25a5b91e8ab4711",
+    "SDPTool/Contract.md": "3cf71a607dc75f95fc0d126b1119f8740df418442dd08c2fbb5077b9013319f0",
+    "SDPTool/architecture_overview_test.go": "17dc8f53e9ca3c5cc730469b5960dc95b65d8b178462bb095495b85278d0f43f",
+    "SDPTool/overview_actions_test.go": "4c53659509db4811fc940b7cc238756ae53726d1c92a13b9b42ff5d5612d9abf",
+    "SDPTool/overview_test.go": "a7ed78aa573da88f32064ec4a97c3b3e7cea4e5ece8c114569fb0d51ed89f6ec"
+  },
+  "binary": {
+    "path": "/tmp/xfmd-n5-sdptool",
+    "sha256": "52a6f65de299d26d26e920199d9a55fcd093e8f0766b2659fcce9f08c41b6c33"
+  },
+  "consumerTest": {
+    "path": "/home/warloc/git/xfmd-sdl-navigation/tests/gui/SdpOverviewGuiTest.cpp",
+    "sha256": "5be7e93c090091b3cc6bf7d508de3e7b0c92be9cbaf39260b28f018330a06b97"
+  }
+}

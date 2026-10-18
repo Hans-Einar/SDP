@@ -59,3 +59,13 @@ before publishing; composed sources bind the full source graph. No relationships
 scenario order or conditions may be invented. See the
 [contract](../../SDPTool/Contract.md) and
 [integration work unit](../05--Implementation/SDL/ViewpointNavigation/Plan.md).
+
+## VP02 complete architecture — REQ-SDPTOOL-003/004
+
+Owner continuation after the VP01/VP07 delivery selects VP02 (XFMD Session0007).
+Overview activation must retain every declared System, Container and Unit and
+explicit contains edge, including isolated roots. Keep original parent/root
+slices separate and preserve exact source provenance. Logical structure must not
+be represented as deployment, Functionality ownership or runtime communication.
+Empty structural inventories are explicit; unsupported filters cannot turn a
+partial graph into a claimed complete overview. See ViewpointNavigation/N5.md.
