@@ -1,0 +1,15 @@
+PASS wide SVG is rendered at its actual intrinsic aspect
+PASS tall SVG is rendered at its actual intrinsic aspect
+PASS negative-origin SVG is rendered at its actual intrinsic aspect
+PASS malformed content becomes a visible explicit accessible fallback
+PASS unsupported obeys declared label
+PASS missing obeys declared label
+PASS bad-dimensions obeys declared label
+PASS digest identity failure remains fatal under label and retains old bundle
+PASS reject on Hero retains actual published bundle
+PASS reject on DetailSVG retains actual published bundle
+PASS hidden same-text reject path cannot borrow another path label policy
+PASS failed diagram renderer keeps surrounding Markdown as partial
+PASS unsupported whole document replaces only its own path with label
+PASS renderer identity failure retains independent published outcomes
+PASS native teardown closes session and clears provider barriers

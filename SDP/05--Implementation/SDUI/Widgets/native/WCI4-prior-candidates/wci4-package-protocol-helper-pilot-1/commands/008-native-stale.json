@@ -1,0 +1,24 @@
+{
+  "name": "native-stale",
+  "argv": [
+    "/tmp/wci4-helpers-pilot/libexec/xfmd/sdui-fyne",
+    "-entry",
+    "Main",
+    "-watch=false",
+    "-revision",
+    "0000000000000000000000000000000000000000000000000000000000000000",
+    "/tmp/wci4-package-protocol-helper-pilot-1/native legacy project with spaces/Page å with spaces.sdui"
+  ],
+  "cwd": "/tmp/wci4-package-protocol-helper-pilot-1",
+  "binarySha256": "bb0027e5b0cd935f6dfeaf2df5ffbd66f46051603377a0469a34159249c76cc4",
+  "displayEnvironment": "DISPLAY/WAYLAND_DISPLAY removed",
+  "expected": "nonzero with stale",
+  "exit": 2,
+  "timeout": false,
+  "seconds": 0.1156308650970459,
+  "stdout": "commands/008-native-stale.stdout",
+  "stderr": "commands/008-native-stale.stderr",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "ca2fecf9ed24c40ca4c4cc802bd4d0f4de079fae7420a414073d0816a0ec7562",
+  "binaryUnchanged": true
+}

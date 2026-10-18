@@ -1,0 +1,7 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci3-text-worker-pilot2", "sha256": "6595a4e8a9737ff499fdc460a89a2177a6ee70b466b1a1bcffa78735bade60c8", "display": ":190", "variant": "wci3-readonly"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "load unicode"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Text Editing", "action": "click", "values": [28, 16], "keep_focus": false}}
+{"kind": "result", "value": {"failed": "Expected fixture event not observed"}}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

@@ -1,0 +1,9 @@
+PASS menu error invokes once and reports domain outcome
+PASS menu error dismisses without speculative checked state
+PASS menu malformed invokes once and reports domain outcome
+PASS menu malformed dismisses without speculative checked state
+PASS menu draft-conflict invokes once and reports domain outcome
+PASS menu draft-conflict dismisses without speculative checked state
+PASS accepted reentrant receiver draft survives failed publication
+PASS later unrelated action cannot replay failed toggle
+PASS native teardown closes session and clears provider barriers

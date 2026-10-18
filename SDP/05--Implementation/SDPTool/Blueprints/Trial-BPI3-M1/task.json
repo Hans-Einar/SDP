@@ -1,0 +1,37 @@
+{
+  "ID": "bpi3-generated-trial",
+  "Intent": "Synthetic trial only: extract CalibrationProcessor inside MachineService and delegate Go CalibrateMeasurement through it. Keep raw*2 calibration and current+delta reduction behavior. Keep all other model files and behavior_test.go unchanged. No real Ponsse implementation is authorized.",
+  "AllowedChanges": [
+    {
+      "Element": "MVP1InspectionPilot/unit/CalibrationProcessor",
+      "Change": "added"
+    },
+    {
+      "Fact": "MachineService owns CalibrateMeasurement.",
+      "Change": "removed"
+    },
+    {
+      "Fact": "CalibrationProcessor owns CalibrateMeasurement.",
+      "Change": "added"
+    },
+    {
+      "Fact": "MachineService contains CalibrationProcessor.",
+      "Change": "added"
+    }
+  ],
+  "Rules": [
+    {
+      "ID": "preserve-reduction",
+      "Source": "authored-pilot",
+      "Fact": "MachineService owns ReduceMachineState.",
+      "Now": true,
+      "Target": true
+    }
+  ],
+  "AllowedModelPaths": [
+    "Containers/MachineService.design"
+  ],
+  "AllowedCodePaths": [
+    "machine.go"
+  ]
+}

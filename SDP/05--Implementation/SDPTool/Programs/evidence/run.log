@@ -1,0 +1,5 @@
+python3 scripts/prepare.py
+Verified SDP dependency 04f88ff918e7c25c9fa1883f061ef20b8c3923a2
+mkdir -p .build
+GOWORK=off go build -mod=readonly -tags desktop -o .build/sdui_widget_lab ./cmd/widget-lab
+./.build/sdui_widget_lab

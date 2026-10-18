@@ -1,0 +1,24 @@
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/bridge	1.047s
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/broker	1.145s
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/cmd/sdl	1.124s
+?   	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/cmd/sdl-compiled	[no test files]
+?   	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/cmd/sdl-dev	[no test files]
+?   	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/cmd/sdl-document	[no test files]
+?   	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/cmd/sdl-gen	[no test files]
+?   	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/cmd/sdl-simulate	[no test files]
+?   	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/cmd/sdl-view-request	[no test files]
+?   	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/cmd/sdl-viewsd	[no test files]
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/codegen	2.557s
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/devhost	1.593s
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/documents	13.957s
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/application	1.023s
+?   	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/generatedmodel	[no test files]
+?   	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/simulation	[no test files]
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/parser	6.228s
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/reader	1.014s
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/reload	1.032s
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/runtime	1.054s
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/snapshot	3.929s
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/sourcegraph	22.325s
+?   	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/sourceinput	[no test files]
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/viewpoint	8.470s

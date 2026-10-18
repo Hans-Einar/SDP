@@ -1,0 +1,14 @@
+language design-core version 0.6.
+functionality AdaptBrowserState.
+capability AuthoritativeMachineState.
+functionality CalibrateMeasurement.
+mode Inspection.
+functionality ProjectOperatorDomain.
+functionality PublishMachineBaseline.
+functionality ReduceMachineState.
+CalibrateMeasurement allocated-to MachineService in mode Inspection.
+CalibrateMeasurement realizes AuthoritativeMachineState.
+PublishMachineBaseline allocated-to MachineService in mode Inspection.
+PublishMachineBaseline realizes AuthoritativeMachineState.
+ReduceMachineState allocated-to MachineService in mode Inspection.
+ReduceMachineState realizes AuthoritativeMachineState.

@@ -33,7 +33,7 @@ for the full owner direction, source observations, required increments and accep
 scenarios. Keep runtime design details there and in the owning design/plan, rather
 than duplicating them in this card.
 
-[MAINT-SDP-0015](../../Maintenance/PLR1/Plan.md) delivered local skills and the shared
+[MAINT-SDP-0016](../../Maintenance/PLR1/Plan.md) delivered local skills and the shared
 [role contract](https://github.com/Hans-Einar/SDP/blob/edfac185bb11b06ae9c6dd39a1809d166ad9541f/Skills/sdp/references/roles.md): new Project Leader, strategic
 Steering, Architect as SAD, and Master as the owner of a bounded implementation
 Session/ImplementationPlan. Metadata/distribution checks pass; this does not deliver

@@ -1,0 +1,127 @@
+[
+  {
+    "name": "previews-forms",
+    "argv": [
+      "python3",
+      "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_previews.py",
+      "--binary",
+      "/tmp/wci4-package-candidate3/libexec/sdui/previews",
+      "--display",
+      ":191",
+      "--out",
+      "/tmp/wci4-final-native3/previews-forms",
+      "--variant",
+      "forms"
+    ],
+    "cwd": "/home/warloc/git/SDP-vNow",
+    "exit": 0,
+    "seconds": 62.78,
+    "FYNE_THEME": "light",
+    "binarySHA256": "200679febaebddaf13edfdc477ed9eac3feed66f082aef18bace0b2ebc266a85",
+    "harnessSHA256": "a55b61b7c6d4c97c1d0ced256356dfd29d0c49dbccd5ba1cd81b0674a676aef9"
+  },
+  {
+    "name": "previews-nonmodal-forms",
+    "argv": [
+      "python3",
+      "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_previews.py",
+      "--binary",
+      "/tmp/wci4-package-candidate3/libexec/sdui/previews",
+      "--display",
+      ":191",
+      "--out",
+      "/tmp/wci4-final-native3/previews-nonmodal-forms",
+      "--variant",
+      "forms",
+      "--nonmodal"
+    ],
+    "cwd": "/home/warloc/git/SDP-vNow",
+    "exit": 0,
+    "seconds": 69.408,
+    "FYNE_THEME": "light",
+    "binarySHA256": "200679febaebddaf13edfdc477ed9eac3feed66f082aef18bace0b2ebc266a85",
+    "harnessSHA256": "a55b61b7c6d4c97c1d0ced256356dfd29d0c49dbccd5ba1cd81b0674a676aef9"
+  },
+  {
+    "name": "previews-geometry",
+    "argv": [
+      "python3",
+      "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_previews.py",
+      "--binary",
+      "/tmp/wci4-package-candidate3/libexec/sdui/previews",
+      "--display",
+      ":191",
+      "--out",
+      "/tmp/wci4-final-native3/previews-geometry",
+      "--variant",
+      "geometry"
+    ],
+    "cwd": "/home/warloc/git/SDP-vNow",
+    "exit": 0,
+    "seconds": 27.314,
+    "FYNE_THEME": "light",
+    "binarySHA256": "200679febaebddaf13edfdc477ed9eac3feed66f082aef18bace0b2ebc266a85",
+    "harnessSHA256": "a55b61b7c6d4c97c1d0ced256356dfd29d0c49dbccd5ba1cd81b0674a676aef9"
+  },
+  {
+    "name": "previews-fallback",
+    "argv": [
+      "python3",
+      "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_previews.py",
+      "--binary",
+      "/tmp/wci4-package-candidate3/libexec/sdui/previews",
+      "--display",
+      ":191",
+      "--out",
+      "/tmp/wci4-final-native3/previews-fallback",
+      "--variant",
+      "fallback"
+    ],
+    "cwd": "/home/warloc/git/SDP-vNow",
+    "exit": 0,
+    "seconds": 75.223,
+    "FYNE_THEME": "light",
+    "binarySHA256": "200679febaebddaf13edfdc477ed9eac3feed66f082aef18bace0b2ebc266a85",
+    "harnessSHA256": "a55b61b7c6d4c97c1d0ced256356dfd29d0c49dbccd5ba1cd81b0674a676aef9"
+  },
+  {
+    "name": "previews-lifetime",
+    "argv": [
+      "python3",
+      "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_previews.py",
+      "--binary",
+      "/tmp/wci4-package-candidate3/libexec/sdui/previews",
+      "--display",
+      ":191",
+      "--out",
+      "/tmp/wci4-final-native3/previews-lifetime",
+      "--variant",
+      "lifetime"
+    ],
+    "cwd": "/home/warloc/git/SDP-vNow",
+    "exit": 0,
+    "seconds": 31.845,
+    "FYNE_THEME": "light",
+    "binarySHA256": "200679febaebddaf13edfdc477ed9eac3feed66f082aef18bace0b2ebc266a85",
+    "harnessSHA256": "a55b61b7c6d4c97c1d0ced256356dfd29d0c49dbccd5ba1cd81b0674a676aef9"
+  },
+  {
+    "name": "previews-origins",
+    "argv": [
+      "python3",
+      "/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_origins.py",
+      "--binary",
+      "/tmp/wci4-package-candidate3/libexec/sdui/previews",
+      "--display",
+      ":191",
+      "--out",
+      "/tmp/wci4-final-native3/previews-origins"
+    ],
+    "cwd": "/home/warloc/git/SDP-vNow",
+    "exit": 1,
+    "seconds": 57.186,
+    "FYNE_THEME": "light",
+    "binarySHA256": "200679febaebddaf13edfdc477ed9eac3feed66f082aef18bace0b2ebc266a85",
+    "harnessSHA256": "4407eb2b98081e6b4780bc63e96f3d9efbe9d71b128f540db868b1356e568ca4"
+  }
+]

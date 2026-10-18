@@ -9,6 +9,8 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+
+	"github.com/Hans-Einar/SDP/SDUI/go/parser"
 )
 
 // Literal emits bounded, deterministic typed data. Only explicitly registered
@@ -85,6 +87,9 @@ func Literal(value any, packages map[string]string) (string, error) {
 			b.WriteString(t + "{")
 			for i := 0; i < v.NumField(); i++ {
 				f := v.Type().Field(i)
+				if v.Type() == reflect.TypeOf(parser.Instance{}) && f.Name == "Profile" && v.Field(i).String() == "" {
+					continue
+				}
 				if !f.IsExported() {
 					return fmt.Errorf("unexported data field %s", f.Name)
 				}

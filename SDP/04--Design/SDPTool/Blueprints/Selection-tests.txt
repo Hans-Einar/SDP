@@ -1,0 +1,13 @@
+test_authored_context_and_unknown_frontier (test_selection_probe.SelectionTests.test_authored_context_and_unknown_frontier) ... ok
+test_cycle_terminates_and_is_deterministic (test_selection_probe.SelectionTests.test_cycle_terminates_and_is_deterministic) ... ok
+test_missing_endpoint_is_exposed_despite_parser_acceptance (test_selection_probe.SelectionTests.test_missing_endpoint_is_exposed_despite_parser_acceptance) ... ok
+test_overflow_refuses_partial_success (test_selection_probe.SelectionTests.test_overflow_refuses_partial_success) ... ok
+test_source_locations_do_not_create_semantic_differences (test_selection_probe.SelectionTests.test_source_locations_do_not_create_semantic_differences) ... ok
+test_stale_input (test_selection_probe.SelectionTests.test_stale_input) ... ok
+test_union_retains_removed_owner_and_atomic_channel_contract (test_selection_probe.SelectionTests.test_union_retains_removed_owner_and_atomic_channel_contract) ... ok
+test_valid_sdl_can_violate_preserved_ownership (test_selection_probe.SelectionTests.test_valid_sdl_can_violate_preserved_ownership) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.149s
+
+OK

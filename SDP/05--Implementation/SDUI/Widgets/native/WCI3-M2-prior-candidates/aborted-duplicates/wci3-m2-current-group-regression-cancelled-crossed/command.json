@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "go",
+    "test",
+    "-race",
+    "./bridge",
+    "./examples/values/...",
+    "./examples/commands/...",
+    "./examples/panes/...",
+    "-count=1"
+  ],
+  "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+  "head": "d6742742f0968661d15698518df688ffb1d28946",
+  "goVersion": "go version go1.27.1 linux/amd64",
+  "GOFLAGS": "-mod=readonly",
+  "startedUTC": "2026-10-08T11:46:51Z"
+}

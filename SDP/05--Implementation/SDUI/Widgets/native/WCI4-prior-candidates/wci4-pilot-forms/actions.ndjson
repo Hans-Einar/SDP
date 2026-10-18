@@ -1,0 +1,48 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci4-previews-worker-pilot1", "sha256": "7defa0ae7446bdc1a625718120f00f1b8c3a8e697a61e90b6ad7452ad603185c", "display": ":190", "variant": "wci3-forms"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI4 Previews", "action": "click", "values": [28, 57], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "actual SDL Load publishes into extended readonly receiver", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI4 Previews", "action": "click", "values": [99, 56], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "shared command publishes extended readonly result exactly once", "passed": true}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI4 Previews", "action": "chord", "values": ["Control_L", "m"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "shared shortcut invokes one SDL action with no automatic replay", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI4 Previews", "action": "click", "values": [936, 129], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI4 Previews", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-clipboard-set", "value": "Saved from preview"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI4 Previews", "action": "chord", "values": ["Control_L", "v"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI4 Previews", "action": "key", "values": ["Return"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "ordinary text commit coexists with frozen previews", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI4 Previews", "action": "click", "values": [190, 56], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "dialog mounts its own visible accessible artwork", "passed": true}}
+{"kind": "screenshot", "value": "independent-detail-preview.png"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI4 Previews", "action": "click", "values": [550, 715], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI4 Previews", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-clipboard-set", "value": "Committed child"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI4 Previews", "action": "chord", "values": ["Control_L", "v"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI4 Previews", "action": "key", "values": ["Return"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI4 Previews", "action": "click", "values": [261, 784], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "Cancel detaches dialog preview and preserves prior child domain commit", "passed": false}}
+{"kind": "result", "value": {"failed": "Cancel detaches dialog preview and preserves prior child domain commit"}}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

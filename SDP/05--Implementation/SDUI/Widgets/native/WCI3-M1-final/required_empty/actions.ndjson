@@ -1,0 +1,16 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci3-m1-value-final", "sha256": "3c1abba76adca3cdaf9d710302ebc6a16575150acfb1e6effcd85bb9b18b2ef6", "display": ":190", "variant": "wci3-required_empty"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "required empty choice starts invalid without invented selection", "passed": true}}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "unchanged required-empty baseline survives reload without acceptance", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [550, 259], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [39, 330], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "deliberate native choice repairs required-empty state through SDL", "passed": true}}
+{"kind": "screenshot", "value": "required-empty-repaired.png"}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

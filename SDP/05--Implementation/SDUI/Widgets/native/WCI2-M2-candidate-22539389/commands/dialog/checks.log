@@ -1,0 +1,8 @@
+PASS typing does not persist dialog
+PASS Escape dismisses menu without reverting draft or closing surface
+PASS next Escape reverts draft and keeps surface
+PASS clean Escape cancels once without Save
+PASS rejected Accept retains dirty form
+PASS successful Accept commits captured fields and closes once
+PASS Close is distinct from Cancel and emits no Save
+PASS native teardown closes session and clears provider barriers

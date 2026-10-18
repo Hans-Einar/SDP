@@ -1,0 +1,3 @@
+Display: :191
+Engine: xkb:us::eng
+Command argv: ['python3', '/home/warloc/git/SDP-vNow/SDP/05--Implementation/SDUI/Widgets/native/verify_wci4_helper_ime.py', '--binary', '/tmp/wci4-package-candidate3/libexec/xfmd/sdui-fyne', '--display', ':191', '--out', '/tmp/wci4-final-native3-supplement/helper-ime']

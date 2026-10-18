@@ -320,6 +320,16 @@
       "source": "Toolkit/docs/ReleaseChecklist.md",
       "destination": "SDP/Framework/ReleaseChecklist.md",
       "ownership": "managed"
+    },
+    {
+      "source": "Skills/sdp-project-leader/SKILL.md",
+      "destination": ".codex/skills/sdp-project-leader/SKILL.md",
+      "ownership": "managed"
+    },
+    {
+      "source": "Skills/sdp/references/roles.md",
+      "destination": ".codex/skills/sdp/references/roles.md",
+      "ownership": "managed"
     }
   ]
 }

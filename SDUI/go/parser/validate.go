@@ -14,19 +14,57 @@ var widgets = map[string]widgetSchema{
 	"svg":    {"source", map[string]string{"source": "reference", "label": "string"}, "source"},
 }
 
-func widgetArguments(n *Node) map[string]any {
+func schemaFor(profile, kind string) (widgetSchema, bool) {
+	if profile == "sdui/0.3" {
+		if schema, ok := previews[kind]; ok {
+			return schema, true
+		}
+		if kind == "input" {
+			return input03, true
+		}
+		if schema, ok := scalars[kind]; ok {
+			return schema, true
+		}
+		if schema, ok := interactions[kind]; ok {
+			return schema, true
+		}
+		if schema, ok := panes[kind]; ok {
+			return schema, true
+		}
+	}
+	if profile == "sdui/0.3" && (kind == "tree" || kind == "list") {
+		return widgetSchema{"label", map[string]string{"label": "string", "callback": "reference"}, "label"}, true
+	}
+	s, ok := widgets[kind]
+	return s, ok
+}
+
+func widgetArguments(n *Node, profile string) map[string]any {
+	schema, _ := schemaFor(profile, val(n.Widget))
 	out := map[string]any{}
 	for _, a := range n.Arguments {
 		k := val(a.Name)
 		if a.Name == nil {
-			k = widgets[val(n.Widget)].position
+			k = schema.position
 		}
 		out[k] = a.Value
 	}
+	if profile == "sdui/0.3" && val(n.Widget) == "split" {
+		for key, value := range map[string]Literal{
+			"proportion":  {Kind: "number", Value: float64(.5), Span: n.Span},
+			"minFirst":    {Kind: "number", Value: float64(0), Span: n.Span},
+			"minSecond":   {Kind: "number", Value: float64(0), Span: n.Span},
+			"collapsible": {Kind: "boolean", Value: true, Span: n.Span},
+		} {
+			if _, exists := out[key]; !exists {
+				out[key] = value
+			}
+		}
+	}
 	return out
 }
-func validateWidget(n *Node, modules map[string]bool) {
-	schema, ok := widgets[val(n.Widget)]
+func validateWidget(n *Node, modules map[string]bool, profile string) {
+	schema, ok := schemaFor(profile, val(n.Widget))
 	if !ok {
 		fail("widget-kind", "Unsupported widget "+val(n.Widget), n.Span)
 	}
@@ -58,6 +96,12 @@ func validateWidget(n *Node, modules map[string]bool) {
 			if v.Kind != expected {
 				fail("argument-type", "Expected "+expected, a.Span)
 			}
+			if val(n.Widget) == "tree" || val(n.Widget) == "list" {
+				label, ok := v.Value.(string)
+				if !ok || strings.TrimSpace(label) == "" {
+					fail("collection-label", "Collection requires a nonempty accessible label", a.Span)
+				}
+			}
 		default:
 			fail("argument-type", "Invalid argument", a.Span)
 		}
@@ -66,13 +110,16 @@ func validateWidget(n *Node, modules map[string]bool) {
 	if seen["callback"] && n.Name == nil {
 		fail("widget-name", "A callback requires a named widget", n.Span)
 	}
-	if !seen[schema.required] {
+	if schema.required != "" && !seen[schema.required] {
 		fail("missing-argument", "Missing "+schema.required, n.Span)
 	}
 }
 func validateLocal(d *Document) {
 	if d == nil {
 		fail("document", "Nil document", Span{})
+	}
+	if _, err := ASTFormat(d.Profile); err != nil {
+		fail("profile", "Unsupported document profile "+d.Profile, d.Span)
 	}
 	modules := map[string]bool{}
 	definitions := map[string]Definition{}
@@ -116,13 +163,36 @@ func validateLocal(d *Document) {
 				}
 				deps[def.Name] = append(deps[def.Name], val(n.Target))
 			} else {
-				formatting(n, n.Kind, len(n.Rows))
+				formatting(n, sourceKind(n, d.Profile), len(n.Rows))
 			}
 			if n.Variant != nil && (n.Kind != "frame" || !member(*n.Variant, "b box")) {
 				fail("variant", "Only frame variants box/b supported", n.Span)
 			}
-			if n.Kind == "widget" {
-				validateWidget(n, modules)
+			if n.Kind == "widget" || n.Kind == "composition" {
+				decl := n
+				if d.Profile == "sdui/0.3" && n == def.Root && (val(n.Widget) == "input" && extendedInputArguments(widgetArguments(n, d.Profile)) || scalarKind(val(n.Widget)) || isInteractionNode(&Instance{Profile: d.Profile, Kind: n.Kind, Widget: val(n.Widget), Arguments: widgetArguments(n, d.Profile)})) {
+					copy := *n
+					copy.Name = str(def.Name)
+					decl = &copy
+				}
+				validateWidget(decl, modules, d.Profile)
+				validatePaneSource(n, d.Profile)
+				validateInteractionSource(decl, d.Profile)
+				validatePreviewSource(n, d.Profile)
+				if d.Profile == "sdui/0.3" && val(n.Widget) == "input" {
+					if len(n.Rows) != 0 {
+						fail("input-argument", "Input controls are leaves", n.Span)
+					}
+					if _, err := InputOptions(&Instance{Profile: d.Profile, Kind: n.Kind, Widget: "input", Arguments: widgetArguments(n, d.Profile), Span: n.Span}); err != nil {
+						panic(err)
+					}
+				}
+				if d.Profile == "sdui/0.3" && scalarKind(val(n.Widget)) {
+					if len(n.Rows) != 0 {
+						fail("value-body", "Scalar controls are leaves", n.Span)
+					}
+					validateScalar(&Instance{Profile: d.Profile, Kind: n.Kind, Widget: val(n.Widget), Arguments: widgetArguments(n, d.Profile), Span: n.Span})
+				}
 			}
 			roles := map[string]bool{}
 			body := false

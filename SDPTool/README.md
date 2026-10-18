@@ -177,9 +177,27 @@ See [output contract](Contract.md#output-presentation) and
 `sdptool [MODEL-AREA] model help` exposes local WORK, commit/restore, integration,
 proposal/candidate/release and preliminary snapshots. No Git repository or SDP
 installation is required. Read the [model workflow and limits](model/README.md).
-Model releases are distinct from SDP tool releases; this does not generate semantic
-blueprints or authenticate implementation acceptance.
+## Discover and run an application
 
+`sdptool PROJECT discover` lists explicitly declared SDUI applications as well as
+source files. `sdptool PROJECT run --program ID` starts the selected application
+from the project root. Projects opt in through `SDP/programs.json`; see
+[Programs.md](Programs.md) for the contract and readiness limits.
+Model releases are distinct from SDP tool releases and do not authenticate
+implementation acceptance. Blueprint generation is a separate operation below.
+
+
+Blueprint diagnostic generation is available through model create blueprint
+with from/to refs, --entry, --task TASK.json and either --output DIR for a preview
+or --catalogue SDP/Blueprints for immutable retention. Discover/tree automatically
+expose the retained catalogue and its generated document targets.
+See [producer contract](blueprints/README.md). Retained revision entries report
+workState=unknown; revision-bound assignments expose their own lifecycle states.
+
+## Blueprint consumer handoff
+
+See [XFMD blueprint integration](XFMD-Blueprint-Integration.md) for current CLI/API
+boundaries, lifecycle documentation and development-version testing.
 ## ProjectGovernance pilot
 
 `sdptool governance` provides read-only context/routing and a guarded local

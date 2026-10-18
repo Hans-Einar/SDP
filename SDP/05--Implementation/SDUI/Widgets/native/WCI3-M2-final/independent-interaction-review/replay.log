@@ -1,0 +1,12 @@
+=== RUN   TestReviewerExtendedInteractionReceiver
+=== RUN   TestReviewerExtendedInteractionReceiver/command
+    reviewer_interaction_test.go:19: result={Sequence:1 Status:committed Domain:succeeded} err=<nil> calls=map[Run:1] before="No command" after="Run completed" draftrev=1
+=== RUN   TestReviewerExtendedInteractionReceiver/page
+    reviewer_interaction_test.go:28: result={Sequence:1 Status:committed Domain:succeeded} err=<nil> calls=1 value="loaded" selected=second draftrev=2
+--- PASS: TestReviewerExtendedInteractionReceiver (0.13s)
+    --- PASS: TestReviewerExtendedInteractionReceiver/command (0.11s)
+    --- PASS: TestReviewerExtendedInteractionReceiver/page (0.01s)
+=== RUN   TestReviewerCommandConflictReplay
+--- PASS: TestReviewerCommandConflictReplay (0.06s)
+PASS
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/bridge	1.289s

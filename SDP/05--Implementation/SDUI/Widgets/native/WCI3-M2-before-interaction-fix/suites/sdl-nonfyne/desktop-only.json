@@ -1,0 +1,10 @@
+[
+  "./bridge/cmd/smoke",
+  "./cmd/sdl-compiled-fyne",
+  "./cmd/sdl-demo",
+  "./examples/collections/cmd/native",
+  "./examples/commands/cmd/native",
+  "./examples/panes/cmd/native",
+  "./examples/text/cmd/native",
+  "./examples/values/cmd/native"
+]

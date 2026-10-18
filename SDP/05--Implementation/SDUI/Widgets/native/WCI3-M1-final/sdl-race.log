@@ -1,0 +1,7 @@
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/bridge	4.099s
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/runtime	(cached)
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/codegen	(cached)
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/values	184.367s
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/commands	54.987s
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/panes	81.710s
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/examples/collections	40.743s

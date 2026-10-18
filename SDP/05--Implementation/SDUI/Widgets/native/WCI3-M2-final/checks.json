@@ -1,0 +1,16 @@
+{
+  "command_load": 6,
+  "single": 6,
+  "multiline": 8,
+  "history": 7,
+  "readonly": 5,
+  "pasteguard": 5,
+  "failures": 13,
+  "retention": 6,
+  "forms": 4,
+  "required_empty": 5,
+  "constraints": 7,
+  "scroll": 9,
+  "ime": 7,
+  "nonmodal-forms": 4
+}

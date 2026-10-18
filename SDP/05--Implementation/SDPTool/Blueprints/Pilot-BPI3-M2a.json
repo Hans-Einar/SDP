@@ -1,0 +1,54 @@
+{
+  "baseline": "7fddedb",
+  "toolchain": "Go 1.27.1 linux/amd64",
+  "scope": "BPI3-M2a persistence primitive only; no CLI consumer or assignment transition integration",
+  "candidateFiles": {
+    "SDPTool/projecthistory/README.md": "a536663ceafa4b797277840a8dccf40b7765a48dfe06d1af8490db7d201be401",
+    "SDPTool/projecthistory/history.go": "40fdf82bc45392fe8668f9c90f4308fcb0e68b2d12daf747755460f05eddf95c",
+    "SDPTool/projecthistory/history_test.go": "d61d810b480116af1a5c1bbb57023854d5a7267de2250f04b725b1724d2f5f78",
+    "SDPTool/projecthistory/lock_linux.go": "3349bc73a8061e196e38e79739cf322270b95e9301e8a5266d358669fff63276",
+    "SDPTool/projecthistory/lock_other.go": "96508129dbf7c2980693646fd894c1e58b8b8e8c49a28857e23018f0f4e1a8ed",
+    "SDP/SDL/ProjectGovernance/SDPTool/System.design": "7f1da59260ee77504f6cce88bbab9a02feadb0663c11c6c9ab1dbda88a361a6b"
+  },
+  "checks": [
+    {
+      "command": "go test -race ./projecthistory -count=1",
+      "result": "pass",
+      "seconds": 1.791
+    },
+    {
+      "command": "go vet ./projecthistory",
+      "result": "pass"
+    },
+    {
+      "command": "sdl check SDP/SDL/ProjectGovernance/SDPTool/System.design",
+      "result": "pass after canonical formatter ordering"
+    },
+    {
+      "command": "python3 SDP/ProjectManagement/validate.py",
+      "result": "pass"
+    },
+    {
+      "command": "python3 Toolkit/scripts/validate_sdp.py",
+      "result": "pass"
+    },
+    {
+      "command": "git diff --check",
+      "result": "pass"
+    }
+  ],
+  "review": {
+    "agent": "/root/bpi3_history_review",
+    "verdict": "approved for BPI3-M2a only",
+    "finding": "optional subject/release envelope fields and malformed UTF-8 accepted",
+    "resolution": "schema-aligned field checks, explicit UTF-8 validation and regression tests",
+    "independentRaceSeconds": 1.579
+  },
+  "limits": [
+    "Mutation currently Linux only; Read portable",
+    "Cooperative programmatic writers; arbitrary manual writers can race after recheck",
+    "Process-exit checks do not establish physical power-loss behavior",
+    "Domain validators and assignment state/authority policies belong to M2b",
+    "Prior installer race-test timeout remains final-integration evidence gap"
+  ]
+}

@@ -4,6 +4,8 @@ go 1.26.0
 
 require golang.org/x/text v0.42.0
 
+require github.com/FyshOS/fancyfs v0.0.1 // indirect
+
 require (
 	fyne.io/fyne/v2 v2.8.1
 	fyne.io/systray v1.12.3-0.20260810170012-af4e8e793ec4 // indirect
@@ -43,3 +45,5 @@ require (
 	golang.org/x/image v0.46.0
 	golang.org/x/sys v0.48.0 // indirect
 )
+
+replace github.com/go-gl/glfw/v3.4/glfw => ../third_party/glfw

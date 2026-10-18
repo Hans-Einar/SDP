@@ -1,0 +1,57 @@
+{
+  "accept-failures": {
+    "publishedOpenings": 4,
+    "terminalResults": 4,
+    "exactlyOnce": true
+  },
+  "command-failures": {
+    "publishedOpenings": 0,
+    "terminalResults": 0,
+    "exactlyOnce": true
+  },
+  "commands": {
+    "publishedOpenings": 0,
+    "terminalResults": 0,
+    "exactlyOnce": true
+  },
+  "context": {
+    "publishedOpenings": 0,
+    "terminalResults": 0,
+    "exactlyOnce": true
+  },
+  "dialog": {
+    "publishedOpenings": 3,
+    "terminalResults": 3,
+    "exactlyOnce": true
+  },
+  "focus": {
+    "publishedOpenings": 2,
+    "terminalResults": 2,
+    "exactlyOnce": true
+  },
+  "keyboard": {
+    "publishedOpenings": 0,
+    "terminalResults": 0,
+    "exactlyOnce": true
+  },
+  "lifecycle": {
+    "publishedOpenings": 3,
+    "terminalResults": 3,
+    "exactlyOnce": true
+  },
+  "nonmodal-dialog": {
+    "publishedOpenings": 3,
+    "terminalResults": 3,
+    "exactlyOnce": true
+  },
+  "nonmodal-focus": {
+    "publishedOpenings": 3,
+    "terminalResults": 3,
+    "exactlyOnce": true
+  },
+  "nonmodal-lifecycle": {
+    "publishedOpenings": 4,
+    "terminalResults": 4,
+    "exactlyOnce": true
+  }
+}

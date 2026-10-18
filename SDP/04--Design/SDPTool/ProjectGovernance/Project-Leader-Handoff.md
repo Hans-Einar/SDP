@@ -1,7 +1,7 @@
 # Project Leader and SAD — handoff to ProjectGovernance
 
 Owner refinement, Session0011 T004, 2026-10-09. Role guidance is delivered under
-[MAINT-SDP-0015](../../../Maintenance/PLR1/Plan.md). Runtime changes below belong to
+[MAINT-SDP-0016](../../../Maintenance/PLR1/Plan.md). Runtime changes below belong to
 the existing ProjectGovernance workstream, Session0007 / KB-SDP-038. Its current
 Design.md and ImplementationPlan remain untouched in this branch; reconcile this
 handoff into them before implementation. No second controller implementation is

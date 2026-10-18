@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "go",
+    "test",
+    "-mod=readonly",
+    "-race",
+    "./examples/previews",
+    "-run",
+    "^TestOriginResourceSlots$",
+    "-count=1",
+    "-v"
+  ],
+  "cwd": "/tmp/wci4-svg-origin-fix/SDL/go",
+  "GOWORK": "off",
+  "GOFLAGS": "-mod=readonly",
+  "goVersion": "go version go1.27.1 linux/amd64",
+  "HEAD": "af422b1b1e26bc3d62107f13e74f3c03e00b0a8b"
+}

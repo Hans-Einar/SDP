@@ -7,19 +7,41 @@ import (
 	"strings"
 
 	"github.com/Hans-Einar/SDP/SDUI/go/layout"
+	"github.com/Hans-Einar/SDP/SDUI/go/parser"
 )
 
 // ContentRenderer can replace raw Markdown rendering without changing geometry.
 type ContentRenderer interface {
 	Render(*strings.Builder, *layout.Box) error
 }
+
+// PreparedPreviewRenderer proves a native explicit Markdown node has a matching
+// frozen outcome. CheckPreview is pure and must never prepare or resolve content.
+type PreparedPreviewRenderer interface {
+	ContentRenderer
+	CheckPreview(*parser.Instance) error
+}
 type Options struct {
 	Width, Height float64
 	Content       ContentRenderer
 	SkipControls  bool
+	// Exact instance path -> kind for controls actually prepared by the host.
+	// Required for each omitted control when SkipControls is true.
+	// Includes tabs/split composition chrome; pages belong to their tabs adapter.
+	// Inventory never licenses omission of a pane's descendant controls/content.
+	NativeControls map[string]string
+	// Full selected snapshot tree for a native dialog canvas. The rendered root
+	// must be the identical node within this tree; only valid with SkipControls.
+	InteractionRoot *parser.Instance
 }
 
 func Render(root *layout.Box, options Options) (string, error) {
+	if root == nil {
+		return "", fmt.Errorf("SVG export requires measured geometry")
+	}
+	if err := Check(root.Instance, options); err != nil {
+		return "", err
+	}
 	var out strings.Builder
 	fmt.Fprintf(&out, `<svg xmlns="http://www.w3.org/2000/svg" width="%g" height="%g" viewBox="0 0 %g %g" role="img"><title>SDUI layout</title>`+"\n", options.Width, options.Height, options.Width, options.Height)
 	out.WriteString(`<rect width="100%" height="100%" fill="#f1f5f9"/>` + "\n")
@@ -38,7 +60,7 @@ func Render(root *layout.Box, options Options) (string, error) {
 		case n.Variant == "box":
 			rect(&out, r, "#ffffff", "#94a3b8", 4)
 		case n.Kind == "widget":
-			if options.SkipControls && n.Widget != "svg" {
+			if options.SkipControls && (n.Widget != "svg" || options.NativeControls[n.Path] == "svg") {
 				break
 			}
 			fill, stroke, color := "#e2e8f0", "#94a3b8", "#0f172a"

@@ -1,0 +1,471 @@
+{
+  "format": "sdp-history-reconciliation/1",
+  "importedAt": "2026-10-18T19:30:02.664711+00:00",
+  "policy": "Preserve release ledger prefix and exact source archives. Append replay projections with globally unique event/subject IDs, import timestamp and current-chain predecessors. Original time, payload and identities remain in hashed source archives.",
+  "sources": {
+    "release": {
+      "commit": "3475367490804504d6bfd4459a48ffc85a33ee91",
+      "path": "release.ndjson",
+      "sha256": "8e45dcfa0d42ecafdc3253ad7d8eb75447c1e231c69b8dddf6499e675e9e83c4"
+    },
+    "blueprints": {
+      "commit": "f64a5babc72bc7e392ec750eb195ef79c4262726",
+      "path": "blueprints.ndjson",
+      "sha256": "a5d10e72aa58532efa99049a5a4d87d86f923b703ffbc76dcb67112370ecf1ab"
+    },
+    "governance": {
+      "commit": "de4b7954b5d74eba1d3739bcdbf8fdf0b5c5309a",
+      "path": "governance.ndjson",
+      "sha256": "cc82c460e5ede3b8030b8620490bc82e248cece4bfa415e9c33f1f2d2efa89ac"
+    }
+  },
+  "subjectMap": {
+    "blueprints:KB-SDP-051": "KB-SDP-053",
+    "governance:KB-SDP-051": "KB-SDP-053",
+    "blueprints:MAINT-SDP-0015": "MAINT-SDP-0016",
+    "governance:MAINT-SDP-0015": "MAINT-SDP-0016"
+  },
+  "events": [
+    {
+      "source": "governance",
+      "line": 500,
+      "originalEventId": "EVT-PM-SDP-000143",
+      "originalSubjectId": "PLAN-SDP-0018",
+      "canonicalEventId": "EVT-PM-SDP-000179",
+      "canonicalSubjectId": "PLAN-SDP-0018",
+      "canonicalSHA256": "1393ce2328501a46c5a416ab19f2bb6fd6f76d123df260b6c9e6ffb2a4574f88"
+    },
+    {
+      "source": "governance",
+      "line": 501,
+      "originalEventId": "EVT-KB-SDP-000304",
+      "originalSubjectId": "KB-SDP-038",
+      "canonicalEventId": "EVT-KB-SDP-000338",
+      "canonicalSubjectId": "KB-SDP-038",
+      "canonicalSHA256": "d0555e0f0ddb74722c24081c19655f6c744302160f324882c8a3a0ccbe90b4dc"
+    },
+    {
+      "source": "governance",
+      "line": 502,
+      "originalEventId": "EVT-KB-SDP-000305",
+      "originalSubjectId": "KB-SDP-038",
+      "canonicalEventId": "EVT-KB-SDP-000339",
+      "canonicalSubjectId": "KB-SDP-038",
+      "canonicalSHA256": "d460db0262d9ea73a2d2d16ca2a679e509181839e036ef01de47d79ad0fd671d"
+    },
+    {
+      "source": "governance",
+      "line": 503,
+      "originalEventId": "EVT-KB-SDP-000310",
+      "originalSubjectId": "KB-SDP-038",
+      "canonicalEventId": "EVT-KB-SDP-000340",
+      "canonicalSubjectId": "KB-SDP-038",
+      "canonicalSHA256": "6435c4a8c7d50693225b85cc6f4c8ecb99ceca5a0cd366b48f5ce9442dc99eb0"
+    },
+    {
+      "source": "governance",
+      "line": 504,
+      "originalEventId": "EVT-PM-SDP-000145",
+      "originalSubjectId": "PLAN-SDP-0018",
+      "canonicalEventId": "EVT-PM-SDP-000180",
+      "canonicalSubjectId": "PLAN-SDP-0018",
+      "canonicalSHA256": "27182e06c154f3520a8acd4ad958e336c0df434250d539c014152fa52057c90f"
+    },
+    {
+      "source": "governance",
+      "line": 505,
+      "originalEventId": "EVT-KB-SDP-000312",
+      "originalSubjectId": "KB-SDP-038",
+      "canonicalEventId": "EVT-KB-SDP-000341",
+      "canonicalSubjectId": "KB-SDP-038",
+      "canonicalSHA256": "0b560397160d74acbd558ee833017b06c0a9109e5735dc88d963fb136b865cd7"
+    },
+    {
+      "source": "governance",
+      "line": 506,
+      "originalEventId": "EVT-PM-SDP-000147",
+      "originalSubjectId": "PLAN-SDP-0018",
+      "canonicalEventId": "EVT-PM-SDP-000181",
+      "canonicalSubjectId": "PLAN-SDP-0018",
+      "canonicalSHA256": "f8fd4a183ebc88787c08287433edb6d9699bb2dd6f8043911288821164f1fb04"
+    },
+    {
+      "source": "governance",
+      "line": 507,
+      "originalEventId": "EVT-KB-SDP-000313",
+      "originalSubjectId": "KB-SDP-038",
+      "canonicalEventId": "EVT-KB-SDP-000342",
+      "canonicalSubjectId": "KB-SDP-038",
+      "canonicalSHA256": "8300cf6321303fa5da04448fdb6ad7bfb6390293e9d9b8212a02dce46df8db0c"
+    },
+    {
+      "source": "governance",
+      "line": 508,
+      "originalEventId": "EVT-PM-SDP-000148",
+      "originalSubjectId": "PLAN-SDP-0018",
+      "canonicalEventId": "EVT-PM-SDP-000182",
+      "canonicalSubjectId": "PLAN-SDP-0018",
+      "canonicalSHA256": "1cbcdc745d1f89437c4683511ccdc145a7bd94008ff62c827cc940aa708262cd"
+    },
+    {
+      "source": "governance",
+      "line": 509,
+      "originalEventId": "EVT-PM-SDP-000149",
+      "originalSubjectId": "PLAN-SDP-0018",
+      "canonicalEventId": "EVT-PM-SDP-000183",
+      "canonicalSubjectId": "PLAN-SDP-0018",
+      "canonicalSHA256": "adc377c27afceeab0f6f3b9e4574ae5fa65c18b7bb9e9185ed701c5d41b64f50"
+    },
+    {
+      "source": "blueprints",
+      "line": 510,
+      "originalEventId": "EVT-PM-SDP-000149",
+      "originalSubjectId": "PLAN-SDP-0020",
+      "canonicalEventId": "EVT-PM-SDP-000184",
+      "canonicalSubjectId": "PLAN-SDP-0020",
+      "canonicalSHA256": "7e183db502632616d82fed945e46222620ab3f8f78004a31a65a62c3554bdd95"
+    },
+    {
+      "source": "blueprints",
+      "line": 511,
+      "originalEventId": "EVT-KB-SDP-000315",
+      "originalSubjectId": "KB-SDP-050",
+      "canonicalEventId": "EVT-KB-SDP-000343",
+      "canonicalSubjectId": "KB-SDP-050",
+      "canonicalSHA256": "00b44dc0a0990bd2f3d99fe034a3a9561e8f338eb838a1dd838eb51ecb4a6e76"
+    },
+    {
+      "source": "blueprints",
+      "line": 512,
+      "originalEventId": "EVT-KB-SDP-000316",
+      "originalSubjectId": "KB-SDP-050",
+      "canonicalEventId": "EVT-KB-SDP-000344",
+      "canonicalSubjectId": "KB-SDP-050",
+      "canonicalSHA256": "8b089eea118bf7a68c064fdd4b14f9391a251b307f153ce7aad45b21c9872be9"
+    },
+    {
+      "source": "governance",
+      "line": 510,
+      "originalEventId": "EVT-PM-SDP-000153",
+      "originalSubjectId": "PLAN-SDP-0018",
+      "canonicalEventId": "EVT-PM-SDP-000185",
+      "canonicalSubjectId": "PLAN-SDP-0018",
+      "canonicalSHA256": "e91b56358da48313b61db48256a38cded740f6624bd0fdfb35559d2d66e390fd"
+    },
+    {
+      "source": "governance",
+      "line": 511,
+      "originalEventId": "EVT-KB-SDP-000315",
+      "originalSubjectId": "KB-SDP-038",
+      "canonicalEventId": "EVT-KB-SDP-000345",
+      "canonicalSubjectId": "KB-SDP-038",
+      "canonicalSHA256": "b77d139278d835f6e0a7b76f9fabd75749ec7574b195129b0b9bd7d06fa00c28"
+    },
+    {
+      "source": "blueprints",
+      "line": 513,
+      "originalEventId": "EVT-KB-SDP-000317",
+      "originalSubjectId": "KB-SDP-050",
+      "canonicalEventId": "EVT-KB-SDP-000346",
+      "canonicalSubjectId": "KB-SDP-050",
+      "canonicalSHA256": "9054cfd5f14060fc4dc6a4790ce1fde7f16d78ea9546cec61185cb09dcdd973a"
+    },
+    {
+      "source": "governance",
+      "line": 512,
+      "originalEventId": "EVT-PM-SDP-000156",
+      "originalSubjectId": "PLAN-SDP-0018",
+      "canonicalEventId": "EVT-PM-SDP-000186",
+      "canonicalSubjectId": "PLAN-SDP-0018",
+      "canonicalSHA256": "78070519f4405bd40d6338ea6c5e9e6336b386ad265365270ad32425d5b5fea2"
+    },
+    {
+      "source": "governance",
+      "line": 513,
+      "originalEventId": "EVT-KB-SDP-000316",
+      "originalSubjectId": "KB-SDP-038",
+      "canonicalEventId": "EVT-KB-SDP-000347",
+      "canonicalSubjectId": "KB-SDP-038",
+      "canonicalSHA256": "cbe51c1d38f92d68fff3b05675feae4888834bba6282f83e2221085b6f32913b"
+    },
+    {
+      "source": "blueprints",
+      "line": 514,
+      "originalEventId": "EVT-KB-SDP-000318",
+      "originalSubjectId": "KB-SDP-050",
+      "canonicalEventId": "EVT-KB-SDP-000348",
+      "canonicalSubjectId": "KB-SDP-050",
+      "canonicalSHA256": "cabf98cbd8faac99d3acc26c18f3fb353097bb69e9387e72fba92dacb8a803d1"
+    },
+    {
+      "source": "governance",
+      "line": 514,
+      "originalEventId": "EVT-PM-SDP-000169",
+      "originalSubjectId": "PLAN-SDP-0018",
+      "canonicalEventId": "EVT-PM-SDP-000187",
+      "canonicalSubjectId": "PLAN-SDP-0018",
+      "canonicalSHA256": "936705e10f0020abd3a5249ba822524646efa3fd2ab6ba0c5aa0a6c69eeccbe0"
+    },
+    {
+      "source": "governance",
+      "line": 515,
+      "originalEventId": "EVT-KB-SDP-000318",
+      "originalSubjectId": "KB-SDP-038",
+      "canonicalEventId": "EVT-KB-SDP-000349",
+      "canonicalSubjectId": "KB-SDP-038",
+      "canonicalSHA256": "1a1eac6719520dcccbbb4b6fea1db81f7eb5ddb873158a8cb8c19fa8d7663a11"
+    },
+    {
+      "source": "blueprints",
+      "line": 515,
+      "originalEventId": "EVT-KB-SDP-000319",
+      "originalSubjectId": "KB-SDP-050",
+      "canonicalEventId": "EVT-KB-SDP-000350",
+      "canonicalSubjectId": "KB-SDP-050",
+      "canonicalSHA256": "f707145549633c37024096674647f3ba6b74227a30c09f4da1932613cbe9b622"
+    },
+    {
+      "source": "governance",
+      "line": 516,
+      "originalEventId": "EVT-PM-SDP-000170",
+      "originalSubjectId": "PLAN-SDP-0018",
+      "canonicalEventId": "EVT-PM-SDP-000188",
+      "canonicalSubjectId": "PLAN-SDP-0018",
+      "canonicalSHA256": "2f058dc65d3596eefedd555ccda2cd31931ef7066329f9facecb52ae4a428321"
+    },
+    {
+      "source": "governance",
+      "line": 517,
+      "originalEventId": "EVT-KB-SDP-000319",
+      "originalSubjectId": "KB-SDP-038",
+      "canonicalEventId": "EVT-KB-SDP-000351",
+      "canonicalSubjectId": "KB-SDP-038",
+      "canonicalSHA256": "a3a375fdc466329fe817038589fe88cf35349a962c870900953c230cb5477fcb"
+    },
+    {
+      "source": "governance",
+      "line": 518,
+      "originalEventId": "EVT-PM-SDP-000171",
+      "originalSubjectId": "PLAN-SDP-0018",
+      "canonicalEventId": "EVT-PM-SDP-000189",
+      "canonicalSubjectId": "PLAN-SDP-0018",
+      "canonicalSHA256": "d3ed5aef961bd10a3b970388f3a5692daa526aa0eef13976743d9aeb82b2cf68"
+    },
+    {
+      "source": "governance",
+      "line": 519,
+      "originalEventId": "EVT-KB-SDP-000320",
+      "originalSubjectId": "KB-SDP-038",
+      "canonicalEventId": "EVT-KB-SDP-000352",
+      "canonicalSubjectId": "KB-SDP-038",
+      "canonicalSHA256": "2ad52420caf75c5afbf577351fb05a8cb29e13f9277c37804f49c45190236c7b"
+    },
+    {
+      "source": "blueprints",
+      "line": 516,
+      "originalEventId": "EVT-PM-SDP-000172",
+      "originalSubjectId": "PLAN-SDP-0020",
+      "canonicalEventId": "EVT-PM-SDP-000190",
+      "canonicalSubjectId": "PLAN-SDP-0020",
+      "canonicalSHA256": "f155c7330636a743556e745ff73d58b869c1eedcb1f4a3da389d56686a8dd4fa"
+    },
+    {
+      "source": "blueprints",
+      "line": 517,
+      "originalEventId": "EVT-KB-SDP-000321",
+      "originalSubjectId": "KB-SDP-050",
+      "canonicalEventId": "EVT-KB-SDP-000353",
+      "canonicalSubjectId": "KB-SDP-050",
+      "canonicalSHA256": "a442b2e482d5db5bb82c721f8e7b9b1117c6147b5faac020408085ad80387b83"
+    },
+    {
+      "source": "blueprints",
+      "line": 518,
+      "originalEventId": "EVT-KB-SDP-000322",
+      "originalSubjectId": "KB-SDP-051",
+      "canonicalEventId": "EVT-KB-SDP-000354",
+      "canonicalSubjectId": "KB-SDP-053",
+      "canonicalSHA256": "5e062615f59c641dd72cec1cf5a46f5cc1c588169dd21fc79fe32586bee2dd78"
+    },
+    {
+      "source": "blueprints",
+      "line": 519,
+      "originalEventId": "EVT-KB-SDP-000323",
+      "originalSubjectId": "KB-SDP-051",
+      "canonicalEventId": "EVT-KB-SDP-000355",
+      "canonicalSubjectId": "KB-SDP-053",
+      "canonicalSHA256": "c62d993fff0511fd5fa389ab3d534864270dcbb7e90309cf5ec640669f1981fe"
+    },
+    {
+      "source": "blueprints",
+      "line": 520,
+      "originalEventId": "EVT-KB-SDP-000324",
+      "originalSubjectId": "KB-SDP-050",
+      "canonicalEventId": "EVT-KB-SDP-000356",
+      "canonicalSubjectId": "KB-SDP-050",
+      "canonicalSHA256": "cdc9366c0e44b10e130b84eb13d7cd4d437e8ce0a318237ec746f1d88f04810b"
+    },
+    {
+      "source": "blueprints",
+      "line": 521,
+      "originalEventId": "EVT-KB-SDP-000325",
+      "originalSubjectId": "KB-SDP-051",
+      "canonicalEventId": "EVT-KB-SDP-000357",
+      "canonicalSubjectId": "KB-SDP-053",
+      "canonicalSHA256": "ca7f5c259123041d07c3e5a8eda9486e372800c422c4bae846343425f744e4a9"
+    },
+    {
+      "source": "governance",
+      "line": 520,
+      "originalEventId": "EVT-PM-SDP-000173",
+      "originalSubjectId": "PLAN-SDP-0018",
+      "canonicalEventId": "EVT-PM-SDP-000191",
+      "canonicalSubjectId": "PLAN-SDP-0018",
+      "canonicalSHA256": "fb446313069d3fa599bf2962b0590e92ac63607084fc1c9c42a31f0908c0c639"
+    },
+    {
+      "source": "governance",
+      "line": 521,
+      "originalEventId": "EVT-KB-SDP-000326",
+      "originalSubjectId": "KB-SDP-038",
+      "canonicalEventId": "EVT-KB-SDP-000358",
+      "canonicalSubjectId": "KB-SDP-038",
+      "canonicalSHA256": "4eca7d5185a741f753fcc2acf506ea1e88c364c229d595a4fa313f1a5648d722"
+    },
+    {
+      "source": "blueprints",
+      "line": 522,
+      "originalEventId": "EVT-KB-SDP-000327",
+      "originalSubjectId": "KB-SDP-051",
+      "canonicalEventId": "EVT-KB-SDP-000359",
+      "canonicalSubjectId": "KB-SDP-053",
+      "canonicalSHA256": "7e6c6f938f38bc1fd7eae1f49207333990ace5fa32582d7927121601a51c66f1"
+    },
+    {
+      "source": "blueprints",
+      "line": 523,
+      "originalEventId": "EVT-PM-SDP-000174",
+      "originalSubjectId": "MAINT-SDP-0015",
+      "canonicalEventId": "EVT-PM-SDP-000192",
+      "canonicalSubjectId": "MAINT-SDP-0016",
+      "canonicalSHA256": "3cd06fac289a60dbc82254a4e193804916f46ad94610fefadd698e93d596368a"
+    },
+    {
+      "source": "blueprints",
+      "line": 524,
+      "originalEventId": "EVT-KB-SDP-000328",
+      "originalSubjectId": "KB-SDP-038",
+      "canonicalEventId": "EVT-KB-SDP-000360",
+      "canonicalSubjectId": "KB-SDP-038",
+      "canonicalSHA256": "3223317f9a3d68330b4cea1c4be23f8cfc2f49f588779e3ccecaa00d7a8ab588"
+    },
+    {
+      "source": "blueprints",
+      "line": 525,
+      "originalEventId": "EVT-PM-SDP-000175",
+      "originalSubjectId": "MAINT-SDP-0015",
+      "canonicalEventId": "EVT-PM-SDP-000193",
+      "canonicalSubjectId": "MAINT-SDP-0016",
+      "canonicalSHA256": "20cc23a6962bcc13cd12df0eda4808ab549c454469fd93460966d6d039ee5fbb"
+    },
+    {
+      "source": "blueprints",
+      "line": 526,
+      "originalEventId": "EVT-KB-SDP-000329",
+      "originalSubjectId": "KB-SDP-052",
+      "canonicalEventId": "EVT-KB-SDP-000361",
+      "canonicalSubjectId": "KB-SDP-052",
+      "canonicalSHA256": "b5c18f45af4b67dec800a7c681ba31bc590f77aff4be82cf6956c3c5ed9792b8"
+    },
+    {
+      "source": "blueprints",
+      "line": 527,
+      "originalEventId": "EVT-KB-SDP-000330",
+      "originalSubjectId": "KB-SDP-038",
+      "canonicalEventId": "EVT-KB-SDP-000362",
+      "canonicalSubjectId": "KB-SDP-038",
+      "canonicalSHA256": "3f2c355d5b3dbca18f1f1c267a5c27eac70d682e546b9b2c5c57c66733221c7f"
+    },
+    {
+      "source": "governance",
+      "line": 525,
+      "originalEventId": "EVT-KB-SDP-000331",
+      "originalSubjectId": "KB-SDP-052",
+      "canonicalEventId": "EVT-KB-SDP-000363",
+      "canonicalSubjectId": "KB-SDP-052",
+      "canonicalSHA256": "2c703dcb09036c8e3dce15beab665f3a46e2bcce6e16dfbffd87f4062b95dcdf"
+    },
+    {
+      "source": "governance",
+      "line": 526,
+      "originalEventId": "EVT-KB-SDP-000332",
+      "originalSubjectId": "KB-SDP-052",
+      "canonicalEventId": "EVT-KB-SDP-000364",
+      "canonicalSubjectId": "KB-SDP-052",
+      "canonicalSHA256": "a21320524c4320046acfd5adbabac39c9f76bdb423cae01368883d7094b4f233"
+    },
+    {
+      "source": "blueprints",
+      "line": 528,
+      "originalEventId": "EVT-PM-SDP-000176",
+      "originalSubjectId": "PLAN-SDP-0024",
+      "canonicalEventId": "EVT-PM-SDP-000194",
+      "canonicalSubjectId": "PLAN-SDP-0024",
+      "canonicalSHA256": "117c06e318b2103dace6c4b64bbfb0676f06ce76959fc5ad76a0a60033968897"
+    },
+    {
+      "source": "blueprints",
+      "line": 529,
+      "originalEventId": "EVT-KB-SDP-000333",
+      "originalSubjectId": "KB-SDP-051",
+      "canonicalEventId": "EVT-KB-SDP-000365",
+      "canonicalSubjectId": "KB-SDP-053",
+      "canonicalSHA256": "5f023bebbc99a2b57b13c1330517eed4cc36362d7339c00a410c6ba9c835c4c6"
+    },
+    {
+      "source": "governance",
+      "line": 527,
+      "originalEventId": "EVT-KB-SDP-000335",
+      "originalSubjectId": "KB-SDP-052",
+      "canonicalEventId": "EVT-KB-SDP-000366",
+      "canonicalSubjectId": "KB-SDP-052",
+      "canonicalSHA256": "282e97c9e48c396dacec8f013067ffa47dfb2eb77365fe4f235bc89a4f36088a"
+    },
+    {
+      "source": "governance",
+      "line": 528,
+      "originalEventId": "EVT-KB-SDP-000336",
+      "originalSubjectId": "KB-SDP-038",
+      "canonicalEventId": "EVT-KB-SDP-000367",
+      "canonicalSubjectId": "KB-SDP-038",
+      "canonicalSHA256": "7feb551bdf0f02a52715854b8444f9b5f1c2e3fa5e386e861ba62c0ee081d0fd"
+    },
+    {
+      "source": "governance",
+      "line": 529,
+      "originalEventId": "EVT-PM-SDP-000177",
+      "originalSubjectId": "PLAN-SDP-0018",
+      "canonicalEventId": "EVT-PM-SDP-000195",
+      "canonicalSubjectId": "PLAN-SDP-0018",
+      "canonicalSHA256": "ce40e596f80853298b836bf7672a9aff5d441d4a81100be6f546996f3c877a65"
+    },
+    {
+      "source": "governance",
+      "line": 530,
+      "originalEventId": "EVT-PM-SDP-000178",
+      "originalSubjectId": "PLAN-SDP-0018",
+      "canonicalEventId": "EVT-PM-SDP-000196",
+      "canonicalSubjectId": "PLAN-SDP-0018",
+      "canonicalSHA256": "e6d9ef67ba275ee34362bf59bfa9901c9f42edbcb8bb71fecea44b1010ea6b32"
+    },
+    {
+      "source": "governance",
+      "line": 531,
+      "originalEventId": "EVT-KB-SDP-000337",
+      "originalSubjectId": "KB-SDP-052",
+      "canonicalEventId": "EVT-KB-SDP-000368",
+      "canonicalSubjectId": "KB-SDP-052",
+      "canonicalSHA256": "02469a6ac770efeda75e3c9e66540f5eb0af2dd961bd3820edf13d8b7a7ded80"
+    }
+  ]
+}

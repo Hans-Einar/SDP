@@ -1,5 +1,9 @@
 # SDUI 0.2 — implemented source profile
 
+The frontend also supports the separate [0.3 collection source profile](profile-0.3.md).
+This page retains the exact 0.2 contract; new tree/list calls do not become valid
+under a 0.2 header. Native/provider readiness is checked separately from parsing.
+
 Updated 2026-09-22. The Go frontend parses SDUI 0.2 and builds an AST. Runtime/Fyne/SVG are separate implementations; parsing never invokes domain functions. The [EBNF](../grammar/sdui-0.2.ebnf) and this profile replace old 0.1 syntax. The [layout proposal](layout-language-proposal.md) also describes future geometry; accepting formatting does not imply implementing its layout behavior.
 
 ## Source and structure

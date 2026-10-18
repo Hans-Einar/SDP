@@ -2,7 +2,7 @@
 
 ## Session roadmap
 
-Latest recorded turn T005. All five implementation phases completed under PLAN-SDP-0019. Synthetic sequence
+Latest recorded turn T007 (successor selected). All five implementation phases completed under PLAN-SDP-0019. Synthetic sequence
 only; dates below are slots, not scheduling estimates or measured durations.
 
 ```mermaid
@@ -57,7 +57,7 @@ undo across branches. Model design, implementation and acceptance remain distinc
 | Card | Role | Initial | Planned final | Current | Actual final |
 | --- | --- | --- | --- | --- | --- |
 | [KB049](../KanBan/completed/%23049--Change--Model-governance.md) | Primary | New, active/in-progress | completed after verified delivery | completed | completed |
-| [KB050](../KanBan/backlog/%23050--Proposal--Semantic-blueprints.md) | Separate consumer | backlog | Outside this Session | backlog | Pending |
+| [KB050](../KanBan/active/%23050--Proposal--Semantic-blueprints.md) | Separate consumer | backlog | Outside this Session | backlog | Pending |
 | [KB048](../KanBan/superseded/%23048--Proposal--Versioned-design-reviews-and-blueprint-diffs.md) | Historical source | backlog before split | superseded | superseded | Scope transferred |
 
 ## Plan register
@@ -170,6 +170,27 @@ Independent review identified and verified fixes for dirty capture IDs, file/dir
 restore, unreadable binary conflicts and unrecorded staging recovery. Source-derived
 viewpoints rebuilt after marking delivery implemented. Backlog review retains KB050
 for semantic blueprints; no scope transfer into this implementation.
+
+### T006 — Recommended next step (2026-10-06)
+
+Owner asks what follows completed ModelGovernance. Manual work summary; skill
+loaded: sdp. Recovered this Session, KB050 and the existing BP2 DesignPlan.
+Recommendation: start a separate KB050 Session with a small real-model pilot,
+using a copy of MVP1 to exercise RELEASE -> WORK -> CANDIDATE and design the first
+semantic NOW/TARGET blueprint. Reconcile BP2 with the delivered source-composition
+and ModelGovernance APIs; its older registration/single-file assumptions are not
+current implementation constraints. The pilot should show changed elements,
+affected neighboring units/contracts, preserved boundaries and explicit unknowns.
+Implementation must follow that bounded design, not an invented finished blueprint
+contract. Main integration/release remains a separate delivery step, not a
+prerequisite for a local pilot. No new card/plan was activated by this question;
+Session0006 and KB049 remain completed. Journal update is uncommitted in this turn.
+
+### T007 — Successor selected (2026-10-06)
+
+Owner says continue. KB050 and BP2 now start in Session0008. ModelGovernance stays
+completed; the successor owns semantic blueprint design and its pilot. Skills:
+sdp, Planning, Architect. This is a manual handoff summary, not a transcript.
 
 ## Closeout
 

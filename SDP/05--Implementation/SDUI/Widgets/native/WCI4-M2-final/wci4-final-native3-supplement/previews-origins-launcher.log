@@ -1,0 +1,57 @@
+PASS negative-origin-500 mounted rendered image
+PASS negative-origin-500 mapped native window
+WARNING: The convert command is deprecated in IMv7, use "magick" instead of "convert" or "magick convert"
+
+PASS negative-origin-500 actual half-coverage green bounds within one physical pixel
+PASS negative-origin-500 solid interior and no green outside expected bounds
+PASS negative-origin-1100 mounted rendered image
+PASS negative-origin-1100 mapped native window
+WARNING: The convert command is deprecated in IMv7, use "magick" instead of "convert" or "magick convert"
+
+PASS negative-origin-1100 actual half-coverage green bounds within one physical pixel
+PASS negative-origin-1100 solid interior and no green outside expected bounds
+PASS positive-origin-500 mounted rendered image
+PASS positive-origin-500 mapped native window
+WARNING: The convert command is deprecated in IMv7, use "magick" instead of "convert" or "magick convert"
+
+PASS positive-origin-500 actual half-coverage green bounds within one physical pixel
+PASS positive-origin-500 solid interior and no green outside expected bounds
+PASS positive-origin-1100 mounted rendered image
+PASS positive-origin-1100 mapped native window
+WARNING: The convert command is deprecated in IMv7, use "magick" instead of "convert" or "magick convert"
+
+PASS positive-origin-1100 actual half-coverage green bounds within one physical pixel
+PASS positive-origin-1100 solid interior and no green outside expected bounds
+PASS mixed-origin-500 mounted rendered image
+PASS mixed-origin-500 mapped native window
+WARNING: The convert command is deprecated in IMv7, use "magick" instead of "convert" or "magick convert"
+
+PASS mixed-origin-500 actual half-coverage green bounds within one physical pixel
+PASS mixed-origin-500 solid interior and no green outside expected bounds
+PASS mixed-origin-1100 mounted rendered image
+PASS mixed-origin-1100 mapped native window
+WARNING: The convert command is deprecated in IMv7, use "magick" instead of "convert" or "magick convert"
+
+PASS mixed-origin-1100 actual half-coverage green bounds within one physical pixel
+PASS mixed-origin-1100 solid interior and no green outside expected bounds
+PASS root-transform-500 mounted rendered image
+PASS root-transform-500 mapped native window
+WARNING: The convert command is deprecated in IMv7, use "magick" instead of "convert" or "magick convert"
+
+PASS root-transform-500 actual half-coverage green bounds within one physical pixel
+PASS root-transform-500 solid interior and no green outside expected bounds
+PASS root-transform-1100 mounted rendered image
+PASS root-transform-1100 mapped native window
+WARNING: The convert command is deprecated in IMv7, use "magick" instead of "convert" or "magick convert"
+
+PASS root-transform-1100 actual half-coverage green bounds within one physical pixel
+PASS root-transform-1100 solid interior and no green outside expected bounds
+PASS actual native fit includes below and above intrinsic scale
+PASS shared clip translates image without refitting
+PASS negative-origin-shared-clip mounted rendered image
+PASS negative-origin-shared-clip mapped native window
+WARNING: The convert command is deprecated in IMv7, use "magick" instead of "convert" or "magick convert"
+
+PASS negative-origin-shared-clip actual half-coverage green bounds within one physical pixel
+PASS negative-origin-shared-clip solid interior and no green outside expected bounds
+PASS native teardown closes session and clears provider barriers

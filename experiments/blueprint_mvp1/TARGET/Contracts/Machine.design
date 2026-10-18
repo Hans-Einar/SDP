@@ -1,0 +1,30 @@
+language design-core version 0.6.
+contract BaselinePayload.
+contract BaselineRequest.
+field CalibrationState.
+message MachineBaseline.
+contract MachineProtocol.
+channel MachineServiceUpstream.
+message ReadBaseline.
+field Subscriber.
+BaselinePayload has completeness = closed.
+BaselinePayload has-field CalibrationState.
+BaselineRequest has completeness = closed.
+BaselineRequest has-field Subscriber.
+BuckingWeb uses MachineServiceUpstream as receiver of MachineBaseline in mode Inspection.
+BuckingWeb uses MachineServiceUpstream as sender of ReadBaseline in mode Inspection.
+CalibrationState has presence = required.
+CalibrationState has value-type = text.
+MachineBaseline has message-kind = result.
+MachineBaseline replies-to ReadBaseline.
+MachineBaseline upholds BaselinePayload.
+MachineProtocol has completeness = closed.
+MachineProtocol permits MachineBaseline.
+MachineProtocol permits ReadBaseline.
+MachineService uses MachineServiceUpstream as receiver of ReadBaseline in mode Inspection.
+MachineService uses MachineServiceUpstream as sender of MachineBaseline in mode Inspection.
+MachineServiceUpstream upholds MachineProtocol.
+ReadBaseline has message-kind = request.
+ReadBaseline upholds BaselineRequest.
+Subscriber has presence = required.
+Subscriber has value-type = text.

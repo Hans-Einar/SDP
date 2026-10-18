@@ -1,0 +1,18 @@
+{
+  "name": "sdl-frozen-group",
+  "status": "superseded-timeout",
+  "exit": 1,
+  "command": "go test -race ./bridge ./examples/text ./examples/values ./examples/commands ./examples/panes",
+  "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+  "receipt_origin": "Retained tool-output result and stack excerpt, retranscribed; not original stdout file",
+  "log": "/tmp/wci3-m2-sdl-test-evidence/old-broad-result.txt",
+  "artifacts": [
+    "/tmp/wci3-m2-sdl-test-evidence/README.md",
+    "/tmp/wci3-m2-sdl-test-evidence/SHA256SUMS",
+    "/tmp/wci3-m2-sdl-test-evidence/final-text.exit",
+    "/tmp/wci3-m2-sdl-test-evidence/index.json",
+    "/tmp/wci3-m2-sdl-test-evidence/old-broad-result.txt",
+    "/tmp/wci3-m2-sdl-test-evidence/old-broad.exit"
+  ],
+  "notes": "Older host candidate; four passes are not current regression proof."
+}

@@ -48,3 +48,72 @@ Owner clarification, 2026-09-20: R15 permits no source pixel width/height. Root 
 **SDUI-R25:** parse/validate/publish source changes without closing UI windows. Retain last valid model on errors and compatible value/focus on reload; reject stale events. SDL state needs migration/reset rules. Go-function changes rebuild/restart. Implemented/verified G3/G4.
 
 **SDUI-R26:** Go generation shares development models/runtime and separates generated code from handwritten domain functions. Unknown/incomplete SDL execution semantics produce diagnostics. Implemented/verified G5.
+
+## XFMD combined-preview refinement — KB-SDUI-005, 2026-10-07
+
+Generate a structural composition diagram and provenance table beside the existing
+static text render. Retain hidden/reused instance identity, effective layout,
+symbolic bindings and exact declaration/use spans. Host preflight must distinguish
+local prototype readiness from SDL connectivity and reject stale source revisions.
+A consumer may bundle the SDUI-owned tools; parser/runtime remain host-independent.
+
+## Selected widget inventory — KB-SDUI-003, Session0010
+
+**SDUI-R27:** deliver the card's tree/list and scroll
+viewports, tabs/splits, button/toggle commands, menu/context/dialog, checkbox,
+slider/select/numeric input, extended single-line and basic multiline input, plus
+explicit SVG/Markdown provider and fallback contracts. Preserve typed identity,
+draft atomicity, programmatic/user-event distinction and reload/disposal guards.
+Full editors, component source sets and native XFMD parity are outside this scope.
+
+**SDUI-R28:** separate source/profile, layout, provider
+and native capabilities; prepare all required bindings before connected activation.
+An unbound prototype is not connected readiness. Unsupported exports reject or use
+an explicitly selected labelled static fallback. Parser success is insufficient.
+
+The [reviewed design](../../SDP/04--Design/SDUI/Widgets/Design.md),
+[acceptance matrix](../../SDP/04--Design/SDUI/Widgets/Acceptance.md) and
+[implementation plan](../../SDP/05--Implementation/SDUI/Widgets/Plan.md) define
+staged delivery. Source 0.3 is selected for new syntax; current implemented 0.2
+and frozen historical fixtures retain their meaning. Native behavior and matching
+consumer package evidence are required before declaring the inventory delivered.
+
+WCI1 delivers the bounded tree/list/scroll portion of R27 and guarded native
+publication for R28; see [WCI1 evidence](../../SDP/05--Implementation/SDUI/Widgets/Evidence-WCI1.md).
+Remaining widget families and consumer packaging stay open under PLAN-SDP-0022.
+
+
+WCI2-M1 delivers tabs/splits with retained drafts, focus and measured geometry;
+see [pane evidence](../../SDP/05--Implementation/SDUI/Widgets/Evidence-WCI2-M1.md).
+WCI2-M2 delivers shared commands, menus and composed modal/nonmodal surfaces;
+[verified evidence](../../SDP/05--Implementation/SDUI/Widgets/Evidence-WCI2-M2.md)
+records 118 native checks and independent approval: exactly-once dispatch,
+stale-context refusal, truthful domain outcomes, draft-preserving rejection and
+one terminal result for each of 26 published openings. At that command milestone, WCI3/WCI4 were still pending; their delivery follows below.
+
+WCI3-M1 implements the checkbox/slider/select/number portion of R27 with exact typed
+values, invalid-draft feedback, stable option identity and atomic mixed forms under
+R28 publication guards. [Reviewed scalar evidence](../../SDP/05--Implementation/SDUI/Widgets/Evidence-WCI3-M1.md)
+proves pointer/keyboard Change versus Commit, visible slider proposal feedback,
+readonly/programmatic behavior, invalid-draft refusal, stale-result rejection,
+child Commit versus form Cancel and truthful post-domain failure through 113 native
+checks and passing suites. At that scalar milestone, extended text/IME remained WCI3-M2 work.
+
+WCI3-M2 implements opt-in extended single-line and basic multiline input for R27:
+explicit Change/Commit, required validation, read-only selection/copy, placeholder,
+Unicode clipboard, native undo/redo and internal scrolling under R28 publication
+guards. Native typing/IME, failed edits, reload and same/different-byte history
+policies require exact-candidate evidence. A rejected native edit may reset that
+Entry editing history while restoring authoritative text; failed Commit/reload
+retain history. [Reviewed M2 evidence](../../SDP/05--Implementation/SDUI/Widgets/Evidence-WCI3-M2.md) closes the bounded text inventory with 92 native checks, actual IME, shared-command receiver correction and affected suites. At that text milestone, WCI4 consumer/provider preparation remained open; its current status follows below.
+
+WCI4 implements explicit per-instance SVG/Markdown preview identity, immutable
+preparation and truthful supported/fallback/unsupported outcomes for R27/R28.
+Required evidence includes finite closed-subset resource admission, independent
+policies for identical Markdown, copied buffers, no renderer calls after preparation,
+shared fit/clip/caption/status geometry and exact native owner teardown. Public
+unsupported exports must preserve the previous artifact. Matching producer/private
+helpers and connected application examples need actual protocol/native/IME evidence.
+The linked plan and acceptance matrix own current delivery status; no release,
+installed-consumer upgrade, dark-theme contrast or OS screen-reader support is
+inferred from the implementation. Separate fidelity work remains KB-SDUI-004.

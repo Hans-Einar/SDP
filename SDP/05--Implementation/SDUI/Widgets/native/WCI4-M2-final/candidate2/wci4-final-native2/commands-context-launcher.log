@@ -1,0 +1,4 @@
+PASS secondary click does not replace selected item
+PASS item command uses captured row without retargeting selection
+PASS obsolete context cannot invoke after collection replacement
+PASS native teardown closes session and clears provider barriers

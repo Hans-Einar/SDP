@@ -1,0 +1,6 @@
+PASS native menu Home Enter invokes once
+PASS nested keyboard End Space selects exclusive peer
+PASS menu Escape dismisses without action
+PASS Shift F10 captures focused item for keyboard action
+PASS declared shortcut works from Entry without committing its draft
+PASS native teardown closes session and clears provider barriers

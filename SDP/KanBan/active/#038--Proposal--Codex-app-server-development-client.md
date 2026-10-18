@@ -333,7 +333,7 @@ PG lab is recommended first; the existing sdui_widget_lab is a later real-consum
 trial after selecting a bounded task with its current owner. Reuse current PG
 commands; do not introduce another governance core or assume a GUI exists.
 
-KB-SDP-051 in the separate blueprint workstream owns the proposed shared action
+KB-SDP-053 in the separate blueprint workstream owns the proposed shared action
 catalogue/invoke contract and general consumer development testing. Coordinate by
 contract reference; this PG trial does not implement that proposal, modify XFMD or
 change installed gh-sdp/SDPTool. Owner observations must distinguish implementation

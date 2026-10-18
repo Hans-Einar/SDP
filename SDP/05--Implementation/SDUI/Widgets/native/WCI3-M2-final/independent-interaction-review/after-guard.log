@@ -1,0 +1,230 @@
+=== RUN   TestEchoButtonAndInput
+--- PASS: TestEchoButtonAndInput (0.00s)
+=== RUN   TestSimulatedEditAptCell
+--- PASS: TestSimulatedEditAptCell (0.00s)
+=== RUN   TestInvalidBindingPlansInstallNothing
+=== RUN   TestInvalidBindingPlansInstallNothing/module
+=== RUN   TestInvalidBindingPlansInstallNothing/member
+=== RUN   TestInvalidBindingPlansInstallNothing/target
+=== RUN   TestInvalidBindingPlansInstallNothing/source
+=== RUN   TestInvalidBindingPlansInstallNothing/literal
+=== RUN   TestInvalidBindingPlansInstallNothing/unused
+--- PASS: TestInvalidBindingPlansInstallNothing (0.01s)
+    --- PASS: TestInvalidBindingPlansInstallNothing/module (0.00s)
+    --- PASS: TestInvalidBindingPlansInstallNothing/member (0.00s)
+    --- PASS: TestInvalidBindingPlansInstallNothing/target (0.00s)
+    --- PASS: TestInvalidBindingPlansInstallNothing/source (0.00s)
+    --- PASS: TestInvalidBindingPlansInstallNothing/literal (0.00s)
+    --- PASS: TestInvalidBindingPlansInstallNothing/unused (0.00s)
+=== RUN   TestCollectionEventFieldAndCapturedReceiver
+=== RUN   TestCollectionEventFieldAndCapturedReceiver/valid
+=== RUN   TestCollectionEventFieldAndCapturedReceiver/selector
+=== RUN   TestCollectionEventFieldAndCapturedReceiver/integer
+=== RUN   TestCollectionEventFieldAndCapturedReceiver/mixed
+=== RUN   TestCollectionEventFieldAndCapturedReceiver/draft-during-action
+=== RUN   TestCollectionEventFieldAndCapturedReceiver/replace-receiver
+--- PASS: TestCollectionEventFieldAndCapturedReceiver (0.04s)
+    --- PASS: TestCollectionEventFieldAndCapturedReceiver/valid (0.01s)
+    --- PASS: TestCollectionEventFieldAndCapturedReceiver/selector (0.00s)
+    --- PASS: TestCollectionEventFieldAndCapturedReceiver/integer (0.01s)
+    --- PASS: TestCollectionEventFieldAndCapturedReceiver/mixed (0.01s)
+    --- PASS: TestCollectionEventFieldAndCapturedReceiver/draft-during-action (0.01s)
+    --- PASS: TestCollectionEventFieldAndCapturedReceiver/replace-receiver (0.01s)
+=== RUN   TestSharedCommandsUseOneActualSDLHandlerAndTypedValues
+--- PASS: TestSharedCommandsUseOneActualSDLHandlerAndTypedValues (0.04s)
+=== RUN   TestCommandContextUsesCapturedRowAndRejectsStaleMenu
+--- PASS: TestCommandContextUsesCapturedRowAndRejectsStaleMenu (0.03s)
+=== RUN   TestDialogTypedAcceptCapturesFieldsAndPublishesOneResult
+--- PASS: TestDialogTypedAcceptCapturesFieldsAndPublishesOneResult (0.03s)
+=== RUN   TestDialogFalseUnknownAndPostDomainConflictRemainTruthful
+=== RUN   TestDialogFalseUnknownAndPostDomainConflictRemainTruthful/false
+=== RUN   TestDialogFalseUnknownAndPostDomainConflictRemainTruthful/error
+=== RUN   TestDialogFalseUnknownAndPostDomainConflictRemainTruthful/malformed
+=== RUN   TestDialogFalseUnknownAndPostDomainConflictRemainTruthful/draft-conflict
+=== RUN   TestDialogFalseUnknownAndPostDomainConflictRemainTruthful/resource-conflict
+--- PASS: TestDialogFalseUnknownAndPostDomainConflictRemainTruthful (0.17s)
+    --- PASS: TestDialogFalseUnknownAndPostDomainConflictRemainTruthful/false (0.03s)
+    --- PASS: TestDialogFalseUnknownAndPostDomainConflictRemainTruthful/error (0.03s)
+    --- PASS: TestDialogFalseUnknownAndPostDomainConflictRemainTruthful/malformed (0.03s)
+    --- PASS: TestDialogFalseUnknownAndPostDomainConflictRemainTruthful/draft-conflict (0.03s)
+    --- PASS: TestDialogFalseUnknownAndPostDomainConflictRemainTruthful/resource-conflict (0.05s)
+=== RUN   TestM2BindingPlansRejectWithoutPartialInstallation
+=== RUN   TestM2BindingPlansRejectWithoutPartialInstallation/unknown-mode
+=== RUN   TestM2BindingPlansRejectWithoutPartialInstallation/dialog-text
+=== RUN   TestM2BindingPlansRejectWithoutPartialInstallation/text-accept-fields
+=== RUN   TestM2BindingPlansRejectWithoutPartialInstallation/accept-on-command
+=== RUN   TestM2BindingPlansRejectWithoutPartialInstallation/accept-field
+=== RUN   TestM2BindingPlansRejectWithoutPartialInstallation/message-field
+=== RUN   TestM2BindingPlansRejectWithoutPartialInstallation/output
+=== RUN   TestM2BindingPlansRejectWithoutPartialInstallation/revision
+=== RUN   TestM2BindingPlansRejectWithoutPartialInstallation/setHandle
+=== RUN   TestM2BindingPlansRejectWithoutPartialInstallation/path-empty
+=== RUN   TestM2BindingPlansRejectWithoutPartialInstallation/path-parent
+=== RUN   TestM2BindingPlansRejectWithoutPartialInstallation/path-missing
+=== RUN   TestM2BindingPlansRejectWithoutPartialInstallation/live-field
+=== RUN   TestM2BindingPlansRejectWithoutPartialInstallation/path-on-literal
+=== RUN   TestM2BindingPlansRejectWithoutPartialInstallation/checked-on-run
+=== RUN   TestM2BindingPlansRejectWithoutPartialInstallation/context-on-run
+=== RUN   TestM2BindingPlansRejectWithoutPartialInstallation/capture-on-command
+--- PASS: TestM2BindingPlansRejectWithoutPartialInstallation (0.34s)
+    --- PASS: TestM2BindingPlansRejectWithoutPartialInstallation/unknown-mode (0.02s)
+    --- PASS: TestM2BindingPlansRejectWithoutPartialInstallation/dialog-text (0.02s)
+    --- PASS: TestM2BindingPlansRejectWithoutPartialInstallation/text-accept-fields (0.02s)
+    --- PASS: TestM2BindingPlansRejectWithoutPartialInstallation/accept-on-command (0.02s)
+    --- PASS: TestM2BindingPlansRejectWithoutPartialInstallation/accept-field (0.02s)
+    --- PASS: TestM2BindingPlansRejectWithoutPartialInstallation/message-field (0.02s)
+    --- PASS: TestM2BindingPlansRejectWithoutPartialInstallation/output (0.02s)
+    --- PASS: TestM2BindingPlansRejectWithoutPartialInstallation/revision (0.02s)
+    --- PASS: TestM2BindingPlansRejectWithoutPartialInstallation/setHandle (0.02s)
+    --- PASS: TestM2BindingPlansRejectWithoutPartialInstallation/path-empty (0.02s)
+    --- PASS: TestM2BindingPlansRejectWithoutPartialInstallation/path-parent (0.02s)
+    --- PASS: TestM2BindingPlansRejectWithoutPartialInstallation/path-missing (0.02s)
+    --- PASS: TestM2BindingPlansRejectWithoutPartialInstallation/live-field (0.02s)
+    --- PASS: TestM2BindingPlansRejectWithoutPartialInstallation/path-on-literal (0.02s)
+    --- PASS: TestM2BindingPlansRejectWithoutPartialInstallation/checked-on-run (0.02s)
+    --- PASS: TestM2BindingPlansRejectWithoutPartialInstallation/context-on-run (0.02s)
+    --- PASS: TestM2BindingPlansRejectWithoutPartialInstallation/capture-on-command (0.02s)
+=== RUN   TestDialogCapturePlanRejectsNestedFieldAndPreservesCallerPlans
+--- PASS: TestDialogCapturePlanRejectsNestedFieldAndPreservesCallerPlans (0.03s)
+=== RUN   TestEachCommandConflictPreservesItsOwnReceiverAndDomainOutcome
+=== RUN   TestEachCommandConflictPreservesItsOwnReceiverAndDomainOutcome/Run
+=== RUN   TestEachCommandConflictPreservesItsOwnReceiverAndDomainOutcome/Toggle
+=== RUN   TestEachCommandConflictPreservesItsOwnReceiverAndDomainOutcome/Inspect
+--- PASS: TestEachCommandConflictPreservesItsOwnReceiverAndDomainOutcome (0.08s)
+    --- PASS: TestEachCommandConflictPreservesItsOwnReceiverAndDomainOutcome/Run (0.03s)
+    --- PASS: TestEachCommandConflictPreservesItsOwnReceiverAndDomainOutcome/Toggle (0.03s)
+    --- PASS: TestEachCommandConflictPreservesItsOwnReceiverAndDomainOutcome/Inspect (0.03s)
+=== RUN   TestImplicitCommandAndLegacyButtonInstallOnlyTheirOwnRoute
+--- PASS: TestImplicitCommandAndLegacyButtonInstallOnlyTheirOwnRoute (0.03s)
+=== RUN   TestTabCallbackTypedIDsAndSilentOperations
+--- PASS: TestTabCallbackTypedIDsAndSilentOperations (0.01s)
+=== RUN   TestTabBridgePreflightRejectsInvalidSelectorsWithoutInstallation
+=== RUN   TestTabBridgePreflightRejectsInvalidSelectorsWithoutInstallation/unknown
+=== RUN   TestTabBridgePreflightRejectsInvalidSelectorsWithoutInstallation/collection
+=== RUN   TestTabBridgePreflightRejectsInvalidSelectorsWithoutInstallation/integer
+=== RUN   TestTabBridgePreflightRejectsInvalidSelectorsWithoutInstallation/mixed
+=== RUN   TestTabBridgePreflightRejectsInvalidSelectorsWithoutInstallation/legacy-event
+=== RUN   TestTabBridgePreflightRejectsInvalidSelectorsWithoutInstallation/module
+=== RUN   TestTabBridgePreflightRejectsInvalidSelectorsWithoutInstallation/result
+=== RUN   TestTabBridgePreflightRejectsInvalidSelectorsWithoutInstallation/hidden-module
+=== RUN   TestTabBridgePreflightRejectsInvalidSelectorsWithoutInstallation/wrong-owner
+--- PASS: TestTabBridgePreflightRejectsInvalidSelectorsWithoutInstallation (0.03s)
+    --- PASS: TestTabBridgePreflightRejectsInvalidSelectorsWithoutInstallation/unknown (0.00s)
+    --- PASS: TestTabBridgePreflightRejectsInvalidSelectorsWithoutInstallation/collection (0.00s)
+    --- PASS: TestTabBridgePreflightRejectsInvalidSelectorsWithoutInstallation/integer (0.00s)
+    --- PASS: TestTabBridgePreflightRejectsInvalidSelectorsWithoutInstallation/mixed (0.00s)
+    --- PASS: TestTabBridgePreflightRejectsInvalidSelectorsWithoutInstallation/legacy-event (0.00s)
+    --- PASS: TestTabBridgePreflightRejectsInvalidSelectorsWithoutInstallation/module (0.00s)
+    --- PASS: TestTabBridgePreflightRejectsInvalidSelectorsWithoutInstallation/result (0.00s)
+    --- PASS: TestTabBridgePreflightRejectsInvalidSelectorsWithoutInstallation/hidden-module (0.00s)
+    --- PASS: TestTabBridgePreflightRejectsInvalidSelectorsWithoutInstallation/wrong-owner (0.00s)
+=== RUN   TestTabOutcomeAndReceiverDraftConflict
+=== RUN   TestTabOutcomeAndReceiverDraftConflict/error
+=== RUN   TestTabOutcomeAndReceiverDraftConflict/malformed
+=== RUN   TestTabOutcomeAndReceiverDraftConflict/draft-conflict
+=== RUN   TestTabOutcomeAndReceiverDraftConflict/geometry-conflict
+--- PASS: TestTabOutcomeAndReceiverDraftConflict (0.02s)
+    --- PASS: TestTabOutcomeAndReceiverDraftConflict/error (0.00s)
+    --- PASS: TestTabOutcomeAndReceiverDraftConflict/malformed (0.00s)
+    --- PASS: TestTabOutcomeAndReceiverDraftConflict/draft-conflict (0.00s)
+    --- PASS: TestTabOutcomeAndReceiverDraftConflict/geometry-conflict (0.00s)
+=== RUN   TestReusedTabsHaveIndependentOwnersAndFailedRebindPreservesHandlers
+--- PASS: TestReusedTabsHaveIndependentOwnersAndFailedRebindPreservesHandlers (0.00s)
+=== RUN   TestDetachedPreparationRealBridge
+=== RUN   TestDetachedPreparationRealBridge/module
+=== RUN   TestDetachedPreparationRealBridge/signature
+=== RUN   TestDetachedPreparationRealBridge/result
+=== RUN   TestDetachedPreparationRealBridge/success
+--- PASS: TestDetachedPreparationRealBridge (0.01s)
+    --- PASS: TestDetachedPreparationRealBridge/module (0.00s)
+    --- PASS: TestDetachedPreparationRealBridge/signature (0.00s)
+    --- PASS: TestDetachedPreparationRealBridge/result (0.00s)
+    --- PASS: TestDetachedPreparationRealBridge/success (0.00s)
+=== RUN   TestReviewerExtendedInteractionReceiver
+=== RUN   TestReviewerExtendedInteractionReceiver/command
+    reviewer_interaction_test.go:19: result={Sequence:1 Status:committed Domain:succeeded} err=<nil> calls=map[Run:1] before="No command" after="Run completed" draftrev=1
+=== RUN   TestReviewerExtendedInteractionReceiver/page
+    reviewer_interaction_test.go:28: result={Sequence:1 Status:committed Domain:succeeded} err=<nil> calls=1 value="loaded" selected=second draftrev=2
+--- PASS: TestReviewerExtendedInteractionReceiver (0.03s)
+    --- PASS: TestReviewerExtendedInteractionReceiver/command (0.02s)
+    --- PASS: TestReviewerExtendedInteractionReceiver/page (0.00s)
+=== RUN   TestTypedScalarEchoActualSDLAndNoReplay
+=== RUN   TestTypedScalarEchoActualSDLAndNoReplay/checkbox
+=== RUN   TestTypedScalarEchoActualSDLAndNoReplay/slider
+=== RUN   TestTypedScalarEchoActualSDLAndNoReplay/number
+=== RUN   TestTypedScalarEchoActualSDLAndNoReplay/choice
+--- PASS: TestTypedScalarEchoActualSDLAndNoReplay (0.01s)
+    --- PASS: TestTypedScalarEchoActualSDLAndNoReplay/checkbox (0.00s)
+    --- PASS: TestTypedScalarEchoActualSDLAndNoReplay/slider (0.00s)
+    --- PASS: TestTypedScalarEchoActualSDLAndNoReplay/number (0.00s)
+    --- PASS: TestTypedScalarEchoActualSDLAndNoReplay/choice (0.00s)
+=== RUN   TestScalarSafe53ExactNumericProvenance
+--- PASS: TestScalarSafe53ExactNumericProvenance (0.00s)
+=== RUN   TestScalarPreflightRejectsFractionalGridAndWrongModes
+=== RUN   TestScalarPreflightRejectsFractionalGridAndWrongModes/text
+=== RUN   TestScalarPreflightRejectsFractionalGridAndWrongModes/unknown
+=== RUN   TestScalarPreflightRejectsFractionalGridAndWrongModes/acceptfield
+=== RUN   TestScalarPreflightRejectsFractionalGridAndWrongModes/wrongselector
+=== RUN   TestScalarPreflightRejectsFractionalGridAndWrongModes/wrongreceiver
+=== RUN   TestScalarPreflightRejectsFractionalGridAndWrongModes/missingoutput
+=== RUN   TestScalarPreflightRejectsFractionalGridAndWrongModes/revision
+--- PASS: TestScalarPreflightRejectsFractionalGridAndWrongModes (0.01s)
+    --- PASS: TestScalarPreflightRejectsFractionalGridAndWrongModes/text (0.00s)
+    --- PASS: TestScalarPreflightRejectsFractionalGridAndWrongModes/unknown (0.00s)
+    --- PASS: TestScalarPreflightRejectsFractionalGridAndWrongModes/acceptfield (0.00s)
+    --- PASS: TestScalarPreflightRejectsFractionalGridAndWrongModes/wrongselector (0.00s)
+    --- PASS: TestScalarPreflightRejectsFractionalGridAndWrongModes/wrongreceiver (0.00s)
+    --- PASS: TestScalarPreflightRejectsFractionalGridAndWrongModes/missingoutput (0.00s)
+    --- PASS: TestScalarPreflightRejectsFractionalGridAndWrongModes/revision (0.00s)
+=== RUN   TestScalarErrorsConflictsAndResultBounds
+=== RUN   TestScalarErrorsConflictsAndResultBounds/error
+=== RUN   TestScalarErrorsConflictsAndResultBounds/malformed
+=== RUN   TestScalarErrorsConflictsAndResultBounds/unsafe
+=== RUN   TestScalarErrorsConflictsAndResultBounds/different
+=== RUN   TestScalarErrorsConflictsAndResultBounds/draft
+=== RUN   TestScalarErrorsConflictsAndResultBounds/options
+--- PASS: TestScalarErrorsConflictsAndResultBounds (0.01s)
+    --- PASS: TestScalarErrorsConflictsAndResultBounds/error (0.00s)
+    --- PASS: TestScalarErrorsConflictsAndResultBounds/malformed (0.00s)
+    --- PASS: TestScalarErrorsConflictsAndResultBounds/unsafe (0.00s)
+    --- PASS: TestScalarErrorsConflictsAndResultBounds/different (0.00s)
+    --- PASS: TestScalarErrorsConflictsAndResultBounds/draft (0.00s)
+    --- PASS: TestScalarErrorsConflictsAndResultBounds/options (0.00s)
+=== RUN   TestSDLDialogAcceptRejectsMixedTypedOwner
+--- PASS: TestSDLDialogAcceptRejectsMixedTypedOwner (0.02s)
+=== RUN   TestCommandTextResultExtendedReceiver
+=== RUN   TestCommandTextResultExtendedReceiver/#00
+=== RUN   TestCommandTextResultExtendedReceiver/,readOnly=true
+=== RUN   TestCommandTextResultExtendedReceiver/,multiline=false
+--- PASS: TestCommandTextResultExtendedReceiver (0.07s)
+    --- PASS: TestCommandTextResultExtendedReceiver/#00 (0.02s)
+    --- PASS: TestCommandTextResultExtendedReceiver/,readOnly=true (0.02s)
+    --- PASS: TestCommandTextResultExtendedReceiver/,multiline=false (0.02s)
+=== RUN   TestTabTextResultExtendedReceiver
+=== RUN   TestTabTextResultExtendedReceiver/readonly-success
+=== RUN   TestTabTextResultExtendedReceiver/writable-draft-conflict
+--- PASS: TestTabTextResultExtendedReceiver (0.01s)
+    --- PASS: TestTabTextResultExtendedReceiver/readonly-success (0.00s)
+    --- PASS: TestTabTextResultExtendedReceiver/writable-draft-conflict (0.00s)
+=== RUN   TestCommandExtendedReceiverConflictIsNotReplayed
+--- PASS: TestCommandExtendedReceiverConflictIsNotReplayed (0.02s)
+=== RUN   TestExtendedTextSelfPreflightRegardlessSelector
+--- PASS: TestExtendedTextSelfPreflightRegardlessSelector (0.03s)
+=== RUN   TestExtendedTextExactEchoAndNoReplay
+--- PASS: TestExtendedTextExactEchoAndNoReplay (0.02s)
+=== RUN   TestExtendedTextFailedResultsDoNotReplayOrAccept
+=== RUN   TestExtendedTextFailedResultsDoNotReplayOrAccept/error
+=== RUN   TestExtendedTextFailedResultsDoNotReplayOrAccept/malformed
+=== RUN   TestExtendedTextFailedResultsDoNotReplayOrAccept/non-echo
+=== RUN   TestExtendedTextFailedResultsDoNotReplayOrAccept/draft-conflict
+=== RUN   TestExtendedTextFailedResultsDoNotReplayOrAccept/state-conflict
+--- PASS: TestExtendedTextFailedResultsDoNotReplayOrAccept (0.01s)
+    --- PASS: TestExtendedTextFailedResultsDoNotReplayOrAccept/error (0.00s)
+    --- PASS: TestExtendedTextFailedResultsDoNotReplayOrAccept/malformed (0.00s)
+    --- PASS: TestExtendedTextFailedResultsDoNotReplayOrAccept/non-echo (0.00s)
+    --- PASS: TestExtendedTextFailedResultsDoNotReplayOrAccept/draft-conflict (0.00s)
+    --- PASS: TestExtendedTextFailedResultsDoNotReplayOrAccept/state-conflict (0.00s)
+=== RUN   TestBasicTextNonselfAndLoadExtendedReadOnly
+--- PASS: TestBasicTextNonselfAndLoadExtendedReadOnly (0.00s)
+PASS
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/bridge	2.161s

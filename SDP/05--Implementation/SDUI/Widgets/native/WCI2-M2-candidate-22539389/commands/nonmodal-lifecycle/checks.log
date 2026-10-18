@@ -1,0 +1,12 @@
+PASS failed profile reload preserves open surface and draft
+PASS failed binding reload preserves open surface and draft
+PASS failed resource reload preserves open surface and draft
+PASS failed guard reload preserves open surface and draft
+PASS failed stale reload preserves open surface and draft
+PASS successful reload closes old opening once without Save
+PASS reopened successor has no unaccepted old form draft
+PASS parent hide closes published child once
+PASS parent show does not revive child opening
+PASS native child close protocol produces one Close
+PASS native parent close drains child result before teardown
+PASS native teardown closes session and clears provider barriers

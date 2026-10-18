@@ -1,0 +1,11 @@
+PASS numeric accepted value is Number
+PASS invalid raw '-' remains visible without SDL Commit
+PASS invalid raw '1e' remains visible without SDL Commit
+PASS invalid raw '101' remains visible without SDL Commit
+PASS invalid raw '1.5' remains visible without SDL Commit
+PASS Tab retains valid numeric draft without Commit
+PASS Enter commits exact integer through actual SDL
+PASS number step button commits one legal increment
+PASS step cannot repair invalid draft by silently resetting it
+PASS Escape restores current accepted number without SDL
+PASS native teardown closes session and clears provider barriers

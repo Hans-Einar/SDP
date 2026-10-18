@@ -1,0 +1,12 @@
+PASS opening focuses first eligible form control
+PASS surface Tab reaches note
+PASS surface Tab reaches acceptButton
+PASS surface Tab reaches cancelButton
+PASS surface Tab reaches closeButton
+PASS surface Tab reaches name
+PASS nonmodal allows parent action and preserves child draft
+PASS Cancel restores surviving opener focus
+PASS restored opener receives actual keyboard input
+PASS closing unfocused nonmodal preserves active parent control
+PASS closing unfocused child does not steal OS keyboard focus
+PASS native teardown closes session and clears provider barriers

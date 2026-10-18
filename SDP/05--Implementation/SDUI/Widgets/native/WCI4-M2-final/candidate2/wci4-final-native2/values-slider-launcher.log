@@ -1,0 +1,11 @@
+PASS slider visibly labels its initial numeric value
+PASS held slider changes proposal without domain Commit
+PASS native label shows held proposed numeric value
+PASS slider release commits once through SDL
+PASS native accepted value remains visible after release
+PASS Escape cancels held drag and release cannot commit it
+PASS Escape restores displayed accepted slider value
+PASS silent programmatic slider value is visible
+PASS held slider key changes draft without Commit
+PASS slider key-up commits once
+PASS native teardown closes session and clears provider barriers

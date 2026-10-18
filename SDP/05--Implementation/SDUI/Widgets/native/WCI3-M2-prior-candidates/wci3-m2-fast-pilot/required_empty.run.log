@@ -1,0 +1,5 @@
+PASS required empty text starts invalid and editable
+PASS unchanged required-empty reload preserves invalid baseline without acceptance
+PASS whitespace required draft stays visible and cannot Save
+PASS deliberate Unicode text repairs required field and saves once
+PASS native teardown closes session and clears provider barriers

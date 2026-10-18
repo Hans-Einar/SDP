@@ -1,0 +1,69 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci4-package-candidate2/libexec/sdui/values", "sha256": "78ee0a70631003365121a6f25211dcad851ff90fd4e0d9ec96da9122a08477e5", "display": ":191", "variant": "wci3-forms"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [112, 16], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [550, 141], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "unbound checkbox in form remains unaccepted proposal", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [550, 440], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "key", "values": ["1", "2"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [974, 579], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "explicit child SDL Commit accepts independently", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [207, 805], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "Cancel discards proposals while retaining earlier child Commit", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [112, 16], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [550, 440], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "key", "values": ["minus"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [140, 805], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "invalid typed form cannot invoke Go Accept", "passed": true}}
+{"kind": "screenshot", "value": "mixed-invalid-no-persistence.png"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [550, 440], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "key", "values": ["1", "2"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [550, 141], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [550, 341], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [163, 412], "keep_focus": false}}
+{"kind": "fixture-command", "value": "accept mixed false"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [140, 805], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "application rejection retains all typed proposals", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [140, 805], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "one Go Accept persists captured mixed typed values atomically", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [112, 16], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "reopened form retains accepted mixed values", "passed": true}}
+{"kind": "screenshot", "value": "mixed-accepted-reopened.png"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [270, 805], "keep_focus": false}}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

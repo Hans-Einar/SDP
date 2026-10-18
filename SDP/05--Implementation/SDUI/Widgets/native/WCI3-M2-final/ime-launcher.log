@@ -1,0 +1,9 @@
+dbus[220499]: Unable to set up transient service directory: XDG_RUNTIME_DIR "/tmp/wci3-m2-guard-final-evidence/ime-environment/runtime" not available: Permission denied
+dbus-daemon[220499]: Cannot setup inotify for '/tmp/wci3-m2-guard-final-evidence/ime-environment/data/dbus-1/services'; error 'Permission denied'
+PASS real IME preedit changes neither draft nor SDL calls
+PASS IME-consumed Return commits composition without Save
+PASS IME-consumed Escape cancels composition without reverting draft
+PASS ordinary Return after composition saves once
+PASS multiline IME Return inserts no extra newline or Save
+PASS explicit Primary Return saves composed multiline text
+PASS native teardown closes session and clears provider barriers

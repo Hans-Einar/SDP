@@ -1,0 +1,11 @@
+ok  	github.com/Hans-Einar/SDP/SDPTool	12.091s
+?   	github.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller	[no test files]
+?   	github.com/Hans-Einar/SDP/SDPTool/cmd/sdp-mcp	[no test files]
+?   	github.com/Hans-Einar/SDP/SDPTool/cmd/sdptool	[no test files]
+ok  	github.com/Hans-Einar/SDP/SDPTool/governance	(cached)
+ok  	github.com/Hans-Einar/SDP/SDPTool/governancehost	(cached)
+ok  	github.com/Hans-Einar/SDP/SDPTool/governancemcp	(cached)
+ok  	github.com/Hans-Einar/SDP/SDPTool/install	(cached)
+ok  	github.com/Hans-Einar/SDP/SDPTool/model	6.788s
+ok  	github.com/Hans-Einar/SDP/SDPTool/presentation	(cached)
+ok  	github.com/Hans-Einar/SDP/SDPTool/tools/profile	(cached)

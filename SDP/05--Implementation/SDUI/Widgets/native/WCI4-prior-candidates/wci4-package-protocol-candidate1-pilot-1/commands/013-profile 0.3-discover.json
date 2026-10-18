@@ -1,0 +1,21 @@
+{
+  "name": "profile 0.3-discover",
+  "argv": [
+    "/tmp/wci4-package-candidate1/bin/sdptool",
+    "--json",
+    "/tmp/wci4-package-protocol-candidate1-pilot-1/profile 0.3 project with spaces",
+    "discover"
+  ],
+  "cwd": "/tmp/wci4-package-protocol-candidate1-pilot-1",
+  "binarySha256": "6537cf23381394bca2c2c2de10180cdda6406698ee74efbef005d72d221e8756",
+  "displayEnvironment": "DISPLAY/WAYLAND_DISPLAY removed",
+  "expected": "success",
+  "exit": 0,
+  "timeout": false,
+  "seconds": 0.13470959663391113,
+  "stdout": "commands/013-profile 0.3-discover.stdout",
+  "stderr": "commands/013-profile 0.3-discover.stderr",
+  "stdoutSha256": "acb9754d7ba7023ca9ce1ec8462b1b05f2bb36e4a624dc514b1720c7bc70a8fd",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "binaryUnchanged": true
+}

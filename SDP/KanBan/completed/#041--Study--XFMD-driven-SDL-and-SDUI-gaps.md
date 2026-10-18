@@ -140,7 +140,7 @@ bridge and runtime state protections are retained. No product gap is closed by
 research and no implementation or owner design acceptance is inferred.
 
 Existing KB-SDL-001/005/006 and KB-SDP-004 retain ownership. New
-[KB-SDUI-003](../backlog/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md)
+[KB-SDUI-003](../completed/%23003--SDUI--Proposal--Capabilities-and-navigation-pilot.md)
 and [KB-SDUI-004](../backlog/%23004--SDUI--Bug--Text-and-Markdown-fidelity.md)
 retain all SDUI follow-up in backlog. XFMD-local work remains external.
 

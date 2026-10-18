@@ -1,0 +1,52 @@
+{
+  "runs": 13,
+  "checks": 86,
+  "binarySHA256": "0078f72eec7fe61bd41a1b090bb7ca2f26ba48c3a1e54c4eff6bd240c010f001",
+  "fixtureStderrEmpty": true,
+  "terminalResults": 5,
+  "receiptAudit": "Every published opening has exactly one terminal result; each run closes.",
+  "suiteEvidence": [
+    {
+      "name": "sdui-full",
+      "status": "passed",
+      "exit": 0,
+      "receipt_origin": "captured result.json"
+    },
+    {
+      "name": "sdl-frozen-group",
+      "status": "superseded-timeout",
+      "exit": 1,
+      "receipt_origin": "Retained tool-output result and stack excerpt, retranscribed; not original stdout file"
+    },
+    {
+      "name": "sdl-text-final",
+      "status": "passed",
+      "exit": 0,
+      "receipt_origin": "Original tee stdout/stderr transcript; shell pipefail exit 0 retained in tool result"
+    },
+    {
+      "name": "sdl-nonfyne",
+      "status": "passed",
+      "exit": 0,
+      "receipt_origin": "captured results.json and exit files"
+    },
+    {
+      "name": "sdl-collections",
+      "status": "passed",
+      "exit": 0,
+      "receipt_origin": "captured result.json and exit"
+    },
+    {
+      "name": "sdptool-original",
+      "status": "passed",
+      "exit": 0,
+      "receipt_origin": "Coordinator recorded actual exec session 2743 exit 0; not archive-script captured"
+    },
+    {
+      "name": "sdl-current-group",
+      "status": "passed",
+      "exit": 0,
+      "receipt_origin": "Coordinator final subprocess captured result.json and exit, actual session44261 completion; both source manifests match"
+    }
+  ]
+}

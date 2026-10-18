@@ -1,0 +1,2 @@
+sdui {'name': 'sdui', 'argv': ['go', 'test', '-race', './...', '-count=1'], 'cwd': '/tmp/sdp-sdui-widgets/SDUI/go', 'environment': {'GOWORK': 'off', 'GOFLAGS': '-mod=readonly', 'GOCACHE': '/tmp/sdp-wci0-gocache'}, 'exit': 0, 'seconds': 248.335, 'sourceUnchanged': True}
+sdl-previews {'name': 'sdl-previews', 'argv': ['go', 'test', '-race', './examples/previews/...', '-count=1'], 'cwd': '/tmp/sdp-sdui-widgets/SDL/go', 'environment': {'GOWORK': 'off', 'GOFLAGS': '-mod=readonly', 'GOCACHE': '/tmp/sdp-wci0-gocache'}, 'exit': 0, 'seconds': 212.731, 'sourceUnchanged': True}

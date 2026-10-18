@@ -1,0 +1,14 @@
+{
+  "commands": 13,
+  "context": 4,
+  "keyboard": 6,
+  "dialog": 8,
+  "nonmodal-dialog": 8,
+  "focus": 10,
+  "nonmodal-focus": 12,
+  "command-failures": 9,
+  "accept-failures": 17,
+  "lifecycle": 11,
+  "nonmodal-lifecycle": 12,
+  "nested": 8
+}

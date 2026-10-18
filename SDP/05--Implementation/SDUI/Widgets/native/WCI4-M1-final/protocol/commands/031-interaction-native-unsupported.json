@@ -1,0 +1,24 @@
+{
+  "name": "interaction-native-unsupported",
+  "argv": [
+    "/tmp/wci4-package-candidate2/libexec/xfmd/sdui-fyne",
+    "-entry",
+    "Main",
+    "-watch=false",
+    "-revision",
+    "1434b24d9180ac48260339cea8ad648db54e3d2edcc1777298f8830e285a8221",
+    "/tmp/wci4-final-protocol2/unsupported interaction project with spaces/Page å with spaces.sdui"
+  ],
+  "cwd": "/tmp/wci4-final-protocol2",
+  "binarySha256": "d6f91b2e92ebfe38502839f233346200b7baf30c460643c5e6a97eac327861c2",
+  "displayEnvironment": "DISPLAY/WAYLAND_DISPLAY removed",
+  "expected": "nonzero with unsupported-interaction",
+  "exit": 2,
+  "timeout": false,
+  "seconds": 0.2721834182739258,
+  "stdout": "commands/031-interaction-native-unsupported.stdout",
+  "stderr": "commands/031-interaction-native-unsupported.stderr",
+  "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderrSha256": "91276c5d2a020fd5bcca62e677e35027bd6c73fd0ff569533455597253909f6f",
+  "binaryUnchanged": true
+}

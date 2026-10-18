@@ -1,0 +1,2 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci3-text-worker-pilot2", "sha256": "6595a4e8a9737ff499fdc460a89a2177a6ee70b466b1a1bcffa78735bade60c8", "display": ":190", "variant": "wci3-readonly"}}
+{"kind": "initialization-failed", "value": "Expected fixture event not observed"}

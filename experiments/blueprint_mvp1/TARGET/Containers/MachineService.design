@@ -1,0 +1,8 @@
+language design-core version 0.6.
+unit CalibrationProcessor.
+container MachineService.
+CalibrationProcessor owns CalibrateMeasurement.
+MachineService contains CalibrationProcessor.
+MachineService owns PublishMachineBaseline.
+MachineService owns ReduceMachineState.
+MachineService provides AuthoritativeMachineState.

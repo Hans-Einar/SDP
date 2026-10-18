@@ -1,0 +1,8 @@
+PASS preparation invokes no domain action
+PASS Boolean is typed and initially false
+PASS pointer checkbox commits one typed true value
+PASS Space commits exactly once and toggles false
+PASS programmatic Boolean update is silent
+PASS readonly checkbox refuses pointer and keyboard mutation
+PASS disable checkbox refuses pointer and keyboard mutation
+PASS native teardown closes session and clears provider barriers

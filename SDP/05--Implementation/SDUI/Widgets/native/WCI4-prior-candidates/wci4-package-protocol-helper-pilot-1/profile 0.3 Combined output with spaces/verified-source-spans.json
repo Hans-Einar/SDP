@@ -1,0 +1,65 @@
+[
+  {
+    "start": 69,
+    "end": 84,
+    "line": 1,
+    "column": 64,
+    "text": "[a=Leaf;b=Leaf]"
+  },
+  {
+    "start": 15,
+    "end": 62,
+    "line": 1,
+    "column": 16,
+    "text": "<field=input(\"Blå\",value=\"å🙂\"),\"π prose\">"
+  },
+  {
+    "start": 70,
+    "end": 76,
+    "line": 1,
+    "column": 65,
+    "text": "a=Leaf"
+  },
+  {
+    "start": 16,
+    "end": 50,
+    "line": 1,
+    "column": 17,
+    "text": "field=input(\"Blå\",value=\"å🙂\")"
+  },
+  {
+    "start": 51,
+    "end": 61,
+    "line": 1,
+    "column": 47,
+    "text": "\"π prose\""
+  },
+  {
+    "start": 15,
+    "end": 62,
+    "line": 1,
+    "column": 16,
+    "text": "<field=input(\"Blå\",value=\"å🙂\"),\"π prose\">"
+  },
+  {
+    "start": 77,
+    "end": 83,
+    "line": 1,
+    "column": 72,
+    "text": "b=Leaf"
+  },
+  {
+    "start": 16,
+    "end": 50,
+    "line": 1,
+    "column": 17,
+    "text": "field=input(\"Blå\",value=\"å🙂\")"
+  },
+  {
+    "start": 51,
+    "end": 61,
+    "line": 1,
+    "column": 47,
+    "text": "\"π prose\""
+  }
+]

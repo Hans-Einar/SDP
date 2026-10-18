@@ -1,0 +1,10 @@
+dbus[296775]: Unable to set up transient service directory: XDG_RUNTIME_DIR "/tmp/wci4-final-native3-supplement/helper-ime-environment/runtime" not available: Permission denied
+dbus-daemon[296775]: Cannot setup inotify for '/tmp/wci4-final-native3-supplement/helper-ime-environment/data/dbus-1/services'; error 'Permission denied'
+PASS actual staged helper starts with accepted A
+PASS real IME Return inserts composition after the dirty suffix
+PASS composition Return did not prematurely accept the dirty suffix
+PASS IME-consumed Escape preserves the prior dirty suffix
+PASS ordinary Escape restores the accepted baseline
+PASS second real composition produces the expected text
+PASS ordinary Return subsequently accepts composed text
+PASS helper closes cleanly through the native window protocol

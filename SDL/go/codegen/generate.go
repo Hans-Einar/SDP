@@ -4,6 +4,7 @@ package codegen
 import (
 	"fmt"
 	ui "github.com/Hans-Einar/SDP/SDUI/go/codegen"
+	uiparser "github.com/Hans-Einar/SDP/SDUI/go/parser"
 	"github.com/Hans-Einar/SDP/SystemDesignLanguage/go/documents"
 	"github.com/Hans-Einar/SDP/SystemDesignLanguage/go/parser"
 	"go/format"
@@ -35,7 +36,15 @@ func Bundle(actions, source, entry, pkg string) (*documents.Bundle, error) {
 	if e != nil {
 		return nil, e
 	}
-	b := &documents.Bundle{Files: map[string][]byte{"actions_gen.go": a, "ui_gen.go": s}, Manifest: documents.Manifest{Version: Version + "/" + ui.Version, Revision: documents.Hash([]byte(actions + "\x00" + source))}}
+	doc, e := uiparser.Parse(source)
+	if e != nil {
+		return nil, e
+	}
+	uiVersion := ui.Version
+	if doc.Profile == "sdui/0.3" {
+		uiVersion = ui.Version03
+	}
+	b := &documents.Bundle{Files: map[string][]byte{"actions_gen.go": a, "ui_gen.go": s}, Manifest: documents.Manifest{Version: Version + "/" + uiVersion, Revision: documents.Hash([]byte(actions + "\x00" + source))}}
 	b.Seal()
 	return b, nil
 }

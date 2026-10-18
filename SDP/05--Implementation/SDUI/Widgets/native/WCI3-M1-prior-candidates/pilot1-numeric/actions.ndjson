@@ -1,0 +1,58 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci3-values-native-pilot1", "sha256": "78344a92a90036df0da2248ddbb07de58e07997021a4ebad4396a0bec919d4ac", "display": ":190", "variant": "wci3-numeric"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "numeric accepted value is Number", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [46, 359], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "key", "values": ["minus"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "key", "values": ["Return"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "invalid raw '-' remains visible without SDL Commit", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [46, 359], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "key", "values": ["1", "e"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "key", "values": ["Return"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "invalid raw '1e' remains visible without SDL Commit", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [46, 359], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "key", "values": ["1", "0", "1"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "key", "values": ["Return"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "invalid raw '101' remains visible without SDL Commit", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [46, 359], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "key", "values": ["1", "period", "5"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "key", "values": ["Return"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "invalid raw '1.5' remains visible without SDL Commit", "passed": true}}
+{"kind": "screenshot", "value": "invalid-number-feedback.png"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [46, 359], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "key", "values": ["4", "2"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "key", "values": ["Tab"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "Tab retains valid numeric draft without Commit", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [46, 359], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "key", "values": ["Return"], "keep_focus": false}}
+{"kind": "check", "value": {"name": "Enter commits exact integer through actual SDL", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI3 Values", "action": "click", "values": [77, 359], "keep_focus": false}}
+{"kind": "result", "value": {"failed": "Expected fixture event not observed"}}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

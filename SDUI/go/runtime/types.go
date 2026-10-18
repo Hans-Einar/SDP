@@ -4,6 +4,7 @@ package runtime
 
 import (
 	"fmt"
+	"math"
 	"strings"
 
 	"github.com/Hans-Einar/SDP/SDUI/go/parser"
@@ -23,9 +24,11 @@ const (
 )
 
 type Value struct {
-	Kind ValueKind
-	Text string
-	Bool bool
+	Kind     ValueKind
+	Text     string
+	Bool     bool
+	Number   float64
+	OptionID ItemID
 }
 
 func Text(v string) Value { return Value{Kind: String, Text: v} }
@@ -34,11 +37,24 @@ func Bool(v bool) Value   { return Value{Kind: Boolean, Bool: v} }
 type EventKind string
 
 const (
-	Activate EventKind = "activate"
-	Commit   EventKind = "commit"
+	Activate     EventKind = "activate"
+	Commit       EventKind = "commit"
+	Select       EventKind = "select"
+	Expand       EventKind = "expand"
+	Collapse     EventKind = "collapse"
+	Retry        EventKind = "retry"
+	ActivatePage EventKind = "activate-page"
+	AdjustSplit  EventKind = "adjust-split"
 )
 
 type Event struct {
+	Control                                *ControlCommit
+	Command                                *CommandInvocation
+	Dialog                                 *DialogRequest
+	StateRevision                          uint64
+	Page                                   *PageActivation
+	Split                                  *SplitChange
+	Collection                             *CollectionTarget
 	Handle                                 Handle
 	ModelRevision, Sequence, DraftRevision uint64
 	Kind                                   EventKind
@@ -54,11 +70,13 @@ const (
 )
 
 type Update struct {
-	Handle                Handle
-	Property              Property
-	Value                 Value
-	ExpectedValueRevision uint64
-	AcceptDraft           bool
+	ExpectedDraftRevision, ExpectedOptionGeneration uint64
+	Validation                                      *FieldValidation
+	Handle                                          Handle
+	Property                                        Property
+	Value                                           Value
+	ExpectedValueRevision                           uint64
+	AcceptDraft                                     bool
 }
 type Handler func(Event) ([]Update, error)
 type Widget struct {
@@ -92,6 +110,7 @@ func clone(n *parser.Instance) *parser.Instance {
 		return nil
 	}
 	v := *n
+	v.Uses = append([]parser.UseSite(nil), n.Uses...)
 	v.Layout = map[string]any{}
 	for k, x := range n.Layout {
 		if a, ok := x.([]float64); ok {
@@ -119,11 +138,19 @@ func validValue(v Value, kind ValueKind) bool {
 	if v.Kind != kind {
 		return false
 	}
-	if kind == String {
-		return !v.Bool && len(v.Text) <= 32768
+	switch kind {
+	case String:
+		return !v.Bool && v.Number == 0 && v.OptionID == "" && len(v.Text) <= 32768
+	case Boolean:
+		return v.Text == "" && v.Number == 0 && v.OptionID == ""
+	case Number:
+		return v.Text == "" && !v.Bool && v.OptionID == "" && !math.IsNaN(v.Number) && !math.IsInf(v.Number, 0)
+	case OptionID:
+		return v.Text == "" && !v.Bool && v.Number == 0
 	}
-	return v.Text == ""
+	return false
 }
+
 func (s *Session) lookup(h Handle) (*Widget, error) {
 	if s.closed {
 		return nil, fault("closed", "Session is closed")
@@ -133,4 +160,17 @@ func (s *Session) lookup(h Handle) (*Widget, error) {
 		return nil, fault("stale-handle", fmt.Sprintf("Handle %s is no longer valid", h.Path))
 	}
 	return w, nil
+}
+
+func (s *Session) lookupControl(h Handle) (*Widget, error) {
+	if w := s.aux[h.Path]; w != nil {
+		if !s.closed && w.Handle == h {
+			return w, nil
+		}
+		return nil, fault("stale-handle", h.Path)
+	}
+	if s.panes[h.Path] != nil {
+		return s.pane(h)
+	}
+	return s.lookup(h)
 }

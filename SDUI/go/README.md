@@ -18,3 +18,11 @@ CLI supports `--format ast|dump|markdown|svg`, `--entry`, `--columns`, `--syntax
 G2 supplies shared geometry (`layout`), SVG (`svg`), Fyne adapter (`host/fynehost`) and bounded Markdown (`markdown`). [Evidence](evidence/G2.md). General export: `--format svg --width 1920 --height 1200`, optionally `--mermaid-renderer /path/to/mmdr --resources DIR`. [Profile](../docs/markdown-provider.md).
 
 Native trial: `go run -tags desktop ./cmd/sdui-fyne -entry bucking ../examples/concept1-bucking.sdui`. Native Go-flag entry points require flags before filenames. Linux desktop builds require OpenGL/X11/C compiler. Ordinary package tests use Fyne's memory driver without a display server.
+
+Combined native-client preview: build `./cmd/sdui-preview`. Pass `-source`,
+`-entry`, `-revision` and `-output` (an existing empty caller-owned directory).
+It writes entry.md, the exact source.sdui snapshot and sdui.json. `-check` returns
+sdptool/0.2 operation sdui-check with prototype/prototype-unbound readiness and
+an explicit no-SDL-execution diagnostic. Fyne accepts `-revision` to reject stale
+launches before opening a window. XFMD 0.7 bundles these tools without replacing
+its user's gh sdp extension. Source/profile syntax is unchanged.

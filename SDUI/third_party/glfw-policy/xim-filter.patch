@@ -1,0 +1,11 @@
+--- a/glfw/src/x11_window.c
++++ b/glfw/src/x11_window.c
+@@ -1256,7 +1256,7 @@
+                 //       (the server never sends a timestamp of zero)
+                 // NOTE: Timestamp difference is compared to handle wrap-around
+                 Time diff = event->xkey.time - window->x11.keyPressTimes[keycode];
+-                if (diff == event->xkey.time || (diff > 0 && diff < ((Time)1 << 31)))
++                if (!filtered && (diff == event->xkey.time || (diff > 0 && diff < ((Time)1 << 31))))
+                 {
+                     if (keycode)
+                         _glfwInputKey(window, key, keycode, GLFW_PRESS, mods);

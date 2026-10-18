@@ -1,0 +1,14 @@
+[
+  {
+    "path": "SDUI/docs/architecture.md",
+    "beforeSHA256": "dd3c2fc8d57f841fa7c6b59d0ecaca88873b0fc9bbb3a17293f6ed58e5307bfa",
+    "afterSHA256": "28630eda4c0081c9ff03c6b4f00a5c1c232ad4091f27d66ef183867dd89b2134",
+    "scope": "Documentation-only historical status qualifiers after package and suites; executable source unchanged"
+  },
+  {
+    "path": "SDUI/docs/requirements.md",
+    "beforeSHA256": "02c1976e1079f58ed21b2b24846770548c1b98b2ace4aec5b295e683810ac0b6",
+    "afterSHA256": "e9d5fc54862713d0ff9a64611f5f46f2a39c1ee8268a2daf2cf9de50e1f04624",
+    "scope": "Documentation-only historical status qualifiers after package and suites; executable source unchanged"
+  }
+]

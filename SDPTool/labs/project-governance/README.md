@@ -126,7 +126,7 @@ and creates a ready trial run. It does not start Codex. The harness source may b
 newer development version than the selected engine; both identities are recorded.
 An interrupted preparation leaves its directory for inspection and refuses reuse.
 
-The general future action catalogue and JSON invoke adapter belong to KB-SDP-051.
+The general future action catalogue and JSON invoke adapter belong to KB-SDP-053.
 This lab exercises today's commands and does not require that proposal or an XFMD
 change. A long-running owner conversation still needs streaming events and control;
 a one-request JSON adapter alone is not that interaction surface.

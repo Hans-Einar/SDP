@@ -1,0 +1,6 @@
+{
+  "paths": 224,
+  "allEqual": true,
+  "testedInventorySHA256": "19bc6aa20386470ab6a0b0ef2246db59fea6409ba13f8709fa777e5c998b6d6e",
+  "scope": "Exactly the retained tested-file inventory, not the whole dirty repository."
+}

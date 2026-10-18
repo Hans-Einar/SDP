@@ -1,0 +1,17 @@
+{
+  "name": "sdui-full",
+  "status": "passed",
+  "exit": 0,
+  "command": "GOWORK=off GOCACHE=/tmp/sdp-wci0-gocache GOFLAGS=-mod=readonly go test -race ./... -count=1",
+  "cwd": "/tmp/sdp-sdui-widgets/SDUI/go",
+  "receipt_origin": "captured result.json",
+  "log": "/tmp/wci3-m2-final-sdui-race-fs2q_77h/test.log",
+  "receipt": "/tmp/wci3-m2-final-sdui-race-fs2q_77h/result.json",
+  "artifacts": [
+    "/tmp/wci3-m2-final-sdui-race-fs2q_77h/metadata.json",
+    "/tmp/wci3-m2-final-sdui-race-fs2q_77h/result.json",
+    "/tmp/wci3-m2-final-sdui-race-fs2q_77h/source-after.sha256",
+    "/tmp/wci3-m2-final-sdui-race-fs2q_77h/source-before.sha256",
+    "/tmp/wci3-m2-final-sdui-race-fs2q_77h/test.log"
+  ]
+}

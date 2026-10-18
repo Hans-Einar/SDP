@@ -6,6 +6,7 @@ import (
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
+	"github.com/Hans-Einar/SDP/SDUI/go/host/fynehost/admission"
 	"github.com/Hans-Einar/SDP/SDUI/go/layout"
 	"github.com/Hans-Einar/SDP/SDUI/go/markdown"
 	"github.com/Hans-Einar/SDP/SDUI/go/parser"
@@ -27,17 +28,27 @@ type RuntimeView struct {
 }
 
 func NewRuntime(session *uiruntime.Session, canvas fyne.Canvas) (*RuntimeView, error) {
+	if session == nil || session.Closed() {
+		return nil, fmt.Errorf("closed: native admission requires a live session")
+	}
+	if err := admission.Check(session.SnapshotRoot()); err != nil {
+		return nil, err
+	}
 	r := &RuntimeView{Session: session, Canvas: canvas, Controller: reload.Controller{Session: session}}
 	r.Container = container.NewStack()
 	if err := r.mount(); err != nil {
 		return nil, err
 	}
 	if err := session.CheckWith(r.check); err != nil {
+		r.View.Close()
 		return nil, err
 	}
 	return r, nil
 }
 func (r *RuntimeView) check(root *parser.Instance) error {
+	if err := admission.Check(root); err != nil {
+		return err
+	}
 	provider, err := markdown.Prepare(root, nil)
 	if err != nil {
 		return err
@@ -55,7 +66,13 @@ func (r *RuntimeView) status(err error) {
 	}
 }
 func (r *RuntimeView) mount() error {
+	if r.Session.Closed() {
+		return fmt.Errorf("closed: runtime session")
+	}
 	root := r.Session.SnapshotRoot()
+	if err := admission.Check(root); err != nil {
+		return err
+	}
 	provider, err := markdown.Prepare(root, nil)
 	if err != nil {
 		return err

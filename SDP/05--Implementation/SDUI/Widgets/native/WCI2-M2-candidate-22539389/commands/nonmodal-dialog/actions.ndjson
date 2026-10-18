@@ -1,0 +1,46 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci2-m2-final-native", "sha256": "2253938916e1a31dfa4ec6d6095daf9f82a7522abcd444833cb64977e69b1c33", "display": ":190", "variant": "wci2-m2-dialog"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [178, 56], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "click", "values": [177, 80], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "key", "values": ["d", "r", "a", "f", "t"], "keep_focus": false}}
+{"kind": "screenshot", "value": "dialog-draft.png"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "typing does not persist dialog", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "right-click", "values": [177, 80], "keep_focus": false}}
+{"kind": "screenshot", "value": "dialog-context.png"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "key", "values": ["Escape"], "keep_focus": false}}
+{"kind": "check", "value": {"name": "Escape dismisses menu without reverting draft or closing surface", "passed": true}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "key", "values": ["Escape"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "next Escape reverts draft and keeps surface", "passed": true}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "key", "values": ["Escape"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "clean Escape cancels once without Save", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [178, 56], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "click", "values": [177, 80], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "chord", "values": ["Control_L", "a"], "keep_focus": false}}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "key", "values": ["s", "a", "v", "e", "d"], "keep_focus": false}}
+{"kind": "fixture-command", "value": "accept false"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "click", "values": [30, 511], "keep_focus": false}}
+{"kind": "check", "value": {"name": "rejected Accept retains dirty form", "passed": true}}
+{"kind": "fixture-command", "value": "accept true"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "click", "values": [30, 511], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "successful Accept commits captured fields and closes once", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Commands", "action": "click", "values": [178, 56], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": {"title": "SDUI WCI2 Settings", "action": "click", "values": [156, 511], "keep_focus": false}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "Close is distinct from Cancel and emits no Save", "passed": true}}
+{"kind": "screenshot", "value": "dialog-completed.png"}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

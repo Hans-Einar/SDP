@@ -27,23 +27,26 @@ type Inventory struct {
 	ProjectManifest    string  `json:"projectManifest,omitempty"`
 	ImplementationPlan string  `json:"implementationPlan,omitempty"`
 	KanBan             string  `json:"kanban,omitempty"`
+	Blueprints         string  `json:"blueprints,omitempty"`
 	Sessions           string  `json:"sessions,omitempty"`
 	Models             []Model `json:"models"`
 	SDUI               []Model `json:"sdui"`
 }
 type Project struct {
-	Schema       string            `json:"schema"`
-	Operation    string            `json:"operation"`
-	Status       string            `json:"status"`
-	Root         string            `json:"root"`
-	Area         string            `json:"area"`
-	Inventory    Inventory         `json:"inventory"`
-	Capabilities map[string]string `json:"capabilities"`
-	Installation map[string]any    `json:"installation"`
-	Sources      []SourceInfo      `json:"sources"`
-	Files        []Node            `json:"-"`
-	Navigation   *Tree             `json:"navigation,omitempty"`
-	Plans        []string          `json:"plans"`
+	Schema           string            `json:"schema"`
+	Operation        string            `json:"operation"`
+	Status           string            `json:"status"`
+	Root             string            `json:"root"`
+	Area             string            `json:"area"`
+	Inventory        Inventory         `json:"inventory"`
+	Capabilities     map[string]string `json:"capabilities"`
+	Installation     map[string]any    `json:"installation"`
+	Sources          []SourceInfo      `json:"sources"`
+	Programs         []ProgramInfo     `json:"programs"`
+	ProgramDiscovery ProgramDiscovery  `json:"programDiscovery"`
+	Files            []Node            `json:"-"`
+	Navigation       *Tree             `json:"navigation,omitempty"`
+	Plans            []string          `json:"plans"`
 }
 
 var identifier = regexp.MustCompile(`^[a-z][a-z0-9-]{0,63}$`)
@@ -196,7 +199,7 @@ func (p Project) model(id string, sdui bool) (Model, string, error) {
 			if sdui {
 				expected = "sdui/0.2"
 			}
-			if m.Profile != expected && (sdui || m.Profile != "design-core/0.6") {
+			if m.Profile != expected && !(sdui && m.Profile == "sdui/0.3") && !(!sdui && m.Profile == "design-core/0.6") {
 				return m, "", failure("unsupported", fmt.Errorf("profile %s", m.Profile))
 			}
 			path, e := resolvePath(p.Root, m.Source)

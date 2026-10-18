@@ -61,7 +61,7 @@ exposes read/routing/run operations, several with JSON request files and JSON ou
 `sdp-mcp` exposes scoped agent operations through the same core. They are separate
 adapters today, not three separate implementations awaiting consolidation.
 
-KB-SDP-051 in the blueprint workstream owns the proposed common action catalogue
+KB-SDP-053 in the blueprint workstream owns the proposed common action catalogue
 and JSON invoke adapter. Its inspected handoff is
 `/tmp/sdp-blueprint-implementation/SDPTool/XFMD-Blueprint-Integration.md`.
 Future discrete PG operations should align with that shared contract rather than

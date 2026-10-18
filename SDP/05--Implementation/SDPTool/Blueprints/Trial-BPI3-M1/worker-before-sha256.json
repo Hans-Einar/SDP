@@ -1,0 +1,11 @@
+{
+  "code/behavior_test.go": "387e8cc4e289f48b408d89bc359419bf16e529fbf1d73d46eeafac9db3a8f445",
+  "code/go.mod": "d27f3b49d7d2f90c03dfcd49f35ac6f03f56f638eefe12ae694a37955f8f804a",
+  "code/machine.go": "c412836dbaeed0056ddf45781dea7e8fd745ad4945e19db7457884e6138054ee",
+  "model/Containers/BuckingUI.design": "736133f6bd8e76bb76af6b558884cbdd9e4818a9ca41c158aee421651bd39c50",
+  "model/Containers/BuckingWeb.design": "61b2741856d08b95fb38eedcd708ae207f8a494a4cbf3d37953edac9c0997ddf",
+  "model/Containers/MachineService.design": "e3990ea1f79910787fff31da9a5a35638d386597fe7576aaf36cbe3a000f29aa",
+  "model/Contracts/Machine.design": "ea134e09aa9ea7bfdc7de9aa051d1cceb82cf9e9c726b46cab6e5d088ea06c96",
+  "model/Features.design": "ab8f4487fd2c937481a7081bca4a7815f0d318d7e281a473c072ab8b3651b8bd",
+  "model/System.design": "3f4393c57a50ef9bcb58641d991bb5c16f04c3c94ab0d0e298585819525260fe"
+}

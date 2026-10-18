@@ -1,0 +1,89 @@
+ok  	github.com/Hans-Einar/SDP/SDPTool	454.490s
+ok  	github.com/Hans-Einar/SDP/SDPTool/blueprints	113.738s
+?   	github.com/Hans-Einar/SDP/SDPTool/cmd/sdptool	[no test files]
+panic: test timed out after 10m0s
+	running tests:
+		TestProcessExitRecoveryMatrix (9m48s)
+		TestProcessExitRecoveryMatrix/manual (5m30s)
+		TestProcessExitRecoveryMatrix/manual/write-10 (6s)
+
+goroutine 210 [running]:
+testing.(*M).startAlarm.func1()
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2959 +0x605
+created by time.goFunc
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/time/sleep.go:182 +0x45
+
+goroutine 1 [chan receive, 9 minutes]:
+testing.(*T).Run(0xc00012a008, {0xa8ff6a, 0x1d}, 0xeca470)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2266 +0xb3e
+testing.runTests.func1(0xc00012a008)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2742 +0x85
+testing.tRunner(0xc00012a008, 0xc00025fa40)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2193 +0x21d
+testing.runTests({0xa92eca, 0x21}, {0xa9819d, 0x29}, 0xc000016018, {0xf29de0, 0x18, 0x18}, {0xc2a9ce6628994a4e, 0x8bb5ff5fff, ...})
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2740 +0x9ea
+testing.(*M).Run(0xc0001021e0)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2600 +0xf45
+main.main()
+	_testmain.go:92 +0x165
+
+goroutine 59 [chan receive, 5 minutes]:
+testing.(*T).Run(0xc00029e488, {0xa82b5d, 0x6}, 0xc0000a0498)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2266 +0xb3e
+github.com/Hans-Einar/SDP/SDPTool/install.TestProcessExitRecoveryMatrix(0xc00029e488)
+	/tmp/sdp-blueprint-implementation/SDPTool/install/recovery_test.go:73 +0xb4
+testing.tRunner(0xc00029e488, 0xeca470)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2193 +0x21d
+created by testing.(*T).Run in goroutine 1
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2258 +0xb13
+
+goroutine 95 [chan receive]:
+testing.(*T).Run(0xc00029e248, {0xc000369b68, 0x8}, 0xc00040d1c0)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2266 +0xb3e
+github.com/Hans-Einar/SDP/SDPTool/install.TestProcessExitRecoveryMatrix.func1(0xc00029e248)
+	/tmp/sdp-blueprint-implementation/SDPTool/install/recovery_test.go:92 +0x77d
+testing.tRunner(0xc00029e248, 0xc0000a0498)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2193 +0x21d
+created by testing.(*T).Run in goroutine 59
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2258 +0xb13
+
+goroutine 177 [runnable]:
+regexp/syntax.(*compiler).inst(...)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/regexp/syntax/compile.go:164
+regexp/syntax.(*compiler).alt(0xc0004cfec0, {0x514f50?, {0xc0?, 0x0?}, 0x0?}, {0x4cf608?, {0xc0?, 0x0?}, 0x0?})
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/regexp/syntax/compile.go:210 +0x125
+regexp/syntax.(*compiler).compile(0xc0004cfec0, 0xc0005151f0)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/regexp/syntax/compile.go:154 +0x2051
+regexp/syntax.(*compiler).compile(0xc0004cfec0, 0xc000514cb0)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/regexp/syntax/compile.go:129 +0x17a6
+regexp/syntax.(*compiler).compile(0xc0004cfec0, 0xc0005152d0)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/regexp/syntax/compile.go:147 +0x213c
+regexp/syntax.Compile(0xc0005152d0)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/regexp/syntax/compile.go:74 +0x1fb
+regexp.compile({0xa95bf5, 0x25}, 0xd4, 0x0)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/regexp/regexp.go:175 +0xb9
+regexp.Compile(...)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/regexp/regexp.go:130
+regexp.MustCompile({0xa95bf5, 0x25})
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/regexp/regexp.go:310 +0x49
+github.com/Hans-Einar/SDP/SDPTool/install.Relative({0xc00018fd40, 0x1f})
+	/tmp/sdp-blueprint-implementation/SDPTool/install/records.go:430 +0x445
+github.com/Hans-Einar/SDP/SDPTool/install.Inspect({0xc000027380, 0x3e}, {0xc000478000, 0x1c, 0x20})
+	/tmp/sdp-blueprint-implementation/SDPTool/install/inspect.go:128 +0x758
+github.com/Hans-Einar/SDP/SDPTool/install.progress({_, _}, {{0xc00052a330, 0x15}, {0xc00018fc80, 0x20}, {{0xc00052a300, 0x12}, {0xc000267dc0, 0x40}, ...}, ...})
+	/tmp/sdp-blueprint-implementation/SDPTool/install/execute.go:403 +0xe37
+github.com/Hans-Einar/SDP/SDPTool/install.Executor.run({0xc00018fc80?}, {0xec9060, 0xf52780}, {0xc000027380, 0x3e}, 0xc000478400)
+	/tmp/sdp-blueprint-implementation/SDPTool/install/execute.go:531 +0x3bbb
+github.com/Hans-Einar/SDP/SDPTool/install.Executor.Resume({0x11?}, {0xec9060, 0xf52780}, {0xc000027380, 0x3e}, {0xc000023420, 0x20})
+	/tmp/sdp-blueprint-implementation/SDPTool/install/execute.go:133 +0x1cd3
+github.com/Hans-Einar/SDP/SDPTool/install.TestProcessExitRecoveryMatrix.func1.1(0xc00012b208)
+	/tmp/sdp-blueprint-implementation/SDPTool/install/recovery_test.go:120 +0xe19
+testing.tRunner(0xc00012b208, 0xc00040d1c0)
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2193 +0x21d
+created by testing.(*T).Run in goroutine 95
+	/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/src/testing/testing.go:2258 +0xb13
+FAIL	github.com/Hans-Einar/SDP/SDPTool/install	600.175s
+ok  	github.com/Hans-Einar/SDP/SDPTool/model	293.495s
+ok  	github.com/Hans-Einar/SDP/SDPTool/presentation	1.130s
+ok  	github.com/Hans-Einar/SDP/SDPTool/tools/profile	459.465s
+FAIL

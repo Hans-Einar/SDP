@@ -1,0 +1,15 @@
+{
+  "source": "KB-SDUI-005 existing working changes; not WCI0 implementation",
+  "files": {
+    "SDUI/docs/architecture.md": "473be8fc3118b0f8bf9fd8f3e08e6374d915c48d1f53caac88924e8a4dab8513",
+    "SDUI/docs/requirements.md": "4b99a36281ea5456765222fb9f0751383967ffe185ae74d2dc619decc87ccad9",
+    "SDUI/go/README.md": "8975fab29e9b150df8c71f6f840a7ba88b11ee6a8857f58810f1f76553e13c9e",
+    "SDUI/go/cmd/sdui-fyne/main.go": "a9fc0b449446702ed8480a2c1ff196ad6e77ab1c0511b2f7a698cf356b20606a",
+    "SDUI/go/parser/normalize.go": "89efc5d82ee78ce05be0e876ca0ee3b1569364af44b1efd25ccc0d40613829e4",
+    "SDUI/go/cmd/sdui-preview/main.go": "fdbb212531acdf46c2f0a9be6c4566e835ba97cff88744818292346dee0faee0",
+    "SDUI/go/presentation/composition.go": "1ab92e51d21c81db2c18013510a041ee93dbae24fb797b9a3ed1f60e086b93ec",
+    "SDUI/go/presentation/composition_test.go": "32d5ae89e85ec09cab0bd7d154fd1207c558aba254eedf6068a33b57d8fc0a40",
+    "SDUI/go/prototype/check.go": "dbde7ebd67720779152b135b0c80e3f5b66e4d25eb3a73379dc867802f09dbb8",
+    "SDUI/go/prototype/check_test.go": "30c1e460f623f90b3d843013fe69a6dbc100bc82111a2067d117d50c12914003"
+  }
+}

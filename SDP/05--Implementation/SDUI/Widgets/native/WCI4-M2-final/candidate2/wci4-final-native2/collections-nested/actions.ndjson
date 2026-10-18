@@ -1,0 +1,70 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci4-package-candidate2/libexec/sdui/collections", "sha256": "c2ce17b72da8c97e5a149a3bb805c9c043ce6c8dd5903dfc7e411b606986bdfa", "display": ":191", "variant": "nested"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "fixture contains nested collection and fixed sibling", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["click", 599, 87]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["wheel", 738, 330, 100]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "wheel consumes inner extent before passing remainder to ancestor", "passed": true}}
+{"kind": "check", "value": {"name": "nested wheel preserves selection and fixed sibling value", "passed": true}}
+{"kind": "screenshot", "value": "nested-scrolled.png"}
+{"kind": "x11-input", "value": ["wheel", 738, 330, -100]}
+{"kind": "check", "value": {"name": "reverse wheel returns both offsets to zero", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["key", "Next"]}
+{"kind": "check", "value": {"name": "PageDown uses visible height and preserves selection", "passed": true}}
+{"kind": "x11-input", "value": ["key", "Prior"]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["wheel", 494, 330, 1]}
+{"kind": "check", "value": {"name": "wheel on frame background routes only to that owner", "passed": true}}
+{"kind": "x11-input", "value": ["wheel", 494, 330, -1]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "x11-input", "value": ["drag", 981, 100, 981, 170]}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "thumb drag preserves grab offset and uses measured travel", "passed": true}}
+{"kind": "check", "value": {"name": "inner thumb drag leaves outer offset unchanged", "passed": true}}
+{"kind": "x11-input", "value": ["drag", 994, 86, 994, 126]}
+{"kind": "check", "value": {"name": "outer thumb is separately reachable without moving inner offset", "passed": true}}
+{"kind": "fixture-command", "value": "reorder list"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "reorder preserves selected stable ID", "passed": true}}
+{"kind": "fixture-command", "value": "shrink list 5"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "shrink clears removed selection and clamps collection offset", "passed": true}}
+{"kind": "fixture-command", "value": "reset list"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "fail profile"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "failed profile preparation preserves published bundle", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "fail provider"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "failed provider preparation preserves published bundle", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "fail binding"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "failed binding preparation preserves published bundle", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "fail layout"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "failed layout preparation preserves published bundle", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "fail resource"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "failed resource preparation preserves published bundle", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "fail guard"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "failed guard preparation preserves published bundle", "passed": true}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "fail stale"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "failed stale preparation preserves published bundle", "passed": true}}
+{"kind": "fixture-command", "value": "reload"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "check", "value": {"name": "valid reload works after all failed candidates", "passed": true}}
+{"kind": "screenshot", "value": "nested-after-recovery.png"}
+{"kind": "result", "value": "passed"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

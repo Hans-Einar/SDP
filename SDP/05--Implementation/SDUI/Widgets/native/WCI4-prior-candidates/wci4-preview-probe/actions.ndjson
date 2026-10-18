@@ -1,0 +1,5 @@
+{"kind": "candidate", "value": {"binary": "/tmp/wci4-previews-worker-pilot1", "sha256": "7defa0ae7446bdc1a625718120f00f1b8c3a8e697a61e90b6ad7452ad603185c", "display": ":190", "variant": "wci4-probe"}}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "fixture-command", "value": "state"}
+{"kind": "screenshot", "value": "initial.png"}
+{"kind": "check", "value": {"name": "native teardown closes session and clears provider barriers", "passed": true}}

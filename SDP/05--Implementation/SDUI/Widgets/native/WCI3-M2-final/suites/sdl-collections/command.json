@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "go",
+    "test",
+    "-race",
+    "./examples/collections/...",
+    "-count=1"
+  ],
+  "cwd": "/tmp/sdp-sdui-widgets/SDL/go",
+  "head": "d6742742f0968661d15698518df688ffb1d28946",
+  "go": "go version go1.27.1 linux/amd64",
+  "GOFLAGS": "-mod=readonly",
+  "before": {
+    "examples/collections/cmd/native/main.go": "0b993a80f81018ccedbc44c288f9fc75876644eb872ab5ff27be2e1c303327e6",
+    "examples/collections/controls.go": "71cd65e6f32f3e419670908f8d1ad7494f11484d6d5b8f75bde4e76f067c4c7e",
+    "examples/collections/controls_test.go": "dc7e1e2c7e6db5f7c778a6daa2f41ee1df3406b3aa7f29c626e5d62093229fce",
+    "examples/collections/fixture.go": "ebd31aee6ca726da58baf20093a8bb72e63fe332799abd7fb2ce2446f52a57fe",
+    "examples/collections/fixture_test.go": "067212671843638b85784f788ae0549d37dfceebd584fc627e2953b4927b037f",
+    "go.mod": "83de817575ddce7cc8fcc13154cd42f5552a43feaa77b12edff4e522e9acb97b",
+    "go.sum": "14d7a86d1e9f33e231efa435eebe7e1e219a007ae1b014cf0a072761bc4955ec"
+  }
+}

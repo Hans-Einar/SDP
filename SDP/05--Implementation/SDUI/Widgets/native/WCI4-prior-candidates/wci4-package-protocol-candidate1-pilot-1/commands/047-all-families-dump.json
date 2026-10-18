@@ -1,0 +1,23 @@
+{
+  "name": "all-families-dump",
+  "argv": [
+    "/tmp/wci4-package-candidate1/bin/sdui",
+    "/tmp/wci4-package-protocol-candidate1-pilot-1/all families project with spaces/SDP/Page å with spaces.sdui",
+    "--entry",
+    "Main",
+    "--format",
+    "dump"
+  ],
+  "cwd": "/tmp/wci4-package-protocol-candidate1-pilot-1",
+  "binarySha256": "7789ef39c0e5b484fe569b0e7f42066871eeec1ef73a9e0c29012c8726e944ad",
+  "displayEnvironment": "DISPLAY/WAYLAND_DISPLAY removed",
+  "expected": "success",
+  "exit": 0,
+  "timeout": false,
+  "seconds": 0.06015443801879883,
+  "stdout": "commands/047-all-families-dump.stdout",
+  "stderr": "commands/047-all-families-dump.stderr",
+  "stdoutSha256": "696800cedb10a2cdaa61d7c58ae610ca6666267930225815b6c5c0d4c34c7cd8",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "binaryUnchanged": true
+}
