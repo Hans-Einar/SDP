@@ -16,8 +16,8 @@
 Deliver the [proposed action contract](../../../04--Design/SDPTool/Actions/Contract.md)
 so XFMD can discover and invoke a bounded blueprint workflow through JSON without
 shell construction or help scraping. Owner selected Session0011 and continued it
-in T007, retaining the earlier green concurrent-work prerequisite. Planning is
-permitted; product execution remains blocked by the refreshed RED finding.
+in T007, retaining the earlier green concurrent-work prerequisite. ACT0 is now complete on the integrated candidate; see Integration.md. Owner T010
+authorizes integration to main and completion of the remaining phases.
 
 This plan starts from e2caa22 on sdp/blueprint-implementation. It is not a release
 or a selected combined code baseline. Preserve the separate runnable-program and
@@ -33,14 +33,14 @@ explicit integration sequence and green preflight, create sdp/actions-json-api f
 the selected baseline in an isolated checkout. That becomes this plan's current
 working branch for all phases, with one commit per meaningful milestone and phase
 pushes. This refines Session0011's provisional branch suggestion; no code branch is
-created while the baseline is unresolved. No main merge, publication, installation
-replacement or editing other worktrees is authorized by this plan.
+created while the baseline is unresolved. Owner T010 authorizes the integration and final delivery main merges. Publication,
+installation replacement and editing other worktrees remain outside scope.
 
 ## Phases and milestones
 
 | Phase | Milestone | Complete delivery and acceptance | State |
 | --- | --- | --- | --- |
-| ACT0 Preparation | ACT0-M1 | Reconcile shared-file ownership, KB051 identity and event provenance; record combined baseline and fresh green preflight | waiting |
+| ACT0 Preparation | ACT0-M1 | Reconcile shared-file ownership, KB051 identity and event provenance; record combined baseline and fresh green preflight | completed; Integration.md |
 | ACT1 Contract | ACT1-M1 | Finalize machine schemas/typed operation boundary and update validated SDL design sources on selected baseline; agree bounded consumer vocabulary | planned; prose proposal ready |
 | ACT2 Read workflow | ACT2-M1 | Registry-derived actions catalogue, strict invoke stdin/file transport and project.discover through shared CLI service | planned |
 | ACT3 Blueprint workflow | ACT3-M1 | Generate/retain, assess and list typed actions; preserve preliminary sources, immutable bundles, blocked results and domain diagnostics | planned |

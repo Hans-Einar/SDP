@@ -382,3 +382,10 @@ are archived exactly with hash/line mappings. Actions becomes KB-SDP-053; PLR1
 becomes MAINT-SDP-0016. Imported projections retain original provenance and
 canonical current-state continuity. No historical source bytes are silently changed.
 PG owns active KB038/052; Session0008 stays paused. Checks follow below.
+
+
+T010 ACT0: integrated code at df29a12 passes the complete SDPTool suite and vet,
+management/Toolkit/import checks. Integration.md records scope and preserved inputs.
+The owner's explicit integration assignment resolves the earlier ownership gate;
+ACT0 is green for bounded Actions work on this candidate. Main integration proceeds
+under T010 authorization. Broader SDL/SDUI suites remain separately in progress.
