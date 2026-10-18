@@ -126,9 +126,9 @@ and creates a ready trial run. It does not start Codex. The harness source may b
 newer development version than the selected engine; both identities are recorded.
 An interrupted preparation leaves its directory for inspection and refuses reuse.
 
-The general future action catalogue and JSON invoke adapter belong to KB-SDP-053.
-This lab exercises today's commands and does not require that proposal or an XFMD
-change. A long-running owner conversation still needs streaming events and control;
+The action catalogue and JSON invoke adapter belong to KB-SDP-053, now integrated
+on main. This lab uses the standalone PG commands; it does not add PG Actions or
+require an XFMD change. A long-running owner conversation still needs streaming events and control;
 a one-request JSON adapter alone is not that interaction surface.
 
 ## Assignment preparation trial — PGL2-C1
@@ -149,3 +149,29 @@ binary refuses the upgraded store without changing HEAD. Actual requests/results
 are in evidence.json; no model task is submitted and no design acceptance is inferred.
 The source artifacts are fixtures, not ModelGovernance or Blueprint API evidence.
 Existing owner-lab project/runtime and candidate remain untouched.
+
+## Provider-backed design check — PGL2-C2b
+
+Build the development binaries from SDPTool, without replacing installed tools:
+
+```sh
+go build -o /tmp/pg-controller ./cmd/sdp-controller
+go build -o /tmp/pg-sdptool ./cmd/sdptool
+python3 labs/project-governance/design_trial.py --destination /absolute/new-design-trial --controller /tmp/pg-controller --sdptool /tmp/pg-sdptool --source ../experiments/blueprint_mvp1/NOW
+python3 labs/project-governance/design_view.py --preview /absolute/new-design-trial
+```
+
+The separate project uses real ModelGovernance and retained Blueprint services with
+a synthetic assignment. It proves repeatable current checks, uncommitted TARGET
+drift with unchanged metadata, no writes during inspection and exact restoration.
+It leaves TARGET deliberately changed, so the readable view reports blocked.
+Use `--json` on the view for the full result. Each preview retains binaries,
+requests, results and the selected project/runtime. Existing owner trials are untouched.
+
+The underlying command is `sdp-controller assignment design-check --project ROOT
+--state STATE --input REQUEST`. It requires the prepared assignment revision/generation
+and canonical Blueprint assignment/event. Status current means a consistent review
+basis; it never means owner approval or permission to launch. A blocked result is a
+successful inspection with conditions, not a process failure. Invalid requests fail
+as usual. The provider's bounded live-check budget can return unknown and block a
+check in larger projects; this slice preserves that limitation.

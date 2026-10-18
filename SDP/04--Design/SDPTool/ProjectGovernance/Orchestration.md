@@ -204,3 +204,42 @@ retirement with missing sources, terminal refusal, concurrent CAS, before/after-
 fault recovery, binding/worker refusal, profile downgrade prevention, legacy scope
 release and compiled CLI/schema behavior. Use a separate synthetic trial store;
 preserve the owner's existing lab attempts.
+
+## PGL2-C2b provider-backed design check — 2026-10-18
+
+Owner Session0007 T020 continues the plan on integrated Actions main. Before recording
+an owner disposition, establish an exact, reproducible review basis. Existing
+Blueprint readiness is attributed evidence, not owner design approval; reusing it as
+approval would violate the role contract. This slice supplies read-only checks and
+a review digest; actual trusted owner input remains the next C2 increment.
+
+`assignment design-check --input FILE` selects a prepared Master by ID, expected
+revision/generation and a canonical Blueprint assignment ID/event. Resolve the
+binding through the existing `blueprints.AssignmentViews` API and live models through
+`model.Snapshot`. No second provider ledger, copied lifecycle or provider mutation
+is introduced. Keep the provider's existing read budgets and unknown results.
+
+Require the active PG plan to match the binding; the provider assignment must be
+draft, ready or assigned. Hold, executing, review and terminal states require their
+own workflow disposition. The retained bundle must validate and be current. Its
+blueprint.json must be the prepared blueprint pin; NOW/TARGET pins must name each
+resolved artifact's metadata file. Compare full model captures, not metadata alone:
+an uncommitted WORK edit must stale the check even if its metadata file is unchanged.
+The prepared task pin must match the retained task digest. Require passing structural
+constraints and exact literal membership of each PG writable path in the task's
+AllowedCodePaths; do not infer wildcard or directory expansion. This is a conservative
+preflight bound, not a claim of code conformance or complete impact coverage.
+
+Read and check twice, including operational generation, preparation revision and
+canonical coverage. Any observed drift refuses a current result. A successful
+`sdp-governance-design-check/1` response binds the exact prepared package, coverage,
+provider assignment/event/binding, live model captures and task to a reviewRevision.
+Return preliminary/model coverage and provider readiness separately. Blocked checks
+have no reviewRevision. File inspection is optimistic; future disposition/dispatch
+must run the check again. No source locks or global checkout exclusion are implied.
+
+All results say designAcceptance not-recorded and dispatch unavailable. File text,
+Blueprint assessment, frozen model, returned digest or request role cannot establish
+owner approval. This read operation does not upgrade operational storage or change
+the existing preparation inspection/worker MCP contract. A later owner-input increment
+must bind its disposition to this review revision and invalidate it on change.

@@ -13,16 +13,16 @@ import (
 
 func assignmentCommand(args []string, output io.Writer) error {
 	if len(args) == 0 {
-		return fmt.Errorf("assignment requires context|prepare|revise|retire|inspect")
+		return fmt.Errorf("assignment requires context|prepare|revise|retire|inspect|design-check")
 	}
 	action := args[0]
-	if action != "context" && action != "prepare" && action != "revise" && action != "retire" && action != "inspect" {
+	if action != "context" && action != "prepare" && action != "revise" && action != "retire" && action != "inspect" && action != "design-check" {
 		return fmt.Errorf("unsupported assignment operation")
 	}
 	f := flag.NewFlagSet("assignment "+action, flag.ContinueOnError)
 	root := f.String("project", "", "explicit project root")
 	state := f.String("state", "", "private operational state directory")
-	input := f.String("input", "", "bounded JSON request file (context/prepare/revise/retire)")
+	input := f.String("input", "", "bounded JSON request file (all operations except inspect)")
 	id := f.String("assignment", "", "optional prepared UUID (inspect)")
 	if err := f.Parse(args[1:]); err != nil {
 		return err
@@ -31,7 +31,7 @@ func assignmentCommand(args []string, output io.Writer) error {
 		return fmt.Errorf("explicit --project and --state required")
 	}
 	if action == "inspect" && *input != "" || action != "inspect" && (*input == "" || *id != "") {
-		return fmt.Errorf("context/prepare/revise/retire require only --input; inspect permits only --assignment")
+		return fmt.Errorf("only inspect permits --assignment; other operations require --input")
 	}
 	p, err := sdptool.Discover(*root)
 	if err != nil {
@@ -76,6 +76,11 @@ func assignmentCommand(args []string, output io.Writer) error {
 		var q governance.RetirePreparationRequest
 		if err = governance.Decode(request, &q); err == nil {
 			result, err = service.RetireAssignment(governance.LocalController(), q)
+		}
+	case "design-check":
+		var q governance.DesignCheckRequest
+		if err = governance.Decode(request, &q); err == nil {
+			result, err = service.CheckAssignmentDesign(q)
 		}
 	}
 	if err != nil {

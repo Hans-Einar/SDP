@@ -372,3 +372,22 @@ dispatch prerequisites are next. No owner acceptance or multi-agent execution is
 implied by a prepared, revised or retired assignment.
 
 2026-10-18: EVT-PM-SDP-000198 records PGL2-C2a delivery; EVT-KB-SDP-000370 updates KB052.
+
+## PGL2-C2b — Provider-backed review basis
+
+Session0007 T020 continues the plan. The integrated provider APIs distinguish
+technical readiness from owner authority. Select a read-only Master design check
+first, binding the prepared assignment to canonical Blueprint and live ModelGovernance
+revisions before a later actual owner-input disposition. Reuse exported provider
+services without modifying their storage, lifecycle or shared Actions interface.
+[Orchestration](../../../04--Design/SDPTool/ProjectGovernance/Orchestration.md#pgl2-c2b-provider-backed-design-check--2026-10-18)
+defines the contract and conservative exact code-path check.
+[Preflight](preflight-PGL2-C2b.json) records the scoped continuation boundary.
+Verification requires real provider-created artifacts/bundles, uncommitted TARGET
+drift, wrong binding/task/scope, canonical event drift, optimistic read recheck and
+proof of no writes. Actual design disposition and dispatch remain unfinished C2 work.
+
+[Evidence](Evidence-PGL2-C2b.md), [candidate](candidate-PGL2-C2b.json) and the actual
+[CLI trial](trial-PGL2-C2b.json) record delivery. The provider-backed review basis is
+implemented and verified; actual owner-input disposition and dispatch remain next.
+PGL2 stays in progress. EVT-PM-SDP-000200 / EVT-KB-SDP-000372 record this boundary.

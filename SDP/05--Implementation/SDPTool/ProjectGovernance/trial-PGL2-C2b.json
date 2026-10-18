@@ -1,0 +1,960 @@
+{
+  "fixtureOnly": true,
+  "modelTaskSubmitted": false,
+  "ownerApprovalRecorded": false,
+  "controllerSHA256": "26e32ee4668b91447bd52cbb0499e2250f5c001cecc239a568cec0e4ec265699",
+  "sdptoolSHA256": "1e22f54e3818356b62a570e918a747b44bbfd7912074d4ef0d5492a551d8cba4",
+  "cases": [
+    {
+      "operation": "create-model",
+      "request": null,
+      "result": {
+        "schema": "sdp-model/0.1",
+        "operation": "status",
+        "status": "clean",
+        "path": "/home/warloc/git/pg_lab/previews/pgl2-c2b/project/SDP/Models/WORK--Before",
+        "artifact": {
+          "schema": "sdp-model/0.1",
+          "id": "5b84969a-7131-4f5f-a76b-48bd00e86bc2",
+          "kind": "work",
+          "name": "Before",
+          "head": "5b84969a-7131-4f5f-a76b-48bd00e86bc2:00000",
+          "sequence": 0,
+          "sourceDigest": "4585f3ebe7e43550a374592cb06f5148d1d09a27601439b90a8daf263120561c",
+          "metadataDigest": "03b941f2cba3ac16c7c9501c182472fc44087712b922f5dcec52c250722ce52d",
+          "ledger": [
+            {
+              "author": "warloc",
+              "artifactName": "Before",
+              "id": "5b84969a-7131-4f5f-a76b-48bd00e86bc2:00000",
+              "parents": [],
+              "kind": "baseline",
+              "message": "WORK baseline",
+              "recordedAt": "2026-10-18T21:00:26.857249004Z",
+              "sourceDigest": "4585f3ebe7e43550a374592cb06f5148d1d09a27601439b90a8daf263120561c",
+              "inventory": {},
+              "deleted": [],
+              "payload": ".commits/#00000"
+            }
+          ]
+        },
+        "liveDigest": "4585f3ebe7e43550a374592cb06f5148d1d09a27601439b90a8daf263120561c",
+        "preliminary": true
+      }
+    },
+    {
+      "operation": "create-model",
+      "request": null,
+      "result": {
+        "schema": "sdp-model/0.1",
+        "operation": "status",
+        "status": "clean",
+        "path": "/home/warloc/git/pg_lab/previews/pgl2-c2b/project/SDP/Models/WORK--After",
+        "artifact": {
+          "schema": "sdp-model/0.1",
+          "id": "156cde38-bead-479c-a2d8-118ca6a3057d",
+          "kind": "work",
+          "name": "After",
+          "head": "156cde38-bead-479c-a2d8-118ca6a3057d:00000",
+          "sequence": 0,
+          "sourceDigest": "4585f3ebe7e43550a374592cb06f5148d1d09a27601439b90a8daf263120561c",
+          "metadataDigest": "d14afbc6208c8011bc15896cdc5738194ae5d23c744c63606ee7d042f60f3733",
+          "ledger": [
+            {
+              "author": "warloc",
+              "artifactName": "After",
+              "id": "156cde38-bead-479c-a2d8-118ca6a3057d:00000",
+              "parents": [],
+              "kind": "baseline",
+              "message": "WORK baseline",
+              "recordedAt": "2026-10-18T21:00:26.877882613Z",
+              "sourceDigest": "4585f3ebe7e43550a374592cb06f5148d1d09a27601439b90a8daf263120561c",
+              "inventory": {},
+              "deleted": [],
+              "payload": ".commits/#00000"
+            }
+          ]
+        },
+        "liveDigest": "4585f3ebe7e43550a374592cb06f5148d1d09a27601439b90a8daf263120561c",
+        "preliminary": true
+      }
+    },
+    {
+      "operation": "create-blueprint",
+      "request": null,
+      "result": {
+        "retainedRevision": "c4219f2088cc5382b141b7ed328796c27f9aa28349eae3d47a8786b0c204cacd",
+        "schema": "sdp-blueprint/1",
+        "operation": "create-blueprint",
+        "status": "diagnostic-preview",
+        "revision": "5dce553470c3ae2ca097c3e6b8db6c381f4962a59c148089c978e5aa7a1b6a40",
+        "path": "/home/warloc/git/pg_lab/previews/pgl2-c2b/project/SDP/Blueprints/864e3476f71272b7a08043863add38e4dd9d4441eeb6d6642fe41678f5882573/c4219f2088cc5382b141b7ed328796c27f9aa28349eae3d47a8786b0c204cacd",
+        "preliminary": true
+      }
+    },
+    {
+      "operation": "create-provider-assignment",
+      "request": {
+        "schema": "sdp-blueprint-assignment/1",
+        "eventId": "EVT-PGDES-BPA-1",
+        "occurredAt": "2026-10-18T00:00:00Z",
+        "assignmentId": "BPA-design-fixture",
+        "action": "create",
+        "expectedEvent": "",
+        "binding": {
+          "bundle": "Blueprints/864e3476f71272b7a08043863add38e4dd9d4441eeb6d6642fe41678f5882573/c4219f2088cc5382b141b7ed328796c27f9aa28349eae3d47a8786b0c204cacd",
+          "task": "design-fixture",
+          "system": "MVP1InspectionPilot",
+          "revision": "5dce553470c3ae2ca097c3e6b8db6c381f4962a59c148089c978e5aa7a1b6a40",
+          "retained": "c4219f2088cc5382b141b7ed328796c27f9aa28349eae3d47a8786b0c204cacd",
+          "plan": "PLAN-PGDES-0001",
+          "milestone": "M1",
+          "modelArea": "Models",
+          "from": "work:Before",
+          "to": "work:After"
+        },
+        "reason": "Synthetic provider fixture, no owner approval"
+      },
+      "result": {
+        "schema": "sdp-blueprint-assignment/1",
+        "operation": "assignment",
+        "historyRevision": "3d6abd9fdadf406d48955bb0c45566618b171dd254f2ecc44d9c6531062dd3e0",
+        "appended": true,
+        "assignment": {
+          "assignmentId": "BPA-design-fixture",
+          "workState": "draft",
+          "eventId": "EVT-PGDES-BPA-1",
+          "occurredAt": "2026-10-18T00:00:00Z",
+          "binding": {
+            "bundle": "Blueprints/864e3476f71272b7a08043863add38e4dd9d4441eeb6d6642fe41678f5882573/c4219f2088cc5382b141b7ed328796c27f9aa28349eae3d47a8786b0c204cacd",
+            "task": "design-fixture",
+            "system": "MVP1InspectionPilot",
+            "revision": "5dce553470c3ae2ca097c3e6b8db6c381f4962a59c148089c978e5aa7a1b6a40",
+            "retained": "c4219f2088cc5382b141b7ed328796c27f9aa28349eae3d47a8786b0c204cacd",
+            "plan": "PLAN-PGDES-0001",
+            "milestone": "M1",
+            "modelArea": "Models",
+            "from": "work:Before",
+            "to": "work:After"
+          }
+        }
+      }
+    },
+    {
+      "operation": "bind",
+      "request": null,
+      "result": {
+        "schema": "sdp-project-governance/0.1",
+        "operation": "bind",
+        "projectRef": "pg-design-lab",
+        "root": "/home/warloc/git/pg_lab/previews/pgl2-c2b/project",
+        "checkoutId": "f307a339-3103-4bde-a321-586d5dced329"
+      }
+    },
+    {
+      "operation": "context",
+      "request": {
+        "role": "Master",
+        "selection": {
+          "card": "SDP/KanBan/active/master.md",
+          "plan": "SDP/Plans/master.md",
+          "session": "SDP/Sessions/master.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        }
+      },
+      "result": {
+        "schema": "sdp-governance-assignment/1",
+        "generation": "3f0c6b56b093b8679786a6c17e9fa761c15c7b627c29114cc0c6a82c5f0f056a",
+        "role": "Master",
+        "context": {
+          "schema": "sdp-project-governance/0.1",
+          "operation": "context",
+          "projectRef": "pg-design-lab",
+          "root": "/home/warloc/git/pg_lab/previews/pgl2-c2b/project",
+          "checkoutId": "f307a339-3103-4bde-a321-586d5dced329",
+          "revision": "61273cc9a1de991fe8e265a23489c25eb77297d16011b19c1f557d41dfe3cbff",
+          "selection": {
+            "card": "SDP/KanBan/active/master.md",
+            "plan": "SDP/Plans/master.md",
+            "session": "SDP/Sessions/master.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "sources": [
+            {
+              "path": "AGENTS.md",
+              "sha256": "753c0178016ffca600ea528d1820e72d7ebb2b43b7e229dd628b0c90b7c33529"
+            },
+            {
+              "path": "SDP/KanBan/active/master.md",
+              "sha256": "944c073890d7ea7994a69b186d30945d451722797940ebe28da98c205aadebc5"
+            },
+            {
+              "path": "SDP/Plans/master.md",
+              "sha256": "b564c3ce949f2db0d07c6085bd96e7fe0692b5f6126123f3dd1db5576662663c"
+            },
+            {
+              "path": "SDP/ProjectManagement/Ledger.ndjson",
+              "sha256": "3d6abd9fdadf406d48955bb0c45566618b171dd254f2ecc44d9c6531062dd3e0"
+            },
+            {
+              "path": "SDP/SDP-project.manifest.yaml",
+              "sha256": "e9d5df1f3ff8f263a338736c43f95997f00b46c56db2afc9baf2fc351d0bf29c"
+            },
+            {
+              "path": "SDP/Sessions/master.md",
+              "sha256": "aa92f6021a0adc36f47f21abb047ba3f90f2cfa238e6c9807bd0a1efc25ec097"
+            },
+            {
+              "path": "SDP/authority.md",
+              "sha256": "8c320020d45ba114802b3f11f720ffbc3c7fd37f86e5785fc46936931ab4a49e"
+            }
+          ],
+          "coverage": "known",
+          "conditions": [],
+          "cardId": "KB-PGDES-001",
+          "planId": "PLAN-PGDES-0001",
+          "sessionId": "SESSION-PGDES-0001"
+        }
+      }
+    },
+    {
+      "operation": "prepare",
+      "request": {
+        "schema": "sdp-governance-assignment/1",
+        "projectRef": "pg-design-lab",
+        "checkoutId": "f307a339-3103-4bde-a321-586d5dced329",
+        "operationId": "05921f97-645c-45b5-a804-4c025d02a067",
+        "expectedGeneration": "3f0c6b56b093b8679786a6c17e9fa761c15c7b627c29114cc0c6a82c5f0f056a",
+        "inputRevision": "61273cc9a1de991fe8e265a23489c25eb77297d16011b19c1f557d41dfe3cbff",
+        "role": "Master",
+        "selection": {
+          "card": "SDP/KanBan/active/master.md",
+          "plan": "SDP/Plans/master.md",
+          "session": "SDP/Sessions/master.md",
+          "authority": "SDP/authority.md",
+          "step": "S1"
+        },
+        "assignment": {
+          "outcome": "Review bounded design",
+          "writablePaths": [
+            "code"
+          ],
+          "excludedPaths": [
+            "SDP"
+          ]
+        },
+        "artifacts": [
+          {
+            "kind": "now",
+            "path": "SDP/Models/WORK--Before/WORK--Before.yaml",
+            "sha256": "bf19fa4b5be2403d162f686e3adb4573cde00b5af9d9ef2fa98e8dd0bb1e9901"
+          },
+          {
+            "kind": "target",
+            "path": "SDP/Models/WORK--After/WORK--After.yaml",
+            "sha256": "61ff5723326ac9524f5dbd7b77c19ea61b5d4832d6be95a1739aaa1fa565ff80"
+          },
+          {
+            "kind": "task",
+            "path": "task.json",
+            "sha256": "4f6a577bcbec996fe0f16413e3711e54cae78c7a0627efe9609cb57662c1bdea"
+          },
+          {
+            "kind": "blueprint",
+            "path": "SDP/Blueprints/864e3476f71272b7a08043863add38e4dd9d4441eeb6d6642fe41678f5882573/c4219f2088cc5382b141b7ed328796c27f9aa28349eae3d47a8786b0c204cacd/blueprint.json",
+            "sha256": "3c44152b96208c496bc6d81daf686f3def6eeb6d31340acd991d4b5a8162db61"
+          },
+          {
+            "kind": "design-disposition",
+            "path": "design-disposition.json",
+            "sha256": "57ae131d23cae0f22f1aa1ea183aaa648801a6053b092e93c1f90413db1cf5ab"
+          }
+        ],
+        "returnCriteria": [
+          "Return exact design review basis and unknowns"
+        ]
+      },
+      "result": {
+        "schema": "sdp-governance-assignment/1",
+        "operationId": "05921f97-645c-45b5-a804-4c025d02a067",
+        "assignment": {
+          "id": "ef9076e8-a046-4ee8-8ccc-ceaff01056e7",
+          "revision": 1,
+          "role": "Master",
+          "selection": {
+            "card": "SDP/KanBan/active/master.md",
+            "plan": "SDP/Plans/master.md",
+            "session": "SDP/Sessions/master.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Review bounded design",
+            "writablePaths": [
+              "code"
+            ],
+            "excludedPaths": [
+              "SDP"
+            ]
+          },
+          "inputRevision": "61273cc9a1de991fe8e265a23489c25eb77297d16011b19c1f557d41dfe3cbff",
+          "artifacts": [
+            {
+              "kind": "now",
+              "path": "SDP/Models/WORK--Before/WORK--Before.yaml",
+              "sha256": "bf19fa4b5be2403d162f686e3adb4573cde00b5af9d9ef2fa98e8dd0bb1e9901"
+            },
+            {
+              "kind": "target",
+              "path": "SDP/Models/WORK--After/WORK--After.yaml",
+              "sha256": "61ff5723326ac9524f5dbd7b77c19ea61b5d4832d6be95a1739aaa1fa565ff80"
+            },
+            {
+              "kind": "task",
+              "path": "task.json",
+              "sha256": "4f6a577bcbec996fe0f16413e3711e54cae78c7a0627efe9609cb57662c1bdea"
+            },
+            {
+              "kind": "blueprint",
+              "path": "SDP/Blueprints/864e3476f71272b7a08043863add38e4dd9d4441eeb6d6642fe41678f5882573/c4219f2088cc5382b141b7ed328796c27f9aa28349eae3d47a8786b0c204cacd/blueprint.json",
+              "sha256": "3c44152b96208c496bc6d81daf686f3def6eeb6d31340acd991d4b5a8162db61"
+            },
+            {
+              "kind": "design-disposition",
+              "path": "design-disposition.json",
+              "sha256": "57ae131d23cae0f22f1aa1ea183aaa648801a6053b092e93c1f90413db1cf5ab"
+            }
+          ],
+          "returnCriteria": [
+            "Return exact design review basis and unknowns"
+          ]
+        },
+        "dispatch": "unavailable",
+        "designAcceptance": "not-assessed"
+      }
+    },
+    {
+      "operation": "inspect",
+      "request": null,
+      "result": {
+        "schema": "sdp-governance-assignment/1",
+        "generation": "f248056dd14cfaa2d2596326b98109dd8ec99cbeb4cb29de7b4236de89cc97aa",
+        "checkoutId": "f307a339-3103-4bde-a321-586d5dced329",
+        "scope": "selected-checkout-only",
+        "assignments": [
+          {
+            "assignment": {
+              "id": "ef9076e8-a046-4ee8-8ccc-ceaff01056e7",
+              "revision": 1,
+              "role": "Master",
+              "selection": {
+                "card": "SDP/KanBan/active/master.md",
+                "plan": "SDP/Plans/master.md",
+                "session": "SDP/Sessions/master.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Review bounded design",
+                "writablePaths": [
+                  "code"
+                ],
+                "excludedPaths": [
+                  "SDP"
+                ]
+              },
+              "inputRevision": "61273cc9a1de991fe8e265a23489c25eb77297d16011b19c1f557d41dfe3cbff",
+              "artifacts": [
+                {
+                  "kind": "now",
+                  "path": "SDP/Models/WORK--Before/WORK--Before.yaml",
+                  "sha256": "bf19fa4b5be2403d162f686e3adb4573cde00b5af9d9ef2fa98e8dd0bb1e9901"
+                },
+                {
+                  "kind": "target",
+                  "path": "SDP/Models/WORK--After/WORK--After.yaml",
+                  "sha256": "61ff5723326ac9524f5dbd7b77c19ea61b5d4832d6be95a1739aaa1fa565ff80"
+                },
+                {
+                  "kind": "task",
+                  "path": "task.json",
+                  "sha256": "4f6a577bcbec996fe0f16413e3711e54cae78c7a0627efe9609cb57662c1bdea"
+                },
+                {
+                  "kind": "blueprint",
+                  "path": "SDP/Blueprints/864e3476f71272b7a08043863add38e4dd9d4441eeb6d6642fe41678f5882573/c4219f2088cc5382b141b7ed328796c27f9aa28349eae3d47a8786b0c204cacd/blueprint.json",
+                  "sha256": "3c44152b96208c496bc6d81daf686f3def6eeb6d31340acd991d4b5a8162db61"
+                },
+                {
+                  "kind": "design-disposition",
+                  "path": "design-disposition.json",
+                  "sha256": "57ae131d23cae0f22f1aa1ea183aaa648801a6053b092e93c1f90413db1cf5ab"
+                }
+              ],
+              "returnCriteria": [
+                "Return exact design review basis and unknowns"
+              ]
+            },
+            "readiness": "prepared",
+            "conditions": [],
+            "dispatch": "unavailable",
+            "designAcceptance": "not-assessed"
+          }
+        ]
+      }
+    },
+    {
+      "operation": "design-check",
+      "request": {
+        "schema": "sdp-governance-design-check/1",
+        "assignmentId": "ef9076e8-a046-4ee8-8ccc-ceaff01056e7",
+        "expectedRevision": 1,
+        "expectedGeneration": "f248056dd14cfaa2d2596326b98109dd8ec99cbeb4cb29de7b4236de89cc97aa",
+        "blueprintAssignment": "BPA-design-fixture",
+        "blueprintEvent": "EVT-PGDES-BPA-1"
+      },
+      "result": {
+        "schema": "sdp-governance-design-check/1",
+        "status": "current",
+        "generation": "f248056dd14cfaa2d2596326b98109dd8ec99cbeb4cb29de7b4236de89cc97aa",
+        "assignment": {
+          "id": "ef9076e8-a046-4ee8-8ccc-ceaff01056e7",
+          "revision": 1,
+          "role": "Master",
+          "selection": {
+            "card": "SDP/KanBan/active/master.md",
+            "plan": "SDP/Plans/master.md",
+            "session": "SDP/Sessions/master.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Review bounded design",
+            "writablePaths": [
+              "code"
+            ],
+            "excludedPaths": [
+              "SDP"
+            ]
+          },
+          "inputRevision": "61273cc9a1de991fe8e265a23489c25eb77297d16011b19c1f557d41dfe3cbff",
+          "artifacts": [
+            {
+              "kind": "now",
+              "path": "SDP/Models/WORK--Before/WORK--Before.yaml",
+              "sha256": "bf19fa4b5be2403d162f686e3adb4573cde00b5af9d9ef2fa98e8dd0bb1e9901"
+            },
+            {
+              "kind": "target",
+              "path": "SDP/Models/WORK--After/WORK--After.yaml",
+              "sha256": "61ff5723326ac9524f5dbd7b77c19ea61b5d4832d6be95a1739aaa1fa565ff80"
+            },
+            {
+              "kind": "task",
+              "path": "task.json",
+              "sha256": "4f6a577bcbec996fe0f16413e3711e54cae78c7a0627efe9609cb57662c1bdea"
+            },
+            {
+              "kind": "blueprint",
+              "path": "SDP/Blueprints/864e3476f71272b7a08043863add38e4dd9d4441eeb6d6642fe41678f5882573/c4219f2088cc5382b141b7ed328796c27f9aa28349eae3d47a8786b0c204cacd/blueprint.json",
+              "sha256": "3c44152b96208c496bc6d81daf686f3def6eeb6d31340acd991d4b5a8162db61"
+            },
+            {
+              "kind": "design-disposition",
+              "path": "design-disposition.json",
+              "sha256": "57ae131d23cae0f22f1aa1ea183aaa648801a6053b092e93c1f90413db1cf5ab"
+            }
+          ],
+          "returnCriteria": [
+            "Return exact design review basis and unknowns"
+          ]
+        },
+        "provider": {
+          "assignmentId": "BPA-design-fixture",
+          "eventId": "EVT-PGDES-BPA-1",
+          "workState": "draft",
+          "binding": {
+            "bundle": "Blueprints/864e3476f71272b7a08043863add38e4dd9d4441eeb6d6642fe41678f5882573/c4219f2088cc5382b141b7ed328796c27f9aa28349eae3d47a8786b0c204cacd",
+            "task": "design-fixture",
+            "system": "MVP1InspectionPilot",
+            "revision": "5dce553470c3ae2ca097c3e6b8db6c381f4962a59c148089c978e5aa7a1b6a40",
+            "retained": "c4219f2088cc5382b141b7ed328796c27f9aa28349eae3d47a8786b0c204cacd",
+            "plan": "PLAN-PGDES-0001",
+            "milestone": "M1",
+            "modelArea": "Models",
+            "from": "work:Before",
+            "to": "work:After"
+          },
+          "now": {
+            "id": "5b84969a-7131-4f5f-a76b-48bd00e86bc2",
+            "kind": "work",
+            "head": "5b84969a-7131-4f5f-a76b-48bd00e86bc2:00000",
+            "metadataDigest": "03b941f2cba3ac16c7c9501c182472fc44087712b922f5dcec52c250722ce52d",
+            "sourceDigest": "9b43ba159621c8b1722464ab9643d61e5684de18cd1f29bf5cda751dad8062a4",
+            "preliminary": true
+          },
+          "target": {
+            "id": "156cde38-bead-479c-a2d8-118ca6a3057d",
+            "kind": "work",
+            "head": "156cde38-bead-479c-a2d8-118ca6a3057d:00000",
+            "metadataDigest": "d14afbc6208c8011bc15896cdc5738194ae5d23c744c63606ee7d042f60f3733",
+            "sourceDigest": "9b43ba159621c8b1722464ab9643d61e5684de18cd1f29bf5cda751dad8062a4",
+            "preliminary": true
+          },
+          "taskDigest": "4f6a577bcbec996fe0f16413e3711e54cae78c7a0627efe9609cb57662c1bdea",
+          "task": {
+            "ID": "design-fixture",
+            "Intent": "Inspect unchanged bounded model",
+            "Context": null,
+            "Exclude": null,
+            "Rules": null,
+            "AllowedChanges": null,
+            "AllowedModelPaths": null,
+            "AllowedCodePaths": [
+              "code"
+            ],
+            "Protect": null
+          },
+          "evidenceReadiness": "not-adopted",
+          "coverage": {
+            "Profile": "design-core/0.6",
+            "Policy": "structural-closure/1",
+            "ModeledClosureComplete": true,
+            "CodeConformance": "unknown",
+            "RuntimeDependencies": "unknown",
+            "SDUISemantics": "unsupported"
+          },
+          "unknowns": [
+            {
+              "Side": "BOTH",
+              "Code": "CODE_MAPPING",
+              "Subject": "",
+              "Detail": "No code mappings, complete runtime dependencies or behavioral evidence supplied"
+            }
+          ]
+        },
+        "reviewRevision": "fba21cdff770a8df8e3e8441de99526c6fa707daa60f38ffa5f8b8fedf337ae8",
+        "conditions": [],
+        "designAcceptance": "not-recorded",
+        "dispatch": "unavailable"
+      }
+    },
+    {
+      "operation": "design-check",
+      "request": {
+        "schema": "sdp-governance-design-check/1",
+        "assignmentId": "ef9076e8-a046-4ee8-8ccc-ceaff01056e7",
+        "expectedRevision": 1,
+        "expectedGeneration": "f248056dd14cfaa2d2596326b98109dd8ec99cbeb4cb29de7b4236de89cc97aa",
+        "blueprintAssignment": "BPA-design-fixture",
+        "blueprintEvent": "EVT-PGDES-BPA-1"
+      },
+      "result": {
+        "schema": "sdp-governance-design-check/1",
+        "status": "current",
+        "generation": "f248056dd14cfaa2d2596326b98109dd8ec99cbeb4cb29de7b4236de89cc97aa",
+        "assignment": {
+          "id": "ef9076e8-a046-4ee8-8ccc-ceaff01056e7",
+          "revision": 1,
+          "role": "Master",
+          "selection": {
+            "card": "SDP/KanBan/active/master.md",
+            "plan": "SDP/Plans/master.md",
+            "session": "SDP/Sessions/master.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Review bounded design",
+            "writablePaths": [
+              "code"
+            ],
+            "excludedPaths": [
+              "SDP"
+            ]
+          },
+          "inputRevision": "61273cc9a1de991fe8e265a23489c25eb77297d16011b19c1f557d41dfe3cbff",
+          "artifacts": [
+            {
+              "kind": "now",
+              "path": "SDP/Models/WORK--Before/WORK--Before.yaml",
+              "sha256": "bf19fa4b5be2403d162f686e3adb4573cde00b5af9d9ef2fa98e8dd0bb1e9901"
+            },
+            {
+              "kind": "target",
+              "path": "SDP/Models/WORK--After/WORK--After.yaml",
+              "sha256": "61ff5723326ac9524f5dbd7b77c19ea61b5d4832d6be95a1739aaa1fa565ff80"
+            },
+            {
+              "kind": "task",
+              "path": "task.json",
+              "sha256": "4f6a577bcbec996fe0f16413e3711e54cae78c7a0627efe9609cb57662c1bdea"
+            },
+            {
+              "kind": "blueprint",
+              "path": "SDP/Blueprints/864e3476f71272b7a08043863add38e4dd9d4441eeb6d6642fe41678f5882573/c4219f2088cc5382b141b7ed328796c27f9aa28349eae3d47a8786b0c204cacd/blueprint.json",
+              "sha256": "3c44152b96208c496bc6d81daf686f3def6eeb6d31340acd991d4b5a8162db61"
+            },
+            {
+              "kind": "design-disposition",
+              "path": "design-disposition.json",
+              "sha256": "57ae131d23cae0f22f1aa1ea183aaa648801a6053b092e93c1f90413db1cf5ab"
+            }
+          ],
+          "returnCriteria": [
+            "Return exact design review basis and unknowns"
+          ]
+        },
+        "provider": {
+          "assignmentId": "BPA-design-fixture",
+          "eventId": "EVT-PGDES-BPA-1",
+          "workState": "draft",
+          "binding": {
+            "bundle": "Blueprints/864e3476f71272b7a08043863add38e4dd9d4441eeb6d6642fe41678f5882573/c4219f2088cc5382b141b7ed328796c27f9aa28349eae3d47a8786b0c204cacd",
+            "task": "design-fixture",
+            "system": "MVP1InspectionPilot",
+            "revision": "5dce553470c3ae2ca097c3e6b8db6c381f4962a59c148089c978e5aa7a1b6a40",
+            "retained": "c4219f2088cc5382b141b7ed328796c27f9aa28349eae3d47a8786b0c204cacd",
+            "plan": "PLAN-PGDES-0001",
+            "milestone": "M1",
+            "modelArea": "Models",
+            "from": "work:Before",
+            "to": "work:After"
+          },
+          "now": {
+            "id": "5b84969a-7131-4f5f-a76b-48bd00e86bc2",
+            "kind": "work",
+            "head": "5b84969a-7131-4f5f-a76b-48bd00e86bc2:00000",
+            "metadataDigest": "03b941f2cba3ac16c7c9501c182472fc44087712b922f5dcec52c250722ce52d",
+            "sourceDigest": "9b43ba159621c8b1722464ab9643d61e5684de18cd1f29bf5cda751dad8062a4",
+            "preliminary": true
+          },
+          "target": {
+            "id": "156cde38-bead-479c-a2d8-118ca6a3057d",
+            "kind": "work",
+            "head": "156cde38-bead-479c-a2d8-118ca6a3057d:00000",
+            "metadataDigest": "d14afbc6208c8011bc15896cdc5738194ae5d23c744c63606ee7d042f60f3733",
+            "sourceDigest": "9b43ba159621c8b1722464ab9643d61e5684de18cd1f29bf5cda751dad8062a4",
+            "preliminary": true
+          },
+          "taskDigest": "4f6a577bcbec996fe0f16413e3711e54cae78c7a0627efe9609cb57662c1bdea",
+          "task": {
+            "ID": "design-fixture",
+            "Intent": "Inspect unchanged bounded model",
+            "Context": null,
+            "Exclude": null,
+            "Rules": null,
+            "AllowedChanges": null,
+            "AllowedModelPaths": null,
+            "AllowedCodePaths": [
+              "code"
+            ],
+            "Protect": null
+          },
+          "evidenceReadiness": "not-adopted",
+          "coverage": {
+            "Profile": "design-core/0.6",
+            "Policy": "structural-closure/1",
+            "ModeledClosureComplete": true,
+            "CodeConformance": "unknown",
+            "RuntimeDependencies": "unknown",
+            "SDUISemantics": "unsupported"
+          },
+          "unknowns": [
+            {
+              "Side": "BOTH",
+              "Code": "CODE_MAPPING",
+              "Subject": "",
+              "Detail": "No code mappings, complete runtime dependencies or behavioral evidence supplied"
+            }
+          ]
+        },
+        "reviewRevision": "fba21cdff770a8df8e3e8441de99526c6fa707daa60f38ffa5f8b8fedf337ae8",
+        "conditions": [],
+        "designAcceptance": "not-recorded",
+        "dispatch": "unavailable"
+      }
+    },
+    {
+      "operation": "inspect",
+      "request": null,
+      "result": {
+        "schema": "sdp-governance-assignment/1",
+        "generation": "f248056dd14cfaa2d2596326b98109dd8ec99cbeb4cb29de7b4236de89cc97aa",
+        "checkoutId": "f307a339-3103-4bde-a321-586d5dced329",
+        "scope": "selected-checkout-only",
+        "assignments": [
+          {
+            "assignment": {
+              "id": "ef9076e8-a046-4ee8-8ccc-ceaff01056e7",
+              "revision": 1,
+              "role": "Master",
+              "selection": {
+                "card": "SDP/KanBan/active/master.md",
+                "plan": "SDP/Plans/master.md",
+                "session": "SDP/Sessions/master.md",
+                "authority": "SDP/authority.md",
+                "step": "S1"
+              },
+              "assignment": {
+                "outcome": "Review bounded design",
+                "writablePaths": [
+                  "code"
+                ],
+                "excludedPaths": [
+                  "SDP"
+                ]
+              },
+              "inputRevision": "61273cc9a1de991fe8e265a23489c25eb77297d16011b19c1f557d41dfe3cbff",
+              "artifacts": [
+                {
+                  "kind": "now",
+                  "path": "SDP/Models/WORK--Before/WORK--Before.yaml",
+                  "sha256": "bf19fa4b5be2403d162f686e3adb4573cde00b5af9d9ef2fa98e8dd0bb1e9901"
+                },
+                {
+                  "kind": "target",
+                  "path": "SDP/Models/WORK--After/WORK--After.yaml",
+                  "sha256": "61ff5723326ac9524f5dbd7b77c19ea61b5d4832d6be95a1739aaa1fa565ff80"
+                },
+                {
+                  "kind": "task",
+                  "path": "task.json",
+                  "sha256": "4f6a577bcbec996fe0f16413e3711e54cae78c7a0627efe9609cb57662c1bdea"
+                },
+                {
+                  "kind": "blueprint",
+                  "path": "SDP/Blueprints/864e3476f71272b7a08043863add38e4dd9d4441eeb6d6642fe41678f5882573/c4219f2088cc5382b141b7ed328796c27f9aa28349eae3d47a8786b0c204cacd/blueprint.json",
+                  "sha256": "3c44152b96208c496bc6d81daf686f3def6eeb6d31340acd991d4b5a8162db61"
+                },
+                {
+                  "kind": "design-disposition",
+                  "path": "design-disposition.json",
+                  "sha256": "57ae131d23cae0f22f1aa1ea183aaa648801a6053b092e93c1f90413db1cf5ab"
+                }
+              ],
+              "returnCriteria": [
+                "Return exact design review basis and unknowns"
+              ]
+            },
+            "readiness": "prepared",
+            "conditions": [],
+            "dispatch": "unavailable",
+            "designAcceptance": "not-assessed"
+          }
+        ]
+      }
+    },
+    {
+      "operation": "design-check",
+      "request": {
+        "schema": "sdp-governance-design-check/1",
+        "assignmentId": "ef9076e8-a046-4ee8-8ccc-ceaff01056e7",
+        "expectedRevision": 1,
+        "expectedGeneration": "f248056dd14cfaa2d2596326b98109dd8ec99cbeb4cb29de7b4236de89cc97aa",
+        "blueprintAssignment": "BPA-design-fixture",
+        "blueprintEvent": "EVT-PGDES-BPA-1"
+      },
+      "result": {
+        "schema": "sdp-governance-design-check/1",
+        "status": "blocked",
+        "generation": "f248056dd14cfaa2d2596326b98109dd8ec99cbeb4cb29de7b4236de89cc97aa",
+        "assignment": {
+          "id": "ef9076e8-a046-4ee8-8ccc-ceaff01056e7",
+          "revision": 1,
+          "role": "Master",
+          "selection": {
+            "card": "SDP/KanBan/active/master.md",
+            "plan": "SDP/Plans/master.md",
+            "session": "SDP/Sessions/master.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Review bounded design",
+            "writablePaths": [
+              "code"
+            ],
+            "excludedPaths": [
+              "SDP"
+            ]
+          },
+          "inputRevision": "61273cc9a1de991fe8e265a23489c25eb77297d16011b19c1f557d41dfe3cbff",
+          "artifacts": [
+            {
+              "kind": "now",
+              "path": "SDP/Models/WORK--Before/WORK--Before.yaml",
+              "sha256": "bf19fa4b5be2403d162f686e3adb4573cde00b5af9d9ef2fa98e8dd0bb1e9901"
+            },
+            {
+              "kind": "target",
+              "path": "SDP/Models/WORK--After/WORK--After.yaml",
+              "sha256": "61ff5723326ac9524f5dbd7b77c19ea61b5d4832d6be95a1739aaa1fa565ff80"
+            },
+            {
+              "kind": "task",
+              "path": "task.json",
+              "sha256": "4f6a577bcbec996fe0f16413e3711e54cae78c7a0627efe9609cb57662c1bdea"
+            },
+            {
+              "kind": "blueprint",
+              "path": "SDP/Blueprints/864e3476f71272b7a08043863add38e4dd9d4441eeb6d6642fe41678f5882573/c4219f2088cc5382b141b7ed328796c27f9aa28349eae3d47a8786b0c204cacd/blueprint.json",
+              "sha256": "3c44152b96208c496bc6d81daf686f3def6eeb6d31340acd991d4b5a8162db61"
+            },
+            {
+              "kind": "design-disposition",
+              "path": "design-disposition.json",
+              "sha256": "57ae131d23cae0f22f1aa1ea183aaa648801a6053b092e93c1f90413db1cf5ab"
+            }
+          ],
+          "returnCriteria": [
+            "Return exact design review basis and unknowns"
+          ]
+        },
+        "conditions": [
+          "stale_revision: Blueprint integrity/live-source check: validated/stale; assignment source references are stale"
+        ],
+        "designAcceptance": "not-recorded",
+        "dispatch": "unavailable"
+      }
+    },
+    {
+      "operation": "design-check",
+      "request": {
+        "schema": "sdp-governance-design-check/1",
+        "assignmentId": "ef9076e8-a046-4ee8-8ccc-ceaff01056e7",
+        "expectedRevision": 1,
+        "expectedGeneration": "f248056dd14cfaa2d2596326b98109dd8ec99cbeb4cb29de7b4236de89cc97aa",
+        "blueprintAssignment": "BPA-design-fixture",
+        "blueprintEvent": "EVT-PGDES-BPA-1"
+      },
+      "result": {
+        "schema": "sdp-governance-design-check/1",
+        "status": "current",
+        "generation": "f248056dd14cfaa2d2596326b98109dd8ec99cbeb4cb29de7b4236de89cc97aa",
+        "assignment": {
+          "id": "ef9076e8-a046-4ee8-8ccc-ceaff01056e7",
+          "revision": 1,
+          "role": "Master",
+          "selection": {
+            "card": "SDP/KanBan/active/master.md",
+            "plan": "SDP/Plans/master.md",
+            "session": "SDP/Sessions/master.md",
+            "authority": "SDP/authority.md",
+            "step": "S1"
+          },
+          "assignment": {
+            "outcome": "Review bounded design",
+            "writablePaths": [
+              "code"
+            ],
+            "excludedPaths": [
+              "SDP"
+            ]
+          },
+          "inputRevision": "61273cc9a1de991fe8e265a23489c25eb77297d16011b19c1f557d41dfe3cbff",
+          "artifacts": [
+            {
+              "kind": "now",
+              "path": "SDP/Models/WORK--Before/WORK--Before.yaml",
+              "sha256": "bf19fa4b5be2403d162f686e3adb4573cde00b5af9d9ef2fa98e8dd0bb1e9901"
+            },
+            {
+              "kind": "target",
+              "path": "SDP/Models/WORK--After/WORK--After.yaml",
+              "sha256": "61ff5723326ac9524f5dbd7b77c19ea61b5d4832d6be95a1739aaa1fa565ff80"
+            },
+            {
+              "kind": "task",
+              "path": "task.json",
+              "sha256": "4f6a577bcbec996fe0f16413e3711e54cae78c7a0627efe9609cb57662c1bdea"
+            },
+            {
+              "kind": "blueprint",
+              "path": "SDP/Blueprints/864e3476f71272b7a08043863add38e4dd9d4441eeb6d6642fe41678f5882573/c4219f2088cc5382b141b7ed328796c27f9aa28349eae3d47a8786b0c204cacd/blueprint.json",
+              "sha256": "3c44152b96208c496bc6d81daf686f3def6eeb6d31340acd991d4b5a8162db61"
+            },
+            {
+              "kind": "design-disposition",
+              "path": "design-disposition.json",
+              "sha256": "57ae131d23cae0f22f1aa1ea183aaa648801a6053b092e93c1f90413db1cf5ab"
+            }
+          ],
+          "returnCriteria": [
+            "Return exact design review basis and unknowns"
+          ]
+        },
+        "provider": {
+          "assignmentId": "BPA-design-fixture",
+          "eventId": "EVT-PGDES-BPA-1",
+          "workState": "draft",
+          "binding": {
+            "bundle": "Blueprints/864e3476f71272b7a08043863add38e4dd9d4441eeb6d6642fe41678f5882573/c4219f2088cc5382b141b7ed328796c27f9aa28349eae3d47a8786b0c204cacd",
+            "task": "design-fixture",
+            "system": "MVP1InspectionPilot",
+            "revision": "5dce553470c3ae2ca097c3e6b8db6c381f4962a59c148089c978e5aa7a1b6a40",
+            "retained": "c4219f2088cc5382b141b7ed328796c27f9aa28349eae3d47a8786b0c204cacd",
+            "plan": "PLAN-PGDES-0001",
+            "milestone": "M1",
+            "modelArea": "Models",
+            "from": "work:Before",
+            "to": "work:After"
+          },
+          "now": {
+            "id": "5b84969a-7131-4f5f-a76b-48bd00e86bc2",
+            "kind": "work",
+            "head": "5b84969a-7131-4f5f-a76b-48bd00e86bc2:00000",
+            "metadataDigest": "03b941f2cba3ac16c7c9501c182472fc44087712b922f5dcec52c250722ce52d",
+            "sourceDigest": "9b43ba159621c8b1722464ab9643d61e5684de18cd1f29bf5cda751dad8062a4",
+            "preliminary": true
+          },
+          "target": {
+            "id": "156cde38-bead-479c-a2d8-118ca6a3057d",
+            "kind": "work",
+            "head": "156cde38-bead-479c-a2d8-118ca6a3057d:00000",
+            "metadataDigest": "d14afbc6208c8011bc15896cdc5738194ae5d23c744c63606ee7d042f60f3733",
+            "sourceDigest": "9b43ba159621c8b1722464ab9643d61e5684de18cd1f29bf5cda751dad8062a4",
+            "preliminary": true
+          },
+          "taskDigest": "4f6a577bcbec996fe0f16413e3711e54cae78c7a0627efe9609cb57662c1bdea",
+          "task": {
+            "ID": "design-fixture",
+            "Intent": "Inspect unchanged bounded model",
+            "Context": null,
+            "Exclude": null,
+            "Rules": null,
+            "AllowedChanges": null,
+            "AllowedModelPaths": null,
+            "AllowedCodePaths": [
+              "code"
+            ],
+            "Protect": null
+          },
+          "evidenceReadiness": "not-adopted",
+          "coverage": {
+            "Profile": "design-core/0.6",
+            "Policy": "structural-closure/1",
+            "ModeledClosureComplete": true,
+            "CodeConformance": "unknown",
+            "RuntimeDependencies": "unknown",
+            "SDUISemantics": "unsupported"
+          },
+          "unknowns": [
+            {
+              "Side": "BOTH",
+              "Code": "CODE_MAPPING",
+              "Subject": "",
+              "Detail": "No code mappings, complete runtime dependencies or behavioral evidence supplied"
+            }
+          ]
+        },
+        "reviewRevision": "fba21cdff770a8df8e3e8441de99526c6fa707daa60f38ffa5f8b8fedf337ae8",
+        "conditions": [],
+        "designAcceptance": "not-recorded",
+        "dispatch": "unavailable"
+      }
+    }
+  ]
+}

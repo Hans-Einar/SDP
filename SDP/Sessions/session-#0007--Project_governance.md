@@ -2,9 +2,9 @@
 
 ## Session roadmap
 
-Latest recorded turn: T019 — refresh against main e8760d3. The merge forecast found
-only two shared-ledger conflicts; preserve both parent histories and reconcile their
-ordering on the PG branch. PGL2-C2a remains delivered; remaining C2 work is next.
+Latest recorded turn: T020 — PGL2-C2b delivers the provider-backed read-only design
+review basis. Uncommitted TARGET drift now blocks handoff despite unchanged metadata.
+Actual owner disposition and dispatch prerequisites remain the next C2 increment.
 Sequence only; synthetic dates represent order, not estimates or elapsed time.
 
 ```mermaid
@@ -25,7 +25,7 @@ gantt
 | completed | S1 | Recover skills, studies, card dependencies and ownership | Owner request, 2026-10-03 | Assessment below; RGS2 reused |
 | completed | S2 | Design the smallest common routing, run, Session and client contract | Owner continuation, T002 | [PGD1 / PLAN-SDP-0017](../04--Design/SDPTool/ProjectGovernance/Plan.md), contract, acceptance cases and protocol inspection |
 | waiting | S3 | Deliver one end-to-end workflow through SDPTool and the Codex client | S2 complete; [PLAN-SDP-0018](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) active | PGI1/PGI2 delivered; PGI3-C6 verified; owner reports PGI3-U1 trial performed; native mapping remains unverified; KB052 now prioritized |
-| active | S6 | Project Leader/SAD coordination in bounded increments | Owner T014 selects [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md); same [plan](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) | PGL1 delivered at [inspection level](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL1.md); PGL2-C1 preparation and C2a revision/retirement delivered; disposition/dispatch/inbox/design gates next |
+| active | S6 | Project Leader/SAD coordination in bounded increments | Owner T014 selects [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md); same [plan](../05--Implementation/SDPTool/ProjectGovernance/Plan.md) | PGL1 delivered at [inspection level](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL1.md); PGL2-C1 preparation, C2a revision/retirement and C2b provider checks delivered; owner disposition/dispatch/inbox gates next |
 | planned | S4 | Verify interruption, resume, scope change and evidence disposition | S3 candidate | Evidence required before wider use |
 | planned | S5 | Project recorded activity into the KB043 timeline | Reliable S3/S4 capture and selected rendering scope | Full timeline remains deferred |
 
@@ -35,9 +35,9 @@ gantt
 | Status | active |
 | Primary card | [KB-SDP-038](../KanBan/active/%23038--Proposal--Codex-app-server-development-client.md) |
 | Snapshot date | 2026-10-18 |
-| Current step | S6 / KB052; PGL2-C2a delivered, remaining C2 next |
-| Proposed next step | PGL2-C2 actual disposition and provider-aware dispatch prerequisites |
-| Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement |
+| Current step | S6 / KB052; PGL2-C2b delivered, actual owner disposition next |
+| Proposed next step | PGL2-C2 trusted owner disposition bound to current review revision, then dispatch prerequisites |
+| Execution authority | T003/T004 select and resume PGI1; T006 selects PGI2; T007 selects PGI3; T008 resumes it with restored Git access; T009 selects explicit approval interaction; T010 continues executing-turn reattachment; T011 selects bounded launch provenance; T012 continues explicit skill invocation/correlation; T013 prioritizes owner development trials; T014 selects KB052 after reported trial; T015 continues PGL2 preparation; T018 continues bounded PG-local revision/retirement; T020 continues the plan with provider-backed review checks |
 
 ## Goal and ownership
 
@@ -866,3 +866,45 @@ ok  	github.com/Hans-Einar/SDP/SDPTool/presentation	0.005s
 ok  	github.com/Hans-Einar/SDP/SDPTool/projecthistory	0.130s
 ok  	github.com/Hans-Einar/SDP/SDPTool/tools/profile	3.920s
 ```
+
+## T020 — Bind the design review basis to real providers
+
+Date: 2026-10-18. Manual work summary; exact host IDs/timing unavailable. Owner input,
+verbatim Norwegian quotation: “ok, da kan du fortsette langs planen”. Continue the
+active Session0007 plan; Session0012 and other worktrees remain outside this scope.
+
+Loaded/reused routines: SDP 1.2.0, Architect 2.1.0, Master 2.1.0, Worker 2.0.0,
+Planning 1.0.0, Verifier/Traceability 2.0.0, shared role/document workflow, concurrent
+preflight and Session upkeep. No subagent or independent review was invoked.
+
+[Preflight](../05--Implementation/SDPTool/ProjectGovernance/preflight-PGL2-C2b.json)
+starts from 3f13c39 with Actions main e8760d3 included. Provider APIs already separate
+technical readiness from owner authority. Select PGL2-C2b read-only verification
+first; actual trusted owner input is a subsequent increment. Reuse public provider
+services; do not change their storage, lifecycle, shared Actions interface or limits.
+
+[Evidence](../05--Implementation/SDPTool/ProjectGovernance/Evidence-PGL2-C2b.md) and
+[candidate](../05--Implementation/SDPTool/ProjectGovernance/candidate-PGL2-C2b.json)
+record the actual service/subprocess checks. PG verifies the canonical Blueprint
+assignment/event/plan, retained bundle, live NOW/TARGET captures, task and exact path
+permissions. It returns a repeatable review digest, coverage and preliminary facts.
+TARGET source drift is detected even when metadata pins remain unchanged. The
+provider's two-live-binding budget is preserved: unknown blocks, never becomes approval.
+
+Race/vet, the complete SDPTool test suite and eight schema-validated CLI wire objects
+pass. A malformed fixture event ID was corrected to the existing history contract.
+The separate pgl2-c2b preview uses real model/Blueprint services and synthetic work;
+its read-only design-check helper displays the intentionally changed TARGET as
+blocked. All 176 entries in the original owner project/runtime remain unchanged.
+No model task, owner design acceptance, native-client trial or publication occurred.
+
+S6 and KB052 remain active. Next is actual controller-bound owner disposition tied
+to the review revision, then dispatch eligibility; PGL3–5 and broader PGI gates are
+unfinished. Technical checks alone cannot authorize implementation. Current result
+is a work summary, not a captured final response or owner acceptance.
+
+Closeout: EVT-PM-SDP-000200 / EVT-KB-SDP-000372 record this bounded delivery; system
+implementation/verification evidence is in Traceability. Refreshed main remains
+e8760d3. XFMD viewpoint branch ecd9dcd has no scoped PG overlap. Prepare a combined
+PG PR on this ancestry; future ledger appends still require ordinary reconciliation.
+No main merge or release is authorized by this continuation.
