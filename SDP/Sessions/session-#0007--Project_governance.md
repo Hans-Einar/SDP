@@ -2,9 +2,10 @@
 
 ## Session roadmap
 
-Latest recorded turn: T020 — PGL2-C2b delivers the provider-backed read-only design
-review basis. Uncommitted TARGET drift now blocks handoff despite unchanged metadata.
-Actual owner disposition and dispatch prerequisites remain the next C2 increment.
+Latest recorded turn: T021 — clarify the difference between feedback on PG itself
+and the planned ability to record an owner's decision on a project task. The owner
+walkthrough explains current behavior, remaining capabilities and feedback topics.
+PGL2-C2b remains delivered; actual owner disposition is still the next increment.
 Sequence only; synthetic dates represent order, not estimates or elapsed time.
 
 ```mermaid
@@ -915,3 +916,36 @@ The merge-tree check against pinned main e8760d3 passes; the branch worktree is 
 at that delivery. Management validation reports 608 events; Toolkit validation,
 92 local document links, source hashes and canonical ledger prefixes pass. The PR
 remains draft for review; main is unchanged. No future conflict guarantee is implied.
+
+## T021 — Explain the approval boundary and provide an owner reading entry point
+
+Date: 2026-10-18. Manual work summary; exact host IDs/timing unavailable. Owner asks
+what the previous statement about actual design approval means, whether the agent
+is asking for PG design-documentation feedback, and requests a clickable document
+for XFMD explaining current PG behavior and where feedback is needed.
+
+Reused SDP 1.2.0, document workflow, the existing orchestration/handoff/implementation
+records and mandatory Session upkeep. This is clarification and documentation,
+not implementation, replanning, a new owner approval gate or a lifecycle transition.
+No additional role delegation or skill loading is claimed.
+
+Created [Owner-Walkthrough](../04--Design/SDPTool/ProjectGovernance/Owner-Walkthrough.md)
+as the readable entry point. It distinguishes feedback on the PG product from a
+future PG user's decision to implement a specific reviewed design. The previous
+progress report named the next capability to implement; it did not request approval
+of the PG code, PR or unfinished orchestration. Existing Maintenance execution is
+separate from the new prepared SAD/Master route, whose dispatch is still unavailable.
+
+The guide separates delivered behavior from the intended leader/SAD/Master journey,
+explains the deliberately stale TARGET lab example, and offers three focused feedback
+topics: review information, decision interaction and extent of implementation authority.
+Suggestions are labelled as such; no confirmation button or new per-phase gate is
+adopted. The owner's current prompt is not treated as design acceptance. XFMD is the
+requested reading surface; no native XFMD approval UI is implemented or tested here.
+
+Linked the walkthrough from Orchestration and corrected the plan's current PGL2 row
+to include the already-delivered C2b provider checks. This reconciles a stale projection;
+it does not change the selected plan or claim another implementation delivery.
+S6 and KB052 remain in-progress. Next: use owner feedback to refine the presentation
+and interaction before implementing actual revision-bound owner disposition. Existing
+continuation authority remains; there is no newly invented approval gate.

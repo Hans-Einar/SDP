@@ -1,5 +1,8 @@
 # Project Leader and SAD orchestration — KB052
 
+For a readable explanation of current behavior, planned collaboration and owner
+feedback topics, start with the [owner walkthrough](Owner-Walkthrough.md).
+
 Owner direction: Session0007 T014, 2026-10-10, incorporating the
 [revision-bound handoff](Project-Leader-Handoff.md). This refines the earlier
 [PGD1 design](Design.md); it does not claim its new operations already exist.
