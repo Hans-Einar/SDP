@@ -20,6 +20,7 @@ type Target struct {
 	Revision  string `json:"revision,omitempty"`
 }
 type Node struct {
+	OverviewTarget    *Target  `json:"overviewTarget,omitempty"`
 	ArtifactKind      string   `json:"artifactKind,omitempty"`
 	ArtifactID        string   `json:"artifactId,omitempty"`
 	Preliminary       bool     `json:"preliminary,omitempty"`
@@ -112,6 +113,22 @@ func modelTree(p Project, m Model, v *viewpoint.Views) (Tree, error) {
 	for _, spec := range viewpoint.Catalog {
 		vpID := prefix + spec.ID
 		n := Node{ID: vpID, Kind: "viewpoint", Label: spec.ID + " — " + spec.Title, State: "empty", Target: target(spec.ID, "", "")}
+		if viewpoint.HasOverview(spec.ID) {
+			n.OverviewTarget = target(spec.ID, "", "")
+			n.OverviewTarget.URI += "&projection=overview"
+		}
+		if spec.ID == "VP07" {
+			for _, name := range names {
+				if v.Kinds[name] != "mode" {
+					continue
+				}
+				key := vpID + "/overview-mode/" + url.PathEscape(name)
+				action := target(spec.ID, "", "")
+				action.URI += "&projection=overview&mode=" + url.QueryEscape(name)
+				n.Children = append(n.Children, key)
+				add(Node{ID: key, Kind: "diagram", Label: "Architecture and features — mode " + name, State: "available", Target: action})
+			}
+		}
 		levels := spec.Levels
 		if len(levels) == 0 {
 			levels = []string{"delivery"}

@@ -45,3 +45,17 @@ and refresh on additions/edits/moves/removal without registration. Missing, empt
 and unavailable directories are distinguishable; symlinks are not followed.
 This is document navigation, not validation or execution of the Session process.
 PLAN-SDP-0015 and the producer contract define the bounded implementation.
+
+## Complete viewpoint overviews — REQ-SDPTOOL-003/004 clarification
+
+KB-SDP-032 and XFMD Session0005 select optional, typed overview targets for VP01
+and VP07. Selecting the viewpoint title generates its aggregate on demand;
+expansion does not generate views. Preserve original detail targets and old-client
+compatibility. VP01 retains all actors/use cases, including isolated declarations,
+with separate realization context. VP07 retains the complete declared structural
+base and proven Feature annotations, using logical or explicit named-mode scope
+without mixing allocations. Reject unsupported filters and stale source snapshots
+before publishing; composed sources bind the full source graph. No relationships,
+scenario order or conditions may be invented. See the
+[contract](../../SDPTool/Contract.md) and
+[integration work unit](../05--Implementation/SDL/ViewpointNavigation/Plan.md).
