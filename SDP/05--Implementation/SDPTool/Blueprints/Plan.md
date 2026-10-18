@@ -4,7 +4,7 @@
 | --- | --- |
 | id | PLAN-SDP-0020 |
 | project | SDP |
-| state | planned |
+| state | completed |
 | PlanType | ImplementationPlan |
 | BranchPolicy | current |
 | CommitPolicy | milestone |
@@ -20,7 +20,7 @@ a retained blueprint catalogue, assignment progress and source-derived discovery
 for a consumer Blueprint tab. Owner selected this scope extension on 2026-10-07
 in Session0008 T005. Inputs and
 ready-state authority must remain distinct from implementation-conformance proof.
-This plan is prepared by the authorized BP2 design work, not yet executing.
+This plan is prepared by the authorized BP2 design work, BPI1 execution selected by the owner on 2026-10-07.
 
 Governing design: ../../../04--Design/SDPTool/Blueprints/Contract.md,
 Selection-and-Evidence.md and Producer-and-Handoff.md. Use the reduced MVP1 fixtures
@@ -29,8 +29,8 @@ No production Ponsse/XFMD changes, mandatory Git, grammar expansion, new rendere
 automatic code execution or release packaging. SDUI bytes are retained with explicit
 coverage gaps; a semantic SDUI analyzer is not silently bundled into this increment.
 
-Use a dedicated working branch based on the integrated dependencies when execution
-starts; do not switch a concurrently used worktree. Per-milestone commits and phase
+Execution uses branch sdp/blueprint-implementation in the isolated worktree
+/tmp/sdp-blueprint-implementation based on 3d265d1; do not switch a concurrently used worktree. Per-milestone commits and phase
 pushes; no main merge or publication without owner authorization. ModelGovernance
 and sourcegraph APIs are prerequisites, not dependencies on their future product release.
 
@@ -123,6 +123,19 @@ must be recorded before claiming owner acceptance of that particular Ponsse chan
 
 ### BPI3-M2 — assignment lifecycle and grouped navigation
 
+Execution refinement (2026-10-09): repository inspection found no existing canonical
+history writer. Deliver two bounded submilestones on the same branch:
+
+- **BPI3-M2a:** canonical history append with CAS, idempotence, stable lock and
+  interrupted-write evidence; finalize Assignment-Lifecycle.md before payload writers.
+- **BPI3-M2b:** integrate versioned assignment events, all affected validators,
+  authority/evidence gates and grouped discovery; run the full lifecycle acceptance.
+
+M2a is persistence infrastructure, not an implemented assignment workflow. M2 remains
+open until M2b passes all acceptance below. Per-submilestone commits preserve the
+existing milestone policy; no new phase, parallel ledger or release is introduced.
+
+
 Finalize the transition table, actor/authority requirements and versioned records
 before implementation. Use canonical ProjectManagement history for assignment
 events and existing Traceability for implementation evidence. Reuse compatible
@@ -169,4 +182,100 @@ that generates two revisions, assigns one, records review/closure and refreshes
 the discovery tree without altering the retained bundles.
 Session0008 continues through implementation; its roadmap must show design gates
 and production milestones separately. Installer manifests, releases and integration
-into XFMD require their own authorized work. No milestone has started here.
+into XFMD require their own authorized work. BPI1-M1 is delivered and independently reviewed; BPI2-M1/M2 are delivered; BPI3-M1 readiness/evidence is delivered; BPI3-M2a history and M2b lifecycle integration are delivered. See
+[Evidence-BPI1.md](Evidence-BPI1.md). BPI3-M2a/M2b are delivered and independently reviewed.
+
+## BPI1-M1 delivery — 2026-10-07
+
+Pure Go analyzer and regression tests delivered; independent review approves the
+bounded diagnostic library after four findings were fixed. No public CLI or
+assignment readiness is claimed. BPI2-M1 publication is the next milestone.
+
+
+## BPI2-M1 execution — 2026-10-07/08
+
+Implemented the explicit diagnostic generation command, captured source compilation,
+deterministic typed metadata, source-linked Markdown and Mermaid, and shared owned-file
+publication. Task format is finalized as strict JSON rather than the earlier proposed
+YAML. At M1 closeout, BPI2-M2 and BPI3 were unstarted. Independent review found and then
+approved fixes for symlinked-source overlap, explicit compiler/entry identity and
+PRESERVE labels for protection IDs containing slashes. See Evidence-BPI2-M1.md. Final integration must resolve the recorded installer
+race-test timeout; focused producer verification and independent review passed.
+
+
+## BPI2-M2 delivery — 2026-10-08
+
+Retained revision publication, bounded integrity verification and source-derived
+Blueprint discovery/tree are delivered. A separate retainedRevision binds all bytes;
+the prior blueprint revision remains unchanged in meaning. Consumer targets include
+both Markdown and Mermaid; workState remains unknown. See
+[Evidence-BPI2-M2.md](Evidence-BPI2-M2.md) and the generated consumer fixture.
+Independent review and final targeted verification govern milestone acceptance.
+BPI3-M1 is next; native XFMD, assignment lifecycle and release remain separate.
+
+
+## BPI3-M1 delivery — 2026-10-08
+
+Scoped readiness assessment, strict versioned receipts/unknown dispositions and
+pinned source/task/code/fixture/evidence checks are implemented. The read-only
+`model assess blueprint` command does not execute checks, mutate retained output
+or append lifecycle events. General model-to-code proof remains explicitly unknown.
+A Worker used the actual generated bundle for a synthetic extraction; an independent
+Reviewer approved A and rejected structural B and code-only C controls. The same
+reviewer explicitly deferred exact remaining unknown IDs solely for the bounded
+synthetic trial, producing a ready assessment without production authority.
+See [Evidence-BPI3-M1.md](Evidence-BPI3-M1.md) and frozen Trial-BPI3-M1 records.
+Next BPI3-M2: coordinate canonical workflow records with current governance work,
+implement assignment transitions and project evidence-backed navigation groups.
+
+
+## BPI3-M2a delivery — 2026-10-09
+
+Shared canonical history append is delivered as SDPTool/projecthistory, with exact
+prior-byte preservation, revision comparison, duplicate retry/conflict detection,
+Linux process locking and atomic replacement. Independent review approved after
+optional envelope-field and UTF-8 validation fixes. Process-exit and concurrent
+writer tests pass. See [Evidence-BPI3-M2a.md](Evidence-BPI3-M2a.md).
+
+M2b remains next: lifecycle commands, domain validators, authority/evidence checks
+and navigation groups. No assignment transition is delivered by M2a. Existing
+manual writers do not participate in its lock; cross-writer integration remains
+explicit work. The prior installer race timeout remains open for final integration.
+
+
+## BPI3-M2b execution — 2026-10-09
+
+The compiled CLI now applies explicit canonical assignment events and lists their
+read-only projections. Pure replay is shared with installer validation; Python
+process validation supports the same versioned payload and transition constraints.
+Discovery keeps retained task/revision navigation and adds per-assignment state
+groups with separate validation, source freshness, readiness and evidence fields.
+
+The non-Git fixture exercises readiness adoption, assignment, start, hold/resume,
+submission, rejection/rework, independent acceptance and closure. It generates two
+retained revisions of one task, exercises multiple assignments and exceptional
+dispositions, and verifies unchanged retained bundle contents. Negative controls
+cover wrong/stale authority, evidence/code/trace mismatches, malformed history and
+missing bundles. A subprocess exits after append but before response; retry applies
+no duplicate transition. Concurrent cancellations have one winner.
+
+Final verification and independent review are recorded in Evidence-BPI3-M2b.md.
+The earlier installer race timeout is not silently waived; final broad-suite
+results determine whether the implementation plan can be closed. Native XFMD,
+release/installer packaging and BP2-A owner pilot disposition remain separate.
+
+
+## Implementation closeout — 2026-10-09
+
+BPI1, BPI2 and BPI3 are delivered for the bounded source-tool contract. Independent
+M2b review approves local lifecycle/history/discovery after corrections. Relevant
+full SDPTool package race tests pass with the longer time budget; final-delta race
+tests and go vet pass. The previous installer race verification gap is resolved by
+the independent full installer package run. The 180-second broad attempt remains
+a recorded timeout, including unchanged model code; it is not a release gate pass.
+No unrelated grammar/runtime behavior is newly claimed.
+
+PLAN-SDP-0020 is completed. KB050 is gate-review for the still-open BP2-A owner
+review of the concrete reduced MVP1 model/blueprint pilot; PLAN-SDP-0001 and
+Session0008 retain that work. Release packaging, parallel-branch integration and
+native XFMD consumer implementation are not implied by this closeout.

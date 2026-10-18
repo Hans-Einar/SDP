@@ -302,3 +302,72 @@ opening/watching and Session lifecycle/capture/timeline automation are separate.
 discovery and `run --program ID [--revision HASH]`. Discovery stays read-only;
 only explicit Run executes project code. This is separate from generic prototype
 readiness and supplies a consumer contract for XFMD without modifying that client.
+
+## Blueprint diagnostic producer — BPI2-M1
+
+The model create blueprint command takes from/to refs, --entry, --task TASK.json
+and --output DIR. It uses owned ModelGovernance captures and the pure SDL analyzer.
+The result schema is sdp-blueprint/1, operation create-blueprint, status
+diagnostic-preview; human output is default, --json selects the machine envelope.
+See blueprints/README.md for pinned identity, source links, strict JSON task input
+and optimistic publication freshness. Preview success does not imply assignment
+readiness or implementation conformance. Retained catalogue discovery is specified below.
+
+## Retained blueprint discovery — BPI2-M2
+
+inventory.blueprints is SDP/Blueprints when a real directory exists;
+capabilities.blueprints is discovered or absent. navigation.roots includes
+blueprints, with kind tab and label Blueprints. Catalogue states include absent,
+empty, available and unavailable. Children group blueprint tasks then revisions.
+
+Revision nodes expose blueprintId, blueprintRevision, retainedRevision, preliminary
+and workState. workState is unknown in this milestone. validated means recorded
+inventory/identity integrity only. No lifecycle, code conformance or live-source
+freshness is inferred. Generated Markdown/Mermaid targets use operation open,
+absolute path and file-content hash. Invalid entries have diagnostics and no target.
+Tree uses the same projection as discover; refresh is consumer-owned. Retained
+source copies are not treated as current-model declarations.
+
+Creation chooses --output for a replaceable preview or --catalogue for immutable
+retention. The existing result revision identifies blueprint metadata; optional
+retainedRevision binds the entire stored bundle and names its revision directory.
+See blueprints/README.md. No manual index or automatic XFMD update is required.
+
+## Blueprint evidence assessment — BPI3-M1
+
+model assess blueprint --bundle RETAINED-DIR --evidence FILE evaluates a verified
+retained revision against strict sdp-blueprint-evidence/1 input. The response schema
+sdp-blueprint-assessment/1 has operation assess-blueprint, status ready/blocked,
+identity, exact blueprint/retained/evidence digests, scope, independent unknowns,
+reported/effective check states, blockers and observed file hashes. Human rendering
+uses the existing presenter; --json emits the envelope. A blocked assessment exits
+3 after emitting the result. Malformed or unpinned inputs fail with diagnostics.
+
+No commands execute and no retained bundle or canonical workflow event changes.
+Ready applies only to the attributed scope/dispositions; source freshness is
+not-evaluated and authority is attributed-only. Blueprint workState in discovery
+is unchanged. See blueprints/README.md for input fields, budgets and limitations.
+
+
+## Blueprint assignment lifecycle — BPI3-M2b
+
+`sdptool SDP model assignment apply --request REQUEST.json --as ACTOR --authority
+controller|assignee|reviewer` records one revision-bound transition in canonical
+ProjectManagement history. `sdptool SDP model assignment list` is read-only. Both
+use sdp-blueprint-assignment/1, human presentation by default and --json for clients.
+The trusted local CLI attributes callers; it is not remote authentication. Unknown
+request keys cannot override authority. Stable operation IDs and expectedEvent
+enforce idempotence and optimistic concurrency. See
+[the lifecycle contract](../SDP/04--Design/SDPTool/Blueprints/Assignment-Lifecycle.md)
+for the exact request, evidence, authority, resource and transition rules.
+
+The Blueprints tab adds assignment-state groups without removing retained task and
+revision nodes. Assignment nodes carry assignmentId, assignmentRevision (last event),
+workState, assignee, sourceFreshness, readinessStatus and evidenceStatus separately.
+They never aggregate multiple assignments into a guessed task status. The older
+revision nodes retain workState=unknown. Broken history is a diagnostic, never an
+empty successful assignment list; damaged bundles remain visible without targets.
+Retained output bytes remain immutable and no manual navigation index is introduced.
+
+Writes currently require Linux. Release packaging/installable capabilities and
+native XFMD integration are separate from this source implementation.

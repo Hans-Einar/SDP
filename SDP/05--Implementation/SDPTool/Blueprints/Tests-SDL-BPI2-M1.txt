@@ -1,0 +1,4 @@
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/blueprint	15.789s
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/documents	88.412s
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/sourcegraph	(cached)
+ok  	github.com/Hans-Einar/SDP/SystemDesignLanguage/go/parser	(cached)

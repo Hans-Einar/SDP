@@ -5,7 +5,7 @@ description: Use the project's System Design Process for SDP-governed study, dev
   the work. Use when explicitly invoked or when the project requires SDP.
 metadata:
   skillId: sdp
-  skillVersion: 1.1.1
+  skillVersion: 1.2.0
   minimumToolkitVersion: 0.2.0
   capabilities: sdp.route
   compatibilityNotes: Initial adopted profile-aware role.
@@ -47,6 +47,7 @@ project instructions and authorization.
 | Create, select or revise a plan; coordinate KanBan/Scrum/Sprint | [Planning](../sdp-planning/SKILL.md) |
 | Unexplained symptom or new capability | [Change Analysis](../sdp-change-analysis/SKILL.md) |
 | Material design alternatives or conflicting contracts | [Architect](../sdp-architect/SKILL.md) |
+| Coordinate several assignments as the operational owner contact | [Project Leader](../sdp-project-leader/SKILL.md) |
 | Coordinate an authorized implementation assignment | [Master](../sdp-master/SKILL.md) |
 | Implement an assigned milestone, Maintenance task, Slice/Fix | [Worker](../sdp-worker/SKILL.md) |
 | Independent review | [Reviewer](../sdp-reviewer/SKILL.md) |

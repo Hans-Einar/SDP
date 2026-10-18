@@ -2,33 +2,37 @@
 
 ## Session roadmap
 
-T006, 2026-10-07. Sequence only; dates are display slots, not duration estimates.
+T015, 2026-10-09. Session paused by owner; resume at S1 / BP2-A. Sequence only; dates are display slots, not duration estimates.
 
 ```mermaid
 gantt
     title Semantic blueprints - sequence only
     dateFormat YYYY-MM-DD
     section Design
-    ACTIVE BP2-A Contract and pilot :active,a,2000-01-01,1d
+    PAUSED BP2-A Owner pilot review :a,2000-01-01,1d
     DONE BP2-B Selection and evidence :done,b,after a,1d
     DONE BP2-C Executable handoff :done,c,after b,1d
+    section Implementation
+    DONE BPI1 Analysis :done,d,after c,1d
+    DONE BPI2 Publication and catalogue :done,e,after d,1d
+    DONE BPI3 Evidence and lifecycle :done,f,after e,1d
 ```
 
 | State | Step | Outcome | Evidence / remaining work |
 | --- | --- | --- | --- |
-| on-going | S1 / BP2-A | Contract and real-model pilot | Contract candidate and validated reduced MVP1 specimen delivered; owner feedback on pilot pending |
+| waiting | S1 / BP2-A | Contract and real-model pilot | Contract candidate and validated reduced MVP1 specimen delivered; owner feedback on pilot pending |
 | completed | S2 / BP2-B | Deterministic impact selection and negative cases | NOW/TARGET union, removed neighbors, unknown frontier, stale/overflow/cycle cases |
 | completed | S3 / BP2-C | API and implementation handoff | Authored model Worker/Reviewer trial; A approved, violating B rejected |
-| next | S4 / BPI1 | Production Go analysis | PLAN-SDP-0020 planned; no implementation started |
-| planned | S5 / BPI2 | Publication and catalogue | M1 deterministic bundle; M2 retained revisions and discovery tab |
-| planned | S6 / BPI3 | Evidence and lifecycle | M1 generated-bundle trial; M2 revision-bound state transitions and navigation |
+| completed | S4 / BPI1 | Production Go analysis | Go analyzer delivered; independent review approves bounded BPI1 |
+| completed | S5 / BPI2 | Publication and catalogue | M1/M2 delivered; diagnostic bundles and retained discovery |
+| completed | S6 / BPI3 | Evidence and lifecycle | M1/M2a/M2b delivered and independently reviewed; relevant race/vet evidence passed |
 
 | Field | Value |
 | --- | --- |
 | Session reference | SESSION-SDP-0008 |
-| Status | active |
+| Status | paused |
 | Primary card | KB-SDP-050 |
-| Snapshot date | 2026-10-07 |
+| Snapshot date | 2026-10-09 |
 | Execution authority | Owner says continue after the proposed KB050 pilot route |
 
 ## Goal
@@ -36,19 +40,55 @@ gantt
 Design the first useful semantic blueprint around a small real-model change,
 then hand off measurable implementation slices. The eventual generator must show
 NOW/TARGET differences, affected surroundings, preserved obligations and unknowns.
-This Session's active plan is a DesignPlan; no production generator or Ponsse
-implementation is claimed by producing model specimens.
+The DesignPlan led to completed ImplementationPlan PLAN-SDP-0020. Diagnostic
+generation, catalogue discovery and bounded assignment lifecycle/evidence are
+implemented; general code-conformance proof remains explicitly outside this scope. The Ponsse pilot is not an implemented change.
 
 ## Cards and plans
 
 | Card | Initial | Planned final | Current | Actual final |
 | --- | --- | --- | --- | --- |
-| [KB050](../KanBan/active/%23050--Proposal--Semantic-blueprints.md) | backlog | completed after implemented/verified blueprint feature | in-progress | pending |
+| [KB050](../KanBan/active/%23050--Proposal--Semantic-blueprints.md) | backlog | completed after implemented/verified blueprint feature | gate-review | pending |
+| [KB051](../KanBan/backlog/%23051--Proposal--Discoverable-SDPTool-actions.md) | absent | transfer to Session0011 for delivery | queued | transferred T015 |
 
 | Plan | Readiness | Lifecycle | Outcome |
 | --- | --- | --- | --- |
 | [PLAN-SDP-0001](../04--Design/SDPTool/Blueprints/Plan.md) | on-going | active | Contract, selection and executable handoff design |
-| [PLAN-SDP-0020](../05--Implementation/SDPTool/Blueprints/Plan.md) | planned | planned | BPI1 analysis, BPI2 publication, BPI3 assignment evidence |
+| [PLAN-SDP-0020](../05--Implementation/SDPTool/Blueprints/Plan.md) | completed | completed | BPI1 analysis, BPI2 publication, BPI3 evidence/lifecycle delivered |
+
+## Resume here — owner pause, T015 (2026-10-09)
+
+This Session is paused, not completed. Active focus moves to
+[Session0011 — SDPTool actions and JSON API](session-%230011--SDPTool_actions_and_JSON_API.md).
+Resume this Session after that work, or on an explicit owner request. Do not infer
+pilot approval from the pause or from completion of the new Session.
+
+**First resume action:** recover this roadmap, inspect current Git status and the
+latest implementation evidence, then return to **S1 / BP2-A-M1: owner disposition
+of the reduced MVP1 blueprint/context presentation**. Start with
+[the pilot](../04--Design/SDPTool/Blueprints/Pilot.md) and
+[the design plan](../04--Design/SDPTool/Blueprints/Plan.md). Ask for/recover the actual
+pilot feedback; record acceptance or bounded corrections before closing that gate.
+
+**Delivered:** S2-S6; PLAN-SDP-0020; source generation, immutable catalogue,
+assessment and revision-bound assignment lifecycle/discovery. The latest code
+baseline is d2cc760; handoff/proposal documentation continues through a4a81f8 on
+sdp/blueprint-implementation in /tmp/sdp-blueprint-implementation. These coordinates
+are recovery hints, not a requirement to overwrite newer work. Relevant race/vet
+checks passed; see [M2b evidence](../05--Implementation/SDPTool/Blueprints/Evidence-BPI3-M2b.md).
+Do not reimplement or rerun completed phases without a new reason.
+
+**Open:** KB-SDP-050 stays gate-review for that concrete owner decision.
+PLAN-SDP-0001 remains active in the plan schema (which has no paused lifecycle);
+its remaining execution is suspended with this Session. ImplementationPlan0020
+remains completed. No main merge, release, installed XFMD integration or general
+model-to-code conformance proof is claimed. Those are separate scopes/authorities.
+
+**Transferred:** KB-SDP-051 and its action catalogue/JSON request work belong to
+Session0011. External KB-XFMD-030 owns native menu/toolbar integration. Return with
+their actual outcomes and runtime compatibility evidence, without treating them
+as approval of the blueprint pilot. [The integration handoff](../../SDPTool/XFMD-Blueprint-Integration.md)
+contains the current consumer boundary and testing routes.
 
 ## Turn journal
 
@@ -171,3 +211,255 @@ excludes concurrent ProjectGovernance and SDUI work, including their ledger even
 This turn records the catalogue planning delivery, not BPI2/BPI3 implementation.
 Project-management and Toolkit validation passed during T005; recheck before commit.
 Next remains BPI1 implementation. No main merge or release is selected.
+
+
+### T007 — BPI1 implementation (2026-10-07)
+
+Owner asks to continue following the plan. Loaded/reused sdp, Master, Worker,
+Planning, and independent Reviewer. Work proceeds on sdp/blueprint-implementation
+in /tmp/sdp-blueprint-implementation from 3d265d1. The original shared worktree
+remains on its branch with concurrent ProjectGovernance/SDUI changes untouched.
+
+Implemented an I/O-free Go analyzer using checked sourcegraph snapshots, typed
+semantic facts, union closure, task constraints and source provenance. Initial
+tests exposed fixture mistakes (pilot System name, a parser-forbidden directed
+cycle and source-path naming); fixtures were corrected to supported inputs.
+Independent review requested changes for missing zero-participant diagnostics,
+change permissions/protection scope, typed output and coverage. Those findings
+were addressed and regression tests added; final independent review approves the bounded analyzer with exact source hashes
+retained in Evidence-BPI1.md.
+
+Parser/sourcegraph/blueprint race suites and blueprint vet pass after fixes.
+This is component evidence only. BPI2 publication/catalogue and BPI3 lifecycle
+remain planned; no production CLI, GUI, model-to-code proof or release claimed.
+
+BPI1-M1 is delivered. Next is BPI2-M1 document publication, followed by the
+BPI2-M2 catalogue. Worktree-local plan and Session are authoritative for this
+implementation branch; the original concurrent worktree is preserved.
+
+
+### T008 — Blueprint document production (2026-10-07/08)
+
+Owner asks to continue. Reused SDP Master/Worker and independent Reviewer routines.
+BPI2-M1 runs on the same isolated branch/worktree. Implemented source capture,
+reachable SDL compilation, diagnostic bundle generation, shared publication and
+human/JSON CLI output. No catalogue discovery is claimed yet.
+
+Independent review confirmed an output/source overlap bug through a symlinked model
+area; fixed by rejecting input ancestry symlinks, with a no-source-write regression.
+Added identity-bound entrypoint and compiler/executable provenance. A second review
+found protection IDs containing slashes lost visual PRESERVE marks; fixed using
+exact task prefixes with a regression. Final focused review approves the diagnostic
+publication scope. The generated SDPTool source model passes the existing checker.
+
+A real compiled command generated the reduced MVP1 blueprint. Full context rendering
+was terminated after several minutes under concurrent load, so it is not recorded as
+a successful visual check. Added a source-derived small delta diagram as the first
+view while retaining the complete context. Selected-diagram rendering and broad test
+completion are recorded separately in milestone evidence. No GUI acceptance,
+readiness, assignment lifecycle or release is inferred.
+
+
+T008 result: BPI2-M1 delivered and independently approved. Selected delta SVG
+rendering and visual inspection succeeded. Broad race run passed all reported
+SDPTool packages except installer, which timed out in an unchanged recovery test;
+raw evidence preserves the incomplete check. It remains outstanding for final
+integration. Next BPI2-M2 catalogue/discovery; no native XFMD tab yet.
+
+
+### T009 — Retained catalogue and discovery (2026-10-08)
+
+Owner input: continue. Manual work summary, not an exact transcript. Loaded/reused
+SDP, Master, Worker, Planning, Verifier and Traceability, plus independent Reviewer;
+existing Architect decisions govern scope. The isolated implementation worktree
+remains authoritative for this milestone; unrelated root-worktree changes are preserved.
+
+BPI2-M2 adds --catalogue retention and source-derived Blueprint navigation. No
+registration file is required. The existing blueprint revision binds analysis/inputs;
+a distinct retainedRevision binds the exact stored file map, including its manifest.
+Task/revision nodes expose seven generated Markdown/Mermaid open targets. Retained
+source copies do not become current SDL/SDUI models. Work state stays unknown until
+BPI3; validated bytes do not prove assignment progress or live-source freshness.
+
+Independent review found source digest verification missing, an enumeration-budget
+bypass and missing Mermaid targets. Fixed all three, including overflow-budget
+accounting across nested scans, and added regression tests. Evidence-BPI2-M2.md
+records final review, commands, candidate hashes and a real compiled discover/tree
+consumer fixture. This is headless consumer evidence, not native XFMD acceptance.
+
+Related backlog KB004 and KB-SDL-006 were reviewed: general code mapping and runtime
+channel execution remain their scope. No additional activation or scope expansion.
+S5/BPI2 is delivered; next S6/BPI3-M1 readiness/dispositions, pinned receipts and a
+generated-bundle Worker/Reviewer trial. KB050 and the implementation plan stay active.
+The earlier installer race timeout remains a final-integration gap. No release,
+main merge, owner pilot acceptance or native XFMD modification is claimed.
+
+
+### T010 — Assignment evidence assessment (2026-10-08)
+
+Owner input: continue. SDP Master/Worker routines and Architect refinement select
+BPI3-M1 from PLAN-SDP-0020. Work remains in the isolated implementation worktree.
+Readiness is a separate assessment of a retained bundle and pinned evidence, not
+a mutable field in the bundle or a parallel assignment ledger. Existing governance
+work is preserved; lifecycle adoption is BPI3-M2. Execution and evidence follow below.
+
+
+T010 outcome: BPI3-M1 delivered. Loaded/reused SDP, Master, Worker, Architect,
+Planning, Verifier, Traceability and independent Reviewer with the shared document
+workflow. Read-only scoped assessment is separate from workflow state and retained
+bundle data. Exact JSON field names prevent a conflicting case-aliased result
+from overriding a failure; cached captures and final optimistic rechecks reject
+observed mid-assessment edits. Tests, reviewer findings and candidate hashes are
+retained in Evidence-BPI3-M1.md.
+
+The explicitly delegated Worker recognized the generated bundle as diagnostic and
+used only the separate trial authorization. It changed the two permitted files.
+The independent reviewer approved A, rejected parser-valid ownership violation B,
+and rejected code-only regression C despite unchanged SDL. B initially failed only
+canonical formatting; the actual formatter corrected that before the meaningful
+negative control. NOW/A behavior passes, C deliberately fails. The reviewer deferred
+35 exact unknown IDs only for the original synthetic trial, never for B/C or future
+inputs; the tool then emitted scoped-ready. Unknown coverage remains unknown.
+
+Session/Card/ImplementationPlan remain active. Next BPI3-M2 lifecycle/adoption and
+state-group projection. Related KB004/KB-SDL-006 remain separate for general code
+mapping/runtime execution. BP2-A owner pilot disposition and the prior installer
+race timeout remain open. No main merge, publication or native XFMD work occurred.
+
+
+### T011 — Canonical assignment-history foundation (2026-10-09)
+
+Owner input: continue. SDP Master/Architect/Planning/Worker routines recover M2.
+Inspected the separate governance worktree at 4044f37: its private operational store
+and selected-subject ledger reader are not a canonical project-history writer.
+Assignment-Lifecycle.md defines the persistence/authority/transition boundaries.
+M2 is refined into M2a safe canonical append and M2b integrated assignment commands,
+validator support and grouped discovery. No separate mutable assignment history or
+native XFMD change is introduced. Execution/evidence follows below.
+
+
+T011 work summary: BPI3-M2a delivered and independently reviewed. The shared
+projecthistory library preserves existing ledger bytes and supports revision-bound
+append, conflict refusal and exact retry after process termination. The reviewer
+found missing optional envelope constraints and UTF-8 validation; these were fixed
+and the corrected source independently approved. Race tests and vet passed.
+Evidence-BPI3-M2a.md and Pilot-BPI3-M2a.json identify the tested candidate and limits.
+
+Loaded/reused SDP, Master, Architect, Planning, Worker, Verifier and Traceability
+routines; independent Reviewer checked the actual new implementation. The SDL
+source names the library without claiming an integrated lifecycle consumer. No
+real blueprint lifecycle events were emitted. Card050, Plan0020 and S6 remain
+in-progress. Next: M2b assignment transitions, compatible canonical validators and
+grouped discovery. BP2-A owner pilot review and the prior installer integration
+timeout remain open. No merge to main, release or native XFMD changes occurred.
+
+
+### T012 — Assignment lifecycle and navigation (2026-10-09)
+
+Owner input: continue. Recovered M2b after committed M2a (295b048); working in
+the isolated sdp/blueprint-implementation checkout. Loaded SDP, Master, Worker,
+Verifier, Traceability and shared document workflow, reusing approved lifecycle
+design and selected plan. Independent Reviewer was delegated as required by the
+plan. No merge, release or XFMD implementation is selected.
+
+Implementation uses canonical x-blueprint events, separate assignment identities,
+trusted local adapter principals, explicit readiness adoption, scoped implementation
+receipts in Traceability and independent review before closure. CLI and discovery
+share the reducer; generated bundle contents never carry mutable work state.
+Reviewer findings cover unavailable-bundle historical facts, cleanup after parent
+plan closure, target digests, shared read budgets and Go/Python replay consistency.
+Corrections and final evidence follow below.
+
+
+T012 work summary: M2b delivered and independently reviewed; implementation
+Plan0020 completed. Compiled CLI lifecycle uses the canonical project ledger with
+separate assignment identities and retained revisions. Generated discover/list
+outputs agree after relocation of a non-Git fixture. Negative controls cover
+authority, stale updates, source/code/trace changes, malformed history and missing
+bundles; rejected requests preserve ledger bytes. Concurrent cancellation has one
+winner, lost-response retry creates no duplicate, and the whole retained bundle
+remains unchanged. Go/Python replay parity and installer compatibility pass.
+
+The short broad race attempt timed out under host contention; it was stopped
+after failures rather than treated as evidence of success. The longer independent
+race suite passed for all affected packages, including installer, resolving that
+prior evidence gap. Final-delta race and full vet passed. Reviewer fixes, source
+hashes and exact limitations are in Evidence-BPI3-M2b.md/Pilot-BPI3-M2b.json.
+
+Card050 is gate-review for the actual BP2-A reduced MVP1 blueprint pilot. S6 is
+completed; S1/DesignPlan0001 remain for owner disposition. Next step: owner review
+of that concrete blueprint/context presentation. Publication, parallel-branch
+integration, native XFMD and general model/code verification are separate. No
+main merge or release occurred. This is the work summary, not a captured final reply.
+
+
+### T013 — XFMD integration handoff and discoverable actions (2026-10-09)
+
+Owner input (summary): locate blueprint API/CLI documentation for XFMD; expose
+SDPTool operations dynamically for a menu and personal configurable toolbar with
+icon fallback and older-version handling; register cards in both projects; explain
+alpha/beta testing before main/release.
+
+Loaded SDP, Change Analysis, Traceability and document workflow; inspected XFMD's
+installed SDP entrypoint and applicable instructions. Read current consumer source,
+producer CLI/contracts and gh-sdp bootstrap, plus official gh extension documentation.
+XFMD invokes subprocess JSON (gh sdp by default, XFMD_SDP_TOOL override), not a direct
+Go API. Root kind=tab supports generic discovery tabs; live installed-build behavior
+was not tested. A generic action catalogue is a new producer capability, separate
+from content navigation. Created KB-SDP-051 and external KB-XFMD-030 as backlog;
+no new implementation selected. Existing #029 visible-but-disabled contextual tools
+remain compatible with hiding actions absent from an older producer.
+
+Work summary: added SDPTool/XFMD-Blueprint-Integration.md with authoritative links,
+commands, lifecycle boundaries and direct branch/signed-wrapper test routes. Updated
+both board indexes and appended creation events; staged only the new XFMD card,
+preserving unrelated shared changes. No installed tool replaced, signed test release
+published or native XFMD code modified. Source/ledger/link checks are recorded with
+the handoff commit. This is a work summary, not an exact transcript/final reply.
+
+S1 remains awaiting BP2-A owner pilot disposition; S2-S6 stay completed. New action
+catalogue/menu scope is tracked separately by KB051/KB-XFMD-030. Next blueprint step:
+review the existing pilot, or explicitly select consumer integration/action planning.
+
+T013 validation: management validator passes (63 cards, 39 management records,
+4 lineage operations, 518 events). New local document links resolve; both new cards
+have unique creation events and matching backlog/CardState placement. Git whitespace
+check passes. No product code changed and no new GUI execution evidence is claimed.
+
+
+### T014 — JSON input as the programmatic invocation boundary (2026-10-09)
+
+Owner input (summary): subprocess JSON replies are sufficient; could SDPTool accept
+JSON arguments to provide a programmatic API? Loaded SDP and Architect, reusing
+current change analysis and document workflow. Inspected Run/modelCommand and the
+XFMD job transport. Existing assignment apply supports a JSON request file; there
+is no generic request dispatcher. Recommended one JSON request via stdin/file and
+one structured response, sharing typed operations with readable CLI commands and
+the proposed action catalogue. No daemon or new RPC infrastructure is required.
+
+Work summary: refined KB051 and the integration handoff, explicitly marking command
+syntax/schema as proposed. Consumer follow-up is bounded stdin support and decoding
+structured failures on nonzero exits; current XFMD opens /dev/null as stdin. Existing
+revision/idempotency/authority checks must survive the adapter. No product code or
+external worktree changed. This records a work summary, not a captured final reply.
+
+KB051 remains backlog; blueprint S1 is still awaiting owner pilot disposition and
+S2-S6 stay completed. Next for the new capability is a bounded plan selecting the
+catalogue and JSON invocation contract, followed by a vertical consumer test.
+
+
+### T015 — Pause and transfer active focus (2026-10-09)
+
+Owner input (summary): create a new Session to implement KB-SDP-051, pause this
+Session, and record an explicit handover/resumption note confirming the roadmap.
+Loaded/reused SDP, Planning and document workflow. Checked Session numbers in the
+primary and parallel worktrees; 0010 is already allocated to SDUI, so selected 0011.
+
+Work summary: paused this Session and marked S1 waiting; added the resume block
+above with delivered baseline, exact remaining pilot decision and scope boundaries.
+Created active Session0011 with its own roadmap and planned plan register; KB051 is
+queued for its planning step. KB050 remains gate-review, not accepted or completed.
+Plan0020 remains completed; no product code, release or XFMD work was performed.
+Next active step is Session0011 S1: define the catalogue/JSON invocation contract
+and bounded execution plan. Resume here at S1/BP2-A after that separate goal or
+owner redirection. This is a manual work summary, not an exact transcript.

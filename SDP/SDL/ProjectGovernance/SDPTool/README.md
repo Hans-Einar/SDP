@@ -74,5 +74,54 @@ The authoring verification used the repository CLI with Go 1.27.1; the enclosing
 candidate hashes and export evidence. Generated output belongs in temporary or
 explicitly marked derived directories, never in this authored source folder.
 The [ecosystem index](../README.md) identifies cross-system dependencies.
-Navigation registration must select this entry explicitly; folder placement alone
-does not make it available to a viewer.
+Current discovery derives navigation from supported source files; no manual
+navigation registry is required. Viewer support remains a separate consumer contract.
+
+
+## Blueprint preview delivery — BPI2-M1
+
+BlueprintFacade captures ModelGovernance source views and delegates structural
+analysis/rendering to SDL/go/blueprint, then uses the shared document publisher.
+GenerateBlueprintPreview is a diagnostic operation; BlueprintPreviewDelivery does
+not claim catalogue discovery, assignment states or code conformance. The libraries
+are dependencies of SdpToolHost, not new deployed containers. Source:
+SDPTool/blueprints/generate.go and SDL/go/blueprint. Evidence:
+05--Implementation/SDPTool/Blueprints/Evidence-BPI2-M1.md.
+
+
+## Retained blueprint catalogue — BPI2-M2
+
+BlueprintCatalogue verifies retained revision integrity and projects discoverable
+documents into the shared navigation tree. It does not infer work progress or
+compare against live sources. Assignment status remains unknown until BPI3.
+Implementation: SDPTool/blueprints/catalogue.go and blueprint_navigation.go.
+The generic Files scan does not register retained SDL/SDUI as current project
+sources. Native XFMD rendering remains a separate consumer concern.
+
+BPI3-M1 adds BlueprintAssessment inside SdpToolHost: verify scoped code/evidence
+captures and assess explicit unknown dispositions/receipts against an immutable
+blueprint. It emits an assessment without executing checks or adopting lifecycle
+state. SDPTool/blueprints/assessment.go owns that adapter, using the existing
+catalogue verifier and model content digest. BPI3-M2 owns workflow projection.
+
+
+## Canonical history library — BPI3-M2a
+
+CanonicalProjectHistoryLibrary identifies the shared persistence interface now
+implemented by SDPTool/projecthistory. It reads and conditionally appends generic
+events to the existing ProjectManagement ledger. It is a library, not a container.
+M2b adds the BlueprintLifecycle consumer inside SdpToolHost. The assignment transition design is recorded in
+[Assignment-Lifecycle.md](../../../04--Design/SDPTool/Blueprints/Assignment-Lifecycle.md);
+[Evidence-BPI3-M2a.md](../../../05--Implementation/SDPTool/Blueprints/Evidence-BPI3-M2a.md)
+limits delivery to the independently verified persistence primitive.
+
+
+## Blueprint assignment control — BPI3-M2b
+
+BlueprintLifecycle owns GovernBlueprintAssignment, adapting trusted local principals
+and pinned evidence to the pure blueprintstate reducer and canonical history
+writer. BlueprintAssignments exposes revision-bound workflow and discovery groups.
+The source implementation delivers bounded local assignment control, not the
+separate general RoutineCoordinator, authenticated MCP callers or automatic code
+execution. See SDPTool/blueprints/lifecycle.go, blueprintstate/state.go and
+blueprint_navigation.go. Native XFMD rendering and release packaging remain separate.

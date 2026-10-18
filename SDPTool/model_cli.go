@@ -1,7 +1,10 @@
 package sdptool
 
 import (
+	"context"
 	"fmt"
+	"github.com/Hans-Einar/SDP/SDPTool/blueprints"
+	"github.com/Hans-Einar/SDP/SDPTool/blueprintstate"
 	"github.com/Hans-Einar/SDP/SDPTool/model"
 	"github.com/Hans-Einar/SDP/SDPTool/presentation"
 	"io"
@@ -25,6 +28,47 @@ func modelCommand(area string, args []string, out, errs io.Writer, jsonMode bool
 		return bad()
 	}
 	switch args[0] {
+	case "assignment":
+		if len(args) == 2 && args[1] == "list" {
+			views, err := blueprints.AssignmentViews(area)
+			if err != nil {
+				return reportMode(errs, failure("assignment", err), jsonMode)
+			}
+			if err = presentation.Default().Write(out, map[string]any{"schema": blueprintstate.Schema, "operation": "assignment-list", "assignments": views}, jsonMode); err != nil {
+				return reportMode(errs, err, jsonMode)
+			}
+			return 0
+		}
+		if len(args) != 8 || args[1] != "apply" || args[2] != "--request" || args[4] != "--as" || args[6] != "--authority" {
+			return bad()
+		}
+		req, err := blueprints.LoadAssignmentRequest(args[3])
+		if err != nil {
+			return reportMode(errs, failure("assignment", err), jsonMode)
+		}
+		result, err := blueprints.ApplyAssignment(area, blueprintstate.Principal{Actor: args[5], Authority: args[7]}, req)
+		if err != nil {
+			return reportMode(errs, failure("assignment", err), jsonMode)
+		}
+		if err = presentation.Default().Write(out, result, jsonMode); err != nil {
+			return reportMode(errs, err, jsonMode)
+		}
+		return 0
+	case "assess":
+		if len(args) != 6 || args[1] != "blueprint" || args[2] != "--bundle" || args[4] != "--evidence" {
+			return bad()
+		}
+		assessment, err := blueprints.Assess(args[3], args[5])
+		if err != nil {
+			return reportMode(errs, failure("blueprint-evidence", err), jsonMode)
+		}
+		if err = presentation.Default().Write(out, assessment, jsonMode); err != nil {
+			return reportMode(errs, err, jsonMode)
+		}
+		if assessment.Status != "ready" {
+			return 3
+		}
+		return 0
 	case "snapshot":
 		if len(args) != 2 {
 			return bad()
@@ -71,6 +115,36 @@ func modelCommand(area string, args []string, out, errs io.Writer, jsonMode bool
 		r, e = model.Status(area, args[1])
 		r.Operation = args[0]
 	case "create":
+		if len(args) > 1 && args[1] == "blueprint" {
+			if len(args) != 12 || args[2] != "from" || args[4] != "to" {
+				return bad()
+			}
+			opts := map[string]string{}
+			for i := 6; i < len(args); i += 2 {
+				if args[i] != "--entry" && args[i] != "--task" && args[i] != "--output" && args[i] != "--catalogue" {
+					return bad()
+				}
+				if _, ok := opts[args[i]]; ok {
+					return bad()
+				}
+				opts[args[i]] = args[i+1]
+			}
+			o := blueprints.Options{Area: area, From: args[3], To: args[5], Entry: opts["--entry"], Task: opts["--task"], Output: opts["--output"]}
+			var b blueprints.Result
+			var err error
+			if catalogue := opts["--catalogue"]; catalogue != "" {
+				b, err = blueprints.GenerateRetained(context.Background(), o, catalogue)
+			} else {
+				b, err = blueprints.Generate(context.Background(), o)
+			}
+			if err != nil {
+				return reportMode(errs, failure("blueprint", err), jsonMode)
+			}
+			if err = presentation.Default().Write(out, b, jsonMode); err != nil {
+				return reportMode(errs, err, jsonMode)
+			}
+			return 0
+		}
 		if len(args) < 2 {
 			return bad()
 		}
@@ -158,8 +232,14 @@ const modelHelp = `Usage: sdptool [MODEL-AREA] model ACTION [--json]
   create proposal:NAME from work:NAME
   create release:VERSION from candidate:NAME --evidence model-only
     or --evidence verified --code-digest SHA256 --checks REFERENCE
+  create blueprint from kind:NAME to kind:NAME --entry System.design --task TASK.json --output DIRECTORY (or --catalogue SDP/Blueprints)
+  assess blueprint --bundle RETAINED-DIR --evidence EVIDENCE.json
+  assignment list
+  assignment apply --request REQUEST.json --as ACTOR --authority controller|assignee|reviewer
   status|history|snapshot kind:NAME
   recover OPERATION-UUID resume|abort
 MODEL-AREA is the directory containing artifact folders; no Git or SDP install required.
-WORK snapshots are preliminary. Blueprint generation is not implemented.
+Assignment commands take the SDP area, with canonical ProjectManagement/Traceability records.
+The local CLI is a trusted controller boundary; --as is attribution, not authentication.
+WORK snapshots are preliminary. Blueprints are diagnostic previews, not executable assignments.
 `

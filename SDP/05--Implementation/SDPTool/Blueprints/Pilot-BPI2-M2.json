@@ -1,0 +1,42 @@
+{
+  "baseline": "3d00521",
+  "toolchain": "Go 1.27.1",
+  "candidateFiles": {
+    "SDP/SDL/ProjectGovernance/SDPTool/System.design": "28f99ea092b6902d80f1caeb38e436ff71e57e79aa6d79cebf9a78ccc4395189",
+    "SDPTool/Contract.md": "240dfdf1c3fe62d22c3fc71086f008e0daad00eb0d89ae4c7bf2a236643393be",
+    "SDPTool/README.md": "26f970f60d3152e4cb20695d73e66d2e33e658edeb6a625bec7bc2e840cf4174",
+    "SDPTool/blueprint_cli_test.go": "4342646b9d30fa8f0d99f34e6d5502e9833b160738b31b0bc0a83256d8282011",
+    "SDPTool/blueprint_navigation.go": "fa49b7912eee0d5f49c5833eea1d161fb030389d88e06acf5b997a6518364a99",
+    "SDPTool/blueprint_navigation_test.go": "bed638490a0bec3842724efeb7bada7fa7eec2735f8c2aa8c5a2f74cc5bc9fe7",
+    "SDPTool/blueprints/README.md": "4b5b9cacf229e79761332fcf1f04e0407cf0fb59e30c1babeb6e6dc0f8e4c5dd",
+    "SDPTool/blueprints/catalogue.go": "7adeab037203f1aa343fd12753b7e8dc9362cb0d143662e7817096acaa7bd6b8",
+    "SDPTool/blueprints/catalogue_test.go": "054d45ed3880c5edbf066722ccdf8e589898ac42996d3d665c0e237e1de77d44",
+    "SDPTool/blueprints/generate.go": "1771777960439919053e655c7649e88980282d7573e17b60639b0cc2b5e5dec2",
+    "SDPTool/discovery.go": "d83c19cff7f3731bb802135c0f2132223844dcbac018ec0641997653fc2cf57d",
+    "SDPTool/model_cli.go": "ff2797911d948069670d3e7f37ed66e298cfd18d112ffe7f4921e520e9b9a67a",
+    "SDPTool/navigation.go": "bce0caa7540b0f848ac8455eb11050726ef2a48088b0dab6519966a9af7876ef",
+    "SDPTool/navigation_test.go": "1e9334c83abaf76773826d4a6872aacecf9b8b37eb106e8d64d98fe520ce438d",
+    "SDPTool/output_arguments.go": "ca8a918ebe67deaf4840581554389b9d0386ae4eed5c1dff3049a01b92945b27",
+    "SDPTool/project.go": "cbd075a66b3ec88edb20191e761bdf461667e921ae1153c97d94c8596a9e2498",
+    "SDPTool/tree.go": "e530158c3c254799ca4290e9619806bef6219e4beccf1d4813d29a020a3e3883"
+  },
+  "compiledToolSHA256": "d2ef9cead07f4039c99209807476566cb5ce85a6a212e94507884a72a2775a06",
+  "consumerFixtureSHA256": "2a059e5149ccafdc014d5933698c6a51e7fdab432f53f44ef680d6d32173e811",
+  "result": {
+    "retainedRevision": "71400d4e5166c520cfdb501fa4641f39608d7f63cb5970a0246e7a3976cf4f1c",
+    "schema": "sdp-blueprint/1",
+    "operation": "create-blueprint",
+    "status": "diagnostic-preview",
+    "revision": "14ef85ecb639a4bcbfe70a6d19565d3d63f31adeee2fc40a30013d56978bca38",
+    "path": "/tmp/bpi2-catalogue-pilot/SDP/Blueprints/117e88d043aee98780927c91cc4ae37afe1f86647a4e4e03532ddc4f7da22a5f/71400d4e5166c520cfdb501fa4641f39608d7f63cb5970a0246e7a3976cf4f1c",
+    "preliminary": true
+  },
+  "consumerAssertions": [
+    "discover and tree projections equal",
+    "all 7 open targets resolve and match file hashes",
+    "retained sources absent from current model inventory",
+    "workState unknown"
+  ],
+  "scope": "BPI2-M2 headless retention/discovery; no native XFMD or lifecycle claim",
+  "independentReview": "approved for bounded BPI2-M2"
+}

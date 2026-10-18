@@ -1,0 +1,5 @@
+{
+  "format": "unified-diff",
+  "originalSHA256": "ab57ede4c10d38e241ebd6253cb775ef912aecdd4108220cb942c8289d4f055d",
+  "content": "--- before/model/Containers/MachineService.design\n+++ after/model/Containers/MachineService.design\n@@ -1,6 +1,8 @@\n language design-core version 0.6.\n+unit CalibrationProcessor.\n container MachineService.\n-MachineService owns CalibrateMeasurement.\n+CalibrationProcessor owns CalibrateMeasurement.\n+MachineService contains CalibrationProcessor.\n MachineService owns PublishMachineBaseline.\n MachineService owns ReduceMachineState.\n MachineService provides AuthoritativeMachineState.\n--- before/code/machine.go\n+++ after/code/machine.go\n@@ -1,5 +1,12 @@\n // Synthetic trial code; this is not Ponsse production code.\n package pilot\n \n-func CalibrateMeasurement(raw int) int          { return raw * 2 }\n+type CalibrationProcessor struct{}\n+\n+func (CalibrationProcessor) CalibrateMeasurement(raw int) int { return raw * 2 }\n+\n+func CalibrateMeasurement(raw int) int {\n+\treturn (CalibrationProcessor{}).CalibrateMeasurement(raw)\n+}\n+\n func ReduceMachineState(current, delta int) int { return current + delta }\n"
+}

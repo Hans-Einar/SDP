@@ -1,0 +1,116 @@
+{
+  "schema": "sdp-blueprint-evidence/1",
+  "blueprintRevision": "23a7894468ef031e2ea86713a0bcc4cbce2fe84a9d1ae2050aef2ad5e5063380",
+  "retainedRevision": "636da88f3cda50a10abac32ec56913bf6b1c43a3a4af501640869aa8199f7185",
+  "taskDigest": "cdac856cf6e441dac09911beb550cd50b114e1698e4471556f5e473aa41a1fd3",
+  "scope": "BPI3-M1 synthetic model/code extraction trial only",
+  "code": {
+    "NOW": {
+      "revision": "synthetic-NOW",
+      "root": "now-code",
+      "digest": "1a8f9f1e1785eda88080cf8141838063144ee3e99bc5222764038a442e5ca1ae",
+      "files": {
+        "machine.go": "c412836dbaeed0056ddf45781dea7e8fd745ad4945e19db7457884e6138054ee",
+        "behavior_test.go": "387e8cc4e289f48b408d89bc359419bf16e529fbf1d73d46eeafac9db3a8f445",
+        "go.mod": "d27f3b49d7d2f90c03dfcd49f35ac6f03f56f638eefe12ae694a37955f8f804a"
+      }
+    },
+    "TARGET": {
+      "revision": "synthetic-TARGET",
+      "root": "worker/code",
+      "digest": "60605290f06372bd640c5e40ec442cba48d4c46b437fbcf21565b01836b878a0",
+      "files": {
+        "machine.go": "8168cfe2c432ce67359a7ddefc55bca4e89db43784bdd8d1e98103400b78b1e6",
+        "behavior_test.go": "387e8cc4e289f48b408d89bc359419bf16e529fbf1d73d46eeafac9db3a8f445",
+        "go.mod": "d27f3b49d7d2f90c03dfcd49f35ac6f03f56f638eefe12ae694a37955f8f804a"
+      }
+    }
+  },
+  "requiredChecks": [
+    {
+      "id": "NOW-behavior",
+      "side": "NOW",
+      "obligation": "behavior:preserved-arithmetic"
+    },
+    {
+      "id": "TARGET-behavior",
+      "side": "TARGET",
+      "obligation": "behavior:preserved-arithmetic"
+    }
+  ],
+  "receipts": [
+    {
+      "id": "NOW-behavior",
+      "side": "NOW",
+      "obligation": "behavior:preserved-arithmetic",
+      "sourceDigest": "9b43ba159621c8b1722464ab9643d61e5684de18cd1f29bf5cda751dad8062a4",
+      "taskDigest": "cdac856cf6e441dac09911beb550cd50b114e1698e4471556f5e473aa41a1fd3",
+      "codeDigest": "1a8f9f1e1785eda88080cf8141838063144ee3e99bc5222764038a442e5ca1ae",
+      "command": "/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/bin/go test -count=1 ./...",
+      "environment": "Go 1.27.1 linux/amd64; temporary synthetic module",
+      "inputsDigest": "1105acac83821b6a8725f588363498c10dc954483aa1070e9350ebc51c047ec5",
+      "inputs": {
+        "now-code/behavior_test.go": "387e8cc4e289f48b408d89bc359419bf16e529fbf1d73d46eeafac9db3a8f445",
+        "now-code/go.mod": "d27f3b49d7d2f90c03dfcd49f35ac6f03f56f638eefe12ae694a37955f8f804a"
+      },
+      "result": "pass",
+      "artifact": "NOW-test.log",
+      "artifactDigest": "8b981096258cc36393982659f7ccfae9ca2df5f291b4f67622120c44011cb004",
+      "traceability": "SDPTOOL-BPI3-M1"
+    },
+    {
+      "id": "TARGET-behavior",
+      "side": "TARGET",
+      "obligation": "behavior:preserved-arithmetic",
+      "sourceDigest": "c0670c5be817fdb18ae676e67dcbbd00875f8a98b236d5896bba80fb2a296510",
+      "taskDigest": "cdac856cf6e441dac09911beb550cd50b114e1698e4471556f5e473aa41a1fd3",
+      "codeDigest": "60605290f06372bd640c5e40ec442cba48d4c46b437fbcf21565b01836b878a0",
+      "command": "/home/warloc/.local/share/sdp-toolchains/go1.27.1/go/bin/go test -count=1 ./...",
+      "environment": "Go 1.27.1 linux/amd64; temporary synthetic module",
+      "inputsDigest": "878910b74264391ca3c73539cf1e0b97aebdf29ca9866da38756b0d9c474e1fd",
+      "inputs": {
+        "worker/code/behavior_test.go": "387e8cc4e289f48b408d89bc359419bf16e529fbf1d73d46eeafac9db3a8f445",
+        "worker/code/go.mod": "d27f3b49d7d2f90c03dfcd49f35ac6f03f56f638eefe12ae694a37955f8f804a"
+      },
+      "result": "pass",
+      "artifact": "A-test.log",
+      "artifactDigest": "8b981096258cc36393982659f7ccfae9ca2df5f291b4f67622120c44011cb004",
+      "traceability": "SDPTOOL-BPI3-M1"
+    }
+  ],
+  "mappings": [
+    {
+      "side": "NOW",
+      "element": "MVP1InspectionPilot/container/MachineService",
+      "role": "synthetic-implementation",
+      "path": "machine.go",
+      "symbol": "CalibrateMeasurement",
+      "fileDigest": "c412836dbaeed0056ddf45781dea7e8fd745ad4945e19db7457884e6138054ee"
+    },
+    {
+      "side": "NOW",
+      "element": "MVP1InspectionPilot/functionality/ReduceMachineState",
+      "role": "synthetic-implementation",
+      "path": "machine.go",
+      "symbol": "ReduceMachineState",
+      "fileDigest": "c412836dbaeed0056ddf45781dea7e8fd745ad4945e19db7457884e6138054ee"
+    },
+    {
+      "side": "TARGET",
+      "element": "MVP1InspectionPilot/container/MachineService",
+      "role": "synthetic-implementation",
+      "path": "machine.go",
+      "symbol": "CalibrateMeasurement",
+      "fileDigest": "8168cfe2c432ce67359a7ddefc55bca4e89db43784bdd8d1e98103400b78b1e6"
+    },
+    {
+      "side": "TARGET",
+      "element": "MVP1InspectionPilot/functionality/ReduceMachineState",
+      "role": "synthetic-implementation",
+      "path": "machine.go",
+      "symbol": "ReduceMachineState",
+      "fileDigest": "8168cfe2c432ce67359a7ddefc55bca4e89db43784bdd8d1e98103400b78b1e6"
+    }
+  ],
+  "dispositions": []
+}

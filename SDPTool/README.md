@@ -186,3 +186,18 @@ blueprints or authenticate implementation acceptance.
 source files. `sdptool PROJECT run --program ID` starts the selected application
 from the project root. Projects opt in through `SDP/programs.json`; see
 [Programs.md](Programs.md) for the contract and readiness limits.
+Model releases are distinct from SDP tool releases and do not authenticate
+implementation acceptance. Blueprint generation is a separate operation below.
+
+
+Blueprint diagnostic generation is available through model create blueprint
+with from/to refs, --entry, --task TASK.json and either --output DIR for a preview
+or --catalogue SDP/Blueprints for immutable retention. Discover/tree automatically
+expose the retained catalogue and its generated document targets.
+See [producer contract](blueprints/README.md). Assignment lifecycle remains BPI3;
+catalogue entries report workState=unknown.
+
+## Blueprint consumer handoff
+
+See [XFMD blueprint integration](XFMD-Blueprint-Integration.md) for current CLI/API
+boundaries, lifecycle documentation and development-version testing.
