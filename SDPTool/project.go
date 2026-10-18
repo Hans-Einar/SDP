@@ -32,18 +32,20 @@ type Inventory struct {
 	SDUI               []Model `json:"sdui"`
 }
 type Project struct {
-	Schema       string            `json:"schema"`
-	Operation    string            `json:"operation"`
-	Status       string            `json:"status"`
-	Root         string            `json:"root"`
-	Area         string            `json:"area"`
-	Inventory    Inventory         `json:"inventory"`
-	Capabilities map[string]string `json:"capabilities"`
-	Installation map[string]any    `json:"installation"`
-	Sources      []SourceInfo      `json:"sources"`
-	Files        []Node            `json:"-"`
-	Navigation   *Tree             `json:"navigation,omitempty"`
-	Plans        []string          `json:"plans"`
+	Schema           string            `json:"schema"`
+	Operation        string            `json:"operation"`
+	Status           string            `json:"status"`
+	Root             string            `json:"root"`
+	Area             string            `json:"area"`
+	Inventory        Inventory         `json:"inventory"`
+	Capabilities     map[string]string `json:"capabilities"`
+	Installation     map[string]any    `json:"installation"`
+	Sources          []SourceInfo      `json:"sources"`
+	Programs         []ProgramInfo     `json:"programs"`
+	ProgramDiscovery ProgramDiscovery  `json:"programDiscovery"`
+	Files            []Node            `json:"-"`
+	Navigation       *Tree             `json:"navigation,omitempty"`
+	Plans            []string          `json:"plans"`
 }
 
 var identifier = regexp.MustCompile(`^[a-z][a-z0-9-]{0,63}$`)

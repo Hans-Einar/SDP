@@ -3,9 +3,9 @@ project:
   status: active-development
 
 release:
-  previousVersion: "2.0.0"
-  activeReleaseId: REL-2.1.0
-  targetVersion: "2.1.0"
+  previousVersion: "2.1.0"
+  activeReleaseId: REL-2.2.0
+  targetVersion: "2.2.0"
   state: released
 
 active:

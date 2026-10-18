@@ -1,0 +1,4 @@
+=== RUN   TestPackagedSignedInstall
+--- PASS: TestPackagedSignedInstall (0.29s)
+PASS
+ok  	github.com/Hans-Einar/SDP/SDPTool/install	0.292s

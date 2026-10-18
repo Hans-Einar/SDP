@@ -4,6 +4,8 @@
 
 | ID | Type | Status | Document |
 | --- | --- | --- | --- |
+| KB-SDP-051 | Change | completed | [Discover and run SDUI programs](completed/%23051--Change--Runnable-SDUI-programs.md) |
+| KB-SDUI-006 | Proposal | completed | [Runnable SDL and SDUI widget test project](completed/%23006--SDUI--Proposal--Runnable-widget-test-project.md) |
 | KB-SDP-050 | Proposal | active | [Semantic blueprints](active/%23050--Proposal--Semantic-blueprints.md) |
 | KB-SDP-049 | Change | completed | [ModelGovernance](completed/%23049--Change--Model-governance.md) |
 | KB-SDP-048 | Proposal | superseded | [Versioned design reviews and blueprint differences](superseded/%23048--Proposal--Versioned-design-reviews-and-blueprint-diffs.md) |
