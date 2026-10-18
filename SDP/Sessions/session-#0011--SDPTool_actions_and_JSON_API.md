@@ -397,3 +397,8 @@ corrected ordering and final validation passes. No transport is advertised yet.
 T010 ACT2-M1: catalogue and discovery invocation delivered; strict parsing, CLI
 parity, cancellation/output failure tests and compiled stdin trial pass. Broader
 SDL/SDUI integration suites also completed successfully. ACT3 blueprint handlers next.
+
+T010 ACT3-M1/M2: complete five-action registry and shared CLI service routing tested.
+Retained generation is repeatable; assessment preserves blocked JSON; assignment
+retry is idempotent and stale/forged writes refuse without mutation. Local attribution
+is explicit, not authentication. ACT4 compiled consumer/wrapper verification next.

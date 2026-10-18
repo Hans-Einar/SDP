@@ -2,7 +2,6 @@ package sdptool
 
 import (
 	"context"
-	"encoding/json"
 	"flag"
 	"fmt"
 	"io"
@@ -10,6 +9,7 @@ import (
 	"strings"
 
 	"github.com/Hans-Einar/SDP/SDPTool/blueprintstate"
+	"github.com/Hans-Einar/SDP/SDPTool/presentation"
 )
 
 func invocationCommand(ctx context.Context, args []string, in io.Reader, out, errs io.Writer) int {
@@ -45,16 +45,5 @@ func invocationCommand(ctx context.Context, args []string, in io.Reader, out, er
 	return writeInvocation(out, errs, Invoke(ctx, in, ActionCaller{Principal: blueprintstate.Principal{Actor: *actor, Authority: *authority}}))
 }
 func writeActions(out io.Writer, r ActionCatalogue, jsonMode bool) error {
-	if jsonMode {
-		return json.NewEncoder(out).Encode(r)
-	}
-	if _, err := fmt.Fprintf(out, "SDPTool actions (%s, %s)\n", r.Producer.Version, r.Schema); err != nil {
-		return err
-	}
-	for _, a := range r.Actions {
-		if _, err := fmt.Fprintf(out, "%s — %s [%s]\n  %s\n", a.ID, a.Label, a.Availability.State, a.Availability.Message); err != nil {
-			return err
-		}
-	}
-	return nil
+	return presentation.Default().Write(out, r, jsonMode)
 }

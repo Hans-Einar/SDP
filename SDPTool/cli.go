@@ -84,7 +84,7 @@ func RunWithInput(ctx context.Context, args []string, in io.Reader, out, errs io
 		return 0
 	}
 	if len(args) > 0 && args[0] == "model" {
-		return modelCommand(selected, args[1:], out, errs, jsonMode)
+		return modelCommand(ctx, selected, args[1:], out, errs, jsonMode)
 	}
 	if len(args) > 0 && args[0] == "run" {
 		return runProgramCommand(ctx, selected, args[1:], out, errs, jsonMode)

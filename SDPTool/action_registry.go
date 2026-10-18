@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"path/filepath"
 	"reflect"
+	"runtime"
 	"sort"
 )
 
@@ -33,7 +34,7 @@ func defineAction[T any](d ActionDescriptor, run func(context.Context, actionCon
 type noActionParameters struct{}
 
 func actionRegistry() []actionSpec {
-	return []actionSpec{defineAction(ActionDescriptor{ID: "project.discover", Label: "Discover project", Description: "Read project sources, navigation and available content without writing an index.", Group: "Project", IconKey: "project-discover", Mutation: "none", OutputSchema: Version}, performDiscover)}
+	return append([]actionSpec{defineAction(ActionDescriptor{ID: "project.discover", Label: "Discover project", Description: "Read project sources, navigation and available content without writing an index.", Group: "Project", IconKey: "project-discover", Mutation: "none", OutputSchema: Version}, performDiscover)}, blueprintActions()...)
 }
 func performDiscover(ctx context.Context, c actionContext, _ noActionParameters) (any, int, error) {
 	if err := ctx.Err(); err != nil {
@@ -80,6 +81,9 @@ func Actions(ctx context.Context, selected string) (ActionCatalogue, error) {
 		}
 		if contextErr != nil {
 			d.Availability = ActionAvailability{State: "unavailable", Reason: "invalid-context", Message: contextErr.Error()}
+		}
+		if d.ID == "blueprint.assignment.apply" && runtime.GOOS != "linux" {
+			d.Availability = ActionAvailability{State: "unavailable", Reason: "unsupported-platform", Message: "Assignment writes currently require Linux."}
 		}
 		r.Actions = append(r.Actions, d)
 	}

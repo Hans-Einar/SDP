@@ -123,7 +123,7 @@ func Invoke(ctx context.Context, in io.Reader, caller ActionCaller) InvokeRespon
 			name = "canceled"
 			code = 130
 		}
-		if errors.Is(err, projecthistory.ErrConflict) {
+		if errors.Is(err, projecthistory.ErrConflict) || errors.Is(err, projecthistory.ErrStale) {
 			name = "stale-revision"
 		}
 		var typed *actionFailure
