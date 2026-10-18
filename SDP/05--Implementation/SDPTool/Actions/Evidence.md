@@ -60,5 +60,9 @@ outside this delivery. Dirty primary/viewpoint/other worktrees are preserved.
 Session0008 and KB-SDP-050 remain paused/gate-review; completion here does not
 approve or resume that pilot. No release/tag/normal installation was changed.
 
-ACT4 is complete. ACT5 records final documentation, management/traceability and
-main integration separately in the Session journal.
+ACT4 and ACT5 are complete. cab6dea, including lifecycle/handoff, reached origin/main
+from 8aa16c2 by authorized fast-forward. Session0011 T010 records the actual receipt.
+Management validators pass with 66 cards, 45 records, 4 lineage operations and 604
+events; Toolkit validation, archive import verification and diff checks pass.
+Final management IDs are EVT-PM-SDP-000199 and EVT-KB-SDP-000371, allocated after
+scanning current worktree ledgers to avoid the parallel PG events.

@@ -7,8 +7,8 @@ remain as recorded; see ProjectManagement/History/Session0011/import.json.
 ## Session roadmap
 
 T010, 2026-10-18. Goal achieved: ACT0–ACT5 are complete. Combined baseline
-8aa16c2 is on main; verified Actions delivery is prepared for the owner-authorized
-final main update. No release is selected. The table is the authoritative roadmap;
+8aa16c2 is on main; verified Actions delivery reached main at cab6dea under
+the owner-authorized final update. No release is selected. The table is the authoritative roadmap;
 Gantt dates are sequence display slots, not measured time or estimates.
 
 ```mermaid
@@ -41,7 +41,7 @@ gantt
 | Status | completed |
 | Primary card | [KB-SDP-053](../KanBan/completed/%23053--Proposal--Discoverable-SDPTool-actions.md) |
 | Snapshot date | 2026-10-18 |
-| Current step | S5 completed; final authorized main integration |
+| Current step | S5 completed; delivery integrated to main at cab6dea |
 | Proposed next step | Owner selects native XFMD integration or resumes Session0008 at BP2-A pilot review |
 | Execution authority | Owner T010 authorizes conflicts, main integration and remaining Session delivery |
 | Predecessor | [Session0008 — paused](session-%230008--Semantic_blueprints.md) |
@@ -422,3 +422,9 @@ ad0e730 is a later independent delivery, outside the pinned integration. All oth
 worktrees remain preserved. This manual work summary is not an exact transcript
 or a captured final reply. Next: record actual final main update; no release or
 Session0008 owner disposition is inferred.
+
+T010 main receipt: origin accepted sdp/actions-json-api and main at cab6dea,
+fast-forwarding main from 8aa16c2. This includes all ACT milestones and lifecycle
+closeout; the subsequent receipt-only commit records this observed result. No force
+push, tag, GitHub Release or installation replacement occurred. Local main checkout
+is updated separately after a clean-status check; dirty SDP-vNow is preserved.
