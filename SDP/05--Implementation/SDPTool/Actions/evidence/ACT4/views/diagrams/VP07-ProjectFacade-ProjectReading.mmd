@@ -1,0 +1,8 @@
+flowchart LR
+    n_DescribeRegisteredProject["DescribeRegisteredProject (functionality)"]
+    n_ExistingNavigationFacade["ExistingNavigationFacade (unit)"]
+    n_ProjectFacade["ProjectFacade (feature)"]
+    n_SdpToolHost["SdpToolHost (container)"]
+    n_DescribeRegisteredProject -->|allocated-to| n_SdpToolHost
+    n_DescribeRegisteredProject -->|contributes-to| n_ProjectFacade
+    n_ExistingNavigationFacade -->|owns| n_DescribeRegisteredProject

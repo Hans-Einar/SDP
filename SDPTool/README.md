@@ -44,8 +44,8 @@ model itself is a tree. Produce documents on selection, without pre-rendering th
 entire model. Exact wire format and command names remain to be specified.
 
 The native XFMD SDP tab, its KanBan / SDL / SDUI subtabs, widgets and interaction
-belong to [KB-XFMD-014](../../xfmd-sdl-navigation/SDP/KanBan/backlog/%23014--Proposal--SDP-sidebar-and-generated-navigation.md)
-in XFMD's own process board (the linked bootstrap path is historical). No XFMD implementation is done from this workstream.
+belong to `external:KB-XFMD-014` in XFMD's own process board. Its current
+checkout/path is not required to resolve locally. No XFMD implementation is done from this workstream.
 XFMD has its own SDP bootstrap; adoption and application implementation remain
 owned by its workstream.
 SDPTool provides the reusable producer services; XFMD supplies a native consumer.
@@ -209,3 +209,11 @@ with separately built sdp-mcp and sdp-controller probe commands. The [owner cont
 run/status/recover commands, durable input and bounded steering. PGI3 live execution
 remains unverified; candidate-evidence publication remains later work in
 PLAN-SDP-0018. These commands are not yet part of a published installer.
+
+
+## Discoverable operations and JSON requests
+
+Use `sdptool actions --json` to discover supported operations and
+`sdptool invoke --request -` for one JSON request on stdin. Human CLI commands
+remain available. [Actions.md](Actions.md) documents schemas, local attribution,
+path bases, nonzero JSON results and the current five-operation scope.

@@ -1,0 +1,8 @@
+flowchart LR
+    n_AssessBlueprintEvidence["AssessBlueprintEvidence (functionality)"]
+    n_BlueprintAssessment["BlueprintAssessment (unit)"]
+    n_ScopedBlueprintReadiness["ScopedBlueprintReadiness (feature)"]
+    n_SdpToolHost["SdpToolHost (container)"]
+    n_AssessBlueprintEvidence -->|allocated-to| n_SdpToolHost
+    n_AssessBlueprintEvidence -->|contributes-to| n_ScopedBlueprintReadiness
+    n_BlueprintAssessment -->|owns| n_AssessBlueprintEvidence

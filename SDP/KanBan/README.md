@@ -25,7 +25,7 @@
 | KB-SDP-040 | Proposal | backlog | [KanBan terminal navigator](backlog/%23040--Proposal--KanBan-TUI.md) |
 | KB-SDP-042 | Proposal | backlog | [Goal-oriented Sessions, roadmaps and turn history](backlog/%23042--Proposal--Goal-oriented-sessions-and-roadmaps.md) |
 | KB-SDP-043 | Proposal | backlog | [Event-derived Session roadmaps and turn timelines](backlog/%23043--Proposal--Event-derived-session-timelines.md) |
-| KB-SDP-053 | Proposal | backlog | [Discoverable SDPTool actions for native clients](backlog/%23053--Proposal--Discoverable-SDPTool-actions.md) |
+| KB-SDP-053 | Proposal | completed | [Discoverable SDPTool actions for native clients](completed/%23053--Proposal--Discoverable-SDPTool-actions.md) |
 | KB-SDP-018 | Study | canceled | [Audit Toolkit responsibilities, organization and distribution](canceled/%23018--Study--Toolkit-audit-and-organization.md) |
 | KB-SDP-001 | Proposal | completed | [Project structure, Template and studies per phase](completed/%23001--Proposal--Project-structure.md) |
 | KB-SDUI-001 | Ref | completed | [SDUI as a subproject and library for SDP tools](completed/%23001--SDUI--Ref--SDP--017--sdptool.md) |

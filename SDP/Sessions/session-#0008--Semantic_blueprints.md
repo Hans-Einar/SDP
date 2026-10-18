@@ -53,7 +53,7 @@ implemented; general code-conformance proof remains explicitly outside this scop
 | Card | Initial | Planned final | Current | Actual final |
 | --- | --- | --- | --- | --- |
 | [KB050](../KanBan/active/%23050--Proposal--Semantic-blueprints.md) | backlog | completed after implemented/verified blueprint feature | gate-review | pending |
-| [KB051](../KanBan/backlog/%23053--Proposal--Discoverable-SDPTool-actions.md) | absent | transfer to Session0011 for delivery | queued | transferred T015 |
+| [KB053](../KanBan/completed/%23053--Proposal--Discoverable-SDPTool-actions.md) | absent | transfer to Session0011 for delivery | completed by Session0011 | transferred T015; producer completed T010 of Session0011 |
 
 | Plan | Readiness | Lifecycle | Outcome |
 | --- | --- | --- | --- |
@@ -88,11 +88,20 @@ its remaining execution is suspended with this Session. ImplementationPlan0020
 remains completed. No main merge, release, installed XFMD integration or general
 model-to-code conformance proof is claimed. Those are separate scopes/authorities.
 
-**Transferred:** KB-SDP-051 and its action catalogue/JSON request work belong to
+**Transferred:** Actions is now KB-SDP-053 (originally KB051); its catalogue/JSON request work belongs to
 Session0011. External KB-XFMD-030 owns native menu/toolbar integration. Return with
 their actual outcomes and runtime compatibility evidence, without treating them
 as approval of the blueprint pilot. [The integration handoff](../../SDPTool/XFMD-Blueprint-Integration.md)
 contains the current consumer boundary and testing routes.
+
+## Session0011 return evidence — 2026-10-18
+
+Actions producer delivery is complete: [usage](../../SDPTool/Actions.md),
+[verification](../05--Implementation/SDPTool/Actions/Evidence.md). Combined baseline
+and Blueprint code reached main at 8aa16c2; final Actions integration is recorded
+in Session0011 T010. This updates the earlier no-main-merge observation, without
+claiming a release or installed native XFMD integration. This Session remains
+paused and the next owner decision remains BP2-A pilot disposition above.
 
 ## Turn journal
 

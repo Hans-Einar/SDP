@@ -25,7 +25,7 @@ Verification on combined code:
 - `go -C SDPTool vet ./...`: pass. [Log](evidence/ACT0/vet.log).
 - ProjectManagement validator, Toolkit validator, archived import verification
   and git diff --check: pass.
-- Broader SDL/SDUI suites are running separately and recorded when complete.
+- Complete SDL/SDUI suites subsequently passed; see Evidence.md and ACT4 logs.
 - Same-context integration review only; no independent agent review or new native
   GUI/provider execution is claimed. Existing PG/blueprint owner gates remain open.
 

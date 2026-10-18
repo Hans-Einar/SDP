@@ -1,9 +1,10 @@
-# Discoverable actions and JSON invocation — proposed contract
+# Discoverable actions and JSON invocation — adopted delivery contract
 
-Status: Session0011 T007 design proposal for the discoverable-actions KB-SDP-053.
-No commands or schemas below are implemented yet. Product integration remains
-behind the [concurrency gate](../../../Sessions/evidence/0011-concurrent-work/refresh-T007.md).
-[ImplementationPlan](../../../05--Implementation/SDPTool/Actions/Plan.md) owns delivery.
+Status: implemented through Session0011 T010, PLAN-SDP-0024. Actions is now
+KB-SDP-053 following explicit identity reconciliation. ACT0 integration to main is
+8aa16c2; source/consumer verification is recorded in the
+[implementation evidence](../../../05--Implementation/SDPTool/Actions/Evidence.md).
+[Actions.md](../../../../SDPTool/Actions.md) is the concise public command guide.
 
 ## Outcome and boundary
 
@@ -25,7 +26,7 @@ ownership. XFMD keeps GUI menus, personal toolbar configuration, icons and forms
 No host launches, installer mutations or arbitrary executable actions are exposed
 by the first catalogue.
 
-## Proposed commands
+## Commands
 
 ```sh
 sdptool [PROJECT-OR-SDP] actions [--json]
@@ -36,7 +37,7 @@ sdptool invoke --request request.json
 `actions` defaults to readable output; `--json` selects its machine catalogue.
 `invoke` is a machine entrypoint and always writes a JSON envelope; optional
 `--json` is redundant and `--json=false` is rejected. No positional project or
-operation flags may override the JSON request. Request-file location never changes
+operation flags may override the JSON request. Request files are regular files; stdin uses -. Request-file location never changes
 path resolution. Existing human commands and their output shapes remain compatible.
 The executable passes stdin explicitly through a new input-aware entrypoint;
 retain `Run(ctx, args, out, errs)` as a compatibility wrapper. Tests and library
@@ -52,7 +53,7 @@ not forward untrusted JSON into these flags.
 
 ## Request and path rules
 
-Proposed schema: `sdptool.invoke/1`. One UTF-8 JSON object, followed only by
+Schema: `sdptool.invoke/1`. One UTF-8 JSON object, followed only by
 whitespace/EOF; no batches or streaming protocol. Example:
 
 ```json
@@ -88,7 +89,7 @@ protected-output or revision rules. Absolute local paths are not a remote file A
 
 ## Catalogue and supported input vocabulary
 
-Proposed schema: `sdptool.actions/1`. Include producer version/revision, invocation
+Schema: `sdptool.actions/1`. Include producer version/revision, invocation
 protocol versions and a deterministically sorted `actions` array. Derive an action
 catalogue revision from canonical metadata, excluding contextual availability;
 clients invalidate their cache on producer or metadata revision changes.
@@ -122,7 +123,7 @@ generic icon. Consumers choose display order; labels are not persistence keys.
 
 ## First operation set and service mapping
 
-These IDs are proposed stable names; publish them only with executable handlers.
+These stable IDs are advertised by executable handlers.
 
 | Action | Inputs beyond context | Result/service | Mutation |
 | --- | --- | --- | --- |
@@ -148,7 +149,7 @@ boundaries from the integrated baseline, not by introducing another runtime cont
 
 ## Response, errors and retries
 
-Proposed response shape (result varies by action):
+Response shape (result varies by action):
 
 ```json
 {
@@ -203,9 +204,8 @@ headless XFMD-like client that retains nonzero JSON stdout. Record wrapper and
 engine versions separately for the actual gh-sdp test. No native GUI acceptance
 is inferred from these tests.
 
-Known blockers: shared output_arguments/CLI/presentation contracts, diverged
-management histories and two distinct KB051 identities. PG is now actively working
-on KB052. No code merge or ID rewrite is part of this design proposal. Integration
-needs named ownership and ordering, preserved event provenance, a selected combined
-baseline and a fresh preflight. Update authoritative SDL sources before implementation
-on that baseline; the current shared System.design remains untouched meanwhile.
+ACT0 resolved the original shared-file and identity collisions on pinned inputs,
+with preserved source history and a verified combined baseline. Subsequent PG work
+uses its documented governance/controller scope; Actions owns the generic CLI/API.
+Do not absorb uncommitted other-worktree changes. New conflicts still require a
+fresh scoped check. The SDL model was updated and parsed before product delivery.

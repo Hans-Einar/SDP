@@ -1,0 +1,278 @@
+{
+  "schema": "sdptool.actions/1",
+  "operation": "actions",
+  "producer": {
+    "version": "dev-actions",
+    "revision": "0b85a11b21d9236e9199cbef2bb4fc1e90c21435"
+  },
+  "invocationVersions": [
+    "sdptool.invoke/1"
+  ],
+  "revision": "fdac182a64d424cbeb594a28ed1fff3c9b757ffd9a0a527ded6bbdf8c689f8b8",
+  "actions": [
+    {
+      "id": "blueprint.assess",
+      "label": "Assess blueprint",
+      "description": "Assess pinned evidence without executing checks or changing workflow state.",
+      "group": "Blueprints",
+      "iconKey": "blueprint-assess",
+      "mutation": "none",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "bundle": {
+            "type": "string",
+            "minLength": 1,
+            "x-pathBase": "project"
+          },
+          "evidence": {
+            "type": "string",
+            "minLength": 1,
+            "x-pathBase": "project"
+          }
+        },
+        "required": [
+          "bundle",
+          "evidence"
+        ],
+        "additionalProperties": false
+      },
+      "outputSchema": "sdp-blueprint-assessment/1",
+      "availability": {
+        "state": "requires-input",
+        "reason": "parameters-required",
+        "message": "Supply the declared inputs; invocation checks current state."
+      }
+    },
+    {
+      "id": "blueprint.assignment.apply",
+      "label": "Apply assignment transition",
+      "description": "Apply one attributed revision-bound transition; requires a trusted local principal.",
+      "group": "Blueprints",
+      "iconKey": "blueprint-transition",
+      "mutation": "history",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "object",
+            "properties": {
+              "action": {
+                "type": "string"
+              },
+              "assignee": {
+                "type": "string"
+              },
+              "assignmentId": {
+                "type": "string"
+              },
+              "binding": {
+                "type": "object",
+                "properties": {
+                  "bundle": {
+                    "type": "string",
+                    "x-pathBase": "sdp-area"
+                  },
+                  "from": {
+                    "type": "string"
+                  },
+                  "milestone": {
+                    "type": "string"
+                  },
+                  "modelArea": {
+                    "type": "string",
+                    "x-pathBase": "sdp-area"
+                  },
+                  "plan": {
+                    "type": "string"
+                  },
+                  "retained": {
+                    "type": "string"
+                  },
+                  "revision": {
+                    "type": "string"
+                  },
+                  "system": {
+                    "type": "string"
+                  },
+                  "task": {
+                    "type": "string"
+                  },
+                  "to": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "bundle",
+                  "task",
+                  "system",
+                  "revision",
+                  "retained",
+                  "plan",
+                  "milestone",
+                  "modelArea",
+                  "from",
+                  "to"
+                ],
+                "additionalProperties": false
+              },
+              "eventId": {
+                "type": "string"
+              },
+              "evidence": {
+                "type": "string",
+                "x-pathBase": "sdp-area"
+              },
+              "expectedEvent": {
+                "type": "string"
+              },
+              "occurredAt": {
+                "type": "string"
+              },
+              "reason": {
+                "type": "string"
+              },
+              "schema": {
+                "type": "string"
+              },
+              "successor": {
+                "type": "string"
+              },
+              "traceEvent": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "schema",
+              "eventId",
+              "occurredAt",
+              "assignmentId",
+              "action",
+              "expectedEvent",
+              "reason"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "request"
+        ],
+        "additionalProperties": false
+      },
+      "outputSchema": "sdp-blueprint-assignment/1",
+      "availability": {
+        "state": "requires-input",
+        "reason": "parameters-required",
+        "message": "Supply the declared inputs; invocation checks current state."
+      }
+    },
+    {
+      "id": "blueprint.assignment.list",
+      "label": "List assignments",
+      "description": "Read revision-bound assignments from canonical project history.",
+      "group": "Blueprints",
+      "iconKey": "blueprint-assignments",
+      "mutation": "none",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "outputSchema": "sdp-blueprint-assignment/1",
+      "availability": {
+        "state": "available",
+        "reason": "context-resolved",
+        "message": "Project context resolved; invocation checks it again."
+      }
+    },
+    {
+      "id": "blueprint.generate",
+      "label": "Generate blueprint",
+      "description": "Capture model inputs and generate a preview or immutable retained revision.",
+      "group": "Blueprints",
+      "iconKey": "blueprint-generate",
+      "mutation": "documents",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "catalogue": {
+            "type": "string",
+            "minLength": 1,
+            "x-pathBase": "project"
+          },
+          "entry": {
+            "type": "string",
+            "minLength": 1,
+            "x-pathBase": "model-snapshot"
+          },
+          "from": {
+            "type": "string",
+            "minLength": 1
+          },
+          "modelArea": {
+            "type": "string",
+            "minLength": 1,
+            "x-pathBase": "project"
+          },
+          "output": {
+            "type": "string",
+            "minLength": 1,
+            "x-pathBase": "project"
+          },
+          "task": {
+            "type": "string",
+            "minLength": 1,
+            "x-pathBase": "project"
+          },
+          "to": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "modelArea",
+          "from",
+          "to",
+          "entry",
+          "task"
+        ],
+        "additionalProperties": false,
+        "oneOf": [
+          {
+            "required": [
+              "output"
+            ]
+          },
+          {
+            "required": [
+              "catalogue"
+            ]
+          }
+        ]
+      },
+      "outputSchema": "sdp-blueprint/1",
+      "availability": {
+        "state": "requires-input",
+        "reason": "parameters-required",
+        "message": "Supply the declared inputs; invocation checks current state."
+      }
+    },
+    {
+      "id": "project.discover",
+      "label": "Discover project",
+      "description": "Read project sources, navigation and available content without writing an index.",
+      "group": "Project",
+      "iconKey": "project-discover",
+      "mutation": "none",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "outputSchema": "sdptool/0.2",
+      "availability": {
+        "state": "available",
+        "reason": "context-resolved",
+        "message": "Project context resolved; invocation checks it again."
+      }
+    }
+  ]
+}

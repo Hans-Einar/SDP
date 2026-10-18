@@ -1,0 +1,53 @@
+{
+  "candidate": "0b85a11b21d9236e9199cbef2bb4fc1e90c21435",
+  "wrapperCommit": "d5097b97d28bdc124bcba4a7fe0ff54f53872ac6",
+  "engineSHA256": "fd7d8f3210095b076a83e4d9bc1b3c56f60544082737cac7e7269e6024812e8f",
+  "wrapperSHA256": "3435df82030eb1dadebeed32d0212910e43eabcf12330cfbc8520429f5ee901a",
+  "descriptorSHA256": "e1c3493df4e3d2707a83def233439d15e31c497d096589765de318b92bb1cb6e",
+  "checks": [
+    {
+      "action": "project.discover",
+      "exitCode": 0,
+      "status": "ok"
+    },
+    {
+      "action": "future.action",
+      "exitCode": 2,
+      "status": "error"
+    },
+    {
+      "action": "blueprint.generate",
+      "exitCode": 0,
+      "status": "ok"
+    },
+    {
+      "action": "blueprint.assess",
+      "exitCode": 3,
+      "status": "blocked"
+    },
+    {
+      "action": "blueprint.assignment.apply",
+      "exitCode": 1,
+      "status": "error"
+    },
+    {
+      "action": "blueprint.assignment.apply",
+      "exitCode": 0,
+      "status": "ok"
+    },
+    {
+      "action": "blueprint.assignment.apply",
+      "exitCode": 0,
+      "status": "ok"
+    },
+    {
+      "action": "blueprint.assignment.list",
+      "exitCode": 0,
+      "status": "ok"
+    }
+  ],
+  "cancellation": "passed",
+  "retryHistoryUnchanged": true,
+  "consumerFixtures": "bounded headless checks, not native XFMD",
+  "distribution": "isolated local test-signed descriptor; no release or normal installation change"
+}

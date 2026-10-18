@@ -1,0 +1,8 @@
+flowchart LR
+    n_BlueprintAssignments["BlueprintAssignments (feature)"]
+    n_BlueprintLifecycle["BlueprintLifecycle (unit)"]
+    n_GovernBlueprintAssignment["GovernBlueprintAssignment (functionality)"]
+    n_SdpToolHost["SdpToolHost (container)"]
+    n_BlueprintLifecycle -->|owns| n_GovernBlueprintAssignment
+    n_GovernBlueprintAssignment -->|allocated-to| n_SdpToolHost
+    n_GovernBlueprintAssignment -->|contributes-to| n_BlueprintAssignments

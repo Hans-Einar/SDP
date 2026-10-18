@@ -6,43 +6,44 @@ remain as recorded; see ProjectManagement/History/Session0011/import.json.
 
 ## Session roadmap
 
-T009, 2026-10-18. Active Session; product integration remains unresolved.
-PG is clean at de4b795; pin inputs and coordinate the integration window before writes.
-S1 contract proposal and PLAN-SDP-0024 are prepared. Next: resolve S0 integration
-ownership/identity and finalize S1 schemas/SDL on the selected baseline.
-Sequence only: dates below are display slots, not estimates or measured time. The table is the authoritative roadmap.
+T010, 2026-10-18. Goal achieved: ACT0–ACT5 are complete. Combined baseline
+8aa16c2 is on main; verified Actions delivery reached main at cab6dea under
+the owner-authorized final update. No release is selected. The table is the authoritative roadmap;
+Gantt dates are sequence display slots, not measured time or estimates.
 
 ```mermaid
 gantt
-    title SDPTool actions and JSON API - sequence only
+    title SDPTool actions and JSON API - completed route
     dateFormat YYYY-MM-DD
+    section Preparation
+    DONE S0 Integration :done,z,2000-01-01,1d
     section Contract
-    WAITING S1 Contract and plan :a,2000-01-01,1d
+    DONE S1 Contract and plan :done,a,after z,1d
     section Delivery
-    PLANNED S2 Catalogue and read invocation :b,after a,1d
-    PLANNED S3 Blueprint actions :c,after b,1d
-    PLANNED S4 Consumer and wrapper verification :d,after c,1d
-    PLANNED S5 Handoff and closeout :e,after d,1d
+    DONE S2 Catalogue and read invocation :done,b,after a,1d
+    DONE S3 Blueprint actions :done,c,after b,1d
+    DONE S4 Consumer and wrapper verification :done,d,after c,1d
+    DONE S5 Handoff and closeout :done,e,after d,1d
 ```
 
-| State | Step | Outcome / linked milestone | Prerequisites | Completion evidence |
-| --- | --- | --- | --- | --- |
-| waiting | S0 | Concurrent-work preflight and coordination | Owner T002 requires green before implementation | [RED refreshed T007](evidence/0011-concurrent-work/refresh-T007.md) |
-| waiting | S1 | Define action catalogue and JSON invocation contract; register bounded ImplementationPlan | KB051, current Go APIs/CLI, XFMD handoff | [Contract proposal](../04--Design/SDPTool/Actions/Contract.md) and PLAN-SDP-0024 prepared; executable schemas/SDL wait for S0 |
-| planned | S2 | One shared action registry, catalogue and JSON read operation | S1 | CLI/API equivalence, deterministic metadata and strict request/error tests; pending |
-| planned | S3 | Blueprint generation/retention, assessment and revision-bound assignment actions | S2 | Real success/failure workflows preserve source, bundle and ledger contracts; pending |
-| planned | S4 | Test actual consumer protocol and gh-sdp forwarding on development candidate | S3 | Subprocess input/output, structured failures, compatibility and exact binary identity; pending |
-| planned | S5 | Documentation, review and XFMD handoff; reconcile KB051 and resume pointer | S4 | Evidence-backed outcome, residual scopes and Session0008 recovery note; pending |
+| State | Step | Outcome / linked milestone | Completion evidence |
+| --- | --- | --- | --- |
+| completed | S0 | ACT0 integration and history/identity reconciliation | [Integration](../05--Implementation/SDPTool/Actions/Integration.md), main 8aa16c2 |
+| completed | S1 | ACT1 typed contract and validated SDL model | 498f284; [Contract](../04--Design/SDPTool/Actions/Contract.md) |
+| completed | S2 | ACT2 catalogue/strict JSON discovery | 598f483; malformed-input and human/JSON parity tests |
+| completed | S3 | ACT3 five shared actions and revision-bound mutation | 4b2d92b; assignment retry/refusal and immutable bundle checks |
+| completed | S4 | ACT4 actual compiled gh transport/consumer and regressions | 0b85a11, dd7b974; [Evidence](../05--Implementation/SDPTool/Actions/Evidence.md) |
+| completed | S5 | ACT5 usage, lifecycle, traceability and XFMD handoff | [Actions guide](../../SDPTool/Actions.md), T010 closeout |
 
 | Field | Value |
 | --- | --- |
 | Session reference | SESSION-SDP-0011 |
-| Status | active |
-| Primary card | [KB-SDP-051](../KanBan/backlog/%23053--Proposal--Discoverable-SDPTool-actions.md) |
+| Status | completed |
+| Primary card | [KB-SDP-053](../KanBan/completed/%23053--Proposal--Discoverable-SDPTool-actions.md) |
 | Snapshot date | 2026-10-18 |
-| Current step | S0 refreshed red; S1 prose/plan ready, schemas/SDL waiting |
-| Proposed next step | Select integration ownership/order and reconcile KB051; fresh green baseline before ACT1 product/model changes |
-| Execution authority | Owner resumes delivery in T007; earlier green preflight prerequisite remains |
+| Current step | S5 completed; delivery integrated to main at cab6dea |
+| Proposed next step | Owner selects native XFMD integration or resumes Session0008 at BP2-A pilot review |
+| Execution authority | Owner T010 authorizes conflicts, main integration and remaining Session delivery |
 | Predecessor | [Session0008 — paused](session-%230008--Semantic_blueprints.md) |
 
 ## Goal
@@ -62,38 +63,34 @@ outside this Session's product scope. A future adapter can reuse the same servic
 
 | Card | Role | Initial | Planned final | Current | Actual final |
 | --- | --- | --- | --- | --- | --- |
-| [KB051](../KanBan/backlog/%23053--Proposal--Discoverable-SDPTool-actions.md) | Primary | backlog | completed after scoped delivery/evidence | queued for S1 | pending |
+| [KB053](../KanBan/completed/%23053--Proposal--Discoverable-SDPTool-actions.md) | Primary | backlog | completed after scoped delivery/evidence | completed | completed |
 | [KB050](../KanBan/active/%23050--Proposal--Semantic-blueprints.md) | Context only | gate-review | unchanged by this Session | gate-review; Session0008 paused | not disposed here |
-| [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md) | Handoff to ProjectGovernance | absent | backlog registration; owning Session0007 selects delivery | owning PG worktree active, observed T007; local copy remains historical backlog | registered T005; transferred to PG |
+| [KB052](../KanBan/active/%23052--Change--Project-Leader-and-SAD-orchestration.md) | Handoff to ProjectGovernance | absent | backlog registration; owning Session0007 selects delivery | active on PG owning branch; latest PGL2-C2a is outside Actions integration | registered T005; transferred to PG |
 | external:KB-XFMD-030 | Consumer handoff | reported backlog at creation | XFMD agent selects native work | external, not locally authoritative | external |
 
 ## Plan register
 
 | Local ref | Plan document/type | Readiness | Lifecycle | Outcome |
 | --- | --- | --- | --- | --- |
-| M1 | [MaintenancePlan MAINT-SDP-0015](../Maintenance/PLR1/Plan.md) — role/skill prerequisite only | completed | completed | Scoped guidance and ProjectGovernance handoff |
-| P1 | [ImplementationPlan PLAN-SDP-0024](../05--Implementation/SDPTool/Actions/Plan.md) | ready for coordination; execution blocked | planned | ACT0–ACT5 catalogue/JSON and blueprint delivery |
+| M1 | [MaintenancePlan MAINT-SDP-0016](../Maintenance/PLR1/Plan.md) — role/skill prerequisite only | completed | completed | Scoped guidance and ProjectGovernance handoff |
+| P1 | [ImplementationPlan PLAN-SDP-0024](../05--Implementation/SDPTool/Actions/Plan.md) | completed | completed | ACT0–ACT5 catalogue/JSON and blueprint delivery |
 
 Keep detailed milestone status in P1; the Session tracks the route.
 Contract decisions can live in one feature document without mandatory separate
 Requirement/Architecture/Design plans. Follow adopted plan rules and update SDL
 sources for material responsibility/contract changes before product implementation.
 
-## Baseline and proposed execution policy
+## Baseline and execution policy
 
-Source checkout: /tmp/sdp-blueprint-implementation, sdp/blueprint-implementation;
-code baseline d2cc760, documentation baseline a4a81f8. Inspect Git status at resume.
-The primary SDP-vNow and other worktrees contain unrelated work; preserve it.
-PLAN-SDP-0024 selects one dedicated actions branch after the combined baseline is
-agreed, with milestone commits; planning remains on this branch. This refines the
-initial provisional stacked-branch suggestion without changing prior commitments.
-This Session does not authorize main merge or publication. Test distribution
-preparation is distinct from publishing alpha/beta assets or replacing installations.
+ACT0 combined release 3475367, Blueprint f64a5ba and PG de4b795 onto main 04f88ff;
+8aa16c2 is the verified integrated baseline. Actions uses sdp/actions-json-api in
+/tmp/sdp-session11-integration, milestone commits and authorized final main update.
+The primary SDP-vNow and other agents' worktrees retain their unrelated changes.
 
-[Current integration handoff](../../SDPTool/XFMD-Blueprint-Integration.md) distinguishes
-implemented CLI from proposed invocation syntax. gh-sdp forwards stdin; XFMD's
-current job transport does not and must retain structured nonzero-exit responses.
-That native consumer change belongs to external KB-XFMD-030, not this repository.
+[Current integration handoff](../../SDPTool/XFMD-Blueprint-Integration.md) documents
+implemented catalogue/invocation. gh-sdp forwards stdin; native XFMD must implement
+its bounded writer and preserve JSON on nonzero exits under external KB-XFMD-030.
+Test distribution is distinct from publishing or replacing normal installations.
 
 ## Route changes and decisions
 
@@ -101,6 +98,7 @@ That native consumer change belongs to external KB-XFMD-030, not this repository
 | --- | --- | --- | --- |
 | T001 | Separate KB051 delivery from blueprint pilot review | Owner request | Session0008 paused; this Session active; no implicit pilot acceptance |
 | T007 | Prepare bounded ACT plan while integration gate remains red | Owner continuation and existing preflight prerequisite | One actions working branch after combined baseline; PG owns KB052; no product activation |
+| T010 | Resolve integration and complete all ACT phases | Explicit owner authorization including main updates | Source history preserved; KB053/PLAN0024 complete; publication and paused pilot remain separate |
 
 ## Turn journal
 
@@ -119,9 +117,10 @@ registers the implementation milestones. This is not a captured final response.
 
 ## Closeout and return
 
-Pending. On closeout, record actual delivery and remaining consumer/publication
-work. Return to Session0008's Resume here block and S1/BP2-A owner pilot disposition.
-Do not close KB050 or approve its pilot merely because KB051 is delivered.
+ACT0–ACT5 delivered and verified; KB053 and PLAN-SDP-0024 complete. Native XFMD
+implementation and publication remain separately selected work. Session0008 stays
+paused at S1/BP2-A owner pilot disposition; neither KB050 nor its pilot is approved
+by this delivery. Its resume block now links the actual Actions outcome.
 
 
 ### T002 — Mandatory concurrency check before starting (2026-10-09)
@@ -389,3 +388,43 @@ management/Toolkit/import checks. Integration.md records scope and preserved inp
 The owner's explicit integration assignment resolves the earlier ownership gate;
 ACT0 is green for bounded Actions work on this candidate. Main integration proceeds
 under T010 authorization. Broader SDL/SDUI suites remain separately in progress.
+
+T010 ACT1-M1: typed invocation/catalogue boundary and canonical parser-validated SDL
+model are delivered. Model authoring initially failed ordering checks; formatter
+corrected ordering and final validation passes. No transport is advertised yet.
+
+T010 ACT2-M1: catalogue and discovery invocation delivered; strict parsing, CLI
+parity, cancellation/output failure tests and compiled stdin trial pass. Broader
+SDL/SDUI integration suites also completed successfully. ACT3 blueprint handlers next.
+
+T010 ACT3-M1/M2: complete five-action registry and shared CLI service routing tested.
+Retained generation is repeatable; assessment preserves blocked JSON; assignment
+retry is idempotent and stale/forged writes refuse without mutation. Local attribution
+is explicit, not authentication. ACT4 compiled consumer/wrapper verification next.
+
+T010 ACT4-C1: actual gh-extension trial passes all five operations, structured
+nonzero results, retry and process cancellation after fixing blocked stdin handling.
+PG has adopted main and records the Actions/shared CLI exclusion at 5c4bb8b; its
+new uncommitted governance/controller work is outside this candidate and preserved.
+Final checks use a committed source candidate; no independent/native GUI claim.
+
+T010 ACT4-M1/ACT5-M1 closeout: final full/affected race, vet, SDL/SDUI suites,
+85 Toolkit tests, packaged signed installation and six unchanged release-log checks
+pass. Actual isolated gh-sdp trial covers all five actions, structured nonzero
+responses, idempotent retry, metadata compatibility and cancellation. Same-context
+review only; no native GUI or independent review is claimed. Actions.md and the
+integration guide provide the consumer handoff. Final source is 0b85a11;
+verification/docs are dd7b974. Management/traceability record the scoped completion.
+
+Loaded/reused routines: SDP, Planning, Architect, Master, Worker, Verifier and
+Traceability; concurrent-work preflight and Session continuity. Current PG head
+ad0e730 is a later independent delivery, outside the pinned integration. All other
+worktrees remain preserved. This manual work summary is not an exact transcript
+or a captured final reply. Next: record actual final main update; no release or
+Session0008 owner disposition is inferred.
+
+T010 main receipt: origin accepted sdp/actions-json-api and main at cab6dea,
+fast-forwarding main from 8aa16c2. This includes all ACT milestones and lifecycle
+closeout; the subsequent receipt-only commit records this observed result. No force
+push, tag, GitHub Release or installation replacement occurred. Local main checkout
+is updated separately after a clean-status check; dirty SDP-vNow is preserved.

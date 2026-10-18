@@ -35,6 +35,12 @@ requirements:
     design: DES-SDPTOOL-001
     note: GIP delivers installation execution; RP1 owns signed publication and live adoption.
 designs:
+  SDPTOOL-DES-ACT:
+    status: verified
+    path: 04--Design/SDPTool/Actions/Contract.md
+    implementationPlan: 05--Implementation/SDPTool/Actions/Plan.md
+    kanban: KB-SDP-053
+    verification: SDPTOOL-VER-ACT
   SDPTOOL-DES-RSP1:
     status: verified
     path: 04--Design/SDPTool/Programs.md
@@ -234,6 +240,13 @@ reviews:
       low: 0
       note: 4
 verification:
+  SDPTOOL-VER-ACT:
+    status: passed-bounded-producer-and-compiled-wrapper
+    path: 05--Implementation/SDPTool/Actions/Evidence.md
+    managementId: PLAN-SDP-0024
+    card: KB-SDP-053
+    design: SDPTOOL-DES-ACT
+    note: Same-context verification; native XFMD and paused blueprint pilot remain separate.
   SDPTOOL-VER-RSP2:
     status: passed
     path: Maintenance/RSP2/Evidence.md

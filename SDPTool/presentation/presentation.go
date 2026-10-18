@@ -19,6 +19,7 @@ type Registry map[Key]Renderer
 
 func Default() Registry {
 	r := Registry{}
+	r[Key{"sdptool.actions/1", "actions"}] = actions
 	r[Key{"sdp-blueprint/1", "create-blueprint"}] = fields
 	r[Key{"sdp-blueprint-assessment/1", "assess-blueprint"}] = fields
 	r[Key{"sdp-blueprint-assignment/1", "assignment"}] = fields

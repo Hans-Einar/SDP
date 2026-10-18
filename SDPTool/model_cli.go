@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-func modelCommand(area string, args []string, out, errs io.Writer, jsonMode bool) int {
+func modelCommand(ctx context.Context, area string, args []string, out, errs io.Writer, jsonMode bool) int {
 	var r model.Result
 	var e error
 	bad := func() int {
@@ -30,11 +30,11 @@ func modelCommand(area string, args []string, out, errs io.Writer, jsonMode bool
 	switch args[0] {
 	case "assignment":
 		if len(args) == 2 && args[1] == "list" {
-			views, err := blueprints.AssignmentViews(area)
+			value, _, err := performAssignmentList(ctx, actionContext{Area: area}, noActionParameters{})
 			if err != nil {
 				return reportMode(errs, failure("assignment", err), jsonMode)
 			}
-			if err = presentation.Default().Write(out, map[string]any{"schema": blueprintstate.Schema, "operation": "assignment-list", "assignments": views}, jsonMode); err != nil {
+			if err = presentation.Default().Write(out, value, jsonMode); err != nil {
 				return reportMode(errs, err, jsonMode)
 			}
 			return 0
@@ -46,7 +46,7 @@ func modelCommand(area string, args []string, out, errs io.Writer, jsonMode bool
 		if err != nil {
 			return reportMode(errs, failure("assignment", err), jsonMode)
 		}
-		result, err := blueprints.ApplyAssignment(area, blueprintstate.Principal{Actor: args[5], Authority: args[7]}, req)
+		result, _, err := performAssignmentApply(ctx, actionContext{Area: area, Caller: ActionCaller{Principal: blueprintstate.Principal{Actor: args[5], Authority: args[7]}}}, ApplyAssignmentInput{Request: req})
 		if err != nil {
 			return reportMode(errs, failure("assignment", err), jsonMode)
 		}
@@ -58,17 +58,14 @@ func modelCommand(area string, args []string, out, errs io.Writer, jsonMode bool
 		if len(args) != 6 || args[1] != "blueprint" || args[2] != "--bundle" || args[4] != "--evidence" {
 			return bad()
 		}
-		assessment, err := blueprints.Assess(args[3], args[5])
+		assessment, code, err := performAssess(ctx, actionContext{}, AssessActionInput{Bundle: args[3], Evidence: args[5]})
 		if err != nil {
 			return reportMode(errs, failure("blueprint-evidence", err), jsonMode)
 		}
 		if err = presentation.Default().Write(out, assessment, jsonMode); err != nil {
 			return reportMode(errs, err, jsonMode)
 		}
-		if assessment.Status != "ready" {
-			return 3
-		}
-		return 0
+		return code
 	case "snapshot":
 		if len(args) != 2 {
 			return bad()
@@ -129,14 +126,7 @@ func modelCommand(area string, args []string, out, errs io.Writer, jsonMode bool
 				}
 				opts[args[i]] = args[i+1]
 			}
-			o := blueprints.Options{Area: area, From: args[3], To: args[5], Entry: opts["--entry"], Task: opts["--task"], Output: opts["--output"]}
-			var b blueprints.Result
-			var err error
-			if catalogue := opts["--catalogue"]; catalogue != "" {
-				b, err = blueprints.GenerateRetained(context.Background(), o, catalogue)
-			} else {
-				b, err = blueprints.Generate(context.Background(), o)
-			}
+			b, _, err := performGenerate(ctx, actionContext{}, GenerateActionInput{ModelArea: area, From: args[3], To: args[5], Entry: opts["--entry"], Task: opts["--task"], Output: opts["--output"], Catalogue: opts["--catalogue"]})
 			if err != nil {
 				return reportMode(errs, failure("blueprint", err), jsonMode)
 			}

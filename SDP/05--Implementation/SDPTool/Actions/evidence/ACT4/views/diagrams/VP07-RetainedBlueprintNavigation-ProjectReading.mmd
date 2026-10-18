@@ -1,0 +1,12 @@
+flowchart LR
+    n_BlueprintCatalogue["BlueprintCatalogue (unit)"]
+    n_BrowseRetainedBlueprints["BrowseRetainedBlueprints (functionality)"]
+    n_RetainedBlueprintNavigation["RetainedBlueprintNavigation (feature)"]
+    n_SdpToolHost["SdpToolHost (container)"]
+    n_VerifyRetainedBlueprints["VerifyRetainedBlueprints (functionality)"]
+    n_BlueprintCatalogue -->|owns| n_BrowseRetainedBlueprints
+    n_BlueprintCatalogue -->|owns| n_VerifyRetainedBlueprints
+    n_BrowseRetainedBlueprints -->|allocated-to| n_SdpToolHost
+    n_BrowseRetainedBlueprints -->|contributes-to| n_RetainedBlueprintNavigation
+    n_VerifyRetainedBlueprints -->|allocated-to| n_SdpToolHost
+    n_VerifyRetainedBlueprints -->|contributes-to| n_RetainedBlueprintNavigation

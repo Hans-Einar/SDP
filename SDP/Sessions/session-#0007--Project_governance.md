@@ -2,9 +2,9 @@
 
 ## Session roadmap
 
-Latest recorded turn: T018 — PGL2-C2a delivers revision and retirement of prepared
-assignments with preserved identity/history and local scope release. Remaining C2
-work is actual design disposition and provider-aware dispatch prerequisites.
+Latest recorded turn: T019 — refresh against main e8760d3. The merge forecast found
+only two shared-ledger conflicts; preserve both parent histories and reconcile their
+ordering on the PG branch. PGL2-C2a remains delivered; remaining C2 work is next.
 Sequence only; synthetic dates represent order, not estimates or elapsed time.
 
 ```mermaid
@@ -813,3 +813,56 @@ T018 closeout checks: candidate/source hashes and canonical ledger prefixes pass
 has no committed changes in the PG core/controller or owning design/plan/Session
 at inspected 0b85a11. Shared history still needs normal append reconciliation on
 future integration; PM198/KB370 have no observed conflicting identities.
+
+## T019 — Verify and reconcile the current main merge
+
+Date: 2026-10-18. Manual work summary; exact host IDs/timing unavailable. Owner
+asks whether there will be no conflicts when PG is later merged into main.
+A clean worktree and the earlier forecast do not guarantee a future merge.
+Reused SDP, Worker/Verifier, concurrent-work preflight and Session upkeep for
+this existing branch synchronization boundary; no new implementation scope.
+
+Fetched origin/main e8760d331933361ab631ef0d52c20e87268a22b3, which now includes
+Actions delivery. Merge-tree against PG ad0e730 found content conflicts in
+ProjectManagement/Ledger.ndjson and Traceability/Ledger.ndjson only. There were
+no differing event-ID collisions and no source-code merge conflicts. Both streams
+had appended different events to their shared base; the earlier clean-code boundary
+never eliminated this shared-history integration obligation.
+
+Integrated that pinned main into the owning PG branch, leaving main and other
+worktrees untouched. Retained every original row byte and both parent row orders.
+Management additions are interleaved to preserve per-namespace numeric ordering:
+KB369, PM197, PM198, KB370, PM199, KB371. Simple main-then-PG concatenation failed
+the monotonic namespace validator and was corrected before commit. No event was
+renumbered, dropped or rewritten. Traceability retains both independent additions.
+Management validation passes: 66 cards, 45 records, 4 operations and 606 events.
+Toolkit validation passes. Incoming generated Actions evidence has pre-existing
+EOF whitespace diagnostics; it is retained unchanged. Check the PG delta against
+the incoming main rather than editing generated evidence to hide those diagnostics.
+
+The result is a mergeable branch relative to the pinned main after this local
+resolution, not a guarantee about future edits or independent semantic approval.
+No remote push, main merge, release or other agent's worktree changes are part of
+this turn. S6 remains active; next is the previously selected remaining C2 scope.
+
+T019 verification: `go test ./...` from SDPTool passes on the combined source.
+The PG delta against incoming main passes `git diff --cached --check MERGE_HEAD`.
+Test output SHA-256: `b6d4a7575041d875516e59b5dc4648078f631776e71539494bdc319c901c9ad0`.
+
+```text
+ok  	github.com/Hans-Einar/SDP/SDPTool	20.495s
+ok  	github.com/Hans-Einar/SDP/SDPTool/blueprints	24.217s
+ok  	github.com/Hans-Einar/SDP/SDPTool/blueprintstate	3.734s
+ok  	github.com/Hans-Einar/SDP/SDPTool/cmd/sdp-controller	0.018s
+?   	github.com/Hans-Einar/SDP/SDPTool/cmd/sdp-mcp	[no test files]
+ok  	github.com/Hans-Einar/SDP/SDPTool/cmd/sdptool	0.012s
+ok  	github.com/Hans-Einar/SDP/SDPTool/governance	2.553s
+ok  	github.com/Hans-Einar/SDP/SDPTool/governancecontroller	14.291s
+ok  	github.com/Hans-Einar/SDP/SDPTool/governancehost	0.057s
+ok  	github.com/Hans-Einar/SDP/SDPTool/governancemcp	5.458s
+ok  	github.com/Hans-Einar/SDP/SDPTool/install	18.715s
+ok  	github.com/Hans-Einar/SDP/SDPTool/model	6.305s
+ok  	github.com/Hans-Einar/SDP/SDPTool/presentation	0.005s
+ok  	github.com/Hans-Einar/SDP/SDPTool/projecthistory	0.130s
+ok  	github.com/Hans-Einar/SDP/SDPTool/tools/profile	3.920s
+```

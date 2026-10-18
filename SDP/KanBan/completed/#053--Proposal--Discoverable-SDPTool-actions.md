@@ -5,10 +5,10 @@
 | id | KB-SDP-053 |
 | project | SDP |
 | type | Proposal |
-| CardState | queued |
+| CardState | completed |
 | created | 2026-10-09T09:44:29.345109+00:00 |
 | source | Owner Session0008 T013, 2026-10-09 |
-| next_review | Session0011 S1 contract and implementation-plan selection |
+| next_review | Closed scoped delivery; native consumer work remains external:KB-XFMD-030 |
 
 ## Outcome and current evidence
 
@@ -22,7 +22,7 @@ current commands, source inspection, protocol boundaries and branch testing.
 Related local cards: KB-SDP-017 and KB-SDP-050. External dependency:
 `external:KB-XFMD-030`, dynamic menus/preferences; its checkout is not required.
 
-## Proposed scope for a bounded design plan
+## Selected scope (delivered by PLAN-SDP-0024)
 
 - Versioned action catalogue from the same operation definitions used by execution:
   stable IDs, label/group/description, icon key, typed input/output contracts,
@@ -105,7 +105,7 @@ Session0008 resumes at BP2-A owner pilot review after this goal or owner redirec
 Owner requires green concurrent-work preflight before implementation. The
 [check is RED](../../Sessions/evidence/0011-concurrent-work/README.md): governance
 and runnable-program work overlap shared SDPTool files/contracts, and a distinct
-runnable-program card in the primary worktree also declares KB-SDP-053. Refer to
+runnable-program card in the primary worktree also declared the original KB-SDP-051. Refer to
 this card by subject/path plus branch until identities are reconciled. Remain queued;
 no unilateral renumbering or execution activation. Next: coordinate ownership and
 baseline/identity reconciliation, then repeat the preflight before S1 execution.
@@ -124,3 +124,18 @@ paths and retry/cancellation boundaries. [PLAN-SDP-0024](../../05--Implementatio
 is planned: ACT0 integration, ACT1 schema/SDL contract, ACT2 read workflow, ACT3
 blueprint operations, ACT4 actual consumer/wrapper tests and ACT5 handoff. Existing
 CLI operations remain compatible. No new command is implemented by these documents.
+
+
+2026-10-18: ACT0 integrated to main at 8aa16c2; owner authorizes completing
+Session0011. PLAN-SDP-0024 execution starts on sdp/actions-json-api.
+
+## ACT5 completion — 2026-10-18
+
+All ACT0–ACT5 milestones delivered. [Evidence](../../05--Implementation/SDPTool/Actions/Evidence.md)
+and [usage](../../../SDPTool/Actions.md) describe five implemented typed actions,
+actual gh-sdp transport verification, service parity and truthful consumer limits.
+[Session0011](../../Sessions/session-%230011--SDPTool_actions_and_JSON_API.md)
+records the owner-authorized main integration and completion. This closes the bounded
+producer work, not external XFMD toolbar integration, release publication or the
+paused KB050 blueprint pilot review. Historical proposal/queue entries above retain
+their time-specific meaning; current state is completed.
